@@ -4,12 +4,12 @@ description: Bevat een samenvatting van ondersteuningsinstellingen en -beperking
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: 94a795ad91be1d648ad025287f5c5bc6f1d8d07e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: d9da2ee893244afc7150ab6249dbe51845d5d0c2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985009"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332709"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Ondersteunings matrix voor Azure Backup
 
@@ -39,6 +39,7 @@ In de volgende tabel worden de functies van Recovery Services kluizen beschreven
 **Kluizen verplaatsen** | U kunt [kluizen verplaatsen](./backup-azure-move-recovery-services-vault.md) tussen abonnementen of tussen resource groepen in hetzelfde abonnement. Het verplaatsen van kluizen over regio's wordt echter niet ondersteund.
 **Gegevens verplaatsen tussen kluizen** | Het verplaatsen van gegevens waarvan een back-up wordt gemaakt tussen kluizen, wordt niet ondersteund.
 **Type kluis opslag wijzigen** | U kunt het type opslag replicatie (geografisch redundante opslag of lokaal redundante opslag) voor een kluis wijzigen voordat er back-ups worden opgeslagen. Nadat een back-ups in de kluis is begonnen, kan het replicatietype niet meer worden gewijzigd.
+**Zone-redundante opslag (ZRS)** | Beschikbaar in de regio's UK-zuid (UKS) en Zuid Azië-oost (SEA).
 
 ## <a name="on-premises-backup-support"></a>On-premises ondersteuning voor back-ups
 
@@ -150,9 +151,9 @@ Azure Backup de functie voor het terugzetten van meerdere regio's heeft toegevoe
 | Type back-upbeheer | Ondersteund                                                    | Ondersteunde regio's |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
 | Azure VM               | Ja.   Ondersteund voor versleutelde Vm's en Vm's met minder dan 4 TB schijven | Alle open bare Azure-regio's en soevereine Clouds.  |
-| SQL-/SAP HANA | Yes                                                          | Alle open bare Azure-regio's en soevereine Clouds.             |
+| SQL-/SAP HANA | Yes                                                          | VS-West 2 (WUS2), West-Centraal VS (WCUS), Canada-centraal (CNC), Canada-oost (CNE), VS-Oost (EUS), VS-West (WUS), Japan-Oost (JPE), Japan-Oost (JPE) |
 | MARS-agent/on-premises  | No                                                           | N.v.t.               |
-| AFS                    | No                                                           | N.v.t.               |
+| AFS (Azure-bestands shares)                 | No                                                           | N.v.t.               |
 
 ## <a name="next-steps"></a>Volgende stappen
 

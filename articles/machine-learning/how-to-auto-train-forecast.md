@@ -10,27 +10,28 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
 ms.date: 08/20/2020
-ms.openlocfilehash: 982c7a41f1e05c34ddf0fbae9f944df4a4d08fa5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ce8ff8bedc6f6e4f99a940bbdb26bd3fafc930d8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893376"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296770"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatisch een time-series-prognose model trainen
 
 
 In dit artikel vindt u informatie over het configureren en trainen van een regressie model voor het maken van een time-reeks met behulp van geautomatiseerde machine learning, AutoML, in de [Azure machine learning python-SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true). 
 
+Dit doet u als volgt: 
+
+> [!div class="checklist"]
+> * Gegevens voorbereiden voor time series-model lering.
+> * Specifieke time series-para meters in een [`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) object configureren.
+> * Voor spellingen uitvoeren met gegevens van de tijd reeks.
+
 Voor een lage code kunt u de [zelf studie: prognose vraag met geautomatiseerde machine learning](tutorial-automated-ml-forecast.md) voor een time-series-prognose voor beeld met behulp van geautomatiseerde machine learning in [Azure machine learning Studio](https://ml.azure.com/).
 
 In tegens telling tot de methoden van de klassieke tijd reeks, in automatische MILLILITERs, worden waarden in het verleden ' gedraaid ' om extra dimensies voor de regressor hierop samen met andere voor spellingen. Deze aanpak omvat meerdere contextuele variabelen en hun relatie met elkaar tijdens de training. Omdat meerdere factoren van invloed kunnen zijn op een prognose, wordt deze methode goed afgestemd op de scenario's met de praktijk. Wanneer u bijvoorbeeld de verkoop, de interacties van historische trends, de wissel koers en de prijs van de omzet verlangt, wordt het resultaat van de omzet gezamenlijk gebrand. 
-
-In de volgende voor beelden ziet u hoe u:
-
-* Gegevens voorbereiden voor time series-model lering
-* Specifieke time series-para meters in een [`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) object configureren
-* Voor spellingen uitvoeren met gegevens van de tijd reeks
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -118,52 +119,20 @@ automl_config = AutoMLConfig(task='forecasting',
 Meer informatie over hoe AutoML van toepassing is op Kruis validatie om te [voor komen dat modellen worden verouderd](concept-manage-ml-pitfalls.md#prevent-over-fitting).
 
 ## <a name="configure-experiment"></a>Experiment configureren
-Het [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true) object definieert de instellingen en gegevens die nodig zijn voor een geautomatiseerde machine learning taak. De configuratie van een prognose model is vergelijkbaar met de instelling van een standaard regressie model, maar bepaalde parametrisatie-stappen en configuratie opties bestaan specifiek voor gegevens van de tijd reeks. 
 
-### <a name="featurization-steps"></a>Parametrisatie-stappen
+Het [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py&preserve-view=true) object definieert de instellingen en gegevens die nodig zijn voor een geautomatiseerde machine learning taak. De configuratie van een prognose model is vergelijkbaar met de instelling van een standaard regressie model, maar bepaalde modellen, configuratie opties en parametrisatie-stappen zijn specifiek voor tijdreeks gegevens. 
 
-In elk automatisch machine learning experiment worden standaard technieken voor automatisch schalen en normaliseren toegepast op uw gegevens. Deze technieken zijn soorten **parametrisatie** die *bepaalde* algoritmen helpen die gevoelig zijn voor functies op verschillende schalen. Meer informatie over de standaard parametrisatie-stappen in [parametrisatie in AutoML](how-to-configure-auto-features.md#automatic-featurization)
+### <a name="supported-models"></a>Ondersteunde modellen
+Automatische machine learning probeert automatisch verschillende modellen en algoritmen als onderdeel van het maken en afstemmen van het model. Als gebruiker hoeft u het algoritme niet op te geven. Voor het voors pellen van experimenten zijn zowel systeem eigen time-series als diepe leer modellen onderdeel van het aanbevelings systeem. De volgende tabel geeft een overzicht van deze subset van modellen. 
 
-De volgende stappen worden echter alleen uitgevoerd voor `forecasting` taak typen:
+>[!Tip]
+> Traditionele regressie modellen worden ook getest als onderdeel van het aanbevelings systeem voor het voors pellen van experimenten. Zie de [tabel ondersteunde](how-to-configure-auto-train.md#supported-models) modellen voor de volledige lijst met modellen. 
 
-* Detectie frequentie van tijds reeksen detecteren (bijvoorbeeld elk uur, dagelijks, wekelijks) en nieuwe records maken voor ontbrekende tijd punten om de reeks continu te maken.
-* Ontbrekende waarden in het doel (via voorwaartse opvulling) en functie kolommen toegerekend (met behulp van mediaan kolom waarden)
-* Maak functies op basis van Time Series-id's om vaste effecten in verschillende reeksen in te scha kelen
-* Op tijd gebaseerde functies maken voor het leren van seizoensgebonden patronen
-* Categorische variabelen coderen naar numerieke aantallen
-
-Zie [parametrisatie transparantie](how-to-configure-auto-features.md#featurization-transparency) voor een overzicht van de functies die worden gemaakt als gevolg van deze stappen.
-
-> [!NOTE]
-> Automatische machine learning parametrisatie stappen (functie normalisatie, het verwerken van ontbrekende gegevens, het converteren van tekst naar numerieke waarde, enzovoort) worden onderdeel van het onderliggende model. Wanneer u het model gebruikt voor voor spellingen, worden dezelfde parametrisatie-stappen die tijdens de training worden toegepast, automatisch toegepast op de invoer gegevens.
-
-#### <a name="customize-featurization"></a>Parametrisatie aanpassen
-
-U hebt ook de optie om uw parametrisatie-instellingen aan te passen, zodat u zeker weet dat de gegevens en functies die worden gebruikt om uw ML-model te trainen, in relevante voor spellingen resulteren. 
-
-Ondersteunde aanpassingen voor `forecasting` taken zijn onder andere:
-
-|Aanpassing|Definitie|
-|--|--|
-|**Update van het kolom doel**|Overschrijf het automatisch gedetecteerde functie type voor de opgegeven kolom.|
-|**Para meter bijwerken van trans formatie** |De para meters voor de opgegeven transformator bijwerken. *Ondersteunt momenteel* toerekenings functie (fill_value en mediaan).|
-|**Kolommen neerzetten** |Hiermee geeft u kolommen op die moeten worden featurized.|
-
-Geef in uw object op om featurizations aan te passen met de SDK `"featurization": FeaturizationConfig` `AutoMLConfig` . Meer informatie over [aangepaste featurizations](how-to-configure-auto-features.md#customize-featurization).
-
-```python
-featurization_config = FeaturizationConfig()
-# `logQuantity` is a leaky feature, so we remove it.
-featurization_config.drop_columns = ['logQuantitity']
-# Force the CPWVOL5 feature to be of numeric type.
-featurization_config.add_column_purpose('CPWVOL5', 'Numeric')
-# Fill missing values in the target column, Quantity, with zeroes.
-featurization_config.add_transformer_params('Imputer', ['Quantity'], {"strategy": "constant", "fill_value": 0})
-# Fill mising values in the `INCOME` column with median value.
-featurization_config.add_transformer_params('Imputer', ['INCOME'], {"strategy": "median"})
-```
-
-Zie [How to Customize parametrisatie in the Studio](how-to-use-automated-ml-for-ml-models.md#customize-featurization)(Engelstalig) als u de Azure machine learning Studio gebruikt voor uw experiment.
+Modellen| Beschrijving | Voordelen
+----|----|---
+Prophet (preview-versie)|Prophet werkt het beste met een tijd reeks met krachtige seizoensgebonden effecten en verschillende seizoenen historische gegevens. Als u gebruik wilt maken van dit model, installeert u het lokaal met `pip install fbprophet` . | Nauw keurige & snelle, robuuste uitbijters, ontbrekende gegevens en dramatische wijzigingen in uw tijd reeks.
+Automatische ARIMA (preview-versie)|Automatisch herlopend, geïntegreerd zwevend gemiddelde (ARIMA) wordt het beste uitgevoerd wanneer de gegevens stationair zijn. Dit betekent dat de statistische eigenschappen, zoals het gemiddelde en de variantie, constant zijn in de hele set. Als u bijvoorbeeld een munten spiegelt, is de kans dat u koppen krijgt, 50%, ongeacht of u vandaag, morgen of volgend jaar spiegelt.| Ideaal voor univariate-Series, aangezien de vorige waarden worden gebruikt om de toekomstige waarden te voors pellen.
+ForecastTCN (preview-versie)| ForecastTCN is een Neural-netwerk model dat is ontworpen om de meest veeleisende prognose taken uit te voeren, waarbij niet-lineaire lokale en wereld wijde trends in uw gegevens worden vastgelegd, evenals relaties tussen tijd reeksen.|Kan gebruikmaken van complexe trends in uw gegevens en kan eenvoudig worden geschaald naar het grootste aantal gegevens sets.
 
 ### <a name="configuration-settings"></a>Configuratie-instellingen
 
@@ -221,6 +190,51 @@ automl_config = AutoMLConfig(task='forecasting',
                              **time_series_settings)
 ```
 
+### <a name="featurization-steps"></a>Parametrisatie-stappen
+
+In elk automatisch machine learning experiment worden standaard technieken voor automatisch schalen en normaliseren toegepast op uw gegevens. Deze technieken zijn soorten **parametrisatie** die *bepaalde* algoritmen helpen die gevoelig zijn voor functies op verschillende schalen. Meer informatie over de standaard parametrisatie-stappen in [parametrisatie in AutoML](how-to-configure-auto-features.md#automatic-featurization)
+
+De volgende stappen worden echter alleen uitgevoerd voor `forecasting` taak typen:
+
+* Detectie frequentie van tijds reeksen detecteren (bijvoorbeeld elk uur, dagelijks, wekelijks) en nieuwe records maken voor ontbrekende tijd punten om de reeks continu te maken.
+* Ontbrekende waarden in het doel (via voorwaartse opvulling) en functie kolommen toegerekend (met behulp van mediaan kolom waarden)
+* Maak functies op basis van Time Series-id's om vaste effecten in verschillende reeksen in te scha kelen
+* Op tijd gebaseerde functies maken voor het leren van seizoensgebonden patronen
+* Categorische variabelen coderen naar numerieke aantallen
+
+Zie [parametrisatie transparantie](how-to-configure-auto-features.md#featurization-transparency) voor een overzicht van de functies die worden gemaakt als gevolg van deze stappen.
+
+> [!NOTE]
+> Automatische machine learning parametrisatie stappen (functie normalisatie, het verwerken van ontbrekende gegevens, het converteren van tekst naar numerieke waarde, enzovoort) worden onderdeel van het onderliggende model. Wanneer u het model gebruikt voor voor spellingen, worden dezelfde parametrisatie-stappen die tijdens de training worden toegepast, automatisch toegepast op de invoer gegevens.
+
+#### <a name="customize-featurization"></a>Parametrisatie aanpassen
+
+U hebt ook de optie om uw parametrisatie-instellingen aan te passen, zodat u zeker weet dat de gegevens en functies die worden gebruikt om uw ML-model te trainen, in relevante voor spellingen resulteren. 
+
+Ondersteunde aanpassingen voor `forecasting` taken zijn onder andere:
+
+|Aanpassing|Definitie|
+|--|--|
+|**Update van het kolom doel**|Overschrijf het automatisch gedetecteerde functie type voor de opgegeven kolom.|
+|**Para meter bijwerken van trans formatie** |De para meters voor de opgegeven transformator bijwerken. *Ondersteunt momenteel* toerekenings functie (fill_value en mediaan).|
+|**Kolommen neerzetten** |Hiermee geeft u kolommen op die moeten worden featurized.|
+
+Geef in uw object op om featurizations aan te passen met de SDK `"featurization": FeaturizationConfig` `AutoMLConfig` . Meer informatie over [aangepaste featurizations](how-to-configure-auto-features.md#customize-featurization).
+
+```python
+featurization_config = FeaturizationConfig()
+# `logQuantity` is a leaky feature, so we remove it.
+featurization_config.drop_columns = ['logQuantitity']
+# Force the CPWVOL5 feature to be of numeric type.
+featurization_config.add_column_purpose('CPWVOL5', 'Numeric')
+# Fill missing values in the target column, Quantity, with zeroes.
+featurization_config.add_transformer_params('Imputer', ['Quantity'], {"strategy": "constant", "fill_value": 0})
+# Fill mising values in the `INCOME` column with median value.
+featurization_config.add_transformer_params('Imputer', ['INCOME'], {"strategy": "median"})
+```
+
+Zie [How to Customize parametrisatie in the Studio](how-to-use-automated-ml-for-ml-models.md#customize-featurization)(Engelstalig) als u de Azure machine learning Studio gebruikt voor uw experiment.
+
 ## <a name="optional-configurations"></a>Optionele configuraties
 
 Er zijn aanvullende optionele configuraties beschikbaar voor prognoses van taken, zoals het inschakelen van diep gaande lessen en het opgeven van een doel aggregatie voor een rolling venster. 
@@ -250,17 +264,7 @@ automl_config = AutoMLConfig(task='forecasting',
 
 Als u DNN wilt inschakelen voor een AutoML-experiment dat is gemaakt in de Azure Machine Learning Studio, raadpleegt u de instellingen voor het [taak type in de Studio How-to](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment).
 
-
-Automatische ML biedt gebruikers zowel systeem eigen time-series als diepe leer modellen als onderdeel van het aanbevelings systeem. 
-
-Modellen| Description | Voordelen
-----|----|---
-Prophet (preview-versie)|Prophet werkt het beste met een tijd reeks met krachtige seizoensgebonden effecten en verschillende seizoenen historische gegevens. Als u gebruik wilt maken van dit model, installeert u het lokaal met `pip install fbprophet` . | Nauw keurige & snelle, robuuste uitbijters, ontbrekende gegevens en dramatische wijzigingen in uw tijd reeks.
-Automatische ARIMA (preview-versie)|Automatisch herlopend, geïntegreerd zwevend gemiddelde (ARIMA) wordt het beste uitgevoerd wanneer de gegevens stationair zijn. Dit betekent dat de statistische eigenschappen, zoals het gemiddelde en de variantie, constant zijn in de hele set. Als u bijvoorbeeld een munten spiegelt, is de kans dat u koppen krijgt, 50%, ongeacht of u vandaag, morgen of volgend jaar spiegelt.| Ideaal voor univariate-Series, aangezien de vorige waarden worden gebruikt om de toekomstige waarden te voors pellen.
-ForecastTCN (preview-versie)| ForecastTCN is een Neural-netwerk model dat is ontworpen om de meest veeleisende prognose taken uit te voeren, waarbij niet-lineaire lokale en wereld wijde trends in uw gegevens worden vastgelegd, evenals relaties tussen tijd reeksen.|Kan gebruikmaken van complexe trends in uw gegevens en kan eenvoudig worden geschaald naar het grootste aantal gegevens sets.
-
 Bekijk het voor beeld van de [drank productie prognose](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb) voor een gedetailleerd code voorbeeld met DNNs.
-
 
 ### <a name="target-rolling-window-aggregation"></a>Aggregatie van het doel venster
 De beste informatie die een Forecaster kan hebben, is vaak de recente waarde van het doel.  Met aggregaties voor het doel venster kunt u een roulerende aggregatie van gegevens waarden toevoegen als onderdelen. Het genereren en gebruiken van deze aanvullende functies als extra contextuele gegevens helpt de nauw keurigheid van het trein model.
@@ -283,7 +287,7 @@ experiment = Experiment(ws, "forecasting_example")
 local_run = experiment.submit(automl_config, show_output=True)
 best_run, fitted_model = local_run.get_output()
 ```
-
+ 
 ## <a name="forecasting-with-best-model"></a>Prognose met het beste model
 
 Gebruik de beste model iteratie om waarden voor de test gegevensset te prognoseen.

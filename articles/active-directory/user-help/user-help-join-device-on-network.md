@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 08/03/2018
 ms.author: curtand
 ms.reviewer: jairoc
-ms.openlocfilehash: 17c0b7bd802d4a50343f88b9517313489943e10c
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 146b867f1075a7eac1b6817f5fc8dbcd7ba04b02
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799482"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333406"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>Uw werk apparaat toevoegen aan het netwerk van uw organisatie
 Voeg uw werkend Windows 10-apparaat toe aan het netwerk van uw organisatie, zodat u mogelijk beperkte bronnen kunt openen.
@@ -54,7 +54,7 @@ Als uw apparaat een merk nieuw is dat nog niet is ingesteld, kunt u het OOBE-pro
 
     Uw apparaat is nu lid van het netwerk van uw organisatie.
 
-## <a name="to-make-sure-youre-joined"></a>Zorg ervoor dat u lid bent van
+## <a name="to-make-sure-youre-joined-new-device"></a>Om ervoor te zorgen dat u bent aangemeld (nieuw apparaat)
 U kunt er zeker van zijn dat u lid bent van uw instellingen.
 
 1. Open **instellingen**en selecteer vervolgens **accounts**.

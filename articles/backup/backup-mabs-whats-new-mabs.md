@@ -3,12 +3,12 @@ title: Nieuw in Microsoft Azure Backup Server
 description: Microsoft Azure Backup Server biedt uitgebreide back-upmogelijkheden voor het beveiligen van Vm's, bestanden en mappen, werk belastingen en nog veel meer.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: ca06e52c81b909bb19008fdccfe4b3fdeb7e6248
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 39050d0f658e29b82f270f1fe53026e2fb80bfa1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89182136"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332760"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server-mabs"></a>Wat is er nieuw in Microsoft Azure Backup Server (MABS)
 
@@ -23,7 +23,7 @@ Microsoft Azure Backup Server (MABS) versie 3 UR1 is de meest recente update en 
 
 MABS v2 heeft [modern Backup Storage](backup-mabs-add-storage.md) (MBS) geïntroduceerd, waardoor het opslag gebruik en de prestaties worden verbeterd. MBS gebruikt ReFS als onderliggend bestands systeem en is ontworpen om gebruik te maken van hybride opslag, zoals gelaagde opslag.
 
-Om de schaal en prestaties van MBS te vervolledigen, raden we u aan om een klein percentage (4% van de totale opslag) van Flash-opslag (SSD) met MABS v3 UR1 als een gelaagd volume in combi natie met DPM-HDD-opslag te gebruiken. MABS v3 UR1 met gelaagde opslag levert 50-70% snellere back-ups. Raadpleeg het DPM-artikel [MBS met tiered Storage instellen](/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage) voor stappen voor het configureren van gelaagde opslag.
+Om de schaal en prestaties van MBS te vervolledigen, raden we u aan om een klein percentage (4% van de totale opslag) van Flash-opslag (SSD) met MABS v3 UR1 als een gelaagd volume in combi natie met DPM-HDD-opslag te gebruiken. MABS v3 UR1 met gelaagde opslag levert 50-70% snellere back-ups. Raadpleeg het DPM-artikel [MBS met tiered Storage instellen](/system-center/dpm/add-storage#set-up-mbs-with-tiered-storage) voor stappen voor het configureren van gelaagde opslag.
 
 ### <a name="support-for-refs-volumes"></a>Ondersteuning voor ReFS-volumes
 

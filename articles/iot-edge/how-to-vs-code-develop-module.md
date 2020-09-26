@@ -3,18 +3,18 @@ title: Modules voor het ontwikkelen en opsporen van fouten voor Azure IoT Edge |
 description: Visual Studio code gebruiken voor het ontwikkelen, bouwen en opsporen van fouten in een module voor Azure IoT Edge met C#, Python, Node.js, Java of C
 services: iot-edge
 keywords: ''
-author: shizn
-ms.author: xshi
+author: kgremban
+ms.author: kgremban
 ms.date: 08/07/2019
 ms.topic: conceptual
 ms.service: iot-edge
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 848f617aaf74960aeecd856016321ac7607eca00
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 2fcb389736df8bedb2602919e986f7d65e8f3024
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422892"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296906"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Visual Studio code gebruiken voor het ontwikkelen en opsporen van fouten in modules voor Azure IoT Edge
 
@@ -27,7 +27,7 @@ Lees over [fout opsporing](https://code.visualstudio.com/Docs/editor/debugging)a
 Dit artikel bevat instructies voor het ontwikkelen en debuggen van modules in meerdere talen voor meerdere architecturen. Visual Studio code biedt momenteel ondersteuning voor modules die zijn geschreven in C#, C, Python, Node.js en Java. De ondersteunde architecturen voor apparaten zijn x64 en ARM32. Zie [ondersteuning voor taal en architectuur](module-development.md#language-and-architecture-support)voor meer informatie over ondersteunde besturings systemen, talen en architecturen.
 
 >[!NOTE]
->Ondersteuning voor het ontwikkelen en opsporen van fouten voor Linux ARM64-apparaten is beschikbaar in de [open bare preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Zie voor meer informatie [ARM64-modules ontwikkelen en fouten opsporen IOT Edge in Visual Studio code (preview)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview).
+>Ondersteuning voor het ontwikkelen en opsporen van fouten voor Linux ARM64-apparaten is beschikbaar in de [open bare preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Zie [ARM64 IoT Edge-modules ontwikkelen in Visual Studio Code en er fouten in opsporen (preview)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview) voor meer informatie.
 
 ## <a name="prerequisites"></a>Vereisten
 

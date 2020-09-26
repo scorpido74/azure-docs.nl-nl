@@ -4,19 +4,19 @@ description: Meer informatie over de stappen die nodig zijn om uw Azure Monitor 
 author: mrbullwinkle
 ms.author: mbullwin
 ms.topic: conceptual
-ms.date: 09/09/2020
-ms.openlocfilehash: caaf5469eace891f2996a565af183b411ad1d740
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: aab2d1ec5a6c3e046840e736ced0993e560c4661
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935545"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333338"
 ---
 # <a name="migrate-to-workspace-based-application-insights-resources"></a>Migreren naar op werk ruimte gebaseerde Application Insights resources
 
 In deze hand leiding wordt stapsgewijs uitgelegd hoe u een klassieke Application Insights resource migreert naar een resource op basis van een werk ruimte. Resources op basis van een werk ruimte ondersteunen volledige integratie tussen Application Insights en Log Analytics. Resources op basis van een werk ruimte verzenden Application Insights telemetrie naar een algemene Log Analytics-werk ruimte, waarmee u toegang krijgt tot [de nieuwste functies van Azure monitor](#new-capabilities) terwijl logboeken voor de toepassings-, infra structuur en het platform op één geconsolideerde locatie worden bewaard.
 
-Met resources op basis van een werk ruimte kunnen algemene op rollen gebaseerde Access Control (RBAC) voor uw resources worden gebruikt, en wordt de nood zaak van query's tussen apps en werk ruimten voor komen.
+Op werk ruimte gebaseerde resources maken algemene op rollen gebaseerde Access Control (RBAC) mogelijk voor uw resources en elimineert de nood zaak van query's tussen apps en werk ruimten.
 
 **Op werk ruimte gebaseerde resources zijn momenteel beschikbaar in alle commerciële regio's en de Amerikaanse overheid van Azure**
 
@@ -34,12 +34,11 @@ Met Application Insights op basis van een werk ruimte kunt u profiteren van de n
 
 Wanneer u migreert naar een resource op basis van een werk ruimte, worden er geen gegevens vanuit de opslag van uw klassieke resource overgedragen naar de nieuwe opslag op basis van de werk ruimte. Als u wilt migreren, wijzigt u in plaats daarvan de locatie waar nieuwe gegevens naar een Log Analytics werkruimte worden geschreven, terwijl u de toegang tot uw klassieke resource gegevens behoudt. 
 
-Uw klassieke resource gegevens blijven behouden en zijn onderhevig aan de Bewaar instellingen op het moment dat deze zijn opgenomen. Voor alle nieuwe gegevensgestuurde post migratie gelden de Bewaar instellingen van de bijbehorende Log Analytics werk ruimte. 
-
+Uw klassieke resource gegevens blijven behouden en zijn onderhevig aan de Bewaar instellingen op uw klassieke Application Insights-resource. Voor alle nieuwe gegevensgestuurde post migratie zijn de [Bewaar instellingen](../platform/manage-cost-storage.md#change-the-data-retention-period) van de gekoppelde log Analytics werk ruimte van toepassing, die ook [verschillende Bewaar instellingen per gegevens type](../platform/manage-cost-storage.md#retention-by-data-type)ondersteunt.
 Het migratie proces is **permanent en kan niet worden omgekeerd**. Wanneer u een resource hebt gemigreerd naar een werk ruimte op basis van Application Insights, is het altijd een resource op basis van een werk ruimte. Zodra u de migratie hebt uitgevoerd, kunt u echter zo vaak als nodig is de doel werkruimte wijzigen. 
 
 > [!NOTE]
-> Gegevens opname en retentie voor op werk ruimte gebaseerde Application Insights resources worden gefactureerd via de Log Analytics werk ruimte waarin de gegevens zich bevinden. Meer [informatie]( ./pricing.md#workspace-based-application-insights) over facturering voor op werk ruimte gebaseerde Application Insights resources. (Klassieke Application Insights resource gegevens die voorafgaand aan de migratie worden opgenomen, blijven onder Application Insights retentie/prijzen vallen voor de duur dat de gegevens behouden blijven.) 
+> Gegevens opname en retentie voor op werk ruimte gebaseerde Application Insights resources worden [gefactureerd via de log Analytics werk ruimte](../platform/manage-cost-storage.md) waarin de gegevens zich bevinden. Als u hebt gekozen voor het bewaren van gegevens van meer dan 90 dagen voor gegevens die zijn opgenomen in de klassieke Application Insights resource voordat de migratie wordt uitgevoerd, blijft de gegevens retentie in rekening worden gebracht via die Application Insights resource. Meer [informatie]( ./pricing.md#workspace-based-application-insights) over facturering voor op werk ruimte gebaseerde Application Insights resources.
 
 Als u geen bestaande resource hoeft te migreren en u in plaats daarvan een nieuwe op werk ruimte gebaseerde Application Insights resource wilt maken, gebruikt u de [hand leiding voor het maken van resources op basis van de werk ruimte](create-workspace-resource.md).
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: miradic
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f57e5079543a3112b4fa59f26ba0ae27c24b79a2
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 060bb9dcdd504846c76ab4c782b2857fdddfa394
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89005510"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91354799"
 ---
 # <a name="introduction-to-auto-scaling"></a>Inleiding tot automatisch schalen
 Automatisch schalen is een extra mogelijkheid van Service Fabric om uw services dynamisch te schalen op basis van de belasting die door de Services wordt gerapporteerd of op basis van het gebruik van resources. Automatisch schalen biedt een fantastische elasticiteit en maakt het inrichten van aanvullende instanties of partities van uw service op aanvraag mogelijk. Het volledige automatische schaal proces is geautomatiseerd en transparant en wanneer u uw beleid hebt ingesteld voor een service, hoeft u geen hand matige schaal bewerkingen op service niveau uit te stellen. Automatisch schalen kan worden ingeschakeld op het moment dat de service wordt gemaakt, of op elk gewenst moment door de service bij te werken.
@@ -51,7 +51,7 @@ Het enige mechanisme dat met deze trigger kan worden gebruikt, is PartitionInsta
 * _Maximum aantal exemplaren_ definieert de bovengrens voor schalen. Als het aantal exemplaren van de partitie deze limiet bereikt, wordt de service niet geschaald, ongeacht de belasting. U kunt deze limiet overs Laan door de waarde-1 op te geven. in dat geval wordt de service zo veel mogelijk uitgeschaald (de limiet is het aantal knoop punten dat beschikbaar is in het cluster).
 * _Minimum aantal exemplaren_ definieert de ondergrens voor schalen. Als het aantal exemplaren van de partitie deze limiet bereikt, wordt de service niet geschaald, ongeacht de belasting.
 
-## <a name="setting-auto-scaling-policy"></a>Beleid voor automatisch schalen instellen
+## <a name="setting-auto-scaling-policy-for-instance-based-scaling"></a>Het beleid voor automatisch schalen instellen voor op instanties gebaseerd schalen
 
 ### <a name="using-application-manifest"></a>Toepassings manifest gebruiken
 ``` xml
@@ -133,7 +133,7 @@ Hetzelfde als bij het mechanisme dat gebruikmaakt van schalen door instanties to
 > [!WARNING] 
 > Wanneer AddRemoveIncrementalNamedPartitionScalingMechanism wordt gebruikt met stateful Services, worden er door Service Fabric partities toegevoegd of verwijderd zonder dat er een **melding of waarschuwing**wordt weer gegeven. Het opnieuw partitioneren van gegevens wordt niet uitgevoerd wanneer het schaal mechanisme wordt geactiveerd. In het geval van een uitschaal bewerking worden nieuwe partities leeg en in het geval van een schaal bewerking **wordt de partitie met alle gegevens die deze bevat, verwijderd**.
 
-## <a name="setting-auto-scaling-policy"></a>Beleid voor automatisch schalen instellen
+## <a name="setting-auto-scaling-policy-for-partition-based-scaling"></a>Beleid voor automatisch schalen instellen voor schalen op basis van partities
 
 ### <a name="using-application-manifest"></a>Toepassings manifest gebruiken
 ``` xml

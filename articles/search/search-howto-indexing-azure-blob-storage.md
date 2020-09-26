@@ -1,34 +1,34 @@
 ---
-title: Zoeken in inhoud van Azure Blob-opslag
+title: Een BLOB-Indexeer functie configureren
 titleSuffix: Azure Cognitive Search
-description: Meer informatie over het indexeren van documenten in Azure Blob Storage en het extra heren van tekst uit documenten met Azure Cognitive Search.
+description: Stel een Azure Blob-indexer in om het indexeren van blob-inhoud voor zoek bewerkingen in volledige tekst in azure Cognitive Search te automatiseren.
 manager: nitinme
 author: mgottein
 ms.author: magottei
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/11/2020
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 2ba511d3747ba308ae04ab1bbe3dcb89bca6a8a8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/23/2020
+ms.openlocfilehash: 9fccd731cee5044b36de9a0dba4a408a9a5b9a49
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328289"
+ms.locfileid: "91355275"
 ---
-# <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>Documenten in Azure Blob Storage indexeren met Azure Cognitive Search
+# <a name="how-to-configure-a-blob-indexer-in-azure-cognitive-search"></a>Een BLOB-Indexeer functie configureren in azure Cognitive Search
 
-In dit artikel wordt beschreven hoe u Azure Cognitive Search gebruikt voor het indexeren van documenten (zoals Pdf's, Microsoft Office documenten en enkele andere algemene indelingen) die zijn opgeslagen in Azure Blob Storage. Eerst worden de basis principes uitgelegd van het instellen en configureren van een BLOB-indexer. Vervolgens biedt het een uitgebreidere onderzoek van gedrag en scenario's die u waarschijnlijk zult tegen komen.
+In dit artikel wordt beschreven hoe u Azure Cognitive Search gebruikt voor het indexeren van tekst documenten (zoals Pdf's, Microsoft Office documenten en enkele andere algemene indelingen) die zijn opgeslagen in Azure Blob Storage. Eerst worden de basis principes uitgelegd van het instellen en configureren van een BLOB-indexer. Vervolgens biedt het een uitgebreidere onderzoek van gedrag en scenario's die u waarschijnlijk zult tegen komen.
 
 <a name="SupportedFormats"></a>
 
-## <a name="supported-document-formats"></a>Ondersteunde documentindelingen
+## <a name="supported-formats"></a>Ondersteunde indelingen
+
 De BLOB-indexer kan tekst uit de volgende document indelingen ophalen:
 
 [!INCLUDE [search-blob-data-sources](../../includes/search-blob-data-sources.md)]
 
-## <a name="setting-up-blob-indexing"></a>BLOB-indexering instellen
+## <a name="set-up-blob-indexing"></a>BLOB-indexering instellen
 U kunt een Azure Blob Storage Indexeer functie instellen met behulp van:
 
 * [Azure-portal](https://ms.portal.azure.com)
@@ -130,7 +130,7 @@ Zie [Indexeer functies plannen voor Azure Cognitive Search](search-howto-schedul
 
 <a name="how-azure-search-indexes-blobs"></a>
 
-## <a name="how-azure-cognitive-search-indexes-blobs"></a>Hoe Azure Cognitive Search indexen blobs
+## <a name="how-blobs-are-indexed"></a>Hoe blobs worden geïndexeerd
 
 Afhankelijk van de configuratie van de [Indexeer](#PartsOfBlobToIndex)functie kan de BLOB-indexer alleen opslag meta gegevens indexeren (handig als u alleen de meta gegevens gebruikt en de inhoud van blobs niet hoeft te indexeren), meta gegevens van opslag en inhoud, of meta gegevens en tekst inhoud. Standaard haalt de Indexeer functie zowel de meta gegevens als de inhoud op.
 
@@ -170,7 +170,7 @@ In azure Cognitive Search is de document sleutel een unieke identificatie van ee
 
 U moet zorgvuldig overwegen welk geëxtraheerde veld moet worden toegewezen aan het sleutel veld voor uw index. De kandidaten zijn:
 
-* ** \_ opslag \_ naam van meta gegevens** : dit kan een handige kandidaat zijn, maar houd er rekening mee dat 1) de namen mogelijk niet uniek zijn, omdat u blobs met dezelfde naam in verschillende mappen kunt hebben en 2) de naam mag tekens bevatten die ongeldig zijn in document sleutels, zoals streepjes. U kunt met ongeldige tekens omgaan met de `base64Encode` [functie veld toewijzing](search-indexer-field-mappings.md#base64EncodeFunction) . Als u dit doet, vergeet dan niet om document sleutels te coderen wanneer deze worden door gegeven in API-aanroepen zoals lookup. (In .NET kunt u bijvoorbeeld de [UrlTokenEncode-methode](/dotnet/api/system.web.httpserverutility.urltokenencode?view=netframework-4.8) voor dat doel gebruiken).
+* ** \_ opslag \_ naam van meta gegevens** : dit kan een handige kandidaat zijn, maar houd er rekening mee dat 1) de namen mogelijk niet uniek zijn, omdat u blobs met dezelfde naam in verschillende mappen kunt hebben en 2) de naam mag tekens bevatten die ongeldig zijn in document sleutels, zoals streepjes. U kunt met ongeldige tekens omgaan met de `base64Encode` [functie veld toewijzing](search-indexer-field-mappings.md#base64EncodeFunction) . Als u dit doet, vergeet dan niet om document sleutels te coderen wanneer deze worden door gegeven in API-aanroepen zoals lookup. (In .NET kunt u bijvoorbeeld de [UrlTokenEncode-methode](/dotnet/api/system.web.httpserverutility.urltokenencode) voor dat doel gebruiken).
 * ** \_ \_ pad naar meta gegevens opslag** : met het volledige pad zorgt u ervoor dat uniek is, maar het pad bevat `/` ook tekens die [ongeldig zijn in een document sleutel](/rest/api/searchservice/naming-rules).  Net als hierboven hebt u de mogelijkheid om de sleutels te coderen met behulp van de `base64Encode` [functie](search-indexer-field-mappings.md#base64EncodeFunction).
 * Als geen van de bovenstaande opties voor u werkt, kunt u een aangepaste meta gegevens eigenschap toevoegen aan de blobs. Deze optie vereist echter dat het proces voor het uploaden van blobs de meta gegevens eigenschap aan alle blobs toevoegt. Omdat de sleutel een vereiste eigenschap is, kunnen niet alle blobs die deze eigenschap hebben, worden geïndexeerd.
 
@@ -231,10 +231,12 @@ Het kan voor komen dat u een gecodeerde versie van een metadata_storage_path vel
     }
 ```
 <a name="WhichBlobsAreIndexed"></a>
-## <a name="controlling-which-blobs-are-indexed"></a>Bepalen welke blobs worden geïndexeerd
+## <a name="index-by-file-type"></a>Indexeren op bestands type
+
 U kunt bepalen welke blobs worden geïndexeerd en welke worden overgeslagen.
 
-### <a name="index-only-the-blobs-with-specific-file-extensions"></a>Alleen de blobs met specifieke bestands extensies indexeren
+### <a name="include-blobs-having-specific-file-extensions"></a>Blobs met specifieke bestands extensies toevoegen
+
 U kunt alleen de blobs indexeren met de bestandsnaam extensies die u opgeeft met behulp van de para meter voor de configuratie van de `indexedFileNameExtensions` Indexeer functie. De waarde is een teken reeks met een door komma's gescheiden lijst met bestands extensies (met een voorloop punt). Als u bijvoorbeeld alleen de wilt indexeren. PDF en. DOCX-blobs, Ga als volgt te werk:
 
 ```http
@@ -248,7 +250,8 @@ U kunt alleen de blobs indexeren met de bestandsnaam extensies die u opgeeft met
     }
 ```
 
-### <a name="exclude-blobs-with-specific-file-extensions"></a>Blobs met specifieke bestands extensies uitsluiten
+### <a name="exclude-blobs-having-specific-file-extensions"></a>Blobs met specifieke bestands extensies uitsluiten
+
 U kunt blobs met specifieke bestandsnaam extensies uitsluiten van indexering met behulp van de `excludedFileNameExtensions` configuratie parameter. De waarde is een teken reeks met een door komma's gescheiden lijst met bestands extensies (met een voorloop punt). Als u bijvoorbeeld alle blobs wilt indexeren, behalve die in de. PNG en. JPEG-extensies:
 
 ```http
@@ -265,7 +268,7 @@ U kunt blobs met specifieke bestandsnaam extensies uitsluiten van indexering met
 Als beide `indexedFileNameExtensions` en `excludedFileNameExtensions` -para meters aanwezig zijn, controleert Azure Cognitive Search eerst op `indexedFileNameExtensions` , vervolgens op `excludedFileNameExtensions` . Dit betekent dat als dezelfde bestands extensie aanwezig is in beide lijsten, het indexeren wordt uitgesloten van indexering.
 
 <a name="PartsOfBlobToIndex"></a>
-## <a name="controlling-which-parts-of-the-blob-are-indexed"></a>Bepalen welke delen van de BLOB worden geïndexeerd
+## <a name="index-parts-of-a-blob"></a>Onderdelen van een BLOB indexeren
 
 U kunt bepalen welke delen van de blobs worden geïndexeerd met behulp van de `dataToExtract` configuratie parameter. Dit kan de volgende waarden hebben:
 
@@ -296,7 +299,8 @@ De configuratie parameters die hierboven worden beschreven, zijn van toepassing 
 | AzureSearch_SkipContent |echte |Dit is equivalent van de `"dataToExtract" : "allMetadata"` instelling die [hierboven](#PartsOfBlobToIndex) is beschreven in een bepaalde blob. |
 
 <a name="DealingWithErrors"></a>
-## <a name="dealing-with-errors"></a>Omgaan met fouten
+
+## <a name="handle-errors"></a>Fouten verwerken
 
 De BLOB-indexer stopt standaard zodra er een BLOB wordt aangetroffen met een niet-ondersteund inhouds type (bijvoorbeeld een afbeelding). U kunt natuurlijk gebruikmaken van de `excludedFileNameExtensions` para meter om bepaalde inhouds typen over te slaan. Het is echter mogelijk dat u blobs moet indexeren zonder alle mogelijke inhouds typen vooraf te weten. Als u wilt door gaan met indexeren wanneer er een niet-ondersteund inhouds type wordt aangetroffen, stelt `failOnUnsupportedContentType` u de configuratie parameter in op `false` :
 
@@ -466,7 +470,7 @@ De `UTF-8` code ring wordt standaard gebruikt. Als u een andere code ring wilt o
 ## <a name="content-type-specific-metadata-properties"></a>Inhouds type-specifieke meta gegevens eigenschappen
 De volgende tabel geeft een overzicht van de verwerking die wordt uitgevoerd voor elke document indeling en beschrijft de eigenschappen van meta gegevens die zijn geëxtraheerd door Azure Cognitive Search.
 
-| Document indeling/inhouds type | Eigenschappen van specifieke meta gegevens van inhouds type | Details verwerken |
+| Document indeling/inhouds type | Geëxtraheerde meta gegevens | Details verwerken |
 | --- | --- | --- |
 | HTML (tekst/HTML) |`metadata_content_encoding`<br/>`metadata_content_type`<br/>`metadata_language`<br/>`metadata_description`<br/>`metadata_keywords`<br/>`metadata_title` |HTML-opmaak verwijderen en tekst ophalen |
 | PDF (toepassing/PDF) |`metadata_content_type`<br/>`metadata_language`<br/>`metadata_author`<br/>`metadata_title` |Tekst extra heren, inclusief Inge sloten documenten (met uitzonde ring van afbeeldingen) |

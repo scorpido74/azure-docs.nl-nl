@@ -9,16 +9,16 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: jrasnick, carlrab
+ms.reviewer: jrasnick, sstein
 ms.date: 03/10/2020
-ms.openlocfilehash: 6e17e2a6e5c9151080facc3a2dd8c1a18c0580fe
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 36a1be4f802292e62c98098508927b06a5851afa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85982155"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333083"
 ---
-# <a name="monitoring-and-performance-tuning-in-azure-sql-database-and-azure-sql-managed-instance"></a>Bewaking en prestaties afstemmen in Azure SQL Database en Azure SQL Managed instance
+# <a name="monitoring-and-performance-tuning-in-azure-sql-database-and-azure-sql-managed-instance"></a>Bewaking en prestatieafstemming van Azure SQL Database en Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Als u de prestaties van een data base in Azure SQL Database en Azure SQL Managed instance wilt bewaken, moet u eerst de CPU-en i/o-resources bewaken die door uw werk belasting worden gebruikt ten opzichte van het prestatie niveau van de data base dat u hebt gekozen bij het selecteren van een bepaalde service tier en U kunt dit doen door Azure SQL Database en Azure SQL Managed instance metrische gegevens te verzenden die kunnen worden weer gegeven in de Azure Portal of met een van deze SQL Server-beheer Programma's: [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is) of [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS).

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: erhopf
-ms.openlocfilehash: 4ec153a9c770b0001888c972dc44414470e3ddbf
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 560c156c8e2c3d69c099b2ad573fa0d214f3f80b
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84730302"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355071"
 ---
 # <a name="what-is-the-speech-devices-sdk"></a>Wat is de SDK voor spraak apparaten?
 
@@ -46,7 +46,7 @@ Als u een ander Android-apparaat hebt, zoals een telefoon of mobiel, start u met
 ### <a name="windows"></a>Windows
 
 Voor Windows wordt de voorbeeld toepassing meegeleverd als een platformoverschrijdende Java-toepassing. Down load de nieuwste versie van de software voor [jre speech-apparaten](https://aka.ms/sdsdk-download-JRE).
-De toepassing is gebouwd met het Speech SDK-pakket en de eclips Java IDE (v4) op 64-bits Windows. De toepassing wordt uitgevoerd op een 64-bit Java 8 runtime-omgeving (JRE).
+De toepassing wordt gebouwd met het Speech SDK-pakket en de Eclipse Java IDE (v4) op 64-bits Windows. De toepassing wordt uitgevoerd op een 64-bit Java 8 runtime-omgeving (JRE).
 
 ### <a name="linux"></a>Linux
 
@@ -60,4 +60,4 @@ Er zijn extra binaire bestanden ter ondersteuning van aanstaande apparaten, [roo
 > [!div class="nextstepaction"]
 > [Uw spraak apparaat kiezen](get-speech-devices-sdk.md)
 > [!div class="nextstepaction"]
-> [Gratis een abonnements sleutel voor een spraak service ophalen](get-started.md)
+> [Verkrijg gratis een spraakserviceabonnementssleutel](overview.md#try-the-speech-service-for-free)

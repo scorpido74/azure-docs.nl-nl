@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 12/20/2018
-ms.openlocfilehash: 8033e64924b5faa1cfdc9c04cdd8711850185dca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 74fc317dbb97c14c27e6355e100a6e6b5e767363
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84195468"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333015"
 ---
 # <a name="data-sync-agent-for-sql-data-sync"></a>Data Sync-agent voor SQL Data Sync
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -48,7 +48,7 @@ msiexec /i "SQLDataSyncAgent-2.0-x86-ENU.msi" TARGETDIR="C:\Program Files (x86)\
 
 Als u de Data Sync-agent zo wilt configureren dat u gegevens kunt synchroniseren met een of meer SQL Server data bases, raadpleegt u [een SQL Server-Data Base toevoegen](sql-data-sync-sql-server-configure.md#add-on-prem).
 
-## <a name="data-sync-agent-faq"></a><a name="agent-faq"></a>Veelgestelde vragen over de Data Sync-agent
+## <a name="data-sync-agent-faq"></a><a name="agent-faq"></a> Veelgestelde vragen over de Data Sync-agent
 
 ### <a name="why-do-i-need-a-client-agent"></a>Waarom heb ik een client agent nodig
 
@@ -80,7 +80,7 @@ Ga als volgt te werk als u de lokale agent vanaf een andere computer wilt uitvoe
 4. Even geduld. de client agent downloadt de lijst met on-premises data bases die eerder zijn geregistreerd.
 5. Geef database referenties op voor alle data bases die als onbereikbaar worden weer gegeven. Deze data bases moeten bereikbaar zijn vanaf de nieuwe computer waarop de agent is geïnstalleerd.
 
-## <a name="troubleshoot-data-sync-agent-issues"></a><a name="agent-tshoot"></a>Problemen met de gegevens synchronisatie agent oplossen
+## <a name="troubleshoot-data-sync-agent-issues"></a><a name="agent-tshoot"></a> Problemen met de gegevens synchronisatie agent oplossen
 
 - [De client agent installeren, verwijderen of herstellen mislukt](#agent-install)
 
@@ -96,18 +96,18 @@ Ga als volgt te werk als u de lokale agent vanaf een andere computer wilt uitvoe
 
 - [Lokale synchronisatie agent-app kan geen verbinding maken met de lokale synchronisatie service](#agent-connect)
 
-### <a name="the-client-agent-install-uninstall-or-repair-fails"></a><a name="agent-install"></a>De client agent installeren, verwijderen of herstellen mislukt
+### <a name="the-client-agent-install-uninstall-or-repair-fails"></a><a name="agent-install"></a> De client agent installeren, verwijderen of herstellen mislukt
 
 - **Oorzaak**. Veel scenario's kunnen deze fout veroorzaken. Bekijk de logboeken om de specifieke oorzaak van deze fout te bepalen.
 
 - **Oplossing**. Als u de specifieke oorzaak van de fout wilt achterhalen, genereert en bekijkt u de Windows Installer-Logboeken. U kunt logboek registratie inschakelen vanaf een opdracht prompt. Bijvoorbeeld, als het gedownloade installatie bestand is `SQLDataSyncAgent-2.0-x86-ENU.msi` , Genereer en onderzoek logboek bestanden met behulp van de volgende opdracht regels:
 
-  - Voor installaties:`msiexec.exe /i SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
-  - Voor installatie:`msiexec.exe /x SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
+  - Voor installaties: `msiexec.exe /i SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
+  - Voor installatie: `msiexec.exe /x SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
 
     U kunt logboek registratie ook inschakelen voor alle installaties die worden uitgevoerd door Windows Installer. Het micro soft Knowledge Base-artikel [How to enable Windows Installer logging](https://support.microsoft.com/help/223300/how-to-enable-windows-installer-logging) biedt een oplossing met één klik om logboek registratie in te scha kelen voor Windows Installer. Het bevat ook de locatie van de logboeken.
 
-### <a name="the-client-agent-doesnt-work-after-i-cancel-the-uninstall"></a><a name="agent-uninstall"></a>De client agent werkt niet nadat ik het verwijderen heb geannuleerd
+### <a name="the-client-agent-doesnt-work-after-i-cancel-the-uninstall"></a><a name="agent-uninstall"></a> De client agent werkt niet nadat ik het verwijderen heb geannuleerd
 
 De client agent werkt niet, zelfs nadat u de verwijdering ervan hebt geannuleerd.
 
@@ -118,7 +118,7 @@ De client agent werkt niet, zelfs nadat u de verwijdering ervan hebt geannuleerd
     -   Gebruik Services. msc om de referenties voor de client agent opnieuw in te voeren.
     -   Verwijder deze client agent en installeer vervolgens een nieuwe. Down load en installeer de nieuwste client agent vanuit het [Download centrum](https://www.microsoft.com/download/details.aspx?id=27693).
 
-### <a name="my-database-isnt-listed-in-the-agent-list"></a><a name="agent-list"></a>Mijn data base staat niet in de lijst met agents
+### <a name="my-database-isnt-listed-in-the-agent-list"></a><a name="agent-list"></a> Mijn data base staat niet in de lijst met agents
 
 Wanneer u een bestaande SQL Server-Data Base aan een synchronisatie groep probeert toe te voegen, wordt de data base niet weer gegeven in de lijst met agents.
 
@@ -137,7 +137,7 @@ Dit probleem kan de volgende oorzaken hebben:
 
     De lokale agent downloadt de lijst met gekoppelde data bases alleen bij de eerste verzen ding van de agent sleutel. De lijst met gekoppelde data bases wordt niet gedownload voor volgende agent sleutel inzendingen. Data bases die zijn geregistreerd tijdens het verplaatsen van een agent, worden niet weer gegeven in het oorspronkelijke exemplaar van de agent.
 
-### <a name="client-agent-doesnt-start-error-1069"></a><a name="agent-start"></a>Client agent wordt niet gestart (fout 1069)
+### <a name="client-agent-doesnt-start-error-1069"></a><a name="agent-start"></a> Client agent wordt niet gestart (fout 1069)
 
 U ontdekt dat de agent niet wordt uitgevoerd op een computer die als host fungeert voor SQL Server. Wanneer u probeert de agent hand matig te starten, ziet u een dialoog venster met het bericht ' fout 1069: de service is niet gestart vanwege een aanmeldings fout '.
 
@@ -161,7 +161,7 @@ U ontdekt dat de agent niet wordt uitgevoerd op een computer die als host fungee
   1. Klik in het venster **Services** met de rechter muisknop op de service **SQL Data Sync agent** en klik vervolgens op **starten**.
   1. Sluit het venster **Services** .
 
-### <a name="i-cant-submit-the-agent-key"></a><a name="agent-key"></a>Ik kan de agent sleutel niet verzenden
+### <a name="i-cant-submit-the-agent-key"></a><a name="agent-key"></a> Ik kan de agent sleutel niet verzenden
 
 Nadat u een sleutel voor een agent hebt gemaakt of opnieuw hebt gemaakt, probeert u de sleutel via de toepassing SqlAzureDataSyncAgent te verzenden. De verzen ding kan niet worden voltooid.
 
@@ -197,7 +197,7 @@ Nadat u een sleutel voor een agent hebt gemaakt of opnieuw hebt gemaakt, probeer
   1. Selecteer **OK**.
   1. Sluit het programma.
 
-### <a name="the-client-agent-cant-be-deleted-from-the-portal-if-its-associated-on-premises-database-is-unreachable"></a><a name="agent-delete"></a>De client agent kan niet worden verwijderd uit de portal als de gekoppelde on-premises data base onbereikbaar is
+### <a name="the-client-agent-cant-be-deleted-from-the-portal-if-its-associated-on-premises-database-is-unreachable"></a><a name="agent-delete"></a> De client agent kan niet worden verwijderd uit de portal als de gekoppelde on-premises data base onbereikbaar is
 
 Als een lokaal eind punt (dat wil zeggen, een Data Base) die is geregistreerd bij een SQL Data Sync client agent onbereikbaar wordt, kan de client agent niet worden verwijderd.
 
@@ -208,7 +208,7 @@ Als een lokaal eind punt (dat wil zeggen, een Data Base) die is geregistreerd bi
 > [!NOTE]
 > Als de synchronisatie van meta gegevens tabellen behouden blijft na een geforceerd verwijderen, gebruikt `deprovisioningutil.exe` u om deze op te schonen.
 
-### <a name="local-sync-agent-app-cant-connect-to-the-local-sync-service"></a><a name="agent-connect"></a>Lokale synchronisatie agent-app kan geen verbinding maken met de lokale synchronisatie service
+### <a name="local-sync-agent-app-cant-connect-to-the-local-sync-service"></a><a name="agent-connect"></a> Lokale synchronisatie agent-app kan geen verbinding maken met de lokale synchronisatie service
 
 - **Oplossing**. Voer de volgende stappen uit:
 

@@ -3,12 +3,12 @@ title: Problemen met SQL Server database back-up oplossen
 description: Informatie over het oplossen van back-ups van SQL Server-data bases die worden uitgevoerd op virtuele machines van Azure met Azure Backup.
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: c81230a5b32ddb1487bf59e8e43dbb96328d8620
-ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
+ms.openlocfilehash: f215b848bedae333979f0fed8eb7f216fb6e25f4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89513963"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332777"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Problemen met SQL Server database back-up oplossen met behulp van Azure Backup
 
@@ -130,7 +130,7 @@ Bij momenten kunnen wille keurige fouten optreden in back-up-en herstel bewerkin
 
 | Foutbericht | Mogelijke oorzaken | Aanbevolen actie |
 |---|---|---|
-| De logboekback-up die is gebruikt voor herstel bevat bulksgewijs geregistreerde wijzigingen. Het kan niet worden gebruikt om op een wille keurig moment te stoppen volgens de SQL-richt lijnen. | Wanneer een Data Base zich in de herstel modus met meerdere logboeken bevindt, kunnen de gegevens tussen een bulksgewijs geregistreerde trans actie en de volgende logboek transactie niet worden hersteld. | Kies een ander tijdstip voor herstel. [Meer informatie](/sql/relational-databases/backup-restore/recovery-models-sql-server?view=sql-server-ver15).
+| De logboekback-up die is gebruikt voor herstel bevat bulksgewijs geregistreerde wijzigingen. Het kan niet worden gebruikt om op een wille keurig moment te stoppen volgens de SQL-richt lijnen. | Wanneer een Data Base zich in de herstel modus met meerdere logboeken bevindt, kunnen de gegevens tussen een bulksgewijs geregistreerde trans actie en de volgende logboek transactie niet worden hersteld. | Kies een ander tijdstip voor herstel. [Meer informatie](/sql/relational-databases/backup-restore/recovery-models-sql-server).
 
 ### <a name="fabricsvcbackuppreferencecheckfailedusererror"></a>FabricSvcBackupPreferenceCheckFailedUserError
 
@@ -172,7 +172,7 @@ De bewerking is geblokkeerd omdat de kluis de maximum limiet heeft bereikt voor 
 
 | Foutbericht | Mogelijke oorzaken | Aanbevolen actie |
 |---|---|---|
-De virtuele machine kan geen verbinding maken met Azure Backup service vanwege problemen met de Internet verbinding. | De virtuele machine heeft een uitgaande verbinding nodig voor Azure Backup Service, Azure Storage of Azure Active Directory Services.| -Als u NSG gebruikt om de verbinding te beperken, moet u de AzureBackup-servicetag gebruiken om uitgaande toegang tot Azure Backup Service, Azure Storage of Azure Active Directory Services toe te staan. Volg deze [stappen](./backup-sql-server-database-azure-vms.md#nsg-tags) om toegang te verlenen.<br>-Zorg ervoor dat DNS Azure-eind punten omzet.<br>-Controleer of de virtuele machine zich achter een load balancer Internet toegang blokkeert. Wanneer u een openbaar IP-adres toewijst aan de Vm's, werkt de detectie.<br>-Controleer of er geen firewall/anti virus/proxy is die aanroepen naar de bovenstaande drie doel Services blokkeert.
+De virtuele machine kan geen verbinding maken met Azure Backup service vanwege problemen met de Internet verbinding. | De virtuele machine heeft een uitgaande verbinding nodig voor Azure Backup Service, Azure Storage of Azure Active Directory Services.| -Als u NSG gebruikt om de verbinding te beperken, moet u de *AzureBackup* -servicetag gebruiken om uitgaande toegang tot Azure backup-service toe te staan en op dezelfde manier als de services Azure AD (*AzureActiveDirectory*) en Azure Storage (*opslag*). Volg deze [stappen](./backup-sql-server-database-azure-vms.md#nsg-tags) om toegang te verlenen.<br>-Zorg ervoor dat DNS Azure-eind punten omzet.<br>-Controleer of de virtuele machine zich achter een load balancer Internet toegang blokkeert. Wanneer u een openbaar IP-adres toewijst aan de Vm's, werkt de detectie.<br>-Controleer of er geen firewall/anti virus/proxy is die aanroepen naar de bovenstaande drie doel Services blokkeert.
 
 ## <a name="re-registration-failures"></a>Fouten bij opnieuw registreren
 

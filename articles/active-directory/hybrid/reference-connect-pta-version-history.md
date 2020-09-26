@@ -12,12 +12,12 @@ ms.date: 04/14/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e5e6afef70ee3d4f4d84cb6b867a916ae57da5a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 854931273ffebd653615a44dbfa9ce1b846655c2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356301"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333423"
 ---
 # <a name="azure-ad-pass-through-authentication-agent-version-release-history"></a>Azure AD Pass-Through-verificatie agent: release geschiedenis van versie 
  
@@ -55,21 +55,16 @@ Hier vindt u verwante onderwerpen:
 ## <a name="154050"></a>1.5.405.0 
 ### <a name="release-status"></a>Status van de release 
 1/31/2018: uitgebracht voor downloaden  
-### <a name="fixed-issues"></a>Problemen opgelost 
-
+### <a name="fixed-issues"></a>Opgeloste problemen 
 - Er is een fout opgelost waardoor sommige geheugen lekken in de agent zijn veroorzaakt. 
 - De Azure Service Bus versie is bijgewerkt, die een fout oplossing bevat voor problemen met de time-out van de connector. 
- 
-## <a name="154050"></a>1.5.405.0 
-### <a name="release-status"></a>Status van de release 
-11/26/2017: uitgebracht voor downloaden  
 ### <a name="new-features-and-improvements"></a>Nieuwe functies en verbeteringen 
-- Er is ondersteuning toegevoegd voor verbindingen op basis van websockets tussen de agent en Azure AD-Services om de verbindings tolerantie te verbeteren 
+- Er is ondersteuning toegevoegd voor verbindingen op basis van websockets tussen de agent en Azure AD-Services om de verbindings tolerantie te verbeteren
 
 ## <a name="154020"></a>1.5.402.0 
 ### <a name="release-status"></a>Status van de release 
 11/25/2017: uitgebracht voor downloaden  
-### <a name="fixed-issues"></a>Problemen opgelost 
+### <a name="fixed-issues"></a>Opgeloste problemen 
 - Opgeloste fouten met betrekking tot de DNS-cache voor standaard proxy scenario's 
  
 ## <a name="153890"></a>1.5.389.0 

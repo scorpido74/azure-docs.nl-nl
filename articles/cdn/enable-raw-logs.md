@@ -1,6 +1,6 @@
 ---
-title: Onbewerkte HTTP-logboeken Azure CDN
-description: In dit artikel worden de Azure CDN RAW-Logboeken beschreven.
+title: Metrische gegevens en onbewerkte logboeken bewaken voor Azure CDN van micro soft
+description: In dit artikel wordt de Azure CDN beschreven in metrische gegevens en onbewerkte logboeken van micro soft monitoring.
 services: cdn
 author: asudbring
 manager: KumudD
@@ -8,17 +8,22 @@ ms.service: azure-cdn
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 07/22/2020
+ms.date: 09/25/2020
 ms.author: allensu
-ms.openlocfilehash: 3b36e528a013403a2ed664d3011338d92f37a3db
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c41bf8bc6e5aa3749786bc1189343dfdebdc1508
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87040154"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321146"
 ---
-# <a name="azure-cdn-http-raw-logs"></a>Onbewerkte HTTP-logboeken Azure CDN
-Onbewerkte logboeken bieden uitgebreide informatie over bewerkingen en fouten die belang rijk zijn voor controle en probleem oplossing. Onbewerkte logboeken verschillen van activiteiten Logboeken. Met activiteiten logboeken krijgt u inzicht in de bewerkingen die worden uitgevoerd op Azure-resources. Onbewerkte logboeken bieden een overzicht van de bewerkingen van uw resource. Onbewerkte logboeken bevatten uitgebreide informatie over elke aanvraag die door CDN wordt ontvangen. 
+# <a name="monitoring-metrics-and-raw-logs-for-azure-cdn-from-microsoft"></a>Metrische gegevens en onbewerkte logboeken bewaken voor Azure CDN van micro soft
+Met Azure CDN van micro soft kunt u bronnen bewaken op de volgende manieren om problemen op te lossen, op te sporen en op te sporen. 
+
+* Onbewerkte logboeken bieden uitgebreide informatie over elke aanvraag die door CDN wordt ontvangen. Onbewerkte logboeken verschillen van activiteiten Logboeken. Met activiteiten logboeken krijgt u inzicht in de bewerkingen die worden uitgevoerd op Azure-resources.
+* Metrische gegevens, waarbij vier metrische sleutel gegevens worden weer gegeven op CDN, inclusief de verhouding tussen de bytes en de som van aanvragen, de grootte van de antwoorden en de totale latentie. Het biedt ook verschillende dimensies voor het opsplitsen van metrische gegevens.
+* Waarschuwing, waarmee klanten een waarschuwing voor belang rijke metrische gegevens kunnen instellen
+* Aanvullende metrische gegevens, waarmee klanten Azure Log Analytics kunnen gebruiken om extra meet waarden in te scha kelen. We bieden ook query voorbeelden voor enkele andere metrische gegevens onder Azure Log Analytics.
 
 > [!IMPORTANT]
 > De functie voor onbewerkte HTTP-Logboeken is beschikbaar voor Azure CDN van micro soft.
@@ -35,18 +40,18 @@ RAW-logboeken voor uw Azure CDN van het micro soft-profiel configureren:
 
 1. Selecteer **alle resources**in het menu Azure Portal  >>  **\<your-CDN-profile>** .
 
-2. Selecteer onder **Bewaking** de optie **Diagnostische instellingen**.
+2. Onder **bewaking**selecteert u **instellingen voor diagnostische gegevens**.
 
 3. Selecteer **+ Diagnostische instelling toevoegen**.
 
-    ![Instelling voor CDN-diagnose](./media/cdn-raw-logs/raw-logs-01.png)
-
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-01.png" alt-text="Diagnostische instelling voor CDN-profiel toevoegen." border="true":::
+    
     > [!IMPORTANT]
     > Onbewerkte logboeken zijn alleen beschikbaar in het profiel niveau, terwijl geaggregeerde HTTP-status code logboeken beschikbaar zijn op het niveau van het eind punt.
 
 4. Voer onder **Diagnostische instellingen**een naam in voor de diagnostische instelling onder **naam van diagnostische instellingen**.
 
-5. Selecteer het **logboek** en stel de Bewaar periode in dagen in.
+5. Selecteer de **AzureCdnAccessLog** en stel de Bewaar periode in op dagen.
 
 6. Selecteer de **doel gegevens**. Bestemmings opties zijn:
     * **Verzenden naar Log Analytics**
@@ -56,13 +61,13 @@ RAW-logboeken voor uw Azure CDN van het micro soft-profiel configureren:
     * **Streamen naar een Event Hub**
         * Selecteer het **abonnement**, de **Event hub-naam ruimte**, de naam van de **Event hub (optioneel)** en de naam van het **Event hub-beleid**.
 
-    ![Instelling voor CDN-diagnose](./media/cdn-raw-logs/raw-logs-02.png)
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-02.png" alt-text="Configureer de doel locatie voor de logboek instellingen." border="true":::
 
 7. Selecteer **Opslaan**.
 
 ## <a name="configuration---azure-powershell"></a>Configuratie-Azure PowerShell
 
-Gebruik [set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting?view=latest) om de diagnostische instelling voor onbewerkte logboeken te configureren.
+Gebruik [set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) om de diagnostische instelling voor onbewerkte logboeken te configureren.
 
 Bewaar gegevens worden gedefinieerd door de optie **-RetentionInDays** in de opdracht.
 
@@ -167,8 +172,10 @@ Azure CDN van de micro soft-service biedt momenteel onbewerkte Logboeken. RAW-lo
 | Keuzemenu                   | De rand pop, die op de aanvraag van de gebruiker reageerde. De afkortingen van Pop's zijn luchthaven codes van hun respectieve metro lijnen.                                                                                   |
 | Cache status          | Geeft aan of het object is geretourneerd uit de cache of afkomstig is van de oorsprong.                                                                                                             |
 > [!NOTE]
-> De logboeken kunnen worden weer gegeven onder uw Log Analytics-profiel door een query uit te voeren. Een voorbeeld query zou er als volgt uitzien als AzureDiagnostics | Where Category = = "AzureCdnAccessLog"
-
+> De logboeken kunnen worden weer gegeven onder uw Log Analytics-profiel door een query uit te voeren. Een voorbeeld query zou er als volgt uitzien:
+    ```
+    AzureDiagnostics | where Category == "AzureCdnAccessLog"
+    ```
 
 ### <a name="sent-to-origin-shield-deprecation"></a>Verzonden naar afkomst van oorsprong afschermen
 De onbewerkte logboek eigenschap **isSentToOriginShield** is afgeschaft en vervangen door een nieuw veld **isReceivedFromClient**. Gebruik het nieuwe veld als u het afgeschafte veld al gebruikt. 
@@ -180,7 +187,7 @@ Voor elke aanvraag die naar de oorsprong van het schild gaat, zijn er twee logbo
 * Eén voor Edge-knoop punten
 * Eén voor het afschermen van oorsprong. 
 
-U kunt het veld isReceivedFromClient gebruiken om de juiste gegevens op te halen om de uitkomsten of reacties te onderscheiden van de Edge-knoop punten versus het oorsprongs schild. 
+U kunt het veld **isReceivedFromClient** gebruiken om de juiste gegevens op te halen om de uitkomsten of reacties te onderscheiden van de Edge-knoop punten versus het oorsprongs schild. 
 
 Als de waarde ONWAAR is, betekent dit dat de aanvraag wordt gereageerd van het afschermen van de oorsprong van het Schild-knoop punt. Deze aanpak is van kracht om onbewerkte logboeken te vergelijken met facturerings gegevens. Er worden geen kosten in rekening gebracht voor het afbreken van de oorsprong van het schild naar de Edge-knoop punten. Er worden kosten in rekening gebracht voor het uitschrijven van de Edge-knoop punten naar clients. 
 
@@ -194,7 +201,90 @@ AzureDiagnostics
 ```
 
 > [!IMPORTANT]
-> De functie voor onbewerkte HTTP-Logboeken is automatisch beschikbaar voor profielen die na **25 februari 2020**zijn gemaakt of bijgewerkt. Voor CDN-profielen die u eerder hebt gemaakt, moet het CDN-eind punt bij het instellen van de logboek registratie worden bijgewerkt. Een voor beeld: er kan worden genavigeerd naar geo-filtering onder CDN-eind punten en alle landen/regio's blok keren die niet relevant zijn voor de werk belasting en op Opslaan drukken. 
+> De functie voor onbewerkte HTTP-Logboeken is automatisch beschikbaar voor profielen die na **25 februari 2020**zijn gemaakt of bijgewerkt. Voor CDN-profielen die u eerder hebt gemaakt, moet het CDN-eind punt bij het instellen van de logboek registratie worden bijgewerkt. Een voor beeld: er kan worden genavigeerd naar geo-filtering onder CDN-eind punten en alle landen/regio's blok keren die niet relevant zijn voor de werk belasting en op Opslaan drukken.
+
+
+## <a name="metrics"></a>Metrische gegevens
+Azure CDN van micro soft is geïntegreerd met Azure Monitor en publiceert vier CDN-metrische gegevens om problemen bij te houden, op te lossen en fouten op te sporen. 
+
+De metrische gegevens worden weer gegeven in grafieken en toegankelijk via Power shell, CLI en API. De CDN-metrische gegevens zijn gratis.
+
+Azure CDN van micro soft-metingen en verzendt de metrische gegevens over 60-seconden intervallen. De metrische gegevens kunnen Maxi maal drie minuten in de portal worden weer gegeven. 
+
+Zie [Azure monitor metrische](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics)gegevens voor meer informatie.
+
+**Metrische gegevens die door Azure CDN van micro soft worden ondersteund**
+
+| Metrische gegevens         | Beschrijving                                                                                                      | Dimensie                                                                                   |
+|-----------------|------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------|
+| Percentage treffers * | Het percentage van de uitvoer van de CDN-cache dat wordt berekend op basis van het totale aantal uitgangen.                                      | Eindpunt                                                                                    |
+| RequestCount    | Het aantal client aanvragen dat door CDN wordt geleverd.                                                                     | Eindpunt </br> Land van de client. </br> Client regio. </br> HTTP-status. </br> HTTP-status groep. |
+| ResponseSize    | Het aantal bytes dat is verzonden als antwoorden van CDN Edge naar clients.                                                  |Eindpunt </br> Land van de client. </br> Client regio. </br> HTTP-status. </br> HTTP-status groep.                                                                                          |
+| TotalLatency    | De totale tijd van de client aanvraag die door CDN is ontvangen **totdat de laatste reactie byte van CDN naar de client is verzonden**. |Eindpunt </br> Land van de client. </br> Client regio. </br> HTTP-status. </br> HTTP-status groep.                                                                                             |
+
+***Aantal bytes treffers = (uitgang van rand-uitgang van oorsprong)/egress vanaf rand**
+
+Scenario's die zijn uitgesloten voor de berekening van de verhouding treffers in bytes:
+
+* U kunt geen cache expliciet configureren door middel van regel Engine of cache gedrag van query reeks.
+* U kunt de instructie cache-Control expliciet configureren met No-Store of private cache.
+
+### <a name="metrics-configuration"></a>Configuratie van metrische gegevens
+
+1. Selecteer **alle resources**in het menu Azure Portal  >>  **\<your-CDN-profile>** .
+
+2. Onder **bewaking**selecteert u **metrische gegevens**:
+
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-03.png" alt-text="Metrische gegevens voor het CDN-profiel." border="true":::
+
+3. Selecteer **metrische gegevens toevoegen**en selecteer de toe te voegen metriek:
+
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-04.png" alt-text="Voeg de metrische gegevens voor het CDN-profiel toe en selecteer deze." border="true":::
+
+4. Selecteer **filter toevoegen** om een filter toe te voegen:
+    
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-05.png" alt-text="Filter Toep assen op metrieke waarden." border="true":::
+
+5. Selecteer splitsing **Toep assen** om trend op verschillende dimensies te bekijken:
+
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-06.png" alt-text="Pas het splitsen toe op de metriek." border="true":::
+
+6. Selecteer **nieuwe** grafiek om een nieuwe grafiek toe te voegen:
+
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-07.png" alt-text="Voeg een nieuwe grafiek toe aan de metrische weer gave." border="true":::
+
+### <a name="alerts"></a>Waarschuwingen
+
+U kunt waarschuwingen instellen op micro soft CDN door **bewakings**  >>  **waarschuwingen**te selecteren.
+
+Selecteer **nieuwe waarschuwings regel** voor metrische gegevens die worden weer gegeven in de sectie metrische gegevens:
+
+:::image type="content" source="./media/cdn-raw-logs/raw-logs-08.png" alt-text="Waarschuwingen configureren voor het CDN-eind punt." border="true":::
+
+Er wordt een waarschuwing berekend op basis van Azure Monitor. Zie [Azure monitor-waarschuwingen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)voor meer informatie over waarschuwingen.
+
+### <a name="additional-metrics"></a>Aanvullende metrische gegevens
+U kunt extra metrische gegevens inschakelen met behulp van Azure Log Analytics en onbewerkte logboeken voor extra kosten.
+
+1. Volg de bovenstaande stappen voor het inschakelen van diagnostische gegevens voor het verzenden van RAW-logboeken naar log Analytics.
+
+2. Selecteer de Log Analytics werk ruimte die u hebt gemaakt:
+
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-09.png" alt-text="Log Analytics-werk ruimte selecteren" border="true":::   
+
+3. Selecteer **Logboeken** onder **Algemeen** in de log Analytics-werk ruimte.  Selecteer vervolgens **aan de slag**:
+
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-10.png" alt-text="Resource-werk ruimte van log Analytics." border="true":::   
+ 
+4. Selecteer **CDN-profielen**.  Selecteer een voorbeeld query voor het uitvoeren of sluiten van het voorbeeld scherm om een aangepaste query in te voeren:
+
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-11.png" alt-text="Voorbeeld scherm van query." border="true":::   
+
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-12.png" alt-text="Uitvoering van query." border="true":::   
+
+4. Als u gegevens wilt weer geven per grafiek, selecteert u **diagram**.  Selecteer **vastmaken aan dash board** om de grafiek aan het Azure-dash board vast te maken:
+
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-13.png" alt-text="Een grafiek vastmaken aan het dash board." border="true"::: 
 
 ## <a name="next-steps"></a>Volgende stappen
 In dit artikel hebt u HTTP RAW-logboeken ingeschakeld voor de micro soft CDN-service.

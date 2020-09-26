@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: 7f5ce25edfc4c3afd8a30528396f1f285b9af571
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: f7d2351fdc39ec4600cbca2e436cdcd527157275
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080691"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332961"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Wat is SQL Data Sync voor Azure?
 
@@ -68,7 +68,7 @@ Gegevens synchronisatie is niet de aanbevolen oplossing voor de volgende scenari
 
 
 
-## <a name="how-it-works"></a>Hoe werkt het?
+## <a name="how-it-works"></a>Uitleg
 
 - **Wijzigingen in de gegevens bijhouden:** Gegevens synchronisatie houdt wijzigingen bij met behulp van INSERT-, update-en delete-triggers. De wijzigingen worden vastgelegd in een tabel aan de kant van de gebruikers database. Houd er rekening mee dat BULK INSERT triggers niet standaard wordt geactiveerd. Als FIRE_TRIGGERS niet is opgegeven, worden er geen invoeg triggers uitgevoerd. Voeg de FIRE_TRIGGERS optie toe, zodat gegevens synchronisatie deze toevoegingen kan bijhouden. 
 - **Gegevens synchroniseren:** Gegevens synchronisatie is ontworpen in een hub-en spoke-model. De hub wordt met elk lid afzonderlijk gesynchroniseerd. Wijzigingen van de hub worden gedownload naar het lid en vervolgens worden wijzigingen van het lid geüpload naar de hub.
@@ -115,7 +115,7 @@ Bij de gegevens synchronisatie worden de triggers invoegen, bijwerken en verwijd
 
 Het inrichten en verwijderen van de inrichting tijdens het maken van een synchronisatie groep, update en verwijdering kan ook van invloed zijn op de prestaties van de data base.
 
-## <a name="requirements-and-limitations"></a><a name="sync-req-lim"></a>Vereisten en beperkingen
+## <a name="requirements-and-limitations"></a><a name="sync-req-lim"></a> Vereisten en beperkingen
 
 ### <a name="general-requirements"></a>Algemene vereisten
 
@@ -250,7 +250,7 @@ Moet u het schema van een data base in een synchronisatie groep bijwerken? Wijzi
 - [De replicatie van schema wijzigingen automatiseren met SQL Data Sync in azure](../../sql-database/sql-database-update-sync-schema.md)
 - [PowerShell gebruiken voor het bijwerken van het synchronisatieschema in een bestaande synchronisatiegroep](scripts/update-sync-schema-in-sync-group.md)
 
-### <a name="monitor-and-troubleshoot"></a>Bewaken en problemen oplossen
+### <a name="monitor-and-troubleshoot"></a>Controleren en problemen oplossen
 
 Wordt SQL Data Sync als verwachting uitgevoerd? Raadpleeg de volgende artikelen voor informatie over het bewaken van activiteiten en het oplossen van problemen:
 

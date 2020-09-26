@@ -3,12 +3,12 @@ title: DHCP maken en beheren
 description: In dit artikel wordt uitgelegd hoe u DHCP beheert in azure VMware-oplossing.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: ba7c3983f55ed729c77d2f24d3ef311a00522148
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 2c059918f57b7f01058a031f1bf281b243855661
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069557"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332828"
 ---
 # <a name="how-to-create-and-manage-dhcp-in-azure-vmware-solution"></a>DHCP in azure VMWare-oplossing maken en beheren
 
@@ -24,7 +24,7 @@ In NSX Manager gaat u naar het tabblad **netwerken** en selecteert u **DHCP** on
 
 ### <a name="connect-dhcp-server-to-the-tier-1-gateway"></a>De DHCP-server verbinden met de laag-1-gateway.
 
-1. Selecteer **Tier 1-gateways**, selecteer de gateway en selecteer **bewerken**
+1. Selecteer **laag 1-gateways**, de gateway en selecteer vervolgens **bewerken** .
 
    :::image type="content" source="./media/manage-dhcp/edit-tier-1-gateway.png" alt-text="te gebruiken gateway selecteren" border="true":::
 
@@ -56,7 +56,7 @@ Wanneer u de DHCP-server hebt gemaakt, moet u er netwerk segmenten aan toevoegen
 
 ## <a name="create-dhcp-relay-service"></a>DHCP Relay-service maken
 
-1. Selecteer in het venster NSX-T het tabblad **netwerken** en selecteer **DHCP**in het vak **IP-beheer**. Selecteer **server toevoegen**. Kies DHCP-Relay voor het **server type** en voer de server naam en het IP-adres voor de relay-server in. Selecteer **Opslaan** om uw wijzigingen op te slaan.
+1. Selecteer in het venster NXT-T het tabblad **netwerken** en selecteer **DHCP**in het vak **IP-beheer**. Selecteer **server toevoegen**. Kies DHCP-Relay voor het **server type** en voer de server naam en het IP-adres voor de relay-server in. Selecteer **Opslaan** om uw wijzigingen op te slaan.
 
    :::image type="content" source="./media/manage-dhcp/create-dhcp-relay.png" alt-text="DHCP relay-server maken" border="true":::
 

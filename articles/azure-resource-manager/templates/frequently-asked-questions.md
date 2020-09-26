@@ -2,15 +2,15 @@
 title: Veelgestelde vragen over ARM-sjablonen
 description: Veelgestelde vragen over Azure Resource Manager sjablonen.
 ms.topic: conceptual
-ms.date: 07/27/2020
+ms.date: 09/17/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: e23334daf0f4f6d5a6917af49c786d47c4557375
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 47ac8d0e3172645ec168d5cfe7a002d84765b864
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327256"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333117"
 ---
 # <a name="frequently-asked-questions-about-arm-templates"></a>Veelgestelde vragen over ARM-sjablonen
 
@@ -88,7 +88,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over de sjablonen van A
 
 * **Ik heb gehoord dat je aan de taal van een nieuwe sjabloon werkt. Waar kan ik meer informatie vinden?**
 
-  Meld u aan [voor meldingen voor](https://aka.ms/armLangUpdates)meer informatie over de taal van de nieuwe sjabloon.
+  Voor een voor beeld van de nieuwe taal raadpleegt u [project Bicep-opslag plaats](https://github.com/Azure/bicep). Meld u aan [voor meldingen](https://aka.ms/armLangUpdates)om op de hoogte te blijven van de nieuwe taal.
 
 * **Is er een plan voor de ondersteuning van het maken van sjablonen in YAML?**
 
@@ -118,7 +118,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over de sjablonen van A
 
 * **Kunnen sjabloon specificaties worden gedeeld via abonnementen?**
 
-  Ja, ze kunnen worden gebruikt voor alle abonnementen zolang de gebruiker lees toegang heeft tot de sjabloon specificatie. sjabloon specificaties kunnen niet worden gebruikt in verschillende tenants.
+  Ja, ze kunnen worden gebruikt voor alle abonnementen zolang de gebruiker lees toegang heeft tot de sjabloon specificatie. Sjabloon specificaties kunnen niet worden gebruikt voor meerdere tenants.
 
 ## <a name="scripts-in-templates"></a>Scripts in sjablonen
 
@@ -154,7 +154,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over de sjablonen van A
 
 * **Wanneer ik What-if gebruik, zie ik wijzigingen in eigenschappen die niet in mijn sjabloon staan. Wordt dit ' ruis ' verwacht?**
 
-  Wat-als is een preview-versie. We werken aan het verminderen van de ruis. U kunt ons verbeteren door problemen op te lossen in onze GitHub-opslag plaats:https://aka.ms/WhatIfIssues
+  Wat-als is een preview-versie. We werken aan het verminderen van de ruis. U kunt ons verbeteren door problemen op te lossen in onze GitHub-opslag plaats: https://aka.ms/WhatIfIssues
 
 ## <a name="template-visualizer"></a>Sjabloon visualiseren
 
@@ -174,7 +174,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over de sjablonen van A
 
 * **Ik heb een fout melding ontvangen over een limiet van 800 implementaties in de implementatie geschiedenis. Wat moet ik doen?**
 
-  We wijzigen de manier waarop de implementatie geschiedenis voor een resource groep wordt onderhouden. In het verleden moest u implementaties hand matig verwijderen uit deze geschiedenis om deze fout te voor komen. Vanaf 2020 juni worden implementaties van de geschiedenis automatisch verwijderd wanneer u bijna de limiet krijgt. Zie [automatische verwijderingen uit de implementatie geschiedenis](deployment-history-deletions.md)voor meer informatie.
+  We wijzigen de manier waarop de implementatie geschiedenis voor een resource groep wordt onderhouden. In het verleden moest u implementaties hand matig verwijderen uit deze geschiedenis om deze fout te voor komen. Vanaf 2020 juni worden implementaties van de geschiedenis automatisch verwijderd wanneer u bijna de limiet krijgt. Raadpleeg [Automatic deletions from deployment history](deployment-history-deletions.md) (Automatische verwijderingen uit de implementatiegeschiedenis) voor meer informatie.
 
   Het verwijderen van een implementatie uit de geschiedenis heeft geen invloed op de geïmplementeerde resources.
 

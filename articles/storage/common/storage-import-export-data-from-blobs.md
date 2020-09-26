@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/12/2020
+ms.date: 09/17/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: c9ce265707743d98f6c93d3facca33e16d1b75ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 75d8b63328f71df2f8de22a95c106c5cc18dc28f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513501"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275202"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>De Azure Import/Export-service gebruiken voor het exporteren van gegevens uit Azure Blob-opslag
 
@@ -32,7 +32,7 @@ U moet het volgende doen:
   - Genereer een tracking nummer voor de export taak.
   - Elke taak moet een afzonderlijk traceringsnummer hebben. Meerdere taken met hetzelfde traceringsnummer worden niet ondersteund.
   - Als u geen draaggolf account hebt, gaat u naar:
-    - [Een FedEX-account maken](https://www.fedex.com/en-us/create-account.html)of
+    - [Een FedEx-account maken](https://www.fedex.com/en-us/create-account.html)of
     - [Maak een DHL-account](http://www.dhl-usa.com/en/express/shipping/open_account.html).
 
 ## <a name="step-1-create-an-export-job"></a>Stap 1: een export taak maken
@@ -83,9 +83,9 @@ Voer de volgende stappen uit om een export taak te maken in de Azure Portal.
 
 6. In **retour verzendings gegevens**:
 
-    - Selecteer de transporteur in de vervolg keuzelijst. Als u een andere transporteur dan FedEx/DHL wilt gebruiken, kiest u een bestaande optie in de vervolg keuzelijst. Neem contact op met Azure Data Box Operations-team `adbops@microsoft.com` met de informatie over de provider die u wilt gebruiken.
+    - Selecteer de transporteur in de vervolg keuzelijst. Als u een andere transporteur dan FedEx/DHL wilt gebruiken, kiest u een bestaande optie in de vervolg keuzelijst. Neem contact op met Azure Data Box Operations-team `adbops@microsoft.com`  met de informatie over de provider die u wilt gebruiken.
     - Voer een geldig account nummer van een transporteur in dat u hebt gemaakt met die transporteur. Micro soft gebruikt dit account om de schijven terug naar u te verzenden zodra de export taak is voltooid.
-    - Geef een volledige en geldige naam op voor de contact persoon, telefoon, e-mail, adres, plaats, post code, provincie en land/regio.
+    - Geef een volledige en geldige naam voor de contact persoon, telefoon, e-mail, adres, plaats, post code, provincie en land/regio op.
 
         > [!TIP]
         > In plaats van een e-mail adres voor één gebruiker op te geven, moet u een groeps-e-mail opgeven. Dit zorgt ervoor dat u meldingen ontvangt, zelfs als een beheerder deze verlaat.
@@ -119,7 +119,7 @@ Wanneer het dash board rapporteert dat de taak is voltooid, worden de schijven a
 1. Nadat u de stations met geëxporteerde gegevens hebt ontvangen, moet u de BitLocker-sleutels voor het ontgrendelen van de stations ophalen. Ga naar de export taak in de Azure Portal. Klik op het tabblad **importeren/exporteren** .
 2. Selecteer en klik op uw export taak in de lijst. Ga naar **versleuteling** en kopieer de sleutels.
 
-   ![BitLocker-sleutels voor de export taak weer geven](./media/storage-import-export-service/export-job-bitlocker-keys-02.png)
+   ![BitLocker-sleutels voor de export taak weer geven](./media/storage-import-export-data-from-blobs/export-from-blob7.png)
 
 3. Gebruik de BitLocker-sleutels om de schijven te ontgrendelen.
 
@@ -127,15 +127,13 @@ Het exporteren is voltooid.
 
 ## <a name="step-5-unlock-the-disks"></a>Stap 5: de schijven ontgrendelen
 
-Als u versie 1.4.0.300 van het WAImportExport-hulp programma gebruikt, gebruikt u de volgende opdracht om het station te ontgrendelen:
+Gebruik de volgende opdracht om het station te ontgrendelen:
 
-   `WAImportExport Unlock /bk:<BitLocker key (base 64 string) copied from journal (*.jrn*) file> /driveLetter:<Drive letter>`  
+   `WAImportExport Unlock /bk:<BitLocker key (base 64 string) copied from Encryption blade in Azure portal> /driveLetter:<Drive letter>`  
 
 Hier volgt een voor beeld van de voorbeeld invoer.
 
    `WAImportExport.exe Unlock /bk:CAAcwBoAG8AdQBsAGQAIABiAGUAIABoAGkAZABkAGUAbgA= /driveLetter:e`
-
-Als u eerdere versies van het hulp programma gebruikt, gebruikt u het dialoog venster BitLocker om het station te ontgrendelen.
 
 Op dit moment kunt u de taak verwijderen of laten staan. Taken worden na 90 dagen automatisch verwijderd.
 
@@ -155,7 +153,7 @@ Deze *optionele* stap helpt u bij het bepalen van het aantal stations dat vereis
 
     De para meters worden in de volgende tabel beschreven:
 
-    |Opdracht regel parameter|Description|  
+    |Opdracht regel parameter|Beschrijving|  
     |--------------------------|-----------------|  
     |**/logdir:**|Optioneel. De logboekmap. Uitgebreide logboek bestanden worden naar deze map geschreven. Als dat niet is opgegeven, wordt de huidige map gebruikt als Logboekmap.|  
     |**SN**|Vereist. De naam van het opslag account voor de export taak.|  
@@ -209,7 +207,7 @@ Number of drives needed:        3
 
 De volgende tabel bevat voor beelden van geldige BLOB-paden:
 
-   | Kiezer | BLOB-pad | Description |
+   | Kiezer | BLOB-pad | Beschrijving |
    | --- | --- | --- |
    | Begint met |/ |Exporteert alle blobs in het opslag account |
    | Begint met |/$root/ |Exporteert alle blobs in de basis container |

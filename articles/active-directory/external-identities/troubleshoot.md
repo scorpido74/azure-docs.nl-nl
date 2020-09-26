@@ -14,12 +14,12 @@ ms.custom:
 - it-pro
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb81e5a72ff1f5a8d4442e6e1f211ad2368f6277
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 10c396c4e4b4eac83f08ae0cbbe565f8621688a4
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88206289"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91354969"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Problemen oplossen Azure Active Directory B2B-samen werking
 
@@ -106,6 +106,20 @@ Met ingang van 18 november 2019 kunnen gast gebruikers in uw directory (gedefini
 ## <a name="in-an-azure-us-government-tenant-i-cant-invite-a-b2b-collaboration-guest-user"></a>In een Azure US Government-Tenant kan ik geen gast gebruiker voor B2B-samen werking uitnodigen
 
 Binnen de Azure-Cloud voor de Amerikaanse overheid wordt B2B-samen werking momenteel alleen ondersteund tussen tenants die zich in de cloud van Azure Amerikaanse overheid bevinden en die allebei ondersteuning bieden voor B2B-samen werking. Als u een gebruiker uitnodigt in een Tenant die geen deel uitmaakt van de Azure-Cloud voor de Amerikaanse overheid of die geen ondersteuning biedt voor B2B-samen werking, krijgt u een fout melding. Zie [Azure Active Directory Premium P1 en P2-variaties](https://docs.microsoft.com/azure/azure-government/documentation-government-services-securityandidentity#azure-active-directory-premium-p1-and-p2)voor meer informatie en beperkingen.
+
+## <a name="i-receive-the-error-that-azure-ad-cannot-find-the-aad-extensions-app-in-my-tenant"></a>Ik krijg de fout melding dat Azure AD de Aad-Extensions niet kan vinden-app in mijn Tenant
+
+Wanneer u selfservice aanmeldings functies gebruikt, zoals aangepaste gebruikers kenmerken of gebruikers stromen, `aad-extensions-app. Do not modify. Used by AAD for storing user data.` wordt automatisch een app gemaakt. Het wordt gebruikt door externe Azure AD-identiteiten voor het opslaan van informatie over gebruikers die zich registreren en aangepaste verzamelde kenmerken.
+
+Als u het per ongeluk `aad-extensions-app` hebt verwijderd, hebt u 30 dagen om het te herstellen. U kunt de app herstellen met behulp van de Azure AD Power shell-module.
+
+1. Start de Azure AD Power shell-module en voer uit `Connect-AzureAD` .
+1. Meld u aan als globale beheerder voor de Azure AD-Tenant waarvan u de verwijderde app wilt herstellen.
+1. Voer de Power shell-opdracht uit `Get-AzureADDeletedApplication` .
+1. Zoek de toepassing in de lijst waarbij de weergave naam begint met `aad-extensions-app` en kopieer de `ObjectId` eigenschaps waarde.
+1. Voer de Power shell-opdracht uit `Restore-AzureADDeletedApplication -ObjectId {id}` . Vervang het `{id}` gedeelte van de opdracht door de `ObjectId` van de vorige stap.
+
+U ziet nu de herstelde app in de Azure Portal.
 
 ## <a name="next-steps"></a>Volgende stappen
 

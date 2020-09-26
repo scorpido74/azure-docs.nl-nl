@@ -3,12 +3,12 @@ title: Back-ups maken van SQL Server werk belastingen op Azure Stack
 description: In dit artikel vindt u informatie over het configureren van Microsoft Azure Backup Server (MABS) om SQL Server-data bases op Azure Stack te beveiligen.
 ms.topic: conceptual
 ms.date: 06/08/2018
-ms.openlocfilehash: 912e6f10b689217303786b20ec6315fca595a8c2
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 80de7913b010fca69c3703e423109f2ede653590
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89376329"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332811"
 ---
 # <a name="back-up-sql-server-on-azure-stack"></a>Back-up maken van SQL Server op Azure Stack
 
@@ -24,10 +24,10 @@ Het beheer van SQL Server database back-up naar Azure en het herstel van Azure b
 
 * Als u een database met bestanden op een externe bestandsshare hebt, mislukt de beveiliging met fout-id 104. MABS biedt geen ondersteuning voor de beveiliging van SQL Server gegevens op een externe bestands share.
 * MABS kan geen data bases beveiligen die zijn opgeslagen op externe SMB-shares.
-* Zorg ervoor dat de replica's van de [beschikbaarheids groep zijn geconfigureerd als alleen-lezen](/sql/database-engine/availability-groups/windows/configure-read-only-access-on-an-availability-replica-sql-server?view=sql-server-ver15).
+* Zorg ervoor dat de replica's van de [beschikbaarheids groep zijn geconfigureerd als alleen-lezen](/sql/database-engine/availability-groups/windows/configure-read-only-access-on-an-availability-replica-sql-server).
 * U moet de systeem account **NTAuthority\System** expliciet toevoegen aan de groep Sysadmin op SQL Server.
-* Wanneer u een herstel bewerking op een andere locatie uitvoert voor een gedeeltelijk Inge sloten data base, moet u ervoor zorgen dat de functie [Inge sloten data bases](/sql/relational-databases/databases/migrate-to-a-partially-contained-database?view=sql-server-ver15#enable) is ingeschakeld voor het SQL-doel exemplaar.
-* Wanneer u een herstel bewerking op een andere locatie uitvoert voor een bestands stroom database, moet u ervoor zorgen dat de functie [Bestands stroom database](/sql/relational-databases/blob/enable-and-configure-filestream?view=sql-server-ver15) is ingeschakeld voor het SQL-doel exemplaar.
+* Wanneer u een herstel bewerking op een andere locatie uitvoert voor een gedeeltelijk Inge sloten data base, moet u ervoor zorgen dat de functie [Inge sloten data bases](/sql/relational-databases/databases/migrate-to-a-partially-contained-database#enable) is ingeschakeld voor het SQL-doel exemplaar.
+* Wanneer u een herstel bewerking op een andere locatie uitvoert voor een bestands stroom database, moet u ervoor zorgen dat de functie [Bestands stroom database](/sql/relational-databases/blob/enable-and-configure-filestream) is ingeschakeld voor het SQL-doel exemplaar.
 * Beveiliging voor SQL Server AlwaysOn:
   * MABS detecteert beschikbaarheids groepen bij het uitvoeren van een query bij het maken van de beveiligings groep.
   * MABS detecteert een failover en gaat verder met de beveiliging van de data base.
@@ -45,7 +45,7 @@ Het beheer van SQL Server database back-up naar Azure en het herstel van Azure b
     * Als de back-up mislukt op het geselecteerde knoop punt, mislukt de back-upbewerking.
     * Herstel naar de oorspronkelijke locatie wordt niet ondersteund.
 * Back-upproblemen SQL Server 2014 of hoger:
-  * SQL Server 2014 heeft een nieuwe functie toegevoegd voor het maken van een [Data Base voor on-premises SQL Server in Windows Azure Blob-opslag](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure?view=sql-server-ver15). MABS kan niet worden gebruikt om deze configuratie te beveiligen.
+  * SQL Server 2014 heeft een nieuwe functie toegevoegd voor het maken van een [Data Base voor on-premises SQL Server in Windows Azure Blob-opslag](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure). MABS kan niet worden gebruikt om deze configuratie te beveiligen.
   * Er zijn enkele bekende problemen met de voor keur voor secundaire back-upvoorkeur voor de SQL AlwaysOn-optie. MABS maakt altijd een back-up van secundair. Als er geen secundair kan worden gevonden, mislukt de back-up.
 
 ## <a name="before-you-start"></a>Voordat u begint
@@ -60,7 +60,7 @@ Het beheer van SQL Server database back-up naar Azure en het herstel van Azure b
 
     ![Beveiligings groep maken](./media/backup-azure-backup-sql/protection-group.png)
 
-    Azure Backup Server start de wizard beveiligings groep, die u helpt bij het maken van een **beveiligings groep**. Selecteer **Volgende**.
+    Azure Backup Server start de wizard beveiligings groep, die u helpt bij het maken van een **beveiligings groep**. Selecteer **Next**.
 
 3. Selecteer in het scherm **type beveiligings groep selecteren** de optie **servers**.
 
@@ -87,9 +87,9 @@ Het beheer van SQL Server database back-up naar Azure en het herstel van Azure b
    >
    >
 
-7. Controleer op het scherm **schijf toewijzing controleren** de totale beschik bare opslag ruimte en de mogelijke schijf ruimte. Selecteer **Volgende**.
+7. Controleer op het scherm **schijf toewijzing controleren** de totale beschik bare opslag ruimte en de mogelijke schijf ruimte. Selecteer **Next**.
 
-8. Kies in de methode voor het maken van een **replica kiezen**hoe u uw eerste herstel punt maakt. U kunt de eerste back-up hand matig overdragen (uit het netwerk) om te voor komen dat er band breedte overbelast of via het netwerk. Als u wilt wachten op het overdragen van de eerste back-up, kunt u de tijd voor de eerste overdracht opgeven. Selecteer **Volgende**.
+8. Kies in de methode voor het maken van een **replica kiezen**hoe u uw eerste herstel punt maakt. U kunt de eerste back-up hand matig overdragen (uit het netwerk) om te voor komen dat er band breedte overbelast of via het netwerk. Als u wilt wachten op het overdragen van de eerste back-up, kunt u de tijd voor de eerste overdracht opgeven. Selecteer **Next**.
 
     ![Methode van initiële replicatie](./media/backup-azure-backup-sql/pg-manual.png)
 
@@ -163,13 +163,13 @@ De volgende stappen zijn vereist om een beveiligde entiteit (SQL Server-Data Bas
 2. Klik met de rechter muisknop op de naam van de data base en selecteer **herstellen**.
 
     ![Herstellen vanuit Azure](./media/backup-azure-backup-sql/sqlbackup-recover.png)
-3. MABS toont de details van het herstel punt. Selecteer **Volgende**. Als u de Data Base wilt overschrijven, selecteert u het herstel type **herstellen naar het oorspronkelijke exemplaar van SQL Server**. Selecteer **Volgende**.
+3. MABS toont de details van het herstel punt. Selecteer **Next**. Als u de Data Base wilt overschrijven, selecteert u het herstel type **herstellen naar het oorspronkelijke exemplaar van SQL Server**. Selecteer **Next**.
 
     ![Herstellen naar de oorspronkelijke locatie](./media/backup-azure-backup-sql/sqlbackup-recoveroriginal.png)
 
     In dit voor beeld herstelt MABS de Data Base naar een andere SQL Server-instantie of naar een zelfstandige netwerkmap.
 
-4. In het scherm **herstel opties opgeven** kunt u de herstel opties zoals netwerk bandbreedte gebruiken selecteren om de band breedte te beperken die wordt gebruikt voor herstel. Selecteer **Volgende**.
+4. In het scherm **herstel opties opgeven** kunt u de herstel opties zoals netwerk bandbreedte gebruiken selecteren om de band breedte te beperken die wordt gebruikt voor herstel. Selecteer **Next**.
 
 5. In het scherm **samen vatting** ziet u alle beschik bare herstel configuraties tot nu toe. Selecteer **herstellen**.
 

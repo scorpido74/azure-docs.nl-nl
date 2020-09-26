@@ -7,19 +7,19 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.assetid: 1aff691f-a40a-4de2-b6a0-def1384e086e
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
 ms.date: 11/07/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e315f49cb0b78e13c4b6132f844397d1261ff0f9
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: a7cd15bab0b26a13f9ffb818aa29e8e262c0bd06
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652013"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332913"
 ---
 # <a name="how-to-use-the-azure-portal-to-provision-a-windows-virtual-machine-with-sql-server"></a>De Azure Portal gebruiken om een virtuele Windows-machine in te richten met SQL Server
 
@@ -115,7 +115,7 @@ Configureer uw netwerk opties op het tabblad **netwerk** .
 
 * Maak een nieuw **virtueel netwerk** of gebruik een bestaand virtueel netwerk voor uw SQL Server-VM. Wijs ook een **subnet** toe. 
 
-* Onder **NIC-netwerk beveiligings groep**selecteert u een basis beveiligings groep of de geavanceerde beveiligings groep. Als u de optie basis selecteert, kunt u binnenkomende poorten voor de SQL Server virtuele machine selecteren. Dit zijn dezelfde waarden die zijn geconfigureerd op het tabblad **basis** . Als u de optie Geavanceerd selecteert, kunt u een bestaande netwerk beveiligings groep kiezen of een nieuwe maken. 
+* Onder **NIC-netwerk beveiligings groep**selecteert u een basis beveiligings groep of de geavanceerde beveiligings groep. Als u de optie basis selecteert, kunt u binnenkomende poorten voor de SQL Server VM selecteren, die dezelfde waarden hebben die zijn geconfigureerd op het tabblad **basis** . Als u de optie Geavanceerd selecteert, kunt u een bestaande netwerk beveiligings groep kiezen of een nieuwe maken. 
 
 * U kunt andere wijzigingen aanbrengen in de netwerk instellingen of de standaard waarden blijven gebruiken.
 
@@ -138,8 +138,8 @@ Configureer op het tabblad **SQL Server instellingen** specifieke instellingen e
 - [Connectiviteit](#connectivity)
 - [Verificatie](#authentication)
 - [Integratie van Azure Key Vault](#azure-key-vault-integration)
-- [Opslag configuratie](#storage-configuration)
-- [Automatisch patchen](#automated-patching)
+- [Opslagconfiguratie](#storage-configuration)
+- [Automatische patching](#automated-patching)
 - [Automatische back-up](#automated-backup)
 - [Machine Learning Services](#machine-learning-services)
 

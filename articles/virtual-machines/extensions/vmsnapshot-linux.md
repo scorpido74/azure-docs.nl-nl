@@ -1,6 +1,6 @@
 ---
 title: Linux-extensie voor VM-moment opname voor Azure Backup
-description: Toepassings consistente back-up van de virtuele machine maken van Azure Backup met behulp van de extensie van de VM-moment opname
+description: Maak toepassings consistente back-ups van de virtuele machine van Azure Backup met Linux-extensie voor VM-moment opnamen.
 services: backup, virtual-machines-linux
 documentationcenter: ''
 author: trinadhkotturu
@@ -10,12 +10,12 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.date: 12/17/2018
 ms.author: trinadhk
-ms.openlocfilehash: d0ad54c19749d670f9ab753e1e6d8eb130475ffc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9fe50388e2fc21c28ca1f04035cc7c725e4f87ec
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79415102"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275044"
 ---
 # <a name="vm-snapshot-linux-extension-for-azure-backup"></a>Linux-extensie voor VM-moment opname voor Azure Backup
 
@@ -62,9 +62,9 @@ De volgende JSON toont het schema voor de extensie van de VM-moment opname. Voor
 
 ### <a name="property-values"></a>Eigenschaps waarden
 
-| Name | Waarde/voor beeld | Gegevenstype |
+| Naam | Waarde/voor beeld | Gegevenstype |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | date |
+| apiVersion | 2015-06-15 | datum |
 | taskId | e07354cf-041e-4370-929f-25a319ce8933_1 | tekenreeks |
 | commandStartTimeUTCTicks | 6.36458 e + 17 | tekenreeks |
 | landinstelling | nl-nl | tekenreeks |

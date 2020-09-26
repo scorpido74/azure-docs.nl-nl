@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: sstein, carlrab
+ms.reviewer: sstein
 ms.date: 08/29/2019
-ms.openlocfilehash: 81e3547dbd86c840baed8e044a84afd3b63f5be5
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 7a7373f5fcd36298d2feeff6a2a5b67c9e10e40b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86075770"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321591"
 ---
 # <a name="save-costs-for-resources-with-reserved-capacity---azure-sql-database--sql-managed-instance"></a>Bespaar kosten voor resources met gereserveerde capaciteit-Azure SQL Database & SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)] 
@@ -57,8 +57,8 @@ Stel bijvoorbeeld dat u één algemeen doel, GEN5-16 vCore elastische pool en tw
     |Regio      |De Azure-regio die wordt gedekt door de capaciteits reservering.|
     |Implementatie type|Het SQL-resource type waarvoor u de reserve ring wilt aanschaffen.|
     |Prestatie niveau|De servicelaag voor de data bases of beheerde exemplaren. |
-    |Termijn        |Eén jaar of drie jaar.|
-    |Aantal    |De hoeveelheid reken resources die worden gekocht binnen de capaciteits reservering. De hoeveelheid is een aantal vCores in de geselecteerde Azure-regio en-prestatie-laag die worden gereserveerd en de facturerings korting krijgt. Als u bijvoorbeeld meerdere data bases uitvoert of plant met de totale reken capaciteit van GEN5 16 vCores in de regio VS-Oost, geeft u de hoeveelheid op als 16 om het voor deel voor alle data bases te maximaliseren. |
+    |Term        |Eén jaar of drie jaar.|
+    |Hoeveelheid    |De hoeveelheid reken resources die worden gekocht binnen de capaciteits reservering. De hoeveelheid is een aantal vCores in de geselecteerde Azure-regio en-prestatie-laag die worden gereserveerd en de facturerings korting krijgt. Als u bijvoorbeeld meerdere data bases uitvoert of plant met de totale reken capaciteit van GEN5 16 vCores in de regio VS-Oost, geeft u de hoeveelheid op als 16 om het voor deel voor alle data bases te maximaliseren. |
 
 1. Controleer de kosten van de capaciteits reservering in het gedeelte **kosten** .
 1. Selecteer **Aankoop**.

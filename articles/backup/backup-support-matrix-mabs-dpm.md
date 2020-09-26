@@ -3,12 +3,12 @@ title: Ondersteunings matrix voor MABS & System Center DPM
 description: Dit artikel bevat een overzicht van Azure Backup ondersteuning wanneer u Microsoft Azure Backup Server (MABS) of System Center DPM gebruikt om back-ups te maken van on-premises en Azure VM-resources.
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: e3ca83b8a2874304521d84f6901fcb9627ce80db
-ms.sourcegitcommit: 655e4b75fa6d7881a0a410679ec25c77de196ea3
+ms.openlocfilehash: 011e115c7f3cc94b03ffd9ad2467406c60738033
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89506607"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332692"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Ondersteunings matrix voor back-up met Microsoft Azure Backup Server of System Center DPM
 
@@ -24,7 +24,7 @@ MABS is gebaseerd op System Center DPM en biedt vergelijk bare functionaliteit m
 
 - Er is geen System Center-licentie vereist om MABS uit te voeren.
 - Voor zowel MABS als DPM biedt Azure lange termijn back-upopslag. Daarnaast kunt u met DPM back-ups maken van gegevens voor lange termijn opslag op tape. MABS biedt deze functionaliteit niet.
-- [U kunt een back-up maken van een primaire DPM-server met een secundaire DPM-server](/system-center/dpm/back-up-the-dpm-server?view=sc-dpm-2019). De secundaire server beveiligt de database van de primaire server en de gegevensbronreplica's die op de primaire server zijn opgeslagen. Als de primaire server mislukt, kan de secundaire server werkbelastingen blijven beveiligen die door de primaire server worden beveiligd, totdat de primaire server weer beschikbaar is.  MABS biedt deze functionaliteit niet.
+- [U kunt een back-up maken van een primaire DPM-server met een secundaire DPM-server](/system-center/dpm/back-up-the-dpm-server). De secundaire server beveiligt de database van de primaire server en de gegevensbronreplica's die op de primaire server zijn opgeslagen. Als de primaire server mislukt, kan de secundaire server werkbelastingen blijven beveiligen die door de primaire server worden beveiligd, totdat de primaire server weer beschikbaar is.  MABS biedt deze functionaliteit niet.
 
 U kunt MABS downloaden van het [micro soft Download centrum](https://www.microsoft.com/download/details.aspx?id=57520). Het kan on-premises of op een virtuele machine van Azure worden uitgevoerd.
 
@@ -146,7 +146,7 @@ Zie de [routerings vereisten voor ExpressRoute](../expressroute/expressroute-rou
 
 De verbinding met de Azure Backup-service is vereist voor een juiste werking van back-ups en het Azure-abonnement moet actief zijn. In de volgende tabel ziet u het gedrag als deze twee dingen zich niet voordoen.
 
-**MABS naar Azure** | **Abonnement** | **Back-up maken/herstellen**
+**MABS naar Azure** | **Abonnement** | **Back-up en herstellen**
 --- | --- | ---
 Verbonden | Actief | Maak een back-up naar de DPM-MABS-schijf.<br/><br/> Maak een back-up naar Azure.<br/><br/> Herstellen vanaf schijf.<br/><br/> Herstellen vanuit Azure.
 Verbonden | Verlopen/niet-ingericht | Geen back-up naar schijf of Azure.<br/><br/> Als het abonnement is verlopen, kunt u het herstellen vanaf schijf of Azure.<br/><br/> Als het abonnement uit bedrijf is genomen, kunt u niet meer herstellen vanaf schijf of Azure. De Azure-herstel punten worden verwijderd.
@@ -158,7 +158,7 @@ Geen connectiviteit langer dan 15 dagen | Verlopen/niet-ingericht | Geen back-up
 |Vereiste |Details |
 |---------|---------|
 |Domain    | De DPM-MABS-server moet zich in een Windows Server 2019, Windows Server 2016, Windows Server 2012 R2, Windows Server 2012 domein.        |
-|Domeinvertrouwen   |  DPM/MABS ondersteunt gegevens beveiliging tussen forests, zolang u een twee richtings vertrouwensrelatie op forestniveau tot stand brengt tussen de afzonderlijke forests.   <BR><BR>   DPM/MABS kan servers en werk stations in domeinen beveiligen binnen een forest met een twee richtings vertrouwensrelatie met het DPM/MABS-Server domein. Zie [back-ups maken en herstellen in werk groepen en niet-vertrouwde domeinen](/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains?view=sc-dpm-2019) voor het beveiligen van computers in werk groepen of niet-vertrouwde domeinen.  |
+|Domeinvertrouwen   |  DPM/MABS ondersteunt gegevens beveiliging tussen forests, zolang u een twee richtings vertrouwensrelatie op forestniveau tot stand brengt tussen de afzonderlijke forests.   <BR><BR>   DPM/MABS kan servers en werk stations in domeinen beveiligen binnen een forest met een twee richtings vertrouwensrelatie met het DPM/MABS-Server domein. Zie [back-ups maken en herstellen in werk groepen en niet-vertrouwde domeinen](/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains) voor het beveiligen van computers in werk groepen of niet-vertrouwde domeinen.  |
 
 ## <a name="dpmmabs-storage-support"></a>Ondersteuning voor DPM/MABS-opslag
 
@@ -185,7 +185,7 @@ Raadpleeg de [Azure Backup Server Protection-matrix](./backup-mabs-protection-ma
 
 ## <a name="supported-backups-to-dpm"></a>Ondersteunde back-ups naar DPM
 
-Voor informatie over de verschillende servers en workloads die u kunt beveiligen met Data Protection Manager raadpleegt u het artikel [waarvan u een back-up kunt maken van DPM?](/system-center/dpm/dpm-protection-matrix?view=sc-dpm-2019).
+Voor informatie over de verschillende servers en workloads die u kunt beveiligen met Data Protection Manager raadpleegt u het artikel [waarvan u een back-up kunt maken van DPM?](/system-center/dpm/dpm-protection-matrix).
 
 - Het maken van een back-up van geclusterde werk belastingen door DPM/MABS moet zich in hetzelfde domein als DPM/MABS of in een onderliggend/vertrouwd domein bevallen.
 - U kunt NTLM/certificaat verificatie gebruiken om een back-up te maken van gegevens in niet-vertrouwde domeinen of werk groepen.

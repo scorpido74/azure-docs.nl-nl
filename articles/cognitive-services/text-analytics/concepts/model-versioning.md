@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 07/16/2020
 ms.author: aahi
-ms.openlocfilehash: e6763633ce27c537f1384e8e51020d44132c0377
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: 49fb77b4efbbecb306a0650cb17097b43e5153ca
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89469844"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91309146"
 ---
 # <a name="model-versioning-in-the-text-analytics-api"></a>Model versie beheer in de Text Analytics-API
 
@@ -44,7 +44,8 @@ De [Text Analytics voor de status](../how-tos/text-analytics-for-health.md) cont
 
 | Eindpunt                        | Tag container installatie kopie                     | Model versie |
 |---------------------------------|-----------------------------------------|---------------|
-| `/entities/health`               | `1.1.013150001-amd64-preview` of de nieuwste | `2020-07-24`  |
+| `/entities/health`              | `1.1.013530001-amd64-preview` of de nieuwste          | `2020-09-03`  |
+| `/entities/health`              | `1.1.013150001-amd64-preview`           | `2020-07-24`  |
 | `/domains/health`               | `1.1.012640001-amd64-preview`           | `2020-05-08`  |
 | `/domains/health`               | `1.1.012420001-amd64-preview`           | `2020-05-08`  |
 | `/domains/health`               | `1.1.012070001-amd64-preview`           | `2020-04-16`  |
