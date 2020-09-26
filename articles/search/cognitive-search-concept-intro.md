@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: 1c041d594b29c6e93b73eb1b0c623b3e566ceef5
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 2195ac4e5753addaee9e13c368b6e6a1b94354ff
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935497"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91363134"
 ---
 # <a name="ai-enrichment-in-azure-cognitive-search"></a>AI-verrijking in azure Cognitive Search
 
@@ -69,7 +69,7 @@ Aan het begin van de pijp lijn hebt u ongestructureerde tekst-of niet-tekst inho
 
 ![De fase voor het kraken van documenten](./media/cognitive-search-intro/document-cracking-phase-blowup.png "document kraken")
 
- De volgende bronnen worden ondersteund: Azure Blob-opslag, Azure-tabel opslag, Azure SQL Database en Azure Cosmos DB. Inhoud op basis van tekst kan worden geëxtraheerd uit de volgende bestands typen: Pdf's, Word, Power Point, CSV-bestanden. Zie [ondersteunde indelingen](search-howto-indexing-azure-blob-storage.md#supported-document-formats)voor de volledige lijst. Het indexeren vergt enige tijd met een kleine, representatieve gegevensset en bouwt deze vervolgens incrementeel op als uw oplossing is gerijpt.
+ De volgende bronnen worden ondersteund: Azure Blob-opslag, Azure-tabel opslag, Azure SQL Database en Azure Cosmos DB. Inhoud op basis van tekst kan worden geëxtraheerd uit de volgende bestands typen: Pdf's, Word, Power Point, CSV-bestanden. Zie [ondersteunde indelingen](search-howto-indexing-azure-blob-storage.md#SupportedFormats)voor de volledige lijst. Het indexeren vergt enige tijd met een kleine, representatieve gegevensset en bouwt deze vervolgens incrementeel op als uw oplossing is gerijpt.
 
 ### <a name="step-2-cognitive-skills-and-enrichment-phase"></a>Stap 2: cognitieve vaardig heden en verrijkings fase
 
@@ -123,4 +123,4 @@ Indexen worden gegenereerd op basis van een index schema waarmee de velden, kenm
 + [Zelf studie: meer informatie over de AI-verrijkings Api's](cognitive-search-tutorial-blob.md)
 + [Knowledge Store](knowledge-store-concept-intro.md)
 + [Een kennis archief maken in REST](knowledge-store-create-rest.md)
-+ [Tips voor probleemoplossing](cognitive-search-concept-troubleshooting.md)
++ [Tips voor probleem oplossing](cognitive-search-concept-troubleshooting.md)

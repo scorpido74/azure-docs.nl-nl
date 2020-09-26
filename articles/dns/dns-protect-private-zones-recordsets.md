@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: 1bbb410b3aac7d1e30db075003eb30ec27b11a38
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 20e20968b6367e0a8c0131d6e7e8d15e56c06d63
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926583"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91363219"
 ---
 # <a name="how-to-protect-private-dns-zones-and-records"></a>Persoonlijke DNS-zones en-records beveiligen
 
@@ -102,9 +102,9 @@ Machtigingen worden toegepast op het niveau van de recordset.  De gebruiker heef
 
 De RBAC-machtigingen van het record niveau level kunnen worden geconfigureerd via de Azure Portal, met behulp van de knop **Access Control (IAM)** op de pagina Recordset.
 
-![Het niveau van de record sets RBAC via de Azure Portal](./media/dns-protect-private-zones-recordsets/rbac3.png)
+![Scherm afbeelding toont de Access Control knop (I A M).](./media/dns-protect-private-zones-recordsets/rbac3.png)
 
-![Het niveau van de record sets RBAC via de Azure Portal](./media/dns-protect-private-zones-recordsets/rbac4.png)
+![Scherm afbeelding toont Access Control waarvoor roltoewijzing toevoegen is geselecteerd.](./media/dns-protect-private-zones-recordsets/rbac4.png)
 
 Er kunnen ook RBAC-machtigingen op het niveau van record sets worden [verleend met behulp van Azure PowerShell](../role-based-access-control/role-assignments-powershell.md):
 
@@ -164,8 +164,8 @@ In het volgende voor beeld ziet u een aangepaste roldefinitie voor het beheer va
 
 De eigenschap actions definieert de volgende DNS-specifieke machtigingen:
 
-* `Microsoft.Network/privateDnsZones/CNAME/*`Hiermee verleent u volledige controle over CNAME-records
-* `Microsoft.Network/privateDNSZones/read`verleent toestemming om persoonlijke DNS-zones te lezen, maar niet om ze te wijzigen, zodat u de zone kunt zien waarin de CNAME wordt gemaakt.
+* `Microsoft.Network/privateDnsZones/CNAME/*` Hiermee verleent u volledige controle over CNAME-records
+* `Microsoft.Network/privateDNSZones/read` verleent toestemming om persoonlijke DNS-zones te lezen, maar niet om ze te wijzigen, zodat u de zone kunt zien waarin de CNAME wordt gemaakt.
 
 > [!NOTE]
 > Een aangepaste Azure-rol gebruiken om te voor komen dat record sets worden verwijderd terwijl ze nog steeds kunnen worden bijgewerkt, is geen effectief besturings element. Zo voor komt u dat record sets worden verwijderd, maar niet om te voor komen dat ze worden gewijzigd.  Toegestane wijzigingen zijn het toevoegen en verwijderen van records uit de recordset, inclusief het verwijderen van alle records om een lege recordset te verlaten. Dit heeft hetzelfde effect als het verwijderen van de recordset uit het oogpunt van een DNS-oplossing.

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: reference
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: fcc43caf895dadfaf832a47c3254f9b828bcb71a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e42d9713d1d61bb681c0ee51e46cc52eb0bcc807
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77430802"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91363185"
 ---
 # <a name="swagger-documentation"></a>Documentatie voor Swagger
 
@@ -32,19 +32,19 @@ U moet Swagger instellen op dezelfde regio als uw spraak service-abonnement. U k
 
 1. Ga naar https://editor.swagger.io
 2. Klik op **bestand**en vervolgens op **importeren** .
-3. Voer de URL voor Swagger in, inclusief de regio voor uw spraak service-abonnement`https://<your-region>.cris.ai/docs/v2.0/swagger`
+3. Voer de URL voor Swagger in, inclusief de regio voor uw spraak service-abonnement `https://<your-region>.cris.ai/docs/v2.0/swagger`
 4. Klik op **client genereren** en selecteer python
 5. Sla de client bibliotheek op
 
 U kunt de python-bibliotheek gebruiken die u hebt gegenereerd met de [voor beelden van de speech-service op github](https://aka.ms/csspeech/samples).
 
-## <a name="reference-docs"></a>Referentie documenten
+## <a name="reference-docs"></a>Naslagdocumentatie
 
 * [REST (Swagger): batch transcriptie en-aanpassing](https://westus.cris.ai/swagger/ui/index)
-* [REST API: spraak naar tekst](rest-speech-to-text.md)
-* [REST API: tekst-naar-spraak](rest-text-to-speech.md)
+* [REST API: Spraak-naar-tekst](rest-speech-to-text.md)
+* [REST API: Tekst-naar-spraak](rest-text-to-speech.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Speech Service-voor beelden op github](https://aka.ms/csspeech/samples).
-* [Gratis een abonnements sleutel voor een spraak service ophalen](get-started.md)
+* [Verkrijg gratis een spraakserviceabonnementssleutel](overview.md#try-the-speech-service-for-free)

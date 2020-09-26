@@ -8,28 +8,28 @@ ms.subservice: core
 ms.author: gopalv
 author: gvashishtha
 ms.reviewer: larryfr
-ms.date: 07/08/2020
+ms.date: 09/17/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: b77d48fa8af8be05123ee17f218ddb4ae5e8af98
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a9b8a2c2454c135c72d39a587e84220e8916e54b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90886237"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315424"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Modellen implementeren met Azure Machine Learning
-
 
 Meer informatie over het implementeren van uw machine learning model als een webservice in de Azure-Cloud of het Azure IoT Edge van apparaten.
 
 De werkstroom is vrijwel altijd hetzelfde, ongeacht waar u het model implementeert:
 
-1. Registreer het model.
-1. Een configuratie voor een afleiding voorbereiden
-1. Een invoer script voorbereiden (tenzij u [geen code-implementatie](how-to-deploy-no-code-deployment.md)gebruikt)
+1. Registreer het model (optioneel, zie hieronder).
+1. Een configuratie voor een afleiding voorbereiden (tenzij u een [implementatie zonder code](./how-to-deploy-no-code-deployment.md)gebruikt).
+1. Een script voor een vermelding voorbereiden (tenzij u [geen code-implementatie](./how-to-deploy-no-code-deployment.md)gebruikt).
+1. Kies een compute-doel.
 1. Implementeer het model op het rekendoel.
-1. Test het geïmplementeerde model, ook wel webservice genoemd.
+1. Test de resulterende webservice.
 
 Zie [modellen beheren, implementeren en bewaken met Azure machine learning](concept-model-management-and-deployment.md)voor meer informatie over de concepten die zijn betrokken bij de implementatie werk stroom.
 
@@ -51,7 +51,7 @@ Zie [modellen beheren, implementeren en bewaken met Azure machine learning](conc
 
 ## <a name="connect-to-your-workspace"></a>Verbinding maken met uw werkruimte
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
 Volg de instructies in de Azure CLI-documentatie voor [het instellen van uw abonnements context](/cli/azure/manage-azure-subscriptions-azure-cli#change-the-active-subscription).
 
@@ -70,24 +70,25 @@ from azureml.core import Workspace
 ws = Workspace.from_config(path=".file-path/ws_config.json")
 ```
 
-Zie de documentatie van [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#&preserve-view=trueworkspace) voor meer informatie over het gebruik van de SDK om verbinding te maken met een werk ruimte.
+Zie de documentatie van [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true#&preserve-view=trueworkspace) voor meer informatie over het gebruik van de SDK om verbinding te maken met een werk ruimte.
 
 
 ---
 
 
-## <a name="register-your-model"></a><a id="registermodel"></a> Uw model registreren
-
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
+## <a name="register-your-model-optional"></a><a id="registermodel"></a> Uw model registreren (optioneel)
 
 Een geregistreerd model is een logische container voor een of meer bestanden die het model vormen. Als u bijvoorbeeld een model hebt dat is opgeslagen in meerdere bestanden, kunt u ze registreren als één model in de werk ruimte. Nadat u de bestanden hebt geregistreerd, kunt u het geregistreerde model downloaden of implementeren en alle bestanden ontvangen die u hebt geregistreerd.
 
-> [!TIP]
-> Wanneer u een model registreert, geeft u het pad op naar een Cloud locatie (van een trainings uitvoering) of van een lokale map. Dit pad is alleen bedoeld voor het vinden van de bestanden die worden geüpload als onderdeel van het registratie proces. Het hoeft niet overeen te komen met het pad dat wordt gebruikt in het vermeldings script. Zie voor meer informatie [model bestanden zoeken in uw invoer script](how-to-deploy-advanced-entry-script.md#load-registered-models).
+> [!TIP] 
+> Het registreren van een model voor versie tracering wordt aanbevolen, maar is niet vereist. Als u liever door wilt gaan zonder een model te registreren, moet u een bronmap opgeven in uw [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py&preserve-view=true) of [inferenceconfig.jsop](./reference-azure-machine-learning-cli.md#inference-configuration-schema) en ervoor zorgen dat uw model zich in die bron directory bevindt.
 
-Machine learning-modellen worden geregistreerd in uw Azure Machine Learning-werk ruimte. Het model kan afkomstig zijn van Azure Machine Learning of van een andere locatie. Bij het registreren van een model kunt u optioneel meta gegevens over het model opgeven. De `tags` en `properties` woorden lijsten die u toepast op een model registratie kunnen vervolgens worden gebruikt voor het filteren van modellen.
+> [!TIP]
+> Wanneer u een model registreert, geeft u het pad op naar een Cloud locatie (van een trainings uitvoering) of van een lokale map. Dit pad is alleen bedoeld voor het vinden van de bestanden die worden geüpload als onderdeel van het registratie proces. Het hoeft niet overeen te komen met het pad dat wordt gebruikt in het vermeldings script. Zie voor meer informatie [model bestanden zoeken in uw invoer script](./how-to-deploy-advanced-entry-script.md#load-registered-models).
 
 De volgende voor beelden laten zien hoe u een model kunt registreren.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
 ### <a name="register-a-model-from-an-azure-ml-training-run"></a>Een model registreren vanuit een Azure ML-trainings uitvoering
 
@@ -111,16 +112,6 @@ Als u meerdere bestanden wilt toevoegen aan de model registratie, stelt `-p` u h
 
 # <a name="python"></a>[Python](#tab/python)
 
-
-Een geregistreerd model is een logische container voor een of meer bestanden die het model vormen. Als u bijvoorbeeld een model hebt dat is opgeslagen in meerdere bestanden, kunt u ze registreren als één model in de werk ruimte. Nadat u de bestanden hebt geregistreerd, kunt u het geregistreerde model downloaden of implementeren en alle bestanden ontvangen die u hebt geregistreerd.
-
-> [!TIP]
-> Wanneer u een model registreert, geeft u het pad op naar een Cloud locatie (van een trainings uitvoering) of van een lokale map. Dit pad is alleen bedoeld voor het vinden van de bestanden die worden geüpload als onderdeel van het registratie proces. Het hoeft niet overeen te komen met het pad dat wordt gebruikt in het vermeldings script. Zie voor meer informatie [model bestanden zoeken in uw invoer script](how-to-deploy-advanced-entry-script.md#load-registered-models).
-
-Machine learning-modellen worden geregistreerd in uw Azure Machine Learning-werk ruimte. Het model kan afkomstig zijn van Azure Machine Learning of van een andere locatie. Bij het registreren van een model kunt u optioneel meta gegevens over het model opgeven. De `tags` en `properties` woorden lijsten die u toepast op een model registratie kunnen vervolgens worden gebruikt voor het filteren van modellen.
-
-De volgende voor beelden laten zien hoe u een model kunt registreren.
-
 ### <a name="register-a-model-from-an-azure-ml-training-run"></a>Een model registreren vanuit een Azure ML-trainings uitvoering
 
   Wanneer u de SDK gebruikt voor het trainen van een model, kunt u een [uitvoerings](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py&preserve-view=true) object of een [AutoMLRun](/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun) -object ontvangen, afhankelijk van hoe u het model hebt getraind. Elk object kan worden gebruikt voor het registreren van een model dat is gemaakt door een experiment.
@@ -134,7 +125,7 @@ De volgende voor beelden laten zien hoe u een model kunt registreren.
     print(model.name, model.id, model.version, sep='\t')
     ```
 
-    De `model_path` para meter verwijst naar de locatie van de cloud van het model. In dit voor beeld wordt het pad van één bestand gebruikt. Als u meerdere bestanden wilt toevoegen aan de model registratie, stelt `model_path` u het pad in naar een map die de bestanden bevat. Zie de documentatie [Run. register_model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#&preserve-view=trueregister-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-) voor meer informatie.
+    De `model_path` para meter verwijst naar de locatie van de cloud van het model. In dit voor beeld wordt het pad van één bestand gebruikt. Als u meerdere bestanden wilt toevoegen aan de model registratie, stelt `model_path` u het pad in naar een map die de bestanden bevat. Zie de documentatie [Run. register_model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py&preserve-view=true#&preserve-view=trueregister-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-) voor meer informatie.
 
   + Een model van een `azureml.train.automl.run.AutoMLRun` object registreren:
 
@@ -149,7 +140,6 @@ De volgende voor beelden laten zien hoe u een model kunt registreren.
     In dit voor beeld `metric` worden de `iteration` para meters en niet opgegeven, zodat de iteratie met de beste primaire metriek wordt geregistreerd. De `model_id` waarde die wordt geretourneerd door de uitvoering, wordt gebruikt in plaats van een model naam.
 
     Zie de documentatie van [AutoMLRun. register_model](/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun#register-model-model-name-none--description-none--tags-none--iteration-none--metric-none-) voor meer informatie.
-
 
 ### <a name="register-a-model-from-a-local-file"></a>Een model registreren vanuit een lokaal bestand
 
@@ -190,73 +180,45 @@ Zie [een bestaand model implementeren](how-to-deploy-existing-model.md)voor meer
 
 ## <a name="define-an-inference-configuration"></a>Een configuratie voor het afstellen van een interferentie definiëren
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
-
-[!INCLUDE [inference config](../../includes/machine-learning-service-inference-config.md)]
-
-De volgende opdracht laat zien hoe u een model implementeert met behulp van de CLI:
-
-```azurecli-interactive
-az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json
-```
-
-In dit voor beeld geeft de configuratie de volgende instellingen aan:
-
-* Dat het model python vereist
-* Het [invoer script](#define-an-entry-script), dat wordt gebruikt voor het afhandelen van webaanvragen die worden verzonden naar de geïmplementeerde service
-* Het Conda-bestand met een beschrijving van de Python-pakketten die nodig zijn voor de
-
-Zie [een model implementeren met behulp van een aangepaste docker-installatie kopie](how-to-deploy-custom-docker-image.md)voor informatie over het gebruik van een aangepaste docker-installatie kopie met een afnemende configuratie.
-
-# <a name="python"></a>[Python](#tab/python)
 
 Een configuratie voor het afwijzen van een interferentie beschrijft het instellen van de webservice die uw model bevat. Het wordt later gebruikt wanneer u het model implementeert.
 
-In de configuratie voor demijnen wordt Azure Machine Learning omgevingen gebruikt voor het definiëren van de software afhankelijkheden die nodig zijn voor uw implementatie. Met omgevingen kunt u de software-afhankelijkheden maken, beheren en opnieuw gebruiken die zijn vereist voor training en implementatie. U kunt een omgeving maken op basis van aangepaste afhankelijkheids bestanden of een van de met Azure Machine Learning omgevingen met een van de curator gebruiken. De volgende YAML is een voor beeld van een Conda-afhankelijkheids bestand voor ingrijpen. Houd er rekening mee dat u de standaard waarden van azureml-defaults met versie >= 1.0.45 als een PIP-afhankelijkheid moet aangeven, omdat deze de functionaliteit bevat die nodig is om het model als een webservice te hosten. Als u het automatisch genereren van schema's wilt gebruiken, moet uw invoer script ook de `inference-schema` pakketten importeren.
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
-```YAML
+Er kan een minimale configuratie van de inmodus worden geschreven als:
 
-name: project_environment
-dependencies:
-- python=3.6.2
-- scikit-learn=0.22.1
-- pip:
- # You must list azureml-defaults as a pip dependency
- - azureml-defaults>=1.0.45
- - inference-schema[numpy-support]
+```json
+{
+    "entryScript": "score.py",
+    "sourceDirectory": "./working_dir"
+}
 ```
 
-> [!IMPORTANT]
-> Als uw afhankelijkheid beschikbaar is via zowel Conda als PIP (van PyPi), raadt micro soft u aan om de Conda-versie te gebruiken, aangezien Conda-pakketten doorgaans worden geleverd met vooraf gemaakte binaire bestanden die de installatie betrouwbaarder maken.
->
-> Zie [Wat is Conda en PIP](https://www.anaconda.com/understanding-conda-and-pip/)? voor meer informatie.
->
-> Als u wilt controleren of uw afhankelijkheid beschikbaar is via Conda, gebruikt u de `conda search <package-name>` opdracht of gebruikt u de pakket indexen op [https://anaconda.org/anaconda/repo](https://anaconda.org/anaconda/repo) en [https://anaconda.org/conda-forge/repo](https://anaconda.org/conda-forge/repo) .
+Hiermee geeft u op dat de implementatie het bestand `score.py` in de `./working_dir` Directory zal gebruiken voor het verwerken van binnenkomende aanvragen.
 
-U kunt het afhankelijkheden bestand gebruiken om een omgevings object te maken en dit op te slaan in uw werk ruimte voor toekomstig gebruik:
+[Raadpleeg dit artikel](./reference-azure-machine-learning-cli.md#inference-configuration-schema) voor een uitgebreidere bespreking van de configuraties voor het afzien van de configuratie. 
 
-```python
-from azureml.core.environment import Environment
-myenv = Environment.from_conda_specification(name = 'myenv',
-                                                file_path = 'path-to-conda-specification-file'
-myenv.register(workspace=ws)
-```
+# <a name="python"></a>[Python](#tab/python)
 
-Zie voor een gedetailleerde bespreking van het gebruik en aanpassen van python-omgevingen met Azure Machine Learning [& software omgevingen maken in azure machine learning](how-to-use-environments.md).
+In het volgende voor beeld ziet u:
 
-Zie [een model implementeren met behulp van een aangepaste docker-installatie kopie](how-to-deploy-custom-docker-image.md)voor informatie over het gebruik van een aangepaste docker-installatie kopie met een afnemende configuratie.
-
-
-In het volgende voor beeld ziet u hoe u een omgeving laadt vanuit uw werk ruimte en deze vervolgens gebruikt met de configuratie voor inschakeling:
+1. een [gecurede omgeving](resource-curated-environments.md) laden vanuit uw werk ruimte
+1. De omgeving klonen
+1. `scikit-learn`Als een afhankelijkheid opgeven.
+1. De omgeving gebruiken om een InferenceConfig te maken
 
 ```python
 from azureml.core.environment import Environment
 from azureml.core.model import InferenceConfig
 
 
-myenv = Environment.get(workspace=ws, name='myenv', version='1')
+env = Environment.get(workspace, "AzureML-Minimal").clone(env_name)
+
+for pip_package in ["scikit-learn"]:
+    env.python.conda_dependencies.add_pip_package(pip_package)
+
 inference_config = InferenceConfig(entry_script='path-to-score.py',
-                                    environment=myenv)
+                                    environment=env)
 ```
 
 Zie [omgevingen maken en beheren voor training en implementatie](how-to-use-environments.md)voor meer informatie over omgevingen.
@@ -265,19 +227,22 @@ Zie de documentatie van [InferenceConfig](https://docs.microsoft.com/python/api/
 
 ---
 
+> [!TIP] 
+> Zie [een model implementeren met behulp van een aangepaste docker-installatie kopie](how-to-deploy-custom-docker-image.md)voor informatie over het gebruik van een aangepaste docker-installatie kopie met een afnemende configuratie.
+
 ## <a name="choose-a-compute-target"></a>Een reken doel kiezen
 
 [!INCLUDE [aml-compute-target-deploy](../../includes/aml-compute-target-deploy.md)]
 
 ## <a name="define-a-deployment-configuration"></a>Een implementatie configuratie definiëren
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
 De beschik bare opties voor een implementatie configuratie zijn afhankelijk van het reken doel dat u kiest.
 
 [!INCLUDE [aml-local-deploy-config](../../includes/machine-learning-service-local-deploy-config.md)]
 
-Zie voor meer informatie de documentatie van [AZ ml model Deploy](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-deploy) .
+Zie voor meer informatie [deze verwijzing](./reference-azure-machine-learning-cli.md#deployment-configuration-schema).
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -301,13 +266,11 @@ from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservic
 
 ---
 
-
-
 ## <a name="deploy-your-model"></a>Uw model implementeren
 
 U bent nu klaar om uw model te implementeren. 
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
 ### <a name="using-a-registered-model"></a>Een geregistreerd model gebruiken
 
@@ -338,7 +301,7 @@ service.wait_for_deployment(show_output = True)
 print(service.state)
 ```
 
-Zie de documentatie voor [LocalWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py&preserve-view=true), [model. Deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)en [webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice?view=azure-ml-py&preserve-view=true)voor meer informatie.
+Zie de documentatie voor [LocalWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py&preserve-view=true), [model. Deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)en [webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice?view=azure-ml-py&preserve-view=true)voor meer informatie.
 
 ---
 
@@ -348,7 +311,7 @@ Tijdens de implementatie van het model ziet u mogelijk de wijziging van de servi
 
 In de volgende tabel worden de verschillende service statussen beschreven:
 
-| Status van webservice | Description | Eind status?
+| Status van webservice | Beschrijving | Eind status?
 | ----- | ----- | ----- |
 | Overstappen | De service is in het implementatie proces. | No |
 | Niet in orde | De service is geïmplementeerd, maar is momenteel niet bereikbaar.  | No |
@@ -367,7 +330,7 @@ Ondersteuning voor het implementeren naar de rand is in preview. Zie [Deploy Azu
 
 ## <a name="delete-resources"></a>Resources verwijderen
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azcli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
 Als u een geïmplementeerde webservice wilt verwijderen, gebruikt u `az ml service <name of webservice>` .
 
@@ -380,7 +343,7 @@ Meer informatie over [het verwijderen van een webservice](/cli/azure/ext/azure-c
 Als u een geïmplementeerde webservice wilt verwijderen, gebruikt u `service.delete()` .
 Als u een geregistreerd model wilt verwijderen, gebruikt u `model.delete()` .
 
-Zie de documentatie voor [webservice. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#&preserve-view=truedelete--) en [model. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=truedelete--)voor meer informatie.
+Zie de documentatie voor [webservice. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truedelete--) en [model. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true#&preserve-view=truedelete--)voor meer informatie.
 
 ---
 

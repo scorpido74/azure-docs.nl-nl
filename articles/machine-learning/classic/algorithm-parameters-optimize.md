@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 5daa15dd01be3726ea1ff8e093d1fe94d1755122
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0ed958d24a7ff499c8cf33974648afb0f4e0a81d
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91343706"
+ms.locfileid: "91367985"
 ---
 # <a name="choose-parameters-to-optimize-your-algorithms-in-machine-learning-studio-classic"></a>Para meters kiezen voor het optimaliseren van uw algoritmen in Machine Learning Studio (klassiek)
 
-**VAN TOEPASSING OP:** ![ja](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (klassiek) ![nee](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+**van toepassing op:** ![ Van toepassing op. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klassiek) ![ is niet van toepassing op.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
 
 In dit onderwerp wordt beschreven hoe u de juiste afstemming kunt instellen voor een algoritme in Azure Machine Learning Studio (klassiek). Voor de meeste machine learning algoritmen zijn para meters ingesteld. Wanneer u een model traint, moet u waarden opgeven voor die para meters. De effectiviteit van het getrainde model is afhankelijk van de model parameters die u kiest. Het proces van het vinden van de optimale set para meters wordt het *model selectie*genoemd.
 
