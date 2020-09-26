@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 7/10/2019
 ms.author: genli
-ms.openlocfilehash: ce60f360a6839d43b0cbc209242a1385a0984c9d
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: d4d25d8e79c30933546af2b823e328a652f482eb
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90088541"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360528"
 ---
 # <a name="how-to-use-perfinsights"></a>PerfInsights gebruiken
 
@@ -218,8 +218,8 @@ Binnen het **PerformanceDiagnostics \_ jjjj-mm-dd \_ hh-mm-SS-FFF. tar. gz** -be
 
 Het tabblad **overzicht** bevat basis informatie over de uitvoering en de gegevens van de virtuele machine. Het tabblad **bevindingen** bevat een samen vatting van de aanbevelingen van alle verschillende secties van het PerfInsights-rapport.
 
-![Scherm opname van het PerfInsights-rapport](media/how-to-use-perfinsights-linux/perfinsights-linux-overview.png)  
-![Scherm opname van het PerfInsights-rapport](media/how-to-use-perfinsights-linux/perfinsights-linux-findings-tab.png)
+![Scherm afbeelding van het tabblad Overzicht van het PerfInsights-rapport.](media/how-to-use-perfinsights-linux/perfinsights-linux-overview.png)  
+![Scherm afbeelding van het tabblad Linux van het PerfInsights-rapport.](media/how-to-use-perfinsights-linux/perfinsights-linux-findings-tab.png)
 
 > [!NOTE]
 > Bevindingen die zijn gecategoriseerd als hoog, zijn bekende problemen die prestatie problemen kunnen veroorzaken. Bevindingen die zijn gecategoriseerd als medium, vertegenwoordigen niet-optimale configuraties die niet noodzakelijkerwijs prestatie problemen veroorzaken. Bevindingen die zijn gecategoriseerd als laag, zijn alleen informatieve instructies.

@@ -4,17 +4,17 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: c0213b050745712a5c77d4861b9cfba4fc953dfd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: aec9d2049a69aebc7102a70274e5fb2a3ef865a8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936477"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377104"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
 - Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 
-- Een geïmplementeerde communicatie Services-resource. [Maak een communicatie Services-resource](../../create-communication-resource.md).
+- Een geïmplementeerde Communication Services-resource. [Een Communication Services-resource maken](../../create-communication-resource.md).
 - A `User Access Token` om de aanroep-client in te scha kelen. Voor meer informatie over [het verkrijgen van een `User Access Token` ](../../access-tokens.md)
 - Optioneel: Voltooi de Snelstartgids om aan de [slag te gaan met het toevoegen van een oproep aan uw toepassing](../getting-started-with-calling.md)
 
@@ -23,7 +23,7 @@ ms.locfileid: "90936477"
 ### <a name="install-the-package"></a>Het pakket installeren
 
 <!-- TODO: update with instructions on how to download, install and add package to project -->
-Zoek het project niveau build. gradle en zorg ervoor dat u toevoegt `mavenCentral()` aan de lijst met opslag plaatsen onder `buildscript` en `allprojects`
+Zoek de build.gradle op projectniveau op en vergeet niet `mavenCentral()` toe te voegen aan de lijst met opslagplaatsen onder `buildscript` en `allprojects`
 ```groovy
 buildscript {
     repositories {
@@ -56,13 +56,13 @@ dependencies {
 
 ## <a name="object-model"></a>Objectmodel
 
-De volgende klassen en interfaces verwerken enkele van de belangrijkste functies van de Azure Communication Services-client bibliotheek die aanroept:
+De volgende klassen en interfaces verwerken enkele van de belangrijkste functies van de Azure Communication Services-clientbibliotheek voor aanroepen:
 
 | Naam                                  | Beschrijving                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
-| CallClient| De CallClient is het belangrijkste ingangs punt voor de aanroepende client bibliotheek.|
+| CallClient| De CallClient is het belangrijkste invoerpunt voor de clientbibliotheek voor aanroepen.|
 | CallAgent | De CallAgent wordt gebruikt om aanroepen te starten en te beheren. |
-| CommunicationUserCredential | De CommunicationUserCredential wordt gebruikt als de token referentie voor het instantiëren van de CallAgent.|
+| CommunicationUserCredential | De CommunicationUserCredential wordt als de tokenreferentie gebruikt om de CallAgent te instantiëren.|
 
 ## <a name="initialize-the-callclient-create-a-callagent-and-access-the-devicemanager"></a>Initialiseer de CallClient, maak een CallAgent en open de DeviceManager
 
@@ -81,8 +81,8 @@ DeviceManage deviceManager = await callClient.getDeviceManager().get();
 
 ## <a name="place-an-outgoing-call-and-join-a-group-call"></a>Een uitgaande oproep plaatsen en toevoegen aan een groeps oproep
 
-Als u een gesprek wilt maken en starten, moet u de-methode aanroepen `CallClient.call()` en het van de genodigden opgeven `Identifier` .
-Als u lid wilt worden van een groeps oproep, moet u de methode aanroepen `CallClient.join()` en de groupid opgeven. Groeps-Id's moeten de GUID-of UUID-indeling hebben.
+Als u een gesprek wilt maken en starten, moet u de-methode aanroepen `CallAgent.call()` en het van de genodigden opgeven `Identifier` .
+Als u lid wilt worden van een groeps oproep, moet u de methode aanroepen `CallAgent.join()` en de groupid opgeven. Groeps-Id's moeten de GUID-of UUID-indeling hebben.
 
 Aanroepen maken en starten is synchroon. Met het gesprek exemplaar kunt u zich abonneren op alle gebeurtenissen in de aanroep.
 
@@ -106,7 +106,7 @@ PhoneNumber acsUser2 = new PhoneNumber("<PHONE_NUMBER>");
 CommunicationIdentifier participants[] = new CommunicationIdentifier[]{ acsUser1, acsUser2 };
 StartCallOptions startCallOptions = new StartCallOptions();
 Context appContext = this.getApplicationContext();
-Call groupCall = callClient.call(participants, startCallOptions);
+Call groupCall = callAgent.call(participants, startCallOptions);
 ```
 
 ### <a name="place-a-11-call-with-with-video-camera"></a>Een 1:1-oproep met met de video camera plaatsen
@@ -266,7 +266,7 @@ Wanneer de verwerking van het push meldings bericht is geslaagd en de handlers v
 
 ### <a name="unregister-push-notification"></a>Registratie van push melding opheffen
 
-- Toepassingen kunnen de registratie van push meldingen op elk gewenst moment ongedaan maken. Roep de `unregisterPushNotification()` methode aan op callAgent.
+- Toepassingen kunnen de registratie van push meldingen op elk gewenst moment ongedaan maken. Roep de `unregisterPushNotification()` methode op callAgent aan om de registratie ongedaan te maken.
 
 ```java
 try {
@@ -281,7 +281,7 @@ catch(Exception e) {
 U hebt toegang tot de oproep eigenschappen en kunt verschillende bewerkingen uitvoeren tijdens een aanroep om instellingen te beheren die betrekking hebben op video en audio.
 
 ### <a name="call-properties"></a>Eigenschappen van oproep
-* Haal de unieke id op voor deze aanroep.
+* Haal de unieke ID op voor deze aanroep.
 ```java
 String callId = call.getCallId();
 ```
@@ -300,7 +300,7 @@ CommunicationIdentifier callerId = call.getCallerId();
 ```java
 CallState callState = call.getState();
 ```
-Het retourneert een teken reeks reprensting huidige status van een aanroep:
+Er wordt een teken reeks geretourneerd die de huidige status van een aanroep vertegenwoordigt:
 * Geen '-initiële gespreks status
 * ' Binnenkomend ': geeft aan dat de aanroep inkomend moet worden geaccepteerd of geweigerd
 * ' Verbinding maken '-initiële overgangs status zodra de aanroep is geplaatst of geaccepteerd
@@ -354,7 +354,7 @@ Future startVideoFuture = call.startVideo(currentVideoStream);
 startVideoFuture.get();
 ```
 
-Zodra u het verzenden van de video hebt gestart, `LocalVideoStream` wordt een exemplaar toegevoegd aan de `localVideoStreams` verzameling op het aanroep exemplaar.
+Zodra u de video hebt verzonden, `LocalVideoStream` wordt een exemplaar toegevoegd aan de `localVideoStreams` verzameling op het aanroep exemplaar.
 ```java
 currentVideoStream == call.getLocalVideoStreams().get(0);
 ```
@@ -385,7 +385,7 @@ Aan alle gegeven externe deel nemers is een set eigenschappen en verzamelingen g
 * De id voor deze externe deel nemer ophalen.
 De identiteit is een van de typen ' identifier '
 ```java
-CommunicationIdentifier participantIdentity = remoteParticipant.getId();
+CommunicationIdentifier participantIdentity = remoteParticipant.getIdentifier();
 ```
 
 * De status van deze externe deel nemer ophalen.
@@ -397,7 +397,7 @@ Status kan een van
 * ' Verbinding maken '-transitie status terwijl deel nemer verbinding maakt met de aanroep
 * Verbonden: de deel nemer is verbonden met de oproep
 * Hold-deel nemer is in de wacht stand
-* ' EarlyMedia '-aankondiging wordt afgespeeld voordat de deel nemer is verbonden met de oproep
+* ' EarlyMedia ': de aankondiging wordt afgespeeld voordat de deel nemer is verbonden met de oproep
 * ' Verbinding verbroken ': eind status-de deel nemer is losgekoppeld van de aanroep
 
 
@@ -476,7 +476,7 @@ void onRemoteParticipantVideoStreamsUpdated(RemoteParticipant participant, Remot
 ### <a name="remote-video-stream-properties"></a>Eigenschappen van externe video-stream
 De externe video stroom heeft een aantal eigenschappen
 
-* `Id` -Id van een externe video stroom
+* `Id` -ID van een externe video stroom
 ```java
 int id = remoteVideoStream.getId();
 ```

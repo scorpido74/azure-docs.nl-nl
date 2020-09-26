@@ -1,18 +1,18 @@
 ---
 title: Kan geen Jupyter-notebook maken in azure HDInsight
-description: Hierin worden de stappen beschreven voor het oplossen van problemen en mogelijke oplossingen voor problemen bij het werken met Azure HDInsight-clusters.
+description: Meer informatie over de stappen voor probleem oplossing en mogelijke oplossingen voor problemen bij interactie met Azure HDInsight-clusters.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 02/11/2020
-ms.openlocfilehash: 61e7cd8d37108b8f4eea88c4f6b6b2a8cdbfd605
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e4f4fcfa52733ec8f1f0ceedc669b8307efabf3c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77186803"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324005"
 ---
 # <a name="unable-to-create-jupyter-notebook-in-azure-hdinsight"></a>Kan geen Jupyter-notebook maken in azure HDInsight
 
@@ -32,7 +32,7 @@ Een versie komt niet overeen.
 
 ## <a name="resolution"></a>Oplossing
 
-1. Gebruik de [SSH-opdracht](../hdinsight-hadoop-linux-use-ssh-unix.md) om verbinding te maken met uw cluster. Bewerk de onderstaande opdracht door CLUSTERNAME te vervangen door de naam van uw cluster en voer vervolgens de volgende opdracht in:
+1. Gebruik de [ssh-opdracht](../hdinsight-hadoop-linux-use-ssh-unix.md) om verbinding te maken met uw cluster. Bewerk de onderstaande opdracht door CLUSTERNAME te vervangen door de naam van uw cluster. Voer vervolgens deze opdracht in:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
@@ -52,7 +52,7 @@ Een versie komt niet overeen.
 
     Sla de wijzigingen op door **CTRL + X**, **Y**, **Enter**in te voeren.
 
-1. Ga in een webbrowser naar `https://CLUSTERNAME.azurehdinsight.net/#/main/services/JUPYTER` , waarbij `CLUSTERNAME` de naam van het cluster is.
+1. Navigeer in een webbrowser naar `https://CLUSTERNAME.azurehdinsight.net/#/main/services/JUPYTER`, waarbij `CLUSTERNAME` de naam van uw cluster is.
 
 1. Start de Jupyter-service opnieuw.
 

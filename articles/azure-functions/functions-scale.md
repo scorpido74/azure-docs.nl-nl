@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 80bb59527f416afd78b992fb12a4ef72956f91b7
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: c5dd703851054b058d96440a3a994b9d10eecfa3
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587222"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372660"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Schaal en hosting van Azure Functions
 
@@ -34,7 +34,7 @@ Zie de [sectie vergelijkings abonnementen](#hosting-plans-comparison)voor een ge
 
 Wanneer u het verbruiks abonnement gebruikt, worden instanties van de Azure Functions-host dynamisch toegevoegd en verwijderd op basis van het aantal binnenkomende gebeurtenissen. Dit serverloze abonnement wordt automatisch geschaald en u betaalt alleen voor rekenresources wanneer uw functies worden uitgevoerd. Bij een verbruiksabonnement treedt er na een ingestelde periode een time-out op voor een functie-uitvoering.
 
-De facturering is dan ook gebaseerd op het aantal uitvoeringen, de uitvoeringstijd en het gebruikte geheugen. De facturering wordt samengevoegd voor alle functies in een functie-app. Zie de pagina met prijzen voor [Azure functions](https://azure.microsoft.com/pricing/details/functions/)voor meer informatie.
+De facturering is dan ook gebaseerd op het aantal uitvoeringen, de uitvoeringstijd en het gebruikte geheugen. Het gebruik wordt geaggregeerd voor alle functies in een functie-app. Zie de pagina met prijzen voor [Azure functions](https://azure.microsoft.com/pricing/details/functions/)voor meer informatie.
 
 Het verbruiks abonnement is het standaard hosting plan en biedt de volgende voor delen:
 
@@ -58,7 +58,7 @@ Wanneer u het Premium-abonnement gebruikt, worden exemplaren van de Azure Functi
 
 Zie [Azure functions Premium-abonnement](functions-premium-plan.md)voor meer informatie over hoe u een functie-app kunt maken in een Premium-abonnement.
 
-In plaats van de facturering per uitvoering en het verbruikte geheugen, wordt de facturering voor het Premium-abonnement gebaseerd op het aantal kern seconden en het geheugen dat voor de benodigde en vooraf gewarmte instanties wordt gebruikt. Ten minste één exemplaar moet op elk moment per plan warm zijn. Dit betekent dat er een mini maal maandelijks bedrag per actief abonnement is, ongeacht het aantal uitvoeringen. Houd er rekening mee dat alle functie-apps in een Premium-abonnement vooraf gewarmde en actieve instanties delen.
+In plaats van de facturering per uitvoering en het verbruikte geheugen, wordt de facturering voor het Premium-abonnement gebaseerd op het aantal kern seconden en het geheugen dat is toegewezen aan alle instanties.  Er zijn geen uitvoerings kosten voor het Premium-abonnement. Ten minste één exemplaar moet op elk moment per plan worden toegewezen. Dit resulteert in een minimale maandelijkse kosten per actief abonnement, ongeacht of de functie actief of niet-actief is. Houd er rekening mee dat alle functie-apps in een Premium-abonnement toegewezen exemplaren hebben.
 
 Bekijk het Azure Functions Premium-abonnement in de volgende situaties:
 
@@ -79,12 +79,12 @@ Houd rekening met een App Service-abonnement in de volgende situaties:
 
 U betaalt hetzelfde voor functie-apps in een App Service plan zoals u zou doen voor andere App Service resources, zoals web-apps. Zie het [overzicht van Azure app service plannen](../app-service/overview-hosting-plans.md)voor meer informatie over de werking van het app service plan.
 
-Met een App Service-abonnement kunt u hand matig uitschalen door meer VM-exemplaren toe te voegen. U kunt ook automatisch schalen inschakelen. Zie [aantal exemplaren hand matig of automatisch schalen](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json)voor meer informatie. U kunt ook omhoog schalen door een ander App Service plan te kiezen. Zie [een app omhoog schalen in azure](../app-service/manage-scale-up.md)voor meer informatie. 
+Met een App Service-abonnement kunt u hand matig uitschalen door meer VM-exemplaren toe te voegen. U kunt automatisch schalen ook inschakelen, maar automatisch schalen is langzamer dan de elastische schaal van het Premium-abonnement. Zie [aantal exemplaren hand matig of automatisch schalen](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json)voor meer informatie. U kunt ook omhoog schalen door een ander App Service plan te kiezen. Zie [een app omhoog schalen in azure](../app-service/manage-scale-up.md)voor meer informatie. 
 
 Wanneer u Java script-functies uitvoert op een App Service-abonnement, moet u een abonnement kiezen dat minder Vcpu's heeft. Zie voor meer informatie [single-core app service-abonnementen kiezen](functions-reference-node.md#choose-single-vcpu-app-service-plans). 
 <!-- Note: the portal links to this section via fwlink https://go.microsoft.com/fwlink/?linkid=830855 --> 
 
-Met een [app service Environment](../app-service/environment/intro.md) (ASE) kunt u uw functies volledig isoleren en profiteren van hoge schaal.
+Met een [app service Environment](../app-service/environment/intro.md) (ASE) kunt u uw functies volledig isoleren en profiteren van meer exemplaren dan een app service plan.
 
 ### <a name="always-on"></a><a name="always-on"></a> Altijd aan
 
@@ -121,6 +121,12 @@ Het is mogelijk dat meerdere functie-apps hetzelfde opslag account delen zonder 
 <!-- JH: Does using a Premium Storage account improve perf? -->
 
 Zie [Inleiding tot de Azure Storage services](../storage/common/storage-introduction.md#core-storage-services)voor meer informatie over typen opslag accounts.
+
+### <a name="in-region-data-residency"></a>In regio gegevens locatie
+
+Wanneer dit nodig is om alle klant gegevens binnen één regio te blijven, moet het opslag account dat is gekoppeld aan de functie-app, [in de regio redundantie](../storage/common/storage-redundancy.md)zijn.  Een in-regio-redundante-opslag account moet ook worden gebruikt met [Azure Durable functions](./durable/durable-functions-perf-and-scale.md#storage-account-selection) voor Durable functions.
+
+Andere door het platform beheerde klant gegevens worden alleen opgeslagen in de regio bij het hosten van een interne Load Balancer App Service Environment (of ILB ASE).  Meer informatie vindt u in [ASE zone redundantie](../app-service/environment/zone-redundancy.md#in-region-data-residency).
 
 ## <a name="how-the-consumption-and-premium-plans-work"></a>Hoe de verbruiks- en Premium-abonnementen werken
 
@@ -185,7 +191,7 @@ In de volgende vergelijkings tabel ziet u alle belang rijke aspecten om het besl
 |**[Verbruiks abonnement](#consumption-plan)**| Schaal automatisch en betaal alleen voor reken resources wanneer uw functies worden uitgevoerd. In het verbruiks plan worden instanties van de functions-host dynamisch toegevoegd en verwijderd op basis van het aantal binnenkomende gebeurtenissen.<br/> ✔ Standaard hosting plan.<br/>✔ Betaal alleen wanneer uw functies worden uitgevoerd.<br/>✔ automatisch uitschalen, zelfs tijdens peri Oden met een hoge belasting.|  
 |**[Premium-abonnement](#premium-plan)**|Bij automatisch schalen op basis van de vraag, kunt u vooraf gewarmde werk rollen gebruiken om toepassingen uit te voeren zonder vertraging na inactiviteit, om krachtigere instanties uit te voeren en verbinding te maken met VNETs. Bekijk het Azure Functions Premium-abonnement in de volgende situaties naast alle functies van het App Service plan: <br/>✔ Uw functie-apps continu of bijna continu worden uitgevoerd.<br/>✔ U een groot aantal kleine uitvoeringen hebt en een hoge uitvoerings factuur hebt, maar een laag GB tweede factuur in het verbruiks abonnement.<br/>✔ U meer CPU-of geheugen opties nodig hebt dan wat wordt aangegeven door het verbruiks abonnement.<br/>✔ De code moet langer worden uitgevoerd dan de Maxi maal toegestane uitvoerings tijd voor het verbruiks abonnement.<br/>✔ U functies nodig hebt die alleen beschikbaar zijn in een Premium-abonnement, zoals een verbinding met een virtueel netwerk.|  
 |**[Toegewezen abonnement](#app-service-plan)**<sup>1</sup>|Voer uw functies uit binnen een App Service plan op regel matige App Service plan tarieven. Geschikt voor langlopende bewerkingen en wanneer meer voorspellende schaling en kosten zijn vereist. Houd rekening met een App Service-abonnement in de volgende situaties:<br/>✔ U bestaande, geApp Servicede virtuele machines die al worden uitgevoerd, worden gebruikt.<br/>✔ U een aangepaste installatie kopie wilt opgeven waarop uw functies moeten worden uitgevoerd.|  
-|**[ASE](#app-service-plan)**<sup>1</sup>|App Service Environment (ASE) is een App Service functie die een volledig geïsoleerde en toegewezen omgeving biedt voor het veilig uitvoeren van App Service-apps op grote schaal. As zijn geschikt voor werk belastingen van toepassingen die nodig zijn voor: <br/>✔ Zeer grote schaal.<br/>✔ Isolatie en beveiligde netwerk toegang.<br/>✔ Hoog geheugen gebruik.|  
+|**[ASE](#app-service-plan)**<sup>1</sup>|App Service Environment (ASE) is een App Service functie die een volledig geïsoleerde en toegewezen omgeving biedt voor het veilig uitvoeren van App Service-apps op grote schaal. As zijn geschikt voor werk belastingen van toepassingen die nodig zijn voor: <br/>✔ Zeer grote schaal.<br/>✔ Volledige Compute-isolatie en beveiligde netwerk toegang.<br/>✔ Hoog geheugen gebruik.|  
 | **[Kubernetes](functions-kubernetes-keda.md)** | Kubernetes biedt een volledig geïsoleerde en toegewezen omgeving die boven op het Kubernetes-platform wordt uitgevoerd.  Kubernetes is geschikt voor werk belastingen van toepassingen die het volgende vereisen: <br/>Aangepaste hardwarevereisten ✔.<br/>✔ Isolatie en beveiligde netwerk toegang.<br/>✔ Mogelijkheid om uit te voeren in een hybride of multi-cloud omgeving.<br/>✔ Uitgevoerd naast bestaande Kubernetes-toepassingen en-services.|  
 
 <sup>1</sup> zie de [app service plan limieten](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits)voor specifieke limieten voor de verschillende opties voor het app service plan.

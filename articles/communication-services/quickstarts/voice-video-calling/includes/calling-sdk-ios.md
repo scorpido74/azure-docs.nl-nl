@@ -4,17 +4,17 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: fa7fd73a7d8019919a89dd9e9522b7389dc9c18f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 31f7e348a805c86964a8856fb81b83831c611de5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936473"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376569"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
 - Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 
-- Een geïmplementeerde communicatie Services-resource. [Maak een communicatie Services-resource](../../create-communication-resource.md).
+- Een geïmplementeerde Communication Services-resource. [Een Communication Services-resource maken](../../create-communication-resource.md).
 - A `User Access Token` om de aanroep-client in te scha kelen. Voor meer informatie over [het verkrijgen van een `User Access Token` ](../../access-tokens.md)
 - Optioneel: Voltooi de Snelstartgids om aan de [slag te gaan met het toevoegen van een oproep aan uw toepassing](../getting-started-with-calling.md)
 
@@ -22,32 +22,32 @@ ms.locfileid: "90936473"
 
 ### <a name="creating-the-xcode-project"></a>Het Xcode-project maken
 
-Maak in Xcode een nieuw iOS-project en selecteer de **app-sjabloon voor één weer gave** . Deze Snelstartgids maakt gebruik van het [SwiftUI-Framework](https://developer.apple.com/xcode/swiftui/), dus u moet de **taal** instellen op **Swift** en de **gebruikers interface** op **SwiftUI**. U gaat tijdens deze Quick Start geen eenheids tests of UI-tests maken. Schakel het selectie vakje **include-tests toevoegen** uit en schakel ook **ui-tests**uit.
+Maak in Xcode een nieuw iOS-project en selecteer de sjabloon **Single View-app** (Toepassing met één weergave). Deze Snelstartgids maakt gebruik van het [SwiftUI-Framework](https://developer.apple.com/xcode/swiftui/), dus u moet de **taal** instellen op **Swift** en de **gebruikers interface** op **SwiftUI**. U gaat tijdens deze Quick Start geen eenheids tests of UI-tests maken. Schakel het selectie vakje **include-tests toevoegen** uit en schakel ook **ui-tests**uit.
 
-:::image type="content" source="../media/ios/xcode-new-ios-project.png" alt-text="Scherm afbeelding met het venster Nieuw nieuw project maken in Xcode.":::
+:::image type="content" source="../media/ios/xcode-new-ios-project.png" alt-text="Schermafbeelding dat het nieuw aangemaakte venster Nieuw Project in Xcode aantoont.":::
 
 ### <a name="install-the-package"></a>Het pakket installeren
 
-Voeg de Azure Communication Services-client bibliotheek en de bijbehorende afhankelijkheden (Azurebinnen. Framework en AzureCommunication. Framework) toe aan uw project.
+Voeg de Azure Communication Services-clientbibliotheek en de bijbehorende afhankelijkheden (AzureCore.framework en AzureCommunication.framework) toe aan uw project.
 
 > [!NOTE]
-> Met de release van AzureCommunicationCalling SDK kunt u een bash-script vinden `BuildAzurePackages.sh` . Bij het uitvoeren van het script krijgt `sh ./BuildAzurePackages.sh` u het pad naar de gegenereerde Framework pakketten die in de volgende stap moeten worden geïmporteerd in de voor beeld-app. Houd er rekening mee dat u Xcode-opdracht regel Programma's moet instellen als u dit nog niet hebt gedaan voordat u het script uitvoert: start Xcode, Selecteer voor keuren-> locaties. Kies uw Xcode-versie voor de opdracht regel Programma's.
+> Met de release van AzureCommunicationCalling SDK vindt u een bash-script `BuildAzurePackages.sh`. Het script wanneer u `sh ./BuildAzurePackages.sh` uitvoert, geeft u het pad naar de gegenereerde Framework-pakketten die in de volgende stap moeten worden geïmporteerd in de voorbeeld-app. Houd er rekening mee dat u, voordat u het script uitvoert, Xcode-opdrachtregel Hulpprogramma's moet instellen als u dit nog niet hebt gedaan: Start Xcode, Selecteer Voorkeuren-> Locaties. Kies uw Xcode-versie voor de opdrachtregel Hulpprogramma's. **Houd er rekening mee dat het BuildAzurePackages.sh-script alleen werkt met Xcode 11,5 en hoger.**
 
-1. Down load de Azure Communication Services-client bibliotheek voor iOS.
-2. Klik in Xcode op het project bestand en selecteer het build-doel om de project instellingen-editor te openen.
-3. Schuif op het tabblad **Algemeen** naar de sectie **frameworks, Bibliotheken en Inge sloten inhoud** en klik op het pictogram **' + '** .
-4. Kies in de linkerbenedenhoek van het dialoog venster **bestanden toevoegen**, ga naar de map **AzureCommunicationCalling. Framework** van het niet-gezipte client bibliotheek pakket.
-    1. Herhaal de laatste stap voor het toevoegen van **azurebinnen. Framework** en **AzureCommunication. Framework**.
-5. Open het tabblad **Build Settings** van de editor project instellingen en schuif naar het gedeelte **Zoek paden** . Voeg een nieuwe vermelding voor het **zoeken naar Framework-paden** toe voor de map met **AzureCommunicationCalling. Framework**.
-    1. Voeg nog een framework-Zoek paden vermelding toe aan de map die de afhankelijkheden bevat.
+1. Download de Azure Communication Services-clientbibliotheek voor iOS.
+2. Klik in Xcode op het projectbestand en selecteer het build-doel om de projectinstellingen-editor te openen.
+3. Scrol op het tabblad **Algemeen** naar de secties **Frameworks, Bibliotheken en Ingesloten inhoud** en klik op het pictogram **"+"** .
+4. Kies linksonder in het dialoogvenster **Bestanden toevoegen**, navigeer naar de map **AzureCommunicationCalling.framework** van het pakket met de niet-gecomprimeerde clientbibliotheek.
+    1. Herhaal de laatste stap voor het toevoegen van **AzureCore.framework** en **AzureCommunication.framework**.
+5. Open het tabblad **Build-instellingen** van de projectinstellingeneditor en blader naar de secties **Zoekpaden**. Voeg een nieuwe vermelding **Zoekpaden framework** toe voor de map die het **AzureCommunicationCalling.framework** bevat.
+    1. Voeg nog een vermelding Zoekpaden framework toe aan de map die de afhankelijkheden bevat.
 
-:::image type="content" source="../media/ios/xcode-framework-search-paths.png" alt-text="Scherm opname van het bijwerken van de Framework-Zoek paden in XCode.":::
+:::image type="content" source="../media/ios/xcode-framework-search-paths.png" alt-text="Schermopname van het bijwerken van de Zoekpaden framework in XCode.":::
 
 ### <a name="request-access-to-the-microphone"></a>Toegang tot de microfoon aanvragen
 
-Als u toegang wilt krijgen tot de microfoon van het apparaat, moet u de eigenschappen lijst van de app bijwerken met een `NSMicrophoneUsageDescription` . U stelt de gekoppelde waarde in op een `string` die wordt opgenomen in het dialoog venster dat door het systeem wordt gebruikt om aanvragen voor toegang van de gebruiker aan te vragen.
+Als u toegang wilt krijgen tot de microfoon van het apparaat, moet u de eigenschappenlijst van de app bijwerken met een `NSMicrophoneUsageDescription`. U stelt de bijbehorende waarde in op een `string` die wordt opgenomen in het dialoogvenster dat het systeem gebruikt om toegang te vragen aan de gebruiker.
 
-Klik met de rechter muisknop op de `Info.plist` vermelding van de project structuur en selecteer **openen als**  >  **bron code**. Voeg de volgende regels toe aan de `<dict>` sectie op het hoogste niveau en sla het bestand op.
+Klik met de rechtermuisknop op de `Info.plist`-vermelding van de projectstructuur en selecteer **Open As** > **Source Code**. Voeg de volgende regels toe in de bovenste sectie `<dict>` en sla het bestand op.
 
 ```xml
 <key>NSMicrophoneUsageDescription</key>
@@ -56,7 +56,7 @@ Klik met de rechter muisknop op de `Info.plist` vermelding van de project struct
 
 ### <a name="set-up-the-app-framework"></a>Het app-framework instellen
 
-Open het bestand **ContentView. Swift** van het project en voeg `import` boven aan het bestand een declaratie toe om de te importeren `AzureCommunicationCalling library` . Daarnaast `AVFoundation` moet u dit voor de code van de audio-machtiging in het programma importeren.
+Open het bestand **ContentView.swift** van het project en voeg boven aan het bestand een `import`-declaratie toe om de `AzureCommunicationCalling library`te importeren. Daarnaast `AVFoundation` moet u dit voor de code van de audio-machtiging in het programma importeren.
 
 ```swift
 import AzureCommunicationCalling
@@ -72,7 +72,7 @@ De volgende klassen en interfaces verwerken enkele van de belangrijkste functies
 | ------------------------------------- | ------------------------------------------------------------ |
 | ACSCallClient | De ACSCallClient is het belangrijkste ingangs punt voor de aanroepende client bibliotheek.|
 | ACSCallAgent | De ACSCallAgent wordt gebruikt om aanroepen te starten en te beheren. |
-| CommunicationUserCredential | De CommunicationUserCredential wordt gebruikt als de token referentie voor het instantiëren van de CallAgent.| 
+| CommunicationUserCredential | De CommunicationUserCredential wordt gebruikt als de tokenreferentie voor het instantiëren van de CallAgent.| 
 | CommunicationIndentifier | De CommunicationIndentifier wordt gebruikt om de identiteit van de gebruiker te vertegenwoordigen. Dit kan een van de volgende zijn: CommunicationUser/PhoneNumber/CallingApplication. |
 
 > [!NOTE]

@@ -8,14 +8,17 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 890a25ed2cf11d657cad930815d78dbf968cc9f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0829d4b3fca068ddb0db2df53dd635ab7ad80bed
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71203649"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281912"
 ---
 # <a name="manage-the-opc-vault-certificate-service"></a>De OPC-kluis certificaat service beheren
+
+> [!IMPORTANT]
+> Tijdens het bijwerken van dit artikel raadpleegt u [Azure Industrial IOT](https://azure.github.io/Industrial-IoT/) voor de meest recente inhoud.
 
 In dit artikel worden de beheer taken voor de OPC kluis Certificate Management-service in azure beschreven. Het bevat informatie over het vernieuwen van CA-certificaten voor uitgevers, het vernieuwen van de certificaatintrekkingslijst (CRL) en het verlenen en intrekken van gebruikers toegang.
 
@@ -69,7 +72,7 @@ Standaard kan een geverifieerde gebruiker in de Tenant zich als lezer aanmelden 
 2. Ga naar **Azure Active Directory**  >  **Enter prise-toepassingen**.
 3. De registratie van de OPC-kluis micro service (standaard uw) kiezen `resourceGroupName-service` .
 4. Ga naar **gebruikers en groepen**.
-5. Selecteer **gebruiker toevoegen**.
+5. Selecteer **Add User**.
 6. De gebruiker selecteren of uitnodigen voor toewijzing aan een specifieke rol.
 7. Selecteer de rol voor de gebruikers.
 8. Selecteer **Toewijzen**.

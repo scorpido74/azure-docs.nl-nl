@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f3a8cafa907cb66832faf033f7b62e68bf859097
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 49922599adb30e6c631f29b4831fda60cc000a40
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918822"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360120"
 ---
 # <a name="integrate-with-a-client-application-using-speech-sdk"></a>Integreren met een client toepassing met behulp van Speech SDK
 
@@ -34,7 +34,7 @@ Er is een toepassing voor aangepaste opdrachten vereist om dit artikel te volt o
 U hebt ook het volgende nodig:
 > [!div class = "checklist"]
 > * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) of hoger. Deze hand leiding is gebaseerd op Visual Studio 2019.
-> * Een Azure-abonnements sleutel voor spraak Services. [Ontvang een gratis versie](get-started.md) of maak deze op de [Azure Portal](https://portal.azure.com)
+> * Een Azure-abonnements sleutel voor spraak Services. [Ontvang een gratis versie](overview.md#try-the-speech-service-for-free) of maak deze op de [Azure Portal](https://portal.azure.com)
 > * [Uw apparaat inschakelen voor ontwikkeling](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development)
 
 ## <a name="step-1-publish-custom-commands-application"></a>Stap 1: de toepassing voor het publiceren van aangepaste opdrachten
@@ -114,18 +114,18 @@ Maak de gebruikers interface van de toepassing door de XAML-code toe te voegen.
    </Page>
    ```
 
-De Ontwerpweergave is bijgewerkt om de gebruikers interface van de toepassing weer te geven.
+De Ontwerpweergave is bijgewerkt om de gebruikersinterface van de toepassing weer te geven.
 
 ### <a name="c-code-behind-source"></a>C#-code-achter-bron
 
 Voeg de code achter de bron toe zodat de toepassing werkt zoals verwacht. De bron code achter bevat:
 
 - Vereiste `using` instructies voor de `Speech` en- `Speech.Dialog` naam ruimten
-- Een eenvoudige implementatie om toegang tot de microfoon te garanderen, bekabeld tot een knop-handler
-- Helpers van de Basic-gebruikers interface om berichten en fouten in de toepassing weer te geven
-- Een overloop punt voor het pad van de initialisatie code dat later wordt ingevuld
-- Een helper voor het afspelen van tekst naar spraak (zonder streaming-ondersteuning)
-- Een lege knop-handler om te Luis teren die later wordt ingevuld
+- Een eenvoudige implementatie om toegang tot de microfoon te garanderen, aangesloten op een knop-handler
+- Basic UI-helpers om berichten en fouten in de toepassing weer te geven
+- Een landingspunt voor het pad van de initialisatiecode dat later wordt ingevuld
+- Een helper voor het afspelen van tekst-naar-spraak (zonder streaming-ondersteuning)
+- Een lege knop-handler om te luisteren die later wordt ingevuld
 
 Voeg als volgt de code-behind bron toe:
 
@@ -404,7 +404,7 @@ Voeg als volgt de code-behind bron toe:
 
 1. Kies in de menu balk de optie **bestand**  >  **Alles opslaan** om uw wijzigingen op te slaan.
 
-## <a name="try-it-out"></a>Probeer het eens
+## <a name="try-it-out"></a>Beleid uitproberen
 
 1. Kies in de menubalk **Build** > **Build Solution** om de toepassing te bouwen. De code moet zonder fouten worden gecompileerd.
 
@@ -412,11 +412,11 @@ Voeg als volgt de code-behind bron toe:
 
    ![Voor beeld van een UWP-toepassing voor virtuele assistenten in C#-Quick Start](media/sdk/qs-voice-assistant-uwp-helloworld-window.png)
 
-1. Selecteer **microfoon inschakelen**. Als de toegangs machtigings aanvraag wordt weer gegeven, selecteert u **Ja**.
+1. Selecteer **Microfoon inschakelen**. Als de toegangs machtigings aanvraag wordt weer gegeven, selecteert u **Ja**.
 
    ![Verzoek om toegang tot microfoon](media/sdk/qs-csharp-uwp-10-access-prompt.png)
 
-1. Selecteer **Talk**en spreek een Engelse zin of zin in op de microfoon van uw apparaat. Uw spraak wordt verzonden naar het directe lijn spraak kanaal en naar tekst getranscribeerd, die wordt weer gegeven in het venster.
+1. Selecteer **Talk**en spreek een Engelse zin of zin in op de microfoon van uw apparaat. De gesproken tekst wordt verzonden naar de Direct Line Speech-service en getranscribeerd naar tekst, die in het venster wordt weergegeven.
 
 ## <a name="next-steps"></a>Volgende stappen
 

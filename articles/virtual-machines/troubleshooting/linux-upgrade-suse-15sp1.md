@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 05/21/2020
 ms.author: arremana
-ms.openlocfilehash: 079574ab4c5846eae6266d1e13240baf99428a69
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ed355f82b88f460ff4b372484a690f166a15550
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84449240"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91359508"
 ---
 # <a name="upgrade-azure-vm-with-sles-12-to-sles-15-sp1"></a>Een upgrade uitvoeren voor een Azure-VM met SLES 12 naar SLES 15 SP1
 
@@ -66,11 +66,11 @@ De huidige SLES-versie moet SLES 12 SP4 of 12 SP5 zijn voordat u kunt door gaan 
 
 6. Ga naar de [Azure Portal](https://portal.azure.com), selecteer de virtuele machine en selecteer vervolgens **seriële console**. U ziet dat het systeem stopt bij ' opnieuw opstarten: systeem opnieuw opstarten '. Dit proces neemt ongeveer 15-45 minuten in beslag. Voor virtuele machines van de tweede generatie is het mogelijk vastgelopen in het scherm ' opnieuw opstarten: systeem opnieuw opstarten '. Wacht in dit geval 45 minuten. Als het nog steeds niet wordt uitgevoerd, gaat u naar de **overzichts** pagina van de virtuele machine in de Azure Portal, stopt u de virtuele machine en start u deze opnieuw.
 
-     ![De scherm afbeelding over de berichten in de seriële console](./media/linux-upgrade-suse-15sp1/reboot-message.png)
+     ![De scherm afbeelding over de berichten in de seriële console.](./media/linux-upgrade-suse-15sp1/reboot-message.png)
 
 8. Nadat het systeem opnieuw is opgestart met een nieuwe kernel, wordt het volgende bericht weer gegeven.
 
-     ![De scherm afbeelding over de berichten in de seriële console](./media/linux-upgrade-suse-15sp1/output-message.png)
+     ![De scherm afbeelding van de berichten in de seriële console nadat het systeem opnieuw is opgestart met de nieuwe kernel.](./media/linux-upgrade-suse-15sp1/output-message.png)
 9. Controleer de versie van de kernel en het besturings systeem om te controleren of de upgrade van het systeem is geslaagd.
 
     ```
@@ -85,4 +85,4 @@ U kunt een van de volgende methoden gebruiken om de versie van de generatie te c
 - Voer in de SLES-Terminal de opdracht uit `dmidecode | grep -i hyper` . Als het een generatie v1 VM is, wordt er geen uitvoer geretourneerd. Voor de generaties v2 Vm's ziet u de volgende uitvoer:
 
      ![De scherm afbeelding over uitvoer voor virtuele machine van de 2e generatie](./media/linux-upgrade-suse-15sp1/output-gen2.png)
-- Ga in het [Azure Portal](https://portal.azure.com)naar **Eigenschappen** van de virtuele machine en controleer het veld **VM-generatie** .
+- Ga in het [Azure Portal](https://portal.azure.com)naar **Eigenschappen**  van de virtuele machine en controleer het veld **VM-generatie** .

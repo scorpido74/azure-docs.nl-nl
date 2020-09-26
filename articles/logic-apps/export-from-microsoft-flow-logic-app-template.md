@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: b2a45218118282f4f1cadb29c9022fc05b30f907
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1c2f0a2c54be7adbc7b8babd596f18e08c67a024
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078736"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269553"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Stromen exporteren vanuit Power Automate en implementeren in Azure Logic Apps
 
@@ -96,7 +96,7 @@ Zie [groeien tot Azure Logic apps](https://flow.microsoft.com/blog/grow-up-to-lo
 
    1. Voor elke stap waarvoor een geautoriseerde verbinding is vereist, vouwt u die stap uit en selecteert u **nieuwe toevoegen**.
 
-      ![Nieuwe verbinding toevoegen](./media/export-from-microsoft-flow-logic-app-template/add-new-connection.png)
+      ![Scherm afbeelding met de knop Nieuw toevoegen geselecteerd in het venster verbindingen van Outlook.](./media/export-from-microsoft-flow-logic-app-template/add-new-connection.png)
 
    1. Meld u aan bij elke service of geef de benodigde referenties op om de verbinding te autoriseren.
 

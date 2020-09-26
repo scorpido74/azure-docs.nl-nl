@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/30/2019
 ms.author: zivr
 ms.custom: include file
-ms.openlocfilehash: c7e3c9292b53aeb073e11a5293459e39a22ca81d
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: b5827d60b5968eb9f5e9e0a2ca5ec884366aea3d
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89570120"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376699"
 ---
 Het plaatsen van Vm's in één regio vermindert de fysieke afstand tussen de exemplaren. Als u ze in één beschikbaarheids zone plaatst, worden deze ook fysiek dichter bij elkaar gebracht. Naarmate de Azure-footprint groeit, kan één beschikbaarheids zone echter meerdere fysieke data centers omvatten, wat kan leiden tot een netwerk latentie die van invloed is op uw toepassing. 
 
@@ -47,6 +47,39 @@ Proximity-plaatsings groepen bieden een co-locatie in hetzelfde Data Center. Omd
 -   In het geval van elastische workloads, waarbij u VM-instanties toevoegt en verwijdert en een proximity-beperking voor de plaatsings groep in uw implementatie kan ertoe leiden dat de aanvraag niet kan voldoen aan de **AllocationFailure** -fout. 
 - Het is een andere manier om de virtuele machine te onderbreken (de toewijzing ongedaan te maken) en te starten als dat nodig is. Omdat de capaciteit niet wordt bewaard nadat u een virtuele machine hebt gestopt (de toewijzing ongedaan te maken), kan dit een **AllocationFailure** -fout veroorzaken.
 
+## <a name="planned-maintenance-and-proximity-placement-groups"></a>Geplande onderhouds-en proximity-plaatsings groepen
+
+Geplande onderhouds gebeurtenissen, zoals hardware buiten gebruik stellen op een Azure-Data Center, kunnen de uitlijning van resources in proximity-plaatsings groepen beïnvloeden. Resources kunnen worden verplaatst naar een ander Data Center, waardoor de plaatsing en latentie verwachtingen die zijn gekoppeld aan de plaatsings groep van de Proximity, worden verstoord.
+
+### <a name="check-the-alignment-status"></a>De uitlijnings status controleren
+
+U kunt het volgende doen om de uitlijnings status van uw proximity-plaatsings groepen te controleren.
+
+
+- De positie van de samenplaatsings groep voor proximity-plaatsing kan worden weer gegeven met behulp van de portal, CLI en Power shell.
+
+    -   Wanneer u Power shell gebruikt, kan de co-locatie status worden verkregen met behulp van de cmdlet Get-AzProximityPlacementGroup door de optionele para meter-ColocationStatus op te nemen.
+
+    -   Wanneer u CLI gebruikt, kan de status van de co-locatie worden verkregen met behulp `az ppg show` van de optionele para meter--include-uplocation-status.
+
+- Voor elke proximity-plaatsings groep biedt een eigenschap voor de **status** van een samen vatting het huidige overzicht van de uitlijnings status van de gegroepeerde resources. 
+
+    - **Uitgelijnd**: de resource bevindt zich binnen dezelfde latentie envelop van de plaatsings groep voor nabijheid.
+
+    - **Onbekend**: de toewijzing van ten minste één van de VM-resources is ongedaan gemaakt. Zodra de back-up is gestart, moet de status weer **uitgelijnd**zijn.
+
+    - **Niet uitgelijnd**: ten minste één VM-resource is niet uitgelijnd met de Proximity-plaatsings groep. De specifieke resources die niet zijn uitgelijnd, worden ook afzonderlijk in het gedeelte Membership genoemd
+
+- Voor beschikbaarheids sets vindt u informatie over de uitlijning van afzonderlijke Vm's op de overzichts pagina van de Beschikbaarheidsset.
+
+- Voor schaal sets kan informatie over uitlijning van afzonderlijke instanties worden weer gegeven op het tabblad **instanties** van de pagina **overzicht** voor de schaalset. 
+
+
+### <a name="re-align-resources"></a>Resources opnieuw uitlijnen 
+
+Als u een proximity-plaatsings groep hebt `Not Aligned` , kunt u de betrokken bronnen stop\deallocate en opnieuw starten. Als de virtuele machine zich in een beschikbaarheidsset of een schaalset bevindt, moeten alle virtuele machines in de beschikbaarheidsset of schaalset eerst worden stopped\deallocated voordat ze opnieuw kunnen worden opgestart.
+
+Als er een toewijzings fout is opgetreden vanwege implementatie beperkingen, moet u mogelijk alle resources in de desbetreffende proximity-plaatsings groep (inclusief de uitgelijnde resources) eerst stop\deallocate en vervolgens opnieuw opstarten om de uitlijning te herstellen.
 
 ## <a name="best-practices"></a>Aanbevolen procedures 
 - Voor de laagste latentie gebruikt u proximity-plaatsings groepen samen met versneld netwerken. Zie [een virtuele Linux-machine maken met versneld netwerken](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) of [een virtuele Windows-machine maken met versneld netwerken](/azure/virtual-network/create-vm-accelerated-networking-powershell?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)voor meer informatie.

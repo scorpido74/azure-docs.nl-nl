@@ -1,9 +1,9 @@
 ---
-ms.openlocfilehash: 47aab387fe43da16f5950d99d91c19b9153c8cf9
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e622e3cf6f3d9403c3f55ba32167b4ac4e813d68
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90901477"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377567"
 ---
-<Token>**Van toepassing op:** :::image type="content" source="../media/applies-to/yes.png" alt-text="Ja, één server":::Azure database for PostgreSQL-één server :::image type="content" source="../media/applies-to/yes.png" alt-text="ja-flexibel-server":::Azure database for PostgreSQL-flexibele server </Token>
+<Token>**van toepassing op:** :::image type="icon" source="../media/applies-to/yes.png" border="false"::: Azure Database for PostgreSQL-Azure Database for PostgreSQL van één server :::image type="icon" source="../media/applies-to/yes.png" border="false"::: -flexibele server </Token>

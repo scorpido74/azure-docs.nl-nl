@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 520b38f4c733e7bf28a2a06429ad14d016c5bd28
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 6e8e6feb064a5d26eb6cb72b521d3f9df0380086
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027610"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360103"
 ---
 # <a name="send-custom-commands-activity-to-client-application"></a>Activiteit aangepaste opdrachten verzenden naar client toepassing
 
@@ -29,7 +29,7 @@ U voert de volgende taken uit:
 ## <a name="prerequisites"></a>Vereisten
 > [!div class = "checklist"]
 > * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) of hoger. In deze hand leiding wordt gebruikgemaakt van Visual Studio 2019
-> * Een Azure-abonnements sleutel voor de speech-service: [Haal er gratis een](get-started.md) op en maak deze op de [Azure Portal](https://portal.azure.com)
+> * Een Azure-abonnementssleutel voor de Spraak-service: [haal gratis een sleutel op](overview.md#try-the-speech-service-for-free) of maak er een met de [Azure-portal](https://portal.azure.com)
 > * Een eerder [gemaakte aangepaste opdrachten-app](quickstart-custom-commands-application.md)
 > * Een Speech SDK met ingeschakelde client [-app: procedures: integreren met een client toepassing met behulp van Speech SDK](./how-to-custom-commands-setup-speech-sdk.md)
 
@@ -51,7 +51,7 @@ U voert de volgende taken uit:
    > [!div class="mx-imgBorder"]
    > ![Voltooiings regel voor activiteit verzenden](media/custom-commands/send-activity-to-client-completion-rules.png)
 
-## <a name="integrate-with-client-application"></a>Integreren met client toepassing
+## <a name="integrate-with-client-application"></a>Integreren met clienttoepassing
 
 In [procedures: client toepassing met Speech SDK (preview)](./how-to-custom-commands-setup-speech-sdk.md)hebt u een UWP-client toepassing gemaakt met een Speech SDK die opdrachten zoals `turn on the tv` , heeft verwerkt `turn off the fan` . Als er visuele elementen zijn toegevoegd, kunt u het resultaat van deze opdrachten bekijken.
 
@@ -146,12 +146,12 @@ connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
 };
 ```
 
-## <a name="try-it-out"></a>Uitproberen
+## <a name="try-it-out"></a>Beleid uitproberen
 
 1. De toepassing starten
-1. Selecteer microfoon inschakelen
-1. Selecteer de knop spreken
-1. Spreekt`turn on the tv`
+1. Selecteer Microfoon inschakelen
+1. Selecteer de knop Spreken
+1. Zeg `turn on the tv`
 1. De visuele status van de TV moet worden gewijzigd in aan
    > [!div class="mx-imgBorder"]
    > ![Nettolading activiteit verzenden](media/custom-commands/send-activity-to-client-turn-on-tv.png)

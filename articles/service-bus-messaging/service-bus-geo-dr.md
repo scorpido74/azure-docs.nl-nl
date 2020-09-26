@@ -3,12 +3,12 @@ title: Azure Service Bus geo-nood herstel | Microsoft Docs
 description: Over het gebruik van geografische regio's om een failover uit te voeren en herstel na nood geval in Azure Service Bus
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: fcdeb499b8ebecc4ecddbfcbe32b812ce7e3efe5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c203ed197c1e5bfb15cfb503a04df79b85c630e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341470"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372520"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure Service Bus geo-nood herstel
 
@@ -149,7 +149,7 @@ Als u probeert een koppeling te maken tussen een primaire naam ruimte met een pe
 > [!NOTE]
 > Wanneer u probeert de primaire naam ruimte te koppelen aan een persoonlijk eind punt en de secundaire naam ruimte, controleert het validatie proces alleen of er een persoonlijk eind punt bestaat op de secundaire naam ruimte. Er wordt niet gecontroleerd of het eind punt werkt of werkt na een failover. Het is uw verantwoordelijkheid om ervoor te zorgen dat de secundaire naam ruimte met het persoonlijke eind punt op de verwachte manier werkt na een failover.
 >
-> Als u wilt testen of de configuraties van het particuliere eind punt hetzelfde zijn, verzendt u een aanvraag voor het [ophalen van wacht rijen](/rest/api/servicebus/queues/get) naar de secundaire naam ruimte van buiten het virtuele netwerk en controleert u of u een fout bericht van de service ontvangt.
+> Als u wilt testen of de configuraties van het particuliere eind punt hetzelfde zijn, verzendt u een aanvraag voor het [ophalen van wacht rijen](/rest/api/servicebus/stable/queues/get) naar de secundaire naam ruimte van buiten het virtuele netwerk en controleert u of u een fout bericht van de service ontvangt.
 
 ### <a name="existing-pairings"></a>Bestaande paren
 Als er al een koppeling tussen de primaire en secundaire naam ruimte bestaat, mislukt het maken van een persoonlijk eind punt in de primaire naam ruimte. Als u wilt oplossen, maakt u eerst een persoonlijk eind punt in de secundaire naam ruimte en maakt u er er een voor de primaire naam ruimte.
@@ -168,7 +168,7 @@ Stel dat u twee virtuele netwerken hebt: VNET-1, VNET-2 en deze primaire en twee
 ![Persoonlijke eind punten en virtuele netwerken](./media/service-bus-geo-dr/private-endpoints-virtual-networks.png)
 
 
-Voor deel van deze benadering is dat failover kan plaatsvinden op de toepassingslaag, onafhankelijk van Service Bus naam ruimte. Denk eens na over de volgende scenario's: 
+Voor deel van deze benadering is dat failover kan plaatsvinden op de toepassingslaag, onafhankelijk van Service Bus naam ruimte. Stel u de volgende scenario's voor: 
 
 **Failover van toepassing:** Hier komt de toepassing niet voor in VNET-1 maar wordt deze verplaatst naar VNET-2. Als beide persoonlijke eind punten zijn geconfigureerd op zowel VNET-1 als VNET-2 voor zowel primaire als secundaire naam ruimten, werkt de toepassing gewoon. 
 
@@ -179,7 +179,7 @@ Voor deel van deze benadering is dat failover kan plaatsvinden op de toepassings
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie de [rest API referentie](/rest/api/servicebus/disasterrecoveryconfigs)voor geo-nood herstel hier.
+- Zie de [rest API referentie](/rest/api/servicebus/stable/disasterrecoveryconfigs)voor geo-nood herstel hier.
 - Voer het [voor beeld van](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/SBGeoDR2)een geo-nood herstel uit op github.
 - Zie het voor beeld van geo-nood herstel [dat berichten naar een alias verzendt](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/TestGeoDR/ConsoleApp1).
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: e75dde14cf7182f5153b3a42b26f1c7e8a4e78ac
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 2a251ef426d41413cf81f46ca05b11640f01e87a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89258024"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333763"
 ---
 # <a name="azure-media-services-concepts"></a>Azure Media Services concepten
 
@@ -103,12 +103,11 @@ Media Services biedt dynamische pakketten waarmee u uw Adaptive bitrate MP4 of S
 
 Als u gebruik wilt maken van [dynamische pakketten](media-services-dynamic-packaging-overview.md), moet u uw mezzanine-bestand (bron) coderen in een set Adaptive bitrate MP4-bestanden of adaptieve bitrate Smooth streaming-bestanden en ten minste één standaard-of Premium-streaming-eind punt in de status gestart hebben.
 
-Media Services ondersteunt de volgende on-demand encoders die in dit artikel worden beschreven:
+Media Services ondersteunt de volgende on-demand encoder die wordt beschreven in dit artikel:
 
 * [Media Encoder Standard](media-services-encode-asset.md#media-encoder-standard)
-* [Media Encoder Premium Workflow](media-services-encode-asset.md#media-encoder-premium-workflow)
 
-Zie [encoders](media-services-encode-asset.md)voor meer informatie over ondersteunde coderings Programma's.
+Zie [encoder](media-services-encode-asset.md)voor meer informatie over deze ondersteunde encoder.
 
 ## <a name="live-streaming"></a>Live streamen
 In Azure Media Services vertegenwoordigt een kanaal een pijp lijn voor het verwerken van live streaming-inhoud. Een kanaal ontvangt Live-invoer stromen op een van de volgende twee manieren:

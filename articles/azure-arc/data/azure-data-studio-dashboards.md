@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: c2dd0ce3c3e9a0f1f699b58ed2657394ad9acbe1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 608f984b3e3a3020863e0c28b0aa2ad504531e3b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936384"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273220"
 ---
 # <a name="azure-data-studio-dashboards"></a>Azure Data Studio Dash boards
 
@@ -49,7 +49,7 @@ NAME                      TYPE           CLUSTER-IP     EXTERNAL-IP      PORT(S)
 controller-svc-external   LoadBalancer   10.0.175.137   52.154.152.24    30080:32192/TCP                               22h
 ```
 
-Als u een LoadBalancer-type gebruikt, wilt u het externe IP-adres en poort nummer 300080 kopiëren.  Als u NodePort gebruikt, wilt u het IP-adres van uw Kubernetes API-server en het poort nummer dat wordt vermeld onder de kolom poort (S) gebruiken.
+Als u een LoadBalancer-type gebruikt, wilt u het externe IP-adres en poort nummer kopiëren. Als u NodePort gebruikt, wilt u het IP-adres van uw Kubernetes API-server en het poort nummer dat wordt vermeld onder de kolom poort (S) gebruiken.
 
 Nu gaat u een URL naar uw eind punt samen stellen door deze informatie als volgt te combi neren:
 
