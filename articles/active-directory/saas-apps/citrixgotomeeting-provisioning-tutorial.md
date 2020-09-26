@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 23af7ff9e4740b88d3d1f8cffb3d79a46c8d0d61
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6cb2c90658a69f3e63e9ebe08db41eea0a9bc7fa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544448"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299694"
 ---
 # <a name="tutorial-configure-gotomeeting-for-automatic-user-provisioning"></a>Zelf studie: GoToMeeting configureren voor automatische gebruikers inrichting
 
@@ -23,7 +23,7 @@ Het doel van deze zelf studie is om u te laten zien welke stappen u moet uitvoer
 
 ## <a name="prerequisites"></a>Vereisten
 
-In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan dat u de volgende items al hebt:
+In het scenario dat in deze zelfstudie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende items:
 
 *   Een Azure Active Directory-Tenant.
 *   Een GoToMeeting-abonnement met eenmalige aanmelding.
@@ -31,7 +31,7 @@ In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan 
 
 ## <a name="assigning-users-to-gotomeeting"></a>Gebruikers toewijzen aan GoToMeeting
 
-Azure Active Directory gebruikt een concept met de naam ' toewijzingen ' om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers accounts worden alleen de gebruikers en groepen die zijn toegewezen aan een toepassing in azure AD gesynchroniseerd.
+Azure Active Directory gebruikt een concept met de naam 'toewijzingen' om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers accounts worden alleen de gebruikers en groepen die zijn toegewezen aan een toepassing in azure AD gesynchroniseerd.
 
 Voordat u de inrichtings service configureert en inschakelt, moet u bepalen welke gebruikers en/of groepen in azure AD de gebruikers vertegenwoordigen die toegang nodig hebben tot uw GoToMeeting-app. Nadat u hebt besloten, kunt u deze gebruikers toewijzen aan uw GoToMeeting-app door de volgende instructies te volgen:
 
@@ -60,7 +60,7 @@ In deze sectie vindt u instructies voor het verbinden van uw Azure AD-GoToMeetin
 
 1. Stel de **inrichtings** modus in op **automatisch**. 
 
-    ![inrichtings](./media/citrixgotomeeting-provisioning-tutorial/provisioning.png)
+    ![Scherm afbeelding van het tabblad inrichten voor GoToMeeting in Azure Portal. De inrichtings modus is ingesteld op automatisch en beheerder gebruikers naam, wacht woord en test verbinding zijn gemarkeerd.](./media/citrixgotomeeting-provisioning-tutorial/provisioning.png)
 
 1. Voer de volgende stappen uit in de sectie beheerders referenties:
    
@@ -84,11 +84,11 @@ In deze sectie vindt u instructies voor het verbinden van uw Azure AD-GoToMeetin
 
 Hiermee start u de initiële synchronisatie van gebruikers en/of groepen die zijn toegewezen aan GoToMeeting in de sectie gebruikers en groepen. Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan volgende synchronisaties, die ongeveer elke 40 minuten plaatsvinden, zolang de service wordt uitgevoerd. U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen te volgen voor het inrichtings logboek, waarin alle acties worden beschreven die worden uitgevoerd door de inrichtings service in uw GoToMeeting-app.
 
-Zie [rapportage over het automatisch inrichten van gebruikers accounts](../app-provisioning/check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
+Zie [Rapportage over automatische inrichting van gebruikersaccounts](../app-provisioning/check-status-user-account-provisioning.md) voor informatie over het lezen van de Azure AD-inrichtingslogboeken.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
-* [Inrichten van gebruikers accounts voor zakelijke apps beheren](tutorial-list.md)
+* [Gebruikersaccountinrichting voor zakelijke apps beheren](tutorial-list.md)
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 * [Eenmalige aanmelding configureren](https://docs.microsoft.com/azure/active-directory/active-directory-saas-citrix-gotomeeting-tutorial)
 

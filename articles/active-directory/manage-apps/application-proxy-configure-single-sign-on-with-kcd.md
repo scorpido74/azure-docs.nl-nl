@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ae642df48fbd18d8ead439d89ced88aa3da327c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8320f5c034eb3a6de8c912ba23a9fb3f69a8a53c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85317528"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91299745"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Beperkte Kerberos-overdracht voor eenmalige aanmelding bij uw apps met toepassings proxy
 
@@ -29,14 +29,14 @@ U kunt eenmalige aanmelding bieden voor on-premises toepassingen die zijn gepubl
 
 U kunt eenmalige aanmelding inschakelen voor uw toepassingen met behulp van geïntegreerde Windows-authenticatie (IWA) door de machtigingen voor toepassings proxy connectors in Active Directory te geven om gebruikers te imiteren. De connectors gebruiken deze machtiging voor het verzenden en ontvangen van tokens namens hen.
 
-## <a name="how-single-sign-on-with-kcd-works"></a>Hoe eenmalige aanmelding met KCD werkt
+## <a name="how-single-sign-on-with-kcd-works"></a>Hoe eenmalige aanmelding met beperkte Kerberos-delegering werkt
 In dit diagram wordt de stroom uitgelegd wanneer een gebruiker toegang probeert te krijgen tot een on-premises toepassing die gebruikmaakt van IWA.
 
-![Micro soft AAD-verificatie stroom diagram](./media/application-proxy-configure-single-sign-on-with-kcd/AuthDiagram.png)
+![Micro soft AAD-verificatie stroom diagram](./media/application-proxy-configure-single-sign-on-with-kcd/authdiagram.png)
 
-1. De gebruiker voert de URL in voor toegang tot de on-premises toepassing via de toepassings proxy.
-2. Toepassings proxy leidt de aanvraag om naar Azure AD Authentication Services om vooraf te worden geverifieerd. Op dit moment past Azure AD alle toepasselijke beleids regels voor verificatie en autorisatie toe, zoals multi-factor Authentication. Als de gebruiker is gevalideerd, wordt door Azure AD een token gemaakt en verzonden naar de gebruiker.
-3. De gebruiker geeft het token door aan de toepassings proxy.
+1. De gebruiker voert de URL in om toegang te krijgen tot de on-premises toepassing via Application Proxy.
+2. Application Proxy leidt de aanvraag om naar Azure AD-verificatieservices om vooraf een verificatie uit te voeren. Op dit punt past Azure AD de betreffende verificatie en het relevante verificatiebeleid, zoals meervoudige verificatie, toe. Als de gebruiker is gevalideerd, wordt door Azure AD een token gemaakt en verzonden naar de gebruiker.
+3. De gebruiker geeft het token door aan Application Proxy.
 4. De toepassings proxy valideert het token en haalt de UPN (User Principal Name) van de toepassing op, waarna de connector de UPN en de SPN (Service Principal Name) ophaalt via een dubbel geverifieerd beveiligd kanaal.
 5. De connector voert onderhandelingen met Kerberos-beperkte delegering (KCD) uit met de on-premises AD en imiteert de gebruiker om een Kerberos-token aan de toepassing te krijgen.
 6. Active Directory verzendt het Kerberos-token voor de toepassing naar de connector.
@@ -62,7 +62,7 @@ De configuratie van de Active Directory varieert, afhankelijk van of de connecto
 5. Selecteer **Elk verificatieprotocol gebruiken**.
 6. Onder **Services waaraan dit account gedelegeerde referenties kan geven** , voegt u de waarde voor de SPN-identiteit van de toepassings server toe. Hierdoor kan de Application proxy-connector gebruikers in AD imiteren op basis van de toepassingen die in de lijst zijn gedefinieerd.
 
-   ![Scherm opname van connector-SVR venster Eigenschappen](./media/application-proxy-configure-single-sign-on-with-kcd/Properties.jpg)
+   ![Scherm opname van connector-SVR venster Eigenschappen](./media/application-proxy-configure-single-sign-on-with-kcd/properties.jpg)
 
 #### <a name="connector-and-application-server-in-different-domains"></a>Connector en toepassings server in verschillende domeinen
 1. Zie [Kerberos-beperkte delegering over domeinen](https://technet.microsoft.com/library/hh831477.aspx)voor een lijst met vereisten voor het werken met KCD in verschillende domeinen.
@@ -97,7 +97,6 @@ De configuratie van de Active Directory varieert, afhankelijk van of de connecto
 
    ![Geavanceerde toepassings configuratie](./media/application-proxy-configure-single-sign-on-with-kcd/cwap_auth2.png)  
 
-
 ## <a name="sso-for-non-windows-apps"></a>Eenmalige aanmelding voor niet-Windows-apps
 
 De Kerberos-delegatie stroom in azure AD-toepassingsproxy gestart wanneer de gebruiker door Azure AD wordt geverifieerd in de Cloud. Zodra de aanvraag on-premises arriveert, verzendt de Azure AD-toepassingsproxy-connector een Kerberos-ticket namens de gebruiker door interactie met de lokale Active Directory. Dit proces wordt aangeduid als Kerberos-beperkte delegering (KCD). 
@@ -106,7 +105,7 @@ In de volgende fase wordt een aanvraag verzonden naar de back-end-toepassing met
 
 Er zijn verschillende mechanismen die definiëren hoe het Kerberos-ticket in dergelijke aanvragen worden verzonden. De meeste niet-Windows-servers verwachten deze te ontvangen in een vorm van het SPNEGO-token. Dit mechanisme wordt ondersteund op Azure AD-toepassingsproxy, maar is standaard uitgeschakeld. Een connector kan worden geconfigureerd voor het SPNEGO-of standaard-Kerberos-token, maar niet voor beide.
 
-Als u een connector computer voor SPNEGO configureert, moet u ervoor zorgen dat alle andere connectors in die connector groep ook zijn geconfigureerd met SPNEGO. Toepassingen die een standaard Kerberos-token verwachten, moeten worden gerouteerd via andere connectors die niet zijn geconfigureerd voor SPNEGO.
+Als u een connector computer voor SPNEGO configureert, moet u ervoor zorgen dat alle andere connectors in die connector groep ook zijn geconfigureerd met SPNEGO. Toepassingen die een standaard Kerberos-token verwachten, moeten worden gerouteerd via andere connectors die niet zijn geconfigureerd voor SPNEGO. Sommige webtoepassingen accepteren beide indelingen zonder dat er wijzigingen in de configuratie zijn vereist. 
  
 
 SPNEGO inschakelen:
@@ -129,13 +128,15 @@ Met deze mogelijkheid kunnen veel organisaties die verschillende on-premises en 
 * Meerdere domeinen intern ( joe@us.contoso.com , joe@eu.contoso.com ) en één domein in de Cloud () hebben joe@contoso.com .
 * Hebben intern een niet-Routeer bare domein naam ( joe@contoso.usa ) en een legal in de Cloud.
 * Domein namen niet intern gebruiken (Joe)
-* Gebruik verschillende aliassen on-premises en in de Cloud. Bijvoorbeeld joe-johns@contoso.com versusjoej@contoso.com  
+* Gebruik verschillende aliassen on-premises en in de Cloud. Bijvoorbeeld joe-johns@contoso.com versus joej@contoso.com  
 
 Met toepassings proxy kunt u selecteren welke identiteit u wilt gebruiken om het Kerberos-ticket te verkrijgen. Deze instelling is per toepassing. Sommige van deze opties zijn geschikt voor systemen die geen e-mailadres indeling accepteren, anderen zijn ontworpen voor alternatieve aanmelding.
 
 ![Scherm opname van de para meter gedelegeerde aanmeldings-id](./media/application-proxy-configure-single-sign-on-with-kcd/app_proxy_sso_diff_id_upn.png)
 
 Als gedelegeerde aanmeldings-id wordt gebruikt, is de waarde mogelijk niet uniek in alle domeinen of forests in uw organisatie. U kunt dit probleem vermijden door deze toepassingen twee keer te publiceren met twee verschillende connector groepen. Aangezien elke toepassing een andere gebruikers doelgroep heeft, kunt u de connectors koppelen aan een ander domein.
+
+Als de **naam van het on-premises SAM-account** wordt gebruikt voor de aanmeldings identiteit, moet de computer die als host fungeert voor de connector worden toegevoegd aan het domein waarin het gebruikers account zich bevindt.
 
 ### <a name="configure-sso-for-different-identities"></a>Eenmalige aanmelding voor verschillende identiteiten configureren
 1. Configureer Azure AD Connect instellingen zodat de hoofd identiteit het e-mail adres (e-mail) is. Dit wordt gedaan als onderdeel van het aanpassings proces door het veld UPN ( **User Principal name** ) in de synchronisatie-instellingen te wijzigen. Deze instellingen bepalen ook hoe gebruikers zich aanmelden bij Office365, Windows10-apparaten en andere toepassingen die Azure AD gebruiken als hun identiteits opslag.  

@@ -3,12 +3,12 @@ title: Wacht woorden instellen voor virtuele machines in Azure Lab Services | Mi
 description: Meer informatie over het instellen en opnieuw instellen van wacht woorden voor virtuele machines (Vm's) in klassikale Labs van Azure Lab Services.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 6012123b729bd1be6b4ff0fdb00d71aca56cfa09
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 49615b37875b8340f46ed900a1e7144256c7cb7d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85443771"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334069"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>VM-pool instellen en beheren 
 In dit artikel leest u hoe u de volgende taken kunt uitvoeren:
@@ -24,7 +24,7 @@ Voer de volgende stappen uit om de lab-capaciteit (het aantal virtuele machines 
 2. Voer het nieuwe **aantal vm's** in dat u wilt in het lab. Dit getal moet groter zijn dan of gelijk zijn aan het aantal gebruikers dat is geregistreerd in het lab. 
 3. Selecteer vervolgens **Opslaan**. 
 
-    ![Knop Start alles](./media/how-to-set-virtual-machine-passwords/number-of-vms-in-lab.png)
+    ![Scherm opname van het venster ' Lab capacity ' met de knop ' maximum aantal computers in Lab ' en ' opslaan ' geselecteerd.](./media/how-to-set-virtual-machine-passwords/number-of-vms-in-lab.png)
 4. Als u de capaciteit hebt verhoogd, kunt u zien welke virtuele machine of Vm's er worden gemaakt. Als u de nieuwe virtuele machine in de lijst niet ziet, vernieuwt u de pagina. 
 
     ![Virtuele machine die wordt gemaakt](./media/how-to-set-virtual-machine-passwords/vm-being-created.png)

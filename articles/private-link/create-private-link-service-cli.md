@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 4312c6b89a7ba3e56e39050d76c673aa532f6f92
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2cfc746d883b565fe7a082a316ce314f385225df
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737339"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358148"
 ---
 # <a name="create-a-private-link-service-using-azure-cli"></a>Een persoonlijke koppelings service maken met behulp van Azure CLI
 In dit artikel wordt beschreven hoe u een persoonlijke koppelings service maakt in azure met behulp van Azure CLI.
@@ -29,7 +29,7 @@ Voordat u een virtueel netwerk kunt maken, moet u een resourcegroep maken die he
 az group create --name myResourceGroup --location westcentralus
 ```
 ### <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
-Maak een virtueel netwerk met [AZ Network vnet Create](/cli/azure/network/vnet#az-network-vnet-create). In dit voor beeld wordt een standaard virtueel netwerk gemaakt met de naam *myVirtualNetwork* met één subnet met de naam *mySubnet*:
+Maak een virtueel netwerk met [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create). In dit voor beeld wordt een standaard virtueel netwerk gemaakt met de naam *myVirtualNetwork* met één subnet met de naam *mySubnet*:
 
 ```azurecli-interactive
 az network vnet create --resource-group myResourceGroup --name myVirtualNetwork --address-prefix 10.0.0.0/16  
@@ -88,7 +88,7 @@ De service voor persoonlijke koppelingen vereist een IP-adres van elk gewenst su
 az network vnet subnet update --resource-group myResourceGroup --vnet-name myVirtualNetwork --name mySubnet --disable-private-link-service-network-policies true 
 ```
  
-## <a name="create-a-private-link-service"></a>Een Private Link-service maken  
+## <a name="create-a-private-link-service-using-standard-load-balancer"></a>Een persoonlijke koppelings service maken met behulp van Standard Load Balancer 
  
 Een persoonlijke koppelings service maken met behulp van de front-end-IP-configuratie van Standard Load Balancer met [AZ Network Private-Link-service Create](/cli/azure/network/private-link-service#az-network-private-link-service-create). In dit voor beeld wordt een persoonlijke koppelings service met de naam *myPLS* gemaakt met behulp van Standard Load Balancer met de naam *myLoadBalancer* in de resource groep genaamd *myResourceGroup*. 
  

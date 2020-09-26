@@ -8,17 +8,17 @@ editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
 ms.custom: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: cbc6b2af98905a09324a58c92cafca0075d8a01d
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.openlocfilehash: 1b10489ef74e681eab59694d24c4babc3ce69163
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055136"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91298708"
 ---
 # <a name="create-an-fci-with-a-premium-file-share-sql-server-on-azure-vms"></a>Een FCI maken met een Premium-bestands share (SQL Server op Azure Vm's)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -41,7 +41,7 @@ Voordat u de instructies in dit artikel hebt voltooid, hebt u het volgende nodig
 
 ## <a name="mount-premium-file-share"></a>Premium-bestands share koppelen
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). en ga naar uw opslag account.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). en ga naar uw opslag account.
 1. Ga naar **Bestands shares** onder **File Service**en selecteer vervolgens de Premium-bestands share die u wilt gebruiken voor uw SQL-opslag.
 1. Selecteer **verbinding** om de Connection String voor uw bestands share weer te geven.
 1. Selecteer in de vervolg keuzelijst de stationsletter die u wilt gebruiken en Kopieer beide code blokken naar Klad blok.
@@ -90,15 +90,15 @@ Als u het cluster wilt valideren met behulp van de gebruikers interface, gaat u 
 
 1. Klik onder **Serverbeheer**op **extra**en selecteer vervolgens **Failoverclusterbeheer**.
 1. Selecteer onder **Failoverclusterbeheer** **actie**en selecteer vervolgens **configuratie valideren**.
-1. Selecteer **Volgende**.
+1. Selecteer **Next**.
 1. Voer onder **servers of een cluster selecteren**de namen van beide virtuele machines in.
 1. Onder **test opties**selecteert u **alleen geselecteerde tests uitvoeren**. 
-1. Selecteer **Volgende**.
+1. Selecteer **Next**.
 1. Selecteer onder **selectie testen**alle tests, met uitzonde ring van **opslag** en **opslagruimten direct**, zoals hier wordt weer gegeven:
 
    :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/cluster-validation.png" alt-text="Cluster validatie tests selecteren":::
 
-1. Selecteer **Volgende**.
+1. Selecteer **Next**.
 1. Klik onder **bevestiging**op **volgende**.
 
 Met de wizard **een configuratie valideren** worden de validatie tests uitgevoerd.

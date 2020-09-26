@@ -3,12 +3,12 @@ title: Hand leiding voor het beheren van het afsluit gedrag van Windows in Azure
 description: Stappen voor het automatisch afsluiten van een niet-actieve Windows-virtuele machine en het verwijderen van de Windows-opdracht shutdown.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: e17f6e79c3d18d82dd206954dcfb0e06b02b4d53
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3c20bc2bb79faf53c4f3fbd113c18c5c6d923e59
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445165"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334018"
 ---
 # <a name="guide-to-controlling-windows-shutdown-behavior"></a>Hand leiding voor het beheren van het afsluit gedrag van Windows
 
@@ -61,7 +61,7 @@ U kunt er ook voor kiezen om deze hand matige stappen te volgen met behulp van d
 
 1. Ga naar **computer configuratie > Beheersjablonen > Windows-onderdelen > Extern bureaublad-services > extern bureaublad sessie Host > sessie tijds limieten**.  
 
-    ![Editor voor lokaal groepsbeleid](./media/how-to-windows-shutdown/group-policy-idle.png)
+    ![Scherm opname van de ' lokale groeps beleids editor ' met ' sessie tijds limieten ' geselecteerd.](./media/how-to-windows-shutdown/group-policy-idle.png)
    
 1. Klik met de rechter muisknop op **tijds limiet instellen voor actief, maar niet-actieve Extern bureaublad-services sessies**en klik op **bewerken**.
 

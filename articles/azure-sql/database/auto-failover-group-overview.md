@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/28/2020
-ms.openlocfilehash: 7b4a85077c8e0147f926f9a86fc8a003591ec8ac
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 469620456fecb7c0cb398988c4a4fc25da97f863
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91277730"
+ms.locfileid: "91357706"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Gebruik groepen voor automatische failover om transparante en gecoördineerde failover van meerdere data bases mogelijk te maken
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -153,7 +153,7 @@ Als u een failover wilt uitvoeren, moet u RBAC-schrijf toegang hebben tot de fai
 
 De groep voor automatische failover moet worden geconfigureerd op de primaire server en wordt verbonden met de secundaire server in een andere Azure-regio. De groepen kunnen alle of sommige data bases op deze servers bevatten. Het volgende diagram illustreert een typische configuratie van een geo-redundante Cloud toepassing met behulp van meerdere data bases en een groep voor automatische failover.
 
-![automatische failover](./media/auto-failover-group-overview/auto-failover-group.png)
+![Diagram toont een typische configuratie van een geo-redundante Cloud toepassing met behulp van meerdere data bases en een groep voor automatische failover.](./media/auto-failover-group-overview/auto-failover-group.png)
 
 > [!NOTE]
 > Zie [SQL database toevoegen aan een failovergroep](failover-group-add-single-database-tutorial.md) voor een gedetailleerde zelf studie met stapsgewijze instructies om een data base in SQL database aan een failovergroep toe te voegen.

@@ -3,24 +3,33 @@ title: Een Azure Kubernetes-service starten en stoppen (AKS)
 description: Meer informatie over het stoppen of starten van een Azure Kubernetes service-cluster (AKS).
 services: container-service
 ms.topic: article
-ms.date: 09/18/2020
+ms.date: 09/24/2020
 author: palma21
-ms.openlocfilehash: 44c33aa018971cc2b2f5eb215597a63e8b55c853
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 460b592924a19449d77ce8d45f470f3e3129f4a6
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91278563"
+ms.locfileid: "91357944"
 ---
 # <a name="stop-and-start-an-azure-kubernetes-service-aks-cluster-preview"></a>Een Azure Kubernetes service (AKS)-cluster stoppen en starten (preview)
 
-Uw AKS-workloads hoeven mogelijk niet continu te worden uitgevoerd, bijvoorbeeld een ontwikkelings cluster dat alleen tijdens kantoor uren wordt gebruikt. Dit leidt ertoe dat uw Azure Kubernetes service (AKS)-cluster niet actief is en dat niet meer dan de systeem onderdelen uitvoert. U kunt de cluster footprint verminderen door [alle `User` knooppunt groepen te schalen naar 0](scale-cluster.md#scale-user-node-pools-to-0), maar uw [ `System` pool](use-system-pools.md) is nog steeds vereist voor het uitvoeren van de systeem onderdelen terwijl het cluster actief is. Als u uw kosten verder in deze peri Oden wilt optimaliseren, kunt u het cluster volledig uitschakelen (stoppen). Met deze actie worden uw besturings vlak en agent knooppunten helemaal gestopt, zodat u op alle berekenings kosten kunt besparen, terwijl u alle objecten en de cluster status opslaat voor wanneer u het opnieuw start. Zo kunt u direct naar rechts gaan waar u na het weekend bent of dat uw cluster alleen actief is terwijl u uw batch-taken uitvoert.
+Uw AKS-workloads hoeven mogelijk niet continu te worden uitgevoerd, bijvoorbeeld een ontwikkelings cluster dat alleen tijdens kantoor uren wordt gebruikt. Dit leidt ertoe dat uw Azure Kubernetes service (AKS)-cluster niet actief is en dat niet meer dan de systeem onderdelen uitvoert. U kunt de cluster footprint verminderen door [alle `User` knooppunt groepen te schalen naar 0](scale-cluster.md#scale-user-node-pools-to-0), maar uw [ `System` pool](use-system-pools.md) is nog steeds vereist voor het uitvoeren van de systeem onderdelen terwijl het cluster actief is. Als u uw kosten verder in deze peri Oden wilt optimaliseren, kunt u het cluster volledig uitschakelen (stoppen). Met deze actie worden uw besturings vlak en agent knooppunten helemaal gestopt, zodat u op alle berekenings kosten kunt besparen, terwijl u alle objecten en de cluster status opslaat voor wanneer u het opnieuw start. U kunt vervolgens direct naar rechts gaan waar u na het weekend bent of dat uw cluster alleen actief is terwijl u uw batch-taken uitvoert.
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
 In dit artikel wordt ervan uitgegaan dat u beschikt over een bestaand AKS-cluster. Als u een AKS-cluster nodig hebt, raadpleegt u de AKS Quick Start [met behulp van de Azure cli][aks-quickstart-cli] of [met behulp van de Azure Portal][aks-quickstart-portal].
+
+
+### <a name="limitations"></a>Beperkingen
+
+Bij het gebruik van de functie voor het starten/stoppen van het cluster gelden de volgende beperkingen:
+
+- Deze functie wordt alleen ondersteund voor Virtual Machine Scale Sets-back-upclusters.
+- De cluster status van een gestopt AKS-cluster wordt Maxi maal 12 maanden bewaard. Als uw cluster langer dan 12 maanden wordt gestopt, kan de status van het cluster niet worden hersteld. Zie het [AKS-ondersteunings beleid](support-policies.md)voor meer informatie.
+- U kunt een gestopt AKS-cluster alleen starten of verwijderen. Als u een bewerking wilt uitvoeren zoals schalen of upgraden, start u eerst uw cluster.
 
 ### <a name="install-the-aks-preview-azure-cli"></a>De `aks-preview` Azure cli installeren 
 
@@ -33,11 +42,6 @@ az extension add --name aks-preview
 # Update the extension to make sure you have the latest version installed
 az extension update --name aks-preview
 ``` 
-
-> [!WARNING]
-> De cluster status van een gestopt AKS-cluster wordt Maxi maal 12 maanden bewaard. Als uw cluster langer dan 12 maanden wordt gestopt, kan de status van het cluster niet worden hersteld. Zie het [AKS-ondersteunings beleid](support-policies.md)voor meer informatie.
-> U kunt een gestopt AKS-cluster alleen starten of verwijderen. Als u een bewerking wilt uitvoeren zoals schalen of upgraden, start u eerst uw cluster.
-
 
 ### <a name="register-the-startstoppreview-preview-feature"></a>De `StartStopPreview` Preview-functie registreren
 

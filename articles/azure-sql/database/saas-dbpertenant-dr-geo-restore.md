@@ -11,19 +11,19 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/14/2019
-ms.openlocfilehash: 44ed9c0d19b6e0034b49e36448765d098d575273
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f3c7c166b72a43b6b11dc1830643332b032abad2
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325314"
+ms.locfileid: "91356873"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>Geo-herstel gebruiken om een multi tenant-SaaS-toepassing te herstellen vanuit back-ups van data bases
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 In deze zelf studie wordt een volledig herstel scenario voor nood gevallen voor een SaaS-toepassing met meerdere tenants verkend, geïmplementeerd met de data base per Tenant model. U gebruikt [geo-Restore](recovery-using-backups.md) om de catalogus en de Tenant databases te herstellen van het automatisch onderhouden van geografisch redundante back-ups in een alternatieve herstel regio. Nadat de onderbreking is opgelost, gebruikt u [geo-replicatie](active-geo-replication-overview.md) om gewijzigde data bases te repatriëren in hun oorspronkelijke regio.
 
-![Geo-Restore-architectuur](./media/saas-dbpertenant-dr-geo-restore/geo-restore-architecture.png)
+![In het diagram ziet u een aantal oorspronkelijke en herstel regio's, beide met een app, Catalog, originele of gespiegelde installatie kopieën van servers en Pools, automatische back-ups naar opslag, waarbij de herstel regio geo-replicatie van back-ups accepteert en server en groep voor nieuwe tenants.](./media/saas-dbpertenant-dr-geo-restore/geo-restore-architecture.png)
 
 Geo-Restore is de voordeligste oplossing voor herstel na nood geval voor Azure SQL Database. Het herstellen van geo-redundante back-ups kan echter tot een uur gegevens verlies leiden. Het kan veel tijd duren, afhankelijk van de grootte van elke Data Base. 
 

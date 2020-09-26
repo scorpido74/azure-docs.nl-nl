@@ -7,12 +7,12 @@ author: hedidin
 ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 07/29/2016
-ms.openlocfilehash: 1bb6e28c9dcae01f3233178706d2a24156fa509a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fdf5f25ae6f89ccc06c95ee1be021691dab0047a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76902697"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322424"
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Scenario: Uitzonderingen en foutregistratie voor logische apps afhandelen
 
@@ -103,15 +103,15 @@ We moeten de bron (aanvraag) van de patiënt record in de online portal van Dyna
 
    **Logboek vermelding invoegen**
 
-   ![Logboek vermelding invoegen](media/logic-apps-scenario-error-and-exception-handling/lognewpatient.png)
+   ![Scherm afbeelding van de ontwerp functie voor logische apps met de configuratie-instellingen voor InsertLogEntry.](media/logic-apps-scenario-error-and-exception-handling/lognewpatient.png)
 
    **Fout vermelding invoegen**
 
-   ![Logboek vermelding invoegen](media/logic-apps-scenario-error-and-exception-handling/insertlogentry.png)
+   ![Scherm afbeelding van de ontwerp functie voor logische apps met de configuratie-instellingen voor CreateErrorRecord.](media/logic-apps-scenario-error-and-exception-handling/insertlogentry.png)
 
    **Controleren op fout bij maken van record**
 
-   ![Voorwaarde](media/logic-apps-scenario-error-and-exception-handling/condition.png)
+   ![Scherm opname van het CreateErrorRecord in de ontwerp functie voor logische apps waarin de velden worden weer gegeven voor het maken van een fout vermelding.](media/logic-apps-scenario-error-and-exception-handling/condition.png)
 
 ## <a name="logic-app-source-code"></a>Bron code van logische app
 

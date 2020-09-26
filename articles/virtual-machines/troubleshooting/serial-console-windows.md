@@ -1,6 +1,6 @@
 ---
 title: Azure Serial console voor Windows | Microsoft Docs
-description: Bidirectionele seriële console voor Azure Virtual Machines en Virtual Machine Scale Sets.
+description: Bidirectionele seriële console voor Azure Virtual Machines en Virtual Machine Scale Sets met behulp van een Windows-voor beeld.
 services: virtual-machines-windows
 documentationcenter: ''
 author: asinn826
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: c30999a5f0239e60c842084b60b44c165fb7182e
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: c5c139cb94358d70d1f23b68f2a369adb953da08
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423997"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325977"
 ---
 # <a name="azure-serial-console-for-windows"></a>Azure Serial console voor Windows
 
@@ -194,27 +194,27 @@ Het plakken van lange teken reeksen werkt niet. | De seriële console beperkt de
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 
-**V. Hoe kan ik feedback verzenden?**
+**Nils. Hoe kan ik feedback verzenden?**
 
 A. Geef feedback door het maken van een GitHub-probleem op https://aka.ms/serialconsolefeedback . Als alternatief (minder voor keur) kunt u feedback verzenden via azserialhelp@microsoft.com of in de virtuele-machine categorie van https://feedback.azure.com .
 
-**V. ondersteunt de seriële console kopiëren/plakken?**
+**Nils. Ondersteunt de seriële console kopiëren/plakken?**
 
 A. Ja. Gebruik **CTRL** + **SHIFT** + **C** en **CTRL** + **SHIFT** + **V** om de Terminal te kopiëren en plakken.
 
-**V. wie kan de seriële console voor mijn abonnement in-of uitschakelen?**
+**Nils. Wie kan de seriële console voor mijn abonnement in-of uitschakelen?**
 
 A. Als u de seriële console op het niveau van een abonnement wilt in-of uitschakelen, moet u schrijf machtigingen hebben voor het abonnement. Rollen met schrijf machtiging zijn onder andere beheerders-of eigenaar rollen. Aangepaste rollen kunnen ook schrijf machtigingen hebben.
 
-**V. wie kan toegang krijgen tot de seriële console voor mijn VM?**
+**Nils. Wie heeft toegang tot de seriële console voor mijn VM?**
 
 A. U moet de rol Inzender voor virtuele machines of hoger hebben voor een VM om toegang te krijgen tot de seriële console van de VM.
 
-**V. mijn seriële console geeft niets weer, wat moet ik doen?**
+**Nils. Mijn seriële console geeft niets weer, wat moet ik doen?**
 
 A. De installatie kopie is waarschijnlijk onjuist geconfigureerd voor toegang tot seriële consoles. Voor informatie over het configureren van uw installatie kopie om de seriële console in te scha kelen, raadpleegt u [de seriële console inschakelen in aangepaste of oudere installatie kopieën](#enable-the-serial-console-in-custom-or-older-images).
 
-**V. is de seriële console beschikbaar voor schaal sets voor virtuele machines?**
+**Nils. Is de seriële console beschikbaar voor schaal sets voor virtuele machines?**
 
 A. Ja dat is zo! Zie de [seriële console voor Virtual Machine Scale sets](./serial-console-overview.md#serial-console-for-virtual-machine-scale-sets)
 

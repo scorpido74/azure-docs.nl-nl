@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: e267a30d6f73b48f825c4b61b3bc1106133b8cdf
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: df0620308fab2e813fe3802dc7effb9dc1ce226c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935455"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285380"
 ---
 # <a name="scale-out-your-azure-arc-enabled-postgresql-hyperscale-server-group-by-adding-more-worker-nodes"></a>Uw Azure-PostgreSQL grootschalige-Server groep uitschalen door meer worker-knoop punten toe te voegen
 In dit document wordt uitgelegd hoe u een PostgreSQL grootschalige-Server groep voor Azure-Arc kunt schalen. Dit doet u door een scenario te maken. **Als u geen gebruik wilt maken van het scenario en alleen meer wilt weten over hoe u kunt uitschalen, gaat u naar de alinea [uitschalen](#scale-out)**.
@@ -151,7 +151,11 @@ De algemene indeling van de scale-out-opdracht is:
 azdata arc postgres server edit -n <server group name> -w <target number of worker nodes>
 ```
 
-Verhoog bijvoorbeeld het aantal worker-knoop punten van 2 tot 4 door de volgende opdracht uit te voeren:
+> [!CAUTION]
+> De preview-versie biedt geen ondersteuning voor opnieuw schalen. Het is bijvoorbeeld niet mogelijk om het aantal worker-knoop punten te verminderen. Als u dit wilt doen, moet u de gegevens extra heren/maken, de Server groep verwijderen, een nieuwe server groep maken met minder werk knooppunten en vervolgens de gegevens importeren.
+
+In dit voor beeld verhogen we het aantal worker-knoop punten van 2 tot 4 door de volgende opdracht uit te voeren:
+
 ```console
 azdata arc postgres server edit -n postgres01 -w 4
 ```
@@ -196,7 +200,8 @@ Er wordt een lijst geretourneerd met Server groepen die in uw naam ruimte zijn g
 NAME         STATE   READY-PODS   EXTERNAL-ENDPOINT   AGE
 postgres01   Ready   4/4          10.0.0.4:31066      4d20h
 ```
-> **Opmerking:** Als u een server groep hebt gemaakt van versie 11 PostgreSQL in plaats van 12, voert u de volgende opdracht uit: _kubectl Get postgresql-11_
+> [!NOTE]
+> Als u een server groep hebt gemaakt van versie 11 PostgreSQL in plaats van 12, voert u de volgende opdracht uit: _kubectl Get postgresql-11_
 
 #### <a name="with-a-sql-query"></a>Met een SQL-query:
 Maak verbinding met uw server groep met het client hulpprogramma van uw keuze en voer de volgende query uit:
@@ -230,7 +235,6 @@ Noteer de uitvoerings tijd.
 >* [High Performance HTAP met Azure PostgreSQL grootschalige (Citus)](https://www.youtube.com/watch?v=W_3e07nGFxY)
 >* [HTAP-toepassingen bouwen met python & Azure PostgreSQL grootschalige (Citus)](https://www.youtube.com/watch?v=YDT8_riLLs0)
 
-> De preview-versie biedt geen ondersteuning voor opnieuw schalen. Het is bijvoorbeeld niet mogelijk om het aantal worker-knoop punten te verminderen. Als u dit wilt doen, moet u de gegevens extra heren/maken, de Server groep verwijderen, een nieuwe server groep maken met minder werk knooppunten en vervolgens de gegevens importeren.
 
 ## <a name="next-steps"></a>Volgende stappen
 

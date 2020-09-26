@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: tamram
 ms.reviewer: ozgun
-ms.openlocfilehash: d2ad302042b277cf29b3a7b22af88b662686b3fd
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: c7e0c9aee1ce6b4a2524ac756673784b63be3b31
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90994911"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289766"
 ---
 # <a name="configure-azure-defender-for-storage"></a>Azure Defender voor opslag configureren
 
@@ -23,11 +23,11 @@ Azure Defender voor opslag biedt een extra beveiligingslaag die ongebruikelijke 
 
 Beveiligings waarschuwingen worden geactiveerd wanneer afwijkingen in de activiteit optreden. Deze beveiligings waarschuwingen zijn geïntegreerd met [Azure Security Center](https://azure.microsoft.com/services/security-center/)en worden ook via e-mail verzonden naar abonnements beheerders, met details over verdachte activiteiten en aanbevelingen voor het onderzoeken en oplossen van bedreigingen.
 
-De service neemt bron logboeken op met lees-, schrijf-en verwijder aanvragen naar Blob Storage en naar Azure Files (preview) voor detectie van bedreigingen. Als u waarschuwingen van Azure Defender wilt onderzoeken, kunt u gerelateerde opslag activiteiten bekijken met Opslaganalyse logboek registratie. Zie **logboek registratie configureren** in [een opslag account in het Azure Portal bewaken](storage-monitor-storage-account.md#configure-logging)voor meer informatie.
+De service neemt bron logboeken op met lees-, schrijf-en verwijder aanvragen van Blob-opslag en Azure Files voor detectie van bedreigingen. Als u waarschuwingen van Azure Defender wilt onderzoeken, kunt u gerelateerde opslag activiteiten bekijken met Opslaganalyse logboek registratie. Zie **logboek registratie configureren** in [een opslag account in het Azure Portal bewaken](storage-monitor-storage-account.md#configure-logging)voor meer informatie.
 
 ## <a name="availability"></a>Beschikbaarheid
 
-Azure Defender voor opslag is momenteel beschikbaar voor Blob Storage, Azure Files (preview) en Azure Data Lake Storage Gen2 (preview). Account typen die ondersteuning bieden voor Azure Defender zijn: v2-, blok-Blob-en Blob Storage-accounts voor algemeen gebruik. Azure Defender voor opslag is beschikbaar in alle open bare Clouds en Amerikaanse overheids Clouds, maar niet in andere soevereine of Azure Government Cloud regio's.
+Azure Defender voor opslag is momenteel beschikbaar voor Blob Storage, Azure Files en Azure Data Lake Storage Gen2. Account typen die ondersteuning bieden voor Azure Defender zijn: v2-, blok-Blob-en Blob Storage-accounts voor algemeen gebruik. Azure Defender voor opslag is beschikbaar in alle open bare Clouds en Amerikaanse overheids Clouds, maar niet in andere soevereine of Azure Government Cloud regio's.
 
 Accounts met hiërarchische naam ruimten die zijn ingeschakeld voor Data Lake Storage ondersteunings transacties met behulp van de Azure Blob Storage-Api's en de Data Lake Storage-Api's. Azure-bestands shares ondersteunen trans acties via SMB.
 
@@ -37,8 +37,8 @@ De volgende lijst bevat een overzicht van de beschik baarheid van Azure Defender
 
 - Release status:
   - [Blob Storage](https://azure.microsoft.com/services/storage/blobs/) (algemene Beschik baarheid)
-  - [Azure files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (preview ondersteunt SMB-en rest-trans acties)
-  - Azure Data Lake Storage Gen2 (preview-versie)
+  - [Azure files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (algemene Beschik baarheid)
+  - Azure Data Lake Storage Gen2 (algemene Beschik baarheid)
 - Clouds<br>
     ✔ Commerciële Clouds<br>
     ✔ US Gov<br>

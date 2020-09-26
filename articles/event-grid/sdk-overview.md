@@ -3,12 +3,12 @@ title: Azure Event Grid Sdk's
 description: Hierin worden de Sdk's voor Azure Event Grid beschreven. Deze Sdk's bieden beheer, publicatie en verbruik.
 ms.topic: reference
 ms.date: 07/07/2019
-ms.openlocfilehash: 2b21d8bf2c393b096e9046765e6cfadc76baffbf
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 5e93448ef703be88583cd59ae5eee9d1993c4054
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119103"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322526"
 ---
 # <a name="event-grid-sdks-for-management-and-publishing"></a>Event Grid Sdk's voor beheer en publicatie
 
@@ -29,12 +29,15 @@ Met de Sdk's voor beheer kunt u Event grid-onderwerpen en-abonnementen maken, bi
 
 Met de Sdk's voor gegevens vlakken kunt u gebeurtenissen naar onderwerpen posten door te verifiëren, de gebeurtenis te vormen en asynchroon te boeken naar het opgegeven eind punt. U kunt er ook voor zorgen dat u gebeurtenissen van de eerste partij gebruikt. Momenteel zijn de volgende Sdk's beschikbaar:
 
-* [.NET](https://www.nuget.org/packages/Microsoft.Azure.EventGrid)
-* [Go](https://github.com/Azure/azure-sdk-for-go)
-* [Java](https://mvnrepository.com/artifact/com.microsoft.azure/azure-eventgrid)
-* [Knooppunt](https://www.npmjs.com/package/azure-eventgrid)
-* [Python](https://pypi.python.org/pypi/azure-eventgrid)
-* [Ruby](https://rubygems.org/gems/azure_event_grid)
+| Programmeertaal | SDK | 
+| -------------------- | ---------- | ---------- | 
+| .NET | Stabiele SDK: [micro soft. Azure. EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid)<p>Preview-SDK: [Azure. Messa ging. EventGrid](https://www.nuget.org/packages/Azure.Messaging.EventGrid/) |
+| Java | Stabiele SDK: [Azure-eventgrid](https://mvnrepository.com/artifact/com.microsoft.azure/azure-eventgrid)<p>Preview-SDK: [Azure-Messa ging-eventgrid](https://search.maven.org/artifact/com.azure/azure-messaging-eventgrid/)</p> |  
+| Python | [Azure-eventgrid](https://pypi.org/project/azure-eventgrid/#history) (Zie de laatste stabiele en voorlopige versies op de pagina **release geschiedenis** ) |
+| JavaScript | [@azure/eventgrid](https://www.npmjs.com/package/@azure/eventgrid/) (Schakel over naar het tabblad **versies** om de nieuwste stabiele en bèta versie pakketten te bekijken). | 
+| Go | [Azure SDK voor Go](https://github.com/Azure/azure-sdk-for-go) | | 
+| Ruby | [azure_event_grid](https://rubygems.org/gems/azure_event_grid) | | 
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

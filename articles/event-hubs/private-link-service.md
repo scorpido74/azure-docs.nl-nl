@@ -1,14 +1,14 @@
 ---
 title: Azure Event Hubs integreren met de persoonlijke koppelings service van Azure
 description: Meer informatie over het integreren van Azure Event Hubs met de persoonlijke koppelings service van Azure
-ms.date: 07/29/2020
+ms.date: 08/22/2020
 ms.topic: article
-ms.openlocfilehash: 817ec7b9256829ace61a0d1dad98f1f34683c95e
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 59167635cfc0d8c1123a47410c87d6b9151f6f62
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716788"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334239"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-via-private-endpoints"></a>Toegang tot Azure Event Hubs-naam ruimten toestaan via persoonlijke eind punten 
 Met Azure Private Link service kunt u toegang krijgen tot Azure-Services (bijvoorbeeld Azure Event Hubs, Azure Storage en Azure Cosmos DB) en door Azure gehoste klanten/partner services via een **persoonlijk eind punt** in uw virtuele netwerk.
@@ -24,7 +24,6 @@ Zie [Wat is een Azure Private Link?](../private-link/private-link-overview.md) v
 > 
 > Hier volgen enkele van de services die geen toegang hebben tot Event Hubs resources wanneer persoonlijke eind punten zijn ingeschakeld. Houd er rekening mee dat de lijst **niet** limitatief is.
 >
-> - Azure Stream Analytics
 > - Azure-IoT Hub routes
 > - Azure IoT-Device Explorer
 > - Azure Event Grid
@@ -211,7 +210,7 @@ Er zijn vier inrichtingsstatussen:
  
 ###  <a name="approve-reject-or-remove-a-private-endpoint-connection"></a>Een verbinding met een privé-eind punt goed keuren, afwijzen of verwijderen
 
-1. Meld u aan bij de Azure-portal.
+1. Meld u aan bij Azure Portal.
 2. Typ in de zoek balk in **Event hubs**.
 3. Selecteer de **naam ruimte** die u wilt beheren.
 4. Selecteer het tabblad **netwerken** .

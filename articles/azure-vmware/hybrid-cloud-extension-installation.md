@@ -3,12 +3,12 @@ title: VMware-HCX installeren
 description: De VMware HCX-oplossing instellen voor uw persoonlijke cloud van Azure VMware-oplossing
 ms.topic: how-to
 ms.date: 09/24/2020
-ms.openlocfilehash: 76a7432b78ec2141039dcdc5dd1d7572335b18e1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a101712f2d80e0d8e70d37bd5b7b08931f62ba3d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91263198"
+ms.locfileid: "91356550"
 ---
 # <a name="install-hcx-for-azure-vmware-solution"></a>HCX voor Azure VMware-oplossing installeren
 
@@ -40,7 +40,7 @@ Nadat de installatie is voltooid, kunt u de aanbevolen vervolg stappen volgen di
 
 Het formaat van werk belastingen met reken-en opslag resources is een essentiële plannings stap wanneer u de Azure VMware-oplossing HCX-oplossing voor de Privécloud wilt voorbereiden. Adresseer de grootte stap als onderdeel van de eerste planning van de particuliere cloud omgeving. 
 
-U kunt werk belastingen ook verg Roten of verkleinen door een [Azure VMware-oplossings evaluatie](https://docs.microsoft.com/azure/migrate/how-to-create-azure-vmware-solution-assessment) in de Azure migrate Portal uit te voeren.
+U kunt werk belastingen ook verg Roten of verkleinen door een [Azure VMware-oplossings evaluatie](../migrate/how-to-create-azure-vmware-solution-assessment.md) in de Azure migrate Portal uit te voeren.
 
 ## <a name="software-version-requirements"></a>Software versie vereisten
 

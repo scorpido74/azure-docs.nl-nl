@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
-ms.date: 01/30/2020
-ms.openlocfilehash: 2a39e27c0a9fc7999d7f363767ad62513d383192
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 09/24/2020
+ms.openlocfilehash: 5df596560e97ea9dba38dca4d4ca58e38caabd37
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520729"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333950"
 ---
 # <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-azure-logic-apps"></a>Azure Monitor logboeken instellen en diagnostische gegevens verzamelen voor Azure Logic Apps
 
@@ -19,7 +19,7 @@ Voor meer informatie over het opsporen van fouten in uw Logic apps tijdens runti
 
 Als u logboek registratie wilt instellen voor uw logische app, kunt u [log Analytics inschakelen wanneer u uw logische app maakt](#logging-for-new-logic-apps), of u kunt [de Logic apps-beheer oplossing](#install-management-solution) in uw log Analytics-werk ruimte installeren voor bestaande Logic apps. Deze oplossing biedt geaggregeerde gegevens voor uw logische app-uitvoeringen en bevat specifieke details zoals status, uitvoerings tijd, status van opnieuw verzenden en correlatie-Id's. [Stel vervolgens Azure monitor-logboeken](#set-up-resource-logs)in om logboek registratie in te scha kelen en query's te maken voor deze informatie.
 
-In dit artikel wordt beschreven hoe u Log Analytics inschakelt bij het maken van logische apps, het installeren en instellen van de Logic Apps beheer oplossing en het instellen en maken van query's voor Azure Monitor Logboeken.
+In dit artikel wordt beschreven hoe u Log Analytics kunt inschakelen voor nieuwe Logic apps en bestaande Logic apps, hoe u de Logic Apps beheer oplossing kunt installeren en instellen, en hoe u query's kunt instellen en maken voor Azure Monitor Logboeken.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -89,6 +89,9 @@ Als u Log Analytics hebt ingeschakeld tijdens het maken van uw logische app, sla
 
 Wanneer u gegevens over runtime-gebeurtenissen en-gegevens in [Azure monitor logboeken](../azure-monitor/platform/data-platform-logs.md)opslaat, kunt u [logboek query's](../azure-monitor/log-query/log-query-overview.md) maken waarmee u deze informatie vindt en kunt controleren.
 
+> [!NOTE]
+> Nadat u de diagnostische instellingen hebt ingeschakeld, kunnen de diagnostische gegevens niet Maxi maal 30 minuten in de logboeken op het opgegeven doel worden geplaatst, zoals Log Analytics, Event Hub of opslag account. Deze vertraging betekent dat er mogelijk geen diagnostische gegevens uit deze tijds periode bestaan die u kunt controleren. Voltooide gebeurtenissen en [bijgehouden eigenschappen](#extend-data) worden mogelijk gedurende 10-15 minuten niet in uw log Analytics-werk ruimte weer gegeven.
+
 1. Zoek en selecteer uw logische app in de [Azure Portal](https://portal.azure.com).
 
 1. Klik in het menu van de logische app onder **bewaking**op **Diagnostische instellingen**  >  **Diagnostische instelling toevoegen**.
@@ -140,13 +143,12 @@ Wanneer de logische app wordt uitgevoerd, kunt u de gegevens over die uitvoering
 
    ![Uitvoeringen en status van logische apps weer geven](./media/monitor-logic-apps-log-analytics/logic-app-run-details.png)
 
+   > [!NOTE]
+   > De functie voor **opnieuw verzenden** op deze pagina is momenteel niet beschikbaar.
+
    Voor acties waarbij u [bijgehouden eigenschappen instelt](#extend-data), kunt u deze eigenschappen ook weer geven door **weer gave** te selecteren in de kolom **bijgehouden eigenschappen** . Gebruik het kolom filter om de bijgehouden eigenschappen te doorzoeken.
 
    ![Bijgehouden eigenschappen voor een logische app weer geven](./media/monitor-logic-apps-log-analytics/logic-app-tracked-properties.png)
-
-   > [!NOTE]
-   > Getraceerde eigenschappen of voltooide gebeurtenissen kunnen 10-15 minuut vertraging ondervinden voordat deze in uw Log Analytics-werk ruimte worden weer gegeven.
-   > Daarnaast is de functie voor **opnieuw verzenden** op deze pagina momenteel niet beschikbaar.
 
 1. Als u uw resultaten wilt filteren, kunt u zowel client-side als server-side filters uitvoeren.
 

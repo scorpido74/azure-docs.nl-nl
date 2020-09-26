@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: sstein, bonova, carlrab
+ms.reviewer: sstein, bonova
 ms.date: 02/22/2019
-ms.openlocfilehash: 562766ada8fb9a2620fa83875dc98d02ab752d95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 04f0fca06c2e50ef6d99d51c03e58b468a476e9d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85338552"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323104"
 ---
 # <a name="determine-required-subnet-size--range-for-azure-sql-managed-instance"></a>Vereiste subnet grootte bepalen & bereik voor Azure SQL Managed instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -59,7 +59,7 @@ GP = algemeen gebruik; BC = bedrijfs kritiek; VC = virtueel cluster
 | GEN5 | GP | 5 | 6 | 3 | 14 |
 | GEN5 | BC | 5 | 6 | 5 | 16 |
 
-  \*In het kolom totaal wordt het aantal adressen weer gegeven dat moet worden genomen wanneer één exemplaar in het subnet wordt geïmplementeerd. Elk extra exemplaar in het subnet voegt het aantal adressen toe dat wordt weer gegeven in de kolom exemplaar gebruik. Adressen die worden weer gegeven met de Azure-gebruiks kolom worden gedeeld door meerdere virtuele clusters, terwijl adressen die worden weer gegeven met de kolom VC Usage worden gedeeld tussen instanties die in dat virtuele cluster worden geplaatst.
+  \* In het kolom totaal wordt het aantal adressen weer gegeven dat moet worden genomen wanneer één exemplaar in het subnet wordt geïmplementeerd. Elk extra exemplaar in het subnet voegt het aantal adressen toe dat wordt weer gegeven in de kolom exemplaar gebruik. Adressen die worden weer gegeven met de Azure-gebruiks kolom worden gedeeld door meerdere virtuele clusters, terwijl adressen die worden weer gegeven met de kolom VC Usage worden gedeeld tussen instanties die in dat virtuele cluster worden geplaatst.
 
 Voor de update bewerking moet de grootte van het virtuele cluster doorgaans worden gewijzigd. In sommige gevallen is het maken van een virtueel cluster vereist voor een update bewerking (Zie het [artikel beheer bewerkingen](sql-managed-instance-paas-overview.md#management-operations)voor meer informatie). In het geval van het maken van een virtueel cluster is het aantal vereiste extra adressen gelijk aan het aantal adressen dat wordt weer gegeven door de kolom VC usage, die is vereist voor instanties die worden geplaatst in dat virtuele cluster (kolom exemplaar gebruik).
 
@@ -88,7 +88,7 @@ Bij het schalen van bewerkings instanties is er tijdelijk extra IP-capaciteit ve
 | GEN5 | BC | Opslag ruimte schalen | 5 |
 | GEN5 | BC | Overschakelen naar GP | 3 |
 
-  \*Gen4-hardware wordt gefaseerd uitgevoerd en is niet meer beschikbaar voor nieuwe implementaties. Werk de hardware-generatie van Gen4 naar GEN5 om te profiteren van de mogelijkheden die specifiek zijn voor het genereren van GEN5-hardware.
+  \* Gen4-hardware wordt gefaseerd uitgevoerd en is niet meer beschikbaar voor nieuwe implementaties. Werk de hardware-generatie van Gen4 naar GEN5 om te profiteren van de mogelijkheden die specifiek zijn voor het genereren van GEN5-hardware.
 
 ## <a name="next-steps"></a>Volgende stappen
 

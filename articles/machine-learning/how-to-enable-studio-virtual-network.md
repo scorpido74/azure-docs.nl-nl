@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 07/16/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 5dce7cde3c46fbcf3f764819f730f42cace4a74c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 0c5f91f1423bc20b2202589c488c9b225ed3fbaa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897530"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333848"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Azure Machine Learning Studio gebruiken in een virtueel Azure-netwerk
 
@@ -56,8 +56,7 @@ Als u bijvoorbeeld netwerk beveiligings groepen (NSG) gebruikt om uitgaand verke
 
 ## <a name="access-data-using-the-studio"></a>Toegang tot gegevens met behulp van Studio
 
-Als uw gegevens worden opgeslagen in een virtueel netwerk, moet u uw opslag accounts configureren voor het gebruik van [beheerde identiteit](../active-directory/managed-identities-azure-resources/overview.md) om de toegang tot uw gegevens te verlenen aan de Studio.
-
+Nadat u [een Azure Storage-account aan uw virtuele netwerk hebt toegevoegd](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts), moet u uw opslag account configureren voor het gebruik van [beheerde identiteit](../active-directory/managed-identities-azure-resources/overview.md) om de toegang tot uw gegevens te verlenen aan de Studio. De Studio ondersteunt opslag accounts die zijn geconfigureerd voor het gebruik van service-eind punten of privé-eind punten. Opslag accounts gebruiken standaard service-eind punten. Zie [privé-eind punten voor Azure Storage gebruiken](../storage/common/storage-private-endpoints.md) om persoonlijke eind punten voor opslag in te scha kelen
 
 Als u de beheerde identiteit niet inschakelt, wordt deze fout ook weer gegeven, `Error: Unable to profile this dataset. This might be because your data is stored behind a virtual network or your data does not support profile.` worden de volgende bewerkingen uitgeschakeld:
 
@@ -72,7 +71,6 @@ De Studio ondersteunt het lezen van gegevens uit de volgende gegevensopslag type
 * Azure Data Lake Storage Gen1
 * Azure Data Lake Storage Gen2
 * Azure SQL Database
-
 
 ### <a name="configure-datastores-to-use-managed-identity"></a>Gegevens opslag configureren voor het gebruik van beheerde identiteit
 
