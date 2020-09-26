@@ -3,12 +3,12 @@ title: Ondertekende installatie kopieën beheren
 description: Meer informatie over het inschakelen van inhouds vertrouwen voor uw Azure container Registry en het pushen en pullen van ondertekende installatie kopieën. Content Trust is een functie van de service laag Premium.
 ms.topic: article
 ms.date: 09/06/2019
-ms.openlocfilehash: 34bb56bab869cb1f12541b65c59b06a73b215377
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 36d2a8ddef184804facdace2d517d7e2fdf1b24c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076847"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253476"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Inhoud vertrouwen in Azure Container Registry
 
@@ -40,7 +40,7 @@ Uw eerste stap is het inschakelen van inhoud vertrouwen op het niveau van het re
 
 Als u inhoud vertrouwen voor uw register wilt inschakelen, navigeert u eerst naar het register in Azure Portal. Selecteer onder **beleid**de optie **inhouds vertrouwensrelatie**  >  **ingeschakeld**  >  **Opslaan**. U kunt ook de opdracht [AZ ACR config content-Trust update][az-acr-config-content-trust-update] in de Azure CLI gebruiken.
 
-![Inhoud vertrouwen voor een register inschakelen in Azure Portal][content-trust-01-portal]
+![Scherm opname toont het inschakelen van inhouds vertrouwen voor een REGI ster in de Azure Portal.][content-trust-01-portal]
 
 ## <a name="enable-client-content-trust"></a>Inhoud vertrouwen voor clients inschakelen
 

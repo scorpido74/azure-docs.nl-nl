@@ -1,6 +1,6 @@
 ---
 title: Id-providers voor externe identiteiten-Azure AD
-description: Azure Active Directory B2B-samen werking ondersteunt multi-factor Authentication (MFA) voor selectieve toegang tot uw bedrijfs toepassingen
+description: Informatie over het gebruik van Azure AD als uw standaard id-provider voor delen met externe gebruikers.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2284d015b451872753dd0855cac42e6f1926545c
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: a61eca3340985886ef782b28a59a1283c5f473ce
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908614"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265708"
 ---
 # <a name="identity-providers-for-external-identities"></a>Id-providers voor externe identiteiten
 
@@ -35,7 +35,7 @@ U kunt gebruikers echter in staat stellen zich aan te melden met verschillende i
    > Directe Federatie-id-providers kunnen niet worden gebruikt in uw Self-service registratie gebruikers stromen.
 
 
-## <a name="how-it-works"></a>Hoe werkt het?
+## <a name="how-it-works"></a>Uitleg
 
 Met de functie voor zelf registratie van Azure AD externe identiteiten kunnen gebruikers zich aanmelden met hun Azure AD-, Google-of Facebook-account. Als u sociale id-providers wilt instellen in uw Azure AD-Tenant, maakt u een toepassing bij elke id-provider en configureert u de referenties. U ontvangt een client-of App-ID en een client-of app-geheim, dat u vervolgens kunt toevoegen aan uw Azure AD-Tenant.
 
