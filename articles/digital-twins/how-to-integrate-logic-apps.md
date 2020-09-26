@@ -8,12 +8,12 @@ ms.date: 9/11/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 09181a28edf21f0a4da11a244d3c094469446ab5
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 6726dab6f1037f01eda316968e3c5b503aa9dbfb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983456"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326570"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>Integreren met Logic Apps met behulp van een aangepaste connector
 
@@ -28,7 +28,7 @@ In dit artikel gaat u de [Azure Portal](https://portal.azure.com) gebruiken om *
 Als u geen abonnement op Azure hebt, **maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)** voordat u begint.
 Meld u aan bij de [Azure Portal](https://portal.azure.com) met dit account. 
 
-In de rest van deze sectie wordt u stapsgewijs begeleid bij de volgende stappen:
+U moet ook de volgende items uitvoeren als onderdeel van de vereiste configuratie. In de rest van deze sectie wordt u stapsgewijs begeleid bij de volgende stappen:
 - Een Azure Digital Twins-instantie instellen
 - Client geheim voor registratie van apps ophalen
 - Voeg een digitale dubbele
@@ -37,9 +37,9 @@ In de rest van deze sectie wordt u stapsgewijs begeleid bij de volgende stappen:
 
 Als u een Azure Digital Apparaatdubbels-exemplaar wilt verbinden met Logic Apps in dit artikel, moet u de **Azure Digital apparaatdubbels-instantie** al hebben ingesteld. 
 
-Als u nu een nieuw exemplaar moet instellen, kunt u dit het beste doen door een geautomatiseerd implementatie script-voor beeld uit te voeren. Volg de instructies in [*How-to: een exemplaar en authenticatie instellen (met een script)*](how-to-set-up-instance-scripted.md) om een nieuw exemplaar in te stellen en de vereiste Azure AD-app te registreren. De instructies bevatten ook stappen om te controleren of u elke stap hebt voltooid en gereed bent om door te gaan met het nieuwe exemplaar.
+Stel eerst een Azure Digital Apparaatdubbels-exemplaar in en de vereiste verificatie zodat u ermee kunt werken. Volg hiervoor de instructies in [*How-to: een instantie en verificatie instellen*](how-to-set-up-instance-portal.md). Afhankelijk van uw favoriete ervaring wordt het installatie artikel aangeboden voor de [Azure Portal](how-to-set-up-instance-portal.md), [cli](how-to-set-up-instance-cli.md)of het [geautomatiseerde Cloud shell-voorbeeld script](how-to-set-up-instance-scripted.md)voor de implementatie. Alle versies van de instructies bevatten ook stappen om te controleren of u elke stap hebt voltooid en gereed bent om door te gaan met het nieuwe exemplaar.
 
-In deze zelfstudie hebt u de volgende waarden nodig, van toen u het exemplaar hebt ingesteld. Als u deze waarden opnieuw wilt opzoeken, gebruikt u de koppelingen naar de bijbehorende secties in het artikel over installeren om ze te vinden in de [Azure-portal](https://portal.azure.com).
+In deze zelf studie hebt u verschillende waarden nodig bij het instellen van uw exemplaar. Als u deze waarden opnieuw wilt opzoeken, gebruikt u de koppelingen naar de bijbehorende secties in het artikel over installeren om ze te vinden in de [Azure-portal](https://portal.azure.com).
 * Azure Digital Twins-exemplaar **_hostnaam_** ([beschikbaar in de portal](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))
 * Azure AD-app-registratie **_Toepassings-id (client)_** ([beschikbaar in de portal](how-to-set-up-instance-portal.md#collect-important-values))
 * Azure AD-app-registratie **_Map-id (tenant)_** ([beschikbaar in de portal](how-to-set-up-instance-portal.md#collect-important-values))
@@ -160,13 +160,13 @@ U bent nu klaar met het instellen van een aangepaste connector die toegang heeft
 
 Vervolgens maakt u een logische app die uw nieuwe connector gebruikt voor het automatiseren van Azure Digital Apparaatdubbels-updates.
 
-Ga naar de pagina [Logic apps (verbruik)](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Logic%2Fworkflows) in de Azure Portal (u kunt deze koppeling gebruiken of ernaar zoeken in de zoek balk van de portal). Druk op de knop *toevoegen* om een logische app te maken.
+Zoek in de [Azure Portal](https://portal.azure.com)naar *logische apps* in de zoek balk van de portal. Als u deze optie selecteert, wordt u naar de pagina *Logic apps* geleid. Klik op de knop *logische app maken* om een nieuwe logische app te maken.
 
-:::image type="content" source="media/how-to-integrate-logic-apps/create-logic-app.png" alt-text="De pagina Logic Apps (verbruik) in de Azure Portal. Knop toevoegen":::
+:::image type="content" source="media/how-to-integrate-logic-apps/create-logic-app.png" alt-text="De pagina Logic Apps in de Azure Portal. Knop toevoegen":::
 
-Voer op de pagina *Logic apps (verbruik)* het volgende in: uw abonnement, de resource groep. Kies ook een naam voor uw logische app en selecteer de locatie.
+Voer op de pagina *logische app* die volgt uw abonnement en de resource groep in. Kies ook een naam voor uw logische app en selecteer de implementatie locatie.
 
-Selecteer de knop _beoordeling + maken_ .
+Druk op de knop _beoordeling + maken_ .
 
 Hiermee gaat u naar het tabblad *controleren en maken* , waar u uw gegevens kunt bekijken en onder aan de slag wilt gaan om uw resource *te maken.*
 

@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 7f7239e0c13478af712d8e8d9dad8fda23fe42c7
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: ad0111f9be8c0b981093618be7296d0ec7f90e30
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87125529"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326538"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>Een grafiek van digitale apparaatdubbels beheren met behulp van relaties
 
 De kern van Azure Digital Apparaatdubbels is de [dubbele grafiek](concepts-twins-graph.md) die uw hele omgeving weergeeft. Het dubbele diagram bestaat uit afzonderlijke digitale apparaatdubbels die zijn verbonden via **relaties**.
 
-Zodra u een werkend [Azure Digital apparaatdubbels-exemplaar](how-to-set-up-instance-scripted.md) hebt en [verificatie](how-to-authenticate-client.md) code hebt ingesteld in uw client-app, kunt u de [**DigitalTwins-api's**](how-to-use-apis-sdks.md) gebruiken voor het maken, wijzigen en verwijderen van digitale Apparaatdubbels en hun relaties in een Azure Digital apparaatdubbels-instantie. U kunt ook de [.net (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)of de [Azure Digital apparaatdubbels cli](how-to-use-cli.md)gebruiken.
+Zodra u een werkend [Azure Digital apparaatdubbels-exemplaar](how-to-set-up-instance-portal.md) hebt en [verificatie](how-to-authenticate-client.md) code hebt ingesteld in uw client-app, kunt u de [**DigitalTwins-api's**](how-to-use-apis-sdks.md) gebruiken voor het maken, wijzigen en verwijderen van digitale Apparaatdubbels en hun relaties in een Azure Digital apparaatdubbels-instantie. U kunt ook de [.net (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)of de [Azure Digital apparaatdubbels cli](how-to-use-cli.md)gebruiken.
 
 Dit artikel richt zich op het beheren van relaties en de hele grafiek; Zie [*How-to: Manage Digital apparaatdubbels*](how-to-manage-twin.md)(Engelstalig) als u wilt werken met afzonderlijke digitale apparaatdubbels.
 
@@ -63,6 +63,14 @@ public async static Task CreateRelationship(DigitalTwinsClient client, string sr
 ```
 
 `BasicRelationship`Zie [*How-to: use the Azure Digital apparaatdubbels Api's and sdk's*](how-to-use-apis-sdks.md)(Engelstalig) voor meer informatie over de helper-klasse.
+
+### <a name="create-multiple-relationships-between-twins"></a>Meerdere relaties maken tussen apparaatdubbels
+
+Er is geen beperking voor het aantal relaties dat u tussen twee apparaatdubbels kunt hebben: u kunt zo veel relaties tussen apparaatdubbels hebben als u wilt. 
+
+Dit betekent dat u verschillende typen relaties tussen twee apparaatdubbels tegelijk kunt uitdrukken. *Dubbele a* kan bijvoorbeeld zowel een *opgeslagen* relatie als een *vervaardigde* relatie met *dubbele B*hebben.
+
+U kunt zelfs meerdere exemplaren van hetzelfde type relatie maken tussen dezelfde twee apparaatdubbels, indien gewenst. In dit voor beeld betekent dit dat *dubbele A* twee verschillende *opgeslagen* relaties heeft met *dubbele B*.
 
 ## <a name="list-relationships"></a>Lijst met relaties
 
@@ -229,7 +237,7 @@ In praktische use cases worden vaak dubbele hiërarchieën gemaakt op basis van 
 
 Bekijk de volgende gegevens tabel, met een beschrijving van een set digitale apparaatdubbels en relaties die moeten worden gemaakt.
 
-| Model    | Id | Bovenliggend | Naam van relatie | Andere gegevens |
+| Modelleren    | Id | Bovenliggend | Naam van relatie | Andere gegevens |
 | --- | --- | --- | --- | --- |
 | Floor    | Floor01 | | | … |
 | ruimte    | Room10 | Floor01 | contains | … |

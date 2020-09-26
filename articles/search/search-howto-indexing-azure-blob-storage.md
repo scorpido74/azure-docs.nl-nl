@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 9caa377ebcdff5b0ae379f1b0b8269dac5b8f499
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 2ba511d3747ba308ae04ab1bbe3dcb89bca6a8a8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88924092"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328289"
 ---
 # <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>Documenten in Azure Blob Storage indexeren met Azure Cognitive Search
 
@@ -31,7 +31,7 @@ De BLOB-indexer kan tekst uit de volgende document indelingen ophalen:
 ## <a name="setting-up-blob-indexing"></a>BLOB-indexering instellen
 U kunt een Azure Blob Storage Indexeer functie instellen met behulp van:
 
-* [Azure Portal](https://ms.portal.azure.com)
+* [Azure-portal](https://ms.portal.azure.com)
 * Azure Cognitive Search [rest API](/rest/api/searchservice/Indexer-operations)
 * Azure Cognitive Search [.NET SDK](/dotnet/api/overview/azure/search)
 
@@ -73,6 +73,7 @@ Zie [Data Source maken](/rest/api/searchservice/create-data-source)voor meer inf
 
 U kunt de referenties voor de BLOB-container op een van de volgende manieren opgeven:
 
+- **Beheerde identiteits Connection String**: voor `ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.Storage/storageAccounts/<your storage account name>/;` Deze Connection String is geen account sleutel vereist, maar u moet de instructies voor het [instellen van een verbinding met een Azure Storage-account volgen met behulp van een beheerde identiteit](search-howto-managed-identities-storage.md).
 - **Volledig Access Storage-account Connection String**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` u kunt de connection string van de Azure Portal ophalen door te navigeren naar de Blade voor het opslag account > instellingen > sleutels (voor klassieke opslag accounts) of instellingen > toegangs sleutels (voor Azure Resource Manager Storage-accounts).
 - **Opslag account voor Shared Access Signature** (sas) Connection String: `BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl` de SAS moet de lijst en lees machtigingen hebben voor containers en objecten (blobs in dit geval).
 -  **Shared Access-hand tekening voor container**: `ContainerSharedAccessUri=https://<your storage account>.blob.core.windows.net/<container name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl` de SAS moet de lijst en lees machtigingen voor de container hebben.

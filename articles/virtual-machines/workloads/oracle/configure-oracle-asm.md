@@ -3,7 +3,7 @@ title: Oracle ASM op een virtuele Azure Linux-machine instellen | Microsoft Docs
 description: Krijg snel en eenvoudig Oracle-ASM in uw Azure-omgeving.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: rgardler
+author: dbakevlar
 manager: ''
 editor: ''
 tags: azure-resource-manager
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: rogardle
-ms.openlocfilehash: a707081aca4a28743bff8bdd1046a5e9aee285f1
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.author: kegorman
+ms.openlocfilehash: e82b458487dd4c865013c806447473d25c75017f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224397"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328085"
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>Oracle ASM op een virtuele Azure Linux-machine instellen  
 
@@ -39,7 +39,7 @@ Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor 
 
 ### <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-U kunt een resourcegroep maken met de opdracht [az group create](/cli/azure/group). Een Azure-resource groep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. In dit voor beeld wordt een resource groep met de naam *myResourceGroup* in de regio *eastus* .
+U kunt een resourcegroep maken met de opdracht [az group create](/cli/azure/group). Een Azure-resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. In dit voor beeld wordt een resource groep met de naam *myResourceGroup* in de regio *eastus* .
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -60,7 +60,7 @@ In het volgende voor beeld wordt een VM gemaakt met de naam myVM die een Standar
     --data-disk-sizes-gb 50 50 50 50
    ```
 
-Nadat u de virtuele machine hebt gemaakt, toont Azure CLI informatie die lijkt op het volgende voor beeld. Noteer de waarde voor `publicIpAddress` . U gebruikt dit adres voor toegang tot de virtuele machine.
+Nadat u de VM hebt gemaakt, geeft de Azure CLI informatie weer die lijkt op het volgende voorbeeld. Noteer de waarde voor `publicIpAddress`. Dit adres wordt gebruikt voor toegang tot de virtuele machine.
 
    ```output
    {
@@ -77,7 +77,7 @@ Nadat u de virtuele machine hebt gemaakt, toont Azure CLI informatie die lijkt o
 
 ### <a name="connect-to-the-vm"></a>Verbinding maken met de virtuele machine
 
-Gebruik de volgende opdracht als u een SSH-sessie met de virtuele machine wilt maken en aanvullende instellingen wilt configureren. Vervang het IP-adres door de `publicIpAddress` waarde voor uw VM.
+Gebruik de volgende opdracht als u een SSH-sessie met de virtuele machine wilt maken en aanvullende instellingen wilt configureren. Vervang het IP-adres door de waarde `publicIpAddress` voor uw VM.
 
 ```bash
 ssh <publicIpAddress>

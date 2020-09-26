@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 53473b6be9e91adb636c3c9528e97ec644616115
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: f3b492534bedde50d2413b88fa38cd6325ed5df7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90058611"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328255"
 ---
 # <a name="azure-security-benchmark-introduction"></a>Inleiding tot Azure Security Bench Mark
 
@@ -23,8 +23,8 @@ Micro soft heeft geconstateerd dat met behulp van *beveiligings benchmarks* u sn
 
 De Azure Security Bench Mark bevat een verzameling essentiële aanbevelingen voor beveiliging die u kunt gebruiken om de services te beveiligen die u in azure gebruikt:
 
-- Beveiligings controles: deze aanbevelingen zijn in het algemeen van toepassing op uw Azure-Tenant en Azure-Services. Elke aanbeveling identificeert een lijst met belanghebbenden die doorgaans betrokken zijn bij het plannen, goed keuren of implementeren van de Bench Mark. 
-- Service basislijnen: Hiermee worden de besturings elementen toegepast op afzonderlijke Azure-Services om aanbevelingen te geven over de beveiligings configuratie van die service.
+- **Beveiligings controles**: deze aanbevelingen zijn in het algemeen van toepassing op uw Azure-Tenant en Azure-Services. Elke aanbeveling identificeert een lijst met belanghebbenden die doorgaans betrokken zijn bij het plannen, goed keuren of implementeren van de Bench Mark. 
+- **Service basislijnen**: Hiermee worden de besturings elementen toegepast op afzonderlijke Azure-Services om aanbevelingen te geven over de beveiligings configuratie van die service.
 
 ## <a name="implement-the-azure-security-benchmark"></a>De Azure Security-Bench Mark implementeren
 - **Plan** de implementatie van uw Azure Security-benchmark procedure door de [documentatie](overview.md) te bekijken voor de Enter prise-besturings elementen en servicespecifieke basislijnen om uw beheer raamwerk te plannen en te bepalen hoe IT wordt toegewezen aan richt lijnen zoals CIS (Controls v 7.1) en het NIST (SP800-53)-Framework.

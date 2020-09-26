@@ -2,20 +2,20 @@
 title: Gegevenslocatie
 description: Gegevens locatie en informatie over Azure Arc-servers.
 ms.topic: reference
-ms.date: 09/02/2020
+ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 8b4b8171bd7133e52928a5227c488bd6234ce686
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 73acb07b8caa3c1368c936463f04969c29d37985
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90908120"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327762"
 ---
 # <a name="azure-arc-enabled-servers-data-residency"></a>Servers die geschikt zijn voor Azure-Arc: data locatie
 
 In dit artikel wordt het concept van gegevens locatie uitgelegd en hoe dit van toepassing is op servers met Azure Arc.
 
-Servers met Azure-Arc zijn **[beschikbaar](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc)** in de **Verenigde Staten, Europa of Azië en Stille Oceaan**.
+Servers met Azure Arc is **[beschikbaar](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc)** in de **Verenigde Staten, Europa, het Verenigd konink rijk of Azië en Stille Oceaan**.
 
 ## <a name="data-residency"></a>Gegevenslocatie
 

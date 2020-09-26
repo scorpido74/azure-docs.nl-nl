@@ -11,14 +11,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
+ms.reviewer: mathoma, sstein
 ms.date: 06/25/2019
-ms.openlocfilehash: 8ceef173e33c3603d9bc5d6ef217d54eef88609c
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: a69332f1534e32a85ce084289dd00533612cc282
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85982469"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327558"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Overzicht van bedrijfscontinuïteit met Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -63,15 +63,15 @@ Als de maximale ondersteunde Bewaar periode voor back-ups voor PITR (Point-in-ti
 
 Met [groepen voor automatische failover](auto-failover-group-overview.md#terminology-and-capabilities) worden de implementatie en het gebruik van [geo-replicatie](active-geo-replication-overview.md) vereenvoudigd en worden de extra mogelijkheden toegevoegd, zoals beschreven in de volgende tabel:
 
-|                                              | Geo-replicatie | Failover-groepen  |
+|                                              | Geo-replicatie | Failovergroepen  |
 |:---------------------------------------------| :-------------- | :----------------|
-| **Automatische failover**                          |     Nee          |      Yes         |
-| **Gelijktijdige failover van meerdere data bases**  |     Nee          |      Yes         |
-| **De gebruiker moet connection string bijwerken na een failover**      |     Yes         |      Nee          |
-| **Ondersteuning voor SQL Managed instance**                   |     Nee          |      Yes         |
-| **Kan zich in dezelfde regio bevinden als primair**             |     Yes         |      Nee          |
-| **Meerdere replica's**                            |     Yes         |      Nee          |
-| **Ondersteunt Lees-Scale**                          |     Ja         |      Ja         |
+| **Automatische failover**                          |     Nee          |      Ja         |
+| **Gelijktijdige failover van meerdere databases**  |     Nee          |      Ja         |
+| **Gebruiker moet verbindingsreeks bijwerken na failover**      |     Ja         |      Nee          |
+| **Ondersteuning voor SQL Managed Instance**                   |     Nee          |      Ja         |
+| **Kan zich in dezelfde regio bevinden als primaire replica**             |     Ja         |      Nee          |
+| **Meerdere replica's**                            |     Ja         |      Nee          |
+| **Ondersteunt lezen-schalen**                          |     Ja         |      Ja         |
 
 
 ## <a name="recover-a-database-to-the-existing-server"></a>Een Data Base naar de bestaande server herstellen

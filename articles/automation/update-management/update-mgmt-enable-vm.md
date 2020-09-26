@@ -2,15 +2,15 @@
 title: Azure Automation Updatebeheer inschakelen vanaf een virtuele machine in azure
 description: In dit artikel leest u hoe u Updatebeheer kunt inschakelen vanuit een Azure-VM.
 services: automation
-ms.date: 07/28/2020
+ms.date: 09/16/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 27832190125840e367edbfb2db8e4134f98b192d
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: dead4649635bebd9f73f79937dea1d24565f273e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87450197"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327787"
 ---
 # <a name="enable-update-management-from-an-azure-vm"></a>Updatebeheer inschakelen vanaf een virtuele Azure-machine
 
@@ -35,13 +35,15 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 2. Selecteer de virtuele machine waarvoor u Updatebeheer wilt inschakelen. Vm's kunnen in elke regio bestaan, ongeacht de locatie van uw Automation-account. U
 
-3. Selecteer op de pagina VM onder **bewerkingen**de optie **updatebeheer**.
+3. Selecteer op de pagina VM onder **bewerkingen**de optie **gast en host-updates**.
+
+    ![Selecteer gast en host updates in het linkerdeel venster](media/update-mgmt-enable-vm/select-guest-and-os-updates.png)
 
 4. U moet gemachtigd zijn `Microsoft.OperationalInsights/workspaces/read` om te bepalen of de virtuele machine is ingeschakeld voor een werk ruimte. Zie [machtigingen die nodig zijn om computers in te scha kelen](../automation-role-based-access-control.md#feature-setup-permissions)voor meer informatie over aanvullende machtigingen die vereist zijn. Zie [updatebeheer inschakelen vanuit een Automation-account](update-mgmt-enable-automation-account.md)voor meer informatie over het inschakelen van meerdere computers tegelijk.
 
-5. Kies de Log Analytics-werk ruimte en het Automation-account en klik op **inschakelen** om updatebeheer in te scha kelen. Nadat u Updatebeheer hebt ingeschakeld, kan het ongeveer 15 minuten duren voordat u de update-evaluatie van de VM kunt bekijken.
+5. Kies op de pagina Updatebeheer inschakelen de Log Analytics werk ruimte en het Automation-account en klik op **inschakelen** om updatebeheer in te scha kelen. Nadat u Updatebeheer hebt ingeschakeld, kan het ongeveer 15 minuten duren voordat u de update-evaluatie van de VM kunt bekijken.
 
-    ![Updatebeheer inschakelen](media/update-mgmt-enable-vm/manageupdates-update-enable.png)
+    ![Updatebeheer inschakelen](media/update-mgmt-enable-vm/enable-update-management.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

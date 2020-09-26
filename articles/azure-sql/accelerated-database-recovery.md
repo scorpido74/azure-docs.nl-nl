@@ -9,19 +9,28 @@ ms.devlang: ''
 ms.topic: conceptual
 author: mashamsft
 ms.author: mathoma
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: a6d95bbcb0873086a799dcf216beab4a6b0d33de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c679b6bb0f5645ea7a972be03ba3621b824a501
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84344693"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327609"
 ---
 # <a name="accelerated-database-recovery-in-azure-sql"></a>Versneld database herstel in Azure SQL 
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
 
-**Versneld database herstel (ADR)** is een functie van SQL server data base-engine waarmee de beschik baarheid van de data base aanzienlijk wordt verbeterd, met name als er langlopende trans acties worden uitgevoerd, door het herstel proces van de SQL server data base-engine opnieuw te ontwerpen. ADR is momenteel beschikbaar voor Azure SQL Database, Azure SQL Managed instance, SQL Server op Azure VM en data bases in azure Synapse Analytics (momenteel als preview-versie). De belangrijkste voor delen van ADR zijn:
+**Versneld database herstel (ADR)** is een functie van SQL server data base-engine waarmee de beschik baarheid van de data base aanzienlijk wordt verbeterd, met name als er langlopende trans acties worden uitgevoerd, door het herstel proces van de SQL server data base-engine opnieuw te ontwerpen. 
+
+ADR is momenteel beschikbaar voor Azure SQL Database, Azure SQL Managed instance, data bases in azure Synapse Analytics (momenteel in Preview) en SQL Server op Azure Vm's vanaf SQL Server 2019. 
+
+> [!NOTE] 
+> ADR is standaard ingeschakeld in Azure SQL Database en Azure SQL Managed instance en het uitschakelen van ADR voor een van beide producten wordt niet ondersteund. 
+
+## <a name="overview"></a>Overzicht
+
+De belangrijkste voor delen van ADR zijn:
 
 - **Snel en consistent herstel van de data base**
 

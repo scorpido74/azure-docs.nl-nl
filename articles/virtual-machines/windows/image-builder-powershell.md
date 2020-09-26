@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e25b2b53acdfb05af8572a01109961bf3002e429
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a221ba8fe14db37729183774197bfc2db8bf2baa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499412"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328102"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder-using-powershell"></a>Voor beeld: een Windows-VM met Azure Image Builder maken met behulp van Power shell
 
@@ -26,7 +26,7 @@ In dit artikel wordt beschreven hoe u een aangepaste Windows-installatie kopie k
 
 Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
-Als u PowerShell lokaal wilt gebruiken, moet u voor dit artikel de AZ Powershell-module installeren en verbinding maken met uw Azure-account met behulp van de cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount). Zie [Azure PowerShell installeren](/powershell/azure/install-az-ps) voor meer informatie over het installeren van de AZ PowerShell-module.
+Als u PowerShell lokaal wilt gebruiken, moet u voor dit artikel de Az-module van PowerShell installeren en verbinding maken met uw Azure-account met behulp van de cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount). Zie [Azure PowerShell installeren](/powershell/azure/install-az-ps) voor meer informatie over het installeren van de Az-module van PowerShell.
 
 > [!IMPORTANT]
 > Hoewel de Power shell-modules **AZ. ImageBuilder** en **AZ. ManagedServiceIdentity** in de preview-versie zijn, moet u ze afzonderlijk installeren met de `Install-Module` cmdlet met de `AllowPrerelease` para meter. Zodra deze Power shell-modules algemeen beschikbaar worden, worden ze onderdeel van toekomstige AZ Power shell-module releases en zijn deze standaard beschikbaar vanuit Azure Cloud Shell.
@@ -37,7 +37,7 @@ Als u PowerShell lokaal wilt gebruiken, moet u voor dit artikel de AZ Powershell
 
 [!INCLUDE [cloud-shell-try-it](../../../includes/cloud-shell-try-it.md)]
 
-Als u meerdere Azure-abonnementen hebt, kiest u het juiste abonnement waarin de resource moet worden gefactureerd. Selecteer een specifiek abonnement met de cmdlet [set-AzContext](/powershell/module/az.accounts/set-azcontext) .
+Als u meerdere Azure-abonnementen hebt, kiest u het juiste abonnement waarin de resource moet worden gefactureerd. Selecteer een specifiek abonnement met de cmdlet [set-AzContext](/powershell/module/az.accounts/set-azcontext).
 
 ```azurepowershell-interactive
 Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
@@ -75,7 +75,7 @@ Get-AzResourceProvider -ProviderNamespace Microsoft.Compute, Microsoft.KeyVault,
 
 ## <a name="define-variables"></a>Variabelen definiëren
 
-U gebruikt herhaaldelijk verschillende gegevens. Variabelen maken om de informatie op te slaan.
+U gebruikt herhaaldelijk verschillende gegevens. Maak variabelen om de gegevens op te slaan.
 
 ```azurepowershell-interactive
 # Destination image resource group name
@@ -103,7 +103,7 @@ Write-Output $subscriptionID
 
 Maak een [Azure-resourcegroep](../../azure-resource-manager/management/overview.md) met de cmdlet [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en groepsgewijs worden beheerd.
 
-In het volgende voor beeld wordt een resource groep gemaakt op basis van de naam in de `$imageResourceGroup` variabele in de regio die is opgegeven in de `$location` variabele. Deze resource groep wordt gebruikt voor het opslaan van het sjabloon artefact van de installatie kopie en de installatie kopie.
+In het volgende voorbeeld wordt een resourcegroep gemaakt op basis van de naam in de variabele `$imageResourceGroup` in de regio die is opgegeven in de variabele `$location`. Deze resource groep wordt gebruikt voor het opslaan van het sjabloon artefact van de installatie kopie en de installatie kopie.
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name $imageResourceGroup -Location $location
@@ -271,7 +271,7 @@ Op de achtergrond maakt Image Builder ook een staging-resource groep in uw abonn
 
 Als de service een fout meldt tijdens het verzenden van de installatie kopie:
 
-- Zie [problemen met Azure VM-installatie kopieën opbouwen (AIB) oplossen](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#template-submission-errors--troubleshooting).
+- Zie [problemen met Azure VM-installatie kopieën opbouwen (AIB) oplossen](../linux/image-builder-troubleshoot.md).
 - Verwijder de sjabloon met behulp van het volgende voor beeld voordat u het opnieuw probeert.
 
 ```azurepowershell-interactive
@@ -288,11 +288,11 @@ Start-AzImageBuilderTemplate -ResourceGroupName $imageResourceGroup -Name $image
 
 Wacht tot het buildproces van de installatie kopie is voltooid. Deze stap kan tot een uur duren.
 
-Als er fouten optreden, raadpleegt u [problemen met het oplossen van Azure VM image build (AIB)-](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-build-errors--troubleshooting)fouten.
+Als er fouten optreden, raadpleegt u [problemen met het oplossen van Azure VM image build (AIB)-](../linux/image-builder-troubleshoot.md)fouten.
 
 ## <a name="create-a-vm"></a>Een virtuele machine maken
 
-Sla aanmeldings referenties voor de virtuele machine op in een variabele. Het wacht woord moet complex zijn.
+Sla referenties voor de virtuele machine op in een variabele. Het wachtwoord moet complex zijn.
 
 ```azurepowershell-interactive
 $Cred = Get-Credential
@@ -334,7 +334,7 @@ Remove-AzImageBuilderTemplate -ResourceGroupName $imageResourceGroup -Name $imag
 
 > [!CAUTION]
 > In het volgende voorbeeld worden de opgegeven resourcegroep en alle resources erin verwijderd.
-> Als resources buiten het bereik van dit artikel in de opgegeven resource groep bestaan, worden ze ook verwijderd.
+> Als resources buiten het bereik van dit artikel in de opgegeven resourcegroep bestaan, worden ze ook verwijderd.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name $imageResourceGroup

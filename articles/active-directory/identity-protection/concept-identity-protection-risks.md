@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3dd4d5f413238e0d0da79ff43deeee6245681f4
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 7bc7b0ce521522e677e0dc53809c8c33e0743f0d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90016398"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327915"
 ---
 # <a name="what-is-risk"></a>Wat is risico?
 
@@ -30,7 +30,7 @@ Identiteits beveiliging biedt organisaties toegang tot krachtige bronnen om snel
 
 Er zijn twee soorten risico **gebruiker** en **aanmelding** , en twee typen detectie of berekeningen in **realtime** en **offline**.
 
-Realtime detecties kunnen vijf tot tien minuten niet worden weer gegeven in rapportage. Offline detecties worden mogelijk niet binnen twee tot vier uur weer gegeven in rapportage.
+Realtime detecties kunnen vijf tot tien minuten niet worden weer gegeven in rapportage. Offline detecties kunnen niet twee tot twintig uur worden weer gegeven in rapportage.
 
 ### <a name="user-risk"></a>Gebruikersrisico
 

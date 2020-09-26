@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: 5e811e487856ea38f96b669ccb12cabda655a8cd
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: e49525018a3e23ecbbf92d7a8b3f7c50804432b8
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852120"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358658"
 ---
 # <a name="use-the-voluntary-migration-tool-to-migrate-your-classic-alert-rules"></a>Gebruik het hulp programma voor vrijwillige migratie om uw klassieke waarschuwings regels te migreren
 
@@ -49,7 +49,7 @@ Voer de volgende stappen uit om de migratie van uw klassieke waarschuwings regel
 
 1. Selecteer **migreren naar nieuwe regels** om naar de pagina migratie lands te gaan. Op deze pagina wordt een lijst weer gegeven met al uw abonnementen en hun migratie status:
 
-    ![migratie-overloop](media/alerts-migration/migration-landing.png "Regels migreren")
+    ![Scherm opname toont de pagina waarschuwings regels migreren.](media/alerts-migration/migration-landing.png "Regels migreren")
 
     Alle abonnementen die via het hulp programma kunnen worden gemigreerd, worden gemarkeerd als **gereed om te migreren**.
 
@@ -60,7 +60,7 @@ Voer de volgende stappen uit om de migratie van uw klassieke waarschuwings regel
 
     Op de resulterende pagina ziet u de details van klassieke waarschuwings regels die voor één abonnement tegelijk worden gemigreerd. U kunt ook **de migratie Details voor dit abonnement downloaden** selecteren om de details in een CSV-indeling op te halen.
 
-    ![migratie-preview](media/alerts-migration/migration-preview.png "Preview-migratie")
+    ![Scherm afbeelding toont de pagina waarschuwings regels migreren met een koppeling voor het downloaden van migratie gegevens voor dit abonnement en u kunt e-mail voor migratie melding opgeven.](media/alerts-migration/migration-preview.png "Preview-migratie")
 
 1. Geef een of meer e-mail adressen op om op de hoogte te worden gesteld van de migratie status. U ontvangt een e-mail wanneer de migratie is voltooid of als er een actie van u nodig is.
 
@@ -69,7 +69,7 @@ Voer de volgende stappen uit om de migratie van uw klassieke waarschuwings regel
     > [!IMPORTANT]
     > Nadat u de migratie voor een abonnement hebt gestart, kunt u geen regels voor het klassieke waarschuwings bericht voor dat abonnement bewerken of maken. Deze beperking zorgt ervoor dat er geen wijzigingen in uw klassieke waarschuwings regels verloren gaan tijdens de migratie naar de nieuwe regels. Hoewel u uw klassieke waarschuwings regels niet kunt wijzigen, worden ze nog steeds uitgevoerd en worden er waarschuwingen weer geven totdat ze zijn gemigreerd. Nadat de migratie voor uw abonnement is voltooid, kunt u de regels voor klassieke waarschuwingen niet meer gebruiken.
 
-    ![migratie-bevestigen](media/alerts-migration/migration-confirm.png "Begin migratie bevestigen")
+    ![Scherm afbeelding toont een bevestigings prompt voor uw migratie, met inbegrip van belang rijke informatie met koppelingen voor meer informatie voordat u verdergaat.](media/alerts-migration/migration-confirm.png "Begin migratie bevestigen")
 
 1. Wanneer de migratie is voltooid of als u een actie hebt vereist, ontvangt u een e-mail op de adressen die u eerder hebt opgegeven. U kunt in de portal ook regel matig de status controleren op de migratie landings pagina.
 

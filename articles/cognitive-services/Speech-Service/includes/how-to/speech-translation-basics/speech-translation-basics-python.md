@@ -4,16 +4,26 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/13/2020
 ms.author: trbye
-ms.openlocfilehash: e83536042df1cebb1bb22d6c18d99ae4c3d87873
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: cb7bb9ef70451cece9dde88a7325fe652026b230
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86035582"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326901"
 ---
+Een van de belangrijkste functies van de speech-service is de mogelijkheid om menselijke spraak te herkennen en te vertalen naar andere talen. In deze Snelstartgids leert u hoe u de Speech SDK in uw apps en producten kunt gebruiken om spraak vertalingen van hoge kwaliteit uit te voeren. In deze Quick Start vindt u onderwerpen, waaronder:
+
+* Omzetten van spraak naar tekst
+* Spraak omzetten naar meerdere doel talen
+* Direct omzetten van spraak naar spraak uitvoeren
+
+## <a name="skip-to-samples-on-github"></a>Overs laan voor voor beelden op GitHub
+
+Als u direct naar voorbeeld code wilt overs Laan, raadpleegt u de [python Quick](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/python) start-voor beelden op github.
+
 ## <a name="prerequisites"></a>Vereisten
 
-In dit artikel wordt ervan uitgegaan dat u een Azure-account en een spraak service-abonnement hebt. Als u geen account en abonnement hebt, [kunt u de spraak service gratis uitproberen](../../../get-started.md).
+In dit artikel wordt ervan uitgegaan dat u een Azure-account en een abonnement op de Speech-service hebt. Als u geen account en abonnement hebt, [kunt u de Speech-service gratis uitproberen](../../../get-started.md).
 
 ## <a name="install-the-speech-sdk"></a>De Speech-SDK installeren
 
@@ -38,19 +48,19 @@ speech_key, service_region = os.environ['SPEECH__SUBSCRIPTION__KEY'], os.environ
 
 ## <a name="create-a-speech-translation-configuration"></a>Een configuratie voor spraak omzetting maken
 
-Als u de spraak service wilt aanroepen met behulp van de Speech SDK, moet u een maken [`SpeechTranslationConfig`][config] . Deze klasse bevat informatie over uw abonnement, zoals uw sleutel en de bijbehorende regio, het eind punt, de host of het autorisatie token.
+Als u de Speech-service wilt aanroepen met behulp van de Speech SDK, moet u een [`SpeechTranslationConfig`][config] maken. Deze klasse bevat informatie over uw abonnement, zoals uw sleutel en de bijbehorende regio, het eindpunt, de host of het autorisatietoken.
 
 > [!TIP]
-> Ongeacht of u spraak herkenning, spraak synthese, vertaling of intentie herkenning uitvoert, maakt u altijd een configuratie.
+> Ongeacht of u spraakherkenning, spraaksynthese, vertaling of intentieherkenning uitvoert, u maakt altijd een configuratie.
 
-Er zijn een paar manieren waarop u een kunt initialiseren [`SpeechTranslationConfig`][config] :
+Er zijn een paar manieren waarop u een [`SpeechTranslationConfig`][config] kunt initialiseren:
 
-* Met een abonnement: Geef een sleutel en de bijbehorende regio door.
-* Met een eind punt: Pass in een speech service-eind punt. Een sleutel-of autorisatie token is optioneel.
-* Met een host: Geef een hostadres door. Een sleutel-of autorisatie token is optioneel.
-* Met een autorisatie token: Geef een autorisatie token en de bijbehorende regio door.
+* Met een abonnement: geef een sleutel en de bijbehorende regio door.
+* Met een eindpunt: geef een Speech-service-eindpunt door. Een sleutel of autorisatietoken is optioneel.
+* Met een host: geef een hostadres door. Een sleutel of autorisatietoken is optioneel.
+* Met een autorisatietoken: geef een autorisatietoken en de bijbehorende regio door.
 
-Laten we eens kijken hoe een [`SpeechTranslationConfig`][config] is gemaakt met behulp van een sleutel en regio. Bekijk de [ondersteunings](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) pagina voor regio's om uw regio-id te vinden.
+Laten we eens kijken hoe een [`SpeechTranslationConfig`][config] wordt gemaakt met behulp van een sleutel en regio. Zie de pagina [regio-ondersteuning](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) om uw regio-id te vinden.
 
 ```python
 from_language, to_language = 'en-US', 'de'
@@ -60,9 +70,9 @@ def translate_speech_to_text():
             subscription=speech_key, region=service_region)
 ```
 
-## <a name="change-source-language"></a>Bron taal wijzigen
+## <a name="change-source-language"></a>Brontaal wijzigen
 
-Een veelvoorkomende taak van spraak omzetting is het opgeven van de invoer-(of bron-) taal. Laten we eens kijken hoe u de invoer taal wijzigt in Italiaans. In uw code, communiceert u met het [`SpeechTranslationConfig`][config] exemplaar en wijst u deze toe aan de `speech_recognition_language` eigenschap.
+Een veelvoorkomende taak van spraak omzetting is het opgeven van de invoer-(of bron-) taal. Laten we eens kijken hoe u de invoertaal wijzigt in Italiaans. In uw code, communiceert u met het [`SpeechTranslationConfig`][config] exemplaar en wijst u deze toe aan de `speech_recognition_language` eigenschap.
 
 ```python
 def translate_speech_to_text():
@@ -73,7 +83,7 @@ def translate_speech_to_text():
     translation_config.speech_recognition_language = from_language
 ```
 
-De [`speech_recognition_language`][recognitionlang] eigenschap verwacht een indelings teken reeks voor taal-land instellingen. U kunt elke waarde in de kolom **land instelling** opgeven in de lijst met ondersteunde [land instellingen/talen](../../../language-support.md).
+De eigenschap [`speech_recognition_language`][recognitionlang] verwacht een indelingstekenreeks voor taal-landinstellingen. U kunt in de lijst met ondersteunde [Landinstellingen en talen](../../../language-support.md) een willekeurige waarde opgeven in de kolom **Landinstelling**.
 
 ## <a name="add-translation-language"></a>Vertaal taal toevoegen
 
@@ -95,9 +105,9 @@ Bij elke aanroep van [`add_target_language`][addlang] wordt een nieuwe doel taal
 
 ## <a name="initialize-a-translation-recognizer"></a>Een omzettings herkenning initialiseren
 
-Nadat u een hebt gemaakt [`SpeechTranslationConfig`][config] , is de volgende stap het initialiseren van een [`TranslationRecognizer`][recognizer] . Wanneer u een initialiseert [`TranslationRecognizer`][recognizer] , moet u het door geven aan uw `translation_config` . Het configuratie object bevat de referenties die de speech-service nodig heeft om uw aanvraag te valideren.
+Nadat u een [`SpeechTranslationConfig`][config] hebt gemaakt, is de volgende stap het initialiseren van een [`TranslationRecognizer`][recognizer]. Wanneer u een [`TranslationRecognizer`][recognizer] initialiseert, moet u er uw `translation_config` aan doorgeven. Het configuratie object bevat de referenties die de speech-service nodig heeft om uw aanvraag te valideren.
 
-Als u spraak wilt herkennen met de standaard microfoon van uw apparaat, ziet u het [`TranslationRecognizer`][recognizer] volgende:
+Als u spraak wilt herkennen met de standaardmicrofoon van uw apparaat, ziet u hier hoe de [`TranslationRecognizer`][recognizer] eruit moet zien:
 
 ```python
 def translate_speech_to_text():
@@ -111,10 +121,10 @@ def translate_speech_to_text():
             translation_config=translation_config)
 ```
 
-Als u het audio-invoer apparaat wilt opgeven, moet u een maken [`AudioConfig`][audioconfig] en de `audio_config` para meter opgeven bij het initialiseren van uw [`TranslationRecognizer`][recognizer] .
+Als u het audio-invoerapparaat wilt opgeven, moet u een [`AudioConfig`][audioconfig] maken en de parameter `audio_config` opgeven bij het initialiseren van uw [`TranslationRecognizer`][recognizer].
 
 > [!TIP]
-> [Meer informatie over het ophalen van de apparaat-id voor het apparaat voor audio-invoer](../../../how-to-select-audio-input-devices.md).
+> [Meer informatie over het ophalen van de apparaat-id voor het audio-invoerapparaat](../../../how-to-select-audio-input-devices.md).
 
 Eerst verwijst u `AudioConfig` als volgt naar het object:
 
@@ -132,7 +142,7 @@ def translate_speech_to_text():
             translation_config=translation_config, audio_config=audio_config)
 ```
 
-Als u een audio bestand wilt opgeven in plaats van een microfoon te gebruiken, moet u nog steeds een opgeven `audioConfig` . Wanneer u echter een maakt [`AudioConfig`][audioconfig] in plaats van aan te roepen `use_default_microphone=True` , roept u aan `filename="path-to-file.wav"` en geeft u de `filename` para meter op.
+Als u een audiobestand wilt opgeven in plaats van een microfoon te gebruiken, moet u nog steeds een `audioConfig` opgeven. Wanneer u echter een maakt [`AudioConfig`][audioconfig] in plaats van aan te roepen `use_default_microphone=True` , roept u aan `filename="path-to-file.wav"` en geeft u de `filename` para meter op.
 
 ```python
 def translate_speech_to_text():

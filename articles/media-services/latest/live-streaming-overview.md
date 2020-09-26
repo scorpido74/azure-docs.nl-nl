@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 23898969f254063ee9e5385fee577661871ccf45
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 0eb814ea0d941ca01d3a21db1cb507ef273a1a18
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89298977"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328340"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Live streamen met Azure Media Services v3
 
@@ -60,7 +60,7 @@ Dynamische filtering wordt gebruikt voor het beheren van het aantal sporen, inde
 
 ### <a name="pass-through"></a>Pass-through
 
-![passthrough](./media/live-streaming/pass-through.svg)
+![Diagram waarin wordt getoond hoe de video-en audio-feeds van een Pass-through live-gebeurtenis worden opgenomen en verwerkt.](./media/live-streaming/pass-through.svg)
 
 Wanneer u de gebeurtenis Pass-Through **Live**gebruikt, vertrouwt u met uw on-premises Live coderings programma om een video stroom met meerdere bitrates te genereren en deze te verzenden als de bijdrage aan de live gebeurtenis (met RTMP of gefragmenteerd-MP4 invoer Protocol). De live-gebeurtenis voert vervolgens via de binnenkomende video stromen naar het dynamische pakket (streaming-eind punt) zonder verdere trans codering. Een dergelijke door gang werkende gebeurtenis is geoptimaliseerd voor langlopende Live-gebeurtenissen of 24x365e lineaire live-streaming. 
 

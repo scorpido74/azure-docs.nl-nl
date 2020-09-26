@@ -4,16 +4,16 @@ description: Configureer een Azure Managed disk met gedeelde schijven, zodat u d
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 08/21/2020
+ms.date: 09/22/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: ad70aa1d044649a0ca61060fff9880d4ef1e34c1
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 447380c7aed7e765695ea5389f0b3f2973a16b0d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752042"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328136"
 ---
 # <a name="enable-shared-disk"></a>Gedeelde schijf inschakelen
 
@@ -46,7 +46,7 @@ Voor het implementeren van een beheerde schijf waarop de functie gedeelde schijf
 > [!IMPORTANT]
 > De waarde van `maxShares` kan alleen worden ingesteld of gewijzigd wanneer een schijf van alle virtuele machines wordt ontkoppeld. Zie de [schijf grootten](#disk-sizes) voor de toegestane waarden voor `maxShares` .
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az disk create -g myResourceGroup -n mySharedDisk --size-gb 1024 -l westcentralus --sku Premium_LRS --max-shares 2
@@ -76,7 +76,7 @@ Als u een beheerde schijf met de functie gedeelde schijf wilt implementeren, wij
 > De waarde van `maxShares` kan alleen worden ingesteld of gewijzigd wanneer een schijf van alle virtuele machines wordt ontkoppeld. Zie de [schijf grootten](#disk-sizes) voor de toegestane waarden voor `maxShares` .
 
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ##### <a name="regional-disk-example"></a>Voor beeld van regionale schijf
 
@@ -147,7 +147,7 @@ Vervang,,,,,, `[parameters('dataDiskName')]` `[resourceGroup().location]` `[para
 Wanneer u een gedeelde schijf met hebt geïmplementeerd `maxShares>1` , kunt u de schijf koppelen aan een of meer van uw virtuele machines.
 
 > [!NOTE]
-> Als u een ultra schijf implementeert, moet u ervoor zorgen dat deze overeenkomt met de benodigde vereisten. Zie de sectie [Power shell](disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm-1) of [cli](disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm) van het artikel over de ultra disk voor meer informatie.
+> Als u een ultra schijf implementeert, moet u ervoor zorgen dat deze overeenkomt met de benodigde vereisten. Zie [Azure Ultra Disk gebruiken](disks-enable-ultra-ssd.md) voor meer informatie.
 
 ```azurepowershell-interactive
 

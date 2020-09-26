@@ -6,71 +6,71 @@ ms.subservice: update-management
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 06/10/2020
-ms.openlocfilehash: c4b29db8bbcb741116fcd425b4489973228066e6
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.date: 09/18/2020
+ms.openlocfilehash: 312457a6220920d550f05e3a1cd1dc5ec2f4449a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021592"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327839"
 ---
 # <a name="enable-update-management-using-azure-resource-manager-template"></a>Updatebeheer inschakelen met behulp van Azure Resource Manager-sjabloon
 
 U kunt een [Azure Resource Manager sjabloon](../../azure-resource-manager/templates/template-syntax.md) gebruiken om de functie Azure Automation updatebeheer in uw resource groep in te scha kelen. Dit artikel bevat een voorbeeld sjabloon waarmee het volgende kan worden geautomatiseerd:
 
-* Het maken van een Azure Monitor Log Analytics werk ruimte.
-* Het maken van een Azure Automation-account.
-* Koppel het Automation-account aan de Log Analytics-werk ruimte, als dat nog niet is gekoppeld.
-* Updatebeheer inschakelen.
+* Automatisch maken van een Azure Monitor Log Analytics-werkruimte.
+* Automatisch maken van een Azure Automation-account.
+* Automation-account koppelen aan de Log Analytics-werkruimte.
+* Automation-runbooks toevoegen aan het account.
+* Hiermee schakelt u de functie Updatebeheer.
 
 Met de sjabloon wordt het inschakelen van Updatebeheer op een of meer virtuele machines in azure of niet-Azure niet geautomatiseerd.
 
 Als u al een Log Analytics werk ruimte en een Automation-account hebt geïmplementeerd in een ondersteunde regio in uw abonnement, zijn deze niet gekoppeld. Met deze sjabloon maakt u de koppeling en implementeert u Updatebeheer.
 
+>[!NOTE]
+>Als u een ARM-sjabloon gebruikt, wordt het maken van een Uitvoeren als-account voor Automation niet ondersteund. Als u handmatig een Uitvoeren als-account wilt maken via de portal of met PowerShell, raadpleegt u [Uitvoeren als-accounts beheren](../manage-runas-account.md).
+
+Nadat u deze stappen hebt voltooid, moet u [diagnostische instellingen configureren](../automation-manage-send-joblogs-log-analytics.md) voor uw Automation-account om de taakstatus van de runbook en taakstromen te verzenden naar de gekoppelde Log Analytics-werkruimte.
+
 ## <a name="api-versions"></a>API-versies
 
-De volgende tabel geeft een lijst van de API-versies voor de resources die in deze sjabloon worden gebruikt.
+De volgende tabel geeft een overzicht van de API-versie voor de resources die in dit voorbeeld worden gebruikt.
 
 | Resource | Resourcetype | API-versie |
 |:---|:---|:---|
-| Werkruimte | workspaces | 2020-03-01-preview |
-| Automation-account | automation | 2018-06-30 |
-| Oplossing | oplossingen | 2015-11-01-preview |
+| [Werkruimte](/azure/templates/microsoft.operationalinsights/workspaces) | workspaces | 2020-03-01-preview |
+| [Automation-account](/azure/templates/microsoft.automation/automationaccounts) | automation | 2020-01-13-preview |
+| [Services gekoppeld aan werkruimte](/azure/templates/microsoft.operationalinsights/workspaces/linkedservices) | workspaces | 2020-03-01-preview |
+| [Oplossingen](/azure/templates/microsoft.operationsmanagement/solutions) | oplossingen | 2015-11-01-preview |
 
 ## <a name="before-using-the-template"></a>Voordat u de sjabloon gebruikt
-
-Als u Power shell lokaal wilt installeren en gebruiken, is voor dit artikel de Azure PowerShell AZ-module vereist. Voer `Get-Module -ListAvailable Az` uit om de versie te bekijken. Zie [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps) als u een upgrade wilt uitvoeren. Als u Power shell lokaal uitvoert, moet u ook [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.7.0) uitvoeren om een verbinding te maken met Azure. Met Azure PowerShell maakt de implementatie gebruik van [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment).
-
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit artikel de Azure CLI-versie 2.1.0 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](/cli/azure/install-azure-cli?view=azure-cli-latest) als u de CLI wilt installeren of een upgrade wilt uitvoeren. Met Azure CLI maakt deze implementatie gebruik van [AZ Group Deployment Create](/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create). 
 
 De JSON-sjabloon is zo geconfigureerd dat u wordt gevraagd om:
 
 * De naam van de werkruimte.
-* De regio waarin u de werk ruimte wilt maken.
-* Om resource-of werkruimte machtigingen in te scha kelen.
+* De regio waarin u de werkruimte wilt maken.
 * De naam van het Automation-account.
-* De regio waarin het account moet worden gemaakt.
-
-Met de JSON-sjabloon wordt een standaard waarde opgegeven voor de andere para meters die waarschijnlijk zullen worden gebruikt voor een standaard configuratie in uw omgeving. U kunt de sjabloon opslaan in een Azure-opslagaccount voor gedeelde toegang in uw organisatie. Zie [resources implementeren met Resource Manager-sjablonen en Azure cli](../../azure-resource-manager/templates/deploy-cli.md)voor meer informatie over het werken met sjablonen.
+* De regio waarin u het Automation-account wilt maken.
 
 De volgende parameters in de sjabloon hebben een standaardwaarde voor de Log Analytics-werkruimte:
 
-* SKU: wordt standaard ingesteld op de nieuwe prijs categorie per GB die is uitgebracht in het prijs model van april 2018
-* bewaren van gegevens-standaard ingesteld op dertig dagen
+* *sku* wordt standaard ingesteld op de prijscategorie per GB die is geïntroduceerd in het prijsmodel van april 2018.
+* *dataRetention* is standaard ingesteld op 30 dagen.
 
 >[!WARNING]
->Als u een Log Analytics-werk ruimte maakt of configureert in een abonnement dat is aangemeld met het nieuwe prijs model van april 2018, is de enige geldige Log Analytics prijs categorie **PerGB2018**.
+>Als u een Log Analytics-werkruimte wilt maken of configureren in een abonnement dat is gekoppeld aan het prijsmodel van april 2018, is de enige mogelijke Log Analytics-prijscategorie *PerGB2018*.
 >
 
-De JSON-sjabloon bevat standaardwaarden voor de andere parameters die waarschijnlijk worden gebruikt in een standaardconfiguratie in uw omgeving. U kunt de sjabloon opslaan in een Azure-opslagaccount voor gedeelde toegang in uw organisatie. Zie [resources implementeren met Resource Manager-sjablonen en Azure cli](../../azure-resource-manager/templates/deploy-cli.md)voor meer informatie over het werken met sjablonen.
+De JSON-sjabloon bevat standaardwaarden voor de andere parameters die waarschijnlijk worden gebruikt in een standaardconfiguratie in uw omgeving. U kunt de sjabloon opslaan in een Azure-opslagaccount voor gedeelde toegang in uw organisatie. Zie [Resources implementeren met ARM-sjablonen en de Azure CLI](../../azure-resource-manager/templates/deploy-cli.md) voor meer informatie over het werken met sjablonen.
 
-Het is belang rijk om de volgende configuratie gegevens te begrijpen als u geen ervaring hebt met Azure Automation en Azure Monitor, om fouten te voor komen bij het maken, configureren en gebruiken van een Log Analytics werkruimte die aan uw nieuwe Automation-account is gekoppeld.
+Als u geen ervaring hebt met Azure Automation en Azure Monitor, is het belangrijk dat u de volgende configuratiedetails begrijpt. Deze kennis helpt fouten te voorkomen bij het maken, configureren en gebruiken van een Log Analytics werkruimte die aan uw nieuwe Automation-account is gekoppeld.
 
-* Bekijk [aanvullende informatie](../../azure-monitor/platform/template-workspace-configuration.md#create-a-log-analytics-workspace) om de configuratie opties voor de werk ruimte volledig te begrijpen, zoals de toegangs beheer modus, de prijs categorie en de retentie en het capaciteits reserverings niveau.
+* Bekijk deze [aanvullende informatie](../../azure-monitor/platform/template-workspace-configuration.md#create-a-log-analytics-workspace) om de configuratieopties voor de werkruimte volledig te begrijpen, zoals de modus voor toegangsbeheer, de prijscategorie, retentie en het capaciteitsreserveringsniveau.
 
-* Omdat alleen bepaalde regio's worden ondersteund voor het koppelen van een Log Analytics-werk ruimte en een Automation-account in uw abonnement, raadpleegt u [werkruimte toewijzingen](../how-to/region-mappings.md) om de ondersteunde regio's inline of in een parameter bestand op te geven.
+* Bekijk [werkruimtetoewijzingen](../how-to/region-mappings.md) om de ondersteunde regio's inline of in een parameterbestand op te geven. Bij het koppelen van een Log Analytics-werkruimte aan een Automation-Account in uw abonnement, worden slechts bepaalde regio's ondersteund.
 
-* Als u geen ervaring hebt met Azure Monitor-logboeken en nog geen werk ruimte hebt geïmplementeerd, raadpleegt u de richt lijnen voor het ontwerpen van de [werk ruimte](../../azure-monitor/platform/design-logs-deployment.md) voor meer informatie over toegangs beheer en inzicht in de ontwerp implementatie strategieën die voor uw organisatie worden aanbevolen.
+* Als u geen ervaring hebt met Azure Monitor-logboeken en nog niet eerder een werkruimte hebt geïmplementeerd, raadpleegt u de [richtlijnen voor het ontwerpen van werkruimten](../../azure-monitor/platform/design-logs-deployment.md). U weet dan meer over toegangsbeheer en hebt een beter beeld van de strategieën voor de implementatie van ontwerpen die worden aanbevolen voor uw organisatie.
 
 ## <a name="deploy-template"></a>Sjabloon implementeren
 
@@ -78,136 +78,226 @@ Het is belang rijk om de volgende configuratie gegevens te begrijpen als u geen 
 
     ```json
     {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "workspaceName": {
-            "type": "string",
-            "metadata": {
-                "description": "Workspace name"
+        "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "parameters": {
+            "workspaceName": {
+                "type": "string",
+                "metadata": {
+                    "description": "Workspace name"
+                }
+            },
+            "sku": {
+                "type": "string",
+                "allowedValues": [
+                    "pergb2018",
+                    "Free",
+                    "Standalone",
+                    "PerNode",
+                    "Standard",
+                    "Premium"
+                ],
+                "defaultValue": "pergb2018",
+                "metadata": {
+                    "description": "Pricing tier: perGB2018 or legacy tiers (Free, Standalone, PerNode, Standard or Premium), which are not available to all customers."
+                }
+            },
+            "dataRetention": {
+                "type": "int",
+                "defaultValue": 30,
+                "minValue": 7,
+                "maxValue": 730,
+                "metadata": {
+                    "description": "Number of days to retain data."
+                }
+            },
+            "location": {
+                "type": "string",
+                "defaultValue": "[resourceGroup().location]",
+                "metadata": {
+                    "description": "Specifies the location in which to create the workspace."
+                }
+            },
+            "automationAccountName": {
+                "type": "string",
+                "metadata": {
+                    "description": "Automation account name"
+                }
+            },
+            "automationAccountLocation": {
+                "type": "string",
+                "metadata": {
+                    "description": "Specifies the location in which to create the Automation account."
+                }
+            },
+            "sampleGraphicalRunbookName": {
+                "type": "String",
+                "defaultValue": "AzureAutomationTutorial"
+            },
+            "sampleGraphicalRunbookDescription": {
+                "type": "String",
+                "defaultValue": " An example runbook that gets all the Resource Manager resources by using the Run As account (service principal)."
+            },
+            "samplePowerShellRunbookName": {
+                "type": "String",
+                "defaultValue": "AzureAutomationTutorialScript"
+            },
+            "samplePowerShellRunbookDescription": {
+                "type": "String",
+                "defaultValue": " An example runbook that gets all the Resource Manager resources by using the Run As account (service principal)."
+            },
+            "samplePython2RunbookName": {
+                "type": "String",
+                "defaultValue": "AzureAutomationTutorialPython2"
+            },
+            "samplePython2RunbookDescription": {
+                "type": "String",
+                "defaultValue": " An example runbook that gets all the Resource Manager resources by using the Run As account (service principal)."
+            },
+            "_artifactsLocation": {
+                "type": "string",
+                "defaultValue": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-automation/",
+                "metadata": {
+                    "description": "URI to artifacts location"
+                }
+            },
+            "_artifactsLocationSasToken": {
+                "type": "securestring",
+                "defaultValue": "",
+                "metadata": {
+                    "description": "The sasToken required to access _artifactsLocation.  When the template is deployed using the accompanying scripts, a sasToken will be automatically generated"
+                }
             }
         },
-        "sku": {
-            "type": "string",
-            "allowedValues": [
-                "pergb2018",
-                "Free",
-                "Standalone",
-                "PerNode",
-                "Standard",
-                "Premium"
-            ],
-            "defaultValue": "pergb2018",
-            "metadata": {
-                "description": "Pricing tier: perGB2018 or legacy tiers (Free, Standalone, PerNode, Standard or Premium) which are not available to all customers."
-            }
-        },
-        "dataRetention": {
-            "type": "int",
-            "defaultValue": 30,
-            "minValue": 7,
-            "maxValue": 730,
-            "metadata": {
-                "description": "Number of days of retention. Workspaces in the legacy Free pricing tier can only have 7 days."
-            }
-        },
-        "location": {
-            "type": "string",
-            "metadata": {
-                "description": "Specifies the location in which to create the workspace."
-            }
-        },
-        "resourcePermissions": {
-              "type": "bool",
-              "metadata": {
-                "description": "true to use resource or workspace permissions. false to require workspace permissions."
-              }
-        },
-        "automationAccountName": {
-            "type": "string",
-            "metadata": {
-                "description": "Automation account name"
-            }
-        },
-        "automationAccountLocation": {
-            "type": "string",
-            "metadata": {
-                "description": "Specify the location in which to create the Automation account."
-            }
-        }
-    },
-    "variables": {
+        "variables": {
         "Updates": {
             "name": "[concat('Updates', '(', parameters('workspaceName'), ')')]",
             "galleryName": "Updates"
-        }
-    },
-    "resources": [
-        {
-        "type": "Microsoft.OperationalInsights/workspaces",
-            "name": "[parameters('workspaceName')]",
-            "apiVersion": "2020-03-01-preview",
-            "location": "[parameters('location')]",
-            "properties": {
-                "sku": {
-                    "name": "[parameters('sku')]"
-                },
-                "retentionInDays": "[parameters('dataRetention')]",
-                "features": {
-                    "searchVersion": 1,
-                    "legacy": 0,
-                    "enableLogAccessUsingOnlyResourcePermissions": true
-                }
-            },
-            "resources": [
-                {
-                    "apiVersion": "2015-11-01-preview",
-                    "location": "[parameters('location')]",
-                    "name": "[variables('Updates').name]",
-                    "type": "Microsoft.OperationsManagement/solutions",
-                    "id": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', resourceGroup().name, '/providers/Microsoft.OperationsManagement/solutions/', variables('Updates').name)]",
-                    "dependsOn": [
-                        "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
-                    ],
-                    "properties": {
-                        "workspaceResourceId": "[resourceId('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
+          }
+        },
+        "resources": [
+            {
+                "type": "Microsoft.OperationalInsights/workspaces",
+                "apiVersion": "2020-03-01-preview",
+                "name": "[parameters('workspaceName')]",
+                "location": "[parameters('location')]",
+                "properties": {
+                    "sku": {
+                        "name": "[parameters('sku')]"
                     },
-                    "plan": {
-                        "name": "[variables('Updates').name]",
-                        "publisher": "Microsoft",
-                        "promotionCode": "",
-                        "product": "[concat('OMSGallery/', variables('Updates').galleryName)]"
+                    "retentionInDays": "[parameters('dataRetention')]",
+                    "features": {
+                        "searchVersion": 1,
+                        "legacy": 0
                     }
                 }
-            ]
-        },
-        {
-            "type": "Microsoft.Automation/automationAccounts",
-            "apiVersion": "2018-06-30",
-            "name": "[parameters('automationAccountName')]",
-            "location": "[parameters('automationAccountLocation')]",
-            "dependsOn": [],
-            "tags": {},
-            "properties": {
-                "sku": {
-                    "name": "Basic"
+            },
+            {
+                "apiVersion": "2015-11-01-preview",
+                "location": "[parameters('location')]",
+                "name": "[variables('Updates').name]",
+                "type": "Microsoft.OperationsManagement/solutions",
+                "id": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', resourceGroup().name, '/providers/Microsoft.OperationsManagement/solutions/', variables('Updates').name)]",
+                "dependsOn": [
+                    "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
+                ],
+                "properties": {
+                    "workspaceResourceId": "[resourceId('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
+                },
+                "plan": {
+                    "name": "[variables('Updates').name]",
+                    "publisher": "Microsoft",
+                    "promotionCode": "",
+                    "product": "[concat('OMSGallery/', variables('Updates').galleryName)]"
+                }
+            },
+            {
+                "type": "Microsoft.Automation/automationAccounts",
+                "apiVersion": "2020-01-13-preview",
+                "name": "[parameters('automationAccountName')]",
+                "location": "[parameters('automationAccountLocation')]",
+                "dependsOn": [
+                    "[parameters('workspaceName')]"
+                ],
+                "properties": {
+                    "sku": {
+                        "name": "Basic"
+                    }
+                },
+                "resources": [
+                    {
+                        "type": "runbooks",
+                        "apiVersion": "2018-06-30",
+                        "name": "[parameters('sampleGraphicalRunbookName')]",
+                        "location": "[parameters('automationAccountLocation')]",
+                        "dependsOn": [
+                            "[parameters('automationAccountName')]"
+                        ],
+                        "properties": {
+                            "runbookType": "GraphPowerShell",
+                            "logProgress": "false",
+                            "logVerbose": "false",
+                            "description": "[parameters('sampleGraphicalRunbookDescription')]",
+                            "publishContentLink": {
+                                "uri": "[uri(parameters('_artifactsLocation'), concat('scripts/AzureAutomationTutorial.graphrunbook', parameters('_artifactsLocationSasToken')))]",
+                                "version": "1.0.0.0"
+                            }
+                        }
+                    },
+                    {
+                        "type": "runbooks",
+                        "apiVersion": "2018-06-30",
+                        "name": "[parameters('samplePowerShellRunbookName')]",
+                        "location": "[parameters('automationAccountLocation')]",
+                        "dependsOn": [
+                            "[parameters('automationAccountName')]"
+                        ],
+                        "properties": {
+                            "runbookType": "PowerShell",
+                            "logProgress": "false",
+                            "logVerbose": "false",
+                            "description": "[parameters('samplePowerShellRunbookDescription')]",
+                            "publishContentLink": {
+                                "uri": "[uri(parameters('_artifactsLocation'), concat('scripts/AzureAutomationTutorial.ps1', parameters('_artifactsLocationSasToken')))]",
+                                "version": "1.0.0.0"
+                            }
+                        }
+                    },
+                    {
+                        "type": "runbooks",
+                        "apiVersion": "2018-06-30",
+                        "name": "[parameters('samplePython2RunbookName')]",
+                        "location": "[parameters('automationAccountLocation')]",
+                        "dependsOn": [
+                            "[parameters('automationAccountName')]"
+                        ],
+                        "properties": {
+                            "runbookType": "Python2",
+                            "logProgress": "false",
+                            "logVerbose": "false",
+                            "description": "[parameters('samplePython2RunbookDescription')]",
+                            "publishContentLink": {
+                                "uri": "[uri(parameters('_artifactsLocation'), concat('scripts/AzureAutomationTutorialPython2.py', parameters('_artifactsLocationSasToken')))]",
+                                "version": "1.0.0.0"
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "type": "Microsoft.OperationalInsights/workspaces/linkedServices",
+                "apiVersion": "2020-03-01-preview",
+                "name": "[concat(parameters('workspaceName'), '/' , 'Automation')]",
+                "location": "[parameters('location')]",
+                "dependsOn": [
+                    "[parameters('workspaceName')]",
+                    "[parameters('automationAccountName')]"
+                ],
+                "properties": {
+                    "resourceId": "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccountName'))]"
                 }
             }
-        },
-        {
-            "apiVersion": "2020-03-01-preview",
-            "type": "Microsoft.OperationalInsights/workspaces/linkedServices",
-            "name": "[concat(parameters('workspaceName'), '/' , 'Automation')]",
-            "location": "[parameters('location')]",
-            "dependsOn": [
-                "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]",
-                "[concat('Microsoft.Automation/automationAccounts/', parameters('automationAccountName'))]"
-            ],
-            "properties": {
-                "resourceId": "[resourceId('Microsoft.Automation/automationAccounts/', parameters('automationAccountName'))]"
-            }
-        }
-      ]
+        ]
     }
     ```
 
@@ -232,6 +322,28 @@ Het is belang rijk om de volgende configuratie gegevens te begrijpen als u geen 
     De implementatie kan enkele minuten duren. Wanneer de bewerking is voltooid, ziet u een bericht dat lijkt op het volgende:
 
     ![Voorbeeld van uitvoer als de implementatie is voltooid](media/update-mgmt-enable-template/template-output.png)
+
+## <a name="review-deployed-resources"></a>Geïmplementeerde resources bekijken
+
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+
+2. Open in het Azure Portal het Automation-account dat u hebt gemaakt.
+
+3. Selecteer **Runbooks**in het linkerdeelvenster. Op de pagina **Runbooks** worden drie zelfstudie-runbooks vermeld die zijn gemaakt met het Automation-account.
+
+    ![Zelfstudie-runbooks die zijn gemaakt met het Automation-account](../media/quickstart-create-automation-account-template/automation-sample-runbooks.png)
+
+4. Selecteer in het linkerdeel venster **Gekoppelde werkruimte**. Op de pagina **Gekoppelde werkruimte** wordt de Log Analytics werkruimte weergegeven die u eerder hebt opgegeven en die nu is gekoppeld aan uw Automation-account.
+
+    ![Automation-account gekoppeld aan de Log Analytics-werkruimte](../media/quickstart-create-automation-account-template/automation-account-linked-workspace.png)
+
+5. Selecteer in het linkerdeel venster **Update beheer**. Op de pagina **Update beheer** wordt de pagina evaluatie zonder enige informatie weer gegeven als gevolg van het inschakelen van alleen ingeschakelde computers en machines zijn niet geconfigureerd voor beheer.
+
+    ![Evaluatie weergave van de functie Updatebeheer](./media/update-mgmt-enable-template/update-management-assessment-view.png)
+
+## <a name="clean-up-resources"></a>Resources opschonen
+
+Wanneer u deze niet meer nodig hebt, verwijdert u de oplossing **updates** in de werk ruimte log Analytics, koppelt u het Automation-account uit de werk ruimte en verwijdert u vervolgens het Automation-account en de werk ruimte.
 
 ## <a name="next-steps"></a>Volgende stappen
 

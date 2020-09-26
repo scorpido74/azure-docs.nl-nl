@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: efbc0ba4ef39be6a2a8598ad006cb3aea090974c
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 31b1ff3324c610c385ad793f124735be30cab9f9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89177740"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327711"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Logboek query's in Azure Monitor optimaliseren
 Azure Monitor logboeken maakt gebruik van [Azure Data Explorer (ADX)](/azure/data-explorer/) om logboek gegevens op te slaan en query's uit te voeren voor het analyseren van die gegevens. Het maakt, beheert en onderhoudt de ADX-clusters en optimaliseert deze voor de werk belasting van uw logboek analyse. Wanneer u een query uitvoert, wordt deze geoptimaliseerd en doorgestuurd naar het juiste ADX-cluster waarin de werkruimte gegevens worden opgeslagen. Zowel Azure Monitor-Logboeken als Azure Data Explorer maakt gebruik van veel automatische optimalisatie mechanismen voor query's. Automatische optimalisaties bieden een aanzienlijke Boost, maar in sommige gevallen kunt u de query prestaties aanzienlijk verbeteren. In dit artikel worden de prestatie overwegingen en verschillende technieken uitgelegd om ze op te lossen.
@@ -98,18 +98,34 @@ De volgende query's produceren bijvoorbeeld precies hetzelfde resultaat, maar de
 
 ```Kusto
 //less efficient
-Heartbeat 
-| extend IPRegion = iif(RemoteIPLongitude  < -94,"WestCoast","EastCoast")
-| where IPRegion == "WestCoast"
-| summarize count(), make_set(IPRegion) by Computer
+Syslog
+| extend Msg = strcat("Syslog: ",SyslogMessage)
+| where  Msg  has "Error"
+| count 
 ```
 ```Kusto
 //more efficient
-Heartbeat 
-| where RemoteIPLongitude  < -94
-| extend IPRegion = iif(RemoteIPLongitude  < -94,"WestCoast","EastCoast")
-| summarize count(), make_set(IPRegion) by Computer
+Syslog
+| where  SyslogMessage  has "Error"
+| count 
 ```
+
+In sommige gevallen wordt de geëvalueerde kolom impliciet gemaakt door de query verwerking enine omdat het filteren niet alleen op het veld wordt uitgevoerd:
+```Kusto
+//less efficient
+SecurityEvent
+| where tolower(Process) == "conhost.exe"
+| count 
+```
+```Kusto
+//more efficient
+SecurityEvent
+| where Process =~ "conhost.exe"
+| count 
+```
+
+
+
 
 ### <a name="use-effective-aggregation-commands-and-dimensions-in-summarize-and-join"></a>Effectief aggregatie opdrachten en dimensies gebruiken in samenvatten en samen voegen
 
@@ -279,7 +295,7 @@ SecurityEvent
 | distinct FilePath, CallerProcessName1
 ```
 
-Als het bovenstaande niet toestaat om subquery's te gebruiken, is een andere techniek een hint voor de query-engine dat er één bron gegevens worden gebruikt in elk daarvan met behulp van de [functie realiseren ()](/azure/data-explorer/kusto/query/materializefunction?pivots=azuremonitor). Dit is handig wanneer de bron gegevens afkomstig zijn uit een functie die meermaals wordt gebruikt in de query.
+Als het bovenstaande niet toestaat om subquery's te gebruiken, is een andere techniek een hint voor de query-engine dat er één bron gegevens worden gebruikt in elk daarvan met behulp van de [functie realiseren ()](/azure/data-explorer/kusto/query/materializefunction?pivots=azuremonitor). Dit is handig wanneer de bron gegevens afkomstig zijn uit een functie die meermaals wordt gebruikt in de query. Realiseren is van kracht wanneer de uitvoer van de subquery veel kleiner is dan de invoer. De query-engine zal de uitvoer in de cache opslaan en opnieuw gebruiken in alle gevallen.
 
 
 
