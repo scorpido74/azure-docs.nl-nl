@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 08/10/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: c2ce40f7d8a8d08e191fce11c98bd780e0c2fda1
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 4b25458cc934097b5477c174ae7ecc47762e2929
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230072"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280297"
 ---
 # <a name="enable-and-manage-soft-delete-for-containers-preview"></a>Voorlopig verwijderen voor containers inschakelen en beheren (preview-versie)
 
-Met de tijdelijke verwijdering van de container (preview) wordt voor komen dat uw gegevens per ongeluk of onbedoeld worden gewijzigd of verwijderd. Wanneer het dynamisch verwijderen van een container is ingeschakeld voor een opslag account, kan een container en de inhoud ervan worden hersteld nadat deze zijn verwijderd, binnen een Bewaar periode die u opgeeft.
+Met de tijdelijke verwijdering van de container (preview) wordt voor komen dat uw gegevens per ongeluk of onbedoeld worden gewijzigd of verwijderd. Wanneer het dynamisch verwijderen van een container is ingeschakeld voor een opslag account, kan een container en de inhoud ervan worden hersteld nadat deze is verwijderd, binnen een Bewaar periode die u opgeeft.
 
 Als er een mogelijkheid is dat uw gegevens per ongeluk worden gewijzigd of verwijderd door een toepassing of een ander opslag account, wordt door micro soft aangeraden om de optie voor het voorlopig verwijderen van containers in te scha kelen. In dit artikel wordt beschreven hoe u de optie voorlopig verwijderen voor containers inschakelt. Zie [voorlopig verwijderen voor containers (preview)](soft-delete-container-overview.md)voor meer informatie over het voorlopig verwijderen van een container, inclusief hoe u zich kunt registreren voor de preview-versie.
 
@@ -93,7 +93,7 @@ Voer de volgende stappen uit om de verwijderde containers in het Azure Portal we
 U kunt een voorlopig verwijderde container en de inhoud ervan herstellen binnen de Bewaar periode. Als u een voorlopig verwijderde container wilt herstellen in de Azure Portal, volgt u deze stappen:
 
 1. Navigeer naar uw opslag account in de Azure Portal en Bekijk de lijst met containers.
-1. Geef het context menu weer voor de container die u wilt verwijderen en kies **verwijderen ongedaan** maken in het menu.
+1. Geef het context menu weer voor de container die u wilt herstellen en kies **verwijderen ongedaan** maken in het menu.
 
     :::image type="content" source="media/soft-delete-container-enable/soft-delete-container-portal-restore.png" alt-text="Scherm afbeelding die laat zien hoe u een voorlopig verwijderde container kunt herstellen in Azure Portal":::
 

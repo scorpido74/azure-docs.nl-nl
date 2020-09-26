@@ -1,7 +1,7 @@
 ---
 title: Upgrade Bing Video's zoeken-API v5 naar v7
 titleSuffix: Azure Cognitive Services
-description: Identificeert de onderdelen van uw toepassing die u moet bijwerken om versie 7 te gebruiken.
+description: Hiermee worden de onderdelen van uw Bing Video Search toepassing geïdentificeerd die u moet bijwerken om versie 7 te gebruiken.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: scottwhi
-ms.openlocfilehash: 5dc4c870ae8dbe9f082456d738836aced1271732
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3f02b671d73f49fd085cf4486e0fe5887e499fcd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68500730"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316593"
 ---
 # <a name="video-search-api-upgrade-guide"></a>Upgrade handleiding voor Video's zoeken-API
 
@@ -31,12 +31,12 @@ Deze upgrade handleiding bevat de wijzigingen tussen versie 5 en versie 7 van de
 
 - Alle mislukte aanvragen moeten nu een `ErrorResponse` object bevatten in de hoofd tekst van het antwoord.
 
-- De volgende velden zijn toegevoegd aan `Error` het object.  
+- De volgende velden zijn toegevoegd aan het `Error` object.  
   - `subCode`&mdash;Partitioneert de fout code indien mogelijk naar discrete buckets
   - `moreDetails`&mdash;Aanvullende informatie over de fout die in het `message` veld wordt beschreven
    
 
-- De V5-fout codes zijn vervangen door de `code` volgende `subCode` mogelijke en waarden.
+- De V5-fout codes zijn vervangen door de volgende mogelijke `code` en `subCode` waarden.
 
 |Code|SubCode|Beschrijving
 |-|-|-
@@ -75,7 +75,7 @@ Geblokkeerd|InvalidRequest. blocked
 
 ### <a name="object-changes"></a>Object wijzigingen
 
-- De naam van het `nextOffsetAddCount` veld met [Video's](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) is `nextOffset`gewijzigd in. De manier waarop u de offset gebruikt, is ook gewijzigd. Voorheen zou u de [Offset](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#offset) query-para meter instellen op `nextOffset` de waarde plus de vorige offset waarde plus het aantal Video's in het resultaat. U kunt nu eenvoudigweg de `offset` query parameter instellen op de `nextOffset` waarde.  
+- De naam van het `nextOffsetAddCount` veld met [Video's](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) is gewijzigd in `nextOffset` . De manier waarop u de offset gebruikt, is ook gewijzigd. Voorheen zou u de [Offset](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#offset) query-para meter instellen op de `nextOffset` waarde plus de vorige offset waarde plus het aantal Video's in het resultaat. U kunt nu eenvoudigweg de `offset` query parameter instellen op de `nextOffset` waarde.  
   
-- Het gegevens `relatedVideos` type van het veld is gewijzigd `Video[]` van in [VideosModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videosmodule) (Zie [VideoDetails](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videodetails)).
+- Het gegevens type van het veld is gewijzigd `relatedVideos` van `Video[]` in [VideosModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videosmodule) (Zie [VideoDetails](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videodetails)).
 

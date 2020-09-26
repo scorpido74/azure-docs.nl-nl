@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/02/2020
 ms.author: apimpm
-ms.openlocfilehash: 61d43addfdf9008cb7aa8a073dcf3bb702cb55f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 86ed7f3941965bcac525a2ba71786d20a4753489
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76513368"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335497"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API-importbeperkingen en bekende problemen
 
@@ -34,15 +34,15 @@ Als u fouten ontvangt bij het importeren van uw OpenAPI-document, moet u ervoor 
 ### <a name="general"></a><a name="open-api-general"> </a>Algemeen
 
 -   De vereiste para meters voor beide paden en query's moeten unieke namen hebben. (In OpenAPI moet een parameter naam alleen uniek zijn binnen een locatie, bijvoorbeeld pad, query, koptekst. In API Management we echter toestaan dat bewerkingen worden doorzocht met behulp van pad-en query parameters (wat niet wordt ondersteund door OpenAPI). Daarom moeten parameter namen uniek zijn binnen de volledige URL-sjabloon.)
--   `\$ref`pointers kunnen niet verwijzen naar externe bestanden.
--   `x-ms-paths`en `x-servers` zijn de enige ondersteunde uitbrei dingen.
+-   `\$ref` pointers kunnen niet verwijzen naar externe bestanden.
+-   `x-ms-paths` en `x-servers` zijn de enige ondersteunde uitbrei dingen.
 -   Aangepaste extensies worden genegeerd bij het importeren en worden niet opgeslagen of bewaard om te worden geëxporteerd.
--   `Recursion`-API Management ondersteunt definities recursief gedefinieerd (bijvoorbeeld schema's die naar zichzelf verwijzen).
+-   `Recursion` -API Management ondersteunt definities recursief gedefinieerd (bijvoorbeeld schema's die naar zichzelf verwijzen).
 -   De URL van het bron bestand (indien beschikbaar) wordt toegepast op relatieve server-Url's.
 -   Beveiligings definities worden genegeerd.
 -   Inline schema definities voor API-bewerkingen worden niet ondersteund. Schema definities worden gedefinieerd in het API-bereik en waarnaar kan worden verwezen in API-bewerkings aanvragen of-antwoord bereiken.
 -   Een gedefinieerde URL-para meter moet deel uitmaken van de URL-sjabloon.
--   `Produces`het sleutel woord, waarmee MIME-typen worden beschreven die worden geretourneerd door een API, worden niet ondersteund. 
+-   `Produces` het sleutel woord, waarmee MIME-typen worden beschreven die worden geretourneerd door een API, worden niet ondersteund. 
 
 ### <a name="openapi-version-2"></a><a name="open-api-v2"> </a>OpenAPI versie 2
 
@@ -51,13 +51,17 @@ Als u fouten ontvangt bij het importeren van uw OpenAPI-document, moet u ervoor 
 ### <a name="openapi-version-3"></a><a name="open-api-v3"> </a>OpenAPI-versie 3
 
 -   Als er veel `servers` zijn opgegeven, probeert API Management de eerste HTTPS-URL te selecteren. Als er geen HTTPs-Url's zijn, de eerste HTTP-URL. Als er geen HTTP-Url's zijn, de URL van de server is leeg.
--   `Examples`wordt niet ondersteund, maar `example` is.
+-   `Examples` wordt niet ondersteund, maar `example` is.
 
 ## <a name="openapi-import-update-and-export-mechanisms"></a>OpenAPI importeren, bijwerken en exporteren
 
+### <a name="general"></a><a name="open-import-export-general"> </a>Algemeen
+
+-   API-definities die zijn geëxporteerd uit API Management-service zijn voornamelijk bedoeld voor toepassingen die extern zijn voor API Management-service die de API moet aanroepen die wordt gehost in API Management service. Geëxporteerde API-definities zijn niet bedoeld om opnieuw te worden geïmporteerd in dezelfde of een andere API Management-service. Raadpleeg de documentatie over het gebruik van API Management service met git voor configuratie beheer van API defiitions over verschillende webservices/envionments. 
+
 ### <a name="add-new-api-via-openapi-import"></a>Nieuwe API toevoegen via OpenAPI importeren
 
-Voor elke bewerking die in het OpenAPI-document is gevonden, wordt een nieuwe bewerking gemaakt met de naam van de Azure-resource en de weergave naam die is ingesteld op `operationId` `summary` respectievelijk. `operationId`de waarde wordt genormaliseerd volgens de regels die hieronder worden beschreven. `summary`de waarde wordt geïmporteerd als-is en de lengte is beperkt tot 300 tekens.
+Voor elke bewerking die in het OpenAPI-document is gevonden, wordt een nieuwe bewerking gemaakt met de naam van de Azure-resource en de weergave naam die is ingesteld op `operationId` `summary` respectievelijk. `operationId` de waarde wordt genormaliseerd volgens de regels die hieronder worden beschreven. `summary` de waarde wordt geïmporteerd als-is en de lengte is beperkt tot 300 tekens.
 
 Als `operationId` niet wordt opgegeven (dat wil zeggen, niet aanwezig `null` of leeg), wordt de waarde van de Azure-resource naam gegenereerd door de combi natie van HTTP-methode en pad-sjabloon, bijvoorbeeld `get-foo` .
 
@@ -86,7 +90,7 @@ Normalisatie regels voor operationId
 
 - Converteren naar kleine letters.
 - Vervang elke reeks van niet-alfanumerieke tekens door één streepje, bijvoorbeeld worden omgezet `GET-/foo/{bar}?buzz={quix}` in `get-foo-bar-buzz-quix-` .
-- Streepjes op beide zijden `get-foo-bar-buzz-quix-` knippen worden bijvoorbeeld`get-foo-bar-buzz-quix`
+- Streepjes op beide zijden `get-foo-bar-buzz-quix-` knippen worden bijvoorbeeld `get-foo-bar-buzz-quix`
 - Afkappen tot 76 tekens, vier tekens kleiner dan maximum limiet voor een resource naam.
 - Gebruik, indien nodig, nog vier tekens voor een achtervoegsel voor ontdubbeling in de vorm van `-1, -2, ..., -999` .
 

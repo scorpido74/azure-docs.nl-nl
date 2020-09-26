@@ -1,18 +1,18 @@
 ---
 title: Door sturen van DNS configureren voor Azure Files | Microsoft Docs
-description: Een overzicht van de netwerkopties voor Azure Files.
+description: Meer informatie over het configureren van DNS-door sturen voor Azure Files.
 author: roygara
 ms.service: storage
 ms.topic: how-to
 ms.date: 3/19/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6404115e64ba0ac1f65ba1cfc8d26604f1ce9cfa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: HT
+ms.openlocfilehash: 4b5ce48cf15c890fbdb3dfd90d9d0ab922a2f4b2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85509962"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320265"
 ---
 # <a name="configuring-dns-forwarding-for-azure-files"></a>DNS doorsturen configureren voor Azure Files
 Met Azure Files kunt u privé-eind punten maken voor de opslag accounts met uw bestands shares. Hoewel het nuttig is voor veel verschillende toepassingen, zijn privé-eind punten vooral nuttig om verbinding te maken met uw Azure-bestands shares van uw on-premises netwerk met behulp van een VPN-of ExpressRoute-verbinding met behulp van privé-peering. 
@@ -152,6 +152,6 @@ Test-NetConnection -ComputerName storageaccount.file.core.windows.net -CommonTCP
 ```
 
 ## <a name="see-also"></a>Zie ook
-- [Implementatie van Azure Files plannen](storage-files-planning.md)
+- [Een Azure Files-implementatie plannen](storage-files-planning.md)
 - [Azure Files networking considerations](storage-files-networking-overview.md) (Aandachtspunten voor Azure Files-netwerken)
 - [Azure Files-netwerkeindpunten configureren](storage-files-networking-endpoints.md)

@@ -4,12 +4,12 @@ description: Failover van Vm's/fysieke servers naar Azure met Azure Site Recover
 ms.service: site-recovery
 ms.topic: article
 ms.date: 12/10/2019
-ms.openlocfilehash: d2f7fed25955d6a34c6162b87b82bfae5e58ff41
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 481e7c692be24bbebd14584f8158740a5b7043ba
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563978"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317885"
 ---
 # <a name="run-a-failover-from-on-premises-to-azure"></a>Een failover uitvoeren van on-premises naar Azure
 
@@ -46,7 +46,7 @@ Voer de failover van het herstel plan als volgt uit:
 1. Selecteer in de site Recovery kluis **herstel plannen**  >  *recoveryplan_name*.
 2. Klik op **failover**.
 
-    ![Scherm afbeelding toont het deel venster ADRP met een failover geselecteerd in het menu meer.](./media/site-recovery-failover/Failover.png)
+    ![Scherm opname van Azure Site Recovery weer geven van het deel venster ADRP met failover geselecteerd in het menu meer.](./media/site-recovery-failover/Failover.png)
 
 3. **Failover**  >  Laat in de**richting**van de failover-failover de standaard waarde weg als u naar Azure repliceert.
 4. Selecteer in **failover**een **herstel punt** waarvoor u een failover wilt uitvoeren.
@@ -81,7 +81,7 @@ U kunt een geplande failover uitvoeren voor virtuele Hyper-V-machines.
 
 Er zijn een aantal taken gekoppeld aan failover.
 
-![Failover](./media/site-recovery-failover/FailoverJob.png)
+![Scherm afbeelding van de pagina taken met een lijst met taken met groep 1: begin (1) uitgebreid in de kolom naam. De regel voor de SQLServer-taak is gemarkeerd.](./media/site-recovery-failover/FailoverJob.png)
 
 - **Controle van vereisten**: Hiermee wordt gecontroleerd of aan alle voor waarden die zijn vereist voor de failover is voldaan.
 - **Failover**: Hiermee worden de gegevens verwerkt zodat er een virtuele machine van Azure kan worden gemaakt. Als u het **meest recente** herstel punt hebt gekozen, wordt een herstel punt gemaakt op basis van de gegevens die naar de service zijn verzonden.

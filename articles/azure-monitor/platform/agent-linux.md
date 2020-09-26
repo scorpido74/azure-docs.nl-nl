@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 997064ad030d22531277f1c412add6916eb7733f
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 4414dc86ff318cfff5d224ce7aa064c31f3df460
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230463"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294525"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>Log Analytics-agent installeren op Linux-computers
 In dit artikel vindt u informatie over het installeren van de Log Analytics-agent op Linux-computers met behulp van de volgende methoden:
@@ -102,10 +102,10 @@ De Log Analytics-agent voor Linux bestaat uit meerdere pakketten. Het release be
 
 **Pakket** | **Versie** | **Beschrijving**
 ----------- | ----------- | --------------
-omsagent | 1.12.15 | De Log Analytics-agent voor Linux
+omsagent | 1.13.9 | De Log Analytics-agent voor Linux
 omsconfig | 1.1.1 | Configuratie agent voor de Log Analytics-agent
-Omi | 1.6.3 | Open Management Infrastructure (OMI)--een Lightweight CIM-server. *Houd er rekening mee dat OMI een cron-taak moet uitvoeren die nodig is voor de werking van de service*
-SCx | 1.6.3 | OMI CIM-providers voor metrische gegevens over de prestaties van het besturings systeem
+Omi | 1.6.4 | Open Management Infrastructure (OMI)--een Lightweight CIM-server. *Houd er rekening mee dat OMI een cron-taak moet uitvoeren die nodig is voor de werking van de service*
+SCx | 1.6.4 | OMI CIM-providers voor metrische gegevens over de prestaties van het besturings systeem
 Apache-cimprov | 1.0.1 | Bewakings provider van Apache HTTP-server prestaties voor OMI. Alleen geïnstalleerd als de Apache HTTP-server wordt gedetecteerd.
 MySQL-cimprov | 1.0.1 | MySQL-server prestatie bewakings provider voor OMI. Alleen geïnstalleerd als MySQL/MariaDB-server wordt gedetecteerd.
 docker-cimprov | 1.0.0 | Docker-provider voor OMI. Alleen geïnstalleerd als docker wordt gedetecteerd.

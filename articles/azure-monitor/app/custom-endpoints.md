@@ -3,13 +3,13 @@ title: Azure-toepassing Insights standaard SDK-eind punten overschrijven
 description: Wijzig de standaard Azure Monitor Application Insights SDK-eind punten voor regio's als Azure Government.
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.custom: references_regions, devx-track-javascript
-ms.openlocfilehash: 22f81b327c161df4f6605cfcb64b48b8d75beed3
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.custom: references_regions, devx-track-js
+ms.openlocfilehash: d6cea9044cd4898480fcc30532a05e6c8a407012
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373127"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333287"
 ---
 # <a name="application-insights-overriding-default-endpoints"></a>Application Insights standaard eindpunten overschrijven
 
@@ -79,7 +79,7 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPuls
 
 Voor Azure Functions wordt u nu aangeraden [verbindings reeksen](./sdk-connection-string.md?tabs=net) te gebruiken die zijn ingesteld in de toepassings instellingen van de functie. Als u de toepassings instellingen voor de functie wilt openen vanuit het deel venster functies, selecteert u **instellingen**  >  **configuratie**  >  **Toepassings instellingen**. 
 
-Naam: `APPLICATIONINSIGHTS_CONNECTION_STRING` waarde:`Connection String Value`
+Naam: `APPLICATIONINSIGHTS_CONNECTION_STRING` waarde: `Connection String Value`
 
 # <a name="java"></a>[Java](#tab/java)
 

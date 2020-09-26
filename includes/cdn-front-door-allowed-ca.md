@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/09/2019
 ms.author: sharadag
 ms.custom: include file
-ms.openlocfilehash: 9397c5f075c1d6653920d19766d5d6a740294ec7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 68d0459153fbdb34216c1313f70e292119b93a7c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67330757"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91269796"
 ---
 De volgende Ca's zijn toegestaan wanneer u uw eigen certificaat maakt:
 
@@ -23,6 +23,7 @@ De volgende Ca's zijn toegestaan wanneer u uw eigen certificaat maakt:
 - AAM infra CA 02
 - Ameroot
 - APCA-DM3P
+- Atos TrustedRoot 2011
 - Auto Pilot-basis-CA
 - Baltimore CyberTrust Root
 - Klasse 3 open bare primaire certificerings instantie
@@ -52,8 +53,12 @@ De volgende Ca's zijn toegestaan wanneer u uw eigen certificaat maakt:
 - GlobalSign basis-CA
 - Go Daddy-basis certificerings instantie-G2
 - Go Daddy Secure Certificate Authority-G2
+- De CA-x3 versleutelen
 - QuoVadis root CA2 G3
 - RapidSSL RSA CA 2018
+- Beveiligings communicatie RootCA1
+- Beveiligings communicatie RootCA2
+- Beveiligings communicatie RootCA3
 - Symantec Class 3 EV SSL CA-G3
 - Symantec Class 3 Secure Server CA-G4
 - Symantec Enter prise Mobile-hoofdmap voor micro soft

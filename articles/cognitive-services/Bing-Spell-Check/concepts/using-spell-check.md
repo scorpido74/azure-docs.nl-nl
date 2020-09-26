@@ -1,7 +1,7 @@
 ---
 title: De Bing Spellingcontrole-API gebruiken
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over Bing Spellingcontrole-modi, -instellingen en andere informatie met betrekking tot de API.
+description: Meer informatie over de Bing Spellingcontrole modi, instellingen en andere informatie met betrekking tot de API.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: c5c9ad8be8bd4cd834b01a0c67e0bbc81b8cdd4a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a17ed0f13e352fb185d20d9dc2d7bfffa74ac957
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68881891"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334766"
 ---
 # <a name="using-the-bing-spell-check-api"></a>De Bing Spellingcontrole-API gebruiken
 
@@ -123,4 +123,4 @@ Als het veld `type` RepeatedToken is, vervangt u het token nog steeds door `sugg
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Wat is de Bing Spellingcontrole-API?](../overview.md)
-- [Referentie voor de Bing Spellingcontrole-API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
+- [Naslag informatie over Bing Spellingcontrole-API V7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.author: kaprochi
-ms.openlocfilehash: 463f5d5360e19fdd7f49139aea4c6dc65baf903c
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 46bdc314e7aa0002937e808d7982f43c8e725d6f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85081188"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357468"
 ---
 # <a name="cicd-for-custom-speech"></a>CI/CD voor Custom Speech
 
@@ -74,7 +74,7 @@ De meeste teams vereisen een hand matig controle-en goedkeurings proces voor imp
 Gebruik de volgende hulpprogram ma's voor CI/CD Automation-werk stromen voor Custom Speech:
 
 - [Azure cli](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) voor het maken van een Azure-Service-Principal-verificatie, het opvragen van Azure-abonnementen en het opslaan van test resultaten in Azure Blob.
-- [Azure speech cli](https://github.com/msimecek/Azure-Speech-CLI) om te communiceren met de spraak service vanaf de opdracht regel of een geautomatiseerde werk stroom.
+- [Azure speech cli](spx-overview.md) om te communiceren met de spraak service vanaf de opdracht regel of een geautomatiseerde werk stroom.
 
 ## <a name="devops-solution-for-custom-speech-using-github-actions"></a>DevOps-oplossing voor Custom Speech met GitHub-acties
 

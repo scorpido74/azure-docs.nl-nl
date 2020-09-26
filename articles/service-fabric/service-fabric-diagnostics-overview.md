@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 1/17/2019
 ms.author: srrengar
-ms.openlocfilehash: 4b4e454532dec31cbcc92269d63c8be1ff92a9f6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 25a50a2841a03929804be45be8012f9b5d0457ff
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247520"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357128"
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Bewaking en diagnostische gegevens voor Azure Service Fabric
 
@@ -39,7 +39,7 @@ Service Fabric biedt een uitgebreide set gebeurtenissen uit het vak. Deze [servi
 
 * Event Store: de Event Store is een functie die wordt aangeboden door het platform dat Service Fabric platform gebeurtenissen bevat die beschikbaar zijn in de Service Fabric Explorer en via REST API. Op basis van de tijd van de gebeurtenis ziet u een moment opname van wat er in uw cluster gebeurt voor elke entiteit, bijvoorbeeld knoop punt, service, toepassing en query. Meer informatie over de Event Store vindt u in het [overzicht van Event Store](service-fabric-diagnostics-eventstore.md).    
 
-![Event Store](media/service-fabric-diagnostics-overview/eventstore.png)
+![Scherm afbeelding toont het tabblad gebeurtenissen van het deel venster knoop punten met verschillende gebeurtenissen, met inbegrip van een NodeDown-gebeurtenis.](media/service-fabric-diagnostics-overview/eventstore.png)
 
 De beschik bare diagnostische gegevens bevinden zich in de vorm van een uitgebreide set gebeurtenissen uit het vak. Deze [service Fabric gebeurtenissen](service-fabric-diagnostics-events.md) illustreren acties die door het platform worden uitgevoerd op verschillende entiteiten, zoals knoop punten, toepassingen, services, partities, enzovoort. Als er in het laatste scenario hierboven een knoop punt actief was, zou het platform een gebeurtenis kunnen genereren `NodeDown` en kan hij onmiddellijk op de hoogte worden gesteld door het bewakings programma van Choice. Andere veelvoorkomende voor beelden zijn `ApplicationUpgradeRollbackStarted` of `PartitionReconfigured` tijdens een failover. **Dezelfde gebeurtenissen zijn beschikbaar voor zowel Windows-als Linux-clusters.**
 

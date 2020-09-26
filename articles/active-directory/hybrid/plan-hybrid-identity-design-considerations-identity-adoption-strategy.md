@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1608039b051cb17684ca77cf7f00c705c9a8e7b5
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 318da4e92e6d07df1fcb89a4df0cb29d82caa630
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89659530"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294860"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>Een strategie voor het implementeren van een hybride identiteit definiëren
 In deze taak definieert u de strategie voor het implementeren van de hybride identiteit voor uw hybride identiteits oplossing om te voldoen aan de bedrijfs vereisten die worden beschreven in:
@@ -55,7 +55,7 @@ De volgende tabel helpt bij het bepalen van de voor-en nadelen van elk van de vo
 | Strategie | Voordelen | Nadelen |
 | --- | --- | --- |
 | **Cloud-identiteiten** |Eenvoudiger te beheren voor kleine organisaties. <br> Niets om on-premises te installeren. Er is geen extra hardware nodig<br>Eenvoudig uitschakelen als de gebruiker het bedrijf verlaat |Gebruikers moeten zich aanmelden bij het openen van werk belastingen in de Cloud <br> Wacht woorden mogen al dan niet hetzelfde zijn voor Cloud-en on-premises identiteiten |
-| **Aanvankelijk** |On-premises wacht woord verifieert on-premises en Cloud directory's <br>Eenvoudiger te beheren voor kleine, middel grote of grootschalige organisaties <br>Gebruikers kunnen eenmalige aanmelding (SSO) voor sommige resources hebben <br> Voorkeurs methode van micro soft voor synchronisatie <br> Eenvoudiger te beheren |Sommige klanten kunnen niet langer hun directory's synchroniseren met de cloud die het beleid van de specifieke bedrijfs politie heeft |
+| **Aanvankelijk** |On-premises wacht woord verifieert on-premises en Cloud directory's <br>Eenvoudiger te beheren voor kleine, middel grote of grootschalige organisaties <br>Gebruikers kunnen eenmalige aanmelding (SSO) voor sommige resources hebben <br> Voorkeurs methode van micro soft voor synchronisatie <br> Eenvoudiger te beheren |Sommige klanten kunnen zich niet terugvinden om hun directory's te synchroniseren met de Cloud voor het specifieke bedrijfs beleid |
 | **Federatief** |Gebruikers kunnen eenmalige aanmelding (SSO) hebben <br>Als een gebruiker wordt beëindigd of verlaat, kan het account direct worden uitgeschakeld en kan de toegang worden ingetrokken.<br> Ondersteunt geavanceerde scenario's die niet kunnen worden uitgevoerd met gesynchroniseerd |Meer stappen voor het instellen en configureren <br> Hoger onderhoud <br> Hiervoor is mogelijk extra hardware vereist voor de STS-infra structuur <br> Mogelijk is extra hardware vereist voor de installatie van de Federatie server. Aanvullende software is vereist als AD FS wordt gebruikt <br> Uitgebreide installatie vereisen voor SSO <br> Kritiek risico punt als de Federatie server niet beschikbaar is, kunnen gebruikers geen verificatie uitvoeren |
 
 ### <a name="client-experience"></a>Clientervaring

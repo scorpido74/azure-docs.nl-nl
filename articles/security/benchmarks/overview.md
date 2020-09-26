@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2be5df88a665c800f55f773b2470cc095fa27b2b
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: fb6813875858ab6cc438df5abb78a75391adfeac
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90058679"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280654"
 ---
-# <a name="overview-of-the-azure-security-benchmark"></a>Overzicht van de Azure Security-Bench Mark
+# <a name="overview-of-the-azure-security-benchmark-v2"></a>Overzicht van de Azure Security Bench Mark (v2)
 
 De Azure Security Bench Mark (ASB) biedt prescriptieve aanbevolen procedures en aanbevelingen voor het verbeteren van de beveiliging van werk belastingen, gegevens en services in Azure.
 
@@ -24,6 +24,7 @@ Deze bench Mark maakt deel uit van een aantal holistische beveiligings richtlijn
 - **Cloud-acceptatie raamwerk** : richt lijnen voor beveiliging, inclusief [strategie](/azure/cloud-adoption-framework/strategy/define-security-strategy), [rollen en verantwoordelijkheden](/azure/cloud-adoption-framework/organize/cloud-security), [Aanbevolen Azure Top 10-beveiligings procedures](/azure/cloud-adoption-framework/get-started/security#step-1-establish-essential-security-practices)en [referentie-implementatie](/azure/cloud-adoption-framework/ready/enterprise-scale/).
 - **Azure goed ontworpen Framework** : richt lijnen voor [het beveiligen van uw workloads](https://docs.microsoft.com/assessments/?mode=pre-assessment&session=local) op Azure.
 - **Aanbevolen procedures voor micro soft-beveiliging** : [aanbevelingen](/security/compass/microsoft-security-compass-introduction) met voor beelden op Azure.
+
  De Azure Security-Bench Mark is gericht op Cloud gerichte controle gebieden. Deze besturings elementen zijn consistent met bekende beveiligings benchmarks, zoals die worden beschreven in het Center for Internet Security (CIS) Controls versie 7,1 en National Institute of Standards and Technology (NIST) SP800-53.
 De volgende besturings elementen zijn opgenomen in de Azure Security-Bench Mark:
 
@@ -52,7 +53,7 @@ Elke aanbeveling bevat de volgende informatie:
 - **NIST SP800-53 R4-id ('s)**: de (gematige) SP800-(gemiddeld) besturings element (en) die overeenkomt met deze aanbeveling.
 - **Details**: de motivering van de aanbeveling en koppelingen naar richt lijnen voor het implementeren ervan. Als de aanbeveling wordt ondersteund door Azure Security Center, wordt die informatie ook weer gegeven.
 - **Verantwoordelijkheid**: of de klant, de service provider of beide verantwoordelijk zijn voor de implementatie van deze aanbeveling. Beveiligings verantwoordelijkheden worden gedeeld in de open bare Cloud. Sommige beveiligings mechanismen zijn alleen beschikbaar voor de Cloud serviceprovider en daarom is de provider verantwoordelijk voor het adresseren van deze. Dit zijn algemene waarnemingen: voor sommige afzonderlijke services is de verantwoordelijkheid afwijkend van wat wordt vermeld in de Azure Security-benchmark waarde. Deze verschillen worden beschreven in de aanbevelingen van de basis lijn voor de afzonderlijke service.
-- **Beveiligings belanghebbenden**van de klant: de beveiligings functies bij de organisatie van de klant die kunnen worden beheerbaar, verantwoordelijk of geraadpleegd voor de respectieve controle. Het kan afwijken van de organisatie naar de organisatie, afhankelijk van de organisatie structuur van uw bedrijf en de rollen en verantwoordelijkheden die u hebt ingesteld voor de beveiliging van Azure.
+- **Beveiligings belanghebbenden**van de klant: [de beveiligings functies](/azure/cloud-adoption-framework/organize/cloud-security#security-functions) bij de organisatie van de klant die kunnen worden beheerbaar, verantwoordelijk of geraadpleegd voor de respectieve controle. Het kan afwijken van de organisatie naar de organisatie, afhankelijk van de organisatie structuur van uw bedrijf en de rollen en verantwoordelijkheden die u hebt ingesteld voor de beveiliging van Azure.
 
 > [!NOTE]
 > De controle toewijzingen tussen de ASB en de branche benchmarks (zoals NIST en CIS) geven alleen aan dat een specifieke functie van Azure kan worden gebruikt voor het volledig of gedeeltelijk oplossen van een controle vereiste die is gedefinieerd in het NIST of CIS. Houd er rekening mee dat deze implementatie niet noodzakelijkerwijs moet worden vertaald naar de volledige naleving van het overeenkomstige besturings element in CIS of NIST.

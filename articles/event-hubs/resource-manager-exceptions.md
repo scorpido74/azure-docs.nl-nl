@@ -3,12 +3,12 @@ title: Uitzonde ringen voor Azure Event Hubs-Resource Manager | Microsoft Docs
 description: Lijst met Azure Event Hubs-uitzonde ringen die door Azure Resource Manager en voorgestelde acties worden geoppereerd.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: aa1a3ca647bbf9e6590446549455a9853411fd7d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: cec24696d0d49ba408860f6562c34dd14876c311
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281035"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334205"
 ---
 # <a name="azure-event-hubs---resource-manager-exceptions"></a>Uitzonde ringen voor Azure Event Hubs-Resource Manager
 Dit artikel bevat een lijst met uitzonde ringen die worden gegenereerd bij interactie met Azure Event Hubs met behulp van Azure Resource Manager-via-sjablonen of directe aanroepen.
@@ -44,7 +44,7 @@ De volgende secties bieden verschillende uitzonde ringen/fouten die worden weer 
 | BadRequest | geen | Een naam ruimte die secundair is, kan niet worden bijgewerkt | De naam ruimte kan niet worden bijgewerkt, omdat het de secundaire naam ruimte is in een [GeoDR-koppeling](event-hubs-geo-dr.md). | Indien nodig moet u in plaats daarvan de wijziging in de primaire naam ruimte in deze koppeling aanbrengen. Anders verbreekt u de GeoDR-koppeling om de wijziging door te voeren. |
 | BadRequest | geen | Kan niet automatisch verg Roten instellen in de basis-SKU | Automatisch verg Roten kan niet worden ingeschakeld op de Basic-laag Event Hubs naam ruimten. | Als u [automatisch verg Roten wilt inschakelen](event-hubs-auto-inflate.md) voor een naam ruimte, moet u ervoor zorgen dat het de standaard-laag is. |
 | BadRequest | geen | Er is onvoldoende capaciteit om de naam ruimte te maken. Neem contact op met uw Event Hubs-beheerder. | De geselecteerde regio heeft een capaciteit en er kunnen geen naam ruimten meer worden gemaakt. | Selecteer een andere regio als huis uw naam ruimte. |
-| BadRequest | geen | De bewerking kan niet worden uitgevoerd voor het entiteits type ' ConsumerGroup ', omdat de naam ruimte ' Basic ' gebruikmaakt van de laag naam ruimte.  | De Basic-laag Event Hubs naam ruimten hebben een [quotum](event-hubs-quotas.md#event-hubs-basic-and-standard---quotas-and-limits) van één consumer groep (de standaard instelling). Het maken van meer consumenten groepen wordt niet ondersteund. | Ga door met het gebruik van de standaard gebruikers groep ($Default) of overweeg in plaats daarvan een standaardlaag Event Hubs naam ruimte te gebruiken. | 
+| BadRequest | geen | De bewerking kan niet worden uitgevoerd voor het entiteits type ' ConsumerGroup ', omdat de naam ruimte ' Basic ' gebruikmaakt van de laag naam ruimte.  | Event Hubs naam ruimten van de Basic-laag hebben een quotum (Event-hubs-quotas.md) van één consumer groep (de standaard instelling). Het maken van meer consumenten groepen wordt niet ondersteund. | Ga door met het gebruik van de standaard gebruikers groep ($Default) of overweeg in plaats daarvan een standaardlaag Event Hubs naam ruimte te gebruiken. | 
 | BadRequest | geen | De naam van de naam ruimte bestaat niet. | De naam ruimte die is gegeven, is niet gevonden. | Controleer of de naam van de naam ruimte juist is en of deze in uw abonnement kan worden gevonden. Als dat niet het geval is, [maakt u een event hubs naam ruimte](event-hubs-create.md). | 
 | BadRequest | geen | De locatie-eigenschap van de resource komt niet overeen met die van de naam ruimte. | Het maken van een Event Hub in een specifieke regio is mislukt omdat deze niet overeenkomt met de regio van de naam ruimte. | Probeer de Event Hub te maken in dezelfde regio als de naam ruimte. | 
 

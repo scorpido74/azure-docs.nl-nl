@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 838d2a1dd1c7b89c1f5c9fec6578312107264958
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 2512602b0c8c00c696253a708af13278bc513a1f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90602061"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258741"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>Voorwaardelijke toegang: Cloud-apps of-acties
 
@@ -31,9 +31,9 @@ Cloud-apps of-acties zijn een belang rijk signaal in een beleid voor voorwaardel
 
 Veel van de bestaande micro soft-Cloud toepassingen zijn opgenomen in de lijst met toepassingen waaruit u kunt kiezen. 
 
-Beheerders kunnen een beleid voor voorwaardelijke toegang toewijzen aan de volgende Cloud-apps van micro soft. Sommige apps zoals Office 365 (preview) en Microsoft Azure Management omvatten meerdere verwante onderliggende apps of services. De volgende lijst is niet limitatief en kan worden gewijzigd.
+Beheerders kunnen een beleid voor voorwaardelijke toegang toewijzen aan de volgende Cloud-apps van micro soft. Sommige apps, zoals Office 365 en Microsoft Azure beheer, bevatten meerdere verwante onderliggende apps of services. De volgende lijst is niet limitatief en kan worden gewijzigd.
 
-- [Office 365 (preview-versie)](#office-365-preview)
+- [Office 365](#office-365)
 - Azure Analysis Services
 - Azure DevOps
 - [Azure SQL Database en Data Warehouse](../../azure-sql/database/conditional-access-configure.md)
@@ -67,15 +67,15 @@ Beheerders kunnen een beleid voor voorwaardelijke toegang toewijzen aan de volge
 - Virtueel particulier netwerk (VPN)
 - Windows Defender ATP
 
-### <a name="office-365-preview"></a>Office 365 (preview-versie)
+### <a name="office-365"></a>Office 365
 
 Microsoft 365 biedt productiviteits-en samenwerkings Services op basis van de Cloud, zoals Exchange, share point en micro soft teams. Microsoft 365 Cloud Services zijn nauw geïntegreerd om te zorgen voor soepele en samenwerkings ervaring. Deze integratie kan leiden tot Verwar ring bij het maken van beleid als sommige apps, zoals micro soft-teams, afhankelijk zijn van andere onderdelen, zoals share point of Exchange.
 
-De Office 365-app (preview) maakt het mogelijk om deze services in één keer te richten. We raden u aan de nieuwe app Office 365 (preview) te gebruiken, in plaats van afzonderlijke Cloud-apps te richten om problemen met [service afhankelijkheden](service-dependencies.md)te voor komen. Gericht op deze groep toepassingen helpt problemen te voor komen die zich kunnen voordoen als gevolg van inconsistent beleid en afhankelijkheden.
+Met de Office 365-app kunnen deze services in één keer worden gericht. We raden u aan de nieuwe Office 365-app te gebruiken, in plaats van afzonderlijke Cloud-apps te richten om problemen met [service afhankelijkheden](service-dependencies.md)te voor komen. Gericht op deze groep toepassingen helpt problemen te voor komen die zich kunnen voordoen als gevolg van inconsistent beleid en afhankelijkheden.
 
-Beheerders kunnen ervoor kiezen om specifieke apps uit te sluiten van het beleid als ze dit willen doen door de Office 365 (preview)-app op te nemen en de specifieke apps van hun keuze in het beleid uit te sluiten.
+Beheerders kunnen ervoor kiezen om specifieke apps uit te sluiten van het beleid als ze willen door de Office 365-app op te nemen en de specifieke apps van hun keuze in het beleid uit te sluiten.
 
-Belangrijkste toepassingen die zijn opgenomen in de client-app voor Office 365 (preview):
+Belangrijkste toepassingen die zijn opgenomen in de Office 365-client-app:
 
    - Microsoft Flow
    - Microsoft Forms

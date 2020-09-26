@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: jingwang
-ms.openlocfilehash: 7c1a2cf4b9b476a8f31f38fea45b2e1ef3fe4307
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 0b80c2f125e7eddaa427b75e3e0fe2aff6c679be
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531768"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334324"
 ---
 # <a name="json-format-in-azure-data-factory"></a>JSON-indeling in Azure Data Factory
 
@@ -217,6 +217,7 @@ De onderstaande tabel geeft een lijst van de eigenschappen die door een JSON-bro
 | Bevat opmerkingen | Selecteer **opmerkingen** als de JSON-gegevens C of C++-stijl opmerkingen hebben | nee | `true` of `false` | asComments |
 | Enkel aanhalings teken | Hiermee worden JSON-kolommen gelezen die niet worden omgeven door aanhalings tekens | nee | `true` of `false` | singleQuoted |
 | Back slash met escape-teken | **Back slash-Escape** -teken selecteren als backslashes worden gebruikt om tekens in de JSON-gegevens te escapen | nee | `true` of `false` | backslashEscape |
+| Geen bestanden gevonden | Als deze eigenschap waar is, wordt er geen fout gegenereerd als er geen bestanden worden gevonden | nee | `true` of `false` | ignoreNoFilesFound |
 
 ### <a name="source-format-options"></a>Opties voor bron indeling
 

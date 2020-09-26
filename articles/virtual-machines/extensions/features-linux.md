@@ -1,6 +1,6 @@
 ---
 title: Azure VM-extensies en-functies voor Linux
-description: Meer informatie over de uitbrei dingen die beschikbaar zijn voor virtuele machines van Azure, gegroepeerd op wat ze bieden of verbeteren.
+description: Meer informatie over de uitbrei dingen die beschikbaar zijn voor virtuele machines van Azure in Linux, gegroepeerd op wat ze bieden of verbeteren.
 services: virtual-machines-linux
 documentationcenter: ''
 author: axayjo
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
-ms.openlocfilehash: bc29a62f469b0b9d091fcdef2488afba764a09fe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b61bbacf889df23455266fb81124e14ef44388d2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080349"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336119"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Extensies en functies van virtuele machines voor Linux
 
@@ -221,7 +221,7 @@ De agents en uitbrei dingen delen hetzelfde update mechanisme. Voor sommige upda
 Wanneer er een update beschikbaar is, wordt deze alleen geïnstalleerd op de virtuele machine wanneer er een wijziging is aangebracht in extensies en andere VM-modellen, zoals:
 
 - Gegevensschijven
-- Extensies
+- Uitbreidingen
 - Container voor diagnostische gegevens over opstarten
 - Geheimen voor gast besturingssystemen
 - VM-grootte
@@ -231,7 +231,7 @@ Uitgevers maken updates beschikbaar voor regio's op verschillende tijdstippen, z
 
 #### <a name="agent-updates"></a>Agent updates
 
-De Linux-VM-agent bevat code voor de *inrichtings agent* en *uitbrei ding van extensie* in één pakket, dat niet kan worden gescheiden. U kunt de *inrichtings agent* uitschakelen als u wilt inrichten op Azure met behulp van Cloud-init. Zie voor het [gebruik van Cloud-init](../linux/using-cloud-init.md).
+De Linux-VM-agent bevat code voor de *inrichtings agent* en *uitbrei ding van extensie*  in één pakket, dat niet kan worden gescheiden. U kunt de *inrichtings agent* uitschakelen als u wilt inrichten op Azure met behulp van Cloud-init. Zie voor het [gebruik van Cloud-init](../linux/using-cloud-init.md).
 
 Ondersteunde versies van de agents kunnen gebruikmaken van automatische updates. De enige code die kan worden bijgewerkt is de *verwerkings code van de uitbrei ding*, niet de inrichtings code. De *inrichtings agent code* wordt uitgevoerd als code.
 

@@ -8,14 +8,17 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 231d1efa02ec80e8ad56a8895d4262d774480111
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae0e18a2dfbce52e50b4a8b58d478a46dff12922
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73824100"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282099"
 ---
 # <a name="deploying-dependencies-for-local-development"></a>Afhankelijkheden implementeren voor lokale ontwikkeling
+
+> [!IMPORTANT]
+> Tijdens het bijwerken van dit artikel raadpleegt u [Azure Industrial IOT](https://azure.github.io/Industrial-IoT/) voor de meest recente inhoud.
 
 In dit artikel wordt uitgelegd hoe u alleen de services van het Azure-platform implementeert die nodig zijn om lokale ontwikkeling en fout opsporing uit te voeren.   Aan het einde hebt u een resource groep geïmplementeerd die alles bevat wat u nodig hebt voor lokale ontwikkeling en fout opsporing.
 
@@ -32,7 +35,7 @@ In dit artikel wordt uitgelegd hoe u alleen de services van het Azure-platform i
    deploy -type local
    ```
 
-2. Volg de aanwijzingen om een naam toe te wijzen aan de resource groep voor uw implementatie.  Het script implementeert alleen de afhankelijkheden van deze resource groep in uw Azure-abonnement, maar niet de micro Services.  Met het script wordt ook een toepassing geregistreerd in Azure Active Directory.  Dit is nodig om verificatie op basis van OAUTH te ondersteunen.  De implementatie kan enkele minuten duren.
+2. Volg de aanwijzingen om een naam toe te wijzen aan de resource groep voor uw implementatie.  Het script implementeert alleen de afhankelijkheden van deze resource groep in uw Azure-abonnement, maar niet de micro Services.  Met het script wordt ook een toepassing geregistreerd in azure AD.  Dit is nodig om verificatie op basis van OAUTH te ondersteunen.  De implementatie kan enkele minuten duren.
 
 3. Zodra het script is voltooid, kunt u selecteren om het. env-bestand op te slaan.  Het. env-omgevings bestand is het configuratie bestand van alle services en hulpprogram ma's die u wilt uitvoeren op uw ontwikkel computer.  
 
@@ -42,12 +45,12 @@ In dit artikel wordt uitgelegd hoe u alleen de services van het Azure-platform i
 
 Zorg ervoor dat u een korte en eenvoudige naam voor de resource groep gebruikt.  De naam wordt ook gebruikt om resources te noemen, omdat deze moeten voldoen aan de vereisten voor resource naamgeving.  
 
-### <a name="azure-active-directory-aad-registration"></a>Registratie van Azure Active Directory (AAD)
+### <a name="azure-active-directory-ad-registration"></a>Registratie van Azure Active Directory (AD)
 
-Het implementatie script probeert AAD-toepassingen te registreren in Azure Active Directory.  Afhankelijk van uw rechten voor de geselecteerde AAD-Tenant kan dit mislukken.   Er zijn drie opties:
+Het implementatie script probeert Azure AD-toepassingen te registreren in azure AD.  Afhankelijk van uw rechten voor de geselecteerde Azure AD-Tenant kan dit mislukken. Er zijn drie opties:
 
-1. Als u een AAD-Tenant hebt gekozen uit een lijst met tenants, start u het script opnieuw en kiest u een ander account in de lijst.
-2. U kunt ook een persoonlijke AAD-Tenant implementeren, het script opnieuw starten en selecteren om het te gebruiken.
+1. Als u een Azure AD-Tenant uit een lijst met tenants hebt gekozen, start u het script opnieuw en kiest u een ander in de lijst.
+2. U kunt ook een persoonlijke Azure AD-Tenant implementeren, het script opnieuw starten en selecteren om het te gebruiken.
 3. Door gaan zonder verificatie.  Omdat u uw micro services lokaal uitvoert, is dit acceptabel, maar worden productie omgevingen niet nagebootst.  
 
 ## <a name="next-steps"></a>Volgende stappen

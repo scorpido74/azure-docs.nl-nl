@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: 0800a287b747a8a421958d20f0b1ce56247d6d01
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: c9f7168bc0524b483413ade9792af18ff9cfebfa
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362156"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358539"
 ---
 # <a name="what-is-custom-commands"></a>Wat zijn aangepaste opdrachten?
 
@@ -52,7 +52,7 @@ Wanneer u klaar bent met de Snelstartgids, raadpleegt u onze hand leidingen voor
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Gratis een abonnements sleutel voor een spraak service ophalen](get-started.md)
+* [Verkrijg gratis een spraakserviceabonnementssleutel](overview.md#try-the-speech-service-for-free)
 * [Bekijk onze opslag plaats op GitHub voor voor beelden.](https://aka.ms/speech/cc-samples)
 * [Ga naar de speech Studio om aangepaste opdrachten uit te proberen](https://speech.microsoft.com/customcommands)
 * [De Speech SDK ophalen](speech-sdk.md)

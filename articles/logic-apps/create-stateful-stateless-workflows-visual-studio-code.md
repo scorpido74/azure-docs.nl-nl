@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: deli, rohitha, vikanand, hongzili, sopai, absaafan, logicappspm
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: abb6f8bcaa3b8e356bea00185702bc0ae783e071
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/25/2020
+ms.openlocfilehash: 1f67d7228da8529699a26539f20efd55f9a20c27
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91270233"
+ms.locfileid: "91370977"
 ---
 # <a name="create-stateful-or-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Stateful of stateless werk stromen maken in Visual Studio code met de extensie Azure Logic Apps (preview)
 
@@ -72,11 +72,11 @@ De uitbrei ding Azure Logic Apps (preview) biedt veel actuele en aanvullende Log
 
 * *Stateless*
 
-  Maak stateless Logic apps wanneer u geen gegevens van eerdere gebeurtenissen hoeft op te slaan, te controleren of ernaar te verwijzen. Deze Logic apps bewaren de invoer en uitvoer voor elke actie en hun werk stroom statussen worden alleen in het geheugen opgeslagen, in plaats van deze gegevens over te dragen naar externe opslag. Als gevolg hiervan hebben stateless Logic apps kortere uitvoeringen die doorgaans niet langer zijn dan vijf minuten, snellere prestaties met snellere reactie tijden, een hogere door Voer en lagere uitvoerings kosten, omdat de details van de uitvoering en de geschiedenis niet in de externe opslag worden bewaard. Als er echter storingen optreden, worden onderbroken uitvoeringen niet automatisch hersteld. de oproepende functie moet de onderbroken uitvoeringen hand matig opnieuw verzenden. Voor eenvoudiger fout opsporing kunt u de [uitvoerings geschiedenis](#run-history) voor stateless Logic apps inschakelen.
+  Maak stateless Logic apps wanneer u geen gegevens hoeft op te slaan, te controleren of ernaar te verwijzen vanuit eerdere gebeurtenissen in de externe opslag om deze later te controleren. Deze Logic apps bewaren de invoer en uitvoer voor elke actie en hun werk stroom statussen worden alleen in het geheugen opgeslagen, in plaats van deze gegevens over te dragen naar externe opslag. Als gevolg hiervan hebben stateless Logic apps kortere uitvoeringen die doorgaans niet langer zijn dan vijf minuten, snellere prestaties met snellere reactie tijden, een hogere door Voer en lagere uitvoerings kosten, omdat de details van de uitvoering en de geschiedenis niet in de externe opslag worden bewaard. Als er echter storingen optreden, worden onderbroken uitvoeringen niet automatisch hersteld. de oproepende functie moet de onderbroken uitvoeringen hand matig opnieuw verzenden. Deze Logic apps kunnen alleen synchroon worden uitgevoerd en voor eenvoudiger fout opsporing kunt u de [uitvoerings geschiedenis inschakelen](#run-history), wat invloed heeft op de prestaties.
 
   Stateless werk stromen ondersteunen momenteel alleen acties voor [beheerde connectors](../connectors/apis-list.md#managed-api-connectors), niet voor triggers. Als u uw werk stroom wilt starten, selecteert u de [ingebouwde aanvraag, Event hubs of service bus trigger](../connectors/apis-list.md#built-ins). Zie [niet-ondersteunde mogelijkheden](#unsupported)voor meer informatie over niet-ondersteunde triggers, acties en connectors.
 
-Zie [geneste gedrags verschillen tussen stateful en stateless Logic](#nested-behavior)apps voor verschillen in de werking van geneste logische apps tussen stateful en stateless Logic apps.
+Zie [genest gedrag verschillen tussen stateful en stateless Logic](#nested-behavior)apps voor meer informatie over de werking van geneste logische apps tussen stateful en stateless Logic apps.
 
 <a name="pricing-model"></a>
 
@@ -918,7 +918,7 @@ Met behulp van de [opdracht regel interface (CLI) van .net core](/dotnet/core/to
 
 ## <a name="nested-behavior-differences-between-stateful-and-stateless-logic-apps"></a>Verschillen in genest gedrag tussen stateful en stateless Logic apps
 
-U kunt [een logische app-werk stroom aanroepen](../logic-apps/logic-apps-http-endpoint.md) vanuit andere logische app-werk stromen met behulp van de trigger voor [aanvragen](../connectors/connectors-native-reqres.md) , [http-webhook](../connectors/connectors-native-webhook.md) -trigger of beheerde connector triggers die het [ApiConnectionWehook-type](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger) hebben en HTTPS-aanvragen kunnen ontvangen.
+U kunt [een logische app-werk stroom aanroepen](../logic-apps/logic-apps-http-endpoint.md) vanuit andere logische app-werk stromen die zich in dezelfde **logische app (preview)** -resource bevinden met behulp van de [aanvraag](../connectors/connectors-native-reqres.md) trigger, [http-webhook](../connectors/connectors-native-webhook.md) -trigger of beheerde connector triggers die het [ApiConnectionWehook-type](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger) hebben en HTTPS-aanvragen kunnen ontvangen.
 
 Hier volgen de gedrags patronen die geneste logische app-werk stromen kunnen volgen nadat een bovenliggende werk stroom een onderliggende werk stroom aanroept:
 
@@ -930,7 +930,7 @@ Hier volgen de gedrags patronen die geneste logische app-werk stromen kunnen vol
 
   Het onderliggend item erkent de oproep door onmiddellijk een `202 ACCEPTED` reactie te retour neren en de bovenliggende actie wordt voortgezet zonder te hoeven wachten op de resultaten van het onderliggende item. In plaats daarvan ontvangt het bovenliggende item de resultaten wanneer het onderliggende element is voltooid. Onderliggende stateful werk stromen die geen reactie actie bevatten, volgen altijd het synchrone patroon. Voor onderliggende stateful werk stromen is de uitvoerings geschiedenis beschikbaar die u kunt controleren.
 
-  Als u dit gedrag wilt inschakelen, stelt u in de JSON-definitie van de werk stroom de `OperationOptions` eigenschap in op `DisableAsyncPattern` . Zie [trigger-en actie typen-bewerkings opties](../logic-apps/logic-apps-workflow-actions-triggers.md#operation-options)voor meer informatie.
+  Als u dit gedrag wilt inschakelen, stelt u in de JSON-definitie van de werk stroom de `operationOptions` eigenschap in op `DisableAsyncPattern` . Zie [trigger-en actie typen-bewerkings opties](../logic-apps/logic-apps-workflow-actions-triggers.md#operation-options)voor meer informatie.
 
 * Activeren en wachten
 
@@ -966,7 +966,9 @@ Deze mogelijkheden zijn niet beschikbaar of worden niet ondersteund voor deze op
 
 * Het maken van de nieuwe **logische app (preview)** -resource is momenteel niet beschikbaar op macOS.
 
-* Aangepaste connectors, webhook-triggers en de verschuivende venster trigger worden niet ondersteund in deze preview. Voor stateless logische app-werk stromen kunt u alleen acties voor [beheerde connectors](../connectors/apis-list.md#managed-api-connectors)toevoegen, niet voor triggers. Als u uw werk stroom wilt starten, gebruikt u de [ingebouwde aanvraag, Event hubs of service bus trigger](../connectors/apis-list.md#built-ins).
+* Als u uw werk stroom wilt starten, gebruikt u de [trigger aanvraag, http, Event hubs of service bus](../connectors/apis-list.md). Op dit moment worden [bedrijfs connectors](../connectors/apis-list.md#enterprise-connectors), [on-premises gegevens gateway triggers](../connectors/apis-list.md#on-premises-connectors), webhook-triggers, schuivende venster trigger, [aangepaste connectors](../connectors/apis-list.md#custom-apis-and-connectors), integratie accounts, hun artefacten en [hun connectors](../connectors/apis-list.md#integration-account-connectors) niet ondersteund in deze preview-versie. De mogelijkheid om een Azure-functie aan te roepen, is niet beschikbaar, dus gebruik de HTTP- *actie* om de aanvraag-URL voor de Azure-functie aan te roepen.
+
+  De werk stromen voor stateless logische apps kunnen alleen acties voor [beheerde connectors](../connectors/apis-list.md#managed-api-connectors)gebruiken, niet voor triggers. Met uitzonde ring van de eerder opgegeven triggers kunnen stateful werk stromen zowel triggers als acties voor beheerde connectors gebruiken.
 
 * U kunt het resource type nieuwe **logische app (preview-versie)** alleen implementeren op een [Premium-of app service hosting plan in azure](#publish-azure) of op een [docker-container](#deploy-docker), en niet de [integratie service omgevingen (ISEs)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). **Verbruiks** hosting plannen worden niet ondersteund of zijn niet beschikbaar voor de implementatie van dit resource type.
 

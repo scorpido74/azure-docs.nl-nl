@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
 ms.date: 04/22/2020
-ms.openlocfilehash: c32b3ee5c4689e960834d543de1ca377e918751d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b36641677dbf36402c7f578b9b1887c52f441afd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82106284"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322475"
 ---
 # <a name="decode-edifact-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>EDIFACT-berichten decoderen voor Azure Logic Apps met de Enterprise Integration Pack
 
@@ -84,13 +84,13 @@ De decode EDIFACT-connector voert de volgende taken uit:
   * Hiermee wordt het controle nummer van de transactieset gecontroleerd op andere trans actie besturings nummers instellen in die groep.
 * Splitst de uitwisseling in transactie sets of behoudt de volledige uitwisseling:
   * Gesplitste uitwisseling als transactie sets: Stel transactie sets uit bij fout: Splits de uitwisseling in transactie sets en parseert elke transactie groep. 
-  Met de dedecodeer actie X12 worden alleen de transactie sets uitgevoerd waarvoor `badMessages` de validatie is mislukt, en worden de resterende trans acties ingesteld op `goodMessages` .
+  Met de dedecodeer actie EDIFACT worden alleen de transactie sets uitgevoerd waarvoor `badMessages` de validatie is mislukt, en worden de resterende trans acties ingesteld op `goodMessages` .
   * Gesplitste uitwisseling als transactie sets-uitwisseling onderbreken bij fout: het splitsen van uitwisseling in transactie sets en het parseren van elke transactie groep. 
-  Als een of meer transactie sets in de uitwisseling mislukt, worden met de dedecodeer actie X12 alle transactie sets in die uitwisseling uitgevoerd naar `badMessages` .
+  Als een of meer transactie sets in de uitwisseling mislukt, worden met de dedecodeer actie EDIFACT alle transactie sets in die uitwisseling uitgevoerd naar `badMessages` .
   * Trans actie sets met uitwisselingen behouden bij fout: de uitwisseling behouden en de volledige batch uitwisseling verwerken. 
-  Met de dedecodeer actie X12 worden alleen de transactie sets uitgevoerd waarvoor `badMessages` de validatie is mislukt, en worden de resterende trans acties ingesteld op `goodMessages` .
+  Met de dedecodeer actie EDIFACT worden alleen de transactie sets uitgevoerd waarvoor `badMessages` de validatie is mislukt, en worden de resterende trans acties ingesteld op `goodMessages` .
   * Uitwisseling van Interchange-Suspend behouden bij fout: behoud de uitwisseling en verwerk de volledige batch uitwisseling. 
-  Als een of meer transactie sets in de uitwisseling mislukt, worden met de dedecodeer actie X12 alle transactie sets in die uitwisseling uitgevoerd naar `badMessages` .
+  Als een of meer transactie sets in de uitwisseling mislukt, worden met de dedecodeer actie EDIFACT alle transactie sets in die uitwisseling uitgevoerd naar `badMessages` .
 * Hiermee wordt een technische (controle) en/of functionele bevestiging gegenereerd (indien geconfigureerd).
   * Een technische bevestiging of de CONTRL ACK rapporteert de resultaten van een syntactische controle van de volledige ontvangen uitwisseling.
   * Een functie bevestiging erkent of weigert een ontvangen uitwisseling of groep

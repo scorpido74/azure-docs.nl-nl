@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/24/2020
+ms.date: 09/18/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 9aa5eb54d79d98627697c51ee7dcb16a44fccb60
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: c59dbe9464e70c1a071b64fabf91ce56f409d8d7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90053205"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258518"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Toegangs tokens van micro soft Identity platform
 
@@ -102,7 +102,7 @@ Claims zijn alleen aanwezig als er een waarde bestaat om deze op te vullen. Uw a
 | `roles` | Matrix van teken reeksen, een lijst met machtigingen | De set machtigingen die door uw toepassing worden weer gegeven en waarvoor de aanvraag of gebruiker toestemming heeft gegeven om deze aan te roepen. Voor [toepassings tokens](#user-and-application-tokens)wordt dit gebruikt tijdens de client referentie stroom ([v 1.0](../azuread-dev/v1-oauth2-client-creds-grant-flow.md), [v 2.0](v2-oauth2-client-creds-grant-flow.md)) in plaats van de gebruikers scopes.  Voor [gebruikers tokens](#user-and-application-tokens) wordt dit ingevuld met de rollen waaraan de gebruiker is toegewezen in de doel toepassing. |
 | `wids` | Matrix van [RoleTemplateID](../users-groups-roles/directory-assign-admin-roles.md#role-template-ids) -guid's | Hiermee worden de rollen voor de Tenant opgegeven die aan deze gebruiker zijn toegewezen, in het gedeelte van de rollen die aanwezig zijn op [de pagina beheer rollen](../users-groups-roles/directory-assign-admin-roles.md#role-template-ids).  Deze claim wordt per toepassing geconfigureerd op basis `groupMembershipClaims` van de eigenschap van het [toepassings manifest](reference-app-manifest.md).  Het instellen op ' all ' of ' DirectoryRole ' is vereist.  Mag niet aanwezig zijn in tokens die zijn verkregen via de impliciete stroom vanwege problemen met de token lengte. |
 | `groups` | JSON-matrix met GUID'S | Bevat object-Id's die de groepslid maatschappen van het onderwerp vertegenwoordigen. Deze waarden zijn uniek (zie object-ID) en kunnen veilig worden gebruikt voor het beheren van toegang, zoals het afdwingen van autorisatie voor toegang tot een bron. De groepen die zijn opgenomen in de claim groepen, worden per toepassing geconfigureerd via de `groupMembershipClaims` eigenschap van het [toepassings manifest](reference-app-manifest.md). Een waarde van Null sluit alle groepen uit, de waarde ' beveiligings groep ' bevat alleen Active Directory beveiligings groepslid maatschappen en de waarde ' all ' bevat zowel beveiligings groepen als Microsoft 365 distributie lijsten. <br><br>Zie `hasgroups` onderstaande claim voor meer informatie over het gebruik van de `groups` claim met de impliciete toekenning. <br>Voor andere stromen geldt dat als het aantal groepen dat de gebruiker in de loop van een limiet is (150 voor SAML, 200 voor JWT), een overschrijding-claim wordt toegevoegd aan de claim bronnen die naar het Microsoft Graph-eind punt met de lijst met groepen voor de gebruiker verwijzen. |
-| `hasgroups` | Booleaans | Indien aanwezig, `true` wordt het identificeren van de gebruiker altijd in ten minste één groep. Wordt gebruikt in plaats van de `groups` claim voor JWTs in impliciete toekennings stromen als de claim van de volledige groep het URI-fragment zou uitbreiden dat groter is dan de URL-lengte limieten (momenteel 6 of meer groepen). Geeft aan dat de client de Microsoft Graph-API moet gebruiken om de groepen van de gebruiker te bepalen `https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects` . |
+| `hasgroups` | Boolean-waarde | Indien aanwezig, `true` wordt het identificeren van de gebruiker altijd in ten minste één groep. Wordt gebruikt in plaats van de `groups` claim voor JWTs in impliciete toekennings stromen als de claim van de volledige groep het URI-fragment zou uitbreiden dat groter is dan de URL-lengte limieten (momenteel 6 of meer groepen). Geeft aan dat de client de Microsoft Graph-API moet gebruiken om de groepen van de gebruiker te bepalen `https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects` . |
 | `groups:src1` | JSON-object | Voor token aanvragen die geen beperkte lengte hebben (Zie `hasgroups` hierboven), maar nog steeds te groot zijn voor het token, wordt een koppeling naar de lijst met volledige groepen voor de gebruiker opgenomen. Voor JWTs als een gedistribueerde claim voor SAML als een nieuwe claim in plaats van de `groups` claim. <br><br>**Voor beeld-JWT-waarde**: <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects" }` |
 | `sub` | Tekenreeks | De principal over welke het token informatie bedient, zoals de gebruiker van een app. Deze waarde is onveranderbaar en kan niet opnieuw worden toegewezen of opnieuw worden gebruikt. Het kan worden gebruikt om autorisatie controles veilig uit te voeren, zoals wanneer het token wordt gebruikt om toegang te krijgen tot een resource, en kan worden gebruikt als sleutel in database tabellen. Omdat het onderwerp altijd aanwezig is in de tokens die door Azure AD worden uitgegeven, raden we u aan deze waarde te gebruiken in een autorisatie systeem voor algemeen gebruik. Het onderwerp is echter een Pairwise-id en is uniek voor een bepaalde toepassings-ID. Als één gebruiker zich bij twee verschillende apps aanmeldt met twee verschillende client-Id's, ontvangen die apps daarom twee verschillende waarden voor de claim van de certificaat houder. Dit kan al dan niet gewenst zijn, afhankelijk van de vereisten van uw architectuur en privacy. Zie ook de `oid` claim (die hetzelfde blijft voor apps binnen een Tenant). |
 | `oid` | Teken reeks, een GUID | De onveranderbare id voor een object in het micro soft Identity-platform, in dit geval een gebruikers account. Het kan ook worden gebruikt om autorisatie controles veilig en als sleutel in database tabellen uit te voeren. Met deze ID wordt de gebruiker op unieke wijze in verschillende toepassingen geïdentificeerd: twee verschillende toepassingen die in dezelfde gebruiker worden ondertekend, ontvangen dezelfde waarde in de `oid` claim. Kan dus `oid` worden gebruikt bij het uitvoeren van query's naar micro soft onlineservices, zoals de Microsoft Graph. De Microsoft Graph retourneert deze ID als de `id` eigenschap voor een bepaald [gebruikers account](/graph/api/resources/user). Omdat `oid` meerdere apps toestaan gebruikers te correleren, is de `profile` Scope vereist om deze claim te ontvangen. Houd er rekening mee dat als één gebruiker bestaat in meerdere tenants, de gebruiker een andere object-ID in elke Tenant bevat. deze worden beschouwd als verschillende accounts, zelfs als de gebruiker zich aanmeldt bij elke account met dezelfde referenties. |
@@ -266,9 +266,17 @@ Het vernieuwen van tokens kan door de server worden ingetrokken vanwege een wijz
 | De beheerder trekt alle vernieuwings tokens voor een gebruiker in [via Power shell](/powershell/module/azuread/revoke-azureaduserallrefreshtoken) | Revoked | Revoked |Revoked | Revoked | Revoked |
 | Eenmalige afmelding ([v 1.0](../azuread-dev/v1-protocols-openid-connect-code.md#single-sign-out), [v 2.0](v2-protocols-oidc.md#single-sign-out) ) op Internet | Revoked | Blijft actief | Revoked | Blijft actief | Blijft actief |
 
+#### <a name="non-password-based"></a>Niet op wacht woord gebaseerd
+
+Een aanmelding *zonder wacht woord* is een aanmeldings locatie waar de gebruiker geen wacht woord heeft getypt om deze op te halen. Voor beelden van aanmelding op basis van een wacht woord zijn:
+
+- Uw gezicht gebruiken met Windows hello
+- FIDO2-sleutel
+- Sms
+- Spraak
+- PIN 
+
 > [!NOTE]
-> Een ' niet-wacht woord op basis van ' is een aanmelding waarbij de gebruiker geen wacht woord heeft opgegeven om deze op te halen. U kunt bijvoorbeeld uw gezicht gebruiken met Windows Hello, een FIDO2-sleutel of een pincode.
->
 > Primaire vernieuwings tokens (PRT) in Windows 10 worden gescheiden op basis van de referentie. Windows hello en het wacht woord hebben bijvoorbeeld hun respectieve PRTs, die van elkaar zijn geïsoleerd. Wanneer een gebruiker zich aanmeldt met een Hello-Referentie (pincode of biometrie) en vervolgens het wacht woord wijzigt, wordt het wacht woord gebaseerd op PRT dat eerder is opgehaald, ingetrokken. Als u zich opnieuw aanmeldt met een wacht woord, worden de oude PRT ongeldig en wordt een nieuwe aanvraag aangevraagd.
 >
 > Vernieuwings tokens worden niet ongeldig of ingetrokken wanneer het wordt gebruikt om een nieuw toegangs token op te halen en token te vernieuwen.  Uw app moet echter de oude verwijderen als deze wordt gebruikt en vervangen door de nieuwe, omdat het nieuwe token een nieuwe verloop tijd bevat. 

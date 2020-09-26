@@ -5,15 +5,15 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: 7d1d7f9759fc8e2826da6232981eb3a389576c07
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: b0957219308dfaab2d375fb7c23926a13c745344
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935028"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314671"
 ---
-# <a name="monitor-metrics-azure-database-for-postgresql---flexible-server"></a>Bewakings gegevens Azure Database for PostgreSQL-flexibele server
+# <a name="monitor-metrics-on-azure-database-for-postgresql---flexible-server"></a>Metrische gegevens controleren op Azure Database for PostgreSQL-flexibele server
 
 > [!IMPORTANT]
 > Azure Database for PostgreSQL - Flexible Server is als preview-versie beschikbaar
@@ -27,8 +27,9 @@ Azure Database for PostgreSQL biedt diverse metrische gegevens die inzicht geven
 De volgende metrische gegevens zijn beschikbaar voor PostgreSQL flexibele server:
 
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Description|
+|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Beschrijving|
 |---|---|---|---|
+| active_connections | Actieve verbindingen | Aantal | Het aantal verbindingen met uw server. | 
 | backup_storage_used | Gebruikte back-upopslag | Bytes | Hoeveelheid gebruikte back-upopslag. Deze waarde vertegenwoordigt de som van de opslag die wordt gebruikt door alle back-ups van de volledige data base, differentiële back-ups en logboek back-ups die worden bewaard op basis van de Bewaar periode voor back-ups die is ingesteld voor de server. De frequentie van de back-ups is service beheerd. Voor geo-redundante opslag is het gebruik van back-upopslag twee keer zo dat van de lokaal redundante opslag. |
 | connections_failed | Mislukte verbindingen | Aantal | Mislukte verbindingen. |
 | connections_succeeded | Geslaagde verbindingen | Aantal | Geslaagde verbindingen. |

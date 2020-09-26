@@ -17,21 +17,21 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a013af680ecc84a2a981341ba4bb95148adc799f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d215c2e200308664f24daa28a0054c8f1bcfc09c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357253"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319874"
 ---
 # <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>Connectors gebruiken met de Azure AD Connect Sync Service Manager
 
-![Service Manager synchroniseren](./media/how-to-connect-sync-service-manager-ui-connectors/connectors.png)
+![Scherm opname van de synchronisatie Service Manager.](./media/how-to-connect-sync-service-manager-ui-connectors/connectors.png)
 
 Het tabblad connectors wordt gebruikt voor het beheren van alle systemen waarop de synchronisatie-engine is aangesloten.
 
 ## <a name="connector-actions"></a>Connector acties
-| Bewerking | Opmerking |
+| Actie | Opmerking |
 | --- | --- |
 | Maken |Niet gebruiken. Gebruik de installatie wizard om verbinding te maken met extra AD-forests. |
 | Eigenschappen |Wordt gebruikt voor filteren op domein en OE. |
@@ -47,7 +47,7 @@ Het tabblad connectors wordt gebruikt voor het beheren van alle systemen waarop 
 
 ### <a name="delete"></a>Verwijderen
 De actie verwijderen wordt gebruikt voor twee verschillende dingen.  
-![Service Manager synchroniseren](./media/how-to-connect-sync-service-manager-ui-connectors/connectordelete.png)
+![Scherm opname van het venster ' connector verwijderen ' met ' alleen connector ruimte verwijderen ' geselecteerd.](./media/how-to-connect-sync-service-manager-ui-connectors/connectordelete.png)
 
 Met de optie voor het **verwijderen van connector ruimte worden alleen** alle gegevens verwijderd, maar blijft de configuratie ongewijzigd.
 
@@ -58,17 +58,17 @@ Met beide opties worden alle objecten gesynchroniseerd en worden de omgekeerde o
 ### <a name="configure-run-profiles"></a>Uitvoerings profielen configureren
 Met deze optie kunt u de uitvoerings profielen zien die zijn geconfigureerd voor een connector.
 
-![Service Manager synchroniseren](./media/how-to-connect-sync-service-manager-ui-connectors/configurerunprofiles.png)
+![Scherm opname van het venster ' uitvoerings profielen configureren ' waarvoor ' Delta-import bewerking ' is geselecteerd.](./media/how-to-connect-sync-service-manager-ui-connectors/configurerunprofiles.png)
 
 ### <a name="search-connector-space"></a>Zoek connector ruimte
 De ruimte van de Zoek connector is handig om objecten te vinden en problemen met gegevens op te lossen.
 
-![Service Manager synchroniseren](./media/how-to-connect-sync-service-manager-ui-connectors/cssearch.png)
+![Scherm afbeelding met het venster Zoek connector ruimte.](./media/how-to-connect-sync-service-manager-ui-connectors/cssearch.png)
 
 Begin door een **bereik**te selecteren. U kunt zoeken op basis van gegevens (RDN, DN, anker, substructuur) of status van het object (alle andere opties).  
-![Service Manager synchroniseren](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchscope.png)  
+![Scherm afbeelding met de vervolg keuzelijst bereik.](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchscope.png)  
 Als u bijvoorbeeld een zoek opdracht op substructuur wilt uitvoeren, krijgt u alle objecten in één organisatie-eenheid.  
-![Service Manager synchroniseren](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchsubtree.png)  
+![Scherm afbeelding met een voor beeld van een ' substructuur ' zoeken.](./media/how-to-connect-sync-service-manager-ui-connectors/cssearchsubtree.png)  
 Vanuit dit raster kunt u een object selecteren, **Eigenschappen**selecteren en dit in de bron connector ruimte [volgen](tshoot-connect-object-not-syncing.md) , via de tekst en de ruimte van de doel connector.
 
 ### <a name="changing-the-ad-ds-account-password"></a>Het wachtwoord voor het AD DS-account wijzigen
