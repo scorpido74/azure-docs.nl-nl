@@ -12,12 +12,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/27/2019
-ms.openlocfilehash: b1dbd66e34790599020233c5b1249593a4c0472d
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 8f72b9e9dfc2aa35960f9f81219a4c8973e2fe5b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442646"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277917"
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>Multi-factor Authentication configureren voor SQL Server Management Studio en Azure AD
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -40,22 +40,22 @@ De volgende stappen laten zien hoe u verbinding maakt met behulp van de nieuwste
 
 1. Als u verbinding wilt maken met behulp van universele verificatie, selecteert u in het dialoog venster **verbinding maken met server** in SQL Server Management Studio (SSMS) de optie **Active Directory-Universal met MFA-ondersteuning**. (Als u **Active Directory universele verificatie** ziet, bent u niet de nieuwste versie van SSMS.)
 
-   ![1mfa-universal-connect](./media/authentication-mfa-ssms-configure/mfa-no-tenant-ssms.png)  
+   ![Scherm afbeelding van het tabblad verbindings eigenschappen in het dialoog venster verbinding maken met server in S S M S. "MyDatabase" is geselecteerd in de vervolg keuzelijst verbinding maken met data base.](./media/authentication-mfa-ssms-configure/mfa-no-tenant-ssms.png)  
 2. Vul het vak **gebruikers naam** in met de Azure Active Directory referenties in de indeling `user_name@domain.com` .
 
-   ![1mfa-universele-Connect-gebruiker](./media/authentication-mfa-ssms-configure/1mfa-universal-connect-user.png)
+   ![Scherm afbeelding van de instellingen van het dialoog venster verbinding maken met server voor het server type, de server naam, de verificatie en de gebruikers naam.](./media/authentication-mfa-ssms-configure/1mfa-universal-connect-user.png)
 3. Als u verbinding maakt als een gast gebruiker, hoeft u niet langer het veld AD-domein naam of Tenant-ID voor gast gebruikers te volt ooien omdat SSMS 18. x of hoger deze automatisch herkent. Zie voor meer informatie [Universal Authentication with SQL database, SQL Managed instance en Azure Synapse (SSMS-ondersteuning voor MFA)](../database/authentication-mfa-ssms-overview.md).
 
-   ![MFA-geen-Tenant-SSMS](./media/authentication-mfa-ssms-configure/mfa-no-tenant-ssms.png)
+   ![Scherm afbeelding van het tabblad verbindings eigenschappen in het dialoog venster verbinding maken met server in S S M S. "MyDatabase" is geselecteerd in de vervolg keuzelijst verbinding maken met data base.](./media/authentication-mfa-ssms-configure/mfa-no-tenant-ssms.png)
 
    Als u echter verbinding maakt als een gast gebruiker met behulp van SSMS 17. x of ouder, moet u op **Opties**klikken, in het dialoog venster **verbindings eigenschap** en het vak **AD-domein naam of Tenant-id** invullen.
 
-   ![mfa-tenant-ssms](./media/authentication-mfa-ssms-configure/mfa-tenant-ssms.png)
+   ![Scherm opname van het tabblad verbindings eigenschappen in het dialoog venster verbinding maken met server in S S M S. de optie AD-domein naam of Tenant-ID-eigenschap is ingevuld.](./media/authentication-mfa-ssms-configure/mfa-tenant-ssms.png)
 
 4. Selecteer **Opties** en geef de Data Base op in het dialoog venster **Opties** . (Als de verbonden gebruiker een gast gebruiker is (dat wil zeggen joe@outlook.com ), moet u het selectie vakje inschakelt en de huidige AD-domein naam of Tenant-id toevoegen als onderdeel van de opties. Zie [universele verificatie met SQL database en Azure Synapse Analytics (SSMS-ondersteuning voor MFA)](../database/authentication-mfa-ssms-overview.md). Klik vervolgens op **Verbinden**.  
 5. Wanneer het dialoog venster **Aanmelden bij uw account** wordt weer gegeven, geeft u het account en het wacht woord op van uw Azure Active Directory identiteit. Er is geen wacht woord vereist als een gebruiker deel uitmaakt van een domein dat is federatief met Azure AD.
 
-   ![2mfa-aanmelden](./media/authentication-mfa-ssms-configure/2mfa-sign-in.png)  
+   ![Scherm afbeelding van het dialoog venster Aanmelden bij uw account voor Azure SQL Database en het Data Warehouse. Het account en het wacht woord zijn ingevuld.](./media/authentication-mfa-ssms-configure/2mfa-sign-in.png)  
 
    > [!NOTE]
    > Voor universele verificatie met een account waarvoor MFA niet is vereist, kunt u op dit moment verbinding maken. Ga door met de volgende stappen voor gebruikers die MFA vereisen:
@@ -63,14 +63,14 @@ De volgende stappen laten zien hoe u verbinding maakt met behulp van de nieuwste
 
 6. Er kunnen twee dialoog vensters voor het instellen van MFA worden weer gegeven. Deze eenmalige bewerking is afhankelijk van de instelling van de MFA-beheerder en kan daarom optioneel zijn. Voor een domein waarvoor MFA is ingeschakeld, is deze stap soms vooraf gedefinieerd (het domein vereist bijvoorbeeld dat gebruikers een Smart Card en pincode gebruiken).
 
-   ![3mfa-installatie](./media/authentication-mfa-ssms-configure/3mfa-setup.png)
+   ![Scherm afbeelding van het dialoog venster Aanmelden bij uw account voor Azure SQL Database en data warehouse met een prompt voor het instellen van aanvullende beveiligings verificatie.](./media/authentication-mfa-ssms-configure/3mfa-setup.png)
   
 7. In de tweede mogelijke tijd in het dialoog venster kunt u de details van uw verificatie methode selecteren. De mogelijke opties worden geconfigureerd door de beheerder.
 
-   ![4mfa-verificatie-1](./media/authentication-mfa-ssms-configure/4mfa-verify-1.png)  
+   ![Scherm afbeelding van het dialoog venster aanvullende beveiligings verificatie met opties voor het selecteren en configureren van een verificatie methode.](./media/authentication-mfa-ssms-configure/4mfa-verify-1.png)  
 8. De Azure Active Directory stuurt de bevestigings gegevens naar u. Wanneer u de verificatie code ontvangt, voert u deze in het vak **verificatie code invoeren** in en klikt u op **Aanmelden**.
 
-   ![5mfa-2 controleren](./media/authentication-mfa-ssms-configure/5mfa-verify-2.png)  
+   ![Scherm afbeelding van het dialoog venster Aanmelden bij uw account voor Azure SQL Database en data warehouse met de vraag een verificatie code in te voeren.](./media/authentication-mfa-ssms-configure/5mfa-verify-2.png)  
 
 Wanneer de verificatie is voltooid, maakt SSMS verbinding met het normaal gezien van geldige referenties en toegang tot de firewall.
 

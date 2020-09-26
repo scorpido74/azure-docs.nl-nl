@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/10/2020
 ms.author: anfeldma
-ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: 85c99892a225de933da337e748ebde3370b6f7a3
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: 7a07a42e208cb0f6fe91f6a65777fd28155106a1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019603"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330579"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Consistentieniveaus in Azure Cosmos DB beheren
 
@@ -24,7 +24,7 @@ In dit artikel wordt uitgelegd hoe u consistentieniveaus beheert in Azure Cosmos
 
 Het [standaard consistentie niveau](consistency-levels.md) is het consistentie niveau dat clients standaard gebruiken.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure-portal](#tab/portal)
 
 Als u het standaardconsistentieniveau wilt weergeven of wijzigen, moet u zich aanmelden bij de Azure-portal. Zoek uw Azure Cosmos-account en open het **standaard consistentie** venster. Selecteer het consistentieniveau dat u als nieuwe standaard wilt gebruiken en selecteer **Opslaan**. De Azure Portal biedt ook een visualisatie van verschillende consistentie niveaus met muziek notities. 
 
@@ -101,7 +101,7 @@ var response = await client.GetContainer(databaseName, containerName)
 
    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=ManageConsistencyAsync)]
 
-# <a name="sync"></a>[Sync](#tab/api-sync)
+# <a name="sync"></a>[Synchroniseren](#tab/api-sync)
 
    Java SDK V4 (Maven com.azure::azure-cosmos) Sync API
 
@@ -127,7 +127,7 @@ AsyncDocumentClient client =
                 .withConnectionPolicy(policy).build();
 ```
 
-# <a name="sync"></a>[Sync](#tab/api-sync)
+# <a name="sync"></a>[Synchroniseren](#tab/api-sync)
 
 Synchroniseer de Java v2 SDK (maven com. micro soft. Azure:: Azure-documentdb)
 
@@ -202,7 +202,7 @@ ItemResponse<SalesOrder> response = await container.ReadItemAsync<SalesOrder>(sa
 
    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=ManageConsistencySessionAsync)]
 
-# <a name="sync"></a>[Sync](#tab/api-sync)
+# <a name="sync"></a>[Synchroniseren](#tab/api-sync)
 
    Java SDK V4 (Maven com.azure::azure-cosmos) Sync API
 
@@ -236,7 +236,7 @@ requestOptions.setSessionToken(sessionToken);
 Observable<ResourceResponse<Document>> readObservable = client.readDocument(document.getSelfLink(), options);
 ```
 
-# <a name="sync"></a>[Sync](#tab/api-sync)
+# <a name="sync"></a>[Synchroniseren](#tab/api-sync)
 
 Synchroniseer de Java v2 SDK (maven com. micro soft. Azure:: Azure-documentdb)
 

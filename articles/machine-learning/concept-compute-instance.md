@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 08/25/2020
-ms.openlocfilehash: ec7fc5cec7d8ba63d9a628c3ede978818a2c3012
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 14229af9766f6604e71713f835935d43f6c7fcc6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90031021"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330142"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Wat is een Azure Machine Learning-rekeninstantie?
 
@@ -69,7 +69,7 @@ Deze hulpprogram ma's en omgevingen zijn geïnstalleerd op het reken exemplaar:
 |Anaconda Python||
 |Jupyter en-extensies||
 |Jjupyterlab en-extensies||
-[Azure Machine Learning-SDK voor Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)</br>van PyPI|Omvat het meren deel van de extra azureml-pakketten.  Als u de volledige lijst wilt weer geven, [opent u een Terminal venster op uw reken exemplaar](how-to-run-jupyter-notebooks.md#terminal) en voert u uit <br/> `conda list -n azureml_py36 azureml*` |
+[Azure Machine Learning-SDK voor Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py&preserve-view=true)</br>van PyPI|Omvat het meren deel van de extra azureml-pakketten.  Als u de volledige lijst wilt weer geven, [opent u een Terminal venster op uw reken exemplaar](how-to-run-jupyter-notebooks.md#terminal) en voert u uit <br/> `conda list -n azureml_py36 azureml*` |
 |Andere PyPI-pakketten|`jupytext`</br>`tensorboard`</br>`nbconvert`</br>`notebook`</br>`Pillow`|
 |Conda-pakketten|`cython`</br>`numpy`</br>`ipykernel`</br>`scikit-learn`</br>`matplotlib`</br>`tqdm`</br>`joblib`</br>`nodejs`</br>`nb_conda_kernels`|
 |Uitgebreide leer pakketten|`PyTorch`</br>`TensorFlow`</br>`Keras`</br>`Horovod`</br>`MLFlow`</br>`pandas-ml`</br>`scrapbook`|
@@ -91,6 +91,30 @@ Of u kunt op een van de volgende manieren toegang krijgen tot een Terminal venst
 * Jupyter Lab: Selecteer de tegel **Terminal** onder de **andere** kop op het tabblad Start.
 * Jupyter: Selecteer **nieuwe>Terminal** rechtsboven op het tabblad bestanden.
 * SSH naar de computer.  Installeer Python-pakketten vervolgens in de **Python 3,6-AzureML-** omgeving.  R-pakketten installeren in de **R** -omgeving.
+
+### <a name="add-new-kernels"></a>Nieuwe kernels toevoegen
+
+Een nieuwe Jupyter-kernel toevoegen aan het reken exemplaar:
+
+1. Nieuwe terminal maken van het deel venster Jupyter, Jjupyterlab of van notitie blokken of SSH in het reken exemplaar
+2. Gebruik het Terminal venster om een nieuwe omgeving te maken.  De onderstaande code maakt bijvoorbeeld `newenv` :
+    ```shell
+    conda create --name newenv
+    ```
+3. Activeer de omgeving.  Bijvoorbeeld na het maken van `newenv` :
+
+    ```shell
+    conda activate newenv
+    ```
+4. PIP-en ipykernel-pakket installeren in de nieuwe omgeving en een kernel maken voor die Conda env
+
+    ```shell
+    conda install pip
+    conda install ipykernel
+    python -m ipykernel install --user --name newenv --display-name "Python (newenv)"
+    ```
+
+Een van de [beschik bare Jupyter-kernels](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels) kan worden geïnstalleerd.
 
 ## <a name="accessing-files"></a>Toegang tot bestanden
 
@@ -136,7 +160,7 @@ Deze acties kunnen worden beheerd door RBAC:
 * *Micro soft. MachineLearningServices/werk ruimten/berekeningen/stoppen/actie*
 * *Micro soft. MachineLearningServices/werk ruimten/berekeningen/opnieuw opstarten/actie*
 
-### <a name="create-a-compute-instance"></a><a name="create"></a>Een reken instantie maken
+### <a name="create-a-compute-instance"></a><a name="create"></a>Een rekenproces maken
 
 Maak in uw werk ruimte in Azure Machine Learning Studio [een nieuw reken exemplaar](how-to-create-attach-compute-studio.md#compute-instance) van het gedeelte **Compute** of in de sectie **notebooks** , wanneer u klaar bent om een van uw notitie blokken uit te voeren. 
 
@@ -153,7 +177,7 @@ De toegewezen kernen per regio per VM-serie quota en het totale regionale quotum
 ### <a name="create-on-behalf-of-preview"></a>Maken namens (preview-versie)
 
 Als beheerder kunt u een compute-instantie maken namens een gegevens wetenschapper en de instantie hieraan toewijzen met:
-* [Azure Resource Manager sjabloon](https://docs.microsoft.com/azure/templates/microsoft.machinelearningservices/2020-06-01/workspaces/computes).  Zie [identiteits object-Id's zoeken voor verificatie configuratie](../healthcare-apis/find-identity-object-ids.md)voor meer informatie over het vinden van de TenantID en ObjectID die nodig zijn in deze sjabloon.  U kunt deze waarden ook vinden in de Azure Active Directory Portal.
+* [Azure Resource Manager sjabloon](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/preview/2020-09-01-preview/examples/createComputeInstance.json).  Zie [identiteits object-Id's zoeken voor verificatie configuratie](../healthcare-apis/find-identity-object-ids.md)voor meer informatie over het vinden van de TenantID en ObjectID die nodig zijn in deze sjabloon.  U kunt deze waarden ook vinden in de Azure Active Directory Portal.
 * REST-API
 
 De gegevens wetenschapper u het reken exemplaar maakt voor heeft de volgende RBAC-machtigingen nodig: 
