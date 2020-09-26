@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/27/2020
 ms.author: Zhchia
-ms.openlocfilehash: e3814c753a182ce11d9062a665adc137f80c206f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1363ccfcf20312fb7273526349e27e8f424b6b41
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91255618"
+ms.locfileid: "91361548"
 ---
 # <a name="tutorial-configure-teamviewer-for-automatic-user-provisioning"></a>Zelf studie: team viewer configureren voor automatische gebruikers inrichting
 
@@ -99,7 +99,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 5. Voer in het gedeelte **beheerders referenties** `ttps://webapi.teamviewer.com/scim/v2`  het veld **tenterende URL** in en voer het script token in dat eerder in het **geheim token**is gemaakt. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met Team Viewer. Als de verbinding mislukt, zorg er dan voor dat uw team viewer-account beheerders machtigingen heeft en probeer het opnieuw.
 
-    ![inrichtings](./media/teamViewer-provisioning-tutorial/provisioning.png)
+    ![Scherm afbeelding toont het dialoog venster beheerders referenties, waarin u uw Tenant U R L en geheime token kunt invoeren.](./media/teamViewer-provisioning-tutorial/provisioning.png)
 
 6. Voer in het veld **E-mailadres voor meldingen** het e-mailadres in van een persoon of groep die de inrichtingsfoutmeldingen zou moeten ontvangen en schakel het selectievakje **Een e-mailmelding verzenden als een fout optreedt** in.
 

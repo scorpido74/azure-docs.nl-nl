@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: nitinme
-ms.openlocfilehash: 7b78bdb070cdf1364fe7fbdc75f175be7ce145ff
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 43679c52727f8cc84c7292592b68dddae7f1ea68
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80656453"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362075"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Migreren van Bing Speech naar de speech-service
 
@@ -27,7 +27,7 @@ Een service-abonnements sleutel met één spraak verleent toegang tot de volgend
 
 * [Spraak naar tekst](speech-to-text.md)
 * [Aangepaste spraak naar tekst ](https://cris.ai)
-* [Tekst naar spraak](text-to-speech.md)
+* [Tekst-naar-spraak](text-to-speech.md)
 * [Aangepaste tekst naar spraak](how-to-customize-voice-font.md)
 * [Spraakomzetting](speech-translation.md) (bevat geen [tekstomzetting](../translator/translator-info-overview.md))
 
@@ -51,7 +51,7 @@ De spraak service is grotendeels vergelijkbaar met Bing Speech, met de volgende 
 | Eenvoudige intentie herkenning | : heavy_minus_sign: | :heavy_check_mark: |
 | Batch-transcriptie met lange audio bestanden | : heavy_minus_sign: | :heavy_check_mark: |
 | Herkennings-modus | Hand matig via eind punt-URI | Automatisch | Herkennings modus is niet beschikbaar in de speech-service. |
-| Locatie van eind punt | Wereldwijd | Regionaal | Regionale eind punten verbeteren de latentie. |
+| Locatie van eind punt | Globaal | Regionaal | Regionale eind punten verbeteren de latentie. |
 | REST-API’s | :heavy_check_mark: | :heavy_check_mark: | De REST-Api's van de speech-service zijn compatibel met Bing Speech (verschillende eind punten). REST-Api's bieden ondersteuning voor tekst-naar-spraak-en beperkte spraak-naar-tekst functionaliteit. |
 | Protocollen voor websockets | :heavy_check_mark: | :heavy_check_mark: | De API voor websockets van speech-Services is compatibel met Bing Speech (ander eind punt). Migreer naar de spraak-SDK, indien mogelijk, om uw code te vereenvoudigen. |
 | Service-naar-Service-API-aanroepen | :heavy_check_mark: | : heavy_minus_sign: | In Bing Speech via de service bibliotheek van C#. |
@@ -87,7 +87,7 @@ Ga naar de [ondersteunings pagina](support.md)voor spraak Services voor spraak s
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [De spraak service gratis uitproberen](get-started.md)
+* [De spraak service gratis uitproberen](overview.md#try-the-speech-service-for-free)
 * [Quick Start: spraak herkennen in een UWP-app met behulp van de Speech SDK](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=uwp)
 
 ## <a name="see-also"></a>Zie ook

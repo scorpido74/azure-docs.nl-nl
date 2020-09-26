@@ -11,24 +11,24 @@ ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: fe847dfa24e618d2e837943309475f0a436d3a44
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 4c07ad2aaf6c682dc370e3223dba1f199242ca2f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89459297"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289228"
 ---
 # <a name="best-practices-for-loading-data-for-data-warehousing"></a>Best practices voor het laden van gegevens voor datawarehousing
 
-Aanbevelingen en prestatie optimalisaties voor het laden van gegevens
+In dit artikel vindt u aanbevelingen en prestatie optimalisaties voor het laden van gegevens.
 
 ## <a name="prepare-data-in-azure-storage"></a>Gegevens voorbereiden in Azure Storage
 
-Bepaal uw opslaglaag en uw datawarehouse om de latentie te minimaliseren.
+Als u de latentie wilt minimaliseren, gaat u naar uw opslaglaag en uw data warehouse.
 
 Bij het exporteren van gegevens in een ORC-bestandsindeling kunnen er Java-geheugenfouten optreden wanneer er grote tekstkolommen zijn. U kunt deze beperking omzeilen door slechts een subset van de kolommen te exporteren.
 
-PolyBase kan rijen met meer dan 1.000.000 bytes aan gegevens niet laden. Wanneer u gegevens in de tekstbestanden in Azure-blob-opslag of Azure Data Lake Store zet, moeten deze minder dan 1.000.000 bytes aan gegevens bevatten. Deze bytebeperking geldt ongeacht het tabelschema.
+Poly Base kan rijen met meer dan 1.000.000 bytes aan gegevens niet laden. Wanneer u gegevens in de tekstbestanden in Azure-blob-opslag of Azure Data Lake Store zet, moeten deze minder dan 1.000.000 bytes aan gegevens bevatten. Deze bytebeperking geldt ongeacht het tabelschema.
 
 Alle bestandsindelingen hebben verschillende prestatiekenmerken. Gebruik voor het snelste laadproces gecomprimeerde tekstbestanden. Het verschil tussen UTF-8- en UTF-16-prestaties is minimaal.
 
@@ -64,7 +64,7 @@ Voer loads bij voorkeur uit onder statische en niet onder dynamische resourcekla
 
 ## <a name="allow-multiple-users-to-load"></a>Meerdere gebruikers toestaan om te laden
 
-Vaak is het nodig dat meerdere gebruikers gegevens kunnen laden in een datawarehouse. Bij het laden met de [Create Table als Select (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) zijn machtigingen vereist van de data base.  De CONTROL-machtiging biedt beheertoegang tot alle schema's. Mogelijk wilt u niet alle gebruikers die laadtaken uitvoeren, beheertoegang tot alle schema's verlenen. Als u machtigingen wilt beperken, kunt u de instructie DENY CONTROL gebruiken.
+Vaak is het nodig dat meerdere gebruikers gegevens kunnen laden in een datawarehouse. Bij het laden met de [Create Table als Select (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) zijn machtigingen vereist van de data base.  De CONTROL-machtiging biedt beheertoegang tot alle schema's. Mogelijk wilt u niet alle gebruikers die laadtaken uitvoeren, beheertoegang tot alle schema's verlenen. Als u machtigingen wilt beperken, kunt u de instructie DENY CONTROL gebruiken.
 
 Denk bijvoorbeeld aan databaseschema's, schema_A voor afdeling A, en schema_B voor afdeling B. Laat databasegebruikers gebruiker_A en gebruiker_B gebruikers zijn voor PolyBase die respectievelijk laden in afdeling A en B. Beide zijn voorzien van databasemachtigingen voor CONTROL. De makers van schema A en B vergrendelen nu hun schema's met DENY:
 
@@ -83,14 +83,14 @@ Bedenk dat laden meestal een proces met twee stappen is waarin u eerst naar een 
 
 ## <a name="load-to-a-columnstore-index"></a>Laden naar een column store-index
 
-Columnstore-indexen vereisen grote hoeveelheden geheugen voor het comprimeren van gegevens tot hoogwaardige rijgroepen. Voor de beste compressie en efficiëntie van de index moet de columnstore-index maximaal 1.048.576 rijen in elke rijgroep comprimeren. Bij geheugenbelasting kan het zijn dat de columnstore-index de maximale compressiesnelheden niet kan halen. Dit kan van invloed op de queryresultaten. Zie voor gedetailleerde informatie [Columnstore geheugenoptimalisaties](data-load-columnstore-compression.md).
+Columnstore-indexen vereisen grote hoeveelheden geheugen voor het comprimeren van gegevens tot hoogwaardige rijgroepen. Voor de beste compressie en efficiëntie van de index moet de columnstore-index maximaal 1.048.576 rijen in elke rijgroep comprimeren. Bij geheugenbelasting kan het zijn dat de columnstore-index de maximale compressiesnelheden niet kan halen. Dit heeft gevolgen voor de query prestaties. Zie voor gedetailleerde informatie [Columnstore geheugenoptimalisaties](data-load-columnstore-compression.md).
 
 - Zorg dat de gebruiker van het laadproces voldoende geheugen heeft om maximale compressiesnelheden te bereiken. Gebruik hiervoor gebruikers voor het laadproces die lid zijn van een middelgrote of grote resourceklasse.
-- Laad genoeg rijen om nieuwe rijgroepen volledig te vullen. Tijdens een bulksgewijze laadtaak worden elke 1.048.576 rijen rechtstreeks in de columnstore gecomprimeerd als een volledige rijgroep. Laadtaken met minder dan 102.400 rijen verzenden de rijen naar de deltastore waarin rijen zijn ondergebracht in een b-tree-index. Als u te weinig rijen laadt, gaan deze mogelijk allemaal naar de deltastore en worden ze niet direct naar columnstore-indeling gecomprimeerd.
+- Laad genoeg rijen om nieuwe rijgroepen volledig te vullen. Tijdens een bulksgewijs laden worden elke 1.048.576-rijen direct in de column Store gecomprimeerd als een volledig Rijg roep. Laadtaken met minder dan 102.400 rijen verzenden de rijen naar de deltastore waarin rijen zijn ondergebracht in een b-tree-index. Als u te weinig rijen laadt, gaan deze mogelijk allemaal naar de deltastore en worden ze niet direct naar columnstore-indeling gecomprimeerd.
 
 ## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>Batch grootte verg Roten bij gebruik van SQLBulkCopy-API of BCP
 
-Zoals eerder is vermeld, biedt het laden met poly base de hoogste door Voer met Synapse SQL-pool. Als u geen poly Base kunt gebruiken om te laden en u de SQLBulkCopy-API (of BCP) moet gebruiken, kunt u overwegen om de Batch grootte te verg Roten voor een betere door voer. een goede vuist regel is een batch grootte tussen 100.000 en 1M rijen.
+Zoals eerder is vermeld, biedt het laden met poly base de hoogste door Voer met Synapse SQL-pool. Als u geen poly Base kunt gebruiken om te laden en u de SQLBulkCopy-API (of BCP) moet gebruiken, kunt u overwegen om de Batch grootte te verg Roten voor een betere door voer. Dit is een goede regel van een miniatuur is een batch grootte tussen 100.000 en 1M rijen.
 
 ## <a name="manage-loading-failures"></a>Laad fouten beheren
 
@@ -100,13 +100,13 @@ U kunt vervuilde records voorkomen door ervoor te zorgen dat uw externe tabel- e
 
 ## <a name="insert-data-into-a-production-table"></a>Gegevens in een productie tabel invoegen
 
-Een eenmalige laadtaak naar een kleine tabel met een [INSERT-instructie](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) of zelfs een periodieke herlaadtaak kan een acceptabel resultaat geven met een instructie zoals `INSERT INTO MyLookup VALUES (1, 'Type 1')`.  Het invoegen van singletons is echter niet zo efficiënt als bulksgewijs laden.
+Een eenmalige laadtaak naar een kleine tabel met een [INSERT-instructie](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) of zelfs een periodieke herlaadtaak kan een acceptabel resultaat geven met een instructie zoals `INSERT INTO MyLookup VALUES (1, 'Type 1')`.  Singleton-invoeg bladen zijn echter niet zo efficiënt als het uitvoeren van een bulksgewijs laden.
 
 Als u de hele dag door duizenden of meerdere enkele gegevens wilt invoeren, voeg de gegevens dan samen tot een batch zodat deze bulksgewijs kunt laden.  Ontwikkel uw processen om de afzonderlijke gegevens aan een bestand toe te voegen en maak vervolgens een ander proces dat het bestand periodiek laadt.
 
 ## <a name="create-statistics-after-the-load"></a>Statistieken maken na het laden
 
-Voor optimale resultaten van uw query's is het belangrijk dat u statistieken maakt voor alle kolommen van alle tabellen nadat de gegevens voor het eerst zijn geladen of wanneer de gegevens substantieel zijn gewijzigd.  Dit kan hand matig worden gedaan of u kunt [automatisch gemaakte statistieken](../sql-data-warehouse/sql-data-warehouse-tables-statistics.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)inschakelen.
+Om de query prestaties te verbeteren, is het belang rijk dat u statistieken maakt voor alle kolommen van alle tabellen na de eerste belasting, of dat er grote wijzigingen in de gegevens optreden. Het maken van statistieken kan hand matig worden uitgevoerd of u kunt [automatisch gemaakte statistieken](../sql-data-warehouse/sql-data-warehouse-tables-statistics.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)inschakelen.
 
 Zie [statistieken](develop-tables-statistics.md) voor gedetailleerde uitleg van statistieken. In het volgende voor beeld ziet u hoe u hand matig statistieken maakt voor vijf kolommen van de tabel Customer_Speed.
 
@@ -124,7 +124,7 @@ Het is verstandig uit veiligheidsoverwegingen de toegangssleutel in de blob-opsl
 
 Sleutels van het Microsoft Azure Storage-account draaien:
 
-Voor elk opslagaccount waarvan de sleutel is gewijzigd, moet u [ALTER DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/alter-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) uitvoeren.
+Voor elk opslagaccount waarvan de sleutel is gewijzigd, moet u [ALTER DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/alter-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) uitvoeren.
 
 Voorbeeld:
 

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/16/2020
-ms.openlocfilehash: 1493a15a97ca88d0ed914f78b1906088c03dff10
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: a0cc70f5bf994e03088511a0d10796746a434bd7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037406"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300306"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>Uw Stream Analytics-taak schalen met de functies Azure Machine Learning Studio (klassiek)
 
@@ -25,7 +25,7 @@ In dit artikel wordt beschreven hoe u Azure Stream Analytics taken die gebruikma
 
 Een Machine Learning functie in Stream Analytics kan worden gebruikt als een reguliere functie aanroep in de Stream Analytics query taal. Achter de schermen worden deze functie aanroepen echter eigenlijk Azure Machine Learning aanvragen voor webservices.
 
-U kunt de door Voer van Machine Learning aanvragen voor webservices verbeteren door meerdere rijen samen in de dezelfde webservice-API-aanroep te ' batcheren '. Deze groepering wordt een mini-batch genoemd. Zie [Azure machine learning Studio (Classic) Web Services (Engelstalig)](../machine-learning/studio/consume-web-services.md)voor meer informatie. Ondersteuning voor Azure Machine Learning Studio (klassiek) in Stream Analytics is in de preview-versie.
+U kunt de door Voer van Machine Learning aanvragen voor webservices verbeteren door meerdere rijen samen in de dezelfde webservice-API-aanroep te ' batcheren '. Deze groepering wordt een mini-batch genoemd. Zie [Azure machine learning Studio (Classic) Web Services (Engelstalig)](../machine-learning/classic/consume-web-services.md)voor meer informatie. Ondersteuning voor Azure Machine Learning Studio (klassiek) in Stream Analytics is in de preview-versie.
 
 ## <a name="configure-a-stream-analytics-job-with-machine-learning-functions"></a>Een Stream Analytics-taak met Machine Learning functies configureren
 
@@ -58,7 +58,7 @@ In het algemeen, ***B*** voor Batch grootte, ***L*** voor de latentie van de web
 
 U kunt ook de ' Maxi maal aantal gelijktijdige aanroepen ' op de Machine Learning-webservice configureren. Het wordt aanbevolen om deze para meter in te stellen op de maximum waarde (200 op dit moment).
 
-Raadpleeg het artikel over het [schalen van machine learning-webservices](../machine-learning/studio/create-endpoint.md)voor meer informatie over deze instelling.
+Raadpleeg het artikel over het [schalen van machine learning-webservices](../machine-learning/classic/create-endpoint.md)voor meer informatie over deze instelling.
 
 ## <a name="example--sentiment-analysis"></a>Voor beeld – Sentimentanalyse
 Het volgende voor beeld bevat een Stream Analytics job met de functie sentiment Analysis Machine Learning, zoals beschreven in de [zelf studie over Stream Analytics machine learning-integratie](stream-analytics-machine-learning-integration-tutorial.md).
@@ -106,10 +106,10 @@ Hieronder ziet u een tabel voor de door Voer van de Stream Analytics-taak voor v
 
 | Batch grootte (ML-latentie) | 500 (200 MS) | 1.000 (200 MS) | 5.000 (250 MS) | 10.000 (300 MS) | 25.000 (500 MS) |
 | --- | --- | --- | --- | --- | --- |
-| **1 SU** |2500 |5\.000 |20.000 |30.000 |50,000 |
-| **3 SUs** |2500 |5\.000 |20.000 |30.000 |50,000 |
-| **6 SUs** |2500 |5\.000 |20.000 |30.000 |50,000 |
-| **12 SUs** |5\.000 |10.000 |40,000 |60.000 |100.000 |
+| **1 SU** |2500 |5.000 |20.000 |30.000 |50,000 |
+| **3 SUs** |2500 |5.000 |20.000 |30.000 |50,000 |
+| **6 SUs** |2500 |5.000 |20.000 |30.000 |50,000 |
+| **12 SUs** |5.000 |10.000 |40,000 |60.000 |100.000 |
 | **18 SUs** |7\.500 |15.000 |60.000 |90,000 |150.000 |
 | **24-SUs** |10.000 |20.000 |80,000 |120.000 |200.000 |
 | **…** |… |… |… |… |… |

@@ -1,5 +1,5 @@
 ---
-title: Query syntaxis van Graph Search
+title: Querysyntaxis voor grafieken zoeken
 titleSuffix: Azure Machine Learning
 description: Meer informatie over het gebruik van de zoek query syntaxis voor het zoeken naar knoop punten in in pijplijn diagram.
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 8/24/2020
-ms.openlocfilehash: 122da78206ef2055b4867727b174293e74133c05
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 166b87159b5ac2434c3ce7a7c66529a4b61ee565
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88817421"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91290497"
 ---
-# <a name="graph-search-query-syntax"></a>Query syntaxis van Graph Search
+# <a name="graph-search-query-syntax"></a>Querysyntaxis voor grafieken zoeken
 
 In dit artikel vindt u informatie over de syntaxis van de zoek query in de grafiek in Azure Machine Learning. Met de functie voor het zoeken in de grafiek kunt u zoeken naar een knoop punt op basis van de naam en eigenschappen. 
 
@@ -49,7 +49,7 @@ De functie voor het zoeken in grafieken maakt gebruik van een eenvoudige query v
  
 - Joker tekens zoeken: 
     - `machi?e learning`
-    -   `mach*ing`
+    - `mach*ing`
  
 >[!NOTE]
 > U kunt een lucene-query niet starten met het teken ' * '.
@@ -59,7 +59,7 @@ De functie voor het zoeken in grafieken maakt gebruik van een eenvoudige query v
  
 Filter query's gebruiken het volgende patroon:
  
-    **[key1] [operator1] [value1]; [key2] [operator1] [value2];**
+`**[key1] [operator1] [value1]; [key2] [operator1] [value2];**`
 
  
 U kunt de volgende knooppunt eigenschappen gebruiken als sleutels:

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, devx-track-python, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: dcbaaeb2868a421a41227e1b5d9fdd84a96248eb
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 6c8e6fee2b9f01b8d7ab48990760aa4c4d6e11b2
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852358"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361497"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Toegang tot gegevenssets met Python met behulp van de clientbibliotheek van Azure Machine Learning Python
 Met de preview-versie van Microsoft Azure Machine Learning python-client bibliotheek kan beveiligde toegang tot uw Azure Machine Learning gegevens sets worden ingeschakeld vanuit een lokale python-omgeving en kunnen gegevens sets in een werk ruimte worden gemaakt en beheerd.
@@ -36,9 +36,9 @@ De python-client bibliotheek is getest in de volgende omgevingen:
 
 Het is afhankelijk van de volgende pakketten:
 
-* aanvragen
+* requests
 * python-dateutil
-* pandas
+* Pandas
 
 U kunt het beste een python-distributie gebruiken, zoals [Anaconda](https://www.anaconda.com/) of [Canopy](https://store.enthought.com/downloads/), die wordt geleverd met python, IPython en de drie bovenstaande pakketten die hierboven zijn geïnstalleerd. Hoewel IPython niet strikt vereist is, is het een fantastische omgeving voor het interactief bewerken en visualiseren van gegevens.
 
@@ -71,7 +71,7 @@ De code fragmenten die worden geleverd door Azure Machine Learning Studio (klass
 
 Uit veiligheids overwegingen is de functie code fragment alleen beschikbaar voor gebruikers die hun rol hebben ingesteld als **eigenaar** voor de werk ruimte. Uw rol wordt weer gegeven in Azure Machine Learning Studio (klassiek) op de pagina **gebruikers** onder **instellingen**.
 
-![Beveiliging][security]
+![Scherm afbeelding toont de instellingen op de pagina gebruikers van Azure Machine Learning Studio.][security]
 
 Als uw rol niet is ingesteld als **eigenaar**, kunt u aanvragen om opnieuw te worden uitgenodigd als eigenaar of vraagt u de eigenaar van de werk ruimte u het code fragment te geven.
 
@@ -92,7 +92,7 @@ Verificatie tokens worden beheerd op de pagina **autorisatie tokens** onder **in
 2. Selecteer de gegevensset die u wilt openen. U kunt een wille keurig gegevens sets selecteren in de lijst met **mijn gegevens sets** of in de lijst met voor **beelden** .
 3. Klik in de onderste werk balk op **gegevens toegangs code genereren**. Als de gegevens een indeling hebben die incompatibel is met de python-client bibliotheek, wordt deze knop uitgeschakeld.
    
-    ![Gegevenssets][datasets]
+    ![In de scherm opname worden gegevens sets weer gegeven met de toegangs CODE genereren.][datasets]
 4. Selecteer het code fragment in het venster dat wordt weer gegeven en kopieer het naar het klem bord.
    
     ![Knop voor gegevens toegangs code genereren][dataset-access-code]
@@ -348,7 +348,7 @@ print(ws.datasets['existing dataset'].name)    # IndexError
 
 De `data_type_id` `name` `description` para meters en zijn optioneel en zijn standaard ingesteld op de vorige waarde. De `dataframe` para meter is altijd vereist.
 
-Als uw gegevens al zijn geserialiseerd, gebruikt u `update_from_raw_data` in plaats van `update_from_dataframe` . Als u zojuist doorgeeft in `raw_data` plaats van `dataframe` , werkt het op een vergelijk bare manier.
+Als uw gegevens al zijn geserialiseerd, gebruikt u `update_from_raw_data` in plaats van `update_from_dataframe` . Als u zojuist doorgeeft in `raw_data` plaats van  `dataframe` , werkt het op een vergelijk bare manier.
 
 <!-- Images -->
 [security]:./media/python-data-access/security.png

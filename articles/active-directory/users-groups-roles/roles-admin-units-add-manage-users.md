@@ -1,5 +1,5 @@
 ---
-title: Gebruikers in een beheer eenheid toevoegen, verwijderen en weer geven (preview)-Azure Active Directory | Microsoft Docs
+title: Gebruikers toevoegen, verwijderen en weer geven in een beheer eenheid-Azure Active Directory | Microsoft Docs
 description: Gebruikers en machtigingen voor rollen beheren in een beheer eenheid in Azure Active Directory
 services: active-directory
 documentationcenter: ''
@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.topic: how-to
 ms.subservice: users-groups-roles
 ms.workload: identity
-ms.date: 04/16/2020
+ms.date: 09/22/2020
 ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9b76ac103b873026dce3d3f8f92e54dc3afc14c
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 37e1ac36df35fabb9709cfecadcfb0e7330df5da
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85850939"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265110"
 ---
 # <a name="add-and-manage-users-in-an-administrative-unit-in-azure-active-directory"></a>Gebruikers toevoegen en beheren in een beheer eenheid in Azure Active Directory
 
@@ -35,11 +35,11 @@ U kunt op twee manieren gebruikers aan beheer eenheden toewijzen.
 
 1. Afzonderlijke toewijzing
 
-    1. U kunt in de portal naar Azure AD gaan en gebruikers selecteren en de gebruiker selecteren die aan een beheer eenheid moet worden toegewezen. U kunt vervolgens beheer eenheden selecteren in het linkerdeel venster. De gebruiker kan worden toegewezen aan een of meer beheer eenheden door te klikken op toewijzen aan administratieve eenheid en de beheer eenheden te selecteren waaraan de gebruiker moet worden toegewezen.
+    1. U kunt in de portal naar Azure AD gaan en gebruikers selecteren en de gebruiker selecteren die aan een beheer eenheid moet worden toegewezen. U kunt vervolgens beheer eenheden selecteren in het linkerdeel venster. De gebruiker kan worden toegewezen aan een of meer beheer eenheden door te klikken op * * toewijzen aan beheer eenheid en de beheer eenheden te selecteren waaraan de gebruiker moet worden toegewezen.
 
        ![Selecteer toevoegen en voer een naam in voor de beheer eenheid](./media/roles-admin-units-add-manage-users/assign-users-individually.png)
 
-    1. U kunt in de portal naar Azure AD gaan en administratieve eenheden selecteren in het linkerdeel venster en vervolgens de administratieve eenheid selecteren waaraan de gebruikers moeten worden toegewezen. Selecteer alle gebruikers in het linkerdeel venster en selecteer vervolgens lid toevoegen. U kunt vervolgens door gaan en een of meer gebruikers selecteren die moeten worden toegewezen aan de beheer eenheid in het rechterdeel venster.
+    1. U kunt in de portal naar Azure AD gaan en administratieve eenheden selecteren in het linkerdeel venster en vervolgens de administratieve eenheid selecteren waaraan de gebruikers moeten worden toegewezen. Selecteer **alle gebruikers** en selecteer vervolgens **lid toevoegen**. U kunt vervolgens door gaan en een of meer gebruikers selecteren die moeten worden toegewezen aan de beheer eenheid in het rechterdeel venster.
 
         ![Selecteer een administratieve eenheid en selecteer lid toevoegen](./media/roles-admin-units-add-manage-users/assign-to-admin-unit.png)
 
@@ -82,13 +82,15 @@ Voorbeeld:
 
 ### <a name="azure-portal"></a>Azure Portal
 
-In de Azure Portal kunt u een gebruikers profiel openen door naar Azure AD-> gebruikers te gaan. Klik op de gebruiker om het profiel van de gebruiker te openen.
+In de Azure Portal kunt u een gebruikers profiel openen door:
 
-![Open een gebruikers profiel in Azure Active Directory](./media/roles-admin-units-add-manage-users/user-profile-admin-units.png)
+1. **Azure AD**-  >  **gebruikers**openen.
 
-Selecteer **beheer eenheden** in het linkerdeel venster om de lijst met beheer eenheden te bekijken waaraan de gebruiker is toegewezen.
+1. Selecteer de gebruiker om het profiel van de gebruiker te openen.
 
-![De beheer eenheden voor een gebruiker weer geven](./media/roles-admin-units-add-manage-users/list-user-admin-units.png)
+1. Selecteer **beheer eenheden** om de lijst met beheer eenheden te bekijken waaraan de gebruiker is toegewezen.
+
+   ![De beheer eenheden voor een gebruiker weer geven](./media/roles-admin-units-add-manage-users/list-user-admin-units.png)
 
 ### <a name="powershell"></a>PowerShell
 

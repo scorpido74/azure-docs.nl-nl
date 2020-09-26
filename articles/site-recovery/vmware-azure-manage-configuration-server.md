@@ -6,14 +6,14 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 83535fde7f577c4cd5d0b3866afcc0a916c16337
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 5748ff87e94daef80b140e015371eb7a334fffac
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134826"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361480"
 ---
-# <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>De configuratie server voor nood herstel van virtuele VMware-machines/fysieke servers beheren
+# <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>De configuratieserver beheren voor herstel na noodgeval van VMware-VM/fysieke server
 
 U stelt een on-premises configuratie server in wanneer u [Azure site Recovery](site-recovery-overview.md) gebruikt voor herstel na nood gevallen van virtuele VMware-machines en fysieke servers naar Azure. De configuratie server coördineert de communicatie tussen on-premises VMware en Azure en beheert de gegevens replicatie. In dit artikel vindt u een overzicht van algemene taken voor het beheren van de configuratie server nadat deze is geïmplementeerd.
 
@@ -71,7 +71,7 @@ Als u het toevoegen van referenties tijdens de OVF-implementatie van de configur
 
 1. Nadat u [zich hebt aangemeld](#access-configuration-server), selecteert u referenties voor **virtuele machines beheren**.
 2. Klik op **referenties voor virtuele machines toevoegen**.
-    ![add-Mobility-referenties](media/vmware-azure-manage-configuration-server/add-mobility-credentials.png)
+    ![Scherm afbeelding toont het deel venster referenties voor virtuele machine beheren met de koppeling referenties voor de virtuele machine toevoegen.](media/vmware-azure-manage-configuration-server/add-mobility-credentials.png)
 3. Voer de nieuwe referenties in en klik op **toevoegen**.
 
 U kunt ook referenties toevoegen via CSPSConfigtool.exe.
@@ -212,13 +212,13 @@ Voer het installatie bestand als volgt uit:
 
 ### <a name="parameters"></a>Parameters
 
-|Parameternaam| Type | Description| Waarden|
+|Parameternaam| Type | Beschrijving| Waarden|
 |-|-|-|-|
 | /ServerMode|Vereist|Hiermee wordt aangegeven of zowel de configuratieserver als de processerver moet worden geïnstalleerd, of alleen de processerver|CS<br>PS|
 |/InstallLocation|Vereist|De map waarin de onderdelen worden geïnstalleerd| Een map op de computer|
 |/MySQLCredsFilePath|Vereist|Het bestandspad waarin de referenties voor de MySQL-server worden opgeslagen|Het bestand moet de indeling hebben die hieronder wordt aangegeven|
 |/VaultCredsFilePath|Vereist|Het pad naar het bestand met kluisreferenties|Geldig bestandspad|
-|/EnvType|Vereist|Type omgeving dat u wilt beveiligen |VMware<br>NonVMware|
+|/EnvType|Vereist|Type omgeving die u wilt beveiligen |VMware<br>NonVMware|
 |/PSIP|Vereist|IP-adres van de NIC dat wordt gebruikt voor de overdracht van replicatiegegevens| Een geldig IP-adres|
 |/CSIP|Vereist|Het IP-adres van de NIC waarop de configuratieserver luistert| Een geldig IP-adres|
 |/PassphraseFilePath|Vereist|Het volledige pad naar het bestand met de wachtwoordzin|Geldig bestandspad|

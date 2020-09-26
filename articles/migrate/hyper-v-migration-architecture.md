@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 8bca88fc63a7fc04a22d2a68adbe59259b07f50e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 390a8a49e9a47ee5e6845d85fe4fe02f514708e8
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74185879"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362194"
 ---
 # <a name="how-does-hyper-v-replication-work"></a>Hoe werkt Hyper-V-replicatie?
 
@@ -30,7 +30,7 @@ Azure Migrate server migratie is een hulp programma voor het migreren van on-pre
 
 ## <a name="architectural-components"></a>Architectuuronderdelen
 
-![Architectuur](./media/hyper-v-replication-architecture/architecture.png)
+![In het diagram ziet u een Hyper-V-bron netwerk met een H T/m P S gegevens kanaal voor Microsoft Azure, met details die in een tabel worden uitgelegd.](./media/hyper-v-replication-architecture/architecture.png)
 
 
 

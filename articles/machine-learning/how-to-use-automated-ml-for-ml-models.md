@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 07/10/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 3214ce260fa4981b8ac970bdf3520ecd7de59e18
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 47df04a0195c4cfcc4e40db5bf21387a284f682c
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985573"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362245"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Automatische machine learning modellen maken, controleren en implementeren met Azure Machine Learning
 
@@ -72,7 +72,7 @@ Als dat niet het geval is, ziet u een lijst met uw recente geautomatiseerde mach
 
     1. Controleer de **instellingen en het voorbeeld** formulier op nauw keurigheid. Het formulier wordt op intelligente wijze ingevuld op basis van het bestands type. 
 
-        Veld| Description
+        Veld| Beschrijving
         ----|----
         Bestandsindeling| Definieert de indeling en het type gegevens dat is opgeslagen in een bestand.
         Scheidingsteken| Een of meer tekens die de grens aangeven tussen  afzonderlijke, onafhankelijke regio's in tekst zonder opmaak of andere gegevensstromen.
@@ -99,7 +99,7 @@ Als dat niet het geval is, ziet u een lijst met uw recente geautomatiseerde mach
 
 1. Selecteer **een nieuwe Compute maken** om uw berekenings context voor dit experiment te configureren.
 
-    Veld|Description
+    Veld|Beschrijving
     ---|---
     Naam berekening| Voer een unieke naam in die uw berekenings context identificeert.
     Prioriteit van virtuele machine| Virtuele machines met lage prioriteit zijn goed koper, maar garanderen niet de reken knooppunten. 
@@ -132,7 +132,7 @@ Als dat niet het geval is, ziet u een lijst met uw recente geautomatiseerde mach
 
 1. Beschrijving Aanvullende configuratie-instellingen weer geven: extra instellingen die u kunt gebruiken om de trainings taak beter te beheren. Anders worden de standaardinstellingen toegepast op basis van de selectie en gegevens van het experiment. 
 
-    Aanvullende configuraties|Description
+    Aanvullende configuraties|Beschrijving
     ------|------
     Primaire metrische gegevens| De belangrijkste waarde die wordt gebruikt voor het scoren van uw model. Meer [informatie over de metrische gegevens van modellen](how-to-configure-auto-train.md#primary-metric).
     Uitleg geven over het beste model | Selecteer deze optie om in of uit te scha kelen om uitleg voor het aanbevolen model weer te geven. <br> Deze functionaliteit is momenteel niet beschikbaar voor [bepaalde prognose algoritmen](how-to-machine-learning-interpretability-automl.md#interpretability-during-training-for-the-best-model). 
@@ -143,7 +143,7 @@ Als dat niet het geval is, ziet u een lijst met uw recente geautomatiseerde mach
 
 1. Beschrijving Parametrisatie-instellingen weer geven: als u ervoor kiest **automatische parametrisatie** in te scha kelen in het formulier **aanvullende configuratie-instellingen** , worden de standaard parametrisatie-technieken toegepast. In de **instellingen van de weer gave-parametrisatie** kunt u deze standaard waarden wijzigen en dienovereenkomstig aanpassen. Meer informatie over het [aanpassen van featurizations](#customize-featurization). 
 
-    ![Formulier Azure Machine Learning Studio-taak type](media/how-to-use-automated-ml-for-ml-models/view-featurization-settings.png)
+    ![Scherm afbeelding toont het dialoog venster taak type selecteren met de instellingen voor weer gave-parametrisatie.](media/how-to-use-automated-ml-for-ml-models/view-featurization-settings.png)
 
 ## <a name="customize-featurization"></a>Parametrisatie aanpassen
 
@@ -199,7 +199,7 @@ Geautomatiseerde ML helpt u bij het implementeren van het model zonder code te s
     Veld| Waarde
     ----|----
     Naam| Voer een unieke naam in voor uw implementatie.
-    Description| Voer een beschrijving in om beter te kunnen identificeren waarvoor deze implementatie is.
+    Beschrijving| Voer een beschrijving in om beter te kunnen identificeren waarvoor deze implementatie is.
     Rekentype| Selecteer het type eind punt dat u wilt implementeren: *Azure Kubernetes service (AKS)* of *Azure container instance (ACI)*.
     Naam berekening| *Is alleen van toepassing op AKS:* Selecteer de naam van het AKS-cluster waarnaar u wilt implementeren.
     Verificatie inschakelen | Selecteer deze optie om verificatie op basis van tokens of sleutel toe te staan.

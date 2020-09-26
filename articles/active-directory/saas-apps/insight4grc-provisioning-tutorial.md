@@ -11,16 +11,16 @@ ms.workload: identity
 ms.topic: article
 ms.date: 02/04/2020
 ms.author: Zhchia
-ms.openlocfilehash: 86927a525fbfcb6a252d8e3d214733a0f1e83ed1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 60bf2034f1e6404f3f09bf25a66c497dbbaf4d05
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550371"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361650"
 ---
 # <a name="tutorial-configure-insight4grc-for-automatic-user-provisioning"></a>Zelf studie: Insight4GRC configureren voor automatische gebruikers inrichting
 
-In deze zelf studie worden de stappen beschreven die u moet uitvoeren in zowel Insight4GRC als Azure Active Directory (Azure AD) voor het configureren van automatische gebruikers inrichting. Wanneer de configuratie is geconfigureerd, worden gebruikers en groepen door Azure AD automatisch ingericht en [GeInsight4GRCd](https://www.rsmuk.com/) met behulp van de Azure AD-inrichtings service. Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](../manage-apps/user-provisioning.md)voor belang rijke informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen. 
+In deze zelf studie worden de stappen beschreven die u moet uitvoeren in zowel Insight4GRC als Azure Active Directory (Azure AD) voor het configureren van automatische gebruikers inrichting. Wanneer de configuratie is geconfigureerd, worden gebruikers en groepen door Azure AD automatisch ingericht en [GeInsight4GRCd](https://www.rsmuk.com/) met behulp van de Azure AD-inrichtings service. Zie voor belangrijke details over wat deze service doet, hoe het werkt en veelgestelde vragen [Inrichting en ongedaan maken van inrichting van gebruikers automatiseren naar SaaS-toepassingen met Azure Active Directory](../manage-apps/user-provisioning.md). 
 
 
 ## <a name="capabilities-supported"></a>Ondersteunde mogelijkheden
@@ -33,15 +33,15 @@ In deze zelf studie worden de stappen beschreven die u moet uitvoeren in zowel I
 
 ## <a name="prerequisites"></a>Vereisten
 
-In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende vereisten:
+In het scenario dat in deze zelfstudie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende vereisten:
 
 * [Een Azure AD-Tenant](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
-* Een gebruikers account in azure AD met [toestemming](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) voor het configureren van inrichting (bijvoorbeeld toepassings beheerder, Cloud toepassings beheerder, eigenaar van de toepassing of globale beheerder). 
+* Een gebruikersaccount in Azure AD met [machtigingen](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) voor het configureren van inrichting (bijvoorbeeld toepassingsbeheerder, cloud-toepassingsbeheerder, toepassingseigenaar of globale beheerder). 
 * Een gebruikers account in Insight4GRC met beheerders machtigingen.
 
-## <a name="step-1-plan-your-provisioning-deployment"></a>Stap 1. Uw inrichtings implementatie plannen
-1. Meer informatie over [de werking van de inrichtings service](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
-2. Bepaal wie binnen het [bereik van de inrichting](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)valt.
+## <a name="step-1-plan-your-provisioning-deployment"></a>Stap 1. Implementatie van de inrichting plannen
+1. Lees [hoe de inrichtingsservice werkt](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
+2. Bepaal wie u wilt opnemen in het [bereik voor inrichting](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
 3. Bepaal welke gegevens moeten worden [toegewezen tussen Azure AD en Insight4GRC](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes). 
 
 ## <a name="step-2-configure-insight4grc-to-support-provisioning-with-azure-ad"></a>Stap 2. Insight4GRC configureren voor ondersteuning bij het inrichten met Azure AD
@@ -53,15 +53,15 @@ Voordat u Insight4GRC configureert voor het automatisch inrichten van gebruikers
 
 ## <a name="step-3-add-insight4grc-from-the-azure-ad-application-gallery"></a>Stap 3. Insight4GRC toevoegen vanuit de Azure AD-toepassings galerie
 
-Voeg Insight4GRC toe vanuit de Azure AD-toepassings galerie om het beheren van de inrichting van Insight4GRC te starten. Als u eerder Insight4GRC voor SSO hebt ingesteld, kunt u dezelfde toepassing gebruiken. Het is echter raadzaam dat u een afzonderlijke app maakt wanneer u de integratie in eerste instantie test. Meer informatie over het toevoegen van een toepassing uit [de galerie.](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app) 
+Voeg Insight4GRC toe vanuit de Azure AD-toepassings galerie om het beheren van de inrichting van Insight4GRC te starten. Als u eerder Insight4GRC voor SSO hebt ingesteld, kunt u dezelfde toepassing gebruiken. U wordt echter aangeraden een afzonderlijke app te maken wanneer u de integratie voor het eerst test. Klik [hier](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app) voor meer informatie over het toevoegen van een toepassing uit de galerie. 
 
-## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>Stap 4. Definiëren wie binnen het bereik van de inrichting valt 
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>Stap 4. Definiëren wie u wilt opnemen in het bereik voor inrichting 
 
-Met de Azure AD-inrichtings service kunt u bereiken die worden ingericht op basis van de toewijzing aan de toepassing en of op basis van kenmerken van de gebruiker/groep. Als u ervoor kiest om te bepalen wie wordt ingericht voor uw app op basis van de toewijzing, kunt u de volgende [stappen](../manage-apps/assign-user-or-group-access-portal.md) gebruiken om gebruikers en groepen toe te wijzen aan de toepassing. Als u kiest voor het bereik dat alleen wordt ingericht op basis van kenmerken van de gebruiker of groep, kunt u een bereik filter gebruiken zoals [hier](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)wordt beschreven. 
+Met de Azure AD-inrichtingsservice kunt u bepalen wie worden ingericht op basis van toewijzing aan de toepassing en/of op basis van kenmerken van de gebruiker/groep. Als u ervoor kiest om te bepalen wie wordt ingericht voor uw app op basis van toewijzing, kunt u de volgende [stappen](../manage-apps/assign-user-or-group-access-portal.md) gebruiken om gebruikers en groepen aan de toepassing toe te wijzen. Als u ervoor kiest om uitsluitend te bepalen wie wordt ingericht op basis van kenmerken van de gebruiker of groep, kunt u een bereikfilter gebruiken zoals [hier](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) wordt beschreven. 
 
-* Wanneer u gebruikers en groepen toewijst aan Insight4GRC, moet u een andere rol dan **standaard toegang**selecteren. Gebruikers met de rol standaard toegang worden uitgesloten van inrichting en worden gemarkeerd als niet effectief in de inrichtings Logboeken. Als de enige rol die beschikbaar is op de toepassing de standaard rol Access is, kunt u [het toepassings manifest bijwerken](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) om extra rollen toe te voegen. 
+* Wanneer u gebruikers en groepen toewijst aan Insight4GRC, moet u een andere rol dan **standaard toegang**selecteren. Gebruikers met de rol Standaardtoegang worden uitgesloten van inrichting en worden gemarkeerd als niet-effectief gerechtigd in de inrichtingslogboeken. Als Standaardtoegang de enige beschikbare rol voor de toepassing is, kunt u [het manifest van de toepassing bijwerken](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) om extra rollen toe te voegen. 
 
-* Begin klein. Test met een klein aantal gebruikers en groepen voordat u naar iedereen uitrolt. Wanneer het bereik voor inrichting is ingesteld op toegewezen gebruikers en groepen, kunt u dit beheren door een of twee gebruikers of groepen toe te wijzen aan de app. Wanneer bereik is ingesteld op alle gebruikers en groepen, kunt u een [kenmerk op basis van bereik filteren](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)opgeven. 
+* Begin klein. Test de toepassing met een kleine set gebruikers en groepen voordat u de toepassing naar iedereen uitrolt. Wanneer het bereik voor inrichting is ingesteld op toegewezen gebruikers en groepen, kunt u dit beheren door een of twee gebruikers of groepen aan de app toe te wijzen. Wanneer het bereik is ingesteld op alle gebruikers en groepen, kunt u een [bereikfilter op basis van kenmerken](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) opgeven. 
 
 
 ## <a name="step-5-configure-automatic-user-provisioning-to-insight4grc"></a>Stap 5. Automatische gebruikers inrichting configureren voor Insight4GRC 
@@ -70,29 +70,29 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="to-configure-automatic-user-provisioning-for-insight4grc-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor Insight4GRC in azure AD:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **Bedrijfstoepassingen** en vervolgens **Alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst toepassingen de optie **Insight4GRC**.
+2. Selecteer **Insight4GRC** in de lijst met toepassingen.
 
-    ![De koppeling Insight4GRC in de lijst met toepassingen](common/all-applications.png)
+    ![De koppeling naar Insight4GRC in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer het tabblad **inrichten** .
+3. Selecteer het tabblad **Inrichten**.
 
-    ![Tabblad inrichten](common/provisioning.png)
+    ![Scherm opname van de opties voor beheer met de inrichtings optie.](common/provisioning.png)
 
-4. Stel de **inrichtings modus** in op **automatisch**.
+4. Stel de **Inrichtingsmodus** in op **Automatisch**.
 
-    ![Tabblad inrichten](common/provisioning-automatic.png)
+    ![Scherm afbeelding van de vervolg keuzelijst voor de inrichtings modus met de automatische optie aangeroepen.](common/provisioning-automatic.png)
 
 5. Geef in het gedeelte **beheerders referenties** de URL van het scim-eind punt op in de **Tenant-URL**. De enpoint-URL moet de indeling hebben `https://<Insight4GRC Domain Name>.insight4grc.com/public/api/scim/v2 ` waarin **Insight4GRC domain name** de waarde is die in de vorige stappen is opgehaald. Invoer van de Bearer-token waarde die eerder is opgehaald in het **geheime token**. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met Insight4GRC. Als de verbinding mislukt, zorg er dan voor dat uw Insight4GRC-account beheerders machtigingen heeft en probeer het opnieuw.
 
-    ![inrichtings](./media/insight4grc-provisioning-tutorial/provisioning.png)
+    ![Scherm afbeelding toont het dialoog venster beheerders referenties, waarin u uw Tenant U R L en geheime token kunt invoeren.](./media/insight4grc-provisioning-tutorial/provisioning.png)
 
-6. Voer in het veld **e-mail melding** het e-mail adres in van een persoon of groep die de inrichtings fout meldingen moet ontvangen en schakel het selectie vakje **e-mail melding verzenden wanneer een fout optreedt** in.
+6. Voer in het veld **E-mailadres voor meldingen** het e-mailadres in van een persoon of groep die de inrichtingsfoutmeldingen zou moeten ontvangen en schakel het selectievakje **Een e-mailmelding verzenden als een fout optreedt** in.
 
-    ![E-mail melding](common/provisioning-notification-email.png)
+    ![E-mailadres voor meldingen](common/provisioning-notification-email.png)
 
 7. Selecteer **Opslaan**.
 
@@ -104,12 +104,12 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
    |---|---|
    |userName|Tekenreeks|
    |externalId|Tekenreeks|
-   |actief|Boolean-waarde|
-   |titel|Tekenreeks|
-   |name. naam|Tekenreeks|
-   |naam. familielid|Tekenreeks|
-   |e-mail berichten [type EQ "werk]. waarde|Tekenreeks|
-   |phoneNumbers [type EQ "werk]. waarde|Tekenreeks|
+   |actief|Booleaans|
+   |title|Tekenreeks|
+   |name.givenName|Tekenreeks|
+   |name.familyName|Tekenreeks|
+   |emails[type eq "work"].value|Tekenreeks|
+   |phoneNumbers[type eq "work"].value|Tekenreeks|
 
 10. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory groepen synchroniseren met Insight4GRC**.
 
@@ -121,28 +121,28 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
       |externalId|Tekenreeks|
       |leden|Naslaginformatie|
 
-10. Raadpleeg de volgende instructies in de [zelf studie](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
+10. Als u bereikfilters wilt configureren, raadpleegt u de volgende instructies in de [zelfstudie Bereikfilter](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
 13. Als u de Azure AD-inrichtings service voor **Insight4GRC wilt inschakelen, wijzigt u de** **inrichtings status** in in het gedeelte **instellingen** .
 
-    ![Inrichtings status inschakelt op](common/provisioning-toggle-on.png)
+    ![Inrichtingsstatus ingeschakeld](common/provisioning-toggle-on.png)
 
 14. Definieer de gebruikers en/of groepen die u wilt inrichten voor Insight4GRC door de gewenste waarden in het **bereik** te kiezen in de sectie **instellingen** .
 
-    ![Inrichtings bereik](common/provisioning-scope.png)
+    ![Inrichtingsbereik](common/provisioning-scope.png)
 
 15. Wanneer u klaar bent om in te richten, klikt u op **Opslaan**.
 
-    ![Inrichtings configuratie opslaan](common/provisioning-configuration-save.png)
+    ![Inrichtingsconfiguratie opslaan](common/provisioning-configuration-save.png)
 
-Met deze bewerking wordt de initiële synchronisatie cyclus gestart van alle gebruikers en groepen die in het **bereik** zijn gedefinieerd in de sectie **instellingen** . De eerste cyclus duurt langer dan volgende cycli, die ongeveer elke 40 minuten optreden, zolang de Azure AD-inrichtings service wordt uitgevoerd. 
+Met deze bewerking wordt de eerste synchronisatiecyclus gestart van alle gebruikers en groepen die zijn gedefinieerd onder **Bereik** in de sectie **Instellingen**. De initiële cyclus duurt langer dan volgende cycli, die ongeveer om de 40 minuten plaatsvinden zolang de Azure AD-inrichtingsservice wordt uitgevoerd. 
 
 ## <a name="step-6-monitor-your-deployment"></a>Stap 6. Uw implementatie bewaken
-Nadat u het inrichten hebt geconfigureerd, gebruikt u de volgende bronnen om uw implementatie te bewaken:
+Nadat u het inrichten hebt geconfigureerd, gebruikt u de volgende resources om uw implementatie te bewaken:
 
 * Gebruik de [inrichtings logboeken](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) om te bepalen welke gebruikers al dan niet met succes zijn ingericht.
 * Controleer de [voortgangs balk](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) om de status van de inrichtings cyclus weer te geven en te zien hoe sluiten deze moet worden voltooid.
-* Als de inrichtings configuratie een slechte status heeft, gaat de toepassing in quarantaine. Meer informatie over de quarantaine statussen [vindt u hier](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
+* Als het configureren van de inrichting een foutieve status lijkt te hebben, wordt de toepassing in quarantaine geplaatst. [Klik hier](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status) voor meer informatie over quarantainestatussen.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 

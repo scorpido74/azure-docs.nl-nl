@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 782884f53f0ec17c47b79cf66504d0e3ad3fc29d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5695f9fa090419d803f4f3603b45b771321e5ce9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84783211"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91301445"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>Veelgestelde vragen: algemene vragen over Azure Security Center
 
@@ -70,7 +70,6 @@ Azure Security Center analyseert de beveiligingsstatus van uw Azure-bronnen. Als
 Hier worden alleen aanbevelingen weer gegeven die zijn ingeschakeld in het beveiligings beleid.
 
 
-
 ## <a name="what-triggers-a-security-alert"></a>Wat wordt een beveiligings waarschuwing geactiveerd?
 Azure Security Center verzamelt, analyseert en integreert automatisch logboek gegevens van uw Azure-resources, het netwerk en partner oplossingen zoals antimalware en firewalls. Wanneer er dreigingen worden gedetecteerd, wordt een beveiligingswaarschuwing gemaakt. Voorbeelden zijn detectie van:
 
@@ -78,10 +77,6 @@ Azure Security Center verzamelt, analyseert en integreert automatisch logboek ge
 * Geavanceerde malware gedetecteerd met Windows fout rapportage
 * Beveiligingsaanvallen op virtuele machines
 * Beveiligings waarschuwingen van geïntegreerde partner beveiligings oplossingen, zoals anti-malware of Web Application firewalls
-
-
-## <a name="why-did-secure-score-values-change"></a>Waarom zijn beveiligde Score waarden gewijzigd? <a name="secure-score-faq"></a>
-Vanaf februari 2019 heeft Security Center de Score van enkele aanbevelingen aangepast, zodat deze beter past bij de ernst. Als gevolg van deze aanpassing kunnen de algemene waarden voor beveiligde scores worden gewijzigd.  Zie [Enhanced Secure Score in azure Security Center](secure-score-security-controls.md)voor meer informatie over beveiligde scores.
 
 
 ## <a name="whats-the-difference-between-threats-detected-and-alerted-on-by-microsoft-security-response-center-versus-azure-security-center"></a>Wat is het verschil tussen bedreigingen die zijn gedetecteerd en gewaarschuwd op het micro soft Security Response Center versus Azure Security Center?

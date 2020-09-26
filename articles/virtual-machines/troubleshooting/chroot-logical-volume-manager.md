@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/24/2019
 ms.author: vilibert
-ms.openlocfilehash: 03e6f51d2ab7138675f7d79c04faa2e4dffec60c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 98514bad6a04e0c3058faf3133fc44333039ce53
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825681"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361463"
 ---
 # <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>Problemen met een virtuele Linux-machine oplossen wanneer er geen toegang is tot de Azure-seriële console en de schijf indeling gebruikmaakt van LVM (Logical Volume Manager)
 
@@ -88,7 +88,7 @@ lsblk
 
 Zoek het pad om het logische volume met de/(root)-partitie te koppelen. Het bevat de configuratie bestanden zoals/etc/default/grub
 
-In dit voor beeld is de uitvoer van de vorige **lsblk** **-opdracht rootvg-rootlv** de juiste **hoofdmap** voor het koppelen en kan worden gebruikt in de volgende opdracht.
+In dit voor beeld is de uitvoer van de vorige **lsblk**  **-opdracht rootvg-rootlv** de juiste **hoofdmap** voor het koppelen en kan worden gebruikt in de volgende opdracht.
 
 De uitvoer van de volgende opdracht geeft het pad weer naar de koppeling voor de **hoofd** -LV
 
@@ -143,7 +143,7 @@ mount  /dev/mapper/rootvg-usrlv /rescue/usr
 Opdrachten kunnen worden gebruikt om software te installeren, te verwijderen en bij te werken. Problemen met Vm's oplossen om fouten op te lossen.
 
 
-Voer de opdracht lsblk uit en de/Rescue is nu/en/Rescue/boot is/boot ![ chrooted](./media/chroot-logical-volume-manager/chrooted.png)
+Voer de opdracht lsblk uit en de/Rescue is nu/en/Rescue/boot is/boot ![ scherm afbeelding toont een console venster met de opdracht l s BLK en de uitvoer structuur ervan.](./media/chroot-logical-volume-manager/chrooted.png)
 
 ## <a name="perform-fixes"></a>Oplossingen uitvoeren
 
@@ -169,7 +169,7 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 *begint*
 
 De **grep** -opdracht geeft een lijst van de kernels waarvan **grub. cfg** op de hoogte is.
-![Kernels](./media/chroot-logical-volume-manager/kernels.png)
+![Scherm afbeelding toont een console venster waarin het resultaat van een grep-Zoek opdracht voor kernels wordt weer gegeven.](./media/chroot-logical-volume-manager/kernels.png)
 
 **grub2-editenv-lijst** geeft weer welke kernel wordt geladen bij de volgende standaard opstart- ![ kernel](./media/chroot-logical-volume-manager/kernel-default.png)
 
@@ -190,7 +190,7 @@ Voer de opdracht **LVS** uit om te controleren welke **LVS** beschikbaar zijn vo
 
 De **chroot** -omgeving sluiten de vereiste **LV** koppelen
 
-![Geavanceerd](./media/chroot-logical-volume-manager/advanced.png)
+![Scherm afbeelding toont een console venster met de opdracht l v s en koppelt vervolgens een L V.](./media/chroot-logical-volume-manager/advanced.png)
 
 Nu opnieuw toegang tot de **chroot** -omgeving door uit te voeren
 

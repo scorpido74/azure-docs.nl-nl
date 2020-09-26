@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 80658839e804112ae9c8a049943bca54441b015b
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: cd80f0b2a5e2ad1fd4c2cff73728d57a2beafc7e
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89437391"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361514"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>Cross-Tenant analyse met geëxtraheerde gegevens-app met één Tenant
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -36,7 +36,7 @@ In deze zelfstudie leert u het volgende:
 > - Query's uitvoeren op de Analytics-Data Base.
 > - Gebruik Power BI voor gegevens visualisatie om trends in Tenant gegevens te markeren en aanbevelingen te doen voor verbeteringen.
 
-![architectureOverView](./media/saas-tenancy-tenant-analytics/architectureOverview.png)
+![Diagram toont een overzicht van de architectuur die wordt gebruikt voor dit artikel.](./media/saas-tenancy-tenant-analytics/architectureOverview.png)
 
 ## <a name="offline-tenant-analytics-pattern"></a>Patroon voor offline Tenant analyse
 
@@ -138,7 +138,7 @@ Elke taak extraheert de gegevens en plaatst deze in het Analytics-archief. Er is
 4. Druk op F5 om het script uit te voeren waarmee de taak wordt gemaakt en uitgevoerd voor het extra heren van tickets en klanten gegevens uit elke Tenant database. Met de taak worden de gegevens opgeslagen in de analyse opslag.
 5. Query's uitvoeren op de tabel TicketsRawData in de tenantanalytics-data base om ervoor te zorgen dat de tabel is gevuld met ticketsgegevens van alle tenants.
 
-![ticketExtracts](./media/saas-tenancy-tenant-analytics/ticketExtracts.png)
+![Scherm afbeelding toont de ExtractTickets-data base met TicketsRawData d b o geselecteerd in Objectverkenner.](./media/saas-tenancy-tenant-analytics/ticketExtracts.png)
 
 Herhaal de voor gaande stappen, behalve deze keer **\ExtractTickets.SQL** vervangen door **\ExtractVenuesEvents.SQL** in stap 2.
 
@@ -177,21 +177,21 @@ Gebruik de volgende stappen om verbinding te maken met Power BI en om de weer ga
 
 5. Selecteer **Data Base** in het linkerdeel venster, voer gebruikers naam = *ontwikkelaar*in en voer wacht woord = *P \@ ssword1*in. Klik op **Verbinding maken**.  
 
-    ![databasesignin](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
+    ![Scherm afbeelding toont het dialoog venster SQL Server Data Base waarin u een gebruikers naam en wacht woord kunt invoeren.](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
 
 6. Selecteer in het deel venster **Navigator** onder de Analytics-Data Base de ster-schema tabellen: fact_Tickets, dim_Events, dim_Venues, dim_Customers en dim_Dates. Selecteer vervolgens **laden**. 
 
-Gefeliciteerd De gegevens zijn geladen in Power BI. U kunt nu interessante visualisaties gaan verkennen om inzicht te krijgen in uw tenants. In de volgende stap leert u hoe u met analyses gegevensgestuurde aanbevelingen kunt leveren aan het Business team van de Wingtip tickets. De aanbevelingen kunnen helpen het bedrijfs model en de klant ervaring te optimaliseren.
+Gefeliciteerd. De gegevens zijn geladen in Power BI. U kunt nu interessante visualisaties gaan verkennen om inzicht te krijgen in uw tenants. In de volgende stap leert u hoe u met analyses gegevensgestuurde aanbevelingen kunt leveren aan het Business team van de Wingtip tickets. De aanbevelingen kunnen helpen het bedrijfs model en de klant ervaring te optimaliseren.
 
 U begint met het analyseren van de verkoop gegevens van het ticket om de variatie in het gebruik over de locaties te bekijken. Selecteer de volgende opties in Power BI om een staaf diagram te tekenen van het totale aantal tickets dat per locatie is verkocht. Als gevolg van een wille keurige variatie in de ticket generator, kunnen de resultaten afwijken.
  
-![TotalTicketsByVenues](./media/saas-tenancy-tenant-analytics/TotalTicketsByVenues.PNG)
+![Scherm afbeelding toont een Power B I-visualisatie en besturings elementen voor de gegevens visualisatie aan de rechter kant.](./media/saas-tenancy-tenant-analytics/TotalTicketsByVenues.PNG)
 
 In het voor gaande waarnemings punt wordt bevestigd dat het aantal tickets dat door elke locatie wordt verkocht, varieert. Locaties waarbij meer tickets worden verkocht, maken gebruik van uw service meer sterk dan locaties die minder tickets verkopen. Er is mogelijk een kans om de toewijzing van resources aan te passen op basis van de verschillende behoeften van de Tenant.
 
 U kunt de gegevens verder analyseren om te zien hoe de ticket omzet gedurende een periode verschilt. Selecteer de volgende opties in Power BI om het totale aantal tickets te zetten dat elke dag gedurende een periode van 60 dagen is verkocht.
  
-![SaleVersusDate](./media/saas-tenancy-tenant-analytics/SaleVersusDate.PNG)
+![Scherm afbeelding toont de hoofd distributie van het ticket van de visualisatie en de verkoop dag van het schema.](./media/saas-tenancy-tenant-analytics/SaleVersusDate.PNG)
 
 In het voor gaande diagram wordt de verkoop piek van het ticket voor sommige locaties weer gegeven. Deze pieken versterken het idee dat sommige locaties mogelijk systeem bronnen onevenredig verbruiken. Tot nu toe is er geen duidelijk patroon in wanneer de pieken optreden.
 
@@ -217,7 +217,7 @@ AverageTicketsSold = AVERAGEX( SUMMARIZE( TableName, TableName[Venue Name] ), CA
 
 Selecteer de volgende visualisatie opties om het percentage tickets af te zetten dat door elke locatie wordt verkocht om het relatieve succes te bepalen.
 
-![AvgTicketsByVenues](./media/saas-tenancy-tenant-analytics/AvgTicketsByVenues.PNG)
+![Scherm opname toont Power B I-visualisatie met de titel gemiddeld tickets die per locatie worden verkocht.](./media/saas-tenancy-tenant-analytics/AvgTicketsByVenues.PNG)
 
 In het voor gaande waarnemings punt ziet u dat hoewel de meeste locaties meer dan 80% van hun tickets verkopen, sommige lastig meer dan de helft van de stoelen vullen. Speel met de waarden goed om het maximum of minimum percentage van tickets te selecteren dat voor elke locatie wordt verkocht.
 
@@ -236,7 +236,7 @@ In deze zelfstudie heeft u het volgende geleerd:
 > - Query's uitvoeren op een Analytics-Data Base 
 > - Gebruik Power BI voor gegevens visualisatie om trends in Tenant gegevens te observeren 
 
-Gefeliciteerd
+Gefeliciteerd.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 

@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 12/16/2019
 ms.reviewer: sngun
-ms.openlocfilehash: d6be74e5748d364fd9f56f4af96bb3229ddb61c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50d077c1d7c9e4e421a43a4e0379b57608d1192c
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85113685"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361763"
 ---
 # <a name="understanding-the-differences-between-nosql-and-relational-databases"></a>Meer informatie over de verschillen tussen NoSQL en relationele data bases
 
@@ -49,7 +49,7 @@ Er zijn verschillende vormen van ' netwerk data bases ' opgedeeld tijdens de tij
 
 Als u een complex netwerk met relaties in uw Data Base wilt behouden, kunt u een grafiek database, zoals de [Azure Cosmos DB GREMLIN API](https://docs.microsoft.com/azure/cosmos-db/graph-introduction) voor het beheren van deze gegevens, overwegen.
 
-:::image type="content" source="./media/relational-or-nosql/graph.png" alt-text="Graph":::
+:::image type="content" source="./media/relational-or-nosql/graph.png" alt-text="In het database diagram worden verschillende werk nemers en afdelingen weer gegeven die met elkaar zijn verbonden.":::
 
 Azure Cosmos DB is een database service met meerdere modellen, waarmee een API-projectie voor alle belangrijkste NoSQL-model typen wordt geboden. Kolom-Family, document, grafiek en sleutel waarde. De [Gremlin (Graph)](https://docs.microsoft.com/azure/cosmos-db/gremlin-support) en SQL (core) document API-lagen zijn volledig compatibel. Dit heeft voor delen voor het scha kelen tussen verschillende modellen op het niveau van de programmering. Graph-archieven kunnen worden opgevraagd in termen van zowel ingewikkelde netwerk verkeer als trans acties die zijn gemodelleerd als document records in dezelfde opslag.
 

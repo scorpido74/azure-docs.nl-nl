@@ -9,14 +9,17 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: dobett
-ms.openlocfilehash: 6062f8b3992732e0e0f9bbdae9549e69c393f4ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a092859517ee6ac41e62e55fe95f72b8bfdf87d5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67080491"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91290719"
 ---
 # <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>Aanpassen hoe de oplossing Connected Factory gegevens van uw OPC UA-servers weergeeft
+
+> [!IMPORTANT]
+> Tijdens het bijwerken van dit artikel raadpleegt u [Azure Industrial IOT](https://azure.github.io/Industrial-IoT/) voor de meest recente inhoud.
 
 In de oplossing Connected Factory worden gegevens van de OPC UA-servers die zijn verbonden met de oplossing geaggregeerd en weer gegeven. U kunt bladeren en opdrachten naar de OPC UA-servers in uw oplossing sturen. Zie de [Veelgestelde vragen over Connected Factory](iot-accelerators-faq-cf.md)voor meer informatie over OPC ua.
 

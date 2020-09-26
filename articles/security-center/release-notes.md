@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 3cb35cdf217d497b612dee12aedb869b0583e464
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 556177b0f3eb156f5b128995cb81555aa77bc8d2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986698"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289902"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Wat is er nieuw in Azure Security Center?
 
@@ -288,7 +288,7 @@ Standaard waarden voor beveiliging bieden vooraf geconfigureerde identiteits bev
 
 Security Center biedt nu een beveiligings aanbeveling wanneer een Azure-abonnement wordt geïdentificeerd zonder dat de standaard instellingen voor beveiliging zijn ingeschakeld. Tot nu toe Security Center aanbevolen multi-factor Authentication in te scha kelen met behulp van voorwaardelijke toegang, dat onderdeel is van de Azure Active Directory (AD) Premium-licentie. Voor klanten die Azure AD gratis gebruiken, raden we u aan om de standaard instellingen voor beveiliging in te scha kelen. 
 
-Ons doel is om meer klanten te stimuleren om hun Cloud omgevingen met MFA te beveiligen en een van de grootste Risico's te beperken die ook het meest van invloed zijn op uw [beveiligde Score](https://docs.microsoft.com/azure/security-center/secure-score-security-controls).
+Ons doel is om meer klanten te stimuleren om hun Cloud omgevingen met MFA te beveiligen en een van de grootste Risico's te beperken die ook het meest van invloed zijn op uw [beveiligde Score](secure-score-security-controls.md).
 
 Meer informatie over de [standaard instellingen](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults)van de beveiliging.
 
@@ -429,7 +429,7 @@ De aanbevelingen bevatten ook de mogelijkheid om snel te herstellen.
 
 Meer informatie vindt u in de [naslag pagina met aanbevelingen voor beveiliging](recommendations-reference.md).
 
-Meer informatie over [beveiliging tegen bedreigingen vindt u in azure Security Center](https://docs.microsoft.com/azure/security-center/threat-protection).
+Meer informatie over [beveiliging tegen bedreigingen vindt u in azure Security Center](azure-defender.md).
 
 
 
@@ -442,13 +442,13 @@ Ter verbetering van de duidelijkheid en richt lijnen met betrekking tot de bevei
 
 Meer informatie over de beveiliging van de container van Security Center in de volgende artikelen:
 
-- [Overzicht van de beveiligings functies van de container van Security Center](https://docs.microsoft.com/azure/security-center/container-security)
-- [Details van de integratie met Azure Container Registry](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration)
-- [Details van de integratie met de Azure Kubernetes-service](https://docs.microsoft.com/azure/security-center/azure-kubernetes-service-integration)
-- [Uw registers scannen en uw docker-hosts beveiligen](https://docs.microsoft.com/azure/security-center/monitor-container-security)
-- [Beveiligings waarschuwingen van de functies voor beveiliging tegen bedreigingen voor Azure Kubernetes-Service clusters](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-akscluster)
-- [Beveiligings waarschuwingen van de functies voor beveiliging tegen bedreigingen voor Azure Kubernetes-service-hosts](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-containerhost)
-- [Beveiligings aanbevelingen voor containers](https://docs.microsoft.com/azure/security-center/recommendations-reference#recs-containers)
+- [Overzicht van de beveiligings functies van de container van Security Center](container-security.md)
+- [Details van de integratie met Azure Container Registry](defender-for-container-registries-introduction.md)
+- [Details van de integratie met de Azure Kubernetes-service](defender-for-kubernetes-introduction.md)
+- [Uw registers scannen en uw docker-hosts beveiligen](container-security.md)
+- [Beveiligings waarschuwingen van de functies voor beveiliging tegen bedreigingen voor Azure Kubernetes-Service clusters](alerts-reference.md#alerts-akscluster)
+- [Beveiligings waarschuwingen van de functies voor beveiliging tegen bedreigingen voor Azure Kubernetes-service-hosts](alerts-reference.md#alerts-containerhost)
+- [Beveiligings aanbevelingen voor containers](recommendations-reference.md#recs-containers)
 
 
 
@@ -537,10 +537,9 @@ De aanbevelingen omvatten ook de mogelijkheid tot snel oplossen om het implement
 
 Meer informatie over deze twee nieuwe aanbevelingen vindt u in de tabel met [berekenings-en app-aanbevelingen](recommendations-reference.md#recs-computeapp) .
 
-Meer informatie over hoe Azure Security Center de agent gebruikt in [Wat is de log Analytics-agent?](https://docs.microsoft.com/azure/security-center/faq-data-collection-agents#what-is-the-log-analytics-agent).
+Meer informatie over hoe Azure Security Center de agent gebruikt in [Wat is de log Analytics-agent?](faq-data-collection-agents.md#what-is-the-log-analytics-agent).
 
-Meer informatie over [uitbrei dingen voor Azure Arc-machines](https://docs.microsoft.com/azure/azure-arc/servers/manage-vm-extensions#enable-extensions-from-the-portal).
-
+Meer informatie over [uitbrei dingen voor Azure Arc-machines](../azure-arc/servers/manage-vm-extensions.md#enable-extensions-from-the-portal).
 
 
 ### <a name="new-policies-to-create-continuous-export-and-workflow-automation-configurations-at-scale"></a>Nieuw beleid voor het maken van continue export-en werk stroom automatiserings configuraties op schaal
@@ -597,7 +596,7 @@ Het beleid is te vinden in azure Policy:
 | [Advanced Thread Protection moet zijn ingeschakeld op virtuele machines](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f4da35fc9-c9e7-4960-aec9-797fe7d9051d)           | 4da35fc9-c9e7-4960-aec9-797fe7d9051d |
 |                                                                                                                                                                                                                                                                       |                                      |
 
-Meer informatie over [beveiliging tegen bedreigingen vindt u in azure Security Center](https://docs.microsoft.com/azure/security-center/threat-protection).
+Meer informatie over [beveiliging tegen bedreigingen vindt u in azure Security Center](azure-defender.md).
 
 
 
@@ -721,7 +720,7 @@ Meer informatie over [het verbeteren van uw aangepaste aanbevelingen met gedetai
 
 ### <a name="crash-dump-analysis-capabilities-migrating-to-fileless-attack-detection"></a>Crash dump analyse mogelijkheden migreren naar aanval op bestandsloze detectie 
 
-De detectie mogelijkheden van Windows Crash Dump Analysis (CDA) worden geïntegreerd in de [detectie van aanvalen bestanden](https://docs.microsoft.com/azure/security-center/threat-protection#windows-fileless). Detectie van conflicten met een aanval op een bestand biedt verbeterde versies van de volgende beveiligings waarschuwingen voor Windows-computers: code-injectie gedetecteerd, er is een verwerkte shell code gedetecteerd, gedetecteerde en verdacht code segment gedetecteerd.
+De detectie mogelijkheden van Windows Crash Dump Analysis (CDA) worden geïntegreerd in de [detectie van aanvalen bestanden](defender-for-servers-introduction.md#what-are-the-benefits-of-azure-defender-for-servers). Detectie van conflicten met een aanval op een bestand biedt verbeterde versies van de volgende beveiligings waarschuwingen voor Windows-computers: code-injectie gedetecteerd, er is een verwerkte shell code gedetecteerd, gedetecteerde en verdacht code segment gedetecteerd.
 
 Enkele van de voor delen van deze overgang:
 

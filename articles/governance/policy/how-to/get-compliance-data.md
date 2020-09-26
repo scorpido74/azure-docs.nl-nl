@@ -3,12 +3,12 @@ title: Nalevings gegevens voor beleid ophalen
 description: Azure Policy evaluaties en effecten bepalen de naleving. Meer informatie over hoe u de compatibiliteits Details van uw Azure-resources kunt ophalen.
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 2ab75bdab0dcf910da91eb60b5f0cf23892d6c51
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 83bf00710346193a89b59c6a72a0e4840dd5abfb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90895418"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91291013"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Compatibiliteits gegevens van Azure-resources ophalen
 
@@ -605,12 +605,17 @@ PolicyDefinitionAction     : deny
 PolicyDefinitionCategory   : tbd
 ```
 
-Voor beeld: het ophalen van gebeurtenissen die betrekking hebben op niet-compatibele virtuele netwerk bronnen die zijn opgetreden na een specifieke datum.
+Voor beeld: het ophalen van gebeurtenissen met betrekking tot niet-compatibele virtuele netwerk bronnen die zijn opgetreden na een specifieke datum, het converteren naar een CSV-object en het exporteren naar een bestand.
 
 ```azurepowershell-interactive
-PS> Get-AzPolicyEvent -Filter "ResourceType eq '/Microsoft.Network/virtualNetworks'" -From '2018-05-19'
+$policyEvents = Get-AzPolicyEvent -Filter "ResourceType eq '/Microsoft.Network/virtualNetworks'" -From '2020-09-19'
+$policyEvents | ConvertTo-Csv | Out-File 'C:\temp\policyEvents.csv'
+```
 
-Timestamp                  : 5/19/2018 5:18:53 AM
+De uitvoer van het `$policyEvents` object ziet er als volgt uit:
+
+```output
+Timestamp                  : 9/19/2020 5:18:53 AM
 ResourceId                 : /subscriptions/{subscriptionId}/resourceGroups/RG-Tags/providers/Mi
                              crosoft.Network/virtualNetworks/RG-Tags-vnet
 PolicyAssignmentId         : /subscriptions/{subscriptionId}/resourceGroups/RG-Tags/providers/Mi
@@ -642,7 +647,7 @@ Trent Baker
 
 ## <a name="azure-monitor-logs"></a>Azure Monitor-logboeken
 
-Als u een [log Analytics-werk ruimte](../../../azure-monitor/log-query/log-query-overview.md) hebt met `AzureActivity` van de [analyse van activiteitenlogboek-oplossing](../../../azure-monitor/platform/activity-log.md) die aan uw abonnement is gekoppeld, kunt u de resultaten van de niet-naleving van de evaluatie cyclus ook bekijken met behulp van eenvoudige Kusto-query's en de `AzureActivity` tabel. Met details in Azure Monitor-logboeken kunnen waarschuwingen worden geconfigureerd om niet-naleving te controleren.
+Als u een [log Analytics-werk ruimte](../../../azure-monitor/log-query/log-query-overview.md) hebt met `AzureActivity` van de [analyse van activiteitenlogboek oplossing](../../../azure-monitor/platform/activity-log.md) die aan uw abonnement is gekoppeld, kunt u de resultaten van de niet-naleving van de evaluatie van nieuwe en bijgewerkte resources ook weer geven met behulp van eenvoudige Kusto-query's en de `AzureActivity` tabel. Met details in Azure Monitor-logboeken kunnen waarschuwingen worden geconfigureerd om niet-naleving te controleren.
 
 :::image type="content" source="../media/getting-compliance-data/compliance-loganalytics.png" alt-text="Scherm opname van Azure Monitor logboeken met Azure Policy acties in de tabel AzureActivity." border="false":::
 

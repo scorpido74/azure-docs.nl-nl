@@ -8,14 +8,17 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 5fa3d4d4fdfa0dd81cd8ab8772ffb3903dda289f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e015c6761b920ef37af2bbfd67ced5fc3218d532
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73820119"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91290684"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>De Connected Factory Solution Accelerator configureren
+
+> [!IMPORTANT]
+> Tijdens het bijwerken van dit artikel raadpleegt u [Azure Industrial IOT](https://azure.github.io/Industrial-IoT/) voor de meest recente inhoud.
 
 De Connected Factory Solution Accelerator toont een gesimuleerd dash board voor een fictief bedrijf contoso. Dit bedrijf heeft fabrieken in diverse wereld wijde locaties.
 
@@ -109,13 +112,13 @@ De `<factory_configuration>` `<production_line_configuration>` items en hebben d
 
   Hiermee wordt het topologie knooppunt uniek geïdentificeerd.
 
-`<factory_configuration>`heeft een eigenschap:
+`<factory_configuration>` heeft een eigenschap:
 
 * **Locatie** (type `<location_definition>` )
 
   Hiermee geeft u op waar de fabriek zich bevindt.
 
-`<station_configuration>`heeft eigenschappen:
+`<station_configuration>` heeft eigenschappen:
 
 * **OpcUri** (type teken reeks)
 
@@ -124,7 +127,7 @@ De `<factory_configuration>` `<production_line_configuration>` items en hebben d
 
 * **OpcNodes**, een matrix met OPC UA-knoop punten (type `<opc_node_description>` )
 
-`<location_definition>`heeft eigenschappen:
+`<location_definition>` heeft eigenschappen:
 
 * **City** (type teken reeks)
 
@@ -142,7 +145,7 @@ De `<factory_configuration>` `<production_line_configuration>` items en hebben d
 
   De lengte graad van de locatie
 
-`<performance_definition>`heeft eigenschappen:
+`<performance_definition>` heeft eigenschappen:
 
 * **Minimum** (type Double)
 
@@ -188,7 +191,7 @@ De `<factory_configuration>` `<production_line_configuration>` items en hebben d
   * **CallOpcMethod**: de knooppunt gegevens en-para meters van de OPC UA-methode voor het aanroepen van de indeling "NodeId van bovenliggend knoop punt, NodeId van methode om aan te roepen, URI van de OPC UA-server."
   * **Openwebpagina**: de URL die in het browser venster moet worden weer gegeven.
 
-`<opc_node_description>`bevat informatie over OPC UA-knoop punten in een station (OPC UA-server). Knoop punten die geen bestaande OPC UA-knoop punten vertegenwoordigen, maar worden gebruikt als opslag in de berekenings logica van verbonden Factory zijn ook geldig. Het heeft de volgende eigenschappen:
+`<opc_node_description>` bevat informatie over OPC UA-knoop punten in een station (OPC UA-server). Knoop punten die geen bestaande OPC UA-knoop punten vertegenwoordigen, maar worden gebruikt als opslag in de berekenings logica van verbonden Factory zijn ook geldig. Het heeft de volgende eigenschappen:
 
 * **NodeId** (type teken reeks)
 
@@ -262,7 +265,7 @@ Alle eigenschappen die in het configuratie bestand worden gebruikt, kunnen in ve
 
 ### <a name="visual-appearance"></a>Visuele weer gave
 
-Met de eigenschappen in deze categorie wordt het uiterlijk van het Connected Factory-dash board gedefinieerd. Voorbeelden zijn:
+Met de eigenschappen in deze categorie wordt het uiterlijk van het Connected Factory-dash board gedefinieerd. Enkele voorbeelden:
 
 * Naam
 * Beschrijving
