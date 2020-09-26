@@ -1,6 +1,6 @@
 ---
 title: 'Zelf studie: werk plek configureren via Facebook voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
-description: Leer hoe u eenmalige aanmelding tussen Azure Active Directory en Workplace by Facebook configureert.
+description: Meer informatie over de stappen die u moet uitvoeren op zowel de werk plek van Facebook als Azure Active Directory (Azure AD) voor het configureren van automatische gebruikers inrichting.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: jeedes
-ms.openlocfilehash: ae13e062f50e1e8eefeaa886c67c636cf6230c18
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: c72ca7cb521c5c7e7ed33e9a0539de0df252ac92
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90973881"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321897"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Zelf studie: werk plek op Facebook configureren voor automatische gebruikers inrichting
 
@@ -81,11 +81,11 @@ Met de Azure AD-inrichtingsservice kunt u bepalen wie worden ingericht op basis 
 
 3. Selecteer het tabblad **Inrichten**.
 
-    ![Tabblad Inrichting](common/provisioning.png)
+    ![Scherm opname van de opties voor beheer met de inrichtings optie.](common/provisioning.png)
 
 4. Stel de **Inrichtingsmodus** in op **Automatisch**.
 
-    ![Tabblad Inrichting](common/provisioning-automatic.png)
+    ![Scherm afbeelding van de vervolg keuzelijst voor de inrichtings modus met de automatische optie aangeroepen.](common/provisioning-automatic.png)
 
 5. Klik onder de sectie **beheerders referenties** op **autoriseren**. U wordt omgeleid naar werk plek op de autorisatie pagina van Facebook. Voer uw werk plek in op Facebook-gebruikers naam en klik op de knop **door gaan** . Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met werk plek via Facebook. Als de verbinding mislukt, zorg er dan voor dat uw werk plek op Facebook-account beheerders machtigingen heeft en probeer het opnieuw.
 

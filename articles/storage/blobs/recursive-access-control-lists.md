@@ -5,16 +5,16 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/26/2020
+ms.date: 09/21/2020
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 71c470bd1bb71b55d6643ac6305a054f1c934948
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 88349e90102bf3b0e4dc2868d5f65d476aac51f7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229036"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280365"
 ---
 # <a name="set-access-control-lists-acls-recursively-for-azure-data-lake-storage-gen2"></a>Acl's (toegangs beheer lijsten) recursief instellen voor Azure Data Lake Storage Gen2
 
@@ -55,7 +55,7 @@ Installeer de benodigde bibliotheken.
    echo $PSVersionTable.PSVersion.ToString() 
    ```
     
-   Zie [bestaande Windows Power shell upgraden](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-6#upgrading-existing-windows-powershell) voor informatie over het bijwerken van uw versie van Power shell
+   Zie [bestaande Windows Power shell upgraden](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell) voor informatie over het bijwerken van uw versie van Power shell
     
 3. Installeer de nieuwste versie van de PowershellGet-module.
 
@@ -71,7 +71,7 @@ Installeer de benodigde bibliotheken.
    Install-Module Az.Storage -Repository PsGallery -RequiredVersion 2.5.2-preview -AllowClobber -AllowPrerelease -Force  
    ```
 
-   Zie [de module Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0) voor meer informatie over het installeren van Power shell-modules.
+   Zie [de module Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps) voor meer informatie over het installeren van Power shell-modules.
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -148,7 +148,7 @@ In de volgende tabel ziet u alle ondersteunde rollen en de instellingen voor de 
 
 |Rol|Mogelijkheid van ACL-instelling|
 |--|--|
-|[Eigenaar van gegevens van opslag-BLOB](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)|Alle mappen en bestanden in het account.|
+|[Eigenaar van opslagblobgegevens](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)|Alle mappen en bestanden in het account.|
 |[Inzender voor Storage Blob-gegevens](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)|Alleen mappen en bestanden die eigendom zijn van de beveiligingsprincipal.|
 
 ### <a name="option-2-obtain-authorization-by-using-the-storage-account-key"></a>Optie 2: autorisatie verkrijgen met behulp van de sleutel van het opslag account
@@ -178,7 +178,7 @@ Haal een client-ID, een client geheim en een Tenant-ID op. Zie voor dit doen [ee
 
 |Rol|Mogelijkheid van ACL-instelling|
 |--|--|
-|[Eigenaar van gegevens van opslag-BLOB](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)|Alle mappen en bestanden in het account.|
+|[Eigenaar van opslagblobgegevens](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)|Alle mappen en bestanden in het account.|
 |[Inzender voor Storage Blob-gegevens](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)|Alleen mappen en bestanden die eigendom zijn van de beveiligingsprincipal.|
 
 In dit voor beeld wordt een [DataLakeServiceClient](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakeserviceclient?) -exemplaar gemaakt met behulp van een client-id, een client geheim en een Tenant-id.  
@@ -233,7 +233,7 @@ In dit voor beeld wordt een **DataLakeServiceClient** -exemplaar gemaakt met beh
 
 |Rol|Mogelijkheid van ACL-instelling|
 |--|--|
-|[Eigenaar van gegevens van opslag-BLOB](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)|Alle mappen en bestanden in het account.|
+|[Eigenaar van opslagblobgegevens](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)|Alle mappen en bestanden in het account.|
 |[Inzender voor Storage Blob-gegevens](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)|Alleen mappen en bestanden die eigendom zijn van de beveiligingsprincipal.|
 
 ```python
@@ -279,7 +279,9 @@ except Exception as e:
 
 ## <a name="set-an-acl-recursively"></a>Recursief instellen van een ACL
 
-U kunt de Acl's recursief instellen.  
+Wanneer u een ACL *instelt* , **vervangt** u de volledige ACL, inclusief alle items. Als u het machtigings niveau van een beveiligingsprincipal wilt wijzigen of een nieuwe beveiligingsprincipal wilt toevoegen aan de ACL zonder dat dit van invloed is op andere bestaande vermeldingen, moet u de toegangs beheer lijst in plaats daarvan *bijwerken* . Als u een ACL wilt bijwerken in plaats van deze te vervangen, raadpleegt u de sectie [een recursief bijwerken van een ACL](#update-an-acl-recursively) in dit artikel.   
+
+Deze sectie bevat voor beelden voor het instellen van een ACL 
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -367,13 +369,17 @@ def set_permission_recursively():
 
 ## <a name="update-an-acl-recursively"></a>Recursief bijwerken van een ACL
 
-U kunt een bestaande ACL recursief bijwerken.
+Wanneer u een ACL *bijwerkt* , wijzigt u de ACL in plaats van de ACL te vervangen. U kunt bijvoorbeeld een nieuwe beveiligingsprincipal toevoegen aan de ACL zonder dat dit van invloed is op andere beveiligings-principals die worden vermeld in de ACL.  Als u de ACL wilt vervangen in plaats van deze bij te werken, raadpleegt u de sectie [een recursief van ACL instellen](#set-an-acl-recursively) in dit artikel. 
+
+Als u een ACL wilt bijwerken, maakt u een nieuw ACL-object met de ACL-vermelding die u wilt bijwerken en gebruikt u dat object in de ACL-bewerking voor updates. Haal de bestaande ACL niet op. Zorg dat u alleen ACL-vermeldingen kunt bijwerken.
+
+Deze sectie bevat voor beelden voor het bijwerken van een ACL.
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Een ACL recursief bijwerken met behulp van de cmdlet  **Update-AzDataLakeGen2AclRecursive** . 
 
-In dit voor beeld wordt een ACL-vermelding met schrijf machtiging bijgewerkt.
+In dit voor beeld wordt een ACL-vermelding met schrijf machtiging bijgewerkt. 
 
 ```powershell
 $filesystemName = "my-container"
@@ -445,7 +451,9 @@ def update_permission_recursively():
 
 ## <a name="remove-acl-entries-recursively"></a>ACL-vermeldingen recursief verwijderen
 
-U kunt een of meer ACL-vermeldingen recursief verwijderen.
+U kunt een of meer ACL-vermeldingen recursief verwijderen. Als u een ACL-vermelding wilt verwijderen, maakt u een nieuw ACL-object voor de ACL-vermelding die moet worden verwijderd, en gebruikt u dat object in de bewerking ACL'S verwijderen. Haal de bestaande ACL niet op. Geef de ACL-vermeldingen op die moeten worden verwijderd. 
+
+Deze sectie bevat voor beelden voor het verwijderen van een ACL.
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

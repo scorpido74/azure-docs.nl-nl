@@ -3,12 +3,12 @@ title: Niet-beschik bare SKU-fouten
 description: Hierin wordt beschreven hoe u problemen met de SKU niet beschik bare fout bij het implementeren van resources met Azure Resource Manager.
 ms.topic: troubleshooting
 ms.date: 02/18/2020
-ms.openlocfilehash: 3dcc26f2d74799a6d282ee4bd733d36bec7b05e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 37ad70093cce4cea6689fecbc3b6ccb91db5017b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78942717"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333219"
 ---
 # <a name="resolve-errors-for-sku-not-available"></a>Fouten voor een niet-beschikbare SKU oplossen
 
@@ -78,7 +78,6 @@ virtualMachines  southcentralus  Standard_F2                ...             None
 virtualMachines  southcentralus  Standard_F4                ...             None
 ...
 ```
-
 
 ## <a name="solution-3---azure-portal"></a>Oplossing 3-Azure Portal
 

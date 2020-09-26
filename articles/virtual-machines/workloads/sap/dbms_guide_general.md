@@ -4,23 +4,23 @@ description: Overwegingen voor de implementatie van Azure Virtual Machines DBMS 
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: msjuergent
-manager: patfilot
+manager: bburns
 editor: ''
 tags: azure-resource-manager
-keywords: ''
+keywords: SAP, DBMS, opslag, Ultra disk, Premium-opslag
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/04/2018
+ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 15c0368b2d0bd85f6fee65ffa2c9d6776d07f162
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 4ac3a43776ee71716e618d7a1698aa1915d3d1b7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650612"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331349"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Overwegingen voor de implementatie van Azure Virtual Machines DBMS voor SAP-workloads
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -46,9 +46,8 @@ ms.locfileid: "88650612"
 [Logo_Windows]:media/virtual-machines-shared-sap-shared/Windows.png
 
 
-[!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
-Deze hand leiding maakt deel uit van de documentatie over het implementeren en implementeren van SAP-software op Microsoft Azure. Lees de [plannings-en implementatie handleiding][planning-guide]voordat u deze hand leiding leest. In dit document worden de algemene implementatie aspecten van SAP-gerelateerde DBMS-systemen op Microsoft Azure virtuele machines (Vm's) beschreven met behulp van de Azure Infrastructure as a Service (IaaS)-mogelijkheden.
+Deze hand leiding maakt deel uit van de documentatie over het implementeren en implementeren van SAP-software op Microsoft Azure. Lees, voordat u deze hand leiding leest, de [plannings-en implementatie handleiding][planning-guide] en de artikelen waarnaar wordt verwezen in de plannings handleiding. In dit document worden de algemene implementatie aspecten van SAP-gerelateerde DBMS-systemen op Microsoft Azure virtuele machines (Vm's) beschreven met behulp van de Azure Infrastructure as a Service (IaaS)-mogelijkheden.
 
 Het artikel vormt een aanvulling op de SAP-installatie documentatie en SAP-notities, die de primaire resources vertegenwoordigen voor installaties en implementaties van SAP-software op bepaalde platformen.
 
@@ -109,49 +108,62 @@ In het algemeen zijn de installatie en configuratie van Windows, Linux en DBMS i
 
 
 ## <a name="storage-structure-of-a-vm-for-rdbms-deployments"></a><a name="65fa79d6-a85f-47ee-890b-22e794f51a64"></a>Opslag structuur van een virtuele machine voor RDBMS-implementaties
-Als u dit hoofd stuk wilt volgen, leest en begrijpt u de informatie die wordt weer gegeven in [dit hoofd stuk][deployment-guide-3] van de [implementatie handleiding][deployment-guide]. Voordat u dit hoofd stuk leest, moet u weten wat de verschillende VM-series zijn en wat de verschillen zijn tussen Standard en Premium Storage. 
+Als u dit hoofd stuk wilt volgen, leest en begrijpt u de informatie die wordt weer gegeven in:
 
-Zie [Introduction to Managed disks for Azure vm's](../../managed-disks-overview.md)(Engelstalig) voor meer informatie over Azure Storage voor virtuele Azure-machines.
+- [Azure Virtual Machines planning en implementatie voor SAP net-Weaver](./planning-guide.md)
+- [Azure Storage-typen voor SAP-workload](./planning-guide-storage.md)
+- [Welke SAP-software wordt ondersteund voor Azure-implementaties](./sap-supported-product-on-azure.md)
+- [SAP-workload in scenario's met virtuele Azure-machines](./sap-planning-supported-configurations.md) 
 
-In een basis configuratie raden wij doorgaans een implementatie structuur aan waarbij het besturings systeem, DBMS en mogelijke SAP binaire bestanden van de database bestanden gescheiden zijn. We raden aan dat SAP-systemen die worden uitgevoerd op virtuele Azure-machines, de basis-VHD, of de schijf, moeten worden geïnstalleerd met het besturings systeem, Database Management System uitvoer bare bestanden en uitvoer bare SAP-bestanden. 
+Voordat u dit hoofd stuk leest, moet u weten wat de verschillende VM-series zijn en wat de verschillen zijn tussen Standard en Premium Storage. 
 
-De DBMS-gegevens en-logboek bestanden worden opgeslagen in de standaard opslag of Premium-opslag. Ze worden opgeslagen op afzonderlijke schijven en als logische schijven gekoppeld aan de oorspronkelijke VM van de installatie kopie van het besturings systeem van Azure. Voor Linux-implementaties worden verschillende aanbevelingen gedocumenteerd, met name voor SAP HANA.
+Voor Azure Block Storage wordt het gebruik van Azure Managed disks nadrukkelijk aanbevolen. Lees het artikel [Introduction to Managed disks for Azure vm's](../../managed-disks-overview.md)voor meer informatie over Azure Managed disks.
+
+In een basis configuratie raden wij doorgaans een implementatie structuur aan waarbij het besturings systeem, DBMS en mogelijke SAP binaire bestanden van de database bestanden gescheiden zijn. Als u eerdere aanbevelingen wijzigt, raden we u aan afzonderlijke Azure-schijven te hebben voor:
+
+- Het besturings systeem (basis-VHD of VHD)
+- Uitvoer bare bestanden van het database beheersysteem
+- SAP uitvoer bare bestanden zoals/usr/sap
+
+Een configuratie die deze onderdelen in drie verschillende Azure-schijven scheidt, kan leiden tot hogere tolerantie, omdat overmatige logboek-of dump schrijf bewerkingen door de bestanden DBMS of SAP worden verstoord door de schijf quota van de besturingssysteem schijf. 
+
+De logboek bestanden voor de DBMS-gegevens en-trans actie/opnieuw worden opgeslagen in door Azure ondersteunde blok opslag of Azure NetApp Files. Ze worden opgeslagen op afzonderlijke schijven en als logische schijven gekoppeld aan de oorspronkelijke VM van de installatie kopie van het besturings systeem van Azure. Voor Linux-implementaties worden verschillende aanbevelingen gedocumenteerd, met name voor SAP HANA. Lees het artikel [Azure Storage typen voor de SAP-werk belasting](./planning-guide-storage.md) voor de mogelijkheden en ondersteuning van de verschillende opslag typen voor uw scenario. 
 
 Wanneer u de indeling van de schijf plant, zoekt u de beste balans tussen deze items:
 
 * Het aantal gegevens bestanden.
 * Het aantal schijven dat de bestanden bevat.
-* De IOPS-quota van één schijf.
-* De gegevens doorvoer per schijf.
+* De IOPS-quota van een enkele schijf of NFS-share.
+* De gegevens doorvoer per schijf of NFS-share.
 * Het aantal extra gegevens schijven dat mogelijk is per VM-grootte.
-* De algehele opslag doorvoer kan worden geboden door een virtuele machine.
+* De totale opslag-of netwerk doorvoer van een virtuele machine kan bieden.
 * De latentie van verschillende Azure Storage typen kan worden geboden.
 * VM-service overeenkomsten.
 
-Azure dwingt een IOPS-quotum af per gegevens schijf. Deze quota verschillen voor schijven die worden gehost op standaard opslag en Premium-opslag. I/O-latentie verschilt ook tussen de twee opslag typen. Premium-opslag biedt een betere I/O-latentie. 
+Azure dwingt een IOPS-quotum per gegevens schijf of NFS-share af. Deze quota wijken af voor schijven die worden gehost op de verschillende Azure Block Storage-oplossingen of-shares. De I/O-latentie verschilt ook van deze verschillende opslag typen. 
 
-Elk van de verschillende VM-typen heeft een beperkt aantal gegevens schijven dat u kunt bijvoegen. Een andere beperking is dat alleen bepaalde VM-typen Premium-opslag kunnen gebruiken. Normaal gesp roken besluit u een bepaald VM-type te gebruiken op basis van de CPU-en geheugen vereisten. U kunt ook de vereisten voor IOPS, latentie en schijf doorvoer overwegen die meestal worden geschaald met het aantal schijven of het type Premium-opslag schijven. Het aantal IOPS en de door Voer die door elke schijf moet worden behaald, kan de schijf grootte bepalen, met name voor Premium Storage.
-
-> [!NOTE]
-> Voor DBMS-implementaties wordt het gebruik van Premium-opslag voor alle gegevens, het transactie logboek of het opnieuw uitvoeren van bestanden aangeraden. Het maakt niet uit of u productie-of niet-product systemen wilt implementeren.
+Elk van de verschillende VM-typen heeft een beperkt aantal gegevens schijven dat u kunt bijvoegen. Een andere beperking is dat alleen bepaalde VM-typen kunnen worden gebruikt, bijvoorbeeld Premium-opslag. Normaal gesp roken besluit u een bepaald VM-type te gebruiken op basis van de CPU-en geheugen vereisten. U kunt ook de vereisten voor IOPS, latentie en schijf doorvoer overwegen die meestal worden geschaald met het aantal schijven of het type Premium-opslag schijven. Het aantal IOPS en de door Voer die door elke schijf moet worden behaald, kan de schijf grootte bepalen, met name voor Premium Storage.
 
 > [!NOTE]
-> Om te profiteren van de unieke SLA van Azure voor [één VM](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/), moeten alle schijven die zijn gekoppeld, het Premium-opslag type zijn, inclusief de basis-VHD.
+> Voor DBMS-implementaties wordt aangeraden Azure Premium Storage, Ultra disk of Azure NetApp Files op basis van NFS-shares (uitsluitend voor SAP HANA) voor gegevens, transactie logboek bestanden of opnieuw te installeren. Het maakt niet uit of u productie-of niet-product systemen wilt implementeren.
 
 > [!NOTE]
-> Het hosten van hoofd database bestanden, zoals gegevens en logboek bestanden, van SAP-data bases op opslaghardware die zich bevinden in gegevens centra van derden naast Azure data centers wordt niet ondersteund. Voor SAP-workloads wordt alleen opslag die wordt weer gegeven als systeem eigen Azure-service ondersteund voor de gegevens-en transactie logboek bestanden van SAP-data bases.
+> Om te profiteren van de [Single VM-Sla](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)van Azure, moeten alle schijven die zijn gekoppeld Azure Premium Storage of een Azure Ultra disk-type zijn, inclusief de basis-VHD (Azure Premium Storage).
 
-De plaatsing van de database bestanden en het logboek bestand en het type Azure Storage dat u gebruikt, worden gedefinieerd door IOPS-, latentie-en doorvoer vereisten. Als u voldoende IOPS wilt, is het mogelijk dat u meerdere schijven gebruikt of een grotere Premium-opslag schijf gebruikt. Als u meerdere schijven gebruikt, bouwt u een software striping op de schijven die de gegevens bestanden bevatten of het logboek bestand en voert u de bestanden opnieuw uit. In dergelijke gevallen worden de IOPS en de door Voer van de schijf van de onderliggende Premium-opslag schijven of de maximale Haal bare IOPS van standaard opslag schijven cumulatief voor de resulterende Stripe-set.
+> [!NOTE]
+> Het hosten van hoofd database bestanden, zoals gegevens en logboek bestanden, van SAP-data bases op opslaghardware die zich bevinden in gegevens centra van derden naast Azure data centers wordt niet ondersteund. Opslag die wordt aangeboden via software-apparaten die worden gehost in virtuele machines van Azure, wordt ook niet ondersteund voor deze use-case. Voor SAP DBMS-workloads wordt alleen opslag die wordt weer gegeven als systeem eigen Azure-service ondersteund voor de gegevens-en transactie logboek bestanden van SAP-data bases in het algemeen. Verschillende DBMS ondersteunen mogelijk verschillende typen Azure-opslag. Raadpleeg voor meer informatie het artikel [Azure Storage typen voor SAP-workload](./planning-guide-storage.md)
 
-Als uw IOPS-vereiste al is opgegeven, wordt het aantal IOPS dat nodig is voor de database bestanden over een aantal Vhd's, gebalanceerd. De eenvoudigste manier om de IOPS-belasting over schijven te verdelen, is door een software Striper op de verschillende schijven te bouwen. Plaats vervolgens een aantal gegevens bestanden van de SAP-DBMS op de Lun's gehaald uit de software striping. Het aantal schijven in de Stripe wordt aangedreven door IOPs-aanvragen, vereisten voor schijf doorvoer en volume vereisten.
+De plaatsing van de database bestanden en het logboek bestand en het type Azure Storage dat u gebruikt, wordt gedefinieerd door de vereisten voor IOPS, latentie en door voer. Met name voor Azure Premium Storage om voldoende IOPS te krijgen, is het mogelijk dat u meerdere schijven gebruikt of een grotere Premium-opslag schijf gebruikt. Als u meerdere schijven gebruikt, bouwt u een software striping op de schijven die de gegevens bestanden bevatten of het logboek bestand en voert u de bestanden opnieuw uit. In dergelijke gevallen worden de IOPS en de door Voer van de schijf van de onderliggende Premium-opslag schijven of de maximale Haal bare IOPS van standaard opslag schijven cumulatief voor de resulterende Stripe-set.
+
+Als uw IOPS-vereiste groter is dan wat een enkele VHD kan bieden, kunt u het aantal IOPS dat nodig is voor de database bestanden over een aantal Vhd's verdelen. De eenvoudigste manier om de IOPS-belasting over schijven te verdelen, is door een software Striper op de verschillende schijven te bouwen. Plaats vervolgens een aantal gegevens bestanden van de SAP-DBMS op de Lun's gehaald uit de software striping. Het aantal schijven in de Stripe wordt aangedreven door IOPS-aanvragen, vereisten voor schijf doorvoer en volume vereisten.
 
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows-opslag striping][Logo_Windows] Windows
 >
 > U wordt aangeraden Windows-opslag ruimten te gebruiken voor het maken van stripesets op meerdere Azure-Vhd's. Gebruik ten minste Windows Server 2012 R2 of Windows Server 2016.
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux-opslag striping][Logo_Linux] Linux
 >
 > Alleen MDADM en Logical Volume Manager (LVM) worden ondersteund voor het bouwen van een software-RAID op Linux. Zie voor meer informatie:
 >
@@ -162,6 +174,9 @@ Als uw IOPS-vereiste al is opgegeven, wordt het aantal IOPS dat nodig is voor de
 
 ---
 
+Voor Azure Ultra disk is striping niet nodig omdat u IOPS en schijf doorvoer onafhankelijk van de grootte van de schijf kunt definiëren.
+
+
 > [!NOTE]
 > Omdat Azure Storage drie installatie kopieën van de Vhd's houdt, is het niet logisch om een redundantie te configureren wanneer u een striping uitvoert. U hoeft alleen striping te configureren zodat de I/O's over de verschillende Vhd's worden verdeeld.
 >
@@ -171,7 +186,7 @@ Een Azure Storage-account is een administratieve constructie en ook een onderwer
 
 Voor standaard opslag moet u er rekening mee houden dat de IOPS per opslag account beperkt is. Bekijk de rij met de **totale aanvraag snelheid** in het artikel [Azure Storage schaal baarheid en prestatie doelen](../../../storage/common/scalability-targets-standard-account.md). Er is ook een aanvankelijke limiet voor het aantal opslag accounts per Azure-abonnement. Verdeel Vhd's voor het grotere SAP-landschap in verschillende opslag accounts om te voor komen dat deze opslag accounts worden beperkt. Dit is omslachtig als u op een paar honderd virtuele machines met meer dan duizend Vhd's spreekt.
 
-Het gebruik van standaard opslag voor DBMS-implementaties in combi natie met een SAP-werk belasting wordt niet aanbevolen, verwijzingen en aanbevelingen voor standaard opslag zijn beperkt tot dit korte [artikel](/archive/blogs/mast/configuring-azure-virtual-machines-for-optimal-storage-performance)
+Het gebruik van standaard opslag voor DBMS-implementaties in combi natie met een SAP-workload wordt niet aanbevolen. Verwijzingen en aanbevelingen naar standaard opslag zijn daarom beperkt tot dit korte [artikel](/archive/blogs/mast/configuring-azure-virtual-machines-for-optimal-storage-performance)
 
 Micro soft heeft [Azure-Managed disks](https://azure.microsoft.com/services/managed-disks/) geïntroduceerd in 2017 om te voor komen dat het administratieve werk van het plannen en implementeren van vhd's in verschillende Azure-opslag accounts. Beheerde schijven zijn beschikbaar voor standaard opslag en Premium-opslag. De belangrijkste voor delen van beheerde schijven vergeleken met niet-beheerde schijven zijn:
 
@@ -180,7 +195,7 @@ Micro soft heeft [Azure-Managed disks](https://azure.microsoft.com/services/mana
 
 
 > [!IMPORTANT]
-> Gezien de voor delen van Azure Managed Disks, raden we u aan Azure Managed Disks te gebruiken voor uw DBMS-implementaties en SAP-implementaties in het algemeen.
+> Gezien de voor delen van Azure Managed Disks, raden we u ten zeerste aan Azure Managed Disks te gebruiken voor uw DBMS-implementaties en SAP-implementaties in het algemeen.
 >
 
 Als u wilt converteren van onbeheerd naar beheerde schijven, raadpleegt u:
@@ -190,7 +205,7 @@ Als u wilt converteren van onbeheerd naar beheerde schijven, raadpleegt u:
 
 
 ### <a name="caching-for-vms-and-data-disks"></a><a name="c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f"></a>Caching voor Vm's en gegevens schijven
-Wanneer u schijven aan Vm's koppelt, kunt u kiezen of het I/O-verkeer tussen de virtuele machine en de schijven in azure Storage in de cache wordt opgeslagen. Standard-en Premium-opslag gebruiken twee verschillende technologieën voor dit type cache.
+Wanneer u schijven aan Vm's koppelt, kunt u kiezen of het I/O-verkeer tussen de virtuele machine en de schijven in azure Storage in de cache wordt opgeslagen.
 
 De volgende aanbevelingen gaan ervan uit dat deze I/O-kenmerken voor standaard-DBMS:
 
@@ -208,7 +223,7 @@ Voor standaard opslag zijn de mogelijke cache typen:
 
 Als u consistente en deterministische prestaties wilt, stelt u de cache in op standaard opslag voor alle schijven die DBMS-gerelateerde gegevens bestanden bevatten, logboeken en opnieuw uitvoeren van bestanden en tabel ruimte op **geen**. Het opslaan in cache van de basis-VHD kan met de standaard waarde blijven.
 
-Voor Premium Storage bestaan de volgende cache opties:
+Voor Azure Premium Storage bestaan de volgende cache opties:
 
 * Geen
 * Lezen
@@ -220,6 +235,8 @@ Voor Premium Storage wordt u aangeraden de **Lees cache voor gegevens bestanden*
 
 Voor implementaties met een M-serie raden we u aan Azure Write Accelerator te gebruiken voor uw DBMS-implementatie. Zie [Write Accelerator inschakelen](../../how-to-enable-write-accelerator.md)voor meer informatie, beperkingen en implementatie van Azure write Accelerator.
 
+Voor Ultra disk en Azure NetApp Files worden er geen cache opties aangeboden.
+
 
 ### <a name="azure-nonpersistent-disks"></a>Niet-permanente Azure-schijven
 Azure Vm's bieden niet-permanente schijven nadat een virtuele machine is geïmplementeerd. Als een VM opnieuw wordt opgestart, wordt alle inhoud op die stations gewist. Het is een gegeven dat gegevens bestanden en logboek bestanden en het opnieuw uitvoeren van data bases, onder geen enkele omstandigheden, zich op deze niet-persistente stations bevinden. Er zijn mogelijk uitzonde ringen voor sommige data bases, waarbij deze niet-permanente schijven geschikt zijn voor TempDB en tijdelijke tablespaces. Vermijd het gebruik van schijven voor virtuele machines van de A-serie, omdat deze niet-persistente schijven beperkt zijn bij de door Voer met die VM-serie. 
@@ -227,11 +244,11 @@ Azure Vm's bieden niet-permanente schijven nadat een virtuele machine is geïmpl
 Zie [inzicht in het tijdelijke station op Windows-vm's in azure](/archive/blogs/mast/understanding-the-temporary-drive-on-windows-azure-virtual-machines)voor meer informatie.
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows-niet-persistente schijf][Logo_Windows] Windows
 >
 > Station D in een Azure-VM is een niet-persistent station dat wordt ondersteund door een aantal lokale schijven op het Azure Compute-knoop punt. Omdat het niet-persistent is, gaan alle wijzigingen die zijn aangebracht in de inhoud op station D verloren wanneer de virtuele machine opnieuw wordt opgestart. Wijzigingen omvatten onder andere opgeslagen bestanden, mappen die zijn gemaakt en toepassingen die zijn geïnstalleerd.
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linuxnonpersisted-schijf][Logo_Linux] Linux
 >
 > Linux Azure-Vm's koppelen automatisch een station op/mnt/resource dat een niet-persistent station is dat wordt ondersteund door lokale schijven op het Azure Compute-knoop punt. Omdat het niet-persistent is, gaan alle wijzigingen in de inhoud van/mnt/resource verloren wanneer de virtuele machine opnieuw wordt opgestart. Wijzigingen omvatten onder andere opgeslagen bestanden, mappen die zijn gemaakt en toepassingen die zijn geïnstalleerd.
 >
@@ -247,7 +264,7 @@ Microsoft Azure Storage slaat de basis-VHD, met besturings systeem en gekoppelde
 Er zijn andere redundantie methoden. Zie [Azure storage-replicatie](../../../storage/common/storage-redundancy.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)voor meer informatie.
 
 > [!NOTE]
->Premium Storage is het aanbevolen type opslag voor DBMS-Vm's en schijven die de data base opslaan en bestanden vastleggen en opnieuw uitvoeren. De enige beschik bare redundantie methode voor Premium Storage is LRS. Als gevolg hiervan moet u database methoden configureren om database gegevens replicatie in te scha kelen in een andere Azure-regio of beschikbaarheids zone. Database methoden bevatten SQL Server always on, Oracle Data Guard en HANA System Replication.
+> Azure Premium Storage, Ultra disk en Azure NetApp Files (uitsluitend voor SAP HANA) zijn het aanbevolen type opslag voor DBMS-Vm's en schijven die data bases opslaan en bestanden vastleggen en opnieuw uitvoeren. De enige beschik bare redundantie methode voor deze opslag typen is LRS. Als gevolg hiervan moet u database methoden configureren om database gegevens replicatie in te scha kelen in een andere Azure-regio of beschikbaarheids zone. Database methoden bevatten SQL Server always on, Oracle Data Guard en HANA System Replication.
 
 
 > [!NOTE]
@@ -256,7 +273,7 @@ Er zijn andere redundantie methoden. Zie [Azure storage-replicatie](../../../sto
 
 
 ## <a name="vm-node-resiliency"></a>Tolerantie van VM-knoop punt
-Azure biedt een aantal verschillende Sla's voor Vm's. Zie de meest recente release van [Sla voor virtual machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)voor meer informatie. Omdat de DBMS-laag meestal kritiek is voor Beschik baarheid in een SAP-systeem, moet u inzicht hebben in beschikbaarheids sets, beschikbaarheids zones en onderhouds gebeurtenissen. Zie [de beschik baarheid van virtuele Windows-machines beheren in azure](../../windows/manage-availability.md) en [de beschik baarheid van virtuele Linux-machines beheren in azure](../../linux/manage-availability.md)voor meer informatie over deze concepten.
+Azure biedt een aantal verschillende Sla's voor Vm's. Zie de meest recente release van [Sla voor virtual machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)voor meer informatie. Omdat de DBMS-laag essentieel is voor Beschik baarheid in een SAP-systeem, moet u inzicht hebben in beschikbaarheids sets, Beschikbaarheidszones en onderhouds gebeurtenissen. Zie [de beschik baarheid van virtuele Windows-machines beheren in azure](../../windows/manage-availability.md) en [de beschik baarheid van virtuele Linux-machines beheren in azure](../../linux/manage-availability.md)voor meer informatie over deze concepten.
 
 De minimale aanbeveling voor productie DBMS-scenario's met een SAP-werk belasting is:
 
@@ -276,7 +293,7 @@ Gebruik bij grootschalige SAP-implementaties de blauw druk van [Azure Virtual Da
 Deze aanbevolen procedures zijn het resultaat van honderden implementaties van klanten:
 
 - De virtuele netwerken waarmee de SAP-toepassing wordt geïmplementeerd, hebben geen toegang tot internet.
-- De data base-Vm's worden uitgevoerd in hetzelfde virtuele netwerk als de toepassingslaag.
+- De data base-Vm's worden uitgevoerd in hetzelfde virtuele netwerk als de toepassingslaag, gescheiden in een ander subnet van de SAP-toepassingslaag.
 - De virtuele machines in het virtuele netwerk hebben een statische toewijzing van het privé-IP-adres. Zie [IP-adres typen en toewijzings methoden in azure](../../../virtual-network/public-ip-addresses.md)voor meer informatie.
 - Routerings beperkingen van en naar de DBMS-Vm's zijn *niet* ingesteld met firewalls die zijn geïnstalleerd op de lokale DBMS-vm's. In plaats daarvan wordt verkeers routering gedefinieerd met [netwerk beveiligings groepen (nsg's)](../../../virtual-network/security-overview.md).
 - Wijs verschillende Nic's toe aan de virtuele machine om verkeer te scheiden en te isoleren naar de DBMS-VM. Elke NIC krijgt een ander IP-adres en elke NIC wordt toegewezen aan een ander subnet van het virtuele netwerk. Elk subnet heeft verschillende NSG-regels. De isolatie of schei ding van netwerk verkeer is een meting voor route ring. Het wordt niet gebruikt voor het instellen van quota's voor netwerk doorvoer.
@@ -286,7 +303,7 @@ Deze aanbevolen procedures zijn het resultaat van honderden implementaties van k
 >
 
 
-> [!IMPORTANT]
+> [!WARNING]
 > Het configureren van [virtuele netwerk apparaten](https://azure.microsoft.com/solutions/network-appliances/) in het communicatie traject tussen de SAP-toepassing en de DBMS-laag van een SAP NetWeaver-, hybris-of S/4HANA SAP-systeem wordt niet ondersteund. Deze beperking is voor functionaliteits-en prestatie redenen. Het communicatie-pad tussen de SAP-toepassingslaag en de DBMS-laag moet direct een. De beperking bevat geen [toepassings beveiligings groep (ASG) en NSG regels](../../../virtual-network/security-overview.md) als de regels ASG en NSG een direct communicatie traject toestaan. 
 >
 > Andere scenario's waarin virtuele netwerk apparaten niet worden ondersteund, zijn in:
@@ -304,7 +321,7 @@ Deze aanbevolen procedures zijn het resultaat van honderden implementaties van k
 >
 > Houd er rekening mee dat het netwerk verkeer tussen twee [gepeerde](../../../virtual-network/virtual-network-peering-overview.md) virtuele netwerken van Azure onderhevig is aan kosten voor overdracht. Een zeer groot gegevens volume dat uit veel terabytes bestaat, wordt uitgewisseld tussen de SAP-toepassingslaag en de DBMS-laag. U kunt aanzienlijke kosten optellen als de SAP-toepassingsobjectlaag en de DBMS-laag worden gescheiden tussen twee peered virtuele netwerken van Azure.
 
-Gebruik twee virtuele machines voor de implementatie van uw productie-DBMS in een Azure-beschikbaarheidsset. Gebruik ook afzonderlijke route ring voor de SAP-toepassingslaag en het beheer-en bewerkings verkeer naar de twee virtuele DBMS-Vm's. Zie de volgende afbeelding:
+Gebruik twee virtuele machines voor de implementatie van uw productie-DBMS in een Azure-beschikbaarheidsset of tussen twee Azure-beschikbaarheidszones. Gebruik ook afzonderlijke route ring voor de SAP-toepassingslaag en het beheer-en bewerkings verkeer naar de twee virtuele DBMS-Vm's. Zie de volgende afbeelding:
 
 ![Diagram van twee virtuele machines in twee subnetten](./media/virtual-machines-shared-sap-deployment-guide/general_two_dbms_two_subnets.PNG)
 
@@ -314,19 +331,13 @@ Het gebruik van privé-IP-adressen die worden gebruikt in functies als SQL Serve
 
 Als er een failover van het database knooppunt is, hoeft de SAP-toepassing niet opnieuw te worden geconfigureerd. In plaats daarvan worden de meest voorkomende SAP-toepassings architecturen opnieuw verbonden met het persoonlijke virtuele IP-adres. Ondertussen reageert de load balancer op de failover van het knoop punt door het verkeer door te sturen naar het virtuele particuliere IP-adres naar het tweede knoop punt.
 
-Azure biedt twee verschillende [Load Balancer sku's](../../../load-balancer/load-balancer-overview.md): een basis-SKU en een standaard-SKU. Tenzij u wilt implementeren in azure-beschikbaarheids zones, is de Basic load balancer SKU prima.
+Azure biedt twee verschillende [Load Balancer sku's](../../../load-balancer/load-balancer-overview.md): een basis-SKU en een standaard-SKU. Op basis van de voor delen van Setup en functionaliteit moet u de standaard-SKU van de Azure-load balancer gebruiken. Een van de grote voor delen van de standaard versie van de load balancer is dat het gegevens verkeer niet via de load balancer zelf wordt gerouteerd.
 
-Is het verkeer tussen de DBMS-Vm's en de SAP-toepassingslaag altijd via de load balancer steeds gerouteerd? Het antwoord is afhankelijk van de configuratie van de load balancer. 
+Een voor beeld van hoe u een interne load balancer kunt configureren, vindt u in de zelf studie over het artikel [: een SQL Server beschikbaarheids groep in azure hand matig configureren virtual machines](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/availability-group-manually-configure-tutorial#create-an-azure-load-balancer)
 
-Op dit moment wordt het binnenkomende verkeer naar de DBMS-VM altijd gerouteerd via de load balancer. De route voor uitgaand verkeer van de DBMS-VM naar de Application Layer-VM is afhankelijk van de configuratie van de load balancer. 
+> [!NOTE]
+> Er zijn verschillen in gedrag van de basis-en standaard-SKU met betrekking tot de toegang tot open bare IP-adressen. De manier waarop de beperkingen van de standaard-SKU worden omzeild om toegang te krijgen tot open bare IP-adressen, wordt beschreven in de [open bare eindpunt connectiviteit van het document voor virtual machines met behulp van Azure Standard Load Balancer in scenario's met hoge Beschik baarheid van SAP](./high-availability-guide-standard-load-balancer-outbound-connections.md)
 
-De load balancer biedt een optie van DirectServerReturn. Als deze optie is geconfigureerd, wordt het verkeer dat afkomstig is van de DBMS-VM naar de SAP-toepassingslaag *niet* gerouteerd via de Load Balancer. In plaats daarvan gaat u rechtstreeks naar de toepassingslaag. Als DirectServerReturn niet is geconfigureerd, wordt het retour verkeer naar de SAP-toepassingslaag doorgestuurd via de load balancer.
-
-We raden u aan om DirectServerReturn te configureren in combi natie met load balancers die tussen de SAP-toepassingslaag en de DBMS-laag worden geplaatst. Deze configuratie vermindert de netwerk latentie tussen de twee lagen.
-
-Zie [een ILB-listener configureren voor AlwaysOn-beschikbaarheids groepen in azure](/previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener)voor een voor beeld van het instellen van deze configuratie met SQL Server always on.
-
-Als u gepubliceerde GitHub JSON-sjablonen gebruikt als referentie voor uw SAP-infrastructuur implementaties in azure, kunt u deze [sjabloon bestuderen voor een SAP-systeem met drie lagen](https://github.com/Azure/azure-quickstart-templates/tree/4099ad9bee183ed39b88c62cd33f517ae4e25669/sap-3-tier-marketplace-image-converged-md). In deze sjabloon ziet u ook de juiste instellingen voor de load balancer.
 
 ### <a name="azure-accelerated-networking"></a>Versneld Azure-netwerken
 Om de netwerk latentie tussen virtuele Azure-machines verder te verminderen, raden we u aan om [Azure versneld netwerken](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)te kiezen. Gebruik deze methode wanneer u Azure-Vm's implementeert voor een SAP-workload, met name voor de SAP-toepassingslaag en de SAP-DBMS-laag.
@@ -336,11 +347,11 @@ Om de netwerk latentie tussen virtuele Azure-machines verder te verminderen, rad
 >
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows versneld netwerken][Logo_Windows] Windows
 >
 > Zie [een virtuele Windows-machine maken met versneld netwerken](../../../virtual-network/create-vm-accelerated-networking-powershell.md)voor meer informatie over het implementeren van vm's met versneld netwerken voor Windows.
 >
-> ![Linux][Logo_Linux] Linux
+> ![Versneld Linux-netwerken][Logo_Linux] Linux
 >
 > Zie [een virtuele Linux-machine maken met versneld netwerken](../../../virtual-network/create-vm-accelerated-networking-cli.md)voor meer informatie over Linux-distributie.
 >

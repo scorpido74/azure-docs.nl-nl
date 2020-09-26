@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 543c1a6706f794b81c4f93fc6fff3a61ed3fb9e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 59dc94e37dfa1ef8b0b079bf5d78d0504e0cb8c7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60246361"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91313617"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Azure AD Connect Sync: uitleg over declaratieve inrichting
 In dit onderwerp wordt het configuratie model in Azure AD Connect uitgelegd. Het model wordt declaratieve inrichting genoemd en stelt u in staat om een configuratie wijziging met gemak te maken. Veel dingen die in dit onderwerp worden beschreven, zijn Geavanceerd en zijn niet vereist voor de meeste klanten scenario's.
@@ -29,11 +29,11 @@ In dit onderwerp wordt het configuratie model in Azure AD Connect uitgelegd. Het
 ## <a name="overview"></a>Overzicht
 Met declaratieve inrichting worden objecten verwerkt die afkomstig zijn van een door een bron verbonden Directory en wordt bepaald hoe het object en de kenmerken van een bron naar een doel moeten worden getransformeerd. Een object wordt verwerkt in een synchronisatie pijplijn en de pijp lijn is hetzelfde voor binnenkomende en uitgaande regels. Een regel voor inkomend verkeer is van een connector ruimte op de tekst en een uitgaande regel is van de omgekeerde naar een connector ruimte.
 
-![Pijp lijn synchroniseren](./media/concept-azure-ad-connect-sync-declarative-provisioning/sync1.png)  
+![Diagram waarin een voor beeld van een synchronisatie pijplijn wordt weer gegeven.](./media/concept-azure-ad-connect-sync-declarative-provisioning/sync1.png)  
 
 De pijp lijn heeft verschillende modules. Elke account is verantwoordelijk voor één concept in object synchronisatie.
 
-![Pijp lijn synchroniseren](./media/concept-azure-ad-connect-sync-declarative-provisioning/pipeline.png)  
+![Diagram waarin de modules in de pijp lijn worden weer gegeven.](./media/concept-azure-ad-connect-sync-declarative-provisioning/pipeline.png)  
 
 * Bron, het bron object
 * [Bereik](#scope), zoekt alle synchronisatie regels die binnen het bereik vallen
@@ -44,7 +44,7 @@ De pijp lijn heeft verschillende modules. Elke account is verantwoordelijk voor 
 
 ## <a name="scope"></a>Bereik
 De bereik module evalueert een object en bepaalt de regels die binnen het bereik vallen en moeten worden opgenomen in de verwerking. Afhankelijk van de kenmerken waarden van het object, worden verschillende synchronisatie regels geëvalueerd die binnen het bereik vallen. Een uitgeschakelde gebruiker zonder Exchange-postvak heeft bijvoorbeeld andere regels dan een ingeschakelde gebruiker met een postvak.  
-![Bereik](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope1.png)  
+![Diagram waarin de bereik module voor een object wordt weer gegeven.](./media/concept-azure-ad-connect-sync-declarative-provisioning/scope1.png)  
 
 Het bereik is gedefinieerd als groepen en componenten. De componenten bevinden zich in een groep. Een logische en wordt gebruikt tussen alle componenten in een groep. Bijvoorbeeld (afdeling = IT en land = Denemarken). Een logische of wordt gebruikt tussen groepen.
 
@@ -78,7 +78,7 @@ De samen voegingen worden gedefinieerd als een of meer groepen. Binnen een groep
 De samen voegingen in deze afbeelding worden van boven naar beneden verwerkt. Eerst ziet de synchronisatie pijplijn of er een overeenkomst is voor werk nemers. Als dat niet het geval is, ziet de tweede regel of de account naam kan worden gebruikt om de objecten samen te voegen. Als dat niet het geval is, is de derde en de laatste regel een beter benadering met de naam van de gebruiker.
 
 Als alle regels voor samen voegen zijn geëvalueerd en er niet precies één overeenkomst is, wordt het **koppelings type** op de pagina **Beschrijving** gebruikt. Als deze optie is ingesteld op **inrichten**, wordt een nieuw object in het doel gemaakt.  
-![Inrichten of lid worden](./media/concept-azure-ad-connect-sync-declarative-provisioning/join3.png)  
+![Scherm afbeelding met de vervolg keuzelijst ' koppelings type ' geopend.](./media/concept-azure-ad-connect-sync-declarative-provisioning/join3.png)  
 
 Een object mag slechts één synchronisatie regel hebben met de regels voor samen voegen in het bereik. Als er meerdere synchronisatie regels zijn waarbij een samen voeging is gedefinieerd, treedt er een fout op. De prioriteit wordt niet gebruikt om deelname conflicten op te lossen. Een object moet een joinlijn hebben in het bereik voor kenmerken die moeten worden verzonden met dezelfde inkomende/uitgaande richting. Als u kenmerken zowel binnenkomend als uitgaand naar hetzelfde object wilt stroomren, moet u zowel een binnenkomende als een uitgaande synchronisatie regel met samen voegen hebben.
 
@@ -101,7 +101,7 @@ Met het selectie vakje **eenmaal Toep assen** definieert u dat het kenmerk allee
 ### <a name="merging-attribute-values"></a>Kenmerk waarden worden samengevoegd
 In de kenmerk stromen is er een instelling om te bepalen of kenmerken met meerdere waarden moeten worden samengevoegd uit verschillende connectors. De standaard waarde is **Update**, wat aangeeft dat de synchronisatie regel met de hoogste prioriteit moet worden gewonnen.
 
-![Typen samen voegen](./media/concept-azure-ad-connect-sync-declarative-provisioning/mergetype.png)  
+![Scherm afbeelding met de sectie ' trans formaties toevoegen ' met de vervolg keuzelijst ' typen samen voegen ' geopend.](./media/concept-azure-ad-connect-sync-declarative-provisioning/mergetype.png)  
 
 Er is ook **samen voegen** en **MergeCaseInsensitive**. Met deze opties kunt u waarden uit verschillende bronnen samen voegen. Het kan bijvoorbeeld worden gebruikt om het kenmerk lid of proxyAddresses uit verschillende forests samen te voegen. Wanneer u deze optie gebruikt, moeten alle synchronisatie regels in het bereik voor een object hetzelfde type samen voegen gebruiken. U kunt de **Update** niet definiëren vanuit de ene connector en **samen voegen** van een andere. Als u probeert, treedt er een fout op.
 
@@ -146,7 +146,7 @@ U kunt de prioriteit definiëren tussen connectors. Hiermee kunnen connectors me
 
 ### <a name="multiple-objects-from-the-same-connector-space"></a>Meerdere objecten van dezelfde connector ruimte
 Als er meerdere objecten in dezelfde connector ruimte zijn gekoppeld aan hetzelfde omgekeerde object, moet de prioriteit worden aangepast. Als verschillende objecten binnen het bereik van dezelfde synchronisatie regel vallen, kan de synchronisatie-engine de prioriteit niet bepalen. Het is ambigu welk bron object de waarde moet bijdragen aan de tekst. Deze configuratie wordt als dubbel zinnig gerapporteerd, zelfs als de kenmerken in de bron dezelfde waarde hebben.  
-![Meerdere objecten gekoppeld aan hetzelfde MV-object](./media/concept-azure-ad-connect-sync-declarative-provisioning/multiple1.png)  
+![Diagram waarin meerdere objecten worden weer gegeven die zijn gekoppeld aan hetzelfde MV-object met een transparante rode X-overlay. ](./media/concept-azure-ad-connect-sync-declarative-provisioning/multiple1.png)  
 
 Voor dit scenario moet u het bereik van de synchronisatie regels wijzigen zodat de bron objecten verschillende synchronisatie regels in het bereik hebben. Hiermee kunt u een andere prioriteit definiëren.  
 ![Meerdere objecten gekoppeld aan hetzelfde MV-object](./media/concept-azure-ad-connect-sync-declarative-provisioning/multiple2.png)  

@@ -3,13 +3,13 @@ title: Suggesties voor actieve trainingen-QnA Maker
 description: Verbeter de kwaliteit van uw kennis basis met actief onderwijs. Beoordeling, accepteren of afwijzen, toevoegen zonder bestaande vragen te verwijderen of te wijzigen.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: 9bed80ac8c80fb4cecf06b979e0403e34645db01
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: bd90ea3cd73fcd6a545d925e3897c6053184d98c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88919128"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321013"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>Voorgestelde vragen over actieve trainingen in de Knowledge Base accepteren
 
@@ -130,7 +130,7 @@ Content-Type: application/json
 
 |Eigenschap HTTP-aanvraag|Naam|Type|Doel|
 |--|--|--|--|
-|URL-route parameter|Knowledge Base-ID|tekenreeks|De GUID voor uw Knowledge Base.|
+|URL-route parameter|Id van de Knowledge Base|tekenreeks|De GUID voor uw Knowledge Base.|
 |Aangepast subdomein|Resource naam QnAMaker|tekenreeks|De resource naam wordt gebruikt als het aangepaste subdomein voor uw QnA Maker. Dit is beschikbaar op de pagina instellingen nadat u de Knowledge Base hebt gepubliceerd. Deze wordt weer gegeven als de `host` .|
 |Koptekst|Content-Type|tekenreeks|Het media type van de hoofd tekst die naar de API is verzonden. De standaard waarde is: `application/json`|
 |Koptekst|Autorisatie|tekenreeks|Uw eindpunt sleutel (EndpointKey XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX).|
@@ -140,7 +140,7 @@ De JSON-hoofd tekst heeft verschillende instellingen:
 
 |Eigenschap van JSON-hoofd tekst|Type|Doel|
 |--|--|--|--|
-|`feedbackRecords`|array|Lijst met feedback.|
+|`feedbackRecords`|matrix|Lijst met feedback.|
 |`userId`|tekenreeks|De gebruikers-ID van de persoon die de voorgestelde vragen accepteert. De indeling van de gebruikers-ID is Maxi maal. Een e-mail adres kan bijvoorbeeld een geldige gebruikers-ID zijn in uw architectuur. Optioneel.|
 |`userQuestion`|tekenreeks|De exacte tekst van de query van de gebruiker. Vereist.|
 |`qnaID`|getal|De ID van de vraag die in het [GenerateAnswer-antwoord](metadata-generateanswer-usage.md#generateanswer-response-properties)is gevonden. |
