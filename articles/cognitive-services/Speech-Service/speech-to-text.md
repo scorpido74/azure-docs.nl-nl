@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: spraak naar tekst, spraak naar tekst software
-ms.openlocfilehash: 804acd17f3df91cc3df949d6d9ccac0450bb225f
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: f4392881c2f572b1e53d7c283ef5c1debc1d20ea
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569217"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91359933"
 ---
 # <a name="what-is-speech-to-text"></a>Wat is spraak-naar-tekst?
 
@@ -58,5 +58,5 @@ Batch-transcriptie is een reeks REST API bewerkingen waarmee u een grote hoeveel
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Verkrijg gratis een spraakserviceabonnementssleutel](get-started.md)
+- [Verkrijg gratis een spraakserviceabonnementssleutel](overview.md#try-the-speech-service-for-free)
 - [De Speech SDK ophalen](speech-sdk.md)

@@ -3,16 +3,16 @@ title: Uw niet-Azure-machines verbinden met Azure Security Center
 description: Meer informatie over hoe u uw niet-Azure-machines verbindt met Security Center
 author: memildin
 ms.author: memildin
-ms.date: 9/12/2020
+ms.date: 9/22/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 2602df2e8a2699914ee32138a8aeba31d7f58cdb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 82b8161f92f337002e9d8bbdc45cd53d5921fc00
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935552"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280671"
 ---
 #  <a name="connect-your-non-azure-machines-to-security-center"></a>Uw niet-Azure-machines verbinden met Security Center
 
@@ -89,7 +89,7 @@ Zie [Windows-computers verbinden](../azure-monitor/platform/agent-windows.md#ins
 
 
 ## <a name="verifying"></a>Controleren
-Gefeliciteerd Nu kunt u uw Azure-en niet-Azure-machines op één plek weer geven. Open de [pagina Asset Inventory](asset-inventory.md) en filter naar de relevante resource typen. Deze twee pictogrammen onderscheiden de typen:
+Gefeliciteerd. Nu kunt u uw Azure-en niet-Azure-machines op één plek weer geven. Open de [pagina Asset Inventory](asset-inventory.md) en filter naar de relevante resource typen. Deze twee pictogrammen onderscheiden de typen:
 
   ![pictogram1](./media/quick-onboard-linux-computer/security-center-monitoring-icon1.png) Niet-Azure-computer
 

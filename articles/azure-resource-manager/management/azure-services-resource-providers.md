@@ -3,12 +3,12 @@ title: Resource providers door Azure-Services
 description: Een lijst met alle naam ruimten van de resource provider voor Azure Resource Manager en toont de Azure-service voor die naam ruimte.
 ms.topic: conceptual
 ms.date: 09/04/2020
-ms.openlocfilehash: 34b2476b8194b8ad6f8e7e86e2644a1c0d0bbb4b
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: b740c8ee7c28bfeeaecc42121d0c7ce4a323ab3e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89483998"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330822"
 ---
 # <a name="resource-providers-for-azure-services"></a>Resource providers for Azure services (Resourceproviders voor Azure-services)
 
@@ -55,7 +55,7 @@ In dit artikel wordt uitgelegd hoe naam ruimten van de resource provider worden 
 | Micro soft. ClassicSubscription<sup>1</sup> | Klassiek implementatiemodel |
 | Microsoft.CognitiveServices | [Cognitive Services](../../cognitive-services/index.yml) |
 | Micro soft. commerce<sup>1</sup> | baan |
-| Microsoft.Compute | [Virtual Machines](../../virtual-machines/index.yml)<br />[Virtual Machine Scale Sets](../../virtual-machine-scale-sets/index.yml) |
+| Microsoft.Compute | [Virtual Machines](../../virtual-machines/index.yml)<br />[Virtuele-machineschaalsets](../../virtual-machine-scale-sets/index.yml) |
 | Micro soft. verbruik<sup>1</sup> | [Cost Management](/azure/cost-management/) |
 | Micro soft. ContainerInstance | [Container Instances](../../container-instances/index.yml) |
 | Microsoft.ContainerRegistry | [Container Registry](../../container-registry/index.yml) |
@@ -72,7 +72,7 @@ In dit artikel wordt uitgelegd hoe naam ruimten van de resource provider worden 
 | Microsoft.DataLakeAnalytics | [Data Lake Analytics](../../data-lake-analytics/index.yml) |
 | Microsoft.DataLakeStore | [Azure Data Lake Storage Gen2](../../storage/blobs/data-lake-storage-introduction.md) |
 | Micro soft. DataMigration | [Azure Database Migration Service](../../dms/index.yml) |
-| Micro soft. DataProtection | Gegevensbeveiliging |
+| Micro soft. DataProtection | Gegevensbescherming |
 | Micro soft. DataShare | [Azure Data Share](../../data-share/index.yml) |
 | Micro soft. DBforMariaDB | [Azure Database for MariaDB](../../mariadb/index.yml) |
 | Micro soft. DBforMySQL | [Azure Database for MySQL](../../mysql/index.yml) |
@@ -82,7 +82,7 @@ In dit artikel wordt uitgelegd hoe naam ruimten van de resource provider worden 
 | Microsoft.Devices | [Azure IoT Hub](../../iot-hub/index.yml)<br />[Azure IoT Hub Device Provisioning Service](../../iot-dps/index.yml) |
 | Micro soft. DevOps | [Azure DevOps](/azure/devops/) |
 | Micro soft. DevSpaces | [Azure Dev Spaces](../../dev-spaces/index.yml) |
-| Microsoft.DevTestLab | [Azure Lab Services](../../lab-services/index.yml) |
+| Microsoft.DevTestLab | [Azure Lab-Services](../../lab-services/index.yml) |
 | Micro soft. DigitalTwins | [Azure Digital Twins](../../digital-twins/overview.md) |
 | Microsoft.DocumentDB | [Azure Cosmos DB](../../cosmos-db/index.yml) |
 | Micro soft. DomainRegistration | [App Service](../../app-service/index.yml) |
@@ -98,7 +98,7 @@ In dit artikel wordt uitgelegd hoe naam ruimten van de resource provider worden 
 | Micro soft. HealthcareApis | [Azure-API voor FHIR](../../healthcare-apis/index.yml) |
 | Microsoft.HybridCompute | [Azure Arc](../../azure-arc/index.yml) |
 | Micro soft. HybridData | [StorSimple](../../storsimple/index.yml) |
-| Micro soft. HybridNetwork  | Ondersteuning voor stack rand |
+| Micro soft. HybridNetwork  | [Zones met persoonlijke randen](../../networking/edge-zones-overview.md) |
 | Microsoft.ImportExport | [Azure Import/Export](../../storage/common/storage-import-export-service.md) |
 | micro soft. Insights | [Azure Monitor](../../azure-monitor/index.yml) |
 | Micro soft. IoTCentral | [Azure IoT Central](../../iot-central/index.yml) |
@@ -108,7 +108,7 @@ In dit artikel wordt uitgelegd hoe naam ruimten van de resource provider worden 
 | Microsoft.Kubernetes | [Azure Kubernetes Service (AKS)](../../aks/index.yml) |
 | Micro soft. KubernetesConfiguration | [Azure Kubernetes Service (AKS)](../../aks/index.yml) |
 | Microsoft.Kusto | [Azure Data Explorer](/azure/data-explorer/) |
-| Micro soft. LabServices | [Azure Lab Services](../../lab-services/index.yml) |
+| Micro soft. LabServices | [Azure Lab-Services](../../lab-services/index.yml) |
 | Microsoft.Logic | [Logic Apps](../../logic-apps/index.yml) |
 | Microsoft.MachineLearning | [Machine Learning Studio](../../machine-learning/studio/index.yml) |
 | Microsoft.MachineLearningServices | [Azure Machine Learning](../../machine-learning/index.yml) |
@@ -134,7 +134,7 @@ In dit artikel wordt uitgelegd hoe naam ruimten van de resource provider worden 
 | Microsoft.OperationalInsights | [Azure Monitor](../../azure-monitor/index.yml) |
 | Microsoft.OperationsManagement | [Azure Monitor](../../azure-monitor/index.yml) |
 | Micro soft. peering | [Azure Peering Service](../../peering-service/index.yml) |
-| Micro soft. PolicyInsights | [Azure Policy](../../governance/policy/index.yml) |
+| Microsoft.PolicyInsights | [Azure Policy](../../governance/policy/index.yml) |
 | Micro soft. Portal<sup>1</sup> | [Azure-portal](../../azure-portal/index.yml) |
 | Micro soft. PowerBI | [Power BI](/power-bi/power-bi-overview) |
 | Micro soft. PowerBIDedicated | [Power BI Embedded](/azure/power-bi-embedded/) |
@@ -158,11 +158,11 @@ In dit artikel wordt uitgelegd hoe naam ruimten van de resource provider worden 
 | Micro soft. ServiceFabric | [Service Fabric](../../service-fabric/index.yml) |
 | Micro soft. ServiceFabricMesh | [Service Fabric Mesh](../../service-fabric-mesh/index.yml) |
 | Micro soft. Services | baan |
-| Micro soft. SignalRService | [Azure SignalR-service](../../azure-signalr/index.yml) |
+| Micro soft. SignalRService | [Azure SignalR Service](../../azure-signalr/index.yml) |
 | Micro soft. SoftwarePlan | Licentie |
 | Micro soft. Solutions | [Azure Managed Applications](../managed-applications/index.yml) |
 | Microsoft.Sql | [Azure SQL Database](../../azure-sql/database/index.yml)<br /> [Azure SQL Managed Instance](../../azure-sql/managed-instance/index.yml) <br />[Azure Synapse Analytics](/azure/sql-data-warehouse/) |
-| Micro soft. SqlVirtualMachine | [SQL Server op virtuele machines in Azure](../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) |
+| Micro soft. SqlVirtualMachine | [SQL Server op Azure Virtual Machines](../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) |
 | Microsoft.Storage | [Storage](../../storage/index.yml) |
 | Micro soft. StorageCache | [Azure HPC Cache](../../hpc-cache/index.yml) |
 | Micro soft. StorageSync | [Storage](../../storage/index.yml) |
@@ -188,4 +188,4 @@ In dit artikel wordt uitgelegd hoe naam ruimten van de resource provider worden 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Azure resource providers en-typen](resource-providers-and-types.md) voor meer informatie over resource providers, met inbegrip van het registreren van een resource provider
+Zie [Azure resource providers en-typen](resource-providers-and-types.md)voor meer informatie over resource providers, met inbegrip van het registreren van een resource provider.

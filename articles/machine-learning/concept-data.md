@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 08/31/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 85aa78223b8db76cfb430341b19878bc6bbe87d7
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: ac0b3c151b379096ffb60e049d18b8f6219b1445
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651169"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91359678"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Beveiligde toegang tot gegevens in Azure Machine Learning
 
@@ -48,7 +48,7 @@ Wanneer u klaar bent voor het gebruik van de gegevens in uw opslag oplossing op 
 
 Het volgende diagram biedt een visuele demonstratie van deze aanbevolen werk stroom.
 
-![Gegevens-concept diagram](./media/concept-data/data-concept-diagram.svg)
+![Diagram toont de Azure Storage-service die naar een gegevens opslag doorloopt, die in een gegevensset loopt. De gegevensset stromen naar model training, die stromen naar gegevens drift, die terugstromen naar DataSet.](./media/concept-data/data-concept-diagram.svg)
 
 ## <a name="datastores"></a>Gegevensarchieven
 

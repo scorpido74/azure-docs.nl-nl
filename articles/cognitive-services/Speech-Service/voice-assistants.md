@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: 18a9de8a2eaa2364e89e831db8dab5cbbb061c10
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 4bdca8921a99db764cbc8ee1edfdad8cf8b8568f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85299242"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360936"
 ---
 # <a name="what-is-a-voice-assistant"></a>Wat is een spraakassistent?
 
@@ -72,8 +72,8 @@ Voorbeeld code voor het maken van een spraak-assistent is beschikbaar op GitHub.
 
 Spraak assistenten die zijn gemaakt met Azure speech Services kunnen gebruikmaken van het volledige aanbod aan aanpassings opties.
 
-* [Custom Speech](how-to-custom-speech.md)
-* [Aangepaste spraak](how-to-custom-voice.md)
+* [Aangepaste spraak](how-to-custom-speech.md)
+* [Aangepaste stem](how-to-custom-voice.md)
 * [Aangepast trefwoord](custom-keyword-overview.md)
 
 > [!NOTE]
@@ -81,7 +81,7 @@ Spraak assistenten die zijn gemaakt met Azure speech Services kunnen gebruikmake
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Gratis een abonnements sleutel voor een spraak service ophalen](get-started.md)
+* [Verkrijg gratis een spraakserviceabonnementssleutel](overview.md#try-the-speech-service-for-free)
 * [Meer informatie over aangepaste opdrachten](custom-commands.md)
 * [Meer informatie over direct line speech](direct-line-speech.md)
 * [De Speech SDK ophalen](speech-sdk.md)

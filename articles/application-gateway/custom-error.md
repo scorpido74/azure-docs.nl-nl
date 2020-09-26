@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/16/2019
 ms.author: victorh
-ms.openlocfilehash: 953be98de855162127fd8b8b8273fe9817668db7
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: ff3e9db4dcfe0bedc348323dbbddd1e66124fc5d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934817"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360154"
 ---
 # <a name="create-application-gateway-custom-error-pages"></a>Application Gateway aangepaste fout pagina's maken
 
@@ -48,7 +48,7 @@ Nadat u een fout pagina hebt opgegeven, wordt deze door de toepassings gateway g
 
 1. Navigeer naar Application Gateway in de portal en kies een toepassings gateway.
 
-    ![AG-overzicht](media/custom-error/ag-overview.png)
+    ![Scherm afbeelding toont de overzichts pagina voor een toepassings gateway.](media/custom-error/ag-overview.png)
 2. Klik op **listeners** en navigeer naar een bepaalde listener waar u een fout pagina wilt opgeven.
 
     ![Application Gateway listeners](media/custom-error/ag-listener.png)
