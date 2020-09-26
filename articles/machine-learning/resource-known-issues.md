@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
 ms.date: 08/13/2020
-ms.openlocfilehash: 1524e51fff64b00a798f15425973145feee730fe
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 67ab15a6b890bc5f28cd18fca8a35adbc7437778
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651643"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280977"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Bekende problemen en probleem oplossing in Azure Machine Learning
 
@@ -291,12 +291,12 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
 
 * **ModuleErrors (geen module met de naam)**: als u in ModuleErrors uitvoert terwijl experimenten in azure ml worden ingediend, betekent dit dat het trainings script verwacht dat er een pakket wordt geïnstalleerd, maar dit wordt niet toegevoegd. Wanneer u de naam van het pakket opgeeft, installeert Azure ML het pakket in de omgeving die wordt gebruikt voor de uitvoering van uw training. 
 
-    Als u [schattingen](concept-azure-machine-learning-architecture.md#estimators) gebruikt om experimenten in te dienen, kunt u een pakket naam opgeven via `pip_packages` of `conda_packages` para meter in de Estimator op basis van de bron die u wilt installeren van het pakket. U kunt ook een yml-bestand met al uw afhankelijkheden opgeven `conda_dependencies_file` of al uw PIP-vereisten in een txt-bestand met behulp van `pip_requirements_file` para meter. Als u uw eigen Azure ML-omgevings object hebt dat u de standaard installatie kopie wilt overschrijven die wordt gebruikt door de Estimator, kunt u die omgeving opgeven via de `environment` para meter van de Estimator-constructor.
+    Als u schattingen gebruikt om experimenten in te dienen, kunt u een pakket naam opgeven via `pip_packages` of `conda_packages` para meter in de Estimator op basis van de bron die u wilt installeren van het pakket. U kunt ook een yml-bestand met al uw afhankelijkheden opgeven `conda_dependencies_file` of al uw PIP-vereisten in een txt-bestand met behulp van `pip_requirements_file` para meter. Als u uw eigen Azure ML-omgevings object hebt dat u de standaard installatie kopie wilt overschrijven die wordt gebruikt door de Estimator, kunt u die omgeving opgeven via de `environment` para meter van de Estimator-constructor.
 
     Azure ML biedt ook Framework-specifieke schattingen voor tensor flow, PyTorch, Chainer en SKLearn. Door deze ramingen te gebruiken, moet u ervoor zorgen dat de basis raamwerk afhankelijkheden namens u zijn geïnstalleerd in de omgeving die wordt gebruikt voor de training. U hebt de optie om extra afhankelijkheden op te geven zoals hierboven wordt beschreven. 
  
     Azure ML bewaart docker-installatie kopieën en de inhoud ervan kunnen worden weer gegeven in [AzureML-containers](https://github.com/Azure/AzureML-Containers).
-    Framework-specifieke afhankelijkheden worden weer gegeven in de bijbehorende Framework-documentatie- [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py#&preserve-view=trueremarks), [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py#&preserve-view=trueremarks), [tensor flow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py#&preserve-view=trueremarks), [SKLearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py#&preserve-view=trueremarks).
+    Framework-specifieke afhankelijkheden worden weer gegeven in de bijbehorende Framework-documentatie- [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py&preserve-view=true#&preserve-view=trueremarks), [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py&preserve-view=true#&preserve-view=trueremarks), [tensor flow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py&preserve-view=true#&preserve-view=trueremarks), [SKLearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py&preserve-view=true#&preserve-view=trueremarks).
 
     > [!Note]
     > Als u denkt dat een bepaald pakket algemeen genoeg is om te worden toegevoegd aan de bewaarde afbeeldingen en omgevingen van Azure ML, kunt u een GitHub-probleem veroorzaken in [AzureML-containers](https://github.com/Azure/AzureML-Containers). 
@@ -305,7 +305,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
 
 * **Horovod is uitgeschakeld**: in de meeste gevallen is het mogelijk dat er een onderliggende uitzonde ring is opgetreden in een van de processen waardoor Horovod werd afgesloten als u problemen ondervindt met ' AbortedError: Horovod is afgesloten '. Elke positie in de MPI-taak krijgt een eigen toegewezen logboek bestand in azure ML. Deze logboeken hebben de naam `70_driver_logs` . In het geval van gedistribueerde trainingen worden de namen van de logboeken in een achtervoegsel opgenomen, `_rank` zodat het eenvoudiger is om de logboeken te onderscheiden. Als u de exacte fout wilt vinden die ervoor heeft gezorgd dat Horovod wordt afgesloten, gaat u naar alle logboek bestanden en zoekt u `Traceback` aan het einde van de driver_log bestanden. Met een van deze bestanden krijgt u de daad werkelijke onderliggende uitzonde ring. 
 
-* **Verwijdering van de uitvoering of het experiment**: experimenten kunnen worden gearchiveerd met behulp van de methode [experiment. Archive](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#&preserve-view=truearchive--) of vanuit de weer gave van het tabblad experiment in azure machine learning Studio-client via de knop ' Archief experiment '. Met deze actie wordt het experiment verborgen in lijst query's en weer gaven, maar wordt het niet verwijderd.
+* **Verwijdering van de uitvoering of het experiment**: experimenten kunnen worden gearchiveerd met behulp van de methode [experiment. Archive](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truearchive--) of vanuit de weer gave van het tabblad experiment in azure machine learning Studio-client via de knop ' Archief experiment '. Met deze actie wordt het experiment verborgen in lijst query's en weer gaven, maar wordt het niet verwijderd.
 
     Het permanent verwijderen van afzonderlijke experimenten of uitvoeringen wordt momenteel niet ondersteund. Zie [uw machine learning service-werkruimte gegevens exporteren of verwijderen](how-to-export-delete-data.md)voor meer informatie over het verwijderen van werk ruimte-assets.
 
@@ -320,7 +320,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
 
 ## <a name="automated-machine-learning"></a>Geautomatiseerde Machine Learning
 
-* **Recente upgrade van AutoML-afhankelijkheden voor nieuwere versies wordt compatibilitity**: vanaf versie 1.13.0 van de SDK, worden modellen niet geladen in oudere sdk's vanwege incompatibiliteit tussen de oudere versies die we in onze vorige pakketten hebben vastgemaakt en de nieuwere versies die we nu vastmaken. U ziet de fout, zoals:
+* De **recente upgrade van AutoML-afhankelijkheden voor nieuwere versies leidt tot een afbreuk**aan de compatibiliteit: vanaf versie 1.13.0 van de SDK worden modellen niet geladen in oudere sdk's vanwege incompatibiliteit tussen de oudere versies die we in onze vorige pakketten hebben vastgemaakt, en de nieuwere versies die we nu vastmaken. U ziet de fout, zoals:
   * Module niet gevonden: ex. `No module named 'sklearn.decomposition._truncated_svd` ,
   * Import fouten: ex. `ImportError: cannot import name 'RollingOriginValidator'` ,
   * Kenmerk fouten: ex. `AttributeError: 'SimpleImputer' object has no attribute 'add_indicator`
@@ -340,7 +340,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
     pip install --upgrade scikit-learn==0.20.3
   ```
  
-* **Forecasting R2-Score is altijd nul**: dit probleem doet zich voor als de verstrekte trainings gegevens een tijd reeks hebben die dezelfde waarde voor de laatste `n_cv_splits`  +  `forecasting_horizon` gegevens punten bevat. Als dit patroon in uw tijd reeks wordt verwacht, kunt u de primaire metriek overschakelen naar een genormaliseerde fout in de hoofdmap.
+* **Forecasting R2-Score is altijd nul**: dit probleem doet zich voor als de verstrekte trainings gegevens een tijd reeks hebben die dezelfde waarde voor de laatste `n_cv_splits`  +  `forecasting_horizon` gegevens punten bevat. Als dit patroon in uw tijd reeks wordt verwacht, kunt u de primaire metriek overschakelen naar een genormaliseerd wortel fout.
  
 * **Tensor flow**: vanaf versie 1.5.0 van de SDK installeert automatische machine learning standaard geen tensor flow-modellen. Als u tensor flow wilt installeren en wilt gebruiken met uw geautomatiseerde ML experimenten, installeert u tensor flow = = 1.12.0 via CondaDependecies. 
  
@@ -366,7 +366,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
     * Zorg ervoor dat de Conda 64-bits is geïnstalleerd in plaats van 32-bits door de opdracht uit te voeren `conda info` . De `platform` moet `win-64` voor Windows of `osx-64` voor Mac zijn.
     * Zorg ervoor dat Conda 4.4.10 of hoger is geïnstalleerd. U kunt de versie controleren met de opdracht `conda -V` . Als u een vorige versie hebt geïnstalleerd, kunt u deze bijwerken met behulp van de opdracht: `conda update conda` .
     * Spreek `gcc: error trying to exec 'cc1plus'`
-      *  Als de `gcc: error trying to exec 'cc1plus': execvp: No such file or directory` fout is opgetreden, installeert u build Essentials met behulp van de Ndere-opdracht `sudo apt-get install build-essential` .
+      *  Als de `gcc: error trying to exec 'cc1plus': execvp: No such file or directory` fout is opgetreden, installeert u build Essentials met behulp van de opdracht `sudo apt-get install build-essential` .
       * Geef een nieuwe naam als de eerste para meter op automl_setup om een nieuwe Conda-omgeving te maken. Bekijk bestaande Conda-omgevingen met `conda env list` en verwijder ze met `conda env remove -n <environmentname>` .
       
 * **automl_setup_linux. sh mislukt**: als automl_setup_linus. sh mislukt bij Ubuntu Linux met de fout: `unable to execute 'gcc': No such file or directory`-
@@ -376,7 +376,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
   4. `automl_setup_linux.sh`Opnieuw uitvoeren
 
 * **Configuration. ipynb mislukt**:
-  * Voor lokale Conda moet u er eerst voor zorgen dat automl_setup susccessfully worden uitgevoerd.
+  * Voor lokale Conda moet u er eerst voor zorgen dat automl_setup is uitgevoerd.
   * Zorg ervoor dat de subscription_id juist is. Zoek de subscription_id in azure portal door alle services te selecteren en vervolgens op abonnementen. De tekens ' < ' en ' > ' mogen niet worden opgenomen in de subscription_id waarde. `subscription_id = "12345678-90ab-1234-5678-1234567890abcd"`Heeft bijvoorbeeld een geldige indeling.
   * Zorg ervoor dat Inzender of eigenaar toegang heeft tot het abonnement.
   * Controleer of de regio een van de ondersteunde regio's is: `eastus2` , `eastus` , `westcentralus` , `southeastasia` , `westeurope` , `australiaeast` , `westus2` , `southcentralus` .
@@ -390,10 +390,10 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
   3. Als er een nieuw abonnement, een resource groep, werk ruimte of regio wordt gebruikt, moet u ervoor zorgen dat u het `configuration.ipynb` notitie blok opnieuw uitvoert. Het is niet mogelijk om config.jsrechtstreeks te wijzigen als de werk ruimte al bestaat in de opgegeven resource groep onder het opgegeven abonnement.
   4. Als u de regio wilt wijzigen, wijzigt u de werk ruimte, de resource groep of het abonnement. `Workspace.create` Er wordt geen werk ruimte gemaakt of bijgewerkt als deze al bestaat, zelfs als de opgegeven regio verschillend is.
   
-* **Voorbeeld notitieblok mislukt**: als een voor beeld van een notebook mislukt met een fout die prepert, methode of bibliotheek niet bestaat:
-  * Zorg ervoor dat de correctcorrect-kernel is geselecteerd in de jupyter-notebook. De kernel wordt weer gegeven in de rechter bovenhoek van de notitie blok pagina. De standaard waarde is azure_automl. Houd er rekening mee dat de kernel wordt opgeslagen als onderdeel van het notitie blok. Als u overschakelt naar een nieuwe Conda-omgeving, moet u dus de nieuwe kernel in het notitie Blok selecteren.
+* **Voorbeeld notitieblok mislukt**: als een voor beeld van een notebook mislukt met een fout die eigenschap, methode of bibliotheek niet bestaat:
+  * Zorg ervoor dat de juiste kernel is geselecteerd in de jupyter-notebook. De kernel wordt weer gegeven in de rechter bovenhoek van de notitie blok pagina. De standaard waarde is azure_automl. Houd er rekening mee dat de kernel wordt opgeslagen als onderdeel van het notitie blok. Als u overschakelt naar een nieuwe Conda-omgeving, moet u dus de nieuwe kernel in het notitie Blok selecteren.
       * Voor Azure Notebooks moet het python 3,6 zijn. 
-      * Voor lokale Conda-omgevingen moet het de naam zijn van de Conda-envioronment die u hebt opgegeven in automl_setup.
+      * Voor lokale Conda-omgevingen moet dit de Conda-omgevings naam zijn die u hebt opgegeven in automl_setup.
   * Zorg ervoor dat het notitie blok voor de SDK-versie is die u gebruikt. U kunt de SDK-versie controleren door `azureml.core.VERSION` in een jupyter notebook-cel uit te voeren. U kunt de vorige versie van de voorbeeld notitieblokken downloaden van GitHub door op de knop te klikken `Branch` , het tabblad te selecteren `Tags` en vervolgens de versie te selecteren.
 
 * **Numpy importeren mislukt in Windows: in**sommige Windows-omgevingen wordt een fout weer geven bij het laden van numpy met de laatste python-versie 3.6.8. Als u dit probleem ziet, probeert u met python-versie 3.6.7.

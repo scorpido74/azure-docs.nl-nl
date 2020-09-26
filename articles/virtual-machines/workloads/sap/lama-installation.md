@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: fda62ff0af29c7cf681d9438b02420d299535701
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e20863cd971a55142283676fe035d3238520ae1
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80293948"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361361"
 ---
 # <a name="sap-lama-connector-for-azure"></a>SAP LaMa-connector voor Azure
 
@@ -129,7 +129,7 @@ Open de SAP LaMa-website en navigeer naar infra structuur. Ga naar tabblad Cloud
 * Label: Kies een naam voor de connector instantie
 * Gebruikers naam: de Service-Principal-toepassings-ID of ID van de door de gebruiker toegewezen identiteit van de virtuele machine. Zie [een systeem-of door de gebruiker toegewezen identiteit gebruiken] voor meer informatie
 * Wacht woord: sleutel/wacht woord voor Service-Principal. U kunt dit veld leeg laten als u een door het systeem of de gebruiker toegewezen identiteit gebruikt.
-* URL: standaard blijven`https://management.azure.com/`
+* URL: standaard blijven `https://management.azure.com/`
 * Bewakings interval (seconden): moet ten minste 300 zijn
 * Beheerde identiteit gebruiken: SAP LaMa kan gebruikmaken van een door het systeem of de gebruiker toegewezen identiteit voor verificatie bij de Azure API. Zie hoofd stuk [een beheerde identiteit gebruiken om toegang te krijgen tot de Azure API](lama-installation.md#af65832e-6469-4d69-9db5-0ed09eac126d) in deze hand leiding.
 * Abonnements-ID: Azure-abonnements-ID
@@ -260,14 +260,14 @@ In de onderstaande voor beelden wordt ervan uitgegaan dat u SAP HANA installeert
 
 Voordat u de SAP software Provisioning Manager (SWPM) start, moet u het IP-adres van de virtuele hostnaam van de ASCS koppelen. De aanbevolen manier is om sapacext te gebruiken. Als u het IP-adres koppelt met behulp van sapacext, moet u het IP-adres na het opnieuw opstarten opnieuw koppelen.
 
-![Linux][Logo_Linux] Linux
+![Linux-logo.][Logo_Linux] Linux
 
 ```bash
 # /usr/sap/hostctrl/exe/sapacext -a ifup -i <network interface> -h <virtual hostname or IP address> -n <subnet mask>
 /usr/sap/hostctrl/exe/sapacext -a ifup -i eth0 -h ah1-ascs -n 255.255.255.128
 ```
 
-![Windows][Logo_Windows] Windows
+![Windows-logo.][Logo_Windows] Windows
 
 ```bash
 # C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i <network interface> -h <virtual hostname or IP address> -n <subnet mask>
@@ -276,7 +276,7 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h ah1-as
 
 Voer SWPM uit en gebruik *ah1-ascs* voor de hostnaam van het *ascs-exemplaar*.
 
-![Linux ][Logo_Linux] Linux  
+![Linux-logo.][Logo_Linux] Linux  
 Voeg de volgende profiel parameter toe aan het SAP host agent-profiel, dat zich bevindt op/usr/sap/hostctrl/exe/host_profile. Zie SAP Note [2628497]voor meer informatie.
 ```
 acosprep/nfs_paths=/home/ah1adm,/usr/sap/trans,/sapmnt/AH1,/usr/sap/AH1
@@ -387,14 +387,14 @@ Voer de installatie van het data base-exemplaar van SWPM op de virtuele machine 
 
 Voordat u de SAP software Provisioning Manager (SWPM) start, moet u het IP-adres van de virtuele hostnaam van de toepassings server koppelen. De aanbevolen manier is om sapacext te gebruiken. Als u het IP-adres koppelt met behulp van sapacext, moet u het IP-adres na het opnieuw opstarten opnieuw koppelen.
 
-![Linux][Logo_Linux] Linux
+![Linux-logo.][Logo_Linux] Linux
 
 ```bash
 # /usr/sap/hostctrl/exe/sapacext -a ifup -i <network interface> -h <virtual hostname or IP address> -n <subnet mask>
 /usr/sap/hostctrl/exe/sapacext -a ifup -i eth0 -h ah1-di-0 -n 255.255.255.128
 ```
 
-![Windows][Logo_Windows] Windows
+![Windows-logo.][Logo_Windows] Windows
 
 ```bash
 # C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i <network interface> -h <virtual hostname or IP address> -n <subnet mask>

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: Zhchia
-ms.openlocfilehash: bb010ea7262de4498d25250845eebaec8606c707
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b45c7fcbc4e3c0eda4f2e8d3eb21a81428dee39d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91327983"
+ms.locfileid: "91361225"
 ---
 # <a name="tutorial-configure-zapier-for-automatic-user-provisioning"></a>Zelf studie: Zapier configureren voor automatische gebruikers inrichting
 
@@ -95,7 +95,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 5. Geef in het gedeelte **beheerders referenties** de Zapier- **Tenant-URL** en het **geheime token**op. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met Zapier. Als de verbinding mislukt, zorg er dan voor dat uw Zapier-account beheerders machtigingen heeft en probeer het opnieuw.
 
-   ![inrichtings](./media/zapier-provisioning-tutorial/provisioning.png)
+   ![Scherm afbeelding toont het dialoog venster beheerders referenties, waarin u uw Tenant U R L en geheime token kunt invoeren.](./media/zapier-provisioning-tutorial/provisioning.png)
 
 6. Voer in het veld **E-mailadres voor meldingen** het e-mailadres in van een persoon of groep die de inrichtingsfoutmeldingen zou moeten ontvangen en schakel het selectievakje **Een e-mailmelding verzenden als een fout optreedt** in.
 

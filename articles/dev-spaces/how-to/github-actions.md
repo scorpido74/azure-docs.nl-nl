@@ -6,13 +6,13 @@ ms.topic: conceptual
 description: Wijzigingen van een pull-aanvraag rechtstreeks controleren en testen in azure Kubernetes service met GitHub-acties en Azure dev Spaces
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, GitHub acties, helm, Service-Mesh, Service-Mesh-route ring, kubectl, K8S
 manager: gwallace
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 5e3417f16791b71d53a0eec9263532219c779440
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.custom: devx-track-js
+ms.openlocfilehash: 25cb0de10e83069514c7918a5a2cdac019fe1ebb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212505"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316100"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub acties & Azure Kubernetes service (preview)
 
@@ -149,7 +149,7 @@ git push origin bike-images
 
 Nadat de push is voltooid, gaat u naar de gesplitste opslag plaats op GitHub om een pull-aanvraag te maken met de *hoofd* vertakking in uw gevorkte opslag plaats als basis vertakking in vergelijking met de vertakking van de *fiets installatie kopieën* .
 
-Nadat uw pull-aanvraag is geopend, gaat u naar het tabblad *acties* . Controleer of de nieuwe actie is gestart en bouwt de *Bikes* -service.
+Nadat uw pull-aanvraag is geopend, gaat u naar het tabblad *acties* . Controleer of een nieuwe actie is gestart en de *Bikes* -service bouwt.
 
 ## <a name="view-the-child-space-with-your-changes"></a>De onderliggende ruimte met uw wijzigingen weer geven
 
@@ -170,7 +170,7 @@ az group delete --name MyResourceGroup --yes --no-wait
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over de werking van Azure dev Spaces.
+Meer informatie over hoe Azure Dev Spaces werkt.
 
 > [!div class="nextstepaction"]
 > [Hoe Azure Dev Spaces werkt](../how-dev-spaces-works.md)

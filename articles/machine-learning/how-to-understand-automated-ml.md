@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 12/05/2019
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 42b2ff0b7c2d43beb1d5f0b2136a97e67c0143a5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a38d65e66debd8e718964efdce27fe42772d8e0a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905058"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315538"
 ---
 # <a name="understand-automated-machine-learning-results"></a>Geautomatiseerde machine learning-resultaten begrijpen
 
@@ -226,8 +226,8 @@ De volgende metrische gegevens worden opgeslagen in elke uitvoerings herhaling v
 
 |Gegevens|Beschrijving|Berekening|Extra para meters
 --|--|--|--|
-explained_variance|De uitleg afwijking is de verhouding waarmee een wiskundig model account voor de variatie van een bepaalde gegevensset is gedefinieerd. Het is het percentage afname van de oorspronkelijke gegevens tot de variantie van de fouten. Wanneer het gemiddelde van de fouten 0 is, is deze gelijk aan de uitleg afwijking.|[Berekening](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.explained_variance_score.html)|Geen|
-r2_score|R2 is de coëfficiënt voor het bepalen van de berekening of het percentage verlaging in kwadratische fouten vergeleken met een basis lijn model dat het gemiddelde uitvoert. |[Berekening](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|Geen|
+explained_variance|De uitleg afwijking is de verhouding waarmee een wiskundig model account voor de variatie van een bepaalde gegevensset is gedefinieerd. Het is het percentage afname van de oorspronkelijke gegevens tot de variantie van de fouten. Wanneer het gemiddelde van de fouten 0 is, is het gelijk aan het kwadraat van de berekening (Zie r2_score hieronder).|[Berekening](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.explained_variance_score.html)|Geen|
+r2_score|R ^ 2 is de determinatie coëfficiënt of het percentage verlaging in kwadratische fouten ten opzichte van een basislijn model dat het gemiddelde uitvoert. |[Berekening](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|Geen|
 spearman_correlation|' Spearman correlatie ' is een niet-parametrische meting van de monotonicity van de relatie tussen twee gegevens sets. In tegens telling tot de correlatie van Pearson, neemt de ' Spearman-correlatie niet in dat beide gegevens sets normaal gesp roken worden gedistribueerd. Net als bij andere correlatie coëfficiënten is dit een verschil tussen-1 en + 1 en 0 voor geen correlatie. Correlaties van-1 of + 1 impliceren een nauw keurige monotone relatie. Positieve correlaties impliceren dat als x stijgt, dus y. Negatieve correlaties impliceren dat x stijgt, y afneemt.|[Berekening](https://docs.scipy.org/doc/scipy-0.16.1/reference/generated/scipy.stats.spearmanr.html)|Geen|
 mean_absolute_error|De gemiddelde absolute fout is de verwachte waarde van de absolute waarde van het verschil tussen het doel en de voor spelling|[Berekening](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)|Geen|
 normalized_mean_absolute_error|De genormaliseerde gemiddelde absolute fout is een absolute fout gedeeld door het bereik van de gegevens|[Berekening](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)|Delen door bereik van de gegevens|

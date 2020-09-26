@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 09/06/2019
 ms.author: victorh
-ms.openlocfilehash: 22273cf23e48de62d99a8c149ae3e2b1c05db3af
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 733a9af589718e9abe8736491023003744428cd6
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87005426"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361063"
 ---
 # <a name="use-log-analytics-to-examine-application-gateway-web-application-firewall-waf-logs"></a>Log Analytics gebruiken om Application Gateway-logboeken van Web Application firewall (WAF) te onderzoeken
 
@@ -79,7 +79,7 @@ AzureDiagnostics
 
 Wanneer u een query hebt gemaakt, kunt u deze toevoegen aan uw dash board.  Selecteer in de rechter bovenhoek van de log Analytics-werk ruimte de optie **vastmaken aan dash board** . Met de vorige vier query's die zijn vastgemaakt aan een voorbeeld dashboard, zijn dit de gegevens die u in een oogopslag kunt zien:
 
-![Dashboard](../media/log-analytics/dashboard.png)
+![Scherm afbeelding toont een Azure-dash board waar u uw query kunt toevoegen.](../media/log-analytics/dashboard.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

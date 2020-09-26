@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: juliako
-ms.openlocfilehash: c98d265f2d21c1e16ca787d4055eb4c2b1a89133
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 5d5a00488321c9c67dd1469b1d8476636675aa8f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269077"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281011"
 ---
 # <a name="overview-of-azure-on-demand-media-encoders"></a>Overzicht van media encoders op aanvraag van Azure
 
@@ -36,12 +36,11 @@ Media Services biedt dynamische pakketten waarmee u uw Adaptive bitrate MP4 of S
 
 Wanneer uw Media Services-account is gemaakt, wordt er een **standaard** streaming-eind punt aan uw account toegevoegd met de status **gestopt** . Als u inhoud wilt streamen en gebruik wilt maken van dynamische pakketten en dynamische versleuteling, moet het streaming-eindpunt van waar u inhoud wilt streamen, de status **Wordt uitgevoerd** hebben. Facturering voor streaming-eind punten treedt op wanneer het eind punt **actief** is.
 
-Media Services ondersteunt de volgende op aanvraag encoders die in dit artikel worden beschreven:
+Media Services ondersteunt het volgende op aanvraag encoder:
 
 * [Media Encoder Standard](media-services-encode-asset.md#media-encoder-standard)
-* [Media Encoder Premium Workflow](media-services-encode-asset.md#media-encoder-premium-workflow)
 
-Dit artikel bevat een kort overzicht van de media encoders op aanvraag en bevat koppelingen naar artikelen met meer gedetailleerde informatie. Het onderwerp bevat ook een vergelijking van de encoders.
+Dit artikel bevat een kort overzicht van de media encoders en koppelingen naar artikelen met meer gedetailleerde informatie.
 
 Elke Media Services-account kan standaard één actieve coderings taak tegelijk hebben. U kunt coderings eenheden reserveren waarmee meerdere versleutelings taken gelijktijdig kunnen worden uitgevoerd, één voor elke gereserveerde encoding-eenheid die u koopt. Zie [coderings eenheden schalen](media-services-scale-media-processing-overview.md)voor meer informatie.
 
@@ -72,15 +71,6 @@ Zie [overlays maken met behulp van Media Encoder Standard](media-services-advanc
 
 ### <a name="see-also"></a>Zie ook
 [Het Media Services blog](https://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/)
-
-## <a name="media-encoder-premium-workflow"></a>Media Encoder Premium Workflow
-### <a name="overview"></a>Overzicht
-[Introductie van Premium-code ring in Azure Media Services](https://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services/)
-
-### <a name="how-to-use"></a>Gebruik
-Media Encoder Premium Workflow is geconfigureerd met behulp van complexe werk stromen. Werk stroom bestanden kunnen worden gemaakt en bijgewerkt met het [Workflow Designer](media-services-workflow-designer.md) -hulp programma.
-
-[Premium-code ring gebruiken in Azure Media Services](https://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services/)
 
 ### <a name="known-issues"></a>Bekende problemen
 Als uw invoer video geen ondertiteling bevat, bevat het uitvoer activum nog een leeg TTML-bestand.

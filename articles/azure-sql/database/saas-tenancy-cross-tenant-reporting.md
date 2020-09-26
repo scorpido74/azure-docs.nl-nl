@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewers: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: fe4b25dfd8bf96d1ed6dab189543e0e1b810ecd8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3542bb502bbb0d41ff6a35902bc38262c26876de
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84042118"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361718"
 ---
 # <a name="cross-tenant-reporting-using-distributed-queries"></a>Rapportage over meerdere tenants met behulp van gedistribueerde query's
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -93,7 +93,7 @@ De definitie van de weer gave *evenementen* bekijken:
 
 1. Vouw in **objectverkenner** **contosoconcerthall**  >  **weer gaven**uit:
 
-   ![Weergaven](./media/saas-tenancy-cross-tenant-reporting/views.png)
+   ![Scherm afbeelding toont de inhoud van het knoop punt weer gaven, met inbegrip van vier typen locaties d b o.](./media/saas-tenancy-cross-tenant-reporting/views.png)
 
 2. Klik met de rechter muisknop op **dbo. Locaties**.
 3. Selecteer de **script weergave als**  >  **maken voor het**  >  **nieuwe query editor-venster**

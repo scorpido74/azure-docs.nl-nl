@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/01/2019
 ms.author: thweiss
-ms.custom: devx-track-javascript
-ms.openlocfilehash: d692a884688d81fdf16261edff816fa8f0215877
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 81660bee32cace458424c9975c74ca7980148e29
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422314"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316185"
 ---
 # <a name="find-the-request-unit-charge-in-azure-cosmos-db"></a>De kosten voor de aanvraag eenheid zoeken in Azure Cosmos DB
 
@@ -182,7 +182,7 @@ Op dit moment kunt u de aanvraag kosten vinden in de Azure Portal alleen voor ee
 
 1. Ga naar het deel venster **Data Explorer** en selecteer vervolgens de container waaraan u wilt werken.
 
-1. Selecteer **New Query** (Nieuwe query).
+1. Selecteer **Nieuwe query**.
 
 1. Voer een geldige query in en selecteer **query uitvoeren**.
 

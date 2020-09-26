@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f43ba78bc9c48b003d4718945dc47b0a076a048f
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 82b0b53b1933a7ca08163a12b2b7649b7b9538f4
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134536"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361633"
 ---
 # <a name="utilize-azure-infrastructure-vm-restart-to-achieve-higher-availability-of-an-sap-system"></a>VM van Azure-infra structuur opnieuw opstarten gebruiken om een hogere Beschik baarheid van een SAP-systeem te krijgen
 
@@ -210,7 +210,7 @@ ms.locfileid: "86134536"
 
 > Deze sectie is van toepassing op:
 >
-> ![Windows][Logo_Windows] Windows en ![Linux][Logo_Linux] Linux
+> ![Windows-logo.][Logo_Windows] Windows en ![Linux-logo.][Logo_Linux] Linux
 >
 
 Als u besluit geen functies zoals Windows Server Failover Clustering (WSFC) of pacemaker in Linux te gebruiken (momenteel alleen ondersteund voor SUSE Linux Enterprise Server [SLES] 12 en hoger), wordt de Azure VM opnieuw opgestart. Het beschermt SAP-systemen tegen geplande en ongeplande downtime van de fysieke Azure-server infrastructuur en het algehele onderliggende Azure-platform.

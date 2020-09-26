@@ -5,14 +5,14 @@ author: kgremban
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 09/25/2020
 ms.author: kgremban
-ms.openlocfilehash: 3a43d7e3e406e4a248e0ac2c27fb74a2f1b036cf
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d81cc6c94c04c683362fd12cd6777c304a4b0a84
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936854"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361973"
 ---
 # <a name="confidential-computing-at-the-edge"></a>Vertrouwelijk Computing aan de rand
 
@@ -42,8 +42,8 @@ Open enclave ondersteunt meerdere hardwareplatforms. Voor de ondersteuning van I
 
 De open enclave-opslag plaats bevat ook voor beelden om ontwikkel aars te helpen aan de slag te gaan. Kies een van de inleidende artikelen voor meer informatie:
 
-* [Open enclave SDK-voor beelden bouwen op Linux](https://github.com/openenclave/openenclave/blob/master/samples/README_Linux.md)
-* [Open enclave SDK-voor beelden bouwen op Windows](https://github.com/openenclave/openenclave/blob/master/samples/README_Windows.md)
+* [Open enclave SDK-voor beelden bouwen op Linux](https://github.com/openenclave/openenclave/blob/master/samples/BuildSamplesLinux.md)
+* [Open enclave SDK-voor beelden bouwen op Windows](https://github.com/openenclave/openenclave/blob/master/samples/BuildSamplesWindows.md)
 
 ## <a name="hardware"></a>Hardware
 

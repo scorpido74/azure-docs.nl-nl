@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: 6f1eb48655c4e38e2cf0520409e5e2b38750baf5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 079d187f66cf77585121198df06cabafc454fea1
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84324144"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362126"
 ---
 # <a name="replication-to-azure-sql-database"></a>Replicatie naar Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -55,10 +55,10 @@ Er zijn verschillende [typen replicatie](https://docs.microsoft.com/sql/relation
 | Replicatie | Azure SQL Database | Azure SQL Managed Instance |
 | :----| :------------- | :--------------- |
 | [**Standaard transactionele**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Ja (alleen als abonnee) | Yes | 
-| [**Snapshot**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Ja (alleen als abonnee) | Yes|
+| [**Momentopname**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Ja (alleen als abonnee) | Yes|
 | [**Samenvoeg replicatie**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | Nee | Nee|
 | [**Peer-to-peer**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Nee | Nee|
-| [**Bidirectioneel**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | No | Ja|
+| [**Bidirectioneel**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Nee | Ja|
 | [**Bij te werken abonnementen**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | Nee | Nee|
 | &nbsp; | &nbsp; | &nbsp; |
 
@@ -78,7 +78,7 @@ Er zijn verschillende [typen replicatie](https://docs.microsoft.com/sql/relation
 
 ## <a name="replication-architecture"></a>Replicatie architectuur  
 
-![replicatie naar SQL-data base](./media/replication-to-sql-database/replication-to-sql-database.png)  
+![Diagram toont de replicatie architectuur met Azure SQL Database, die verschillende abonnee clusters bevat in verschillende regio's, en on-premises virtuele machines van Azure, die een uitgever, uitvoer bare logRead en de uitvoer bare bestanden van de distributie server bevatten die verbinding maken met externe clusters.](./media/replication-to-sql-database/replication-to-sql-database.png)  
 
 ## <a name="scenarios"></a>Scenario's  
 

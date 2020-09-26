@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.author: vaidyas
-author: vaidyas
+author: vaidya-s
 ms.reviewer: larryfr
 ms.date: 03/06/2020
 ms.topic: conceptual
 ms.custom: how-to, racking-python
-ms.openlocfilehash: b386c058a2795402cc60fddf6c187b57aec2185e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 133c885f29ceff0b8c4764507a80df5ee24cf4a1
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328391"
+ms.locfileid: "91361724"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>Een machine learning model implementeren op Azure Functions (preview-versie)
 
@@ -120,7 +120,7 @@ Wanneer `show_output=True` wordt de uitvoer van het docker-bouw proces weer gege
 
 ## <a name="deploy-image-as-a-web-app"></a>Een installatie kopie implementeren als een web-app
 
-1. Gebruik de volgende opdracht om de aanmeldings referenties op te halen voor de Azure Container Registry die de installatie kopie bevat. Vervang door `<myacr>` de waarde die u eerder hebt geretourneerd van `package.location` : 
+1. Gebruik de volgende opdracht om de aanmeldings referenties op te halen voor de Azure Container Registry die de installatie kopie bevat. Vervang door `<myacr>` de waarde die u eerder hebt geretourneerd van `blob.location` : 
 
     ```azurecli-interactive
     az acr credential show --name <myacr>

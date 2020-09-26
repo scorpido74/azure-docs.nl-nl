@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 05/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 41ffd7606cb4c01cd8c2da56898b67cf177c358e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 850db53cbf88968a413d72527d76463e17aa8f5d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329173"
+ms.locfileid: "91361701"
 ---
 # <a name="tutorial-configure-8x8-for-automatic-user-provisioning"></a>Zelf studie: 8X8 configureren voor automatische gebruikers inrichting
 
@@ -104,7 +104,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 5. Kopieer in het gedeelte **beheerders referenties** de **8X8-URL** van Configuration Manager naar de **Tenant-URL**. Kopieer het **8X8 API-token** van Configuration Manager naar een **geheim token**. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met 8X8. Als de verbinding mislukt, zorg er dan voor dat uw 8X8-account beheerders machtigingen heeft en probeer het opnieuw.
 
-    ![Inrichten](./media/8x8-provisioning-tutorial/provisioning.png)
+    ![Scherm afbeelding toont het dialoog venster beheerders referenties, waarin u uw Tenant U R L en geheime token kunt invoeren.](./media/8x8-provisioning-tutorial/provisioning.png)
 
 6. Voer in het veld **E-mailadres voor meldingen** het e-mailadres in van een persoon of groep die de inrichtingsfoutmeldingen zou moeten ontvangen en schakel het selectievakje **Een e-mailmelding verzenden als een fout optreedt** in.
 

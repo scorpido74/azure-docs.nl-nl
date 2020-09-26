@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/19/2020
 ms.author: mjbrown
-ms.openlocfilehash: 5038d9968e37b956774d1c5f8abdb14865422e8b
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 8e6a6d1c557a765e55152685f08e80ad54bbd903
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027744"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362007"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-with-a-web-app-from-github-using-an-azure-resource-manager-template"></a>Azure Cosmos DB en Azure App Service met een web-app implementeren vanuit GitHub met behulp van een Azure Resource Manager-sjabloon
 
@@ -60,7 +60,7 @@ Nadat u de waarden hebt ingevuld, selecteert u de knop **maken** om de implement
 
 ## <a name="step-2-explore-the-resources"></a>Stap 2: de bronnen verkennen
 
-### <a name="view-the-deployed-resources"></a>De geïmplementeerde resources weer geven
+### <a name="view-the-deployed-resources"></a>De geïmplementeerde resources bekijken
 
 Wanneer de resources zijn geïmplementeerd met de sjabloon, kunt u deze nu weer geven in de resource groep.
 
@@ -98,7 +98,7 @@ Er zijn drie elementen die nodig zijn om dit te laten werken.
 
 Ten eerste moet de toepassing het Cosmos DB-eind punt en de sleutel aanvragen in de- `Startup` klasse in de ASP.NET MVC-webtoepassing. Het [Cosmos DB te doen-voor beeld](https://github.com/Azure-Samples/cosmos-dotnet-core-todo-app) kan lokaal worden uitgevoerd, waarbij u de verbindings gegevens in appsettings.jskunt invoeren. Wanneer dit bestand is geïmplementeerd, wordt het echter met de app geïmplementeerd. Als deze regels in rood geen toegang hebben tot de instellingen van appsettings.jsop, wordt het programma vanuit toepassings instellingen in Azure App Service geprobeerd.
 
-:::image type="content" source="./media/create-website/startup.png" alt-text="Opstarten":::
+:::image type="content" source="./media/create-website/startup.png" alt-text="Scherm afbeelding toont een methode met verschillende teken reeks variabelen die zijn gemarkeerd in rood, waaronder DATABASENAME, containernaam, account en sleutel.":::
 
 ### <a name="using-special-azure-resource-management-functions"></a>Speciale functies van Azure Resource Management gebruiken
 
@@ -114,7 +114,7 @@ Ten slotte moeten we de webtoepassing implementeren vanuit GitHub in de App Serv
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Gefeliciteerd U hebt Azure Cosmos DB, Azure App Service en een voor beeld-webtoepassing geïmplementeerd die automatisch de verbindings gegevens bevat die nodig zijn om verbinding te maken met Cosmos DB, allemaal in één bewerking en zonder dat u gevoelige informatie hoeft te knippen en plakken. Als u deze sjabloon gebruikt als uitgangs punt, kunt u deze wijzigen zodat uw eigen webtoepassingen op dezelfde manier worden geïmplementeerd.
+Gefeliciteerd! U hebt Azure Cosmos DB, Azure App Service en een voor beeld-webtoepassing geïmplementeerd die automatisch de verbindings gegevens bevat die nodig zijn om verbinding te maken met Cosmos DB, allemaal in één bewerking en zonder dat u gevoelige informatie hoeft te knippen en plakken. Als u deze sjabloon gebruikt als uitgangs punt, kunt u deze wijzigen zodat uw eigen webtoepassingen op dezelfde manier worden geïmplementeerd.
 
 * Ga voor de Azure Resource Manager sjabloon voor dit voor beeld naar de [Galerie met Azure Quick Start sjablonen](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-webapp)
 * Ga voor de bron code voor de voor beeld-app naar [Cosmos DB om de app uit te voeren op github](https://github.com/Azure-Samples/cosmos-dotnet-core-todo-app).

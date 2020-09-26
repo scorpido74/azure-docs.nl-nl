@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: kumud
-ms.openlocfilehash: c3223bed6c8335a31b1bfb918e6d44e3b54a7787
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5bd88493324867dc957922a732506f5cfb8bbc20
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047261"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361231"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-website"></a>Een Brands model aanpassen met de Video Indexer-website
 
@@ -42,7 +42,7 @@ U kunt instellen of u wilt dat de merken van de Bing Brands-Data Base worden ged
 
 3. Als u de Brands wilt bewerken, selecteert u het tabblad **Brands** .
 
-    ![Het model van Brands aanpassen in Video Indexer](./media/customize-brand-model/customize-brand-model.png)
+    ![Scherm afbeelding toont het tabblad Brands van het dialoog venster aanpassing van het inhouds model.](./media/customize-brand-model/customize-brand-model.png)
 
 4. Schakel de optie **Brands weer geven die door Bing worden voorgesteld** in als u wilt dat video indexer de door Bing Aanbevolen merken detecteert. laat de optie uitgeschakeld als dat niet het geval is.
 
@@ -54,7 +54,7 @@ De sectie **inclusief Brands bevat** aangepaste merken die u video indexer wilt 
 
 1. Selecteer **+ merk toevoegen**.
 
-    ![Het model van Brands aanpassen in Video Indexer](./media/customize-brand-model/add-brand.png)
+    ![Scherm afbeelding toont het dialoog venster voor het insluiten van Brands, waarin u Brands kunt toevoegen.](./media/customize-brand-model/add-brand.png)
 
     Geef een naam op (vereist), categorie (optioneel), beschrijving (optioneel) en Referentie-URL (optioneel).
     Het veld categorie is bedoeld om u te helpen labels voor uw Brands te geven. Dit veld wordt weer gegeven als *Tags* van het merk bij gebruik van de video indexer-api's. Het merk "Azure" kan bijvoorbeeld worden gelabeld of gecategoriseerd als "Cloud".
