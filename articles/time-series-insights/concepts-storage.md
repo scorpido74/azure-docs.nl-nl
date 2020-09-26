@@ -1,52 +1,72 @@
 ---
 title: Overzicht van opslag-Azure Time Series Insights Gen2 | Microsoft Docs
 description: Meer informatie over gegevens opslag in Azure Time Series Insights Gen2.
-author: esung22
-ms.author: elsung
-manager: diviso
+author: lyrana
+ms.author: lyhughes
+manager: deepakpalled
 ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 09/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: c05de0462dde2b09e0e01919dfc691a85df153fa
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: d8e3c7258a70902fe362ee73c2f366146484ce54
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89483266"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287530"
 ---
 # <a name="data-storage"></a>Gegevensopslag
 
-Wanneer u een Azure Time Series Insights Gen2-omgeving maakt, maakt u twee Azure-resources:
+In dit artikel wordt de gegevens opslag in Azure Time Series Insights Gen2 beschreven. Dit geldt voor warme en koude, Beschik baarheid van gegevens en aanbevolen procedures.
 
-* Een Azure Time Series Insights Gen2-omgeving die kan worden geconfigureerd voor warme gegevens opslag.
-* Een Azure Storage account voor koude gegevens opslag.
+## <a name="provisioning"></a>Inrichten
 
-Gegevens in uw warme archief zijn alleen beschikbaar via de [Time Series-query-api's](./time-series-insights-update-tsq.md) en de [Azure time series Insights Explorer](./time-series-insights-update-explorer.md). Uw warme archief bevat recente gegevens binnen de [Bewaar periode](./time-series-insights-update-plan.md#the-preview-environment) die is geselecteerd bij het maken van de Azure time series Insights Gen2-omgeving.
+Wanneer u een Azure Time Series Insights Gen2-omgeving maakt, hebt u de volgende opties:
 
-Met Azure Time Series Insights Gen2 worden uw koude Store-gegevens opgeslagen in Azure Blob-opslag in de [Parquet-bestands indeling](#parquet-file-format-and-folder-structure). Azure Time Series Insights Gen2 beheert deze koude Store-gegevens uitsluitend, maar u kunt deze rechtstreeks als standaard Parquet-bestanden lezen.
+* Koude gegevens opslag:
+   * Maak een nieuwe Azure Storage-Resource in het abonnement en de regio die u hebt gekozen voor uw omgeving.
+   * Een bestaand Azure Storage-account koppelen. Deze optie is alleen beschikbaar als u vanuit een Azure Resource Manager- [sjabloon](https://docs.microsoft.com/azure/templates/microsoft.timeseriesinsights/allversions)implementeert en niet zichtbaar is in de Azure Portal.
+* Warme gegevens opslag:
+   * Een warme Store is optioneel en kan worden ingeschakeld of uitgeschakeld tijdens of na het inrichten. Als u besluit om warme Store op een later tijdstip in te scha kelen en er al gegevens in uw koel winkel staan, raadpleegt u [deze](concepts-storage.md#warm-store-behavior) sectie hieronder om het verwachte gedrag te begrijpen. De Bewaar periode voor de warme Store-gegevens kan 7 tot 31 dagen worden geconfigureerd. Dit kan ook worden aangepast als dat nodig is.
+
+Wanneer een gebeurtenis wordt opgenomen, wordt deze in zowel de warme Store (indien ingeschakeld) als in het koel archief geïndexeerd.
+
+[![Overzicht van opslag](media/concepts-storage/pipeline-to-storage.png)](media/concepts-storage/pipeline-to-storage.png#lightbox)
+
 
 > [!WARNING]
 > Als eigenaar van het Azure Blob Storage-account waar koud opgeslagen gegevens zich bevinden, hebt u volledige toegang tot alle gegevens in het account. Deze toegang omvat machtigingen voor schrijven en verwijderen. Bewerk of verwijder de gegevens die Azure Time Series Insights Gen2-schrijf bewerkingen, omdat dat gegevens verlies kan veroorzaken.
 
 ## <a name="data-availability"></a>Beschikbaarheid van gegevens
 
-Azure Time Series Insights Gen2 partities en index gegevens voor optimale query prestaties. Gegevens worden beschikbaar gesteld voor het uitvoeren van een query vanuit zowel warme (indien ingeschakeld) als koud opgeslagen na de index. De hoeveelheid gegevens die wordt opgenomen, kan van invloed zijn op deze Beschik baarheid.
+Azure Time Series Insights Gen2 partities en index gegevens voor optimale query prestaties. Gegevens worden beschikbaar gesteld voor het uitvoeren van een query vanuit zowel warme (indien ingeschakeld) als koud opgeslagen na de index. De hoeveelheid gegevens die wordt opgenomen en de doorvoer snelheid per partitie kan van invloed zijn op de beschik baarheid. Bekijk de [doorvoer beperkingen](./concepts-streaming-ingress-throughput-limits.md) van de gebeurtenis bron en [Aanbevolen procedures](./concepts-streaming-ingestion-event-sources.md#streaming-ingestion-best-practices) voor de beste prestaties. U kunt ook een vertragings [waarschuwing](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency#monitor-latency-and-throttling-with-alerts) configureren om te worden gewaarschuwd als uw omgeving problemen ondervindt bij het verwerken van gegevens.
 
 > [!IMPORTANT]
 > Het kan een periode van Maxi maal 60 seconden duren voordat de gegevens beschikbaar zijn. Als u na 60 seconden een langere latentie ondervindt, kunt u een ondersteunings ticket indienen via de Azure Portal.
 
-## <a name="azure-storage"></a>Azure Storage
+## <a name="warm-store"></a>Warme Store
+
+Gegevens in uw warme archief zijn alleen beschikbaar via de [Time Series query-api's](./time-series-insights-update-tsq.md), de [Azure time series Insights TSI-verkenner](./time-series-insights-update-explorer.md)of de Power bi- [connector](./how-to-connect-power-bi.md). Query's voor warme Stores zijn gratis en er is geen quotum, maar er is een [limiet van 30](https://docs.microsoft.com/rest/api/time-series-insights/reference-api-limits#query-apis---limits) gelijktijdige aanvragen.
+
+### <a name="warm-store-behavior"></a>Gedrag voor warme opslag 
+
+* Wanneer deze functie is ingeschakeld, worden alle gegevens die in uw omgeving zijn gestreamd, doorgestuurd naar uw warme Store, ongeacht de tijds tempel van de gebeurtenis. Houd er rekening mee dat de pijp lijn voor streaming-opname is gebouwd voor bijna realtime streaming en het opnemen van historische gebeurtenissen wordt [niet ondersteund](./concepts-streaming-ingestion-event-sources.md#historical-data-ingestion).
+* De retentie tijd wordt berekend op basis van het moment waarop de gebeurtenis is geïndexeerd in warme opslag, niet de tijds tempel van de gebeurtenis. Dit betekent dat gegevens niet meer beschikbaar zijn in de warme opslag nadat de Bewaar periode is verstreken, zelfs als het tijds tempel van de gebeurtenis voor de toekomst ligt.
+  - Voor beeld: een gebeurtenis met weers verwachtingen van 10 dagen wordt opgenomen en geïndexeerd in een warme opslag container die is geconfigureerd met een Bewaar periode van 7 dagen. Na 7 dagen is de voor spelling niet langer toegankelijk in de warme Store, maar kan er wel een query worden uitgevoerd vanuit koude. 
+* Als u warme Store inschakelt in een bestaande omgeving die al recente gegevens bevat die zijn geïndexeerd in koude opslag, moet u er rekening mee houden dat uw warme archief niet met deze gegevens kan worden gevuld.
+* Als u een warme archief zojuist hebt ingeschakeld en problemen ondervindt met het weer geven van uw recente gegevens in de Explorer, kunt u de query's voor warme Store tijdelijk uitschakelen:
+
+   [![Warme query's uitschakelen](media/concepts-storage/toggle-warm.png)](media/concepts-storage/toggle-warm.png#lightbox)
+
+## <a name="cold-store"></a>Koude Store
 
 In deze sectie worden Azure Storage gegevens beschreven die relevant zijn voor Azure Time Series Insights Gen2.
 
 Lees de [Inleiding tot opslag-blobs](../storage/blobs/storage-blobs-introduction.md)voor een uitgebreide beschrijving van Azure Blob-opslag.
 
-### <a name="your-storage-account"></a>Uw opslag account
-
-Wanneer u een Azure Time Series Insights Gen2-omgeving maakt, wordt er een Azure Storage-account gemaakt als uw lange termijn koel huis.  
+### <a name="your-cold-storage-account"></a>Uw account voor koude opslag
 
 Azure Time Series Insights Gen2 bewaren Maxi maal twee exemplaren van elke gebeurtenis in uw Azure Storage-account. Een kopie slaat gebeurtenissen op die zijn besteld door opname tijd, waarbij altijd toegang tot gebeurtenissen in een geordende reeks wordt toegestaan. Azure Time Series Insights Gen2 maakt in de loop van de tijd ook een opnieuw gepartitioneerde kopie van de gegevens voor het optimaliseren van query's die kunnen worden uitgevoerd.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 52cdf25b4d77fee0a7a2182e3f1ce60865caf066
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: f49ae5139dc92ec1448e5dea05be8c8c216ef91e
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90088558"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361344"
 ---
 # <a name="how-to-use-perfinsights-in-azure"></a>PerfInsights gebruiken in azure
 
@@ -118,12 +118,12 @@ Informatie over Windows VM, schijven of opslag groepen configuratie, prestatie m
 | SQL Server-configuratie          | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
 | Traceringen van prestatie diagnostiek *  | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
 | Tracering van prestatie meter items * *      |                            |                                    | Ja                      |                      | Ja                  |
-| Tracering SMB-teller * *              |                            |                                    |                          | Ja                  |                      |
+| Tracering SMB-teller * *              |                            |                                    |                          | Yes                  |                      |
 | Teller tracering SQL Server * *       |                            |                                    | Ja                      |                      | Ja                  |
-| Xperf tracering                       |                            |                                    |                          |                      | Ja                  |
-| StorPort-tracering                    |                            |                                    |                          |                      | Ja                  |
+| Xperf tracering                       |                            |                                    |                          |                      | Yes                  |
+| StorPort-tracering                    |                            |                                    |                          |                      | Yes                  |
 | Netwerk tracering                     |                            |                                    |                          | Ja                  | Ja                  |
-| Diskspd-Bench Mark-tracering * * *       |                            | Ja                                |                          |                      |                      |
+| Diskspd-Bench Mark-tracering * * *       |                            | Yes                                |                          |                      |                      |
 |       |                            |                         |                                                   |                      |                      |
 
 ### <a name="performance-diagnostics-trace-"></a>Prestatie diagnostiek tracering (*)
@@ -259,8 +259,8 @@ In het bestand **PerformanceDiagnostics \_ jjjj-mm-dd \_hh-mm-ss-fff.zip** kunt 
 
 Selecteer het tabblad **bevindingen** .
 
-![Scherm opname van ](media/how-to-use-perfInsights/pi-finding-tab.png)
- ![ scherm opname van PerfInsights-rapport van PerfInsights rapport](media/how-to-use-perfInsights/pi-findings.png)
+![Scherm afbeelding van het tabblad Overzicht van het PerfInsights-rapport. ](media/how-to-use-perfInsights/pi-finding-tab.png)
+ ![ Scherm afbeelding van het tabblad opslag van het PerfInsights-rapport.](media/how-to-use-perfInsights/pi-findings.png)
 
 > [!NOTE] 
 > Bevindingen die zijn gecategoriseerd als hoog, zijn bekende problemen die prestatie problemen kunnen veroorzaken. Bevindingen die zijn gecategoriseerd als medium, vertegenwoordigen niet-optimale configuraties die niet noodzakelijkerwijs prestatie problemen veroorzaken. Bevindingen die zijn gecategoriseerd als laag, zijn alleen informatieve instructies.

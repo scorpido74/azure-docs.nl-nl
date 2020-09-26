@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/22/2019
-ms.openlocfilehash: 5403abab0f93edf14237dcc73f29ffb00a6581f0
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: bad9a706c5289966334af26eacbfa41c418b7ab5
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86081278"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360800"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>Gegevens van SAP Business Warehouse kopiëren met behulp van Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -69,7 +69,7 @@ Ga in Azure Portal naar uw data factory. Selecteer **auteur & monitor** om de Da
 
    3. Selecteer **verbinding testen** om de instellingen te valideren en selecteer vervolgens **volt ooien**.
 
-   4. Er wordt een nieuwe verbinding gemaakt. Selecteer **Volgende**.
+   4. Er wordt een nieuwe verbinding gemaakt. Selecteer **Next**.
 
 5. Blader op de pagina **Open hub-doelen selecteren** door de open hub-bestemmingen die beschikbaar zijn in uw SAP BW. Selecteer de OHD waaruit u gegevens wilt kopiëren en selecteer vervolgens **volgende**.
 
@@ -217,7 +217,7 @@ Als u zowel een historische kopie als een incrementele kopie of alleen een incre
 
    U kunt het aantal parallelle SAP-werk processen voor de DTP verhogen:
 
-   ![Create-SAP-BW-OHD-delta3](media/load-sap-bw-data/create-sap-bw-ohd-delta3.png)
+   ![Scherm afbeelding toont de instellingen voor parallelle verwerking, waarbij u het aantal parallelle processen voor de D T P kunt selecteren.](media/load-sap-bw-data/create-sap-bw-ohd-delta3.png)
 
 2. Plan de DTP in proces ketens.
 

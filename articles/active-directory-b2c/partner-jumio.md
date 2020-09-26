@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 36a402669f8af465a1cedbf1585e16c972b18015
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 4e5becdd026b0a1c9e848b183ebeee5833654461
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89293112"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259268"
 ---
 # <a name="tutorial-for-configuring-jumio-with-azure-active-directory-b2c"></a>Zelf studie voor het configureren van Jumio met Azure Active Directory B2C
 
@@ -28,7 +28,7 @@ Om aan de slag te gaan, hebt u het volgende nodig:
 
 - Een Azure AD-abonnement Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis account](https://azure.microsoft.com/free/).
 
-- Een [Azure AD B2C-Tenant](https://review.docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant) die is gekoppeld aan uw Azure-abonnement.
+- Een [Azure AD B2C-Tenant](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant) die is gekoppeld aan uw Azure-abonnement.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
@@ -104,7 +104,7 @@ Gebruik het volgende Power shell-script om de teken reeks te maken:
 
 U kunt [Toepassings instellingen configureren in azure app service](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings). Met deze methode kunt u instellingen veilig configureren zonder deze in een opslag plaats te controleren. U moet de volgende instellingen opgeven voor de rest-API:
 
-| Toepassingsinstellingen | Bron | Notities |
+| Toepassingsinstellingen | Bron | Opmerkingen |
 | :-------- | :------------| :-----------|
 |JumioSettings:AuthUsername | Jumio-account configuratie |     |
 |JumioSettings:AuthPassword | Jumio-account configuratie |     |

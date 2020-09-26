@@ -8,13 +8,13 @@ ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 09/04/2020
 ms.subservice: blobs
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 72ffad3724ba9c981984ef8410fc9dd9556d8b8e
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.custom: devx-track-js
+ms.openlocfilehash: 27ea88ad4d349d6a7aedd4e1e3bc8dc804683292
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89486855"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326079"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Een statische website hosten in Azure Storage
 
@@ -46,10 +46,10 @@ Bestanden in de **$Web** -container zijn hoofdletter gevoelig, worden aangeboden
 U kunt elk van deze hulpprogram ma's gebruiken om inhoud te uploaden naar de container **$Web** :
 
 > [!div class="checklist"]
-> * [Azure-CLI](storage-blob-static-website-how-to.md?tabs=azure-cli)
+> * [Azure CLI](storage-blob-static-website-how-to.md?tabs=azure-cli)
 > * [Azure PowerShell-module](storage-blob-static-website-how-to.md?tabs=azure-powershell)
 > * [AzCopy](../common/storage-use-azcopy-v10.md)
-> * [Azure-opslagverkenner](https://azure.microsoft.com/features/storage-explorer/)
+> * [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
 > * [Azure-pijplijnen](https://azure.microsoft.com/services/devops/pipelines/)
 > * [Visual Studio Code-extensie](/azure/developer/javascript/tutorial-vscode-static-website-node-01)
 

@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 37245711008442acd0379a35b393ac88c3775482
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 96d8c32791bd968dd8740a2d4633496b42e9f3f4
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505533"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360970"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Geavanceerde configuratie voor automatisch schalen met Resource Manager-sjablonen voor VM Scale Sets
 U kunt in Virtual Machine Scale Sets schalen en uitschalen op basis van de drempel waarden voor prestatie waarden, een terugkerend schema of een bepaalde datum. U kunt ook e-mail en webhook-meldingen configureren voor schaal acties. In dit scenario ziet u een voor beeld van het configureren van al deze objecten met behulp van een resource manager-sjabloon op een VM-Schaalset.
@@ -63,7 +63,7 @@ In dit scenario gebruiken we [Azure resource Explorer](https://resources.azure.c
 
 6. Klik op Bewerken. **Vervang** het element ' Profiles ' in de instelling voor automatisch schalen door de volgende configuratie:
 
-    ![profielen](media/autoscale-virtual-machine-scale-sets/profiles.png)
+    ![Scherm afbeelding toont het element Profiles.](media/autoscale-virtual-machine-scale-sets/profiles.png)
 
     ```
     {

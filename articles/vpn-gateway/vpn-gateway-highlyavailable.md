@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 3f5fd8433f8de4dab39a73e889a71c4b262dc924
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 48756b43e64576a5dd38467bb1dd97e91c168a06
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89394496"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360851"
 ---
 # <a name="highly-available-cross-premises-and-vnet-to-vnet-connectivity"></a>Maximaal beschikbare cross-premises en VNet-naar-VNet-connectiviteit
 Dit artikel bevat een overzicht van maximaal beschikbare configuratieopties voor uw cross-premises en VNet-naar-VNet-connectiviteit met Azure VPN-gateways.
@@ -20,7 +20,7 @@ Dit artikel bevat een overzicht van maximaal beschikbare configuratieopties voor
 ## <a name="about-azure-vpn-gateway-redundancy"></a><a name = "activestandby"></a>Over Azure VPN-gatewayredundantie
 Elke Azure VPN-gateway bestaat uit twee instanties in een actieve stand-byconfiguratie. Bij gepland onderhoud of niet-geplande onderbrekingen die met het actieve exemplaar plaatsvinden, neemt de stand-byinstantie de activiteiten automatisch over (failover) en worden de S2S VPN- of VNet-naar-VNet-verbindingen hervat. De omschakeling veroorzaakt een korte onderbreking. Bij gepland onderhoud moet de connectiviteit binnen 10 tot 15 seconden worden hersteld. Bij niet-geplande problemen duurt het herstellen van de verbinding langer, in het ergste geval tot 1,5 minuut. Bij P2S VPN-clientverbindingen met de gateway worden de P2S-verbindingen verbroken en moeten de gebruikers opnieuw verbinding maken vanaf de clientcomputers.
 
-![Actieve stand-by](./media/vpn-gateway-highlyavailable/active-standby.png)
+![Diagram toont een on-premises site met persoonlijke I P-subnetten en on-premises V P N die zijn verbonden met een actieve Azure V P N-gateway om verbinding te maken met subnetten die worden gehost in azure, met een stand-by-gateway beschikbaar.](./media/vpn-gateway-highlyavailable/active-standby.png)
 
 ## <a name="highly-available-cross-premises-connectivity"></a>Maximaal beschikbare cross-premises connectiviteit
 Er zijn een aantal opties beschikbaar om betere beschikbaarheid te bieden voor uw cross-premises verbindingen:
@@ -49,7 +49,7 @@ In deze configuratie bevindt de Azure VPN-gateway zich nog steeds in de actieve 
 ### <a name="active-active-azure-vpn-gateway"></a>Actief/actief Azure VPN-gateway
 U kunt nu een Azure VPN-gateway maken in een actief/actief-configuratie, waarbij beide exemplaren van de gateway-VM’s S2S VPN-tunnels tot stand brengen op uw on-premises VPN-apparaat, zoals wordt weergegeven in het volgende diagram:
 
-![Actief-actief](./media/vpn-gateway-highlyavailable/active-active.png)
+![Diagram toont een on-premises site met persoonlijke I P-subnetten en on-premises V P N die zijn verbonden met twee actieve Azure V P N gateway om verbinding te maken met subnetten die worden gehost in Azure.](./media/vpn-gateway-highlyavailable/active-active.png)
 
 In deze configuratie heeft elk Azure-gatewayexemplaar een uniek openbaar IP-adres en elk exemplaar brengt een IPsec/IKE S2S VPN-tunnel tot stand met uw on-premises VPN-apparaat dat is opgegeven in uw lokale netwerkgateway en verbinding. Houd er rekening mee dat beide VPN-tunnels deel uitmaken van dezelfde verbinding. U moet alsnog uw on-premises VPN-apparaat zo configureren dat er twee S2S VPN-tunnels naar deze twee openbare IP-adressen voor de Azure VPN-gateway tot stand worden gebracht of worden geaccepteerd.
 
@@ -71,7 +71,7 @@ Voor deze topologie zijn twee lokale netwerkgateways en twee verbindingen vereis
 ## <a name="highly-available-vnet-to-vnet-connectivity-through-azure-vpn-gateways"></a>Maximaal beschikbare VNet-naar-VNet-connectiviteit via VPN Azure-gateways
 Dezelfde actief/actief-configuratie kan ook worden toegepast op VNet-naar-VNet-verbindingen van Azure. U kunt actief/actief VPN-gateways voor beide virtuele netwerken maken en ze met elkaar verbinden voor hetzelfde connectiviteitsraster met vier tunnels tussen de twee VNets, zoals wordt weergegeven in het diagram hieronder:
 
-![VNet-naar-VNet](./media/vpn-gateway-highlyavailable/vnet-to-vnet.png)
+![Diagram toont twee Azure-regio's die als host fungeren voor persoonlijke I P-subnetten en twee Azure V P N gateways waarmee de twee virtuele sites verbinding maken.](./media/vpn-gateway-highlyavailable/vnet-to-vnet.png)
 
 Hiermee zorgt u ervoor dat er altijd een paar tunnels tussen de twee virtuele netwerken actief is voor gepland onderhoud, waardoor de beschikbaarheid nog beter wordt. Hoewel dezelfde topologie voor cross-premises connectiviteit twee verbindingen vereist, is er voor de VNet-naar-VNet-topologie die hierboven wordt weergegeven slechts één verbinding per gateway nodig. BGP is bovendien optioneel, tenzij doorvoerroutering via de VNet-naar-VNet-verbinding vereist is.
 

@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
-ms.reviewer: sashan, carlrab
+ms.reviewer: sashan, sstein
 ms.date: 08/27/2019
-ms.openlocfilehash: a6f400db2a068953080e734148e024b575e3e1e9
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 598bb30d21a17b2c39f69a845690c3c754ec2145
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89070850"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325246"
 ---
 # <a name="tutorial-add-sql-managed-instance-to-a-failover-group"></a>Zelf studie: een door SQL beheerd exemplaar toevoegen aan een failovergroep
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -762,7 +762,7 @@ Maak de gateway voor het virtuele netwerk van uw primaire beheerde exemplaar met
     | **Veld** | Waarde |
     | --- | --- |
     | **Abonnement** |  Het abonnement waar uw primaire beheerde instantie zich bevindt. |
-    | **Name** | De naam van de gateway van uw virtuele netwerk, zoals `primary-mi-gateway` . | 
+    | **Naam** | De naam van de gateway van uw virtuele netwerk, zoals `primary-mi-gateway` . | 
     | **Regio** | De regio waar uw primaire beheerde instantie zich bevindt. |
     | **Gatewaytype** | Selecteer **VPN**. |
     | **VPN-type** | Selecteer **Op route gebaseerd**. |
@@ -843,7 +843,7 @@ Herhaal de stappen in de vorige sectie om het subnet van het virtuele netwerk en
    | **Veld** | Waarde |
    | --- | --- |
    | **Abonnement** |  Het abonnement waar uw secundaire beheerde instantie zich bevindt. |
-   | **Name** | De naam van de gateway van uw virtuele netwerk, zoals `secondary-mi-gateway` . | 
+   | **Naam** | De naam van de gateway van uw virtuele netwerk, zoals `secondary-mi-gateway` . | 
    | **Regio** | De regio waar uw secundaire beheerde instantie zich bevindt. |
    | **Gatewaytype** | Selecteer **VPN**. |
    | **VPN-type** | Selecteer **Op route gebaseerd**. |

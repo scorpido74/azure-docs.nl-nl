@@ -4,17 +4,17 @@ description: Versleutelings bereiken bieden de mogelijkheid om versleuteling te 
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 09/17/2020
+ms.date: 09/22/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 041b0bf57f57fd8ddd74c8330888d75e31aacc83
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 6fb3c9b6dbbab036ddb00edd7e1d5980bb425ebe
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90995136"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326113"
 ---
 # <a name="encryption-scopes-for-blob-storage-preview"></a>Versleutelings bereik voor Blob-opslag (preview-versie)
 
@@ -22,7 +22,7 @@ Versleutelings bereiken bieden de mogelijkheid om versleuteling te beheren op he
 
 Een opslag account wordt standaard versleuteld met een sleutel die is afgestemd op het hele opslag account. Met een versleutelings bereik kunt u opgeven dat een of meer containers moeten worden versleuteld met een sleutel die alleen is gericht op die containers.
 
-U kunt ervoor kiezen om door micro soft beheerde sleutels of door de klant beheerde sleutels die zijn opgeslagen in Azure Key Vault of Key Vault beheerde hardware security model (HSM) (preview) te gebruiken om de toegang tot de sleutel die uw gegevens versleutelen te beveiligen en te beheren. Verschillende versleutelings bereiken voor hetzelfde opslag account kunnen gebruikmaken van door micro soft beheerde of door de klant beheerde sleutels.
+U kunt ervoor kiezen om door micro soft beheerde sleutels of door de klant beheerde sleutels te gebruiken die zijn opgeslagen in Azure Key Vault om de toegang tot de sleutel die uw gegevens versleutelen, te beveiligen en te beheren. Verschillende versleutelings bereiken voor hetzelfde opslag account kunnen gebruikmaken van door micro soft beheerde of door de klant beheerde sleutels.
 
 Nadat u een versleutelings bereik hebt gemaakt, kunt u het versleutelings bereik opgeven voor een aanvraag voor het maken van een container of BLOB. Zie [encrypties maken en beheren (preview)](encryption-scope-manage.md)voor meer informatie over het maken van een versleutelings bereik.
 
@@ -50,7 +50,7 @@ Wanneer u een versleutelings bereik uitschakelt, mislukken alle volgende Lees-of
 
 Wanneer een versleutelings bereik is uitgeschakeld, wordt dit niet meer in rekening gebracht. Schakel eventuele versleutelings scopes uit die niet nodig zijn om onnodige kosten te voor komen.
 
-Als uw versleutelings bereik is beveiligd met door de klant beheerde sleutels, kunt u ook de bijbehorende sleutel in de sleutel kluis of beheerde HSM verwijderen om het versleutelings bereik uit te scha kelen. Houd er rekening mee dat door de klant beheerde sleutels worden beveiligd door zacht verwijderen en de beveiliging op te schonen in de sleutel kluis of beheerde HSM, en dat een verwijderde sleutel onderhevig is aan het gedrag dat is gedefinieerd door die eigenschappen. Zie een van de volgende onderwerpen in de Azure Key Vault-documentatie voor meer informatie:
+Als uw versleutelings bereik is beveiligd met door de klant beheerde sleutels, kunt u ook de bijbehorende sleutel in de sleutel kluis verwijderen om het versleutelings bereik uit te scha kelen. Houd er rekening mee dat door de klant beheerde sleutels worden beveiligd door zacht verwijderen en de beveiliging op te schonen in de sleutel kluis en dat een verwijderde sleutel onderhevig is aan het gedrag dat is gedefinieerd door die eigenschappen. Zie een van de volgende onderwerpen in de Azure Key Vault-documentatie voor meer informatie:
 
 - [Voorlopig verwijderen gebruiken met PowerShell](../../key-vault/general/soft-delete-powershell.md)
 - [Voorlopig verwijderen gebruiken met CLI](../../key-vault/general/soft-delete-cli.md)

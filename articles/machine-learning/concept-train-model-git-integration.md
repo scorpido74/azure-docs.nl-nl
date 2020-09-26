@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
-ms.openlocfilehash: bd77af133b88e1ba93054dbb7e0f896d8d418f89
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 71ac7793fe5226215c5d4eab98f84dba356b114c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90893552"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275962"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Git-integratie voor Azure Machine Learning
 
@@ -35,13 +35,95 @@ We raden u aan de opslag plaats te klonen in de map gebruikers, zodat anderen ge
 
 U kunt elke Git-opslag plaats klonen die u kunt verifiëren (GitHub, Azure opslag plaatsen, BitBucket, etc.)
 
-Lees hier hier voor een hand leiding voor het gebruik van de Git [cli.](https://guides.github.com/introduction/git-handbook/)
+Zie voor meer informatie over klonen de hand leiding voor het [gebruik van Git cli](https://guides.github.com/introduction/git-handbook/).
+
+## <a name="authenticate-your-git-account-with-ssh"></a>Uw Git-account verifiëren met SSH
+### <a name="generate-a-new-ssh-key"></a>Een nieuwe SSH-sleutel genereren
+1) [Open het Terminal venster](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#terminal) op het tabblad Azure machine learning notitie blok.
+
+2) Plak de onderstaande tekst en vervang deze in uw e-mail adres.
+
+```bash
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+```
+
+Hiermee maakt u een nieuwe SSH-sleutel met behulp van de meegeleverde e-mail als label.
+
+```
+> Generating public/private rsa key pair.
+```
+
+3) Wanneer u wordt gevraagd om een bestand op te geven waarin u de sleutel wilt opslaan, drukt u op ENTER. Hiermee accepteert u de standaard bestands locatie.
+
+4) Controleer of de standaard locatie '/Home/azureuser/.ssh ' is en druk op ENTER. Geef anders de locatie '/Home/azureuser/.ssh ' op.
+
+> [!TIP]
+> Zorg ervoor dat de SSH-sleutel is opgeslagen in '/Home/azureuser/.ssh '. Dit bestand wordt opgeslagen op het reken exemplaar is alleen toegankelijk voor de eigenaar van het reken exemplaar
+
+```
+> Enter a file in which to save the key (/home/azureuser/.ssh/id_rsa): [Press enter]
+```
+
+5) Typ bij de prompt een beveiligde wachtwoordzin. U wordt aangeraden een wachtwoordzin aan uw SSH-sleutel toe te voegen voor extra beveiliging
+
+```
+> Enter passphrase (empty for no passphrase): [Type a passphrase]
+> Enter same passphrase again: [Type passphrase again]
+```
+
+### <a name="add-the-public-key-to-git-account"></a>De open bare sleutel toevoegen aan het git-account
+1) Kopieer de inhoud van uw open bare-sleutel bestand in het Terminal venster. Als u de naam van de sleutel hebt gewijzigd, vervangt u id_rsa. pub door de bestands naam van de open bare sleutel.
+
+```bash
+cat ~/.ssh/id_rsa.pub
+```
+> [!TIP]
+> **Kopiëren en plakken in Terminal**
+> * Windows: `Ctrl-Insert` kopiëren en gebruiken `Ctrl-Shift-v` of `Shift-Insert` Plakken.
+> * Mac OS: `Cmd-c` om te kopiëren en `Cmd-v` te plakken.
+> * FireFox/IE ondersteunt mogelijk geen juiste Klembord machtigingen.
+
+2) Selecteer en kopieer de sleutel uitvoer in het klem bord.
+
++ [GitHub](https://docs.github.com/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account)
+
++ [GitLab](https://docs.gitlab.com/ee/ssh/#adding-an-ssh-key-to-your-gitlab-account)
+
++ [Azure-DevOps](https://docs.microsoft.com/azure/devops/repos/git/use-ssh-keys-to-authenticate?view=azure-devops#step-2--add-the-public-key-to-azure-devops-servicestfs)  Begin bij **stap 2**.
+
++ [BitBucket](https://support.atlassian.com/bitbucket-cloud/docs/set-up-an-ssh-key/#SetupanSSHkey-ssh2). Begin bij **stap 4**.
+
+### <a name="clone-the-git-repository-with-ssh"></a>De Git-opslag plaats klonen met SSH
+
+1) Kopieer de URL van de SSH Git-kloon vanuit de Git-opslag plaats.
+
+2) Plak de URL in de `git clone` onderstaande opdracht om de URL van uw SSH Git opslag plaats te gebruiken. Dit ziet er ongeveer als volgt uit:
+
+```bash
+git clone git@example.com:GitUser/azureml-example.git
+Cloning into 'azureml-example'...
+```
+
+Er wordt een antwoord weer geven als:
+
+```bash
+The authenticity of host 'example.com (192.30.255.112)' can't be established.
+RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'github.com,192.30.255.112' (RSA) to the list of known hosts.
+```
+
+SSH kan de SSH-vinger afdruk van de server weer geven en u vragen om deze te verifiëren. Controleer of de weer gegeven vinger afdruk overeenkomt met een van de vinger afdrukken op de pagina open bare SSH-sleutels.
+
+SSH geeft deze vinger afdruk weer wanneer deze verbinding maakt met een onbekende host om u te beschermen tegen [man-in-the-middle-aanvallen](https://technet.microsoft.com/library/cc959354.aspx). Zodra u de vinger afdruk van de host hebt geaccepteerd, wordt u niet gevraagd om u opnieuw te vragen, tenzij de vinger afdruk is gewijzigd.
+
+3) Wanneer u wordt gevraagd of u wilt door gaan met verbinding maken, typt u `yes` . Git kloont de opslag plaats en stelt de externe oorsprong in om verbinding te maken met SSH voor toekomstige Git-opdrachten.
 
 ## <a name="track-code-that-comes-from-git-repositories"></a>Code traceren die afkomstig is van Git-opslag plaatsen
 
 Wanneer u een training verzendt die wordt uitgevoerd vanuit de python-SDK of Machine Learning CLI, worden de bestanden die nodig zijn om het model te trainen, geüpload naar uw werk ruimte. Als de `git` opdracht beschikbaar is in uw ontwikkelings omgeving, gebruikt het upload proces om te controleren of de bestanden zijn opgeslagen in een Git-opslag plaats. Als dat het geval is, worden de gegevens uit uw Git-opslag plaats ook geüpload als onderdeel van de trainings uitvoering. Deze informatie wordt opgeslagen in de volgende eigenschappen voor het uitvoeren van de training:
 
-| Eigenschap | Git-opdracht die wordt gebruikt om de waarde op te halen | Description |
+| Eigenschap | Git-opdracht die wordt gebruikt om de waarde op te halen | Beschrijving |
 | ----- | ----- | ----- |
 | `azureml.git.repository_uri` | `git ls-remote --get-url` | De URI waaruit uw opslag plaats is gekloond. |
 | `mlflow.source.git.repoURL` | `git ls-remote --get-url` | De URI waaruit uw opslag plaats is gekloond. |
@@ -110,7 +192,7 @@ De `az ml run` cli-opdracht kan worden gebruikt om de eigenschappen op te halen 
 az ml run list -e train-on-amlcompute --last 1 -w myworkspace -g myresourcegroup --query '[].properties'
 ```
 
-Zie voor meer informatie de documentatie van [AZ ml run](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest) Reference.
+Zie voor meer informatie de documentatie van [AZ ml run](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest&preserve-view=true) Reference.
 
 ## <a name="next-steps"></a>Volgende stappen
 

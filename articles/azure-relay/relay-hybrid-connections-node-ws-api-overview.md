@@ -3,13 +3,13 @@ title: Overzicht van de Api's voor het Azure Relay-knoop punt | Microsoft Docs
 description: Dit artikel bevat een overzicht van de Node.js-API voor de Azure Relay-service. Ook wordt uitgelegd hoe u het hyco-WS-knooppunt pakket gebruikt.
 ms.topic: article
 ms.date: 06/23/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 67d818a95d63b3097f81f799a287fb4c48a1cfb7
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.custom: devx-track-js
+ms.openlocfilehash: 558f49c09203192ff4cbb1af392eaeef8d705c94
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386245"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91263484"
 ---
 # <a name="relay-hybrid-connections-node-api-overview"></a>Overzicht van de API voor relay Hybride verbindingen-knoop punt
 
@@ -48,10 +48,10 @@ var uri = createRelayListenUri([namespaceName], [path], [[token]], [[id]])
 
 Hiermee maakt u een geldige Azure Relay URI voor de Hybrid Connection-listener voor de opgegeven naam ruimte en het pad. Deze URI kan vervolgens worden gebruikt met de relay-versie van de WebSocketServer-klasse.
 
-- `namespaceName`(vereist): de domein gekwalificeerde naam van de Azure Relay naam ruimte die moet worden gebruikt.
-- `path`(vereist): de naam van een bestaande Azure Relay hybride verbinding in die naam ruimte.
-- `token`(optioneel): een eerder uitgegeven relay-toegangs token dat is inge sloten in de listener URI (Zie het volgende voor beeld).
-- `id`(optioneel): een tracerings-ID die end-to-end diagnostische gegevens tracering van aanvragen mogelijk maakt.
+- `namespaceName` (vereist): de domein gekwalificeerde naam van de Azure Relay naam ruimte die moet worden gebruikt.
+- `path` (vereist): de naam van een bestaande Azure Relay hybride verbinding in die naam ruimte.
+- `token` (optioneel): een eerder uitgegeven relay-toegangs token dat is inge sloten in de listener URI (Zie het volgende voor beeld).
+- `id` (optioneel): een tracerings-ID die end-to-end diagnostische gegevens tracering van aanvragen mogelijk maakt.
 
 De `token` waarde is optioneel en moet alleen worden gebruikt wanneer het niet mogelijk is om HTTP-headers samen met de WebSocket-Handshake te verzenden, net als bij de W3C-WebSocket-stack.                  
 
@@ -64,10 +64,10 @@ var uri = createRelaySendUri([namespaceName], [path], [[token]], [[id]])
 
 Hiermee maakt u een geldige Azure Relay hybride verbinding Send URI voor de opgegeven naam ruimte en het pad. Deze URI kan worden gebruikt met een WebSocket-client.
 
-- `namespaceName`(vereist): de domein gekwalificeerde naam van de Azure Relay naam ruimte die moet worden gebruikt.
-- `path`(vereist): de naam van een bestaande Azure Relay hybride verbinding in die naam ruimte.
-- `token`(optioneel): een eerder uitgegeven relay-toegangs token dat is inge sloten in de verzend-URI (Zie het volgende voor beeld).
-- `id`(optioneel): een tracerings-ID die end-to-end diagnostische gegevens tracering van aanvragen mogelijk maakt.
+- `namespaceName` (vereist): de domein gekwalificeerde naam van de Azure Relay naam ruimte die moet worden gebruikt.
+- `path` (vereist): de naam van een bestaande Azure Relay hybride verbinding in die naam ruimte.
+- `token` (optioneel): een eerder uitgegeven relay-toegangs token dat is inge sloten in de verzend-URI (Zie het volgende voor beeld).
+- `id` (optioneel): een tracerings-ID die end-to-end diagnostische gegevens tracering van aanvragen mogelijk maakt.
 
 De `token` waarde is optioneel en moet alleen worden gebruikt wanneer het niet mogelijk is om HTTP-headers samen met de WebSocket-Handshake te verzenden, net als bij de W3C-WebSocket-stack.                   
 
@@ -80,10 +80,10 @@ var token = createRelayToken([uri], [ruleName], [key], [[expirationSeconds]])
 
 Hiermee maakt u een Azure Relay-Shared Access Signature (SAS)-token voor de opgegeven doel-URI, SAS-regel en SAS-regel sleutel die geldig zijn voor het opgegeven aantal seconden of voor een uur vanaf het huidige moment dat het argument Expires wordt wegge laten.
 
-- `uri`(vereist): de URI waarvoor het token moet worden uitgegeven. De URI wordt genormaliseerd voor het gebruik van het HTTP-schema en de query teken reeks gegevens worden verwijderd.
-- `ruleName`(vereist)-SAS-regel naam voor de entiteit die wordt vertegenwoordigd door de opgegeven URI of voor de naam ruimte die wordt vertegenwoordigd door het URI-host gedeelte.
-- `key`(vereist)-geldige sleutel voor de SAS-regel. 
-- `expirationSeconds`(optioneel): het aantal seconden tot het gegenereerde token moet verlopen. Als niet wordt opgegeven, is de standaard waarde 1 uur (3600).
+- `uri` (vereist): de URI waarvoor het token moet worden uitgegeven. De URI wordt genormaliseerd voor het gebruik van het HTTP-schema en de query teken reeks gegevens worden verwijderd.
+- `ruleName` (vereist)-SAS-regel naam voor de entiteit die wordt vertegenwoordigd door de opgegeven URI of voor de naam ruimte die wordt vertegenwoordigd door het URI-host gedeelte.
+- `key` (vereist)-geldige sleutel voor de SAS-regel. 
+- `expirationSeconds` (optioneel): het aantal seconden tot het gegenereerde token moet verlopen. Als niet wordt opgegeven, is de standaard waarde 1 uur (3600).
 
 Het uitgegeven token verleent de rechten die zijn gekoppeld aan de opgegeven SAS-regel voor de opgegeven duur.
 
@@ -118,12 +118,12 @@ De `RelayedServer` constructor ondersteunt een andere set argumenten dan de `Ser
 
 Constructor-argumenten:
 
-- `server`(vereist): de volledig gekwalificeerde URI voor de naam van een hybride verbinding waarop moet worden geluisterd, meestal gemaakt met de helper-methode WebSocket. createRelayListenUri ().
-- `token`(vereist): dit argument bevat een eerder uitgegeven token teken reeks of een call back-functie die kan worden aangeroepen om een dergelijke token teken reeks te verkrijgen. De terugbel optie verdient de voor keur bij het vernieuwen van tokens.
+- `server` (vereist): de volledig gekwalificeerde URI voor de naam van een hybride verbinding waarop moet worden geluisterd, meestal gemaakt met de helper-methode WebSocket. createRelayListenUri ().
+- `token` (vereist): dit argument bevat een eerder uitgegeven token teken reeks of een call back-functie die kan worden aangeroepen om een dergelijke token teken reeks te verkrijgen. De terugbel optie verdient de voor keur bij het vernieuwen van tokens.
 
 #### <a name="events"></a>Gebeurtenissen
 
-`RelayedServer`instanties verzenden drie gebeurtenissen waarmee u binnenkomende aanvragen kunt afhandelen, verbindingen tot stand kunt brengen en fout voorwaarden kunt detecteren. U moet zich abonneren op de `connect` gebeurtenis voor het afhandelen van berichten. 
+`RelayedServer` instanties verzenden drie gebeurtenissen waarmee u binnenkomende aanvragen kunt afhandelen, verbindingen tot stand kunt brengen en fout voorwaarden kunt detecteren. U moet zich abonneren op de `connect` gebeurtenis voor het afhandelen van berichten. 
 
 ##### <a name="headers"></a>koppen
 

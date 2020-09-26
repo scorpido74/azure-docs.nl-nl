@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 300470b2e8fb10fda7cfc59517cef00c07bf0632
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a6aabe7ef3500a114525fe6c8bc993826295e36
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79537003"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91275350"
 ---
 # <a name="server-concepts-in-azure-database-for-mysql"></a>Server concepten in Azure Database for MySQL
 
@@ -45,6 +45,20 @@ De volgende elementen helpen veilige toegang tot uw data base te garanderen.
 | **TCP/IP** | Het protocol wordt ondersteund via TCP/IP en via Unix-domein sockets. |
 | **Firewall** | Ter bescherming van uw gegevens voor komt een firewall regel alle toegang tot uw database server, totdat u opgeeft welke computers zijn gemachtigd. Zie [Azure database for MySQL Server firewall-regels](./concepts-firewall-rules.md). |
 | **SSL** | De service biedt ondersteuning voor het afdwingen van SSL-verbindingen tussen uw toepassingen en uw database server.  Zie [Configure SSL connectivity in your application to securely connect to Azure Database for MySQL](./howto-configure-ssl.md) (SSL-connectiviteit in uw toepassing configureren om veilig verbinding te maken met Azure-database voor MySQL) voor meer informatie. |
+
+## <a name="stopstart-an-azure-database-for-mysql-preview"></a>Een Azure Database for MySQL stoppen/starten (preview)
+
+Azure Database for MySQL biedt u de mogelijkheid om de server te **stoppen** wanneer deze niet wordt gebruikt en de server **te starten** wanneer u de activiteit hervat. Dit is in feite van toepassing op het besparen van kosten op de database servers en betaalt alleen voor de resource wanneer deze wordt gebruikt. Dit wordt nog belang rijker voor werk belastingen voor dev-test en wanneer u alleen de-server gebruikt voor een deel van de dag. Wanneer u de server stopt, worden alle actieve verbindingen verwijderd. Wanneer u de server later weer online wilt zetten, kunt u de [Azure Portal](how-to-stop-start-server.md) of [cli](how-to-stop-start-server.md)gebruiken.
+
+Wanneer de server zich in de status **gestopt** bevindt, wordt de compute van de server niet gefactureerd. Opslag blijft echter gefactureerd omdat de opslag ruimte van de server bewaard blijft om ervoor te zorgen dat gegevens bestanden beschikbaar zijn wanneer de server weer wordt gestart.
+
+> [!IMPORTANT]
+> Wanneer u de server **stopt** , blijft deze voor de volgende zeven dagen in een stretch-status. Als u deze niet hand matig **Start** , wordt de server aan het eind van 7 dagen automatisch gestart. U kunt ervoor kiezen om deze opnieuw te **stoppen** als u de-server niet gebruikt.
+
+Tijdens de tijd server wordt gestopt, kunnen er geen beheer bewerkingen worden uitgevoerd op de server. Als u de configuratie-instellingen op de server wilt wijzigen, moet u [de server starten](how-to-stop-start-server.md).
+
+### <a name="limitations-of-stopstart-operation"></a>Beperkingen van de bewerking stoppen/starten
+- Niet ondersteund bij het lezen van replica configuraties (zowel bron-als replica).
 
 ## <a name="how-do-i-manage-a-server"></a>Hoe kan ik een server beheren?
 

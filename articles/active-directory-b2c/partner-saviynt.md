@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: d80a1ba515aa137eba57051f080b4a2b4f311072
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 8406074933489e53e9235a8a6a05b68f1dd42a85
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90708641"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91259133"
 ---
 # <a name="tutorial-for-configuring-saviynt-with-azure-active-directory-b2c"></a>Zelf studie voor het configureren van Saviynt met Azure Active Directory B2C
 
-In deze voorbeeld zelfstudie bieden we richt lijnen voor het integreren van Azure Active Directory (AD) B2C met [Saviynt](https://saviynt.com/). Het beveiligings beheer platform van Saviynt biedt de zicht baarheid, de beveiliging en het beheer van de huidige bedrijven, in één uniform platform. Saviynt maakt gebruik van toepassings Risico's en governance, infrastructuur beheer, Privileged account management en risico analyse van klanten.
+In deze voorbeeld zelfstudie bieden we richt lijnen voor het integreren van Azure Active Directory (AD) B2C met [Saviynt](https://saviynt.com/integrations/azure-ad/for-b2c/). Het beveiligings beheer platform van Saviynt biedt de zicht baarheid, de beveiliging en het beheer van de huidige bedrijven, in één uniform platform. Saviynt maakt gebruik van toepassings Risico's en governance, infrastructuur beheer, Privileged account management en risico analyse van klanten.
 
 In deze voorbeeld zelf studie stelt u Saviynt in om het gedelegeerde beheer op basis van toegangs beheer voor Azure AD B2C gebruikers nauw keurig te maken. Saviynt controleert het volgende om te bepalen of een gebruiker gemachtigd is om Azure AD B2C gebruikers te beheren.
 
@@ -46,7 +46,7 @@ De Saviynt-integratie bevat de volgende onderdelen:
 
 - [Azure AD B2C](https://azure.microsoft.com/services/active-directory/external-identities/b2c/) : de identiteit van de Business-to-Customer als een service waarmee uw klanten zich kunnen aanmelden, aanmelden en hun profielen beheren.
 
-- [Saviynt](https://saviynt.com/) : het platform voor identiteits beheer dat verzorgt voor het beheer van de levens cyclus van gebruikers en toegangs governance van Azure AD B2C gebruikers.  
+- [Saviynt](https://saviynt.com/integrations/azure-ad/for-b2c/) : het platform voor identiteits beheer dat verzorgt voor het beheer van de levens cyclus van gebruikers en toegangs governance van Azure AD B2C gebruikers.  
 
 - [Microsoft Graph-API](https://docs.microsoft.com/graph/use-the-api) : deze API biedt de interfaces voor Saviynt om de Azure AD B2C gebruikers en hun toegang in azure AD B2C te beheren.
 
@@ -73,7 +73,7 @@ In het volgende architectuur diagram wordt de implementatie weer gegeven.
 
 ## <a name="configure-azure-ad-b2c-with-saviynt"></a>Azure AD B2C configureren met Saviynt
 
-### <a name="creating-an-azure-ad-application-for-saviynt"></a>Een Azure AD-toepassing maken voor Saviynt
+### <a name="create-an-azure-ad-application-for-saviynt"></a>Een Azure AD-toepassing maken voor Saviynt
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/#home).
 
@@ -108,7 +108,7 @@ In het volgende architectuur diagram wordt de implementatie weer gegeven.
 
 15. De Tenant-ID, client-ID en client geheim zijn vereist voor het volt ooien van de installatie in Saviynt.
 
-### <a name="enabling-saviynt-to-delete-users"></a>Saviynt inschakelen om gebruikers te verwijderen
+### <a name="enable-saviynt-to-delete-users"></a>Saviynt inschakelen om gebruikers te verwijderen
 
 In de onderstaande stappen wordt uitgelegd hoe u Saviynt kunt gebruiken om bewerkingen voor het verwijderen van gebruikers uit te voeren in Azure AD B2C.
 

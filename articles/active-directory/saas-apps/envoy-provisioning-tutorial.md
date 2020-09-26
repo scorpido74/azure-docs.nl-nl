@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 06/3/2019
 ms.author: Zhchia
-ms.openlocfilehash: 15d9504e2a886a66eeb429151305b885275b1f23
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3d10480f8668576b4a8c755d6a3aa48603ca61bf
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91265488"
+ms.locfileid: "91361072"
 ---
 # <a name="tutorial-configure-envoy-for-automatic-user-provisioning"></a>Zelf studie: Envoy configureren voor automatische gebruikers inrichting
 
@@ -100,7 +100,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 5. Selecteer in de sectie **beheerders referenties** de invoer `https://app.envoy.com/scim/v2` in de Tenant- **URL**. Voer de **token waarde voor OAUTH Bearer** in die eerder is opgehaald in het **geheime token**. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met Envoy. Als de verbinding mislukt, zorg er dan voor dat uw Envoy-account beheerders machtigingen heeft en probeer het opnieuw.
 
-   ![inrichtings](./media/envoy-tutorial/provisioning.png)
+   ![Scherm afbeelding toont het dialoog venster beheerders referenties, waarin u uw Tenant U R L en geheime token kunt invoeren.](./media/envoy-tutorial/provisioning.png)
 
 6. Voer in het veld **E-mailadres voor meldingen** het e-mailadres in van een persoon of groep die de inrichtingsfoutmeldingen zou moeten ontvangen en schakel het selectievakje **Een e-mailmelding verzenden als een fout optreedt** in.
 
