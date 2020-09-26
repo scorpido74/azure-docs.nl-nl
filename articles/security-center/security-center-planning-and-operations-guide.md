@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: e5d483af44116274019851f049d6222adfd8dbcd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4ef879806555634598d5de999bcd9fc01c050d60
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904840"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314552"
 ---
 # <a name="planning-and-operations-guide"></a>Handleiding voor planning en bewerking
 Deze hand leiding is voor IT-professionals (IT), IT-architecten, gegevens beveiligings analisten en Cloud beheerders plannen om Azure Security Center te gebruiken.
@@ -117,21 +117,21 @@ Bij het plannen van het toegangsbeheer met het RBAC voor Security Center moet u 
 Een beveiligingsbeleid definieert de gewenste configuratie van uw workloads en helpt ervoor te zorgen dat aan de beveiligingsvereisten van het bedrijf of aan regelgeving wordt voldaan. In Security Center kunt u beleidsregels definiëren voor uw Azure-abonnementen, die kunnen worden afgestemd op het type workload of de vertrouwelijkheid van gegevens.
 
 Beleidsregels van Security Center bevatten de volgende onderdelen:
-- [Gegevensverzameling](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection): instellingen voor configuratie van agent en verzamelen van gegevens.
-- [Beveiligings beleid](https://docs.microsoft.com/azure/security-center/security-center-policies): een [Azure Policy](../governance/policy/overview.md) dat bepaalt welke besturings elementen worden bewaakt en aanbevolen door Security Center, of gebruik Azure Policy om nieuwe definities te maken, aanvullende beleids regels te definiëren en beleid toe te wijzen aan verschillende beheer groepen.
-- [E-mailmeldingen](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details): instellingen voor contactpersonen en meldingen voor beveiliging.
-- [Prijs categorie](https://docs.microsoft.com/azure/security-center/security-center-pricing): met of zonder Azure Defender waarmee wordt bepaald welke Security Center-functies beschikbaar zijn voor resources in het bereik (kan worden opgegeven voor abonnementen, resource groepen en werk ruimten).
+- [Gegevensverzameling](security-center-enable-data-collection.md): instellingen voor configuratie van agent en verzamelen van gegevens.
+- [Beveiligings beleid](tutorial-security-policy.md): een [Azure Policy](../governance/policy/overview.md) dat bepaalt welke besturings elementen worden bewaakt en aanbevolen door Security Center, of gebruik Azure Policy om nieuwe definities te maken, aanvullende beleids regels te definiëren en beleid toe te wijzen aan verschillende beheer groepen.
+- [E-mailmeldingen](security-center-provide-security-contact-details.md): instellingen voor contactpersonen en meldingen voor beveiliging.
+- [Prijs categorie](security-center-pricing.md): met of zonder Azure Defender waarmee wordt bepaald welke Security Center-functies beschikbaar zijn voor resources in het bereik (kan worden opgegeven voor abonnementen, resource groepen en werk ruimten).
 
 > [!NOTE]
-> Het opgeven van een contactpersoon voor beveiliging zorgt ervoor dat Azure de juiste persoon in uw organisatie kan bereiken als er zich een beveiligingsincident voordoet. Lees [Contactgegevens voor beveiliging verstrekken in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details) voor meer informatie over het inschakelen van deze mogelijkheid.
+> Het opgeven van een contactpersoon voor beveiliging zorgt ervoor dat Azure de juiste persoon in uw organisatie kan bereiken als er zich een beveiligingsincident voordoet. Lees [Contactgegevens voor beveiliging verstrekken in Azure Security Center](security-center-provide-security-contact-details.md) voor meer informatie over het inschakelen van deze mogelijkheid.
 
 ### <a name="security-policies-definitions-and-recommendations"></a>Definities en aanbevelingen van beveiligingsbeleid
 In Security Center wordt voor elk van uw Azure-abonnementen automatisch een standaardbeveiligingsbeleid gemaakt. U kunt het beleid bewerken in Security Center of Azure Policy gebruiken voor het maken van nieuwe definities, het definiëren van extra beleidsregels en het toewijzen van beleidsregels binnen beheergroepen (die de hele organisatie, een bedrijfseenheid, enzovoort kan vertegenwoordigen), en naleving van deze beleidsregels bewaken binnen deze bereiken.
 
-Voordat u beleidsregels voor veiligheid configureert, moet u elk van de [aanbevelingen voor beveiliging](https://docs.microsoft.com/azure/security-center/security-center-recommendations) controleren en bepalen of deze beleidsregels geschikt zijn voor uw verschillende abonnementen en resourcegroepen. Het is ook belangrijk om te begrijpen welke actie moet worden ondernomen om aan de slag te gaan met beveiligingsaanbevelingen en wie in uw organisatie verantwoordelijk is voor het controleren op nieuwe aanbevelingen en het nemen van de benodigde stappen.
+Voordat u beleidsregels voor veiligheid configureert, moet u elk van de [aanbevelingen voor beveiliging](security-center-recommendations.md) controleren en bepalen of deze beleidsregels geschikt zijn voor uw verschillende abonnementen en resourcegroepen. Het is ook belangrijk om te begrijpen welke actie moet worden ondernomen om aan de slag te gaan met beveiligingsaanbevelingen en wie in uw organisatie verantwoordelijk is voor het controleren op nieuwe aanbevelingen en het nemen van de benodigde stappen.
 
 ## <a name="data-collection-and-storage"></a>Gegevensverzameling en -opslag
-Azure Security Center maakt gebruik van de Log Analytics agent – dit is dezelfde agent die wordt gebruikt door de Azure Monitor-service – om beveiligings gegevens van uw virtuele machines te verzamelen. [Gegevens die worden verzameld](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection) van deze agent worden opgeslagen in uw Log Analytics-werkruimte(n).
+Azure Security Center maakt gebruik van de Log Analytics agent – dit is dezelfde agent die wordt gebruikt door de Azure Monitor-service – om beveiligings gegevens van uw virtuele machines te verzamelen. [Gegevens die worden verzameld](security-center-enable-data-collection.md) van deze agent worden opgeslagen in uw Log Analytics-werkruimte(n).
 
 ### <a name="agent"></a>Agent
 
@@ -189,9 +189,9 @@ U moet ook regel matig bestaande resources controleren op wijzigingen in de conf
 
 ### <a name="hardening-access-and-applications"></a>Toegang en toepassingen beperken
 
-Als onderdeel van uw beveiligingsbeleid moet u preventieve maatregelen nemen om de toegang tot virtuele machines te beperken en te bepalen welke toepassingen mogen worden uitgevoerd op virtuele machines. Door beperkingen in te stellen voor het inkomende verkeer naar uw VM's in Azure, vermindert u de blootstelling aan aanvallen en kunnen gebruikers tegelijkertijd eenvoudig verbinding maken met virtuele machines wanneer dit nodig is. Gebruik [just-in-time-VM](https://docs.microsoft.com/azure/security-center/security-center-just-in-time) -toegang om de toegang tot uw vm's te verharden.
+Als onderdeel van uw beveiligingsbeleid moet u preventieve maatregelen nemen om de toegang tot virtuele machines te beperken en te bepalen welke toepassingen mogen worden uitgevoerd op virtuele machines. Door beperkingen in te stellen voor het inkomende verkeer naar uw VM's in Azure, vermindert u de blootstelling aan aanvallen en kunnen gebruikers tegelijkertijd eenvoudig verbinding maken met virtuele machines wanneer dit nodig is. Gebruik [just-in-time](security-center-just-in-time.md) -toegangs functies voor toegang tot de VM om de toegang tot uw vm's te beperken.
 
-U kunt [adaptieve toepassings besturings elementen](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application) gebruiken om te beperken welke toepassingen kunnen worden uitgevoerd op uw virtuele machines die zich in azure bevinden. Met andere voor delen kunt u uw Vm's beschermen tegen malware. Security Center analyseert processen die worden uitgevoerd in de VM met behulp van machine learning om regels voor het toestaan van vermeldingen te maken.
+U kunt [adaptieve toepassings besturings elementen](security-center-adaptive-application.md) gebruiken om te beperken welke toepassingen kunnen worden uitgevoerd op uw virtuele machines die zich in azure bevinden. Met andere voor delen kunt u uw Vm's beschermen tegen malware. Security Center analyseert processen die worden uitgevoerd in de VM met behulp van machine learning om regels voor het toestaan van vermeldingen te maken.
 
 
 ## <a name="incident-response"></a>Reageren op incidenten

@@ -4,21 +4,21 @@ description: Met de Log Analytics waarschuwing REST API kunt u waarschuwingen ma
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 07/29/2018
-ms.openlocfilehash: eec7aeab32aa071ce9d4476b15740c89210f0606
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: dce340db90c1528c46c1be0bc172751a04feaf31
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322326"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294072"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Waarschuwings regels in Log Analytics maken en beheren met REST API 
 
+> [!IMPORTANT]
+> Zoals [aangekondigd](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/), log Analytics-werk ruimte (n) die is gemaakt na *1 juni 2019* waarschuwings regels beheren met de huidige [scheduledQueryRules-API](/rest/api/monitor/scheduledqueryrules/). We raden klanten aan om [over te scha kelen op de huidige API](./alerts-log-api-switch.md) in oudere werk ruimten om Azure monitor scheduledQueryRules- [voor delen](./alerts-log-api-switch.md#benefits)te gebruiken. In dit artikel wordt het beheer van waarschuwings regels beschreven met behulp van de verouderde API.
+
 Met de Log Analytics waarschuwing REST API kunt u waarschuwingen in Log Analytics maken en beheren.  In dit artikel vindt u meer informatie over de API en enkele voor beelden voor het uitvoeren van verschillende bewerkingen.
 
-> [!IMPORTANT]
-> Zoals [eerder is aangekondigd](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/), kunnen log Analytics-werk ruimten die zijn gemaakt na *1 juni 2019* , waarschuwings regels beheren met **alleen** Azure ScheduledQueryRules [rest API](/rest/api/monitor/scheduledqueryrules/), de [Azure Resource Manager-sjabloon](./alerts-log.md#managing-log-alerts-using-azure-resource-template) en de [Power shell-cmdlet](./alerts-log.md#managing-log-alerts-using-powershell). Klanten kunnen eenvoudig [hun favoriete middelen van waarschuwings regel beheer](./alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) voor oudere werk ruimten wisselen om Azure monitor scheduledQueryRules als standaard te gebruiken en veel [nieuwe voor delen](./alerts-log-api-switch.md#benefits-of-switching-to-new-azure-api) te verkrijgen, zoals de mogelijkheid om systeem eigen Power shell-cmdlets uit te scha kelen, een verhoogde lookback periode in regels, het maken van regels in een afzonderlijke resource groep of abonnement en nog veel meer.
-
-De Log Analytics Zoek REST API bevindt zich in de REST en is toegankelijk via de Azure Resource Manager REST API. In dit document vindt u voor beelden waarin de API wordt geopend vanuit een Power shell-opdracht regel met behulp van [ARMClient](https://github.com/projectkudu/ARMClient), een open-source opdracht regel programma waarmee de Azure Resource Manager-API wordt vereenvoudigd. Het gebruik van ARMClient en Power shell is een van de vele opties om toegang te krijgen tot de Log Analytics Search-API. Met deze hulpprogram ma's kunt u gebruikmaken van de REST-Azure Resource Manager-API om aanroepen naar Log Analytics werk ruimten te maken en zoek opdrachten in deze te voeren. De API voert Zoek resultaten naar u in JSON-indeling uit, zodat u de zoek resultaten op verschillende manieren programmatisch kunt gebruiken.
+De Log Analytics Zoek REST API bevindt zich in de REST en is toegankelijk via de Azure Resource Manager REST API. In dit document vindt u voor beelden waarin de API wordt geopend vanuit een Power shell-opdracht regel met behulp van  [ARMClient](https://github.com/projectkudu/ARMClient), een open-source opdracht regel programma waarmee de Azure Resource Manager-API wordt vereenvoudigd. Het gebruik van ARMClient en Power shell is een van de vele opties om toegang te krijgen tot de Log Analytics Search-API. Met deze hulpprogram ma's kunt u gebruikmaken van de REST-Azure Resource Manager-API om aanroepen naar Log Analytics werk ruimten te maken en zoek opdrachten in deze te voeren. De API voert Zoek resultaten naar u in JSON-indeling uit, zodat u de zoek resultaten op verschillende manieren programmatisch kunt gebruiken.
 
 ## <a name="prerequisites"></a>Vereisten
 Waarschuwingen kunnen momenteel alleen worden gemaakt met een opgeslagen zoek opdracht in Log Analytics.  Raadpleeg de [rest API voor zoeken in Logboeken](../log-query/log-query-overview.md) voor meer informatie.
