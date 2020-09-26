@@ -6,12 +6,12 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/09/2020
-ms.openlocfilehash: b52c493a700cd258e1458b0127aa19cebc714822
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: b5bf29969f8b6d54215e2b2f1a2d0b1587faad6f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90891599"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332182"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Veelgestelde vragen over Azure Synapse Link voor Azure Cosmos DB
 
@@ -82,7 +82,7 @@ Analytische opslag is een alleen-lezen archief in een Azure Cosmos-container. U 
 
 ### <a name="is-the-autosync-replication-from-transactional-store-to-the-analytical-store-asynchronous-or-synchronous-and-what-are-the-latencies"></a>Is de automatische sync-replicatie van transactionele opslag naar de analytische opslag asynchroon of synchroon en wat zijn de latenties?
 
-De replicatie is asynchroon en op dit moment is de verwachte latentie ongeveer 2 minuten.
+Latentie van automatische synchronisatie is doorgaans binnen twee minuten. In het geval van een gedeelde doorvoer database met een groot aantal containers, kan de latentie van de automatische synchronisatie van afzonderlijke containers hoger zijn en kan het tot vijf minuten duren. We willen graag meer informatie over hoe deze latentie past bij uw scenario's. Neem hiervoor contact op met het Azure Cosmos DB- [team](mailto:cosmosdbsynapselink@microsoft.com).
 
 ### <a name="are-there-any-scenarios-where-the-items-from-the-transactional-store-are-not-automatically-propagated-to-the-analytical-store"></a>Zijn er scenario's waarbij de items uit het transactionele archief niet automatisch worden door gegeven aan de analytische opslag?
 

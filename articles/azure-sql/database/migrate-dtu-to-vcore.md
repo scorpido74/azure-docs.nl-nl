@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.custom: sqldbrb=1
 author: stevestein
 ms.author: sstein
-ms.reviewer: sashan, moslake, carlrab
+ms.reviewer: sashan, moslake
 ms.date: 05/28/2020
-ms.openlocfilehash: 0193e7f7001fb8f63794a379c4d2b8e28abd5c0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b8c7671e655594456621e4489cb06191d820b134
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85297865"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333151"
 ---
 # <a name="migrate-azure-sql-database-from-the-dtu-based-model-to-the-vcore-based-model"></a>Azure SQL Database migreren van het DTU-model naar het model op basis van vCore
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -168,13 +168,13 @@ De volgende tabel bevat richt lijnen voor specifieke migratie scenario's:
 |Huidige servicelaag|Doel service-laag|Type migratie|Gebruikersacties|
 |---|---|---|---|
 |Standard|Algemeen doel|Zij|Kan in een wille keurige volg orde worden gemigreerd, maar moeten de juiste vCore-grootte worden gegarandeerd zoals hierboven wordt beschreven|
-|Premium|Bedrijfs kritiek|Zij|Kan in een wille keurige volg orde worden gemigreerd, maar moeten de juiste vCore-grootte worden gegarandeerd zoals hierboven wordt beschreven|
-|Standard|Bedrijfs kritiek|Upgraden|Moet secundair eerst worden gemigreerd|
-|Bedrijfs kritiek|Standard|Downgrade|Moet primair eerst worden gemigreerd|
+|Premium|Bedrijfskritiek|Zij|Kan in een wille keurige volg orde worden gemigreerd, maar moeten de juiste vCore-grootte worden gegarandeerd zoals hierboven wordt beschreven|
+|Standard|Bedrijfskritiek|Upgraden|Moet secundair eerst worden gemigreerd|
+|Bedrijfskritiek|Standard|Downgrade|Moet primair eerst worden gemigreerd|
 |Premium|Algemeen doel|Downgrade|Moet primair eerst worden gemigreerd|
 |Algemeen doel|Premium|Upgraden|Moet secundair eerst worden gemigreerd|
-|Bedrijfs kritiek|Algemeen doel|Downgrade|Moet primair eerst worden gemigreerd|
-|Algemeen doel|Bedrijfs kritiek|Upgraden|Moet secundair eerst worden gemigreerd|
+|Bedrijfskritiek|Algemeen doel|Downgrade|Moet primair eerst worden gemigreerd|
+|Algemeen doel|Bedrijfskritiek|Upgraden|Moet secundair eerst worden gemigreerd|
 ||||
 
 ## <a name="migrate-failover-groups"></a>Failover-groepen migreren

@@ -2,15 +2,15 @@
 title: Problemen met Azure Automation Updatebeheer oplossen
 description: In dit artikel leest u hoe u problemen oplost en oplost met Azure Automation Updatebeheer.
 services: automation
-ms.date: 06/30/2020
+ms.date: 09/25/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: b0b1e31a8c10ba372473c36e35c19044ef02898a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 26ce59c1d4ec8e3e2bf2096a4688b7639148410f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89003351"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91359236"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Problemen met Updatebeheer oplossen
 
@@ -65,9 +65,9 @@ Wanneer een vervangen update wordt 100 procent niet van toepassing is, moet u de
 
 1. Selecteer in het Automation-account **updatebeheer** om de status van de machine weer te geven. Zie [Update-evaluaties weer geven](../update-management/update-mgmt-view-update-assessments.md).
 
-2. Controleer de vervangen update om er zeker van te zijn dat dit 100 procent niet van toepassing is. 
+2. Controleer de vervangen update om er zeker van te zijn dat dit 100 procent niet van toepassing is.
 
-3. Markeer de update als geweigerd, tenzij u een vraag hebt over de update. 
+3. Markeer de update als geweigerd, tenzij u een vraag hebt over de update.
 
 4. Selecteer **computers** en Forceer opnieuw scannen op naleving in de kolom **naleving** . Zie [updates voor virtuele machines beheren](../update-management/update-mgmt-manage-updates-for-vm.md).
 
@@ -112,9 +112,9 @@ Dit probleem kan worden veroorzaakt door lokale configuratie problemen of door e
    | summarize by Computer, Solutions
    ```
 
-4. Als uw computer niet in de query resultaten wordt weer geven, is deze niet recent ingecheckt. Er is waarschijnlijk een probleem met de lokale configuratie en u moet [de agent opnieuw installeren](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows). 
+4. Als uw computer niet in de query resultaten wordt weer geven, is deze niet recent ingecheckt. Er is waarschijnlijk een probleem met de lokale configuratie en u moet [de agent opnieuw installeren](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows).
 
-5. Als uw computer in de query resultaten wordt weer gegeven, controleert u of er problemen zijn met de scope configuratie. De [Scope configuratie](../update-management/update-mgmt-scope-configuration.md) bepaalt welke machines zijn geconfigureerd voor updatebeheer. 
+5. Als uw computer in de query resultaten wordt weer gegeven, controleert u of er problemen zijn met de scope configuratie. De [Scope configuratie](../update-management/update-mgmt-scope-configuration.md) bepaalt welke machines zijn geconfigureerd voor updatebeheer.
 
 6. Als uw computer wordt weer gegeven in uw werk ruimte, maar niet in Updatebeheer, moet u de scope configuratie configureren voor de doel computer. Zie [machines inschakelen in de werk ruimte](../update-management/update-mgmt-enable-automation-account.md#enable-machines-in-the-workspace)voor meer informatie over hoe u dit doet.
 
@@ -180,7 +180,7 @@ Als uw abonnement niet is geconfigureerd voor de Automation-resource provider, k
 
 1. Open de lijst met Azure-Services in het [Azure Portal](../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
 
-2. Selecteer **alle services**en selecteer vervolgens **abonnementen** in de algemene service groep. 
+2. Selecteer **alle services**en selecteer vervolgens **abonnementen** in de algemene service groep.
 
 3. Zoek het abonnement dat is gedefinieerd in het bereik voor uw implementatie.
 
@@ -251,7 +251,7 @@ Volg de onderstaande stappen om erachter te komen of uw query's goed werken.
     | project id, location, name, tags
     ```
 
-2. Controleer of de computers die u zoekt, worden weer gegeven in de query resultaten. 
+2. Controleer of de computers die u zoekt, worden weer gegeven in de query resultaten.
 
 3. Als de computers niet worden weer gegeven, is er waarschijnlijk een probleem met het filter dat is geselecteerd in de dynamische groep. Pas de groeps configuratie naar wens aan.
 
@@ -325,7 +325,7 @@ Als u een gekloonde installatie kopie gebruikt, hebben verschillende computer na
 
 3. Voer uit `Restart-Service HealthService` om de Health-Service opnieuw te starten. Met deze bewerking wordt de sleutel opnieuw gemaakt en wordt een nieuwe UUID gegenereerd.
 
-4. Als deze aanpak niet werkt, voert u eerst Sysprep uit op de installatie kopie en installeert u vervolgens de MMA.
+4. Als deze methode niet werkt, voert u eerst Sysprep uit op de installatie kopie en installeert u vervolgens de Log Analytics-agent voor Windows.
 
 ## <a name="scenario-you-receive-a-linked-subscription-error-when-you-create-an-update-deployment-for-machines-in-another-azure-tenant"></a><a name="multi-tenant"></a>Scenario: er wordt een fout bij een gekoppeld abonnement weer gegeven wanneer u een update-implementatie maakt voor computers in een andere Azure-Tenant
 
@@ -343,7 +343,7 @@ Deze fout treedt op wanneer u een update-implementatie maakt met Azure-Vm's in e
 
 ### <a name="resolution"></a>Oplossing
 
-Gebruik de volgende tijdelijke oplossing om deze items te laten plannen. U kunt de cmdlet [New-AzAutomationSchedule](/powershell/module/az.automation/new-azautomationschedule?view=azps-3.7.0) met de `ForUpdateConfiguration` para meter gebruiken om een schema te maken. Vervolgens gebruikt u de cmdlet [New-AzAutomationSoftwareUpdateConfiguration](/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration?view=azps-3.7.0) en geeft u de computers in de andere Tenant door aan de `NonAzureComputer` para meter. In het volgende voor beeld ziet u hoe u dit doet:
+Gebruik de volgende tijdelijke oplossing om deze items te laten plannen. U kunt de cmdlet [New-AzAutomationSchedule](/powershell/module/az.automation/new-azautomationschedule) met de `ForUpdateConfiguration` para meter gebruiken om een schema te maken. Vervolgens gebruikt u de cmdlet [New-AzAutomationSoftwareUpdateConfiguration](/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration) en geeft u de computers in de andere Tenant door aan de `NonAzureComputer` para meter. In het volgende voor beeld ziet u hoe u dit doet:
 
 ```azurepowershell-interactive
 $nonAzurecomputers = @("server-01", "server-02")
@@ -386,24 +386,15 @@ Deze fout kan een van de volgende oorzaken hebben:
 * De machine bestaat niet meer.
 * De computer is uitgeschakeld en kan niet worden bereikt.
 * De computer heeft een probleem met de netwerk verbinding en daarom is de Hybrid worker op de computer onbereikbaar.
-* Er is een update voor de MMA die de bron computer-ID heeft gewijzigd.
+* Er is een update voor de Log Analytics-agent die de bron computer-ID heeft gewijzigd.
 * De update-uitvoering is beperkt als u de limiet van 200 gelijktijdige taken in een Automation-account bereikt. Elke implementatie wordt beschouwd als een taak en elke computer in een update-implementatie telt als een taak. Alle andere Automation-taken of update-implementaties die momenteel worden uitgevoerd in uw Automation-account, tellen mee voor de limiet voor gelijktijdige taken.
 
 ### <a name="resolution"></a>Oplossing
 
 Gebruik, indien van toepassing, [dynamische groepen](../update-management/update-mgmt-groups.md) voor uw update-implementaties. Daarnaast kunt u de volgende stappen uitvoeren.
 
-1. Controleer of de computer nog bestaat en bereikbaar is. 
-2. Als de computer niet bestaat, bewerkt u de implementatie en verwijdert u de computer.
-3. Zie de sectie [netwerk planning](../update-management/update-mgmt-overview.md#ports) voor een lijst met poorten en adressen die vereist zijn voor updatebeheer en controleer vervolgens of uw computer aan deze vereisten voldoet.
-4. Controleer de verbinding met de Hybrid Runbook Worker met behulp van de Hybrid Runbook Worker agent-probleem Oplosser. Zie problemen [met Update agent oplossen](update-agent-issues.md)voor meer informatie over de probleem Oplosser.
-5. Voer de volgende query uit in Log Analytics om computers in uw omgeving te zoeken waarvoor de bron computer-ID is gewijzigd. Zoek naar computers die dezelfde waarde hebben, `Computer` maar een andere `SourceComputerId` waarde.
-
-   ```kusto
-   Heartbeat | where TimeGenerated > ago(30d) | distinct SourceComputerId, Computer, ComputerIP
-   ```
-
-6. Nadat u de betrokken computers hebt gevonden, bewerkt u de update-implementaties die zijn gericht op die computers en vervolgens verwijdert u deze en leest u deze zodat deze `SourceComputerId` overeenkomt met de juiste waarde.
+1. Controleer of uw computer of server aan de [vereisten](../update-management/update-mgmt-overview.md#client-requirements)voldoet.
+2. Controleer de verbinding met de Hybrid Runbook Worker met behulp van de Hybrid Runbook Worker agent-probleem Oplosser. Zie problemen [met Update agent oplossen](update-agent-issues.md)voor meer informatie over de probleem Oplosser.
 
 ## <a name="scenario-updates-are-installed-without-a-deployment"></a><a name="updates-nodeployment"></a>Scenario: updates worden geïnstalleerd zonder een implementatie
 
@@ -466,7 +457,7 @@ Access is denied. (Exception form HRESULT: 0x80070005(E_ACCESSDENIED))
 
 ### <a name="cause"></a>Oorzaak
 
-Een proxy, gateway of firewall blokkeert mogelijk netwerk communicatie. 
+Een proxy, gateway of firewall blokkeert mogelijk netwerk communicatie.
 
 ### <a name="resolution"></a>Oplossing
 

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 06cd02177d7d5c478f3378eb05517f1a37297e92
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3764b261b491c660da16d7989be20742fead1fbf
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300729"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91359151"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Speciaal voor Azure toegewezen HSM-netwerken
 
@@ -83,7 +83,7 @@ Voor wereld wijd gedistribueerde toepassingen of voor regionale failover-scenari
 > [!NOTE]
 > Globale Vnet-peering is niet beschikbaar in scenario's voor connectiviteit tussen regio's met specifieke Hsm's op dit moment en VPN-gateway moet in plaats daarvan worden gebruikt. 
 
-![Global-vnet](media/networking/global-vnet.png)
+![Diagram toont twee regio's die zijn verbonden met twee V P N gateways. Elke regio bevat gepeerde virtuele netwerken.](media/networking/global-vnet.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

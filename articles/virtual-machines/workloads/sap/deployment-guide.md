@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/16/2020
 ms.author: sedusch
-ms.openlocfilehash: 6b66db639e0b22a7e0c45486465a1fa395aba33d
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 4494af89ac35a391f7dc6097b14d135a911d99dd
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653508"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91359610"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Azure Virtual Machines-implementatie voor SAP NetWeaver
 
@@ -543,11 +543,11 @@ Omdat verschillende versies van een besturings systeem of DBMS andere patch vere
 U kunt verschillende stappen gebruiken om een persoonlijke installatie kopie voor Linux te maken dan om er een te maken voor Windows.
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows-logo.][Logo_Windows] Windows
 >
 > Om een Windows-installatie kopie voor te bereiden die u kunt gebruiken om meerdere virtuele machines te implementeren, moeten de Windows-instellingen (zoals Windows SID en hostname) worden abstracted of gegeneraliseerd op de on-premises VM. U kunt [Sysprep](/previous-versions/windows/it-pro/windows-8.1-and-8/hh825084(v=win.10)) gebruiken om dit te doen.
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux-logo.][Logo_Linux] Linux
 >
 > Om een Linux-installatie kopie voor te bereiden die u kunt gebruiken om meerdere virtuele machines te implementeren, moeten bepaalde Linux-instellingen worden abstracted of gegeneraliseerd op de on-premises VM. U kunt `waagent -deprovision`  dit gebruiken om dit te doen. Zie [een virtuele Linux-machine vastleggen die wordt uitgevoerd op Azure][virtual-machines-linux-capture-image] en de [Gebruikers handleiding voor de Azure Linux-agent][virtual-machines-linux-agent-user-guide-command-line-options]voor meer informatie.
 >
@@ -683,11 +683,11 @@ In dit scenario wordt de VM-agent **niet** automatisch geïnstalleerd tijdens de
 Zie de volgende bronnen voor meer informatie over de Azure VM-agent.
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows-logo.][Logo_Windows] Windows
 >
 > [Overzicht van de agent voor virtuele Azure-machines][virtual-machines-windows-agent-user-guide]
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux-logo.][Logo_Linux] Linux
 >
 > [Gebruikershandleiding voor Azure Linux Agent][virtual-machines-linux-agent-user-guide]
 >
@@ -828,7 +828,7 @@ Als u een virtuele machine implementeert vanuit Azure Marketplace, is deze stap 
 
 Er is geen interactie van de gebruiker vereist om de Azure VM-agent bij te werken. De VM-agent wordt automatisch bijgewerkt en het opnieuw opstarten van de VM is niet vereist.
 
-#### <a name="linux"></a><a name="6889ff12-eaaf-4f3c-97e1-7c9edc7f7542"></a>Linux
+#### <a name="linux"></a><a name="6889ff12-eaaf-4f3c-97e1-7c9edc7f7542"></a>Spreek
 
 Gebruik de volgende opdrachten om de VM-agent voor Linux te installeren:
 
@@ -1309,7 +1309,7 @@ Als sommige infrastructuur gegevens niet correct worden afgeleverd, zoals wordt 
 > [!NOTE]
 > Er zijn twee versies van de VM-extensie. In dit hoofd stuk wordt de standaard-VM-extensie besproken. Als u de nieuwe VM-extensie hebt geïnstalleerd, raadpleegt u het hoofd stuk [problemen met de nieuwe Azure-extensie voor SAP oplossen][deployment-guide-5.3-new].
 
-#### <a name="windowslogo_windows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows][Logo_Windows] Prestatie meter items van Azure worden helemaal niet weer gegeven
+#### <a name="windows-logologo_windows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows-logo.][Logo_Windows] Prestatie meter items van Azure worden helemaal niet weer gegeven
 
 De AzureEnhancedMonitoring Windows-service verzamelt prestatie gegevens in Azure. Als de service niet juist is geïnstalleerd of niet op uw virtuele machine wordt uitgevoerd, kunnen er geen metrische gegevens voor prestaties worden verzameld.
 
@@ -1350,13 +1350,13 @@ De AzureEnhancedMonitoring Windows-service bestaat en is ingeschakeld, maar kan 
 
 De configuratie is onjuist. Start de Azure-extensie voor SAP in de VM opnieuw, zoals beschreven in [de Azure-extensie voor SAP configureren][deployment-guide-4.5].
 
-#### <a name="windowslogo_windows-some-azure-performance-counters-are-missing"></a>![Windows][Logo_Windows] Sommige prestatie meter items van Azure ontbreken
+#### <a name="windows-logologo_windows-some-azure-performance-counters-are-missing"></a>![Windows-logo.][Logo_Windows] Sommige prestatie meter items van Azure ontbreken
 
 De AzureEnhancedMonitoring Windows-service verzamelt prestatie gegevens in Azure. De service haalt gegevens op uit verschillende bronnen. Sommige configuratie gegevens worden lokaal verzameld en sommige prestatie gegevens worden gelezen uit Azure Diagnostics. Opslag tellers worden gebruikt vanuit uw logboek registratie op het niveau van het opslag abonnement.
 
 Als u het probleem niet kunt oplossen met SAP Note [1999351] , voert u het `Set-AzVMAEMExtension` configuratie script opnieuw uit. Mogelijk moet u een uur wachten, omdat er mogelijk geen opslag analyse-of diagnostische tellers worden gemaakt direct nadat deze zijn ingeschakeld. Als het probleem zich blijft voordoen, opent u een SAP-klant bericht voor ondersteuning op de component BC-OP-NT-AZR voor Windows of BC-OP-LNX-AZR voor een virtuele Linux-machine.
 
-#### <a name="linuxlogo_linux-azure-performance-counters-do-not-show-up-at-all"></a>![Linux][Logo_Linux] Prestatie meter items van Azure worden helemaal niet weer gegeven
+#### <a name="linux-logologo_linux-azure-performance-counters-do-not-show-up-at-all"></a>![Linux-logo.][Logo_Linux] Prestatie meter items van Azure worden helemaal niet weer gegeven
 
 Metrische gegevens over prestaties in Azure worden verzameld door een daemon. Als de daemon niet wordt uitgevoerd, kunnen er geen prestatie gegevens worden verzameld.
 
@@ -1389,7 +1389,7 @@ Als u azperfli.exe uitvoert zoals eerder beschreven, kunt u een resultaat krijge
 De berichten worden veroorzaakt door het feit dat standaard Managed Disks geen Api's leveren die worden gebruikt door de SAP-extensie voor SAP om te controleren op statistische gegevens van de standaard Azure Storage accounts. Dit is niet van belang. Reden voor het introduceren van het verzamelen van gegevens voor Standard-Disk Storage accounts is het beperken van de invoer en uitvoer die regel matig zijn opgetreden. Managed disks voor komt een dergelijke beperking door het aantal schijven in een opslag account te beperken. Daarom is het niet zo dat dat type gegevens niet kritiek zijn.
 
 
-#### <a name="linuxlogo_linux-some-azure-performance-counters-are-missing"></a>![Linux][Logo_Linux] Sommige prestatie meter items van Azure ontbreken
+#### <a name="linux-logologo_linux-some-azure-performance-counters-are-missing"></a>![Linux-logo.][Logo_Linux] Sommige prestatie meter items van Azure ontbreken
 
 De metrische gegevens over prestaties in Azure worden verzameld door een daemon. deze haalt informatie uit verschillende bronnen op. Sommige configuratie gegevens worden lokaal verzameld en sommige prestatie gegevens worden gelezen uit Azure Diagnostics. Opslag items zijn afkomstig uit de logboeken in uw opslag abonnement.
 
@@ -1402,7 +1402,7 @@ Als u het probleem niet kunt oplossen met SAP Note [1999351] , voert u het `Set-
 > [!NOTE]
 > Er zijn twee versies van de VM-extensie. In dit hoofd stuk wordt de nieuwe VM-extensie besproken. Als u de standaard-VM-extensie hebt geïnstalleerd, raadpleegt u hoofd stuk [problemen met de Azure-extensie voor SAP oplossen][deployment-guide-5.3].
 
-#### <a name="windowslogo_windows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows][Logo_Windows] Prestatie meter items van Azure worden helemaal niet weer gegeven
+#### <a name="windows-logologo_windows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows-logo.][Logo_Windows] Prestatie meter items van Azure worden helemaal niet weer gegeven
 
 Het AzureEnhancedMonitoring-proces verzamelt prestatie gegevens in Azure. Als het proces niet wordt uitgevoerd in uw virtuele machine, kunnen er geen metrische gegevens over prestaties worden verzameld.
 
@@ -1416,13 +1416,13 @@ De installatie directory C: \\ pakketten \\ invoeg toepassingen \\ micro soft. A
 
 De extensie is niet geïnstalleerd. Bepaal of dit een proxy probleem is (zoals eerder beschreven). Mogelijk moet u de computer opnieuw opstarten of de VM-extensie opnieuw installeren.
 
-#### <a name="windowslogo_windows-some-azure-performance-counters-are-missing"></a>![Windows][Logo_Windows] Sommige prestatie meter items van Azure ontbreken
+#### <a name="windows-logologo_windows-some-azure-performance-counters-are-missing"></a>![Windows-logo.][Logo_Windows] Sommige prestatie meter items van Azure ontbreken
 
 Het AzureEnhancedMonitoring Windows-proces verzamelt prestatie gegevens in Azure. Het proces haalt gegevens uit verschillende bronnen op. Sommige configuratie gegevens worden lokaal verzameld en sommige prestatie gegevens worden gelezen uit Azure Monitor.
 
 Als u het probleem niet kunt oplossen met SAP Note [1999351] , opent u een sap-klant ondersteunings bericht in component BC-op-NT-AZR voor Windows of BC-op-LNX-AZR voor een virtuele Linux-machine. Koppel het logboek bestand C: \\ pakketten \\ invoeg toepassingen \\ micro soft. AzureCAT. AzureEnhancedMonitoring. MonitorX64Windows \\ &lt;>\\logapp.txt aan het incident.
 
-#### <a name="linuxlogo_linux-azure-performance-counters-do-not-show-up-at-all"></a>![Linux][Logo_Linux] Prestatie meter items van Azure worden helemaal niet weer gegeven
+#### <a name="linux-logologo_linux-azure-performance-counters-do-not-show-up-at-all"></a>![Linux-logo.][Logo_Linux] Prestatie meter items van Azure worden helemaal niet weer gegeven
 
 Metrische gegevens over prestaties in Azure worden verzameld door een daemon. Als de daemon niet wordt uitgevoerd, kunnen er geen prestatie gegevens worden verzameld.
 
@@ -1436,7 +1436,7 @@ De map \\ var \\ lib \\ waagent heeft \\ geen submap voor de Azure-extensie voor
 
 De extensie is niet geïnstalleerd. Bepaal of dit een proxy probleem is (zoals eerder beschreven). Mogelijk moet u de computer opnieuw opstarten en/of de VM-extensie opnieuw installeren.
 
-#### <a name="linuxlogo_linux-some-azure-performance-counters-are-missing"></a>![Linux][Logo_Linux] Sommige prestatie meter items van Azure ontbreken
+#### <a name="linux-logologo_linux-some-azure-performance-counters-are-missing"></a>![Linux-logo.][Logo_Linux] Sommige prestatie meter items van Azure ontbreken
 
 De metrische gegevens over prestaties in Azure worden verzameld door een daemon. deze haalt informatie uit verschillende bronnen op. Sommige configuratie gegevens worden lokaal verzameld en sommige prestatie gegevens worden gelezen uit Azure Monitor.
 
