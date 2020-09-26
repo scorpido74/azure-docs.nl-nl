@@ -5,21 +5,18 @@ services: container-service
 ms.topic: article
 ms.date: 09/22/2020
 author: jluk
-ms.openlocfilehash: 9ebd12777c32a9415eeb1b77d9cd487b0f23eb29
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fd4f79e0cae5028e4bbaa8a4f5115d5a767dcf54
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91299150"
+ms.locfileid: "91368852"
 ---
 # <a name="secure-pods-with-azure-policy"></a>Alles beveiligen met Azure Policy
 
 Als u de beveiliging van uw AKS-cluster wilt verbeteren, kunt u bepalen welke functies er worden verleend en of er iets wordt uitgevoerd op basis van het bedrijfs beleid. Deze toegang wordt gedefinieerd via ingebouwd beleid dat is opgegeven door de [Azure Policy-invoeg toepassing voor AKS][kubernetes-policy-reference]. Door extra controle over de beveiligings aspecten van de specificatie van uw Pod te bieden, zoals root-bevoegdheden, kunt u strenger beveiliging en inzicht krijgen in wat er in uw cluster wordt geïmplementeerd. Als een pod niet voldoet aan de voor waarden die zijn opgegeven in het beleid, kan Azure Policy de pod niet toestaan om een schending te starten of te markeren. In dit artikel leest u hoe u Azure Policy kunt gebruiken om de implementatie van een Peul in AKS te beperken.
 
 ## <a name="before-you-begin"></a>Voordat u begint
-
-> [!IMPORTANT]
-> De algemene Beschik baarheid (GA) van Azure Policy op AKS is actief in alle regio's. De verwachte wereld wijde voltooiing van de GA-versie is 9/29/2020. Voor gebruik in regio's zonder de GA-release zijn de stappen voor de preview-registratie vereist. Dit wordt echter automatisch bijgewerkt naar de GA-release wanneer deze beschikbaar is in de regio.
 
 In dit artikel wordt ervan uitgegaan dat u beschikt over een bestaand AKS-cluster. Als u een AKS-cluster nodig hebt, raadpleegt u de AKS Quick Start [met behulp van de Azure cli][aks-quickstart-cli] of [met behulp van de Azure Portal][aks-quickstart-portal].
 
