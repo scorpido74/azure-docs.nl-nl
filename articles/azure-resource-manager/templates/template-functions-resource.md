@@ -3,12 +3,12 @@ title: 'Sjabloon functies: bronnen'
 description: Hierin worden de functies beschreven die u kunt gebruiken in een Azure Resource Manager sjabloon om waarden over resources op te halen.
 ms.topic: conceptual
 ms.date: 09/03/2020
-ms.openlocfilehash: 3f916be4431aa6b2b100967465450447ecc1d626
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: 4f788af065db5ef5f23f9a8e96c2d45405959614
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89468671"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369192"
 ---
 # <a name="resource-functions-for-arm-templates"></a>Resource functies voor ARM-sjablonen
 
@@ -235,10 +235,10 @@ Het mogelijke gebruik van lijst * wordt weer gegeven in de volgende tabel.
 | Micro soft. relay/naam ruimten/WcfRelays/authorizationRules | [listkeys ophalen](/rest/api/relay/wcfrelays/listkeys) |
 | Micro soft. Search/searchServices | [listAdminKeys](/rest/api/searchmanagement/adminkeys/get) |
 | Micro soft. Search/searchServices | [listQueryKeys](/rest/api/searchmanagement/querykeys/listbysearchservice) |
-| Micro soft. ServiceBus/naam ruimten/authorizationRules | [listkeys ophalen](/rest/api/servicebus/namespaces/listkeys) |
-| Micro soft. ServiceBus/naam ruimten/disasterRecoveryConfigs/authorizationRules | [listkeys ophalen](/rest/api/servicebus/disasterrecoveryconfigs/listkeys) |
-| Micro soft. ServiceBus/naam ruimten/wacht rijen/authorizationRules | [listkeys ophalen](/rest/api/servicebus/queues/listkeys) |
-| Micro soft. ServiceBus/naam ruimten/onderwerpen/authorizationRules | [listkeys ophalen](/rest/api/servicebus/topics/listkeys) |
+| Micro soft. ServiceBus/naam ruimten/authorizationRules | [listkeys ophalen](/rest/api/servicebus/stable/namespaces%20-%20authorization%20rules/listkeys) |
+| Micro soft. ServiceBus/naam ruimten/disasterRecoveryConfigs/authorizationRules | [listkeys ophalen](/rest/api/servicebus/stable/disasterrecoveryconfigs/listkeys) |
+| Micro soft. ServiceBus/naam ruimten/wacht rijen/authorizationRules | [listkeys ophalen](/rest/api/servicebus/stable/queues%20-%20authorization%20rules/listkeys) |
+| Micro soft. ServiceBus/naam ruimten/onderwerpen/authorizationRules | [listkeys ophalen](/rest/api/servicebus/stable/topics%20–%20authorization%20rules/listkeys) |
 | Micro soft. SignalRService/Signa lering | [listkeys ophalen](/rest/api/signalr/signalr/listkeys) |
 | Microsoft.Storage/storageAccounts | [listAccountSas](/rest/api/storagerp/storageaccounts/listaccountsas) |
 | Microsoft.Storage/storageAccounts | [listkeys ophalen](/rest/api/storagerp/storageaccounts/listkeys) |
@@ -415,9 +415,9 @@ De uitvoer van de voor gaande voor beelden retourneert drie matrices.
 
 | Naam | Type | Waarde |
 | ---- | ---- | ----- |
-| Ondersteund | array | ["1"] |
-| notSupportedRegion | array | [] |
-| notSupportedType | array | [] |
+| Ondersteund | matrix | ["1"] |
+| notSupportedRegion | matrix | [] |
+| notSupportedType | matrix | [] |
 
 U kunt de reactie van pickZones gebruiken om te bepalen of u null moet opgeven voor zones of virtuele machines aan verschillende zones wilt toewijzen. In het volgende voor beeld wordt een waarde ingesteld voor de zone op basis van de beschik baarheid van zones.
 

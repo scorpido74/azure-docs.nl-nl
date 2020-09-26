@@ -11,12 +11,12 @@ ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdc8b68206161abdd1782561c904d4e670ecca22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 94710e99fa7d04d757f2ad5fd7b2d3f6e01371d1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358953"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306338"
 ---
 # <a name="move-azure-ad-connect-database-from-sql-server-express-to-sql-server"></a>Azure AD Connect-database verplaatsen van SQL Server Express naar SQL Server 
 
@@ -41,13 +41,13 @@ Voer de volgende stappen uit om de Azure AD Connect-database te verplaatsen naar
 
 8. Zodra de database is bijgevoegd, gaat u terug naar de Azure AD Connect-server en installeert u Azure AD Connect.
 9. Zodra de MSI-installatie is voltooid, wordt de wizard Azure AD Connect gestart met de Express-installatiemodus. Sluit het scherm door op het pictogram Afsluiten te klikken.
-   ![Welkom](./media/how-to-connect-install-move-db/db1.png)
+   ![Scherm opname van de pagina Welkom bij Azure A D Connect met snelle instellingen in het menu aan de linkerkant.](./media/how-to-connect-install-move-db/db1.png)
 10. Start een nieuwe opdrachtprompt of PowerShell-sessie. Ga naar de map \<drive>\program files\Microsoft Azure AD Connect. Voer de opdracht .\AzureADConnect.exe /useexistingdatabase uit om de wizard Azure AD Connect te starten in de installatiemodus Bestaande database gebruiken.
     ![PowerShell](./media/how-to-connect-install-move-db/db2.png)
 11. U wordt verwelkomd met het scherm Welkom bij Azure AD Connect. Nadat u akkoord bent gegaan met de licentievoorwaarden en privacyverklaring, klikt u op **Doorgaan**.
-    ![Welkom](./media/how-to-connect-install-move-db/db3.png)
+    ![Scherm opname van de pagina Welkom bij Azure A D Connect](./media/how-to-connect-install-move-db/db3.png)
 12. Op het scherm **Vereiste onderdelen installeren** is de optie **Een bestaande SQL-server gebruiken** ingeschakeld. Geef de naam op van de SQL-server waarop de ADSync-database wordt gehost. Als het SQL Engine-exemplaar dat wordt gebruikt om de ADSync-database te hosten, niet het standaardexemplaar is op de SQL-server, moet u de naam van het SQL Engine-exemplaar opgeven. Daarnaast moet u, indien bladeren in SQL niet is ingeschakeld, ook het poortnummer voor het SQL Engine-exemplaar opgeven. Bijvoorbeeld:         
-    ![Welkom](./media/how-to-connect-install-move-db/db4.png)           
+    ![Scherm afbeelding met de pagina vereiste onderdelen installeren.](./media/how-to-connect-install-move-db/db4.png)           
 
 13. Op het scherm **Verbinding maken met Azure AD** moet u de referenties opgeven van een globale beheerder van de Azure AD-adreslijst. U wordt aangeraden om een account te gebruiken in het standaarddomein onmicrosoft.com. Dit account wordt alleen gebruikt om een serviceaccount in Azure AD aan te maken en wordt niet gebruikt wanneer de wizard is voltooid.
     ![Verbinding maken](./media/how-to-connect-install-move-db/db5.png)
@@ -57,11 +57,11 @@ Voer de volgende stappen uit om de Azure AD Connect-database te verplaatsen naar
  
 
 15. In het pop-updialoogvenster kunt u (i) de referenties van een ondernemingsadministrator opgeven en het AD DS-account voor u laten maken in Azure AD Connect of (ii) zelf het AD DS-account maken en de bijbehorende referenties opgeven in Azure AD Connect. Zodra u een optie hebt geselecteerd en de benodigde referenties hebt opgegeven, klikt u op **OK** om het pop-updialoogvenster te sluiten.
-    ![Welkom](./media/how-to-connect-install-move-db/db7.png)
+    ![Scherm opname van het pop-updialoogvenster ' A D forest-account ' met ' nieuwe A D-account maken ' geselecteerd.](./media/how-to-connect-install-move-db/db7.png)
  
 
 16. Zodra de referenties zijn opgegeven, verandert het rode kruis in een groen vinkje. Klik op **Volgende**.
-    ![Welkom](./media/how-to-connect-install-move-db/db8.png)
+    ![Scherm opname van de pagina ' Connect your directory's ' nadat u de account referenties hebt ingevoerd.](./media/how-to-connect-install-move-db/db8.png)
  
 
 17. Klik in het scherm **gereed voor configuratie** op **installeren**.

@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/10/2020
+ms.date: 09/24/2020
 ms.author: iainfou
-ms.openlocfilehash: de27ee713caae0310f185cd717d5db2095feff32
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: ef05704ea03316ef0c95510e27ee630ddcfb0b44
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88054286"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266901"
 ---
 # <a name="migrate-azure-active-directory-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Azure Active Directory Domain Services migreren van het klassieke virtuele netwerk model naar Resource Manager
 
@@ -139,6 +139,14 @@ Er zijn enkele beperkingen voor de virtuele netwerken waarnaar een beheerd domei
 
 Zie overwegingen voor het [ontwerpen van virtuele netwerken en configuratie opties][network-considerations]voor meer informatie over de vereisten voor virtuele netwerken.
 
+U moet ook een netwerk beveiligings groep maken om het verkeer in het virtuele netwerk voor het beheerde domein te beperken. Er wordt een Azure Standard-load balancer gemaakt tijdens het migratie proces waarin deze regels moeten worden uitgevoerd. Deze netwerkbeveiligingsgroep beveiligt Azure AD DS en is vereist voor een juiste werking van het beheerde domein.
+
+Zie [Azure AD DS-netwerk beveiligings groepen en de vereiste poorten](network-considerations.md#network-security-groups-and-required-ports)voor meer informatie over welke regels zijn vereist.
+
+### <a name="ldaps-and-tlsssl-certificate-expiration"></a>Certificaat verloop van LDAPS en TLS/SSL
+
+Als uw beheerde domein is geconfigureerd voor LDAPS, controleert u of uw huidige TLS/SSL-certificaat langer dan 30 dagen geldig is. Een certificaat dat binnen de komende 30 dagen verloopt, zorgt ervoor dat de migratie processen mislukken. Als dat nodig is, kunt u het certificaat vernieuwen en Toep assen op uw beheerde domein en vervolgens het migratie proces starten.
+
 ## <a name="migration-steps"></a>Migratiestappen
 
 De migratie naar het Resource Manager-implementatie model en het virtuele netwerk is onderverdeeld in vijf hoofd stappen:
@@ -166,7 +174,9 @@ Voordat u met het migratie proces begint, moet u de volgende eerste controles en
 
     Zorg ervoor dat de netwerk instellingen de vereiste poorten die vereist zijn voor Azure AD DS niet blokkeert. Poorten moeten zijn geopend op het klassieke virtuele netwerk en het virtuele netwerk van Resource Manager. Deze instellingen zijn onder andere route tabellen (hoewel het niet aanbevolen is om route tabellen te gebruiken) en netwerk beveiligings groepen.
 
-    Zie [netwerk beveiligings groepen en vereiste poorten][network-ports]om de vereiste poorten weer te geven. Om netwerk communicatie problemen te minimaliseren, wordt het aanbevolen om een netwerk beveiligings groep of route tabel toe te passen op het Resource Manager-virtuele netwerk nadat de migratie is voltooid.
+    Azure AD DS heeft een netwerk beveiligings groep nodig om de poorten die nodig zijn voor het beheerde domein te beveiligen en alle andere inkomend verkeer te blok keren. Deze netwerk beveiligings groep fungeert als een extra beveiligingslaag om de toegang tot het beheerde domein te vergren delen. Zie [netwerk beveiligings groepen en vereiste poorten][network-ports]om de vereiste poorten weer te geven.
+
+    Als u beveiligde LDAP gebruikt, voegt u een regel toe aan de netwerk beveiligings groep om binnenkomend verkeer voor *TCP* -poort *636*toe te staan. Zie [beveiligde LDAP-toegang via internet vergren delen](tutorial-configure-ldaps.md#lock-down-secure-ldap-access-over-the-internet) voor meer informatie.
 
     Noteer deze doel resource groep, het virtuele netwerk van het doel en het subnet van het virtuele netwerk. Deze resource namen worden gebruikt tijdens het migratie proces.
 
@@ -265,9 +275,9 @@ Wanneer ten minste één domein controller beschikbaar is, voert u de volgende c
 
 Test nu de verbinding met het virtuele netwerk en de naam omzetting. Voer de volgende netwerk communicatie tests uit op een VM die is verbonden met het virtuele netwerk van Resource Manager of hieraan is gekoppeld:
 
-1. Controleer of u het IP-adres van een van de domein controllers kunt pingen, zoals`ping 10.1.0.4`
+1. Controleer of u het IP-adres van een van de domein controllers kunt pingen, zoals `ping 10.1.0.4`
     * De IP-adressen van de domein controllers worden weer gegeven op de pagina **Eigenschappen** voor het beheerde domein in de Azure Portal.
-1. Controleer de naam omzetting van het beheerde domein, zoals`nslookup aaddscontoso.com`
+1. Controleer de naam omzetting van het beheerde domein, zoals `nslookup aaddscontoso.com`
     * Geef de DNS-naam voor uw eigen beheerde domein op om te controleren of de DNS-instellingen juist zijn en worden omgezet.
 
 De tweede domein controller moet beschikbaar zijn 1-2 uur nadat de migratie-cmdlet is voltooid. Als u wilt controleren of de tweede domein controller beschikbaar is, bekijkt u de **Eigenschappen** pagina voor het beheerde domein in het Azure Portal. Als er twee IP-adressen worden weer gegeven, is de tweede domein controller klaar.
@@ -295,13 +305,6 @@ Als dat nodig is, kunt u het beleid voor verfijnde wacht woorden bijwerken zodat
 1. Als een virtuele machine wordt blootgesteld aan Internet, controleert u op algemene account namen, zoals *Administrator*, *gebruiker*of *gast* , met hoge aanmeldings pogingen. Waar mogelijk kunt u deze Vm's bijwerken met minder algemeen benoemde accounts.
 1. Gebruik een netwerk tracering op de virtuele machine om de bron van de aanvallen te zoeken en te voor komen dat deze IP-adressen zich kunnen aanmelden.
 1. Wanneer er minimale vergrendelings problemen zijn, werkt u het verfijnde wachtwoord beleid zo strikt mogelijk aan.
-
-### <a name="creating-a-network-security-group"></a>Een netwerkbeveiligingsgroep maken
-
-Azure AD DS heeft een netwerk beveiligings groep nodig om de poorten die nodig zijn voor het beheerde domein te beveiligen en alle andere inkomend verkeer te blok keren. Deze netwerk beveiligings groep fungeert als een extra beveiligingslaag om de toegang tot het beheerde domein te vergren delen en wordt niet automatisch gemaakt. Als u de netwerk beveiligings groep wilt maken en de vereiste poorten wilt openen, raadpleegt u de volgende stappen:
-
-1. Selecteer uw Azure AD DS-resource in het Azure Portal. Op de pagina overzicht wordt een knop weer gegeven voor het maken van een netwerk beveiligings groep als er geen is gekoppeld aan Azure AD Domain Services.
-1. Als u beveiligde LDAP gebruikt, voegt u een regel toe aan de netwerk beveiligings groep om binnenkomend verkeer voor *TCP* -poort *636*toe te staan. Zie [Configure secure LDAP][secure-ldap](Engelstalig) voor meer informatie.
 
 ## <a name="roll-back-and-restore-from-migration"></a>Terugdraaien en herstellen vanaf migratie
 

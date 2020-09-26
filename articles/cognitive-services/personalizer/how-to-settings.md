@@ -1,14 +1,16 @@
 ---
 title: Personalizer configureren
 description: Service configuratie bevat de manier waarop de service beloningen behandelt, hoe vaak de service bekijkt, hoe vaak het model opnieuw wordt getraind en hoeveel gegevens worden opgeslagen.
+ms.service: cognitive-services
+ms.subservice: personalizer
 ms.topic: how-to
 ms.date: 04/29/2020
-ms.openlocfilehash: 4c0cbf35a37f6b3eb134992b34b23fd9d7be47ed
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 9b7347cb98bcbf2e1d92f115d404197083acef4d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344336"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292605"
 ---
 # <a name="configure-personalizer-learning-loop"></a>De learning-lus van Personaler configureren
 
@@ -43,10 +45,10 @@ Configureer de service voor het gebruik van beloningen van uw leer proces. Als u
 > [!div class="mx-imgBorder"]
 > ![De belonings waarden voor de feedback-lus configureren](media/settings/configure-model-reward-settings.png)
 
-|Waarde|Functie|
+|Waarde|Doel|
 |--|--|
-|Wacht tijd op beloning|Hiermee stelt u de periode in waarin Personaler belonings waarden voor een classificatie oproep verzamelt, vanaf het moment dat de classificatie oproep plaatsvindt. Deze waarde wordt ingesteld door te vragen: ' hoe lang moet Personaler wachten op de aanroepen van beloningen? ' Elke beloning die wordt binnengekomen nadat dit venster wordt geregistreerd, wordt vastgelegd, maar niet voor Learning.|
-|Standaard beloning|Als er geen belonings oproep wordt ontvangen door Personaler tijdens het venster belonings wachttijd dat is gekoppeld aan een rang nummer, zal Personaler de standaard beloning toewijzen. In de meeste scenario's is de standaard beloning standaard nul (0).|
+|Wachttijd voor beloning|Hiermee stelt u de periode in waarin Personaler belonings waarden voor een classificatie oproep verzamelt, vanaf het moment dat de classificatie oproep plaatsvindt. Deze waarde wordt ingesteld door te vragen: ' hoe lang moet Personaler wachten op de aanroepen van beloningen? ' Elke beloning die wordt binnengekomen nadat dit venster wordt geregistreerd, wordt vastgelegd, maar niet voor Learning.|
+|Standaardbeloning|Als er geen belonings oproep wordt ontvangen door Personaler tijdens het venster belonings wachttijd dat is gekoppeld aan een rang nummer, zal Personaler de standaard beloning toewijzen. In de meeste scenario's is de standaard beloning standaard nul (0).|
 |Belonings aggregatie|Als er meerdere beloningen worden ontvangen voor dezelfde positie-API-aanroep, wordt deze samenvoegings methode gebruikt: **Sum** of **oudste**. De eerste keer kiest de eerste ontvangen Score en wordt de rest verwijderd. Dit is handig als u een unieke beloning wilt voor mogelijk dubbele aanroepen. |
 
 Nadat u deze waarden hebt gewijzigd, moet u **Opslaan**selecteren.
@@ -67,7 +69,7 @@ Nadat u deze waarde hebt gewijzigd, moet u **Opslaan**selecteren.
 
 Met de frequentie van de **model updates** wordt aangegeven hoe vaak het model wordt getraind.
 
-|Frequentie-instelling|Functie|
+|Frequentie-instelling|Doel|
 |--|--|
 |1 minuut|Update frequenties van één minuut zijn handig bij het **opsporen van fouten in** de code van een toepassing met behulp van personaler, het uitvoeren van demo's of het interactief testen van machine learning aspecten.|
 |15 minuten|High model-update frequenties zijn nuttig voor situaties waarin u de wijzigingen in het gedrag van gebruikers **nauw keurig wilt bijhouden** . Voor beelden zijn onder andere sites die worden uitgevoerd op Live nieuws, virale inhoud of Live-product biedingen. In deze scenario's kunt u een frequentie van 15 minuten gebruiken. |
@@ -77,7 +79,7 @@ Met de frequentie van de **model updates** wordt aangegeven hoe vaak het model w
 
 Nadat u deze waarde hebt gewijzigd, moet u **Opslaan**selecteren.
 
-## <a name="data-retention"></a>Bewaartijd van gegevens
+## <a name="data-retention"></a>Gegevensretentie
 
 **Gegevens retentie periode** instellen hoeveel dagen persoonlijke gegevens logboeken worden bewaard. Eerdere gegevens logboeken zijn vereist voor het uitvoeren van [offline-evaluaties](concepts-offline-evaluation.md), die worden gebruikt om de effectiviteit van personaler te meten en het trainings beleid te optimaliseren.
 
