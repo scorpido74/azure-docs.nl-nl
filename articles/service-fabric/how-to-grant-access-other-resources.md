@@ -3,14 +3,14 @@ title: Een toepassing toegang verlenen tot andere Azure-resources
 description: In dit artikel wordt uitgelegd hoe u uw beheerde identiteits Service Fabric toegang tot toepassingen kunt verlenen aan andere Azure-resources die op Azure Active Directory gebaseerde verificatie ondersteunen.
 ms.topic: article
 ms.date: 12/09/2019
-ms.openlocfilehash: 638176ca2665146a64fb7a6bd83253eba3434a7f
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: a1d963c49f9522000028b00c138b2e5731a9ccca
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258965"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333627"
 ---
-# <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources-preview"></a>Het verlenen van toegang tot Azure-resources door de beheerde identiteit van een Service Fabric-toepassing (preview)
+# <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources"></a>Het verlenen van toegang tot Azure-resources door de beheerde identiteit van een Service Fabric-toepassing
 
 Voordat de toepassing de beheerde identiteit voor toegang tot andere bronnen kan gebruiken, moeten er machtigingen worden verleend aan deze identiteit op de beveiligde Azure-resource die wordt geopend. Het verlenen van machtigingen is doorgaans een beheer actie op het ' besturings vlak ' van de Azure-service die eigenaar is van de beveiligde resource die wordt gerouteerd via Azure Resource Manager, waardoor alle toepasselijke op rollen gebaseerde toegangs controle wordt afgedwongen.
 
@@ -23,7 +23,7 @@ U kunt de Service Fabric beheerde identiteit van de toepassing (in dit geval toe
 2. Klik op de koppeling Toegangsbeheer (IAM) in het linkerpaneel.
 3. Beschrijving Controleer de bestaande toegang: een door het systeem of de gebruiker toegewezen beheerde identiteit selecteren in het besturings element ' zoeken '; Selecteer de juiste identiteit in de lijst met resultaten
 4. Klik boven aan de pagina op functie toewijzing toevoegen om een nieuwe roltoewijzing toe te voegen voor de identiteit van de toepassing.
-Selecteer onder rol in de vervolg keuzelijst Storage BLOB data Reader.
+In de vervolgkeuzelijst onder Rol selecteert u Gegevenslezer voor Storage Blob.
 5. Kies in de volgende vervolg keuzelijst toegang toewijzen aan `User assigned managed identity` .
 6. Controleer vervolgens of het juiste abonnement wordt weergegeven in de vervolgkeuzelijst Abonnement, en stel Resourcegroep in op Alle resourcegroepen.
 7. Kies onder selecteren de UAI die overeenkomt met de Service Fabric toepassing en klik vervolgens op opslaan.

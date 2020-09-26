@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 73d875e32f4fcf22551cf6b0946e49c2f826e523
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 5b186901551e421ba365b97a6de6a55ff791e5e9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085022"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91310183"
 ---
 # <a name="web-sdk-supported-browsers"></a>Browsers die Web-SDK ondersteunen
 
@@ -29,7 +29,7 @@ if (!atlas.isSupported()) {
 }
 ```
 
-## <a name="desktop"></a>Bureaublad
+## <a name="desktop"></a>Desktop
 
 De Azure Maps Web-SDK ondersteunt de volgende desktop browsers:
 
@@ -76,8 +76,6 @@ Zie de pen <a href='https://codepen.io/azuremaps/pen/GeLgyx/'>Azure Maps + bijsl
 
 Meer informatie over de Azure Maps Web-SDK:
 
-> [!div class="nextstepaction"]
-> [Kaartbesturingselement](how-to-use-map-control.md)
+[Kaartbesturingselement](how-to-use-map-control.md)
 
-> [!div class="nextstepaction"]
-> [Services-module](how-to-use-services-module.md)
+[Services-module](how-to-use-services-module.md)

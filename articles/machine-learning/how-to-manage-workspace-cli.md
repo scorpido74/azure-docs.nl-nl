@@ -10,12 +10,12 @@ author: Blackmist
 ms.date: 07/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: cd9af35e5b616f3f4d72405078782e1e88414c98
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 0919e2b0703d56c61bd9ee37cb70021de4deff45
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897350"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322271"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Een werk ruimte maken voor Azure Machine Learning met Azure CLI
 
@@ -26,7 +26,7 @@ In dit artikel leert u hoe u een Azure Machine Learning-werk ruimte maakt met be
 
 * Een **Azure-abonnement**. Als u er nog geen hebt, probeer [dan de gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree).
 
-* Als u de CLI-opdrachten in dit document wilt gebruiken vanuit uw **lokale omgeving**, hebt u de [Azure CLI nodig](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+* Als u de CLI-opdrachten in dit document wilt gebruiken vanuit uw **lokale omgeving**, hebt u de [Azure CLI nodig](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
 
     Als u [Azure Cloud Shell](https://azure.microsoft.com//features/cloud-shell/) gebruikt, opent u de CLI via de browser en bevindt deze zich in de cloud.
 
@@ -45,7 +45,7 @@ Als de CLI uw standaardbrowser kan openen, gebeurt dat ook en wordt er een aanme
 
 [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
 
-Zie [Aanmelden met Azure cli](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)voor andere verificatie methoden.
+Zie [Aanmelden met Azure cli](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest&preserve-view=true)voor andere verificatie methoden.
 
 ## <a name="install-the-machine-learning-extension"></a>De machine learning-extensie installeren
 
@@ -103,7 +103,7 @@ De respons van deze opdracht is vergelijkbaar met de volgende JSON:
 }
 ```
 
-Zie [az group](https://docs.microsoft.com//cli/azure/group?view=azure-cli-latest) voor meer informatie over het werken met resourcegroepen.
+Zie [az group](https://docs.microsoft.com//cli/azure/group?view=azure-cli-latest&preserve-view=true) voor meer informatie over het werken met resourcegroepen.
 
 ### <a name="automatically-create-required-resources"></a>Automatisch vereiste resources maken
 
@@ -142,7 +142,21 @@ De uitvoer van deze opdracht is vergelijkbaar met de volgende JSON:
 ### <a name="virtual-network-and-private-endpoint"></a>Virtueel netwerk en persoonlijk eind punt
 
 > [!IMPORTANT]
-> Het gebruik van een persoonlijke Azure-koppeling met Azure Machine Learning werk ruimte bevindt zich momenteel in de open bare preview. Deze functionaliteit is alleen beschikbaar in de regio's **VS-Oost** en VS- **West 2** . Deze preview-versie wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+> Het gebruik van een persoonlijke Azure-koppeling met Azure Machine Learning werk ruimte bevindt zich momenteel in de open bare preview. Deze functionaliteit is alleen beschikbaar in de volgende regio's:
+>
+> * **VS - oost**
+> * **South Central US**
+> * **VS - west**
+> * **West US 2**
+> * **Centraal-Canada**
+> * **Azië - zuidoost**
+> * **Japan East**
+> * **Europa - noord**
+> * **Oost-Australië**
+> * **Verenigd Koninkrijk Zuid**
+>
+> Deze preview-versie wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. 
+> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 Als u de toegang tot uw werk ruimte wilt beperken tot een virtueel netwerk, kunt u de volgende para meters gebruiken:
 
@@ -283,7 +297,7 @@ De uitvoer van deze opdracht is vergelijkbaar met de volgende JSON:
 ]
 ```
 
-Zie de documentatie voor de [lijst AZ ml-werk ruimte](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-list) voor meer informatie.
+Zie de documentatie voor de [lijst AZ ml-werk ruimte](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-workspace-list) voor meer informatie.
 
 ## <a name="get-workspace-information"></a>Werkruimte gegevens ophalen
 
@@ -316,7 +330,7 @@ De uitvoer van deze opdracht is vergelijkbaar met de volgende JSON:
 }
 ```
 
-Zie de documentatie van [AZ ml Workspace show](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-show) voor meer informatie.
+Zie de documentatie van [AZ ml Workspace show](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-workspace-show) voor meer informatie.
 
 ## <a name="update-a-workspace"></a>Een werk ruimte bijwerken
 
@@ -349,7 +363,7 @@ De uitvoer van deze opdracht is vergelijkbaar met de volgende JSON:
 }
 ```
 
-Zie voor meer informatie de documentatie van [AZ ml Workspace update](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-update) .
+Zie voor meer informatie de documentatie van [AZ ml Workspace update](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-workspace-update) .
 
 ## <a name="share-a-workspace-with-another-user"></a>Een werk ruimte delen met een andere gebruiker
 
@@ -361,7 +375,7 @@ az ml workspace share -w <workspace-name> -g <resource-group-name> --user <user>
 
 Zie [gebruikers en rollen beheren](how-to-assign-roles.md)voor meer informatie over op rollen gebaseerd toegangs beheer (RBAC) met Azure machine learning.
 
-Zie voor meer informatie de documentatie bij [AZ ml-werkruimte share](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-share) .
+Zie voor meer informatie de documentatie bij [AZ ml-werkruimte share](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-workspace-share) .
 
 ## <a name="sync-keys-for-dependent-resources"></a>Sleutels voor afhankelijke Resources synchroniseren
 
@@ -373,7 +387,7 @@ az ml workspace sync-keys -w <workspace-name> -g <resource-group-name>
 
 Zie [toegangs sleutels voor opslag opnieuw genereren](how-to-change-storage-access-key.md)voor meer informatie over het wijzigen van sleutels.
 
-Zie voor meer informatie de documentatie van de [werk ruimte synchronisatie van AZ ml-sleutels](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-sync-keys) .
+Zie voor meer informatie de documentatie van de [werk ruimte synchronisatie van AZ ml-sleutels](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-workspace-sync-keys) .
 
 ## <a name="delete-a-workspace"></a>Een werkruimte verwijderen
 
@@ -392,7 +406,7 @@ U kunt ook de resource groep verwijderen, waarmee de werk ruimte en alle andere 
 az group delete -g <resource-group-name>
 ```
 
-Zie voor meer informatie de documentatie voor het verwijderen van de [werk ruimte AZ ml](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-delete) .
+Zie voor meer informatie de documentatie voor het verwijderen van de [werk ruimte AZ ml](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-workspace-delete) .
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
@@ -413,4 +427,4 @@ In de Azure Machine Learning-werk ruimte wordt Azure Container Registry (ACR) ge
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de documentatie van [AZ ml](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest) voor meer informatie over de Azure cli-extensie voor machine learning.
+Zie de documentatie van [AZ ml](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest&preserve-view=true) voor meer informatie over de Azure cli-extensie voor machine learning.

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 6f557ac8476224cdb8414b2a45952d8f7d34513d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: aa4b55cb0700a47d9235a1d526ef1b1678d6db8b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904989"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333814"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>MILLILITERs logboeken en-metrische gegevens bewaken en weer geven
 
@@ -93,7 +93,7 @@ RunDetails(run).show()
 
 ## <a name="show-output-upon-completion"></a>Uitvoer weer geven na voltooiing
 
-Wanneer u **ScriptRunConfig**gebruikt, kunt u gebruiken ```run.wait_for_completion(show_output = True)``` om weer te geven wanneer de model training is voltooid. De ```show_output``` vlag geeft u uitgebreide uitvoer. Zie de sectie ScriptRunConfig voor meer informatie over het [inschakelen van logboek registratie](how-to-track-experiments.md#scriptrunconfig-logs).
+Wanneer u **ScriptRunConfig**gebruikt, kunt u gebruiken ```run.wait_for_completion(show_output = True)``` om weer te geven wanneer de model training is voltooid. De ```show_output``` vlag geeft u uitgebreide uitvoer. Zie de sectie ScriptRunConfig voor meer informatie over het [inschakelen van logboek registratie](how-to-track-experiments.md#scriptrun-logs).
 
 <a id="queryrunmetrics"></a>
 ## <a name="query-run-metrics"></a>Metrische gegevens van query uitvoeren

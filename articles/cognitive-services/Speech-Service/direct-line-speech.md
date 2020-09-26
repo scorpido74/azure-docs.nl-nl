@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: trbye
-ms.openlocfilehash: 6dc125b68af8f9a07731aaae9d858c19c51f934f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2b0bb997ecea55d25748152bab7bb6963d67657f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81402397"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357638"
 ---
 # <a name="what-is-direct-line-speech"></a>Wat is Direct Line-spraak?
 
@@ -27,7 +27,7 @@ Direct line speech biedt de hoogste mate van aanpassing en verfijning voor spraa
 
 ## <a name="getting-started-with-direct-line-speech"></a>Aan de slag met direct line speech
 
-De eerste stappen voor het maken van een spraak-assistent met behulp van directe lijn spraak zijn het [verkrijgen van een sleutel voor een spraak abonnement](get-started.md), het maken van een nieuwe bot die is gekoppeld aan dat abonnement, en het verbinden van de bot met het directe lijn spraak kanaal.
+De eerste stappen voor het maken van een spraak-assistent met behulp van directe lijn spraak zijn het [verkrijgen van een sleutel voor een spraak abonnement](overview.md#try-the-speech-service-for-free), het maken van een nieuwe bot die is gekoppeld aan dat abonnement, en het verbinden van de bot met het directe lijn spraak kanaal.
 
    ![Conceptueel diagram van de service stroom van de directe lijn spraak indeling](media/voice-assistants/overview-directlinespeech.png "De stroom van het spraak kanaal")
 
@@ -35,7 +35,7 @@ Voor een volledige stapsgewijze hand leiding voor het maken van een eenvoudige s
 
 We bieden ook Quick starts die zijn ontworpen om u te laten werken met code en snel de Api's te leren. Deze tabel bevat een lijst met Quick starts voor de Voice Assistant, geordend op taal en platform.
 
-| Snelstartgids | Platform | API-verwijzing |
+| Snelstart | Platform | API-verwijzing |
 |------------|----------|---------------|
 | C#, UWP | Windows | [Bladeren](https://aka.ms/csspeech/csharpref) |
 | Java | Windows, macOS, Linux | [Bladeren](https://aka.ms/csspeech/javaref) |
@@ -45,7 +45,7 @@ We bieden ook Quick starts die zijn ontworpen om u te laten werken met code en s
 
 Voorbeeld code voor het maken van een spraak-assistent is beschikbaar op GitHub. Deze voor beelden beslaan de client toepassing voor het maken van verbinding met uw helper in verschillende populaire programmeer talen.
 
-* [Voor beelden van Voice Assistant (SDK)](https://aka.ms/csspeech/samples)
+* [Voorbeelden van spraakassistenten (SDK)](https://aka.ms/csspeech/samples)
 * [Zelf studie: spraak inschakelen voor uw assistent met de spraak-SDK, C #](tutorial-voice-enable-your-bot-speech-sdk.md)
 
 ## <a name="customization"></a>Aanpassing
@@ -57,14 +57,14 @@ Spraak assistenten die zijn gemaakt met Speech Service kunnen gebruikmaken van h
 
 Direct line speech en de bijbehorende functionaliteit voor spraak assistenten zijn een ideale aanvulling op de [Virtual assistent-oplossing en de ondernemings sjabloon](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview). Hoewel directe lijn spraak kan worden gebruikt met een compatibele bot, bieden deze resources een herbruikbare basis lijn voor gesp roken ervaringen van hoge kwaliteit, evenals algemene ondersteunende vaardig heden en modellen om snel aan de slag te gaan.
 
-## <a name="reference-docs"></a>Referentie documenten
+## <a name="reference-docs"></a>Naslagdocumentatie
 
 * [Speech-SDK](speech-sdk-reference.md)
 * [Azure Bot Service](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Gratis een abonnements sleutel voor een spraak service ophalen](get-started.md)
+* [Verkrijg gratis een spraakserviceabonnementssleutel](overview.md#try-the-speech-service-for-free)
 * [De Speech SDK ophalen](speech-sdk.md)
 * [Een basisbot maken en implementeren](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 * [De Virtual assistent-oplossing en ondernemings sjabloon ophalen](https://github.com/Microsoft/AI)

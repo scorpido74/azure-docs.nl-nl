@@ -3,12 +3,12 @@ title: Service kosten verminderen met behulp van Azure Advisor
 description: Gebruik Azure Advisor om de kosten van uw Azure-implementaties te optimaliseren.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: d234e89d0d042999805fae73d3df24c03d1027c9
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 89bc72bcf3a19867341675f89cbc0a734d7996d5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654035"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325841"
 ---
 # <a name="reduce-service-costs-by-using-azure-advisor"></a>Service kosten verminderen met behulp van Azure Advisor
 
@@ -20,7 +20,7 @@ Hoewel bepaalde toepassings scenario's kunnen leiden tot een laag gebruik door o
 
 De aanbevolen acties worden afgesloten of het formaat ervan worden gewijzigd, wat specifiek is voor de resource die wordt geëvalueerd.
 
-Het geavanceerde evaluatie model in Advisor is van mening dat virtuele machines worden afgesloten wanneer beide instructies waar zijn: 
+Het geavanceerde evaluatie model in Advisor houdt in dat u virtuele machines afsluit wanneer al deze instructies waar zijn: 
 - P95th van het maximum van de maximale waarde van het CPU-gebruik is minder dan 3%. 
 - Netwerk gebruik is minder dan 2% gedurende een periode van zeven dagen.
 - Geheugen druk is lager dan de drempel waarden

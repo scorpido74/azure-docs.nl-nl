@@ -11,12 +11,12 @@ ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: dc07d2826d3c27fad1eee644da36cb7b4f85ea3c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c23522911bd0c8dc9726a62cced839a1c4be37a6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897459"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333831"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>Gebruik het vertolkings pakket om ML-modellen & voor spellingen in python uit te leggen (preview)
 
@@ -42,10 +42,9 @@ Zie voor meer informatie over de ondersteunde technieken voor het interpreteren 
 ## <a name="generate-feature-importance-value-on-your-personal-machine"></a>Urgentie waarde van functie op uw persoonlijke machine genereren 
 In het volgende voor beeld ziet u hoe u het vertolkings pakket gebruikt op uw persoonlijke computer zonder dat u contact hoeft op te nemen met Azure-Services.
 
-1. Installatie `azureml-interpret` en `azureml-contrib-interpret` pakketten.
+1. Installeer het `azureml-interpret`-pakket.
     ```bash
     pip install azureml-interpret
-    pip install azureml-contrib-interpret
     ```
 
 2. Train een voorbeeld model in een lokale Jupyter-notebook.
@@ -239,15 +238,14 @@ In het volgende voor beeld ziet u hoe u de-klasse kunt gebruiken `ExplanationCli
 * Gebruik de `ExplanationClient` in de externe uitvoering om de interpreter-context te uploaden.
 * Down load de context later in een lokale omgeving.
 
-1. Installatie `azureml-interpret` en `azureml-contrib-interpret` pakketten.
+1. Installeer het `azureml-interpret`-pakket.
     ```bash
     pip install azureml-interpret
-    pip install azureml-contrib-interpret
     ```
 1. Een trainings script maken in een lokale Jupyter-notebook. Bijvoorbeeld `train_explain.py`.
 
     ```python
-    from azureml.contrib.interpret.explanation.explanation_client import ExplanationClient
+    from azureml.interpret import ExplanationClient
     from azureml.core.run import Run
     from interpret.ext.blackbox import TabularExplainer
 
@@ -280,7 +278,7 @@ In het volgende voor beeld ziet u hoe u de-klasse kunt gebruiken `ExplanationCli
 1. Down load de uitleg in uw lokale Jupyter-notebook.
 
     ```python
-    from azureml.contrib.interpret.explanation.explanation_client import ExplanationClient
+    from azureml.interpret import ExplanationClient
     
     client = ExplanationClient.from_run(run)
     
@@ -304,7 +302,7 @@ Nadat u de uitleg in uw lokale Jupyter-notebook hebt gedownload, kunt u het visu
 
 De volgende grafieken bieden een algemeen overzicht van het getrainde model samen met de voor spellingen en toelichtingen.
 
-|Plotten|Description|
+|Plotten|Beschrijving|
 |----|-----------|
 |Gegevens verkennen| Geeft een overzicht van de gegevensset samen met Voorspellings waarden.|
 |Wereld wijd belang|Aggregateert de belang rijke waarden van de functie van afzonderlijke data Points om de algemene belangrijkste K (Configureer bare K) belangrijkste functies van het model weer te geven. Hiermee wordt het algemene gedrag van het onderliggende model duidelijker.|
@@ -318,7 +316,7 @@ De volgende grafieken bieden een algemeen overzicht van het getrainde model same
 
 U kunt het urgentie diagram van de afzonderlijke functie voor elk gegevens punt laden door te klikken op een van de afzonderlijke gegevens punten in een van de algemene grafieken.
 
-|Plotten|Description|
+|Plotten|Beschrijving|
 |----|-----------|
 |Lokale urgentie|Hier worden de belangrijkste K (Configureer bare K) belang rijke functies voor een afzonderlijke voor spelling weer gegeven. Helpt het lokale gedrag van het onderliggende model op een specifiek gegevens punt te illustreren.|
 |Perturbation exploratie (wat als-analyse)|Hiermee kunnen de functie waarden van het geselecteerde gegevens punt worden gewijzigd en worden de resulterende wijzigingen in de Voorspellings waarde geobserveerd.|
@@ -332,29 +330,12 @@ U kunt het urgentie diagram van de afzonderlijke functie voor elk gegevens punt 
 
 [![IJS van visualisatie dashboard](./media/how-to-machine-learning-interpretability-aml/ice-plot.png)](./media/how-to-machine-learning-interpretability-aml/ice-plot.png#lightbox)
 
-> [!NOTE]
-> Voordat de Jupyter-kernel wordt gestart, zorg ervoor dat u widget uitbreidingen voor het visualisatie dashboard inschakelt.
-
-* Jupyter Notebooks
-
-    ```shell
-    jupyter nbextension install --py --sys-prefix azureml.contrib.interpret.visualize
-    jupyter nbextension enable --py --sys-prefix azureml.contrib.interpret.visualize
-    ```
-
-* Jjupyterlab
-
-    ```shell
-    jupyter labextension install @jupyter-widgets/jupyterlab-manager
-    jupyter labextension install microsoft-mli-widget
-    ```
-
 Gebruik de volgende code om het visualisatie dashboard te laden.
 
 ```python
 from interpret_community.widget import ExplanationDashboard
 
-ExplanationDashboard(global_explanation, model, dataset=x_test)
+ExplanationDashboard(global_explanation, model, datasetX=x_test)
 ```
 
 ### <a name="visualization-in-azure-machine-learning-studio"></a>Visualisatie in Azure Machine Learning Studio
@@ -370,7 +351,7 @@ Volg een van deze paden om toegang te krijgen tot het visualisatie dashboard in 
   1. Selecteer een bepaald experiment om alle uitvoeringen in dat experiment weer te geven.
   1. Selecteer een run en klik vervolgens op het tabblad **uitleg** voor het visualisatie-dash board.
 
-   [![Prioriteit van lokale functie van visualisatie dashboard](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png)](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png#lightbox)
+   [![Prioriteit van lokale functie van visualisatie dashboard in AzureML Studio in experimenten](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png)](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png#lightbox)
 
 * Deel venster **modellen**
   1. Als u uw oorspronkelijke model hebt geregistreerd door de stappen in [modellen implementeren met Azure machine learning](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)te volgen, kunt u **modellen** selecteren in het linkerdeel venster om de app weer te geven.

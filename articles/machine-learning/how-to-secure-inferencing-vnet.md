@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 07/16/2020
+ms.date: 09/24/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 359c2a27099ca298076edc255b8c30e226af0a18
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 07f5fef0103e674af1c5f73b3f09bdf759e592cb
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90882947"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355972"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Een Azure Machine Learning omgeving voor het afwijzen van interferentie beveiligen met virtuele netwerken
 
@@ -108,11 +108,24 @@ aks_target = ComputeTarget.create(workspace=ws,
 
 Wanneer het maken van het proces is voltooid, kunt u het decoderen of model leren uitvoeren op een AKS-cluster achter een virtueel netwerk. Zie [implementeren op AKS](how-to-deploy-and-where.md)voor meer informatie.
 
-## <a name="private-aks-cluster"></a>Persoonlijk AKS-cluster
+## <a name="secure-vnet-traffic"></a>Beveiligd VNet-verkeer
+
+Er zijn twee benaderingen voor het isoleren van verkeer van en naar het AKS-cluster naar het virtuele netwerk:
+
+* __Persoonlijk AKS-cluster__: deze benadering maakt gebruik van een persoonlijke Azure-koppeling voor het maken van een persoonlijk eind punt voor het AKS-cluster binnen het VNet.
+* __Interne AKS Load Balancer__: met deze aanpak configureert u de Load Balancer voor het cluster om een intern IP-adres in het VNet te gebruiken.
+
+> [!WARNING]
+> Beide configuraties zijn verschillende manieren om hetzelfde doel te krijgen (het beveiligen van verkeer naar het AKS-cluster binnen het VNet). **Gebruik een van de twee, maar niet beide**.
+
+### <a name="private-aks-cluster"></a>Persoonlijk AKS-cluster
 
 Standaard hebben AKS-clusters een besturings vlak of API-server met open bare IP-adressen. U kunt AKS configureren voor het gebruik van een privé beheergebied door een persoonlijk AKS-cluster te maken. Zie [een persoonlijk Azure Kubernetes service-cluster maken](../aks/private-clusters.md)voor meer informatie.
 
 Nadat u het persoonlijke AKS-cluster hebt gemaakt, [koppelt u het cluster aan het virtuele netwerk](how-to-create-attach-kubernetes.md) om te gebruiken met Azure machine learning.
+
+> [!IMPORTANT]
+> Voordat u een AKS-cluster met persoonlijke koppelingen gebruikt met Azure Machine Learning, moet u een ondersteunings incident openen om deze functionaliteit in te scha kelen. Zie [Quota's beheren en verhogen](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases)voor meer informatie.
 
 ## <a name="internal-aks-load-balancer"></a>Interne AKS load balancer
 
@@ -120,7 +133,7 @@ AKS-implementaties gebruiken standaard een [open bare Load Balancer](../aks/load
 
 Een persoonlijke load balancer wordt ingeschakeld door AKS te configureren voor het gebruik van een _interne Load Balancer_. 
 
-### <a name="network-contributor-role"></a>Rol netwerk bijdrager
+#### <a name="network-contributor-role"></a>Rol netwerk bijdrager
 
 > [!IMPORTANT]
 > Als u een AKS-cluster maakt of koppelt met een virtueel netwerk dat u eerder hebt gemaakt, moet u de Service-Principal (SP) of de beheerde identiteit voor uw AKS-cluster de rol _netwerk bijdrage_ verlenen aan de resource groep met het virtuele netwerk. U moet dit doen voordat u probeert de interne load balancer te wijzigen in privé-IP.
@@ -152,16 +165,17 @@ Een persoonlijke load balancer wordt ingeschakeld door AKS te configureren voor 
     ```
 Zie voor meer informatie over het gebruik van de interne load balancer met AKS [interne Load Balancer gebruiken met de Azure Kubernetes-service](/azure/aks/internal-lb).
 
-### <a name="enable-private-load-balancer"></a>Persoonlijke load balancer inschakelen
+#### <a name="enable-private-load-balancer"></a>Persoonlijke load balancer inschakelen
 
 > [!IMPORTANT]
-> U kunt geen persoonlijk IP-adres inschakelen bij het maken van het Azure Kubernetes-service cluster. Het moet worden ingeschakeld als een update van een bestaand cluster.
+> U kunt geen persoonlijk IP-adres inschakelen bij het maken van het Azure Kubernetes-service cluster in Azure Machine Learning Studio. U kunt er een maken met een interne load balancer wanneer u de python-SDK of Azure CLI-extensie gebruikt voor machine learning.
 
-Het volgende code fragment laat zien hoe u __een nieuw AKS-cluster maakt__en het vervolgens bijwerkt voor gebruik van een privé-IP/interne Load Balancer:
+In de volgende voor beelden ziet u hoe u __een nieuw AKS-cluster maakt met een privé-IP/interne Load Balancer__ met behulp van de SDK en cli:
+
+# <a name="python"></a>[Python](#tab/python)
 
 ```python
 import azureml.core
-from azureml.core.compute.aks import AksUpdateConfiguration
 from azureml.core.compute import AksCompute, ComputeTarget
 
 # Verify that cluster does not exist already
@@ -175,7 +189,7 @@ except:
     # Subnet to use for AKS
     subnet_name = "default"
     # Create AKS configuration
-    prov_config = AksCompute.provisioning_configuration(location = "eastus2")
+    prov_config=AksCompute.provisioning_configuration(load_balancer_type="InternalLoadBalancer")
     # Set info for existing virtual network to create the cluster in
     prov_config.vnet_resourcegroup_name = "myvnetresourcegroup"
     prov_config.vnet_name = "myvnetname"
@@ -188,44 +202,21 @@ except:
     aks_target = ComputeTarget.create(workspace = ws, name = "myaks", provisioning_configuration = prov_config)
     # Wait for the operation to complete
     aks_target.wait_for_completion(show_output = True)
-    
-    # Update AKS configuration to use an internal load balancer
-    update_config = AksUpdateConfiguration(None, "InternalLoadBalancer", subnet_name)
-    aks_target.update(update_config)
-    # Wait for the operation to complete
-    aks_target.wait_for_completion(show_output = True)
 ```
 
-__Azure-CLI__
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-```azurecli-interactive
-az rest --method put --uri https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.MachineLearningServices/workspaces/<workspace>/computes/<compute>?api-version=2018-11-19 --body @body.json
+```azurecli
+az ml computetarget create aks -n myaks --load-balancer-type InternalLoadBalancer
 ```
 
-De inhoud van het `body.json` bestand waarnaar wordt verwezen door de opdracht, is vergelijkbaar met het volgende JSON-document:
+Zie voor meer informatie de referentie [AZ ml computetarget Create AKS](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-create-aks) .
 
-```json
-{ 
-    "location": "<region>", 
-    "properties": { 
-        "resourceId": "/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.ContainerService/managedClusters/<aks-resource-name>", 
-        "computeType": "AKS", 
-        "provisioningState": "Succeeded", 
-        "properties": { 
-            "loadBalancerType": "InternalLoadBalancer", 
-            "agentCount": <agent-count>, 
-            "agentVmSize": "vm-size", 
-            "clusterFqdn": "<cluster-fqdn>" 
-        } 
-    } 
-} 
-```
+---
 
-Wanneer u __een bestaand cluster koppelt__ aan uw werk ruimte, moet u wachten totdat de bewerking koppelen is geconfigureerd om de Load Balancer te configureren.
+Wanneer u __een bestaand cluster koppelt__ aan uw werk ruimte, moet u wachten totdat de bewerking koppelen is geconfigureerd om de Load Balancer te configureren. Zie [een bestaand AKS-cluster koppelen](how-to-create-attach-kubernetes.md)voor meer informatie over het koppelen van een cluster.
 
-Zie [een bestaand AKS-cluster koppelen](how-to-create-attach-kubernetes.md)voor meer informatie over het koppelen van een cluster.
-
-Nadat u het bestaande cluster hebt gekoppeld, kunt u het cluster bijwerken voor het gebruik van een privé-IP.
+Nadat u het bestaande cluster hebt gekoppeld, kunt u het cluster bijwerken om een intern load balancer/particulier IP-adres te gebruiken:
 
 ```python
 import azureml.core
@@ -260,7 +251,7 @@ Als u ACI wilt gebruiken in een virtueel netwerk naar uw werk ruimte, gebruikt u
     > [!IMPORTANT]
     > Wanneer delegering wordt ingeschakeld, gebruikt u `Microsoft.ContainerInstance/containerGroups` als het __subnet aan service waarde delegeren__ .
 
-2. Implementeer het model met behulp van [AciWebservice. deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none--vnet-name-none--subnet-name-none-&preserve-view=true), gebruik de `vnet_name` `subnet_name` para meters en. Stel deze para meters in op de naam van het virtuele netwerk en het subnet waar u delegering hebt ingeschakeld.
+2. Implementeer het model met behulp van [AciWebservice. deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py&preserve-view=true#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none--vnet-name-none--subnet-name-none-&preserve-view=true), gebruik de `vnet_name` `subnet_name` para meters en. Stel deze para meters in op de naam van het virtuele netwerk en het subnet waar u delegering hebt ingeschakeld.
 
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: a9e910c38000fc4dbc454b68b752925df9145837
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 240bc8429ca786eb2f474a5a0b6ee296deb3b356
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037674"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91310119"
 ---
 # <a name="azure-maps-supported-categories"></a>Azure Maps ondersteunde Categorieën
 
@@ -45,7 +45,7 @@ Wanneer u een [categorie zoekt](https://docs.microsoft.com/rest/api/maps/search/
 | Universiteit van Universiteit \_ | onderwijs onderwijs/Community School, school/universiteit, Universiteit, Universiteit Prep School, Universiteit |
 | COMMERCIEEL \_ gebouw | kantoor gebouw, Park Headquarters, commercieel gebouw |
 | COMMUNITY \_ Center | Community Center |
-| BEDRIJFS | elektronica, productie, computer Data Services, open bare gezondheids technologieën, gediversifieerde financiële middelen, dier beschutting, luchtvaart maatschappij, verhuur van apparatuur, service, mail/pakket/vracht levering, bus-(Home) reparatie, schoonmaak Services, OEM, belasting dienst, olie aardgas, juridische Services, bouw, telecom municatie, Trans Port, auto Mobile productie, chemicaliën, mortuaries, Bridge tunnel Operations, auto Mobile, mechanisch Services, beleggings adviseurs, reclame/marketing, opslag verplaatsen, besparing, verzekering, computer software, farmaceutische, Cate ring, bruiloft, agrarische technologie, onroerend goed, taxi, limousine, verhuur van het bus-hand vest, analyse, publicatie technologieën, kabel telefoon, import/export-distributie, bedrijf, asiel, kolen mijn (s), onroerend goed, Brewery, goud mijn (s) |
+| BEDRIJF | elektronica, productie, computer Data Services, open bare gezondheids technologieën, gediversifieerde financiële middelen, dier beschutting, luchtvaart maatschappij, verhuur van apparatuur, service, mail/pakket/vracht levering, bus-(Home) reparatie, schoonmaak Services, OEM, belasting dienst, olie aardgas, juridische Services, bouw, telecom municatie, Trans Port, auto Mobile productie, chemicaliën, mortuaries, Bridge tunnel Operations, auto Mobile, mechanisch Services, beleggings adviseurs, reclame/marketing, opslag verplaatsen, besparing, verzekering, computer software, farmaceutische, Cate ring, bruiloft, agrarische technologie, onroerend goed, taxi, limousine, verhuur van het bus-hand vest, analyse, publicatie technologieën, kabel telefoon, import/export-distributie, bedrijf, asiel, kolen mijn (s), onroerend goed, Brewery, goud mijn (s) |
 | COURTHOUSE | courthouse |
 | CULTUREEL \_ centrum | cultureel centrum |
 | ARTSEN | artsen |
@@ -73,7 +73,7 @@ Wanneer u een [categorie zoekt](https://docs.microsoft.com/rest/api/maps/search/
 | BELANG rijke \_ toeristische \_ aantrekkings | buil ding, waarnemings, Arch, tunnel, wet, Tower, Bridge, Planetarium, Mausoleum/Grave, monumenten, water gat, natuurlijke aantrekkings, belang rijk toeristische aantrekkings, Promenade, piramides, Pagoda, Castle, Palace, Hermitage, piramide, Fort, Gate, Country House, Dam, Lighthouse, accent grave |
 | INDUSTRIEEL \_ gebouw | gieterij, brandstof depot, industrieel gebouw, Factory |
 | VRIJETIJDs \_ centrum | Bowling, snooker, Pool Billiard, vliegende Club, dans studio school, Sauna, Solarium Massage, vrijetijds centrum, beveiligd-wachtwoord verificatie |
-| TAGBIBLIOTHEEK | tagbibliotheek |
+| TAGBIBLIOTHEEK | bibliotheek |
 | PRODUCTIE \_ faciliteit | productie faciliteit |
 | MARINA | Yacht-bekken, Marina |
 | MARKT | Super markten Hypermarkets, land bouwers, openbaar, informele, markt |

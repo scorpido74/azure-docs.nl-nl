@@ -2,13 +2,13 @@
 title: Secure webhook-levering met Azure AD in Azure Event Grid
 description: Hierin wordt beschreven hoe u gebeurtenissen kunt leveren aan HTTPS-eind punten die worden beveiligd door Azure Active Directory met behulp van Azure Event Grid
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 90d06f203bc93177101a87a7a774d816b11b16f6
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.date: 09/23/2020
+ms.openlocfilehash: e4a6e08f3e28b84198346efb7de09b202b884575
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460708"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322543"
 ---
 # <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>Gebeurtenissen publiceren naar beveiligde Azure Active Directory-eindpunten
 
@@ -16,7 +16,6 @@ In dit artikel wordt beschreven hoe u Azure Active Directory kunt gebruiken om d
 
 In dit artikel wordt gebruikgemaakt van de Azure Portal voor demonstratie, maar de functie kan ook worden ingeschakeld met CLI, Power shell of de Sdk's.
 
-[!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
 ## <a name="create-an-azure-ad-application"></a>Een Azure AD-toepassing maken
 

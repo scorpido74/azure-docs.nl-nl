@@ -8,18 +8,18 @@ editor: ''
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/09/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 42738ff71432284a156d0dfbb1f6cf160cbf4032
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 4ddafd9fbeda1752a782085244597aea3ccbdd2d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653241"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271899"
 ---
 # <a name="migrate-log-disk-to-ultra-disk"></a>Logboek schijf migreren naar ultra Disk
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -58,7 +58,7 @@ Voer de volgende stappen uit om de compatibiliteit in te scha kelen:
 
 ### <a name="attach-disk"></a>Schijf koppelen
 
-Gebruik de Azure Portal om een ultra schijf aan uw virtuele machine toe te voegen. Zie [een ultra schijf koppelen](../../../virtual-machines/disks-enable-ultra-ssd.md#attach-an-ultra-disk-using-the-azure-portal) voor meer informatie.
+Gebruik de Azure Portal om een ultra schijf aan uw virtuele machine toe te voegen. Zie [een ultra schijf koppelen](../../../virtual-machines/disks-enable-ultra-ssd.md#attach-an-ultra-disk)voor meer informatie.
 
 Zodra de schijf is gekoppeld, start u de VM opnieuw op met behulp van de Azure Portal. 
 

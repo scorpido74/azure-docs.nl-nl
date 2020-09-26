@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 06/10/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: f451b39d2757425a50a186a8212042cf887b136b
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.date: 09/22/2020
+ms.custom: devx-track-js
+ms.openlocfilehash: bd95e3ed6b4c31072d7e754c731e748f12db3329
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662300"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322390"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Naslag Gids voor schema's voor trigger-en actie typen in Azure Logic Apps
 
@@ -825,8 +825,8 @@ Hier volgen enkele veelgebruikte actie typen:
 | [**HTTP**](#http-action) | Hiermee wordt een HTTP-eind punt aangeroepen. | 
 | [**Koppelen**](#join-action) | Hiermee maakt u een teken reeks van alle items in een matrix en scheidt u deze items met een opgegeven scheidings teken. | 
 | [**JSON parseren**](#parse-json-action) | Maakt gebruikers vriendelijke tokens van eigenschappen in JSON-inhoud. U kunt vervolgens naar die eigenschappen verwijzen door de tokens in uw logische app op te nemen. | 
-| [**Query’s uitvoeren**](#query-action) | Maakt een matrix van items in een andere matrix op basis van een voor waarde of filter. | 
-| [**Beantwoord**](#response-action) | Hiermee wordt een reactie op een binnenkomende oproep of aanvraag gemaakt. | 
+| [**Query**](#query-action) | Maakt een matrix van items in een andere matrix op basis van een voor waarde of filter. | 
+| [**Antwoord**](#response-action) | Hiermee wordt een reactie op een binnenkomende oproep of aanvraag gemaakt. | 
 | [**Selecteer**](#select-action) | Hiermee maakt u een matrix met JSON-objecten door items van een andere matrix te transformeren op basis van de opgegeven kaart. | 
 | [**Tabel**](#table-action) | Hiermee maakt u een CSV-of HTML-tabel op basis van een matrix. | 
 | [**Terminate**](#terminate-action) | Stopt een actief actieve werk stroom. | 
@@ -853,9 +853,9 @@ Met deze acties kunt u de uitvoering van werk stromen beheren en andere acties t
 | Actietype | Beschrijving | 
 |-------------|-------------| 
 | [**ForEach**](#foreach-action) | Voer dezelfde acties uit in een lus voor elk item in een matrix. | 
-| [**Als**](#if-action) | Acties uitvoeren op basis van het feit of de opgegeven voor waarde waar of onwaar is. | 
+| [**If**](#if-action) | Acties uitvoeren op basis van het feit of de opgegeven voor waarde waar of onwaar is. | 
 | [**Bereik**](#scope-action) | Acties uitvoeren op basis van de groeps status uit een reeks acties. | 
-| [**Switch**](#switch-action) | Acties worden ingedeeld in gevallen waarin waarden van expressies, objecten of tokens overeenkomen met de waarden die elke case heeft opgegeven. | 
+| [**/Tijdnotatie**](#switch-action) | Acties worden ingedeeld in gevallen waarin waarden van expressies, objecten of tokens overeenkomen met de waarden die elke case heeft opgegeven. | 
 | [**Totdat**](#until-action) | Acties uitvoeren in een lus tot de opgegeven voor waarde waar is. | 
 |||  
 
@@ -2397,6 +2397,7 @@ U kunt het standaard gedrag voor triggers en acties wijzigen met de `operationOp
 | Bewerkings optie | Type | Beschrijving | Trigger of actie | 
 |------------------|------|-------------|-------------------| 
 | `DisableAsyncPattern` | Tekenreeks | Voer op HTTP gebaseerde acties synchroon uit, in plaats van asynchroon. <p><p>Zie [acties synchroon uitvoeren](#disable-asynchronous-pattern)om deze optie in te stellen. | Regelen <p>[ApiConnection](#apiconnection-action), <br>[Http](#http-action), <br>[Response](#response-action) | 
+| `IncludeAuthorizationHeadersInOutputs` | Tekenreeks | Voor Logic apps waarmee [Azure Active Directory open verificatie (Azure AD OAuth) inschakelt](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth) om toegang te verlenen voor binnenkomende oproepen naar een eind punt op basis van een aanvraag, neemt u de `Authorization` header uit het OAuth-toegangs token op in de trigger uitvoer. Zie voor meer informatie de [header ' Authorization ' in de trigger uitvoer van aanvragen](../logic-apps/logic-apps-securing-a-logic-app.md#include-auth-header). | Trigger <p>[Aanvraag](#request-trigger), <br>[HTTP-webhook](#http-webhook-trigger) | 
 | `OptimizedForHighThroughput` | Tekenreeks | Wijzig de [standaard limiet](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) voor het aantal uitgevoerde actie-uitvoeringen per 5 minuten tot de [maximum limiet](../logic-apps/logic-apps-limits-and-config.md#throughput-limits). <p><p>Zie [uitvoeren in de modus voor hoge door Voer](#run-high-throughput-mode)om deze optie in te stellen. | Alle acties | 
 | `Sequential` | Tekenreeks | Voer voor elke herhalings herhaling een voor een uit in plaats van alle tegelijkertijd parallel. <p>Deze optie werkt op dezelfde manier als het instellen van de `runtimeConfiguration.concurrency.repetitions` eigenschap op `1` . U kunt beide eigenschappen instellen, maar niet beide. <p><p>Als u deze optie wilt instellen, raadpleegt u [' voor elke ' herhalen](#sequential-for-each).| Actie: <p>[Foreach](#foreach-action) | 
 | `SingleInstance` | Tekenreeks | Voer de trigger voor elke logische app-instantie sequentieel uit en wacht totdat de eerdere actieve uitvoering is voltooid voordat het volgende logische app-exemplaar wordt geactiveerd. <p><p>Deze optie werkt op dezelfde manier als het instellen van de `runtimeConfiguration.concurrency.runs` eigenschap op `1` . U kunt beide eigenschappen instellen, maar niet beide. <p>Zie [instanties opeenvolgend activeren](#sequential-trigger)om deze optie in te stellen. | Alle triggers | 

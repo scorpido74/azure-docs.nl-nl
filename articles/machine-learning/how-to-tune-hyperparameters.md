@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 03/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 04942c745548903a5f8092bc5b04ea2152029726
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 44616d5d90f9c5c3a4f3abf8b8cf2128dc4f0585
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90885928"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333797"
 ---
 # <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning"></a>Hyper parameters voor uw model afstemmen met Azure Machine Learning
 
@@ -167,7 +167,7 @@ primary_metric_goal=PrimaryMetricGoal.MAXIMIZE
 
 Optimaliseer de uitvoeringen om de nauw keurigheid te maximaliseren.  Zorg ervoor dat u deze waarde in uw trainings script aanmeldt.
 
-### <a name="specify-primary-metric"></a><a name="log-metrics-for-hyperparameter-tuning"></a> Primaire metriek opgeven
+### <a name="log-metrics-for-hyperparameter-tuning"></a><a name="log-metrics-for-hyperparameter-tuning"></a>Metrische logboek gegevens voor afstemming-afstemming
 
 Het trainings script voor uw model moet de relevante metrische gegevens registreren tijdens de model training. Wanneer u de afstemming-afstemming configureert, geeft u de primaire meet waarde op die moet worden gebruikt voor het evalueren van de prestaties van de uitvoering. (Zie [een primaire metriek opgeven om te optimaliseren](#specify-primary-metric-to-optimize).)  In uw trainings script moet u deze metriek vastleggen zodat deze beschikbaar is voor het afstemmings proces van afstemming.
 
@@ -194,7 +194,7 @@ Azure Machine Learning ondersteunt de volgende beleids regels voor vroegtijdige 
 
 ### <a name="bandit-policy"></a>Bandit-beleid
 
-[Bandit](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy?view=azure-ml-py#&preserve-view=truedefinition) is een afsluitings beleid op basis van een toegestane factor en een toegestane vertragings hoeveelheid en evaluatie-interval. Het beleid verbreekt alle uitvoeringen waarbij de primaire metriek zich niet binnen het opgegeven aantal toegestane vertragings factoren bevindt met betrekking tot de best presterende uitvoering van de training. Hierbij worden de volgende configuratie parameters gebruikt:
+[Bandit](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy?view=azure-ml-py&preserve-view=true#&preserve-view=truedefinition) is een afsluitings beleid op basis van een toegestane factor en een toegestane vertragings hoeveelheid en evaluatie-interval. Het beleid verbreekt alle uitvoeringen waarbij de primaire metriek zich niet binnen het opgegeven aantal toegestane vertragings factoren bevindt met betrekking tot de best presterende uitvoering van de training. Hierbij worden de volgende configuratie parameters gebruikt:
 
 * `slack_factor` of `slack_amount` : de toegestane vertraging met betrekking tot de best presterende trainings uitvoering. `slack_factor` Hiermee geeft u de toegestane vertraging als een ratio op. `slack_amount` Hiermee geeft u de toegestane vertraging als een absoluut bedrag op in plaats van een ratio.
 
@@ -285,29 +285,29 @@ Met deze code wordt het afstemming-afstemmings experiment geconfigureerd voor ge
 
 ## <a name="configure-experiment"></a>Experiment configureren
 
-[Configureer uw afstemming-afstemmings](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.hyperdriverunconfig?view=azure-ml-py&preserve-view=true) experiment met behulp van de gedefinieerde afstemming Zoek ruimte, het beleid voor vroegtijdige beëindiging, de primaire metriek en de resource toewijzing van de bovenstaande secties. Geef daarnaast een `estimator` naam op die wordt aangeroepen met de steek proef van de Hyper parameters. De `estimator` Beschrijving van het trainings script dat u uitvoert, de resources per taak (single of multi-GPU) en het reken doel dat moet worden gebruikt. Omdat gelijktijdigheid voor uw afstemming-afstemmings experiment wordt gegatedeerd op de beschik bare resources, moet u ervoor zorgen dat het reken doel dat is opgegeven in de `estimator` voldoende resources heeft voor de gewenste gelijktijdigheid. (Zie [modellen trainen](how-to-train-ml-models.md)voor meer informatie over schattingen.)
+[Configureer uw afstemming-afstemmings](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.hyperdriverunconfig?view=azure-ml-py&preserve-view=true) experiment met behulp van de gedefinieerde afstemming Zoek ruimte, het beleid voor vroegtijdige beëindiging, de primaire metriek en de resource toewijzing van de bovenstaande secties. Daarnaast geeft u de ScriptRunConfig `src` voor de uitvoering op die wordt aangeroepen met de Hyper parameters van de steek proef. De ScriptRunConfig definieert het trainings script dat moet worden uitgevoerd, de resources per taak (één of meerdere knoop punten) en het reken doel dat moet worden gebruikt. Omdat gelijktijdigheid voor uw afstemming-afstemmings experiment wordt gegatedeerd op de beschik bare resources, moet u ervoor zorgen dat het reken doel dat is opgegeven in, `src` voldoende resources heeft voor de gewenste gelijktijdigheid. (Zie [trainings uitvoeringen configureren](how-to-set-up-training-targets.md)voor meer informatie over ScriptRunConfig.)
 
 Uw afstemming-afstemmings experiment configureren:
 
 ```Python
 from azureml.train.hyperdrive import HyperDriveConfig
-hyperdrive_run_config = HyperDriveConfig(estimator=estimator,
-                          hyperparameter_sampling=param_sampling, 
-                          policy=early_termination_policy,
-                          primary_metric_name="accuracy", 
-                          primary_metric_goal=PrimaryMetricGoal.MAXIMIZE,
-                          max_total_runs=100,
-                          max_concurrent_runs=4)
+hd_config = HyperDriveConfig(run_config=src,
+                             hyperparameter_sampling=param_sampling,
+                             policy=early_termination_policy,
+                             primary_metric_name="accuracy",
+                             primary_metric_goal=PrimaryMetricGoal.MAXIMIZE,
+                             max_total_runs=100,
+                             max_concurrent_runs=4)
 ```
 
 ## <a name="submit-experiment"></a>Experiment verzenden
 
-Wanneer u de afstemming-afstemmings configuratie hebt gedefinieerd, moet u [een experiment verzenden](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment%28class%29?view=azure-ml-py#&preserve-view=truesubmit-config--tags-none----kwargs-):
+Wanneer u de afstemming-afstemmings configuratie hebt gedefinieerd, moet u [een experiment verzenden](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truesubmit-config--tags-none----kwargs-):
 
 ```Python
 from azureml.core.experiment import Experiment
 experiment = Experiment(workspace, experiment_name)
-hyperdrive_run = experiment.submit(hyperdrive_run_config)
+hyperdrive_run = experiment.submit(hd_config)
 ```
 
 `experiment_name` is de naam die u toewijst aan uw afstemming-afstemmings experiment en `workspace` is de werk ruimte waarin u het experiment wilt maken (Zie [hoe werkt Azure machine learning?](concept-azure-machine-learning-architecture.md)) voor meer informatie over experimenten.
@@ -341,15 +341,15 @@ U kunt uw afstemming-afstemmings experiment configureren om te beginnen met een 
 ```Python
 from azureml.train.hyperdrive import HyperDriveConfig
 
-hyperdrive_run_config = HyperDriveConfig(estimator=estimator,
-                          hyperparameter_sampling=param_sampling, 
-                          policy=early_termination_policy,
-                          resume_from=warmstart_parents_to_resume_from, 
-                          resume_child_runs=child_runs_to_resume,
-                          primary_metric_name="accuracy", 
-                          primary_metric_goal=PrimaryMetricGoal.MAXIMIZE,
-                          max_total_runs=100,
-                          max_concurrent_runs=4)
+hd_config = HyperDriveConfig(run_config=src,
+                             hyperparameter_sampling=param_sampling,
+                             policy=early_termination_policy,
+                             resume_from=warmstart_parents_to_resume_from,
+                             resume_child_runs=child_runs_to_resume,
+                             primary_metric_name="accuracy",
+                             primary_metric_goal=PrimaryMetricGoal.MAXIMIZE,
+                             max_total_runs=100,
+                             max_concurrent_runs=4)
 ```
 
 ## <a name="visualize-experiment"></a>Experimenteren met visualiseren
@@ -377,7 +377,7 @@ U kunt ook visualiseren van al uw afstemming-afstemmings uitvoeringen in de Azur
 
 ## <a name="find-the-best-model"></a>Het beste model zoeken
 
-Wanneer alle afstemmings uitvoeringen van de afstemming zijn voltooid, [identificeert u de best presterende configuratie](/python/api/azureml-train-core/azureml.train.hyperdrive.hyperdriverun?view=azure-ml-py#&preserve-view=trueget-best-run-by-primary-metric-include-failed-true--include-canceled-true--include-resume-from-runs-true-----typing-union-azureml-core-run-run--nonetype-) en de bijbehorende afstemming-waarden:
+Wanneer alle afstemmings uitvoeringen van de afstemming zijn voltooid, [identificeert u de best presterende configuratie](/python/api/azureml-train-core/azureml.train.hyperdrive.hyperdriverun?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-best-run-by-primary-metric-include-failed-true--include-canceled-true--include-resume-from-runs-true-----typing-union-azureml-core-run-run--nonetype-) en de bijbehorende afstemming-waarden:
 
 ```Python
 best_run = hyperdrive_run.get_best_run_by_primary_metric()
@@ -393,7 +393,7 @@ print('\n batch size:',parameter_values[7])
 
 ## <a name="sample-notebook"></a>Voorbeeld notitieblok
 Raadpleeg Train-afstemming-*-notebooks in deze map:
-* [procedures voor het gebruik van azureml/training-met-diep leren](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning)
+* [procedures voor het gebruik van azureml/ml-Frameworks](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 

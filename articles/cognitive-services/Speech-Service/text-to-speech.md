@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
-keywords: tekst-naar-spraak
-ms.openlocfilehash: 8b8430135ffd15e8331b654628236a315f10cce3
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+keywords: tekst naar spraak
+ms.openlocfilehash: 5d60279a2e3cb6aa7226f518783d53a1a38ddaa8
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401177"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357451"
 ---
 # <a name="what-is-text-to-speech"></a>Wat is tekst-naar-spraak?
 
@@ -77,5 +77,5 @@ Zie [prijzen](https://azure.microsoft.com/pricing/details/cognitive-services/spe
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een gratis spraak service-abonnement ontvangen](get-started.md)
+- [Een gratis spraak service-abonnement ontvangen](overview.md#try-the-speech-service-for-free)
 - [De Speech SDK ophalen](speech-sdk.md)

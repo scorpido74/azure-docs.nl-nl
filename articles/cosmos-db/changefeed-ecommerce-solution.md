@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: sngun
 ms.custom: devx-track-java
-ms.openlocfilehash: c9abc4dc89651eec7df635fb415314b2c12da3a6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b1de0fa2e6601e4350b52caea32f8bc379909f85
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319759"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356363"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Azure Cosmos DB Change feed gebruiken om real-time gegevens analyse te visualiseren
 
@@ -157,7 +157,7 @@ Wanneer een nieuw document wordt gemaakt of een huidig document is gewijzigd in 
    * Vervang de tekst van **uw verzamelings naam hier** door de naam van uw verzameling. Als u eerdere instructies hebt gevolgd, is de naam van uw verzameling changefeedlabcollection.  
    * Vervang de naam van **uw leases-verzameling** door de naam van uw leases-verzameling. Als u eerdere instructies hebt gevolgd, is de naam van uw leases-verzameling **leases**.  
    * Zorg ervoor dat boven aan Visual Studio het vak Startup-project aan de linkerkant van de groene pijl de tekst **ChangeFeedFunction**.  
-   * Selecteer **Start** boven aan de pagina om het programma uit te voeren  
+   * Selecteer **Start**  boven aan de pagina om het programma uit te voeren  
    * U kunt controleren of de functie wordt uitgevoerd wanneer de console-App "job host is gestart" aangeeft.
 
 ## <a name="insert-data-into-azure-cosmos-db"></a>Gegevens invoegen in Azure Cosmos DB 
@@ -315,7 +315,7 @@ Power BI is een pakket business analytics-hulpprogramma's waarmee u gegevens kun
 
    Zo ziet een voorbeeld dashboard eruit met deze grafieken:
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/visualizations.png" alt-text="visualisaties":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/visualizations.png" alt-text="Scherm afbeelding toont een voor beeld van een dash board met de naam gemiddelde prijs van items op actie, unieke bezoekers, omzet en top 5 van items die zijn gekocht.":::
 
 ## <a name="optional-visualize-with-an-e-commerce-site"></a>Optioneel: visualiseren met een E-commerce-site
 

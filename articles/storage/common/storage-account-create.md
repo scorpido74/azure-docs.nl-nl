@@ -1,27 +1,27 @@
 ---
 title: Create a storage account
 titleSuffix: Azure Storage
-description: Meer informatie over het maken van een opslag account met behulp van de Azure Portal, Azure PowerShell of de Azure CLI. Een Azure-opslag account biedt een unieke naam ruimte in Microsoft Azure om uw gegevens op te slaan en te openen.
+description: Meer informatie over het maken van een opslag account voor het opslaan van blobs, bestanden, wacht rijen en tabellen. Een Azure-opslag account biedt een unieke naam ruimte in Microsoft Azure voor het lezen en schrijven van uw gegevens.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/07/2020
+ms.date: 09/24/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 8b6f5f302465d075b7a0bcb0e6b12c75b1379bb5
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 9b993e5a7c5b3ee2327fe26437414d8ce74f7369
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89069813"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333576"
 ---
-# <a name="create-an-azure-storage-account"></a>Een Azure Storage-account maken
+# <a name="create-a-storage-account"></a>Create a storage account
 
 Een Azure-opslag account bevat al uw Azure Storage gegevens objecten: blobs, bestanden, wacht rijen, tabellen en schijven. Het opslag account biedt een unieke naam ruimte voor uw Azure Storage gegevens die overal ter wereld toegankelijk zijn via HTTP of HTTPS. Gegevens in uw Azure Storage-account zijn duurzaam en Maxi maal beschikbaar, veilig en zeer schaalbaar.
 
-In dit artikel leert u hoe u een opslag account maakt met behulp van de [Azure Portal](https://portal.azure.com/), [Azure POWERSHELL](https://docs.microsoft.com/powershell/azure/), [Azure cli](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)of een [Azure Resource Manager sjabloon](../../azure-resource-manager/management/overview.md).  
+In dit artikel leert u hoe u een opslag account maakt met behulp van de [Azure Portal](https://portal.azure.com/), [Azure POWERSHELL](https://docs.microsoft.com/powershell/azure/), [Azure cli](https://docs.microsoft.com/cli/azure)of een [Azure Resource Manager sjabloon](../../azure-resource-manager/management/overview.md).  
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -64,7 +64,7 @@ Met de knop start u een interactieve shell die u kunt gebruiken om de stappen ui
 
 ### <a name="install-the-cli-locally"></a>De CLI lokaal installeren
 
-U kunt Azure CLI ook lokaal installeren en gebruiken. Voor dit procedure-artikel moet u de Azure CLI-versie 2.0.4 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli). 
+U kunt Azure CLI ook lokaal installeren en gebruiken. Voor de voor beelden in dit artikel is Azure CLI-versie 2.0.4 of hoger vereist. Voer uit `az --version` om de geïnstalleerde versie te vinden. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli).
 
 # <a name="template"></a>[Sjabloon](#tab/template)
 
@@ -76,7 +76,7 @@ Geen.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Meld u aan bij [Azure Portal](https://portal.azure.com).
+Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -104,11 +104,9 @@ N.v.t.
 
 ## <a name="create-a-storage-account"></a>Create a storage account
 
-U bent nu klaar om een opslag account te maken.
-
 Elk opslagaccount moet behoren tot een Azure-resourcegroep. Een resourcegroep is een logische container voor het groeperen van uw Azure-services. Wanneer u een opslagaccount maakt, kunt u een nieuwe resourcegroep maken of een bestaande resourcegroep gebruiken. In dit artikel wordt beschreven hoe u een nieuwe resource groep maakt.
 
-Een v2-opslagaccount **voor algemeen gebruik** biedt toegang tot alle services van Azure Storage: blobs, bestanden, wachtrijen, tabellen en schijven. De stappen die hier worden beschreven, maken een v2-opslag account voor algemeen gebruik, maar de stappen voor het maken van elk type opslag account zijn vergelijkbaar.
+Een v2-opslagaccount **voor algemeen gebruik** biedt toegang tot alle services van Azure Storage: blobs, bestanden, wachtrijen, tabellen en schijven. De stappen die hier worden beschreven, maken een v2-opslag account voor algemeen gebruik, maar de stappen voor het maken van elk type opslag account zijn vergelijkbaar. Zie [Azure-opslagaccountoverzicht](storage-account-overview.md) voor meer informatie over typen opslagaccounts en andere opslagaccountinstellingen.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -186,7 +184,7 @@ az storage account create \
 ```
 
 > [!IMPORTANT]
-> Als u [Azure data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)wilt gebruiken, neemt u `--enable-hierarchical-namespace true` in deze lijst met para meters op. 
+> Als u [Azure data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)wilt gebruiken, neemt u `--enable-hierarchical-namespace true` in deze lijst met para meters op.
 
 Als u een v2-opslag account voor algemeen gebruik met een andere replicatie optie wilt maken, vervangt u de gewenste waarde in de onderstaande tabel voor de **SKU** -para meter.
 
@@ -230,8 +228,6 @@ Zie voor meer informatie over het wijzigen van deze sjabloon of het maken van ni
 - [Extra opslag account sjabloon voorbeelden](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Storage).
 
 ---
-
-Zie [Storage-replicatieopties](storage-redundancy.md) voor meer informatie over beschikbare replicatieopties.
 
 ## <a name="delete-a-storage-account"></a>Een opslagaccount verwijderen
 
@@ -287,26 +283,6 @@ U kunt ook de resource groep verwijderen, waardoor het opslag account en eventue
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit procedure-artikel hebt u een standaard v2-opslag account voor algemeen gebruik gemaakt. Ga door naar een van de Snelstartgids voor Blob-opslag voor meer informatie over het uploaden en downloaden van blobs naar en van uw opslag account.
-
-# <a name="portal"></a>[Portal](#tab/azure-portal)
-
-> [!div class="nextstepaction"]
-> [Werken met blobs met behulp van de Azure-portal](../blobs/storage-quickstart-blobs-portal.md)
-
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-
-> [!div class="nextstepaction"]
-> [Werken met blobs met behulp van PowerShell](../blobs/storage-quickstart-blobs-powershell.md)
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-> [!div class="nextstepaction"]
-> [Werken met blobs met behulp van Azure CLI](../blobs/storage-quickstart-blobs-cli.md)
-
-# <a name="template"></a>[Sjabloon](#tab/template)
-
-> [!div class="nextstepaction"]
-> [Werken met blobs met behulp van de Azure-portal](../blobs/storage-quickstart-blobs-portal.md)
-
----
+- [Overzicht van opslagaccounts](storage-account-overview.md)
+- [Upgraden naar een V2-opslagaccount voor algemeen gebruik](storage-account-upgrade.md)
+- [Een Azure Storage-account naar een andere regio verplaatsen](storage-account-move.md)

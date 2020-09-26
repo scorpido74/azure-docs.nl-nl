@@ -1,6 +1,6 @@
 ---
 title: Statisch groepslid maatschap wijzigen in dynamisch-Azure AD | Microsoft Docs
-description: Lidmaatschaps regels maken voor het automatisch invullen van groepen en een verwijzing naar een regel.
+description: Meer informatie over het converteren van bestaande groepen van statisch naar dynamisch lidmaatschap met behulp van het Azure AD-beheer centrum of Power shell-cmdlets.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6ee5af5d7489835f125319050d291a89ab252a6
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 381ee08f44ad8fb4dade9b6229f5a5925cf2b6b7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88797119"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325858"
 ---
 # <a name="change-static-group-membership-to-dynamic-in-azure-active-directory"></a>Statisch groepslid maatschap wijzigen in Azure Active Directory
 
@@ -117,7 +117,7 @@ ConvertStaticGroupToDynamic "a58913b2-eee4-44f9-beb2-e381c375058f" "user.display
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze artikelen vindt u aanvullende informatie over groepen in Azure Active Directory.
+Deze artikelen bevatten aanvullende informatie over Azure Active Directory-groepen.
 
 * [Bestaande groepen weergeven](../fundamentals/active-directory-groups-view-azure-portal.md)
 * [Een nieuwe groep maken en leden toevoegen](../fundamentals/active-directory-groups-create-azure-portal.md)

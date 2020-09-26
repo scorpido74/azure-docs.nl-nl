@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: ddd1f61ada539ebb00341dd83919f1c851a0f3e1
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 16bdb0d8ed421763895e61a6e1173fc7c5a48d4d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816368"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297943"
 ---
 # <a name="whats-new-in-form-recognizer"></a>Wat is er nieuw in Form Recognizer?
 
@@ -38,7 +38,8 @@ De Form Recognizer-service wordt doorlopend bijgewerkt. Gebruik dit artikel om o
 
 
 **v 2.0** bevat de volgende update:
--   De [client bibliotheken](quickstarts/client-library.md) voor net, Python, Java en Java script hebben algemene Beschik baarheid. 
+
+- De [client bibliotheken](quickstarts/client-library.md) voor net, Python, Java en Java script hebben algemene Beschik baarheid. 
 
 
 **Nieuwe voor beelden** zijn beschikbaar op github. 
@@ -148,7 +149,7 @@ Deze release introduceert de formulier Recognizer 2,0 (preview). In de volgende 
   * **Ondersteuning voor TIFF-bestanden** U kunt nu gegevens uit TIFF-documenten trainen en ophalen.
   * **Verbeteringen in de extractie nauwkeurigheid**
 
-* **Vooraf samengesteld ontvangstbewijsmodel**
+* **Gebaseerd ontvangst model**
   * **Fooien** U kunt nu fooie bedragen en andere handgeschreven waarden extra heren.
   * **Extractie van regel items** U kunt waarden van het regel item extra heren uit de bevestigingen.
   * **Betrouwbaarheids waarden** U kunt het vertrouwen van het model voor elke geëxtraheerde waarde weer geven.
@@ -176,4 +177,8 @@ De JSON-antwoorden voor alle API-aanroepen hebben nieuwe notaties. Sommige sleut
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Voer een [quickstart](quickstarts/curl-train-extract.md) uit om aan de slag te gaan met de [Form Recognizer API's](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm).
+Voltooi de Quick Start van een [client bibliotheek](quickstarts/client-library.md) om aan de slag te gaan met het schrijven van een formulier verwerkings-app met de herkenner van formulieren in de taal van uw keuze
+
+## <a name="see-also"></a>Zie ook
+
+* [Wat is Form Recognizer?](./overview.md)

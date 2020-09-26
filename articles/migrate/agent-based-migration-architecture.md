@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: raynew
-ms.openlocfilehash: d345d707cbf58f48466c3bd830d93250d13397c6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 90e499b436a3ae44fa29cec1138d939a106a4db7
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77425851"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357162"
 ---
 # <a name="agent-based-migration-architecture"></a>Migratiearchitectuur op basis van een agent
 
@@ -34,7 +34,7 @@ Migratie op basis van een agent wordt gebruikt voor het migreren van on-premises
 
 Het diagram illustreert de onderdelen die betrokken zijn bij migratie op basis van een agent.
 
-![Architectuur](./media/agent-based-replication-architecture/architecture.png)
+![Diagram toont de onderdelen voor migratie op basis van een agent, die worden uitgelegd in een tabel.](./media/agent-based-replication-architecture/architecture.png)
 
 De tabel bevat een overzicht van de onderdelen die worden gebruikt voor migratie op basis van een agent.
 
@@ -77,7 +77,7 @@ De Mobility-service communiceert met het replicatie apparaat en de gerepliceerde
 --- | --- 
 **Computers repliceren** | De Mobility-service die wordt uitgevoerd op Vm's communiceert met het on-premises replicatie apparaat op poort HTTPS 443 inkomend voor replicatie beheer.<br/><br/> Computers verzenden replicatie gegevens naar de proces server op poort HTTPS 9443 binnenkomend. Deze poort kan worden gewijzigd.
 **Replicatie apparaat** | Het replicatie apparaat organiseert de replicatie met Azure via poort HTTPS 443 uitgaand.
-**Processerver** | De proces server ontvangt replicatie gegevens, optimaliseert en versleutelt deze en verzendt deze naar Azure Storage via poort 443 uitgaand.
+**Proces server** | De proces server ontvangt replicatie gegevens, optimaliseert en versleutelt deze en verzendt deze naar Azure Storage via poort 443 uitgaand.
 
 
 ## <a name="performance-and-scaling"></a>Prestaties en schalen
@@ -97,7 +97,7 @@ Gebruik de waarden in deze tabel om erachter te komen of u een extra proces serv
 
 **CPU** | **Geheugen** | **Vrije ruimte-gegevens in cache opslaan** | **Verloop frequentie** | **Replicatie limieten**
 --- | --- | --- | --- | ---
-8 Vcpu's (2 sockets * 4 kernen \@ 2,5 GHz) | 16 GB | 300 GB | 500 GB of minder | < 100-machines 
+8 Vcpu's (2 sockets * 4 kernen \@ 2,5 GHz) | 16 GB | 300 GB | 500 GB of minder | < 100 computers 
 12 Vcpu's (2 sockets * 6 kernen \@ 2,5 GHz) | 18 GB | 600 GB | 501 GB tot 1 TB | 100-150 machines.
 16 Vcpu's (2 sockets * 8 kernen \@ 2,5 GHz) | 32 G1 |  1 TB | 1 TB tot 2 TB | 151-200 machines.
 
@@ -105,7 +105,7 @@ Gebruik de waarden in deze tabel om erachter te komen of u een extra proces serv
 
 Als u een scale-out proces server wilt implementeren, gebruikt u deze tabel om de server grootte te bepalen.
 
-**Processerver** | **Vrije ruimte voor het opslaan van gegevens in de cache** | **Verloop frequentie** | **Replicatie limieten**
+**Proces server** | **Vrije ruimte voor het opslaan van gegevens in de cache** | **Verloop frequentie** | **Replicatie limieten**
 --- | --- | --- | --- 
 4 Vcpu's (2 sockets * 2 kernen \@ 2,5 GHz), 8 GB geheugen | 300 GB | 250 GB of minder | Maxi maal 85 computers 
 8 Vcpu's (2 sockets * 4 kernen \@ 2,5 GHz), 12 GB geheugen | 600 GB | 251 GB tot 1 TB    | 86-150 machines.

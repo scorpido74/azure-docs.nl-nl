@@ -4,12 +4,12 @@ description: Meer informatie over het maken van een back-up van een Exchange-Ser
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 02d1cde7ab48aa951c47cfbfea29c90c3f53f768
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: ee89af311619922fa6ca585381d70ca66955f36a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378386"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271644"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>Met System Center 2012 R2 DPM een back-up maken van een Exchange-server in Azure Backup
 
@@ -38,8 +38,8 @@ Voordat u doorgaat, moet u ervoor zorgen dat aan alle [vereisten](backup-azure-d
 
 Voer de volgende stappen uit om de DPM-beveiligings agent te installeren op de Exchange-Server:
 
-1. Zorg ervoor dat de firewalls correct zijn geconfigureerd. Zie [firewall-uitzonde ringen voor de agent configureren](/system-center/dpm/configure-firewall-settings-for-dpm?view=sc-dpm-2019).
-2. Installeer de agent op de Exchange-Server door **beheer > agents** te selecteren > in DPM Administrator-console te installeren. Zie [de DPM-beveiligings agent installeren](/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019) voor gedetailleerde stappen.
+1. Zorg ervoor dat de firewalls correct zijn geconfigureerd. Zie [firewall-uitzonde ringen voor de agent configureren](/system-center/dpm/configure-firewall-settings-for-dpm).
+2. Installeer de agent op de Exchange-Server door **beheer > agents** te selecteren > in DPM Administrator-console te installeren. Zie [de DPM-beveiligings agent installeren](/system-center/dpm/deploy-dpm-protection-agent) voor gedetailleerde stappen.
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>Een beveiligings groep maken voor de Exchange-Server
 
@@ -62,7 +62,7 @@ Voer de volgende stappen uit om de DPM-beveiligings agent te installeren op de E
 
    * Ik wil kortetermijnbeveiliging met schijf.
    * Ik wil online beveiliging.
-6. Selecteer **Volgende**.
+6. Selecteer **Next**.
 7. Selecteer de optie **Eseutil uitvoeren om gegevens integriteit te controleren** als u de integriteit van de Exchange server-data bases wilt controleren.
 
     Nadat u deze optie hebt geselecteerd, wordt er een consistentie controle van de back-up uitgevoerd op de DPM-server om te voor komen dat het I/O-verkeer dat wordt gegenereerd door de opdracht **Eseutil** uit te voeren op de Exchange-Server.
@@ -72,7 +72,7 @@ Voer de volgende stappen uit om de DPM-beveiligings agent te installeren op de E
    > ![Eseutil-fout](./media/backup-azure-backup-exchange-server/eseutil-error.png)
    >
    >
-8. Selecteer **Volgende**.
+8. Selecteer **Next**.
 9. Selecteer de Data Base voor **back-up kopiëren**en selecteer vervolgens **volgende**.
 
    > [!NOTE]
@@ -101,7 +101,7 @@ Voer de volgende stappen uit om de DPM-beveiligings agent te installeren op de E
 
     ![Online Bewaar beleid opgeven](./media/backup-azure-backup-exchange-server/specify-online-retention-policy.png)
 18. Bevestig de instellingen en selecteer vervolgens **groep maken**.
-19. Selecteer **Close** (Sluiten).
+19. Selecteer **Sluiten**.
 
 ## <a name="recover-the-exchange-database"></a>De Exchange-data base herstellen
 

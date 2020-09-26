@@ -5,12 +5,12 @@ author: mikkelhegn
 ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: mikhegn
-ms.openlocfilehash: 92f6f495f6aac23785dd2a21672747bffb07e2e3
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 5c1a7de386baeb4b89fd12bd89236ea2e0348a57
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256251"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357213"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Visualisern van uw cluster met Service Fabric Explorer
 
@@ -106,7 +106,7 @@ U kunt ook Service Fabric Explorer gebruiken om toepassings exemplaren te maken 
 ## <a name="event-store"></a>Gebeurtenis archief
 Event Store is een functie die wordt aangeboden door het platform dat Service Fabric platform gebeurtenissen bevat die beschikbaar zijn in de Service Fabric Explorer en via REST API. Op basis van de tijd van de gebeurtenis ziet u een moment opname van wat er in uw cluster gebeurt voor elke entiteit, bijvoorbeeld knoop punt, service, toepassing en query. Meer informatie over de Event Store vindt u in het [overzicht van Event Store](service-fabric-diagnostics-eventstore.md).   
 
-![Event Store][sfx-eventstore]
+![Scherm afbeelding toont het deel venster knoop punten waarvoor gebeurtenissen zijn geselecteerd.][sfx-eventstore]
 
 >[!NOTE]
 >Vanaf Service Fabric versie 6,4. Event Store is standaard niet ingeschakeld en moet worden ingeschakeld in de Resource Manager-sjabloon

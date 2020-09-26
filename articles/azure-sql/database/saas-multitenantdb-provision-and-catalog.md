@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: 88f1e40101b807e82eaf69be6c167cd4aa2e2831
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4413a987af7a4802366556fb86c0c55e7b401776
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539190"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356788"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>Nieuwe tenants inrichten en catalogiseren in een SaaS-toepassing met behulp van een Shard multi tenant-Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -169,7 +169,7 @@ Als u wilt weten hoe de Wingtip-app nieuwe Tenant inrichting implementeert in ee
 
 4. Wanneer het uitvoeren van het script stopt bij het onderbrekings punt, drukt u op **F11** om de code te Step into.
 
-   ![debug](./media/saas-multitenantdb-provision-and-catalog/debug.png)
+   ![Scherm afbeelding toont de Windows PowerShell ISE met het menu fout opsporing geopend en stap in geselecteerd.](./media/saas-multitenantdb-provision-and-catalog/debug.png)
 
 5. De uitvoering van het script traceren met behulp van de opties voor het menu **fout opsporing** , **F10** en **F11**, om over te stappen of functies te noemen.
 
@@ -237,7 +237,7 @@ De volledige lijst met tenants en de bijbehorende data base voor elk is beschikb
 - De naam van de Tenant wordt opgeslagen in de tabel tenants.
 - De database naam wordt opgeslagen in de Shard-beheer tabellen.
 
-1. In SQL Server Management Studio (SSMS) maakt u verbinding met de Tenant server op **catalogus-mt. \<USER\> . database.Windows.net**, met login = **Developer**en password = **P \@ ssword1**
+1. In SQL Server Management Studio (SSMS) maakt u verbinding met de Tenant server op **catalogus-mt. \<USER\> database.windows.net**, met login = **Developer**en password = **P \@ ssword1**
 
     ![Dialoog venster voor SSMS-verbinding](./media/saas-multitenantdb-provision-and-catalog/SSMSConnection.png)
 

@@ -11,12 +11,12 @@ ms.author: nigup
 ms.date: 05/08/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperfq4
-ms.openlocfilehash: c86397b20a95f045ac5edfeb2cfa4833982df990
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a25dcc187c1bb172106a3972c1cb57dfd473bc2f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897407"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322373"
 ---
 # <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>& quota voor resources met Azure Machine Learning beheren
 
@@ -136,6 +136,29 @@ Wanneer u een quota verhoging wilt aanvragen, moet u de service selecteren die u
 
 > [!NOTE]
 > [Gratis proef abonnementen](https://azure.microsoft.com/offers/ms-azr-0044p) komen niet in aanmerking voor limiet of quotum verhoging. Als u een [gratis proef abonnement](https://azure.microsoft.com/offers/ms-azr-0044p)hebt, kunt u een upgrade uitvoeren naar een abonnement met [betalen per gebruik](https://azure.microsoft.com/offers/ms-azr-0003p/) . Zie [gratis proef versie van Azure upgraden naar betalen per gebruik](../billing/billing-upgrade-azure-subscription.md) en  [Veelgestelde vragen over het gratis proef abonnement](https://azure.microsoft.com/free/free-account-faq)voor meer informatie.
+
+## <a name="private-endpoint-and-private-dns-quota-increases"></a>Het persoonlijke eind punt en het privé-DNS-quotum nemen toe
+
+Er gelden beperkingen voor het aantal privé-eind punten en privé-DNS-zones dat kan worden gemaakt in een abonnement. Terwijl Azure Machine Learning resources maakt in uw abonnement (klant), zijn er enkele scenario's waarin u resources kunt maken in een micro soft-abonnement. In de volgende scenario's moet u mogelijk een quotum toelage aanvragen in het micro soft-abonnement:
+
+* __Werk ruimte met persoonlijke koppeling ingeschakeld met een door de klant beheerde sleutel (CMK)__
+* __Azure Container Registry voor de werk ruimte achter uw virtuele netwerk__
+* __Een persoonlijke koppeling met Azure Kubernetes service-cluster koppelen aan uw werk ruimte__.
+
+Als u een limiet wilt aanvragen voor deze scenario's, gebruikt u de volgende stappen:
+
+1. [Maak een ondersteunings aanvraag voor Azure](/azure/azure-portal/supportability/how-to-create-azure-support-request#create-a-support-request) en selecteer de volgende opties in de sectie __basis beginselen__ :
+
+    | Veld | Selectie |
+    | ----- | ----- |
+    | Type probleem | Technisch |
+    | Service | Mijn services. Selecteer __machine learning__ in de vervolg keuzelijst. |
+    | Probleem type | Werk ruimte instellen, SDK en CLI |
+    | Subtype van probleem | Probleem bij het inrichten of beheren van een werkruimte |
+
+2. Gebruik in de sectie __Details__ het veld __Beschrijving__ om de Azure-regio op te geven die u wilt gebruiken en het scenario dat u wilt gebruiken. Als u quotum verhogingen moet aanvragen voor meerdere abonnementen, vermeldt u ook de abonnement-Id's in dit veld.
+
+3. Gebruik __maken__ om de aanvraag te maken.
 
 ## <a name="next-steps"></a>Volgende stappen
 

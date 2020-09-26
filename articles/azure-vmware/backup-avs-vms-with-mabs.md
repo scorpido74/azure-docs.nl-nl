@@ -3,12 +3,12 @@ title: Back-ups maken van Azure VMware-oplossing Vm's met Azure Backup Server
 description: Configureer uw Azure VMware-oplossings omgeving voor het maken van back-ups van virtuele machines met behulp van Azure Backup Server.
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: 9b37f909fc8199975eb399fe5ca28ebb53ab2789
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4cba224de3d8b223ebcc1ac4d2d8d569275b4e3b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84817940"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91272243"
 ---
 # <a name="back-up-azure-vmware-solution-vms-with-azure-backup-server"></a>Back-ups maken van Azure VMware-oplossing Vm's met Azure Backup Server
 
@@ -105,9 +105,9 @@ Voor VMware 6,7 werd TLS ingeschakeld als communicatie protocol.
 
 1. Klik met de rechter muisknop op de TLS. REG-bestand en selecteer **samen voegen** of **openen** om de instellingen toe te voegen aan het REGI ster.
 
-## <a name="add-the-provisioning-ip-address-for-azure-vmware-solution-esxi-hosts-on-azure-backup-server"></a>Voeg het IP-adres van de inrichting toe voor Azure VMware-oplossing ESXi-hosts op Azure Backup Server
+## <a name="add-the-provisioning-ip-address"></a>Het IP-adres van de inrichting toevoegen 
 
-Tijdens de preview-versie van de Azure VMware-oplossing wordt de ESX-host niet omgezet van de virtuele machine die in het virtuele netwerk is geïmplementeerd. U moet extra stappen uitvoeren om de vermelding van het hostbestand toe te voegen aan de virtuele machine van Azure Backup Server.
+Met de Azure VMware-oplossing wordt de ESX-host niet omgezet vanuit de VM die in het virtuele netwerk is geïmplementeerd. U moet extra stappen uitvoeren om de vermelding van het hostbestand toe te voegen aan de Azure Backup Server VM.
 
 ### <a name="identify-the-ip-address-for-esxi-hosts"></a>Het IP-adres voor ESXi-hosts identificeren
 
@@ -144,7 +144,7 @@ Tijdens de preview-versie van de Azure VMware-oplossing wordt de ESX-host niet o
 
 1. Selecteer in het dialoog venster **referenties beheren** de optie **toevoegen**.
 
-   ![Het dialoog venster referenties Azure Backup Server beheren](../backup/media/backup-azure-backup-server-vmware/mabs-manage-credentials-dialog.png)
+   ![Selecteer in het dialoog venster referenties beheren de optie toevoegen.](../backup/media/backup-azure-backup-server-vmware/mabs-manage-credentials-dialog.png)
 
 1. Voer in het dialoog venster **referentie toevoegen** een naam en een beschrijving in voor de nieuwe referentie. Geef de gebruikers naam en het wacht woord op die u op de VMware-Server hebt gedefinieerd.
 
@@ -155,7 +155,7 @@ Tijdens de preview-versie van de Azure VMware-oplossing wordt de ESX-host niet o
 
 1. Selecteer **toevoegen** om de nieuwe referentie toe te voegen.
 
-   ![Het dialoog venster referenties Azure Backup Server beheren](../backup/media/backup-azure-backup-server-vmware/new-list-of-mabs-creds.png)
+   ![Scherm afbeelding toont het dialoog venster Azure Backup Server het beheren van referenties met nieuwe referenties weer gegeven.](../backup/media/backup-azure-backup-server-vmware/new-list-of-mabs-creds.png)
 
 ## <a name="add-the-vcenter-server-to-azure-backup-server"></a>De vCenter-Server toevoegen aan Azure Backup Server
 
@@ -192,7 +192,10 @@ Tijdens de preview-versie van de Azure VMware-oplossing wordt de ESX-host niet o
 
    ![Pagina volt ooien](../backup/media/backup-azure-backup-server-vmware/summary-screen.png)
 
-   De vCenter-Server wordt weer gegeven onder **productie server** met het type **VMware-Server** en de status van de **agent** als **OK**. Als u de **agent status** **onbekend**ziet, selecteert u **vernieuwen**.
+   De vCenter-Server wordt weer gegeven onder **productie server** met het type **VMware-Server** en de status van de **agent** als **OK**. 
+
+   >[!TIP]
+   >Als u de **agent status** **onbekend**ziet, selecteert u **vernieuwen**.
 
 ## <a name="configure-a-protection-group"></a>Een beveiligings groep configureren
 
@@ -242,7 +245,7 @@ Beveiligings groepen verzamelen meerdere Vm's en passen dezelfde gegevens retent
 
 1. Geef op de pagina **methode voor maken van replica selecteren** op hoe u de eerste back-up wilt maken en selecteer **volgende**.
 
-   - De standaard instelling is **automatisch via het netwerk** en **nu**. Als u de standaard waarde gebruikt, geeft u een rustige tijd op. Als u **later**kiest, geeft u een dag en tijd op.
+   - De standaard instelling is **automatisch via het netwerk** en **nu**. Als u de standaard waarde gebruikt, geeft u een rustige tijd op. Als u **later**selecteert, geeft u een dag en tijd op.
    - Voor grote hoeveel heden gegevens of minder dan optimale netwerk omstandigheden kunt u overwegen om de gegevens offline te repliceren met behulp van Verwissel bare media.
 
    ![Methode voor maken van replica selecteren](../backup/media/backup-azure-backup-server-vmware/replica-creation.png)
@@ -300,7 +303,7 @@ In de Azure Backup Server Administrator-console zijn er twee manieren om herstel
 
 1. Selecteer in de Azure Backup Server Administrator-console de weer gave **herstel** . 
 
-1. Blader in het **Blader** venster en filter om de virtuele machine te vinden die u wilt herstellen. Nadat u een virtuele machine of map hebt geselecteerd, worden in het deel venster **herstel punten voor** de beschik bare herstel punten weer gegeven.
+1. Blader in het **Blader** venster naar de virtuele machine die u wilt herstellen en zoek deze filter. Nadat u een virtuele machine of map hebt geselecteerd, worden de beschik bare herstel punten weer gegeven.
 
    ![Beschik bare herstel punten](../backup/media/restore-azure-backup-server-vmware/recovery-points.png)
 
@@ -317,12 +320,13 @@ In de Azure Backup Server Administrator-console zijn er twee manieren om herstel
 
    ![Wizard herstellen, selectie van herstel pagina controleren](../backup/media/restore-azure-backup-server-vmware/recovery-wizard.png)
 
-1. Selecteer **volgende** om naar het scherm **herstel opties opgeven** te gaan. Selecteer opnieuw **volgende** om naar het scherm **herstel type selecteren** te gaan. 
+1. Selecteer **volgende** om naar het scherm **herstel opties opgeven** te gaan. 
+1. Selecteer opnieuw **volgende** om naar het scherm **herstel type selecteren** te gaan. 
 
    > [!NOTE]
    > VMware-workloads bieden geen ondersteuning voor het inschakelen van netwerk bandbreedte regeling.
 
-1. Kies op de pagina **type herstel bewerking selecteren** of u wilt herstellen naar het oorspronkelijke exemplaar of een nieuwe locatie, en selecteer vervolgens **volgende**.
+1. Op de pagina **type herstel bewerking** selecteren selecteert u herstellen naar het oorspronkelijke exemplaar of een nieuwe locatie en selecteert u vervolgens **volgende**.
 
    - Als u **herstellen naar oorspronkelijk exemplaar**kiest, hoeft u geen keuzes meer te maken in de wizard. De gegevens voor de oorspronkelijke instantie worden gebruikt.
    - Als u **herstellen als virtuele machine op een wille keurige host**kiest, geeft u op het scherm **doel opgeven** de gegevens op voor de **ESXi-host**, de **resource groep**, de **map**en het **pad**.
@@ -342,7 +346,7 @@ U kunt afzonderlijke bestanden herstellen vanaf een herstel punt van een beveili
 
 1. Selecteer in de Azure Backup Server Administrator-console de weer gave **herstel** .
 
-1. Blader in het **Blader** venster en filter om de virtuele machine te vinden die u wilt herstellen. Nadat u een virtuele machine of map hebt geselecteerd, worden in het deel venster **herstel punten voor** de beschik bare herstel punten weer gegeven.
+1. Blader in het **Blader** venster naar de virtuele machine die u wilt herstellen en zoek deze filter. Nadat u een virtuele machine of map hebt geselecteerd, worden de beschik bare herstel punten weer gegeven.
 
    ![Beschik bare herstel punten](../backup/media/restore-azure-backup-server-vmware/vmware-rp-disk.png)
 

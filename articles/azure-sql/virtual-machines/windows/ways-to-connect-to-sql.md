@@ -7,18 +7,18 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/12/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: aa0fdddbf31cadad55582f4d45c8e536ce74acd9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 26052441d19abb6a0c423a3b3d6f6c2d21478814
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84667416"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91272052"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Verbinding maken met een SQL Server virtuele machine in azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -39,7 +39,7 @@ Als u in de Azure Portal een SQL Server virtuele machine inricht, hebt u de moge
 
 De opties voor connectiviteit zijn onder andere:
 
-| Optie | Description |
+| Optie | Beschrijving |
 |---|---|
 | **Openbaar** | Verbinding maken met SQL Server via internet. |
 | **Privé** | Verbinding maken met SQL Server in hetzelfde virtuele netwerk. |
@@ -91,7 +91,7 @@ Ervan uitgaande dat u DNS in uw virtuele netwerk hebt geconfigureerd, kunt u ver
 Server=mysqlvm;Integrated Security=true
 ```
 
-## <a name="change-sql-connectivity-settings"></a><a id="change"></a>SQL-Verbindings instellingen wijzigen
+## <a name="change-sql-connectivity-settings"></a><a id="change"></a> SQL-Verbindings instellingen wijzigen
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
@@ -111,7 +111,7 @@ U kunt de connectiviteits instellingen voor uw SQL Server virtuele machine wijzi
 
    ![Update melding voor SQL-VM](./media/ways-to-connect-to-sql/sql-vm-updating-notification.png)
 
-## <a name="enable-tcpip-for-developer-and-express-editions"></a><a id="manualtcp"></a>TCP/IP inschakelen voor ontwikkel aars-en Express-edities
+## <a name="enable-tcpip-for-developer-and-express-editions"></a><a id="manualtcp"></a> TCP/IP inschakelen voor ontwikkel aars-en Express-edities
 
 Wanneer u SQL Server connectiviteits instellingen wijzigt, schakelt Azure het TCP/IP-protocol niet automatisch in voor SQL Server Developer-en Express-edities. In de onderstaande stappen wordt uitgelegd hoe u TCP/IP handmatig kunt inschakelen, zodat u op afstand via een IP-adres verbinding kunt maken.
 
@@ -129,13 +129,13 @@ De volgende stappen laten zien hoe u een optioneel DNS-label maakt voor uw Azure
 
 [!INCLUDE [Connect to SQL Server in a VM Resource Manager](../../../../includes/virtual-machines-sql-server-connection-steps-resource-manager.md)]
 
-## <a name="manual-configuration-and-troubleshooting"></a><a id="manual"></a>Hand matige configuratie en probleem oplossing
+## <a name="manual-configuration-and-troubleshooting"></a><a id="manual"></a> Hand matige configuratie en probleem oplossing
 
 Hoewel de portal opties biedt voor het automatisch configureren van connectiviteit, is het handig om te weten hoe u de connectiviteit hand matig kunt configureren. Meer informatie over de vereisten kan ook problemen oplossen.
 
 De volgende tabel bevat de vereisten om verbinding te maken met SQL Server op Azure VM.
 
-| Vereiste | Description |
+| Vereiste | Beschrijving |
 |---|---|
 | [Verificatie modus SQL Server inschakelen](/sql/database-engine/configure-windows/change-server-authentication-mode#use-ssms) | SQL Server-verificatie is vereist om extern verbinding te maken met de virtuele machine tenzij u Active Directory hebt geconfigureerd op een virtueel netwerk. |
 | [Een SQL-aanmelding maken](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/create-a-login) | Als u SQL-verificatie gebruikt, hebt u een SQL-aanmelding nodig met een gebruikers naam en wacht woord die ook machtigingen voor uw doel database hebben. |

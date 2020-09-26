@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: a67d61c5a7c8861b1e4462586e1e4dca9149ab4f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c4c040c6d5b8eb4041db3ffaaab58657a9f9c7da
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91305440"
+ms.locfileid: "91358046"
 ---
 # <a name="tutorial-configure-hootsuite-for-automatic-user-provisioning"></a>Zelf studie: HootSuite configureren voor automatische gebruikers inrichting
 
@@ -88,7 +88,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 5. Selecteer in de sectie **beheerders referenties** de invoer `https://platform.hootsuite.com/scim/v2` in de Tenant-URL. Voer de lang blijvende geheime token waarde in die eerder in **stap 2**is opgehaald. Klik op **verbinding testen** om te controleren of Azure AD verbinding kan maken met HootSuite. Als de verbinding mislukt, zorg er dan voor dat uw HootSuite-account beheerders machtigingen heeft en probeer het opnieuw.
 
-    ![inrichtings](./media/hootsuite-provisioning-tutorial/provisioning.png)
+    ![Scherm afbeelding toont het dialoog venster beheerders referenties, waarin u uw Tenant U R L en geheime token kunt invoeren.](./media/hootsuite-provisioning-tutorial/provisioning.png)
 
 6. Voer in het veld **E-mailadres voor meldingen** het e-mailadres in van een persoon of groep die de inrichtingsfoutmeldingen zou moeten ontvangen en schakel het selectievakje **Een e-mailmelding verzenden als een fout optreedt** in.
 

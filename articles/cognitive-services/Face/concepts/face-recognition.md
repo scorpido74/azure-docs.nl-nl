@@ -1,5 +1,5 @@
 ---
-title: Concepten voor gezichts herkenning
+title: Gezichtsherkenningsconcepten
 titleSuffix: Azure Cognitive Services
 description: In dit artikel worden de concepten uitgelegd van de berekenings-en onderhouds bewerkingen voor het verifiëren, vergelijken, groeperen en identificeren van het gezicht en de onderliggende gegevens structuren.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pafarley
-ms.openlocfilehash: 164e5a8c107f445b376d26f9be7db92a7983b0d3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3957a9cde957c8e92806f10d39c949d73f20153e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73743074"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323019"
 ---
-# <a name="face-recognition-concepts"></a>Concepten voor gezichts herkenning
+# <a name="face-recognition-concepts"></a>Gezichtsherkenningsconcepten
 
 In dit artikel worden de concepten uitgelegd van de berekenings-en onderhouds bewerkingen voor het verifiëren, vergelijken, groeperen en identificeren van het gezicht en de onderliggende gegevens structuren. In het algemeen wordt met herkenning het werk van het vergelijken van twee verschillende gezichten beschreven om te bepalen of ze vergelijkbaar zijn of horen bij dezelfde persoon.
 
@@ -69,6 +69,6 @@ Gebruik de volgende tips om ervoor te zorgen dat uw invoer installatie kopieën 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u bekend bent met de concepten van gezichts herkenning, leert u hoe u een script schrijft dat gezichten identificeert op basis van een getrainde PersonGroup.
+Nu u bekend bent met de concepten van gezichts herkenning, schrijft u een script dat gezichten identificeert op basis van een getrainde PersonGroup.
 
-* [Gezichten identificeren in installatie kopieën](../Face-API-How-to-Topics/HowtoIdentifyFacesinImage.md)
+* [Snelstartgids voor client bibliotheek](../Quickstarts/client-libraries.md)

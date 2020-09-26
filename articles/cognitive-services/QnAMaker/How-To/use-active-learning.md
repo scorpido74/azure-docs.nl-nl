@@ -1,14 +1,14 @@
 ---
 title: Actief leren gebruiken met Knowledge Base-QnA Maker
-description: Verbeter de kwaliteit van uw kennis basis met actief onderwijs. Beoordeling, accepteren of afwijzen, toevoegen zonder bestaande vragen te verwijderen of te wijzigen.
+description: Meer informatie over het verbeteren van de kwaliteit van uw Knowledge Base met actief leren. Beoordeling, accepteren of afwijzen, toevoegen zonder bestaande vragen te verwijderen of te wijzigen.
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: 004ee9d4cced0116831718b1601d5d510dea5a4d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 32dfe6a274889181410ab5f800ac595ee81c148c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090923"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91298142"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>Actief leren gebruiken om uw Knowledge Base te verbeteren
 

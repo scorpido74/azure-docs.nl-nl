@@ -1,14 +1,16 @@
 ---
 title: App uitbreiden tijdens runtime-LUIS
 description: ''
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.openlocfilehash: c0f9d71f5d89d73d9cdce2a2f646859d8eba3adc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 69e2608fb01ece81f555aae2f3d4a2e4a05cfc90
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81538576"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322798"
 ---
 # <a name="extend-app-at-prediction-runtime"></a>App uitbreiden bij Voorspellings runtime
 
@@ -66,7 +68,7 @@ De volgende gebruiker utterance in de chat-bot maakt gebruik van een meer vague-
 
 `Send him a calendar reminder for the party.`
 
-In deze conversatie wordt het utterance gebruikt `him` als een verwijzing naar. `Hazem` De bot van de conversatie in de hoofd tekst kan worden toegewezen `him` aan de entiteit waarde die is geëxtraheerd uit de eerste utterance `Hazem`,.
+In deze conversatie wordt het utterance gebruikt `him` als een verwijzing naar `Hazem` . De bot van de conversatie in de hoofd tekst kan worden toegewezen `him` aan de entiteit waarde die is geëxtraheerd uit de eerste utterance, `Hazem` .
 
 ```json
     "externalEntities": [
@@ -88,7 +90,7 @@ Het Voorspellings antwoord bevat die externe entiteit, met alle andere voorspeld
 
 De `preferExternalEntities` eigenschap Options geeft aan dat als de gebruiker een externe entiteit verzendt die overlapt met een voorspelde entiteit met dezelfde naam, Luis kiest voor de entiteit die is door gegeven of de entiteit die in het model is opgenomen.
 
-Denk bijvoorbeeld aan de query `today I'm free`. LUIS detecteert `today` als een datetimeV2 met het volgende antwoord:
+Denk bijvoorbeeld aan de query `today I'm free` . LUIS detecteert `today` als een datetimeV2 met het volgende antwoord:
 
 ```JSON
 "datetimeV2": [
@@ -117,7 +119,7 @@ Als de gebruiker de externe entiteit verzendt:
 }
 ```
 
-Als `preferExternalEntities` is ingesteld op `false`, retourneert Luis een antwoord alsof de externe entiteit niet is verzonden.
+Als `preferExternalEntities` is ingesteld op `false` , retourneert Luis een antwoord alsof de externe entiteit niet is verzonden.
 
 ```JSON
 "datetimeV2": [
@@ -133,7 +135,7 @@ Als `preferExternalEntities` is ingesteld op `false`, retourneert Luis een antwo
 ]
 ```
 
-Als is `preferExternalEntities` ingesteld op `true`, Luis retourneert een antwoord met de volgende instellingen:
+Als `preferExternalEntities` is ingesteld op `true` , Luis retourneert een antwoord met de volgende instellingen:
 
 ```JSON
 "datetimeV2": [
@@ -173,7 +175,7 @@ De lijst entiteit kan leeg zijn in de LUIS-app, maar deze moet bestaan. De entit
 
 ### <a name="dynamic-list-json-request-body"></a>Hoofd tekst JSON-aanvraag van dynamische lijst
 
-Verzend in de volgende JSON-hoofd tekst om een nieuwe sublijst met synoniemen toe te voegen aan de lijst, en voor te voors pellen dat de lijst entiteit voor de tekst wordt `LUIS`weer geven, met de `POST` aanvraag voor de voor spelling van query's:
+Verzend in de volgende JSON-hoofd tekst om een nieuwe sublijst met synoniemen toe te voegen aan de lijst, en voor te voors pellen dat de lijst entiteit voor de tekst wordt weer geven, `LUIS` met de aanvraag voor de voor `POST` Spelling van query's:
 
 ```JSON
 {

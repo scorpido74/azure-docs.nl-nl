@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: e445f26458d13d28dd4ef50c6c17d434554d9fd5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5af7645db662a238099e013f84b0dc0fee2af62c
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91311067"
+ms.locfileid: "91355853"
 ---
 # <a name="secure-a-daemon-application"></a>Een daemon-toepassing beveiligen
 
@@ -122,7 +122,7 @@ U verleent op *rollen gebaseerd toegangs beheer voor Azure (Azure RBAC)* door de
 2. Voeg op het tabblad **roltoewijzingen** een roltoewijzing **toe** . 
 
     > [!div class="mx-imgBorder"]
-    > ![Roltoewijzing toevoegen](./media/how-to-manage-authentication/add-role-assignment.png)
+    > ![Scherm afbeelding toont de rollen toewijzingen met toevoegen geselecteerd.](./media/how-to-manage-authentication/add-role-assignment.png)
 
 3. Selecteer een ingebouwde Azure Maps roldefinitie, zoals **Azure Maps gegevens lezer** of **Azure Maps data contributor**. Onder **toegang toewijzen aan**, selecteert u **Azure AD-gebruiker,-groep of Service-Principal** of beheerde identiteit met door de **gebruiker toegewezen beheerde**identiteits  /  **systeem toegewezen beheerde identiteit**. Selecteer de principal. Selecteer vervolgens **Opslaan**.
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 8a086830398555d962bb13d1d9b0fea3554f7924
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 9f0a7b6f68c5a3adeb320fd18bec2f195a833dbf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032517"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91309996"
 ---
 # <a name="log-analytics-agent-overview"></a>Overzicht van Log Analytics-agent
 De Azure Log Analytics-agent verzamelt telemetrie van virtuele Windows-en Linux-machines in elke Cloud, on-premises machines en die worden bewaakt door [System Center Operations Manager](/system-center/scom/) en verzendt de verzamelde gegevens naar uw log Analytics-werk ruimte in azure monitor. De Log Analytics-agent biedt ook ondersteuning voor inzichten en andere services in Azure Monitor zoals [Azure monitor voor VM's](../insights/vminsights-enable-overview.md), [Azure Security Center](../../security-center/index.yml)en [Azure Automation](../../automation/automation-intro.md). Dit artikel bevat een gedetailleerd overzicht van de agent-, systeem-en netwerk vereisten en implementatie methoden.
@@ -59,7 +59,7 @@ Zie [agent configureren om te rapporteren aan een Operations Manager-beheer groe
 
 * Windows-agents kunnen verbinding maken met Maxi maal vier werk ruimten, zelfs als ze zijn verbonden met een System Center Operations Manager-beheer groep.
 * De Linux-agent biedt geen ondersteuning voor multi-multihoming en kan alleen verbinding maken met één werk ruimte of beheer groep.
-  
+
 
 ## <a name="security-limitations"></a>Beveiligings beperkingen
 
@@ -69,6 +69,8 @@ Zie [agent configureren om te rapporteren aan een Operations Manager-beheer groe
 ## <a name="installation-options"></a>Installatieopties
 
 Er zijn meerdere methoden om de Log Analytics-agent te installeren en uw computer te verbinden met Azure Monitor afhankelijk van uw vereisten. In de volgende secties worden de mogelijke methoden voor verschillende typen virtuele machines vermeld.
+> [!NOTE]
+> Het is niet mogelijk om een machine te klonen waarvoor de Log Analytics-agent al is geconfigureerd. Als de agent al is gekoppeld aan een werk ruimte, werkt dit niet voor gouden installatie kopieën.
 
 ### <a name="azure-virtual-machine"></a>Azure virtuele machine
 

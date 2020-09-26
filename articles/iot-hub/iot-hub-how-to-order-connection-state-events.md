@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: asrastog
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: af8bd9a0420c90df4dea16fa8ebacbf4ea6494db
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 815dc0a90d79323fb88c98867b5540105a6fa8cc
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87488125"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356193"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Verbindingsgebeurtenissen voor het apparaat aanvragen bij Azure IoT Hub met behulp van Azure Cosmos DB
 
@@ -227,11 +227,11 @@ In de werk stroom van de logische app kunnen voor waarden specifieke acties word
 
 5. Selecteer **nieuwe para meter toevoegen**. Schakel in de vervolg keuzelijst die wordt weer gegeven de selectie vakjes naast **partitie sleutel** en **para meters voor de opgeslagen procedure**in en klik vervolgens op wille keurig ergens anders op het scherm. Er wordt een veld voor de partitie sleutel waarde en een veld voor de para meters voor de opgeslagen procedure toegevoegd.
 
-   ![actie voor logische app vullen](./media/iot-hub-how-to-order-connection-state-events/logicapp-stored-procedure.png)
+   ![Scherm afbeelding toont een item voor het uitvoeren van een opgeslagen procedure waarvoor nieuwe para meter toevoegen is geselecteerd.](./media/iot-hub-how-to-order-connection-state-events/logicapp-stored-procedure.png)
 
 6. Voer nu de partitie sleutel waarde en para meters in zoals hieronder wordt weer gegeven. Zorg ervoor dat u de accolades en dubbele aanhalings tekens plaatst, zoals wordt weer gegeven. Mogelijk moet u klikken op **dynamische inhoud toevoegen** om de geldige waarden te verkrijgen die u hier kunt gebruiken.
 
-   ![actie voor logische app vullen](./media/iot-hub-how-to-order-connection-state-events/logicapp-stored-procedure-2.png)
+   ![Scherm afbeelding toont een uitgevoerde, opgeslagen procedure-item met opgegeven para meters.](./media/iot-hub-how-to-order-connection-state-events/logicapp-stored-procedure-2.png)
 
 7. Zorg ervoor dat boven aan het deel venster waarin **For Each**wordt vermeld, onder **Selecteer een uitvoer van de vorige stappen**, of de **hoofd tekst** is geselecteerd.
 

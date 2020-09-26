@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 08/05/2020
 ms.author: cynthn
-ms.openlocfilehash: 16f2bc2cc22fa38ece78b4a07298235abd7d629d
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 16d0a4ea2353778b16803bd9b92a7f8af6e4ba88
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587086"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91325909"
 ---
 # <a name="powershell-how-to-use-packer-to-create-virtual-machine-images-in-azure"></a>Power shell: met behulp van de module Packer kunt u installatie kopieën voor virtuele machines maken in azure
 Elke virtuele machine (VM) in azure wordt gemaakt op basis van een installatie kopie die de Windows-distributie-en besturingssysteem versie definieert. Installatie kopieën kunnen vooraf geïnstalleerde toepassingen en configuraties bevatten. De Azure Marketplace biedt veel kopieën van de eerste en derde partij voor het meest voorkomende besturings systeem en de toepassingen omgevingen, of u kunt uw eigen aangepaste installatie kopieën maken die zijn afgestemd op uw behoeften. In dit artikel wordt beschreven hoe u met behulp van de open source tool [Packer](https://www.packer.io/) aangepaste installatie kopieën in azure kunt definiëren en bouwen.
@@ -103,7 +103,7 @@ Maak een bestand met de naam *windows.jsop* en plak de volgende inhoud. Voer uw 
         "task": "Image deployment"
     },
 
-    "location": "East US",
+    "build_resource_group_name": "myPackerGroup",
     "vm_size": "Standard_D2_v2"
   }],
   "provisioners": [{

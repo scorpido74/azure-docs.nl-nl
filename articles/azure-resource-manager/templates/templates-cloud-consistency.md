@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: 9355482c26cabb96fc6292bab5d542f36aec6a8c
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 72f9e332a4faa98a8a86ef7b6edbefe20357e33f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509753"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356882"
 ---
 # <a name="develop-arm-templates-for-cloud-consistency"></a>ARM-sjablonen ontwikkelen voor Cloud consistentie
 
@@ -655,7 +655,7 @@ Het is een uitdaging om alle gerelateerde instellingen, mogelijkheden en beperki
 
 De volgende afbeelding toont een typisch voor beeld van een ontwikkelings proces voor een team met behulp van een Integrated Development Environment (IDE). In verschillende fasen van de tijd lijn worden verschillende test typen uitgevoerd. Hier werken twee ontwikkel aars aan dezelfde oplossing, maar dit scenario is ook van toepassing op één ontwikkelaar of een groot team. Elke ontwikkelaar maakt normaal gesp roken een lokale kopie van een centrale opslag plaats, waardoor elk item kan werken aan de lokale kopie zonder dat dit van invloed is op de andere bestanden die met dezelfde bestands namen werken.
 
-![Werkstroom](./media/templates-cloud-consistency/workflow.png)
+![Diagram toont twee sets van eenheids testen en integratie tests parallel op lokale I D E, die in de C I/C D-ontwikkelings stroom samen voegen in eenheids tests, vervolgens op integratie tests, vervolgens implementatie testen en implementatie.](./media/templates-cloud-consistency/workflow.png)
 
 Houd rekening met de volgende tips voor testen en automatisering:
 

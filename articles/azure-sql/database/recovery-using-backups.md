@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab, danil
+ms.reviewer: mathoma, sstein, danil
 ms.date: 09/26/2019
-ms.openlocfilehash: 6b07b6c3e54f4aebcda6c2e84047ecd1a27b3d5b
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 069387b5c761d502d960d0284d156b4ee6431a55
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809462"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357009"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>Herstellen met behulp van automatische database back-ups-Azure SQL Database & door SQL beheerd exemplaar
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -91,13 +91,13 @@ U kunt een Data Base met één of een exemplaar herstellen naar een bepaald tijd
 
 Als u een Data Base wilt herstellen naar een bepaald tijdstip met behulp van de Azure Portal, opent u de pagina overzicht van de data base en selecteert u **herstellen** op de werk balk. Kies de back-upbron en selecteer het punt-in-time back-uppunt van waaruit een nieuwe Data Base wordt gemaakt.
 
-  ![Scherm opname van opties voor het herstellen van data bases](./media/recovery-using-backups/pitr-backup-sql-database-annotated.png)
+  ![Scherm opname van de opties voor het herstellen van data bases voor SQL Database.](./media/recovery-using-backups/pitr-backup-sql-database-annotated.png)
 
 #### <a name="sql-managed-instance"></a>SQL Managed Instance
 
 Als u een Data Base van een beheerd exemplaar wilt herstellen naar een bepaald tijdstip met behulp van de Azure Portal, opent u de pagina overzicht van de data base en selecteert u **herstellen** op de werk balk. Kies het punt-in-tijd back-uppunt van waaruit een nieuwe Data Base wordt gemaakt.
 
-  ![Scherm opname van opties voor het herstellen van data bases](./media/recovery-using-backups/pitr-backup-managed-instance-annotated.png)
+  ![Scherm opname van de opties voor het herstellen van data bases voor een SQL Managed instance.](./media/recovery-using-backups/pitr-backup-managed-instance-annotated.png)
 
 > [!TIP]
 > Zie [programmatisch herstel met behulp van geautomatiseerde back-ups uitvoeren](recovery-using-backups.md)om een Data Base programmatisch te herstellen met een back-up.
@@ -261,7 +261,7 @@ Met automatische back-ups worden uw data bases beschermd tegen gebruikers-en toe
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Overzicht van bedrijfs continuïteit](business-continuity-high-availability-disaster-recover-hadr-overview.md)
+- [Overzicht voor bedrijfscontinuïteit](business-continuity-high-availability-disaster-recover-hadr-overview.md)
 - [Automatische back-ups SQL Database](automated-backups-overview.md)
 - [Lange termijn retentie](long-term-retention-overview.md)
 - Zie [actieve geo-replicatie](active-geo-replication-overview.md) of [groepen voor automatische failover](auto-failover-group-overview.md)voor meer informatie over snellere herstel opties.

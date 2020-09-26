@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: b96f38d04fe3e3cb59fa75424ae588fe0e38f510
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: dc77b3c8bc357b63047d20afa9493bbaaff77113
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935444"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285312"
 ---
 # <a name="scale-up-and-down-an-azure-database-for-postgresql-hyperscale-server-group-using-cli-azdata-or-kubectl"></a>Een Azure Database for PostgreSQL grootschalige-Server groep omhoog en omlaag schalen met CLI (azdata of kubectl)
 
@@ -84,7 +84,7 @@ In een standaard configuratie wordt alleen het minimale geheugen ingesteld op 25
 
 De instellingen die u gaat instellen, moeten worden overwogen in de configuratie die u voor uw Kubernetes-cluster hebt ingesteld. Zorg ervoor dat u geen waarden instelt die niet aan uw Kubernetes-cluster kunnen voldoen. Dat kan leiden tot fouten of onvoorspelbaar gedrag. Als de status van uw server groep bijvoorbeeld gedurende een lange periode na het wijzigen van de configuratie wordt _bijgewerkt_ , is het mogelijk dat u de onderstaande para meters instelt op waarden die niet voldoen aan uw Kubernetes-cluster. Als dat het geval is, moet u de wijziging ongedaan maken of de _troubleshooting_section lezen.
 
-We gaan ervan uit dat u de definitie van de Server groep wilt opschalen naar:
+Als voor beeld gaan we ervan uit dat u de definitie van de Server groep wilt opschalen naar:
 
 - Min vCore = 2
 - Maximum aantal vCore = 4
@@ -94,6 +94,13 @@ We gaan ervan uit dat u de definitie van de Server groep wilt opschalen naar:
 U gebruikt een van de volgende methoden:
 
 ### <a name="cli-with-azdata"></a>CLI met azdata
+
+```console
+azdata arc postgres server edit -n <name of your server group> --cores-request <# core-request>  --cores-limit <# core-limit>  --memory-request <# memory-request>Mi  --memory-limit <# memory-limit>Mi
+```
+
+> [!CAUTION]
+> Hieronder ziet u een voor beeld waarin wordt uitgelegd hoe u de opdracht kunt gebruiken. Voordat u een bewerkings opdracht uitvoert, moet u ervoor zorgen dat u de para meters instelt op waarden die het Kubernetes-cluster kan voldoen.
 
 ```console
 azdata arc postgres server edit -n <name of your server group> --cores-request 2  --cores-limit 4  --memory-request 512Mi  --memory-limit 1024Mi
@@ -116,6 +123,10 @@ kubectl edit postgresql-12/<server group name> [-n <namespace name>]
 
 Hiermee gaat u naar de VI-editor waarin u de configuratie kunt door lopen en wijzigen. Gebruik het volgende om de gewenste instelling toe te wijzen aan de naam van het veld in de specificatie:
 
+> [!CAUTION]
+> Hieronder ziet u een voor beeld waarin wordt uitgelegd hoe u de configuratie kunt bewerken. Voordat u de configuratie bijwerkt, moet u ervoor zorgen dat u de para meters instelt op waarden die het Kubernetes-cluster kan voldoen.
+
+Bijvoorbeeld:
 - Min vCore = 2-> scheduling\default\resources\requests\cpu
 - Maximale vCore = 4-> scheduling\default\resources\limits\cpu
 - Min. geheugen = 512 MB-> scheduling\default\resources\requests\cpu

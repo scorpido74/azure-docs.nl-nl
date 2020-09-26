@@ -3,12 +3,12 @@ title: Azure Stack Vm's repliceren naar Azure met behulp van Azure Site Recovery
 description: Meer informatie over het instellen van herstel na nood gevallen voor Azure voor Azure Stack Vm's met de Azure Site Recovery-service.
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 61154e58582a3dcbab0f7ed9542d094be192ae74
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 5bc78dc5b01bb4790190268b303cb894de2b6f71
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564306"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333712"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Virtuele Azure-machines repliceren naar Azure
 
@@ -40,7 +40,7 @@ Wanneer u deze stappen hebt voltooid, kunt u een volledige failover uitvoeren na
 
 **Locatie** | **Onderdeel** |**Details**
 --- | --- | ---
-**Configuratie server** | Wordt uitgevoerd op een enkele Azure Stack VM. | In elk abonnement stelt u een VM van een configuratie server in. Deze VM voert de volgende Site Recovery onderdelen uit:<br/><br/> -Configuratie server: coördineert de communicatie tussen on-premises en Azure, en beheert de gegevens replicatie. -Proces server: fungeert als replicatie gateway. Het ontvangt replicatie gegevens, optimaliseert met caching, compressie en versleuteling. en verzendt deze naar Azure Storage.<br/><br/> Als de Vm's die u wilt repliceren de hieronder vermelde limieten overschrijden, kunt u een afzonderlijke zelfstandige proces server instellen. [Meer informatie](vmware-azure-set-up-process-server-scale.md).
+**Configuratieserver** | Wordt uitgevoerd op een enkele Azure Stack VM. | In elk abonnement stelt u een VM van een configuratie server in. Deze VM voert de volgende Site Recovery onderdelen uit:<br/><br/> -Configuratie server: coördineert de communicatie tussen on-premises en Azure, en beheert de gegevens replicatie. -Proces server: fungeert als replicatie gateway. Het ontvangt replicatie gegevens, optimaliseert met caching, compressie en versleuteling. en verzendt deze naar Azure Storage.<br/><br/> Als de Vm's die u wilt repliceren de hieronder vermelde limieten overschrijden, kunt u een afzonderlijke zelfstandige proces server instellen. [Meer informatie](vmware-azure-set-up-process-server-scale.md).
 **Mobility-service** | Geïnstalleerd op elke virtuele machine die u wilt repliceren. | In de stappen in dit artikel wordt een account voor bereid zodat de Mobility-service automatisch op een VM wordt geïnstalleerd wanneer replicatie is ingeschakeld. Als u de service niet automatisch wilt installeren, zijn er een aantal andere methoden die u kunt gebruiken. [Meer informatie](vmware-azure-install-mobility-service.md).
 **Azure** | In azure hebt u een Recovery Services kluis, een opslag account en een virtueel netwerk nodig. |  Gerepliceerde gegevens worden opgeslagen in het opslag account. Virtuele Azure-machines worden toegevoegd aan het Azure-netwerk wanneer er een failover wordt uitgevoerd.
 
@@ -164,13 +164,13 @@ Stel de configuratie server machine in, Registreer deze in de kluis en ontdek de
 1. Klik op **infra structuur**  >  **bron**voorbereiden.
 2. Klik in **Bron voorbereiden** op **+Configuratieserver**.
 
-    ![Bron instellen](./media/azure-stack-site-recovery/plus-config-srv.png)
+    ![Scherm afbeelding van het dialoog venster + Configuratie server met het bericht "Klik op + Configuratie server in de opdracht balk hierboven om een..." te installeren.](./media/azure-stack-site-recovery/plus-config-srv.png)
 
 3. Controleer bij **Server toevoegen** of **Configuratieserver** wordt weergegeven in **Servertype**.
 5. Download het installatiebestand voor de Geïntegreerde Setup van Site Recovery.
 6. Download de registratiesleutel voor de kluis. U hebt de registratie sleutel nodig wanneer u Unified Setup uitvoert. De sleutel blijft vijf dagen na het genereren ervan geldig.
 
-    ![Bron instellen](./media/azure-stack-site-recovery/set-source2.png)
+    ![Scherm afbeelding van het dialoog venster server toevoegen met het server type ingesteld op Configuratie server en de knop kluis registratie sleutel downloaden gemarkeerd.](./media/azure-stack-site-recovery/set-source2.png)
 
 
 ### <a name="run-azure-site-recovery-unified-setup"></a>Run Azure Site Recovery Unified Setup

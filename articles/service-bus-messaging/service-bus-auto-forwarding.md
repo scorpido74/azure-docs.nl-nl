@@ -4,12 +4,12 @@ description: In dit artikel wordt beschreven hoe u een Azure Service Bus wachtri
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: af1c8a8e043ae964c4917a58ea67275e8379817f
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 34b73967813abdcb811221aa4a3a4ac96dce0664
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021711"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333678"
 ---
 # <a name="chaining-service-bus-entities-with-autoforwarding"></a>Service Bus entiteiten koppelen met autoforwarding
 
@@ -29,11 +29,11 @@ De doel entiteit moet bestaan op het moment dat de bron entiteit wordt gemaakt. 
 
 U kunt automatisch door sturen gebruiken om een afzonderlijk onderwerp uit te schalen. Service Bus beperkt het [aantal abonnementen op een bepaald onderwerp](service-bus-quotas.md) tot 2.000. U kunt extra abonnementen bieden door onderwerpen van het tweede niveau te maken. Zelfs als u niet gebonden bent aan de Service Bus beperking van het aantal abonnementen, kan het toevoegen van een tweede niveau aan onderwerpen de algehele door Voer van uw onderwerp verbeteren.
 
-![Scenario voor automatisch door sturen][0]
+![Diagram van een scenario voor het door sturen van berichten met een bericht dat is verwerkt via een onderwerp met bestellingen dat kan worden ondergebracht in een van de drie onderwerpen op het tweede niveau.][0]
 
 U kunt ook autoforwarding gebruiken om de bericht afzenders van ontvangers te loskoppelen. Denk bijvoorbeeld aan een ERP-systeem dat bestaat uit drie modules: order verwerking, voorraad beheer en beheer van klant relaties. Elk van deze modules genereert berichten die in een bijbehorend onderwerp in de wachtrij worden geplaatst. Anne en Robert zijn verkoop medewerkers die geïnteresseerd zijn in alle berichten die betrekking hebben op hun klanten. Als u deze berichten wilt ontvangen, maakt Anne en Bob elk een persoonlijke wachtrij en een abonnement op elk van de ERP-onderwerpen waarmee automatisch alle berichten worden doorgestuurd naar de wachtrij.
 
-![Scenario voor automatisch door sturen][1]
+![Diagram van een scenario voor het door sturen van een bewerking waarbij drie verwerkings modules berichten verzenden via drie overeenkomende onderwerpen naar twee afzonderlijke wacht rijen.][1]
 
 Als Anne op vakantie gaat, wordt de persoonlijke wachtrij in plaats van het ERP-onderwerp opgevuld. In dit scenario, omdat een vertegenwoordiger geen berichten heeft ontvangen, hebben geen van de ERP-onderwerpen het quotum bereikt.
 

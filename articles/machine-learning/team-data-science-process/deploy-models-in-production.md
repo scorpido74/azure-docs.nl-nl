@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e3e2ef3340ca836f56176c21cf3d221f0bf172b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a44ead4f0e7c9fcd8dfd19f562b453e600ed6a31
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76722234"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333748"
 ---
 # <a name="deploy-models-to-production-to-play-an-active-role-in-making-business-decisions"></a>Modellen implementeren voor productie om een actieve rol te spelen bij het nemen van zakelijke beslissingen
 
@@ -34,10 +34,10 @@ Er zijn verschillende benaderingen en platformen om modellen in productie te bre
 >
 
 >[!NOTE]
->Zie [Deploy a Azure machine learning web service](../studio/deploy-a-machine-learning-web-service.md)(Engelstalig) voor implementatie met behulp van Azure machine learning Studio.
+>Zie [Deploy a Azure machine learning web service](../classic/deploy-a-machine-learning-web-service.md)(Engelstalig) voor implementatie met behulp van Azure machine learning Studio.
 >
 
-## <a name="ab-testing"></a>A/B testen
+## <a name="ab-testing"></a>A/B-tests
 
 Wanneer er meerdere modellen in productie zijn, kan [een/B-test](https://en.wikipedia.org/wiki/A/B_testing) worden gebruikt om de prestaties van het model te vergelijken. 
  

@@ -11,12 +11,12 @@ ms.reviewer: jmartens
 ms.date: 08/06/2020
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4, devx-track-python
-ms.openlocfilehash: 22f9c709ced1069caa39ba2145981efa353caadf
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 82b9db2f3575e50367ed154246f9fb69b74c60cf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90602630"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333769"
 ---
 # <a name="troubleshoot-docker-deployment-of-models-with-azure-kubernetes-service-and-azure-container-instances"></a>Problemen met docker-implementatie van modellen met Azure Kubernetes service en Azure Container Instances 
 
@@ -26,7 +26,7 @@ Meer informatie over het oplossen van problemen en het oplossen van algemene doc
 
 * Een **Azure-abonnement**. Probeer de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree).
 * De [Azure machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true).
-* De [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+* De [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
 * De [cli-extensie voor Azure machine learning](reference-azure-machine-learning-cli.md).
 * Om lokaal fouten op te sporen, moet u een werkende docker-installatie op uw lokale systeem hebben.
 
@@ -34,7 +34,7 @@ Meer informatie over het oplossen van problemen en het oplossen van algemene doc
 
 ## <a name="steps-for-docker-deployment-of-machine-learning-models"></a>Stappen voor docker-implementatie van machine learning modellen
 
-Bij het implementeren van een model in Azure Machine Learning gebruikt u de API [model. Deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) en een [omgevings](how-to-use-environments.md) object. De service maakt een basis docker-installatie kopie tijdens de implementatie fase en koppelt de vereiste modellen in één aanroep. De basis taken voor implementatie zijn:
+Bij het implementeren van een model in Azure Machine Learning gebruikt u de API [model. Deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) en een [omgevings](how-to-use-environments.md) object. De service maakt een basis docker-installatie kopie tijdens de implementatie fase en koppelt de vereiste modellen in één aanroep. De basis taken voor implementatie zijn:
 
 1. Registreer het model in het werkruimte model register.
 
@@ -50,7 +50,7 @@ Meer informatie over dit proces vindt u in de [ModelBeheer](concept-model-manage
 
 Als u een probleem ondervindt, moet u eerst de implementatie taak (eerder beschreven) opsplitsen in afzonderlijke stappen om het probleem te isoleren.
 
-Wanneer u [model. Deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) met een [omgevings](how-to-use-environments.md) object als invoer parameter gebruikt, kan uw code worden onderverdeeld in drie belang rijke stappen:
+Wanneer u [model. Deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) met een [omgevings](how-to-use-environments.md) object als invoer parameter gebruikt, kan uw code worden onderverdeeld in drie belang rijke stappen:
 
 1. Registreer het model. Hier volgt een voor beeld van code:
 
@@ -161,7 +161,7 @@ print(service.run(input_data=test_sample))
 > [!NOTE]
 > Het script wordt opnieuw geladen vanaf de locatie die is opgegeven door het `InferenceConfig` object dat door de service wordt gebruikt.
 
-Als u het model, Conda afhankelijkheden of implementatie configuratie wilt wijzigen, gebruikt u [Update ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#&preserve-view=trueupdate--args-). In het volgende voor beeld wordt het model bijgewerkt dat door de service wordt gebruikt:
+Als u het model, Conda afhankelijkheden of implementatie configuratie wilt wijzigen, gebruikt u [Update ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=trueupdate--args-). In het volgende voor beeld wordt het model bijgewerkt dat door de service wordt gebruikt:
 
 ```python
 service.update([different_model], inference_config, deployment_config)
@@ -169,7 +169,7 @@ service.update([different_model], inference_config, deployment_config)
 
 ### <a name="delete-the-service"></a>De service verwijderen
 
-Als u de service wilt verwijderen, gebruikt u [Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#&preserve-view=truedelete--).
+Als u de service wilt verwijderen, gebruikt u [Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truedelete--).
 
 ### <a name="inspect-the-docker-log"></a><a id="dockerlog"></a> Het docker-logboek controleren
 
@@ -199,7 +199,7 @@ Gebruik de informatie in de sectie [het docker-logbestand controleren](#dockerlo
 
 ## <a name="function-fails-get_model_path"></a>De functie is mislukt: get_model_path ()
 
-Vaak wordt de functie `init()` [model. get_model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=trueget-model-path-model-name--version-none---workspace-none-) in de functie van het Score script aangeroepen om een model bestand of een map met model bestanden in de container te vinden. Als het model bestand of de map niet kan worden gevonden, mislukt de functie. De eenvoudigste manier om deze fout op te lossen is door de onderstaande python-code uit te voeren in de container shell:
+Vaak wordt de functie `init()` [model. get_model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-model-path-model-name--version-none---workspace-none-) in de functie van het Score script aangeroepen om een model bestand of een map met model bestanden in de container te vinden. Als het model bestand of de map niet kan worden gevonden, mislukt de functie. De eenvoudigste manier om deze fout op te lossen is door de onderstaande python-code uit te voeren in de container shell:
 
 ```python
 from azureml.core.model import Model
