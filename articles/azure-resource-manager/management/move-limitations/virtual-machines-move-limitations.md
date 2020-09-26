@@ -2,13 +2,13 @@
 title: Virtuele Azure-machines verplaatsen naar een nieuw abonnement of een nieuwe resource groep
 description: Gebruik Azure Resource Manager om virtuele machines te verplaatsen naar een nieuwe resource groep of een nieuw abonnement.
 ms.topic: conceptual
-ms.date: 08/31/2020
-ms.openlocfilehash: 3878113f6874c40953bec87518a89519bdc6cb1a
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.date: 09/21/2020
+ms.openlocfilehash: 219a8b438d2715f6e97085a527b386e51759ec2c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230956"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317103"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>Richt lijnen voor het verplaatsen van virtuele machines
 
@@ -50,7 +50,7 @@ Als [voorlopig verwijderen](../../../backup/backup-azure-security-feature-cloud.
    1. Zoek de locatie van de virtuele machine.
    2. Een resource groep zoeken met het volgende naamgevings patroon: `AzureBackupRG_<VM location>_1` . De naam heeft bijvoorbeeld de indeling van *AzureBackupRG_westus2_1*.
    3. Selecteer in het Azure Portal de optie **verborgen typen weer geven**.
-   4. Zoek de resource met het type **micro soft. Compute/restorePointCollections** die het naamgevings patroon heeft `AzureBackup_<name of your VM that you're trying to move>_###########` .
+   4. Zoek de resource met het type **micro soft. Compute/restorePointCollections** die het naamgevings patroon heeft `AzureBackup_<VM name>_###########` .
    5. Deze resource verwijderen. Met deze bewerking worden alleen de directe herstel punten verwijderd, niet de gegevens waarvan een back-up is gemaakt in de kluis.
    6. Nadat de bewerking delete is voltooid, kunt u de virtuele machine verplaatsen.
 
@@ -63,16 +63,31 @@ Als [voorlopig verwijderen](../../../backup/backup-azure-security-feature-cloud.
 
 1. Een resource groep zoeken met het naamgevings patroon- `AzureBackupRG_<VM location>_1` . De naam kan bijvoorbeeld zijn `AzureBackupRG_westus2_1` .
 
-1. Gebruik de volgende opdracht om de herstel punt verzameling op te halen.
+1. Als u slechts één virtuele machine verplaatst, haalt u de herstel punt verzameling voor die virtuele machine op.
 
-   ```azurepowershell
-   $RestorePointCollection = Get-AzResource -ResourceGroupName AzureBackupRG_<VM location>_1 -ResourceType Microsoft.Compute/restorePointCollections
+   ```azurepowershell-interactive
+   $restorePointCollection = Get-AzResource -ResourceGroupName AzureBackupRG_<VM location>_1 -name AzureBackup_<VM name>* -ResourceType Microsoft.Compute/restorePointCollections
    ```
 
-1. Deze resource verwijderen. Met deze bewerking worden alleen de directe herstel punten verwijderd, niet de gegevens waarvan een back-up is gemaakt in de kluis.
+   Deze resource verwijderen. Met deze bewerking worden alleen de directe herstel punten verwijderd, niet de gegevens waarvan een back-up is gemaakt in de kluis.
 
-   ```azurepowershell
-   Remove-AzResource -ResourceId $RestorePointCollection.ResourceId -Force
+   ```azurepowershell-interactive
+   Remove-AzResource -ResourceId $restorePointCollection.ResourceId -Force
+   ```
+
+1. Als u alle virtuele machines met back-ups op deze locatie wilt verplaatsen, haalt u de herstel punt verzamelingen voor die virtuele machines op.
+
+   ```azurepowershell-interactive
+   $restorePointCollection = Get-AzResource -ResourceGroupName AzureBackupRG_<VM location>_1 -ResourceType Microsoft.Compute/restorePointCollections
+   ```
+
+   Verwijder elke resource. Met deze bewerking worden alleen de directe herstel punten verwijderd, niet de gegevens waarvan een back-up is gemaakt in de kluis.
+
+   ```azurepowershell-interactive
+   foreach ($restorePoint in $restorePointCollection)
+   {
+     Remove-AzResource -ResourceId $restorePoint.ResourceId -Force
+   }
    ```
 
 ### <a name="azure-cli"></a>Azure CLI
@@ -81,18 +96,28 @@ Als [voorlopig verwijderen](../../../backup/backup-azure-security-feature-cloud.
 
 1. Een resource groep zoeken met het naamgevings patroon- `AzureBackupRG_<VM location>_1` . De naam kan bijvoorbeeld zijn `AzureBackupRG_westus2_1` .
 
-1. Gebruik de volgende opdracht om de verzameling herstel punten op te halen.
+1. Als u slechts één virtuele machine verplaatst, haalt u de herstel punt verzameling voor die virtuele machine op.
 
-   ```azurecli
-   az resource list -g AzureBackupRG_<VM location>_1 --resource-type Microsoft.Compute/restorePointCollections
+   ```azurecli-interactive
+   RESTOREPOINTCOL=$(az resource list -g AzureBackupRG_<VM location>_1 --resource-type Microsoft.Compute/restorePointCollections --query "[?starts_with(name, 'AzureBackup_<VM name>')].id" --output tsv)
    ```
 
-1. De resource-ID voor de resource met het naamgevings patroon zoeken `AzureBackup_<VM name>_###########`
+   Deze resource verwijderen. Met deze bewerking worden alleen de directe herstel punten verwijderd, niet de gegevens waarvan een back-up is gemaakt in de kluis.
 
-1. Deze resource verwijderen. Met deze bewerking worden alleen de directe herstel punten verwijderd, niet de gegevens waarvan een back-up is gemaakt in de kluis.
+   ```azurecli-interactive
+   az resource delete --ids $RESTOREPOINTCOL
+   ```
 
-   ```azurecli
-   az resource delete --ids /subscriptions/<sub-id>/resourceGroups/<resource-group>/providers/Microsoft.Compute/restorePointCollections/<name>
+1. Als u alle virtuele machines met back-ups op deze locatie wilt verplaatsen, haalt u de herstel punt verzamelingen voor die virtuele machines op.
+
+   ```azurecli-interactive
+   RESTOREPOINTCOL=$(az resource list -g AzureBackupRG_<VM location>_1 --resource-type Microsoft.Compute/restorePointCollections)
+   ```
+
+   Verwijder elke resource. Met deze bewerking worden alleen de directe herstel punten verwijderd, niet de gegevens waarvan een back-up is gemaakt in de kluis.
+
+   ```azurecli-interactive
+   az resource delete --ids $RESTOREPOINTCOL
    ```
 
 ## <a name="next-steps"></a>Volgende stappen

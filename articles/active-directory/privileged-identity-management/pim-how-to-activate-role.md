@@ -14,12 +14,12 @@ ms.date: 07/06/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0306ae3193dc53f25a1e82eae1eb09c7d26ba9b6
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 2a2c3c112183e102f6c3c4a0bebb83376c7e8d85
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90055449"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317534"
 ---
 # <a name="activate-my-azure-ad-roles-in-pim"></a>Mijn Microsoft Azure AD-rollen activeren in PIM
 
@@ -40,11 +40,11 @@ Vanaf november 2019 wordt het gedeelte van de Azure AD-functies van Privileged I
 
 # <a name="new-version"></a>[Nieuwe versie](#tab/new)
 
-## <a name="activate-a-role"></a>Een rol activeren
+## <a name="activate-a-role-for-new-version"></a>Een rol activeren voor een nieuwe versie
 
 Wanneer u een Azure AD-rol wilt aannemen, kunt u activering aanvragen door **mijn rollen** te openen in privileged Identity Management.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 1. Open **Azure AD privileged Identity Management**. Zie voor meer informatie over het toevoegen van de Privileged Identity Management tegel aan uw dash board [beginnen met privileged Identity Management](pim-getting-started.md).
 
@@ -80,7 +80,7 @@ Wanneer u een Azure AD-rol wilt aannemen, kunt u activering aanvragen door **mij
 
     ![Goedkeurings melding in afwachting van activerings aanvraag](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate-notification.png)
 
-## <a name="view-the-status-of-your-requests"></a>De status van uw aanvragen weer geven
+## <a name="view-the-status-of-your-requests-for-new-version"></a>De status van uw aanvragen voor een nieuwe versie weer geven
 
 U kunt de status van de in behandeling zijnde aanvragen weer geven om te activeren.
 
@@ -92,7 +92,7 @@ U kunt de status van de in behandeling zijnde aanvragen weer geven om te activer
 
 1. Schuif naar rechts om de kolom Status van de **aanvraag** weer te geven.
 
-## <a name="cancel-a-pending-request"></a>Een aanvraag in behandeling annuleren
+## <a name="cancel-a-pending-request-for-new-version"></a>Een aanvraag in behandeling voor een nieuwe versie annuleren
 
 Als u geen activering van een rol vereist waarvoor goed keuring is vereist, kunt u een aanvraag in behandeling op elk gewenst moment annuleren.
 
@@ -106,7 +106,7 @@ Als u geen activering van een rol vereist waarvoor goed keuring is vereist, kunt
 
    ![Mijn aanvraag lijst met de actie annuleren gemarkeerd](./media/pim-resource-roles-activate-your-roles/resources-my-requests-cancel.png)
 
-## <a name="troubleshoot"></a>Problemen oplossen
+## <a name="troubleshoot-for-new-version"></a>Problemen met de nieuwe versie oplossen
 
 ### <a name="permissions-are-not-granted-after-activating-a-role"></a>Machtigingen worden niet toegekend na het activeren van een rol
 
@@ -122,7 +122,7 @@ Wanneer u een rol in Privileged Identity Management activeert, wordt de activeri
 
 Wanneer u een Azure AD-rol nodig hebt, kunt u activering aanvragen met behulp van de navigatie optie **mijn rollen** in privileged Identity Management.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 1. Open **Azure AD privileged Identity Management**. Zie voor meer informatie over het toevoegen van de Privileged Identity Management tegel aan uw dash board [beginnen met privileged Identity Management](pim-getting-started.md).
 

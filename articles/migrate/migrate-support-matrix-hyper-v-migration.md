@@ -3,12 +3,12 @@ title: Ondersteuning voor Hyper-V-migratie in Azure Migrate
 description: Meer informatie over ondersteuning voor Hyper-V-migratie met Azure Migrate.
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 4f3609560fa59c08c4d92f4faa36c7fbbffb95d7
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 0054b6983e7d11dd36a92f21cd1cb20314fb9408
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051148"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318225"
 ---
 # <a name="support-matrix-for-hyper-v-migration"></a>Ondersteunings matrix voor Hyper-V-migratie
 
@@ -38,12 +38,12 @@ U kunt Maxi maal 10 Vm's tegelijk selecteren voor replicatie. Als u meer compute
 | :----------------------------- | :------------------- |
 | **Besturingssysteem** | Alle [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) -en [Linux](../virtual-machines/linux/endorsed-distros.md) -besturings systemen die worden ondersteund door Azure. |
 **Windows Server 2003** | Voor virtuele machines met Windows Server 2003 moet u [Hyper-V-integratie Services installeren](prepare-windows-server-2003-migration.md) voordat u de migratie uitvoert. | 
-**Virtuele Linux-machines in azure** | Voor sommige Vm's zijn mogelijk wijzigingen vereist zodat ze kunnen worden uitgevoerd in Azure.<br/><br/> Voor Linux worden de wijzigingen automatisch door Azure Migrate voor deze besturings systemen aangebracht:<br/> -Red Hat Enterprise Linux 6.5 +, 7.0 +<br/> -CentOS 6.5 +, 7.0 +</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -Ubuntu 14.04 LTS, 16.04 LTS, 18.04 LTS<br/> -Debian 7, 8. Voor andere besturings systemen voert u de [vereiste wijzigingen](prepare-for-migration.md#linux-machines) hand matig uit.
+**Virtuele Linux-machines in azure** | Voor sommige Vm's zijn mogelijk wijzigingen vereist zodat ze kunnen worden uitgevoerd in Azure.<br/><br/> Voor Linux worden de wijzigingen automatisch door Azure Migrate voor deze besturings systemen aangebracht:<br/> -Red Hat Enterprise Linux 8,1, 8,0, 7,8, 7,7, 7,6, 7,5, 7,4, 7,0, 6. x<br/> -Cent OS 8,1, 8,0, 7,7, 7,6, 7,5, 7,4, 6. x</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -SUSE Linux Enterprise Server 15 SP1 <br/>-Ubuntu 19,04, 19,10, 14.04 LTS, 16.04 LTS, 18.04 LTS<br/> -Debian 7, 8 <br/> Oracle Linux 7,7, 7,7-CI<br/> Voor andere besturings systemen voert u de [vereiste wijzigingen](prepare-for-migration.md#verify-required-changes-before-migrating) hand matig uit.
 | **Vereiste wijzigingen voor Azure** | Voor sommige Vm's zijn mogelijk wijzigingen vereist zodat ze kunnen worden uitgevoerd in Azure. Pas aanpassingen hand matig aan voordat u de migratie uitvoert. De relevante artikelen bevatten instructies over hoe u dit doet. |
 | **Linux-opstart**                 | Als/boot zich op een toegewezen partitie bevindt, moet deze zich op de besturingssysteem schijf bevinden en niet over meerdere schijven worden verspreid.<br/> Als/boot deel uitmaakt van de hoofd partitie (/), moet de partitie '/' zich op de besturingssysteem schijf bevindt en niet over andere schijven beschikken. |
-| **UEFI-opstart**                  | Ondersteund. Zorg ervoor dat u een VM-grootte selecteert die wordt ondersteund door Azure Generation 2 VM  |
+| **UEFI-opstart**                  | Ondersteund. Vm's op basis van UEFI worden gemigreerd naar virtuele machines van Azure Generation 2.  |
 | **UEFI-beveiligd opstarten**         | Niet ondersteund voor migratie.|
-| **Schijfgrootte**                  | 2 TB voor de besturingssysteem schijf 4 TB voor gegevens schijven.|
+| **Schijfgrootte**                  | 2 TB voor de besturingssysteem schijf (BIOS-opstart), 4 TB voor de besturingssysteem schijf (UEFI-opstart), 4 TB voor de gegevens schijven.|
 | **Schijf nummer** | Maxi maal 16 schijven per VM.|
 | **Versleutelde schijven/volumes**    | Niet ondersteund voor migratie.|
 | **RDM/passthrough-schijven**      | Niet ondersteund voor migratie.|
@@ -51,8 +51,8 @@ U kunt Maxi maal 10 Vm's tegelijk selecteren voor replicatie. Als u meer compute
 | **NFS**                        | NFS-volumes die zijn gekoppeld als volumes op de Vm's, worden niet gerepliceerd.|
 | **SCSI**                      | Vm's met iSCSI-doelen worden niet ondersteund voor migratie.
 | **Doel schijf**                | U kunt alleen migreren naar Azure-Vm's met Managed disks. |
-| **IPv6** | Niet ondersteund.|
-| **NIC-koppeling** | Niet ondersteund.|
+| **IPv6** | Wordt niet ondersteund.|
+| **NIC-koppeling** | Wordt niet ondersteund.|
 | **Azure Site Recovery** | U kunt niet repliceren met Azure Migrate server migratie als de virtuele machine is ingeschakeld voor replicatie met Azure Site Recovery.|
 | **Poorten** | Uitgaande verbindingen op HTTPS-poort 443 voor het verzenden van VM-replicatie gegevens.|
 
@@ -93,9 +93,9 @@ Aantal besturingssysteemschijven | 1 | De controle is mislukt als dit niet wordt
 Aantal gegevensschijven | 16 of minder. | De controle is mislukt als dit niet wordt ondersteund.
 Grootte van de gegevens schijf | Maxi maal 4.095 GB | De controle is mislukt als dit niet wordt ondersteund.
 Netwerkadapters | Meerdere adapters worden ondersteund. |
-Gedeelde VHD | Niet ondersteund. | De controle is mislukt als dit niet wordt ondersteund.
-FC-schijf | Niet ondersteund. | De controle is mislukt als dit niet wordt ondersteund.
-BitLocker | Niet ondersteund. | BitLocker moet worden uitgeschakeld voordat u replicatie voor een machine inschakelt.
+Gedeelde VHD | Wordt niet ondersteund. | De controle is mislukt als dit niet wordt ondersteund.
+FC-schijf | Wordt niet ondersteund. | De controle is mislukt als dit niet wordt ondersteund.
+BitLocker | Wordt niet ondersteund. | BitLocker moet worden uitgeschakeld voordat u replicatie voor een machine inschakelt.
 VM-naam | Van 1 tot 63 tekens.<br/> Alleen letters, cijfers en afbreekstreepjes.<br/><br/> De naam van de computer moet beginnen en eindigen met een letter of cijfer. |  Werk de waarde in de computer eigenschappen in Site Recovery bij.
 Verbinding maken na migratie-Windows | Verbinding maken met virtuele Azure-machines na de migratie:<br/><br/> -Schakel voor de migratie RDP in op de on-premises VM. Zorg dat TCP- en UDP-regels zijn toegevoegd voor het profiel **Openbaar** en dat RDP is toegestaan in **Windows Firewall** > **Toegestane apps** voor alle profielen.<br/><br/> -Voor site-naar-site-VPN-toegang schakelt u RDP in en staat u RDP toe in **Windows Firewall**  ->  **toegestane apps en functies** voor **domein-en particuliere** netwerken. Controleer bovendien of het SAN-beleid van het besturings systeem is ingesteld op **OnlineAll**. [Meer informatie](prepare-for-migration.md). |
 Verbinding maken na migratie-Linux | Verbinding maken met virtuele Azure-machines na de migratie met SSH:<br/><br/> -Voordat de migratie op de on-premises computer, controleert u of de Secure shell-service is ingesteld op Start en of de firewall regels een SSH-verbinding toestaan.<br/><br/> -Na de migratie kunt u op de virtuele machine van Azure binnenkomende verbindingen met de SSH-poort toestaan voor de regels voor de netwerk beveiligings groep op de virtuele machine waarvoor een failover is uitgevoerd en voor het Azure-subnet waarmee deze is verbonden. Voeg bovendien een openbaar IP-adres voor de virtuele machine toe. |  

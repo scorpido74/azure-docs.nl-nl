@@ -4,17 +4,17 @@ description: Asset Management van Azure Security Bench Mark v2
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ba010c0dd3384af895c68d980fcae788c2d6d45a
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: 845c4f3194f35c68306e74734e5ecc6109d9c103
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059194"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318021"
 ---
-# <a name="security-control-asset-management"></a>Beveiligings beheer: beheer van middelen
+# <a name="security-control-v2-asset-management"></a>Beveiligings controle v2: beheer van middelen
 
 Asset Management bestrijkt de controles om de zicht baarheid van de beveiliging en het beheer van Azure-resources te garanderen. Dit omvat aanbevelingen voor machtigingen voor beveiligings personeel, beveiliging van de inventaris en het beheren van goed keuringen voor services en resources (inventaris, bijhouden en corrigeren).
 
@@ -22,7 +22,7 @@ Asset Management bestrijkt de controles om de zicht baarheid van de beveiliging 
 
 | Azure-ID | CIS-besturings elementen v 7.1-ID ('s) | NIST SP800-53 R4-ID ('s) |
 |--|--|--|--|
-| AM-1 | 1,1, 1,2, 1,3, 1,4, 9,1, 12,1 | CM-7, CM-8, CM-11, PM-5 |
+| AM-1 | 1,1, 1,2 | CM-8, PM-5 |
 
 Zorg ervoor dat aan beveiligings teams machtigingen voor beveiligings lezers worden verleend in uw Azure-Tenant en-abonnementen zodat ze kunnen controleren op beveiligings Risico's met behulp van Azure Security Center. 
 
@@ -38,7 +38,7 @@ Opmerking: er zijn mogelijk extra machtigingen vereist om inzicht te krijgen in 
 
 **Verantwoordelijkheid**: klant
 
-**Beveiligings belanghebbenden**van de klant:
+**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Infrastructuur- en eindpuntbeveiliging](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -48,7 +48,7 @@ Opmerking: er zijn mogelijk extra machtigingen vereist om inzicht te krijgen in 
 
 | Azure-ID | CIS-besturings elementen v 7.1-ID ('s) | NIST SP800-53 R4-ID ('s) |
 |--|--|--|--|
-| AM-2 | 1.5 | CM-8, PM-5 |
+| AM-2 | 1,1, 1,2, 1,4, 1,5, 9,1, 12,1 | CM-8, PM-5 |
 
 Zorg ervoor dat beveiligings teams toegang hebben tot een voortdurend bijgewerkte inventaris van assets in Azure. Beveiligings teams hebben deze inventaris vaak nodig om de potentiële bloot stelling van hun organisatie aan opkomende Risico's te evalueren, en als een invoer voor voortdurend verbeterde beveiligings verbeteringen. 
 
@@ -64,7 +64,7 @@ Organiseer op logische wijze activa op basis van de taxonomie van uw organisatie
 
 **Verantwoordelijkheid**: klant
 
-**Beveiligings belanghebbenden**van de klant:
+**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Infrastructuur- en eindpuntbeveiliging](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -86,7 +86,7 @@ Gebruik Azure Policy om te controleren welke Services gebruikers in uw omgeving 
 
 **Verantwoordelijkheid**: klant
 
-**Beveiligings belanghebbenden**van de klant:
+**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Beheer van beveiligings naleving](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
@@ -106,7 +106,7 @@ Verwijder Azure-resources wanneer ze niet meer nodig zijn.
 
 **Verantwoordelijkheid**: klant
 
-**Beveiligings belanghebbenden**van de klant:
+**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Infrastructuur- en eindpuntbeveiliging](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -126,7 +126,7 @@ Gebruik voorwaardelijke toegang van Azure AD om de interactie van gebruikers met
 
 **Verantwoordelijkheid**: klant
 
-**Beveiligings belanghebbenden**van de klant:
+**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Postuurbeheer](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
 
@@ -136,7 +136,7 @@ Gebruik voorwaardelijke toegang van Azure AD om de interactie van gebruikers met
 
 | Azure-ID | CIS-besturings elementen v 7.1-ID ('s) | NIST SP800-53 R4-ID ('s) |
 |--|--|--|--|
-| AM-6 | 2,6 | AC-3, CM-7, CM-8, CM-10, CM-11 |
+| AM-6 | 2,6, 2,7 | AC-3, CM-7, CM-8, CM-10, CM-11 |
 
 Zorg ervoor dat alleen geautoriseerde software wordt uitgevoerd en dat alle niet-geautoriseerde software wordt geblokkeerd voor het uitvoeren van Azure Virtual Machines.
 
@@ -156,7 +156,7 @@ U kunt ook een oplossing van derden gebruiken om niet-goedgekeurde software te d
 
 **Verantwoordelijkheid**: klant
 
-**Beveiligings belanghebbenden**van de klant:
+**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Infrastructuur- en eindpuntbeveiliging](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 

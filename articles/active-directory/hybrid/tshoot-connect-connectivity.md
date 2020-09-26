@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 897c0f3c51d6d9bea1f90a66ccf50aa51e22f118
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: c46d977b6ce4eaa62aefc6874ce2b855a4711670
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90088303"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317509"
 ---
 # <a name="troubleshoot-azure-ad-connectivity"></a>Problemen met Azure AD-connectiviteit oplossen
 In dit artikel wordt uitgelegd hoe connectiviteit tussen Azure AD Connect en Azure AD werkt en hoe u verbindings problemen kunt oplossen. Deze problemen worden hoogstwaarschijnlijk gezien in een omgeving met een proxy server.
@@ -85,7 +85,7 @@ Als u wilt controleren of de Azure AD Connect server daad werkelijk verbinding h
 
 PowerShell maakt gebruik van de configuratie in machine.config om contact op te nemen met de proxy. De instellingen in winhttp/netsh zouden niet van invloed mogen zijn op deze cmdlets.
 
-Als de proxy correct is geconfigureerd, krijgt u de status geslaagd: ![ proxy200](./media/tshoot-connect-connectivity/invokewebrequest200.png)
+Als de proxy correct is geconfigureerd, krijgt u de status geslaagd: ![ scherm opname waarin de status geslaagd wordt weer gegeven wanneer de proxy op de juiste wijze is geconfigureerd.](./media/tshoot-connect-connectivity/invokewebrequest200.png)
 
 Als u **geen verbinding kunt maken met de externe server**, probeert Power shell een directe aanroep uit te voeren zonder de proxy of DNS te gebruiken onjuist geconfigureerd. Controleer of het **machine.config** -bestand juist is geconfigureerd.
 ![unabletoconnect](./media/tshoot-connect-connectivity/invokewebrequestunable.png)

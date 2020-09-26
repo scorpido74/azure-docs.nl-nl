@@ -1,17 +1,22 @@
 ---
-title: Azure Event Hubs-uitzonde ringen
+title: Azure Event Hubs-uitzonde ringen (verouderd)
 description: Dit artikel bevat een lijst met uitzonde ringen en voorgestelde acties van Azure Event Hubs Messa ging.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: b3a7023dc44d7280284fec1eccf00a3dbe88b7ec
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 5a7ca32893a106cd59df548ae3118665acaea654
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90908384"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318480"
 ---
-# <a name="event-hubs-messaging-exceptions---net"></a>Uitzonde ringen voor Event Hubs berichten-.NET
+# <a name="event-hubs-messaging-exceptions---net-legacy"></a>Uitzonde ringen voor Event Hubs berichten-.NET (verouderd)
 In deze sectie vindt u de .NET-uitzonde ringen die worden gegenereerd door .NET Framework-Api's. 
+
+> [!IMPORTANT]
+> Enkele van de uitzonde ringen die in het artikel worden vermeld, zijn alleen van toepassing op verouderde Event Hubs .NET-bibliotheek. Bijvoorbeeld: micro soft. ServiceBus. * uitzonde ringen.
+> 
+> Voor informatie over de EventHubsException die wordt gegenereerd door de nieuwe .NET-bibliotheek, Zie [EventHubsException-.net](exceptions-dotnet.md)
 
 ## <a name="exception-categories"></a>Uitzonderings Categorieën
 

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 5b4e74d5db2d1454360370c05d75cdf826875143
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d56f9890396d0381d24676964dabc57e2020ec28
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88535931"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317426"
 ---
 # <a name="tutorial-configure-docusign-for-automatic-user-provisioning"></a>Zelf studie: DocuSign configureren voor automatische gebruikers inrichting
 
@@ -23,7 +23,7 @@ Het doel van deze zelf studie is om u te laten zien welke stappen u moet uitvoer
 
 ## <a name="prerequisites"></a>Vereisten
 
-In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan dat u de volgende items al hebt:
+In het scenario dat in deze zelfstudie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende items:
 
 *   Een Azure Active Directory-Tenant.
 *   Een DocuSign-abonnement met eenmalige aanmelding.
@@ -31,7 +31,7 @@ In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan 
 
 ## <a name="assigning-users-to-docusign"></a>Gebruikers toewijzen aan DocuSign
 
-Azure Active Directory gebruikt een concept met de naam ' toewijzingen ' om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers accounts, worden alleen de gebruikers en groepen die zijn toegewezen aan een toepassing in azure AD gesynchroniseerd.
+Azure Active Directory gebruikt een concept met de naam 'toewijzingen' om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers accounts, worden alleen de gebruikers en groepen die zijn toegewezen aan een toepassing in azure AD gesynchroniseerd.
 
 Voordat u de inrichtings service configureert en inschakelt, moet u bepalen welke gebruikers en/of groepen in azure AD de gebruikers vertegenwoordigen die toegang nodig hebben tot uw DocuSign-app. Nadat u hebt besloten, kunt u deze gebruikers toewijzen aan uw DocuSign-app door de volgende instructies te volgen:
 
@@ -63,9 +63,9 @@ Het doel van deze sectie is het maken van een overzicht van de gebruikers inrich
 
 1. Selecteer uw exemplaar van DocuSign en selecteer vervolgens het tabblad **inrichten** .
 
-1. Stel de **inrichtings modus** in op **automatisch**. 
+1. Stel de **Inrichtingsmodus** in op **Automatisch**. 
 
-    ![inrichtings](./media/docusign-provisioning-tutorial/provisioning.png)
+    ![Scherm afbeelding van het tabblad inrichten voor DocuSign in Azure Portal. De inrichtings modus is ingesteld op automatisch en beheerder gebruikers naam, wacht woord en test verbinding zijn gemarkeerd.](./media/docusign-provisioning-tutorial/provisioning.png)
 
 1. Geef onder de sectie **beheerders referenties** de volgende configuratie-instellingen op:
    
@@ -92,10 +92,10 @@ Het doel van deze sectie is het maken van een overzicht van de gebruikers inrich
 
 Hiermee start u de initiële synchronisatie van gebruikers die zijn toegewezen aan DocuSign in de sectie gebruikers en groepen. Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan volgende synchronisaties, die ongeveer elke 40 minuten plaatsvinden, zolang de service wordt uitgevoerd. U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen te volgen voor het inrichtings logboek, waarin alle acties worden beschreven die worden uitgevoerd door de inrichtings service in uw DocuSign-app.
 
-Zie [rapportage over het automatisch inrichten van gebruikers accounts](../app-provisioning/check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
+Zie [Rapportage over automatische inrichting van gebruikersaccounts](../app-provisioning/check-status-user-account-provisioning.md) voor informatie over het lezen van de Azure AD-inrichtingslogboeken.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
-* [Inrichten van gebruikers accounts voor zakelijke apps beheren](tutorial-list.md)
+* [Gebruikersaccountinrichting voor zakelijke apps beheren](tutorial-list.md)
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 * [Eenmalige aanmelding configureren](docusign-tutorial.md)

@@ -2,13 +2,13 @@
 title: Overzicht van Azure Monitor voor containers | Microsoft Docs
 description: In dit artikel worden Azure Monitor beschreven voor containers die de AKS-container Insights-oplossing bewaakt en de waarde die wordt geleverd door de status van uw AKS-clusters en Container Instances in azure te controleren.
 ms.topic: conceptual
-ms.date: 05/21/2020
-ms.openlocfilehash: 85adae1b79609f13be6bb73eb4e57000beda6d77
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 09/08/2020
+ms.openlocfilehash: 215427adc38ebd554ca7ac650ec65a05f5a781e8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320269"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317154"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>Overzicht van Azure Monitor voor containers
 
@@ -17,11 +17,11 @@ Azure Monitor voor containers is een functie die is ontworpen voor het bewaken v
 - Managed Kubernetes-clusters die worden gehost op de [Azure Kubernetes-service (AKS)](../../aks/intro-kubernetes.md)
 - Zelf beheerde Kubernetes-clusters die worden gehost op Azure met behulp van de [AKS-engine](https://github.com/Azure/aks-engine)
 - [Azure Container Instances](../../container-instances/container-instances-overview.md)
-- Zelf beheerde Kubernetes-clusters die worden gehost op [Azure stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1910) of on-premises
+- Zelf beheerde Kubernetes-clusters die worden gehost op [Azure stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1910&preserve-view=true) of on-premises
 - [Azure Red Hat OpenShift](../../openshift/intro-openshift.md)
 - [Kubernetes voor Azure-Arc ingeschakeld](../../azure-arc/kubernetes/overview.md) (preview-versie)
 
-Azure Monitor voor containers ondersteunt clusters met het besturings systeem Linux en Windows Server 2019.
+Azure Monitor voor containers ondersteunt clusters met het besturings systeem Linux en Windows Server 2019. De container runtimes die worden ondersteund, zijn docker, Moby en een CRI compatibele runtime, zoals CRI-O en Containered.
 
 Het bewaken van uw containers is van cruciaal belang, vooral wanneer u een productie cluster op schaal uitvoert met meerdere toepassingen.
 
@@ -40,7 +40,7 @@ Azure Monitor voor containers biedt een uitgebreide bewakings ervaring met behul
 * Meer informatie over het gedrag van het cluster in gemiddelde en zwaarste belasting. Deze kennis kan u helpen de capaciteits behoeften te identificeren en de maximale belasting te bepalen die het cluster kan vastlopen.
 * Configureer waarschuwingen om u proactief te informeren of op te nemen wanneer het CPU-en geheugen gebruik op knoop punten of containers de drempel waarden overschrijdt, of wanneer er een status wijziging in het cluster optreedt bij het samen vouwen van de infra structuur of de knooppunt status.
 * Integreer met [Prometheus](https://prometheus.io/docs/introduction/overview/) om de metrische gegevens van de toepassing en werk belasting weer te geven die worden verzameld van knoop punten en Kubernetes met behulp van [query's](container-insights-log-search.md) om aangepaste waarschuwingen, Dash boards en gedetailleerde gedetailleerde analyses te maken.
-* Bewaak de werkbelastingen van containers [die zijn geïmplementeerd](https://github.com/Azure/aks-engine) op de AKS-engine on-premises en AKS- [engine op Azure stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908).
+* Bewaak de werkbelastingen van containers [die zijn geïmplementeerd](https://github.com/Azure/aks-engine) op de AKS-engine on-premises en AKS- [engine op Azure stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908&preserve-view=true).
 * Bewaak de werk belasting van containers [die zijn geïmplementeerd in azure Red Hat open Shift](../../openshift/intro-openshift.md).
 
     >[!NOTE]

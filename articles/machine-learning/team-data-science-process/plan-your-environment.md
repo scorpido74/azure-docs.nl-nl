@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 29190cee748db17caee32497de5512bee736bae0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 603628e24d7ccdffeafea392ab56aa7e47781a37
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047719"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296481"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>Scenario's en plannen identificeren voor geavanceerde analytische gegevensverwerking
 
@@ -66,7 +66,7 @@ Waar moeten uw gegevens worden verwerkt of gemodelleerd?
 Zie voor procedures en bronnen voor het opnemen of laden van gegevens in een groot aantal verschillende opslag-en verwerkings omgevingen:
 
 * [Gegevens voor analysedoeleinden in opslagomgevingen laden](ingest-data.md)
-* [Importeer uw trainings gegevens in Azure Machine Learning Studio (klassiek) van verschillende gegevens bronnen](../studio/import-data.md)
+* [Importeer uw trainings gegevens in Azure Machine Learning Studio (klassiek) van verschillende gegevens bronnen](../classic/import-data.md)
 
 ### <a name="does-the-data-need-to-be-moved-on-a-regular-schedule-or-modified-during-migration"></a>Moeten de gegevens worden verplaatst volgens een regel matig schema of worden gewijzigd tijdens de migratie?
 
@@ -108,7 +108,7 @@ Deze vragen zijn essentieel om uw opslag-en verwerkings omgevingen te plannen. Z
 
 Maak de Azure Machine Learning Studio-omgeving (klassiek) bijvoorbeeld:
 
-* Zie de sectie [gegevens indelingen en gegevens typen](../studio/import-data.md#supported-data-formats-and-data-types) die worden ondersteund voor een lijst met de gegevens indelingen en typen die door Azure machine learning Studio worden ondersteund.
+* Zie de sectie [gegevens indelingen en gegevens typen](../classic/import-data.md#supported-data-formats-and-data-types) die worden ondersteund voor een lijst met de gegevens indelingen en typen die door Azure machine learning Studio worden ondersteund.
 * Zie [Azure-abonnement en service limieten, quota's en beperkingen](../../azure-resource-manager/management/azure-subscription-service-limits.md)voor meer informatie over de beperkingen van andere Azure-Services die worden gebruikt in het analyse proces.
 
 ## <a name="data-quality-questions-exploration-and-pre-processing"></a>Vragen over gegevens kwaliteit: verkennen en vooraf verwerkingen
@@ -146,7 +146,7 @@ Er zijn veel opties voor talen, ontwikkel omgevingen en hulpprogram ma's. Houd r
 ### <a name="what-tools-should-you-use-for-data-analysis"></a>Welke hulpprogram ma's moet u voor gegevens analyse gebruiken?
 
 * [Microsoft Azure PowerShell](/powershell/azure/) : een script taal die wordt gebruikt voor het beheren van uw Azure-resources in een script taal
-* [Azure Machine Learning Studio](../studio/what-is-ml-studio.md)
+* [Azure Machine Learning Studio](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 * [Revolutie Analytics](https://www.microsoft.com/sql-server/machinelearningserver)
 * [RStudio](https://www.rstudio.com)
 * [Python Tools for Visual Studio](https://aka.ms/ptvsdocs)

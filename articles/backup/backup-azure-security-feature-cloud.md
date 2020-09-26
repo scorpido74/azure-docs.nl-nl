@@ -3,18 +3,18 @@ title: Zacht verwijderen voor Azure Backup
 description: Meer informatie over het gebruik van beveiligings functies in Azure Backup om back-ups veiliger te maken.
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 76928b98bdb21ffa79fce8435bfe4dda92e0c72d
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: d7998c7f9def6ce9965ded3b6ec700f7975891eb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179960"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271542"
 ---
 # <a name="soft-delete-for-azure-backup"></a>Zacht verwijderen voor Azure Backup
 
 Problemen met betrekking tot beveiligings problemen, zoals malware, Ransomware en indringing, worden verhoogd. Deze beveiligings problemen kunnen kostbaar zijn, zowel voor geld als voor gegevens. Azure Backup biedt nu beveiligings functies die u helpen bij het beveiligen van back-upgegevens, zelfs na het verwijderen.
 
-Een dergelijke functie is zacht verwijderen. Met zacht verwijderen, zelfs als een schadelijke actor een back-up verwijdert (of als er per ongeluk back-upgegevens worden verwijderd), worden de back-upgegevens 14 extra dagen bewaard, zodat het back-upitem zonder gegevens verlies kan worden hersteld. De extra 14 dagen voor het bewaren van back-upgegevens in de status ' voorlopig verwijderen ' zijn geen kosten voor u.
+Een dergelijke functie is zacht verwijderen. Met zacht verwijderen, zelfs als een schadelijke actor een back-up verwijdert (of als er per ongeluk back-upgegevens worden verwijderd), worden de back-upgegevens 14 extra dagen bewaard, zodat het back-upitem zonder gegevens verlies kan worden hersteld. De extra 14 dagen voor het bewaren van back-upgegevens in de status ' voorlopig verwijderen ' maken geen kosten voor u.
 
 Tijdelijke verwijderings beveiliging is beschikbaar voor deze services:
 
@@ -29,7 +29,7 @@ In dit stroom diagram worden de verschillende stappen en statussen van een back-
 
 Voorlopig verwijderen is standaard ingeschakeld op nieuwe kluizen om back-upgegevens te beschermen tegen onbedoelde of schadelijke verwijderingen.  Het uitschakelen van deze functie wordt niet aanbevolen. De enige omstandigheid waarbij het uitschakelen van de functie voor het verwijderen van uw beveiligde items naar een nieuwe kluis moet worden aangeraden, is dat u de 14 dagen die vereist zijn voor het verwijderen en opnieuw beveiligen van een test omgeving, niet kunt wachten. Alleen de eigenaar van de kluis kan deze functie uitschakelen. Als u deze functie uitschakelt, worden alle toekomstige verwijderingen van beveiligde items onmiddellijk verwijderd, zonder dat u de mogelijkheid hebt om te herstellen. Back-upgegevens die aanwezig zijn in de status zacht verwijderd voordat u deze functie uitschakelt, blijven voor de periode van 14 dagen de status voorlopig verwijderd. Als u deze onmiddellijk permanent wilt verwijderen, moet u het verwijderen ongedaan maken en opnieuw verwijderen om het permanent te laten worden verwijderd.
 
- Het is belang rijk om te onthouden dat zodra het uitvoeren van een soft-verwijdering is uitgeschakeld, de functie is uitgeschakeld voor alle typen werk belastingen, waaronder SQL Server en SAP HANA workloads. Als bijvoorbeeld de preview van [SQL Server/SAP Hana](./soft-delete-sql-saphana-in-azure-vm.md#steps-to-enroll-in-preview) is ingeschakeld voor een abonnement, is het niet mogelijk om alleen de optie voorlopig verwijderen uit te scha KELEN voor SQL Server of SAP Hana db's terwijl de virtuele machines in dezelfde kluis ingeschakeld blijven. U kunt afzonderlijke kluizen maken voor gedetailleerde controle.
+Het is belang rijk om te onthouden dat de functie eenmaal is uitgeschakeld wanneer de optie voor het uitvoeren van een voorlopig verwijderen is ingeschakeld. Het is bijvoorbeeld niet mogelijk om alleen de optie voorlopig verwijderen uit te scha kelen voor SQL Server of SAP HANA Db's terwijl de virtuele machines in dezelfde kluis ingeschakeld blijven. U kunt afzonderlijke kluizen maken voor gedetailleerde controle.
 
 ### <a name="disabling-soft-delete-using-azure-portal"></a>Zacht verwijderen uitschakelen met Azure Portal
 

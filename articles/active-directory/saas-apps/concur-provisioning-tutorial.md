@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 678b7571d54c8938c163801a584ad813c6e5963f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9e7ac5afb176e58ce47f918ddcbab742ecb90baf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551163"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317443"
 ---
 # <a name="tutorial-configure-concur-for-automatic-user-provisioning"></a>Zelf studie: concur configureren voor automatische gebruikers inrichting
 
@@ -23,7 +23,7 @@ Het doel van deze zelf studie is om u te laten zien welke stappen u moet uitvoer
 
 ## <a name="prerequisites"></a>Vereisten
 
-In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan dat u de volgende items al hebt:
+In het scenario dat in deze zelfstudie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende items:
 
 *   Een Azure Active Directory-Tenant.
 *   Een concur-abonnement met eenmalige aanmelding.
@@ -31,7 +31,7 @@ In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan 
 
 ## <a name="assigning-users-to-concur"></a>Gebruikers toewijzen aan concur
 
-Azure Active Directory gebruikt een concept met de naam ' toewijzingen ' om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers accounts worden alleen de gebruikers en groepen die zijn toegewezen aan een toepassing in azure AD gesynchroniseerd.
+Azure Active Directory gebruikt een concept met de naam 'toewijzingen' om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers accounts worden alleen de gebruikers en groepen die zijn toegewezen aan een toepassing in azure AD gesynchroniseerd.
 
 Voordat u de inrichtings service configureert en inschakelt, moet u bepalen welke gebruikers en/of groepen in azure AD de gebruikers vertegenwoordigen die toegang nodig hebben tot uw concur-app. Nadat u hebt besloten, kunt u deze gebruikers toewijzen aan uw concur-app door de volgende instructies te volgen:
 
@@ -94,9 +94,9 @@ Om de volgende redenen mag deze actie niet worden uitgevoerd met het profiel dat
 
 8. Selecteer uw exemplaar van concur en selecteer vervolgens het tabblad **inrichten** .
 
-9. Stel de **inrichtings modus** in op **automatisch**. 
+9. Stel de **Inrichtingsmodus** in op **Automatisch**. 
  
-    ![inrichtings](./media/concur-provisioning-tutorial/provisioning.png)
+    ![Scherm afbeelding van het tabblad inrichten voor concur in Azure Portal. De inrichtings modus is ingesteld op automatisch en de knop verbinding testen is gemarkeerd.](./media/concur-provisioning-tutorial/provisioning.png)
 
 10. Voer de **gebruikers naam** en het **wacht woord** van uw concur-beheerder in het gedeelte **beheerders referenties** in.
 
@@ -116,9 +116,9 @@ Om de volgende redenen mag deze actie niet worden uitgevoerd met het profiel dat
 
 U kunt nu een test account maken. Wacht Maxi maal 20 minuten om te controleren of het account is gesynchroniseerd met concur.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
-* [Inrichten van gebruikers accounts voor zakelijke apps beheren](tutorial-list.md)
+* [Gebruikersaccountinrichting voor zakelijke apps beheren](tutorial-list.md)
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 * [Eenmalige aanmelding configureren](concur-tutorial.md)
 

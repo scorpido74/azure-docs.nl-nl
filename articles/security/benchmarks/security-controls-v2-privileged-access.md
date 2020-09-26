@@ -4,27 +4,28 @@ description: Uitgebreide toegang voor Azure Security Bench Mark v2
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 8727cbd07fad1960f4bdb33742729b6bda3a369e
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: b5315b4d2ec8b757f7fa1075a438419679f5e798
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059234"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317970"
 ---
-# <a name="security-control-privileged-access"></a>Beveiligings beheer: Privileged Access
+# <a name="security-control-v2-privileged-access"></a>Beveiligings controle v2: Privileged Access
 
 Uitgebreide toegang heeft betrekking op besturings elementen voor het beveiligen van bevoegde toegang tot uw Azure-Tenant en-resources. Dit omvat een reeks besturings elementen voor het beveiligen van uw beheer model, beheerders accounts en geprivilegieerde toegangs werk stations tegen opzettelijke en onbedoelde Risico's.
 
-## <a name="pa-1-protect-and-limit-the-global-administrators"></a>PA-1: de algemene beheerders beveiligen en beperken
+## <a name="pa-1-protect-and-limit-highly-privileged-users"></a>PA-1: gebruikers met hoge bevoegdheden beveiligen en beperken
 
 | Azure-ID | CIS-besturings elementen v 7.1-ID ('s) | NIST SP800-53 R4-ID ('s) |
 |--|--|--|--|
 | PA-1 | 4,3, 4,8 | AC-2 |
 
-Gebruikers die zijn toegewezen aan de rol van globale beheerder kunnen elke beheer instelling in uw Azure AD-organisatie lezen en wijzigen. Beperk het aantal accounts van uw globale Azure-beheerder tot niet meer dan twee voor elk abonnement. De meest essentiële ingebouwde rollen in azure AD zijn globale beheerder en de beheerder van de bevoegde rol als gebruikers die aan deze twee rollen zijn toegewezen, kunnen beheerders rollen overdragen:
+Beperk het aantal gebruikers accounts met zeer privileged en beveilig deze accounts op een hoger niveau. De meest essentiële ingebouwde rollen in azure AD zijn globale beheerder en de beheerder van de geprivilegieerde rol, omdat gebruikers die aan deze twee rollen zijn toegewezen, beheerders rollen kunnen delegeren. Met deze bevoegdheden kunnen gebruikers direct of indirect elke resource in uw Azure-omgeving lezen en wijzigen:
+
 - Beheerder van globale beheerder/bedrijf: gebruikers met deze rol hebben toegang tot alle beheer functies in azure AD, evenals services die gebruikmaken van Azure AD-identiteiten.
 
 - Beheerder van geprivilegieerde rol: gebruikers met deze rol kunnen roltoewijzingen beheren in azure AD, en in Azure AD Privileged Identity Management (PIM). Daarnaast kunt u met deze rol alle aspecten van PIM en administratieve eenheden beheren.
@@ -33,182 +34,187 @@ Opmerking: u kunt andere essentiële rollen hebben die moeten worden onderhevig 
 
 U kunt met behulp van Azure AD Privileged Identity Management (PIM) just-in-time-toegang verlenen tot Azure-resources en Azure AD. JIT verleent tijdelijke machtigingen voor het uitvoeren van geprivilegieerde taken alleen wanneer gebruikers deze nodig hebben. PIM kan ook beveiligings waarschuwingen genereren wanneer er verdachte of onveilige activiteiten in uw Azure AD-organisatie zijn.
 
-Opmerking: sommige Azure-Services zoals Azure SQL ondersteunen lokale gebruikers verificatie naast de Azure AD-verificatie. Dit type lokale gebruikers verificatie wordt niet beheerd via Azure AD. U moet deze gebruikers afzonderlijk beheren.
-
 - [Machtigingen voor beheerdersrol in azure AD](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)
-
-- [Aangepaste Azure-rollen](../../role-based-access-control/custom-roles.md)
 
 - [Beveiligings waarschuwingen van Azure Privileged Identity Management gebruiken](../../active-directory/privileged-identity-management/pim-how-to-configure-security-alerts.md)
 
-- [Een directory-rol verkrijgen in azure AD met Power shell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
-
-- [Azure Security Center gebruiken om identiteit en toegang te bewaken](../../security-center/security-center-identity-access.md)
+- [Bevoegde toegang beveiligen voor hybride implementaties en cloudimplementaties in Azure AD](../../active-directory/users-groups-roles/directory-admin-roles-secure.md)
 
 **Verantwoordelijkheid**: klant
 
-**Beveiligings belanghebbenden**van de klant:
+**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Identiteit en sleutels](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
+- [Identiteits-en sleutel beheer](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
-- [Toepassingsbeveiliging en DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
+- [Beveiligingsarchitectuur](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
-## <a name="pa-2-review-and-reconcile-user-access-regularly"></a>PA-2: gebruikers toegang regel matig controleren en afstemmen
+- [Beheer van beveiligings naleving](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
+
+- [Beveiligings bewerkingen](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+
+## <a name="pa-2-restrict-administrative-access-to-business-critical-systems"></a>PA-2: beheer toegang beperken tot essentiële bedrijfs systemen
 
 | Azure-ID | CIS-besturings elementen v 7.1-ID ('s) | NIST SP800-53 R4-ID ('s) |
 |--|--|--|--|
-| PA-2 | 4,1, 16,9, 16,10 | AC-2 |
+| PA-2 | 13,2, 2,10 | AC-2, SC-3, SC-7 |
 
-Gebruikers accounts en toegangs rechten regel matig controleren om ervoor te zorgen dat de gebruikers accounts en hun toegang geldig zijn. 
+Isoleer de toegang tot bedrijfskritische systemen door te beperken welke accounts bevoegde toegang krijgen tot de abonnementen en beheer groepen waarin ze zich bevinden. Zorg ervoor dat u ook de toegang tot de beheer-, identiteits-en beveiligings systemen beperkt die beheerders toegang hebben tot uw bedrijfs kritieke assets, zoals Active Directory-domein controllers (Dc's), beveiligings hulpprogramma's en Systeembeheer Programma's met agents die zijn geïnstalleerd op essentiële bedrijfs systemen. Aanvallers die deze beheer-en beveiligings systemen misbruiken, kunnen ze onmiddellijk weaponize om bedrijfs kritieke activa te beschadigen. 
 
-Gebruik Azure AD Identity and Access revisies om groepslid maatschappen, toegang tot bedrijfs toepassingen en roltoewijzingen te beheren. Azure AD Reporting kan logboeken bieden waarmee u verlopen accounts kunt detecteren. U kunt ook Azure AD Privileged Identity Management gebruiken om een werk stroom voor het lezen van rapporten te maken om het controle proces te vergemakkelijken.
+Alle typen besturings elementen voor toegang moeten worden afgestemd op uw bedrijfs segmentatie strategie om een consistent toegangs beheer te garanderen. 
 
-Voor gebruikers met beheerders rechten op de Azure-service en het werkbelasting niveau moet een frequentere gebruikers-en toegangs beoordeling worden uitgevoerd. U kunt ook Azure Privileged Identity Management-beveiligings waarschuwingen gebruiken om te detecteren wanneer er beheerders accounts worden gemaakt en om beheerders accounts te vinden die verouderd of onjuist zijn geconfigureerd. 
+Zorg ervoor dat u afzonderlijke bevoorrechte accounts toewijst die verschillend zijn van de standaard gebruikers accounts die worden gebruikt voor e-mail, surfen en productiviteits taken.
 
-Opmerking: sommige Azure-Services, zoals Azure SQL, ondersteunen lokale gebruikers die niet worden beheerd via Azure AD. U moet deze gebruikers afzonderlijk beheren.
+- [Azure-onderdelen en referentie model](/security/compass/microsoft-security-compass-introduction#azure-components-and-reference-model-2151)
 
-- [Een directory-rol verkrijgen in azure AD met Power shell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [Toegang tot beheer groepen](../../governance/management-groups/overview.md#management-group-access)
 
-- [Leden van een directory-rol in azure AD ophalen met Power shell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [Beheerders van Azure-abonnementen](../../cost-management-billing/manage/add-change-subscription-administrator.md)
 
-- [Azure Security Center gebruiken om identiteit en toegang te bewaken](../../security-center/security-center-identity-access.md)
+**Verantwoordelijkheid**: klant
 
-- [Beveiligings waarschuwingen van Azure Privileged Identity Management gebruiken](../../active-directory/privileged-identity-management/pim-how-to-configure-security-alerts.md)
+**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Beheer verantwoordelijkheden in teams uitlijnen](/azure/cloud-adoption-framework/organize/raci-alignment) 
+- [Identiteits-en sleutel beheer](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
-- [Meer informatie over Azure AD-rapportage](/azure/active-directory/reports-monitoring/)
+- [Beheer van beveiligings naleving](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
+
+- [Beveiligingsarchitectuur](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
+
+## <a name="pa-3-review-and-reconcile-user-access-regularly"></a>PA-3: gebruikers toegang regel matig controleren en afstemmen
+
+| Azure-ID | CIS-besturings elementen v 7.1-ID ('s) | NIST SP800-53 R4-ID ('s) |
+|--|--|--|--|
+| PA-3 | 4,1, 16,9, 16,10 | AC-2 |
+
+Controleer gebruikers accounts en toegangs toewijzingen regel matig om te controleren of de accounts en hun toegangs niveau geldig zijn. U kunt Azure AD-toegangs beoordelingen gebruiken om groepslid maatschappen, de toegang tot bedrijfs toepassingen en roltoewijzingen te controleren. Azure AD Reporting kan logboeken bieden waarmee u verlopen accounts kunt detecteren. U kunt Azure AD Privileged Identity Management ook gebruiken om een werk stroom voor een toegangs beoordeling te maken waarmee het controle proces wordt vergemakkelijkt.
+Daarnaast kan Azure Privileged Identity Management worden geconfigureerd om te waarschuwen wanneer er een uitzonderlijk groot aantal beheerders accounts worden gemaakt en om beheerders accounts te identificeren die verouderd of onjuist zijn geconfigureerd. 
+
+Opmerking: sommige Azure-Services ondersteunen lokale gebruikers en rollen die niet worden beheerd via Azure AD. U moet deze gebruikers afzonderlijk beheren.
+
+- [Een toegangs beoordeling van Azure-resource rollen maken in Privileged Identity Management (PIM)](../../active-directory/privileged-identity-management/pim-resource-roles-start-access-review.md)
 
 - [Azure AD-identiteits-en toegangs beoordelingen gebruiken](../../active-directory/governance/access-reviews-overview.md)
 
-- [Privileged Identity Management-de toegang tot Azure AD-rollen controleren](../../active-directory/privileged-identity-management/pim-how-to-start-security-review.md)
-
-- [Identiteits-en toegangs controle Azure Security Center](../../security-center/security-center-identity-access.md)
-
 **Verantwoordelijkheid**: klant
 
-**Beveiligings belanghebbenden**van de klant:
+**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Identiteit en sleutels](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
+- [Identiteits-en sleutel beheer](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
 - [Toepassingsbeveiliging en DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
-- [Beveiligingsnalevingsbeheer](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
+- [Beheer van beveiligings naleving](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
-## <a name="pa-3-set-up-an-emergency-access-account-in-azure-ad"></a>PA-3: een nood toegangs account instellen in azure AD
+## <a name="pa-4-set-up-emergency-access-in-azure-ad"></a>PA-4: Emergency Access instellen in azure AD
 
 | Azure-ID | CIS-besturings elementen v 7.1-ID ('s) | NIST SP800-53 R4-ID ('s) |
 |--|--|--|--|
-| PA-3 | 12,3 | AC-2 |
+| PA-4 | 16 | AC-2, CP-2 |
 
 Als u wilt voor komen dat uw Azure AD-organisatie per ongeluk wordt vergrendeld, stelt u een account voor toegang voor nood gevallen in voor toegang wanneer normale beheerders accounts niet kunnen worden gebruikt. Accounts voor toegang in nood gevallen zijn meestal zeer goed beschermd en ze mogen niet worden toegewezen aan specifieke personen. Accounts voor toegang in nood gevallen zijn beperkt tot scenario's met nood gevallen of ' afbreek glazen ', waarbij normale beheerders accounts niet kunnen worden gebruikt.
-
 Zorg ervoor dat de referenties (zoals wacht woord, certificaat of Smart Card) voor accounts voor toegang in nood gevallen beveiligd blijven en alleen bekend zijn bij personen die alleen in een nood geval mogen gebruiken.
 
 - [Accounts voor nood toegang beheren in azure AD](../../active-directory/users-groups-roles/directory-emergency-access.md)
 
 **Verantwoordelijkheid**: klant
 
-**Beveiligings belanghebbenden**van de klant:
+**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Identiteit en sleutels](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
+- [Identiteits-en sleutel beheer](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
 - [Toepassingsbeveiliging en DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
-- [Beveiligingsnalevingsbeheer](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
+- [Beheer van beveiligings naleving](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
-- [Security Operations Center (SOC)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Beveiligings bewerkingen (SecOps)](//azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
-## <a name="pa-4-automate-azure-identity-and-access-request-workflow"></a>PA-4: de werk stroom voor identiteits-en toegangs aanvragen van Azure automatiseren
+## <a name="pa-5-automate-entitlement-management"></a>PA-5: beheer van rechten automatiseren
 
 | Azure-ID | CIS-besturings elementen v 7.1-ID ('s) | NIST SP800-53 R4-ID ('s) |
 |--|--|--|--|
-| PA-4 | N.v.t. | AC-2, AC-5, PM-10 |
+| PA-5 | 16 | AC-2, AC-5, PM-10 |
 
-Gebruik Azure AD-functies voor rechten beheer om werk stromen voor Azure-toegangs aanvragen te automatiseren, met inbegrip van toegangs toewijzingen, beoordelingen en verval datums. Het is ook mogelijk om twee of meerdere fasen goed te keuren.  
+Gebruik Azure AD-functies voor rechten beheer om werk stromen voor toegangs aanvragen te automatiseren, met inbegrip van toegangs toewijzingen, beoordelingen en verval datums. Het is ook mogelijk om twee of meerdere fasen goed te keuren.
+- [Wat zijn Azure AD-toegangs beoordelingen](../../active-directory/governance/access-reviews-overview.md) 
 
 - [Wat is het beheer van rechten van Azure AD](../../active-directory/governance/entitlement-management-overview.md)
 
-- [Toegangs aanvraag en goedkeurings proces instellen](../../active-directory/governance/entitlement-management-access-package-request-policy.md)
-
 **Verantwoordelijkheid**: klant
 
-**Beveiligings belanghebbenden**van de klant:
+**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Identiteit en sleutels](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
+- [Identiteits-en sleutel beheer](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
 - [Toepassingsbeveiliging en DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
-- [Beveiligingsnalevingsbeheer](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
+- [Beheer van beveiligings naleving](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
-## <a name="pa-5-use-highly-secured-machines-for-administrative-tasks"></a>PA-5: gebruik Maxi maal beveiligde computers voor beheer taken
+## <a name="pa-6-use-privileged-access-workstations"></a>PA-6: bevoorrechte toegang gebruiken werk stations
 
 | Azure-ID | CIS-besturings elementen v 7.1-ID ('s) | NIST SP800-53 R4-ID ('s) |
 |--|--|--|--|
-| PA-5 | 4,6, 11,6, 12,12 | AC-2, SC-7 |
+| PA-6 | 4,6, 11,6, 12,12 | AC-2, SC-3, SC-7 |
 
-Beveiligde, geïsoleerde werk stations zijn van cruciaal belang voor de beveiliging van gevoelige rollen als beheerders, ontwikkel aars en essentiële service operators. Gebruik zeer beveiligde werk stations van gebruikers en/of Azure Bastion voor beheer taken:
-- Gebruik Azure Active Directory, micro soft Defender Advanced Threat Protection (ATP) en/of Microsoft Intune voor het implementeren van een beveiligd en beheerd gebruikers werkstation voor beheer taken. De beveiligde werk stations kunnen centraal worden beheerd voor het afdwingen van beveiligde configuratie, waaronder sterke authenticatie, software-en hardware-basis lijnen, beperkte logische en netwerk toegang. 
+Beveiligde, geïsoleerde werk stations zijn van cruciaal belang voor de beveiliging van gevoelige rollen als beheerders, ontwikkel aars en essentiële service operators. Gebruik zeer beveiligde werk stations van gebruikers en/of Azure Bastion voor beheer taken. Gebruik Azure Active Directory, micro soft Defender Advanced Threat Protection (ATP) en/of Microsoft Intune voor het implementeren van een beveiligd en beheerd gebruikers werkstation voor beheer taken. De beveiligde werk stations kunnen centraal worden beheerd voor het afdwingen van beveiligde configuratie, inclusief sterke authenticatie, software-en hardware-basis lijnen en beperkte logische en netwerk toegang. 
 
-- Gebruik de Azure Bastion-functie voor een veilig pad om toegang te krijgen tot uw virtuele machines via RDP of SSH. Azure Bastion is een volledig beheerde PaaS-service die per virtueel netwerk kan worden ingericht zonder dat er een nieuw virtueel netwerk wordt gemaakt. 
+- [Meer informatie over privileged Access workstations](../../active-directory/devices/concept-azure-managed-workstation.md)
 
-- [Meer informatie over veilige, door Azure beheerde werk stations](../../active-directory/devices/concept-azure-managed-workstation.md)
-
-- [Een beveiligd, door Azure beheerd werk station implementeren](../../active-directory/devices/howto-azure-managed-workstation.md)
-
-- [Azure bastion-host gebruiken](../../bastion/bastion-create-host-portal.md)
+- [Een privileged Access-werk station implementeren](../../active-directory/devices/howto-azure-managed-workstation.md)
 
 **Verantwoordelijkheid**: klant
 
-**Beveiligings belanghebbenden**van de klant:
+**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Toepassingsbeveiliging en DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
-- [Security Operations Center (SOC)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Beveiligings bewerkingen (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
-- [Identiteit en sleutels](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
+- [Identiteits-en sleutel beheer](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
-## <a name="pa-6-assign-privileges-to-resources-using-azure-rbac"></a>PA-6: machtigingen toewijzen aan resources met behulp van Azure RBAC
+## <a name="pa-7-follow-just-enough-administration-least-privilege-principle"></a>PA-7: Volg gewoon voldoende beheer (minimale bevoegdheids methode)
 
 | Azure-ID | CIS-besturings elementen v 7.1-ID ('s) | NIST SP800-53 R4-ID ('s) |
 |--|--|--|--|
-| PA-6 | 14,6 | AC-2, AC-3 |
+| PA-7 | 14,6 | AC-2, AC-3, SC-3 |
 
-Met op rollen gebaseerd toegangs beheer (RBAC) van Azure kunt u machtigingen voor toegang tot Azure-bronnen beheren via roltoewijzingen. U kunt deze rollen toewijzen aan gebruikers, groeperingen van service-principals en beheerde identiteiten. Er zijn vooraf gedefinieerde ingebouwde rollen voor bepaalde resources, en deze rollen kunnen worden geïnventariseerd of opgevraagd via hulpprogram ma's als Azure CLI, Azure PowerShell of de Azure Portal. 
+Met Azure op rollen gebaseerd toegangs beheer (Azure RBAC) kunt u toegang tot Azure-resources beheren via roltoewijzingen. U kunt deze rollen toewijzen aan gebruikers, groeps service-principals en beheerde identiteiten. Er zijn vooraf gedefinieerde ingebouwde rollen voor bepaalde resources, en deze rollen kunnen worden geïnventariseerd of opgevraagd via hulpprogram ma's als Azure CLI, Azure PowerShell en de Azure Portal. De bevoegdheden die u toewijst aan resources via Azure RBAC, moeten altijd beperkt zijn tot wat is vereist voor de rollen. Beperkte bevoegdheden vormen een aanvulling op de just-in-time (JIT) benadering van Azure AD Privileged Identity Management (PIM), en deze bevoegdheden moeten regel matig worden gecontroleerd.
+Gebruik ingebouwde rollen om machtigingen toe te wijzen en alleen aangepaste rollen te maken wanneer dat nodig is. 
 
 - [Wat is Azure Role-based Access Control (Azure RBAC)](../../role-based-access-control/overview.md)
 
-- [RBAC configureren in azure](../../role-based-access-control/role-assignments-portal.md)
+- [Azure RBAC configureren](../../role-based-access-control/role-assignments-portal.md)
+
+- [Azure AD-identiteits-en toegangs beoordelingen gebruiken](../../active-directory/governance/access-reviews-overview.md)
 
 **Verantwoordelijkheid**: klant
 
-**Beveiligings belanghebbenden**van de klant:
+**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Toepassingsbeveiliging en DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
-- [Beveiligingsnalevingsbeheer](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
+- [Beheer van beveiligings naleving](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management) 
 
-- [Postuurbeheer](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
+- [Postuurbeheer](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)    
 
-- [Identiteit en sleutels](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
+- [Identiteits-en sleutel beheer](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
-## <a name="pa-7-choose-approval-process-for-microsoft-support"></a>PA-7: goedkeurings proces kiezen voor micro soft ondersteuning
+## <a name="pa-8-choose-approval-process-for-microsoft-support"></a>PA-8: goedkeurings proces kiezen voor micro soft-ondersteuning 
 
 | Azure-ID | CIS-besturings elementen v 7.1-ID ('s) | NIST SP800-53 R4-ID ('s) |
 |--|--|--|--|
-| PA-7 | 16 | AC-2, AC-3, AC-4 |
+| PA-8 | 16 | AC-2, AC-3, AC-4 |
 
-In ondersteunings scenario's waarin micro soft toegang heeft tot klant gegevens, biedt Klanten-lockbox u de mogelijkheid om elke aanvraag voor de toegang tot gegevens van klanten expliciet te controleren en goed te keuren of af te wijzen.
+In ondersteunings scenario's waarin micro soft toegang moet krijgen tot klant gegevens, biedt Klanten-lockbox u de mogelijkheid om elke aanvraag voor gegevens toegang van een klant expliciet te controleren en goed te keuren of af te wijzen.
 
 - [Klanten-lockbox begrijpen](../fundamentals/customer-lockbox-overview.md)
 
 **Verantwoordelijkheid**: klant
 
-**Beveiligings belanghebbenden**van de klant:
+**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Toepassingsbeveiliging en DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
-- [Beveiligingsnalevingsbeheer](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
+- [Beheer van beveiligings naleving](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management) 
 
-- [Identiteit en sleutels](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
+- [Identiteits-en sleutel beheer](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 

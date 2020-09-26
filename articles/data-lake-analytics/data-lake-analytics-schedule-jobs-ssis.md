@@ -8,12 +8,12 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.workload: big-data
 ms.date: 07/17/2018
-ms.openlocfilehash: ac747b87cf1a0f2d7c85d05975a31f953bfa5aae
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: a5c7b9fb6a3431534d743f1ebd0b21f1da9fab7b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132497"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318701"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>U-SQL-taken plannen met behulp van SQL Server Integration Services (SSIS)
 
@@ -56,7 +56,7 @@ Volg de onderstaande stappen om de verbinding tussen Azure Data Lake Store besta
 
 Voeg in de ontwerp weergave SSIS-pakket een **Azure data Lake Store-bestandsbeheer taak**, een **foreach-lus-container** en een **Azure data Lake Analytics taak** in de foreach-lus-container toe. De Azure Data Lake Store-bestandsbeheer taak helpt U bij het downloaden van U-SQL-bestanden in uw ADLS-account naar een tijdelijke map. De foreach-lus-container en de Azure Data Lake Analytics taak helpen u bij het indienen van elk U-SQL-bestand onder de tijdelijke map naar het Azure Data Lake Analytics-account als U-SQL-taak.
 
-![U-SQL-bestanden gebruiken in Azure Data Lake Store](./media/data-lake-analytics-schedule-jobs-ssis/use-u-sql-files-in-azure-data-lake-store.png)
+![Diagram waarin een Azure Data Lake Store-bestandsbeheer taak wordt weer gegeven die wordt toegevoegd aan een foreach-lus-container.](./media/data-lake-analytics-schedule-jobs-ssis/use-u-sql-files-in-azure-data-lake-store.png)
 
 ### <a name="configure-azure-data-lake-store-file-system-task"></a>Azure Data Lake Store-bestandsbeheer taak configureren
 
@@ -77,7 +77,7 @@ Voeg in de ontwerp weergave SSIS-pakket een **Azure data Lake Store-bestandsbehe
 
 3. Stel **bestanden** onder **configuratie van enumerator** in op `*.usql` zodat de lus-container alleen de bestanden onderschept die eindigen op `.usql` .
 
-    ![Foreach-lus-container configureren](./media/data-lake-analytics-schedule-jobs-ssis/configure-foreach-loop-container-collection.png)
+    ![Scherm afbeelding waarin de foreach-lus-editor met de verzameling ' Collection ' wordt weer gegeven en de configuratie secties enumerator en enumerator zijn gemarkeerd.](./media/data-lake-analytics-schedule-jobs-ssis/configure-foreach-loop-container-collection.png)
 
 4. Voeg op de pagina **variabelen toewijzingen** een door de gebruiker gedefinieerde variabele toe om de bestands naam voor elk U-SQL-bestand op te halen. Stel de **index** in op 0 om de bestands naam op te halen. In dit voor beeld definieert u een variabele met de naam `User::FileName` . Deze variabele wordt gebruikt voor het dynamisch ophalen van een U-SQL-script bestand verbinding en het instellen van een U-SQL-taak naam in Azure Data Lake Analytics taak.
 
@@ -94,7 +94,7 @@ Voeg in de ontwerp weergave SSIS-pakket een **Azure data Lake Store-bestandsbehe
    1. Kies de **\<New Connection...>** instelling in FileConnection.
    2. Stel het **gebruiks type** in op het **bestaande bestand**en stel het **bestand** in op het bestandspad van een bestaand bestand.
 
-       ![Foreach-lus-container configureren](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
+       ![Scherm opname van de editor voor bestands verbindings beheer met het ' bestaande bestand ' dat is geselecteerd voor het type gebruik.](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
 
    3. Klik in de weer gave **verbindings beheer** met de rechter muisknop op de bestands verbinding die nu zojuist is gemaakt en kies **Eigenschappen**.
 

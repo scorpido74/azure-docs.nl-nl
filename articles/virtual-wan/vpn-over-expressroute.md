@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 03/19/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: d3a2c85540a4efa2f934605c4c056b458e2879ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fe8cf0da6cb6542646f3107980b49fb6fef9cb45
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84749587"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317630"
 ---
 # <a name="expressroute-encryption-ipsec-over-expressroute-for-virtual-wan"></a>ExpressRoute-versleuteling: IPsec over ExpressRoute voor virtuele WAN
 
@@ -95,7 +95,7 @@ De site bron is hetzelfde als de niet-ExpressRoute VPN-sites voor een virtueel W
 
    Als BGP is ingeschakeld, wordt dit toegepast op alle verbindingen die zijn gemaakt voor deze site in Azure. Het configureren van BGP op een virtueel WAN is gelijk aan het configureren van BGP op een Azure VPN-gateway. 
    
-   Uw on-premises BGP-peer adres *mag niet* gelijk zijn aan het IP-adres van uw VPN naar het apparaat of de adres ruimte van het virtuele netwerk van de VPN-site. Gebruik een ander IP-adres op het VPN-apparaat voor uw BGP-peer-IP. Het kan een adres zijn dat is toegewezen aan de loopback-interface op het apparaat. Het kan echter *geen* APIPA zijn (169,254.* x*. *x*)-adres. Specificeer dit adres in de bijbehorende lokale netwerk gateway die de locatie vertegenwoordigt. Zie [over BGP met Azure VPN gateway](../vpn-gateway/vpn-gateway-bgp-overview.md)voor de BGP-vereisten.
+   Uw on-premises BGP-peer adres *mag niet* gelijk zijn aan het IP-adres van uw VPN naar het apparaat of de adres ruimte van het virtuele netwerk van de VPN-site. Gebruik een ander IP-adres op het VPN-apparaat voor uw BGP-peer-IP. Het kan een adres zijn dat is toegewezen aan de loopback-interface op het apparaat. Het kan echter *geen* APIPA zijn (169,254.* x*. *x*)-adres. Specificeer dit adres in de bijbehorende lokale netwerk gateway die de locatie vertegenwoordigt. Zie [Over BGP met Azure VPN-gateway](../vpn-gateway/vpn-gateway-bgp-overview.md) voor BGP-vereisten.
 
 1. Selecteer **volgende: controleren + maken >** om de instellings waarden te controleren en de VPN-site te maken. Als u **hubs** hebt geselecteerd om verbinding te maken, wordt de verbinding tot stand gebracht tussen het on-premises netwerk en de hub VPN-gateway.
 

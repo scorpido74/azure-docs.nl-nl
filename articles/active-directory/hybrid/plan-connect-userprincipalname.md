@@ -10,12 +10,12 @@ ms.workload: identity
 ms.service: active-directory
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e105d4909705622a931c51bcb7cf0a9db4179525
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 58b4bbcac110398ee4ff132b76ce8c4868ee17f8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279598"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317588"
 ---
 # <a name="azure-ad-userprincipalname-population"></a>Populatie van Azure AD UserPrincipalName
 
@@ -54,7 +54,7 @@ Met de alternatieve aanmeldings-ID kunt u een aanmeldings ervaring configureren 
 
 Als u een alternatieve aanmeldings-ID wilt inschakelen met Azure AD, zijn er geen aanvullende configuraties nodig om Azure AD Connect te gebruiken. Alternatieve ID kan rechtstreeks vanuit de wizard worden geconfigureerd. Zie configuratie van Azure AD-aanmelding voor uw gebruikers in de sectie synchronisatie. Selecteer onder de vervolg keuzelijst **User Principal name** het kenmerk voor de alternatieve aanmeldings-id.
 
-![Niet-geverifieerde domeinen](./media/plan-connect-userprincipalname/altloginid.png)  
+![Scherm afbeelding van de lijst met gebruikers-principal-namen waar u het kenmerk alternatieve aanmeldings-ID selecteert.](./media/plan-connect-userprincipalname/altloginid.png)  
 
 Zie [Configure alternatieve aanmeldings-id](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) en [configuratie van Azure AD-aanmelding](how-to-connect-install-custom.md#azure-ad-sign-in-configuration) voor meer informatie.
 
