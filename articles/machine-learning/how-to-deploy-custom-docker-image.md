@@ -5,31 +5,28 @@ description: Meer informatie over het gebruik van een aangepaste docker-basis in
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.author: jordane
-author: jpe316
+ms.author: sagopal
+author: saachigopal
 ms.reviewer: larryfr
 ms.date: 09/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: f69ba6e1c5fdfc04fac6fed8487b246f9af72fa2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ea8b100e8a690cf4f400dda02f2a58b6500d5f31
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90889942"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328442"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Een model implementeren met behulp van een aangepaste docker-basis installatie kopie
 
-
 Meer informatie over het gebruik van een aangepaste docker-basis installatie kopie bij het implementeren van getrainde modellen met Azure Machine Learning.
 
-Wanneer u een getraind model implementeert voor een webservice of IoT Edge apparaat, wordt er een pakket gemaakt met een webserver voor het verwerken van binnenkomende aanvragen.
+In Azure Machine Learning wordt een standaard basis-docker-installatie kopie gebruikt als er geen is opgegeven. U kunt de specifieke docker-installatie kopie vinden die wordt gebruikt met `azureml.core.runconfig.DEFAULT_CPU_IMAGE` . U kunt ook Azure Machine Learning __omgevingen__ gebruiken om een specifieke basis installatie kopie te selecteren, of een aangepaste versie gebruiken die u opgeeft.
 
-Azure Machine Learning biedt een standaarddocker-basis installatie kopie, zodat u zich geen zorgen hoeft te maken dat u er een maakt. U kunt ook Azure Machine Learning __omgevingen__ gebruiken om een specifieke basis installatie kopie te selecteren, of een aangepaste versie gebruiken die u opgeeft.
+Een basis installatie kopie wordt gebruikt als uitgangs punt wanneer er een installatie kopie voor een implementatie wordt gemaakt. Het biedt het onderliggende besturings systeem en onderdelen. Het implementatie proces voegt vervolgens extra onderdelen, zoals uw model, Conda-omgeving en andere assets, toe aan de installatie kopie.
 
-Een basis installatie kopie wordt gebruikt als uitgangs punt wanneer er een installatie kopie voor een implementatie wordt gemaakt. Het biedt het onderliggende besturings systeem en onderdelen. Het implementatie proces voegt vervolgens extra onderdelen, zoals uw model, Conda-omgeving en andere assets, toe aan de installatie kopie voordat u deze implementeert.
-
-Normaal gesp roken maakt u een aangepaste basis installatie kopie wanneer u docker wilt gebruiken voor het beheren van uw afhankelijkheden, het behoud van de controle over onderdeel versies en het besparen van tijd tijdens de implementatie. U kunt bijvoorbeeld standaardiseren op een specifieke versie van python, Conda of een ander onderdeel. Het is ook mogelijk dat u software wilt installeren die vereist is voor uw model, waarbij het installatie proces veel tijd in beslag neemt. Het installeren van de software bij het maken van de basis installatie kopie betekent dat u deze niet voor elke implementatie hoeft te installeren.
+Normaal gesp roken maakt u een aangepaste basis installatie kopie wanneer u docker wilt gebruiken voor het beheren van uw afhankelijkheden, het behoud van de controle over onderdeel versies en het besparen van tijd tijdens de implementatie. Het is ook mogelijk dat u software wilt installeren die vereist is voor uw model, waarbij het installatie proces veel tijd in beslag neemt. Het installeren van de software bij het maken van de basis installatie kopie betekent dat u deze niet voor elke implementatie hoeft te installeren.
 
 > [!IMPORTANT]
 > Wanneer u een model implementeert, kunt u de kern onderdelen, zoals de webserver of de IoT Edge onderdelen, niet overschrijven. Deze onderdelen bieden een bekende werk omgeving die wordt getest en ondersteund door micro soft.
@@ -46,7 +43,7 @@ Dit document is onderverdeeld in twee secties:
 
 * Een Azure Machine Learning werk groep. Zie het artikel [een werk ruimte maken](how-to-manage-workspace.md) voor meer informatie.
 * De [Azure machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true). 
-* De [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+* De [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
 * De [cli-extensie voor Azure machine learning](reference-azure-machine-learning-cli.md).
 * Een [Azure container Registry](/azure/container-registry) of een ander docker-REGI ster dat toegankelijk is op internet.
 * Bij de stappen in dit document wordt ervan uitgegaan dat u bekend bent met het maken en gebruiken van een inkomend __configuratie__ object als onderdeel van de implementatie van het model. Zie voor meer informatie [waar u kunt implementeren en hoe](how-to-deploy-and-where.md).
@@ -62,8 +59,6 @@ In de informatie in deze sectie wordt ervan uitgegaan dat u een Azure Container 
     > [!WARNING]
     > De Azure Container Registry voor uw werk ruimte wordt __gemaakt wanneer u voor het eerst een model traint of implementeert__ met behulp van de werk ruimte. Als u een nieuwe werk ruimte hebt gemaakt, maar niet hebt getraind of een model hebt gemaakt, bestaat er geen Azure Container Registry voor de werk ruimte.
 
-    Zie de sectie [register naam van container ophalen](#getname) in dit artikel voor meer informatie over het ophalen van de naam van de Azure container Registry voor uw werk ruimte.
-
     Wanneer u installatie kopieën gebruikt die zijn opgeslagen in een __zelfstandig container register__, moet u een Service-Principal configureren die ten minste lees toegang heeft. Vervolgens geeft u de Service-Principal-ID (gebruikers naam) en het wacht woord op voor iedereen die gebruikmaakt van installatie kopieën uit het REGI ster. De uitzonde ring hierop is als u het container register openbaar toegankelijk maakt.
 
     Zie [een persoonlijk container register maken](/azure/container-registry/container-registry-get-started-azure-cli)voor meer informatie over het maken van een persoonlijke Azure container Registry.
@@ -72,12 +67,29 @@ In de informatie in deze sectie wordt ervan uitgegaan dat u een Azure Container 
 
 * Azure Container Registry en installatie kopie-informatie: Geef de naam van de installatie kopie op die moet worden gebruikt door iedereen. Bijvoorbeeld, er `myimage` wordt verwezen naar een installatie kopie met de naam, opgeslagen in een REGI ster `myregistry` `myregistry.azurecr.io/myimage` met de naam, wanneer de installatie kopie wordt gebruikt voor model implementatie
 
-* Vereisten voor installatie kopie: Azure Machine Learning ondersteunt alleen docker-installatie kopieën die de volgende software bieden:
+### <a name="image-requirements"></a>Vereisten voor installatiekopieën
 
-    * Ubuntu 16,04 of hoger.
-    * Conda 4.5. # of hoger.
-    * Python 3.5. #, 3.6. # of 3.7. #.
+Azure Machine Learning ondersteunt alleen docker-installatie kopieën die de volgende software bieden:
+* Ubuntu 16,04 of hoger.
+* Conda 4.5. # of hoger.
+* Python 3.5 +.
 
+Als u gegevens sets wilt gebruiken, moet u het libzeker-dev-pakket installeren. Zorg er ook voor dat u eventueel benodigde gebruikers ruimte-pakketten installeert.
+
+Azure ML houdt een set van CPU-en GPU-basis installatie kopieën die zijn gepubliceerd naar micro soft Container Registry die u eventueel kunt gebruiken (of referentie) in plaats van uw eigen aangepaste installatie kopie te maken. Raadpleeg de GitHub-opslag plaats [Azure/AzureML-containers](https://github.com/Azure/AzureML-Containers) om de Dockerfiles voor die afbeeldingen te bekijken.
+
+Voor GPU-installatie kopieën biedt Azure ML momenteel zowel cuda9-als cuda10-basis installatie kopieën. De belangrijkste afhankelijkheden die zijn geïnstalleerd in deze basis installatie kopieën zijn:
+
+| Afhankelijkheden | IntelMPI CPU | OpenMPI CPU | IntelMPI GPU | OpenMPI GPU |
+| --- | --- | --- | --- | --- |
+| miniconda | = = 4.5.11 | = = 4.5.11 | = = 4.5.11 | = = 4.5.11 |
+| mpi | intelmpi = = 2018.3.222 |openmpi = = 3.1.2 |intelmpi = = 2018.3.222| openmpi = = 3.1.2 |
+| CUDA | - | - | 9.0/10.0 | 9.0/10,0/10.1 |
+| cudnn | - | - | 7.4/7,5 | 7.4/7,5 |
+| nccl | - | - | 2.4 | 2.4 |
+| git | 2.7.4 | 2.7.4 | 2.7.4 | 2.7.4 |
+
+De CPU-installatie kopieën zijn gebouwd op basis van Ubuntu 16.04. De GPU-installatie kopieën voor cuda9 zijn gebouwd op basis van NVIDIA/CUDA: 9.0-cudnn7-devel-Ubuntu 16.04. De GPU-installatie kopieën voor cuda10 zijn gebouwd op basis van NVIDIA/CUDA: 10.0-cudnn7-devel-Ubuntu 16.04.
 <a id="getname"></a>
 
 ### <a name="get-container-registry-information"></a>Container register gegevens ophalen
@@ -117,7 +129,7 @@ Als u al uw modellen hebt getraind of geïmplementeerd met behulp van Azure Mach
 
 ### <a name="build-a-custom-base-image"></a>Een aangepaste basis installatie kopie bouwen
 
-Met de stappen in deze sectie wordt uitgelegd hoe u een aangepaste docker-installatie kopie maakt in uw Azure Container Registry.
+Met de stappen in deze sectie wordt uitgelegd hoe u een aangepaste docker-installatie kopie maakt in uw Azure Container Registry. Zie [Azure/AzureML-containers](https://github.com/Azure/AzureML-Containers) github opslag plaats) voor een voor beeld van dockerfiles.
 
 1. Maak een nieuw tekst bestand `Dockerfile` met de naam en gebruik de volgende tekst als de inhoud:
 
@@ -131,11 +143,12 @@ Met de stappen in deze sectie wordt uitgelegd hoe u een aangepaste docker-instal
 
     ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
     ENV PATH /opt/miniconda/bin:$PATH
+    ENV DEBIAN_FRONTEND=noninteractive
 
     RUN apt-get update --fix-missing && \
         apt-get install -y wget bzip2 && \
-        apt-get install -y fuse \
-        apt-get clean && \
+        apt-get install -y fuse && \
+        apt-get clean -y && \
         rm -rf /var/lib/apt/lists/*
 
     RUN useradd --create-home dockeruser
@@ -200,13 +213,13 @@ Als u een aangepaste installatie kopie wilt gebruiken, hebt u de volgende inform
 
 Micro soft biedt verschillende docker-installatie kopieën op een openbaar toegankelijke opslag plaats die kan worden gebruikt met de stappen in deze sectie:
 
-| Installatiekopie | Description |
+| Installatiekopie | Beschrijving |
 | ----- | ----- |
 | `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` | Basis installatie kopie voor Azure Machine Learning |
 | `mcr.microsoft.com/azureml/onnxruntime:latest` | Bevat ONNX-runtime voor CPU-de |
 | `mcr.microsoft.com/azureml/onnxruntime:latest-cuda` | Bevat de ONNX runtime en CUDA voor GPU |
 | `mcr.microsoft.com/azureml/onnxruntime:latest-tensorrt` | Bevat ONNX runtime en TensorRT voor GPU |
-| `mcr.microsoft.com/azureml/onnxruntime:latest-openvino-vadm ` | Bevat de ONNX runtime en open-wijn voor het ontwerp van de Intel <sup></sup> Vision Accelerator op basis van Movidius<sup>TM</sup> tallozex VPUs |
+| `mcr.microsoft.com/azureml/onnxruntime:latest-openvino-vadm` | Bevat de ONNX runtime en open-wijn voor het ontwerp van de Intel <sup></sup> Vision Accelerator op basis van Movidius<sup>TM</sup> tallozex VPUs |
 | `mcr.microsoft.com/azureml/onnxruntime:latest-openvino-myriad` | Bevat ONNX runtime en-wijn voor Intel <sup></sup> Movidius<sup>TM</sup> USB-sticks |
 
 Zie de [sectie ONNX runtime dockerfile](https://github.com/microsoft/onnxruntime/blob/master/dockerfiles/README.md) in de GitHub opslag plaats voor meer informatie over de basis installatie kopieën van ONNX-runtime.
@@ -338,4 +351,4 @@ Zie de sectie model registratie, profile ring en implementatie van de [cli-uitbr
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over [waar u kunt implementeren en hoe u](how-to-deploy-and-where.md)dit kunt doen.
-* Leer hoe u [machine learning modellen traint en implementeert met behulp van Azure-pijp lijnen](/azure/devops/pipelines/targets/azure-machine-learning?view=azure-devops).
+* Leer hoe u [machine learning modellen traint en implementeert met behulp van Azure-pijp lijnen](/azure/devops/pipelines/targets/azure-machine-learning?view=azure-devops&preserve-view=true).

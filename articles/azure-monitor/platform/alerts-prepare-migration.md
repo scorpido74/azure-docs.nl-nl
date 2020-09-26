@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: 24897826c6a70d0810b239b9b8f639787c3dac2a
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 9df5d702019063ffba6d79cc63370cd25a7242fd
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843382"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358778"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>Uw logische apps en runbooks voorbereiden voor de migratie van klassieke waarschuwingsregels
 
@@ -42,7 +42,7 @@ Gebruik de volgende tabel om de velden voor de nettolading van webhooks van de k
 
 | Type meldings eindpunt | Klassieke waarschuwingen | Nieuwe metrische waarschuwingen |
 | -------------------------- | -------------- | ----------------- |
-|Is de waarschuwing geactiveerd of opgelost?    | **hebben**       | **data. status** |
+|Is de waarschuwing geactiveerd of opgelost?    | **status**       | **data. status** |
 |Contextuele informatie over de waarschuwing     | **context**        | **data. context**        |
 |Tijds tempel waarop de waarschuwing is geactiveerd of opgelost     | **context. time stamp**       | **data. context. time stamp**        |
 | ID van waarschuwings regel | **context.id** | **data.context.id** |
@@ -76,7 +76,7 @@ Als u Logic apps gebruikt met klassieke waarschuwingen, moet u de code van uw lo
 
 1. Gebruik de sjabloon ' Azure Monitor-metrische waarschuwings-handler '. Voor deze sjabloon is een **HTTP-aanvraag** trigger met het juiste schema gedefinieerd.
 
-    ![Logic-app-sjabloon](media/alerts-migration/logic-app-template.png "Sjabloon metrische waarschuwing")
+    ![Scherm opname toont twee knoppen, lege logische app en Azure Monitor – metrische waarschuwings-handler.](media/alerts-migration/logic-app-template.png "Sjabloon metrische waarschuwing")
 
 1. Voeg een actie toe om uw verwerkings logica te hosten.
 

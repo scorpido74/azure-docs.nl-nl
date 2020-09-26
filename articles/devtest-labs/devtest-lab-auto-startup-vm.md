@@ -3,12 +3,12 @@ title: Instellingen voor automatisch starten configureren voor een virtuele mach
 description: Meer informatie over het configureren van instellingen voor automatisch starten van Vm's in een lab. Met deze instelling kunnen Vm's in het lab automatisch volgens een schema worden gestart.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 4ff2a156367b6a65e75b1c8b907da91dc3c88eb9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 83e7b0836273a59eaaf66471bd0cb42d63ccf1c3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482782"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328476"
 ---
 # <a name="auto-startup-lab-virtual-machines"></a>Virtuele machines van Lab automatisch opstarten  
 Met Azure DevTest Labs kunt u virtuele machines in uw Lab zo configureren dat deze automatisch worden gestart en afgesloten op basis van een schema. Voor informatie over het configureren van instellingen voor automatisch afsluiten, Zie [beleid voor automatisch afsluiten beheren voor een lab in azure DevTest Labs](devtest-lab-auto-shutdown.md). 
@@ -21,7 +21,7 @@ In dit artikel leest u hoe u het beleid voor automatisch starten configureert vo
 1. Ga naar de start pagina voor uw Lab. 
 2. Selecteer **configuratie en beleid** in het menu links. 
 
-    ![Menu configuratie en beleid](./media/devtest-lab-auto-startup-vm/configuration-policies-menu.png)
+    ![Scherm opname van het menu ' configuratie en beleid ' in het DevTest Lab.](./media/devtest-lab-auto-startup-vm/configuration-policies-menu.png)
 3. Voer de volgende stappen uit op de pagina **configuratie en beleid** :
     
     1. Selecteer **aan** **Als u wilt dat virtuele machines kunnen worden gepland om automatisch te worden gestart** om de functie Auto start voor dit lab in te scha kelen. 

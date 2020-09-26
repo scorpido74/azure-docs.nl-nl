@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 5c54c3702dabf254e50068aadeac0992e3a20cb2
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 445155ed48334c9680dfa0be7b5402d057c98cef
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89262461"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329717"
 ---
 # <a name="azure-media-services-v3-community"></a>Azure Media Services v3-Community
 
@@ -42,7 +42,7 @@ De volgende forums kunnen worden gebruikt voor het stellen van vragen over huidi
 
 Op dit moment is MSDN Media Services het primaire Community-Forum van het team.
 
-[![MSDN](./media/media-services-community/msdn.png)](/answers/topics/azure-media-services.html) 
+[![Scherm opname van het logo van MSDN, het primaire Community-Forum van het Media Services team.](./media/media-services-community/msdn.png)](/answers/topics/azure-media-services.html) 
 
 Het team bewaakt ook vragen die zijn gelabeld op Stack Overflow met ' Azure-Media-Services '.
 

@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56eee39a9e99e9d6752d1b4f6eb7182043ff14d6
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 168b41534f6ea6055294cc9e9cec139853904fea
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230582"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358896"
 ---
 # <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>De log Analytics-weer gaven voor Azure Active Directory installeren en gebruiken
 
@@ -56,7 +56,7 @@ Als u de log Analytics-weer gaven wilt gebruiken, hebt u het volgende nodig:
 
 3. Selecteer een van deze weer gaven om naar de afzonderlijke rapporten te gaan. U kunt ook waarschuwingen instellen voor een van de rapport parameters. Laten we bijvoorbeeld een waarschuwing instellen voor elke keer dat er een fout is opgetreden bij het aanmelden. Als u dit wilt doen, selecteert u eerst de weer gave voor de **aanmeldings gebeurtenissen** , selecteert u **aanmeldings fouten in een tijd** rapport en selecteert u vervolgens **Analytics** om de pagina Details te openen, met de daad werkelijke query achter het rapport. 
 
-    ![Details](./media/howto-install-use-log-analytics-views/details.png)
+    ![Scherm afbeelding toont de pagina met analyse details die de query voor het rapport bevat.](./media/howto-install-use-log-analytics-views/details.png)
 
 
 4. Selecteer **waarschuwing instellen**en selecteer vervolgens **wanneer de aangepaste zoek opdracht voor logboeken &lt; logica niet gedefinieerd &gt; is** in het gedeelte **waarschuwings criteria** . Omdat we willen waarschuwen wanneer er zich een aanmeldings fout **voordoet**, stelt u de **drempel waarde** van de standaard waarschuwings logica in op **1** en selecteert u vervolgens gereed. 

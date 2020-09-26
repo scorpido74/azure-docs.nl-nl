@@ -7,12 +7,12 @@ ms.service: vnf-manager
 ms.topic: article
 ms.date: 07/07/2020
 ms.author: ganesr
-ms.openlocfilehash: be113fec596d4730d55403b6ce4dbd6d2709e273
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 68aa3342ab09be73a82f4f896ffdff99d15a5350
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260064"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329566"
 ---
 # <a name="about-azure-edge-zone-preview"></a>Voor beeld van Azure Edge zone
 
@@ -74,7 +74,7 @@ Typische gebruiks voorbeelden zijn onder andere:
 
 Rand zones worden aangeboden in samen werking met de volgende Opera tors:
 
-- OP&T (Atlanta, Amsterdam en Los Angeles) 
+- OP&T (Atlanta, Amsterdam en Los Angeles)
 
 Isv's die werken aan geoptimaliseerde en schaal bare toepassingen die zijn verbonden met 5G-netwerken, kunnen nu gebruikmaken van de nieuwe preview-locatie van Azure Edge-zones met op&T bij het bouwen en experimenteren met uiterst lage latentie platforms, mobiele en verbonden scenario's. Meld u aan voor het early adopter-programma om te profiteren van beveiligde, connectiviteit met hoge band breedte.
 
@@ -86,9 +86,9 @@ Isv's die werken aan geoptimaliseerde en schaal bare toepassingen die zijn verbo
 
 Azure-zones met persoonlijke randen zijn kleinschalige uitbrei dingen van Azure die on-premises worden geplaatst. Zone voor persoonlijke Azure-Edge is gebaseerd op het [Azure stack Edge](https://azure.microsoft.com/products/azure-stack/edge/) -platform. Hiermee wordt toegang met lage latentie mogelijk voor computer-en opslag services die on-premises zijn geïmplementeerd. Met de zone persoonlijke ruimte kunt u ook toepassingen implementeren van Isv's en gevirtualiseerde netwerk functies (VNFs) als door [Azure beheerde toepassingen](https://azure.microsoft.com/services/managed-applications/) , samen met virtuele machines en containers on-premises. Deze VNFs kunnen mobiele pakket-kernen, routers, firewalls en SD-WAN-apparaten bevatten. De Azure-zone voor persoonlijke randen wordt geleverd met een Cloud-systeem eigen Orchestration-oplossing waarmee u de levens cyclus van VNFs en toepassingen kunt beheren vanuit de Azure Portal.
 
-Met de Azure-zone voor persoonlijke randen kunt u toepassingen op locatie ontwikkelen en implementeren met behulp van dezelfde vertrouwde hulpprogram ma's die u gebruikt voor het bouwen en implementeren van toepassingen in Azure. 
+Met de Azure-zone voor persoonlijke randen kunt u toepassingen op locatie ontwikkelen en implementeren met behulp van dezelfde vertrouwde hulpprogram ma's die u gebruikt voor het bouwen en implementeren van toepassingen in Azure.
 
-U kunt ook het volgende doen: 
+U kunt ook het volgende doen:
 
 - Voer particuliere mobiele netwerken uit (persoonlijke LTE, persoonlijke 5G).
 - Implementeer beveiligings functies, zoals firewalls.
@@ -113,6 +113,7 @@ We hebben een uitgebreid ecosysteem van VNF leveranciers, Isv's en MSP-partners 
 ##### <a name="virtualized-evolved-packet-core-vepc-for-mobile-networks"></a><a name="vEPC"></a>Gevirtualiseerde vEPC (packet core) voor mobiele netwerken
 
 - [Bevestigde netwerken](https://www.affirmednetworks.com/)
+- [Celona](https://www.celona.io/azure-edge)
 - [Druid-software](https://www.druidsoftware.com/)
 - [Expeto](https://www.expeto.io/)
 - [Mavenir](https://mavenir.com/)
@@ -121,12 +122,15 @@ We hebben een uitgebreid ecosysteem van VNF leveranciers, Isv's en MSP-partners 
 
 ##### <a name="mobile-radio-partners"></a><a name="mobile-radio"></a>Mobiele radio partners
 
+- [Celona](https://www.celona.io/azure-edge)
 - [Commscope Ruckus](https://support.ruckuswireless.com/)
 
 ##### <a name="sd-wan-vendors"></a><a name="sdwan-vendors"></a>SD-WAN-leveranciers
 
+- [128 Technology](https://www.128technology.com/)
 - [Netgevonden](https://netfoundry.io/)
 - [Nuage netwerken van Nokia](https://www.nuagenetworks.net/)
+- [Omgekeerd netwerken](https://www.versa-networks.com/)
 - [VMware SD-WAN by Velocloud](https://www.velocloud.com/)
 
 ##### <a name="router-vendors"></a><a name="router-vendors"></a>Router leveranciers
@@ -158,10 +162,10 @@ We hebben een uitgebreid ecosysteem van VNF leveranciers, Isv's en MSP-partners 
 
 ![Privé-netwerk in zones met persoonlijke randen](./media/edge-zones-overview/mobile-networks.png "Privé-netwerk in zones met persoonlijke randen")
 
-U kunt nu een privé mobiel netwerk implementeren in zones met persoonlijke randen. Particuliere mobiele netwerken bieden een zeer lage latentie, hoge capaciteit en het betrouw bare en veilige draadloze netwerk dat vereist is voor bedrijfskritische toepassingen. 
+U kunt nu een privé mobiel netwerk implementeren in zones met persoonlijke randen. Particuliere mobiele netwerken bieden een zeer lage latentie, hoge capaciteit en het betrouw bare en veilige draadloze netwerk dat vereist is voor bedrijfskritische toepassingen.
 
-Particuliere mobiele netwerken kunnen scenario's zoals: 
-- Opdracht en controle van automatische begeleide Voer tuigen (AGVs) in de opslag plaatsen. 
+Particuliere mobiele netwerken kunnen scenario's zoals:
+- Opdracht en controle van automatische begeleide Voer tuigen (AGVs) in de opslag plaatsen.
 - Realtime communicatie tussen robots in Smart-fabrieken.
 - Uitgebreide realiteit-en Virtual Reality-Edge-toepassingen.
 
@@ -174,7 +178,7 @@ Micro soft biedt een partner ecosysteem dat kan helpen bij alle aspecten van dit
 #### <a name="sd-wan-on-private-edge-zones"></a><a name="sdwan-private-edge"></a>SD-WAN in zones met persoonlijke rand
 
 ![SD-WAN in zones met persoonlijke rand](./media/edge-zones-overview/sd-wan.png "SD-WAN in zones met persoonlijke rand")
- 
+
 Met SD-WAN kunt u Wan's (Wide Area Network) op ondernemings niveau maken met de volgende voor delen:
 
 - Grotere band breedte
@@ -183,7 +187,7 @@ Met SD-WAN kunt u Wan's (Wide Area Network) op ondernemings niveau maken met de 
 - Betrouwbaarheid
 - Beleidsbeheer
 - Uitgebreide zicht baarheid van netwerken
-    
+
 SD-WAN biedt naadloze filiaal connectiviteit die is ingedeeld van redundante centrale controllers tegen lagere kosten voor eigendom.
 Met de zones SD-WAN in private Edge kunt u van een CAPEX model naar een SaaS-model (Software-as-a-Service) gaan om de budgetten te reduceren. U kunt uw keuze van de SD-WAN-partners, Orchestrator of controller, gebruiken om nieuwe services in te scha kelen en deze direct in het hele netwerk door te geven.
 
