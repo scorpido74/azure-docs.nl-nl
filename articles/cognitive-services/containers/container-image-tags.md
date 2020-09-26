@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: reference
 ms.date: 08/31/2020
 ms.author: aahi
-ms.openlocfilehash: 5d2ff25762f28c19b6d389a779fb455de3c84f3e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2a24433389e738bf5d0ecb7ecac6bf369c8ba183
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91253765"
+ms.locfileid: "91369481"
 ---
 # <a name="azure-cognitive-services-container-image-tags"></a>Tags voor Azure Cognitive Services container installatie kopieën
 
@@ -1131,22 +1131,22 @@ Deze container installatie kopie heeft de volgende tags beschikbaar:
 | Afbeeldings Tags                                  | Opmerkingen                                                                      |
 |---------------------------------------------|:---------------------------------------------------------------------------|
 | `latest`                                    | Container installatie kopie met de `en-US` land instellingen en de `en-US-AriaNeural` stem.      |
-| `1.1.0-amd64-de-de-katjaneural-preview`     | Container installatie kopie met de `de-DE` land instellingen en de `de-DE-KatjaNeural` stem.     |
-| `1.1.0-amd64-en-au-natashaneural-preview`   | Container installatie kopie met de `en-AU` land instellingen en de `en-AU-NatashaNeural` stem.   |
-| `1.1.0-amd64-en-ca-claraneural-preview`     | Container installatie kopie met de `en-CA` land instellingen en de `en-CA-ClaraNeural` stem.     |
-| `1.1.0-amd64-en-gb-libbyneural-preview`     | Container installatie kopie met de `en-GB` land instellingen en de `en-GB-LibbyNeural` stem.     |
-| `1.1.0-amd64-en-gb-mianeural-preview`       | Container installatie kopie met de `en-GB` land instellingen en de `en-GB-MiaNeural` stem.       |
-| `1.1.0-amd64-en-us-arianeural-preview`      | Container installatie kopie met de `en-US` land instellingen en de `en-US-AriaNeural` stem.      |
-| `1.1.0-amd64-en-us-guyneural-preview`       | Container installatie kopie met de `en-US` land instellingen en de `en-US-GuyNeural` stem.       |
-| `1.1.0-amd64-es-es-elviraneural-preview`    | Container installatie kopie met de `es-ES` land instellingen en de `es-ES-ElviraNeural` stem.    |
-| `1.1.0-amd64-es-mx-dalianeural-preview`     | Container installatie kopie met de `es-MX` land instellingen en de `es-MX-DaliaNeural` stem.     |
-| `1.1.0-amd64-fr-ca-sylvieneural-preview`    | Container installatie kopie met de `fr-CA` land instellingen en de `fr-CA-SylvieNeural` stem.    |
-| `1.1.0-amd64-fr-fr-deniseneural-preview`    | Container installatie kopie met de `fr-FR` land instellingen en de `fr-FR-DeniseNeural` stem.    |
-| `1.1.0-amd64-it-it-elsaneural-preview`      | Container installatie kopie met de `it-IT` land instellingen en de `it-IT-ElsaNeural` stem.      |
-| `1.1.0-amd64-ja-jp-nanamineural-preview`    | Container installatie kopie met de `ja-JP` land instellingen en de `ja-JP-NanamiNeural` stem.    |
-| `1.1.0-amd64-ko-kr-sunhineural-preview`     | Container installatie kopie met de `ko-KR` land instellingen en de `ko-KR-SunHiNeural` stem.     |
-| `1.1.0-amd64-pt-br-franciscaneural-preview` | Container installatie kopie met de `pt-BR` land instellingen en de `pt-BR-FranciscaNeural` stem. |
-| `1.1.0-amd64-zh-cn-xiaoxiaoneural-preview`  | Container installatie kopie met de `zh-CN` land instellingen en de `zh-CN-XiaoxiaoNeural` stem.  |
+| `1.2.0-amd64-de-de-katjaneural-preview`     | Container installatie kopie met de `de-DE` land instellingen en de `de-DE-KatjaNeural` stem.     |
+| `1.2.0-amd64-en-au-natashaneural-preview`   | Container installatie kopie met de `en-AU` land instellingen en de `en-AU-NatashaNeural` stem.   |
+| `1.2.0-amd64-en-ca-claraneural-preview`     | Container installatie kopie met de `en-CA` land instellingen en de `en-CA-ClaraNeural` stem.     |
+| `1.2.0-amd64-en-gb-libbyneural-preview`     | Container installatie kopie met de `en-GB` land instellingen en de `en-GB-LibbyNeural` stem.     |
+| `1.2.0-amd64-en-gb-mianeural-preview`       | Container installatie kopie met de `en-GB` land instellingen en de `en-GB-MiaNeural` stem.       |
+| `1.2.0-amd64-en-us-arianeural-preview`      | Container installatie kopie met de `en-US` land instellingen en de `en-US-AriaNeural` stem.      |
+| `1.2.0-amd64-en-us-guyneural-preview`       | Container installatie kopie met de `en-US` land instellingen en de `en-US-GuyNeural` stem.       |
+| `1.2.0-amd64-es-es-elviraneural-preview`    | Container installatie kopie met de `es-ES` land instellingen en de `es-ES-ElviraNeural` stem.    |
+| `1.2.0-amd64-es-mx-dalianeural-preview`     | Container installatie kopie met de `es-MX` land instellingen en de `es-MX-DaliaNeural` stem.     |
+| `1.2.0-amd64-fr-ca-sylvieneural-preview`    | Container installatie kopie met de `fr-CA` land instellingen en de `fr-CA-SylvieNeural` stem.    |
+| `1.2.0-amd64-fr-fr-deniseneural-preview`    | Container installatie kopie met de `fr-FR` land instellingen en de `fr-FR-DeniseNeural` stem.    |
+| `1.2.0-amd64-it-it-elsaneural-preview`      | Container installatie kopie met de `it-IT` land instellingen en de `it-IT-ElsaNeural` stem.      |
+| `1.2.0-amd64-ja-jp-nanamineural-preview`    | Container installatie kopie met de `ja-JP` land instellingen en de `ja-JP-NanamiNeural` stem.    |
+| `1.2.0-amd64-ko-kr-sunhineural-preview`     | Container installatie kopie met de `ko-KR` land instellingen en de `ko-KR-SunHiNeural` stem.     |
+| `1.2.0-amd64-pt-br-franciscaneural-preview` | Container installatie kopie met de `pt-BR` land instellingen en de `pt-BR-FranciscaNeural` stem. |
+| `1.2.0-amd64-zh-cn-xiaoxiaoneural-preview`  | Container installatie kopie met de `zh-CN` land instellingen en de `zh-CN-XiaoxiaoNeural` stem.  |
 
 ## <a name="key-phrase-extraction"></a>Sleuteltermextractie
 

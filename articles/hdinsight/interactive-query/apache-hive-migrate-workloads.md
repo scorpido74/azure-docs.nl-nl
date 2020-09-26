@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/13/2019
-ms.openlocfilehash: 313b6afb8bd96f8ae507118cd552110d5f07ff78
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 26dfe8d134f9f38d8272895583ba2eff614d78e4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087514"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308381"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Azure HDInsight 3,6 Hive-workloads migreren naar HDInsight 4,0
 
@@ -43,10 +43,10 @@ Gebruik de waarden in de tabel hieronder. Vervang door `SQLSERVERNAME DATABASENA
 
 |Eigenschap | Waarde |
 |---|---|
-|Script type|-Aangepast|
-|Name|Hive-upgrade|
+|Scripttype|- Aangepast|
+|Naam|Hive-upgrade|
 |Bash-script-URI|`https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/launch-schema-upgrade.sh`|
-|Knooppunt type (n)|Head|
+|Knooppunttype(n)|Head|
 |Parameters|GEBRUIKERS NAAM DATABASENAME DATA BASE WACHT WOORD|
 
 > [!Warning]  
@@ -79,7 +79,7 @@ Beheerde tabellen moeten standaard voldoen aan HDInsight 4,0. Nadat u de migrati
 Voer het hulp programma Hive post-upgrade uit van het HDInsight 4,0-cluster met behulp van de SSH-Shell:
 
 1. Maak via SSH verbinding met uw cluster-hoofd knooppunt. Zie [verbinding maken met HDInsight via SSH](../hdinsight-hadoop-linux-use-ssh-unix.md) voor instructies.
-1. Een aanmeldings shell openen als de Hive-gebruiker door uit te voeren`sudo su - hive`
+1. Een aanmeldings shell openen als de Hive-gebruiker door uit te voeren `sudo su - hive`
 1. Voer de volgende opdracht uit vanuit de shell.
 
     ```bash
@@ -208,30 +208,9 @@ Nadat u hebt bevestigd dat de release volledig en operationeel is, kunt u versie
 
 ## <a name="query-execution-across-hdinsight-versions"></a>Uitvoering van query's in HDInsight-versies
 
-Er zijn twee manieren voor het uitvoeren en opsporen van fouten in Hive/LLAP-query's binnen een HDInsight 3,6-cluster. HiveCLI biedt een opdracht regel ervaring en de weer gave TEZ View/Hive biedt een op GUI gebaseerde werk stroom.
+Er zijn twee manieren voor het uitvoeren en opsporen van fouten in Hive/LLAP-query's binnen een HDInsight 3,6-cluster. HiveCLI biedt een opdracht regel ervaring en de weer gave [TEZ View/Hive](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-use-hive-ambari-view) biedt een op GUI gebaseerde werk stroom.
 
-In HDInsight 4,0 is HiveCLI vervangen door Beeline. HiveCLI is een thrift-client voor Hiveserver 1 en Beeline is een JDBC-client die toegang biedt tot Hiveserver 2. Beeline kan ook worden gebruikt om verbinding te maken met een ander data base-eind punt dat compatibel is met JDBC. Beeline is out-of-box beschikbaar op HDInsight 4,0 zonder dat hiervoor een installatie nodig is.
-
-In HDInsight 3,6 is de GUI-client voor interactie met hive-server de Hive-weer gave Ambari. HDInsight 4,0 wordt niet geleverd met de weer gave Ambari. We hebben onze klanten een manier gegeven om Data Analytics Studio (DAS) te gebruiken. Dit is geen kern HDInsight-service. DAS wordt niet verzonden met HDInsight-clusters out-of-the-box en is geen officieel ondersteund pakket. DAS kan echter als volgt worden geïnstalleerd op het cluster met behulp van een [script actie](../hdinsight-hadoop-customize-cluster-linux.md) :
-
-|Eigenschap | Waarde |
-|---|---|
-|Script type|-Aangepast|
-|Name|DAS|
-|Bash-script-URI|`https://hdiconfigactions.blob.core.windows.net/dasinstaller/LaunchDASInstaller.sh`|
-|Knooppunt type (n)|Head|
-
-Wacht 10 tot 15 minuten en start vervolgens Data Analytics Studio met behulp van deze URL: `https://CLUSTERNAME.azurehdinsight.net/das/` .
-
-Een vernieuwing van de Ambari-gebruikers interface en/of het opnieuw opstarten van alle Ambari-onderdelen is mogelijk vereist voordat DAS wordt geopend.
-
-Als DAS is geïnstalleerd en u de query's die u hebt uitgevoerd, niet in de query viewer ziet, voert u de volgende stappen uit:
-
-1. Stel de configuraties voor Hive, TEZ en DAS in, zoals beschreven in [deze hand leiding voor het oplossen van problemen met das-installatie](https://docs.hortonworks.com/HDPDocuments/DAS/DAS-1.2.0/troubleshooting/content/das_queries_not_appearing.html).
-2. Zorg ervoor dat de volgende Azure Storage Directory-configuraties pagina-blobs zijn en dat ze worden vermeld onder `fs.azure.page.blob.dirs` :
-    * `hive.hook.proto.base-directory`
-    * `tez.history.logging.proto-base-dir`
-3. Start HDFS, Hive, TEZ en DAS op beide hoofd knooppunten.
+In HDInsight 4,0 is HiveCLI vervangen door Beeline. De weer gave TEZ/Hive bevat een werk stroom op basis van een GUI. HiveCLI is een thrift-client voor Hiveserver 1 en Beeline is een JDBC-client die toegang biedt tot Hiveserver 2. Beeline kan ook worden gebruikt om verbinding te maken met een ander data base-eind punt dat compatibel is met JDBC. Beeline is out-of-box beschikbaar op HDInsight 4,0 zonder dat hiervoor een installatie nodig is.
 
 ## <a name="next-steps"></a>Volgende stappen
 

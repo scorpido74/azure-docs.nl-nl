@@ -5,14 +5,14 @@ author: cynthn
 ms.author: cynthn
 ms.date: 05/02/2019
 ms.topic: how-to
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 79349f9da45a623581c40276c8e69d490c1dd253
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f5734d4b1871dd285fc83a72631f7d645e0b72ff
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085551"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307259"
 ---
 # <a name="create-an-image-and-use-a-user-assigned-managed-identity-to-access-files-in-azure-storage"></a>Een installatie kopie maken en een door de gebruiker toegewezen beheerde identiteit gebruiken om toegang te krijgen tot bestanden in Azure Storage 
 
@@ -200,7 +200,7 @@ az resource invoke-action \
      --action Run 
 ```
 
-Wacht tot de build is voltooid. Dit kan ongeveer 15 minuten duren.
+Wacht tot de compilatie is voltooid. Dit kan ongeveer 15 minuten duren.
 
 ## <a name="create-a-vm"></a>Een virtuele machine maken
 
@@ -256,4 +256,4 @@ az group delete -n $strResourceGroup
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [probleem oplossing](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md?toc=%2fazure%2fvirtual-machines%context%2ftoc.json)als u problemen hebt met het werken met Azure Image Builder.
+Zie [probleem oplossing](image-builder-troubleshoot.md?toc=%2fazure%2fvirtual-machines%context%2ftoc.json)als u problemen hebt met het werken met Azure Image Builder.

@@ -2,30 +2,38 @@
 title: bestand opnemen
 description: bestand opnemen
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
-ms.devlang: na
 ms.topic: include
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: e52433cfae1e889f07818f582fc3aef0752932ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79952ad04df4780e1b30eb9cf5c7a35f49cc34c2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74482494"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257063"
 ---
-Voordat u dit artikel leest, moet u vertrouwd zijn met de volgende concepten:
+Als u geen ervaring hebt met het beheren van identiteits-en toegangs beheer (IAM) met OAuth 2,0 en OpenID Connect Connect, of zelfs alleen voor de IAM op het micro soft Identity-platform, moet de volgende set artikelen hoog zijn in uw Lees lijst.
 
-- [Overzicht van micro soft Identity platform](../articles/active-directory/develop/v2-overview.md)
-- [Basisbeginselen van verificatie](../articles/active-directory/develop/authentication-scenarios.md)
-- [Doel groepen](../articles/active-directory/develop/v2-supported-account-types.md)
-- [Toepassings-en service-principals](../articles/active-directory/develop/app-objects-and-service-principals.md)
-- [Machtigingen en toestemming](../articles/active-directory/develop/v2-permissions-and-consent.md)
-- [Id-tokens](../articles/active-directory/develop/id-tokens.md) en [toegangs tokens](../articles/active-directory/develop/access-tokens.md)
+Hoewel het niet vereist is om te lezen voordat u uw eerste Snelstartgids of zelf studie hebt voltooid, hebben ze de onderwerpen integraal aan het platform en vertrouwd met ze om u op weg te helpen bij het bouwen van complexere scenario's.
+
+:::row:::
+    :::column:::
+        **Verificatie en autorisatie**
+
+        - [De basisbeginselen van verificatie](../articles/active-directory/develop/authentication-vs-authorization.md)
+        - [Id-tokens](../articles/active-directory/develop/id-tokens.md)
+        - [Toegangstokens](../articles/active-directory/develop/access-tokens.md)
+    :::column-end:::
+    :::column:::
+        **Microsoft-identiteitsplatform**
+
+        - [Doelgroepen](../articles/active-directory/develop/v2-supported-account-types.md)
+        - [Toepassingen en service-principals](../articles/active-directory/develop/app-objects-and-service-principals.md)
+        - [Machtigingen en toestemming](../articles/active-directory/develop/v2-permissions-and-consent.md)
+    :::column-end:::
+:::row-end:::

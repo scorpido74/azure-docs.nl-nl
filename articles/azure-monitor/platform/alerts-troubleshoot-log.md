@@ -6,112 +6,154 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 10/29/2018
-ms.openlocfilehash: d61e052b10b7255cac37531f889324075d596f3c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: ec2ffe71a32781a855da258f3621738f1a5f6be4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828452"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294288"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>Problemen met logboek waarschuwingen in Azure Monitor oplossen  
 
 In dit artikel wordt beschreven hoe u veelvoorkomende problemen met logboek waarschuwingen in Azure Monitor kunt oplossen. Het bevat ook oplossingen voor veelvoorkomende problemen met de functionaliteit en configuratie van logboek waarschuwingen.
 
-In de term *logboek waarschuwingen* worden regels beschreven die worden geactiveerd op basis van een logboek query in een [Azure log Analytics-werk ruimte](../log-query/get-started-portal.md) of in [Azure-toepassing Insights](../log-query/log-query-overview.md). Meer informatie over de functionaliteit, terminologie en typen in [logboek waarschuwingen in azure monitor](./alerts-unified-log.md).
+Met logboek waarschuwingen kunnen gebruikers een [log Analytics](../log-query/get-started-portal.md) query gebruiken om resources te evalueren elke ingestelde frequentie, en wordt een waarschuwing gestart op basis van de resultaten. Regels kunnen een of meer acties activeren met behulp van [actie groepen](./action-groups.md). [Meer informatie over de functionaliteit en termen van logboek waarschuwingen](alerts-unified-log.md).
 
 > [!NOTE]
-> In dit artikel wordt niet in overweging genomen gevallen waarin de Azure Portal een waarschuwings regel weergeeft en er geen melding wordt uitgevoerd door een gekoppelde actie groep. Zie voor dergelijke gevallen de details in [actie groepen maken en beheren in de Azure Portal](./action-groups.md).
+> In dit artikel wordt niet in overweging genomen gevallen waarin de Azure Portal een waarschuwings regel weergeeft en er geen melding wordt uitgevoerd door een gekoppelde actie groep. Zie voor dergelijke gevallen de details over [het oplossen van](./alerts-troubleshoot.md#action-or-notification-on-my-alert-did-not-work-as-expected)problemen.
 
 ## <a name="log-alert-didnt-fire"></a>De logboek waarschuwing is niet geactiveerd
 
-Hier volgen enkele veelvoorkomende redenen waarom de status voor een geconfigureerde [logboek waarschuwings regel in azure monitor](./alerts-log.md) niet wordt weer gegeven [als verwacht *fired* ](./alerts-managing-alert-states.md).
-
 ### <a name="data-ingestion-time-for-logs"></a>Gegevens opname tijd voor logboeken
 
-Met een waarschuwing van een logboek wordt uw query periodiek uitgevoerd op basis van [log Analytics](../log-query/get-started-portal.md) of [Application Insights](../log-query/log-query-overview.md). Omdat Azure Monitor veel terabytes aan gegevens van duizenden klanten in verschillende bronnen wereld wijd verwerkt, is de service vatbaar voor verschillende vertragingen. Zie [gegevens opname tijd in azure monitor logboeken](./data-ingestion-time.md)voor meer informatie.
+Azure Monitor verwerkt terabytes aan logboeken van klanten over de hele wereld, wat kan leiden tot [opname latentie van Logboeken](./data-ingestion-time.md).
 
-Om vertragingen te verhelpen, wacht het systeem en wordt de waarschuwings query meermaals herhaald als de benodigde gegevens nog niet zijn opgenomen. Het systeem heeft een exponentieel toenemende wacht tijd ingesteld. De logboek waarschuwing wordt pas geactiveerd nadat de gegevens beschikbaar zijn, waardoor de vertraging kan worden veroorzaakt door trage opname van logboek gegevens.
+Logboeken zijn semi-gestructureerde gegevens en meer laten verlaten, meer dan metrieken. Als u meer dan 4 minuten vertraging in gebrande waarschuwingen ondervindt, kunt u overwegen [metrische waarschuwingen](alerts-metric-overview.md)te gebruiken. U kunt gegevens verzenden naar het metrische archief vanuit Logboeken met [metrische waarschuwingen voor logboeken](alerts-metric-logs.md).
 
-### <a name="incorrect-time-period-configured"></a>Onjuiste tijds periode geconfigureerd
+Het systeem probeert de evaluatie van waarschuwingen meerdere keren opnieuw uit te stellen om latentie te beperken. Zodra de gegevens binnenkomen, wordt de waarschuwing geactiveerd, die in de meeste gevallen niet gelijk is aan de logboek record tijd.
 
-Zoals beschreven in het artikel over [terminologie voor logboek waarschuwingen](./alerts-unified-log.md#log-search-alert-rule---definition-and-types), geeft de tijds periode die in de configuratie wordt vermeld, het tijds bereik voor de query op. De query retourneert alleen records die binnen dit bereik zijn gemaakt.
+### <a name="incorrect-query-time-range-configured"></a>Onjuist bereik voor query tijd geconfigureerd
 
-De tijds periode beperkt de gegevens die zijn opgehaald voor een logboek query om misbruik te voor komen. het omzeilen van een tijd opdracht ( **zoals voorheen**) in een logboek query wordt omzeild. Als de tijds periode bijvoorbeeld is ingesteld op 60 minuten en de query wordt uitgevoerd om 1:15 uur, worden alleen records die zijn gemaakt tussen 12:15 uur en 1:15 uur, gebruikt voor de logboek query. Als de logboek query een tijd opdracht gebruikt, zoals **geleden (1d)**, gebruikt de query nog steeds gegevens tussen 12:15 en 1:15 uur, omdat de periode is ingesteld op dat interval.
+Het tijds bereik voor de query is ingesteld in de definitie van de regel voorwaarde. Dit veld wordt een **periode** genoemd voor werk ruimten en Application Insights, en het **bereik voor opheffen query tijden** voor alle andere resource typen. Net als bij log Analytics beperkt het tijds bereik de query gegevens tot de opgegeven periode. Zelfs als de opdracht **geleden** in de query wordt gebruikt, is het tijds bereik van toepassing. 
 
-Controleer of de tijds periode in de configuratie overeenkomt met de query. Voor het voor beeld dat eerder wordt weer gegeven, moet de periode worden ingesteld op 24 uur of 1.440 minuten (rood aangegeven) als de logboek query **geleden (1d)** met de groene markering gebruikt. Deze instelling zorgt ervoor dat de query wordt uitgevoerd zoals bedoeld.
+Een query scant bijvoorbeeld 60 minuten, wanneer het tijds bereik 60 minuten is, zelfs als de tekst **geleden (1d)** bevat. Het tijds bereik en de filter tijd voor query's moeten overeenkomen. In het voorbeeld geval wordt de **periode**voor het overschrijven van de  /  **query tijd** op één dag gewijzigd. dit werkt zoals verwacht.
 
 ![Periode](media/alert-log-troubleshoot/LogAlertTimePeriod.png)
 
-### <a name="suppress-alerts-option-is-set"></a>De optie waarschuwingen onderdrukken is ingesteld
+### <a name="actions-are-muted-in-the-alert-rule"></a>Acties zijn gedempt in de waarschuwings regel
 
-Zoals beschreven in stap 8 van het artikel over [het maken van een waarschuwings regel voor het logboek in de Azure Portal](./alerts-log.md#create-a-log-alert-rule-with-the-azure-portal), bieden logboek waarschuwingen een optie **waarschuwingen onderdrukken** om activerings-en meldings acties voor een ingestelde periode te onderdrukken. Als gevolg hiervan is het mogelijk dat een waarschuwing niet is geactiveerd. Eigenlijk werd het geactiveerd, maar werd dit onderdrukt.  
+Logboek waarschuwingen bieden een optie om het aantal geactiveerde waarschuwings acties voor een bepaalde periode te dempen. Dit veld heet **waarschuwingen onderdrukken** in werk ruimten en Application Insights. In alle andere resource typen wordt **demping-acties**genoemd. 
+
+Een veelvoorkomend probleem is dat u denkt dat de-waarschuwing de acties niet heeft gestart vanwege een service probleem. Zelfs moeilijk is de regel configuratie gedempt.
 
 ![Waarschuwingen onderdrukken](media/alert-log-troubleshoot/LogAlertSuppress.png)
 
-### <a name="metric-measurement-alert-rule-is-incorrect"></a>Waarschuwings regel voor metrische meting is onjuist
+### <a name="metric-measurement-alert-rule-with-splitting-using-the-legacy-log-analytics-api"></a>Waarschuwings regel voor metrische meting met splitsen met de verouderde Log Analytics-API
 
-*Waarschuwingen voor metrische meet logboeken* zijn een subtype van logboek waarschuwingen met speciale mogelijkheden en een beperkte waarschuwings query syntaxis. Voor een regel voor een waarschuwing voor metrische maat logboeken moet de query-uitvoer een metrische tijd reeks zijn. Dat wil zeggen dat de uitvoer een tabel is met een unieke, even grote tijd periode, samen met de bijbehorende geaggregeerde waarden.
+[Metrische maat eenheid](alerts-unified-log.md#calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value) is een type logboek waarschuwing dat is gebaseerd op een samenvatte tijd reeks resultaten. Met deze regels kan groeperen op kolommen worden toegestaan om [waarschuwingen te splitsen](alerts-unified-log.md#split-by-alert-dimensions). Als u de verouderde Log Analytics-API gebruikt, werkt splitsen niet zoals verwacht. Het kiezen van de groepering in de verouderde API wordt niet ondersteund.
 
-U kunt ervoor kiezen om extra variabelen te hebben in de tabel naast **AggregatedValue**. Deze variabelen kunnen worden gebruikt om de tabel te sorteren.
-
-Stel bijvoorbeeld dat een regel voor een waarschuwing voor metrische meting logboek is geconfigureerd als:
-
-- Query van`search *| summarize AggregatedValue = count() by $table, bin(timestamp, 1h)`  
-- Tijds duur van 6 uur
-- Drempel waarde van 50
-- Waarschuwings logica van drie opeenvolgende inbreuken
-- **Aggregatie bij** het kiezen van **$Table**
-
-Omdat de opdracht **samen vatting bevat... door** en biedt twee variabelen (**tijds tempel** en **$Table**), het systeem kiest **$Table** voor **aggregatie op**. Het systeem sorteert de resultaten tabel op het **$Table** veld, zoals wordt weer gegeven in de volgende scherm afbeelding. Vervolgens wordt gekeken naar de meerdere **AggregatedValue** -instanties voor elk tabel type (zoals **availabilityResults**) om te zien of er drie of meer opeenvolgende schendingen zijn.
-
-![Meting van metrische meet query's met meerdere waarden](media/alert-log-troubleshoot/LogMMQuery.png)
-
-Omdat **aggregatie** op is gedefinieerd voor **$Table**, worden de gegevens gesorteerd op een **$Table** kolom (rood aangegeven). Vervolgens groeperen en zoeken naar typen van het veld **aggregate bij** .
-
-Voor **$Table**worden bijvoorbeeld waarden voor **availabilityResults** beschouwd als één plot/entiteit (oranje aangegeven). In dit teken/deze entiteit controleert de waarschuwings service op drie opeenvolgende inbreuken (groen aangegeven). De schendingen activeren een waarschuwing voor de tabel waarde **availabilityResults**.
-
-Als er drie opeenvolgende inbreuken optreden voor een andere waarde van **$Table**, wordt er ook een andere waarschuwings melding voor hetzelfde item geactiveerd. De waarschuwings service sorteert automatisch de waarden in één tekening/entiteit (oranje aangegeven) op tijd.
-
-Stel nu dat de regel voor de waarschuwing voor metrische maat Logboeken is gewijzigd en dat de query was `search *| summarize AggregatedValue = count() by bin(timestamp, 1h)` . De rest van de configuratie bleef hetzelfde als voorheen, met inbegrip van de waarschuwings logica voor drie opeenvolgende inbreuken. De optie **aggregate op** in dit geval is standaard **Time Stamp** . Er wordt slechts één waarde gegeven in de query voor **samenvatten... door** (dat wil zeggen, **tijds tempel**). Net als in het vorige voor beeld zou de uitvoer aan het eind van de uitvoering er als volgt uitzien.
-
-   ![Meting van metrische meet query's met enkelvouds waarde](media/alert-log-troubleshoot/LogMMtimestamp.png)
-
-Omdat **aggregatie** op is gedefinieerd op **tijds tempel**, worden de gegevens gesorteerd op de **Time Stamp** -kolom (rood aangegeven). Vervolgens groeperen op **tijds tempel**. Waarden voor `2018-10-17T06:00:00Z` worden bijvoorbeeld beschouwd als één teken/entiteit (oranje aangegeven). In deze waarde is teken/entiteit geen opeenvolgende schendingen gevonden (omdat elke **Time Stamp** -waarde slechts één vermelding heeft). De waarschuwing wordt dus nooit geactiveerd. In dat geval moet de gebruiker:
-
-- Voeg een dummy-variabele of een bestaande variabele toe (bijvoorbeeld **$Table**) om op de juiste manier te sorteren met behulp van het veld **aggregate bij** .
-- Configureer de waarschuwings regel opnieuw om waarschuwings logica te gebruiken op basis van het **totale aantal schendingen** .
+Met de huidige ScheduledQueryRules-API kunt u **aggregatie instellen op** [metrische meet](alerts-unified-log.md#calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value) regels, wat naar verwachting werkt. [Meer informatie over overschakelen naar de huidige ScheduledQueryRules-API](alerts-log-api-switch.md).
 
 ## <a name="log-alert-fired-unnecessarily"></a>De logboek waarschuwing is onnodig geactiveerd
 
-Een geconfigureerde [logboek waarschuwings regel in azure monitor](./alerts-log.md) kan onverwacht worden geactiveerd wanneer u deze in azure- [waarschuwingen](./alerts-managing-alert-states.md)bekijkt. In de volgende secties worden enkele veelvoorkomende redenen beschreven.
+Een geconfigureerde [logboek waarschuwings regel in azure monitor](./alerts-log.md) kan onverwacht worden geactiveerd. In de volgende secties worden enkele veelvoorkomende redenen beschreven.
 
 ### <a name="alert-triggered-by-partial-data"></a>Waarschuwing geactiveerd door gedeeltelijke gegevens
 
-Log Analytics en Application Insights zijn onderhevig aan opname vertragingen en-verwerking. Wanneer u een logboek waarschuwings query uitvoert, merkt u mogelijk dat er geen gegevens beschikbaar zijn of dat er slechts enkele gegevens beschikbaar zijn. Zie [gegevens opname tijd vastleggen in azure monitor](./data-ingestion-time.md)voor meer informatie.
+Azure Monitor verwerkt terabytes aan logboeken van klanten over de hele wereld, wat kan leiden tot [opname latentie van Logboeken](./data-ingestion-time.md).
 
-Afhankelijk van hoe u de waarschuwings regel hebt geconfigureerd, kan het uitvoeren van de waarschuwing mislukken als er geen gegevens of gedeeltelijke gegevens in Logboeken worden weer gegeven op het moment van de uitvoering van de waarschuwing. In dergelijke gevallen raden wij u aan om de waarschuwings query of configuratie te wijzigen.
+Logboeken zijn semi-gestructureerde gegevens en meer laten verlaten, meer dan metrieken. Als u veel problemen ondervindt bij het starten van waarschuwingen, kunt u overwegen [metrische waarschuwingen](alerts-metric-overview.md)te gebruiken. U kunt gegevens verzenden naar het metrische archief vanuit Logboeken met [metrische waarschuwingen voor logboeken](alerts-metric-logs.md).
 
-Als u bijvoorbeeld de regel voor logboek waarschuwing configureert die moet worden geactiveerd wanneer het aantal resultaten van een analyse query kleiner is dan 5, wordt de waarschuwing geactiveerd wanneer er geen gegevens (nul record) of gedeeltelijke resultaten (één record) zijn. Maar na de vertraging van de gegevens opname kan dezelfde query met volledige gegevens een resultaat van 10 records opleveren.
+Logboek waarschuwingen werken het beste wanneer u gegevens in de logboeken wilt detecteren. Het werkt minder goed wanneer u een gebrek aan gegevens in de logboeken wilt detecteren. Bijvoorbeeld een waarschuwing over de heartbeat van de virtuele machine. 
 
-### <a name="alert-query-output-is-misunderstood"></a>Uitvoer van waarschuwings query is onduidelijk
+Hoewel er ingebouwde mogelijkheden zijn om te voor komen dat er valse waarschuwingen optreden, kunnen ze nog steeds worden uitgevoerd op zeer vertoonde gegevens (meer dan ongeveer 30 minuten) en gegevens met latentie pieken.
 
-U geeft de logica op voor logboek waarschuwingen in een Analytics-query. De analyse query kan verschillende big data en wiskundige functies gebruiken. De waarschuwings service voert uw query uit op intervallen die zijn opgegeven voor gegevens gedurende een opgegeven periode. Met de waarschuwings service worden subtiele wijzigingen in de query aangebracht op basis van het waarschuwings type. U kunt deze wijziging bekijken in de **query die moet worden uitgevoerd** op het scherm **signaal logica configureren** :
+### <a name="query-optimization-issues"></a>Problemen met query optimalisatie
+
+De waarschuwings service wijzigt uw query zodat deze kan worden geoptimaliseerd voor een lagere belasting en een latentie van een waarschuwing. De waarschuwings stroom is gebouwd om de resultaten te transformeren die het probleem aan een waarschuwing wijzen. In het geval van een query bijvoorbeeld:
+
+``` Kusto
+SecurityEvent
+| where EventID == 4624
+```
+
+Als het doel van de gebruiker is om te waarschuwen wanneer dit gebeurtenis type plaatsvindt, wordt de waarschuwings logica toegevoegd `count` aan de query. De query die wordt uitgevoerd, is:
+
+``` Kusto
+SecurityEvent
+| where EventID == 4624
+| count
+```
+
+U hoeft geen waarschuwings logica aan de query toe te voegen en dat kan zelfs problemen veroorzaken. Als u in het bovenstaande voor beeld uw query opneemt `count` , resulteert dit altijd in de waarde 1, omdat de waarschuwings service van wordt `count` uitgevoerd `count` .
+
+De geoptimaliseerde query is wat de logboek waarschuwing service uitvoert. U kunt de gewijzigde query uitvoeren in Log Analytics [Portal](../log-query/log-query-overview.md) of [API](/rest/api/loganalytics/).
+
+Voor werk ruimten en Application Insights wordt de query genoemd, die wordt **uitgevoerd** in het deel venster voor waarde. Selecteer in alle andere resource typen de optie **laatste waarschuwings query weer geven** op het tabblad voor waarde.
 
 ![De query die moet worden uitgevoerd](media/alert-log-troubleshoot/LogAlertPreview.png)
 
-In het vak **query die moet worden uitgevoerd** , wordt de service logboek waarschuwing uitgevoerd. Als u wilt weten wat de uitvoer van waarschuwings query's kan zijn voordat u de waarschuwing maakt, kunt u de vermelde query en de time span uitvoeren via de [analyse Portal](../log-query/log-query-overview.md) of de [analyse-API](/rest/api/loganalytics/).
-
 ## <a name="log-alert-was-disabled"></a>De logboek waarschuwing is uitgeschakeld
 
-De volgende secties bevatten een aantal redenen waarom Azure Monitor de [waarschuwings regel](./alerts-log.md)voor het logboek kan uitschakelen.
+De volgende secties bevatten een aantal redenen waarom Azure Monitor een waarschuwings regel voor het logboek kan uitschakelen. We hebben ook een [voor beeld opgenomen van het activiteiten logboek dat wordt verzonden wanneer een regel wordt uitgeschakeld](#activity-log-example-when-rule-is-disabled).
 
-### <a name="resource-where-the-alert-was-created-no-longer-exists"></a>De resource waar de waarschuwing is gemaakt, bestaat niet meer
+### <a name="alert-scope-no-longer-exists-or-was-moved"></a>Het waarschuwings bereik bestaat niet meer of is verplaatst
 
-Waarschuwings regels in logboek registreren die zijn gemaakt in Azure Monitor gericht op een specifieke resource, zoals een Azure Log Analytics-werk ruimte, een Azure-toepassing Insights-app en een Azure-resource. De service logboek waarschuwing voert vervolgens een analyse query uit die is opgegeven in de regel voor het opgegeven doel. Maar na het maken van de regel gaat gebruikers vaak naar verwijderen uit Azure, of verplaatsen binnen Azure, het doel van de waarschuwings regel voor het logboek. Omdat het doel van de waarschuwings regel niet meer geldig is, mislukt de uitvoering van de regel.
+Wanneer de bereik resources van een waarschuwings regel niet meer geldig zijn, mislukt de uitvoering van de regel. In dit geval wordt de facturering ook gestopt.
 
-In dergelijke gevallen Azure Monitor de logboek waarschuwing uitgeschakeld en zorgt u ervoor dat u niet onnodig wordt gefactureerd wanneer de regel niet continu kan worden uitgevoerd voor de verkleinde periode (bijvoorbeeld een week). U kunt de exacte tijd ontdekken wanneer Azure Monitor de logboek waarschuwing hebt uitgeschakeld via [Azure-activiteiten logboek](../../azure-resource-manager/management/view-activity-logs.md). In azure-activiteiten logboek wordt een gebeurtenis toegevoegd wanneer Azure Monitor de waarschuwings regel voor het logboek uitschakelt.
+Azure Monitor schakelt de logboek waarschuwing na een week uit als deze continu is mislukt.
 
-De volgende voorbeeld gebeurtenis in het Azure-activiteiten logboek is voor een waarschuwings regel die is uitgeschakeld vanwege een continue fout.
+### <a name="query-used-in-a-log-alert-isnt-valid"></a>De query die wordt gebruikt in een logboek waarschuwing is ongeldig
+
+Als er een waarschuwings regel voor het logboek wordt gemaakt, wordt de query gevalideerd voor de juiste syntaxis. Maar soms kan de query die in de waarschuwings regel voor logboeken wordt gegeven, mislukken. Enkele veelvoorkomende oorzaken zijn:
+
+- Er zijn regels gemaakt via de API en de validatie is overgeslagen door de gebruiker.
+- De query [wordt uitgevoerd op meerdere resources](../log-query/cross-workspace-query.md) en een of meer resources zijn verwijderd of verplaatst.
+- De [query is mislukt](https://dev.loganalytics.io/documentation/Using-the-API/Errors) omdat:
+    - De oplossing voor logboek registratie is niet [geïmplementeerd in de werk ruimte](../insights/solutions.md#install-a-monitoring-solution), waardoor er geen tabellen worden gemaakt.
+    - Gegevens die niet meer dan 30 dagen naar een tabel in de query zijn gestroomd, worden gestopt.
+    - [Aangepaste logboeken tabellen](data-sources-custom-logs.md) zijn nog niet gemaakt, omdat de gegevens stroom niet is gestart.
+- Wijzigingen in de [query taal](/azure/kusto/query/) bevatten een gewijzigde indeling voor opdrachten en functies. De query die u eerder hebt gegeven, is dus niet meer geldig.
+
+[Azure Advisor](../../advisor/advisor-overview.md) wordt u gewaarschuwd over dit gedrag. Er wordt een aanbeveling toegevoegd over de waarschuwings regel voor het logboek. De categorie die wordt gebruikt, is ' hoge Beschik baarheid ' met gemiddelde impact en een beschrijving van de regel voor logboek waarschuwing herstellen om bewaking te garanderen.
+
+## <a name="alert-rule-quota-was-reached"></a>Het quotum voor waarschuwings regels is bereikt
+
+Het aantal waarschuwingsregels voor zoeken in logboeken per abonnement en resource is afhankelijk van de quotumlimieten die [hier worden beschreven](../service-limits.md).
+
+### <a name="recommended-steps"></a>Aanbevolen stappen
+    
+Als u de quotum limiet hebt bereikt, kunnen de volgende stappen u helpen om het probleem op te lossen.
+
+1. Probeer de waarschuwings regels voor logboek zoeken te verwijderen of uit te scha kelen die niet meer worden gebruikt.
+1. Probeer het [splitsen van waarschuwingen per dimensie](alerts-unified-log.md#split-by-alert-dimensions) te gebruiken om het aantal regels te verminderen. Deze regels kunnen veel resources en detectie cases bewaken.
+1. Als de quotum limiet moet worden verhoogd, gaat u door met het openen van een ondersteunings aanvraag en geeft u de volgende informatie op:
+
+    - Abonnements-Id's en resource-Id's waarvoor de quotum limiet moet worden verhoogd.
+    - Reden voor toename van quotum.
+    - Resource type voor de quota verhoging: **log Analytics**, **Application Insights**, enzovoort.
+    - Aangevraagde quotum limiet.
+
+
+### <a name="to-check-the-current-usage-of-new-log-alert-rules"></a>Het huidige gebruik van nieuwe waarschuwings regels voor logboeken controleren
+    
+#### <a name="from-the-azure-portal"></a>Vanuit Azure Portal
+
+1. Open het scherm *waarschuwingen* en selecteer *waarschuwings regels beheren*
+2. Filteren op het relevante abonnement met behulp van de vervolgkeuzelijst *Abonnement*
+3. Zorg ervoor dat u niet filtert op een specifieke resource groep, resource type of resource
+4. Selecteer 'Zoeken in logboeken' in de vervolgkeuzelijst voor besturingselementen *Signaaltype*
+5. Controleer of de vervolgkeuzelijst voor besturingselementen *Status* is ingesteld op ‘ingeschakeld’
+6. Het totale aantal waarschuwingsregels voor zoeken in logboeken wordt weergegeven boven de lijst met regels
+
+#### <a name="from-api"></a>Van API
+
+- Power shell- [Get-AzScheduledQueryRule](/powershell/module/az.monitor/get-azscheduledqueryrule)
+- REST API - [Lijst per abonnement](/rest/api/monitor/scheduledqueryrules/listbysubscription)
+
+## <a name="activity-log-example-when-rule-is-disabled"></a>Voor beeld van een activiteiten logboek wanneer de regel is uitgeschakeld
+
+Als de query gedurende zeven dagen doorlopend mislukt, wordt de waarschuwing in het logboek door Azure Monitor uitgeschakeld en wordt de regel niet meer in rekening gebracht. U kunt de exacte tijd ontdekken wanneer Azure Monitor de logboek waarschuwing hebt uitgeschakeld in het [Azure-activiteiten logboek](../../azure-resource-manager/management/view-activity-logs.md). Zie dit voor beeld:
 
 ```json
 {
@@ -174,55 +216,8 @@ De volgende voorbeeld gebeurtenis in het Azure-activiteiten logboek is voor een 
 }
 ```
 
-### <a name="query-used-in-a-log-alert-is-not-valid"></a>De query die wordt gebruikt in een logboek waarschuwing, is ongeldig
-
-Elke waarschuwings regel voor logboeken die in Azure Monitor is gemaakt als onderdeel van de configuratie, moet een analyse query opgeven die regel matig door de waarschuwings service wordt uitgevoerd. De analyse query heeft mogelijk de juiste syntaxis op het moment van het maken of bijwerken van de regel. Soms kan de query in de waarschuwings regel voor Logboeken echter in een bepaalde tijd syntaxis problemen ontwikkelen en kan de regel worden uitgevoerd. Enkele veelvoorkomende redenen waarom een Analytics-query in een waarschuwings regel voor logboeken fouten kan ontwikkelen:
-
-- De query is geschreven om te worden [uitgevoerd op meerdere resources](../log-query/cross-workspace-query.md). En een of meer van de opgegeven resources bestaan niet meer.
-- De waarschuwing die is geconfigureerd voor het [metings type van metrische gegevens](./alerts-unified-log.md#metric-measurement-alert-rules) heeft een waarschuwings query die niet voldoet aan de syntaxis norm
-- Er is geen gegevens stroom naar het analyse platform. De [uitvoering van de query levert een fout](https://dev.loganalytics.io/documentation/Using-the-API/Errors) op omdat er geen gegevens voor de gegeven query zijn.
-- Wijzigingen in de [query taal](/azure/kusto/query/) bevatten een gewijzigde indeling voor opdrachten en functies. De query die eerder in een waarschuwings regel is gegeven, is dus niet meer geldig.
-
-[Azure Advisor](../../advisor/advisor-overview.md) wordt u gewaarschuwd over dit gedrag. Er wordt een aanbeveling toegevoegd voor de specifieke waarschuwings regel voor het logboek op Azure Advisor, onder de categorie hoge Beschik baarheid met gemiddelde impact en een beschrijving van de regel voor logboek waarschuwing herstellen om te controleren of deze is ingeschakeld.
-
-> [!NOTE]
-> Als een waarschuwings query in de waarschuwings regel van het logboek niet is opgelost nadat Azure Advisor zeven dagen een aanbeveling heeft gegeven, schakelt Azure Monitor de logboek waarschuwing uit en zorgt u ervoor dat er geen kosten in rekening worden gebracht wanneer de regel niet continu kan worden uitgevoerd voor een verkleinde periode (7 dagen). U kunt de exacte tijd voor het Azure Monitor uitschakelen van de waarschuwings regel voor het logboek vinden door te zoeken naar een gebeurtenis in het [activiteiten logboek van Azure](../../azure-resource-manager/management/view-activity-logs.md).
-
-## <a name="alert-rule-quota-was-reached"></a>Het quotum voor waarschuwings regels is bereikt
-
-Het aantal waarschuwings regels voor logboek zoeken per abonnement en resource zijn afhankelijk van de quotum limieten die [hier](../service-limits.md)worden beschreven.
-
-### <a name="recommended-steps"></a>Aanbevolen stappen
-    
-Als u de quotum limiet hebt bereikt, kunnen de volgende stappen u helpen om het probleem op te lossen.
-
-1. Probeer de waarschuwings regels voor logboek zoeken te verwijderen of uit te scha kelen die niet meer worden gebruikt.
-2. Als de quotumlimiet moet worden verhoogd, gaat u door met het openen van een ondersteuningsaanvraag en geeft u de volgende informatie op:
-
-    - Abonnement-id('s) waarvan de quotumlimiet moet(en) worden verhoogd
-    - Reden voor toename van quotum
-    - Resource type voor de quota verhoging: **log Analytics**, **Application Insights**, enzovoort.
-    - Aangevraagde quotumlimiet
-
-
-### <a name="to-check-the-current-usage-of-new-log-alert-rules"></a>Het huidige gebruik van nieuwe waarschuwings regels voor logboeken controleren
-    
-#### <a name="from-the-azure-portal"></a>Vanuit Azure Portal
-
-1. Open het scherm *Waarschuwingen* en klik op *Waarschuwingsregels beheren*
-2. Filteren op het relevante abonnement met behulp van de vervolgkeuzelijst *Abonnement*
-3. Zorg ervoor dat u NIET filtert op een specifieke resourcegroep, resourcetype of resource
-4. Selecteer in de vervolg keuzelijst *type signaal* de optie zoeken naar Logboeken
-5. Controleer of de vervolgkeuzelijst voor besturingselementen *Status* is ingesteld op ‘ingeschakeld’
-6. Het totale aantal waarschuwings regels voor logboek zoeken wordt weer gegeven boven de lijst met regels
-
-#### <a name="from-api"></a>Van API
-
-- Power shell- [Get-AzScheduledQueryRule](/powershell/module/az.monitor/get-azscheduledqueryrule?view=azps-3.7.0)
-- REST API - [Lijst per abonnement](/rest/api/monitor/scheduledqueryrules/listbysubscription)
-
 ## <a name="next-steps"></a>Volgende stappen
 
 - Meer informatie over [logboek waarschuwingen in azure](./alerts-unified-log.md).
-- Meer informatie over [Application Insights](../log-query/log-query-overview.md).
+- Meer informatie over het [configureren van logboek waarschuwingen](../log-query/log-query-overview.md).
 - Meer informatie over [logboek query's](../log-query/log-query-overview.md).

@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 9/21/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4279da10de92bc8bf9cd564eaae02db2fef76a64
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7fe0e91f30930b9aaf0fb484b3b1e74d707d8c21
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936641"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307803"
 ---
 # <a name="create-and-manage-azure-database-for-mysql---flexible-server-firewall-rules-using-the-azure-cli"></a>Azure Database for MySQL-flexibele server firewall regels maken en beheren met de Azure CLI
 
@@ -33,17 +33,17 @@ In dit artikel wordt de nadruk gelegd op het maken van een MySQL **-server met o
 
 Als u Cloud Shell wilt openen, selecteert u **Proberen** in de rechterbovenhoek van een codeblok. Als u naar [https://shell.azure.com/bash](https://shell.azure.com/bash) gaat, kunt u Cloud Shell ook openen in een afzonderlijk browsertabblad. Selecteer **Kopiëren** om de codeblokken te kopiëren, plak deze in Cloud Shell en selecteer vervolgens **Enter** om de code uit te voeren.
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, hebt u voor deze snelstart versie 2.0 of hoger van Azure CLI nodig. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, hebt u voor deze snelstart versie 2.0 of hoger van Azure CLI nodig. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U moet zich aanmelden bij uw account met behulp van de opdracht [az login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login). Let op de eigenschap **id** , die verwijst naar de **abonnements-id** voor uw Azure-account.
+U moet zich aanmelden bij uw account met behulp van de opdracht [az login](https://docs.microsoft.com/cli/azure/reference-index#az-login). Let op de eigenschap **id** , die verwijst naar de **abonnements-id** voor uw Azure-account.
 
 ```azurecli-interactive
 az login
 ```
 
-Selecteer het specifieke abonnement in uw account met de opdracht [az account set](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-set). Noteer de **id-** waarde van de AZ- **aanmeld** uitvoer die moet worden gebruikt als de waarde voor het argument **abonnement** in de opdracht. Als u meerdere abonnementen hebt, kiest u het juiste abonnement waarin de resource moet worden gefactureerd. U kunt al uw abonnementen ophalen met de opdracht [az account list](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-list).
+Selecteer het specifieke abonnement in uw account met de opdracht [az account set](https://docs.microsoft.com/cli/azure/account#az-account-set). Noteer de **id-** waarde van de AZ- **aanmeld** uitvoer die moet worden gebruikt als de waarde voor het argument **abonnement** in de opdracht. Als u meerdere abonnementen hebt, kiest u het juiste abonnement waarin de resource moet worden gefactureerd. U kunt al uw abonnementen ophalen met de opdracht [az account list](https://docs.microsoft.com/cli/azure/account#az-account-list).
 
 ```azurecli
 az account set --subscription <subscription id>
@@ -53,7 +53,7 @@ az account set --subscription <subscription id>
 
 U kunt de `az mysql flexible-server --public access` opdracht gebruiken om de flexibele server met *open bare toegang (toegestane IP-adressen)* te maken en de firewall regels te configureren tijdens het maken van een flexibele server. U kunt de schakel optie **--Public-Access** gebruiken om de toegestane IP-adressen op te geven waarmee verbinding kan worden gemaakt met de server. U kunt één of meerdere IP-adressen opgeven die moeten worden opgenomen in de lijst met toegestane Ip's. Het IP-adres bereik moet een streepje gescheiden en geen spaties bevatten. Er zijn verschillende opties voor het maken van een flexibele server met behulp van CLI, zoals wordt weer gegeven in het onderstaande voor beeld.
 
-Raadpleeg de naslag documentatie voor Azure CLI <!--FIXME --> voor de volledige lijst met configureerbare CLI-parameters. In de onderstaande opdrachten kunt u optioneel de resource groep opgeven.
+Raadpleeg de [naslag documentatie](/cli/azure/mysql/flexible-server) van Azure CLI voor de volledige lijst met CONFIGUREER bare cli-para meters. In de onderstaande opdrachten kunt u optioneel de resource groep opgeven.
 
 - Een flexibele server met open bare toegang maken en IP-adres van client toevoegen om toegang te krijgen tot de server
     ```azurecli-interactive
@@ -95,7 +95,7 @@ Opdrachten
 - **weer geven**: de details van een flexibele server firewall regel weer geven.
 - **verwijderen**: een flexibele server firewall regel verwijderen.
 
-Raadpleeg de naslag documentatie voor Azure CLI <!--FIXME --> voor de volledige lijst met configureerbare CLI-parameters. In de onderstaande opdrachten kunt u optioneel de resource groep opgeven.
+Raadpleeg de [naslag documentatie](/cli/azure/mysql/flexible-server) van Azure CLI voor de volledige lijst met CONFIGUREER bare cli-para meters. In de onderstaande opdrachten kunt u optioneel de resource groep opgeven.
 
 ### <a name="create-a-firewall-rule"></a>Een firewallregel maken
 Gebruik de `az mysql flexible-server firewall-rule create` opdracht om een nieuwe firewall regel te maken op de server.

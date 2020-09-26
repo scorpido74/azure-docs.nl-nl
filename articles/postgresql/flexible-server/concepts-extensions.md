@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: 1126c218f8e80b7d89183746890a3fae1357d29d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/23/2020
+ms.openlocfilehash: f38006e83be47142a6d7a6db25eefb3daccd0d92
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935689"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307582"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---flexible-server"></a>PostgreSQL-extensies in Azure Database for PostgreSQL-flexibele server
 
@@ -33,6 +33,8 @@ De volgende uitbrei dingen zijn beschikbaar in Azure Database for PostgreSQL fle
 > [!div class="mx-tableFixed"]
 > | **Toestelnummer**| **Versie van de extensie** | **Beschrijving** |
 > |---|---|---|
+> |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 3.0.0           | Wordt gebruikt om een adres te parseren in onderdeel elementen. |
+> |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 3.0.0           | Adres van voor beeld van een gegevensset voor de standaardiserer|
 > |[amcheck](https://www.postgresql.org/docs/12/amcheck.html)                    | 1.2             | functies voor het controleren van relatie-integriteit|
 > |[bloei](https://www.postgresql.org/docs/12/bloom.html)                    | 1,0             | toegangs methode voor bloei-hand tekening bestand op basis van index|
 > |[btree_gin](https://www.postgresql.org/docs/12/btree-gin.html)                    | 1.3             | ondersteuning voor het indexeren van algemene gegevens typen in EGINNEN|
@@ -61,7 +63,11 @@ De volgende uitbrei dingen zijn beschikbaar in Azure Database for PostgreSQL fle
 > |[pgrowlocks](https://www.postgresql.org/docs/12/pgrowlocks.html)                   | 1.2             | vergrendelings informatie op rijniveau weer geven|
 > |[pgstattuple](https://www.postgresql.org/docs/12/pgstattuple.html)                  | 1.5             | statistieken van tuple-niveau weer geven|
 > |[plpgsql](https://www.postgresql.org/docs/12/plpgsql.html)                      | 1,0             | Taal van PL/pgSQL-procedure|
-> |[postgis](https://www.postgis.net/)                      | 3.0.0           | Ruimtelijke typen en functies voor PostGIS geometrie, geografie en raster|
+> |[postgis](https://www.postgis.net/)                      | 3.0.0           | PostGIS geometrie, geografie |
+> |[postgis_raster](https://www.postgis.net/)               | 3.0.0           | Raster typen en-functies van PostGIS| 
+> |[postgis_sfcgal](https://www.postgis.net/)               | 3.0.0           | PostGIS SFCGAL-functies|
+> |[postgis_tiger_geocoder](https://www.postgis.net/)       | 3.0.0           | PostGIS Tiger geocodeer en reverse geocodeer|
+> |[postgis_topology](https://postgis.net/docs/Topology.html)             | 3.0.0           | Ruimtelijke typen en functies van de PostGIS-topologie|
 > |[postgres_fdw](https://www.postgresql.org/docs/12/postgres-fdw.html)                 | 1,0             | externe-gegevens wrapper voor externe PostgreSQL-servers|
 > |[sslinfo](https://www.postgresql.org/docs/12/sslinfo.html)                    | 1.2             | informatie over SSL-certificaten|
 > |[tsm_system_rows](https://www.postgresql.org/docs/12/tsm-system-rows.html)                    | 1,0             |  TABLESAMPLE-methode die het aantal rijen als een limiet accepteert|
@@ -76,6 +82,8 @@ De volgende uitbrei dingen zijn beschikbaar in Azure Database for PostgreSQL fle
 > [!div class="mx-tableFixed"]
 > | **Toestelnummer**| **Versie van de extensie** | **Beschrijving** |
 > |---|---|---|
+> |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.5.1           | Wordt gebruikt om een adres te parseren in onderdeel elementen. |
+> |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.5.1           | Adres van voor beeld van een gegevensset voor de standaardiserer|
 > |[amcheck](https://www.postgresql.org/docs/11/amcheck.html)                    | 1.1             | functies voor het controleren van relatie-integriteit|
 > |[bloei](https://www.postgresql.org/docs/11/bloom.html)                    | 1,0             | toegangs methode voor bloei-hand tekening bestand op basis van index|
 > |[btree_gin](https://www.postgresql.org/docs/11/btree-gin.html)                    | 1.3             | ondersteuning voor het indexeren van algemene gegevens typen in EGINNEN|
@@ -105,6 +113,9 @@ De volgende uitbrei dingen zijn beschikbaar in Azure Database for PostgreSQL fle
 > |[pgstattuple](https://www.postgresql.org/docs/11/pgstattuple.html)                  | 1.5             | statistieken van tuple-niveau weer geven|
 > |[plpgsql](https://www.postgresql.org/docs/11/plpgsql.html)                      | 1,0             | Taal van PL/pgSQL-procedure|
 > |[postgis](https://www.postgis.net/)                      | 2.5.1           | Ruimtelijke typen en functies voor PostGIS geometrie, geografie en raster|
+> |[postgis_sfcgal](https://www.postgis.net/)               | 2.5.1           | PostGIS SFCGAL-functies|
+> |[postgis_tiger_geocoder](https://www.postgis.net/)       | 2.5.1           | PostGIS Tiger geocodeer en reverse geocodeer|
+> |[postgis_topology](https://postgis.net/docs/Topology.html)             | 2.5.1           | Ruimtelijke typen en functies van de PostGIS-topologie|
 > |[postgres_fdw](https://www.postgresql.org/docs/11/postgres-fdw.html)                 | 1,0             | externe-gegevens wrapper voor externe PostgreSQL-servers|
 > |[sslinfo](https://www.postgresql.org/docs/11/sslinfo.html)                    | 1.2             | informatie over SSL-certificaten|
 > |[tablefunc](https://www.postgresql.org/docs/11/tablefunc.html)                    | 1,0             | functies voor het bewerken van hele tabellen, inclusief Kruistabel query's|
@@ -114,9 +125,21 @@ De volgende uitbrei dingen zijn beschikbaar in Azure Database for PostgreSQL fle
 > |[uuid-ossp](https://www.postgresql.org/docs/11/uuid-ossp.html)                    | 1.1             | Universele unieke id's (UUID) genereren|
 
 
+## <a name="dblink-and-postgres_fdw"></a>dblink en postgres_fdw
+met [dblink](https://www.postgresql.org/docs/current/contrib-dblink-function.html) en [postgres_fdw](https://www.postgresql.org/docs/current/postgres-fdw.html) kunt u verbinding maken met een postgresql-server of een andere Data Base op dezelfde server. De verzendende server moet uitgaande verbindingen met de ontvangende server toestaan. De ontvangende server moet verbindingen van de verzendende server toestaan.
+
+U wordt aangeraden uw servers te implementeren met [VNet-integratie](concepts-networking.md) als u van plan bent om deze twee uitbrei dingen te gebruiken. Standaard maakt VNet-integratie verbindingen mogelijk tussen servers in het VNET. U kunt er ook voor kiezen om de toegang aan te passen met [VNet-netwerk beveiligings groepen](../../virtual-network/manage-network-security-group.md) .
+
+
 ## <a name="pg_prewarm"></a>pg_prewarm
 
 Met de extensie pg_prewarm worden relationele gegevens in de cache geladen. Bij de voor bereiding van uw caches hebt u na het opnieuw opstarten betere reactie tijden bij de eerste uitvoering van uw query's. De automatische prewarme-functionaliteit is momenteel niet beschikbaar in Azure Database for PostgreSQL-flexibele server.
+
+## <a name="pg_stat_statements"></a>pg_stat_statements
+De [uitbrei ding pg_stat_statements](https://www.postgresql.org/docs/current/pgstatstatements.html) is vooraf geladen op elke Azure database for PostgreSQL flexibele server, zodat u de uitvoerings statistieken van SQL-instructies kunt volgen.
+De instelling `pg_stat_statements.track` , die bepaalt welke instructies door de uitbrei ding worden geteld, wordt standaard ingesteld op `top` , wat betekent dat alle instructies die rechtstreeks door clients worden uitgegeven, worden bijgehouden. De twee andere tracking niveaus zijn `none` en `all` . Deze instelling kan worden geconfigureerd als een server parameter.
+
+Er is een verhouding tussen de informatie over het uitvoeren van query's pg_stat_statements biedt en de invloed op de prestaties van de server bij het vastleggen van elke SQL-instructie. Als u de extensie pg_stat_statements niet actief gebruikt, wordt u aangeraden `pg_stat_statements.track` om in te stellen op `none` . Houd er rekening mee dat sommige bewakings services van derden afhankelijk zijn van pg_stat_statements voor het leveren van query's met betrekking tot query prestaties, zodat u kunt controleren of dit het geval is voor u of niet.
 
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -1,18 +1,18 @@
 ---
 title: Linux-Vm's samen zoeken
-description: Meer informatie over hoe co-locaties van Azure-VM-bronnen de latentie kunnen verbeteren.
+description: Meer informatie over het co-locatie van Azure VM-resources voor Linux kan de latentie verbeteren.
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: zivr
-ms.openlocfilehash: 000c8c8955314060ae9bdedb96b086a509fb3e96
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 6bf01f4da6ce96b413c87b81c14a998603cebd6b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87368639"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91279720"
 ---
-# <a name="co-locate-resources-for-improved-latency"></a>Resources samen zoeken voor verbeterde latentie
+# <a name="co-locate-resources-for-improved-latency"></a>Resources gecombineerd zoeken voor verbeterde latentie
 
 Wanneer u uw toepassing in azure implementeert, wordt er netwerk latentie gemaakt, wat van invloed kan zijn op de algehele prestaties van uw toepassing. 
 

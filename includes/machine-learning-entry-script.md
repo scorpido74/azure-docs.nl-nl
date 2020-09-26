@@ -6,68 +6,79 @@ ms.subservice: core
 ms.topic: include
 ms.date: 07/31/2020
 ms.author: gopalv
-ms.openlocfilehash: 2b4f768b25917e712380ca4a7f8ac58cb6140777
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 4975bb2a8ad384b8abc28f1d1835c2c9e98b8c54
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542771"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315423"
 ---
 Het invoerscript ontvangt de gegevens die bij een geïmplementeerde webservice zijn ingediend en stuurt ze door naar het model. Vervolgens wordt de reactie die door het model is geretourneerd naar de client geretourneerd. *Het script is specifiek voor uw model*. Het moet inzicht hebben in de gegevens die het model verwacht en retourneert.
 
-Het script bevat twee functies voor het laden en uitvoeren van het model:
+De twee dingen die u nodig hebt om uw invoer script uit te voeren, zijn:
 
-* `init()`: Deze functie laadt meestal het model in een globaal object. Deze functie wordt slechts één keer uitgevoerd wanneer de docker-container voor uw webservice wordt gestart.
+1. Uw model laden (met behulp van een functie genaamd `init()` )
+1. Uw model uitvoeren op invoer gegevens (met behulp van een functie genaamd `run()` )
 
-* `run(input_data)`: Deze functie maakt gebruik van het model voor het voors pellen van een waarde op basis van de invoer gegevens. De in- en uitvoer van de uitvoerbewerking maken doorgaans gebruik van JSON voor serialisatie en deserialisatie. U kunt ook werken met onbewerkte binaire gegevens. U kunt de gegevens transformeren voordat u deze naar het model verzendt of voordat u deze naar de client retourneert.
+We gaan deze stappen uitgebreid door nemen.
 
-De REST API verwacht dat de hoofd tekst van de aanvraag een JSON-document is met de volgende structuur:
+### <a name="writing-init"></a>Init schrijven () 
+
+#### <a name="loading-a-registered-model"></a>Een geregistreerd model laden
+
+Uw geregistreerde modellen worden opgeslagen in een pad naar een omgevings variabele met de naam `AZUREML_MODEL_DIR` . Zie voor meer informatie over de exacte directory structuur [model bestanden zoeken in uw invoer script](../articles/machine-learning/how-to-deploy-advanced-entry-script.md#load-registered-models)
+
+#### <a name="loading-a-local-model"></a>Een lokaal model laden
+
+Als u hebt gekozen voor het registreren van uw model en uw model hebt door gegeven als onderdeel van de bron directory, kunt u het op dezelfde manier lezen als u lokaal zou doen door het pad naar het model te geven ten opzichte van uw score script. Als u bijvoorbeeld een directory hebt gestructureerd als:
+
+```bash
+
+- source_dir
+    - score.py
+    - models
+        - model1.onnx
+
+```
+
+u kunt uw modellen laden met de volgende python-code:
+
+```python
+import os
+
+model = open(os.path.join('.', 'models', 'model1.onnx'))
+```
+
+#### <a name="writing-run"></a>Schrijf bewerking ()
+
+`run()` wordt uitgevoerd telkens wanneer uw model een score aanvraag ontvangt, en verwacht de hoofd tekst van de aanvraag een JSON-document met de volgende structuur:
 
 ```json
 {
-    "data":
-        [
-            <model-specific-data-structure>
-        ]
+    "data": <model-specific-data-structure>
 }
+
 ```
+
+De invoer naar `run()` is een python-teken reeks die wille keurig de gegevens sleutel volgt.
 
 In het volgende voor beeld wordt gedemonstreerd hoe u een geregistreerd scikit-model kunt laden en een score hebt met numpy-gegevens:
 
 ```python
-#Example: scikit-learn and Swagger
 import json
 import numpy as np
 import os
 from sklearn.externals import joblib
-from sklearn.linear_model import Ridge
-
-from inference_schema.schema_decorators import input_schema, output_schema
-from inference_schema.parameter_types.numpy_parameter_type import NumpyParameterType
 
 
 def init():
     global model
-    # AZUREML_MODEL_DIR is an environment variable created during deployment. Join this path with the filename of the model file.
-    # It holds the path to the directory that contains the deployed model (./azureml-models/$MODEL_NAME/$VERSION).
-    # If there are multiple models, this value is the path to the directory containing all deployed models (./azureml-models).
     model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_mnist_model.pkl')
-
-    # If your model were stored in the same directory as your score.py, you could also use the following:
-    # model_path = os.path.abspath(os.path.join(os.path.dirname(__file_), 'sklearn_mnist_model.pkl')
-
-    # Deserialize the model file back into a sklearn model
     model = joblib.load(model_path)
 
-
-input_sample = np.array([[10, 9, 8, 7, 6, 5, 4, 3, 2, 1]])
-output_sample = np.array([3726.995])
-
-
-@input_schema('data', NumpyParameterType(input_sample))
-@output_schema(NumpyParameterType(output_sample))
 def run(data):
     try:
+        data = np.array(json.loads(data))
         result = model.predict(data)
         # You can return any data type, as long as it is JSON serializable.
         return result.tolist()
@@ -76,11 +87,4 @@ def run(data):
         return error
 ```
 
-Zie de volgende scripts voor meer voor beelden:
-
-* [PyTorch](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/pytorch)
-* [TensorFlow](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/tensorflow)
-* [Keras](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras)
-* [AutoML](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features)
-* [ONNX](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx/)
-* [Binaire gegevens](../articles/machine-learning/how-to-deploy-advanced-entry-script.md#binary-data)
+Voor meer geavanceerde voor beelden, waaronder automatische Swagger-schema's genereren en binaire bestanden (d.w.z. afbeeldings gegevens), leest u [het artikel over geavanceerde invoer scripts ontwerpen](../articles/machine-learning/how-to-deploy-advanced-entry-script.md)

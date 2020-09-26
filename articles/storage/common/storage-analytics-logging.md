@@ -9,12 +9,12 @@ ms.date: 07/23/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 7010e47dd9272ce620f8e057fbfb36e1fd5b26c9
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5b4e2fa95b9a5eebf393d7c64feecd3997b7ecfd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021167"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280025"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure Storage Analytics-logboek registratie
 
@@ -206,7 +206,7 @@ azcopy copy 'https://mystorageaccount.blob.core.windows.net/$logs/queue' 'C:\Log
 
 Zie [specifieke bestanden downloaden](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-blobs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#download-specific-files)voor meer informatie over het downloaden van specifieke bestanden.
 
-Wanneer u uw logboek gegevens hebt gedownload, kunt u de logboek vermeldingen in de bestanden weer geven. Deze logboek bestanden maken gebruik van een tekst indeling met scheidings tekens die veel hulpprogram ma's voor logboek registratie kunnen parseren, waaronder micro soft Message Analyzer (Zie de hand leiding voor [bewaking, diagnose en probleem oplossing Microsoft Azure Storage](storage-monitoring-diagnosing-troubleshooting.md)) voor meer informatie. Andere hulpprogram ma's hebben verschillende voorzieningen voor het opmaken, filteren, sorteren en zoeken in de inhoud van uw logboek bestanden. Zie [Opslaganalyse-logboek indeling](/rest/api/storageservices/storage-analytics-log-format) en [Opslaganalyse geregistreerde bewerkingen en status berichten](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)voor meer informatie over de indeling en inhoud van het logboek bestand voor opslag logboek registratie.
+Wanneer u uw logboek gegevens hebt gedownload, kunt u de logboek vermeldingen in de bestanden weer geven. Deze logboek bestanden maken gebruik van een tekst indeling met scheidings tekens die door veel hulpprogram ma's voor logboeken kunnen worden geparseerd (Zie de hand leiding voor [bewaking, diagnose en probleem oplossing Microsoft Azure Storage](storage-monitoring-diagnosing-troubleshooting.md)) voor meer informatie. Andere hulpprogram ma's hebben verschillende voorzieningen voor het opmaken, filteren, sorteren en zoeken in de inhoud van uw logboek bestanden. Zie [Opslaganalyse-logboek indeling](/rest/api/storageservices/storage-analytics-log-format) en [Opslaganalyse geregistreerde bewerkingen en status berichten](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)voor meer informatie over de indeling en inhoud van het logboek bestand voor opslag logboek registratie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

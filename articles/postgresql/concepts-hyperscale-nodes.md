@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 07/28/2019
-ms.openlocfilehash: a02583825f4a1ef15992aa2307e7f666d5abeaba
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: b3eda2c8de8319552f32938f20ff98af0e0a49fc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136453"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314824"
 ---
 # <a name="nodes-and-tables-in-azure-database-for-postgresql--hyperscale-citus"></a>Knoop punten en tabellen in Azure Database for PostgreSQL – grootschalige (Citus)
 
@@ -24,7 +24,7 @@ Met het hosting type grootschalige (Citus) kunnen Azure Database for PostgreSQL-
 
 Elke server groep heeft een coördinator knooppunt en meerdere werk rollen. Toepassingen sturen hun query's naar het coördinator knooppunt, die het doorstuurt naar de relevante werk nemers en de resultaten samenvoegt. Toepassingen kunnen niet rechtstreeks verbinding maken met werk nemers.
 
-Met grootschalige (Citus) kan de database beheerder tabellen *distribueren* , waarbij verschillende rijen op verschillende werk knooppunten worden opgeslagen. Gedistribueerde tabellen zijn de belangrijkste voor het grootschalige van de prestaties. Als het niet lukt om tabellen te distribueren, worden ze volledig op het coördinator knooppunt uitgevoerd en kunnen ze niet profiteren van parallellisme op meerdere machines.
+Met grootschalige (Citus) kan de database beheerder tabellen *distribueren* , waarbij verschillende rijen op verschillende werk knooppunten worden opgeslagen. Gedistribueerde tabellen zijn de belangrijkste tot grootschalige (Citus)-prestaties. Als het niet lukt om tabellen te distribueren, worden ze volledig op het coördinator knooppunt uitgevoerd en kunnen ze niet profiteren van parallellisme op meerdere machines.
 
 Voor elke query op gedistribueerde tabellen stuurt de coördinator deze om naar één worker-knoop punt, of parallelizes deze op verschillende manieren, afhankelijk van het feit of de vereiste gegevens zich op één knoop punt of meerdere hebben voordoen. De coördinator beslist wat er moet gebeuren met tabellen met advies voor de meta gegevens. Deze tabellen volgen de DNS-namen en de status van worker-knoop punten en de distributie van gegevens tussen knoop punten.
 

@@ -4,12 +4,12 @@ description: In dit artikel vindt u antwoorden op veelgestelde vragen over het m
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 7206a62e3148c1bbb8d2e3704d991025deeece37
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 8813794d44803a32bc6e156d3ca76360d84604c5
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377315"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91370824"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Veelgestelde vragen: back-ups maken van virtuele Azure-machines
 
@@ -20,6 +20,12 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over het maken van back
 ### <a name="which-vm-images-can-be-enabled-for-backup-when-i-create-them"></a>Welke VM-installatie kopieën kunnen worden ingeschakeld voor back-up wanneer ik ze Maak?
 
 Wanneer u een virtuele machine maakt, kunt u back-ups inschakelen voor Vm's met [ondersteunde besturings systemen](backup-support-matrix-iaas.md#supported-backup-actions).
+
+### <a name="why-initial-backup-is-taking-lot-of-time-to-complete"></a>Waarom duurt het veel tijd om de eerste back-up te volt ooien?
+
+De eerste back-up is altijd een volledige back-up en is afhankelijk van de grootte van de gegevens en wanneer de back-up wordt verwerkt. <br>
+Zie [Aanbevolen procedures voor back-](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction#best-practices)ups om de back-upprestaties te verbeteren. [Overwegingen voor back-ups](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction#backup-and-restore-considerations) en [back-upprestaties](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction#backup-performance)<br>
+Hoewel de totale back-uptijd voor incrementele back-ups minder dan 24 uur is, is dit mogelijk niet het geval voor de eerste back-up.
 
 ### <a name="is-the-backup-cost-included-in-the-vm-cost"></a>Worden de kosten voor back-ups opgenomen in de VM-kosten?
 
@@ -154,6 +160,10 @@ Voor bewerkingen zoals geheime/sleutel rollen is deze stap niet vereist en dezel
 ### <a name="can-i-access-the-vm-once-restored-due-to-a-vm-having-broken-relationship-with-domain-controller"></a>Kan ik toegang krijgen tot de virtuele machine nadat deze is hersteld vanwege een verbroken relatie met de domein controller?
 
 Ja, u kunt de VM na het herstellen openen als gevolg van een virtuele machine met een verbroken relatie met de domein controller. Raadpleeg dit [artikel](./backup-azure-arm-restore-vms.md#post-restore-steps) voor meer informatie
+
+### <a name="why-restore-operation-is-taking-long-time-to-complete"></a>Waarom duurt het lang duren om de herstel bewerking te volt ooien?
+
+De totale herstel tijd is afhankelijk van de invoer/uitvoer-bewerkingen per seconde (IOPS) en de door Voer van het opslag account. De totale herstel tijd kan worden beïnvloed als het doel-opslag account is geladen met andere Lees-en schrijf bewerkingen van toepassingen. Als u de herstel bewerking wilt verbeteren, selecteert u een opslag account dat niet is geladen met andere toepassings gegevens.
 
 ## <a name="manage-vm-backups"></a>Back-ups van uw virtuele machine beheren
 

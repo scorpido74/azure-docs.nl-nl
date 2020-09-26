@@ -3,12 +3,12 @@ title: Azure Functions beveiligen
 description: Meer informatie over hoe u de functie code die wordt uitgevoerd in azure beter kunt beveiligen tegen veelvoorkomende aanvallen.
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9bec32c4c3d8005ef0d3c9fc5732785a5fa19a0c
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: e48991788307a47d0e01a7921e0c94d77ddcd5ad
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850709"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91294747"
 ---
 # <a name="securing-azure-functions"></a>Azure Functions beveiligen
 
@@ -22,7 +22,7 @@ Zie [Azure-beveiligings basislijn voor Azure functions](security-baseline.md)voo
 
 In deze sectie vindt u meer over het configureren en uitvoeren van uw functie-app zo veilig mogelijk. 
 
-### <a name="security-center"></a>Security Center
+### <a name="security-center"></a>Beveiligingscentrum
 
 Security Center integreert met uw functie-app in de portal. Het biedt gratis een snelle evaluatie van mogelijke beveiligings problemen met betrekking tot configuraties. Functie-apps die in een specifiek abonnement worden uitgevoerd, kunnen ook gebruikmaken van de real-time beveiligings functies van Security Center, voor extra kosten. Zie [uw Azure app service Web-apps en Api's beveiligen](../security-center/security-center-app-services.md)voor meer informatie. 
 
@@ -62,7 +62,7 @@ De volgende tabel vergelijkt het gebruik voor verschillende soorten toegangs sle
 |-----------------------------------------------|--------------------------|--------------------|
 | Een functie uitvoeren                            | Specifieke functie        | Functie           |
 | Een functie uitvoeren                            | Een functie             | Functie of host   |
-| Een Administrator-eind punt aanroepen                        | Functie-app             | Host (alleen Master) |
+| Een Administrator-eind punt aanroepen                        | Function App             | Host (alleen Master) |
 | Api's voor duurzame taak uitbreidingen aanroepen              | Functie-app<sup>1</sup> | Systeem<sup>2</sup> |
 | Een extensie-specifieke webhook aanroepen (intern) | Functie-app<sup>1</sup> | systeem<sup>2</sup> |
 
@@ -80,7 +80,7 @@ Standaard worden sleutels opgeslagen in een BLOB storage-container in het accoun
 |---------|---------|---------|---------|
 |Ander opslag account     |  `AzureWebJobsSecretStorageSas`       | `<BLOB_SAS_URL` | Hiermee worden sleutels opgeslagen in Blob-opslag van een tweede opslag account, op basis van de meegeleverde SAS-URL. Sleutels worden versleuteld voordat ze worden opgeslagen met behulp van een geheim dat uniek is voor uw functie-app. |
 |Bestandssysteem   | `AzureWebJobsSecretStorageType`   |  `files`       | Sleutels worden bewaard op het bestands systeem, versleuteld vóór opslag met behulp van een geheim dat uniek is voor uw functie-app. |
-|Azure Key Vault  | `AzureWebJobsSecretStorageType`<br/>`AzureWebJobsSecretStorageKeyVaultName` | `keyvault`<br/>`<VAULT_NAME>` | De kluis moet een toegangs beleid hebben dat overeenkomt met de door het systeem toegewezen beheerde identiteit van de hosting bron. Het toegangs beleid moet de identiteit de volgende geheime machtigingen verlenen: `Get` , `Set` , `List` , en `Delete` . <br/>Wanneer lokaal wordt uitgevoerd, wordt de identiteit van de ontwikkelaar gebruikt. de instellingen moeten zich in delocal.settings.jsin het [bestand](functions-run-local.md#local-settings-file)bevinden. | 
+|Azure Key Vault  | `AzureWebJobsSecretStorageType`<br/>`AzureWebJobsSecretStorageKeyVaultName` | `keyvault`<br/>`<VAULT_NAME>` | De kluis moet een toegangs beleid hebben dat overeenkomt met de door het systeem toegewezen beheerde identiteit van de hosting bron. Het toegangs beleid moet de identiteit de volgende geheime machtigingen verlenen: `Get` , `Set` , `List` , en `Delete` . <br/>Wanneer lokaal wordt uitgevoerd, wordt de identiteit van de ontwikkelaar gebruikt. de instellingen moeten zich in delocal.settings.jsin het [ bestand](functions-run-local.md#local-settings-file)bevinden. | 
 |Kubernetes Secrets  |`AzureWebJobsSecretStorageType`<br/>`AzureWebJobsKubernetesSecretName` (optioneel) | `kubernetes`<br/>`<SECRETS_RESOURCE>` | Alleen ondersteund bij het uitvoeren van de functions-runtime in Kubernetes. Als `AzureWebJobsKubernetesSecretName` niet is ingesteld, wordt de opslag plaats als alleen-lezen beschouwd. In dit geval moeten de waarden worden gegenereerd vóór de implementatie. De Azure Functions Core Tools genereert automatisch de waarden bij het implementeren naar Kubernetes.|
 
 ### <a name="authenticationauthorization"></a>Verificatie/autorisatie
@@ -128,6 +128,8 @@ Standaard worden verbindings reeksen en geheimen die worden gebruikt door uw fun
 Voor elke functie-app is bijvoorbeeld een gekoppeld opslag account vereist dat wordt gebruikt door de runtime. Standaard wordt de verbinding met dit opslag account opgeslagen in een toepassings instelling met de naam `AzureWebJobsStorage` .
 
 App-instellingen en verbindings reeksen worden versleuteld opgeslagen in Azure. Ze worden alleen ontsleuteld voordat ze worden ingevoegd in het proces geheugen van uw app wanneer de app wordt gestart. De versleutelings sleutels worden regel matig gedraaid. Als u liever de beveiligde opslag van uw geheimen wilt beheren, moet de app-instelling in plaats daarvan verwijzen naar Azure Key Vault. 
+
+U kunt de instellingen standaard ook versleutelen in de local.settings.jsbij het bestand bij het ontwikkelen van functies op uw lokale computer. Zie de `IsEncrypted` eigenschap in het [lokale instellingen bestand](functions-run-local.md#local-settings-file)voor meer informatie.  
 
 #### <a name="key-vault-references"></a>Key Vault verwijzingen
 

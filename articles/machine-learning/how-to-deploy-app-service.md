@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 06/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 7c98bfe4adb9cbbcc1009c530ba875511ea9ec01
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: fd7ba2eeddb3eddd98f97bda1a26c69c2cfa77c8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905123"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315300"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Een machine learning model implementeren op Azure App Service (preview-versie)
 
@@ -40,7 +40,7 @@ Zie [app service-overzicht](/azure/app-service/overview)voor meer informatie ove
 ## <a name="prerequisites"></a>Vereisten
 
 * Een Azure Machine Learning-werkruimte. Zie het artikel [een werk ruimte maken](how-to-manage-workspace.md) voor meer informatie.
-* De [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+* De [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
 * Een getraind machine learning model dat is geregistreerd in uw werk ruimte. Als u geen model hebt, gebruikt u de [zelf studie voor installatie kopie classificatie: Train model](tutorial-train-models-with-aml.md) om er een te trainen en te registreren.
 
     > [!IMPORTANT]
@@ -101,7 +101,7 @@ Zie [modellen implementeren met Azure machine learning](how-to-deploy-and-where.
 
 ## <a name="create-the-image"></a>De installatiekopie maken
 
-Als u de docker-installatie kopie wilt maken die is geïmplementeerd op Azure App Service, gebruikt u [model. package](https://docs.microsoft.com//python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#&preserve-view=truepackage-workspace--models--inference-config-none--generate-dockerfile-false-). Het volgende code fragment laat zien hoe u een nieuwe installatie kopie kunt bouwen op basis van het model en de configuratie voor het afwijzen van de afleiding:
+Als u de docker-installatie kopie wilt maken die is geïmplementeerd op Azure App Service, gebruikt u [model. package](https://docs.microsoft.com//python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true#&preserve-view=truepackage-workspace--models--inference-config-none--generate-dockerfile-false-). Het volgende code fragment laat zien hoe u een nieuwe installatie kopie kunt bouwen op basis van het model en de configuratie voor het afwijzen van de afleiding:
 
 > [!NOTE]
 > In het code fragment wordt ervan uitgegaan dat het `model` een geregistreerd model bevat en dat `inference_config` de configuratie voor de afnemende omgeving bevat. Zie [modellen implementeren met Azure machine learning](how-to-deploy-and-where.md)voor meer informatie.

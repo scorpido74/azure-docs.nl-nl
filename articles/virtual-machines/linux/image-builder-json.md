@@ -4,16 +4,16 @@ description: Meer informatie over het maken van een sjabloon voor gebruik met Az
 author: danielsollondon
 ms.author: danis
 ms.date: 08/13/2020
-ms.topic: conceptual
-ms.service: virtual-machines-linux
+ms.topic: reference
+ms.service: virtual-machines
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: 3c2dbf8c98901d5a4147939c42e289abf25f7d21
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 43f33093010aa6a70d02c58e9faa34f7f0e2dfee
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378368"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307276"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Voor beeld: een Azure Image Builder-sjabloon maken 
 
@@ -96,7 +96,7 @@ Standaard wordt de grootte van de installatie kopie niet door de opbouw functie 
 ```
 
 ## <a name="vnetconfig"></a>vnetConfig
-Als u geen VNET-eigenschappen opgeeft, maakt de opbouw functie voor installatie kopieën een eigen VNET, openbaar IP-adres en NSG. Het open bare IP-adres wordt gebruikt om te communiceren met de build-VM, maar als u niet wilt dat een openbaar IP-adres of de opbouw functie voor installatie kopieën toegang heeft tot uw bestaande VNET-resources, zoals configuratie servers (DSC, chef, puppet, Ansible), bestands shares enzovoort, kunt u een VNET opgeven. Raadpleeg de [documentatie bij netwerken](https://github.com/danielsollondon/azvmimagebuilder/blob/master/aibNetworking.md#networking-with-azure-vm-image-builder)voor meer informatie. Dit is optioneel.
+Als u geen VNET-eigenschappen opgeeft, maakt de opbouw functie voor installatie kopieën een eigen VNET, openbaar IP-adres en NSG. Het open bare IP-adres wordt gebruikt om te communiceren met de build-VM, maar als u niet wilt dat een openbaar IP-adres of de opbouw functie voor installatie kopieën toegang heeft tot uw bestaande VNET-resources, zoals configuratie servers (DSC, chef, puppet, Ansible), bestands shares enzovoort, kunt u een VNET opgeven. Raadpleeg de [documentatie bij netwerken](image-builder-networking.md)voor meer informatie. Dit is optioneel.
 
 ```json
     "vnetConfig": {
@@ -120,7 +120,7 @@ Zie [resource afhankelijkheden definiëren](../../azure-resource-manager/templat
 
 ## <a name="identity"></a>Identiteit
 
-Vereist: voor de opbouw functie voor installatie kopieën die machtigingen voor lezen/schrijven moeten hebben, leest u in scripts van Azure Storage u moet een door een gebruiker toegewezen Azure-identiteit maken die machtigingen voor de afzonderlijke resources heeft. Raadpleeg de [documentatie](https://github.com/danielsollondon/azvmimagebuilder/blob/master/aibPermissions.md#azure-vm-image-builder-permissions-explained-and-requirements)voor meer informatie over de werking van de opbouw functie voor installatie kopieën en de relevante stappen.
+Vereist: voor de opbouw functie voor installatie kopieën die machtigingen voor lezen/schrijven moeten hebben, leest u in scripts van Azure Storage u moet een door een gebruiker toegewezen Azure-identiteit maken die machtigingen voor de afzonderlijke resources heeft. Raadpleeg de [documentatie](image-builder-user-assigned-identity.md)voor meer informatie over de werking van de opbouw functie voor installatie kopieën en de relevante stappen.
 
 
 ```json
@@ -233,7 +233,7 @@ Standaard wordt de opbouw functie voor installatie kopieën gedurende 240 minute
 [ERROR] complete: 'context deadline exceeded'
 ```
 
-Als u geen buildTimeoutInMinutes-waarde opgeeft of als u deze instelt op 0, wordt de standaard waarde gebruikt. U kunt de waarde verg Roten of verkleinen, tot het maximum van 960mins (16hrs). Voor Windows raden we u aan dit 60 minuten niet in te stellen. Als u merkt dat u de time-out hebt, raadpleegt u de [Logboeken](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#collecting-and-reviewing-aib-image-build-logs)om te zien of de stap voor aanpassing wacht op een soort gebruikers invoer. 
+Als u geen buildTimeoutInMinutes-waarde opgeeft of als u deze instelt op 0, wordt de standaard waarde gebruikt. U kunt de waarde verg Roten of verkleinen, tot het maximum van 960mins (16hrs). Voor Windows raden we u aan dit 60 minuten niet in te stellen. Als u merkt dat u de time-out hebt, raadpleegt u de [Logboeken](image-builder-troubleshoot.md#customization-log)om te zien of de stap voor aanpassing wacht op een soort gebruikers invoer. 
 
 Als u vindt dat er meer tijd nodig is voor het volt ooien van aanpassingen, stelt u deze in op wat u denkt dat u nodig hebt, met een beetje extra overhead. Stel deze echter niet te hoog in omdat u mogelijk moet wachten op time-out voordat u een fout ziet. 
 
@@ -481,7 +481,7 @@ Als u de opdrachten wilt onderdrukken, gebruikt u de Power shell-of shell-script
 * Windows: c:\DeprovisioningScript.ps1
 * Linux:/tmp/DeprovisioningScript.sh
 
-Met de opbouw functie voor installatie kopieën worden deze opdrachten gelezen, die worden wegge schreven naar de AIB-logboeken Customization. log. Zie [probleem oplossing](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#collecting-and-reviewing-aib-logs) voor het verzamelen van Logboeken.
+Met de opbouw functie voor installatie kopieën worden deze opdrachten gelezen, die worden wegge schreven naar de AIB-logboeken Customization. log. Zie [probleem oplossing](image-builder-troubleshoot.md#customization-log) voor het verzamelen van Logboeken.
  
 ## <a name="properties-distribute"></a>Eigenschappen: distribueren
 
@@ -658,7 +658,7 @@ az resource invoke-action \
 ### <a name="cancelling-an-image-build"></a>Genereren van een installatie kopie annuleren
 Als u een installatie kopie-build uitvoert waarvan u denkt dat ze onjuist zijn, wordt gewacht op invoer van de gebruiker of dat u het probleem nooit kunt volt ooien. vervolgens annuleert u de build.
 
-De build kan op elk gewenst moment worden geannuleerd. Als de distributie fase is gestart, kunt u nog steeds annuleren, maar u moet alle installatie kopieën opschonen die mogelijk niet zijn voltooid. De Annuleer opdracht wacht niet op Annuleren om te volt ooien. Controleer of de `lastrunstatus.runstate` voortgang is geannuleerd met behulp van deze status [opdrachten](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#get-statuserror-of-the-template-submission-or-template-build-status).
+De build kan op elk gewenst moment worden geannuleerd. Als de distributie fase is gestart, kunt u nog steeds annuleren, maar u moet alle installatie kopieën opschonen die mogelijk niet zijn voltooid. De Annuleer opdracht wacht niet op Annuleren om te volt ooien. Controleer of de `lastrunstatus.runstate` voortgang is geannuleerd met behulp van deze status [opdrachten](image-builder-troubleshoot.md#customization-log).
 
 
 Voor beelden van `cancel` opdrachten:

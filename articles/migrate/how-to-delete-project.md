@@ -1,17 +1,17 @@
 ---
 title: Een Azure Migrate-project verwijderen
-description: Hierin wordt beschreven hoe u een Azure Migrate project maakt en een hulp programma voor evaluatie/migratie toevoegt.
+description: In dit artikel leest u hoe u een Azure Migrate project kunt verwijderen met behulp van de Azure Portal.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 10/22/2019
 ms.author: raynew
-ms.openlocfilehash: 4fd6285c3d22c8e0bdddbbe47366e6ae9428e7d8
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: c58081e7cf88ac4820aa7d4f367b7344f3340a77
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109872"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307871"
 ---
 # <a name="delete-an-azure-migrate-project"></a>Een Azure Migrate-project verwijderen
 

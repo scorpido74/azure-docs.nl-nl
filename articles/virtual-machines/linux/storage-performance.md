@@ -1,6 +1,6 @@
 ---
 title: Prestaties optimaliseren op virtuele machines uit de Azure Lsv2-serie-opslag
-description: Meer informatie over het optimaliseren van de prestaties van uw oplossing op de virtuele machines uit de Lsv2-serie.
+description: Meer informatie over het optimaliseren van de prestaties voor uw oplossing op de virtuele machines uit de Lsv2-serie met behulp van een Linux-voor beeld.
 services: virtual-machines-linux
 author: laurenhughes
 ms.service: virtual-machines-linux
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/05/2019
 ms.author: joelpell
-ms.openlocfilehash: cd9e539e01e8e11d866186552ab3b8dde7e03f91
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 650164556223a73a722bc91ecb31491ee98cb8a5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654766"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307098"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-linux-virtual-machines"></a>Optimaliseer de prestaties van de virtuele machines uit de Lsv2-serie Linux
 
