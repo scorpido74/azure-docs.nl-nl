@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: b166348031e9f72e8005e866a198855db9c01a9c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4f89ace7130e95ba109edcf6becca1e15c8d32c1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936103"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273197"
 ---
 # <a name="configure-security-for-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Beveiliging configureren voor uw PostgreSQL grootschalige-Server groep voor Azure Arc ingeschakeld
 
@@ -156,14 +156,66 @@ U kunt de standaard post gres manier gebruiken om gebruikers of rollen te maken.
 Azure Arc enabled PostgreSQL grootschalige wordt geleverd met de standaard post gres administratieve gebruiker _post gres_ waarvoor u het wacht woord instelt wanneer u de Server groep maakt.
 De algemene indeling van de opdracht voor het wijzigen van het wacht woord is:
 ```console
-azdata arc postgres server edit --name <server group name> --admin-password <new password>
+azdata arc postgres server edit --name <server group name> --admin-password
 ```
-Het wacht woord wordt ingesteld op de waarde van de omgevings variabele AZDATA_PASSWORD- **sessie**als deze bestaat. Als dat niet het geval is, wordt de gebruiker gevraagd een waarde op te vragen.
-Voer de volgende handelingen uit om te controleren of de omgevings variabele van de AZDATA_PASSWORD-sessie bestaat en/of welke waarde er wordt ingesteld.
-```console
-printenv AZDATA_PASSWORD
-```
-Mogelijk wilt u de waarde ervan verwijderen als u wordt gevraagd om een nieuw wacht woord in te voeren.
+
+Waarbij--Administrator-wacht woord een Booleaanse waarde is die betrekking heeft op de aanwezigheid van een in de omgevings variabele AZDATA_PASSWORD- **sessie**.
+Als de omgevings variabele van de AZDATA_PASSWORD- **sessie**bestaat en een waarde heeft, wordt met de bovenstaande opdracht het wacht woord van de gebruiker post gres ingesteld op de waarde van deze omgevings variabele.
+
+Als de omgevings variabele van de AZDATA_PASSWORD- **sessie**bestaat maar geen waarde bevat of als de omgevings variabele van de AZDATA_PASSWORD- **sessie**niet bestaat, wordt de gebruiker door de bovenstaande opdracht gevraagd om een wacht woord interactief in te voeren
+
+#### <a name="changing-the-password-of-the-postgres-administrative-user-in-an-interactive-way"></a>Het wijzigen van het wacht woord van de post gres-gebruiker met beheerders rechten op een interactieve manier:
+1. De omgevings variabele van de AZDATA_PASSWORD **sessie**verwijderen of de waarde ervan verwijderen
+2. Voer de opdracht uit:
+   ```console
+   azdata arc postgres server edit --name <server group name> --admin-password
+   ```
+   Bijvoorbeeld
+   ```console
+   azdata arc postgres server edit -n postgres01 --admin-password
+   ```
+   U wordt gevraagd het wacht woord in te voeren en het te bevestigen:
+   ```console
+   Postgres Server password:
+   Confirm Postgres Server password:
+   ```
+   Wanneer het wacht woord wordt bijgewerkt, wordt de uitvoer van de opdracht weer gegeven:
+   ```console
+   Updating password
+   Updating postgres01 in namespace `arc`
+   postgres01 is Ready
+   ```
+   
+#### <a name="changing-the-password-of-the-postgres-administrative-user-using-the-azdata_password-sessions-environment-variable"></a>Wijzigen van het wacht woord van de gebruiker met post gres-beheer met de omgevings variabele van de AZDATA_PASSWORD- **sessie**:
+1. Stel de waarde van de omgevings variabele AZDATA_PASSWORD- **sessie**in op de gewenste wacht woord.
+2. Voer de volgende opdracht uit:
+   ```console
+   azdata arc postgres server edit --name <server group name> --admin-password
+   ```
+   Bijvoorbeeld
+   ```console
+   azdata arc postgres server edit -n postgres01 --admin-password
+   ```
+   
+   Wanneer het wacht woord wordt bijgewerkt, wordt de uitvoer van de opdracht weer gegeven:
+   ```console
+   Updating password
+   Updating postgres01 in namespace `arc`
+   postgres01 is Ready
+   ```
+
+> [!NOTE]
+> Voer de volgende handelingen uit om te controleren of de omgevings variabele van de AZDATA_PASSWORD-sessie bestaat en welke waarde het heeft:
+> - Op een Linux-client:
+> ```console
+> printenv AZDATA_PASSWORD
+> ```
+>
+> - Op een Windows-client met Power shell:
+> ```console
+> echo $env:AZDATA_PASSWORD
+> ```
+
 
 
 ## <a name="next-steps"></a>Volgende stappen

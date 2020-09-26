@@ -1,17 +1,17 @@
 ---
 title: Azure Blob Storage-uitvoer binding voor Azure Functions
-description: Meer informatie over hoe u Azure Blob Storage-gegevens kunt leveren aan een Azure-functie.
+description: Leer hoe u Azure Blob Storage-uitvoer bindings gegevens kunt leveren aan een Azure-functie.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 9596e6a6fd32994f782125c9bd4b8ca6d5a94b03
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 56d8078347b5de775b30c8db2c9412598070046c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213066"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285363"
 ---
 # <a name="azure-blob-storage-output-binding-for-azure-functions"></a>Azure Blob Storage-uitvoer binding voor Azure Functions
 
@@ -74,7 +74,7 @@ public class ResizeImages
 }
 ```
 
-# <a name="c-script"></a>[C#-script](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
 <!--Same example for input and output. -->
 
@@ -113,7 +113,7 @@ In de *function.jsop* bestand wordt de `queueTrigger` meta gegevens eigenschap g
 
 In de [configuratie](#configuration) sectie worden deze eigenschappen uitgelegd.
 
-Dit is de C#-script code:
+Dit is de C# Script-code:
 
 ```cs
 public static void Run(string myQueueItem, string myInputBlob, out string myOutputBlob, ILogger log)
@@ -162,7 +162,7 @@ In de *function.jsop* bestand wordt de `queueTrigger` meta gegevens eigenschap g
 
 In de [configuratie](#configuration) sectie worden deze eigenschappen uitgelegd.
 
-Dit is de Java script-code:
+Dit is de JavaScript-code:
 
 ```javascript
 module.exports = function(context) {
@@ -212,7 +212,7 @@ In de *function.jsop* bestand wordt de `queueTrigger` meta gegevens eigenschap g
 
 In de [configuratie](#configuration) sectie worden deze eigenschappen uitgelegd.
 
-Dit is de python-code:
+Dit is de Python-code:
 
 ```python
 import logging
@@ -324,17 +324,17 @@ public static void Run(
 }
 ```
 
-# <a name="c-script"></a>[C#-script](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
-Kenmerken worden niet ondersteund door een C#-script.
+Kenmerken worden niet ondersteund door C# Script.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Kenmerken worden niet ondersteund door Java script.
+Kenmerken worden niet ondersteund door JavaScript.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Kenmerken worden niet ondersteund door python.
+Kenmerken worden niet ondersteund door Python.
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -348,15 +348,15 @@ U kunt het- `StorageAccount` kenmerk gebruiken om het opslag account op te geven
 
 ## <a name="configuration"></a>Configuratie
 
-De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `Blob` kenmerk.
+De volgende tabel bevat informatie over de bindingsconfiguratie-eigenschappen die u instelt in het bestand *function.json* en het kenmerk `Blob`.
 
-|function.jsbij eigenschap | Kenmerk eigenschap |Beschrijving|
+|function.json-eigenschap | Kenmerkeigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**type** | N.v.t. | Moet worden ingesteld op `blob` . |
+|**type** | N.v.t. | Moet worden ingesteld op `blob`. |
 |**direction** | N.v.t. | Moet worden ingesteld op `out` voor een uitvoer binding. Uitzonde ringen worden vermeld in de sectie [gebruik](#usage) . |
 |**name** | N.v.t. | De naam van de variabele die de BLOB in functie code vertegenwoordigt.  Instellen op `$return` om te verwijzen naar de functie retour waarde.|
-|**programmapad** |**BlobPath** | Het pad naar de BLOB-container. |
-|**Combi** |**Verbinding**| De naam van een app-instelling die de opslag connection string bevat die moet worden gebruikt voor deze binding. Als de naam van de app-instelling begint met ' AzureWebJobs ', kunt u hier alleen de rest van de naam opgeven. Als u bijvoorbeeld instelt `connection` op ' mijn opslag ', zoekt de functie runtime naar een app-instelling met de naam ' AzureWebJobsMyStorage '. Als u `connection` leeg laat, gebruikt de functions runtime de standaard opslag Connection String in de app-instelling met de naam `AzureWebJobsStorage` .<br><br>Het connection string moet voor een opslag account voor algemeen gebruik zijn, niet een [opslag account met alleen BLOB](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
+|**path** |**BlobPath** | Het pad naar de BLOB-container. |
+|**connection** |**Verbinding**| De naam van een app-instelling die de opslag connection string bevat die moet worden gebruikt voor deze binding. Als de naam van de app-instelling begint met ' AzureWebJobs ', kunt u hier alleen de rest van de naam opgeven. Als u bijvoorbeeld instelt `connection` op ' mijn opslag ', zoekt de functie runtime naar een app-instelling met de naam ' AzureWebJobsMyStorage '. Als u `connection` leeg laat, gebruikt de functions runtime de standaard opslag Connection String in de app-instelling met de naam `AzureWebJobsStorage` .<br><br>Het connection string moet voor een opslag account voor algemeen gebruik zijn, niet een [opslag account met alleen BLOB](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
 |N.v.t. | **Toegang** | Hiermee wordt aangegeven of u wilt lezen of schrijven. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -367,7 +367,7 @@ De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u 
 
 [!INCLUDE [functions-bindings-blob-storage-output-usage.md](../../includes/functions-bindings-blob-storage-output-usage.md)]
 
-# <a name="c-script"></a>[C#-script](#tab/csharp-script)
+# <a name="c-script"></a>[C# Script](#tab/csharp-script)
 
 [!INCLUDE [functions-bindings-blob-storage-output-usage.md](../../includes/functions-bindings-blob-storage-output-usage.md)]
 
@@ -392,7 +392,7 @@ Raadpleeg het [uitvoer voorbeeld](#example) voor meer informatie.
 
 ## <a name="exceptions-and-return-codes"></a>Uitzonde ringen en retour codes
 
-| Binding |  Verwijzing |
+| Binding |  Naslaginformatie |
 |---|---|
 | Blob | [BLOB-fout codes](/rest/api/storageservices/fileservices/blob-service-error-codes) |
 | BLOB, tabel, wachtrij |  [Opslag fout codes](/rest/api/storageservices/fileservices/common-rest-api-error-codes) |

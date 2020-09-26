@@ -6,21 +6,23 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/31/2020
+ms.date: 09/24/2020
 ms.author: alkohli
-ms.openlocfilehash: 107485277e28a44841b0d71fef686f0bcbf52216
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8b733d1e5eae9cae01233fda4be078bd188e07c9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899507"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334358"
 ---
-# <a name="update-your-azure-stack-edge-pro-with-gpu"></a>Uw Azure Stack Edge Pro bijwerken met GPU 
+# <a name="update-your-azure-stack-edge-pro-gpu"></a>Uw Azure Stack Edge Pro GPU bijwerken 
 
-In dit artikel worden de stappen beschreven die nodig zijn om updates te installeren op uw Azure Stack Edge Pro met GPU via de lokale webgebruikersinterface en via de Azure Portal. U past de software-updates of hotfixes toe om uw Azure Stack Edge Pro-apparaat en de bijbehorende Kubernetes cluaster op het apparaat up-to-date te houden. 
+In dit artikel worden de stappen beschreven die nodig zijn om updates te installeren op uw Azure Stack Edge Pro met GPU via de lokale webgebruikersinterface en via de Azure Portal. U past de software-updates of hotfixes toe om uw Azure Stack Edge Pro-apparaat en het bijbehorende Kubernetes-cluster op het apparaat up-to-date te houden. 
+
+De in dit artikel beschreven procedure is uitgevoerd met een andere versie van de software, maar het proces blijft hetzelfde voor de huidige software versie.
 
 > [!IMPORTANT]
-> - Update **2008** komt overeen met de **2.1.1328.1904** -software versie op het apparaat. Ga naar [release opmerkingen](azure-stack-edge-gpu-2008-release-notes.md)voor meer informatie over deze update.
+> - Update **2009** komt overeen met de **2.1.1358.2075** -software versie op het apparaat. Ga naar [release opmerkingen](azure-stack-edge-gpu-2009-release-notes.md)voor meer informatie over deze update.
 >
 > - Als u een update of hotfix installeert, wordt het apparaat opnieuw opgestart. Voor deze update moet u twee updates sequentieel Toep assen. Eerst past u de software-updates van het apparaat toe en vervolgens Kubernetes-updates. Gezien de Azure Stack Edge Pro is een apparaat met één knoop punt, worden alle I/O-bewerkingen onderbroken en duurt het apparaat een downtime van Maxi maal 30 minuten voor de software-update van het apparaat.
 

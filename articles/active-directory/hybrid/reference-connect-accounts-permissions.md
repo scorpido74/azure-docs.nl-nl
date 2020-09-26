@@ -17,12 +17,12 @@ ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28fc05be7a5b54713aec8c4f830eeb2f7e6a251c
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: a1efafd353bea20ea1ada0b5e92a9e6df00deb78
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662331"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273597"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: accounts en machtigingen
 
@@ -115,7 +115,7 @@ Met de installatie van aangepaste instellingen biedt de wizard u meer keuzen en 
 
 Hier volgt een samen vatting van de pagina's van de wizard Aangepaste installatie, de referenties die zijn verzameld en waarvoor ze worden gebruikt.
 
-![Snelle installatie](./media/reference-connect-accounts-permissions/customize.png)
+![Scherm afbeelding van de wizard pagina's met aangepaste installatie.](./media/reference-connect-accounts-permissions/customize.png)
 
 | Wizard pagina | Verzamelde referenties | Vereiste machtigingen | Gebruikt voor |
 | --- | --- | --- | --- |
@@ -208,7 +208,7 @@ Legenda:
 #### <a name="virtual-service-account"></a>Virtueel service-account
 Een virtueel service account is een speciaal type account dat geen wacht woord heeft en wordt beheerd door Windows.
 
-![KENMERK](./media/reference-connect-accounts-permissions/aadsyncvsa.png)
+![Scherm opname van de virtuele service account (leverancierspecifieke kenmerken).](./media/reference-connect-accounts-permissions/aadsyncvsa.png)
 
 Het leveranciersspecifieke kenmerk is bedoeld om te worden gebruikt met scenario's waarbij de synchronisatie-engine en SQL zich op dezelfde server bevinden. Als u externe SQL gebruikt, raden we u aan om in plaats daarvan een beheerd service account voor een groep te gebruiken.
 
@@ -241,7 +241,7 @@ Aan het account worden ook machtigingen verleend voor bestanden, register sleute
 ### <a name="azure-ad-connector-account"></a>Azure AD Connector-account
 Een account in azure AD is gemaakt voor het gebruik van de synchronisatie service. Dit account kan worden geïdentificeerd aan de hand van de weergave naam.
 
-![AD-account](./media/reference-connect-accounts-permissions/aadsyncserviceaccount2.png)
+![Scherm opname van het Azure AD-account.](./media/reference-connect-accounts-permissions/aadsyncserviceaccount2.png)
 
 De naam van de server waarop het account wordt gebruikt, kan worden geïdentificeerd in het tweede deel van de gebruikers naam. In de afbeelding is de server naam DC1. Als u servers voor fase ring hebt, heeft elke server een eigen account.
 

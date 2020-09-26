@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 44c1c1860cbea20a7a00da5a396e4d82d79efd8b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4364ed916e2b2783ab09f9d61ae63197d001ad42
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936453"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273178"
 ---
 # <a name="connectivity-modes-and-requirements"></a>Connectiviteits modi en vereisten
 
@@ -86,6 +86,7 @@ Momenteel wordt in de preview-fase alleen de indirect verbonden modus ondersteun
 |**Azure Resource Manager-Api's**|Een computer met Azure Data Studio, Azure data CLI of Azure CLI die verbinding maakt met Azure.|`login.microsoftonline.com`<br/>`management.azure.com`<br/>`san-af-eastus-prod.azurewebsites.net`<br/>`san-af-eastus2-prod.azurewebsites.net`<br/>`san-af-australiaeast-prod.azurewebsites.net`<br/>`san-af-centralus-prod.azurewebsites.net`<br/>`san-af-westus2-prod.azurewebsites.net`<br/>`san-af-westeurope-prod.azurewebsites.net`<br/>`san-af-southeastasia-prod.azurewebsites.net`<br/>`san-af-koreacentral-prod.azurewebsites.net`<br/>`san-af-northeurope-prod.azurewebsites.net`<br/>`san-af-westeurope-prod.azurewebsites.net`<br/>`san-af-uksouth-prod.azurewebsites.net`<br/>`san-af-francecentral-prod.azurewebsites.net`|HTTPS|443|Yes|Azure Active Directory|Azure Data Studio, Azure data CLI en Azure CLI maken verbinding met de Azure Resource Manager Api's om gegevens van en naar Azure te verzenden en op te halen voor bepaalde functies.|
 |**Azure Monitor-Api's**|Een computer met Azure data CLI of Azure CLI die de metrische gegevens van de bewaking of Logboeken uploadt naar Azure Monitor.|`login.microsoftonline.com`<br/>`management.azure.com`<br/>`*.ods.opinsights.azure.com`<br/>`*.oms.opinsights.azure.com`<br/>`*.monitoring.azure.com`|HTTPS|443|Yes|Azure Active Directory|Azure Data Studio, Azure data CLI en Azure CLI maken verbinding met de Azure Resource Manager Api's om gegevens van en naar Azure te verzenden en op te halen voor bepaalde functies.|
 
-> **Opmerking:** Voor nu zijn alle HTTPS/443-verbindingen van de browser naar de Grafana-en Kibana-Dash boards en van de Azure-gegevens CLI naar de data controller-API SSL-versleuteld met zelfondertekende certificaten.  In de toekomst is een functie beschikbaar waarmee u uw eigen certificaten kunt opgeven voor het versleutelen van deze SSL-verbindingen.
+> [!NOTE]
+> Voor nu zijn alle HTTPS/443-verbindingen van de browser naar de Grafana-en Kibana-Dash boards en van de Azure-gegevens CLI naar de data controller-API SSL-versleuteld met zelfondertekende certificaten.  In de toekomst is een functie beschikbaar waarmee u uw eigen certificaten kunt opgeven voor het versleutelen van deze SSL-verbindingen.
 
 Connectiviteit van Azure Data Studio en Azure data CLI naar de Kubernetes API-server maakt gebruik van de Kubernetes-verificatie en-versleuteling die u hebt ingesteld.  Elke gebruiker die gebruikmaakt van Azure Data Studio en de Azure data CLI, moet een geverifieerde verbinding hebben met de Kubernetes-API om veel van de acties uit te voeren die betrekking hebben op gegevens services van Azure Arc.

@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: jingwang
-ms.openlocfilehash: 91455e4797324f28f911dd8a928410517a951728
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: f22380f65b91976e7696551ee0a65a5bf6dfd097
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531743"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334307"
 ---
 # <a name="parquet-format-in-azure-data-factory"></a>De indeling Parquet in Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -108,6 +108,7 @@ De onderstaande tabel geeft een lijst van de eigenschappen die door een Parquet-
 | Kolom voor het opslaan van de bestands naam | Een nieuwe kolom maken met de naam en het pad van het bron bestand | nee | Tekenreeks | rowUrlColumn |
 | Na voltooiing | De bestanden na de verwerking verwijderen of verplaatsen. Bestandspad wordt gestart vanuit de hoofdmap van de container | nee | Verwijderen: `true` of `false` <br> Ga `[<from>, <to>]` | purgeFiles <br> moveFiles |
 | Filteren op laatst gewijzigd | Kiezen of bestanden moeten worden gefilterd op basis van het tijdstip waarop deze voor het laatst zijn gewijzigd | nee | Tijdstempel | modifiedAfter <br> modifiedBefore |
+| Geen bestanden gevonden | Als deze eigenschap waar is, wordt er geen fout gegenereerd als er geen bestanden worden gevonden | nee | `true` of `false` | ignoreNoFilesFound |
 
 ### <a name="source-example"></a>Bron voorbeeld
 

@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eef04be1891eac35577a5f4cb18d5b83b8d0f301
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: 6dba592417ca07d1858a7942b162b4dfa6a85680
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89669393"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273990"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Google toevoegen als een id-provider voor B2B-gast gebruikers
 
@@ -78,10 +78,10 @@ Maak eerst een nieuw project in de Google developers-console om een client-ID en
 
 11. Kies onder **toepassings type**de optie **Webtoepassing** en geef de toepassing een geschikte naam, bijvoorbeeld ' Azure AD B2B ', en voer onder **geautoriseerde omleidings-uri's**de volgende uri's in:
     - `https://login.microsoftonline.com` 
-    - `https://login.microsoftonline.com/te/<directory id>/oauth2/authresp` <br>(waar `<directory id>` is uw directory-id)
+    - `https://login.microsoftonline.com/te/<tenant id>/oauth2/authresp` <br>(waar `<tenant id>` is uw Tenant-id)
    
     > [!NOTE]
-    > Om uw directory-ID te vinden, gaat u naar https://portal.azure.com en klikt u onder **Azure Active Directory**op **Eigenschappen** en kopieert u de **map-id**.
+    > Als u uw Tenant-ID wilt vinden, gaat u naar https://portal.azure.com en klikt u onder **Azure Active Directory**op **Eigenschappen** en kopieert u de **Tenant-id**.
 
     ![Scherm afbeelding van de sectie geautoriseerde omleidings-Uri's](media/google-federation/google-create-oauth-client-id.png)
 
@@ -93,7 +93,7 @@ Maak eerst een nieuw project in de Google developers-console om een client-ID en
 Nu gaat u de Google client-ID en het client geheim instellen, hetzij door het in te voeren in de Azure AD-portal of met behulp van Power shell. Zorg ervoor dat u uw Google Federation-configuratie test door uzelf uit te nodigen met behulp van een Gmail-adres en probeert de uitnodiging te verwisselen met uw geuitgenodigde Google-account. 
 
 #### <a name="to-configure-google-federation-in-the-azure-ad-portal"></a>Google Federation configureren in de Azure AD-Portal 
-1. Ga naar [Azure Portal](https://portal.azure.com). Selecteer de knop **Azure Active Directory** in het linkerdeelvenster. 
+1. Ga naar de [Azure Portal](https://portal.azure.com). Selecteer de knop **Azure Active Directory** in het linkerdeelvenster. 
 2. Selecteer **externe identiteiten**.
 3. Selecteer **alle id-providers**en klik vervolgens op de knop **Google** .
 4. Voer vervolgens de client-ID en het client geheim in die u eerder hebt verkregen. Selecteer **Opslaan**. 
@@ -115,7 +115,7 @@ Nu gaat u de Google client-ID en het client geheim instellen, hetzij door het in
 U kunt de installatie van Google Federation verwijderen. Als u dit doet, kunnen Google gast-gebruikers die hun uitnodiging al hebben ingewisseld, zich niet meer aanmelden, maar u kunt ze ook weer toegang geven tot uw resources door ze te verwijderen uit de map en ze opnieuw uit te nodigen. 
  
 ### <a name="to-delete-google-federation-in-the-azure-ad-portal"></a>Google Federation verwijderen in de Azure AD-portal: 
-1. Ga naar [Azure Portal](https://portal.azure.com). Selecteer de knop **Azure Active Directory** in het linkerdeelvenster. 
+1. Ga naar de [Azure Portal](https://portal.azure.com). Selecteer de knop **Azure Active Directory** in het linkerdeelvenster. 
 2. Selecteer **externe identiteiten**.
 3. Selecteer **alle id-providers**.
 4. Selecteer op de **Google** -regel het snelmenu (**...**) en selecteer vervolgens **verwijderen**. 

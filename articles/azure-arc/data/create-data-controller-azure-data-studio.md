@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 71678977f899b910a97dbb552233f36ca5a51f26
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f6fd8169c587e928da9946d74335ddc758889144
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936452"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273140"
 ---
 # <a name="create-data-controller-in-azure-data-studio"></a>Gegevens controller maken in Azure Data Studio
 
@@ -42,7 +42,7 @@ Volg deze stappen om een Azure-Arc-gegevens controller te maken met behulp van d
 9. Voer een naam in voor de gegevens controller en voor de naam ruimte waarin de gegevens controller wordt gemaakt.  
 
 > [!NOTE]
-> Als de naam ruimte al bestaat, wordt deze gebruikt als de naam ruimte nog geen andere Kubernetes-objecten bevat: Peul, enzovoort.  Als de naam ruimte niet bestaat, wordt er een poging gedaan om de naam ruimte te maken.  Voor het maken van een naam ruimte in een Kubernetes-cluster zijn Kubernetes-cluster beheerder bevoegdheden vereist.  Als u geen Kubernetes hebt, vraagt u uw Kubernetes-cluster beheerder de eerste paar stappen uit te voeren in het artikel [een gegevens controller maken met Kubernetes-systeem eigen hulpprogram ma's](./create-data-controller-using-k8s-native-tools.md) die moeten worden uitgevoerd door een Kubernetes-beheerder voordat u deze wizard voltooit.
+> Als de naam ruimte al bestaat, wordt deze gebruikt als de naam ruimte nog geen andere Kubernetes-objecten bevat: Peul, enzovoort.  Als de naam ruimte niet bestaat, wordt er een poging gedaan om de naam ruimte te maken.  Voor het maken van een naam ruimte in een Kubernetes-cluster zijn Kubernetes-cluster beheerder bevoegdheden vereist.  Als u geen Kubernetes hebt, vraagt u uw Kubernetes-cluster beheerder de eerste paar stappen uit te voeren in het artikel [een gegevens controller maken met Kubernetes-systeem eigen hulpprogram ma's](./create-data-controller-using-kubernetes-native-tools.md) die moeten worden uitgevoerd door een Kubernetes-beheerder voordat u deze wizard voltooit.
 
 > [!NOTE]
 > Opmerking: de gegevens controller en naam van de naam ruimte worden gebruikt voor het maken van een aangepaste resource in het Kubernetes-cluster, zodat ze moeten voldoen aan de [Kubernetes-naamgevings conventies](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names).
