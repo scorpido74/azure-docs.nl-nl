@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 12/20/2018
-ms.openlocfilehash: a45fc5f4e56ff3a5d7f0be167c5d758aa0e47caf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd9bc17db3eccc64f35d7295d57dc120364481dd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84196354"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332981"
 ---
 # <a name="best-practices-for-azure-sql-data-sync"></a>Aanbevolen procedures voor Azure SQL Data Sync 
 
@@ -29,7 +29,7 @@ Zie [Gegevens synchroniseren tussen meerdere cloud- en on-premises databases met
 > [!IMPORTANT]
 > Azure SQL Data Sync biedt op dit moment **geen** ondersteuning voor het beheerde exemplaar van Azure SQL.
 
-## <a name="security-and-reliability"></a><a name="security-and-reliability"></a>Beveiliging en betrouw baarheid
+## <a name="security-and-reliability"></a><a name="security-and-reliability"></a> Beveiliging en betrouw baarheid
 
 ### <a name="client-agent"></a>Client agent
 
@@ -54,7 +54,7 @@ Azure SQL Database ondersteunt slechts één set met referenties. Als u deze tak
 
 ## <a name="setup"></a>Instellen
 
-### <a name="database-considerations-and-constraints"></a><a name="database-considerations-and-constraints"></a>Overwegingen en beperkingen voor de data base
+### <a name="database-considerations-and-constraints"></a><a name="database-considerations-and-constraints"></a> Overwegingen en beperkingen voor de data base
 
 #### <a name="database-size"></a>Databasegrootte
 
@@ -63,7 +63,7 @@ Wanneer u een nieuwe Data Base maakt, stelt u de maximale grootte in zodat deze 
 > [!IMPORTANT]
 > SQL Data Sync worden extra meta gegevens opgeslagen bij elke Data Base. Zorg ervoor dat u rekening houden met deze meta gegevens wanneer u de benodigde schijf ruimte berekent. De hoeveelheid toegevoegde overhead is gerelateerd aan de breedte van de tabellen (er zijn bijvoorbeeld smalle tabellen vereist voor meer overhead) en de hoeveelheid verkeer.
 
-### <a name="table-considerations-and-constraints"></a><a name="table-considerations-and-constraints"></a>Tabel overwegingen en-beperkingen
+### <a name="table-considerations-and-constraints"></a><a name="table-considerations-and-constraints"></a> Tabel overwegingen en-beperkingen
 
 #### <a name="selecting-tables"></a>Tabellen selecteren
 
@@ -79,7 +79,7 @@ Voordat u SQL Data Sync in productie gebruikt, test u initiële en doorlopende s
 
 Lege tabellen bieden de beste prestaties bij de initialisatie tijd. Als de doel tabel leeg is, gebruikt de gegevens synchronisatie massaal invoegen om de gegevens te laden. Anders wordt met de gegevens synchronisatie een rij-voor-rij-vergelijking en een invoeg actie voor het controleren op conflicten gecontroleerd. Als de prestaties geen betrekking hebben, kunt u echter synchronisatie instellen tussen tabellen die al gegevens bevatten.
 
-### <a name="provisioning-destination-databases"></a><a name="provisioning-destination-databases"></a>Doel databases inrichten
+### <a name="provisioning-destination-databases"></a><a name="provisioning-destination-databases"></a> Doel databases inrichten
 
 SQL Data Sync biedt de Basic-voorziening voor het maken van data bases.
 
@@ -103,7 +103,7 @@ SQL Data Sync heeft de volgende beperkingen voor het autoinrichten:
 -   Gebruik de functie voor het automatisch inrichten van SQL Data Sync alleen wanneer u de service probeert uit te voeren.  
 -   Richt het database schema in voor productie.
 
-### <a name="where-to-locate-the-hub-database"></a><a name="locate-hub"></a>Locatie van de hub-data base
+### <a name="where-to-locate-the-hub-database"></a><a name="locate-hub"></a> Locatie van de hub-data base
 
 #### <a name="enterprise-to-cloud-scenario"></a>Scenario voor Enter prise-to-Cloud
 
@@ -120,7 +120,7 @@ Pas de voor gaande richt lijnen toe op complexe synchronisatie groepen, zoals de
 
 ## <a name="sync"></a>Synchroniseren
 
-### <a name="avoid-slow-and-costly-initial-sync"></a><a name="avoid-a-slow-and-costly-initial-synchronization"></a>Vermijd langzame en dure initiële synchronisatie
+### <a name="avoid-slow-and-costly-initial-sync"></a><a name="avoid-a-slow-and-costly-initial-synchronization"></a> Vermijd langzame en dure initiële synchronisatie
 
 In deze sectie bespreken we de initiële synchronisatie van een synchronisatie groep. Meer informatie over hoe u kunt voor komen dat een initiële synchronisatie langer duurt en dat deze meer kosten in beslag neemt dan nodig is.
 
@@ -134,13 +134,13 @@ Als de data bases zich in verschillende data centers bevinden, moet elke rij wor
 
 Als dat mogelijk is, begint u met alleen gegevens in een van de data bases van de synchronisatie groep.
 
-### <a name="design-to-avoid-sync-loops"></a><a name="design-to-avoid-synchronization-loops"></a>Ontwerpen om synchronisatie lussen te voor komen
+### <a name="design-to-avoid-sync-loops"></a><a name="design-to-avoid-synchronization-loops"></a> Ontwerpen om synchronisatie lussen te voor komen
 
 Een Sync-lus treedt op wanneer er kring verwijzingen zijn binnen een synchronisatie groep. In dat geval worden elke wijziging in de ene data base eindeloos en circulair gerepliceerd via de data bases in de synchronisatie groep.   
 
 Zorg ervoor dat u de synchronisatie lussen voor komt, omdat deze de prestaties nadelig beïnvloeden en de kosten aanzienlijk kunnen verhogen.
 
-### <a name="changes-that-fail-to-propagate"></a><a name="handling-changes-that-fail-to-propagate"></a>Wijzigingen die niet worden door gegeven
+### <a name="changes-that-fail-to-propagate"></a><a name="handling-changes-that-fail-to-propagate"></a> Wijzigingen die niet worden door gegeven
 
 #### <a name="reasons-that-changes-fail-to-propagate"></a>Redenen waarom wijzigingen niet worden door gegeven
 
@@ -166,7 +166,7 @@ Controleer de synchronisatie groep en de status van de data base regel matig via
 
 ## <a name="maintenance"></a>Onderhoud
 
-### <a name="avoid-out-of-date-databases-and-sync-groups"></a><a name="avoid-out-of-date-databases-and-sync-groups"></a>Verouderde data bases en synchronisatie groepen voor komen
+### <a name="avoid-out-of-date-databases-and-sync-groups"></a><a name="avoid-out-of-date-databases-and-sync-groups"></a> Verouderde data bases en synchronisatie groepen voor komen
 
 Een synchronisatie groep of een data base in een synchronisatie groep kan verouderd raken. Wanneer de status van een synchronisatie groep **verouderd**is, werkt deze niet meer. Wanneer de status van een Data Base **verouderd**is, kunnen gegevens verloren gaan. U kunt dit scenario het beste vermijden in plaats van het te herstellen.
 
@@ -191,7 +191,7 @@ Om te voor komen dat synchronisatie groepen verlopen:
 -   Werk de waarden van refererende sleutel bij zodat deze de waarden bevatten die in de mislukte rijen zijn opgenomen.
 -   Werk de gegevens waarden in de mislukte rij bij zodat deze compatibel zijn met het schema of de refererende sleutels in de doel database.
 
-### <a name="avoid-deprovisioning-issues"></a><a name="avoid-deprovisioning-issues"></a>Problemen voor het ongedaan maken van de inrichting vermijden
+### <a name="avoid-deprovisioning-issues"></a><a name="avoid-deprovisioning-issues"></a> Problemen voor het ongedaan maken van de inrichting vermijden
 
 In sommige gevallen kan het opheffen van de registratie van een Data Base met een client agent ertoe leiden dat de synchronisatie mislukt.
 
@@ -212,7 +212,7 @@ Herstellen uit dit scenario:
 2. Voeg de Data Base weer toe aan elke synchronisatie groep waarvan u deze hebt verwijderd.  
 3. Implementeer elke betrokken synchronisatie groep (deze actie is van toepassing op de data base).  
 
-### <a name="modifying-a-sync-group"></a><a name="modifying-your-sync-group"></a>Een synchronisatie groep wijzigen
+### <a name="modifying-a-sync-group"></a><a name="modifying-your-sync-group"></a> Een synchronisatie groep wijzigen
 
 Probeer geen data base uit een synchronisatie groep te verwijderen en bewerk vervolgens de synchronisatie groep zonder eerst een van de wijzigingen te implementeren.
 

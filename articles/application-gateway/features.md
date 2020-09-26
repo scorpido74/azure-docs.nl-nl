@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 04/07/2020
+ms.date: 09/25/2020
 ms.author: victorh
-ms.openlocfilehash: bbb78fd879bc5c6bb8c2624329a23d7137b11660
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: ba9f42bc932a37e1052f17db2ae00413e0769d59
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651983"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355734"
 ---
 # <a name="azure-application-gateway-features"></a>Azure-toepassing gateway functies
 
@@ -24,7 +24,7 @@ Application Gateway bevat de volgende functies:
 
 - [Beëindiging van Secure Sockets Layer (SSL/TLS)](#secure-sockets-layer-ssltls-termination)
 - [Automatisch schalen](#autoscaling)
-- [Zoneredundantie](#zone-redundancy)
+- [Zone redundantie](#zone-redundancy)
 - [Statisch VIP](#static-vip)
 - [Web Application Firewall](#web-application-firewall)
 - [Controller van inkomend verkeer voor AKS](#ingress-controller-for-aks)
@@ -147,15 +147,15 @@ Zie [HTTP-headers en URL herschrijven](rewrite-http-headers-url.md)voor meer inf
 
 ## <a name="sizing"></a>Grootte aanpassen
 
-Application Gateway Standard_v2 kan worden geconfigureerd voor implementaties met automatisch schalen of vaste grootte. Deze SKU biedt geen verschillende grootte van het exemplaar. Zie voor meer informatie over de prestaties en prijzen van v2 v2 en de [prijzen](understanding-pricing.md) [aanpassen](application-gateway-autoscaling-zone-redundant.md) .
+Application Gateway Standard_v2 kan worden geconfigureerd voor implementaties met automatisch schalen of vaste grootte. De v2-SKU biedt geen verschillende grootte van het exemplaar. Zie voor meer informatie over de prestaties en prijzen van v2 v2 en de [prijzen](understanding-pricing.md) [aanpassen](application-gateway-autoscaling-zone-redundant.md) .
 
-De Application Gateway standaard wordt aangeboden in drie grootten: **klein**, **gemiddeld**en **groot**. Kleine exemplaargrootten zijn bedoeld voor het ontwikkelen en testen van scenario's.
+De Application Gateway Standard (v1) wordt aangeboden in drie grootten: **klein**, **gemiddeld**en **groot**. Kleine exemplaargrootten zijn bedoeld voor het ontwikkelen en testen van scenario's.
 
 Zie [Servicelimieten voor Application Gateway](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits) voor een volledige lijst van toepassingsgateway-limieten.
 
 De volgende tabel toont een gemiddelde prestaties doorvoer voor elke Application Gateway v1-instantie waarvoor SSL-offload is ingeschakeld:
 
-| Gemiddelde grootte van een antwoord van de back-endpagina | Klein | Middelgroot | Groot |
+| Gemiddelde grootte van een antwoord van de back-endpagina | Klein | Normaal | Groot |
 | --- | --- | --- | --- |
 | 6 kB |7,5 Mbps |13 Mbps |50 Mbps |
 | 100 kB |35 Mbps |100 Mbps |200 Mbps |

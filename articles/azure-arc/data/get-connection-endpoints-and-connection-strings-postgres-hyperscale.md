@@ -10,12 +10,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 93b0547ba25f6534593a0a016ebfa5cbe4d2be2e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4087d618209ab4db46f89ef4e6db7ac87ca4cf57
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936803"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331009"
 ---
 # <a name="get-connection-endpoints-and-form-connection-strings-for-your-arc-enabled-postgresql-hyperscale-server-group"></a>Verbindings eindpunten en formulier verbindings reeksen ophalen voor de PostgreSQL grootschalige-Server groep met Arc ingeschakeld
 
@@ -77,7 +77,7 @@ postgres=#
 ```
 > [!NOTE]
 >
-> - Het wacht woord van de _postgresql_ -gebruiker in het eind punt met de naam '_postgresql instance_ is het wacht woord dat u hebt gekozen tijdens het maken van de Server groep.
+> - Het wacht woord van de _post gres_ -gebruiker die is opgegeven in het eind punt '_postgresql instance_' is het wacht woord dat u hebt gekozen bij het implementeren van de Server groep.
 > - Over azdata: de lease die aan uw verbinding is gekoppeld, duurt ongeveer 10 uur. Daarna moet u opnieuw verbinding maken. Als uw lease is verlopen, wordt het volgende fout bericht weer gegeven wanneer u probeert een opdracht uit te voeren met azdata (met uitzonde ring van azdata-aanmelding): _fout: (401)_ 
 >  _reden: niet-geautoriseerde_ 
 >  _http-antwoord headers: HTTPHeaderDict ({' date ': ' Sun, 06 sep 2020 16:58:38 GMT ', ' content-length ': ' 0 ', ' www-authenticatie ': '_ 

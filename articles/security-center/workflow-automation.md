@@ -6,14 +6,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 09/12/2020
+ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 7933cc692ebc3b40e5f608a917dce51f5298fbe3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f3a1dc716e4db51d9d8b488bd98fc254f8dad842
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904639"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322152"
 ---
 # <a name="create-automatic-responses-to-alerts-and-recommendations-with-workflow-automation"></a>Automatische reacties op waarschuwingen en aanbevelingen maken met werk stroom automatisering
 
@@ -67,14 +67,12 @@ In dit artikel wordt de functie werk stroom automatisering van Azure Security Ce
 
     In de ontwerp functie voor logische apps worden de volgende triggers van de Security Center-connectors ondersteund:
 
-    * **Wanneer een Azure Security Center aanbeveling wordt gemaakt of geactiveerd**
-    * **Wanneer een Azure Security Center waarschuwing wordt gemaakt of geactiveerd** 
-    
-    > [!TIP]
-    > U kunt de trigger aanpassen zodat deze alleen betrekking heeft op waarschuwingen met de ernst niveaus die u interesseren.
+    * **Wanneer een Azure Security Center aanbeveling wordt gemaakt of geactiveerd** : als uw logische app gebruikmaakt van een aanbeveling die wordt afgeschaft of vervangen, werkt de automatisering niet meer en moet u de trigger bijwerken. Zie [Azure Security Center opmerkingen](release-notes.md)bij de release als u wijzigingen in aanbevelingen wilt bijhouden.
+
+    * **Wanneer een Azure Security Center waarschuwing wordt gemaakt of geactiveerd** , kunt u de trigger aanpassen zodat deze alleen betrekking heeft op waarschuwingen met de ernst niveaus die u interesseren.
     
     > [!NOTE]
-    > Als u de verouderde trigger gebruikt wanneer een reactie op een Azure Security Center waarschuwing wordt geactiveerd, wordt uw Logic Apps niet gestart door de functie werk stroom automatisering. Gebruik in plaats daarvan een van de hierboven genoemde triggers. 
+    > Als u de verouderde trigger gebruikt wanneer een reactie op een Azure Security Center waarschuwing wordt geactiveerd, worden uw logische apps niet gestart door de functie werk stroom automatisering. Gebruik in plaats daarvan een van de hierboven genoemde triggers. 
 
     [![Voor beeld van logische app](media/workflow-automation/sample-logic-app.png)](media/workflow-automation/sample-logic-app.png#lightbox)
 

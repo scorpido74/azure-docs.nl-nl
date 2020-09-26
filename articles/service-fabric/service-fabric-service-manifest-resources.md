@@ -3,12 +3,12 @@ title: Service Fabric service-eind punten opgeven
 description: Eindpunt resources beschrijven in een service manifest, inclusief het instellen van HTTPS-eind punten
 ms.topic: conceptual
 ms.date: 09/16/2020
-ms.openlocfilehash: 8fdd95a7c0390c987b7c59663e0ee12e4a4a968e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c0c3c45c47447390901e5e0d60e77ab6b85a6a0d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91267802"
+ms.locfileid: "91354756"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>Resources opgeven in een service manifest
 ## <a name="overview"></a>Overzicht
@@ -227,9 +227,9 @@ Stel dat u een verkeerde waarde opgeeft. Stel dat u voor poort een teken reeks w
 In dit artikel wordt uitgelegd hoe u eind punten kunt definiëren in het service manifest van Service Fabric. Zie voor meer gedetailleerde voor beelden:
 
 > [!div class="nextstepaction"]
-> [Voorbeelden van toepassings- en servicemanifesten](https://docs.microsoft.com/azure/service-fabric/service-fabric-manifest-examples.md)
+> [Voorbeelden van toepassings- en servicemanifesten](service-fabric-manifest-examples.md)
 
 Zie voor een door loop-through verpakking en het implementeren van een bestaande toepassing op een Service Fabric cluster:
 
 > [!div class="nextstepaction"]
-> [Een bestaand uitvoerbaar bestand inpakken en implementeren in Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-existing-app.md)
+> [Een bestaand uitvoerbaar bestand inpakken en implementeren in Service Fabric](service-fabric-deploy-existing-app.md)

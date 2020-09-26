@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 12/20/2018
-ms.openlocfilehash: f4a851377128577cc7e50af777b502c9f59211c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51a251d7a1ff4063178a6c03d71fedc5adfca423
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84188247"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332862"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>Problemen met SQL Data Sync oplossen
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -44,7 +44,7 @@ Zie [Gegevens synchroniseren tussen meerdere cloud- en on-premises databases met
 
 - [Hoe worden kring verwijzingen verwerkt met gegevens synchronisatie? Dat wil zeggen, wanneer dezelfde gegevens worden gesynchroniseerd in meerdere synchronisatie groepen en blijven veranderen als resultaat?](#sync-circ)
 
-### <a name="sync-fails-in-the-portal-ui-for-on-premises-databases-that-are-associated-with-the-client-agent"></a><a name="sync-fails"></a>Synchronisatie mislukt in de portal-gebruikers interface voor on-premises data bases die zijn gekoppeld aan de client agent
+### <a name="sync-fails-in-the-portal-ui-for-on-premises-databases-that-are-associated-with-the-client-agent"></a><a name="sync-fails"></a> Synchronisatie mislukt in de portal-gebruikers interface voor on-premises data bases die zijn gekoppeld aan de client agent
 
 Synchronisatie mislukt in de gebruikers interface van de SQL Data Sync portal voor on-premises data bases die zijn gekoppeld aan de client agent. Op de lokale computer waarop de-agent wordt uitgevoerd, ziet u System. IO. IOException-fouten in het gebeurtenis logboek. De fouten zeggen dat de schijf onvoldoende ruimte heeft.
 
@@ -52,7 +52,7 @@ Synchronisatie mislukt in de gebruikers interface van de SQL Data Sync portal vo
 
 - **Oplossing**. Maak meer ruimte vrij op het station waarop de map% TEMP% zich bevindt.
 
-### <a name="my-sync-group-is-stuck-in-the-processing-state"></a><a name="sync-stuck"></a>Mijn synchronisatie groep is vastgelopen in de verwerkings status
+### <a name="my-sync-group-is-stuck-in-the-processing-state"></a><a name="sync-stuck"></a> Mijn synchronisatie groep is vastgelopen in de verwerkings status
 
 Een synchronisatie groep in SQL Data Sync heeft lange tijd de verwerkings status. Er wordt niet gereageerd op de opdracht **stoppen** en er worden geen nieuwe vermeldingen weer gegeven in de logboeken.
 
@@ -81,7 +81,7 @@ Een van de volgende voor waarden kan ertoe leiden dat een synchronisatie groep v
 > [!NOTE]
 > Als de voor gaande informatie uw synchronisatie groep niet uit de verwerkings status verplaatst, kan Microsoft Ondersteuning de status van de synchronisatie groep opnieuw instellen. Als u de status van de synchronisatie groep opnieuw wilt instellen, maakt u een bericht op de [pagina micro soft Q&een vraag voor Azure SQL database](https://docs.microsoft.com/answers/topics/azure-sql-database.html). Neem in het bericht de abonnements-ID en de synchronisatie groep-ID op voor de groep die opnieuw moet worden ingesteld. Een Microsoft Ondersteuning-Engineer reageert op uw bericht en laat u weten wanneer de status opnieuw is ingesteld.
 
-### <a name="i-see-erroneous-data-in-my-tables"></a><a name="sync-baddata"></a>Ik zie onjuiste gegevens in mijn tabellen
+### <a name="i-see-erroneous-data-in-my-tables"></a><a name="sync-baddata"></a> Ik zie onjuiste gegevens in mijn tabellen
 
 Als er tabellen met dezelfde naam maar uit verschillende database schema's zijn opgenomen in een synchronisatie, worden er na de synchronisatie onjuiste gegevens in de tabellen weer gegeven.
 
@@ -89,7 +89,7 @@ Als er tabellen met dezelfde naam maar uit verschillende database schema's zijn 
 
 - **Oplossing**. Zorg ervoor dat de namen van tabellen die betrokken zijn bij een synchronisatie verschillend zijn, zelfs als de tabellen deel uitmaken van verschillende schema's in een Data Base.
 
-### <a name="i-see-inconsistent-primary-key-data-after-a-successful-sync"></a><a name="sync-pkdata"></a>Ik zie inconsistente primaire-sleutel gegevens na een geslaagde synchronisatie
+### <a name="i-see-inconsistent-primary-key-data-after-a-successful-sync"></a><a name="sync-pkdata"></a> Ik zie inconsistente primaire-sleutel gegevens na een geslaagde synchronisatie
 
 Een synchronisatie wordt gerapporteerd als geslaagd. in het logboek worden geen mislukte of overgeslagen rijen weer gegeven, maar u ziet dat de gegevens van de primaire sleutel inconsistent zijn tussen de data bases in de synchronisatie groep.
 
@@ -97,7 +97,7 @@ Een synchronisatie wordt gerapporteerd als geslaagd. in het logboek worden geen 
 
 - **Oplossing**. Als u dit probleem wilt voor komen, moet u ervoor zorgen dat er geen gegevens in een primaire-sleutel kolom worden gewijzigd. Als u dit probleem wilt oplossen nadat dit is opgetreden, verwijdert u de rij met inconsistente gegevens uit alle eind punten in de synchronisatie groep. Voeg vervolgens de rij opnieuw in.
 
-### <a name="i-see-a-significant-degradation-in-performance"></a><a name="sync-perf"></a>Ik zie een aanzienlijke vermindering van de prestaties
+### <a name="i-see-a-significant-degradation-in-performance"></a><a name="sync-perf"></a> Ik zie een aanzienlijke vermindering van de prestaties
 
 Uw prestaties worden aanzienlijk verminderd, mogelijk op het punt waar u de gebruikers interface voor gegevens synchronisatie niet zelfs kunt openen.
 
@@ -105,12 +105,12 @@ Uw prestaties worden aanzienlijk verminderd, mogelijk op het punt waar u de gebr
 
 - **Oplossing**. De beste oplossing is voor komen. Zorg ervoor dat uw synchronisatie groepen geen kring verwijzingen bevatten. Een rij die is gesynchroniseerd door één synchronisatie groep kan niet worden gesynchroniseerd met een andere synchronisatie groep.
 
-### <a name="i-see-this-message-cannot-insert-the-value-null-into-the-column-column-column-does-not-allow-nulls-what-does-this-mean-and-how-can-i-fix-it"></a><a name="sync-nulls"></a>Ik zie dit bericht: ' kan de waarde NULL niet invoegen in de kolom \<column> . Null-waarden zijn niet toegestaan voor de kolom. Wat betekent dit en hoe kan ik het probleem oplossen? 
+### <a name="i-see-this-message-cannot-insert-the-value-null-into-the-column-column-column-does-not-allow-nulls-what-does-this-mean-and-how-can-i-fix-it"></a><a name="sync-nulls"></a> Ik zie dit bericht: ' kan de waarde NULL niet invoegen in de kolom \<column> . Null-waarden zijn niet toegestaan voor de kolom. Wat betekent dit en hoe kan ik het probleem oplossen? 
 Dit fout bericht geeft aan dat een van de volgende twee problemen heeft plaatsgevonden:
 -  Een tabel heeft geen primaire sleutel. U kunt dit probleem oplossen door een primaire sleutel toe te voegen aan alle tabellen die u synchroniseert.
 -  Er is een WHERE-component in uw CREATE INDEX-instructie. Met gegevens synchronisatie wordt deze voor waarde niet verwerkt. U kunt dit probleem oplossen door de component WHERE te verwijderen of de wijzigingen hand matig door te voeren voor alle data bases. 
  
-### <a name="how-does-data-sync-handle-circular-references-that-is-when-the-same-data-is-synced-in-multiple-sync-groups-and-keeps-changing-as-a-result"></a><a name="sync-circ"></a>Hoe worden kring verwijzingen verwerkt met gegevens synchronisatie? Dat wil zeggen, wanneer dezelfde gegevens worden gesynchroniseerd in meerdere synchronisatie groepen en blijven veranderen als resultaat?
+### <a name="how-does-data-sync-handle-circular-references-that-is-when-the-same-data-is-synced-in-multiple-sync-groups-and-keeps-changing-as-a-result"></a><a name="sync-circ"></a> Hoe worden kring verwijzingen verwerkt met gegevens synchronisatie? Dat wil zeggen, wanneer dezelfde gegevens worden gesynchroniseerd in meerdere synchronisatie groepen en blijven veranderen als resultaat?
 Met gegevens synchronisatie worden geen kring verwijzingen afgehandeld. Zorg ervoor dat u deze voor komt. 
 
 ## <a name="client-agent-issues"></a>Problemen met client agent
@@ -135,7 +135,7 @@ Zie problemen met de [Data Sync-agent oplossen voor informatie](sql-data-sync-ag
 
 - [Wat gebeurt er wanneer ik een verloren of beschadigde data base herstel?](#setup-restore)
 
-### <a name="i-get-a-disk-out-of-space-message"></a><a name="setup-space"></a>Er wordt een bericht weer gegeven dat er onvoldoende schijf ruimte is
+### <a name="i-get-a-disk-out-of-space-message"></a><a name="setup-space"></a> Er wordt een bericht weer gegeven dat er onvoldoende schijf ruimte is
 
 - **Oorzaak**. Het bericht ' schijf is onvoldoende ruimte ' kan worden weer gegeven als overgebleven bestanden moeten worden verwijderd. Dit kan worden veroorzaakt door antivirus software, of bestanden zijn geopend wanneer er delete-bewerkingen worden uitgevoerd.
 
@@ -144,7 +144,7 @@ Zie problemen met de [Data Sync-agent oplossen voor informatie](sql-data-sync-ag
 > [!IMPORTANT]
 > Geen bestanden verwijderen terwijl de synchronisatie wordt uitgevoerd.
 
-### <a name="i-cant-delete-my-sync-group"></a><a name="setup-delete"></a>Ik kan mijn synchronisatie groep niet verwijderen
+### <a name="i-cant-delete-my-sync-group"></a><a name="setup-delete"></a> Ik kan mijn synchronisatie groep niet verwijderen
 
 De poging om een synchronisatie groep te verwijderen, is mislukt. Een van de volgende scenario's kan ertoe leiden dat een synchronisatie groep niet kan worden verwijderd:
 
@@ -166,7 +166,7 @@ De poging om een synchronisatie groep te verwijderen, is mislukt. Een van de vol
 
 - **Oplossing**. Wacht tot het inrichtings-of synchronisatie proces is voltooid en probeer de synchronisatie groep vervolgens opnieuw te verwijderen.
 
-### <a name="i-cant-unregister-a-sql-server-database"></a><a name="setup-unreg"></a>Ik kan de registratie van een SQL Server Data Base niet opheffen
+### <a name="i-cant-unregister-a-sql-server-database"></a><a name="setup-unreg"></a> Ik kan de registratie van een SQL Server Data Base niet opheffen
 
 - **Oorzaak**. Waarschijnlijk probeert u de registratie van een Data Base die al is verwijderd, te verwijderen.
 
@@ -175,18 +175,18 @@ De poging om een synchronisatie groep te verwijderen, is mislukt. Een van de vol
   Als deze bewerking de data base niet kan verwijderen uit de synchronisatie groep:
 
   1. Stop de client agent host-service en start deze opnieuw:  
-    a. Selecteer het menu **Start** .  
+    a. Selecteer het menu **Start**.  
     b. Typ **Services. msc**in het zoekvak.  
     c. Dubbel klik in de sectie **Program ma's** van het deel venster Zoek resultaten op **Services**.  
     d. Klik met de rechter muisknop op de **SQL Data Sync** -service.  
     e. Als de service wordt uitgevoerd, stopt u deze.  
     f. Klik met de rechter muisknop op de service en selecteer **starten**.  
-    bijvoorbeeld Controleer of de data base nog steeds is geregistreerd. Als deze niet meer is geregistreerd, bent u klaar. Als dat niet het geval is, gaat u verder met de volgende stap.
+    g. Controleer of de data base nog steeds is geregistreerd. Als deze niet meer is geregistreerd, bent u klaar. Als dat niet het geval is, gaat u verder met de volgende stap.
   1. Open de client agent-app (SqlAzureDataSyncAgent).
   1. Selecteer **referenties bewerken**en voer vervolgens de referenties voor de data base in.
   1. Ga door met het opheffen van de registratie.
 
-### <a name="i-dont-have-sufficient-privileges-to-start-system-services"></a><a name="setup-perms"></a>Ik heb niet voldoende rechten om systeem services te starten
+### <a name="i-dont-have-sufficient-privileges-to-start-system-services"></a><a name="setup-perms"></a> Ik heb niet voldoende rechten om systeem services te starten
 
 - **Oorzaak**. Deze fout treedt op in twee situaties:
   -   De gebruikers naam en/of het wacht woord zijn onjuist.
@@ -200,7 +200,7 @@ De poging om een synchronisatie groep te verwijderen, is mislukt. Een van de vol
   1. Selecteer **Apply** en vervolgens **OK**.
   1. Sluit alle vensters.
 
-### <a name="a-database-has-an-out-of-date-status"></a><a name="setup-date"></a>De status van een Data Base is verouderd
+### <a name="a-database-has-an-out-of-date-status"></a><a name="setup-date"></a> De status van een Data Base is verouderd
 
 - **Oorzaak**. SQL Data Sync verwijdert data bases die gedurende 45 dagen of langer offline zijn van de service (geteld vanaf het moment dat de data base offline werd gezet). Als een Data Base gedurende 45 dagen offline is en weer online komt, is de status **verouderd**.
 
@@ -214,7 +214,7 @@ De poging om een synchronisatie groep te verwijderen, is mislukt. Een van de vol
   > [!WARNING]
   > U verliest alle wijzigingen die in deze data base zijn aangebracht terwijl deze offline was.
 
-### <a name="a-sync-group-has-an-out-of-date-status"></a><a name="setup-date2"></a>Een synchronisatie groep heeft een verouderde status
+### <a name="a-sync-group-has-an-out-of-date-status"></a><a name="setup-date2"></a> Een synchronisatie groep heeft een verouderde status
 
 - **Oorzaak**. Als een of meer wijzigingen niet van toepassing zijn voor de gehele Bewaar periode van 45 dagen, kan een synchronisatie groep verouderd raken.
 
@@ -222,7 +222,7 @@ De poging om een synchronisatie groep te verwijderen, is mislukt. Een van de vol
 
   Als de status van een synchronisatie groep **verouderd**is, verwijdert u de synchronisatie groep en maakt u deze opnieuw.
 
-### <a name="a-sync-group-cant-be-deleted-within-three-minutes-of-uninstalling-or-stopping-the-agent"></a><a name="setup-delete2"></a>Een synchronisatie groep kan niet binnen drie minuten na het verwijderen of stoppen van de agent worden verwijderd
+### <a name="a-sync-group-cant-be-deleted-within-three-minutes-of-uninstalling-or-stopping-the-agent"></a><a name="setup-delete2"></a> Een synchronisatie groep kan niet binnen drie minuten na het verwijderen of stoppen van de agent worden verwijderd
 
 Het is niet mogelijk om een synchronisatie groep te verwijderen binnen drie minuten van het ongedaan maken of stoppen van de gekoppelde SQL Data Sync-client agent.
 
@@ -235,7 +235,7 @@ Het is niet mogelijk om een synchronisatie groep te verwijderen binnen drie minu
     b.  Installeer de agent op een on-premises computer. (Dit kan dezelfde computer zijn of een andere.) Verzend vervolgens de agentsleutel die in de portal is gegenereerd voor de agent die offline is.  
     c. Probeer de synchronisatie groep te verwijderen.
 
-### <a name="what-happens-when-i-restore-a-lost-or-corrupted-database"></a><a name="setup-restore"></a>Wat gebeurt er wanneer ik een verloren of beschadigde data base herstel?
+### <a name="what-happens-when-i-restore-a-lost-or-corrupted-database"></a><a name="setup-restore"></a> Wat gebeurt er wanneer ik een verloren of beschadigde data base herstel?
 
 Als u een verloren of beschadigde data base herstelt vanuit een back-up, is er mogelijk een niet-convergentie van gegevens in de synchronisatie groepen waartoe de data base behoort.
 

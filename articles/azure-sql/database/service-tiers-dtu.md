@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 11/26/2019
-ms.openlocfilehash: fbf753436a259993f6869372ae3ba7272f2a181a
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: ba2170923885eac19af4bfe3ce55ea653371c0e8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541699"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321353"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Service-lagen in het op DTU gebaseerde aankoopmodel
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -39,7 +39,7 @@ Het kiezen van een servicelaag is voornamelijk afhankelijk van de bedrijfs conti
 |**Doel-workload**|Ontwikkeling en productie|Ontwikkeling en productie|Ontwikkeling en productie|
 |**SLA voor uptime**|99,99%|99,99%|99,99%|
 |**Maximale retentie van back-ups**|7 dagen|35 dagen|35 dagen|
-|**CPU**|Laag|Laag, gemiddeld, hoog|Gemiddeld, hoog|
+|**CPU**|Beperkt|Laag, gemiddeld, hoog|Gemiddeld, hoog|
 |**I/o-door Voer (ongeveer)** |1-5 IOPS per DTU| 1-5 IOPS per DTU | 25 IOPS per DTU|
 |**I/o-latentie (bij benadering)**|5 ms (lezen), 10 MS (schrijven)|5 ms (lezen), 10 MS (schrijven)|2 ms (lezen/schrijven)|
 |**Column Store-indexering** |N.v.t.|S3 en hoger|Ondersteund|

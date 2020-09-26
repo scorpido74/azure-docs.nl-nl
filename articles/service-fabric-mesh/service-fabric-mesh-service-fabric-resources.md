@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: vturecek
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 0ae2ed163560aee4c0c3525ab31910e37afaa5b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a7f25d4156c3d2671e1a15a1253ed7ba22265af0
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847004"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91354867"
 ---
 # <a name="introduction-to-service-fabric-resource-model"></a>Inleiding tot het Service Fabric-resourcemodel
 
@@ -66,9 +66,9 @@ Geheimen bronnen kunnen worden geïmplementeerd onafhankelijk van een toepassing
 
 Containers maken vaak tijdelijke schijven beschikbaar. Tijdelijke schijven zijn echter tijdelijk een nieuwe tijdelijke schijf en verliezen de informatie wanneer een container vastloopt. Het is ook lastig om informatie over tijdelijke schijven met andere containers te delen. Volumes zijn mappen die in de container instanties worden gekoppeld die u kunt gebruiken om de status te behouden. Volumes bieden u bestands opslag voor algemeen gebruik en bieden de mogelijkheid om bestanden te lezen/schrijven met behulp van normale I/O-bestand-Api's van de schijf. De volume resource is een declaratieve manier om te beschrijven hoe een map is gekoppeld en de back-up van de opslag ruimte (Azure Files volume of Service Fabric betrouw bare volume).  Lees de [opslag status](service-fabric-mesh-storing-state.md#volumes)voor meer informatie.
 
-![Volumes][Image3]
+![Diagram toont een service die naar een schijf volume stroomt, die naar beide Service Fabric betrouw bare volume, vervolgens naar een gerepliceerde lokale schijf, en naar Azure Files volume en vervolgens naar de netwerk opslag.][Image3]
 
-## <a name="programming-models"></a>Programmeer modellen
+## <a name="programming-models"></a>Programmeermodellen
 Voor service resource moet alleen een container installatie kopie worden uitgevoerd, waarnaar wordt verwezen in de code pakketten die zijn gekoppeld aan de resource. U kunt elke wille keurige code uitvoeren, geschreven in elke taal, met behulp van een wille keurig Framework in de container zonder dat hiervoor Service Fabric mesh-specifieke Api's moeten worden gebruikt. 
 
 Uw toepassings code blijft draagbaar, zelfs buiten Service Fabric net, en uw toepassings implementaties blijven consistent, ongeacht de taal of het Framework dat wordt gebruikt voor het implementeren van uw services. Of uw toepassing ASP.NET Core, een go of een set processen en scripts is, het implementatie model voor Service Fabric mesh-resources blijft hetzelfde. 

@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: 08fcf3540b2f8677f3fbfff49f21f99062d0ca40
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 45f63aed410c4d140259808044872cbbecfaa95b
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91343377"
+ms.locfileid: "91355564"
 ---
 # <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>Azure Machine Learning Studio (klassieke) webservices beheren met API Management
 
-**VAN TOEPASSING OP:** ![ja](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (klassiek) ![nee](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+**van toepassing op:** ![ Van toepassing op. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klassiek) ![ is niet van toepassing op.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
 
 
 ## <a name="overview"></a>Overzicht
@@ -50,7 +50,7 @@ U kunt uw Azure Machine Learning-webservice beheren met een API Management-exemp
 
 Het kan tot 30 minuten duren voordat een nieuwe service is gemaakt.
 
-![Create-service](./media/manage-web-service-endpoints-using-api-management/create-service.png)
+![Scherm afbeelding toont het dialoog venster een P I-beheer service met de vereiste opties voor het maken van een service.](./media/manage-web-service-endpoints-using-api-management/create-service.png)
 
 
 ## <a name="create-the-api"></a>De API maken
@@ -87,12 +87,12 @@ Maak eerst een bewerking voor de service voor de AzureML-bron records:
 2. Typ "" voor de **URL-sjabloon** `/workspaces/{workspace}/services/{service}/execute?api-version={apiversion}&details={details}` .
 3. Voer een **weergave naam** in (in dit voor beeld wordt ' Rr's ' uitgevoerd ' gebruikt).
 
-   ![add-rr's-bewerking-Signature](./media/manage-web-service-endpoints-using-api-management/add-rrs-operation-signature.png)
+   ![Scherm afbeelding toont de handtekening pagina waar u een weergave naam kunt invoeren.](./media/manage-web-service-endpoints-using-api-management/add-rrs-operation-signature.png)
 
 4. Klik **Responses**  >  aan de linkerkant op reacties**toevoegen** en selecteer **200 OK**.
 5. Klik op **Opslaan** om deze bewerking op te slaan.
 
-   ![add-rr's-bewerking-Response](./media/manage-web-service-endpoints-using-api-management/add-rrs-operation-response.png)
+   ![Scherm afbeelding toont de pagina bewerking R R S uitvoeren met de knop Opslaan.](./media/manage-web-service-endpoints-using-api-management/add-rrs-operation-response.png)
 
 ## <a name="add-bes-operations"></a>BES-bewerkingen toevoegen
 
@@ -141,15 +141,15 @@ Bewerkingen kunnen rechtstreeks worden aangeroepen vanuit de ontwikkelaars Porta
 
 1. Klik op **ontwikkelaars Portal**.
 
-   ![Developer-Portal](./media/manage-web-service-endpoints-using-api-management/developer-portal.png)
+   ![Scherm afbeelding toont de koppeling naar de ontwikkelaars Portal.](./media/manage-web-service-endpoints-using-api-management/developer-portal.png)
 
 2. Klik op **api's** in het bovenste menu en klik vervolgens op de **AzureML-demo-API** om de beschik bare bewerkingen te bekijken.
 
-   ![demoazureml-API](./media/manage-web-service-endpoints-using-api-management/demoazureml-api.png)
+   ![Scherm afbeelding toont de Azure M L-demo van een P I-koppeling.](./media/manage-web-service-endpoints-using-api-management/demoazureml-api.png)
 
 3. Selecteer **bron records uitvoeren** voor de bewerking. Klik op **Probeer het opnieuw**.
 
-   ![Probeer het](./media/manage-web-service-endpoints-using-api-management/try-it.png)
+   ![Scherm afbeelding toont het dialoog venster Azure M L demo van een P I met het selectie vakje voor het uitvoeren van R S en een try-toets.](./media/manage-web-service-endpoints-using-api-management/try-it.png)
 
 4. Voor **aanvraag parameters**typt u uw **werk ruimte** en  **service**, typt u "2,0 voor de **apiversion**" en "True" voor de **Details**. U vindt uw **werk ruimte** en **service** in het service Dashboard van de AzureML-webservice (Zie **de webservice testen** in bijlage A).
 
@@ -157,15 +157,15 @@ Bewerkingen kunnen rechtstreeks worden aangeroepen vanuit de ontwikkelaars Porta
 
    Typ voor het **hoofd gedeelte**van de aanvraag `{"Inputs": {"input1": {"ColumnNames": ["Col2"], "Values": [["This is a good day"]]}}, "GlobalParameters": {}}` .
 
-   ![azureml-demo-API](./media/manage-web-service-endpoints-using-api-management/azureml-demo-api.png)
+   ![Scherm afbeelding toont de Azure M L-demo een P I aanvraag parameters, aanvraag headers, aanvraag tekst en autorisatie.](./media/manage-web-service-endpoints-using-api-management/azureml-demo-api.png)
 
 5. Klik op **Verzenden**.
 
-   ![verzenden](./media/manage-web-service-endpoints-using-api-management/send.png)
+   ![Scherm afbeelding toont de knop verzenden.](./media/manage-web-service-endpoints-using-api-management/send.png)
 
 Nadat een bewerking is aangeroepen, wordt de **aangevraagde URL** van de back-end-service weer gegeven in de ontwikkelaars Portal, de **antwoord status**, de **antwoord headers**en eventuele **antwoord inhoud**.
 
-![antwoord-status](./media/manage-web-service-endpoints-using-api-management/response-status.png)
+![Scherm afbeelding toont de ontwikkelaars portal waarin de reactie status, reactie latentie, antwoord headers en antwoord inhoud worden weer gegeven.](./media/manage-web-service-endpoints-using-api-management/response-status.png)
 
 ## <a name="appendix-a---creating-and-testing-a-simple-azureml-web-service"></a>Bijlage A: een eenvoudige AzureML-webservice maken en testen
 ### <a name="creating-the-experiment"></a>Het experiment maken
@@ -177,11 +177,11 @@ Hieronder vindt u de stappen voor het maken van een eenvoudig AzureML-experiment
 
 Ga eerst met een browser naar keuze naar: [https://studio.azureml.net/](https://studio.azureml.net/) en voer uw referenties in om u aan te melden. Maak vervolgens een nieuw, leeg experiment.
 
-![zoeken-experimenten-sjablonen](./media/manage-web-service-endpoints-using-api-management/search-experiment-templates.png)
+![Scherm afbeelding toont een nieuwe pagina waarop een EXPERIMENT is geselecteerd en een zoek opdracht in tekst.](./media/manage-web-service-endpoints-using-api-management/search-experiment-templates.png)
 
 Wijzig de naam in **SimpleFeatureHashingExperiment**. Vouw **opgeslagen gegevens sets** uit en sleep **boek beoordelingen van Amazon** naar uw experiment.
 
-![eenvoudige functie-hashing-experiment](./media/manage-web-service-endpoints-using-api-management/simple-feature-hashing-experiment.png)
+![In de scherm afbeelding ziet u voor beelden aan de linkerkant en een SimpleFeatureHashingExperiment venster aan de rechter kant met de instructie om items hier naartoe te slepen.](./media/manage-web-service-endpoints-using-api-management/simple-feature-hashing-experiment.png)
 
 Vouw **gegevens transformatie** en- **bewerking** uit en sleep de **kolommen in de gegevensset** naar uw experiment. Verbind **boek revisies van Amazon** om de **kolommen in de gegevensset te selecteren**.
 
@@ -193,53 +193,53 @@ Klik op **kolommen selecteren in gegevensset** en klik vervolgens op **kolom kie
 
 Vouw **Text Analytics** uit en sleep **functie-hashing** naar het experiment. Verbind **select columns in dataset** om **hashing van functies te gebruiken**.
 
-![Connect-project-columns](./media/manage-web-service-endpoints-using-api-management/connect-project-columns.png)
+![Scherm afbeelding toont een functie-hash-item dat wordt toegevoegd aan de werk ruimte.](./media/manage-web-service-endpoints-using-api-management/connect-project-columns.png)
 
 Type **3** voor de **hash-bitsize**. Hiermee worden kolommen van 8 (23) gemaakt.
 
-![hashing-bitsize](./media/manage-web-service-endpoints-using-api-management/hashing-bitsize.png)
+![Scherm afbeelding toont eigenschappen waarvoor hashing van functies is geselecteerd en u kunt hash-bitsize invoeren.](./media/manage-web-service-endpoints-using-api-management/hashing-bitsize.png)
 
 Op dit moment kunt u op **uitvoeren** klikken om het experiment te testen.
 
-![uitvoeringsrun](./media/manage-web-service-endpoints-using-api-management/run.png)
+![Scherm afbeelding toont een knop uitvoeren.](./media/manage-web-service-endpoints-using-api-management/run.png)
 
 ### <a name="create-a-web-service"></a>Een webservice maken
 Maak nu een webservice. Vouw **Web Service** uit en sleep **invoer** naar uw experiment. Verbind **invoer** met **functie-hashing**. Sleep ook **uitvoer** naar uw experiment. Koppel de **uitvoer** aan **functie-hashing**.
 
-![uitvoer naar functie-hashing](./media/manage-web-service-endpoints-using-api-management/output-to-feature-hashing.png)
+![In de scherm opname wordt de werk ruimte weer gegeven na de opgegeven wijzigingen.](./media/manage-web-service-endpoints-using-api-management/output-to-feature-hashing.png)
 
 Klik op **webservice publiceren**.
 
-![Publish-Web-Service](./media/manage-web-service-endpoints-using-api-management/publish-web-service.png)
+![Scherm afbeelding toont de knop PUBLISH WEB SERVICE.](./media/manage-web-service-endpoints-using-api-management/publish-web-service.png)
 
 Klik op **Ja** om het experiment te publiceren.
 
-![Ja, publiceren](./media/manage-web-service-endpoints-using-api-management/yes-to-publish.png)
+![Scherm afbeelding toont een bevestigings bericht en de optie voor publiceren of niet.](./media/manage-web-service-endpoints-using-api-management/yes-to-publish.png)
 
 ### <a name="test-the-web-service"></a>De webservice testen
 Een AzureML-webservice bestaat uit RSS-eind punten (aanvraag/antwoord service) en BES (batch Execution Service). RSS is voor synchrone uitvoering. BES is voor asynchrone taak uitvoering. Als u uw webservice wilt testen met de onderstaande python-bron, moet u mogelijk de Azure SDK voor python downloaden en installeren (zie: [python installeren](/azure/developer/python/azure-sdk-install)).
 
 U hebt ook de **werk ruimte**, de **service**en **api_key** van uw experiment nodig voor de onderstaande voorbeeld bron. U kunt de werk ruimte en service vinden door te klikken op **aanvraag/antwoord** of **batch uitvoering** voor uw experiment in het dash board van de webservice.
 
-![zoeken-werk ruimte en service](./media/manage-web-service-endpoints-using-api-management/find-workspace-and-service.png)
+![Scherm afbeelding toont het deel venster aanvraag waarin u de werk ruimte en de service waarden kunt vinden.](./media/manage-web-service-endpoints-using-api-management/find-workspace-and-service.png)
 
 U kunt de **api_key** vinden door te klikken op het experiment in het web service-dash board.
 
-![zoeken-API-sleutel](./media/manage-web-service-endpoints-using-api-management/find-api-key.png)
+![Scherm afbeelding toont het experiment in het web service-dash board waar u de sleutel P I kunt vinden.](./media/manage-web-service-endpoints-using-api-management/find-api-key.png)
 
 #### <a name="test-rrs-endpoint"></a>Eind punt van bron records testen
 ##### <a name="test-button"></a>Knop Testen
 Een eenvoudige manier om het eind punt van de bron records te testen is door te klikken op **testen** op het web service-dash board.
 
-![test](./media/manage-web-service-endpoints-using-api-management/test.png)
+![Scherm afbeelding toont het experiment in het web service-dash board met de knop testen.](./media/manage-web-service-endpoints-using-api-management/test.png)
 
 Typ **Dit is een goede dag** voor **col2**. Klik op het vinkje.
 
-![Enter-data](./media/manage-web-service-endpoints-using-api-management/enter-data.png)
+![Scherm afbeelding toont het dialoog venster gegevens invoeren om te voors pellen, waarin u tekst kunt invoeren zoals in het voor beeld dit is een goede dag.](./media/manage-web-service-endpoints-using-api-management/enter-data.png)
 
 U ziet iets als
 
-![voor beeld-uitvoer](./media/manage-web-service-endpoints-using-api-management/sample-output.png)
+![Scherm afbeelding toont het resultaat van het experiment, waardoor dit een goede dag is en meerdere cijfers tussen aanhalings tekens.](./media/manage-web-service-endpoints-using-api-management/sample-output.png)
 
 ##### <a name="sample-code"></a>Voorbeeldcode
 Een andere manier om uw RR'S te testen, is vanuit uw client code. Als u op het dash board op **aanvraag/antwoord** klikt en naar beneden schuift, ziet u voorbeeld code voor C#, python en R. U ziet ook de syntaxis van de aanvraag RR'S, met inbegrip van de aanvraag-URI, headers en hoofd tekst.

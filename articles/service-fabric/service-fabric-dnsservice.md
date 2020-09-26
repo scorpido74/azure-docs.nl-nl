@@ -4,12 +4,12 @@ description: De DNS-service van Service Fabric gebruiken voor het detecteren van
 ms.topic: conceptual
 ms.date: 7/20/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a05669bbd6de44447d7eb11a0b9941d18e8048d1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f7f06920820cdc73f8d3101ab24ee46625931ee4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021269"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268040"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>DNS Service in Azure Service Fabric
 De DNS-service is een optionele systeem service die u in uw cluster kunt inschakelen om andere services te detecteren die gebruikmaken van het DNS-protocol. 
@@ -18,7 +18,7 @@ Veel services, met name services die zijn gecontainerd, zijn adresseerbaar via e
 
 De DNS-service wijst DNS-namen toe aan service namen, die op zijn beurt worden omgezet door de Naming Service om het service-eind punt te retour neren. De DNS-naam voor de service wordt verschaft op het moment dat deze wordt gemaakt. In het volgende diagram ziet u hoe de DNS-service werkt voor stateless Services.
 
-![Service-eind punten](./media/service-fabric-dnsservice/stateless-dns.png)
+![Diagram waarin wordt getoond hoe DNS-namen worden toegewezen aan service namen door de DNS-service voor stateless Services.](./media/service-fabric-dnsservice/stateless-dns.png)
 
 Vanaf Service Fabric versie 6,3 is het Service Fabric DNS-protocol uitgebreid met een schema voor het adresseren van gepartitioneerde stateful Services. Met deze uitbrei dingen kunt u specifieke IP-adressen van partities omzetten met behulp van een combi natie van stateful service DNS-naam en de partitie naam. Alle drie de partitie schema's worden ondersteund:
 
@@ -28,7 +28,7 @@ Vanaf Service Fabric versie 6,3 is het Service Fabric DNS-protocol uitgebreid me
 
 In het volgende diagram ziet u hoe de DNS-service werkt voor gepartitioneerde stateful Services.
 
-![stateful service-eind punten](./media/service-fabric-dnsservice/stateful-dns.png)
+![Diagram waarin wordt getoond hoe DNS-namen worden toegewezen aan service namen door de DNS-service voor gepartitioneerde stateless Services.](./media/service-fabric-dnsservice/stateful-dns.png)
 
 Dynamische poorten worden niet ondersteund door de DNS-service. Gebruik de [reverse proxy service](./service-fabric-reverseproxy.md)om services die beschikbaar zijn op dynamische poorten, op te lossen.
 

@@ -10,13 +10,13 @@ ms.author: daperlov
 ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
-ms.date: 08/31/2020
-ms.openlocfilehash: 8749b64b664571abab6f354018dcbd2bd797531e
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.date: 09/23/2020
+ms.openlocfilehash: a5856d85b6a967f49fd651942ca6e4596bf15e7d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531216"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320970"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Continue integratie en levering in Azure Data Factory
 
@@ -212,13 +212,17 @@ Als uw Development Factory een bijbehorende Git-opslag plaats heeft, kunt u de s
 * U gebruikt automatische CI/CD en u wilt enkele eigenschappen wijzigen tijdens de implementatie van Resource Manager, maar de eigenschappen zijn niet standaard ingesteld op para meters.
 * Uw fabriek is zo groot dat de standaard Resource Manager-sjabloon ongeldig is omdat deze meer dan de Maxi maal toegestane para meters (256) heeft.
 
-Als u de standaard sjabloon voor parameterisering wilt overschrijven, maakt u een bestand met de naam **arm-template-parameters-definition.js** in de hoofdmap van uw Git-vertakking. U moet die exacte bestands naam gebruiken.
+Als u de standaard sjabloon voor parameterisering wilt overschrijven, gaat u naar de beheer hub en selecteert u **parameterisering-sjabloon** in het gedeelte bron beheer. Selecteer **sjabloon bewerken** om de parameterisering-sjabloon code-editor te openen. 
 
-   ![Bestand met aangepaste para meters](media/continuous-integration-deployment/custom-parameters.png)
+![Aangepaste para meters beheren](media/author-management-hub/management-hub-custom-parameters.png)
+
+Als u een aangepaste parameterisering-sjabloon maakt, maakt u een bestand met de naam **arm-template-parameters-definition.js** in de hoofdmap van uw Git-vertakking. U moet die exacte bestands naam gebruiken.
+
+![Bestand met aangepaste para meters](media/continuous-integration-deployment/custom-parameters.png)
 
 Wanneer u publiceert vanuit de collaboration Branch, wordt dit bestand door Data Factory gelezen en wordt de configuratie gebruikt om te genereren welke eigenschappen para meters ophalen. Als er geen bestand wordt gevonden, wordt de standaard sjabloon gebruikt.
 
-Wanneer u een resource manager-sjabloon exporteert, wordt dit bestand door Data Factory gelezen van de vertakking waaraan u momenteel werkt, niet alleen vanuit de vertakking voor samen werking. U kunt het bestand maken of bewerken vanuit een persoonlijke vertakking, waar u uw wijzigingen kunt testen door **arm-sjabloon exporteren** te selecteren in de gebruikers interface. U kunt het bestand vervolgens samen voegen in de vertakking voor samen werking.
+Wanneer u een resource manager-sjabloon exporteert, wordt dit bestand door Data Factory gelezen van de vertakking waaraan u momenteel werkt, niet met de vertakking voor samen werking. U kunt het bestand maken of bewerken vanuit een persoonlijke vertakking, waar u uw wijzigingen kunt testen door **arm-sjabloon exporteren** te selecteren in de gebruikers interface. U kunt het bestand vervolgens samen voegen in de vertakking voor samen werking.
 
 > [!NOTE]
 > Een aangepaste parameterisering-sjabloon wijzigt niet de limiet van de ARM-sjabloon parameters van 256. Hiermee kunt u het aantal geparametriseerde eigenschappen kiezen en verlagen.

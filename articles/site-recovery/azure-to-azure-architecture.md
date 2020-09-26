@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: 3cd64de05c44729f1aa714849e12fc8f69998334
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 08796b0a9b232c7b42b3f62fea69ab49b8957c60
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498613"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322084"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Architectuur voor herstel na noodgevallen van Azure naar Azure
 
@@ -31,7 +31,7 @@ De onderdelen die betrekking hebben op herstel na nood geval voor virtuele Azure
 **Vm's in bron regio** | Een of meer virtuele Azure-machines in een [ondersteunde bron regio](azure-to-azure-support-matrix.md#region-support).<br/><br/> Op Vm's kan elk [ondersteund besturings systeem](azure-to-azure-support-matrix.md#replicated-machine-operating-systems)worden uitgevoerd.
 **Opslag van de bron-VM** | Virtuele Azure-machines kunnen worden beheerd of beschikken over niet-beheerde schijven over opslag accounts.<br/><br/>[Meer informatie over](azure-to-azure-support-matrix.md#replicated-machines---storage) ondersteunde Azure-opslag.
 **VM-bron netwerken** | Vm's kunnen zich bevinden in een of meer subnetten in een virtueel netwerk (VNet) in de bron regio. Meer [informatie](azure-to-azure-support-matrix.md#replicated-machines---networking) over netwerk vereisten.
-**Cache-opslag account** | U hebt een cache-opslag account in het bron netwerk nodig. Tijdens de replicatie worden wijzigingen in de virtuele machine opgeslagen in de cache voordat ze worden verzonden naar de doel opslag.  Cache-opslag accounts moeten standaard zijn.<br/><br/> Het gebruik van een cache zorgt voor een minimale impact op productie toepassingen die worden uitgevoerd op een virtuele machine.<br/><br/> Meer [informatie](azure-to-azure-support-matrix.md#cache-storage) over vereisten voor cache opslag. 
+**Cacheopslagaccount** | U hebt een cache-opslag account in het bron netwerk nodig. Tijdens de replicatie worden wijzigingen in de virtuele machine opgeslagen in de cache voordat ze worden verzonden naar de doel opslag.  Cache-opslag accounts moeten standaard zijn.<br/><br/> Het gebruik van een cache zorgt voor een minimale impact op productie toepassingen die worden uitgevoerd op een virtuele machine.<br/><br/> Meer [informatie](azure-to-azure-support-matrix.md#cache-storage) over vereisten voor cache opslag. 
 **Doel resources** | Doel bronnen worden gebruikt tijdens de replicatie en wanneer een failover optreedt. Site Recovery kunt de doel resource standaard instellen, maar u kunt ze ook maken/aanpassen.<br/><br/> Controleer in de doel regio of u Vm's kunt maken en of uw abonnement voldoende bronnen heeft ter ondersteuning van VM-grootten die in de doel regio nodig zijn. 
 
 ![Diagram waarin de bron-en doel replicatie worden weer gegeven.](./media/concepts-azure-to-azure-architecture/enable-replication-step-1-v2.png)
@@ -40,12 +40,12 @@ De onderdelen die betrekking hebben op herstel na nood geval voor virtuele Azure
 
 Wanneer u replicatie voor een virtuele machine inschakelt, geeft Site Recovery u de mogelijkheid om doel resources automatisch te maken. 
 
-**Doelbron** | **Standaardinstelling**
+**Doelresource** | **Standaardinstelling**
 --- | ---
 **Doelabonnement** | Hetzelfde als het bron abonnement.
 **Doelresourcegroep** | De resource groep waartoe de virtuele machines behoren na een failover.<br/><br/> Het kan zich in een Azure-regio bevinden, met uitzonde ring van de bron regio.<br/><br/> Site Recovery maakt een nieuwe resource groep in de doel regio met het achtervoegsel ' ASR '.<br/><br/>
 **Doel-VNet** | Het virtuele netwerk (VNet) waarin gerepliceerde Vm's zich na een failover bevinden. Er wordt een netwerk toewijzing gemaakt tussen de bron-en doel-virtuele netwerken en vice versa.<br/><br/> Site Recovery maakt een nieuw VNet en subnet met het achtervoegsel ' ASR '.
-**Doel opslag account** |  Als de virtuele machine geen beheerde schijf gebruikt, is dit het opslag account waarnaar de gegevens worden gerepliceerd.<br/><br/> Site Recovery maakt een nieuw opslag account in de doel regio om het bron-opslag account te spie gelen.
+**Doelopslagaccount** |  Als de virtuele machine geen beheerde schijf gebruikt, is dit het opslag account waarnaar de gegevens worden gerepliceerd.<br/><br/> Site Recovery maakt een nieuw opslag account in de doel regio om het bron-opslag account te spie gelen.
 **Beheerde replica schijven** | Als de virtuele machine gebruikmaakt van een beheerde schijf, is dit de beheerde schijven waarnaar gegevens worden gerepliceerd.<br/><br/> Site Recovery maakt met replica beheerde schijven in de opslag regio om de bron te spie gelen.
 **Doelbeschikbaarheidssets** |  De beschikbaarheidsset waarin het repliceren van Vm's zich na een failover bevindt.<br/><br/> Site Recovery maakt een beschikbaarheidsset in de doel regio met het achtervoegsel ' ASR ' voor virtuele machines die zich in een beschikbaarheidsset op de bron locatie bevinden. Als er een beschikbaarheidsset bestaat, wordt deze gebruikt en wordt er geen nieuwe beschikbaar gemaakt.
 **Doelbeschikbaarheidszones** | Als de doel regio beschikbaarheids zones ondersteunt, wordt in Site Recovery hetzelfde zone nummer toegewezen als in de bron regio.
@@ -104,7 +104,7 @@ Een crash consistente moment opname legt gegevens vast die zich op de schijf bev
 
 **Beschrijving** | **Details** | **Aanbeveling**
 --- | --- | ---
-App-consistente herstel punten worden gemaakt op basis van app-consistente moment opnamen.<br/><br/> Een app-consistente moment opname bevat alle informatie in een crash consistente moment opname, plus alle gegevens in het geheugen en trans acties die worden uitgevoerd. | App-consistente moment opnamen gebruiken de Volume Shadow Copy Service (VSS):<br/><br/>   1) wanneer een moment opname wordt gestart, voert VSS een Kopieer bewerking voor het schrijven van kopieën uit op het volume.<br/><br/>   2) voordat de koeien wordt uitgevoerd, informeert VSS elke app op de computer die de geheugenresidente gegevens op schijf moet leegmaken.<br/><br/>   3) vervolgens kan de app back-up/herstel na nood gevallen (in dit geval Site Recovery) de momentopname gegevens lezen en door gaan. | App-consistente moment opnamen worden gemaakt op basis van de frequentie die u opgeeft. Deze frequentie moet altijd kleiner zijn dan de instelling voor het bewaren van herstel punten. Als u bijvoorbeeld de herstel punten behoudt met de standaard instelling van 24 uur, stelt u de frequentie in op minder dan 24 uur.<br/><br/>Ze zijn ingewik kelder en nemen meer tijd in beslag dan crash-consistente moment opnamen.<br/><br/> Ze zijn van invloed op de prestaties van apps die worden uitgevoerd op een virtuele machine die is ingeschakeld voor replicatie. 
+App-consistente herstel punten worden gemaakt op basis van app-consistente moment opnamen.<br/><br/> Een app-consistente moment opname bevat alle informatie in een crash consistente moment opname, plus alle gegevens in het geheugen en trans acties die worden uitgevoerd. | App-consistente moment opnamen gebruiken de Volume Shadow Copy Service (VSS):<br/><br/>   1) Azure Site Recovery maakt gebruik van de methode Copy only backup (VSS_BT_COPY) waarbij de back-uptijd en het Volg nummer van het transactie logboek van micro soft SQL niet worden gewijzigd </br></br> 2) als er een moment opname wordt gestart, voert VSS een Kopieer bewerking voor het schrijven van de schijf uit op het volume.<br/><br/>   3) voordat de koeien wordt uitgevoerd, informeert VSS elke app op de computer die de geheugenresidente gegevens op schijf moet leegmaken.<br/><br/>   4) vervolgens kan de app back-up/herstel na nood gevallen (in dit geval Site Recovery) de momentopname gegevens lezen en door gaan. | App-consistente moment opnamen worden gemaakt op basis van de frequentie die u opgeeft. Deze frequentie moet altijd kleiner zijn dan de instelling voor het bewaren van herstel punten. Als u bijvoorbeeld de herstel punten behoudt met de standaard instelling van 24 uur, stelt u de frequentie in op minder dan 24 uur.<br/><br/>Ze zijn ingewik kelder en nemen meer tijd in beslag dan crash-consistente moment opnamen.<br/><br/> Ze zijn van invloed op de prestaties van apps die worden uitgevoerd op een virtuele machine die is ingeschakeld voor replicatie. 
 
 ## <a name="replication-process"></a>Replicatieproces
 

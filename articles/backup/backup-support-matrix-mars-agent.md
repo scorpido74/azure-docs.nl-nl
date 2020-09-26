@@ -3,12 +3,12 @@ title: Ondersteunings matrix voor de MARS-agent
 description: Dit artikel bevat een overzicht van Azure Backup ondersteuning bij het maken van een back-up van computers waarop de Microsoft Azure Recovery Services-agent (MARS) wordt uitgevoerd.
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2b719bd36c27336b3fe24cdb904715bf8194ed70
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: b11a2e3ec2fdf3a46b324dcc0f95d4666a84c179
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87872409"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332675"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Ondersteunings matrix voor back-up met de Microsoft Azure Recovery Services-agent (MARS)
 
@@ -67,6 +67,15 @@ En naar deze IP-adressen:
 
 De toegang tot alle hierboven vermelde Url's en IP-adressen maakt gebruik van het HTTPS-protocol op poort 443.
 
+Bij het maken van back-ups van bestanden en mappen vanaf Azure Vm's met behulp van de MARS-agent moet het virtuele netwerk van Azure ook worden geconfigureerd om toegang toe te staan. Als u netwerkbeveiligingsgroepen (NSG's) gebruikt, gebruikt u de servicetag *AzureBackup* om uitgaande toegang tot Azure Backup toe te staan. Naast het Azure Backup-label moet u ook connectiviteit voor verificatie en gegevens overdracht toestaan door soort gelijke [NSG regels](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview#service-tags) te maken voor Azure AD (*AzureActiveDirectory*) en Azure Storage (*opslag*). In de volgende stappen wordt het proces voor het maken van een regel voor de Azure Backup-tag beschreven:
+
+1. In **Alle services** gaat u naar **Netwerkbeveiligingsgroepen** en selecteert u de netwerkbeveiligingsgroep.
+2. Selecteer de optie **Uitgaande beveiligingsregels** onder **Instellingen**.
+3. Selecteer **Toevoegen**. Voer alle vereiste details in voor het maken van een nieuwe regel, zoals beschreven in de [instellingen voor beveiligingsregels](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings). Controleer of de optie **Doel** is ingesteld op *Servicetag* en **Doelservicetag** is ingesteld op *AzureBackup*.
+4. Selecteer **toevoegen** om de zojuist gemaakte uitgaande beveiligings regel op te slaan.
+
+U kunt op vergelijkbare wijze ook uitgaande NSG-beveiligingsregels maken voor Azure Storage en Azure AD. Zie [dit artikel](https://docs.microsoft.com/azure/virtual-network/service-tags-overview) voor meer informatie over servicetags.
+
 ### <a name="azure-expressroute-support"></a>Ondersteuning voor Azure ExpressRoute
 
 U kunt een back-up maken van uw gegevens via Azure ExpressRoute met open bare peering (beschikbaar voor oude circuits) en micro soft-peering. Back-up via privé-peering wordt niet ondersteund.
@@ -81,11 +90,11 @@ Met open bare peering: Zorg ervoor dat u toegang hebt tot de volgende domeinen/a
 
 Selecteer bij micro soft-peering de volgende services/regio's en relevante Community-waarden:
 
+- Azure Backup (op basis van de locatie van uw Recovery Services kluis)
 - Azure Active Directory (12076:5060)
-- Microsoft Azure regio (op basis van de locatie van uw Recovery Services kluis)
 - Azure Storage (op basis van de locatie van uw Recovery Services kluis)
 
-Zie de [routerings vereisten voor ExpressRoute](../expressroute/expressroute-routing.md)voor meer informatie.
+Zie de [routerings vereisten voor ExpressRoute](../expressroute/expressroute-routing.md#bgp)voor meer informatie.
 
 >[!NOTE]
 >Open bare peering is afgeschaft voor nieuwe circuits.
@@ -172,15 +181,15 @@ Decodeer<sup>*</sup>| Ondersteund.
 Gecomprimeerd | Ondersteund.
 Sparse | Ondersteund.
 Gecomprimeerd en verspreid |Ondersteund.
-Vaste koppelingen| Niet ondersteund. Genegeerd.
-Reparsepunt| Niet ondersteund. Genegeerd.
-Versleuteld en verspreid |Niet ondersteund. Genegeerd.
-Gecomprimeerde stroom| Niet ondersteund. Genegeerd.
-Sparse stream| Niet ondersteund. Genegeerd.
-OneDrive (gesynchroniseerde bestanden zijn sparse-streams)| Niet ondersteund.
-Mappen met DSF-replicatie ingeschakeld | Niet ondersteund.
+Vaste koppelingen| Wordt niet ondersteund. Genegeerd.
+Reparsepunt| Wordt niet ondersteund. Genegeerd.
+Versleuteld en verspreid |Wordt niet ondersteund. Genegeerd.
+Gecomprimeerde stroom| Wordt niet ondersteund. Genegeerd.
+Sparse stream| Wordt niet ondersteund. Genegeerd.
+OneDrive (gesynchroniseerde bestanden zijn sparse-streams)| Wordt niet ondersteund.
+Mappen met DSF-replicatie ingeschakeld | Wordt niet ondersteund.
 
-\*Zorg ervoor dat de MARS-agent toegang heeft tot de vereiste certificaten om toegang te krijgen tot de versleutelde bestanden. Niet-toegankelijke bestanden worden overgeslagen.
+\* Zorg ervoor dat de MARS-agent toegang heeft tot de vereiste certificaten om toegang te krijgen tot de versleutelde bestanden. Niet-toegankelijke bestanden worden overgeslagen.
 
 ## <a name="supported-drives-or-volumes-for-backup"></a>Ondersteunde stations of volumes voor back-up
 

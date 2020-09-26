@@ -10,16 +10,16 @@ ms.devlang: ''
 ms.topic: conceptual
 author: juliemsft
 ms.author: jrasnick
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 04/19/2020
-ms.openlocfilehash: f0a9e36113226a40f4bd21a7b171ca7a65930f95
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 7ee876b1d65e71657cb1af857cdad9f62a32100e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85987231"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333049"
 ---
-# <a name="monitoring-microsoft-azure-sql-database-and-azure-sql-managed-instance-performance-using-dynamic-management-views"></a>Prestaties bewaken Microsoft Azure SQL Database en Azure SQL Managed instance met dynamische beheer weergaven
+# <a name="monitoring-microsoft-azure-sql-database-and-azure-sql-managed-instance-performance-using-dynamic-management-views"></a>Prestaties van Microsoft Azure SQL Database en Azure SQL Managed Instance bewaken met dynamische beheerweergaven
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Microsoft Azure SQL Database en Azure SQL Managed instance bieden een subset van dynamische beheer weergaven om prestatie problemen op te sporen. Dit kan worden veroorzaakt door geblokkeerde of langlopende query's, knel punten in resources, slechte query plannen, enzovoort. In dit onderwerp vindt u informatie over het detecteren van veelvoorkomende prestatie problemen met dynamische beheer weergaven.
@@ -529,7 +529,7 @@ U kunt het gebruik ook controleren met behulp van de volgende weer gaven:
 - Azure SQL Managed instance: [sys. server_resource_stats](/sql/relational-databases/system-catalog-views/sys-server-resource-stats-azure-sql-database)
 - Zowel Azure SQL Database als Azure SQL Managed instance: [sys. resource_stats](https://msdn.microsoft.com/library/dn269979.aspx)
 
-### <a name="sysdm_db_resource_stats"></a>sys. dm_db_resource_stats
+### <a name="sysdm_db_resource_stats"></a>sys.dm_db_resource_stats
 
 U kunt de weer gave [sys. dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) gebruiken in elke Data Base. In de weer gave **sys. dm_db_resource_stats** worden recent gebruikte resource gegevens weer gegeven ten opzichte van de servicelaag. Gemiddeld percentages voor CPU, gegevens-IO, logboek schrijf bewerkingen en geheugen worden elke 15 seconden geregistreerd en worden gedurende één uur bewaard.
 
@@ -550,7 +550,7 @@ FROM sys.dm_db_resource_stats;
 
 Zie de voor beelden in [sys. dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx)voor andere query's.
 
-### <a name="sysserver_resource_stats"></a>sys. server_resource_stats
+### <a name="sysserver_resource_stats"></a>sys.server_resource_stats
 
 U kunt [sys. server_resource_stats](/sql/relational-databases/system-catalog-views/sys-server-resource-stats-azure-sql-database) gebruiken om CPU-verbruik, io en opslag gegevens te retour neren voor een Azure SQL Managed instance. De gegevens worden binnen een interval van vijf minuten verzameld en geaggregeerd. Er is één rij voor elke 15 seconden rapportage. De geretourneerde gegevens zijn onder andere CPU-gebruik, opslag grootte, IO-gebruik en Managed instance SKU. Historische gegevens worden ongeveer 14 dagen bewaard.
 
@@ -769,6 +769,6 @@ CROSS APPLY sys.dm_exec_sql_text(plan_handle) AS q
 ORDER BY highest_cpu_queries.total_worker_time DESC;
 ```
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 [Inleiding tot Azure SQL Database en Azure SQL Managed instance](sql-database-paas-overview.md)

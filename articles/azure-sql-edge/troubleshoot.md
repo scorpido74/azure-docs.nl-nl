@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: d8da8bcf3d2bb6b2af2b5c69ce003289d83d3884
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 517fed0dd9eb1736344546bde9f79e52ee17182f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936211"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333100"
 ---
 # <a name="troubleshooting-azure-sql-edge-deployments"></a>Problemen met Azure SQL Edge-implementaties oplossen 
 
@@ -138,32 +138,12 @@ docker exec -it <Container ID> /bin/bash
 
 U kunt nu opdrachten uitvoeren alsof u ze uitvoert op de terminal in de container. Wanneer u klaar bent, typt u `exit` . Dit wordt afgesloten in de interactieve opdracht sessie, maar de container blijft actief.
 
-## <a name="troubleshooting-issues-with-data-streaming"></a>Problemen met het streamen van gegevens oplossen
-
-Standaard worden de logboeken van de Azure SQL Edge Streaming-Engine geschreven naar een bestand met `current` de naam onder de Directory **/var/opt/MSSQL/log/Services/00000001-0000-0000-0000-000000000000** . U kunt het bestand rechtstreeks openen via het toegewezen volume of de gegevens volume container of door een interactieve opdracht regel sessie te starten naar de SQL Edge-container. 
-
-Daarnaast kunt u, als u verbinding kunt maken met het SQL Edge-exemplaar met behulp van de client hulpprogramma's, de volgende T-SQL-opdracht gebruiken om toegang te krijgen tot het huidige Streaming Engine-logboek. 
-
-```sql
-
-select value as log, try_convert(DATETIME2, substring(value, 0, 26)) as timestamp 
-from 
-    STRING_SPLIT
-    (
-        (
-            select BulkColumn as logs
-            FROM OPENROWSET (BULK '/var/opt/mssql/log/services/00000001-0000-0000-0000-000000000000/current', SINGLE_CLOB) MyFile
-        ),
-        CHAR(10)
-    ) 
-where datalength(value) > 0
-
-```
-
 ### <a name="enabling-verbose-logging"></a>Uitgebreide logboek registratie inschakelen
 
 Als het standaard logboek niveau voor de Streaming-Engine niet voldoende informatie biedt, kan de logboek registratie van fouten voor de Streaming-Engine worden ingeschakeld in SQL-rand. Als u logboek registratie voor fout opsporing wilt inschakelen, voegt `RuntimeLogLevel=debug` u de omgevings variabele toe aan de implementatie van SQL Edge. Nadat u logboek registratie voor fout opsporing hebt ingeschakeld, probeert u het probleem te reproduceren en raadpleegt u de logboeken voor relevante berichten of uitzonde ringen. 
 
+> [!NOTE]
+> De optie uitgebreide logboek registratie mag alleen worden gebruikt voor het oplossen van problemen en niet voor reguliere productie werk belastingen. 
 
 
 ## <a name="next-steps"></a>Volgende stappen
