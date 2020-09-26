@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 09/24/2020
 author: palma21
-ms.openlocfilehash: 460b592924a19449d77ce8d45f470f3e3129f4a6
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 4a814d575e0879daec64ebfdabc1539219bea250
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91357944"
+ms.locfileid: "91368937"
 ---
 # <a name="stop-and-start-an-azure-kubernetes-service-aks-cluster-preview"></a>Een Azure Kubernetes service (AKS)-cluster stoppen en starten (preview)
 
@@ -28,6 +28,7 @@ In dit artikel wordt ervan uitgegaan dat u beschikt over een bestaand AKS-cluste
 Bij het gebruik van de functie voor het starten/stoppen van het cluster gelden de volgende beperkingen:
 
 - Deze functie wordt alleen ondersteund voor Virtual Machine Scale Sets-back-upclusters.
+- Tijdens de preview-periode wordt deze functie niet ondersteund voor persoonlijke clusters.
 - De cluster status van een gestopt AKS-cluster wordt Maxi maal 12 maanden bewaard. Als uw cluster langer dan 12 maanden wordt gestopt, kan de status van het cluster niet worden hersteld. Zie het [AKS-ondersteunings beleid](support-policies.md)voor meer informatie.
 - U kunt een gestopt AKS-cluster alleen starten of verwijderen. Als u een bewerking wilt uitvoeren zoals schalen of upgraden, start u eerst uw cluster.
 

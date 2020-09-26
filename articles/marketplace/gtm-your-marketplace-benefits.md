@@ -4,21 +4,21 @@ description: 'Go-to-Market-Services: micro soft-bronnen die uitgevers kunnen geb
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 07/06/2020
+ms.date: 09/24/2020
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: 0a98bf7d6a035dbf293bda5d8afe5d0e1130f58f
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: da3194559ef5ec4c325f7dc15591f57c0d9c38c9
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705551"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91368242"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Uw voor delen voor commerciële Marketplace
 
-Nu u hebt gepubliceerd naar micro soft Commercial Marketplace, wilt u uw aanbieding bekijken. We bieden u de voor delen: verkoop, technisch en marketing: u moet de groei van uw aanbieding versnellen.
+Nu u hebt gepubliceerd naar micro soft Commercial Marketplace, wilt u uw aanbieding bekijken. We bieden u de voor delen voor verkoop, technisch en marketing die u nodig hebt om de groei van uw aanbod te versnellen.
 
-Zodra uw aanbieding is opgenomen in Microsoft AppSource of Azure Marketplace, gaat u naar [partner centrum](https://partner.microsoft.com/dashboard/mpn/membership/benefits/commercialmarketplace) voor toegang tot en activering van uw in aanmerking komende marketing-, verkoop-en technische voor delen. De voor delen van Marketplace-beloningen worden berekend op basis van uw commerciële Marketplace-betrokkenheid en verkoop. Hoe meer u in beslag gaat, hoe meer u terugkeert.
+Zodra uw aanbieding is opgenomen in Microsoft AppSource of Azure Marketplace, gaat u naar [partner centrum](https://partner.microsoft.com/dashboard/mpn/membership/benefits/commercialmarketplace) voor toegang tot en activering van uw in aanmerking komende marketing-, verkoop-en technische voor delen. Bekijk de video over de [demo](https://partner.microsoft.com/asset/detail/marketplace-rewards-demo-mp4) van Marketplace voor een overzicht van hoe u zich registreert bij Marketplace-beslagen en de voor delen in Partner Center kunt activeren. De voor delen van Marketplace-beloningen worden berekend op basis van uw commerciële Marketplace-betrokkenheid en verkoop. Hoe meer u in beslag gaat, hoe meer u terugkeert.
 
 ## <a name="marketplace-rewards"></a>Marketplace Rewards
 
@@ -44,13 +44,12 @@ Het is eenvoudig om aan de slag te gaan:
 2. Ga naar [Marketplace-beloningen](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace) in partner centrum en selecteer **inschrijven in Marketplace-belonings programma**.
 3. Als u de voor delen van verkoop en marketing wilt activeren, moet u een bedrijfs marketing contact toewijzen. Deze contactpersoon ontvangt opvolgingscommunicatie over uw Marketplace-beloningen.
 4. Als u uw marketing contactpersoongegevens wilt toevoegen of bijwerken, gaat u naar het tabblad voor delen van verkoop en marketing op de pagina Marketplace-beloningen en selecteert u vervolgens **toevoegen, bijwerken of wijzigen**.  Ga daarna als volgt te werk:
-
     1. Selecteer een gebruiker uit de lijst. Als de gebruiker die u wilt toewijzen, zich niet in de lijst bevindt, kunt u nieuwe gebruikers toevoegen in **account instellingen**.
     1. Geef een e-mail adres op voor de gebruiker die afwijkt van het e-mail adres dat is gekoppeld aan het partner centrum-account van uw bedrijf. We sturen instructies voor het gebruik van uw Marketplace-voordelen naar het e-mailadres van uw aangewezen marketing-contactpersoon.
     1. Geef het telefoonnummer en de voorkeurstaal van de contactpersoon voor deze marketing-contactpersoon op. Wanneer u klaar bent met het invoeren van deze gegevens, selecteert u **Gebruiker toewijzen**.
     1. Nadat u de marketing contactpersoon hebt bijgewerkt, selecteert u **activeren** voor het voor deel dat u wilt gaan gebruiken. Zodra u een voordeel hebt geactiveerd, neemt een lid van het team Beloningen binnen een week contact op met uw marketing-contactpersoon.
 
-**Technische voordelen**
+### <a name="technical-benefits"></a>Technische voordelen
 
 1. U kunt uw technische voor delen gebruiken om technische hulp te vragen tijdens de ontwikkelings fase van de voor-en implementatie van uw Cloud en hybride oplossingen. Als u hulp wilt aanvragen, vult u het aanvraag formulier in en selecteert u vervolgens **aanvraag verzenden**.
 2. Het gebruik van de voor delen van Azure sponsor wordt gedeeld via een e-mail wanneer u deze voor delen ontgrendelt.
@@ -79,7 +78,7 @@ Wanneer u met uw transactable-aanbieding in Microsoft AppSource of Azure Marketp
 
 Deze voor delen zijn ontworpen om u te ondersteunen in marketing-, verkoop-en technische activiteiten en helpt u bij het verkrijgen van meer bezoekers, het ontvangen van meer leads en het converteren van meer bedrijven.
 
-Alle partners die een live-aanbieding hebben, gaan werken met een toegewezen engagement manager om de activiteiten met de hoogste waarde te kiezen voor uw portefeuille van commerciële Marketplace-aanbiedingen. Deze betrokkenheid is groen en per aanbieding, wat betekent dat u uw activiteiten en de timing van deze activiteiten kunt kiezen om af te stemmen op de timing van de bredere marketing-en verkoop strategieën van uw bedrijf. 
+Alle partners die een live-aanbieding hebben, gaan werken met een toegewezen engagement manager om de activiteiten met de hoogste waarde te kiezen voor uw portefeuille van commerciële Marketplace-aanbiedingen. Deze betrokkenheid is groen en per aanbieding, wat betekent dat u uw activiteiten en de timing van deze activiteiten kunt kiezen om af te stemmen op de timing van de bredere marketing-en verkoop strategieën van uw bedrijf.
 
 ![Marketing voordelen](./media/marketplace-publishers-guide/marketing-benefit.png)
 
@@ -97,23 +96,23 @@ Naast de voor delen van beloningen, hebben zakelijke toepassings partners met Dy
 
 ### <a name="publisher-agreement"></a>Uitgevers overeenkomst
 
-Alle activiteiten die op deze pagina worden beschreven, worden gedekt door de [uitgevers overeenkomst voor Marketplace](https://go.microsoft.com/fwlink/?LinkID=699560) en zijn onderworpen aan de addendum van het programma voor commerciële voor delen.
+Alle activiteiten die op deze pagina worden beschreven, worden gedekt door de overeenkomst van micro soft [Publisher](https://go.microsoft.com/fwlink/?LinkID=699560) en zijn onderworpen aan de addendum van het programma voor commerciële voor delen.
 
 ### <a name="cancellation-policy"></a>Annulerings beleid
 
-Uitgevers van [lijsten en proef](determine-your-listing-type.md) abonnementen kunnen in-of afmelden voor activiteiten per aanbiedings publicatie. Partners kunnen zich op elk gewenst moment afmelden bij elke afspraak. 
+Uitgevers van [lijsten en proef](determine-your-listing-type.md) abonnementen kunnen in-of afmelden voor activiteiten per aanbiedings publicatie. Partners kunnen zich op elk gewenst moment afmelden bij elke afspraak.
 
-Micro soft behoudt zich het recht voor de voor delen van Marketplace-beloningen te intrekken en te beëindigen voor uitgevers die: 
+Micro soft behoudt zich het recht voor de voor delen van Marketplace-beloningen te intrekken en te beëindigen voor uitgevers die:
 
 * Neem deel aan de illegale activiteiten met behulp van hun Marketplace-vermelding.
 * Ontvang een aankoop waarvan bekend of aangenomen wordt dat deze frauduleus is.
-* Worden uit de commerciële Marketplace genoteerd. 
+* Worden uit de commerciële Marketplace genoteerd.
 * Gebruik hun aanbieding om marketing of andere inhoud weer te geven die in strijd is met copyright-of handelsmerk wetgeving.
 * De beleids regels van het [Azure sponsoring-programma](https://azure.microsoft.com/offers/ms-azr-0036p/), inclusief, maar niet beperkt tot, worden geschonden met behulp van de Azure sponsor-financiering voor hun eigen interne bewerkingen of Bitcoine-analyse.
 
 Micro soft behoudt zich het recht voor om Marketplace-beloningen te intrekken en te beëindigen wanneer:
 
-* De klant die de aankoop doet, had per ongeluk de aankoop kunnen annuleren. 
+* De klant die de aankoop doet, had per ongeluk de aankoop kunnen annuleren.
 * De klant annuleert voordat het product van de partner wordt gebruikt.
 
 ### <a name="offer-availability"></a>Beschik baarheid van aanbieding
@@ -124,10 +123,7 @@ Trans acties die frauduleus zijn bewezen, worden niet meegeteld bij de laag gefa
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) om uw aanbieding te maken of te configureren.
-
-Activeer uw voor delen voor Marketplace-beloningen in [Partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace/overview).
-
-Bekijk de [zelf-beschik bare resources die voor u beschikbaar zijn](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/).
-
-Meld u aan voor het [Community-Forum voor Microsoft AppSource en Azure Marketplace](https://aka.ms/MarketplaceCommunity) , lees meer over relevante onderwerpen of neem lid van de discussie.
+- Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) om uw aanbieding te maken of te configureren.
+- Activeer uw voor delen voor Marketplace-beloningen in [Partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace/overview).
+- Bekijk de [zelf-beschik bare resources die voor u beschikbaar zijn](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/).
+- Meld u aan voor het [Community-Forum voor Microsoft AppSource en Azure Marketplace](https://aka.ms/MarketplaceCommunity) , lees meer over relevante onderwerpen of neem lid van de discussie.

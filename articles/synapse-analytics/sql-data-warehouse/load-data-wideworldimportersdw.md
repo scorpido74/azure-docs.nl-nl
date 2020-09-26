@@ -11,12 +11,12 @@ ms.date: 07/17/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, synapse-analytics
-ms.openlocfilehash: bb05a817ae553872fa1a6c364da4c075ae454e1f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f089a67262c78f31092780bb8b4d7d803d47e0d
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85211173"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369090"
 ---
 # <a name="tutorial-load-data-to--azure-synapse-analytics-sql-pool"></a>Zelf studie: gegevens laden naar Azure Synapse Analytics SQL-groep
 
@@ -58,7 +58,7 @@ Volg deze stappen om een lege SQL-groep te maken.
 
 1. Vul de sectie **Project Details** in met de volgende gegevens:
 
-   | Instelling | Voorbeeld | Description |
+   | Instelling | Voorbeeld | Beschrijving |
    | ------- | --------------- | ----------- |
    | **Abonnement** | Uw abonnement  | Zie [Abonnementen](https://account.windowsazure.com/Subscriptions) voor meer informatie over uw abonnementen. |
    | **Resourcegroep** | myResourceGroup | Zie [Naming conventions](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) (Naamgevingsconventies) voor geldige resourcegroepnamen. |
@@ -83,7 +83,7 @@ Volg deze stappen om een lege SQL-groep te maken.
 
 1. Selecteer **controleren + maken** om uw instellingen te controleren en selecteer vervolgens **maken** om uw data warehouse te maken. U kunt uw voortgang controleren door de pagina **implementatie** wordt geopend vanuit het menu **meldingen** .
 
-     ![melding](./media/load-data-wideworldimportersdw/notification.png)
+     ![Scherm opname toont meldingen met een implementatie die wordt uitgevoerd.](./media/load-data-wideworldimportersdw/notification.png)
 
 ## <a name="create-a-server-level-firewall-rule"></a>Een serverfirewallregel maken
 
@@ -190,7 +190,7 @@ De eerste stap voor het laden van gegevens bestaat uit aanmelding als LoaderRC60
 
 2. Voer de volledig gekwalificeerde servernaam in en voer **LoaderRC60** als de aanmelding in.  Voer uw wachtwoord in voor LoaderRC60.
 
-3. Klik op **Verbinden**.
+3. Klik op **Verbinding maken**.
 
 4. Wanneer de verbinding gereed is, ziet u twee serververbindingen in Objectverkenner. Eén verbinding als de serverbeheerder en één verbinding als LoaderRC60.
 

@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
 ms.date: 04/23/2020
-ms.openlocfilehash: ab1865608146880bbf612b7cb08c2a673c93b31f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fa60d6127a42f0118df152e5b3081751c595dbcf
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087957"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362628"
 ---
 # <a name="configure-always-encrypted-by-using-azure-key-vault"></a>Always Encrypted configureren met behulp van Azure Key Vault 
 
@@ -183,7 +183,7 @@ U kunt de kolommen nu versleutelen of een Power shell-script opslaan om het late
 
 Controleer of de instellingen juist zijn en klik op **volt ooien** om de installatie voor always encrypted te volt ooien.
 
-![Samenvatting](./media/always-encrypted-azure-key-vault-configure/summary.png)
+![Scherm afbeelding toont de resultaten pagina met taken die als door gegeven zijn gemarkeerd.](./media/always-encrypted-azure-key-vault-configure/summary.png)
 
 ### <a name="verify-the-wizards-actions"></a>De acties van de wizard controleren
 
@@ -606,7 +606,7 @@ Nadat de data base is geconfigureerd voor het gebruik van Always Encrypted, kunt
 ## <a name="related-information"></a>Gerelateerde informatie
 
 - [Always Encrypted (client ontwikkeling)](https://msdn.microsoft.com/library/mt147923.aspx)
-- [Transparent Data Encryption](https://msdn.microsoft.com/library/bb934049.aspx)
+- [Transparante gegevens versleuteling](https://msdn.microsoft.com/library/bb934049.aspx)
 - [Versleuteling SQL Server](https://msdn.microsoft.com/library/bb510663.aspx)
 - [Wizard Always Encrypted](https://msdn.microsoft.com/library/mt459280.aspx)
 - [Always Encrypted blog](https://docs.microsoft.com/archive/blogs/sqlsecurity/always-encrypted-key-metadata)

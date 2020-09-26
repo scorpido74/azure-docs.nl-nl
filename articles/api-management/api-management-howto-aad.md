@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: edbe202350b0912372aad822c8530c5f79c76384
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 2d3f382635e9a8b8a562f7a7f60f256d68b90b8f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86254823"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91363202"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Ontwikkelaarsaccounts autoriseren met behulp van Azure Active Directory in Azure API Management
 
@@ -26,15 +26,15 @@ Dit artikel laat u zien hoe u toegang tot de ontwikkelaars Portal kunt inschakel
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Voltooi de volgende quickstart: [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md).
+- Voltooi de volgende snelstartgids: [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md).
 - Importeer en publiceer een Azure API Management-exemplaar. Zie [importeren en publiceren](import-and-publish.md)voor meer informatie.
 
 [!INCLUDE [premium-dev-standard.md](../../includes/api-management-availability-premium-dev-standard.md)]
 
 ## <a name="authorize-developer-accounts-by-using-azure-ad"></a>Ontwikkel ontwikkelaars accounts met behulp van Azure AD
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
-2. Selecteer ![pijl](./media/api-management-howto-aad/arrow.png).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
+2. Selecteer ![Pijl pictogram.](./media/api-management-howto-aad/arrow.png).
 3. Typ **API** in het zoekvak.
 4. Selecteer **API Management Services**.
 5. Selecteer uw service-exemplaar van API Management.
@@ -103,7 +103,7 @@ Nadat u een externe Azure AD-groep hebt toegevoegd, kunt u de eigenschappen erva
  
 Gebruikers van het geconfigureerde Azure AD-exemplaar kunnen zich nu aanmelden bij de ontwikkelaars Portal. Ze kunnen weer geven en zich abonneren op groepen waarvoor ze zicht baarheid hebben.
 
-## <a name="developer-portal---add-azure-ad-account-authentication"></a><a id="log_in_to_dev_portal"></a>Ontwikkelaars Portal-Azure AD-account verificatie toevoegen
+## <a name="developer-portal---add-azure-ad-account-authentication"></a><a id="log_in_to_dev_portal"></a> Ontwikkelaars Portal-Azure AD-account verificatie toevoegen
 
 In de ontwikkelaars Portal kunt u zich aanmelden met AAD met de **aanmeldings knop: OAuth-** widget. De widget is al opgenomen op de aanmeldings pagina van de standaard inhoud van de ontwikkelaars Portal.
 

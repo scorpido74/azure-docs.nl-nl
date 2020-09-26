@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: juda
 ms.custom: mvc
-ms.openlocfilehash: 98b1842f81703041f419850be17c0c05a24b7c6b
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: a4834ece4741b14981c08721e28bf528cab1da89
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440895"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91368886"
 ---
 # <a name="using-openfaas-on-aks"></a>OpenFaaS gebruiken op AKS
 
@@ -134,7 +134,7 @@ Nu OpenFaaS operationeel is, maakt u een functie met behulp van de OpenFaas-Port
 
 Klik op **nieuwe functie implementeren** en zoek naar **figlet**. Selecteer de functie figlet en klik op **implementeren**.
 
-![Figlet](media/container-service-serverless/figlet.png)
+![Scherm afbeelding toont het dialoog venster een nieuwe functie implementeren met de tekst figlet op de zoek regel.](media/container-service-serverless/figlet.png)
 
 Gebruik krul om de functie aan te roepen. Vervang het IP-adres in het volgende voor beeld met dat van uw OpenFaas-gateway.
 

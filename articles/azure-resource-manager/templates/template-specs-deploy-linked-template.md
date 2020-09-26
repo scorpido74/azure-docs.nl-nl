@@ -3,12 +3,12 @@ title: Een sjabloon specificatie als gekoppelde sjabloon implementeren
 description: Meer informatie over het implementeren van een bestaande sjabloon specificatie in een gekoppelde implementatie.
 ms.topic: conceptual
 ms.date: 08/31/2020
-ms.openlocfilehash: 799dac2bb553983b16f734d1d1abc2ad9281fb58
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 4469e793a7da407f793bfe2885f7bb039e29d736
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228015"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369107"
 ---
 # <a name="tutorial-deploy-a-template-spec-as-a-linked-template-preview"></a>Zelf studie: een sjabloon specificatie implementeren als gekoppelde sjabloon (preview)
 
@@ -120,7 +120,7 @@ De sjabloon specificatie-ID wordt gegenereerd met behulp van de [`resourceID()`]
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
-$id = (Get-AzTemplateSpec -ResourceGroupName $resourceGroupName -Name $templateSpecName -Version $templateSpecVersion).Version.Id
+$id = (Get-AzTemplateSpec -ResourceGroupName $resourceGroupName -Name $templateSpecName -Version $templateSpecVersion).Versions.Id
 ```
 
 # <a name="cli"></a>[CLI](#tab/azure-cli)
@@ -130,7 +130,7 @@ id = $(az ts show --name $templateSpecName --resource-group $resourceGroupName -
 ```
 
 > [!NOTE]
-> Er is een bekend probleem met het ophalen van een sjabloon specificatie-ID en het toewijzen ervan aan een variabele in Windows Power shell.
+> Er is een bekend probleem met het ophalen van een sjabloonspecificatie-id en het toewijzen ervan aan een variabele in Windows PowerShell.
 
 ---
 
