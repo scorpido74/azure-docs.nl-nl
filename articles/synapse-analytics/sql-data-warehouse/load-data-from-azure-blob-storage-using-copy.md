@@ -11,12 +11,12 @@ ms.date: 05/31/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 67392f965b3fddec7fc7a03bd328a224dad42208
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: d2c2673e6863725e064f3ad8561ab77eb1b051eb
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442978"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371521"
 ---
 # <a name="tutorial-load-the-new-york-taxicab-dataset"></a>Zelf studie: de over taxi's-gegevensset van New York laden
 
@@ -91,7 +91,7 @@ Volg deze stappen om een lege database te maken.
 
 11. Selecteer **Meldingen** op de werkbalk om het implementatieproces te bewaken.
   
-     ![melding](./media/load-data-from-azure-blob-storage-using-polybase/notification.png)
+     ![Scherm afbeelding toont de Azure Portal met het deel venster meldingen geopend terwijl de implementatie wordt uitgevoerd.](./media/load-data-from-azure-blob-storage-using-polybase/notification.png)
 
 ## <a name="create-a-server-level-firewall-rule"></a>Een serverfirewallregel maken
 
@@ -153,7 +153,7 @@ In deze sectie wordt gebruikgemaakt van [SSMS](/sql/ssms/download-sql-server-man
 
     ![verbinding maken met server](./media/load-data-from-azure-blob-storage-using-polybase/connect-to-server.png)
 
-3. Selecteer **Verbinding maken**. Het venster Objectverkenner wordt geopend in SQL Server Management Studio.
+3. Selecteer **Verbinden**. Het venster Objectverkenner wordt geopend in SQL Server Management Studio.
 
 4. Vouw **Databases** uit in Objectverkenner. Vouw **Systeemdatabases** en **Hoofd** uit om de objecten in de hoofddatabase weer te geven.  Vouw **mySampleDatabase** uit om de objecten in uw nieuwe database weer te geven.
 
@@ -204,7 +204,7 @@ De eerste stap voor het laden van gegevens bestaat uit aanmelding als LoaderRC20
 
 2. Voer de volledig gekwalificeerde servernaam in en voer **LoaderRC20** als de aanmelding in.  Voer uw wachtwoord in voor LoaderRC20.
 
-3. Selecteer **Verbinding maken**.
+3. Selecteer **Verbinden**.
 
 4. Wanneer de verbinding gereed is, ziet u twee serververbindingen in Objectverkenner. Eén verbinding als de serverbeheerder en één verbinding als MedRCLogin.
 

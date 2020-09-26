@@ -3,12 +3,12 @@ title: Beheer vlak-en gegevenslaag bewerkingen
 description: Hierin wordt het verschil tussen besturings vlak en gegevenslaag bewerkingen beschreven. Bewerkingen voor het beheer vlak worden verwerkt door Azure Resource Manager. Data-vlak bewerkingen worden verwerkt door een service.
 ms.topic: conceptual
 ms.date: 09/10/2020
-ms.openlocfilehash: a0575c37c80417d9859ef36366dc9f26cdb4dbe4
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: f478037c3e83c1d28cc900d64512a41619628dd7
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90039041"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371266"
 ---
 # <a name="azure-control-plane-and-data-plane"></a>Beheer vlak en gegevenslaag van Azure
 
@@ -41,7 +41,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 Azure Resource Manager verwerkt alle Control-aanvragen. De Azure-functies die u hebt geïmplementeerd voor het beheren van uw resources, worden automatisch toegepast, zoals:
 
-* [Access Control op basis van rollen (RBAC) van Azure](../../role-based-access-control/overview.md)
+* [Azure RBAC (op rollen gebaseerd toegangsbeheer van Azure)](../../role-based-access-control/overview.md)
 * [Azure Policy](../../governance/policy/overview.md)
 * [Beheer vergrendelingen](lock-resources.md)
 * [Activiteitenlogboeken](view-activity-logs.md)

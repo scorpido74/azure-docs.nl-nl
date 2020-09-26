@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 09/21/2020
 ms.author: jgao
-ms.openlocfilehash: a6925ef8f72615cc3868c8b5cd4ea030ed3c3c40
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 63879350eba897cfe5a793309e5129323fe8bbde
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91278057"
+ms.locfileid: "91372371"
 ---
 # <a name="introduce-health-integration-rollout-to-azure-deployment-manager-public-preview"></a>Implementatie van de status integratie met Azure Deployment Manager introduceren (open bare preview)
 
@@ -41,7 +41,7 @@ De stroom voor het verkrijgen van Setup met Azure Deployment Manager status cont
     1. Verificatie-informatie. Momenteel wordt alleen de API-sleutel stijl verificatie ondersteund. Voor Azure Monitor moet het verificatie type worden ingesteld op – "RolloutIdentity" als de door de gebruiker toegewezen beheerde identiteit die wordt gebruikt voor Azure Deployment Manager-implementatie voor Azure Monitor uitbreidt.
     1. [HTTP-status codes](https://www.wikipedia.org/wiki/List_of_HTTP_status_codes) of reguliere expressies waarmee een gezonde reactie wordt gedefinieerd. Houd er rekening mee dat u reguliere expressies kunt opgeven, die allemaal moeten overeenkomen voor het antwoord dat als gezond moet worden beschouwd, of u kunt expressies opgeven waarvan de reactie moet overeenkomen om te worden beschouwd als in orde. Beide methoden worden ondersteund.
 
-    De volgende JSON is een voor beeld van het integreren van Azure Monitor met Azure Deployment Manager die gebruikmaken van RolloutIdentity en de status controle aanbrengt waarbij een implementatie wordt voortgezet als er geen waarschuwingen zijn. De enige ondersteunde Azure Monitor-API: [waarschuwingen – alles ophalen](/rest/api/monitor/alertsmanagement/alerts/getall.md).
+    De volgende JSON is een voor beeld van het integreren van Azure Monitor met Azure Deployment Manager die gebruikmaken van RolloutIdentity en de status controle aanbrengt waarbij een implementatie wordt voortgezet als er geen waarschuwingen zijn. De enige ondersteunde Azure Monitor-API: [waarschuwingen – alles ophalen](/rest/api/monitor/alertsmanagement/alerts/getall).
 
     ```json
     {

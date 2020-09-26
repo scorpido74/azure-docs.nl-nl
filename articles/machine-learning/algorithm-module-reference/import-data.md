@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 85a54ce7c8b3beea102fad7c3adb58f92c8574dd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 5fe1c3e344705b6cde9791f889b22be53a9e8c76
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907945"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372592"
 ---
 # <a name="import-data-module"></a>Gegevens module importeren
 
@@ -56,7 +56,7 @@ Als de bron gegevens worden gewijzigd, kunt u de gegevensset vernieuwen en nieuw
 
 1. Selecteer **gegevens bron**en kies het type gegevens bron. Dit kan HTTP of gegevens opslag zijn.
 
-    Als u gegevens opslag kiest, kunt u bestaande gegevens opslag selecteren die al in uw Azure Machine Learning-werk ruimte is geregistreerd of een nieuw gegevens archief maken. Definieer vervolgens het pad van de gegevens die moeten worden geïmporteerd in het gegevens archief. U kunt eenvoudig door het pad bladeren door te klikken op **Bladeren pad** ![ importeren-gegevenspad](media/module/import-data-path.png)
+    Als u gegevens opslag kiest, kunt u bestaande gegevens opslag selecteren die al in uw Azure Machine Learning-werk ruimte is geregistreerd of een nieuw gegevens archief maken. Definieer vervolgens het pad van de gegevens die moeten worden geïmporteerd in het gegevens archief. U kunt eenvoudig door het pad bladeren door op scherm afbeelding **Bladeren** te klikken. ![ hier ziet u de koppeling Browse pad waarmee het dialoog venster Padselectie wordt geopend.](media/module/import-data-path.png)
 
 1. Selecteer het voorbeeld schema voor het filteren van de kolommen die u wilt toevoegen. U kunt ook geavanceerde instellingen definiëren als scheidings teken bij het parseren van opties.
 

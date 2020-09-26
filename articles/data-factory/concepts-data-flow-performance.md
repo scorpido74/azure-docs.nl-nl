@@ -7,12 +7,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 08/12/2020
-ms.openlocfilehash: 51d9880c654a6ecabbbab294016293113bffb655
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 4a78e966d420591ebe7a9607777158cf17ddf698
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89434228"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91370875"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Gegevens stromen toewijzen prestaties en afstemmings handleiding
 
@@ -53,7 +53,7 @@ Wanneer u de knel punten van uw gegevens stroom hebt geïdentificeerd, gebruikt 
 
 Het tabblad **Optimize** bevat instellingen voor het configureren van het partitie schema van het Spark-cluster. Dit tabblad bevindt zich in elke trans formatie van de gegevens stroom en geeft aan of u de gegevens opnieuw wilt partitioneren **nadat** de trans formatie is voltooid. Het aanpassen van de partitionering biedt controle over de distributie van uw gegevens over reken knooppunten en gegevens lokale optimalisaties die zowel positieve als negatieve effecten kunnen hebben op de prestaties van uw algemene gegevens stroom.
 
-![Optimaliseren](media/data-flow/optimize.png "Optimaliseren")
+![Scherm afbeelding toont het tabblad Optimize, inclusief partitie optie, partitie type en aantal partities.](media/data-flow/optimize.png)
 
 Standaard is het *gebruik van huidige partitionering* geselecteerd, wat aangeeft dat Azure Data Factory de huidige uitvoer partitionering van de trans formatie wilt blijven gebruiken. Omdat het opnieuw partitioneren van gegevens tijd kost, is het *gebruik van huidige partitionering* aanbevolen in de meeste scenario's. Scenario's waarin het mogelijk is om uw gegevens opnieuw te partitioneren, zijn na aggregaties en samen voegingen waarmee u uw gegevens aanzienlijk kunt hellen of wanneer u bron partities gebruikt voor een SQL-data base.
 
@@ -109,7 +109,7 @@ Gegevens stromen distribueren de gegevens verwerking over verschillende knoop pu
 
 De standaard cluster grootte is vier Stuur knooppunten en vier werk knooppunten.  Bij het verwerken van meer gegevens worden grotere clusters aanbevolen. Hieronder ziet u de mogelijke opties voor de grootte:
 
-| Kernen van werk nemers | Kern geheugens van Stuur Programma's | Totaal aantal cores | Notities |
+| Kernen van werk nemers | Kern geheugens van Stuur Programma's | Totaal aantal cores | Opmerkingen |
 | ------------ | ------------ | ----------- | ----- |
 | 4 | 4 | 8 | Niet beschikbaar voor berekenings optimalisatie |
 | 8 | 8 | 16 | |

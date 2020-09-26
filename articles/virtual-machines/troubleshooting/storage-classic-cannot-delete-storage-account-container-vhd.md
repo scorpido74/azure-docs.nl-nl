@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 01/11/2019
 ms.author: annayak
-ms.openlocfilehash: 3e7469f0d53a154f605480b811d36937e3d4ad6c
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: c74f2ef9eed25719e722970671406c850b6a59b2
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649836"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361854"
 ---
 # <a name="troubleshoot-classic-storage-resource-deletion-errors"></a>Fouten bij het verwijderen van klassieke opslag resources oplossen
 Dit artikel bevat richt lijnen voor probleem oplossing wanneer een van de volgende fouten optreedt bij het verwijderen van het klassieke Azure-opslag account, de container of de VHD-pagina blob-bestand. 
@@ -36,7 +36,7 @@ Een ' schijf ' bron wordt gebruikt voor het koppelen van een VHD-bestand van het
 
 1. Verwijder de klassieke virtuele machine.
 2. Als het selectie vakje "schijven" is ingeschakeld, is de lease van de **schijf** (weer gegeven in de bovenstaande afbeelding) die aan de pagina-blob *. VHD is gekoppeld, beschadigd. Het daad werkelijke pagina-blob *. VHD-bestand blijft aanwezig in het opslag account.
-![Scherm opname van de portal, waarbij het fout paneel voor het verwijderen van de virtuele machine (klassiek) is geopend](./media/storage-classic-cannot-delete-storage-account-container-vhd/steps_while_deleting_classic_vm.jpg) 
+![Scherm afbeelding toont een dialoog venster om het verwijderen van een virtuele machine te bevestigen.](./media/storage-classic-cannot-delete-storage-account-container-vhd/steps_while_deleting_classic_vm.jpg) 
 
 3. Zodra de lease van de schijf of schijven is verbroken, kunnen de pagina-BLOB (s) zelf worden verwijderd. Een opslag account of-container kan worden verwijderd zodra alle ' schijf ' in de bron aanwezig is.
 
@@ -52,7 +52,7 @@ De gebruiker navigeert naar het klassieke opslag account op de [Azure Portal](ht
 
 Met een of meer schijven gekoppeld aan een virtuele machine
 
-![Scherm opname van de portal, waarbij het fout paneel voor het verwijderen van de virtuele machine (klassiek) is geopend](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_storage_account_disks_attached_portal.jpg) 
+![Scherm afbeelding toont een bericht waarin wordt uitgelegd waarom een opslag account niet kan worden verwijderd.](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_storage_account_disks_attached_portal.jpg) 
 
 
 Met een of meer schijven ' ontkoppeld ' aan een virtuele machine
@@ -93,12 +93,12 @@ Na het verwijderen van de virtuele machine van Azure probeert de gebruiker het V
 Op de portal zijn er twee ervaringen, afhankelijk van de lijst met blobs die voor verwijdering zijn geselecteerd.
 
 1. Als alleen ' geleasde ' blobs zijn geselecteerd, wordt de knop verwijderen niet weer gegeven.
-![Scherm afbeelding van de portal, met het deel venster container-BLOB weer geven](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_vhd_leased_portal.jpg)
+![Scherm opname van de portal, met het deel venster container BLOB-lijst geopend en alleen geleasde blobs geselecteerd.](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_vhd_leased_portal.jpg)
 
 
 2. Als er een combi natie van ' geleasde ' en ' beschik bare ' blobs zijn geselecteerd, wordt de knop verwijderen weer gegeven. Maar de bewerking ' verwijderen ' laat achter de pagina-blobs, die een lease voor de schijf bevatten. 
-![Scherm afbeelding van de portal, met het deel venster container-BLOB weer geven ](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_vhd_leased_and_unleased_portal_1.jpg)
- ![ scherm opname van de portal openen, met het geselecteerde deel venster verwijderen van BLOB openen](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_vhd_leased_and_unleased_portal_2.jpg)
+![Scherm opname van de portal, met het deel venster container BLOB-lijst geopend en zowel geleaste als beschik bare blobs geselecteerd. ](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_vhd_leased_and_unleased_portal_1.jpg)
+ ![ Scherm opname van de portal, met het geselecteerde deel venster voor het verwijderen van de BLOB openen](./media/storage-classic-cannot-delete-storage-account-container-vhd/unable_to_delete_vhd_leased_and_unleased_portal_2.jpg)
 
 #### <a name="azure-powershell"></a>Azure PowerShell 
 Als de gebruiker kiest om te verwijderen met behulp van Power shell, resulteert dit in de volgende fout. 
@@ -114,10 +114,10 @@ Als de gebruiker kiest om te verwijderen met behulp van Power shell, resulteert 
 Volg deze stappen op de Azure Portal:
 1.  Navigeer naar [Azure Portal](https://portal.azure.com).
 2.  Navigeer naar de schijven (klassiek). 
-3.  Klik op het tabblad schijven. ![ Scherm afbeelding van de portal, met het deel venster container-BLOB weer geven](./media/storage-classic-cannot-delete-storage-account-container-vhd/resolution_click_disks_tab.jpg)
+3.  Klik op het tabblad schijven. ![ Scherm afbeelding toont de Azure Portal met schijven (klassiek) geselecteerd en een klassieke schijf naam en opslag account.](./media/storage-classic-cannot-delete-storage-account-container-vhd/resolution_click_disks_tab.jpg)
  
 4.  Selecteer de gegevensschijf en klik vervolgens op Schijf verwijderen.
- ![Scherm afbeelding van de portal, met het deel venster container-BLOB weer geven](./media/storage-classic-cannot-delete-storage-account-container-vhd/resolution_click_delete_disk.jpg)
+ ![Scherm afbeelding toont de Azure Portal met schijven (klassiek) geselecteerd, waarbij een gegevens schijf is geselecteerd en de optie voor verwijderen.](./media/storage-classic-cannot-delete-storage-account-container-vhd/resolution_click_delete_disk.jpg)
  
 5.  Voer de Verwijder bewerking opnieuw uit die eerder is mislukt.
 6.  Een opslag account of-container kan niet worden verwijderd zolang deze één schijf heeft.

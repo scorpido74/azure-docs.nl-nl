@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein, danil
 ms.date: 09/26/2019
-ms.openlocfilehash: 069387b5c761d502d960d0284d156b4ee6431a55
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: d95bf9ed50f819c5a92c7945827ee82a2c6ecdc9
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91357009"
+ms.locfileid: "91371776"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>Herstellen met behulp van automatische database back-ups-Azure SQL Database & door SQL beheerd exemplaar
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -196,7 +196,7 @@ Voor een Power shell-script dat laat zien hoe u geo-herstel kunt uitvoeren voor 
 U kunt geen herstel naar een bepaald tijdstip uitvoeren op een geo-secundaire data base. U kunt dit alleen doen op een primaire data base. Zie [herstellen vanaf een storing](../../key-vault/general/disaster-recovery-guidance.md)voor gedetailleerde informatie over het gebruik van geo-Restore om te herstellen na een storing.
 
 > [!IMPORTANT]
-> Geo-Restore is de meest eenvoudige oplossing voor herstel na nood gevallen die beschikbaar is in SQL Database en SQL Managed instance. Hierbij wordt gebruikgemaakt van automatisch gemaakte geo-gerepliceerde back-ups met een Recovery Point Objective (RPO) die gelijk zijn aan 1 uur en een geschatte herstel tijd van Maxi maal 12 uur. Het biedt geen garantie dat de doel regio de capaciteit heeft om uw data bases na een regionale onderbreking te herstellen, omdat een sterke toename van de vraag waarschijnlijk is. Als uw toepassing gebruikmaakt van relatief kleine data bases en niet essentieel is voor het bedrijf, is geo-herstel een geschikte oplossing voor herstel na nood gevallen. 
+> Geo-Restore is de meest eenvoudige oplossing voor herstel na nood gevallen die beschikbaar is in SQL Database en SQL Managed instance. Hierbij wordt gebruikgemaakt van automatisch gemaakte geo-gerepliceerde back-ups met een Recovery Point Objective (RPO) tot Maxi maal 1 uur en een geschatte herstel tijd van Maxi maal 12 uur. Het biedt geen garantie dat de doel regio de capaciteit heeft om uw data bases na een regionale onderbreking te herstellen, omdat een sterke toename van de vraag waarschijnlijk is. Als uw toepassing gebruikmaakt van relatief kleine data bases en niet essentieel is voor het bedrijf, is geo-herstel een geschikte oplossing voor herstel na nood gevallen. 
 >
 > Voor bedrijfskritische toepassingen waarvoor grote data bases zijn vereist en die bedrijfs continuïteit moeten gebruiken, kunt u gebruikmaken van [groepen voor automatische failover](auto-failover-group-overview.md). Het biedt een veel lagere RPO-en herstel tijd en de capaciteit is altijd gegarandeerd. 
 >

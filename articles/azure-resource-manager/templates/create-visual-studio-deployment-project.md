@@ -3,12 +3,12 @@ title: Visual Studio-resource groeps projecten maken & implementeren
 description: Gebruik Visual Studio om een Azure-resourcegroepproject te maken en de resources in Azure te implementeren.
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: eacab3e1919b68661dd24eb78e3b0eca51cf4972
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 479dbed1f288148c24fc8464f7895cd3e2b182f9
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985241"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372643"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Azure-resourcegroepen maken en implementeren met Visual Studio
 
@@ -41,7 +41,7 @@ In deze sectie maakt u een Azure-resource groep-project met een **Web-app** -sja
 
     Omdat u de sjabloon web-app hebt gekozen, ziet u de volgende bestanden:
 
-   | Bestandsnaam | Description |
+   | Bestandsnaam | Beschrijving |
    | --- | --- |
    | Deploy-AzureResourceGroup.ps1 |Een PowerShell-script waarmee PowerShell-opdrachten worden uitgevoerd om te worden geïmplementeerd in Azure Resource Manager. Visual Studio gebruikt dit Power shell-script voor het implementeren van uw sjabloon. |
    | WebSite.jsop |Het Resource Manager-sjabloon dat de infrastructuur definieert die u in Azure wilt implementeren en de parameters die u kunt opgeven tijdens de implementatie. Hiermee worden ook de afhankelijkheden tussen resources gedefinieerd zodat deze in de juiste volgorde worden geïmplementeerd. |
@@ -370,7 +370,7 @@ U bent niet beperkt tot alleen de resources die beschikbaar zijn via de Visual S
 
    ![Aangepast dashboard](./media/create-visual-studio-deployment-project/Ops-DemoSiteGroup-dashboard.png)
 
-U kunt de toegang tot het dashboard beheren met behulp van RBAC-groepen. U kunt ook het uiterlijk van het dashboard aanpassen zodra de implementatie is voltooid. Als u de resourcegroep echter opnieuw implementeert, wordt het dashboard opnieuw ingesteld op de standaardstatus in de sjabloon. Zie [Op programmatische wijze Azure-dashboards maken](../../azure-portal/azure-portal-dashboards-create-programmatically.md) voor meer informatie over het maken van dashboards.
+U kunt de toegang tot het dash board beheren door gebruik te maken van Azure op rollen gebaseerd toegangs beheer (Azure RBAC). U kunt ook het uiterlijk van het dashboard aanpassen zodra de implementatie is voltooid. Als u de resourcegroep echter opnieuw implementeert, wordt het dashboard opnieuw ingesteld op de standaardstatus in de sjabloon. Zie [Op programmatische wijze Azure-dashboards maken](../../azure-portal/azure-portal-dashboards-create-programmatically.md) voor meer informatie over het maken van dashboards.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

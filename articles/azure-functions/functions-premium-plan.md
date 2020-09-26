@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: jehollan
 ms.custom: references_regions
-ms.openlocfilehash: 4f6e2008cad66ce7cd68016d3873ecbc18b1961c
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: a650c6d5aeea28e800b1a4ce9db325a52d60d5cc
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89145743"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372218"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Functions Premium-abonnement
 
@@ -141,32 +141,41 @@ Bekijk de volledige regionale Beschik baarheid van functies hier: [Azure.com](ht
 
 |Regio| Windows | Linux |
 |--| -- | -- |
-|Australië - centraal| 20 | Niet beschikbaar |
-|Australië - centraal 2| 20 | Niet beschikbaar |
+|Australië - centraal| 100 | Niet beschikbaar |
+|Australië - centraal 2| 100 | Niet beschikbaar |
 |Australië - oost| 100 | 20 |
 |Australia Southeast | 100 | 20 |
-|Brazil South| 60 | 20 |
+|Brazil South| 100 | 20 |
 |Canada - midden| 100 | 20 |
 |Central US| 100 | 20 |
+|China - oost 2| 100 | 20 |
+|China - noord 2| 100 | 20 |
 |Azië - oost| 100 | 20 |
 |VS - oost | 100 | 20 |
-|US - oost 2| 100 | 20 |
+|VS - oost 2| 100 | 20 |
 |Frankrijk - centraal| 100 | 20 |
 |Duitsland - west-centraal| 100 | Niet beschikbaar |
 |Japan East| 100 | 20 |
 |Japan - west| 100 | 20 |
 |Korea - centraal| 100 | 20 |
+|Korea - zuid| Niet beschikbaar | 20 |
 |VS - noord-centraal| 100 | 20 |
 |Europa - noord| 100 | 20 |
-|Noorwegen - oost| 20 | 20 |
+|Noorwegen - oost| 100 | 20 |
 |South Central US| 100 | 20 |
 |India - zuid | 100 | Niet beschikbaar |
 |Azië - zuidoost| 100 | 20 |
+|Zwitserland - noord| 100 | Niet beschikbaar |
+|Zwitserland - west| 100 | Niet beschikbaar |
 |Verenigd Koninkrijk Zuid| 100 | 20 |
 |Verenigd Koninkrijk West| 100 | 20 |
+|USGov Arizona| 100 | 20 |
+|USGov Virginia| 100 | 20 |
+|USNat-Oost| 100 | Niet beschikbaar |
+|USNat-West| 100 | Niet beschikbaar |
 |Europa -west| 100 | 20 |
 |India - west| 100 | 20 |
-|VS - west-centraal| 20 | 20 |
+|VS - west-centraal| 100 | 20 |
 |VS - west| 100 | 20 |
 |West US 2| 100 | 20 |
 

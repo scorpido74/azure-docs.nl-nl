@@ -1,15 +1,17 @@
 ---
 title: Wijzigingen in het Voorspellings eindpunt in de V3 API
 description: De V3 Api's voor de query Voorspellings-endpoint zijn gewijzigd. Gebruik deze hand leiding voor informatie over het migreren naar versie 3-eindpunt-Api's.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 06/30/2020
 ms.author: diberry
-ms.openlocfilehash: d3d8f4d77793390484c64b03393fb528dfa643b7
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 3e4567eea02b3b7db9514f4e03c7f7f36496449b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85610877"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91309423"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>Wijzigingen in het Voorspellings eindpunt voor v3
 
@@ -39,14 +41,14 @@ V3 heeft de volgende wijzigingen aangebracht als onderdeel van de move to GA:
     * [OrdinalV1](luis-reference-prebuilt-ordinal.md)
     * [GeographyV2](luis-reference-prebuilt-geographyv2.md)
     * [DatetimeV2](luis-reference-prebuilt-datetimev2.md)
-    * De naam van de meet bare eenheids sleutel van `units` naar`unit`
+    * De naam van de meet bare eenheids sleutel van `units` naar `unit`
 
 * Wijziging van JSON van aanvraag tekst:
-    * van `preferExternalEntities` tot`preferExternalEntities`
+    * van `preferExternalEntities` tot `preferExternalEntities`
     * optionele `score` para meter voor externe entiteiten
 
 * Wijzigingen van de JSON van de antwoord tekst:
-    * `normalizedQuery`Voer
+    * `normalizedQuery` Voer
 
 ## <a name="suggested-adoption-strategy"></a>Voorgestelde acceptatie strategie
 
@@ -77,7 +79,7 @@ De [indeling van de HTTP-aanroep van het v3-eind punt](developer-reference-resou
 
 Als u een query wilt uitvoeren op versie, moet u eerst [via API publiceren](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3b) met `"directVersionPublish":true` . Zoek het eind punt naar de versie-ID in plaats van de naam van de sleuf.
 
-|Geldige waarden voor`SLOT-NAME`|
+|Geldige waarden voor `SLOT-NAME`|
 |--|
 |`production`|
 |`staging`|
@@ -107,7 +109,7 @@ Als u een query wilt uitvoeren op versie, moet u eerst [via API publiceren](http
 |`dynamicLists`|matrix|Alleen v3|Niet vereist.|Met [dynamische lijsten](schema-change-prediction-runtime.md#dynamic-lists-passed-in-at-prediction-time) kunt u een bestaande getrainde en gepubliceerde lijst entiteit uitbreiden, al in de Luis-app.|
 |`externalEntities`|matrix|Alleen v3|Niet vereist.|[Externe entiteiten](schema-change-prediction-runtime.md#external-entities-passed-in-at-prediction-time) bieden uw Luis-app de mogelijkheid om entiteiten tijdens runtime te identificeren en te labelen, die kunnen worden gebruikt als functies voor bestaande entiteiten. |
 |`options.datetimeReference`|tekenreeks|Alleen v3|Geen standaard waarde|Wordt gebruikt om de [datetimeV2-offset](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)te bepalen. De indeling voor de datetimeReference is [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).|
-|`options.preferExternalEntities`|booleaans|Alleen v3|false|Hiermee wordt aangegeven of de externe entiteit van de gebruiker [(met dezelfde naam als bestaande entiteit)](schema-change-prediction-runtime.md#override-existing-model-predictions) wordt gebruikt of dat de bestaande entiteit in het model wordt gebruikt voor de voor spelling. |
+|`options.preferExternalEntities`|boolean|Alleen v3|false|Hiermee wordt aangegeven of de externe entiteit van de gebruiker [(met dezelfde naam als bestaande entiteit)](schema-change-prediction-runtime.md#override-existing-model-predictions) wordt gebruikt of dat de bestaande entiteit in het model wordt gebruikt voor de voor spelling. |
 |`query`|tekenreeks|Alleen v3|Vereist.|**In v2**bevindt de utterance die moet worden voor speld in de `q` para meter. <br><br>**In v3**wordt de functionaliteit door gegeven in de `query` para meter.|
 
 ## <a name="response-changes"></a>Reactie wijzigingen

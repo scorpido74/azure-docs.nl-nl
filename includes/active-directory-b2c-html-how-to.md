@@ -5,12 +5,12 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 03/19/2020
 ms.author: mimart
-ms.openlocfilehash: af11283f9e9dbd925ec994dcb1d96393332b90fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9b660bf20c90a84780175e70573c96a0ce1b0b7d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80117048"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377531"
 ---
 ## <a name="use-custom-page-content"></a>Aangepaste pagina-inhoud gebruiken
 
@@ -46,7 +46,7 @@ In plaats van uw aangepaste pagina-inhoud helemaal zelf te maken, kunt u de stan
 
 De volgende tabel bevat de standaard pagina-inhoud die wordt verschaft door Azure AD B2C. Down load de bestanden en gebruik deze als uitgangs punt voor het maken van uw eigen aangepaste pagina's.
 
-| Standaard pagina | Description | ID van de inhouds definitie<br/>(alleen aangepast beleid) |
+| Standaard pagina | Beschrijving | ID van de inhouds definitie<br/>(alleen aangepast beleid) |
 |:-----------------------|:--------|-------------|
 | [exception.html](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Fout pagina**. Deze pagina wordt weer gegeven wanneer er een uitzonde ring of een fout wordt aangetroffen. | *API. error* |
 | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) |  **Zelfbevestigende pagina**. Gebruik dit bestand als aangepaste pagina-inhoud voor een aanmeldings pagina voor een sociaal account, een aanmeldings pagina voor een lokaal account, een aanmeldings pagina voor het lokale account, het opnieuw instellen van wacht woorden en meer. Het formulier kan verschillende invoer besturings elementen bevatten, zoals een tekstinvoervak, een vak voor het invoeren van een wacht woord, een keuze rondje, vervolg keuze vakjes en meervoudige selectie vakjes. | *API. localaccountsignin*, *API. localaccountsignup*, *API. localaccountpasswordreset*, *API. selfasserted* |
@@ -114,7 +114,7 @@ In dit artikel gebruiken we Azure Blob-opslag om onze inhoud te hosten. U kunt e
 
 Als u uw HTML-inhoud in Blob Storage wilt hosten, voert u de volgende stappen uit:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer in het **hub** -menu de optie **Nieuw**  >  **opslag**  >  **opslag account**.
 1. Selecteer een **abonnement** voor uw opslag account.
 1. Maak een **resource groep** of selecteer een bestaande.
@@ -153,12 +153,12 @@ Als u een open bare container in Blob Storage wilt maken, voert u de volgende st
 
 Configureer de Blob-opslag voor cross-Origin-resource delen door de volgende stappen uit te voeren:
 
-1. Selecteer **CORS**in het menu.
-1. Voer in voor **toegestane oorsprongen** `https://your-tenant-name.b2clogin.com` . Vervang door `your-tenant-name` de naam van uw Azure AD B2C-Tenant. Bijvoorbeeld `https://fabrikam.b2clogin.com`. Gebruik alleen kleine letters bij het invoeren van de naam van uw Tenant.
+1. Selecteer in het menu de optie **CORS**.
+1. Geef `https://your-tenant-name.b2clogin.com` op bij **Toegestane oorsprongen**. Vervang `your-tenant-name` door de naam van uw Azure AD B2C-tenant. Bijvoorbeeld `https://fabrikam.b2clogin.com`. Gebruik alleen kleine letters bij het invoeren van de naam van uw Tenant.
 1. Voor **toegestane methoden**selecteert u beide `GET` en `OPTIONS` .
-1. Voer een asterisk (*) in bij **toegestane headers**.
-1. Voer een asterisk (*) in voor **weer gegeven headers**.
-1. Voer 200 in als **maximum leeftijd**.
+1. Voer bij **Toegestane headers** een asterisk (*) in.
+1. Voer bij **Zichtbare headers** een asterisk (*) in.
+1. Voer bij **Maximumleeftijd** 200 in.
 1. Selecteer **Opslaan**.
 
 #### <a name="31-test-cors"></a>CORS voor 3,1 testen
@@ -167,7 +167,7 @@ Controleer of u klaar bent door de volgende stappen uit te voeren:
 
 1. Herhaal de stap CORS configureren. Voer voor **toegestane oorsprongen**`https://www.test-cors.org`
 1. Ga naar [www.test-cors.org](https://www.test-cors.org/) 
-1. Plak in het vak **externe URL** de URL van uw HTML-bestand. Bijvoorbeeld: `https://your-account.blob.core.windows.net/azure-ad-b2c/unified.html`
+1. Plak in het vak **externe URL** de URL van uw HTML-bestand. Bijvoorbeeld: `https://your-account.blob.core.windows.net/root/azure-ad-b2c/unified.html`
 1. Selecteer **aanvraag verzenden**.
     Het resultaat moet zijn `XHR status: 200` . 
     Als u een fout bericht ontvangt, moet u ervoor zorgen dat de CORS-instellingen juist zijn. Mogelijk moet u ook de cache van de browser wissen of een persoonlijke browser sessie openen door op CTRL + SHIFT + P te drukken.

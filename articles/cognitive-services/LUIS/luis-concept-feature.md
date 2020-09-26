@@ -1,14 +1,16 @@
 ---
 title: Machine learning-functies met LUIS
 description: Voeg functies toe aan een taal model om tips te bieden over het herkennen van de invoer die u wilt labelen of classificeren.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 06/10/2020
-ms.openlocfilehash: 02a6fd27dbe22a40b29b47515edec5506d3b2075
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/22/2020
+ms.openlocfilehash: 08ab71375171d4bb4167c725bc7118bec2e1ebfa
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075166"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371996"
 ---
 # <a name="machine-learning-features"></a>Machine learning-functies
 
@@ -20,12 +22,10 @@ Een functie kan worden beschreven als een functie, zoals f (x) = y. In het voor 
 
 ## <a name="types-of-features"></a>Typen functies
 
-LUIS ondersteunt beide woordgroepen lijsten en modellen als functies:
+Functies zijn een vereist onderdeel van het schema ontwerp. LUIS ondersteunt beide woordgroepen lijsten en modellen als functies:
 
-* Functie woordgroepen lijst 
+* Functie woordgroepen lijst
 * Model (intentie of entiteit) als onderdeel
-
-Functies moeten worden beschouwd als een vereist deel van het schema ontwerp.
 
 ## <a name="find-features-in-your-example-utterances"></a>Zoek functies in uw voor beeld-uitingen
 
@@ -43,32 +43,6 @@ Bepaal of de tekst, omdat deze een eigenschappen onderscheidt, het volgende moet
 * Overeenkomen met een exact woord of een woord groep: overweeg een reguliere expressie-entiteit of een lijst entiteit toe te voegen als een functie voor de entiteit of het doel.
 * Overeenkomen met een goed bekend concept zoals datums, tijden of namen van personen: gebruik een vooraf samengestelde entiteit als een functie voor de entiteit of het doel.
 * Meer informatie over nieuwe voor beelden over een bepaalde periode: gebruik een woordgroepen lijst met enkele voor beelden van het concept als een functie voor de entiteit of het doel.
-
-## <a name="combine-features"></a>Functies combi neren
-
-U kunt meer dan één functie gebruiken om een trait of concept te beschrijven. Een algemene koppeling is het gebruik van een woordgroepen lijst functie en een entiteits type dat vaak als een functie wordt gebruikt:
-
- * vooraf gebouwde entiteit
- * reguliere expressie-entiteit
- * entiteit weer geven
-
-### <a name="ticket-booking-entity-example"></a>Voor beeld van ticket-reserve ring-entiteit
-
-Een voor beeld: een app voor het reserveren van een vlucht met een vlucht reservering en een ticket-boekings entiteit.
-
-De ticket-reserverings entiteit is een machine learning-entiteit voor de vlucht bestemming. U kunt de locatie extra heren door twee functies te gebruiken:
-
-* Een woordgroepen lijst met relevante woorden, zoals **vlieg tuig**, **vlucht**, **reserve ring**of **ticket**
-* Een vooraf ontwikkelde **geographyV2** -entiteit als een functie voor de entiteit
-
-### <a name="pizza-entity-example"></a>Voor beeld van pizza-entiteit
-
-Een ander voor beeld is dat u een app kunt best Ellen voor een pizza met een Create-pizza-order intentie en een pizza-entiteit.
-
-De entiteit pizza is een machine learning-entiteit voor de details van de pizza. Gebruik voor het extra heren van de details twee functies om het volgende te helpen:
-
-* Een woordgroepen lijst met relevante woorden, zoals **kaas**, **crust**, **pepperoni**of **ananas**
-* Een vooraf samengestelde **nummer** entiteit als een functie voor de entiteit
 
 ## <a name="create-a-phrase-list-for-a-concept"></a>Een woordgroepen lijst maken voor een concept
 
@@ -176,12 +150,12 @@ U kunt door gaan met het voor beeld van het verzend adres:
 
 Verzend adres (geleerde computer entiteit)
 
- * Straat nummer (subentiteit) 
- * Adres (subentiteit) 
- * Straat naam (subentiteit) 
- * Plaats (subentiteit) 
- * Staat of provincie (subentiteit) 
- * Land/regio (subentiteit) 
+ * Straat nummer (subentiteit)
+ * Adres (subentiteit)
+ * Straat naam (subentiteit)
+ * Plaats (subentiteit)
+ * Staat of provincie (subentiteit)
+ * Land/regio (subentiteit)
  * Post code (subentiteit)
 
 ### <a name="required-feature-using-prebuilt-entities"></a>Vereiste functie voor het gebruik van vooraf gemaakte entiteiten
@@ -217,6 +191,59 @@ Hoewel het meest wordt gebruikt om een functie toe te passen op een specifiek mo
 Het meest voorkomende gebruik voor een globale functie is het toevoegen van een extra vocabulaire aan de app. Als uw klanten bijvoorbeeld een primaire taal gebruiken, maar wel een andere taal in dezelfde utterance kunnen gebruiken, kunt u een functie toevoegen die woorden uit de secundaire taal bevat.
 
 Omdat de gebruiker de secundaire taal verwacht te gebruiken voor alle intentie of entiteit, voegt u woorden van de secundaire taal toe aan de lijst met zinsdelen. Configureer de woordgroepen lijst als een globale functie.
+
+## <a name="combine-features-for-added-benefit"></a>Functies voor extra voor deel combi neren
+
+U kunt meer dan één functie gebruiken om een trait of concept te beschrijven. Een algemene koppeling is het gebruik van:
+
+* Een woordgroepen lijst functie: u kunt meerdere woordgroepen lijsten gebruiken als functies voor hetzelfde model.
+* Een model als een functie: [prebuilde entiteit](luis-reference-prebuilt-entities.md), [reguliere expressie-entiteit](reference-entity-regular-expression.md), [lijst entiteit](reference-entity-list.md). 
+
+### <a name="example-ticket-booking-entity-features-for-a-travel-app"></a>Voor beeld: entiteits functies voor ticket-reserve ring voor een reis-app  
+
+Een voor beeld hiervan is een app voor het reserveren van een vlucht met een _vlucht reservering en_ een ticket-boekings _entiteit_. De ticket-boekings entiteit legt de informatie vast om een vliegtuig ticket in een reserverings systeem te boeken. 
+
+De machine learning-entiteit voor ticket-Book heeft twee subeenheden voor het vastleggen van de oorsprong en bestemming. De functies moeten worden toegevoegd aan elke subentiteit, niet op de entiteit op het hoogste niveau.
+
+:::image type="content" source="media/luis-concept-features/ticket-booking-entity.png" alt-text="Ticketbooking-entiteits schema":::
+
+De ticket-boekings entiteit is een machine learning-entiteit met subentiteiten, waaronder _oorsprong_ en _bestemming_. Deze subentiteiten geven beide een geografische locatie aan. Voor het extra heren van de locaties en het onderscheiden van de _oorsprong_ en _bestemming_moet elke subentiteit functies bevatten.
+
+|Type|Subentiteit van oorsprong |Doel-subentiteit|
+|--|--|--|
+|Model als onderdeel|[geographyV2](luis-reference-prebuilt-geographyv2.md?tabs=V3) vooraf gebouwde entiteit|[geographyV2](luis-reference-prebuilt-geographyv2.md?tabs=V3) vooraf gebouwde entiteit|
+|Woordgroepen lijst|**Oorspronkelijke woorden**: `start at` , `begin from` , `leave`|**Doel woorden**: `to` , `arrive` , `land at` , `go` , `going` , `stay` , `heading`|
+|Woordgroepen lijst|Luchthaven codes-dezelfde lijst voor zowel de oorsprong als de bestemming|Luchthaven codes-dezelfde lijst voor zowel de oorsprong als de bestemming|
+|Woordgroepen lijst|Namen van lucht havens-zelfde lijst voor zowel de oorsprong als de bestemming|Luchthaven codes-dezelfde lijst voor zowel de oorsprong als de bestemming|
+
+Als u verwacht dat mensen luchthaven codes en namen van lucht havens gebruiken, dan moet LUIS woorden lijsten bevatten waarvoor beide typen zinsdelen worden gebruikt. Luchthaven codes kunnen vaker worden gebruikt met tekst die in een chatbot wordt ingevoerd, terwijl namen van lucht havens mogelijk vaker worden gebruikt in gesp roken conversatie, zoals een chatbot met spraak functionaliteit.
+
+De overeenkomende details van de functies worden alleen geretourneerd voor modellen, niet voor woordgroepen lijsten, omdat alleen modellen worden geretourneerd in JSON voor voor spellingen.
+
+#### <a name="ticket-booking-labeling-in-the-intent"></a>Ticket-reserve ring labelen in het doel
+
+Nadat u de machine learning-entiteit hebt gemaakt, moet u voorbeeld uitingen toevoegen aan een intentie en de bovenliggende entiteit en alle subentiteiten labelen.
+
+Voor het ticket reserverings voorbeeld labelt u het voor beeld uitingen in de intentie met de `TicketBooking` entiteit en eventuele subentiteiten in de tekst.
+
+:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity.png" alt-text="Voorbeelden van uitingen labelen":::
+
+### <a name="example-pizza-ordering-app"></a>Voor beeld: Pizza best Ellen
+
+Voor een tweede voor beeld moet u een app voor een pizza-restaurant ontvangen. deze ontvangt pizza-orders, met inbegrip van de details van het type pizza dat door iemand wordt best Ellen. Alle details van de pizza moeten, indien mogelijk, worden geëxtraheerd om de order verwerking te volt ooien.
+
+De machine learning-entiteit in dit voor beeld is complexer met geneste subentiteiten, woordgroepen lijsten, vooraf gemaakte entiteiten en aangepaste entiteiten.
+
+:::image type="content" source="media/luis-concept-features/pizza-order-entity.png" alt-text="Entiteits schema voor pizza order":::
+
+In dit voor beeld worden functies op het niveau van de subentiteit en het onderliggende niveau van de subentiteit gebruikt. Welk niveau wordt opgehaald voor het soort woordgroepen lijst of model als onderdeel, is een belang rijk onderdeel van het ontwerp van de entiteit.
+
+Hoewel subentiteiten een groot aantal woordgroepen lijsten kunnen hebben als functies waarmee de entiteit kan worden gedetecteerd, heeft elke subeenheid slechts één model als een functie. In deze [pizza-app](https://github.com/Azure/pizza_luis_bot/blob/master/CognitiveModels/MicrosoftPizza.json)zijn deze modellen voornamelijk lijsten.
+
+:::image type="content" source="media/luis-concept-features/intent-example-utterances-machine-learning-entity-pizza.png" alt-text="Pizza order intentie met gelabeld voor beeld uitingen":::
+
+Het correct gelabelde voorbeeld uitingen wordt weer gegeven op een manier om te laten zien hoe de entiteiten zijn genest. 
+
 
 ## <a name="best-practices"></a>Aanbevolen procedures
 

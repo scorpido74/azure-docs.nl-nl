@@ -3,12 +3,12 @@ title: Activiteiten logboeken van Azure weer geven voor het bewaken van resource
 description: Gebruik de activiteiten Logboeken om de gebruikers acties en-fouten te controleren. Toont Azure Portal Power shell, Azure CLI en REST.
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: b02865e4487a187d1296b2971918aa101d711b5b
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 14015e9b2792515e6818af551b8bd9f54c686bee
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827058"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371589"
 ---
 # <a name="view-activity-logs-to-monitor-actions-on-resources"></a>Activiteiten logboeken weer geven om acties op resources te controleren
 
@@ -20,7 +20,7 @@ Met activiteitenlogboeken kunt u het volgende bepalen:
 * de status van de bewerking
 * de waarden van andere eigenschappen die u kunnen helpen bij het onderzoeken van de bewerking
 
-Het activiteitenlogboek bevat alle schrijfbewerkingen (PUT, POST, DELETE) voor uw resources. Het bevat geen leesbewerkingen (GET). Zie Azure Resource Manager-bewerkingen van de [resource provider](../../role-based-access-control/resource-provider-operations.md)voor een lijst met resource acties. U kunt de activiteitenlogboeken gebruiken om fouten te vinden bij foutoplossing of om te controleren hoe een gebruiker in uw organisatie een resource heeft gewijzigd.
+Het activiteitenlogboek bevat alle schrijfbewerkingen (PUT, POST, DELETE) voor uw resources. Het bevat geen leesbewerkingen (GET). Voor een lijst met resource acties raadpleegt u bewerkingen van de [Azure-resource provider](../../role-based-access-control/resource-provider-operations.md). U kunt de activiteitenlogboeken gebruiken om fouten te vinden bij foutoplossing of om te controleren hoe een gebruiker in uw organisatie een resource heeft gewijzigd.
 
 Activiteitenlogboek worden gedurende negentig dagen bewaard. U kunt een query uitvoeren voor een willekeurig datumbereik, zolang de begindatum niet meer dan negentig dagen in het verleden ligt.
 
@@ -195,4 +195,4 @@ De REST-bewerkingen voor het werken met het activiteitenlogboek maken deel uit v
 * Zie [toepassings wijzigingen in azure monitor gebruiken](../../azure-monitor/app/change-analysis.md)voor meer informatie over de wijzigingen in uw toepassingen vanuit de laag van de infra structuur voor de implementatie van toepassingen.
 * Zie [implementatie bewerkingen weer geven](../templates/deployment-history.md)voor meer informatie over de opdrachten voor het weer geven van implementatie bewerkingen.
 * Zie [resources vergren delen met Azure Resource Manager](lock-resources.md)voor meer informatie over het voor komen van het verwijderen van een resource voor alle gebruikers.
-* Zie [Azure Resource Manager resource provider bewerkingen](../../role-based-access-control/resource-provider-operations.md) voor een overzicht van de beschik bare bewerkingen voor elke Microsoft Azure Resource Manager-provider.
+* Zie [Azure resource provider-bewerkingen](../../role-based-access-control/resource-provider-operations.md) voor een overzicht van de beschik bare bewerkingen voor elke Microsoft Azure Resource Manager-provider.

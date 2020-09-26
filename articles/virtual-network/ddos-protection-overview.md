@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: kumud
-ms.openlocfilehash: 726bc34a309ac6a29c189f13037e059f200732ce
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 50b0324be8da8024dcbda140eff062f3ff712225
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91335915"
+ms.locfileid: "91371181"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Azure DDoS Protection standaard overzicht
 
@@ -61,7 +61,7 @@ DDoS Protection standaard functies zijn:
 
 DDoS Protection Standard bewaakt het werkelijke verkeers gebruik en vergelijkt deze met de drempel waarden die zijn gedefinieerd in het DDoS-beleid. Wanneer de drempel waarde voor verkeer wordt overschreden, wordt de DDoS-beperking automatisch gestart. Wanneer het verkeer onder de drempel waarde komt, wordt de risico beperking verwijderd.
 
-![Oplossing](./media/ddos-protection-overview/mitigation.png)
+![Diagram toont een stroom die begint met een klant via de Azure Portal via de DDoS Protection standaard, via open bare I P-adressen via het genereren van het beleid dat bij twee open bare I P-adressen eindigt.](./media/ddos-protection-overview/mitigation.png)
 
 Tijdens de risico beperking wordt het verkeer dat wordt verzonden naar de beveiligde bron, omgeleid door de DDoS Protection-Service en worden er diverse controles uitgevoerd, zoals de volgende controles:
 

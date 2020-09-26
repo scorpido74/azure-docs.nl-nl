@@ -1,14 +1,16 @@
 ---
 title: Goed voor beeld van uitingen-LUIS
 description: Uitingen zijn invoer van de gebruiker die uw app nodig heeft voor de interpretatie. Verzamel zinsdelen die u denkt dat gebruikers worden ingevoerd. Uitingen bevatten die hetzelfde zijn, maar die anders zijn gemaakt in woord lengte en woord plaatsing.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 6a17416183762893432841c27124ec6a0f8a289d
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 4c3b5674fe039a89eb97b915d13b5d472a6a0568
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685268"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316389"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>Begrijpen wat goede uitingen zijn voor uw LUIS-app
 
@@ -70,7 +72,7 @@ Het is beter om met een paar uitingen te beginnen en vervolgens [eind punt uitin
 
 Utterance normalisatie is het proces van het negeren van de effecten van typen tekst, zoals interpunctie en diakritische tekens, tijdens de training en voor spelling.
 
-De utterance normalisatie-instellingen zijn standaard uitgeschakeld. Deze instellingen omvatten:
+De utterance normalisatie-instellingen zijn standaard uitgeschakeld. Deze instellingen zijn onder meer:
 
 * Word-formulieren
 * Diakritische tekens mag
@@ -103,7 +105,7 @@ Interpunctie is een afzonderlijk token in LUIS. Een utterance die een punt bevat
 
 Als interpunctie niet is genormaliseerd, LUIS niet standaard interpunctie markeringen negeren, omdat sommige client toepassingen significant kunnen zijn voor deze markeringen. Zorg ervoor dat uw voor beeld-uitingen zowel interpunctie als geen interpunctie gebruiken voor beide stijlen om dezelfde relatieve scores te retour neren.
 
-Zorg ervoor dat het model interpunctie verwerkt in het voor beeld uitingen (met en zonder interpunctie) of in de [patronen](luis-concept-patterns.md) waar het gemakkelijker is om interpunctie te negeren met de speciale syntaxis:`I am applying for the {Job} position[.]`
+Zorg ervoor dat het model interpunctie verwerkt in het voor beeld uitingen (met en zonder interpunctie) of in de [patronen](luis-concept-patterns.md) waar het gemakkelijker is om interpunctie te negeren met de speciale syntaxis: `I am applying for the {Job} position[.]`
 
 Als interpunctie geen specifieke betekenis heeft in uw client toepassing, kunt u overwegen [interpunctie te negeren](#utterance-normalization) door interpunctie te normaliseren.
 

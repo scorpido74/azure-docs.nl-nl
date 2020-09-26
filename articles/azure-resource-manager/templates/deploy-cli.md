@@ -3,12 +3,12 @@ title: Resources implementeren met Azure CLI en sjabloon
 description: Gebruik Azure Resource Manager en Azure CLI om resources te implementeren in Azure. De resources zijn gedefinieerd in een Resource Manager-sjabloon.
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: 7e8ae7e8c568f5f0ebb85f434e33f142b5fe94e8
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 8d033bb9ad1c841614ee1e48aa7edc6b8fe18550
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89566157"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372167"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>Resources implementeren met ARM-sjablonen en Azure CLI
 
@@ -130,7 +130,7 @@ In het voor gaande voor beeld is een openbaar toegankelijke URI vereist voor de 
 
 ## <a name="deploy-template-spec"></a>Sjabloonspecificatie implementeren
 
-In plaats van een lokale of externe sjabloon te implementeren, kunt u een [sjabloon specificatie](template-specs.md)maken. De sjabloon specificatie is een resource in uw Azure-abonnement die een ARM-sjabloon bevat. Het is eenvoudig om de sjabloon veilig te delen met gebruikers in uw organisatie. U gebruikt op rollen gebaseerd toegangs beheer (RBAC) om toegang te verlenen tot de sjabloon specificatie. Deze functie is momenteel beschikbaar als preview-versie.
+In plaats van een lokale of externe sjabloon te implementeren, kunt u een [sjabloon specificatie](template-specs.md)maken. De sjabloon specificatie is een resource in uw Azure-abonnement die een ARM-sjabloon bevat. Het is eenvoudig om de sjabloon veilig te delen met gebruikers in uw organisatie. U gebruikt op rollen gebaseerd toegangs beheer van Azure (Azure RBAC) om toegang te verlenen tot de sjabloon specificatie. Deze functie is momenteel beschikbaar als preview-versie.
 
 In de volgende voor beelden ziet u hoe u een sjabloon specificatie maakt en implementeert. Deze opdrachten zijn alleen beschikbaar als u zich hebt [geregistreerd voor de preview-versie](https://aka.ms/templateSpecOnboarding).
 

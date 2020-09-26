@@ -4,12 +4,12 @@ description: Hierin wordt beschreven hoe u veelvoorkomende fouten oplost wanneer
 tags: top-support-issue
 ms.topic: troubleshooting
 ms.date: 09/09/2020
-ms.openlocfilehash: a24a95bbf3b3a338102d42fcee06b5e4bd59dd83
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: fb7e476a5b4416282546d321a5e9a0127b7a4364
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650944"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372235"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Veelvoorkomende fouten met Azure-implementatie oplossen met Azure Resource Manager
 
@@ -34,6 +34,7 @@ Als u op zoek bent naar informatie over een fout code en deze informatie niet in
 | DeploymentNameLengthLimitExceeded | De namen van de implementaties zijn beperkt tot 64 tekens.  | |
 | Heeft | De heeft-fout is een algemene fout die niet de details biedt die u nodig hebt om de fout op te lossen. Bekijk de fout Details voor een fout code die meer informatie bevat. | [Fout code zoeken](#find-error-code) |
 | DeploymentQuotaExceeded | Als u de limiet van 800 implementaties per resource groep bereikt, verwijdert u implementaties uit de geschiedenis die niet meer nodig zijn. | [Fout oplossen wanneer het aantal implementaties groter is dan 800](deployment-quota-exceeded.md) |
+| DeploymentSizeExceeded | Vereenvoudig uw sjabloon om de grootte te verminderen. | [Fouten in de sjabloon grootte oplossen](error-job-size-exceeded.md) |
 | DnsRecordInUse | De naam van de DNS-record moet uniek zijn. Voer een andere naam in. | |
 | ImageNotFound | Controleer de instellingen van de VM-installatie kopie. |  |
 | InUseSubnetCannotBeDeleted | Deze fout kan optreden wanneer u een resource probeert bij te werken en de aanvraag wordt verwerkt door de resource te verwijderen en te maken. Zorg ervoor dat u alle ongewijzigde waarden opgeeft. | [Bron bijwerken](/azure/architecture/building-blocks/extending-templates/update-resource) |
@@ -49,6 +50,7 @@ Als u op zoek bent naar informatie over een fout code en deze informatie niet in
 | InvalidSubscriptionRegistrationState | Registreer uw abonnement bij de resource provider. | [Registratie oplossen](error-register-resource-provider.md) |
 | InvalidTemplate | Controleer de syntaxis van de sjabloon op fouten. | [Ongeldige sjabloon oplossen](error-invalid-template.md) |
 | InvalidTemplateCircularDependency | Verwijder overbodige afhankelijkheden. | [Circulaire afhankelijkheden oplossen](error-invalid-template.md#circular-dependency) |
+| JobSizeExceeded | Vereenvoudig uw sjabloon om de grootte te verminderen. | [Fouten in de sjabloon grootte oplossen](error-job-size-exceeded.md) |
 | LinkedAuthorizationFailed | Controleer of uw account deel uitmaakt van dezelfde Tenant als de resource groep die u implementeert. | |
 | LinkedInvalidPropertyId | De resource-ID voor een resource wordt niet correct opgelost. Controleer of u alle vereiste waarden opgeeft voor de resource-ID, inclusief de abonnements-ID, de naam van de resource groep, het resource type, de naam van de bovenliggende resource (indien nodig) en de resource naam. | |
 | LocationRequired | Geef een locatie op voor de resource. | [Locatie instellen](resource-location.md) |
@@ -88,7 +90,7 @@ U kunt twee typen foutmeldingen krijgen:
 
 Validatiefouten ontstaan door scenario's en kunnen vóór de implementatie worden vastgesteld. Ze bevatten syntaxisfouten in de sjabloon of proberen resources te implementeren waarmee uw abonnementquota worden overschreden. Implementatiefouten ontstaan als gevolg van voorwaarden die tijdens het implementatieproces optreden. Bijvoorbeeld wanneer deze toegang proberen te krijgen tot een resource die parallel wordt geïmplementeerd.
 
-Beide typen fouten retourneren een foutcode die u gebruikt om de problemen met de implementatie op te lossen. Beide typen fouten worden weer gegeven in het [activiteiten logboek](../management/view-activity-logs.md). Validatiefouten worden echter niet weergegeven in de implementatiegeschiedenis omdat de implementatie niet is gestart.
+Beide typen fouten retourneren een foutcode die u gebruikt om de problemen met de implementatie op te lossen. Beide typen fouten worden weergegeven in het [activiteitenlogboek](../management/view-activity-logs.md). Validatiefouten worden echter niet weergegeven in de implementatiegeschiedenis omdat de implementatie niet is gestart.
 
 ### <a name="validation-errors"></a>Validatie fouten
 

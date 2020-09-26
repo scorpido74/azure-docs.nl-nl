@@ -3,12 +3,12 @@ title: Modus voor volledige verwijdering
 description: Toont hoe bron typen het verwijderen van de modus volt ooien in Azure Resource Manager sjablonen verwerken.
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: e288d3af080a96616026e94ac7be352a7684c181
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1e27960953aeb16486f893054c7653edb98bbdbc
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91327660"
+ms.locfileid: "91372458"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Verwijdering van Azure-resources voor implementaties in de volledige modus
 
@@ -1502,11 +1502,8 @@ Ga naar de naam ruimte van een resource provider:
 > | Resourcetype | Modus voor volledige verwijdering |
 > | ------------- | ----------- |
 > | workspaces | Yes |
-> | werk ruimten/codeJobs | No |
 > | werk ruimten/reken bewerkingen | No |
 > | werk ruimten/eventGridFilters | No |
-> | werk ruimten/inferenceEndpoints | Yes |
-> | werk ruimten/inferenceEndpoints/implementaties | Yes |
 > | werk ruimten/linkedServices | No |
 
 ## <a name="microsoftmaintenance"></a>Micro soft. onderhoud
