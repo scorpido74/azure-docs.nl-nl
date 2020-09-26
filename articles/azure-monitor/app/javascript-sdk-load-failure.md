@@ -5,13 +5,13 @@ ms.topic: conceptual
 author: MSNev
 ms.author: newylie
 ms.date: 06/05/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 83f518326b38e9832c46997a0a2791eb9f35705e
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.custom: devx-track-js
+ms.openlocfilehash: 30c7caef4143b1a7cdba959971ff7689f986cb9e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371631"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333253"
 ---
 # <a name="troubleshooting-sdk-load-failure-for-javascript-web-apps"></a>Problemen met SDK-laad fouten voor Java script-web-apps oplossen
 
@@ -115,7 +115,7 @@ Als u deze minimale configuratie gebruikt, wordt er nog [steeds een Java script-
 
 Als de uitzonde ring verdwijnt, wordt het probleem waarschijnlijk veroorzaakt door een niet-overeenkomend type of onverwachte waarde. Begin met het toevoegen van uw configuratie opties één voor één en test totdat de uitzonde ring opnieuw optreedt. Raadpleeg vervolgens de documentatie voor het item dat het probleem veroorzaakt. Als de documentatie onduidelijk is of als u hulp nodig hebt, kunt u [een probleem in github oplossen](https://github.com/Microsoft/ApplicationInsights-JS/issues).
 
-Als uw configuratie al eerder is geïmplementeerd en werkte, maar u zojuist deze uitzonde ring had gerapporteerd, is het mogelijk dat er een probleem is met een nieuwe geïmplementeerde versie. Controleer of dit van invloed is op een klein aantal gebruikers/browsers en of u een [probleem op github](https://github.com/Microsoft/ApplicationInsights-JS/issues) of [een nieuw ondersteunings ticket wilt maken](https://azure.microsoft.com/support/create-ticket/).
+Als uw configuratie al eerder is geïmplementeerd en werkte, maar u zojuist deze uitzonde ring had gerapporteerd, is het mogelijk dat er een probleem is met een nieuwe geïmplementeerde versie. Controleer of dit van invloed is op een klein aantal gebruikers/browsers en of u een [probleem op github](https://github.com/Microsoft/ApplicationInsights-JS/issues) of  [een nieuw ondersteunings ticket wilt maken](https://azure.microsoft.com/support/create-ticket/).
 
 ### <a name="enable-console-debugging"></a>Fout opsporing via console inschakelen
 

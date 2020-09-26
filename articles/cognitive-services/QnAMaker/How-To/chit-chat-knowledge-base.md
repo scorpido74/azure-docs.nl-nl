@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0aca072a9e659d242dec9dd45a12f9568d419599
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 3d5c47d3e3e9485c3a6de8f93782c654fb34a516
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124422"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330635"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>Chit-Chat toevoegen aan een kennis database
 
@@ -72,7 +72,7 @@ Als u de meta gegevens wilt bekijken, selecteert u **weergave opties** op de wer
 ## <a name="add-additional-chit-chat-questions-and-answers"></a>Aanvullende chit-chat vragen en-antwoorden toevoegen
 U kunt een nieuw Chit-Chat QnA-paar toevoegen dat zich niet in de vooraf gedefinieerde gegevensset bevindt. Zorg ervoor dat u geen QnA-paar dupliceert dat al wordt behandeld in de Chit-Chat set. Wanneer u een nieuwe Chit-Chat QnA toevoegt, wordt deze toegevoegd aan uw **redactionele** bron. Om ervoor te zorgen dat de classificatieer weet dat dit Chit is, voegt u de meta gegevens sleutel/waardepaar ' Redactionel: Chitchat ' toe, zoals in de volgende afbeelding wordt weer gegeven:
 
-![! [Add Chit-Chat QnAs] (.. /Media/qnamaker-How-to-chit-chat/add-new-chit-chat.png)](../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png#lightbox)
+:::image type="content" source="../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png" alt-text="Chit-Chat QnAs toevoegen" lightbox="../media/qnamaker-how-to-chit-chat/add-new-chit-chat.png":::
 
 ## <a name="delete-chit-chat-from-an-existing-kb"></a>Chit verwijderen van een bestaande KB
 Selecteer uw KB en navigeer naar de pagina **instellingen** . Uw specifieke Chit-Chat bron wordt weer gegeven als een bestand met de naam van de geselecteerde persoonlijkheid. U kunt dit als een bron bestand verwijderen.
@@ -84,6 +84,6 @@ Selecteer uw KB en navigeer naar de pagina **instellingen** . Uw specifieke Chit
 > [!div class="nextstepaction"]
 > [Een Knowledge Base importeren](../Tutorials/migrate-knowledge-base.md)
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 [Overzicht van QnA Maker](../Overview/overview.md)

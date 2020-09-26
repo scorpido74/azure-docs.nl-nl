@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 03/27/2018
 ms.author: alzam
-ms.openlocfilehash: 33e67df5ad68a78cc35f7168813716d1d794d527
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: be7b6349a7bf51a4fb99e3604a04f9d95403b74f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442799"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91359321"
 ---
 # <a name="troubleshoot-point-to-site-vpn-connections-from-mac-os-x-vpn-clients"></a>Problemen met punt-naar-site-VPN-verbindingen van Mac OS X VPN-clients oplossen
 
@@ -34,7 +34,7 @@ Dit artikel helpt u bij het oplossen van problemen met Point-to-site-verbindinge
 4. De **lokale id** moet hetzelfde zijn als het **onderwerp** van het client certificaat.
 5. Klik op **verificatie-instellingen** om de pagina verificatie-instellingen te openen.
 
-   ![Verificatie-instellingen](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2auth2.jpg)
+   ![Scherm afbeelding toont het dialoog venster verificatie-instellingen met geselecteerd certificaat.](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2auth2.jpg)
 6. Controleer of het **certificaat** is geselecteerd in de vervolg keuzelijst.
 7. Klik op de knop **selecteren** en controleer of het juiste certificaat is geselecteerd. Klik op **OK** om de wijzigingen op te slaan.
 
@@ -48,7 +48,7 @@ Dit artikel helpt u bij het oplossen van problemen met Point-to-site-verbindinge
 4. De **lokale id** mag leeg zijn.
 5. Klik op de knop **verificatie-instelling** en controleer of ' username ' is geselecteerd in de vervolg keuzelijst.
 
-   ![Verificatie-instellingen](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2auth4.png)
+   ![Scherm afbeelding toont het dialoog venster verificatie-instellingen met de gebruikers naam geselecteerd.](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2auth4.png)
 6. Controleer of de juiste referenties zijn ingevoerd.
 
 ## <a name="additional-steps"></a><a name="additional"></a>Aanvullende stappen

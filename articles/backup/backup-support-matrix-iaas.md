@@ -4,12 +4,12 @@ description: Hierin wordt een overzicht gegeven van de ondersteunings instelling
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: c50a19acceeb68ead4d86a59bbe8275ae97ecb5f
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b576b5e15461f34468bd7c2d512ac7a636b73ac9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019586"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332726"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Ondersteuningsmatrix voor back-up van Azure-VM
 
@@ -39,17 +39,17 @@ Meer informatie over back-ups [met behulp van een back-upserver](backup-architec
 --- | ---
 Een back-up maken van een VM die wordt afgesloten/offline VM | Ondersteund.<br/><br/> Moment opname is alleen vastlopen consistent, niet voor app-consistent.
 Back-ups maken van schijven na migratie naar Managed disks | Ondersteund.<br/><br/> De back-up blijft werken. Geen actie vereist.
-Back-up van beheerde schijven maken na inschakelen van vergren deling van resource groep | Niet ondersteund.<br/><br/> Azure Backup kunt de oudere herstel punten niet verwijderen, waardoor de back-ups mislukken wanneer de maximum limiet van herstel punten is bereikt.
+Back-up van beheerde schijven maken na inschakelen van vergren deling van resource groep | Wordt niet ondersteund.<br/><br/> Azure Backup kunt de oudere herstel punten niet verwijderen, waardoor de back-ups mislukken wanneer de maximum limiet van herstel punten is bereikt.
 Back-upbeleid voor een VM wijzigen | Ondersteund.<br/><br/> Er wordt een back-up van de VM gemaakt met behulp van de instellingen voor het plannen en bewaren van het nieuwe beleid. Als de Bewaar instellingen worden uitgebreid, worden de bestaande herstel punten gemarkeerd en bewaard. Als ze worden gereduceerd, worden de bestaande herstel punten verwijderd bij de volgende opschoon taak en uiteindelijk gewist.
 Een back-uptaak annuleren| Ondersteund tijdens het momentopname proces.<br/><br/> Niet ondersteund wanneer de moment opname wordt overgedragen naar de kluis.
-Back-ups maken van de VM naar een andere regio of een ander abonnement |Niet ondersteund.<br><br>Om een back-up te kunnen maken, moeten virtuele machines zich in hetzelfde abonnement als de kluis voor back-up bevallen.
+Back-ups maken van de VM naar een andere regio of een ander abonnement |Wordt niet ondersteund.<br><br>Om een back-up te kunnen maken, moeten virtuele machines zich in hetzelfde abonnement als de kluis voor back-up bevallen.
 Back-ups per dag (via de Azure VM-extensie) | Eén geplande back-up per dag.<br/><br/>De Azure Backup-service ondersteunt Maxi maal negen back-ups op aanvraag per dag, maar micro soft raadt niet meer dan vier dagelijkse back-ups op aanvraag aan om de beste prestaties te garanderen.
 Back-ups per dag (via de MARS-agent) | Drie geplande back-ups per dag.
 Back-ups per dag (via DPM/MABS) | Twee geplande back-ups per dag.
 Maandelijkse/jaarlijkse back-up| Niet ondersteund bij het maken van een back-up met de Azure VM-extensie. Alleen dagelijks en wekelijks worden ondersteund.<br/><br/> U kunt het beleid zo instellen dat dagelijks/wekelijks back-ups worden bewaard voor een maandelijks/jaarlijks Bewaar periode.
-Automatische aanpassing van de klok | Niet ondersteund.<br/><br/> Azure Backup wordt niet automatisch aangepast aan de zomer-en winter tijd wanneer een back-up van een virtuele machine wordt gemaakt.<br/><br/>  Pas het beleid waar nodig handmatig aan.
+Automatische aanpassing van de klok | Wordt niet ondersteund.<br/><br/> Azure Backup wordt niet automatisch aangepast aan de zomer-en winter tijd wanneer een back-up van een virtuele machine wordt gemaakt.<br/><br/>  Pas het beleid waar nodig handmatig aan.
 [Beveiligings functies voor hybride back-ups](./backup-azure-security-feature.md) |Het uitschakelen van beveiligings functies wordt niet ondersteund.
-Maak een back-up van de VM waarvan de machine tijd is gewijzigd | Niet ondersteund.<br/><br/> Als de tijd van de machine wordt gewijzigd in een toekomstige datum-tijd na het inschakelen van de back-up voor die VM, wordt een geslaagde back-up echter niet gegarandeerd.
+Maak een back-up van de VM waarvan de machine tijd is gewijzigd | Wordt niet ondersteund.<br/><br/> Als de tijd van de machine wordt gewijzigd in een toekomstige datum-tijd na het inschakelen van de back-up voor die VM, wordt een geslaagde back-up echter niet gegarandeerd.
 Azure-Vm's in [schaal sets voor virtuele machines](../virtual-machine-scale-sets/overview.md) | Back-up en herstel worden ondersteund voor virtuele machines waarop de [Orchestration-modus](../virtual-machine-scale-sets/orchestration-modes.md#orchestration-modes) is ingesteld op 3. <br><br>Beschikbaarheids sets worden niet ondersteund.
 
 ## <a name="operating-system-support-windows"></a>Ondersteuning voor besturings systeem (Windows)
@@ -71,8 +71,8 @@ Dit wordt ondersteund als u een back-up wilt maken van Linux-machines.
 **Actie** | **Ondersteuning**
 --- | ---
 Back-ups van virtuele Linux-machines maken met de Azure VM-agent van Linux | Bestands consistente back-up.<br/><br/> App-consistente back-up met behulp van [aangepaste scripts](backup-azure-linux-app-consistent.md).<br/><br/> Tijdens het herstellen kunt u een nieuwe virtuele machine maken, een schijf herstellen en gebruiken om een virtuele machine te maken of een schijf herstellen en gebruiken om een schijf op een bestaande virtuele machine te vervangen. U kunt ook afzonderlijke bestanden en mappen herstellen.
-Back-ups maken van virtuele Linux-machines met een MARS-agent | Niet ondersteund.<br/><br/> De MARS-agent kan alleen worden geïnstalleerd op Windows-machines.
-Back-ups maken van virtuele Linux-machines met DPM/MABS | Niet ondersteund.
+Back-ups maken van virtuele Linux-machines met een MARS-agent | Wordt niet ondersteund.<br/><br/> De MARS-agent kan alleen worden geïnstalleerd op Windows-machines.
+Back-ups maken van virtuele Linux-machines met DPM/MABS | Wordt niet ondersteund.
 
 ## <a name="operating-system-support-linux"></a>Ondersteuning voor besturings systeem (Linux)
 
@@ -110,8 +110,8 @@ Herstelpunten op DPM-/MABS-schijf | 64 voor bestands servers en 448 voor app-ser
 **Herstellen** | **Ondersteund**
 --- | ---
 Bestanden herstellen over besturings systemen | U kunt bestanden herstellen op elke computer die hetzelfde (of compatibel) besturings systeem heeft als de back-up van de virtuele machine. Zie de [tabel met compatibele besturings systemen](backup-azure-restore-files-from-vm.md#system-requirements).
-Bestanden herstellen van versleutelde Vm's | Niet ondersteund.
-Bestanden herstellen van opslag accounts met netwerk beperkingen | Niet ondersteund.
+Bestanden herstellen van versleutelde Vm's | Wordt niet ondersteund.
+Bestanden herstellen van opslag accounts met netwerk beperkingen | Wordt niet ondersteund.
 Bestanden op Vm's terugzetten met behulp van Windows-opslag ruimten | Terugzetten wordt niet ondersteund op dezelfde VM.<br/><br/> In plaats daarvan herstelt u de bestanden op een compatibele VM.
 Bestanden herstellen op een Linux-VM met behulp van LVM/RAID-matrices | Terugzetten wordt niet ondersteund op dezelfde VM.<br/><br/> Herstel op een compatibele VM.
 Bestanden herstellen met speciale netwerk instellingen | Terugzetten wordt niet ondersteund op dezelfde VM. <br/><br/> Herstel op een compatibele VM.
@@ -122,10 +122,10 @@ De volgende tabel bevat een overzicht van de ondersteuning voor back-ups tijdens
 
 **Herstellen** | **Ondersteund**
 --- | ---
-Herstellen in het abonnement/de regio/zone. | Niet ondersteund.
+Herstellen in het abonnement/de regio/zone. | Wordt niet ondersteund.
 Herstellen naar een bestaande virtuele machine | Gebruik de optie schijf vervangen.
-Schijf herstellen met een opslag account dat is ingeschakeld voor Azure Storage-service versleuteling (SSE) | Niet ondersteund.<br/><br/> Herstel naar een account waarvoor geen SSE is ingeschakeld.
-Herstellen naar gemengde opslag accounts |Niet ondersteund.<br/><br/> Op basis van het type opslag account zijn alle herstelde schijven Premium of Standard en niet gemengd.
+Schijf herstellen met een opslag account dat is ingeschakeld voor Azure Storage-service versleuteling (SSE) | Wordt niet ondersteund.<br/><br/> Herstel naar een account waarvoor geen SSE is ingeschakeld.
+Herstellen naar gemengde opslag accounts |Wordt niet ondersteund.<br/><br/> Op basis van het type opslag account zijn alle herstelde schijven Premium of Standard en niet gemengd.
 Herstel de VM rechtstreeks in een beschikbaarheidsset | Voor Managed disks kunt u de schijf herstellen en de optie beschikbaarheidsset gebruiken in de sjabloon.<br/><br/> Niet ondersteund voor niet-beheerde schijven. Voor niet-beheerde schijven herstelt u de schijf en maakt u vervolgens een virtuele machine in de beschikbaarheidsset.
 Back-ups van niet-beheerde Vm's herstellen na een upgrade naar een beheerde VM| Ondersteund.<br/><br/> U kunt schijven herstellen en vervolgens een beheerde virtuele machine maken.
 Herstel de VM naar een herstel punt voordat de virtuele machine is gemigreerd naar Managed disks | Ondersteund.<br/><br/> U kunt herstellen naar onbeheerde schijven (standaard), de herstelde schijven converteren naar beheerde schijven en een virtuele machine maken met de beheerde schijven.
@@ -155,17 +155,17 @@ Back-ups van virtuele Azure-machines met vergren delingen | Niet ondersteund voo
 
 **Onderdeel** | **Ondersteuning**
 --- | ---
-Azure VM-gegevensschijven | Ondersteuning voor het maken van back-ups van virtuele Azure-machines met Maxi maal 32 schijven is in alle regio's beschikbaar in open bare preview.<br><br> Ondersteuning voor het maken van back-ups van virtuele Azure-machines met onbeheerde schijven of klassieke Vm's is Maxi maal 16 schijven.
+Azure VM-gegevensschijven | Ondersteuning voor back-ups van virtuele Azure-machines met Maxi maal 32 schijven.<br><br> Ondersteuning voor het maken van back-ups van virtuele Azure-machines met onbeheerde schijven of klassieke Vm's is Maxi maal 16 schijven.
 Grootte van de gegevens schijf | De afzonderlijke schijf grootte kan Maxi maal 32 TB en Maxi maal 256 TB gecombineerd voor alle schijven in een VM zijn.
 Opslagtype | Standard-HDD, Standard-SSD Premium-SSD.
 Managed Disks | Ondersteund.
 Versleutelde schijven | Ondersteund.<br/><br/> Voor Azure-Vm's met Azure Disk Encryption kan een back-up worden gemaakt (met of zonder de Azure AD-app).<br/><br/> Versleutelde Vm's kunnen niet worden hersteld op het niveau van het bestand of de map. U moet de volledige VM herstellen.<br/><br/> U kunt versleuteling inschakelen voor virtuele machines die al worden beveiligd door Azure Backup.
-Schijven waarop Write Accelerator is ingeschakeld | Niet ondersteund.<br/><br/> Azure Backup worden de schijven die zijn ingeschakeld tijdens het maken van de back-up automatisch uitgesloten van Write Accelerator (WA). Omdat er geen back-up is gemaakt, kunt u deze schijven niet herstellen vanaf herstel punten van de virtuele machine. <br><br> **Belang rijke Opmerking**: virtuele machines met WA-schijven hebben Internet connectiviteit nodig voor een geslaagde back-up (zelfs als deze schijven zijn uitgesloten van de back-up).
+Schijven waarop Write Accelerator is ingeschakeld | Wordt niet ondersteund.<br/><br/> Azure Backup worden de schijven die zijn ingeschakeld tijdens het maken van de back-up automatisch uitgesloten van Write Accelerator (WA). Omdat er geen back-up is gemaakt, kunt u deze schijven niet herstellen vanaf herstel punten van de virtuele machine. <br><br> **Belang rijke Opmerking**: virtuele machines met WA-schijven hebben Internet connectiviteit nodig voor een geslaagde back-up (zelfs als deze schijven zijn uitgesloten van de back-up).
 Back-up maken & ontdubbelde Vm's/schijven herstellen | Azure Backup biedt geen ondersteuning voor ontdubbeling. Raadpleeg dit [artikel](./backup-support-matrix.md#disk-deduplication-support) voor meer informatie <br/> <br/>  -Azure Backup wordt niet gedupliceerd over Vm's in de Recovery Services kluis <br/> <br/>  -Als er Vm's aanwezig zijn tijdens het herstellen, kunnen de bestanden niet worden hersteld omdat de kluis de indeling niet begrijpt. U kunt echter de volledige VM-herstel bewerking uitvoeren.
 Schijf toevoegen aan beveiligde VM | Ondersteund.
 Grootte van schijf op beveiligde virtuele machine wijzigen | Ondersteund.
 Gedeelde opslag| Het maken van back-ups van virtuele machines met Cluster Shared Volume (CSV) of Scale-out bestandsserver wordt niet ondersteund. CSV-schrijvers mislukken waarschijnlijk tijdens het maken van de back-up. Bij het terugzetten kunnen schijven met CSV-volumes mogelijk niet worden opgehaald.
-[Gedeelde schijven](../virtual-machines/disks-shared-enable.md) | Niet ondersteund.
+[Gedeelde schijven](../virtual-machines/disks-shared-enable.md) | Wordt niet ondersteund.
 
 ## <a name="vm-network-support"></a>VM-netwerk ondersteuning
 
@@ -177,7 +177,7 @@ Meerdere gereserveerde IP-adressen |Ondersteund. <br/><br/> [Meer informatie](ba
 Vm's met meerdere netwerk adapters| Ondersteund. <br/><br/> [Meer informatie](backup-azure-arm-restore-vms.md#restore-vms-with-special-configurations) over het herstellen van vm's met speciale netwerk instellingen.
 Vm's met open bare IP-adressen| Ondersteund.<br/><br/> Een bestaand openbaar IP-adres koppelen aan de NIC, of een adres maken en dit koppelen aan de NIC nadat het terugzetten is voltooid.
 Netwerk beveiligings groep (NSG) op NIC/subnet. |Ondersteund.
-Statisch IP-adres | Niet ondersteund.<br/><br/> Er wordt een dynamisch IP-adres toegewezen aan een nieuwe virtuele machine die is gemaakt op basis van een herstel punt.<br/><br/> Voor klassieke Vm's kunt u geen back-up maken van een virtuele machine met een gereserveerd IP-adres en geen gedefinieerd eind punt.
+Statisch IP-adres | Wordt niet ondersteund.<br/><br/> Er wordt een dynamisch IP-adres toegewezen aan een nieuwe virtuele machine die is gemaakt op basis van een herstel punt.<br/><br/> Voor klassieke Vm's kunt u geen back-up maken van een virtuele machine met een gereserveerd IP-adres en geen gedefinieerd eind punt.
 Dynamisch IP-adres |Ondersteund.<br/><br/> Als de NIC op de bron-VM gebruikmaakt van dynamische IP-adres Sering, wordt deze ook gebruikt door de NIC op de herstelde VM.
 Azure Traffic Manager| Ondersteund.<br/><br/>Als de back-up van de virtuele machine is Traffic Manager, voegt u de herstelde VM hand matig toe aan hetzelfde Traffic Manager exemplaar.
 Azure DNS |Ondersteund.

@@ -1,6 +1,6 @@
 ---
 title: Gegevens kopiëren van MongoDB met verouderde
-description: Meer informatie over het kopiëren van gegevens uit Mongo DB naar ondersteunde Sink-gegevens archieven door gebruik te maken van een Kopieer activiteit in een Azure Data Factory-pijp lijn.
+description: Informatie over het kopiëren van gegevens uit Mongo DB naar ondersteunde Sink-gegevens archieven door gebruik te maken van een Kopieer activiteit in een verouderde Azure Data Factory-pijp lijn.
 services: data-factory
 author: linda33wj
 ms.author: jingwang
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 08/12/2019
-ms.openlocfilehash: ce1419c7dbb2cdecfd653995707fd1ece7798557
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7cf4be078a7bee0bedbeac4326acb9ca290cde88
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84558186"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331978"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory-legacy"></a>Gegevens kopiëren van MongoDB met behulp van Azure Data Factory (verouderd)
 
@@ -167,7 +167,7 @@ De volgende eigenschappen worden ondersteund in de sectie **bron** van de Kopiee
 ```
 
 > [!TIP]
-> Wanneer u de SQL-query opgeeft, let dan op de datum/tijd-indeling. Bijvoorbeeld: `SELECT * FROM Account WHERE LastModifiedDate >= '2018-06-01' AND LastModifiedDate < '2018-06-02'` of om para meter te gebruiken`SELECT * FROM Account WHERE LastModifiedDate >= '@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}' AND LastModifiedDate < '@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'`
+> Wanneer u de SQL-query opgeeft, let dan op de datum/tijd-indeling. Bijvoorbeeld: `SELECT * FROM Account WHERE LastModifiedDate >= '2018-06-01' AND LastModifiedDate < '2018-06-02'` of om para meter te gebruiken `SELECT * FROM Account WHERE LastModifiedDate >= '@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}' AND LastModifiedDate < '@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'`
 
 ## <a name="schema-by-data-factory"></a>Schema door Data Factory
 
@@ -187,7 +187,7 @@ Bij het kopiëren van gegevens uit MongoDB worden de volgende toewijzingen gebru
 | NumberLong |Int64 |
 | ObjectID |Tekenreeks |
 | Tekenreeks |Tekenreeks |
-| MEE |GUID |
+| MEE |Guid |
 | Object |Opnieuw genormaliseerd in kolommen met ' _ ' als genest scheidings teken |
 
 > [!NOTE]
@@ -208,14 +208,14 @@ Virtuele tabellen verwijzen naar de gegevens in de tabel Real, waardoor het stuu
 
 ExampleTable hier is bijvoorbeeld een MongoDB-tabel met één kolom met een matrix met objecten in elke cel, facturen en één kolom met een matrix van scalaire typen – classificaties.
 
-| _id | Naam van klant | Facturen | Service niveau | Waarderingen |
+| _id | Naam van klant | Facturen | Serviceniveau | Waarderingen |
 | --- | --- | --- | --- | --- |
 | 1111 |ABC |[{invoice_id: "123", item: "pop-uptaak", prijs: "456", korting: "0,2"}, {invoice_id: "124", item: "oven", prijs: "1235", korting: "0,2"}] |Zilver |[5, 6] |
 | 2222 |XYZ |[{invoice_id: "135", item: "koel kast", prijs: "12543", korting: "0,0"}] |Goud |[1, 2] |
 
 Het stuur programma genereert meerdere virtuele tabellen om deze afzonderlijke tabel weer te geven. De eerste virtuele tabel is de basis tabel met de naam ' ExampleTable ', zoals weer gegeven in het voor beeld. De basis tabel bevat alle gegevens van de oorspronkelijke tabel, maar de gegevens uit de matrices zijn wegge laten en worden uitgevouwen in de virtuele tabellen.
 
-| _id | Naam van klant | Service niveau |
+| _id | Naam van klant | Serviceniveau |
 | --- | --- | --- |
 | 1111 |ABC |Zilver |
 | 2222 |XYZ |Goud |

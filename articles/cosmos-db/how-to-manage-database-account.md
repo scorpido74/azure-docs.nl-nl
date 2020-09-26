@@ -4,14 +4,14 @@ description: Meer informatie over het beheren van Azure Cosmos DB-resources met 
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 04/30/2020
+ms.date: 09/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: 35659eba274b4b93ca74e480f6ad2b5edfd2e293
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b09c51c68586f6e55b4238b7420460f3f2b4ac3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85116754"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330557"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Een Azure Cosmos-account beheren
 

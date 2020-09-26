@@ -1,19 +1,19 @@
 ---
 title: HTTP-naar-HTTPS-omleiding via CLI
 titleSuffix: Azure Application Gateway
-description: Meer informatie over het maken van een toepassings gateway en het toevoegen van een certificaat voor het beëindigen van TLS met behulp van de Azure CLI.
+description: Meer informatie over het maken van een HTTP-naar-HTTPS-omleiding en het toevoegen van een certificaat voor het beëindigen van TLS met behulp van de Azure CLI.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 11/15/2019
+ms.date: 09/24/2020
 ms.author: victorh
-ms.openlocfilehash: 828012e7e41f8710dc57f1c830b81d403507d27d
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 7dbfa877f634256c86166892a38d048a95e56baa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594240"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331026"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-cli"></a>Een toepassings gateway met HTTP-naar-HTTPS-omleiding maken met behulp van Azure CLI
 
@@ -223,13 +223,6 @@ Als u de beveiligings waarschuwing wilt accepteren als u een zelfondertekend cer
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd:
-
-> [!div class="checklist"]
-> * Een zelfondertekend certificaat maken
-> * Een netwerk instellen
-> * Een toepassingsgateway maken met behulp van het certificaat
-> * Een listener-en omleidings regel toevoegen
-> * Een virtuele-machineschaalset maken met de standaard back-endgroep
+- [Een toepassings gateway met interne omleiding maken met behulp van Azure CLI](redirect-internal-site-cli.md)
 
 

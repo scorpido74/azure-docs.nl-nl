@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/20/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f9db8a50e670e3c6af7adce0a8efcf3ce569ac89
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b1206d9e4d6eec7b2bf029310360f563849d61d6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89009624"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268297"
 ---
 # <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>Analyse functies voor tekst verwerking in azure Cognitive Search
 
@@ -147,7 +147,7 @@ Dit voor beeld door lopen:
 * In dit geval is de aangepaste Analyzer "my_analyzer", die op zijn beurt gebruikmaakt van een aangepaste standaard tokenizer "my_standard_tokenizer" en twee token filters: kleine en aangepaste asciifolding-filter "my_asciifolding".
 * Ook worden er 2 aangepaste teken filters map_dash en remove_whitespace gedefinieerd. De eerste Hiermee vervangt u alle streepjes door onderstrepings tekens, terwijl de tweede een spatie verwijdert. Spaties moeten UTF-8-code ring zijn in de toewijzings regels. De teken filters worden vóór het tokenen toegepast en beïnvloeden de resulterende tokens (de standaard-tokenizer pauzes op een streepje en spaties, maar niet op een onderstrepings teken).
 
-~~~~
+```json
   {
      "name":"myindex",
      "fields":[
@@ -206,7 +206,7 @@ Dit voor beeld door lopen:
         }
      ]
   }
-~~~~
+```
 
 <a name="Per-field-analyzer-assignment-example"></a>
 
@@ -216,7 +216,7 @@ Standaard-Analyzer is de standaard instelling. Stel dat u de standaard instellin
 
 Het element ' Analyzer ' overschrijft de standaard analyse functie op basis van een veld. Er is geen globale onderdrukking. In dit voor beeld `text1` maakt gebruik van de patroon analyse en `text2` , waarmee geen Analyzer wordt opgegeven, gebruikt de standaard waarde.
 
-~~~~
+```json
   {
      "name":"myindex",
      "fields":[
@@ -239,7 +239,7 @@ Het element ' Analyzer ' overschrijft de standaard analyse functie op basis van 
         }
      ]
   }
-~~~~
+```
 
 <a name="Mixing-analyzers-for-indexing-and-search-operations"></a>
 
@@ -248,7 +248,7 @@ Het element ' Analyzer ' overschrijft de standaard analyse functie op basis van 
 De Api's bevatten aanvullende index kenmerken voor het opgeven van verschillende analyse functies voor indexering en zoek opdrachten. De kenmerken **searchAnalyzer** en **indexAnalyzer** moeten worden opgegeven als een paar, waarbij het één **analyse** kenmerk wordt vervangen.
 
 
-~~~~
+```json
   {
      "name":"myindex",
      "fields":[
@@ -267,7 +267,7 @@ De Api's bevatten aanvullende index kenmerken voor het opgeven van verschillende
         },
      ],
   }
-~~~~
+```
 
 <a name="Language-analyzer-example"></a>
 
@@ -275,7 +275,7 @@ De Api's bevatten aanvullende index kenmerken voor het opgeven van verschillende
 
 Velden met teken reeksen in verschillende talen kunnen gebruikmaken van een taal analyse, terwijl andere velden de standaard waarde behouden (of een andere vooraf gedefinieerde of aangepaste analyse functie gebruiken). Als u een taal analyse gebruikt, moet deze worden gebruikt voor indexerings-en zoek bewerkingen. Velden die gebruikmaken van een taal analyse kunnen geen verschillende analyse functies hebben voor indexering en zoek opdrachten.
 
-~~~~
+```json
   {
      "name":"myindex",
      "fields":[
@@ -300,7 +300,7 @@ Velden met teken reeksen in verschillende talen kunnen gebruikmaken van een taal
         }
      ],
   }
-~~~~
+```
 
 ## <a name="c-examples"></a>C#-voor beelden
 

@@ -1,5 +1,5 @@
 ---
-title: SQL Server database migratie naar Azure SQL Database
+title: SQL Server-databasemigratie naar Azure SQL Database
 description: Meer informatie over SQL Server database migratie naar Azure SQL Database.
 keywords: databasemigratie, sql server-databasemigratie, hulpprogramma's voor databasemigratie, database migreren, sql-database migreren
 services: sql-database
@@ -10,16 +10,16 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
+ms.reviewer: ''
 ms.date: 02/11/2019
-ms.openlocfilehash: 106337fb4756052ee682624290620093bf4a70b3
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 275ad3f2dfa04241b1f2a5687cb5dc32b7a31e75
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86081908"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333168"
 ---
-# <a name="sql-server-database-migration-to-azure-sql-database"></a>SQL Server database migratie naar Azure SQL Database
+# <a name="sql-server-database-migration-to-azure-sql-database"></a>SQL Server-databasemigratie naar Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 In dit artikel vindt u informatie over de primaire methoden voor het migreren van een SQL Server 2005 of hoger-Data Base naar Azure SQL Database. Zie [een SQL Server-exemplaar migreren naar Azure SQL Managed](../managed-instance/migrate-to-instance-from-sql-server.md)instance (Engelstalig) voor meer informatie over het migreren naar een beheerd exemplaar van Azure SQL. Raadpleeg de [migratie handleiding voor Azure data base](https://datamigration.microsoft.com/)voor migratie-informatie over het migreren van andere platforms.

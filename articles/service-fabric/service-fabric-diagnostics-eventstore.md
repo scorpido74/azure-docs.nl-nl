@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 6/6/2019
 ms.author: srrengar
-ms.openlocfilehash: e2fcbd07c105885da4180b06fa27ec13045940a6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 0b6258e160794eaf7d0c05775f8fd3b796e3ba47
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247639"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91354816"
 ---
 # <a name="eventstore-overview"></a>Overzicht van Event Store
 
@@ -19,14 +19,14 @@ ms.locfileid: "86247639"
 
 ## <a name="overview"></a>Overzicht
 
-De Event Store-service is geïntroduceerd in versie 6,2 en is een bewakings optie in Service Fabric. Event Store biedt een manier om inzicht te krijgen in de status van uw cluster of workloads op een bepaald moment.
-EventStore is een stateful Service Fabric-service die gebeurtenissen van het cluster bijhoudt. De gebeurtenis wordt weer gegeven via de Service Fabric Explorer, REST en Api's. Event Store vraagt het cluster rechtstreeks om diagnostische gegevens op te halen uit een wille keurige entiteit in uw cluster en moet worden gebruikt om het volgende te helpen:
+De Event Store-service is geïntroduceerd in versie 6,2 en is een bewakings optie in Service Fabric. EventStore biedt een manier om op elk moment meer inzicht te krijgen in de status van uw cluster of workloads.
+EventStore is een stateful Service Fabric-service die gebeurtenissen van het cluster bijhoudt. De gebeurtenissen worden weergegeven via Service Fabric Explorer, REST en API's. EventStore voert rechtstreeks een query uit op het cluster om diagnostische gegevens op te halen uit een entiteit in uw cluster en moet worden gebruikt voor het volgende:
 
-* Problemen met het ontwikkelen of testen vaststellen of een bewakings pijplijn gebruiken
-* Controleer of beheer acties die u uitvoert op het cluster correct worden verwerkt
-* Een ' moment opname ' van de interactie van Service Fabric met een bepaalde entiteit ophalen
+* Het vaststellen van problemen tijdens de ontwikkeling of het testen, of waar u een bewakingspijplijn zou kunnen gebruiken
+* Bevestigen dat beheeracties die u op het cluster uitvoert correct worden verwerkt
+* Een 'momentopname' verkrijgen van hoe Service Fabric met een bepaalde entiteit interactie aangaat
 
-![Event Store](media/service-fabric-diagnostics-eventstore/eventstore.png)
+![Scherm afbeelding toont het tabblad gebeurtenissen van het deel venster knoop punten met verschillende gebeurtenissen, met inbegrip van een NodeDown-gebeurtenis.](media/service-fabric-diagnostics-eventstore/eventstore.png)
 
 Zie [service Fabric gebeurtenissen](service-fabric-diagnostics-event-generation-operational.md)voor een volledige lijst met gebeurtenissen die beschikbaar zijn in de Event Store.
 
@@ -36,15 +36,15 @@ Zie [service Fabric gebeurtenissen](service-fabric-diagnostics-event-generation-
 De Event Store-service kan worden opgevraagd voor gebeurtenissen die beschikbaar zijn voor elke entiteit en elk entiteits type in uw cluster. Dit betekent dat u een query kunt uitvoeren voor gebeurtenissen op de volgende niveaus:
 * Cluster: gebeurtenissen die specifiek zijn voor het cluster zelf (bijvoorbeeld cluster upgrade)
 * Knoop punten: alle gebeurtenissen op knooppunt niveau
-* Node: gebeurtenissen die specifiek zijn voor één knoop punt, geïdentificeerd door`nodeName`
+* Node: gebeurtenissen die specifiek zijn voor één knoop punt, geïdentificeerd door `nodeName`
 * Toepassingen: alle gebeurtenissen op toepassings niveau
-* Toepassing: gebeurtenissen die specifiek zijn voor een toepassing die wordt geïdentificeerd door`applicationId`
+* Toepassing: gebeurtenissen die specifiek zijn voor een toepassing die wordt geïdentificeerd door `applicationId`
 * Services: gebeurtenissen van alle services in uw clusters
-* Service: gebeurtenissen van een specifieke service geïdentificeerd door`serviceId`
+* Service: gebeurtenissen van een specifieke service geïdentificeerd door `serviceId`
 * Partities: gebeurtenissen van alle partities
-* Partitie: gebeurtenissen van een specifieke partitie geïdentificeerd door`partitionId`
-* Partitie Replica's: gebeurtenissen van alle replica's/instanties binnen een specifieke partitie geïdentificeerd door`partitionId`
-* Partitie replica: gebeurtenissen van een specifieke replica/instantie geïdentificeerd door `replicaId` en`partitionId`
+* Partitie: gebeurtenissen van een specifieke partitie geïdentificeerd door `partitionId`
+* Partitie Replica's: gebeurtenissen van alle replica's/instanties binnen een specifieke partitie geïdentificeerd door `partitionId`
+* Partitie replica: gebeurtenissen van een specifieke replica/instantie geïdentificeerd door `replicaId` en `partitionId`
 
 Raadpleeg de [API-naslag](/rest/api/servicefabric/sfclient-index-eventsstore)informatie voor Event Store voor meer informatie over de API.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: bbabceeea2fd009efe1098e37a0b1c9dcb8a48aa
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 17a3d0364f3085e4baf4e0faa40f117d9fbbb04f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90894706"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268159"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Besturings elementen voor adaptieve toepassingen gebruiken om de kwets bare Opper vlakken van uw computers te verminderen
 
@@ -229,4 +229,4 @@ Enkele van de functies die beschikbaar zijn via de REST API:
 In dit document hebt u geleerd hoe u adaptief toepassings beheer in Azure Security Center kunt gebruiken om lijst toestaan te definiëren van toepassingen die worden uitgevoerd op uw Azure-en niet-Azure-machines. Zie voor meer informatie over enkele van de andere functies van de Cloud beveiliging van een andere Security Center.
 
 * [Meer informatie over just-in-time-VM-toegang](just-in-time-explained.md)
-* [Uw Azure Kubernetes-clusters beveiligen](azure-kubernetes-service-integration.md)
+* [Uw Azure Kubernetes-clusters beveiligen](defender-for-kubernetes-introduction.md)
