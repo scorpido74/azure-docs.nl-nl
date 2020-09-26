@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: b6d6838779d4f219a8ce10b2cf3ae6cd620762a3
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 1d651f3136b096eae957f0271e33cd11b1fb5571
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869810"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317851"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Aangepaste BLOB-uitvoer partitioneren Azure Stream Analytics
 
@@ -25,7 +25,7 @@ Aangepaste veld-of invoer kenmerken verbeteren stroomafwaartse werk stromen voor
 
 ### <a name="partition-key-options"></a>Opties voor partitie sleutels
 
-De partitie sleutel of kolom naam die wordt gebruikt voor het partitioneren van invoer gegevens mag alfanumerieke tekens bevatten met afbreek streepjes, onderstrepingen en spaties. Het is niet mogelijk om geneste velden te gebruiken als partitie sleutel, tenzij u deze gebruikt in combi natie met aliassen. De partitie sleutel moet NVARCHAR (MAX) zijn.
+De partitie sleutel of kolom naam die wordt gebruikt voor het partitioneren van invoer gegevens mag alfanumerieke tekens bevatten met afbreek streepjes, onderstrepingen en spaties. Het is niet mogelijk om geneste velden te gebruiken als partitie sleutel, tenzij u deze gebruikt in combi natie met aliassen. De partitie sleutel moet NVARCHAR (MAX), BIGINT, FLOAT of BIT (1,2 compatibiliteits niveau of hoger) zijn. Zie [Azure stream Analytics gegevens typen](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)voor meer informatie.
 
 ### <a name="example"></a>Voorbeeld
 

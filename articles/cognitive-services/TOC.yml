@@ -23,7 +23,7 @@
       href: cognitive-services-apis-create-account-client-library.md
     - name: Een nieuwe resource maken met een ARM-sjabloon
       displayName: Resource Manager
-      href: resource-manager-template.md
+      href: create-account-resource-manager-template.md
     - name: Diagnostische logboeken
       href: diagnostic-logging.md
 - name: Beveiliging

@@ -1,19 +1,19 @@
 ---
-title: Virtuele Linux-machines implementeren op toegewezen hosts met behulp van de CLI
-description: Implementeer Vm's op toegewezen hosts met behulp van de Azure CLI.
+title: Vm's en scale set-instanties implementeren op toegewezen hosts met behulp van de CLI
+description: Implementeer Vm's en scale set-instanties naar toegewezen hosts met behulp van de Azure CLI.
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 01/09/2020
+ms.date: 09/25/2020
 ms.author: cynthn
-ms.openlocfilehash: 9435764d99476584680734817d55086f47e8216b
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: a85f5cb9cc519b180354445ca9ca2f8dd0354c23
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373620"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91370196"
 ---
-# <a name="deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>Vm's implementeren op toegewezen hosts met behulp van de Azure CLI
+# <a name="deploy-to-dedicated-hosts-using-the-azure-cli"></a>Implementeren naar toegewezen hosts met behulp van de Azure CLI
  
 
 Dit artikel begeleidt u bij het maken van een toegewezen Azure- [host](dedicated-hosts.md) voor het hosten van uw virtuele machines (vm's). 
@@ -23,22 +23,22 @@ Zorg ervoor dat u Azure CLI-versie 2.0.70 of hoger hebt geïnstalleerd en dat u 
 
 ## <a name="limitations"></a>Beperkingen
 
-- Virtuele-machine schaal sets worden momenteel niet ondersteund op toegewezen hosts.
 - De grootten en typen hardware die beschikbaar zijn voor toegewezen hosts variëren per regio. Raadpleeg de pagina met [prijzen](https://aka.ms/ADHPricing) voor de host voor meer informatie.
 
 ## <a name="create-resource-group"></a>Een resourcegroep maken 
 Een Azure-resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. Maak de resource groep met AZ Group Create. In het volgende voor beeld wordt een resource groep met de naam *myDHResourceGroup* gemaakt op de locatie *VS-Oost* .
 
-```bash
+```azurecli-interactive
 az group create --name myDHResourceGroup --location eastus 
 ```
  
 ## <a name="list-available-host-skus-in-a-region"></a>Beschik bare host-Sku's in een regio weer geven
+
 Niet alle host-Sku's zijn beschikbaar in alle regio's en beschikbaarheids zones. 
 
 Geef de beschik baarheid van de host en eventuele beperkingen van de aanbieding weer voordat u begint met het inrichten van toegewezen hosts. 
 
-```bash
+```azurecli-interactive
 az vm list-skus -l eastus2  -r hostGroups/hosts  -o table  
 ```
  
@@ -52,9 +52,10 @@ In beide gevallen moet u het aantal fout domeinen voor uw hostgroep opgeven. Als
 
 U kunt er ook voor kiezen om zowel beschikbaarheids zones als fout domeinen te gebruiken. 
 
+
 In dit voor beeld wordt [AZ VM host Group Create](/cli/azure/vm/host/group#az-vm-host-group-create) gebruikt om een hostgroep te maken met behulp van zowel beschikbaarheids zones als fout domeinen. 
 
-```bash
+```azurecli-interactive
 az vm host group create \
    --name myHostGroup \
    -g myDHResourceGroup \
@@ -62,11 +63,22 @@ az vm host group create \
    --platform-fault-domain-count 2 
 ``` 
 
+Voeg de `--automatic-placement true` para meter toe om uw vm's en instanties van schaal sets automatisch op hosts in een hostgroep te plaatsen. Zie voor meer informatie [hand matig versus automatische plaatsing ](../dedicated-hosts.md#manual-vs-automatic-placement).
+
+> [!IMPORTANT]
+> Automatische plaatsing is momenteel beschikbaar als open bare preview.
+>
+> Als u wilt deel nemen aan de preview, voltooit u de preview-voorbereidings enquête op [https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) .
+>
+> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. 
+>
+> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+
 ### <a name="other-examples"></a>Andere voorbeelden
 
 U kunt ook [AZ VM host Group Create](/cli/azure/vm/host/group#az-vm-host-group-create) gebruiken om een hostgroep te maken in beschikbaarheids zone 1 (en geen fout domeinen).
 
-```bash
+```azurecli-interactive
 az vm host group create \
    --name myAZHostGroup \
    -g myDHResourceGroup \
@@ -76,7 +88,7 @@ az vm host group create \
  
 Het volgende maakt gebruik van [AZ VM host Group Create](/cli/azure/vm/host/group#az-vm-host-group-create) om een hostgroep te maken met behulp van alleen fout domeinen (die moeten worden gebruikt in regio's waar beschikbaarheids zones niet worden ondersteund). 
 
-```bash
+```azurecli-interactive
 az vm host group create \
    --name myFDHostGroup \
    -g myDHResourceGroup \
@@ -91,7 +103,7 @@ Zie voor meer informatie over de Sku's en prijzen van de host de [Azure dedicate
 
 Gebruik [AZ VM host Create](/cli/azure/vm/host#az-vm-host-create) om een host te maken. Als u het aantal fout domeinen voor uw hostgroep instelt, wordt u gevraagd om het fout domein voor uw host op te geven.  
 
-```bash
+```azurecli-interactive
 az vm host create \
    --host-group myHostGroup \
    --name myHost \
@@ -105,28 +117,57 @@ az vm host create \
 ## <a name="create-a-virtual-machine"></a>Een virtuele machine maken 
 Maak een virtuele machine binnen een speciale host met behulp van [AZ VM Create](/cli/azure/vm#az-vm-create). Als u een beschikbaarheids zone hebt opgegeven bij het maken van uw hostgroep, moet u dezelfde zone gebruiken bij het maken van de virtuele machine.
 
-```bash
+```azurecli-interactive
 az vm create \
    -n myVM \
    --image debian \
-   --generate-ssh-keys \
    --host-group myHostGroup \
-   --host myHost \
    --generate-ssh-keys \
    --size Standard_D4s_v3 \
    -g myDHResourceGroup \
    --zone 1
 ```
+
+Als u de virtuele machine op een specifieke host wilt plaatsen, gebruikt u `--host` in plaats van de hostgroep op te geven `--host-group` .
  
 > [!WARNING]
 > Als u een virtuele machine maakt op een host die onvoldoende bronnen heeft, wordt de virtuele machine gemaakt met de status mislukt. 
+
+## <a name="create-a-scale-set-preview"></a>Een schaalset maken (preview-versie)
+
+> [!IMPORTANT]
+> Virtual Machine Scale Sets op toegewezen hosts is momenteel beschikbaar als open bare preview.
+>
+> Als u wilt deel nemen aan de preview, voltooit u de preview-voorbereidings enquête op [https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) .
+>
+> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. 
+>
+> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+
+Wanneer u een schaalset implementeert, geeft u de hostgroep op.
+
+```azurecli-interactive
+az vmss create \
+  --resource-group myResourceGroup \
+  --name myScaleSet \
+  --image UbuntuLTS \
+  --upgrade-policy-mode automatic \
+  --admin-username azureuser \
+  --host-group myHostGroup \
+  --generate-ssh-keys \
+  --size Standard_D4s_v3 \
+  -g myDHResourceGroup \
+  --zone 1
+```
+
+Als u hand matig wilt kiezen op welke host de schaalset moet worden geïmplementeerd, voegt u `--host` de naam van de host toe.
 
 
 ## <a name="check-the-status-of-the-host"></a>Controleer de status van de host
 
 U kunt de status van de host controleren en het aantal virtuele machines dat u nog steeds op de host kunt implementeren met behulp van [AZ VM host Get-instance-View](/cli/azure/vm/host#az-vm-host-get-instance-view).
 
-```bash
+```azurecli-interactive
 az vm host get-instance-view \
    -g myDHResourceGroup \
    --host-group myHostGroup \
@@ -233,7 +274,7 @@ az vm host get-instance-view \
 ## <a name="export-as-a-template"></a>Exporteren als een sjabloon 
 U kunt een sjabloon exporteren als u nu een extra ontwikkel omgeving met dezelfde para meters of een productie omgeving wilt maken die overeenkomt met deze. Resource Manager maakt gebruik van JSON-sjablonen waarmee alle para meters voor uw omgeving worden gedefinieerd. U bouwt volledige omgevingen door te verwijzen naar deze JSON-sjabloon. U kunt JSON-sjablonen hand matig maken of een bestaande omgeving exporteren om de JSON-sjabloon voor u te maken. Gebruik [AZ Group export](/cli/azure/group#az-group-export) om de resource groep te exporteren.
 
-```bash
+```azurecli-interactive
 az group export --name myDHResourceGroup > myDHResourceGroup.json 
 ```
 
@@ -241,38 +282,38 @@ Met deze opdracht maakt `myDHResourceGroup.json` u het bestand in de huidige wer
  
 Gebruik [AZ Group Deployment Create](/cli/azure/group/deployment#az-group-deployment-create)om een omgeving te maken op basis van uw sjabloon.
 
-```bash
+```azurecli-interactive
 az group deployment create \ 
     --resource-group myNewResourceGroup \ 
     --template-file myDHResourceGroup.json 
 ```
 
 
-## <a name="clean-up"></a>Opruimen 
+## <a name="clean-up"></a>Opschonen 
 
 Er worden kosten in rekening gebracht voor uw specifieke hosts, zelfs wanneer er geen virtuele machines zijn geïmplementeerd. U moet alle hosts die u momenteel gebruikt, verwijderen om kosten te besparen.  
 
 U kunt een host alleen verwijderen als er geen virtuele machines meer worden gebruikt. Verwijder de virtuele machines met [AZ VM delete](/cli/azure/vm#az-vm-delete).
 
-```bash
+```azurecli-interactive
 az vm delete -n myVM -g myDHResourceGroup
 ```
 
 Nadat u de Vm's hebt verwijderd, kunt u de host verwijderen met [AZ VM host delete](/cli/azure/vm/host#az-vm-host-delete).
 
-```bash
+```azurecli-interactive
 az vm host delete -g myDHResourceGroup --host-group myHostGroup --name myHost 
 ```
  
 Zodra u al uw hosts hebt verwijderd, kunt u de hostgroep verwijderen met [AZ VM host group delete](/cli/azure/vm/host/group#az-vm-host-group-delete).  
  
-```bash
+```azurecli-interactive
 az vm host group delete -g myDHResourceGroup --host-group myHostGroup  
 ```
  
 U kunt ook de hele resource groep verwijderen in één opdracht. Hiermee verwijdert u alle resources die zijn gemaakt in de groep, inclusief alle Vm's, hosts en hostgroepen.
  
-```bash
+```azurecli-interactive
 az group delete -n myDHResourceGroup 
 ```
 

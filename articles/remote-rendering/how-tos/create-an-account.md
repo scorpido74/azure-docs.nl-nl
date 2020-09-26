@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
-ms.openlocfilehash: cf74322725c6e86ee455f83aadc4aade07000835
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 7a4e6d80d80441a1b94c1fb2bd8f82f247235fe3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057667"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318089"
 ---
 # <a name="create-an-azure-remote-rendering-account"></a>Een Azure Remote Rendering-account maken
 
@@ -57,7 +57,7 @@ De waarden voor **`arrAccountId`** en **`arrAccountKey`** zijn te vinden in de p
 
 ![Abonnements filter](./media/azure-subscription-filter.png)
 
-Als u op uw account klikt, gaat u naar dit scherm, waarin de **account-id** direct wordt weer gegeven:
+Als u op uw account klikt, gaat u naar dit scherm, waarin de  **account-id** direct wordt weer gegeven:
 
 ![Azure-account-ID](./media/azure-account-id.png)
 
@@ -83,7 +83,7 @@ Hierbij wordt ervan uitgegaan dat u een opslag account hebt. Ga naar het opslag 
 
  Klik op de knop **toevoegen** in de tegel toewijzing van een rol toevoegen om de eerste rol toe te voegen:
 
-![IAM van opslag account](./media/azure-add-role-assignment.png)
+![Toewijzing van IAM van opslag account toevoegen](./media/azure-add-role-assignment.png)
 
 * De eerste rol die moet worden toegewezen, is **eigenaar** , zoals wordt weer gegeven in de bovenstaande scherm afbeelding.
 * Selecteer **extern rendering-account** in de vervolg keuzelijst **toegang toewijzen aan** .
@@ -95,11 +95,13 @@ Hierbij wordt ervan uitgegaan dat u een opslag account hebt. Ga naar het opslag 
 Herhaal nieuwe rollen nog twee keer voor de respectievelijke selecties in de vervolg keuzelijst **rol** :
 
 * **Inzender voor opslagaccounts**
-* **Inzender voor Storage BLOB-gegevens**
+* **Inzender voor Storage Blob-gegevens**
 
 De andere vervolg keuzelijsten worden geselecteerd als in de eerste stap.
 
 Als u alle drie de rollen hebt toegevoegd, heeft uw Azure remote rendering-account toegang tot uw opslag account via door het systeem toegewezen beheerde service-identiteiten.
+> [!IMPORTANT]
+> Azure-roltoewijzingen worden in de cache opgeslagen door Azure Storage. er kan dus een vertraging van Maxi maal 30 minuten optreden wanneer u toegang verleent aan uw externe rendering-account en wanneer het kan worden gebruikt om toegang te krijgen tot uw opslag account. Zie de [documentatie voor toegangs beheer op basis van rollen](https://docs.microsoft.com/azure/role-based-access-control/troubleshooting#role-assignment-changes-are-not-being-detected) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

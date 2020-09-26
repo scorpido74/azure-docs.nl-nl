@@ -16,12 +16,12 @@ ms.date: 03/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dbc9e5a9187f9ef16ea03cfa6c97e438c2b26c99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 77271679306b0fbde10c748afc7535f3ad3d0945
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807601"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317562"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>Problemen met wachtwoord-hashsynchronisatie oplossen met Azure AD Connect-synchronisatie
 
@@ -120,7 +120,7 @@ Elke on-premises Active Directory connector heeft een eigen wachtwoord hash-sync
 
 Als het AD DS-account dat wordt gebruikt door de on-premises Active Directory-connector om wacht woord-hashes te synchroniseren, niet over de juiste machtigingen beschikt, wordt de volgende fout geretourneerd:
 
-![Onjuiste referentie](./media/tshoot-connect-password-hash-synchronization/phsglobalaccountincorrectpermission.png)
+![Scherm afbeelding met de fout die wordt geretourneerd wanneer het AD DS-account een onjuiste gebruikers naam of wacht woord heeft.](./media/tshoot-connect-password-hash-synchronization/phsglobalaccountincorrectpermission.png)
 
 #### <a name="incorrect-ad-ds-account-username-or-password"></a>De gebruikers naam of het wacht woord van het AD DS account is onjuist
 
@@ -326,7 +326,7 @@ U kunt eenvoudig problemen met wachtwoord-hash-synchronisatie oplossen door de s
 
     f. Zoek naar de gebruiker die u zoekt en klik vervolgens op **Eigenschappen** om alle kenmerken weer te geven. Als de gebruiker zich niet in het Zoek resultaat bevindt, controleert u uw [filter regels](how-to-connect-sync-configure-filtering.md) en zorgt u ervoor dat u [Toep assen en wijzigingen controleren](how-to-connect-sync-configure-filtering.md#apply-and-verify-changes) zodat de gebruiker wordt weer gegeven in verbinding maken.
 
-    bijvoorbeeld Klik op **logbestand**om de details van het wachtwoord synchronisatie van het object voor de afgelopen week weer te geven.  
+    g. Klik op **logbestand**om de details van het wachtwoord synchronisatie van het object voor de afgelopen week weer te geven.  
 
     ![Details van object logboek](./media/tshoot-connect-password-hash-synchronization/csobjectlog.png)  
 
@@ -338,11 +338,11 @@ U kunt eenvoudig problemen met wachtwoord-hash-synchronisatie oplossen door de s
 
     i. Klik op **Eigenschappen van omgekeerd object** om een lijst met gebruikers kenmerken weer te geven.  
 
-    ![Omgekeerde gegevens](./media/tshoot-connect-password-hash-synchronization/mvpasswordsync.png)  
+    ![Scherm afbeelding met de lijst met gebruikers kenmerken voor de eigenschappen van het omgekeerde object.](./media/tshoot-connect-password-hash-synchronization/mvpasswordsync.png)  
 
     Controleer of er geen **cloudFiltered** -kenmerk aanwezig is. Zorg ervoor dat de domein kenmerken (domainFQDN en domainNetBios) de verwachte waarden hebben.
 
-    j. Klik op het tabblad **connectors** . Zorg ervoor dat u connectors ziet op zowel on-premises Active Directory als Azure AD.
+    j. Klik op het tabblad **connectors** . Zorg ervoor dat er Connect oren worden weer geven voor zowel on-premises Active Directory als Azure AD.
 
     ![Omgekeerde gegevens](./media/tshoot-connect-password-hash-synchronization/mvconnectors.png)  
 

@@ -4,13 +4,13 @@ description: Meer informatie over het ontwikkelen van functies met behulp van Ja
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 6ff56ba6dc85901c8cdc7a9b06fbc261feb8792d
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.custom: devx-track-js
+ms.openlocfilehash: bd5eea6d97ca5ff20622c651b2c6ee75f9014d55
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89055325"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317173"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Ontwikkelaarshandleiding voor Azure Functions Javascript
 
@@ -390,7 +390,7 @@ Het `context.res` (antwoord)-object heeft de volgende eigenschappen:
 | _organen_    | Een object dat de hoofd tekst van het antwoord bevat.         |
 | _koppen_ | Een object dat de antwoord headers bevat.             |
 | _isRaw_   | Hiermee wordt aangegeven dat de opmaak voor het antwoord wordt overgeslagen.    |
-| _hebben_  | De HTTP-status code van het antwoord.                     |
+| _status_  | De HTTP-status code van het antwoord.                     |
 | _cookies_ | Een matrix met HTTP-cookie-objecten die in het antwoord zijn ingesteld. Een HTTP-cookie object heeft een `name` , `value` en andere cookie-eigenschappen, zoals `maxAge` of `sameSite` . |
 
 ### <a name="accessing-the-request-and-response"></a>De aanvraag en het antwoord openen 

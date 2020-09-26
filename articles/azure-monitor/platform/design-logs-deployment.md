@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: 49ab515c265b4b4444e7d4ca5b93c4e898e4cf54
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: a4186909db3d784938ada4baaaf08aba02b31d30
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527306"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317120"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>De implementatie van uw Azure Monitor-logboeken ontwerpen
 
@@ -133,20 +133,29 @@ Als u gegevens naar een werkruimte verzendt met een volumesnelheid die hoger is 
 
 Als u een melding wilt ontvangen over de snelheids limiet voor opname volumes in uw werk ruimte, maakt u een [waarschuwings regel](alerts-log.md) voor het logboek met behulp van de volgende query met een waarschuwing Logic Base op het aantal resultaten dat groter is dan nul, evaluatie periode van 5 minuten en frequentie van 5 minuten.
 
-Het opnamevolume heeft 80 % van de drempel bereikt:
+Frequentie van opname volume heeft de drempel waarde overschreden
 ```Kusto
 Operation
-|where OperationCategory == "Ingestion"
-|where Detail startswith "The data ingestion volume rate crossed 80% of the threshold"
+| where Category == "Ingestion"
+| where OperationKey == "Ingestion rate limit"
+| where Level == "Error"
 ```
 
-Opnamevolume heeft drempel bereikt:
+Frequentie van opname volume is 80% van de drempel waarde overschreden
 ```Kusto
 Operation
-|where OperationCategory == "Ingestion"
-|where Detail startswith "The data ingestion volume rate crossed the threshold"
+| where Category == "Ingestion"
+| where OperationKey == "Ingestion rate limit"
+| where Level == "Warning"
 ```
 
+Frequentie van opname volume is 70% van de drempel waarde overschreden
+```Kusto
+Operation
+| where Category == "Ingestion"
+| where OperationKey == "Ingestion rate limit"
+| where Level == "Info"
+```
 
 ## <a name="recommendations"></a>Aanbevelingen
 

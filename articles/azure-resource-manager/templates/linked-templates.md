@@ -3,12 +3,12 @@ title: Koppelings sjablonen voor implementatie
 description: Hierin wordt beschreven hoe u gekoppelde sjablonen in een Azure Resource Manager sjabloon gebruikt om een modulaire sjabloon oplossing te maken. Toont hoe parameter waarden worden door gegeven, geef een parameter bestand op en dynamisch gemaakte Url's.
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: f1fe07faeaddae3367fb1f8b4a37f7b0630b6e83
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: fb742ed4fabd6630d2d27f5876719e2e2b1a9a4d
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89535555"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369311"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Gekoppelde en geneste sjablonen gebruiken bij het implementeren van Azure-resources
 
@@ -369,7 +369,7 @@ U kunt niet zowel inline-para meters als een koppeling naar een parameter bestan
 
 ## <a name="template-specs"></a>Sjabloonspecificaties
 
-In plaats van uw gekoppelde sjablonen te onderhouden op een toegankelijk eind punt, kunt u een [sjabloon specificatie](template-specs.md) maken waarmee de hoofd sjabloon en de gekoppelde sjablonen worden verpakt in één entiteit die u kunt implementeren. De sjabloon specificatie is een resource in uw Azure-abonnement. Het is eenvoudig om de sjabloon veilig te delen met gebruikers in uw organisatie. U gebruikt op rollen gebaseerd toegangs beheer (RBAC) om toegang te verlenen tot de sjabloon specificatie. Deze functie is momenteel beschikbaar als preview-versie.
+In plaats van uw gekoppelde sjablonen te onderhouden op een toegankelijk eind punt, kunt u een [sjabloon specificatie](template-specs.md) maken waarmee de hoofd sjabloon en de gekoppelde sjablonen worden verpakt in één entiteit die u kunt implementeren. De sjabloon specificatie is een resource in uw Azure-abonnement. Het is eenvoudig om de sjabloon veilig te delen met gebruikers in uw organisatie. U gebruikt op rollen gebaseerd toegangs beheer van Azure (Azure RBAC) om toegang te verlenen tot de sjabloon specificatie. Deze functie is momenteel beschikbaar als preview-versie.
 
 Zie voor meer informatie:
 
@@ -731,7 +731,7 @@ Het parameter bestand kan ook worden beperkt tot toegang via een SAS-token.
 Op dit moment kunt u geen koppeling maken met een sjabloon in een opslag account dat zich achter een [Azure Storage firewall](../../storage/common/storage-network-security.md)bevindt.
 
 > [!IMPORTANT]
-> In plaats van uw gekoppelde sjabloon met een SAS-token te beveiligen, kunt u overwegen om een [sjabloon specificatie](template-specs.md)te maken. De sjabloon spec slaat de hoofd sjabloon en de gekoppelde sjablonen veilig op als een resource in uw Azure-abonnement. U kunt RBAC gebruiken om toegang te verlenen aan gebruikers die de sjabloon moeten implementeren.
+> In plaats van uw gekoppelde sjabloon met een SAS-token te beveiligen, kunt u overwegen om een [sjabloon specificatie](template-specs.md)te maken. De sjabloon spec slaat de hoofd sjabloon en de gekoppelde sjablonen veilig op als een resource in uw Azure-abonnement. U kunt Azure RBAC gebruiken om toegang te verlenen aan gebruikers die de sjabloon moeten implementeren.
 
 In het volgende voor beeld ziet u hoe u een SAS-token kunt door geven wanneer u een koppeling maakt naar een sjabloon:
 

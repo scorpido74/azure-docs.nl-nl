@@ -4,14 +4,14 @@ description: Azure Cosmos DB Explorer is een zelfstandige webgebaseerde interfac
 author: deborahc
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 05/23/2019
+ms.date: 09/23/2020
 ms.author: dech
-ms.openlocfilehash: 918f5a4a572f5518e5ae1b08db3d88d559571ed7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ebfb175de67d7bb8ea011ac340b57f5d62d9e223
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261882"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318803"
 ---
 # <a name="work-with-data-using-azure-cosmos-explorer"></a>Werken met gegevens in Azure Cosmos Explorer 
 
@@ -39,7 +39,7 @@ Azure Cosmos DB Explorer is een zelfstandige webgebaseerde interface waarmee u d
 
    **Lezen** : wanneer u de alleen-lezen URL deelt met andere gebruikers, kunnen ze de data bases, verzamelingen, query's en andere resources weer geven die zijn gekoppeld aan dit specifieke account. Als u bijvoorbeeld resultaten wilt delen van een query met uw team leden die geen toegang hebben tot Azure Portal of uw Azure Cosmos DB account, kunt u deze opgeven met deze URL.
 
-   Kies het type toegang waarmee u het account wilt openen en klik op **openen**. Nadat u de Explorer hebt geopend, is de ervaring hetzelfde als bij de Data Explorer tabblad in Azure Portal.   
+   Kies het type toegang waarmee u het account wilt openen en klik op **openen**. Nadat u de Explorer hebt geopend, is de ervaring hetzelfde als bij de Data Explorer tabblad in Azure Portal.
 
    :::image type="content" source="./media/data-explorer/open-data-explorer-with-access-url.png" alt-text="Azure Cosmos DB Explorer openen":::
 
@@ -49,7 +49,10 @@ Momenteel is de ervaring voor het **openen van volledig scherm** , waarmee u tij
 
 Het weer geven van documenten die een UUID bevatten, wordt momenteel niet ondersteund in Data Explorer. Dit heeft geen invloed op het laden van verzamelingen, waarbij alleen afzonderlijke documenten of query's worden weer gegeven die deze documenten bevatten. Om deze documenten weer te geven en te beheren, moeten gebruikers het hulp programma blijven gebruiken dat oorspronkelijk werd gebruikt om deze documenten te maken.
 
+Klanten die HTTP-401-fouten ontvangen, kunnen worden veroorzaakt door onvoldoende RBAC-machtigingen voor het Azure-account van de klant, met name als het account een aangepaste RBAC-rol heeft. Aangepaste rollen moeten actie hebben `Microsoft.DocumentDB/databaseAccounts/listKeys/*` om Data Explorer te gebruiken als u zich aanmeldt met behulp van hun Azure Active Directory referenties.
+
 ## <a name="next-steps"></a>Volgende stappen
+
 Nu u hebt geleerd hoe u aan de slag gaat met Azure Cosmos DB Explorer om uw gegevens te beheren, kunt u het volgende doen:
 
 * Begin met het definiëren van [query's](sql-api-query-reference.md) met behulp van de SQL-syntaxis en het [Program meren](stored-procedures-triggers-udfs.md) van de server aan de hand van opgeslagen procedures, udf's en triggers. 

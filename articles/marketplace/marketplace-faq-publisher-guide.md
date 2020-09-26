@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 09/11/2020
-ms.openlocfilehash: fa8ee205952d1bd39e932ca6c91e3cffe608bf95
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 5bf94faff86edf954c687ca3024c63229829ca04
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032109"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369719"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Veelgestelde vragen over de micro soft Commercial Marketplace
 
@@ -229,7 +229,7 @@ Het gebruikers account moet de machtigingen *eigenaar* of *Inzender* hebben voor
 
 Klanten kunnen oplossingen van de commerciële Marketplace vinden op 141 locaties over de hele wereld.
 
-Als u de lijst met locaties wilt bekijken, gaat u naar [belasting gegevens voor uitgevers van commerciële markt plaatsen](partner-center-portal/tax-details-paid-transactions.md).
+Als u de lijst met locaties wilt bekijken, gaat u naar [belasting gegevens voor uitgevers van commerciële markt plaatsen](/partner-center/tax-details-marketplace?context=/azure/marketplace/context/context).
 
 ### <a name="what-currencies-are-supported-with-the-commercial-marketplace"></a>Welke valuta's worden ondersteund met de commerciële Marketplace?
 
@@ -274,32 +274,32 @@ Klanten worden meestal maandelijks gefactureerd voor aankopen in de vorige factu
 
 ### <a name="how-often-will-i-receive-payouts-for-sales-through-the-commercial-marketplace"></a>Hoe vaak ontvang ik uitbetalingen voor verkoop via de commerciële Marketplace?
 
-Uitbetalingen gebeuren maandelijks. Zie voor meer informatie over betalings schema's uw aanstaande uitbetalingen in partner centrum en de manier waarop de klant niet-betalingen doen, de [Details van het uitbetalings beleid](partner-center-portal/payout-policy-details.md).
+Uitbetalingen gebeuren maandelijks. Zie voor meer informatie over betalings schema's uw aanstaande uitbetalingen in partner centrum en de manier waarop de klant niet-betalingen doen, de [Details van het uitbetalings beleid](/partner-center/payout-policy-details?context=/azure/marketplace/context/context).
 
 - Voor trans acties waarbij de klant een Enterprise Agreement heeft gebruikt, worden uitbetalingen in de volgende uitbetalings cyclus in 30 dagen na de klant factuur uitgegeven. 
 - Voor trans acties waarbij de klant een credit card heeft gebruikt, is er een extra periode van 30 dagen nadat we een betaling hebben ontvangen om de middelen duidelijk te maken en zijn er geen terugstortingen of verdachte fraude.
 
 Uitbetalingen worden alleen verleend wanneer de verkoop een minimale gecombineerde waarde van $50,00 heeft bereikt.
 
-Zie [betalings drempels, methoden en tijd frames](partner-center-portal/payment-thresholds-methods-timeframes.md)voor meer informatie.
+Zie [betalings drempels, methoden en tijd frames](/partner-center/payment-thresholds-methods-timeframes?context=/azure/marketplace/context/context)voor meer informatie.
 
 ### <a name="in-what-countriesregions-are-taxes-managed-on-my-behalf"></a>In welke landen/regio's worden belasting namens mij beheerd?
 
 Klanten kunnen oplossingen van de commerciële Marketplace over de hele wereld vinden en wij beheren de belasting op verschillende locaties. 
 
-Als u de volledige lijst met locaties wilt bekijken, gaat u naar [belasting gegevens voor uitgevers van commerciële markt plaatsen](partner-center-portal/tax-details-paid-transactions.md).
+Als u de volledige lijst met locaties wilt bekijken, gaat u naar [belasting gegevens voor uitgevers van commerciële markt plaatsen](/partner-center/tax-details-marketplace?context=/azure/marketplace/context/context).
 
 ### <a name="where-can-i-find-payout-reporting-for-the-commercial-marketplace"></a>Waar vind ik uitbetalings rapportage voor de commerciële Marketplace?
 
 Binnen het partner centrum kan een gebruiker met machtigingen voor *eigenaar* of *financiële bijdrage* betaling rapporteren. Deze gebruikers hebben toegang tot rapporten in de rechter bovenhoek door het pictogram te selecteren met een hand die een factuur houdt.
 
-Zie voor meer informatie [uitbetalings rapportage](partner-center-portal/payout-summary.md).
+Zie voor meer informatie [uitbetalings instructies](/partner-center/payout-statement?context=/azure/marketplace/context/context).
 
 ### <a name="how-do-i-configure-my-payout-method-and-destination"></a>Hoe kan ik mijn uitbetalings methode en bestemming configureren?
 
 Met partner Center kunnen gebruikers met *eigenaars* machtigingen het uitbetalings account en de BTW-formulieren instellen. Gebruikers kunnen dit doen door de knop **instellingen** (tandwiel pictogram) in de rechter bovenhoek te selecteren.
 
-Ga voor meer informatie naar het [uitbetalings account en de BTW-formulieren](partner-center-portal/set-up-your-payout-account-tax-forms.md).
+Zie [uw uitbetalings account en BTW-formulieren instellen](/partner-center/set-up-your-payout-account?context=/azure/marketplace/context/context)voor meer informatie.
 
 ### <a name="are-returns-and-refunds-supported-with-the-commercial-marketplace"></a>Worden er retour-en restituties ondersteund voor de commerciële Marketplace?
 

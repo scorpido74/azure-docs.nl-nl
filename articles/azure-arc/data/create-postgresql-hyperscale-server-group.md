@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: e845136c4fed5a3d2e6863fdab0aa9f70fb30b5d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: fb628df5151f9124d7b7f319ff109ffca030ee90
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936425"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317341"
 ---
 # <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Een Azure-PostgreSQL grootschalige-Server groep maken
 
@@ -59,7 +59,7 @@ Logged in successfully to `https://10.0.0.4:30080` in namespace `arc`. Setting a
 Implementeer deze stap voordat u verdergaat met de volgende stap. Als u een PostgreSQL grootschalige-Server groep wilt implementeren op Red Hat open Shift in een ander project dan de standaard, moet u de volgende opdrachten uitvoeren op uw cluster om de beveiligings beperkingen bij te werken. Met deze opdracht worden de benodigde bevoegdheden verleend aan de service accounts die uw PostgreSQL grootschalige-Server groep zullen uitvoeren. De beveiligings context constraint (SCC) **_Arc-data-SCC_** is het account dat u hebt toegevoegd tijdens de implementatie van de Azure Arc-gegevens controller.
 
 ```console
-oc adm policy add-scc-to-group arc-data-scc -z <server-group-name> -n <namespace name>
+oc adm policy add-scc-to-user arc-data-scc -z <server-group-name> -n <namespace name>
 ```
 
 _**Server-group-name** is de naam van de Server groep die u tijdens de volgende stap gaat maken._
@@ -72,7 +72,7 @@ U kunt nu de volgende stap implementeren.
 Als u een Azure Database for PostgreSQL grootschalige-Server groep wilt maken op Azure Arc, gebruikt u de volgende opdracht:
 
 ```console
-azdata arc postgres server create -n <name> --workers 2 --storage-class-data <storage class name> --storage-class-logs <storage class name> --storage-class-backups <storage class name>
+azdata arc postgres server create -n <name> --workers <# worker nodes with #>=2> --storage-class-data <storage class name> --storage-class-logs <storage class name> --storage-class-backups <storage class name>
 
 #Example
 #azdata arc postgres server create -n postgres01 --workers 2
@@ -80,25 +80,14 @@ azdata arc postgres server create -n <name> --workers 2 --storage-class-data <st
 
 > [!NOTE]
 > - **Er zijn andere opdracht regel parameters beschikbaar.  Bekijk de volledige lijst met opties door uit te voeren `azdata arc postgres server create --help` .**
-> - In de preview-versie moet u een opslag klasse opgeven voor back-ups (_--Storage-Class-backups-SCB_) op het moment dat u een server groep maakt om back-ups te kunnen maken en te herstellen.
+> - De opslag klasse die wordt gebruikt voor back-ups (_--Storage-Class-backups-SCB_) wordt standaard ingesteld op de gegevens opslag klasse van de gegevens controller als deze niet is ingevoerd.
 > - De eenheid die wordt geaccepteerd door de para meter--volume-size-* is een Kubernetes-resource hoeveelheid (een geheel getal gevolgd door een van deze SI-toereikende waarden (T, G, M, K, m) of hun kracht van twee equivalenten (TI, GI, MI, ki)).
-> - Namen mogen Maxi maal 10 tekens lang zijn en voldoen aan de naamgevings conventies voor DNS.
+> - Namen moeten uit 12 tekens of minder bestaan en voldoen aan de naamgevings regels voor DNS.
 > - U wordt gevraagd het wacht woord voor de _post gres_ Standard-gebruiker met beheerders rechten in te voeren.  U kunt de interactieve prompt overs Laan door de `AZDATA_PASSWORD` sessie omgevings variabele in te stellen voordat u de opdracht maken uitvoert.
-> - Als u de gegevens beheerder hebt geïmplementeerd met behulp van AZDATA_USERNAME en AZDATA_PASSWORD in dezelfde terminal sessie, worden de waarden voor AZDATA_USERNAME en AZDATA_PASSWORD gebruikt voor het implementeren van de Server groep PostgreSQL grootschalige. De naam van de standaard gebruiker van de beheerder voor de PostgreSQL grootschalige-data base-engine is _postgresql_ en kan op dit moment niet worden gewijzigd.
+> - Als u de gegevens controller hebt geïmplementeerd met behulp van AZDATA_USERNAME en AZDATA_PASSWORD sessie omgevingsvariabelen in dezelfde terminal sessie, worden de waarden voor AZDATA_PASSWORD ook gebruikt voor het implementeren van de Server groep PostgreSQL grootschalige. Als u liever een ander wacht woord gebruikt, moet u (1) de waarde voor AZDATA_PASSWORD bijwerken of (2) de AZDATA_PASSWORD omgevings variabele verwijderen of de waarde ervan verwijderen wordt gevraagd een wacht woord interactief in te voeren wanneer u een server groep maakt.
+> - De naam van de standaard gebruiker van de beheerder voor de PostgreSQL grootschalige-data base-engine is _post gres_ en kan op dit moment niet worden gewijzigd.
 > - Als u een PostgreSQL grootschalige-Server groep maakt, worden resources in azure niet direct geregistreerd. Als onderdeel van het proces van het uploaden van [resource-inventaris](upload-metrics-and-logs-to-azure-monitor.md)  -of [gebruiks gegevens](view-billing-data-in-azure.md) naar Azure, worden de resources in azure gemaakt en kunt u uw resources in de Azure Portal bekijken.
-> - De para meter--Port kan op dit moment niet worden gewijzigd.
-> - Als u geen standaardopslag klasse in uw Kubernetes-cluster hebt, moet u de para meter--metadataStorageClass gebruiken om er een op te geven. Als u dit niet doet, resulteert dit in een fout bij het maken van de opdracht. Als u wilt controleren of u een standaardopslag klasse hebt die is gedeclareerd op uw Kubernetes-cluster, Rung u de volgende opdracht: 
->
->   ```console
->   kubectl get sc
->   ```
->
-> - Als er een opslag klasse als standaard opslag klasse is geconfigureerd, ziet u **(standaard)** aan de naam van de opslag klasse. Bijvoorbeeld:
->
->   ```output
->   NAME                       PROVISIONER                        AGE
->   local-storage (default)    kubernetes.io/no-provisioner       4d18h
->   ```
+
 
 
 ## <a name="list-your-azure-database-for-postgresql-server-groups-created-in-your-arc-setup"></a>Uw Azure Database for PostgreSQL Server groepen weer geven die zijn gemaakt in uw Arc-installatie

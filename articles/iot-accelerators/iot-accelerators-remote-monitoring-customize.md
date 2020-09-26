@@ -8,13 +8,13 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/09/2018
 ms.topic: conceptual
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 412254f47a2700f77003f7db661f0ade214a1e23
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 2789ed642979616a4491a61d146d8468552ec2e5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423198"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318446"
 ---
 # <a name="customize-the-remote-monitoring-solution-accelerator"></a>De oplossings versneller voor externe controle aanpassen
 
@@ -284,7 +284,7 @@ In de volgende stappen wordt beschreven hoe u een bestaand paneel dupliceert, wi
 
 U hebt nu het deel venster met de oorspronkelijke **waarschuwingen** vervangen door een kopie met de naam **CustAlerts**. Deze kopie is hetzelfde als het origineel. U kunt de kopie nu wijzigen. Als u bijvoorbeeld de volg orde van de kolommen in het paneel **waarschuwingen** wilt wijzigen:
 
-1. Open het bestand `src/components/pages/dashboard/panels/cust_alerts/alertsPanel.js`.
+1. Open het `src/components/pages/dashboard/panels/cust_alerts/alertsPanel.js`-bestand.
 
 1. Wijzig de kolom definities, zoals wordt weer gegeven in het volgende code fragment:
 
@@ -338,7 +338,7 @@ De telemetrie-grafiek bevat nu de vijf minuten van telemetriegegevens:
 
 Op de **Dashboard** pagina worden kpi's weer gegeven in het deel venster **analyse** . Deze Kpi's worden in het `src/components/pages/dashboard/dashboard.js` bestand berekend. De Kpi's worden weer gegeven door het `src/components/pages/dashboard/panels/analytics/analyticsPanel.js` bestand. In de volgende stappen wordt beschreven hoe u een nieuwe KPI-waarde op de **Dashboard** pagina berekent en weergeeft. Het voor beeld dat wordt weer gegeven, is het toevoegen van een nieuwe percentage wijziging in de KPI waarschuwingen:
 
-1. Open het bestand `src/components/pages/dashboard/dashboard.js`. Wijzig het **initialState** -object zodanig dat een eigenschap **warningAlertsChange** als volgt wordt toegevoegd:
+1. Open het `src/components/pages/dashboard/dashboard.js`-bestand. Wijzig het **initialState** -object zodanig dat een eigenschap **warningAlertsChange** als volgt wordt toegevoegd:
 
     ```javascript
     const initialState = {

@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2932bfc2f9606326ae38711237e5e10912d41aca
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 1c3143dac79b37ff6dac04856311394440dec9a1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90053766"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317409"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>Cloud groepen gebruiken voor het beheren van roltoewijzingen in Azure Active Directory (preview-versie)
 
@@ -64,7 +64,7 @@ De volgende scenario's worden momenteel niet ondersteund:
   - De eind tijd voor de roltoewijzing kan onjuist worden weer gegeven.
   - In de PIM-portal kunnen **mijn rollen** slechts één roltoewijzing tonen, ongeacht het aantal methoden waarmee de toewijzing wordt verleend (via een of meer groepen en direct).
 - *Alleen klanten met een licentie voor Azure AD P2* Zelfs na het verwijderen van de groep wordt er nog steeds een in aanmerking komend lid van de rol weer gegeven in PIM-gebruikers interface. Er is functioneel geen probleem. het is slechts een cache probleem in de Azure Portal.  
-- Exchange-beheer centrum herkent het rollidmaatschap niet via de groep, maar de Power shell-cmdlet werkt wel.
+- Gebruik het nieuwe [Exchange-beheer centrum](https://admin.exchange.microsoft.com/) voor roltoewijzingen via groepslid maatschap. Het oude Exchange-beheer centrum biedt nog geen ondersteuning voor deze functie. Exchange Power shell-cmdlets werken zoals verwacht.
 - Azure Information Protection-Portal (de klassieke Portal) herkent het lidmaatschap van de rol nog niet via groep. U kunt [migreren naar het Unified sensitivive labeling platform](/azure/information-protection/configure-policy-migrate-labels) en vervolgens het Office 365 Security & compliance gebruiken om groeps toewijzingen te gebruiken voor het beheren van rollen.
 
 Deze problemen worden opgelost.

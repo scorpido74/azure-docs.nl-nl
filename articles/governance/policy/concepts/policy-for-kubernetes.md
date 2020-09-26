@@ -3,12 +3,12 @@ title: Azure Policy leren voor Kubernetes
 description: Lees hoe Azure Policy Rego gebruikt en beleids agent opent voor het beheren van clusters met Kubernetes in azure of on-premises.
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: dbe7257b577f0526e0d34c13e0102305e58cc656
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: bb4345426eddb8b0b5250980eb46cf0509a22cff
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322458"
+ms.locfileid: "91369991"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>Azure Policy voor Kubernetes-clusters
 
@@ -85,9 +85,6 @@ De volgende aanbeveling geldt alleen voor AKS en de invoeg toepassing Azure Poli
 ## <a name="install-azure-policy-add-on-for-aks"></a>Azure Policy-invoeg toepassing voor AKS installeren
 
 Voordat u de Azure Policy invoeg toepassing installeert of een van de service functies inschakelt, moet uw abonnement de resource providers **micro soft. container service** en **micro soft. PolicyInsights** inschakelen.
-
-> [!IMPORTANT]
-> De algemene Beschik baarheid (GA) van Azure Policy op AKS is actief in alle regio's. De verwachte wereld wijde voltooiing van de GA-versie is 9/29/2020. Voor gebruik in regio's zonder de GA-release zijn de stappen voor de preview-registratie vereist. Dit wordt echter automatisch bijgewerkt naar de GA-release wanneer deze beschikbaar is in de regio.
 
 1. U moet de Azure CLI-versie 2.12.0 of hoger hebben geïnstalleerd en geconfigureerd. Voer `az --version` uit om de versie te bekijken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli).
 

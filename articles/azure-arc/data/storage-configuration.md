@@ -9,12 +9,12 @@ ms.author: umajay
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 782a046b92c9d6cf755bfea0551d7f8153faa859
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c1560325f21fd60e6bdb2a64eb987359a7246ff2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936091"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317324"
 ---
 # <a name="storage-configuration"></a>Opslagconfiguratie
 
@@ -151,10 +151,11 @@ Belang rijke factoren waarmee u rekening moet houden bij het kiezen van een opsl
 
 - U **moet** een externe gedeelde opslag klasse gebruiken om de duurzaamheid van de gegevens te waarborgen, zodat als een pod of knoop punt sterft dat wanneer de Pod wordt teruggebracht, verbinding kan maken met het permanente volume.
 - De gegevens die worden geschreven naar het SQL-exemplaar van de controller, metrische data BASEs en logboeken DB, zijn doorgaans tamelijk laag volume en niet gevoelig voor latentie, dus Ultra snelle prestatie opslag is niet kritiek. Als u gebruikers hebt die veelvuldig gebruikmaken van de Grafana-en Kibana-interfaces en u beschikt over een groot aantal data base-exemplaren, kunnen uw gebruikers profiteren van snellere opslag.
-- De vereiste opslag capaciteit is variabel met het aantal database exemplaren dat u hebt geïmplementeerd, omdat logboeken en metrische gegevens worden verzameld voor elk data base-exemplaar. Gegevens worden gedurende twee weken bewaard in de logboeken en de metrische data base. TODO: hoeveel opslag ruimte vereist per data base-exemplaar?
+- De vereiste opslag capaciteit is variabel met het aantal database exemplaren dat u hebt geïmplementeerd, omdat logboeken en metrische gegevens worden verzameld voor elk data base-exemplaar. Gegevens worden gedurende twee weken bewaard in de logboeken en de metrische data base. 
 - Het wijzigen van de post implementatie van de opslag klasse is zeer moeilijk, niet gedocumenteerd, en wordt niet ondersteund. Zorg ervoor dat u de opslag klasse correct kiest tijdens de implementatie.
 
-> **Opmerking:** Als er geen opslag klasse is opgegeven, wordt de standaard opslag klasse gebruikt. Er kan slechts één standaard opslag klasse per Kubernetes-cluster zijn. U kunt [de standaard opslag klasse wijzigen](https://kubernetes.io/docs/tasks/administer-cluster/change-default-storage-class/).
+> [!NOTE]
+> Als er geen opslag klasse is opgegeven, wordt de standaard opslag klasse gebruikt. Er kan slechts één standaard opslag klasse per Kubernetes-cluster zijn. U kunt [de standaard opslag klasse wijzigen](https://kubernetes.io/docs/tasks/administer-cluster/change-default-storage-class/).
 
 ### <a name="database-instance-storage-configuration"></a>Opslag configuratie voor data base-exemplaren
 
@@ -162,7 +163,8 @@ Elk data base-exemplaar heeft gegevens, logboeken en permanente back-upvolumes. 
 
 Bij het maken van een instantie met `azdata arc sql mi create` of- `azdata arc postgres server create` opdrachten zijn er twee para meters die kunnen worden gebruikt voor het instellen van de opslag klassen:
 
-> **Opmerking:** Sommige van deze para meters zijn in ontwikkeling en worden beschikbaar op `azdata arc sql mi create` en `azdata arc postgres server create` in de komende releases.
+> [!NOTE]
+> Sommige van deze para meters zijn in ontwikkeling en worden beschikbaar op `azdata arc sql mi create` en `azdata arc postgres server create` in de komende releases.
 
 |Parameter naam, korte naam|Gebruikt voor|
 |---|---|
@@ -173,14 +175,14 @@ Bij het maken van een instantie met `azdata arc sql mi create` of- `azdata arc p
 
 In de volgende tabel worden de paden in de Azure SQL Managed instance-container weer gegeven die zijn toegewezen aan het permanente volume voor gegevens en Logboeken:
 
-|Parameter naam, korte naam|Pad in MSSQL-MIAA-container|Description|
+|Parameter naam, korte naam|Pad in MSSQL-MIAA-container|Beschrijving|
 |---|---|---|
 |`--storage-class-data`, `-scd`|/var/opt|Bevat mappen voor de installatie van MSSQL en andere systeem processen. De map MSSQL bevat standaard gegevens (met inbegrip van transactie Logboeken), fouten logboek & back-upmappen|
 |`--storage-class-logs`, `-scl`|/var/log|Bevat mappen waarin console-uitvoer (stderr, stdout), andere logboek registratie gegevens van processen binnen de container worden opgeslagen|
 
 De volgende tabel bevat de paden in de PostgreSQL-instantie container die is toegewezen aan het permanente volume voor gegevens en Logboeken:
 
-|Parameter naam, korte naam|Pad in post gres-container|Description|
+|Parameter naam, korte naam|Pad in post gres-container|Beschrijving|
 |---|---|---|
 |`--storage-class-data`, `-scd`|/var/opt/postgresql|Bevat gegevens en logboek mappen voor de installatie van post gres|
 |`--storage-class-logs`, `-scl`|/var/log|Bevat mappen waarin console-uitvoer (stderr, stdout), andere logboek registratie gegevens van processen binnen de container worden opgeslagen|
