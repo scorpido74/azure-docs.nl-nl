@@ -11,12 +11,12 @@ ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 25ab7d275957aff03ad76bf2e946a98fc6cd8821
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: fecb78b240f5c983580d4bdb34535a879ffe3e2e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032959"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289273"
 ---
 # <a name="maximize-rowgroup-quality-for-columnstore-index-performance"></a>Maximale Rijg roep-kwaliteit voor column store-index prestaties
 
@@ -26,7 +26,7 @@ De kwaliteit van de Rijg roep wordt bepaald door het aantal rijen in een Rijg ro
 
 Omdat een column store-index een tabel scant door kolom segmenten van afzonderlijke Rijg roepen te scannen, kunt u het aantal rijen in elke Rijg roep verhogen om de query prestaties te verbeteren. Wanneer Rijg roepen een groot aantal rijen heeft, verbetert de gegevens compressie dat betekent dat er minder gegevens kunnen worden gelezen van de schijf.
 
-Zie [Column Store-indexen gids](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)voor meer informatie over Rijg roepen.
+Zie [Column Store-indexen gids](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)voor meer informatie over Rijg roepen.
 
 ## <a name="target-size-for-rowgroups"></a>Doel grootte voor Rijg roepen
 
@@ -34,15 +34,15 @@ Voor de beste query prestaties is het doel het aantal rijen per Rijg roep in een
 
 ## <a name="rowgroups-can-get-trimmed-during-compression"></a>Rijg roepen kan worden bijgesneden tijdens compressie
 
-Tijdens het opnieuw opbouwen van bulksgewijs laden of column store-index is er mogelijk onvoldoende geheugen beschikbaar om alle opgegeven rijen voor elke Rijg roep te comprimeren. Wanneer er geheugen druk is, verkleint column Store-indexen de Rijg roep-grootten zodat compressie naar de column Store kan slagen.
+Tijdens het opnieuw opbouwen van bulksgewijs laden of column store-index is er soms niet voldoende geheugen beschikbaar om alle opgegeven rijen voor elke Rijg roep te comprimeren. Wanneer er geheugen druk is, verkleint column Store-indexen de Rijg roep-grootten zodat compressie naar de column Store kan slagen.
 
 Als er onvoldoende geheugen is om ten minste 10.000 rijen in elke Rijg roep te comprimeren, wordt er een fout gegenereerd.
 
-Zie [bulksgewijs laden in een geclusterde column store-index](/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#Bulk )voor meer informatie over bulksgewijs laden.
+Zie [bulksgewijs laden in een geclusterde column store-index](/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#Bulk&preserve-view=true )voor meer informatie over bulksgewijs laden.
 
 ## <a name="how-to-monitor-rowgroup-quality"></a>Rijg roep-kwaliteit bewaken
 
-De DMV sys. dm_pdw_nodes_db_column_store_row_group_physical_stats ([sys. dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) bevat de weergave definitie die overeenkomt met de SQL-data base). deze geeft nuttige informatie weer, zoals het aantal rijen in Rijg roepen en de reden voor het bijsnijden als er een bijsnijden is gemaakt. U kunt de volgende weer gave maken als een handige manier om een query uit te geven op deze DMV om informatie op te halen over Rijg roep-bijsnijden.
+De DMV sys. dm_pdw_nodes_db_column_store_row_group_physical_stats ([sys. dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) bevat de weergave definitie die overeenkomt met de SQL-data base). deze geeft nuttige informatie weer, zoals het aantal rijen in Rijg roepen en de reden voor het bijsnijden als er een bijsnijden is gemaakt. U kunt de volgende weer gave maken als een handige manier om een query uit te geven op deze DMV om informatie op te halen over Rijg roep-bijsnijden.
 
 ```sql
 create view dbo.vCS_rg_physical_stats
@@ -77,14 +77,15 @@ De trim_reason_desc geeft aan of de Rijg roep is bijgesneden (trim_reason_desc =
 
 ## <a name="how-to-estimate-memory-requirements"></a>Geheugen vereisten schatten
 
-Het Maxi maal vereiste geheugen voor het comprimeren van één Rijg roep is ongeveer
+Het maximum vereiste geheugen voor het comprimeren van één Rijg roep is als volgt:
 
 - 72 MB +
 - \#rijen \* \# kolommen \* 8 bytes +
 - \#rijen \* \# korte teken reeks-kolommen \* 32 bytes +
 - \#lange-teken reeks-kolommen \* 16 MB voor de compressie woordenlijst
 
-Wanneer in korte teken reeks kolommen teken reeks gegevens typen van <= 32 bytes en lange teken reeks kolommen gebruikmaken van teken reeks gegevens typen van > 32 bytes.
+> [!NOTE]
+> Wanneer in korte teken reeks kolommen teken reeks gegevens typen van <= 32 bytes en lange teken reeks kolommen gebruikmaken van teken reeks gegevens typen van > 32 bytes.
 
 Lange teken reeksen worden gecomprimeerd met een compressie methode die is ontworpen voor het comprimeren van tekst. Deze compressie methode maakt gebruik van een *woorden lijst* om tekst patronen op te slaan. De maximale grootte van een woorden lijst is 16 MB. Er is slechts één woorden lijst voor elke lange teken reeks kolom in de Rijg roep.
 

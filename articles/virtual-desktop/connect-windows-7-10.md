@@ -3,33 +3,24 @@ title: Verbinding maken met Windows Virtual Desktop Windows 10 of 7-Azure
 description: Verbinding maken met het virtuele bureau blad van Windows met behulp van de Windows-desktop-client.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 07/16/2020
+ms.date: 09/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0e4f41cb23ec4a9463b983049f5f37d09d1b8c71
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: c9da2acac0957d7fe06d0249775fbed73b5f458d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226706"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287335"
 ---
 # <a name="connect-with-the-windows-desktop-client"></a>Verbinding maken met de Windows Desktop-client
 
-> Van toepassing op: Windows 7, Windows 10 en Windows 10 IoT Enter prise
+> Van toepassing op: Windows 10, Windows 10 IoT Enter prise en Windows 7
 
 >[!IMPORTANT]
 >Deze inhoud is van toepassing op Windows Virtual Desktop met Azure Resource Manager Windows Virtual Desktop-objecten. Zie [dit artikel](./virtual-desktop-fall-2019/connect-windows-7-10-2019.md) als u Windows Virtual Desktop (klassiek) zonder Azure Resource Manager-objecten gebruikt.
 
-U hebt toegang tot de virtuele Bureau bladen van Windows op apparaten met Windows 7, Windows 10 en Windows 10 IoT Enter prise met behulp van de Windows-bureaubladclient. De client biedt geen ondersteuning voor Window 8 of Windows 8,1.
-
->[!NOTE]
->De Windows-client wordt automatisch standaard ingesteld op virtueel bureau blad van Windows (klassiek). Als de client echter detecteert dat de gebruiker ook Azure Resource Manager resources heeft, worden de resources automatisch toegevoegd of krijgt de gebruiker een melding dat ze beschikbaar zijn.
-
-> [!IMPORTANT]
-> Windows Virtual Desktop biedt geen ondersteuning voor de client voor RemoteApp- en bureaubladverbindingen of de client voor verbinding met extern bureaublad.
-
-> [!IMPORTANT]
-> Windows Virtual Desktop biedt momenteel geen ondersteuning voor de Extern bureaublad-client uit de Windows Store.
+U hebt toegang tot de virtuele bureau blad-bronnen van Windows op apparaten met Windows 10, Windows 10 IoT Enter prise en Windows 7 met behulp van de Windows-bureaubladclient. De client biedt geen ondersteuning voor Window 8 of Windows 8,1.
 
 ## <a name="install-the-windows-desktop-client"></a>De Windows-Desktop-Client installeren
 
@@ -42,6 +33,9 @@ Kies de client die overeenkomt met uw versie van Windows:
 U kunt de client installeren voor de huidige gebruiker, waarvoor geen beheerders rechten zijn vereist, of uw beheerder kan de client installeren en configureren zodat alle gebruikers op het apparaat toegang hebben.
 
 Nadat de client is geïnstalleerd, kan deze vanuit het menu Start worden gestart door te zoeken naar **extern bureaublad**.
+
+> [!IMPORTANT]
+> Windows Virtual Desktop biedt geen ondersteuning voor de client voor RemoteApp- en bureaubladverbindingen of de client voor verbinding met extern bureaublad.
 
 ## <a name="subscribe-to-a-workspace"></a>Abonneren op een werk ruimte
 
@@ -56,6 +50,9 @@ Er zijn twee manieren waarop u zich kunt abonneren op een werk ruimte. De client
 2. Meld u aan met uw gebruikers account wanneer u hierom wordt gevraagd.
 3. De resources worden weer gegeven in het verbindings centrum en worden gegroepeerd op werk ruimte.
 
+>[!NOTE]
+>De Windows-client wordt automatisch standaard ingesteld op virtueel bureau blad van Windows (klassiek). Als de client echter detecteert dat de gebruiker ook Azure Resource Manager resources heeft, worden de resources automatisch toegevoegd of krijgt de gebruiker een melding dat ze beschikbaar zijn.
+
 ### <a name="subscribe-with-a-url"></a>Abonneren met een URL
 
 1. Selecteer op de hoofd pagina van de client **abonneren met URL**.
@@ -65,7 +62,7 @@ Er zijn twee manieren waarop u zich kunt abonneren op een werk ruimte. De client
      - Virtueel bureau blad van Windows: `https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery`
      - Virtueel bureau blad van Windows (US Gov): `https://rdweb.wvd.azure.us/api/arm/feeddiscovery`
    - Als u in plaats daarvan het **e-mail** veld gebruikt, voert u uw e-mail adres in. Dit geeft de client de opdracht om te zoeken naar een URL die is gekoppeld aan uw e-mail adres als uw beheerder [e-mail detectie](/windows-server/remote/remote-desktop-services/rds-email-discovery)heeft ingesteld.
-3. Selecteer **Volgende**.
+3. Selecteer **Next**.
 4. Meld u aan met uw gebruikers account wanneer u hierom wordt gevraagd.
 5. De resources moeten worden weer gegeven in het verbindings centrum, gegroepeerd op werk ruimte.
 

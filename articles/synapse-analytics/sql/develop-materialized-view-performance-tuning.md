@@ -1,6 +1,6 @@
 ---
 title: Prestaties afstemmen met gerealiseerde weergaven
-description: Aanbevelingen en overwegingen die u moet kennen wanneer u gerealiseerde weer gaven gebruikt om de query prestaties te verbeteren.
+description: Aanbevelingen en overwegingen voor gerealiseerde weer gaven om de query prestaties te verbeteren.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: d476bef6faa19defad1d2e1ef1a90f7e5d83def5
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 1f04f8b447f07f62561f56722df3b9502ad58d41
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495689"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289035"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Prestaties afstemmen met gerealiseerde weergaven
 
@@ -29,13 +29,13 @@ Een standaard weergave berekent de gegevens telkens wanneer de weer gave wordt g
 
 Met een gerealiseerde weer gave worden de gegevens in de SQL-groep, net als in een tabel, opgeslagen en bewaard.  Herberekening is niet nodig wanneer een gerealiseerde weer gave wordt gebruikt.  Daarom kunnen query's die gebruikmaken van alle of een subset van de gegevens in gerealiseerde weer gaven, betere prestaties krijgen.  Daarnaast kunt u met query's gebruikmaken van een gerealiseerde weer gave zonder dat hiervoor direct een verwijzing wordt gemaakt. u hoeft geen toepassings code te wijzigen.  
 
-De meeste standaard weergave vereisten zijn nog steeds van toepassing op een gerealiseerde weer gave. Zie [gerealiseerde weer gave maken als selecteren](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)voor meer informatie over de syntaxis van gerealiseerde weer gaven en andere vereisten.
+De meeste standaard weergave vereisten zijn nog steeds van toepassing op een gerealiseerde weer gave. Zie [gerealiseerde weer gave maken als selecteren](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)voor meer informatie over de syntaxis van gerealiseerde weer gaven en andere vereisten.
 
 | Vergelijking                     | Weergave                                         | Gerealiseerde weergave
 |:-------------------------------|:---------------------------------------------|:--------------------------------------------------------------|
 |Definitie weergeven                 | Opgeslagen in azure Data Warehouse.              | Opgeslagen in azure Data Warehouse.
 |Inhoud weergeven                    | Elke keer dat de weer gave wordt gebruikt, gegenereerd.   | Vooraf verwerkt en opgeslagen in azure Data Warehouse tijdens het maken van de weer gave. Bijgewerkt wanneer gegevens worden toegevoegd aan de onderliggende tabellen.
-|Gegevens vernieuwen                    | Altijd bijgewerkt                               | Altijd bijgewerkt
+|Gegevensvernieuwing                    | Altijd bijgewerkt                               | Altijd bijgewerkt
 |Snelheid om weergave gegevens op te halen uit complexe query's     | Langzaam                                         | Snel  
 |Extra opslag ruimte                   | Nee                                           | Ja
 |Syntax                          | WEER GAVE MAKEN                                  | GEREALISEERDE WEER GAVE MAKEN ALS SELECTEREN
@@ -55,8 +55,8 @@ Een goed ontworpen gerealiseerde weer gave biedt de volgende voor delen:
 In vergelijking met andere data warehouse-providers bieden de gerealiseerde weer gaven die in de SQL-groep zijn geïmplementeerd ook de volgende extra voor delen:
 
 - Automatische en synchrone gegevens vernieuwing met gegevens wijzigingen in basis tabellen. Er is geen gebruikers actie vereist.
-- Ondersteuning voor uitgebreide statistische functies. Zie [gerealiseerde weer gave maken als Select (Transact-SQL)](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
-- De ondersteuning voor query-specifieke gerealiseerde weergave aanbeveling.  Zie [uitleggen (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+- Ondersteuning voor uitgebreide statistische functies. Zie [gerealiseerde weer gave maken als Select (Transact-SQL)](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
+- De ondersteuning voor query-specifieke gerealiseerde weergave aanbeveling.  Zie [uitleggen (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 ## <a name="common-scenarios"></a>Algemene scenario's  
 
@@ -143,13 +143,17 @@ De optimalisatie van het Data Warehouse kan automatisch geïmplementeerde gereal
 
 **Gerealiseerde weer gaven bewaken**
 
-Een gerealiseerde weer gave wordt in het Data Warehouse opgeslagen net als een tabel met geclusterde column store-index (CCI).  Het lezen van gegevens vanuit een gerealiseerde weer gave omvat het scannen van de index en het Toep assen van wijzigingen in het Delta-archief.  Wanneer het aantal rijen in de Delta opslag te hoog is, kan het oplossen van een query vanuit een gerealiseerde weer gave langer duren dan het rechtstreeks opvragen van query's in de basis tabellen.  Om te voor komen dat de prestaties van query's worden vertraagd, is het een goed idee om [DBCC PDW_SHOWMATERIALIZEDVIEWOVERHEAD](/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) uit te voeren om de overhead_ratio van de weer gave te bewaken (total_rows/base_view_row).  Als de overhead_ratio te hoog is, kunt u de gerealiseerde weer gave opnieuw samen stellen, zodat alle rijen in het Delta archief worden verplaatst naar de column store-index.  
+Een gerealiseerde weer gave wordt in het Data Warehouse opgeslagen net als een tabel met geclusterde column store-index (CCI).  Het lezen van gegevens vanuit een gerealiseerde weer gave omvat het scannen van de index en het Toep assen van wijzigingen in het Delta-archief.  Wanneer het aantal rijen in de Delta opslag te hoog is, kan het oplossen van een query vanuit een gerealiseerde weer gave langer duren dan het rechtstreeks opvragen van query's in de basis tabellen.  
+
+Om te voor komen dat de prestaties van query's worden vertraagd, is het een goed idee om [DBCC PDW_SHOWMATERIALIZEDVIEWOVERHEAD](/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) uit te voeren om de overhead_ratio van de weer gave te bewaken (total_rows/base_view_row).  Als de overhead_ratio te hoog is, kunt u de gerealiseerde weer gave opnieuw samen stellen, zodat alle rijen in het Delta archief worden verplaatst naar de column store-index.  
 
 **Gerealiseerde weer gave en caching van resultaten sets**
 
 Deze twee functies worden rond dezelfde tijd geïntroduceerd in de SQL-groep voor het afstemmen van de query prestaties. Het opslaan in de cache voor de resultatenset wordt gebruikt voor het bereiken van hoge gelijktijdigheid en snelle respons tijden van herhaalde query's tegen statische gegevens.  
 
-Om het resultaat in de cache te kunnen gebruiken, moet de vorm van de cache die query vraagt overeenkomen met de query die de cache heeft geproduceerd.  Daarnaast moet het resultaat in de cache op de hele query worden toegepast.  Met gerealiseerde weer gaven kunnen gegevens wijzigingen in de basis tabellen worden aangebracht.  Gegevens in gerealiseerde weer gaven kunnen worden toegepast op een stukje van een query.  Met deze ondersteuning kunnen dezelfde gerealiseerde weer gaven worden gebruikt door verschillende query's die een bepaalde berekening delen voor betere prestaties.
+Om het resultaat in de cache te kunnen gebruiken, moet de vorm van de cache die query vraagt overeenkomen met de query die de cache heeft geproduceerd.  Daarnaast moet het resultaat in de cache op de hele query worden toegepast.  
+
+Met gerealiseerde weer gaven kunnen gegevens wijzigingen in de basis tabellen worden aangebracht.  Gegevens in gerealiseerde weer gaven kunnen worden toegepast op een stukje van een query.  Met deze ondersteuning kunnen dezelfde gerealiseerde weer gaven worden gebruikt door verschillende query's die een bepaalde berekening delen voor betere prestaties.
 
 ## <a name="example"></a>Voorbeeld
 
@@ -352,7 +356,7 @@ GROUP BY c_customer_id
 
 ```
 
-Controleer het uitvoerings plan van de oorspronkelijke query opnieuw.  Nu wordt het aantal aansluitingen gewijzigd van 17 in 5 en is er geen wille keurige volg orde.  Klik op het pictogram voor de filter bewerking in het plan. In de uitvoer lijst ziet u dat de gegevens worden gelezen uit de gerealiseerde weer gaven in plaats van met basis tabellen.  
+Controleer het uitvoerings plan van de oorspronkelijke query opnieuw.  Nu wordt het aantal aansluitingen gewijzigd van 17 in 5 en is er geen wille keurige volg orde.  Selecteer het pictogram voor de filter bewerking in het plan. In de uitvoer lijst ziet u dat de gegevens worden gelezen uit de gerealiseerde weer gaven in plaats van met basis tabellen.  
 
  ![Plan_Output_List_with_Materialized_Views](./media/develop-materialized-view-performance-tuning/output-list.png)
 

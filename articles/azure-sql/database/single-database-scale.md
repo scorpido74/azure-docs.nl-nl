@@ -9,20 +9,20 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: carlrab
-ms.date: 07/31/2020
-ms.openlocfilehash: 39869e74fcb3e8f3deae1273721093f3f85e8d78
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.reviewer: ''
+ms.date: 09/16/2020
+ms.openlocfilehash: 41760eb91d2a8406d4deb52cd8e247731239e2b4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541682"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91309860"
 ---
-# <a name="scale-single-database-resources-in-azure-sql-database"></a>Enkele database resources in Azure SQL Database schalen
+# <a name="scale-single-database-resources-in-azure-sql-database"></a>Resources van een individuele database schalen in Azure SQL Database
 
 In dit artikel wordt beschreven hoe u de berekenings-en opslag resources schaalt die beschikbaar zijn voor een Azure SQL Database in de ingerichte Compute-laag. De [Compute-laag zonder server](serverless-tier-overview.md) biedt ook reken capaciteit automatisch schalen en facturen per seconde voor gebruikte reken kracht.
 
-Nadat u het aantal vCores of Dtu's hebt gekozen, kunt u een enkele data base dynamisch omhoog of omlaag schalen op basis van de werkelijke ervaring met behulp van de [Azure Portal](single-database-manage.md#the-azure-portal), [Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), [Power shell](/powershell/module/az.sql/set-azsqldatabase), de [Azure cli](/cli/azure/sql/db#az-sql-db-update)of de [rest API](https://docs.microsoft.com/rest/api/sql/databases/update).
+Nadat u het aantal vCores of Dtu's hebt gekozen, kunt u een enkele data base dynamisch omhoog of omlaag schalen op basis van de werkelijke ervaring met behulp van de [Azure Portal](single-database-manage.md#the-azure-portal), [Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql#examples-1), [Power shell](/powershell/module/az.sql/set-azsqldatabase), de [Azure cli](/cli/azure/sql/db#az-sql-db-update)of de [rest API](https://docs.microsoft.com/rest/api/sql/databases/update).
 
 De volgende video toont het dynamisch wijzigen van de servicelaag en de berekenings grootte om beschik bare Dtu's voor één Data Base te verg Roten.
 
@@ -53,14 +53,14 @@ De geschatte latentie voor het wijzigen van de servicelaag, het schalen van de r
 |Servicelaag|Basis, afzonderlijke Data Base,</br>Standaard (S0-S1)|Algemene elastische pool,</br>Standard (S2-S12), </br>Algemeen afzonderlijke data base of elastische pool|Premium of Bedrijfskritiek afzonderlijke data base of elastische pool|Hyperscale
 |:---|:---|:---|:---|:---|
 |**Basis enkele data base, </br> standaard (S0-S1)**|&bull;&nbsp;Constante tijd latentie, onafhankelijk van gebruikte ruimte</br>&bull;&nbsp;Normaal gesp roken minder dan 5 minuten|&bull;&nbsp;Latentie in verhouding tot de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull;&nbsp;Normaal gesp roken, minder dan 1 minuut per GB gebruikte ruimte|&bull;&nbsp;Latentie in verhouding tot de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull;&nbsp;Normaal gesp roken, minder dan 1 minuut per GB gebruikte ruimte|&bull;&nbsp;Latentie in verhouding tot de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull;&nbsp;Normaal gesp roken, minder dan 1 minuut per GB gebruikte ruimte|
-|**Basis elastische pool, </br> standaard (S2-S12), </br> algemeen afzonderlijke data base of elastische pool**|&bull;&nbsp;Latentie in verhouding tot de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull;&nbsp;Normaal gesp roken, minder dan 1 minuut per GB gebruikte ruimte|&bull;&nbsp;Constante tijd latentie, onafhankelijk van gebruikte ruimte</br>&bull;&nbsp;Normaal gesp roken minder dan 5 minuten|&bull;&nbsp;Latentie in verhouding tot de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull;&nbsp;Normaal gesp roken, minder dan 1 minuut per GB gebruikte ruimte|&bull;&nbsp;Latentie in verhouding tot de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull;&nbsp;Normaal gesp roken, minder dan 1 minuut per GB gebruikte ruimte|
+|**Basis elastische pool, </br> standaard (S2-S12), </br> algemeen afzonderlijke data base of elastische pool**|&bull;&nbsp;Latentie in verhouding tot de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull;&nbsp;Normaal gesp roken, minder dan 1 minuut per GB gebruikte ruimte|&bull;&nbsp;Voor individuele data bases geldt een constante tijd latentie, onafhankelijk van de gebruikte ruimte</br>&bull;&nbsp;Meestal minder dan 5 minuten voor afzonderlijke data bases</br>&bull;&nbsp;Voor elastische Pools, evenredig met het aantal data bases|&bull;&nbsp;Latentie in verhouding tot de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull;&nbsp;Normaal gesp roken, minder dan 1 minuut per GB gebruikte ruimte|&bull;&nbsp;Latentie in verhouding tot de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull;&nbsp;Normaal gesp roken, minder dan 1 minuut per GB gebruikte ruimte|
 |**Premium of Bedrijfskritiek afzonderlijke data base of elastische pool**|&bull;&nbsp;Latentie in verhouding tot de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull;&nbsp;Normaal gesp roken, minder dan 1 minuut per GB gebruikte ruimte|&bull;&nbsp;Latentie in verhouding tot de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull;&nbsp;Normaal gesp roken, minder dan 1 minuut per GB gebruikte ruimte|&bull;&nbsp;Latentie in verhouding tot de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull;&nbsp;Normaal gesp roken, minder dan 1 minuut per GB gebruikte ruimte|&bull;&nbsp;Latentie in verhouding tot de database ruimte die wordt gebruikt door het kopiëren van gegevens</br>&bull;&nbsp;Normaal gesp roken, minder dan 1 minuut per GB gebruikte ruimte|
 |**Hyperscale**|N.v.t.|N.v.t.|N.v.t.|&bull;&nbsp;Constante tijd latentie, onafhankelijk van gebruikte ruimte</br>&bull;&nbsp;Normaal gesp roken minder dan 2 minuten|
 
 > [!NOTE]
 > Voor standaard (S2-S12) en Algemeen-data bases geldt dat latentie voor het verplaatsen van een data base in/uit een elastische pool of tussen elastische Pools evenredig is met de grootte van de Data Base als de data base gebruikmaakt van[PFS](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)-opslag (Premium file share).
 >
-> Voer de volgende query uit in de context van de data base om te bepalen of een Data Base PFS-opslag gebruikt. Als de waarde in de kolom account type is `PremiumFileStorage` , gebruikt de data base PFS-opslag.
+> Voer de volgende query uit in de context van de data base om te bepalen of een Data Base PFS-opslag gebruikt. Als de waarde in de kolom account type is `PremiumFileStorage` of `PremiumFileStorage-ZRS` , gebruikt de data base PFS-opslag.
  
 ```sql
 SELECT s.file_id,
@@ -122,9 +122,9 @@ Er worden kosten in rekening gebracht voor elk uur dat een data base bestaat met
 ### <a name="vcore-based-purchasing-model"></a>Aankoopmodel op basis van vCore
 
 - Opslag kan worden ingericht tot de maximale grootte van de gegevens opslag met een veelvoud van 1 GB. De minimale Configureer bare gegevens opslag is 1 GB. Zie documentatie pagina's voor resource limieten voor [afzonderlijke data bases](resource-limits-vcore-single-databases.md) en [elastische Pools](resource-limits-vcore-elastic-pools.md) voor gegevens opslag maximale grootte limieten in elke service doelstelling.
-- Gegevens opslag voor één data base kan worden ingericht door de maximale grootte te verhogen of te verlagen met behulp van de [Azure Portal](https://portal.azure.com), [Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), [Power shell](/powershell/module/az.sql/set-azsqldatabase), [Azure cli](/cli/azure/sql/db#az-sql-db-update)of [rest API](https://docs.microsoft.com/rest/api/sql/databases/update). Als de waarde voor de maximale grootte in bytes is opgegeven, moet deze een meervoud van 1 GB (1073741824 bytes) zijn.
+- Gegevens opslag voor één data base kan worden ingericht door de maximale grootte te verhogen of te verlagen met behulp van de [Azure Portal](https://portal.azure.com), [Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql#examples-1), [Power shell](/powershell/module/az.sql/set-azsqldatabase), [Azure cli](/cli/azure/sql/db#az-sql-db-update)of [rest API](https://docs.microsoft.com/rest/api/sql/databases/update). Als de waarde voor de maximale grootte in bytes is opgegeven, moet deze een meervoud van 1 GB (1073741824 bytes) zijn.
 - De hoeveelheid gegevens die kan worden opgeslagen in de gegevens bestanden van een Data Base wordt beperkt door de geconfigureerde maximale grootte van de gegevens opslag. Naast die opslag wordt met Azure SQL Database automatisch 30% meer opslag toegewezen voor het transactie logboek.
-- Azure SQL Database wijst 32 GB per vCore automatisch toe aan de `tempdb` Data Base. `tempdb`bevindt zich in de lokale SSD-opslag in alle service lagen.
+- Azure SQL Database wijst 32 GB per vCore automatisch toe aan de `tempdb` Data Base. `tempdb` bevindt zich in de lokale SSD-opslag in alle service lagen.
 - De prijs van opslag voor één data base of een elastische pool is de som van de hoeveelheid gegevens opslag en de opslag van transactie logboeken vermenigvuldigd met de prijs van de opslag eenheid van de servicelaag. De kosten van `tempdb` zijn inbegrepen in de prijs. Zie voor meer informatie over de opslag prijs [Azure SQL database prijzen](https://azure.microsoft.com/pricing/details/sql-database/).
 
 > [!IMPORTANT]
@@ -133,7 +133,7 @@ Er worden kosten in rekening gebracht voor elk uur dat een data base bestaat met
 ### <a name="dtu-based-purchasing-model"></a>Op DTU gebaseerd inkoop model
 
 - De DTU-prijs voor één Data Base bevat een bepaalde hoeveelheid opslag zonder extra kosten. Extra opslag buiten de inbegrepen hoeveelheid kan worden ingericht voor extra kosten tot de maximale grootte in stappen van 250 GB tot 1 TB en vervolgens in stappen van 256 GB tot meer dan 1 TB. Zie [Single Data Base: opslag grootten en reken grootten](resource-limits-dtu-single-databases.md#single-database-storage-sizes-and-compute-sizes)voor inbegrepen opslag bedragen en maximale grootte limieten.
-- Extra opslag ruimte voor één data base kan worden ingericht door de maximale grootte te verhogen met behulp van de Azure Portal, [Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), [Power shell](/powershell/module/az.sql/set-azsqldatabase), de [Azure cli](/cli/azure/sql/db#az-sql-db-update)of de [rest API](https://docs.microsoft.com/rest/api/sql/databases/update).
+- Extra opslag ruimte voor één data base kan worden ingericht door de maximale grootte te verhogen met behulp van de Azure Portal, [Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql#examples-1), [Power shell](/powershell/module/az.sql/set-azsqldatabase), de [Azure cli](/cli/azure/sql/db#az-sql-db-update)of de [rest API](https://docs.microsoft.com/rest/api/sql/databases/update).
 - De prijs van extra opslag voor één data base is de extra opslag hoeveelheid vermenigvuldigd met de extra eenheids prijs voor opslag van de servicelaag. Zie [Azure SQL database prijzen](https://azure.microsoft.com/pricing/details/sql-database/)voor meer informatie over de prijs van extra opslag.
 
 > [!IMPORTANT]

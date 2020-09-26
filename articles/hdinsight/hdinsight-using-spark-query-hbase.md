@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 08/12/2020
-ms.openlocfilehash: 9454cb83d535d97a3dd95cd9f5d0636769797d08
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: eb62cf099d7ccc133a207a843a8be3debf5c5454
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166940"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308415"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>Apache Spark gebruiken om Apache HBase-gegevens te lezen en schrijven
 
@@ -23,7 +23,7 @@ Apache HBase wordt doorgaans opgevraagd met de API op laag niveau (scans, haalt 
 
 * Twee afzonderlijke HDInsight-clusters die zijn geïmplementeerd in hetzelfde [virtuele netwerk](./hdinsight-plan-virtual-network-deployment.md). Eén HBase en een Spark met ten minste Spark 2,1 (HDInsight 3,6) geïnstalleerd. Zie op [Linux gebaseerde clusters in HDInsight maken met behulp van de Azure Portal](hdinsight-hadoop-create-linux-clusters-portal.md)voor meer informatie.
 
-* Het URI-schema voor de primaire opslag van uw clusters. Dit schema is wasb://voor Azure Blob Storage, `abfs://` voor Azure data Lake Storage Gen2 of ADL://voor Azure data Lake Storage gen1. Als beveiligde overdracht is ingeschakeld voor Blob Storage, zou de URI zijn `wasbs://` .  Zie ook [beveiligde overdracht](../storage/common/storage-require-secure-transfer.md).
+* Het URI-schema voor de primaire opslag voor uw clusters. Dit schema is wasb://voor Azure Blob Storage, `abfs://` voor Azure data Lake Storage Gen2 of ADL://voor Azure data Lake Storage gen1. Als beveiligde overdracht is ingeschakeld voor Blob Storage, zou de URI zijn `wasbs://` .  Zie ook [beveiligde overdracht](../storage/common/storage-require-secure-transfer.md).
 
 ## <a name="overall-process"></a>Algemeen proces
 
@@ -94,11 +94,11 @@ __Opmerking__: voordat u doorgaat, moet u ervoor zorgen dat u het opslag account
     |Eigenschap | Waarde |
     |---|---|
     |Bash-script-URI|`https://hdiconfigactions.blob.core.windows.net/hbasesparkconnectorscript/connector-hbase.sh`|
-    |Knooppunt type (n)|Regio|
+    |Knooppunttype(n)|Regio|
     |Parameters|`-s SECONDARYS_STORAGE_URL`|
     |Persistente|ja|
 
-    * `SECONDARYS_STORAGE_URL`is de URL van de standaard opslag met Spark-zijde. Parameter voorbeeld:`-s wasb://sparkcon-2020-08-03t18-17-37-853z@sparkconhdistorage.blob.core.windows.net`
+    * `SECONDARYS_STORAGE_URL` is de URL van de standaard opslag met Spark-zijde. Parameter voorbeeld: `-s wasb://sparkcon-2020-08-03t18-17-37-853z@sparkconhdistorage.blob.core.windows.net`
 
 
 2.  Gebruik script actie op uw Spark-cluster om de wijzigingen toe te passen met de volgende overwegingen:
@@ -106,8 +106,8 @@ __Opmerking__: voordat u doorgaat, moet u ervoor zorgen dat u het opslag account
     |Eigenschap | Waarde |
     |---|---|
     |Bash-script-URI|`https://hdiconfigactions.blob.core.windows.net/hbasesparkconnectorscript/connector-spark.sh`|
-    |Knooppunt type (n)|Head, worker, Zookeeper|
-    |Parameters|`-s "SPARK-CRON-SCHEDULE"`(optioneel) `-h "HBASE-CRON-SCHEDULE"` Beschrijving|
+    |Knooppunttype(n)|Head, worker, Zookeeper|
+    |Parameters|`-s "SPARK-CRON-SCHEDULE"` (optioneel) `-h "HBASE-CRON-SCHEDULE"` Beschrijving|
     |Persistente|ja|
 
 
@@ -162,8 +162,8 @@ De volgende tabel bevat een voor beeld van twee versies en de bijbehorende opdra
 
     |Spark-versie| HDI HBase-versie  | SHC-versie    |  Opdracht  |
     | :-----------:| :----------: | :-----------: |:----------- |
-    |      2.1    | HDI 3,6 (HBase 1,1) | 1.1.0.3.1.2.2-1    | `spark-shell --packages com.hortonworks:shc-core:1.1.1-2.1-s_2.11 --repositories https://repo.hortonworks.com/content/groups/public/` |
-    |      2.4    | HDI 4,0 (HBase 2,0) | 1.1.1-2.1-s_2.11  | `spark-shell --packages com.hortonworks.shc:shc-core:1.1.0.3.1.2.2-1 --repositories http://repo.hortonworks.com/content/groups/public/` |
+    |      2.1    | HDI 3,6 (HBase 1,1) | 1.1.1-2.1-s_2.11    | `spark-shell --packages com.hortonworks:shc-core:1.1.1-2.1-s_2.11 --repositories https://repo.hortonworks.com/content/groups/public/` |
+    |      2.4    | HDI 4,0 (HBase 2,0) | 1.1.0.3.1.2.2-1  | `spark-shell --packages com.hortonworks.shc:shc-core:1.1.0.3.1.2.2-1 --repositories http://repo.hortonworks.com/content/groups/public/` |
 
 2. Bewaar dit Spark shell-exemplaar open en ga door met [het definiëren van een catalogus en query](#define-a-catalog-and-query). Als u de potten die overeenkomen met uw versies in de SHC-kern opslagplaats niet vindt, gaat u verder met lezen. 
 

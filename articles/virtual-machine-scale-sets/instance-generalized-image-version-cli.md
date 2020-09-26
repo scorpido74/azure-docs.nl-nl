@@ -1,6 +1,6 @@
 ---
 title: Een schaalset maken op basis van een gegeneraliseerde installatie kopie met Azure CLI
-description: Een schaalset maken met behulp van een gegeneraliseerde installatie kopie in een galerie met gedeelde afbeeldingen.
+description: Een schaalset maken met behulp van een gegeneraliseerde installatie kopie in een galerie met gedeelde afbeeldingen met behulp van de Azure CLI.
 author: cynthn
 ms.service: virtual-machine-scale-sets
 ms.subservice: imaging
@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 3cde06b652befa8fbb655273c19f65bd2f38e850
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 841247c03d9f3b151a0c75430715c03b009d831a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87069847"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287063"
 ---
 # <a name="create-a-scale-set-from-a-generalized-image-with-azure-cli"></a>Een schaalset maken op basis van een gegeneraliseerde installatie kopie met Azure CLI
 
@@ -38,7 +38,7 @@ az sig image-definition list \
 
 Maak de schaalset met behulp van [`az vmss create`](/cli/azure/vmss#az-vmss-create) . 
 
-Gebruik de definitie-ID van de installatie kopie `--image` om de instanties van de schaalset te maken op basis van de meest recente versie van de installatie kopie die beschikbaar is. U kunt ook instanties van een schaalset maken op basis van een specifieke versie door de versie-ID van de installatie kopie op te geven voor `--image` . Houd er rekening mee dat automatisering met behulp van een specifieke versie van de installatie kopie kan mislukken als deze specifieke installatie kopie versie niet beschikbaar is omdat deze is verwijderd of uit de regio is verwijderd. U kunt het beste de definitie-ID van de installatie kopie gebruiken voor het maken van uw nieuwe VM, tenzij een specifieke installatie kopie versie vereist is.
+Gebruik de id van de installatiekopiedefinitie voor `--image` om de schaalsetinstanties te maken op basis van de meest recente beschikbare versie van de installatiekopie. U kunt de schaalsetinstantie ook maken op basis van een specifieke versie door de id van de installatiekopieversie op te geven voor `--image`. Houd er rekening mee dat automatisering met behulp van een specifieke versie van de installatie kopie kan mislukken als deze specifieke installatie kopie versie niet beschikbaar is omdat deze is verwijderd of uit de regio is verwijderd. U kunt het beste de definitie-ID van de installatie kopie gebruiken voor het maken van uw nieuwe VM, tenzij een specifieke installatie kopie versie vereist is.
 
 In dit voor beeld maken we instanties van de nieuwste versie van de *myImageDefinition* -installatie kopie.
 
@@ -57,10 +57,10 @@ Het duurt enkele minuten om alle schaalsetresources en VM's te maken en te confi
 ## <a name="next-steps"></a>Volgende stappen
 Met [Azure Image Builder (preview)](../virtual-machines/linux/image-builder-overview.md) kunt u het maken van de installatie kopie versie automatiseren, maar u kunt deze zelfs gebruiken om [een nieuwe installatie kopie versie te maken op basis van een bestaande versie van de installatie kopie](../virtual-machines/linux/image-builder-gallery-update-image-version.md). 
 
-U kunt ook een resource voor de galerie met gedeelde afbeeldingen maken met behulp van sjablonen. Er zijn verschillende Azure Quick Start-sjablonen beschikbaar: 
+U kunt ook een resource voor de galerie met gedeelde afbeeldingen maken met behulp van sjablonen. Er zijn verschillende Azure-quickstart-sjablonen beschikbaar: 
 
 - [Een gedeelde installatiekopiegalerie maken](https://azure.microsoft.com/resources/templates/101-sig-create/)
 - [Een installatiekopiedefinitie maken in een gedeelde installatiekopiegalerie](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
 - [Een installatiekopieversie maken in een gedeelde installatiekopiegalerie](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
 
-Zie het [overzicht](shared-image-galleries.md)voor meer informatie over gedeelde afbeeldings galerieën. Als u problemen ondervindt, raadpleegt u [problemen met de galerie met gedeelde afbeeldingen oplossen](troubleshooting-shared-images.md).
+Zie het [overzicht](shared-image-galleries.md)voor meer informatie over gedeelde afbeeldings galerieën. Als u problemen ondervindt, raadpleegt u [problemen met de galerie met gedeelde afbeeldingen oplossen](../virtual-machines/troubleshooting-shared-images.md).

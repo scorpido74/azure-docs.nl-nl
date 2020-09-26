@@ -11,17 +11,17 @@ ms.date: 05/06/2020
 ms.author: mimart
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abd6423ebbdba11cd1b0e0c2d00cfd36aa745e72
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 93b2b5538df894e17449e173baa3e402d6c59654
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908493"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91354986"
 ---
 # <a name="language-customization-in-azure-active-directory-preview"></a>Taal aanpassing in Azure Active Directory (preview-versie)
 
 > [!NOTE]
-> Aanmelden via self-service is een open bare preview-functie van Azure Active Directory. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over Previews.
+> Aanmelden via self-service is een open bare preview-functie van Azure Active Directory. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 Door de taal aanpassing in Azure Active Directory (Azure AD) kan uw gebruikers stroom voorzien van verschillende talen die aan de behoeften van uw gebruiker voldoen. Micro soft biedt de vertalingen voor [36 talen](#supported-languages). Zelfs als uw ervaring slechts voor één taal wordt gegeven, kunt u de kenmerk namen aanpassen op de pagina kenmerk verzameling.
 
@@ -83,7 +83,7 @@ Vervang door `<ExtensionAttributeValue>` de nieuwe teken reeks die moet worden w
 
 ### <a name="provide-a-list-of-values-by-using-localizedcollections"></a>Een lijst met waarden opgeven met behulp van LocalizedCollections
 
-Als u een lijst met waarden voor antwoorden wilt opgeven, moet u een `LocalizedCollections` kenmerk maken. `LocalizedCollections`is een matrix van `Name` en- `Value` paren. De volg orde van de items is de volg orde waarin ze worden weer gegeven. Gebruik de volgende indeling om toe te voegen `LocalizedCollections` :
+Als u een lijst met waarden voor antwoorden wilt opgeven, moet u een `LocalizedCollections` kenmerk maken. `LocalizedCollections` is een matrix van `Name` en- `Value` paren. De volg orde van de items is de volg orde waarin ze worden weer gegeven. Gebruik de volgende indeling om toe te voegen `LocalizedCollections` :
 
 ```JSON
 {
@@ -107,9 +107,9 @@ Als u een lijst met waarden voor antwoorden wilt opgeven, moet u een `LocalizedC
 }
 ```
 
-* `ElementId`is het gebruikers kenmerk waarvan dit `LocalizedCollections` kenmerk een antwoord is.
-* `Name`is de waarde die wordt weer gegeven voor de gebruiker.
-* `Value`is wat wordt geretourneerd in de claim wanneer deze optie is geselecteerd.
+* `ElementId` is het gebruikers kenmerk waarvan dit `LocalizedCollections` kenmerk een antwoord is.
+* `Name` is de waarde die wordt weer gegeven voor de gebruiker.
+* `Value` is wat wordt geretourneerd in de claim wanneer deze optie is geselecteerd.
 
 ### <a name="upload-your-changes"></a>Uw wijzigingen uploaden
 
@@ -150,56 +150,56 @@ Azure AD biedt ondersteuning voor de volgende talen. De talen van de gebruikers 
 
 | Taal              | Taalcode | Gebruikersstromen         | MFA-meldingen  |
 |-----------------------| :-----------: | :----------------: | :----------------: |
-| Arabisch                | p.a.            | ![nee](./media/user-flow-customize-language/no.png) | ![ja](./media/user-flow-customize-language/yes.png) |
-| Bulgaars             | bg            | ![nee](./media/user-flow-customize-language/no.png) | ![ja](./media/user-flow-customize-language/yes.png) |
-| Bengalese                | bn            | ![ja](./media/user-flow-customize-language/yes.png) | ![nee](./media/user-flow-customize-language/no.png) |
-| Catalaans               | certificering            | ![nee](./media/user-flow-customize-language/no.png) | ![ja](./media/user-flow-customize-language/yes.png) |
-| Tsjechisch                 | Support            | ![ja](./media/user-flow-customize-language/yes.png) | ![ja](./media/user-flow-customize-language/yes.png) |
-| Deens                | da            | ![ja](./media/user-flow-customize-language/yes.png) | ![ja](./media/user-flow-customize-language/yes.png) |
-| Duits                | de            | ![ja](./media/user-flow-customize-language/yes.png) | ![ja](./media/user-flow-customize-language/yes.png) |
-| Grieks                 | ei            | ![ja](./media/user-flow-customize-language/yes.png) | ![ja](./media/user-flow-customize-language/yes.png) |
-| Engels               | nl            | ![ja](./media/user-flow-customize-language/yes.png) | ![ja](./media/user-flow-customize-language/yes.png) |
-| Spaans               | Ja            | ![ja](./media/user-flow-customize-language/yes.png) | ![ja](./media/user-flow-customize-language/yes.png) |
-| Ests              | et            | ![nee](./media/user-flow-customize-language/no.png) | ![ja](./media/user-flow-customize-language/yes.png) |
-| Baskisch                | EU            | ![nee](./media/user-flow-customize-language/no.png) | ![ja](./media/user-flow-customize-language/yes.png) |
-| Fins               | fi            | ![ja](./media/user-flow-customize-language/yes.png) | ![ja](./media/user-flow-customize-language/yes.png) |
-| Frans                | fr            | ![ja](./media/user-flow-customize-language/yes.png) | ![ja](./media/user-flow-customize-language/yes.png) |
-| Galicisch              | boekhoud            | ![nee](./media/user-flow-customize-language/no.png) | ![ja](./media/user-flow-customize-language/yes.png) |
-| Gujarati              | gu            | ![ja](./media/user-flow-customize-language/yes.png) | ![nee](./media/user-flow-customize-language/no.png) |
-| Hebreeuws                | Hij            | ![nee](./media/user-flow-customize-language/no.png) | ![ja](./media/user-flow-customize-language/yes.png) |
-| Hindi                 | Hallo            | ![ja](./media/user-flow-customize-language/yes.png) | ![ja](./media/user-flow-customize-language/yes.png) |
-| Kroatisch              | uur            | ![ja](./media/user-flow-customize-language/yes.png) | ![ja](./media/user-flow-customize-language/yes.png) |
-| Hongaars             | hu            | ![ja](./media/user-flow-customize-language/yes.png) | ![ja](./media/user-flow-customize-language/yes.png) |
-| Indonesisch            | id            | ![nee](./media/user-flow-customize-language/no.png) | ![ja](./media/user-flow-customize-language/yes.png) |
-| Italiaans               | it            | ![ja](./media/user-flow-customize-language/yes.png) | ![ja](./media/user-flow-customize-language/yes.png) |
-| Japans              | ja            | ![ja](./media/user-flow-customize-language/yes.png) | ![ja](./media/user-flow-customize-language/yes.png) |
-| Kazachs                | kk            | ![nee](./media/user-flow-customize-language/no.png) | ![ja](./media/user-flow-customize-language/yes.png) |
-| Kannada               | kn            | ![ja](./media/user-flow-customize-language/yes.png) | ![nee](./media/user-flow-customize-language/no.png) |
-| Koreaans                | ko            | ![ja](./media/user-flow-customize-language/yes.png) | ![ja](./media/user-flow-customize-language/yes.png) |
-| Litouws            | lt            | ![nee](./media/user-flow-customize-language/no.png) | ![ja](./media/user-flow-customize-language/yes.png) |
-| Lets               | LV            | ![nee](./media/user-flow-customize-language/no.png) | ![ja](./media/user-flow-customize-language/yes.png) |
-| Malajalam             | ml            | ![ja](./media/user-flow-customize-language/yes.png) | ![nee](./media/user-flow-customize-language/no.png) |
-| Marathi               | Dhr            | ![ja](./media/user-flow-customize-language/yes.png) | ![nee](./media/user-flow-customize-language/no.png) |
-| Maleisisch                 | Mevrouw            | ![ja](./media/user-flow-customize-language/yes.png) | ![ja](./media/user-flow-customize-language/yes.png) |
-| Noors Bokmål      | NB            | ![ja](./media/user-flow-customize-language/yes.png) | ![nee](./media/user-flow-customize-language/no.png) |
-| Nederlands                 | nl            | ![ja](./media/user-flow-customize-language/yes.png) | ![ja](./media/user-flow-customize-language/yes.png) |
-| Noors             | nee            | ![nee](./media/user-flow-customize-language/no.png) | ![ja](./media/user-flow-customize-language/yes.png) |
-| Punjabi               | PA            | ![ja](./media/user-flow-customize-language/yes.png) | ![nee](./media/user-flow-customize-language/no.png) |
-| Pools                | pl            | ![ja](./media/user-flow-customize-language/yes.png) | ![ja](./media/user-flow-customize-language/yes.png) |
-| Portuguese - Brazil   | pt-br         | ![ja](./media/user-flow-customize-language/yes.png) | ![ja](./media/user-flow-customize-language/yes.png) |
-| Portugees - Portugal | pt-pt         | ![ja](./media/user-flow-customize-language/yes.png) | ![ja](./media/user-flow-customize-language/yes.png) |
-| Roemeens              | Roll            | ![ja](./media/user-flow-customize-language/yes.png) | ![ja](./media/user-flow-customize-language/yes.png) |
-| Russisch               | ru            | ![ja](./media/user-flow-customize-language/yes.png) | ![ja](./media/user-flow-customize-language/yes.png) |
-| Slowaaks                | SK            | ![ja](./media/user-flow-customize-language/yes.png) | ![ja](./media/user-flow-customize-language/yes.png) |
-| Sloveens             | lineaire            | ![nee](./media/user-flow-customize-language/no.png) | ![ja](./media/user-flow-customize-language/yes.png) |
-| Servisch - Cyrillisch    | SR-Cryl-CS    | ![nee](./media/user-flow-customize-language/no.png) | ![ja](./media/user-flow-customize-language/yes.png) |
-| Servisch - Latijn       | SR-latn-cs    | ![nee](./media/user-flow-customize-language/no.png) | ![ja](./media/user-flow-customize-language/yes.png) |
-| Zweeds               | sv            | ![ja](./media/user-flow-customize-language/yes.png) | ![ja](./media/user-flow-customize-language/yes.png) |
-| Tamil                 | &            | ![ja](./media/user-flow-customize-language/yes.png) | ![nee](./media/user-flow-customize-language/no.png) |
-| Telugu                | Ken            | ![ja](./media/user-flow-customize-language/yes.png) | ![nee](./media/user-flow-customize-language/no.png) |
-| Thai                  | e            | ![ja](./media/user-flow-customize-language/yes.png) | ![ja](./media/user-flow-customize-language/yes.png) |
-| Turks               | formulieren            | ![ja](./media/user-flow-customize-language/yes.png) | ![ja](./media/user-flow-customize-language/yes.png) |
-| Oekraïens             | rijk            | ![nee](./media/user-flow-customize-language/no.png) | ![ja](./media/user-flow-customize-language/yes.png) |
-| Vietnamees            | beschreven            | ![nee](./media/user-flow-customize-language/no.png) | ![ja](./media/user-flow-customize-language/yes.png) |
-| Chinese - vereenvoudigd  | zh-Hans       | ![ja](./media/user-flow-customize-language/yes.png) | ![ja](./media/user-flow-customize-language/yes.png) |
-| Chinese - traditioneel | zh-hant       | ![ja](./media/user-flow-customize-language/yes.png) | ![ja](./media/user-flow-customize-language/yes.png) |
+| Arabisch                | p.a.            | ![X geeft Nee aan.](./media/user-flow-customize-language/no.png) | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) |
+| Bulgaars             | bg            | ![X geeft Nee aan.](./media/user-flow-customize-language/no.png) | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) |
+| Bengalese                | bn            | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) | ![X geeft Nee aan.](./media/user-flow-customize-language/no.png) |
+| Catalaans               | certificering            | ![X geeft Nee aan.](./media/user-flow-customize-language/no.png) | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) |
+| Tsjechisch                 | Support            | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) |
+| Deens                | da            | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) |
+| Duits                | de            | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) |
+| Grieks                 | ei            | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) |
+| Engels               | en            | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) |
+| Spaans               | es            | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) |
+| Ests              | et            | ![X geeft Nee aan.](./media/user-flow-customize-language/no.png) | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) |
+| Baskisch                | EU            | ![X geeft Nee aan.](./media/user-flow-customize-language/no.png) | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) |
+| Fins               | fi            | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) |
+| Frans                | fr            | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) |
+| Galicisch              | boekhoud            | ![X geeft Nee aan.](./media/user-flow-customize-language/no.png) | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) |
+| Gujarati              | gu            | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) | ![X geeft Nee aan.](./media/user-flow-customize-language/no.png) |
+| Hebreeuws                | Hij            | ![X geeft Nee aan.](./media/user-flow-customize-language/no.png) | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) |
+| Hindi                 | Hallo            | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) |
+| Kroatisch              | uur            | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) |
+| Hongaars             | hu            | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) |
+| Indonesisch            | id            | ![X geeft Nee aan.](./media/user-flow-customize-language/no.png) | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) |
+| Italiaans               | it            | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) |
+| Japans              | ja            | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) |
+| Kazachs                | kk            | ![X geeft Nee aan.](./media/user-flow-customize-language/no.png) | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) |
+| Kannada               | kn            | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) | ![X geeft Nee aan.](./media/user-flow-customize-language/no.png) |
+| Koreaans                | ko            | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) |
+| Litouws            | lt            | ![X geeft Nee aan.](./media/user-flow-customize-language/no.png) | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) |
+| Lets               | LV            | ![X geeft Nee aan.](./media/user-flow-customize-language/no.png) | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) |
+| Malajalam             | ml            | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) | ![X geeft Nee aan.](./media/user-flow-customize-language/no.png) |
+| Marathi               | Dhr            | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) | ![X geeft Nee aan.](./media/user-flow-customize-language/no.png) |
+| Maleisisch                 | Mevrouw            | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) |
+| Noors Bokmål      | NB            | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) | ![X geeft Nee aan.](./media/user-flow-customize-language/no.png) |
+| Nederlands                 | nl            | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) |
+| Noors             | nee            | ![X geeft Nee aan.](./media/user-flow-customize-language/no.png) | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) |
+| Punjabi               | PA            | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) | ![X geeft Nee aan.](./media/user-flow-customize-language/no.png) |
+| Pools                | pl            | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) |
+| Portuguese - Brazil   | pt-br         | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) |
+| Portugees - Portugal | pt-pt         | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) |
+| Roemeens              | Roll            | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) |
+| Russisch               | ru            | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) |
+| Slowaaks                | SK            | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) |
+| Sloveens             | lineaire            | ![X geeft Nee aan.](./media/user-flow-customize-language/no.png) | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) |
+| Servisch - Cyrillisch    | SR-Cryl-CS    | ![X geeft Nee aan.](./media/user-flow-customize-language/no.png) | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) |
+| Servisch - Latijn       | SR-latn-cs    | ![X geeft Nee aan.](./media/user-flow-customize-language/no.png) | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) |
+| Zweeds               | sv            | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) |
+| Tamil                 | &            | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) | ![X geeft Nee aan.](./media/user-flow-customize-language/no.png) |
+| Telugu                | Ken            | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) | ![X geeft Nee aan.](./media/user-flow-customize-language/no.png) |
+| Thai                  | e            | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) |
+| Turks               | formulieren            | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) |
+| Oekraïens             | rijk            | ![X geeft Nee aan.](./media/user-flow-customize-language/no.png) | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) |
+| Vietnamees            | beschreven            | ![X geeft Nee aan.](./media/user-flow-customize-language/no.png) | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) |
+| Chinese - vereenvoudigd  | zh-Hans       | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) |
+| Chinese - traditioneel | zh-hant       | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) | ![Groen vinkje.](./media/user-flow-customize-language/yes.png) |
