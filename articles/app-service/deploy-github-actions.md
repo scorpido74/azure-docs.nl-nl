@@ -7,12 +7,12 @@ ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: devx-track-python
-ms.openlocfilehash: 264976fdfe514a8778c60fe9242ac555f268718d
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 54e4ce409eb9f2a6bedd7861b3e268311f886b49
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962567"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273242"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>Implementeren naar App Service met behulp van GitHub-acties
 
@@ -24,12 +24,28 @@ ms.locfileid: "88962567"
 
 Een werk stroom wordt gedefinieerd door een YAML-bestand (. yml) in het `/.github/workflows/` pad in uw opslag plaats. Deze definitie bevat de verschillende stappen en para meters die deel uitmaken van de werk stroom.
 
+## <a name="use-the-deployment-center"></a>Het implementatie centrum gebruiken
+
+U kunt snel aan de slag met GitHub-acties met behulp van het App Service Deployment Center. Hiermee wordt automatisch een werk stroom bestand gegenereerd op basis van uw toepassings stack en dit door voeren in uw GitHub-opslag plaats in de juiste map.
+
+1. Navigeer naar uw webapp in azure Portal
+1. Klik aan de linkerkant op **implementatie centrum**
+1. Selecteer bij **continue implementatie (CI/cd)** **github**
+1. Selecteer vervolgens **github-acties**
+1. Gebruik de vervolg keuzelijsten om uw GitHub-opslag plaats, vertakking en toepassings stack te selecteren
+    - Als de geselecteerde vertakking is beveiligd, kunt u toch door gaan met het toevoegen van het werk stroom bestand. Controleer de branch-beveiliging voordat u doorgaat.
+1. In het laatste scherm kunt u uw selecties bekijken en een voor beeld bekijken van het werk stroom bestand dat wordt doorgevoerd naar de opslag plaats. Als de selecties juist zijn, klikt u op **volt ooien**
+
+Hiermee wordt het werk stroom bestand door doorgevoerd naar de opslag plaats. De werk stroom voor het maken en implementeren van uw app wordt onmiddellijk gestart.
+
+## <a name="add-the-workflow-manually"></a>De werk stroom hand matig toevoegen
+
 Voor een Azure App Service werk stroom heeft het bestand drie secties:
 
 |Sectie  |Taken  |
 |---------|---------|
 |**Verificatie** | 1. Definieer een service-principal. <br /> 2. Maak een GitHub-geheim. |
-|**PE** | 1. Stel de omgeving in. <br /> 2. bouw de web-app. |
+|**Ontwikkelen** | 1. Stel de omgeving in. <br /> 2. bouw de web-app. |
 |**Implementeren** | 1. Implementeer de web-app. |
 
 ## <a name="generate-deployment-credentials"></a>Implementatie referenties genereren

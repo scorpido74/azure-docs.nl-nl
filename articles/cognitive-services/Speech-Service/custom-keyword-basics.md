@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/20/2019
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d80f244f7b5e17d730451093070b971e9aa041b9
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 188824b9c43387cf106a3cdd53a09fd6bcb198b8
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88919009"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360664"
 ---
 # <a name="custom-keyword-basics"></a>Basisbeginselen van aangepaste trefwoorden
 
@@ -24,7 +24,7 @@ In dit artikel leert u de basis beginselen van het werken met aangepaste tref wo
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor de stappen in dit artikel is een spraak abonnement en de spraak-SDK vereist. Als u nog geen abonnement hebt, [kunt u de speech-service gratis uitproberen](get-started.md). Als u de SDK wilt downloaden, raadpleegt u de [installatie handleiding](quickstarts/setup-platform.md) voor uw platform.
+Voor de stappen in dit artikel is een spraak abonnement en de spraak-SDK vereist. Als u nog geen abonnement hebt, [kunt u de speech-service gratis uitproberen](overview.md#try-the-speech-service-for-free). Als u de SDK wilt downloaden, raadpleegt u de [installatie handleiding](quickstarts/setup-platform.md) voor uw platform.
 
 ## <a name="create-a-keyword-in-speech-studio"></a>Een tref woord maken in speech Studio
 

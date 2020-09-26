@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a4ab403ebafbf078accd2ee2256c0c5bb69548e9
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c837a4020ab1aaad1798d6b19e72e09edafea1f5
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288256"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360349"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>Architectuur en scenario's met hoge Beschik baarheid voor SAP net-Weaver
 
@@ -320,7 +320,7 @@ Zie [Azure storage-replicatie][azure-storage-redundancy]voor meer informatie.
 ### <a name="azure-managed-disks"></a>Azure Managed Disks
 Managed Disks is een resource type in Azure Resource Manager dat wordt aanbevolen om te worden gebruikt in plaats van virtuele harde schijven (Vhd's) die zijn opgeslagen in azure Storage-accounts. Beheerde schijven worden automatisch uitgelijnd met een Azure-beschikbaarheidsset van de virtuele machine waaraan deze zijn gekoppeld. Ze verg Roten de beschik baarheid van uw virtuele machine en de services die erop worden uitgevoerd.
 
-Zie [overzicht van Azure Managed disks][azure-storage-managed-disks-overview]voor meer informatie.
+Zie  [overzicht van Azure Managed disks][azure-storage-managed-disks-overview]voor meer informatie.
 
 We raden u aan Managed disks te gebruiken, omdat de implementatie en het beheer van uw virtuele machines worden vereenvoudigd.
 
@@ -332,7 +332,7 @@ Als u besluit geen functies zoals WSFC of pacemaker in Linux te gebruiken (momen
 
 Voor meer informatie over deze methode raadpleegt [u Azure Infrastructure VM opnieuw opstarten gebruiken om een hogere Beschik baarheid van het SAP-systeem te bereiken][sap-higher-availability].
 
-## <a name="high-availability-of-sap-applications-on-azure-iaas"></a><a name="baed0eb3-c662-4405-b114-24c10a62954e"></a>Hoge Beschik baarheid van SAP-toepassingen op Azure IaaS
+## <a name="high-availability-of-sap-applications-on-azure-iaas"></a><a name="baed0eb3-c662-4405-b114-24c10a62954e"></a> Hoge Beschik baarheid van SAP-toepassingen op Azure IaaS
 
 Als u maximale Beschik baarheid van een volledig SAP-systeem wilt behalen, moet u alle essentiële SAP-systeem onderdelen beveiligen. Bijvoorbeeld:
   * Redundante SAP-toepassings servers.
@@ -344,7 +344,7 @@ In de volgende secties wordt uitgelegd hoe u hoge Beschik baarheid kunt beheerse
 
 > Deze sectie is van toepassing op:
 >
-> ![Windows][Logo_Windows] Windows en ![Linux][Logo_Linux] Linux
+> ![Windows-logo.][Logo_Windows] Windows en ![Linux-logo.][Logo_Linux] Linux
 >
 
 Normaal gesp roken hebt u geen specifieke oplossing voor hoge Beschik baarheid nodig voor de SAP-toepassings server en dialoogvenster exemplaren. U behaalt hoge Beschik baarheid door redundantie en configureert meerdere dialoogvenster exemplaren in verschillende exemplaren van Azure virtual machines. Er moeten ten minste twee SAP-toepassings exemplaren zijn geïnstalleerd in twee exemplaren van Azure virtual machines.
@@ -382,7 +382,7 @@ Zie de sectie [Azure Availability sets][planning-guide-3.2.3] van de Azure virtu
 
 ### <a name="high-availability-architecture-for-an-sap-ascsscs-instance-on-windows"></a>Architectuur met hoge Beschik baarheid voor een SAP ASCS/SCS-exemplaar in Windows
 
-> ![Windows][Logo_Windows] Windows
+> ![Windows-logo.][Logo_Windows] Windows
 >
 
 U kunt een WSFC-oplossing gebruiken om het SAP ASCS/SCS-exemplaar te beveiligen. De oplossing heeft twee varianten:
@@ -395,7 +395,7 @@ U kunt een WSFC-oplossing gebruiken om het SAP ASCS/SCS-exemplaar te beveiligen.
 
 ### <a name="high-availability-architecture-for-an-sap-ascsscs-instance-on-linux"></a>Architectuur met hoge Beschik baarheid voor een SAP ASCS/SCS-instantie in Linux
 
-> ![Linux][Logo_Linux] Linux
+> ![Linux-logo.][Logo_Linux] Linux
 > 
 > Zie voor meer informatie over het clusteren van het SAP ASCS/SCS-exemplaar met behulp van het SLES-Cluster Framework [hoge Beschik baarheid voor SAP NetWeaver op Azure vm's op SuSE Linux Enterprise Server voor SAP-toepassingen][sap-suse-ascs-ha]. Voor een alternatieve architectuur voor SLES, waarvoor geen Maxi maal beschik bare NFS vereist is, raadpleegt u de [hand leiding met hoge Beschik baarheid voor SAP NetWeaver op SuSE Linux Enterprise Server met Azure NetApp files voor SAP-toepassingen][sap-suse-ascs-ha-anf].
 
@@ -404,7 +404,7 @@ Voor meer informatie over het clusteren van het SAP ASCS/SCS-exemplaar met behul
 
 ### <a name="sap-netweaver-multi-sid-configuration-for-a-clustered-sap-ascsscs-instance"></a>Multi-SID-configuratie van SAP net-Weaver voor een geclusterde SAP ASCS/SCS-instantie
 
-> ![Windows][Logo_Windows] Windows
+> ![Windows-logo.][Logo_Windows] Windows
 > 
 > Multi-SID wordt ondersteund door WSFC, met behulp van bestands share en gedeelde schijf.
 > 
@@ -414,7 +414,7 @@ Voor meer informatie over het clusteren van het SAP ASCS/SCS-exemplaar met behul
 
 * [SAP ASCS/SCS instance multi-SID hoge Beschik baarheid voor Windows Server-Failover Clustering en gedeelde schijf][sap-ascs-ha-multi-sid-wsfc-shared-disk]
 
-> ![Linux][Logo_Linux] Linux
+> ![Linux-logo.][Logo_Linux] Linux
 > 
 > Multi-SID clustering wordt ondersteund op Linux pacemaker-clusters voor SAP ASCS/ERS, beperkt tot **vijf** SAP-sid's op hetzelfde cluster.
 > Zie voor meer informatie over architectuur met een hoge Beschik baarheid voor multi-SID op Linux:

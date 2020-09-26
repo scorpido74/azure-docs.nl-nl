@@ -1,9 +1,9 @@
 ---
-ms.openlocfilehash: e40808d5bd4f7ff2f0933a87da2bf0e9b850e82b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 87df1e29ff7d625497d47d5805912128f7371693
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90884631"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376460"
 ---
-<Token>**Van toepassing op:** :::image type="content" source="../media/applies-to/yes.png" alt-text="Ja, één server":::Azure database for MySQL-één server :::image type="content" source="../media/applies-to/yes.png" alt-text="ja-flexibel-server":::Azure database for MySQL-flexibele server </Token>
+<Token>**van toepassing op:** :::image type="icon" source="../media/applies-to/yes.png" border="false"::: Azure Database for MySQL-Azure Database for MySQL van één server :::image type="icon" source="../media/applies-to/yes.png" border="false"::: -flexibele server </Token>
