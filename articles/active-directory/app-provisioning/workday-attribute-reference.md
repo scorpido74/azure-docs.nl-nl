@@ -1,6 +1,6 @@
 ---
 title: Verwijzing naar Workday-kenmerk
-description: Meer informatie over de kenmerken van SuccessFactors die worden ondersteund door SuccessFactors-HR ingericht inrichten
+description: Meer informatie over welke kenmerken u uit workday kunt ophalen met behulp van XPATH-query's.
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/25/2020
 ms.author: kenwith
 ms.reviewer: celested
-ms.openlocfilehash: 4d6e5fb765125a4cf68c4939e7350feb84509bf2
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 5892100140c6022763453a4141d87e6a7ba4ed75
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068095"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266561"
 ---
 # <a name="workday-attribute-reference"></a>Verwijzing naar Workday-kenmerk
 
@@ -226,7 +226,7 @@ Als u meer kenmerken aan de XPATH-tabel wilt toevoegen voor het voor deel van kl
 ## <a name="supported-xpath-functions"></a>Ondersteunde XPATH-functies
 Hieronder ziet u de lijst met XPATH-functies die worden ondersteund door [Microsoft .net XPath-bibliotheek](/previous-versions/dotnet/netframework-4.0/ms256138(v=vs.100)) , die u kunt gebruiken tijdens het maken van de XPath API-expressie. 
 
-* naam
+* name
 * duren
 * position
 * tekenreeks

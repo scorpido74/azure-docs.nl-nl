@@ -6,22 +6,22 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/31/2020
-ms.openlocfilehash: 1ea6d09609d1b7b3f7ba7297a040447d1fc24756
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f9578fadfbe057b723af63e338bf8bda63cf6f21
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83684391"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330907"
 ---
 # <a name="how-to-chart-performance-with-azure-monitor-for-vms"></a>Prestaties in kaart brengen met Azure Monitor voor VM's
 
-Azure Monitor voor VM's bevat een reeks prestatie diagrammen die gericht zijn op verschillende Key Performance Indica tors (Kpi's) waarmee u kunt bepalen hoe goed een virtuele machine wordt uitgevoerd. In de grafieken wordt het resource gebruik gedurende een bepaalde periode weer gegeven, zodat u knel punten, afwijkingen kunt identificeren of overschakelen naar een perspectief waarin elke machine wordt weer gegeven op basis van de geselecteerde metriek. Hoewel er talrijke elementen zijn waarmee u rekening moet houden bij de prestaties, wordt Azure Monitor voor VM's bewaakt de prestatie-indica tors van het sleutel besturings systeem die betrekking hebben op de processor, het geheugen, de netwerk adapter en het schijf gebruik. Prestaties vormen een aanvulling op de status controle functie en helpen problemen op te lossen die duiden op een mogelijke systeem onderdeel fout, ondersteuning voor afstemming en Optima Lise ring om efficiëntie te beleven of capaciteits planning te ondersteunen.  
+Azure Monitor voor VM's bevat een reeks prestatiegrafieken die gericht zijn op verschillende Key Performance Indicators (KPI's), waarmee u de prestaties van een virtuele machine kunt vaststellen. In de grafieken wordt het resource gebruik gedurende een bepaalde periode weer gegeven, zodat u knel punten, afwijkingen kunt identificeren of overschakelen naar een perspectief waarin elke machine wordt weer gegeven op basis van de geselecteerde metriek. Hoewel er talrijke elementen zijn waarmee u rekening moet houden bij de prestaties, wordt Azure Monitor voor VM's bewaakt de prestatie-indica tors van het sleutel besturings systeem die betrekking hebben op de processor, het geheugen, de netwerk adapter en het schijf gebruik. Prestaties vormen een aanvulling op de status controle functie en helpen problemen op te lossen die duiden op een mogelijke systeem onderdeel fout, ondersteuning voor afstemming en Optima Lise ring om efficiëntie te beleven of capaciteits planning te ondersteunen.  
 
 ## <a name="limitations"></a>Beperkingen
 Hieronder vindt u beperkingen in de prestatie verzameling met Azure Monitor voor VM's.
 
 - **Beschikbaar geheugen** is niet beschikbaar voor virtuele machines waarop Red Hat Linux (RHEL) 6 wordt uitgevoerd. Deze metriek wordt berekend op basis van **MemAvailable** die is geïntroduceerd in [kernel versie 3,14](http://www.man7.org/linux/man-pages/man1/free.1.html).
-- Metrieken zijn alleen beschikbaar voor gegevens schijven op virtuele Linux-machines die gebruikmaken van de EXT-bestandssysteem familie (EXT2, EXT3, EXT4).
+- Metrieken zijn alleen beschikbaar voor gegevens schijven op virtuele Linux-machines met behulp van XFS File System of EXT File System-familie (EXT2, EXT3, EXT4).
 
 ## <a name="multi-vm-perspective-from-azure-monitor"></a>Multi-VM-perspectief van Azure Monitor
 
@@ -29,7 +29,7 @@ De functie prestaties van Azure Monitor biedt een overzicht van alle bewaakte Vm
 
 1. Selecteer in de Azure Portal **monitor**. 
 2. Kies **virtual machines** in het gedeelte **oplossingen** .
-3. Selecteer het tabblad **prestaties** .
+3. Selecteer het tabblad **Prestaties**.
 
 ![Top N lijst weergave van VM Insights-prestaties](media/vminsights-performance/vminsights-performance-aggview-01.png)
 
@@ -89,9 +89,9 @@ Voer de volgende stappen uit om rechtstreeks vanaf een virtuele machine toegang 
 
 1. Selecteer **virtual machines**In het Azure Portal. 
 2. Kies een virtuele machine in de lijst en kies **inzichten**in de sectie **bewaking** .  
-3. Selecteer het tabblad **prestaties** . 
+3. Selecteer het tabblad **Prestaties**. 
 
-Deze pagina bevat niet alleen diagrammen voor prestatie gebruik, maar ook een tabel met voor elke gedetecteerde logische schijf, de capaciteit, het gebruik en het totale gemiddelde van elke meting.  
+Deze pagina bevat niet alleen grafieken voor prestatiebelasting, maar ook een tabel die voor elke gedetecteerde logische schijf, de capaciteit, de belasting en het totale gemiddelde van elke meting laat zien.  
 
 De volgende grafieken voor capaciteits gebruik zijn opgenomen:
 

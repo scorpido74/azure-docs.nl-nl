@@ -5,21 +5,24 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 07/14/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a Network Virtual Appliance (NVA) in my Virtual WAN hub.
-ms.openlocfilehash: c5f120d6d9d80db4eaa9cf6f68e8dd27d45c8aea
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 83267b1bebd501871277ea3e40b7fa9ba38f33cd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097120"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91313753"
 ---
 # <a name="how-to-create-a-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Een virtueel netwerk apparaat maken in een virtuele WAN-hub van Azure (preview)
 
 In deze zelf studie ziet u hoe u met behulp van virtueel WAN verbinding maakt met uw resources in azure via een **virtueel netwerk apparaat** (NVA) in Azure. Voor dit type verbinding moet er on-premises een VPN-apparaat aanwezig zijn waaraan een extern openbaar IP-adres is toegewezen. Zie voor meer informatie over Virtual WAN het [Overzicht van Virtual WAN](virtual-wan-about.md).
 
 Met de stappen in dit artikel kunt u een virtueel **Barracuda CLOUDGEN WAN** -netwerk maken in de virtuele WAN-hub. U kunt deze oefening alleen uitvoeren als u een Barracuda-Cloud apparaat (CPE) en een licentie voor het Barracuda CloudGen WAN-toestel hebt dat u in de hub implementeert voordat u begint.
+
+Voor implementatie documentatie van **Cisco SD-WAN** in azure Virtual WAN, stuurt u een E-mail naar Cisco op het volgende e-mail adres: vwan_public_preview@cisco.com .
+
 
 ## <a name="before-you-begin"></a>Voordat u begint
 

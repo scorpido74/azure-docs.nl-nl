@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: reference
-ms.date: 08/31/2020
+ms.date: 09/22/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a861a038cefec56dfaaed1aca443f494dc82680
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: c65d77d2cf50a59f18f0007e809e9913c3a5ae13
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90055755"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91304217"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Machtigingen voor beheerrol in Azure Active Directory
 
@@ -155,8 +155,6 @@ In | Wel
 ### <a name="conditional-access-administrator"></a>[Beheerder van voorwaardelijke toegang](#conditional-access-administrator-permissions)
 
 Gebruikers met deze rol kunnen Azure Active Directory instellingen voor voorwaardelijke toegang beheren.
-> [!NOTE]
-> Als u beleid voor voorwaardelijke toegang van Exchange ActiveSync wilt implementeren in azure, moet de gebruiker ook een globale beheerder zijn.
 
 ### <a name="customer-lockbox-access-approver"></a>[Klanten-lockbox Access-fiatteur](#customer-lockbox-access-approver-permissions)
 
@@ -499,7 +497,7 @@ Gebruikers met deze rol kunnen gebruikers maken en alle aspecten van gebruikers 
 | --- | --- |
 |Algemene machtigingen|<p>Gebruikers en groepen maken</p><p>Gebruikersweergaven maken en beheren</p><p>Office-ondersteunings tickets beheren<p>Verloop beleid voor wacht woorden bijwerken|
 | <p>Voor alle gebruikers, inclusief alle beheerders</p>|<p>Licenties beheren</p><p>Alle gebruikers eigenschappen beheren, met uitzonde ring van Principal-naam van gebruiker</p>
-| Alleen voor gebruikers die niet-beheerders zijn of in een van de volgende beperkte beheerders rollen:<ul><li>Adreslijst lezers<li>Groeps beheerder<li>Gast uitnodiging<li>Helpdesk beheerder<li>Berichten centrum-lezer<li>Wachtwoord beheerder<li>Rapport lezer<li>Gebruikers beheerder|<p>Verwijderen en herstellen</p><p>Uitschakelen en inschakelen</p><p>Vernieuwings tokens ongeldig maken</p><p>Alle gebruikers eigenschappen beheren, met inbegrip van Principal-naam van gebruiker</p><p>Wachtwoord opnieuw instellen</p><p>Apparaatinstellingen bijwerken (FIDO)</p>|
+| Alleen voor gebruikers die niet-beheerders zijn of in een van de volgende beperkte beheerders rollen:<ul><li>Adreslijst lezers<li>Groeps beheerder<li>Gast uitnodiging<li>Helpdesk beheerder<li>Berichten centrum-lezer<li>Wachtwoord beheerder<li>Rapport lezer<li>Gebruikersbeheerder|<p>Verwijderen en herstellen</p><p>Uitschakelen en inschakelen</p><p>Vernieuwings tokens ongeldig maken</p><p>Alle gebruikers eigenschappen beheren, met inbegrip van Principal-naam van gebruiker</p><p>Wachtwoord opnieuw instellen</p><p>Apparaatinstellingen bijwerken (FIDO)</p>|
 
 > [!IMPORTANT]
 > Gebruikers met deze rol kunnen wacht woorden wijzigen voor personen die mogelijk toegang hebben tot gevoelige of persoonlijke informatie of een kritieke configuratie binnen en buiten Azure Active Directory. Het wijzigen van het wacht woord van een gebruiker kan betekenen dat de identiteit en machtigingen van de gebruiker worden aangenomen. Bijvoorbeeld:
@@ -1987,7 +1985,7 @@ De volgende rollen mogen niet worden gebruikt. Ze zijn afgeschaft en worden in d
 
 Niet elke rol die wordt geretourneerd door Power shell of MS Graph API is zichtbaar in Azure Portal. In de volgende tabel worden deze verschillen ingedeeld.
 
-API-naam | Azure Portal naam | Notities
+API-naam | Azure Portal naam | Opmerkingen
 -------- | ------------------- | -------------
 Company Administratoristrain opr | Hoofdbeheerder | [De naam is gewijzigd voor betere duidelijkheid](directory-assign-admin-roles.md#role-template-ids)
 CRM Service-beheerder | Dynamics 365-beheerder | [Weerspiegelt huidige product huisstijl](directory-assign-admin-roles.md#role-template-ids)

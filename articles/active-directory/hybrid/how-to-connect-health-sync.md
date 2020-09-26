@@ -16,17 +16,17 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef1e988bef3876fafdee4f7f6f109858e85d75d0
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: efb332cf8d5e34a435010a39a12b38f87cff5875
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89278731"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91313362"
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>De Azure AD Connect synchronisatie met Azure AD Connect Health bewaken
 De volgende documentatie is specifiek voor het bewaken van Azure AD Connect-synchronisatie met Azure AD Connect Health.  Zie [Using Azure AD Connect Health with AD FS](how-to-connect-health-adfs.md) (Engelstalig) voor informatie over het controleren van AD FS met Azure AD Connect Health. Zie ook [Azure AD Connect Health gebruiken met AD DS](how-to-connect-health-adds.md) voor informatie over het bewaken van Active Directory Domain Services met Azure AD Connect Health.
 
-![Azure AD Connect Health voor synchroniseren](./media/how-to-connect-health-sync/syncsnapshot.png)
+![Scherm afbeelding van de pagina Azure AD Connect Health voor synchronisatie.](./media/how-to-connect-health-sync/syncsnapshot.png)
 
 ## <a name="alerts-for-azure-ad-connect-health-for-sync"></a>Waarschuwingen voor Azure AD Connect Health voor synchroniseren
 In de sectie Waarschuwingen van Azure AD Connect Health voor synchroniseren vindt u een lijst met actieve waarschuwingen. Elke waarschuwing omvat relevante informatie, stappen voor het oplossen van het probleem en koppelingen naar gerelateerde documentatie. Als u een actieve of opgeloste waarschuwing selecteert, ziet u een nieuwe blade met aanvullende informatie. Ook ziet u stappen die u kunt nemen voor het oplossen van het probleem en koppelingen naar aanvullende documentatie. U kunt ook u historische gegevens bekijken voor waarschuwingen die in het verleden zijn opgelost.
@@ -40,11 +40,11 @@ Als Azure AD Connect NIET wordt gebruikt met de standaardconfiguratie (bijvoorbe
 
 Dit beperkt de evaluatie van waarschuwingen door de service. In Azure Portal ziet u onder uw service een banner waarin deze situatie wordt beschreven.
 
-![Azure AD Connect Health voor synchroniseren](./media/how-to-connect-health-sync/banner.png)
+![Scherm afbeelding van de waarschuwings banner met de melding evaluatie is beperkt. Werk uw instellingen bij om alle waarschuwingen in te scha kelen.](./media/how-to-connect-health-sync/banner.png)
 
 U kunt dit wijzigen door te klikken op 'Instellingen' en de Azure AD Connect Health-agent toestemming te verlenen om alle foutlogboeken te uploaden.
 
-![Azure AD Connect Health voor synchroniseren](./media/how-to-connect-health-sync/banner2.png)
+![Scherm afbeelding van de optie instellingen, en de sectie instellingen met de optie opslaan en de optie bij aangeroepen.](./media/how-to-connect-health-sync/banner2.png)
 
 ## <a name="sync-insight"></a>Inzicht in synchronisatie
 Beheerders willen vaak weten hoe lang het duurt om wijzigingen te synchroniseren met Azure AD en hoeveel wijzigingen er worden uitgevoerd. Deze functie biedt een eenvoudige manier om dit te visualiseren met behulp van onderstaande grafieken:   
@@ -55,14 +55,14 @@ Beheerders willen vaak weten hoe lang het duurt om wijzigingen te synchroniseren
 ### <a name="sync-latency"></a>Synchronisatielatentie
 Met deze functie wordt een grafische trend weergegeven van de latentie van de synchronisatiebewerkingen (import, export, enzovoort) voor connectoren.  Dit biedt een snelle en eenvoudige manier om niet alleen inzicht te krijgen in de latentie van uw bewerkingen (groter als er een grote set wijzigingen moet worden uitgevoerd), maar het is ook een manier om onregelmatigheden in de latentie te ontdekken die nader moeten worden onderzocht.
 
-![Synchronisatielatentie](./media/how-to-connect-health-sync/synclatency02.png)
+![Scherm afbeelding van de grafiek met de uitvoerings profiel vertraging van de afgelopen 3 dagen.](./media/how-to-connect-health-sync/synclatency02.png)
 
 Standaard wordt alleen de latentie van de bewerking 'Exporteren' voor de Azure AD-connector weergegeven.  Als u meer bewerkingen wilt bekijken voor de connector of als u bewerkingen van andere connectoren wilt zien, klikt u met de rechtermuisknop in de grafiek en kiest u Grafiek bewerken. U kunt ook op de knop Latentiediagram bewerken klikken en de specifieke bewerking en connectoren selecteren.
 
 ### <a name="sync-object-changes"></a>Synchronisatie van objectwijzigingen
 Deze functie biedt een grafisch weergegeven trend van het aantal wijzigingen dat wordt geëvalueerd en geëxporteerd naar Azure AD.  Op dit moment is het verzamelen van deze informatie uit de synchronisatielogboeken nog moeilijk.  De grafiek biedt niet alleen een eenvoudigere manier om het aantal wijzigingen in uw omgeving te controleren, maar ook een visuele weergave van de fouten die zich voordoen.
 
-![Synchronisatielatentie](./media/how-to-connect-health-sync/syncobjectchanges02.png)
+![Scherm afbeelding van de export statistieken naar Azure AD in de afgelopen 3 dagen-grafiek.](./media/how-to-connect-health-sync/syncobjectchanges02.png)
 
 ## <a name="object-level-synchronization-error-report"></a>Synchronisatiefoutenrapport op objectniveau
 Deze functie genereert een rapport over synchronisatiefouten die zich voordoen wanneer identiteitsgegevens worden gesynchroniseerd tussen Windows Server AD en Azure AD met Azure AD Connect.

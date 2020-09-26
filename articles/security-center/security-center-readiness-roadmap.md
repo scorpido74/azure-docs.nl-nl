@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: memildin
-ms.openlocfilehash: 3a3dd1c0df32e7d6a67e63c9e148327d30f0082c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 52ea6f862b7ef6190348743a128912131e6a9609
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904723"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314484"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Azure Security Center gereedheids schema
 Dit document bevat een roadmap naar gereedheid die u helpt aan de slag te gaan met Azure Security Center.
@@ -29,8 +29,8 @@ Azure Security Center biedt geïntegreerd beveiligingsbeheer en geavanceerde bed
 Gebruik de volgende bronnen om aan de slag te gaan met Security Center.
 
 Artikelen
-- [Inleiding tot Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
-- [Snelstartgids voor Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-get-started)
+- [Inleiding tot Azure Security Center](security-center-introduction.md)
+- [Snelstartgids voor Azure Security Center](security-center-get-started.md)
 
 Video's
 - [Korte introductievideo](https://azure.microsoft.com/resources/videos/introduction-to-azure-security-center/)
@@ -42,7 +42,7 @@ Als u optimaal wilt profiteren van Security Center, is het belangrijk te begrijp
 
 Gebruik de volgende bronnen als hulpmiddel tijdens de plannings- en bewerkingsprocessen.
 
-- [Plannings- en bedieningsgids voor Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)
+- [Plannings- en bedieningsgids voor Azure Security Center](security-center-planning-and-operations-guide.md)
 
 
 ### <a name="onboarding-computers-to-security-center"></a>Computers voorbereiden voor Security Center
@@ -100,7 +100,7 @@ Artikelen
 * [Web Application Firewall (WAF) recommendation playbook in Security Center](https://gallery.technet.microsoft.com/ASC-Playbook-Protect-38bd47ff) (ASC-playbook: Servers beschermen met Web Application Firewall)
 * [Azure Security Center Playbook: Beveiligingswaarschuwingen](https://gallery.technet.microsoft.com/Azure-Security-Center-f621a046)
 
-## <a name="additional-resources"></a>Extra resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 * [Documentatiepagina van Security Center](https://docs.microsoft.com/azure/security-center/)
 * [Documentatiepagina van Security Center REST API](https://msdn.microsoft.com/library/mt704034.aspx)
 * [Veelgestelde vragen over Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-faq)

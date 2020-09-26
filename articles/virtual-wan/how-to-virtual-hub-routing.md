@@ -6,14 +6,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 07/07/2020
+ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 00d79f8058d7d478f7fe97ba9677e47098b70e1b
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: cae74a5f4859d208765c9a7e5cde05ff3c0c3096
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89145923"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91313685"
 ---
 # <a name="how-to-configure-virtual-hub-routing"></a>Virtuele hubroutering configureren
 
@@ -21,7 +21,7 @@ Een virtuele hub kan meerdere gateways bevatten, zoals een site-naar-site-VPN-ga
 
 Zie [about Virtual hub Routing](about-virtual-hub-routing.md)(Engelstalig) voor meer informatie.
 
-## <a name="create-a-route-table"></a><a name="create-table"></a>Een routetabel maken
+## <a name="create-a-route-table"></a><a name="create-table"></a>Een route tabel maken
 
 1. Navigeer in het Azure Portal naar de virtuele hub.
 2. Onder **connectiviteit**selecteert u **route ring**. Op de pagina route ring ziet u de **standaard** -en **geen** -route tabellen.
@@ -32,7 +32,7 @@ Zie [about Virtual hub Routing](about-virtual-hub-routing.md)(Engelstalig) voor 
 
    :::image type="content" source="./media/how-to-virtual-hub-routing/basics.png" alt-text="Tabblad Basisbeginselen":::
 
-   * **Name**
+   * **Naam**
    * **Routes**
    * **Routenaam**
    * **Doeltype**

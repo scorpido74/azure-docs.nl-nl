@@ -4,12 +4,12 @@ description: In dit artikel vindt u Naslag informatie voor architectuur voor Azu
 ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 8b71774d9a833adefdd25214ea4f0e8bdaaba485
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e0791fb6c4de3da8108ffbd296c681f993c6b6cb
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85480181"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91367747"
 ---
 # <a name="azure-devtest-labs-reference-architecture-for-enterprises"></a>Azure DevTest Labs referentie architectuur voor ondernemingen
 Dit artikel bevat referentie architectuur om u te helpen bij het implementeren van een oplossing op basis van Azure DevTest Labs in een onderneming. Het bevat het volgende:
@@ -46,7 +46,7 @@ Hoewel DevTest Labs geen ingebouwde quota's of limieten heeft, hebben andere Azu
     - **Gedeelde open bare Ip's gebruiken**: alle virtuele machines van dezelfde grootte en regio gaan naar dezelfde resource groep. Deze configuratie is een ' middens ' tussen de quota van de resource groep en de quota voor bron typen per resource groep als de virtuele machines open bare IP-adressen mogen hebben.
 - **Resources per resource groep per resource type**: de standaard limiet voor [resources per resource groep per resource type is 800](../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits).  Wanneer u de *alle virtuele machines naar dezelfde configuratie van de resource groep* gebruikt, bereiken gebruikers deze abonnements limiet veel eerder, met name als de virtuele machines veel extra schijven hebben.
 - **Opslag accounts**: een lab in DevTest Labs wordt geleverd met een opslag account. Het Azure-quotum voor het [aantal opslag accounts per regio per abonnement is 250](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits). Het maximum aantal DevTest Labs in dezelfde regio is ook 250.
-- **Roltoewijzingen**: een roltoewijzing geeft een gebruiker of Principal toegang tot een resource (eigenaar, resource, machtigings niveau). In azure geldt een [limiet van 2.000 roltoewijzingen per abonnement](../azure-resource-manager/management/azure-subscription-service-limits.md#role-based-access-control-limits). Standaard maakt de DevTest Labs-service een resource groep voor elke VM. De eigenaar beschikt over de machtiging *eigenaar* voor de DEVTEST Labs VM en *lezers* machtiging voor de resource groep. Op deze manier maakt elke nieuwe VM die u maakt gebruik van twee roltoewijzingen naast de toewijzingen die worden gebruikt wanneer u gebruikers machtigt voor het lab.
+- **Roltoewijzingen**: een roltoewijzing geeft een gebruiker of Principal toegang tot een resource (eigenaar, resource, machtigings niveau). In azure geldt een [limiet van 2.000 roltoewijzingen per abonnement](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-role-based-access-control-limits). Standaard maakt de DevTest Labs-service een resource groep voor elke VM. De eigenaar beschikt over de machtiging *eigenaar* voor de DEVTEST Labs VM en *lezers* machtiging voor de resource groep. Op deze manier maakt elke nieuwe VM die u maakt gebruik van twee roltoewijzingen naast de toewijzingen die worden gebruikt wanneer u gebruikers machtigt voor het lab.
 - **Lees-en schrijf bewerkingen**van de API: er zijn verschillende manieren om Azure en DevTest Labs te automatiseren, waaronder rest Api's, Power shell, Azure CLI en Azure SDK. Via Automation kunt u een andere limiet voor API-aanvragen bereiken: elk abonnement biedt Maxi maal [12.000 Lees aanvragen en 1.200 schrijf aanvragen per uur](../azure-resource-manager/management/request-limits-and-throttling.md). Houd rekening met deze limiet wanneer u DevTest Labs automatiseert.
 
 ## <a name="manageability-considerations"></a>Beheerbaarheidsoverwegingen

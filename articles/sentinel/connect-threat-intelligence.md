@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/22/2019
 ms.author: yelevin
-ms.openlocfilehash: 8036203e33fd63a25ecfa7c4ea720e01259be04a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d794b0a33eabedd3e6e309f291543ba23bc40f79
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84769870"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362743"
 ---
 # <a name="connect-data-from-threat-intelligence-providers"></a>Verbinding maken met gegevens van Threat Intelligence-providers
 
@@ -59,13 +59,13 @@ U kunt bedreigings indicatoren streamen naar Azure Sentinel door gebruik te make
 
 ## <a name="connect-azure-sentinel-to-your-threat-intelligence-platform"></a>Azure-Sentinel verbinden met uw Threat Intelligence-platform
 
-## <a name="prerequisites"></a>Vereisten  
+### <a name="prerequisites"></a>Vereisten  
 
 - De Azure AD-rol van globale beheerder of beveiligings beheerder om machtigingen te verlenen aan uw TIP-product of een aangepaste toepassing die gebruikmaakt van directe integratie met de Microsoft Graph Security tiIndicators API.
 
 - Lees-en schrijf machtigingen voor de Azure Sentinel-werk ruimte om uw bedreigings indicatoren op te slaan.
 
-## <a name="instructions"></a>Instructies
+### <a name="instructions"></a>Instructies
 
 1. [Registreer een toepassing](/graph/auth-v2-service#1-register-your-app) in azure Active Directory om een toepassings-id, toepassings geheim en Azure Active Directory Tenant-id op te halen. U hebt deze waarden nodig voor wanneer u uw geïntegreerde TIP-product of-app configureert die gebruikmaakt van directe integratie met Microsoft Graph Security tiIndicators-API.
 
@@ -89,13 +89,13 @@ U kunt bedreigings indicatoren streamen naar Azure Sentinel door gebruik te make
 
 ## <a name="connect-azure-sentinel-to-taxii-servers"></a>Azure-Sentinel verbinden met TAXII-servers
 
-## <a name="prerequisites"></a>Vereisten  
+### <a name="prerequisites"></a>Vereisten
 
 - Lees-en schrijf machtigingen voor de Azure Sentinel-werk ruimte om uw bedreigings indicatoren op te slaan.
 
 - TAXII 2,0-server-URI en verzameling-ID.
 
-## <a name="instructions"></a>Instructies
+### <a name="instructions"></a>Instructies
 
 1. Navigeer in het Azure Portal naar **Azure Sentinel**  >  **Data connectors** en selecteer vervolgens de connector **Threat Intelligence-TAXII (preview)** .
 

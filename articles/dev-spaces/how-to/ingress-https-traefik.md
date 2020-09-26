@@ -5,13 +5,13 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 description: Meer informatie over het configureren van Azure dev Spaces voor het gebruik van een aangepaste traefik ingress-controller en het configureren van HTTPS met deze ingangs controller
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, servicemesh, servicemeshroutering, kubectl, k8s
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 3938209e80eb211afc332997b5b241c12a0f6eb9
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.custom: devx-track-js
+ms.openlocfilehash: cb638658eb6f01b5dc4455ee8f797f03478a995d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212456"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331910"
 ---
 # <a name="use-a-custom-traefik-ingress-controller-and-configure-https"></a>Een aangepaste traefik ingangs controller gebruiken en HTTPS configureren
 
@@ -363,7 +363,7 @@ Ga naar de voorbeeld toepassing in de *azureuser1 voor ontwikkel aars/* onderlig
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over de werking van Azure dev Spaces.
+Meer informatie over hoe Azure Dev Spaces werkt.
 
 > [!div class="nextstepaction"]
 > [Hoe Azure Dev Spaces werkt](../how-dev-spaces-works.md)

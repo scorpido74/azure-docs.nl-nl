@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/03/2019
+ms.date: 09/16/2020
 ms.author: kenwith
-ms.openlocfilehash: 5040fca85857cd131731d67c543c08fb1114ccee
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 666c4e52ed521c169ff80b33e2ab0e83b13e4d03
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235221"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266697"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Kenmerk toewijzingen voor het inrichten van gebruikers aanpassen voor SaaS-toepassingen in Azure Active Directory
 
@@ -276,8 +276,8 @@ Volg de onderstaande stappen om rollen voor een gebruiker in te richten voor uw 
 ## <a name="provisioning-a-multi-value-attribute"></a>Een kenmerk met meerdere waarden inrichten
 Bepaalde kenmerken, zoals phoneNumbers en e-mail berichten, zijn kenmerken met meerdere waarden, waarbij u mogelijk verschillende typen telefoon nummers of e-mail berichten moet opgeven. Gebruik de onderstaande expressie voor kenmerken met meerdere waarden. Hiermee kunt u het kenmerk type opgeven en toewijzen aan het bijbehorende Azure AD-gebruikers kenmerk voor de waarde. 
 
-* phoneNumbers [type EQ "werk]. waarde
-* phoneNumbers [type EQ "Mobile"]. waarde
+* phoneNumbers[type eq "work"].value
+* phoneNumbers[type eq "mobile"].value
 * phoneNumbers [type EQ "fax"]. waarde
 
    ```json
@@ -316,6 +316,7 @@ Als u deze optie selecteert, wordt een hersynchronisatie van alle gebruikers gef
 - De Azure AD-inrichtings service biedt geen ondersteuning voor het inrichten van Null-waarden.
 - De primaire sleutel, meestal ' ID ', mag niet worden opgenomen als een doel kenmerk in uw kenmerk toewijzingen. 
 - Het kenmerk role moet meestal worden toegewezen met behulp van een expressie, in plaats van een directe toewijzing. Zie de sectie hierboven voor meer informatie over de toewijzing van rollen. 
+- Hoewel u groepen uit uw toewijzingen kunt uitschakelen, wordt het uitschakelen van gebruikers niet ondersteund. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -323,4 +324,4 @@ Als u deze optie selecteert, wordt een hersynchronisatie van alle gebruikers gef
 - [Expressies schrijven voor kenmerk toewijzingen](../app-provisioning/functions-for-customizing-application-data.md)
 - [Filters voor het inrichten van gebruikers in bereik](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)
 - [Using SCIM to enable automatic provisioning of users and groups from Azure Active Directory to applications](use-scim-to-provision-users-and-groups.md) (SCIM gebruiken om in te stellen dat gebruikers en groepen van Azure Active Directory automatisch worden ingericht voor toepassingen)
-- [Lijst met handleidingen voor het integreren van SaaS-apps](../saas-apps/tutorial-list.md)
+- [Lijst met zelf studies voor het integreren van SaaS-apps](../saas-apps/tutorial-list.md)

@@ -7,14 +7,14 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
-ms.openlocfilehash: 4b1b8a0cfa98d48d7cb92474c1572f17c79ffd0d
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 217e3b9de7c9a46174c6ce6d1a3b151c904a7bf2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498949"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91314110"
 ---
-# <a name="vmware-to-azure-disaster-recovery-architecture"></a>Architectuur voor nood herstel van VMware naar Azure
+# <a name="vmware-to-azure-disaster-recovery-architecture"></a>Architectuur voor herstel na noodgeval van VMware naar Azure
 
 In dit artikel worden de architectuur en processen beschreven die worden gebruikt bij het implementeren van herstel na nood gevallen, failover en herstel van virtuele VMware-machines (Vm's) tussen een on-premises VMware-site en Azure met behulp van de [Azure site Recovery](site-recovery-overview.md) -service.
 
@@ -50,6 +50,8 @@ Als u een URL-firewallproxy gebruikt om de uitgaande connectiviteit te beheren, 
 | Replicatie               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | Maakt het de VM mogelijk te communiceren met de Site Recovery-service. |
 | Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | Maakt het de VM mogelijk bewakings- en diagnosegegevens van Site Recovery te schrijven. |
 
+Raadpleeg [de sectie netwerk vereisten in het artikel](vmware-azure-deploy-configuration-server.md#prerequisites)vereisten voor een uitgebreide lijst met url's die moeten worden white list voor communicatie tussen on-premises Azure site Recovery-infra structuur en Azure-Services.
+
 ## <a name="replication-process"></a>Replicatieproces
 
 1. Wanneer u replicatie voor een virtuele machine inschakelt, begint de initiële replicatie naar Azure Storage met behulp van het opgegeven replicatie beleid. Houd rekening met het volgende:
@@ -82,6 +84,54 @@ Als u een URL-firewallproxy gebruikt om de uitgaande connectiviteit te beheren, 
 5. De standaard instelling is dat de hersynchronisatie is gepland om automatisch buiten kantoor uren te worden uitgevoerd. Als u niet wilt wachten op de standaard hersynchronisatie buiten werk uren, kunt u een virtuele machine hand matig opnieuw synchroniseren. Als u dit wilt doen, gaat u naar Azure Portal en selecteert u de virtuele machine > opnieuw te **synchroniseren**.
 6. Als de standaard hersynchronisatie buiten kantoor uren mislukt en een hand matige interventie vereist is, wordt er een fout gegenereerd op de specifieke machine in Azure Portal. U kunt de fout oplossen en de hersynchronisatie hand matig activeren.
 7. Zodra de hersynchronisatie is voltooid, wordt replicatie van wijzigingen in de Delta hervat.
+
+## <a name="replication-policy"></a>Beleid voor replicatie 
+
+Wanneer u Azure VM-replicatie inschakelt, Site Recovery standaard een nieuw replicatie beleid maken met de standaard instellingen in de tabel.
+
+**Beleidsinstelling** | **Details** | **Standaard**
+--- | --- | ---
+**Bewaarperiode van herstelpunt** | Hiermee geeft u op hoelang Site Recovery herstel punten bewaard | 24 uur
+**Frequentie van de app-consistente momentopname** | Hoe vaak Site Recovery een app-consistente moment opname gebruikt. | Elke vier uur
+
+### <a name="managing-replication-policies"></a>Replicatie beleid beheren
+
+U kunt de standaard instellingen voor het replicatie beleid als volgt beheren en wijzigen:
+- U kunt de instellingen wijzigen terwijl u replicatie inschakelt.
+- U kunt op elk gewenst moment een replicatie beleid maken en dit vervolgens Toep assen wanneer u replicatie inschakelt.
+
+### <a name="multi-vm-consistency"></a>Multi-VM-consistentie
+
+Als u wilt dat Vm's samen worden gerepliceerd en gedeelde crash-consistente en toepassings consistente herstel punten op failover hebben, kunt u ze samen in een replicatie groep verzamelen. Multi-VM-consistentie heeft de prestaties van de werk belasting en mag alleen worden gebruikt voor Vm's met werk belastingen die consistentie op alle computers nodig hebben. 
+
+
+
+## <a name="snapshots-and-recovery-points"></a>Momentopnamen en herstelpunten
+
+Herstel punten worden gemaakt op basis van moment opnamen van VM-schijven die op een bepaald moment worden uitgevoerd. Wanneer u een failover voor een virtuele machine doorvoert, gebruikt u een herstel punt om de virtuele machine op de doel locatie te herstellen.
+
+Als er een failover wordt uitgevoerd, willen we doorgaans controleren of de VM begint zonder beschadiging of verlies van gegevens en dat de gegevens van de virtuele machine consistent zijn voor het besturings systeem en voor apps die worden uitgevoerd op de virtuele machine. Dit is afhankelijk van het type moment opnamen dat is gemaakt.
+
+Site Recovery maakt moment opnamen als volgt:
+
+1. Site Recovery maakt standaard consistente moment opnamen van gegevens en app-consistente moment opnamen als u een frequentie opgeeft.
+2. Herstel punten worden gemaakt op basis van de moment opnamen en opgeslagen in overeenstemming met de Bewaar instellingen in het replicatie beleid.
+
+### <a name="consistency"></a>Consistentie
+
+In de volgende tabel worden verschillende soorten consistentie beschreven.
+
+### <a name="crash-consistent"></a>Crash-consistent
+
+**Beschrijving** | **Details** | **Aanbeveling**
+--- | --- | ---
+Een crash consistente moment opname legt gegevens vast die zich op de schijf bevonden toen de moment opname werd gemaakt. Het bevat niets in het geheugen.<br/><br/> Het bevat het equivalent van de gegevens op de schijf die aanwezig zouden zijn als de virtuele machine is vastgelopen of het netsnoer van de server is opgehaald op het moment dat de moment opname werd gemaakt.<br/><br/> Een crash consistent garandeert geen gegevens consistentie voor het besturings systeem of voor apps op de virtuele machine. | Met Site Recovery worden standaard crash consistente herstel punten in elke vijf minuten gemaakt. Deze instelling kan niet worden gewijzigd.<br/><br/>  | Vandaag kunnen de meeste apps goed worden hersteld met crash-consistente punten.<br/><br/> Crash-consistente herstel punten zijn doorgaans voldoende voor de replicatie van besturings systemen en apps, zoals DHCP-servers en afdruk servers.
+
+### <a name="app-consistent"></a>App-consistent
+
+**Beschrijving** | **Details** | **Aanbeveling**
+--- | --- | ---
+App-consistente herstel punten worden gemaakt op basis van app-consistente moment opnamen.<br/><br/> Een app-consistente moment opname bevat alle informatie in een crash consistente moment opname, plus alle gegevens in het geheugen en trans acties die worden uitgevoerd. | App-consistente moment opnamen gebruiken de Volume Shadow Copy Service (VSS):<br/><br/>   1) Azure Site Recovery maakt gebruik van de methode Copy only backup (VSS_BT_COPY) waarbij de back-uptijd en het Volg nummer van het transactie logboek van micro soft SQL niet worden gewijzigd </br></br> 2) als er een moment opname wordt gestart, voert VSS een Kopieer bewerking voor het schrijven van de schijf uit op het volume.<br/><br/>   3) voordat de koeien wordt uitgevoerd, informeert VSS elke app op de computer die de geheugenresidente gegevens op schijf moet leegmaken.<br/><br/>   4) vervolgens kan de app back-up/herstel na nood gevallen (in dit geval Site Recovery) de momentopname gegevens lezen en door gaan. | App-consistente moment opnamen worden gemaakt op basis van de frequentie die u opgeeft. Deze frequentie moet altijd kleiner zijn dan de instelling voor het bewaren van herstel punten. Als u bijvoorbeeld de herstel punten behoudt met de standaard instelling van 24 uur, stelt u de frequentie in op minder dan 24 uur.<br/><br/>Ze zijn ingewik kelder en nemen meer tijd in beslag dan crash-consistente moment opnamen.<br/><br/> Ze zijn van invloed op de prestaties van apps die worden uitgevoerd op een virtuele machine die is ingeschakeld voor replicatie. 
 
 ## <a name="failover-and-failback-process"></a>Failover- en failbackproces
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 09/15/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae8bb66141e4cc4e67f1502b208cf519d37c0374
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: bb0147af559d9de4a8589344d61b06368086dd20
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705984"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278784"
 ---
 # <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>Externe B2B-samenwerking inschakelen en beheren wie gasten kan uitnodigen
 
@@ -24,7 +24,7 @@ In dit artikel wordt beschreven hoe u de samen werking van Azure Active Director
 
 Standaard kunnen alle gebruikers en gasten in uw directory gasten uitnodigen, zelfs als ze niet zijn toegewezen aan een beheerdersrol. Met instellingen voor externe samen werking kunt u uitnodigingen voor gasten in-of uitschakelen voor verschillende soorten gebruikers in uw organisatie. U kunt uitnodigingen ook overdragen aan afzonderlijke gebruikers door rollen toe te wijzen waarmee gasten kunnen worden uitgenodigd.
 
-Met Azure AD kunt u bepalen welke externe gast gebruikers in uw Azure AD-Directory kunnen worden weer geven. Gast gebruikers zijn standaard ingesteld op een beperkt machtigings niveau waarmee ze worden geblokkeerd voor het inventariseren van gebruikers, groepen of andere Directory bronnen, maar ze kunnen het lidmaatschap van niet-verborgen groepen zien. Met een nieuwe preview-instelling kunt u de toegang tot gasten nog verder beperken, zodat gasten alleen hun eigen profiel gegevens kunnen weer geven. 
+Met Azure AD kunt u bepalen welke externe gast gebruikers in uw Azure AD-Directory kunnen worden weer geven. Gast gebruikers zijn standaard ingesteld op een beperkt machtigings niveau waarmee ze worden geblokkeerd voor het inventariseren van gebruikers, groepen of andere Directory bronnen, maar ze kunnen het lidmaatschap van niet-verborgen groepen zien. Met een nieuwe preview-instelling kunt u de toegang tot gasten nog verder beperken, zodat gasten alleen hun eigen profiel gegevens kunnen weer geven. Zie [machtigingen voor gast toegang beperken (preview)](../users-groups-roles/users-restrict-guest-permissions.md)voor meer informatie.
 
 ## <a name="configure-b2b-external-collaboration-settings"></a>Externe B2B-samenwerkings instellingen configureren
 
@@ -44,9 +44,6 @@ Standaard kunnen alle gebruikers, inclusief gasten, gast gebruikers uitnodigen.
 3. Externe **identiteiten**  >  **externe instellingen voor samen werking**selecteren.
 
 4. Kies onder **toegangs beperkingen voor gast gebruikers (preview)** het toegangs niveau dat u wilt dat gast gebruikers hebben:
-
-   > [!IMPORTANT]
-   > Voor een korte periode zijn deze nieuwe portal besturings elementen voor gast gebruikers machtigingen alleen zichtbaar via de URL [https://aka.ms/AADRestrictedGuestAccess](https://aka.ms/AADRestrictedGuestAccess) . Zie [machtigingen voor gast toegang beperken (preview)](https://aka.ms/exid-users-restrict-guest-permissions)voor meer informatie.
 
    - **Gast gebruikers hebben dezelfde toegang als leden (ten opzichte van de meeste)**: met deze optie krijgen gasten dezelfde toegang tot Azure AD-resources en Directory gegevens als gebruikers van een lid.
 

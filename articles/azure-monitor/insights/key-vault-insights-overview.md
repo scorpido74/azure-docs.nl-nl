@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/10/2020
-ms.openlocfilehash: 4aeb97f112f0c95329b1449fe9c1423fdd5bd0d6
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4b91a9a73035b3add309e72ce544375520cf279e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90894501"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278614"
 ---
 # <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault"></a>Bewaken van uw sleutel kluis service met Azure Monitor voor Key Vault
 Azure Monitor voor Key Vault biedt uitgebreide bewaking van uw sleutel kluizen door een uniforme weer gave te bieden van uw Key Vault-aanvragen, prestaties, fouten en latentie.
@@ -25,21 +25,6 @@ Voordat u naar de ervaring gaat, moet u weten hoe de informatie wordt gepresente
 -    **Aanpasbaar** waar u kunt wijzigen welke metrische gegevens u wilt zien, wijzigen of instellen van drempel waarden die met uw limieten worden uitgelijnd en uw eigen werkmap opslaan. Grafieken in de werkmap kunnen worden vastgemaakt aan Azure-Dash boards.
 
 Azure Monitor voor Key Vault worden logboeken en metrische gegevens gecombineerd om een algemene bewakings oplossing te bieden. Alle gebruikers hebben toegang tot de metrische gegevens voor bewaking, maar het opnemen van op Logboeken gebaseerde visualisaties vereist mogelijk dat gebruikers [logboek registratie van hun Azure Key Vault inschakelen](../../key-vault/general/logging.md).
-
-## <a name="configuring-your-key-vaults-for-monitoring"></a>Uw sleutel kluizen voor bewaking configureren
-
-> [!NOTE]
-> Het inschakelen van Logboeken is een betaalde service die extra bewakings mogelijkheden biedt.
-
-1. Het tabblad bewerkingen & latentie helpt u bij het bepalen van het aantal en de sleutel kluizen die zijn ingeschakeld. Als u wilt verzamelen, selecteert u de knop **inschakelen** , waarmee u een afzonderlijke werkmap kunt weer geven met een lijst met de sleutel kluizen waarvoor Diagnostische logboeken moeten worden ingeschakeld.
-
-    ![Scherm afbeelding van het tabblad bewerkingen en latentie met blauwe knop inschakelen](./media/key-vaults-insights-overview/enable-logging.png)
-
-2. Als u Diagnostische logboeken wilt inschakelen, klikt u op de kolom **inschakelen** onder de acties en maakt u een nieuwe diagnostische instelling waarmee logboeken naar een log Analytics-werk ruimte worden verzonden. Het is raadzaam om alle logboeken naar dezelfde werk ruimte te verzenden.
-
-3. Zodra de diagnostische instellingen zijn opgeslagen, kunt u alle op Logboeken gebaseerde grafieken en visualisaties onder de Key Vault Insights weer geven. Het kan enkele minuten tot uur duren voordat de logboeken zijn gevuld.
-
-4. Lees de [volledige hand leiding](../../key-vault/general/logging.md)voor meer informatie over het inschakelen van Diagnostische logboeken voor uw Key Vault-service.
 
 ## <a name="view-from-azure-monitor"></a>Weer geven van Azure Monitor
 
@@ -165,10 +150,6 @@ Er geldt een limiet van 200 sleutel kluizen die kunnen worden geselecteerd en we
 Er worden alleen abonnementen weer gegeven die sleutel kluizen bevatten, die u hebt gekozen in het geselecteerde abonnements filter, die zijn geselecteerd in de ' map + abonnement ' in de koptekst van Azure Portal.
 
 ![Scherm opname van het abonnements filter](./media/key-vaults-insights-overview/Subscriptions.png)
-
-### <a name="i-am-getting-an-error-message-that-the-query-exceeds-the-maximum-number-of-workspacesregions-allowed-what-to-do-now"></a>Er wordt een fout bericht weer gegeven dat de query het maximum aantal toegestane werk ruimten/regio's overschrijdt, wat u nu kunt doen
-
-Momenteel geldt een limiet van 25 regio's en 200 werk ruimten, om uw gegevens weer te geven, moet u het aantal abonnementen en/of resource groepen verlagen.
 
 ### <a name="i-want-to-make-changes-or-add-additional-visualizations-to-key-vault-insights-how-do-i-do-so"></a>Ik wil wijzigingen aanbrengen of extra visualisaties toevoegen aan Key Vault inzichten, hoe doe ik dit
 

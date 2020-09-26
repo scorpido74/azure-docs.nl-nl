@@ -5,12 +5,12 @@ services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 02/12/2018
-ms.openlocfilehash: c8c24134c4694a9a2df36ac278452a532a5125ad
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: f1f4320f0bfb924883eb7ae4807dcb714cd89983
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132599"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331927"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Diagnostische logboeken openen voor Azure Data Lake Analytics
 
@@ -26,7 +26,7 @@ Met diagnostische logboek registratie kunt u gegevens toegangscontrole verzamele
 
 2. Open uw Data Lake Analytics-account en selecteer **Diagnostische logboeken** in het gedeelte __monitor__ . Selecteer vervolgens __Diagnostische gegevens inschakelen__.
 
-    ![Diagnostische gegevens inschakelen om audit-en aanvraag logboeken te verzamelen](./media/data-lake-analytics-diagnostic-logs/turn-on-logging.png)
+    ![Scherm opname van de geselecteerde actie ' Diagnostische logboeken ' en ' Diagnostische gegevens inschakelen voor het verzamelen van de volgende logboeken ' gemarkeerd.](./media/data-lake-analytics-diagnostic-logs/turn-on-logging.png)
 
 3. Voer een __naam__ in voor de configuratie van de logboek registratie van __Diagnostische instellingen__en selecteer vervolgens opties voor logboek registratie.
 
@@ -174,7 +174,7 @@ Hier volgt een voor beeld van een vermelding in het audit logboek in JSON-indeli
 }
 ```
 
-#### <a name="audit-log-schema"></a>Schema voor auditlogboek
+#### <a name="audit-log-schema"></a>Schema van auditlogboek
 
 | Naam | Type | Beschrijving |
 | --- | --- | --- |

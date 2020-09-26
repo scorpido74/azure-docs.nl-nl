@@ -6,12 +6,12 @@ ms.service: data-lake-analytics
 ms.assetid: 5366d852-e7d6-44cf-a88c-e9f52f15f7df
 ms.topic: how-to
 ms.date: 10/13/2016
-ms.openlocfilehash: 2fdce38b19cd38439baa5d640707d159cd713657
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: b8688af24e2b67f0e21de8344188b9a946f3258b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87125613"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331944"
 ---
 # <a name="use-the-vertex-execution-view-in-data-lake-tools-for-visual-studio"></a>De vertex Execution View gebruiken in Data Lake-Hulpprogram Ma's voor Visual Studio
 Meer informatie over het gebruik van de vertex-uitvoerings weergave om Data Lake Analytics taken te examen.
@@ -20,20 +20,20 @@ Meer informatie over het gebruik van de vertex-uitvoerings weergave om Data Lake
 ## <a name="open-the-vertex-execution-view"></a>De vertex Execution View openen
 Open een U-SQL-taak in Data Lake-Hulpprogram Ma's voor Visual Studio. Klik in de linkerbenedenhoek op **vertex Execution View** . U wordt mogelijk gevraagd om eerst profielen te laden. Dit kan enige tijd duren, afhankelijk van de netwerk verbinding.
 
-![Uitvoerings weergave van Data Lake Analytics tools vertex](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-open-vertex-execution-view.png)
+![Scherm opname van de weer gave Data Lake Analytics tools vertex](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-open-vertex-execution-view.png)
 
 ## <a name="understand-vertex-execution-view"></a>Meer informatie over vertex Execution View
 De uitvoerings weergave van het vertex bestaat uit drie delen:
 
-![Uitvoerings weergave van Data Lake Analytics tools vertex](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-vertex-execution-view.png)
+![Scherm opname van de weer gave vertex met de deel Vensters vertex kiezer en gecentreerd bovenaan en gecentreerd onder.](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-vertex-execution-view.png)
 
 Met de **hoek punt kiezer** links kunt u hoek punten selecteren op basis van functies (zoals de Top 10 van gegevens lezen of kiezen op werk gebied). Een van de meest gebruikte filters is het weer geven van de **hoek punten op het kritieke pad**. Het **kritieke pad** is de langste keten van hoek punten van een U-SQL-taak. Meer informatie over het kritieke pad is handig voor het optimaliseren van uw taken door te controleren welk hoek punt de langste tijd kost.
   
-![Uitvoerings weergave van Data Lake Analytics tools vertex](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-vertex-execution-view-pane2.png)
+![Scherm afbeelding met het bovenste middelste deel venster van de vertex-uitvoerings weergave waarin de ' uitvoerings status van alle hoek punten ' wordt weer gegeven.](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-vertex-execution-view-pane2.png)
 
 In het bovenste middelste deel venster wordt de **uitvoerings status van alle hoek punten**weer gegeven.
   
-![Uitvoerings weergave van Data Lake Analytics tools vertex](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-vertex-execution-view-pane3.png)
+![Scherm afbeelding met het onderste middelste deel venster van de vertex-uitvoerings weergave waarin informatie over elk hoek punt wordt weer gegeven.](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-vertex-execution-view-pane3.png)
 
 Het onderste middelste deel venster toont informatie over elk hoek punt:
 * Proces naam: de naam van het exemplaar van het hoek punt. Het bestaat uit verschillende onderdelen in de naam van de fase | Hoek punt | VertexRunInstance. Zo staat de SV7_Split [62]. v1 vertex voor het tweede uitgevoerde exemplaar (. v1, index beginnend bij 0) van het hoekpunt nummer 62 in het fase SV7_Split.

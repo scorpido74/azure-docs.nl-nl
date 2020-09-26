@@ -1,7 +1,7 @@
 ---
 title: Upgrade Bing Spellingcontrole-API v5 naar v7
 titleSuffix: Azure Cognitive Services
-description: Identificeert de onderdelen van uw toepassing die u moet bijwerken om versie 7 te gebruiken.
+description: Hiermee worden de onderdelen van uw Bing Spellingcontrole toepassing geïdentificeerd die u moet bijwerken om versie 7 te gebruiken.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: scottwhi
-ms.openlocfilehash: 545772a28a67310b12eb55cd1fb14e8d12a95a58
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 642aa23bc74f1f3f44deb6e489e6f7aafe7ff237
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68500822"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254122"
 ---
 # <a name="spell-check-api-upgrade-guide"></a>Upgrade handleiding Spell Check-API
 
@@ -31,12 +31,12 @@ Deze upgrade handleiding bevat de wijzigingen tussen versie 5 en versie 7 van de
 
 - Alle mislukte aanvragen moeten nu een `ErrorResponse` object bevatten in de hoofd tekst van het antwoord.
 
-- De volgende velden zijn toegevoegd aan `Error` het object.  
+- De volgende velden zijn toegevoegd aan het `Error` object.  
   - `subCode`&mdash;Partitioneert de fout code indien mogelijk naar discrete buckets
   - `moreDetails`&mdash;Aanvullende informatie over de fout die in het `message` veld wordt beschreven
    
 
-- De V5-fout codes zijn vervangen door de `code` volgende `subCode` mogelijke en waarden.  
+- De V5-fout codes zijn vervangen door de volgende mogelijke `code` en `subCode` waarden.  
   
 |Code|SubCode|Beschrijving
 |-|-|-

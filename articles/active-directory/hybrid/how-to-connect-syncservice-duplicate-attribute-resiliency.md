@@ -16,12 +16,12 @@ ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 268cf61596366d451057861db1fa5ac2d35e87d0
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: d1d364089d5df24cfc4e7a75c3fd6b81248f0cd6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662398"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91313309"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>Tolerantie voor synchronisatie- en duplicatiekenmerken identificeren
 Dubbel kenmerk tolerantie is een functie in Azure Active Directory die de wrijvings kracht veroorzaakt door **userPrincipalName** -en SMTP **proxyAddress attribuut** -conflicten bij het uitvoeren van een van de synchronisatie hulpprogramma's van micro soft.
@@ -124,7 +124,7 @@ Als u een uitgebreide zoek opdracht wilt uitvoeren, gebruikt u de vlag **-search
 ## <a name="microsoft-365-admin-center"></a>Het Microsoft 365-beheercentrum
 U kunt Directory synchronisatie fouten weer geven in het Microsoft 365-beheer centrum. In het rapport in het Microsoft 365-beheer centrum worden alleen **gebruikers** objecten weer gegeven die deze fouten bevatten. Er wordt geen informatie weer gegeven over conflicten tussen **groepen** en **contact personen**.
 
-![Actieve gebruikers](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/1234.png "Actieve gebruikers")
+![Scherm opname van Directory synchronisatie fouten in het Microsoft 365-beheer centrum.](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/1234.png "Actieve gebruikers")
 
 Zie voor instructies over het weer geven van adreslijst synchronisatie fouten in het Microsoft 365-beheer centrum [Directory-synchronisatie fouten in Microsoft 365 identificeren](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067).
 
@@ -132,7 +132,7 @@ Zie voor instructies over het weer geven van adreslijst synchronisatie fouten in
 Wanneer een object met een dubbel kenmerk conflict wordt verwerkt met dit nieuwe gedrag, wordt er een melding opgenomen in het standaard-e-mail bericht van identiteits synchronisatie dat wordt verzonden naar de contact persoon van de technische melding voor de Tenant. Er is echter een belang rijke wijziging in dit gedrag. In het verleden zou informatie over een dubbel kenmerk conflict worden opgenomen in elk volgende fouten rapport tot het conflict is opgelost. Met dit nieuwe gedrag wordt de fout melding voor een gegeven conflict slechts eenmaal weer gegeven-op het moment dat het conflicterende kenmerk in quarantaine is geplaatst.
 
 Hier volgt een voor beeld van hoe de e-mail melding eruitziet voor een proxyAddress attribuut-conflict:  
-    ![Actieve gebruikers](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/6.png "Actieve gebruikers")  
+    ![Scherm afbeelding met een voor beeld van een e-mail melding voor een proxyAddress attribuut-conflict.](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/6.png "Actieve gebruikers")  
 
 ## <a name="resolving-conflicts"></a>Conflicten oplossen
 Het oplossen van problemen met strategieën en oplossingen voor deze fouten mag niet verschillen van de manier waarop dubbele kenmerk fouten in het verleden zijn verwerkt. Het enige verschil is dat de timer taak via de Tenant aan de service zijde wordt geveegd om het betreffende kenmerk automatisch toe te voegen aan het juiste object zodra het conflict is opgelost.

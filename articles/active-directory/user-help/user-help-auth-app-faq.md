@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 07/16/2020
+ms.date: 09/23/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 051d88494049662891e1891f900aa580a005ffe4
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 00771f950271cfbc86994c01b6d866c5983f1b34
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799465"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278665"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Veelgestelde vragen over de Microsoft Authenticator-app
 
@@ -29,6 +29,7 @@ De app Microsoft Authenticator heeft de Azure Authenticator-app vervangen en de 
 
 | Vraag | Antwoord |
 | -------- | ------ |
+| Waarom heb ik problemen met Apple Watch op watchOS 7? | Er is een probleem met het goed keuren van meldingen op watchOS 7 en we werken met Apple om dit vast te krijgen. In de tussen tijd moet u in plaats daarvan alle meldingen die de Microsoft Authenticator watchOS-app vereisen, op uw telefoon goed keuren.  |
 | Registreert een apparaat dat het bedrijf of de service toegang geeft tot mijn apparaat? | Het registreren van een apparaat geeft uw apparaat toegang tot de services van uw organisatie en biedt uw organisatie geen toegang tot uw apparaat. |
 | Wat is app-vergren deling en hoe kan ik deze gebruiken om me veiliger te houden? | Met app-vergren deling kunt u uw eenmalige wachtwoord codes, app-gegevens en app-instellingen veiliger laten. Wanneer app-vergren deling is ingeschakeld, wordt u gevraagd om te verifiëren met behulp van de pincode van uw apparaat of biometrisch telkens wanneer u een verificator opent. App-vergren deling zorgt er ook voor dat u de enige bent die meldingen kan goed keuren door te vragen om uw pincode of biometrisch telkens wanneer u een aanmeldings melding goedkeurt. U kunt app-vergren deling in-of uitschakelen op de instellingen pagina van de verificator. App-vergren deling is standaard ingeschakeld wanneer u een pincode of biometrische op uw apparaat instelt.<br><br>Helaas is er geen garantie dat een app-vergren deling geen toegang meer heeft tot de verificator. Dat komt doordat apparaatregistratie kan plaatsvinden op andere locaties buiten de verificator, zoals in de instellingen van een Android-account of in de Bedrijfsportal-app. |
 | Ik heb een Windows Mobile-apparaat en de Microsoft Authenticator op Windows Mobile is afgeschaft. Kan ik de verificatie voortzetten met de app? | Alle verificaties die gebruikmaken van de Microsoft Authenticator op Windows Mobile, worden na 15 juli 2020 afgetrokken. We raden u ten zeerste aan een alternatieve verificatie methode te gebruiken om te voor komen dat uw accounts worden vergrendeld.<br>Alternatieve opties voor zakelijke gebruikers zijn onder andere:<br><ul><li>Instellen van de Microsoft Authenticator voor [Android](https://play.google.com/store/apps/details?id=com.azure.authenticator) of [IOS](https://apps.apple.com/app/microsoft-authenticator/id983156458).</li><li>[SMS instellen](multi-factor-authentication-setup-phone-number.md) voor het ontvangen van verificatie codes.</li><li>Stel telefoon nummer in om [telefoon gesprekken te ontvangen om hun identiteit te verifiëren](multi-factor-authentication-setup-office-phone.md).</li></ul><br>Alternatieve opties voor persoonlijke Microsoft-account gebruikers zijn onder andere:<br><ul><li>Instellen van de Microsoft Authenticator voor [Android](https://play.google.com/store/apps/details?id=com.azure.authenticator) of [IOS](https://apps.apple.com/app/microsoft-authenticator/id983156458).</li><li>Instellen van een alternatieve aanmeldings methode (SMS of e-mail bericht) door uw beveiligings gegevens op de [pagina beveiliging van micro soft-accounts](https://account.microsoft.com/security/)bij te werken.</li></ul> |

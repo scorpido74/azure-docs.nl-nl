@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 0e24c08c9689394fa6efdbc03d960c597496e8ad
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: b1bb22b702cae77ba40fbeeaca1c11c9063bffe8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231245"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331604"
 ---
 # <a name="azure-security-baseline-for-azure-ddos-protection-standard"></a>Azure-beveiligings basislijn voor Azure DDoS Protection Standard
 
@@ -96,7 +96,7 @@ Onboarding van een Log Analytics-werk ruimte naar Azure-Sentinel, aangezien deze
 
 Daarnaast heeft Azure Active Directory (AD) ingebouwde rollen die expliciet moeten worden toegewezen en query's kunnen worden doorzocht. Gebruik de Azure AD Power shell-module om ad hoc-query's uit te voeren om accounts te detecteren die lid zijn van beheer groepen.
 
-- [Meer informatie over machtigingen in azure DDoS Protection](../../virtual-network/manage-ddos-protection.md#permissions)
+- [Meer informatie over machtigingen in azure DDoS Protection](../../virtual-network/manage-ddos-protection.md#permissions-and-restrictions)
 
 - [Een directory-rol verkrijgen in azure AD met Power shell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 

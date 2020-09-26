@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e31f5e6afb3b586cd8eb20db8d1ca34e95de86cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8aa45294de4ef644c20ef66b7163706dca9759d3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356794"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91313413"
 ---
 # <a name="azure-ad-connect-upgrade-from-dirsync"></a>Azure AD Connect: upgraden van DirSync
 Azure AD Connect is de opvolger van DirSync. In dit onderwerp vindt u de manieren voor het upgraden van DirSync. Deze stappen werken niet voor een upgrade van een andere versie van Azure AD Connect of Azure AD Sync.
@@ -100,10 +100,10 @@ Extra stappen zijn vereist wanneer:
    * Als u SQL Server Express gebruikt en minder dan 50.000 objecten hebt, wordt het volgende venster weergegeven:  
      ![Analyse voltooid, gereed voor upgrade van DirSync](./media/how-to-dirsync-upgrade-get-started/AnalysisReady.png)
    * Als u een volledige SQL Server voor DirSync gebruikt, ziet u in plaats daarvan deze pagina:  
-     ![Analyse voltooid, gereed voor upgrade van DirSync](./media/how-to-dirsync-upgrade-get-started/AnalysisReadyFullSQL.png)  
+     ![scherm opname van de bestaande SQL database-server die wordt gebruikt.](./media/how-to-dirsync-upgrade-get-started/AnalysisReadyFullSQL.png)  
      De informatie over de huidige SQL Server-databaseserver die wordt gebruikt door DirSync wordt weergegeven. Maak, indien nodig, de juiste aanpassingen. Klik op **Volgende** om door te gaan met de installatie.
    * Als u meer dan 50.000 objecten hebt, ziet u dit scherm:  
-     ![Analyse voltooid, gereed voor upgrade van DirSync](./media/how-to-dirsync-upgrade-get-started/AnalysisRecommendParallel.png)  
+     ![Scherm opname van het scherm dat wordt weer gegeven wanneer u meer dan 50.000 objecten hebt om bij te werken.](./media/how-to-dirsync-upgrade-get-started/AnalysisRecommendParallel.png)  
      Klik om door te gaan met een in-place upgrade op het selectievakje naast dit bericht : **Doorgaan met het uitvoeren van de upgrade van DirSync op deze computer.**
      Voor het uitvoeren van een [parallelle implementatie](#parallel-deployment) dient u de DirSync-configuratie-instellingen te exporteren en de configuratie naar de nieuwe server te verplaatsen.
 5. Geef het wachtwoord op voor het account dat u momenteel gebruikt om verbinding te maken met Azure AD. Dit moet het account zijn dat momenteel wordt gebruikt door DirSync.  
@@ -140,7 +140,7 @@ Als u minder dan 50.000 objecten hebt, maar nog steeds een parallelle implementa
 4. Voer de volgende opdracht uit vanaf de locatie waar Azure AD Connect is geïnstalleerd (standaard: C:\Program Files\Microsoft Azure Active Directory Connect): `AzureADConnect.exe /ForceExport`.
 5. Klik op de knop **Instellingen exporteren**. Als u Azure AD Connect op een afzonderlijke server installeert, worden deze instellingen gemigreerd van uw huidige DirSync naar de nieuwe Azure AD Connect-installatie.
 
-![Analyse voltooid](./media/how-to-dirsync-upgrade-get-started/forceexport.png)
+![Scherm afbeelding met de export instellingen optie voor het migreren van uw instellingen naar de nieuwe Azure AD Connect-installatie.](./media/how-to-dirsync-upgrade-get-started/forceexport.png)
 
 Wanneer uw instellingen zijn geëxporteerd, kunt u de Azure AD Connect-wizard afsluiten op de DirSync-server. Ga door met de volgende stap om Azure AD Connect op een afzonderlijke server te installeren.
 
@@ -152,17 +152,17 @@ Wanneer u Azure AD Connect installeert op een nieuwe server, gaat deze ervan uit
 3. Open een opdrachtprompt.
 4. Voer de volgende opdracht uit vanaf de locatie waar Azure AD Connect is geïnstalleerd (Standaard: C:\Program Files\Microsoft Azure Active Directory Connect)`AzureADConnect.exe /migrate`
    De Azure AD Connect-installatiewizard wordt gestart en geeft het volgende scherm weer:  
-   ![Voer uw Azure AD-referenties in](./media/how-to-dirsync-upgrade-get-started/ImportSettings.png)
+   ![Scherm afbeelding die laat zien waar het instellingen bestand moet worden geïmporteerd wanneer u een upgrade uitvoert.](./media/how-to-dirsync-upgrade-get-started/ImportSettings.png)
 5. Selecteer het instellingenbestand dat is geëxporteerd vanuit uw DirSync-installatie.
 6. Configureer de geavanceerde opties, inclusief:
    * Een aangepaste installatielocatie voor Azure AD Connect.
    * Een bestaand exemplaar van SQL Server (standaard: Azure AD Connect installeert SQL Server 2012 Express). Gebruik niet hetzelfde database-exemplaar als die van uw DirSync-server.
    * Een serviceaccount gebruikt voor de verbinding met SQL Server (als de SQL Server-database extern is, moet dit account een domeinserviceaccount zijn).
      Deze opties zijn te zien op dit scherm:  
-     ![Voer uw Azure AD-referenties in](./media/how-to-dirsync-upgrade-get-started/advancedsettings.png)
+     ![Scherm afbeelding met de voorschot configuratie opties voor het upgraden van DirSync.](./media/how-to-dirsync-upgrade-get-started/advancedsettings.png)
 7. Klik op **Volgende**.
 8. Laat op de pagina **Gereed voor configuratie** het vakje **Start het synchronisatieproces zodra de configuratie is voltooid** aangevinkt. De server is nu in de [faseringsmodus](how-to-connect-sync-staging-server.md) dus wijzigingen worden niet geëxporteerd naar Azure AD.
-9. Klik op **Installeren**.
+9. Klik op **Install**.
 10. Nadat de installatie is voltooid, dient u zich af te melden en weer aan te melden bij Windows vóór u Synchronization Service Manager of Synchronization Rule Editor gaat gebruiken of andere configuratiewijzigingen gaat maken.
 
 > [!NOTE]
@@ -204,7 +204,7 @@ U ziet nu het volgende:
 * Selecteer **Faseringsmodus configureren**.
 * Schakel fasering uit door het vinkje weg te halen bij het selectievakje **Faseringsmodus ingeschakeld**.
 
-![Voer uw Azure AD-referenties in](./media/how-to-dirsync-upgrade-get-started/configurestaging.png)
+![Scherm afbeelding met de optie voor het inschakelen van de faserings modus.](./media/how-to-dirsync-upgrade-get-started/configurestaging.png)
 
 * Klik op de knop **volgende**
 * Klik op de bevestigingspagina op de knop **Installeren**.
