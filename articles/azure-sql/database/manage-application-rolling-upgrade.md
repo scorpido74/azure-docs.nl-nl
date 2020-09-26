@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 8645e8c1f1f371f1416a998af41104ebb6867eea
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 44005dafb1e3eee60f163f80ad2e4282147233e4
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91334880"
+ms.locfileid: "91355615"
 ---
 # <a name="manage-rolling-upgrades-of-cloud-applications-by-using-sql-database-active-geo-replication"></a>Rolling upgrades van Cloud toepassingen beheren door gebruik te maken van SQL Database actieve geo-replicatie
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -40,7 +40,7 @@ Als uw toepassing gebruikmaakt van automatische database back-ups en geo-herstel
 > [!NOTE]
 > Deze voorbereidings stappen hebben geen invloed op de productie omgeving, die in de volledige toegangs modus kan functioneren.
 
-![SQL Database geo-replicatie Configuratie voor herstel na nood gevallen in de Cloud.](./media/manage-application-rolling-upgrade/option1-1.png)
+![Diagram toont de SQL Database geo-replicatie Configuratie voor herstel na nood gevallen in de Cloud.](./media/manage-application-rolling-upgrade/option1-1.png)
 
 Wanneer de voorbereidende stappen zijn voltooid, is de toepassing gereed voor de daad werkelijke upgrade. In het volgende diagram ziet u de stappen die bij het upgrade proces zijn betrokken:
 
@@ -48,7 +48,7 @@ Wanneer de voorbereidende stappen zijn voltooid, is de toepassing gereed voor de
 2. Verbreek de verbinding van de secundaire data base met behulp van de geplande beëindigings modus (4). Met deze actie maakt u een volledig gesynchroniseerde, onafhankelijke kopie van de primaire data base. Er wordt een upgrade voor deze data base uitgevoerd.
 3. Schakel de secundaire data base in op de modus lezen/schrijven en voer het upgrade script uit (5).
 
-![SQL Database geo-replicatie Configuratie voor herstel na nood gevallen in de Cloud.](./media/manage-application-rolling-upgrade/option1-2.png)
+![In het diagram wordt SQL Database geo-replicatie Configuratie weer gegeven voor herstel na nood gevallen voor de cloud die het upgrade script uitvoert.](./media/manage-application-rolling-upgrade/option1-2.png)
 
 Als de upgrade is voltooid, bent u nu klaar om over te scha kelen naar de bijgewerkte versie van de toepassing, die een productie omgeving wordt. Wisseling omvat een aantal stappen, zoals wordt geïllustreerd in het volgende diagram:
 
@@ -67,7 +67,7 @@ Op dit moment is de toepassing volledig functioneel en kunt u de upgrade stappen
 > [!NOTE]
 > Voor het terugdraaien zijn geen DNS-wijzigingen vereist omdat u nog geen swap bewerking hebt uitgevoerd.
 
-![SQL Database geo-replicatie Configuratie voor herstel na nood gevallen in de Cloud.](./media/manage-application-rolling-upgrade/option1-4.png)
+![In het diagram wordt SQL Database geo-replicatie Configuratie weer gegeven voor herstel na nood gevallen met de faserings omgeving buiten gebruik gesteld.](./media/manage-application-rolling-upgrade/option1-4.png)
 
 Het belangrijkste voor deel van deze optie is dat u een toepassing in één regio kunt bijwerken door een aantal eenvoudige stappen te volgen. De kosten voor de dollar van de upgrade zijn relatief laag. 
 
@@ -98,7 +98,7 @@ Om het mogelijk te maken om de upgrade te herstellen, moet u een faserings omgev
 > [!NOTE]
 > Deze voorbereidings stappen hebben geen invloed op de toepassing in de productie omgeving. Deze functie blijft volledig functioneel in de modus lezen-schrijven.
 
-![SQL Database geo-replicatie Configuratie voor herstel na nood gevallen in de Cloud.](./media/manage-application-rolling-upgrade/option2-1.png)
+![Diagram toont SQL Database geo-replicatie Configuratie voor nood herstel in de Cloud met een volledig gesynchroniseerde kopie van de toepassing.](./media/manage-application-rolling-upgrade/option2-1.png)
 
 Wanneer de voorbereidende stappen zijn voltooid, is de faserings omgeving gereed voor de upgrade. In het volgende diagram ziet u deze upgrade stappen:
 
@@ -120,14 +120,14 @@ REMOVE SECONDARY ON SERVER <Partner-Server>
 
 3. Voer het upgrade script uit `contoso-1-staging.azurewebsites.net` `contoso-dr-staging.azurewebsites.net` met, en de primaire Data Base voor fase ring (12). De wijzigingen in de Data Base worden automatisch gerepliceerd naar de fase ring secundair.
 
-![SQL Database geo-replicatie Configuratie voor herstel na nood gevallen in de Cloud.](./media/manage-application-rolling-upgrade/option2-2.png)
+![In het diagram wordt SQL Database geo-replicatie Configuratie weer gegeven voor nood herstel in de Cloud met database wijzigingen die zijn gerepliceerd naar fase ring.](./media/manage-application-rolling-upgrade/option2-2.png)
 
 Als de upgrade is voltooid, bent u nu klaar om te scha kelen tussen gebruikers en de versie v2 van de toepassing. In het volgende diagram ziet u de stappen die worden beschreven:
 
 1. Activeer een wissel bewerking tussen productie-en faserings omgevingen van de web-app in de primaire regio (13) en in de back-upregio (14). V2 van de toepassing wordt nu een productie omgeving, met een redundante kopie in de back-upregio.
 2. Als u de V1-toepassing (15 en 16) niet meer nodig hebt, kunt u de faserings omgeving buiten gebruik stellen.
 
-![SQL Database geo-replicatie Configuratie voor herstel na nood gevallen in de Cloud.](./media/manage-application-rolling-upgrade/option2-3.png)
+![In het diagram wordt SQL Database geo-replicatie Configuratie weer gegeven voor herstel na nood gevallen met optionele buiten gebruik stellen van de faserings omgeving.](./media/manage-application-rolling-upgrade/option2-3.png)
 
 Als het upgrade proces mislukt (bijvoorbeeld vanwege een fout in het upgrade script), moet u overwegen dat de faserings omgeving een inconsistente status heeft. Als u de toepassing wilt terugdraaien naar de status van vóór de upgrade, keert u terug naar het gebruik van v1 van de toepassing in de productie omgeving. De vereiste stappen worden in het volgende diagram weer gegeven:
 
@@ -139,7 +139,7 @@ Op dit moment is de toepassing volledig functioneel en kunt u de upgrade stappen
 > [!NOTE]
 > Voor het terugdraaien zijn geen DNS-wijzigingen vereist omdat u geen swap bewerking hebt uitgevoerd.
 
-![SQL Database geo-replicatie Configuratie voor herstel na nood gevallen in de Cloud.](./media/manage-application-rolling-upgrade/option2-4.png)
+![In het diagram wordt SQL Database geo-replicatie Configuratie weer gegeven voor herstel na nood geval met het upgrade proces teruggedraaid.](./media/manage-application-rolling-upgrade/option2-4.png)
 
 Het belangrijkste voor deel van deze optie is dat u zowel de toepassing als de geo-redundante kopie tegelijkertijd kunt upgraden zonder in te leveren op uw bedrijfs continuïteit tijdens de upgrade.
 

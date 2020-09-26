@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: b185f29cea61b9c366714a1af72648aeee35b61c
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 5ec06960e695abfa4bf004633b1f171214a5d29a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90017928"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91286550"
 ---
 # <a name="tutorial-configure-attribute-write-back-from-azure-ad-to-sap-successfactors"></a>Zelf studie: kenmerk write-back van Azure AD naar SAP SuccessFactors configureren
 Het doel van deze zelf studie is het weer geven van de stappen voor het terugschrijven van kenmerken van Azure AD naar SAP SuccessFactors Employee Central. 
@@ -125,68 +125,97 @@ Werk samen met uw SuccessFactors-beheer team of implementatie partner om een geb
 
 ## <a name="preparing-for-successfactors-writeback"></a>Write-back van SuccessFactors voorbereiden
 
-De SuccessFactors write inrichtings-app gebruikt bepaalde *code* waarden voor het instellen van e-mail en telefoon nummers in werk nemers centraal. Deze *code* waarden worden ingesteld als constante waarden in de kenmerk toewijzings tabel en zijn verschillend voor elk SuccessFactors-exemplaar. In deze sectie wordt gebruikgemaakt van [postman](https://www.postman.com/downloads/) om de code waarden op te halen. U kunt [krul](https://curl.haxx.se/), [Fiddler](https://www.telerik.com/fiddler) of een ander soortgelijk hulp programma gebruiken om HTTP-aanvragen te verzenden. 
+De SuccessFactors write inrichtings-app gebruikt bepaalde *code* waarden voor het instellen van e-mail en telefoon nummers in werk nemers centraal. Deze *code* waarden worden ingesteld als constante waarden in de kenmerk toewijzings tabel en zijn verschillend voor elk SuccessFactors-exemplaar. Deze sectie bevat stappen voor het vastleggen van deze *code* waarden.
 
-### <a name="download-and-configure-postman-with-your-successfactors-tenant"></a>Postman downloaden en configureren met uw SuccessFactors-Tenant
+   > [!NOTE]
+   > Zorg dat uw SuccessFactors-beheerder de stappen in deze sectie heeft voltooid. 
 
-1. [Berichtman](https://www.postman.com/downloads/) downloaden
-1. Maak een ' nieuwe verzameling ' in de Postman-app. Noem het ' SuccessFactors '. 
+### <a name="identify-email-and-phone-number-picklist-names"></a>Namen van selectie lijsten voor E-mail en telefoon nummers identificeren 
+
+In SAP SuccessFactors is een *selectie lijst* een Configureer bare set opties waaruit een gebruiker een selectie kan maken. De verschillende soorten e-mail adres en telefoon nummer (bijvoorbeeld zakelijk, persoonlijk, Overig) worden weer gegeven met een selectie lijst. In deze stap bepalen we de selectie lijsten die in de SuccessFactors-Tenant zijn geconfigureerd voor het opslaan van de waarden voor e-mail en telefoon nummer. 
+ 
+1. Zoek in SuccessFactors-beheer centrum naar *bedrijfs configuratie beheren*. 
 
    > [!div class="mx-imgBorder"]
-   > ![Nieuwe postman-verzameling](./media/sap-successfactors-inbound-provisioning/new-postman-collection.png)
+   > ![Bedrijfs configuratie beheren](./media/sap-successfactors-inbound-provisioning/manage-business-config.png)
 
-1. Op het tabblad autorisatie voert u de referenties in van de API-gebruiker die in de vorige sectie is geconfigureerd. Configureer type als basis verificatie. 
+1. Selecteer **onder HRIS**-elementen **emailInfo** en klik op de *Details* van het veld **e-type** .
 
    > [!div class="mx-imgBorder"]
-   > ![Postman-autorisatie](./media/sap-successfactors-inbound-provisioning/postman-authorization.png)
+   > ![E-mail gegevens ophalen](./media/sap-successfactors-inbound-provisioning/get-email-info.png)
 
-1. Sla de configuratie op. 
+1. Noteer op de pagina Details van het **e-mail bericht** de naam van de selectie lijst die is gekoppeld aan dit veld. Standaard is dit **ecEmailType**. Het kan echter ook verschillen in uw Tenant. 
+
+   > [!div class="mx-imgBorder"]
+   > ![Selectie lijst voor e-mail identificeren](./media/sap-successfactors-inbound-provisioning/identify-email-picklist.png)
+
+1. Selecteer **onder HRIS**-elementen **phoneInfo** en klik op de *Details* van het veld **type telefoon** .
+
+   > [!div class="mx-imgBorder"]
+   > ![Telefoon gegevens ophalen](./media/sap-successfactors-inbound-provisioning/get-phone-info.png)
+
+1. Op de pagina Details van de **telefoon** geeft u de naam van de selectie lijst aan die is gekoppeld aan dit veld. Standaard is dit **ecPhoneType**. Het kan echter ook verschillen in uw Tenant. 
+
+   > [!div class="mx-imgBorder"]
+   > ![Telefoon selectie identificeren](./media/sap-successfactors-inbound-provisioning/identify-phone-picklist.png)
 
 ### <a name="retrieve-constant-value-for-emailtype"></a>Constante waarde ophalen voor emailType
 
-1. Klik in postman op het weglatings teken (...) dat is gekoppeld aan de verzameling SuccessFactors en voeg een ' nieuwe aanvraag ' met de naam ' e-mail typen ophalen ' toe, zoals hieronder wordt weer gegeven. 
+1. Zoek en open in het SuccessFactors-beheer centrum op *selectielijst centrum*. 
+1. Gebruik de naam van de in de vorige sectie vastgelegde e-mail keuze lijst (bijvoorbeeld ecEmailType) om de e-mail selectie lijst te vinden. 
 
    > [!div class="mx-imgBorder"]
-   > ![Postman-e-mail aanvraag ](./media/sap-successfactors-inbound-provisioning/postman-email-request.png)
+   > ![Selectie lijst voor e-mail type zoeken](./media/sap-successfactors-inbound-provisioning/find-email-type-picklist.png)
 
-1. Open het aanvraag paneel ' e-mail type ophalen '. 
-1. Voeg in de GET-URL de volgende URL toe en vervang deze door `successFactorsAPITenantName` de API-Tenant voor uw SuccessFactors-exemplaar. 
-   `https://<successfactorsAPITenantName>/odata/v2/Picklist('ecEmailType')?$expand=picklistOptions&$select=picklistOptions/id,picklistOptions/externalCode&$format=json`
+1. Open de selectie lijst voor actieve e-mail. 
 
    > [!div class="mx-imgBorder"]
-   > ![E-mail type van Postman ophalen](./media/sap-successfactors-inbound-provisioning/postman-get-email-type.png)
+   > ![Selectie lijst actieve e-mail type openen](./media/sap-successfactors-inbound-provisioning/open-active-email-type-picklist.png)
 
-1. Het tabblad autorisatie neemt de auth over die is geconfigureerd voor de verzameling. 
-1. Klik op verzenden om de API-aanroep aan te roepen. 
-1. Bekijk in de hoofd tekst van het antwoord de JSON-resultatenset en zoek naar de ID die overeenkomt met de `externalCode = B` . 
+1. Selecteer op de pagina type selectie van e-mail het type *zakelijk* e-mail adres.
 
    > [!div class="mx-imgBorder"]
-   > ![E-mail type antwoord postman](./media/sap-successfactors-inbound-provisioning/postman-email-type-response.png)
+   > ![Type zakelijk e-mail selecteren](./media/sap-successfactors-inbound-provisioning/select-business-email-type.png)
 
-1. Noteer deze waarde als de constante die moet worden gebruikt met *emailType* in de kenmerk toewijzings tabel.
+1. Noteer de **optie-id** die is gekoppeld aan het *zakelijke* e-mail adres. Dit is de code die we gaan gebruiken met *emailType* in de kenmerk toewijzings tabel.
+
+   > [!div class="mx-imgBorder"]
+   > ![E-mail type code ophalen](./media/sap-successfactors-inbound-provisioning/get-email-type-code.png)
+
+   > [!NOTE]
+   > Verwijder het komma teken wanneer u de waarde kopieert. Voor beeld: als de waarde van de **optie-ID** *8.448*is, stelt u de *emailType* in azure AD in op het constante nummer *8448* (zonder het komma teken). 
 
 ### <a name="retrieve-constant-value-for-phonetype"></a>Constante waarde ophalen voor phoneType
 
-1. Klik in postman op het weglatings teken (...) dat is gekoppeld aan de SuccessFactors-verzameling en voeg een ' nieuwe aanvraag ' met de naam ' Get Phone types ' toe, zoals hieronder wordt weer gegeven. 
+1. Zoek en open in het SuccessFactors-beheer centrum op *selectielijst centrum*. 
+1. Gebruik de naam van de telefoon selectie die is vastgelegd in de vorige sectie om de telefoon keuze lijst te vinden. 
 
    > [!div class="mx-imgBorder"]
-   > ![Postman-telefoon aanvraag](./media/sap-successfactors-inbound-provisioning/postman-phone-request.png)
+   > ![Selectie lijst voor telefoon type zoeken](./media/sap-successfactors-inbound-provisioning/find-phone-type-picklist.png)
 
-1. Open het aanvraag paneel ' telefoon type ophalen '. 
-1. Voeg in de GET-URL de volgende URL toe en vervang deze door `successFactorsAPITenantName` de API-Tenant voor uw SuccessFactors-exemplaar. 
-   `https://<successfactorsAPITenantName>/odata/v2/Picklist('ecPhoneType')?$expand=picklistOptions&$select=picklistOptions/id,picklistOptions/externalCode&$format=json`
+1. Open de selectie lijst met actieve telefoons. 
 
    > [!div class="mx-imgBorder"]
-   > ![Telefoon type van Postman-Get](./media/sap-successfactors-inbound-provisioning/postman-get-phone-type.png)
+   > ![Selectie lijst actieve telefoon type openen](./media/sap-successfactors-inbound-provisioning/open-active-phone-type-picklist.png)
 
-1. Het tabblad autorisatie neemt de auth over die is geconfigureerd voor de verzameling. 
-1. Klik op verzenden om de API-aanroep aan te roepen. 
-1. Bekijk in de hoofd tekst van het antwoord de JSON-resultatenset en zoek naar de *id* die overeenkomt met de `externalCode = B` en `externalCode = C` . 
+1. Bekijk op de pagina selectie lijst voor telefoon type de verschillende typen telefoons onder **selectie lijst waarden**.
 
    > [!div class="mx-imgBorder"]
-   > ![Postman-telefoon](./media/sap-successfactors-inbound-provisioning/postman-phone-type-response.png)
+   > ![Telefoon typen controleren](./media/sap-successfactors-inbound-provisioning/review-phone-types.png)
 
-1. Noteer deze waarden als de constanten die moeten worden gebruikt met *businessPhoneType* en *cellPhoneType* in de kenmerk toewijzings tabel.
+1. Noteer de **optie-id** die is gekoppeld aan de *zakelijke* telefoon. Dit is de code die we gaan gebruiken met *businessPhoneType* in de kenmerk toewijzings tabel.
+
+   > [!div class="mx-imgBorder"]
+   > ![Zakelijke telefoon code ophalen](./media/sap-successfactors-inbound-provisioning/get-business-phone-code.png)
+
+1. Noteer de **optie-id** die is gekoppeld aan de *mobiele* telefoon. Dit is de code die we gaan gebruiken met *cellPhoneType* in de kenmerk toewijzings tabel.
+
+   > [!div class="mx-imgBorder"]
+   > ![Mobiele telefoon code ophalen](./media/sap-successfactors-inbound-provisioning/get-cell-phone-code.png)
+
+   > [!NOTE]
+   > Verwijder het komma teken wanneer u de waarde kopieert. Voor beeld: als de waarde van de **optie-ID** *10.606*is, stelt u de *cellPhoneType* in azure AD in op het constante nummer *10606* (zonder het komma teken). 
+
 
 ## <a name="configuring-successfactors-writeback-app"></a>SuccessFactors write-app configureren
 

@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
-ms.reviewer: vanto, carlrab
+ms.reviewer: vanto, sstein
 ms.date: 08/17/2020
-ms.openlocfilehash: 22ed36213c932c7e202817fd093e1ec96aec94fd
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: f354cb25c93826b50c0094e75ef7a1756f7625b7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89434398"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278172"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Azure AD-verificatie configureren en beheren met Azure SQL
 
@@ -89,19 +89,19 @@ Als u uw SQL Managed instance Azure AD-Lees machtiging wilt verlenen met de Azur
 
 3. Navigeer naar het SQL-beheerde exemplaar dat u wilt gebruiken voor Azure AD-integratie.
 
-   ![Aad](./media/authentication-aad-configure/aad.png)
+   ![Scherm afbeelding van de Azure Portal waarop de Active Directory-beheer pagina wordt geopend voor het geselecteerde exemplaar van SQL Managed.](./media/authentication-aad-configure/aad.png)
 
 4. Selecteer de banner boven op de pagina Active Directory beheer en Ken machtigingen toe aan de huidige gebruiker.
 
-    ![machtigingen verlenen-Portal](./media/authentication-aad-configure/grant-permissions.png)
+    ![Scherm afbeelding van het dialoog venster voor het verlenen van machtigingen aan een SQL Managed instance voor toegang tot Active Directory. De knop machtigingen verlenen is geselecteerd.](./media/authentication-aad-configure/grant-permissions.png)
 
 5. Nadat de bewerking is voltooid, wordt in de rechter bovenhoek de volgende melding weer gegeven:
 
-    ![voltooid](./media/authentication-aad-configure/success.png)
+    ![Scherm opname van een melding waarin wordt bevestigd dat de Lees machtigingen van Active Directory zijn bijgewerkt voor het beheerde exemplaar.](./media/authentication-aad-configure/success.png)
 
 6. U kunt nu uw Azure AD-beheerder kiezen voor uw SQL Managed instance. Selecteer op de pagina Active Directory-beheer de optie admin-opdracht **instellen** .
 
-    ![instellen-beheerder](./media/authentication-aad-configure/set-admin.png)
+    ![Scherm opname van de opdracht set admin gemarkeerd op de pagina Active Directory-beheer voor het geselecteerde exemplaar van SQL Managed.](./media/authentication-aad-configure/set-admin.png)
 
 7. Zoek op de pagina Azure AD-beheerder naar een gebruiker, selecteer de gebruiker of groep die u als beheerder wilt en selecteer vervolgens **selecteren**.
 
@@ -111,7 +111,7 @@ Als u uw SQL Managed instance Azure AD-Lees machtiging wilt verlenen met de Azur
 
 8. Selecteer bovenaan de pagina Active Directory-beheerder de optie **Opslaan**.
 
-    ![save](./media/authentication-aad-configure/save.png)
+    ![Scherm afbeelding van de pagina Active Directory-beheer met de knop Opslaan in de bovenste rij naast de knoppen beheerder instellen en beheerder verwijderen.](./media/authentication-aad-configure/save.png)
 
     Het wijzigen van de beheerder kan enkele minuten duren. Vervolgens wordt de nieuwe beheerder weergegeven in het vak Active Directory-beheerder.
 
@@ -214,7 +214,7 @@ Met de volgende opdracht wordt de Azure AD-beheerder voor het SQL Managed instan
 Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstanceName01" -Confirm -PassThru
 ```
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 U kunt ook een Azure AD-beheerder inrichten voor het beheerde exemplaar van SQL door de volgende CLI-opdrachten aan te roepen:
 
@@ -320,7 +320,7 @@ In het volgende voor beeld wordt een Azure AD-beheerder verwijderd:
 Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -ServerName "demo_server"
 ```
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 U kunt een Azure AD-beheerder inrichten door de volgende CLI-opdrachten aan te roepen:
 
