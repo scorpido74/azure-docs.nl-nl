@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cynthn
-ms.openlocfilehash: 4dc3e128ac1c611a8527c3044bfac566edc24c74
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fe89b58f71b14b211863fd46ba523e8c866764f1
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91344290"
+ms.locfileid: "91361786"
 ---
 # <a name="manage-the-availability-of-linux-virtual-machines"></a>De beschikbaarheid van virtuele Linux-machines beheren
 
@@ -36,7 +36,7 @@ Om de gevolgen van downtime vanwege een of meer van deze gebeurtenissen te beper
 
 * Availabiilty-zones gebruiken om te beschermen tegen datacenter fouten
 * Configureer meerdere virtuele machines in een beschikbaarheidsset voor redundantie
-* Beheerde schijven gebruiken voor Vm's in een beschikbaarheidsset]
+* Beheerde schijven voor VM's in een beschikbaarheidsset gebruiken
 * Geplande gebeurtenissen gebruiken om proactief te reageren op gebeurtenissen die invloed hebben op VM's
 * Configureer elke toepassingslaag in afzonderlijke beschikbaarheidssets
 * Een load balancer combineren met beschikbaarheidszones of -sets

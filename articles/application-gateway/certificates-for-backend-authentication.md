@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 06/17/2020
 ms.author: absha
-ms.openlocfilehash: 64f2abd2a42fb15b994803a48b97679ee8927233
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 69d388b12e564b307cd117c3a86ae960dabaa937
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594421"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362709"
 ---
 # <a name="create-certificates-to-allow-the-backend-with-azure-application-gateway"></a>Certificaten maken om de back-end met Azure-toepassing gateway toe te staan
 
@@ -37,7 +37,7 @@ Exporteer vanuit uw TLS/SSL-certificaat het bestand met de open bare sleutel. CE
 
 1. Als u een CER-bestand wilt genereren van het certificaat, opent u **Gebruikerscertificaten beheren**. Zoek het certificaat, meestal in ' certificaten-Current Gebruiker\persoonlijk\certificaten ' en klik met de rechter muisknop op. Klik op **Alle taken** en vervolgens op **Exporteren**. Hiermee opent u de **Wizard Certificaat exporteren**. Als u het certificaat niet kunt vinden onder de huidige Gebruiker\persoonlijk\certificaten, hebt u mogelijk per ongeluk ' certificaten-lokale computer ' geopend, in plaats van ' certificaten-huidige gebruiker '). Als u certificaat beheer wilt openen in het huidige gebruikers bereik met behulp van Power shell, typt u *certmgr* in het console venster.
 
-   ![Exporteren](./media/certificates-for-backend-authentication/export.png)
+   ![Scherm afbeelding toont de certificaat beheerder waarbij certificaten zijn geselecteerd en een context menu met alle taken. vervolgens selecteert u exporteren.](./media/certificates-for-backend-authentication/export.png)
 
 2. Klik in de wizard op **volgende**.
 
@@ -53,19 +53,19 @@ Exporteer vanuit uw TLS/SSL-certificaat het bestand met de open bare sleutel. CE
 
 5. Als u het **bestand wilt exporteren**, **bladert** u naar de locatie waarnaar u het certificaat wilt exporteren. Geef bij **Bestandsnaam** de naam van het certificaatbestand op. Klik op **Volgende**.
 
-   ![Bladeren](./media/certificates-for-backend-authentication/browse.png)
+   ![Scherm afbeelding toont de wizard Certificaat exporteren waarin u een bestand opgeeft dat u wilt exporteren.](./media/certificates-for-backend-authentication/browse.png)
 
 6. Klik op **Voltooien** om het certificaat te exporteren.
 
-   ![Voltooien](./media/certificates-for-backend-authentication/finish.png)
+   ![Scherm afbeelding toont de wizard Certificaat exporteren nadat u het bestand hebt geëxporteerd.](./media/certificates-for-backend-authentication/finish.png)
 
 7. Het certificaat is geëxporteerd.
 
-   ![Geslaagd](./media/certificates-for-backend-authentication/success.png)
+   ![Scherm afbeelding toont de wizard Certificaat exporteren met een geslaagd bericht.](./media/certificates-for-backend-authentication/success.png)
 
    Het geëxporteerde certificaat ziet er ongeveer als volgt uit:
 
-   ![Geëxporteerd](./media/certificates-for-backend-authentication/exported.png)
+   ![Scherm afbeelding toont een certificaat symbool.](./media/certificates-for-backend-authentication/exported.png)
 
 8. Als u het geëxporteerde certificaat met Klad blok opent, ziet u iets dat vergelijkbaar is met dit voor beeld. De sectie in Blue bevat de informatie die wordt geüpload naar Application Gateway. Als u uw certificaat opent met Klad blok en dit niet lijkt op dit soort, betekent dit meestal dat u dit niet hebt geëxporteerd met de base-64 Encoded X. 509 (. CER)-indeling. Daarnaast kunt u, als u een andere tekst editor wilt gebruiken, begrijpen dat sommige editors onbedoelde opmaak op de achtergrond kunnen introduceren. Dit kan problemen veroorzaken bij het uploaden van de tekst van dit certificaat naar Azure.
 

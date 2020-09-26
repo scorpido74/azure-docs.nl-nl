@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: c4d0639831d2f6f60a719637c5158fba5caf6f43
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8391202e991c240b03bd79b947c1c3c6dcc9afd7
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83659350"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362534"
 ---
 # <a name="configure-rules"></a>Regels configureren
 
@@ -33,7 +33,7 @@ Voor waarden worden de regels geactiveerd. Wanneer u op dit moment meerdere voor
 
 In de volgende scherm afbeelding worden de voor waarden gecontroleerd wanneer de Tempe ratuur groter is dan 70 &deg; F en de vochtigheid kleiner is dan 10. Wanneer beide instructies waar zijn, evalueert de regel naar waar en wordt een actie geactiveerd.
 
-![Voorwaarden](media/howto-configure-rules/conditions.png)
+![Scherm afbeelding toont een koel monitor met voor waarden die zijn opgegeven voor de Tempe ratuur en vochtigheid.](media/howto-configure-rules/conditions.png)
 
 ### <a name="use-a-cloud-property-in-a-value-field"></a>Een eigenschap Cloud gebruiken in een waardeveld
 

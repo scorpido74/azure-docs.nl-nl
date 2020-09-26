@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 9f7f44e053cfb26cbf7d897b8a1df1ad2861fd07
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: aecda5ed9b87ba2345a52923a574919d6a08594f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87551996"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362668"
 ---
 # <a name="getting-started-with-the-azure-maps-power-bi-visual"></a>Aan de slag met de Azure Maps Power BI Visual
 
-<Token>**van toepassing op:** ![ Ja ](media/power-bi-visual/yes.png) Power bi-service voor ***consumenten*** ![ ja ](media/power-bi-visual/yes.png) Power bi-service voor ontwerpers & ontwikkel aars ![ Ja ](media/power-bi-visual/yes.png) Power bi Desktop vereist een Pro- ![ ](media/power-bi-visual/no.png) of Premium-licentie</Token>
+<Token>**van toepassing op:** ![ Groen vinkje. ](media/power-bi-visual/yes.png) Power BI-service voor ***klanten*** ![ groen vinkje. ](media/power-bi-visual/yes.png) Power BI-service voor ontwerpers &-ontwikkel aars ![ groen vinkje. ](media/power-bi-visual/yes.png) Power BI Desktop ![ X geeft Nee aan. ](media/power-bi-visual/no.png) Er is een Pro-of Premium-licentie vereist </Token>
 
 In dit artikel wordt beschreven hoe u de Microsoft Azure kaarten Visual voor Power BI kunt gebruiken.
 
@@ -135,7 +135,7 @@ De Azure Maps Visual is beschikbaar in de volgende services en toepassingen:
 | Mobiele Power BI-toepassingen             | Ja          |
 | Power BI publiceren op internet                  | Nee           |
 | Power BI Embedded                        | Nee           |
-| Power BI-service insluiten (PowerBI.com) | Ja          |
+| Power BI-service insluiten (PowerBI.com) | Yes          |
 
 Ondersteuning voor extra Power BI Services/apps wordt toegevoegd aan toekomstige updates.
 
