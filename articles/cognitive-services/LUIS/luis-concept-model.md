@@ -1,14 +1,16 @@
 ---
 title: Ontwerpen met modellen-LUIS
 description: Language Standing biedt verschillende types modellen. Sommige modellen kunnen op meer dan één manier worden gebruikt.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: bbb1f0d43b2a3fd2e8a2dff2201a09622ecaf977
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 576ba945018d13db9cd24888f3c41a2215857694
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683927"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316508"
 ---
 # <a name="design-with-intent-and-entity-models"></a>Ontwerpen met intentie-en entiteits modellen
 
@@ -24,7 +26,7 @@ Met de machine leer methodologie van LUIS kunt u eenvoudig concepten aan een mac
 
 <a name="v3-authoring-model-decomposition"></a>
 
-## <a name="intents-classify-utterances"></a>Intenties classificeren uitingen
+## <a name="intents-classify-utterances"></a>Intentie-uitingen classificeren
 
 Een intentie classificeert bijvoorbeeld uitingen om LUIS te leren over het doel. Een voor beeld van een uitingen binnen een intentie wordt als positieve voor beeld van de utterance gebruikt. Deze zelfde uitingen worden als negatieve voor beelden in alle andere intenties gebruikt.
 
@@ -34,7 +36,7 @@ De volgende utterance is een **positief voor beeld** voor de `OrderBook` intenti
 
 `Buy the top-rated book on bot architecture.`
 
-## <a name="entities-extract-data"></a>Gegevens extra heren door entiteiten
+## <a name="entities-extract-data"></a>Entiteitgegevens extraheren
 
 Een entiteit vertegenwoordigt een hoeveelheid gegevens die u wilt ophalen uit de utterance. Een machine learning-entiteit is een entiteit op het hoogste niveau met subentiteiten, die ook instanties voor machine learning zijn.
 

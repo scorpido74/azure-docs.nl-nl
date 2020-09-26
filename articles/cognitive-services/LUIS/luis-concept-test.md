@@ -11,18 +11,18 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: diberry
-ms.openlocfilehash: 25b360f90a0920aad2ea5e68cda31a68be5d37a9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ccd732c644cf0a5641099a9731f65dd7b03bf374
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73486680"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316406"
 ---
 # <a name="testing-example-utterances-in-luis"></a>Test voorbeeld uitingen in LUIS
 
 Testen is het proces van het leveren van voor beeld-uitingen aan LUIS en het verkrijgen van een antwoord op LUIS-herkende intenties en entiteiten. 
 
-U kunt LUIS interactief testen, één utterance tegelijk of een van uitingen. Tijdens het testen kunt u de reactie van het huidige actieve model vergelijken met de Voorspellings reactie van het gepubliceerde model. 
+U kunt LUIS interactief testen, één utterance tegelijk of een set uitingen opgeven. Tijdens het testen kunt u de reactie van het huidige actieve model vergelijken met de Voorspellings reactie van het gepubliceerde model. 
 
 <a name="A-test-score"></a>
 <a name="Score-all-intents"></a>

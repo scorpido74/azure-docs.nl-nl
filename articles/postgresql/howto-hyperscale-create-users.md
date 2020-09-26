@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 1/8/2019
-ms.openlocfilehash: 84f5a8f638e4a9525b330277ff1eaa26ba035e1a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 3d23ee6119b625e11ce44bb9ad11ce4b3ee0280d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907404"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295733"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---hyperscale-citus"></a>Gebruikers maken in Azure Database for PostgreSQL-grootschalige (Citus)
 
@@ -28,7 +28,7 @@ De PostgreSQL-engine gebruikt [rollen](https://www.postgresql.org/docs/current/s
 * `postgres`
 * `citus`
 
-Omdat grootschalige een beheerde PaaS-service is, kan alleen micro soft zich aanmelden met de `postgres` rol van super gebruiker. Voor beperkte beheerders toegang biedt grootschalige de `citus` rol.
+Omdat grootschalige (Citus) een beheerde PaaS-service is, kan alleen micro soft zich aanmelden met de `postgres` rol van super gebruiker. Voor beperkte beheerders toegang biedt grootschalige (Citus) de `citus` rol.
 
 Machtigingen voor de `citus` rol:
 
@@ -46,7 +46,7 @@ Met name voor de `citus` rol gelden enkele beperkingen:
 
 Zoals vermeld, heeft het `citus` beheerders account geen toestemming om extra gebruikers te maken. Gebruik de Azure Portal-interface om een gebruiker toe te voegen.
 
-1. Ga naar de pagina **rollen** voor uw grootschalige-Server groep en klik op **+ toevoegen**:
+1. Ga naar de pagina **rollen** voor uw Citus-Server groep (grootschalige) en klik op **+ toevoegen**:
 
    :::image type="content" source="media/howto-hyperscale-create-users/1-role-page.png" alt-text="De pagina rollen":::
 
@@ -75,7 +75,7 @@ GRANT SELECT ON ALL TABLES IN SCHEMA public TO db_user;
 
 ## <a name="how-to-delete-a-user-role-or-change-their-password"></a>Een gebruikersrol verwijderen of het wacht woord wijzigen
 
-Als u een gebruiker wilt bijwerken, gaat u naar de pagina **rollen** voor uw grootschalige-Server groep en klikt u op de weglatings tekens **...** naast de gebruiker. De weglatings tekens openen een menu om de gebruiker te verwijderen of hun wacht woord opnieuw in te stellen.
+Als u een gebruiker wilt bijwerken, gaat u naar de pagina **rollen** voor uw Citus-Server groep (grootschalige) en klikt u op de weglatings tekens **...** naast de gebruiker. De weglatings tekens openen een menu om de gebruiker te verwijderen of hun wacht woord opnieuw in te stellen.
 
    :::image type="content" source="media/howto-hyperscale-create-users/edit-role.png" alt-text="Een rol bewerken":::
 

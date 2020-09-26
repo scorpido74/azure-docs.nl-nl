@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/15/2020
-ms.openlocfilehash: 07a8c26f7fc314680c51270ebafe03d4e3a84757
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 098c0a85dc6c0fac8b78f344c4c8559b168b9114
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749857"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371334"
 ---
 # <a name="managed-identities-in-azure-hdinsight"></a>Beheerde identiteiten in azure HDInsight
 
@@ -27,7 +27,7 @@ Er zijn twee soorten beheerde identiteiten: aan de gebruiker toegewezen en het s
 
 In azure HDInsight kunnen beheerde identiteiten alleen worden gebruikt door de HDInsight-service voor interne onderdelen. Er wordt momenteel geen methode ondersteund voor het genereren van toegangs tokens met behulp van de beheerde identiteiten die zijn geïnstalleerd op HDInsight-cluster knooppunten voor toegang tot externe services. Voor sommige Azure-Services, zoals reken-Vm's, worden beheerde identiteiten geïmplementeerd met een eind punt dat u kunt gebruiken voor het verkrijgen van toegangs tokens. Dit eind punt is momenteel niet beschikbaar in HDInsight-knoop punten.
 
-Als u uw toepassingen moet Boots trappen om geheimen/wacht woorden te vermijden in de analyse taken (bijvoorbeeld SCALA-taken), kunt u uw eigen certificaten distrubte met behulp van script acties en vervolgens dat certificaat gebruiken om een toegangs token te ophalen (bijvoorbeeld om toegang te krijgen tot Azure-sleutel kluis).
+Als u uw toepassingen moet Boots trappen om geheimen/wacht woorden te vermijden in de analyse taken (bijvoorbeeld SCALA-taken), kunt u uw eigen certificaten distribueren naar de cluster knooppunten met behulp van script acties en dat certificaat vervolgens gebruiken om een toegangs token te verkrijgen (bijvoorbeeld om toegang te krijgen tot Azure-sleutel kluis).
 
 ## <a name="create-a-managed-identity"></a>Een beheerde identiteit maken
 
@@ -47,6 +47,15 @@ Beheerde identiteiten worden in meerdere scenario's gebruikt in azure HDInsight.
 * [Azure Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md#create-a-user-assigned-managed-identity)
 * [Enterprise Security Package](domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-and-authorize-a-managed-identity)
 * [Schijfversleuteling met behulp van door klant beheerde sleutel](disk-encryption.md)
+
+HDInsight zal de certificaten voor de beheerde identiteiten die u voor deze scenario's gebruikt, automatisch vernieuwen. Er is echter een beperking wanneer meerdere verschillende beheerde identiteiten worden gebruikt voor langlopende clusters, het vernieuwen van het certificaat mogelijk niet zoals verwacht wordt uitgevoerd voor alle beheerde identiteiten. Als u van plan bent om langlopende clusters te gebruiken (bijvoorbeeld meer dan 60 dagen), raden we u aan om dezelfde beheerde identiteit te gebruiken voor alle bovenstaande scenario's. 
+
+Als u al een langlopend cluster met meerdere verschillende beheerde identiteiten hebt gemaakt en als een van deze problemen wordt uitgevoerd:
+ * In ESP-clusters wordt het mislukken of schalen van Cluster Services gestart en worden andere bewerkingen niet gestart met verificatie fouten.
+ * Bij het wijzigen van het LDAPS-certificaat van AAD-DS in ESP-clusters worden de LDAPS-certificaten niet automatisch bijgewerkt en daarom kan LDAP-synchronisatie en-schaal nood voeding worden gestart.
+ * MSI-toegang tot ADLS Gen2 kan niet worden gestart.
+ * Versleutelings sleutels kunnen niet worden gedraaid in het CMK-scenario.
+vervolgens moet u de vereiste rollen en machtigingen voor de bovenstaande scenario's toewijzen aan al deze beheerde identiteiten die worden gebruikt in het cluster. Als u bijvoorbeeld verschillende beheerde identiteiten voor ADLS Gen2-en ESP-clusters hebt gebruikt, moeten beide de rollen Storage BLOB data owner en "HDInsight Domain Services contributor" hebben toegewezen om te voor komen dat deze problemen worden uitgevoerd.
 
 ## <a name="faq"></a>Veelgestelde vragen
 

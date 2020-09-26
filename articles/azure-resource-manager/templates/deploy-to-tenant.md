@@ -3,12 +3,12 @@ title: Resources implementeren voor Tenant
 description: Hierin wordt beschreven hoe u resources implementeert in het Tenant bereik in een Azure Resource Manager sjabloon.
 ms.topic: conceptual
 ms.date: 09/24/2020
-ms.openlocfilehash: af75e4f0e51ac685986e57b3b92a23dd37174460
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 48b3fbcedb119ae699624e79f83297f4ecbc9ede
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91284756"
+ms.locfileid: "91372388"
 ---
 # <a name="create-resources-at-the-tenant-level"></a>Resources maken op Tenant niveau
 
@@ -24,7 +24,7 @@ Gebruik voor Azure-beleid:
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
 
-Gebruik voor op rollen gebaseerd toegangs beheer:
+Gebruik voor op rollen gebaseerd toegangs beheer voor Azure (Azure RBAC):
 
 * [roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
 
@@ -64,7 +64,7 @@ De principal-implementatie van de sjabloon moet machtigingen hebben om resources
 
 De globale beheerder voor de Azure Active Directory is niet automatisch gemachtigd om rollen toe te wijzen. De globale beheerder moet de volgende stappen uitvoeren om sjabloon implementaties in te scha kelen in het Tenant bereik:
 
-1. De toegang tot het account verhogen zodat de globale beheerder rollen kan toewijzen. Zie [toegang verhogen voor het beheer van alle Azure-abonnementen en-beheer groepen](../../role-based-access-control/elevate-access-global-admin.md)voor meer informatie.
+1. De toegang tot het account verhogen zodat de globale beheerder rollen kan toewijzen. Zie voor meer informatie [Toegang verhogen om alle Azure-abonnementen en beheergroepen te beheren](../../role-based-access-control/elevate-access-global-admin.md).
 
 1. Wijs eigenaar of bijdrager toe aan de principal die de sjablonen moet implementeren.
 

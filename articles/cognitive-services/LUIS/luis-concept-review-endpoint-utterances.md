@@ -1,14 +1,16 @@
 ---
 title: Gebruikers utterance bekijken-LUIS
 description: Met actief leren kunt u uw eind punt uitingen controleren op juiste intentie en entiteit. LUIS kiest eind punt uitingen het is niet zeker van.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 8d267fc441dc2cbf7f8ae3746486d5e7be55f135
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 82f228d5e6f801539c549e16faea371782ad4b59
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80546854"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316440"
 ---
 # <a name="concepts-for-enabling-active-learning-by-reviewing-endpoint-utterances"></a>Concepten voor het inschakelen van actief leren door eind punt uitingen te controleren
 Actief leren is een van de drie strategieën om de nauw keurigheid van de voor spelling en de eenvoudigste implementatie te verbeteren. Met actief leren kunt u uw eind punt uitingen controleren op juiste intentie en entiteit. LUIS kiest eind punt uitingen het is niet zeker van.
@@ -35,7 +37,7 @@ Gebruik de niet- **[gelabelde uitingen](https://westus.dev.cognitive.microsoft.c
 
 ## <a name="enable-active-learning"></a>Actief leren inschakelen
 
-Als u actief leren wilt inschakelen, moet u gebruikers query's registreren. Dit wordt bereikt door de query van het [eind punt](luis-get-started-create-app.md#query-the-v3-api-prediction-endpoint) aan te roepen met de para meter en waarde van de `log=true` query reeks.
+Als u actief leren wilt inschakelen, moet u gebruikers query's registreren. Dit wordt bereikt door de query van het [eind punt](luis-get-started-create-app.md#query-the-v3-api-prediction-endpoint) aan te roepen met de `log=true` para meter en waarde van de query reeks.
 
 ## <a name="next-steps"></a>Volgende stappen
 

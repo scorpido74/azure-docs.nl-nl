@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: jgao
-ms.openlocfilehash: feee3a0d6de97ac6aaa1f9a92f20860f3f461ae3
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 6086dffaefba003461a6edd8177afab05377103d
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827228"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371249"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>Azure Resource Manager resource groepen beheren met behulp van de Azure Portal
 
@@ -32,7 +32,7 @@ De resourcegroep slaat metagegevens op over de resources. Dat is de reden waarom
 
 ## <a name="create-resource-groups"></a>Resource groepen maken
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. **Resource groepen** selecteren
 
     ![resource groep toevoegen](./media/manage-resource-groups-portal/manage-resource-groups-add-group.png)
@@ -52,7 +52,7 @@ De resourcegroep slaat metagegevens op over de resources. Dat is de reden waarom
 
 ## <a name="list-resource-groups"></a>Resource groepen weer geven
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Als u de resource groepen wilt weer geven, selecteert u **resource groepen**
 
     ![Bladeren in resource groepen](./media/manage-resource-groups-portal/manage-resource-groups-list-groups.png)
@@ -105,7 +105,7 @@ Zie voor meer informatie over het exporteren van sjablonen [één en meerdere re
 
 ## <a name="manage-access-to-resource-groups"></a>Toegang tot resource groepen beheren
 
-[Toegangs beheer op basis van rollen (Azure RBAC) van Azure](../../role-based-access-control/overview.md) is de manier waarop u de toegang tot resources in azure beheert. Zie [Toegang beheren met op rollen gebaseerd toegangsbeheer en Azure Portal](../../role-based-access-control/role-assignments-portal.md) voor meer informatie.
+[Toegangs beheer op basis van rollen (Azure RBAC) van Azure](../../role-based-access-control/overview.md) is de manier waarop u de toegang tot resources in azure beheert. Zie [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de Azure-portal](../../role-based-access-control/role-assignments-portal.md) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

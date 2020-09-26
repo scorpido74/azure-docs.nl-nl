@@ -4,17 +4,17 @@ description: Azure Security Bench Mark v2 Endpoint Security
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: c04e4233ded34ceaeec9cd9afb240d3d1ac864e0
-ms.sourcegitcommit: 94c750edd4d755d6ecee50ac977328098a277479
+ms.openlocfilehash: 3eab0080f80b26fc7074d8a64885148c0568d8b1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90059190"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280617"
 ---
-# <a name="security-control-endpoint-security"></a>Beveiligings controle: Endpoint Security
+# <a name="security-control-v2-endpoint-security"></a>Beveiligings controle v2: Endpoint Security
 
 Endpoint Security heeft betrekking op besturings elementen in eindpunt detectie en-antwoord. Dit omvat het gebruik van de eindpunt detectie en respons (EDR) en anti-malware-service voor eind punten in azure-omgevingen.
 
@@ -36,7 +36,7 @@ Micro soft Defender Advanced Threat Protection biedt een EDR-mogelijkheid als on
 
 **Verantwoordelijkheid**: klant
 
-**Beveiligings belanghebbenden**van de klant:
+**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Infrastructuur- en eindpuntbeveiliging](/azure/cloud-adoption-framework/organize/cloud-security)
 
@@ -64,7 +64,7 @@ Micro soft antimalware voor Azure Cloud Services is de standaard anti-malware vo
 
 **Verantwoordelijkheid**: klant
 
-**Beveiligings belanghebbenden**van de klant:
+**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Infrastructuur- en eindpuntbeveiliging](/azure/cloud-adoption-framework/organize/cloud-security)
 
@@ -88,7 +88,7 @@ Volg de aanbevelingen in Azure Security Center: "COMPUTE &amp; apps" om ervoor t
 
 **Verantwoordelijkheid**: klant
 
-**Beveiligings belanghebbenden**van de klant:
+**Beveiligings belanghebbenden van klanten** ([meer informatie](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Infrastructuur- en eindpuntbeveiliging](/azure/cloud-adoption-framework/organize/cloud-security)
 

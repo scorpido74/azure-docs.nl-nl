@@ -3,12 +3,12 @@ title: Over Azure VM Backup
 description: In dit artikel leest u hoe de Azure Backup-service een back-up maakt van virtuele Azure-machines en hoe u de aanbevolen procedures volgt.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: f9da75a66d25896e8d977910e2eb7fbe6ea69ca1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 58079cba9a65ab4df3632bb641397ba10496ae81
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89014639"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371504"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Een overzicht van Azure VM backup
 
@@ -105,6 +105,13 @@ Deze algemene scenario's kunnen van invloed zijn op de totale back-uptijd:
 - **Gefragmenteerde schijven:** Back-upbewerkingen zijn sneller wanneer de schijf wijzigingen aaneengesloten zijn. Als de wijzigingen zijn verdeeld over en gefragmenteerd op een schijf, wordt de back-up langzamer.
 - **Schijf verloop:** Als beveiligde schijven die een incrementele back-up uitvoeren, een dagelijks verloop hebben van meer dan 200 GB, kan het maken van een back-up lang duren (meer dan acht uur).
 - **Back-upversies:** De meest recente versie van de back-up (ook wel bekend als de versie voor direct terugzetten) maakt gebruik van een meer geoptimaliseerd proces dan de controlesom vergelijking voor het identificeren van wijzigingen. Maar als u direct terugzetten gebruikt en een back-upmomentopname hebt verwijderd, worden de back-upswitches naar controlesom vergelijking. In dit geval wordt de back-upbewerking langer dan 24 uur (of mislukken).
+
+### <a name="restore-performance"></a>Prestaties herstellen
+
+Deze algemene scenario's kunnen van invloed zijn op de totale herstel tijd:
+
+- De totale herstel tijd is afhankelijk van de invoer/uitvoer-bewerkingen per seconde (IOPS) en de door Voer van het opslag account.
+- De totale herstel tijd kan worden beïnvloed als het doel-opslag account is geladen met andere Lees-en schrijf bewerkingen van toepassingen. Als u de herstel bewerking wilt verbeteren, selecteert u een opslag account dat niet is geladen met andere toepassings gegevens.
 
 ## <a name="best-practices"></a>Aanbevolen procedures
 

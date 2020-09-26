@@ -1,14 +1,16 @@
 ---
 title: Testen op DevOps voor LUIS-apps
 description: Uw Language Understanding-app (LUIS) testen in een DevOps-omgeving.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/3/2020
-ms.openlocfilehash: 2556d2e904aff720bc02e4c7d58bf5a72af4d413
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c41e9fe1f197334bce27241ab9f28309c92f7e0a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538068"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316542"
 ---
 # <a name="testing-for-luis-devops"></a>Testen op LUIS DevOps
 
@@ -79,7 +81,7 @@ In elke eenheids test kunt u voor een bepaalde test utterance het volgende doen:
 Bij eenheids tests is het een goed idee om te testen of uw belangrijkste entiteiten zijn geretourneerd in de Voorspellings reactie, maar om eventuele valse positieven te negeren. Fout- *positieven* zijn entiteiten die worden gevonden in de Voorspellings reactie, maar die niet zijn gedefinieerd in de verwachte resultaten voor uw test. Door fout-positieven te negeren, wordt het minder verlieslatend voor het ontwikkelen van eenheids tests, terwijl u zich nog steeds kunt richten op het testen dat de gegevens die naar uw oplossing zijn, worden geretourneerd in een Voorspellings reactie.
 
 > [!TIP]
-> De [NLU. ](https://github.com/microsoft/NLU.DevOps)Het hulp programma DevOps ondersteunt al uw Luis-test behoeften. `compare`Als de opdracht wordt gebruikt in de [eenheids test modus](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Analyze.md#unit-test-mode) , wordt bevestigd dat alle tests worden door gegeven en worden fout positieve resultaten genegeerd voor entiteiten die geen label hebben in de verwachte resultaten.
+> De [NLU. ](https://github.com/microsoft/NLU.DevOps) Het hulp programma DevOps ondersteunt al uw Luis-test behoeften. `compare`Als de opdracht wordt gebruikt in de [eenheids test modus](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Analyze.md#unit-test-mode) , wordt bevestigd dat alle tests worden door gegeven en worden fout positieve resultaten genegeerd voor entiteiten die geen label hebben in de verwachte resultaten.
 
 #### <a name="designing-batch-tests"></a>Batch tests ontwerpen
 

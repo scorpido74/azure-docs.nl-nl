@@ -8,12 +8,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/20/2017
 ms.author: kyliel
-ms.openlocfilehash: 85804e0f9293ec2e63aa319854e9559da11c8be1
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6a20708c5564075c24eb031a39292b020a2ecc00
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286271"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371317"
 ---
 # <a name="how-to-use-freebsds-packet-filter-to-create-a-secure-firewall-in-azure"></a>Het pakket filter van FreeBSD gebruiken om een beveiligde firewall te maken in azure
 In dit artikel wordt beschreven hoe u een NAT-firewall implementeert met behulp van het pakket filter van FreeBSD via Azure Resource Manager sjabloon voor een algemeen webserver scenario.
@@ -25,7 +25,7 @@ PF (pakket filter, geschreven, ook wel PF) is een stateful BSD-pakket filter met
 Als u geïnteresseerd bent in het instellen van een beveiligde firewall in de Cloud voor uw webservers, kunt u aan de slag gaan. U kunt de scripts die worden gebruikt in deze Azure Resource Manager sjabloon ook Toep assen om uw netwerk topologie in te stellen.
 Met de Azure Resource Manager sjabloon wordt een virtuele FreeBSD-machine ingesteld waarmee NAT/Redirection wordt uitgevoerd met behulp van PF en twee FreeBSD virtuele machines met de nginx-webserver geïnstalleerd en geconfigureerd. Naast het uitvoeren van NAT voor het uitgaande verkeer van twee webservers, onderschept de virtuele machine voor NAT/omleiding HTTP-aanvragen en stuurt deze door naar de twee webservers op Round-Robin. Het VNet maakt gebruik van de persoonlijke niet-Routeer bare IP-adres ruimte 10.0.0.2/24, en u kunt de para meters van de sjabloon wijzigen. De sjabloon Azure Resource Manager definieert ook een route tabel voor het hele VNet. Dit is een verzameling afzonderlijke routes die wordt gebruikt om Azure-standaard routes te overschrijven op basis van het doel-IP-adres. 
 
-![pf_topology](./media/freebsd-pf-nat/pf_topology.jpg)
+![Diagram toont een openbaar I P-adres op een NAT-exemplaar dat omleidt door de Round-Robin methode naar twee virtuele machines met back-end die nginx-webservers hosten.](./media/freebsd-pf-nat/pf_topology.jpg)
     
 ### <a name="deploy-through-azure-cli"></a>Implementeren via Azure CLI
 U hebt de nieuwste [Azure cli](/cli/azure/install-az-cli2) geïnstalleerd en u moet zijn aangemeld bij een Azure-account met behulp van [AZ login](/cli/azure/reference-index). Maak een resourcegroep maken met [az group create](/cli/azure/group). In het volgende voor beeld wordt de naam van een resource groep gemaakt `myResourceGroup` op de `West US` locatie.

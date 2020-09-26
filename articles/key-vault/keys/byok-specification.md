@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: ambapat
-ms.openlocfilehash: 80796d852c07952b7100c6dd7802bc9279f3218c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: feef35ef86a933f32949468366fea85eb87d4866
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84198998"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315776"
 ---
 # <a name="bring-your-own-key-specification"></a>BYOK-specificatie (Bring Your Own Key)
 
@@ -31,11 +31,11 @@ Hier volgen de vereisten:
 
 ## <a name="terminology"></a>Terminologie
 
-|Sleutel naam|Sleutel type|Oorsprong|Description|
+|Sleutel naam|Sleutel type|Oorsprong|Beschrijving|
 |---|---|---|---|
-|Sleutel uitwisselings sleutel (KEK)|RSA|Azure Key Vault HSM|Een HSM-sleutel paar met back-ups dat is gegenereerd in Azure Key Vault
-Toets inpakken|AES|Leverancier HSM|Een [kortstondig] AES-sleutel gegenereerd door HSM on-premises
-Doel sleutel|RSA, EC, AES|Leverancier HSM|De sleutel die moet worden overgedragen naar de Azure Key Vault HSM
+|Key Exchange Key (KEK)|RSA|Azure Key Vault-HSM|Een HSM-sleutel paar met back-ups dat is gegenereerd in Azure Key Vault
+Toets inpakken|AES|HSM-leverancier|Een [kortstondig] AES-sleutel gegenereerd door HSM on-premises
+Doel sleutel|RSA, EC, AES|HSM-leverancier|De sleutel die moet worden overgedragen naar de Azure Key Vault-HSM
 
 Sleutel **uitwisselings sleutel**: een door HSM ondersteunde sleutel die door de klant wordt gegenereerd in de sleutel kluis waar de BYOK-sleutel wordt geïmporteerd. Deze KEK moet de volgende eigenschappen hebben:
 
@@ -119,7 +119,7 @@ Als CKM_RSA_AES_KEY_WRAP_PAD wordt gebruikt, zou de JSON-serialisatie van de ove
 
 ```
 
-* Kid = sleutel-id van KEK. Voor Key Vault sleutels ziet het er als volgt uit:https://ContosoKeyVaultHSM.vault.azure.net/keys/mykek/eba63d27e4e34e028839b53fac905621
+* Kid = sleutel-id van KEK. Voor Key Vault sleutels ziet het er als volgt uit: https://ContosoKeyVaultHSM.vault.azure.net/keys/mykek/eba63d27e4e34e028839b53fac905621
 * Alg = algoritme. 
 * dir = directe modus, d.w.z. de verwijzende tekst wordt gebruikt om de gecodeerde tekst direct te beveiligen. Dit is een nauw keurige weer gave van CKM_RSA_AES_KEY_WRAP
 * Generator = een informatief veld waarin de naam en de versie van het BYOK-hulp programma en de bron-HSM-fabrikant en het model worden aangeduid. Deze informatie is bedoeld voor gebruik in probleem oplossing en ondersteuning.
@@ -159,19 +159,7 @@ Aanvraagtekst:
 de waarde ' key_hsm ' is de volledige inhoud van de KeyTransferPackage-ContosoFirstHSMkey. byok-code ring in de Base64-indeling.
 
 ## <a name="references"></a>Referenties
-
-### <a name="azure-key-vault-rest-api"></a>REST-API van Azure Key Vault
-
-* [Sleutel maken](https://docs.microsoft.com/rest/api/keyvault/createkey/createkey)
-* [Sleutel ophalen (alleen sleutel kenmerken en open bare sleutel)](https://docs.microsoft.com/rest/api/keyvault/getkey/getkey)
-* [Sleutel importeren](https://docs.microsoft.com/rest/api/keyvault/importkey/importkey)
-
-
-### <a name="azure-cli-commands"></a>Azure CLI-opdrachten
-* [az keyvault key create](https://docs.microsoft.com/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create)
-* [AZ Key kluis-sleutel downloaden](https://docs.microsoft.com/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-download)
-* [AZ Key kluis-sleutel importeren](https://docs.microsoft.com/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-import)
-
+- [Gids voor Key Vault-ontwikkelaars](../general/developers-guide.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 * Stapsgewijze instructies voor BYOK: [Importeer met HSM beveiligde sleutels naar Key Vault (BYOK)](hsm-protected-keys-byok.md)

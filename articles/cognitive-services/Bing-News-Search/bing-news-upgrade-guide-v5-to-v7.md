@@ -1,7 +1,7 @@
 ---
 title: Upgrade Bing Nieuws zoeken-API v5 naar v7
 titleSuffix: Azure Cognitive Services
-description: Identificeert de onderdelen van uw toepassing die u moet bijwerken om versie 7 te gebruiken.
+description: Hiermee worden de onderdelen van uw Bing News Search toepassing geïdentificeerd die u moet bijwerken om versie 7 te gebruiken.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: scottwhi
-ms.openlocfilehash: bad0ef849af7c94e63f1dfbebda7f47caef9947d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7999ed5296f2ff4e64b9edc0fb355f72b7d7a04e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80294370"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316644"
 ---
 # <a name="news-search-api-upgrade-guide"></a>Upgrade handleiding voor Nieuws zoeken-API
 
@@ -31,11 +31,11 @@ Deze upgrade handleiding bevat de wijzigingen tussen versie 5 en versie 7 van de
 
 - Alle mislukte aanvragen moeten nu een `ErrorResponse` object bevatten in de hoofd tekst van het antwoord.
 
-- De volgende velden zijn toegevoegd aan `Error` het object.  
+- De volgende velden zijn toegevoegd aan het `Error` object.  
   - `subCode`&mdash;Partitioneert de fout code indien mogelijk naar discrete buckets
   - `moreDetails`&mdash;Aanvullende informatie over de fout die in het `message` veld wordt beschreven
 
-- De V5-fout codes zijn vervangen door de `code` volgende `subCode` mogelijke en waarden.
+- De V5-fout codes zijn vervangen door de volgende mogelijke `code` en `subCode` waarden.
 
 |Code|SubCode|Beschrijving
 |-|-|-
@@ -70,7 +70,7 @@ Geblokkeerd|InvalidRequest. blocked
 
 ### <a name="object-changes"></a>Object wijzigingen
 
-- Het `contractualRules` veld is toegevoegd aan het [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) -object. Het `contractualRules` veld bevat een lijst met regels die u moet volgen (bijvoorbeeld artikel toewijzing). U moet de toewijzing Toep assen die is `contractualRules` opgenomen in in `provider`plaats van met. Het artikel bevat `contractualRules` alleen wanneer de [webzoekopdrachten API](../bing-web-search/search-the-web.md) -antwoord een nieuws antwoord bevat.
+- Het veld is toegevoegd `contractualRules` aan het [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) -object. Het `contractualRules` veld bevat een lijst met regels die u moet volgen (bijvoorbeeld artikel toewijzing). U moet de toewijzing Toep assen die is opgenomen in in `contractualRules` plaats van met `provider` . Het artikel bevat `contractualRules` alleen wanneer de [webzoekopdrachten API](../bing-web-search/search-the-web.md) -antwoord een nieuws antwoord bevat.
 
 ## <a name="non-breaking-changes"></a>Niet-brekende wijzigingen
 
@@ -84,10 +84,10 @@ Geblokkeerd|InvalidRequest. blocked
 
 ### <a name="object-changes"></a>Object wijzigingen
 
-- Het `mentions` veld is toegevoegd aan het [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) -object. Het `mentions` veld bevat een lijst met entiteiten (personen of plaatsen) die in het artikel zijn gevonden.
+- Het veld is toegevoegd `mentions` aan het [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) -object. Het `mentions` veld bevat een lijst met entiteiten (personen of plaatsen) die in het artikel zijn gevonden.
 
-- Het `video` veld is toegevoegd aan het [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) -object. Het `video` veld bevat een video die aan het nieuws artikel is gerelateerd. De video is een \<iframe\> dat u kunt insluiten of een animatie-miniatuur.
+- Het veld is toegevoegd `video` aan het [NewsArticle](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#newsarticle) -object. Het `video` veld bevat een video die aan het nieuws artikel is gerelateerd. De video is een \<iframe\> die u kunt insluiten of een animatie miniatuur.
 
-- Het `sort` veld is toegevoegd aan het [Nieuws](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#news) object. In `sort` het veld wordt de sorteer volgorde van de artikelen weer gegeven. De artikelen worden bijvoorbeeld gesorteerd op relevantie (standaard) of datum.
+- Het veld is toegevoegd `sort` aan het [Nieuws](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#news) object. `sort`In het veld wordt de sorteer volgorde van de artikelen weer gegeven. De artikelen worden bijvoorbeeld gesorteerd op relevantie (standaard) of datum.
 
-- Het [SortValue](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#sortvalue) -object is toegevoegd, waarmee een sorteer volgorde wordt gedefinieerd. Het `isSelected` veld geeft aan of het antwoord de sorteer volgorde heeft gebruikt. Als dit het **geval**is, wordt de sorteer volgorde gebruikt voor het antwoord. Als `isSelected` de waarde **False**is, kunt u de URL in `url` het veld gebruiken om een andere sorteer volgorde aan te vragen.
+- Het [SortValue](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#sortvalue) -object is toegevoegd, waarmee een sorteer volgorde wordt gedefinieerd. Het `isSelected` veld geeft aan of het antwoord de sorteer volgorde heeft gebruikt. Als dit het **geval**is, wordt de sorteer volgorde gebruikt voor het antwoord. Als `isSelected` de waarde **False**is, kunt u de URL in het `url` veld gebruiken om een andere sorteer volgorde aan te vragen.

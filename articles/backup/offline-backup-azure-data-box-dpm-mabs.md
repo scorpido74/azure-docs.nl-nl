@@ -3,12 +3,12 @@ title: Offline back-up met Azure Data Box voor DPM en MABS
 description: U kunt Azure Data Box gebruiken om de eerste back-upgegevens offline van DPM en MABS te maken.
 ms.topic: conceptual
 ms.date: 08/12/2020
-ms.openlocfilehash: 3755a4cc77455b37ae1545247992a3c8c4f25653
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 2fd8a137abf8b76d1587894bfa3fe8447e0d646b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89177683"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271491"
 ---
 # <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs-preview"></a>Offline seeding met behulp van Azure Data Box voor DPM en MABS (preview)
 
@@ -110,7 +110,7 @@ Geef een alternatieve bron op: *Wim: D: \Sources\Install.Wim: 4*
 
 ## <a name="transfer-initial-backup-data-to-azure-data-box-devices"></a>Initiële back-upgegevens overdragen naar Azure Data Box-apparaten
 
-1. Volg op uw DPM-MABS-server de stappen voor het [maken van een nieuwe beveiligings groep](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019). Als u een online beveiliging toevoegt aan de bestaande beveiligings groep, klikt u met de rechter muisknop op de bestaande beveiligings groep en selecteert u **online beveiliging toevoegen** en beginnen bij **stap 8**.
+1. Volg op uw DPM-MABS-server de stappen voor het [maken van een nieuwe beveiligings groep](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups). Als u een online beveiliging toevoegt aan de bestaande beveiligings groep, klikt u met de rechter muisknop op de bestaande beveiligings groep en selecteert u **online beveiliging toevoegen** en beginnen bij **stap 8**.
 2. Geef op de pagina **groeps leden selecteren** de computers en bronnen op waarvan u een back-up wilt maken.
 3. Geef op de pagina **methode voor gegevens beveiliging selecteren** op hoe u back-ups voor de korte en de lange termijn wilt afhandelen. Zorg ervoor dat ik kies voor **online beveiliging.**
 
@@ -149,7 +149,7 @@ Geef een alternatieve bron op: *Wim: D: \Sources\Install.Wim: 4*
           -Azure. Storage       *4.6.1*<br>
      >  - De Azure AD-toepassing is geregistreerd *als \<object GUID of the user> AzureOfflineBackup_*.
 
-13. Selecteer de juiste volg orde voor data vakken waarvoor u de Data Box schijf hebt uitgepakt, verbonden en ontgrendeld. Selecteer **Volgende**.
+13. Selecteer de juiste volg orde voor data vakken waarvoor u de Data Box schijf hebt uitgepakt, verbonden en ontgrendeld. Selecteer **Next**.
 
     ![Selecteer de databox](./media/offline-backup-azure-data-box-dpm-mabs/select-databox.png)
 
@@ -165,7 +165,7 @@ Geef een alternatieve bron op: *Wim: D: \Sources\Install.Wim: 4*
     > Als het pad van de schijf `\\mydomain\myserver\disk1\` en *Disk1* bijvoorbeeld een map bevat met de naam *PageBlob*, is het pad dat moet worden gegeven in de wizard DPM/MABS server `\\mydomain\myserver\disk1\` .
     > Als u [een Azure Data Box 100 TB-apparaat hebt ingesteld](https://docs.microsoft.com/azure/backup/offline-backup-azure-data-box#setup-azure-data-box), geeft u het volgende op als het netwerkpad naar het apparaat `\\<DeviceIPAddress>\<StorageAccountName>_PageBlob` .
 
-15. Selecteer **Volgende**. Controleer uw instellingen op de pagina **samen vatting** en selecteer **groep maken**.
+15. Selecteer **Next**. Controleer uw instellingen op de pagina **samen vatting** en selecteer **groep maken**.
 
     ![Databox detecteren](./media/offline-backup-azure-data-box-dpm-mabs/detect-databox.png)
 
@@ -201,7 +201,7 @@ Volg deze stappen wanneer de back-up van de gegevens naar de Azure Data Box Disk
 
 - Nadat de DPM-MABS-server een herstel punt heeft gemaakt dat overeenkomt met de eerste back-up, kunt u het opslag account (of de specifieke inhoud) verwijderen die aan de Azure Data Box-taak is gekoppeld.
 
-## <a name="troubleshooting"></a>Probleemoplossing
+## <a name="troubleshooting"></a>Problemen oplossen
 
 De Microsoft Azure Backup-Agent (MAB) op de DPM-server maakt een Azure AD-toepassing voor u, in uw Tenant. Voor deze toepassing is een certificaat vereist voor verificatie dat is gemaakt en geüpload bij het configureren van het offline seeding-beleid.
 

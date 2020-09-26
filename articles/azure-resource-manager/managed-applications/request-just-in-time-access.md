@@ -3,18 +3,18 @@ title: Just-in-time-toegang aanvragen
 description: Hierin wordt beschreven hoe uitgevers van Azure Managed Applications just-in-time toegang aanvragen tot een beheerde toepassing.
 author: MSEvanhi
 ms.topic: conceptual
-ms.date: 06/03/2019
+ms.date: 09/25/2020
 ms.author: evanhi
-ms.openlocfilehash: 7f475774828bcaecd471e13de994b156041323ed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e1a929924e2c291e0044da99f3ae5d7d1c3b894
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75651382"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371559"
 ---
 # <a name="enable-and-request-just-in-time-access-for-azure-managed-applications"></a>Just-in-time-toegang inschakelen en aanvragen voor Azure Managed Applications
 
-Consumenten van uw beheerde toepassing kunnen niet alleen permanente toegang tot de beheerde resource groep verlenen. Als uitgever van een beheer toepassing kunt u de voor keur geven aan gebruikers die precies weten wanneer u toegang nodig hebt tot de beheerde bronnen. Azure Managed Applications biedt de mogelijkheid om gebruikers meer controle te geven over het verlenen van toegang tot beheerde resources, een functie met de naam just-in-time (JIT) toegang, die momenteel als preview-versie beschikbaar is.
+Consumenten van uw beheerde toepassing kunnen niet alleen permanente toegang tot de beheerde resource groep verlenen. Als uitgever van een beheer toepassing kunt u de voor keur geven aan gebruikers die precies weten wanneer u toegang nodig hebt tot de beheerde bronnen. Azure Managed Applications biedt de mogelijkheid om gebruikers meer controle te geven over het verlenen van toegang tot beheerde resources, een functie die just-in-time (JIT) toegang wordt genoemd. Deze functie is momenteel beschikbaar als preview-product.
 
 Met JIT-toegang kunt u verhoogde toegang tot de resources van een beheerde toepassing aanvragen voor het oplossen van problemen of onderhoud. U hebt altijd alleen-lezen toegang tot de resources, maar gedurende een bepaalde periode kunt u meer toegang hebben.
 
@@ -34,9 +34,7 @@ In dit artikel wordt gekeken naar de acties die zijn uitgevoerd voor het inschak
 
 ## <a name="add-jit-access-step-to-ui"></a>JIT-toegangs stap toevoegen aan de gebruikers interface
 
-Uw CreateUiDefinition.jsin het bestand is precies hetzelfde als het gebruikers interface bestand dat u hebt gemaakt voor permanente toegang, behalve dat u een stap moet toevoegen waarmee gebruikers JIT-toegang kunnen inschakelen. Zie [Azure Managed Applications in Marketplace](publish-marketplace-app.md)voor meer informatie over het publiceren van uw eerste beheerde toepassings aanbieding in de Azure Marketplace.
-
-Voeg de volgende inhoud toe aan uw CreateUiDefinition.jsin het bestand om de JIT-functionaliteit voor uw aanbieding te ondersteunen:
+Neem in uw CreateUiDefinition.jsin het bestand een stap op waarmee gebruikers JIT-toegang kunnen inschakelen. Voeg de volgende inhoud toe aan uw CreateUiDefinition.jsin het bestand om de JIT-functionaliteit voor uw aanbieding te ondersteunen.
 
 In ' stappen ':
 
@@ -58,7 +56,7 @@ In ' stappen ':
     ]
 }
 ```
- 
+
 In "uitvoer":
 
 ```json
@@ -70,15 +68,17 @@ In "uitvoer":
 
 ## <a name="enable-jit-access"></a>JIT-toegang inschakelen
 
-Zorg er bij het definiëren van uw aanbieding op de Marketplace voor dat u JIT-toegang inschakelt.
+Zorg er bij het maken van uw aanbieding in het partner centrum voor dat u JIT-toegang inschakelt.
 
-1. Meld u aan bij de portal voor het [publiceren van Cloud partners](https://cloudpartner.azure.com).
+1. Meld u aan bij de portal voor commerciële Marketplace in het [partner centrum](https://partner.microsoft.com/dashboard/commercial-marketplace/overview).
 
-1. Geef waarden op voor het publiceren van uw beheerde toepassing in Marketplace. Selecteer **Ja** als u **JIT-toegang wilt inschakelen?**
+1. Volg de stappen in [een Azure-toepassings aanbieding maken](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md)voor hulp bij het maken van een nieuwe beheerde toepassing.
 
-   ![Just-in-time-toegang inschakelen](./media/request-just-in-time-access/marketplace-enable.png)
+1. Schakel op de pagina **technische configuratie** het selectie vakje **just-in-time-toegang inschakelen** in.
 
-U hebt een JIT-configuratie stap toegevoegd aan uw gebruikers interface en u hebt JIT-toegang ingeschakeld in de Marketplace-aanbieding. Wanneer gebruikers uw beheerde toepassing implementeren, kunnen ze [JIT-toegang inschakelen voor hun exemplaar](approve-just-in-time-access.md#enable-during-deployment).
+   :::image type="content" source="./media/request-just-in-time-access/enable-just-in-time-access.png" alt-text="Just-in-time-toegang inschakelen":::
+
+U hebt een JIT-configuratie stap toegevoegd aan uw gebruikers interface en u hebt JIT-toegang ingeschakeld in de commerciële Marketplace-aanbieding. Wanneer gebruikers uw beheerde toepassing implementeren, kunnen ze [JIT-toegang inschakelen voor hun exemplaar](approve-just-in-time-access.md#enable-during-deployment).
 
 ## <a name="request-access"></a>Toegang aanvragen
 

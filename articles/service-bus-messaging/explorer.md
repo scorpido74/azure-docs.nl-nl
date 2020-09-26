@@ -3,12 +3,12 @@ title: Azure Service Bus Explorer gebruiken om gegevens bewerkingen op Service B
 description: Dit artikel bevat informatie over het gebruik van de portal Azure Service Bus Explorer voor toegang tot Azure Service Bus gegevens.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 3fa619334f1918e16c487269fe3715f5338adf85
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5e97c6860c2cc01048f4f7caf9f40f9e07592d0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340545"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91295597"
 ---
 # <a name="use-service-bus-explorer-to-perform-data-operations-on-service-bus-preview"></a>Service Bus Explorer gebruiken om gegevens bewerkingen op Service Bus uit te voeren (preview)
 
@@ -104,7 +104,7 @@ Een bericht van een wachtrij (of de bijbehorende deadletter subwachtrij) ontvang
 
 Wanneer de ontvangst bewerking is gelukt, worden de gegevens van het bericht als hieronder weer gegeven in het raster. U kunt het bericht selecteren in het raster om de details ervan weer te geven.
 
-:::image type="content" source="./media/service-bus-explorer/receive-message-from-queue-2.png" alt-text="ReceiveMessageFromQueue":::
+:::image type="content" source="./media/service-bus-explorer/receive-message-from-queue-2.png" alt-text="Scherm opname van het venster wacht rijen in de Azure Service Bus Explorer met bericht details die worden weer gegeven voor een actief bericht dat in de wachtrij is geselecteerd.":::
 
 
 ### <a name="peeking-a-message-from-a-queue"></a>Een bericht uit een wachtrij bekijken
@@ -156,7 +156,7 @@ Net als bij een wachtrij kan de ***Receive*** -bewerking worden uitgevoerd op ee
 
 Wanneer de ontvangst bewerking is gelukt, wordt het ontvangen bericht als volgt weer gegeven in het raster. Klik op het bericht om de details van het bericht weer te geven.
 
-:::image type="content" source="./media/service-bus-explorer/receive-message-from-subscription.png" alt-text="ReceiveMessageFromQueue":::
+:::image type="content" source="./media/service-bus-explorer/receive-message-from-subscription.png" alt-text="Scherm afbeelding van het tabblad ontvangen in de Azure Service Bus Explorer met de bericht gegevens die worden weer gegeven voor een actief bericht dat is ontvangen.":::
 
 ### <a name="peeking-a-message-from-a-subscription"></a>Een bericht van een abonnement bekijken
 

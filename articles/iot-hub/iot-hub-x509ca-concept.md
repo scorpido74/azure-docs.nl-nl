@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: 4487772aba22f1ce577e6a0d8263ce1200b6345f
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: c707f6108c73a268bcac18c45afb70ae17185bb8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90019900"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308109"
 ---
 # <a name="conceptual-understanding-of-x509-ca-certificates-in-the-iot-industry"></a>Conceptuele uitleg van X. 509 CA-certificaten in de IoT-industrie
 
@@ -87,7 +87,7 @@ Het X. 509 CA-certificaat upload proces is alleen dat, upload het CA-certificaat
 
 ### <a name="proof-of-possession-of-the-certificate"></a>Bewijs van het bezit van het certificaat
 
-Het X. 509 CA-certificaat, net als elk digitaal certificaat, is open bare gegevens die vatbaar zijn voor het afluis teren. Zo kan een Eavesdropper een certificaat onderscheppen en proberen het te uploaden als hun eigen. In ons voor beeld moet IoT Hub ervoor zorgen dat het CA-certificaat bedrijf-X helemaal geen deel uitmaakt van het bedrijf-X. Dit doet u door een uitdagend bedrijf-X om aan te tonen dat ze in werkelijkheid het certificaat hebben via een [pop-stroom (bewijs van eigendom)](https://tools.ietf.org/html/rfc5280#section-3.1). De stroom van het bewijs van zijn bezit is IoT Hub het genereren van een wille keurig getal dat door bedrijf-X wordt ondertekend met behulp van de bijbehorende persoonlijke sleutel. Als de aanbevolen procedures van het bedrijf-X gevolgd door de PKI en de persoonlijke sleutel worden beveiligd, zouden alleen ze in de juiste stand kunnen reageren op de uitdaging van het bewijs. IoT Hub gaat om het CA-certificaat van X. 509 te registreren na een geslaagde reactie van de uitdaging van het bewijs.
+Het X. 509 CA-certificaat, net als elk digitaal certificaat, is open bare gegevens die vatbaar zijn voor het afluis teren. Zo kan een Eavesdropper een certificaat onderscheppen en proberen het te uploaden als hun eigen. In ons voor beeld moet IoT Hub ervoor zorgen dat het CA-certificaat bedrijf-X helemaal geen deel uitmaakt van het bedrijf-X. Dit doet u door een uitdagend bedrijf-X, om aan te tonen dat ze in feite het certificaat hebben via een [pop-stroom (bewijs van eigendom)](https://tools.ietf.org/html/rfc5280#section-3.1). De stroom van het bewijs van zijn bezit is IoT Hub het genereren van een wille keurig getal dat door bedrijf-X wordt ondertekend met behulp van de bijbehorende persoonlijke sleutel. Als de aanbevolen procedures van het bedrijf-X gevolgd door de PKI en de persoonlijke sleutel worden beveiligd, zouden alleen ze in de juiste stand kunnen reageren op de uitdaging van het bewijs. IoT Hub gaat om het CA-certificaat van X. 509 te registreren na een geslaagde reactie van de uitdaging van het bewijs.
 
 Een geslaagde reactie op de controle van de bewijs van het bezit van IoT Hub voltooit de X. 509 CA-registratie.
 

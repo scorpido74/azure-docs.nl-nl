@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: yegu
-ms.openlocfilehash: 2a95aa9e9fccdb7047c2c0901f4349fecfbab672
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 4b196818ade1e703e24ed1ced6ebac1b44d0b083
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009576"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372065"
 ---
 # <a name="migrate-to-azure-cache-for-redis"></a>Migreren naar Azure Cache voor Redis
 In dit artikel wordt een aantal benaderingen beschreven voor het migreren van een bestaande redis-cache die on-premises wordt uitgevoerd of in een andere Cloud service naar Azure cache voor redis.
@@ -34,7 +34,7 @@ Er zijn verschillende manieren waarop u kunt overschakelen van de ene cache naar
    | ------------ | ---------- | ------------- |
    | Een nieuwe cache maken | Het eenvoudigste is om te implementeren. | Gegevens moeten opnieuw worden ingevuld in de nieuwe cache, wat mogelijk niet werkt bij veel toepassingen. |
    | Gegevens exporteren en importeren via een RDB-bestand | In het algemeen compatibel met een wille keurige redis-cache. | Sommige gegevens kunnen verloren gaan als ze naar de bestaande cache worden geschreven nadat het RDB-bestand is gegenereerd. | 
-   | Dubbele gegevens naar twee caches schrijven | Geen gegevens verlies of centrum. Ongestoorde bewerkingen van de bestaande cache. Eenvoudiger testen van de nieuwe cache. | Heeft gedurende lange tijd twee caches nodig. | 
+   | Dubbele gegevens naar twee caches schrijven | Geen gegevens verlies of downtime. Ongestoorde bewerkingen van de bestaande cache. Eenvoudiger testen van de nieuwe cache. | Heeft gedurende lange tijd twee caches nodig. | 
    | Gegevens migreren via een programma | Volledige controle over hoe gegevens worden verplaatst. | Aangepaste code vereist. | 
 
 ### <a name="create-a-new-azure-cache-for-redis"></a>Een nieuwe Azure-cache maken voor redis

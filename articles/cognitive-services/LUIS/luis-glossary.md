@@ -1,14 +1,16 @@
 ---
 title: Woorden lijst-LUIS
 description: In de woorden lijst worden de termen beschreven die u kunt tegen komen tijdens het werken met de LUIS API-service.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 05/08/2020
-ms.openlocfilehash: 44749648559994d986e4d84b06f38369850de6ca
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 0f17e489cabb047ca2e9f0ad7406c34cd292e556
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836408"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91309486"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Taal informatie over woorden lijst met veelgestelde woorden en concepten
 In de woorden lijst Language Understanding (LUIS) worden de termen beschreven die u kunt tegen komen tijdens het werken met de LUIS-service.
@@ -107,7 +109,7 @@ Zie ook:
 
 Een descriptor is de term die voorheen werd gebruikt voor een machine learning- [functie](#features).
 
-## <a name="domain"></a>Domein
+## <a name="domain"></a>Domain
 
 In de context van LUIS is een domein een kennis gebied. Uw domein is specifiek voor uw scenario. Verschillende domeinen gebruiken een specifieke taal en terminologie die in de context van het domein betekenis heeft. Als u bijvoorbeeld een toepassing bouwt voor het afspelen van muziek, heeft uw toepassing voor waarden en talen die specifiek zijn voor muziek: woorden als "nummer, track, album, Song teksten, b-zijde, artiest". Zie voor voor beelden van domeinen [vooraf ontwikkelde domeinen](#prebuilt-domain).
 
@@ -192,7 +194,7 @@ In LUIS [labelt](label-entity-example-utterance.md) u een woord of woord groep i
 
 Zie de definitie voor de [toepassing (app)](#application-app).
 
-## <a name="model"></a>Model
+## <a name="model"></a>Modelleren
 
 A (machine geleerd) is een functie die een voor spelling van invoer gegevens maakt. In LUIS verwijzen we naar intentie-classificaties en entiteits uittreksels algemeen als ' modellen ' en verwijzen we naar een verzameling modellen die zijn getraind, gepubliceerd en samen met een ' app '.
 
@@ -284,7 +286,7 @@ In LUIS [lijst entiteiten](reference-entity-list.md)kunt u een genormaliseerde w
 |Waarde Nomalized| Synoniemen|
 |--|--|
 |Klein| de kleine, 8 ounce|
-|Middelgroot| normaal, 12 ounce|
+|Normaal| normaal, 12 ounce|
 |Groot| Big, 16 ounce|
 |Xtra groot| de grootste, 24 ounce|
 
@@ -309,7 +311,7 @@ Voor **Engels**is een token een doorlopende periode (geen spaties of lees tekens
 |--|--|--|
 |`Dog`|1|Eén woord zonder Lees tekens of spaties.|
 |`RMT33W`|1|Een record locator-nummer. De waarde mag cijfers en letters bevatten, maar heeft geen interpunctie.|
-|`425-555-5555`|5|Een telefoon nummer. Elk lees teken is een enkel token dat `425-555-5555` 5 tokens zou zijn:<br>`425`<br>`-`<br>`555`<br>`-`<br>`5555` |
+|`425-555-5555`|5|Een telefoon nummer. Elk lees teken is een enkel token dat  `425-555-5555` 5 tokens zou zijn:<br>`425`<br>`-`<br>`555`<br>`-`<br>`5555` |
 |`https://luis.ai`|7|`https`<br>`:`<br>`/`<br>`/`<br>`luis`<br>`.`<br>`ai`<br>|
 
 ## <a name="train"></a>Trainen

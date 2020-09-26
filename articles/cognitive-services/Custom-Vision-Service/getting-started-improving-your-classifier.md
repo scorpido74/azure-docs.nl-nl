@@ -10,12 +10,13 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: pafarley
-ms.openlocfilehash: c2858d5f9bca662cbbcd48b2345a7dc2c7ae48b2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: cog-serv-seo-aug-2020
+ms.openlocfilehash: a77d3d5c1225fdd85e27db20cdae23e0c77a5e28
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73718543"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91271355"
 ---
 # <a name="how-to-improve-your-classifier"></a>De classificatie verbeteren
 
@@ -65,7 +66,7 @@ U kunt dit probleem oplossen door diverse installatie kopieën te gebruiken om e
 
     ![Afbeelding van grootte voorbeelden](./media/getting-started-improving-your-classifier/size.png)
 
-* __Camera hoek:__ Geef installatie kopieën op die zijn gemaakt met verschillende camera hoeken. Als al uw Foto's moeten worden uitgevoerd met vaste camera's (zoals surveillance camera's), moet u er ook voor zorgen dat u een ander label toewijst aan elk regel matig object, om te voor komen dat&mdash;niet-gerelateerde objecten (zoals lampposts) worden geïnterpreteerd als de belangrijkste functie.
+* __Camera hoek:__ Geef installatie kopieën op die zijn gemaakt met verschillende camera hoeken. Als al uw Foto's moeten worden uitgevoerd met vaste camera's (zoals surveillance camera's), moet u er ook voor zorgen dat u een ander label toewijst aan elk regel matig object, om te voor komen dat niet- &mdash; gerelateerde objecten (zoals lampposts) worden geïnterpreteerd als de belangrijkste functie.
 
     ![Afbeelding van hoek voorbeelden](./media/getting-started-improving-your-classifier/angle.png)
 
