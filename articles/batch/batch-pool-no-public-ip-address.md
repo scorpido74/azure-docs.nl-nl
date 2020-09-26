@@ -1,29 +1,30 @@
 ---
-title: Een Azure Batch groep maken zonder open bare IP-adressen
+title: Een Azure Batch-pool zonder openbare IP-adressen maken
 description: Meer informatie over het maken van een groep zonder open bare IP-adressen
 author: pkshultz
 ms.topic: how-to
-ms.date: 06/26/2020
+ms.date: 09/25/2020
 ms.author: peshultz
-ms.openlocfilehash: 30792314f5bffaf4d40fc4bf60a2706acdaad34b
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.custom: references_regions
+ms.openlocfilehash: 9b36c769c70792e47464c2704e1912dbb2d744dd
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85962438"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91367934"
 ---
-# <a name="create-an-azure-batch-pool-without-public-ip-addresses"></a>Een Azure Batch groep maken zonder open bare IP-adressen
+# <a name="create-an-azure-batch-pool-without-public-ip-addresses"></a>Een Azure Batch-pool zonder openbare IP-adressen maken
 
 Wanneer u een Azure Batch groep maakt, kunt u de configuratie groep van de virtuele machine inrichten zonder een openbaar IP-adres. In dit artikel wordt uitgelegd hoe u een batch-pool kunt instellen zonder open bare IP-adressen.
 
 ## <a name="why-use-a-pool-without-public-ip-addresses"></a>Waarom een pool zonder open bare IP-adressen gebruiken?
 
-Standaard wordt aan alle reken knooppunten in een Azure Batch configuratie groep voor virtuele machines een openbaar IP-adres toegewezen. Dit adres wordt gebruikt door de batch-service voor het plannen van taken en voor communicatie met reken knooppunten, inclusief uitgaande toegang tot internet. 
+Standaard wordt aan alle reken knooppunten in een Azure Batch configuratie groep voor virtuele machines een openbaar IP-adres toegewezen. Dit adres wordt gebruikt door de batch-service voor het plannen van taken en voor communicatie met reken knooppunten, inclusief uitgaande toegang tot internet.
 
 Als u de toegang tot deze knoop punten wilt beperken en de detectie van deze knoop punten van het Internet wilt verkorten, kunt u de groep inrichten zonder open bare IP-adressen.
 
 > [!IMPORTANT]
-> Ondersteuning voor Pools zonder open bare IP-adressen in Azure Batch is momenteel beschikbaar als open bare Preview voor de West-Centraal VS, VS-Oost, Zuid-Centraal VS, VS-West 2, US Gov-Virginia en US Gov-Arizona regio's.
+> Ondersteuning voor Pools zonder open bare IP-adressen in Azure Batch is momenteel een open bare Preview voor alle regio's, met uitzonde ring van China-oost, China-oost 2, China-noord en China-noord 2.
 > Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -33,7 +34,7 @@ Als u de toegang tot deze knoop punten wilt beperken en de detectie van deze kno
 - **Een Azure-VNet**. Als u uw pool in een [virtueel netwerk](batch-virtual-network.md)maakt, volgt u deze vereisten en configuraties. Als u een VNet met een of meer subnetten vooraf wilt voorbereiden, kunt u de Azure Portal, Azure PowerShell, de Azure-opdracht regel interface (CLI) of een andere methode gebruiken.
   - Het VNet moet in hetzelfde abonnement en dezelfde regio voorkomen als het Batch-account dat u gebruikt om de pool te maken.
   - Het subnet dat is opgegeven voor de pool moet voldoende vrije IP-adressen hebben voor het aantal virtuele machines voor de pool, ofwel de som van de `targetDedicatedNodes`- en `targetLowPriorityNodes`-eigenschappen van de pool. Als het subnet onvoldoende vrije IP-adressen heeft, wijst de pool de rekenknooppunten gedeeltelijk toe en wordt een fout weergegeven voor het aanpassen van de grootte.
-  - U moet de persoonlijke-koppelings service en het eindpunt netwerk beleid uitschakelen. Dit kan worden gedaan met behulp van Azure CLI:```az network vnet subnet update --vnet-name <vnetname> -n <subnetname> --disable-private-endpoint-network-policies --disable-private-link-service-network-policies```
+  - U moet de persoonlijke-koppelings service en het eindpunt netwerk beleid uitschakelen. Dit kan worden gedaan met behulp van Azure CLI: ```az network vnet subnet update --vnet-name <vnetname> -n <subnetname> --disable-private-endpoint-network-policies --disable-private-link-service-network-policies```
   
 > [!IMPORTANT]
 > Voor elke knoop punt met 100 toegewezen of lage prioriteit worden met batch één persoonlijke-koppelings service en één load balancer toegewezen. De beperkingen die voor deze resources gelden, worden bepaald door de [resourcequota](../azure-resource-manager/management/azure-subscription-service-limits.md) van het abonnement. Voor grote Pools moet u mogelijk [een quotum verhoging aanvragen](batch-quota-limit.md#increase-a-quota) voor een of meer van deze resources. Daarnaast moeten er geen resource vergrendelingen worden toegepast op resources die zijn gemaakt door batch, omdat hierdoor het opruimen van resources als gevolg van door de gebruiker geïnitieerde acties wordt voor komen, zoals het verwijderen van een pool of het wijzigen van de grootte in nul.
@@ -55,7 +56,7 @@ Als u de toegang tot deze knoop punten wilt beperken en de detectie van deze kno
 1. Selecteer desgewenst een virtueel netwerk en een subnet dat u wilt gebruiken. Dit virtuele netwerk moet zich in dezelfde resource groep bevinden als de groep die u maakt.
 1. Selecteer **NoPublicIPAddresses**in het **inrichtings type voor IP-adressen**.
 
-![Groeps scherm toevoegen met NoPublicIPAddresses geselecteerd](./media/batch-pool-no-public-ip-address/create-pool-without-public-ip-address.png)
+![Scherm opname van het NoPublicIPAddresses voor het toevoegen van een groep, waarbij de selectie is ingeschakeld.](./media/batch-pool-no-public-ip-address/create-pool-without-public-ip-address.png)
 
 ## <a name="use-the-batch-rest-api-to-create-a-pool-without-public-ip-addresses"></a>De batch-REST API gebruiken om een pool te maken zonder open bare IP-adressen
 

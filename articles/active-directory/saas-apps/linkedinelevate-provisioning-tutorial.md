@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: arvinh
-ms.openlocfilehash: e49b35de5cce914edbd8db2ac0c0c8cccd5f811b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 429ccacea8eb4fd66336543615b11179af3e9276
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549769"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361574"
 ---
 # <a name="tutorial-configure-linkedin-elevate-for-automatic-user-provisioning"></a>Zelf studie: LinkedIn-verhoging configureren voor automatische gebruikers inrichting
 
@@ -23,7 +23,7 @@ Het doel van deze zelf studie is om u te laten zien welke stappen u moet uitvoer
 
 ## <a name="prerequisites"></a>Vereisten
 
-In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan dat u de volgende items al hebt:
+In het scenario dat in deze zelfstudie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende items:
 
 * Een Azure Active Directory-tenant
 * Een LinkedIn-Tenant met verhoogde bevoegdheid
@@ -34,7 +34,7 @@ In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan 
 
 ## <a name="assigning-users-to-linkedin-elevate"></a>Gebruikers toewijzen aan LinkedIn-verhoging
 
-Azure Active Directory gebruikt een concept met de naam ' toewijzingen ' om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers accounts worden alleen de gebruikers en groepen die zijn toegewezen aan een toepassing in azure AD gesynchroniseerd.
+Azure Active Directory gebruikt een concept met de naam 'toewijzingen' om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers accounts worden alleen de gebruikers en groepen die zijn toegewezen aan een toepassing in azure AD gesynchroniseerd.
 
 Voordat u de inrichtings service configureert en inschakelt, moet u bepalen welke gebruikers en/of groepen in azure AD de gebruikers vertegenwoordigen die toegang nodig hebben tot LinkedIn. Eenmaal besloten, kunt u deze gebruikers toewijzen aan LinkedIn-bevoegdheden door de volgende instructies te volgen:
 
@@ -70,12 +70,12 @@ De eerste stap bestaat uit het ophalen van uw LinkedIn-toegangs token. Als u een
     > [!NOTE]
     > Wanneer het automatisch toewijzen van licenties niet is ingeschakeld, betekent dit dat alleen gebruikers gegevens worden gesynchroniseerd.
 
-    ![Inrichting voor LinkedIn-verhoging](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate1.PNG)
+    ![Scherm afbeelding toont de globale instellingen van het LinkedIn-account centrum.](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate1.PNG)
 
     > [!NOTE]
     > Wanneer de toewijzing van de licentie is ingeschakeld, moet u het toepassings exemplaar en het licentie type noteren. Licenties worden toegewezen op basis van de eerste die eerst worden uitgevoerd voordat alle licenties worden genomen.
 
-    ![Inrichting voor LinkedIn-verhoging](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate2.PNG)
+    ![Scherm afbeelding toont de pagina S C I M Setup.](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate2.PNG)
 
 5. Klik op **token genereren**. U ziet de weer gave van het toegangs token onder het veld **toegangs token** .
 
@@ -87,9 +87,9 @@ De eerste stap bestaat uit het ophalen van uw LinkedIn-toegangs token. Als u een
 
 9. Selecteer uw exemplaar van LinkedIn-uitbrei ding en selecteer vervolgens het tabblad **inrichten** .
 
-10. Stel de **inrichtings modus** in op **automatisch**.
+10. Stel de **Inrichtingsmodus** in op **Automatisch**.
 
-    ![Inrichting voor LinkedIn-verhoging](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate3.PNG)
+    ![Scherm afbeelding toont de inrichtings pagina voor de LinkedIn-verhoging.](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate3.PNG)
 
 11. Vul de volgende velden in onder **beheerders referenties** :
 
@@ -105,7 +105,7 @@ De eerste stap bestaat uit het ophalen van uw LinkedIn-toegangs token. Als u een
 
 14. Controleer in de sectie **kenmerk toewijzingen** de gebruikers-en groeps kenmerken die worden gesynchroniseerd vanuit Azure AD naar LinkedIn. Houd er rekening mee dat de kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen, worden gebruikt om te voldoen aan de gebruikers accounts en-groepen in LinkedIn-uitbrei ding voor update bewerkingen. Selecteer de knop Opslaan om eventuele wijzigingen door te voeren.
 
-    ![Inrichting voor LinkedIn-verhoging](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate4.PNG)
+    ![Scherm opname toont toewijzingen, inclusief kenmerk toewijzingen.](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate4.PNG)
 
 15. Als u de Azure AD-inrichtings service voor LinkedIn wilt inschakelen, wijzigt u de **inrichtings status** **in in het** gedeelte **instellingen**
 
@@ -113,9 +113,9 @@ De eerste stap bestaat uit het ophalen van uw LinkedIn-toegangs token. Als u een
 
 Hiermee wordt de eerste synchronisatie gestart van gebruikers en/of groepen die zijn toegewezen aan LinkedIn-verhoging in de sectie gebruikers en groepen. Houd er rekening mee dat de initiële synchronisatie langer duurt dan volgende synchronisaties, die ongeveer elke 40 minuten plaatsvinden, zolang de service wordt uitgevoerd. U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen te volgen voor het inrichtings logboek, waarin alle acties worden beschreven die worden uitgevoerd door de inrichtings service op uw LinkedIn-verhoogde app.
 
-Zie [rapportage over het automatisch inrichten van gebruikers accounts](../app-provisioning/check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
+Zie [Rapportage over automatische inrichting van gebruikersaccounts](../app-provisioning/check-status-user-account-provisioning.md) voor informatie over het lezen van de Azure AD-inrichtingslogboeken.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
-* [Inrichten van gebruikers accounts voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Gebruikersaccountinrichting voor zakelijke apps beheren](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)

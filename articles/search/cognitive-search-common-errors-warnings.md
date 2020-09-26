@@ -7,13 +7,13 @@ author: amotley
 ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 142c6b4315eb1862dd116647f4396835c7286591
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.date: 09/23/2020
+ms.openlocfilehash: 8ceb6d4dddb76148be1e82ebc8c1994886a11da3
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378352"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362811"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Veelvoorkomende fouten en waarschuwingen voor Indexeer functies in azure Cognitive Search oplossen
 
@@ -35,7 +35,7 @@ Met ingang van API `2019-05-06` -versie kunnen indexerings fouten en waarschuwin
 | Eigenschap | Beschrijving | Voorbeeld |
 | --- | --- | --- |
 | sleutel | De document-ID van het document dat wordt beïnvloed door de fout of waarschuwing. | https: \/ /coromsearch.blob.core.windows.net/jfk-1k/docid-32112954.pdf |
-| naam | De naam van de bewerking waarin wordt beschreven waar de fout of waarschuwing zich voordeed. Dit wordt gegenereerd door de volgende structuur: [categorie]. [subcategorie]. [resource type]. ResourceName | DocumentExtraction. azureblob. myBlobContainerName-verrijking. WebApiSkill. mySkillName projectie. SearchIndex. OutputFieldMapping. myOutputFieldName projectie. SearchIndex. MergeOrUpload. myIndexName-projectie. KnowledgeStore. table. myTableName |
+| name | De naam van de bewerking waarin wordt beschreven waar de fout of waarschuwing zich voordeed. Dit wordt gegenereerd door de volgende structuur: [categorie]. [subcategorie]. [resource type]. ResourceName | DocumentExtraction. azureblob. myBlobContainerName-verrijking. WebApiSkill. mySkillName projectie. SearchIndex. OutputFieldMapping. myOutputFieldName projectie. SearchIndex. MergeOrUpload. myIndexName-projectie. KnowledgeStore. table. myTableName |
 | message | Een beschrijving van de fout of waarschuwing op hoog niveau. | Kan de vaardigheid niet uitvoeren omdat de Web-API-aanvraag is mislukt. |
 | nadere | Aanvullende informatie die nuttig kan zijn bij het vaststellen van het probleem, zoals het WebApi-antwoord als het uitvoeren van een aangepaste kwalificatie is mislukt. | `link-cryptonyms-list - Error processing the request record : System.ArgumentNullException: Value cannot be null. Parameter name: source at System.Linq.Enumerable.All[TSource](IEnumerable`1 bron, func `2 predicate) at Microsoft.CognitiveSearch.WebApiSkills.JfkWebApiSkills.` ... rest van Stack tracering... |
 | documentationLink | Een koppeling naar relevante documentatie met gedetailleerde informatie voor het opsporen van fouten en het oplossen van het probleem. Deze koppeling wijst vaak naar een van de onderstaande secties op deze pagina. | https://go.microsoft.com/fwlink/?linkid=2106475 |
@@ -59,9 +59,9 @@ Indexeer functie met een BLOB-gegevens bron kan de inhoud of meta gegevens niet 
 
 | Reden | Details/voor beeld | Oplossing |
 | --- | --- | --- |
-| de BLOB overschrijdt de maximale grootte | Het document is `'150441598'` bytes, wat groter is dan de maximale grootte `'134217728'` voor documenten extractie voor uw huidige servicelaag. | [BLOB-indexerings fouten](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
-| de BLOB heeft een niet-ondersteund inhouds type | Het inhouds type van het document is niet ondersteund `'image/png'` | [BLOB-indexerings fouten](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
-| BLOB is versleuteld | Het document kan niet worden verwerkt omdat het mogelijk is versleuteld of met een wacht woord is beveiligd. | U kunt de BLOB overs laan met [BLOB-instellingen](search-howto-indexing-azure-blob-storage.md#controlling-which-parts-of-the-blob-are-indexed). |
+| de BLOB overschrijdt de maximale grootte | Het document is `'150441598'` bytes, wat groter is dan de maximale grootte `'134217728'` voor documenten extractie voor uw huidige servicelaag. | [BLOB-indexerings fouten](search-howto-indexing-azure-blob-storage.md#DealingWithErrors) |
+| de BLOB heeft een niet-ondersteund inhouds type | Het inhouds type van het document is niet ondersteund `'image/png'` | [BLOB-indexerings fouten](search-howto-indexing-azure-blob-storage.md#DealingWithErrors) |
+| BLOB is versleuteld | Het document kan niet worden verwerkt omdat het mogelijk is versleuteld of met een wacht woord is beveiligd. | U kunt de BLOB overs laan met [BLOB-instellingen](search-howto-indexing-azure-blob-storage.md#PartsOfBlobToIndex). |
 | tijdelijke problemen | "Fout bij verwerken van blob: de aanvraag is afgebroken: de aanvraag is geannuleerd." Er is een time-out opgetreden tijdens het verwerken van het document. | Af en toe zijn er onverwachte verbindings problemen. Probeer het document later opnieuw uit te voeren via uw Indexeer functie. |
 
 <a name="could-not-parse-document"></a>
@@ -175,7 +175,7 @@ In al deze gevallen raadpleegt u [ondersteunde gegevens typen](/rest/api/searchs
 
 ## <a name="error-integrated-change-tracking-policy-cannot-be-used-because-table-has-a-composite-primary-key"></a>Fout: het geïntegreerde beleid voor het bijhouden van wijzigingen kan niet worden gebruikt omdat de tabel een samengestelde primaire sleutel heeft
 
-Dit geldt voor SQL-tabellen. dit gebeurt meestal wanneer de sleutel wordt gedefinieerd als een samengestelde sleutel of wanneer de tabel een unieke geclusterde index heeft gedefinieerd (zoals in een SQL-index, geen Azure Search index). De belangrijkste reden hiervoor is dat het sleutel kenmerk is gewijzigd in een samengestelde primaire sleutel in het geval van een [unieke geclusterde index](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?view=sql-server-ver15). Zorg er in dat geval voor dat uw SQL-tabel geen unieke geclusterde index heeft of dat u het sleutel veld toewijst aan een veld dat gegarandeerd geen dubbele waarden heeft.
+Dit geldt voor SQL-tabellen. dit gebeurt meestal wanneer de sleutel wordt gedefinieerd als een samengestelde sleutel of wanneer de tabel een unieke geclusterde index heeft gedefinieerd (zoals in een SQL-index, geen Azure Search index). De belangrijkste reden hiervoor is dat het sleutel kenmerk is gewijzigd in een samengestelde primaire sleutel in het geval van een [unieke geclusterde index](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described). Zorg er in dat geval voor dat uw SQL-tabel geen unieke geclusterde index heeft of dat u het sleutel veld toewijst aan een veld dat gegarandeerd geen dubbele waarden heeft.
 
 <a name="could-not-process-document-within-indexer-max-run-time"></a>
 

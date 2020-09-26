@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: 022040f4fa7f70dd5fc7677ce969ee9acbe7bcbb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d89a5c951f2923f9e107dd2dabec7773f292fa02
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90886420"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91290514"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Opmerkingen bij de release Azure Machine Learning
 
@@ -59,7 +59,7 @@ Zie [de lijst met bekende problemen](resource-known-issues.md) met bekende bugs 
     + De documentatie van de methoden PipelineOutputFileDataset. parse_ * is verbeterd.
     + Nieuwe Kusto-stap en Kusto Compute-doel.
     + De gegeven Swaggerurl-eigenschap voor pijplijn entiteit via die gebruiker kan de schema definitie voor het gepubliceerde pipeline-eind punt zien.
-  + **azureml-pipeline-steps**
+  + **azureml-pijp lijn-stappen**
     + Nieuwe Kusto-stap en Kusto Compute-doel.
   + **azureml-telemetry**
     + Update beschrijving van de pagina pakket voor pypi overzicht.
@@ -161,7 +161,7 @@ Zie [de lijst met bekende problemen](resource-known-issues.md) met bekende bugs 
     + Er is een verbeterd fout bericht weer gegeven bij het downloaden of koppelen van een onjuist type gegevensset.
   + **azureml-pipeline-core**
     + Er is een fout opgelost bij het deserialiseren van de pijplijn grafiek die geregistreerde gegevens sets bevat.
-  + **azureml-pipeline-steps**
+  + **azureml-pijp lijn-stappen**
     + RScriptStep ondersteunt RSection van azureml. core. Environment.
     + De para meter passthru_automl_config is uit de `AutoMLStep` open bare API verwijderd en geconverteerd naar een alleen-interne para meter.
   + **azureml-train-automl-client**
@@ -283,7 +283,7 @@ Zie [de lijst met bekende problemen](resource-known-issues.md) met bekende bugs 
     + De weer gave van notities verbeteren.
     + Er is ondersteuning toegevoegd voor geciteerde regel einden bij het parseren van bestanden met scheidings tekens in PipelineOutputFileDataset.
     + De klasse PipelineDataset is afgeschaft. Voor meer informatie raadpleegt u https://aka.ms/dataset-deprecation. Zie voor meer informatie over het gebruik van dataset met pijp lijn https://aka.ms/pipeline-with-dataset .
-  + **azureml-pipeline-steps**
+  + **azureml-pijp lijn-stappen**
     + Doc-updates voor azureml-pijp lijn-stappen.
     +  Er is ondersteuning toegevoegd in ParallelRunConfig `load_yaml()` voor gebruikers om in line omgevingen te definiëren met de rest van de configuratie of in een afzonderlijk bestand
   + **azureml-Train-automl-client**.
@@ -347,7 +347,7 @@ Zie [de lijst met bekende problemen](resource-known-issues.md) met bekende bugs 
     + `PipelineDataset`De documentatie is bijgewerkt om er een interne klasse van te maken.
     + ParallelRunStep-updates om meerdere waarden voor één argument te accepteren, bijvoorbeeld: '--group_column_names ', ' Kol1 ', ' col2 ', ' Col3 '
     + De passthru_automl_config vereiste voor het gebruik van tussenliggende gegevens met AutoMLStep in pijp lijnen is verwijderd.
-  + **azureml-pipeline-steps**
+  + **azureml-pijp lijn-stappen**
     + Doc-verbeteringen in het pakket met azureml-pipeline-stappen.
     + De passthru_automl_config vereiste voor het gebruik van tussenliggende gegevens met AutoMLStep in pijp lijnen is verwijderd.
   + **azureml-telemetry**
@@ -435,7 +435,7 @@ Zie [de lijst met bekende problemen](resource-known-issues.md) met bekende bugs 
   + **azureml-automl-runtime**
     + AutoML-prognoses bieden nu ondersteuning voor klanten prognose buiten het vooraf opgegeven maximum-horizon zonder het model opnieuw te trainen. Wanneer de Voorspellings bestemming zich verder in de toekomst bevindt dan de opgegeven maximum horizon, maakt de functie Forecast () nog steeds voor speld naar de latere datum met behulp van een recursieve bewerkings modus. Voor de afbeelding van de nieuwe functie, zie de sectie ' prognoses verder dan de maximum Horizon ' van ' prognose maken-functie ' Notebook ' in de [map](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning)'.
   
-  + **azureml-pipeline-steps**
+  + **azureml-pijp lijn-stappen**
     + ParallelRunStep is nu uitgebracht en maakt deel uit van het pakket met **azureml-pipelines** . Bestaande ParallelRunStep in **azureml-contrib-pijp lijn-stappen** pakket is afgeschaft. Wijzigingen in de open bare preview-versie:
       + `run_max_try`De optionele Configureer bare para meter voor het beheren van de maximale aanroep naar de uitvoerings methode voor een bepaalde batch is toegevoegd. de standaard waarde is 3.
       + Er zijn geen PipelineParameters meer automatisch gegenereerd. De volgende Configureer bare waarden kunnen expliciet worden ingesteld als PipelineParameter.
@@ -449,7 +449,7 @@ Zie [de lijst met bekende problemen](resource-known-issues.md) met bekende bugs 
       + ParallelRunStep geen pakketten injecteert, moet de gebruiker de pakketten voor **azureml-core** en **azureml-dataprep [Pandas, zeker]** opnemen in de omgevings definitie. Als de aangepaste docker-installatie kopie wordt gebruikt met user_managed_dependencies moet de gebruiker Conda installeren op de installatie kopie.
       
 + **Wijzigingen die fouten veroorzaken**
-  + **azureml-pipeline-steps**
+  + **azureml-pijp lijn-stappen**
     + Het gebruik van azureml. dprep. gegevensstroom is afgeschaft als een geldig type invoer voor AutoMLConfig
   + **azureml-train-automl-client**
     + Het gebruik van azureml. dprep. gegevensstroom is afgeschaft als een geldig type invoer voor AutoMLConfig
@@ -600,7 +600,7 @@ Zie [de lijst met bekende problemen](resource-known-issues.md) met bekende bugs 
   + **azureml-interpret**
     + Beperkte lengte limieten voor het pad van de uitleg om de kans op een continue Windows-limiet te verminderen
     + Bugfix voor zeldzame uitleg gemaakt met behulp van een lineair surrogaat model met de gesimuleerde uitleger.
-  + **azureml-opengegevenssets**
+  + **azureml-opendatasets**
     + Het oplossen van het probleem van de kolommen van de MNIST wordt geparseerd als teken reeks, die int moet zijn.
   + **azureml-pipeline-core**
     + De optie voor het regenerate_outputs van het gebruik van een module die is inge sloten in een ModuleStep.
@@ -640,7 +640,7 @@ U kunt nu machine learning-notitie blokken en bestanden rechtstreeks maken, bewe
 
 Toegang tot de volgende webgebaseerde hulp middelen voor ontwerpen vanuit Studio:
     
-| Webgebaseerd hulp programma  |     Description  |
+| Webgebaseerd hulp programma  |     Beschrijving  |
 |---|---|
 | Azure ML Studio-notebooks   |     Eerste in-class ontwerpen voor notebook-bestanden en biedt ondersteuning voor alle bewerkingen die beschikbaar zijn in de Azure ML python SDK. | 
 
@@ -667,7 +667,7 @@ Toegang tot de volgende webgebaseerde hulp middelen voor ontwerpen vanuit Studio
     + Er is een bovengrens voor de bestands grootte van de visualisatie gegevens op geüploade uitleg toegevoegd.
   + **azureml-train-automl-client**
     + Expliciet controleren op label_column_name & weight_column_name para meters voor AutoMLConfig is van het type teken reeks.
-  + **azureml-contrib-pipeline-steps**
+  + **azureml-contrib-pijp lijn-stappen**
     + ParallelRunStep ondersteunt nu dataset als pijplijn parameter. De gebruiker kan een pijp lijn maken met de voorbeeld gegevensset en kan de invoer gegevensset van hetzelfde type (bestand of tabellaire) wijzigen voor een nieuwe pijplijn uitvoering.
 
   
@@ -825,7 +825,7 @@ Toegang tot de volgende webgebaseerde hulp middelen voor ontwerpen vanuit Studio
     + Pipeline batch Score notebook maakt nu gebruik van ParallelRunStep
     + Er is een fout opgelost waarbij PythonScriptStep resultaten onjuist opnieuw kunnen worden gebruikt, ondanks het wijzigen van de lijst met argumenten
     + De mogelijkheid om kolommen in te stellen is toegevoegd tijdens het aanroepen van de parse_ *-methoden op `PipelineOutputFileDataset`
-  + **azureml-pipeline-steps**
+  + **azureml-pijp lijn-stappen**
     + De `AutoMLStep` naar het pakket is verplaatst `azureml-pipeline-steps` . Afgeschaft `AutoMLStep` in `azureml-train-automl-runtime` .
     + Voor beeld van toegevoegde documentatie voor gegevensset als PythonScriptStep-invoer
   + **azureml-tensorboard**
@@ -935,7 +935,7 @@ Toegang tot de volgende webgebaseerde hulp middelen voor ontwerpen vanuit Studio
     + Bijgewerkt azureml-interpreteren om afhankelijk te zijn van interprete-Community 0.5.0
   + **azureml-pipeline-core**
     + Er is een fout opgelost waarbij PythonScriptStep resultaten onjuist opnieuw kunnen worden gebruikt, ondanks het wijzigen van de lijst met argumenten
-  + **azureml-pipeline-steps**
+  + **azureml-pijp lijn-stappen**
     + Voor beeld van toegevoegde documentatie voor gegevensset als PythonScriptStep-invoer
   + **azureml-contrib-pipeline-steps**
     + Para meters die in ParallelRunConfig worden door gegeven, kunnen worden overschreven door de pijplijn parameters nu door te geven. Nieuwe pijplijn parameters die worden ondersteund aml_mini_batch_size, aml_error_threshold, aml_logging_level, aml_run_invocation_timeout (aml_node_count en aml_process_count_per_node maken al deel uit van een eerdere versie).
@@ -996,7 +996,7 @@ Toegang tot de volgende webgebaseerde hulp middelen voor ontwerpen vanuit Studio
     + De SDK is bijgewerkt met het gebruik van nieuwe token bibliotheek op Azure Synapse op een achtergrond die daarmee compatibel is.
   + **azureml-interpret**
     + Er is een probleem opgelost waarbij geen fout is geretourneerd toen geen verklaringen kunnen worden gedownload. Genereert nu een uitzonde ring, overeenkomend gedrag elders.
-  + **azureml-pipeline-steps**
+  + **azureml-pijp lijn-stappen**
     + Het door geven `DatasetConsumptionConfig` `Estimator` van de s naar de para meter is niet toegestaan `inputs` wanneer de `Estimator` wordt gebruikt in een `EstimatorStep` .
   + **azureml-SDK**
     + De AutoML-client is toegevoegd aan het azureml-SDK-pakket, waardoor externe AutoML-uitvoeringen worden verzonden zonder het volledige AutoML-pakket te installeren.
@@ -1078,7 +1078,7 @@ Toegang tot de volgende webgebaseerde hulp middelen voor ontwerpen vanuit Studio
     + Bij het aanroepen `keep_columns` of `drop_columns` dat resulteert in een time series-kolom die wordt verwijderd, worden ook de bijbehorende mogelijkheden voor de gegevensset verwijderd.
   + **azureml-interpret**
     + bijgewerkte versie van interprete-community naar 0.2.0
-  + **azureml-pipeline-steps**
+  + **azureml-pijp lijn-stappen**
     + Gedocumenteerde ondersteunde waarden voor de `runconfig_pipeline_params` stappen van Azure machine learning-pijp lijn.
   + **azureml-pipeline-core**
     + De CLI-optie is toegevoegd om de uitvoer in JSON-indeling voor pijplijn opdrachten te downloaden.
@@ -1152,7 +1152,7 @@ Vanuit de Studio kunt u Azure Machine Learning assets trainen, testen, implement
 
 Toegang tot de volgende webgebaseerde hulp middelen voor ontwerpen vanuit Studio:
 
-| Webgebaseerd hulp programma | Description | 
+| Webgebaseerd hulp programma | Beschrijving | 
 |-|-|-|
 | VM van notebook (preview-versie) | Volledig beheerd werk station in de Cloud | 
 | [Automatische machine learning](tutorial-first-experiment-automated-ml.md) (preview-versie) | Geen code-ervaring voor het automatiseren van de ontwikkeling van machine learning modellen | 
@@ -1194,7 +1194,7 @@ Azure Machine Learning is nu een resource provider voor Event Grid, kunt u machi
   + **Preview-functies**
     + We geven preview-ondersteuning uit voor schijf versleuteling van uw lokale SSD in Azure Machine Learning compute. Verhoog het technische ondersteunings ticket om uw abonnement in staat te stellen deze functie te gebruiken.
     + Open bare preview van Azure Machine Learning batch deinterferentie. Azure Machine Learning batch-demijner doelen verkleint grote interferentie taken die niet tijd gevoelig zijn. Batch-demijnen bieden rendabele berekenings berekeningen, met een niet-parallelle door Voer voor asynchrone toepassingen. De oplossing is geoptimaliseerd voor een hoge door Voer, brand-en-vergeet om grote verzamelingen gegevens te deactiveren.
-    + [**azureml-contrib-dataset**](https://docs.microsoft.com/python/api/azureml-contrib-dataset)
+    + [**azureml-contrib-DataSet**](https://docs.microsoft.com/python/api/azureml-contrib-dataset)
         + Ingeschakelde functionaliteiten voor gegevensset met labels
         ```Python
         import azureml.core
@@ -1259,7 +1259,7 @@ Azure Machine Learning is nu een resource provider voor Event Grid, kunt u machi
   + [**azureml-datadrift**](https://docs.microsoft.com/python/api/azureml-datadrift)
     + Verplaatst van `azureml-contrib-datadrift` naar `azureml-datadrift`
     + Er is ondersteuning toegevoegd voor het bewaken van Time Series-gegevens sets voor drift en andere statistische metingen
-    + Nieuwe methoden `create_from_model()` en `create_from_dataset()` voor de [`DataDriftDetector`](https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector(class)) klasse. De `create()` methode wordt afgeschaft.
+    + Nieuwe methoden `create_from_model()` en `create_from_dataset()` voor de [`DataDriftDetector`](https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector%28class%29) klasse. De `create()` methode wordt afgeschaft.
     + Aanpassingen van de visualisaties in Python en gebruikers interface in de Azure Machine Learning Studio.
     + Ondersteuning voor wekelijkse en maandelijkse monitor planning, naast dagelijks voor gegevensset-monitors.
     + Ondersteuning voor backfill voor het analyseren van historische gegevens voor gegevensset-monitors.
@@ -1364,7 +1364,7 @@ Azure Machine Learning is nu een resource provider voor Event Grid, kunt u machi
     + Ondersteuning voor het gebruik van een omgeving voor model implementatie en service-update.
   + **[azureml-datadrift](https://docs.microsoft.com/python/api/azureml-datadrift)**
     + Het kenmerk show van de klasse [DataDriftDetector](https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector.datadriftdetector) biedt geen ondersteuning voor het optionele argument with_details meer. Bij het kenmerk show wordt alleen de bijdrage van de functie kolommen gegevens drift en gegevens drift weer gegeven.
-    + Wijzigingen in het gedrag van de functie DataDriftDetector [get_output] https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector.datadriftdetector#get-output-start-time-none--end-time-none--run-id-none-) :
+    + De functie DataDriftDetector [get_output] python/API/azureml-datadrift/azureml. datadrift. DataDriftDetector. DataDriftDetector # Get-output-start-time-none--end-time-none--run-id-none-) wijzigingen:
       + Invoer parameter start_time, end_time optioneel zijn in plaats van verplicht.
       + De invoer van specifieke start_time en/of end_time met een specifieke run_id in hetzelfde aanroepen leidt ertoe dat er een fout uitzonde ring optreedt omdat deze elkaar wederzijds uitsluiten.
       + Als er specifieke start_time en/of end_time worden opgegeven, worden alleen de resultaten van geplande uitvoeringen geretourneerd.
@@ -1451,15 +1451,15 @@ Het tabblad experiment in de [nieuwe werkruimte Portal](https://ml.azure.com) is
     + Er is een uitleg eigenschap toegevoegd aan MimicWrapper om het ophalen van de onderliggende MimicExplainer in te scha kelen.
   + **azureml-pipeline-core**
     + Er is een notitie blok toegevoegd om module, ModuleVersion en ModuleStep te beschrijven
-  + **azureml-pipeline-steps**
+  + **azureml-pijp lijn-stappen**
     + RScriptStep toegevoegd ter ondersteuning van het uitvoeren van R-script via AML-pijp lijn.
     + Voor het parseren van vaste meta gegevens parameters in AzureBatchStep die het fout bericht ' toewijzing voor para meter SubscriptionId ' heeft veroorzaakt, is niet opgegeven.
   + **azureml-Train-automl**
     + Ondersteund training_data, validation_data, label_column_name, weight_column_name als invoer indeling voor gegevens
     + Er is een afschaffing bericht toegevoegd voor explain_model () en retrieve_model_explanations ()
   + **[azureml-pipeline-core](https://docs.microsoft.com/python/api/azureml-pipeline-core)**
-    + Er is een [notitie blok](https://aka.ms/pl-modulestep) toegevoegd om [module](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.module(class)), [ModuleVersion en [ModuleStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.modulestep), te beschrijven.
-  + **[azureml-pipeline-steps](https://docs.microsoft.com/python/api/azureml-pipeline-steps)**
+    + Er is een [notitie blok](https://aka.ms/pl-modulestep) toegevoegd om [module](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.module%28class%29), [ModuleVersion en [ModuleStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.modulestep), te beschrijven.
+  + **[azureml-pijp lijn-stappen](https://docs.microsoft.com/python/api/azureml-pipeline-steps)**
     + [RScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.rscriptstep) toegevoegd ter ondersteuning van het uitvoeren van R-script via AML-pijp lijn.
     + Voor het parseren van vaste meta gegevens parameters in [AzureBatchStep die het fout bericht ' toewijzing voor para meter SubscriptionId ' heeft veroorzaakt, is niet opgegeven.
   + **[azureml-Train-automl](/python/api/azureml-train-automl-runtime/)**
@@ -1816,7 +1816,7 @@ Op het moment van deze release worden de volgende browsers ondersteund: Chrome, 
     + Verplaats azureml-contrib-opendatasets naar azureml-opendatasets.
     + Toestaan dat open gegevensset-klassen kunnen worden geregistreerd voor Azure Machine Learning werk ruimte en gebruikmaken van de functies van AML-gegevensset naadloos.
     + Verbeter de NoaaIsdWeather-verrijkings prestaties in een niet-SPARK-versie aanzienlijk.
-  + **azureml-pipeline-steps**
+  + **azureml-pijp lijn-stappen**
     + DBFS Data Store wordt nu ondersteund voor invoer en uitvoer in DatabricksStep.
     + Bijgewerkte documentatie voor Azure Batch stap met betrekking tot invoer/uitvoer.
     + In AzureBatchStep is *delete_batch_job_after_finish* standaard waarde gewijzigd in *True*.

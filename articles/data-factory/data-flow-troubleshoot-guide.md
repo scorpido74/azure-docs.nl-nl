@@ -8,12 +8,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 09/11/2020
-ms.openlocfilehash: e52432c01e649754116fcd0420fa52ae6c4e3733
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 47d1f3c78a303f7a45457a435fa11f074c41d7aa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90031854"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316151"
 ---
 # <a name="troubleshoot-mapping-data-flows-in-azure-data-factory"></a>Problemen met toewijzing van gegevens stromen in Azure Data Factory oplossen
 
@@ -116,7 +116,7 @@ Als u de gegevens stroom uitvoert tijdens het uitvoeren van een debug-test uitvo
 
 - **Bericht**: er zijn een groot aantal null-waarden of ontbrekende waarden die kunnen worden veroorzaakt doordat er te weinig rijen worden steek proeven. Probeer de limiet voor het aantal foutopsporingslogboeken bij te werken en de gegevens te vernieuwen.
 - **Oorzaken**: de samenvoegings voorwaarde komt niet overeen met rijen of resulteert in een groot aantal null-waarden tijdens de preview van de gegevens.
-- **Aanbeveling**: Ga naar instellingen voor fout opsporing en verhoog het aantal rijen in de limiet voor de bron rijen. Zorg ervoor dat u hebt geselecteerd en Azure IR met een groot voldoende gegevens stroom cluster om meer gegevens te verwerken.
+- **Aanbeveling**: Ga naar instellingen voor fout opsporing en verhoog het aantal rijen in de limiet voor de bron rijen. Zorg ervoor dat u een Azure IR met een groot voldoende gegevens stroom cluster hebt geselecteerd om meer gegevens te verwerken.
 
 
 ## <a name="general-troubleshooting-guidance"></a>Algemene richt lijnen voor probleem oplossing
@@ -130,7 +130,7 @@ Als u de gegevens stroom uitvoert tijdens het uitvoeren van een debug-test uitvo
 Probeer deze bronnen voor meer informatie over probleem oplossing:
 *  [Data Factory Blog](https://techcommunity.microsoft.com/t5/azure-data-factory/bg-p/AzureDataFactoryBlog)
 *  [Data Factory functie aanvragen](https://feedback.azure.com/forums/270578-data-factory)
-*  [Azure-video's](https://www.youtube.com/channel/UC2S0k7NeLcEm5_IhHUwpN0g/videos)
+*  [Azure-Video's](https://www.youtube.com/channel/UC2S0k7NeLcEm5_IhHUwpN0g/videos)
 *  [Microsoft Q&A-vragenpagina](https://docs.microsoft.com/answers/topics/azure-data-factory.html)
 *  [Stack Overflow forum voor Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [Twitter-informatie over Data Factory](https://twitter.com/hashtag/DataFactory)

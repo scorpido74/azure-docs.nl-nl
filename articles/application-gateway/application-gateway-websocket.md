@@ -7,12 +7,12 @@ ms.service: application-gateway
 services: application-gateway
 ms.topic: conceptual
 ms.date: 11/16/2019
-ms.openlocfilehash: baa02c4d946a121f26f421af99835ae2bea18847
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 59ca7708b24d2e75381290b80adeb671e2b49822
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74130329"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362692"
 ---
 # <a name="overview-of-websocket-support-in-application-gateway"></a>Overzicht van ondersteuning voor websockets in Application Gateway
 
@@ -28,7 +28,7 @@ Het wordt gebruikt in apps die profiteren van snelle, realtime communicatie, zoa
 
 Als u een WebSocket-verbinding tot stand wilt brengen, wordt er een specifieke op HTTP gebaseerde Handshake uitgewisseld tussen de client en de server. Als dit lukt, wordt het Protocol van de toepassings laag "geüpgraded" van HTTP naar websockets met behulp van de eerder ingestelde TCP-verbinding. Als dit gebeurt, wordt HTTP volledig uit de afbeelding weer gegeven. gegevens kunnen worden verzonden of ontvangen via het WebSocket-protocol door beide eind punten, totdat de WebSocket-verbinding is gesloten. 
 
-![WebSocket](./media/application-gateway-websocket/websocket.png)
+![Diagram vergelijkt een client interactie met een webserver en verbindt twee keer om twee antwoorden te krijgen, met een WebSocket-interactie, waarbij een client eenmaal verbinding maakt met een server om meerdere antwoorden te krijgen.](./media/application-gateway-websocket/websocket.png)
 
 ### <a name="listener-configuration-element"></a>Configuratie-element Listener
 

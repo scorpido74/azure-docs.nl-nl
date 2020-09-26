@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0863a782b7f4531b900bc3c005a39387c83d983
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: a8a70097cbae3bc5ebf48c0358faa32aea0a6be5
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268224"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91370174"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Procedure: uw Azure AD-koppelings implementatie plannen
 
@@ -184,7 +184,7 @@ Apparaten die zijn toegevoegd aan Azure AD, bieden geen ondersteuning voor on-pr
 
 Voor verbinding met extern bureau blad met een aan Azure AD gekoppelde apparaten moet de hostcomputer lid zijn van Azure AD of lid zijn van een hybride Azure AD. Extern bureau blad vanaf een niet-samengevoegd of niet-Windows-apparaat wordt niet ondersteund. Zie [verbinding maken met een externe Azure AD-computer](/windows/client-management/connect-to-remote-aadj-pc) voor meer informatie.
 
-De Windows 10 2004-update wordt gestart, kunnen gebruikers extern bureau blad ALO gebruiken vanaf een Azure AD-geregistreerd Windows 10-apparaat naar een aan Azure AD toegevoegd apparaat. 
+Als u Windows 10 2004 Update start, kunnen gebruikers ook extern bureau blad van een Azure AD-geregistreerde Windows 10-apparaat op een aan Azure AD toegevoegd apparaat gebruiken. 
 
 ## <a name="understand-your-provisioning-options"></a>Inzicht in uw inrichtings opties
 

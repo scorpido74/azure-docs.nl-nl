@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/28/2019
 ms.author: ramamill
-ms.openlocfilehash: ef16e3b75ca8e051b1b7abb1a92843279884c697
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a547a874c42d06d8453b154847561d8b5f0dabb8
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85846559"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361382"
 ---
 # <a name="manage-process-servers"></a>Processervers beheren
 
@@ -41,11 +41,11 @@ U kunt als volgt de belasting verdelen door Vm's tussen twee proces servers te v
 2. Klik op de configuratie server waarmee de proces servers zijn geregistreerd.
 3. Klik op de proces server waarvoor u het verkeer wilt verdelen.
 
-    ![LoadBalance](media/vmware-azure-manage-process-server/LoadBalance.png)
+    ![Scherm afbeelding toont een proces server waarvoor u verkeer kunt verdelen.](media/vmware-azure-manage-process-server/LoadBalance.png)
 
 4. Klik op **taak verdeling**, selecteer de doel proces server waarnaar u machines wilt verplaatsen. Klik vervolgens op **OK**
 
-    ![LoadPS](media/vmware-azure-manage-process-server/LoadPS.PNG)
+    ![Scherm afbeelding toont het deel venster taak verdeling met de optie doel proces server selecteren geselecteerd.](media/vmware-azure-manage-process-server/LoadPS.PNG)
 
 2. Klik op **machines selecteren**en kies de computers die u van de huidige naar de doel proces server wilt verplaatsen. Details van de gemiddelde gegevens wijziging worden voor elke virtuele machine weer gegeven. Klik vervolgens op **OK**. 
 3. Controleer in de kluis de voortgang van de taak onder **bewaking**  >  **site Recovery taken**.
@@ -61,7 +61,7 @@ Verplaats de hele werk belasting die door een proces server wordt verwerkt, als 
 3. Klik op de proces server van waaruit u de werk belasting wilt wijzigen.
 4. Klik op **Switch**, selecteer de doel proces server waarnaar u de werk belasting wilt verplaatsen. Klik vervolgens op **OK**
 
-    ![Switch](media/vmware-azure-manage-process-server/Switch.PNG)
+    ![Scherm afbeelding toont het deel venster doel proces server selecteren.](media/vmware-azure-manage-process-server/Switch.PNG)
 
 5. Controleer in de kluis de voortgang van de taak onder **bewaking**  >  **site Recovery taken**.
 

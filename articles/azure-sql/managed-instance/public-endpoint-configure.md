@@ -10,12 +10,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, sstein
 ms.date: 05/07/2019
-ms.openlocfilehash: 498d00b4f6a0ca16d07663641a46f30109b39d5f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a9bf3fbf28d8ac525f2937812742e850a5427cc9
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325059"
+ms.locfileid: "91360817"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-managed-instance"></a>Openbaar eindpunt configureren in een beheerd Azure SQL-exemplaar
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -45,7 +45,7 @@ Als gevolg van de gevoeligheid van gegevens die zich in een beheerd exemplaar be
 1. Selecteer op de pagina **beveiligings** instellingen het tabblad **virtueel netwerk** .
 1. Selecteer op de pagina configuratie van virtueel netwerk de optie **inschakelen** en klik vervolgens op het pictogram **Opslaan** om de configuratie bij te werken.
 
-![mi-vnet-config.png](./media/public-endpoint-configure/mi-vnet-config.png)
+![Scherm afbeelding toont een virtuele netwerk pagina van het SQL Managed instance waarbij het open bare eind punt is ingeschakeld.](./media/public-endpoint-configure/mi-vnet-config.png)
 
 ## <a name="enabling-public-endpoint-for-a-managed-instance-using-powershell"></a>Openbaar eind punt inschakelen voor een beheerd exemplaar met behulp van Power shell
 
@@ -84,11 +84,11 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 
 1. Als u de configuratie pagina van het beheerde exemplaar nog steeds geopend hebt, gaat u naar het tabblad **overzicht** . Als dat niet het geval is, gaat u terug naar uw **SQL Managed instance** -resource. Selecteer de koppeling **virtueel netwerk/subnet** , waarmee u naar de configuratie pagina van het virtuele netwerk gaat.
 
-    ![mi-overview.png](./media/public-endpoint-configure/mi-overview.png)
+    ![Scherm afbeelding toont de configuratie pagina van het virtuele netwerk waar u de waarde van het virtuele netwerk/subnet kunt vinden.](./media/public-endpoint-configure/mi-overview.png)
 
 1. Selecteer het tabblad **subnetten** in het linkerdeel venster configuratie van het virtuele netwerk en noteer de **beveiligings groep** voor uw beheerde exemplaar.
 
-    ![mi-vnet-subnet.png](./media/public-endpoint-configure/mi-vnet-subnet.png)
+    ![Scherm afbeelding toont het tabblad subnet, waar u de BEVEILIGINGS groep voor uw beheerde exemplaar kunt ophalen.](./media/public-endpoint-configure/mi-vnet-subnet.png)
 
 1. Ga terug naar de resource groep die uw beheerde exemplaar bevat. De naam van de **netwerk beveiligings groep** die hierboven wordt vermeld, wordt weer gegeven. Selecteer de naam om naar de configuratie pagina voor de netwerk beveiligings groep te gaan.
 
@@ -104,7 +104,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
     |**Actie**     |Toestaan         |Binnenkomend verkeer naar een beheerd exemplaar via het open bare eind punt toestaan |
     |**Priority**     |1300         |Zorg ervoor dat deze regel een hogere prioriteit heeft dan de **deny_all_inbound** regel |
 
-    ![mi-nsg-rules.png](./media/public-endpoint-configure/mi-nsg-rules.png)
+    ![Scherm afbeelding toont de binnenkomende beveiligings regels met uw nieuwe public_endpoint_inbound regel boven de deny_all_inbound regel.](./media/public-endpoint-configure/mi-nsg-rules.png)
 
     > [!NOTE]
     > Poort 3342 wordt gebruikt voor open bare eindpunt verbindingen met een beheerd exemplaar en kan op dit moment niet worden gewijzigd.
@@ -114,7 +114,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 1. Ga naar de configuratie pagina van het beheerde exemplaar die is ingeschakeld voor het open bare eind punt. Selecteer het tabblad **verbindings reeksen** onder de configuratie- **instellingen** .
 1. Houd er rekening mee dat de hostnaam van het open bare eind punt de indeling <mi_name> bevat. **Public**. <dns_zone>. database.Windows.net en de poort die voor de verbinding wordt gebruikt, is 3342.
 
-    ![mi-public-endpoint-conn-string.png](./media/public-endpoint-configure/mi-public-endpoint-conn-string.png)
+    ![Scherm afbeelding toont de verbindings reeksen voor uw open bare en privé-eind punten.](./media/public-endpoint-configure/mi-public-endpoint-conn-string.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

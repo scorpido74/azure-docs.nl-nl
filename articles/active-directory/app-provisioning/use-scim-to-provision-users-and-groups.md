@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: fc77d8cbb88385d9be65ccb8df80e922704640a4
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 59c899d2450e9d439426239384945258e8df694a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563802"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266646"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Een SCIM-eind punt bouwen en gebruikers inrichten met Azure AD configureren
 
@@ -53,7 +53,7 @@ Voor elke toepassing zijn verschillende kenmerken vereist om een gebruiker of gr
 | Stap 1: kenmerken bepalen die uw app nodig heeft| Stap 2: app-vereisten toewijzen aan SCIM Standard| Stap 3: SCIM-kenmerken toewijzen aan de Azure AD-kenmerken|
 |--|--|--|
 |Aanmeldings naam|userName|userPrincipalName|
-|voornaam|name. naam|givenName|
+|voornaam|name.givenName|givenName|
 |achternaam|naam. lastName|achternaam|
 |workMail|E-mail berichten [type EQ "werk]. waarde|Mail|
 |manager|manager|manager|
@@ -99,18 +99,18 @@ U kunt de onderstaande tabel gebruiken om te begrijpen hoe de kenmerken die uw t
 | displayName |displayName |
 |employeeId|urn: IETF: params: scim: schemas: extensie: Enter prise: 2.0: gebruiker: employeeNumber|
 | Fax-TelephoneNumber |phoneNumbers [type EQ "fax"]. waarde |
-| givenName |name. naam |
+| givenName |name.givenName |
 | jobTitle |title |
-| mail |e-mail berichten [type EQ "werk]. waarde |
+| mail |emails[type eq "work"].value |
 | mailNickname |externalId |
 | manager |urn: IETF: params: scim: schemas: extensie: Enter prise: 2.0: gebruiker: Manager |
-| mobiel |phoneNumbers [type EQ "Mobile"]. waarde |
+| mobiel |phoneNumbers[type eq "mobile"].value |
 | postalCode |adressen [type EQ "werk]. post code |
 | proxy-adressen |e-mail berichten [type EQ "Overig"]. Value |
 | fysieke levering-Office-locatie |adressen [type EQ "other"]. Opgemaakt |
 | streetAddress |adressen [type EQ "werk]. streetAddress |
-| surname |naam. familielid |
-| telefoon nummer |phoneNumbers [type EQ "werk]. waarde |
+| surname |name.familyName |
+| telefoon nummer |phoneNumbers[type eq "work"].value |
 | gebruiker-principalnaam |userName |
 
 
@@ -119,7 +119,7 @@ U kunt de onderstaande tabel gebruiken om te begrijpen hoe de kenmerken die uw t
 | Azure Active Directory groep | urn: IETF: params: scim: schemas: kern: 2.0: groep |
 | --- | --- |
 | displayName |displayName |
-| mail |e-mail berichten [type EQ "werk]. waarde |
+| mail |emails[type eq "work"].value |
 | mailNickname |displayName |
 | leden |leden |
 | objectId |externalId |
@@ -1193,7 +1193,7 @@ De SCIM spec definieert geen SCIM-specifiek schema voor verificatie en autorisat
 |--|--|--|--|
 |Gebruikers naam en wacht woord (niet aanbevolen of niet ondersteund door Azure AD)|Eenvoudig te implementeren|Onveilig: [uw PA $ $Word is niet van belang](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/your-pa-word-doesn-t-matter/ba-p/731984)|Per geval ondersteund voor galerij-apps. Niet ondersteund voor niet-galerij-apps.|
 |Token met lange levens drager|Voor tokens met een lange levens duur hoeft geen gebruiker aanwezig te zijn. Ze kunnen eenvoudig worden gebruikt bij het instellen van de inrichting.|Tokens met een lange levens duur kunnen moeilijk worden gedeeld met een beheerder zonder gebruik te maken van onveilige methoden zoals e-mail. |Ondersteund voor Gallery-en niet-galerij-apps. |
-|Verleende OAuth-autorisatie code|Toegangs tokens zijn veel korter dan wacht woorden en beschikken over een mechanisme voor automatisch vernieuwen die de tokens van de lange levens drager niet hebben.  Er moet een echte gebruiker aanwezig zijn tijdens de eerste autorisatie, waarbij een verantwoordelijkheids niveau wordt toegevoegd. |Hiervoor moet een gebruiker aanwezig zijn. Als de gebruiker de organisatie verlaat, is het token ongeldig en moet de autorisatie opnieuw worden uitgevoerd.|Ondersteund voor galerij-apps, maar niet voor niet-galerij-apps. Ondersteuning voor niet-galerie is in onze achterstand.|
+|Verleende OAuth-autorisatie code|Toegangs tokens zijn veel korter dan wacht woorden en beschikken over een mechanisme voor automatisch vernieuwen die de tokens van de lange levens drager niet hebben.  Er moet een echte gebruiker aanwezig zijn tijdens de eerste autorisatie, waarbij een verantwoordelijkheids niveau wordt toegevoegd. |Hiervoor moet een gebruiker aanwezig zijn. Als de gebruiker de organisatie verlaat, is het token ongeldig en moet de autorisatie opnieuw worden uitgevoerd.|Ondersteund voor galerij-apps, maar niet voor niet-galerij-apps. U kunt echter een toegangs token in de gebruikers interface opgeven als geheim token voor het testen van de korte termijn. Ondersteuning voor OAuth-code toekenning op niet-galerie is in onze achterstand.|
 |Verleende OAuth-client referenties|Toegangs tokens zijn veel korter dan wacht woorden en beschikken over een mechanisme voor automatisch vernieuwen die de tokens van de lange levens drager niet hebben. Zowel de autorisatie code Grant als de client referenties geven hetzelfde type toegangs token maken, zodat het verplaatsen tussen deze methoden transparant is voor de API.  Het inrichten kan volledig worden geautomatiseerd en nieuwe tokens kunnen zonder tussen komst van de gebruiker worden aangevraagd. ||Niet ondersteund voor apps uit de galerie en niet-galerij. Ondersteuning bevindt zich in onze achterstand.|
 
 > [!NOTE]
@@ -1210,6 +1210,17 @@ OAuth v1 wordt niet ondersteund vanwege de bloot stelling aan het client geheim.
 Aanbevolen procedures (aanbevolen maar niet vereist):
 * Ondersteuning voor meerdere omleidings-Url's. Beheerders kunnen het inrichten configureren van zowel ' portal.azure.com ' als ' aad.portal.azure.com '. Ondersteuning voor meerdere omleidings-Url's zorgt ervoor dat gebruikers toegang kunnen verlenen vanuit een van de portals.
 * Meerdere geheimen ondersteunen om te zorgen voor een soepele geheime verlenging, zonder uitval tijd. 
+
+Stappen in de OAuth-code subsidie stroom:
+1. Gebruiker meldt zich aan bij de Azure Portal > Enter prise-toepassingen > Selecteer toepassings > inrichting > op autoriseren.
+2. Azure Portal stuurt de gebruiker door naar de autorisatie-URL (aanmeldings pagina voor de app van derden).
+3. Beheerder biedt referenties voor de toepassing van derden. 
+4. De app van derden stuurt de gebruiker terug naar Azure Portal en biedt de subsidie code 
+5. Azure AD Provisioning Services roept de token-URL aan en levert de code voor de toekenning. De toepassing van derden reageert met het toegangs token, het vernieuwings token en de verval datum
+6. Wanneer de inrichtings cyclus begint, controleert de service of het huidige toegangs token geldig is en het zo nodig uitwisselt voor een nieuw token. Het toegangs token wordt opgegeven in elke aanvraag die is ingediend bij de app en de geldigheid van de aanvraag wordt voor elke aanvraag gecontroleerd.
+
+> [!NOTE]
+> Het is momenteel niet mogelijk om OAuth in te stellen op de niet-galerie toepassing, maar u kunt hand matig een toegangs token genereren op basis van uw autorisatie server en invoeren dat in het veld geheime token van de toepassing niet-galerie. Hiermee kunt u de compatibiliteit van uw SCIM-server controleren met de Azure AD SCIM-client voordat u de app-galerie uitschakelt, die ondersteuning biedt voor de verleende OAuth-code.  
 
 **Langlopende OAuth Bearer-tokens:** Als uw toepassing geen ondersteuning biedt voor de overdrachts stroom van de OAuth-autorisatie code, kunt u ook een lang bewaarde OAuth Bearer-token genereren dan die een beheerder kan gebruiken om de inrichtings integratie in te stellen. Het token moet permanent zijn, anders wordt de inrichtings taak in [quarantaine geplaatst](application-provisioning-quarantine-status.md) wanneer het token verloopt. Dit token moet kleiner zijn dan 1 KB.  
 

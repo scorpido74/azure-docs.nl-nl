@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/12/2020
+ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: b7cbba051dd0833a039d378cd73a59314c0221c8
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 3aab1329dc7bbcc70621684b3f1ac2362f4bc458
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905576"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268261"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Beveiligde Score in Azure Security Center
 
@@ -179,7 +179,7 @@ De volgende tabel bevat de beveiligings opties in Azure Security Center. Voor el
     <td class="tg-lboi"; width=55%>- Controle op SQL Server moet zijn ingeschakeld<br>- Diagnostische logboeken in App Services moeten worden ingeschakeld<br>- Diagnostische logboeken in Azure Data Lake Store moeten worden ingeschakeld<br>- Diagnostische logboeken in Azure Stream Analytics moeten worden ingeschakeld<br>- Diagnostische logboeken in batch-accounts moeten worden ingeschakeld<br>- Diagnostische logboeken in Data Lake Analytics moeten worden ingeschakeld<br>- Diagnostische logboeken in Event hub moeten worden ingeschakeld<br>- Diagnostische logboeken in IoT Hub moeten worden ingeschakeld<br>- Diagnostische logboeken in Key Vault moeten worden ingeschakeld<br>- Diagnostische logboeken in Logic Apps moeten worden ingeschakeld<br>- Diagnostische logboeken in de zoek service moeten worden ingeschakeld<br>- Diagnostische logboeken in Service Bus moeten worden ingeschakeld<br>- Diagnostische logboeken in Virtual Machine Scale Sets moeten worden ingeschakeld<br>- Metrische waarschuwings regels moeten worden geconfigureerd voor batch-accounts<br>- Voor de SQL-controle-instellingen moeten actie-groepen zijn geconfigureerd voor het vastleggen van kritieke activiteiten<br>- SQL-servers moeten worden geconfigureerd met controle dagen van meer dan 90 dagen.</td>
   </tr>
   <tr>
-    <td class="tg-lboi"><strong><p style="font-size: 16px">Advanced Threat Protection inschakelen (maximale score 0)</p></strong>De bedreigings beveiliging van Azure Security Center biedt uitgebreide beveiligingen voor uw omgeving. Wanneer Security Center een bedreiging in een wille keurig gebied van uw omgeving detecteert, wordt er een waarschuwing gegenereerd. Deze waarschuwingen beschrijven de details van de betrokken resources, voorgestelde herstels tappen en in sommige gevallen een logische app activeren als reactie.<br>Elke bedreigings beveiligings bundel is een afzonderlijke, optionele aanbieding die u kunt inschakelen met behulp van de relevante aanbeveling in dit beveiligings beheer.<br>Meer <a href="https://docs.microsoft.com/azure/security-center/threat-protection">informatie over beveiliging tegen bedreigingen vindt u in Security Center</a>.</td>
+    <td class="tg-lboi"><strong><p style="font-size: 16px">Advanced Threat Protection inschakelen (maximale score 0)</p></strong>De optionele Azure Defender Threat Protection-abonnementen van Azure Security Center bieden uitgebreide beveiligingen voor uw omgeving. Wanneer Security Center een bedreiging in een wille keurig gebied van uw omgeving detecteert, wordt er een waarschuwing gegenereerd. Deze waarschuwingen beschrijven de details van de betrokken resources, voorgestelde herstels tappen en in sommige gevallen een logische app activeren als reactie.<br>Elk Azure Defender-abonnement is een afzonderlijke, optionele aanbieding die u kunt inschakelen met behulp van de relevante aanbeveling in dit beveiligings beheer.<br>Meer <a href="https://docs.microsoft.com/azure/security-center/threat-protection">informatie over beveiliging tegen bedreigingen vindt u in Security Center</a>.</td>
     <td class="tg-lboi"; width=55%>- Geavanceerde gegevens beveiliging moet zijn ingeschakeld op Azure SQL Database servers<br>- Geavanceerde gegevens beveiliging moet zijn ingeschakeld op SQL-servers op computers<br>- Geavanceerde beveiliging tegen bedreigingen moet zijn ingeschakeld op Virtual Machines<br>- Geavanceerde beveiliging tegen bedreigingen moet zijn ingeschakeld op Azure App Service plannen<br>- Geavanceerde beveiliging tegen bedreigingen moet zijn ingeschakeld voor Azure Storage accounts<br>- Geavanceerde beveiliging tegen bedreigingen moet zijn ingeschakeld op Azure Kubernetes Service-clusters<br>- Geavanceerde beveiliging tegen bedreigingen moet worden ingeschakeld voor Azure Container Registry registers<br>- Geavanceerde beveiliging tegen bedreigingen moet zijn ingeschakeld op Azure Key Vault kluizen</td>
   </tr>
   <tr>
@@ -197,14 +197,8 @@ De volgende tabel bevat de beveiligings opties in Azure Security Center. Voor el
 
 ## <a name="secure-score-faq"></a>Veelgestelde vragen over beveiligde scores
 
-### <a name="why-has-my-secure-score-gone-down"></a>Waarom is mijn beveiligde Score verdwenen?
-Security Center is overgeschakeld naar een verbeterde beveiligde Score, waaronder wijzigingen in de manier waarop de score wordt berekend. Nu moet u alle aanbevelingen voor een resource oplossen om punten te ontvangen. De scores zijn ook gewijzigd in een schaal van 0-10.
-
 ### <a name="if-i-address-only-three-out-of-four-recommendations-in-a-security-control-will-my-secure-score-change"></a>Als ik slechts drie van de vier aanbevelingen in een beveiligings controle adresseer, wordt mijn beveiligde Score gewijzigd?
 Nee. Deze wijziging wordt pas doorgevoerd wanneer u alle aanbevelingen voor één resource herstelt. Als u de maximum score voor een besturings element wilt ophalen, moet u alle aanbevelingen voor alle resources herstellen.
-
-### <a name="is-the-previous-experience-of-the-secure-score-still-available"></a>Is de vorige ervaring van de beveiligde Score nog steeds beschikbaar? 
-Nee. Voor een terwijl ze naast elkaar worden uitgevoerd om de overgang te vergemakkelijken. Het vorige model is nu afgeschaft. 
 
 ### <a name="if-a-recommendation-isnt-applicable-to-me-and-i-disable-it-in-the-policy-will-my-security-control-be-fulfilled-and-my-secure-score-updated"></a>Als een aanbeveling niet van toepassing is en deze in het beleid uitschakelt, wordt mijn beveiligings controle vervuld en mijn beveiligde score bijgewerkt?
 Ja. We raden u aan om aanbevelingen uit te scha kelen wanneer ze niet van toepassing zijn in uw omgeving. Zie [beveiligings beleid uitschakelen](https://docs.microsoft.com/azure/security-center/tutorial-security-policy#disable-security-policies)voor instructies over het uitschakelen van een specifieke aanbeveling.

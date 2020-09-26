@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: aahi
-ms.openlocfilehash: 00bca2d0c7e267bef8cd4a917463c5e7db159792
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8e951e6cb18596b19f49bf42179297f656e3fa5f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935112"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91304288"
 ---
 # <a name="camera-placement-guide"></a>Gids voor camera plaatsing
 
@@ -56,7 +56,7 @@ Over het algemeen moeten camera's 12-14 poten van het wegdek worden bevestigd. W
 
 ## <a name="camera-to-focal-point-distance"></a>Camera-naar-scherpere punt afstand
 
-_Camera-naar-brandpunt afstand_ is de lineaire afstand van het brand punt (of het middelste punt van het punt van belang) naar de camera.
+_Camera-naar-brandpunt afstand_ is de lineaire afstand van het brand punt (of het midden van de camera afbeelding) naar de camera die op het wegdek wordt gemeten.
 
 ![Camera-naar-focus punt-afstand](./media/spatial-analysis/camera-focal-point.png)
 

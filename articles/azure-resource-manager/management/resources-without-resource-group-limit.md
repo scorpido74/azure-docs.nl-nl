@@ -2,13 +2,13 @@
 title: Aantal resources zonder limiet van 800
 description: Geeft een lijst van de Azure-resource typen die meer dan 800 exemplaren in een resource groep kunnen bevatten.
 ms.topic: conceptual
-ms.date: 05/04/2020
-ms.openlocfilehash: 6f7b45ec3691bc3a48d9aa3dfa072c1c68189007
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/21/2020
+ms.openlocfilehash: e7a15607b144f1d7916f310948f15dc28d76a205
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87040751"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330754"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Resources die niet beperkt zijn tot 800 exemplaren per resource groep
 
@@ -16,12 +16,15 @@ Standaard kunt u Maxi maal 800 exemplaren van een resource type implementeren in
 
 Voor sommige resource typen moet u contact opnemen met ondersteuning om de limiet van 800-exemplaren te verwijderen. Deze resource typen worden in dit artikel vermeld.
 
+
 ## <a name="microsoftautomation"></a>Microsoft.Automation
 
 * automationAccounts
 
 ## <a name="microsoftazurestack"></a>Micro soft. AzureStack
 
+* edgeSubscriptions
+* linkedSubscriptions
 * registraties
 * registraties/customerSubscriptions
 * registraties/producten
@@ -38,6 +41,7 @@ Voor sommige resource typen moet u contact opnemen met ondersteuning om de limie
 * galerieën/afbeeldingen/versies
 * images
 * momentopnamen
+* virtualMachineScaleSets: standaard beperkt tot 800 exemplaren. Deze limiet kan worden verhoogd door contact op te nemen met de ondersteuning.
 * Informatie
 
 ## <a name="microsoftcontainerinstance"></a>Micro soft. ContainerInstance
@@ -55,24 +59,29 @@ Voor sommige resource typen moet u contact opnemen met ondersteuning om de limie
 * registers/taken
 * registers/webhooks
 
+## <a name="microsoftd365customerinsights"></a>Micro soft. D365CustomerInsights
+
+* vaak
+
 ## <a name="microsoftdbformariadb"></a>Micro soft. DBforMariaDB
 
 * Server
 
 ## <a name="microsoftdbformysql"></a>Micro soft. DBforMySQL
 
+* flexibleServers
 * Server
 
 ## <a name="microsoftdbforpostgresql"></a>Micro soft. DBforPostgreSQL
 
+* flexibleServers
 * serverGroups
 * Server
 * serversv2
-* singleServers
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 
-* planningen: standaard beperkt tot 800 exemplaren. Deze limiet kan worden verhoogd door contact op te nemen met de ondersteuning.
+* schema's
 
 ## <a name="microsoftenterpriseknowledgegraph"></a>Micro soft. EnterpriseKnowledgeGraph
 
@@ -87,7 +96,7 @@ Voor sommige resource typen moet u contact opnemen met ondersteuning om de limie
 
 * experimentWorkspaces
 
-## <a name="microsoftguestconfiguration"></a>Micro soft. GuestConfiguration
+## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
 
 * autoManagedVmConfigurationProfiles
 * configurationProfileAssignments
@@ -104,6 +113,10 @@ Voor sommige resource typen moet u contact opnemen met ondersteuning om de limie
 
 * integrationAccounts
 * stroom
+
+## <a name="microsoftmedia"></a>Microsoft.Media
+
+* Media Services/liveEvents
 
 ## <a name="microsoftnetapp"></a>Micro soft. NetApp
 

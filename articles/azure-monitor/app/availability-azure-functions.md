@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/04/2020
-ms.openlocfilehash: e2603d921973aefdcc1a6f4a76bdf70d69dcb68f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7c7aba1c1f091efa0ddd4417ef0a03f3f4ca4d36
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320626"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361004"
 ---
 # <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>Aangepaste beschikbaarheids tests maken en uitvoeren met behulp van Azure Functions
 
@@ -32,7 +32,7 @@ In dit artikel wordt beschreven hoe u een Azure-functie maakt met TrackAvailabil
 
             ![Bestaande Application Insights resource selecteren](media/availability-azure-functions/app-insights-resource.png)
 
-        - Selecteer **controleren + maken**
+        - Selecteer **Controleren en maken**.
 - Als u nog geen Application Insights resource hebt gemaakt voor de door de timer geactiveerde functie:
     - Wanneer u uw Azure Functions-toepassing maakt, wordt er standaard een Application Insights resource voor u gemaakt.
     - Volg de instructies voor het [maken van een Azure functions resource en timer geactiveerde functie](../../azure-functions/functions-create-scheduled-function.md) (stoppen voor opschonen).
@@ -183,7 +183,7 @@ U kunt Logboeken (analyse) gebruiken om de beschikbaarheids resultaten, afhankel
 >![Beschikbaarheids resultaten](media/availability-azure-functions/availabilityresults.png)
 
 >[!div class="mx-imgBorder"]
->![Afhankelijkheden](media/availability-azure-functions/dependencies.png)
+>![Scherm opname toont het nieuwe query tabblad met afhankelijkheden beperkt tot 50.](media/availability-azure-functions/dependencies.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
