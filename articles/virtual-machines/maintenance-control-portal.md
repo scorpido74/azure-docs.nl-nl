@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/22/2020
 ms.author: cynthn
-ms.openlocfilehash: 4232f4cd39c3f6dd6efa0bf78959798ea842e2dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b174e2631131e6bf26d7b1cb62442c8a99102e2e
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84676043"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397280"
 ---
 # <a name="control-updates-with-maintenance-control-and-the-azure-portal"></a>Updates beheren met onderhouds beheer en de Azure Portal
 
@@ -76,7 +76,7 @@ Er zijn ook twee manieren om te controleren of updates in behandeling zijn voor 
 
 U kunt ook een specifieke host controleren met behulp van **virtual machines** of eigenschappen van de toegewezen host. 
 
-![Scherm afbeelding die laat zien hoe onderhoud voor een host wordt gecontroleerd](media/virtual-machines-maintenance-control-portal/maintenance-configurations-pending-vm.png)
+![Scherm opname van de gemarkeerde onderhouds status.](media/virtual-machines-maintenance-control-portal/maintenance-configurations-pending-vm.png)
 
 ## <a name="apply-updates"></a>Updates toepassen
 
@@ -94,7 +94,7 @@ U kunt de voortgang van de updates controleren voor een configuratie in **onderh
 
 Als u een configuratie wilt verwijderen, opent u de configuratie gegevens en klikt u op **verwijderen**.
 
-![Scherm afbeelding die laat zien hoe onderhoud voor een host wordt gecontroleerd](media/virtual-machines-maintenance-control-portal/maintenance-configurations-delete.png)
+![Scherm afbeelding die laat zien hoe u een configuratie verwijdert.](media/virtual-machines-maintenance-control-portal/maintenance-configurations-delete.png)
 
 
 ## <a name="next-steps"></a>Volgende stappen

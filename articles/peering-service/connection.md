@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
 ms.date: 05/18/2020
 ms.author: derekol
-ms.openlocfilehash: df337736a676c40f1345310afb9a2e685ddc1d5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0540fa9c7a29456aaf343adce83509b2d0e390e4
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84872020"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398917"
 ---
 # <a name="peering-service-connection"></a>Peering service-verbinding
 
@@ -29,7 +29,7 @@ Een verbinding verwijst doorgaans naar een set met logische gegevens, waarbij ee
 De klant kan een enkele verbinding of meerdere verbindingen tot stand brengen conform de vereiste. Een verbinding wordt ook gebruikt als een eenheid voor het verzamelen van telemetrie. Als u bijvoorbeeld wilt dat telemetrie-waarschuwingen worden gewaarschuwd, moet de klant de verbinding definiëren die wordt bewaakt.
 
 > [!Note]
-> Wanneer u zich aanmeldt voor de peering-service, analyseren we uw Windows-en Office 365-telemetrie om u latentie metingen te bieden voor de geselecteerde voor voegsels.
+> Wanneer u zich aanmeldt voor de peering-service, analyseren we uw Windows-en Microsoft 365-telemetrie om u latentie metingen te bieden voor de geselecteerde voor voegsels.
 >Voor meer informatie over verbindings-telemetrie, verwijzen wij u naar de [telemetrie van de peering-service verbinding](connection-telemetry.md).
 >
 

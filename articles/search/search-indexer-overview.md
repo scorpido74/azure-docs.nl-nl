@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 09/25/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 3f3c53d412105489a814f082bbc0fd209476ecf9
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 7f6be959bf09cbe20bb37dfa3d17d64467758bd6
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90971399"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397892"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Indexeerfuncties in Azure Cognitive Search
 
@@ -48,7 +48,7 @@ Indexeer functies verkennen gegevens archieven in Azure.
 
 * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
 * [Azure data Lake Storage Gen2](search-howto-index-azure-data-lake-storage.md) (in preview-versie)
-* [Azure-tabelopslag](search-howto-indexing-azure-tables.md)
+* [Azure Table Storage](search-howto-indexing-azure-tables.md)
 * [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 * [Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 * [SQL Managed Instance](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)
@@ -60,7 +60,7 @@ Bij een eerste uitvoering, wanneer de index leeg is, leest een Indexeer functie 
 
 Voor elk van de documenten die worden opgenomen in, implementeert een Indexeer functie meerdere stappen, van het ophalen van documenten naar een laatste zoek engine "besteld" voor het indexeren. Een Indexeer functie is optioneel ook een instrumentatie bij het aansturen van vaardig heden en uitvoer, ervan uitgaande dat er een kwalificatieset is gedefinieerd.
 
-![Indexerings fasen](./media/search-indexer-overview/indexer-stages.png "indexerings fasen")
+:::image type="content" source="media/search-indexer-overview/indexer-stages.png" alt-text="Indexerings fasen" border="false":::
 
 ### <a name="stage-1-document-cracking"></a>Fase 1: document kraken
 
@@ -173,6 +173,6 @@ Nu u het uitgangspunt hebt begrepen, is de volgende stap de vereisten en taken t
 * [Azure SQL Database, SQL Managed instance of SQL Server op een virtuele machine van Azure](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 * [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
-* [Azure-tabelopslag](search-howto-indexing-azure-tables.md)
+* [Azure Table Storage](search-howto-indexing-azure-tables.md)
 * [CSV-blobs indexeren met de Azure Cognitive Search BLOB-Indexer](search-howto-index-csv-blobs.md)
 * [JSON-blobs indexeren met Azure Cognitive Search BLOB-Indexer](search-howto-index-json-blobs.md)

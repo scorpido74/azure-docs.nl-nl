@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 7dbb1b4a8b85350b8bf8a6df0c9035a19055444c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3af8a7de7dad3ce20d4f0247892bca83f06c9d22
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79409016"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397297"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Veelgestelde vragen over Azure Data Catalog
 In dit artikel vindt u antwoorden op veelgestelde vragen met betrekking tot de Azure Data Catalog-service.
@@ -55,7 +55,7 @@ Als u functie aanvragen en andere feedback wilt verzenden, gaat u naar de [Data 
 
 ## <a name="why-do-i-get-an-error-catalog-already-exists-when-i-try-to-create-a-new-catalog"></a>Waarom verschijnt er al een fout *catalogus* wanneer ik probeer een nieuwe catalogus te maken?
 
-Wanneer u Office 365 E5 aanschaft met Power BI Pro licentie, maakt micro soft automatisch een standaard catalogus in de regio van het abonnement. Deze catalogus maakt gebruik van de gratis SKU. De gebruikers licentie voor Office 365/Power BI wordt beheerd op de pagina beheer van Office 365. 
+Wanneer u Office 365 E5 aanschaft met Power BI Pro licentie, maakt micro soft automatisch een standaard catalogus in de regio van het abonnement. Deze catalogus maakt gebruik van de gratis SKU. De gebruikers licentie voor Office 365/Power BI wordt beheerd op de pagina beheer. 
 
 Dit type gegevens catalogus heeft echter geen **beheerders optie** en is niet zichtbaar in de **Azure Portal**. U kunt dit type gegevens catalogus niet verwijderen. Op dezelfde manier mag u de naam van de gegevens catalogus niet wijzigen en kunt u deze niet naar een andere regio verplaatsen. 
 
@@ -75,7 +75,7 @@ Uw gegevens registreren in Data Catalog:
 De specifieke eigenschappen verschillen van de gegevens bron tot de gegevens bron, maar in het algemeen haalt de Data Catalog Publishing-service de volgende informatie op:
 
 * Activa naam
-* Activa type
+* Assettype
 * Beschrijving van activum
 * Kenmerk/kolom namen
 * Gegevens typen voor kenmerken/kolommen

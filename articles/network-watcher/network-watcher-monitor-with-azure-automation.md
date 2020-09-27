@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: d833a4cf26ee8ab69d16cbd1d776ca49a2df4bc4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 273e9f7ce65cdd15000b1cc4ac7c19cde5992992
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738212"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396770"
 ---
 # <a name="monitor-vpn-gateways-with-network-watcher-troubleshooting"></a>VPN-gateways bewaken met Network Watcher probleem oplossing
 
@@ -42,7 +42,7 @@ Voordat u met dit scenario begint, moet u beschikken over de volgende vereisten:
 
 - Een Azure Automation-account in Azure. Zorg ervoor dat het Automation-account de meest recente modules heeft en ook de module AzureRM. Network heeft. De module AzureRM. Network is beschikbaar in de module galerie als u deze aan uw Automation-account wilt toevoegen.
 - U moet een set referenties configureren in Azure Automation. Meer informatie over [Azure Automation Security](../automation/automation-security-overview.md)
-- Een geldige SMTP-server (Office 365, uw on-premises e-mail adres of een andere) en referenties gedefinieerd in Azure Automation
+- Een geldige SMTP-server (Microsoft 365, uw on-premises e-mail adres of een andere) en referenties gedefinieerd in Azure Automation
 - Een geconfigureerde Virtual Network gateway in Azure.
 - Een bestaand opslag account met een bestaande container waarin de logboeken worden opgeslagen.
 
@@ -85,7 +85,7 @@ Gebruik de volgende code als klikken op **Opslaan**
 
 ```powershell
 # Set these variables to the proper values for your environment
-$o365AutomationCredential = "<Office 365 account>"
+$automationCredential = "<work or school account>"
 $fromEmail = "<from email address>"
 $toEmail = "<to email address>"
 $smtpServer = "<smtp.office365.com>"
@@ -99,8 +99,8 @@ $storageAccountName = "<storage account name>"
 $storageAccountResourceGroup = "<resource group name>"
 $storageAccountContainer = "<container name>"
 
-# Get credentials for Office 365 account
-$cred = Get-AutomationPSCredential -Name $o365AutomationCredential
+# Get credentials for work or school account
+$cred = Get-AutomationPSCredential -Name $automationCredential
 
 # Get the connection "AzureRunAsConnection "
 $servicePrincipalConnection=Get-AutomationConnection -Name $runAsConnectionName

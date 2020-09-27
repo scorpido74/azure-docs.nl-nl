@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 85ce79644ead939eaeffa5cfffeb495da15e7fe5
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: e701ac8cee15a338c363ec2697e02e82bb4f4e68
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88270662"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396430"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: veelgestelde vragen (FAQ)
 
@@ -29,9 +29,9 @@ Er zijn twee veelvoorkomende redenen waarom de Azure AD-uitbrei ding niet werkt 
 
 Azure AD en Azure AD B2C zijn afzonderlijke product aanbiedingen en kunnen niet worden gecombineerd in dezelfde Tenant. Een Azure AD-Tenant vertegenwoordigt een organisatie. Een Azure AD B2C-Tenant vertegenwoordigt een verzameling identiteiten die moeten worden gebruikt met Relying Party toepassingen. Wanneer u een **nieuwe OpenID Connect Connect provider** toevoegt onder **Azure AD B2C > id-providers** of met aangepast beleid, kan Azure AD B2C met Azure AD communiceren met de verificatie van werk nemers in een organisatie.
 
-### <a name="can-i-use-azure-ad-b2c-to-provide-social-login-facebook-and-google-into-office-365"></a>Kan ik Azure AD B2C gebruiken om sociale aanmelding (Facebook en Google +) aan te bieden in Office 365?
+### <a name="can-i-use-azure-ad-b2c-to-provide-social-login-facebook-and-google-into-microsoft-365"></a>Kan ik Azure AD B2C gebruiken om sociale aanmelding (Facebook en Google +) in Microsoft 365 te bieden?
 
-Azure AD B2C kan niet worden gebruikt om gebruikers te verifiëren voor Microsoft Office 365. Azure AD is de oplossing van micro soft voor het beheren van de toegang van werk nemers tot SaaS-apps en bevat functies die voor dit doel zijn ontworpen, zoals licenties en voorwaardelijke toegang. Azure AD B2C biedt een platform voor identiteits-en toegangs beheer voor het bouwen van web-en mobiele toepassingen. Als Azure AD B2C is geconfigureerd om te communiceren met een Azure AD-Tenant, beheert de Azure AD-Tenant de toegang van werk nemers tot toepassingen die afhankelijk zijn van Azure AD B2C.
+Azure AD B2C kan niet worden gebruikt om gebruikers te verifiëren voor Microsoft 365. Azure AD is de oplossing van micro soft voor het beheren van de toegang van werk nemers tot SaaS-apps en bevat functies die voor dit doel zijn ontworpen, zoals licenties en voorwaardelijke toegang. Azure AD B2C biedt een platform voor identiteits-en toegangs beheer voor het bouwen van web-en mobiele toepassingen. Als Azure AD B2C is geconfigureerd om te communiceren met een Azure AD-Tenant, beheert de Azure AD-Tenant de toegang van werk nemers tot toepassingen die afhankelijk zijn van Azure AD B2C.
 
 ### <a name="what-are-local-accounts-in-azure-ad-b2c-how-are-they-different-from-work-or-school-accounts-in-azure-ad"></a>Wat zijn lokale accounts in Azure AD B2C? Wat zijn de verschillen tussen werk-of school accounts in azure AD?
 

@@ -7,12 +7,12 @@ ms.author: jpalma
 ms.date: 06/29/2020
 ms.custom: fasttrack-edit
 author: palma21
-ms.openlocfilehash: 236b69b1e10eb80b9c0a5e27b213eb3972209346
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 67eeb181f64f5924a90fd2c03e39e1be9887dd2e
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91361038"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397161"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Uitgaand verkeer beheren voor cluster knooppunten in azure Kubernetes service (AKS)
 
@@ -205,10 +205,7 @@ De volgende FQDN/toepassings regels zijn vereist voor AKS-clusters waarvoor de A
 | `storage.googleapis.com` | **`HTTPS:443`** | Dit adres wordt gebruikt voor het ophalen van helm/Tiller-installatie kopieën |
 
 
-### <a name="azure-policy-preview"></a>Azure Policy (preview-versie)
-
-> [!CAUTION]
-> Enkele van de onderstaande functies zijn beschikbaar als preview-versie.  De suggesties in dit artikel zijn onderhevig aan wijzigingen wanneer de functie wordt verplaatst naar de open bare preview-versie en toekomstige release fasen.
+### <a name="azure-policy"></a>Azure Policy
 
 #### <a name="required-fqdn--application-rules"></a>Vereiste FQDN/toepassings regels 
 
@@ -219,7 +216,6 @@ De volgende FQDN/toepassings regels zijn vereist voor AKS-clusters waarvoor de A
 | **`gov-prod-policy-data.trafficmanager.net`** | **`HTTPS:443`** | Dit adres wordt gebruikt voor een juiste werking van Azure Policy. (momenteel als preview-versie in AKS) |
 | **`raw.githubusercontent.com`**               | **`HTTPS:443`** | Dit adres wordt gebruikt om het ingebouwde beleid van GitHub te halen om te zorgen voor een juiste werking van Azure Policy. (momenteel als preview-versie in AKS) |
 | **`dc.services.visualstudio.com`**            | **`HTTPS:443`** | Azure Policy-invoeg toepassing waarmee telemetriegegevens worden verzonden naar het apps Insights-eind punt. |
-
 
 ## <a name="restrict-egress-traffic-using-azure-firewall"></a>Uitgaand verkeer beperken met behulp van Azure firewall
 

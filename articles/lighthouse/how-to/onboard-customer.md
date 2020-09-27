@@ -3,12 +3,12 @@ title: Een klant onboarden in Azure Lighthouse
 description: Meer informatie over hoe u een klant kunt opsturen naar Azure Lighthouse, zodat de resources toegankelijk zijn en kunnen worden beheerd via uw eigen Tenant met behulp van Azure delegated resource management.
 ms.date: 09/24/2020
 ms.topic: how-to
-ms.openlocfilehash: 0b941c82c2ba0e98f524587f5ef4c4ecf86249eb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2e404c471990575460ccda3a26e7cdcb3ec1cf1d
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336544"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396668"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Een klant onboarden in Azure Lighthouse
 
@@ -69,7 +69,7 @@ Om het beheer te vereenvoudigen, kunt u het beste Azure AD-gebruikers groepen ge
 Bij het definiëren van uw autorisatie moet u het principe van de minimale bevoegdheid volgen, zodat gebruikers alleen over de benodigde machtigingen beschikken om hun taak te volt ooien. Zie voor richt lijnen en informatie over ondersteunde rollen [tenants, gebruikers en rollen in azure Lighthouse-scenario's](../concepts/tenants-users-roles.md).
 
 > [!IMPORTANT]
-> Om machtigingen voor een Azure AD-groep toe te voegen, moet het **groeps type** **beveiliging** zijn en niet **Office 365**. Deze optie wordt geselecteerd wanneer de groep wordt gemaakt. Zie [Een basisgroep maken en leden toevoegen met behulp van Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) voor meer informatie.
+> Als u machtigingen wilt toevoegen voor een Azure AD-groep, moet u het **groeps type** instellen op **beveiliging**. Deze optie wordt geselecteerd wanneer de groep wordt gemaakt. Zie [Een basisgroep maken en leden toevoegen met behulp van Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) voor meer informatie.
 
 Als u autorisaties wilt definiëren, moet u de ID-waarden weten voor elke gebruiker, gebruikers groep of Service-Principal in de Tenant van de service provider waaraan u toegang wilt verlenen. U hebt ook de roldefinitie-ID nodig voor elke ingebouwde rol die u wilt toewijzen. Als u deze niet al hebt, kunt u deze ophalen door de onderstaande opdrachten uit te voeren in de Tenant van de service provider.
 

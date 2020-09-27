@@ -11,12 +11,12 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
-ms.openlocfilehash: 12a187b29737ba9388d9b33ac8bcfedf1339c059
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bd8c2d68ae5c91f1319fba32ea0eb52ae389751a
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253780"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398758"
 ---
 # <a name="get-started-with-sql-database-dynamic-data-masking-with-the-azure-portal"></a>Aan de slag met SQL Database dynamische gegevens maskering met de Azure Portal
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -32,20 +32,20 @@ In dit artikel wordt beschreven hoe u [dynamische gegevens maskering](dynamic-da
 2. Ga naar de pagina instellingen van de data base die de gevoelige gegevens bevat die u wilt maskeren.
 3. Klik op de Blade **dynamische gegevens maskering** onder het gedeelte **beveiliging** van uw data base.
 
-   ![Navigatievenster](./media/dynamic-data-masking-configure-portal/4_ddm_settings_tile.png)
+   ![Scherm afbeelding met de sectie Beveiliging met dynamische gegevens maskering gemarkeerd.](./media/dynamic-data-masking-configure-portal/4_ddm_settings_tile.png)
 
 4. In de configuratie pagina voor **dynamische gegevens maskering** worden mogelijk enkele database kolommen weer gegeven die door de aanbevelingen engine voor maskering zijn gemarkeerd. Als u de aanbevelingen wilt accepteren, klikt u op **masker toevoegen** voor een of meer kolommen en wordt er een masker gemaakt op basis van het standaard type voor deze kolom. U kunt de maskerings functie wijzigen door te klikken op de maskerings regel en de indeling van het masker veld te bewerken naar een andere indeling van uw keuze. Zorg ervoor dat u op **Opslaan** klikt om uw instellingen op te slaan.
 
-    ![Navigatievenster](./media/dynamic-data-masking-configure-portal/5_ddm_recommendations.png)
+    ![Scherm opname van de configuratie pagina voor dynamische gegevens maskering.](./media/dynamic-data-masking-configure-portal/5_ddm_recommendations.png)
 
 5. Als u een masker voor een kolom in uw Data Base wilt toevoegen, klikt u boven aan de configuratie pagina voor **dynamische gegevens maskeren** op **masker toevoegen** om de configuratie pagina **maskerings regel toevoegen** te openen.
 
-    ![Navigatievenster](./media/dynamic-data-masking-configure-portal/6_ddm_add_mask.png)
+    ![Scherm opname van de configuratie pagina voor het toevoegen van een Maskerings regel.](./media/dynamic-data-masking-configure-portal/6_ddm_add_mask.png)
 
 6. Selecteer het **schema**, de **tabel** en de **kolom** om het aangewezen veld voor maskering te definiëren.
 7. **Selecteer hoe u wilt maskeren** in de lijst met gevoelige gegevens maskerings categorieën.
 
-    ![Navigatievenster](./media/dynamic-data-masking-configure-portal/7_ddm_mask_field_format.png)
+    ![Scherm opname van de categorieën gevoelige gegevens maskering onder de sectie Selecteer hoe u wilt maskeren.](./media/dynamic-data-masking-configure-portal/7_ddm_mask_field_format.png)
 
 8. Klik op **toevoegen** op de pagina gegevens maskerings regel om de set maskerings regels in het beleid voor dynamische gegevens maskering bij te werken.
 9. Typ de identiteiten van de SQL-gebruikers of de Azure Active Directory (Azure AD) die moeten worden uitgesloten van maskering en toegang hebben tot de niet-gemaskerde gevoelige gegevens. Dit moet een door punt komma's gescheiden lijst met gebruikers zijn. Gebruikers met beheerders bevoegdheden hebben altijd toegang tot de oorspronkelijke niet-gemaskeerde gegevens.

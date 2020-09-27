@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: terrylan
-ms.openlocfilehash: bd0f42507e22559690e2682a391c53b9c090aa6c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c5ac9daeb741d400a759603c7a3e3e462cc9294f
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75750785"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398866"
 ---
 # <a name="azure-security-logging-and-auditing"></a>Azure-logboekregistratie en -controle van beveiligingsgegevens
 
@@ -68,4 +68,4 @@ Bij het [integreren van Security Center waarschuwingen](../../security-center/se
 
 - [Controle-instellingen voor een site verzameling configureren](https://support.office.com/article/Configure-audit-settings-for-a-site-collection-A9920C97-38C0-44F2-8BCB-4CF1E2AE22D2?ui=&rs=&ad=US): als u beheerder van een site verzameling bent, haalt u de geschiedenis op van de acties van afzonderlijke gebruikers en de geschiedenis van de acties die zijn uitgevoerd tijdens een bepaald datum bereik.
 
-- [Zoek in het controle logboek in het office 365 security & compliance Center](https://support.office.com/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=&rs=&ad=US): gebruik het Office 365 Security & compliance Center om in het uniforme controle logboek te zoeken en gebruikers-en beheerders activiteiten in uw Office 365-organisatie te bekijken.
+- [Zoek in het controle logboek in het Microsoft 365 Security Center](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance): gebruik de Microsoft 365 Security Center om in het uniforme controle logboek te zoeken en de activiteiten van gebruikers en beheerders in uw organisatie weer te geven.

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2622d7a2e54dac710ac09d61dee639ab1d104f02
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: f2162ee6df551e1bc64741229aec99d5e697fd29
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89078993"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91395988"
 ---
 # <a name="security-control-data-protection"></a>Beveiligings beheer: gegevens beveiliging
 
@@ -74,7 +74,7 @@ Volg Azure Security Center aanbevelingen voor het versleutelen van de rest en de
 
 Als er geen functie beschikbaar is voor uw specifieke service in azure, gebruikt u een actief detectie hulpprogramma van derden om alle gevoelige informatie te identificeren die is opgeslagen, verwerkt of verzonden door de technologie systemen van de organisatie, met inbegrip van de locaties op locatie of op een externe service provider, en de gevoelige informatie-inventaris van de organisatie bij te werken.
 
-Gebruik Azure Information Protection voor het identificeren van gevoelige gegevens in Office 365-documenten.
+Gebruik Azure Information Protection voor het identificeren van gevoelige gegevens in Microsoft 365 documenten.
 
 Gebruik Azure SQL Information Protection om u te helpen bij het classificeren en labelen van informatie die is opgeslagen in Azure SQL Database.
 
@@ -88,7 +88,7 @@ Gebruik Azure SQL Information Protection om u te helpen bij het classificeren en
 
 | Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 4,6 | 14,6 | Klant |
+| 4.6 | 14,6 | Klant |
 
 Gebruik Azure RBAC (op rollen gebaseerd toegangs beheer) om de toegang tot gegevens en resources te beheren. anders kunt u gebruikmaken van specifieke methoden voor toegangs beheer op basis van een service.
 
@@ -98,7 +98,7 @@ Gebruik Azure RBAC (op rollen gebaseerd toegangs beheer) om de toegang tot gegev
 
 | Azure-ID | CIS-Id's | Onder |
 |--|--|--|
-| 4,7 | 14,7 | Gedeeld |
+| 4.7 | 14,7 | Gedeeld |
 
 Als dat nodig is voor de naleving van de reken bronnen, implementeert u een hulp programma van derden, zoals een geautomatiseerde oplossing voor gegevens verlies op basis van een host voor het afdwingen van toegangs beheer voor gegevens, zelfs wanneer gegevens worden gekopieerd uit een systeem.
 

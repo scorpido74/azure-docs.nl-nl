@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 3/8/2019
-ms.openlocfilehash: 363af1012b327a55703cc6e35a02dc1f27869bd0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 99d90e4d93f0e4a70350a5a33a65700c3e14acb4
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82629062"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398320"
 ---
 # <a name="copy-new-and-changed-files-by-lastmodifieddate-with-azure-data-factory"></a>Nieuwe en gewijzigde bestanden kopiëren met behulp van LastModifiedDate met Azure Data Factory
 
@@ -75,7 +75,7 @@ De sjabloon definieert zes para meters:
     
 7. U kunt nu een tumblingvenstertriggers-Windows-trigger toevoegen om deze pijp lijn te automatiseren, zodat de pijp lijn altijd nieuwe en gewijzigde bestanden alleen door LastModifiedDate kan kopiëren.  Selecteer **trigger toevoegen**en selecteer **Nieuw/bewerken**.
 
-    ![Bekijk het resultaat](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate8.png)
+    ![Scherm afbeelding met de optie Nieuw/bewerken menu die wordt weer gegeven wanneer u trigger toevoegen selecteert.](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate8.png)
     
 8. Selecteer **+ Nieuw**in het venster **triggers toevoegen** .
 
@@ -103,7 +103,7 @@ De sjabloon definieert zes para meters:
 
 14. Bekijk het resultaat. U ziet dat de pijp lijn automatisch om de 15 minuten wordt geactiveerd en alleen de nieuwe of gewijzigde bestanden uit het bron archief worden gekopieerd naar het doel archief in elke pijplijn uitvoering.
 
-    ![Bekijk het resultaat](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate15.png)
+    ![Scherm opname van de resultaten die worden geretourneerd wanneer de pijp lijn wordt geactiveerd.](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate15.png)
     
 ## <a name="next-steps"></a>Volgende stappen
 

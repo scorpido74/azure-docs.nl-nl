@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
-ms.openlocfilehash: 50ca6eacc7e75a3ff391401e7ced0e3583f1a285
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 0fe5b1350fdcf53eeda11f6de430d8d02a24fdbf
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91357570"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397756"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Veelgestelde vragen over spraak naar tekst
 
@@ -152,17 +152,17 @@ Zie de [quota en limieten voor spraak Services](speech-services-quotas-and-limit
 
 **A**: als u een lijst met woorden uploadt, worden de woorden toegevoegd aan de vocabulaire, maar wordt het systeem niet leren hoe de woorden doorgaans worden gebruikt. Door volledige of gedeeltelijke uitingen (zinnen of zinsdelen te bieden van dingen die gebruikers waarschijnlijk zeggen), kan het taal model de nieuwe woorden en hoe ze worden gebruikt, leren. Het aangepaste taal model is niet alleen geschikt voor het toevoegen van nieuwe woorden aan het systeem, maar ook voor het aanpassen van de kans op bekende woorden voor uw toepassing. Het bieden van een volledige uitingen helpt het systeem beter te leren.
 
-## <a name="tenant-model-custom-speech-with-office-365-data"></a>Tenant model (Custom Speech met Office 365-gegevens)
+## <a name="tenant-model-custom-speech-with-microsoft-365-data"></a>Tenant model (Custom Speech met Microsoft 365 gegevens)
 
 **V: welke informatie is opgenomen in het Tenant model en hoe wordt het gemaakt?**
 
-**A:** Een Tenant model wordt samengesteld op basis van e-mail berichten en documenten van [open bare groepen](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2) die door iedereen in uw organisatie kunnen worden bekeken.
+**A:** Een Tenant model wordt samengesteld op basis van e-mail berichten en documenten van [open bare groepen](https://support.microsoft.com/office/learn-about-microsoft-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2) die door iedereen in uw organisatie kunnen worden bekeken.
 
 **V: welke spraak ervaring zijn verbeterd door het Tenant model?**
 
 **A:** Wanneer het Tenant model is ingeschakeld, gemaakt en gepubliceerd, wordt het gebruikt voor het verbeteren van de herkenning van bedrijfs toepassingen die zijn gebouwd met behulp van de spraak service; Dit geeft ook een Azure AD-token van de gebruiker door dat het lidmaatschap van de onderneming aangeeft.
 
-De spraak ervaring die is ingebouwd in Office 365, zoals dicteer-en Power Point-ondertiteling, wordt niet gewijzigd wanneer u een Tenant model maakt voor uw speech service-toepassingen.
+De spraak ervaring die is ingebouwd in Microsoft 365, zoals dicteer functie en Power Point-ondertiteling, wordt niet gewijzigd wanneer u een Tenant model maakt voor uw speech service-toepassingen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

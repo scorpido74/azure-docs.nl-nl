@@ -7,12 +7,12 @@ author: danimir
 ms.author: danil
 ms.date: 09/19/2020
 ms.reviewer: carlrab
-ms.openlocfilehash: 663c852574667e45a39241575d6b50038495c33d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0015138f4da9f66e2f9148e468dd1b5543ae0c4b
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319585"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397076"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Azure SQL Database bewaken met behulp van Azure SQL-analyse (preview)
 
@@ -90,11 +90,11 @@ Als sommige metrische gegevens of logboeken niet naar Azure Monitor worden gestr
 
 Zodra de Azure SQL-analyse tegel voor de data base is geselecteerd, wordt het bewakings dashboard weer gegeven.
 
-![Overzicht van Azure SQL-analyse](./media/azure-sql/azure-sql-sol-overview.png)
+![Scherm opname van het bewakings dashboard.](./media/azure-sql/azure-sql-sol-overview.png)
 
 Als u een tegel selecteert, wordt er een inzoom rapport in het specifieke perspectief geopend. Zodra het perspectief is geselecteerd, wordt het inzoom rapport geopend.
 
-![Azure SQL-analyse-time-outs](./media/azure-sql/azure-sql-sol-metrics.png)
+![Scherm opname van het inzoom rapport in het specifieke perspectief.](./media/azure-sql/azure-sql-sol-metrics.png)
 
 Elk perspectief in deze weer gave bevat samen vattingen van het abonnement, de server, de elastische pool en de database niveaus. Daarnaast toont elk perspectief een specifiek perspectief voor het rapport aan de rechter kant. Als u abonnement, Server, pool of data base selecteert in de lijst, wordt het inzoomen voortgezet.
 

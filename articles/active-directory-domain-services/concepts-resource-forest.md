@@ -10,16 +10,16 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 62a2ffeea1d15a16c4ec4aa6a2b88c8e34763064
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 88069c6ac90fce7e33cac6ed3c30accb18ded8bf
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87480404"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396396"
 ---
 # <a name="resource-forest-concepts-and-features-for-azure-active-directory-domain-services"></a>Concepten en functies van het resource-forest voor Azure Active Directory Domain Services
 
-Azure Active Directory Domain Services (Azure AD DS) biedt een aanmeldings ervaring voor oudere, on-premises en line-of-business-toepassingen. Gebruikers, groepen en wacht woord-hashes van on-premises en Cloud gebruikers worden gesynchroniseerd met het door Azure AD DS beheerde domein. Deze gesynchroniseerde wacht woord-hashes zijn wat gebruikers één set referenties bieden die ze kunnen gebruiken voor de on-premises AD DS, Office 365 en Azure Active Directory.
+Azure Active Directory Domain Services (Azure AD DS) biedt een aanmeldings ervaring voor oudere, on-premises en line-of-business-toepassingen. Gebruikers, groepen en wacht woord-hashes van on-premises en Cloud gebruikers worden gesynchroniseerd met het door Azure AD DS beheerde domein. Deze gesynchroniseerde wacht woord-hashes zijn wat gebruikers één set referenties kunnen gebruiken voor de on-premises AD DS, Microsoft 365 en Azure Active Directory.
 
 Hoewel beveiligde en extra beveiligings voordelen bieden, kunnen sommige organisaties die gebruikers wachtwoorden hashes niet synchroniseren met Azure AD of Azure AD DS. Gebruikers in een organisatie hebben het wacht woord mogelijk niet kennen, omdat ze alleen smartcard verificatie gebruiken. Deze beperkingen verhinderen dat sommige organisaties Azure AD DS gebruiken om on-premises klassieke toepassingen naar Azure te tilleren en te verplaatsen.
 

@@ -1,5 +1,6 @@
 ---
-title: Een web-API aanroepen vanuit een web-app-micro soft Identity platform | Azure
+title: Een web-API aanroepen vanuit een web-app | Azure
+titleSuffix: Microsoft identity platform
 description: Meer informatie over het bouwen van een web-app die web-Api's aanroept (waarmee een beveiligde web-API wordt aangeroepen)
 services: active-directory
 author: jmprieur
@@ -8,19 +9,19 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 07/14/2019
+ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 1e448f52f4e8c24dd8552cae873edac841e57fc6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 815b1789c54d1ce505c16dc89e199d451ae9a588
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87058443"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396124"
 ---
 # <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>Een web-app die web-Api's aanroept: een web-API aanroepen
 
-Nu u een token hebt, kunt u een beveiligde web-API aanroepen.
+Nu u een token hebt, kunt u een beveiligde web-API aanroepen. Gewoonlijk roept u een downstream API aan vanaf de controller of pagina's van uw web-app.
 
 ## <a name="call-a-protected-web-api"></a>Een beveiligde web-API aanroepen
 
@@ -28,20 +29,103 @@ Het aanroepen van een beveiligde web-API is afhankelijk van uw taal en het gewen
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Hier volgt een vereenvoudigde code voor de actie van `HomeController` . Met deze code wordt een token opgehaald om Microsoft Graph aan te roepen. Code is toegevoegd om te laten zien hoe Microsoft Graph moet worden aangeroepen als een REST API. De URL voor de Microsoft Graph-API wordt opgegeven in het appsettings.jsbestand en wordt gelezen in een variabele met de naam `webOptions` :
+Wanneer u *micro soft. Identity. Web*gebruikt, hebt u drie gebruiks opties voor het aanroepen van een API:
 
-```json
+- [Optie 1: Microsoft Graph aanroepen met de Microsoft Graph SDK](#option-1-call-microsoft-graph-with-the-sdk)
+- [Optie 2: een stroomafwaartse Web-API aanroepen met de helper-klasse](#option-2-call-a-downstream-web-api-with-the-helper-class)
+- [Optie 3: een stroomafwaartse Web-API aanroepen zonder de helper-klasse](#option-3-call-a-downstream-web-api-without-the-helper-class)
+
+#### <a name="option-1-call-microsoft-graph-with-the-sdk"></a>Optie 1: Microsoft Graph aanroepen met de SDK
+
+U wilt Microsoft Graph aanroepen. In dit scenario hebt u Startup.cs toegevoegd `AddMicrosoftGraph` zoals *Startup.cs* opgegeven in [code configuratie](scenario-web-app-call-api-app-configuration.md#option-1-call-microsoft-graph), en kunt u het in de-controller of de pagina-constructor rechtstreeks injecteren `GraphServiceClient` voor gebruik in de acties. In het volgende voor beeld wordt een pagina weer gegeven met de foto van de aangemelde gebruiker.
+
+```CSharp
+[Authorize]
+[AuthorizeForScopes(Scopes = new[] { "user.read" })]
+public class IndexModel : PageModel
 {
-  "AzureAd": {
-    "Instance": "https://login.microsoftonline.com/",
-    ...
-  },
-  ...
-  "GraphApiUrl": "https://graph.microsoft.com"
+ private readonly GraphServiceClient _graphServiceClient;
+
+ public IndexModel(GraphServiceClient graphServiceClient)
+ {
+    _graphServiceClient = graphServiceClient;
+ }
+
+ public async Task OnGet()
+ {
+  var user = await _graphServiceClient.Me.Request().GetAsync();
+  try
+  {
+   using (var photoStream = await _graphServiceClient.Me.Photo.Content.Request().GetAsync())
+   {
+    byte[] photoByte = ((MemoryStream)photoStream).ToArray();
+    ViewData["photo"] = Convert.ToBase64String(photoByte);
+   }
+   ViewData["name"] = user.DisplayName;
+  }
+  catch (Exception)
+  {
+   ViewData["photo"] = null;
+  }
+ }
 }
 ```
 
-```csharp
+#### <a name="option-2-call-a-downstream-web-api-with-the-helper-class"></a>Optie 2: een stroomafwaartse Web-API aanroepen met de helper-klasse
+
+U wilt een andere web-API aanroepen dan Microsoft Graph. In dat geval hebt u de `AddDownstreamWebApi` *Startup.cs* toegevoegd in de [code configuratie](scenario-web-app-call-api-app-configuration.md#option-2-call-a-downstream-web-api-other-than-microsoft-graph)en kunt u rechtstreeks een `IDownstreamWebApi` service in uw controller of pagina-constructor injecteren en gebruiken in de volgende acties:
+
+```CSharp
+[Authorize]
+[AuthorizeForScopes(ScopeKeySection = "TodoList:Scopes")]
+public class TodoListController : Controller
+{
+  private IDownstreamWebApi _downstreamWebApi;
+  private const string ServiceName = "TodoList";
+
+  public TodoListController(IDownstreamWebApi downstreamWebApi)
+  {
+    _downstreamWebApi = downstreamWebApi;
+  }
+
+  public async Task<ActionResult> Details(int id)
+  {
+    var value = await _downstreamWebApi.CallWebApiForUserAsync(
+      ServiceName,
+      options =>
+      {
+        options.RelativePath = $"me";
+      });
+      return View(value);
+  }
+}
+```
+
+Het `CallWebApiForUserAsync` heeft ook sterk getypeerde generieke onderdrukkingen waarmee u rechtstreeks een object kunt ontvangen. De volgende methode ontvangt bijvoorbeeld een `Todo` instantie, een sterk getypeerde weer gave van de JSON die wordt geretourneerd door de Web-API.
+
+```CSharp
+    // GET: TodoList/Details/5
+    public async Task<ActionResult> Details(int id)
+    {
+        var value = await _downstreamWebApi.CallWebApiForUserAsync<object, Todo>(
+            ServiceName,
+            null,
+            options =>
+            {
+                options.HttpMethod = HttpMethod.Get;
+                options.RelativePath = $"api/todolist/{id}";
+            });
+        return View(value);
+    }
+   ```
+
+#### <a name="option-3-call-a-downstream-web-api-without-the-helper-class"></a>Optie 3: een stroomafwaartse Web-API aanroepen zonder de helper-klasse
+
+U hebt besloten om een token hand matig te verkrijgen met de `ITokenAcquisition` service, en u moet het token nu gebruiken. In dat geval wordt de voorbeeld code die wordt weer gegeven in [een web-app die web-api's aanroept, voortgezet: Schaf een token voor de app aan](scenario-web-app-call-api-acquire-token.md). De code wordt aangeroepen in de acties van de web-app-controllers.
+
+Nadat u het token hebt aangeschaft, kunt u dit als Bearer-token gebruiken om de downstream API aan te roepen, in dit geval Microsoft Graph.
+
+ ```csharp
 public async Task<IActionResult> Profile()
 {
  // Acquire the access token.
@@ -65,11 +149,10 @@ public async Task<IActionResult> Profile()
   return View();
 }
 ```
-
 > [!NOTE]
 > U kunt dezelfde methode gebruiken om een web-API aan te roepen.
 >
-> De meeste Azure-Web-Api's bieden een SDK die het aanroepen van de API vereenvoudigt. Dit geldt ook voor Microsoft Graph. In het volgende artikel leert u hoe u een zelf studie kunt vinden die API-gebruik illustreert.
+> De meeste Azure-Web-Api's bieden een SDK die het aanroepen van de API vereenvoudigt als het geval is voor Microsoft Graph. Zie bijvoorbeeld [een webtoepassing voor het maken van toegang tot Blob Storage met Azure AD](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-app?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=dotnet) voor een voor beeld van een web-app met behulp van micro soft. Identity. Web en met behulp van de Azure Storage SDK.
 
 # <a name="java"></a>[Java](#tab/java)
 

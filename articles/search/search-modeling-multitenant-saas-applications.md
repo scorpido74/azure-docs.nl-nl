@@ -7,13 +7,13 @@ author: LiamCavanagh
 ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: ea0dac74d4f995e41513b3451dd28d177040e672
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/25/2020
+ms.openlocfilehash: cd21197d6d1559b681ae622b974f6eb7ba95ad3d
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935021"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397365"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>Ontwerp patronen voor SaaS-toepassingen met meerdere tenants en Azure Cognitive Search
 
@@ -76,7 +76,8 @@ In het geval van een multi tenant scenario gebruikt de ontwikkelaar van de toepa
 3. *Combi natie van:* Grotere, meer actieve tenants krijgen toegewezen services, terwijl bij kleinere tenants afzonderlijke indexen binnen gedeelde services worden toegewezen.
 
 ## <a name="1-index-per-tenant"></a>1. index per Tenant
-![Een portrayal van het model van de index-per-Tenant](./media/search-modeling-multitenant-saas-applications/azure-search-index-per-tenant.png)
+
+:::image type="content" source="media/search-modeling-multitenant-saas-applications/azure-search-index-per-tenant.png" alt-text="Een portrayal van het model van de index-per-Tenant" border="false":::
 
 In een model voor index-per Tenant nemen meerdere tenants één Azure Cognitive Search-service waarbij elke Tenant een eigen index heeft.
 
@@ -93,7 +94,8 @@ Azure Cognitive Search maakt het mogelijk de afzonderlijke indexen te schalen en
 Als het totale aantal indexen te groot is voor één service, moet een andere service worden ingericht voor de nieuwe tenants. Als indexen moeten worden verplaatst tussen de zoek services als nieuwe services worden toegevoegd, moeten de gegevens uit de index hand matig worden gekopieerd van de ene index naar de andere als Azure Cognitive Search de index niet mag worden verplaatst.
 
 ## <a name="2-service-per-tenant"></a>2. service per Tenant
-![Een portrayal van het service-per-Tenant model](./media/search-modeling-multitenant-saas-applications/azure-search-service-per-tenant.png)
+
+:::image type="content" source="media/search-modeling-multitenant-saas-applications/azure-search-service-per-tenant.png" alt-text="Een portrayal van het service-per-Tenant model" border="false":::
 
 In een architectuur met een service-per-Tenant heeft elke Tenant een eigen zoek service.
 

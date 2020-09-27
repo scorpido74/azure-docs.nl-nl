@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 06/17/2020
-ms.openlocfilehash: 6ca03e56d49d26fcd34a25ce1e3734db65b19b65
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 7b42c12499977b5f7bc1704c57904e90be2e8466
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646832"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398011"
 ---
 # <a name="create-a-consulting-service-offer"></a>Een adviesservice-aanbieding maken
 
@@ -25,7 +25,7 @@ Voordat u uw aanbieding maakt, controleert u de vereisten in de [consulting serv
 Voor delen van het publiceren naar de commerciële Marketplace:
 
 - Promoot uw bedrijf met behulp van het merk micro soft.
-- Mogelijk bereikt u meer dan 100.000.000 Office 365-en Dynamics 365-gebruikers op AppSource en meer dan 200.000 organisaties via Azure Marketplace.
+- Mogelijk bereikt u meer dan 100.000.000 Microsoft 365 en Dynamics 365-gebruikers op AppSource en meer dan 200.000 organisaties via Azure Marketplace.
 - Ontvang leads van hoge kwaliteit van deze markt plaatsen.
 - Laat uw services door het veld en de Televerkoop teams van micro soft worden gepromoveerd
 

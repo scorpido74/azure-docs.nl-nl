@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 09/24/2020
 ms.author: ryanwi
 ms.reviewer: justhu
 ms.custom: aaddev
-ms.openlocfilehash: dfb9cb80bdcd2854a3ddd5b273806fbcdda916b0
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 0868d87d977b15a552b04d5dbd6d19de6931f0ae
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90705636"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91395903"
 ---
 # <a name="tenancy-in-azure-active-directory"></a>Tenancy in Azure Active Directory
 
@@ -43,7 +43,7 @@ In de Azure Portal kunt u uw app configureren als één Tenant of multi tenant d
 Het bouwen van fantastische multi tenant-apps kan lastig zijn vanwege het aantal verschillende beleids regels dat IT-beheerders kunnen instellen in hun tenants. Als u ervoor kiest een multi tenant-app te bouwen, volgt u deze aanbevolen procedures:
 
 * Test uw app in een Tenant met geconfigureerde [beleids regels voor voorwaardelijke toegang](../azuread-dev/conditional-access-dev-guide.md).
-* Volg het principe van minimale gebruikers toegang om ervoor te zorgen dat uw app alleen machtigingen aanvraagt die daad werkelijk nodig is. Vermijd het aanvragen van machtigingen waarvoor een beheerders toestemming is vereist, waardoor gebruikers uw app helemaal niet in sommige organisaties kunnen verkrijgen. 
+* Volg het principe van minimale gebruikers toegang om ervoor te zorgen dat uw app alleen machtigingen aanvraagt die daad werkelijk nodig is. 
 * Geef de juiste namen en beschrijvingen op voor de machtigingen die u beschikbaar maakt als onderdeel van uw app. Op deze manier kunnen gebruikers en beheerders weten wat ze ermee instemmen wanneer ze de Api's van uw app proberen te gebruiken. Zie de sectie best practices in de [hand leiding voor machtigingen](v2-permissions-and-consent.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen

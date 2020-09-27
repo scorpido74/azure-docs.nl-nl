@@ -1,5 +1,6 @@
 ---
-title: Een Token ophalen in een web-app die web-Api's aanroept-micro soft Identity-platform | Azure
+title: Een Token ophalen in een web-app die web-Api's aanroept | Azure
+titleSuffix: Microsoft identity platform
 description: Meer informatie over het verkrijgen van een token voor een web-app die web-Api's aanroept
 services: active-directory
 author: jmprieur
@@ -8,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 07/14/2020
+ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 4904cd95dc81aad959c88c1dfdb09416923046e6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4fe3744f3f8cb39a7493ce788ee9badc1b31b75e
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518178"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396175"
 ---
 # <a name="a-web-app-that-calls-web-apis-acquire-a-token-for-the-app"></a>Een web-app die web-Api's aanroept: een Token ophalen voor de app
 
@@ -27,7 +28,11 @@ U hebt uw client toepassings object gemaakt. Nu gebruikt u het om een token te v
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-De controller methoden worden beveiligd door een `[Authorize]` kenmerk dat ervoor zorgt dat gebruikers worden geauthenticeerd om de web-app te gebruiken. Dit is de code die Microsoft Graph aanroept:
+*Micro soft. Identity. Web* voegt extensie methoden toe die de mogelijkheid bieden om Microsoft Graph of een stroomafwaartse Web-API aan te roepen. Deze methoden worden gedetailleerd beschreven in [een web-app die web-api's aanroept: een API aanroepen](scenario-web-app-call-api-call-api.md). Met deze helper-methoden hoeft u geen token hand matig te verkrijgen.
+
+Als u echter hand matig een token moet verkrijgen, ziet u in de volgende code een voor beeld van het gebruik van *micro soft. Identity. Web* om dit te doen in een start controller. Het roept Microsoft Graph met behulp van de REST API (in plaats van de Microsoft Graph SDK). Als u een token wilt ophalen voor het aanroepen van de stroomafwaartse API, kunt u de service injecteren `ITokenAcquisition` door afhankelijkheids injecties in de constructor van uw controller (of uw pagina-constructor als u een razendsnelle functie gebruikt) en u deze gebruiken in de controller acties, waarbij een token wordt opgehaald voor de gebruiker ( `GetAccessTokenForUserAsync` ) of voor de toepassing zelf ( `GetAccessTokenForAppAsync` ) in een daemon-scenario.
+
+De controller methoden worden beveiligd door een `[Authorize]` kenmerk dat ervoor zorgt dat alleen geverifieerde gebruikers de web-app kunnen gebruiken.
 
 ```csharp
 [Authorize]
@@ -82,7 +87,7 @@ De code voor ASP.NET is vergelijkbaar met de code die wordt weer gegeven voor AS
 - Een controller actie, beveiligd door het kenmerk [autoriseren], extraheert de Tenant-ID en de gebruikers-ID van het `ClaimsPrincipal` lid van de controller. (ASP.NET gebruikt `HttpContext.User` .)
 - Van daaruit bouwt het een MSAL.NET- `IConfidentialClientApplication` object.
 - Ten slotte wordt de `AcquireTokenSilent` methode van de vertrouwelijke client toepassing aangeroepen.
-- Als er interactie is vereist, moet de Web-App de gebruiker vragen (opnieuw aanmelden) en vraagt u om meer claims.
+- Als interactie vereist is, moet de Web-App de gebruiker vragen (Meld u opnieuw aan) en vraagt u om meer claims.
 
 Het volgende code fragment is geëxtraheerd uit [HomeController. cs # L157-L192](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/257c8f96ec3ff875c351d1377b36403eed942a18/WebApp/Controllers/HomeController.cs#L157-L192) in het voor beeld [MS-Identity-ASPNET-webapp-openidconnect](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect) ASP.NET MVC-code:
 

@@ -5,12 +5,12 @@ author: EMaher
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: 5e1d772deb71e03311489ea61d012415860cbe54
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf1b9db8de2c0f2c852a41d1e30343c5cef1b20b
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445318"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396685"
 ---
 # <a name="guide-to-setting-up-a-windows-template-machine-in-azure-lab-services"></a>Hand leiding voor het instellen van een Windows-sjabloon machine in Azure Lab Services
 
@@ -61,7 +61,7 @@ Als u zich op een computer bevindt die niet gebruikmaakt van Active Directory, k
 
 Als uw virtuele machine is verbonden met Active Directory, kunt u instellen dat de sjabloon machine automatisch uw studenten vraagt om de bekende mappen naar OneDrive te verplaatsen.  
 
-U moet eerst uw Office-Tenant-ID ophalen.  Zie [uw Office 365-Tenant-id zoeken](https://docs.microsoft.com/onedrive/find-your-office-365-tenant-id)voor meer instructies.  U kunt ook de Office 365-Tenant-ID ophalen met behulp van de volgende Power shell.
+U moet eerst uw organisatie-ID ophalen.  Zie [uw Microsoft 365 organisatie-ID zoeken](https://docs.microsoft.com/onedrive/find-your-office-365-tenant-id)voor meer instructies.  U kunt de organisatie-ID ook ophalen met behulp van de volgende Power shell.
 
 ```powershell
 Install-Module MSOnline -Confirm
@@ -71,7 +71,7 @@ $officeTenantID = Get-MSOLCompanyInformation |
     Select-Object -expand Guid
 ```
 
-Zodra u uw Office 365-Tenant-ID hebt, stelt u OneDrive in om bekende mappen naar OneDrive te verplaatsen met behulp van de volgende Power shell.
+Zodra u uw organisatie-ID hebt, stelt u OneDrive in om bekende mappen naar OneDrive te verplaatsen met behulp van de volgende Power shell.
 
 ```powershell
 if ($officeTenantID -eq $null)
@@ -95,7 +95,7 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive"
 
 ### <a name="silently-sign-in-users-to-onedrive"></a>Gebruikers op de achtergrond aanmelden bij OneDrive
 
-OneDrive kan worden ingesteld om automatisch aan te melden met de Windows-referenties van de aangemelde gebruiker.  Automatische aanmelding is handig voor klassen waarbij de student zich aanmeldt met hun Office 365 school-referenties.
+OneDrive kan worden ingesteld om automatisch aan te melden met de Windows-referenties van de aangemelde gebruiker.  Automatische aanmelding is handig voor klassen waarbij de student zich aanmeldt met hun school referenties.
 
 ```powershell
 New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive"
@@ -115,7 +115,7 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive"
 
 ### <a name="set-the-maximum-size-of-a-file-that-to-be-download-automatically"></a>De maximale grootte instellen van een bestand dat automatisch moet worden gedownload
 
-Deze instelling wordt gebruikt in combi natie met gebruikers die zich op de achtergrond aanmelden bij de OneDrive-Sync-Client met hun Windows-referenties op apparaten waarvoor geen OneDrive-bestanden op aanvraag zijn ingeschakeld. Gebruikers met een OneDrive die groter is dan de opgegeven drempel waarde (in MB), wordt gevraagd de mappen te kiezen die ze willen synchroniseren voordat de OneDrive Sync-Client (OneDrive.exe) de bestanden downloadt.  In ons voor beeld is ' 1111-2222-3333-4444 ' de Tenant-ID van Office 365 en 0005000 wordt een drempel van 5 GB ingesteld.
+Deze instelling wordt gebruikt in combi natie met gebruikers die zich op de achtergrond aanmelden bij de OneDrive-Sync-Client met hun Windows-referenties op apparaten waarvoor geen OneDrive-bestanden op aanvraag zijn ingeschakeld. Gebruikers met een OneDrive die groter is dan de opgegeven drempel waarde (in MB), wordt gevraagd de mappen te kiezen die ze willen synchroniseren voordat de OneDrive Sync-Client (OneDrive.exe) de bestanden downloadt.  In ons voor beeld is ' 1111-2222-3333-4444 ' de organisatie-ID en 0005000 stelt een drempel van 5 GB in.
 
 ```powershell
 New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive"
@@ -124,23 +124,23 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive\DiskSpaceChec
     -Name "1111-2222-3333-4444" -Value "0005000" -PropertyType DWORD
 ```
 
-## <a name="install-and-configure-microsoft-office-365"></a>Microsoft Office 365 installeren en configureren
+## <a name="install-and-configure-microsoft-365"></a>Microsoft 365 installeren en configureren
 
-### <a name="install-microsoft-office-365"></a>Installeer Microsoft Office 365
+### <a name="install-microsoft-365"></a>Microsoft 365 installeren
 
-Als uw sjabloon machine Office nodig heeft, raden wij u aan Office te installeren via het [Office Deployment Tool (ODT)](https://www.microsoft.com/download/details.aspx?id=49117 ). U moet een herbruikbaar configuratie bestand maken met behulp van de [Office 365-client configuratie service](https://config.office.com/) om te kiezen welke architectuur, welke functies u nodig hebt vanuit Office en hoe vaak het wordt bijgewerkt.
+Als uw sjabloon machine Office nodig heeft, raden wij u aan Office te installeren via het [Office Deployment Tool (ODT)](https://www.microsoft.com/download/details.aspx?id=49117). U moet een herbruikbaar configuratie bestand maken met behulp van het [beheer centrum](https://config.office.com/) van de Microsoft 365-apps om te kiezen welke architectuur, welke functies u nodig hebt vanuit Office en hoe vaak het wordt bijgewerkt.
 
-1. Ga naar de [Office 365-client configuratie service](https://config.office.com/) en down load uw eigen configuratie bestand.
+1. Ga naar het [beheer centrum van Microsoft 365-apps](https://config.office.com/) en down load uw eigen configuratie bestand.
 2. Down load [Office Deployment Tool](https://www.microsoft.com/download/details.aspx?id=49117).  Het gedownloade bestand is `setup.exe` .
 3. Voer uit `setup.exe /download configuration.xml` om Office-onderdelen te downloaden.
 4. Voer uit `setup.exe /configure configuration.xml` om Office-onderdelen te installeren.
 
-### <a name="change-the-microsoft-office-365-update-channel"></a>Het Microsoft Office 365-update kanaal wijzigen
+### <a name="change-the-microsoft-365-update-channel"></a>Het Microsoft 365-update kanaal wijzigen
 
-Met het Office-configuratie programma kunt u instellen hoe vaak Office updates ontvangt. Als u echter wilt wijzigen hoe vaak Office updates ontvangt na de installatie, kunt u de URL van het update kanaal wijzigen. URL-adressen van het update kanaal vindt [u in het Office 365 ProPlus-update kanaal voor apparaten in uw organisatie wijzigen](https://docs.microsoft.com/deployoffice/change-update-channels). In het volgende voor beeld ziet u hoe u Office 365 instelt voor het gebruik van het maandelijkse update kanaal.
+Met het Office-configuratie programma kunt u instellen hoe vaak Office updates ontvangt. Als u echter wilt wijzigen hoe vaak Office updates ontvangt na de installatie, kunt u de URL van het update kanaal wijzigen. URL-adressen van het update kanaal kunt u vinden op [het update kanaal voor de Microsoft 365 apps voor apparaten in uw organisatie](https://docs.microsoft.com/deployoffice/change-update-channels). In het onderstaande voor beeld ziet u hoe u Microsoft 365 instelt om het maandelijkse update kanaal te gebruiken.
 
 ```powershell
-# Update to the Office 365 Monthly Channel
+# Update to the Microsoft 365 Monthly Channel
 Set-ItemProperty
     -Path "HKLM:\SOFTWARE\Microsoft\Office\ClickToRun\Configuration\CDNBaseUrl"
     -Name "CDNBaseUrl"
@@ -228,7 +228,7 @@ Andere apps installeren die vaak worden gebruikt voor het onderwijs via de Windo
 
 ## <a name="conclusion"></a>Conclusie
 
-In dit artikel vindt u optionele stappen voor het voorbereiden van uw Windows-sjabloon-VM voor een doel treffende klasse.  Stappen zijn het installeren van OneDrive en het installeren van Office 365, het installeren van updates voor Windows en het installeren van updates voor Microsoft Store-apps.  Ook wordt uitgelegd hoe u updates instelt voor een planning die het beste werkt voor uw klasse.  
+In dit artikel vindt u optionele stappen voor het voorbereiden van uw Windows-sjabloon-VM voor een doel treffende klasse.  Stappen zijn het installeren van OneDrive en het installeren van Microsoft 365, het installeren van updates voor Windows en het installeren van updates voor Microsoft Store-apps.  Ook wordt uitgelegd hoe u updates instelt voor een planning die het beste werkt voor uw klasse.  
 
 ## <a name="next-steps"></a>Volgende stappen
 Raadpleeg het artikel over het beheren van het afsluit gedrag van Windows voor hulp bij het beheren van kosten: [hand leiding voor het beheren van het afsluit gedrag van Windows](how-to-windows-shutdown.md)

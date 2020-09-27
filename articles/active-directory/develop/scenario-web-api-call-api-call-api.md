@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b1582af2bbd97579852ead0d4462f80f3a50fe6a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9212e99ae317a3abec4bebfc7fb131c6774f8e4d
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91257143"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396192"
 ---
 # <a name="a-web-api-that-calls-web-apis-call-an-api"></a>Een web-API die web-Api's aanroept: een API aanroepen
 
@@ -28,11 +28,11 @@ Nadat u een token hebt, kunt u een beveiligde web-API aanroepen. Gewoonlijk roep
 
 Wanneer u *micro soft. Identity. Web*gebruikt, hebt u drie gebruiks scenario's:
 
-- [Microsoft Graph aanroepen](#call-microsoft-graph)
-- [Een andere web-API aanroepen dan Microsoft Graph](#call-web-api-other-than-microsoft-graph)
-- [Een token hand matig ophalen](#acquire-a-token-manually)
+- [Optie 1: Microsoft Graph aanroepen met de Microsoft Graph SDK](#option-1-call-microsoft-graph-with-the-sdk)
+- [Optie 2: een stroomafwaartse Web-API aanroepen met de helper-klasse](#option-2-call-a-downstream-web-api-with-the-helper-class)
+- [Optie 3: een stroomafwaartse Web-API aanroepen zonder de helper-klasse](#option-3-call-a-downstream-web-api-without-the-helper-class)
 
-#### <a name="call-microsoft-graph"></a>Microsoft Graph aanroepen
+#### <a name="option-1-call-microsoft-graph-with-the-sdk"></a>Optie 1: Microsoft Graph aanroepen met de SDK
 
 In dit scenario hebt u Startup.cs toegevoegd `.AddMicrosoftGraph()` zoals *Startup.cs* opgegeven in [code configuratie](scenario-web-api-call-api-app-configuration.md#option-1-call-microsoft-graph), en kunt u het in de-controller of de pagina-constructor rechtstreeks injecteren `GraphServiceClient` voor gebruik in de acties. In het volgende voor beeld wordt een pagina weer gegeven met de foto van de aangemelde gebruiker.
 
@@ -68,7 +68,7 @@ In dit scenario hebt u Startup.cs toegevoegd `.AddMicrosoftGraph()` zoals *Start
  }
 ```
 
-#### <a name="call-web-api-other-than-microsoft-graph"></a>Een andere web-API dan Microsoft Graph aanroepen
+#### <a name="option-2-call-a-downstream-web-api-with-the-helper-class"></a>Optie 2: een stroomafwaartse Web-API aanroepen met de helper-klasse
 
 In dit scenario hebt u Startup.cs toegevoegd `.AddDownstreamWebApi()` zoals *Startup.cs* opgegeven in [code configuratie](scenario-web-api-call-api-app-configuration.md#option-2-call-a-downstream-web-api-other-than-microsoft-graph), en kunt u rechtstreeks een `IDownstreamWebApi` service in uw controller of pagina-constructor injecteren en gebruiken in de volgende acties:
 
@@ -115,7 +115,7 @@ De- `CallWebApiForUserAsync` methode heeft ook sterk getypeerde generieke onderd
  }
 ```
 
-#### <a name="acquire-a-token-manually"></a>Een token hand matig ophalen
+#### <a name="option-3-call-a-downstream-web-api-without-the-helper-class"></a>Optie 3: een stroomafwaartse Web-API aanroepen zonder de helper-klasse
 
 Als u hebt besloten om een token hand matig te verkrijgen met behulp van de `ITokenAcquisition` -service, moet u het token nu gebruiken. In dat geval wordt de voorbeeld code die wordt weer gegeven in [een web-API die web-api's aanroept, voortgezet: Schaf een token voor de app aan](scenario-web-api-call-api-acquire-token.md). De code wordt aangeroepen in de acties van de API-controllers. Er wordt een stroomafwaartse API met de naam *ToDoList*aangeroepen.
 

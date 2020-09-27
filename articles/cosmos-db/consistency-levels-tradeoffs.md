@@ -7,14 +7,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 4de696e2538bf1fa4823aafe30f931b7852535a7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5046e40ea15a27e80f4e92ebf36488dedeee1821
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82191733"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396005"
 ---
-# <a name="consistency-availability-and-performance-tradeoffs"></a>Compromissen tussen consistentie, beschikbaarheid en prestaties
+# <a name="latency-availability-and-performance-tradeoffs-with-different-azure-cosmos-db-consistency-levels"></a>Afwegingen van latentie, Beschik baarheid en prestaties met verschillende Azure Cosmos DB consistentie niveaus
 
 Gedistribueerde databases die afhankelijk zijn van replicatie voor hoge beschikbaarheid, lage latentie of beide moeten afwegingen maken. Er moet een afweging worden gemaakt tussen leesconsistentie versus beschikbaarheid, latentie en doorvoer.
 
@@ -22,9 +22,9 @@ Azure Cosmos DB consistentie van gegevens als een breed scala aan mogelijkheden.
 
 - *Sterk*
 - *Gebonden veroudering*
-- *Sessie*
+- *Beëindigen*
 - *Consistent voor voegsel*
-- *Mogelijk*
+- *Uiteindelijke*
 
 Elk niveau biedt Beschik baarheid en prestatie afwegingen en wordt ondersteund door de uitgebreide Sla's.
 
@@ -49,13 +49,13 @@ De exacte RTT-latentie is een functie van de snelheid van de afstand en de Azure
 
 - Voor een bepaald type schrijf bewerking, zoals invoegen, vervangen, upsert en verwijderen, is de schrijf doorvoer voor aanvraag eenheden identiek voor alle consistentie niveaus.
 
-|**Consistentieniveau**|**Quorum Lees bewerkingen**|**Quorum schrijf bewerkingen**|
+|**Consistentie niveau**|**Quorum Lees bewerkingen**|**Quorum schrijf bewerkingen**|
 |--|--|--|
 |**Sterk**|Lokale minderheid|Wereld wijde meerderheid|
 |**Gebonden veroudering**|Lokale minderheid|Lokale meerderheid|
-|**Sessie**|Enkele replica (met sessie token)|Lokale meerderheid|
-|**Consistent prefix**|Enkele replica|Lokale meerderheid|
-|**Mogelijk**|Enkele replica|Lokale meerderheid|
+|**Beëindigen**|Enkele replica (met sessie token)|Lokale meerderheid|
+|**Consistent voor voegsel**|Enkele replica|Lokale meerderheid|
+|**Uiteindelijke**|Enkele replica|Lokale meerderheid|
 
 ## <a name="consistency-levels-and-data-durability"></a><a id="rto"></a>Consistentie niveaus en gegevens duurzaamheid
 
@@ -63,7 +63,7 @@ Binnen een wereld wijd gedistribueerde database omgeving is er een rechtstreekse
 
 In de onderstaande tabel wordt de relatie tussen consistentie model en gegevens duurzaamheid gedefinieerd in aanwezigheid van een regionale storing. Het is belang rijk te weten dat u in een gedistribueerd systeem, zelfs met een sterke consistentie, geen gedistribueerde data base met een RPO en RTO van nul hebt als gevolg van de CAP theorema. Zie voor meer informatie over waarom de [consistentie niveaus in azure Cosmos DB](consistency-levels.md).
 
-|**Regio (s)**|**Replicatie modus**|**Consistentie niveau**|**RPO**|**RTO**|
+|**Regio (s)**|**Replicatie modus**|**Consistentieniveau**|**RPO**|**RTO**|
 |---------|---------|---------|---------|---------|
 |1|Eén of meerdere masters|Elk consistentie niveau|< 240 minuten|<1 week|
 |>1|Eén Master|Sessie, consistent voor voegsel, uiteindelijk|< 15 minuten|< 15 minuten|

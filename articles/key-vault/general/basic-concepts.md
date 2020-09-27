@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e0bb3c3f3a6a1a38f974acf361937928ad4e2cfd
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: b537fecefd0b8b00967894daa94881a084d5c8f2
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983298"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398507"
 ---
 # <a name="azure-key-vault-basic-concepts"></a>Basis concepten Azure Key Vault
 
@@ -23,7 +23,7 @@ Azure Key Vault is een Cloud service voor het veilig opslaan en openen van gehei
 
 Hier volgen enkele belang rijke voor waarden:
 
-- **Tenant**: een tenant is de organisatie die een specifiek exemplaar van Microsoft-cloudservices in eigendom heeft en beheert. Dit wordt vaak gebruikt om te verwijzen naar de set Azure-en Office 365-Services voor een organisatie.
+- **Tenant**: een tenant is de organisatie die een specifiek exemplaar van Microsoft-cloudservices in eigendom heeft en beheert. Dit wordt vaak gebruikt om te verwijzen naar de set Azure-en Microsoft 365-Services voor een organisatie.
 
 - **Kluiseigenaar**: een kluiseigenaar kan een sleutelkluis maken en heeft er volledige toegang toe en controle over. De eigenaar van de kluis kan ook controles instellen om vast te leggen wie toegang heeft tot geheimen en sleutels. Beheerders kunnen de levenscyclus van sleutels beheren. Ze kunnen een nieuwe versie van de sleutel instellen, een back-up maken en gerelateerde taken uitvoeren.
 

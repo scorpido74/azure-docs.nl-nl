@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/16/2020
 ms.author: duau
-ms.openlocfilehash: 221627a756c69d11ec5385b12970bb835d6a0a0c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9279b3e77147449ae0ede0cc0b76e57f130c9a44
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318451"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398028"
 ---
 # <a name="caching-with-azure-front-door"></a>Caching met de voor deur van Azure
 In het volgende document wordt het gedrag voor de voor deur opgegeven met routerings regels waarvoor caching is ingeschakeld. De voor deur is een modern Content Delivery Network (CDN), samen met dynamische site versnelling en taak verdeling, ondersteunt ook caching-gedrag, net als bij andere CDN.
@@ -83,7 +83,7 @@ Wanneer een aanvraag voor een Asset compressie specificeert en de aanvraag resul
 
 ## <a name="query-string-behavior"></a>Query teken reeks gedrag
 Met de voor deur kunt u bepalen hoe bestanden in de cache worden opgeslagen voor een webaanvraag die een query reeks bevat. In een webaanvraag met een query reeks is de query reeks het gedeelte van de aanvraag dat wordt uitgevoerd na een vraag teken (?). Een query reeks kan een of meer sleutel-waardeparen bevatten, waarbij de veld naam en de waarde ervan gescheiden worden door een gelijkteken (=). Elk sleutel-waardepaar wordt gescheiden door een en-teken (&). Bijvoorbeeld `http://www.contoso.com/content.mov?field1=value1&field2=value2`. Als er meer dan één sleutel/waarde-paar in een query reeks van een aanvraag is, is de volg orde hiervan niet van belang.
-- **Query reeksen negeren**: standaard modus. In deze modus geeft de voor deur de query teken reeksen van de aanvrager door aan de back-end bij de eerste aanvraag en slaat het de Asset op in de cache. Alle volgende aanvragen voor de activa die worden bediend vanuit de voor deur, negeren de query teken reeksen totdat het activum in de cache verloopt.
+- **Query reeksen negeren**: in deze modus geeft de voor deur de query teken reeksen van de aanvrager door aan de back-end van de eerste aanvraag en slaat de Asset op in de cache. Alle volgende aanvragen voor de activa die worden bediend vanuit de voor deur, negeren de query teken reeksen totdat het activum in de cache verloopt.
 
 - **Elke unieke URL in de cache opslaan**: in deze modus wordt elke aanvraag met een unieke URL, inclusief de query reeks, behandeld als een unieke Asset met een eigen cache. Het antwoord van de back-end voor een aanvraag voor wordt bijvoorbeeld in `www.example.ashx?q=test1` de cache geplaatst in de front-deur omgeving en wordt geretourneerd voor volgende caches met dezelfde query reeks. Een aanvraag voor `www.example.ashx?q=test2` wordt in de cache opgeslagen als een afzonderlijk activum met een eigen time-to-Live-instelling.
 

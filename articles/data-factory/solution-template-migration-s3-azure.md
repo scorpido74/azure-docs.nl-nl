@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/07/2019
-ms.openlocfilehash: 23d799f84cb3ac3ca911a5669041b0a25394a7ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e25299c2ce5d31da8f3caa5b02ab8def816b31ee
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81414762"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398217"
 ---
 # <a name="migrate-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Gegevens migreren van Amazon S3 naar Azure Data Lake Storage Gen2
 
@@ -109,23 +109,23 @@ De sjabloon bevat twee para meters:
 
 3. Ga naar de sjabloon **historische gegevens van AWS S3 migreren naar Azure data Lake Storage Gen2** . Voer de verbindingen met uw externe beheer tabel in AWS S3 als de gegevens bron opslag en Azure Data Lake Storage Gen2 als doel archief. Houd er rekening mee dat de tabel met externe controle en de opgeslagen procedure verwijzen naar dezelfde verbinding.
 
-    ![Een nieuwe verbinding maken](media/solution-template-migration-s3-azure/historical-migration-s3-azure1.png)
+    ![Scherm opname van de gemigreerde historische gegevens van AWS S3 naar Azure Data Lake Storage Gen2-sjabloon.](media/solution-template-migration-s3-azure/historical-migration-s3-azure1.png)
 
 4. Selecteer **deze sjabloon gebruiken**.
 
-    ![Deze sjabloon gebruiken](media/solution-template-migration-s3-azure/historical-migration-s3-azure2.png)
+    ![Scherm afbeelding met de knop deze sjabloon gebruiken.](media/solution-template-migration-s3-azure/historical-migration-s3-azure2.png)
     
 5. U ziet dat er twee pijp lijnen en 3 gegevens sets zijn gemaakt, zoals wordt weer gegeven in het volgende voor beeld:
 
-    ![De pijp lijn controleren](media/solution-template-migration-s3-azure/historical-migration-s3-azure3.png)
+    ![Scherm afbeelding waarin de twee pijp lijnen en drie gegevens sets worden weer gegeven die zijn gemaakt met behulp van de sjabloon.](media/solution-template-migration-s3-azure/historical-migration-s3-azure3.png)
 
 6. Selecteer **debug**, voer de **para meters**in en selecteer **volt ooien**.
 
-    ![Klik op * * fout opsporing * *](media/solution-template-migration-s3-azure/historical-migration-s3-azure4.png)
+    ![Scherm afbeelding die laat zien waar u debug kunt selecteren en de para meters invoert voordat u volt ooien selecteert.](media/solution-template-migration-s3-azure/historical-migration-s3-azure4.png)
 
 7. Er worden resultaten weer gegeven die vergelijkbaar zijn met het volgende voor beeld:
 
-    ![Bekijk het resultaat](media/solution-template-migration-s3-azure/historical-migration-s3-azure5.png)
+    ![Scherm opname waarin de geretourneerde resultaten worden weer gegeven.](media/solution-template-migration-s3-azure/historical-migration-s3-azure5.png)
 
 
 ### <a name="for-the-template-to-copy-changed-files-only-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Voor de sjabloon alleen gewijzigde bestanden van Amazon S3 naar Azure Data Lake Storage Gen2 kopiëren
@@ -192,7 +192,7 @@ De sjabloon bevat twee para meters:
 
 8. U kunt ook de resultaten van de controle tabel controleren met een query *"Select * from s3_partition_delta_control_table"*. de uitvoer ziet er ongeveer uit als in het volgende voor beeld:
 
-    ![Bekijk het resultaat](media/solution-template-migration-s3-azure/delta-migration-s3-azure6.png)
+    ![Scherm opname van de resultaten van de controle tabel nadat u de query hebt uitgevoerd.](media/solution-template-migration-s3-azure/delta-migration-s3-azure6.png)
     
 ## <a name="next-steps"></a>Volgende stappen
 

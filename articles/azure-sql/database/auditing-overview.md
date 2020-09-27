@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: de41d9c1dc69726f5f7f031616462b2d1d330476
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a7edbbb50777cc2d91332260c9ebe72be042874b
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333185"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396243"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Controleren op Azure SQL Database en Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -86,7 +86,7 @@ In de volgende sectie wordt de configuratie van de controle met behulp van de Az
 2. Navigeer naar **controle** onder de kop beveiliging in het deel venster **SQL database** of **SQL Server** .
 3. Als u liever een server controle beleid instelt, kunt u de koppeling **Server instellingen weer geven** op de pagina database controle selecteren. U kunt vervolgens de instellingen voor de controle van de server weer geven of wijzigen. Het controle beleid voor servers is van toepassing op alle bestaande en nieuw gemaakte data bases op deze server.
 
-    ![Navigatievenster](./media/auditing-overview/2_auditing_get_started_server_inherit.png)
+    ![Scherm afbeelding met de koppeling weer gave server instellingen is gemarkeerd op de pagina voor het controleren van de data base.](./media/auditing-overview/2_auditing_get_started_server_inherit.png)
 
 4. Als u de controle wilt inschakelen op het niveau van de data base, schakelt u **controle** in **op**aan. Als server controle is ingeschakeld, is de door de data base geconfigureerde controle naast de server controle aanwezig.
 
@@ -163,7 +163,7 @@ Als u ervoor hebt gekozen om audit logboeken naar een Azure Storage-account te s
 
 - Gebruik [Azure Portal](https://portal.azure.com).  Open de relevante data base. Klik boven aan de **controle** pagina van de Data Base op **audit logboeken weer geven**.
 
-    ![Navigatievenster](./media/auditing-overview/7_auditing_get_started_blob_view_audit_logs.png)
+    ![Scherm opname van de knop controle logboeken weer geven die is gemarkeerd op de pagina voor het controleren van de data base.](./media/auditing-overview/7_auditing_get_started_blob_view_audit_logs.png)
 
     **Controle records** worden geopend, waaruit u de logboeken kunt weer geven.
 
@@ -171,14 +171,14 @@ Als u ervoor hebt gekozen om audit logboeken naar een Azure Storage-account te s
   - U kunt scha kelen tussen controle records die zijn gemaakt door het *Server controlebeleid* en het *database controlebeleid* door te scha kelen op **controle bron**.
   - U kunt alleen controle records met betrekking tot SQL-injectie weer geven door  **alleen controle records voor SQL-injecties weer geven** in te scha kelen.
 
-       ![Navigatievenster]( ./media/auditing-overview/8_auditing_get_started_blob_audit_records.png)
+       ![Scherm afbeelding met de opties voor het weer geven van de controle records.]( ./media/auditing-overview/8_auditing_get_started_blob_audit_records.png)
 
 - Gebruik de systeem functie **sys. fn_get_audit_file** (T-SQL) om de controle logboek gegevens in tabel vorm te retour neren. Zie [sys. fn_get_audit_file](/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql)voor meer informatie over het gebruik van deze functie.
 
 - **Samenvoeg controle bestanden** in SQL Server Management Studio gebruiken (vanaf SSMS 17):
     1. Selecteer in het menu SSMS **File**  >  **Open**  >  **Merge audit files**.
 
-        ![Navigatievenster](./media/auditing-overview/9_auditing_get_started_ssms_1.png)
+        ![Scherm afbeelding met de menu optie controle bestanden samen voegen.](./media/auditing-overview/9_auditing_get_started_ssms_1.png)
     2. Het dialoog venster **controle bestanden toevoegen** wordt geopend. Selecteer een van de opties voor **toevoegen** om te kiezen of u de audit bestanden van een lokale schijf wilt samen voegen of uit Azure Storage wilt importeren. U moet uw Azure Storage Details en de account sleutel opgeven.
 
     3. Nadat alle bestanden die u wilt samen voegen, zijn toegevoegd, klikt u op **OK** om de samenvoeg bewerking te volt ooien.
@@ -218,7 +218,7 @@ In productie zult u uw opslag sleutels waarschijnlijk periodiek vernieuwen. Wann
 
 1. **Opslag Details**openen. Selecteer in het vak **toegangs sleutel voor opslag** de optie **secundair**en klik op **OK**. Klik vervolgens boven aan de pagina controle configuratie op **Opslaan** .
 
-    ![Navigatievenster](./media/auditing-overview/5_auditing_get_started_storage_key_regeneration.png)
+    ![Scherm opname van het proces voor het selecteren van een secundaire toegangs sleutel voor opslag.](./media/auditing-overview/5_auditing_get_started_storage_key_regeneration.png)
 2. Ga naar de pagina opslag configuratie en Genereer de primaire toegangs sleutel opnieuw.
 
     ![Navigatievenster](./media/auditing-overview/6_auditing_get_started_regenerate_key.png)

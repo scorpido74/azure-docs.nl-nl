@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 337deec076a25183a4dd866362c7dc55a485834d
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: ec81a8f7f9d9f45f1d068a415a599ce30a0d4581
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224489"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397246"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Versleuteling van inactieve gegevens in Azure
 
@@ -81,13 +81,13 @@ De gegevens versleutelings sleutels, versleuteld met de sleutel versleutelings s
 
 Microsoft Cloud Services worden in alle drie Cloud modellen gebruikt: IaaS, PaaS, SaaS. Hieronder ziet u voor beelden van hoe ze in elk model passen:
 
-- Software Services, aangeduid als software als een server of SaaS, die de toepassing heeft die door de Cloud wordt verschaft, zoals Office 365.
+- Software Services, aangeduid als software als een server of SaaS, die toepassingen hebben die door de cloud worden verschaft, zoals Microsoft 365.
 - Platform services die klanten gebruikmaken van de cloud in hun toepassingen, met behulp van de Cloud voor zaken als opslag, analyses en service bus-functionaliteit.
 - Infrastructuur services of Infrastructure as a Service (IaaS) waarin de klant besturings systemen en toepassingen implementeert die worden gehost in de Cloud en mogelijk gebruikmaken van andere Cloud Services.
 
 ### <a name="encryption-at-rest-for-saas-customers"></a>Versleuteling op rest voor SaaS-klanten
 
-SaaS-klanten (Software as a Service) hebben doorgaans versleuteling op rest ingeschakeld of beschikbaar in elke service. Office 365 biedt verschillende opties voor klanten om versleuteling op rest te verifiëren of in te scha kelen. Zie [versleuteling in office 365](https://docs.microsoft.com/office365/securitycompliance/encryption)voor meer informatie over Office 365-Services.
+SaaS-klanten (Software as a Service) hebben doorgaans versleuteling op rest ingeschakeld of beschikbaar in elke service. Microsoft 365 heeft verschillende opties voor klanten om versleuteling op rest te verifiëren of in te scha kelen. Zie [versleuteling in Microsoft 365](/microsoft-365/compliance/encryption)voor meer informatie over Microsoft 365 Services.
 
 ### <a name="encryption-at-rest-for-paas-customers"></a>Versleuteling bij rest voor PaaS-klanten
 
@@ -124,7 +124,7 @@ Alle Azure Storage services (Blob-opslag, wachtrij opslag, tabel opslag en Azure
 - Aan de server zijde: alle Azure Storage services maken server zijde versleuteling mogelijk door gebruik te maken van door de service beheerde sleutels, die transparant zijn voor de toepassing. Zie [Azure Storage-service versleuteling voor Data-at-rest](../../storage/common/storage-service-encryption.md)voor meer informatie. Azure Blob-opslag en Azure Files ondersteunen ook RSA 2048-bits door de klant beheerde sleutels in Azure Key Vault. Zie [Storage service Encryption het gebruik van door de klant beheerde sleutels in azure Key Vault](../../storage/common/storage-encryption-keys-portal.md)voor meer informatie.
 - Client zijde: Azure-blobs,-tabellen en-wacht rijen ondersteunen versleuteling aan de client zijde. Wanneer u versleuteling aan de client zijde gebruikt, versleutelt klanten de gegevens en uploadt de gegevens als een versleutelde blob. Sleutel beheer wordt uitgevoerd door de klant. Zie [versleuteling aan client zijde en Azure Key Vault voor Microsoft Azure Storage](../../storage/common/storage-client-side-encryption.md)voor meer informatie.
 
-#### <a name="azure-sql-database"></a>Azure SQL Database
+#### <a name="azure-sql-database"></a>Azure SQL-database
 
 Azure SQL Database biedt momenteel ondersteuning voor versleuteling in rust voor micro soft-beheerde service-en versleutelings scenario's aan de client zijde.
 

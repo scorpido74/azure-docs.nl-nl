@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 9c5a2aa6ca75e352a824716c19af923c8628efde
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 087b021f088e344926a44f7e009f273d265dd82b
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91343297"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397620"
 ---
 # <a name="create-azure-arc-data-controller-using-kubernetes-tools"></a>Azure Arc data controller maken met behulp van Kubernetes-hulpprogram ma's
 
@@ -30,6 +30,20 @@ Als u de Azure-Arc-gegevens controller wilt maken met behulp van Kubernetes-hulp
 
 > [!NOTE]
 > Enkele van de stappen voor het maken van de Azure-Arc-gegevens controller die hieronder worden aangegeven, vereisen Kubernetes-cluster beheerders machtigingen.  Als u geen Kubernetes-cluster beheerder bent, moet u de Kubernetes-cluster beheerder deze stappen namens u laten uitvoeren.
+
+#### <a name="cleanup-from-past-installations"></a>Opschonen uit eerdere installaties
+
+Als u de Azure Arc-gegevens controller in het verleden op hetzelfde cluster hebt geïnstalleerd en de Azure-Arc-gegevens controller hebt verwijderd met behulp van de `azdata arc dc delete` opdracht, zijn er mogelijk een aantal objecten op cluster niveau die nog steeds moeten worden verwijderd. Voer de volgende opdrachten uit om Azure Arc data controller-cluster niveau objecten te verwijderen:
+
+```
+# Cleanup azure arc data service artifacts
+kubectl delete crd datacontrollers.arcdata.microsoft.com 
+kubectl delete sqlmanagedinstances.sql.arcdata.microsoft.com 
+kubectl delete postgresql-11s.arcdata.microsoft.com 
+kubectl delete postgresql-12s.arcdata.microsoft.com
+kubectl delete clusterroles azure-arc-data:cr-arc-metricsdc-reader
+kubectl delete clusterrolebindings azure-arc-data:crb-arc-metricsdc-reader
+```
 
 ## <a name="overview"></a>Overzicht
 

@@ -7,12 +7,12 @@ ms.date: 05/12/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 07e5ce5cb6fee11e3f55ce808da51ccad59b9ff2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 037598212773ca75abbdd086fe0577e0660f2218
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85801356"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398575"
 ---
 # <a name="use-workflows-to-integrate-your-azure-iot-central-application-with-other-cloud-services"></a>Werk stromen gebruiken om uw Azure IoT Central-toepassing te integreren met andere Cloud Services
 
@@ -22,8 +22,8 @@ U kunt regels maken in IoT Central die acties activeren, zoals het verzenden van
 
 Met de Azure IoT Central v3-connector voor energie automatisering en Azure Logic Apps kunt u geavanceerde regels maken voor het automatiseren van bewerkingen in IoT Central:
 
-- Wanneer een regel wordt geactiveerd in uw Azure IoT Central-app, kan deze een werk stroom activeren in de automatische stroom of Azure Logic Apps. Deze werk stromen kunnen acties uitvoeren in andere Cloud Services, zoals Office 365 of een service van derden.
-- Een gebeurtenis in een andere Cloud service, zoals Office 365, kan een werk stroom activeren in automatische stroom of Azure Logic Apps. Deze werk stromen kunnen acties uitvoeren of gegevens ophalen uit uw IoT Central-toepassing.
+- Wanneer een regel wordt geactiveerd in uw Azure IoT Central-app, kan deze een werk stroom activeren in de automatische stroom of Azure Logic Apps. Deze werk stromen kunnen acties uitvoeren in andere Cloud Services, zoals Microsoft 365 of een service van derden.
+- Een gebeurtenis in een andere Cloud service, zoals Microsoft 365, kan een werk stroom activeren in automatische stroom of Azure Logic Apps. Deze werk stromen kunnen acties uitvoeren of gegevens ophalen uit uw IoT Central-toepassing.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -176,7 +176,7 @@ Gebruik deze actie om waarden van de Cloud eigenschappen voor een specifiek appa
 | Toepassing | Kies uit de lijst met IoT Central toepassingen. |
 | Apparaat | De unieke ID van het apparaat dat moet worden verwijderd. |
 | Apparaatsjabloon | Kies uit de lijst met apparaatprofielen in uw IoT Central-toepassing. |
-| Eigenschappen van Cloud | Nadat u een sjabloon voor het apparaat hebt gekozen, wordt er een veld toegevoegd voor elke Cloud eigenschap die in de sjabloon is gedefinieerd. |
+| Cloudeigenschappen | Nadat u een sjabloon voor het apparaat hebt gekozen, wordt er een veld toegevoegd voor elke Cloud eigenschap die in de sjabloon is gedefinieerd. |
 
 ### <a name="update-device-properties"></a>Apparaateigenschappen bijwerken
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: a2469768c2207210e17035a67d4b05fb0cc6bb6c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 28116a373b66aa5bfa6d3ebbf027c2db6d24ba5d
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91254173"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397127"
 ---
 # <a name="configure-computer-vision-docker-containers"></a>Computer Vision docker-containers configureren
 
@@ -33,10 +33,12 @@ De container heeft ook de volgende container-specifieke configuratie-instellinge
 
 |Vereist|Instelling|Doel|
 |--|--|--|
-|No|ReadEngineConfig:ResultExpirationPeriod|Verloop tijd van resultaat in uren. De standaard waarde is 48 uur. De instelling geeft aan wanneer het systeem herkennings resultaten moet wissen. Als `resultExpirationPeriod=1` het systeem bijvoorbeeld het herkennings resultaat 1 uur na het proces wist. Als het `resultExpirationPeriod=0` systeem het herkennings resultaat verwijdert nadat het resultaat is opgehaald.|
-|No|Cache: redis|Hiermee wordt redis-opslag voor het opslaan van resultaten ingeschakeld. Een cache is *vereist* als meerdere Lees containers achter een Load Balancer worden geplaatst.|
-|No|Wachtrij: RabbitMQ|Hiermee schakelt u RabbitMQ in voor het verzenden van taken. De instelling is handig wanneer meerdere Lees containers achter een load balancer worden geplaatst.|
-|No|Opslag::D ocumentStore:: MongoDB|Hiermee wordt MongoDB ingeschakeld voor permanente resultaat opslag.|
+|No|ReadEngineConfig:ResultExpirationPeriod| v 2.0-containers. Verloop tijd van resultaat in uren. De standaard waarde is 48 uur. De instelling geeft aan wanneer het systeem herkennings resultaten moet wissen. Als `resultExpirationPeriod=1` het systeem bijvoorbeeld het herkennings resultaat 1 uur na het proces wist. Als het `resultExpirationPeriod=0` systeem het herkennings resultaat verwijdert nadat het resultaat is opgehaald.|
+|No|Cache: redis| v 2.0-containers. Hiermee wordt redis-opslag voor het opslaan van resultaten ingeschakeld. Een cache is *vereist* als meerdere Lees containers achter een Load Balancer worden geplaatst.|
+|No|Wachtrij: RabbitMQ|v 2.0-containers. Hiermee schakelt u RabbitMQ in voor het verzenden van taken. De instelling is handig wanneer meerdere Lees containers achter een load balancer worden geplaatst.|
+|No|Wachtrij: Azure: QueueVisibilityTimeoutInMilliseconds | alleen containers voor v3. x. De tijd dat een bericht onzichtbaar moet zijn wanneer een andere werk nemer het verwerkt. |
+|No|Opslag::D ocumentStore:: MongoDB|v 2.0-containers. Hiermee wordt MongoDB ingeschakeld voor permanente resultaat opslag. |
+|No|Opslag: ObjectStore: AzureBlob: Connections Tring| alleen containers voor v3. x. Azure Blob-opslag connection string. |
 
 ## <a name="apikey-configuration-setting"></a>Configuratie-instelling ApiKey
 
@@ -118,6 +120,30 @@ Vervang {_argument_name_} door uw eigen waarden:
 De volgende docker-voor beelden zijn voor de Lees-container.
 
 
+# <a name="version-31-preview"></a>[Versie 3,1-Preview](#tab/version-3-1)
+
+### <a name="basic-example"></a>Basis voorbeeld
+
+```bash
+docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
+
+```
+
+### <a name="logging-example"></a>Voor beeld van logboek registratie 
+
+```bash
+docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY}
+Logging:Console:LogLevel:Default=Information
+```
+
 # <a name="version-30-preview"></a>[Versie 3,0-Preview](#tab/version-3)
 
 ### <a name="basic-example"></a>Basis voorbeeld
@@ -141,13 +167,13 @@ ApiKey={API_KEY}
 Logging:Console:LogLevel:Default=Information
 ```
 
-# <a name="version-31-preview"></a>[Versie 3,1-Preview](#tab/version-3-1)
+# <a name="version-20-preview"></a>[Versie 2,0-Preview](#tab/version-2)
 
 ### <a name="basic-example"></a>Basis voorbeeld
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview \
+mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
@@ -158,7 +184,7 @@ ApiKey={API_KEY}
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview \
+mcr.microsoft.com/azure-cognitive-services/vision/read:2.0-preview \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}

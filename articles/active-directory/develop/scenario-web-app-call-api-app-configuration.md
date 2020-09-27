@@ -1,5 +1,6 @@
 ---
-title: Een web-app configureren die web-Api's aanroept-micro soft Identity-platform | Azure
+title: Een web-app configureren die web-Api's aanroept | Azure
+titleSuffix: Microsoft identity platform
 description: Meer informatie over het configureren van de code van een web-app die web-Api's aanroept
 services: active-directory
 author: jmprieur
@@ -8,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 07/14/2020
+ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 8827d413144d8bc6f00c3948a99be3ee3aa2264e
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 27926c687871180da78930be8e0968febcd77869
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855435"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396311"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>Een web-app die web-Api's aanroept: code configuratie
 
@@ -33,7 +34,7 @@ De volgende bibliotheken in de micro soft Authentication Library (MSAL) onderste
 
 | MSAL-bibliotheek | Beschrijving |
 |--------------|-------------|
-| ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Ondersteuning voor .NET Framework-en .NET core-platforms. Niet ondersteund zijn Universeel Windows-platform (UWP), Xamarin. iOS en Xamarin. Android, omdat deze platformen worden gebruikt voor het bouwen van open bare client toepassingen. Voor ASP.NET Core web apps en Web-Api's wordt MSAL.NET ingekapseld in een bibliotheek op een hoger niveau met de naam [micro soft. Identity. Web](https://aka.ms/ms-identity-web)|
+| ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Ondersteuning voor .NET Framework-en .NET core-platforms. Niet ondersteund zijn Universeel Windows-platform (UWP), Xamarin. iOS en Xamarin. Android, omdat deze platformen worden gebruikt voor het bouwen van open bare client toepassingen. <br/><br/>Voor ASP.NET Core web apps en Web-Api's wordt MSAL.NET ingekapseld in een bibliotheek op een hoger niveau met de naam [micro soft. Identity. Web](https://aka.ms/ms-identity-web). |
 | ![MSAL Python](media/sample-v2-code/logo_python.png) <br/> MSAL voor Python | Ondersteuning voor python-webtoepassingen. |
 | ![MSAL Java](media/sample-v2-code/logo_java.png) <br/> MSAL voor Java | Ondersteuning voor Java-webtoepassingen. |
 
@@ -41,32 +42,153 @@ Selecteer het tabblad voor het platform waarin u bent geïnteresseerd:
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Als u wilt dat uw web-app beveiligde Api's aanroept wanneer u micro soft. Identity. web gebruikt, hoeft u alleen `AddWebAppCallsProtectedWebApi` een indeling voor de serialisatie van de token cache aan te roepen en op te geven (bijvoorbeeld in-Memory token cache):
+## <a name="client-secrets-or-client-certificates"></a>Client geheimen of client certificaten
 
-```C#
-// This method gets called by the runtime. Use this method to add services to the container.
-public void ConfigureServices(IServiceCollection services)
+Gezien dat uw web-app nu een stroomafwaartse Web-API aanroept, moet u een client geheim of client certificaat opgeven in de *appsettings.jsin* het bestand. U kunt ook een sectie toevoegen waarin het volgende wordt opgegeven:
+
+- De URL van de stroomafwaartse Web-API
+- De bereiken die vereist zijn voor het aanroepen van de API
+
+In het volgende voor beeld `GraphBeta` geeft de sectie deze instellingen op.
+
+```JSON
 {
-    // more code here
+  "AzureAd": {
+    "Instance": "https://login.microsoftonline.com/",
+    "ClientId": "[Client_id-of-web-app-eg-2ec40e65-ba09-4853-bcde-bcb60029e596]",
+    "TenantId": "common"
 
-    services.AddMicrosoftIdentityWebAppAuthentication(Configuration,
-                                                      "AzureAd")
-            .EnableTokenAcquisitionToCallDownstreamApi(
-                    initialScopes: new string[] { "user.read" })
-                .AddInMemoryTokenCaches();
-
-    // more code here
+   // To call an API
+   "ClientSecret": "[Copy the client secret added to the app from the Azure portal]",
+   "ClientCertificates": [
+  ]
+ },
+ "GraphBeta": {
+    "BaseUrl": "https://graph.microsoft.com/beta",
+    "Scopes": "user.read"
+    }
 }
 ```
 
-Zie [token cache serialisatie Options](#token-cache) (Engelstalig) als u meer wilt weten over de token cache.
+In plaats van een client geheim kunt u een client certificaat opgeven. Het volgende code fragment toont het gebruik van een certificaat dat is opgeslagen in Azure Key Vault.
+
+```JSON
+{
+  "AzureAd": {
+    "Instance": "https://login.microsoftonline.com/",
+    "ClientId": "[Client_id-of-web-app-eg-2ec40e65-ba09-4853-bcde-bcb60029e596]",
+    "TenantId": "common"
+
+   // To call an API
+   "ClientCertificates": [
+      {
+        "SourceType": "KeyVault",
+        "KeyVaultUrl": "https://msidentitywebsamples.vault.azure.net",
+        "KeyVaultCertificateName": "MicrosoftIdentitySamplesCert"
+      }
+   ]
+  },
+  "GraphBeta": {
+    "BaseUrl": "https://graph.microsoft.com/beta",
+    "Scopes": "user.read"
+  }
+}
+```
+
+*Micro soft. Identity. Web* biedt verschillende manieren om certificaten te beschrijven, hetzij per configuratie of per code. Zie voor meer informatie [micro soft. Identity. web-certificaten gebruiken](https://github.com/AzureAD/microsoft-identity-web/wiki/Using-certificates) op github.
+
+## <a name="startupcs"></a>Startup.cs
+
+Uw web-app moet een token aanschaffen voor de downstream API. U geeft deze op door de `.EnableTokenAcquisitionToCallDownstreamApi()` regel na te voegen `.AddMicrosoftIdentityWebApi(Configuration)` . Deze regel beschrijft de `ITokenAcquisition` service die u in uw controller en pagina acties kunt gebruiken. Zoals u in de volgende twee opties ziet, kan dit echter meer worden gedaan. U moet ook een implementatie van de token cache kiezen, bijvoorbeeld `.AddInMemoryTokenCaches()` in *Startup.cs*:
+
+   ```csharp
+   using Microsoft.Identity.Web;
+
+   public class Startup
+   {
+     // ...
+     public void ConfigureServices(IServiceCollection services)
+     {
+     // ...
+     services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+             .AddMicrosoftIdentityWebApp(Configuration, Configuration.GetSection("AzureAd"))
+               .EnableTokenAcquisitionToCallDownstreamApi(new string[]{"user.read" })
+               .AddInMemoryTokenCaches();
+      // ...
+     }
+     // ...
+   }
+   ```
+
+De bereiken die zijn door gegeven aan `EnableTokenAcquisitionToCallDownstreamApi` zijn optioneel en de web-app kunnen de bereiken en de toestemming van de gebruiker voor deze bereiken aanvragen wanneer deze zich aanmeldt. Als u de bereiken niet opgeeft, wordt door *micro soft. Identity. Web* een incrementele toestemming verleend.
+
+Als u het token zelf niet zelf wilt verkrijgen, biedt *micro soft. Identity. Web* twee mechanismen voor het aanroepen van een web-API vanuit een web-app. Welke optie u kiest, is afhankelijk van het feit of u Microsoft Graph of een andere API wilt aanroepen.
+
+### <a name="option-1-call-microsoft-graph"></a>Optie 1: oproep Microsoft Graph
+
+Als u Microsoft Graph wilt aanroepen, kunt u met *micro soft. Identity. Web* rechtstreeks de `GraphServiceClient` (beschikbaar gemaakt door de Microsoft Graph SDK) in uw API-acties gebruiken. Microsoft Graph beschikbaar maken:
+
+1. Voeg het NuGet-pakket [micro soft. Identity. Web. MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraph) toe aan uw project.
+1. Voeg toe `.AddMicrosoftGraph()` na `.EnableTokenAcquisitionToCallDownstreamApi()` in het *Startup.cs* -bestand. `.AddMicrosoftGraph()` heeft verschillende onderdrukkingen. Met behulp van de onderdrukking waarvoor een configuratie sectie als para meter wordt gebruikt, wordt de code:
+
+   ```csharp
+   using Microsoft.Identity.Web;
+
+   public class Startup
+   {
+     // ...
+     public void ConfigureServices(IServiceCollection services)
+     {
+     // ...
+     services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+             .AddMicrosoftIdentityWebApp(Configuration, Configuration.GetSection("AzureAd"))
+               .EnableTokenAcquisitionToCallDownstreamApi(new string[]{"user.read" })
+                  .AddMicrosoftGraph(Configuration.GetSection("GraphBeta"))
+               .AddInMemoryTokenCaches();
+      // ...
+     }
+     // ...
+   }
+   ```
+
+### <a name="option-2-call-a-downstream-web-api-other-than-microsoft-graph"></a>Optie 2: een andere stroomafwaartse Web-API aanroepen dan Microsoft Graph
+
+Voor het aanroepen van een andere web-API dan Microsoft Graph, wordt door *micro soft. Identity. Web* geboden `.AddDownstreamWebApi()` , waarmee tokens worden aangevraagd en de DOWNSTREAM Web-API wordt aangeroepen.
+
+   ```csharp
+   using Microsoft.Identity.Web;
+
+   public class Startup
+   {
+     // ...
+     public void ConfigureServices(IServiceCollection services)
+     {
+     // ...
+     services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+             .AddMicrosoftIdentityWebApp(Configuration, "AzureAd")
+               .EnableTokenAcquisitionToCallDownstreamApi(new string[]{"user.read" })
+                  .AddDownstreamWebApi("MyApi", Configuration.GetSection("GraphBeta"))
+               .AddInMemoryTokenCaches();
+      // ...
+     }
+     // ...
+   }
+   ```
+
+### <a name="summary"></a>Samenvatting
+
+Net als bij Web-Api's kunt u verschillende token cache-implementaties kiezen. Zie [micro soft. Identity. Web-token cache serialisatie](https://aka.ms/ms-id-web/token-cache-serialization) op github voor meer informatie.
+
+In de volgende afbeelding ziet u de verschillende mogelijkheden van *micro soft. Identity. Web* en hun impact op het *Startup.cs* -bestand:
+
+:::image type="content" source="media/scenarios/microsoft-identity-web-startup-cs.png" alt-text="Bij het maken van een web-API kunt u kiezen voor het aanroepen van een downstream API en implementaties van token-cache.":::
 
 > [!NOTE]
 > Als u de code voorbeelden hier volledig wilt begrijpen, moet u bekend zijn met [ASP.net core fundamentals](/aspnet/core/fundamentals), met name bij het [invoegen van afhankelijkheden](/aspnet/core/fundamentals/dependency-injection) en [Opties](/aspnet/core/fundamentals/configuration/options).
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-Omdat het aanmelden van de gebruiker is gedelegeerd naar de middleware Open ID Connect (OIDC), moet u communiceren met het OIDC-proces. Hoe u communiceert, is afhankelijk van het Framework dat u gebruikt.
+Omdat het aanmelden van de gebruiker is gedelegeerd naar de OpenID Connect Connect (OIDC)-middleware, moet u communiceren met het OIDC-proces. Hoe u communiceert, is afhankelijk van het Framework dat u gebruikt.
 
 Voor ASP.NET kunt u zich abonneren op middleware OIDC-gebeurtenissen:
 

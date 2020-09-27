@@ -1,19 +1,19 @@
 ---
-title: Consistentie niveaus in Azure Cosmos DB
+title: Consistentieniveaus in Azure Cosmos DB
 description: Azure Cosmos DB heeft vijf consistentie niveaus voor het verdelen van uiteindelijk consistentie, Beschik baarheid en latentie.
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 5ba3fc70a2ccfbe342e222dbb475658629ec60a4
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 8f482c4fe6817c75079ceb98e981c846c395ad13
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851696"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396022"
 ---
-# <a name="consistency-levels-in-azure-cosmos-db"></a>Consistentie niveaus in Azure Cosmos DB
+# <a name="what-are-consistency-levels-in-azure-cosmos-db"></a>Wat zijn de consistentie niveaus in Azure Cosmos DB?
 
 Gedistribueerde data bases die afhankelijk zijn van replicatie voor hoge Beschik baarheid, lage latentie of beide, maken de fundamentele verhouding tussen de Lees consistentie versus Beschik baarheid, latentie en door voer. De meeste commerciële beschik bare gedistribueerde data bases vragen ontwikkel aars om te kiezen tussen de twee uiterst consistente consistentie modellen: *sterke* consistentie en *uiteindelijke* consistentie. De linearizability van het sterke consistentie model is de Gold Standard van data Programmable. Er wordt echter een prijs van een hogere schrijf latentie (in stationaire toestand) en een lagere Beschik baarheid (tijdens fouten) toegevoegd. Aan de andere kant bieden uiteindelijke consistentie een hogere Beschik baarheid en betere prestaties, maar maakt het Program meren van toepassingen lastig.
 
@@ -91,12 +91,12 @@ In de volgende afbeelding ziet u de consistentie van het consistentie voorvoegse
 
   :::image type="content" source="media/consistency-levels/consistent-prefix.gif" alt-text="video":::
 
-- **Uiteindelijk**: er is geen garantie voor lees bewerkingen. Als er verder geen schrijf bewerkingen worden uitgevoerd, convergeren de replica's uiteindelijk.  
+- **Uiteindelijk**: er is geen garantie voor lees bewerkingen. Als er verder geen schrijfbewerkingen worden uitgevoerd, convergeren de replica's uiteindelijk.  
 Uiteindelijke consistentie is de zwakke vorm van consistentie, omdat een client de waarden kan lezen die ouder zijn dan de waarde die het eerder had gelezen. Uiteindelijke consistentie is ideaal wanneer de toepassing geen garantie voor het ordenen van de toepassingen vereist. Voor beelden zijn het aantal retweeten, leuk of niet-threaded opmerkingen. In de volgende afbeelding ziet u de uiteindelijke consistentie met muzikale notities.
 
   :::image type="content" source="media/consistency-levels/eventual-consistency.gif" alt-text="video":::
 
-## <a name="additional-reading"></a>Aanvullende Lees bewerkingen
+## <a name="additional-reading"></a>Meer artikelen
 
 Lees de volgende artikelen voor meer informatie over consistentie concepten:
 

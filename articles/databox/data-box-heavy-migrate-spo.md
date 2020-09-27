@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: how-to
 ms.date: 07/18/2019
 ms.author: alkohli
-ms.openlocfilehash: a6cb3392aa83b2c02df621449a73f7cb68691ec6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: HT
+ms.openlocfilehash: a87181e7d1c776648781a2672dfd73ac2eaab1b2
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84608601"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396855"
 ---
 # <a name="use-the-azure-data-box-heavy-to-migrate-your-file-share-content-to-sharepoint-online"></a>De Azure Data Box Heavy gebruiken om de inhoud van de bestands share te migreren naar share point online
 
@@ -82,7 +82,7 @@ Voor de beste prestaties en connectiviteit wordt u aangeraden een virtuele Azure
 1. Meld u aan bij de Azure Portal en [Maak een virtuele machine](../virtual-machines/windows/quick-create-portal.md).
 2. [Koppel de Azure-bestands share aan de VM](../storage/files/storage-how-to-use-files-windows.md#mount-the-azure-file-share-with-file-explorer).
 3. [Down load het hulp programma voor migratie van share point](https://spmtreleasescus.blob.core.windows.net/install/default.htm) en installeer het op uw virtuele Azure-machine.
-4. Start het hulp programma voor migratie van share point. Klik op aanmelden en voer uw Office 365-gebruikers naam en-wacht woord **in** .
+4. Start het hulp programma voor migratie van share point. Klik op aanmelden en voer de gebruikers naam en het wacht woord **in** voor uw werk-of school account.
 5. Wanneer u wordt gevraagd **waar uw gegevens zijn?**, selecteert u **Bestands share**. Geef het pad op naar uw Azure-bestands share waar uw gegevens zich bevinden.
 6. Volg de resterende vragen als normaal, inclusief de doel locatie. Ga voor meer informatie naar [het gebruik van het hulp programma voor migratie van share point](https://docs.microsoft.com/sharepointmigration/how-to-use-the-sharepoint-migration-tool).
 

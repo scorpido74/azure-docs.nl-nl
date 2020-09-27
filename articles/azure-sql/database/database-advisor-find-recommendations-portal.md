@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 12/19/2018
-ms.openlocfilehash: 0e13d69b8d821267a993cd2ca9a3b6d0d686ccf9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e96db18993dbb18ebf51d0b30e9172901d10df5b
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91284547"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398268"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Aanbevelingen voor prestaties zoeken en Toep assen
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -103,7 +103,7 @@ U kunt uw data base zo instellen dat aanbevelingen automatisch worden geïmpleme
    ![Advisor-instellingen](./media/database-advisor-find-recommendations-portal/settings.png)
 2. Selecteer de acties die moeten worden geautomatiseerd:
 
-   ![Aanbevolen indexen](./media/database-advisor-find-recommendations-portal/server.png)
+   ![Scherm afbeelding die laat zien waar de acties moeten worden geselecteerd die moeten worden geautomatiseerd.](./media/database-advisor-find-recommendations-portal/server.png)
 
 > [!NOTE]
 > Houd er rekening mee dat **DROP_INDEX** optie momenteel niet compatibel is met toepassingen die gebruikmaken van partitie switches en index hints.
@@ -139,7 +139,7 @@ Het Toep assen van een aanbeveling wordt mogelijk niet onmiddellijk uitgevoerd. 
 
 Klik in de lijst op een aanbeveling in het proces om meer informatie weer te geven:
 
-![Aanbevolen indexen](./media/database-advisor-find-recommendations-portal/operations.png)
+![Scherm opname van de lijst met aanbevelingen in het proces.](./media/database-advisor-find-recommendations-portal/operations.png)
 
 ### <a name="reverting-a-recommendation"></a>Een aanbeveling herstellen
 

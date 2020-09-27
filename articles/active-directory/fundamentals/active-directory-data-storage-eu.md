@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/15/2020
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8dc229b366a7816c861da665c73d6421e67545c6
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 06900483598e1c03bd56cd8ac8c905f885012f08
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985920"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91395886"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Identiteits gegevens opslag voor Europese klanten in Azure Active Directory
 Identiteits gegevens worden opgeslagen door Azure AD op een geografische locatie op basis van het adres van uw organisatie bij het abonneren op een micro soft online service, zoals Microsoft 365 en Azure. Voor informatie over waar uw identiteits gegevens worden opgeslagen, kunt u de sectie [waar bevinden zich uw gegevens?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) in het micro soft vertrouwens centrum gebruiken.
@@ -35,6 +35,10 @@ Voor Azure Multi-Factor Authentication in de Cloud, is verificatie voltooid in h
 * Multi-factor Authentication-aanvragen met OATH-codes die afkomstig zijn van EU-data centers, worden gevalideerd in de EU.
 
 Voor meer informatie over welke gebruikers gegevens worden verzameld door Azure Multi-Factor Authentication-server (MFA-server) en Azure MFA in de Cloud, Zie [azure multi-factor Authentication gebruikers gegevens verzamelen](../authentication/howto-mfa-reporting-datacollection.md).
+
+## <a name="password-based-single-sign-on-for-enterprise-applications"></a>Eenmalige aanmelding op basis van wacht woorden voor bedrijfs toepassingen
+ 
+Als een klant een nieuwe bedrijfs toepassing maakt (of het gaat om een Azure AD-galerie of niet-galerie) en op wacht woord gebaseerde SSO maakt, worden de aanmeldings-URL van de toepassing en aangepaste aanmeldings aanmeld velden opgeslagen in de Verenigde Staten. Zie [eenmalige aanmelding op basis van wacht woorden configureren](../manage-apps/configure-password-single-sign-on-non-gallery-applications.md) voor meer informatie over deze functie
 
 ## <a name="microsoft-azure-active-directory-b2c-azure-ad-b2c"></a>Microsoft Azure Active Directory B2C (Azure AD B2C)
 

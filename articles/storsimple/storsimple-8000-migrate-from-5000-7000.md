@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/23/2018
+ms.date: 09/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 0fc18c6d67935889b0ba0c306dc326eca3b888f5
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: f6fffadd3c53f67af2e4c833a6a1d442c18efa0b
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88184292"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398183"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-8000-series-device"></a>Gegevens migreren van de StorSimple 5000-7000-serie naar het 8000-serie apparaat
 
@@ -80,8 +80,8 @@ Voordat u met de migratie begint, moet u ervoor zorgen dat:
 
     ![Controleer de software versie op een verouderd apparaat](media/storsimple-8000-migrate-from-5000-7000/check-version-legacy-device1.png)
 
-    * Als op uw Live-apparaat geen v 2.1.1.518 of hoger wordt uitgevoerd, voert u een upgrade van uw systeem uit naar de vereiste minimale versie. Raadpleeg [uw systeem upgraden naar v 2.1.1.518](http://onlinehelp.storsimple.com/111_Appliance/6_System_Upgrade_Guides/Current_(v2.1.1)/000_Software_Patch_Upgrade_Guide_v2.1.1.518)voor gedetailleerde instructies.
-    * Als u v 2.1.1.518 uitvoert, gaat u naar de Web-UI om te zien of er meldingen zijn voor het herstellen van fouten in het REGI ster. Als het herstellen van het REGI ster is mislukt, voert u de register herstel bewerking uit. Ga voor meer informatie naar How to [Run Registry Restore](http://onlinehelp.storsimple.com/111_Appliance/2_User_Guides/1_Current_(v2.1.1)/1_Web_UI_User_Guide_WIP/2_Configuration/4_Cloud_Accounts/1_Cloud_Credentials#Restoring_Backup_Registry).
+    * Als op uw Live-apparaat geen v 2.1.1.518 of hoger wordt uitgevoerd, voert u een upgrade van uw systeem uit naar de vereiste minimale versie. U moet mogelijk met Microsoft Ondersteuning werken om u te helpen bij het uitvoeren van de upgrade.
+    * Als u v 2.1.1.518 uitvoert, gaat u naar de Web-UI om te zien of er meldingen zijn voor het herstellen van fouten in het REGI ster. Als het herstellen van het REGI ster is mislukt, voert u de register herstel bewerking uit. U moet mogelijk met Microsoft Ondersteuning werken om uw REGI ster te herstellen.
     * Als u een lager apparaat hebt waarop geen v-2.1.1.518 werd uitgevoerd, voert u een failover uit naar een vervangend apparaat met v 2.1.1.518. Raadpleeg DR van uw 5000/7000 series StorSimple-apparaat voor gedetailleerde instructies.
     * Maak een back-up van de gegevens voor uw apparaat door een Cloud momentopname te maken.
     * Controleer op andere actieve back-uptaken die worden uitgevoerd op het bron apparaat. Dit omvat de taken op de StorSimple Data Protection-host van de console. Wacht totdat de huidige taken zijn voltooid.
@@ -136,12 +136,12 @@ Voer de volgende stappen uit om het hulp programma StorSimple Migration op uw co
     ```
 2. Bewerk de waarden die overeenkomen met de sleutels en vervang door:
 
-    * `UserName`– Gebruikers naam om u aan te melden bij Azure Portal.
-    * `SubscriptionName and SubscriptionId`– Naam en ID voor uw Azure-abonnement. Klik in de StorSimple Apparaatbeheer service landings pagina onder **Algemeen**op **Eigenschappen**. Kopieer de naam van het abonnement en de abonnements-ID die is gekoppeld aan uw service.
-    * `ResourceName`: De naam van uw StorSimple-Apparaatbeheer-service in de Azure Portal. Ook weer gegeven onder service-eigenschappen.
-    * `ResourceGroup`: De naam van de resource groep die is gekoppeld aan uw StorSimple-Apparaatbeheer service in de Azure Portal. Ook weer gegeven onder service-eigenschappen.
+    * `UserName` – Gebruikers naam om u aan te melden bij Azure Portal.
+    * `SubscriptionName and SubscriptionId` – Naam en ID voor uw Azure-abonnement. Klik in de StorSimple Apparaatbeheer service landings pagina onder **Algemeen**op **Eigenschappen**. Kopieer de naam van het abonnement en de abonnements-ID die is gekoppeld aan uw service.
+    * `ResourceName` : De naam van uw StorSimple-Apparaatbeheer-service in de Azure Portal. Ook weer gegeven onder service-eigenschappen.
+    * `ResourceGroup` : De naam van de resource groep die is gekoppeld aan uw StorSimple-Apparaatbeheer service in de Azure Portal. Ook weer gegeven onder service-eigenschappen.
     ![Service-eigenschappen voor doel apparaat controleren](media/storsimple-8000-migrate-from-5000-7000/check-service-properties1.png)
-    * `TenantId`-Azure Active Directory Tenant-ID in Azure Portal. Meld u als beheerder aan bij Microsoft Azure. Klik in het Microsoft Azure-portal op **Azure Active Directory**. Klik onder **Beheren** op **Eigenschappen**. De Tenant-ID wordt weer gegeven in het vak **Directory-id** .
+    * `TenantId` -Azure Active Directory Tenant-ID in Azure Portal. Meld u als beheerder aan bij Microsoft Azure. Klik in het Microsoft Azure-portal op **Azure Active Directory**. Klik onder **Beheren** op **Eigenschappen**. De Tenant-ID wordt weer gegeven in het vak **Directory-id** .
     ![Tenant-ID controleren voor Azure Active Directory](media/storsimple-8000-migrate-from-5000-7000/check-tenantid-aad.png)
 
 3.  Sla de wijzigingen in het configuratie bestand op.

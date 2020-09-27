@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 4c39a24664d36e4a69a44b7fe06835572e0cfe75
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b07ed4589a54948ef87f516ac4bb97ef8492283e
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329241"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398832"
 ---
 # <a name="migrate-to-azure-virtual-wan"></a>Migreren naar Azure Virtual WAN
 
@@ -72,7 +72,7 @@ Samenvatting:
 - Hubs bieden ook VPN-beëindiging voor zwervende gebruikers via meerdere client typen met behulp van OpenVPN-connectiviteit met het wereld wijde mesh-netwerk, zodat toegang wordt geboden tot niet alleen toepassingen die naar Azure zijn gemigreerd, maar ook op alle resources die on-premises resteren.
 - Internet verbinding voor bronnen binnen een virtueel netwerk dat door Azure Virtual WAN wordt verschaft.
 
-Internet connectiviteit voor externe sites wordt ook door Azure Virtual WAN verschaft. Lokale Internet-groepen worden ondersteund via partner integratie voor geoptimaliseerde toegang tot SaaS-services zoals Office 365.
+Internet connectiviteit voor externe sites wordt ook door Azure Virtual WAN verschaft. Lokale Internet-groepen worden ondersteund via partner integratie voor geoptimaliseerde toegang tot SaaS-services zoals Microsoft 365.
 
 ## <a name="migrate-to-virtual-wan"></a>Migreren naar Virtual WAN
 

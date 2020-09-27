@@ -8,13 +8,13 @@ ms.author: heidist
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/11/2020
-ms.openlocfilehash: 6a5a3634f1d5ddc7af2af2e27c2b1d7c8ce9a2af
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/25/2020
+ms.openlocfilehash: c3aa813c671e9755b6ab65ba1e2967876bd170ca
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88917989"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398337"
 ---
 # <a name="how-to-index-json-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>JSON-blobs indexeren met behulp van een BLOB-Indexeer functie in azure Cognitive Search
 
@@ -45,7 +45,7 @@ U hebt de naam van het opslag account, de container naam en een toegangs sleutel
 
 Op de pagina overzicht van uw zoek service kunt u [de wizard starten](search-import-data-portal.md) vanaf de opdracht balk.
 
-   ![De opdracht gegevens importeren in de portal](./media/search-import-data-portal/import-data-cmd2.png "De wizard Gegevens importeren starten")
+   :::image type="content" source="media/search-import-data-portal/import-data-cmd2.png" alt-text="De opdracht gegevens importeren in de portal" border="false":::
 
 ### <a name="3---set-the-data-source"></a>3: de gegevens bron instellen
 
@@ -63,7 +63,7 @@ Op de pagina **gegevens bron** moet de bron **Azure Blob Storage**zijn, met de v
    
 + **Opslag container** moet uw opslag account en container opgeven, of een Connection String die wordt omgezet in de container. U kunt verbindings reeksen ophalen op de pagina Blob service portal.
 
-   ![Definitie van BLOB-gegevens bron](media/search-howto-index-json/import-wizard-json-data-source.png)
+   :::image type="content" source="media/search-howto-index-json/import-wizard-json-data-source.png" alt-text="Definitie van BLOB-gegevens bron" border="false":::
 
 ### <a name="4---skip-the-enrich-content-page-in-the-wizard"></a>4-de pagina verrijkte inhoud in de wizard overs Laan
 
@@ -81,7 +81,7 @@ Lees de beschrijving van [index kenmerken](/rest/api/searchservice/create-index#
 
 Neem even de tijd om uw selecties te controleren. Nadat u de wizard hebt uitgevoerd, worden er fysieke gegevens structuren gemaakt en kunt u deze velden niet bewerken zonder alle objecten te verwijderen en opnieuw te maken.
 
-   ![Definitie van BLOB-index](media/search-howto-index-json/import-wizard-json-index.png)
+   :::image type="content" source="media/search-howto-index-json/import-wizard-json-index.png" alt-text="Definitie van BLOB-index" border="false":::
 
 ### <a name="6---create-indexer"></a>6-Indexeer functie maken
 
@@ -89,7 +89,7 @@ Volledig opgegeven, maakt de wizard drie afzonderlijke objecten in uw zoek servi
 
 Als u niet bekend bent met Indexeer functies, is een *Indexeer functie* een resource in azure Cognitive Search die een externe gegevens bron verkent voor Doorzoek bare inhoud. De uitvoer van de wizard **gegevens importeren** is een Indexeer functie waarmee de JSON-gegevens bron wordt verkend, Doorzoek bare inhoud wordt geëxtraheerd en geïmporteerd in een index op Azure Cognitive Search.
 
-   ![Definitie van BLOB-Indexer](media/search-howto-index-json/import-wizard-json-indexer.png)
+   :::image type="content" source="media/search-howto-index-json/import-wizard-json-indexer.png" alt-text="Definitie van BLOB-Indexer" border="false":::
 
 Klik op **OK** om de wizard uit te voeren en alle objecten te maken. Indexering begint onmiddellijk.
 

@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: 321f6bd6324613967001139e365d96521217d50b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: fdde7613627c9fec0694f3985f78cf10e52f59c2
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87267248"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397093"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>PostgreSQL op Azure installeren en configureren
 PostgreSQL is een geavanceerde open source-data base, vergelijkbaar met Oracle en DB2. Het bevat bedrijfs klare functies, zoals volwaardige naleving, betrouw bare transactionele verwerking en gelijktijdigheids beheer met meerdere versies. Het biedt ook ondersteuning voor standaarden zoals ANSI SQL en SQL/MED (waaronder Foreign data-wrappers voor Oracle, MySQL, MongoDB en vele andere). Het is zeer uitbreidbaar met ondersteuning voor meer dan 12 procedurele talen, EGINNEN-en concept indexen, ondersteuning voor ruimtelijke gegevens en meerdere NoSQL functies voor JSON of op sleutel waarde gebaseerde toepassingen.
@@ -164,7 +164,7 @@ Maak verbinding met de virtuele Linux-machine die u hebt gemaakt via PuTTy. Als 
 
     De volgende uitvoer wordt weer gegeven:
 
-![image](./media/postgresql-install/no1.png)
+![Scherm opname waarin de uitvoer wordt weer gegeven nadat u de Data Base hebt geïnitialiseerd.](./media/postgresql-install/no1.png)
 
 ## <a name="set-up-postgresql"></a>PostgreSQL instellen
 <!--    [postgres@ test ~]$ exit -->
@@ -185,7 +185,7 @@ Wijzig twee variabelen in het/etc/init.d/postgresql-bestand. Het voor voegsel wo
 # sed -i '35s#usr/local/pgsql/data#opt/pgsql_data#' /etc/init.d/postgresql
 ```
 
-![image](./media/postgresql-install/no2.png)
+![Scherm afbeelding met het voor voegsel van de installatie en de gegevens Directory.](./media/postgresql-install/no2.png)
 
 Wijzig het bestand om het uit te voeren:
 
@@ -207,7 +207,7 @@ Controleer of het eind punt van PostgreSQL zich op:
 
 In dat geval moet de volgende uitvoer worden weergegeven:
 
-![image](./media/postgresql-install/no3.png)
+![Scherm opname waarin het eind punt van PostgreSQL wordt weer gegeven.](./media/postgresql-install/no3.png)
 
 ## <a name="connect-to-the-postgres-database"></a>Verbinding maken met de post gres-data base
 Opnieuw overschakelen naar de post gres-gebruiker:
@@ -246,11 +246,11 @@ U hebt nu een tabel met vier kolommen met de volgende kolom namen en beperkingen
 
 Als uw tabel is gemaakt, ziet u het volgende:
 
-![image](./media/postgresql-install/no4.png)
+![Scherm afbeelding met het bericht dat wordt weer gegeven wanneer de tabel is gemaakt.](./media/postgresql-install/no4.png)
 
 U kunt ook de tabel structuur controleren met behulp van de volgende opdracht:
 
-![image](./media/postgresql-install/no5.png)
+![Scherm opname van de opdracht voor het controleren van de tabel structuur.](./media/postgresql-install/no5.png)
 
 ### <a name="add-data-to-a-table"></a>Gegevens toevoegen aan een tabel
 Voeg eerst gegevens in een rij in:
@@ -261,7 +261,7 @@ INSERT INTO potluck (name, food, confirmed, signup_date) VALUES('John', 'Cassero
 
 De uitvoer moet er ongeveer als volgt uitzien:
 
-![image](./media/postgresql-install/no6.png)
+![Scherm opname van de rij-informatie die u hebt toegevoegd.](./media/postgresql-install/no6.png)
 
 U kunt ook een paar personen toevoegen aan de tabel. Hier volgen enkele opties, of u kunt uw eigen instellingen maken:
 
@@ -280,9 +280,9 @@ Gebruik de volgende opdracht om een tabel weer te geven:
 select * from potluck;
 ```
 
-Dit is de uitvoer:
+De uitvoer is:
 
-![image](./media/postgresql-install/no7.png)
+![Scherm opname van de uitvoer van de opdracht voor het weer geven van een tabel.](./media/postgresql-install/no7.png)
 
 ### <a name="delete-data-in-a-table"></a>Gegevens in een tabel verwijderen
 Gebruik de volgende opdracht om gegevens in een tabel te verwijderen:
@@ -291,7 +291,7 @@ Gebruik de volgende opdracht om gegevens in een tabel te verwijderen:
 delete from potluck where name=’John’;
 ```
 
-Hiermee verwijdert u alle gegevens in de rij ' Johan '. Dit is de uitvoer:
+Hiermee verwijdert u alle gegevens in de rij ' Johan '. De uitvoer is:
 
 ![image](./media/postgresql-install/no8.png)
 

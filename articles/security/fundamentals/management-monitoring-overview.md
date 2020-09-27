@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 7e6fe4f0db31687d402f960f2752fe021d3ec9d3
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: c5525fc43f23ecd1760c5a869d8171aee0e9415d
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448347"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91395767"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Overzicht van Azure-beveiligings beheer en-bewaking
 Dit artikel bevat een overzicht van de beveiligings functies en-services die Azure biedt om u te helpen bij het beheer en de bewaking van Azure-Cloud Services en virtuele machines.
@@ -32,7 +32,7 @@ Access Control op basis van rollen (RBAC) biedt gedetailleerd toegangs beheer vo
 Meer informatie:
 
 * [Team blog op RBAC Active Directory](https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory)
-* [Op rollen gebaseerd toegangs beheer op basis van Azure (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)
+* [Azure RBAC (op rollen gebaseerd toegangsbeheer van Azure)](../../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="antimalware"></a>Antimalware
 
@@ -66,7 +66,7 @@ Meer informatie:
 
 ## <a name="expressroute"></a>ExpressRoute
 
-U kunt Azure ExpressRoute gebruiken om uw on-premises netwerken uit te breiden naar de Microsoft Cloud via een speciale particuliere verbinding die wordt vereenvoudigd door een connectiviteits provider. Met ExpressRoute kunt u verbindingen tot stand brengen met micro soft-Cloud Services, zoals Azure, Office 365 en CRM Online. Connectiviteit kan afkomstig zijn van:
+U kunt Azure ExpressRoute gebruiken om uw on-premises netwerken uit te breiden naar de Microsoft Cloud via een speciale particuliere verbinding die wordt vereenvoudigd door een connectiviteits provider. Met ExpressRoute kunt u verbindingen tot stand brengen met micro soft-Cloud Services, zoals Azure, Microsoft 365 en CRM Online. Connectiviteit kan afkomstig zijn van:
 
 * Een wille keurig (IP VPN)-netwerk.
 * Een Point-to-Point Ethernet-netwerk.
@@ -115,7 +115,7 @@ Meer informatie:
 * [Azure Active Directory Identity Protection](/azure/active-directory/active-directory-identityprotection)
 * [Channel 9: Azure AD en identiteits weergave: preview van identiteits beveiliging](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
-## <a name="security-center"></a>Security Center
+## <a name="security-center"></a>Beveiligingscentrum
 
 Azure Security Center helpt u bedreigingen te voorkomen, te detecteren en erop te reageren. Security Center biedt u meer inzicht in en controle over de beveiliging van uw Azure-resources. Het biedt geïntegreerde beveiligings bewaking en beleids beheer in uw Azure-abonnementen. Het helpt bedreigingen te detecteren die anders niet kunnen worden opgemerkt en die werken met een breed ecosysteem van beveiligings oplossingen.
 

@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/06/2020
-ms.openlocfilehash: 8be0349bfff9ebc858d76928344039b6879d2b80
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 59bbca9461ff174ebe2451a6c01d84dee404cf56
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91357060"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398303"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Problemen met Azure-naar-Azure-VM-netwerk connectiviteit oplossen
 
@@ -51,16 +51,16 @@ Probeer toegang te krijgen tot de DNS-server vanaf de virtuele machine. Als de D
 ### <a name="issue-2-site-recovery-configuration-failed-151196"></a>Probleem 2: configuratie van Site Recovery is mislukt (151196)
 
 > [!NOTE]
-> Als de virtuele machines zich achter een **standaard** interne Load Balancer, heeft deze standaard geen toegang tot de Office 365-IP-adressen zoals `login.microsoftonline.com` . Wijzig deze in een **Basic** interne Load Balancer type of maak uitgaande toegang zoals vermeld in het artikel [Configureer taak verdeling en uitgaande regels in Standard Load Balancer met behulp van Azure cli](../load-balancer/quickstart-load-balancer-standard-public-cli.md?tabs=option-1-create-load-balancer-standard#create-outbound-rule-configuration).
+> Als de virtuele machines zich achter een **standaard** interne Load Balancer, heeft deze standaard geen toegang tot de Microsoft 365 IP-adressen zoals `login.microsoftonline.com` . Wijzig deze in een **Basic** interne Load Balancer type of maak uitgaande toegang zoals vermeld in het artikel [Configureer taak verdeling en uitgaande regels in Standard Load Balancer met behulp van Azure cli](../load-balancer/quickstart-load-balancer-standard-public-cli.md?tabs=option-1-create-load-balancer-standard#create-outbound-rule-configuration).
 
 #### <a name="possible-cause"></a>Mogelijke oorzaak
 
-Er kan geen verbinding tot stand worden gebracht met Office 365-verificatie en identiteits IP4-eind punten.
+Er kan geen verbinding tot stand worden gebracht met Microsoft 365 authenticatie-en identiteits IP4-eind punten.
 
 #### <a name="resolution"></a>Oplossing
 
-- Voor de verificatie is Azure Site Recovery toegang tot de Office 365-IP-adresbereiken vereist.
-- Als u Azure Network Security Group (NSG) regels/firewall proxy gebruikt voor het beheren van uitgaande netwerk connectiviteit op de virtuele machine, moet u ervoor zorgen dat u communicatie met de Office 365 IP-bereiken toestaat. Maak een NSG-regel op basis van een [Azure Active Directory-service (Azure AD)](../virtual-network/security-overview.md#service-tags) die toegang biedt tot alle IP-adressen die overeenkomen met Azure AD.
+- Azure Site Recovery moet toegang hebben tot de Microsoft 365 IP-adresbereiken voor authenticatie.
+- Als u Azure Network Security Group (NSG) regels/firewall proxy gebruikt voor het beheren van uitgaande netwerk connectiviteit op de virtuele machine, moet u ervoor zorgen dat u communicatie met de Microsoft 365 IP-bereiken toestaat. Maak een NSG-regel op basis van een [Azure Active Directory-service (Azure AD)](../virtual-network/security-overview.md#service-tags) die toegang biedt tot alle IP-adressen die overeenkomen met Azure AD.
 - Als nieuwe adressen in de toekomst worden toegevoegd aan Azure AD, moet u nieuwe NSG-regels maken.
 
 ### <a name="example-nsg-configuration"></a>Voor beeld van NSG-configuratie

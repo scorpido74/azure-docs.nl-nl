@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: 71c1306d1516d8af3fb16c0ba353ab8144de2562
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 03c783b5a475f0a49fe94d33aa866654e9c9f5f1
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202580"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397824"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Apache Hive-beleidsregels configureren in HDInsight met Enterprise Security Package
 
@@ -22,7 +22,7 @@ Meer informatie over het configureren van Apache zwerver-beleids regels voor Apa
 ## <a name="prerequisites"></a>Vereisten
 
 * Een HDInsight-cluster met Enterprise Security Package. Zie [HDInsight-clusters configureren met ESP](apache-domain-joined-configure.md).
-* Een werkstation met Office 2016, Office 2013 Professional Plus, Office 365 Pro Plus, een zelfstandige versie van Excel 2013 of Office 2010 Professional Plus.
+* Een werk station met Microsoft 365-apps voor Enter prise, Office 2016, Office 2013 Professional Plus, Excel 2013 standalone of Office 2010 Professional Plus.
 
 ## <a name="connect-to-apache-ranger-admin-ui"></a>Verbinding maken met de beheerinterface van Apache Ranger
 **Verbinding maken met de beheerinterface van Ranger**
@@ -115,7 +115,7 @@ In de laatste sectie hebt u twee beleids regels geconfigureerd.  hiveuser1 heeft
 
 1. Selecteer **hivesampletable**en selecteer **volgende**.
 
-1. Selecteer **Voltooien**.
+1. Selecteer **Finish**.
 
 1. In het dialoogvenster **Gegevens importeren** kunt u de query wijzigen of opgeven. Als u dit wilt doen, selecteert u **Eigenschappen**. Dit kan een paar seconden duren.
 

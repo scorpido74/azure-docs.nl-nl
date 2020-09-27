@@ -7,14 +7,14 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: rochakm
-ms.openlocfilehash: d3e70384a99e2dad3f19825cb85b83861e4647e9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ab3597ddba3e41e88c8b2b575ed5857aca01e610
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083817"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397960"
 ---
-# <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Replicatie fouten van Azure naar Azure-VM oplossen
+# <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Azure-naar-Azure-VM-replicatiefouten oplossen
 
 In dit artikel wordt beschreven hoe u veelvoorkomende fouten in Azure Site Recovery oplost tijdens de replicatie en het herstel van virtuele Azure-machines (VM) van de ene regio naar een andere. Zie de [ondersteunings matrix voor het repliceren van virtuele Azure-machines](azure-to-azure-support-matrix.md)voor meer informatie over ondersteunde configuraties.
 
@@ -197,11 +197,11 @@ Probeer toegang te krijgen tot de DNS-server vanaf de virtuele machine. Als de D
 
 #### <a name="possible-cause"></a>Mogelijke oorzaak
 
-Er kan geen verbinding tot stand worden gebracht met Office 365-verificatie en identiteits IP4-eind punten.
+Er kan geen verbinding tot stand worden gebracht met Microsoft 365 authenticatie-en identiteits IP4-eind punten.
 
 #### <a name="fix-the-problem"></a>Het probleem oplossen
 
-Azure Site Recovery vereiste toegang tot Office 365 IP-adresbereiken voor verificatie.
+Azure Site Recovery vereiste toegang tot Microsoft 365 IP-bereiken voor verificatie.
 Als u Azure Network Security Group (NSG) regels/firewall proxy gebruikt voor het beheren van uitgaande netwerk connectiviteit op de virtuele machine, moet u de NSG-regel op basis van [Azure Active Directory (Aad)](../virtual-network/security-overview.md#service-tags) gebruiken om toegang tot Aad toe te staan. Op IP-adres gebaseerde NSG-regels worden niet meer ondersteund.
 
 ### <a name="issue-3-site-recovery-configuration-failed-151197"></a>Probleem 3: configuratie van Site Recovery is mislukt (151197)
@@ -225,8 +225,8 @@ De aangepaste proxy instellingen zijn ongeldig en de Mobility Service-agent heef
 1. De Mobility Service-agent detecteert de proxy-instellingen van Internet Explorer in Windows en `/etc/environment` op Linux.
 1. Als u liever proxy alleen voor de Mobility-service wilt instellen, kunt u de proxy gegevens opgeven in _ProxyInfo. conf_ op:
 
-   - **Linux**:`/usr/local/InMage/config/`
-   - **Windows**:`C:\ProgramData\Microsoft Azure Site Recovery\Config`
+   - **Linux**: `/usr/local/InMage/config/`
+   - **Windows**: `C:\ProgramData\Microsoft Azure Site Recovery\Config`
 
 1. De _ProxyInfo. conf_ moet de proxy-instellingen in de volgende _ini_ -indeling hebben.
 

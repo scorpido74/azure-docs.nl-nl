@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: acb5171048b5a12310b6c0af5d652b7e615a71f5
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 8664efd40bb5392f56803515f09cccc800fdf21c
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087806"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397110"
 ---
 # <a name="connect-excel-to-apache-hadoop-by-using-power-query"></a>Excel verbinden met Apache Hadoop met behulp van Power Query
 
@@ -23,7 +23,7 @@ Een belang rijke functie van de micro soft-oplossing voor Big data is de integra
 
 * Een Apache Hadoop cluster in HDInsight. Zie aan de [slag met HDInsight op Linux](./apache-hadoop-linux-tutorial-get-started.md).
 * Een werk station met Windows 10, 7, Windows Server 2008 R2 of een later besturings systeem.
-* Office 2016, Office 2013 Professional Plus, Office 365 ProPlus, Excel 2013 zelfstandige of Office 2010 Professional Plus.
+* Microsoft 365 apps voor Enter prise, Office 2016, Office 2013 Professional Plus, Excel 2013 standalone of Office 2010 Professional Plus.
 
 ## <a name="install-microsoft-power-query"></a>Micro soft Power Query installeren
 
@@ -73,7 +73,7 @@ Met de invoeg toepassing Power Query voor Excel kunt u eenvoudig gegevens uit uw
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd hoe u Power Query kunt gebruiken om gegevens uit HDInsight op te halen in Excel. Op dezelfde manier kunt u gegevens ophalen van HDInsight in Azure SQL Database. Het is ook mogelijk om gegevens te uploaden naar HDInsight. Raadpleeg de volgende artikelen voor meer informatie:
+In dit artikel hebt u geleerd hoe u Power Query kunt gebruiken om gegevens uit HDInsight op te halen in Excel. Op dezelfde manier kunt u gegevens ophalen van HDInsight in Azure SQL Database. Het is ook mogelijk om gegevens te uploaden naar HDInsight. Lees de volgende artikelen voor meer informatie:
 
 * [Visualiseer Apache Hive gegevens met micro soft-power bi in azure HDInsight](apache-hadoop-connect-hive-power-bi.md).
 * [Visualisatie gegevens van interactieve Query's visualiseren met Power bi in azure HDInsight](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md).

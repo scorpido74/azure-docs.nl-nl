@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 06/05/2015
 ms.author: wpickett
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: ad77278d593e4b2165708e0c9110a9ffff19a255
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 71114b6663d010437e5778d288eacf4e120b3da5
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017699"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91395971"
 ---
 # <a name="multitenant-applications-in-azure"></a>Multitenant-toepassingen in Azure
-Een multi tenant-toepassing is een gedeelde bron waarmee ' gebruikers in afzonderlijke tenants ' de toepassing kunnen bekijken alsof ze hun eigen. Een typisch voor beeld van een multi tenant-toepassing is een scenario waarin alle gebruikers van de toepassing van verschillende tenants de gebruikers ervaring kunnen aanpassen, maar anders dezelfde basis vereisten voor het bedrijf hebben. Voor beelden van grote multi tenant-toepassingen zijn Office 365, Outlook.com en visualstudio.com.
+Een multi tenant-toepassing is een gedeelde bron waarmee ' gebruikers in afzonderlijke tenants ' de toepassing kunnen bekijken alsof ze hun eigen. Een typisch voor beeld van een multi tenant-toepassing is een scenario waarin alle gebruikers van de toepassing van verschillende tenants de gebruikers ervaring kunnen aanpassen, maar anders dezelfde basis vereisten voor het bedrijf hebben. Voor beelden van grote multi tenant-toepassingen zijn Microsoft 365, Outlook.com en visualstudio.com.
 
 Vanuit het oogpunt van een toepassings provider hebben de voor delen van multitenancy vooral betrekking op operationele en kosten efficiency. Eén versie van uw toepassing voldoet aan de behoeften van veel tenants/klanten, waardoor het mogelijk is om systeem beheer taken, zoals bewaking, prestaties afstemmen, software onderhoud en gegevens back-ups, toe te voegen.
 
