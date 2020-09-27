@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: d702a3cca6a24819d2d184dc6df09153c9dcc860
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 01213cd4d04783d0d877b4565493f06fa3718f8d
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91281878"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399632"
 ---
 # <a name="run-the-opc-vault-certificate-management-service-securely"></a>De OPC kluis Certificate Management-service veilig uitvoeren
 
@@ -94,7 +94,7 @@ Alle systemen moeten voortdurend worden bewaakt en bijgewerkt met de meest recen
 
 ### <a name="security-monitoring"></a>Beveiligingsbewaking
 
-Abonneer u op of implementeer de juiste beveiligings bewaking. Neem bijvoorbeeld een abonnement op een centrale bewakings oplossing (zoals Azure Security Center of oplossing voor bewaking van Office 365) en configureer deze zo dat de beveiligings gebeurtenissen worden verzonden naar de bewakings oplossing.
+Abonneer u op of implementeer de juiste beveiligings bewaking. Neem bijvoorbeeld een abonnement op een centrale bewakings oplossing (zoals Azure Security Center of Microsoft 365 bewakings oplossing) en configureer deze op de juiste manier om ervoor te zorgen dat beveiligings gebeurtenissen worden verzonden naar de bewakings oplossing.
 
 > [!IMPORTANT]
 > Standaard wordt de OPC-kluis service geïmplementeerd met [Azure-toepassing Insights](https://docs.microsoft.com/azure/azure-monitor/app/devops) als een bewakings oplossing. Het is raadzaam om een beveiligings oplossing toe te voegen, zoals [Azure Security Center](https://azure.microsoft.com/services/security-center/) .

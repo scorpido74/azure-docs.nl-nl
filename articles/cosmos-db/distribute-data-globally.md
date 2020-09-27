@@ -6,14 +6,14 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: fba6943adb18675bc804a3881042fe9d68f5b331
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: abd18132c7489153566042b0b7e3557662864f30
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85114738"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399462"
 ---
-# <a name="global-data-distribution-with-azure-cosmos-db---overview"></a>Globale gegevensdistributie met Azure Cosmos DB - overzicht
+# <a name="distribute-your-data-globally-with-azure-cosmos-db"></a>Gegevens wereldwijd distribueren met Azure Cosmos DB
 
 Van toepassingen wordt tegenwoordig vereist dat ze zeer responsief en altijd online zijn. Voor het bereiken van lage latentie en hoge beschikbaarheid moeten de instanties van deze toepassingen worden geïmplementeerd in datacenters die zich dicht bij de gebruikers ervan bevinden. Deze toepassingen worden doorgaans geïmplementeerd in meerdere data centers en worden wereld wijd gedistribueerd genoemd. Globaal gedistribueerde toepassingen hebben een globaal gedistribueerde database nodig die overal ter wereld transparant gegevens kan repliceren om de toepassingen in staat te stellen te werken met een kopie van de gegevens die zich dicht bij de gebruikers bevindt. 
 

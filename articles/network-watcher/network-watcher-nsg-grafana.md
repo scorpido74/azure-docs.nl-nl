@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: damendo
-ms.openlocfilehash: 4d07feb54a689c32e119d997275416a5dd8f0aad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ec4b9343efab9ae501b2b3dcc606e6e3f5fe826
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84725083"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399683"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-using-network-watcher-and-grafana"></a>Stroom logboeken voor netwerk beveiligings groepen beheren en analyseren met behulp van Network Watcher en Grafana
 
@@ -199,7 +199,7 @@ Nu u Grafana hebt geconfigureerd voor het lezen van de ElasticSearch-index met N
 
 In de volgende scherm afbeelding ziet u een grafiek en grafiek met de belangrijkste stromen en hun frequentie. Stromen worden ook weer gegeven door de NSG-regel en stromen op beslissing. Grafana is zeer aanpasbaar, dus het is raadzaam om Dash boards te maken op basis van uw specifieke bewakings behoeften. In het volgende voor beeld ziet u een typisch dash board:
 
-![Dashboard grafiek](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig4.png)
+![Scherm opname van de configuratie van de voorbeeld grafiek met stromen gesegmenteerd door NSG regel.](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig4.png)
 
 ## <a name="conclusion"></a>Conclusie
 

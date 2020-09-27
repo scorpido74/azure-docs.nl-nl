@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: dddf402455292e19bf0fcda3c50d9ce10d5888d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f25e42b1785f83e0b93c346e260055247a4ab29d
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71099064"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400703"
 ---
 # <a name="configure-and-validate-virtual-network-or-vpn-connections"></a>Virtuele netwerk-of VPN-verbindingen configureren en valideren
 
@@ -182,7 +182,7 @@ Dit scenario wordt ondersteund wanneer BGP is ingeschakeld op de site-naar-site-
 
 ### <a name="configure-transit-routing-in-an-expressroute-connection"></a>Transit routering configureren in een ExpressRoute-verbinding
 
-Met Azure ExpressRoute kunt u uw on-premises netwerken in de Microsoft-cloud uitbreiden via een speciale persoonlijke verbinding die wordt gefaciliteerd door een connectiviteitsprovider. Met ExpressRoute kunt u verbindingen tot stand brengen met Microsoft Cloud-services, zoals Microsoft Azure, Office 365 en Dynamics 365. Raadpleeg [Overzicht van ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) voor meer informatie.
+Met Azure ExpressRoute kunt u uw on-premises netwerken in de Microsoft-cloud uitbreiden via een speciale persoonlijke verbinding die wordt gefaciliteerd door een connectiviteitsprovider. Met ExpressRoute kunt u verbindingen tot stand brengen met Microsoft Cloud-services, zoals Microsoft Azure, Microsoft 365 en Dynamics 365. Raadpleeg [Overzicht van ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) voor meer informatie.
 
 ![ExpressRoute persoonlijke peering-verbinding met virtuele Azure-netwerken](./media/virtual-network-configure-vnet-connections/4034395_en_1.png)
 

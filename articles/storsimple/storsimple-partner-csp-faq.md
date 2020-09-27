@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: a6e5ae96d097dab9c416f7e1f737cf4fe8a62aea
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 2f606a2ff036c6bc3b4e3c508632d48ae8d40f15
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87279216"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400040"
 ---
 # <a name="storsimple-for-cloud-solutions-provider-program-frequently-asked-questions"></a>StorSimple for Cloud solutions provider-programma: veelgestelde vragen
 
@@ -40,10 +40,10 @@ Vragen en antwoorden zijn ingedeeld in de volgende categorieën:
 
 Ga naar [StorSimple in CSP-programma](https://www.microsoft.com/en-us/server-cloud/products/storsimple/)voor meer informatie. 
 
-### <a name="is-storsimple-a-usage-based-or-based-on-seat-licenses-like-office-365-and-enterprise-mobility-suite-ems"></a>Is StorSimple een op gebruik gebaseerd of op basis van Seat-licenties, zoals Office 365 en Enter prise Mobility Suite (EMS)?
+### <a name="is-storsimple-a-usage-based-or-based-on-seat-licenses-like-microsoft-365-and-enterprise-mobility-suite-ems"></a>Is StorSimple een op gebruik gebaseerd of op basis van Seat-licenties, zoals Microsoft 365 en Enter prise Mobility Suite (EMS)?
 StorSimple is een op gebruik gebaseerde service. Klanten die StorSimple Virtual array aanschaffen via de CSP-route, betalen voor het gebruik van virtuele matrix en Azure, gefactureerd als afzonderlijke regel items in de CSP-factuur. 
 
-### <a name="is-the-storsimple-business-model-similar-to-that-of-other-services-such-as-the-office-365-and-the-enterprise-mobility-suite"></a>Is het StorSimple-bedrijfs model vergelijkbaar met dat van andere services, zoals Office 365 en de Enter prise Mobility Suite? 
+### <a name="is-the-storsimple-business-model-similar-to-that-of-other-services-such-as-the-microsoft-365-and-the-enterprise-mobility-suite"></a>Is het StorSimple-bedrijfs model vergelijkbaar met dat van andere services, zoals het Microsoft 365 en de Enter prise Mobility Suite? 
 Ja. Het model is op dezelfde manier als andere op gebruik gebaseerde services in Azure. De groothandels korting voor StorSimple is vergelijkbaar met die van andere Azure-Services. Dit model biedt onze CSP-partners een mogelijkheid om meer te verkopen en Azure-verbruik via StorSimple Virtual array te stimuleren.  
 
 ### <a name="which-storsimple-skus-are-available-at-launch"></a>Welke StorSimple-Sku's zijn beschikbaar bij het starten?

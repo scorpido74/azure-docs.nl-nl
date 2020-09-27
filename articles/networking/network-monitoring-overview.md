@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: agummadi
-ms.openlocfilehash: 2912488286745bf8d2e567d09e445b0a44dc7c39
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e2d3f0b5abcd7a9dcd4f49c120353adacffcb31
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67672179"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399649"
 ---
 # <a name="network-monitoring-solutions"></a>Netwerk bewakings oplossingen 
 
@@ -52,7 +52,7 @@ Prestatie meter maakt deel uit van NPM en is netwerk bewaking voor Cloud-, hybri
 Raadpleeg de volgende artikelen voor meer informatie:
 
 * [Een Netwerkprestatiemeter-oplossing configureren in Azure Monitor logboeken](../azure-monitor/insights/network-performance-monitor.md) 
-* [Gebruiksvoorbeelden](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/)
+* [Use cases](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/)
 * Product updates:
   * [Februari 2017](https://blogs.technet.microsoft.com/msoms/2017/02/27/oms-network-performance-monitor-is-now-generally-available/)
   * [Augustus 2017](https://blogs.technet.microsoft.com/msoms/2017/08/14/improvements-to-oms-network-performance-monitor/)
@@ -65,7 +65,7 @@ NPM for ExpressRoute biedt uitgebreide ExpressRoute-bewaking voor persoonlijke p
 * Detectie van de netwerk topologie van on-premises naar uw Cloud toepassingen
 * Capaciteits planning, analyse van bandbreedte gebruik
 * Bewaking en waarschuwingen voor zowel het primaire als het secundaire pad
-* Bewaking van de connectiviteit met Azure-Services, zoals Office 365, Dynamics 365,... meer dan ExpressRoute
+* Bewaking van de connectiviteit met Azure-Services, zoals Microsoft 365, Dynamics 365,... meer dan ExpressRoute
 * De degradatie van de connectiviteit met VNets detecteren
 
 ![Geo-toewijzing met verkeer tussen regio's](./media/network-monitoring-overview/expressroute-topology-map.png) 
@@ -84,7 +84,7 @@ Met de bewaking van service connectiviteit kunt u nu de bereik baarheid van toep
 * De bereik baarheid van toepassingen testen vanuit meerdere gebruikers locaties wereld wijd
 * Netwerk latentie en pakket verlies bepalen voor uw line-of-Business-en SaaS-toepassingen
 * Bepaal de HOTS pots op het netwerk, waardoor de prestaties van de toepassing kunnen worden veroorzaakt
-* Bewaak baarheid tot Office 365-toepassingen bewaken met behulp van ingebouwde tests voor Microsoft Office 365, Dynamics 365, Skype voor bedrijven en andere micro soft-Services
+* Bewaak baarheid van Microsoft 365 toepassingen bewaken met behulp van ingebouwde tests voor Microsoft 365, Dynamics 365, Skype voor bedrijven en andere micro soft-Services
 
 Raadpleeg voor meer informatie de volgende artikelen:
 

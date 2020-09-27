@@ -3,12 +3,12 @@ title: Aanbevolen beveiligingsprocedures
 description: Wanneer u Azure Lighthouse gebruikt, is het belang rijk om te overwegen voor beveiliging en toegangs beheer.
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: ddc4d2c69e7aacc49c5309bc407aecd9bc8e572f
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 097611837e3bba2d1a44ec521862e03cc467d707
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163268"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399377"
 ---
 # <a name="recommended-security-practices"></a>Aanbevolen beveiligingsprocedures
 
@@ -28,7 +28,7 @@ U wordt aangeraden om uw klanten ook in te stellen om Azure Multi-Factor Authent
 Gebruik Azure Active Directory-groepen (Azure AD) voor elke rol die is vereist voor het beheren van de resources van uw klanten om het beheer te vereenvoudigen. Zo kunt u afzonderlijke gebruikers aan de groep toevoegen of verwijderen, in plaats van machtigingen rechtstreeks aan elke gebruiker toe te wijzen.
 
 > [!IMPORTANT]
-> Om machtigingen voor een Azure AD-groep toe te voegen, moet het **groeps type** **beveiliging** zijn en niet **Office 365**. Deze optie wordt geselecteerd wanneer de groep wordt gemaakt. Zie [Een basisgroep maken en leden toevoegen met behulp van Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) voor meer informatie.
+> Als u machtigingen wilt toevoegen voor een Azure AD-groep, moet u het **groeps type** instellen op **beveiliging**. Deze optie wordt geselecteerd wanneer de groep wordt gemaakt. Zie [Een basisgroep maken en leden toevoegen met behulp van Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) voor meer informatie.
 
 Wanneer u uw machtigingen structuur maakt, moet u ervoor zorgen dat u het principe van minimale bevoegdheden volgt, zodat gebruikers alleen de benodigde machtigingen hebben om hun taak te volt ooien, waardoor de kans op onbedoelde fouten wordt verminderd.
 

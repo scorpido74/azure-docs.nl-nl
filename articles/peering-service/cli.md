@@ -10,16 +10,16 @@ ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
 ms.date: 05/2/2020
 ms.author: derekol
-ms.openlocfilehash: fbb9a6237aafe1c1b7c94d9dd23ad4c3665c0c73
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef573817927cf732da3426d802f8f26e2e9cd4ec
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84872130"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398994"
 ---
 # <a name="register-a-peering-service-connection-by-using-the-azure-cli"></a>Een peering service-verbinding registreren met behulp van de Azure CLI
 
-Azure Peering Service is een netwerkservice die de klantconnectiviteit verbetert met Microsoft-cloudservices, zoals Office 365, Dynamics 365, SaaS-services (Software as a Service), Azure of een andere Microsoft-service die toegankelijk is via openbaar internet. In dit artikel leert u hoe u een peering service-verbinding kunt registreren met behulp van de Azure CLI.
+Azure peering service is een netwerk service die de connectiviteit van klanten verbetert met micro soft-Cloud Services, zoals Microsoft 365, Dynamics 365, software as a Service (SaaS)-Services, Azure of andere micro soft-services die toegankelijk zijn via het open bare Internet. In dit artikel leert u hoe u een peering service-verbinding kunt registreren met behulp van de Azure CLI.
 
 Als u nog geen Azure-abonnement hebt, maakt u nu een [account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 

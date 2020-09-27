@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: b1df1219590aa94331a4404b1315eb7231c59699
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 097db6683127b410e713be53e6de838cf7734ddc
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75445870"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400720"
 ---
 # <a name="manage-excel-online-data-with-azure-logic-apps"></a>Excel online-gegevens beheren met Azure Logic Apps
 
@@ -33,7 +33,7 @@ Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps?]
 
 * Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, [registreer u dan nu voor een gratis Azure-account](https://azure.microsoft.com/free/).
 
-* Een [Office 365-account](https://www.office.com/) voor uw werk account of persoonlijke Microsoft-account
+* Een [werk-of school account](https://www.office.com/) voor uw werk account of persoonlijke Microsoft-account
 
   Uw Excel-gegevens kunnen bestaan als een CSV-bestand (Comma-Separated Value) in een opslagmap, bijvoorbeeld in OneDrive. 
   U kunt ook hetzelfde CSV-bestand gebruiken met de [Connector voor platte bestanden](../logic-apps/logic-apps-enterprise-integration-flatfile.md).
@@ -53,7 +53,7 @@ Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps?]
    > [!NOTE]
    > Met de ontwerp functie voor logische apps kunnen geen tabellen worden geladen die 100 of meer kolommen hebben. Als dat mogelijk is, vermindert u het aantal kolommen in de geselecteerde tabel zodat de ontwerper de tabel kan laden.
 
-1. Meld u aan bij uw Office 365-account als u hierom wordt gevraagd.
+1. Meld u aan bij uw werk-of school account als u hierom wordt gevraagd.
 
    Met uw referenties wordt uw logische app geautoriseerd om een verbinding met Excel online te maken en toegang te krijgen tot uw gegevens.
 

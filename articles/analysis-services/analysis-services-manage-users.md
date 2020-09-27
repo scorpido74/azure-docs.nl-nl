@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 15ae1ca6902c27732812a591f492430150c84ecb
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: c44ac820349973240328fbb92dea14668b019a12
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926175"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400788"
 ---
 # <a name="authentication-and-user-permissions"></a>Verificatie en gebruikersmachtigingen
 
@@ -28,13 +28,13 @@ Alle client toepassingen en hulpprogram ma's gebruiken een of meer van de Analys
 
 Alle drie client bibliotheken ondersteunen zowel interactieve als Azure AD-stroom en niet-interactieve verificatie methoden. De twee niet-interactieve methoden, Active Directory wacht woord en Active Directory geïntegreerde verificatie methoden kunnen worden gebruikt in toepassingen die gebruikmaken van AMOMD en MSOLAP. Deze twee methoden resulteren nooit in pop-updialoogvensters.
 
-Client toepassingen zoals Excel en Power BI Desktop, en hulpprogram ma's zoals SSMS en Analysis Services project extension for Visual Studio installeren de nieuwste versies van de bibliotheken wanneer deze worden bijgewerkt naar de nieuwste versie. De uitbrei ding Power BI Desktop, SSMS en Analysis Services Projects wordt maandelijks bijgewerkt. Excel is [bijgewerkt met Office 365](https://support.office.com/article/When-do-I-get-the-newest-features-in-Office-2016-for-Office-365-da36192c-58b9-4bc9-8d51-bb6eed468516). Office 365-updates zijn minder frequent en sommige organisaties gebruiken het uitgestelde kanaal, wat betekent dat updates tot drie maanden worden uitgesteld.
+Client toepassingen zoals Excel en Power BI Desktop, en hulpprogram ma's zoals SSMS en Analysis Services project extension for Visual Studio installeren de nieuwste versies van de bibliotheken wanneer deze worden bijgewerkt naar de nieuwste versie. De uitbrei ding Power BI Desktop, SSMS en Analysis Services Projects wordt maandelijks bijgewerkt. Excel wordt [bijgewerkt met Microsoft 365](https://support.microsoft.com/office/when-do-i-get-the-newest-features-for-microsoft-365-da36192c-58b9-4bc9-8d51-bb6eed468516). Microsoft 365 updates zijn minder frequent en sommige organisaties gebruiken het uitgestelde kanaal, wat betekent dat updates tot drie maanden worden uitgesteld.
 
 Afhankelijk van de client toepassing of het hulp programma dat u gebruikt, kan het type verificatie en de manier waarop u zich aanmeldt anders zijn. Elke toepassing kan verschillende functies ondersteunen voor het maken van verbinding met Cloud Services, zoals Azure Analysis Services.
 
 Power BI Desktop, Visual Studio en SSMS ondersteunen Active Directory universele verificatie, een interactieve methode die ook Azure Multi-Factor Authentication (MFA) ondersteunt. Azure MFA helpt bij het beveiligen van de toegang tot gegevens en toepassingen tijdens een eenvoudig aanmeldings proces. Het biedt krachtige verificatie met verschillende verificatie opties (telefoon oproep, tekst bericht, Smart Cards met pincode of melding van een mobiele app). Bij interactieve MFA met Azure AD kunnen er pop-upvensters worden weergegeven voor validatie. **Universele verificatie wordt aanbevolen**.
 
-Als u zich aanmeldt bij Azure met behulp van een Windows-account en universele verificatie niet is geselecteerd of beschikbaar (Excel), is [Active Directory Federation Services (AD FS)](../active-directory/hybrid/how-to-connect-fed-azure-adfs.md) vereist. Met Federatie worden Azure AD-en Office 365-gebruikers geverifieerd met on-premises referenties en kunnen ze toegang krijgen tot Azure-resources.
+Als u zich aanmeldt bij Azure met behulp van een Windows-account en universele verificatie niet is geselecteerd of beschikbaar (Excel), is [Active Directory Federation Services (AD FS)](../active-directory/hybrid/how-to-connect-fed-azure-adfs.md) vereist. Met Federatie worden Azure AD-en Microsoft 365-gebruikers geverifieerd met on-premises referenties en kunnen ze toegang krijgen tot Azure-resources.
 
 ### <a name="sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS)
 
@@ -81,4 +81,4 @@ Rollen op dit niveau zijn van toepassing op gebruikers of accounts die taken moe
 [Toegang tot resources beheren met Azure Active Directory groepen](../active-directory/fundamentals/active-directory-manage-groups.md)   
 [Database rollen en-gebruikers beheren](analysis-services-database-users.md)  
 [Serverbeheerders beheren](analysis-services-server-admins.md)  
-[Op rollen gebaseerd toegangs beheer op basis van Azure (Azure RBAC)](../role-based-access-control/overview.md)  
+[Azure RBAC (op rollen gebaseerd toegangsbeheer van Azure)](../role-based-access-control/overview.md)  

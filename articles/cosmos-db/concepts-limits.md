@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: deda5b9dab416258f9db1c76e9b41f781101e2fd
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 373463ff9024ec3b657df6d141ed830142b23f2e
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90033010"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400057"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Service quota's Azure Cosmos DB
 
@@ -27,8 +27,8 @@ U kunt de door Voer inrichten op container niveau of op database niveau in terme
 
 | Resource | Standaardlimiet |
 | --- | --- |
-| Maximum RUs per container ([ingerichte modus toegewezen door Voer](databases-containers-items.md#azure-cosmos-containers)) | standaard 1.000.000. U kunt deze verhogen door [een ondersteunings ticket voor Azure te archiveren](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) |
-| Maximum RUs per data base ([ingerichte modus voor gedeelde door Voer](databases-containers-items.md#azure-cosmos-containers)) | standaard 1.000.000. U kunt deze verhogen door [een ondersteunings ticket voor Azure te archiveren](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) |
+| Maximum RUs per container ([ingerichte modus toegewezen door Voer](databases-containers-items.md#azure-cosmos-containers)) | standaard 1.000.000. U kunt deze verhogen door [een ondersteunings ticket voor Azure te archiveren](create-support-request-quota-increase.md) |
+| Maximum RUs per data base ([ingerichte modus voor gedeelde door Voer](databases-containers-items.md#azure-cosmos-containers)) | standaard 1.000.000. U kunt deze verhogen door [een ondersteunings ticket voor Azure te archiveren](create-support-request-quota-increase.md) |
 | Maximum RUs per (logische) partitie | 10.000 |
 | Maximale opslag ruimte in alle items per (logische) partitie | 20 GB |
 | Maximum aantal afzonderlijke (logische) partitie sleutels | Onbeperkt |
@@ -67,8 +67,8 @@ Zonder [Server](serverless.md) kunt u uw Azure Cosmos DB-resources op basis van 
 
 | Resource | Limiet |
 | --- | --- |
-| Maximum aantal RU/s per container | 5\.000 |
-| Maxi maal aantal RU/s per (logische) partitie | 5\.000 |
+| Maximum aantal RU/s per container | 5.000 |
+| Maxi maal aantal RU/s per (logische) partitie | 5.000 |
 | Maximale opslag ruimte in alle items per (logische) partitie | 20 GB |
 | Maximum aantal afzonderlijke (logische) partitie sleutels | Onbeperkt |
 | Maximale opslag per container | 50 GB |
@@ -79,8 +79,8 @@ U kunt [uw Azure Cosmos-account inrichten en beheren](how-to-manage-database-acc
 
 | Resource | Standaardlimiet |
 | --- | --- |
-| Maximum aantal database accounts per abonnement | standaard 50. U kunt deze verhogen door [een ondersteunings ticket voor Azure te archiveren](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)|
-| Maximum aantal regionale failovers | standaard 1/uur. U kunt deze verhogen door [een ondersteunings ticket voor Azure te archiveren](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)|
+| Maximum aantal database accounts per abonnement | standaard 50. U kunt deze verhogen door [een ondersteunings ticket voor Azure te archiveren](create-support-request-quota-increase.md)|
+| Maximum aantal regionale failovers | standaard 1/uur. U kunt deze verhogen door [een ondersteunings ticket voor Azure te archiveren](create-support-request-quota-increase.md)|
 
 > [!NOTE]
 > Regionale failovers zijn alleen van toepassing op de ene regio en schrijft accounts. Voor schrijf accounts met meerdere regio's zijn geen beperkingen vereist voor het wijzigen van de schrijf regio.
@@ -120,7 +120,7 @@ Afhankelijk van de API die u gebruikt, kan een Azure Cosmos-container een verzam
 | Maximum aantal paden per beperking van de unieke sleutel|18 <sup>*</sup>|
 | Maximale TTL-waarde |2147483647|
 
-<sup>*</sup> U kunt deze limieten per container verhogen door contact op te nemen met de ondersteuning van Azure.
+<sup>*</sup> U kunt deze limieten per container verhogen door een [Azure-ondersteuningsaanvraag](create-support-request-quota-increase.md)te maken.
 
 ## <a name="per-item-limits"></a>Limieten per item
 
@@ -160,7 +160,7 @@ Cosmos DB gebruikt HMAC voor autorisatie. U kunt een hoofd sleutel of een [bron 
 | --- | --- |
 | Maximale verloop tijd van Master token | 15 min  |
 | Minimale verloop tijd van bron token | 10 minuten  |
-| Maximale verloop tijd van bron token | standaard 24 uur. U kunt deze verhogen door [een ondersteunings ticket voor Azure te archiveren](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)|
+| Maximale verloop tijd van bron token | standaard 24 uur. U kunt deze verhogen door [een ondersteunings ticket voor Azure te archiveren](create-support-request-quota-increase.md)|
 | Maximale klok scheefheid voor token autorisatie| 15 min |
 
 Cosmos DB ondersteunt de uitvoering van triggers tijdens het schrijven. De service ondersteunt Maxi maal één pretrigger en één post-trigger per schrijf bewerking.
@@ -202,7 +202,7 @@ Cosmos DB biedt ondersteuning voor het uitvoeren van query's op items met [SQL](
 | Maximum aantal uitgesloten paden per container| 500 |
 | Maximum aantal eigenschappen in een samengestelde index| 8 |
 
-<sup>*</sup> U kunt deze limieten voor SQL-query's verhogen door contact op te nemen met de ondersteuning van Azure.
+<sup>*</sup> U kunt deze limieten voor SQL-query's verhogen door een [Azure-ondersteuningsaanvraag](create-support-request-quota-increase.md)te maken.
 
 ## <a name="mongodb-api-specific-limits"></a>MongoDB-API-specifieke limieten
 

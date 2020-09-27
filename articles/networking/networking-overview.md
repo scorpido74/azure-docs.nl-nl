@@ -1,5 +1,5 @@
 ---
-title: Overzicht van Azure Networking Services
+title: Overzicht van Azure-netwerkservices
 description: Meer informatie over netwerk services in azure, waaronder connectiviteit, toepassings beveiliging, levering van toepassingen en netwerk bewakings Services.
 services: networking
 documentationcenter: na
@@ -10,14 +10,14 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 03/12/2020
 ms.author: kumud
-ms.openlocfilehash: 39601da6cc8e10ba8f4a24eeddb97cfe677c031f
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 364f4f38599508e4dfb455f1336d4a6978cdf5b6
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651732"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400448"
 ---
-# <a name="azure-networking-services-overview"></a>Overzicht van Azure Networking Services
+# <a name="azure-networking-services-overview"></a>Overzicht van Azure-netwerkservices
 
 De netwerk services in azure bieden diverse netwerk mogelijkheden die samen of afzonderlijk kunnen worden gebruikt. Klik op een van de volgende belang rijke mogelijkheden om meer te weten te komen over:
 - [**Connectiviteits Services**](#connect): Azure-resources en on-premises resources verbinden met een of meer van deze netwerk services in Azure-Virtual Network (VNet), Virtual WAN, ExpressRoute, VPN gateway, virtueel netwerk NAT Gateway, Azure DNS, peering-service en Azure Bastion.
@@ -53,7 +53,7 @@ Azure Virtual Network (VNet) is de basisbouwsteen voor uw privénetwerk in Azure
 Zie [Wat is Azure Virtual Network?](../virtual-network/virtual-networks-overview.md)voor meer informatie.
 
 ### <a name="expressroute"></a><a name="expressroute"></a>ExpressRoute
-Met ExpressRoute kunt u uw on-premises netwerken in de micro soft Cloud uitbreiden via een persoonlijke verbinding die wordt vereenvoudigd door een connectiviteits provider. Deze verbinding is een privéverbinding. Verkeer gaat niet via internet. Met ExpressRoute kunt u verbindingen tot stand brengen met Microsoft Cloud-services, zoals Microsoft Azure, Office 365 en Dynamics 365.  Zie [Wat is ExpressRoute?](../expressroute/expressroute-introduction.md)voor meer informatie.
+Met ExpressRoute kunt u uw on-premises netwerken in de micro soft Cloud uitbreiden via een persoonlijke verbinding die wordt vereenvoudigd door een connectiviteits provider. Deze verbinding is een privéverbinding. Verkeer gaat niet via internet. Met ExpressRoute kunt u verbindingen tot stand brengen met Microsoft Cloud-services, zoals Microsoft Azure, Microsoft 365 en Dynamics 365.  Zie [Wat is ExpressRoute?](../expressroute/expressroute-introduction.md)voor meer informatie.
 
 ![Azure ExpressRoute](./media/networking-overview/expressroute-connection-overview.png)
 
@@ -84,7 +84,7 @@ Virtual Network NAT (Network Address Translation) vereenvoudigt uitsluitend uitg
 ![NAT-gateway van virtueel netwerk](./media/networking-overview/flow-map.png)
 
 ### <a name="azure-peering-service"></a><a name="azurepeeringservice"></a> Azure peering-service
-Azure peering service verbetert de connectiviteit van klanten aan micro soft-Cloud Services, zoals Office 365, Dynamics 365, software as a Service (SaaS)-Services, Azure of andere micro soft-services die toegankelijk zijn via het open bare Internet. Zie [Wat is Azure peering service?](../peering-service/about.md)voor meer informatie.
+Azure peering service verbetert de connectiviteit van klanten aan micro soft-Cloud Services, zoals Microsoft 365, Dynamics 365, SaaS-Services (Software as a Service), Azure of andere micro soft-services die toegankelijk zijn via het open bare Internet. Zie [Wat is Azure peering service?](../peering-service/about.md)voor meer informatie.
 
 ## <a name="application-protection-services"></a><a name="protect"></a>Services voor toepassings beveiliging
 
@@ -120,10 +120,10 @@ Raadpleeg de [Azure firewall documentatie](../firewall/overview.md)voor meer inf
 
 ![Firewalloverzicht](./media/networking-overview/firewall-threat.png)
 
-### <a name="network-security-groups"></a><a name="nsg"></a>Netwerkbeveiligingsgroepen
+### <a name="network-security-groups"></a><a name="nsg"></a>Netwerk beveiligings groepen
 U kunt netwerkverkeer naar en van Azure-resources in een virtueel Azure-netwerk filteren met een netwerkbeveiligingsgroep. Zie [Security Overview](../virtual-network/security-overview.md)(Engelstalig) voor meer informatie.
 
-### <a name="service-endpoints"></a><a name="serviceendpoints"></a>Service-eindpunten
+### <a name="service-endpoints"></a><a name="serviceendpoints"></a>Service-eind punten
 Met service-eindpunten van Virtual Network (VNet) kunt u de privé-adresruimte van uw virtuele netwerk en de identiteit van uw VNet uitbreiden naar Azure-services, via een directe verbinding. Met eindpunten kunt u uw kritieke Azure-serviceresources alleen beveiligen naar uw virtuele netwerken. Verkeer van uw VNet naar de Azure-service blijft altijd in het Microsoft Azure-backbonenetwerk. Zie [service-eind punten voor virtuele netwerken](../virtual-network/virtual-network-service-endpoints-overview.md)voor meer informatie.
 
 ![Service-eindpunten voor virtueel netwerk](./media/networking-overview/vnet-service-endpoints-overview.png)

@@ -10,16 +10,16 @@ ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
 ms.date: 05/18/2020
 ms.author: derekol
-ms.openlocfilehash: 548d4f90bd9632e4807547120ac1be589668e8fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 03ece391b6f33b47f34705cec1c5907602ac7b23
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84872034"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400176"
 ---
 # <a name="azure-peering-service-overview"></a>Overzicht van Azure peering-service
 
-Azure Peering Service is een netwerkservice die de klantconnectiviteit verbetert met Microsoft-cloudservices, zoals Office 365, Dynamics 365, SaaS-services (Software as a Service), Azure of een andere Microsoft-service die toegankelijk is via openbaar internet. Micro soft heeft wereld wijd een partnerschap gemaakt met Internet serviceproviders (Isp's), IXPs (Internet Exchange partners) en SDCI-providers (software-defined Cloud Interconnect) om betrouw bare en hoogwaardige open bare connectiviteit te bieden met optimale route ring van de klant naar het micro soft-netwerk.
+Azure peering service is een netwerk service die de connectiviteit van klanten verbetert met micro soft-Cloud Services, zoals Microsoft 365, Dynamics 365, software as a Service (SaaS)-Services, Azure of andere micro soft-services die toegankelijk zijn via het open bare Internet. Micro soft heeft wereld wijd een partnerschap gemaakt met Internet serviceproviders (Isp's), IXPs (Internet Exchange partners) en SDCI-providers (software-defined Cloud Interconnect) om betrouw bare en hoogwaardige open bare connectiviteit te bieden met optimale route ring van de klant naar het micro soft-netwerk.
 
 Met peering service kunnen klanten een goed verbonden partner serviceprovider selecteren in een bepaalde regio. Open bare connectiviteit is geoptimaliseerd voor hoge betrouw baarheid en minimale latentie van Cloud Services naar de locatie van de eind gebruiker.
 
@@ -50,7 +50,7 @@ Peering-service is geen privé-connectiviteits product, zoals Azure ExpressRoute
 
 ## <a name="background"></a>Achtergrond
 
-Office 365, Dynamics 365 en andere micro soft SaaS-services worden gehost in meerdere micro soft-data centers en kunnen vanaf elke geografische locatie worden geopend. Het wereld wijde netwerk van micro soft heeft PoP-locaties (Point-of-Presence) van micro soft Edge over de hele wereld waar het verbinding kan maken met een eind gebruiker via hun service providers. 
+Microsoft 365, Dynamics 365 en andere micro soft SaaS-services worden gehost in meerdere micro soft-data centers en kunnen vanaf elke geografische locatie worden geopend. Het wereld wijde netwerk van micro soft heeft PoP-locaties (Point-of-Presence) van micro soft Edge over de hele wereld waar het verbinding kan maken met een eind gebruiker via hun service providers. 
 
 Service providers van micro soft en partners zorgen ervoor dat het verkeer voor de voor voegsels die zijn geregistreerd bij een peering service-verbinding, binnenkomt en sluit de dichtstbijzijnde PoP-locaties van micro soft Edge op het micro soft Global Network. Micro soft zorgt ervoor dat het netwerk verkeer egressing van de voor voegsels die zijn geregistreerd met peering-service verbindingen de dichtstbijzijnde PoP-locaties van micro soft Edge op het wereld wijde micro soft-netwerk.
 
@@ -80,13 +80,13 @@ Peering-service gebruikt twee soorten redundantie:
 
    Elke peering-locatie wordt ingericht met redundante en diverse koppelingen voor peering.
 
-- **Geo-redundantie**
+- **Geografische redundantie**
 
    Micro soft heeft verbinding gemaakt met service providers op meerdere metro locaties, zodat als een van de Edge-knoop punten verminderde prestaties heeft, de verkeers routes van en naar micro soft via alternatieve sites. Micro soft routeert verkeer in het wereld wijde netwerk met behulp van SDN routering beleid voor optimale prestaties.
 
     Dit type redundantie maakt gebruik van het kortste routerings traject door altijd de dichtstbijzijnde micro soft Edge-PoP naar de eind gebruiker te kiezen en ervoor te zorgen dat de klant één netwerk-hop (als hops) van micro soft is.
 
-   ![Geo-redundantie](./media/peering-service-about/peering-service-geo-shortest.png)
+   ![Geografische redundantie](./media/peering-service-about/peering-service-geo-shortest.png)
 
 ### <a name="optimal-routing"></a>Optimale route ring
 

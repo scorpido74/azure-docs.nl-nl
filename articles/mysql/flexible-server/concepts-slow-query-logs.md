@@ -6,20 +6,17 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: 8b413b82ceb148374bd89fd2baec7d4db13f54d5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 512a103f5ac116f1f4eb18631cdc8e4a8b9380c9
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329545"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399207"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql-flexible-server-preview"></a>Trage query Logboeken in Azure Database for MySQL flexibele server (preview-versie)
 
 > [!IMPORTANT] 
 > Azure Database for MySQL - Flexible Server is momenteel beschikbaar als openbare preview.
-
-> [!NOTE]
-> Integratie met Azure Monitor Diagnostische instellingen voor toegang tot logboeken is in het implementatie proces en de volledige functionaliteit is binnenkort beschikbaar.
 
 In Azure Database for MySQL flexibele server is het logboek voor trage query's beschikbaar voor gebruikers om te configureren en toegang te krijgen. Langzame query logboeken zijn standaard uitgeschakeld en kunnen worden ingeschakeld om te helpen bij het identificeren van prestatie knelpunten tijdens het oplossen van problemen.
 
@@ -42,10 +39,7 @@ Zie de documentatie van het MySQL- [logboek voor langzame query's](https://dev.m
 
 ## <a name="access-slow-query-logs"></a>Toegang tot langzame query logboeken
 
-> [!NOTE]
-> Integratie met Azure Monitor Diagnostische instellingen voor toegang tot logboeken is in het implementatie proces en de volledige functionaliteit is binnenkort beschikbaar.
-
-Langzame query logboeken zijn geïntegreerd met Azure Monitor Diagnostische instellingen. Zodra u audit logboeken op uw MySQL-flexibele server hebt ingeschakeld, kunt u deze naar Azure Monitor-logboeken, Event Hubs of Azure Storage verzenden. Raadpleeg de documentatie van de [Diagnostische logboeken](../../azure-monitor/platform/platform-logs-overview.md)voor meer informatie over diagnostische instellingen. Zie het [artikel over langzame query-logboeken](how-to-configure-slow-query-logs-portal.md#set-up-diagnostics)voor meer informatie over het inschakelen van diagnostische instellingen in de Azure Portal.
+Langzame query logboeken zijn geïntegreerd met Azure Monitor Diagnostische instellingen. Zodra u langzame query Logboeken hebt ingeschakeld op uw MySQL-flexibele server, kunt u deze naar Azure Monitor-logboeken, Event Hubs of Azure Storage verzenden. Raadpleeg de documentatie van de [Diagnostische logboeken](../../azure-monitor/platform/platform-logs-overview.md)voor meer informatie over diagnostische instellingen. Zie het [artikel over langzame query-logboeken](how-to-configure-slow-query-logs-portal.md#set-up-diagnostics)voor meer informatie over het inschakelen van diagnostische instellingen in de Azure Portal.
 
 In de volgende tabel wordt de uitvoer van het logboek voor langzame query's beschreven. Afhankelijk van de uitvoer methode worden de opgenomen velden en de volg orde waarin ze worden weer gegeven, mogelijk verschillend.
 

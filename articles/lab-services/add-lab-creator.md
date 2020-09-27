@@ -3,12 +3,12 @@ title: Een gebruiker toevoegen als een Lab-Maker in Azure Lab Services
 description: In dit artikel wordt beschreven hoe u een gebruiker toevoegt aan de rol Lab Creator voor een Lab-account in Azure Lab Services. De Lab-makers kunnen Labs maken binnen dit lab-account.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 34fbf9085f36d008607b648825585d3435cc2895
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5fdeb33dab60a2fb9f1680295c355e2c7c0e775a
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85444281"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399479"
 ---
 # <a name="add-lab-creators-to-a-lab-account-in-azure-lab-services"></a>Lab-makers toevoegen aan een Lab-account in Azure Lab Services
 In dit artikel wordt beschreven hoe u gebruikers toevoegt als Lab-makers aan een Lab-account in Azure Lab Services. Deze gebruiken vervolgens kunnen klassikale Labs maken in het lab-account. 
@@ -31,7 +31,7 @@ Als u machtigingen wilt toekennen aan docenten om labs te maken voor hun lessen,
 ## <a name="add-a-non-microsoft-account-user-as-a-lab-creator"></a>Een niet-Microsoft-account gebruiker toevoegen als een Lab-Maker
 Als u een gebruiker wilt toevoegen als een Lab-Maker, gebruikt u hun e-mail accounts. De volgende typen e-mail accounts kunnen worden gebruikt:
 
-- Een e-mail account dat wordt verschaft door de Office 365-Azure Active Directory (AAD) van uw universiteit. 
+- Een e-mail account dat wordt verschaft door de Azure Active Directory van uw universiteit (AAD).
 - Een micro soft-e-mail account, zoals `@outlook.com` ,, `@hotmail.com` `@msn.com` of `@live.com` .
 - Een niet-micro soft-e-mail account, zoals het abonnement van Yahoo of Google. Deze typen accounts moeten echter worden gekoppeld aan een Microsoft-account.
 - Een GitHub-account. Dit account moet worden gekoppeld aan een Microsoft-account.

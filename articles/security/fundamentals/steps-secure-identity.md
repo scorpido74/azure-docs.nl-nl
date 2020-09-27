@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: d05670d55d8a4f9ad7ab691da3f05f1c3e0cd177
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: a8fa14999c75528171fbe811ee64f65b913ed820
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386143"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399802"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Vijf stappen voor het beveiligen van uw identiteits infrastructuur
 
@@ -82,7 +82,7 @@ U kunt [Power shell gebruiken om te voor komen dat wacht woorden verlopen](../..
 Als uw organisatie gebruikmaakt van een hybride identiteits oplossing met Pass-Through-verificatie of Federatie, moet u de wachtwoord hash-synchronisatie inschakelen om de volgende twee redenen:
 
 * Het rapport [gebruikers met gelekte referenties](../../active-directory/reports-monitoring/concept-risk-events.md) in het Azure AD-beheer waarschuwt u voor gebruikers naam-en wachtwoord paren, die zijn weer gegeven op het ' donkere Web '. Een ongelooflijke hoeveelheid wacht woorden wordt gelekt via phishing, malware en het opnieuw gebruiken van wacht woorden op sites van derden die later zijn geschonden. Micro soft vindt veel van deze gelekte referenties en vertelt u, in dit rapport, als ze overeenkomen met referenties in uw organisatie, maar alleen als u de [synchronisatie van wacht woord-hashes inschakelt](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md).
-* In het geval van een on-premises storing (bijvoorbeeld bij een Ransomware-aanval) kunt u overschakelen naar het gebruik van [Cloud verificatie met behulp van wachtwoord-hash-synchronisatie](choose-ad-authn.md). Met deze methode voor back-upauthenticatie kunt u de toegang tot apps die zijn geconfigureerd voor verificatie met Azure Active Directory, waaronder Office 365, blijven gebruiken. In dit geval hoeft de IT-afdeling geen persoonlijke e-mail accounts te maken om gegevens te delen totdat de on-premises storing is opgelost.
+* In het geval van een on-premises storing (bijvoorbeeld bij een Ransomware-aanval) kunt u overschakelen naar het gebruik van [Cloud verificatie met behulp van wachtwoord-hash-synchronisatie](choose-ad-authn.md). Met deze methode voor back-upauthenticatie kunt u de toegang tot apps die zijn geconfigureerd voor authenticatie met Azure Active Directory, inclusief Microsoft 365 blijven gebruiken. In dit geval hoeft de IT-afdeling geen persoonlijke e-mail accounts te maken om gegevens te delen totdat de on-premises storing is opgelost.
 
 Meer informatie over hoe [wachtwoord-hash-synchronisatie](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md) werkt.
 
@@ -193,7 +193,7 @@ De selfservice voor [wachtwoord herstel (SSPR)](../../active-directory/authentic
 
 ### <a name="implement-self-service-group-and-application-access"></a>Selfservice groep en toegang tot toepassingen implementeren
 
-Azure AD biedt u de mogelijkheid om niet-beheerders toegang tot resources te beheren, met behulp van beveiligings groepen, Office 365-groepen, toepassings rollen en toegangs pakket catalogi.  Met [groeps beheer met self-service](../../active-directory/users-groups-roles/groups-self-service-management.md) kunnen groeps eigenaren hun eigen groepen beheren, zonder dat er een administratieve rol moet worden toegewezen. Gebruikers kunnen ook Office 365-groepen maken en beheren zonder dat ze vertrouwen op beheerders om hun aanvragen af te handelen, en ongebruikte groepen worden automatisch verlopen.  Het [beheer van rechten van Azure AD](../../active-directory/governance/entitlement-management-overview.md) maakt verdere overdracht en zicht baarheid mogelijk, met uitgebreide werk stromen voor toegangs aanvragen en automatische verval datum.  U kunt delegeren aan niet-beheerders de mogelijkheid om hun eigen toegangs pakketten te configureren voor groepen, teams, toepassingen en share point online-sites waarvan ze eigenaar zijn, met aangepaste beleids regels voor wie de toegang moet goed keuren, waaronder het configureren van managers van werk nemers en sponsors als fiatteurs.
+Azure AD biedt u de mogelijkheid om niet-beheerders toegang tot resources te beheren, met behulp van beveiligings groepen, Microsoft 365 groepen, toepassings rollen en toegangs pakket catalogi.  Met [groeps beheer met self-service](../../active-directory/users-groups-roles/groups-self-service-management.md) kunnen groeps eigenaren hun eigen groepen beheren, zonder dat er een administratieve rol moet worden toegewezen. Gebruikers kunnen ook Microsoft 365 groepen maken en beheren zonder dat ze afhankelijk zijn van beheerders om hun aanvragen af te handelen, en ongebruikte groepen worden automatisch verlopen.  Het [beheer van rechten van Azure AD](../../active-directory/governance/entitlement-management-overview.md) maakt verdere overdracht en zicht baarheid mogelijk, met uitgebreide werk stromen voor toegangs aanvragen en automatische verval datum.  U kunt delegeren aan niet-beheerders de mogelijkheid om hun eigen toegangs pakketten te configureren voor groepen, teams, toepassingen en share point online-sites waarvan ze eigenaar zijn, met aangepaste beleids regels voor wie de toegang moet goed keuren, waaronder het configureren van managers van werk nemers en sponsors als fiatteurs.
 
 ### <a name="implement-azure-ad-access-reviews"></a>Azure AD-toegangs beoordelingen implementeren
 

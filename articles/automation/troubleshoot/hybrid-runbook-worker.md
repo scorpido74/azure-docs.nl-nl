@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2149fd68cdf5f2991d6035f245f70515e920045c
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 4fcd3d143cf2dbb529a8c9c78a769165621e2e89
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187197"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400414"
 ---
 # <a name="troubleshoot-hybrid-runbook-worker-issues"></a>Problemen met Hybrid Runbook Worker oplossen
 
@@ -234,11 +234,11 @@ Logboeken worden lokaal opgeslagen op elke Hybrid worker op C:\ProgramData\Micro
 
 Hybride werk rollen verzenden [runbook-uitvoer en-berichten](../automation-runbook-output-and-messages.md) naar Azure Automation op dezelfde manier als de runbook-taken die in de cloud worden uitgevoerd, uitvoer en berichten verzenden. U kunt de uitgebreide en voortgangs stromen op dezelfde manier inschakelen als voor runbooks.
 
-### <a name="scenario-orchestratorsandboxexe-cant-connect-to-office-365-through-proxy"></a><a name="no-orchestrator-sandbox-connect-O365"></a>Scenario: Orchestrator.Sandbox.exe kan geen verbinding maken met Office 365 via proxy
+### <a name="scenario-orchestratorsandboxexe-cant-connect-to-microsoft-365-through-proxy"></a>Scenario: Orchestrator.Sandbox.exe kan geen verbinding maken met Microsoft 365 via proxy
 
 #### <a name="issue"></a>Probleem
 
-Een script dat wordt uitgevoerd op een Windows-Hybrid Runbook Worker geen verbinding kan maken zoals verwacht voor Office 365 op een Orchestrator sandbox. Het script maakt gebruik van [Connect-MsolService](/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) voor de verbinding. 
+Een script dat wordt uitgevoerd op een Windows-Hybrid Runbook Worker kan niet op de verwachte manier verbinding maken met Microsoft 365 op een Orchestrator sandbox. Het script maakt gebruik van [Connect-MsolService](/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) voor de verbinding. 
 
 Als u **Orchestrator.Sandbox.exe.config** wijzigt om de proxy en de lijst overs laan in te stellen, wordt de sandbox nog steeds niet goed verbonden. Een **Powershell_ise.exe.config** -bestand met dezelfde proxy en de lijst instellingen overs Laan lijkt te werken zoals verwacht. Service Management Automation-Logboeken (SMA) en Power shell-logboeken bevatten geen informatie over de proxy.
 

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2020
 ms.author: terrylan
-ms.openlocfilehash: d861388c8c7a5ff64a17607736d4c8a292343dec
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3dd209d90947ebef7eb7b074992a55305005e7bb
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071597"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399530"
 ---
 # <a name="azure-security-technical-capabilities"></a>Technische mogelijkheden van Azure-beveiliging
 Dit artikel bevat een inleiding tot beveiligings Services in azure waarmee u uw gegevens, resources en toepassingen in de cloud kunt beveiligen en voldoen aan de beveiligings behoeften van uw bedrijf.
@@ -78,13 +78,13 @@ Hier volgen de belangrijkste mogelijkheden van Azure Identity Management:
 
 - Privileged Identity Management
 
-- Identiteitsbescherming
+- Identiteitsbeveiliging
 
 #### <a name="single-sign-on"></a>Eenmalige aanmelding
 
 [Eenmalige aanmelding (SSO)](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/) betekent dat u toegang hebt tot alle toepassingen en bronnen die u nodig hebt om zaken te doen, door zich slechts één keer aan te melden met één gebruikers account. Wanneer u bent aangemeld, hebt u toegang tot alle toepassingen die u nodig hebt zonder dat u een tweede keer hoeft te verifiëren (Typ bijvoorbeeld een wacht woord).
 
-Veel organisaties zijn afhankelijk van SaaS-toepassingen (Software as a Service), zoals Office 365, box en Sales Force voor productiviteit van eind gebruikers. In het verleden moesten IT-mede werkers in elke SaaS-toepassing afzonderlijke gebruikers accounts maken en bijwerken, en moeten gebruikers een wacht woord onthouden voor elke SaaS-toepassing.
+Veel organisaties zijn afhankelijk van SaaS-toepassingen (Software as a Service), zoals Microsoft 365, box en Sales Force voor productiviteit van eind gebruikers. In het verleden moesten IT-mede werkers in elke SaaS-toepassing afzonderlijke gebruikers accounts maken en bijwerken, en moeten gebruikers een wacht woord onthouden voor elke SaaS-toepassing.
 
 [Azure AD breidt on-premises Active Directory uit in de Cloud](../../active-directory/manage-apps/what-is-single-sign-on.md), zodat gebruikers hun primaire organisatie-account kunnen gebruiken om zich niet alleen aan te melden bij hun apparaten in het domein en bedrijfs bronnen, maar ook voor alle web-en SaaS-toepassingen die nodig zijn voor hun taak.
 
@@ -126,21 +126,21 @@ In combi natie met een oplossing voor [Mobile Device Management (MDM)](https://w
 
 #### <a name="privileged-identity-management"></a>Privileged Identity Management
 
-Met [Azure Active Directory (AD) privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md) kunt u uw bevoorrechte identiteiten en toegang tot resources in azure AD en andere micro soft-onlineservices, zoals Office 365 of Microsoft intune, beheren, controleren en bewaken.
+Met [Azure Active Directory (AD) privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md) kunt u uw bevoorrechte identiteiten en toegang tot resources in azure AD en andere micro soft-onlineservices zoals Microsoft 365 of Microsoft intune beheren, controleren en bewaken.
 
-Soms moeten gebruikers geprivilegieerde bewerkingen uitvoeren in azure-of Office 365-resources of andere SaaS-apps. Dit betekent vaak dat organisaties hun permanente privileged Access in azure AD moeten opgeven. Dit is een groeiend beveiligings risico voor resources die in de cloud worden gehost, omdat organisaties niet voldoende kunnen controleren wat gebruikers met hun beheerders bevoegdheden doen. Als een gebruikers account met bevoorrechte toegang is aangetast, kan dit ook van invloed zijn op de algehele beveiliging van de Cloud. Azure AD Privileged Identity Management helpt dit risico op te lossen.
+Soms moeten gebruikers bevoegde bewerkingen uitvoeren in azure of Microsoft 365 resources of andere SaaS-apps. Dit betekent vaak dat organisaties hun permanente privileged Access in azure AD moeten opgeven. Dit is een groeiend beveiligings risico voor resources die in de cloud worden gehost, omdat organisaties niet voldoende kunnen controleren wat gebruikers met hun beheerders bevoegdheden doen. Als een gebruikers account met bevoorrechte toegang is aangetast, kan dit ook van invloed zijn op de algehele beveiliging van de Cloud. Azure AD Privileged Identity Management helpt dit risico op te lossen.
 
 Met Azure AD Privileged Identity Management kunt u het volgende doen:
 
 - Zien welke gebruikers Azure AD-beheerders zijn
 
-- Op aanvraag ' just-in-time ' beheerders toegang tot micro soft online services zoals Office 365 en intune inschakelen
+- Op aanvraag ' just-in-time ' beheerders toegang tot micro soft online services zoals Microsoft 365 en intune inschakelen
 
 - Rapporten over beheerders toegangs geschiedenis en wijzigingen in beheerders toewijzingen ophalen
 
 - Waarschuwingen ontvangen over toegang tot een bevoorrechte rol
 
-#### <a name="identity-protection"></a>Identiteitsbescherming
+#### <a name="identity-protection"></a>Identiteitsbeveiliging
 
 [Azure AD Identity Protection](../../active-directory/identity-protection/overview.md) is een beveiligings service die een geconsolideerde weer gave biedt voor risico detecties en mogelijke beveiligings problemen die van invloed zijn op de identiteiten van uw organisatie. Identiteits beveiliging maakt gebruik van de bestaande Azure Active Directory afwijkingen detectie mogelijkheden (beschikbaar via de afwijkende activiteiten van Azure AD) en introduceert nieuwe typen risico detectie waarmee afwijkingen in realtime kunnen worden gedetecteerd.
 
@@ -339,7 +339,7 @@ Met deze methode kunt u gegevens uit verschillende bronnen consolideren, zodat u
 
 Security Center analyseert de beveiligingsstatus van uw Azure-resources om mogelijke beveiligingsproblemen op te sporen. Een lijst met aanbevelingen begeleidt u bij het configureren van benodigde besturingselementen.
 
-Voorbeelden zijn:
+Enkele voorbeelden:
 
 - Inrichting van antimalware om schadelijke software te identificeren en te verwijderen
 

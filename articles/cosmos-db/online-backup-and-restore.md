@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/24/2020
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: f8ec215458e8ebfafb87209516f167d628e98389
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 6485df342bbe0b2378a67b90e448b2bd98c5e283
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89047625"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400397"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Herstel van online back-ups en gegevens op aanvraag in Azure Cosmos DB
 
@@ -22,11 +22,11 @@ Azure Cosmos DB maakt met regel matige tussen pozen automatisch back-ups van uw 
 
 Met Azure Cosmos DB, niet alleen uw gegevens, maar ook de back-ups van uw gegevens zijn zeer redundant en robuust voor regionale rampen. De volgende stappen laten zien hoe Azure Cosmos DB gegevens back-up uitvoert:
 
-* Azure Cosmos DB automatisch een back-up van uw data base maakt, elke 4 uur en op elk gewenst moment, worden alleen de meest recente twee back-ups standaard opgeslagen. Als de standaard intervallen niet voldoende zijn voor uw workloads, kunt u het back-upinterval en de retentie periode van de Azure Portal wijzigen. U kunt de back-upconfiguratie wijzigen tijdens of nadat het Azure Cosmos-account is gemaakt. Als de container of Data Base wordt verwijderd, Azure Cosmos DB de bestaande moment opnamen van een bepaalde container of data base gedurende 30 dagen behouden.
+* Azure Cosmos DB maakt automatisch een volledige back-up van uw data base in elke 4 uur en op elk gewenst moment worden alleen de meest recente twee back-ups standaard opgeslagen. Als de standaard intervallen niet voldoende zijn voor uw workloads, kunt u het back-upinterval en de retentie periode van de Azure Portal wijzigen. U kunt de back-upconfiguratie wijzigen tijdens of nadat het Azure Cosmos-account is gemaakt. Als de container of Data Base wordt verwijderd, Azure Cosmos DB de bestaande moment opnamen van een bepaalde container of data base gedurende 30 dagen behouden.
 
 * Azure Cosmos DB slaat deze back-ups op in Azure Blob-opslag terwijl de daad werkelijke gegevens lokaal zijn opgeslagen in Azure Cosmos DB.
 
-* Om een lage latentie te garanderen, wordt de moment opname van uw back-up opgeslagen in Azure Blob Storage in dezelfde regio als de huidige schrijf regio (of **een** van de schrijf regio's, voor het geval u een configuratie met meerdere masters hebt). Voor tolerantie tegen regionale nood gevallen wordt elke moment opname van de back-upgegevens in Azure Blob-opslag opnieuw gerepliceerd naar een andere regio via Geo-redundante opslag (GRS). De regio waarnaar de back-up wordt gerepliceerd, is gebaseerd op de bron regio en het regionale paar dat is gekoppeld aan de bron regio. Zie de [lijst met geo-redundante paren van Azure-regio's](../best-practices-availability-paired-regions.md) voor meer informatie. U hebt geen rechtstreekse toegang tot deze back-up. Azure Cosmos DB team herstelt uw back-up wanneer u een verzoek om een ondersteunings aanvraag doet.
+* Voor het realiseren van een lage latentie wordt de momentopname van uw back-up in Azure Blob Storage opgeslagen in dezelfde regio als de huidige schrijfregio (of **een** van de schrijfregio's in het geval u een configuratie met meerdere masters hebt). Voor tolerantie tegen regionale noodsituaties wordt elke momentopname van de back-upgegevens in Azure Blob-opslag opnieuw gerepliceerd naar een andere regio via geografisch redundante opslag (GRS). De regio waarnaar de back-up wordt gerepliceerd, is gebaseerd op de bronregio en het regionale paar dat aan de bronregio is gekoppeld. Zie de [lijst met geo-redundante paren van Azure-regio's](../best-practices-availability-paired-regions.md) voor meer informatie. U hebt geen rechtstreekse toegang tot deze back-up. Azure Cosmos DB team herstelt uw back-up wanneer u daartoe een verzoek via een ondersteuningsaanvraag doet.
 
    In de volgende afbeelding ziet u hoe een Azure Cosmos-container met alle drie primaire fysieke partities in West VS een back-up maakt in een extern Azure Blob Storage-account in VS-West en vervolgens wordt gerepliceerd naar VS-Oost:
 
@@ -44,7 +44,7 @@ Met Azure Cosmos DB SQL-API-accounts kunt u ook uw eigen back-ups onderhouden me
 
 ## <a name="modify-the-backup-interval-and-retention-period"></a>Het back-upinterval en de Bewaar periode wijzigen
 
-Azure Cosmos DB maakt automatisch een back-up van uw gegevens voor elke vier uur en op elk gewenst moment worden de meest recente twee back-ups opgeslagen. Deze configuratie is de standaard optie en wordt aangeboden zonder dat er extra kosten in rekening worden gebracht. U kunt het standaard interval voor back-ups en de Bewaar periode wijzigen tijdens het maken van het Azure Cosmos-account of nadat het account is gemaakt. De back-upconfiguratie is ingesteld op het niveau van het Azure Cosmos-account en u moet het configureren voor elk account. Nadat u de back-upopties voor een account hebt geconfigureerd, wordt deze toegepast op alle containers in dat account. U kunt de opties voor back-ups op dit moment alleen wijzigen van Azure Portal.
+Azure Cosmos DB maakt automatisch een volledige back-up van uw gegevens voor elke 4 uur en op elk gewenst moment worden de meest recente twee back-ups opgeslagen. Deze configuratie is de standaard optie en wordt aangeboden zonder dat er extra kosten in rekening worden gebracht. U kunt het standaard interval voor back-ups en de Bewaar periode wijzigen tijdens het maken van het Azure Cosmos-account of nadat het account is gemaakt. De back-upconfiguratie wordt ingesteld op het niveau van het Azure Cosmos-account en u moet deze voor elk account configureren. Nadat u de back-upopties voor een account hebt geconfigureerd, wordt deze toegepast op alle containers in dat account. U kunt de back-upopties momenteel alleen wijzigen in Azure Portal.
 
 Als u uw gegevens per ongeluk hebt verwijderd of beschadigd **voordat u een ondersteunings aanvraag voor het herstellen van de gegevens maakt, moet u de retentie van de back-up voor uw account verg Roten tot ten minste zeven dagen. Het is het beste om uw Bewaar periode binnen 8 uur na deze gebeurtenis te verg Roten.** Op deze manier heeft het Azure Cosmos DB-team voldoende tijd om uw account te herstellen.
 
@@ -57,7 +57,7 @@ Gebruik de volgende stappen om de standaard back-upopties voor een bestaand Azur
 
    * **Bewaren van back-ups** : deze vertegenwoordigt de periode waarin elke back-up wordt bewaard. U kunt deze configureren in uren of dagen. De minimale Bewaar periode mag niet korter zijn dan twee keer het back-upinterval (in uren) en mag niet groter zijn dan 720 uur.
 
-   * **Kopieën van opgeslagen gegevens** -standaard worden twee back-ups van uw gegevens gratis aangeboden. Er worden extra kosten in rekening gebracht als u meer dan twee exemplaren nodig hebt. Zie de sectie verbruikte opslag in de [pagina met prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/) voor meer informatie over de exacte prijs voor extra exemplaren.
+   * **Kopieën van opgeslagen gegevens** -standaard worden twee back-ups van uw gegevens gratis aangeboden. Er worden extra kosten in rekening gebracht als u meer dan twee exemplaren nodig hebt. Zie de sectie over verbruikte opslag in de [pagina met prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/) als u wilt weten wat de exacte prijs voor extra exemplaren is.
 
    :::image type="content" source="./media/online-backup-and-restore/configure-backup-interval-retention.png" alt-text="Het back-upinterval en de retentie voor een bestaand Azure Cosmos-account configureren" border="true":::
 

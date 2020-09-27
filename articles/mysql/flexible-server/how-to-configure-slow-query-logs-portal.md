@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: 1a829f4e5f45394d9c5bbed0db9289727b816917
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a73a2bc82c7f4e77808f751bb8ba24adcacd2e31
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91315028"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400380"
 ---
 # <a name="configure-and-access-slow-query-logs-for-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>Langzame query logboeken voor Azure Database for MySQL-flexibele server configureren en openen met behulp van de Azure Portal
 
@@ -45,9 +45,6 @@ Op de pagina **server parameters** kunt u teruggaan naar de lijst met Logboeken 
 
 ## <a name="set-up-diagnostics"></a>Diagnostische gegevens instellen
 
-> [!NOTE]
-> Integratie met Azure Monitor Diagnostische instellingen voor toegang tot logboeken is in het implementatie proces en de volledige functionaliteit is binnenkort beschikbaar.
-
 Langzame query logboeken zijn geïntegreerd met Azure Monitor Diagnostische instellingen, zodat u uw logboeken kunt door geven aan Azure Monitor logboeken, Event Hubs of Azure Storage.
 
 1. Selecteer in de sectie **bewaking** van de zijbalk **Diagnostische instellingen**  >  **Diagnostische instellingen toevoegen**.
@@ -66,7 +63,7 @@ Langzame query logboeken zijn geïntegreerd met Azure Monitor Diagnostische inst
 
 1. Open de logboeken voor trage query's door ze te verkennen in de gegevens-sinks die u hebt geconfigureerd. Het kan tot tien minuten duren voordat de logboeken worden weer gegeven.
 
-Als u uw logboeken hebt gesluizen naar Azure Monitor Logboeken (Log Analytics), raadpleegt u enkele [voorbeeld query's](concepts-audit-logs.md#analyze-logs-in-azure-monitor-logs) die u kunt gebruiken voor analyse. 
+Als u uw logboeken hebt gesluizen naar Azure Monitor Logboeken (Log Analytics), raadpleegt u enkele [voorbeeld query's](concepts-slow-query-logs.md#analyze-logs-in-azure-monitor-logs) die u kunt gebruiken voor analyse. 
 
 ## <a name="next-steps"></a>Volgende stappen
 <!-- - See [Access slow query Logs in CLI](howto-configure-server-logs-in-cli.md) to learn how to download slow query logs programmatically.-->

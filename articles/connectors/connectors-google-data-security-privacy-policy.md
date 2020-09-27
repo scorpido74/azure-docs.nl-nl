@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: conceptual
 ms.date: 06/05/2020
-ms.openlocfilehash: b82b79d076871b961d5c496bc70beac1b5067b2d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 2a5204be638f108b40e431b148c9cb97788c4a52
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288110"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400754"
 ---
 # <a name="data-security-and-privacy-policies-for-google-connectors-in-azure-logic-apps"></a>Beleid voor gegevens beveiliging en privacy voor Google connectors in Azure Logic Apps
 
@@ -40,7 +40,7 @@ Wanneer u onder dit beleid een Gmail-Consumer-account gebruikt, kunt u de Gmail-
 
 * Google services: Gmail, Google Calendar, Google Contacts, Google Drive, Google spread sheets en Google-taken
 
-* Goedgekeurde micro soft-Services: Dynamics 365, Excel online, micro soft teams, Office 365, OneDrive en share point online
+* Goedgekeurde micro soft-Services: Dynamics 365, Excel online, micro soft teams, Microsoft 365, OneDrive en share point online
 
 * Connectors voor door de klant beheerde gegevens bronnen: FTP, RSS, SFTP, SMTP en SQL Server
 
@@ -101,7 +101,7 @@ Voer de volgende stappen uit om de client-ID en het client geheim te gebruiken v
    | Eigenschap | Waarde | Beschrijving |
    |----------|-------|-------------|
    | **Verificatie type** | **Uw eigen toepassing meenemen** | Hiermee geeft u op dat u uw eigen client-app voor verificatie wilt gebruiken. |
-   | **Client-id** | <*client-ID*> | De client-ID van uw Google client-app |
+   | **Client ID** | <*client-ID*> | De client-ID van uw Google client-app |
    | **Clientgeheim** | <*client-geheim*> | Het client geheim van uw Google client-app |
    ||||
 

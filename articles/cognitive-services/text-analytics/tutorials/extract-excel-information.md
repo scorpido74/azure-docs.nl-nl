@@ -1,5 +1,5 @@
 ---
-title: Informatie in Excel extra heren met behulp van Text Analytics en energie automatisering
+title: Informatie extraheren in Excel met behulp van Text Analytics en Power Automate
 titleSuffix: Azure Cognitive Services
 description: Meer informatie over het extra heren van Excel-tekst zonder code te hoeven schrijven met behulp van Text Analytics en energie automatisering.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 02/27/2019
 ms.author: aahi
-ms.openlocfilehash: b9e6561c1ed9870b669ec5e9825a376f8bd03c4d
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: b67de07777fa3f4f2b6190d8b003eb0495e66d15
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145699"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400482"
 ---
-# <a name="extract-information-in-excel-using-text-analytics-and-power-automate"></a>Informatie in Excel extra heren met behulp van Text Analytics en energie automatisering 
+# <a name="extract-information-in-excel-using-text-analytics-and-power-automate"></a>Informatie extraheren in Excel met behulp van Text Analytics en Power Automate 
 
 In deze zelf studie maakt u een stroom voor automatische stroom om tekst in een Excel-spread sheet te extra heren zonder dat u code hoeft te schrijven. 
 
@@ -33,11 +33,11 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Microsoft Azure-account. [Maak een gratis account](https://azure.microsoft.com/free/cognitive-services/) of [Meld u aan](https://portal.azure.com/).
+- Een Microsoft Azure-account. [Een gratis account maken](https://azure.microsoft.com/free/cognitive-services/) en [aanmelden](https://portal.azure.com/).
 - Een Text Analytics resource. Als u er geen hebt, kunt u [er een maken in de Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) en de gratis laag gebruiken om deze zelf studie te volt ooien.
 - De [sleutel en het eind punt](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) die voor u zijn gegenereerd tijdens het aanmelden.
 - Een werk blad met Tenant problemen. Voor beelden van gegevens vindt u op GitHub
-- Office 365, met OneDrive voor bedrijven.
+- Microsoft 365, met OneDrive voor bedrijven.
 
 ## <a name="add-the-excel-file-to-onedrive-for-business"></a>Het Excel-bestand toevoegen aan OneDrive voor bedrijven
 
@@ -78,10 +78,10 @@ Voeg de volgende informatie toe aan de variabelen die u hebt gemaakt. Ze vertege
 
 | Actie |Naam   | Type | Waarde |
 |---------|---------|---|---|
-| Variabele initialiseren | var_person | Tekenreeks | Person |
+| Variabele initialiseren | var_person | Tekenreeks | Persoon |
 | Variabele 2 initialiseren | var_phone | Tekenreeks | Phone_Number |
 | Variabele 3 initialiseren | var_plumbing | Tekenreeks | werkzaamheden |
-| Variabele 4 initialiseren | var_other | Tekenreeks | andere | 
+| Variabele 4 initialiseren | var_other | Tekenreeks | other | 
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/flow-variables.png" alt-text="informatie in de stroom variabelen":::
@@ -218,7 +218,7 @@ In de voor waarde **als Nee** klikt u op **een actie toevoegen**en selecteert u 
 
 ## <a name="test-the-workflow"></a>De werkstroom testen
 
-Klik in de rechter bovenhoek van het scherm op **Opslaan**en vervolgens op **testen**. Selecteer **Ik voer de trigger actie uit**. Klik op **opslaan & test**, **Voer flow uit**en klik vervolgens op **gereed**.
+Klik in de rechter bovenhoek van het scherm op **Opslaan**en vervolgens op **testen**. Selecteer  **Ik voer de trigger actie uit**. Klik op **opslaan & test**, **Voer flow uit**en klik vervolgens op **gereed**.
 
 Het Excel-bestand wordt bijgewerkt in uw OneDrive-account. Dit ziet er als volgt uit.
 

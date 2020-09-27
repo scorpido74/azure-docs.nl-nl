@@ -7,16 +7,16 @@ ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 07/27/2020
 tags: connectors
-ms.openlocfilehash: e0e152b3c0e10c34bc6213ddf867b79c58d1d767
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 9b10778e665675e9e033953e2a8b9df16dd636d3
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87832974"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400771"
 ---
 # <a name="manage-email-contacts-and-calendars-in-office-365-outlook-by-using-azure-logic-apps"></a>E-mail, contactpersonen en agenda's beheren in Office 365 Outlook met behulp van Azure Logic Apps
 
-Met [Azure Logic apps](../logic-apps/logic-apps-overview.md) en de [Office 365 Outlook-Connector](/connectors/office365connector/)kunt u geautomatiseerde taken en werk stromen maken die uw Office 365-account beheren door Logic apps te bouwen. U kunt bijvoorbeeld de volgende taken automatiseren:
+Met [Azure Logic apps](../logic-apps/logic-apps-overview.md) en de [Office 365 Outlook-Connector](/connectors/office365connector/)kunt u geautomatiseerde taken en werk stromen maken voor het beheren van uw werk-of school account door Logic apps te bouwen. U kunt bijvoorbeeld de volgende taken automatiseren:
 
 * E-mail ontvangen, verzenden en beantwoorden. 
 * Plan vergaderingen in uw agenda.
@@ -31,9 +31,9 @@ U kunt elke trigger gebruiken om uw werk stroom te starten, bijvoorbeeld wanneer
 
 * Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, [registreer u dan nu voor een gratis Azure-account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
-* Een [Office 365-account](https://www.office.com/)
+* Een [werk-of school account](https://www.office.com/)
 
-* De logische app waar u toegang wilt krijgen tot uw Office 365 Outlook-account. Als u uw werk stroom wilt starten met een Office 365 Outlook-trigger, moet u een [lege logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md)hebben. Als u een Office 365 Outlook-actie wilt toevoegen aan uw werk stroom, moet uw logische app al een trigger hebben.
+* De logische app waartoe u toegang wilt krijgen tot uw werk-of school account. Als u uw werk stroom wilt starten met een Office 365 Outlook-trigger, moet u een [lege logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md)hebben. Als u een Office 365 Outlook-actie wilt toevoegen aan uw werk stroom, moet uw logische app al een trigger hebben.
 
 ## <a name="add-a-trigger"></a>Een trigger toevoegen
 
@@ -45,7 +45,7 @@ Een [trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts) is een ge
    
    ![Selecteer trigger om uw logische app te starten](./media/connectors-create-api-office365-outlook/office365-trigger.png)
 
-1. Als u wordt gevraagd om u aan te melden, geeft u uw Office 365-referenties op zodat uw logische app verbinding kan maken met uw account. Als uw verbinding al bestaat, geeft u de informatie voor de eigenschappen van de trigger op.
+1. Als u wordt gevraagd om u aan te melden, geeft u uw werk-of school referenties op zodat uw logische app verbinding kan maken met uw account. Als uw verbinding al bestaat, geeft u de informatie voor de eigenschappen van de trigger op.
 
    > [!NOTE]
    > Uw verbinding verloopt pas nadat u de aanmeldings referenties hebt gewijzigd. Zie [Configureer bare token levensduur in azure Active Directory](../active-directory/develop/active-directory-configurable-token-lifetimes.md)voor meer informatie.
@@ -78,7 +78,7 @@ Een [actie](../logic-apps/logic-apps-overview.md#logic-app-concepts) is een bewe
 
    ![Selecteer de actie die moet worden uitgevoerd in uw logische app](./media/connectors-create-api-office365-outlook/office365-actions.png) 
 
-1. Als u wordt gevraagd om u aan te melden, geeft u uw Office 365-referenties op zodat uw logische app verbinding kan maken met uw account. Als uw verbinding al bestaat, geeft u de informatie op voor de eigenschappen van de actie.
+1. Als u wordt gevraagd om u aan te melden, geeft u uw werk-of school referenties op zodat uw logische app verbinding kan maken met uw account. Als uw verbinding al bestaat, geeft u de informatie op voor de eigenschappen van de actie.
 
    > [!NOTE]
    > Uw verbinding verloopt pas nadat u de aanmeldings referenties hebt gewijzigd. Zie [Configureer bare token levensduur in azure Active Directory](../active-directory/develop/active-directory-configurable-token-lifetimes.md)voor meer informatie.

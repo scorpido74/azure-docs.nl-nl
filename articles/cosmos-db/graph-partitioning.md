@@ -1,19 +1,19 @@
 ---
 title: Gegevens partitioneren in Azure Cosmos DB Gremlin-API
 description: Meer informatie over hoe u een gepartitioneerde grafiek in Azure Cosmos DB kunt gebruiken. In dit artikel worden ook de vereisten en aanbevolen procedures voor een gepartitioneerde grafiek beschreven.
-author: luisbosquez
-ms.author: lbosq
+author: SnehaGunda
+ms.author: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 06/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 78c15da1ea9fe5f6307ce388e4d64d372e9eb8c8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a993779bc47f1a9b2be8851fafe628ae4286f4a
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261763"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400499"
 ---
 # <a name="using-a-partitioned-graph-in-azure-cosmos-db"></a>Gepartitioneerde graaf gebruiken in Azure Cosmos DB
 
@@ -33,39 +33,39 @@ De volgende richt lijnen beschrijven hoe de strategie voor partitioneren in Azur
 
 - **Randen worden opgeslagen met hun bron hoekpunt**. Met andere woorden, voor elk hoek punt is de partitie sleutel gedefinieerd waar ze samen met de uitgaande randen worden opgeslagen. Deze optimalisatie wordt uitgevoerd om cross-Partition query's te voor komen bij het gebruik `out()` van de kardinaliteit in Graph-query's.
 
-- **Randen bevatten verwijzingen naar de hoek punten waarnaar ze verwijzen**. Alle randen worden opgeslagen met de partitie sleutels en de Id's van de hoek punten waarnaar ze verwijzen. Met deze berekening worden alle query's in de `out()` richting altijd een gepartitioneerde, niet-verwerkte query en niet een blinde Kruis partitie query. 
+- **Randen bevatten verwijzingen naar de hoek punten waarnaar ze verwijzen**. Alle randen worden opgeslagen met de partitie sleutels en de Id's van de hoek punten waarnaar ze verwijzen. Met deze berekening worden alle query's in de `out()` richting altijd een gepartitioneerde, niet-verwerkte query en niet een blinde Kruis partitie query.
 
 - **Graph-query's moeten een partitie sleutel opgeven**. Als u optimaal wilt profiteren van de horizontale partitionering in Azure Cosmos DB, moet de partitie sleutel worden opgegeven wanneer één hoek punt wordt geselecteerd, wanneer dit mogelijk is. Hieronder vindt u query's waarmee u een of meer hoek punten in een gepartitioneerde grafiek selecteert:
 
-    - `/id`en `/label` worden niet ondersteund als partitie sleutels voor een container in de Gremlin-API.
+    - `/id` en `/label` worden niet ondersteund als partitie sleutels voor een container in de Gremlin-API.
 
 
-    - Selecteer een hoek punt op ID en **gebruik vervolgens de `.has()` stap om de eigenschap van de partitie sleutel op te geven**: 
-    
+    - Selecteer een hoek punt op ID en **gebruik vervolgens de `.has()` stap om de eigenschap van de partitie sleutel op te geven**:
+
         ```java
         g.V('vertex_id').has('partitionKey', 'partitionKey_value')
         ```
-    
-    - Een hoek punt selecteren door **een tuple op te geven, inclusief de partitie sleutel waarde en de id**: 
-    
+
+    - Een hoek punt selecteren door **een tuple op te geven, inclusief de partitie sleutel waarde en de id**:
+
         ```java
         g.V(['partitionKey_value', 'vertex_id'])
         ```
-        
+
     - Het opgeven **van een matrix met Tuples van partitie sleutel waarden en-id's**:
-    
+
         ```java
         g.V(['partitionKey_value0', 'verted_id0'], ['partitionKey_value1', 'vertex_id1'], ...)
         ```
-        
-    - Een set hoek punten selecteren met hun Id's en **een lijst met partitie sleutel waarden opgeven**: 
-    
+
+    - Een set hoek punten selecteren met hun Id's en **een lijst met partitie sleutel waarden opgeven**:
+
         ```java
         g.V('vertex_id0', 'vertex_id1', 'vertex_id2', …).has('partitionKey', within('partitionKey_value0', 'partitionKey_value01', 'partitionKey_value02', …)
         ```
 
-    - Het gebruik van de **partitie strategie** aan het begin van een query en het opgeven van een partitie voor het bereik van de rest van de Gremlin-query: 
-    
+    - Het gebruik van de **partitie strategie** aan het begin van een query en het opgeven van een partitie voor het bereik van de rest van de Gremlin-query:
+
         ```java
         g.withStrategies(PartitionStrategy.build().partitionKey('partitionKey').readPartitions('partitionKey_value').create()).V()
         ```

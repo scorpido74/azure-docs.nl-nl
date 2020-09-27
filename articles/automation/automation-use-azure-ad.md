@@ -4,12 +4,12 @@ description: In dit artikel leest u hoe u Azure AD in Azure Automation kunt gebr
 services: automation
 ms.date: 03/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: c17c9cdc02c87037a39b8d6029bc4506afa8ad28
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bbd1f977b548c2b8e7980709ea125c07e22b1fa2
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87064382"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400669"
 ---
 # <a name="use-azure-ad-to-authenticate-to-azure"></a>Azure AD gebruiken voor verificatie bij Azure
 
@@ -21,7 +21,7 @@ U kunt Azure AD inschakelen via de volgende Power shell-modules:
 
 * Azure Active Directory Power shell for Graph (AzureRM-en AZ-modules). Azure Automation wordt geleverd met de AzureRM-module en de recente upgrade, de AZ-module. De functionaliteit omvat niet-interactieve verificatie voor Azure met behulp van verificatie op basis van Azure AD User (OrgId). Zie [Azure ad 2.0.2.76](https://www.powershellgallery.com/packages/AzureAD/2.0.2.76).
 
-* Microsoft Azure Active Directory voor Windows Power shell (MSOnline-module). Deze module maakt interacties mogelijk met micro soft online, met inbegrip van Office 365.
+* Microsoft Azure Active Directory voor Windows Power shell (MSOnline-module). Deze module maakt interacties mogelijk met micro soft online, met inbegrip van Microsoft 365.
 
 >[!NOTE]
 >Power shell core biedt geen ondersteuning voor de MSOnline-module. Als u de module-cmdlets wilt gebruiken, moet u deze uitvoeren vanuit Windows Power shell. U wordt aangeraden de nieuwere Azure Active Directory Power shell voor Graph-modules te gebruiken in plaats van de MSOnline-module. 
@@ -46,7 +46,7 @@ Voordat u de Azure AD-modules op uw computer installeert:
 ### <a name="install-the-msonline-module"></a>De MSOnline-module installeren
 
 >[!NOTE]
->Als u de MSOnline-module wilt installeren, moet u lid zijn van een Office 365-beheerdersrol. Zie [over beheerders rollen](/microsoft-365/admin/add-users/about-admin-roles?view=o365-worldwide).
+>Als u de MSOnline-module wilt installeren, moet u lid zijn van een beheerdersrol. Zie [over beheerders rollen](/microsoft-365/admin/add-users/about-admin-roles).
 
 1. Zorg ervoor dat de functie Microsoft .NET Framework 3.5. x is ingeschakeld op de computer. Waarschijnlijk is er een nieuwere versie geïnstalleerd op uw computer, maar achterwaartse compatibiliteit met oudere versies van de .NET Framework kan worden ingeschakeld of uitgeschakeld. 
 

@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 09/22/2020
 ms.custom: generated
-ms.openlocfilehash: 973426c6d9d3a4c642e5f37aebe60acce54d581b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ade4a6b791a8aca963a056800bd8c58767aeb766
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326402"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400091"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure-resource provider bewerkingen
 
@@ -5098,7 +5098,7 @@ Azure-service: [Cognitive Services](../cognitive-services/index.yml)
 
 ### <a name="microsoftmachinelearning"></a>Microsoft.MachineLearning
 
-Azure-service: [machine learning Studio (klassiek)](../machine-learning/studio/index.yml)
+Azure-service: [machine learning Studio (klassiek)](../machine-learning/classic/index.yml)
 
 > [!div class="mx-tableFixed"]
 > | Actie | Beschrijving |
@@ -5242,36 +5242,6 @@ Azure-service: [machine learning-service](../machine-learning/index.yml)
 > | Micro soft. MachineLearningServices/werk ruimten/Services/AKS/listkeys ophalen/actie | Lijst met sleutels voor AKS-Services in Machine Learning Services werk ruimte (n) |
 > | Micro soft. MachineLearningServices/werk ruimten/Services/AKS/verwijderen | Hiermee verwijdert u AKS Services in Machine Learning Services werk ruimte (n) |
 > | Micro soft. MachineLearningServices/werk ruimten/Services/AKS/Score/actie | Scores AKS Services in Machine Learning Services werk ruimte (n) |
-
-
-### <a name="microsoftmachinelearning"></a>Microsoft.MachineLearning
-
-Azure-service: [machine learning Studio (klassiek)](../machine-learning/classic/index.yml)
-
-> [!div class="mx-tableFixed"]
-> | Actie | Beschrijving |
-> | --- | --- |
-> | Micro soft. MachineLearning/REGI ster/actie | Hiermee wordt het abonnement voor de resource provider van de machine learning-webservice geregistreerd en wordt het maken van webservices ingeschakeld. |
-> | Micro soft. MachineLearning/webservices/actie | Eigenschappen van regionale webservice maken voor ondersteunde regio's |
-> | Micro soft. MachineLearning/commitmentPlans/lezen | Een Machine Learning Toezeggings plan lezen |
-> | Micro soft. MachineLearning/commitmentPlans/schrijven | Een Machine Learning Toezeggings plan maken of bijwerken |
-> | Micro soft. MachineLearning/commitmentPlans/verwijderen | Een Machine Learning Toezeggings plan verwijderen |
-> | Micro soft. MachineLearning/commitmentPlans/deelname/actie | Een Machine Learning Toezeggings plan samen voegen |
-> | Micro soft. MachineLearning/commitmentPlans/commitmentAssociations/lezen | Een Machine Learning Toezeggings plan koppeling lezen |
-> | Micro soft. MachineLearning/commitmentPlans/commitmentAssociations/Move/Action | Een Machine Learning Toezeggings plan koppeling verplaatsen |
-> | Micro soft. MachineLearning/locaties/operationresults/lezen | Resultaat van een Machine Learning bewerking ophalen |
-> | Micro soft. MachineLearning/locaties/operationsstatus/lezen | De status van een doorlopende Machine Learning bewerking ophalen |
-> | Micro soft. MachineLearning/Operations/lezen | Machine Learning-bewerkingen ophalen |
-> | Micro soft. MachineLearning/sku's/lezen | Sku's van Machine Learning Toezeggings plan ophalen |
-> | Micro soft. MachineLearning/webservices/lezen | Alle Machine Learning-webservice lezen |
-> | Micro soft. MachineLearning/webservices/schrijven | Een Machine Learning-webservice maken of bijwerken |
-> | Micro soft. MachineLearning/webservices/verwijderen | Alle Machine Learning-webservice verwijderen |
-> | Micro soft. MachineLearning/webservices/listkeys ophalen/lezen | Sleutels naar een Machine Learning-webservice ophalen |
-> | Micro soft. MachineLearning/werk ruimten/lezen | Alle Machine Learning-werkruimte lezen |
-> | Micro soft. MachineLearning/werk ruimten/schrijven | Machine Learning-werkruimte maken of bijwerken |
-> | Micro soft. MachineLearning/werk ruimten/verwijderen | Machine Learning-werkruimte verwijderen |
-> | Micro soft. MachineLearning/werk ruimten/listworkspacekeys/actie | Lijst met sleutels voor een Machine Learning-werkruimte |
-> | Micro soft. MachineLearning/werk ruimten/resyncstoragekeys/actie | Sleutels van het opslag account die zijn geconfigureerd voor een Machine Learning-werkruimte, worden opnieuw gesynchroniseerd |
 
 ## <a name="internet-of-things"></a>Internet of things
 
@@ -8239,7 +8209,7 @@ Azure-service: [Azure Policy](../governance/policy/overview.md), [azure RBAC](ov
 > | Actie | Beschrijving |
 > | --- | --- |
 > | Micro soft. Authorization/elevateAccess/Action | Hiermee krijgt de Gebruikerstoegangbeheerder toegang op tenantniveau |
-> | Micro soft. Authorization/classicAdministrators/lezen | Hiermee worden de beheerders voor het abonnement gelezen. |
+> | Micro soft. Authorization/classicAdministrators/lezen | Hiermee worden de beheerders voor het abonnement gelezen. Heeft geen effect als deze wordt gebruikt als een ' intact ' in een aangepaste rol. |
 > | Micro soft. Authorization/classicAdministrators/write | De beheerder toevoegen of wijzigen in een abonnement. |
 > | Micro soft. Authorization/classicAdministrators/verwijderen | Hiermee verwijdert u de beheerder van het abonnement. |
 > | Micro soft. Authorization/classicAdministrators/operationstatuses/Read | Hiermee haalt u de bewerkings status van de beheerder van het abonnement. |
@@ -9459,7 +9429,7 @@ Azure-service: micro soft monitoring Insights
 > | Micro soft. intune/diagnosticsettings/verwijderen | Een diagnostische instelling verwijderen |
 > | Micro soft. intune/diagnosticsettingscategories/lezen | Categorieën voor Diagnostische instellingen lezen |
 
-## <a name="other"></a>Anders
+## <a name="other"></a>Overig
 
 ### <a name="microsoftbingmaps"></a>Microsoft.BingMaps
 

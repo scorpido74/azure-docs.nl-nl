@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: d6222c9275dfe022e897bb6324df5bb30e1a8905
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3f882375197fa45cfbc74ff7a80ed33fd33f33a3
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91276812"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400295"
 ---
-# <a name="high-availability-with-azure-cosmos-db"></a>Hoge beschikbaarheid met Azure Cosmos DB
+# <a name="how-does-azure-cosmos-db-provide-high-availability"></a>Hoe biedt Azure Cosmos DB hoge Beschik baarheid? 
 
 Azure Cosmos DB uw gegevens transparant repliceert in alle Azure-regio's die zijn gekoppeld aan uw Azure Cosmos-account. Azure Cosmos DB maakt gebruik van meerdere lagen van redundantie voor uw gegevens, zoals wordt weer gegeven in de volgende afbeelding:
 
@@ -79,7 +79,7 @@ Zone redundantie is een *extra mogelijkheid* voor de replicatie in de functie vo
 
 Bij het configureren van schrijf bewerkingen met meerdere regio's voor uw Azure Cosmos-account, kunt u zonder extra kosten voor zone redundantie kiezen. In andere gevallen raadpleegt u de onderstaande opmerking over de prijzen voor ondersteuning voor zone redundantie. U kunt zone redundantie inschakelen voor een bestaande regio van uw Azure Cosmos-account door de regio te verwijderen en opnieuw toe te voegen als u de zone redundantie hebt ingeschakeld.
 
-Deze functie is beschikbaar in: *UK-Zuid, Zuidoost-Azië, VS Oost, VS-Oost 2, VS centraal, Europa-West, VS-West 2, Japan-Oost, Europa-Noord, Frankrijk-centraal, Australië-Oost* regio's.
+Deze functie is beschikbaar in: *UK-Zuid, Zuidoost-Azië, VS Oost, VS-Oost 2, VS-midden, Europa-West, VS-West 2, Japan-Oost, Europa-Noord, Frankrijk-centraal, Australië-Oost, VS-Oost 2 EUAP* regio's.
 
 > [!NOTE]
 > Als u Beschikbaarheidszones inschakelt voor een Azure Cosmos-account in één regio, worden er kosten in rekening gebracht die gelijk zijn aan het toevoegen van een extra regio aan uw account. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/) en de [kosten voor meerdere regio's in azure Cosmos DB](optimize-cost-regions.md) artikelen voor meer informatie over prijzen.

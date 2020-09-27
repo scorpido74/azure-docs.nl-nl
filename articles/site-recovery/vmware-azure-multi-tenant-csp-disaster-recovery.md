@@ -7,16 +7,16 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: b7cf0d35ae610c3f9fe477267e28e5449459148b
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 334cbef7460306ef2954881a1cab918573e1e371
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924577"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400635"
 ---
 # <a name="set-up-vmware-disaster-recovery-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>VMware-nood herstel instellen in een omgeving met meerdere pacht met het provider programma voor cloud oplossingen
 
-Het [CSP-programma](https://partner.microsoft.com/cloud-solution-provider) bevordert betere verhalen voor micro soft-Cloud Services, waaronder Office 365, Enter prise Mobility Suite en Microsoft Azure. Met CSP hebben partners eigenaar van de end-to-end-relatie met klanten en worden ze het primaire relatie punt van relaties. Partners kunnen Azure-abonnementen voor klanten implementeren en de abonnementen combi neren met hun eigen toegevoegde waarde, aangepaste aanbiedingen.
+Het [CSP-programma](https://partner.microsoft.com/cloud-solution-provider) bevordert betere verhalen voor micro soft-Cloud Services, waaronder Microsoft 365, Enter prise Mobility Suite en Microsoft Azure. Met CSP hebben partners eigenaar van de end-to-end-relatie met klanten en worden ze het primaire relatie punt van relaties. Partners kunnen Azure-abonnementen voor klanten implementeren en de abonnementen combi neren met hun eigen toegevoegde waarde, aangepaste aanbiedingen.
 
 Met [Azure site Recovery](site-recovery-overview.md)kunt u, als partners, herstel na nood gevallen rechtstreeks via CSP beheren. U kunt ook CSP gebruiken om Site Recovery omgevingen in te stellen, en klanten de mogelijkheid bieden om hun eigen herstel na nood gevallen op een selfservice manier te beheren. In beide scenario's zijn partners de samen werking tussen Site Recovery en hun klanten. Partners service de klant relatie en factureren klanten voor Site Recovery gebruik.
 

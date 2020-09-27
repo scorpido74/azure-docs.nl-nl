@@ -3,12 +3,12 @@ title: Gebruiks instellingen configureren in de klassikale Labs van Azure Lab Se
 description: Meer informatie over het configureren van het aantal studenten voor een lab, het ontvangen van ze met het lab, het aantal uren dat ze de virtuele machine mogen gebruiken en meer.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 229147891d1456d7b7b11fd5297755842d85e600
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 742fcd2b504bce7ad2257edd559e4b66a9172d24
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445947"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399666"
 ---
 # <a name="add-and-manage-lab-users"></a>Labgebruikers toevoegen en beheren
 
@@ -166,7 +166,7 @@ Ga als volgt te werk om aanvullende quota's in te stellen:
 
 Als u studenten wilt toevoegen aan een leslokaal Lab, gebruikt u hun e-mail accounts. Studenten hebben mogelijk de volgende typen e-mail accounts:
 
-- Een e-mail account voor studenten dat wordt verschaft door de Azure Active Directory instantie van uw universiteit voor Office 365. 
+- Een e-mail account voor studenten dat wordt weer gegeven door de Azure Active Directory instantie van uw universiteit.
 - Een micro soft-domein e-mail account, zoals *Outlook.com*, *Hotmail.com*, *MSN.com*of *Live.com*.
 - Een niet-micro soft-e-mail account, zoals een van Yahoo! of Google. Deze typen accounts moeten echter worden gekoppeld aan een Microsoft-account.
 - Een GitHub-account. Dit account moet worden gekoppeld aan een Microsoft-account.

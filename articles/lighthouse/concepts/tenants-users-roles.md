@@ -3,12 +3,12 @@ title: Tenants, rollen en gebruikers in azure Lighthouse-scenario's
 description: Inzicht in de concepten van Azure Active Directory-tenants, gebruikers en rollen, en hoe ze kunnen worden gebruikt in azure Lighthouse-scenario's.
 ms.date: 07/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 855f6a39abc99f07e5847a01896ef864473358c4
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: c409b45d18504d071ffed3185de20ec5e1147bc2
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163302"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399241"
 ---
 # <a name="tenants-roles-and-users-in-azure-lighthouse-scenarios"></a>Tenants, rollen en gebruikers in azure Lighthouse-scenario's
 
@@ -43,7 +43,7 @@ Wanneer u een autorisatie maakt, raden we u aan de volgende aanbevolen procedure
 - Zorg ervoor dat alle gebruikers die [de pagina mijn klanten moeten weer geven in de Azure Portal](../how-to/view-manage-customers.md) over de rol van [lezer](../../role-based-access-control/built-in-roles.md#reader) beschikken (of een andere ingebouwde rol die lezers toegang bevat).
 
 > [!IMPORTANT]
-> Om machtigingen voor een Azure AD-groep toe te voegen, moet het **groeps type** **beveiliging** zijn en niet **Office 365**. Deze optie wordt geselecteerd wanneer de groep wordt gemaakt. Zie [Een basisgroep maken en leden toevoegen met behulp van Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) voor meer informatie.
+> Als u machtigingen wilt toevoegen voor een Azure AD-groep, moet u het **groeps type** instellen op **beveiliging**. Deze optie wordt geselecteerd wanneer de groep wordt gemaakt. Zie [Een basisgroep maken en leden toevoegen met behulp van Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

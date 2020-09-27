@@ -7,12 +7,12 @@ services: firewall
 ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: victorh
-ms.openlocfilehash: c725673281b564958bb081fb47fe51a0ad66bea2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae33d763bda49756e9f90a05feda5089b63ef28b
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611132"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400156"
 ---
 # <a name="use-azure-firewall-to-protect-window-virtual-desktop-deployments"></a>Windows Virtual Desktop-implementaties beveiligen met Azure Firewall deployments
 
@@ -61,7 +61,7 @@ De virtuele Azure-machines die u voor virtuele Windows-Bureau bladen maakt, moet
 
 ## <a name="host-pool-outbound-access-to-the-internet"></a>Uitgaande toegang tot Internet van hostgroep
 
-Afhankelijk van de behoeften van uw organisatie wilt u mogelijk beveiligde uitgaande internet toegang inschakelen voor uw eind gebruikers. In gevallen waarin de lijst met toegestane bestemmingen goed is gedefinieerd (bijvoorbeeld [Office 365-toegang](https://docs.microsoft.com/Office365/Enterprise/office-365-ip-web-service)), kunt u Azure firewall toepassing en netwerk regels gebruiken om de vereiste toegang te configureren. Hierdoor stuurt het verkeer van eind gebruikers rechtstreeks naar het Internet voor de beste prestaties.
+Afhankelijk van de behoeften van uw organisatie wilt u mogelijk beveiligde uitgaande internet toegang inschakelen voor uw eind gebruikers. In gevallen waarin de lijst met toegestane bestemmingen goed is gedefinieerd (bijvoorbeeld [Microsoft 365 toegang](/microsoft-365/enterprise/microsoft-365-ip-web-service)) kunt u Azure firewall toepassing en netwerk regels gebruiken om de vereiste toegang te configureren. Hierdoor stuurt het verkeer van eind gebruikers rechtstreeks naar het Internet voor de beste prestaties.
 
 Als u het Internet verkeer van de uitgaande gebruiker wilt filteren met behulp van een bestaande on-premises beveiligde webgateway, kunt u webbrowsers of andere toepassingen die worden uitgevoerd op de Windows Virtual Desktop hostgroep configureren met een expliciete proxy configuratie. Zie bijvoorbeeld [micro soft Edge-opdracht regel opties gebruiken voor het configureren van proxy-instellingen](https://docs.microsoft.com/deployedge/edge-learnmore-cmdline-options-proxy-settings). Deze proxy instellingen zijn alleen van invloed op de Internet toegang van uw eind gebruiker, waardoor het verkeer van het virtueel-bureaublad platform van Windows rechtstreeks via Azure Firewall wordt toegestaan.
 

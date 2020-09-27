@@ -1,18 +1,18 @@
 ---
 title: Uw grafiek gegevens visualiseren in Azure Cosmos DB Gremlin-API
 description: Meer informatie over het integreren van Azure Cosmos DB Graph-gegevens met visualisatie oplossingen (Linkurious Enter prise, Cambridge Intelligence).
-author: luisbosquez
-ms.author: lbosq
+author: SnehaGunda
+ms.author: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 07/02/2019
-ms.openlocfilehash: 9999dad15cd02577eda85c15b67b98780a27b4a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a9850af3ea2365aa73d8b9f08b2e706c79062860
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261780"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400516"
 ---
 # <a name="visualize-graph-data-stored-in-azure-cosmos-db-gremlin-api-with-data-visualization-solutions"></a>Grafiek gegevens visualiseren die zijn opgeslagen in Azure Cosmos DB Gremlin API met oplossingen voor gegevens visualisatie
 
@@ -46,7 +46,7 @@ Met deze Toolkit kunt u grafische visualisatie-en analyse toepassingen met hoge 
 
 
 ## <a name="next-steps"></a>Volgende stappen
- 
+
 - [De tool kits uitproberen](https://cambridge-intelligence.com/try/)
 - [Overzicht van de technologie van de online](https://cambridge-intelligence.com/keylines/technology/)
 - [Overzicht van nieuwe grafiek technologie](https://cambridge-intelligence.com/regraph/technology/)

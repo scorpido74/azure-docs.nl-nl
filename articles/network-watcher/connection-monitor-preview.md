@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 0cb51cd224145e7fe359e2b14a87ed2b87b18c26
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: f331c62060b2d8a39a87bab95b00225f363b4a56
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563021"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400244"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor-preview"></a>Bewaking van netwerk connectiviteit met verbindings monitor (preview-versie)
 
@@ -30,7 +30,7 @@ Hier volgen enkele gebruiks voorbeelden voor verbindings monitor (preview-versie
 
 - De front-end-webserver-VM communiceert met een database server-VM in een toepassing met meerdere lagen. U de netwerk verbinding tussen de twee virtuele machines wilt controleren.
 - U wilt virtuele machines in de regio VS-Oost om Vm's te pingen in de regio VS-Midden en u wilt verschillende netwerk latentiesen in meerdere regio's te vergelijken.
-- U hebt meerdere on-premises Office-sites in Seattle, Washington en Ashburn, Virginia. Uw Office-sites maken verbinding met Office 365-Url's. Vergelijk de latenties tussen Seattle en Ashburn voor uw gebruikers van Office 365-Url's.
+- U hebt meerdere on-premises Office-sites in Seattle, Washington en Ashburn, Virginia. Uw Office-sites maken verbinding met Microsoft 365-Url's. Vergelijk de latenties tussen Seattle en Ashburn voor uw gebruikers van Microsoft 365 Url's.
 - Uw hybride toepassing heeft verbinding nodig met een Azure Storage-eind punt. Uw on-premises site en uw Azure-toepassing maken verbinding met hetzelfde Azure Storage-eind punt. U wilt de latenties van de on-premises site vergelijken met de latenties van de Azure-toepassing.
 - U wilt de connectiviteit controleren tussen uw on-premises instellingen en de virtuele Azure-machines die uw Cloud toepassing hosten.
 
@@ -87,7 +87,7 @@ Zie [enable Network Watcher](https://docs.microsoft.com/azure/network-watcher/ne
 
 Met verbindings monitor wordt de communicatie met regel matige intervallen gecontroleerd. U wordt geïnformeerd over wijzigingen in de bereik baarheid en latentie. U kunt ook de huidige en historische netwerk topologie tussen bron agenten en doel eindpunten controleren.
 
-Bronnen kunnen Azure-Vm's of on-premises machines zijn met een geïnstalleerde bewakings agent. Doel eindpunten kunnen Office 365 Url's, Dynamics 365 Url's, aangepaste Url's, Azure VM-resource-Id's, IPv4, IPv6, FQDN of een domein naam zijn.
+Bronnen kunnen Azure-Vm's of on-premises machines zijn met een geïnstalleerde bewakings agent. Doel eindpunten kunnen worden Microsoft 365 Url's, Dynamics 365 Url's, aangepaste Url's, Azure VM-resource-Id's, IPv4, IPv6, FQDN of een domein naam.
 
 ### <a name="access-connection-monitor-preview"></a>Toegang tot verbindings monitor (preview-versie)
 
@@ -280,8 +280,8 @@ Wanneer u metrische gegevens gebruikt, stelt u het resource type in als micro so
 | --- | --- | --- | --- | --- | --- |
 | ProbesFailedPercent | % Tests mislukt | Percentage | Average | Het percentage van de connectiviteits controle tests is mislukt. | Geen dimensies |
 | AverageRoundtripMs | Gem. retour tijd (MS) | Milliseconden | Average | Gemiddelde netwerk-RTT voor connectiviteits controle tests die zijn verzonden tussen de bron en de bestemming. |             Geen dimensies |
-| ChecksFailedPercent (preview-versie) | % Controles mislukt (preview-versie) | Percentage | Average | Percentage mislukte controles voor een test. | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>Protocol <br>DestinationAddress <br>Doel locatie <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Regio |
-| RoundTripTimeMs (preview-versie) | Retour tijd (MS) (preview-versie) | Milliseconden | Average | RTT voor controles die worden verzonden tussen de bron en de bestemming. Deze waarde is niet van het gemiddelde. | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>Protocol <br>DestinationAddress <br>Doel locatie <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Regio |
+| ChecksFailedPercent (preview-versie) | % Controles mislukt (preview-versie) | Percentage | Average | Percentage mislukte controles voor een test. | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>Protocol <br>DestinationAddress <br>Doel locatie <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Region |
+| RoundTripTimeMs (preview-versie) | Retour tijd (MS) (preview-versie) | Milliseconden | Average | RTT voor controles die worden verzonden tussen de bron en de bestemming. Deze waarde is niet van het gemiddelde. | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>Protocol <br>DestinationAddress <br>Doel locatie <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Region |
 
 #### <a name="metric-alerts-in-azure-monitor"></a>Metrische waarschuwingen in Azure Monitor
 

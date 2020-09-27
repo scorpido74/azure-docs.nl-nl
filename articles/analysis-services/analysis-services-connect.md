@@ -8,12 +8,12 @@ ms.date: 09/04/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 71caad8ce650b86f4350b32974bb8d980538b223
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 10e091ed58146d992d7b9c1f65b8b64f881a41b9
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89489014"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400278"
 ---
 # <a name="connecting-to-servers"></a>Verbinding maken met servers
 
@@ -23,7 +23,7 @@ In dit artikel wordt beschreven hoe u verbinding maakt met een server met behulp
 
 [De nieuwste client bibliotheken ophalen](https://docs.microsoft.com/analysis-services/client-libraries?view=azure-analysis-services-current)
 
-Alle verbindingen met een server, ongeacht het type, vereisen bijgewerkte AMO-, ADOMD.NET-en OLEDB-client bibliotheken om verbinding te maken met en een interface met een Analysis Services-server. Voor SSMS, Visual Studio, Excel 2016 en hoger, en Power BI, worden de meest recente client bibliotheken geïnstalleerd of bijgewerkt met maandelijkse releases. In sommige gevallen is het echter mogelijk dat een toepassing niet de meest recente heeft. Bijvoorbeeld wanneer beleids regels updates vertragen of Office 365-updates op het uitgestelde kanaal staan.
+Alle verbindingen met een server, ongeacht het type, vereisen bijgewerkte AMO-, ADOMD.NET-en OLEDB-client bibliotheken om verbinding te maken met en een interface met een Analysis Services-server. Voor SSMS, Visual Studio, Excel 2016 en hoger, en Power BI, worden de meest recente client bibliotheken geïnstalleerd of bijgewerkt met maandelijkse releases. In sommige gevallen is het echter mogelijk dat een toepassing niet de meest recente heeft. Bijvoorbeeld wanneer beleids regels updates vertragen of Microsoft 365 updates op het uitgestelde kanaal staan.
 
 > [!NOTE]
 > De client bibliotheken kunnen geen verbinding maken met Azure Analysis Services via proxy servers waarvoor een gebruikers naam en wacht woord zijn vereist. 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: 8a06435d4b5a4c11f74073e67e3f48fd2ed0779d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 63adb5d6898fd467a0557aa147e54f814c167e72
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079567"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400126"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure verklarende woorden lijst: een woorden lijst met Cloud terminologie op het Azure-platform
 
@@ -30,7 +30,7 @@ De Microsoft Azure verklarende woorden lijst is een korte woorden lijst met Clou
 * [Cloud computing-voor waarden](https://azure.microsoft.com/overview/cloud-computing-dictionary/) : algemene Cloud voorwaarden van de branche.
 
 ## <a name="account"></a>account
-Een account dat wordt gebruikt voor toegang tot en beheer van een Azure-abonnement. Dit wordt vaak een Azure-account genoemd, maar een account kan een van de volgende zijn: een bestaand werk, school of persoonlijk Microsoft-account, of een Office 365-gebruikers naam en-wacht woord. U kunt ook een account voor het beheren van een Azure-abonnement maken wanneer u zich aanmeldt voor de [gratis proef versie](https://azure.microsoft.com).  
+Een account dat wordt gebruikt voor toegang tot en beheer van een Azure-abonnement. Dit wordt vaak een Azure-account genoemd, maar een account kan een van de volgende zijn: een bestaande werk-, school-of persoonlijke Microsoft-account. U kunt ook een account voor het beheren van een Azure-abonnement maken wanneer u zich aanmeldt voor de [gratis proef versie](https://azure.microsoft.com).  
 Zie [registreren voor een Azure-abonnement met uw Microsoft 365 account](cost-management-billing/manage/microsoft-365-account-for-azure-subscription.md) en [accounts die u kunt gebruiken om u aan te melden](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
 ## <a name="api-app"></a>API-app
@@ -46,7 +46,7 @@ Zie [de beschik baarheid van virtuele Windows-machines beheren](virtual-machines
 ## <a name="azure-classic-deployment-model"></a><a name="classic-model"></a>Klassieke Azure-implementatie model
 Een van de twee [implementatie modellen](resource-manager-deployment-model.md) die worden gebruikt voor het implementeren van resources in azure (het nieuwe model is Azure Resource Manager). Sommige Azure-Services bieden alleen ondersteuning voor het Resource Manager-implementatie model, sommige ondersteunen alleen het klassieke implementatie model en sommige ondersteunen beide. In de documentatie voor elke Azure-service wordt aangegeven welke model (en) ze ondersteunen.
 
-## <a name="azure-command-line-interface-cli"></a><a name="cli"></a>Azure-opdracht regel interface (CLI)
+## <a name="azure-command-line-interface-cli"></a><a name="cli"></a>Azure-opdrachtregelinterface (CLI)
 Een opdracht regel interface die kan worden gebruikt voor het beheren van Azure-Services vanuit Windows, macOS en Linux.  Sommige services of service functies kunnen alleen worden beheerd via Power shell of de CLI. Zie [Azure cli](/cli/azure)
 
 ## <a name="azure-powershell"></a><a name="powershell"></a>Azure PowerShell
@@ -153,7 +153,7 @@ Zie [Virtual Network overzicht](virtual-network/virtual-networks-overview.md)
 ## <a name="web-app"></a>Web-app
 Een andere naam voor de [App app service](#app-service-app).
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 * [Aan de slag met Azure](https://azure.microsoft.com/get-started/)
 * [Cloud Resource Center](https://azure.microsoft.com/resources/)  

@@ -7,12 +7,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 5/7/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 5dd1fd1209be29774d19a155b6e585fa6ebcc036
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: b695205c08f9039fbf91eaeddb7622b784d81d12
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930482"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400584"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Gebruik en kosten van Application Insights beheren
 
@@ -264,7 +264,7 @@ De standaard Bewaar periode voor Application Insights resources is 90 dagen. Voo
 
 Als u de retentie wilt wijzigen Application Insights, gaat u naar de pagina **gebruik en geschatte kosten** en selecteert u de optie **gegevens retentie** :
 
-![Het dagelijkse volume limiet voor telemetrie aanpassen](./media/pricing/pricing-005.png)
+![Scherm afbeelding die laat zien waar u de Bewaar periode voor gegevens wijzigt.](./media/pricing/pricing-005.png)
 
 Als de retentie is verlaagd, is er een respijt periode van een enkele dag voordat de oudste gegevens worden verwijderd.
 

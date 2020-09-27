@@ -7,16 +7,16 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: sukishen
-ms.openlocfilehash: d95330c14e0d088bdee03c0edbc2eb9d1deb12cb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 83cc7757f31a631af755155b49c7c26753618426
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329224"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399105"
 ---
 # <a name="interconnect-with-china-using-azure-virtual-wan-and-secure-hub"></a>Interconnect met China met behulp van Azure Virtual WAN en Secure hub
 
-Bij het bekijken van veelvoorkomende auto's, productie, logistiek industrieën of andere instituten, zoals embassies, is er vaak de vraag over het verbeteren van de onderlinge verbinding met China. Deze verbeteringen zijn vooral van toepassing op het gebruik van Cloud Services zoals Office 365, Azure Global Services of Interconnect branches in China met een klant-backbone.
+Bij het bekijken van veelvoorkomende auto's, productie, logistiek industrieën of andere instituten, zoals embassies, is er vaak de vraag over het verbeteren van de onderlinge verbinding met China. Deze verbeteringen zijn vooral relevant voor het gebruik van Cloud Services zoals Microsoft 365, Azure Global Services of Interconnect branches in China met een klant-backbone.
 
 In de meeste gevallen zijn klanten lastig met hoge latentie, lage band breedte, Insta Biel verbinding en hoge kosten die verbinding maken met buiten China (bijvoorbeeld Europe of de Verenigde Staten).
 
@@ -95,7 +95,7 @@ In de afbeelding hieronder ziet u voor beelden van dit scenario.
 
 ![Global Reach](./media/interconnect-china/global.png)
 
-## <a name="secure-internet-breakout-for-office-365"></a><a name="secure"></a>Beveiligde Internet-groepen voor Office 365
+## <a name="secure-internet-breakout-for-microsoft-365"></a><a name="secure"></a>Beveiligde Internet-groepen voor Microsoft 365
 
 Een andere overweging is netwerk beveiliging en logboek registratie voor het toegangs punt tussen China en het backbone-onderdeel virtuele WAN-verbinding, en de klant-backbone. In de meeste gevallen is het groepen van het internet in Hong Kong nodig om het micro soft Edge-netwerk rechtstreeks te bereiken en, met de Azure front-deur servers die worden gebruikt voor Microsoft 365 Services.
 
@@ -109,7 +109,7 @@ In de volgende afbeelding ziet u een voor beeld van dit scenario:
 
 Afhankelijk van uw keuze met betrekking tot de verbinding met Hong Kong, kan de algehele architectuur enigszins veranderen. In deze sectie worden drie beschik bare architecturen weer gegeven in een andere combi natie met VPN of SDWAN en/of ExpressRoute.
 
-Al deze opties maken gebruik van Azure Virtual WAN beveiligde hub voor rechtstreekse M365-connectiviteit in Hong Kong. Deze architecturen bieden ook ondersteuning voor de nalevings vereisten voor [Office 365 multi-geo](https://docs.microsoft.com/office365/enterprise/office-365-multi-geo) en houden dat verkeer in de buurt van de volgende locatie van de Office 365-deur. Als gevolg hiervan is het ook een verbetering van het gebruik van Microsoft 365 uit China.
+Al deze opties maken gebruik van Azure Virtual WAN beveiligde hub voor rechtstreekse Microsoft 365 connectiviteit in Hong Kong. Deze architecturen bieden ook ondersteuning voor de nalevings vereisten voor [Microsoft 365 multi-geo](/microsoft-365/enterprise/microsoft-365-multi-geo) en houden dat verkeer in de buurt van de volgende locatie van de Azure front-deur. Als gevolg hiervan is het ook een verbetering van het gebruik van Microsoft 365 uit China.
 
 Wanneer u Azure Virtual WAN gebruikt in combi natie met Internet verbindingen, kan elke verbinding profiteren van extra services zoals [Microsoft Azure peering-Services (Maps)](https://docs.microsoft.com/azure/peering-service/about). KAARTEN is gebouwd voor het optimaliseren van verkeer dat afkomstig is van het wereld wijde netwerk van derden van Internet serviceproviders.
 

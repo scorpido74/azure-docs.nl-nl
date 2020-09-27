@@ -7,12 +7,12 @@ ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 08/27/2020
-ms.openlocfilehash: 7438351aa9849e3110952043eff8f7d860b5b7de
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a2d2c4d29a6af073e3e4e6a74c257cb864b8a78c
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89015829"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400686"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>Uw commerciële Marketplace-account beheren in het partner centrum
 
@@ -227,7 +227,7 @@ Als u meer dan één groep selecteert om aan uw partner Center-account toe te vo
 
 Wanneer u een bestaande groep toevoegt, kan elke gebruiker die lid is van deze groep, toegang krijgen tot uw partner centrum-account, met de machtigingen die zijn gekoppeld aan de toegewezen rol van de groep.
 
-### <a name="add-a-new-group"></a>Een nieuwe groep maken
+### <a name="add-a-new-group"></a>Een nieuwe groep toevoegen
 
 Een gloed nieuwe groep toevoegen aan uw partner centrum-account:
 
@@ -306,7 +306,7 @@ Zie voor meer informatie over het beheren van rollen en machtigingen in andere g
 
 ## <a name="manage-tenants"></a>Tenants beheren
 
-Een Azure Active Directory-Tenant (AD), ook wel uw ' werk account ' genoemd, is een weer gave van uw organisatie die in de Azure Portal is ingesteld en helpt u bij het beheren van een specifiek exemplaar van micro soft-Cloud Services voor uw interne en externe gebruikers. Als uw organisatie zich abonneert op een micro soft-Cloud service, zoals Azure, Microsoft Intune of Office 365, is er een Azure AD-Tenant voor u gemaakt.
+Een Azure Active Directory-Tenant (AD), ook wel uw ' werk account ' genoemd, is een weer gave van uw organisatie die in de Azure Portal is ingesteld en helpt u bij het beheren van een specifiek exemplaar van micro soft-Cloud Services voor uw interne en externe gebruikers. Als uw organisatie zich abonneert op een micro soft-Cloud service, zoals Azure, Microsoft Intune of Microsoft 365, is er een Azure AD-Tenant voor u gemaakt.
 
 U kunt meerdere tenants instellen voor gebruik met partner Center. Elke gebruiker met de rol **Manager** in het partner centrum-account heeft de mogelijkheid om Azure AD-tenants toe te voegen aan of te verwijderen uit het account.  
 

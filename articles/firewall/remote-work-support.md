@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: victorh
-ms.openlocfilehash: da5100fafc98ae38809c93e9b3db5ef41c58766a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 68789d3b8a4be51a381e95d6e6f840331b46b4e9
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82863413"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400108"
 ---
 # <a name="azure-firewall-remote-work-support"></a>Azure Firewall ondersteuning voor externe werk
 
@@ -24,7 +24,7 @@ Voor werk van het beleid voor thuis gebruik moeten veel IT-organisaties essenti√
 
 ## <a name="azure-windows-virtual-desktop-support"></a>Ondersteuning voor virtueel bureau blad van Azure
 
-Virtueel bureau blad van Windows is een allesomvattende Desktop-en app Virtualization-service die wordt uitgevoerd in Azure. Het is de enige virtuele desktop infrastructuur (VDI) die vereenvoudigd beheer, multi-sessie Windows 10, optimalisaties voor Office 365 ProPlus en ondersteuning voor Extern bureaublad-services-omgevingen (RDS) biedt. U kunt binnen enkele minuten uw Windows-Bureau bladen en-apps in azure implementeren en schalen en ingebouwde beveiligings-en nalevings functies aanschaffen. Voor het virtuele bureau blad van Windows hoeft u geen inkomende toegang te openen voor uw virtuele netwerk. U moet echter een reeks uitgaande netwerk verbindingen toestaan voor de virtuele Windows-bureau blad-machines die worden uitgevoerd in uw virtuele netwerk. Zie [Azure Firewall gebruiken om Windows Virtual Desktop-implementaties te beveiligen](protect-windows-virtual-desktop.md) voor meer informatie.
+Virtueel bureau blad van Windows is een allesomvattende Desktop-en app Virtualization-service die wordt uitgevoerd in Azure. Het is de enige virtuele desktop infrastructuur (VDI) die vereenvoudigd beheer, meerdere sessies Windows 10, optimalisaties voor Microsoft 365 apps voor bedrijven en ondersteuning voor Extern bureaublad-services (RDS)-omgevingen levert. U kunt binnen enkele minuten uw Windows-Bureau bladen en-apps in azure implementeren en schalen en ingebouwde beveiligings-en nalevings functies aanschaffen. Voor het virtuele bureau blad van Windows hoeft u geen inkomende toegang te openen voor uw virtuele netwerk. U moet echter een reeks uitgaande netwerk verbindingen toestaan voor de virtuele Windows-bureau blad-machines die worden uitgevoerd in uw virtuele netwerk. Zie [Azure Firewall gebruiken om Windows Virtual Desktop-implementaties te beveiligen](protect-windows-virtual-desktop.md) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

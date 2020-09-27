@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 06/11/2020
-ms.openlocfilehash: 4876c5cb0490a96d5a77da9ced83e1650e98379a
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 23e6834f4850cc8f44f563a12f4704fec2e13ef7
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89488827"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400805"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Connectors voor Azure Logic Apps
 
@@ -136,7 +136,7 @@ Logic Apps biedt deze populaire standaard connectors voor het automatiseren van 
 | [![Azure Service Bus beheerde connector ][azure-service-bus-icon]<br> **Azure Service Bus** Azure service bus][azure-service-bus-doc] | Beheer asynchrone berichten, sessies en abonnementen op onderwerpen met behulp van de meest gebruikte connector in Logic Apps. |
 | [![SQL Server beheerde connector ][sql-server-icon]<br> **SQL Server** SQL Server][sql-server-doc] | Maak verbinding met uw SQL Server on-premises of een Azure SQL Database in de Cloud, zodat u records kunt beheren, opgeslagen procedures uitvoert of query's uitvoert. |
 | [![Azure ][azure-blob-storage-icon]<br> **BLOB- <br> opslag** voor Azure Blob Storage Managed connector][azure-blob-storage-doc] | Maak verbinding met uw opslag account zodat u blob-inhoud kunt maken en beheren. |
-| [![Office 365 Outlook Managed connector ][office-365-outlook-icon]<br> **Office 365 <br> Outlook**][office-365-outlook-doc] | Maak verbinding met uw e-mail account voor Office 365 zodat u e-mail berichten, taken, agenda-items en vergaderingen, contact personen, aanvragen en meer kunt maken en beheren. |
+| [![Office 365 Outlook Managed connector ][office-365-outlook-icon]<br> **Office 365 <br> Outlook**][office-365-outlook-doc] | Maak verbinding met het e-mail account van uw werk of school zodat u e-mails, taken, agenda-items en vergaderingen, contact personen, aanvragen en meer kunt maken en beheren. |
 | [![SFTP-SSH Managed connector ][sftp-ssh-icon]<br> **SFTP-SSH**][sftp-ssh-doc] | Verbinding maken met SFTP-servers die u via het internet kunt openen met behulp van SSH, zodat u met uw bestanden en mappen kunt werken. |
 | [![Share point online Managed connector ][sharepoint-online-icon]<br> **SharePoint <br> online**][sharepoint-online-doc] | Maak verbinding met share point online, zodat u bestanden, bijlagen, mappen en meer kunt beheren. |
 | [![Azure queues Managed connector van Azure Queue ][azure-queues-icon]<br> ** <br> **][azure-queues-doc] | Maak verbinding met uw Azure Storage-account zodat u wacht rijen en berichten kunt maken en beheren. |
@@ -588,7 +588,7 @@ Hoewel u verbindingen maakt vanuit een logische app, zijn de verbindingen afzond
 [instagram-doc]: ./connectors-create-api-instagram.md "Verbinding maken met Insta gram. Gebeurtenissen activeren of actie ondernemen"
 [mandrill-doc]: ./connectors-create-api-mandrill.md "Verbinding maken met Mandrill voor communicatie"
 [mysql-doc]: /connectors/mysql/ "Verbinding maken met uw on-premises MySQL-data base, zodat u gegevens kunt lezen en schrijven"
-[office-365-outlook-doc]: ./connectors-create-api-office365-outlook.md "Maak verbinding met uw Office 365-account zodat u e-mail berichten kunt verzenden en ontvangen, uw agenda en contact personen beheren, en meer"
+[office-365-outlook-doc]: ./connectors-create-api-office365-outlook.md "Maak verbinding met uw werk-of school account zodat u e-mail berichten kunt verzenden en ontvangen, uw agenda en contact personen beheren, en meer"
 [onedrive-doc]: ./connectors-create-api-onedrive.md "Maak verbinding met uw persoonlijke micro soft OneDrive, zodat u bestanden kunt uploaden, verwijderen, weer geven en meer"
 [onedrive-for-business-doc]: ./connectors-create-api-onedriveforbusiness.md "Maak verbinding met uw zakelijke micro soft OneDrive zodat u uw bestanden kunt uploaden, verwijderen, weer geven en meer"
 [oracle-db-doc]: ./connectors-create-api-oracledatabase.md "Verbinding maken met een Oracle-data base zodat u rijen kunt toevoegen, invoegen, verwijderen en meer"

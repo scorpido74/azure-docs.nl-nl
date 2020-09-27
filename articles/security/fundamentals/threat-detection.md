@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 1522d143f2837a57481a4d678911e7a3c44d084d
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 78043e3d95a94d0e9be810164b31ef031234d620
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541019"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399598"
 ---
 # <a name="azure-advanced-threat-detection"></a>Geavanceerde bedreigingsdetectie van Azure
 
@@ -64,13 +64,13 @@ Voor beelden van een aantal manieren waarop Azure Identity Protection uw account
 
 ### <a name="azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management
 
-Met [Azure Active Directory privileged Identity Management (PIM)](../../active-directory/privileged-identity-management/pim-configure.md)kunt u toegang beheren, controleren en bewaken in uw organisatie. Deze functie omvat toegang tot resources in azure AD en andere micro soft-onlineservices, zoals Office 365 of Microsoft Intune.
+Met [Azure Active Directory privileged Identity Management (PIM)](../../active-directory/privileged-identity-management/pim-configure.md)kunt u toegang beheren, controleren en bewaken in uw organisatie. Deze functie biedt toegang tot resources in azure AD en andere micro soft-onlineservices, zoals Microsoft 365 of Microsoft Intune.
 
 ![Azure AD Privileged Identity Management diagram](./media/threat-detection/azure-threat-detection-fig2.png)
 
 Met PIM kunt u het volgende doen:
 
--   Ontvang waarschuwingen en rapporten over Azure AD-beheerders en just-in-time (JIT) beheerders toegang tot micro soft onlineservices, zoals Office 365 en intune.
+-   Ontvang waarschuwingen en rapporten over Azure AD-beheerders en just-in-time (JIT) beheerders toegang tot micro soft onlineservices, zoals Microsoft 365 en intune.
 
 -   Rapporten over de geschiedenis van beheerders toegang en wijzigingen in beheerders toewijzingen ophalen.
 
@@ -155,7 +155,7 @@ Security Center maakt gebruik van geavanceerde beveiligingsanalyses die veel ver
 
 Micro soft heeft toegang tot een enorme hoeveelheid wereld wijde bedreigings informatie.
 
-Telemetrie loopt over van meerdere bronnen, zoals Azure, Office 365, micro soft CRM Online, micro soft Dynamics AX, outlook.com, MSN.com, de micro soft Digital misdrijven Unit (DCU) en het micro soft Security Response Center (MSRC).
+Telemetrie loopt over van meerdere bronnen, zoals Azure, Microsoft 365, micro soft CRM Online, micro soft Dynamics AX, outlook.com, MSN.com, de micro soft Digital misdrijven Unit (DCU) en het micro soft Security Response Center (MSRC).
 
 ![Resultaten van bedreigings informatie](./media/threat-detection/azure-threat-detection-fig10.jpg)
 
@@ -190,7 +190,7 @@ Voorbeelden zijn:
 
 -   **Schadelijke Power shell-scripts**: Power shell kan door aanvallers worden gebruikt om schadelijke code uit te voeren op virtuele doel machines voor verschillende doel einden. Security Center inspecteert PowerShell-activiteit op tekenen van verdachte activiteiten.
 
--   **Uitgaande aanvallen**: aanvallers richten zich vaak op cloudresources met het doel deze resources te gebruiken voor het uitvoeren van nieuwe aanvallen. Gemanipuleerde virtuele machines kunnen bijvoorbeeld worden gebruikt voor het starten van beveiligings aanvallen op andere virtuele machines, het verzenden van spam of het scannen van open poorten en andere apparaten op internet. Door machine learning toe te passen op netwerkverkeer kan Security Center het detecteren wanneer uitgaande netwerkcommunicatie groter is dan de norm. Wanneer er ongewenste e-mail wordt gedetecteerd, geeft Security Center ook het ongebruikelijke e-mail verkeer met intelligentie van Office 365 aan om te bepalen of het e-mail bericht waarschijnlijk kwaadwillend of het resultaat van een legitieme e-mail campagne is.
+-   **Uitgaande aanvallen**: aanvallers richten zich vaak op cloudresources met het doel deze resources te gebruiken voor het uitvoeren van nieuwe aanvallen. Gemanipuleerde virtuele machines kunnen bijvoorbeeld worden gebruikt voor het starten van beveiligings aanvallen op andere virtuele machines, het verzenden van spam of het scannen van open poorten en andere apparaten op internet. Door machine learning toe te passen op netwerkverkeer kan Security Center het detecteren wanneer uitgaande netwerkcommunicatie groter is dan de norm. Als er spam wordt gedetecteerd, geeft Security Center ook ongebruikelijk e-mail verkeer met intelligentie van Microsoft 365 aan om te bepalen of het e-mail bericht waarschijnlijk kwaadwillend is of het resultaat is van een legitieme e-mail campagne.
 
 ### <a name="anomaly-detection"></a>Afwijkingsdetectie
 
@@ -345,7 +345,7 @@ Met hulpprogramma's om schaduw-IT te onthullen, risico's te beoordelen, beleid a
 | Ontdekken | Onthul Shadow IT met Cloud App Security. Krijg meer inzicht door apps, activiteiten, gebruikers, gegevens en bestanden in uw cloudomgeving te detecteren. Detecteer apps van derden die zijn verbonden met uw cloud.|
 |Onderzoeken | Onderzoek uw cloud-apps met forensische hulpprogramma's voor de cloud om riskante apps, specifieke gebruikers en bestanden in uw netwerk diepgaand te onderzoeken. Vind patronen in de gegevens die vanuit de cloud worden verzameld. U kunt rapporten genereren om uw cloud te bewaken. |
 | Beheer | Beperk risico's door beleidsregels en waarschuwingen in te stellen om maximale controle over het netwerkverkeer in de cloud te behalen. Gebruik Cloud App Security om uw gebruikers te migreren naar veilige, goedgekeurde alternatieven voor de cloud-app. |
-| Beschermen | Gebruik Cloud App Security om toepassingen goed te keuren of te verbieden, preventie van gegevens verlies af te dwingen, machtigingen te beheren en te delen en aangepaste rapporten en waarschuwingen te genereren. |
+| Beveiligen | Gebruik Cloud App Security om toepassingen goed te keuren of te verbieden, preventie van gegevens verlies af te dwingen, machtigingen te beheren en te delen en aangepaste rapporten en waarschuwingen te genereren. |
 | Beheer | Beperk risico's door beleidsregels en waarschuwingen in te stellen om maximale controle over het netwerkverkeer in de cloud te behalen. Gebruik Cloud App Security om uw gebruikers te migreren naar veilige, goedgekeurde alternatieven voor de cloud-app. |
 
 

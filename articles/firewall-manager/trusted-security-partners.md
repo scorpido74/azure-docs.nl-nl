@@ -7,12 +7,12 @@ services: firewall-manager
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 34da82510f96ef7bde65ceec397b048c941e3234
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3c09e75a98e5342ab54710e05466755d86705b2a
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563604"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399428"
 ---
 # <a name="what-are-security-partner-providers"></a>Wat zijn beveiligingspartnerproviders?
 
@@ -26,7 +26,7 @@ De ondersteunde beveiligings partners zijn **ZScaler**, **Check Point** (preview
 
 ![Beveiligingspartnerproviders](media/trusted-security-partners/trusted-security-partners.png)
 
-## <a name="key-scenarios"></a>Belang rijke scenario's
+## <a name="key-scenarios"></a>Belangrijke scenario's
 
 U kunt de beveiligings partners gebruiken voor het filteren van Internet verkeer in de volgende scenario's:
 
@@ -44,7 +44,7 @@ De volgende scenario's worden ondersteund:
 
 ## <a name="best-practices-for-internet-traffic-filtering-in-secured-virtual-hubs"></a>Aanbevolen procedures voor het filteren van Internet verkeer in beveiligde virtuele hubs
 
-Internet verkeer omvat doorgaans webverkeer. Maar omvat ook verkeer dat is bestemd voor SaaS-toepassingen, zoals Office 365 (O365) en open bare Azure PaaS-services zoals Azure Storage, Azure SQL, enzovoort. Hieronder vindt u best practice aanbevelingen voor het verwerken van verkeer naar deze services:
+Internet verkeer omvat doorgaans webverkeer. Maar omvat ook verkeer dat is bestemd voor SaaS-toepassingen, zoals Microsoft 365 en open bare PaaS-services van Azure, zoals Azure Storage, Azure SQL, enzovoort. Hieronder vindt u best practice aanbevelingen voor het verwerken van verkeer naar deze services:
 
 ### <a name="handling-azure-paas-traffic"></a>Azure PaaS-verkeer verwerken
  
@@ -54,15 +54,15 @@ Internet verkeer omvat doorgaans webverkeer. Maar omvat ook verkeer dat is beste
 
 ![Alle scenario's voor Azure Firewall Manager](media/trusted-security-partners/all-scenarios.png)
 
-## <a name="handling-office-365-o365-traffic"></a>Office 365-verkeer (O365) verwerken
+## <a name="handling-microsoft-365-traffic"></a>Microsoft 365 verkeer verwerken
 
-In wereld wijd gedistribueerde Branch-locatie scenario's moet u Office 365-verkeer rechtstreeks door sturen naar de vertakking voordat u het resterende Internet verkeer naar uw Azure beveiligde hub verzendt.
+In wereld wijd gedistribueerde Branch-locatie scenario's moet u Microsoft 365 verkeer rechtstreeks op de vertakking omleiden voordat u het resterende Internet verkeer naar uw Azure beveiligde hub verzendt.
 
-Voor Office 365 zijn netwerk latentie en prestaties essentieel voor een succes volle gebruikers ervaring. Om deze doel stellingen te bereiken rond optimale prestaties en gebruikers ervaring, moeten klanten Office 365 direct en lokaal ESC implementeren voordat ze de rest van Internet verkeer via Azure kunnen routeren.
+Voor Microsoft 365 zijn netwerk latentie en-prestaties essentieel voor een succes volle gebruikers ervaring. Om deze doel stellingen te bereiken rond optimale prestaties en gebruikers ervaring, moeten klanten Microsoft 365 directe en lokale Escape implementeren voordat ze de rest van Internet verkeer via Azure kunnen routeren.
 
-[Office 365-netwerk verbindings principes](https://docs.microsoft.com/office365/enterprise/office-365-network-connectivity-principles) bellen voor belang rijke Office 365-netwerk verbindingen die lokaal worden gerouteerd van de gebruikers vertakking of het mobiele apparaat en rechtstreeks via internet naar het dichtstbijzijnde micro soft-netwerk punt.
+[Microsoft 365 netwerk verbindings principes](/microsoft-365/enterprise/microsoft-365-network-connectivity-principles) aanroepen voor Key Microsoft 365-netwerk verbindingen die lokaal worden gerouteerd van de gebruikers vertakking of het mobiele apparaat en rechtstreeks via internet naar het dichtstbijzijnde micro soft-netwerk punt.
 
-Office 365-verbindingen worden bovendien versleuteld voor privacy en gebruiken efficiënte, eigen protocollen om prestatie redenen. Dit maakt het praktisch en nadelige invloed op deze verbindingen met traditionele beveiligings oplossingen op netwerk niveau. Daarom raden klanten ten zeerste aan Office 365-verkeer rechtstreeks vanuit filialen te verzenden voordat ze het rest verkeer verzenden via Azure. Micro soft heeft een partnerschap gemaakt met verschillende providers van de SD-WAN-oplossing die zijn geïntegreerd met Azure en Office 365, en maakt het eenvoudig voor klanten om Office 365 direct en lokale Internet-groepen in te scha kelen. Zie [Hoe kan ik mijn O365-beleid instellen via Virtual WAN?](https://docs.microsoft.com/azure/virtual-wan/virtual-wan-office365-overview) voor meer informatie.
+Daarnaast worden Microsoft 365-verbindingen versleuteld voor privacy en kunnen ze efficiënte, eigen protocollen gebruiken om prestatie redenen. Dit maakt het praktisch en nadelige invloed op deze verbindingen met traditionele beveiligings oplossingen op netwerk niveau. Daarom wordt het ten zeerste aangeraden dat klanten Microsoft 365 verkeer rechtstreeks van filialen verzenden voordat ze rest van het verkeer verzenden via Azure. Micro soft heeft een partnerschap gemaakt met verschillende providers van de SD-WAN-oplossing, die integreren met Azure en Microsoft 365 en het voor klanten gemakkelijk maken om Microsoft 365 directe en lokale Internet groepen in te scha kelen. Zie [Wat is virtueel WAN van Azure?](../virtual-wan/virtual-wan-about.md) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

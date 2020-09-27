@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: c9483363dcf6b4a5c05d71daa75d680dd25b8308
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 54c14f1ef78694055c567ded0fdccede062605ba
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002680"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400312"
 ---
 # <a name="azure-identity-management-security-overview"></a>Overzicht van Azure Identity Management-beveiliging
 
@@ -41,12 +41,12 @@ Het artikel is gericht op de volgende kern mogelijkheden van Azure Identity Mana
 * Eenmalige aanmelding
 * Omgekeerde proxy
 * Multi-Factor Authentication
-* Op rollen gebaseerd toegangs beheer op basis van Azure (Azure RBAC)
+* Azure RBAC (op rollen gebaseerd toegangsbeheer van Azure)
 * Beveiligings bewaking, waarschuwingen en rapporten op basis van machine learning
 * Identiteits-en toegangs beheer van consumenten
 * Apparaatregistratie
 * Privileged Identity Management
-* Identiteitsbescherming
+* Identiteitsbeveiliging
 * Hybride identiteits beheer/Azure AD Connect
 * Azure AD-toegangsbeoordelingen
 
@@ -54,7 +54,7 @@ Het artikel is gericht op de volgende kern mogelijkheden van Azure Identity Mana
 
 SSO houdt in dat u toegang hebt tot alle toepassingen en bronnen die u nodig hebt om zaken te doen, door zich slechts één keer aan te melden met één gebruikers account. Wanneer u bent aangemeld, hebt u toegang tot alle toepassingen die u nodig hebt zonder dat u een tweede keer hoeft te verifiëren (Typ bijvoorbeeld een wacht woord).
 
-Veel organisaties zijn afhankelijk van SaaS-toepassingen, zoals Office 365, box en Sales Force voor gebruikers productiviteit. In het verleden moesten IT-mede werkers in elke SaaS-toepassing afzonderlijke gebruikers accounts maken en bijwerken, en moeten gebruikers een wacht woord onthouden voor elke SaaS-toepassing.
+Veel organisaties zijn afhankelijk van SaaS-toepassingen, zoals Microsoft 365, box en Sales Force voor gebruikers productiviteit. In het verleden moesten IT-mede werkers in elke SaaS-toepassing afzonderlijke gebruikers accounts maken en bijwerken, en moeten gebruikers een wacht woord onthouden voor elke SaaS-toepassing.
 
 Azure AD breidt on-premises Active Directory omgevingen uit in de Cloud, zodat gebruikers hun primaire organisatie-account kunnen gebruiken om zich niet alleen aan te melden bij apparaten en bedrijfs bronnen in het domein, maar ook voor alle web-en SaaS-toepassingen die ze nodig hebben voor hun werk.
 
@@ -147,14 +147,14 @@ Meer informatie:
 
 ## <a name="privileged-identity-management"></a>Privileged Identity Management
 
-Met Azure AD Privileged Identity Management kunt u uw bevoorrechte identiteiten en toegang tot resources in azure AD en andere micro soft-onlineservices, zoals Office 365 en Microsoft Intune, beheren, controleren en bewaken.
+Met Azure AD Privileged Identity Management kunt u uw bevoorrechte identiteiten en toegang tot resources in azure AD en andere micro soft-onlineservices, zoals Microsoft 365 en Microsoft Intune, beheren, controleren en bewaken.
 
-Gebruikers moeten soms privileged-bewerkingen uitvoeren in azure-of Office 365-resources of in andere SaaS-apps. Dit betekent vaak dat organisaties gebruikers permanente toegang moeten geven in azure AD. Dergelijke toegang is een groeiende beveiligings risico voor in de Cloud gehoste resources, omdat organisaties niet voldoende kunnen controleren wat de gebruikers doen met hun beheerders bevoegdheden. Als een gebruikers account met bevoorrechte toegang is aangetast, kan dit ook van invloed zijn op de algehele Cloud beveiliging van de organisatie. Azure AD Privileged Identity Management helpt dit risico te verhelpen.
+Gebruikers moeten soms geprivilegieerde bewerkingen in azure of Microsoft 365 resources of in andere SaaS-apps uitvoeren. Dit betekent vaak dat organisaties gebruikers permanente toegang moeten geven in azure AD. Dergelijke toegang is een groeiende beveiligings risico voor in de Cloud gehoste resources, omdat organisaties niet voldoende kunnen controleren wat de gebruikers doen met hun beheerders bevoegdheden. Als een gebruikers account met bevoorrechte toegang is aangetast, kan dit ook van invloed zijn op de algehele Cloud beveiliging van de organisatie. Azure AD Privileged Identity Management helpt dit risico te verhelpen.
 
 Met Azure AD Privileged Identity Management kunt u het volgende doen:
 
 * Zie welke gebruikers Azure AD-beheerders zijn.
-* Schakel just-in-time-beheer toegang op aanvraag in voor micro soft-services zoals Office 365 en intune.
+* Schakel just-in-time-beheer toegang op aanvraag in voor micro soft-services zoals Microsoft 365 en intune.
 * Rapporten over de geschiedenis van beheerders toegang en wijzigingen in beheerders toewijzingen ophalen.
 * Ontvang waarschuwingen over toegang tot een bevoorrechte rol.
 
@@ -163,7 +163,7 @@ Meer informatie:
 * [Wat is Azure AD Privileged Identity Management?](../../active-directory/privileged-identity-management/pim-configure.md)
 * [Azure AD-adreslijst rollen toewijzen in PIM](../../active-directory/privileged-identity-management/pim-how-to-add-role-to-user.md)
 
-## <a name="identity-protection"></a>Identiteitsbescherming
+## <a name="identity-protection"></a>Identiteitsbeveiliging
 
 Azure AD Identity Protection is een beveiligings service die een geconsolideerde weer gave biedt voor risico detecties en mogelijke beveiligings problemen die van invloed zijn op de identiteiten van uw organisatie. Identiteits bescherming maakt gebruik van de bestaande Azure AD-detectie mogelijkheden voor afwijkingen, die beschikbaar zijn via rapporten van afwijkende activiteiten van Azure AD. Identiteits beveiliging introduceert ook nieuwe typen risico detectie waarmee afwijkingen in realtime kunnen worden gedetecteerd.
 
@@ -174,7 +174,7 @@ Meer informatie:
 
 ## <a name="hybrid-identity-managementazure-ad-connect"></a>Hybride identiteits beheer/Azure AD Connect
 
-De identiteitsoplossingen van Microsoft omvatten mogelijkheden voor zowel on-premises als in de cloud. Er wordt één gebruikersidentiteit gemaakt voor verificatie en autorisatie bij alle resources, ongeacht hun locatie. We noemen dit hybride identiteit. Azure AD Connect is het programma van Microsoft dat is ontworpen om te voldoen aan uw doelstellingen voor een hybride identiteit. Hiermee kunt u uw gebruikers een algemene identiteit bieden voor Office 365, Azure en SaaS toepassingen die zijn geïntegreerd met Azure AD. Deze biedt de volgende functies:
+De identiteitsoplossingen van Microsoft omvatten mogelijkheden voor zowel on-premises als in de cloud. Er wordt één gebruikersidentiteit gemaakt voor verificatie en autorisatie bij alle resources, ongeacht hun locatie. We noemen dit hybride identiteit. Azure AD Connect is het programma van Microsoft dat is ontworpen om te voldoen aan uw doelstellingen voor een hybride identiteit. Hiermee kunt u uw gebruikers een algemene identiteit bieden voor Microsoft 365, Azure en SaaS toepassingen die zijn geïntegreerd met Azure AD. Deze biedt de volgende functies:
 
 * Synchronisatie
 * Integratie van AD FS en Federatie
