@@ -1,14 +1,14 @@
 ---
 title: Ondertekende installatie kopieën beheren
-description: Meer informatie over het inschakelen van inhouds vertrouwen voor uw Azure container Registry en het pushen en pullen van ondertekende installatie kopieën. Content Trust is een functie van de service laag Premium.
+description: Meer informatie over het inschakelen van inhouds vertrouwen voor uw Azure container Registry en het pushen en pullen van ondertekende installatie kopieën. Inhouds vertrouwensrelatie implementeert docker content Trust en is een functie van de service-laag Premium.
 ms.topic: article
-ms.date: 09/06/2019
-ms.openlocfilehash: 36d2a8ddef184804facdace2d517d7e2fdf1b24c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/18/2020
+ms.openlocfilehash: cfe337a0f46e37ed616664e8e0645e319bcfb519
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91253476"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409161"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Inhoud vertrouwen in Azure Container Registry
 
@@ -71,8 +71,10 @@ docker build --disable-content-trust -t myacr.azurecr.io/myimage:v1 .
 
 Alleen de gebruikers of systemen die u daartoe hebt gemachtigd, kunnen vertrouwde installatiekopieën naar uw register pushen. Als u een gebruiker (of een systeem met een service-principal) machtigingen voor het pushen van vertrouwde installatiekopieën wilt verlenen, verleent u de rol `AcrImageSigner` aan hun Azure Active Directory-entiteiten. Dit is een aanvulling op de `AcrPush` (of gelijkwaardige) rol die vereist is voor het pushen van installatie kopieën naar het REGI ster. Zie [Azure container Registry-rollen en-machtigingen](container-registry-roles.md)voor meer informatie.
 
-> [!NOTE]
-> U kunt geen vertrouwde installatie kopie push machtiging verlenen aan het [beheerders account](container-registry-authentication.md#admin-account) van een Azure container Registry.
+> [!IMPORTANT]
+> U kunt geen toestemming voor het pushen van vertrouwde installatie kopieën verlenen aan de volgende beheerders accounts: 
+> * het [beheerders account](container-registry-authentication.md#admin-account) van een Azure container Registry
+> * een gebruikers account in Azure Active Directory met de [klassieke rol systeem beheerder](../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles).
 
 Detailinformatie over het verlenen van de rol `AcrImageSigner` in Azure Portal en de Azure-opdrachtregelinterface volgt later.
 
@@ -80,9 +82,9 @@ Detailinformatie over het verlenen van de rol `AcrImageSigner` in Azure Portal e
 
 Navigeer naar het REGI ster in de Azure Portal en selecteer vervolgens **toegangs beheer (IAM)**  >  **roltoewijzing toevoegen**. Selecteer onder **Roltoewijzing toevoegen** de rol `AcrImageSigner` onder **Rol**. **Selecteer** vervolgens een of meer gebruikers of service-principals en klik op **Opslaan**.
 
-In dit voorbeeld is de rol `AcrImageSigner` toegewezen aan twee entiteiten: een service-principal met de naam 'service-principal' en een gebruiker met de naam 'Azure User'.
+In dit voor beeld zijn er twee entiteiten toegewezen aan de `AcrImageSigner` rol: een service-principal met de naam ' Service-Principal ' en een gebruiker met de naam ' Azure User '.
 
-![Inhoud vertrouwen voor een register inschakelen in Azure Portal][content-trust-02-portal]
+![Machtigingen voor het ondertekenen van ACR-installatie kopieën verlenen in de Azure Portal][content-trust-02-portal]
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -92,17 +94,16 @@ Als u een gebruiker machtigingen voor ondertekenen wilt verlenen met de Azure-op
 az role assignment create --scope <registry ID> --role AcrImageSigner --assignee <user name>
 ```
 
-Als u de rol bijvoorbeeld aan uzelf wilt verlenen, kunt u de volgende opdrachten uitvoeren in een geverifieerde Azure CLI-sessie. Wijzig de waarde `REGISTRY` in de naam van uw Azure-containerregister.
+Als u bijvoorbeeld een gebruiker zonder beheerders rechten de rol wilt verlenen, kunt u de volgende opdrachten uitvoeren in een geverifieerde Azure CLI-sessie. Wijzig de waarde `REGISTRY` in de naam van uw Azure-containerregister.
 
 ```bash
 # Grant signing permissions to authenticated Azure CLI user
 REGISTRY=myregistry
-USER=$(az account show --query user.name --output tsv)
 REGISTRY_ID=$(az acr show --name $REGISTRY --query id --output tsv)
 ```
 
 ```azurecli
-az role assignment create --scope $REGISTRY_ID --role AcrImageSigner --assignee $USER
+az role assignment create --scope $REGISTRY_ID --role AcrImageSigner --assignee azureuser@contoso.com
 ```
 
 U kunt de rechten voor het pushen van vertrouwde installatiekopieën naar uw register ook verlenen aan een [service-principal](container-registry-auth-service-principal.md). Het gebruik van een service-principal is handig voor het bouwen van systemen en andere systemen zonder toezicht waarmee vertrouwde installatiekopieën naar uw register moeten worden gepusht. De indeling is vergelijkbaar met het verlenen van gebruikersmachtigingen, maar in dit geval moet u de waarde `--assignee` wijzigen in de id van een service-principal.
@@ -118,10 +119,11 @@ De `<service principal ID>` kan de **appId**, **objectId** of een van de bijbeho
 
 ## <a name="push-a-trusted-image"></a>Een vertrouwde installatiekopie pushen
 
-Als u een tag voor een vertrouwde installatiekopie naar uw containerregister wilt pushen, schakelt u inhoud vertrouwen in en pusht u de installatiekopie naar uw register met `docker push`. De eerste keer dat u een ondertekende tag pusht, wordt u gevraagd een wachtwoordzin te maken voor zowel de hoofdondertekeningssleutel als de ondertekeningssleutel voor de opslagplaats. Beide sleutels worden gegenereerd en lokaal opgeslagen op uw computer.
+Als u een tag voor een vertrouwde installatiekopie naar uw containerregister wilt pushen, schakelt u inhoud vertrouwen in en pusht u de installatiekopie naar uw register met `docker push`. Nadat push met een ondertekende tag de eerste keer is voltooid, wordt u gevraagd om een wachtwoordzin te maken voor zowel een hoofdhandtekening sleutel als een handtekening sleutel van een opslag plaats. Beide sleutels worden gegenereerd en lokaal opgeslagen op uw computer.
 
 ```console
 $ docker push myregistry.azurecr.io/myimage:v1
+[...]
 The push refers to repository [myregistry.azurecr.io/myimage]
 ee83fc5847cb: Pushed
 v1: digest: sha256:aca41a608e5eb015f1ec6755f490f3be26b48010b178e78c00eac21ffbe246f1 size: 524
@@ -156,16 +158,19 @@ Status: Downloaded newer image for myregistry.azurecr.io/myimage@sha256:0800d17e
 Tagging myregistry.azurecr.io/myimage@sha256:0800d17e37fb4f8194495b1a188f121e5b54efb52b5d93dc9e0ed97fce49564b as myregistry.azurecr.io/myimage:signed
 ```
 
-Als door een client waarvoor inhoud vertrouwen is ingeschakeld, wordt geprobeerd een niet-ondertekende tag op te halen, mislukt de bewerking:
+Als een client waarop inhouds vertrouwen is ingeschakeld, probeert een niet-ondertekende tag op te halen, mislukt de bewerking met een fout die vergelijkbaar is met het volgende:
 
 ```console
 $ docker pull myregistry.azurecr.io/myimage:unsigned
-No valid trust data for unsigned
+Error: remote trust data does not exist
 ```
 
 ### <a name="behind-the-scenes"></a>Achter de schermen
 
 Bij het uitvoeren van `docker pull` maakt de Docker-client gebruik van dezelfde bibliotheek als in de [Notary-opdrachtregelinterface][docker-notary-cli] om de tag-to-SHA-256-digest-toewijzing aan te vragen voor de tag die u wilt ophalen. Na het valideren van de handtekeningen voor de gegevens van de vertrouwensrelatie, laat de client de Docker-engine een 'pull by digest'-opdracht uitvoeren. Tijdens de pull-bewerking wordt de SHA-256-controlesom door de engine gebruikt als inhoudadres voor het aanvragen en valideren van het installatiekopie-manifest van het Azure-containerregister.
+
+> [!NOTE]
+> Azure Container Registry biedt geen officiële ondersteuning voor de notaris CLI, maar is compatibel met de notaris Server API, die is opgenomen in docker Desktop. Momenteel wordt de versie **0.6.0** van de notaris aanbevolen.
 
 ## <a name="key-management"></a>Sleutelbeheer
 
@@ -196,7 +201,7 @@ Als u inhoud vertrouwen voor uw register wilt uitschakelen, navigeert u naar het
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Content Trust in docker][docker-content-trust] voor meer informatie over de vertrouwens relatie van inhoud. In dit artikel zijn slechts de belangrijkste punten van inhoud vertrouwen behandeld. Een uitgebreide beschrijving van dit onderwerp vindt u in de documentatie voor Docker.
+* Zie [Content Trust in docker][docker-content-trust] voor meer informatie over de vertrouwens relatie van inhoud, inclusief [docker-vertrouwens](https://docs.docker.com/engine/reference/commandline/trust/) opdrachten en [overdracht van vertrouwens](https://docs.docker.com/engine/security/trust/trust_delegation/)relaties. In dit artikel zijn slechts de belangrijkste punten van inhoud vertrouwen behandeld. Een uitgebreide beschrijving van dit onderwerp vindt u in de documentatie voor Docker.
 
 * Raadpleeg de documentatie over [Azure-pijp lijnen](/azure/devops/pipelines/build/content-trust) voor een voor beeld van het gebruik van content Trust wanneer u een docker-installatie kopie bouwt en pusht.
 

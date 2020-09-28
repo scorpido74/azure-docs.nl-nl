@@ -1,5 +1,5 @@
 ---
-title: Over clouddatabases gedistribueerde transacties
+title: Gedistribueerde trans acties in Cloud databases (preview-versie)
 description: Overzicht van Elastic Database transacties met Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,17 +11,17 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 5c94234644fcefb70a40ba0b2c21e6e205be0e65
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 60f6863bbe051338308c30e22c6969d84670dc64
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85829411"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409728"
 ---
-# <a name="distributed-transactions-across-cloud-databases"></a>Over clouddatabases gedistribueerde transacties
+# <a name="distributed-transactions-across-cloud-databases-preview"></a>Gedistribueerde trans acties in Cloud databases (preview-versie)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Met Elastic data base-trans acties voor Azure SQL Database kunt u trans acties uitvoeren die meerdere data bases omvatten in SQL Database. Elastic data base-trans acties voor SQL Database zijn beschikbaar voor .NET-toepassingen met behulp van ADO .NET en kunnen worden geïntegreerd met de bekende programmeer ervaring met behulp van de [System. Trans Action](https://msdn.microsoft.com/library/system.transactions.aspx) -klassen. Zie [.NET Framework 4.6.1 (web installer)](https://www.microsoft.com/download/details.aspx?id=49981)om de tape wisselaar op te halen.
+Met Elastic data base-trans acties voor Azure SQL Database kunt u trans acties uitvoeren die meerdere data bases omvatten in SQL Database. Elastic data base-trans acties voor SQL Database zijn beschikbaar voor .NET-toepassingen met ADO.NET en kunnen worden geïntegreerd met de bekende programmeer ervaring met behulp van de [System. Trans Action](https://msdn.microsoft.com/library/system.transactions.aspx) -klassen. Zie [.NET Framework 4.6.1 (web installer)](https://www.microsoft.com/download/details.aspx?id=49981)om de tape wisselaar op te halen.
 
 In een on-premises-scenario moet micro soft Distributed Transaction Coordinator (MSDTC) meestal worden uitgevoerd. Omdat MSDTC niet beschikbaar is voor platform-as-a-service-toepassingen in azure, is de mogelijkheid om gedistribueerde trans acties te coördineren, nu rechtstreeks geïntegreerd in SQL Database. Toepassingen kunnen verbinding maken met elke data base in SQL Database om gedistribueerde trans acties te starten. een van de data bases kan de gedistribueerde trans actie transparant coördineren, zoals in de volgende afbeelding wordt weer gegeven.
 

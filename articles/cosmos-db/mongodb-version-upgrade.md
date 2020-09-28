@@ -1,18 +1,18 @@
 ---
 title: Voer een upgrade uit voor de Mongo-versie van de API van uw Azure Cosmos DB voor het MongoDB-account
 description: De MongoDB wire-protocol versie voor de API van uw bestaande Azure Cosmos DB voor MongoDB-accounts naadloos bijwerken
-author: LuisBosquez
+author: jasonwhowell
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: guide
 ms.date: 09/22/2020
-ms.author: lbosq
-ms.openlocfilehash: 795b7641ac22373b02ab23126055c080af5e851d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.author: jasonh
+ms.openlocfilehash: c6369be39d0a964f07c64083e3269bb1c0c49c7f
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935130"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409660"
 ---
 # <a name="upgrade-the-mongodb-wire-protocol-version-of-your-azure-cosmos-dbs-api-for-mongodb-account"></a>Voer een upgrade uit voor de MongoDB wire-protocol versie van de API van uw Azure Cosmos DB voor het MongoDB-account
 

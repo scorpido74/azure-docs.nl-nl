@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 06/18/2020
+ms.date: 09/28/2020
 ms.author: victorh
-ms.openlocfilehash: eb7cf1899b24ed225941f0a02040206504e6486b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16e128fd61c8b0aeae017e5298ae1d8aed6e97e9
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85095579"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91408504"
 ---
 # <a name="azure-firewall-features"></a>Azure Firewall-functies
 
@@ -22,9 +22,9 @@ ms.locfileid: "85095579"
 
 Azure Firewall bevat de volgende functies:
 
-- [Ingebouwde hoge beschikbaarheid](#built-in-high-availability)
+- [Ingebouwde hoge Beschik baarheid](#built-in-high-availability)
 - [Beschikbaarheidszones](#availability-zones)
-- [Onbeperkte cloudschaalbaarheid](#unrestricted-cloud-scalability)
+- [Onbeperkte schaal baarheid van Cloud](#unrestricted-cloud-scalability)
 - [Regels voor het filteren van de FQDN van toepassingen](#application-fqdn-filtering-rules)
 - [Regels voor het filteren van netwerkverkeer](#network-traffic-filtering-rules)
 - [FQDN-tags](#fqdn-tags)
@@ -62,7 +62,7 @@ U kunt Azure Firewall omhoog schalen zoveel als nodig is om te voldoen aan veran
 
 ## <a name="application-fqdn-filtering-rules"></a>Regels voor het filteren van de FQDN van toepassingen
 
-U kunt uitgaand HTTP/S-verkeer of Azure SQL-verkeer (preview) beperken tot een opgegeven lijst met volledig gekwalificeerde domeinnamen (FQDN), inclusief jokertekens. Voor deze functie is geen TLS-beëindiging vereist.
+U kunt uitgaande HTTP/S-verkeer of Azure SQL-verkeer beperken tot een opgegeven lijst met FQDN-namen (FULLy Qualified Domain names), inclusief joker tekens. Voor deze functie is geen TLS-beëindiging vereist.
 
 ## <a name="network-traffic-filtering-rules"></a>Regels voor het filteren van netwerkverkeer
 

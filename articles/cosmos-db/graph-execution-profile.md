@@ -2,19 +2,19 @@
 title: Het uitvoerings profiel gebruiken om query's te evalueren in Azure Cosmos DB Gremlin-API
 description: Meer informatie over het oplossen van uw Gremlin-query's met behulp van de stap uitvoerings profiel.
 services: cosmos-db
-author: luisbosquez
+author: jasonwhowell
 manager: kfile
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 03/27/2019
-ms.author: lbosq
-ms.openlocfilehash: faacaf6700b14ba068d5cf0a48ea851f562e2302
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: jasonh
+ms.openlocfilehash: 841d2bcc50b62554fac8643048a3b3534e82dfa3
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261797"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91408229"
 ---
 # <a name="how-to-use-the-execution-profile-step-to-evaluate-your-gremlin-queries"></a>De stap met het uitvoeringsprofiel gebruiken om de Gremlin-query's te evalueren
 
@@ -155,7 +155,7 @@ Het antwoord van een executionProfile ()-functie levert een hiërarchie van JSON
     - `storeOps.count`: Dit is het aantal resultaten dat door deze opslag bewerking is geretourneerd.
     - `storeOps.size`: Vertegenwoordigt de grootte in bytes van het resultaat van een bepaalde opslag bewerking.
 
-Cosmos DB-operator Gremlin runtime|Description
+Cosmos DB-operator Gremlin runtime|Beschrijving
 ---|---
 `GetVertices`| In deze stap wordt een gegroepeerde set objecten opgehaald van de laag persistentie. 
 `GetEdges`| Met deze stap worden de randen opgehaald die grenzen aan een set hoek punten. Deze stap kan leiden tot een of meer opslag bewerkingen.

@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: deli, rohitha, vikanand, hongzili, sopai, absaafan, logicappspm
 ms.topic: conceptual
-ms.date: 09/25/2020
-ms.openlocfilehash: 1f67d7228da8529699a26539f20efd55f9a20c27
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.date: 09/26/2020
+ms.openlocfilehash: 1595051c851d1c21242bcbb5368baa28a1da740d
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91370977"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409847"
 ---
 # <a name="create-stateful-or-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Stateful of stateless werk stromen maken in Visual Studio code met de extensie Azure Logic Apps (preview)
 
@@ -55,7 +55,7 @@ De uitbrei ding Azure Logic Apps (preview) biedt veel actuele en aanvullende Log
 
 * Maak stateless Logic-apps die alleen in het geheugen worden uitgevoerd, zodat ze sneller zijn voltooid, snellere reageren, een hogere door voer hebben en de kost prijs minder zijn om te worden uitgevoerd omdat de run-runs en gegevens tussen acties niet behouden blijven in de externe opslag. Optioneel kunt u de uitvoerings geschiedenis inschakelen voor eenvoudiger fout opsporing. Zie [stateful versus stateless Logic apps](#stateful-stateless)voor meer informatie.
 
-* Test uw logische apps lokaal in de Visual Studio code Development Environment.
+* Uw logische apps lokaal uitvoeren en fouten opsporen in de ontwikkel omgeving van Visual Studio code.
 
 * Publiceer en implementeer uw Logic apps rechtstreeks vanuit Visual Studio code naar verschillende hosting omgevingen, zoals [Azure app service](../app-service/environment/intro.md) en [docker-containers](/dotnet/core/docker/introduction).
 
@@ -94,6 +94,24 @@ Raadpleeg de volgende onderwerpen voor meer informatie over de prijs modellen di
 * [Prijs informatie voor App Service](https://azure.microsoft.com/pricing/details/app-service/windows/)
 * [Prijs informatie voor Azure Storage](https://azure.microsoft.com/pricing/details/storage/)
 
+<a name="unsupported"></a>
+
+## <a name="unavailable-or-unsupported-capabilities"></a>Niet-beschik bare of niet-ondersteunde mogelijkheden
+
+Deze mogelijkheden zijn niet beschikbaar of worden niet ondersteund voor deze open bare preview-versie:
+
+* Het maken van de nieuwe **logische app (preview)** -resource is momenteel niet beschikbaar op macOS.
+
+* Niet alle Azure-regio's worden nog ondersteund. Controleer de [lijst met regio's](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md#available-regions)voor momenteel beschik bare regio's.
+
+* Als u uw werk stroom wilt starten, gebruikt u de [trigger aanvraag, http, Event hubs of service bus](../connectors/apis-list.md). Op dit moment worden [bedrijfs connectors](../connectors/apis-list.md#enterprise-connectors), [on-premises gegevens gateway triggers](../connectors/apis-list.md#on-premises-connectors), webhook-triggers, schuivende venster trigger, [aangepaste connectors](../connectors/apis-list.md#custom-apis-and-connectors), integratie accounts, hun artefacten en [hun connectors](../connectors/apis-list.md#integration-account-connectors) niet ondersteund in deze preview-versie. De mogelijkheid om een Azure-functie aan te roepen, is niet beschikbaar, dus gebruik de HTTP- *actie* om de aanvraag-URL voor de Azure-functie aan te roepen.
+
+  De werk stromen voor stateless logische apps kunnen alleen acties voor [beheerde connectors](../connectors/apis-list.md#managed-api-connectors)gebruiken, niet voor triggers. Met uitzonde ring van de eerder opgegeven triggers kunnen stateful werk stromen zowel triggers als acties voor beheerde connectors gebruiken.
+
+* U kunt het resource type nieuwe **logische app (preview-versie)** alleen implementeren op een [Premium-of app service hosting plan in azure](#publish-azure) of op een [docker-container](#deploy-docker), en niet de [integratie service omgevingen (ISEs)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). **Verbruiks** hosting plannen worden niet ondersteund of zijn niet beschikbaar voor de implementatie van dit resource type.
+
+* In de Azure Portal kunt u geen nieuwe logische apps maken met het resource type van de nieuwe **logische app (preview-versie)** . U kunt deze Logic apps alleen maken in Visual Studio code. Nadat u logische apps hebt geïmplementeerd met dit resource type van Visual Studio code naar Azure, kunt u echter [nieuwe werk stromen toevoegen aan die Logic apps](#add-workflows).
+
 ## <a name="prerequisites"></a>Vereisten
 
 ### <a name="access-and-connectivity"></a>Toegang en connectiviteit
@@ -105,6 +123,17 @@ Raadpleeg de volgende onderwerpen voor meer informatie over de prijs modellen di
 * Als u in dit artikel dezelfde voorbeeld logische app wilt maken, hebt u een Office 365 Outlook-e-mail account nodig dat gebruikmaakt van een werk-of school account van micro soft om u aan te melden.
 
   Als u een andere [e-mail connector wilt gebruiken die wordt ondersteund door Azure Logic apps](/connectors/), zoals Outlook.com of [Gmail](../connectors/connectors-google-data-security-privacy-policy.md), kunt u nog steeds het voor beeld volgen en zijn de algemene stappen hetzelfde, maar uw gebruikers interface en opties kunnen op sommige manieren verschillen. Als u bijvoorbeeld de Outlook.com-connector gebruikt, gebruikt u uw persoonlijke Microsoft-account in plaats van u aan te melden.
+
+### <a name="storage-requirements"></a>Opslag vereisten
+
+1. Down load en Installeer [Azure Storage Emulator 5,10](https://go.microsoft.com/fwlink/p/?linkid=717179).
+
+1. Als u de emulator wilt uitvoeren, moet u een lokale installatie van SQL DB hebben, zoals de gratis [SQL Server 2019 Express Edition](https://go.microsoft.com/fwlink/p/?linkid=866658). Zie [de Azure Storage-emulator gebruiken voor ontwikkeling en testen](../storage/common/storage-use-emulator.md)voor meer informatie.
+
+   > [!IMPORTANT]
+   > Voordat u de ontwerp functie voor logische apps opent om de werk stroom van de logische app te maken, moet u de emulator starten. Anders wordt er een bericht weer gegeven dat de `Workflow design time could not be started` .
+   >
+   > ![Scherm opname van de Azure Storage-emulator wordt uitgevoerd.](./media/create-stateful-stateless-workflows-visual-studio-code/start-storage-emulator.png)
 
 ### <a name="tools"></a>Hulpprogramma's
 
@@ -121,7 +150,7 @@ Raadpleeg de volgende onderwerpen voor meer informatie over de prijs modellen di
     >
     > Als u de [ **inline code** actie](../logic-apps/logic-apps-add-run-inline-code.md) voor het uitvoeren van Java script-code wilt gebruiken, moet u de Azure functions runtime versie 3x gebruiken, omdat de actie geen ondersteuning biedt voor versie 2 x. Deze actie wordt momenteel niet ondersteund in Linux-besturings systemen.
 
-  * [Azure Logic apps (preview)-extensie voor Visual Studio code](https://go.microsoft.com/fwlink/p/?linkid=2143167). Deze uitbrei ding voor open bare preview biedt u de mogelijkheid om stateful en stateless Logic apps te maken en ze lokaal te testen in Visual Studio code.
+  * [Azure Logic apps (preview)-extensie voor Visual Studio code](https://go.microsoft.com/fwlink/p/?linkid=2143167). Deze uitbrei ding voor open bare preview biedt u de mogelijkheid om stateful en stateless Logic apps te maken en ze lokaal uit te voeren in Visual Studio code.
 
     Op dit moment kunt u zowel de oorspronkelijke **Azure Logic apps** extensie als de nieuwe uitbrei ding **voor de Azure Logic apps (preview)** tegelijk in Visual Studio code installeren. Als u het pictogram van Azure selecteert op de Visual Studio code-werk balk, kunt u alle Logic apps weer geven die zijn geïmplementeerd in azure, maar elk resource type wordt weer gegeven in hun eigen uitbreidings secties, **Logic apps** en **Azure Logic apps (preview)**.
 
@@ -153,19 +182,6 @@ Raadpleeg de volgende onderwerpen voor meer informatie over de prijs modellen di
 * Als u de logische app wilt testen die u in dit artikel hebt gemaakt, hebt u een hulp programma nodig waarmee u aanroepen kunt verzenden naar de trigger voor aanvragen. Dit is de eerste stap in de logische app. Als u zo'n hulp programma niet hebt, kunt u [postman](https://www.postman.com/downloads/)downloaden, installeren en gebruiken.
 
 * U kunt een [Application Insights](../azure-monitor/app/app-insights-overview.md) resource toevoegen en gebruiken voor eenvoudiger diagnostische logboek registratie en tracering. U kunt deze resource maken tijdens de implementatie van de logische app of in de Azure Portal nadat u uw logische app hebt geïmplementeerd.
-
-### <a name="storage-requirements"></a>Opslag vereisten
-
-Het maken van de nieuwe **logische app (preview)** -resource is momenteel niet beschikbaar in macOS. Voor Windows of andere besturings systemen, zoals Linux, moet u echter deze opslag vereiste instellen.
-
-1. Down load en Installeer [Azure Storage Emulator 5,10](https://go.microsoft.com/fwlink/p/?linkid=717179).
-
-1. Als u de emulator wilt uitvoeren, moet u een lokale installatie van SQL DB hebben, zoals de gratis [SQL Server 2019 Express Edition](https://go.microsoft.com/fwlink/p/?linkid=866658). Zie [de Azure Storage-emulator gebruiken voor ontwikkeling en testen](../storage/common/storage-use-emulator.md)voor meer informatie.
-
-   > [!IMPORTANT]
-   > Voordat u de ontwerp functie voor logische apps opent om de werk stroom van de logische app te maken, moet u de emulator starten. Anders wordt er een bericht weer gegeven dat de `Workflow design time could not be started` .
-   >
-   > ![Scherm opname van de Azure Storage-emulator wordt uitgevoerd.](./media/create-stateful-stateless-workflows-visual-studio-code/start-storage-emulator.png)
 
 <a name="set-up"></a>
 
@@ -211,7 +227,9 @@ Het maken van de nieuwe **logische app (preview)** -resource is momenteel niet b
 
    ![Scherm opname van het Azure-venster en de geselecteerde koppeling voor Azure-aanmelding.](./media/create-stateful-stateless-workflows-visual-studio-code/sign-in-azure-subscription.png)
 
-   Nadat u zich hebt aangemeld, worden in het deel venster Azure de abonnementen in uw Azure-account weer gegeven. Als de verwachte abonnementen niet worden weer gegeven of als u wilt dat in het deel venster alleen specifieke abonnementen worden weer gegeven, volgt u deze stappen:
+   Nadat u zich hebt aangemeld, worden in het deel venster Azure de abonnementen in uw Azure-account weer gegeven. Als u de openbaar uitgebrachte Logic Apps extensie hebt, kunt u alle oorspronkelijke Logic Apps resources vinden die u hebt gemaakt met behulp van de oorspronkelijke uitbrei ding in de sectie **Logic apps** van de uitbrei ding, niet op de voorbeeld sectie **Logic apps (preview-** versie).
+   
+   Als de verwachte abonnementen niet worden weer gegeven of als u wilt dat in het deel venster alleen specifieke abonnementen worden weer gegeven, volgt u deze stappen:
 
    1. Verplaats de aanwijzer in de lijst abonnementen naast het eerste abonnement totdat de knop **abonnementen selecteren** (filter pictogram) wordt weer gegeven. Selecteer het filter pictogram.
 
@@ -228,19 +246,6 @@ Het maken van de nieuwe **logische app (preview)** -resource is momenteel niet b
 Voordat u uw logische app kunt maken, moet u een lokaal project maken, zodat u uw logische app kunt beheren en implementeren vanuit Visual Studio code. Het onderliggende project is vergelijkbaar met een Azure Functions project, ook wel bekend als een functie-app-project. Deze project typen zijn echter gescheiden van elkaar, zodat werk stromen en functies van logische apps niet in hetzelfde project kunnen voor komen.
 
 1. Maak op uw computer een *lege* lokale map die moet worden gebruikt voor het project dat u later in Visual Studio code gaat maken.
-
-   Als .NET Core SDK 5,0 is geïnstalleerd, moet u een **global.jsmaken voor** een bestand dat verwijst naar versie 3 van .net core runtime, die later is dan 3.1.201, bijvoorbeeld:
-
-   ```json
-   {
-      "sdk": {
-         "version": "3.1.8",
-         "rollForward": "disable"
-      }
-   }
-   ```
-
-   Nadat u het project hebt gemaakt, maar voordat u probeert de **workflow.js** te openen in het bestand in de ontwerp functie voor logische apps, moet u dit **global.js** toevoegen aan het bestand in de hoofd locatie van uw project.
 
 1. Sluit alle geopende mappen in Visual Studio code.
 
@@ -266,18 +271,30 @@ Voordat u uw logische app kunt maken, moet u een lokaal project maken, zodat u u
 
    ![Scherm opname van de lijst met ' openen in het huidige venster ' geselecteerd.](./media/create-stateful-stateless-workflows-visual-studio-code/select-project-location.png)
 
-   Visual Studio code wordt opnieuw geladen, het deel venster Verkenner wordt geopend en het project wordt weer gegeven, waarin nu automatisch gegenereerde project bestanden zijn opgenomen. Het project bevat bijvoorbeeld een map waarin de naam van de werk stroom van de logische app wordt weer gegeven. In deze map bevat het `workflow.json` bestand de onderliggende JSON-definitie van de werk stroom van uw logische app.
+   Visual Studio code wordt opnieuw geladen, het deel venster Verkenner wordt geopend en het project wordt weer gegeven, waarin nu automatisch gegenereerde project bestanden zijn opgenomen. Het project bevat bijvoorbeeld een map waarin de naam van de werk stroom van de logische app wordt weer gegeven. In deze map bevat de **workflow.jsin** het bestand de onderliggende JSON-definitie van de werk stroom van uw logische app.
 
    ![Scherm opname van het Verkenner-venster met de projectmap, de map werk stroom en het bestand workflow.jsop.](./media/create-stateful-stateless-workflows-visual-studio-code/local-project-created.png)
-
-1. Als .NET Core SDK 5,0 is geïnstalleerd en u eenglobal.jshebt gemaakt ** voor** een bestand dat verwijst naar een .net core runtime versie 3. x die later is dan 3.1.201, moet u die **global.js** toevoegen aan het bestand in de hoofd locatie van Visual Studio code.
-
-   > [!NOTE]
-   > Zorg ervoor dat u deze stap uitvoert voordat u probeert deworkflow.jste openen ** in** het bestand, dat de onderliggende JSON-definitie van uw werk stroom bevat in de ontwerp functie voor logische apps. Anders wordt de ontwerp functie niet geopend.
 
 <a name="open-workflow-definition-designer"></a>
 
 ## <a name="open-the-workflow-definition-file-in-logic-app-designer"></a>Het definitie bestand van de werk stroom openen in de ontwerp functie voor logische apps
+
+1. Controleer de versies die op uw computer zijn geïnstalleerd door de volgende opdracht uit te voeren:
+
+   `..\Users\{yourUserName}\dotnet --list-sdks`
+
+   Als u .NET Core SDK 5. x hebt, is het mogelijk dat u met deze versie de onderliggende werk stroom definitie van de logische app in de ontwerp functie niet kunt openen. In plaats van deze versie te verwijderen, maakt u in de hoofd locatie van het project een **global.jsin** het bestand dat verwijst naar de .net core runtime 3. x-versie die u later dan 3.1.201, bijvoorbeeld:
+
+   ```json
+   {
+      "sdk": {
+         "version": "3.1.8",
+         "rollForward": "disable"
+      }
+   }
+   ```
+
+   Zorg ervoor dat u expliclitly **global.js** toevoegt aan uw project op de hoofd locatie vanuit Visual Studio code. Anders wordt de ontwerp functie niet geopend.
 
 1. Als Visual Studio code wordt uitgevoerd op Windows of Linux, moet u ervoor zorgen dat de Azure Storage emulator wordt uitgevoerd. Raadpleeg de [vereisten](#prerequisites)voor meer informatie.
 
@@ -436,11 +453,13 @@ De werk stroom van de logische app in dit voor beeld maakt gebruik van deze trig
 
 1. Selecteer in de ontwerp functie **Opslaan**.
 
-Daarna kunt u uw werk stroom lokaal opsporen en testen in Visual Studio code.
+Voer vervolgens uw werk stroom lokaal uit en fout opsporing in Visual Studio code.
 
 <a name="debug-test-locally"></a>
 
-## <a name="debug-and-test-your-logic-app"></a>Fouten opsporen en uw logische app testen
+## <a name="run-and-debug-locally"></a>Lokaal uitvoeren en fouten opsporen
+
+Als u uw logische app wilt testen, volgt u deze stappen om een foutopsporingssessie te starten en de URL te vinden van het eind punt dat door de aanvraag trigger is gemaakt. U hebt deze URL nodig zodat u later een aanvraag kunt verzenden naar dat eind punt.
 
 1. U kunt [de uitvoerings geschiedenis voor die werk stroom voor](#run-history)meer informatie over het eenvoudiger opsporen van fouten in een stateless werk stroom voor logische apps.
 
@@ -957,22 +976,6 @@ Hoewel veel [bestaande limieten voor Azure Logic apps](../logic-apps/logic-apps-
   * De limiet voor code tekens neemt toe van 1.024 tekens tot 100.000 tekens.
 
   * De tijds limiet voor het uitvoeren van de code neemt toe van vijf seconden tot 15 seconden.
-
-<a name="unsupported"></a>
-
-## <a name="unavailable-or-unsupported-capabilities"></a>Niet-beschik bare of niet-ondersteunde mogelijkheden
-
-Deze mogelijkheden zijn niet beschikbaar of worden niet ondersteund voor deze open bare preview-versie:
-
-* Het maken van de nieuwe **logische app (preview)** -resource is momenteel niet beschikbaar op macOS.
-
-* Als u uw werk stroom wilt starten, gebruikt u de [trigger aanvraag, http, Event hubs of service bus](../connectors/apis-list.md). Op dit moment worden [bedrijfs connectors](../connectors/apis-list.md#enterprise-connectors), [on-premises gegevens gateway triggers](../connectors/apis-list.md#on-premises-connectors), webhook-triggers, schuivende venster trigger, [aangepaste connectors](../connectors/apis-list.md#custom-apis-and-connectors), integratie accounts, hun artefacten en [hun connectors](../connectors/apis-list.md#integration-account-connectors) niet ondersteund in deze preview-versie. De mogelijkheid om een Azure-functie aan te roepen, is niet beschikbaar, dus gebruik de HTTP- *actie* om de aanvraag-URL voor de Azure-functie aan te roepen.
-
-  De werk stromen voor stateless logische apps kunnen alleen acties voor [beheerde connectors](../connectors/apis-list.md#managed-api-connectors)gebruiken, niet voor triggers. Met uitzonde ring van de eerder opgegeven triggers kunnen stateful werk stromen zowel triggers als acties voor beheerde connectors gebruiken.
-
-* U kunt het resource type nieuwe **logische app (preview-versie)** alleen implementeren op een [Premium-of app service hosting plan in azure](#publish-azure) of op een [docker-container](#deploy-docker), en niet de [integratie service omgevingen (ISEs)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). **Verbruiks** hosting plannen worden niet ondersteund of zijn niet beschikbaar voor de implementatie van dit resource type.
-
-* In de Azure Portal kunt u geen nieuwe logische apps maken met het resource type van de nieuwe **logische app (preview-versie)** . U kunt deze Logic apps alleen maken in Visual Studio code. Nadat u logische apps hebt geïmplementeerd met dit resource type van Visual Studio code naar Azure, kunt u echter [nieuwe werk stromen toevoegen aan die Logic apps](#add-workflows).
 
 ## <a name="next-steps"></a>Volgende stappen
 

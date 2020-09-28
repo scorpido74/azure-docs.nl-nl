@@ -11,14 +11,14 @@ author: srinia
 ms.author: srinia
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 62202946193c111921c97dc95a7ec7955a63804f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2aa2c0c8cbd8b826444dc5420685aaa9731cddab
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85251160"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409579"
 ---
-# <a name="create-configure-and-manage-elastic-jobs"></a>Elastische taken maken, configureren en beheren
+# <a name="create-configure-and-manage-elastic-jobs-preview"></a>Elastische taken maken, configureren en beheren (preview-versie)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 In dit artikel vindt u informatie over het maken, configureren en beheren van elastische taken.
@@ -58,7 +58,7 @@ De volgende afbeelding is gemaakt als hulp bij het begrijpen en instellen van de
 
 ![Referenties voor Elastic Jobs](./media/elastic-jobs-overview/job-credentials.png)
 
-## <a name="security-best-practices"></a>Aanbevolen procedures voor beveiliging
+## <a name="security-best-practices"></a>Aanbevolen beveiligingsprocedures
 
 Een paar aandachtspunten voor best practices voor het werken met elastische taken:
 

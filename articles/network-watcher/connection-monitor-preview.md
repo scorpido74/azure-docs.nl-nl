@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: f331c62060b2d8a39a87bab95b00225f363b4a56
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 31733abc945fe7c751f786649fb05b753a7c243d
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400244"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91408818"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor-preview"></a>Bewaking van netwerk connectiviteit met verbindings monitor (preview-versie)
 
@@ -34,7 +34,7 @@ Hier volgen enkele gebruiks voorbeelden voor verbindings monitor (preview-versie
 - Uw hybride toepassing heeft verbinding nodig met een Azure Storage-eind punt. Uw on-premises site en uw Azure-toepassing maken verbinding met hetzelfde Azure Storage-eind punt. U wilt de latenties van de on-premises site vergelijken met de latenties van de Azure-toepassing.
 - U wilt de connectiviteit controleren tussen uw on-premises instellingen en de virtuele Azure-machines die uw Cloud toepassing hosten.
 
-In de preview-fase combineert verbindings monitor het beste van twee functies: de Network Watcher [verbindingscontrole](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#monitor-communication-between-a-virtual-machine-and-an-endpoint) functie en de [service connectiviteits controle](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor-service-connectivity) van Netwerkprestatiemeter (NPM).
+In de preview-fase combineert de verbindings monitor het beste van twee functies: de Network Watcher [verbindingscontrole](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#monitor-communication-between-a-virtual-machine-and-an-endpoint) functie en de NETWERKPRESTATIEMETER (NPM) [service Connectivity monitor](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor-service-connectivity), de controle functie voor [ExpressRoute](https://docs.microsoft.com/azure/expressroute/how-to-npm)en de [prestatie bewaking](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor-performance-monitor) .
 
 Hier volgen enkele voor delen van de verbindings monitor (preview-versie):
 
@@ -94,9 +94,8 @@ Bronnen kunnen Azure-Vm's of on-premises machines zijn met een geïnstalleerde b
 1. Ga op de start pagina van Azure Portal naar **Network Watcher**.
 1. Selecteer aan de linkerkant in het gedeelte **controle** de optie **verbindings monitor (preview-versie)**.
 1. U ziet alle verbindings monitors die zijn gemaakt in de verbindings monitor (preview-versie). Ga naar het tabblad **verbindings controle** om de verbindings monitors weer te geven die zijn gemaakt in de klassieke ervaring van de verbindings monitor.
-
-    ![Scherm afbeelding met verbindings monitors die zijn gemaakt in de verbindings monitor (preview)](./media/connection-monitor-2-preview/cm-resource-view.png)
-
+    
+  :::image type="content" source="./media/connection-monitor-2-preview/cm-resource-view.png" alt-text="Scherm afbeelding met verbindings monitors die zijn gemaakt in de verbindings monitor (preview)" lightbox="./media/connection-monitor-2-preview/cm-resource-view.png":::
 
 ### <a name="create-a-connection-monitor"></a>Een verbindingsmonitor maken
 
@@ -156,7 +155,7 @@ Nadat u een verbindings monitor hebt gemaakt, controleren bronnen de connectivit
 
 Op basis van het protocol dat u hebt gekozen in de test configuratie, voert verbindings controle (preview) een reeks controles uit voor het koppelen van de bron bestemming. De controles worden uitgevoerd op basis van de door u gekozen test frequentie.
 
-Als u HTTP gebruikt, berekent de service het aantal HTTP-antwoorden dat een antwoord code heeft geretourneerd. Het resultaat bepaalt het percentage mislukte controles. De service meet de tijd tussen een HTTP-aanroep en het antwoord om de RTT te berekenen.
+Als u HTTP gebruikt, berekent de service het aantal HTTP-antwoorden dat een geldige antwoord code heeft geretourneerd. Geldige antwoord codes kunnen worden ingesteld met behulp van Power shell en CLI. Het resultaat bepaalt het percentage mislukte controles. De service meet de tijd tussen een HTTP-aanroep en het antwoord om de RTT te berekenen.
 
 Als u TCP of ICMP gebruikt, berekent de service het percentage pakket verlies om het percentage mislukte controles te bepalen. Voor de berekening van de RTT wordt de tijd gemeten die nodig is om de bevestiging (ACK) te ontvangen voor de pakketten die zijn verzonden. Als u traceroute-gegevens voor uw netwerk tests hebt ingeschakeld, kunt u het verlies en de latentie van hops per hop voor uw on-premises netwerk weer geven.
 
@@ -166,7 +165,11 @@ Op basis van de gegevens die de controles retour neren, kunnen tests de volgende
 
 * **Geslaagd** : werkelijke waarden voor het percentage mislukte controles en de RTT bevinden zich binnen de opgegeven drempel waarden.
 * **Mislukt** : werkelijke waarden voor het percentage mislukte controles of de RTT heeft de opgegeven drempel waarden overschreden. Als er geen drempel waarde is opgegeven, wordt de fout status door een test bereikt wanneer het percentage mislukte controles 100 is.
-* **Waarschuwing** : er zijn geen criteria opgegeven voor het percentage mislukte controles. Als de opgegeven criteria ontbreken, wijst verbindings monitor (preview) automatisch een drempel waarde toe. Wanneer deze drempel waarde wordt overschreden, wordt de test status gewijzigd in waarschuwing.
+* **Waarschuwing** : 
+     * Als er een drempel waarde is opgegeven en de verbindings monitor (preview) controles mislukt percentage meer dan 80% van de drempel waarde, wordt de test als een waarschuwing gemarkeerd.
+     * Als er geen drempel waarden zijn opgegeven, wijst verbindings monitor (preview) automatisch een drempel waarde toe. Wanneer deze drempel waarde wordt overschreden, wordt de test status gewijzigd in waarschuwing.Voor de retour tijd in TCP-of ICMP-tests is de drempel waarde 750msec. Voor mislukte controles is de drempel waarde 10%. 
+* **Onbepaald**   -Geen gegevens in Log Analytics werk ruimte.Controleer de metrische gegevens. 
+* **Niet actief**   -Uitgeschakeld door test groep uit te scha kelen  
 
 ### <a name="data-collection-analysis-and-alerts"></a>Gegevens verzameling,-analyse en-waarschuwingen
 
@@ -192,77 +195,71 @@ Op het dash board kunt u elke verbindings monitor uitvouwen om de test groepen w
 
 U kunt een lijst filteren op basis van:
 
-* **Filters op het hoogste niveau** : Kies abonnementen, regio's, tijds tempel bronnen en doel typen. Zie vak 2 in de volgende afbeelding.
-* **Op status gebaseerde filters** : filteren op de status van de verbindings monitor, test groep of test. Zie pijl 3 in de volgende afbeelding.
-* **Aangepaste filters** : Kies **Alles selecteren** om een algemene zoek opdracht uit te voeren. Als u wilt zoeken op een specifieke entiteit, selecteert u in de vervolg keuzelijst. Zie pijl 4 in de volgende afbeelding.
+* **Filters op het hoogste niveau** : Zoek lijst op tekst, type entiteit (verbindings monitor, test groep of test) tijds tempel en bereik. Het bereik bevat abonnementen, regio's, bronnen en doel typen. Zie vak 1 in de volgende afbeelding.
+* **Op status gebaseerde filters** : filteren op de status van de verbindings monitor, test groep of test. Zie vak 2 in de volgende afbeelding.
+* **Filter voor waarschuwing op basis van filteren** op waarschuwingen die zijn geactiveerd op de bron van de verbindings monitor. Zie vak 3 in de volgende afbeelding.
 
-![Scherm afbeelding die laat zien hoe u de weer gaven van verbindings monitors, test groepen en tests in verbindings monitor kunt filteren (preview-versie)](./media/connection-monitor-2-preview/cm-view.png)
-
+  :::image type="content" source="./media/connection-monitor-2-preview/cm-view.png" alt-text="Scherm afbeelding die laat zien hoe u de weer gaven van verbindings monitors, test groepen en tests in verbindings monitor kunt filteren (preview-versie)" lightbox="./media/connection-monitor-2-preview/cm-view.png":::
+    
 Bijvoorbeeld, om te kijken naar alle tests in verbindings monitor (preview) waarbij het bron-IP-adres 10.192.64.56 is:
 1. Wijzig de weer gave om deze te **testen**.
 1. Typ *10.192.64.56* in het zoek veld
-1. Selecteer in de vervolg keuzelijst **bronnen**.
+1. Selecteer **bronnen**in **bereik** in het bovenste niveau filter.
 
 Alleen mislukte testen weer geven in verbindings monitor (preview) waarbij het bron-IP-adres 10.192.64.56 is:
 1. Wijzig de weer gave om deze te **testen**.
 1. Selecteer voor het filter op basis van status de optie **mislukt**.
 1. Typ *10.192.64.56* in het zoek veld
-1. Selecteer in de vervolg keuzelijst **bronnen**.
+1. Selecteer **bronnen**in **bereik** in het bovenste niveau filter.
 
 Alleen mislukte testen weer geven in verbindings monitor (preview) waarbij de bestemming outlook.office365.com is:
 1. Wijzig de weer gave om deze te **testen**.
 1. Selecteer voor het filter op basis van status de optie **mislukt**.
 1. Voer in het zoek veld *Outlook.office365.com* in
-1. Selecteer in de vervolg keuzelijst **bestemmingen**.
+1. Selecteer in **bereik** in het bovenste niveau filter **bestemmingen**.
+  
+  :::image type="content" source="./media/connection-monitor-2-preview/tests-view.png" alt-text="Scherm opname van een weer gave die is gefilterd zodat alleen mislukte tests voor het Outlook.Office365.com doel worden weer gegeven" lightbox="./media/connection-monitor-2-preview/tests-view.png":::
 
-   ![Scherm opname van een weer gave die is gefilterd zodat alleen mislukte tests voor het Outlook.Office365.com doel worden weer gegeven](./media/connection-monitor-2-preview/tests-view.png)
-
+Als u de oorzaak van het mislukken van een verbindings monitor of test groep wilt weten, klikt u op de kolom met de naam reason.  Dit geeft aan welke drempel waarde (mislukte controles mislukt% of RTT) is geschonden en gerelateerde diagnostische berichten
+  
+  :::image type="content" source="./media/connection-monitor-2-preview/cm-reason-of-failure.png" alt-text="Scherm opname met de reden van een fout voor een verbindings monitor, test of test groep" lightbox="./media/connection-monitor-2-preview/cm-reason-of-failure.png":::
+    
 De trends in de RTT en het percentage mislukte controles voor een verbindings monitor weer geven:
-1. Selecteer de verbindings monitor die u wilt onderzoeken. De bewakings gegevens zijn standaard ingedeeld op test groep.
+1. Selecteer de verbindings monitor die u wilt onderzoeken.
 
-   ![Scherm afbeelding met metrische gegevens voor een verbindings monitor, weer gegeven per test groep](./media/connection-monitor-2-preview/cm-drill-landing.png)
+    :::image type="content" source="./media/connection-monitor-2-preview/cm-drill-landing.png" alt-text="Scherm afbeelding met metrische gegevens voor een verbindings monitor, weer gegeven per test groep" lightbox="./media/connection-monitor-2-preview/cm-drill-landing.png":::
 
-1. Kies de test groep die u wilt onderzoeken.
+1. De volgende secties worden weer geven  
+    1. Essentials-bron specifieke eigenschappen van de geselecteerde verbindings monitor 
+    1. Overzicht 
+        1. Geaggregeerde trend lijnen voor RTT en percentage mislukte controles voor alle tests in de verbindings monitor. U kunt een specifieke tijd instellen om de details weer te geven.
+        1. Top 5 van test groepen, bronnen en bestemmingen op basis van de RTT of het percentage mislukte controles. 
+    1. Tabbladen voor test groepen, bronnen, doelen en test configuraties: een lijst met test groepen, bronnen of doelen in de verbindings monitor. Het controleren van de tests is mislukt, het verzamelen van de RTT en controles is mislukt% values.  U kunt ook teruggaan in de tijd om gegevens weer te geven. 
+    1. Problemen: problemen op het niveau van de hop voor elke test in de verbindings monitor. 
 
-   ![Scherm afbeelding die laat zien waar een test groep moet worden geselecteerd](./media/connection-monitor-2-preview/cm-drill-select-tg.png)
+    :::image type="content" source="./media/connection-monitor-2-preview/cm-drill-landing-2.png" alt-text="Scherm opname van metrische gegevens voor een verbindings monitor, weer gegeven door test groep deel 2" lightbox="./media/connection-monitor-2-preview/cm-drill-landing-2.png":::
 
-    U ziet de vijf meest voorkomende mislukte tests van de test groep, op basis van de RTT of het percentage mislukte controles. Voor elke test ziet u de RTT en trend lijnen voor het percentage mislukte controles.
-1. Selecteer een test in de lijst of kies een andere test om te onderzoeken. Voor uw tijds interval en het percentage mislukte controles ziet u de drempel waarde en de werkelijke waarden. Voor RTT ziet u de waarden voor drempel waarde, gemiddelde, minimum en maximum.
+1. U kunt
+    * Klik op alle tests weer geven-om alle tests in de verbindings monitor weer te geven
+    * Klik op alle test groepen weer geven, test configuraties, bronnen en doelen-om details weer te geven die specifiek zijn voor elk. 
+    * Kies een test groep, test configuratie, bron of doel-om alle tests in de entiteit weer te geven.
 
-   ![Scherm opname van de resultaten van een test voor de RTT en het percentage mislukte controles](./media/connection-monitor-2-preview/cm-drill-charts.png)
-
-1. Wijzig het tijds interval om meer gegevens weer te geven.
-1. Wijzig de weer gave om bronnen, doelen of test configuraties weer te geven. 
-1. Kies een bron op basis van mislukte testen en onderzoek de vijf mislukte testen. Kies bijvoorbeeld **weer geven per**  >  **bronnen** en **weer geven op**  >  **bestemmingen** om de relevante tests in de verbindings monitor te onderzoeken.
-
-   ![Scherm opname van de prestatie gegevens voor de top vijf mislukte tests](./media/connection-monitor-2-preview/cm-drill-select-source.png)
+1. In de weer gave alle tests weer geven kunt u het volgende doen:
+    * Selecteer testen en klik op vergelijken.
+    
+    :::image type="content" source="./media/connection-monitor-2-preview/cm-compare-test.png" alt-text="Scherm opname van twee testen" lightbox="./media/connection-monitor-2-preview/cm-compare-test.png":::
+    
+    * Cluster gebruiken om samengestelde bronnen uit te breiden, zoals VNET, subnetten naar de onderliggende bronnen
+    * Bekijk topologie voor alle tests door te klikken op topologie.
 
 De trends in de RTT en het percentage mislukte controles voor een test groep weer geven:
-
 1. Selecteer de test groep die u wilt onderzoeken. 
-
-    Standaard worden de bewakings gegevens gerangschikt op bronnen, doelen en test configuraties (tests). U kunt de weer gave later wijzigen van test groepen in bronnen, doelen of test configuraties. Kies vervolgens een entiteit om de vijf belangrijkste mislukte tests te onderzoeken. Wijzig de weer gave bijvoorbeeld in bronnen en doelen om de relevante tests in de geselecteerde verbindings monitor te onderzoeken.
-1. Kies de test die u wilt onderzoeken.
-
-   ![Scherm afbeelding die laat zien waar een test moet worden geselecteerd](./media/connection-monitor-2-preview/tg-drill.png)
-
-    Voor uw tijds interval en voor het percentage mislukte controles ziet u drempel waarden en werkelijke waarden. Voor de RTT ziet u waarden voor drempel waarde, gemiddelde, minimum en maximum. U ziet ook gebrande waarschuwingen voor de test die u hebt geselecteerd.
-1. Wijzig het tijds interval om meer gegevens weer te geven.
+1. U ziet hetzelfde als verbindings monitor: essentiële onderdelen, samen vatting, tabel voor test groepen, bronnen, doelen en test configuraties. Navigeren zoals u zou doen voor een verbindings monitor
 
 De trends in de RTT en het percentage mislukte controles voor een test bekijken:
-1. Selecteer de bron-, doel-en test configuratie die u wilt onderzoeken.
+1. Selecteer de test die u wilt onderzoeken. U ziet de netwerk topologie en het end-to-end-trend diagram voor controles die zijn mislukt,% en de retour tijd. Als u de geïdentificeerde problemen wilt weer geven, selecteert u in de topologie een hop in het pad. (Deze hops zijn Azure-resources.) Deze functionaliteit is momenteel niet beschikbaar voor on-premises netwerken
 
-    Voor uw tijds interval en het percentage mislukte controles ziet u drempel waarden en werkelijke waarden. Voor de RTT ziet u waarden voor drempel waarde, gemiddelde, minimum en maximum. U ziet ook gebrande waarschuwingen voor de test die u hebt geselecteerd.
-
-   ![Scherm opname met metrische gegevens voor een test](./media/connection-monitor-2-preview/test-drill.png)
-
-1. Selecteer **topologie**om de netwerk topologie te bekijken.
-
-   ![Scherm opname van het tabblad netwerk topologie](./media/connection-monitor-2-preview/test-topo.png)
-
-1. Als u de geïdentificeerde problemen wilt weer geven, selecteert u in de topologie een hop in het pad. (Deze hops zijn Azure-resources.) Deze functionaliteit is momenteel niet beschikbaar voor on-premises netwerken.
-
-   ![Scherm afbeelding met een geselecteerde hop-koppeling op het tabblad topologie](./media/connection-monitor-2-preview/test-topo-hop.png)
+  :::image type="content" source="./media/connection-monitor-2-preview/cm-test-topology.png" alt-text="Scherm opname van de topologie weergave van een test" lightbox="./media/connection-monitor-2-preview/cm-test-topology.png":::
 
 #### <a name="log-queries-in-log-analytics"></a>Query's in Log Analytics vastleggen
 
@@ -272,7 +269,7 @@ Gebruik Log Analytics om aangepaste weer gaven van uw bewakings gegevens te make
 
 In verbindings monitors die zijn gemaakt vóór de ervaring van de verbindings monitor (preview-versie) zijn alle vier de metrische gegevens beschikbaar:% probe failed, AverageRoundtripMs, ChecksFailedPercent (preview) en RoundTripTimeMs (preview). In verbindings monitors die zijn gemaakt in de ervaring van de verbindings monitor (preview-versie) zijn gegevens alleen beschikbaar voor de metrische waarden die zijn gelabeld met *(preview)*.
 
-![Scherm opname met metrische gegevens in de verbindings monitor (preview-versie)](./media/connection-monitor-2-preview/monitor-metrics.png)
+  :::image type="content" source="./media/connection-monitor-2-preview/monitor-metrics.png" alt-text="Scherm opname met metrische gegevens in de verbindings monitor (preview-versie)" lightbox="./media/connection-monitor-2-preview/monitor-metrics.png":::
 
 Wanneer u metrische gegevens gebruikt, stelt u het resource type in als micro soft. Network/networkWatchers/connectionMonitors
 
@@ -283,24 +280,27 @@ Wanneer u metrische gegevens gebruikt, stelt u het resource type in als micro so
 | ChecksFailedPercent (preview-versie) | % Controles mislukt (preview-versie) | Percentage | Average | Percentage mislukte controles voor een test. | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>Protocol <br>DestinationAddress <br>Doel locatie <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Region |
 | RoundTripTimeMs (preview-versie) | Retour tijd (MS) (preview-versie) | Milliseconden | Average | RTT voor controles die worden verzonden tussen de bron en de bestemming. Deze waarde is niet van het gemiddelde. | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>Protocol <br>DestinationAddress <br>Doel locatie <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Region |
 
-#### <a name="metric-alerts-in-azure-monitor"></a>Metrische waarschuwingen in Azure Monitor
+#### <a name="metric-based-alerts-for-connection-monitor"></a>Waarschuwingen op basis van metrische gegevens voor verbindings monitor
 
-Een waarschuwing maken in Azure Monitor:
+U kunt metrische waarschuwingen maken op verbindings monitors met behulp van de onderstaande methoden 
 
-1. Kies de bron van de verbindings monitor die u hebt gemaakt in de verbindings monitor (preview-versie).
-1. Zorg ervoor dat **metrische gegevens** worden weer gegeven als signaal type voor de verbindings monitor.
-1. In voor **waarde toevoegen**selecteert u voor de **signaal naam** **ChecksFailedPercent (preview)** of **RoundTripTimeMs (preview)**.
-1. Kies **metrische gegevens**bij **signaal type**. Selecteer bijvoorbeeld **ChecksFailedPercent (preview)**.
-1. Alle dimensies voor de metriek worden weer gegeven. Kies de dimensie naam en dimensie waarde. Selecteer bijvoorbeeld **bron adres** en voer vervolgens het IP-adres in van een bron in de verbindings monitor.
-1. Vul in **waarschuwings logica**de volgende gegevens in:
-   * **Voorwaarde type**: **static**.
-   * **Voor waarde** en **drempel**waarde.
-   * **Aggregatie granulatie en frequentie van de evaluatie: met**verbindings monitor (preview) worden gegevens elke minuut bijgewerkt.
-1. Kies in **acties**uw actie groep.
-1. Geef waarschuwings Details op.
-1. De waarschuwings regel maken.
+1. Vanuit verbindings monitor (preview) tijdens het maken van een verbindings monitor [met Azure Portal](connection-monitor-preview-create-using-portal.md#) 
+1. Vanuit verbindings monitor (preview) met behulp van ' waarschuwingen configureren ' in het dash board 
+1. Van Azure Monitor-om een waarschuwing te maken in Azure Monitor: 
+    1. Kies de bron van de verbindings monitor die u hebt gemaakt in de verbindings monitor (preview-versie).
+    1. Zorg ervoor dat **metrische gegevens** worden weer gegeven als signaal type voor de verbindings monitor.
+    1. In voor **waarde toevoegen**selecteert u voor de **signaal naam** **ChecksFailedPercent (preview)** of **RoundTripTimeMs (preview)**.
+    1. Kies **metrische gegevens**bij **signaal type**. Selecteer bijvoorbeeld **ChecksFailedPercent (preview)**.
+    1. Alle dimensies voor de metriek worden weer gegeven. Kies de dimensie naam en dimensie waarde. Selecteer bijvoorbeeld **bron adres** en voer vervolgens het IP-adres in van een bron in de verbindings monitor.
+    1. Vul in **waarschuwings logica**de volgende gegevens in:
+        * **Voorwaarde type**: **static**.
+        * **Voor waarde** en **drempel**waarde.
+        * **Aggregatie granulatie en frequentie van de evaluatie: met**verbindings monitor (preview) worden gegevens elke minuut bijgewerkt.
+    1. Kies in **acties**uw actie groep.
+    1. Geef waarschuwings Details op.
+    1. De waarschuwings regel maken.
 
-   ![Scherm opname met het regel gebied maken in Azure Monitor; ' Bron adres ' en ' naam van bron eindpunt ' zijn gemarkeerd](./media/connection-monitor-2-preview/mdm-alerts.jpg)
+  :::image type="content" source="./media/connection-monitor-2-preview/mdm-alerts.jpg" alt-text="Scherm opname met het regel gebied maken in Azure Monitor. Het bron adres en de naam van het bron eindpunt zijn gemarkeerd" lightbox="./media/connection-monitor-2-preview/mdm-alerts.jpg":::
 
 ## <a name="diagnose-issues-in-your-network"></a>Problemen in uw netwerk vaststellen
 
@@ -347,3 +347,8 @@ Voor netwerken waarvan de bronnen virtuele Azure-machines zijn, kunnen de volgen
 * Verkeer is gestopt vanwege systeem routes of UDR.
 * BGP is niet ingeschakeld op de gateway verbinding.
 * De DIP-test is niet beschikbaar op de load balancer.
+
+## <a name="next-steps"></a>Volgende stappen
+    
+   * Meer informatie [over het maken van een verbindings monitor (preview) met behulp van Azure Portal](connection-monitor-preview-create-using-portal.md)  
+   * Meer informatie [over het maken van een verbindings monitor (preview) met behulp van ARMClient](connection-monitor-preview-create-using-arm-client.md)  

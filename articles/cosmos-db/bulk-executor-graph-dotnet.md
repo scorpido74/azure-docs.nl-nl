@@ -1,20 +1,20 @@
 ---
 title: De grafiek gebruiken de .NET-bibliotheek voor bulksgewijs uitvoeren met Azure Cosmos DB Gremlin API
 description: Meer informatie over hoe u de bulk-uitvoerder bibliotheek kunt gebruiken om grafiek gegevens enorm te importeren in een Azure Cosmos DB Gremlin API-container.
-author: luisbosquez
+author: jasonwhowell
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 05/28/2019
-ms.author: lbosq
+ms.author: jasonh
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6fd81a844832fbe6ad7410ec786baa431ca9930c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: dbb2ce5c7765e9b2784e5a60f94919b3ee855a39
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004099"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91408061"
 ---
 # <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>De grafiek gebruiken om bulk bewerkingen uit te voeren in Azure Cosmos DB Gremlin API
 
@@ -115,7 +115,7 @@ e.AddProperty("customProperty", "value");
 ## <a name="sample-application"></a>Voorbeeldtoepassing
 
 ### <a name="prerequisites"></a>Vereisten
-* Visual Studio 2019 met de werk belasting Azure Development. U kunt gratis aan de slag met de [Visual Studio 2019 Community Edition](https://visualstudio.microsoft.com/downloads/) .
+* Visual Studio 2019 met de workload Azure Development. U kunt gratis aan de slag met de [Visual Studio 2019 Community Edition](https://visualstudio.microsoft.com/downloads/) .
 * Een Azure-abonnement. U kunt [hier een gratis Azure-account maken](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cosmos-db). U kunt ook een Cosmos-database account maken met [gratis Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) zonder Azure-abonnement.
 * Een Azure Cosmos DB Gremlin API-database met een **onbeperkte verzameling**. In deze handleiding leest u hoe u aan de slag kunt met [Azure Cosmos DB Gremlin API in .NET](https://docs.microsoft.com/azure/cosmos-db/create-graph-dotnet).
 * Git. Ga naar de [Git-pagina met downloads](https://git-scm.com/downloads) voor meer informatie.

@@ -1,22 +1,22 @@
 ---
 title: Optimalisatie stappen na de migratie met de API van Azure Cosmos DB voor MongoDB
 description: Dit document bevat de optimalisatie technieken na migratie van MongoDB naar de APi van Azure Cosmos DB voor Mongo DB.
-author: LuisBosquez
+author: jasonwhowell
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 03/20/2020
-ms.author: lbosq
-ms.openlocfilehash: 93a9058dec66ffe2e1c7ad4b15d9bf4eba12c647
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.author: jasonh
+ms.openlocfilehash: f21aa30de2b2dfcf85e45c7ed4d5c485fe45eed7
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91358522"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409694"
 ---
 # <a name="post-migration-optimization-steps-when-using-azure-cosmos-dbs-api-for-mongodb"></a>Optimalisatie stappen na de migratie wanneer u de API van Azure Cosmos DB gebruikt voor MongoDB
 
-Nadat u de gegevens die zijn opgeslagen in MongoDB Data Base hebt gemigreerd naar de API van Azure Cosmos DB voor MongoDB, kunt u verbinding maken met Azure Cosmos DB en de gegevens beheren. Deze hand leiding bevat de stappen die u moet overwegen na de migratie. Zie de [MongoDb voor de MongoDb-zelf studie Migrate to Azure Cosmos DB](../dms/tutorial-mongodb-cosmos-db.md) voor de migratie stappen.
+Nadat u de gegevens die zijn opgeslagen in de MongoDB-database hebt gemigreerd naar de Azure Cosmos DB API voor MongoDB, kunt u verbinding maken met Azure Cosmos DB en de gegevens beheren. Deze handleiding bevat de stappen die u moet overwegen na de migratie. Zie de [MongoDb voor de MongoDb-zelf studie Migrate to Azure Cosmos DB](../dms/tutorial-mongodb-cosmos-db.md) voor de migratie stappen.
 
 In deze handleiding leert u het volgende:
 

@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 05/07/2020
-ms.openlocfilehash: f8411176e0979bdb894983bcf866abd0e1109e21
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 999be38e413288d2eb2f6342874e692972f300ad
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89291664"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409711"
 ---
 # <a name="requesting-quota-increases-for-azure-hdinsight"></a>Quota aanvragen verhogen voor Azure HDInsight
 
 CPU-kern quota helpen ervoor te zorgen dat het resource gebruik redelijk wordt gedistribueerd tussen alle klanten in een bepaalde Azure-regio. In bepaalde gevallen kunnen uw bedrijfs vereisten echter meer cluster bronnen vereisen dan het huidige quotum toestaat. In dergelijke gevallen kunt u een CPU-kern quotum toename aanvragen zodat u clusters kunt implementeren die overeenkomen met uw vereisten voor gegevens verwerking.
 
-Wanneer u een quotum limiet bereikt, kunt u geen nieuwe clusters implementeren of bestaande clusters uitschalen door meer werk knooppunten toe te voegen. De enige quotum limiet is het quotum voor CPU-kernen dat voor elk abonnement bestaat op het niveau van de regio. Uw abonnement kan bijvoorbeeld een limiet van 30 CPU-kernen hebben in de regio VS-Oost, met nog eens 30 CPU-kernen die zijn toegestaan in het VS-Oost 2.
+Wanneer u een quotum limiet bereikt, kunt u geen nieuwe clusters implementeren of bestaande clusters uitschalen door meer werk knooppunten toe te voegen. De enige quotum limiet is het quotum voor CPU-kernen dat voor elk abonnement bestaat op het niveau van de regio. Uw abonnement kan bijvoorbeeld een limiet van 30 CPU-kernen hebben in de regio VS-Oost, met nog eens 30 CPU-kernen die zijn toegestaan in het VS-Oost.
 
 ## <a name="gather-required-information"></a>Vereiste gegevens verzamelen
 
@@ -28,13 +28,13 @@ Als u een fout bericht hebt ontvangen dat aangeeft dat u een quotum limiet hebt 
 1. Bepaal de gewenste grootte, schaal en type van de cluster-VM.
 1. Controleer de huidige limieten voor quotum capaciteit van uw abonnement. Voer de volgende stappen uit om de beschik bare kernen te controleren:
 
-    1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+    1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
     1. Ga naar de **overzichts** pagina voor het HDInsight-cluster.
     1. Selecteer in het linkermenu **quotum limieten**. Op de pagina worden het aantal gebruikte kernen, het aantal beschikbare kernen en het totale aantal kernen weergegeven.
 
 Voer de volgende stappen uit om een quotum verhoging aan te vragen:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 1. Selecteer **Help en ondersteuning** aan de linkerkant van de pagina.
 
     ![knop Help en ondersteuning](./media/quota-increase-request/help-support-button.png)

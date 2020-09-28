@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/13/2019
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: 9ba3d25a07e4d6c32bd14c315018f0d008032b73
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7d22226721d4fc09b4f5affc15047b6799ed0d19
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91250484"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409473"
 ---
 # <a name="test-drive-technical-configuration"></a>Technische configuratie van test drive
 
@@ -30,7 +30,7 @@ Micro soft kan de complexiteit van het instellen van een test drive verwijderen 
 
 - **Maxi maal aantal gelijktijdige test schijven** (vereist): Stel het maximum in voor de klanten die uw test drive tegelijk kunnen gebruiken. Elke gelijktijdige gebruiker gebruikt een Dynamics 365-licentie terwijl de test drive actief is. Zorg er dus voor dat er voldoende licenties beschikbaar zijn voor de ondersteuning van de maximale limiet. De aanbevolen waarde is 3-5.
 
-- **Duur van test drive** (vereist): Voer het aantal uren in dat het test drive actief blijft. Na deze periode wordt de sessie beëindigd en wordt een van uw licenties niet meer gebruikt. We raden een waarde van 2-24 uur aan, afhankelijk van de complexiteit van uw aanbieding. Deze duur mag alleen in hele uren worden ingesteld (bijvoorbeeld ' 2 ' uur is geldig; "1,5" is niet). De gebruiker kan een nieuwe sessie aanvragen als deze niet langer actief zijn en de test drive opnieuw willen gebruiken.
+- **Duur van test drive** (vereist): Voer het aantal uren in dat het test drive actief blijft (ten minste één uur). Na deze periode wordt de sessie beëindigd en wordt een van uw licenties niet meer gebruikt. We raden een waarde van 2-24 uur aan, afhankelijk van de complexiteit van uw aanbieding. Deze duur mag alleen in hele uren worden ingesteld (bijvoorbeeld ' 2 ' uur is geldig; "1,5" is niet). De gebruiker kan een nieuwe sessie aanvragen als deze niet langer actief zijn en de test drive opnieuw willen gebruiken.
 
 - **URL van exemplaar** (vereist): de URL waar de klant de test drive begint. Doorgaans de URL van uw Dynamics 365-exemplaar waarop uw app wordt uitgevoerd, waarbij voorbeeld gegevens zijn geïnstalleerd (bijvoorbeeld `https://testdrive.crm.dynamics.com` ).
 
@@ -48,7 +48,7 @@ Dit type test drive wordt niet gehost door micro soft. Gebruik het om verbinding
 
 - **Maxi maal aantal gelijktijdige test schijven** (vereist): Stel het maximum in voor de klanten die uw test drive tegelijk kunnen gebruiken. Deze test stations zijn al geïmplementeerd, zodat klanten deze direct kunnen openen zonder te hoeven wachten op een implementatie.
 
-- **Test drive** (vereist): Voer de tijds duur in die het test station actief blijft, in aantal uren. De test drive wordt automatisch beëindigd nadat deze periode is verstreken.
+- **Duur van test drive** (vereist): Voer het aantal uren in dat het test drive actief blijft (ten minste één uur). De test drive wordt automatisch beëindigd nadat deze periode is verstreken.
 
 - **Naam van de Azure-resource groep** (vereist): Voer de naam van de [Azure-resource groep](../azure-resource-manager/resource-group-overview.md#resource-groups)in waar uw logische app-test drive wordt opgeslagen.
 

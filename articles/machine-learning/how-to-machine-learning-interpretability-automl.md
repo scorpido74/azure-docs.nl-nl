@@ -10,12 +10,12 @@ ms.custom: how-to
 ms.author: mithigpe
 author: minthigpen
 ms.date: 07/09/2020
-ms.openlocfilehash: 7cb40df6a4619e11694e65020bfcb560cf695795
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 35bf66549cedba22ec14999c4fea62a2c449416e
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897447"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91408012"
 ---
 # <a name="interpretability-model-explanations-in-automated-machine-learning-preview"></a>Interpretation: model uitleg in automatische machine learning (preview)
 
@@ -33,7 +33,7 @@ In dit artikel leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Functies voor interpretaties. Voer uit `pip install azureml-interpret azureml-contrib-interpret` om de vereiste pakketten op te halen.
+- Functies voor interpretaties. Voer uit `pip install azureml-interpret` om het benodigde pakket op te halen.
 - Kennis van het bouwen van geautomatiseerde ML experimenten. Voor meer informatie over het gebruik van de Azure Machine Learning SDK, voltooit u de [zelf studie voor het regressie model](tutorial-auto-train-models.md) of raadpleegt u How to [Configure Automated ml experimenten](how-to-configure-auto-train.md).
 
 ## <a name="interpretability-during-training-for-the-best-model"></a>Interpretiteit tijdens de training voor het beste model
@@ -43,7 +43,7 @@ Haal de uitleg op uit de `best_run` , die uitleg bevat over functies die zijn on
 > [!Warning]
 > Interpretiteit, aanbevolen model uitleg is niet beschikbaar voor het automatisch ML van prognose experimenten waarbij de volgende algoritmen worden aanbevolen als het beste model: 
 > * ForecastTCN
-> * Gemiddeld 
+> * Average 
 > * Naive
 > * Gemiddelde seizoen 
 > * Seizoen Naive
@@ -53,7 +53,7 @@ Haal de uitleg op uit de `best_run` , die uitleg bevat over functies die zijn on
 U kunt gebruiken `ExplanationClient` voor het downloaden van de toelichtingen van de functie die door de engine zijn verstrekt vanuit het artefact archief van de `best_run` . 
 
 ```python
-from azureml.explain.model._internal.explanation_client import ExplanationClient
+from azureml.interpret import ExplanationClient
 
 client = ExplanationClient.from_run(best_run)
 engineered_explanations = client.download_model_explanation(raw=False)
@@ -99,7 +99,7 @@ Als u een uitleg voor AutoML-modellen wilt genereren, gebruikt u de `MimicWrappe
 De MimicWrapper neemt ook het `automl_run` object over waar de toelichte verklaringen worden geüpload.
 
 ```python
-from azureml.explain.model.mimic_wrapper import MimicWrapper
+from azureml.interpret import MimicWrapper
 
 # Initialize the Mimic Explainer
 explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator,

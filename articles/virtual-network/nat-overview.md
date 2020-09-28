@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/25/2020
+ms.date: 09/28/2020
 ms.author: allensu
-ms.openlocfilehash: 3180fa34b85c3ec5f7cb1d2d9da8c2e1b528bd69
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 5efcf944f5d22759f9d448da5862bcf1f19e2efe
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855794"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409558"
 ---
 # <a name="what-is-virtual-network-nat"></a>Wat is Azure Virtual Network NAT?
 
@@ -32,7 +32,7 @@ Virtual Network NAT (Network Address Translation) vereenvoudigt uitsluitend uitg
 -->
 
 <p align="center">
-  <img src="./media/nat-overview/flow-map.svg" alt="Figure depicts a NAT receiving traffic from internal subnets and directing it to a public IP and an IP prefix." width="256" title="Virtual Network NAT">
+  <img src="./media/nat-overview/flow-map.svg" alt="Figure depicts a NAT receiving traffic from internal subnets and directing it to a public IP (PIP) and an IP prefix." width="256" title="Virtual Network NAT">
 </p>
 
 
@@ -51,11 +51,11 @@ Al het uitgaande verkeer voor het subnet wordt automatisch door NAT verwerkt zon
 
 NAT gebruikt 'Port Network Address Translation' (PNAT of PAT) en wordt aanbevolen voor de meeste workloads. Dynamische of uiteenlopende workloads kunnen eenvoudig worden afgestemd op een uitgaande stroomtoewijzing op aanvraag. Uitgebreide planning vooraf, toewijzing vooraf en uiteindelijk overmatige inrichting van uitgaande resources wordt voorkomen. De SNAT-poortresources worden gedeeld en zijn beschikbaar in alle subnetten die een specifieke NAT-gatewayresource gebruiken en worden weergegeven wanneer dat nodig is.
 
-Een openbaar IP-adres dat is gekoppeld aan NAT biedt maximaal 64.000 gelijktijdige stromen voor UDP en TCP. U kunt beginnen met één IP-adres en schalen tot maximaal 16 openbare IP-adressen.
+Een openbaar IP-adres dat is gekoppeld aan NAT biedt respectievelijk Maxi maal 64.000 gelijktijdige stromen voor UDP en TCP. U kunt beginnen met één IP-adres en tot 16 IP-adressen schalen met behulp van open bare IP-adressen of open bare IP-voor voegsels of beide.  Een NAT-gateway bron maakt gebruik van alle IP-adressen die zijn gekoppeld aan de resource voor uitgaande verbindingen van alle subnetten die zijn geconfigureerd met dezelfde NAT-gateway resource.
 
 Met NAT kunnen stromen worden gemaakt van het virtuele netwerk naar internet. Het retourverkeer vanaf internet is alleen toegestaan als reactie op een actieve stroom.
 
-In tegenstelling tot uitgaande SNAT van load balancer heeft NAT geen beperkingen met betrekking tot welk privé-IP-adres van een VM-instantie uitgaande verbindingen kan maken.  Secundaire IP-configuraties kunnen uitgaande internetverbindingen maken met NAT.
+In tegenstelling tot uitgaande SNAT van load balancer heeft NAT geen beperkingen met betrekking tot welk privé-IP-adres van een VM-instantie uitgaande verbindingen kan maken.  Primaire en secundaire IP-configuraties kunnen uitgaande Internet verbinding maken met NAT.
 
 ## <a name="coexistence-of-inbound-and-outbound"></a>Co-existentie van inkomend en uitgaand
 
