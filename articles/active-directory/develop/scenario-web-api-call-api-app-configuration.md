@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 88f0891e9bd67da094240b059750226402da0244
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 9fe4d5cfb4b0b31a257dfecdeeb191a9c7920772
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91396228"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403161"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>Een web-API die web-Api's aanroept: code configuratie
 
@@ -166,7 +166,7 @@ Net als bij Web apps, kunt u verschillende implementaties van de token-cache kie
 
 In de volgende afbeelding ziet u de verschillende mogelijkheden van *micro soft. Identity. Web* en hun impact op het *Startup.cs* -bestand:
 
-:::image type="content" source="media/scenarios/microsoft-identity-web-startup-cs.png" alt-text="Bij het maken van een web-API kunt u kiezen voor het aanroepen van een downstream API en implementaties van token-cache.":::
+:::image type="content" source="media/scenarios/microsoft-identity-web-startup-cs.svg" alt-text="Blok diagram met de service configuratie opties in startup dot C S voor het aanroepen van een web-API en het opgeven van een token cache-implementatie":::
 
 > [!NOTE]
 > Als u de code voorbeelden hier volledig wilt begrijpen, moet u bekend zijn met [ASP.net core fundamentals](/aspnet/core/fundamentals), met name bij het [invoegen van afhankelijkheden](/aspnet/core/fundamentals/dependency-injection) en [Opties](/aspnet/core/fundamentals/configuration/options).

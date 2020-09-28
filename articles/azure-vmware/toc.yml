@@ -20,8 +20,6 @@
       href: tutorial-nsx-t-network-segment.md
     - name: 7 - On-premises peer naar privécloud
       href: tutorial-expressroute-global-reach-private-cloud.md
-    - name: 8 - VM implementeren via inhoudsbibliotheek
-      href: tutorial-deploy-vm-content-library.md
 - name: Concepten
   items:
     - name: Privéclouds en -clusters
@@ -36,6 +34,8 @@
       href: concepts-rbac.md
     - name: Upgrades voor privéclouds
       href: concepts-upgrades.md
+    - name: Privéclouds bewaken en herstellen
+      href: concepts-monitor-repair-private-cloud.md
 - name: Instructiegidsen
   items:
     - name: Azure VMware Solution inschakelen
@@ -48,6 +48,8 @@
       href: manage-dhcp.md
     - name: Herstel na noodgeval
       href: disaster-recovery.md
+    - name: Een VM implementeren via een inhoudsbibliotheek
+      href: deploy-vm-content-library.md
     - name: Systeemeigen Azure-integratie
       items:
         - name: API Management
@@ -68,10 +70,16 @@
           href: deploy-traffic-manager-to-balance-avs-workloads.md
         - name: NetApp Files
           href: net-app-files.md
+    - name: GitHub Enterprise Server
+      href: github-enterprise-server.md
     - name: VMware-oplossingen
       items:
         - name: vRealize-bewerkingen instellen
           href: vrealize-operations-for-avs.md
+    - name: VMware-ecosysteem
+      items:
+        - name: Back-upoplossingen voor VM's
+          href: ecosystem-back-up-vms.md
 - name: Naslaginformatie
   items: null
 - name: Resources

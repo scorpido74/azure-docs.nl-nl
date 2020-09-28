@@ -197,6 +197,8 @@
       items:
         - name: Beleid instellen of bewerken
           href: set-edit-policies.md
+        - name: Fouten opsporen in beleid
+          href: api-management-debug-policies.md
         - name: Beleidsexpressies
           href: api-management-policy-expressions.md
         - name: Aangepaste caching
@@ -221,6 +223,8 @@
           href: api-management-cross-domain-policies.md
         - name: Transformatiebeleid
           href: api-management-transformation-policies.md
+        - name: Integratiebeleid voor Gedistribueerde toepassingruntime (Dapr)
+          href: api-management-dapr-policies.md
     - name: Beheren tijdens productie
       items:
         - name: API's exporteren naar Power Platform

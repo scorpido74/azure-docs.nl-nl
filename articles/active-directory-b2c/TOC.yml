@@ -474,7 +474,7 @@
       href: error-codes.md
     - name: App met extensies
       href: extensions-app.md
-    - name: IEF-releaseopmerkingen
+    - name: Opmerkingen bij de release van aangepast beleid (IEF)
       href: custom-policy-developer-notes.md
     - name: Microsoft Graph API-bewerkingen
       href: microsoft-graph-operations.md

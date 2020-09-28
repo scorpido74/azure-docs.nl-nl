@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: cece53544bfc8287f6ef542575d92b05032991f0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f5be0b43de8265b2b337c024117ae8f424e4a3bc
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318038"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403483"
 ---
 # <a name="feature-coverage-for-machines"></a>Functie dekking voor machines
 
@@ -30,48 +30,48 @@ De twee tabbladen hieronder tonen de functies van Azure Security Center die besc
 
 |**Functie**|**Azure Virtual Machines**|**Virtuele Azure-machineschaalsets**|**Niet-Azure-machines**|**Azure Defender vereist**
 |----|:----:|:----:|:----:|:----:|
-|[Micro soft Defender ATP-integratie](security-center-wdatp.md)|✔</br>(op ondersteunde versies)|✔</br>(op ondersteunde versies)|✔|Yes|
-|[Gedrags analyse van virtuele machine (en beveiligings waarschuwingen)](alerts-reference.md)|✔|✔|✔|Yes|
-|[Beveiligings waarschuwingen met een bestand](alerts-reference.md#alerts-windows)|✔|✔|✔|Yes|
-|[Beveiligings waarschuwingen op basis van het netwerk](other-threat-protections.md#network-layer)|✔|✔|-|Yes|
-|[Just-in-time-toegang voor virtuele machines](security-center-just-in-time.md)|✔|-|-|Yes|
-|[Beoordeling van systeem eigen beveiligings problemen](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|-|Yes|
-|[Bestandsintegriteit controleren](security-center-file-integrity-monitoring.md)|✔|✔|✔|Yes|
-|[Adaptieve toepassingsbesturingselementen](security-center-adaptive-application.md)|✔|-|✔|Yes|
-|[Netwerkoverzicht](security-center-network-recommendations.md#network-map)|✔|✔|-|Yes|
-|[Adaptieve netwerkbeveiliging](security-center-adaptive-network-hardening.md)|✔|-|-|Yes|
-|[Dash board naleving van regelgeving & rapporten](security-center-compliance-dashboard.md)|✔|✔|✔|Yes|
-|Aanbevelingen en beveiliging tegen bedreigingen op docker-gehoste IaaS-containers|-|-|-|Yes|
-|Evaluatie van besturingssysteem patches ontbreekt|✔|✔|✔|Azure: gratis<br><br>Niet-Azure: Ja|
+|[Micro soft Defender ATP-integratie](security-center-wdatp.md)|✔</br>(op ondersteunde versies)|✔</br>(op ondersteunde versies)|✔|Ja|
+|[Gedrags analyse van virtuele machine (en beveiligings waarschuwingen)](alerts-reference.md)|✔|✔|✔|Ja|
+|[Beveiligings waarschuwingen met een bestand](alerts-reference.md#alerts-windows)|✔|✔|✔|Ja|
+|[Beveiligings waarschuwingen op basis van het netwerk](other-threat-protections.md#network-layer)|✔|✔|-|Ja|
+|[Just-in-time-toegang voor virtuele machines](security-center-just-in-time.md)|✔|-|-|Ja|
+|[Beoordeling van systeem eigen beveiligings problemen](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|-|Ja|
+|[Bestandsintegriteit controleren](security-center-file-integrity-monitoring.md)|✔|✔|✔|Ja|
+|[Adaptieve toepassingsbesturingselementen](security-center-adaptive-application.md)|✔|-|✔|Ja|
+|[Netwerkoverzicht](security-center-network-recommendations.md#network-map)|✔|✔|-|Ja|
+|[Adaptieve netwerkbeveiliging](security-center-adaptive-network-hardening.md)|✔|-|-|Ja|
+|[Dash board naleving van regelgeving & rapporten](security-center-compliance-dashboard.md)|✔|✔|✔|Ja|
+|Aanbevelingen en beveiliging tegen bedreigingen op docker-gehoste IaaS-containers|-|-|-|Ja|
+|Evaluatie van besturingssysteem patches ontbreekt|✔|✔|✔|Azure: Nee<br><br>Niet-Azure: Ja|
 |Evaluatie van onjuiste beveiligings configuratie|✔|✔|✔|Azure: Nee<br><br>Niet-Azure: Ja|
 |[Endpoint Protection-evaluatie](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure: Nee<br><br>Niet-Azure: Ja|
-|Analyse van schijf versleuteling|✔</br>(voor [ondersteunde scenario's](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios))|✔|-|Gratis|
-|Beoordeling van beveiligings lekken van derden|✔|-|-|Gratis|
-|[Evaluatie van netwerk beveiliging](security-center-network-recommendations.md)|✔|✔|-|Gratis|
+|Analyse van schijf versleuteling|✔</br>(voor [ondersteunde scenario's](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios))|✔|-|Nee|
+|Beoordeling van beveiligings lekken van derden|✔|-|-|Nee|
+|[Evaluatie van netwerk beveiliging](security-center-network-recommendations.md)|✔|✔|-|Nee|
 
 
 ### <a name="linux-machines"></a>[**Linux-machines**](#tab/features-linux)
 
 |**Functie**|**Azure Virtual Machines**|**Virtuele Azure-machineschaalsets**|**Niet-Azure-machines**|**Azure Defender vereist**
 |----|:----:|:----:|:----:|:----:|
-|[Micro soft Defender ATP-integratie](security-center-wdatp.md)|-|-|-|Yes|
-|[Gedrags analyse van virtuele machine (en beveiligings waarschuwingen)](security-center-alerts-iaas.md)|✔</br>(op ondersteunde versies)|✔</br>(op ondersteunde versies)|✔|Yes|
-|[Beveiligings waarschuwingen met een bestand](alerts-reference.md#alerts-windows)|-|-|-|Yes|
-|[Beveiligings waarschuwingen op basis van het netwerk](other-threat-protections.md#network-layer)|✔|✔|-|Yes|
-|[Just-in-time-toegang voor virtuele machines](security-center-just-in-time.md)|✔|-|-|Yes|
-|[Beoordeling van systeem eigen beveiligings problemen](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|-|Yes|
-|[Bestandsintegriteit controleren](security-center-file-integrity-monitoring.md)|✔|✔|✔|Yes|
-|[Adaptieve toepassingsbesturingselementen](security-center-adaptive-application.md)|✔|-|✔|Yes|
-|[Netwerkoverzicht](security-center-network-recommendations.md#network-map)|✔|✔|-|Yes|
-|[Adaptieve netwerkbeveiliging](security-center-adaptive-network-hardening.md)|✔|-|-|Yes|
-|[Dash board naleving van regelgeving & rapporten](security-center-compliance-dashboard.md)|✔|✔|✔|Yes|
-|Aanbevelingen en beveiliging tegen bedreigingen op docker-gehoste IaaS-containers|✔|✔|✔|Yes|
-|Evaluatie van besturingssysteem patches ontbreekt|✔|✔|✔|Azure: gratis<br><br>Niet-Azure: Ja|
-|Evaluatie van onjuiste beveiligings configuratie|✔|✔|✔|Azure: gratis<br><br>Niet-Azure: Ja|
-|[Endpoint Protection-evaluatie](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|Gratis|
-|Analyse van schijf versleuteling|✔</br>(voor [ondersteunde scenario's](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios))|✔|-|Gratis|
-|Beoordeling van beveiligings lekken van derden|✔|-|-|Gratis|
-|[Evaluatie van netwerk beveiliging](security-center-network-recommendations.md)|✔|✔|-|Gratis|
+|[Micro soft Defender ATP-integratie](security-center-wdatp.md)|-|-|-|Ja|
+|[Gedrags analyse van virtuele machine (en beveiligings waarschuwingen)](security-center-alerts-iaas.md)|✔</br>(op ondersteunde versies)|✔</br>(op ondersteunde versies)|✔|Ja|
+|[Beveiligings waarschuwingen met een bestand](alerts-reference.md#alerts-windows)|-|-|-|Ja|
+|[Beveiligings waarschuwingen op basis van het netwerk](other-threat-protections.md#network-layer)|✔|✔|-|Ja|
+|[Just-in-time-toegang voor virtuele machines](security-center-just-in-time.md)|✔|-|-|Ja|
+|[Beoordeling van systeem eigen beveiligings problemen](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|-|Ja|
+|[Bestandsintegriteit controleren](security-center-file-integrity-monitoring.md)|✔|✔|✔|Ja|
+|[Adaptieve toepassingsbesturingselementen](security-center-adaptive-application.md)|✔|-|✔|Ja|
+|[Netwerkoverzicht](security-center-network-recommendations.md#network-map)|✔|✔|-|Ja|
+|[Adaptieve netwerkbeveiliging](security-center-adaptive-network-hardening.md)|✔|-|-|Ja|
+|[Dash board naleving van regelgeving & rapporten](security-center-compliance-dashboard.md)|✔|✔|✔|Ja|
+|Aanbevelingen en beveiliging tegen bedreigingen op docker-gehoste IaaS-containers|✔|✔|✔|Ja|
+|Evaluatie van besturingssysteem patches ontbreekt|✔|✔|✔|Azure: Nee<br><br>Niet-Azure: Ja|
+|Evaluatie van onjuiste beveiligings configuratie|✔|✔|✔|Azure: Nee<br><br>Niet-Azure: Ja|
+|[Endpoint Protection-evaluatie](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|Nee|
+|Analyse van schijf versleuteling|✔</br>(voor [ondersteunde scenario's](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios))|✔|-|Nee|
+|Beoordeling van beveiligings lekken van derden|✔|-|-|Nee|
+|[Evaluatie van netwerk beveiliging](security-center-network-recommendations.md)|✔|✔|-|Nee|
 
 --- 
 
@@ -91,13 +91,13 @@ Zie [Endpoint Protection-evaluatie en aanbevelingen](security-center-endpoint-pr
 
 | Endpoint Protection| Platformen | Security Center-installatie | Security Center Discovery |
 |------|------|-----|-----|
-| Microsoft Defender Antivirus| Windows Server 2016 of hoger| Nee, ingebouwd in besturingssysteem| Yes |
-| System Center Endpoint Protection (Microsoft Antimalware) | Windows Server 2012 R2, 2012, 2008 R2 (zie opmerking hieronder) | Via extensie | Yes |
+| Microsoft Defender Antivirus| Windows Server 2016 of hoger| Nee, ingebouwd in besturingssysteem| Ja |
+| System Center Endpoint Protection (Microsoft Antimalware) | Windows Server 2012 R2, 2012, 2008 R2 (zie opmerking hieronder) | Via extensie | Ja |
 | Trend Micro – diepe beveiliging | Windows Server-familie  | Nee | Ja |
 | Symantec v12.1.1100+| Windows Server-familie  | Nee | Ja |
 | McAfee v10+ | Windows Server-familie  | Nee | Ja |
-| McAfee v10+ | Linux-Server familie  | No | Klikt **\*** |
-| Sophos v9 +| Linux-Server familie  | No | Klikt  **\***  |
+| McAfee v10+ | Linux-Server familie  | Nee | Klikt **\*** |
+| Sophos v9 +| Linux-Server familie  | Nee | Klikt  **\***  |
 
  **\*** De status van de dekking en de ondersteunende gegevens zijn momenteel alleen beschikbaar in de werk ruimte Log Analytics die aan uw beveiligde abonnementen is gekoppeld. Het wordt niet weer gegeven in de Azure Security Center Portal.
 

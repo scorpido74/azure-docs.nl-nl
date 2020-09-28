@@ -362,6 +362,9 @@
           href: ../../bastion/bastion-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Toestanden en levenscyclus
       href: ../states-lifecycle.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+    - name: PUT-aanroepen om bewerkingen te maken of bij te werken
+      href: ../put-calls-create-or-update.md
+      maintainContext: true
     - name: Bewaking
       href: ../../azure-monitor/insights/monitor-vm-azure.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Diagnostische gegevens over opstarten
@@ -534,7 +537,7 @@
                 - name: Een VM maken van een installatiekopieversie
                   href: 'https://azure.microsoft.com/resources/templates/101-vm-from-sig/'
             - name: Problemen met gedeelde installatiekopieën oplossen
-              href: troubleshooting-shared-images.md
+              href: ../troubleshooting-shared-images.md
             - name: Door klant beheerde sleutels gebruiken
               displayName: 'SSE, CMK, encrypt'
               href: ../image-version-encryption.md
@@ -556,8 +559,8 @@
                   href: image-builder-permissions-powershell.md
             - name: DevOps-taak
               href: image-builder-devops-task.md
-            - name: ARM-sjabloonreferentie
-              displayName: 'ARM,Resource Manager'
+            - name: Sjabloonverwijzing voor Image Builder
+              displayName: json
               href: image-builder-json.md
             - name: Compileren voor installatiekopiegalerieën
               href: image-builder-gallery.md
@@ -617,6 +620,8 @@
               href: how-to-verify-encryption-status.md
             - name: LVM RAID configureren op crypt
               href: how-to-configure-lvm-raid-on-crypt.md
+            - name: Versleutelde Ivm-volumes in formaat wijzigen
+              href: how-to-resize-encrypted-lvm.md
             - name: Problemen met schijfversleuteling oplossen
               href: disk-encryption-troubleshooting.md
             - name: Veelgestelde vragen over schijfversleuteling
@@ -849,7 +854,7 @@
         - name: Automatisch schalen
           href: ../../virtual-machine-scale-sets/overview.md?bc=/azure/virtual-machines/linux/breadcrumb/toc.json&toc=/azure/virtual-machines/linux/toc.json
         - name: Hoge beschikbaarheid
-          href: manage-availability.md
+          href: ../manage-availability.md
         - name: Een beschikbaarheidsset wijzigen
           href: ../windows/change-availability-set.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Een nabijheidsplaatsingsgroep maken

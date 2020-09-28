@@ -6,12 +6,12 @@ ms.author: dukek
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.subservice: alerts
-ms.openlocfilehash: f6d5cbfc8d781e96a4d348f31f4a5d175ebd5a3d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f76d28018fdf55314593dabc44ef1e9a1dab9494
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321884"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403123"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Complexe acties met Azure Monitor waarschuwingen activeren
 
@@ -108,7 +108,7 @@ Het proces is vergelijkbaar als u wilt dat de logische app een andere actie uitv
 
     ![Micro soft teams-acties](media/action-groups-logic-app/microsoft-teams-actions.png "Micro soft teams-acties")
 
-12. Configureer de micro soft teams-actie. De **Logic apps Designer** vraagt u om te verifiëren bij uw Office 365-account. Kies de **Team-ID** en de **kanaal-id** waarnaar het bericht moet worden verzonden.
+12. Configureer de micro soft teams-actie. De **Logic apps Designer** vraagt u om te verifiëren bij uw werk-of school account. Kies de **Team-ID** en de **kanaal-id** waarnaar het bericht moet worden verzonden.
 
 13. Configureer het bericht met een combi natie van statische tekst en verwijzingen naar de \<fields\> in de dynamische inhoud. Kopieer en plak de volgende tekst in het **bericht** veld:
 
@@ -296,5 +296,5 @@ Logic Apps heeft een aantal verschillende connectors waarmee u acties kunt activ
 ## <a name="next-steps"></a>Volgende stappen
 * Bekijk een [overzicht van de waarschuwingen voor Azure-activiteiten logboeken](./alerts-overview.md) en lees hoe u waarschuwingen kunt ontvangen.  
 * Meer informatie over het [configureren van waarschuwingen wanneer een Azure service Health-melding wordt geplaatst](../../service-health/alerts-activity-log-service-notifications-portal.md).
-* Meer informatie over [actie groepen](./action-groups.md).
+* Meer informatie over [actiegroepen](./action-groups.md).
 

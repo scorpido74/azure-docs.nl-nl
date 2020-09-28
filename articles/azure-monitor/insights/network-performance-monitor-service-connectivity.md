@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: dd8dcbe136558e997ca16a2d9754cbf1c4e7620b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b7b6a7202392e083aaaa5cdc8adcf0c81cfb0e0d
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326100"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403701"
 ---
 # <a name="service-connectivity-monitor"></a>Bewaking van serviceverbinding
 
@@ -19,8 +19,8 @@ U kunt de monitor functie voor service connectiviteit in [Netwerkprestatiemeter]
 
 U kunt de volgende functies uitvoeren met Service Connectivity monitor: 
 
-- Controleer de netwerk verbinding met uw toepassingen en netwerk services van meerdere filialen of locaties. Toepassingen en netwerk services zijn onder andere Office 365, Dynamics CRM, interne line-of-business-toepassingen en SQL-data bases.
-- Ingebouwde tests gebruiken voor het bewaken van de netwerk verbinding met Office 365 en Dynamics 365-eind punten. 
+- Controleer de netwerk verbinding met uw toepassingen en netwerk services van meerdere filialen of locaties. Toepassingen en netwerk services omvatten Microsoft 365, Dynamics CRM, interne line-of-business-toepassingen en SQL-data bases.
+- Gebruik ingebouwde tests om de netwerk verbinding met Microsoft 365 en Dynamics 365-eind punten te bewaken. 
 - Bepaal de reactie tijd, netwerk latentie en pakket verlies tijdens het maken van verbinding met het eind punt.
 - Bepaal of de prestaties van de toepassing worden veroorzaakt door het netwerk of vanwege een probleem met het einde van de toepassings provider.
 - Identificeer hot spots op het netwerk die mogelijk een slechte prestaties van de toepassing veroorzaken door de latentie van elke hop op een topologie kaart weer te geven.
@@ -29,7 +29,7 @@ U kunt de volgende functies uitvoeren met Service Connectivity monitor:
 ![Bewaking van serviceverbinding](media/network-performance-monitor-service-endpoint/service-endpoint-intro.png)
 
 
-## <a name="configuration"></a>Configuration 
+## <a name="configuration"></a>Configuratie 
 Als u de configuratie voor Netwerkprestatiemeter wilt openen, opent u de [Netwerkprestatiemeter oplossing](network-performance-monitor.md) en selecteert **u configureren**.
 
 ![Netwerkprestatiemeter configureren](media/network-performance-monitor-service-endpoint/npm-configure-button.png)

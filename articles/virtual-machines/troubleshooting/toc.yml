@@ -115,6 +115,8 @@
           href: windows-stop-error-bad-system-config-info.md
         - name: Windows-stopfout - Status geen geheugen
           href: troubleshoot-windows-stop-error.md
+        - name: Windows-stopfout - Systeemverwerking beëindigd
+          href: windows-stop-error-system-process-terminated.md
 - name: Kan geen verbinding maken met mijn VM
   items:
     - name: RDP

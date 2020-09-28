@@ -6,15 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
-ms.openlocfilehash: 99d5594dd3ebe3750cb0a09ea803065e2aeb5ba2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ced838d05ef9d8ca9f6c724d88fabdad010ed727
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77666634"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403548"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Opnametijd van gegevens vastleggen in een logboek in Azure Monitor
-Azure Monitor is een grootschalige gegevens service waarmee duizenden klanten elke maand terabytes aan gegevens verzenden in een groei tempo. Er zijn vaak vragen over de tijd die nodig is om te zorgen dat logboek gegevens beschikbaar worden nadat deze zijn verzameld. In dit artikel worden de verschillende factoren beschreven die van invloed zijn op deze latentie.
+Azure Monitor is een grootschalige gegevensservice die elke maand een groeiend aantal terabytes aan gegevens van duizenden klanten verwerkt. Er zijn vaak vragen over de tijd die nodig is om te zorgen dat logboek gegevens beschikbaar worden nadat deze zijn verzameld. In dit artikel worden de verschillende factoren beschreven die van invloed zijn op deze latentie.
 
 ## <a name="typical-latency"></a>Normale latentie
 De latentie verwijst naar het tijdstip waarop gegevens worden gemaakt op het bewaakte systeem en de tijd die beschikbaar is voor analyse in Azure Monitor. De gemiddelde latentie voor opname van logboek gegevens ligt tussen 2 en 5 minuten. De specifieke latentie voor bepaalde gegevens kan variëren, afhankelijk van de verschillende factoren die hieronder worden beschreven.
@@ -51,7 +51,7 @@ Zodra de gegevens beschikbaar zijn op het opname punt, duurt het meer dan 2-5 mi
 ### <a name="management-solutions-collection"></a>Verzameling beheer oplossingen
 Sommige oplossingen verzamelen geen gegevens van een agent en kunnen een verzamelings methode gebruiken waarmee extra latentie wordt geïntroduceerd. Sommige oplossingen verzamelen gegevens met regel matige tussen pozen zonder dat dit bijna in realtime kan worden verzameld. Specifieke voor beelden zijn:
 
-- Office 365-oplossing controleert activiteiten logboeken met behulp van de API voor beheer activiteiten van Office 365. deze biedt momenteel geen bijna realtime latentie garanties.
+- Microsoft 365-oplossing vraagt activiteiten logboeken met behulp van de API voor beheer activiteit, die momenteel geen bijna-real-time latentie garanties biedt.
 - Windows Analytics-oplossingen (Updatenaleving bijvoorbeeld) gegevens worden verzameld door de oplossing op basis van een dagelijkse frequentie.
 
 Raadpleeg de documentatie voor elke oplossing om de verzamelings frequentie te bepalen.

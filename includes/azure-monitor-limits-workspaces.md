@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: c8868cd6f5c50b84f263155518ee553145afcfa9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a25f28b19e0f00830fd0290ff0296c317b9a5ed9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88602418"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371717"
 ---
 **Volume gegevensverzameling en gegevensretentie** 
 
@@ -72,18 +72,28 @@ Als u gegevens naar een werkruimte verzendt met een volumesnelheid die hoger is 
 
 Als u een melding wilt ontvangen over een het bereiken van het volumelimiet in uw werkruimte, maakt u een [waarschuwingsregel voor het logboek](../articles/azure-monitor/platform/alerts-log.md) met behulp van de volgende query met waarschuwingslogica op basis van het aantal resultaten hoger dan nul, evaluatieperiode van 5 minuten en frequentie van 5 minuten.
 
-Het opnamevolume heeft 80 % van de drempel bereikt:
+Opnamevolume heeft de drempel overschreden
 ```Kusto
 Operation
-|where OperationCategory == "Ingestion"
-|where Detail startswith "The data ingestion volume rate crossed 80% of the threshold"
+| where Category == "Ingestion"
+| where OperationKey == "Ingestion rate limit"
+| where Level == "Error"
 ```
 
-Opnamevolume heeft drempel bereikt:
+Opnamevolume heeft 80% van de drempel bereikt
 ```Kusto
 Operation
-|where OperationCategory == "Ingestion"
-|where Detail startswith "The data ingestion volume rate crossed the threshold"
+| where Category == "Ingestion"
+| where OperationKey == "Ingestion rate limit"
+| where Level == "Warning"
+```
+
+Opnamevolume heeft 70% van de drempel bereikt
+```Kusto
+Operation
+| where Category == "Ingestion"
+| where OperationKey == "Ingestion rate limit"
+| where Level == "Info"
 ```
 
 >[!NOTE]

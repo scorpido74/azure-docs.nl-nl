@@ -16,7 +16,7 @@
       href: tutorial-multiple-resources.md
 - name: 'Uitleg:'
   items:
-    - name: Insluitende lezersresource maken
+    - name: Een Insluitende lezer-ervaring maken
       href: how-to-create-immersive-reader.md
     - name: Het cookiebeleid instellen
       href: how-to/set-cookie-policy.md
@@ -24,7 +24,7 @@
       href: how-to/display-math.md
     - name: De Insluitende lezer starten met HTML-inhoud
       href: how-to-launch-with-html.md
-    - name: Knop Insluitende lezer aanpassen
+    - name: De knop Insluitende lezer aanpassen
       href: how-to-customize-launch-button.md
     - name: Het verificatietoken cachen
       href: how-to-cache-token.md

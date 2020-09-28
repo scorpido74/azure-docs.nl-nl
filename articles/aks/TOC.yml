@@ -4,7 +4,7 @@
   items:
     - name: Meer informatie over AKS
       href: intro-kubernetes.md
-- name: Snelstartgidsen
+- name: Quickstarts
   expanded: true
   items:
     - name: Een AKS-cluster maken
@@ -250,7 +250,7 @@
           href: control-kubeconfig-access.md
         - name: Pod-verkeer beveiligen met netwerkbeleid
           href: use-network-policies.md
-        - name: Pods beveiligen met Azure Policy (preview)
+        - name: Pods beveiligen met Azure Policy
           href: use-pod-security-on-azure-policy.md
         - name: Pod-beveiligingsbeleid (preview) gebruiken
           href: use-pod-security-policies.md

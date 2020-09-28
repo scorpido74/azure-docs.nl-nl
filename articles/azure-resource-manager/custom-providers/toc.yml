@@ -4,11 +4,13 @@
   items:
     - name: Wat zijn Azure Custom-providers?
       href: overview.md
-- name: Snelstartgidsen
+- name: Quickstarts
   expanded: true
   items:
     - name: Een aangepaste resourceprovider maken
       href: create-custom-provider.md
+    - name: Een aangepaste resourceprovider maken - Azure PowerShell
+      href: create-custom-provider-quickstart-powershell.md
 - name: Zelfstudies
   items:
     - name: Aan de slag met aangepaste providers
@@ -45,6 +47,8 @@
       href: /rest/api/customproviders/
     - name: Azure CLI
       href: /cli/azure/ext/custom-providers/custom-providers/
+    - name: Azure PowerShell
+      href: /powershell/module/Az.CustomProviders/
     - name: Ingebouwde modules voor Azure Policy
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md

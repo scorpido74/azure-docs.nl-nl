@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 8347ca5a33790d0b35176be47a0fa4811a19e3f1
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 1ab366cddbabf7e6d574189892e779ab49f6fad8
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935463"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403378"
 ---
 # <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>Tips voor AI-verrijking in azure Cognitive Search
 
@@ -110,12 +110,11 @@ Voor indexering op basis van een portal (zoals beschreven in de Quick Start) kie
 ## <a name="tip-8-increase-indexing-throughput"></a>Tip 8: door Voer van indexering verg Roten
 
 Voor [parallelle indexering](search-howto-large-index.md)plaatst u uw gegevens in meerdere containers of meerdere virtuele mappen binnen dezelfde container. Maak vervolgens meerdere data source-en Indexeer functie paren. Alle Indexeer functies kunnen dezelfde vaardig heden gebruiken en naar dezelfde doel zoek index schrijven, zodat uw zoek-app niet op de hoogte hoeft te zijn van deze partities.
-Zie [indexeren van grote gegevens sets](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets)voor meer informatie.
 
 ## <a name="see-also"></a>Zie ook
+
 + [Snelstartgids: een AI-verrijkings pijplijn maken in de portal](cognitive-search-quickstart-blob.md)
 + [Zelf studie: REST-Api's voor AI-verrijking leren](cognitive-search-tutorial-blob.md)
 + [Referenties voor de gegevens bron opgeven](search-howto-indexing-azure-blob-storage.md#how-to-specify-credentials)
-+ [Grote gegevens sets indexeren](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets)
 + [Een vaardig heden definiëren](cognitive-search-defining-skillset.md)
 + [Uitgebreide velden toewijzen aan een index](cognitive-search-output-field-mapping.md)

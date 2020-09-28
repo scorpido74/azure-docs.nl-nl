@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/25/2020
-ms.openlocfilehash: c3aa813c671e9755b6ab65ba1e2967876bd170ca
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: fd9117af49de9fe59ed614a9dfa730644f02cd8c
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91398337"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403633"
 ---
 # <a name="how-to-index-json-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>JSON-blobs indexeren met behulp van een BLOB-Indexeer functie in azure Cognitive Search
 
@@ -280,10 +280,10 @@ Het maken van de Indexeer functie op Azure Cognitive Search triggers voor gegeve
 
 De .NET SDK heeft volledige pariteit met de REST API. We raden u aan de sectie voor gaande REST API te bekijken voor meer informatie over concepten, werk stromen en vereisten. U kunt vervolgens de volgende .NET API-referentie documentatie raadplegen voor het implementeren van een JSON-indexer in beheerde code.
 
-+ [micro soft. Azure. Search. Models. data source](/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)
-+ [micro soft. Azure. Search. Models. data source type](/dotnet/api/microsoft.azure.search.models.datasourcetype?view=azure-dotnet) 
-+ [micro soft. Azure. Search. Models. index](/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) 
-+ [micro soft. Azure. Search. Models. Indexeer functie](/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
++ [micro soft. Azure. Search. Models. data source](/dotnet/api/microsoft.azure.search.models.datasource)
++ [micro soft. Azure. Search. Models. data source type](/dotnet/api/microsoft.azure.search.models.datasourcetype) 
++ [micro soft. Azure. Search. Models. index](/dotnet/api/microsoft.azure.search.models.index) 
++ [micro soft. Azure. Search. Models. Indexeer functie](/dotnet/api/microsoft.azure.search.models.indexer)
 
 <a name="parsing-modes"></a>
 
@@ -451,7 +451,9 @@ U kunt ook verwijzen naar afzonderlijke matrix elementen met behulp van een inde
 > [!NOTE]
 > Als de naam van een bron veld in een pad naar een veld toewijzing verwijst naar een eigenschap die niet voor komt in JSON, wordt die toewijzing overgeslagen zonder een fout. Dit wordt gedaan, zodat we documenten met een ander schema kunnen ondersteunen (dit is een veelgebruikte use-case). Omdat er geen validatie is, moet u er rekening mee houden om type fouten in de specificatie van de veld toewijzing te voor komen.
 >
->
+
+## <a name="help-us-make-azure-cognitive-search-better"></a>Help ons Azure Cognitive Search beter te maken
+Als u een functie verzoek of ideeën voor verbeteringen hebt, geeft u uw invoer op [UserVoice](https://feedback.azure.com/forums/263029-azure-search/)op. Als u hulp nodig hebt bij het gebruik van de bestaande functie, plaatst u uw vraag op [stack overflow](https://stackoverflow.microsoft.com/questions/tagged/18870).
 
 ## <a name="see-also"></a>Zie ook
 

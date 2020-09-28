@@ -1,10 +1,10 @@
-- name: Azure Maps-documentatie
+- name: Documentatie voor Azure Maps
   href: index.yml
 - name: Overzicht
   items:
     - name: Wat is Azure Maps?
       href: about-azure-maps.md
-- name: Snelstartgidsen
+- name: Quickstarts
   expanded: true
   items:
     - name: Een webtoepassing maken

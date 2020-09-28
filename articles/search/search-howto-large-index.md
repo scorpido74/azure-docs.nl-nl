@@ -7,13 +7,13 @@ author: dereklegenzoff
 ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/05/2020
-ms.openlocfilehash: 80307c97464e61d7b7d338703de90d1199adc819
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/25/2020
+ms.openlocfilehash: 081f073fa4933d67604173d2169a7abdc3ac7c3f
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88927014"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403565"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>Grote gegevens sets indexeren in azure Cognitive Search
 
@@ -25,34 +25,37 @@ Dezelfde technieken zijn ook van toepassing op langlopende processen. Met name d
 
 In de volgende secties worden technieken besproken voor het indexeren van grote hoeveel heden gegevens met behulp van de Push-API en Indexeer functies.
 
-## <a name="push-api"></a>Push-API
+## <a name="use-the-push-api"></a>De Push-API gebruiken
 
-Bij het pushen van gegevens naar een index, zijn er verschillende belang rijke overwegingen die van invloed zijn op indexerings snelheden voor de Push-API. Deze factoren worden beschreven in de volgende sectie. 
+Bij het pushen van gegevens naar een index met behulp van de [rest API documenten toevoegen](/rest/api/searchservice/addupdate-or-delete-documents) of de [methode index](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index), zijn er verschillende belang rijke aandachtspunten die van invloed zijn op de indexerings snelheid. Deze factoren worden beschreven in de sectie hieronder en bereik van het instellen van service capaciteit op code optimalisaties.
 
-Naast de informatie in dit artikel, kunt u ook gebruikmaken van de code voorbeelden in de [zelf studie indexerings snelheden optimaliseren](tutorial-optimize-indexing-push-api.md) voor meer informatie.
+Zie [zelf studie: Optimaliseer de indexerings snelheden](tutorial-optimize-indexing-push-api.md)voor meer informatie en code voorbeelden die het indexeren van push modellen illustreren.
 
-### <a name="service-tier-and-number-of-partitionsreplicas"></a>Servicelaag en aantal partities/replica's
+### <a name="capacity-of-your-service"></a>Capaciteit van uw service
 
-Door partities toe te voegen of de laag van uw zoek service te verhogen, worden de indexerings snelheden verhoogd.
+Als eerste stap bekijkt u de kenmerken en [limieten](search-limits-quotas-capacity.md) van de laag waarop u de service hebt ingericht. Een van de belangrijkste verschillen tussen de prijs categorieën is de grootte en de snelheid van partities, wat een directe invloed heeft op de indexerings snelheid. Als u de zoek service hebt ingericht op een laag die niet voldoende is voor de werk belasting, kan de upgrade naar een nieuwe laag de eenvoudigste en meest efficiënte oplossing zijn voor het verhogen van de door Voer van de index.
 
-Het toevoegen van extra replica's kan ook leiden tot hogere indexerings snelheden, maar dit is niet gegarandeerd. Aan de andere kant verhogen extra replica's het query volume dat door de zoek service kan worden verwerkt. Replica's zijn ook een belang rijk onderdeel voor het ophalen van een [Sla](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
+Zodra u tevreden bent met de laag, kan de volgende stap het aantal partities verhogen. Partitie toewijzing kan worden verkleind na een initiële indexerings uitvoering om de totale kosten van het uitvoeren van de service te verminderen.
 
-Voordat u partitie/replica's toevoegt of een upgrade naar een hogere laag uitvoert, moet u rekening houden met de monetaire kosten en toewijzings tijd. Het toevoegen van partities kan de indexerings snelheid aanzienlijk verhogen, maar het toevoegen/verwijderen ervan kan vijf tien minuten tot enkele uren duren. Zie de documentatie over het [aanpassen van capaciteit](search-capacity-planning.md)voor meer informatie.
+> [!NOTE]
+> Het toevoegen van extra replica's kan ook leiden tot hogere indexerings snelheden, maar dit is niet gegarandeerd. Aan de andere kant verhogen extra replica's het query volume dat door de zoek service kan worden verwerkt. Replica's zijn ook een belang rijk onderdeel voor het ophalen van een [Sla](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
+>
+> Voordat u partitie/replica's toevoegt of een upgrade naar een hogere laag uitvoert, moet u rekening houden met de monetaire kosten en toewijzings tijd. Het toevoegen van partities kan de indexerings snelheid aanzienlijk verhogen, maar het toevoegen/verwijderen ervan kan vijf tien minuten tot enkele uren duren. Zie de documentatie over het [aanpassen van capaciteit](search-capacity-planning.md)voor meer informatie.
+>
 
-### <a name="index-schema"></a>Index schema
+### <a name="review-index-schema"></a>Het index schema controleren
 
-Het schema van uw index speelt een belang rijke rol bij het indexeren van gegevens. Het is mogelijk om velden toe te voegen en aanvullende eigenschappen toe te voegen aan deze velden (zoals *doorzoekbaar*, *facetbaar*of *filterbaar*) beide de indexerings snelheden verlagen.
-
-Over het algemeen raden we u aan om extra eigenschappen toe te voegen aan velden als u ze wilt gebruiken.
+Het schema van uw index speelt een belang rijke rol bij het indexeren van gegevens. Hoe meer velden u hebt, en hoe meer eigenschappen u hebt ingesteld (zoals *doorzoekbaar*, *facetel*of *filterbaar*), alle bijdragen tot een verhoogde indexerings tijd. In het algemeen moet u alleen de velden maken en opgeven die u daad werkelijk nodig hebt in een zoek index.
 
 > [!NOTE]
 > Voorkom dat de document grootte kleiner wordt door niet-query bare gegevens toe te voegen aan een index. Afbeeldingen en andere binaire gegevens kunnen niet rechtstreeks worden doorzocht en mogen niet worden opgeslagen in de index. Als u niet-query bare gegevens wilt integreren in Zoek resultaten, moet u een niet-doorzoekbaar veld definiëren waarin een URL-verwijzing naar de resource wordt opgeslagen.
 
-### <a name="batch-size"></a>Batch grootte
+### <a name="check-the-batch-size"></a>De Batch grootte controleren
 
-Een van de eenvoudigste mechanismen voor het indexeren van een grotere gegevensset is het indienen van meerdere documenten of records in één aanvraag. Zolang de volledige Payload minder is dan 16 MB, kan een aanvraag tot 1000 documenten in een bulk upload bewerking verwerken. Deze limieten zijn van toepassing, ongeacht of u gebruikmaakt van de [rest API documenten toevoegen](/rest/api/searchservice/addupdate-or-delete-documents) of de [methode index](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index?view=azure-dotnet) in de .NET SDK. Voor beide API'S, pakt u 1000-documenten in de hoofd tekst van elke aanvraag.
+Een van de eenvoudigste mechanismen voor het indexeren van een grotere gegevensset is het indienen van meerdere documenten of records in één aanvraag. Zolang de volledige Payload minder is dan 16 MB, kan een aanvraag tot 1000 documenten in een bulk upload bewerking verwerken. Deze limieten zijn van toepassing, ongeacht of u gebruikmaakt van de [rest API documenten toevoegen](/rest/api/searchservice/addupdate-or-delete-documents) of de [methode index](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index) in de .NET SDK. Voor beide API'S, pakt u 1000-documenten in de hoofd tekst van elke aanvraag.
 
 Door batches te gebruiken om documenten te indexeren, worden de index prestaties aanzienlijk verbeterd. Het vaststellen van de optimale batchgrootte voor uw gegevens is een belangrijk onderdeel van voor het optimaliseren van de indexeringssnelheid. De twee primaire factoren die van invloed zijn op de optimale batchgrootte zijn:
+
 + Het schema van uw index
 + De hoeveelheid gegevens
 
@@ -79,7 +82,7 @@ Wanneer u de aanvragen van de zoekservice verhoogt, kunnen er [HTTP-statuscodes]
 + **503: service niet beschikbaar**: deze fout betekent dat het systeem zwaar belast wordt en uw aanvraag op dit moment niet kan worden verwerkt.
 + **207: meerdere statussen**: deze fout betekent dat sommige documenten zijn geslaagd, maar dat er ten minste één is mislukt.
 
-### <a name="retry-strategy"></a>Strategie voor opnieuw proberen 
+### <a name="retry-strategy"></a>Strategie voor opnieuw proberen
 
 Als er een fout optreedt, moeten aanvragen opnieuw worden ingediend met een [herhaalstrategie voor exponentieel uitstel](/dotnet/architecture/microservices/implement-resilient-applications/implement-retries-exponential-backoff).
 
@@ -89,7 +92,7 @@ Met de .NET SDK van Azure Cognitive Search worden aanvragen bij 503-fouten en an
 
 Netwerk gegevens overdrachts snelheden kunnen een beperkende factor zijn bij het indexeren van gegevens. Het indexeren van gegevens vanuit uw Azure-omgeving is een eenvoudige manier om indexeren sneller te maken.
 
-## <a name="indexers"></a>Indexeerfuncties
+## <a name="use-indexers-pull-api"></a>Indexeer functies gebruiken (pull-API)
 
 [Indexeer functies](search-indexer-overview.md) worden gebruikt voor het verkennen van ondersteunde Azure-gegevens bronnen voor Doorzoek bare inhoud. Hoewel het niet specifiek is bedoeld voor grootschalig indexeren, zijn verschillende indexerings mogelijkheden bijzonder nuttig voor grotere gegevens sets:
 
@@ -100,7 +103,7 @@ Netwerk gegevens overdrachts snelheden kunnen een beperkende factor zijn bij het
 > [!NOTE]
 > Indexeer functies zijn gegevens bron-specifiek, dus het gebruik van een indexerings benadering is alleen haalbaar voor geselecteerde gegevens bronnen op Azure: [SQL database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md), [Blob Storage](search-howto-indexing-azure-blob-storage.md), [Table Storage](search-howto-indexing-azure-tables.md), [Cosmos DB](search-howto-index-cosmosdb.md).
 
-### <a name="batch-size"></a>Batch grootte
+### <a name="check-the-batchsize-argument-on-create-indexer"></a>Controleer het argument batchSize in Indexeer functie maken
 
 Net als bij de Push-API kunt u met Indexeer functies het aantal items per batch configureren. Voor Indexeer functies op basis van de [rest API Indexeer functie maken](/rest/api/searchservice/Create-Indexer), kunt u het `batchSize` argument instellen om deze instelling aan te passen, zodat deze beter overeenkomt met de kenmerken van uw gegevens. 
 
@@ -112,7 +115,7 @@ De planning van de Indexeer functie is een belang rijk mechanisme voor het verwe
 
 Geplande indexering begint op specifieke intervallen, met een taak die doorgaans wordt voltooid voordat het volgende geplande interval wordt hervat. Als de verwerking echter niet binnen het interval wordt voltooid, stopt de indexer (omdat deze verouderd is). Bij het volgende interval wordt de verwerking hervat, waar deze zich de laatste keer bevindt, waarbij het systeem bijhoudt waar dit gebeurt. 
 
-In de praktijk is het mogelijk om de Indexeer functie op een 24-uurs schema in te stellen. Wanneer het indexeren voor de volgende 24 uur wordt hervat, wordt het opnieuw gestart bij het laatst bekende goede document. Op deze manier kan een Indexeer functie worden gebruikt tijdens een document achterstand over een reeks dagen tot alle niet-verwerkte documenten worden verwerkt. Zie voor meer informatie over deze aanpak [grote gegevens sets indexeren in Azure Blob-opslag](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets). Zie voor meer informatie over het instellen van planningen in het algemeen [Indexeer functie maken rest API](/rest/api/searchservice/Create-Indexer) of Zie [Indexeer functies plannen voor Azure Cognitive Search](search-howto-schedule-indexers.md).
+In de praktijk is het mogelijk om de Indexeer functie op een 24-uurs schema in te stellen. Wanneer het indexeren voor de volgende 24 uur wordt hervat, wordt het opnieuw gestart bij het laatst bekende goede document. Op deze manier kan een Indexeer functie worden gebruikt tijdens een document achterstand over een reeks dagen tot alle niet-verwerkte documenten worden verwerkt. Zie voor meer informatie over het instellen van planningen in het algemeen [Indexeer functie maken rest API](/rest/api/searchservice/Create-Indexer) of Zie [Indexeer functies plannen voor Azure Cognitive Search](search-howto-schedule-indexers.md).
 
 <a name="parallel-indexing"></a>
 

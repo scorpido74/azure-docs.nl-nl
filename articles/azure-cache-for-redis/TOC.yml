@@ -4,7 +4,7 @@
   items:
     - name: Over Azure Cache voor Redis
       href: cache-overview.md
-- name: Snelstartgidsen
+- name: Quickstarts
   expanded: true
   items:
     - name: Een cache maken
@@ -70,10 +70,14 @@
           href: cache-how-to-premium-clustering.md
         - name: Uw cache behouden met Redis-gegevenspersistentie
           href: cache-how-to-premium-persistence.md
+        - name: Meer replica's toevoegen
+          href: cache-how-to-multi-replicas.md
         - name: Uw cache beveiligen met een virtueel netwerk
           href: cache-how-to-premium-vnet.md
         - name: Privéverbinding maken met een cache
           href: cache-private-link.md
+        - name: Zone-redundantie inschakelen
+          href: cache-how-to-zone-redundancy.md
         - name: Geo-replicatie instellen
           href: cache-how-to-geo-replication.md
         - name: Besparen met gereserveerde capaciteit

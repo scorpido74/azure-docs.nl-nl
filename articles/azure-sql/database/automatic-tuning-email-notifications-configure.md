@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 06/03/2019
-ms.openlocfilehash: 01daf0af039a00f6a81b850b07cfcf6d901a7732
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 606d3c78e96491a92b2e09aa74801247369ba0ab
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91284632"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403293"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>E-mail meldingen voor automatisch afstemmen
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -187,7 +187,7 @@ Voor het volt ooien van de oplossing kunt u als laatste stap een automatiserings
 
 - '**Azure Automation-taak maken**': wordt gebruikt om het Power shell-script uit te voeren voor het ophalen van aanbevelingen voor automatische afstemming binnen het Azure Automation runbook.
 - '**Azure Automation taak uitvoer ophalen**': wordt gebruikt voor het ophalen van uitvoer van het uitgevoerde Power shell-script.
-- "**Office 365 Outlook: een E-mail verzenden**": wordt gebruikt om e-mail te verzenden. E-mail berichten worden verzonden met behulp van het Office 365-account van de persoon die de stroom maakt.
+- "**Office 365 Outlook: een E-mail verzenden**": wordt gebruikt om e-mail te verzenden. E-mail berichten worden verzonden met behulp van het werk-of school account van de persoon die de stroom maakt.
 
 Zie aan de slag [met Microsoft flow](https://docs.microsoft.com/flow/getting-started)voor meer informatie over Microsoft flow mogelijkheden.
 

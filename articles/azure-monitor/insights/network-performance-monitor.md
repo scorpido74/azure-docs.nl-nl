@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: 34e81076c27086ad838cca23de0e150a3c1b076c
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: c5a442a3d3711b85c0bad30218cb1ffab92558d9
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798904"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403718"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Netwerkprestatiemeter oplossing in azure
 
@@ -28,7 +28,7 @@ Netwerkprestatiemeter biedt drie brede mogelijkheden:
 
 * [Monitor voor service connectiviteit](network-performance-monitor-service-connectivity.md): u kunt de connectiviteit van uw gebruikers controleren naar de services die u bevalt, bepalen welke infra structuur zich in het pad bevindt en bepalen waar netwerk knelpunten optreden. U kunt op de hoogte zijn van storingen voor uw gebruikers en de exacte locatie van de problemen in het netwerkpad bekijken. 
 
-    Deze mogelijkheid helpt u bij het uitvoeren van tests op basis van HTTP, HTTPS, TCP en ICMP om bijna realtime te controleren of om de beschik baarheid en reactie tijd van uw service in de gaten te houden. U kunt ook de bijdrage van het netwerk in pakket verlies en latentie bewaken. Met een netwerk topologie kaart kunt u netwerk vertragingen isoleren. U kunt probleem vlekken identificeren die zich voordoen langs het netwerkpad van het knoop punt naar de service, met latentie gegevens op elke hop. Met ingebouwde tests kunt u de netwerk connectiviteit met Office 365 en Dynamics CRM bewaken zonder vooraf te hoeven configureren. Met deze mogelijkheid kunt u de netwerk connectiviteit controleren op elk met TCP compatibel eind punt, zoals websites, SaaS-toepassingen, PaaS-toepassingen en SQL-data bases.
+    Deze mogelijkheid helpt u bij het uitvoeren van tests op basis van HTTP, HTTPS, TCP en ICMP om bijna realtime te controleren of om de beschik baarheid en reactie tijd van uw service in de gaten te houden. U kunt ook de bijdrage van het netwerk in pakket verlies en latentie bewaken. Met een netwerk topologie kaart kunt u netwerk vertragingen isoleren. U kunt probleem vlekken identificeren die zich voordoen langs het netwerkpad van het knoop punt naar de service, met latentie gegevens op elke hop. Met ingebouwde tests kunt u de netwerk connectiviteit controleren op Microsoft 365 en Dynamics CRM zonder preconfiguratie. Met deze mogelijkheid kunt u de netwerk connectiviteit controleren op elk met TCP compatibel eind punt, zoals websites, SaaS-toepassingen, PaaS-toepassingen en SQL-data bases.
 
 * [ExpressRoute monitor](network-performance-monitor-expressroute.md): end-to-end connectiviteit en prestaties tussen uw filialen en Azure, via Azure ExpressRoute, bewaken.  
 
@@ -45,7 +45,7 @@ NPM kan de connectiviteit tussen netwerken en toepassingen in elk deel van de we
 * VS - west
 * VS - west-centraal
 * VS - noord-centraal
-* VS - zuid-centraal
+* South Central US
 * Central US
 * VS - oost
 * VS - oost 2
@@ -58,10 +58,10 @@ NPM kan de connectiviteit tussen netwerken en toepassingen in elk deel van de we
 * Zuid-Brittannië
 * Azië - oost
 * Korea - centraal
-* India - centraal
+* Central India
 * Virginia van de Amerikaanse overheid
 * Amerikaanse overheid Arizona
-* China-oost 2
+* China - oost 2
 
 
 De lijst met ondersteunde regio's voor de monitor ExpressRoute is beschikbaar in de [documentatie](../../expressroute/how-to-npm.md?utm_swu=8117).
@@ -82,7 +82,7 @@ Gebruik de basis processen om agents te installeren op [Windows-computers verbin
 
     Als u een netwerk koppeling wilt bewaken, installeert u agents op beide eind punten van die koppeling. Als u niet zeker bent van de topologie van uw netwerk, installeert u de agents op servers met kritieke werk belastingen waartussen u de netwerk prestaties wilt bewaken. Als u bijvoorbeeld de netwerk verbinding tussen een webserver en een server met SQL wilt bewaken, installeert u op beide servers een agent. Agents bewaken de netwerk verbinding (koppelingen) tussen hosts, niet de hosts zelf. 
 
-* **Monitor voor service connectiviteit**: installeer een log Analytics agent op elk knoop punt van waaruit u de netwerk verbinding met het service-eind punt wilt bewaken. Een voor beeld is als u de netwerk connectiviteit met Office 365 wilt bewaken van uw Office-sites met het opschrift O1, O2 en O3. Installeer de Log Analytics agent op ten minste één knoop punt elk in O1, O2 en O3. 
+* **Monitor voor service connectiviteit**: installeer een log Analytics agent op elk knoop punt van waaruit u de netwerk verbinding met het service-eind punt wilt bewaken. Een voor beeld is als u de netwerk connectiviteit wilt bewaken voor Microsoft 365 van uw Office-sites met het opschrift O1, O2 en O3. Installeer de Log Analytics agent op ten minste één knoop punt elk in O1, O2 en O3. 
 
 * **ExpressRoute-monitor**: Installeer ten minste één log Analytics agent in uw virtuele Azure-netwerk. Installeer ook ten minste één agent in uw on-premises subnetwerk dat is verbonden via ExpressRoute-persoonlijke peering.  
 
@@ -128,7 +128,7 @@ Netwerkprestatiemeter maakt gebruik van synthetische trans acties voor het bewak
 
    ![Weer gave prestatie meter](media/network-performance-monitor/npm-synthetic-transactions.png)
     
-   **Monitor voor service connectiviteit**: de mogelijkheid biedt ingebouwde vooraf geconfigureerde tests om de netwerk connectiviteit met Office 365 en Dynamics 365 van uw agents te bewaken. Kies de Services Office 365 en Dynamics 365 die u wilt bewaken door de selectie vakjes ernaast in te scha kelen. Selecteer **agents toevoegen**om de agents te kiezen die u wilt bewaken. Als u deze mogelijkheid niet wilt gebruiken of later wilt instellen, kiest u niets en selecteert u **opslaan & door gaan**.
+   **Monitor voor service connectiviteit**: de mogelijkheid biedt ingebouwde vooraf geconfigureerde tests om de netwerk connectiviteit met Microsoft 365 en Dynamics 365 van uw agents te bewaken. Kies de Microsoft 365 en Dynamics 365-services die u wilt bewaken door de selectie vakjes ernaast in te scha kelen. Selecteer **agents toevoegen**om de agents te kiezen die u wilt bewaken. Als u deze mogelijkheid niet wilt gebruiken of later wilt instellen, kiest u niets en selecteert u **opslaan & door gaan**.
 
    ![Weer gave service connectiviteits monitor](media/network-performance-monitor/npm-service-endpoint-monitor.png)
 

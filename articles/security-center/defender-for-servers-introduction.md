@@ -7,12 +7,12 @@ ms.date: 9/23/2020
 ms.topic: conceptual
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: d0e75ab8a2e4d853fa2edc66174502dd3a7930e9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5e4244c0526dbac3bb8e9b2d3856eb01e1b2a2b7
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91301666"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403487"
 ---
 # <a name="introduction-to-azure-defender-for-servers"></a>Inleiding tot Azure Defender voor servers
 
@@ -41,7 +41,7 @@ De detectie-en beveiligings mogelijkheden van dreigingen van Azure Defender voor
 
 - Besturings elementen voor adaptieve **toepassings controles (AAC)** zijn een intelligente en geautomatiseerde oplossing voor het definiëren van toestaan van lijsten met bekende veilige toepassingen voor uw machines.
 
-    Wanneer u besturings elementen voor adaptieve toepassingen hebt ingeschakeld en geconfigureerd, ontvangt u beveiligings waarschuwingen als een andere toepassing dan de toepassingen die u hebt gedefinieerd als veilig worden uitgevoerd. [Meer informatie](security-center-adaptive-network-hardening.md).
+    Wanneer u besturings elementen voor adaptieve toepassingen hebt ingeschakeld en geconfigureerd, ontvangt u beveiligings waarschuwingen als een andere toepassing dan de toepassingen die u hebt gedefinieerd als veilig worden uitgevoerd. [Meer informatie](security-center-adaptive-application.md).
 
 - **Adaptieve netwerk beveiliging (ANH)** : het Toep assen van netwerk beveiligings groepen (NSG) voor het filteren van verkeer naar en van resources, verbetert uw netwerk beveiliging postuur. Er kunnen echter wel enkele gevallen zijn waarin het daad werkelijke verkeer dat via de NSG stroomt, een subset is van de gedefinieerde NSG-regels. In dergelijke gevallen kunt u de beveiligings postuur verder verbeteren door de NSG-regels te verfijnen op basis van de werkelijke verkeers patronen.
 
@@ -58,7 +58,7 @@ De detectie-en beveiligings mogelijkheden van dreigingen van Azure Defender voor
 
 - **Detectie van bestanden zonder een aanval (alleen Windows)** : aanvallen zonder bestanden voeren schadelijke nettoladingen in het geheugen in om detectie door op schijf gebaseerde scan technieken te voor komen. De nettolading van de aanvaller bevindt zich vervolgens in het geheugen van verdachte processen en voert een breed scala aan schadelijke activiteiten uit.
 
-  Met de aanvals detectie op basis van een bestand, identificeren forensische-technieken met geautomatiseerd geheugen aanvals Toolkit, technieken en gedragingen. Met deze oplossing wordt uw machine periodiek gescand tijdens runtime en worden inzichten direct opgehaald uit het geheugen van processen. Specifieke inzichten voor Linux bevatten de identificatie van: 
+  Met de aanvals detectie op basis van een bestand, identificeren forensische-technieken met geautomatiseerd geheugen aanvals Toolkit, technieken en gedragingen. Met deze oplossing wordt uw machine periodiek gescand tijdens runtime en worden inzichten direct opgehaald uit het geheugen van processen. Specifieke inzichten bevatten de identificatie van: 
 
   - Bekende tool kits en crypto analyse-software 
 

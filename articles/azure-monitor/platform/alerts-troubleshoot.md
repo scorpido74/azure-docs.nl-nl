@@ -6,12 +6,12 @@ ms.author: ofmanor
 ms.topic: reference
 ms.date: 03/16/2020
 ms.subservice: alerts
-ms.openlocfilehash: c3eed095d87d1e1fa1f210b360822ceefdbe0521
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d86c6d8b67546aede86a3fc3c905f6feb40d92db
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045253"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403412"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-alerts"></a>Problemen met Azure Monitor waarschuwingen oplossen
 
@@ -61,7 +61,7 @@ Als u een geactiveerde waarschuwing in de Azure-portal ziet, maar u het e-mailbe
     Controleer ook het volgende:
 
    - de spaminstellingen van uw e-mailclient (zoals Outlook, Gmail)
-      - de afzenderlimieten/spam-instellingen/quarantaine-instellingen van uw e-mailserver (zoals Exchange, Office 365, G-suite)
+      - de verzender limieten/instellingen voor ongewenste e-mail/quarantaine-instellingen van uw e-mail server (zoals Exchange, Microsoft 365, G-suite)
       - de instellingen van uw e-mail beveiligings apparaat (zoals Barracuda, Cisco).
 
 1. **Hebt u per ongeluk afgemeld voor de actie groep?**
@@ -203,7 +203,7 @@ Als u een geactiveerde waarschuwing in de portal ziet, maar een gerelateerde act
 
     Statusmelding voor de service (Service bewaken = "Servicestatus") worden niet beïnvloed door actieregels. 
 
-1. **Is de actie regel Act op uw waarschuwing?** 
+1. **Reageerde de actieregel op uw waarschuwing?** 
 
     Controleer of de actieregel uw waarschuwing heeft verwerkt door op de geactiveerde waarschuwing in de portal te klikken en bekijk het tabblad geschiedenis.
 
@@ -216,7 +216,7 @@ Als u een geactiveerde waarschuwing in de portal ziet, maar een gerelateerde act
     ![Actie herhaald in meerdere actie groepen](media/alerts-troubleshoot/action-repeated-multi-action-groups.png)
  
 
-1. **Komt het bereik en filter van de actie regel overeen met de geactiveerde waarschuwing?** 
+1. **Komen het bereik en filter van de actieregel overeen met de geactiveerde waarschuwing?** 
 
     Als u denkt dat de actieregel geactiveerd had moeten worden, maar niet is uitgevoerd, of dat deze niet is geactiveerd had moeten worden maar dit wel is gebeurd, controleert u zorgvuldig het bereik van de actieregel en filtervoorwaarden, vergeleken met de eigenschappen van de geactiveerde waarschuwing. 
 

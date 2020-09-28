@@ -81,12 +81,16 @@
       items:
         - name: Een sjabloon van het apparaat instellen
           href: howto-set-up-template.md
+        - name: Eigenschappen gebruiken
+          href: howto-use-properties.md
         - name: Een Azure Sphere DevKit voorbereiden en verbinden
           href: howto-connect-sphere.md
         - name: Een RuuviTag-apparaat voorbereiden en verbinden
           href: howto-connect-ruuvi.md
         - name: Een Rigado Cascade 500 voorbereiden en verbinden
           href: howto-connect-rigado-cascade-500.md
+        - name: Apparaten verbinden met X.509
+          href: how-to-connect-devices-x509.md
         - name: Verbinding maken met andere IoT-clouds
           href: howto-build-iotc-device-bridge.md
     - name: Blijf verbonden

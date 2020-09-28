@@ -5,7 +5,7 @@
   items:
     - name: Wat is de Face-service?
       href: Overview.md
-- name: Snelstartgidsen
+- name: Quickstarts
   items:
     - name: De clientbibliotheek gebruiken
       href: Quickstarts/client-libraries.md
@@ -13,7 +13,7 @@
       items:
         - name: Gezichten in een afbeelding detecteren
           items:
-            - name: 'C#'
+            - name: C#
               href: QuickStarts/CSharp.md
             - name: cURL
               href: QuickStarts/curl.md
@@ -35,7 +35,7 @@
   items:
     - name: De client-SDK gebruiken
       items:
-        - name: 'C#'
+        - name: C#
           href: Tutorials/FaceAPIinCSharpTutorial.md
 - name: Concepten
   items:
@@ -47,9 +47,7 @@
   items:
     - name: Gezichten detecteren
       href: Face-API-How-to-Topics/HowtoDetectFacesinImage.md
-    - name: Gezichten identificeren
-      href: Face-API-How-to-Topics/HowtoIdentifyFacesinImage.md
-    - name: Gezichten toevoegen
+    - name: Gezichten toevoegen aan een groep
       href: Face-API-How-to-Topics/how-to-add-faces.md
     - name: Het kenmerk HeadPose gebruiken
       href: Face-API-How-to-Topics/how-to-use-headpose.md

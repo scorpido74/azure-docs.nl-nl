@@ -354,6 +354,9 @@
           href: ../../bastion/bastion-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Toestanden en levenscyclus
       href: ../states-lifecycle.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+    - name: PUT-aanroepen om bewerkingen te maken of bij te werken
+      href: ../put-calls-create-or-update.md
+      maintainContext: true
     - name: Bewaking
       href: ../../azure-monitor/insights/monitor-vm-azure.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Diagnostische gegevens over opstarten
@@ -373,7 +376,7 @@
             - name: PowerShell
               href: dedicated-hosts-powershell.md
             - name: Portal
-              href: dedicated-hosts-portal.md
+              href: ../dedicated-hosts-portal.md
         - name: Spot-VM's implementeren
           items:
             - name: Portal
@@ -499,7 +502,7 @@
                 - name: Een VM maken van een installatiekopieversie
                   href: 'https://azure.microsoft.com/resources/templates/101-vm-from-sig/'
             - name: Problemen met gedeelde installatiekopieën oplossen
-              href: troubleshooting-shared-images.md
+              href: ../troubleshooting-shared-images.md
             - name: Door klant beheerde sleutels gebruiken
               displayName: 'SSE, CMK, encrypt'
               href: ../image-version-encryption.md
@@ -510,7 +513,7 @@
             - name: Image Builder gebruiken
               items:
                 - name: CLI
-                  href: ../linux/image-builder.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                  href: image-builder.md
                 - name: PowerShell
                   href: image-builder-powershell.md
             - name: Een VNET gebruiken
@@ -525,8 +528,8 @@
                   href: ../linux/image-builder-permissions-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: DevOps-taak
               href: ../linux/image-builder-devops-task.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: ARM-sjabloonreferentie
-              displayName: Azure Resource Manager
+            - name: Sjabloonverwijzing voor Image Builder
+              displayName: json
               href: ../linux/image-builder-json.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Compileren voor installatiekopiegalerieën
               href: image-builder-gallery.md
@@ -535,7 +538,7 @@
             - name: Scripts opslaan
               href: ../linux/image-builder-user-assigned-identity.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Problemen oplossen
-              href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
+              href: ../linux/image-builder-troubleshoot.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Installatiekopieën zoeken en gebruiken
           href: cli-ps-findimage.md
         - name: Aankoopplaninformatie
@@ -818,8 +821,9 @@
         - name: Virtual Machine Scale Sets
           href: ../../virtual-machine-scale-sets/overview.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
         - name: Hoge beschikbaarheid
-          href: manage-availability.md
+          href: ../manage-availability.md
         - name: Een nabijheidsplaatsingsgroep maken
+          displayName: ppg aligned colocation co-location
           items:
             - name: Portal
               href: proximity-placement-groups-portal.md

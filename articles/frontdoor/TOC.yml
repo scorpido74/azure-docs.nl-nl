@@ -4,11 +4,15 @@
   items:
     - name: Wat is Azure Front Door?
       href: front-door-overview.md
-- name: Snelstartgidsen
+- name: Quickstarts
   expanded: true
   items:
     - name: Een Front Door maken - Portal
       href: quickstart-create-front-door.md
+    - name: Een Front Door maken - PowerShell
+      href: quickstart-create-front-door-powershell.md
+    - name: Een Front Door maken - CLI
+      href: quickstart-create-front-door-cli.md
     - name: Een Front Door maken - ARM-sjabloon
       href: quickstart-create-front-door-template.md
 - name: Zelfstudies

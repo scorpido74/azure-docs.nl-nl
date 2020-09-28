@@ -2,11 +2,14 @@
   href: index.yml
   items:
     - name: Overzicht
+      expanded: true
       items:
         - name: Oplossingen voor externe identiteiten vergelijken
           href: compare-with-b2c.md
         - name: Wat is B2B-toegang voor gastgebruikers?
           href: what-is-b2b.md
+        - name: Wat is Azure AD B2C?
+          href: 'https://docs.microsoft.com/azure/active-directory-b2c/overview'
     - name: Snelstartgidsen
       items:
         - name: Gastgebruikers toevoegen in de portal
@@ -15,15 +18,15 @@
           href: b2b-quickstart-invite-powershell.md
     - name: Zelfstudies
       items:
-        - name: Bulksgewijs uitnodigen via PowerShell
+        - name: Gastgebruikers in bulk uitnodigen via PowerShell
           href: bulk-invite-powershell.md
-        - name: Bulksgewijs uitnodigen via de portal
+        - name: Gastgebruikers in bulk uitnodigen via de portal
           href: tutorial-bulk-invite.md
-        - name: Meervoudige verificatie forceren
+        - name: Meervoudige verificatie voor gastgebruikers forceren
           href: b2b-tutorial-require-mfa.md
     - name: Voorbeelden
       items:
-        - name: Voorbeelden voor selfservice-registratie
+        - name: Voorbeelden voor selfservice-registratie voor gastgebruikers
           href: code-samples-self-service-sign-up.md
         - name: Code- en Azure PowerShell-voorbeelden
           href: code-samples.md
@@ -63,9 +66,9 @@
     - name: Instructiegidsen
       expanded: true
       items:
-        - name: Extern delen configureren
+        - name: Instellingen voor externe samenwerking configureren
           href: delegate-invitations.md
-        - name: B2B-gebruikers uitnodigen
+        - name: Gastgebruikers uitnodigen
           items:
             - name: Beheerders die B2B-gebruikers toevoegen
               href: add-users-administrator.md
@@ -91,7 +94,7 @@
               href: direct-federation-adfs.md
         - name: Verificatie met eenmalige wachtwoordcode
           href: one-time-passcode.md
-        - name: Selfservice registreren (preview)
+        - name: Selfservice-registratie voor gastgebruikers (preview)
           items:
             - name: Een self-service voor registreren van gasten via gebruikersstromen toevoegen
               href: self-service-sign-up-user-flow.md
@@ -103,7 +106,7 @@
               href: self-service-sign-up-add-api-connector.md
             - name: Een aangepast goedkeuringssysteem toevoegen
               href: self-service-sign-up-add-approvals.md
-        - name: Gastaccounts beheren
+        - name: Gastgebruikersaccounts beheren
           items:
             - name: Een B2B-gebruiker toevoegen aan een rol
               href: add-guest-to-role.md
@@ -113,7 +116,7 @@
               href: user-properties.md
             - name: B2B voor in Azure AD geïntegreerde apps
               href: configure-saas-apps.md
-        - name: Toegang in een hybride organisatie beheren
+        - name: Gasttoegang beheren in een hybride organisatie
           items:
             - name: Lokale gebruikers toegang geven tot cloud-apps
               href: hybrid-on-premises-to-cloud.md
