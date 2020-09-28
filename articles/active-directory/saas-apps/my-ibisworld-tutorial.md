@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/27/2020
+ms.date: 08/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 92eecc419128b593dced0f9679dd02eb273cbb62
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7081babb66cc91a0d904bf46a31843b663c016e7
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88518234"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662059"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-my-ibisworld"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met My IBISWorld
 
@@ -43,6 +43,9 @@ In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD 
 * My IBISWorld biedt ondersteuning voor het **Just In Time** inrichten van gebruikers
 * Zodra u My IBISWorld hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
+> [!NOTE]
+> De id van deze toepassing is een vaste tekenreekswaarde zodat maar één instantie in één tenant kan worden geconfigureerd.
+
 ## <a name="adding-my-ibisworld-from-the-gallery"></a>My IBISWorld toevoegen vanuit de galerie
 
 Voor het configureren van de integratie van My IBISWorld met Microsoft Azure Active Directory moet u My IBISWorld vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
@@ -55,7 +58,7 @@ Voor het configureren van de integratie van My IBISWorld met Microsoft Azure Act
 1. Selecteer **My IBISWorld** in de resultaten en voeg de app toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-my-ibisworld"></a>Eenmalige aanmelding van Azure AD configureren en testen voor My IBISWorld
+## <a name="configure-and-test-azure-ad-sso-for-my-ibisworld"></a>Eenmalige aanmelding van Azure AD voor My IBISWorld configureren en testen
 
 Configureer en test eenmalige aanmelding van Azure AD met My IBISWorld met behulp van een testgebruiker met de naam **B.Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in My IBISWorld.
 

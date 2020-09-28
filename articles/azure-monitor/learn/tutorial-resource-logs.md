@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: f2c780ffb7705575bf1bb5cabb6a09d9dabc0690
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b68d4779d33d2f8a1f1c2bae35f438ad2ccccabb
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505836"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090071"
 ---
 # <a name="tutorial-collect-and-analyze-resource-logs-from-an-azure-resource"></a>Zelfstudie: Resourcelogboeken van een Azure-resource verzamelen en analyseren
 
@@ -84,7 +84,7 @@ U kunt gegevens ophalen uit een Log Analytics-werkruimte met behulp van een logb
     > [!NOTE]
     > Als u Logboeken hebt geopend via het menu Azure Monitor, is het bereik ingesteld op de Log Analytics-werkruimte. In dit geval bevatten alle query's alle records in de werkruimte.
    
-    ![Logboeken](media/tutorial-resource-logs/logs.png)
+    ![Schermopname met de sectie Logboeken voor een logische app waarin een nieuwe query met de naam van de logische app is gemarkeerd.](media/tutorial-resource-logs/logs.png)
 
 4. De service in het voorbeeld schrijft resourcelogboeken weg naar de tabel **AzureDiagnostics**, maar andere services kunnen gegevens wegschrijven naar andere tabellen. Zie [Ondersteunde services, schema's en categorieën voor Azure-resourcelogboeken](../platform/resource-logs-schema.md) voor de tabellen die worden gebruikt door de verschillende Azure-services.
 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/21/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: faedec24bc4b962044d55a47345739592e276b61
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4111752d949b7ed2b0ea14734e5d795564718611
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554767"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661905"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mapbox"></a>Zelfstudie: Integratie van eenmalige aanmelding (SSO) bij Azure Active Directory met Mapbox
 
@@ -42,6 +42,9 @@ In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD 
 * Mapbox biedt ondersteuning voor met **IDP** geïnitieerde eenmalige aanmelding
 * Zodra u Mapbox hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
+> [!NOTE]
+> De id van deze toepassing is een vaste tekenreekswaarde zodat maar één instantie in één tenant kan worden geconfigureerd.
+
 ## <a name="adding-mapbox-from-the-gallery"></a>Mapbox toevoegen uit de galerie
 
 Voor het configureren van de integratie van Mapbox in Azure AD, moet u Mapbox uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
@@ -60,7 +63,7 @@ Configureer en test eenmalige aanmelding van Azure AD met Mapbox met behulp van 
 Voltooi de volgende stappen om eenmalige aanmelding van Azure AD met Mapbox te configureren en te testen:
 
 1. **[Eenmalige aanmelding van Azure AD configureren](#configure-azure-ad-sso)** : zodat uw gebruikers deze functie kunnen gebruiken.
-    1. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : om eenmalige aanmelding van Azure AD te testen met B. Simon.
+    1. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : om eenmalige aanmelding van Azure AD te testen met B.Simon.
     1. **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** : zodat B.Simon eenmalige aanmelding van Azure AD kan gebruiken.
 1. **[Mapbox-eenmalige aanmelding configureren](#configure-mapbox-sso)** : als u de instellingen voor eenmalige aanmelding aan de toepassingszijde wilt configureren.
     1. **[Een Mapbox-testgebruiker maken](#create-mapbox-test-user)** : als u een equivalent van B.Simon in Mapbox wilt hebben dat is gekoppeld aan de Azure AD-weergave van de gebruiker.
@@ -102,9 +105,9 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie gaat u een testgebruiker met de naam B.Simon maken in de Azure-portal.
+In deze sectie gaat u een testgebruiker met de naam B.Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeelvenster van de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
    1. Voer in het veld **Naam**`B.Simon` in.  
@@ -127,7 +130,7 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
     ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
 1. Selecteer in het dialoogvenster **Gebruikers en groepen** de optie **B.Simon** in de lijst Gebruikers. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
-1. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+1. Als u een waarde voor een rol verwacht in de SAML-assertie, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
 1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
 ## <a name="configure-mapbox-sso"></a>Eenmalige aanmelding van Mapbox configureren
@@ -136,15 +139,15 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Klik op het tabblad **Settings**.
 
-    ![Configuratie van Mapbox](./media/mapbox-tutorial/configure1.png)
+    ![Het tabblad Settings van Mapbox](./media/mapbox-tutorial/configure1.png)
 
 1. Klik in het linkernavigatievenster op het tabblad **Security**.
 
-    ![Configuratie van Mapbox](./media/mapbox-tutorial/configure2.png)
+    ![Het tabblad Security van Mapbox](./media/mapbox-tutorial/configure2.png)
 
 1. Klik op **Edit single sign-on**.
 
-    ![Configuratie van Mapbox](./media/mapbox-tutorial/configure3.png)
+    ![Edit single sign-on (Eenmalige aanmelding bewerken) van Mapbox](./media/mapbox-tutorial/configure3.png)
 
 1. Schuif omlaag naar **stap 3: Stel eenmalige aanmelding op basis van SAML in voor Mapbox** en voer de volgende stappen uit:
 

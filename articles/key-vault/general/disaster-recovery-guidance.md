@@ -9,18 +9,22 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: sudbalas
-ms.openlocfilehash: 35814f34550ac7bf4ad85a96d0838df62fe63be6
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 27d8d4de308fe7cf6e6f36dd33f33bb73c495073
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89073179"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983225"
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Beschikbaarheid en redundantie in Azure Key Vault
 
 Azure Key Vault bevat meerdere lagen van redundantie om ervoor te zorgen dat uw sleutels en geheimen beschikbaar blijven voor uw toepassing, zelfs als afzonderlijke onderdelen van de service niet werken.
 
+> [!NOTE]
+> Deze informatie is van toepassing op kluizen. Voor beheerde HSM-groepen wordt een ander model voor hoge beschikbaarheid en herstel na noodgevallen gebruikt. Raadpleeg de [documentatie over herstel na noodgevallen voor beheerde HSM's](../managed-hsm/disaster-recovery-guide.md) voor meer informatie.
+
 De inhoud van uw sleutelkluis wordt gerepliceerd binnen de regio en naar een secundaire regio op ten minste 150 mijl afstand, maar binnen dezelfde geografische locatie voor het behoud van de hoge duurzaamheid van uw sleutels en geheimen. Raadpleeg het document [Azure-gekoppelde regio's](../../best-practices-availability-paired-regions.md) voor meer informatie over specifieke regioparen.
+
 
 Als afzonderlijke onderdelen van de sleutelkluis-service niet meer werken, nemen alternatieve onderdelen in de regio het over om uw aanvraag te verwerken om ervoor te zorgen dat de functionaliteit niet wordt verminderd. U hoeft geen actie te ondernemen om dit proces te starten. Dit gebeurt automatisch en is transparant voor u.
 
@@ -45,6 +49,7 @@ U moet rekening houden met enkele waarschuwingen:
   * Verifiëren
   * Teken
   * Backup
-* Tijdens de failover kunt u geen wijzigingen aanbrengen aan eigenschappen van de sleutelkluis. U kunt de configuraties en instellingen van het toegangsbeleid of de firewall niet wijzigen.
-* Nadat een failback is uitgevoerd voor een failover, zijn alle aanvraagtypen (inclusief lees- *en* schrijfaanvragen) beschikbaar.
 
+* Tijdens de failover kunt u geen wijzigingen aanbrengen aan eigenschappen van de sleutelkluis. U kunt de configuraties en instellingen van het toegangsbeleid of de firewall niet wijzigen.
+
+* Nadat een failback is uitgevoerd voor een failover, zijn alle aanvraagtypen (inclusief lees- *en* schrijfaanvragen) beschikbaar.

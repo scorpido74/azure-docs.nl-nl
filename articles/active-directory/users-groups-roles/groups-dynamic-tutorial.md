@@ -14,16 +14,16 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ee5fa52f59ea2ef3332fe66c81c24ff44c64e81
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: cf911a240456871275abbd7f1e7313a1d2289b98
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "82582886"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054600"
 ---
 # <a name="tutorial-add-or-remove-group-members-automatically"></a>Zelfstudie: Automatisch groepsleden toevoegen of verwijderen
 
-In Azure Active Directory (Azure AD) kunt u automatisch gebruikers aan beveiligingsgroepen of Office 365-groepen toevoegen of daaruit verwijderen, zodat u dit niet altijd handmatig hoeft te doen. Wanneer eigenschappen van een gebruiker of apparaat worden gewijzigd, worden alle dynamische groepsregels in uw Azure AD-organisatie door Microsoft Azure Active Directory geëvalueerd om te zien of er leden moeten worden toegevoegd of verwijderd.
+In Azure Active Directory (Azure AD) kunt u automatisch gebruikers aan beveiligingsgroepen of Microsoft 365-groepen toevoegen of daaruit verwijderen, zodat u dit niet altijd handmatig hoeft te doen. Wanneer eigenschappen van een gebruiker of apparaat worden gewijzigd, worden alle dynamische groepsregels in uw Azure AD-organisatie door Microsoft Azure Active Directory geëvalueerd om te zien of er leden moeten worden toegevoegd of verwijderd.
 
 In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]

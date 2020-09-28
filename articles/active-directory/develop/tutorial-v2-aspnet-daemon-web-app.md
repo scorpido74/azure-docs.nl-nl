@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: b63aa2b2d98a12246d0dc2c35e015da872caff28
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 4b05bbf818676cc70f485dd94ece79141e8f01a4
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83641104"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90982845"
 ---
 # <a name="tutorial-build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>Zelfstudie: Een multitenant daemon bouwen die het Microsoft-identiteitsplatformeindpunt gebruikt
 
@@ -41,7 +41,7 @@ Het daemon-component in dit voorbeeld is een API-controller, `SyncController.cs`
 
 Omdat de app een multitenant-app voor zakelijke Microsoft-klanten is, moet deze een manier bieden voor klanten om de toepassing te 'registreren' of 'te verbinden' met hun bedrijfsgegevens. Tijdens de verbindingsstroom kent een bedrijfsbeheerder eerst rechtstreeks aan de app *toepassingstoestemming* toe, zodat deze toegang heeft tot bedrijfsgegevens op een niet-interactieve manier, zonder dat er een gebruiker moet zijn aangemeld. Het merendeel van de logica in dit voorbeeld toont hoe deze verbindingsstroom kan worden gerealiseerd met het [beheerderstoestemming](v2-permissions-and-consent.md#using-the-admin-consent-endpoint)-eindpunt van het identiteitsplatform.
 
-![Topologie](./media/tutorial-v2-aspnet-daemon-webapp/topology.png)
+![Diagram waarin de UserSync-app wordt weergegeven met drie lokale items die verbinding maken met Azure. Hierbij wordt voor Startup.Auth een token interactief opgehaald om verbinding te maken met Azure AD, wordt voor AccountController toestemming van de beheerder verkregen om verbinding te maken met Azure AD en worden met SyncController gebruikers gelezen om verbinding te maken met Microsoft Graph.](./media/tutorial-v2-aspnet-daemon-webapp/topology.png)
 
 Lees de [documentatie voor het clientreferentieprotocol voor het identiteitsplatformeindpunt](v2-oauth2-client-creds-grant-flow.md) voor meer informatie over de in dit voorbeeld gebruikte concepten.
 

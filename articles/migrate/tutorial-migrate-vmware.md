@@ -4,12 +4,12 @@ description: Leer hoe u een migratie zonder agent voor VMware-VM's uitvoert met 
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: mvc
-ms.openlocfilehash: c9a7e76496c2851b90c8fd1d164645c46d02609b
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 37181246a20044f16414735e2247fa90fc36433b
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89376027"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530519"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>VMware-VM's migreren naar Azure (zonder agent)
 
@@ -121,7 +121,7 @@ Schakel als volgt replicatie in:
 
 11. Geef in **Schijven** op of de VM-schijven moeten worden gerepliceerd in Azure en selecteer het schijftype (standaard SSD/HDD of premium beheerde schijven) in Azure. Klik op **Volgende**.
    
-    ![Disks](./media/tutorial-migrate-vmware/disks.png)
+    ![Schermopname met het tabblad Schijven van het dialoogvenster Repliceren.](./media/tutorial-migrate-vmware/disks.png)
 
 12. Controleer in **Replicatie controleren en beginnen** de instellingen en klik op **Repliceren** om de eerste replicatie van de servers te beginnen.
 

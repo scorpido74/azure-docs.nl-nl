@@ -1,5 +1,5 @@
 ---
-title: Een nieuw type gatewayapparaat definiëren in Azure IoT Central | Microsoft Docs
+title: 'Zelfstudie: een nieuw type gatewayapparaat definiëren in Azure IoT Central | Microsoft Docs'
 description: Deze zelfstudie laat zien hoe u als bouwer een nieuw type gatewayapparaat kunt definiëren in uw Azure IoT Central-toepassing.
 author: rangv
 ms.author: rangv
@@ -9,14 +9,14 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 2411eab50cc921a09ba55780b3c6620744a78f3f
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 58e481e34d9f798b73b72b114b071cf035c3319f
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "81758127"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967915"
 ---
-# <a name="define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>Een nieuw type IoT-gatewayapparaat definiëren in uw Azure IoT Central-toepassing
+# <a name="tutorial---define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>Zelfstudie: een nieuw type IoT-gatewayapparaat definiëren in uw Azure IoT Central-toepassing
 
 *Dit artikel is van toepassing op oplossingenbouwers en apparaatontwikkelaars.*
 
@@ -31,6 +31,9 @@ Een gatewayapparaat stelt downstreamapparaten in staat te communiceren met uw Io
 * Eigen telemetrie verzenden, zoals temperatuur.
 * Reageren op updates van schrijfbare eigenschappen die zijn gemaakt via een operator. Een operator kan bijvoorbeeld het verzendinterval van de telemetrie wijzigen.
 * Reageren op opdrachten, zoals het opnieuw opstarten van het apparaat.
+
+> [!div class="checklist"]
+> Sjablonen voor downstreamapparaten maken, een gateway-apparaatsjabloon maken, de apparaatsjabloon publiceren en de gesimuleerde apparaten maken
 
 ## <a name="prerequisites"></a>Vereisten
 

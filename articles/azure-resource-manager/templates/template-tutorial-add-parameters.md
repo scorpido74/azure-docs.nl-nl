@@ -6,12 +6,12 @@ ms.date: 03/31/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: b1454106c4498f4519972633df8a871585d254f1
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 9e860941c3d782498c12afa12f285f44e7e68f37
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497542"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069438"
 ---
 # <a name="tutorial-add-parameters-to-your-arm-template"></a>Zelfstudie: Parameters aan uw ARM-sjabloon toevoegen
 
@@ -114,7 +114,7 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> Als de implementatie is mislukt, gebruikt u de schakeloptie **debug** met de implementatieopdracht om de logboeken voor foutopsporing weer te geven.  U kunt ook de schakeloptie **verbose** gebruiken om de volledige logboeken voor foutopsporing weer te geven.
+> Als de implementatie is mislukt, gebruikt u de schakeloptie **verbose** voor informatie over de resources die worden gemaakt. Gebruik de schakeloptie **debug** voor meer informatie over foutopsporing.
 
 Om de flexibiliteit van uw sjabloon te bekijken, implementeren we deze opnieuw. Stel de SKU-parameter nu in op **Standard_GRS**. U kunt een nieuwe naam doorgeven om een ander opslagaccount te maken, of dezelfde naam gebruiken om uw bestaande opslagaccount bij te werken. Beide opties werken.
 

@@ -10,17 +10,19 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: sudbalas
-ms.openlocfilehash: c5509d6a284ab7afe827f67b79b7be027e76f66c
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: bf758a07cff248fc0da3f279e68a14e88797e382
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068843"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984606"
 ---
 # <a name="soft-delete-will-be-enabled-on-all-key-vaults"></a>Voorlopig verwijderen wordt ingeschakeld voor alle sleutelkluizen
 
 > [!WARNING]
 > **Wijziging die fouten veroorzaakt**: De mogelijkheid om voorlopig verwijderen uit te schakelen wordt aan het einde van het jaar afgeschaft. Tegelijkertijd wordt de beveiliging door middel van voorlopig verwijderen automatisch ingeschakeld voor alle sleutelkluizen.  Het wordt aangeraden dat gebruikers en beheerders van Azure Key Vault voorlopig verwijderen direct inschakelen voor hun sleutelkluizen.
+>
+> Voor beheerde HSM is voorlopig verwijderen standaard ingeschakeld en kan deze functie niet worden uitgeschakeld.
 
 Wanneer een geheim wordt verwijderd uit een sleutelkluis zonder dat voorlopig verwijderen is ingeschakeld, wordt het geheim permanent verwijderd. Gebruikers kunnen zich op dit moment afmelden voor voorlopig verwijderen tijdens het maken van een sleutelkluis, maar om uw geheimen te beschermen tegen onbedoeld of kwaadaardig verwijderen door een gebruiker zal Microsoft binnenkort voorlopig verwijderen inschakelen voor **alle** sleutelkluizen en hebben gebruikers niet langer de optie om zich uit te schrijven voor deze functie of om deze uit te schakelen.
 

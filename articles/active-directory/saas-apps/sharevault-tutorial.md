@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/04/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: dcf67ce9c9e63fdbba8db565113cf3380e4142dd
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3f8a0576ff9ea128aae0d63d4879fe66ed2bf549
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548665"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660629"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sharevault"></a>Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met ShareVault
 
@@ -41,7 +41,10 @@ In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD 
 
 * ShareVault ondersteunt door **SP en IDP** geïnitieerde eenmalige aanmelding
 * ShareVault biedt ondersteuning voor **Just-In-Time**-inrichting van gebruikers
-* Nadat u ShareVault hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Nadat u ShareVault hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in real time worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+
+> [!NOTE]
+> De id van deze toepassing is een vaste tekenreekswaarde zodat maar één instantie in één tenant kan worden geconfigureerd.
 
 ## <a name="adding-sharevault-from-the-gallery"></a>ShareVault toevoegen uit de galerie
 
@@ -54,7 +57,7 @@ Voor het configureren van de integratie van ShareVault met Microsoft Azure Activ
 1. Typ **ShareVault** in het zoekvak in de sectie **Toevoegen uit de galerie**.
 1. Selecteer **ShareVault** uit het resultatenvenster en voeg de app vervolgens toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-sharevault"></a>Eenmalige aanmelding van Azure AD configureren en testen voor ShareVault
+## <a name="configure-and-test-azure-ad-sso-for-sharevault"></a>Eenmalige aanmelding van Azure AD voor ShareVault configureren en testen
 
 Configureer en test eenmalige aanmelding van Azure AD met ShareVault met behulp van een testgebruiker met de naam **B.Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in ShareVault.
 

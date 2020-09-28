@@ -6,12 +6,12 @@ ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: fe6185f0e7d6ee570c1491f3b21b6aebe4f090ae
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 3c2fdfffb613b8da39c2f8dcd5504c9ce58c46e4
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497559"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069455"
 ---
 # <a name="tutorial-add-template-functions-to-your-arm-template"></a>Zelfstudie: Sjabloonfuncties toevoegen aan uw ARM-sjabloon
 
@@ -74,7 +74,7 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> Als de implementatie is mislukt, gebruikt u de schakeloptie **debug** met de implementatieopdracht om de logboeken voor foutopsporing weer te geven.  U kunt ook de schakeloptie **verbose** gebruiken om de volledige logboeken voor foutopsporing weer te geven.
+> Als de implementatie is mislukt, gebruikt u de schakeloptie **verbose** voor informatie over de resources die worden gemaakt. Gebruik de schakeloptie **debug** voor meer informatie over foutopsporing.
 
 ## <a name="verify-deployment"></a>Implementatie verifiëren
 

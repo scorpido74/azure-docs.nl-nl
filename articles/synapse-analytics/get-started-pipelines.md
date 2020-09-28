@@ -9,12 +9,12 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 5e32a6a9817f2a3176e96e39c5e261875e8f4ed1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 72eea7c46dd005cd16ae5b8f0022c1174dd28f27
+ms.sourcegitcommit: 0194a29a960e3615f96a2d9d8a7e681cf3e8f9ab
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87093478"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89667486"
 ---
 # <a name="orchestrate-with-pipelines"></a>Organiseren met pijplijnen
 
@@ -26,7 +26,7 @@ U kunt een groot aantal verschillende taken in Azure Synapse organiseren.
 
 1. Ga in Synapse Studio naar de hub **Organiseren**.
 1. Selecteer **+**  > **Pijplijn** om een nieuwe pijplijn te maken.
-1. Ga naar de hub **Ontwikkelen** en zoek de notebook op die u eerder hebt gemaakt.
+1. Ga naar de hub **Ontwikkelen** en selecteer een van de notebooks die u eerder hebt gemaakt.
 1. Sleep de notebook naar de pijplijn.
 1. Selecteer in de pijplijn **Trigger toevoegen** > **Nieuw/bewerken**.
 1. Selecteer bij **Trigger kiezen** **Nieuw** in en stel vervolgens bij **terugkeerpatroon** de trigger in om elk uur te worden uitgevoerd.

@@ -6,12 +6,12 @@ ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9607ddd4a44af6a515080d4fd6f0c475268470b9
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 398b2741d7bafe4c3fdd9520d00eb7fcb766b876
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497491"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069608"
 ---
 # <a name="tutorial-add-variables-to-your-arm-template"></a>Zelfstudie: variabelen aan uw ARM-sjabloon toevoegen
 
@@ -83,7 +83,7 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> Als de implementatie is mislukt, gebruikt u de schakeloptie **debug** met de implementatieopdracht om de logboeken voor foutopsporing weer te geven.  U kunt ook de schakeloptie **verbose** gebruiken om de volledige logboeken voor foutopsporing weer te geven.
+> Als de implementatie is mislukt, gebruikt u de schakeloptie **verbose** voor informatie over de resources die worden gemaakt. Gebruik de schakeloptie **debug** voor meer informatie over foutopsporing.
 
 ## <a name="verify-deployment"></a>Implementatie verifiëren
 

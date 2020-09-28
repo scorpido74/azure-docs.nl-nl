@@ -7,12 +7,12 @@ ms.author: msangapu
 keywords: azure-app-service, web-app, linux, windows, docker, container
 ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: df46d61ddfba5f4da977b19db3158691c78168f8
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: fdc15ecd79a6672d2a46b4da284533965977d753
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958453"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90982864"
 ---
 # <a name="migrate-custom-software-to-azure-app-service-using-a-custom-container"></a>Aangepaste software naar Azure App Service migreren met een aangepaste container
 
@@ -56,7 +56,7 @@ Open het bestand *custom-font-win-container/CustomFontSample.sln* in Visual Stud
 
 Typ `Ctrl+F5` voor het uitvoeren van de app zonder foutopsporing. De app wordt weergegeven in de standaardbrowser. 
 
-![Het dialoogvenster Nieuw ASP.NET-project](media/tutorial-custom-container/local-app-in-browser.png)
+:::image type="content" source="media/tutorial-custom-container/local-app-in-browser.png" alt-text="Schermopname waarin de app wordt weergegeven in de standaardbrowser.":::
 
 Omdat de app een geïnstalleerd lettertype gebruikt, kan deze niet worden uitgevoerd in de sandbox van App Service. U kunt de app echter in plaats daarvan implementeren met behulp van een Windows-container, omdat u het lettertype in de Windows-container kunt installeren.
 
@@ -64,7 +64,7 @@ Omdat de app een geïnstalleerd lettertype gebruikt, kan deze niet worden uitgev
 
 Klik in Solution Explorer met de rechtermuisknop op het project **CustomFontSample** en selecteer **Add** > **Container Orchestration Support**.
 
-![Het dialoogvenster Nieuw ASP.NET-project](media/tutorial-custom-container/enable-container-orchestration.png)
+:::image type="content" source="media/tutorial-custom-container/enable-container-orchestration.png" alt-text="Schermopname van het Solution Explorer-venster waarin het project CustomFontSample en de menu-items Add en Container Orchestrator Support zijn geselecteerd.":::
 
 Selecteer **Docker Compose** > **OK**.
 
@@ -98,13 +98,13 @@ U kunt _InstallFont.ps1_ vinden in het project **CustomFontSample**. Het is een 
 
 Klik in Solution Explorer met de rechtermuisknop op het project **CustomFontSample** en selecteer **Publish** (publiceren).
 
-![Het dialoogvenster Nieuw ASP.NET-project](media/tutorial-custom-container/open-publish-wizard.png)
+:::image type="content" source="media/tutorial-custom-container/open-publish-wizard.png" alt-text="Schermopname van het Solution Explorer-venster waarin het project CustomFontSample en de optie Publish zijn geselecteerd.":::
 
 ### <a name="create-registry-and-publish"></a>Register maken en publiceren
 
 Selecteer in de publicatiewizard **Container Registry** (containerregister) > **Create New Azure Container Registry** (nieuw Azure-containerregister maken) > **Publish** (publiceren).
 
-![Het dialoogvenster Nieuw ASP.NET-project](media/tutorial-custom-container/create-registry.png)
+:::image type="content" source="media/tutorial-custom-container/create-registry.png" alt-text="Schermopname van de wizard voor publiceren waarin de opties Container Registry, Create New Azure Container Registry en de knop Publish zijn geselecteerd.":::
 
 ### <a name="sign-in-with-azure-account"></a>Aanmelden met Azure-account
 
@@ -211,7 +211,7 @@ De gestreamde logboeken zien er ongeveer als volgt uit:
 
 ::: zone pivot="container-linux"
 
-Azure App Service gebruikt de Docker-containertechnologie voor het hosten van zowel ingebouwde installatiekopieën als aangepaste installatiekopieën. Voer de Azure CLI-opdracht [az webapp list-runtimes --linux](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes) uit om een lijst met ingebouwde installatiekopieën te zien. Als deze installatiekopieën niet voldoen aan uw behoeften, kunt u een aangepaste installatiekopie bouwen en implementeren.
+Azure App Service gebruikt de Docker-containertechnologie voor het hosten van zowel ingebouwde installatiekopieën als aangepaste installatiekopieën. Voer de Azure CLI-opdracht [az webapp list-runtimes --linux](/cli/azure/webapp?view=azure-cli-latest&preserve-view=true#az-webapp-list-runtimes) uit om een lijst met ingebouwde installatiekopieën te zien. Als deze installatiekopieën niet voldoen aan uw behoeften, kunt u een aangepaste installatiekopie bouwen en implementeren.
 
 In deze zelfstudie leert u het volgende:
 
@@ -346,7 +346,7 @@ ENTRYPOINT ["init.sh"]
 
 In deze en de volgende secties richt u resources in Azure in waarnaar u de installatiekopie pusht. Vervolgens implementeert u een container in Azure App Service. U begint met het maken van een resourcegroep waarin u al deze resources kunt verzamelen.
 
-Voer de opdracht [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create) uit om een resourcegroep te maken:
+Voer de opdracht [az group create](/cli/azure/group?view=azure-cli-latest&preserve-view=true#az-group-create) uit om een resourcegroep te maken:
 
 ```azurecli-interactive
 az group create --name AppSvc-DockerTutorial-rg --location westus2
@@ -358,7 +358,7 @@ U kunt de waarde `--location` wijzigen om een regio bij u in de buurt op te geve
 
 In deze sectie pusht u de installatiekopie naar Azure Container Registry, waar deze kan worden geïmplementeerd via App Service.
 
-1. Voer de opdracht [`az acr create`](/cli/azure/acr?view=azure-cli-latest#az-acr-create) uit om een Azure Container Registry te maken:
+1. Voer de opdracht [`az acr create`](/cli/azure/acr?view=azure-cli-latest&preserve-view=true#az-acr-create) uit om een Azure Container Registry te maken:
 
     ```azurecli-interactive
     az acr create --name <registry-name> --resource-group AppSvc-DockerTutorial-rg --sku Basic --admin-enabled true
@@ -366,7 +366,7 @@ In deze sectie pusht u de installatiekopie naar Azure Container Registry, waar d
     
     Vervang `<registry-name>` door een geschikte naam voor het register. De naam moet uniek zijn in Azure en mag alleen letters en cijfers bevatten.
 
-1. Voer de opdracht [`az acr show`](/cli/azure/acr?view=azure-cli-latest#az-acr-show) uit om referenties voor het register op te halen:
+1. Voer de opdracht [`az acr show`](/cli/azure/acr?view=azure-cli-latest&preserve-view=true#az-acr-show) uit om referenties voor het register op te halen:
 
     ```azurecli-interactive
     az acr credential show --resource-group AppSvc-DockerTutorial-rg --name <registry-name>
@@ -413,7 +413,7 @@ In deze sectie pusht u de installatiekopie naar Azure Container Registry, waar d
 
 Als u een container wilt implementeren in Azure App Service, maakt u eerst een web-app in App Service. Vervolgens verbindt u de web-app met het containerregister. Wanneer de web-app start, wordt de installatiekopie met App Service automatisch opgehaald uit het register.
 
-1. Maak een App Service-abonnement met behulp van de opdracht [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create):
+1. Maak een App Service-abonnement met behulp van de opdracht [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest&preserve-view=true#az-appservice-plan-create):
 
     ```azurecli-interactive
     az appservice plan create --name AppSvc-DockerTutorial-plan --resource-group AppSvc-DockerTutorial-rg --is-linux
@@ -421,7 +421,7 @@ Als u een container wilt implementeren in Azure App Service, maakt u eerst een w
 
     Een App Service-abonnement komt overeen met de virtuele machine die als host fungeert voor de web-app. De vorige opdracht maakt standaard gebruik van een goedkope [B1-prijscategorie](https://azure.microsoft.com/pricing/details/app-service/linux/) die de eerste maand gratis is. U kunt de categorie beheren met de parameter `--sku`.
 
-1. Maak de web-app met de opdracht [`az webpp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create):
+1. Maak de web-app met de opdracht [`az webpp create`](/cli/azure/webapp?view=azure-cli-latest&preserve-view=true#az-webapp-create):
 
     ```azurecli-interactive
     az webapp create --resource-group AppSvc-DockerTutorial-rg --plan AppSvc-DockerTutorial-plan --name <app-name> --deployment-container-image-name <registry-name>.azurecr.io/appsvc-tutorial-custom-image:latest
@@ -429,7 +429,7 @@ Als u een container wilt implementeren in Azure App Service, maakt u eerst een w
     
     Vervang `<app-name>` door een naam voor de web-app. Deze moet uniek zijn in Azure. Vervang ook `<registry-name>` door de naam van uw register uit de vorige sectie.
 
-1. Gebruik [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) om de omgevingsvariabele `WEBSITES_PORT` in te stellen zoals verwacht voor de app-code: 
+1. Gebruik [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest&preserve-view=true#az-webapp-config-appsettings-set) om de omgevingsvariabele `WEBSITES_PORT` in te stellen zoals verwacht voor de app-code: 
 
     ```azurecli-interactive
     az webapp config appsettings set --resource-group AppSvc-DockerTutorial-rg --name <app-name> --settings WEBSITES_PORT=8000
@@ -439,7 +439,7 @@ Als u een container wilt implementeren in Azure App Service, maakt u eerst een w
     
     Raadpleeg de [Leesmij in de voorbeeldopslagplaats van GitHub](https://github.com/Azure-Samples/docker-django-webapp-linux) voor meer informatie over deze omgevingsvariabele.
 
-1. Schakel [beheerde identiteit](./overview-managed-identity.md) in voor de web-app door de opdracht [`az webapp identity assign`](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) te gebruiken:
+1. Schakel [beheerde identiteit](./overview-managed-identity.md) in voor de web-app door de opdracht [`az webapp identity assign`](/cli/azure/webapp/identity?view=azure-cli-latest&preserve-view=true#az-webapp-identity-assign) te gebruiken:
 
     ```azurecli-interactive
     az webapp identity assign --resource-group AppSvc-DockerTutorial-rg --name <app-name> --query principalId --output tsv
@@ -449,7 +449,7 @@ Als u een container wilt implementeren in Azure App Service, maakt u eerst een w
 
     Met beheerde identiteit kunt u de web-app toegang verlenen tot andere Azure-resources zonder dat hiervoor specifieke referenties nodig zijn.
 
-1. Haal uw abonnements-id op met de opdracht [`az account show`](/cli/azure/account?view=azure-cli-latest#az-account-show), die u in de volgende stap nodig hebt:
+1. Haal uw abonnements-id op met de opdracht [`az account show`](/cli/azure/account?view=azure-cli-latest&preserve-view=true#az-account-show), die u in de volgende stap nodig hebt:
 
     ```azurecli-interactive
     az account show --query id --output tsv
@@ -472,7 +472,7 @@ Zie voor meer informatie over deze machtigingen [Op rollen gebaseerd toegangsbeh
 
 U kunt deze stappen voltooien zodra de installatiekopie naar het containerregister is gepusht en de App Service volledig is ingericht.
 
-1. Gebruik de opdracht [`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) om het containerregister en de installatiekopie op te geven die voor de web-app moeten worden geïmplementeerd:
+1. Gebruik de opdracht [`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest&preserve-view=true#az-webapp-config-container-set) om het containerregister en de installatiekopie op te geven die voor de web-app moeten worden geïmplementeerd:
 
     ```azurecli-interactive
     az webapp config container set --name <app-name> --resource-group AppSvc-DockerTutorial-rg --docker-custom-image-name <registry-name>.azurecr.io/appsvc-tutorial-custom-image:latest --docker-registry-server-url https://<registry-name>.azurecr.io
