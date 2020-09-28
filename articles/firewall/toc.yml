@@ -4,7 +4,7 @@
   items:
     - name: Wat is Azure Firewall?
       href: overview.md
-- name: Snelstartgidsen
+- name: Quickstarts
   expanded: true
   items:
     - name: Implementeren met IP-groepen - ARM-sjabloon
@@ -88,6 +88,8 @@
       href: firewall-diagnostics.md
     - name: Azure Monitor-logboeken
       href: log-analytics-samples.md
+    - name: Azure Firewall Workbook
+      href: firewall-workbook.md
 - name: Naslaginformatie
   items:
     - name: Azure CLI

@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 09/27/2020
 ms.author: jingwang
-ms.openlocfilehash: f22380f65b91976e7696551ee0a65a5bf6dfd097
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 13a0966413519e56199cfce150d9dd7973d634ec
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91334307"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91404716"
 ---
 # <a name="parquet-format-in-azure-data-factory"></a>De indeling Parquet in Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -79,7 +79,7 @@ De volgende eigenschappen worden ondersteund in het gedeelte *** \* sink \* *** 
 
 | Eigenschap      | Beschrijving                                                  | Vereist |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op **ParquetSink**. | Yes      |
+| type          | De eigenschap type van de Sink voor kopieer activiteiten moet worden ingesteld op **ParquetSink**. | Yes      |
 | formatSettings | Een groep eigenschappen. Raadpleeg de tabel **Parquet write Settings** hieronder. |    No      |
 | storeSettings | Een groep eigenschappen voor het schrijven van gegevens naar een gegevens archief. Elke connector op basis van bestanden heeft eigen ondersteunde schrijf instellingen onder `storeSettings` . **Zie de sectie Details in connector artikel-> eigenschappen van de Kopieer activiteit**. | No       |
 
@@ -127,7 +127,7 @@ source(allowSchemaDrift: true,
 
 ### <a name="sink-properties"></a>Eigenschappen van Sink
 
-De onderstaande tabel geeft een lijst van de eigenschappen die door een Parquet-bron worden ondersteund. U kunt deze eigenschappen bewerken op het tabblad **bron opties** .
+De onderstaande tabel geeft een lijst van de eigenschappen die worden ondersteund door een Parquet-sink. U kunt deze eigenschappen bewerken op het tabblad **instellingen** .
 
 | Naam | Beschrijving | Vereist | Toegestane waarden | Eigenschap gegevens stroom script |
 | ---- | ----------- | -------- | -------------- | ---------------- |

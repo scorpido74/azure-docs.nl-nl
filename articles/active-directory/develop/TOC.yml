@@ -4,7 +4,7 @@
   items:
     - name: Wat is het Microsoft Identity Platform?
       href: v2-overview.md
-- name: Snelstartgidsen
+- name: Quickstarts
   expanded: true
   items:
     - name: Een tenant instellen
@@ -81,6 +81,8 @@
       items:
         - name: ASP.NET
           href: tutorial-v2-asp-webapp.md
+        - name: Blazor Server
+          href: tutorial-blazor-server.md
     - name: Mobiele apps en desktop-apps
       items:
         - name: Android

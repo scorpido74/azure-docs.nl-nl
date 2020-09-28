@@ -18,8 +18,10 @@
       href: add-application-portal-configure.md
     - name: Gebruikers toewijzen aan een app
       href: add-application-portal-assign-users.md
-    - name: Eenmalige aanmelding instellen
+    - name: Eenmalige aanmelding op basis van SAML instellen
       href: add-application-portal-setup-sso.md
+    - name: Eenmalige aanmelding op basis van OIDC instellen
+      href: add-application-portal-setup-oidc-sso.md
     - name: Een app verwijderen
       href: delete-application-portal.md
 - name: Zelfstudies

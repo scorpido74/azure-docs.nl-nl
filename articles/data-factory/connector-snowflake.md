@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/28/2020
-ms.openlocfilehash: 255fa9e058fdbb3b7edb73e75fd53f4a2490bfca
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: 5bb5599c6ab6e630e0f26c6d4a13e9c9af8a15a7
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90023853"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91405170"
 ---
 # <a name="copy-and-transform-data-in-snowflake-by-using-azure-data-factory"></a>Gegevens kopiëren en transformeren in sneeuw met behulp van Azure Data Factory
 
@@ -357,7 +357,7 @@ Als uw bron gegevens opslag en-indeling voldoen aan de criteria die in deze sect
 
 #### <a name="staged-copy-to-snowflake"></a>Gefaseerde kopie naar sneeuw vlokken
 
-Als uw Sink-gegevens archief of-indeling niet systeem eigen compatibel is met de opdracht sneeuw COPY, zoals vermeld in de laatste sectie, schakelt u de ingebouwde gefaseerde kopie in met een tussentijds Azure Blob Storage-exemplaar. De functie voor gefaseerd kopiëren biedt u ook een betere door voer. Data Factory converteert de gegevens automatisch om te voldoen aan de vereisten voor gegevens formaat van sneeuw vlokken. Vervolgens wordt de Kopieer opdracht aangeroepen voor het laden van gegevens naar sneeuw vlokken. Ten slotte ruimt de app de tijdelijke gegevens op uit de Blob-opslag. Zie [gefaseerde kopie](copy-activity-performance-features.md#staged-copy) voor meer informatie over het kopiëren van gegevens met behulp van staging.
+Als uw brongegevens archief of-indeling niet systeem eigen compatibel is met de opdracht sneeuw COPY, zoals vermeld in de laatste sectie, schakelt u de ingebouwde gefaseerde kopie in met een tussentijds Azure Blob Storage-exemplaar. De functie voor gefaseerd kopiëren biedt u ook een betere door voer. Data Factory converteert de gegevens automatisch om te voldoen aan de vereisten voor gegevens formaat van sneeuw vlokken. Vervolgens wordt de Kopieer opdracht aangeroepen voor het laden van gegevens naar sneeuw vlokken. Ten slotte ruimt de app de tijdelijke gegevens op uit de Blob-opslag. Zie [gefaseerde kopie](copy-activity-performance-features.md#staged-copy) voor meer informatie over het kopiëren van gegevens met behulp van staging.
 
 Als u deze functie wilt gebruiken, maakt u een [gekoppelde Azure Blob Storage-service](connector-azure-blob-storage.md#linked-service-properties) die verwijst naar het Azure Storage-account als tijdelijke fase ring. Geef vervolgens de `enableStaging` `stagingSettings` Eigenschappen en op in de Kopieer activiteit.
 

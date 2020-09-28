@@ -273,6 +273,10 @@
             - name: Azure PowerShell
               href: howto-configure-server-parameters-using-powershell.md
               displayName: 'server parameters, powershell'
+        - name: Server stoppen/starten
+          items:
+            - name: MySQL-server stoppen/starten
+              href: how-to-stop-start-server.md
         - name: Opslag automatisch vergroten
           items:
             - name: Azure Portal

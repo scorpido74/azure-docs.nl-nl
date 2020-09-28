@@ -2,13 +2,13 @@
 title: Service kosten verminderen met behulp van Azure Advisor
 description: Gebruik Azure Advisor om de kosten van uw Azure-implementaties te optimaliseren.
 ms.topic: article
-ms.date: 01/29/2019
-ms.openlocfilehash: 89bc72bcf3a19867341675f89cbc0a734d7996d5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/27/2020
+ms.openlocfilehash: 7576ccb478a4f221ae7d7f68b14787f6f8bf7e88
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325841"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91405221"
 ---
 # <a name="reduce-service-costs-by-using-azure-advisor"></a>Service kosten verminderen met behulp van Azure Advisor
 
@@ -111,6 +111,7 @@ Advisor identificeert bronnen voor het verkleinen van het Table cache-beleid Azu
 
 Zie voor meer informatie over Advisor-aanbevelingen:
 * [Inleiding tot Advisor](advisor-overview.md)
+* [Advisor-Score](azure-advisor-score.md)
 * [Aan de slag met Advisor](advisor-get-started.md)
 * [Aanbevelingen voor Advisor-prestaties](advisor-performance-recommendations.md)
 * [Aanbevelingen voor hoge Beschik baarheid van Advisor](advisor-high-availability-recommendations.md)

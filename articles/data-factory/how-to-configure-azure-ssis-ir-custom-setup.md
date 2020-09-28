@@ -11,13 +11,13 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 09/15/2020
-ms.openlocfilehash: ff56ef55066fd0f56b5b8dc7507bfb63b8b8baa0
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.date: 09/28/2020
+ms.openlocfilehash: 4ef569864b27eff7f57aa2b0a922034fa28f587c
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090598"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91405238"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>De instellingen voor een Azure-SSIS Integration Runtime aanpassen
 
@@ -154,6 +154,10 @@ Als u het **onderdeel type licenties installeren** selecteert voor uw snelle aan
    * Als u het onderdeel **Xtract van de Theobald-software** selecteert, kunt u de [Xtract](https://theobald-software.com/en/xtract-is/) een suite van connectors voor SAP-systemen (ERP, s/4HANA, BW) installeren van de Theobald-software op uw Azure-SSIS IR. Als u dit wilt doen, sleept u & het product licentie bestand dat u eerder hebt aangeschaft, naar het invoervak **licentie bestand** te slepen. De huidige geïntegreerde versie is **6.1.1.3**.
 
    * Als u het **Integration service** -onderdeel van AecorSoft selecteert, kunt u het [integratie service](https://www.aecorsoft.com/en/products/integrationservice) pakket van connectors voor SAP-en Sales Force-systemen installeren vanuit AecorSoft op uw Azure-SSIS IR. Als u dit wilt doen, voert u de product licentie code die u hebt aangeschaft vooraf in het tekstvak **licentie code** in. De huidige geïntegreerde versie is **3.0.00**.
+
+   * Als u het **SSIS-standaard pakket** onderdeel voor CData selecteert, kunt u de [SSIS Standard-pakket](https://www.cdata.com/kb/entries/ssis-adf-packages.rst#standard) suite van de populairste onderdelen van CDATA installeren, zoals micro soft share point-connectors, op uw Azure-SSIS IR. Als u dit wilt doen, voert u de product licentie code die u hebt aangeschaft vooraf in het tekstvak **licentie code** in. De huidige geïntegreerde versie is **19,7354**.
+
+   * Als u het **Extended SSIS-pakket** onderdeel van CDATA selecteert, kunt u de [SSIS Extended package](https://www.cdata.com/kb/entries/ssis-adf-packages.rst#extended) suite van alle onderdelen van CData installeren, zoals micro soft Dynamics 365 Business Central connectors en andere onderdelen in hun **SSIS-standaard pakket**, op uw Azure-SSIS IR. Als u dit wilt doen, voert u de product licentie code die u hebt aangeschaft vooraf in het tekstvak **licentie code** in. De huidige geïntegreerde versie is **19,7354**. Als gevolg van de omvang van de installatie, moet u ervoor zorgen dat uw Azure-SSIS IR ten minste 4 CPU-kernen per knoop punt heeft.
 
 Uw toegevoegde snelle aangepaste Setup wordt weer gegeven op de pagina **Geavanceerde instellingen** . Als u deze wilt verwijderen, schakelt u de selectie vakjes in en selecteert u **Verwijderen**.
 

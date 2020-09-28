@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 04/14/2019
 ms.author: glenga
-ms.openlocfilehash: 47e1c509e8b7b60e889e1202b49b1a145c68162c
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: aae89e1c6f8db2fb657ac2a43c4bce0396ab3ddd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88929484"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376570"
 ---
 ## <a name="local-settings-file"></a>Lokale instellingsbestand
 
@@ -40,7 +40,7 @@ Deze instellingen worden ondersteund wanneer u projecten lokaal uitvoert:
 
 | Instelling      | Beschrijving                            |
 | ------------ | -------------------------------------- |
-| **`IsEncrypted`** | Wanneer deze instelling is ingesteld op `true`, worden alle waarden versleuteld met een lokale machinesleutel. Gebruikt met `func settings`-opdrachten. De standaardwaarde is `false`. |
+| **`IsEncrypted`** | Wanneer deze instelling is ingesteld op `true`, worden alle waarden versleuteld met een lokale machinesleutel. Gebruikt met `func settings`-opdrachten. De standaardwaarde is `false`. Mogelijk wilt u het bestand local.settings.json versleutelen op uw lokale computer wanneer het geheimen bevat, zoals serviceverbindingsreeksen. De host ontsleutelt de instellingen automatisch wanneer deze wordt uitgevoerd. Gebruik de opdracht `func settings decrypt` voordat u lokaal versleutelde instellingen probeert te lezen. |
 | **`Values`** | Matrix van toepassingsinstellingen en verbindingsreeksen die worden gebruikt wanneer een project lokaal wordt uitgevoerd. De sleutelwaardeparen (tekenreeks-tekenreeks) corresponderen met toepassingsinstellingen in uw functie-app in Azure, zoals [`AzureWebJobsStorage`]. Veel triggers en bindingen hebben een eigenschap die verwijst naar een app-instelling voor verbindingsreeksen, bijvoorbeeld `Connection` voor [Blob-opslagtrigger](../articles/azure-functions/functions-bindings-storage-blob-trigger.md#configuration). Voor deze eigenschappen hebt u een toepassingsinstelling nodig die is gedefinieerd in de matrix `Values`. Bekijk de onderliggende tabel voor een lijst met veelgebruikte instellingen. <br/>Waarden moeten tekenreeksen zijn en geen JSON-objecten of matrices. Instellingsnamen kunnen geen dubbele punt (`:`) bevatten of een dubbel onderstrepingsteken (`__`). Dubbele onderstrepingstekens worden gereserveerd tijdens de runtime en de dubbele punt is gereserveerd voor [afhankelijkheidsinjectie](../articles/azure-functions/functions-dotnet-dependency-injection.md#working-with-options-and-settings). |
 | **`Host`** | Met de instellingen in dit gedeelte wordt het Functions-hostproces aangepast wanneer u projecten lokaal uitvoert. Deze instellingen staan los van de host.json-instellingen, die ook van toepassing zijn wanneer u projecten uitvoert in Azure. |
 | **`LocalHttpPort`** | Hiermee stelt u de standaardpoort in die wordt gebruikt wanneer de lokale Functions-host wordt uitgevoerd (`func host start` en `func run`). De opdrachtregeloptie `--port` heeft voorrang op deze instelling. |

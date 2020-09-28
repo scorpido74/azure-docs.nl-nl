@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/28/2020
+ms.date: 09/28/2020
 ms.author: jingwang
-ms.openlocfilehash: 2a0093ebb6e3214553cf5603151831d6ae53d862
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 96603de7014419b142cc35714b891f9e4b15ec99
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91332046"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91405080"
 ---
 # <a name="copy-data-from-the-hdfs-server-by-using-azure-data-factory"></a>Gegevens kopiëren van de HDFS-server met behulp van Azure Data Factory
 
@@ -279,6 +279,34 @@ Er zijn twee opties voor het instellen van de on-premises omgeving voor het gebr
 * Optie 1: [lid worden van een zelf-hostende Integration runtime-computer in de Kerberos-realm](#kerberos-join-realm)
 * Optie 2: [wederzijdse vertrouwens relatie tussen het Windows-domein en de Kerberos-realm inschakelen](#kerberos-mutual-trust)
 
+Voor beide opties moet u webhdfs inschakelen voor Hadoop-cluster:
+
+1. Maak de HTTP-Principal en de keytab voor webhdfs.
+
+    > [!IMPORTANT]
+    > De HTTP Kerberos-principal moet beginnen met**http/** op basis van Kerberos HTTP SPNEGO-specificatie.
+
+    ```bash
+    Kadmin> addprinc -randkey HTTP/<namenode hostname>@<REALM.COM>
+    Kadmin> ktadd -k /etc/security/keytab/spnego.service.keytab HTTP/<namenode hostname>@<REALM.COM>
+    ```
+
+2. HDFS-configuratie opties: Voeg de volgende drie eigenschappen toe in `hdfs-site.xml` .
+    ```xml
+    <property>
+        <name>dfs.webhdfs.enabled</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>dfs.web.authentication.kerberos.principal</name>
+        <value>HTTP/_HOST@<REALM.COM></value>
+    </property>
+    <property>
+        <name>dfs.web.authentication.kerberos.keytab</name>
+        <value>/etc/security/keytab/spnego.service.keytab</value>
+    </property>
+    ```
+
 ### <a name="option-1-join-a-self-hosted-integration-runtime-machine-in-the-kerberos-realm"></a><a name="kerberos-join-realm"></a>Optie 1: lid worden van een zelf-hostende Integration runtime-computer in de Kerberos-realm
 
 #### <a name="requirements"></a>Vereisten
@@ -287,13 +315,24 @@ Er zijn twee opties voor het instellen van de on-premises omgeving voor het gebr
 
 #### <a name="how-to-configure"></a>Configureren
 
+**Op de KDC-server:**
+
+Maak een principal voor Azure Data Factory die u wilt gebruiken en geef het wacht woord op.
+
+> [!IMPORTANT]
+> De gebruikers naam mag niet de hostnaam bevatten.
+
+```bash
+Kadmin> addprinc <username>@<REALM.COM>
+```
+
 **Op de zelf-hostende Integration runtime-computer:**
 
 1.  Voer het hulp programma Ksetup uit om de Kerberos Key Distribution Center (KDC)-server en-realm te configureren.
 
     De machine moet worden geconfigureerd als lid van een werk groep, omdat een Kerberos-realm afwijkt van een Windows-domein. U kunt deze configuratie behaalt door de Kerberos-realm in te stellen en een KDC-server toe te voegen door de volgende opdrachten uit te voeren. Vervang *realm.com* door uw eigen realm-naam.
 
-    ```console
+    ```cmd
     C:> Ksetup /setdomain REALM.COM
     C:> Ksetup /addkdc REALM.COM <your_kdc_server_address>
     ```
@@ -302,7 +341,7 @@ Er zijn twee opties voor het instellen van de on-premises omgeving voor het gebr
 
 2.  Controleer de configuratie met de `Ksetup` opdracht. De uitvoer moet er als volgt uitzien:
 
-    ```output
+    ```cmd
     C:> Ksetup
     default realm = REALM.COM (external)
     REALM.com:

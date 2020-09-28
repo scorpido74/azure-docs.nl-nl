@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 08/23/2019
 ms.author: genli
 ms.custom: has-adal-ref
-ms.openlocfilehash: 23523a3618ad31e34a81152e48d4ee0f606e5aac
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ac1105f1fce2ac04abfa8a809161580104952917
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088526"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91404898"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>BitLocker-opstart fouten op een virtuele Azure-machine
 
@@ -43,7 +43,7 @@ Dit probleem kan optreden als de virtuele machine het BitLocker-herstel sleutel 
 
 ## <a name="solution"></a>Oplossing
 
-U kunt dit probleem oplossen door de virtuele machine te stoppen en de toewijzing ervan ongedaan te maken en vervolgens opnieuw te starten. Met deze bewerking wordt de virtuele machine gedwongen het BEK-bestand op te halen uit de Azure Key Vault en vervolgens op de versleutelde schijf te plaatsen. 
+U kunt dit probleem oplossen door de virtuele machine te stoppen en de toewijzing ervan ongedaan te maken en vervolgens te starten. Met deze bewerking wordt de virtuele machine gedwongen het BEK-bestand op te halen uit de Azure Key Vault en vervolgens op de versleutelde schijf te plaatsen. 
 
 Als deze methode het probleem niet oplost, voert u de volgende stappen uit om het BEK-bestand hand matig te herstellen:
 

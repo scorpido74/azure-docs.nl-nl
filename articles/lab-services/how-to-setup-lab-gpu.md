@@ -5,12 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: f41ad80e0e39d66020d039d6229a4b0fc62627f1
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: abd182339719f19a521feed95f7cfbed6942b3e8
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285999"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91404779"
 ---
 # <a name="set-up-a-lab-with-gpu-virtual-machines"></a>Een Lab instellen met GPU virtual machines
 
@@ -30,7 +30,7 @@ Zoals beschreven in de volgende tabel is de *reken* GPU-grootte bedoeld voor com
 
 | Grootte | Kernen | RAM | Beschrijving | 
 | ---- | ----- | --- | ----------- | 
-| Kleine GPU (Compute) | -&nbsp;6 &nbsp; kernen<br>-&nbsp;56 &nbsp; GB &nbsp; RAM-geheugen  | [Standard_NC6](https://docs.microsoft.com/azure/virtual-machines/nc-series) |Deze grootte is het meest geschikt voor computer-intensieve toepassingen, zoals kunst matige intelligentie (AI) en diep gaande lessen. |
+| Kleine GPU (Compute) | -&nbsp;6 &nbsp; kernen<br>-&nbsp;56 &nbsp; GB &nbsp; RAM-geheugen  | [Standard_NC6](https://docs.microsoft.com/azure/virtual-machines/nc-series) |Deze grootte is het meest geschikt voor computerintensieve toepassingen zoals kunst matige intelligentie (AI) en diep gaande lessen. |
 
 De grootte van de *visualisatie* GPU is bedoeld voor grafische intensieve toepassingen.  Bijvoorbeeld, het [type SOLIDWORKS engineering](./class-type-solidworks.md) wordt weer gegeven met behulp van de grootte van de **kleine GPU (visualisatie)** .  De visualisatie GPU is geschikt voor dit type klasse, omdat studenten communiceren met de SOLIDWORKS 3D computer-aided design (CAD)-omgeving voor het model leren en visualiseren van effen objecten.
 
@@ -38,6 +38,9 @@ De grootte van de *visualisatie* GPU is bedoeld voor grafische intensieve toepas
 | ---- | ----- | --- | ----------- | 
 | Kleine GPU (visualisatie) | -&nbsp;6 &nbsp; kernen<br>-&nbsp;56 &nbsp; GB &nbsp; RAM-geheugen  | [Standard_NV6](https://docs.microsoft.com/azure/virtual-machines/nv-series) | Deze grootte is het meest geschikt voor externe visualisatie, streaming, games en code ring waarbij frameworks zoals OpenGL en DirectX worden gebruikt. |
 | Gemiddelde GPU (visualisatie) | -&nbsp;12 &nbsp; kernen<br>-&nbsp;112 &nbsp; GB &nbsp; RAM-geheugen  | [Standard_NV12](https://docs.microsoft.com/azure/virtual-machines/nv-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Deze grootte is het meest geschikt voor externe visualisatie, streaming, games en code ring waarbij frameworks zoals OpenGL en DirectX worden gebruikt. |
+
+> [!NOTE]
+> Sommige van deze VM-grootten worden niet weer geven in de lijst wanneer u een leslokaal Lab maakt. De lijst wordt ingevuld op basis van de huidige capaciteit van de locatie van het lab. Als de maker van het lab-account [een locatie voor het lab](allow-lab-creator-pick-lab-location.md)kan kiezen, kunt u proberen een andere locatie voor het lab te kiezen en te controleren of de VM-grootte beschikbaar is. Zie [producten beschikbaar per regio](https://azure.microsoft.com/regions/services/?products=virtual-machines)voor de beschik baarheid van vm's.
 
 ## <a name="ensure-that-the-appropriate-gpu-drivers-are-installed"></a>Zorg ervoor dat de juiste GPU-Stuur Programma's zijn geïnstalleerd
 Zorg ervoor dat de juiste GPU-Stuur Programma's zijn geïnstalleerd om te profiteren van de GPU-mogelijkheden van uw Lab-Vm's.  Als u in de wizard Lab maken een GPU VM-grootte selecteert, kunt u de optie **GPU-Stuur Programma's installeren** selecteren.  

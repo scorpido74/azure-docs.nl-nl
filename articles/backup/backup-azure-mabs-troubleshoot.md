@@ -4,12 +4,12 @@ description: Problemen met de installatie, registratie van Azure Backup Server e
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: d3b2ee87dda09fe1b5611d00ce567304aec33a6f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 09e5fe5da7e316257cbbdcb89074fe8a4bc692c0
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91298368"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403004"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Problemen met Azure Backup Server oplossen
 
@@ -142,7 +142,7 @@ Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
 
 | Bewerking | Foutdetails | Tijdelijke oplossing |
 | --- | --- | --- |
-| E-mail meldingen instellen met een Office 365-account |Fout-ID: 2013| **Oorzaak:**<br> Er wordt geprobeerd Office 365-account te gebruiken <br>**Aanbevolen actie:**<ol><li> Het eerste om te zorgen dat "anoniem door sturen toestaan op een receive-connector" voor uw DPM-server is ingesteld op Exchange. Zie voor meer informatie over hoe u dit kunt configureren [anonieme relay toestaan op een receive-connector](/exchange/mail-flow/connectors/allow-anonymous-relay).</li> <li> Als u een interne SMTP-relay niet kunt gebruiken en moet worden ingesteld met behulp van uw Office 365-server, kunt u IIS instellen als een relay. Configureer de DPM-server om [de SMTP door te sturen naar O365 met IIS](/exchange/mail-flow/test-smtp-with-telnet).<br><br>  Zorg ervoor dat u de \@ indeling user domain.com gebruikt en *niet* domein\gebruiker.<br><br><li>Wijs DPM toe om de naam van de lokale server te gebruiken als SMTP-server, poort 587. Ga vervolgens naar het e-mail adres van de gebruiker waarvan de e-mail berichten afkomstig moeten zijn.<li> De gebruikers naam en het wacht woord op de DPM SMTP-installatie pagina moeten voor een domein account in het domein waarop DPM is ingeschakeld. </li><br> Wanneer u het adres van de SMTP-server wijzigt, brengt u de wijziging aan in de nieuwe instellingen, sluit u het vak instellingen en opent u het opnieuw om er zeker van te zijn dat de nieuwe waarde wordt weer gegeven.  Door te wijzigen en te testen worden mogelijk niet altijd de nieuwe instellingen van kracht, dus als u deze wilt testen, is een best practice.<br><br>Op elk gewenst moment tijdens dit proces kunt u deze instellingen wissen door de DPM-console te sluiten en de volgende register sleutels te bewerken: **HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Notification\ <br/> Delete SMTPPassword en SMTPUserName Keys**. U kunt deze weer toevoegen aan de gebruikers interface wanneer u deze opnieuw start.
+| E-mail meldingen instellen met een werk-of school account |Fout-ID: 2013| **Oorzaak:**<br> Poging om een werk-of school account te gebruiken <br>**Aanbevolen actie:**<ol><li> Het eerste om te zorgen dat "anoniem door sturen toestaan op een receive-connector" voor uw DPM-server is ingesteld op Exchange. Zie voor meer informatie over hoe u dit kunt configureren [anonieme relay toestaan op een receive-connector](/exchange/mail-flow/connectors/allow-anonymous-relay).</li> <li> Als u een interne SMTP-relay niet kunt gebruiken en moet worden ingesteld met behulp van uw Office 365-server, kunt u IIS instellen als een relay. Configureer de DPM-server om [de SMTP door te sturen naar Office 365 met behulp van IIS](/exchange/mail-flow/test-smtp-with-telnet).<br><br>  Zorg ervoor dat u de \@ indeling user domain.com gebruikt en *niet* domein\gebruiker.<br><br><li>Wijs DPM toe om de naam van de lokale server te gebruiken als SMTP-server, poort 587. Ga vervolgens naar het e-mail adres van de gebruiker waarvan de e-mail berichten afkomstig moeten zijn.<li> De gebruikers naam en het wacht woord op de DPM SMTP-installatie pagina moeten voor een domein account in het domein waarop DPM is ingeschakeld. </li><br> Wanneer u het adres van de SMTP-server wijzigt, brengt u de wijziging aan in de nieuwe instellingen, sluit u het vak instellingen en opent u het opnieuw om er zeker van te zijn dat de nieuwe waarde wordt weer gegeven.  Door te wijzigen en te testen worden mogelijk niet altijd de nieuwe instellingen van kracht, dus als u deze wilt testen, is een best practice.<br><br>Op elk gewenst moment tijdens dit proces kunt u deze instellingen wissen door de DPM-console te sluiten en de volgende register sleutels te bewerken: **HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Notification\ <br/> Delete SMTPPassword en SMTPUserName Keys**. U kunt deze weer toevoegen aan de gebruikers interface wanneer u deze opnieuw start.
 
 ## <a name="common-issues"></a>Algemene problemen
 

@@ -2,13 +2,13 @@
 title: Verbeter de prestaties van Azure-apps met Advisor
 description: Gebruik aanbevelingen voor prestaties in Azure Advisor om de snelheid en reactie tijd van uw bedrijfskritische toepassingen te verbeteren.
 ms.topic: article
-ms.date: 01/29/2019
-ms.openlocfilehash: 9a8499e85a264488c756a3d497565398f2e1c229
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.date: 07/29/2020
+ms.openlocfilehash: 9625bb3b063234e9cadb20aacfcc5ca8a28b35cc
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651575"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91405153"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Verbeter de prestaties van Azure-toepassingen met behulp van Azure Advisor
 
@@ -63,8 +63,6 @@ Advisor identificeert tabellen die geen actuele [tabel statistieken](../synapse-
 
 Advisor-analyse kan erop wijzen dat de toepassing die verbinding maakt met een MySQL-server mogelijk niet efficiënt beheert. Dit probleem kan leiden tot onnodig Resource verbruik en een totale latentie van een hogere toepassing. We raden u aan om het aantal kortdurende verbindingen te beperken en onnodige niet-actieve verbindingen te elimineren om verbindingsbeheer te verbeteren. U kunt deze verbeteringen aanbrengen door een verbindings groep aan de server zijde te configureren, zoals ProxySQL.
 
-## <a name="update-your-current-compute-management-sdk-version-to-the-most-recent-version"></a>Werk uw huidige SDK-versie van Compute Management bij naar de meest recente versie
-Advisor identificeert abonnementen die bewerkingen hebben met verouderde SDK-versies van Compute management. Dit kan van invloed zijn op de beveiliging en prestaties van uw werk belastingen. Advisor raadt u dus aan om over te scha kelen naar de nieuwste versie van de compute Management SDK. 
 
 ## <a name="scale-up-to-optimize-cache-utilization-on-your-azure-synapse-analytics-tables-to-increase-query-performance"></a>Schaal omhoog om het cache gebruik in uw Azure Synapse Analytics-tabellen te optimaliseren om de query prestaties te verbeteren
 
@@ -170,6 +168,14 @@ Advisor-analyse geeft aan dat uw MySQL-server mogelijk niet langer I/O-overhead 
 ## <a name="distribute-data-in-server-group-to-distribute-workload-among-nodes"></a>Gegevens in een servergroep distribueren om de werkbelasting tussen knooppunten te verdelen
 Advisor identificeert de Server groepen waar de gegevens niet zijn gedistribueerd, maar blijven op de coördinator. Op basis hiervan adviseert Advisor dat voor volledige grootschalige-voor delen (Citus) gegevens worden gedistribueerd op worker-knoop punten voor uw server groepen. Hierdoor worden de prestaties van de query verbeterd door gebruik te maken van resource van elk knoop punt in de Server groep. [Meer informatie](https://go.microsoft.com/fwlink/?linkid=2135201) 
 
+## <a name="improve-user-experience-and-connectivity-by-deploying-vms-closer-to-windows-virtual-desktop-deployment-location"></a>Verbeter de gebruikers ervaring en connectiviteit door Vm's dichter bij de implementatie locatie van Windows Virtual Desktop te implementeren
+We hebben vastgesteld dat uw VM's zich in een andere regio of op grote afstand bevinden van de locatie waar uw gebruikers verbinding maken met behulp van Windows Virtual Desktop (WVD). Dit kan leiden tot langere reactietijden van de verbinding en het heeft invloed op de algemene gebruikerservaring voor WVD. Wanneer u VM's voor uw hostgroepen maakt, moet u proberen een regio dichter bij de gebruiker te kiezen. Als ze zich dicht bij elkaar bevinden, garandeert dat langdurige tevredenheid over de WVD-service en een betere kwaliteit van de ervaring in het algemeen. Meer [informatie over verbindings latentie vindt u hier](https://docs.microsoft.com/azure/virtual-desktop/connection-latency).
+
+## <a name="upgrade-to-the-latest-version-of-the-immersive-reader-sdk"></a>Upgraden naar de nieuwste versie van de Insluitende lezer SDK.
+Er zijn voor dit abonnement resources gevonden die gebruikmaken van verouderde versies van de Insluitende lezer SDK De nieuwste versie van de Insluitende lezer SDK biedt u bijgewerkte beveiliging, prestaties en een uitgebreide set functies voor het aanpassen en uitbreiden van uw integratie-ervaring.
+Meer informatie over de [SDK voor insluitende lezer](https://aka.ms/ImmersiveReaderAzureAdvisorSDKLearnMore).
+
+
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Aanbevelingen voor toegang tot prestatie verbeteringen in Advisor
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en open vervolgens [Advisor](https://aka.ms/azureadvisordashboard).
@@ -182,6 +188,7 @@ Zie voor meer informatie over Advisor-aanbevelingen:
 
 * [Inleiding tot Advisor](advisor-overview.md)
 * [Aan de slag met Advisor](advisor-get-started.md)
+* [Advisor-Score](azure-advisor-score.md)
 * [Aanbevelingen van Advisor met betrekking tot kosten](advisor-cost-recommendations.md)
 * [Aanbevelingen voor de Advisor-betrouw baarheid](advisor-high-availability-recommendations.md)
 * [Aanbevelingen voor de beveiliging van Advisor](advisor-security-recommendations.md)

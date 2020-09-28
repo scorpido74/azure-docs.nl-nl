@@ -138,8 +138,6 @@
               href: point-to-site-how-to-vpn-client-install-azure-cert.md
             - name: VPN-clientconfiguratiebestanden maken en installeren
               href: point-to-site-vpn-client-configuration-azure-cert.md
-            - name: Sessiebeheer
-              href: p2s-session-management.md
         - name: RADIUS-verificatie
           items:
             - name: Een point-to-site-VPN configureren
@@ -170,6 +168,8 @@
               href: vpn-gateway-howto-openvpn-clients.md
             - name: Verplaatsen naar het OpenVPN-protocol of IKEv2 vanuit SSTP
               href: ikev2-openvpn-from-sstp.md
+        - name: P2S-sessiebeheer configureren
+          href: p2s-session-management.md
         - name: Overgaan naar een openbaar CA-gatewaycertificaat voor een punt-naar-site-verbinding
           href: vpn-gateway-point-to-site-gateway-public-ca.md
         - name: Een AlwaysOn-VPN-apparaattunnel configureren

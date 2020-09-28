@@ -40,6 +40,10 @@
           href: costs/understand-work-scopes.md
         - name: Groeps- en filteropties
           href: costs/group-filter.md
+        - name: Plannen om kosten te beheren
+          href: understand/plan-manage-costs.md
+        - name: Onverwachte kosten voorkomen
+          href: understand/analyze-unexpected-charges.md
         - name: Kosten beheren met automatisering
           href: costs/manage-automation.md
         - name: Cost Management voor partners
@@ -114,6 +118,8 @@
           href: understand/mca-overview.md
         - name: Factureringsaccounts voor Microsoft-partnerovereenkomst
           href: understand/mpa-overview.md
+        - name: Over abonnementen overdragen
+          href: understand/subscription-transfer.md
         - name: Abonnementen uitwisselen tussen partners (preview)
           href: manage/azure-plan-subscription-transfer-partners.md
 - name: Instructiegidsen
@@ -124,7 +130,7 @@
           items:
             - name: Accountbeheerdertaken
               href: manage/account-admin-tasks.md
-            - name: Profiel bewerken
+            - name: Contactgegevens voor facturering bewerken
               href: manage/change-azure-account-profile.md
             - name: Verschuldigd bedrag betalen
               href: manage/resolve-past-due-balance.md
@@ -246,8 +252,6 @@
               href: manage/upgrade-azure-subscription.md
     - name: De belangrijkste kostenbeheertaken uitvoeren
       items:
-        - name: Onverwachte kosten voorkomen
-          href: manage/getting-started.md
         - name: Prijs berekenen
           href: 'https://azure.microsoft.com/pricing/calculator/'
         - name: Kosten analyse gebruiken voor veelvoorkomende taken

@@ -2,13 +2,13 @@
 title: Verbeter de betrouw baarheid van uw toepassing met Advisor
 description: Gebruik Azure Advisor om de betrouw baarheid in uw bedrijfs kritieke Azure-implementaties te garanderen en te verbeteren.
 ms.topic: article
-ms.date: 01/29/2019
-ms.openlocfilehash: 3e556f8bc672705e6c83daced2c82a884e3ddf46
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/27/2020
+ms.openlocfilehash: 1e256d99f8d78ddff318f963dcb21e9b4537f110
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91264589"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91405187"
 ---
 # <a name="improve-the-reliability-of-your-application-by-using-azure-advisor"></a>Verbeter de betrouw baarheid van uw toepassing met behulp van Azure Advisor
 
@@ -109,6 +109,12 @@ Vanaf 1 juli 2020 kunt u geen nieuwe Spark-clusters maken met behulp van Spark 2
 ## <a name="enable-virtual-machine-replication"></a>Replicatie van virtuele machines inschakelen
 Virtuele machines waarvoor geen replicatie is ingeschakeld voor een andere regio, zijn niet flexibel voor regionale storingen. Het repliceren van virtuele machines vermindert nadelige gevolgen voor het bedrijf tijdens de uitval van Azure-regio's. Advisor detecteert Vm's waarop replicatie niet is ingeschakeld en raadt aan om deze functie in te scha kelen. Wanneer u replicatie inschakelt en er zich een storing voordoet, kunt u uw virtuele machines snel weer geven in een externe Azure-regio. [Meer informatie over replicatie van virtuele machines.](../site-recovery/azure-to-azure-quickstart.md)
 
+## <a name="upgrade-to-the-latest-version-of-the-azure-connected-machine-agent"></a>Upgraden naar de nieuwste versie van de Azure Connected Machine-agent
+De [agent van de Azure Connected machine](https://docs.microsoft.com/azure/azure-arc/servers/manage-agent) wordt regel matig bijgewerkt met fout oplossingen, verbeteringen in stabiliteit en nieuwe functionaliteit. Er zijn resources geïdentificeerd die niet werken met de meest recente versie van machine agent en deze Advisor-aanbeveling raadt u aan om uw agent bij te werken naar de nieuwste versie voor de beste Azure Arc-ervaring.
+
+## <a name="do-not-override-hostname-to-ensure-website-integrity"></a>De hostnaam niet overschrijven om de integriteit van de website te garanderen
+Advisor raadt aan om te voor komen dat de hostnaam wordt overschreven bij het configureren van Application Gateway. Als u een ander domein hebt op de front-end van Application Gateway dan de-URL die wordt gebruikt voor toegang tot de back-end, kan dit leiden tot cookies of omleidings-url's die worden verbroken. Houd er rekening mee dat dit in alle gevallen niet het geval is en dat bepaalde soorten back-ends (zoals REST API) in het algemeen minder gevoelig zijn. Controleer of de back-end kan worden verwerkt of werk de Application Gateway configuratie bij, zodat de hostnaam niet op de back-end hoeft te worden overschreven. Bij gebruik in combi natie met App Service koppelt u een aangepaste domein naam aan de web-app en vermijdt u het gebruik van de *azurewebsites.net-hostnaam voor de back-end.* [Meer informatie over een aangepast domein](https://aka.ms/appgw-advisor-usecustomdomain).
+
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Toegang tot aanbevelingen voor hoge Beschik baarheid in Advisor
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en open vervolgens [Advisor](https://aka.ms/azureadvisordashboard).
@@ -120,6 +126,7 @@ Virtuele machines waarvoor geen replicatie is ingeschakeld voor een andere regio
 Zie voor meer informatie over Advisor-aanbevelingen:
 * [Inleiding tot Advisor](advisor-overview.md)
 * [Aan de slag met Advisor](advisor-get-started.md)
+* [Advisor-Score](azure-advisor-score.md)
 * [Aanbevelingen van Advisor met betrekking tot kosten](advisor-cost-recommendations.md)
 * [Aanbevelingen voor Advisor-prestaties](advisor-performance-recommendations.md)
 * [Aanbevelingen voor de beveiliging van Advisor](advisor-security-recommendations.md)

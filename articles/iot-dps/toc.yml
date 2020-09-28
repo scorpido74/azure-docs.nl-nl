@@ -1,10 +1,10 @@
-- name: Documentatie over de Azure IoT Hub Device Provisioning Service
+- name: Documentatie voor Azure IoT Hub Device Provisioning Service
   href: index.yml
 - name: Overzicht
   items:
     - name: Wat is IoT Hub Device Provisioning Service?
       href: about-iot-dps.md
-- name: Snelstartgidsen
+- name: Quickstarts
   expanded: true
   items:
     - name: Een DPS instellen

@@ -9,14 +9,14 @@ ms.date: 09/06/2018
 ms.author: robinsh
 ms.custom:
 - 'Role: Cloud Development'
-ms.openlocfilehash: 8f7555129f5f514d1954ac56cf87872a85ca91d0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c7414728ab65258f73f80ee7fb303c7e6b961052
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326729"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91404955"
 ---
-# <a name="create-an-iot-hub-using-the-azure-portal"></a>Een IoT-hub maken met behulp van de Azure Portal
+# <a name="create-an-iot-hub-using-the-azure-portal"></a>Een IoT-hub maken met behulp van Azure Portal
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
@@ -24,7 +24,7 @@ In dit artikel wordt beschreven hoe u IoT-hubs maakt en beheert met behulp van d
 
 Als u de stappen in deze zelf studie wilt gebruiken, hebt u een Azure-abonnement nodig. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
-## <a name="create-an-iot-hub"></a>Een IoT Hub maken
+## <a name="create-an-iot-hub"></a>Een IoT-hub maken
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -78,7 +78,7 @@ Routes is het eerste tabblad in het deel venster bericht routering. Klik op +**t
 
 ![Scherm opname van het toevoegen van een nieuwe route](./media/iot-hub-create-through-portal/iot-hub-add-route-storage-endpoint.png)
 
-Geef uw hub een naam. De naam moet uniek zijn in de lijst met routes voor die hub. 
+Geef uw route een naam. De route naam moet uniek zijn in de lijst met routes voor die hub. 
 
 Voor **eind punt**kunt u er een selecteren in de vervolg keuzelijst of een nieuw item toevoegen. In dit voor beeld zijn er al een opslag account en container beschikbaar. Als u deze wilt toevoegen als een eind punt, klikt u op +**toevoegen** naast de vervolg keuzelijst eind punt en selecteert u **Blob Storage**. In het volgende scherm ziet u waar het opslag account en de container zijn opgegeven.
 
@@ -94,7 +94,7 @@ Voeg vervolgens een routerings query toe. In dit voor beeld worden de berichten 
 
 Klik op **Opslaan** om de routerings regel op te slaan. U keert terug naar het deel venster bericht Routering en uw nieuwe routerings regel wordt weer gegeven.
 
-### <a name="custom-endpoints"></a>Aangepaste eind punten
+### <a name="custom-endpoints"></a>Aangepaste eindpunten
 
 Klik op het tabblad **aangepaste eind punten** . U ziet alle aangepaste eind punten die al zijn gemaakt. Hier kunt u nieuwe eind punten toevoegen of bestaande eind punten verwijderen. 
 

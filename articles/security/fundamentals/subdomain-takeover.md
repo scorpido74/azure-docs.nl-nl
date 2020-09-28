@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/23/2020
 ms.author: memildin
-ms.openlocfilehash: faa61dc351bebd3d2a85ad229036e5b9fba9256e
-ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
+ms.openlocfilehash: c0494fe39f8ae64ba65db4e3cd728069aa4a5052
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89514608"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403208"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>Dangling DNS-vermeldingen voor komen en de overname van subdomeinen voor komen
 
@@ -117,14 +117,7 @@ Als u een globale beheerder van de Tenant van uw organisatie bent, kunt u uw acc
 
 ### <a name="run-the-script"></a>Het script uitvoeren
 
-Er zijn twee versies van het script, beide hebben dezelfde invoer parameters en produceren vergelijk bare uitvoer:
-
-|Script  |Informatie  |
-|---------|---------|
-|**Get-DanglingDnsRecordsPsCore.ps1**    |Parallelle modus wordt alleen ondersteund in Power shell versie 7 en hoger. anders wordt de seriële modus uitgevoerd.|
-|**Get-DanglingDnsRecordsPsDesktop.ps1** |Alleen ondersteund in Power shell desktop/versie lager dan 6, omdat dit script gebruikmaakt van [Windows-werk stroom](https://docs.microsoft.com/dotnet/framework/windows-workflow-foundation/overview).|
-
-Meer informatie en down load de Power shell-scripts van GitHub: https://aka.ms/DanglingDNSDomains .
+Meer informatie over het Power shell-script, **Get-DanglingDnsRecords.ps1**en downloaden van github: https://aka.ms/DanglingDNSDomains .
 
 ## <a name="remediate-dangling-dns-entries"></a>Dangling DNS-vermeldingen herstellen 
 
