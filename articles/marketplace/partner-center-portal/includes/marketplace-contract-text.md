@@ -9,12 +9,12 @@ ms.date: 01/22/2020
 ms.custom: include file
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: d899db8b5f6f3b7c0ccef4e44c814f1e126c626a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e1119cf5c40cdcb1fd598b85410ea9149a7cc146
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326665"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91401065"
 ---
 Micro soft biedt een standaard contract sjabloon voor de commerciële Marketplace.
 
@@ -46,7 +46,7 @@ Voor **waarden voor universele wijzigingen in het Standard-contract voor de comm
 **Aangepaste aanpassings voorwaarden voor het Standard-contract voor de commerciële Marketplace van micro soft**: begin door **aangepaste wijzigings voorwaarden toevoegen**te selecteren. U kunt Maxi maal 10 aangepaste voor waarden per aanbieding opgeven.
 
 - **Voor waarden voor aangepaste aanpassingen**: Voer uw aangepaste wijzigings voorwaarden in het vak Aangepaste wijzigings voorwaarden in. U kunt een onbeperkt aantal tekens in dit vak invoeren. Alleen klanten van de Tenant-Id's die u opgeeft voor deze aangepaste voor waarden worden weer gegeven met de aangepaste wijzigings voorwaarden in de inkoop stroom van de aanbieding in de Azure Portal.  
-- **Tenant-id's** (vereist): elke aangepaste wijziging kan worden gericht op Maxi maal 20 Tenant-id's. Als u een aangepaste wijziging toevoegt, moet u ten minste één Tenant-ID opgeven. De Tenant-ID identificeert uw klant in Azure. U kunt uw klant vragen voor deze ID en ze kunnen deze vinden door te navigeren naar portal.azure.com > Azure Active Directory > eigenschappen. De waarde van de Directory-ID is de Tenant-ID (bijvoorbeeld 50c464d3-4930-494c-963c-1e951d15360e). U kunt ook de Tenant-ID van de organisatie zoeken met behulp van de domein naam-URL op [Wat is mijn Microsoft Azure en Office 365-Tenant-id?](https://www.whatismytenantid.com).
+- **Tenant-id's** (vereist): elke aangepaste wijziging kan worden gericht op Maxi maal 20 Tenant-id's. Als u een aangepaste wijziging toevoegt, moet u ten minste één Tenant-ID opgeven. De Tenant-ID identificeert uw klant in Azure. U kunt uw klant vragen voor deze ID en ze kunnen deze vinden door te navigeren naar portal.azure.com > Azure Active Directory > eigenschappen. De waarde van de Directory-ID is de Tenant-ID (bijvoorbeeld 50c464d3-4930-494c-963c-1e951d15360e). U kunt ook de Tenant-ID van de organisatie zoeken met behulp van de domein naam-URL op [Wat is mijn Microsoft Azure en Microsoft 365 Tenant-id?](https://www.whatismytenantid.com).
 - **Beschrijving** (optioneel): Geef eventueel een beschrijvende beschrijving op voor de Tenant-id waarmee u de klant kunt identificeren die u wilt richten op de wijziging.
 
 **Voorwaarden**

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/10/2020
 ms.author: memildin
 ms.custom: include file
-ms.openlocfilehash: 0b6864c3304b86e80549297fc073a2e387000d64
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 55390a3eb2a074729b4a0868416a95e208325b76
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80272845"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91401075"
 ---
 ```json
 {
@@ -58,7 +58,7 @@ ms.locfileid: "80272845"
 
 ### <a name="the-data-model-of-the-schema"></a>Het gegevens model van het schema
 
-|Veld|Gegevenstype|Description|
+|Veld|Gegevenstype|Beschrijving|
 |----|----|----|
 |**AlertDisplayName**|Tekenreeks|De weergave naam van de waarschuwing.|
 |**AlertType**|Tekenreeks|Het type waarschuwing. Waarschuwingen van hetzelfde type moeten dezelfde waarde hebben. Dit veld is een sleutel reeks die het type waarschuwing vertegenwoordigt en niet van een waarschuwings exemplaar. Alle waarschuwings exemplaren van dezelfde detectie logica/analyse moeten dezelfde waarde voor het waarschuwings type hebben.|
@@ -70,7 +70,7 @@ ms.locfileid: "80272845"
 |**Intentie**|Enum|De Kill-keten die zich achter de waarschuwing bevindt. Zie [bedoelingen](../articles/security-center/alerts-reference.md#intentions)voor een lijst met ondersteunde waarden en uitleg van de ondersteunde Kill-ketens van Azure Security Center.<br/>Dit veld kan meerdere waarden bevatten (gescheiden door komma's).|
 |**IsIncident**|Booleaanse waarde|Dit veld bepaalt of de waarschuwing een incident (een samengestelde groepering van verschillende waarschuwingen) of een enkele waarschuwing is. De standaard waarde voor het veld is ' false ' (wat betekent dat het een enkele waarschuwing is).|
 |**ProcessingEndTime**|DateTime|Het tijdstip waarop de waarschuwing voor de eind gebruiker toegankelijk is in het oorspronkelijke product dat de waarschuwing heeft.|
-|**ProductName**|Tekenreeks|De naam van het product dat deze waarschuwing heeft gepubliceerd (Azure Security Center, Azure ATP, micro soft Defender ATP, O365 ATP, MCAS, enzovoort).|
+|**ProductName**|Tekenreeks|De naam van het product dat deze waarschuwing heeft gepubliceerd (Azure Security Center, Azure ATP, micro soft Defender ATP, MCAS, enzovoort).|
 |**RemediationSteps**|Orderverzamellijst<String>|Hand matige actie-items die moeten worden uitgevoerd om de waarschuwing te herstellen.|
 |**ResourceIdentifiers**|Lijst (resource-Id's)|De resource-id's voor deze waarschuwing die kunnen worden gebruikt om de waarschuwing te sturen naar de juiste product blootstellings groep (Tenant, werk ruimte, abonnement etc.). Er kunnen meerdere id's van hetzelfde type per waarschuwing zijn.|
 |**Ernst**|Enum|De ernst van de waarschuwing, zoals gerapporteerd door de provider. Mogelijke waarden: informatief, laag, gemiddeld en hoog.|
