@@ -6,13 +6,13 @@ ms.topic: how-to
 author: markjbrown
 ms.author: mjbrown
 ms.date: 09/22/2020
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 07a38e106b765fd28a8c3c1115e5fe84744ade62
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: devx-track-csharp, contperfq1
+ms.openlocfilehash: eb148801011b2d1c8c1f975edb870ba594b085a7
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91303086"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440697"
 ---
 # <a name="install-and-use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>De Azure Cosmos-emulator installeren en gebruiken voor lokale ontwikkeling en tests
 
@@ -80,13 +80,13 @@ De Azure Cosmos-emulator is standaard geïnstalleerd op `C:\Program Files\Azure 
 
 Wanneer de emulator is gestart, ziet u een pictogram in het systeemvak van de Windows-taak balk. De Azure Cosmos Data Explorer wordt automatisch geopend in uw browser op deze URL- `https://localhost:8081/_explorer/index.html` URL.
 
-:::image type="content" source="./media/local-emulator/database-local-emulator-taskbar.png" alt-text="Melding in systeemvak van lokale Azure Cosmos Emulator":::
+:::image type="content" source="./media/local-emulator/database-local-emulator-taskbar.png" alt-text="Selecteer de knop Start of druk op de Windows-toets, begin met het typen van de Azure Cosmos-emulator en selecteer de emulator in de lijst met toepassingen":::
 
 U kunt ook de emulator starten en stoppen vanuit de opdracht regel-of Power shell-opdrachten. Zie het naslag artikel over het [opdracht regel programma](emulator-command-line-parameters.md) voor meer informatie.
 
 De Azure Cosmos-emulator wordt standaard op de lokale computer (localhost) uitgevoerd op poort 8081. Het adres wordt weergegeven als `https://localhost:8081/_explorer/index.html`. Als u de Verkenner sluit en deze later opnieuw wilt openen, kunt u de URL openen in uw browser of starten vanuit de Azure Cosmos-emulator in het pictogram van de Windows-systeemvak, zoals hieronder wordt weer gegeven.
 
-:::image type="content" source="./media/local-emulator/database-local-emulator-data-explorer-launcher.png" alt-text="Startprogramma voor Data Explorer van lokale Azure Cosmos Emulator":::
+:::image type="content" source="./media/local-emulator/database-local-emulator-data-explorer-launcher.png" alt-text="Selecteer de knop Start of druk op de Windows-toets, begin met het typen van de Azure Cosmos-emulator en selecteer de emulator in de lijst met toepassingen":::
 
 ## <a name="use-the-emulator-on-docker-for-windows"></a><a id="run-on-windows-docker"></a>De emulator gebruiken in docker voor Windows
 
@@ -289,7 +289,7 @@ Voer de volgende stappen uit als u werkt met een Mac:
 
 1. Open het contextmenu voor dat specifieke item, selecteer *Toon info* en selecteer bij *Vertrouw* > *Gebruik bij dit certificaat* de optie *Vertrouw altijd*. 
 
-   :::image type="content" source="./media/local-emulator/mac-trust-certificate.png" alt-text="Open het contextmenu voor dat specifieke item, selecteer Toon info en selecteer bij Vertrouw &gt; Gebruik bij dit certificaat de optie Vertrouw altijd":::
+   :::image type="content" source="./media/local-emulator/mac-trust-certificate.png" alt-text="Selecteer de knop Start of druk op de Windows-toets, begin met het typen van de Azure Cosmos-emulator en selecteer de emulator in de lijst met toepassingen":::
   
 ### <a name="option-2-disable-the-ssl-validation-in-the-application"></a><a id="disable-ssl-validation"></a>Optie 2: de SSL-validatie in de toepassing uitschakelen
 

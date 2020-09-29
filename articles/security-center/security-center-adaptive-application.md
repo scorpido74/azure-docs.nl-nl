@@ -8,17 +8,17 @@ manager: rkarlin
 ms.assetid: 9268b8dd-a327-4e36-918e-0c0b711e99d2
 ms.service: security-center
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: 17a3d0364f3085e4baf4e0faa40f117d9fbbb04f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 12140b71f8ef720a9e48b486a43e683b5766d102
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91268159"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439013"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Besturings elementen voor adaptieve toepassingen gebruiken om de kwets bare Opper vlakken van uw computers te verminderen
 
@@ -54,7 +54,7 @@ Door lijsten met bekende veilige toepassingen te definiëren en waarschuwingen t
 |Koers|[Azure Defender voor servers](defender-for-servers-introduction.md) vereist|
 |Ondersteunde machines:|![Ja ](./media/icons/yes-icon.png) Azure-en niet-Azure-machines met Windows en Linux<br>![Ja ](./media/icons/yes-icon.png) [Azure Arc](https://docs.microsoft.com/azure/azure-arc/) -machines|
 |Vereiste rollen en machtigingen:|**Beveiligings lezers** en **lezers** rollen kunnen zowel groepen als de lijsten met bekende veilige toepassingen weer geven<br>**Inzender** -en **beveiligings beheerders** rollen kunnen zowel groepen bewerken als de lijsten met bekende veilige toepassingen|
-|Clouds|![Yes](./media/icons/yes-icon.png) Commerciële Clouds<br>![Yes](./media/icons/yes-icon.png) National/soeverein (US Gov, China gov, andere gov)|
+|Clouds|![Ja](./media/icons/yes-icon.png) Commerciële Clouds<br>![Ja](./media/icons/yes-icon.png) National/soeverein (US Gov, China gov, andere gov)|
 |||
 
 

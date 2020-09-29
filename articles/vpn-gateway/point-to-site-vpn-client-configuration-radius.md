@@ -1,22 +1,22 @@
 ---
 title: 'Azure VPN Gateway: maken van & configuratie bestanden voor VPN-client installeren-P2S RADIUS-verbindingen'
-description: Maak Windows-, Mac OS X-en Linux VPN-client configuratie bestanden voor verbindingen die gebruikmaken van RADIUS-verificatie.
+description: Windows-, OS X-en Linux VPN-client configuratie bestanden maken voor verbindingen die gebruikmaken van RADIUS-verificatie.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 35631c8a0b66ade1457228ba16150f94f761f7b3
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: e6d811e19bb19c8c8bf96764cfcca2b1294f4a85
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419908"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440055"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>VPN-client configuratie bestanden maken en installeren voor P2S RADIUS-verificatie
 
-Als u verbinding wilt maken met een virtueel netwerk via punt-naar-site (P2S), moet u het client apparaat configureren waarmee u verbinding maakt. U kunt P2S VPN-verbindingen maken op Windows-, Mac OS X-en Linux-client apparaten. 
+Als u verbinding wilt maken met een virtueel netwerk via punt-naar-site (P2S), moet u het client apparaat configureren waarmee u verbinding maakt. U kunt P2S VPN-verbindingen maken op Windows-, OS X-en Linux-client apparaten. 
 
 Wanneer u RADIUS-verificatie gebruikt, zijn er meerdere verificatie opties: gebruikers naam/wacht woord verificatie, certificaat verificatie en andere verificatie typen. De configuratie van de VPN-client verschilt voor elk type verificatie. Als u de VPN-client wilt configureren, gebruikt u client configuratie bestanden die de vereiste instellingen bevatten. Dit artikel helpt u bij het maken en installeren van de configuratie van de VPN-client voor het RADIUS-verificatie type dat u wilt gebruiken.
 
@@ -36,7 +36,7 @@ De configuratie werk stroom voor P2S RADIUS-verificatie is als volgt:
 >
 >
 
-Als u de secties in dit artikel wilt gebruiken, moet u eerst bepalen welk type verificatie u wilt gebruiken: gebruikers naam/wacht woord, certificaat of andere verificatie typen. Elke sectie bevat stappen voor Windows, Mac OS X en Linux (beperkte stappen op dit moment).
+Als u de secties in dit artikel wilt gebruiken, moet u eerst bepalen welk type verificatie u wilt gebruiken: gebruikers naam/wacht woord, certificaat of andere verificatie typen. Elke sectie bevat stappen voor Windows, OS X en Linux (beperkte stappen op dit moment).
 
 
 ## <a name="usernamepassword-authentication"></a><a name="adeap"></a>Gebruikers naam/wachtwoord verificatie
@@ -144,7 +144,7 @@ Gebruik de volgende stappen om de systeem eigen Windows VPN-client te configurer
     ![Details voor de VPN-verbinding](./media/point-to-site-vpn-client-configuration-radius/adconnection.png)
 11. Selecteer **verificatie-instellingen**. Selecteer in de lijst de optie **gebruikers naam** en voer uw referenties in. Als u eerder de referenties hebt opgegeven, wordt de **gebruikers naam** automatisch gekozen in de lijst en worden de gebruikers naam en het wacht woord vooraf ingevuld. Selecteer **OK** om de instellingen op te slaan.
 
-    ![Verificatie-instellingen](./media/point-to-site-vpn-client-configuration-radius/adauthentication.png)
+    ![Scherm opname waarin de vervolg keuzelijst verificatie-instellingen wordt weer gegeven en ' gebruikers naam ' is geselecteerd.](./media/point-to-site-vpn-client-configuration-radius/adauthentication.png)
 12. Klik in het dialoog venster **netwerk** op **Toep assen** om de wijzigingen op te slaan. Selecteer **verbinding maken**om de verbinding te initiëren.
 
 #### <a name="linux-vpn-client-setup-through-strongswan"></a><a name="adlinuxcli"></a>Setup van Linux VPN-client via strongSwan

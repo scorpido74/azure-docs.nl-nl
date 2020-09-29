@@ -1,23 +1,23 @@
 ---
 title: 'Azure ExpressRoute: ExpressRoute direct configureren: CLI'
-description: Meer informatie over hoe u Azure CLI gebruikt voor het configureren van Azure ExpressRoute direct om rechtstreeks verbinding te maken met het wereld wijde netwerk van micro soft op peering locaties over de hele wereld.
+description: Meer informatie over hoe u Azure CLI gebruikt om Azure ExpressRoute direct te configureren om rechtstreeks verbinding te maken met het wereld wijde micro soft-netwerk.
 services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 05/20/2019
+ms.date: 09/28/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4eea79d6166ef4beae3b2d61e47e7df0bc82624c
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: e8c305da074f3090ced0dfc16b4a3faa4c757699
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89395958"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440217"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>ExpressRoute direct configureren met behulp van de Azure CLI
 
-U kunt Azure ExpressRoute direct gebruiken om rechtstreeks verbinding te maken met het wereld wijde netwerk van micro soft op locaties op locatie strategisch gedistribueerd over de hele wereld. Zie [about ExpressRoute Direct Connect](expressroute-erdirect-about.md)(Engelstalig) voor meer informatie.
+ExpressRoute direct biedt u de mogelijkheid om rechtstreeks verbinding te maken met het wereld wijde netwerk van micro soft via peering-locaties strategisch gedistribueerd over de hele wereld. Zie [about ExpressRoute Direct Connect](expressroute-erdirect-about.md)(Engelstalig) voor meer informatie.
 
 ## <a name="create-the-resource"></a><a name="resources"></a>De resource maken
 
@@ -209,7 +209,13 @@ U kunt Azure ExpressRoute direct gebruiken om rechtstreeks verbinding te maken m
    }  
    ```
 
-## <a name="change-adminstate-for-links"></a><a name="state"></a>AdminState wijzigen voor koppelingen
+## <a name="generate-the-letter-of-authorization-loa"></a><a name="authorization"></a>De autorisatie brief (LOA) genereren
+
+Voer de zojuist gemaakte ExpressRoute directe resource naam, naam van de resource groep en de naam van een klant in om de LOA naar te schrijven en (optioneel) een bestands locatie te definiëren om het document op te slaan. Als er niet naar een bestandspad wordt verwezen, wordt het document gedownload naar de huidige map.
+
+```azurecli
+az network express-route port generate-loa -n Contoso-Direct -g Contoso-Direct-rg --customer-name Contoso --destination C:\Users\SampleUser\Downloads\LOA.pdf
+```
 
 Gebruik dit proces om een laag 1-test uit te voeren. Zorg ervoor dat elke Kruis verbinding op de juiste wijze is geïnstalleerd in elke router in de primaire en secundaire poorten.
 
@@ -287,7 +293,8 @@ U kunt extra circuit bandbreedten alleen op ExpressRoute direct gebruiken ter on
 
 **SkuTier** kan lokaal, standaard of Premium zijn.
 
-**SkuFamily** moet MeteredData alleen als onbeperkt worden niet ondersteund op ExpressRoute direct.
+**SkuFamily** kan alleen MeteredData zijn. Onbeperkt wordt niet ondersteund op ExpressRoute direct.
+
 Een circuit maken op de ExpressRoute direct-resource:
 
   ```azurecli

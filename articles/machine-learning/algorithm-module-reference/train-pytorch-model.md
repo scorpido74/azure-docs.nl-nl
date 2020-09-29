@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 05/26/2020
-ms.openlocfilehash: 0ba603dad7d48be725f308f3a3296676c5f4f108
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/26/2020
+ms.openlocfilehash: 9127df2805a7eef5b119a64fd8d8ccdab52f22f8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90883232"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439086"
 ---
 # <a name="train-pytorch-model"></a>Pytorch-model trainen
 
@@ -49,7 +49,7 @@ In dit artikel wordt beschreven hoe u de **Pytorch-model module Train** in azure
 
 8.  Voor **geduld**, geeft u op hoeveel epoche er moet worden getraind als het validatie verlies niet opeenvolgend afneemt. standaard 3.
 
-9.  Verzend de pijp lijn. Als uw gegevensset een grotere grootte heeft, duurt het enige tijd.
+9.  Verzend de pijp lijn. Als uw gegevensset een grotere grootte heeft, duurt het enige tijd en wordt de GPU-berekening aanbevolen.
 
 ## <a name="results"></a>Resultaten
 
@@ -58,7 +58,7 @@ Wanneer de uitvoering van de pijp lijn is voltooid, kunt u het model voor scores
 ## <a name="technical-notes"></a>Technische opmerkingen
 ###  <a name="expected-inputs"></a>Verwachte invoer  
 
-| Naam               | Type                    | Description                              |
+| Naam               | Type                    | Beschrijving                              |
 | ------------------ | ----------------------- | ---------------------------------------- |
 | Niet-traind model    | UntrainedModelDirectory | Niet-traind model, vereisen pytorch         |
 | Trainings gegevensset   | ImageDirectory          | Trainings gegevensset                         |
@@ -66,7 +66,7 @@ Wanneer de uitvoering van de pijp lijn is voltooid, kunt u het model voor scores
 
 ###  <a name="module-parameters"></a>Module parameters  
 
-| Name          | Bereik            | Type    | Standaard | Beschrijving                              |
+| Naam          | Bereik            | Type    | Standaard | Beschrijving                              |
 | ------------- | ---------------- | ------- | ------- | ---------------------------------------- |
 | Epoches        | >0               | Geheel getal | 5       | Selecteer de kolom die de kolom Label of het resultaat bevat |
 | Batchgrootte    | >0               | Geheel getal | 16      | Het aantal exemplaren dat in een batch moet worden getraind   |
@@ -74,9 +74,9 @@ Wanneer de uitvoering van de pijp lijn is voltooid, kunt u het model voor scores
 | Wille keurige Seed   | Elk              | Geheel getal | 1       | Het Seed voor de generator voor wille keurige getallen die wordt gebruikt door het model. |
 | Geduld      | >0               | Geheel getal | 3       | Het aantal epochen naar een vroege stop-training   |
 
-###  <a name="outputs"></a>Uitvoerwaarden  
+###  <a name="outputs"></a>Uitvoer  
 
-| Naam          | Type           | Description   |
+| Naam          | Type           | Beschrijving   |
 | ------------- | -------------- | ------------- |
 | Getraind model | ModelDirectory | Getraind model |
 

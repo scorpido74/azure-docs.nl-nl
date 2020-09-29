@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: 641ff13ec440bb8267e546c54b684ab4453f91a7
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 6807f3d4ef0596b4dbb51f6bc8c0348901e78d0e
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90052933"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439940"
 ---
 # <a name="ssltls-connectivity-in-azure-database-for-mysql"></a>SSL/TLS-connectiviteit in Azure Database for MySQL
 
@@ -61,6 +61,17 @@ Als u bijvoorbeeld de waarde van de minimum versie van TLS-instelling instelt op
 > Wanneer u een minimum versie van TLS afdwingt, kunt u de minimale afdwinging van de versie niet later uitschakelen.
 
 Zie [TLS-instelling configureren](howto-tls-configurations.md)voor meer informatie over het instellen van de TLS-instelling voor uw Azure database for MySQL.
+
+## <a name="cipher-support-by-azure-database-for-mysql-single-server"></a>Ondersteuning voor code ring door Azure Database for MySQL één server
+
+Als onderdeel van de SSL/TLS-communicatie worden de coderings suites gevalideerd en worden alleen coderings pakken toegestaan om te communiceren met de data base-serer. De coderings Suite validatie wordt beheerd in de laag van de [Gateway](concepts-connectivity-architecture.md#connectivity-architecture) en niet expliciet op het knoop punt zelf. Als de coderings suites niet overeenkomen met een van de hieronder vermelde suites, worden binnenkomende client verbindingen afgewezen.
+
+### <a name="cipher-suite-supported"></a>Coderings Suite ondersteund
+
+*   TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+*   TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+*   TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+*   TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 
 ## <a name="next-steps"></a>Volgende stappen
 

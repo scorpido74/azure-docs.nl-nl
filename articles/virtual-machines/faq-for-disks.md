@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: c2589b47c1619dd528ab843dcf4befd0da227d16
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b8ee222b7d65fe9b6b9a605bf055e127aef58ff9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331485"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439290"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Veelgestelde vragen over Azure IaaS VM-schijven en beheerde en onbeheerde Premium-schijven
 
 In dit artikel vindt u antwoorden op enkele veelgestelde vragen over Azure Managed Disks en Azure Premium-SSD-schijven.
 
-## <a name="managed-disks"></a>Managed Disks
+## <a name="managed-disks"></a>Beheerde schijven
 
 **Wat is Azure Managed Disks?**
 
@@ -304,7 +304,7 @@ Nee. Azure Site Recovery Azure naar Azure-beveiliging voor Vm's met Managed Disk
 
 **Kan ik Vm's migreren met onbeheerde schijven die zich bevinden op opslag accounts die al of niet eerder zijn versleuteld naar Managed disks?**
 
-Yes
+Ja
 
 ## <a name="managed-disks-and-storage-service-encryption"></a>Managed Disks en Storage Service Encryption
 
@@ -342,7 +342,7 @@ Ja. Alle beheerde moment opnamen en installatie kopieën worden automatisch vers
 
 **Kan ik Vm's converteren met onbeheerde schijven die zich bevinden op de opslag accounts die eerder zijn versleuteld op beheerde schijven?**
 
-Yes
+Ja
 
 **Wordt een geëxporteerde VHD van een beheerde schijf of een moment opname ook versleuteld?**
 
@@ -398,7 +398,7 @@ Nee, standaard SSD-beheerde schijven van elke grootte kunnen niet worden gebruik
 
 **Wat is de grootste beheerde schijf grootte die wordt ondersteund voor besturings systeem en gegevens schijven?**
 
-Het partitie type dat door Azure wordt ondersteund voor een besturingssysteem schijf is de Master Boot Record (MBR). De MBR-indeling ondersteunt een schijf grootte van Maxi maal twee TiB. De maximale grootte die door Azure wordt ondersteund voor een besturingssysteem schijf is 4 TiB. Azure biedt ondersteuning voor Maxi maal 32 TiB voor beheerde gegevens schijven.
+Het partitie type dat door Azure wordt ondersteund voor een besturingssysteem schijf is de Master Boot Record (MBR) en de GUID-partitie tabel (GPT) voor virtuele machines van generatie 1 en generatie 2. De MBR-indeling ondersteunt een schijf grootte van Maxi maal twee TiB. Voor virtuele machines van generatie 1, kunt u Maxi maal twee TiB voor het besturings systeem, maar Maxi maal 2 TiB van deze schijf ruimte toewijzen. Voor virtuele machines van generatie 2 is de maximale grootte die u kunt toewijzen en gebruiken voor een besturingssysteem schijf 4 TiB. Azure biedt ondersteuning voor Maxi maal 32 TiB voor beheerde gegevens schijven.
 
 **Wat is de grootste niet-beheerde schijf grootte die wordt ondersteund voor besturings systeem en gegevens schijven?**
 

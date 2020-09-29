@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: ebc4f25496588eeaffbfe89e110bad57dbbc848e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 8b9c8107c102409b717da0a277b7cdd360e9c8ee
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501556"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439675"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>IoT Edge modules op schaal implementeren en bewaken met behulp van de Azure CLI
 
@@ -29,7 +29,7 @@ In dit artikel stelt u Azure CLI en de IoT-uitbrei ding in. U leert hoe u module
 
 * Een [IOT-hub](../iot-hub/iot-hub-create-using-cli.md) in uw Azure-abonnement.
 * [IOT edge apparaten](how-to-register-device.md#prerequisites-for-the-azure-cli) waarop de IOT Edge-runtime is geïnstalleerd.
-* [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli) in uw omgeving. Uw Azure CLI-versie moet mini maal 2.0.70 of hoger zijn. Gebruik `az --version` om de versie te valideren. In deze versie worden az-extensie-opdrachten ondersteund en is voor het eerst het Knack-opdrachtframework opgenomen.
+* [Azure cli](/cli/azure/install-azure-cli) in uw omgeving. Uw Azure CLI-versie moet mini maal 2.0.70 of hoger zijn. Gebruik `az --version` om de versie te valideren. In deze versie worden az-extensie-opdrachten ondersteund en is voor het eerst het Knack-opdrachtframework opgenomen.
 * De [IOT-extensie voor Azure cli](https://github.com/Azure/azure-iot-cli-extension).
 
 ## <a name="configure-a-deployment-manifest"></a>Een implementatie manifest configureren
@@ -183,7 +183,7 @@ Zie voor meer informatie over apparaatdubbels en tags voor apparaten [inzicht in
 
 U implementeert modules op uw doel apparaten door een implementatie te maken die bestaat uit het implementatie manifest en andere para meters.
 
-Gebruik de opdracht [AZ IOT Edge Deployment Create](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/edge/deployment?view=azure-cli-latest#ext-azure-iot-az-iot-edge-deployment-create) om een implementatie te maken:
+Gebruik de opdracht [AZ IOT Edge Deployment Create](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-create) om een implementatie te maken:
 
 ```cli
 az iot edge deployment create --deployment-id [deployment id] --hub-name [hub name] --content [file path] --labels "[labels]" --target-condition "[target query]" --priority [int]
@@ -216,7 +216,7 @@ Als u de doel voorwaarde bijwerkt, worden de volgende updates uitgevoerd:
 
 U kunt de inhoud van een implementatie niet bijwerken, die de modules en routes bevat die in het implementatie manifest zijn gedefinieerd. Als u de inhoud van een implementatie wilt bijwerken, kunt u dit doen door een nieuwe implementatie te maken die gericht is op dezelfde apparaten met een hogere prioriteit. U kunt bepaalde eigenschappen van een bestaande module wijzigen, met inbegrip van de doel voorwaarde, labels, metrische gegevens en prioriteit.
 
-Gebruik de opdracht [AZ IOT Edge Deployment update](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/edge/deployment?view=azure-cli-latest#ext-azure-iot-az-iot-edge-deployment-update) om een implementatie bij te werken:
+Gebruik de opdracht [AZ IOT Edge Deployment update](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-update) om een implementatie bij te werken:
 
 ```cli
 az iot edge deployment update --deployment-id [deployment id] --hub-name [hub name] --set [property1.property2='value']
@@ -225,9 +225,9 @@ az iot edge deployment update --deployment-id [deployment id] --hub-name [hub na
 De implementatie-update opdracht heeft de volgende para meters:
 
 * **--implementatie-id** : de naam van de implementatie die in de IOT-hub bestaat.
-* **--hub-name** -naam van de IOT-hub waarin de implementatie bestaat. De hub moet zich in het huidige abonnement benemen. Overschakelen naar het gewenste abonnement met de opdracht`az account set -s [subscription name]`
+* **--hub-name** -naam van de IOT-hub waarin de implementatie bestaat. De hub moet zich in het huidige abonnement benemen. Overschakelen naar het gewenste abonnement met de opdracht `az account set -s [subscription name]`
 * **--set** -een eigenschap in de implementatie bijwerken. U kunt de volgende eigenschappen bijwerken:
-  * targetCondition-bijvoorbeeld`targetCondition=tags.location.state='Oregon'`
+  * targetCondition-bijvoorbeeld `targetCondition=tags.location.state='Oregon'`
   * Labels
   * priority
 * **--Voeg** een nieuwe eigenschap toe aan de implementatie, met inbegrip van de doel voorwaarden of labels.
@@ -237,7 +237,7 @@ De implementatie-update opdracht heeft de volgende para meters:
 
 Wanneer u een implementatie verwijdert, nemen alle apparaten de volgende implementatie van de hoogste prioriteit. Als uw apparaten niet voldoen aan de doel voorwaarde van een andere implementatie, worden de modules niet verwijderd wanneer de implementatie wordt verwijderd.
 
-Gebruik de opdracht [AZ IOT Edge Deployment delete](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/edge/deployment?view=azure-cli-latest#ext-azure-iot-az-iot-edge-deployment-delete) om een implementatie te verwijderen:
+Gebruik de opdracht [AZ IOT Edge Deployment delete](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-delete) om een implementatie te verwijderen:
 
 ```cli
 az iot edge deployment delete --deployment-id [deployment id] --hub-name [hub name]
@@ -246,7 +246,7 @@ az iot edge deployment delete --deployment-id [deployment id] --hub-name [hub na
 De opdracht voor het verwijderen van de implementatie heeft de volgende para meters:
 
 * **--implementatie-id** : de naam van de implementatie die in de IOT-hub bestaat.
-* **--hub-name** -naam van de IOT-hub waarin de implementatie bestaat. De hub moet zich in het huidige abonnement benemen. Overschakelen naar het gewenste abonnement met de opdracht`az account set -s [subscription name]`
+* **--hub-name** -naam van de IOT-hub waarin de implementatie bestaat. De hub moet zich in het huidige abonnement benemen. Overschakelen naar het gewenste abonnement met de opdracht `az account set -s [subscription name]`
 
 ## <a name="next-steps"></a>Volgende stappen
 

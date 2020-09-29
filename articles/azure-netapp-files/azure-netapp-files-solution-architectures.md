@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/08/2020
+ms.date: 09/28/2020
 ms.author: b-juche
-ms.openlocfilehash: ca17dccd8b17a2e0ff7e9b960c74b4c5a36018f5
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 9b44b27730fff888685ef7e0ad06d35e7bdc88c7
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89567316"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439740"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Oplossingsarchitecturen op basis van Azure NetApp Files
 Dit artikel bevat verwijzingen naar aanbevolen procedures waarmee u inzicht krijgt in de oplossings architecturen voor het gebruik van Azure NetApp Files.  
@@ -114,6 +114,7 @@ Deze sectie bevat verwijzingen naar High Performance Computing (HPC)-oplossingen
 ### <a name="analytics"></a>Analyse
 
 * [Azure NetApp Files: een nieuw gedeeld bestands systeem dat kan worden gebruikt met een SAS-raster op Microsoft Azure](https://communities.sas.com/t5/Architecture/Azure-NetApp-Files-A-new-shared-file-system-to-use-with-SAS-Grid/m-p/606978)
+* [Aanbevolen procedures voor het gebruik van Microsoft Azure met SAS-®](https://communities.sas.com/t5/Administration-and-Deployment/Best-Practices-for-Using-Microsoft-Azure-with-SAS/m-p/676833#M19680)
 
 ## <a name="azure-platform-services-solutions"></a>Oplossingen voor Azure platform Services
 

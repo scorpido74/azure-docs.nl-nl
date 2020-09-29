@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: f0ff647581447ad4436daf6c8b1d2ecbf817f7f8
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 78165e9c14d4a83dbc20cbccd2f31dc8ac4c79ed
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983632"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440868"
 ---
 # <a name="azure-virtual-wan-logs-and-metrics"></a>Virtuele WAN-logboeken en-metrische gegevens van Azure
 
@@ -66,7 +66,7 @@ De volgende stappen helpen u metrische gegevens te zoeken en weer te geven:
 
 4. Op de pagina **metrische gegevens** kunt u de metrische gegevens bekijken die u interesseren.
 
-   :::image type="content" source="./media/logs-metrics/metrics-page.png" alt-text="pagina metrische gegevens":::
+   :::image type="content" source="./media/logs-metrics/metrics-page.png" alt-text="Scherm afbeelding toont een deel venster site naar site V P N met weer gave in Azure Monitor geselecteerd.":::
 
 ## <a name="diagnostic-logs"></a><a name="diagnostic"></a>Diagnostische logboeken
 
@@ -93,15 +93,15 @@ De volgende stappen helpen u bij het zoeken en weer geven van diagnostische gege
 
 1. Navigeer in de portal naar uw virtuele WAN-resource. Selecteer in de sectie **overzicht** van de virtuele WAN-pagina in de Portal de optie **essentiële** items om de weer gave uit te vouwen en de informatie over de resource groep te verkrijgen. Kopieer de gegevens van de resource groep.
 
-   :::image type="content" source="./media/logs-metrics/3.png" alt-text="pagina metrische gegevens":::
+   :::image type="content" source="./media/logs-metrics/3.png" alt-text="Scherm afbeelding toont een deel venster site naar site V P N met weer gave in Azure Monitor geselecteerd.":::
 
 2. Navigeer in het gedeelte bewaking naar de resource groep. Selecteer **Diagnostische instellingen**en voer vervolgens de resource gegevens in. Dit zijn de resource gegevens die u hebt gekopieerd in stap 2 van de sectie [statistieken van gateway weer geven](#metrics-steps) eerder in dit artikel.
 
-   :::image type="content" source="./media/logs-metrics/4.png" alt-text="pagina metrische gegevens":::
+   :::image type="content" source="./media/logs-metrics/4.png" alt-text="Scherm afbeelding toont een deel venster site naar site V P N met weer gave in Azure Monitor geselecteerd.":::
 
 3. Selecteer op de pagina resultaten **+ Diagnostische instelling toevoegen**en selecteer vervolgens een optie. U kunt ervoor kiezen om te verzenden naar Log Analytics, streamen naar een Event Hub of eenvoudigweg te archiveren naar een opslag account.
 
-   :::image type="content" source="./media/logs-metrics/5.png" alt-text="pagina metrische gegevens":::
+   :::image type="content" source="./media/logs-metrics/5.png" alt-text="Scherm afbeelding toont een deel venster site naar site V P N met weer gave in Azure Monitor geselecteerd.":::
 
 ### <a name="log-analytics-sample-query"></a><a name="sample-query"></a>Voorbeeld query Log Analytics
 

@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 1b1cd0adb8581c7aa94f0de85a9f8beab38da112
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: edd9f9f3127178f168f6c768b092a7ec6311e7bf
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89398559"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440926"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>Een VPN-gatewayverbinding tussen VNets configureren met behulp van PowerShell
 
@@ -67,7 +67,7 @@ Voor deze oefening kunt u configuraties combineren of alleen de configuratie kie
 
 * [VNets die zich in hetzelfde abonnement bevinden: in](#samesub)de stappen voor deze configuratie wordt gebruikgemaakt van TestVNet1 en TestVNet4.
 
-  ![v2v-diagram](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
+  ![Diagram met de V net-naar-V-net-stappen voor V-netten die zich in hetzelfde abonnement bevinden.](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
 
 * [VNets die zich in verschillende abonnementen bevinden: in](#difsub)de stappen voor deze configuratie wordt gebruikgemaakt van TestVNet1 en TestVNet5.
 
@@ -161,7 +161,7 @@ In de voorbeelden worden de volgende waarden gebruikt:
    $Connection14 = "VNet1toVNet4"
    $Connection15 = "VNet1toVNet5"
    ```
-3. Maak een resourcegroep.
+3. Een resourcegroep maken.
 
    ```azurepowershell-interactive
    New-AzResourceGroup -Name $RG1 -Location $Location1
@@ -203,7 +203,7 @@ In de voorbeelden worden de volgende waarden gebruikt:
    -VpnType RouteBased -GatewaySku VpnGw1
    ```
 
-Nadat u de opdrachten hebt voltooid, duurt het Maxi maal 45 minuten om deze gateway te maken. Als u Azure Cloud Shell gebruikt, kunt u de Cloud shell-sessie opnieuw starten door in de linkerbovenhoek van de Cloud Shell-Terminal te klikken en vervolgens TestVNet4 te configureren. U hoeft niet te wachten totdat de TestVNet1-gateway is voltooid.
+Nadat u de opdrachten hebt voltooid, duurt het Maxi maal 45 minuten om deze gateway te maken. Als u Azure Cloud Shell gebruikt, kunt u de Cloud Shell-sessie opnieuw starten door in de linkerbovenhoek van de Cloud Shell Terminal te klikken en vervolgens TestVNet4 te configureren. U hoeft niet te wachten totdat de TestVNet1-gateway is voltooid.
 
 ### <a name="step-3---create-and-configure-testvnet4"></a>Stap 3: TestVNet4 maken en configureren
 
@@ -227,7 +227,7 @@ Wanneer u TestVNet1 hebt geconfigureerd, maakt u TestVNet4. Volg de stappen hier
    $GWIPconfName4 = "gwipconf4"
    $Connection41 = "VNet4toVNet1"
    ```
-2. Maak een resourcegroep.
+2. Een resourcegroep maken.
 
    ```azurepowershell-interactive
    New-AzResourceGroup -Name $RG4 -Location $Location4
@@ -448,7 +448,7 @@ Omdat de gateways in dit voorbeeld tot verschillende abonnementen behoren, is de
    PS C:\> $vnet5gw.Id
    /subscriptions/66c8e4f1-ecd6-47ed-9de7-7e530de23994/resourceGroups/TestRG5/providers/Microsoft.Network/virtualNetworkGateways/VNet5GW
    ```
-3. **[Abonnement 1]** Maak de TestVNet1 voor TestVNet5-verbinding. In deze stap maakt u de verbinding van TestVNet1 naar TestVNet5. Het verschil is hier dat $vnet5gw niet rechtstreeks kan worden verkregen omdat het zich in een ander abonnement bevindt. U moet een nieuw PowerShell-object maken met de waarden die in de bovenstaande stappen zijn gecommuniceerd vanuit Abonnement 1. Gebruik onderstaand voorbeeld. Vervang de naam, de id en de gedeelde sleutel door uw eigen waarden. Het belangrijkste is dat de gedeelde sleutel voor beide verbindingen moet overeenkomen. Het kan even duren voordat de verbinding is gemaakt.
+3. **[Abonnement 1]** Maak de TestVNet1 voor TestVNet5-verbinding. In deze stap maakt u de verbinding van TestVNet1 naar TestVNet5. Het verschil is hier dat $vnet5gw niet rechtstreeks kan worden verkregen omdat het zich in een ander abonnement bevindt. U moet een nieuw PowerShell-object maken met de waarden die in de bovenstaande stappen zijn gecommuniceerd vanuit Abonnement 1. Gebruik onderstaand voorbeeld. Vervang de naam, de ID en de gedeelde sleutel door uw eigen waarden. Het belangrijkste is dat de gedeelde sleutel voor beide verbindingen moet overeenkomen. Het kan even duren voordat de verbinding is gemaakt.
 
    Maak verbinding met abonnement 1 voordat u het volgende voorbeeld uitvoert:
 
@@ -475,7 +475,7 @@ Omdat de gateways in dit voorbeeld tot verschillende abonnementen behoren, is de
 
 [!INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
 
-[!INCLUDE [verify connections powershell](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
+[!INCLUDE [verify connections PowerShell](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
 
 ## <a name="vnet-to-vnet-faq"></a><a name="faq"></a>Veelgestelde vragen over VNet-naar-VNet
 

@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: a70f7ccd1c3ca078bab0ff473283b505c0ded316
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 028250e25f4d67628c08970e25b4621e78526b6a
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441558"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440822"
 ---
 # <a name="remote-work-using-azure-vpn-gateway-point-to-site"></a>Extern werk met Azure VPN Gateway punt-naar-site
 
@@ -30,13 +30,13 @@ Met een point-to-site-VPN-gatewayverbinding (P2S) kunt u vanaf een afzonderlijke
 
 In de volgende tabel ziet u de client besturingssystemen en de beschik bare verificatie opties. Het is handig om de verificatie methode te selecteren op basis van het client besturingssysteem dat al in gebruik is. Selecteer bijvoorbeeld OpenVPN met verificatie op basis van certificaten als u een combi natie van client besturingssystemen hebt die verbinding moeten maken. Houd er ook rekening mee dat punt-naar-site-VPN alleen wordt ondersteund op op route gebaseerde VPN-gateways.
 
-![punt-naar-site](./media/working-remotely-support/ostable.png "OS")
+![Scherm opname van client besturingssystemen en beschik bare verificatie opties.](./media/working-remotely-support/ostable.png "OS")
 
 ## <a name="scenario-1---users-need-access-to-resources-in-azure-only"></a><a name="scenario1"></a>Scenario 1: gebruikers moeten alleen toegang hebben tot resources in azure
 
 In dit scenario hebben de externe gebruikers alleen toegang tot resources in Azure.
 
-![punt-naar-site](./media/working-remotely-support/scenario1.png "Scenario 1")
+![Diagram waarin een punt-naar-site-scenario wordt weer gegeven voor gebruikers die alleen toegang tot resources in azure nodig hebben.](./media/working-remotely-support/scenario1.png "Scenario 1")
 
 Op hoog niveau zijn de volgende stappen nodig om gebruikers in staat te stellen om veilig verbinding te maken met Azure-bronnen:
 
@@ -55,7 +55,7 @@ Op hoog niveau zijn de volgende stappen nodig om gebruikers in staat te stellen 
 
 In dit scenario moeten de externe gebruikers toegang hebben tot resources die zich in azure bevinden en in het on-premises Data Center (s).
 
-![punt-naar-site](./media/working-remotely-support/scenario2.png "Scenario 2")
+![Diagram waarin een punt-naar-site-scenario wordt weer gegeven voor gebruikers die toegang nodig hebben tot resources in Azure.](./media/working-remotely-support/scenario2.png "Scenario 2")
 
 Op hoog niveau zijn de volgende stappen nodig om gebruikers in staat te stellen om veilig verbinding te maken met Azure-bronnen:
 

@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: a1e2804b45efe95ee1f67c3aadbefccd805d1aa2
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 279c66fa16ac82335a074da60bce35325d4b4499
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90981888"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439474"
 ---
 # <a name="azure-active-directory-authentication-configure-a-vpn-client-for-p2s-openvpn-protocol-connections"></a>Azure Active Directory verificatie: een VPN-client configureren voor P2S OpenVPN-protocol verbindingen
 
@@ -58,7 +58,7 @@ Wanneer u een werk profiel hebt en dit moet worden gedistribueerd naar andere ge
 
 1. Markeer het VPN-client profiel dat u wilt exporteren, selecteer de **...** en selecteer vervolgens **exporteren**.
 
-    ![exporteren](./media/openvpn-azure-ad-client/export/export1.jpg)
+    ![Scherm opname van de pagina ' Azure VPN-client ', met het weglatings teken geselecteerd en ' export ' gemarkeerd.](./media/openvpn-azure-ad-client/export/export1.jpg)
 
 2. Selecteer de locatie waar u dit profiel wilt opslaan, behoud de bestands naam en selecteer vervolgens **Opslaan** om het XML-bestand op te slaan.
 
@@ -68,19 +68,19 @@ Wanneer u een werk profiel hebt en dit moet worden gedistribueerd naar andere ge
 
 1. Selecteer op de pagina **importeren**.
 
-    ![importeren](./media/openvpn-azure-ad-client/import/import1.jpg)
+    ![Scherm afbeelding met de geselecteerde knop toevoegen en de actie importeren gemarkeerd in de linkerbenedenhoek van het venster.](./media/openvpn-azure-ad-client/import/import1.jpg)
 
 2. Blader naar het profiel XML-bestand en selecteer het. Selecteer **openen**terwijl het bestand is geselecteerd.
 
-    ![importeren](./media/openvpn-azure-ad-client/import/import2.jpg)
+    ![Scherm opname van het geselecteerde profiel x m l-bestand.](./media/openvpn-azure-ad-client/import/import2.jpg)
 
 3. Geef de naam van het profiel op en selecteer **Opslaan**.
 
-    ![importeren](./media/openvpn-azure-ad-client/import/import3.jpg)
+    ![Scherm afbeelding met de markering ' verbindings naam ' en de knop Opslaan geselecteerd.](./media/openvpn-azure-ad-client/import/import3.jpg)
 
 4. Selecteer **verbinding maken** om verbinding te maken met het VPN.
 
-    ![importeren](./media/openvpn-azure-ad-client/import/import4.jpg)
+    ![Scherm afbeelding met de geselecteerde VPN-knop en ' verbinding maken '.](./media/openvpn-azure-ad-client/import/import4.jpg)
 
 5. Zodra de verbinding is gemaakt, wordt het pictogram groen en vervolgens **verbonden**.
 
@@ -90,7 +90,7 @@ Wanneer u een werk profiel hebt en dit moet worden gedistribueerd naar andere ge
 
 1. Selecteer de weglatings tekens naast het client profiel dat u wilt verwijderen. Selecteer vervolgens **verwijderen**.
 
-    ![delete](./media/openvpn-azure-ad-client/delete/delete1.jpg)
+    ![Scherm afbeelding met de geselecteerde optie voor het weglatings teken en verwijderen.](./media/openvpn-azure-ad-client/delete/delete1.jpg)
 
 2. Selecteer **verwijderen** om te verwijderen.
 
@@ -100,19 +100,19 @@ Wanneer u een werk profiel hebt en dit moet worden gedistribueerd naar andere ge
 
 1. Selecteer op de pagina **+** en vervolgens **+ toevoegen**.
 
-    ![verbinding](./media/openvpn-azure-ad-client/create/create1.jpg)
+    ![Scherm afbeelding met de geselecteerde knop toevoegen.](./media/openvpn-azure-ad-client/create/create1.jpg)
 
 2. Vul de verbindings gegevens in. Als u niet zeker weet wat de waarden zijn, neemt u contact op met de beheerder. Nadat u de waarden hebt ingevuld, selecteert u **Opslaan**.
 
-    ![verbinding](./media/openvpn-azure-ad-client/create/create2.jpg)
+    ![Scherm opname van de weer gegeven eigenschappen van de VPN-verbinding en de knop Opslaan geselecteerd.](./media/openvpn-azure-ad-client/create/create2.jpg)
 
 3. Selecteer **verbinding maken** om verbinding te maken met het VPN.
 
-    ![verbinding](./media/openvpn-azure-ad-client/create/create3.jpg)
+    ![Scherm afbeelding met de geselecteerde knop verbinding maken.](./media/openvpn-azure-ad-client/create/create3.jpg)
 
 4. Selecteer de juiste referenties en selecteer vervolgens **door gaan**.
 
-    ![verbinding](./media/openvpn-azure-ad-client/create/create4.jpg)
+    ![Scherm opname van de gemarkeerde voorbeeld referenties en de knop door gaan geselecteerd.](./media/openvpn-azure-ad-client/create/create4.jpg)
 
 5. Zodra de verbinding is gemaakt, wordt het pictogram groen en vervolgens **verbonden**.
 
@@ -124,15 +124,15 @@ Met deze stappen kunt u de verbinding configureren om automatisch verbinding te 
 
 1. Selecteer op de start pagina voor uw VPN-client de optie **VPN-instellingen**.
 
-    ![auto](./media/openvpn-azure-ad-client/auto/auto1.jpg)
+    ![Scherm opname van de VPN-start pagina met ' VPN-instellingen ' geselecteerd.](./media/openvpn-azure-ad-client/auto/auto1.jpg)
 
 2. Selecteer **Ja** in het dialoog venster apps overschakelen.
 
-    ![auto](./media/openvpn-azure-ad-client/auto/auto2.jpg)
+    ![Scherm opname van ' hebt u bedoeld om te scha kelen tussen apps? ' dialoog venster met de knop Ja geselecteerd.](./media/openvpn-azure-ad-client/auto/auto2.jpg)
 
 3. Controleer of de verbinding die u wilt instellen nog niet is verbonden en selecteer vervolgens het profiel en schakel het selectie vakje **automatisch verbinding maken** in.
 
-    ![auto](./media/openvpn-azure-ad-client/auto/auto3.jpg)
+    ![Scherm opname van het venster instellingen, waarbij het selectie vakje automatisch verbinding maken is ingeschakeld.](./media/openvpn-azure-ad-client/auto/auto3.jpg)
 
 4. Selecteer **verbinding maken** om de VPN-verbinding te initiëren.
 
@@ -142,15 +142,15 @@ Met deze stappen kunt u de verbinding configureren om automatisch verbinding te 
 
 1. Als u verbindings problemen wilt vaststellen, kunt u het hulp programma voor **diagnose** gebruiken. Selecteer de **..** . naast de VPN-verbinding die u wilt diagnosticeren om het menu weer te geven. Selecteer vervolgens **diagnose**.
 
-    ![vaststellen](./media/openvpn-azure-ad-client/diagnose/diagnose1.jpg)
+    ![Scherm afbeelding van het weglatings teken en "diagnose geselecteerd".](./media/openvpn-azure-ad-client/diagnose/diagnose1.jpg)
 
 2. Selecteer op de pagina **Eigenschappen van verbinding** de optie **diagnose uitvoeren**.
 
-    ![vaststellen](./media/openvpn-azure-ad-client/diagnose/diagnose2.jpg)
+    ![Scherm opname waarin de pagina eigenschappen van de verbinding wordt weer gegeven en ' diagnose uitvoeren ' is geselecteerd.](./media/openvpn-azure-ad-client/diagnose/diagnose2.jpg)
 
 3. Meld u aan met uw referenties.
 
-    ![vaststellen](./media/openvpn-azure-ad-client/diagnose/diagnose3.jpg)
+    ![Scherm opname van het dialoog venster ' laten u aangemeld ' met een werk-of school account geselecteerd.](./media/openvpn-azure-ad-client/diagnose/diagnose3.jpg)
 
 4. Bekijk de resultaten van de diagnose.
 

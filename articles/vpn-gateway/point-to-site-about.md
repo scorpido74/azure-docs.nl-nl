@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 9ad0ad7b1ff2f0b706595daf8b8c93f480f0e00b
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 68d2ed0d6702a42f44e502f2f7d3a91c0221ff6a
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89421710"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440946"
 ---
 # <a name="about-point-to-site-vpn"></a>Over punt-naar-site-VPN
 
@@ -68,7 +68,7 @@ De RADIUS-server kan ook worden geïntegreerd met AD Certificate Services. Hierm
 
 Een RADIUS-server kan ook worden geïntegreerd met andere externe identiteits systemen. Hiermee opent u veel verificatie opties voor P2S VPN, waaronder multi-factor-opties.
 
-![punt-naar-site](./media/point-to-site-about/p2s.png "Punt-naar-site")
+![Diagram waarin een punt-naar-site-VPN met een on-premises site wordt weer gegeven.](./media/point-to-site-about/p2s.png)
 
 ## <a name="what-are-the-client-configuration-requirements"></a>Wat zijn de configuratievereisten voor de client?
 

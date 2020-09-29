@@ -7,18 +7,18 @@ ms.date: 11/22/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e929463c33603c650bec2e9a49a13dde6965e39f
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: bf8b8554aa2ea1d6d06f58f726ca65f77499ec5f
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926651"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440047"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>Uitgebreide offline mogelijkheden voor IoT Edge apparaten, modules en onderliggende apparaten begrijpen
 
 Azure IoT Edge ondersteunt uitgebreide offline bewerkingen op uw IoT Edge apparaten en schakelt offline bewerkingen op niet-IoT Edge onderliggende apparaten uit. Zolang een IoT Edge apparaat één mogelijkheid heeft om verbinding te maken met IoT Hub, kunnen het apparaat en eventuele onderliggende apparaten blijven functioneren met een onregelmatige of geen Internet verbinding.
 
-## <a name="how-it-works"></a>Hoe werkt het?
+## <a name="how-it-works"></a>Uitleg
 
 Wanneer een IoT Edge apparaat in de offline modus wordt gezet, neemt de IoT Edge hub drie rollen in beslag. Eerst worden berichten opgeslagen die naar de upstream gaan en deze opslaan totdat het apparaat opnieuw verbinding maakt. Ten tweede fungeert de hub namens IoT Hub om modules en onderliggende apparaten te verifiëren, zodat ze kunnen blijven werken. Ten derde zorgt deze ervoor dat er communicatie mogelijk is tussen onderliggende apparaten die normaal gesproken via IoT Hub zou lopen.
 
@@ -68,7 +68,7 @@ U kunt de relatie bovenliggend/onderliggend declareren bij het maken van een nie
 
 #### <a name="option-2-use-the-az-command-line-tool"></a>Optie 2: gebruik het `az` opdracht regel programma
 
-Met de [Azure-opdracht regel interface](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) met [IOT-extensie](https://github.com/azure/azure-iot-cli-extension) (v 0.7.0 of hoger) kunt u bovenliggende onderliggende relaties beheren met de subopdrachten van het [apparaat-id](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest) . In het onderstaande voor beeld wordt met behulp van een query alle niet-IoT Edge apparaten in de hub aan onderliggende apparaten van een IoT Edge apparaat toegewezen.
+Met de [Azure-opdracht regel interface](/cli/azure/) met [IOT-extensie](https://github.com/azure/azure-iot-cli-extension) (v 0.7.0 of hoger) kunt u bovenliggende onderliggende relaties beheren met de subopdrachten van het [apparaat-id](/cli/azure/ext/azure-iot/iot/hub/device-identity) . In het onderstaande voor beeld wordt met behulp van een query alle niet-IoT Edge apparaten in de hub aan onderliggende apparaten van een IoT Edge apparaat toegewezen.
 
 ```azurecli
 # Set IoT Edge parent device
@@ -103,7 +103,7 @@ U kunt een bovenliggende/onderliggende relatie beschouwen als een transparante g
 
 Een manier om deze vertrouwens relatie te maken, wordt gedetailleerd beschreven in de volgende artikelen:
 
-* [Een IoT Edge-apparaat configureren zodat deze werkt als een transparante gateway](how-to-create-transparent-gateway.md)
+* [Een IoT Edge apparaat configureren om te fungeren als transparante gateway](how-to-create-transparent-gateway.md)
 * [Een downstream (onderliggend) apparaat verbinden met een Azure IoT Edge gateway](how-to-connect-downstream-device.md)
 
 ## <a name="specify-dns-servers"></a>DNS-servers opgeven
@@ -142,6 +142,6 @@ Berichten en informatie over de status van de module worden standaard opgeslagen
 
 Meer informatie over het instellen van een transparante gateway voor de verbindingen van een bovenliggend/onderliggend apparaat:
 
-* [Een IoT Edge-apparaat configureren zodat deze werkt als een transparante gateway](how-to-create-transparent-gateway.md)
+* [Een IoT Edge apparaat configureren om te fungeren als transparante gateway](how-to-create-transparent-gateway.md)
 * [Een downstream-apparaat verifiëren voor Azure IoT Hub](how-to-authenticate-downstream-device.md)
 * [Een downstreamapparaat verbinden met een Azure IoT Edge-gateway](how-to-connect-downstream-device.md)

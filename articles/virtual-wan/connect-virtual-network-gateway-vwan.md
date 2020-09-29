@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6dac922f1a50dd54973f7eefff7011aab3b49994
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 29f5b549bd5f5dbc421487739bb1eb8c7f120bb0
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983756"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441036"
 ---
 # <a name="connect-a-vpn-gateway-virtual-network-gateway-to-virtual-wan"></a>Een VPN Gateway (virtuele netwerk gateway) verbinden met een virtueel WAN
 
@@ -83,7 +83,7 @@ In deze sectie downloadt u het VPN-configuratie bestand voor elk van de sites di
 
 1. Selecteer boven aan de pagina virtuele WAN **-VPN-sites** de **site**en selecteer vervolgens **site-naar-site-VPN-configuratie downloaden**. Azure maakt een configuratie bestand met de instellingen.
 
-   ![configuratie bestand downloaden](./media/connect-virtual-network-gateway-vwan/download.png "downloadenen")
+   ![Scherm opname van de pagina ' VPN-sites ' met de actie ' site-naar-site-VPN-configuratie downloaden ' geselecteerd.](./media/connect-virtual-network-gateway-vwan/download.png "downloadenen")
 2. Down load en open het configuratie bestand.
 3. Herhaal deze stappen voor de tweede site. Zodra u beide configuratie bestanden hebt geopend, kunt u door gaan naar de volgende sectie.
 
@@ -98,7 +98,7 @@ In deze sectie maakt u twee Azure VPN Gateway lokale netwerk gateways. De config
    * Het **abonnement, de resource groep en de locatie** zijn hetzelfde als voor de virtuele WAN-hub.
 2. Bekijk en maak de lokale netwerk gateway. Uw lokale netwerk gateway moet er ongeveer uitzien als in dit voor beeld.
 
-   ![configuratie bestand downloaden](./media/connect-virtual-network-gateway-vwan/lng1.png "instance0")
+   ![Scherm opname van de pagina configuratie met een IP-adres gemarkeerd en BGP-instellingen configureren geselecteerd.](./media/connect-virtual-network-gateway-vwan/lng1.png "instance0")
 3. Herhaal deze stappen voor het maken van een andere lokale netwerk gateway, maar deze keer gebruikt u de ' Exemplaar1-waarden in plaats van ' Instance0-waarden uit het configuratie bestand.
 
    ![configuratie bestand downloaden](./media/connect-virtual-network-gateway-vwan/lng2.png "exemplaar1")
