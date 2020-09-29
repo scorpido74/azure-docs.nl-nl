@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: seoapril2019, seo-lt-2019, sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/07/2019
-ms.openlocfilehash: c4fddcaf786801e13e962c888a154adfdffae9f8
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 6038ec1d83957f20ca6e2759eeb5a88e66c2f77f
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85961826"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91443406"
 ---
 # <a name="create-performance-counters-to-track-performance-of-shard-map-manager"></a>Prestatie meter items maken om de prestaties van Shard-toewijzings beheer bij te houden
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -66,7 +66,7 @@ De prestatie meter items worden bijgewerkt door alle cache bewerkingen die worde
 * Het maken van de prestatie categorie en prestatie meter items moet slechts één keer worden uitgevoerd voordat het ShardMapManager-object wordt gemaakt. Elke uitvoering van de opdracht CreatePerformanceCategoryAndCounters () wist de vorige prestatie meter items (gegevens verlies van alle instanties) en maakt nieuwe.  
 * Instanties voor prestatie meter items worden per proces gemaakt. Het vastlopen van toepassingen of het verwijderen van een Shard-kaart uit de cache leidt ertoe dat de instanties van prestatie meter items worden verwijderd.  
 
-### <a name="see-also"></a>Zie tevens
+### <a name="see-also"></a>Zie ook
 
 [Overzicht over functies voor Elastic Database](elastic-scale-introduction.md)  
 

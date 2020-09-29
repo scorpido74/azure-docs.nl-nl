@@ -7,17 +7,17 @@ ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: azure-synapse, has-adal-ref, sqldbrb=2
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 08/17/2020
-ms.openlocfilehash: f354cb25c93826b50c0094e75ef7a1756f7625b7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d7b0f2bb479154fa10a18cd07a65b9f7287fc97c
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91278172"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91444490"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Azure AD-verificatie configureren en beheren met Azure SQL
 
@@ -214,7 +214,7 @@ Met de volgende opdracht wordt de Azure AD-beheerder voor het SQL Managed instan
 Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstanceName01" -Confirm -PassThru
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 U kunt ook een Azure AD-beheerder inrichten voor het beheerde exemplaar van SQL door de volgende CLI-opdrachten aan te roepen:
 
@@ -320,7 +320,7 @@ In het volgende voor beeld wordt een Azure AD-beheerder verwijderd:
 Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -ServerName "demo_server"
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 U kunt een Azure AD-beheerder inrichten door de volgende CLI-opdrachten aan te roepen:
 

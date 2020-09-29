@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/17/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 75d8b63328f71df2f8de22a95c106c5cc18dc28f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d9f7778d1dda159f3ab0c4548912370c85f94eff
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91275202"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441879"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>De Azure Import/Export-service gebruiken voor het exporteren van gegevens uit Azure Blob-opslag
 
@@ -57,7 +57,7 @@ Voer de volgende stappen uit om een export taak te maken in de Azure Portal.
     - Selecteer een abonnement.
     - Voer een resource groep in of Selecteer deze.
 
-        ![Basisbeginselen](./media/storage-import-export-data-from-blobs/export-from-blob3.png)
+        ![Basisinstellingen](./media/storage-import-export-data-from-blobs/export-from-blob3.png)
 
 5. In **taak Details**:
 
@@ -119,7 +119,7 @@ Wanneer het dash board rapporteert dat de taak is voltooid, worden de schijven a
 1. Nadat u de stations met geëxporteerde gegevens hebt ontvangen, moet u de BitLocker-sleutels voor het ontgrendelen van de stations ophalen. Ga naar de export taak in de Azure Portal. Klik op het tabblad **importeren/exporteren** .
 2. Selecteer en klik op uw export taak in de lijst. Ga naar **versleuteling** en kopieer de sleutels.
 
-   ![BitLocker-sleutels voor de export taak weer geven](./media/storage-import-export-data-from-blobs/export-from-blob7.png)
+   ![BitLocker-sleutels voor de export taak weer geven](./media/storage-import-export-data-from-blobs/export-from-blob-7.png)
 
 3. Gebruik de BitLocker-sleutels om de schijven te ontgrendelen.
 

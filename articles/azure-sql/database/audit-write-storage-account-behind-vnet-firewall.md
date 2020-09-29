@@ -4,18 +4,18 @@ description: Configureer controle om database gebeurtenissen te schrijven op een
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.topic: conceptual
+ms.topic: how-to
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 06/17/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 6ba0a599bcb0b058ce4902882df9459b177fb6b5
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 74926411b659cf5973b03b2caca58d7666803f9c
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87530382"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91444526"
 ---
 # <a name="write-audit-to-a-storage-account-behind-vnet-and-firewall"></a>Schrijf audit naar een opslag account achter VNet en firewall
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -42,7 +42,7 @@ De volgende vereisten zijn vereist om te schrijven naar een opslag account achte
 > * Een v2-opslag account voor algemeen gebruik. Als u een v1-of Blob-opslag account voor algemeen gebruik hebt, [moet u een upgrade uitvoeren naar een v2-opslag account voor algemeen gebruik](../../storage/common/storage-account-upgrade.md). Zie [typen opslag accounts](../../storage/common/storage-account-overview.md#types-of-storage-accounts)voor meer informatie.
 > * Het opslag account moet zich op hetzelfde abonnement en op dezelfde locatie als de [logische SQL-Server](logical-servers.md).
 > * Het Azure Storage-account vereist `Allow trusted Microsoft services to access this storage account` . Stel dit in op het opslag account **firewalls en virtuele netwerken**.
-> * U moet `Microsoft.Authorization/roleAssignments/write` een machtiging hebben voor het geselecteerde opslag account. Zie [ingebouwde rollen van Azure](../../role-based-access-control/built-in-roles.md)voor meer informatie.
+> * U moet `Microsoft.Authorization/roleAssignments/write` een machtiging hebben voor het geselecteerde opslag account. Zie [Ingebouwde rollen in Azure](../../role-based-access-control/built-in-roles.md) voor meer informatie.
 
 ## <a name="configure-in-azure-portal"></a>Configureren in Azure Portal
 

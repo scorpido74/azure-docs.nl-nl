@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: data-movement
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sashan
 ms.reviewer: ''
 ms.date: 07/29/2020
-ms.openlocfilehash: f6a3ccbcdb3d29434b196dbf75dc61c4177de271
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 45544d246f1390271300d5ffa1fff1fdc5d9317f
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91284275"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91443791"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>Een transactioneel consistente kopie van een data base in Azure SQL Database kopiëren
 
@@ -26,7 +26,10 @@ Azure SQL Database biedt verschillende methoden voor het maken van een kopie van
 
 ## <a name="overview"></a>Overzicht
 
-Een database kopie is een transactionele consistente moment opname van de bron database vanaf het moment dat de Kopieer aanvraag wordt gestart. U kunt dezelfde server of een andere server voor de kopie selecteren. U kunt er ook voor kiezen om de servicelaag en de berekenings grootte van de bron database te hand haven of een andere reken grootte te gebruiken binnen dezelfde of een andere servicelaag. Nadat de kopie is voltooid, wordt deze een volledig functionele, onafhankelijke data base. De aanmeldingen, gebruikers en machtigingen in de gekopieerde Data Base worden onafhankelijk van de bron database beheerd. De kopie wordt gemaakt met behulp van de geo-replicatie technologie. Zodra de replica-seeding is voltooid, wordt de geo-replicatiekoppeling automatisch beëindigd. Alle vereisten voor het gebruik van geo-replicatie zijn van toepassing op de kopieerbewerking van de database. Zie [overzicht van actieve geo-replicatie](active-geo-replication-overview.md) voor meer informatie.
+Een database kopie is een transactionele consistente moment opname van de bron database vanaf het moment dat de Kopieer aanvraag wordt gestart. U kunt dezelfde server of een andere server voor de kopie selecteren. U kunt er ook voor kiezen om de back-upredundantie, de servicelaag en de berekenings grootte van de bron database te bewaren, of om een andere back-upopslag en/of reken grootte binnen dezelfde of een andere servicelaag te gebruiken. Nadat de kopie is voltooid, wordt deze een volledig functionele, onafhankelijke data base. De aanmeldingen, gebruikers en machtigingen in de gekopieerde Data Base worden onafhankelijk van de bron database beheerd. De kopie wordt gemaakt met behulp van de geo-replicatie technologie. Zodra de replica-seeding is voltooid, wordt de geo-replicatiekoppeling automatisch beëindigd. Alle vereisten voor het gebruik van geo-replicatie zijn van toepassing op de kopieerbewerking van de database. Zie [overzicht van actieve geo-replicatie](active-geo-replication-overview.md) voor meer informatie.
+
+> [!NOTE]
+> Azure SQL Database Configureer bare back-upopslag redundantie is momenteel beschikbaar in open bare preview in de Azure-regio Zuidoost-Azië. Als de bron database in de preview-versie is gemaakt met lokaal redundante of zone redundante back-upopslag redundantie, wordt het kopiëren van de Data Base naar een server in een andere Azure-regio niet ondersteund. 
 
 ## <a name="logins-in-the-database-copy"></a>Aanmeldingen in de database kopie
 
@@ -64,7 +67,7 @@ Het kopiëren van de data base is een asynchrone bewerking, maar de doel databas
 
 Zie [een Data Base naar een nieuwe server kopiëren](scripts/copy-database-to-new-server-powershell.md)voor een volledig voor beeld Power shell-script.
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 ```azurecli
 az sql db copy --dest-name "CopyOfMySampleDatabase" --dest-resource-group "myResourceGroup" --dest-server $targetserver `
@@ -84,6 +87,9 @@ Kopiëren van de bron database starten met de [Data Base maken... ALS kopie van]
 > [!NOTE]
 > Als u de T-SQL-instructie beëindigt, wordt de Kopieer bewerking van de data base niet beëindigd. Als u de bewerking wilt beëindigen, verwijdert u de doel database.
 >
+
+> [!IMPORTANT]
+> Opslag redundantie van back-ups selecteren bij gebruik van T-SQL CREATE data base... ALS kopie van opdracht wordt nog niet ondersteund. 
 
 ### <a name="copy-to-the-same-server"></a>Kopiëren naar dezelfde server
 

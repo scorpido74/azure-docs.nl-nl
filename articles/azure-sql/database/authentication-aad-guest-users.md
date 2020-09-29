@@ -4,17 +4,17 @@ description: Azure AD-gast gebruikers maken en deze instellen als Azure AD-behee
 ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: azure-synapse
-ms.topic: conceptual
+ms.topic: how-to
 author: shohamMSFT
 ms.author: shohamd
 ms.reviewer: vanto
 ms.date: 07/27/2020
-ms.openlocfilehash: 2c8aa39b6819e135181e2d153825e89686359538
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: aa74489a962708a1d3d5e6835f684e5cb8fc548b
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053759"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91444354"
 ---
 # <a name="create-azure-ad-guest-users-and-set-as-an-azure-ad-admin"></a>Azure AD-gastgebruikers maken en instellen als Azure AD-beheerder
 

@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: seo-lt-2019, sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
 ms.date: 02/07/2020
-ms.openlocfilehash: 339b66310d75e228bc6107635ac39b8d27d774c1
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 5c05db4d6e0c98935fc13325b5656f8023c6228e
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119110"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91443343"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs-preview"></a>Transact-SQL (T-SQL) gebruiken om Elastic Database taken te maken en te beheren (preview-versie)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -1230,7 +1230,7 @@ Taak uitvoerings geschiedenis weer geven.
 |**is_active** | bit | Geeft aan of de gegevens actief of inactief zijn. 1 geeft actieve taken aan, en 0 geeft aan dat deze niet actief is.
 |**duur** | nvarchar (50) | Waarde die de status van de taak aangeeft: ' gemaakt ', ' wordt uitgevoerd ', ' mislukt ', ' geslaagd ', ' overgeslagen ', ' SucceededWithSkipped '|
 |**create_time**| DATETIME2 (7) | De datum en tijd waarop de taak is gemaakt.
-|**start_time** | DATETIME2 (7) | De datum en tijd waarop de taak is gestart. NULL als de taak nog niet is uitgevoerd.
+|**start_tijd** | DATETIME2 (7) | De datum en tijd waarop de taak is gestart. NULL als de taak nog niet is uitgevoerd.
 |**end_time** | DATETIME2 (7) | De datum en tijd waarop de taak is uitgevoerd. NULL als de taak nog niet is uitgevoerd of de uitvoering nog niet is voltooid.
 |**current_attempts** | int | Aantal keren dat de stap opnieuw is uitgevoerd. De bovenliggende taak is 0, de uitvoering van onderliggende taken is 1 of meer op basis van het uitvoerings beleid.
 |**current_attempt_start_time** | DATETIME2 (7) | De datum en tijd waarop de taak is gestart. NULL geeft aan dat de uitvoering van de bovenliggende taak is.

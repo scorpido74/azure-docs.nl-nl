@@ -9,14 +9,14 @@ ms.custom: references_regions
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, sstein, danil
-ms.date: 08/04/2020
-ms.openlocfilehash: 24611853749a5fa675b8c26d5e27c18e44590eaf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.reviewer: mathoma, carlrab, danil
+ms.date: 09/25/2020
+ms.openlocfilehash: b28c175656b0951980f861198c93ccd794605839
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91284717"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91444272"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatische back-ups-Azure SQL Database & SQL Managed instance
 
@@ -38,22 +38,21 @@ Wanneer u een Data Base herstelt, bepaalt de service welke volledige, differenti
 
 SQL Database en SQL Managed instance slaan gegevens standaard op in geo-redundante (RA-GRS) [opslag-blobs](../../storage/common/storage-redundancy.md) die worden gerepliceerd naar een [gekoppelde regio](../../best-practices-availability-paired-regions.md). Zo kunt u zich beschermen tegen storingen die van invloed zijn op de back-upopslag in de primaire regio en kunt u uw server herstellen naar een andere regio in het geval van een ramp. 
 
-Met SQL Managed instance wordt de mogelijkheid geboden om de opslag redundantie te wijzigen in opslag-blobs met lokaal redundante (LRS) of zone redundante (ZRS) om ervoor te zorgen dat uw gegevens binnen dezelfde regio blijven waar uw beheerde exemplaar wordt geïmplementeerd. Opslag redundantie mechanismen slaan meerdere kopieën van uw gegevens op, zodat deze beschermd zijn tegen geplande en niet-geplande gebeurtenissen, waaronder tijdelijke hardwarestoringen, netwerk-of energie storingen of enorme natuur rampen. 
+De optie voor het configureren van redundantie opslag voor back-ups biedt de flexibiliteit om te kiezen tussen lokaal redundante, zone redundante of geografisch redundante opslag-blobs voor een door SQL beheerd exemplaar of een SQL Database. Om ervoor te zorgen dat uw gegevens binnen dezelfde regio blijven waar uw beheerde instantie of SQL database wordt geïmplementeerd, kunt u de standaard geo-redundante opslag redundantie voor back-ups wijzigen en lokale redundante (LRS) of zone redundante opslag-blobs (ZRS) voor back-ups configureren. Opslag redundantie mechanismen slaan meerdere kopieën van uw gegevens op, zodat deze beschermd zijn tegen geplande en niet-geplande gebeurtenissen, waaronder tijdelijke hardwarestoringen, netwerk-of energie storingen of enorme natuur rampen. De geconfigureerde redundantie voor back-upopslag wordt toegepast op de instellingen voor retentie van back-ups op korte termijn die worden gebruikt voor herstel naar een bepaald tijdstip (PITR) en back-ups voor lange termijn retentie die worden gebruikt voor langdurige back-ups (LTR). 
 
-De optie voor het configureren van redundantie opslag voor back-ups biedt de flexibiliteit om te kiezen tussen LRS, ZRS of RA-GRS opslag-blobs voor een SQL Managed instance. De redundantie van back-upopslag configureren tijdens het proces voor het maken van een beheerd exemplaar als de resource is ingericht, is het niet meer mogelijk om de opslag redundantie te wijzigen. (Zone-redundante opslag (ZRS) is momenteel alleen beschikbaar in [bepaalde regio's](../../storage/common/storage-redundancy.md#zone-redundant-storage)).
+Voor een SQL Database kan de redundantie van de back-upopslag worden geconfigureerd op het moment dat de data base wordt gemaakt of kan worden bijgewerkt voor een bestaande data base. de wijzigingen die zijn aangebracht in een bestaande data base, zijn alleen van toepassing op toekomstige back-ups. Nadat de redundantie van de back-upopslag van een bestaande data base is bijgewerkt, kan het tot 48 uur duren voordat de wijzigingen zijn toegepast. Houd er rekening mee dat geo Restore is uitgeschakeld zodra een Data Base is bijgewerkt voor het gebruik van lokale of zone redundante opslag. 
 
 
 > [!IMPORTANT]
-> In het SQL Managed instance wordt de geconfigureerde back-upredundantie toegepast op de instellingen voor retentie van back-ups op korte termijn die worden gebruikt voor herstel van een punt in tijd (PITR) en back-ups voor lange termijn retentie die worden gebruikt voor langdurige back-ups (LTR).
+> De redundantie van back-upopslag configureren tijdens het proces voor het maken van een beheerd exemplaar als de resource is ingericht, is het niet meer mogelijk om de opslag redundantie te wijzigen. 
 
+> [!IMPORTANT]
+> Zone-redundante opslag is momenteel alleen beschikbaar in [bepaalde regio's](../../storage/common/storage-redundancy.md#zone-redundant-storage). 
 
 > [!NOTE]
-> Azure SQL Database Configureer bare redundantie van back-upopslag is momenteel beschikbaar als een beperkte persoonlijke Preview voor bepaalde klanten in de Azure-regio Zuidoost-Azië. Neem contact op met als u wilt overwegen voor inschrijving in deze persoonlijke preview [sqlbackuppreview@microsoft.com](mailto:sqlbackuppreview@microsoft.com) . 
-
-Als uw regels voor gegevens bescherming vereisen dat uw back-ups langere tijd beschikbaar zijn (tot tien jaar), kunt u de [lange termijn retentie](long-term-retention-overview.md) voor zowel één als gepoolde data bases configureren.
+> Azure SQL Database Configureer bare back-upopslag redundantie is momenteel beschikbaar in open bare preview in de Azure-regio Zuidoost-Azië.  
 
 ### <a name="backup-usage"></a>Back-upgebruik
-
 
 U kunt deze back-ups gebruiken om:
 
@@ -61,7 +60,7 @@ U kunt deze back-ups gebruiken om:
 - **Herstel naar een bepaald tijdstip van een verwijderde data base**  -  [Een verwijderde data base herstellen naar het tijdstip van de verwijdering](recovery-using-backups.md#deleted-database-restore) of naar een bepaald tijdstip binnen de Bewaar periode. De verwijderde data base kan alleen worden teruggezet op een server of een beheerd exemplaar waarop de oorspronkelijke Data Base is gemaakt. Bij het verwijderen van een Data Base neemt de service een definitieve back-up van transactie logboeken voordat deze wordt verwijderd, om verlies van gegevens te voor komen.
 - **Geo-herstel**  -  [Een Data Base herstellen naar een andere geografische regio](recovery-using-backups.md#geo-restore). Met geo-Restore kunt u een geografische nood situatie herstellen wanneer u geen toegang hebt tot uw data base of back-ups in de primaire regio. Er wordt in elke Azure-regio een nieuwe data base gemaakt op een bestaande server of een beheerd exemplaar.
    > [!IMPORTANT]
-   > Geo-Restore is alleen beschikbaar voor beheerde exemplaren met geconfigureerde geo-redundante (RA-GRS) back-upopslag.
+   > Geo-Restore is alleen beschikbaar voor SQL-data bases of beheerde exemplaren die zijn geconfigureerd met geografisch redundante back-upopslag.
 - **Herstellen vanaf back-up**  -  op lange termijn [Een Data Base herstellen op basis van een specifieke lange termijn back-up](long-term-retention-overview.md) van een enkele data base of gepoolde data base, als de data base is geconfigureerd met een lange termijn retentie beleid (LTR). Met LTR kunt u een oude versie van de data base herstellen met behulp van [de Azure Portal](long-term-backup-retention-configure.md#using-the-azure-portal) of [Azure PowerShell](long-term-backup-retention-configure.md#using-powershell) om te voldoen aan een nalevings aanvraag of een oude versie van de toepassing uit te voeren. Zie [Langetermijnretentie](long-term-retention-overview.md) voor meer informatie.
 
 Zie [Data Base terugzetten van back-ups](recovery-using-backups.md)om een herstel bewerking uit te voeren.
@@ -136,6 +135,9 @@ De retentie van back-ups voor PITR in de afgelopen 1-35 dagen wordt soms een ret
 
 Voor zowel SQL Database als SQL Managed Instance kunt u een volledige back-up voor de lange termijn (LTR) voor de hele periode configureren in Azure Blob-opslag. Nadat het LTR-beleid is geconfigureerd, worden volledige back-ups automatisch wekelijks naar een andere opslag container gekopieerd. Om aan verschillende nalevings vereisten te voldoen, kunt u verschillende Bewaar perioden selecteren voor wekelijkse, maandelijkse en/of jaarlijkse volledige back-ups. Het opslag verbruik is afhankelijk van de geselecteerde frequentie en de retentie perioden van V.L.N.R.-back-ups. U kunt de [LTR-prijs calculator](https://azure.microsoft.com/pricing/calculator/?service=sql-database) gebruiken om de kosten van v.l.n.r.-opslag te schatten.
 
+> [!IMPORTANT]
+> Het bijwerken van de redundantie van de back-upopslag voor een bestaande Azure SQL Database is alleen van toepassing op de toekomstige back-ups die zijn gemaakt voor de data base. Alle bestaande LTR-back-ups voor de data base blijven aanwezig in de bestaande opslag-Blob en er worden nieuwe back-ups opgeslagen op het aangevraagde type opslag-blob. 
+
 Voor meer informatie over LTR, Zie [lange termijn retentie van back-ups](long-term-retention-overview.md).
 
 ## <a name="storage-costs"></a>Opslagkosten
@@ -162,7 +164,7 @@ Voor beheerde instanties wordt de totale factureer bare opslag grootte op het ex
 
 `Total billable backup storage size = (total size of full backups + total size of differential backups + total size of log backups) – maximum instance data storage`
 
-De totale factureer bare back-upopslag wordt in GB per maand in rekening gebracht. Dit verbruik van back-upopslag is afhankelijk van de werk belasting en de grootte van afzonderlijke data bases, elastische Pools en beheerde exemplaren. Sterk gewijzigde data bases hebben meer differentiële en logboek back-ups, omdat de grootte van deze back-ups evenredig is met de hoeveelheid gegevens wijzigingen. Daarom zullen dergelijke data bases hogere back-upkosten hebben.
+De totale factureer bare back-upopslag wordt in GB per maand in rekening gebracht op basis van de frequentie van de gebruikte back-upopslag-redundantie. Dit verbruik van back-upopslag is afhankelijk van de werk belasting en de grootte van afzonderlijke data bases, elastische Pools en beheerde exemplaren. Sterk gewijzigde data bases hebben meer differentiële en logboek back-ups, omdat de grootte van deze back-ups evenredig is met de hoeveelheid gegevens wijzigingen. Daarom zullen dergelijke data bases hogere back-upkosten hebben.
 
 SQL Database en SQL Managed instance berekent uw totale factureer bare back-upopslag als een cumulatieve waarde voor alle back-upbestanden. Elk uur wordt deze waarde gerapporteerd aan de Azure-facturerings pijplijn, waarmee dit uur gebruik wordt geaggregeerd om het verbruik van back-upopslag aan het einde van elke maand te verkrijgen. Als een Data Base wordt verwijderd, neemt het verbruik van back-upopslag geleidelijk af naarmate oudere back-ups worden verwijderd. Omdat voor differentiële back-ups en logboek back-ups een eerdere volledige back-up kan worden herstorable, worden alle drie de back-uptypen samen in wekelijkse sets opgeschoond. Zodra alle back-ups zijn verwijderd, wordt de facturering gestopt. 
 
@@ -184,13 +186,13 @@ Opslag redundantie van back-ups heeft gevolgen voor back-upkosten op de volgende
 Ga voor meer informatie over prijzen voor back-upopslag naar [Azure SQL database prijs pagina](https://azure.microsoft.com/pricing/details/sql-database/single/) en de [pagina met prijzen voor Azure SQL Managed instance](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/).
 
 > [!IMPORTANT]
-> Configureer bare opslag redundantie voor back-ups is momenteel alleen beschikbaar voor SQL Managed instance en kan alleen worden opgegeven tijdens het proces voor het maken van een beheerd exemplaar. Zodra de resource is ingericht, kunt u de optie voor opslag redundantie van back-ups niet meer wijzigen.
+> Configureer bare back-upopslag redundantie voor een SQL Managed instance is beschikbaar in alle Azure-regio's en is momenteel alleen beschikbaar in Zuidoost-Azië Azure-regio voor SQL Database. Voor een beheerd exemplaar kan dit alleen worden opgegeven tijdens het proces voor het maken van een beheerd exemplaar. Zodra de resource is ingericht, kunt u de optie voor opslag redundantie van back-ups niet meer wijzigen.
 
 ### <a name="monitor-costs"></a>Kosten bewaken
 
 Als u meer wilt weten over de kosten voor back-upopslag, gaat u naar **Cost Management + facturering** in de Azure Portal, selecteert u **Cost Management**en selecteert u vervolgens **kosten analyse**. Selecteer het gewenste abonnement als **bereik**en filter vervolgens op de periode en service waarop u bent geïnteresseerd.
 
-Voeg een filter toe voor **service naam**en selecteer vervolgens **SQL data base** in de vervolg keuzelijst. Gebruik het filter **meter subcategorie** om de facturerings teller voor uw service te kiezen. Selecteer voor één data base of een pool voor elastische Data Base **één/elastische pool pitr back-upopslag**. Voor een beheerd exemplaar selecteert u **mi pitr Backup Storage**. De subcategorieën voor **opslag** en **berekening** kunnen u ook interesseren, maar ze zijn niet gekoppeld aan back-upopslagkosten.
+Voeg een filter toe voor **service naam**en selecteer vervolgens **SQL data base** in de vervolg keuzelijst. Gebruik het filter **meter subcategorie** om de facturerings teller voor uw service te kiezen. Selecteer voor één data base of een pool voor elastische Data Base **één/elastische pool PITR back-upopslag**. Voor een beheerd exemplaar selecteert u **mi PITR Backup Storage**. De subcategorieën voor **opslag** en **berekening** kunnen u ook interesseren, maar ze zijn niet gekoppeld aan back-upopslagkosten.
 
 ![Kosten analyse back-upopslag](./media/automated-backups-overview/check-backup-storage-cost-sql-mi.png)
 
@@ -369,17 +371,80 @@ Zie [retentie van back-ups rest API](https://docs.microsoft.com/rest/api/sql/bac
 ## <a name="configure-backup-storage-redundancy"></a>Opslag redundantie voor back-ups configureren
 
 > [!NOTE]
-> Configureer bare opslag redundantie voor back-ups is momenteel alleen beschikbaar voor SQL Managed instance en kan alleen worden opgegeven tijdens het proces voor het maken van een beheerd exemplaar. Zodra de resource is ingericht, kunt u de optie voor opslag redundantie van back-ups niet meer wijzigen.
+> Configureer bare opslag redundantie voor back-ups voor SQL Managed instance kan alleen worden opgegeven tijdens het proces voor het maken van een beheerd exemplaar. Zodra de resource is ingericht, kunt u de optie voor opslag redundantie van back-ups niet meer wijzigen. De open bare preview van deze functie is momenteel alleen beschikbaar in de Azure-regio Zuidoost-Azië. SQL Database 
 
-Een opslag redundantie van een back-up van een beheerd exemplaar kan worden ingesteld tijdens het maken van een exemplaar. De standaard waarde is geografisch redundante opslag (RA-GRS). Zie de [pagina met prijzen voor Managed instance](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)(Engelstalig) voor verschillen in de prijs van een LRS (Local-redundante), zone-redundante (ZRS) en geo-redundante (RA-GRS)-back-upopslag.
+Een opslag redundantie van een back-up van een beheerd exemplaar kan worden ingesteld tijdens het maken van een exemplaar. Voor een SQL Database kan deze worden ingesteld bij het maken van de data base of kan worden bijgewerkt voor een bestaande data base. De standaard waarde is geografisch redundante opslag (RA-GRS). Zie de [pagina met prijzen voor Managed instance](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)(Engelstalig) voor verschillen in de prijs van een LRS (Local-redundante), zone-redundante (ZRS) en geo-redundante (RA-GRS)-back-upopslag.
 
 ### <a name="configure-backup-storage-redundancy-by-using-the-azure-portal"></a>Opslag redundantie voor back-ups configureren met behulp van de Azure Portal
 
+#### <a name="sql-database"></a>[SQL Database](#tab/single-database)
+
+In Azure Portal kunt u de redundantie opslag voor back-ups configureren op de Blade **SQL database maken** . Deze optie is beschikbaar in de sectie opslag redundantie van back-ups. 
+![SQL Database Blade maken openen](./media/automated-backups-overview/sql-database-backup-storage-redundancy.png)
+
+#### <a name="sql-managed-instance"></a>[SQL Managed Instance](#tab/managed-instance)
+
 In de Azure Portal, de optie voor het wijzigen van de redundantie van back-upopslag bevindt zich op de Blade **Compute + Storage** die toegankelijk is via de optie **Managed instance configureren** op het tabblad **basis beginselen** wanneer u uw SQL Managed instance maakt.
-![Berekenings-en opslag configuratie openen-Blade](./media/automated-backups-overview/open-configuration-blade-mi.png)
+![Berekenings-en opslag configuratie openen-Blade](./media/automated-backups-overview/open-configuration-blade-managedinstance.png)
 
 Zoek de optie voor het selecteren van back-upopslag redundantie op de Blade **reken kracht en opslag** .
-![Opslag redundantie voor back-ups configureren](./media/automated-backups-overview/select-backup-storage-redundancy-mi.png)
+![Opslag redundantie voor back-ups configureren](./media/automated-backups-overview/select-backup-storage-redundancy-managedinstance.png)
+
+---
+
+### <a name="configure-backup-storage-redundancy-by-using-powershell"></a>Opslag redundantie voor back-ups configureren met behulp van Power shell
+
+#### <a name="sql-database"></a>[SQL Database](#tab/single-database)
+
+Als u de redundantie van back-upopslag wilt configureren bij het maken van een nieuwe Data Base, kunt u de para meter-BackupStoageRedundancy opgeven. Mogelijke waarden zijn geo, zone en local. Standaard gebruiken alle SQL-data bases geo-redundante opslag voor back-ups. Geo Restore is uitgeschakeld als er een Data Base wordt gemaakt met een lokale of zone redundante back-upopslag. 
+
+```powershell
+# Create a new database with geo-redundant backup storage.  
+New-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database03" -Edition "GeneralPurpose" -Vcore 2 -ComputeGeneration "Gen5" -BackupStorageRedundancy Geo
+```
+
+Ga voor meer informatie naar [New-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabase).
+
+Als u de redundantie van back-upopslag van een bestaande Data Base wilt bijwerken, kunt u de para meter-BackupStorageRedundancy gebruiken. Mogelijke waarden zijn geo, zone en local.
+Houd er rekening mee dat het tot 48 uur kan duren voordat de wijzigingen op de Data Base worden toegepast. Als u overschakelt van geografisch redundante back-upopslag naar lokale of zone redundante opslag, wordt geo Restore uitgeschakeld. 
+
+```powershell
+# Change the backup storage redundancy for Database01 to zone-redundant. 
+Set-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -DatabaseName "Database01" -ServerName "Server01" -BackupStorageRedundancy Zone
+```
+
+Ga voor meer informatie naar [set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase)
+
+
+#### <a name="sql-managed-instance"></a>[SQL Managed Instance](#tab/managed-instance)
+
+Voor het configureren van redundantie van back-upopslag tijdens het maken van een beheerd exemplaar kunt u de para meter-BackupStoageRedundancy opgeven. Mogelijke waarden zijn geo, zone en local.
+
+```powershell
+New-AzSqlInstance -Name managedInstance2 -ResourceGroupName ResourceGroup01 -Location westcentralus -AdministratorCredential (Get-Credential) -SubnetId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name" -LicenseType LicenseIncluded -StorageSizeInGB 1024 -VCore 16 -Edition "GeneralPurpose" -ComputeGeneration Gen4 -BackupStorageRedundancy Geo
+```
+
+Ga voor meer informatie naar [New-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance).
+
+## <a name="use-azure-policy-to-enforce-backup-storage-redundancy"></a>Azure Policy gebruiken om redundantie van back-upopslag af te dwingen
+
+Als u gegevens locatie vereisten hebt waarbij u al uw gegevens in één Azure-regio moet houden, wilt u mogelijk zone redundante of lokaal redundante back-ups voor uw SQL Database of beheerde instantie afdwingen met behulp van Azure Policy. Azure Policy is een service die u kunt gebruiken om beleid te maken, toe te wijzen en te beheren waarmee regels worden toegepast op Azure-resources. Azure Policy helpt u bij het houden van deze resources die voldoen aan uw bedrijfs normen en service overeenkomsten. Zie [Overzicht van Azure Policy](https://docs.microsoft.com/azure/governance/policy/overview) voor meer informatie. 
+
+### <a name="built-in-backup-storage-redundancy-policies"></a>Ingebouwde beleids regels voor back-upopslag 
+
+Volgende nieuwe ingebouwde beleids regels worden toegevoegd, die kunnen worden toegewezen op het niveau van het abonnement of de resource groep om het maken van nieuwe data base (s) of exemplaren met geografisch redundante back-upopslag te blok keren. 
+
+[SQL Database moet het gebruik van GRS-back-upredundantie vermijden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb219b9cf-f672-4f96-9ab0-f5a3ac5e1c13)
+
+[SQL Managed instances moet vermijden het gebruik van GRS backup-redundantie](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa9934fd7-29f2-4e6d-ab3d-607ea38e9079)
+
+[Hier](https://docs.microsoft.com/azure/azure-sql/database/policy-reference)vindt u een volledige lijst met ingebouwde beleids definities voor de SQL database en het beheerde exemplaar.
+
+Voor het afdwingen van vereisten voor gegevens locatie op een organisatie niveau, kunnen deze beleids regels worden toegewezen aan een abonnement. Nadat deze zijn toegewezen op abonnements niveau, kunnen gebruikers in het gegeven abonnement geen data base of een beheerd exemplaar maken met geografisch redundante back-upopslag via Azure Portal of Azure PowerShell. Houd er rekening mee dat Azure-beleid niet wordt afgedwongen bij het maken van een Data Base via T-SQL. 
+
+Meer informatie over het toewijzen van beleid met behulp van de [Azure Portal](https://docs.microsoft.com/azure/governance/policy/assign-policy-portal) of [Azure PowerShell](https://docs.microsoft.com/azure/governance/policy/assign-policy-powershell)
+
+---
 
 ## <a name="next-steps"></a>Volgende stappen
 

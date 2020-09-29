@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 78668eaadca872d7c25ab909fad5b9838bbc01d3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 0a368e54c940ff580b7e8f49dd108fafddde5b17
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90894812"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441475"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>Veelgestelde vragen: vragen over het verzamelen van gegevens, agents en werk ruimten
 
@@ -166,7 +166,7 @@ U kunt automatische inrichting voor uw abonnementen uitschakelen in het beveilig
 
 1. Als Azure Defender is ingeschakeld voor uw abonnement, opent u het beveiligings beleid voor dat abonnement en selecteert u **Azure Defender uit**.
 
-   ![Prijscategorie][1]
+    :::image type="content" source="./media/security-center-platform-migration-faq/pricing-tier.png" alt-text="Azure Defender in-of uitschakelen":::
 
 1. Schakel vervolgens automatische inrichting uit door **uit** te scha kelen op de pagina **beveiligings beleid – gegevens verzameling** .
    ![Gegevensverzameling][2]
@@ -200,7 +200,7 @@ Installeer de Log Analytics agent-extensie hand matig zodat Security Center beve
 
 U kunt de agent verbinden met een bestaande aangepaste werk ruimte of Security Center gemaakte werk ruimte. Als voor een aangepaste werk ruimte de oplossingen Security of SecurityCenterFree niet zijn ingeschakeld, moet u een oplossing Toep assen. Als u wilt Toep assen, selecteert u de aangepaste werk ruimte of het abonnement en past u een prijs categorie toe via de pagina **beveiligings beleid – prijs categorie** .
 
-   ![Prijscategorie][1]
+:::image type="content" source="./media/security-center-platform-migration-faq/pricing-tier.png" alt-text="Azure Defender in-of uitschakelen":::
 
 Met Security Center wordt de juiste oplossing op basis van de geselecteerde prijs categorie op de werk ruimte ingeschakeld.
 
@@ -271,7 +271,6 @@ De agent verbruikt een nominale hoeveelheid systeem bronnen en moet weinig invlo
 
 
 <!--Image references-->
-[1]: ./media/security-center-platform-migration-faq/pricing-tier.png
 [2]: ./media/security-center-platform-migration-faq/data-collection.png
 [3]: ./media/security-center-platform-migration-faq/remove-the-agent.png
 [4]: ./media/security-center-platform-migration-faq/use-another-workspace.png

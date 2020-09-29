@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/26/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: fd500b80f0c564fc0f4c7e311483790a83a4101a
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: c1e9e3d63e8a4f7fe461e2d33603da91d3d9bec6
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923735"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441775"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Bekende problemen met Azure Data Lake Storage Gen2
 
@@ -113,11 +113,9 @@ De instelling voor Bewaar dagen wordt nog niet ondersteund, maar u kunt Logboeke
 
 ### <a name="lifecycle-management-policies"></a>Levenscyclus beheer beleid
 
-- Levenscyclus beheer beleid wordt nog niet ondersteund in Premium BlockBlobStorage-opslag accounts. 
+- Levenscyclus beheer beleid wordt alleen ondersteund voor v2-accounts voor algemeen gebruik. Ze worden nog niet ondersteund in Premium BlockBlobStorage-opslag accounts.
+- Gegevens kunnen niet worden verplaatst van de Premium-laag naar lagere lagen.
 
-- Gegevens kunnen niet worden verplaatst van de Premium-laag naar lagere lagen. 
-
-- De actie **BLOB verwijderen** wordt momenteel niet ondersteund. 
 
 ### <a name="hdinsight-support"></a>HDInsight-ondersteuning
 

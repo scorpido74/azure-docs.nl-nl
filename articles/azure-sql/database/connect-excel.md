@@ -7,17 +7,17 @@ ms.service: sql-database
 ms.subservice: development
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: e0a413847142ee516a06f924dd058578047fb3a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 304ad51bc40c8165c2dc11bb70287491e3d6dfb9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84267508"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91444036"
 ---
 # <a name="connect-excel-to-a-database-in-azure-sql-database-or-azure-sql-managed-instance-and-create-a-report"></a>Excel verbinden met een data base in Azure SQL Database of een beheerd exemplaar van Azure SQL en een rapport maken
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -80,10 +80,10 @@ Als u de verbindings gegevens permanent wilt opslaan, kunt u een. ODC-bestand ma
 
       ![Dialoog venster nieuwe verbinding](./media/connect-excel/new-connection.png)
 
-2. Typ in de **wizard gegevens verbinding**de naam van uw server en uw SQL database referenties. Selecteer **Volgende**.
+2. Typ in de **wizard gegevens verbinding**de naam van uw server en uw SQL database referenties. Selecteer **Next**.
    1. Selecteer de data base die uw gegevens bevat uit de vervolg keuzelijst.
    2. Selecteer de tabel of weer gave waarin u geïnteresseerd bent. We hebben gekozen voor vGetAllCategories.
-   3. Selecteer **Volgende**.
+   3. Selecteer **Next**.
 
       ![Wizard gegevens verbinding](./media/connect-excel/data-connection-wizard.png)
 

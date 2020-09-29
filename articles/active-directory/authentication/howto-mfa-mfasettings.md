@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 50f7af3bb1ad543dea0263304b82287225500a21
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 29187ef99ce6628359819739ab5e4b34213eeb8a
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526881"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441626"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Azure Multi-Factor Authentication-instellingen configureren
 
@@ -57,7 +57,7 @@ Als u account vergrendelings instellingen wilt configureren, voert u de volgende
 
 ## <a name="block-and-unblock-users"></a>Gebruikers blok keren en de blok kering opheffen
 
-Als het apparaat van een gebruiker is verloren of is gestolen, kunt u verificatie pogingen voor het gekoppelde account blok keren. Verificatiepogingen voor geblokkeerde gebruikers worden automatisch geweigerd. Gebruikers blijven 90 dagen geblokkeerd vanaf het moment dat ze zijn geblokkeerd.
+Als het apparaat van een gebruiker is verloren of is gestolen, kunt u Azure Multi-Factor Authentication pogingen voor het gekoppelde account blok keren. Alle Azure-Multi-Factor Authentication pogingen voor geblokkeerde gebruikers worden automatisch geweigerd. Gebruikers blijven 90 dagen geblokkeerd vanaf het moment dat ze zijn geblokkeerd.
 
 ### <a name="block-a-user"></a>Een gebruiker blok keren
 
@@ -85,7 +85,7 @@ Met de functie fraude waarschuwing kunnen gebruikers frauduleuze pogingen om toe
 
 De volgende configuratie opties voor fraude waarschuwingen zijn beschikbaar:
 
-* **Gebruikers die fraude rapporteren automatisch blok keren**: als een gebruiker fraude meldt, wordt hun account geblokkeerd gedurende 90 dagen of totdat een beheerder zijn of haar account heeft gedeblokkeerd. Een beheerder kan aanmeldingen controleren met behulp van het aanmeldings rapport en de juiste actie ondernemen om fraude te voor komen. Een beheerder kan de [blok kering](#unblock-a-user) van het gebruikers account opheffen.
+* **Gebruikers die fraude rapporteren automatisch blok keren**: als een gebruiker fraude rapporteert, worden de Azure MFA-verificatie pogingen voor het gebruikers account geblokkeerd gedurende 90 dagen of totdat een beheerder zijn of haar account heeft gedeblokkeerd. Een beheerder kan aanmeldingen controleren met behulp van het aanmeldings rapport en de juiste actie ondernemen om fraude te voor komen. Een beheerder kan de [blok kering](#unblock-a-user) van het gebruikers account opheffen.
 * **Code voor het melden van fraude tijdens de eerste begroeting**: wanneer gebruikers een telefoon oproep ontvangen om multi-factor Authentication uit te voeren, drukken ze normaal gesp roken **#** in om de aanmelding te bevestigen. Voor het melden van fraude, voert de gebruiker een code in voordat u op drukt **#** . Deze code is standaard **0** , maar u kunt deze aanpassen.
 
    > [!NOTE]

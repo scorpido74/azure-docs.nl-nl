@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8ffad738a8f10816f26760fa34c5ce686fac5bad
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 428c24236aad9a57a9d52eb0a6ff3a7aeb9fe541
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401143"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442152"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>Een VPN-gatewayverbinding tussen VNets configureren met behulp van Azure CLI
 
@@ -70,7 +70,7 @@ Voor deze oefening kunt u configuraties combineren of alleen de configuratie kie
 
 * [VNet's die onderdeel uitmaken van hetzelfde abonnement:](#samesub) in de stappen voor deze configuratie wordt gebruikgemaakt van TestVNet1 en TestVNet4.
 
-  ![v2v-diagram](./media/vpn-gateway-howto-vnet-vnet-cli/v2vrmps.png)
+  ![Diagram met de V net-naar-V-net-stappen voor V-netten die zich in hetzelfde abonnement bevinden.](./media/vpn-gateway-howto-vnet-vnet-cli/v2vrmps.png)
 
 * [VNet's die onderdeel uitmaken van verschillende abonnementen:](#difsub) in de stappen voor deze configuratie wordt gebruikgemaakt van TestVNet1 en TestVNet5.
 
@@ -124,7 +124,7 @@ In de voorbeelden worden de volgende waarden gebruikt:
 
 ### <a name="step-2---create-and-configure-testvnet1"></a><a name="TestVNet1"></a>Stap 2: TestVNet1 maken en configureren
 
-1. Maak een resourcegroep.
+1. Een resourcegroep maken.
 
    ```azurecli
    az group create -n TestRG1  -l eastus
@@ -162,7 +162,7 @@ In de voorbeelden worden de volgende waarden gebruikt:
 
 ### <a name="step-3---create-and-configure-testvnet4"></a><a name="TestVNet4"></a>Stap 3: TestVNet4 maken en configureren
 
-1. Maak een resourcegroep.
+1. Een resourcegroep maken.
 
    ```azurecli
    az group create -n TestRG4  -l westus

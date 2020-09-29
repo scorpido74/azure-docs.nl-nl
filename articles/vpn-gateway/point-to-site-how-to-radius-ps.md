@@ -1,18 +1,18 @@
 ---
 title: 'Een computer verbinden met een virtueel netwerk met behulp van punt-naar-site-en RADIUS-verificatie: Power shell | Azure'
-description: Verbind Windows en Mac OS X-clients veilig met een virtueel netwerk met behulp van P2S en RADIUS-verificatie.
+description: Verbind Windows-en OS X-clients veilig met een virtueel netwerk met behulp van P2S en RADIUS-verificatie.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 2a93f612f5aeb5c2d3a4b83d580b9548f45e4c05
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c8d7ae3cd40f118399e5ff60fa0738b07249c5ef
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329156"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442408"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>Een punt-naar-site-verbinding met een VNet configureren met RADIUS-verificatie: Power shell
 
@@ -28,7 +28,7 @@ Er wordt een P2S-VPN-verbinding gestart vanaf Windows en Mac-apparaten. Clients 
 
 Dit artikel helpt u bij het configureren van een P2S-configuratie met verificatie met behulp van RADIUS-server. Zie [een punt-naar-site-verbinding met een VNet configureren met native certificaat authenticatie van de VPN-gateway](vpn-gateway-howto-point-to-site-rm-ps.md) of [een Azure Active Directory TENANT maken voor P2S openvpn-protocol verbindingen](openvpn-azure-ad-tenant.md) voor Azure Active Directory-verificatie als u in plaats daarvan wilt verifiëren met behulp van gegenereerde certificaten en native certificaat verificatie voor de VPN-gateway.
 
-![Verbindings diagram-RADIUS](./media/point-to-site-how-to-radius-ps/p2sradius.png)
+![Diagram waarin de P2S-configuratie wordt weer gegeven met verificatie met behulp van een RADIUS-server.](./media/point-to-site-how-to-radius-ps/p2sradius.png)
 
 Punt-naar-site-verbindingen hebben geen VPN-apparaat of openbaar IP-adres nodig. P2S maakt de VPN-verbinding via SSTP (Secure Socket Tunneling Protocol), OpenVPN of IKEv2.
 
@@ -65,7 +65,7 @@ Controleer of u een Azure-abonnement hebt. Als u nog geen Azure-abonnement hebt,
 
 ### <a name="working-with-azure-powershell"></a>Werken met Azure PowerShell
 
-[!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
+[!INCLUDE [PowerShell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
 ### <a name="example-values"></a><a name="example"></a>Voorbeeld waarden
 

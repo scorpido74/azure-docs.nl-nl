@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/10/2020
 ms.author: duau
-ms.openlocfilehash: 349c00b312ba7c3f18bab04fb059199732b4f1b3
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: edeaaf97c818831aa1eda5823ea491110f784549
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89398746"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442366"
 ---
 # <a name="wildcard-domains"></a>Joker tekens domeinen
 
@@ -72,7 +72,7 @@ Als u niet wilt dat een WAF-beleid voor een subdomein wordt uitgevoerd, kunt u e
 Wanneer u een routerings regel configureert, kunt u een Joker teken domein als een front-end-host selecteren. U kunt ook een ander route gedrag hebben voor joker tekens en subdomeinen. Zoals beschreven in de [manier waarop Azure front-deur een route overeenkomst](front-door-route-matching.md)gebruikt, wordt de meest specifieke overeenkomst voor het domein in verschillende routerings regels gekozen tijdens runtime.
 
 > [!IMPORTANT]
-> U moet overeenkomende paden hebben in de regels voor door sturen of als uw clients fouten zien. U hebt bijvoorbeeld twee routerings regels als route 1 ( `*.foo.com/*` toegewezen aan de back-end-groep a) en de route 2 ( `bar.foo.com/somePath/*` toegewezen aan de back-end-pool B). Vervolgens ontvangt een aanvraag voor `bar.foo.com/anotherPath/*` . Azure front deur selecteert route 2 op basis van een specifiekere domein overeenkomst, alleen om geen overeenkomende paden te vinden in de routes.
+> U moet overeenkomende paden hebben in de regels voor door sturen of als uw clients fouten zien. U hebt bijvoorbeeld twee routerings regels als route 1 ( `*.foo.com/*` toegewezen aan de back-end-groep a) en de route 2 ( `/bar.foo.com/somePath/*` toegewezen aan de back-end-pool B). Vervolgens ontvangt een aanvraag voor `bar.foo.com/anotherPath/*` . Azure front deur selecteert route 2 op basis van een specifiekere domein overeenkomst, alleen om geen overeenkomende paden te vinden in de routes.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -3,12 +3,12 @@ title: Ondersteuning voor VMware-migratie in Azure Migrate
 description: Meer informatie over ondersteuning voor de migratie van virtuele VMware-machines in Azure Migrate.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: f7fd5b15d9671ed160166d16c1aceda818faa8e0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f41223e9dfa336fdbf64fcfdc56798511f3a5b21
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318140"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442275"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>Ondersteunings matrix voor VMware-migratie
 
@@ -39,8 +39,8 @@ De tabel bevat een overzicht van de vereisten voor VMware-Hyper Visor.
 
 **VMware** | **Details**
 --- | ---
-**VMware vCenter Server** | Versie 5,5, 6,0, 6,5 of 6,7.
-**ESXI-host VMware vSphere** | Versie 5,5, 6,0, 6,5 of 6,7.
+**VMware vCenter Server** | Versie 5,5, 6,0, 6,5, 6,7, 7,0.
+**ESXI-host VMware vSphere** | Versie 5,5, 6,0, 6,5, 6,7, 7,0.
 **vCenter Server machtigingen** | Migratie zonder agent maakt gebruik van het [migratie toestel](migrate-appliance.md). Het apparaat heeft deze machtigingen nodig in vCenter Server:<br/><br/> - **Data Store. browse**: bladeren door VM-logboek bestanden toestaan om problemen met het maken en verwijderen van moment opnamen op te lossen.<br/><br/> - **Data Store. File Management**: bewerkingen voor lezen/schrijven/verwijderen/naam wijzigen in de Data Store-browser toestaan om problemen met het maken en verwijderen van moment opnamen op te lossen.<br/><br/> - **VirtualMachine.Config. Change tracking**: het inschakelen of uitschakelen van het bijhouden van wijzigingen van VM-schijven toestaan om gewijzigde gegevens blokken tussen moment opnamen op te halen.<br/><br/> - **VirtualMachine.Config. DiskLease**: sta bewerkingen voor de schijf-lease voor een virtuele machine toe om de schijf te lezen met de VMware vSphere Virtual Disk Development Kit (vddk).<br/><br/> - **VirtualMachine. provisioning. DiskAccess**: (met name voor vSphere 6,0 en hoger) toestaan dat een schijf op een VM wordt geopend voor wille keurige Lees toegang op de schijf met behulp van de VdDK.<br/><br/> - **VirtualMachine. provisioning. DiskRandomRead**: het openen van een schijf op een virtuele machine toestaan om de schijf te lezen met behulp van de VdDK.<br/><br/> - **VirtualMachine. provisioning. DiskRandomAccess**: het openen van een schijf op een virtuele machine toestaan om de schijf te lezen met behulp van de VdDK.<br/><br/> - **VirtualMachine. provisioning. GetVmFiles**: Hiermee staat u lees bewerkingen toe voor bestanden die zijn gekoppeld aan een virtuele machine, om de logboeken te downloaden en problemen op te lossen.<br/><br/> - **VirtualMachine. State. \* **: het maken en beheren van VM-moment opnamen voor replicatie toestaan.<br/><br/> - **VirtualMachine. interactie. uitgeschakeld**: Hiermee staat u toe dat de virtuele machine wordt uitgeschakeld tijdens de migratie naar Azure.
 
 
@@ -53,7 +53,7 @@ De tabel bevat een overzicht van de migratie vereisten zonder agent voor virtuel
 --- | ---
 **Ondersteunde besturingssystemen** | U kunt [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) -en [Linux](../virtual-machines/linux/endorsed-distros.md) -besturings systemen migreren die worden ondersteund door Azure.
 **Windows-Vm's in azure** | Mogelijk moet u [enkele wijzigingen aanbrengen](prepare-for-migration.md#verify-required-changes-before-migrating) op vm's vóór de migratie. 
-**Virtuele Linux-machines in azure** | Voor sommige Vm's zijn mogelijk wijzigingen vereist zodat ze kunnen worden uitgevoerd in Azure.<br/><br/> Voor Linux worden de wijzigingen automatisch door Azure Migrate voor deze besturings systemen aangebracht:<br/> -Red Hat Enterprise Linux 8,1, 8,0, 7,8, 7,7, 7,6, 7,5, 7,4, 7,0, 6. x<br/> -Cent OS 8,1, 8,0, 7,7, 7,6, 7,5, 7,4, 6. x</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -SUSE Linux Enterprise Server 15 SP1 <br/>-Ubuntu 19,04, 19,10, 14.04 LTS, 16.04 LTS, 18.04 LTS<br/> -Debian 7, 8 <br/> Oracle Linux 7,7, 7,7-CI<br/> Voor andere besturings systemen voert u de [vereiste wijzigingen](prepare-for-migration.md#verify-required-changes-before-migrating) hand matig uit.
+**Virtuele Linux-machines in azure** | Voor sommige Vm's zijn mogelijk wijzigingen vereist zodat ze kunnen worden uitgevoerd in Azure.<br/><br/> Voor Linux worden de wijzigingen automatisch door Azure Migrate voor deze besturings systemen aangebracht:<br/> -Red Hat Enterprise Linux 7,8, 7,7, 7,6, 7,5, 7,4, 7,0, 6. x<br/> -Cent OS 7,7, 7,6, 7,5, 7,4, 6. x</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -SUSE Linux Enterprise Server 15 SP1 <br/>-Ubuntu 19,04, 19,10, 14.04 LTS, 16.04 LTS, 18.04 LTS<br/> -Debian 7, 8 <br/> Oracle Linux 7,7, 7,7-CI<br/> Voor andere besturings systemen voert u de [vereiste wijzigingen](prepare-for-migration.md#verify-required-changes-before-migrating) hand matig uit.
 **Linux-opstart** | Als/boot zich op een toegewezen partitie bevindt, moet deze zich op de besturingssysteem schijf bevinden en niet over meerdere schijven worden verspreid.<br/> Als/boot deel uitmaakt van de hoofd partitie (/), moet de partitie '/' zich op de besturingssysteem schijf bevindt en niet over andere schijven beschikken.
 **UEFI-opstart** | Ondersteund. Vm's op basis van UEFI worden gemigreerd naar virtuele machines van Azure Generation 2. 
 **Schijfgrootte** | 2 TB besturingssysteem schijf (BIOS-opstart); 4 TB besturingssysteem schijf (UEFI boot); 8 TB voor gegevens schijven.

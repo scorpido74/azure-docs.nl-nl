@@ -1,6 +1,6 @@
 ---
 title: Azure front-deur-URL-omleiding | Microsoft Docs
-description: Dit artikel helpt u te begrijpen hoe de front-deur van Azure URL-omleiding voor hun routes ondersteunt, indien geconfigureerd.
+description: Dit artikel helpt u inzicht te krijgen in de manier waarop Azure front-deur URL-omleiding ondersteunt voor hun routerings regels.
 services: front-door
 documentationcenter: ''
 author: duongau
@@ -9,35 +9,35 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/08/2019
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 41cb2343cb86d2ec756bb0a2fb690b7df886024f
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 61077c7900530fd4c5be64054bedd9c5d087fe77
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399035"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442055"
 ---
 # <a name="url-redirect"></a>URL-omleiding
-U kunt de voor deur van Azure gebruiken om verkeer om te leiden. U kunt verkeer omleiden op meerdere niveaus (protocol, hostnaam, pad, query teken reeks) en alle functionaliteit kan worden geconfigureerd voor afzonderlijke micro Services, aangezien de omleiding is gebaseerd op het pad. Dit vereenvoudigt de configuratie van de toepassing, optimaliseert het resource gebruik en ondersteunt nieuwe omleidings scenario's, waaronder globale en op pad gebaseerde omleiding.
+Azure front deur kan verkeer omleiden op elk van de volgende niveaus: protocol, hostnaam, pad, query teken reeks. Deze functies kunnen worden geconfigureerd voor afzonderlijke micro Services, omdat de omleiding op basis van het pad is gebaseerd op paden. Hierdoor kan de configuratie van de toepassing worden vereenvoudigd door het resource gebruik te optimaliseren en worden nieuwe omleidings scenario's ondersteund, waaronder globale en op pad gebaseerde omleiding.
 </br>
 
-![URL-omleiding voor Azure front-deur][1]
+:::image type="content" source="./media/front-door-url-redirect/front-door-url-redirect.png" alt-text="URL-omleiding voor Azure front-deur":::
 
 ## <a name="redirection-types"></a>Type omleiding
 Een omleidings type stelt de antwoord status code voor de clients in om het doel van de omleiding te begrijpen. De volgende typen omleiding worden ondersteund:
 
-- **301 (permanent verplaatst)**: geeft aan dat aan de doel resource een nieuwe permanente URI is toegewezen en dat toekomstige verwijzingen naar deze resource een van de Inge sloten uri's moeten gebruiken. Gebruik 301-status code voor HTTP-naar-HTTPS-omleiding. 
-- **302 (gevonden)**: geeft aan dat de doel resource zich tijdelijk bevindt in een andere URI. Omdat de omleiding mogelijk wordt gewijzigd, moet de client de ingangs-URI voor toekomstige aanvragen blijven gebruiken.
-- **307 (tijdelijke omleiding)**: geeft aan dat de doel resource zich tijdelijk bevindt in een andere URI en dat de gebruikers agent de aanvraag methode niet mag wijzigen als deze een automatische omleiding naar die URI uitvoert. Omdat de omleiding na verloop van tijd kan worden gewijzigd, moet de client de oorspronkelijke ingangs-URI van de aanvraag blijven gebruiken voor toekomstige aanvragen.
-- **308 (permanente omleiding)**: geeft aan dat aan de doel resource een nieuwe permanente URI is toegewezen en dat toekomstige verwijzingen naar deze bron een van de Inge sloten uri's moeten gebruiken. Clients met mogelijkheden voor het bewerken van koppelingen moeten verwijzingen automatisch opnieuw koppelen naar de doel-URI van de aanvraag naar een of meer van de nieuwe referenties die door de server worden verzonden, waar mogelijk.
+- **301 (permanent verplaatst)**: geeft aan dat aan de doel resource een nieuwe permanente URI is toegewezen. In toekomstige verwijzingen naar deze resource wordt een van de Inge sloten Uri's gebruikt. Gebruik 301-status code voor HTTP-naar-HTTPS-omleiding. 
+- **302 (gevonden)**: geeft aan dat de doel resource zich tijdelijk onder een andere URI bevindt. Omdat de omleiding altijd kan worden gewijzigd, moet de client de ingangs-URI voor toekomstige aanvragen blijven gebruiken.
+- **307 (tijdelijke omleiding)**: geeft aan dat de doel resource zich tijdelijk onder een andere URI bevindt. De gebruikers agent mag de aanvraag methode niet wijzigen als deze een automatische omleiding naar die URI doet. Omdat de omleiding na verloop van tijd kan worden gewijzigd, moet de client de oorspronkelijke ingangs-URI van de aanvraag blijven gebruiken voor toekomstige aanvragen.
+- **308 (permanente omleiding)**: geeft aan dat aan de doel resource een nieuwe permanente URI is toegewezen. Alle toekomstige verwijzingen naar deze resource moeten een van de Inge sloten Uri's gebruiken.
 
 ## <a name="redirection-protocol"></a>Omleidings Protocol
-U kunt het protocol instellen dat voor omleiding wordt gebruikt. Zo kunt u een van de meest voorkomende gebruiks voorbeelden van de omleidings functie gebruiken. Dit is het instellen van HTTP-naar-HTTPS-omleiding.
+U kunt het protocol instellen dat voor omleiding wordt gebruikt. De meest voorkomende use cases van de omleidings functie is het instellen van HTTP-naar-HTTPS-omleiding.
 
 - **Alleen https**: Stel het protocol in op https alleen als u het verkeer van http naar https wilt omleiden. De Azure front-deur raadt u aan om de omleiding altijd in te stellen op HTTPS.
-- **Alleen http**: Hiermee wordt de inkomende aanvraag omgeleid naar http. Gebruik deze waarde alleen als u het verkeer HTTP wilt laten, niet-versleuteld.
-- **Overeenkomst aanvragen: met**deze optie behoudt u het protocol dat door de binnenkomende aanvraag wordt gebruikt. Een HTTP-aanvraag blijft dus HTTP en een HTTPS-aanvraag blijft HTTPS post-omleiding.
+- **Alleen http**: stuurt de inkomende aanvraag om naar http. Gebruik deze waarde alleen als u het verkeer HTTP wilt laten, niet-versleuteld.
+- **Overeenkomende aanvraag: met**deze optie wordt het protocol bijgehouden dat door de binnenkomende aanvraag wordt gebruikt. Een HTTP-aanvraag blijft dus HTTP en een HTTPS-aanvraag blijft HTTPS post-omleiding.
 
 ## <a name="destination-host"></a>Doelhost
 Als onderdeel van het configureren van een omleidings routering kunt u de hostnaam of het domein voor de omleidings aanvraag ook wijzigen. U kunt dit veld instellen om de hostnaam in de URL voor de omleiding te wijzigen of op een andere manier de hostnaam van de inkomende aanvraag te behouden. Met dit veld kunt u dus alle aanvragen omleiden die zijn verzonden `https://www.contoso.com/*` naar `https://www.fabrikam.com/*` .
@@ -49,12 +49,9 @@ Als u het pad van een URL als onderdeel van de omleiding wilt vervangen, kunt u 
 U kunt ook de query reeks parameters in de omgeleide URL vervangen. Als u een bestaande query reeks wilt vervangen door de URL van de inkomende aanvraag, stelt u dit veld in op vervangen en stelt u vervolgens de juiste waarde in. Als dat niet het geval is, kunt u de oorspronkelijke reeks query reeksen behouden door het veld in te stellen op ' behouden '. Met dit veld kunt u bijvoorbeeld alle verkeer omleiden dat wordt verzonden naar `https://www.contoso.com/foo/bar` naar `https://www.contoso.com/foo/bar?&utm_referrer=https%3A%2F%2Fwww.bing.com%2F` . 
 
 ## <a name="destination-fragment"></a>Doelfragment
-Het doel fragment is het deel van de URL na ' # ', dat doorgaans door browsers wordt gebruikt om op een specifieke sectie op een pagina te worden gegrond. U kunt dit veld instellen om een fragment toe te voegen aan de omleidings-URL.
+Het doel fragment is het gedeelte van de URL na ' # ', dat door de browser wordt gebruikt om op een specifieke sectie van een webpagina te worden gegrond. U kunt dit veld instellen om een fragment toe te voegen aan de omleidings-URL.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - Lees hoe u [een Front Door maakt](quickstart-create-front-door.md).
 - Lees [hoe Front Door werkt](front-door-routing-architecture.md).
-
-<!--Image references-->
-[1]: ./media/front-door-url-redirect/front-door-url-redirect.png

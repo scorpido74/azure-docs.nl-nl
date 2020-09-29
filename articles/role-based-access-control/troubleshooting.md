@@ -15,12 +15,12 @@ ms.date: 09/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: e504a3ed2d9193bdc85fc08b3ea91c4f4f2c160c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2f96e48d0c7b14178185f751b8c708e75ab3f322
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329501"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441831"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Problemen met Azure RBAC oplossen
 
@@ -63,7 +63,7 @@ $ras.Count
 
     Er zijn twee manieren om deze fout op te lossen. De eerste manier is het toewijzen van de rol van de [Directory lezers](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) aan de Service-Principal zodat deze gegevens in de map kan lezen.
 
-    De tweede manier om deze fout op te lossen is door de roltoewijzing te maken met behulp `--assignee-object-id` van de para meter in plaats van `--assignee` . Als u `--assignee-object-id` Azure cli gebruikt, wordt de Azure AD-zoek opdracht overs Laan. U moet de object-ID van de gebruiker, groep of toepassing ophalen waaraan u de rol wilt toewijzen. Zie [Azure-roltoewijzingen toevoegen of verwijderen met Azure cli](role-assignments-cli.md#new-service-principal)voor meer informatie.
+    De tweede manier om deze fout op te lossen is door de roltoewijzing te maken met behulp `--assignee-object-id` van de para meter in plaats van `--assignee` . Als u `--assignee-object-id` Azure cli gebruikt, wordt de Azure AD-zoek opdracht overs Laan. U moet de object-ID van de gebruiker, groep of toepassing ophalen waaraan u de rol wilt toewijzen. Zie [Azure-roltoewijzingen toevoegen of verwijderen met Azure cli](role-assignments-cli.md#add-role-assignment-for-a-new-service-principal-at-a-resource-group-scope)voor meer informatie.
 
     ```azurecli
     az role assignment create --assignee-object-id 11111111-1111-1111-1111-111111111111  --role "Contributor" --scope "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}"
@@ -150,7 +150,7 @@ Ook als u deze roltoewijzing met behulp van Azure CLI vermeldt, ziet u mogelijk 
 }
 ```
 
-Het is geen probleem om deze roltoewijzingen te verlaten wanneer de beveiligingsprincipal is verwijderd. Als u wilt, kunt u deze roltoewijzingen verwijderen met behulp van stappen die vergelijkbaar zijn met andere roltoewijzingen. Zie [Azure Portal](role-assignments-portal.md#remove-a-role-assignment), [Azure POWERSHELL](role-assignments-powershell.md#remove-a-role-assignment)of [Azure cli](role-assignments-cli.md#remove-a-role-assignment) (Engelstalig) voor meer informatie over het verwijderen van roltoewijzingen
+Het is geen probleem om deze roltoewijzingen te verlaten wanneer de beveiligingsprincipal is verwijderd. Als u wilt, kunt u deze roltoewijzingen verwijderen met behulp van stappen die vergelijkbaar zijn met andere roltoewijzingen. Zie [Azure Portal](role-assignments-portal.md#remove-a-role-assignment), [Azure POWERSHELL](role-assignments-powershell.md#remove-a-role-assignment)of [Azure cli](role-assignments-cli.md#remove-role-assignment) (Engelstalig) voor meer informatie over het verwijderen van roltoewijzingen
 
 Als u in Power shell probeert de roltoewijzingen te verwijderen met de naam van de object-ID en roldefinitie en er meer dan één roltoewijzing overeenkomt met de para meters, wordt het volgende fout bericht weer gegeven: ' de opgegeven informatie is niet toegewezen aan een roltoewijzing '. In de volgende uitvoer ziet u een voor beeld van het fout bericht:
 
@@ -227,7 +227,7 @@ Voor deze items is **Schrijf** toegang tot de **virtuele machine**vereist:
 * Eindpunten  
 * IP-adressen  
 * Disks  
-* Uitbreidingen  
+* Extensies  
 
 Hiervoor is **Schrijf** toegang vereist voor zowel de **virtuele machine**als de **resource groep** (samen met de domein naam) waarin deze zich bevindt:  
 

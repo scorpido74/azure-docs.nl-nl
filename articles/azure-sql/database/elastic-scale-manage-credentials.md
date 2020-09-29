@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
-ms.openlocfilehash: cd33e202a76a5ae55a68d902bb4812dcaaf348aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51439edd1d8c7094a5b857821f632ace9e2dea53
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84047536"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442770"
 ---
 # <a name="credentials-used-to-access-the-elastic-database-client-library"></a>Referenties die worden gebruikt voor toegang tot de Elastic Database-client bibliotheek
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -59,7 +59,7 @@ Let op het gebruik van de **smmReadOnlyConnectionString** voor het gebruik van v
 
 ## <a name="connection-credentials"></a>Verbindingsreferenties
 
-Er zijn aanvullende referenties nodig bij het gebruik van de methode **OpenConnectionForKey** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.listshardmapper.openconnectionforkey), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey)) om toegang te krijgen tot een Shard die is gekoppeld aan een sharding-sleutel. Deze referenties moeten machtigingen geven voor alleen-lezen toegang tot de lokale Shard-toewijzings tabellen die zich op de Shard bevinden. Dit is nodig om verbindings validatie uit te voeren voor gegevens afhankelijke route ring op het Shard. Met dit code fragment kunt u gegevens toegang krijgen in de context van gegevens afhankelijke route ring:
+Er zijn aanvullende referenties nodig bij het gebruik van de methode **OpenConnectionForKey**  ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper.listshardmapper.openconnectionforkey), [.net](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey)) om toegang te krijgen tot een Shard die is gekoppeld aan een sharding-sleutel. Deze referenties moeten machtigingen geven voor alleen-lezen toegang tot de lokale Shard-toewijzings tabellen die zich op de Shard bevinden. Dit is nodig om verbindings validatie uit te voeren voor gegevens afhankelijke route ring op het Shard. Met dit code fragment kunt u gegevens toegang krijgen in de context van gegevens afhankelijke route ring:
 
 ```csharp
 using (SqlConnection conn = rangeMap.OpenConnectionForKey<int>(targetWarehouse, smmUserConnectionString, ConnectionOptions.Validate))
@@ -73,7 +73,7 @@ In dit voor beeld bevat **smmUserConnectionString** de Connection String voor de
 
 Net als bij de beheerders referenties gebruikt u geen waarden in de vorm van username@server . Gebruik in plaats daarvan "username".  Houd er ook rekening mee dat de connection string geen server naam en database naam bevat. Dat komt doordat de **OpenConnectionForKey** -aanroep automatisch de verbinding naar de juiste Shard doorstuurt op basis van de sleutel. Daarom zijn de naam van de data base en de server naam niet gegeven.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 [Databases en aanmeldingen beheren in Azure SQL Database](logins-create-manage.md)
 

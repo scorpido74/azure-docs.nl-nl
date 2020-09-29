@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/12/2019
-ms.openlocfilehash: 049c30613c358bf22616eaa2042a7fd6e42b9f61
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 489b4bfee1eaa2c381b16e88dbcc0bcb7fd8555f
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326032"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441512"
 ---
 # <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>System Center Operations Manager integreren met Azure Monitor voor VM's kaart functie
 
@@ -73,11 +73,11 @@ Ga als volgt te werk om Azure Monitor voor VM's kaart integratie te configureren
 
 6. Optioneel: Selecteer de resource groep alle beheerser vers om te communiceren met Log Analytics en klik vervolgens op **werk ruimte toevoegen**.
 
-    ![De resource groep voor de Operations Manager configuratie](media/service-map-scom/scom-config-pool.png)
+    ![Screen shot van het scherm Server groep in Microsoft Operations Management Suite werk ruimte toevoegen waarvoor alle beheerser vers-resource groep is geselecteerd.](media/service-map-scom/scom-config-pool.png)
 
     Het kan een minuut duren voordat de Log Analytics-werk ruimte is geconfigureerd en geregistreerd. Nadat de configuratie is geconfigureerd, start Operations Manager de eerste synchronisatie van de kaart.
 
-    ![De resource groep voor de Operations Manager configuratie](media/service-map-scom/scom-config-success.png)
+    ![Scherm opname van het venster voltooiing in Microsoft Operations Management Suite werk ruimte toevoegen bevestigen dat de werk ruimte is toegevoegd.](media/service-map-scom/scom-config-success.png)
 
 ## <a name="monitor-integration"></a>Integratie controleren
 
@@ -98,11 +98,11 @@ De map Servicetoewijzing heeft vier knoop punten:
 
 * **Afhankelijkheids weergaven van computer groepen**: een lijst met alle computer groepen die zijn gesynchroniseerd vanuit de kaart functie. U kunt op een wille keurige groep klikken om het gedistribueerde toepassings diagram weer te geven.
 
-    ![Het diagram voor gedistribueerde toepassingen Operations Manager](media/service-map-scom/scom-group-dad.png)
+    ![Scherm opname van Servicetoewijzing een diagram met afbeeldingen weer geven voor elke computer groep en lijnen die de afhankelijkheden ertussen aangeven.](media/service-map-scom/scom-group-dad.png)
 
 * **Server afhankelijkheids weergaven**: een lijst met alle servers die zijn gesynchroniseerd vanuit de kaart functie. U kunt klikken op een wille keurige server om het gedistribueerde toepassings diagram weer te geven.
 
-    ![Het diagram voor gedistribueerde toepassingen Operations Manager](media/service-map-scom/scom-dad.png)
+    ![Scherm opname van Servicetoewijzing een diagram met afbeeldingen weer geven voor elke server en lijnen die de afhankelijkheden ertussen aangeven.](media/service-map-scom/scom-dad.png)
 
 ## <a name="edit-or-delete-the-workspace"></a>De werk ruimte bewerken of verwijderen
 

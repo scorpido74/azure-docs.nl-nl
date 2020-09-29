@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/15/2019
-ms.openlocfilehash: b48fc6ad448b829bb399c151d3f1507c804ad471
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: b26f892d622c66f7746f7938a709650070cad5d5
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605105"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442506"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>Gegevens transformatie expressies in gegevens stroom toewijzen
 
@@ -637,6 +637,10 @@ ___
 Hiermee wordt één getal verhoogd naar de macht van een andere.  
 * ``power(10, 2) -> 100``  
 ___
+### <code>random</code>
+<code><b>random(<i>&lt;value1&gt;</i> : integral) => long</b></code><br/><br/>
+Retourneert een wille keurig getal op basis van een optioneel zaad binnen een partitie. Het Seed moet een vaste waarde zijn en wordt gebruikt in combi natie met de partitionId voor het produceren van wille keurige waarden * ``random(1) == 1 -> false``
+___
 ### <code>reduce</code>
 <code><b>reduce(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : any, <i>&lt;value3&gt;</i> : binaryfunction, <i>&lt;value4&gt;</i> : unaryfunction) => any</b></code><br/><br/>
 Verzamelt elementen in een matrix. Reductie verwacht een verwijzing naar een accumulator en één element in de eerste expressie functie als #acc en #item en verwacht de resulterende waarde als #result die in de tweede expressie functie moet worden gebruikt.  
@@ -741,6 +745,11 @@ ___
 <code><b>sinh(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
 Hiermee wordt een hyperbolische sinus waarde berekend.  
 * ``sinh(0) -> 0.0``  
+___
+### <code>size</code>
+<code><b>size(<i>&lt;value1&gt;</i> : any) => integer</b></code><br/><br/>
+Hiermee wordt de grootte van een matrix of kaart type gezocht * ``size(['element1', 'element2']) -> 2``
+* ``size([1,2,3]) -> 3``
 ___
 ### <code>slice</code>
 <code><b>slice(<i>&lt;array to slice&gt;</i> : array, <i>&lt;from 1-based index&gt;</i> : integral, [<i>&lt;number of items&gt;</i> : integral]) => array</b></code><br/><br/>

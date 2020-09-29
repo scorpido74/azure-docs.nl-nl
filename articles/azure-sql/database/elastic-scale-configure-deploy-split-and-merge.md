@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scale-out
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 1cd03814e1590abebb74db490a2692d492a9207d
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 02ec24677519902c299babb72e089f75dcf8b34b
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88064941"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91443042"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>Een service voor splitsen en samen voegen implementeren om gegevens te verplaatsen tussen Shard-data bases
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -182,7 +182,7 @@ De volgende script bestanden zijn opgenomen:
 1. *SetupSampleSplitMergeEnvironment.ps1* -een gegevenslaag voor een test instellen voor splitsen/samen voegen (Zie de tabel hieronder voor een gedetailleerde beschrijving)
 2. *ExecuteSampleSplitMerge.ps1* -test bewerkingen uitvoeren op de gegevenslaag van de test (Zie de tabel hieronder voor een gedetailleerde beschrijving)
 3. *GetMappings.ps1* -voorbeeld script op het hoogste niveau waarmee de huidige status van de Shard-toewijzingen wordt afgedrukt.
-4. *ShardManagement. psm1* -hulp script dat de SHARDMANAGEMENT-API verpakt
+4. *ShardManagement. psm1*  -hulp script dat de SHARDMANAGEMENT-API verpakt
 5. *SqlDatabaseHelpers. psm1* -hulp script voor het maken en beheren van data bases in SQL database
 
    <table style="width:100%">

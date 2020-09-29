@@ -13,19 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/11/2020
+ms.date: 09/28/2020
 ms.author: allensu
-ms.openlocfilehash: ef1f8966497492f5a4969aca594c43abdf80945c
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 62c1b323899f03a043904f4b10d5fe3bb551e0f4
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612902"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441768"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>Virtuele netwerken ontwerpen met NAT-gatewayresources
 
-NAT-gatewayresources maken deel uit van [Virtual Network NAT](nat-overview.md) en bieden uitgaande internetconnectiviteit voor een of meer subnetten van een virtueel netwerk. Het subnet van het virtuele netwerk geeft aan welke NAT-gateway wordt gebruikt. NAT biedt Source Network Address Translation (SNAT) voor een subnet.  NAT-gatewayresources geven aan welke statische IP-adressen virtuele machines gebruiken bij het maken van uitgaande stromen. Statische IP-adressen zijn afkomstig van resources voor openbare IP-adressen of resources voor openbare IP-voorvoegsels of beide. Als er een resource voor een openbaar IP-voorvoegsel wordt gebruikt, worden alle IP-adressen van de volledige resource voor het openbare IP-voorvoegsel verbruikt door een NAT-gatewayresource. Een NAT-gatewayresource kan in totaal tot zestien statische IP-adressen gebruiken.
-
+NAT-gatewayresources maken deel uit van [Virtual Network NAT](nat-overview.md) en bieden uitgaande internetconnectiviteit voor een of meer subnetten van een virtueel netwerk. Het subnet van het virtuele netwerk geeft aan welke NAT-gateway wordt gebruikt. NAT biedt Source Network Address Translation (SNAT) voor een subnet.  NAT-gatewayresources geven aan welke statische IP-adressen virtuele machines gebruiken bij het maken van uitgaande stromen. Statische IP-adressen zijn afkomstig van open bare IP-adres bronnen (PIP), open bare IP-prefix bronnen of beide. Als er een resource voor een openbaar IP-voorvoegsel wordt gebruikt, worden alle IP-adressen van de volledige resource voor het openbare IP-voorvoegsel verbruikt door een NAT-gatewayresource. Een NAT-gatewayresource kan in totaal tot zestien statische IP-adressen gebruiken.
 
 <p align="center">
   <img src="media/nat-overview/flow-direction1.svg" alt="Figure depicts a NAT gateway resource that consumes all IP addresses for a public IP prefix and directs that traffic to and from two subnets of virtual machines and a virtual machine scale set." width="256" title="Virtual Network NAT voor uitgaand verkeer naar internet">
@@ -231,7 +230,7 @@ Hoewel het scenario lijkt te werken, zijn het statusmodel en de foutmodus niet g
 
 Elke NAT-gatewayresource kan tot 50 Gbps aan doorvoer bieden. U kunt uw implementaties splitsen in meerdere subnetten en een NAT-gateway toewijzen aan elk subnet of groepen subnetten om uit te schalen.
 
-Elke NAT-gateway kan 64.000 verbindingen per toegewezen uitgaand IP-adres ondersteunen.  Raadpleeg de volgende sectie over SNAT (Source Network Address Translation) en het [artikel over problemen oplossen](https://docs.microsoft.com/azure/virtual-network/troubleshoot-nat) voor specifieke richtlijnen voor probleemoplossing.
+Elke NAT-gateway kan 64.000 stromen voor TCP en UDP respectievelijk ondersteunen per toegewezen uitgaand IP-adres.  Raadpleeg de volgende sectie over SNAT (Source Network Address Translation) en het [artikel over problemen oplossen](https://docs.microsoft.com/azure/virtual-network/troubleshoot-nat) voor specifieke richtlijnen voor probleemoplossing.
 
 ## <a name="source-network-address-translation"></a>Source Network Address Translation
 
@@ -239,27 +238,39 @@ Met Source Network Address Translation (SNAT) wordt de bron van een stroom hersc
 
 ### <a name="fundamentals"></a>Basisprincipes
 
-Laten we eens kijken naar een voorbeeld van vier stromen om het basisconcept uit te leggen.  De NAT-gateway maakt gebruik van de resource van het openbare IP-adres 65.52.0.2.
+Laten we eens kijken naar een voorbeeld van vier stromen om het basisconcept uit te leggen.  De NAT-gateway maakt gebruik van de resource 65.52.1.1 van het open bare IP-adres en de virtuele machine maakt verbinding met 65.52.0.1.
 
 | Stroom | Bron-tuple | Doel-tuple |
 |:---:|:---:|:---:|
 | 1 | 192.168.0.16:4283 | 65.52.0.1:80 |
 | 2 | 192.168.0.16:4284 | 65.52.0.1:80 |
 | 3 | 192.168.0.17.5768 | 65.52.0.1:80 |
-| 4 | 192.168.0.16:4285 | 65.52.0.2:80 |
 
 Deze stromen kunnen er als volgt uitzien nadat er een PAT heeft plaatsgevonden:
 
 | Stroom | Bron-tuple | Bron-tuple met SNAT | Doel-tuple | 
 |:---:|:---:|:---:|:---:|
-| 1 | 192.168.0.16:4283 | 65.52.0.2:234 | 65.52.0.1:80 |
-| 2 | 192.168.0.16:4284 | 65.52.0.2:235 | 65.52.0.1:80 |
-| 3 | 192.168.0.17.5768 | 65.52.0.2:236 | 65.52.0.1:80 |
-| 4 | 192.168.0.16:4285 | 65.52.0.2:237 | 65.52.0.2:80 |
+| 1 | 192.168.0.16:4283 | **65.52.1.1:1234** | 65.52.0.1:80 |
+| 2 | 192.168.0.16:4284 | **65.52.1.1:1235** | 65.52.0.1:80 |
+| 3 | 192.168.0.17.5768 | **65.52.1.1:1236** | 65.52.0.1:80 |
 
-Het doel ziet de bron van de stroom als 65.52.0.2 (SNAT-bron-tuple) met de toegewezen poort.  PAT zoals weergegeven in de voorgaande tabel wordt ook een poortmaskerende SNAT genoemd.  Meerdere privé-bronnen worden achter een IP en poort gemaskeerd.
+De doel bron van de stroom wordt weer gegeven als 65.52.0.1 (SNAT-bron-tuple) met de toegewezen poort.  PAT zoals weergegeven in de voorgaande tabel wordt ook een poortmaskerende SNAT genoemd.  Meerdere privé-bronnen worden achter een IP en poort gemaskeerd.  
 
-Besteed niet al te veel aandacht aan de specifieke manier waarop bronpoorten worden toegewezen.  Het voorgaande is alleen maar een illustratie van het fundamentele concept.
+#### <a name="source-snat-port-reuse"></a>Bron (SNAT) opnieuw gebruiken van poort
+
+NAT-gateways gebruiken de bron (SNAT) poorten voor het gebruik van opportunistisch.  Hieronder ziet u dit concept als een extra stroom voor de aan-set stromen.  De virtuele machine in het voor beeld is een stroom naar 65.52.0.2.
+
+| Stroom | Bron-tuple | Doel-tuple |
+|:---:|:---:|:---:|
+| 4 | 192.168.0.16:4285 | 65.52.0.2:80 |
+
+Een NAT-gateway zal stroom 4 waarschijnlijk omzetten naar een poort die ook voor andere bestemmingen kan worden gebruikt.  Zie [schalen](https://docs.microsoft.com/azure/virtual-network/nat-gateway-resource#scaling) voor aanvullende discussies over het correct aanpassen van de grootte van uw IP-adres.
+
+| Stroom | Bron-tuple | Bron-tuple met SNAT | Doel-tuple | 
+|:---:|:---:|:---:|:---:|
+| 4 | 192.168.0.16:4285 | 65.52.1.1:**1234** | 65.52.0.2:80 |
+
+Maak geen afhankelijk van de specifieke manier waarop bron poorten zijn toegewezen in het bovenstaande voor beeld.  Het voorgaande is alleen maar een illustratie van het fundamentele concept.
 
 De door NAT verschafte SNAT wijkt in verschillende opzichten af van [Load Balancer](../load-balancer/load-balancer-outbound-connections.md).
 
@@ -292,7 +303,12 @@ Het schalen van NAT is hoofdzakelijk een functie voor het beheren van de gedeeld
 
 Met SNAT worden privé-adressen toegewezen aan een of meer openbare IP-adressen, waarbij het bronadres en de bronpoort worden herschreven in de processen. Een NAT-gatewayresource maakt voor deze omzetting gebruik van 64.000 poorten (SNAT-poorten) per geconfigureerd openbaar IP-adres. NAT-gatewayresources kunnen tot 16 IP-adressen en 1 miljoen SNAT-poorten schalen. Als er een resource voor een openbaar IP-voorvoegsel wordt opgegeven, levert elk IP-adres in het voorvoegsel SNAT-poortvoorraad. En wanneer meer openbare IP-adressen worden toegevoegd, wordt de beschikbare voorraad van SNAT-poorten ook verhoogd. TCP en UDP zijn afzonderlijke SNAT-poortvoorraden en zijn niet gerelateerd.
 
-NAT-gatewayresources hergebruiken bronpoorten op een opportunistische manier. Voor schaaldoeleinden moet u ervan uitgaan dat voor elke stroom een nieuwe SNAT-poort is vereist en moet u het totale aantal beschikbare IP-adressen voor uitgaand verkeer schalen.
+NAT-gateway bronnen gebruiken de bron (SNAT)-poorten voor een opportunistisch gebruik. Als ontwerp richtlijnen voor schaal baarheid moet u aannemen dat elke stroom een nieuwe SNAT-poort vereist en het totale aantal beschik bare IP-adressen voor uitgaand verkeer kan schalen.  U moet zorgvuldig rekening houden met de schaal die u ontwerpt en het inrichten van IP-adres aantallen overeenkomstig.
+
+De SNAT-poorten naar verschillende bestemmingen worden waarschijnlijk als mogelijk opnieuw gebruikt. En als de methoden voor het afzuigen van de SNAT-poort, kunnen stromen mislukken.  
+
+Zie de [basis principes van SNAT](https://docs.microsoft.com/azure/virtual-network/nat-gateway-resource#source-network-address-translation) voor beeld.
+
 
 ### <a name="protocols"></a>Protocollen
 
@@ -344,11 +360,9 @@ We willen graag weten hoe we de service kunnen verbeteren. Mist u een mogelijkhe
   - [Sjabloon](./quickstart-create-nat-gateway-template.md)
 * Meer informatie over de NAT-gatewayresource-API
   - [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways)
-  - [Azure-CLI](https://docs.microsoft.com/cli/azure/network/nat/gateway?view=azure-cli-latest)
+  - [Azure-CLI](https://docs.microsoft.com/cli/azure/network/nat/gateway)
   - [PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway)
 * Meer informatie over [beschikbaarheidszones](../availability-zones/az-overview.md).
 * Meer informatie over [load balancer van het type Standard](../load-balancer/load-balancer-standard-overview.md).
 * Meer informatie over [beschikbaarheidszones en load balancers van het type Standard](../load-balancer/load-balancer-standard-availability-zones.md).
 * [Vertel ons in UserVoice wat we verder kunnen ontwikkelen voor Virtual Network NAT](https://aka.ms/natuservoice).
-
-
