@@ -9,16 +9,16 @@ ms.date: 04/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: dbd4a80c0f480e51ce7ec248c3b5d3dc523e9d74
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 13c15eeb98b13d0fe9a5b7797ec942209d403cc6
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530740"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447749"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>Een IoT Edge apparaat maken en inrichten met X. 509-certificaten
 
-Met [Azure IOT hub Device Provisioning Service (DPS)](../iot-dps/index.yml)kunt u IOT edge apparaten automatisch inrichten met X. 509-certificaten. Als u niet bekend bent met het proces van automatische inrichting, raadpleegt u het overzicht van [inrichtingen](../iot-dps/about-iot-dps.md#provisioning-process) voordat u doorgaat.
+Met [Azure IOT hub Device Provisioning Service (DPS)](../iot-dps/index.yml)kunt u IOT edge apparaten automatisch inrichten met X. 509-certificaten. Als u niet bekend bent met het proces van automatische inrichting, bekijkt u het overzicht voor [inrichting](../iot-dps/about-iot-dps.md#provisioning-process) voordat u verdergaat.
 
 In dit artikel wordt beschreven hoe u een Device Provisioning Service-inschrijving maakt met behulp van X. 509-certificaten op een IoT Edge apparaat met de volgende stappen:
 
@@ -83,7 +83,7 @@ Wanneer u een inschrijving in DPS maakt, hebt u de mogelijkheid om een **eerste 
 Zie [registratie van apparaten beheren](../iot-dps/how-to-manage-enrollments.md)voor meer informatie over inschrijvingen in de Device Provisioning Service.
 
    > [!TIP]
-   > In de Azure CLI kunt u een [inschrijving](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment) of een [registratie groep](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment-group) maken en de vlag voor **rand ingeschakeld** gebruiken om op te geven dat een apparaat, of groep apparaten, een IOT edge apparaat is.
+   > In de Azure CLI kunt u een [inschrijving](/cli/azure/ext/azure-iot/iot/dps/enrollment) of een [registratie groep](/cli/azure/ext/azure-iot/iot/dps/enrollment-group) maken en de vlag voor **rand ingeschakeld** gebruiken om op te geven dat een apparaat, of groep apparaten, een IOT edge apparaat is.
 
 1. Ga in het [Azure Portal](https://portal.azure.com)naar uw exemplaar van IOT hub Device Provisioning Service.
 

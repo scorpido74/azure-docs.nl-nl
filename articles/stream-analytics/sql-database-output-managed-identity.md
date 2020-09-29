@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/08/2020
-ms.openlocfilehash: 906311452598d592b73a263ce25d0c8c51cc1cc7
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 26644d42e0e51d59c6c28daaba5447a65a43b6a5
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88870184"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460638"
 ---
 # <a name="use-managed-identities-to-access-azure-sql-database-from-an-azure-stream-analytics-job-preview"></a>Beheerde identiteiten gebruiken om toegang te krijgen tot Azure SQL Database vanuit een Azure Stream Analytics-taak (preview-versie)
 
@@ -60,15 +60,15 @@ Nadat u een beheerde identiteit hebt gemaakt, selecteert u een Active Directory 
 
    ![Active Directory beheerder toevoegen](./media/sql-db-output-managed-identity/add-admin.png)
 
-   Op de pagina Active Directory beheer worden alle leden en groepen van uw Active Directory weer gegeven. Gebruikers of groepen die grijs worden weer gegeven, kunnen niet worden geselecteerd, omdat ze niet worden ondersteund als Azure AD-beheerders. Zie de lijst met ondersteunde beheerders in de sectie **functies en beperkingen van Azure AD**   van het [gebruik van Azure Active Directory verificatie voor verificatie met SQL database of Azure Synapse](../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations). Op rollen gebaseerd toegangsbeheer (RBAC) is alleen van toepassing op de portal en wordt niet doorgegeven aan SQL Server. De geselecteerde gebruiker of groep is ook de gebruiker die de **Inge sloten database gebruiker** in de volgende sectie kan maken.
+   Op de pagina Active Directory beheer worden alle leden en groepen van uw Active Directory weer gegeven. Gebruikers of groepen die grijs worden weer gegeven, kunnen niet worden geselecteerd, omdat ze niet worden ondersteund als Azure Active Directory-beheerders. Zie de lijst met ondersteunde beheerders in de sectie **Azure Active Directory functies en beperkingen**   van het [gebruik van Azure Active Directory authenticatie voor verificatie met SQL database of Azure Synapse](../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations). Op rollen gebaseerd toegangsbeheer (RBAC) is alleen van toepassing op de portal en wordt niet doorgegeven aan SQL Server. De geselecteerde gebruiker of groep is ook de gebruiker die de **Inge sloten database gebruiker** in de volgende sectie kan maken.
 
 1. Selecteer **Opslaan** op de pagina **beheer van Active Directory** . Het proces voor het wijzigen van de beheerder duurt enkele minuten.
 
-   Wanneer u de Azure AD-beheerder instelt, kan de nieuwe beheerders naam (gebruiker of groep) niet aanwezig zijn in de virtuele hoofd database als SQL Server authenticatie gebruiker. Indien aanwezig, mislukt de installatie van de Azure AD-beheerder en wordt het maken ervan ongedaan gemaakt, wat aangeeft dat er al een beheerder (naam) bestaat. Omdat de gebruiker van SQL Server authenticatie geen deel uitmaakt van Azure AD, is het mogelijk om verbinding te maken met de server met behulp van Azure AD-verificatie als die gebruiker mislukt. 
+   Wanneer u de Azure Active Directory-beheerder instelt, kan de nieuwe beheerders naam (gebruiker of groep) niet aanwezig zijn in de virtuele primaire Data Base als SQL Server-verificatie gebruiker. Als dit het geval is, mislukt de Azure Active Directory-beheerders installatie en wordt het maken ervan ongedaan gemaakt, wat aangeeft dat er al een beheerder (naam) bestaat. Omdat de gebruiker van SQL Server authenticatie geen deel uitmaakt van Azure Active Directory, is er geen enkele poging om verbinding te maken met de server met behulp van Azure Active Directory-verificatie als die gebruiker mislukt. 
 
 ## <a name="create-a-contained-database-user"></a>Een Inge sloten database gebruiker maken
 
-Vervolgens maakt u een Inge sloten database gebruiker in uw SQL Database die is toegewezen aan de Azure Active Directory identiteit. De Inge sloten database gebruiker heeft geen aanmelding voor de hoofd database, maar wordt toegewezen aan een identiteit in de map die is gekoppeld aan de data base. De identiteit van de Azure Active Directory kan een afzonderlijk gebruikers account of een groep zijn. In dit geval wilt u een Inge sloten database gebruiker voor uw Stream Analytics-taak maken. 
+Vervolgens maakt u een Inge sloten database gebruiker in uw SQL Database die is toegewezen aan de Azure Active Directory identiteit. De Inge sloten database gebruiker heeft geen aanmelding voor de primaire data base, maar wordt toegewezen aan een identiteit in de map die is gekoppeld aan de data base. De identiteit van de Azure Active Directory kan een afzonderlijk gebruikers account of een groep zijn. In dit geval wilt u een Inge sloten database gebruiker voor uw Stream Analytics-taak maken. 
 
 1. Verbinding maken met SQL Database met behulp van SQL Server Management Studio. De **gebruikers naam** is een Azure Active Directory gebruiker met de machtiging voor het **wijzigen van een gebruiker** . De beheerder die u instelt op de SQL Server is een voor beeld. Gebruik **Azure Active Directory-Universal met MFA-** verificatie. 
 

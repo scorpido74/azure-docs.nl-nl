@@ -7,13 +7,13 @@ manager: diviso
 services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: f2e1985dbc0860297b4f11b4d0a53affa26423d0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 09/28/2020
+ms.openlocfilehash: a04712a22536b5811b2465e56995d7b161a15c6b
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495309"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460880"
 ---
 # <a name="connect-azure-time-series-insights-gen-2-to-power-bi"></a>Azure Time Series Insights gen 2 verbinden met Power BI  
 
@@ -33,8 +33,8 @@ Azure Time Series Insights nu naadloos integreert met [Power bi](https://powerbi
 
 Door uw gegevens te koppelen aan Power BI, kunt u nu het volgende doen:
 
-* Voer correlaties uit met andere gegevens bronnen die worden ondersteund door Power BI en open een host van verschillende opties voor gegevens visualisatie. 
-* Maak Power BI Dash boards en rapporten met behulp van uw time series Insight-gegevens en deel ze met uw organisatie. 
+* Voer correlaties uit met andere gegevens bronnen die worden ondersteund door Power BI en open een host van verschillende opties voor gegevens visualisatie.
+* Maak Power BI Dash boards en rapporten met behulp van uw time series Insight-gegevens en deel ze met uw organisatie.
 * U kunt op een eenvoudige en gebruiks vriendelijke manier data Interop-scenario's ontgrendelen en sneller dan ooit gebruikmaken van inzichten.
 * Wijzig Azure Time Series Insights gegevens in Power BI met behulp van de krachtige Geavanceerde editor.
 
@@ -42,19 +42,19 @@ Door uw gegevens te koppelen aan Power BI, kunt u nu het volgende doen:
 
 Het verbinden van uw gegevens duurt minder dan een minuut. Door uw weer gave snel te exporteren vanuit Azure Time Series Insights Explorer naar Power BI, kan iedereen in uw organisatie intuïtief toegang krijgen tot gegevens en deze visueel transformeren.
 
-Configuratie opties zijn onder andere keuze tussen **onbewerkte** en gegevens op **aggregatie niveau** en het selecteren van een gewenst tijds bereik. 
+Configuratie opties zijn onder andere keuze tussen **onbewerkte** en gegevens op **aggregatie niveau** en het selecteren van een gewenst tijds bereik.
 
-Zodra de gegevens zijn verbonden, zijn alle uitgebreide visualisatie-en grafiek hulpprogramma's van Power BI beschikbaar om uw mogelijkheden voor het delen van gegevens verder te verbeteren. 
+Zodra de gegevens zijn verbonden, zijn alle uitgebreide visualisatie-en grafiek hulpprogramma's van Power BI beschikbaar om uw mogelijkheden voor het delen van gegevens verder te verbeteren.
 
    [![Voor beelden van grafieken in Power BI](./media/concepts-connect-power-bi/power-bi-tsi-example.png)](./media/concepts-connect-power-bi/power-bi-tsi-example.png#lightbox)
 
 Lees [hoe u Azure time series Insights verbinding maakt met Power bi](./how-to-connect-power-bi.md) voor specifieke stapsgewijze instructies.
 
 ## <a name="flexible-workflow"></a>Flexibele werk stroom
- 
+
 Gebruik de connector vanaf een wille keurige locatie in uw werk stroom:
 
-* Als u in Azure Time Series Insights Explorer bent, kunt u uw weer gave snel exporteren naar Power BI. 
+* Als u in Azure Time Series Insights Explorer bent, kunt u uw weer gave snel exporteren naar Power BI.
 * Als u zich al in Power BI bevindt, kunt u uw bestaande visualisatie scenario's uitbreiden met behulp van Azure Time Series Insights om gegevens op te vragen.
 
 Voor geavanceerde functies voor het uitvoeren en bewerken van query's in Power BI gebruikt u de Geavanceerde editor van Power BI.

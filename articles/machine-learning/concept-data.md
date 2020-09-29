@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 08/31/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: ac0b3c151b379096ffb60e049d18b8f6219b1445
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: a36c7076de0c4db64b67f4eba38de4daf4213bca
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91359678"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446697"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Beveiligde toegang tot gegevens in Azure Machine Learning
 
@@ -67,7 +67,7 @@ Ondersteunde cloud-gebaseerde opslag Services in azure die als gegevens opslag k
 
 ## <a name="datasets"></a>Gegevenssets
 
-Azure Machine Learning gegevens sets zijn verwijzingen die verwijzen naar de gegevens in uw Storage-service. Ze bevatten geen kopieën van uw dataBy het maken van een Azure Machine Learning-gegevensset, u maakt een verwijzing naar de locatie van de gegevens bron, samen met een kopie van de meta gegevens. 
+Azure Machine Learning gegevens sets geen kopieën zijn van uw data. Door een gegevensset te maken, maakt u een verwijzing naar de gegevens in de opslag service, samen met een kopie van de meta gegevens ervan. 
 
 Omdat gegevens sets worden geëvalueerd als vertraagd, en de huidige locatie blijft bestaan, kunt u
 

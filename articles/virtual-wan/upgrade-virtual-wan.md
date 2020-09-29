@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 11/04/2019
 ms.author: cherylmc
-ms.openlocfilehash: 769aa6c0d546b7a9bcbe355136bad811fb4f47b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6290d89ed0ee539b4df4c2c8bc9070097da98c81
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753308"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447352"
 ---
 # <a name="upgrade-a-virtual-wan-from-basic-to-standard"></a>Een virtueel WAN upgraden van Basic naar Standard
 
@@ -26,13 +26,13 @@ De volgende tabel bevat de configuraties die beschikbaar zijn voor elk WAN-type:
 
 1. Selecteer op de pagina voor uw virtuele WAN **configuratie** om de configuratie pagina te openen.
 
-   ![Virtual WAN-diagram](./media/upgrade-virtual-wan/1.png)
+   ![Scherm opname van de pagina ' configuratie ' met een tekstvak voor informatie over het uitvoeren van een upgrade naar een standaard virtueel WAN dat onderaan wordt gemarkeerd.](./media/upgrade-virtual-wan/1.png)
 2. Selecteer voor het virtuele WAN-type de optie **standaard** in de vervolg keuzelijst.
 
-   ![Virtual WAN-diagram](./media/upgrade-virtual-wan/2.png)
+   ![Scherm opname van de vervolg keuzelijst virtueel WAN-type.](./media/upgrade-virtual-wan/2.png)
 3. Als u een upgrade uitvoert naar een standaard virtueel WAN, kunt u niet terugkeren naar een virtueel WAN. Selecteer **bevestigen** als u een upgrade wilt uitvoeren.
 
-   ![Virtual WAN-diagram](./media/upgrade-virtual-wan/4.png)
+   ![Scherm afbeelding waarin het dialoog venster Upgrade bevestiging wordt weer gegeven.](./media/upgrade-virtual-wan/4.png)
 4. Zodra de wijziging is opgeslagen, ziet uw virtuele WAN-pagina er ongeveer uit in dit voor beeld.
 
    ![Virtual WAN-diagram](./media/upgrade-virtual-wan/5.png)

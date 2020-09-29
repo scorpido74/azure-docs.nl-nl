@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: 2ce2b7dab3e9eb4c9635ce4abc2933fd954844d5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a01f5d2d000ef6e177000828500ef2ab0e26c4ca
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326000"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448186"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>De diagnostische Linux-extensie gebruiken voor het bewaken van metrische gegevens en logboeken
 
@@ -179,7 +179,7 @@ De meest recente versie van de uitbrei ding is **3,0**. **Oude versies (2. x) zi
 >
 > Als u wilt migreren van 2. x naar deze nieuwe versie van de uitbrei ding, moet u de oude extensie verwijderen (onder de naam van de oude uitgever) en vervolgens versie 3 van de uitbrei ding installeren.
 
-Vereisten
+Aanbevelingen:
 
 * Installeer de uitbrei ding met automatische secundaire versie-upgrade ingeschakeld.
   * Geef op de virtuele machines van het klassieke implementatie model ' 3. * ' op als de versie als u de extensie installeert via Azure XPLAT CLI of Power shell.
@@ -219,7 +219,7 @@ U kunt eenvoudig de vereiste SAS-token maken via de Azure Portal.
 1. Maak de juiste secties zoals eerder beschreven
 1. Klik op de knop SAS genereren.
 
-![image](./media/diagnostics-linux/make_sas.png)
+![Scherm afbeelding toont de pagina gedeelde toegangs handtekening met S A S.](./media/diagnostics-linux/make_sas.png)
 
 Kopieer de gegenereerde SA'S naar het veld storageAccountSasToken. Verwijder de toonaangevende vraag teken (?).
 
@@ -777,7 +777,7 @@ De `resourceId` in de configuratie moet overeenkomen met die van de VM of de sch
 
 Gebruik de Azure Portal om prestatie gegevens weer te geven of waarschuwingen in te stellen:
 
-![image](./media/diagnostics-linux/graph_metrics.png)
+![Scherm afbeelding toont de Azure Portal met de gebruikte schijf ruimte op de geselecteerde metrische gegevens en de resulterende grafiek.](./media/diagnostics-linux/graph_metrics.png)
 
 De `performanceCounters` gegevens worden altijd opgeslagen in een Azure Storage tabel. Azure Storage-Api's zijn beschikbaar voor veel talen en platforms.
 
@@ -786,7 +786,7 @@ Gegevens die worden verzonden naar JsonBlob-sinks, worden opgeslagen in blobs in
 Daarnaast kunt u deze hulpprogram ma's voor de gebruikers interface gebruiken om toegang te krijgen tot de gegevens in Azure Storage:
 
 * Visual Studio Server Explorer.
-* [Microsoft Azure Storage Explorer](https://azurestorageexplorer.codeplex.com/ "Azure Opslagverkenner").
+* [Scherm opname toont containers en tabellen in azure Storage Explorer.](https://azurestorageexplorer.codeplex.com/ "Azure Opslagverkenner").
 
 Deze moment opname van een Microsoft Azure Storage Explorer-sessie toont de gegenereerde Azure Storage tabellen en containers van een correct geconfigureerde LAD 3,0-extensie op een test-VM. De installatie kopie komt niet exact overeen met de voor [beeld-LAD 3,0-configuratie](#an-example-lad-30-configuration).
 

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 07/28/2020
+ms.date: 09/28/2020
 ms.author: b-juche
-ms.openlocfilehash: da7aa0889940c560df705e3c47f5ccb1960aee2c
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: bed1375631c017d23ed53b6102c424533237099e
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91361021"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447553"
 ---
 # <a name="delegate-a-subnet-to-azure-netapp-files"></a>Een subnet delegeren aan Azure NetApp Files 
 
@@ -33,7 +33,8 @@ U dient een subnet te delegeren aan Azure NetApp Files.   Als u een volume maakt
    U kunt slechts één gedelegeerd subnet in een VNet hebben. Een NetApp-account kan volumes implementeren in meerdere VNets, elk met een eigen overgedragen subnet.  
 * U kunt geen netwerkbeveiligingsgroep of service-eindpunt in het gedelegeerde subnet toewijzen. Als u dit doet, mislukt het delegeren van het subnet.
 * Toegang tot een volume vanuit een globaal gekoppeld virtueel netwerk wordt momenteel niet ondersteund.
-* Het maken van door de [gebruiker gedefinieerde aangepaste routes](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#custom-routes) op VM-subnetten met een adres voorvoegsel (bestemming) naar een subnet dat is overgedragen aan Azure NetApp files wordt niet ondersteund. Dit heeft gevolgen voor de VM-connectiviteit. Azure NetApp Files maakt een systeem route naar het overgedragen subnet. De route wordt weer gegeven in de **juiste routes** in de route tabel als u deze nodig hebt voor het oplossen van problemen.
+* Door de [gebruiker gedefinieerde routes](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#custom-routes) (udr's) en netwerk beveiligings groepen (nsg's) worden niet ondersteund op gedelegeerde subnetten voor Azure NetApp files. U kunt echter Udr's en Nsg's Toep assen op andere subnetten, zelfs binnen hetzelfde VNet als het subnet dat is overgedragen aan Azure NetApp Files.  
+   Azure NetApp Files maakt een systeem route naar het overgedragen subnet. De route wordt weer gegeven in de **juiste routes** in de route tabel als u deze nodig hebt voor het oplossen van problemen.
 
 ## <a name="steps"></a>Stappen
 

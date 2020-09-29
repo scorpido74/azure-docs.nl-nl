@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: cherylmc
-ms.openlocfilehash: 1f096993645aca6999667af88c91d3f55f79d914
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de3ef63600b36e1bcee8a2f5db8a1c1248524173
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84983050"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445936"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Een site-naar-site-verbinding maken met behulp van Azure Portal (klassiek)
 
@@ -54,7 +54,7 @@ In de voorbeelden in dit artikel worden de volgende waarden gebruikt. U kunt dez
   * Back-end: 10.12.0.0/24 (optioneel voor deze oefening)
 * **Gatewaysubnet**: 10.11.255.0/27
 * **Resourcegroep: **TestRG1
-* **Locatie:** VS - oost
+* **Locatie:** VS-Oost
 * **DNS-server:** 10.11.0.3 (optioneel voor deze oefening)
 * **Lokale sitenaam:** Site2
 * **Clientadresruimte:** de adresruimte op uw on-premises site.
@@ -112,7 +112,7 @@ De lokale site verwijst doorgaans naar uw on-premises locatie. Het bevat het IP-
    - **IP-adres voor de VPN-gateway:** dit is het openbare IP-adres van het VPN-apparaat voor uw on-premises netwerk. Voor het VPN-apparaat is een openbaar IPv4-adres vereist. Geef een geldig openbaar IP-adres op voor het VPN-apparaat waarmee u verbinding wilt maken. Het moet bereikbaar zijn voor Azure. Als u het IP-adres van het VPN-apparaat niet kent, kunt u altijd een tijdelijke aanduiding invoegen (zolang deze maar de indeling van een geldig openbaar IP-adres heeft) en dit later wijzigen.
    - **Clientadresruimte:** vermeld de IP-adresbereiken die u via deze gateway naar het lokale on-premises netwerk wilt routeren. U kunt meerdere adresruimtebereiken toevoegen. Zorg ervoor dat de hier opgegeven bereiken niet overlappen met bereiken van andere netwerken waarmee uw virtuele netwerk is verbonden of met de adresbereiken van het virtuele netwerk zelf.
 
-   ![Lokale site](./media/vpn-gateway-howto-site-to-site-classic-portal/localnetworksite.png "Lokale site configureren")
+   ![Scherm opname van de Windows-weer gave ' nieuwe VPN-verbinding en ' lokale site '.](./media/vpn-gateway-howto-site-to-site-classic-portal/localnetworksite.png)
 
 Klik op **OK** om de pagina lokale site te sluiten. **Klik niet op OK om de pagina nieuwe VPN-verbinding te sluiten**.
 

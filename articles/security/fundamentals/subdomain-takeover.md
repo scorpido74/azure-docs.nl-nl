@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/23/2020
+ms.date: 09/29/2020
 ms.author: memildin
-ms.openlocfilehash: c0494fe39f8ae64ba65db4e3cd728069aa4a5052
-ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
+ms.openlocfilehash: bde4b21f9dfff62ef43afc9c9d8e5a858631d304
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91403208"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447377"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>Dangling DNS-vermeldingen voor komen en de overname van subdomeinen voor komen
 
@@ -107,11 +107,13 @@ Voer de query uit als een gebruiker met:
 - ten minste toegang op lezerniveau tot de Azure-abonnementen
 - Lees toegang tot Azure-resource grafiek
 
-Als u een globale beheerder van de Tenant van uw organisatie bent, kunt u uw account verhogen om toegang te hebben tot al het abonnement van uw organisatie met behulp van de richt lijnen in [toegang verhogen om alle Azure-abonnementen en-beheer groepen te beheren](https://docs.microsoft.com/azure/role-based-access-control/elevate-access-global-admin).
+Als u een globale beheerder van de Tenant van uw organisatie bent, kunt u uw account verhogen om toegang te hebben tot al het abonnement van uw organisatie met behulp van de richt lijnen in [toegang verhogen om alle Azure-abonnementen en-beheer groepen te beheren](../../role-based-access-control/elevate-access-global-admin.md).
 
 
 > [!TIP]
-> Azure resource Graph heeft beperkingen en paginerings limieten waarmee u rekening moet houden als u een grote Azure-omgeving hebt. [Meer informatie](https://docs.microsoft.com/azure/governance/resource-graph/concepts/work-with-data) over het werken met grote Azure-resource gegevens sets. 
+> Azure resource Graph heeft beperkingen en paginerings limieten waarmee u rekening moet houden als u een grote Azure-omgeving hebt. 
+> 
+> [Meer informatie over het werken met grote Azure-resource gegevens sets](../../governance/resource-graph/concepts/work-with-data.md).
 > 
 > Het hulp programma gebruikt abonnements batches om deze beperkingen te voor komen.
 
@@ -145,7 +147,7 @@ Sommige functies van Azure Services bieden ondersteuning bij het maken van preve
 
 ### <a name="use-azure-dns-alias-records"></a>Azure DNS alias records gebruiken
 
-De [alias records](https://docs.microsoft.com/azure/dns/dns-alias#scenarios) van Azure DNS kunnen Dangling-verwijzingen verhinderen door de levens cyclus van een DNS-record te koppelen aan een Azure-resource. Denk bijvoorbeeld aan een DNS-record die is gekwalificeerd als alias record om te verwijzen naar een openbaar IP-adres of een Traffic Manager profiel. Als u deze onderliggende bronnen verwijdert, wordt de DNS-alias record een lege recordset. Er wordt niet langer verwezen naar de verwijderde resource. Het is belang rijk te weten dat er beperkingen zijn voor wat u met alias records kunt beveiligen. De lijst is nu beperkt tot:
+De [alias records](../../dns/dns-alias.md#scenarios) van Azure DNS kunnen Dangling-verwijzingen verhinderen door de levens cyclus van een DNS-record te koppelen aan een Azure-resource. Denk bijvoorbeeld aan een DNS-record die is gekwalificeerd als alias record om te verwijzen naar een openbaar IP-adres of een Traffic Manager profiel. Als u deze onderliggende bronnen verwijdert, wordt de DNS-alias record een lege recordset. Er wordt niet langer verwezen naar de verwijderde resource. Het is belang rijk te weten dat er beperkingen zijn voor wat u met alias records kunt beveiligen. De lijst is nu beperkt tot:
 
 - Azure Front Door
 - Traffic Manager-profielen
@@ -154,7 +156,7 @@ De [alias records](https://docs.microsoft.com/azure/dns/dns-alias#scenarios) van
 
 Ondanks de beperkte service aanbiedingen van vandaag, raden we u aan om, indien mogelijk, alias records te gebruiken om te beschermen tegen de overname van subdomeinen.
 
-Meer [informatie](https://docs.microsoft.com/azure/dns/dns-alias#capabilities) over de mogelijkheden van de alias records van Azure DNS.
+Meer [informatie over de mogelijkheden van de alias records van Azure DNS](../../dns/dns-alias.md#capabilities).
 
 
 
@@ -164,7 +166,7 @@ Maak een asuid bij het maken van DNS-vermeldingen voor Azure App Service. subdom
 
 Met deze records wordt niet voor komen dat iemand de Azure App Service maakt met dezelfde naam in de CNAME-vermelding. Zonder de mogelijkheid om eigenaar te worden van de domein naam, kunnen Threat actors geen verkeer ontvangen of de inhoud beheren.
 
-Meer [informatie](https://docs.microsoft.com/Azure/app-service/app-service-web-tutorial-custom-domain) over het toewijzen van een bestaande aangepaste DNS-naam aan Azure app service.
+Meer [informatie over het toewijzen van een bestaande aangepaste DNS-naam aan Azure app service](../../app-service/app-service-web-tutorial-custom-domain.md).
 
 
 
@@ -178,13 +180,13 @@ Het is vaak tot ontwikkel aars en operationele teams om opschoon processen uit t
 
     - Plaats ' DNS-vermelding verwijderen ' in de lijst met vereiste controles bij het buiten gebruik stellen van een service.
 
-    - Plaats [Verwijder vergrendelingen](https://docs.microsoft.com/azure/azure-resource-manager/management/lock-resources) op alle resources met een aangepaste DNS-vermelding. Een verwijderings vergrendeling fungeert als een indicator die de toewijzing moet verwijderen voordat de inrichting van de resource ongedaan wordt gemaakt. Maat staven zoals deze kunnen alleen worden gebruikt in combi natie met interne onderwijs Programma's.
+    - Plaats [Verwijder vergrendelingen](../../azure-resource-manager/management/lock-resources.md) op alle resources met een aangepaste DNS-vermelding. Een verwijderings vergrendeling fungeert als een indicator die de toewijzing moet verwijderen voordat de inrichting van de resource ongedaan wordt gemaakt. Maat staven zoals deze kunnen alleen worden gebruikt in combi natie met interne onderwijs Programma's.
 
 - **Procedures voor detectie maken:**
 
     - Controleer uw DNS-records regel matig om ervoor te zorgen dat uw subdomeinen allemaal zijn toegewezen aan Azure-resources die:
 
-        - Existing: Query's uitvoeren op uw DNS-zones voor resources die verwijzen naar Azure-subdomeinen, zoals *. azurewebsites.net of *. cloudapp.azure.com (Zie [deze lijst met verwijzingen](azure-domains.md)).
+        - Existing: Query's uitvoeren op uw DNS-zones voor resources die verwijzen naar Azure-subdomeinen, zoals *. azurewebsites.net of *. cloudapp.azure.com (Zie de [naslag lijst van Azure-domeinen](azure-domains.md)).
         - U bent eigenaar van de resources die zijn gericht op uw DNS-subdomeinen.
 
     - Onderhoud van een service catalogus van uw Azure Fully Qualified Domain Name (FQDN)-eind punten en de eigen aren van de toepassing. Als u uw service catalogus wilt maken, voert u het volgende Azure resource Graph-query script uit. Dit script projecteert de FQDN-eindpunt gegevens van de resources waartoe u toegang hebt en voert deze uit in een CSV-bestand. Als u toegang hebt tot alle abonnementen voor uw Tenant, beschouwt het script al deze abonnementen, zoals wordt weer gegeven in het volgende voorbeeld script. Als u de resultaten wilt beperken tot een specifieke set abonnementen, bewerkt u het script zoals wordt weer gegeven.
@@ -200,8 +202,8 @@ Het is vaak tot ontwikkel aars en operationele teams om opschoon processen uit t
 
 Zie de volgende pagina's voor meer informatie over gerelateerde services en Azure-functies die u kunt gebruiken om te beschermen tegen de overname van subdomeinen.
 
-- [Azure DNS ondersteunt het gebruik van alias records voor aangepaste domeinen](https://docs.microsoft.com/azure/dns/dns-alias#prevent-dangling-dns-records)
+- [Dangling DNS-records met Azure DNS voor komen](../../dns/dns-alias.md#prevent-dangling-dns-records)
 
-- [De domein verificatie-ID gebruiken bij het toevoegen van aangepaste domeinen in Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-domain#get-domain-verification-id) 
+- [Een domein verificatie-ID gebruiken bij het toevoegen van aangepaste domeinen in Azure App Service](../../app-service/app-service-web-tutorial-custom-domain.md#get-a-domain-verification-id)
 
-- [Quickstart: Uw eerste Resource Graph-query uitvoeren met Azure PowerShell](https://docs.microsoft.com/azure/governance/resource-graph/first-query-powershell)
+- [Quickstart: Uw eerste Resource Graph-query uitvoeren met Azure PowerShell](../../governance/resource-graph/first-query-powershell.md)

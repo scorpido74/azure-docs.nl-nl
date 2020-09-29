@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/17/2020
+ms.date: 09/25/2020
 ms.author: ryanwi
-ms.custom: aaddev, identityplatformtop40
+ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 2f6ade3a01022bf3bcc4d6b522e45ae98fe29b33
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c5866ddfee049499a4179505e0c1a206b1c68945
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258409"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447308"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Configureer bare levens duur van tokens in micro soft Identity platform (preview-versie)
 
@@ -46,11 +46,11 @@ Clients gebruiken toegangs tokens om toegang te krijgen tot een beveiligde bron.
 
 ### <a name="saml-tokens"></a>SAML-tokens
 
-SAML-tokens worden gebruikt door veel op internet gebaseerde SAAS-toepassingen en worden verkregen met behulp van het SAML2-protocol eindpunt van Azure Active Directory. Ze worden ook gebruikt door toepassingen die gebruikmaken van WS-Federation. De standaard levensduur van het token is 1 uur. Vanuit het oogpunt van een toepassing wordt de geldigheids periode van het token opgegeven door de NotOnOrAfter-waarde van het `<conditions …>` element in het token. Nadat de geldigheids periode van het token is beëindigd, moet de client een nieuwe verificatie aanvraag initiëren, die vaak wordt vervuld zonder interactief aanmelden als gevolg van de sessie token voor eenmalige aanmelding (SSO).
+SAML-tokens worden gebruikt door veel web-gebaseerde SAAS-toepassingen en worden verkregen met behulp van het SAML2-protocol eindpunt van Azure Active Directory. Ze worden ook gebruikt door toepassingen die gebruikmaken van WS-Federation. De standaard levensduur van het token is 1 uur. Vanuit het oogpunt van een toepassing wordt de geldigheids periode van het token opgegeven door de NotOnOrAfter-waarde van het `<conditions …>` element in het token. Nadat de geldigheids periode van het token is beëindigd, moet de client een nieuwe verificatie aanvraag initiëren, die vaak wordt vervuld zonder interactief aanmelden als gevolg van de sessie token voor eenmalige aanmelding (SSO).
 
 De waarde van NotOnOrAfter kan worden gewijzigd met behulp `AccessTokenLifetime` van de para meter in een `TokenLifetimePolicy` . Deze wordt ingesteld op de levens duur die in het beleid is geconfigureerd, plus een klok scheefheid factor van vijf minuten.
 
-Houd er rekening mee dat de bevestiging van de NotOnOrAfter die is opgegeven in het- `<SubjectConfirmationData>` element niet wordt beïnvloed door de configuratie van de levens duur van het token. 
+De bevestigings NotOnOrAfter die in het `<SubjectConfirmationData>` element is opgegeven, wordt niet beïnvloed door de configuratie van de levens duur van het token. 
 
 ### <a name="refresh-tokens"></a>Tokens vernieuwen
 
@@ -103,7 +103,7 @@ Beleid voor levens duur van tokens is een type beleids object dat de levens duur
 | De maximale inactieve tijd voor het vernieuwen van het token (uitgegeven voor vertrouwelijke clients) |Tokens vernieuwen (uitgegeven voor vertrouwelijke clients) |90 dagen |
 | Maximale leeftijd van het vernieuwings token (uitgegeven voor vertrouwelijke clients) |Tokens vernieuwen (uitgegeven voor vertrouwelijke clients) |Until-ingetrokken |
 
-* <sup>1</sup> federatieve gebruikers die onvoldoende intrekkings gegevens hebben, zijn alle gebruikers die het kenmerk ' LastPasswordChangeTimestamp ' niet hebben gesynchroniseerd. Deze gebruikers krijgen dit korte maximum leeftijd omdat AAD niet kan verifiëren wanneer tokens worden ingetrokken die zijn gekoppeld aan een oude referentie (zoals een wacht woord dat is gewijzigd) en om ervoor te zorgen dat de gebruiker en de bijbehorende tokens nog steeds in goede staat zijn. Om deze ervaring te verbeteren, moeten Tenant beheerders ervoor zorgen dat ze het kenmerk ' LastPasswordChangeTimestamp ' synchroniseren (dit kan worden ingesteld voor het gebruikers object met behulp van Power shell of via AADSync).
+* <sup>1</sup> federatieve gebruikers die onvoldoende intrekkings gegevens hebben, zijn alle gebruikers die het kenmerk ' LastPasswordChangeTimestamp ' niet hebben gesynchroniseerd. Deze gebruikers krijgen deze korte maximale leeftijd omdat Azure Active Directory niet kan controleren wanneer tokens worden ingetrokken die zijn gekoppeld aan een oude referentie (zoals een wacht woord dat is gewijzigd) en om ervoor te zorgen dat de gebruiker en de bijbehorende tokens nog steeds in goede staat zijn. Om deze ervaring te verbeteren, moeten Tenant beheerders ervoor zorgen dat ze het kenmerk ' LastPasswordChangeTimestamp ' synchroniseren (dit kan worden ingesteld voor het gebruikers object met behulp van Power shell of via AADSync).
 
 ### <a name="policy-evaluation-and-prioritization"></a>Beleids evaluatie en prioriteits aanduiding
 U kunt een token levensduur beleid maken en vervolgens toewijzen aan een specifieke toepassing, aan uw organisatie en aan service-principals. Meerdere beleids regels zijn mogelijk van toepassing op een specifieke toepassing. De levens duur van het token beleid dat van kracht is volgt deze regels:
@@ -382,170 +382,37 @@ In dit voor beeld maakt u een paar beleids regels om te leren hoe het prioriteit
 
 ## <a name="cmdlet-reference"></a>Cmdlet-naslaginformatie
 
+Dit zijn de cmdlets in de [module Azure Active Directory Power shell voor Graph preview](/powershell/module/azuread/?view=azureadps-2.0-preview#service-principals&preserve-view=true&preserve-view=true).
+
 ### <a name="manage-policies"></a>Beleid beheren
 
 U kunt de volgende cmdlets gebruiken voor het beheren van beleids regels.
 
-#### <a name="new-azureadpolicy"></a>New-AzureADPolicy
-
-Hiermee maakt u een nieuw beleid.
-
-```powershell
-New-AzureADPolicy -Definition <Array of Rules> -DisplayName <Name of Policy> -IsOrganizationDefault <boolean> -Type <Policy Type>
-```
-
-| Parameters | Beschrijving | Voorbeeld |
-| --- | --- | --- |
-| <code>&#8209;Definition</code> |Matrix van stringified JSON die alle regels van het beleid bevat. | `-Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"20:00:00"}}')` |
-| <code>&#8209;DisplayName</code> |De teken reeks van de beleids naam. |`-DisplayName "MyTokenPolicy"` |
-| <code>&#8209;IsOrganizationDefault</code> |Indien waar, wordt het beleid ingesteld als standaard beleid van de organisatie. Als onwaar is, gebeurt er niets. |`-IsOrganizationDefault $true` |
-| <code>&#8209;Type</code> |Type beleid. Gebruik altijd ' TokenLifetimePolicy ' voor de levens duur van tokens. | `-Type "TokenLifetimePolicy"` |
-| <code>&#8209;AlternativeIdentifier</code> Beschrijving |Hiermee stelt u een alternatieve ID voor het beleid in. |`-AlternativeIdentifier "myAltId"` |
-
-</br></br>
-
-#### <a name="get-azureadpolicy"></a>Get-AzureADPolicy
-Hiermee haalt u alle Azure AD-beleids regels of een opgegeven beleid op.
-
-```powershell
-Get-AzureADPolicy
-```
-
-| Parameters | Beschrijving | Voorbeeld |
-| --- | --- | --- |
-| <code>&#8209;Id</code> Beschrijving |**ObjectId (id)** van het beleid dat u wilt. |`-Id <ObjectId of Policy>` |
-
-</br></br>
-
-#### <a name="get-azureadpolicyappliedobject"></a>Get-AzureADPolicyAppliedObject
-Hiermee worden alle apps en service-principals opgehaald die zijn gekoppeld aan een beleid.
-
-```powershell
-Get-AzureADPolicyAppliedObject -Id <ObjectId of Policy>
-```
-
-| Parameters | Beschrijving | Voorbeeld |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |**ObjectId (id)** van het beleid dat u wilt. |`-Id <ObjectId of Policy>` |
-
-</br></br>
-
-#### <a name="set-azureadpolicy"></a>Set-AzureADPolicy
-Hiermee wordt een bestaand beleid bijgewerkt.
-
-```powershell
-Set-AzureADPolicy -Id <ObjectId of Policy> -DisplayName <string>
-```
-
-| Parameters | Beschrijving | Voorbeeld |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |**ObjectId (id)** van het beleid dat u wilt. |`-Id <ObjectId of Policy>` |
-| <code>&#8209;DisplayName</code> |De teken reeks van de beleids naam. |`-DisplayName "MyTokenPolicy"` |
-| <code>&#8209;Definition</code> Beschrijving |Matrix van stringified JSON die alle regels van het beleid bevat. |`-Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"20:00:00"}}')` |
-| <code>&#8209;IsOrganizationDefault</code> Beschrijving |Indien waar, wordt het beleid ingesteld als standaard beleid van de organisatie. Als onwaar is, gebeurt er niets. |`-IsOrganizationDefault $true` |
-| <code>&#8209;Type</code> Beschrijving |Type beleid. Gebruik altijd ' TokenLifetimePolicy ' voor de levens duur van tokens. |`-Type "TokenLifetimePolicy"` |
-| <code>&#8209;AlternativeIdentifier</code> Beschrijving |Hiermee stelt u een alternatieve ID voor het beleid in. |`-AlternativeIdentifier "myAltId"` |
-
-</br></br>
-
-#### <a name="remove-azureadpolicy"></a>Remove-AzureADPolicy
-Hiermee verwijdert u het opgegeven beleid.
-
-```powershell
- Remove-AzureADPolicy -Id <ObjectId of Policy>
-```
-
-| Parameters | Beschrijving | Voorbeeld |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |**ObjectId (id)** van het beleid dat u wilt. | `-Id <ObjectId of Policy>` |
-
-</br></br>
+| Cmdlet | Beschrijving | 
+| --- | --- |
+| [New-AzureADPolicy](/powershell/module/azuread/new-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) | Hiermee maakt u een nieuw beleid. |
+| [Get-AzureADPolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) | Hiermee haalt u alle Azure AD-beleids regels of een opgegeven beleid op. |
+| [Get-AzureADPolicyAppliedObject](/powershell/module/azuread/get-azureadpolicyappliedobject?view=azureadps-2.0-preview&preserve-view=true) | Hiermee worden alle apps en service-principals opgehaald die zijn gekoppeld aan een beleid. |
+| [Set-AzureADPolicy](/powershell/module/azuread/set-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) | Hiermee wordt een bestaand beleid bijgewerkt. |
+| [Remove-AzureADPolicy](/powershell/module/azuread/remove-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) | Hiermee verwijdert u het opgegeven beleid. |
 
 ### <a name="application-policies"></a>Toepassingsbeleid
 U kunt de volgende cmdlets voor toepassings beleid gebruiken.</br></br>
 
-#### <a name="add-azureadapplicationpolicy"></a>Add-AzureADApplicationPolicy
-Hiermee wordt het opgegeven beleid gekoppeld aan een toepassing.
-
-```powershell
-Add-AzureADApplicationPolicy -Id <ObjectId of Application> -RefObjectId <ObjectId of Policy>
-```
-
-| Parameters | Beschrijving | Voorbeeld |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |**ObjectId (id)** van de toepassing. | `-Id <ObjectId of Application>` |
-| <code>&#8209;RefObjectId</code> |**ObjectId** van het beleid. | `-RefObjectId <ObjectId of Policy>` |
-
-</br></br>
-
-#### <a name="get-azureadapplicationpolicy"></a>Get-AzureADApplicationPolicy
-Hiermee wordt het beleid opgehaald dat is toegewezen aan een toepassing.
-
-```powershell
-Get-AzureADApplicationPolicy -Id <ObjectId of Application>
-```
-
-| Parameters | Beschrijving | Voorbeeld |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |**ObjectId (id)** van de toepassing. | `-Id <ObjectId of Application>` |
-
-</br></br>
-
-#### <a name="remove-azureadapplicationpolicy"></a>Remove-AzureADApplicationPolicy
-Hiermee verwijdert u een beleid van een toepassing.
-
-```powershell
-Remove-AzureADApplicationPolicy -Id <ObjectId of Application> -PolicyId <ObjectId of Policy>
-```
-
-| Parameters | Beschrijving | Voorbeeld |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |**ObjectId (id)** van de toepassing. | `-Id <ObjectId of Application>` |
-| <code>&#8209;PolicyId</code> |**ObjectId** van het beleid. | `-PolicyId <ObjectId of Policy>` |
-
-</br></br>
+| Cmdlet | Beschrijving | 
+| --- | --- |
+| [Add-AzureADApplicationPolicy](/powershell/module/azuread/add-azureadapplicationpolicy?view=azureadps-2.0-preview&preserve-view=true) | Hiermee wordt het opgegeven beleid gekoppeld aan een toepassing. |
+| [Get-AzureADApplicationPolicy](/powershell/module/azuread/get-azureadapplicationpolicy?view=azureadps-2.0-preview&preserve-view=true) | Hiermee wordt het beleid opgehaald dat is toegewezen aan een toepassing. |
+| [Remove-AzureADApplicationPolicy](/powershell/module/azuread/remove-azureadapplicationpolicy?view=azureadps-2.0-preview&preserve-view=true) | Hiermee verwijdert u een beleid van een toepassing. |
 
 ### <a name="service-principal-policies"></a>Service-Principal-beleid
 U kunt de volgende cmdlets gebruiken voor Service Principal-beleids regels.
 
-#### <a name="add-azureadserviceprincipalpolicy"></a>Add-AzureADServicePrincipalPolicy
-Hiermee wordt het opgegeven beleid gekoppeld aan een service-principal.
-
-```powershell
-Add-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal> -RefObjectId <ObjectId of Policy>
-```
-
-| Parameters | Beschrijving | Voorbeeld |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |**ObjectId (id)** van de toepassing. | `-Id <ObjectId of Application>` |
-| <code>&#8209;RefObjectId</code> |**ObjectId** van het beleid. | `-RefObjectId <ObjectId of Policy>` |
-
-</br></br>
-
-#### <a name="get-azureadserviceprincipalpolicy"></a>Get-AzureADServicePrincipalPolicy
-Hiermee wordt een beleid opgehaald dat is gekoppeld aan de opgegeven service-principal.
-
-```powershell
-Get-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>
-```
-
-| Parameters | Beschrijving | Voorbeeld |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |**ObjectId (id)** van de toepassing. | `-Id <ObjectId of Application>` |
-
-</br></br>
-
-#### <a name="remove-azureadserviceprincipalpolicy"></a>Remove-AzureADServicePrincipalPolicy
-Hiermee verwijdert u het beleid van de opgegeven service-principal.
-
-```powershell
-Remove-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>  -PolicyId <ObjectId of Policy>
-```
-
-| Parameters | Beschrijving | Voorbeeld |
-| --- | --- | --- |
-| <code>&#8209;Id</code> |**ObjectId (id)** van de toepassing. | `-Id <ObjectId of Application>` |
-| <code>&#8209;PolicyId</code> |**ObjectId** van het beleid. | `-PolicyId <ObjectId of Policy>` |
+| Cmdlet | Beschrijving | 
+| --- | --- |
+| [Add-AzureADServicePrincipalPolicy](/powershell/module/azuread/add-azureadserviceprincipalpolicy?view=azureadps-2.0-preview&preserve-view=true) | Hiermee wordt het opgegeven beleid gekoppeld aan een service-principal. |
+| [Get-AzureADServicePrincipalPolicy](/powershell/module/azuread/get-azureadserviceprincipalpolicy?view=azureadps-2.0-preview&preserve-view=true) | Hiermee wordt een beleid opgehaald dat is gekoppeld aan de opgegeven service-principal.|
+| [Remove-AzureADServicePrincipalPolicy](/powershell/module/azuread/remove-azureadserviceprincipalpolicy?view=azureadps-2.0-preview&preserve-view=true) | Hiermee verwijdert u het beleid van de opgegeven service-principal.|
 
 ## <a name="license-requirements"></a>Licentievereisten
 

@@ -9,12 +9,12 @@ ms.custom: vs-azure, devx-track-csharp
 ms.topic: how-to
 ms.date: 08/07/2019
 ms.author: ghogen
-ms.openlocfilehash: d0d0465e2e60945649958911c508e06aee877ac9
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: addccf337f82b1695c76ae975c4a33f44ba50f8a
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378862"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448139"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Key Vault toevoegen aan uw web-app met behulp van Visual Studio Connected Services
 
@@ -189,6 +189,9 @@ Heeft betrekking op het project bestand .NET `packages.config` -verwijzingen en 
 | NET NuGet | Azure. Identity |
 | NET NuGet | Azure. Security. de sleutel kluis. Keys |
 | NET NuGet | Azure. Security. de sleutel kluis. geheimen |
+
+> [!IMPORTANT] 
+> Standaard is Azure. Identity 1.1.1 geïnstalleerd, dat geen ondersteuning biedt voor Visual Studio-referentie. U kunt pakket verwijzingen hand matig bijwerken naar 1.2 + Visual Studio-referentie gebruiken.
 
 ### <a name="added-files-for-aspnet-framework"></a>Bestanden toegevoegd voor ASP.NET Framework
 

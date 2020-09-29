@@ -4,12 +4,12 @@ description: Vind antwoorden op veelgestelde vragen over het maken van back-ups 
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 9c6e99b81ce10cfabd4109bb18376b2579edef20
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: 6abfdb09fe16272e870fff517359759968417f79
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500331"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461220"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Veelgestelde vragen over SQL Server-data bases die worden uitgevoerd op een back-up van Azure VM
 
@@ -101,6 +101,10 @@ U kunt de data base selecteren, waarvan de naam nu wordt gewijzigd en er beveili
 Een Data Base die u [aan een niet-beveiligd exemplaar toevoegt](backup-sql-server-database-azure-vms.md#enable-auto-protection) , wordt mogelijk niet direct weer gegeven onder beveiligde items. Dat komt doordat de detectie doorgaans om de 8 uur wordt uitgevoerd. U kunt echter direct nieuwe data bases detecteren en beveiligen als u hand matig een detectie uitvoert door **Rediscover db's**te selecteren, zoals wordt weer gegeven in de volgende afbeelding:
 
   ![Een nieuw toegevoegde data base hand matig detecteren](./media/backup-azure-sql-database/view-newly-added-database.png)
+  
+## <a name="can-i-protect-databases-that-have-tde-transparent-data-encryption-turned-on-and-will-the-database-stay-encrypted-through-the-entire-backup-process"></a>Kan ik data bases beveiligen waarvoor TDE (Transparent Data Encryption) is ingeschakeld en de data base wordt versleuteld met het hele back-upproces?
+
+Ja, Azure Backup ondersteunt back-ups van SQL Server-data bases of-server waarop TDE is ingeschakeld. Backup ondersteunt [TDe](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-2017) met sleutels die worden beheerd door Azure, of met door de klant beheerde sleutels (BYOK).  Backup voert geen SQL-versleuteling uit als onderdeel van het back-upproces zodat de data base versleuteld blijft wanneer er een back-up wordt gemaakt.
 
 ## <a name="next-steps"></a>Volgende stappen
 

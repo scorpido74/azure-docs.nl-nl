@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: b50f6c4b2ed86b950e68cf8c55b63af687ff9ead
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e0d6694d44fdac9958acdf70be067348fadde57f
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91298046"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461237"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Taal-en spraak ondersteuning voor de spraak service
 
@@ -41,13 +41,11 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | `ar-AE` | Arabisch (Verenigde Arabische Emiraten)     | Taalmodel                                    |
 | `ar-BH` | Arabisch (Bahrein), modern, standaard | Taalmodel                                    |
 | `ar-EG` | Arabisch (Egypte)                    | Taalmodel                                    |
-| `ar-IL` | Arabisch (Israël)                   | No                                                |
 | `ar-IQ` | Arabisch (Irak)                     | Taalmodel                                    |
 | `ar-JO` | Arabisch (Jordanië)                   | Taalmodel                                    |
 | `ar-KW` | Arabisch (Koeweit)                   | Taalmodel                                    |
 | `ar-LB` | Arabisch (Libanon)                  | Taalmodel                                    |
 | `ar-OM` | Arabisch (Oman)                     | Taalmodel                                    |
-| `ar-PS` | Arabisch (status van Palestijnse)       | No                                                |
 | `ar-QA` | Arabisch (Qatar)                    | Taalmodel                                    |
 | `ar-SA` | Arabisch (Saoedi-Arabië)             | Taalmodel                                    |
 | `ar-SY` | Arabisch (Syrië)                    | Taalmodel                                    |
@@ -182,7 +180,7 @@ Zie [regio's](regions.md#standard-and-neural-voices)voor meer informatie over re
 | `it-IT` <sup>Nieuw</sup> | Italiaans (Italië) | Man | `it-IT-DiegoNeural` | Algemeen |
 | `ja-JP` | Japans (Japan) | Vrouw | `ja-JP-NanamiNeural` | Algemeen |
 | `ja-JP` <sup>Nieuw</sup> | Japans (Japan) | Man | `ja-JP-KeitaNeural` | Algemeen |
-| `ko-KR` | Koreaans (Zuid-Korea) | Vrouw | `ko-KR-SunHiNeural` | Algemeen |
+| `ko-KR` | Koreaans (Korea) | Vrouw | `ko-KR-SunHiNeural` | Algemeen |
 | `ko-KR` <sup>Nieuw</sup> | Koreaans (Korea) | Man | `ko-KR-InJoonNeural` | Algemeen |
 | `ms-MY` <sup>Nieuw</sup> | Maleis (Maleisië) | Vrouw | `ms-MY-YasminNeural` | Algemeen |
 | `nb-NO` | Noors, Bokmål (Noor wegen) | Vrouw | `nb-NO-IselinNeural` | Algemeen |
@@ -273,7 +271,7 @@ Meer dan 75 standaard stemmen zijn beschikbaar in meer dan 45 talen en land inst
 | `ja-JP` | Japans (Japan) | Vrouw | `ja-JP-Ayumi` |
 | `ja-JP` | Japans (Japan) | Vrouw | `ja-JP-HarukaRUS` |
 | `ja-JP` | Japans (Japan) | Man | `ja-JP-Ichiro` |
-| `ko-KR` | Koreaans (Zuid-Korea) | Vrouw | `ko-KR-HeamiRUS` |
+| `ko-KR` | Koreaans (Korea) | Vrouw | `ko-KR-HeamiRUS` |
 | `ms-MY` | Maleis (Maleisië) | Man | `ms-MY-Rizwan` |
 | `nb-NO` | Noors, Bokmål (Noor wegen) | Vrouw | `nb-NO-HuldaRUS` |
 | `nl-NL` | Nederlands (Nederland) | Vrouw | `nl-NL-HannaRUS` |

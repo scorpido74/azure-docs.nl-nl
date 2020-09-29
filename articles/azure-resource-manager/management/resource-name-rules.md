@@ -3,12 +3,12 @@ title: Naamgevings beperkingen voor resources
 description: Hier worden de regels en beperkingen voor het benoemen van Azure-resources weer gegeven.
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 0ee19140d3105e101c44ce70d77ccc9427600aa0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a4c3bf58bf5e84051b1e21863d2d581af5fa9f23
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91317086"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447519"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Naamgevingsregels en -beperkingen voor Azure-resources
 
@@ -107,7 +107,7 @@ In de volgende tabellen verwijst de term alfanumeriek naar:
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | batchAccounts | Regio | 3-24 | Kleine letters en cijfers. |
+> | batchAccounts | Region | 3-24 | Kleine letters en cijfers. |
 > | batchAccounts/toepassingen | batch-account | 1-64 | Alfanumeriek, onderstrepings tekens en afbreek streepjes. |
 > | batchAccounts/certificaten | batch-account | 5-45 | Alfanumeriek, onderstrepings tekens en afbreek streepjes. |
 > | batchAccounts/Pools | batch-account | 1-64 | Alfanumeriek, onderstrepings tekens en afbreek streepjes. |
@@ -392,7 +392,7 @@ In de volgende tabellen verwijst de term alfanumeriek naar:
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | actionGroups | resourcegroep | 1-260 | Kan niet gebruiken:<br>`/` <br><br>Kan niet eindigen met een spatie of een punt.  |
+> | actionGroups | resourcegroep | 1-260 | Kan niet gebruiken:<br>`/&%\?` <br><br>Kan niet eindigen met een spatie of een punt.  |
 > | materialen | resourcegroep | 1-260 | Kan niet gebruiken:<br>`%&\?/` <br><br>Kan niet eindigen met een spatie of een punt.  |
 
 ## <a name="microsoftiotcentral"></a>Micro soft. IoTCentral

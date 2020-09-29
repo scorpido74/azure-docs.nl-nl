@@ -1,24 +1,25 @@
 ---
-title: Containers installeren en uitvoeren-Computer Vision
+title: Docker-containers voor de Computer Vision Lees-API installeren en uitvoeren
 titleSuffix: Azure Cognitive Services
-description: Instructies voor het downloaden, installeren en uitvoeren van Computer Vision in deze stapsgewijze zelf studie.
+description: Gebruik de docker-container voor de Computer Vision Lees-API om tekst te detecteren en op te halen uit installatie kopieën, on-premises.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 09/03/2020
+ms.date: 09/28/2020
 ms.author: aahi
-ms.custom: seodec18
-ms.openlocfilehash: 2c21c872649e3b171f2658ef6bdb0476552f0e59
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.custom: seodec18, cog-serv-seo-aug-2020
+keywords: on-premises, docker, container
+ms.openlocfilehash: 17aa0050ed3e2a2f5a2cc83964d032caa4b8c098
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91397183"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460438"
 ---
-# <a name="install-and-run-read-containers-preview"></a>Lees containers installeren en uitvoeren (preview-versie)
+# <a name="install-and-run-docker-containers-for-the-read-api-preview"></a>Docker-containers installeren en uitvoeren voor de Lees-API (preview) 
 
 [!INCLUDE [container hosting on the Microsoft Container Registry](../containers/includes/gated-container-hosting.md)]
 
@@ -49,13 +50,13 @@ Houd er rekening mee dat v 3.1-Preview een eerdere status van preview heeft wann
 
 U moet voldoen aan de volgende vereisten voordat u de containers gebruikt:
 
-|Vereist|Functie|
+|Vereist|Doel|
 |--|--|
 |Docker-engine| De docker-engine moet zijn geïnstalleerd op een [hostcomputer](#the-host-computer). Docker biedt pakketten waarmee de Docker-omgeving op [MacOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) en [Linux](https://docs.docker.com/engine/installation/#supported-platforms) kan worden geconfigureerd. Zie het [Docker-overzicht](https://docs.docker.com/engine/docker-overview/) voor een inleiding tot de basisprincipes van Docker en containers.<br><br> Docker moet worden geconfigureerd zodat de containers verbinding kunnen maken met en facturerings gegevens kunnen verzenden naar Azure. <br><br> **In Windows**moet docker ook worden geconfigureerd voor de ondersteuning van Linux-containers.<br><br>|
 |Vertrouwd met docker | U moet een basis kennis hebben van docker-concepten, zoals registers, opslag plaatsen, containers en container installatie kopieën, en kennis van basis `docker` opdrachten.| 
 |Computer Vision resource |Als u de container wilt gebruiken, hebt u het volgende nodig:<br><br>Een Azure **Computer Vision** -resource en de bijbehorende API-sleutel de EINDPUNT-URI. Beide waarden zijn beschikbaar op de pagina overzicht en sleutels voor de resource en zijn vereist om de container te starten.<br><br>**{API_KEY}**: een van de twee beschik bare bron sleutels op de pagina **sleutels**<br><br>**{ENDPOINT_URI}**: het eind punt op de pagina **overzicht**|
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/cognitive-services/) aan voordat u begint.
+Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/cognitive-services/) voordat u begint.
 
 ## <a name="request-approval-to-run-the-container"></a>Goed keuring aanvragen om de container uit te voeren
 

@@ -10,12 +10,12 @@ ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 09/10/2020
 ms.author: aahi
-ms.openlocfilehash: 80e6ffb79aae5ffc0fe1fd8c9d73d97cc3bdde1e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 93fdf2884ca6593cfdb4fb2878ba0dd21246266d
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935491"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446345"
 ---
 # <a name="how-to-configure-metrics-and-fine-tune-detecting-configuration"></a>Informatie over het configureren van metrische gegevens en het afstemmen van de configuratie van detectie
 
@@ -45,7 +45,7 @@ Deze configuratie wordt toegepast op alle reeksen in deze metrische gegevens, me
 
 Er zijn aanvullende para meters als **richting**en **geldige afwijkingen** die kunnen worden gebruikt om de configuratie verder af te stemmen. U kunt ook verschillende detectie methoden combi neren. 
 
-:::image type="content" source="../media/configuration-combination.png" alt-text="Combi natie van configuratie" lightbox="../media/configuration-combination.png":::
+:::image type="content" source="../media/configuration-combination.png" alt-text="Een metrische waarde selecteren" lightbox="../media/configuration-combination.png":::
 
 ### <a name="tune-the-configuration-for-a-specific-series-or-group"></a>De configuratie voor een specifieke serie of groep afstemmen
 
@@ -53,7 +53,7 @@ Klik op **Geavanceerde configuratie** onder de configuratie opties voor het metr
 
 Deze configuratie wordt toegepast op de groep reeksen of specifieke reeksen in plaats van de configuratie van het metrieke niveau. Nadat u de voor waarden voor deze groep hebt ingesteld, slaat u deze op.
 
-:::image type="content" source="../media/advanced-configuration.png" alt-text="Geavanceerde configuratie" lightbox="../media/advanced-configuration.png":::
+:::image type="content" source="../media/advanced-configuration.png" alt-text="Een metrische waarde selecteren" lightbox="../media/advanced-configuration.png":::
 
 ### <a name="anomaly-detection-methods"></a>Afwijkings detectie methoden
 
@@ -68,11 +68,11 @@ In de Slimme detectie modus worden de para meters voor de gevoeligheids-en grens
 
 Gevoeligheid kan de breedte van het verwachte waardebereik van elk punt beïnvloeden. Wanneer dit is toegenomen, is het verwachte waardebereik nauw keuriger en worden er meer afwijkingen gerapporteerd:
 
-:::image type="content" source="../media/metrics/smart-detection-high-sensitivity.png" alt-text="Slimme detectie met hoge gevoeligheid":::
+:::image type="content" source="../media/metrics/smart-detection-high-sensitivity.png" alt-text="Een metrische waarde selecteren":::
 
 Wanneer de gevoeligheid is uitgeschakeld, wordt het verwachte waardebereik breder en worden er minder afwijkingen gerapporteerd:
 
-:::image type="content" source="../media/metrics/smart-detection-low-sensitivity.png" alt-text="Slimme detectie met lage gevoeligheid":::
+:::image type="content" source="../media/metrics/smart-detection-low-sensitivity.png" alt-text="Een metrische waarde selecteren":::
 
 **Drempel waarde wijzigen** 
 
@@ -85,23 +85,23 @@ Gebruik de volgende stappen om deze modus te gebruiken:
 
 1. Selecteer **drempel waarde wijzigen** als uw afwijkings methode wanneer u de configuraties voor anomalie detectie instelt voor uw metrische gegevens of tijd reeksen.
     
-    :::image type="content" source="../media/metrics/change-threshold.png" alt-text="drempel waarde wijzigen":::
+    :::image type="content" source="../media/metrics/change-threshold.png" alt-text="Een metrische waarde selecteren":::
 
 2. Selecteer het **buiten het bereik** of **in de bereik** parameter op basis van uw scenario.
 
     Als u schommelingen wilt detecteren, selecteert u **buiten het bereik**. Met de onderstaande instellingen wordt bijvoorbeeld elk gegevens punt dat groter is dan 10% in vergelijking met het vorige, gedetecteerd als een uitschieter.
-    :::image type="content" source="../media/metrics/out-of-the-range.png" alt-text="para meter buiten bereik":::
+    :::image type="content" source="../media/metrics/out-of-the-range.png" alt-text="Een metrische waarde selecteren":::
 
     Als u Plate lijnen in uw gegevens wilt detecteren, selecteert u **in het bereik**. Met de onderstaande instellingen wordt bijvoorbeeld elk gegevens punt dat is gewijzigd in 0,01% vergeleken met het vorige, gedetecteerd als een uitschieter. Omdat de drempel zo klein is (0,01%), detecteert deze platte lijnen in de gegevens als uitbijters.
 
-    :::image type="content" source="../media/metrics/in-the-range.png" alt-text="Para meter in bereik":::
+    :::image type="content" source="../media/metrics/in-the-range.png" alt-text="Een metrische waarde selecteren":::
 
 3. Stel het percentage van de wijziging in dat als afwijkingen moet worden beschouwd en waarvan eerder vastgelegde gegevens punten worden gebruikt voor vergelijking. Deze vergelijking is altijd tussen het huidige gegevens punt en één gegevens punt N punten vóór het.
     
     De **richting** is alleen geldig als u de modus **voor** het gebruik van het bereik gebruikt:
     
-    * **Up** Met detectie wordt gedetecteerd alleen afwijkingen gedetecteerd wanneer (huidige gegevens punt)-(vergelijkings gegevens punt) > **+** drempel waarde%.
-    * **Hiermee configureert u detectie** zodat alleen afwijkingen worden gedetecteerd wanneer (huidig gegevens punt): (vergelijkt gegevens punt) < **-** drempel waarde%.
+    * **Up** Met detectie wordt gedetecteerd alleen afwijkingen gedetecteerd wanneer (huidige gegevens punt)-(vergelijkings gegevens punt) > **+** drempel percentage.
+    * **Hiermee configureert u detectie** zodat alleen afwijkingen worden gedetecteerd wanneer (huidig gegevens punt): (vergelijkt gegevens punt) < **-** drempel percentage.
  
 **Harde drempel waarde**
 
@@ -117,7 +117,7 @@ Soms kunnen verwachte gebeurtenissen en herhalingen (zoals feest dagen) afwijken
 
 Klik op de knop **vooraf ingestelde gebeurtenis configureren** naast de vervolg keuzelijst metrieken op elke pagina metrische gegevens.
  
-:::image type="content" source="../media/metrics/preset-event-button.png" alt-text="knop vooraf ingestelde gebeurtenis":::
+:::image type="content" source="../media/metrics/preset-event-button.png" alt-text="Een metrische waarde selecteren":::
 
 Configureer de opties op basis van uw gebruik in het venster dat wordt weer gegeven. Zorg ervoor dat **gebeurtenis vakantiedag inschakelen** is geselecteerd om de configuratie te gebruiken. 
 
@@ -161,7 +161,7 @@ X-niet beschikbaar.
 
 De cyclus gebeurtenis wordt gebruikt om afwijkingen te verminderen als ze een cyclisch patroon volgen, maar er wordt een afwijkingen gerapporteerd als meerdere gegevens punten het patroon niet volgen. De **strikte modus** wordt gebruikt om anomalie rapportage in te scha kelen als zelfs één gegevens punt het patroon niet volgt. 
 
-:::image type="content" source="../media/metrics/preset-events.png" alt-text="vooraf ingestelde gebeurtenis configuratie":::
+:::image type="content" source="../media/metrics/preset-events.png" alt-text="Een metrische waarde selecteren":::
 
 ## <a name="view-recent-incidents"></a>Recente incidenten weer geven
 

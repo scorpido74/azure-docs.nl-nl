@@ -8,16 +8,15 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 0cf0ef97cc1e06906a529c577e9c2578e5091ef4
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.date: 09/28/2020
+ms.openlocfilehash: a1f633548ed36320f40e485f540923c8e3045a99
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050723"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460863"
 ---
-# <a name="ingestion-rules"></a>Opname regels
-### <a name="json-flattening-escaping-and-array-handling"></a>JSON-afvlakking,-Escapes en-verwerking van matrices
+# <a name="json-flattening-escaping-and-array-handling"></a>JSON-platmaken, escapen en matrixafhandeling
 
 Uw Azure Time Series Insights Gen2-omgeving maakt dynamische kolommen van uw warme en koude Stores en volgt een bepaalde set naam conventies. Wanneer een gebeurtenis wordt opgenomen, wordt een set regels toegepast op de JSON-nettolading en eigenschaps namen. Dit zijn onder andere het escapepen van bepaalde speciale tekens en het afvlakken van geneste JSON-objecten. Het is belang rijk dat u deze regels weet, zodat u begrijpt hoe de vorm van uw JSON invloed heeft op hoe uw gebeurtenissen worden opgeslagen en opgevraagd. Zie de onderstaande tabel voor een volledige lijst met regels. Voor beelden van een & B laten zien hoe u in een matrix efficiënt meerdere tijd reeksen kunt batchren.
 
@@ -33,24 +32,25 @@ Uw Azure Time Series Insights Gen2-omgeving maakt dynamische kolommen van uw war
 | Binnen [' en '] is er nog meer Escapes van enkele aanhalings tekens en backslashes. Een enkele aanhalings tekens worden geschreven als \ ' en een back slash wordt geschreven als \\\ | ```"Foo's Law Value": "17.139999389648"``` | `$event['Foo\'s Law Value'].Double` | `['Foo\'s Law Value']_double` |
 | Geneste JSON-objecten worden afgevlakt met een punt als scheidings teken. Het nesten van Maxi maal 10 niveaus wordt ondersteund. |  ```"series": {"value" : 316 }``` | `$event.series.value.Long`, `$event['series']['value'].Long` of `$event.series['value'].Long` |  `series.value_long` |
 | Matrices van primitieve typen worden opgeslagen als het dynamische type |  ```"values": [154, 149, 147]``` | Dynamische typen kunnen alleen worden opgehaald via de [GetEvents](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents) -API | `values_dynamic` |
-| Matrices die objecten bevatten, zijn afhankelijk van de object inhoud: als de TS-ID (s) of de eigenschap time stamp zich binnen de objecten in een matrix bevinden, wordt de matrix opgerold, zodat de eerste JSON-nettolading meerdere gebeurtenissen genereert. Hierdoor kunt u meerdere gebeurtenissen batchgewijs in één JSON-structuur. Alle eigenschappen op het hoogste niveau die peers zijn voor de matrix, worden met elk niet-gerollt object opgeslagen. Als uw TS-ID en tijds tempel zich *niet* in de matrix bevinden, wordt deze als het dynamische type opgeslagen. | Zie de voor beelden [A](concepts-json-flattening-escaping-rules.md#example-a), [B](concepts-json-flattening-escaping-rules.md#example-b) en [C](concepts-json-flattening-escaping-rules.md#example-c) hieronder
+| Matrices die objecten bevatten, zijn afhankelijk van de object inhoud: als de TS-ID (s) of de eigenschap time stamp zich binnen de objecten in een matrix bevindt, wordt de matrix opgerold, zodat de eerste JSON-nettolading meerdere gebeurtenissen genereert. Hierdoor kunt u meerdere gebeurtenissen batchgewijs in één JSON-structuur. Alle eigenschappen op het hoogste niveau die peers zijn voor de matrix, worden met elk niet-gerollt object opgeslagen. Als uw TS-ID en tijds tempel zich *niet* in de matrix bevinden, wordt deze als het dynamische type opgeslagen. | Zie de voor beelden [A](concepts-json-flattening-escaping-rules.md#example-a), [B](concepts-json-flattening-escaping-rules.md#example-b)en [C](concepts-json-flattening-escaping-rules.md#example-c) hieronder
 | Matrices met gemengde elementen worden niet afgevlakt. |  ```"values": ["foo", {"bar" : 149}, 147]``` | Dynamische typen kunnen alleen worden opgehaald via de [GetEvents](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents) -API | `values_dynamic` |
 | 512 tekens is de naam limiet van de JSON-eigenschap. Als de naam langer is dan 512 tekens, wordt deze afgekapt tot 512 en ' _< ' hashCode ' > ' wordt toegevoegd. **Houd er rekening mee** dat dit ook geldt voor eigenschapnamen die zijn samengevoegd van een object, waarbij een genest objectpad wordt aangeduid. |``"data.items.datapoints.values.telemetry<...continuing to over 512 chars>" : 12.3440495`` |`"$event.data.items.datapoints.values.telemetry<...continuing to include all chars>.Double"` | `data.items.datapoints.values.telemetry<...continuing to 512 chars>_912ec803b2ce49e4a541068d495ab570_double` |
 
 ## <a name="understanding-the-dual-behavior-for-arrays"></a>Meer informatie over het dubbele gedrag voor matrices
 
-Matrices van objecten worden geheel opgeslagen of in meerdere gebeurtenissen gesplitst, afhankelijk van de manier waarop u uw gegevens hebt gemodelleerd. Hierdoor kunt u een matrix gebruiken voor batch gebeurtenissen en vermijdt u herhalende telemetrie-eigenschappen die worden gedefinieerd op het niveau van het hoofd object. Het kan voor komen dat er minder Event Hubs of IoT Hub berichten worden verzonden. 
+Matrices van objecten worden geheel opgeslagen of in meerdere gebeurtenissen gesplitst, afhankelijk van de manier waarop u uw gegevens hebt gemodelleerd. Hierdoor kunt u een matrix gebruiken voor batch gebeurtenissen en vermijdt u herhalende telemetrie-eigenschappen die worden gedefinieerd op het niveau van het hoofd object. Het kan voor komen dat er minder Event Hubs of IoT Hub berichten worden verzonden.
 
 In sommige gevallen zijn matrices met objecten echter alleen zinvol in de context van andere waarden. Als u meerdere gebeurtenissen maakt, worden de gegevens niet zo weer gegeven. Volg de onderstaande richt lijnen voor gegevens modellering om ervoor te zorgen dat een matrix van objecten als een dynamisch type wordt opgeslagen en Bekijk [voor beeld C](concepts-json-flattening-escaping-rules.md#example-c)
 
-### <a name="how-do-i-know-if-my-array-of-objects-will-produce-multiple-events"></a>Hoe kan ik weet of mijn matrix van objecten meerdere gebeurtenissen zal genereren?
+### <a name="how-to-know-if-my-array-of-objects-will-produce-multiple-events"></a>Hoe weet ik of mijn matrix van objecten meerdere gebeurtenissen zal genereren?
 
 Als een of meer van uw tijd reeks-ID-verwerkte (s) zijn genest binnen objecten in een matrix *of* als de tijds tempel eigenschap van de gebeurtenis is genest, wordt deze door de opname engine gesplitst om meerdere gebeurtenissen te maken. De namen van eigenschappen die u hebt ingevoerd voor uw TS-ID ('s) en/of Time Stamp moeten voldoen aan de bovenstaande afvlakkings regels en geven daarom de vorm van uw JSON aan. Zie de voor beelden hieronder en lees de hand leiding voor het [selecteren van een time series-ID-eigenschap.](time-series-insights-update-how-to-id.md)
 
-### <a name="example-a"></a>Voor beeld A:
-Time Series-ID bij de hoofdmap van het object en het tijds tempel is genest<br/>
-**Tijd reeks-id van de omgeving:**`"id"`<br/>
-**Tijds tempel gebeurtenis Bron:**`"values.time"`<br/>
+### <a name="example-a"></a>Voor beeld A
+
+De time series-ID bij de hoofdmap van het object en het tijds tempel is genest \
+**Tijd reeks-id van de omgeving:**`"id"`\
+**Tijds tempel gebeurtenis Bron:**`"values.time"`\
 **JSON-nettolading:**
 
 ```JSON
@@ -84,21 +84,21 @@ Time Series-ID bij de hoofdmap van het object en het tijds tempel is genest<br/>
 ]
 ```
 
-**Resultaat in Parquet-bestand:**
-<br/>
+**Resultaat in Parquet-bestand:**\
 Met de bovenstaande configuratie en payload worden drie kolommen en vier gebeurtenissen gegenereerd
 
-| tijdstempel  | id_string | values. value_double 
-| ---- | ---- | ---- | 
-| `2020-05-01T00:59:59.000Z` | `caaae533-1d6c-4f58-9b75-da102bcc2c8c`| ``25.6073`` | 
-| `2020-05-01T01:00:29.000Z` |`caaae533-1d6c-4f58-9b75-da102bcc2c8c` | ``43.9077`` | 
-| `2020-05-01T00:59:59.000Z` | `1ac87b74-0865-4a07-b512-56602a3a576f` | ``0.337288`` | 
-| `2020-05-01T01:00:29.000Z` | `1ac87b74-0865-4a07-b512-56602a3a576f` | ``4.76562`` | 
+| tijdstempel  | id_string | values. value_double
+| ---- | ---- | ---- |
+| `2020-05-01T00:59:59.000Z` | `caaae533-1d6c-4f58-9b75-da102bcc2c8c`| ``25.6073`` |
+| `2020-05-01T01:00:29.000Z` |`caaae533-1d6c-4f58-9b75-da102bcc2c8c` | ``43.9077`` |
+| `2020-05-01T00:59:59.000Z` | `1ac87b74-0865-4a07-b512-56602a3a576f` | ``0.337288`` |
+| `2020-05-01T01:00:29.000Z` | `1ac87b74-0865-4a07-b512-56602a3a576f` | ``4.76562`` |
 
-### <a name="example-b"></a>Voor beeld B:
-Samengestelde time series-ID met één geneste eigenschap<br/> 
-**Tijd reeks-id van de omgeving:** `"plantId"` maar `"telemetry.tagId"`<br/>
-**Tijds tempel gebeurtenis Bron:**`"timestamp"`<br/>
+### <a name="example-b"></a>Voor beeld B
+
+Samengestelde time series-ID met één geneste eigenschap \
+**Tijd reeks-id van de omgeving:** `"plantId"` maar `"telemetry.tagId"`\
+**Tijds tempel gebeurtenis Bron:**`"timestamp"`\
 **JSON-nettolading:**
 
 ```JSON
@@ -142,23 +142,23 @@ Samengestelde time series-ID met één geneste eigenschap<br/>
 ]
 ```
 
-**Resultaat in Parquet-bestand:**
-<br/>
+**Resultaat in Parquet-bestand:**\
 Met de bovenstaande configuratie en payload worden vier kolommen en zes gebeurtenissen gegenereerd
 
-| tijdstempel  | plantId_string | telemetrie. tagId_string | telemetrie. value_double 
+| tijdstempel  | plantId_string | telemetrie. tagId_string | telemetrie. value_double
 | ---- | ---- | ---- | ---- |
 | `2020-01-22T16:38:09Z` | `9336971`| ``100231-A-A6`` |  -31,149018 |
 | `2020-01-22T16:38:09Z` |`9336971` | ``100231-A-A1`` | 20,560796 |
 | `2020-01-22T16:38:09Z` | `9336971` | ``100231-A-A9`` | 177 |
 | `2020-01-22T16:38:09Z` | `9336971` | ``100231-A-A8`` | 420 |
-| `2020-01-22T16:42:14Z` | `9336972` | ``100231-A-A7`` | -30,9918 |  
-| `2020-01-22T16:42:14Z` | `9336972` | ``100231-A-A4`` | 19,960796 | 
+| `2020-01-22T16:42:14Z` | `9336971` | ``100231-A-A7`` | -30,9918 |  
+| `2020-01-22T16:42:14Z` | `9336971` | ``100231-A-A4`` | 19,960796 |
 
-### <a name="example-c"></a>Voor beeld C:
-De time series-ID en de tijds tempel bevinden zich op de hoofdmap van het object<br/> 
-**Tijd reeks-id van de omgeving:**`"id"`<br/>
-**Tijds tempel gebeurtenis Bron:**`"timestamp"`<br/>
+### <a name="example-c"></a>Voor beeld C
+
+De time series-ID en de tijds tempel bevinden zich op de hoofdmap van het object \
+**Tijd reeks-id van de omgeving:**`"id"`\
+**Tijds tempel gebeurtenis Bron:**`"timestamp"`\
 **JSON-nettolading:**
 
 ```JSON
@@ -175,12 +175,11 @@ De time series-ID en de tijds tempel bevinden zich op de hoofdmap van het object
 }
 ```
 
-**Resultaat in Parquet-bestand:**
-<br/>
+**Resultaat in Parquet-bestand:**\
 Met de bovenstaande configuratie en payload worden drie kolommen en één gebeurtenis gegenereerd
 
 | tijdstempel  | id_string | datapoints_dynamic  
-| ---- | ---- | ---- | 
+| ---- | ---- | ---- |
 | `2020-11-01T10:00:00.000Z` | `800500054755`| ``[{"value": 120},{"value":124}]`` |
 
 ## <a name="next-steps"></a>Volgende stappen

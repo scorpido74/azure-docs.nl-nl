@@ -11,25 +11,30 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 07/27/2020
+ms.date: 09/28/2020
 tags: azure-synapse
-ms.openlocfilehash: 15289727c3ee4d498fa50058ef98f0ae5b3d1b12
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e526b8e2e4f31187bb958ec37c2ffa4d30f0265b
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91277798"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461152"
 ---
 # <a name="using-multi-factor-azure-active-directory-authentication"></a>Multi-factor Azure Active Directory-verificatie gebruiken
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 Azure SQL Database, Azure SQL Managed instance en Azure Synapse Analytics ondersteunen verbindingen van [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) met behulp van *Azure Active Directory-Universal met MFA-* verificatie. In dit artikel worden de verschillen beschreven tussen de verschillende verificatie opties en ook de beperkingen die zijn gekoppeld aan het gebruik van universele verificatie in Azure Active Directory (Azure AD) voor Azure SQL.
 
-**Download de nieuwste versie van SSMS** Download op de clientcomputer de meest recente versie van SSMS. Ga hiervoor naar de pagina [Download SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx) (SQL Server Management Studio (SSMS) downloaden).
+**Download de nieuwste versie van SSMS** Download op de clientcomputer de meest recente versie van SSMS. Ga hiervoor naar de pagina [Download SQL Server Management Studio (SSMS)](https://aka.ms/ssms) (SQL Server Management Studio (SSMS) downloaden). 
+
+> [!Note]
+> In december 2021 kunnen releases van SSMS vóór 18,6 niet meer worden geverifieerd door Azure Active Directory met MFA. Als u wilt door gaan met het gebruik van Azure Active Directory verificatie met MFA, installeert u of werkt u bij naar SSMS 18,6 of hoger.
 
 Voor alle functies die in dit artikel worden besproken, hebt u ten minste versie 17.2 van juli 2017 nodig. Het meest recente dialoogvenster Verbinding maken met server moet er ongeveer uitzien als in de volgende afbeelding:
 
-  ![Scherm afbeelding van het dialoog venster verbinding maken met server in SQL Server Management Studio, met de instellingen voor het server type, de server naam en de verificatie.](./media/authentication-mfa-ssms-overview/1mfa-universal-connect.png)  
+  ![Scherm afbeelding van het dialoog venster verbinding maken met server in SQL Server Management Studio, met de instellingen voor het server type, de server naam en de verificatie.](./media/authentication-mfa-ssms-overview/1mfa-universal-connect.png)
+  
+    
 
 ## <a name="authentication-options"></a>Verificatieopties
 

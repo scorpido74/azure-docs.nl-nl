@@ -3,12 +3,12 @@ title: Ondersteunde resource typen via Azure Resource Health | Microsoft Docs
 description: Ondersteunde resource typen via Azure resource Health
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 9aedc115a29f11d4d54715d51bb6231ea1ea9e03
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: e299e45f08b9e39af02208a0e74734475528b3ae
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89660651"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447051"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Resource typen en status controles in azure resource Health
 Hieronder vindt u een volledige lijst met alle controles die worden uitgevoerd door middel van resource typen.
@@ -207,7 +207,7 @@ Hieronder vindt u een volledige lijst met alle controles die worden uitgevoerd d
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Micro soft. PowerBIDedicated/capaciteiten
 |Controles uitgevoerd|
 |---|
-|<ul><li>Is de capaciteits resource actief?</li><li>Zijn alle werk belastingen actief?</li></ul>|
+|<ul><li>Is de capaciteits resource actief?</li><li>Zijn alle werk belastingen actief?</li></ul>
 
 ## <a name="microsoftsearchsearchservices"></a>Micro soft. Search/searchServices
 |Controles uitgevoerd|

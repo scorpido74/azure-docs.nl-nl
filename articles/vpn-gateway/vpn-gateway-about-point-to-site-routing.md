@@ -7,18 +7,18 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 09/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: a3603c7a4b704327f829588f0fc5827d97288be0
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 1e88afd91c0e0b344cc0eb8d82b637a88d5a1656
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440810"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447970"
 ---
 # <a name="about-point-to-site-vpn-routing"></a>Over point-to-site-VPN-routering
 
 Dit artikel helpt u inzicht te krijgen in de werking van Azure Point-to-site VPN-route ring. Het gedrag van P2S VPN-route ring is afhankelijk van het client besturingssysteem, het protocol dat wordt gebruikt voor de VPN-verbinding en hoe de virtuele netwerken (VNets) met elkaar zijn verbonden.
 
-Azure ondersteunt momenteel twee protocollen voor externe toegang, IKEv2 en SSTP. IKEv2 wordt ondersteund op veel client besturingssystemen, waaronder Windows, Linux, MacOS, Android en iOS. SSTP wordt alleen ondersteund in Windows. Als u een wijziging aanbrengt in de topologie van uw netwerk en Windows VPN-clients hebt, moet het VPN-client pakket voor Windows-clients opnieuw worden gedownload en geïnstalleerd om de wijzigingen toe te passen op de client.
+Azure ondersteunt momenteel twee protocollen voor externe toegang, IKEv2 en SSTP. IKEv2 wordt ondersteund op veel client besturingssystemen, waaronder Windows, Linux, macOS, Android en iOS. SSTP wordt alleen ondersteund in Windows. Als u een wijziging aanbrengt in de topologie van uw netwerk en Windows VPN-clients hebt, moet het VPN-client pakket voor Windows-clients opnieuw worden gedownload en geïnstalleerd om de wijzigingen toe te passen op de client.
 
 > [!NOTE]
 > Dit artikel is alleen van toepassing op IKEv2.
@@ -195,7 +195,7 @@ In dit voor beeld is de punt-naar-site-VPN-gateway verbinding voor VNet1. VNet1 
 
 Alle clients hebben alleen toegang tot VNet1.
 
-![Multi-VNet S2S en filialen](./media/vpn-gateway-about-point-to-site-routing/7.jpg "Multi-VNet S2S en filialen")
+![Diagram waarin een multi-VNet S2S en een filiaal worden weer gegeven.](./media/vpn-gateway-about-point-to-site-routing/7.jpg "Multi-VNet S2S en filialen")
 
 ### <a name="address-space"></a>Adresruimte
 

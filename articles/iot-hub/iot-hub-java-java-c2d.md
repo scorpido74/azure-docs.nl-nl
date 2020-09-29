@@ -13,12 +13,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-java
-ms.openlocfilehash: 7f04483415253145cd485ccf870160e83a6e0e4b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f4e5880a39d6ad299fd6e7f29bd0e3aefadc3bcd
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319113"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446893"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-java"></a>Cloud-naar-apparaat-berichten verzenden met IoT Hub (Java)
 
@@ -88,14 +88,25 @@ In deze sectie wijzigt u de gesimuleerde apparaat-app die u hebt gemaakt in [tel
     client.open();
     ```
 
-    > [!NOTE]
-    > Als u HTTPS gebruikt in plaats van MQTT of AMQP als Trans Port, controleert het **DeviceClient** -exemplaar voor berichten van IOT hub niet regel matig (minder dan elke 25 minuten). Zie de [sectie berichten van de IOT hub ontwikkelaars handleiding](iot-hub-devguide-messaging.md)voor meer informatie over de verschillen tussen MQTT, AMQP en HTTPS-ondersteuning en IOT hub beperking.
-
 4. Als u de app **simulated-device** wilt maken met behulp van Maven, geeft u de volgende opdracht op in het opdrachtvenster in de map simulated-device:
 
     ```cmd/sh
     mvn clean package -DskipTests
     ```
+
+De `execute` methode in de `AppMessageCallback` klasse retourneert `IotHubMessageResult.COMPLETE` . Hiermee wordt IoT Hub gemeld dat het bericht is verwerkt en dat het bericht veilig kan worden verwijderd uit de wachtrij van het apparaat. Het apparaat moet deze waarde Retour neren wanneer de verwerking is voltooid, ongeacht het protocol dat wordt gebruikt.
+
+Met AMQP en HTTPS, maar niet MQTT, kan het apparaat ook:
+
+* Een bericht afbreken, wat leidt tot IoT Hub het bericht in de wachtrij van het apparaat behouden voor toekomstig gebruik.
+* Een bericht afwijzen waarmee het bericht permanent wordt verwijderd uit de wachtrij van de apparaten.
+
+Als er iets gebeurt dat ervoor zorgt dat het apparaat het bericht niet kan volt ooien, afbreken of afwijzen, wordt IoT Hub na een vaste time-outperiode het bericht in de wachtrij geplaatst voor bezorging. Daarom moet de logica voor bericht verwerking in de apparaat-app worden *idempotent*, zodat hetzelfde bericht meerdere keren wordt ontvangen.
+
+Zie [Cloud-naar-apparaat-berichten verzenden vanuit een IOT-hub](iot-hub-devguide-messages-c2d.md)voor meer informatie over hoe IOT hub Cloud-naar-apparaat-berichten verwerkt, met inbegrip van de details van de Cloud-naar-apparaat-bericht levenscyclus.
+
+> [!NOTE]
+> Als u HTTPS gebruikt in plaats van MQTT of AMQP als Trans Port, controleert het **DeviceClient** -exemplaar voor berichten van IOT hub zelden (mini maal elke 25 minuten). Zie [communicatie richtlijnen voor Cloud-naar-apparaat](iot-hub-devguide-c2d-guidance.md) en [Kies een communicatie protocol](iot-hub-devguide-protocols.md)voor meer informatie over de verschillen tussen de MQTT-, AMQP-en HTTPS-ondersteuning.
 
 ## <a name="get-the-iot-hub-connection-string"></a>De IoT hub-connection string ophalen
 

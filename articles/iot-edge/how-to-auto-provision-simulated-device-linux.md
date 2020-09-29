@@ -8,16 +8,16 @@ ms.date: 6/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9bd597bbff54687af1ba8536dddd6f0d8dfc621e
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 0583852f0be590eb1c6a4b53047f94b3ea0fbaa4
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531488"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447811"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>Een IoT Edge apparaat maken en inrichten met een TPM in Linux
 
-In dit artikel wordt beschreven hoe u automatische inrichting op een Linux IoT Edge apparaat kunt testen met behulp van een Trusted Platform Module (TPM). U kunt Azure IoT Edge apparaten automatisch inrichten met de [Device Provisioning Service](../iot-dps/index.yml). Als u niet bekend bent met het proces van automatische inrichting, raadpleegt u het overzicht van [inrichtingen](../iot-dps/about-iot-dps.md#provisioning-process) voordat u doorgaat.
+In dit artikel wordt beschreven hoe u automatische inrichting op een Linux IoT Edge apparaat kunt testen met behulp van een Trusted Platform Module (TPM). U kunt Azure IoT Edge apparaten automatisch inrichten met de [Device Provisioning Service](../iot-dps/index.yml). Als u niet bekend bent met het proces van automatische inrichting, bekijkt u het overzicht voor [inrichting](../iot-dps/about-iot-dps.md#provisioning-process) voordat u verdergaat.
 
 De taken zijn als volgt:
 
@@ -147,7 +147,7 @@ Haal de inrichtings gegevens op van de virtuele machine en gebruik deze om een a
 Wanneer u een inschrijving in DPS maakt, hebt u de mogelijkheid om een **eerste dubbele toestand**van het apparaat te declareren. In het dubbele apparaat kunt u Tags instellen om apparaten te groeperen op elke gewenste metrische waarde in uw oplossing, zoals regio, omgeving, locatie of apparaattype. Deze tags worden gebruikt voor het maken van [automatische implementaties](how-to-deploy-at-scale.md).
 
 > [!TIP]
-> In de Azure CLI kunt u een [inschrijving](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment) maken en de vlag voor **rand ingeschakeld** gebruiken om aan te geven dat een apparaat een IOT edge apparaat is.
+> In de Azure CLI kunt u een [inschrijving](/cli/azure/ext/azure-iot/iot/dps/enrollment) maken en de vlag voor **rand ingeschakeld** gebruiken om aan te geven dat een apparaat een IOT edge apparaat is.
 
 1. Ga in het [Azure Portal](https://portal.azure.com)naar uw exemplaar van IOT hub Device Provisioning Service.
 

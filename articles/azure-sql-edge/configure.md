@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: b2c52457972d94b2e999c137d19d3a434ff17a7d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6284e85d8c4e9ad9f9896081f04c6b7669b8e1c0
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90888385"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446944"
 ---
 # <a name="configure-azure-sql-edge"></a>Azure SQL Edge configureren
 
@@ -32,8 +32,9 @@ In Azure SQL Edge worden verschillende omgevings variabelen weer gegeven die kun
 
 De volgende nieuwe omgevings variabelen zijn toegevoegd aan de Azure SQL-rand. 
 
-| Omgevingsvariabele | Description | Waarden |     
-|-----|-----| ---------- |   
+| Omgevingsvariabele | Beschrijving | Waarden |     
+|-----|-----| ---------- | 
+| **PlanId** | Hiermee geeft u de Azure SQL Edge-SKU op die moet worden gebruikt tijdens de initialisatie. Deze omgevings variabele is alleen vereist bij het implementeren van Azure SQL Edge met behulp van Azure IoT Edge. | **ASDE-Developer-on-IOT-Edge** of **ASDE-Premium-on-IOT-Edge** | 
 | **MSSQL_TELEMETRY_ENABLED** | Het verzamelen van gebruiks-en diagnostische gegevens in-of uitschakelen. | TRUE of FALSE |  
 | **MSSQL_TELEMETRY_DIR** | Hiermee stelt u de doel directory in voor de audit bestanden voor het verzamelen van gegevens over gebruik en diagnose. | Maplocatie binnen SQL Edge-container. Deze map kan worden toegewezen aan een host volume met behulp van koppel punten of gegevens volumes. | 
 | **MSSQL_PACKAGE** | Hiermee geeft u de locatie op van het dacpac-of Bacpac-pakket dat moet worden geïmplementeerd. | Map, bestand of SAS-URL met de dacpac-of Bacpac-pakketten. Raadpleeg [Deploy SQL database DACPAC and BACPAC packages in SQL Edge](deploy-dacpac.md)voor meer informatie. |
@@ -41,7 +42,7 @@ De volgende nieuwe omgevings variabelen zijn toegevoegd aan de Azure SQL-rand.
 
 De volgende SQL Server on Linux omgevings variabele wordt niet ondersteund voor Azure SQL Edge. Indien gedefinieerd, wordt deze omgevings variabele genegeerd tijdens het initialiseren van de container.
 
-| Omgevingsvariabele | Description |
+| Omgevingsvariabele | Beschrijving |
 |-----|-----|
 | **MSSQL_ENABLE_HADR** | Beschikbaarheids groep inschakelen. Bijvoorbeeld: **1** is ingeschakeld en **0** is uitgeschakeld. |
 

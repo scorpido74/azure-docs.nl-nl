@@ -9,18 +9,18 @@ ms.topic: how-to
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 547712d16cb6a7504d1a875b6155a587746d86bf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 289bca140392ec77fa453e594aface6be9befeca
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91279192"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446615"
 ---
 # <a name="create-a-vm-using-a-specialized-image"></a>Een virtuele machine maken met behulp van een gespecialiseerde installatie kopie 
 
 Maak een virtuele machine op basis van een gespecialiseerde afbeeldings versie die is opgeslagen in een galerie met gedeelde afbeeldingen. Als u een virtuele machine wilt maken met behulp van een gegeneraliseerde installatie kopie, raadpleegt u [een virtuele machine maken met een gegeneraliseerde installatie kopie](vm-generalized-image-version-powershell.md).
 
-Zodra u een gespecialiseerde versie van de installatie kopie hebt, kunt u een of meer nieuwe virtuele machines maken. De cmdlet [New-AzVM](/powershell/module/az.compute/new-azvm) gebruiken. 
+Zodra u een gespecialiseerde versie van de installatie kopie hebt, kunt u een of meer nieuwe virtuele machines maken met behulp van de cmdlet [New-AzVM](/powershell/module/az.compute/new-azvm) . 
 
 In dit voor beeld gebruiken we de definitie-ID van de installatie kopie om ervoor te zorgen dat de meest recente versie van een installatie kopie wordt gebruikt voor uw nieuwe virtuele machine. U kunt ook een specifieke versie gebruiken met de versie-ID van de installatie kopie voor `Set-AzVMSourceImage -Id` . Als u bijvoorbeeld de afbeeldings versie *1.0.0* type: wilt gebruiken `Set-AzVMSourceImage -Id "/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0"` . 
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/06/2019
-ms.openlocfilehash: 7718bd5cbc3c3fc3c9632818f769c05cd1617361
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: cd0a510480673c48f23b25f48ead5d75e2d05c84
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321867"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447639"
 ---
 # <a name="collect-azure-activity-logs-into-azure-monitor-across-azure-active-directory-tenants-legacy"></a>Azure-activiteiten logboeken verzamelen in Azure Monitor over Azure Active Directory tenants (verouderd)
 
@@ -102,7 +102,7 @@ De logische app omvat het volgende:
 - Een [actie Opstellen](../../logic-apps/logic-apps-workflow-actions-triggers.md#compose-action) om de JSON te converteren naar een object.
 - Een [log Analytics gegevens connector verzenden](/connectors/azureloganalyticsdatacollector/) om de gegevens naar de log Analytics-werk ruimte te posten.
 
-   ![afbeelding van het toevoegen van een event hub-trigger in logische apps](media/collect-activity-logs-subscriptions/log-analytics-logic-apps-activity-log-overview.png)
+   ![Scherm afbeelding van de ontwerp functie voor logische apps met de stappen voor het verzamelen van activiteiten logboeken van de Event Hub en het schrijven naar de Log Analytics-werk ruimte.](media/collect-activity-logs-subscriptions/log-analytics-logic-apps-activity-log-overview.png)
 
 ### <a name="logic-app-requirements"></a>Vereisten voor logische apps
 Voordat u een logische app maakt, moet u over de volgende informatie uit de vorige stappen beschikken:
@@ -145,7 +145,7 @@ In de ontwerper van logische apps worden beschikbare connectors en de bijbehoren
 
 1. Typ in het zoekvak voor de ontwerper van logische apps *event hubs* voor uw filter. Selecteer de trigger **Event Hubs - wanneer gebeurtenissen beschikbaar zijn in Event Hub**.
 
-   ![afbeelding van het toevoegen van een event hub-trigger in logische apps](media/collect-activity-logs-subscriptions/logic-apps-event-hub-add-trigger.png)
+   ![Scherm afbeelding van de ontwerp functie voor logische apps met de trigger ' Event Hubs-wanneer gebeurtenissen beschikbaar zijn in Event hub ' geselecteerd voor de Event Hubs-service.](media/collect-activity-logs-subscriptions/logic-apps-event-hub-add-trigger.png)
 
 2. Wanneer u wordt gevraagd om referenties, maakt u verbinding met uw Event Hubs-naamruimte. Voer een naam in voor uw verbinding en voer vervolgens de verbindingsreeks in die u hebt gekopieerd.  Selecteer **Maken**.
 
@@ -315,7 +315,7 @@ Nu de werkstroom is voltooid, kunt u de logische app testen in de ontwerper om t
 
 Selecteer in de ontwerper van logische apps **Uitvoeren** om de logische app te testen. Bij elke stap in de logische app wordt een statuspictogram met een wit vinkje in een groene cirkel weergegeven, wat aangeeft dat de stap is geslaagd.
 
-   ![Logische app testen](media/collect-activity-logs-subscriptions/test-logic-app.png)
+   ![Scherm afbeelding van de ontwerp functie voor logische apps nadat een test is uitgevoerd. Elke stap van de logische app heeft een vinkje dat aangeeft dat het is geslaagd.](media/collect-activity-logs-subscriptions/test-logic-app.png)
 
 Klik op de naam van de stap om de stap uit te vouwen en gedetailleerde informatie voor elke stap weer te geven. Klik op **Onbewerkte invoer weergeven** en **Onbewerkte uitvoer weergeven** voor meer informatie over de gegevens die bij elke stap zijn ontvangen en verzonden.
 
@@ -333,7 +333,7 @@ De laatste stap bestaat uit het controleren van de Log Analytics-werkruimte om e
 > De activiteitenlogboeken worden geschreven naar een aangepaste tabel en worden niet weergegeven in de [oplossing voor activiteitenlogboeken](./activity-log.md).
 
 
-![Logische app testen](media/collect-activity-logs-subscriptions/log-analytics-results.png)
+![Scherm opname van een zoek opdracht naar AzureActivity_CL in het deel venster zoeken in Logboeken waarin een tabel met resultaten wordt weer gegeven met één resultaat dat is uitgevouwen om activiteiten details weer te geven.](media/collect-activity-logs-subscriptions/log-analytics-results.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

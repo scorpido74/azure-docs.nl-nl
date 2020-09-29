@@ -16,12 +16,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 296aabdd79e1cd5c37248a0a44d57ebf17a4ea44
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 4ba90724f75635ea9fd5f72f75de6a46d7b6d288
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90979413"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446991"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Het beheer van rechten voor Azure AD oplossen
 
@@ -146,7 +146,7 @@ U kunt een aanvraag die in behandeling is, alleen annuleren als deze nog niet is
     | P1 | Specifieke gebruikers en groepen in uw Directory of specifieke verbonden organisaties |
     | P2 | Alle leden in uw directory (exclusief gasten) |
     | P3 | Alle gebruikers in uw directory (inclusief gasten) of specifieke verbonden organisaties |
-    | P4 | Alle verbonden organisaties of alle gebruikers (alle verbonden organisaties en alle nieuwe externe gebruikers) |
+    | P4 | Alle geconfigureerde verbonden organisaties of alle gebruikers (alle verbonden organisaties en alle nieuwe externe gebruikers) |
     
     Als een beleid zich in een categorie met hogere prioriteit bevindt, worden de categorieën met lagere prioriteit genegeerd. Zie [een beleid selecteren](entitlement-management-request-access.md#select-a-policy)voor een voor beeld van hoe er meerdere beleids regels met dezelfde prioriteit worden weer gegeven voor de aanvrager.
 

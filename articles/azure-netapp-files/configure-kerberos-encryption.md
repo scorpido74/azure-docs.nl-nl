@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 07/27/2020
+ms.date: 9/29/2020
 ms.author: b-juche
-ms.openlocfilehash: 05d173b715a8bc060e2f4d9cdcc7e3aef5630109
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: b683719fa2d0c1e7b5333c2ddf9c93f2797ade9b
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87535388"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461475"
 ---
 # <a name="configure-nfsv41-kerberos-encryption-for-azure-netapp-files"></a>NFSv 4.1 Kerberos-versleuteling voor Azure NetApp Files configureren
 
@@ -135,7 +135,7 @@ In deze sectie wordt de invloed op de prestaties van één client-side van de ve
 
 ### <a name="expected-performance-impact"></a>Verwachte prestatie-impact 
 
-Er zijn twee focus gebieden: lichte belasting en bovengrens. De volgende lijst bevat een beschrijving van de beveiligings instellingen voor de prestaties van de beveiligings instelling en het scenario per scenario. Alle vergelijkingen worden gemaakt op basis van de `sec=sys` beveiligings parameter.
+Er zijn twee focus gebieden: lichte belasting en bovengrens. De volgende lijst bevat een beschrijving van de beveiligings instellingen voor de prestaties van de beveiligings instelling en het scenario per scenario. Alle vergelijkingen worden gemaakt op basis van de `sec=sys` beveiligings parameter. De test is uitgevoerd op één volume, met behulp van één client. 
 
 Prestatie-impact van krb5:
 

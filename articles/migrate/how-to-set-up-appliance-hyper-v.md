@@ -3,12 +3,12 @@ title: Een Azure Migrate apparaat instellen voor Hyper-V
 description: Meer informatie over het instellen van een Azure Migrate apparaat om Hyper-V-Vm's te beoordelen en te migreren.
 ms.topic: article
 ms.date: 03/23/2020
-ms.openlocfilehash: c53f82268bd1a5d94659a8b749a14fd026f91ce1
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 8841f934ba21fda6cc36b856ea773ed0f53cfe32
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90087147"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448092"
 ---
 # <a name="set-up-an-appliance-for-hyper-v-vms"></a>Een apparaat instellen voor virtuele Hyper-V-machines
 
@@ -58,7 +58,7 @@ Controleer of het zip-bestand veilig is voordat u het implementeert.
 1. Open op de machine waarop u het bestand hebt gedownload een opdrachtvenster voor beheerders.
 2. Voer de volgende opdracht uit om de hash voor de VHD te genereren
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Gebruiksvoorbeeld: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.vhd SHA256```
+    - Gebruiksvoorbeeld: ```C:\>Get-FileHash -Path ./AzureMigrateAppliance_v3.20.09.25.zip -Algorithm SHA256```
 
 
 
@@ -130,7 +130,7 @@ Als u VHD's uitvoert op SMB's, moet u de delegatie van referenties van het appar
 1. Voer deze opdracht uit op de apparaat-VM. HyperVHost1/HyperVHost2 zijn voorbeelden van hostnamen.
 
     ```
-    Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com HyperVHost2.contoso.com -Force
+    Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com, HyperVHost2.contoso.com, HyperVHost1, HyperVHost2 -Force
     ```
 
 2. U kunt dit ook doen in de editor voor Lokaal groepsbeleid op het apparaat:

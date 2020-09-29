@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 09/24/2020
+ms.date: 09/29/2020
 ms.author: alkohli
-ms.openlocfilehash: 9d3aafad457f5c72a8c45f4f98f8f03eb8d978d7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c43f7ba52ed0f6018ee32583011bb92786708119
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91324260"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460472"
 ---
 # <a name="azure-stack-edge-pro-with-gpu-general-availability-ga-release-notes"></a>Release opmerkingen voor Azure Stack Edge Pro met GPU-algemene Beschik baarheid (GA)
 
@@ -21,7 +21,7 @@ In de volgende release opmerkingen worden de essentiële openstaande problemen e
 
 De release opmerkingen worden voortdurend bijgewerkt en als er kritieke problemen worden gedetecteerd die een tijdelijke oplossing vereisen, worden deze toegevoegd. Lees de informatie in de release opmerkingen aandachtig door voordat u uw Azure Stack Edge Pro-apparaat implementeert.
 
-Dit artikel is van toepassing op de **Azure stack Edge Pro 2009** -release die wordt toegewezen aan het software versie nummer **2.1.1358.2075**.
+Dit artikel is van toepassing op de **Azure stack Edge Pro 2009** -release die wordt toegewezen aan het software versie nummer **2.1.1364.2110**.
 
 ## <a name="whats-new"></a>Nieuwe functies
 

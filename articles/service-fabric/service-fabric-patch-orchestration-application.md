@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: atsenthi
-ms.openlocfilehash: 43b6f5d4367cfc641183a17fda89cf1381c22a6c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 8f92501bdb8261a67d3dc2b8aefbe1fb1498ef1e
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258608"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445889"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Het Windows-besturings systeem in uw Service Fabric cluster bijwerken
 
@@ -76,7 +76,7 @@ POA vereist dat de Repair Manager-service is ingeschakeld op het cluster.
 
 De Repair Manager-service is standaard ingeschakeld voor Azure-clusters op de duurzaamheids categorie zilver. Afhankelijk van de manier waarop deze clusters zijn gemaakt, is het mogelijk dat de Repair Manager-service niet is ingeschakeld voor Azure-clusters in de laag voor duurzaamheid van het goud. Azure-clusters in de laag Bronze duurzaamheid hebben standaard niet de Repair Manager-service ingeschakeld. Als de service al is ingeschakeld, kunt u deze bekijken in de sectie systeem services in Service Fabric Explorer.
 
-##### <a name="the-azure-portal"></a>De Azure-portal
+##### <a name="the-azure-portal"></a>Azure Portal
 U kunt Repair Manager van de Azure Portal inschakelen tijdens het instellen van het cluster. Wanneer u het cluster configureert, selecteert u de optie **Repair Manager** toevoegen onder **invoeg**toepassingen.
 
 ![Afbeelding van het inschakelen van Repair Manager van de Azure Portal](media/service-fabric-patch-orchestration-application/EnableRepairManager.png)
@@ -296,9 +296,9 @@ Ga als volgt te werk om inzicht te krijgen in hoe updates worden uitgevoerd op e
 
    In POA-versies 1.4.0 en hoger kunt u de status van de update vinden door de status gebeurtenissen op NodeAgentService te bekijken met de WUOperationStatus- \<NodeName> eigenschap. De gemarkeerde secties in de volgende installatie kopieën tonen de status van Windows-updates op knoop punten *poanode_0* en *poanode_2*:
 
-   [![Afbeelding van Windows Update bewerkings status](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png#lightbox)
+   [![Scherm opname toont console venster van Windows Update bewerkings status met poanode_0 gemarkeerd.](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusa.png#lightbox)
 
-   [![Afbeelding van Windows Update bewerkings status](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png#lightbox)
+   [![Scherm opname toont console venster van Windows Update bewerkings status met poanode_1 gemarkeerd.](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png#lightbox)
 
    U kunt de details ook ophalen met behulp van Power shell. Hiervoor maakt u verbinding met het cluster en haalt u de status van de reparatie taak op met behulp van [Get-ServiceFabricRepairTask](/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps). 
    
@@ -328,7 +328,7 @@ Ga als volgt te werk om inzicht te krijgen in hoe updates worden uitgevoerd op e
 
 1. In POA versies 1.4.0 en hoger, wanneer een update poging van het knoop punt is voltooid, wordt een gebeurtenis met de eigenschap ' WUOperationStatus-[nodenaam] ' op NodeAgentService geplaatst om u te waarschuwen wanneer de volgende poging om de Windows-updates te downloaden en te installeren wordt gestart. Dit wordt weer gegeven in de volgende afbeelding:
 
-     [![Afbeelding van Windows Update bewerkings status](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png#lightbox)
+     [![Scherm opname toont het console venster van Windows Update bewerkings status met de NodeAgentService.](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusc.png#lightbox)
 
 ### <a name="diagnostics-logs"></a>Logboeken met diagnostische gegevens
 

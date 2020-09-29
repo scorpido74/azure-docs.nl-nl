@@ -1,28 +1,31 @@
 ---
-title: Azure Cognitive Services-containers
+title: On-premises Azure Cognitive Services-containers gebruiken
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over hoe docker-containers Cognitive Services dichter bij uw gegevens kunnen krijgen.
+description: Meer informatie over het gebruik van docker-containers om Cognitive Services on-premises te gebruiken.
 services: cognitive-services
 author: aahill
 manager: nitinme
-ms.custom: seodec18
+ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 09/10/2020
+ms.date: 09/28/2020
 ms.author: aahi
-ms.openlocfilehash: bda6fae31e3f5ef63d2c917937d80b2c1ea4fc48
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+keywords: on-premises, docker, container, Kubernetes
+ms.openlocfilehash: 48bfad4b101556dfcc4e57cf684341bda8063202
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907003"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461203"
 ---
 # <a name="azure-cognitive-services-containers"></a>Azure Cognitive Services-containers
 
 > [!WARNING]
 > Op 11 juni 2020 kondigde Microsoft aan dat het geen gezichtsherkenningssoftware verkoopt aan politieafdelingen in de Verenigde Staten totdat er solide wetgeving op basis van mensenrechten in werking is getreden. Daardoor is het mogelijk dan klanten gezichtsherkenningsfuncties of een functionaliteit in Azure Services, zoals Face of Video Indexer, niet kunnen gebruiken als de klant deze services gebruikt of laat gebruiken voor of door een politieafdeling in de Verenigde Staten.
 
-Met container ondersteuning in azure Cognitive Services kunnen ontwikkel aars gebruikmaken van dezelfde uitgebreide Api's die beschikbaar zijn in Azure en kunnen ze de services die worden geleverd met [docker-containers](https://www.docker.com/what-container)implementeren en hosten. Container ondersteuning is momenteel beschikbaar voor een subset van Azure Cognitive Services, met inbegrip van delen van:
+Azure Cognitive Services biedt verschillende [docker-containers](https://www.docker.com/what-container) waarmee u dezelfde api's kunt gebruiken die beschikbaar zijn in azure, on-premises. Met deze containers hebt u de flexibiliteit om Cognitive Services dichter bij uw gegevens te brengen voor naleving, beveiliging of andere operationele redenen. 
+
+Container ondersteuning is momenteel beschikbaar voor een subset van Azure Cognitive Services, met inbegrip van delen van:
 
 > [!div class="checklist"]
 > * [Anomaliedetectie][ad-containers]
@@ -42,9 +45,9 @@ Cognitive Services resources zijn beschikbaar op [Microsoft Azure](https://azure
 ## <a name="features-and-benefits"></a>Functies en -voordelen
 
 - **Onveranderbare infra structuur**: DevOps-teams inschakelen om gebruik te maken van een consistente en betrouw bare set bekende systeem parameters, terwijl u kunt aanpassen aan de wijzigingen. Containers bieden de flexibiliteit om te draaien in een voorspelbaar ecosysteem en configuratie drift te voor komen.
-- **Controle over gegevens**: klanten toestaan om te kiezen waar deze Cognitive Services hun gegevens verwerken. Dit is essentieel voor klanten die geen gegevens naar de Cloud kunnen verzenden, maar wel toegang nodig hebben tot Cognitive Services technologie. Ondersteunings consistentie in hybride omgevingen: voor gegevens, beheer, identiteit en beveiliging.
-- **Controle over model updates**: bieden klanten flexibiliteit in het maken van versies en het bijwerken van modellen die in hun oplossingen zijn geïmplementeerd.
-- **Draag bare architectuur**: Schakel het maken van een draag bare toepassings architectuur in die op Azure, on-premises en de rand kan worden geïmplementeerd. Containers kunnen rechtstreeks worden geïmplementeerd in [Azure Kubernetes service](../aks/index.yml), [Azure container instances](../container-instances/index.yml)of op een [Kubernetes](https://kubernetes.io/) -cluster dat is geïmplementeerd op [Azure stack](/azure-stack/operator). Zie [Deploy Kubernetes to Azure stack](/azure-stack/user/azure-stack-solution-template-kubernetes-deploy)voor meer informatie.
+- **Controle over gegevens**: Kies waar uw gegevens worden verwerkt door Cognitive Services. Dit kan essentieel zijn als u geen gegevens naar de cloud kunt verzenden, maar wel toegang nodig hebt tot Cognitive Services-API's. Ondersteunings consistentie in hybride omgevingen: voor gegevens, beheer, identiteit en beveiliging.
+- **Controle over model updates**: flexibiliteit bij het versie beheer en het bijwerken van modellen die in hun oplossingen zijn geïmplementeerd.
+- **Draag bare architectuur**: maakt het mogelijk een draag bare toepassings architectuur te maken die kan worden geïmplementeerd op Azure, on-premises en aan de rand. Containers kunnen rechtstreeks worden geïmplementeerd in [Azure Kubernetes service](../aks/index.yml), [Azure container instances](../container-instances/index.yml)of op een [Kubernetes](https://kubernetes.io/) -cluster dat is geïmplementeerd op [Azure stack](/azure-stack/operator). Zie [Deploy Kubernetes to Azure stack](/azure-stack/user/azure-stack-solution-template-kubernetes-deploy)voor meer informatie.
 - **Hoge door Voer/lage latentie**: bieden klanten de mogelijkheid om te schalen voor vereisten voor hoge door Voer en lage latentie door Cognitive Services in te scha kelen om fysiek te sluiten op hun toepassings logica en-gegevens. Containers hebben geen Cap-trans acties per seconde (TPS) en kunnen worden gemaakt om te schalen om de vraag te verwerken als u de benodigde hardwarebronnen opgeeft.
 - **Schaal baarheid**: met de steeds groeiende populariteit van container opslag-en container Orchestration-software, zoals Kubernetes; schaal baarheid bevindt zich in de Forefront van technologische voor uitgangen. Voortbouwend op een schaal bare cluster-Foundation, waarbij toepassingen kunnen worden ontwikkeld tot hoge Beschik baarheid.
 
@@ -52,7 +55,7 @@ Cognitive Services resources zijn beschikbaar op [Microsoft Azure](https://azure
 
 Azure Cognitive Services-containers bieden de volgende set docker-containers, die elk een subset van functionaliteit van services in azure Cognitive Services bevat:
 
-| Service | Ondersteunde prijs categorie | Container | Description |
+| Service | Ondersteunde prijs categorie | Container | Beschrijving |
 |--|--|--|--|
 | [Anomalie detectie][ad-containers] | F0, S0 | **Anomaliey-detector** ([installatie kopie](https://hub.docker.com/_/azure-cognitive-services-decision-anomaly-detector))  | Met de Anomaly Detector-API kunt u anomalieën in uw tijdreeksgegevens controleren en detecteren met behulp van machine learning.<br>[Toegang aanvragen][request-access] |
 | [Computer Vision][cv-containers] | F0, S1 | **Lezen** | Hiermee wordt afgedrukte tekst geëxtraheerd uit afbeeldingen van verschillende objecten met verschillende Opper vlakken en achtergronden, zoals bevestigingen, posters en visite kaartjes. De Lees container detecteert ook *handgeschreven tekst* in afbeeldingen en biedt ondersteuning voor PDF/TIFF/meerdere pagina's.<br/><br/>**Belang rijk:** De Lees container werkt momenteel alleen met Engels. |

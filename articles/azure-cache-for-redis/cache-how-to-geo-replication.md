@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: yegu
-ms.openlocfilehash: 956e3e83686677f3eb9895354a008783df5f7dcd
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: e4739c0c550988e1639e89a647815e5dd86b17b7
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003699"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461339"
 ---
 # <a name="how-to-set-up-geo-replication-for-azure-cache-for-redis"></a>Geo-replicatie voor Azure cache instellen voor redis
 
@@ -145,8 +145,8 @@ Ja, geo-replicatie van caches in VNETs wordt ondersteund met aanvullende opmerki
 - Geo-replicatie tussen caches in hetzelfde VNET wordt ondersteund.
 - Geo-replicatie tussen caches in verschillende VNETs wordt ook ondersteund.
   - Als de VNETs zich in dezelfde regio bevinden, kunt u deze verbinden met [vnet-peering](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) of een [VPN gateway vnet-naar-vnet-verbinding](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways#V2V).
-  - Als de VNETs zich in verschillende regio's bevinden, wordt geo-replicatie met behulp van VNET-peering niet ondersteund vanwege een beperking met basis interne load balancers. Zie [Virtual Network-peering-vereisten en beperkingen](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#requirements-and-constraints)voor meer informatie over de beperkingen voor VNET-peering. De aanbevolen oplossing is een VPN Gateway VNET-naar-VNET-verbinding te gebruiken.
-
+  - Als de VNETs zich in verschillende regio's bevinden, wordt geo-replicatie met behulp van VNET-peering ondersteund, maar een client-VM in VNET 1 (regio 1) heeft geen toegang tot de cache in VNET 2 (regio 2) via de DNS-naam vanwege een beperking met basis interne load balancers. Zie [Virtual Network-peering-vereisten en beperkingen](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#requirements-and-constraints)voor meer informatie over de beperkingen voor VNET-peering. De aanbevolen oplossing is een VPN Gateway VNET-naar-VNET-verbinding te gebruiken.
+  
 Met [deze Azure-sjabloon](https://azure.microsoft.com/resources/templates/201-redis-vnet-geo-replication/)kunt u snel twee geo-gerepliceerde caches implementeren in een vnet dat is verbonden met een VPN gateway vnet-naar-vnet-verbinding.
 
 ### <a name="what-is-the-replication-schedule-for-redis-geo-replication"></a>Wat is het replicatie schema voor redis geo-replicatie?

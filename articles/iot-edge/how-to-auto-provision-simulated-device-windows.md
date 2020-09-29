@@ -8,16 +8,16 @@ ms.date: 4/3/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b8a31f2739e497d8e203a9806d25b21608e5701f
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: c010fa4ea0289ed91f439a250f0b63703517f5bc
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531471"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447780"
 ---
 # <a name="create-and-provision-a-simulated-iot-edge-device-with-a-virtual-tpm-on-windows"></a>Een gesimuleerd IoT Edge-apparaat maken en inrichten met een virtuele TPM in Windows
 
-Azure IoT Edge apparaten kunnen automatisch worden ingericht met behulp van de [Device Provisioning Service](../iot-dps/index.yml) , net zoals apparaten die niet Edge-ingeschakeld zijn. Als u niet bekend bent met het proces van automatische inrichting, raadpleegt u het overzicht van [inrichtingen](../iot-dps/about-iot-dps.md#provisioning-process) voordat u doorgaat.
+Azure IoT Edge apparaten kunnen automatisch worden ingericht met behulp van de [Device Provisioning Service](../iot-dps/index.yml) , net zoals apparaten die niet Edge-ingeschakeld zijn. Als u niet bekend bent met het proces van automatische inrichting, bekijkt u het overzicht voor [inrichting](../iot-dps/about-iot-dps.md#provisioning-process) voordat u verdergaat.
 
 DPS ondersteunt symmetrische sleutel attest voor IoT Edge-apparaten in zowel individuele inschrijving als groeps inschrijving. Als u bij het inschrijven van de groep de optie ' is IoT Edge apparaat ' moet worden ingesteld op True voor symmetrische-sleutel attest, worden alle apparaten die zijn geregistreerd onder die registratie groep als IoT Edge-apparaten gemarkeerd.
 
@@ -61,7 +61,7 @@ Kies de SDK-taal die u wilt gebruiken voor het maken van het gesimuleerde appara
 Wanneer u de afzonderlijke inschrijving maakt, selecteert u **waar** om te declareren dat het gesimuleerde TPM-apparaat op uw Windows-ontwikkel computer een **IOT edge apparaat**is.
 
 > [!TIP]
-> In de Azure CLI kunt u een [inschrijving](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment) of een [registratie groep](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment-group) maken en de vlag voor **rand ingeschakeld** gebruiken om op te geven dat een apparaat, of groep apparaten, een IOT edge apparaat is.
+> In de Azure CLI kunt u een [inschrijving](/cli/azure/ext/azure-iot/iot/dps/enrollment) of een [registratie groep](/cli/azure/ext/azure-iot/iot/dps/enrollment-group) maken en de vlag voor **rand ingeschakeld** gebruiken om op te geven dat een apparaat, of groep apparaten, een IOT edge apparaat is.
 
 Gesimuleerd apparaat en afzonderlijke registratie handleidingen:
 

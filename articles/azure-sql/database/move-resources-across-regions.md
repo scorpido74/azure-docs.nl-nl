@@ -7,17 +7,17 @@ ms.service: sql-db-mi
 ms.subservice: data-movement
 ms.custom: sqldbrb=2
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 06/25/2019
-ms.openlocfilehash: 9e7d2d08c7041b23f0eb02328367d07e72fe35eb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0b78419f4fb37bb96e2c71c89f740a35914ccede
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333066"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446389"
 ---
 # <a name="move-resources-to-new-region---azure-sql-database--azure-sql-managed-instance"></a>Resources verplaatsen naar een nieuwe regio-Azure SQL Database & Azure SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -170,7 +170,7 @@ Replicatie van alle data bases op elk exemplaar wordt automatisch gestart. Zie v
 
 ### <a name="monitor-the-preparation-process"></a>Het voorbereidings proces bewaken
 
-U kunt periodiek [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup?view=azps-2.3.2) aanroepen om de replicatie van uw data bases van de bron naar het doel te bewaken. Het uitvoer object van `Get-AzSqlDatabaseFailoverGroup` bevat een eigenschap voor de **Replication State**:
+U kunt periodiek [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) aanroepen om de replicatie van uw data bases van de bron naar het doel te bewaken. Het uitvoer object van `Get-AzSqlDatabaseFailoverGroup` bevat een eigenschap voor de **Replication State**:
 
 - **Replication State = 2** (CATCH_UP) geeft aan dat de data base is gesynchroniseerd en veilig kan worden uitgevoerd.
 - **Replication State = 0** (seeding) geeft aan dat de data base nog niet is geseedd en dat er een failover wordt uitgevoerd.
@@ -182,7 +182,7 @@ Zodra **Replication State** is `2` , maakt u verbinding met elke Data Base of su
 ### <a name="initiate-the-move"></a>De verplaatsing initiëren
 
 1. Maak verbinding met het doel beheerd exemplaar met behulp van het secundaire eind punt `<fog-name>.secondary.database.windows.net` .
-1. Gebruik [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup?view=azps-2.3.2) om te scha kelen naar het secundaire beheerde exemplaar als primair met volledige synchronisatie. Deze bewerking wordt uitgevoerd of wordt teruggedraaid.
+1. Gebruik [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup) om te scha kelen naar het secundaire beheerde exemplaar als primair met volledige synchronisatie. Deze bewerking wordt uitgevoerd of wordt teruggedraaid.
 1. Controleer of de opdracht is voltooid door te gebruiken `nslook up <fog-name>.secondary.database.windows.net` om te controleren of de DNS CNAME-vermelding verwijst naar het IP-adres van de doel regio. Als de switch-opdracht mislukt, wordt de CNAME niet bijgewerkt.
 
 ### <a name="remove-the-source-managed-instances"></a>De door de bron beheerde instanties verwijderen

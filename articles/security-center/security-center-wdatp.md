@@ -7,17 +7,17 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2020
 ms.author: memildin
-ms.openlocfilehash: 28242341ddd21adea33e56c3e1f35f0677e5921a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 66a04ebec6eb9d7219d4d5db3bdd1dfd780a730f
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907352"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445992"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Micro soft Defender Advanced Threat Protection met Azure Security Center
 
@@ -30,9 +30,9 @@ Azure Security Center integreert met [micro soft Defender Advanced Threat Protec
 |----|:----|
 |Release status:|Algemeen beschikbaar (GA)|
 |Koers|Vereist [Azure Defender](security-center-pricing.md)|
-|Ondersteunde machines:|![Yes](./media/icons/yes-icon.png) Azure-machines met Windows<br>![Yes](./media/icons/yes-icon.png) Azure-Arc-machines met Windows|
+|Ondersteunde machines:|![Ja](./media/icons/yes-icon.png) Azure-machines met Windows<br>![Ja](./media/icons/yes-icon.png) Azure-Arc-machines met Windows|
 |Vereiste rollen en machtigingen:|De integratie: **beveiligings beheerder** of **eigenaar** inschakelen/uitschakelen<br>MDATP-waarschuwingen weer geven in Security Center: **beveiligings lezer**, **lezer**, **Inzender voor resource groep**, **eigenaar van resource groep**, **beveiligings beheerder**, **abonnements eigenaar**of **mede werker** van het abonnement|
-|Clouds|![Yes](./media/icons/yes-icon.png) Commerciële Clouds.<br>![No](./media/icons/no-icon.png) GCC-klanten die werk belastingen uitvoeren in open bare Azure-Clouds<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) China gov, andere gov|
+|Clouds|![Ja](./media/icons/yes-icon.png) Commerciële Clouds.<br>![Nee](./media/icons/no-icon.png) GCC-klanten die werk belastingen uitvoeren in open bare Azure-Clouds<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![Nee](./media/icons/no-icon.png) China gov, andere gov|
 |||
 
 

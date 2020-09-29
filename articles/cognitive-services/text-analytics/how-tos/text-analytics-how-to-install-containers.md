@@ -1,22 +1,23 @@
 ---
-title: Containers installeren en uitvoeren-Text Analytics
+title: Docker-containers voor de Text Analytics-API installeren en uitvoeren
 titleSuffix: Azure Cognitive Services
-description: Instructies voor het downloaden, installeren en uitvoeren van Text Analytics in deze stapsgewijze zelf studie.
+description: Gebruik de docker-containers voor de Text Analytics-API om natuurlijke taal verwerking uit te voeren, zoals sentiment-analyse, on-premises.
 services: cognitive-services
 author: aahill
 manager: nitinme
-ms.custom: seodec18
+ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 09/28/2020
 ms.author: aahi
-ms.openlocfilehash: 27881d6271fbedfb5763b293d5145e2f87cd1c13
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+keywords: on-premises, docker, container, sentiment analyse, natuurlijke taal verwerking
+ms.openlocfilehash: 42b22c94f8f2eed0514906422fe9f1d5e7cd12e2
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91309303"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461492"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>De Text Analytics-containers installeren en uitvoeren
 
@@ -28,7 +29,7 @@ ms.locfileid: "91309303"
 
 Containers bieden u de mogelijkheid de Text Analytics-API's in uw eigen omgeving uit te voeren en zijn ideaal voor uw specifieke vereisten voor beveiliging en gegevensbeheer. De Text Analytics-containers bieden geavanceerde verwerking van natuurlijke taal via onbewerkte tekst en bevatten drie belang rijke functies: sentiment analyse, extractie van sleutel zinnen en taal detectie. 
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/cognitive-services/) aan voordat u begint.
+Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/cognitive-services/) voordat u begint.
 
 > [!IMPORTANT]
 > Het gratis account is beperkt tot 5.000 trans acties per maand en alleen de <a href="https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics" target="_blank">prijs categorieën <span class="docon docon-navigate-external x-hidden-focus"></span> </a> **gratis** en **standaard** zijn geldig voor containers. Zie [gegevens limieten](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits)voor meer informatie over de tarieven voor transactie aanvragen.

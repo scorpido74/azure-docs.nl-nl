@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 7459d674cde123bc45544322347bc4c1fe89e820
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 1fb05b52bbe3e8f544b17537ef9070e5b2b0b77b
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009610"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460166"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Azure-cache configureren voor redis
 In dit onderwerp worden de configuraties beschreven die beschikbaar zijn voor uw Azure-cache voor redis-exemplaren. In dit onderwerp wordt ook de standaard redis-server configuratie voor Azure cache voor redis-exemplaren besproken.
@@ -132,7 +132,7 @@ De instellingen voor **Maxmemory-beleid**, **Maxmemory-reserved**en **maxfragmen
 
 Met **Maxmemory-beleid** configureert u het verwijderings beleid voor de cache en kunt u kiezen uit het volgende verwijderings beleid:
 
-* `volatile-lru`-Dit is het standaard verwijderings beleid.
+* `volatile-lru` -Dit is het standaard verwijderings beleid.
 * `allkeys-lru`
 * `volatile-random`
 * `allkeys-random`
@@ -141,9 +141,9 @@ Met **Maxmemory-beleid** configureert u het verwijderings beleid voor de cache e
 
 `maxmemory`Zie [verwijderings beleid](https://redis.io/topics/lru-cache#eviction-policies)voor meer informatie over beleid.
 
-De instelling **maxmemory-gereserveerde** configureert de hoeveelheid geheugen (in MB) die is gereserveerd voor niet-cache bewerkingen, zoals replicatie tijdens failover. Door deze waarde in te stellen, kunt u een consistente redis-server ervaring hebben wanneer uw belasting varieert. Deze waarde moet hoger worden ingesteld voor werk belastingen die zijn geschreven. Wanneer geheugen is gereserveerd voor dergelijke bewerkingen, is het niet beschikbaar voor opslag van gegevens in de cache.
+De instelling **maxmemory-gereserveerde** configureert de hoeveelheid geheugen, in MB per exemplaar in een cluster, dat is gereserveerd voor niet-cache bewerkingen, zoals replicatie tijdens failover. Door deze waarde in te stellen, kunt u een consistente redis-server ervaring hebben wanneer uw belasting varieert. Deze waarde moet hoger worden ingesteld voor werk belastingen die zijn geschreven. Wanneer geheugen is gereserveerd voor dergelijke bewerkingen, is het niet beschikbaar voor opslag van gegevens in de cache.
 
-De instelling **maxfragmentationmemory-gereserveerde** configureert de hoeveelheid geheugen in MB die is gereserveerd voor geheugen fragmentatie. Door deze waarde in te stellen, kunt u een consistente redis-server ervaring hebben wanneer de cache vol is of bijna vol is en de fragmentatie verhouding hoog is. Wanneer geheugen is gereserveerd voor dergelijke bewerkingen, is het niet beschikbaar voor opslag van gegevens in de cache.
+De instelling **maxfragmentationmemory-gereserveerde** configureert de hoeveelheid geheugen, in MB per exemplaar in een cluster, dat is gereserveerd voor geheugen fragmentatie. Door deze waarde in te stellen, kunt u een consistente redis-server ervaring hebben wanneer de cache vol is of bijna vol is en de fragmentatie verhouding hoog is. Wanneer geheugen is gereserveerd voor dergelijke bewerkingen, is het niet beschikbaar voor opslag van gegevens in de cache.
 
 Een ding waarmee u rekening moet houden bij het kiezen van een nieuwe waarde voor geheugen reservering (**maxmemory** of **maxfragmentationmemory-** Reserved), is de manier waarop deze wijziging van invloed kan zijn op een cache die al wordt uitgevoerd met grote hoeveel heden gegevens. Als u bijvoorbeeld een cache van 53 GB met gegevens van 49 GB hebt, wijzigt u de reserverings waarde in 8 GB. deze wijziging zal de Maxi maal beschik bare hoeveelheid geheugen voor het systeem verlagen tot 45 GB. Als uw huidige `used_memory` waarde of uw `used_memory_rss` waarden hoger zijn dan de nieuwe limiet van 45 GB, dan moet het systeem gegevens verwijderen tot beide `used_memory` en `used_memory_rss` onder 45 GB vallen. Verwijderen kan de belasting van de server en de geheugen fragmentatie verhogen. `used_memory` `used_memory_rss` Zie [beschik bare metrische gegevens en rapportage-intervallen](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)voor meer informatie over de cache-metrische gegevens, zoals en.
 
@@ -208,7 +208,7 @@ Klik op **cluster grootte** om de cluster grootte te wijzigen voor een actieve P
 Als u de cluster grootte wilt wijzigen, gebruikt u de schuif regelaar of typt u een getal tussen 1 en 10 in het tekstvak **Shard aantal** en klikt u op **OK** om op te slaan.
 
 > [!IMPORTANT]
-> Redis-Clustering is alleen beschikbaar voor Premium-caches. Zie [clustering configureren voor een Premium Azure-cache voor redis](cache-how-to-premium-clustering.md)voor meer informatie.
+> Redis-Clustering is alleen beschikbaar voor Premium-caches. Zie [Clustering voor een Premium Azure Cache voor Redis configureren](cache-how-to-premium-clustering.md) voor meer informatie.
 >
 >
 
@@ -216,7 +216,7 @@ Als u de cluster grootte wilt wijzigen, gebruikt u de schuif regelaar of typt u 
 ### <a name="redis-data-persistence"></a>Redis-gegevenspersistentie
 Klik op **gegevens persistentie** om gegevens persistentie voor uw Premium-cache in te scha kelen, uit te scha kelen of te configureren. Azure cache voor redis biedt redis persistentie met behulp van [RDB-persistentie](cache-how-to-premium-persistence.md#configure-rdb-persistence) of [AOF-persistentie](cache-how-to-premium-persistence.md#configure-aof-persistence).
 
-Zie [persistentie configureren voor een Premium Azure-cache voor redis](cache-how-to-premium-persistence.md)voor meer informatie.
+Zie [Persistentie configureren voor een Premium Azure Cache voor Redis](cache-how-to-premium-persistence.md) voor meer informatie.
 
 
 > [!IMPORTANT]
@@ -392,9 +392,9 @@ Nieuwe Azure-cache voor redis-exemplaren worden geconfigureerd met de volgende s
 | `maxclients` |Is afhankelijk van de prijs categorie<sup>2</sup> |Deze waarde is het maximum aantal aangesloten clients dat tegelijkertijd is toegestaan. Zodra de limiet is bereikt, sluit redis alle nieuwe verbindingen af en wordt de fout ' maximum aantal clients bereikt ' geretourneerd. |
 | `maxmemory-policy` |`volatile-lru` |Maxmemory-beleid is de instelling voor hoe redis selecteert wat moet worden verwijderd wanneer `maxmemory` (de grootte van de cache aanbieding die u hebt geselecteerd tijdens het maken van de cache) is bereikt. Met Azure cache voor redis is de standaard instelling `volatile-lru` , waarmee de sleutels met een verloopset worden verwijderd met behulp van een LRU-algoritme. Deze instelling kan worden geconfigureerd in de Azure Portal. Zie [geheugen beleid](#memory-policies)voor meer informatie. |
 | `maxmemory-samples` |3 |Voor het opslaan van geheugen zijn LRU en minimale TTL-algoritmen een geschatte algoritme in plaats van nauw keurige algoritmen. Standaard worden met redis drie sleutels gecontroleerd en wordt de versie gekozen die minder recent is gebruikt. |
-| `lua-time-limit` |5\.000 |Maximale uitvoerings tijd van een Lua-script in milliseconden. Als de maximale uitvoerings tijd is bereikt, redis logboeken dat een script nog steeds wordt uitgevoerd na de Maxi maal toegestane tijd en begint met het beantwoorden van query's met een fout. |
+| `lua-time-limit` |5.000 |Maximale uitvoerings tijd van een Lua-script in milliseconden. Als de maximale uitvoerings tijd is bereikt, redis logboeken dat een script nog steeds wordt uitgevoerd na de Maxi maal toegestane tijd en begint met het beantwoorden van query's met een fout. |
 | `lua-event-limit` |500 |Maximale grootte van script gebeurtenis wachtrij. |
-| `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 0 032mb 8mb 60 |De limieten voor client uitvoer buffers kunnen worden gebruikt om te voor komen dat clients die geen gegevens van de server snel genoeg worden gelezen, om een of andere reden. (een veelvoorkomende reden is dat een pub/sub-client berichten niet kan gebruiken als de uitgever deze kan produceren). Zie voor meer informatie [https://redis.io/topics/clients](https://redis.io/topics/clients) . |
+| `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 0 032mb 8mb 60 |De limieten voor client uitvoer buffers kunnen worden gebruikt om te voor komen dat clients die geen gegevens van de server snel genoeg worden gelezen, om een of andere reden. (een veelvoorkomende reden is dat een pub/sub-client berichten niet kan gebruiken als de uitgever deze kan produceren). Zie [https://redis.io/topics/clients](https://redis.io/topics/clients) voor meer informatie. |
 
 <a name="databases"></a>
 <sup>1</sup> De limiet voor `databases` is verschillend voor elke Azure-cache voor redis prijs categorie en kan worden ingesteld tijdens het maken van de cache. Als er geen `databases` instelling wordt opgegeven tijdens het maken van de cache, is de standaard waarde 16.

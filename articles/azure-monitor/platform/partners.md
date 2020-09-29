@@ -4,12 +4,12 @@ description: Meer informatie over de partners van Azure Monitor en hoe u toegang
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 80b60e9f93720d0e06c1df1576834c5f462e7358
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: b56b2386422d9f7f2fa598ff804a2206bf4b4d83
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/29/2020
-ms.locfileid: "91449434"
+ms.locfileid: "91460085"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Integraties van Azure Monitor-partner
 
@@ -151,7 +151,7 @@ De **ArcSight** van de MicroFocus heeft een slimme connector voor Azure monitor 
 
 Met de micro focus- **Operations Bridge** worden automatisch alle hybride IT-resources bewaakt: elk apparaat, besturings systeem, Data Base, toepassing of service, ongeacht waar het wordt uitgevoerd en past AIOps toe op alle gegevens typen: gebeurtenissen, metrieken, logboeken en afhankelijkheden. Het biedt een unieke combi natie van Quality-of-Service-bewaking, in combi natie met diepe analyse van toepassings status en bevat een uitgebreide prestatie-en beschikbaarheids bewaking van Microsoft Azure Services. Met Operations Bridge kunnen klanten een enkel glas venster bieden, dat beschikbaar is op elk apparaat met een browser, op basis van de manier waarop zowel bedrijven als IT-belanghebbenden kunnen begrijpen.
 
-Lees meer
+Meer informatie
 - [Overzicht van OB Suite](https://www.microfocus.com/products/operations-bridge-suite/overview)
 - [Downloaden](https://marketplace.microfocus.com/itom/content/obm-management-pack-for-microsoft-azure)
 - [Sitescope](https://docs.microfocus.com/itom/SiteScope:2019.05/MSAzureMonitor) -sitescope is een onderdeel in de operations Bridge Suite.
@@ -211,6 +211,17 @@ Push alle metrische gegevens naar Azure Monitor en gebruik ze daar waar u ze nod
 ![QRadar-logo](./media/partners/qradar.png)
 
 Het Microsoft Azure DSM en Microsoft Azure Event hub-protocol kunnen worden gedownload via [de website van IBM-ondersteuning](https://www.ibm.com/support). Meer informatie over de integratie met Azure vindt u in de [QRadar-documentatie](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0).
+
+
+## <a name="rsa"></a>RSA
+
+![RSA-logo](./media/partners/rsa.png)
+
+Het RSA-netwitness-platform is een toonaangevend platform voor detectie en reactie van dreigingen, waarmee ontwikkelde SIEM en uitgebreide detectie-en respons oplossingen worden gecombineerd. De oplossingen bieden ongekende zicht baarheid, analyses en geautomatiseerde respons mogelijkheden. Deze combi natie van functies helpt beveiligings teams efficiënter en effectief te maken, de vaardig heden van hun bedreigings ervaring up-to-level uit te scha kelen en ze sneller te kunnen onderzoeken en op bedreigingen te reageren, in de gehele infra structuur van hun organisatie, in de Cloud, on-premises of virtueel. 
+
+De integratie van het RSA netwitness-platform met Azure Monitor biedt snel de mogelijkheden voor het opnemen van gebeurtenis gegevens en logboeken van Azure Monitor systeem eigen in het RSA-netwitness-platform via een intuïtieve gebruikers interface en robuuste systeem eigen parserings mogelijkheden. Krijg snel inzicht in activiteiten, diagnostische gegevens, Active Directory gebeurtenissen en andere Event hubgegevens en Bekijk deze gegevens naast uw andere beveiligings gegevens van de onderneming in een volledige oplossing voor detectie en reactie op bedreigingen.
+
+[Meer informatie.](https://community.rsa.com/docs/DOC-101239)
 
 
 ## <a name="sciencelogic"></a>ScienceLogic

@@ -1,27 +1,29 @@
 ---
-title: Docker-containers-LUIS
+title: Docker-containers voor LUIS installeren en uitvoeren
 titleSuffix: Azure Cognitive Services
-description: De LUIS-container laadt uw getrainde of gepubliceerde app in een docker-container en biedt toegang tot de query voorspellingen van de API-eind punten van de container.
+description: Gebruik de LUIS-container om uw getrainde of gepubliceerde app te laden en toegang te krijgen tot de voor spellingen van on-premises.
 services: cognitive-services
 author: aahill
 manager: nitinme
-ms.custom: seodec18
+ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 09/28/2020
 ms.author: aahi
-ms.openlocfilehash: bec96f45de69ab2698f3f0cf26f08222e4595ea5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+keywords: on-premises, docker, container
+ms.openlocfilehash: c65a81d9daed85b5bf056d24949e36ec227c19c6
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90889490"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460982"
 ---
-# <a name="install-and-run-luis-docker-containers"></a>LUIS docker-containers installeren en uitvoeren
+# <a name="install-and-run-docker-containers-for-luis"></a>Docker-containers voor LUIS installeren en uitvoeren
 
 [!INCLUDE [container image location note](../containers/includes/image-location-note.md)]
 
+Met containers kunt u LUIS in uw eigen omgeving gebruiken. Containers zijn ideaal voor specifieke vereisten voor beveiliging en gegevensbeheer. In dit artikel leert u hoe u een LUIS-container downloadt, installeert en uitvoert.
 
 De Language Understanding-container (LUIS) laadt uw getrainde of gepubliceerd Language Understanding model. Als [Luis-app](https://www.luis.ai)biedt de docker-container toegang tot de query voorspellingen van de API-eind punten van de container. U kunt query logboeken van de container verzamelen en deze opnieuw uploaden naar de Language Understanding-app om de nauw keurigheid van de app te verbeteren.
 

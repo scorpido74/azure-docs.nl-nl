@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 04/08/2019
 ms.author: kwill
-ms.openlocfilehash: 5dd57a87658554bf59acf5cee1b6daf67b8692b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c427982854e1d328b5d1553aa86866ad298eea1
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71162152"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461309"
 ---
 #    <a name="workflow-of-windows-azure-classic-vm-architecture"></a>Werk stroom van de klassieke Windows Azure-VM-architectuur 
 Dit artikel bevat een overzicht van de werk stroom processen die zich voordoen wanneer u een Azure-resource, zoals een virtuele machine, implementeert of bijwerkt. 
@@ -29,7 +29,7 @@ Dit artikel bevat een overzicht van de werk stroom processen die zich voordoen w
 
 Het volgende diagram toont de architectuur van Azure-resources.
 
-![Azure-werk stroom](./media/cloud-services-workflow-process/workflow.jpg)
+:::image type="content" source="./media/cloud-services-workflow-process/workflow.jpg" alt-text="<ALT de afbeelding over Azure workflow>":::
 
 ## <a name="workflow-basics"></a>Basis principes van werk stromen
    
@@ -69,11 +69,9 @@ Het volgende diagram toont de architectuur van Azure-resources.
 
 **I**. WaWorkerHost is het standaard hostproces voor normale werk rollen. Dit hostproces host alle Dll's van de rol en de code van het toegangs punt, zoals onstart en run.
 
-**J**. WaWebHost is het standaard hostproces voor webrollen als deze zijn geconfigureerd voor het gebruik van de SDK 1,2-compatibel Hostable Web core (HWC). Rollen kunnen de HWC-modus inschakelen door het element uit de service definitie (csdef) te verwijderen. In deze modus worden alle code en Dll's van de service uitgevoerd vanuit het WaWebHost-proces. IIS (w3wp) wordt niet gebruikt en er zijn geen AppPools geconfigureerd in IIS-beheer omdat IIS wordt gehost in WaWebHost.exe.
+**J**. WaIISHost is het hostproces voor de functie-invoer punt code voor webrollen die gebruikmaken van volledige IIS. Dit proces laadt de eerste gevonden DLL die de klasse **RoleEntryPoint** gebruikt en voert de code uit deze klasse uit (onstart, run, OnStop). Alle **RoleEnvironment** -gebeurtenissen (zoals StatusCheck en gewijzigd) die in de RoleEntryPoint-klasse zijn gemaakt, worden in dit proces gegenereerd.
 
-**K**. WaIISHost is het hostproces voor de functie-invoer punt code voor webrollen die gebruikmaken van volledige IIS. Dit proces laadt de eerste gevonden DLL die de klasse **RoleEntryPoint** gebruikt en voert de code uit deze klasse uit (onstart, run, OnStop). Alle **RoleEnvironment** -gebeurtenissen (zoals StatusCheck en gewijzigd) die in de RoleEntryPoint-klasse zijn gemaakt, worden in dit proces gegenereerd.
-
-**L**. W3WP is het standaard-IIS-werk proces dat wordt gebruikt als de rol is geconfigureerd voor het gebruik van volledige IIS. Hiermee wordt de AppPool uitgevoerd die is geconfigureerd vanuit IISConfigurator. Alle RoleEnvironment-gebeurtenissen (zoals StatusCheck en gewijzigd) die hier worden gemaakt, worden in dit proces gegenereerd. Houd er rekening mee dat RoleEnvironment-gebeurtenissen worden gestart op beide locaties (WaIISHost en w3wp.exe) als u zich abonneert op gebeurtenissen in beide processen.
+**K**. W3WP is het standaard-IIS-werk proces dat wordt gebruikt als de rol is geconfigureerd voor het gebruik van volledige IIS. Hiermee wordt de AppPool uitgevoerd die is geconfigureerd vanuit IISConfigurator. Alle RoleEnvironment-gebeurtenissen (zoals StatusCheck en gewijzigd) die hier worden gemaakt, worden in dit proces gegenereerd. Houd er rekening mee dat RoleEnvironment-gebeurtenissen worden gestart op beide locaties (WaIISHost en w3wp.exe) als u zich abonneert op gebeurtenissen in beide processen.
 
 ## <a name="workflow-processes"></a>Werk stroom processen
 
@@ -87,8 +85,7 @@ Het volgende diagram toont de architectuur van Azure-resources.
 8. Voor volledige IIS-webfuncties vertelt WaHostBootstrapper IISConfigurator het configureren van de IIS-AppPool en wijst de site naar `E:\Sitesroot\<index>` , waarbij `<index>` een 0-index is in het aantal elementen dat is `<Sites>` gedefinieerd voor de service.
 9. WaHostBootstrapper start het host proces, afhankelijk van het type rol:
     1. **Worker-rol**: WaWorkerHost.exe is gestart. WaHostBootstrapper voert de methode onstart () uit. Nadat deze is geretourneerd, begint WaHostBootstrapper met het uitvoeren van de methode Run () en wordt de functie vervolgens gelijktijdig gemarkeerd als gereed en wordt deze in de load balancer draaiing geplaatst (als InputEndpoints zijn gedefinieerd). WaHostBootsrapper gaat vervolgens naar een lus voor het controleren van de functie status.
-    1. **SDK 1,2 HWC-webrol**: WaWebHost is gestart. WaHostBootstrapper voert de methode onstart () uit. Nadat deze is geretourneerd, begint WaHostBootstrapper met het uitvoeren van de methode Run () en markeert de functie vervolgens gelijktijdig als gereed en wordt deze in de load balancer draaiing geplaatst. WaWebHost geeft een opwarm-aanvraag (GET/do. rd_runtime_init). Alle webaanvragen worden naar WaWebHost.exe verzonden. WaHostBootsrapper gaat vervolgens naar een lus voor het controleren van de functie status.
-    1. **Volledige IIS-webrole**: aIISHost is gestart. WaHostBootstrapper voert de methode onstart () uit. Nadat deze is geretourneerd, wordt de methode Run () gestart en wordt de functie vervolgens gelijktijdig gemarkeerd als gereed en wordt deze in de load balancer draaiing geplaatst. WaHostBootsrapper gaat vervolgens naar een lus voor het controleren van de functie status.
+    2. **Volledige IIS-webrole**: aIISHost is gestart. WaHostBootstrapper voert de methode onstart () uit. Nadat deze is geretourneerd, wordt de methode Run () gestart en wordt de functie vervolgens gelijktijdig gemarkeerd als gereed en wordt deze in de load balancer draaiing geplaatst. WaHostBootsrapper gaat vervolgens naar een lus voor het controleren van de functie status.
 10. Binnenkomende webaanvragen voor een volledige IIS-webfunctie activeert IIS om het W3WP-proces te starten en de aanvraag te behandelen, op dezelfde manier als in een on-premises IIS-omgeving.
 
 ## <a name="log-file-locations"></a>Locaties van logboek bestanden
@@ -103,10 +100,6 @@ Dit logboek bevat status updates en heartbeat-meldingen en wordt elke 2-3 second
 **WaHostBootstrapper**
 
 `C:\Resources\Directory\<deploymentID>.<role>.DiagnosticStore\WaHostBootstrapper.log`
- 
-**WaWebHost**
-
-`C:\Resources\Directory\<guid>.<role>\WaWebHost.log`
  
 **WaIISHost**
 
@@ -123,7 +116,3 @@ Dit logboek bevat status updates en heartbeat-meldingen en wordt elke 2-3 second
 **Windows-gebeurtenis logboeken**
 
 `D:\Windows\System32\Winevt\Logs`
- 
-
-
-

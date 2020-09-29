@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.author: v-miegge
-ms.openlocfilehash: 071b5786127af31a2ad3266c128dbfb7cacad656
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 4f2b338b8629209363acb7bbe0533831a089fe6f
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88942124"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447322"
 ---
 # <a name="windows-stop-error---0x00000074-bad-system-config-info"></a>Windows-Stop fout-0x00000074 onjuiste systeem configuratie gegevens
 
@@ -61,10 +61,10 @@ De **BAD_SYSTEM_CONFIG_INFO** stop code treedt op als het **systeem** register o
 1. Gebruik stap 1-3 van de [VM-reparatie opdrachten](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) om een herstel-VM voor te bereiden.
 1. Controleer op beschadiging van Hive.
 1. Gebruik Verbinding met extern bureaublad om verbinding te maken met de herstel-VM.
-1. Kopieer de `\windows\system32\config` map en sla deze op in een goede schijf partitie of op een andere veilige locatie. Maak een back-up van deze map als voorzorgsmaatregel, omdat u essentiële register bestanden gaat bewerken.
+1. Kopieer de `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config` map en sla deze op in een goede schijf partitie of op een andere veilige locatie. Maak een back-up van deze map als voorzorgsmaatregel, omdat u essentiële register bestanden gaat bewerken. 
 
 > [!NOTE]
-> Maak een kopie van de `\windows\system32\config` map als back-up voor het geval u de wijzigingen die u in het REGI ster aanbrengt, wilt terugdraaien.
+> Maak een kopie van de `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config` map als back-up voor het geval u de wijzigingen die u in het REGI ster aanbrengt, wilt terugdraaien.
 
 ### <a name="check-for-hive-corruption"></a>Controleren op beschadiging van Hive
 
@@ -72,7 +72,7 @@ Met de onderstaande instructies kunt u bepalen of de oorzaak is veroorzaakt door
 
 1. Open de **REGI ster-editor** op de virtuele machine voor herstel. Typ ' REGEDIT ' in de Windows-zoek balk om het bestand te zoeken.
 1. Selecteer in de REGI ster-editor **HKEY_LOCAL_MACHINE** om deze te markeren en selecteer vervolgens **bestand > component laden...** in het menu.
-1. Blader naar `\windows\system32\config\SYSTEM` en selecteer **openen**.
+1. Blader naar `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM` en selecteer **openen**.
 1. Wanneer u wordt gevraagd een naam in te voeren, voert u **BROKENSYSTEM**in.
 
    1. Als de Hive niet kan worden geopend of als deze leeg is, is het onderdeel beschadigd. Als de component is beschadigd, [opent u een ondersteunings ticket](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).

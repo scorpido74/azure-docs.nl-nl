@@ -3,34 +3,34 @@ title: Dynamische, coole en archief toegangs lagen voor blobs-Azure Storage
 description: Meer informatie over de toegangs lagen hot, cool en Archive voor Azure Blob Storage. Bekijk opslag accounts die ondersteuning bieden voor lagen. Vergelijkings opties voor blok-Blob-opslag.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 08/27/2020
+ms.date: 09/28/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 59a0433a3b22877808fbe2b8371258e00f214d10
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 569e785cd8fc3ec4bbf9960cef63258e83496847
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226179"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460727"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob-opslag: dynamische en statische toegangslagen, en archieftoegangslaag
 
-Azure Storage biedt verschillende toegangs lagen, waarmee u gegevens van blob-objecten op de meest rendabele manier kunt opslaan. De beschik bare toegangs lagen zijn onder andere:
+Azure Storage biedt verschillende toegangs lagen, waarmee u gegevens van blob-objecten op de meest rendabele manier kunt opslaan. De beschikbare toegangslagen zijn onder andere:
 
 - **Dynamisch** geoptimaliseerd voor het opslaan van gegevens die regel matig worden geopend.
 - **Koud** geoptimaliseerd voor het opslaan van gegevens die niet regel matig worden geopend en die gedurende ten minste 30 dagen worden opgeslagen.
 - **Archief** -geoptimaliseerd voor het opslaan van gegevens die zelden worden gebruikt en die gedurende ten minste 180 dagen worden opgeslagen met flexibele latentie vereisten (op volg orde van uur).
 
-De volgende overwegingen zijn van toepassing op de verschillende toegangs lagen:
+De volgende overwegingen zijn van toepassing op de verschillende toegangslagen:
 
-- Alleen de lagen hot en cool kunnen worden ingesteld op het niveau van de account. De toegangs laag voor het archief is niet beschikbaar op het account niveau.
-- De lagen hot, cool en Archive kunnen tijdens het uploaden of na het uploaden worden ingesteld op BLOB-niveau.
-- Gegevens in de laag voor coolbar kunnen een iets lagere Beschik baarheid verdragen, maar vereisen nog steeds een hoge duurzaamheid, een ophaal latentie en doorvoer kenmerken die vergelijkbaar zijn met dynamische gegevens. Voor coole gegevens zijn een iets lagere SLA (Service Level Agreement) voor Beschik baarheid en hogere toegangs kosten vergeleken met warme gegevens acceptabel voor lagere opslag kosten.
-- Archief opslag slaat gegevens offline op en biedt de laagste opslag kosten, maar ook de hoogste gegevens die opnieuw worden gehydrateerd en toegangs kosten.
+- Alleen de statische- en dynamische-toegangslagen kunnen op accountniveau worden ingesteld. De archieftoegangslaag is niet beschikbaar op accountniveau.
+- Dynamische- en statische-toegangslagen en archieftoegangslagen kunnen tijdens of na het uploaden op blob-niveau worden ingesteld.
+- Gegevens in de statische-toegangslaag verdragen een iets lagere beschikbaarheid, maar vereisen wel een hoge duurzaamheid, een ophaallatentie en doorvoerkenmerken die vergelijkbaar zijn met dynamische gegevens. Voor statische gegevens zijn een iets lagere SLA (Service Level Agreement) voor beschikbaarheid en hogere toegangskosten in vergelijking met dynamische gegevens acceptabel bij lagere opslagkosten.
+- Bij archiefopslag worden gegevens offline opgeslagen. De opslagkosten hiervan zijn het laagst, maar de kosten voor hydratatie van gegevens en toegang tot gegevens zijn het hoogst.
 
-Gegevens die zijn opgeslagen in de Cloud, groeien in een exponentieel tempo. Voor een effectief beheer van de kosten voor uw groeiende opslagbehoeften is het vanwege kostenoptimalisatie een goed idee om de gegevens te ordenen op basis van kenmerken als toegangsfrequentie en geplande bewaarperiode. Gegevens die zijn opgeslagen in de Cloud, kunnen verschillen op basis van de manier waarop deze worden gegenereerd, verwerkt en geopend gedurende de levens duur. Sommige gegevens worden tijdens hun hele levensduur actief geopend en gewijzigd. Andere gegevens worden in het begin van hun levensduur regelmatig geopend, terwijl dit naarmate de tijd verstrijkt, aanzienlijk minder vaak gebeurt. Sommige gegevens blijven niet actief in de Cloud en zijn zelden, indien ooit, toegankelijk nadat deze zijn opgeslagen.
+Gegevens die zijn opgeslagen in de Cloud, groeien in een exponentieel tempo. Voor een effectief beheer van de kosten voor uw groeiende opslagbehoeften is het vanwege kostenoptimalisatie een goed idee om de gegevens te ordenen op basis van kenmerken als toegangsfrequentie en geplande bewaarperiode. Gegevens die in de cloud zijn opgeslagen, kunnen verschillen vertonen naar gelang de manier waarop ze gedurende hun levensduur worden gegenereerd, verwerkt en geopend. Sommige gegevens worden tijdens hun hele levensduur actief geopend en gewijzigd. Andere gegevens worden in het begin van hun levensduur regelmatig geopend, terwijl dit naarmate de tijd verstrijkt, aanzienlijk minder vaak gebeurt. Sommige gegevens verblijven inactief in de cloud en worden zelden of nooit geopend nadat ze zijn opgeslagen.
 
 Elk van deze scenario's voor gegevens toegang is voor deel van een andere toegangs laag die is geoptimaliseerd voor een specifiek toegangs patroon. Met warme, koude en archief toegangs lagen biedt Azure Blob Storage deze behoefte aan gedifferentieerde toegangs lagen met afzonderlijke prijs modellen.
 
@@ -44,14 +44,14 @@ Blob Storage-en GPv2-accounts bieden het kenmerk **toegangs niveau** op account 
 
 ## <a name="hot-access-tier"></a>Dynamische-toegangslaag
 
-De laag Hot Access heeft hogere opslag kosten dan cool-en Archive-lagen, maar de laagste toegangs kosten. Voor beelden van gebruiks scenario's voor de laag Hot Access zijn:
+De dynamische-toegangslaag heeft hogere opslagkosten dan de statische-toegangslaag en de archieftoegangslaag, maar de laagste toegangskosten. Voorbeelden van gebruiksscenario's voor de dynamische-toegangslaag:
 
-- Gegevens die in actief gebruik zijn of waarvan wordt verwacht dat ze regel matig worden geopend (gelezen en geschreven naar).
-- Gegevens die worden voor bereid voor verwerking en uiteindelijk de migratie naar de laag voor coole toegang.
+- Gegevens die actief worden gebruikt of waarvan wordt verwacht dat ze regelmatig worden geopend (lees- en schrijfbewerkingen).
+- Gegevens die worden voorbereid voor verwerking en uiteindelijk migratie naar de statische-toegangslaag.
 
 ## <a name="cool-access-tier"></a>Statische-toegangslaag
 
-De laag voor coole toegang heeft lagere opslag kosten en hogere toegangs kosten in vergelijking met de warme opslag. Deze laag is bedoeld voor gegevens die ten minste dertig dagen in de Cold Storage verblijven. Voor beelden van gebruiks scenario's voor de laag cool zijn:
+De statische-toegangslaag heeft lagere opslagkosten en hogere toegangskosten in vergelijking met dynamische opslag. Deze laag is bedoeld voor gegevens die ten minste dertig dagen in de Cold Storage verblijven. Voorbeelden van gebruiksscenario's voor de statische-toegangslaag:
 
 - Gegevenssets waarvan voor de korte termijn een back-up is gemaakt en die na een noodgeval zijn hersteld.
 - Oudere media-inhoud die niet meer regelmatig wordt bekeken, maar onmiddellijk beschikbaar moet zijn wanneer deze wordt geopend.
@@ -132,7 +132,7 @@ In de volgende tabel ziet u een vergelijking van de toegangs lagen voor het blok
 <sup>2</sup> Archive Storage ondersteunt momenteel 2 herstel prioriteiten, hoog en standaard, die verschillende latenties voor het ophalen bieden. Zie BLOB-gegevens opnieuw [inbreken vanuit de laag archief](storage-blob-rehydration.md)voor meer informatie.
 
 > [!NOTE]
-> Blob Storage-accounts ondersteunen dezelfde prestatie-en schaalbaarheids doelen als voor algemeen gebruik v2-opslag accounts. Zie [schaalbaarheids-en prestatie doelen voor Blob Storage](scalability-targets.md)voor meer informatie.
+> Blob Storage-accounts ondersteunen dezelfde prestatie-en schaalbaarheids doelen als voor algemeen gebruik v2-opslag accounts. Zie [Schaalbaarheids- en prestatiedoelen voor blob-opslag](scalability-targets.md) voor meer informatie.
 
 ## <a name="quickstart-scenarios"></a>Snelstartscenario's
 
@@ -248,6 +248,10 @@ Nee. Alleen de lagen hot en cool kunnen worden ingesteld als de standaard accoun
 **In welke regio's zijn de dynamische, coole en archief toegangs lagen beschikbaar in?**
 
 De warme en coolbar-toegangs lagen en lagen op BLOB-niveau zijn in alle regio's beschikbaar. Archive-opslag is in eerste instantie alleen beschikbaar in bepaalde regio's. Zie voor een volledige lijst [Azure-producten beschikbaar per regio](https://azure.microsoft.com/regions/services/).
+
+**Welke redundantie opties worden ondersteund voor de dynamische toegangs lagen hot, cool en Archive?**
+
+De warme en cool-laag ondersteunen alle redundantie opties. De archief laag ondersteunt alleen LRS, GRS en RA-GRS. ZRS, GZRS en RA-GZRS worden niet ondersteund voor de archief laag.
 
 **Werken de blobs in de laag voor coolbar-toegang anders dan die in de warme Access-laag?**
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 089cf07854f1f29eda7028db614edb1028e5d66a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 54a81ac36fb0b99f6931b372543dc3e4bca6a12c
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91311560"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447910"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Azure automanage voor virtuele machines
 
@@ -46,6 +46,7 @@ Er zijn verschillende vereisten die u moet overwegen voordat u Azure automanage 
 - Vm's moeten zich in een ondersteunde regio bevinden
 - De gebruiker moet over de juiste machtigingen beschikken
 - Vm's mogen niet worden gekoppeld aan een log Analytics-werk ruimte in een ander abonnement
+- Automanage biedt momenteel geen ondersteuning voor sandbox-abonnementen
 
 U moet de rol **Inzender** hebben om automanage in te scha kelen met behulp van een bestaand automanage-account. Als u automanage inschakelt met een nieuw automanage-account, hebt u de volgende machtigingen nodig: rol van **eigenaar** of **Inzender** samen met beheerders rollen van **gebruikers toegang** .
 
@@ -111,7 +112,7 @@ Wanneer u automatisch beheer op uw virtuele machines inschakelt, is er een geava
 
 Ga in het Azure Portal naar de pagina **Aanbevolen procedures voor het automatisch beheren van virtuele Azure-machines** , waarin al uw door u beheerde vm's worden weer gegeven. Hier ziet u de algemene status van elke virtuele machine.
 
-:::image type="content" source="media\automanage-virtual-machines\configured-status.png" alt-text="Lijst met geconfigureerde virtuele machines.":::
+:::image type="content" source="media\automanage-virtual-machines\configured-status.png" alt-text="Services op intelligente wijze voorbereiden.":::
 
 Voor elke vermelde VM worden de volgende gegevens weer gegeven: naam, configuratie profiel, configuratie voorkeur, status, account, abonnement en resource groep.
 
@@ -129,7 +130,7 @@ U kunt een dag kiezen om automanage op bepaalde Vm's uit te scha kelen. Op uw co
 
 Ga hiervoor in het Azure Portal naar de pagina aanbevolen procedures voor het automatisch **beheren van virtuele Azure-machines** met een lijst met alle automatische beheerde vm's. Schakel het selectie vakje in naast de virtuele machine die u wilt uitschakelen voor automatisch beheer en klik vervolgens op de knop **automanagement uitschakelen** .
 
-:::image type="content" source="media\automanage-virtual-machines\disable-step-1.png" alt-text="Automanage uitschakelen op een virtuele machine.":::
+:::image type="content" source="media\automanage-virtual-machines\disable-step-1.png" alt-text="Services op intelligente wijze voorbereiden.":::
 
 Lees aandachtig door de berichten in het pop-upvenster voordat u akkoord gaat met het **uitschakelen**.
 

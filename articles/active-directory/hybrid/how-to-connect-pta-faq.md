@@ -16,12 +16,12 @@ ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7046ab3c30e120aaaf285c32e25fce03524a0cf4
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 6db477a288ef41c2946cd550af6ff87999eff2f0
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89280159"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461271"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Pass-Through-verificatie Azure Active Directory: veelgestelde vragen
 
@@ -34,10 +34,6 @@ Raadpleeg [deze hand leiding](./choose-ad-authn.md) voor een vergelijking van de
 ## <a name="is-pass-through-authentication-a-free-feature"></a>Is de Pass-Through-verificatie een gratis functie?
 
 Pass-Through-verificatie is een gratis functie. U hebt geen betaalde versies van Azure AD nodig om het te gebruiken.
-
-## <a name="is-pass-through-authentication-available-in-the-microsoft-azure-germany-cloud-and-the-microsoft-azure-government-cloud"></a>Beschik bare Pass-Through-verificatie in de [Microsoft Azure Duitsland Cloud](https://www.microsoft.de/cloud-deutschland) en de [Microsoft Azure Government Cloud](https://azure.microsoft.com/features/gov/)?
-
-Nee. Pass-Through-verificatie is alleen beschikbaar in het wereld wijde exemplaar van Azure AD.
 
 ## <a name="does-conditional-access-work-with-pass-through-authentication"></a>Werkt [voorwaardelijke toegang](../conditional-access/overview.md) met Pass-Through-verificatie?
 

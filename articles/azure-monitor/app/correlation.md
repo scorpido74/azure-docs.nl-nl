@@ -7,12 +7,12 @@ ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: b48b02d20ed3d0b731f04d2c6568274bc0262e2e
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: fd9299d49f42eb021d64ae25447fd13e7378ff3f
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88933355"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447860"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Intermetrie-correlatie in Application Insights
 
@@ -46,7 +46,7 @@ U kunt de resulterende telemetrie analyseren door een query uit te voeren:
 
 Houd er rekening mee dat alle telemetrie-items de hoofdmap delen `operation_Id` . Wanneer er een Ajax-aanroep van de pagina wordt gemaakt, wordt er een nieuwe unieke ID ( `qJSXU` ) toegewezen aan de telemetrie van de afhankelijkheid en wordt de id van de pagina weergave gebruikt als `operation_ParentId` . De server aanvraag gebruikt vervolgens de Ajax-ID als `operation_ParentId` .
 
-| Item type   | naam                      | Id           | operation_ParentId | operation_Id |
+| Item type   | name                      | Id           | operation_ParentId | operation_Id |
 |------------|---------------------------|--------------|--------------------|--------------|
 | Pagina weergave   | Voorraad pagina                |              | STYz               | STYz         |
 | einde | /Home/Stock ophalen           | qJSXU        | STYz               | STYz         |
@@ -55,7 +55,7 @@ Houd er rekening mee dat alle telemetrie-items de hoofdmap delen `operation_Id` 
 
 Wanneer de aanroep `GET /api/stock/value` naar een externe service wordt gedaan, moet u de identiteit van die server weten zodat u het veld op de `dependency.target` juiste wijze kunt instellen. Wanneer de externe service bewaking niet ondersteunt, `target` wordt ingesteld op de hostnaam van de service (bijvoorbeeld `stock-prices-api.com` ). Maar als de service zichzelf identificeert door een vooraf gedefinieerde HTTP-header te retour neren, `target` bevat de service-identiteit waarmee Application Insights een gedistribueerde tracering kunt bouwen door het uitvoeren van een query op telemetrie van die service.
 
-## <a name="correlation-headers"></a>Correlatie headers
+## <a name="correlation-headers-using-w3c-tracecontext"></a>Correlatie headers met behulp van W3C tracering voor
 
 Application Insights wordt overgezet naar [W3C-tracering-context](https://w3c.github.io/trace-context/), die het volgende definieert:
 
@@ -70,6 +70,18 @@ Het [correlatie-HTTP-protocol, ook wel de aanvraag-id genoemd](https://github.co
 - `Correlation-Context`: Hiermee wordt de verzameling naam/waarde-paren van de gedistribueerde tracerings eigenschappen.
 
 Application Insights definieert ook de [uitbrei ding](https://github.com/lmolkova/correlation/blob/master/http_protocol_proposal_v2.md) voor het correlatie-http-protocol. Het maakt gebruik `Request-Context` van naam/waarde-paren voor het door geven van de verzameling eigenschappen die wordt gebruikt door de directe aanroeper of de aanroepee. De Application Insights-SDK gebruikt deze header om de `dependency.target` velden en in te stellen `request.source` .
+
+De map [W3C Trace-context](https://w3c.github.io/trace-context/) en Application Insights data models op de volgende manier:
+
+| Application Insights                   | W3C-tracering voor                                      |
+|------------------------------------    |-------------------------------------------------    |
+| `Request`, `PageView`                  | `SpanKind` is server als synchroon; `SpanKind` is consument als asynchroon                    |
+| `Dependency`                           | `SpanKind` is client als synchroon; `SpanKind` is producent als asynchroon                   |
+| `Id` van `Request` en `Dependency`     | `SpanId`                                            |
+| `Operation_Id`                         | `TraceId`                                           |
+| `Operation_ParentId`                   | `SpanId` van de bovenliggende duur van dit bereik. Als dit een basis periode is, moet dit veld leeg zijn.     |
+
+Zie [Application Insights telemetrie-gegevens model](../../azure-monitor/app/data-model.md)voor meer informatie.
 
 ### <a name="enable-w3c-distributed-tracing-support-for-classic-aspnet-apps"></a>Ondersteuning voor gedistribueerde W3C-tracering inschakelen voor klassieke ASP.NET-Apps
  
@@ -204,25 +216,11 @@ Deze functie is in `Microsoft.ApplicationInsights.JavaScript` . Het is standaard
   </script>
   ```
 
-## <a name="opentracing-and-application-insights"></a>Opentracering en Application Insights
-
-De [gegevens model specificatie Opentracering](https://opentracing.io/) en Application Insights gegevens modellen op de volgende manier:
-
-| Application Insights                   | Opentraceren                                        |
-|------------------------------------    |-------------------------------------------------    |
-| `Request`, `PageView`                  | `Span` met `span.kind = server`                    |
-| `Dependency`                           | `Span` met `span.kind = client`                    |
-| `Id` van `Request` en `Dependency`     | `SpanId`                                            |
-| `Operation_Id`                         | `TraceId`                                           |
-| `Operation_ParentId`                   | `Reference` van `ChildOf` het type (het bovenliggende bereik)     |
-
-Zie [Application Insights telemetrie-gegevens model](../../azure-monitor/app/data-model.md)voor meer informatie.
-
-Zie voor definities van openvolgende concepten de [specificatie](https://github.com/opentracing/specification/blob/master/specification.md) opentracering en [semantische conventies](https://github.com/opentracing/specification/blob/master/semantic_conventions.md).
-
 ## <a name="telemetry-correlation-in-opencensus-python"></a>Telemetrie-correlatie in opentellingen python
 
-Opentellingen python volgt de specificaties van het `OpenTracing` gegevens model die eerder zijn beschreven. Het ondersteunt ook [W3C-tracering-context](https://w3c.github.io/trace-context/) zonder dat hiervoor configuratie is vereist.
+Opentellingen python ondersteunt [W3C-tracering-context](https://w3c.github.io/trace-context/) zonder extra configuratie.
+
+Als referentie kunt u het gegevens model opentelling [hier](https://github.com/census-instrumentation/opencensus-specs/tree/master/trace)vinden.
 
 ### <a name="incoming-request-correlation"></a>Correlatie van binnenkomende aanvragen
 

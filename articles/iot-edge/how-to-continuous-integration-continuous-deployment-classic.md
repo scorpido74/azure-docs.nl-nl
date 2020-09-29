@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 427d72b2a8531fa4dafa0040266249b138b6edf3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c4a9d7fbfbda568c07a528e5a7eafd70b85add45
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91291075"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447791"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge-devices-classic-editor"></a>Continue integratie en continue implementatie naar Azure IoT Edge apparaten (klassieke editor)
 
@@ -23,7 +23,7 @@ U kunt eenvoudig DevOps met uw Azure IoT Edge-toepassingen met de ingebouwde Azu
 
 In dit artikel leert u hoe u de ingebouwde [Azure IOT Edge taken](https://docs.microsoft.com/azure/devops/pipelines/tasks/build/azure-iot-edge) voor Azure-pijp lijnen kunt gebruiken voor het maken van builds en release pijplijnen voor uw IOT EDGE oplossing. Elke Azure IoT Edge taak die aan uw pijp lijn is toegevoegd, implementeert een van de volgende vier acties:
 
- | Actie | Beschrijving |
+ | Bewerking | Beschrijving |
  | --- | --- |
  | Module installatie kopieën bouwen | Neemt uw IoT Edge oplossings code en bouwt de container installatie kopieën.|
  | Installatie kopieën push module | Pusht installatie kopieën van module naar het container register dat u hebt opgegeven. |
@@ -103,7 +103,7 @@ In deze sectie maakt u een nieuwe build-pijp lijn. U configureert de pijp lijn z
     | Parameter | Beschrijving |
     | --- | --- |
     | Weergavenaam | De weergave naam wordt automatisch bijgewerkt wanneer het actie veld wordt gewijzigd. |
-    | Actie | Selecteer **installatie kopieën van module bouwen**. |
+    | Bewerking | Selecteer **installatie kopieën van module bouwen**. |
     | .template.jsvoor bestand | Selecteer het beletsel teken (**...**) en navigeer naar het **deployment.template.js** bestand in de opslag plaats met uw IOT EDGE oplossing. |
     | Standaard platform | Selecteer het juiste besturings systeem voor uw modules op basis van uw doel-IoT Edge apparaat. |
     | Uitvoer variabelen | Geef een referentie naam op die moet worden gekoppeld aan het pad naar het bestand waarin uw deployment.jsworden gegenereerd, zoals **Edge**. |
@@ -119,7 +119,7 @@ In deze sectie maakt u een nieuwe build-pijp lijn. U configureert de pijp lijn z
     | Parameter | Beschrijving |
     | --- | --- |
     | Weergavenaam | De weergave naam wordt automatisch bijgewerkt wanneer het actie veld wordt gewijzigd. |
-    | Actie | Selecteer **installatie kopieën van push module**. |
+    | Bewerking | Selecteer **installatie kopieën van push module**. |
     | Container register type | Gebruik het standaard type: `Azure Container Registry` . |
     | Azure-abonnement | Kies uw abonnement. |
     | Azure Container Registry | Selecteer het type container register dat u gebruikt om de module installatie kopieën op te slaan. Afhankelijk van het register type dat u kiest, verandert het formulier. Als u **Azure container Registry**selecteert, gebruikt u de vervolg keuzelijst om het Azure-abonnement en de naam van uw container register te selecteren. Als u **algemene container Registry**kiest, selecteert u **Nieuw** om een register service verbinding te maken. |
@@ -160,7 +160,7 @@ Deze pijp lijn is nu geconfigureerd om automatisch te worden uitgevoerd wanneer 
 >[!NOTE]
 >Als u **gelaagde implementaties** wilt gebruiken in uw pijp lijn, worden gelaagde implementaties nog niet ondersteund in azure IOT Edge taken in azure DevOps.
 >
->U kunt echter een [Azure cli-taak in azure DevOps](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-cli) gebruiken om uw implementatie te maken als een gelaagde implementatie. Voor de **inline-script** waarde kunt u de [opdracht AZ IOT Edge Deployment Create](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment)gebruiken:
+>U kunt echter een [Azure cli-taak in azure DevOps](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-cli) gebruiken om uw implementatie te maken als een gelaagde implementatie. Voor de **inline-script** waarde kunt u de [opdracht AZ IOT Edge Deployment Create](/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment)gebruiken:
 >
 >   ```azurecli-interactive
 >   az iot edge deployment create -d {deployment_name} -n {hub_name} --content modules_content.json --layered true

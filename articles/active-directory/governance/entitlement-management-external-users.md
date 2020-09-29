@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72ed8fede56385248415caf0438b190d5c191bbc
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 9ff683c7c3214be6ae60b5d00d4cd1c2becc32e2
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89460861"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447091"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>De toegang tot externe gebruikers bepalen in het beheer van rechten van Azure AD
 
@@ -83,7 +83,7 @@ Om ervoor te zorgen dat personen buiten uw organisatie toegangs pakketten kunnen
 
 - Als gasten toestaan andere gasten uit te nodigen voor uw directory, betekent dit dat bezoekers uitnodigen buiten het rechten beheer kunnen plaatsvinden. Het wordt aangeraden **gasten** in te stellen op **Nee** om alleen goed onderhevige uitnodigingen toe te staan.
 - Als u de lijst B2B allow gebruikt, moet u ervoor zorgen dat elk domein dat u wilt partner met behulp van rechten beheer, aan de lijst wordt toegevoegd. Als u de lijst voor het weigeren van B2B gebruikt, moet u er ook voor zorgen dat elk domein waarmee u een partner wilt maken, niet aan de lijst wordt toegevoegd.
-- Als u een recht beleid maakt voor **alle gebruikers** (alle verbonden organisaties en alle nieuwe externe gebruikers), hebben de instellingen voor het toestaan of weigeren van een B2B-lijst prioriteit. Zorg er daarom voor dat u de domeinen die u wilt opnemen in dit beleid, opneemt in de lijst met toegestane gebruikers als u er een gebruikt en deze uitsluit van de lijst weigeren als u een lijst voor weigeren gebruikt.
+- Als u een recht beleid maakt voor **alle gebruikers** (alle verbonden organisaties en alle nieuwe externe gebruikers) en een gebruiker behoort niet tot een verbonden organisatie in uw directory, wordt er automatisch een verbonden organisatie voor gemaakt wanneer hij of zij het pakket aanvraagt. Alle instellingen voor het toestaan of weigeren van een B2B-lijst hebben prioriteit. Zorg er daarom voor dat u de domeinen die u wilt opnemen in dit beleid, opneemt in de lijst met toegestane gebruikers als u er een gebruikt en deze uitsluit van de lijst weigeren als u een lijst voor weigeren gebruikt.
 - Als u een rechten beheer beleid wilt maken dat **alle gebruikers** (alle verbonden organisaties en alle nieuwe externe gebruikers) bevat, moet u eerst de verificatie van eenmalige e-mail wachtwoord code voor uw Directory inschakelen. Zie voor meer informatie [verificatie via e-mail eenmalige wachtwoord code (preview-versie)](../external-identities/one-time-passcode.md#opting-in-to-the-preview).
 - Zie voor meer informatie over externe samenwerkings instellingen van Azure AD B2B externe [samen werking inschakelen en beheren wie gasten kan uitnodigen](../external-identities/delegate-invitations.md).
 

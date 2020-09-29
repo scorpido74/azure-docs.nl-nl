@@ -1,29 +1,30 @@
 ---
-title: Containers installeren en uitvoeren-gezicht
+title: Docker-containers voor de Face-API installeren en uitvoeren
 titleSuffix: Azure Cognitive Services
-description: In dit artikel wordt beschreven hoe u containers kunt downloaden, installeren en uitvoeren voor een gezicht in deze stapsgewijze zelf studie.
+description: Gebruik de docker-container voor de Face-API om menselijke gezichten in afbeeldingen te detecteren en te identificeren.
 services: cognitive-services
 author: aahill
 manager: nitinme
-ms.custom: seodec18
+ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 07/16/2020
 ms.author: aahi
-ms.openlocfilehash: 766af570c959ff2c49256058dfbfffdd1021295f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+keywords: on-premises, docker, container, identificeren
+ms.openlocfilehash: 0f6807f771510f85c5a20cfb2a160cfe1e8726a3
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548460"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461509"
 ---
 # <a name="install-and-run-face-containers-preview"></a>Face-containers installeren en uitvoeren (preview-versie)
 
 > [!IMPORTANT]
 > De limiet voor gebruikers van Face-container is bereikt. Er worden momenteel geen nieuwe toepassingen geaccepteerd voor de Face-container.
 
-Azure Cognitive Services gezicht biedt een gestandaardiseerde Linux-container voor docker die menselijke gezichten in afbeeldingen detecteert. Er worden ook kenmerken geïdentificeerd, waaronder gezichts bezienswaardigheden zoals neus en ogen, geslacht, leeftijd en andere computer-voorspelde gezichts functies. Naast detectie kan het gezicht controleren of twee gezichten in dezelfde afbeelding of verschillende afbeeldingen hetzelfde zijn door gebruik te maken van een betrouwbaarheids Score. Gezicht kan ook gezichten vergelijken met een Data Base om te zien of er al een vergelijkbaar of identiek gezicht bestaat. Het kan ook vergelijk bare gezichten in groepen organiseren door gebruik te maken van gedeelde visuele elementen.
+Azure Cognitive Services Face-API biedt een Linux docker-container die menselijke gezichten in afbeeldingen detecteert en analyseert. Er worden ook kenmerken geïdentificeerd, waaronder gezichts bezienswaardigheden zoals neus en ogen, geslacht, leeftijd en andere computer-voorspelde gezichts functies. Naast detectie kan het gezicht controleren of twee gezichten in dezelfde afbeelding of verschillende afbeeldingen hetzelfde zijn door gebruik te maken van een betrouwbaarheids Score. Gezicht kan ook gezichten vergelijken met een Data Base om te zien of er al een vergelijkbaar of identiek gezicht bestaat. Het kan ook vergelijk bare gezichten in groepen organiseren door gebruik te maken van gedeelde visuele elementen.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/cognitive-services/) aan voordat u begint.
 

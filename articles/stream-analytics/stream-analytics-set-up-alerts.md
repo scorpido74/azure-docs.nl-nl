@@ -6,13 +6,14 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
+ms.custom: contperfq1
 ms.date: 06/21/2019
-ms.openlocfilehash: de8b69cbe3117a3ec248cee4808b676b39c56658
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 271cae3504601ffa42c077029541cef8c7726053
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324791"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461033"
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Waarschuwingen instellen voor Azure Stream Analytics taken
 
@@ -57,7 +58,7 @@ In het volgende voor beeld ziet u hoe u waarschuwingen instelt voor wanneer de s
 
 De volgende waarschuwingen worden aanbevolen voor het bewaken van de prestaties van uw Stream Analytics-taak. Deze metrische gegevens moeten elke minuut worden geëvalueerd gedurende de laatste periode van vijf minuten.
 
-|Gegevens|Voorwaarde|Tijd aggregatie|Drempelwaarde|Corrigerende maat regelen|
+|Gegevens|Conditie|Tijd aggregatie|Drempelwaarde|Corrigerende maat regelen|
 |-|-|-|-|-|
 |% Gebruik|Groter dan|Maximum|80|Er zijn meerdere factoren die het gebruik van SU% verhogen. U kunt schalen met query parallel Lise ring of het aantal streaming-eenheden verhogen. Zie [Query-parallellisatie gebruiken in Azure Stream Analytics](stream-analytics-parallelization.md) voor meer informatie.|
 |Runtime-fouten|Groter dan|Totaal|0|Bekijk de activiteiten of de logboeken van de resource en breng de gewenste wijzigingen aan in de invoer, query of uitvoer.|

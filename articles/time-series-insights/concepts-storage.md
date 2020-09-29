@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 09/28/2020
 ms.custom: seodec18
-ms.openlocfilehash: d8e3c7258a70902fe362ee73c2f366146484ce54
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b186c2d2c4b5efc8e1e052a63505549e860b5619
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287530"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460825"
 ---
 # <a name="data-storage"></a>Gegevensopslag
 
@@ -26,15 +26,14 @@ In dit artikel wordt de gegevens opslag in Azure Time Series Insights Gen2 besch
 Wanneer u een Azure Time Series Insights Gen2-omgeving maakt, hebt u de volgende opties:
 
 * Koude gegevens opslag:
-   * Maak een nieuwe Azure Storage-Resource in het abonnement en de regio die u hebt gekozen voor uw omgeving.
-   * Een bestaand Azure Storage-account koppelen. Deze optie is alleen beschikbaar als u vanuit een Azure Resource Manager- [sjabloon](https://docs.microsoft.com/azure/templates/microsoft.timeseriesinsights/allversions)implementeert en niet zichtbaar is in de Azure Portal.
+  * Maak een nieuwe Azure Storage-Resource in het abonnement en de regio die u hebt gekozen voor uw omgeving.
+  * Een bestaand Azure Storage-account koppelen. Deze optie is alleen beschikbaar als u vanuit een Azure Resource Manager- [sjabloon](https://docs.microsoft.com/azure/templates/microsoft.timeseriesinsights/allversions)implementeert en niet zichtbaar is in de Azure Portal.
 * Warme gegevens opslag:
-   * Een warme Store is optioneel en kan worden ingeschakeld of uitgeschakeld tijdens of na het inrichten. Als u besluit om warme Store op een later tijdstip in te scha kelen en er al gegevens in uw koel winkel staan, raadpleegt u [deze](concepts-storage.md#warm-store-behavior) sectie hieronder om het verwachte gedrag te begrijpen. De Bewaar periode voor de warme Store-gegevens kan 7 tot 31 dagen worden geconfigureerd. Dit kan ook worden aangepast als dat nodig is.
+  * Een warme Store is optioneel en kan worden ingeschakeld of uitgeschakeld tijdens of na het inrichten. Als u besluit om warme Store op een later tijdstip in te scha kelen en er al gegevens in uw koel winkel staan, raadpleegt u [deze](concepts-storage.md#warm-store-behavior) sectie hieronder om het verwachte gedrag te begrijpen. De Bewaar periode voor de warme Store-gegevens kan 7 tot 31 dagen worden geconfigureerd. Dit kan ook worden aangepast als dat nodig is.
 
 Wanneer een gebeurtenis wordt opgenomen, wordt deze in zowel de warme Store (indien ingeschakeld) als in het koel archief geïndexeerd.
 
 [![Overzicht van opslag](media/concepts-storage/pipeline-to-storage.png)](media/concepts-storage/pipeline-to-storage.png#lightbox)
-
 
 > [!WARNING]
 > Als eigenaar van het Azure Blob Storage-account waar koud opgeslagen gegevens zich bevinden, hebt u volledige toegang tot alle gegevens in het account. Deze toegang omvat machtigingen voor schrijven en verwijderen. Bewerk of verwijder de gegevens die Azure Time Series Insights Gen2-schrijf bewerkingen, omdat dat gegevens verlies kan veroorzaken.
@@ -50,11 +49,11 @@ Azure Time Series Insights Gen2 partities en index gegevens voor optimale query 
 
 Gegevens in uw warme archief zijn alleen beschikbaar via de [Time Series query-api's](./time-series-insights-update-tsq.md), de [Azure time series Insights TSI-verkenner](./time-series-insights-update-explorer.md)of de Power bi- [connector](./how-to-connect-power-bi.md). Query's voor warme Stores zijn gratis en er is geen quotum, maar er is een [limiet van 30](https://docs.microsoft.com/rest/api/time-series-insights/reference-api-limits#query-apis---limits) gelijktijdige aanvragen.
 
-### <a name="warm-store-behavior"></a>Gedrag voor warme opslag 
+### <a name="warm-store-behavior"></a>Gedrag voor warme opslag
 
 * Wanneer deze functie is ingeschakeld, worden alle gegevens die in uw omgeving zijn gestreamd, doorgestuurd naar uw warme Store, ongeacht de tijds tempel van de gebeurtenis. Houd er rekening mee dat de pijp lijn voor streaming-opname is gebouwd voor bijna realtime streaming en het opnemen van historische gebeurtenissen wordt [niet ondersteund](./concepts-streaming-ingestion-event-sources.md#historical-data-ingestion).
 * De retentie tijd wordt berekend op basis van het moment waarop de gebeurtenis is geïndexeerd in warme opslag, niet de tijds tempel van de gebeurtenis. Dit betekent dat gegevens niet meer beschikbaar zijn in de warme opslag nadat de Bewaar periode is verstreken, zelfs als het tijds tempel van de gebeurtenis voor de toekomst ligt.
-  - Voor beeld: een gebeurtenis met weers verwachtingen van 10 dagen wordt opgenomen en geïndexeerd in een warme opslag container die is geconfigureerd met een Bewaar periode van 7 dagen. Na 7 dagen is de voor spelling niet langer toegankelijk in de warme Store, maar kan er wel een query worden uitgevoerd vanuit koude. 
+  * Voor beeld: een gebeurtenis met weers verwachtingen van 10 dagen wordt opgenomen en geïndexeerd in een warme opslag container die is geconfigureerd met een Bewaar periode van 7 dagen. Na 7 dagen is de voor spelling niet langer toegankelijk in de warme Store, maar kan er wel een query worden uitgevoerd vanuit koude.
 * Als u warme Store inschakelt in een bestaande omgeving die al recente gegevens bevat die zijn geïndexeerd in koude opslag, moet u er rekening mee houden dat uw warme archief niet met deze gegevens kan worden gevuld.
 * Als u een warme archief zojuist hebt ingeschakeld en problemen ondervindt met het weer geven van uw recente gegevens in de Explorer, kunt u de query's voor warme Store tijdelijk uitschakelen:
 

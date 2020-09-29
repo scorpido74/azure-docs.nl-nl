@@ -8,12 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3ccb8d29d0ec52c31913a43358c7daa1c0693df7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a9d2116062dc45f3602bf5ee0efba31ad815c0c9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84308843"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447853"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Een downstream-apparaat verifiëren voor Azure IoT Hub
 
@@ -69,7 +69,7 @@ U kunt ook de [IOT-extensie voor Azure cli](https://github.com/Azure/azure-iot-c
 az iot hub device-identity create -n {iothub name} -d {new device ID} --pd {existing gateway device ID}
 ```
 
-Voor meer informatie over Azure CLI-opdrachten voor het maken van apparaten en bovenliggend/onderliggend beheer raadpleegt u de referentie-inhoud voor [AZ IOT hub-apparaat-id-](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest) opdrachten.
+Voor meer informatie over Azure CLI-opdrachten voor het maken van apparaten en bovenliggend/onderliggend beheer raadpleegt u de referentie-inhoud voor [AZ IOT hub-apparaat-id-](/cli/azure/ext/azure-iot/iot/hub/device-identity) opdrachten.
 
 Vervolgens [haalt u de Connection String op en wijzigt](#retrieve-and-modify-connection-string) u zo dat uw apparaat verbinding kan maken via de gateway.
 
@@ -126,7 +126,7 @@ U kunt ook de [IOT-extensie voor Azure cli](https://github.com/Azure/azure-iot-c
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_thumbprint --ptp {primary thumbprint} --stp {secondary thumbprint}
 ```
 
-Zie voor meer informatie over Azure CLI-opdrachten voor het maken van apparaten, het genereren van certificaten en het beheer van bovenliggende en onderliggende items de referentie-inhoud voor [AZ IOT hub-apparaat-id-](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest) opdrachten.
+Zie voor meer informatie over Azure CLI-opdrachten voor het maken van apparaten, het genereren van certificaten en het beheer van bovenliggende en onderliggende items de referentie-inhoud voor [AZ IOT hub-apparaat-id-](/cli/azure/ext/azure-iot/iot/hub/device-identity) opdrachten.
 
 Vervolgens [haalt u de Connection String op en wijzigt](#retrieve-and-modify-connection-string) u zo dat uw apparaat verbinding kan maken via de gateway.
 
@@ -172,7 +172,7 @@ U kunt ook de [IOT-extensie voor Azure cli](https://github.com/Azure/azure-iot-c
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_ca
 ```
 
-Zie de Azure CLI-referentie-inhoud voor [AZ IOT hub-apparaat-id-](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest) opdrachten voor meer informatie.
+Zie de Azure CLI-referentie-inhoud voor [AZ IOT hub-apparaat-id-](/cli/azure/ext/azure-iot/iot/hub/device-identity) opdrachten voor meer informatie.
 
 Vervolgens [haalt u de Connection String op en wijzigt](#retrieve-and-modify-connection-string) u zo dat uw apparaat verbinding kan maken via de gateway.
 
@@ -182,15 +182,23 @@ Nadat u in de portal een IoT-apparaat-id hebt gemaakt, kunt u de primaire of sec
 
 Verbindings reeksen voor downstream-apparaten hebben de volgende onderdelen nodig:
 
-* De IoT-hub waarmee het apparaat verbinding maakt:`Hostname={iothub name}.azure-devices.net`
-* De apparaat-ID die is geregistreerd bij de hub:`DeviceID={device ID}`
-* De primaire of secundaire sleutel:`SharedAccessKey={key}`
-* Het gateway apparaat waarmee het apparaat verbinding maakt. Geef de waarde van de **hostnaam** op uit het bestand config. yaml van IOT Edge gateway-apparaat:`GatewayHostName={gateway hostname}`
+* De IoT-hub waarmee het apparaat verbinding maakt: `Hostname={iothub name}.azure-devices.net`
+* De apparaat-ID die is geregistreerd bij de hub: `DeviceID={device ID}`
+* De verificatie methode, of symmetrische sleutel of X. 509-certificaten
+  * Als symmetrische sleutel verificatie wordt gebruikt, geeft u de primaire of secundaire sleutel: `SharedAccessKey={key}`
+  * Als u X. 509-certificaat verificatie gebruikt, geeft u een vlag op: `x509=true`
+* Het gateway apparaat waarmee het apparaat verbinding maakt. Geef de waarde van de **hostnaam** op uit het bestand config. yaml van IOT Edge gateway-apparaat: `GatewayHostName={gateway hostname}`
 
 Alle samen, een volledig connection string ziet er als volgt uit:
 
 ```
 HostName=myiothub.azure-devices.net;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz;GatewayHostName=myGatewayDevice
+```
+
+Of
+
+```
+HostName=myiothub.azure-devices.net;DeviceId=myDownstreamDevice;x509=true;GatewayHostName=myGatewayDevice
 ```
 
 Als u een bovenliggende/onderliggende relatie hebt ingesteld voor dit downstream-apparaat, kunt u de connection string vereenvoudigen door de gateway rechtstreeks aan te roepen als de host van de verbinding. Bovenliggende/onderliggende relaties zijn vereist voor X. 509-verificatie, maar is optioneel voor symmetrische sleutel verificatie. Bijvoorbeeld:

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2020
-ms.openlocfilehash: f75853a66c43c69ec191f28951f8f6ffc4353f93
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6b166e46c8ebb640e15c005e2ddae3161e141f10
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330159"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446776"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Wat zijn Compute-doelen in Azure Machine Learning? 
 
@@ -101,6 +101,20 @@ Raadpleeg de volgende tabel voor meer informatie over ondersteunde reeksen en be
 
 
 Hoewel Azure Machine Learning deze VM-serie ondersteunt, zijn ze mogelijk niet beschikbaar in alle Azure-regio's. U kunt controleren of er VM-serie beschikbaar is: [producten beschikbaar per regio](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines).
+
+### <a name="compute-isolation"></a>Reken isolatie
+
+Azure Machine Learning Compute biedt de grootte van virtuele machines die zijn geïsoleerd voor een specifiek hardwaretype en die zijn toegewezen aan één klant. Geïsoleerde virtuele-machine grootten zijn het meest geschikt voor werk belastingen die een hoge mate van isolatie van andere werk belastingen vereisen om redenen die voldoen aan de vereisten voor naleving en regelgeving. Het gebruik van een geïsoleerde grootte garandeert dat uw virtuele machine de enige is die op dat specifieke Server exemplaar wordt uitgevoerd.
+
+De huidige, geïsoleerde virtuele-machine-aanbiedingen omvatten:
+* Standard_M128ms
+* Standard_F72s_v2
+* Standard_NC24s_v3
+* Standard_NC24rs_v3 *
+
+*RDMA-compatibel
+
+Zie hier voor meer informatie over [isolatie in de open bare Azure-Cloud](https://docs.microsoft.com/azure/security/fundamentals/isolation-choices).
 
 ## <a name="unmanaged-compute"></a>Onbeheerde compute
 

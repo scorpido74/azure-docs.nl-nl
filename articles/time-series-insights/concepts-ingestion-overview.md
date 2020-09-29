@@ -8,20 +8,20 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 09/28/2020
 ms.custom: seodec18
-ms.openlocfilehash: 33cafd058e55951f7da4e925a603c2c442d4aed1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 57c23ba4acdbde1a5dfac39d89a09dfcef6b25a1
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077669"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460897"
 ---
-# <a name="azure-time-series-insights-gen2-data-ingestion-overview"></a>Overzicht van gegevens opname van Azure Time Series Insights Gen2
+# <a name="azure-time-series-insights-gen2-data-ingestion-overview"></a>Overzicht van Azure Time Series Insights Gen2-gegevensopname
 
-Uw Azure Time Series Insights Gen2-omgeving bevat een *opname-engine* voor het verzamelen, verwerken en opslaan van streaming tijd reeks gegevens. Wanneer gegevens binnenkomen in uw gebeurtenis bron (s), wordt Azure Time Series Insights Gen2 uw gegevens in bijna realtime gebruikt en opgeslagen.
+Uw Azure Time Series Insights Gen2-omgeving bevat een *opname-engine* voor het verzamelen, verwerken en opslaan van streaming tijd reeks gegevens. Wanneer gegevens binnenkomen in uw gebeurtenis bron (s), wordt Azure Time Series Insights Gen2 uw gegevens bijna in realtime gebruikt en opgeslagen.
 
-[![Overzicht van opname](media/concepts-ingress-overview/ingress-overview.png)](media/concepts-ingress-overview/ingress-overview.png#lightbox)
+[![Overzicht van gegevensopname](media/concepts-ingress-overview/ingress-overview.png)](media/concepts-ingress-overview/ingress-overview.png#lightbox)
 
 ## <a name="ingestion-topics"></a>Onderwerpen over opname
 
@@ -37,4 +37,4 @@ De volgende artikelen omvatten uitgebreide gegevens verwerking, waaronder aanbev
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Ga door om meer te weten te komen over [gebeurtenis bronnen](./concepts-streaming-ingestion-event-sources.md) voor uw Azure time series Insights Gen2-omgeving. 
+* Ga door om meer te weten te komen over [gebeurtenis bronnen](./concepts-streaming-ingestion-event-sources.md) voor uw Azure time series Insights Gen2-omgeving.

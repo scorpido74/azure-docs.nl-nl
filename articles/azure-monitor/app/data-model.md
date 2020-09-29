@@ -9,12 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 69ed934e97d2726995a7a5cd122fadbd4a791942
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: fd5848eb44ecd32612943662b5a4fd0a5091cd9d
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320524"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461288"
 ---
 # <a name="application-insights-telemetry-data-model"></a>Application Insights telemetrie-gegevens model
 
@@ -46,7 +46,7 @@ Application Insights telemetrie-model definieert een manier om telemetrie te [co
 
 Application Insights gegevens model is een eenvoudige en eenvoudig te bieden, maar krachtige manier om de telemetrie van uw toepassing te model leren. We streven ernaar het model eenvoudig en dun te laten werken om essentiële scenario's te ondersteunen en het schema voor Geavanceerd gebruik toe te staan.
 
-Voor het rapporteren van gegevens model-of schema problemen en suggesties gebruikt u GitHub [ApplicationInsights-basismap](https://github.com/Microsoft/ApplicationInsights-Home/issues) .
+[Voor het rapporteren van gegevens model-of schema problemen en suggesties gebruikt u onze github-opslag plaats](https://github.com/microsoft/ApplicationInsights-dotnet/issues/new/choose).
 
 ## <a name="next-steps"></a>Volgende stappen
 

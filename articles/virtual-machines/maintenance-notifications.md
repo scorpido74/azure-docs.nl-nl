@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 8/12/2020
 ms.author: shants
-ms.openlocfilehash: 1e2eb1c2b6ecb98c60b117d004a97cd4e5f07a55
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: d1705456c316a29aede537e67dee74b6231ff22b
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88182160"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460574"
 ---
 # <a name="handling-planned-maintenance-notifications"></a>Geplande onderhouds meldingen verwerken
 
@@ -80,7 +80,7 @@ Zie [Beschik baarheid voor virtuele machines in azure](availability.md)voor meer
 
 **V: Hoe kan ik ontvang een melding over gepland onderhoud?**
 
-**A:** Een geplande onderhouds Golf wordt gestart door een planning in te stellen voor een of meer Azure-regio's. Binnenkort daarna wordt er een e-mail melding verzonden naar de abonnements beheerders (één e-mail per abonnement). Aanvullende kanalen en ontvangers voor deze melding kunnen worden geconfigureerd met behulp van waarschuwingen voor activiteiten Logboeken. Als u een virtuele machine implementeert in een regio waar gepland onderhoud al is gepland, wordt de melding niet weer gegeven, maar moet u de onderhouds status van de VM controleren.
+**A:** Een geplande onderhouds Golf wordt gestart door een planning in te stellen voor een of meer Azure-regio's. Binnenkort daarna wordt er een e-mail melding verzonden naar de service beheerders (één e-mail per abonnement). Aanvullende kanalen en ontvangers voor deze melding kunnen worden geconfigureerd met behulp van waarschuwingen voor activiteiten Logboeken. Als u een virtuele machine implementeert in een regio waar gepland onderhoud al is gepland, wordt de melding niet weer gegeven, maar moet u de onderhouds status van de VM controleren.
 
 **V: Ik zie geen indicatie van gepland onderhoud in de portal, Power shell of CLI. Wat is er aan de hand?**
 

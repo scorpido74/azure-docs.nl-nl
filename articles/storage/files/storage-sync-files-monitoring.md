@@ -4,15 +4,15 @@ description: Lees hoe u uw Azure File Sync-implementatie kunt controleren met be
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/05/2019
+ms.date: 09/28/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9db8a0397c836e8cbc45404d9c4f149255fc76fa
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 1ef24522f688c5ae1176630a2f370cd7ee7c3cd7
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88271053"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448028"
 ---
 # <a name="monitor-azure-file-sync"></a>Azure File Sync bewaken
 
@@ -35,8 +35,10 @@ Gebruik [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview)
 De metrische gegevens voor Azure File Sync zijn standaard ingeschakeld en worden verzonden naar Azure Monitor om de 15 minuten.
 
 **Azure File Sync metrische gegevens weer geven in Azure Monitor**
-- Ga naar de **opslag synchronisatie service** in de **Azure Portal** en klik op **metrische gegevens**.
-- Klik op de vervolg keuzelijst **metriek** en selecteer de metrische gegevens die u wilt weer geven.
+1. Ga naar de **opslag synchronisatie service** in de **Azure Portal** en klik op **metrische gegevens**.
+2. Klik op de vervolg keuzelijst **metriek** en selecteer de metrische gegevens die u wilt weer geven.
+
+![Scherm afbeelding van Azure File Sync meet waarden](media/storage-sync-files-troubleshoot/file-sync-metrics.png)
 
 De volgende metrische gegevens voor Azure File Sync zijn beschikbaar in Azure Monitor:
 
@@ -58,15 +60,15 @@ Waarschuwingen geven u proactief op de hoogte wanneer er belang rijke voor waard
 
 **Waarschuwingen voor Azure File Sync maken**
 
-- Ga naar de **opslag synchronisatie service** in de **Azure Portal**. 
-- Klik in het gedeelte bewaking op **waarschuwingen** en klik vervolgens op **+ nieuwe waarschuwings regel**.
-- Klik op **voor waarde selecteren** en geef de volgende informatie op voor de waarschuwing: 
+1. Ga naar de **opslag synchronisatie service** in de **Azure Portal**. 
+2. Klik in het gedeelte bewaking op **waarschuwingen** en klik vervolgens op **+ nieuwe waarschuwings regel**.
+3. Klik op **voor waarde selecteren** en geef de volgende informatie op voor de waarschuwing: 
     - **Meting**
     - **Dimensie naam**
     - **Waarschuwingslogica**
-- Klik op **actie groep selecteren** en voeg een actie groep (E-mail, SMS, enzovoort) toe aan de waarschuwing door een bestaande actie groep te selecteren of een nieuwe actie groep te maken.
-- Vul de details van de **waarschuwing** in, zoals de naam, **Beschrijving** en **Ernst**van de **waarschuwings regel**.
-- Klik op **waarschuwings regel maken** om de waarschuwing te maken.  
+4. Klik op **actie groep selecteren** en voeg een actie groep (E-mail, SMS, enzovoort) toe aan de waarschuwing door een bestaande actie groep te selecteren of een nieuwe actie groep te maken.
+5. Vul de details van de **waarschuwing** in, zoals de naam, **Beschrijving** en **Ernst**van de **waarschuwings regel**.
+6. Klik op **waarschuwings regel maken** om de waarschuwing te maken.  
 
 De volgende tabel bevat enkele voor beelden van scenario's om te controleren en de juiste meet waarde voor de waarschuwing:
 
@@ -96,6 +98,8 @@ Als u de status van uw Azure File Sync-implementatie in het **Azure Portal**wilt
 
 Als u de **status van de geregistreerde server** in de portal wilt bekijken, gaat u naar de sectie **geregistreerde servers** van de **opslag synchronisatie service**.
 
+![Scherm opname van de status van geregistreerde servers](media/storage-sync-files-troubleshoot/file-sync-registered-servers.png)
+
 - Als de status van de **geregistreerde server** **online**is, communiceert de server met succes met de service.
 - Als de status van de **geregistreerde server** **offline wordt weer gegeven**, is het proces voor het controleren van de opslag synchronisatie (AzureStorageSyncMonitor.exe) niet actief of heeft de server geen toegang tot de Azure File Sync-Service. Raadpleeg de [documentatie voor probleem oplossing](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#server-endpoint-noactivity) voor hulp.
 
@@ -103,7 +107,9 @@ Als u de **status van de geregistreerde server** in de portal wilt bekijken, gaa
 
 Als u de status van een **Server eindpunt** wilt weer geven in de portal, gaat u naar de sectie **synchronisatie groepen** van de **opslag synchronisatie service** en selecteert u een **synchronisatie groep**.
 
-- De **status van het server eindpunt** en de **synchronisatie** in de portal is gebaseerd op de synchronisatie gebeurtenissen die worden vastgelegd in het logboek voor telemetrie op de server (id 9102 en 9302). Als een synchronisatie sessie mislukt vanwege een tijdelijke fout, zoals het annuleren van de fout, wordt de synchronisatie nog steeds weer gegeven als in orde in de portal zolang de huidige synchronisatie sessie de voortgang (bestanden wordt toegepast). Gebeurtenis-ID 9302 is de gebeurtenis synchronisatie voortgang en gebeurtenis-ID 9102 wordt vastgelegd zodra een synchronisatie sessie is voltooid.  Zie [synchronisatie status](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) en [voortgang van synchronisatie](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session)voor meer informatie. Als er een fout wordt weer gegeven in de portal omdat de synchronisatie niet wordt uitgevoerd, raadpleegt u de documentatie voor het [oplossen van problemen](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors) .
+![Scherm opname van de status van server eindpunt](media/storage-sync-files-troubleshoot/file-sync-server-endpoint-health.png)
+
+- De **status van het server eindpunt** en de **synchronisatie** in de portal is gebaseerd op de synchronisatie gebeurtenissen die worden vastgelegd in het logboek voor telemetrie op de server (id 9102 en 9302). Als een synchronisatie sessie mislukt als gevolg van een tijdelijke fout, zoals het annuleren van de fout, wordt het server-eind punt nog steeds in **orde** weer gegeven in de portal zolang de huidige synchronisatie sessie de voortgang (bestanden wordt toegepast). Gebeurtenis-ID 9302 is de gebeurtenis synchronisatie voortgang en gebeurtenis-ID 9102 wordt vastgelegd zodra een synchronisatie sessie is voltooid.  Zie [synchronisatie status](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) en [voortgang van synchronisatie](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session)voor meer informatie. Als de status van het server eindpunt een **fout** of **geen activiteit**bevat, raadpleegt u de documentatie voor het [oplossen van problemen](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors) voor hulp.
 - De **bestanden die niet** in de portal worden gesynchroniseerd, zijn gebaseerd op gebeurtenis-id 9121 die wordt vastgelegd in het logboek voor telemetrie op de server. Deze gebeurtenis wordt geregistreerd voor elke item fout wanneer de synchronisatie sessie is voltooid. Als u fouten per item wilt oplossen, raadpleegt u [Hoe kan ik controleren of er specifieke bestanden of mappen zijn die niet worden gesynchroniseerd?](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing).
 - Als u de **efficiëntie van de Cloud lagen** in de portal wilt bekijken, gaat u naar de eigenschappen van het **Server eindpunt** en navigeert u naar de sectie **Cloud-laag** . De gegevens voor de efficiëntie van de Cloud lagen zijn gebaseerd op gebeurtenis-ID 9071 die is vastgelegd in het logboek voor telemetrie-gebeurtenissen op de server. Zie [overzicht van Cloud lagen](https://docs.microsoft.com/azure/storage/files/storage-sync-cloud-tiering)voor meer informatie.
 - Ga naar de eigenschappen van het **Server eindpunt** en navigeer naar het gedeelte **Cloud-Tiering** om bestanden weer te geven die **niet zijn gelaagd** en fouten in de portal **intrekken** . **Bestanden die niet worden gelaagd** , zijn gebaseerd op gebeurtenis-id 9003 die is geregistreerd in het logboek voor telemetrie op de server en fouten in het **intrekken** van gebeurtenissen zijn gebaseerd op gebeurtenis-id 9006. Zie problemen oplossen met bestanden die niet kunnen worden [getierd](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#how-to-troubleshoot-files-that-fail-to-tier) en [het oplossen van problemen met bestanden die niet kunnen worden ingetrokken](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#how-to-troubleshoot-files-that-fail-to-be-recalled)voor informatie over het onderzoeken van bestanden die niet kunnen worden gelaagd of ingetrokken.
@@ -142,7 +148,7 @@ Synchronisatie status
 
 - Gebeurtenis-ID 9121 wordt vastgelegd voor elk per-item-fout zodra de synchronisatie sessie is voltooid. Gebruik deze gebeurtenis om te bepalen hoeveel bestanden niet kunnen worden gesynchroniseerd met deze fout (**PersistentCount** en **TransientCount**). Permanente fouten per item moeten worden onderzocht, Zie [Hoe kan ik controleren of er specifieke bestanden of mappen zijn die niet worden gesynchroniseerd?](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing).
 
-- Gebeurtenis-ID 9302 wordt elke 5 tot 10 minuten geregistreerd als er een actieve synchronisatie sessie is. Gebruik deze gebeurtenis om te bepalen of de huidige synchronisatie sessie voortgang maakt (**AppliedItemCount > 0**). Als de synchronisatie niet wordt uitgevoerd, wordt de synchronisatie sessie uiteindelijk mislukt en wordt er een gebeurtenis-ID 9102 in het logboek geregistreerd met de fout. Zie de [voortgangs documentatie over synchronisatie](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session)voor meer informatie.
+- Gebeurtenis-ID 9302 wordt elke 5 tot 10 minuten geregistreerd als er een actieve synchronisatie sessie is. Gebruik deze gebeurtenis om te bepalen hoeveel items moeten worden gesynchroniseerd (**TotalItemCount**), het aantal items dat tot nu toe is gesynchroniseerd (**AppliedItemCount**) en het aantal items dat niet kan worden gesynchroniseerd vanwege een fout per item (**PerItemErrorCount**). Als de synchronisatie niet wordt uitgevoerd (**AppliedItemCount = 0**), zal de synchronisatie sessie uiteindelijk mislukken en wordt er een gebeurtenis-id 9102 in het logboek geregistreerd met de fout. Zie de [voortgangs documentatie over synchronisatie](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session)voor meer informatie.
 
 Status van geregistreerde server
 
@@ -248,6 +254,7 @@ Deze sectie bevat enkele voor beelden van waarschuwingen voor Azure File Sync.
      - Aggregatie type: **maximum**  
      - Drempel waarde (in bytes): **1** 
      - Geëvalueerd op basis van: aggregatie granulatie = **1 uur** | Evaluatie frequentie = **elke 30 minuten** 
+        - Houd er rekening mee dat de metrische gegevens elke 15 tot 20 minuten naar Azure Monitor worden verzonden. Stel de **frequentie van de evaluatie** periode in op minder dan 30 minuten (er worden onwaar waarschuwingen gegenereerd).
      - Klik op **gereed.** 
 8. Klik op **actie groep selecteren** om een actie groep (E-mail, SMS, enzovoort) toe te voegen aan de waarschuwing door een bestaande actie groep te selecteren of een nieuwe actie groep te maken.
 9. Vul de details van de **waarschuwing** in, zoals de naam, **Beschrijving** en **Ernst**van de **waarschuwings regel**.

@@ -8,17 +8,17 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/21/2020
-ms.openlocfilehash: bf22e20a6c6187677f000e0c50ac64582233c3cd
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 005bfd4b7e7d062640a79896ccd3d7f76e3d6fb3
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90019662"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447210"
 ---
 # <a name="configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>Het patch schema voor het besturings systeem configureren voor HDInsight-clusters op basis van Linux
 
 > [!IMPORTANT]
-> Er worden binnen drie maanden na publicatie een Ubuntu-installatie kopie beschikbaar voor het maken van nieuwe Azure HDInsight-clusters. Vanaf januari 2019 worden er geen automatische patches uitgevoerd voor clusters. Klanten moeten script acties of andere mechanismen gebruiken om een actief cluster te patchen. Nieuwe clusters hebben altijd de meest recente beschik bare updates, inclusief de meest recente beveiligings patches.
+> Er worden binnen drie maanden na publicatie een Ubuntu-installatie kopie beschikbaar voor het maken van nieuwe Azure HDInsight-clusters. Er worden geen automatische patches uitgevoerd voor clusters. Klanten moeten script acties of andere mechanismen gebruiken om een actief cluster te patchen. Als best practice kunt u deze script acties uitvoeren en beveiligings updates Toep assen nadat het cluster is gemaakt.
 
 HDInsight biedt ondersteuning voor u om algemene taken uit te voeren op uw cluster, zoals het installeren van besturingssysteem patches, beveiligings updates en het opnieuw opstarten van knoop punten. Deze taken worden uitgevoerd met behulp van de volgende twee scripts die kunnen worden uitgevoerd als [script acties](hdinsight-hadoop-customize-cluster-linux.md), en geconfigureerd met para meters:
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/28/2019
-ms.openlocfilehash: 6d6431aa26637e4b956d5c334a2862f689f845bf
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 20d55de7ef0f7b7f49b922409f8cb61874fae0f6
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319317"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448154"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>Configuration Manager verbinden met Azure Monitor
 U kunt uw micro soft endpoint Configuration Manager-omgeving verbinden met Azure Monitor om gegevens van de apparaatgegevens te synchroniseren en naar deze verzamelingen te verwijzen in Azure Monitor en Azure Automation.  
@@ -135,7 +135,7 @@ Nadat u de initiële configuratie voor het importeren van Apparaatsets vanuit uw
 4. Selecteer **computer groepen** en selecteer vervolgens **SCCM**.  
 5. Selecteer **Configuration Manager verzamelings lidmaatschappen importeren** en klik vervolgens op **Opslaan**.  
    
-    ![Computer groepen-tabblad SCCM](./media/collect-sccm/sccm-computer-groups01.png)
+    ![Scherm opname van de computer groepen geavanceerde instellingen voor S C C M met de optie voor het importeren van Configuration Manager verzamelings lidmaatschappen.](./media/collect-sccm/sccm-computer-groups01.png)
 
 ## <a name="view-data-from-configuration-manager"></a>Gegevens van Configuration Manager weer geven
 
@@ -143,7 +143,7 @@ Nadat u een Log Analytics verbinding hebt toegevoegd aan Configuration Manager e
 
 Nadat de verzamelingen zijn geïmporteerd, kunt u zien hoeveel computers met verzamelings lidmaatschappen zijn gedetecteerd. U kunt ook het aantal verzamelingen bekijken dat is geïmporteerd.
 
-![Computer groepen-tabblad SCCM](./media/collect-sccm/sccm-computer-groups02.png)
+![Scherm afbeelding van de geavanceerde instellingen van de computer groepen voor S C C M met de optie voor importeren Configuration Manager verzamelings lidmaatschappen geselecteerd.](./media/collect-sccm/sccm-computer-groups02.png)
 
 Wanneer u op een van beide klikt, worden alle geïmporteerde groepen of alle computers die deel uitmaken van elke groep weer gegeven. Met [Zoeken in Logboeken](../log-query/log-query-overview.md)kunt u verdere uitgebreide analyse van de gegevens van het lidmaatschap van de verzameling uitvoeren.
 

@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: alzam
-ms.openlocfilehash: 74df878baa6ed4e2ba902a73a7830c0b075c58ce
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 1905db8f28bde41dadbe619894cb76830efca992
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90981532"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445829"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>Een Azure Active Directory-tenant maken voor P2S OpenVPN-protocolverbindingen
 
@@ -47,7 +47,7 @@ Volg de stappen in [dit artikel](../active-directory/fundamentals/add-users-azur
 
 1. Zoek de Directory-ID van de map die u voor verificatie wilt gebruiken. Deze wordt weer gegeven in de sectie eigenschappen van de pagina Active Directory.
 
-    ![Map-ID](./media/openvpn-create-azure-ad-tenant/directory-id.png)
+    ![Scherm opname van de pagina ' mapeigenschappen ' met ' Directory-ID ' gemarkeerd.](./media/openvpn-create-azure-ad-tenant/directory-id.png)
 
 2. Kopieer de Map-id.
 
@@ -89,7 +89,7 @@ Volg de stappen in [dit artikel](../active-directory/fundamentals/add-users-azur
 
 7. Onder uw Azure AD, in **bedrijfs toepassingen**, wordt **Azure VPN** weer gegeven.
 
-    ![Azure VPN](./media/openvpn-create-azure-ad-tenant/azurevpn.png)
+    ![Scherm opname van de pagina alle toepassingen.](./media/openvpn-create-azure-ad-tenant/azurevpn.png)
     
 8. Als u nog geen werkende Point-to-site-omgeving hebt, volgt u de instructie om er een te maken. Zie [een punt-naar-site-VPN maken](vpn-gateway-howto-point-to-site-resource-manager-portal.md) om een punt-naar-site-VPN-gateway te maken en te configureren. 
 
