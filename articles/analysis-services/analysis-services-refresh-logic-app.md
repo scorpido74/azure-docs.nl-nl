@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: chlound
 ms.custom: references_regions
-ms.openlocfilehash: 7412a28b53f3b17fb888e3877ecbe50a19c4a3d3
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: fd5c4043d417a99c7ffa57534fd7808f1710190a
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552234"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448577"
 ---
 # <a name="refresh-with-logic-apps"></a>Vernieuwen met Logic Apps
 
@@ -53,9 +53,9 @@ Deze stap wordt gevuld met de HTTP POST-URL zodra de logische app is opgeslagen.
 
 2. Voeg een nieuwe stap toe en zoek naar **http**.  
 
-   ![HTTP-activiteit toevoegen](./media/analysis-services-async-refresh-logic-app/9.png)
+   ![Scherm afbeelding van de sectie ' Kies een actie ' waarvoor de tegel ' HTTP ' is geselecteerd.](./media/analysis-services-async-refresh-logic-app/9.png)
 
-   ![HTTP-activiteit toevoegen](./media/analysis-services-async-refresh-logic-app/10.png)
+   ![Scherm opname van het venster ' HTTP ' waarvoor de tegel HTTP-HTTP is geselecteerd.](./media/analysis-services-async-refresh-logic-app/10.png)
 
 3. Selecteer **http** om deze actie toe te voegen.
 
@@ -67,12 +67,12 @@ Configureer de HTTP-activiteit als volgt:
 |---------|---------|
 |**Methode**     |POST         |
 |**URI**     | https://*uw server regio*/servers/*aas server name*/Models/*your data base name*/refreshes <br /> <br /> Bijvoorbeeld: https: \/ /westus.asazure.Windows.net/servers/MyServer/models/AdventureWorks/refreshes|
-|**Kopteksten**     |   Content-type, Application/JSON <br /> <br />  ![Kopteksten](./media/analysis-services-async-refresh-logic-app/6.png)    |
+|**Headers**     |   Content-type, Application/JSON <br /> <br />  ![Headers](./media/analysis-services-async-refresh-logic-app/6.png)    |
 |**Hoofdtekst**     |   Zie voor meer informatie over het maken van de aanvraag tekst [asynchroon vernieuwen met de rest API-post/refreshes](analysis-services-async-refresh.md#post-refreshes). |
 |**Verificatie**     |Active Directory OAuth         |
 |**Tenant**     |Vul uw Azure Active Directory TenantId in         |
 |**Doelgroep**     |https://*. asazure. Windows. net         |
-|**Client-id**     |Voer uw service principal name ClientID in         |
+|**Client ID**     |Voer uw service principal name ClientID in         |
 |**Referentie type**     |Geheim         |
 |**Geheim**     |Voer uw service principal name Secret in         |
 
@@ -98,15 +98,15 @@ Als u geen gebruik wilt maken van een Orchestration-hulp programma zoals Data Fa
 
 Gebruik het bovenstaande voor beeld om de eerste activiteit te verwijderen en te vervangen door een **plannings** activiteit.
 
-![Activiteit plannen](./media/analysis-services-async-refresh-logic-app/12.png)
+![Scherm afbeelding waarin de pagina ' Logic Apps ' wordt weer gegeven, waarbij de tegel schema is geselecteerd.](./media/analysis-services-async-refresh-logic-app/12.png)
 
-![Activiteit plannen](./media/analysis-services-async-refresh-logic-app/13.png)
+![Scherm opname van de pagina "triggers".](./media/analysis-services-async-refresh-logic-app/13.png)
 
 In dit voor beeld wordt **terugkeer patroon**gebruikt.
 
 Nadat de activiteit is toegevoegd, configureert u het interval en de frequentie, voegt u een nieuwe para meter toe en kiest u **deze uren**.
 
-![Activiteit plannen](./media/analysis-services-async-refresh-logic-app/16.png)
+![Scherm opname van de sectie ' recurrence ' met de para meter ' op deze uren ' geselecteerd.](./media/analysis-services-async-refresh-logic-app/16.png)
 
 Selecteer de gewenste uren.
 

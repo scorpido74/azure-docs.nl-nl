@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: allensu
-ms.openlocfilehash: 745b12e2278c487ed49a9d2d726a760a7df8f276
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e06e4079a5118e0aa9dedb1fca719f0b28e5716
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84703164"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448630"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-portal"></a>Maak een virtuele machine met een statisch openbaar IP-adres met behulp van de Azure Portal
 
@@ -60,13 +60,13 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
 9. Wanneer de virtuele machine is geïmplementeerd, voert u *myPublicIpAddress* in het zoekvak boven aan de portal in. Wanneer **myPublicIpAddress** wordt weer gegeven in de zoek resultaten, selecteert u dit.
 10. U kunt het open bare IP-adres weer geven dat is toegewezen en dat het adres is toegewezen aan de virtuele **myVM** -machine, zoals wordt weer gegeven in de volgende afbeelding:
 
-    ![Openbaar IP-adres weer geven](./media/virtual-network-deploy-static-pip-arm-portal/public-ip-overview.png)
+    ![Scherm afbeelding toont het deel venster open bare mijn P-adres met het I P-adres en de naam. ](./media/virtual-network-deploy-static-pip-arm-portal/public-ip-overview.png)
 
     Azure heeft een openbaar IP-adres toegewezen op basis van adressen die worden gebruikt in de regio waarin u de virtuele machine hebt gemaakt. U kunt de lijst met bereiken (voorvoegsels) downloaden voor de Azure-clouds [Openbaar](https://www.microsoft.com/download/details.aspx?id=56519), [US government](https://www.microsoft.com/download/details.aspx?id=57063), [China](https://www.microsoft.com/download/details.aspx?id=57062) en [Duitsland](https://www.microsoft.com/download/details.aspx?id=57064).
 
 11. Selecteer **configuratie** om te bevestigen dat de toewijzing **statisch**is.
 
-    ![Openbaar IP-adres weer geven](./media/virtual-network-deploy-static-pip-arm-portal/public-ip-configuration.png)
+    ![Scherm afbeelding toont het deel venster open bare I P-adres waarvoor het configuratie-item is geselecteerd.](./media/virtual-network-deploy-static-pip-arm-portal/public-ip-configuration.png)
 
 > [!WARNING]
 > Wijzig de IP-adres instellingen in het besturings systeem van de virtuele machine niet. Het besturings systeem is niet op de hoogte van open bare IP-adressen van Azure. Hoewel u persoonlijke IP-adres instellingen kunt toevoegen aan het besturings systeem, wordt aangeraden dit niet te doen, tenzij dit nodig is, en pas na het lezen van [een privé-IP-adres toevoegen aan een besturings systeem](virtual-network-network-interface-addresses.md#private).

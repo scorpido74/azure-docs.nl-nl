@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/27/2020
-ms.openlocfilehash: 3526510e4cbd77ffe1f468512e1128dcebe9b1da
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 33ad1deff4d543564db1b52bce986b11758042c9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330839"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445060"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>Actieve geo-replicatie-Azure SQL Database maken en gebruiken
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -118,7 +118,7 @@ Zorg ervoor dat de verificatie vereisten voor de secundaire server en de data ba
 
 ## <a name="configuring-secondary-database"></a>Secundaire data base configureren
 
-Zowel de primaire als de secundaire data base moeten dezelfde servicelaag hebben. Het wordt ook ten zeerste aanbevolen om de secundaire data base te maken met dezelfde reken grootte (Dtu's of vCores) als de primaire. Als de primaire Data Base een zware schrijf werk belasting ondervindt, kan het zijn dat een secundaire met een lagere reken capaciteit deze niet kan blijven gebruiken. Dit leidt tot een vertraging opnieuw op de secundaire, en potentiële onbeschikbaarheid van de secundaire. Om deze Risico's te beperken, wordt de limiet voor het transactie logboek van de primaire replicatie zo nodig beperkt.
+Zowel de primaire als de secundaire data base moeten dezelfde servicelaag hebben. Het wordt ook ten zeerste aanbevolen om de secundaire data base te maken met dezelfde back-upopslag en de berekenings grootte (Dtu's of vCores) als de primaire. Als de primaire Data Base een zware schrijf werk belasting ondervindt, kan het zijn dat een secundaire met een lagere reken capaciteit deze niet kan blijven gebruiken. Dit leidt tot een vertraging opnieuw op de secundaire, en potentiële onbeschikbaarheid van de secundaire. Om deze Risico's te beperken, wordt de limiet voor het transactie logboek van de primaire replicatie zo nodig beperkt.
 
 Een ander gevolg van een niet-sluitende secundaire configuratie is dat na een failover de prestaties van de toepassing kunnen afnemen vanwege onvoldoende reken capaciteit van de nieuwe primaire. In dat geval is het nood zakelijk om de database service doelstelling te schalen naar het benodigde niveau. Dit kan aanzienlijke tijd en reken bronnen duren, en er is een failover voor [hoge Beschik baarheid](high-availability-sla.md) aan het eind van het opruimings proces vereist.
 
@@ -126,8 +126,13 @@ Als u besluit om de secundaire te maken met een lagere reken grootte, biedt de g
 
 De frequentie beperking van transactie logboeken op de primaire waarde als gevolg van een lagere reken grootte op een secundair wordt gerapporteerd met behulp van het HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO wacht type, weer gegeven in de database weergaven [sys. dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) en [sys. dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) .
 
+Standaard is de redundantie opslag ruimte van de back-up van de secundaire data base hetzelfde als die van de hoofd database. U kunt ervoor kiezen om de secundaire te configureren met een andere opslag redundantie voor back-ups. Back-ups worden altijd uitgevoerd op de primaire data base. Als de secundaire is geconfigureerd met een andere redundantie voor back-upopslag, worden back-ups gefactureerd op basis van de opslag redundantie die is geselecteerd op de nieuwe primaire (vorige secundaire) nadat de failover is gepromoveerd tot de primaire. 
+
 > [!NOTE]
 > Het transactie logboek op de primaire waarde kan worden beperkt om redenen die niet te maken hebben met een lagere reken grootte op een secundaire. Dit type beperking kan optreden, zelfs als de secundaire computer dezelfde of een hogere reken grootte heeft dan de primaire. Zie [Trans Action log rate governance](resource-limits-logical-server.md#transaction-log-rate-governance)(Engelstalig) voor meer informatie, waaronder wacht typen voor verschillende soorten logboek frequentie beperking.
+
+> [!NOTE]
+> Azure SQL Database Configureer bare back-upopslag redundantie is momenteel beschikbaar in open bare preview in de Azure-regio Zuidoost-Azië. Als de bron database in de preview-versie is gemaakt met lokaal redundante of zone redundante back-upredundantie, wordt het maken van een secundaire data base in een andere Azure-regio niet ondersteund. 
 
 Zie [Wat zijn SQL database service lagen](purchasing-models.md)voor meer informatie over de SQL database Compute sizes.
 

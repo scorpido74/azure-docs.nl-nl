@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: e422b019dd17c8c56ba99b5826e9f6215459c382
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: f7268f698dcc26dbe99b517c9dd4584be67c3a82
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825358"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448467"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Servicetoewijzing gebruiken in Azure
 
@@ -169,7 +169,7 @@ Bepaalde processen dienen specifieke rollen op computers: webservers, toepassing
 
 Mislukte verbindingen worden weer gegeven in Servicetoewijzing kaarten voor processen en computers, met een stippel rode lijn die aangeeft dat een client systeem een proces of poort niet kan bereiken. Mislukte verbindingen worden gerapporteerd van elk systeem met een geïmplementeerde Servicetoewijzing-agent als dat systeem de verbinding probeert te maken die is mislukt. Servicetoewijzing meet dit proces door TCP-sockets te bestuderen die geen verbinding tot stand brengen. Deze fout kan het gevolg zijn van een firewall, een onjuiste configuratie in de client of de server of een externe service is niet beschikbaar.
 
-![Mislukte verbindingen](media/service-map/failed-connections.png)
+![Scherm afbeelding van een deel van een Servicetoewijzing dat een onderbroken rode lijn markeert die aangeeft dat er een mislukte verbinding is tussen het backup.pl-proces en poort 4475.](media/service-map/failed-connections.png)
 
 Informatie over mislukte verbindingen kan helpen bij het oplossen van problemen, migratie validatie, beveiligings analyse en algemene architectuur. Mislukte verbindingen zijn soms onschadelijk, maar ze verwijzen vaak rechtstreeks naar een probleem, zoals een failover-omgeving die plotseling onbereikbaar wordt of twee toepassings lagen die niet kunnen communiceren na een Cloud migratie.
 
@@ -193,7 +193,7 @@ Server poort groepen zijn vakken die server poorten vertegenwoordigen op servers
 
 Als u in de rechter bovenhoek van een server op het weglatings teken (...) klikt, wordt het context menu voor die server weer gegeven.
 
-![Mislukte verbindingen](media/service-map/context-menu.png)
+![Scherm opname van het geopende context menu voor een server in Servicetoewijzing. Het menu bevat opties voor het laden van de Server kaart en het weer geven van Self-links.](media/service-map/context-menu.png)
 
 ### <a name="load-server-map"></a>Server toewijzing laden
 
@@ -258,7 +258,7 @@ Servicetoewijzing integratie met Wijzigingen bijhouden automatisch wanneer beide
 
 In het deel venster **computer wijzigingen bijhouden** worden alle wijzigingen weer gegeven, met de meest recente eerst, samen met een koppeling om in te zoomen op Logboeken zoeken naar aanvullende informatie.
 
-![Deel venster computer Wijzigingen bijhouden](media/service-map/change-tracking.png)
+![Scherm opname van het Wijzigingen bijhouden deel venster van de machine in Servicetoewijzing.](media/service-map/change-tracking.png)
 
 De volgende afbeelding is een gedetailleerde weer gave van een ConfigurationChange-gebeurtenis die u kunt zien nadat u **weer geven in log Analytics**hebt geselecteerd.
 
@@ -300,7 +300,7 @@ Servicetoewijzing integratie met Updatebeheer automatisch wanneer beide oplossin
 
 In het deel venster **computer updates** worden gegevens van de updatebeheer oplossing voor de geselecteerde server weer gegeven. In het deel venster wordt een samen vatting weer gegeven van eventuele ontbrekende updates voor de server tijdens het geselecteerde tijds bereik.
 
-![Deel venster computer Wijzigingen bijhouden](media/service-map/machine-updates.png)
+![Scherm opname van het deel venster computer updates in Servicetoewijzing.](media/service-map/machine-updates.png)
 
 ## <a name="log-analytics-records"></a>Log Analytics-records
 
@@ -552,7 +552,7 @@ Zie de [privacyverklaring voor micro soft Online Services](https://go.microsoft.
 
 Meer informatie over [Zoek opdrachten in Logboeken](../log-query/log-query-overview.md) in log Analytics om gegevens op te halen die worden verzameld door servicetoewijzing.
 
-## <a name="troubleshooting"></a>Probleemoplossing
+## <a name="troubleshooting"></a>Problemen oplossen
 
 Als u problemen hebt met het installeren of uitvoeren van Servicetoewijzing, kan deze sectie u helpen. Als u het probleem nog steeds niet kunt oplossen, neem dan contact op met Microsoft Ondersteuning.
 

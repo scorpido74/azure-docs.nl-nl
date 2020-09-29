@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein, danil
 ms.date: 09/26/2019
-ms.openlocfilehash: d95bf9ed50f819c5a92c7945827ee82a2c6ecdc9
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 23fdc69b59cc1415d06bd394fd9ef729b7ef4ce0
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371776"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448796"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>Herstellen met behulp van automatische database back-ups-Azure SQL Database & door SQL beheerd exemplaar
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -33,11 +33,6 @@ Als u [back-up lange termijn retentie](long-term-retention-overview.md)hebt geco
 
 > [!IMPORTANT]
 > U kunt een bestaande data base niet overschrijven tijdens het terugzetten.
-
-Azure SQL Database en Azure SQL Managed instance back-ups worden standaard opgeslagen in de geo-gerepliceerde Blob-opslag (RA-GRS-opslag type). Daarnaast ondersteunt SQL Managed instance ook lokaal redundante (LRS) en zone-redundante back-upopslag (ZRS). Redundantie zorgt ervoor dat uw gegevens worden beschermd tegen geplande en niet-geplande gebeurtenissen, met inbegrip van tijdelijke hardwarestoringen, netwerk-of energie storingen en enorme natuur rampen. Zone-redundante opslag (ZRS) is alleen beschikbaar in [bepaalde regio's](../../storage/common/storage-redundancy.md#zone-redundant-storage).
-
-> [!IMPORTANT]
-> Het configureren van opslag redundantie voor back-ups is alleen beschikbaar voor een beheerd exemplaar en is toegestaan tijdens het maken van het proces. Zodra de resource is ingericht, kunt u de optie voor opslag redundantie van back-ups niet meer wijzigen.
 
 Wanneer u de service laag Standard of Premium gebruikt, kan het zijn dat bij het herstellen van de Data Base een extra opslag kosten in rekening worden gebracht. De extra kosten worden in rekening gebracht wanneer de maximale grootte van de herstelde data base groter is dan de hoeveelheid opslag die is opgenomen in de servicelaag en het prestatie niveau van de doel database. Zie de [pagina met prijzen voor SQL database](https://azure.microsoft.com/pricing/details/sql-database/)voor meer informatie over de prijs van extra opslag. Als de daad werkelijke hoeveelheid gebruikte ruimte kleiner is dan de hoeveelheid inbegrepen opslag, kunt u deze extra kosten voor komen door de maximale database grootte in te stellen op de opgenomen hoeveelheid.
 
@@ -79,7 +74,7 @@ Over het algemeen herstelt u een Data Base naar een eerder tijdstip voor herstel
 
   Als u van plan bent de herstelde data base te vervangen door een vervanging voor de oorspronkelijke Data Base, moet u de reken grootte en de servicelaag van de oorspronkelijke data base opgeven. U kunt de naam van de oorspronkelijke data base wijzigen en de herstelde data base de oorspronkelijke naam geven met behulp van de opdracht [ALTER data base](/sql/t-sql/statements/alter-database-azure-sql-database) in T-SQL.
 
-- **Gegevens herstellen**
+- **Gegevensherstel**
 
   Als u van plan bent om gegevens op te halen uit de herstelde data base om te herstellen van een gebruiker of toepassings fout, moet u een gegevens herstel script schrijven en uitvoeren waarmee gegevens uit de herstelde data base worden geëxtraheerd en toegepast op de oorspronkelijke data base. Hoewel het herstellen van de herstel bewerking veel tijd kan duren, is de data base herstellen tijdens het herstel proces zichtbaar in de lijst met data bases. Als u de data base verwijdert tijdens het herstellen, wordt de herstel bewerking geannuleerd en worden er geen kosten in rekening gebracht voor de data base die het herstellen niet heeft voltooid.
   
@@ -143,7 +138,7 @@ Zie [verwijderde exemplaar database herstellen met Power shell](../managed-insta
 ## <a name="geo-restore"></a>Geo-herstel
 
 > [!IMPORTANT]
-> Geo-Restore is alleen beschikbaar voor beheerde exemplaren die zijn geconfigureerd met een geo-redundant (RA-GRS)-opslag type voor back-ups. Beheerde exemplaren die zijn geconfigureerd met met lokaal redundante of zone-redundante back-upopslag typen ondersteunen geo-herstel niet.
+> Geo-Restore is alleen beschikbaar voor SQL-data bases of beheerde exemplaren die zijn geconfigureerd met geografisch redundante [back-upopslag](automated-backups-overview.md#backup-storage-redundancy).
 
 U kunt een Data Base op een wille keurige SQL Database Server of een exemplaar database op elk beheerd exemplaar in een Azure-regio herstellen vanuit de meest recente geo-gerepliceerde back-ups. Geo-Restore maakt gebruik van een geo-gerepliceerde back-up als bron. U kunt geografisch herstel aanvragen, zelfs als de data base of het Data Center niet toegankelijk is vanwege een storing.
 

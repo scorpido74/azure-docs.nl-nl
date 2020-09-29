@@ -4,12 +4,12 @@ description: Meer informatie over het instellen van een Azure Migrate apparaat v
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 04/15/2020
-ms.openlocfilehash: bace4ab03051a9febfe14cc30143bd4a5cfa7c84
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 348c12e08a9bed98016ac825921b67836b32b9e9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085965"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448065"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>Een apparaat instellen voor fysieke servers
 
@@ -59,7 +59,7 @@ Controleer of het zip-bestand veilig is voordat u het implementeert.
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Voorbeeld van gebruik voor openbare cloud: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public.zip SHA256 ```
     - Voorbeeld van gebruik voor overheidscloud: ```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip MD5 ```
-3.  Controleer de nieuwste versie van het apparaat en de instellingen van de hash-waarden.
+3.  Controleer de nieuwste versie van het apparaat en de instellingen van de [hash-waarden](tutorial-discover-physical.md#verify-security) .
  
 
 ## <a name="run-the-azure-migrate-installer-script"></a>Het Azure Migrate-installatiescript uitvoeren

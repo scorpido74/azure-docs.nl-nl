@@ -6,12 +6,12 @@ ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: chlound
-ms.openlocfilehash: 31dc1973af42a1785a2a65cb1887f479e44af162
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 61679e1ee3843ed866ef12138a0edeff8877b1e6
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553900"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448602"
 ---
 # <a name="refresh-with-azure-automation"></a>Vernieuwen met Azure Automation
 
@@ -54,15 +54,15 @@ De service-principal die u maakt, moet Server Administrator-machtigingen hebben 
 
 1. In het Automation-account maakt u een **gegevens** bron die wordt gebruikt om de Service-Principal veilig op te slaan.
 
-    ![Referentie maken](./media/analysis-services-refresh-azure-automation/6.png)
+    ![Scherm opname van de pagina referenties waarop de actie ' referentie toevoegen ' is geselecteerd.](./media/analysis-services-refresh-azure-automation/6.png)
 
 2. Voer de details in voor de referentie. Voer in **gebruikers naam**de Service Principal-toepassings-id (AppID) in en voer vervolgens bij **wacht woord**het geheim van de Service-Principal in.
 
     ![Referentie maken](./media/analysis-services-refresh-azure-automation/7.png)
 
-3. Het Automation-Runbook importeren
+3. Importeer het Automation-Runbook.
 
-    ![Runbook importeren](./media/analysis-services-refresh-azure-automation/8.png)
+    ![Scherm opname van de pagina Runbooks waarop de actie ' een runbook importeren ' is geselecteerd.](./media/analysis-services-refresh-azure-automation/8.png)
 
 4. Blader naar het [Refresh-Model.ps1](#sample-powershell-runbook) bestand, geef een **naam** en **Beschrijving**op en klik vervolgens op **maken**.
 
@@ -80,7 +80,7 @@ De service-principal die u maakt, moet Server Administrator-machtigingen hebben 
 
 6. Test het runbook door op **Start**te klikken.
 
-    ![Het Runbook starten](./media/analysis-services-refresh-azure-automation/11.png)
+    ![Scherm opname waarin de pagina overzicht wordt weer gegeven en de actie starten is geselecteerd.](./media/analysis-services-refresh-azure-automation/11.png)
 
 7. Vul de para meters **DATABASENAME**, **ANALYSISSERVER**en **REFRESHTYPE** in en klik vervolgens op **OK**. De para meter **WEBHOOKDATA** is niet vereist wanneer het Runbook hand matig wordt uitgevoerd.
 
@@ -108,7 +108,7 @@ Dit kan als volgt worden geconfigureerd:
 
 4. Vul de para meters voor de planning in. Deze worden gebruikt telkens wanneer het Runbook wordt geactiveerd. De para meter **WEBHOOKDATA** moet leeg blijven als deze wordt uitgevoerd via een schema.
 
-    ![Para meters configureren](./media/analysis-services-refresh-azure-automation/16.png)
+    ![Parameters configureren](./media/analysis-services-refresh-azure-automation/16.png)
 
 5. Klik op **OK**.
 

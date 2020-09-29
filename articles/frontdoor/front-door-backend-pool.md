@@ -9,22 +9,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/10/2018
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 66767d4329a0a757de99308e1f586b56b327a515
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 4beba141fec7a819df52e4c3a669312a4ad76998
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399919"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449290"
 ---
 # <a name="backends-and-backend-pools-in-azure-front-door"></a>Back-end-en back-end-Pools in azure front-deur
-In dit artikel wordt beschreven hoe u de implementatie van uw app kunt toewijzen met behulp van de voor deur van Azure. Ook worden de verschillende termen in de voor deur configuratie van de back-end van apps uitgelegd.
+In dit artikel wordt beschreven hoe u de implementatie van uw webtoepassing met behulp van de voor deur van Azure toewijst. Ook worden de verschillende terminologie beschreven die wordt gebruikt in de voor deur configuratie rond de back-end van de toepassing.
 
 ## <a name="backends"></a>Back-ends
-Een back-end is gelijk aan het implementatie-exemplaar van een app in een regio. De voor deur ondersteunt zowel Azure-als niet-Azure-back-ends, waardoor de regio niet alleen is beperkt tot Azure-regio's. Het kan ook uw on-premises Data Center of een app-exemplaar in een andere cloud zijn.
+Een back-end verwijst naar een implementatie van een webtoepassing in een regio. De voor deur ondersteunt zowel Azure-als niet-Azure-resources in de back-end-pool. De toepassing kan zich in uw on-premises Data Center bevinden of in een andere Cloud provider.
 
-Back-ends voor de voor deur verwijzen naar de hostnaam of het open bare IP-adres van uw app, die client aanvragen kan verwerken. Back-ends mogen niet worden verward met uw data base-laag, opslaglaag, enzovoort. Back-ends moeten worden weer gegeven als het open bare eind punt van de back-end van uw app. Wanneer u een back-end in een back-end van een front-deur groep toevoegt, moet u ook het volgende toevoegen:
+Back-ends voor de voor deur verwijzen naar de hostnaam of het open bare IP-adres van uw toepassing die uw client aanvragen verzendt. Back-ends mogen niet worden verward met uw data base-laag, opslaglaag, enzovoort. Back-ends moeten worden weer gegeven als het open bare eind punt voor de back-end van uw toepassing. Wanneer u een back-end aan een back-end van een front-deur groep toevoegt, moet u ook het volgende toevoegen:
 
 - **Type back-end**. Het type resource dat u wilt toevoegen. Front deur ondersteunt automatische detectie van uw app-back-ends vanuit app service, Cloud service of Storage. Als u een andere resource wilt in azure of zelfs een back-end die niet van Azure is, selecteert u **aangepaste host**.
 
@@ -41,13 +41,13 @@ Back-ends voor de voor deur verwijzen naar de hostnaam of het open bare IP-adres
 
 ### <a name="backend-host-header"></a><a name = "hostheader"></a>Host-header van back-end
 
-Aanvragen die door de voor deur naar een back-end worden doorgestuurd, bevatten een host-header veld dat door de back-end wordt gebruikt om de doel resource op te halen. De waarde voor dit veld is doorgaans afkomstig van de back-end-URI en heeft de host en poort.
+Aanvragen die door de voor deur naar een back-end worden doorgestuurd, bevatten een host-header veld dat door de back-end wordt gebruikt om de doel resource op te halen. De waarde voor dit veld is doorgaans afkomstig van de back-end-URI die de host-header en-poort heeft.
 
 Een aanvraag voor heeft bijvoorbeeld `www.contoso.com` de hostheader www.contoso.com. Als u Azure Portal gebruikt voor het configureren van uw back-end, is de standaard waarde voor dit veld de hostnaam van de back-end. Als uw back-end contoso-westus.azurewebsites.net is, wordt in de Azure Portal de automatisch gevulde waarde voor de host-header van de back-end contoso-westus.azurewebsites.net. Als u echter Azure Resource Manager sjablonen of een andere methode gebruikt zonder dit veld expliciet in te stellen, stuurt front deur de binnenkomende hostnaam als de waarde voor de host-header. Als de aanvraag voor www \. -contoso.com is gemaakt en uw back-end contoso-westus.azurewebsites.net met een leeg header-veld heeft, wordt de hostheader door de voor deur ingesteld als www- \. contoso.com.
 
 Voor de meeste app-back-ends (Azure Web Apps, Blob Storage en Cloud Services) moet de host-header overeenkomen met het domein van de back-end. De frontend-host die naar uw back-end stuurt, gebruikt echter een andere hostnaam, zoals www.contoso.net.
 
-Als voor uw back-end de host-header moet overeenkomen met de naam van de back-end, moet u ervoor zorgen dat de back-endserver de hostnaam van de host bevat.
+Als uw back-end de host-header moet overeenkomen met de naam van de back-end, controleert u of de host-header van de back-end de hostnaam van de back-end bevat.
 
 #### <a name="configuring-the-backend-host-header-for-the-backend"></a>De host-header van de back-end voor de back-end configureren
 

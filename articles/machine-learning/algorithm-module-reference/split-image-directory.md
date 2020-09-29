@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 05/26/2020
-ms.openlocfilehash: 49c2d2c24cc8acd8468f660189212a8ae71a1d6e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/26/2020
+ms.openlocfilehash: fe5ba25904298fe1a394a4b01d6bdacc72d599c9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91268924"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448687"
 ---
 # <a name="split-image-directory"></a>Map om afbeeldingen te splitsen
 
@@ -28,7 +28,7 @@ Deze module is met name handig wanneer u afbeeldings gegevens moet scheiden in t
 
 2. Maak verbinding met de module waarvan de uitvoer een afbeeldings Directory is.
 
-3. Invoer **Fractie van installatie kopieën in de eerste uitvoer** om het percentage gegevens op te geven dat in de linkernavigatiebalk moet worden geplaatst, standaard 0,9.
+3. Invoer **Fractie van installatie kopieën in de eerste uitvoer** om het percentage gegevens op te geven dat in de linkernavigatiebalk moet worden geplaatst, standaard 0,9. Als het resultaat van de breuk geen geheel getal is, wordt de kleinste bijna-integer gebruikt voor de module.
 
 
 ## <a name="technical-notes"></a>Technische opmerkingen
@@ -45,7 +45,7 @@ Deze module is met name handig wanneer u afbeeldings gegevens moet scheiden in t
 | -------------------------------------- | ----- | ----- | -------- | -------------------------------------- | ------- |
 | Fractie van afbeeldingen in de eerste uitvoer | Float | 0-1   | Vereist | Fractie van afbeeldingen in de eerste uitvoer | 0,9     |
 
-### <a name="outputs"></a>Uitvoerwaarden
+### <a name="outputs"></a>Uitvoer
 
 | Naam                    | Type           | Beschrijving                              |
 | ----------------------- | -------------- | ---------------------------------------- |

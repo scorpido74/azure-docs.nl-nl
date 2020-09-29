@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 47e9b616a2a686a7ce82a592ee81966041371048
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 052fd0ea7619d566e78806580ee7b39e49cc85d2
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328000"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448608"
 ---
 # <a name="azure-monitor-insights-for-virtual-wan-preview"></a>Azure Monitor Insights voor virtuele WAN (preview-versie)
 
@@ -37,7 +37,7 @@ Ga naar **Azure Portal**  >  **virtuele WAN**. Selecteer **inzichten (preview)**
 
 **Afbeelding 1: > Insights-menu bewaken**
 
-:::image type="content" source="./media/azure-monitor-insights/monitor-menu.png" alt-text="Scherm opname van de menu optie inzichten." lightbox="./media/azure-monitor-insights/monitor-menu.png":::
+:::image type="content" source="./media/azure-monitor-insights/monitor-menu.png" alt-text="Scherm opname van de weer gave inzichten (preview)." lightbox="./media/azure-monitor-insights/monitor-menu.png":::
 
 In de weer gave **inzichten** kunt u de automatisch gedetecteerde virtuele WAN-resources weer geven. Deze resources omvatten hubs, gateways, firewalls, verbindingen en spoke Virtual Networks, Nva's van derden en vertakkingen in een end-to-end virtuele WAN. Zie **afbeelding 2**voor een voor beeld.
 
@@ -45,7 +45,7 @@ De resource status en-status zijn kleur codes en overlappen op de resource picto
 
 **Afbeelding 2: Insights-weer gave**
 
-:::image type="content" source="./media/azure-monitor-insights/insights-view.png" alt-text="Scherm opname van de weer gave inzichten." lightbox="./media/azure-monitor-insights/insights-view.png":::
+:::image type="content" source="./media/azure-monitor-insights/insights-view.png" alt-text="Scherm opname van de weer gave inzichten (preview)." lightbox="./media/azure-monitor-insights/insights-view.png":::
 
 ## <a name="dependency-view"></a><a name="dependency"></a>Afhankelijkheids weergave
 
@@ -53,7 +53,7 @@ De **afhankelijkheids** weergave voor virtuele WAN helpt u bij het visualiseren 
 
 **Afbeelding 3: VWAN-afhankelijkheids weergave**
 
-:::image type="content" source="./media/azure-monitor-insights/dependency-map.png" alt-text="Scherm afbeelding waarin de afhankelijkheids weergave wordt weer gegeven." lightbox="./media/azure-monitor-insights/dependency-map.png":::
+:::image type="content" source="./media/azure-monitor-insights/dependency-map.png" alt-text="Scherm opname van de weer gave inzichten (preview)." lightbox="./media/azure-monitor-insights/dependency-map.png":::
 
 In de **afhankelijkheids** weergave kaart worden de volgende resources weer gegeven als verbonden grafiek:
 
@@ -69,13 +69,13 @@ De afhankelijkheids kaart maakt eenvoudig navigatie naar de configuratie-instell
 
 **Afbeelding 4: navigeren naar resource-specifieke informatie**
 
-:::image type="content" source="./media/azure-monitor-insights/resource-information.png" alt-text="Scherm afbeelding die laat zien hoe u navigeert naar informatie die specifiek is voor de resource.":::
+:::image type="content" source="./media/azure-monitor-insights/resource-information.png" alt-text="Scherm opname van de weer gave inzichten (preview).":::
 
 De zoek-en filter balk in de **afhankelijkheids** weergave biedt een eenvoudige manier om de grafiek te doorzoeken. Verschillende filters bieden hulp om uw zoek opdracht te beperken tot een specifiek pad en een specifieke status.
 
 **Afbeelding 5: zoeken en filteren**
 
-:::image type="content" source="./media/azure-monitor-insights/search-filter.png" alt-text="Scherm afbeelding waarin de zoek-en filter balk wordt weer gegeven." lightbox="./media/azure-monitor-insights/search-filter.png":::
+:::image type="content" source="./media/azure-monitor-insights/search-filter.png" alt-text="Scherm opname van de weer gave inzichten (preview)." lightbox="./media/azure-monitor-insights/search-filter.png":::
 
 ## <a name="detailed-metrics"></a><a name="detailed"></a>Gedetailleerde metrische gegevens
 
@@ -83,7 +83,7 @@ U kunt **gedetailleerde metrische gegevens weer geven** selecteren om toegang te
 
 **Afbeelding 6: gedetailleerd dash board voor metrische gegevens**
 
-:::image type="content" source="./media/azure-monitor-insights/detailed-metrics.png" alt-text="Scherm opname van het dash board met gedetailleerde metrische gegevens." lightbox="./media/azure-monitor-insights/detailed-metrics.png":::
+:::image type="content" source="./media/azure-monitor-insights/detailed-metrics.png" alt-text="Scherm opname van de weer gave inzichten (preview)." lightbox="./media/azure-monitor-insights/detailed-metrics.png":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

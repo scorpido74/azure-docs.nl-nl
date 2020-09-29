@@ -5,15 +5,15 @@ services: security-center
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/12/2020
 ms.author: memildin
-ms.openlocfilehash: 138b3b35633b432193a1972421f05d0a8e52b90a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8a387adde6c74b8eb1ff950c5e6b5183e43d1f4f
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91301353"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448660"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>Kubernetes-workloads beveiligen
 
@@ -39,7 +39,7 @@ Security Center biedt meer container beveiligings functies als u Azure Defender 
 |Koers|Gratis|
 |Vereiste rollen en machtigingen:|**Eigenaar** of **beveiligings beheerder** voor het bewerken van een toewijzing<br>**Lezer** voor het weer geven van de aanbevelingen|
 |Ondersteunde clusters|Kubernetes v 1.14 (of hoger) is vereist<br>Geen PodSecurityPolicy-resource (oud PSP-model) op de clusters<br>Windows-knoop punten worden niet ondersteund|
-|Clouds|![Yes](./media/icons/yes-icon.png) Commerciële Clouds<br>![No](./media/icons/no-icon.png) National/soeverein (US Gov, China gov, andere gov)|
+|Clouds|![Ja](./media/icons/yes-icon.png) Commerciële Clouds<br>![Nee](./media/icons/no-icon.png) National/soeverein (US Gov, China gov, andere gov)|
 |||
 
 
@@ -58,7 +58,7 @@ Azure Security Center bevat een bundel van aanbevelingen die beschikbaar zijn wa
 
     1. Selecteer in een van de beveiligings besturings elementen de aanbeveling om de resources te zien waarop u de toevoegen kunt installeren en selecteer **herstellen**. 
 
-        :::image type="content" source="./media/defender-for-kubernetes-usage/recommendation-to-install-policy-add-on-for-kubernetes-details.png" alt-text="Details van aanbevelings pagina voor * * Azure Policy invoeg toepassing voor Kubernetes moet worden geïnstalleerd en ingeschakeld op uw clusters * *":::
+        :::image type="content" source="./media/defender-for-kubernetes-usage/recommendation-to-install-policy-add-on-for-kubernetes-details.png" alt-text="Aanbeveling * * Azure Policy invoeg toepassing voor Kubernetes moet worden geïnstalleerd en ingeschakeld op uw clusters * *":::
 
 1. Ongeveer 30 minuten nadat de installatie van de invoeg toepassing is voltooid, wordt in Security Center de status van de clusters weer gegeven voor de volgende aanbevelingen, elk in de relevante beveiligings controle zoals weer gegeven:
 
@@ -69,12 +69,12 @@ Azure Security Center bevat een bundel van aanbevelingen die beschikbaar zijn wa
 
     | Naam aanbeveling                                                                   | Beveiligings beheer                         | Configuratie vereist |
     |---------------------------------------------------------------------------------------|------------------------------------------|------------------------|
-    | De CPU-en geheugen limieten van de container moeten worden afgedwongen (preview-versie)                          | Toepassingen beveiligen tegen DDoS-aanval | No                     |
-    | Geprivilegieerde containers moeten worden vermeden (preview-versie)                                     | Toegang en machtigingen beheren            | No                     |
-    | Onveranderbaar (alleen-lezen) hoofd bestands systeem moet worden afgedwongen voor containers (preview-versie)     | Toegang en machtigingen beheren            | No                     |
-    | Container met bevoegdheids escalatie moet worden vermeden (preview-versie)                       | Toegang en machtigingen beheren            | No                     |
-    | Containers uitvoeren als hoofd gebruiker moet worden vermeden (preview-versie)                           | Toegang en machtigingen beheren            | No                     |
-    | Containers die gevoelige host-naam ruimten delen, moeten worden vermeden (preview-versie)              | Toegang en machtigingen beheren            | No                     |
+    | De CPU-en geheugen limieten van de container moeten worden afgedwongen (preview-versie)                          | Toepassingen beveiligen tegen DDoS-aanval | Nee                     |
+    | Geprivilegieerde containers moeten worden vermeden (preview-versie)                                     | Toegang en machtigingen beheren            | Nee                     |
+    | Onveranderbaar (alleen-lezen) hoofd bestands systeem moet worden afgedwongen voor containers (preview-versie)     | Toegang en machtigingen beheren            | Nee                     |
+    | Container met bevoegdheids escalatie moet worden vermeden (preview-versie)                       | Toegang en machtigingen beheren            | Nee                     |
+    | Containers uitvoeren als hoofd gebruiker moet worden vermeden (preview-versie)                           | Toegang en machtigingen beheren            | Nee                     |
+    | Containers die gevoelige host-naam ruimten delen, moeten worden vermeden (preview-versie)              | Toegang en machtigingen beheren            | Nee                     |
     | Er moeten mini maal bevoegde Linux-mogelijkheden worden afgedwongen voor containers (preview-versie)       | Toegang en machtigingen beheren            | **Ja**                |
     | Het gebruik van pod HostPath-volume koppelingen moet worden beperkt tot een bekende lijst (preview-versie)    | Toegang en machtigingen beheren            | **Ja**                |
     | Containers moeten worden geluisterd op toegestane poorten (preview-versie)                              | Onbevoegde netwerk toegang beperken     | **Ja**                |
@@ -99,7 +99,7 @@ Azure Security Center bevat een bundel van aanbevelingen die beschikbaar zijn wa
 
     1. Open de pagina aanbeveling Details en selecteer **weigeren**:
 
-        :::image type="content" source="./media/defender-for-kubernetes-usage/enforce-workload-protection-example.png" alt-text="De optie weigeren voor de para meter Azure Policy":::
+        :::image type="content" source="./media/defender-for-kubernetes-usage/enforce-workload-protection-example.png" alt-text="Aanbeveling * * Azure Policy invoeg toepassing voor Kubernetes moet worden geïnstalleerd en ingeschakeld op uw clusters * *":::
 
         Hiermee opent u het deel venster waarin u het bereik hebt ingesteld. 
 
@@ -113,7 +113,7 @@ Azure Security Center bevat een bundel van aanbevelingen die beschikbaar zijn wa
 
 1. Wanneer u een aanbeveling bekijkt vanuit de werk belasting beveiliging, ziet u het aantal betrokken peulen (' Kubernetes-onderdelen ') naast het cluster. Voor een lijst van het specifieke peul selecteert u het cluster en vervolgens kiest u **actie ondernemen**.
 
-    :::image type="content" source="./media/defender-for-kubernetes-usage/view-affected-pods-for-recommendation.gif" alt-text="Het betrokken peul weer geven voor een K8s-aanbeveling"::: 
+    :::image type="content" source="./media/defender-for-kubernetes-usage/view-affected-pods-for-recommendation.gif" alt-text="Aanbeveling * * Azure Policy invoeg toepassing voor Kubernetes moet worden geïnstalleerd en ingeschakeld op uw clusters * *"::: 
 
 1. Als u de afdwinging wilt testen, gebruikt u de volgende twee Kubernetes-implementaties:
 

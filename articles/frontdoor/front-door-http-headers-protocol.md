@@ -9,29 +9,29 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/10/2018
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 6864a854215d899043607b3d01cffbd343ee7751
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: e72443e33d1b6f097f61f4c027b5f547b43ee2a9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399511"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449220"
 ---
 # <a name="protocol-support-for-http-headers-in-azure-front-door"></a>Protocol ondersteuning voor HTTP-headers in azure front-deur
 Dit artikel bevat een overzicht van het protocol dat front-deur ondersteunt met delen van het aanroepende pad (zie afbeelding). De volgende secties bevatten meer informatie over HTTP-headers die worden ondersteund door de voor deur.
 
-![Azure front-deur HTTP-headers Protocol][1]
+:::image type="content" source="./media/front-door-http-headers-protocol/front-door-protocol-summary.png" alt-text="Azure front-deur HTTP-headers Protocol":::
 
 >[!IMPORTANT]
 >De voor deur certificeert geen HTTP-headers die hier niet worden beschreven.
 
-## <a name="client-to-front-door"></a>Client naar voor deur
-De voor deur accepteert de meeste kopteksten van de binnenkomende aanvraag zonder deze te wijzigen. Sommige gereserveerde headers worden bij verzen ding verwijderd uit de inkomende aanvraag, inclusief kopteksten met het X-FD-*-voor voegsel.
+## <a name="client-to-front-door"></a>Client naar Front Door
+De voor deur accepteert de meeste headers voor de binnenkomende aanvraag zonder deze te wijzigen. Sommige gereserveerde headers worden bij verzen ding verwijderd uit de inkomende aanvraag, inclusief kopteksten met het X-FD-*-voor voegsel.
 
 ## <a name="front-door-to-backend"></a>Voor deur naar back-end
 
-De voor deur bevat headers uit een binnenkomende aanvraag, tenzij deze worden verwijderd vanwege beperkingen. Met de voor deur worden ook de volgende headers toegevoegd:
+De voor deur bevat kopteksten voor een binnenkomende aanvraag, tenzij ze worden verwijderd vanwege beperkingen. Met de voor deur worden ook de volgende headers toegevoegd:
 
 | Koptekst  | Voor beeld en beschrijving |
 | ------------- | ------------- |
@@ -52,12 +52,9 @@ Alle kopteksten die naar de voor deur van de back-end worden verzonden, worden o
 
 | Koptekst  | Voorbeeld |
 | ------------- | ------------- |
-| X-Azure-Ref |  *X-Azure-Ref: 0zxV + XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz* </br> Dit is een unieke verwijzings reeks die een aanvraag identificeert die wordt aangeboden door de voor deur. Dit is essentieel voor het oplossen van problemen bij het zoeken naar toegangs logboeken.|
+| X-Azure-Ref |  *X-Azure-Ref: 0zxV + XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz* </br> Dit is een unieke verwijzings reeks die een aanvraag identificeert die wordt aangeboden door de voor deur, wat van essentieel belang is voor het oplossen van problemen met toegang tot logboeken.|
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een Front Door maken](quickstart-create-front-door.md)
+- [Een voor deur maken](quickstart-create-front-door.md)
 - [De werking van de voor deur](front-door-routing-architecture.md)
-
-<!--Image references-->
-[1]: ./media/front-door-http-headers-protocol/front-door-protocol-summary.png

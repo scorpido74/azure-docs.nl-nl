@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 05/26/2020
-ms.openlocfilehash: 677cf60ff3e614fd1486445786154fbf026b7cd9
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/28/2020
+ms.openlocfilehash: 9f5f4b2b069ebc65430fba4bc31a9891ed61fedf
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90898697"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450103"
 ---
 # <a name="convert-to-image-directory"></a>Converteren naar afbeeldingsmap
 
@@ -22,9 +22,10 @@ In dit artikel wordt beschreven hoe u de map Convert to Image Directory kunt geb
 
 ## <a name="how-to-use-convert-to-image-directory"></a>Converteren naar afbeeldings Directory gebruiken  
 
-1.  Voeg de module **converteren naar afbeeldings mappen** toe aan uw experiment. U kunt deze module vinden in de categorie ' Computer Vision/image-gegevens transformatie ' in de module lijst. 
+1.  Voeg de module **converteren naar afbeeldings mappen** toe aan het canvas. U kunt deze module vinden in de categorie ' Computer Vision/image-gegevens transformatie ' in de module lijst. 
 
-2.  [Registreer een installatie kopie gegevensset](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets) en verbind deze met de invoer poort van de module. Zorg ervoor dat er een afbeelding in de invoer gegevensset staat. 
+2.  De invoer van **converteren naar een afbeelding** van de Directory-module moet een bestands gegevensset zijn. [Registreer een installatie kopie gegevensset](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets) en verbind deze met de invoer poort van de module. Zorg ervoor dat er een afbeelding in de invoer gegevensset staat. De ontwerper ondersteunt momenteel geen gegevensset voor het visualiseren van afbeeldingen.
+ 
     De volgende indelingen voor gegevensset worden ondersteund:
 
     - Gecomprimeerd bestand in deze extensies: '. zip ', '. tar ', '. gz ', '. bz2 '.
@@ -35,20 +36,24 @@ In dit artikel wordt beschreven hoe u de map Convert to Image Directory kunt geb
     
 
     > [!NOTE]
-    > Als u de gegevensset van de afbeelding in Super visie leren gebruiken, is label vereist.
-    > Voor een afbeeldings classificatie taak kan label worden gegenereerd als afbeelding ' categorie ' in module-uitvoer als deze afbeeldings gegevensset is ingedeeld in Torchvision ImageFolder-indeling. Anders worden alleen afbeeldingen zonder label opgeslagen. Hier volgt een voor beeld van hoe u de afbeeldings-gegevensset kunt ordenen om een label op te halen, de afbeeldings categorie gebruiken als naam voor de submap. Raadpleeg Torchvision- [gegevens sets](https://pytorch.org/docs/stable/torchvision/datasets.html#imagefolder) voor meer informatie.
+    > - Als u de gegevensset van een afbeelding in Super visie leren gebruiken, moet u het label van de trainings gegevensset opgeven.
+    > - Voor een afbeeldings classificatie taak kan label worden gegenereerd als afbeelding ' categorie ' in module-uitvoer als deze afbeeldings gegevensset is ingedeeld in Torchvision ImageFolder-indeling. Anders worden alleen afbeeldingen zonder label opgeslagen. Hieronder volgt een voor beeld van hoe u de afbeeldings-gegevensset kunt ordenen om een label op te halen, de afbeeldings categorie gebruiken als naam voor de submap. 
+    > - Het is niet nodig om hetzelfde aantal installatie kopieën in elke categorie map te uploaden.
+    > - Afbeeldingen met deze uitbrei dingen (in kleine letters) worden ondersteund:. jpg,. JPEG,. png,. ppm,. bmp,.................... TIFF,. webp. U kunt ook meerdere typen installatie kopieën in één map hebben.    
+    > - Raadpleeg Torchvision- [gegevens sets](https://pytorch.org/docs/stable/torchvision/datasets.html#imagefolder) voor meer informatie.
     >
     > ```
-    > root/dog/xxx.png
-    > root/dog/xxy.png
-    > root/dog/xxz.png
+    > Your_image_folder_name/Category_1/xxx.png
+    > Your_image_folder_name/Category_1/xxy.jpg
+    > Your_image_folder_name/Category_1/xxz.jpeg
     >
-    > root/cat/123.png
-    > root/cat/nsdf3.png
-    > root/cat/asd932_.png
+    > Your_image_folder_name/Category_2/123.png
+    > Your_image_folder_name/Category_2/nsdf3.png
+    > Your_image_folder_name/Category_2/asd932_.png
     > ```
-
-3.  Verzend de pijp lijn.
+    > - Als u een image-gegevensset voor scores gebruikt, moet de gegevensset van het invoer bestand van deze module niet-geclassificeerde installatie kopieën bevatten.
+    
+3.  Verzend de pijp lijn. Deze module kan worden uitgevoerd op een GPU of CPU.
 
 ## <a name="results"></a>Resultaten
 
@@ -58,13 +63,13 @@ De uitvoer van de modus **converteren naar afbeeldings mappen** is in de indelin
 
 ###  <a name="expected-inputs"></a>Verwachte invoer  
 
-| Naam          | Type                  | Description   |
+| Naam          | Type                  | Beschrijving   |
 | ------------- | --------------------- | ------------- |
 | Invoer gegevensset | AnyDirectory, ZipFile | Invoer gegevensset |
 
 ###  <a name="output"></a>Uitvoer  
 
-| Naam                   | Type           | Description            |
+| Naam                   | Type           | Beschrijving            |
 | ---------------------- | -------------- | ---------------------- |
 | Uitvoer afbeelding map | ImageDirectory | Uitvoer afbeelding map |
 

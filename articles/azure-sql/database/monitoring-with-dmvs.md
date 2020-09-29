@@ -7,17 +7,17 @@ ms.service: sql-db-mi
 ms.subservice: performance
 ms.custom: sqldbrb=2
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: juliemsft
 ms.author: jrasnick
 ms.reviewer: sstein
 ms.date: 04/19/2020
-ms.openlocfilehash: 7ee876b1d65e71657cb1af857cdad9f62a32100e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 61160943fc5762fd492f61a75a44159f2ef9cab2
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333049"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448777"
 ---
 # <a name="monitoring-microsoft-azure-sql-database-and-azure-sql-managed-instance-performance-using-dynamic-management-views"></a>Prestaties van Microsoft Azure SQL Database en Azure SQL Managed Instance bewaken met dynamische beheerweergaven
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -56,7 +56,7 @@ Dit artikel bevat een verzameling DMV-query's die u kunt uitvoeren met behulp va
 - [Informatie over het hele systeem en het gebruik van database bronnen ophalen](#monitor-resource-use)
 - [Gegevens over query prestaties ophalen](#monitoring-query-performance)
 
-## <a name="identify-cpu-performance-issues"></a>Prestatie problemen met CPU identificeren
+## <a name="identify-cpu-performance-issues"></a>CPU-prestatieproblemen identificeren
 
 Als het CPU-verbruik langer is dan 80% gedurende langere Peri Oden, kunt u de volgende stappen voor probleem oplossing overwegen:
 

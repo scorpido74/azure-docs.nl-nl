@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/23/2019
-ms.openlocfilehash: ffe3d457d4827250418c9c2d838df35c11e01af7
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 496dab24f636c97e1c7b27b871e1fded9216277d
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90974712"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448563"
 ---
 # <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor-preview"></a>Aangepaste velden in een Log Analytics-werk ruimte maken in Azure Monitor (preview)
 
@@ -101,7 +101,7 @@ We markeren de naam van de service in de eigenschap **RenderedDescription** en g
 
 We zien dat de service naam correct is geïdentificeerd voor sommige records, maar niet voor andere.   In de **Zoek resultaten** ziet u dat een deel van de naam voor de **WMI-prestatie adapter** niet is geselecteerd.  In de **samen vatting** ziet u dat er in het installatie programma voor de ene record **modules** is geïdentificeerd in plaats van **Windows modules**.  
 
-![Zoekresultaten](media/custom-fields/search-results-01.png)
+![Scherm opname van de onderdelen van de service naam die in het deel venster Zoek resultaten zijn gemarkeerd en een onjuiste service naam die in de samen vatting is gemarkeerd.](media/custom-fields/search-results-01.png)
 
 De record voor de **WMI-prestatie adapter** wordt gestart.  U klikt op het bewerkings pictogram en **wijzigt vervolgens deze markering**.  
 
@@ -113,7 +113,7 @@ We verg Roten het hooglicht om het woord **WMI** toe te voegen en vervolgens het
 
 We kunnen zien dat de vermeldingen voor de **WMI-prestatie adapter** zijn gecorrigeerd en dat log Analytics ook die gegevens gebruiken om de records voor het **installatie programma**van de Windows-module te corrigeren.
 
-![Zoekresultaten](media/custom-fields/search-results-02.png)
+![Scherm opname van de volledige service naam die is gemarkeerd in het deel venster Zoek resultaten en de juiste service namen die in de samen vatting zijn gemarkeerd.](media/custom-fields/search-results-02.png)
 
 We kunnen nu een query uitvoeren waarmee wordt gecontroleerd of **Service_CF** is gemaakt, maar nog niet is toegevoegd aan een record. Dat komt doordat het aangepaste veld niet werkt voor bestaande records, zodat er moet worden gewacht tot nieuwe records worden verzameld.
 

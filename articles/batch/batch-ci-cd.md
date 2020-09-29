@@ -5,12 +5,12 @@ author: chrisreddington
 ms.author: chredd
 ms.date: 03/28/2019
 ms.topic: how-to
-ms.openlocfilehash: 9612c61945a41b30fb5d4768e1eb0909a07911d3
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: d125427a3b2e519e909aad9e6f9cf08a963d2d46
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229392"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461526"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>Gebruik Azure-pijp lijnen om HPC-oplossingen te bouwen en te implementeren
 
@@ -43,7 +43,7 @@ De code basis structuur die in dit voor beeld wordt gebruikt, lijkt op het volge
 
 * Een **arm-sjablonen-** map met een aantal Azure Resource Manager sjablonen. De sjablonen worden beschreven in dit artikel.
 * Een map van de **client-toepassing** , een kopie van de [Azure batch .net-bestands verwerking met ffmpeg-voor](https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial) beeld. Dit is niet nodig voor dit artikel.
-* Een **HPC-toepassingsmap** , de Windows 64-bits versie van [ffmpeg 3,4](https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-3.4-win64-static.zip).
+* Een **HPC-toepassingsmap** , de Windows 64-bits versie van [ffmpeg 4.3.1](https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-4.3.1-2020-09-21-full_build.zip).
 * Een **pipeline** -map. Dit bevat een YAML-bestand met een overzicht van het bouw proces. Dit wordt behandeld in het artikel.
 
 In deze sectie wordt ervan uitgegaan dat u bekend bent met versie beheer en het ontwerpen van Resource Manager-sjablonen. Als u niet bekend bent met deze concepten, raadpleegt u de volgende pagina's voor meer informatie.

@@ -6,17 +6,17 @@ ms.service: sql-db-mi
 ms.subservice: performance
 ms.custom: seoapril2019
 ms.devlang: sqldbrb=2
-ms.topic: conceptual
+ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 04/06/2020
-ms.openlocfilehash: 2c8c31219f014935c14371cf4dd30b61ba35819b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1442ca7957a458e1458c4815033bf5e79c67c32a
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319500"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448924"
 ---
 # <a name="configure-streaming-export-of-azure-sql-database-and-sql-managed-instance-diagnostic-telemetry"></a>Streaming-export van Azure SQL Database en SQL Managed instance diagnostische telemetrie configureren
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -96,7 +96,7 @@ U kunt het menu **Diagnostische instellingen** in de Azure Portal gebruiken om s
 
 Selecteer een van de volgende tabbladen voor stapsgewijze instructies voor het configureren van de streaming-export van diagnostische telemetrie in de Azure Portal en voor scripts voor het uitvoeren van hetzelfde met Power shell en de Azure CLI.
 
-# <a name="azure-portal"></a>[Azure-portal](#tab/azure-portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/azure-portal)
 
 ### <a name="elastic-pools-in-azure-sql-database"></a>Elastische Pools in Azure SQL Database
 
@@ -284,7 +284,7 @@ Geef de resource-ID van de werk ruimte \<$WSID\> op als para meter bij het uitvo
 
   Vervang door \<subID\> de abonnements-id, \<RG_NAME\> met de naam van de resource groep en \<WS_NAME\> met de naam van de werk ruimte.
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 U kunt metrische gegevens en diagnostische logboek registratie inschakelen met behulp van de Azure CLI.
 
@@ -610,7 +610,7 @@ Meer informatie over [query Store-wacht statistieken](https://docs.microsoft.com
 |query_hash_s|Query-hash van de mislukte query, indien beschikbaar |
 |query_plan_hash_s|Query plan-hash van de mislukte query, indien beschikbaar |
 
-Meer informatie over [SQL-fout berichten](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors?view=sql-server-ver15).
+Meer informatie over [SQL-fout berichten](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors).
 
 #### <a name="database-wait-statistics-dataset"></a>Gegevensset data base wacht statistieken
 

@@ -9,20 +9,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/10/2018
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 7cdcef80ef2433d34b32589d2539089fb9801eb1
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 20d45f5966aca3df89e17e03aa6120a4ddf5c5b9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399426"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448703"
 ---
 # <a name="http2-support-in-azure-front-door"></a>HTTP/2-ondersteuning in azure front-deur
 
 Momenteel is HTTP/2-ondersteuning actief voor alle Azure front-deur configuraties. Er is geen verdere actie vereist van klanten.
 
-HTTP/2 is een belang rijke revisie van HTTP/1.1. Het biedt snellere webprestaties, gereduceerde reactie tijd en verbeterde gebruikers ervaring, terwijl de vertrouwde HTTP-methoden, status codes en semantiek behouden blijven. Hoewel HTTP/2 is ontworpen om te werken met HTTP en HTTPS, ondersteunen veel webbrowsers van de client alleen HTTP/2 via Transport Layer Security (TLS).
+HTTP/2 is een belang rijke revisie van HTTP/1.1, waarmee u sneller de prestaties van de website kunt verbeteren door de reactie tijd te verminderen. HTTP/2 wordt uitgevoerd door de vertrouwde HTTP-methoden, status codes en semantiek te onderhouden om de gebruikers ervaring te verbeteren. Hoewel HTTP/2 is ontworpen om te werken met HTTP en HTTPS, ondersteunen veel webbrowsers van de client alleen HTTP/2 via Transport Layer Security (TLS).
 
 > [!NOTE]
 > Ondersteuning voor HTTP/2-protocollen is alleen beschikbaar voor aanvragen van clients naar de voor deur. De communicatie van front-deur naar back-ends in de back-end-pool vindt plaats via HTTP/1.1. 
@@ -46,7 +46,7 @@ De voor delen van HTTP/2 zijn onder andere:
 
 ## <a name="http2-browser-support"></a>Ondersteuning voor HTTP/2-browsers
 
-Alle belang rijke browsers hebben ondersteuning voor HTTP/2 geïmplementeerd in hun huidige versies. Niet-ondersteunde browsers worden automatisch teruggevallen op HTTP/1.1.
+Alle belang rijke browsers hebben ondersteuning voor HTTP/2 geïmplementeerd in hun huidige versies. Niet-ondersteunde browsers vallen automatisch terug op HTTP/1.1.
 
 |Browser|Minimale versie|
 |-------------|------------|

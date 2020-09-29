@@ -4,24 +4,24 @@ description: Op deze pagina wordt beschreven hoe u een ondersteunings aanvraag m
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: service
-ms.topic: conceptual
+ms.topic: how-to
 author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: sstein
 ms.date: 06/04/2020
-ms.openlocfilehash: 4557d2ecdb49cd50396986f0ea30277f50ecf9f7
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: cfcdd143a26d36ed3c4646122fce7c19c41976d0
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85987281"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448827"
 ---
 # <a name="request-quota-increases-for-azure-sql-database-and-sql-managed-instance"></a>Toename van quotum aanvragen voor Azure SQL Database en SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 In dit artikel wordt uitgelegd hoe u een quotum verhoging kunt aanvragen voor Azure SQL Database en Azure SQL Managed instance. Ook wordt uitgelegd hoe u de toegang tot een regio kunt inschakelen voor abonnementen.
 
-## <a name="create-a-new-support-request"></a><a id="newquota"></a>Een nieuwe ondersteunings aanvraag maken
+## <a name="create-a-new-support-request"></a><a id="newquota"></a> Een nieuwe ondersteunings aanvraag maken
 
 Gebruik de volgende stappen om een nieuwe ondersteunings aanvraag te maken op basis van de Azure Portal voor SQL Database.
 
@@ -56,7 +56,7 @@ Gebruik de volgende stappen om een nieuwe ondersteunings aanvraag te maken op ba
 
 Als u op **Enter Details** klikt, wordt het venster **quotum Details** weer gegeven waarin u aanvullende informatie kunt toevoegen. In de volgende secties vindt u een beschrijving van de verschillende opties voor **SQL database** en SQL database het quotum type **Managed instance** .
 
-## <a name="sql-database-quota-types"></a><a id="sqldbquota"></a>SQL Database quotum typen
+## <a name="sql-database-quota-types"></a><a id="sqldbquota"></a> SQL Database quotum typen
 
 In de volgende secties worden de quota verhogings opties voor de quotum typen **SQL database** beschreven:
 
@@ -93,7 +93,7 @@ Gebruik de volgende stappen om een verhoging van het aantal servers per abonneme
 
 Zie [SQL database resource limieten en resource governance](resource-limits-logical-server.md)voor meer informatie.
 
-### <a name="enable-subscription-access-to-a-region"></a><a id="region"></a>Abonnements toegang tot een regio inschakelen
+### <a name="enable-subscription-access-to-a-region"></a><a id="region"></a> Abonnements toegang tot een regio inschakelen
 
 Sommige aanbiedings typen zijn niet beschikbaar in elke regio. Er wordt mogelijk een fout bericht weer geven, zoals het volgende:
 
@@ -107,9 +107,9 @@ Als uw abonnement toegang moet hebben in een bepaalde regio, selecteert u de opt
 
 1. Voer het **aankoop model**in en **verwachte verbruiks** gegevens.
 
-   ![Toegang tot de aanvraag regio](./media/quota-increase-request/quota-details-whitelisting.png)
+   ![Toegang tot de aanvraag regio](./media/quota-increase-request/quota-request.png)
 
-### <a name="enable-m-series-access-to-a-region"></a><a id="mseries"></a>M-Series toegang tot een regio inschakelen
+### <a name="enable-m-series-access-to-a-region"></a><a id="mseries"></a> M-Series toegang tot een regio inschakelen
 
 Als u hardware van de M-serie wilt inschakelen voor een abonnement en regio, moet een ondersteunings aanvraag worden geopend.
 
@@ -118,9 +118,9 @@ Als u hardware van de M-serie wilt inschakelen voor een abonnement en regio, moe
 1. Selecteer in de lijst **Selecteer een locatie** de Azure-regio die u wilt gebruiken. Het quotum is per abonnement in elke regio.
 
 
-   ![Toegang tot de aanvraag regio](./media/quota-increase-request/quota-m-series.png)
+   ![Toegang tot regio's uit de M-serie aanvragen](./media/quota-increase-request/quota-m-series.png)
 
-## <a name="sql-managed-instance-quota-type"></a><a id="sqlmiquota"></a>Quota type voor SQL-beheerd exemplaar
+## <a name="sql-managed-instance-quota-type"></a><a id="sqlmiquota"></a> Quota type voor SQL-beheerd exemplaar
 
 Voer de volgende stappen uit voor het quota type **SQL Managed instance** :
 

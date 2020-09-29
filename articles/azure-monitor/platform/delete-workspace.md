@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: ba079e76ea806bb12bff16eb636d0fa21b0e152b
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 292e446d5b713a43f77ee5e579d7e6dd5905ff69
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461728"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448532"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>Azure Log Analytics-werk ruimte verwijderen en herstellen
 
@@ -47,7 +47,7 @@ U kunt een werk ruimte verwijderen met behulp van [Power shell](/powershell/modu
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
 2. Selecteer in de Azure-portal de optie **Alle services**. Typ in de lijst met resources **Log Analytics**. Als u begint te typen, wordt de lijst gefilterd op basis van uw invoer. Selecteer **Log Analytics-werkruimten**.
-3. Selecteer een werk ruimte in de lijst met Log Analytics-werk ruimten en klik vervolgens op **verwijderen** boven in het middelste deel venster.
+3. Selecteer een werk ruimte in de lijst met Log Analytics-werk ruimten en klik vervolgens op **verwijderen**  boven in het middelste deel venster.
 4. Er wordt een bevestigings pagina weer gegeven waarin de gegevens opname in de afgelopen week wordt weer gegeven in de werk ruimte. Typ de naam van de werk ruimte die u wilt bevestigen en klik vervolgens op **verwijderen**.
 
    ![Verwijderen van werk ruimte bevestigen](media/delete-workspace/workspace-delete.png)
@@ -78,7 +78,7 @@ U kunt uw werk ruimte herstellen tijdens de tijdelijke periode, inclusief gegeve
 - Abonnements-id
 - Naam resourcegroep
 - Werkruimtenaam
-- Regio
+- Region
 
 ### <a name="azure-portal"></a>Azure Portal
 
@@ -86,11 +86,11 @@ U kunt uw werk ruimte herstellen tijdens de tijdelijke periode, inclusief gegeve
 2. Selecteer in de Azure-portal de optie **Alle services**. Typ in de lijst met resources **Log Analytics**. Als u begint te typen, wordt de lijst gefilterd op basis van uw invoer. Selecteer **Log Analytics-werkruimten**. U ziet de lijst met werk ruimten die u in het geselecteerde bereik hebt.
 3. Klik in het menu linksboven op **herstellen** om een pagina met werk ruimten in de status zacht verwijderen te openen die kan worden hersteld.
 
-   ![Werk ruimte herstellen](media/delete-workspace/recover-menu.png)
+   ![Scherm opname van het Log Analytics werk ruimten in Azure Portal met de optie herstellen gemarkeerd op de menu balk.](media/delete-workspace/recover-menu.png)
 
 4. Selecteer de werk ruimte en klik op **herstellen** om de werk ruimte te herstellen.
 
-   ![Werk ruimte herstellen](media/delete-workspace/recover-workspace.png)
+   ![Scherm opname van het dialoog venster Verwijderde Log Analytics werk ruimten herstellen in Azure Portal waarbij een werk ruimte is gemarkeerd en de knop herstellen is geselecteerd.](media/delete-workspace/recover-workspace.png)
 
 
 ### <a name="powershell"></a>PowerShell

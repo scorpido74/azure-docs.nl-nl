@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 6390180052cb21bb0d2230a066b9f10d4eb99ca1
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: da0eeafc9d92bf08a2475d7676f1da8a4fa30da5
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447338"
+ms.locfileid: "91461389"
 ---
-# <a name="file-integrity-monitoring-in-azure-security-center"></a>Bestandsintegriteit bewaken in Azure Security Center
+# <a name="file-integrity-monitoring-in-azure-security-center"></a>Controle van bestands integriteit in Azure Security Center
 Meer informatie over het configureren van FIM (File Integrity Monitoring) in Azure Security Center met behulp van deze procedure.
 
 
@@ -31,7 +31,7 @@ Meer informatie over het configureren van FIM (File Integrity Monitoring) in Azu
 |Release status:|Algemeen beschikbaar (GA)|
 |Koers|[Azure Defender voor servers](defender-for-servers-introduction.md) vereist|
 |Vereiste rollen en machtigingen:|**Eigenaar van de werk ruimte** kan FIM inschakelen/uitschakelen (Zie [Azure-rollen voor log Analytics](https://docs.microsoft.com/services-hub/health/azure-roles#azure-roles)) voor meer informatie.<br>**Lezer** kan resultaten weer geven.|
-|Clouds|![Ja](./media/icons/yes-icon.png) Commerciële Clouds<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![Nee](./media/icons/no-icon.png) China gov, andere gov|
+|Clouds|![Ja ](./media/icons/yes-icon.png) commerciële Clouds<br>![Ja ](./media/icons/yes-icon.png) US gov<br>![Geen ](./media/icons/no-icon.png) China gov, andere gov<br>Wordt alleen ondersteund in regio's waar de oplossing voor het bijhouden van wijzigingen van Azure Automation beschikbaar is.<br>Zie [ondersteunde regio's voor gekoppelde log Analytics-werk ruimte](../automation/how-to/region-mappings.md).<br>[Meer informatie over het bijhouden van wijzigingen](../automation/change-tracking.md) |
 |||
 
 
@@ -95,45 +95,43 @@ Security Center biedt de volgende lijst met aanbevolen items die moeten worden b
 |||HKLM\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile|
 
 
-## <a name="using-file-integrity-monitoring"></a>Bestands integriteit controleren
+## <a name="enable-file-integrity-monitoring"></a>Controle van bestands integriteit inschakelen 
 
-1. Open het dash board van **Azure Defender** .
+1. Selecteer in het gebied **geavanceerde beveiliging** van het **Azure Defender** -dash board de optie **Bestands integriteit controleren**.
 
-1. Selecteer in het gebied **geavanceerde beveiliging** de optie **Bestands integriteit controleren**.
+   :::image type="content" source="./media/security-center-file-integrity-monitoring/open-file-integrity-monitoring.png" alt-text="FIM starten" lightbox="./media/security-center-file-integrity-monitoring/open-file-integrity-monitoring.png":::
 
-    :::image type="content" source="./media/security-center-file-integrity-monitoring/open-file-integrity-monitoring.png" alt-text="FIM starten" lightbox="./media/security-center-file-integrity-monitoring/open-file-integrity-monitoring.png":::
+    De pagina configuratie van **Bestands integriteit controleren** wordt geopend.
+
+    De volgende informatie wordt gegeven voor elke werk ruimte:
+
+    - Het totale aantal wijzigingen dat is opgetreden in de afgelopen week (mogelijk ziet u een streepje '-' als FIM niet is ingeschakeld op de werk ruimte)
+    - Totaal aantal computers en Vm's die aan de werk ruimte rapporteren
+    - Geografische locatie van de werk ruimte
+    - Azure-abonnement waarvan de werk ruimte zich bevindt
+
+1. Gebruik deze pagina voor het volgende:
+
+    - De status en instellingen van elke werk ruimte openen en weer geven
+
+    - ![Pictogram upgrade plan ][4] de werk ruimte voor het gebruik van Azure Defender bijwerken. Dit pictogram geeft aan dat de werk ruimte of het abonnement niet is beveiligd met Azure Defender. Uw abonnement moet worden beveiligd met Azure Defender om de FIM-functies te kunnen gebruiken. [Meer informatie](security-center-pricing.md).
+
+    - ![Pictogram inschakelen][3] Schakel FIM in op alle computers onder de werk ruimte en configureer de FIM-opties. Dit pictogram geeft aan dat FIM niet is ingeschakeld voor de werk ruimte-gebruik deze knop om het volgende te doen:
+
+        :::image type="content" source="./media/security-center-file-integrity-monitoring/workspace-list-fim.png" alt-text="FIM starten":::
 
 
-    **Controle van bestands integriteit** wordt geopend.
-    ![Dashboard van Security Center][2]
+    > [!TIP]
+    > Als er geen knop inschakelen of bijwerken is en de ruimte leeg is, betekent dit dat FIM al is ingeschakeld voor de werk ruimte.
 
-De volgende informatie wordt gegeven voor elke werk ruimte:
 
-- Het totale aantal wijzigingen dat is opgetreden in de afgelopen week (mogelijk ziet u een streepje '-' als FIM niet is ingeschakeld op de werk ruimte)
-- Totaal aantal computers en Vm's die aan de werk ruimte rapporteren
-- Geografische locatie van de werk ruimte
-- Azure-abonnement waarvan de werk ruimte zich bevindt
+1. Selecteer **inschakelen**. De details van de werk ruimte, inclusief het aantal Windows-en Linux-computers onder de werk ruimte, worden weer gegeven.
 
-De volgende knoppen kunnen ook worden weer gegeven voor een werk ruimte:
-
-- ![Pictogram inschakelen][3] Geeft aan dat FIM niet is ingeschakeld voor de werk ruimte. Als u de werk ruimte selecteert, kunt u FIM inschakelen op alle computers onder de werk ruimte.
-- ![Pictogram upgrade plan][4] Geeft aan dat de werk ruimte of het abonnement niet wordt beveiligd door Azure Defender. Als u de FIM-functie wilt gebruiken, moet uw abonnement worden beveiligd door Azure Defender.  Als u de werk ruimte selecteert, kunt u een upgrade uitvoeren.
-- Een leeg (er is geen knop) betekent dat FIM al is ingeschakeld in de werk ruimte.
-
-Onder **File Integrity Monitoring**kunt u een werk ruimte selecteren om FIM voor die werk ruimte in te scha kelen, het dash board bestands integriteit controleren voor die werk ruimte te bekijken of de werk ruimte bij te [werken](security-center-pricing.md) om Azure Defender te gebruiken.
-
-## <a name="enable-fim"></a>FIM inschakelen
-FIM inschakelen op een werk ruimte:
-
-1. Selecteer onder **Bestands integriteit controleren**een werk ruimte met de knop **inschakelen** .
-
-1. **Bestands integriteit controleren** wordt geopend met de weer gave van het aantal Windows-en Linux-machines onder de werk ruimte.
-
-   ![Controle van bestands integriteit inschakelen][5]
+    :::image type="content" source="./media/security-center-file-integrity-monitoring/workspace-fim-status.png" alt-text="FIM starten":::
 
    De aanbevolen instellingen voor Windows en Linux worden ook vermeld.  Vouw **Windows-bestanden**, het **REGI ster**en de **Linux-bestanden** uit om de volledige lijst met aanbevolen items weer te geven.
 
-1. Schakel alle aanbevolen entiteiten uit waarop u FIM niet wilt Toep assen.
+1. Schakel de selectie vakjes uit voor de aanbevolen entiteiten die u niet wilt bewaakt door FIM.
 
 1. Selecteer **Bestands integriteit controleren Toep assen** om FIM in te scha kelen.
 
@@ -141,10 +139,12 @@ FIM inschakelen op een werk ruimte:
 > U kunt de instellingen op elk gewenst moment wijzigen. Zie de onderstaande [bewaakte entiteiten bewerken](#edit-monitored-entities) voor meer informatie.
 
 
-## <a name="view-the-fim-dashboard"></a>Het FIM-dash board weer geven
+
+## <a name="audit-monitored-workspaces"></a>Gecontroleerde werk ruimten controleren 
+
 Het dash board **Bestands integriteits controle** wordt weer gegeven voor werk ruimten waarin FIM is ingeschakeld. Het FIM-dash board wordt geopend nadat u FIM hebt ingeschakeld in een werk ruimte of wanneer u een werk ruimte selecteert in het venster **Bestands integriteit controle** waarvoor FIM is ingeschakeld.
 
-![Dash board bestands integriteit controleren][6]
+:::image type="content" source="./media/security-center-file-integrity-monitoring/fim-dashboard.png" alt-text="FIM starten":::
 
 In het FIM-dash board voor een werk ruimte worden de volgende details weer gegeven:
 
@@ -153,11 +153,11 @@ In het FIM-dash board voor een werk ruimte worden de volgende details weer gegev
 - Een uitsplitsing van het wijzigings type (bestanden, REGI ster)
 - Een uitsplitsing van een wijzigings categorie (gewijzigd, toegevoegd, verwijderd)
 
-Als u op Filter boven aan het dash board selecteert, kunt u de periode Toep assen waarvoor u wijzigingen wilt zien.
+Selecteer **filter** aan de bovenkant van het dash board om de tijds periode te wijzigen waarvoor wijzigingen worden weer gegeven.
 
-![Tijds periode filter][7]
+:::image type="content" source="./media/security-center-file-integrity-monitoring/dashboard-filter.png" alt-text="FIM starten":::
 
-Op het tabblad **computers** (zie hierboven) wordt een lijst weer gegeven met alle computers die aan deze werk ruimte rapporteren. Voor elke machine worden de volgende dashboard lijsten weer gegeven:
+Op het tabblad **servers** worden de computers weer gegeven die aan deze werk ruimte rapporteren. Voor elke machine worden de volgende dashboard lijsten weer gegeven:
 
 - Totaal aantal wijzigingen dat is opgetreden tijdens de geselecteerde periode
 - Een uitsplitsing van de totale wijzigingen als bestands wijzigingen of register wijzigingen
@@ -260,11 +260,9 @@ In dit artikel hebt u geleerd hoe u de File Integrity Monitoring (FIM) in Securi
 
 <!--Image references-->
 [1]: ./media/security-center-file-integrity-monitoring/security-center-dashboard.png
-[2]: ./media/security-center-file-integrity-monitoring/file-integrity-monitoring.png
 [3]: ./media/security-center-file-integrity-monitoring/enable.png
 [4]: ./media/security-center-file-integrity-monitoring/upgrade-plan.png
 [5]: ./media/security-center-file-integrity-monitoring/enable-fim.png
-[6]: ./media/security-center-file-integrity-monitoring/fim-dashboard.png
 [7]: ./media/security-center-file-integrity-monitoring/filter.png
 [8]: ./media/security-center-file-integrity-monitoring/log-search.png
 [9]: ./media/security-center-file-integrity-monitoring/changes-tab.png
