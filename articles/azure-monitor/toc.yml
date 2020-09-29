@@ -292,7 +292,7 @@
               href: log-query/query-optimization.md
             - name: Tekstgegevens parseren
               href: log-query/parse-text.md
-        - name: Werkruimten
+        - name: Werkruimten en clusters
           items:
             - name: Een werkruimte-implementatie ontwerpen
               href: platform/design-logs-deployment.md
@@ -312,6 +312,8 @@
               href: platform/service-providers.md
             - name: Toegang beheren
               href: platform/manage-access.md
+            - name: Toegewezen clusters
+              href: log-query/logs-dedicated-clusters.md
     - name: Metrics-explorer
       items:
         - name: Aan de slag met Metrics Explorer

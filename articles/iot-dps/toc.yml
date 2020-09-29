@@ -46,7 +46,7 @@
         - name: Inrichten voor multitenancy
           href: how-to-provision-multitenant.md
         - name: Aangepast toewijzingsbeleid gebruiken
-          href: how-to-use-custom-allocation-policies.md
+          href: tutorial-custom-allocation-policies.md
 - name: Voorbeelden
   items:
     - name: Voorbeeld van een gesimuleerde TPM-apparaatbevestiging
@@ -109,6 +109,8 @@
   items:
     - name: MXChip IoT DevKit verbinden met IoT Hub
       href: how-to-connect-mxchip-iot-devkit.md
+    - name: Apparaten inrichten met aangepast toewijzingsbeleid
+      href: how-to-use-custom-allocation-policies.md
     - name: Device Provisioning Service beheren
       items:
         - name: Inschrijvingen beheren - Portal

@@ -16,12 +16,12 @@ ms.date: 07/22/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b79a631ba82d0b4a420ef27684e5a62571ddf85a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e58a98f8503c271eec113298a7e7a0cab5e0003e
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87034573"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707489"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Zelfstudie: Uw eerste toegangspakket maken in Azure AD-rechtenbeheer
 
@@ -41,6 +41,8 @@ In deze zelfstudie leert u het volgende:
 Bekijk de volgende video voor een stapsgewijze demonstratie van het proces voor het implementeren van Azure Active Directory-rechtenbeheer, inclusief het maken van uw eerste toegangspakket:
 
 >[!VIDEO https://www.youtube.com/embed/zaaKvaaYwI4]
+
+U kunt een toegangspakket ook programmatisch maken met behulp van Microsoft Graph. Raadpleeg [Rechtenbeheer-API](https://docs.microsoft.com/graph/tutorial-access-package-api?view=graph-rest-beta) voor een zelfstudie waarin wordt uitgelegd hoe u automatisch een toegangspakket maakt.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -106,7 +108,7 @@ Een *toegangspakket* is een bundel resources die een team of project nodig heeft
 
 9. Zoek en selecteer in het deelvenster Groepen selecteren de groep **Marketingresources** die u eerder hebt gemaakt.
 
-    Standaard ziet u groepen binnen en buiten de catalogus **Algemeen**. Wanneer u een groep buiten de catalogus **Algemeen** selecteert, wordt deze toegevoegd aan de catalogus **Algemeen**.
+     Standaard ziet u groepen binnen de catalogus Algemeen. Wanneer u een groep buiten de catalogus Algemeen selecteert, zoals u kunt zien als u het selectievakje **Alles weergeven** inschakelt, wordt deze toegevoegd aan de catalogus Algemeen.
 
     ![Nieuw toegangspakket - tabblad Resourcerollen](./media/entitlement-management-access-package-first/resource-roles-select-groups.png)
 

@@ -6,18 +6,18 @@ author: JBCook
 ms.service: virtual-machines
 ms.subservice: workloads
 ms.topic: overview
-ms.date: 04/06/2020
+ms.date: 09/22/2020
 ms.author: JenCook
-ms.openlocfilehash: 4e92f974ce7d6c03143276808c4ca4d09d607a84
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 16f45c39a329998f4b4da4ea89315683a0fab790
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835813"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967588"
 ---
 # <a name="confidential-computing-on-azure"></a>Confidential Computing op Azure
 
-Met Azure Confidential Computing kunt u uw gevoelige gegevens isoleren terwijl deze worden verwerkt in de cloud. Veel branches gebruiken confidential computing om hun gegevens te beveiligen. Deze werkbelastingen zijn onder andere:
+Met Azure Confidential Computing kunt u uw gevoelige gegevens isoleren terwijl deze worden verwerkt in de cloud. Veel branches gebruiken confidential computing om hun gegevens te beveiligen. Confidential computing wordt gebruikt voor:
 
 - Beveiliging van financiële gegevens
 - Bescherming van patiëntgegevens
@@ -39,74 +39,58 @@ We weten dat het beveiligen van uw cloudgegevens belangrijk is. We kennen uw zor
 
 Microsoft Azure helpt u om de kwetsbaarheid voor aanvallen te beperken voor betere gegevensbescherming. Azure biedt al veel hulpprogramma's om [**data-at-rest-** ](../security/fundamentals/encryption-atrest.md) te beschermen via modellen zoals versleuteling aan clientzijde en versleuteling aan serverzijde. Daarnaast biedt Azure mechanismen voor het versleutelen van [**gegevens in overdracht**](../security/fundamentals/data-encryption-best-practices.md#protect-data-in-transit) via beveiligde protocollen zoals TLS en HTTPS. Op deze pagina maakt u kennis met een derde element van gegevensversleuteling: de versleuteling van **gegevens in gebruik**.
 
+## <a name="introduction-to-confidential-computing"></a>Inleiding tot confidential computing 
 
-## <a name="introduction-to-confidential-computing"></a>Inleiding tot confidential computing<a id="intro to acc"></a>
+Confidential computing is een industriële term die is gedefinieerd door het [Confidential Computing Consortium](https://confidentialcomputing.io/) (CCC), een stichting die zich toelegt op het definiëren en versnellen van de acceptatie van confidential computing. Het CCC definieert confidential computing als: De beveiliging van gegevens in gebruik door berekeningen uit te voeren in een hardware-gebaseerde TEE (Trust Execution Environment).
 
-Confidential computing is een industriële term die is gedefinieerd door het [Confidential Computing Consortium](https://confidentialcomputing.io/) (CCC), een stichting die zich toelegt op het definiëren en versnellen van de acceptatie van confidential computing. Het CCC definieert Confidential Computing als de beveiliging van gegevens in gebruik door berekeningen uit te voeren in een hardware-gebaseerde TEE (Trust Execution Environment).
+Een TEE is een omgeving die de uitvoering afdwingt van alleen geautoriseerde code. Gegevens in de TEE kunnen niet worden gelezen of gemanipuleerd door code buiten die omgeving. 
 
-Een TEE is een omgeving die de uitvoering afdwingt van alleen geautoriseerde code. Gegevens in de TEE kunnen niet worden gelezen of gemanipuleerd door code buiten die omgeving.
+### <a name="lessen-the-need-for-trust"></a>De behoefte aan vertrouwen beperken
+Voor het uitvoeren van werkbelastingen in de cloud is vertrouwen vereist. U geeft deze vertrouwensrelatie aan verschillende providers die verschillende onderdelen van uw toepassing inschakelen.
 
-### <a name="enclaves"></a>Enclaves
 
-Enclaves zijn beveiligde delen van de processor en het geheugen van een hardware. Gegevens of code in een enclave kunnen niet worden weergegeven, zelfs niet met een foutopsporingsprogramma. Als niet-vertrouwde code probeert de inhoud in een enclavegeheugen te wijzigen, wordt de omgeving uitgeschakeld en worden de bewerkingen geweigerd.
+**Leveranciers van app-software**: Vertrouw software door on-premises te implementeren met behulp van open-source of door interne toepassingssoftware te bouwen.
 
-Bij het ontwikkelen van toepassingen kunt u [softwarehulpprogramma's](#oe-sdk) gebruiken om delen van uw code en gegevens in de enclave af te schermen. Met deze hulpprogramma's kunt u ervoor zorgen dat uw code en gegevens niet kunnen worden weergegeven of gewijzigd door iemand buiten de vertrouwde omgeving. 
+**Hardware-leveranciers**: Vertrouw hardware door gebruik te maken van on-premises hardware of interne hardware. 
 
-Eigenlijk kunt u een enclave beschouwen als een soort beveiligde doos. U plaatst versleutelde code en gegevens in de doos. Vanaf de buitenkant ziet u niets. U geeft de enclave een sleutel waarmee de gegevens kunnen worden ontsleuteld, waarna de gegevens worden verwerkt en opnieuw worden versleuteld voordat ze vanuit de enclave worden verzonden.
+**Infrastructuur-providers**: Vertrouw cloudproviders of beheer uw eigen on-premises datacenters.
 
-### <a name="attestation"></a>Attestation
 
-U wilt verificatie en validatie ontvangen dat uw vertrouwde omgeving veilig is. Deze verificatie is het proces van Attestation. 
+Met Azure confidential computing is het gemakkelijker om de cloudprovider te vertrouwen door de noodzaak van vertrouwen in verschillende aspecten van de cloudinfrastructuur te verminderen. Azure confidential computing beperkt de vertrouwensrelatie voor de host OS-kernel, de hypervisor, de VM-beheerder en de host-beheerder.
 
-Met Attestation kan een Relying Party meer vertrouwen krijgen dat hun software (1) wordt uitgevoerd in een enclave en (2) dat de enclave up-to-date en beveiligd is. Een enclave vraagt bijvoorbeeld de onderliggende hardware om een referentie te genereren die het bewijs levert dat de enclave op het platform bestaat. Het rapport kan vervolgens worden doorgegeven aan een tweede enclave die controleert of het rapport op hetzelfde platform is gegenereerd.
+### <a name="reducing-the-attack-surface"></a>De kwetsbaarheid voor aanvallen verminderen
+De Trusted Computing Base (TCB) verwijst naar alle hardware-, firmware- en softwareonderdelen van het systeem die een beveiligde omgeving bieden. De onderdelen in de TCB worden als kritiek beschouwd. Als er een fout is opgetreden in het ene onderdeel in de TCB, kan de beveiliging van het hele systeem worden gekraakt. 
 
-Attestation moet worden geïmplementeerd met behulp van een beveiligde attestation-service die compatibel is met de systeemsoftware en silicon. [De attestation- en inrichtingsservices van Intel](https://software.intel.com/sgx/attestation-services) zijn compatibel met virtuele machines voor Azure Confidential Computing.
+Een lagere TCB betekent een betere beveiliging. Er is minder risico voor blootstelling aan verschillende beveiligingsproblemen, malware, aanvallen en kwaadaardige personen. Azure Confidential Computing is erop gericht de TCB voor uw werkbelastingen in de cloud te verlagen door TEE’s te bieden. TEE’s verminderen uw TCB tot binaire bestanden voor vertrouwde runtime, code en bibliotheken. Wanneer u Azure-infrastructuur en -services gebruikt voor confidential computing, kunt u alle Microsoft-elementen uit uw TCB verwijderen.
 
 
 ## <a name="using-azure-for-cloud-based-confidential-computing"></a>Azure gebruiken voor confidential computing in de cloud<a id="cc-on-azure"></a>
 
-Met Azure Confidential Computing kunt u de mogelijkheden van confidential computing in een gevirtualiseerde omgeving gebruiken. U kunt nu hulpprogramma's, software en cloudinfrastructuur gebruiken om te bouwen op veilige hardware. 
+Met Azure Confidential Computing kunt u de mogelijkheden van confidential computing in een gevirtualiseerde omgeving gebruiken. U kunt nu hulpprogramma's, software en cloudinfrastructuur gebruiken om te bouwen op veilige hardware.  
 
-### <a name="virtual-machines"></a>Virtuele machines
+**Toegang door onbevoegden voorkomen**: Voer gevoelige gegevens uit in de Cloud. Vertrouw erop dat Azure de best mogelijke gegevensbescherming biedt, met weinig tot geen wijzigingen van wat er vandaag wordt gedaan.
 
-Azure is de eerste cloudprovider die confidential computing biedt in een gevirtualiseerde omgeving. We hebben virtuele machines ontwikkeld die als een abstractielaag tussen de hardware en uw toepassing fungeren. U kunt workloads uitvoeren op schaal en met de opties voor redundantie en beschikbaarheid.  
+**Naleving van regelgeving**: Migreer naar de cloud en behoud het volledige beheer van de gegevens om te voldoen aan de wettelijke voorschriften voor het beschermen van persoonlijke gegevens en het beveiligen van organisatie-IP.
 
-#### <a name="intel-sgx-enabled-virtual-machines"></a>Virtuele machines met Intel SGX
+**Beveiligde en niet-vertrouwde samenwerking**: Bewaak problemen die in de hele organisatie worden geschaald door gegevens samen te zetten in organisaties, zelfs in concurrenten, om brede gegevensanalyses en meer inzichten te ontgrendelen.
 
-In virtuele machines met Azure Confidential Computing wordt een deel van de hardware van de CPU gereserveerd voor een deel van de code en gegevens in uw toepassing. Dit beperkte gedeelte is het enclave. 
+**Geïsoleerde verwerking**: Bied een nieuwe golf aan producten die de aansprakelijkheid van privégegevens met blinde verwerking elimineren. Gebruikersgegevens kunnen zelfs niet worden opgehaald door de serviceprovider. 
 
-![VM-model](media/overview/hardware-backed-enclave.png)
+## <a name="get-started"></a>Aan de slag
+### <a name="azure-compute"></a>Azure Compute
+Bouw toepassingen boven op de IaaS-aanbiedingen voor confidential computing in Azure.
+- Virtuele machines (VM's): [DCsv2-serie](confidential-computing-enclaves.md)
+- Azure Kubernetes (AKS): [Vertrouwelijke containers organiseren](confidential-nodes-aks-overview.md)
 
-De infrastructuur van Azure Confidential Computing bestaat momenteel uit een speciale SKU van virtuele machines (VM's). Deze VM's worden uitgevoerd op Intel-processors met Software Guard Extension (Intel SGX). [Intel SGX-](https://intel.com/sgx) is het onderdeel dat de verhoogde beveiliging mogelijk maakt die in confidential computing wordt toegepast. 
+### <a name="azure-security"></a>Azure-beveiliging 
+Zorg ervoor dat uw werkbelastingen zijn beveiligd via verificatiemethoden en door aan hardware gebonden sleutelbeheer. 
+- Attestation: [Microsoft Azure Attestation (preview)](https://docs.microsoft.com/azure/attestation/overview)
+- Sleutelbeheer: Beheerde HSM (preview)
 
-Nu biedt Azure de [DCsv2-serie](https://docs.microsoft.com/azure/virtual-machines/dcv2-series) die is gebouwd op Intel SGX-technologie voor het maken van een hardware-enclave. U kunt veilige enclavetoepassingen bouwen om uit te voeren op VM's uit de DCsv2-serie, om uw toepassingsgegevens en -code in gebruik te beveiligen. 
-
-U kunt [meer lezen](virtual-machine-solutions.md) over de implementatie van virtuele machines met Azure Confidential Computing met vertrouwde hardware-enclaves.
-
-## <a name="application-development"></a>Toepassingsontwikkeling<a id="application-development"></a>
-
-Als u de kracht van enclaves en geïsoleerde omgevingen wilt gebruiken, hebt u hulpprogramma's nodig die confidential computing ondersteunen. Er zijn verschillende hulpprogramma's die ondersteuning bieden voor de ontwikkeling van enclavetoepassingen. U kunt bijvoorbeeld deze open-source frameworks gebruiken: 
-
-- [The Open Enclave Software Development Kit (SDK)](https://github.com/openenclave/openenclave)
-- [The Confidential Consortium Framework (CCF)](https://github.com/Microsoft/CCF)
-
-### <a name="overview"></a>Overzicht
-
-Een toepassing die is gebouwd met enclaves, wordt op twee manieren gepartitioneerd:
-1. Een 'niet-vertrouwd' onderdeel (de host)
-1. Een 'vertrouwd' onderdeel (de enclave)
-
-**De host** is waar overheen uw enclavetoepassing wordt uitgevoerd; het is een niet-vertrouwde omgeving. De enclavecode die op de host is geïmplementeerd, kan niet worden geopend door de host. 
-
-**De enclave** is waar de toepassingscode en de gegevens in de cache/het geheugen worden uitgevoerd. Beveiligde berekeningen moeten in de enclaves worden uitgevoerd om ervoor te zorgen dat geheimen en gevoelige gegevens beveiligd blijven. 
-
-Tijdens het toepassingsontwerp is het belangrijk om te identificeren en te bepalen welk gedeelte van de toepassing moet worden uitgevoerd in de enclaves. De code die u in het vertrouwde onderdeel wilt plaatsen, is geïsoleerd van de rest van uw toepassing. Zodra de enclave is geïnitialiseerd en de code in het geheugen wordt geladen, kan de code niet worden gelezen of gewijzigd vanuit de niet-vertrouwde onderdelen. 
-
-### <a name="open-enclave-software-development-kit-oe-sdk"></a>Open Enclave Software Development Kit (OE SDK) <a id="oe-sdk"></a>
-
-Gebruik een bibliotheek die of framework dat door uw provider wordt ondersteund als u code wilt schrijven die in een enclave wordt uitgevoerd. De [Open Enclave SDK](https://github.com/openenclave/openenclave) (OE SDK) is een open-source SDK die abstractie mogelijk maakt over verschillende apparaten met confidential computing-functionaliteit. 
-
-De OE SDK is gebouwd als één abstractielaag op willekeurige hardware en willekeurige CSP. De OE SDK kan worden gebruikt over virtuele machines met Azure Confidential Computing heen om toepassingen op enclaves te maken en uit te voeren.
+### <a name="develop"></a>Ontwikkelen
+Begin met het gebruik van het ontwikkelen van enclave toepassingen en het implementeren van vertrouwelijke algoritmen met behulp van het raamwerk voor vertrouwelijke deductie.
+- Toepassingen schrijven om op DCsv2-VM's te worden uitgevoerd: [Open enclave-SDK](https://github.com/openenclave/openenclave)
+- Vertrouwelijke ML-modellen in ONNX runtime: [Vertrouwelijke deductie (beta)](https://aka.ms/confidentialinference)
 
 ## <a name="next-steps"></a>Volgende stappen
 

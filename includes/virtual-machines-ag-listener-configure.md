@@ -4,93 +4,93 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 73ba78eca710f0b98b2a209494519cb8003e554b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: fd635d4c0563c35979f8d85c33dfbde35f05f9e6
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75466872"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91401073"
 ---
-De beschikbaarheids groep-listener is een IP-adres en netwerk naam waarop de SQL Server beschikbaarheids groep luistert. Ga als volgt te werk om de beschikbaarheids groep-listener te maken:
+De listener voor de beschikbaarheidsgroep is een IP-adres en netwerknaam waarnaar de SQL Server-beschikbaarheidsgroep luistert. Doe het volgende om de listener voor de beschikbaarheidsgroep te maken:
 
-1. <a name="getnet"></a>Haal de naam van de cluster netwerk bron op.
+1. <a name="getnet"></a>Haal de naam op van het de clusternetwerkresource.
 
-    a. Gebruik RDP om verbinding te maken met de virtuele Azure-machine die als host fungeert voor de primaire replica. 
+    a. Gebruik RDP om verbinding te maken met de Azure-VM die de primaire replica host. 
 
-    b. Open Failoverclusterbeheer.
+    b. Failoverclusterbeheer openen.
 
-    c. Selecteer het knoop punt **netwerken** en noteer de naam van het cluster netwerk. Gebruik deze naam in de `$ClusterNetworkName` variabele in het Power shell-script. In de volgende afbeelding is de cluster netwerk naam **cluster netwerk 1**:
+    c. Selecteer het knooppunt **Netwerken** en noteer de naam van het clusternetwerk. Gebruik deze naam in de variabele `$ClusterNetworkName` in het PowerShell-script. In de volgende afbeelding is de naam van het clusternetwerk **Clusternetwerk 1**:
 
-   ![Cluster netwerk naam](./media/virtual-machines-ag-listener-configure/90-clusternetworkname.png)
+   ![Naam van het clusternetwerk](./media/virtual-machines-ag-listener-configure/90-clusternetworkname.png)
 
-1. <a name="addcap"></a>Voeg het client toegangs punt toe.  
-    Het client toegangs punt is de netwerk naam die toepassingen gebruiken om verbinding te maken met de data bases in een beschikbaarheids groep. Maak het client toegangs punt in Failoverclusterbeheer.
+1. <a name="addcap"></a>Voeg het clienttoegangspunt toe.  
+    Het clienttoegangspunt is de netwerknaam die toepassingen gebruiken om verbinding te maken met de databases in een beschikbaarheidsgroep. Maak het clienttoegangspunt in Failoverclusterbeheer.
 
-    a. Vouw de cluster naam uit en klik vervolgens op **rollen**.
+    a. Vouw de clusternaam uit en klik vervolgens op **Rollen**.
 
-    b. Klik in het deel venster **functies** met de rechter muisknop op de naam van de beschikbaarheids groep en selecteer vervolgens **bron**  >  **Client Access Point**toevoegen.
+    b. Klik in het deelvenster **Rollen** met de rechtermuisknop op de beschikbaarheidsgroepnaam en selecteer **Resource toevoegen** > **Clienttoegangspunt**.
 
-   ![Client toegangs punt](./media/virtual-machines-ag-listener-configure/92-addclientaccesspoint.png)
+   ![Schermopname die de menuoptie Clienttoegangspunt weergeeft.](./media/virtual-machines-ag-listener-configure/92-addclientaccesspoint.png)
 
-    c. Maak in het vak **naam** een naam voor deze nieuwe listener. 
-   De naam voor de nieuwe listener is de netwerk naam die toepassingen gebruiken om verbinding te maken met data bases in de SQL Server beschikbaarheids groep.
+    c. Maak in het venster **Naam** een naam voor deze nieuwe listener. 
+   De naam van de nieuwe listener is de netwerknaam die toepassingen gebruiken om verbinding te maken met databases in de SQL Server-beschikbaarheidsgroep.
 
-    d. Klik twee keer op **volgende** en klik vervolgens op **volt ooien**om het maken van de listener te volt ooien. Zet de listener of bron op dit punt niet online.
+    d. Klik twee keer op **Volgende** en nog een keer op **Voltooien** om de listener te maken. Breng de listener of resource op dit moment nog niet online.
 
-1. Zet de cluster functie voor de beschikbaarheids groep offline. Klik in **Failoverclusterbeheer** onder **rollen**met de rechter muisknop op de rol en selecteer **Stop Role**.
+1. Haal de clusterrol van de beschikbaarheidsgroep offline. Klik in **Failoverclusterbeheer** onder **Rollen** met de rechtermuisknop op de rol en selecteer **Rol stoppen**.
 
-1. <a name="congroup"></a>Configureer de IP-resource voor de beschikbaarheids groep.
+1. <a name="congroup"></a>De IP-resource configureren voor de beschikbaarheidsgroep.
 
-    a. Klik op het tabblad **resources** en vouw vervolgens het client toegangs punt uit dat u hebt gemaakt.  
-    Het client toegangs punt is offline.
+    a. Klik op het tabblad **Resources** en breid vervolgens het clienttoegangspunt uit dat u hebt gemaakt.  
+    Het clienttoegangspunt is offline.
 
-   ![Client toegangs punt](./media/virtual-machines-ag-listener-configure/94-newclientaccesspoint.png) 
+   ![Clienttoegangspunt](./media/virtual-machines-ag-listener-configure/94-newclientaccesspoint.png) 
 
-    b. Klik met de rechter muisknop op de IP-bron en klik vervolgens op Eigenschappen. Noteer de naam van het IP-adres en gebruik het in de `$IPResourceName` variabele in het Power shell-script.
+    b. Klik met de rechtermuisknop op de IP-resource en klik vervolgens op Eigenschappen. Noteer de naam van het IP-adres en gebruik het in de variabele `$IPResourceName` in het PowerShell-script.
 
-    c. Klik onder **IP-adres**op **statisch IP-adres**. Stel het IP-adres in als het adres dat u hebt gebruikt bij het instellen van het load balancer adres op het Azure Portal.
+    c. Klik onder **IP-adres** op **Vast IP-adres**. Stel het IP-adres in op hetzelfde adres dat je hebt gebruikt toen u het adres van de load balancer instelde in de Azure Portal.
 
-   ![IP-bron](./media/virtual-machines-ag-listener-configure/96-ipresource.png) 
+   ![Schermopname dat laat zien waar u het IP-adres hebt ingesteld.](./media/virtual-machines-ag-listener-configure/96-ipresource.png) 
 
     <!-----------------------I don't see this option on server 2016
     1. Disable NetBIOS for this address and click **OK**. Repeat this step for each IP resource if your solution spans multiple Azure VNets. 
     ------------------------->
 
-1. <a name = "dependencyGroup"></a>Zorg ervoor dat de resource van de SQL Server-beschikbaarheids groep afhankelijk is van het client toegangs punt.
+1. <a name = "dependencyGroup"></a>Maak de SQL Server-beschikbaarheidsgroep resourceafhankelijk van het clienttoegangspunt.
 
-    a. Klik in Failoverclusterbeheer op **rollen**en klik vervolgens op uw beschikbaarheids groep.
+    a. Klik in Failoverclusterbeheer op **Rollen** en klik vervolgens op uw beschikbaarheidsgroep.
 
-    b. Klik op het tabblad **resources** onder **andere resources**met de rechter muisknop op de resource groep Beschik baarheid en klik vervolgens op **Eigenschappen**. 
+    b. Klik in het tabblad **Resources** onder **Overige resources** met de rechtermuisknop op de beschikbaarheidsresourcegroep en klik vervolgens op **Eigenschappen**. 
 
-    c. Voeg op het tabblad Afhankelijkheden de naam van het client toegangs punt (de listener) toe.
+    c. Voeg in het tabblad Afhankelijkheden de naam van het clienttoegangspunt toe (de listener).
 
-   ![IP-bron](./media/virtual-machines-ag-listener-configure/97-propertiesdependencies.png) 
+   ![Schermopname die laat zien waar u de naam toevoegt in het tabblad Afhankelijkheden.](./media/virtual-machines-ag-listener-configure/97-propertiesdependencies.png) 
 
     d. Klik op **OK**.
 
-1. <a name="listname"></a>Maak de bron van het client toegangs punt afhankelijk van het IP-adres.
+1. <a name="listname"></a>Maak het clienttoegangspunt afhankelijk van het IP-adres.
 
-    a. Klik in Failoverclusterbeheer op **rollen**en klik vervolgens op uw beschikbaarheids groep. 
+    a. Klik in Failoverclusterbeheer op **Rollen** en klik vervolgens op uw beschikbaarheidsgroep. 
 
-    b. Klik op het tabblad **resources** met de rechter muisknop op de bron van het client toegangs punt onder **Server naam**en klik vervolgens op **Eigenschappen**. 
+    b. Klik in het tabblad **Resources** met de rechtermuisknop op het clienttoegangspunt onder **Servernaam** en klik vervolgens op **Eigenschappen**. 
 
-   ![IP-bron](./media/virtual-machines-ag-listener-configure/98-dependencies.png) 
+   ![Schermopname die de menuoptie Eigenschappen weergeeft voor de servernaam.](./media/virtual-machines-ag-listener-configure/98-dependencies.png) 
 
-    c. Klik op het tabblad **afhankelijkheden** . Controleer of het IP-adres afhankelijk is. Als dat niet het geval is, stelt u een afhankelijkheid op het IP-adres in. Als er meerdere bronnen worden weer gegeven, controleert u of de IP-adressen of, niet en, afhankelijkheden hebben. Klik op **OK**. 
+    c. Klik op het tabblad **Afhankelijkheden**. Verifieer dat het IP-adres een afhankelijkheid is. Als dat niet zo is, stelt u een afhankelijkheid in op het IP-adres. Als er meerdere resources zijn vermeld, verifieert u dat de IP-adressen OF-afhankelijkheden hebben, niet EN-afhankelijkheden. Klik op **OK**. 
 
-   ![IP-bron](./media/virtual-machines-ag-listener-configure/98-propertiesdependencies.png) 
+   ![IP-resource](./media/virtual-machines-ag-listener-configure/98-propertiesdependencies.png) 
 
     >[!TIP]
-    >U kunt controleren of de afhankelijkheden correct zijn geconfigureerd. Ga in Failoverclusterbeheer naar rollen, klik met de rechter muisknop op de beschikbaarheids groep, klik op **meer acties**en klik vervolgens op **afhankelijkheids rapport weer geven**. Wanneer de afhankelijkheden correct zijn geconfigureerd, is de beschikbaarheids groep afhankelijk van de netwerk naam en de netwerk naam is afhankelijk van het IP-adres. 
+    >U kunt controleren of de afhankelijkheden correct zijn geconfigureerd. Ga in Failoverclusterbeheer naar Rollen, klik met de rechtermuisknop op de beschikbaarheidsgroep, klik op **Meer acties** en klik vervolgens op **Afhankelijkheidsrapport weergeven**. Wanneer de afhankelijkheden correct zijn geconfigureerd, is de beschikbaarheidsgroep afhankelijk van de netwerknaam en is de netwerknaam afhankelijk van het IP-adres. 
 
 
-1. <a name="setparam"></a>Stel de cluster parameters in Power shell in.
+1. <a name="setparam"></a>Stel de clusterparameters in PowerShell in.
 
-   a. Kopieer het volgende Power shell-script naar een van uw SQL Server-exemplaren. Werk de variabelen voor uw omgeving bij.
+   a. Kopieer het volgende PowerShell-script naar een van uw SQL Server-exemplaren. Werk de variabelen voor uw omgeving bij.
 
-   - `$ListenerILBIP`is het IP-adres dat u hebt gemaakt in de Azure-load balancer voor de beschikbaarheids groep-listener.
+   - `$ListenerILBIP` is het IP-adres dat u hebt gemaakt in de Azure load balancer voor de listener voor de beschikbaarheidsgroep.
     
-   - `$ListenerProbePort`is de poort die u hebt geconfigureerd op de Azure-load balancer voor de beschikbaarheids groep-listener.
+   - `$ListenerProbePort` is de poort die u hebt geconfigureerd in de Azure load balancer voor de listener voor de beschikbaarheidsgroep.
 
    ```powershell
    $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
@@ -103,28 +103,28 @@ De beschikbaarheids groep-listener is een IP-adres en netwerk naam waarop de SQL
    Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ListenerILBIP";"ProbePort"=$ListenerProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
    ```
 
-   b. Stel de cluster parameters in door het Power shell-script uit te voeren op een van de cluster knooppunten.  
+   b. Stel de clusterparameters in door het PowerShell-script uit te voeren in een van de clusterknooppunten.  
 
    > [!NOTE]
-   > Als uw SQL Server instanties zich in verschillende regio's bevinden, moet u het Power shell-script twee keer uitvoeren. De eerste keer gebruikt u de `$ListenerILBIP` en `$ListenerProbePort` uit de eerste regio. De tweede keer gebruikt u de `$ListenerILBIP` en `$ListenerProbePort` van de tweede regio. De cluster netwerk naam en de naam van het cluster-IP-adres zijn ook verschillend voor elke regio.
+   > Als uw SQL Server-exemplaren zich in een andere regio bevinden, moet u het PowerShell-script twee keer uitvoeren. De eerste keer gebruikt u de `$ListenerILBIP` en `$ListenerProbePort` van de eerste regio. De tweede keer gebruikt u de `$ListenerILBIP` en `$ListenerProbePort` van de tweede regio. De clusternetwerknaam en de IP-resourcenaam van het cluster zijn ook verschillend voor elke regio.
 
-1. Breng de cluster functie voor de beschikbaarheids groep online. Klik in **Failoverclusterbeheer** onder **rollen**met de rechter muisknop op de rol en selecteer **rol starten**.
+1. Breng de clusterrol van de beschikbaarheidsgroep online. Klik in **Failoverclusterbeheer** onder **Rollen** met de rechtermuisknop op de rol en selecteer **Rol starten**.
 
-Herhaal indien nodig de bovenstaande stappen om de cluster parameters in te stellen voor het IP-adres van het WSFC-cluster.
+Herhaal indien nodig de bovenstaande stappen om de clusterparameters in te stellen voor het IP-adres van het WSFC-cluster.
 
-1. Haal de IP-adres naam van het IP-adres van het WSFC-cluster op. Zoek in **Failoverclusterbeheer** onder **cluster kern resources**naar **Server naam**.
+1. Haal de IP-adresnaam van het IP-adres van het WSFC-cluster op. Zoek in **Failoverclusterbeheer** onder **Clustercoreresources** naar de **Servernaam**.
 
-1. Klik met de rechter muisknop op **IP-adres**en selecteer **Eigenschappen**.
+1. Klik met de rechtermuisknop op **IP-adres** en selecteer **Eigenschappen**.
 
-1. Kopieer de **naam** van het IP-adres. Het kan zijn `Cluster IP Address` . 
+1. Kopieer de **Naam** van het IP-adres. Dat kan `Cluster IP Address` zijn. 
 
-1. <a name="setwsfcparam"></a>Stel de cluster parameters in Power shell in.
+1. <a name="setwsfcparam"></a>Stel de clusterparameters in PowerShell in.
   
-   a. Kopieer het volgende Power shell-script naar een van uw SQL Server-exemplaren. Werk de variabelen voor uw omgeving bij.
+   a. Kopieer het volgende PowerShell-script naar een van uw SQL Server-exemplaren. Werk de variabelen voor uw omgeving bij.
 
-   - `$ClusterCoreIP`is het IP-adres dat u hebt gemaakt op de Azure-load balancer voor de WSFC-kern cluster bron. Het verschilt van het IP-adres voor de listener van de beschikbaarheids groep.
+   - `$ClusterCoreIP` is het IP-adres dat u hebt gemaakt in de Azure load balancer voor de WSFC-coreclusterresource. Het verschilt van het IP-adres voor de beschikbaarheidsgroeplistener.
 
-   - `$ClusterProbePort`is de poort die u hebt geconfigureerd op de Azure-load balancer voor de WSFC-status test. Dit wijkt af van de test voor de beschikbaarheids groep-listener.
+   - `$ClusterProbePort` is de poort die u hebt geconfigureerd in de Azure load balancer voor de WSFC-statustest. Het verschilt van de test voor de beschikbaarheidsgroeplistener.
 
    ```powershell
    $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
@@ -137,7 +137,7 @@ Herhaal indien nodig de bovenstaande stappen om de cluster parameters in te stel
    Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ClusterCoreIP";"ProbePort"=$ClusterProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
    ```
 
-   b. Stel de cluster parameters in door het Power shell-script uit te voeren op een van de cluster knooppunten.  
+   b. Stel de clusterparameters in door het PowerShell-script uit te voeren in een van de clusterknooppunten.  
 
 >[!WARNING]
->De status test poort van de listener voor de beschikbaarheids groep moet verschillen van de status test poort van het cluster kern IP-adres. In deze voor beelden is de listener-poort 59999 en de status test poort van het cluster kern IP-adres is 58888. Beide poorten vereisen een regel voor binnenkomende Firewall toestaan.
+>De poort voor de statustest van de beschikbaarheidsgroeplistener moet anders zijn dan de poort van het IP-adres voor de statustest van de clustercore. In deze voorbeelden is de listenerpoort 59999 en is de poort voor de statustest van het IP-adres 58888. Voor beide poorten is een firewallregel nodig waarin binnenkomend verkeer wordt toegestaan.

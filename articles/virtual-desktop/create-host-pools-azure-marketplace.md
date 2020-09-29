@@ -3,15 +3,15 @@ title: Windows Virtual Desktop, hostgroep, Azure portal - Azure
 description: Een Windows Virtual Desktop-hostgroep maken met behulp van de Azure-portal.
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 09/01/2020
+ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b6d54c226dd3a156ff6164f87fc755aac3dd040c
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: da944f74fd6214e1b69a3ee7d230e72accd4e2e4
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89322582"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084359"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Zelfstudie: Een hostpool maken met de Azure-portal
 
@@ -188,6 +188,13 @@ Ga als volgt te werk om de bureaubladtoepassingsgroep te registreren bij een wer
      - Een downloadkoppeling voor een Azure Resource Management-sjabloon op basis van uw configuratie.
 
 Daarna bent u klaar.
+
+## <a name="run-the-azure-resource-manager-template-to-provision-a-new-host-pool"></a>De Azure Resource Manager-sjabloon uitvoeren om een nieuwe hostgroep in te richten
+
+Als u liever gebruikmaakt van een geautomatiseerd proces, kunt u [onze Azure Resource Manager-sjabloon downloaden](https://github.com/Azure/RDS-Templates/tree/master/ARM-wvd-templates) om uw nieuwe hostgroep in te richten.
+
+>[!NOTE]
+>Als u een geautomatiseerd proces gebruikt om uw omgeving te bouwen, hebt u de nieuwste versie van het JSON-configuratiebestand nodig. Het JSON-bestand is [hier](https://wvdportalstorageblob.blob.core.windows.net/galleryartifacts?restype=container&comp=list) te vinden.
 
 ## <a name="next-steps"></a>Volgende stappen
 

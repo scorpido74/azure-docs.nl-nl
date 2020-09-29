@@ -4,12 +4,16 @@
   items:
     - name: Wat is Service Fabric?
       href: service-fabric-overview.md
-- name: Snelstartgidsen
+    - name: Beheerde Service Fabric-clusters
+      href: overview-managed-cluster.md
+- name: Quickstarts
   expanded: true
   items:
     - name: ARM-sjabloon
       displayName: Resource Manager
       href: quickstart-cluster-template.md
+    - name: Beheerd cluster
+      href: quickstart-managed-cluster-template.md
     - name: Een .NET-toepassing maken
       href: service-fabric-quickstart-dotnet.md
     - name: Een Linux-containertoepassing implementeren
@@ -64,6 +68,16 @@
           href: service-fabric-tutorial-package-containers.md
         - name: 3 - Failover uitvoeren en schalen
           href: service-fabric-tutorial-containers-failover.md
+    - name: Een beheerd Service Fabric-cluster maken
+      items:
+        - name: 1- Een beheerd Service Fabric-cluster implementeren
+          href: tutorial-managed-cluster-deploy.md
+        - name: 2- Een beheerd clusterknooppunttype uitschalen
+          href: tutorial-managed-cluster-scale.md
+        - name: 3- Een beheerd clusterknooppunttype toevoegen en verwijderen
+          href: tutorial-managed-cluster-add-remove-node-type.md
+        - name: 4- Verbinding maken met een beheerd cluster en een toepassing implementeren
+          href: tutorial-managed-cluster-deploy-app.md
     - name: Een cluster maken en beheren
       items:
         - name: 1 - Een cluster maken in Azure
@@ -155,7 +169,7 @@
           items:
             - name: 'Containers: overzicht'
               href: service-fabric-containers-overview.md
-            - name: Docker Compose (preview)
+            - name: Docker-compose
               href: service-fabric-docker-compose.md
             - name: Tests
               href: probes-codepackage.md
@@ -430,7 +444,7 @@
               href: service-fabric-deploy-existing-app.md
         - name: Een containerservice bouwen
           items:
-            - name: Docker Compose (preview)
+            - name: Docker-compose
               href: service-fabric-docker-compose.md
             - name: Volume en stuurprogramma's voor logboekregistratie
               href: service-fabric-containers-volume-logging-drivers.md
@@ -509,7 +523,7 @@
                   href: service-fabric-application-secret-management-windows.md
                 - name: Een versleutelingscertificaat instellen en geheimen versleutelen op Linux
                   href: service-fabric-application-secret-management-linux.md
-                - name: Geheimen veilig opslaan met KeyVaultReference (preview)
+                - name: Geheimen veilig opslaan met KeyVaultReference
                   href: service-fabric-keyvault-references.md
             - name: Omgekeerde proxy voor veilige communicatie configureren
               href: service-fabric-reverseproxy-configure-secure-communication.md
@@ -675,6 +689,8 @@
                   href: service-fabric-how-to-remove-node-type.md
             - name: Upgraden
               items:
+                - name: Een VM-schaalsetextensie toevoegen aan een beheerd clusterknooppunttype
+                  href: how-to-managed-cluster-vmss-extension.md
                 - name: De Service Fabric-versie upgraden
                   href: service-fabric-cluster-upgrade-version-azure.md
                 - name: De clusterconfiguratie upgraden
@@ -901,6 +917,8 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Veelgestelde vragen
       href: service-fabric-common-questions.md
+    - name: Algemene vragen over beheerde Service Fabric-clusters
+      href: faq-managed-cluster.md
     - name: Microsoft Q&A-vragenpagina
       href: /answers/topics/azure-service-fabric.html
     - name: Implementatiebescherming voor Azure Resource Manager

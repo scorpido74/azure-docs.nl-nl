@@ -3,18 +3,18 @@ title: Documentatie voor Microsoft Identity Platform
 summary: Het Microsoft Identity Platform bestaat uit een verificatieservice, opensourcebibliotheken en hulpprogramma's voor toepassingsbeheer. Leer hoe u moderne, op standaarden gebaseerde verificatieoplossingen maakt met onze quickstarts, zelfstudies en codevoorbeelden. Bouw toepassingen waarbij uw gebruikers en klanten zich aanmelden met hun Microsoft-identiteiten of sociale accounts en toegang verkrijgen tot uw API's of Microsoft-API's, zoals Microsoft Graph.
 metadata:
   ms.topic: landing-page
-  ms.date: 08/11/2020
+  ms.date: 09/26/2020
   author: mmacy
   ms.author: marsma
   ms.service: active-directory
   ms.subservice: develop
   ms.workload: identity
-  ms.openlocfilehash: c0f87da61b0fa2d4aed57eeef7ee9829a17d0f80
-  ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+  ms.openlocfilehash: d80d722594e717319bda473e2cb86551acc8d9f0
+  ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 09/25/2020
-  ms.locfileid: "91258367"
+  ms.lasthandoff: 09/28/2020
+  ms.locfileid: "91403140"
 landingContent:
 - title: Over het Microsoft Identity Platform
   linkLists:
@@ -64,8 +64,8 @@ landingContent:
       url: quickstart-v2-aspnet-webapp.md
     - text: ASP.NET Core
       url: quickstart-v2-aspnet-core-webapp.md
-    - text: Python
-      url: quickstart-v2-python-webapp.md
+    - text: Blazor Server
+      url: tutorial-blazor-server.md
 - title: Mobiele/systeemeigen apps
   linkLists:
   - linkListType: get-started
@@ -120,6 +120,8 @@ landingContent:
   linkLists:
   - linkListType: whats-new
     links:
+    - text: 'Zelfstudie: Blazor Server'
+      url: tutorial-blazor-server.md
     - text: 'Quickstart: Een ASP.NET Core-web-API beveiligen'
       url: quickstart-v2-aspnet-core-web-api.md
     - text: MSAL Python-API-verwijzing
@@ -136,5 +138,3 @@ landingContent:
       url: msal-android-handling-exceptions.md
     - text: Kenmerken van directory-schema-extensies in claims
       url: active-directory-schema-extensions.md
-    - text: MSAL.js 2.0-verificatiecode + PKCE & CORS
-      url: quickstart-v2-javascript-auth-code.md

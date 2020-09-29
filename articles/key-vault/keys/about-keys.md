@@ -1,25 +1,37 @@
 ---
-title: Over Azure Key Vault-sleutels - Azure Key Vault
+title: Over sleutels - Azure Key Vault
 description: Overzicht van REST-interface van Azure Key Vault en detailinformatie over sleutels voor ontwikkelaars.
 services: key-vault
-author: msmbaldwin
-manager: rkarlin
+author: amitbapat
+manager: msmbaldwin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: overview
-ms.date: 09/04/2019
-ms.author: mbaldwin
-ms.openlocfilehash: b9803726bf3a54eb31d3c2ebaddce11fb96472be
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.date: 09/15/2020
+ms.author: ambapat
+ms.openlocfilehash: 29930a835297b0ddd3a91534dab9ccb6d74896e3
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85413720"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90967545"
 ---
-# <a name="about-azure-key-vault-keys"></a>Over Azure Key Vault-sleutels
+# <a name="about-keys"></a>Over sleutels
 
-Azure Key Vault biedt ondersteuning voor meerdere sleutels en algoritmes, en maakt het gebruik van HSM (Hardware Security Modules) mogelijk voor sleutels met een hoge waarde.
+Azure Key Vault biedt twee soorten resources voor het opslaan en beheren van cryptografische sleutels:
+
+|Resourcetype|Methoden voor sleutelbeveiliging|Basis-URL van het eindpunt van het gegevensvlak|
+|--|--|--|
+| **Kluizen** | Met software beveiligd<br/><br/>en<br/><br/>met HSM beveiligd (met Premium SKU)</li></ul> | https://{vault-name}.vault.azure.net |
+| **Beheerde HSM-pools** | HSM-beveiligd | https://{hsm-name}.managedhsm.azure.net |
+||||
+
+- **Kluizen** - Kluizen bieden een goedkope, eenvoudig te implementeren, multi-tenant, zone-flexibele (indien beschikbaar), maximaal beschikbare oplossing voor sleutelbeheer die geschikt is voor de meeste veelvoorkomende scenario's voor cloudtoepassingen.
+- **Beheerde HSM's** - Beheerde HSM biedt één tenant, zone-flexibele (indien beschikbaar), maximaal beschikbare HSM's voor het opslaan en beheren van uw cryptografische sleutels. Het meest geschikt voor toepassingen en gebruiksscenario's die hoogwaardige sleutels verwerken. Helpt u ook voldoen aan de strengste vereisten voor beveiliging, naleving en regelgeving. 
+
+> [!NOTE]
+> Met kluizen kunt u naast cryptografische sleutels ook verschillende typen objecten opslaan en beheren, zoals geheimen, certificaten en sleutels voor opslagaccounts.
 
 Cryptografische sleutels in Key Vault worden weergegeven als JWK-objecten (JSON Web Key). De specificaties voor JavaScript Object Notation (JSON) en JavaScript Object Signing and Encryption (JOSE) zijn:
 
@@ -28,30 +40,49 @@ Cryptografische sleutels in Key Vault worden weergegeven als JWK-objecten (JSON 
 -   [JSON Web Algorithms (JWA)](http://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms)  
 -   [JSON Web Signature (JWS)](https://tools.ietf.org/html/draft-ietf-jose-json-web-signature) 
 
-De basisspecificaties van JWK/JWA worden ook uitgebreid om sleuteltypen mogelijk te maken die uniek zijn voor de Key Vault-implementatie. Zo is bij het importeren van sleutels met behulp van een pakket van een specifieke HSM-leverancier, beveiligd transport van sleutels mogelijk die alleen kunnen worden gebruikt in Key Vault-HSM's. 
+De basisspecificaties van JWK/JWA worden ook uitgebreid om sleuteltypen mogelijk te maken die uniek zijn voor de Azure Key Vault-implementatie en beheerde HSM-implementatie. 
 
-Azure Key Vault ondersteunt zowel met software beveiligde als met HSM beveiligde sleutels:
+Met HSM-beveiligde sleutels (ook wel HSM-sleutels genoemd) worden verwerkt in een HSM (Hardware Security Module) en behouden altijd de grens van de HSM-beveiliging. 
 
-- **Met software beveiligde sleutels**: Een sleutel die in software wordt verwerkt door Key Vault, maar is versleuteld met behulp van een systeemsleutel die zich in een HSM bevindt. Clients kunnen een bestaande RSA- of EC-sleutel (Elliptic Curve, elliptische kromme) importeren of een aanvraag indienen om er een te laten genereren door Key Vault.
-- **Met HSM-beveiligde sleutels**: Een sleutel die wordt verwerkt in een HSM (Hardware Security Module). Deze sleutels zijn beveiligd in een van de HSM-beveiligingswerelden voor Key Vault (er is één beveiligingswereld per geografie om isolatie te behouden). Clients kunnen een RSA- of EC-sleutel importeren in een met software beveiligde vorm of een sleutel exporteren vanaf een compatibel HSM-apparaat. Clients kunnen ook een aanvraag indienen om een sleutel te laten genereren door Key Vault. Met dit sleuteltype voegt u het kenmerk key_hsm toe aan de JWK als drager voor het HSM-sleutelmateriaal.
+- Kluizen gebruiken **FIPS 140-2 Level 2** gevalideerde HSM's om HSM-sleutels in gedeelde HSM-backend-infrastructuur te beschermen. 
+- Beheerde HSM-pools maken gebruik van **FIPS 140-2 Level 3** gevalideerde HSM-modules om sleutels te beschermen. Elke HSM-pool is een geïsoleerd single-tenant exemplaar met een eigen [beveiligingsdomein](../managed-hsm/security-domain.md) dat volledige cryptografische isolatie biedt van alle andere HSM-pools die dezelfde hardware-infrastructuur delen.
 
-Zie [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/privacy/) voor meer informatie over geografische grenzen  
+Deze sleutels worden beveiligd in HSM-groepen van één tenant. U een RSA-, EC- en symmetrische sleutel importeren, in zachte vorm of door te exporteren vanaf een ondersteund HSM-apparaat. U kunt ook sleutels genereren in HSM-pools. Wanneer u HSM-sleutels importeert met behulp van de-methode die wordt beschreven in de specificatie [BYOK (uw eigen sleutel gebruiken)](../keys/byok-specification.md), wordt het sleutelmateriaal voor beveiligd transport in beheerde HSM-pools ingeschakeld. 
 
-## <a name="cryptographic-protection"></a>Cryptografische beveiliging
+Zie [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/privacy/) voor meer informatie over geografische grenzen
 
-Key Vault ondersteunt alleen RSA- en EC-sleutels. 
+## <a name="key-types-protection-methods-and-algorithms"></a>Sleuteltypes, beschermingsmethoden en algoritmen
 
--   **EC**: Met software beveiligde Elliptic Curve-sleutel.
--   **EC-HSM**: 'Harde' Elliptic Curve-sleutel.
--   **RSA**: Met software beveiligde RSA-sleutel.
--   **RSA-HSM**: 'Harde' RSA-sleutel.
+Key Vault ondersteunt RSA, EC en symmetrische sleutels. 
 
-Key Vault ondersteunt RSA-sleutels met een grootte van 2048, 3072 en 4096 bits. Key Vault ondersteunt EC-sleutels van het type P-256, P-384, P-521 en P-256K (SECP256K1).
+### <a name="hsm-protected-keys"></a>HSM-beveiligde sleutels
 
-De cryptografische modules die Key Vault gebruikt, via een HSM of software, voldoen aan de FIPS-normen (Federal Information Processing Standards). U hoeft niets speciaals te doen om modules uit te voeren in de FIPS-modus. Sleutels die worden **gemaakt** of **geïmporteerd** als met HSM beveiligd, worden verwerkt in een HSM, die voldoet aan FIPS 140-2 Level 2. Sleutels die worden **gemaakt** of **geïmporteerd** als met software beveiligd, worden verwerkt in cryptografische modules, die voldoen aan FIPS 140-2 Level 1.
+|Type sleutel|Kluizen (alleen premium SKU)|Beheerde HSM-pools|
+|--|--|--|--|
+**EC-HSM**: Elliptic Curve-sleutel|FIPS 140-2 Level 2 HSM|FIPS 140-2 Level 3 HSM
+**RSA-HSM**: RSA-sleutel|FIPS 140-2 Level 2 HSM|FIPS 140-2 Level 3 HSM
+**oct-HSM**: Symmetrisch|Niet ondersteund|FIPS 140-2 Level 3 HSM
+||||
+
+### <a name="software-protected-keys"></a>Met software beveiligde sleutels
+
+|Type sleutel|Kluizen|Beheerde HSM-pools|
+|--|--|--|--|
+**RSA**: Met software beveiligde RSA-sleutel|FIPS 140-2 Level 1|Niet ondersteund
+**EC**: Met software beveiligde Elliptic Curve-sleutel|FIPS 140-2 Level 1|Niet ondersteund
+||||
+
+### <a name="supported-algorithms"></a>Ondersteunde algoritmen
+
+|Sleuteltypen/grootten/curven| Encrypt, decrypt<br>(Wrap/Unwrap) | sign, verify | 
+| --- | --- | --- |
+|EC-P256, EC-P256K, EC-P384, EC-521|NA|ES256<br>ES256K<br>ES384<br>ES512|
+|RSA 2K, 3K, 4K| RSA1_5<br>RSA-OAEP<br>RSA-OAEP-256|PS256<br>PS384<br>PS512<br>RS256<br>RS384<br>PS512<br>RSNULL| 
+|AES 128-bit, 256-bit| AES-KW<br>AES-GCM<br>AES-CBC| NA| 
+|||
 
 ###  <a name="ec-algorithms"></a>EC-algoritmen
- De volgende algoritme-id's worden ondersteund met EC- en EC-HSM-sleutels in Key Vault. 
+ De volgende algoritme-id's worden ondersteund met EC- en HSM-sleutels
 
 #### <a name="curve-types"></a>Curvetypen
 
@@ -68,12 +99,13 @@ De cryptografische modules die Key Vault gebruikt, via een HSM of software, vold
 -   **ES512**: ECDSA voor SHA-512-hashes en -sleutels die zijn gemaakt met curve P-512. Dit algoritme wordt beschreven op [RFC7518](https://tools.ietf.org/html/rfc7518).
 
 ###  <a name="rsa-algorithms"></a>RSA-algoritmen  
- De volgende algoritme-id's worden ondersteund met RSA- en RSA-HSM-sleutels in Key Vault.  
+ De volgende algoritme-id's worden ondersteund met RSA- en RSA-HSM-sleutels  
 
 #### <a name="wrapkeyunwrapkey-encryptdecrypt"></a>WRAPKEY/UNWRAPKEY, ENCRYPT/DECRYPT
 
 -   **RSA1_5**: RSAES-PKCS1-V1_5 [RFC3447] sleutelversleuteling  
 -   **RSA-OAEP**: RSAES met behulp van Optimal Asymmetric Encryption Padding (OAEP) [RFC3447], met de standaardparameters die worden beschreven bij RFC 3447 in sectie A.2.1. Deze standaardparameters maken gebruik van een hash-functie van SHA-1 en een maskergenereerfunctie van MGF1 met SHA-1.  
+-  **RSA-OAEP-256** – RSAES met behulp van optimale asymmetrische versleutelingsopvulling met een hashfunctie van SHA-256 en een maskergeneratiefunctie van MGF1 met SHA-256
 
 #### <a name="signverify"></a>SIGN/VERIFY
 
@@ -83,11 +115,19 @@ De cryptografische modules die Key Vault gebruikt, via een HSM of software, vold
 -   **RS256**: RSASSA-PKCS-v1_5 met behulp van SHA-256. De door de toepassing geleverde hash-waarde moet worden berekend met SHA-256 en moet 32 bytes lang zijn.  
 -   **RS384**: RSASSA-PKCS-v1_5 met behulp van SHA-384. De door de toepassing geleverde hash-waarde moet worden berekend met SHA-384 en moet 48 bytes lang zijn.  
 -   **RS512**: RSASSA-PKCS-v1_5 met behulp van SHA-512. De door de toepassing geleverde hash-waarde moet worden berekend met SHA-512 en moet 64 bytes lang zijn.  
--   **RSNULL**: zie [RFC2437], een gespecialiseerde use-case om bepaalde TLS-scenario's in te schakelen.  
+-   **RSNULL**: zie [RFC2437](https://tools.ietf.org/html/rfc2437), een gespecialiseerde use-case om bepaalde TLS-scenario's in te schakelen.  
+
+###  <a name="symmetric-key-algorithms"></a>Symmetrische sleutelalgoritmen
+- **AES-KW** - AES Key Wrap ([RFC3394](https://tools.ietf.org/html/rfc3394)).
+- **AES-GCM** -AES-versleuteling in de Galois Counter-modus ([NIST SP800-38d](https://csrc.nist.gov/publications/sp800))
+- **AES-GCM** -AES-versleuteling in blokversleutingsmodus ([NIST SP800-38d](https://csrc.nist.gov/publications/sp800))
+
+> [!NOTE] 
+> Huidige AES-GCM-implementatie en de bijbehorende API's zijn experimenteel. De implementatie en de API's kunnen aanzienlijk veranderen in de toekomstige iteraties. 
 
 ##  <a name="key-operations"></a>Sleutelbewerkingen
 
-Key Vault ondersteunt de volgende bewerkingen op sleutelobjecten:  
+Beheerd HSM ondersteunt de volgende bewerkingen op sleutelobjecten:  
 
 -   **Maken**: Hiermee kan een client een sleutel maken in Key Vault. De waarde van de sleutel wordt gegenereerd en opgeslagen in Key Vault, en wordt niet vrijgegeven aan de client. Er kunnen asymmetrische sleutels worden gemaakt in Key Vault.  
 -   **Importeren**: Hiermee kan een client een bestaande sleutel importeren in Key Vault. Er kunnen asymmetrische sleutels worden geïmporteerd in Key Vault met behulp van een aantal verschillende pakketmethoden in een JWK-constructie. 
@@ -142,8 +182,8 @@ Zie [JSON Web Key (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-ke
 
 U kunt aanvullende toepassingsspecifieke metagegevens opgeven in de vorm van tags. Key Vault ondersteunt maximaal 15 tags, die elk een naam van 256 tekens en een waarde van 256 tekens kunnen bevatten.  
 
->[!Note]
->Labels kunnen worden gelezen door een oproepende functie als ze de machtiging *list* (weergeven) of *get* (ophalen) voor dat objecttype (sleutels, geheimen of certificaten) hebben.
+> [!NOTE] 
+> Labels kunnen worden gelezen door een oproepende functie als ze de machtiging *list* (weergeven) of *get* (ophalen) voor die sleutel hebben.
 
 ##  <a name="key-access-control"></a>Toegangsbeheer voor sleutels
 
@@ -176,10 +216,10 @@ De volgende machtigingen kunnen worden toegekend per gebruiker of service-princi
 Raadpleeg de [Sleutelbewerkingen in de REST API-naslag voor Key Vault](/rest/api/keyvault) voor meer informatie over het werken met sleutels. Raadpleeg [Kluizen: maken of bijwerken](/rest/api/keyvault/vaults/createorupdate) en [Kluizen: toegangsbeleid bijwerken](/rest/api/keyvault/vaults/updateaccesspolicy) voor meer informatie over het instellen van machtigingen. 
 
 ## <a name="next-steps"></a>Volgende stappen
-
 - [Informatie over Key Vault](../general/overview.md)
-- [Informatie over sleutels, geheimen en certificaten](../general/about-keys-secrets-certificates.md)
+- [Informatie over beheerde HSM](../managed-hsm/overview.md)
 - [Over geheimen](../secrets/about-secrets.md)
 - [Over certificaten](../certificates/about-certificates.md)
+- [Overzicht REST-API voor Key Vault](../general/about-keys-secrets-certificates.md)
 - [Verificatie, aanvragen en antwoorden](../general/authentication-requests-and-responses.md)
 - [Gids voor Key Vault-ontwikkelaars](../general/developers-guide.md)

@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Samanage | Microsoft Docs'
-description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Samanage.
+title: 'Zelfstudie: Azure Active Directory-integratie met SolarWinds Service Desk (voorheen Samanage) | Microsoft Docs'
+description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en SolarWinds Service Desk (voorheen Samanage).
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -11,20 +11,20 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
-ms.openlocfilehash: 56018ff0be07a48cf9448b9b92de5694ebac18bc
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8d4c19e1ce10ed618cda167cd6fa7efedf4111d0
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543496"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90707574"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-samanage"></a>Zelfstudie: Azure Active Directory-integratie met Samanage
+# <a name="tutorial-azure-active-directory-integration-with-solarwinds-service-desk-previously-samanage"></a>Zelfstudie: Azure Active Directory-integratie met SolarWinds Service Desk (voorheen Samanage)
 
-In deze zelfstudie leert u hoe u Samanage kunt integreren met Azure Active Directory (Azure AD).
-De integratie van Samanage met Azure AD heeft de volgende voordelen:
+In deze zelfstudie leert u hoe u SolarWinds kunt integreren met Azure Active Directory (Azure AD).
+De integratie van SolarWinds met Azure AD biedt u de volgende voordelen:
 
-* U kunt in Azure AD beheren wie toegang heeft tot Samanage.
-* U kunt uw gebruikers zich automatisch laten aanmelden bij Samanage (eenmalige aanmelding) met hun Azure AD-account.
+* U kunt bepalen in Azure AD wie toegang heeft tot SolarWinds.
+* U kunt inschakelen dat gebruikers automatisch met hun Azure Active Directory-account worden aangemeld bij SolarWinds (eenmalige aanmelding).
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
@@ -32,7 +32,7 @@ Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het configureren van Azure AD-integratie met Samanage hebt u het volgende nodig:
+Voor het configureren van Azure AD-integratie met SolarWinds Service Desk (voorheen Samanage) hebt u het volgende nodig:
 
 * Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/) de proefversie van één maand krijgen.
 * Een abonnement op Samanage waarvoor eenmalige aanmelding is ingeschakeld
@@ -41,15 +41,15 @@ Voor het configureren van Azure AD-integratie met Samanage hebt u het volgende n
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Samanage ondersteunt door **SP** geïnitieerde eenmalige aanmelding (SSO)
+* SolarWinds biedt ondersteuning voor met **SP** geïnitieerde eenmalige aanmelding
 
-## <a name="adding-samanage-from-the-gallery"></a>Samanage toevoegen vanuit de galerie
+## <a name="adding-solarwinds-from-the-gallery"></a>SolarWinds toevoegen uit de galerie
 
-Voor het configureren van de integratie van Samanage in Azure AD moet u Samanage uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Om de integratie van SolarWinds te configureren in Azure AD, moet u SolarWinds vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Voer de volgende stappen uit om Samanage toe te voegen vanuit de galerie:**
+**Voer de volgende stappen uit om SolarWinds vanuit de galerie toe te voegen:**
 
-1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Selecteer **Azure Active Directory** in **[Azure Portal](https://portal.azure.com)** in het navigatiepaneel aan de linkerkant.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -61,31 +61,31 @@ Voor het configureren van de integratie van Samanage in Azure AD moet u Samanage
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ **Samanage** in het zoekvak, selecteer **Samanage** in het resultaatvenster en klik op de knop **Toevoegen** om de toepassing toe te voegen.
+4. Typ in het zoekvak **SolarWinds**, selecteer **SolarWinds** in het deelvenster met resultaten en klik vervolgens op **Toevoegen** om de toepassing toe te voegen.
 
-     ![Samanage in de resultatenlijst](common/search-new-app.png)
+     ![SolarWinds in de resultatenlijst](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie gaat u Azure AD-eenmalige aanmelding met Samanage configureren en testen met behulp van een testgebruiker met de naam **Britta Simon**.
-Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure AD-gebruiker en de daaraan gerelateerde gebruiker in Samanage tot stand is gebracht.
+In deze sectie configureert en test u Azure AD-eenmalige aanmelding met SolarWinds op basis van een testgebruiker met de naam **Britta Simon**.
+Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Microsoft Azure Active Directory-gebruiker en de daaraan gerelateerde gebruiker in SolarWinds tot stand is gebracht.
 
-Als u Azure AD-eenmalige aanmelding met Samanage wilt configureren en testen, moet u de volgende bouwstenen voltooien:
+Als u eenmalige aanmelding van Azure AD met SolarWinds wilt configureren en testen, moet u de volgende stappen uitvoeren:
 
 1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Eenmalige aanmelding voor Samanage configureren](#configure-samanage-single-sign-on)**: als u de instellingen voor eenmalige aanmelding aan de clientzijde wil configureren.
+2. **[Eenmalige aanmelding voor SolarWinds Service Desk configureren](#configure-solarwinds-single-sign-on)** : de instellingen voor eenmalige aanmelding aan de clientzijde configureren.
 3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
 4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Een testgebruiker maken in Samanage](#create-samanage-test-user)**: om in Samanage een tegenhanger van Britta Simon te hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+5. **[Een SolarWinds-testgebruiker maken](#create-solarwinds-test-user)** : als u een equivalent van B.Simon in SolarWinds wilt hebben dat is gekoppeld aan de Azure AD-weergave van de gebruiker.
 6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voor het configureren van Azure AD-eenmalige aanmelding met Samanage moet u de volgende stappen uitvoeren:
+Voer de volgende stappen uit om eenmalige aanmelding in Azure AD te configureren voor SolarWinds:
 
-1. In de [Azure-portal](https://portal.azure.com/) selecteert u **Eenmalige aanmelding** op de integratiepagina van de toepassing **Samanage**.
+1. Selecteer in [Azure Portal](https://portal.azure.com/) op de integratiepagina van de toepassing **SolarWinds** de optie **Eenmalige aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -112,7 +112,7 @@ Voor het configureren van Azure AD-eenmalige aanmelding met Samanage moet u de v
 
     ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
-6. In de sectie **Samanage instellen** kopieert u de juiste URL('s) op basis van uw behoeften.
+6. In de sectie **SolarWinds instellen** kopieert u de juiste URL('s) op basis van uw behoeften.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -122,9 +122,11 @@ Voor het configureren van Azure AD-eenmalige aanmelding met Samanage moet u de v
 
     c. Afmeldings-URL
 
-### <a name="configure-samanage-single-sign-on"></a>Eenmalige aanmelding voor Samanage configureren
+<a name="configure-solarwinds-single-sign-on"></a>
 
-1. Meld u in een ander browservenster aan bij uw Samanage-bedrijfssite als beheerder.
+### <a name="configure-solarwinds-service-desk-single-sign-on"></a>Eenmalige aanmelding voor SolarWinds Service Desk configureren
+
+1. Meld u in een ander browservenster aan bij uw SolarWinds-bedrijfssite als beheerder.
 
 2. Klik op **Dashboard** en selecteer **Setup** in het linker navigatievenster.
    
@@ -150,7 +152,7 @@ Voor het configureren van Azure AD-eenmalige aanmelding met Samanage moet u de v
  
     f. Open in Kladblok het met Base 64 gecodeerde certificaat dat u hebt gedownload uit de Azure-portal, kopieer de inhoud ervan naar het Klembord en plak deze vervolgens in het tekstvak **Paste your Identity Provider x.509 Certificate below**.
  
-    g. Klik op **Create users if they do not exist in Samanage**.
+    g. Klik op **Create users if they do not exist in SolarWinds**.
  
     h. Klik op **Update**.
 
@@ -181,15 +183,13 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige aanmelding met Azure door haar toegang te geven tot Samanage.
+In deze sectie zorgt u ervoor dat Britta Simon eenmalige aanmelding met Azure kan gebruiken door haar toegang te geven tot SolarWinds.
 
-1. Selecteer **Bedrijfstoepassingen** in Azure Portal, selecteer **Alle toepassingen** en selecteer vervolgens **Samanage**.
+1. Selecteer in Azure Portal achtereenvolgens **Bedrijfstoepassingen**, **Alle toepassingen** en **SolarWinds**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer **Samanage** in de lijst met toepassingen.
-
-    ![De koppeling Samanage in de lijst met toepassingen](common/all-applications.png)
+2. Selecteer **SolarWinds** in de lijst met toepassingen.
 
 3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
@@ -205,14 +205,14 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-samanage-test-user"></a>Een testgebruiker maken in Samanage
+### <a name="create-solarwinds-test-user"></a>Een SolarWinds-testgebruiker maken
 
-Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Samanage, moeten ze worden ingericht in Samanage.  
-In het geval van Samanage is inrichten een handmatige taak.
+Als u wilt dat gebruikers van Azure AD zich kunnen aanmelden bij SolarWinds, moeten ze worden ingericht voor SolarWinds.  
+In het geval van SolarWinds is inrichten een handmatige taak.
 
 **Als u een gebruikersaccount wilt inrichten, voert u de volgende stappen uit:**
 
-1. Meld u bij uw Samanage-bedrijfssite aan als beheerder.
+1. Meld u bij uw SolarWinds-bedrijfssite aan als beheerder.
 
 2. Klik op **Dashboard** en selecteer **Setup** in het linker navigatievenster.
    
@@ -231,13 +231,13 @@ In het geval van Samanage is inrichten een handmatige taak.
     ![Create User](./media/samanage-tutorial/tutorial_samanage_008.png "Gebruiker maken")
    
    >[!NOTE]
-   >De houder van het Azure Active Directory-account ontvangt een e-mail en volgt een koppeling om zijn account te bevestigen voordat het actief wordt. U kunt ook alle andere hulpprogramma's voor het creëren van Samanage-gebruikersaccounts of API's van Samanage gebruiken om Azure Active Directory-gebruikersaccounts in te richten.
+   >De houder van het Azure Active Directory-account ontvangt een e-mail en volgt een koppeling om zijn account te bevestigen voordat het actief wordt. U kunt ook alle andere hulpprogramma's voor het creëren van SolarWinds-gebruikersaccounts of API's van SolarWinds gebruiken om Azure Active Directory-gebruikersaccounts in te richten.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de Samanage-tegel in het toegangsvenster klikt, zou u automatisch moeten worden aangemeld bij de instantie van Samanage waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de tegel SolarWinds klikt, wordt u automatisch aangemeld bij de instantie van SolarWinds waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 

@@ -6,14 +6,38 @@ metadata:
   ms.topic: landing-page
   author: erikadoyle
   ms.author: edoyle
-  ms.date: 12/04/2019
-  ms.openlocfilehash: a2651387a425439d09ad68b0e763ff0c6c3f7f27
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.date: 07/31/2020
+  ms.openlocfilehash: 9bce6570cef2703bf1ad63d92c55bb3794927a8b
+  ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "75452214"
+  ms.lasthandoff: 09/28/2020
+  ms.locfileid: "91408698"
 landingContent:
+- title: Beheerde Service Fabric-clusters proberen (preview)
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Wat zijn beheerde Service Fabric-clusters (preview)?
+      url: overview-managed-cluster.md
+    - text: Een beheerd cluster implementeren (preview)
+      url: quickstart-managed-cluster-template.md
+  - linkListType: tutorial
+    links:
+    - text: Een beheerd cluster maken (preview)
+      url: tutorial-managed-cluster-deploy.md
+    - text: Een beheerd clusterknooppunttype uitschalen (preview)
+      url: tutorial-managed-cluster-scale.md
+    - text: Een beheerd clusterknooppunttype toevoegen en verwijderen (preview)
+      url: tutorial-managed-cluster-add-remove-node-type.md
+    - text: Een app implementeren in een beheerd cluster (preview)
+      url: tutorial-managed-cluster-deploy-app.md
+    - text: Een VM-schaalsetextensie toevoegen aan een beheerd clusterknooppunttype (preview)
+      url: how-to-managed-cluster-vmss-extension.md
+  - linkListType: whats-new
+    links:
+    - text: Veelgestelde vragen over beheerde Service Fabric-clusters
+      url: faq-managed-cluster.md
 - title: Over Service Fabric
   linkLists:
   - linkListType: overview
@@ -102,7 +126,7 @@ landingContent:
   linkLists:
   - linkListType: concept
     links:
-    - text: Aanbevolen procedures voor beveiliging
+    - text: Aanbevolen beveiligingsprocedures
       url: service-fabric-best-practices-security.md
     - text: Toepassingsbeveiliging
       url: service-fabric-application-and-service-security.md
