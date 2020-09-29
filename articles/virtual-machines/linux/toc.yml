@@ -311,8 +311,6 @@
           href: compute-benchmark-scores.md
     - name: Goedgekeurde distributies
       href: endorsed-distros.md
-    - name: Toegewezen hosts
-      href: dedicated-hosts.md
     - name: Onderhoud en updates
       href: ../maintenance-and-updates.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: File Storage
@@ -391,11 +389,12 @@
         - name: Een virtuele machine kopiëren of klonen
           href: copy-vm.md
         - name: Toegewezen hosts gebruiken
+          href: ../dedicated-hosts.md
           items:
             - name: CLI
               href: dedicated-hosts-cli.md
             - name: Portal
-              href: dedicated-hosts-portal.md
+              href: ../dedicated-hosts-portal.md
         - name: Spot-VM's implementeren
           items:
             - name: CLI
@@ -858,6 +857,7 @@
         - name: Een beschikbaarheidsset wijzigen
           href: ../windows/change-availability-set.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Een nabijheidsplaatsingsgroep maken
+          displayName: PPG aligned colocation co-location
           items:
             - name: CLI
               href: proximity-placement-groups.md
