@@ -16,12 +16,12 @@ ms.date: 09/16/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 160137ca2d14e0012a524ee0818b7fb269fa7984
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: b7b70e8a408c22be0331bfd0dcbe01830b072ab8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90980247"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449969"
 ---
 # <a name="change-request-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Instellingen voor wijzigings aanvragen voor een toegangs pakket in azure AD-rechts beheer
 
@@ -125,8 +125,8 @@ Volg deze stappen als u wilt toestaan dat gebruikers die geen toegang hebben tot
     |  |  |
     | --- | --- |
     | **Specifieke verbonden organisaties** | Kies deze optie als u een selectie wilt selecteren in een lijst met organisaties die de beheerder eerder heeft toegevoegd. Alle gebruikers van de geselecteerde organisaties kunnen dit toegangs pakket aanvragen. |
-    | **Alle verbonden organisaties** | Kies deze optie als alle gebruikers van alle verbonden organisaties dit toegangs pakket kunnen aanvragen. |
-    | **Alle gebruikers (alle verbonden organisaties en alle nieuwe externe gebruikers)** | Kies deze optie als alle gebruikers van alle verbonden organisaties dit toegangs pakket kunnen aanvragen en de instellingen van de lijst voor het toestaan of weigeren van de B2B-gebruikers prioriteit moeten hebben voor een nieuwe externe gebruiker. |
+    | **Alle geconfigureerde verbonden organisaties** | Kies deze optie als alle gebruikers van alle geconfigureerde verbonden organisaties dit toegangs pakket kunnen aanvragen. Alleen gebruikers van geconfigureerde verbonden organisaties kunnen toegangs pakketten aanvragen die worden weer gegeven voor gebruikers van alle geconfigureerde organisaties. |
+    | **Alle gebruikers (alle verbonden organisaties en alle nieuwe externe gebruikers)** | Kies deze optie als een gebruiker op Internet dit toegangs pakket moet kunnen aanvragen.  Als ze geen deel uitmaken van een verbonden organisatie in uw directory, wordt er automatisch een verbonden organisatie voor hen gemaakt wanneer hij of zij het pakket aanvraagt. De automatisch gemaakte verbonden organisatie krijgt een **voorgestelde** status. Zie [Status eigenschappen van verbonden organisaties](entitlement-management-organization.md#state-properties-of-connected-organizations)voor meer informatie over de voorgestelde status. |
 
     Een verbonden organisatie is een extern Azure AD-adres lijst of-domein waarmee u een relatie hebt.
 

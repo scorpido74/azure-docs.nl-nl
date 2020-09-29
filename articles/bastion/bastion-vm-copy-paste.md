@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: how-to
 ms.date: 05/04/2020
 ms.author: charwen
-ms.openlocfilehash: ad1476847874f7cea53c6e9c0c3d9f142c949dac
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 6835c5e1ecbf0fc99a14754d17bb6e6380eda6c8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987720"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445355"
 ---
 # <a name="copy-and-paste-to-a-virtual-machine-azure-bastion"></a>Kopiëren en plakken naar een virtuele machine: Azure Bastion
 
@@ -35,13 +35,13 @@ Nadat u verbinding hebt gemaakt met de virtuele machine met behulp van de [Azure
 1. Kopieer de tekst/inhoud van het lokale apparaat naar het lokale klem bord.
 1. Start tijdens de externe sessie het palet toegang tot het Bastion klem bord door de twee pijlen te selecteren. De pijlen bevinden zich aan de linkerkant van de sessie.
 
-   ![palet van het hulp programma](./media/bastion-vm-manage/left.png)
+   ![Scherm opname van de start pijlen voor het palet met hulp middelen dat aan de linkerkant van het venster is gemarkeerd.](./media/bastion-vm-manage/left.png)
 
    ![Scherm afbeelding toont een klem bord voor tekst die is gekopieerd in Bastion.](./media/bastion-vm-manage/clipboard.png)
 1. Normaal gesp roken wordt de gekopieerde tekst automatisch weer gegeven in het Bastion kopie plakken. Als uw tekst niet aanwezig is, plakt u de tekst in het tekst gebied in het palet.
 1. Als de tekst zich in het tekst gebied bevindt, kunt u deze in de externe sessie plakken.
 
-   ![plakken](./media/bastion-vm-manage/local.png)
+   ![Scherm opname van de knop kopiëren/plakken gemarkeerd en een voorbeeld teken reeks wordt gekopieerd naar de externe sessie.](./media/bastion-vm-manage/local.png)
 
 ## <a name="copy-from-a-remote-session"></a><a name="from"></a>Kopiëren uit een externe sessie
 

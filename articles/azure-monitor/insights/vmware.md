@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2018
-ms.openlocfilehash: dccd953d2a31b306994c06ae644959e18332f5da
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: be50deb836082354db899e84ef24d75c4d403432
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090173"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450395"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>Oplossing VMWare-bewaking (afgeschaft) in Azure Monitor
 
@@ -133,16 +133,16 @@ U kunt verder inzoomen door te klikken op een ESXi-host of een gebeurtenis type.
 
 Wanneer u op een ESXi-hostnaam klikt, ziet u informatie van die ESXi-host. Als u de resultaten van het gebeurtenis type wilt beperken, voegt u deze toe aan `“ProcessName_s=EVENT TYPE”` uw zoek query. U kunt **proces** naam selecteren in het zoek filter. Zo beperkt u de informatie voor u.
 
-![oefeningen](./media/vmware/eventhostdrilldown.png)
+![Scherm afbeelding van de ESXi host per gebeurtenis aantal en uitsplitsing per gebeurtenis type-Blade in de VMWare-bewaking dashboard weergave.](./media/vmware/eventhostdrilldown.png)
 
 #### <a name="find-high-vm-activities"></a>Activiteiten met hoge VM zoeken
 Een virtuele machine kan op elke ESXi-host worden gemaakt en verwijderd. Het is handig voor een beheerder om te bepalen hoeveel Vm's een ESXi-host maakt. Die op zijn beurt helpt bij het begrijpen van de prestaties en capaciteits planning. Het bijhouden van gebeurtenissen van een VM-activiteit is van cruciaal belang bij het beheren van uw omgeving.
 
-![oefeningen](./media/vmware/vmactivities1.png)
+![Scherm afbeelding van de Blade virtuele-machine activiteiten in het dash board van VMWare-bewaking, met een grafiek van het maken en verwijderen van VM'S door de ESXi-host.](./media/vmware/vmactivities1.png)
 
 Als u aanvullende gegevens voor het maken van VM-ESXi wilt weer geven, klikt u op een ESXi-hostnaam.
 
-![oefeningen](./media/vmware/createvm.png)
+![Scherm opname van een deel venster van het VMWare-bewaking dash board waarin een tabel wordt weer gegeven met een rij gegevens voor elke virtuele machine die wordt gemaakt door een ESXi-host.](./media/vmware/createvm.png)
 
 #### <a name="common-log-queries"></a>Veelvoorkomende logboek query's
 De oplossing bevat andere nuttige query's die u kunnen helpen bij het beheren van uw ESXi-hosts, zoals hoge opslag ruimte, opslag latentie en probleem met het pad.

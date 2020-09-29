@@ -9,39 +9,37 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/10/2018
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: b36852e27f6aa3a909dd645c19a12c55e082b761
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 948cf3c65dfdc912f2f807dfac34076985f1bc89
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399324"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449200"
 ---
 # <a name="routing-architecture-overview"></a>Overzicht van routerings architectuur
 
-De Azure front-deur wanneer deze uw client aanvragen ontvangt, beantwoordt deze (als de cache is ingeschakeld) of stuurt deze door naar de juiste back-end van de toepassing (als een omgekeerde proxy).
-
-</br>Er zijn mogelijkheden voor het optimaliseren van het verkeer bij route ring naar Azure front deur en bij het routeren naar back-ends.
+Wanneer Azure front-deur uw client aanvragen ontvangt, worden er twee dingen gedaan. U kunt deze antwoorden als u caching inschakelt of deze naar de juiste back-end van de toepassing stuurt als een omgekeerde proxy.
 
 ## <a name="selecting-the-front-door-environment-for-traffic-routing-anycast"></a><a name = "anycast"></a>De voor deur omgeving voor verkeers routering (anycast) selecteren
 
-Route ring naar de Azure front-deur omgevingen maakt gebruik van [anycast](https://en.wikipedia.org/wiki/Anycast) voor DNS-(Domain Name System) en http-verkeer (Hypertext Transfer Protocol), zodat gebruikers verkeer naar de dichtstbijzijnde omgeving gaat in termen van de netwerk topologie (minste hops). Deze architectuur biedt doorgaans betere retour tijden voor eind gebruikers (waardoor de voor delen van de gesplitste TCP worden gemaximaliseerd). Met de voor deur worden de omgevingen in primaire en terugval ' belsignalen ' ingedeeld.  De buitenste ring heeft omgevingen die dichter bij gebruikers zijn en die lagere latenties bieden.  De interne ring heeft omgevingen die de failover voor de buitenste ring omgeving kunnen afhandelen als er een probleem optreedt. De buitenste ring is het voorkeurs doel voor al het verkeer, maar de interne ring is nood zakelijk om de verkeers overloop van de buitenste ring af te handelen. Op basis van Vip's (virtuele Internet Protocol-adressen) wordt elke frontend-host of een domein dat wordt bediend door de voor deur, een primair VIP toegewezen, dat wordt aangekondigd door omgevingen in zowel de interne als buitenste ring, evenals een terugval-VIP, die alleen wordt aangekondigd door omgevingen in de binnenste ring. 
+Verkeer dat wordt gerouteerd naar de Azure front-deur omgevingen, gebruikt [anycast](https://en.wikipedia.org/wiki/Anycast) voor zowel het DNS-(Domain Name System) als het http-verkeer (Hypertext Transfer Protocol), waarmee gebruikers aanvragen de dichtstbijzijnde omgeving kunnen bereiken in de minste netwerk-hops. Deze architectuur biedt betere retour tijden voor eind gebruikers door de voor delen van de split-TCP te maximaliseren. Met de voor deur worden de omgevingen in primaire en terugval ' belsignalen ' ingedeeld. De buitenste ring heeft omgevingen die dichter bij gebruikers zijn en die lagere latenties bieden.  De interne ring heeft omgevingen die de failover voor de buitenste ring omgeving kunnen afhandelen wanneer er problemen optreden. De buitenste ring is het voorkeurs doel voor al het verkeer en de binnenste ring is het verwerken van verkeers overloop van de buitenste ring. Aan elke frontend-host of het domein dat wordt bediend door de voor deur, wordt een primaire VIP (virtuele Internet Protocol-adressen) toegewezen, die wordt aangekondigd door omgevingen in zowel de binnenste als buitenste ring. Een terugval-VIP wordt alleen aangekondigd door omgevingen in de binnenste ring. 
 
-</br>Deze algehele strategie zorgt ervoor dat aanvragen van uw eind gebruikers altijd de dichtstbijzijnde front-deur omgeving bereiken en dat zelfs als de voorkeurs omgeving van de voor deur niet in orde is, het verkeer automatisch naar de volgende dichtstbijzijnde omgeving gaat.
+Deze architectuur zorgt ervoor dat aanvragen van uw eind gebruikers altijd de dichtstbijzijnde front-deur omgeving bereiken. Zelfs als de voorkeurs omgeving van de voor deur niet in orde is, wordt al het verkeer automatisch verplaatst naar de volgende dichtstbijzijnde omgeving.
 
 ## <a name="connecting-to-front-door-environment-split-tcp"></a><a name = "splittcp"></a>Verbinding maken met de front-deur omgeving (gesplitste TCP)
 
-[Gesplitste TCP](https://en.wikipedia.org/wiki/Performance-enhancing_proxy) is een techniek om LATENTIE en TCP-problemen te reduceren door een verbinding te verbreken waardoor een hoge retour tijd in kleinere delen zou ontstaan.  Door de voor deur omgevingen dichter bij eind gebruikers te plaatsen en TCP-verbindingen in de front-deur omgeving te beëindigen, wordt één TCP-verbinding met een grote RTT (round-trip time) naar de back-end van de toepassing gesplitst in twee TCP-verbindingen. De korte verbinding tussen de eind gebruiker en de voor deur houdt in dat de verbinding tot stand wordt gebracht via drie korte retour aanslagen in plaats van drie lange retour reizen, waarbij latentie wordt bespaard.  De lange verbinding tussen de front-deur omgeving en de back-end kan vooraf worden ingesteld en opnieuw worden gebruikt voor meerdere aanroepen van eind gebruikers, waarna de TCP-verbindings tijd opnieuw wordt bespaard.  Het effect wordt vermenigvuldigd bij het tot stand brengen van een SSL/TLS-verbinding (Transport Layer Security) als er meer ronde trips zijn om de verbinding te beveiligen.
+[Gesplitste TCP](https://en.wikipedia.org/wiki/Performance-enhancing_proxy) is een techniek om LATENTIE en TCP-problemen te reduceren door een verbinding te verbreken waardoor een hoge retour tijd in kleinere delen zou ontstaan. Met de front-deur omgevingen dichter bij eind gebruikers worden TCP-verbindingen in de front-deur omgeving beëindigd. Een TCP-verbinding met een grote round-trip tijd (RTT) naar de back-end van de toepassing wordt opgesplitst in twee afzonderlijke verbindingen. De korte verbinding tussen de eind gebruiker en de voor deur houdt in dat de verbinding tot stand wordt gebracht via drie korte retour waarden in plaats van drie lange retour reizen, wat leidt tot een latentie bij het opslaan. De ' lange verbinding ' tussen de front-deur omgeving en de back-end kan vooraf worden ingesteld en vervolgens opnieuw worden gebruikt voor andere eind gebruikers aanvragen om connectiviteits tijd op te slaan. Het effect van de gesplitste TCP wordt vermenigvuldigd wanneer een SSL/TLS-verbinding (Transport Layer Security) tot stand wordt gebracht, omdat er meer ronde trips zijn om een verbinding te beveiligen.
 
 ## <a name="processing-request-to-match-a-routing-rule"></a>De aanvraag wordt verwerkt om te voldoen aan een routerings regel
-Na het tot stand brengen van een verbinding en het uitvoeren van een TLS-Handshake, is het afstemmen van een routerings regel de eerste stap wanneer een aanvraag land op een front-deur omgeving wordt uitgevoerd. Dit komt overeen met het bepalen van alle configuraties in de voor deur, waaronder een specifieke routerings regel die overeenkomt met de aanvraag voor. Lees meer informatie over de wijze waarop de voor deur de [route afstemming](front-door-route-matching.md) biedt.
+Na het tot stand brengen van een verbinding en het volt ooien van een TLS-Handshake, is de eerste stap na een aanvraag land op een front-deur omgeving gelijk aan de routerings regel. De overeenkomst wordt bepaald door configuraties op de voor deur waaraan een bepaalde routerings regel moet voldoen om de aanvraag af te stemmen. Lees meer informatie over de wijze waarop de voor deur de [route afstemming](front-door-route-matching.md) biedt.
 
 ## <a name="identifying-available-backends-in-the-backend-pool-for-the-routing-rule"></a>Beschik bare back-end in de back-end-pool identificeren voor de routerings regel
-Wanneer de voor deur een overeenkomst heeft voor een routerings regel die is gebaseerd op de inkomende aanvraag en als er geen cache is, wordt de status van de status test opgehaald voor de back-end-groep die aan de overeenkomende route is gekoppeld. Meer informatie over de status van de back-end van de voor deur wordt gecontroleerd met behulp van [Health probe](front-door-health-probes.md) .
+Zodra de voor deur overeenkomt met een routerings regel voor een binnenkomende aanvraag, is de volgende stap het ophalen van de status van de status test voor de back-end-groep die is gekoppeld aan de routerings regel als er geen caching is. Meer informatie over de status van de back-end van de voor deur wordt gecontroleerd met behulp van [Health probe](front-door-health-probes.md) .
 
 ## <a name="forwarding-the-request-to-your-application-backend"></a>De aanvraag door sturen naar de back-end van uw toepassing
-Ten slotte, ervan uitgaande dat er geen caching is geconfigureerd, wordt de gebruikers aanvraag doorgestuurd naar de ' beste ' back-end op basis van de configuratie van uw [voor deur routerings methode](front-door-routing-methods.md) .
+Ten slotte, als caching niet is geconfigureerd, wordt de gebruikers aanvraag doorgestuurd naar de ' beste ' back-end op basis van de configuratie van de [routerings methode](front-door-routing-methods.md) .
 
 ## <a name="next-steps"></a>Volgende stappen
 

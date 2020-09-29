@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d2a62b55ce7f8cd408afeb2f10fd40f42b36d53d
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: ef7599441cbfa11c555453adea0ca135569524b5
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89393935"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91459826"
 ---
 # <a name="define-a-conditional-access-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een technisch profiel voor voorwaardelijke toegang definiëren in een Azure Active Directory B2C aangepast beleid
 
@@ -53,7 +53,7 @@ Voor elke aanmelding evalueert Azure AD B2C alle beleids regels en zorgt ervoor 
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| OperationType | Yes | Moet worden **geëvalueerd**.  |
+| OperationType | Ja | Moet worden **geëvalueerd**.  |
 
 ### <a name="input-claims"></a>Invoer claims
 
@@ -61,10 +61,10 @@ Het **InputClaims** -element bevat een lijst met claims die naar voorwaardelijke
 
 | ClaimReferenceId | Vereist | Gegevenstype | Beschrijving |
 | --------- | -------- | ----------- |----------- |
-| UserId | Yes | tekenreeks | De id van de gebruiker die zich aanmeldt. |
-| AuthenticationMethodsUsed | Yes |stringCollection | De lijst met methoden waarmee de gebruiker zich heeft aangemeld. Mogelijke waarden: `Password` , en `OneTimePasscode` . |
-| IsFederated | Yes |boolean | Hiermee wordt aangegeven of een gebruiker zich heeft aangemeld met een federatief account. De waarde moet zijn `false` . |
-| IsMfaRegistered | Yes |boolean | Hiermee wordt aangegeven of de gebruiker al een telefoon nummer heeft inge schreven voor multi-factor Authentication. |
+| UserId | Ja | tekenreeks | De id van de gebruiker die zich aanmeldt. |
+| AuthenticationMethodsUsed | Ja |stringCollection | De lijst met methoden waarmee de gebruiker zich heeft aangemeld. Mogelijke waarden: `Password` , en `OneTimePasscode` . |
+| IsFederated | Ja |boolean | Hiermee wordt aangegeven of een gebruiker zich heeft aangemeld met een federatief account. De waarde moet zijn `false` . |
+| IsMfaRegistered | Ja |boolean | Hiermee wordt aangegeven of de gebruiker al een telefoon nummer heeft inge schreven voor multi-factor Authentication. |
 
 
 Het **InputClaimsTransformations** -element kan een verzameling **InputClaimsTransformation** -elementen bevatten die worden gebruikt om de invoer claims te wijzigen of nieuwe te genereren voordat ze worden verzonden naar de service voor voorwaardelijke toegang.
@@ -75,8 +75,8 @@ Het **OutputClaims** -element bevat een lijst met claims die zijn gegenereerd do
 
 | ClaimReferenceId | Vereist | Gegevenstype | Beschrijving |
 | --------- | -------- | ----------- |----------- |
-| Uitdagingen | Yes |stringCollection | Lijst met acties om de geïdentificeerde dreiging te herstellen. Mogelijke waarden: `block` |
-| MultiConditionalAccessStatus | Yes | stringCollection |  |
+| Uitdagingen | Ja |stringCollection | Lijst met acties om de geïdentificeerde dreiging te herstellen. Mogelijke waarden: `block` |
+| MultiConditionalAccessStatus | Ja | stringCollection |  |
 
 Het **OutputClaimsTransformations** -element kan een verzameling **OutputClaimsTransformation** -elementen bevatten die worden gebruikt voor het wijzigen van de uitvoer claims of voor het genereren van nieuwe.
 
@@ -92,7 +92,7 @@ In het volgende voor beeld wordt een technisch profiel voor voorwaardelijke toeg
     <Item Key="OperationType">Evaluation</Item>
   </Metadata>
   <InputClaimsTransformations>
-    <InputClaimsTransformation ReferenceId="IsMfaRegistered" />
+    <InputClaimsTransformation ReferenceId="IsMfaRegisteredCT" />
   </InputClaimsTransformations>
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="UserId" />
@@ -115,7 +115,7 @@ De **herstel** modus van het technische profiel voorwaardelijke toegang informee
 
 | Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| OperationType | Yes | Moet worden **hersteld**.  |
+| OperationType | Ja | Moet worden **hersteld**.  |
 
 ### <a name="input-claims"></a>Invoer claims
 
@@ -123,7 +123,7 @@ Het **InputClaims** -element bevat een lijst met claims die naar voorwaardelijke
 
 | ClaimReferenceId | Vereist | Gegevenstype | Beschrijving |
 | --------- | -------- | ----------- |----------- |
-| ChallengesSatisfied | Yes | stringCollection| De lijst met tevreden uitdagingen voor het oplossen van de geïdentificeerde bedreiging als resultaat van de evaluatie modus, de claim van de vraag.|
+| ChallengesSatisfied | Ja | stringCollection| De lijst met tevreden uitdagingen voor het oplossen van de geïdentificeerde bedreiging als resultaat van de evaluatie modus, de claim van de vraag.|
 
 
 Het **InputClaimsTransformations** -element kan een verzameling **InputClaimsTransformation** -elementen bevatten die worden gebruikt om de invoer claims te wijzigen of nieuwe te genereren voordat de service voor voorwaardelijke toegang wordt aangeroepen.
@@ -367,6 +367,7 @@ Voeg in uw TrustFrameworkPolicy-element deze subtrajecten toe, zoals wordt weer 
         </OrchestrationStep>
       </OrchestrationSteps>
     </SubJourney>
+  </SubJourneys>
 
 ```
 
@@ -376,7 +377,7 @@ Voeg een gebruikers traject toe die gebruikmaakt van de nieuwe claims, zoals wor
   <UserJourneys>
     <UserJourney Id="SignUpOrSignInWithCA">
       <OrchestrationSteps>
-        <OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsigninsam">
+        <OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsignin">
           <ClaimsProviderSelections>
             <ClaimsProviderSelection ValidationClaimsExchangeId="LocalAccountSigninEmailExchange" />
 
@@ -412,20 +413,14 @@ Voeg een gebruikers traject toe die gebruikmaakt van de nieuwe claims, zoals wor
           </ClaimsExchanges>
         </OrchestrationStep>
 
-        <OrchestrationStep Order="4" Type="ClaimsExchange">
-          <ClaimsExchanges>
-            <ClaimsExchange Id="UserJourneyContext" TechnicalProfileReferenceId="SimpleUJContext" />
-          </ClaimsExchanges>
-        </OrchestrationStep>
-
-        <OrchestrationStep Order="5" Type="InvokeSubJourney">
+        <OrchestrationStep Order="4" Type="InvokeSubJourney">
           <JourneyList>
             <Candidate SubJourneyReferenceId="ConditionalAccess_Evaluation" />
           </JourneyList>
         </OrchestrationStep>
 
         <!--MFA based on Conditional Access-->
-        <OrchestrationStep Order="6" Type="ClaimsExchange">
+        <OrchestrationStep Order="5" Type="ClaimsExchange">
           <Preconditions>
             <Precondition Type="ClaimsExist" ExecuteActionsIf="false">
               <Value>CAChallengeIsMfa</Value>
@@ -443,7 +438,7 @@ Voeg een gebruikers traject toe die gebruikmaakt van de nieuwe claims, zoals wor
         </OrchestrationStep>
 
         <!--Save MFA phone number: The precondition verifies whether the user provided a new number in the previous step. If so, the phone number is stored in the directory for future authentication requests.-->
-        <OrchestrationStep Order="7" Type="ClaimsExchange">
+        <OrchestrationStep Order="6" Type="ClaimsExchange">
           <Preconditions>
             <Precondition Type="ClaimsExist" ExecuteActionsIf="false">
               <Value>newPhoneNumberEntered</Value>
@@ -455,7 +450,7 @@ Voeg een gebruikers traject toe die gebruikmaakt van de nieuwe claims, zoals wor
           </ClaimsExchanges>
         </OrchestrationStep>
 
-        <OrchestrationStep Order="8" Type="ClaimsExchange" >
+        <OrchestrationStep Order="7" Type="ClaimsExchange" >
           <Preconditions>
             <Precondition Type="ClaimsExist" ExecuteActionsIf="false">
               <Value>CAChallengeIsBlock</Value>
@@ -474,12 +469,12 @@ Voeg een gebruikers traject toe die gebruikmaakt van de nieuwe claims, zoals wor
 
         <!--If a user has reached this point, this means a remediation was applied-->
         <!--  You can add a precondition here to call remediation only if a Conditional Access challenge was issued-->
-        <OrchestrationStep Order="9" Type="InvokeSubJourney">
+        <OrchestrationStep Order="8" Type="InvokeSubJourney">
           <JourneyList>
             <Candidate SubJourneyReferenceId="ConditionalAccess_Remediation" />
           </JourneyList>
         </OrchestrationStep>
-        <OrchestrationStep Order="10" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
+        <OrchestrationStep Order="9" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
       </OrchestrationSteps>
       <ClientDefinition ReferenceId="DefaultWeb" />
     </UserJourney>

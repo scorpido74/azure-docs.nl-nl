@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30b673994e20f01dde504adb438aa1b199c96d88
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1166d2ad17aea97a4dd7fdda53c42d6b3df75936
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91264692"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450357"
 ---
 # <a name="manage-administrative-units-in-azure-active-directory"></a>Beheer eenheden in Azure Active Directory beheren
 
@@ -33,9 +33,6 @@ Voor gedetailleerdere administratieve controle in Azure Active Directory (Azure 
 
     ![Scherm afbeelding met een koppeling naar ' toestemming van beheerder verlenen '](./media/roles-admin-units-manage/select-graph-explorer.png)
 
-    b. Selecteer in Graph Explorer de **bèta** versie.
-
-    ![Scherm opname van de geselecteerde bèta versie](./media/roles-admin-units-manage/select-beta-version.png)
 
 1. De preview-versie van Azure AD Power shell gebruiken.
 
@@ -59,7 +56,7 @@ Installeer Azure AD Power shell (preview) voordat u probeert de volgende opdrach
 
 ```powershell
 Connect-AzureAD
-New-AzureADAdministrativeUnit -Description "West Coast region" -DisplayName "West Coast"
+New-AzureADMSAdministrativeUnit -Description "West Coast region" -DisplayName "West Coast"
 ```
 
 U kunt de waarden die zijn Inge sloten tussen aanhalings tekens, indien nodig, wijzigen.
@@ -91,8 +88,8 @@ In azure AD kunt u een administratieve eenheid verwijderen die u niet meer nodig
 ### <a name="use-powershell"></a>PowerShell gebruiken
 
 ```powershell
-$delau = Get-AzureADAdministrativeUnit -Filter "displayname eq 'DeleteMe Admin Unit'"
-Remove-AzureADAdministrativeUnit -ObjectId $delau.ObjectId
+$delau = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'DeleteMe Admin Unit'"
+Remove-AzureADMSAdministrativeUnit -ObjectId $delau.ObjectId
 ```
 
 U kunt de waarden tussen aanhalings tekens, zoals vereist voor de specifieke omgeving, wijzigen.

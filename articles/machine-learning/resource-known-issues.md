@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
 ms.date: 08/13/2020
-ms.openlocfilehash: 67ab15a6b890bc5f28cd18fca8a35adbc7437778
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3a1d5c70913f7e2a56eaf04be333a931c1adbc3d
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91280977"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450055"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Bekende problemen en probleem oplossing in Azure Machine Learning
 
@@ -209,6 +209,9 @@ Als u bestands share gebruikt voor andere werk belastingen, zoals gegevens overd
     ```
 
     Als u de voorloop back slash (/) niet opneemt, moet u voor voegsel van de werkmap opgeven, bijvoorbeeld `/mnt/batch/.../tmp/dataset` op het berekenings doel om aan te geven waar u de gegevensset wilt koppelen.
+
+### <a name="mount-dataset"></a>Gegevensset koppelen
+* De **gegevensset kan niet worden geïnitialiseerd: er is een time-out opgetreden tijdens het wachten op het koppelen van het koppel punt**: opnieuw proberen logica is toegevoegd in `azureml-sdk >=1.12.0` om het probleem te verhelpen. Als u zich in eerdere versies van azureml-SDK bevindt, moet u een upgrade uitvoeren naar de nieuwste versie. Als u al bent aangemeld `azureml-sdk>=1.12.0` , moet u de omgeving opnieuw maken zodat u over de nieuwste patch beschikt met de oplossing.
 
 ### <a name="data-labeling-projects"></a>Projecten voor gegevenslabels
 

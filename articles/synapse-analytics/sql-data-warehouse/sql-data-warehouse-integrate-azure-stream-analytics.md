@@ -2,27 +2,27 @@
 title: Azure Stream Analytics gebruiken
 description: Tips voor het gebruik van Azure Stream Analytics met uw data warehouse in azure Synapse voor het ontwikkelen van real-time oplossingen.
 services: synapse-analytics
-author: mlee3gsd
+author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 2/5/2020
-ms.author: martinle
+ms.date: 9/25/2020
+ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 90e339ba8454dfdfc3f724ea12932a3e8e5912c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 60fb258fe2c6063b9b9a3ced0f4ba5f71ffd9d7c
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213343"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449528"
 ---
 # <a name="use-azure-stream-analytics-with-azure-synapse-analytics"></a>Azure Stream Analytics met Azure Synapse Analytics gebruiken
 
 Azure Stream Analytics is een volledig beheerde service met lage latentie en een Maxi maal beschik bare, schaal bare complexe gebeurtenis verwerking via streaming-gegevens in de Cloud. Lees de [Inleiding tot Azure stream Analytics voor](../../stream-analytics/stream-analytics-introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)meer informatie over de basis principes. U kunt vervolgens leren hoe u een end-to-end-oplossing maakt met Stream Analytics door de zelf studie [aan de slag met Azure stream Analytics](../../stream-analytics/stream-analytics-real-time-fraud-detection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) te volgen.
 
-In dit artikel leert u hoe u uw data warehouse kunt gebruiken als een uitvoer Sink voor uw Azure Stream Analytics taken.
+In dit artikel leert u hoe u uw data warehouse kunt gebruiken als een uitvoer filter voor gegevens opname met hoge door Voer met Azure Stream Analytics-taken.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -32,7 +32,7 @@ In dit artikel leert u hoe u uw data warehouse kunt gebruiken als een uitvoer Si
     2. Toepassing voor gebeurtenis Generator configureren en starten
     3. Een Stream Analytics-taak inrichten
     4. Taak invoer en-query opgeven
-* Azure Synapse SQL pool data warehouse: als u een nieuw data warehouse wilt maken, volgt u de stappen in de [Quick Start om een nieuw data warehouse te maken](create-data-warehouse-portal.md).
+* Azure Synapse SQL-groep voor uw data warehouse: als u een nieuw data warehouse wilt maken, volgt u de stappen in de [Quick Start om een nieuw data warehouse te maken](create-data-warehouse-portal.md).
 
 ## <a name="specify-streaming-output-to-point-to-your-data-warehouse"></a>Streaming-uitvoer opgeven zodat deze naar uw data warehouse verwijst
 
@@ -42,9 +42,9 @@ Ga vanuit het Azure Portal naar uw Stream Analytics-taak en klik op **uitvoer** 
 
 ### <a name="step-2"></a>Stap 2
 
-Klik op de knop **toevoegen** en kies **SQL database** in de vervolg keuzelijst.
+Klik op de knop **toevoegen** en kies **Azure Synapse Analytics** in de vervolg keuzelijst.
 
-![SQL Database kiezen](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asaoutput.png)
+![Kies Azure Synapse Analytics](./media/sql-data-warehouse-integrate-azure-stream-analytics/sql-pool-azure-stream-analytics-output.png)
 
 ### <a name="step-3"></a>Stap 3
 
@@ -52,15 +52,15 @@ Voer de volgende waarden in:
 
 * *Uitvoer alias*: Voer een beschrijvende naam in voor deze taak uitvoer.
 * *Abonnement*:
-  * Als uw data warehouse zich in hetzelfde abonnement bevindt als de Stream Analytics taak, klikt u op ***SQL database selecteren in uw abonnementen***.
-  * Als uw data base zich in een ander abonnement bevindt, klikt u op SQL Database-instellingen hand matig opgeven.
+  * Als uw data warehouse zich in hetzelfde abonnement bevindt als de Stream Analytics taak, klikt u op ***Azure Synapse Analytics selecteren in uw abonnementen***.
+  * Als uw data warehouse zich in een ander abonnement bevindt, klikt u op Azure Synapse Analytics-instellingen hand matig opgeven.
 * *Data Base*: Selecteer de doel database in de vervolg keuzelijst.
 * *Gebruikers naam*: Geef de gebruikers naam op van een account met schrijf machtigingen voor de data base.
 * *Wacht woord*: Geef het wacht woord op voor het opgegeven gebruikers account.
 * *Tabel*: Geef de naam op van de doel tabel in de data base.
 * Klik op de knop **Opslaan**
 
-![SQL Database formulier voltooid](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asaoutputdbsettings.png)
+![Azure Synapse Analytics-formulier is voltooid](./media/sql-data-warehouse-integrate-azure-stream-analytics/sql-pool-azure-stream-analytics-output-db-settings.png)
 
 ### <a name="step-4"></a>Stap 4
 

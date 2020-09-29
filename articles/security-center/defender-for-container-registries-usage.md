@@ -4,15 +4,15 @@ description: Meer informatie over het gebruik van Azure Defender voor container 
 author: memildin
 ms.author: memildin
 ms.date: 9/22/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 04a7b7f40e1591a919668e940a883dde9a6f4689
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1ff28b13d9adc120f8ee40bcd0119bf9b6883d6a
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91302006"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449123"
 ---
 # <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>Azure Defender gebruiken voor container registers om uw installatie kopieën te scannen op beveiligings problemen
 
@@ -30,7 +30,7 @@ Wanneer de scanner beveiligings Security Center problemen meldt, Security Center
 |Koers|**Azure Defender voor container registers** wordt gefactureerd, zoals wordt weer gegeven op [de pagina met prijzen](security-center-pricing.md)|
 |Ondersteunde registers en installatie kopieën:|![Ja ](./media/icons/yes-icon.png) door Linux gehoste ACR-registers die toegankelijk zijn via het open bare Internet en shell toegang bieden.<br>![Geen door ](./media/icons/no-icon.png) Windows gehoste ACR-registers.<br>![Geen ](./media/icons/no-icon.png) persoonlijke registers-Security Center vereist dat uw registers toegankelijk zijn via het open bare Internet. Security Center kan momenteel geen verbinding maken met, of scannen, registers met toegang beperkt met een firewall, een service-eind punt of persoonlijke eind punten zoals een persoonlijke Azure-koppeling.<br>![Geen ](./media/icons/no-icon.png) minimale afbeeldings afbeeldingen zoals [docker](https://hub.docker.com/_/scratch/) -werk afbeeldingen, of "Distroless"-installatie kopieën die alleen een toepassing en de runtime-afhankelijkheden bevatten zonder pakket beheer, shell of besturings systeem.|
 |Vereiste rollen en machtigingen:|Rol van **beveiligings lezer** en [Azure container Registry lezer](https://docs.microsoft.com/azure/container-registry/container-registry-roles)|
-|Clouds|![Yes](./media/icons/yes-icon.png) Commerciële Clouds<br>![No](./media/icons/no-icon.png) National/soeverein (US Gov, China gov, andere gov)|
+|Clouds|![Ja](./media/icons/yes-icon.png) Commerciële Clouds<br>![Nee](./media/icons/no-icon.png) National/soeverein (US Gov, China gov, andere gov)|
 |||
 
 
@@ -150,7 +150,7 @@ Een regel maken:
 1. Een regel weer geven, overschrijven of verwijderen: 
     1. Selecteer **regel uitschakelen**.
     1. In de lijst bereik worden abonnementen met actieve regels weer gegeven als **regel toegepast**.
-        :::image type="content" source="./media/remediate-vulnerability-findings-vm/modify-rule.png" alt-text="Een bestaande regel wijzigen of verwijderen":::
+        :::image type="content" source="./media/remediate-vulnerability-findings-vm/modify-rule.png" alt-text="Een regel voor het uitschakelen van VA-bevindingen in het REGI ster maken":::
     1. Als u de regel wilt weer geven of verwijderen, selecteert u het menu met weglatings tekens (...).
 
 

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 06/27/2020
-ms.openlocfilehash: b310f195477f4cba83ef30c6fb5ea2fd24c4df9a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 46435ef773e90234538bb755e20035990bbf1066
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897386"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460030"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Hoe u Jupyter-notebooks uitvoert in uw werkruimte
 
@@ -80,15 +80,20 @@ Voor toegang tot de terminal:
 1. Selecteer een **Compute** -doel of maak een nieuw en wacht tot het wordt uitgevoerd.
 1. Selecteer het pictogram **Open Terminal** .
 
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/open-terminal.png" alt-text="Terminal openen":::
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/open-terminal.png" alt-text="Nieuw bestand maken":::
 
 1. Als u het pictogram niet ziet, selecteert u de **..** . rechts van het berekenings doel en selecteert u vervolgens **Terminal openen**.
 
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/alt-open-terminal.png" alt-text="Terminal openen vanuit...":::
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/alt-open-terminal.png" alt-text="Nieuw bestand maken":::
 
 
 Meer informatie over [het klonen van Git-opslag plaatsen in het bestands systeem van de werk ruimte](concept-train-model-git-integration.md#clone-git-repositories-into-your-workspace-file-system).
 
+### <a name="copy-and-paste-in-terminal"></a>Kopiëren en plakken in Terminal
+
+> * Windows: `Ctrl-Insert` kopiëren en gebruiken `Ctrl-Shift-v` of `Shift-Insert` Plakken.
+> * Mac OS: `Cmd-c` om te kopiëren en `Cmd-v` te plakken.
+> * FireFox/IE ondersteunt mogelijk geen juiste Klembord machtigingen.
 
 ### <a name="share-notebooks-and-other-files"></a>Notitie blokken en andere bestanden delen
 
@@ -121,7 +126,7 @@ Tijdens het maken van een notitie blok gaat u meestal naar cellen die u hebt geb
 1. Voer alle notebook-cellen uit.
 1. Selecteer de cel met de code die u voor het nieuwe notitie blok wilt uitvoeren. Bijvoorbeeld de code die een experiment verzendt of de code die een model registreert.
 1. Selecteer het pictogram voor **verzamelen** dat wordt weer gegeven op de werk balk van de cel.
-    :::image type="content" source="media/how-to-run-jupyter-notebooks/gather.png" alt-text="Scherm opname: Selecteer het pictogram verzamelen":::
+    :::image type="content" source="media/how-to-run-jupyter-notebooks/gather.png" alt-text="Nieuw bestand maken":::
 1. Voer de naam in voor het nieuwe ' verzamelde ' notitie blok.  
 
 Het nieuwe notitie blok bevat alleen code cellen, waarbij alle cellen zijn vereist voor het produceren van dezelfde resultaten als de cel die u hebt geselecteerd voor het verzamelen van gegevens.
@@ -132,7 +137,7 @@ Azure Machine Learning een controlepunt bestand maakt wanneer u een *ipynb*-  
 
 Selecteer in de werk balk notebook het menu en vervolgens **bestand &gt; opslaan en controle punt** om het notitie blok hand matig op te slaan. er wordt dan een controlepunt bestand toegevoegd dat is gekoppeld aan het notitie blok.
 
-:::image type="content" source="media/how-to-run-jupyter-notebooks/file-save.png" alt-text="Scherm opname van het hulp programma opslaan op de werk balk van notitie blok":::
+:::image type="content" source="media/how-to-run-jupyter-notebooks/file-save.png" alt-text="Nieuw bestand maken":::
 
 Elk notitie blok wordt elke 30 seconden autobespaard.Met automatisch opslaan worden alleen het eerste *ipynb*   -bestand, niet het controlepunt bestand, bijgewerkt.
  

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b55d8bcc2f2042dc36c6875750893a345deb552
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: 000bc150b1a4addb4b68bd86b8d72524ec1015fc
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89468603"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450409"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>Wat is een primair vernieuwingstoken?
 
@@ -199,6 +199,9 @@ In de volgende diagrammen ziet u de onderliggende details van het uitgeven, vern
 | D | De CloudAP-invoeg toepassing maakt de PRT-cookie, Meld u aan met de TPM-gebonden sessie sleutel en stuurt deze terug naar de host van de native client. Omdat de cookie is ondertekend door de sessie sleutel, kan niet worden geknoeid met. |
 | E | De host van de native client retourneert deze PRT-cookie naar de browser, waarin deze wordt opgenomen als onderdeel van de aanvraag header x-MS-RefreshTokenCredential en aanvraag tokens van Azure AD. |
 | F | Azure AD valideert de hand tekening van de sessie sleutel op de PRT cookie, valideert de nonce, controleert of het apparaat geldig is in de Tenant en geeft een ID-token voor de webpagina en een versleutelde sessie cookie voor de browser. |
+
+> [!NOTE]
+> De browser-SSO-stroom die in de bovenstaande stappen wordt beschreven, is niet van toepassing op sessies in persoonlijke modi, zoals InPrivate in micro soft Edge, of incognito in Google Chrome (wanneer u de micro soft-account uitbreiding gebruikt).
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: c0fdf256409608c2eb3c6490dc25342d9d324832
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 48d2a657059908417bc81fd8cc2a132d2d131530
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89614035"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449326"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Diagnostische instellingen maken om logboeken en metrische gegevens van het platform te verzenden naar verschillende bestemmingen
 [Platform logboeken](platform-logs-overview.md) in azure, met inbegrip van het Azure-activiteiten logboek en de resource logboeken, bieden gedetailleerde diagnostische en controle-informatie voor Azure-resources en het Azure-platform waarvan ze afhankelijk zijn. [Metrische platform gegevens](data-platform-metrics.md) worden standaard verzameld en worden meestal opgeslagen in de data base met Azure monitor gegevens. In dit artikel vindt u informatie over het maken en configureren van diagnostische instellingen voor het verzenden van platform metrieken en platform logboeken naar verschillende bestemmingen.
@@ -45,7 +45,7 @@ Platform-logboeken en-metrische gegevens kunnen worden verzonden naar de doelen 
 
 | Doel | Beschrijving |
 |:---|:---|
-| [Log Analytics werk ruimte](design-logs-deployment.md) | Door Logboeken en metrische gegevens naar een Log Analytics-werk ruimte te verzenden, kunt u ze analyseren met andere bewakings informatie die door Azure Monitor wordt verzameld met behulp van krachtige logboek query's en ook om gebruik te maken van andere Azure Monitor functies, zoals waarschuwingen en visualisaties. |
+| [Log Analytics-werkruimte](design-logs-deployment.md) | Door Logboeken en metrische gegevens naar een Log Analytics-werk ruimte te verzenden, kunt u ze analyseren met andere bewakings informatie die door Azure Monitor wordt verzameld met behulp van krachtige logboek query's en ook om gebruik te maken van andere Azure Monitor functies, zoals waarschuwingen en visualisaties. |
 | [Event hubs](/azure/event-hubs/) | Door Logboeken en metrische gegevens naar Event Hubs te verzenden, kunt u met externe systemen, zoals Siem's van derden en andere log Analytics-oplossingen.  |
 | [Azure-opslag account](/azure/storage/blobs/) | Het archiveren van Logboeken en metrische gegevens naar een Azure-opslag account is handig voor controle, statische analyses of back-ups. Vergeleken met Azure Monitor-logboeken en een Log Analytics-werk ruimte is Azure Storage minder kostbaar en kunnen de logboeken voor onbepaalde tijd worden bewaard.  |
 
@@ -73,15 +73,15 @@ U kunt Diagnostische instellingen configureren in de Azure Portal in het menu Az
 
    - Voor één resource klikt u op **Diagnostische instellingen** onder **monitor** in het resource menu.
 
-        ![Diagnostische instellingen](media/diagnostic-settings/menu-resource.png)
+        ![Scherm afbeelding van de sectie bewaking van een resource menu in Azure Portal met Diagnostische instellingen gemarkeerd.](media/diagnostic-settings/menu-resource.png)
 
    - Klik voor een of meer resources op **Diagnostische instellingen** onder **instellingen** in het menu Azure monitor en klik vervolgens op de resource.
 
-      ![Diagnostische instellingen](media/diagnostic-settings/menu-monitor.png)
+        ![Scherm afbeelding van de sectie instellingen in het menu Azure Monitor met Diagnostische instellingen gemarkeerd.](media/diagnostic-settings/menu-monitor.png)
 
    - Klik voor het activiteiten logboek op **activiteiten logboek** in het menu **Azure monitor** en vervolgens op **Diagnostische instellingen**. Zorg ervoor dat u alle verouderde configuraties voor het activiteiten logboek uitschakelt. Zie [bestaande instellingen uitschakelen](./activity-log.md#legacy-collection-methods) voor meer informatie.
 
-        ![Diagnostische instellingen](media/diagnostic-settings/menu-activity-log.png)
+        ![Scherm opname van het menu Azure Monitor waarin het activiteiten logboek is geselecteerd en diagnostische instellingen zijn gemarkeerd in de menu balk van het controle-activiteiten logboek.](media/diagnostic-settings/menu-activity-log.png)
 
 2. Als er geen instellingen bestaan op de resource die u hebt geselecteerd, wordt u gevraagd een instelling te maken. Klik op **Diagnostische instelling toevoegen**.
 

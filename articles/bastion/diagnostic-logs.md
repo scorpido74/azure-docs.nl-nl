@@ -7,14 +7,14 @@ ms.service: bastion
 ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: charwen
-ms.openlocfilehash: 82f92a6dc33173918102015c8cedea1755d77805
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e76fffd17ee565d4103ca8a7bf1523bbd16209d
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84744201"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445376"
 ---
-# <a name="enable-and-work-with-bastion-resource-logs"></a>Bastion-resource logboeken inschakelen en gebruiken
+# <a name="enable-and-work-with-bastion-resource-logs"></a>Bastion-resourcelogboeken inschakelen en gebruiken
 
 Wanneer gebruikers verbinding maken met werk belastingen met behulp van Azure Bastion, kan Bastion de diagnostische gegevens van de externe sessies registreren. Vervolgens kunt u de diagnostische gegevens gebruiken om te zien welke gebruikers zijn verbonden met welke werk belastingen, op welk tijdstip, waar en andere relevante logboek gegevens. Als u de diagnostische gegevens wilt gebruiken, moet u Diagnostische logboeken inschakelen op Azure Bastion. Dit artikel helpt u bij het inschakelen van Diagnostische logboeken en het weer geven van de logboeken.
 
@@ -22,13 +22,13 @@ Wanneer gebruikers verbinding maken met werk belastingen met behulp van Azure Ba
 
 1. Ga in het [Azure Portal](https://portal.azure.com)naar uw Azure Bastion-resource en selecteer **Diagnostische instellingen** op de pagina Azure Bastion.
 
-   ![Diagnostische instellingen](./media/diagnostic-logs/1diagnostics-settings.png)
+   ![Scherm opname van de pagina Diagnostische instellingen.](./media/diagnostic-logs/1diagnostics-settings.png)
 2. Selecteer **instellingen voor diagnostische gegevens**en selecteer vervolgens **Diagnostische instelling toevoegen** om een doel voor de Logboeken toe te voegen.
 
-   ![diagnostische instelling toevoegen](./media/diagnostic-logs/2add-diagnostic-setting.png)
+   ![Scherm opname waarin de pagina Diagnostische instellingen wordt weer gegeven met de knop diagnostische instelling toevoegen geselecteerd.](./media/diagnostic-logs/2add-diagnostic-setting.png)
 3. Selecteer op de pagina **Diagnostische instellingen** het type opslag account dat moet worden gebruikt voor het opslaan van Diagnostische logboeken.
 
-   ![opslag locatie selecteren](./media/diagnostic-logs/3add-storage-account.png)
+   ![Scherm afbeelding van de pagina Diagnostische instellingen met de sectie voor het selecteren van een opslag locatie gemarkeerd.](./media/diagnostic-logs/3add-storage-account.png)
 4. Wanneer u de instellingen hebt voltooid, ziet deze er ongeveer uit als in dit voor beeld:
 
    ![voorbeeld instellingen](./media/diagnostic-logs/4example-settings.png)

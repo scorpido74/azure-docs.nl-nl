@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.assetid: db35f16e-1565-4873-a851-bd987accdc58
 ms.topic: how-to
 ms.date: 05/24/2018
-ms.openlocfilehash: 7f9af576640e6d269ff5a44d7b0e2a529c20c505
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4819b5cb252d2c646905d277fcbedc57a55fe692
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502933"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450215"
 ---
 # <a name="adding-a-user-in-the-azure-portal"></a>Een gebruiker toevoegen in de Azure-portal
 
@@ -21,7 +21,7 @@ ms.locfileid: "87502933"
 2. Klik op **wizard gebruiker toevoegen**.
 3. Zoek in de stap **gebruiker selecteren** de gebruiker die u wilt toevoegen. Klik op **Selecteren**.
 4. de stap **functie selecteren** , kies **Data Lake Analytics ontwikkel aars**. Deze rol heeft de minimale set machtigingen die nodig zijn om U-SQL-taken te verzenden/controleren/beheren. Toewijzen aan deze rol als de groep niet is bedoeld voor het beheren van Azure-Services.
-5. Selecteer in de stap **machtigingen voor catalogus selecteren** de aanvullende data bases waartoe de gebruiker toegang moet hebben. Lees-en schrijf toegang tot de hoofd database is vereist voor het verzenden van taken. Wanneer u klaar bent, klikt u op **OK**.
+5. Selecteer in de stap **machtigingen voor catalogus selecteren** de aanvullende data bases waartoe de gebruiker toegang moet hebben. Lees-en schrijf toegang tot de standaard statische data base met de naam ' Master ' is vereist voor het verzenden van taken. Wanneer u klaar bent, klikt u op **OK**.
 6. Bekijk in de laatste stap de naam **Assign selected permissions** de wijzigingen die door de wizard worden aangebracht. Klik op **OK**.
 
 

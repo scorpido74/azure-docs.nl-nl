@@ -9,13 +9,13 @@ ms.topic: reference
 ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
-ms.date: 07/27/2020
-ms.openlocfilehash: 3a02581ab898fad0440f45626676ec6bdd7227eb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/29/2020
+ms.openlocfilehash: de372b9800f4b76b42624b30f05848bc570ae6e7
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318260"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450123"
 ---
 # <a name="execute-python-script-module"></a>Python-script module uitvoeren
 
@@ -56,6 +56,9 @@ if spec is None:
 
 > [!NOTE]
 > Als uw pijp lijn meerdere python-script modules voor uitvoeren bevat waarvoor pakketten nodig zijn die zich niet in de vooraf geïnstalleerde lijst bevinden, installeert u de pakketten in elke module.
+
+> [!WARNING]
+> De excute python-script module biedt geen ondersteuning voor het installeren van pakketten die afhankelijk zijn van extra systeem eigen bibliotheken met opdracht als ' apt-get ', zoals Java, PyODBC en etc. Dit is omdat deze module wordt uitgevoerd in een eenvoudige omgeving met python vooraf geïnstalleerd en met niet-beheerders machtigingen.  
 
 ## <a name="upload-files"></a>Bestanden uploaden
 De script module voor het uitvoeren van python ondersteunt het uploaden van bestanden met behulp van de [Azure machine learning PYTHON SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true#upload-file-name--path-or-stream-).
@@ -140,7 +143,10 @@ De script module python uitvoeren bevat een voor beeld van python-code die u als
 
     Er kunnen twee gegevens sets worden geretourneerd naar de ontwerper. dit moet een reeks van het type zijn `pandas.DataFrame` . U kunt andere uitvoer in uw Python-code maken en deze rechtstreeks naar Azure Storage schrijven.
 
-6. Verzend de pijp lijn of selecteer de module en selecteer **geselecteerde uitvoeren** om alleen het python-script uit te voeren.
+    > [!WARNING]
+    > Het wordt **niet** aanbevolen om verbinding te maken met een Data Base of andere externe opslag in de **script module**voor het uitvoeren van python. U kunt de [module gegevens importeren](./import-data.md) en de [module gegevens exporteren](./export-data.md) gebruiken     
+
+6. Verzend de pijp lijn.
 
     Alle gegevens en code worden in een virtuele machine geladen en uitgevoerd met behulp van de opgegeven python-omgeving.
 

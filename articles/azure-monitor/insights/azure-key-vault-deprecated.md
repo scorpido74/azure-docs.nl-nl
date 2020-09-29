@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/27/2019
-ms.openlocfilehash: 286d8d8c202a4fc59a18501eff16a569e2d09047
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f6d8929c8fd59836ff297f226851890892c10acc
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318042"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445127"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Azure Key Vault Analytics-oplossing in Azure Monitor
 
@@ -42,10 +42,10 @@ Gebruik de volgende instructies voor het installeren en configureren van de Azur
 1. Ga in het Azure Portal naar de Key Vault resource die u wilt bewaken
 2. *Instellingen voor diagnostische gegevens* selecteren om de volgende pagina te openen
 
-   ![afbeelding van Azure Key Vault tegel](media/azure-key-vault/log-analytics-keyvault-enable-diagnostics01.png)
+   ![Scherm afbeelding van de pagina Diagnostische instellingen voor de Key Vault resource ContosoKVSCUS. de optie voor het inschakelen van diagnostische gegevens is gemarkeerd.](media/azure-key-vault/log-analytics-keyvault-enable-diagnostics01.png)
 3. Klik op *Diagnostische gegevens inschakelen* om de volgende pagina te openen
 
-   ![afbeelding van Azure Key Vault tegel](media/azure-key-vault/log-analytics-keyvault-enable-diagnostics02.png)
+   ![Scherm afbeelding van de pagina voor het configureren van diagnostische instellingen. De opties voor Send to Log Analytics, audit event log en AllMetrics zijn geselecteerd.](media/azure-key-vault/log-analytics-keyvault-enable-diagnostics02.png)
 4. Geef een naam op voor de diagnostische instelling.
 5. Klik op het selectie vakje voor *verzenden naar log Analytics*
 6. Een bestaande Log Analytics-werk ruimte selecteren of een werk ruimte maken
@@ -77,7 +77,7 @@ De volgende tabel toont methoden voor gegevens verzameling en andere informatie 
 ## <a name="use-azure-key-vault"></a>Azure Key Vault gebruiken
 Nadat u [de oplossing hebt geïnstalleerd](https://azuremarketplace.microsoft.com/en-usrketplace/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview), bekijkt u de Key Vault gegevens door te klikken op de tegel **Key Vault-analyse** van de Azure monitor **overzichts** pagina. Open deze pagina in het menu **Azure monitor** door te klikken op **meer** onder het gedeelte **inzichten** . 
 
-![afbeelding van Azure Key Vault tegel](media/azure-key-vault/log-analytics-keyvault-tile.png)
+![Scherm afbeelding van de Key Vault-analyse tegel op de pagina overzicht van Azure Monitor met een grafiek van het volume van de sleutel kluis in de loop van de tijd.](media/azure-key-vault/log-analytics-keyvault-tile.png)
 
 Nadat u op de tegel **Key Vault-analyse** hebt geklikt, kunt u samen vattingen van uw logboeken weer geven en vervolgens inzoomen op Details voor de volgende categorieën:
 
@@ -86,9 +86,9 @@ Nadat u op de tegel **Key Vault-analyse** hebt geklikt, kunt u samen vattingen v
 * Gemiddelde operationele latentie per bewerking
 * Quality of service voor bewerkingen met het aantal bewerkingen dat langer is dan 1000 MS en een lijst met bewerkingen die meer dan 1000 MS duren
 
-![afbeelding van Azure Key Vault dash board](media/azure-key-vault/log-analytics-keyvault01.png)
+![Scherm afbeelding van het Azure Key Vault dash board met tegels met grafische gegevens voor alle bewerkingen, mislukte bewerkingen en gemiddelde operationele latentie.](media/azure-key-vault/log-analytics-keyvault01.png)
 
-![afbeelding van Azure Key Vault dash board](media/azure-key-vault/log-analytics-keyvault02.png)
+![Scherm afbeelding van het Azure Key Vault dash board met tegels met gegevens voor gemiddelde operationele latentie, Quality of Service en aanbevolen Zoek opdrachten.](media/azure-key-vault/log-analytics-keyvault02.png)
 
 ### <a name="to-view-details-for-any-operation"></a>Details voor elke bewerking weer geven
 1. Klik op de pagina **overzicht** op de tegel **Key Vault-analyse** .
@@ -138,10 +138,10 @@ De bijgewerkte oplossing gebruiken:
    + Gebruik in plaats van: `KeyVaults``AzureDiagnostics | where ResourceType'=="VAULTS"`
    + Velden: (veld namen zijn hoofdletter gevoelig)
    + Voor elk veld met een achtervoegsel van \_ s, \_ d of \_ g in de naam, wijzigt u het eerste teken in kleine letters
-   + Voor een veld met het achtervoegsel \_ o in naam, worden de gegevens gesplitst in afzonderlijke velden op basis van de geneste veld namen. De UPN van de oproepende functie wordt bijvoorbeeld opgeslagen in een veld`identity_claim_http_schemas_xmlsoap_org_ws_2005_05_identity_claims_upn_s`
+   + Voor een veld met het achtervoegsel \_ o in naam, worden de gegevens gesplitst in afzonderlijke velden op basis van de geneste veld namen. De UPN van de oproepende functie wordt bijvoorbeeld opgeslagen in een veld `identity_claim_http_schemas_xmlsoap_org_ws_2005_05_identity_claims_upn_s`
    + Veld CallerIpAddress gewijzigd in CallerIPAddress
    + Het veld RemoteIPCountry is niet meer aanwezig
-4. Verwijder de oplossing *Key Vault-analyse (afgeschaft)* . Als u Power shell gebruikt, gebruikt u`Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "KeyVault" -Enabled $false`
+4. Verwijder de oplossing *Key Vault-analyse (afgeschaft)* . Als u Power shell gebruikt, gebruikt u `Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "KeyVault" -Enabled $false`
 
 Gegevens die vóór de wijziging zijn verzameld, zijn niet zichtbaar in de nieuwe oplossing. U kunt door gaan met het zoeken naar deze gegevens met behulp van het oude type en de veld namen.
 

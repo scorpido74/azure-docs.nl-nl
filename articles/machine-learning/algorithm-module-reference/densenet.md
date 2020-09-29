@@ -8,19 +8,24 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 05/26/2020
-ms.openlocfilehash: 69c18c24ae9a8eb4c1fd54c1f8530e126a40b004
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/26/2020
+ms.openlocfilehash: d64933f7b2c8ebc8597b93cbd16b34158f936f96
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90898521"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450093"
 ---
 # <a name="densenet"></a>DenseNet
 
 In dit artikel wordt beschreven hoe u de **DenseNet** -module in azure machine learning Designer kunt gebruiken om een classificatie model voor installatie kopieën te maken met behulp van de DenseNet-algoritme.  
 
-Deze classificatie-algoritme is een geclassificeerde leer methode en vereist een gegevensset met een label. Raadpleeg [converteren naar afbeelding Directory](convert-to-image-directory.md) module voor meer instructies over het ophalen van een gelabelde map met een afbeelding. U kunt het model trainen door het model en de map met de gelabelde afbeelding op te geven als invoer voor het [trainen van Pytorch-model](train-pytorch-model.md). Het getrainde model kan vervolgens worden gebruikt om waarden voor de nieuwe invoer voorbeelden te voors pellen met behulp van [Score afbeeldings model](score-image-model.md).
+Deze classificatie-algoritme is een gesupere leer methode en vereist een map met een gelabelde afbeelding. 
+
+> [!NOTE]
+> Deze module biedt geen ondersteuning voor een gelabelde gegevensset die is gegenereerd op basis van *gegevens labeling* in Studio, maar ondersteunt alleen gelabelde map met installatie kopieën die is gegenereerd van [converteren naar afbeelding Directory](convert-to-image-directory.md) module. 
+
+U kunt het model trainen door het model en de map met de gelabelde afbeelding op te geven als invoer voor het [trainen van Pytorch-model](train-pytorch-model.md). Het getrainde model kan vervolgens worden gebruikt om waarden voor de nieuwe invoer voorbeelden te voors pellen met behulp van [Score afbeeldings model](score-image-model.md).
 
 ### <a name="more-about-densenet"></a>Meer informatie over DenseNet
 
@@ -49,15 +54,15 @@ Wanneer de uitvoering van de pijp lijn is voltooid, kunt u het model voor scores
 
 ###  <a name="module-parameters"></a>Module parameters  
 
-| Name             | Bereik | Type    | Standaard     | Beschrijving                              |
+| Naam             | Bereik | Type    | Standaard     | Beschrijving                              |
 | ---------------- | ----- | ------- | ----------- | ---------------------------------------- |
 | Modelnaam       | Elk   | Modus    | densenet201 | Naam van een bepaalde densenet-structuur     |
 | Voortraind       | Elk   | Boolean-waarde | True        | Of u een vooraf getrainde model wilt gebruiken op ImageNet |
-| Geheugen efficiënt | Elk   | Boolean-waarde | False       | Of controle punten moeten worden gebruikt, wat veel geheugen efficiënt maar langzamer is |
+| Geheugen efficiënt | Elk   | Booleaans | Niet waar       | Of controle punten moeten worden gebruikt, wat veel geheugen efficiënt maar langzamer is |
 
 ###  <a name="output"></a>Uitvoer  
 
-| Naam            | Type                    | Description                              |
+| Naam            | Type                    | Beschrijving                              |
 | --------------- | ----------------------- | ---------------------------------------- |
 | Niet-traind model | UntrainedModelDirectory | Een niet-traind densenet-model dat kan worden verbonden met Train Pytorch model. |
 

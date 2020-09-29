@@ -9,18 +9,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/10/2018
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 9593a6c4fa45d9810aabb2bbb3123428930c5891
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 67940db973f494cd4a12c2f16db528e0b113d656
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401568"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449202"
 ---
-# <a name="how-front-door-matches-requests-to-a-routing-rule"></a>Hoe Front Door aanvragen afstemt op een regel voor doorsturen
+# <a name="how-requests-are-matched-to-a-routing-rule"></a>Hoe aanvragen worden vergeleken met een routerings regel
 
-Na het tot stand brengen van een verbinding en het uitvoeren van een TLS-Handshake, wanneer een aanvraag binnen een van de eerste punten in een front-deur omgeving wordt bepaald, wordt bepaald welke routerings regel moet overeenkomen met de aanvraag en de gedefinieerde actie te ondernemen. In het volgende document wordt uitgelegd hoe de voor deur bepaalt welke route configuratie moet worden gebruikt bij het verwerken van een HTTP-aanvraag.
+Na het tot stand brengen van een verbinding en het volt ooien van een TLS-Handshake, kunt u, wanneer een aanvraag binnenkomt op een van de eerste punten van de voor deur, bepalen aan welke specifieke routerings regel de aanvraag moet voldoen en vervolgens de gedefinieerde actie in de configuratie uitvoeren. In het volgende document wordt uitgelegd hoe de voor deur bepaalt welke route configuratie moet worden gebruikt bij het verwerken van een HTTP-aanvraag.
 
 ## <a name="structure-of-a-front-door-route-configuration"></a>Structuur van een configuratie voor een front-deur route
 De configuratie van een voor deur routerings regel bestaat uit twee belang rijke onderdelen: een ' aan de linkerkant ' en een ' rechter kant '. We komen overeen met de inkomende aanvraag aan de linkerkant van de route, terwijl aan de rechter kant wordt gedefinieerd hoe de aanvraag wordt verwerkt.
@@ -41,7 +41,7 @@ De beslissing over het verwerken van de aanvraag is afhankelijk van het feit of 
 In deze sectie wordt de nadruk gelegd op de manier waarop we overeenkomen met een bepaalde voor deur routerings regel. Het basis concept is dat we altijd overeenkomen met de **meest specifieke overeenkomst eerst** kijken alleen aan de linkerkant.  We passen eerst op basis van het HTTP-protocol, vervolgens de frontend-host en vervolgens het pad.
 
 ### <a name="frontend-host-matching"></a>Overeenkomende host voor frontend
-Bij het vergelijken van frontend-hosts gebruiken we de volgende logica:
+Bij het vergelijken van frontend-hosts gebruiken we de hieronder beschreven logica:
 
 1. Zoek naar een route ring met een exacte overeenkomst op de host.
 2. Als er geen exacte frontend-hosts overeenkomen, moet u de aanvraag afwijzen en een 400-fout met een onjuiste aanvraag verzenden.

@@ -1,23 +1,25 @@
 ---
-title: Spraak containers installeren-spraak service
+title: Docker-containers voor de speech service-Api's installeren en uitvoeren
 titleSuffix: Azure Cognitive Services
-description: Installeer en voer spraak containers uit. Met spraak naar tekst worden audio stromen naar tekst getranscribeerd in realtime die uw toepassingen, hulpprogram ma's of apparaten kunnen gebruiken of weer geven. Tekst-naar-spraak zet invoer tekst om in humane-achtige, gesynthesizerde spraak.
+description: Gebruik de docker-containers voor de speech-service voor het uitvoeren van spraak herkenning, transcriptie, Generation en meer on-premises.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/24/2020
+ms.date: 09/28/2020
 ms.author: aahi
-ms.openlocfilehash: be4b7f6a0f8afae9188b1f969956424041e77d9e
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.custom: cog-serv-seo-aug-2020
+keywords: on-premises, docker, container
+ms.openlocfilehash: 45edd1b13d4fe6f78eb127e7aad8feb611bce1d1
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371674"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460047"
 ---
-# <a name="install-and-run-speech-service-containers"></a>Speech Service-containers installeren en uitvoeren 
+# <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>Docker-containers voor de speech service-Api's installeren en uitvoeren 
 
 Met containers kunt u enkele van de Speech Service-API's uitvoeren in uw eigen omgeving. Containers zijn ideaal voor specifieke vereisten voor beveiliging en gegevensbeheer. In dit artikel leert u hoe u een spraakcontainer downloadt, installeert en uitvoert.
 
@@ -482,7 +484,7 @@ ApiKey={API_KEY}
 
 Met deze opdracht gebeurt het volgende: 
 
-* Voert een taal detectie container voor spraak herkenning uit vanuit de container installatie kopie. Op dit moment worden er geen kosten in rekening gebracht voor het uitvoeren van deze installatie kopie. 
+* Voert een taal detectie container voor spraak herkenning uit vanuit de container installatie kopie. Op dit moment worden er geen kosten in rekening gebracht voor het uitvoeren van deze installatie kopie.
 * Wijst 1 CPU-kernen en 1 gigabyte (GB) aan geheugen toe.
 * Beschrijft TCP-poort 5003 en wijst een pseudo-TTY voor de container toe.
 * Verwijdert de container automatisch nadat deze is afgesloten. De container installatie kopie is nog steeds beschikbaar op de hostcomputer.

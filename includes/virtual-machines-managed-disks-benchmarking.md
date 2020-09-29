@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: da5811abec889bcc47d08878a0950df7f0983663
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5fea0cb8c6ac3f706cfef5e4a153fbbf4ff465b8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87010819"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91451579"
 ---
 *De cache opwarmen*  
 De schijf met alleen-lezen host-caching kan hogere IOPS geven dan de schijf limiet. Als u dit maximale Lees prestaties wilt ophalen uit de cache van de host, moet u eerst de cache van deze schijf opwarmen. Dit zorgt ervoor dat de Lees-IOs die het benchmarking-hulp programma op CacheReads volume plaatst, een treffer voor de cache krijgt, en niet rechtstreeks de schijf. Het aantal cache treffers resulteert in extra IOPS van de schijf met één cache.
@@ -25,7 +25,7 @@ De schijf met alleen-lezen host-caching kan hogere IOPS geven dan de schijf limi
 
 ### <a name="iometer"></a>Iometer
 
-[Down load het Iometer-hulp programma](https://sourceforge.net/projects/iometer/files/iometer-stable/2006-07-27/iometer-2006.07.27.win32.i386-setup.exe/download) op de VM.
+[Down load het Iometer-hulp programma](http://sourceforge.net/projects/iometer/files/iometer-stable/1.1.0/iometer-1.1.0-win64.x86_64-bin.zip/download) op de VM.
 
 #### <a name="test-file"></a>Test bestand
 

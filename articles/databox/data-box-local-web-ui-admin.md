@@ -6,20 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 08/10/2020
+ms.date: 09/23/2020
 ms.author: alkohli
-ms.openlocfilehash: 7cac14708adecbdf3c809e3a9656d25c727d80e3
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 8455fafe9ce2465df450e9556e8b2442b01e4e23
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88206133"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449669"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>Gebruik de lokale web-UI voor het beheren van uw Data Box en Data Box Heavy
 
-In dit artikel worden enkele van de configuratie-en beheer taken beschreven die kunnen worden uitgevoerd op de Data Box en Data Box Heavy apparaten. U kunt de Data Box en Data Box Heavy apparaten beheren via de Azure Portal gebruikers interface en de lokale webgebruikersinterface voor het apparaat. Dit artikel richt zich op de taken die u kunt uitvoeren met behulp van de lokale webinterface.
+In dit artikel worden enkele van de configuratie-en beheer taken beschreven die op Data Box en Data Box Heavy apparaten worden uitgevoerd. U kunt de Data Box en Data Box Heavy apparaten beheren via de Azure Portal gebruikers interface en de lokale webgebruikersinterface voor het apparaat. Dit artikel is gericht op taken die worden uitgevoerd met behulp van de lokale webgebruikersinterface.
 
-De lokale web-UI voor de Data Box en Data Box Heavy wordt gebruikt voor de initiële configuratie van het apparaat. U kunt ook de lokale web-UI gebruiken om het apparaat af te sluiten of opnieuw op te starten, diagnostische tests uit te voeren, software bij te werken, het kopiëren van logboeken te bekijken en een logboek pakket te genereren voor Microsoft Ondersteuning. Op een Data Box Heavy apparaat met twee onafhankelijke knoop punten, hebt u toegang tot twee afzonderlijke lokale web-UIs die overeenkomen met elk knoop punt van het apparaat.
+De lokale web-UI voor de Data Box en voor Data Box Heavy wordt gebruikt voor de initiële configuratie van het apparaat. U kunt ook de lokale web-UI gebruiken om het apparaat af te sluiten of opnieuw op te starten, diagnostische tests uit te voeren, software bij te werken, het kopiëren van logboeken te bekijken en een logboek pakket te genereren voor Microsoft Ondersteuning. Op een Data Box Heavy apparaat met twee onafhankelijke knoop punten, hebt u toegang tot twee afzonderlijke lokale web-UIs die overeenkomen met elk knoop punt van het apparaat.
 
 Dit artikel bevat de volgende zelfstudies:
 
@@ -53,7 +53,7 @@ Als u problemen met het apparaat ondervindt, kunt u een ondersteuningspakket mak
 
 ## <a name="shut-down-or-restart-your-device"></a>Apparaat uitschakelen of opnieuw opstarten
 
-U kunt het apparaat afsluiten of opnieuw opstarten met behulp van de lokale webgebruikersinterface. We raden u aan de shares vóór de herstart offline te zetten op de host en vervolgens op het apparaat. Zo minimaliseert u de kans op beschadiging van gegevens. Zorg ervoor dat er geen gegevens worden gekopieerd wanneer u het apparaat afsluit.
+U kunt het apparaat afsluiten of opnieuw opstarten met behulp van de lokale webgebruikersinterface. We raden u aan de shares vóór de herstart offline te zetten op de host en vervolgens op het apparaat. Zo minimaliseert u de kans op beschadiging van gegevens. Zorg ervoor dat het kopiëren van de gegevens niet wordt uitgevoerd wanneer u het apparaat uitschakelt.
 
 Voer de volgende stappen uit om uw apparaat af te sluiten.
 
@@ -93,7 +93,7 @@ Voordat u begint, voert u de volgende stappen uit om stuk lijst-of manifest best
 
     <!-- ![Select Download list of files](media/data-box-portal-admin/download-list-of-files.png) -->
 
-3. In Windows Verkenner ziet u dat er afzonderlijke lijsten met bestanden worden gegenereerd, afhankelijk van het protocol dat wordt gebruikt om verbinding te maken met het apparaat en het gebruikte type Azure Storage.
+3. In Verkenner ziet u dat afzonderlijke lijsten met bestanden worden gegenereerd, afhankelijk van het protocol dat wordt gebruikt om verbinding te maken met het apparaat en het Azure Storage type dat wordt gebruikt.
 
     <!-- ![Files for storage type and connection protocol](media/data-box-portal-admin/files-storage-connection-type.png) -->
     ![Bestanden voor opslagtype en verbindingsprotocol](media/data-box-local-web-ui-admin/prepare-to-ship-5.png)
@@ -202,6 +202,49 @@ SMB-ondertekening inschakelen in uw Azure-apparaat:
 4. Ga in de lokale webinterface naar **Afsluiten of opnieuw opstarten**.
 5. Selecteer **opnieuw opstarten**.
 
+## <a name="enable-backup-operator-privileges"></a>Bevoegdheden voor back-upoperator inschakelen
+
+Uw webinterface gebruikers hebben standaard back-upoperator bevoegdheden op SMB-shares. Als u dit niet wilt, gebruikt u de bevoegdheid **back operator inschakelen** om de bevoegdheden uit te scha kelen of in te scha kelen.
+
+Zie Back-upoperators in [Active Directory-beveiligings groepen](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-security-groups#backup-operators)voor meer informatie.
+
+De bevoegdheden van een back-upoperator inschakelen op uw Azure-apparaat:
+
+1. Selecteer in de rechter bovenhoek van de lokale web-UI van uw apparaat de optie **instellingen**.
+
+   ![Data Box instellingen openen](media/data-box-local-web-ui-admin/data-box-settings-1.png)
+
+2. **Inschakelen** Bevoegdheden voor back-upoperators.
+
+   ![Bevoegdheden voor back-upoperator inschakelen](media/data-box-local-web-ui-admin/data-box-backup-operator-privileges-1.png)
+
+3. **Selecteer Toep assen**.
+4. Ga in de lokale webinterface naar **Afsluiten of opnieuw opstarten**.
+5. Selecteer **opnieuw opstarten**.
+
+## <a name="enable-acls-for-azure-files"></a>Acl's inschakelen voor Azure Files
+
+Meta gegevens voor bestanden worden standaard overgedragen wanneer gebruikers gegevens uploaden via SMB naar uw Data Box. De meta gegevens bevatten de toegangs beheer lijsten (Acl's), bestands kenmerken en tijds tempels. Als u dit niet wilt, gebruikt u **acl's voor Azure files** om deze functie uit te scha kelen of in te scha kelen.
+
+<!--For more information about metadata that is transferred, see [Preserving the ACLs and metadata with Azure Data Box](./data-box-local-web-ui-admin.md#enable-backup-operator-privileges) - IN DEVELOPMENT-->
+
+> [!Note]
+> Als u meta gegevens wilt overdragen met bestanden, moet u een back-upoperator zijn. Wanneer u deze functie gebruikt, moet u ervoor zorgen dat lokale gebruikers van de Web-UI back-upoperators zijn. Zie [bevoegdheden voor back-upoperator inschakelen](#enable-backup-operator-privileges).
+
+De overdracht van Acl's voor Azure files inschakelen:
+
+1. Selecteer in de rechter bovenhoek van de lokale web-UI van uw apparaat de optie **instellingen**.
+
+    ![Data Box instellingen openen](media/data-box-local-web-ui-admin/data-box-settings-1.png)
+
+2. **Inschakelen** Acl's voor Azure files.
+
+     ![Acl's inschakelen voor Azure files](media/data-box-local-web-ui-admin/data-box-acls-for-azure-files-1.png)
+  
+3. Selecteer **Toepassen**.
+4. Ga in de lokale webinterface naar **Afsluiten of opnieuw opstarten**.
+5. Selecteer **opnieuw opstarten**.
+
 ## <a name="enable-tls-11"></a>TLS 1,1 inschakelen
 
 Azure Data Box maakt standaard gebruik van Transport Layer Security (TLS) 1,2 voor versleuteling, omdat het veiliger is dan TSL 1,1. Als u of uw clients echter een browser gebruiken om toegang te krijgen tot gegevens die geen ondersteuning bieden voor TLS 1,2, kunt u TLS 1,1 inschakelen.
@@ -212,7 +255,7 @@ TLS 1,1 inschakelen in uw Azure-apparaat:
 
 1. Selecteer in de rechter bovenhoek van de lokale web-UI van uw apparaat de optie **instellingen**.
 
-    ![Instellingen openen](media/data-box-local-web-ui-admin/data-box-settings-1.png)
+    ![Data Box instellingen openen](media/data-box-local-web-ui-admin/data-box-settings-1.png)
 
 2. **Inschakelen** TLS 1,1.
 

@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/18/2020
+ms.date: 09/28/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50c5c02327aa9f48a605607de901258827b14896
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 96106cc1d9f9040f98c7d9201f05b4cff87af7e5
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783940"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449844"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Een verbonden organisatie toevoegen in het beheer van rechten van Azure AD
 
@@ -66,6 +66,8 @@ Volg de instructies in deze sectie om een extern Azure AD-Directory of-domein to
 
     ![Het deel venster met de basis principes voor het toevoegen van verbonden organisaties](./media/entitlement-management-organization/organization-basics.png)
 
+1. De status wordt automatisch ingesteld op **geconfigureerd** wanneer u een nieuwe verbonden organisatie maakt. Zie [Status eigenschappen van verbonden organisaties](#state-properties-of-connected-organizations) voor meer informatie over status eigenschappen.
+
 1. Selecteer de **map** en het domein tabblad en selecteer vervolgens **map toevoegen + domein**.
 
     Het deel venster **mappen en domeinen selecteren** wordt geopend.
@@ -109,7 +111,7 @@ Als de verbonden organisatie wijzigingen aanbrengt in een ander domein, wijzigt 
 
 1. Selecteer **verbonden organisaties**in het linkerdeel venster en selecteer vervolgens de verbonden organisatie om deze te openen.
 
-1. Selecteer **bewerken** in het overzichts venster van de verbonden organisatie als u de naam of beschrijving van de organisatie wilt wijzigen.  
+1. Selecteer **bewerken** in het overzichts venster van de verbonden organisatie om de naam, beschrijving of status van de organisatie te wijzigen.  
 
 1. Selecteer in het deel venster **Directory + domein** **Update Directory + domein** om naar een andere Directory of een ander domein te wijzigen.
 
@@ -135,6 +137,23 @@ Als u geen relatie meer hebt met een extern Azure AD-adres lijst of-domein, kunt
 ## <a name="managing-a-connected-organization-programmatically"></a>Een verbonden organisatie programmatisch beheren
 
 U kunt ook verbonden organisaties maken, weer geven, bijwerken en verwijderen met behulp van Microsoft Graph. Een gebruiker in een geschikte rol met een toepassing die de gedelegeerde `EntitlementManagement.ReadWrite.All` machtiging heeft, kan de API aanroepen om [connectedOrganization](/graph/api/resources/connectedorganization?view=graph-rest-beta) -objecten te beheren en sponsors voor hen in te stellen.
+
+## <a name="state-properties-of-connected-organizations"></a>Status eigenschappen van verbonden organisaties
+
+Er zijn twee verschillende soorten status eigenschappen voor verbonden organisaties in het Azure AD-rechts beheer op dit moment, geconfigureerd en voorgesteld: 
+
+- Een geconfigureerde verbonden organisatie is een volledig functionele, verbonden organisatie waarmee gebruikers binnen die organisatie toegang hebben tot pakketten. Wanneer een beheerder een nieuwe verbonden organisatie maakt in de Azure Portal, heeft deze standaard de status **geconfigureerd** , omdat de beheerder deze verbonden organisatie heeft gemaakt en wil gebruiken. Daarnaast moet de standaard status worden **geconfigureerd** wanneer een verbonden org via de API wordt gemaakt, tenzij deze expliciet is ingesteld op een andere status. 
+
+    Geconfigureerde verbonden organisaties worden weer gegeven in de kiezers voor verbonden organisaties en zijn in bereik voor beleids regels die zijn gericht op alle verbonden organisaties.
+
+- Een voorgestelde verbonden organisatie is een verbonden organisatie die automatisch is gemaakt, maar waarvoor geen beheerder de organisatie heeft gemaakt of goedgekeurd. Wanneer een gebruiker zich aanmeldt voor een toegangs pakket buiten een geconfigureerde verbonden organisatie, krijgen alle automatisch gemaakte verbonden organisaties de **voorgestelde** status, omdat er geen beheerder in de Tenant is ingesteld die samen werking. 
+    
+    Voorgestelde verbonden organisaties worden niet weer gegeven in de Pickers voor geconfigureerde verbonden organisaties en zijn niet in het bereik voor de instelling alle geconfigureerde verbonden organisaties voor elk beleid. 
+
+Alleen gebruikers van geconfigureerde verbonden organisaties kunnen toegangs pakketten aanvragen die beschikbaar zijn voor gebruikers van alle geconfigureerde organisaties. Gebruikers van voorgestelde verbonden organisaties hebben een ervaring alsof er geen verbonden organisatie voor dat domein is en geen toegang tot het toegangs pakket heeft totdat de status door een beheerder is gewijzigd.
+
+> [!NOTE]
+> Als onderdeel van het implementeren van deze nieuwe functie werden alle verbonden organisaties die zijn gemaakt vóór 09/09/20, als **geconfigureerd**beschouwd. Als u een toegangs pakket hebt waarmee gebruikers van een organisatie zich kunnen registreren, moet u uw lijst met verbonden organisaties die zijn gemaakt vóór die datum controleren om ervoor te zorgen dat er geen gecategoriseerd is als **geconfigureerd**.  Een beheerder kan de eigenschap **State** zo nodig bijwerken. Zie [een verbonden organisatie bijwerken](#update-a-connected-organization)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

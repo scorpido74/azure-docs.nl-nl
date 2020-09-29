@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: ccdf5885dd1199ff8ed8000e5feaf80662aae42a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4dc5b84ff127aef173deecfd2be705004d92ee0c
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318059"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449919"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Azure-netwerk bewakings oplossingen in Azure Monitor
 
@@ -87,10 +87,10 @@ Gebruik de volgende instructies om de Azure-toepassing gateway Analytics-oplossi
 1. Navigeer in het Azure Portal naar de Application Gateway resource die u wilt bewaken.
 2. Selecteer *Diagnostische logboeken* om de volgende pagina te openen.
 
-   ![afbeelding van Azure-toepassing gateway resource](media/azure-networking-analytics/log-analytics-appgateway-enable-diagnostics01.png)
+   ![Scherm afbeelding van de pagina Diagnostische logboeken voor een Application Gateway bron met de optie voor het inschakelen van diagnostische gegevens.](media/azure-networking-analytics/log-analytics-appgateway-enable-diagnostics01.png)
 3. Klik op *Diagnostische gegevens inschakelen* om de volgende pagina te openen.
 
-   ![afbeelding van Azure-toepassing gateway resource](media/azure-networking-analytics/log-analytics-appgateway-enable-diagnostics02.png)
+   ![Scherm afbeelding van de pagina voor het configureren van diagnostische instellingen. De optie voor Send to Log Analytics is geselecteerd als drie logboek typen en een metriek.](media/azure-networking-analytics/log-analytics-appgateway-enable-diagnostics02.png)
 4. Als u Diagnostische gegevens wilt inschakelen *, klikt u op onder* *status*.
 5. Klik op het selectie vakje voor *verzenden naar log Analytics*.
 6. Selecteer een bestaande Log Analytics werk ruimte of maak een werk ruimte.
@@ -123,9 +123,9 @@ Nadat u op de tegel **Azure-toepassing gateway Analytics** in het overzicht hebt
   * Host-status voor Application Gateway
   * Maximum-en 95e percentiel voor mislukte Application Gateway-aanvragen
 
-![afbeelding van het dash board van Azure-toepassing gateway Analytics](media/azure-networking-analytics/log-analytics-appgateway01.png)
+![Scherm afbeelding van het Application Gateway Access logboeken dash board met tegels met gegevens voor gateway fouten, aanvragen en mislukte aanvragen.](media/azure-networking-analytics/log-analytics-appgateway01.png)
 
-![afbeelding van het dash board van Azure-toepassing gateway Analytics](media/azure-networking-analytics/log-analytics-appgateway02.png)
+![Scherm opname van het Application Gateway Access logboeken dash board met tegels met gegevens voor fouten per gebruikers agent, status van host en mislukte aanvragen.](media/azure-networking-analytics/log-analytics-appgateway02.png)
 
 Controleer op het **Azure-toepassing gateway Analytics** -dash board de samenvattings informatie op een van de Blades en klik vervolgens op een van de pagina's om gedetailleerde informatie weer te geven op de pagina zoeken in Logboeken.
 
@@ -158,10 +158,10 @@ Gebruik de volgende instructies voor het installeren en configureren van de Azur
 1. Navigeer in het Azure Portal naar de resource van de netwerk beveiligings groep die u wilt bewaken
 2. Selecteer *Diagnostische logboeken* om de volgende pagina te openen
 
-   ![afbeelding van de resource van de Azure-netwerk beveiligings groep](media/azure-networking-analytics/log-analytics-nsg-enable-diagnostics01.png)
+   ![Scherm afbeelding van de pagina Diagnostische logboeken voor een resource van een netwerk beveiligings groep met de optie voor het inschakelen van diagnostische gegevens.](media/azure-networking-analytics/log-analytics-nsg-enable-diagnostics01.png)
 3. Klik op *Diagnostische gegevens inschakelen* om de volgende pagina te openen
 
-   ![afbeelding van de resource van de Azure-netwerk beveiligings groep](media/azure-networking-analytics/log-analytics-nsg-enable-diagnostics02.png)
+   ![Scherm afbeelding van de pagina voor het configureren van diagnostische instellingen. De status is ingesteld op aan, verzenden naar Log Analytics is geselecteerd en er zijn twee logboek typen geselecteerd.](media/azure-networking-analytics/log-analytics-nsg-enable-diagnostics02.png)
 4. Als u Diagnostische gegevens wilt inschakelen *, klikt u op onder* *status*
 5. Klik op het selectie vakje voor *verzenden naar log Analytics*
 6. Een bestaande Log Analytics-werk ruimte selecteren of een werk ruimte maken
@@ -189,9 +189,9 @@ Nadat u op de tegel **Azure Network Security Group Analytics** in het overzicht 
   * Regels voor netwerk beveiligings groepen met toegestane stromen
   * MAC-adressen met toegestane stromen
 
-![afbeelding van het dash board Azure Network Security Group Analytics](media/azure-networking-analytics/log-analytics-nsg01.png)
+![Scherm opname van tegels met gegevens voor de netwerk beveiligings groep geblokkeerd stromen, met inbegrip van regels met geblokkeerde stromen en MAC-adressen met geblokkeerde stromen.](media/azure-networking-analytics/log-analytics-nsg01.png)
 
-![afbeelding van het dash board Azure Network Security Group Analytics](media/azure-networking-analytics/log-analytics-nsg02.png)
+![Scherm opname van tegels met gegevens voor de netwerk beveiligings groep toegestane stromen, met inbegrip van regels met toegestane stromen en MAC-adressen met toegestane stromen.](media/azure-networking-analytics/log-analytics-nsg02.png)
 
 Bekijk in het dash board van de **Azure Network-beveiligings groep Analytics** de samenvattings informatie op een van de Blades en klik vervolgens op één om gedetailleerde informatie weer te geven op de pagina zoeken in Logboeken.
 
@@ -221,7 +221,7 @@ De bijgewerkte oplossingen gebruiken:
    + Voor elk veld met een achtervoegsel van \_ s, \_ d of \_ g in de naam, wijzigt u het eerste teken in kleine letters
    + Voor een veld met het achtervoegsel \_ o in naam, worden de gegevens gesplitst in afzonderlijke velden op basis van de geneste veld namen.
 4. Verwijder de oplossing *Azure Networking Analytics (afgeschaft)* .
-   + Als u Power shell gebruikt, gebruikt u`Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "AzureNetwork" -Enabled $false`
+   + Als u Power shell gebruikt, gebruikt u `Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "AzureNetwork" -Enabled $false`
 
 Gegevens die vóór de wijziging zijn verzameld, zijn niet zichtbaar in de nieuwe oplossing. U kunt door gaan met het zoeken naar deze gegevens met behulp van het oude type en de veld namen.
 

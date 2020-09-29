@@ -6,13 +6,13 @@ ms.topic: how-to
 ms.date: 09/17/2020
 author: deborahc
 ms.author: dech
-ms.custom: devx-track-python, devx-track-java
-ms.openlocfilehash: 8f2714c7c49aa5e02747ce726da29a98485b5fbd
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.custom: devx-track-python, devx-track-java, contperfq1
+ms.openlocfilehash: 068b316eaa92a1e781df0b9945133a26fa0b88a2
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90988239"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445286"
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs-apps"></a>De Azure Cosmos DB-emulator certificaten exporteren voor gebruik met Java-, python-en Node.js-apps
 
@@ -36,31 +36,31 @@ U moet het Emulator-certificaat exporteren om het Emulator-eind punt te kunnen g
 
 1. Klik op **Details** en klik op **OK**.
 
-    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-2.png" alt-text="Stap 2 van exporteren met lokale Azure DB Cosmos-emulator":::
+    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-2.png" alt-text="Stap 1 van exporteren met lokale Azure DB Cosmos-emulator":::
 
 1. Klik op **Kopiëren naar bestand... **.
 
-    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-3.png" alt-text="Stap 3 van exporteren met lokale Azure DB Cosmos-emulator":::
+    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-3.png" alt-text="Stap 1 van exporteren met lokale Azure DB Cosmos-emulator":::
 
 1. Klik op **Volgende**.
 
-    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-4.png" alt-text="Stap 4 van exporteren met lokale Azure DB Cosmos-emulator":::
+    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-4.png" alt-text="Stap 1 van exporteren met lokale Azure DB Cosmos-emulator":::
 
 1. Klik op **Nee, persoonlijke sleutel niet exporteren** en klik op **Volgende**.
 
-    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-5.png" alt-text="Stap 5 van exporteren met lokale Azure DB Cosmos-emulator":::
+    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-5.png" alt-text="Stap 1 van exporteren met lokale Azure DB Cosmos-emulator":::
 
 1. Klik op **Base-64 encoded X.509 (.CER)** en klik op **Volgende**.
 
-    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-6.png" alt-text="Stap 6 van exporteren met lokale Azure DB Cosmos-emulator":::
+    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-6.png" alt-text="Stap 1 van exporteren met lokale Azure DB Cosmos-emulator":::
 
 1. Geef het certificaat een naam, in dit geval **documentdbemulatorcert**, en klik op **Volgende**.
 
-    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-7.png" alt-text="Stap 7 van exporteren met lokale Azure DB Cosmos-emulator":::
+    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-7.png" alt-text="Stap 1 van exporteren met lokale Azure DB Cosmos-emulator":::
 
 1. Klik op **Voltooien**.
 
-    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-8.png" alt-text="Stap 8 van exporteren met lokale Azure DB Cosmos-emulator":::
+    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-8.png" alt-text="Stap 1 van exporteren met lokale Azure DB Cosmos-emulator":::
 
 ## <a name="use-the-certificate-with-java-apps"></a>Het certificaat gebruiken met Java-apps
 
@@ -98,7 +98,7 @@ Wanneer u verbinding maakt met de emulator vanuit Node.js Sdk's, wordt TLS-verif
 
 U kunt forceren om de emulator certificaten opnieuw te genereren door **gegevens opnieuw instellen** te selecteren in de Azure Cosmos DB-emulator die wordt uitgevoerd in de Windows-lade. Houd er rekening mee dat met deze actie ook alle gegevens die lokaal zijn opgeslagen door de emulator, worden gewist.
 
-:::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-reset-data.png" alt-text="Gegevens herstellen met de lokale emulator van Azure Cosmos DB":::
+:::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-reset-data.png" alt-text="Stap 1 van exporteren met lokale Azure DB Cosmos-emulator":::
 
 Als u het certificaat in het Java-certificaat archief hebt geïnstalleerd of elders hebt gebruikt, moet u ze opnieuw importeren met de huidige certificaten. Uw toepassing kan pas verbinding maken met de lokale emulator als u de certificaten bijwerkt.
 

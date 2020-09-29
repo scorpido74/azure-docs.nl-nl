@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 09/04/2020
 ms.author: jushiman
-ms.openlocfilehash: cf8e7340ce3554bf27364335457a5b7eadcdc049
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7a716ed9bca6d34ad4dbcd2566837a839f71153b
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935228"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450310"
 ---
 # <a name="create-a-custom-preference-in-azure-automanage-for-vms"></a>Een aangepaste voor keur maken in azure automanage voor Vm's
 
@@ -34,7 +34,7 @@ Als u geen Azure-abonnement hebt, [maakt u een account](https://azure.microsoft.
 > Accounts voor gratis proefversies hebben geen toegang tot de virtuele machines die in deze zelfstudie worden gebruikt. U moet upgraden naar een abonnement met betalen per gebruik.
 
 > [!IMPORTANT]
-> De volgende RBAC-machtiging is vereist voor het inschakelen van automanage: rol van **eigenaar** of **Inzender** samen met beheerders rollen voor **gebruikers toegang** .
+> De volgende RBAC-machtiging is vereist voor het inschakelen van automanage: rol **Owner** of **Inzender** samen met beheerders rollen voor **gebruikers toegang** .
 
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
@@ -42,26 +42,26 @@ Als u geen Azure-abonnement hebt, [maakt u een account](https://azure.microsoft.
 Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 
-## <a name="enable-automanage-for-vms-on-an-existing-vm"></a>Automanage inschakelen voor Vm's op een bestaande virtuele machine
+## <a name="enable-automanage-for-vms-on-an-existing-vm"></a>Automanage inschakelen voor virtuele machines op een bestaande virtuele machine
 
-1. Zoek in de zoek balk naar en selecteer automatisch **beheer – aanbevolen procedures voor virtuele Azure-machines**.
+1. Zoek in de zoekbalk naar **Automatisch beheer: aanbevolen procedures voor virtuele Azure-machines** en selecteer deze optie.
 
-2. Selecteer de **optie inschakelen op bestaande virtuele machine**.
+2. Selecteer **Op bestaande VM inschakelen**.
 
-3. Op de Blade **computers selecteren** :
-    1. De lijst met Vm's filteren op uw **abonnement** en **resource groep**.
-    1. Schakel het selectie vakje in van elke virtuele machine die u wilt vrijgeven.
-    1. Klik op de knop **selecteren** .
+3. Ga als volgt te werk op de blade **Machines selecteren**:
+    1. Filter de lijst met virtuele machines op uw **Abonnement** en **Resourcegroep**.
+    1. Schakel het selectievakje in van elke virtuele machine die u wilt onboarden.
+    1. Klik op de knop **Selecteren**.
 
-    :::image type="content" source="media\virtual-machine-custom-preferences\existing-vm-select-machine.png" alt-text="Selecteer bestaande VM in de lijst met beschik bare Vm's.":::
+    :::image type="content" source="media\virtual-machine-custom-preferences\existing-vm-select-machine.png" alt-text="Bestaande virtuele machine selecteren in de lijst met beschikbare virtuele machines.":::
 
-4. Klik onder **configuratie profiel**op **Bladeren en wijzig de profielen en voor keuren**.
+4. Klik onder **Configuratieprofiel**op **Bladeren en profielen en voorkeuren wijzigen**.
 
-    :::image type="content" source="media\virtual-machine-custom-preferences\existing-vm-quick-create.png" alt-text="Blader en wijzig de profielen en voor keuren.":::
+    :::image type="content" source="media\virtual-machine-custom-preferences\existing-vm-quick-create.png" alt-text="Bestaande virtuele machine selecteren in de lijst met beschikbare virtuele machines.":::
 
 5. Selecteer op de Blade **configuratie profiel selecteren + voor keuren** een profiel aan de linkerkant: *dev/test* voor testen, *Prod* voor productie.
 
-    :::image type="content" source="media\virtual-machine-custom-preferences\browse-production-profile.png" alt-text="Blader door het productie configuratie profiel.":::
+    :::image type="content" source="media\virtual-machine-custom-preferences\browse-production-profile.png" alt-text="Bestaande virtuele machine selecteren in de lijst met beschikbare virtuele machines.":::
 
 6. Op het gekozen profiel bevat de voor **keuren voor configuratie** een vervolg keuzelijst waarin u kunt aanpassen voor bepaalde services.
     1. Klik op **nieuwe voor keuren maken**.
@@ -69,9 +69,9 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com/).
         1. Abonnement
         1. Resourcegroep
         1. Voorkeurs naam
-        1. Regio
+        1. Region
 
-    :::image type="content" source="media\virtual-machine-custom-preferences\create-preference.png" alt-text="Vul de configuratie voorkeuren in.":::
+    :::image type="content" source="media\virtual-machine-custom-preferences\create-preference.png" alt-text="Bestaande virtuele machine selecteren in de lijst met beschikbare virtuele machines.":::
 
 7. Ga naar het tabblad voor keuren en pas de gewenste configuratie voorkeuren aan.
         
@@ -84,27 +84,27 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 10. Klik op de knop **Inschakelen**.
 
 
-## <a name="disable-automanage-for-vms"></a>Automanage voor Vm's uitschakelen
+## <a name="disable-automanage-for-vms"></a>Automanage uitschakelen voor virtuele machines
 
-U kunt het gebruik van Azure automanage voor virtuele machines snel stoppen door automanagement uit te scha kelen.
+Stop snel het gebruik van Azure Automanage voor virtuele machines door automatisch beheer uit te schakelen.
 
-:::image type="content" source="media\virtual-machine-custom-preferences\disable-step-1.png" alt-text="Automatisch beheer uitschakelen op een virtuele machine.":::
+:::image type="content" source="media\virtual-machine-custom-preferences\disable-step-1.png" alt-text="Bestaande virtuele machine selecteren in de lijst met beschikbare virtuele machines.":::
 
-1. Ga naar de pagina aanbevolen procedures voor het automatisch **beheren van virtuele Azure-machines** met een lijst met alle automatische beheerde vm's.
-1. Schakel het selectie vakje in naast de virtuele machine die u wilt uitschakelen.
-1. Klik op de knop **Automanagent uitschakelen** .
-1. Lees de berichten in het pop-upvenster met de melding aandachtig door voordat **u ermee**akkoord gaat.
+1. Ga naar de pagina **Automatisch beheer: aanbevolen procedures voor virtuele Azure-machines**. U vindt daar een lijst met alle automatisch beheerde virtuele machines.
+1. Schakel het selectievakje in naast de virtuele machine die u wilt uitschakelen.
+1. Klik op de knop **Automatisch beheer uitschakelen**.
+1. Lees aandachtig door de berichten in het pop-upvenster voordat u akkoord gaat met het **uitschakelen**.
 
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u een nieuwe resource groep hebt gemaakt om Azure automanage te proberen voor virtuele machines en deze niet meer nodig hebt, kunt u de resource groep verwijderen. Als u de groep verwijdert, worden ook de virtuele machine en alle resources in de resource groep verwijderd.
+Als u een nieuwe resourcegroep hebt gemaakt om Azure Automanage te proberen voor virtuele machines en deze niet meer nodig hebt, kunt u de resourcegroep verwijderen. Als u de groep verwijdert, worden ook de virtuele machines en alle resources in de resourcegroep verwijderd.
 
-Met Azure automanage worden standaard resource groepen gemaakt voor het opslaan van resources in. Controleer de resource groepen met de naam Conventie ' DefaultResourceGroupRegionName ' en ' AzureBackupRGRegionName ' om alle resources op te schonen.
+Azure Automanage maakt standaard resourcegroepen voor het opslaan van resources. Controleer de resourcegroepen met de naamconventie 'DefaultResourceGroupRegionName' en 'AzureBackupRGRegionName' om alle resources op te schonen.
 
 1. Selecteer de **Resourcegroep**.
 1. Selecteer **Verwijderen** op de pagina van de resourcegroep.
-1. Wanneer u hierom wordt gevraagd, bevestigt u de naam van de resource groep en selecteert u vervolgens **verwijderen**.
+1. Bevestig de naam van de resourcegroep als daar om wordt gevraagd. Selecteer vervolgens **Verwijderen**.
 
 
 ## <a name="next-steps"></a>Volgende stappen 

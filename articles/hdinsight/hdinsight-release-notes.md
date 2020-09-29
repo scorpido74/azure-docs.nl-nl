@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: fd0412459e7d6e51b6abdccbc8782d157acee6b9
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.date: 09/27/2020
+ms.openlocfilehash: f6527a0c5712d68756310b699d214013e89f38e1
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89319794"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449579"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Opmerkingen bij de release van Azure HDInsight
 
@@ -23,56 +23,43 @@ Dit artikel bevat informatie over de **meest recente** updates voor Azure HDInsi
 
 Azure HDInsight is een van de populairste services van zakelijke klanten voor open-source analyses op Azure.
 
-## <a name="release-date-08092020"></a>Release datum: 08/09/2020
+## <a name="release-date-09282020"></a>Release datum: 09/28/2020
 
-Deze release is alleen van toepassing op HDInsight 4,0. HDInsight-release wordt beschikbaar gesteld voor alle regio's over enkele dagen. De release datum geeft hier de release datum van de eerste regio aan. Als de onderstaande wijzigingen niet worden weer gegeven, wacht u tot de release over enkele dagen in uw regio actief is.
+Deze versie is van toepassing op zowel HDInsight 3,6 als HDInsight 4,0. HDInsight-release wordt beschikbaar gesteld voor alle regio's over enkele dagen. De release datum geeft hier de release datum van de eerste regio aan. Als de onderstaande wijzigingen niet worden weer gegeven, wacht u tot de release over enkele dagen in uw regio actief is.
 
 ## <a name="new-features"></a>Nieuwe functies
-### <a name="support-for-sparkcruise"></a>Ondersteuning voor SparkCruise
-SparkCruise is een systeem voor het hergebruik van automatische berekeningen voor Spark. Gemeen schappelijke subexpressies worden geselecteerd voor realiseren op basis van de query workload van het verleden. SparkCruise resultatenset deze subexpressies als onderdeel van het verwerken van query's en hergebruik van berekeningen worden automatisch op de achtergrond toegepast. U kunt profiteren van SparkCruise zonder enige wijziging van de Spark-code.
- 
-### <a name="support-hive-view-for-hdinsight-40"></a>Hive-weer gave voor HDInsight 4,0
-De Apache Ambari-Hive-weer gave is ontworpen om u te helpen bij het ontwerpen, optimaliseren en uitvoeren van Hive-query's vanuit uw webbrowser. De Hive-weer gave wordt standaard ondersteund voor HDInsight 4,0-clusters vanaf deze release. Het is niet van toepassing op bestaande clusters. U moet het cluster verwijderen en opnieuw maken om de ingebouwde Hive-weer gave te krijgen.
- 
-### <a name="support-tez-view-for-hdinsight-40"></a>TEZ-weer gave voor HDInsight 4,0
-De Apache TEZ-weer gave wordt gebruikt om de uitvoering van de Hive TEZ-taak bij te houden en op te sporen. De weer gave TEZ wordt standaard ondersteund voor HDInsight 4,0 vanaf deze release. Het is niet van toepassing op bestaande clusters. U moet het cluster verwijderen en opnieuw maken om de ingebouwde weer gave TEZ te krijgen.
+### <a name="llap-cluster-auto-scale-general-available"></a>Algemene Beschik baarheid voor automatisch schalen van LLAP-cluster
+Automatisch schalen voor het LLAP-cluster type is nu algemeen beschikbaar (GA). Alle LLAP-clusters die na 27 augustus 2020 zijn gemaakt, hebben GA ondersteuning voor automatisch schalen.
+
+### <a name="hbase-cluster-supports-premium-adls-gen2"></a>HBase-cluster ondersteunt Premium-ADLS Gen2
+HDInsight ondersteunt nu Premium ADLS Gen2 als primair opslag account voor HDInsight HBase 3,6-en 4,0-clusters. In combi natie met [versnelde schrijf bewerkingen](./hbase/apache-hbase-accelerated-writes.md)kunt u betere prestaties voor uw HBase-clusters krijgen.
+
+### <a name="kafka-partition-distribution-on-azure-fault-domains"></a>Distributie van Kafka-partities in azure-fout domeinen
+Een foutdomein is een logische groepering van de onderliggende hardware in een Azure-datacenter. Elk foutdomein deelt een algemene voedingsbron en netwerkswitch. Voordat HDInsight Kafka alle partitie replica's in hetzelfde fout domein kan opslaan. Vanaf deze release ondersteunt HDInsight nu automatisch de distributie van Kafka-partities op basis van Azure-fout domeinen. 
+
+### <a name="encryption-in-transit"></a>Versleuteling 'in transit'
+Klanten kunnen versleuteling in transit tussen cluster knooppunten inschakelen met behulp van IPSec-versleuteling met door het platform beheerde sleutels. Deze optie kan worden ingeschakeld op het moment dat het cluster wordt gemaakt. Zie meer informatie over [het inschakelen van versleuteling tijdens de overdracht](./domain-joined/encryption-in-transit.md).
+
+### <a name="encryption-at-host"></a>Versleuteling op de host
+Wanneer u versleuteling inschakelt op de host, worden gegevens die op de VM-host zijn opgeslagen, versleuteld op rest en stromen die zijn versleuteld naar de opslag service. Vanuit deze release kunt u versleuteling op de **tijdelijke gegevens schijf op de host inschakelen** bij het maken van het cluster. Versleuteling op host wordt alleen ondersteund op [bepaalde VM-sku's in beperkte regio's](https://docs.microsoft.com/azure/virtual-machines/linux/disks-enable-host-based-encryption-portal). HDInsight ondersteunt de [volgende knooppunt configuratie en sku's](./hdinsight-supported-node-configuration.md). Zie meer informatie over [het inschakelen van versleuteling op de host](https://docs.microsoft.com/azure/hdinsight/disk-encryption#encryption-at-host-using-platform-managed-keys).
+
+### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Verplaatsen naar schaal sets voor virtuele Azure-machines
+HDInsight maakt nu gebruik van virtuele machines van Azure om het cluster in te richten. Vanaf deze release wordt de service geleidelijk naar [virtuele-machine schaal sets van Azure](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)gemigreerd. Het hele proces kan maanden duren. Nadat uw regio's en abonnementen zijn gemigreerd, worden nieuw gemaakte HDInsight-clusters uitgevoerd op virtuele-machine schaal sets zonder klant acties. Er wordt geen breuk wijziging verwacht.
 
 ## <a name="deprecation"></a>Afschaffing
-### <a name="deprecation-of-spark-21-and-22-in-hdinsight-36-spark-cluster"></a>Afschaffing van Apache Spark 2.1 en 2.2 in HDInsight 3.6 Spark-cluster
-Vanaf juli 1 2020 kunnen klanten geen nieuwe Spark-clusters maken met Spark 2,1 en 2,2 op HDInsight 3,6. Bestaande clusters worden uitgevoerd zonder de ondersteuning van micro soft. Overweeg om over te stappen op Spark 2,3 op HDInsight 3,6 van juni 30 2020 om mogelijke onderbreking van systeem/ondersteuning te voor komen.
- 
-### <a name="deprecation-of-spark-23-in-hdinsight-40-spark-cluster"></a>Afschaffing van Apache Spark 2.3 in HDInsight 4.0 Spark-cluster
-Vanaf juli 1 2020 kunnen klanten geen nieuwe Spark-clusters maken met Spark 2,3 op HDInsight 4,0. Bestaande clusters worden uitgevoerd zonder de ondersteuning van micro soft. Overweeg om de overstap naar Apache Spark 2.4 op HDInsight 4.0 voor 30 juni 2020 te maken om potentiële systeem- en ondersteuningsonderbrekingen te voorkomen.
- 
-### <a name="deprecation-of-kafka-11-in-hdinsight-40-kafka-cluster"></a>Afschaffing van Kafka 1.1 in HDInsight 4.0 Kafka-cluster
-Vanaf juli 1 2020 kunnen klanten geen nieuwe Kafka-clusters maken met Kafka 1,1 op HDInsight 4,0. Bestaande clusters worden uitgevoerd zonder de ondersteuning van micro soft. Overweeg om de overstap naar Kafka 2.1 op HDInsight 4.0 voor 30 juni 2020 te maken om potentiële systeem- en ondersteuningsonderbrekingen te voorkomen.
+Geen afschaffing voor deze release.
 
 ## <a name="behavior-changes"></a>Gedrags wijzigingen
-### <a name="ambari-stack-version-change"></a>Ambari stack-versie wijziging
-In deze versie verandert de Ambari-versie van 2. x. x. x in 4,1. U kunt de stack versie (HDInsight 4,1) controleren in Ambari: Ambari >-versies van gebruikers >.
+Er is geen wijziging van het gedrag voor deze versie.
 
 ## <a name="upcoming-changes"></a>Aanstaande wijzigingen
-Er zijn geen aanstaande Afbrekings wijzigingen die u moet aanbest Eden.
+De volgende wijzigingen worden uitgevoerd in toekomstige releases.
+
+### <a name="ability-to-select-different-zookeeper-sku-for-spark-hadoop-and-ml-services"></a>Mogelijkheid om verschillende Zookeeper-SKU'S te selecteren voor Spark-, Hadoop-en ML-Services
+HDInsight biedt geen ondersteuning voor het wijzigen van Zookeeper SKU voor cluster typen van Spark, Hadoop en ML Services. Er wordt gebruikgemaakt van A2_v2/a2 SKU voor Zookeeper knooppunten en klanten worden niet in rekening gebracht. In de aanstaande release kunnen klanten de Zookeeper-SKU voor Spark-, Hadoop-en ML-Services indien nodig wijzigen. Zookeeper-knoop punten met een andere SKU dan A2_v2/a2 worden in rekening gebracht. De standaard-SKU wordt nog steeds A2_V2/a2 en gratis.
 
 ## <a name="bug-fixes"></a>Opgeloste fouten
 HDInsight blijft de betrouw baarheid en prestaties van het cluster verbeteren. 
 
-Hieronder vindt u een back-uppoort voor de Hive-JIRAs:
-* [HIVE-23619](https://issues.apache.org/jira/browse/HIVE-23619)
-* [HIVE-21223](https://issues.apache.org/jira/browse/HIVE-21223)
-* [HIVE-22599](https://issues.apache.org/jira/browse/HIVE-22599)
-* [HIVE-22121](https://issues.apache.org/jira/browse/HIVE-22121)
-* [HIVE-22136](https://issues.apache.org/jira/browse/HIVE-22136)
-* [HIVE-18786](https://issues.apache.org/jira/browse/HIVE-18786)
-
-Hieronder vindt u een back-up van de JIRAs voor HBase:
-* [HBASE-21458](https://issues.apache.org/jira/browse/HBASE-21458)
-* [HBASE-24208](https://issues.apache.org/jira/browse/HBASE-24208)
-* [HBASE-24205](https://issues.apache.org/jira/browse/HBASE-24205)
-
 ## <a name="component-version-change"></a>Onderdeel versie wijzigen
 Er is geen wijziging van de onderdeel versie voor deze versie. In [dit document](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)vindt u de huidige versie van de onderdelen voor hdinsight 4,0 en hdinsight 3,6.
-
-## <a name="known-issues"></a>Bekende problemen
-
-Er is een probleem opgelost in Azure Portal, waarbij gebruikers een fout ondervonden tijdens het maken van een Azure HDInsight-cluster met een openbare sleutel als SSH-verificatietype. Wanneer gebruikers op **Beoordelen + Maken** klikken, verschijnt de fout 'Mag geen drie opeenvolgende tekens uit de SSH-gebruikersnaam bevatten'. Dit probleem is opgelost, maar mogelijk moet u de cache van de browser vernieuwen door op CTRL + F5 te drukken om de gecorrigeerde weergave te laden. De tijdelijke oplossing voor dit probleem was het maken van een cluster met een ARM-sjabloon. 

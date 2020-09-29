@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22992f66d45b9bdb76383301cccff645c98a74d9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7f9af8ee3bf87cfd5d2e74adfce618c7cf8c7e63
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91264776"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450329"
 ---
 # <a name="azure-ad-administrative-units-troubleshooting-and-faq"></a>Azure AD-beheer eenheden: problemen oplossen en veelgestelde vragen
 
@@ -67,9 +67,9 @@ Om een uitbrei ding van bevoegdheden te voor komen, kan een beheerder met een be
 
 **V: worden er administratieve eenheden ondersteund in Power shell en de Graph API?**
 
-**A:** Klikt. U vindt ondersteuning voor beheer eenheden in [Power shell-cmdlet-documentatie](/powershell/module/Azuread/?view=azureadps-2.0-preview&preserve-view=true) en [voorbeeld scripts](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0-preview&preserve-view=true).
+**A:** Klikt. U vindt ondersteuning voor beheer eenheden in [Power shell-cmdlet-documentatie](/powershell/module/Azuread/?view=azureadps-2.0&preserve-view=true) en [voorbeeld scripts](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0&preserve-view=true).
 
-Zoek ondersteuning voor het [resource type administrativeUnit](/graph/api/resources/administrativeunit?view=graph-rest-beta&preserve-view=true) in Microsoft Graph.
+Zoek ondersteuning voor het [resource type administrativeUnit](/graph/api/resources/administrativeunit?view=graph-rest-1.0&preserve-view=true) in Microsoft Graph.
 
 ## <a name="next-steps"></a>Volgende stappen
 

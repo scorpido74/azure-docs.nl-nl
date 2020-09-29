@@ -7,20 +7,20 @@ author: msjuergent
 manager: bburns
 editor: ''
 tags: azure-resource-manager
-keywords: ''
+keywords: SAP, Azure HANA, opslag met hoge schijf, Premium-opslag
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/03/2020
+ms.date: 09/28/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 60947a8138972834f30274715226648d1b2360a1
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 62faec3fd9ee36cb7a2b5da7e6bae07c6c8e06af
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89440691"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449373"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>Configuraties van SAP HANA in virtuele Azure-machineopslag
 
@@ -250,8 +250,8 @@ De aanbevelingen overschrijden vaak de minimum vereisten van SAP zoals eerder in
 | M32ts | 192 GiB | 500 MB/s | 250 GB | 400 MBps | 2500 | 96 GB | 250 MBps  | 1800 |
 | M32ls | 256 GiB | 500 MB/s | 300 GB | 400 MBps | 2500 | 256 GB | 250 MBps  | 1800 |
 | M64ls | 512 GiB | 1.000 MB/s | 620 GB | 400 MBps | 3500 | 256 GB | 250 MBps  | 1800 |
-| M64s | 1.000 GiB | 1.000 MB/s |  1.200 GB | 600 MBps | 5\.000 | 512 GB | 250 MBps  | 2500 |
-| M64ms | 1.750 GiB | 1.000 MB/s | 2.100 GB | 600 MBps | 5\.000 | 512 GB | 250 MBps  | 2500 |
+| M64s | 1.000 GiB | 1.000 MB/s |  1.200 GB | 600 MBps | 5.000 | 512 GB | 250 MBps  | 2500 |
+| M64ms | 1.750 GiB | 1.000 MB/s | 2.100 GB | 600 MBps | 5.000 | 512 GB | 250 MBps  | 2500 |
 | M128s | 2.000 GiB | 2.000 MB/s |2.400 GB | 750 MBps | 7.000 | 512 GB | 250 MBps  | 2500 | 
 | M128ms | 3.800 GiB | 2.000 MB/s | 4.800 GB | 750 MBps |9600 | 512 GB | 250 MBps  | 2500 | 
 | M208s_v2 | 2.850 GiB | 1.000 MB/s | 3.500 GB | 750 MBps | 7.000 | 512 GB | 250 MBps  | 2500 | 
@@ -266,65 +266,9 @@ De aanbevelingen overschrijden vaak de minimum vereisten van SAP zoals eerder in
 
 
 ## <a name="nfs-v41-volumes-on-azure-netapp-files"></a>NFS v 4.1-volumes op Azure NetApp Files
-Azure NetApp Files biedt native NFS-shares die kunnen worden gebruikt voor **/Hana/Shared**-, **/Hana/data**-en **/Hana/log** -volumes. Voor het gebruik van ANF op basis van NFS-shares voor de **/Hana/data** -en **/Hana/log** -volumes is het gebruik van het v 4.1 NFS-protocol vereist. Het NFS-protocol v3 wordt niet ondersteund voor het gebruik van **/Hana/data** -en **/Hana/log** -volumes bij het baseren van de shares op ANF. 
-
-> [!IMPORTANT]
-> Het NFS v3-protocol dat is geïmplementeerd op Azure NetApp Files, wordt **niet** ondersteund voor **/Hana/data** en **/Hana/log**. Het gebruik van de NFS 4,1 is verplicht voor **/Hana/data** -en **/Hana/log** -volumes van een functie punt van weer gave. Overwegende dat voor het **/Hana/Shared** -volume de NFS v3 of het protocol NFS v 4.1 kan worden gebruikt vanuit een functie punt van weer gave.
-
-### <a name="important-considerations"></a>Belangrijke overwegingen
-Houd rekening met de volgende belang rijke overwegingen bij het overwegen van Azure NetApp Files voor de SAP net-Weaver en de SAP HANA:
-
-- De minimale capaciteits pool is 4 TiB.  
-- De minimale volume grootte is 100 GiB
-- Azure NetApp Files en alle virtuele machines, waarbij Azure NetApp Files volumes worden gekoppeld, moeten zich in dezelfde Azure-Virtual Network of in gekoppelde [virtuele netwerken](../../../virtual-network/virtual-network-peering-overview.md) in dezelfde regio bevinden.  
-- Het geselecteerde virtuele netwerk moet een subnet hebben, gedelegeerd aan Azure NetApp Files.
-- De door Voer van een Azure NetApp-volume is een functie van volume quota en service niveau, zoals beschreven in [service niveau voor Azure NetApp files](../../../azure-netapp-files/azure-netapp-files-service-levels.md). Wanneer u de grootte van de HANA Azure NetApp-volumes wijzigt, moet u ervoor zorgen dat de resulterende door voer voldoet aan de HANA-systeem vereisten.  
-- Azure NetApp Files biedt [export beleid](../../../azure-netapp-files/azure-netapp-files-configure-export-policy.md): u kunt de toegestane clients, het toegangs type (lezen&schrijven, alleen-lezen, enz.) beheren. 
-- Er is nog geen zone bewust van Azure NetApp Files-functie. Momenteel wordt Azure NetApp Files-functie niet geïmplementeerd in alle beschikbaarheids zones in een Azure-regio. Houd rekening met de mogelijke latentie implicaties in sommige Azure-regio's.  
-- Het is belang rijk om de virtuele machines dicht bij de Azure NetApp-opslag te laten implementeren voor een lage latentie. 
-- De gebruikers-ID voor <b>sid</b>adm en de groeps-id voor `sapsys` op de virtuele machines moeten overeenkomen met de configuratie in azure NetApp files. 
-
-> [!IMPORTANT]
-> Voor SAP HANA werk belastingen is lage latentie van cruciaal belang. Werk samen met uw micro soft-vertegenwoordiger om ervoor te zorgen dat de virtuele machines en de Azure NetApp Files-volumes dicht bij elkaar worden geïmplementeerd.  
-
-> [!IMPORTANT]
-> Als de gebruikers-ID voor <b>sid</b>adm niet overeenkomt met de groeps-id voor `sapsys` tussen de virtuele machine en de Azure NetApp-configuratie, worden de machtigingen voor bestanden op Azure NetApp-volumes, gekoppeld op virtuele machines, weer gegeven als `nobody` . Zorg ervoor dat u de juiste gebruikers-ID opgeeft voor <b>sid</b>adm en de groeps-id voor `sapsys` , wanneer u [een nieuw systeem](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxjSlHBUxkJBjmARn57skvdUQlJaV0ZBOE1PUkhOVk40WjZZQVJXRzI2RC4u) wilt Azure NetApp files.
-
-### <a name="sizing-for-hana-database-on-azure-netapp-files"></a>Grootte van HANA-Data Base op Azure NetApp Files
-
-De door Voer van een Azure NetApp-volume is een functie van de volume grootte en het service niveau, zoals beschreven in [service niveau voor Azure NetApp files](../../../azure-netapp-files/azure-netapp-files-service-levels.md). 
-
-Bij het ontwerpen van de infra structuur voor SAP in azure moet u rekening houden met enkele minimale vereisten voor opslag doorvoer door SAP, die worden omgezet in kenmerken met minimale door Voer van:
-
-- Lezen/schrijven inschakelen op **/Hana/log** van een 250 MB/sec. met 1 MB I/O-grootten  
-- Lees activiteit van ten minste 400 MB/sec. voor **/Hana/data** met 16 mb en 64 MB I/O-grootte inschakelen  
-- Schrijf activiteit van ten minste 250 MB per seconde voor **/Hana/data** met 16 mb en 64 MB I/O-grootte inschakelen  
-
-De [Azure NetApp files doorvoer limieten](../../../azure-netapp-files/azure-netapp-files-service-levels.md) per 1 TIB volume quota zijn:
-- Premium Storage-laag-64 MiB/s  
-- Ultra Storage-laag-128 MiB/s  
-
-> [!IMPORTANT]
-> Onafhankelijk van de capaciteit die u implementeert op één NFS-volume, wordt de door Voer verwacht tot een hoeveelheid van 1,2-1.4 GB/sec. band breedte die wordt gebruikt door een consument op een virtuele machine. Dit heeft te maken met de onderliggende architectuur van de ANF-aanbieding en de gerelateerde Linux-sessie limieten rondom NFS. De prestatie-en doorvoer aantallen zoals beschreven in de [resultaten van het artikel prestatie benchmark test voor Azure NetApp files](../../../azure-netapp-files/performance-benchmarks-linux.md) zijn uitgevoerd op een gedeeld NFS-volume met meerdere client-vm's en als gevolg van meerdere sessies. Dit scenario wijkt af van het scenario dat we in SAP meten. Waarbij de door Voer van een enkele virtuele machine wordt gemeten op basis van een NFS-volume. gehost op ANF.
-
-Om te voldoen aan de vereisten voor de minimum doorvoer van SAP voor gegevens en logboeken en volgens de richt lijnen voor `/hana/shared` , zien de aanbevolen grootten er als volgt uit:
-
-| Volume | Grootte<br /> Laag Premium Storage | Grootte<br /> Ultra Storage-laag | Ondersteund NFS-protocol |
-| --- | --- | --- |
-| /hana/log/ | 4 TiB | 2 TiB | v 4.1 |
-| /hana/data | 6,3 TiB | 3,2 TiB | v 4.1 |
-| /hana/shared | Max (512 GB, 1xRAM) per 4 worker-knoop punten | Max (512 GB, 1xRAM) per 4 worker-knoop punten | v3 of v 4.1 |
+Lees voor meer informatie over ANF voor HANA het document [NFS v 4.1-volumes op Azure NetApp files voor SAP Hana](./hana-vm-operations-netapp.md)
 
 
-> [!NOTE]
-> De aanbevelingen voor het Azure NetApp Files formaat dat hier wordt beschreven, zijn bedoeld om te voldoen aan de minimale vereisten SAP houdt bij hun infrastructuur providers. In echte klant implementaties en werkbelasting scenario's, die mogelijk niet voldoende zijn. U kunt deze aanbevelingen als uitgangs punt gebruiken en aanpassen op basis van de vereisten van uw specifieke werk belasting.  
-
-Daarom kunt u overwegen om een vergelijk bare door Voer voor de ANF-volumes te implementeren, zoals vermeld voor Ultra Disk-opslag. Denk ook na over de grootten voor de volumes die worden weer gegeven voor de verschillende VM-Sku's zoals uitgevoerd in de ultra Disk-tabellen.
-
-> [!TIP]
-> U kunt de grootte van Azure NetApp Files volumes dynamisch opnieuw instellen, zonder dat u de volumes nodig hebt `unmount` , de virtuele machines stoppen of SAP Hana stoppen. Zo kan de toepassing voldoen aan de verwachte en onvoorziene doorvoer vereisten.
-
-Documentatie over het implementeren van een SAP HANA scale-out configuratie met een stand-by-knoop punt met behulp van NFS v 4.1-volumes die worden gehost in ANF, wordt gepubliceerd in [SAP Hana uitschalen met het stand-by-knoop punt op virtuele machines van Azure met Azure NetApp files op SuSE Linux Enterprise Server](./sap-hana-scale-out-standby-netapp-files-suse.md).
 
 
 ## <a name="cost-conscious-solution-with-azure-premium-storage"></a>Prijs bewuste oplossing met Azure Premium Storage

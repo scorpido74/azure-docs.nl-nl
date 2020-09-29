@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: a6ab126c3a5b0d2a82b17fac42dcc9e20f6aba3f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8ae8c633bdfca72d6e383715cac9b1bcdddd9d17
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79480450"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449787"
 ---
 # <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>Interactieve rapporten maken: Azure Monitor voor VM's met werkmappen
 
@@ -26,7 +26,7 @@ Werkmappen zijn handig voor scenario's zoals:
 
 In de volgende tabel ziet u een overzicht van de werkmappen die Azure Monitor voor VM's bevat om aan de slag te gaan.
 
-| Werkmap | Description | Bereik |
+| Werkmap | Beschrijving | Bereik |
 |----------|-------------|-------|
 | Prestaties | Biedt een aanpas bare versie van onze weer gave top N-lijsten en-diagrammen in één werkmap die gebruikmaakt van alle Log Analytics prestatie meter items die u hebt ingeschakeld.| Op schaal |
 | Prestatiemeteritems | Een bovenste N grafiek weergave in een breed scala aan prestatie meter items. | Op schaal |
@@ -44,7 +44,7 @@ In de volgende tabel ziet u een overzicht van de werkmappen die Azure Monitor vo
 
 Een werkmap bestaat uit secties die bestaan uit onafhankelijk Bewerk bare grafieken, tabellen, tekst en invoer besturings elementen. Voor een beter begrip van werkmappen kunt u beginnen met het openen van een sjabloon en het maken van een aangepaste werkmap door lopen. 
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 2. Selecteer **virtual machines**.
 
@@ -66,7 +66,7 @@ Een werkmap bestaat uit secties die bestaan uit onafhankelijk Bewerk bare grafie
 
 Werkmappen hebben twee modi: **bewerkings modus**en **Lees modus**. Wanneer een nieuwe werkmap voor het eerst wordt gestart, wordt deze in de **bewerkings modus**geopend. Hierin wordt alle inhoud van de werkmap weer gegeven, inclusief alle stappen en para meters die op een andere manier verborgen zijn. De **Lees modus** toont een vereenvoudigde rapport stijl weergave. Met de Lees modus kunt u de complexiteit die is opgetreden bij het maken van een rapport, opsplitsen, terwijl de onderliggende mechanismen nog maar een paar muis klikken hebben wanneer dat nodig is voor aanpassing.
 
-![Sectie besturings elementen voor het bewerken van Azure Monitor voor VM's-werkmappen](media/vminsights-workbooks/workbook-new-workbook-editor-01.png)
+![Scherm afbeelding van de sectie Virtual Machines werkmap in Azure Monitor een nieuwe werkmap weer gegeven in de bewerkings modus met bewerkings besturings elementen gemarkeerd.](media/vminsights-workbooks/workbook-new-workbook-editor-01.png)
 
 1. Wanneer u klaar bent met het bewerken van een sectie, klikt u op **gereed bewerken** in de linkerbenedenhoek van de sectie.
 
@@ -102,7 +102,7 @@ Voor het toevoegen van gegevens uit andere Log Analytics werk ruimten of van een
 
 Elke sectie heeft zijn eigen geavanceerde instellingen, die toegankelijk zijn via de ![ sectie instellingen werkmappen bewerkings ](media/vminsights-workbooks/006-settings.png) pictogram bevindt zich rechts van de knop **para meters toevoegen** .
 
-![Sectie besturings elementen voor het bewerken van Azure Monitor voor VM's-werkmappen](media/vminsights-workbooks/007-settings-expanded.png)
+![Scherm afbeelding van het dialoog venster Geavanceerde instellingen in de sectie Virtual Machines werkmap van Azure Monitor. Het pictogram waarmee het dialoog venster wordt geopend, is gemarkeerd.](media/vminsights-workbooks/007-settings-expanded.png)
 
 |         |          |
 | ---------------- |:-----|
@@ -118,11 +118,11 @@ Een van de vooraf gemaakte werkmappen- **TCP-verkeer**bevat informatie over verb
 
 De eerste sectie van de werkmap is gebaseerd op logboek query gegevens. De tweede sectie is ook gebaseerd op logboek query gegevens, maar als u een rij in de eerste tabel selecteert, wordt de inhoud van de grafieken interactief bijgewerkt:
 
-![Sectie besturings elementen voor het bewerken van Azure Monitor voor VM's-werkmappen](media/vminsights-workbooks/008-workbook-tcp-traffic.png)
+![Scherm afbeelding van de sectie Virtual Machines in Azure Monitor waarin het vooraf gemaakte TCP-verkeer van de werkmap wordt weer gegeven.](media/vminsights-workbooks/008-workbook-tcp-traffic.png)
 
 Het gedrag is mogelijk via het gebruik van de optie **Wanneer een item is geselecteerd, een** geavanceerde instellingen voor de para meter exporteren, die zijn ingeschakeld in de logboek query van de tabel.
 
-![Sectie besturings elementen voor het bewerken van Azure Monitor voor VM's-werkmappen](media/vminsights-workbooks/009-settings-export.png)
+![Scherm opname van het dialoog venster Geavanceerde instellingen voor een Virtual Machines werkmap met de optie ' wanneer een item is geselecteerd, een para meter exporteren ' is ingeschakeld.](media/vminsights-workbooks/009-settings-export.png)
 
 De tweede logboek query gebruikt vervolgens de geëxporteerde waarden wanneer een rij is geselecteerd voor het maken van een set waarden die vervolgens worden gebruikt door de kop en grafieken van de sectie. Als er geen rij is geselecteerd, worden de koptekst en grafieken van de sectie verborgen. 
 
@@ -141,7 +141,7 @@ Met metrische secties beschikt u over volledige toegang tot het opnemen van Azur
 
 Hier volgt een voor beeld van gegevens van virtuele machines die worden opgehaald in een werkmap om een raster visualisatie van CPU-prestaties te bieden:
 
-![Sectie besturings elementen voor het bewerken van Azure Monitor voor VM's-werkmappen](media/vminsights-workbooks/010-metrics-grid.png)
+![Scherm afbeelding van de sectie Metrics van een virtuele-machine werkmap in Azure Monitor. De CPU-prestaties voor elke virtuele machine worden grafisch weer gegeven.](media/vminsights-workbooks/010-metrics-grid.png)
 
 ## <a name="adding-parameter-sections"></a>Secties voor parameters toevoegen
 
@@ -180,11 +180,11 @@ Als de kolom een teken reeks type is, wordt Null/lege teken reeks als onwaar bes
 
 Laten we eens kijken naar de para meters die aanwezig zijn in het overzichts rapport verbindingen. Klik op het bewerkings symbool naast **richting**.
 
-![Sectie besturings elementen voor het bewerken van Azure Monitor voor VM's-werkmappen](media/vminsights-workbooks/011-workbook-using-dropdown.png)
+![Scherm afbeelding van de sectie voor het toevoegen en bewerken van rapport parameters in Azure Monitor. Het bewerkings pictogram voor de richtings parameter wordt geselecteerd.](media/vminsights-workbooks/011-workbook-using-dropdown.png)
 
 Hiermee wordt de menu opdracht **para meter bewerken** geopend.
 
-![Sectie besturings elementen voor het bewerken van Azure Monitor voor VM's-werkmappen](media/vminsights-workbooks/012-workbook-edit-parameter.png)
+![Scherm afbeelding van het dialoog venster para meter bewerken. De naam van de para meter is richting, het parameter type is vervolg keuzelijst en het ophalen van gegevens uit JSON is geselecteerd.](media/vminsights-workbooks/012-workbook-edit-parameter.png)
 
 Met de JSON kunt u een wille keurige tabel genereren die is gevuld met inhoud. De volgende JSON genereert bijvoorbeeld twee waarden in de vervolg keuzelijst:
 

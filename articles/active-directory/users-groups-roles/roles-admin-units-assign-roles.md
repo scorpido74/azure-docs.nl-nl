@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00b5f39363e4c8b2fd3a0d74a8c013d315bff1fe
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0ae663b2c7a88e116315464c11b8d162135f0aff
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91264921"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450387"
 ---
 # <a name="assign-scoped-roles-to-an-administrative-unit"></a>Scoped rollen toewijzen aan een beheer eenheid
 
@@ -36,7 +36,13 @@ Groeps beheerder  |  Kan alle aspecten van groepen en groeps instellingen, zoals
 Helpdesk beheerder  |  Kan wacht woorden voor niet-beheerders en helpdesk beheerders opnieuw instellen in de toegewezen beheer eenheid.
 Licentie beheerder  |  Kan alleen licentie toewijzingen binnen de beheer eenheid toewijzen, verwijderen en bijwerken.
 Wachtwoord beheerder  |  Kan wacht woorden voor niet-beheerders en wachtwoord beheerders binnen de toegewezen beheer eenheid opnieuw instellen.
-Gebruikersbeheerder  |  Kan alle aspecten van gebruikers en groepen beheren, met inbegrip van het opnieuw instellen van wacht woorden voor beperkte beheerders binnen de toegewezen beheer eenheid.
+Gebruikers beheerder  |  Kan alle aspecten van gebruikers en groepen beheren, met inbegrip van het opnieuw instellen van wacht woorden voor beperkte beheerders binnen de toegewezen beheer eenheid.
+
+## <a name="security-principals-that-can-be-assigned-to-an-au-scoped-role"></a>Beveiligings-principals die kunnen worden toegewezen aan een rollen met een AU-bereik
+De volgende beveiligings-principals kunnen worden toegewezen aan een rollen met een AU-bereik:
+* Gebruikers
+* Toe te wijzen functie Cloud groepen (preview-versie)
+* Service Principal Name (SPN)
 
 ## <a name="assign-a-scoped-role"></a>Een scoped rol toewijzen
 
@@ -50,15 +56,19 @@ Selecteer de rol die u wilt toewijzen en selecteer vervolgens **toewijzingen toe
 
 ![Selecteer de rol die u wilt bereik en selecteer vervolgens toewijzingen toevoegen](./media/roles-admin-units-assign-roles/select-add-assignment.png)
 
+> [!Note]
+>
+> Volg [de stappen om](/active-directory/privileged-identity-management/pim-how-to-add-role-to-user.md#assign-a-role-with-restricted-scope)een rol toe te wijzen aan een administratieve eenheid met behulp van Pim.
+
 ### <a name="powershell"></a>PowerShell
 
 ```powershell
 $AdminUser = Get-AzureADUser -ObjectId "Use the user's UPN, who would be an admin on this unit"
 $Role = Get-AzureADDirectoryRole | Where-Object -Property DisplayName -EQ -Value "User Account Administrator"
-$administrativeUnit = Get-AzureADAdministrativeUnit -Filter "displayname eq 'The display name of the unit'"
+$administrativeUnit = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'The display name of the unit'"
 $RoleMember = New-Object -TypeName Microsoft.Open.AzureAD.Model.RoleMemberInfo
 $RoleMember.ObjectId = $AdminUser.ObjectId
-Add-AzureADScopedRoleMembership -ObjectId $administrativeUnit.ObjectId -RoleObjectId $Role.ObjectId -RoleMemberInfo $RoleMember
+Add-AzureADMSScopedRoleMembership -ObjectId $administrativeUnit.ObjectId -RoleObjectId $Role.ObjectId -RoleMemberInfo $RoleMember
 ```
 
 De gemarkeerde sectie kan worden gewijzigd als vereist voor de specifieke omgeving.
@@ -67,7 +77,7 @@ De gemarkeerde sectie kan worden gewijzigd als vereist voor de specifieke omgevi
 
 ```http
 Http request
-POST /administrativeUnits/{id}/scopedRoleMembers
+POST /directory/administrativeUnits/{id}/scopedRoleMembers
     
 Request body
 {
@@ -87,8 +97,8 @@ Alle roltoewijzingen die met een bereik van een beheer eenheid worden uitgevoerd
 ### <a name="powershell"></a>PowerShell
 
 ```powershell
-$administrativeUnit = Get-AzureADAdministrativeUnit -Filter "displayname eq 'The display name of the unit'"
-Get-AzureADScopedRoleMembership -ObjectId $administrativeUnit.ObjectId | fl *
+$administrativeUnit = Get-AzureADMSAdministrativeUnit -Filter "displayname eq 'The display name of the unit'"
+Get-AzureADMSScopedRoleMembership -ObjectId $administrativeUnit.ObjectId | fl *
 ```
 
 De gemarkeerde sectie kan worden gewijzigd als vereist voor de specifieke omgeving.
@@ -97,7 +107,7 @@ De gemarkeerde sectie kan worden gewijzigd als vereist voor de specifieke omgevi
 
 ```http
 Http request
-GET /administrativeUnits/{id}/scopedRoleMembers
+GET /directory/administrativeUnits/{id}/scopedRoleMembers
 Request body
 {}
 ```

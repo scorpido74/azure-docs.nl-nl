@@ -15,12 +15,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - devx-track-csharp
-ms.openlocfilehash: cf108e0e7036894e045028ec3fce8c2af6b9ce4f
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ff6153abb3e930e3268ed7768e4ab44c9b5824cc
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89008332"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449562"
 ---
 # <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>Berichten vanuit de Cloud naar uw apparaat verzenden met IoT Hub (.NET)
 
@@ -91,13 +91,20 @@ In deze sectie wijzigt u de apparaat-app die u hebt gemaakt in [telemetrie verze
 
 De `ReceiveAsync` methode retourneert het ontvangen bericht asynchroon op het moment dat het wordt ontvangen door het apparaat. Het retourneert *Null* na een bepaalde time-outperiode. In dit voor beeld wordt de standaard waarde van één minuut gebruikt. Wanneer de app een *Null-waarde*ontvangt, moet deze blijven wachten op nieuwe berichten. Deze vereiste is de reden voor de `if (receivedMessage == null) continue` regel.
 
-De oproep om `CompleteAsync()` IOT hub dat het bericht is verwerkt. Het bericht kan veilig uit de wachtrij van het apparaat worden verwijderd. Als er iets is gebeurd waardoor de apparaat-app de verwerking van het bericht niet kan volt ooien, wordt het opnieuw door IoT Hub bezorgd. De logica voor bericht verwerking in de apparaat-app moet *idempotent*zijn, zodat hetzelfde bericht meerdere keren wordt ontvangen.
+De oproep om `CompleteAsync()` IOT hub dat het bericht is verwerkt en dat het bericht veilig kan worden verwijderd uit de wachtrij van het apparaat. Het apparaat moet deze methode aanroepen wanneer de verwerking is voltooid, ongeacht het protocol dat wordt gebruikt.
 
-Een toepassing kan ook tijdelijk een bericht afbreken, wat leidt tot een IoT-hub en het bericht in de wachtrij voor toekomstig gebruik behoudt. Of de toepassing kan een bericht afwijzen, waardoor het bericht definitief uit de wachtrij wordt verwijderd. Zie [D2C and C2D Messa ging with IOT hub](iot-hub-devguide-messaging.md)voor meer informatie over de levens cyclus van Cloud-naar-apparaat-berichten.
+Met AMQP en HTTPS, maar niet MQTT, kan het apparaat ook:
 
-   > [!NOTE]
-   > Wanneer u HTTPS gebruikt in plaats van MQTT of AMQP als Trans Port, `ReceiveAsync` retourneert de methode direct. Het ondersteunde patroon voor Cloud-naar-apparaat-berichten met HTTPS is op een regel matig verbonden apparaten die op berichten te controleren zijn (minder dan elke 25 minuten). Het uitgeven van meer HTTPS resulteert in IoT Hub het beperken van de aanvragen. Zie [D2C and C2D Messa ging with IOT hub](iot-hub-devguide-messaging.md)(Engelstalig) voor meer informatie over de verschillen tussen MQTT, AMQP en HTTPS-ondersteuning en IOT hub beperking.
-   >
+* Een bericht afbreken, wat leidt tot IoT Hub het bericht in de wachtrij van het apparaat behouden voor toekomstig gebruik.
+* Een bericht afwijzen waarmee het bericht permanent wordt verwijderd uit de wachtrij van de apparaten.
+
+Als er iets gebeurt dat ervoor zorgt dat het apparaat het bericht niet kan volt ooien, afbreken of afwijzen, wordt IoT Hub na een vaste time-outperiode het bericht in de wachtrij geplaatst voor bezorging. Daarom moet de logica voor bericht verwerking in de apparaat-app worden *idempotent*, zodat hetzelfde bericht meerdere keren wordt ontvangen.
+
+Zie [Cloud-naar-apparaat-berichten verzenden vanuit een IOT-hub](iot-hub-devguide-messages-c2d.md)voor meer informatie over hoe IOT hub Cloud-naar-apparaat-berichten verwerkt, met inbegrip van de details van de Cloud-naar-apparaat-bericht levenscyclus.
+
+> [!NOTE]
+> Wanneer u HTTPS gebruikt in plaats van MQTT of AMQP als Trans Port, `ReceiveAsync` retourneert de methode direct. Het ondersteunde patroon voor Cloud-naar-apparaat-berichten met HTTPS is af en toe verbonden met apparaten die regel matig controleren op berichten (mini maal elke 25 minuten). Het uitgeven van meer HTTPS resulteert in IoT Hub het beperken van de aanvragen. Zie [communicatie richtlijnen voor Cloud-naar-apparaat](iot-hub-devguide-c2d-guidance.md) en [Kies een communicatie protocol](iot-hub-devguide-protocols.md)voor meer informatie over de verschillen tussen de MQTT-, AMQP-en HTTPS-ondersteuning.
+>
 
 ## <a name="get-the-iot-hub-connection-string"></a>De IoT hub-connection string ophalen
 
@@ -164,7 +171,7 @@ In deze sectie maakt u een .NET-console-app die Cloud-naar-apparaat-berichten na
 
 1. Druk op **F5**. Beide toepassingen moeten worden gestart. Selecteer het venster **SendCloudToDevice** en druk op **Enter**. Het bericht dat wordt ontvangen door de apparaat-app wordt weer gegeven.
 
-   ![App-ontvangst bericht](./media/iot-hub-csharp-csharp-c2d/sendc2d1.png)
+   ![Ontvangst bericht van de app voor het apparaat](./media/iot-hub-csharp-csharp-c2d/sendc2d1.png)
 
 ## <a name="receive-delivery-feedback"></a>Leverings feedback ontvangen
 
@@ -211,7 +218,7 @@ In deze sectie wijzigt u de **SendCloudToDevice** -app voor het aanvragen van fe
 
 1. Voer de apps uit door op **F5**te drukken. U ziet dat beide toepassingen worden gestart. Selecteer het venster **SendCloudToDevice** en druk op **Enter**. Het bericht dat wordt ontvangen door de app van het apparaat en na een paar seconden wordt weer gegeven, wordt het feedback bericht ontvangen door uw **SendCloudToDevice** -toepassing.
 
-   ![App-ontvangst bericht](./media/iot-hub-csharp-csharp-c2d/sendc2d2.png)
+   ![App voor het ontvangen van het bericht en de service-app die feedback ontvangt](./media/iot-hub-csharp-csharp-c2d/sendc2d2.png)
 
 > [!NOTE]
 > Voor het gemak implementeert deze zelf studie geen beleid voor opnieuw proberen. In productie code moet u beleid voor opnieuw proberen implementeren, zoals exponentiële uitstel, zoals wordt voorgesteld in [tijdelijke fout afhandeling](/azure/architecture/best-practices/transient-faults).

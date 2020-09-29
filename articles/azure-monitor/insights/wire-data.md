@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/29/2020
-ms.openlocfilehash: 340eb1a983f074a5ab934a30c55649852ec08b62
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 06698ad3ab2ceb76278e23bc1ac0002b9c2284f9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325148"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445774"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Wire Data 2.0 (preview)-oplossing in Azure Monitor
 
@@ -117,20 +117,20 @@ De volgende secties bevatten een lijst met de ondersteunde besturings systemen v
 |:--|:--|
 | 7.4 | 3.10.0-693 |
 | 7,5 | 3.10.0-862 |
-| 7,6 | 3.10.0-957 |
+| 7.6 | 3.10.0-957 |
 
 ##### <a name="red-hat-linux-6"></a>Red Hat Linux 6
 
 | Besturingssysteemversie | Kernelversie |
 |:--|:--|
-| 6,9 | 2.6.32-696 |
-| 6,10 | 2.6.32-754 |
+| 6.9 | 2.6.32-696 |
+| 6.10 | 2.6.32-754 |
 
 ##### <a name="centosplus"></a>CentOSPlus
 | Besturingssysteemversie | Kernelversie |
 |:--|:--|
-| 6,9 | 2.6.32-696.18.7<br>2.6.32-696.30.1 |
-| 6,10 | 2.6.32-696.30.1<br>2.6.32-754.3.5 |
+| 6.9 | 2.6.32-696.18.7<br>2.6.32-696.30.1 |
+| 6.10 | 2.6.32-696.30.1<br>2.6.32-754.3.5 |
 
 ##### <a name="ubuntu-server"></a>Ubuntu Server
 
@@ -156,14 +156,14 @@ De volgende secties bevatten een lijst met de ondersteunde besturings systemen v
 
 ### <a name="dependency-agent-downloads"></a>Down loads van afhankelijkheids agent
 
-| Bestand | Besturingssysteem | Versie | SHA-256 |
+| Bestand | OS | Versie | SHA-256 |
 |:--|:--|:--|:--|
 | [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.7.4 | A111B92AB6CF28EB68B696C60FE51F980BFDFF78C36A900575E17083972989E0 |
 | [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.7.4 | AB58F3DB8B1C3DEE7512690E5A65F1DFC41B43831543B5C040FCCE8390F2282C |
 
 
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Configuratie
 
 Voer de volgende stappen uit om Wire Data te configureren voor uw werkruimten.
 
@@ -183,7 +183,7 @@ De afhankelijkheids agent wordt geïnstalleerd op computers met Windows via Inst
 Gebruik de volgende stappen om de afhankelijkheids agent te installeren op elke computer waarop Windows wordt uitgevoerd:
 
 1. Installeer de Log Analytics agent volgens de stappen in [gegevens verzamelen van Windows-computers die in uw omgeving worden gehost](../platform/agent-windows.md).
-2. Down load de Windows-afhankelijkheids agent met behulp van de koppeling in de vorige sectie en voer deze uit met behulp van de volgende opdracht:`InstallDependencyAgent-Windows.exe`
+2. Down load de Windows-afhankelijkheids agent met behulp van de koppeling in de vorige sectie en voer deze uit met behulp van de volgende opdracht: `InstallDependencyAgent-Windows.exe`
 3. Volg de wizard om de agent te installeren.
 4. Als de afhankelijkheids agent niet kan worden gestart, raadpleegt u de logboeken voor gedetailleerde informatie over de fout. Voor Windows-agents is dit de logboekmap: %Programfiles%\Microsoft Dependency Agent\logs.
 
@@ -226,7 +226,7 @@ InstallDependencyAgent-Linux64.bin -help
 
 Bestanden voor de afhankelijkheids agent worden in de volgende directory's geplaatst:
 
-| **Bestanden** | **Locatie** |
+| **Files** | **Locatie** |
 | --- | --- |
 | Kernbestanden | /opt/microsoft/dependency-agent |
 | Logboekbestanden | /var/opt/microsoft/dependency-agent/log |
@@ -364,15 +364,15 @@ Op de pagina **Overzicht** voor uw Log Analytics-werkruimte in de Azure Portal k
 
 U kunt de blade **Agents waarmee het netwerkverkeer wordt vastgelegd** gebruiken om te bepalen hoeveel netwerkbandbreedte wordt verbruikt door computers. Met deze blade kunt u gemakkelijk de _drukst bezette_ computer in uw omgeving terugvinden. Deze computers kunnen overbelast zijn, zich abnormaal gedragen of meer netwerkbronnen dan normaal gebruiken.
 
-![voorbeeld van zoeken in logboek](./media/wire-data/log-search-example01.png)
+![Scherm afbeelding van de agents die de Blade netwerk verkeer vastleggen in het Wire Data 2.0 dash board met de netwerk bandbreedte die door elke computer wordt gebruikt.](./media/wire-data/log-search-example01.png)
 
 Op soortgelijke wijze kunt u de blade **Lokale subnetten** gebruiken om te bepalen hoeveel netwerkverkeer via uw subnetten plaatsvindt. Gebruikers definiëren vaak subnetten rondom essentiële gebieden voor hun toepassingen. Deze blade geeft een beeld van die gebieden.
 
-![voorbeeld van zoeken in logboek](./media/wire-data/log-search-example02.png)
+![Scherm opname van de Blade lokale subnetten in het Wire Data 2.0 dash board met de netwerk bandbreedte die wordt gebruikt door een LocalSubnet.](./media/wire-data/log-search-example02.png)
 
 De blade **Protocollen op toepassingsniveau** is handig omdat u hiermee kunt vaststellen welke protocollen er worden gebruikt. U verwacht bijvoorbeeld dat SSH niet in uw netwerkomgeving wordt gebruikt. Aan de hand van de informatie in de blade kunt u dan snel vaststellen of die verwachting al dan niet is uitgekomen.
 
-![voorbeeld van zoeken in logboek](./media/wire-data/log-search-example03.png)
+![Scherm opname van de Blade protocollen op toepassings niveau in het Wire Data 2.0 dash board met de netwerk bandbreedte die wordt gebruikt door elk protocol.](./media/wire-data/log-search-example03.png)
 
 Het is ook handig om te weten als protocolverkeer gedurende een bepaalde periode toe- of afneemt. Als bijvoorbeeld de hoeveelheid gegevens die wordt verzonden door een toepassing toeneemt, is dat misschien iets waarmee u rekening wilt houden.
 

@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: ffd967797a4e586387a0385169672220727f78a7
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 683a3fc148d3521366beef4427e87200ea81a9f3
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90886750"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445720"
 ---
 # <a name="deploy-azure-sql-edge"></a>Azure SQL Edge implementeren 
 
@@ -62,7 +62,6 @@ Azure Marketplace is een online Marketplace voor toepassingen en services waar u
 
    |**Parameter**  |**Beschrijving**|
    |---------|---------|
-   | Naam | Naam voor de module. |
    | MSSQL_SA_PASSWORD  | Wijzig de standaard waarde om een sterk wacht woord op te geven voor het SQL Edge-beheerders account. |
    | MSSQL_LCID   | Wijzig de standaard waarde om de gewenste taal-ID in te stellen voor gebruik voor SQL-rand. Bijvoorbeeld, 1036 is Frans. |
    | MSSQL_COLLATION | Wijzig de standaard waarde om de standaard sortering voor de SQL-rand in te stellen. Deze instelling overschrijft de standaard toewijzing van taal-ID (LCID) in sortering. |
@@ -110,7 +109,7 @@ Azure Marketplace is een online Marketplace voor toepassingen en services waar u
    
 8. Klik in het deel venster **IOT Edge module bijwerken** op **bijwerken**.
 9. Klik op de pagina **modules op apparaat instellen** op **volgende: routes >** als u routes voor uw implementatie wilt definiëren. Klik anders op **beoordeling + maken**. Zie [modules implementeren en routes instellen in IOT Edge](../iot-edge/module-composition.md)voor meer informatie over het configureren van routes.
-11. Klik in het deel venster **IOT Edge module bijwerken** op **maken**.
+11. Klik op de pagina **modules op apparaat instellen** op **maken**.
 
 ## <a name="connect-to-azure-sql-edge"></a>Verbinding maken met Azure SQL Edge
 

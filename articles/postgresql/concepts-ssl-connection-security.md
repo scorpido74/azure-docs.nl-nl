@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 872daf3a208452e8b7ec27b2326e394b416a1c5f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e54b8bc51817d2a56153dcc0c14f45e76b9ae88b
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902036"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91444945"
 ---
 # <a name="configure-tls-connectivity-in-azure-database-for-postgresql---single-server"></a>TLS-connectiviteit configureren in Azure Database for PostgreSQL-één server
 
@@ -92,6 +92,17 @@ Als u bijvoorbeeld deze versie van een TLS-instelling instelt op TLS 1,0, beteke
 > Wanneer u een minimum versie van TLS afdwingt, kunt u de minimale afdwinging van de versie niet later uitschakelen.
 
 Zie [TLS-instelling configureren](howto-tls-configurations.md)voor meer informatie over het instellen van de TLS-instelling voor uw Azure database for PostgreSQL één server.
+
+## <a name="cipher-support-by-azure-database-for-postgresql-single-server"></a>Ondersteuning voor code ring door Azure Database for PostgreSQL één server
+
+Als onderdeel van de SSL/TLS-communicatie worden de coderings suites gevalideerd en worden alleen coderings pakken toegestaan om te communiceren met de data base-serer. De coderings Suite validatie wordt beheerd in de laag van de [Gateway](concepts-connectivity-architecture.md#connectivity-architecture) en niet expliciet op het knoop punt zelf. Als de coderings suites niet overeenkomen met een van de hieronder vermelde suites, worden binnenkomende client verbindingen afgewezen.
+
+### <a name="cipher-suite-supported"></a>Coderings Suite ondersteund
+
+*   TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+*   TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+*   TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+*   TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -10,12 +10,12 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: bc01c283fd4e2b6e3494c18c1908152aecee2c5f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4ff4d5a810eb79fb11e66591cd0b695062b1c9f6
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489109"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450182"
 ---
 # <a name="monitor-iot-edge-deployments"></a>IoT Edge-implementaties bewaken
 
@@ -25,7 +25,7 @@ Zowel apparaten als modules hebben vergelijk bare gegevens, zoals connectiviteit
 
 De IoT Hub-service verzamelt gegevens die worden gerapporteerd door apparaat-en module apparaatdubbels en biedt een aantal verschillende statussen die apparaten kunnen hebben. Met de IoT Hub-service worden deze gegevens ingedeeld in vier metrische groepen:
 
-| Type | Description |
+| Type | Beschrijving |
 | --- | ---|
 | Gericht | Toont de IoT Edge apparaten die overeenkomen met de voor waarde voor de implementatie doelstelling. |
 | Toegepast | Geeft de doel IoT Edge apparaten weer die niet zijn gericht op een andere implementatie van een hogere prioriteit. |
@@ -55,7 +55,7 @@ Voer de volgende stappen uit om de details van een implementatie weer te geven e
     | Aanmaak tijd | Het tijds tempel van toen de implementatie werd gemaakt. Deze tijds tempel wordt gebruikt om bindingen te verstoren wanneer twee implementaties dezelfde prioriteit hebben. |
 
 1. Selecteer de implementatie die u wilt bewaken.  
-1. Blader op de pagina **Implementatie Details** naar de onderste sectie en selecteer het tabblad **doel voorwaarde** . Selecteer **weer gave** om de apparaten te vermelden die overeenkomen met de doel voorwaarde. U kunt de voor waarde wijzigen en ook de **prioriteit**. Selecteer **Opslaan** als u wijzigingen hebt aangebracht.
+1. Blader op de pagina **Implementatie Details** naar de onderste sectie en selecteer het tabblad **doel voorwaarde** . Selecteer **weer gave** om de apparaten op te geven die overeenkomen met de doel voorwaarde. U kunt de voor waarde wijzigen en ook de **prioriteit**. Selecteer **Opslaan** als u wijzigingen hebt aangebracht.
 
    ![Doel apparaten voor een implementatie weer geven](./media/how-to-monitor-iot-edge-deployments/target-devices.png)
 
@@ -63,12 +63,11 @@ Voer de volgende stappen uit om de details van een implementatie weer te geven e
 
    ![Metrische gegevens weer geven voor een implementatie](./media/how-to-monitor-iot-edge-deployments/deployment-metrics-tab.png)
 
-
 Zie [een implementatie wijzigen](how-to-deploy-at-scale.md#modify-a-deployment)als u wijzigingen wilt aanbrengen in uw implementatie.
 
 ## <a name="monitor-a-deployment-with-azure-cli"></a>Een implementatie bewaken met Azure CLI
 
-Gebruik de opdracht [az IOT Edge Deployment show](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/edge/deployment?view=azure-cli-latest#ext-azure-iot-az-iot-edge-deployment-show) om de details van één implementatie weer te geven:
+Gebruik de opdracht [az IOT Edge Deployment show](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-show) om de details van één implementatie weer te geven:
 
 ```cli
 az iot edge deployment show --deployment-id [deployment id] --hub-name [hub name]
@@ -77,7 +76,7 @@ az iot edge deployment show --deployment-id [deployment id] --hub-name [hub name
 De opdracht show voor de implementatie heeft de volgende para meters:
 
 * **--implementatie-id** : de naam van de implementatie die in de IOT-hub bestaat. Vereiste parameter.
-* **--hub-name** -naam van de IOT-hub waarin de implementatie bestaat. De hub moet zich in het huidige abonnement benemen. Overschakelen naar het gewenste abonnement met de opdracht`az account set -s [subscription name]`
+* **--hub-name** -naam van de IOT-hub waarin de implementatie bestaat. De hub moet zich in het huidige abonnement benemen. Overschakelen naar het gewenste abonnement met de opdracht `az account set -s [subscription name]`
 
 Inspecteer de implementatie in het opdracht venster.De eigenschap **Metrics** bevat een aantal voor elke metrische waarde die door elke hub wordt geëvalueerd:
 
@@ -86,7 +85,7 @@ Inspecteer de implementatie in het opdracht venster.De eigenschap **Metrics** be
 * **reportedSuccessfulCount** : een metrische waarde van het apparaat waarmee het aantal IOT edge-apparaten wordt opgegeven in het geslaagde implementatie rapport van de IOT Edge-client runtime.
 * **reportedFailedCount** : een metrische waarde van het apparaat waarmee het aantal IOT edge-apparaten wordt opgegeven in de implementatie rapportage fout van de IOT Edge-client runtime.
 
-U kunt een lijst met apparaat-Id's of objecten voor elk van de metrische gegevens weer geven met de opdracht [az IOT Edge Deployment show-metric](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/edge/deployment?view=azure-cli-latest#ext-azure-iot-az-iot-edge-deployment-show-metric) :
+U kunt een lijst met apparaat-Id's of objecten voor elk van de metrische gegevens weer geven met de opdracht [az IOT Edge Deployment show-metric](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-show-metric) :
 
 ```cli
 az iot edge deployment show-metric --deployment-id [deployment id] --metric-id [metric id] --hub-name [hub name]

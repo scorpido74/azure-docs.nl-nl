@@ -1,33 +1,38 @@
 ---
-title: Containers installeren en uitvoeren voor het gebruik van anomalie detectie-API
+title: Docker-containers installeren en uitvoeren voor de anomalie detectie-API
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over het installeren en gebruiken van een container voor het gebruik van de geavanceerde algoritmen van de anomalie detectie-API.
+description: Gebruik de algoritmen van de anomalie detectie-API om afwijkingen in uw gegevens, on-premises met behulp van een docker-container te vinden.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 09/10/2020
+ms.date: 09/28/2020
 ms.author: aahi
-ms.openlocfilehash: 2a4ff7da16524e0706601e43dff39325952990ff
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.custom: cog-serv-seo-aug-2020
+keywords: on-premises, docker, container, streaming, algoritmen
+ms.openlocfilehash: ff4d15b33cb261e71ea883c0245afe5781005e38
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903547"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91459997"
 ---
-# <a name="install-and-run-anomaly-detector-containers"></a>Anomaly Detector-containers installeren en uitvoeren 
+# <a name="install-and-run-docker-containers-for-the-anomaly-detector-api"></a>Docker-containers installeren en uitvoeren voor de anomalie detectie-API 
 
 [!INCLUDE [container image location note](../containers/includes/image-location-note.md)]
 
-De Anomaly Detector heeft de volgende functionaliteit voor containerfuncties:
+Met containers kunt u gebruikmaken van de afwijkende detector API uw eigen omgeving. Containers zijn ideaal voor specifieke vereisten voor beveiliging en gegevensbeheer. In dit artikel leert u hoe u een anomalie detectie container kunt downloaden, installeren en uitvoeren.
 
-| Functie | Functies |
-|--|--|
-| Anomalie detectie | <li> Detecteert afwijkingen die in realtime optreden. <li> Detecteert afwijkingen in uw gegevensset als een batch. <li> Detecteert trend wijzigings punten in uw gegevensset als een batch.<li> Het verwachte normale bereik van uw gegevens afleiden. <li> Ondersteunt de gevoeligheids aanpassing van anomalie detectie om uw gegevens beter aan te passen. |
+Anomalie detectie biedt één docker-container voor het gebruik van de API on-premises. Gebruik de-container voor het volgende:
+* De algoritmen van de anomalie detectie gebruiken voor uw gegevens
+* Bewaak streaminggegevens en Detecteer afwijkingen die in realtime optreden.
+* Detecteert anomalieën in uw gegevensset als een batch. 
+* Spoor trends wijzigen in uw gegevensset als een batch.
+* Pas de gevoeligheid van de anomalie detectie algoritme aan om uw gegevens beter aan te passen.
 
-Voor gedetailleerde informatie over de Api's raadpleegt u:
+Zie voor gedetailleerde informatie over de API:
 * [Meer informatie over de API-service voor anomalie detectie](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/cognitive-services/) aan voordat u begint.

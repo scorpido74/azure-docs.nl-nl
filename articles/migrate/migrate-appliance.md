@@ -3,12 +3,12 @@ title: Azure Migrate-apparaat
 description: Biedt een samen vatting van de ondersteuning voor het Azure Migrate apparaat.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: e2bd3f2fa40bbf31713393f18a04624d70cbd244
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: ac3c90f1c09d290d5112a0e0d7abc5218788caf7
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90084767"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450039"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-apparaat
 
@@ -20,9 +20,9 @@ Het Azure Migrate apparaat wordt gebruikt in de volgende scenario's.
 
 **Scenario** | **Hulpprogramma** | **Gebruikt voor** 
 --- | --- | ---
-**VMware VM-evaluatie** | Azure Migrate: Server evaluatie | VMware-Vm's detecteren<br/><br/> Machine-apps en-afhankelijkheden detecteren<br/><br/> Meta gegevens en prestaties van meta gegevens van machines voor evaluaties verzamelen.
-**Migratie van VMware VM zonder agent** | Azure Migrate: Server migratie | VMware-Vm's detecteren <br/><br/> Virtuele VMware-machines repliceren met migratie zonder agent.
-**Hyper-V-VM-evaluatie** | Azure Migrate: Server evaluatie | Virtuele Hyper-V-machines detecteren<br/><br/> Meta gegevens en prestaties van meta gegevens van machines voor evaluaties verzamelen.
+**VMware VM-evaluatie** | Azure Migrate: Server evaluatie | VMware-VM's detecteren<br/><br/> Machine-apps en-afhankelijkheden detecteren<br/><br/> Meta gegevens en prestaties van meta gegevens van machines voor evaluaties verzamelen.
+**Migratie van VMware VM zonder agent** | Azure Migrate: Server migratie | VMware-VM's detecteren <br/><br/> Virtuele VMware-machines repliceren met migratie zonder agent.
+**Hyper-V-VM-evaluatie** | Azure Migrate: Server evaluatie | Hyper-V-VM's detecteren<br/><br/> Meta gegevens en prestaties van meta gegevens van machines voor evaluaties verzamelen.
 **Beoordeling van fysieke machine** |  Azure Migrate: Server evaluatie |  Detecteer fysieke servers (of Vm's die u als fysieke servers behandelt).<br/><br/> Meta gegevens en prestaties van meta gegevens van machines voor evaluaties verzamelen.
 
 ## <a name="deployment-methods"></a>Implementatie methoden
@@ -47,12 +47,12 @@ De volgende tabel bevat een overzicht van de Azure Migrate vereisten voor VMware
 **Ondersteunde implementatie** | Implementeren als VMware-VM met behulp van de eicellen-sjabloon.<br/><br/> Implementeren als een VMware-VM of fysieke machine met behulp van een Power shell-installatie script.
 **Project ondersteuning** |  Een apparaat kan worden gekoppeld aan een enkel project. <br/> Een wille keurig aantal apparaten kan aan één project worden gekoppeld.<br/> 
 **Detectie limieten** | Een apparaat kan tot 10.000 VMware-Vm's detecteren op een vCenter Server.<br/> Een apparaat kan verbinding maken met één vCenter Server.
-**EICELLEN-sjabloon** | Downloaden van de portal of [hier](https://go.microsoft.com/fwlink/?linkid=2140333)<br/><br/> De download grootte is 11,6 GB.<br/><br/> De sjabloon voor het gedownloade apparaat wordt geleverd met een Windows Server 2016-evaluatie licentie, die voor 180 dagen geldig is. Als de evaluatie periode bijna is verlopen, raden wij aan dat u een nieuw apparaat downloadt en implementeert, of dat u de licentie voor het besturings systeem van de apparaat-VM activeert.
+**EICELLEN-sjabloon** | Downloaden van de portal of [hier](https://go.microsoft.com/fwlink/?linkid=2140333)<br/><br/> De download grootte is 11,9 GB.<br/><br/> De sjabloon voor het gedownloade apparaat wordt geleverd met een Windows Server 2016-evaluatie licentie, die voor 180 dagen geldig is. Als de evaluatie periode bijna is verlopen, raden wij aan dat u een nieuw apparaat downloadt en implementeert, of dat u de licentie voor het besturings systeem van de apparaat-VM activeert.
 **PowerShell-script** | Raadpleeg dit [artikel](./deploy-appliance-script.md#set-up-the-appliance-for-vmware).<br/><br/> 
 **Software/hardware** |  Het apparaat moet worden uitgevoerd op de computer met Windows Server 2016, 32-GB RAM, 8 Vcpu's, ongeveer 80 GB aan schijf opslag en een externe virtuele switch.<br/> Voor het apparaat is toegang tot internet vereist, hetzij rechtstreeks hetzij via een proxy.<br/><br/> Als u het apparaat op een virtuele VMware-machine uitvoert, hebt u voldoende resources op de vCenter Server nodig om een virtuele machine toe te wijzen die aan de vereisten voldoet.<br/><br/> Als u het apparaat op een fysieke computer uitvoert, moet u ervoor zorgen dat Windows Server 2016 wordt uitgevoerd en voldoet aan de hardwarevereisten.
 **VMware-vereisten** | Als u het apparaat als een virtuele VMware-machine implementeert, moet dit worden geïmplementeerd op een ESXi-host waarop versie 5,5 of hoger wordt uitgevoerd.<br/><br/> vCenter Server met 5,5, 6,0, 6,5 of 6,7.
 **VDDK (migratie zonder agent)** | Als u het apparaat als een virtuele VMware-machine implementeert en u een migratie zonder agent uitvoert, moet de VMware vSphere-VDDK op de apparaat-VM zijn geïnstalleerd.
-**Hashwaarde-eicellen** | [Controleer](tutorial-assess-vmware.md#verify-security) de hash-waarden van de eicellen-sjabloon.
+**Hashwaarde-eicellen** | [Controleer](tutorial-discover-vmware.md#verify-security) de hash-waarden van de eicellen-sjabloon.
 **Hash-waarde-Power shell-script** | [Controleer](deploy-appliance-script.md#verify-file-security) de hash-waarden van het Power shell-script.
 
 
@@ -67,11 +67,11 @@ De volgende tabel bevat een overzicht van de Azure Migrate vereisten voor VMware
 **Ondersteunde implementatie** | Als Hyper-V-VM implementeren met behulp van een VHD-sjabloon.<br/><br/> Implementeer als een Hyper-V-VM of fysieke machine met behulp van een Power shell-installatie script.
 **Project ondersteuning** |  Een apparaat kan worden gekoppeld aan een enkel project. <br/> Een wille keurig aantal apparaten kan aan één project worden gekoppeld.<br/> 
 **Detectie limieten** | Een apparaat kan tot 5000 Hyper-V-Vm's detecteren.<br/> Een apparaat kan verbinding maken met Maxi maal 300 Hyper-V-hosts.
-**VHD-sjabloon** | Gezipte map inclusief VHD. Downloaden van de portal of [hier](https://go.microsoft.com/fwlink/?linkid=2140422).<br/><br/> De download grootte is 10,4 GB.<br/><br/> De sjabloon voor het gedownloade apparaat wordt geleverd met een Windows Server 2016-evaluatie licentie, die voor 180 dagen geldig is. Als de evaluatie periode bijna is verlopen, raden wij aan dat u een nieuw apparaat downloadt en implementeert, of dat u de licentie voor het besturings systeem van de apparaat-VM activeert.
+**VHD-sjabloon** | Gezipte map inclusief VHD. Downloaden van de portal of [hier](https://go.microsoft.com/fwlink/?linkid=2140422).<br/><br/> De download grootte is 8,91 GB.<br/><br/> De sjabloon voor het gedownloade apparaat wordt geleverd met een Windows Server 2016-evaluatie licentie, die voor 180 dagen geldig is. Als de evaluatie periode bijna is verlopen, raden wij aan dat u een nieuw apparaat downloadt en implementeert, of dat u de licentie voor het besturings systeem van de apparaat-VM activeert.
 **PowerShell-script** | Raadpleeg dit [artikel](./deploy-appliance-script.md#set-up-the-appliance-for-hyper-v).<br/><br/> 
-**Software/hardware***   |  Het apparaat moet worden uitgevoerd op de computer met Windows Server 2016, 16 GB RAM, 8 Vcpu's, ongeveer 80 GB aan schijf opslag en een externe virtuele switch.<br/> Het apparaat heeft een statisch of dynamisch IP-adres nodig en vereist Internet toegang, hetzij rechtstreeks hetzij via een proxy.<br/><br/> Als u het apparaat uitvoert als een Hyper-V-VM, hebt u voldoende resources op de Hyper-V-host nodig om 16 GB RAM-geheugen, 8 Vcpu's, ongeveer 80 GB aan opslag ruimte toe te wijzen en een externe switch voor de toestel-VM.<br/><br/> Als u het apparaat op een fysieke computer uitvoert, moet u ervoor zorgen dat Windows Server 2016 wordt uitgevoerd en voldoet aan de hardwarevereisten. 
+**Software/hardware***   |  Het apparaat moet worden uitgevoerd op de computer met Windows Server 2016, 16 GB RAM, 8 Vcpu's, ongeveer 80 GB aan schijf opslag en een externe virtuele switch.<br/> Het apparaat heeft een statisch of dynamisch IP-adres nodig en vereist Internet toegang, hetzij rechtstreeks hetzij via een proxy.<br/><br/> Als u het apparaat als een Hyper-V-VM uitvoert, hebt u voldoende resources op de Hyper-V-host nodig om hardwarevereisten toe te wijzen.<br/><br/> Als u het apparaat op een fysieke computer uitvoert, moet u ervoor zorgen dat Windows Server 2016 wordt uitgevoerd en voldoet aan de hardwarevereisten. 
 **Vereisten voor Hyper-V** | Als u het apparaat met de VHD-sjabloon implementeert, is de virtuele machine van het apparaat van Azure Migrate Hyper-V VM versie 5,0.<br/><br/> Op de Hyper-V-host moet Windows Server 2012 R2 of later worden uitgevoerd. 
-**Hashwaarde-VHD** | Hash-waarden van VHD-sjabloon.
+**Hashwaarde-VHD** | [Verifiëren](tutorial-discover-hyper-v.md#verify-security) Hash-waarden van VHD-sjabloon.
 **Hash-waarde-Power shell-script** | [Controleer](deploy-appliance-script.md#verify-file-security) de hash-waarden van het Power shell-script.
 
 
@@ -84,9 +84,9 @@ De volgende tabel bevat een overzicht van de Azure Migrate vereisten voor VMware
 **Ondersteunde implementatie** | Implementeren als een toegewezen fysieke machine, of een VM, met behulp van een Power shell-installatie script. Het script kan vanuit de portal worden gedownload.
 **Project ondersteuning** |  Een apparaat kan worden gekoppeld aan een enkel project. <br/> Een wille keurig aantal apparaten kan aan één project worden gekoppeld.<br/> 
 **Detectie limieten** | Een apparaat kan Maxi maal 1000 fysieke servers detecteren.
-**PowerShell-script** | Down load het script (AzureMigrateInstaller.ps1) in een gezipte map vanuit de portal of [hier](https://go.microsoft.com/fwlink/?linkid=2140334). [Meer informatie](tutorial-discover-physical.md).<br/><br/> De download grootte is 85 MB.
-**Software/hardware** |  Het apparaat moet worden uitgevoerd op de computer met Windows Server 2016, 16 GB RAM, 8 Vcpu's, ongeveer 80 GB aan schijf opslag en een externe virtuele switch.<br/> Het apparaat heeft een statisch of dynamisch IP-adres nodig en vereist Internet toegang, hetzij rechtstreeks hetzij via een proxy.<br/><br/> Als u het apparaat op een fysieke computer uitvoert, moet u ervoor zorgen dat Windows Server 2016 wordt uitgevoerd en voldoet aan de hardwarevereisten.<br/> Het apparaat wordt niet ondersteund op een computer met Windows Server 2019.
-**Hash-waarde** | [Controleer](deploy-appliance-script.md#verify-file-security) de hash-waarden van het Power shell-script.
+**PowerShell-script** | Down load het script (AzureMigrateInstaller.ps1) in een gezipte map vanuit de portal of [hier](https://go.microsoft.com/fwlink/?linkid=2140334). [Meer informatie](tutorial-discover-physical.md).<br/><br/> De download grootte is 85,8 MB.
+**Software/hardware** |  Het apparaat moet worden uitgevoerd op de computer met Windows Server 2016, 16 GB RAM, 8 Vcpu's, ongeveer 80 GB aan schijf opslag.<br/> Het apparaat heeft een statisch of dynamisch IP-adres nodig en vereist Internet toegang, hetzij rechtstreeks hetzij via een proxy.<br/><br/> Als u het apparaat op een fysieke computer uitvoert, moet u ervoor zorgen dat Windows Server 2016 wordt uitgevoerd en voldoet aan de hardwarevereisten.<br/>_(Momenteel wordt de implementatie van apparaat alleen ondersteund op Windows Server 2016.)_
+**Hash-waarde** | [Controleer](tutorial-discover-physical.md#verify-security) de hash-waarden van het Power shell-script.
 
 ## <a name="url-access"></a>URL-toegang
 

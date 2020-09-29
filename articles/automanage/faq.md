@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: troubleshooting
 ms.date: 09/04/2020
 ms.author: deanwe
-ms.openlocfilehash: fa24c0db398c4c799d218ff5e8ec8e3d3e321742
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 348106c405e6e096f7bfd9a225fc783c4454b1ad
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91311543"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449764"
 ---
 # <a name="frequently-asked-questions-for-azure-automanage-for-vms"></a>Veelgestelde vragen over Azure automanage voor Vm's
 
@@ -33,12 +33,13 @@ Hier volgen de vereisten voor het inschakelen van Azure automanage:
 - De gebruiker moet over de juiste machtigingen beschikken
 - Alleen virtuele machines die geen schaal zijn ingesteld
 - Vm's mogen niet worden gekoppeld aan een log Analytics-werk ruimte in een ander abonnement
+- Automanage biedt momenteel geen ondersteuning voor sandbox-abonnementen
 
 **Welke RBAC-machtiging is nodig om automanage in te scha kelen?**
 
-Als u automanage op een virtuele machine met een bestaand automanage-account inschakelt, moet u de rol Inzender hebben voor de resource groep waar de virtuele machine zich bevindt. 
+Als u automanage op een virtuele machine met een bestaand automanage-account inschakelt, moet u de rol Inzender hebben voor de resource groep waar de virtuele machine zich bevindt.
 
-Als u een nieuw account voor automanage gebruikt wanneer u dit inschakelt, moeten gebruikers de rol eigenaar hebben of beschikken over de rol Inzender + gebruikers toegang voor het abonnement.
+Als u een nieuw account voor automanage gebruikt wanneer u dit inschakelt, moet u de rol eigenaar hebben of de rol Inzender + gebruikers toegang hebben voor het abonnement.
 
 
 **Welke regio's worden ondersteund?**
@@ -50,6 +51,9 @@ Virtuele machines in de volgende regio's worden ondersteund: Europa-west, VS-Oos
 
 Automatisch beheer registreert, configureert en bewaakt gedurende de levens cyclus van de virtuele machine die [hier](virtual-machines-best-practices.md)wordt vermeld.
 
+**Werkt Azure automanage met virtuele machines met de Arc-functionaliteit van Azure?**
+
+Automanage biedt momenteel geen ondersteuning voor virtuele machines met Arc-functionaliteit.
 
 **Kan ik configuraties aanpassen voor Azure automanage?**
 
@@ -88,7 +92,7 @@ Het account voor automatisch beheer is een MSI-bestand (Managed Service Identity
 
 **Als u automanage inschakelt, heeft dit invloed op eventuele extra Vm's naast de virtuele machine (s) die ik heb geselecteerd?**
 
-Als uw virtuele machine is gekoppeld aan een bestaande Log Analytics-werk ruimte, wordt die werk ruimte opnieuw gebruikt voor het Toep assen van deze oplossingen: Wijzigingen bijhouden, inventarisatie en Updatebeheer. Voor alle Vm's die zijn verbonden met deze werk ruimte, zijn deze oplossingen ingeschakeld. 
+Als uw virtuele machine is gekoppeld aan een bestaande Log Analytics-werk ruimte, wordt die werk ruimte opnieuw gebruikt voor het Toep assen van deze oplossingen: Wijzigingen bijhouden, inventarisatie en Updatebeheer. Voor alle Vm's die zijn verbonden met deze werk ruimte, zijn deze oplossingen ingeschakeld.
 
 
 **Kan ik het configuratie Profiel van mijn VM wijzigen?**

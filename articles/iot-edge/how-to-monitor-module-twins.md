@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c24cef2cf9e4c54d16ebc75eb1a56273d8826355
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1bf2e3f07d9e5576f62ef9badd9c8a46ac92fad0
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84221403"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450162"
 ---
 # <a name="monitor-module-twins"></a>Dubbele modules bewaken
 
 Met de module apparaatdubbels in IoT Hub Azure kunt u de connectiviteit en status van uw IoT Edge-implementaties controleren. Module apparaatdubbels bevatten nuttige informatie over de prestaties van uw actieve modules in uw IoT-hub. De [IOT Edge-agent](iot-edge-runtime.md#iot-edge-agent) en de runtime modules van [IOT Edge hub](iot-edge-runtime.md#iot-edge-hub) onderhouden hun module apparaatdubbels `$edgeAgent` en `$edgeHub` respectievelijk:
 
-* `$edgeAgent`bevat status-en connectiviteits gegevens over de IoT Edge agent en IoT Edge hub runtime modules en uw aangepaste modules. De IoT Edge-agent is verantwoordelijk voor het implementeren van de modules, het bewaken ervan en het rapporteren van de verbindings status aan uw Azure IoT hub.
-* `$edgeHub`bevat gegevens over de communicatie tussen de IoT Edge hub die op een apparaat wordt uitgevoerd en uw Azure IoT hub. Dit omvat het verwerken van inkomende berichten van downstream-apparaten. IoT Edge hub is verantwoordelijk voor het verwerken van de communicatie tussen de Azure-IoT Hub en de IoT Edge apparaten en modules.
+* `$edgeAgent` bevat status-en connectiviteits gegevens over de IoT Edge agent en IoT Edge hub runtime modules en uw aangepaste modules. De IoT Edge-agent is verantwoordelijk voor het implementeren van de modules, het bewaken ervan en het rapporteren van de verbindings status aan uw Azure IoT hub.
+* `$edgeHub` bevat gegevens over de communicatie tussen de IoT Edge hub die op een apparaat wordt uitgevoerd en uw Azure IoT hub. Dit omvat het verwerken van inkomende berichten van downstream-apparaten. IoT Edge hub is verantwoordelijk voor het verwerken van de communicatie tussen de Azure-IoT Hub en de IoT Edge apparaten en modules.
 
 De gegevens zijn ingedeeld in meta gegevens, tags en de gewenste en gerapporteerde eigenschappen sets in de apparaatdubbels JSON-structuren van de module. De gewenste eigenschappen die u hebt opgegeven in uw deployment.jsvoor het bestand worden gekopieerd naar de module apparaatdubbels. Met de IoT Edge-agent en de IoT Edge-hub worden de gerapporteerde eigenschappen voor hun modules bijgewerkt.
 
@@ -186,7 +186,7 @@ U kunt de JSON voor module apparaatdubbels bekijken in azure IoT Hub, Visual Stu
 
 De JSON weer geven voor de module dubbele:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) en navigeer naar uw IOT-hub.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com) en ga naar uw IoT Hub.
 1. Selecteer **IOT Edge** in het menu van het linkerdeel venster.
 1. Selecteer op het tabblad **IOT edge apparaten** de **apparaat-id** van het apparaat met de modules die u wilt bewaken.
 1. Selecteer de module naam op het tabblad **modules** en selecteer vervolgens **module-identiteit, twee** in de bovenste menu balk.
@@ -213,7 +213,7 @@ Als u wijzigingen aanbrengt, selecteert u **Update module** nadaarboven boven de
 
 Als u wilt zien of IoT Edge wordt uitgevoerd, gebruikt u de [methode AZ IOT hub invoke-module](how-to-edgeagent-direct-method.md#ping) om de IOT Edge agent te pingen.
 
-De [AZ IOT hub-module-dubbele](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/module-twin) structuur biedt de volgende opdrachten:
+De [AZ IOT hub-module-dubbele](/cli/azure/ext/azure-cli-iot-ext/iot/hub/module-twin) structuur biedt de volgende opdrachten:
 
 * **AZ IOT hub module-dubbele weer gave** -een module definitie weer geven.
 * **AZ IOT hub module-dubbele update** -een module definitie bijwerken.

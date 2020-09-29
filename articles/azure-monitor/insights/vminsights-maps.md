@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2020
-ms.openlocfilehash: 3227585b62583d0a05f8dbc0444ee5bb4a27df77
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 32ad92b333eda8cd429303177dba160f0b58af54
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320507"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91445544"
 ---
 # <a name="use-the-map-feature-of-azure-monitor-for-vms-to-understand-application-components"></a>De kaart functie van Azure Monitor voor VM's gebruiken om inzicht te krijgen in toepassings onderdelen
 In Azure Monitor voor VM's kunt u gedetecteerde toepassings onderdelen weer geven op virtuele Windows-en Linux-machines (Vm's) die worden uitgevoerd in azure of in uw omgeving. U kunt de virtuele machines op twee manieren bekijken. Een kaart rechtstreeks vanuit een virtuele machine weer geven of een kaart van Azure Monitor weer geven om de onderdelen van verschillende Vm's te bekijken. In dit artikel vindt u meer informatie over deze twee weergave methoden en over het gebruik van de kaart functie. 
@@ -95,7 +95,7 @@ De kaart visualiseert de afhankelijkheden van de virtuele machine door het detec
 
 Standaard toont de kaart de laatste 30 minuten. Als u wilt zien hoe afhankelijkheden in het verleden worden weer geven, kunt u een query uitvoeren voor historische Peri Oden van Maxi maal één uur. Als u de query wilt uitvoeren, gebruikt u de **time Range** selector in de linkerbovenhoek. U kunt een query uitvoeren, bijvoorbeeld tijdens een incident of de status voor een wijziging bekijken.  
 
-![Overzicht van directe VM-kaart](./media/vminsights-maps/map-direct-vm-01.png)
+![Scherm afbeelding van het tabblad map in het gedeelte bewakings inzichten van Azure Portal een diagram van de afhankelijkheden tussen virtuele machines weer te geven.](./media/vminsights-maps/map-direct-vm-01.png)
 
 ## <a name="view-a-map-from-a-virtual-machine-scale-set"></a>Een kaart uit een schaalset voor virtuele machines weer geven
 
@@ -111,7 +111,7 @@ Als u een kaart voor een specifiek exemplaar wilt laden, selecteert u eerst dat 
 
 Standaard toont de kaart de laatste 30 minuten. Als u wilt zien hoe afhankelijkheden in het verleden worden weer geven, kunt u een query uitvoeren voor historische Peri Oden van Maxi maal één uur. Als u de query wilt uitvoeren, gebruikt u de **time Range** kiezer. U kunt een query uitvoeren, bijvoorbeeld tijdens een incident of de status voor een wijziging bekijken.
 
-![Overzicht van directe VM-kaart](./media/vminsights-maps/map-direct-vmss-01.png)
+![Scherm afbeelding van het tabblad map in het gedeelte bewakings inzichten van Azure Portal een diagram met afhankelijkheden tussen schaal sets voor virtuele machines weer geven.](./media/vminsights-maps/map-direct-vmss-01.png)
 
 >[!NOTE]
 >U kunt ook toegang krijgen tot een kaart voor een specifiek exemplaar vanuit de weer gave **instanties** voor de schaalset van de virtuele machine. Ga in de sectie **instellingen** naar **instances**  >  **Insights**.

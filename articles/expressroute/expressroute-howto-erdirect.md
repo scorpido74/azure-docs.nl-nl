@@ -1,22 +1,22 @@
 ---
 title: 'Azure ExpressRoute: ExpressRoute direct configureren'
-description: Lees hoe u met Azure PowerShell Azure ExpressRoute direct kunt configureren om rechtstreeks verbinding te maken met het wereld wijde netwerk van micro soft op peering locaties over de hele wereld.
+description: Meer informatie over het gebruik van Azure PowerShell voor het configureren van Azure ExpressRoute direct om rechtstreeks verbinding te maken met het wereld wijde micro soft-netwerk.
 services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 01/22/2020
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: c4ce764f50f85ef9979d5a14235759c16228f6b7
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 1748db76aa2d1f65ea21046bcff2fff43ca732b0
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89396026"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91450199"
 ---
 # <a name="how-to-configure-expressroute-direct"></a>ExpressRoute direct configureren
 
-ExpressRoute direct biedt u de mogelijkheid om rechtstreeks verbinding te maken met het wereld wijde netwerk van micro soft op locatie van peering strategisch gedistribueerd over de hele wereld. Zie [About ExpressRoute Direct](expressroute-erdirect-about.md) (Over ExpressRoute Direct) voor meer informatie.
+ExpressRoute direct biedt u de mogelijkheid om rechtstreeks verbinding te maken met het wereld wijde netwerk van micro soft via peering-locaties strategisch gedistribueerd over de hele wereld. Zie [About ExpressRoute Direct](expressroute-erdirect-about.md) (Over ExpressRoute Direct) voor meer informatie.
 
 ## <a name="create-the-resource"></a><a name="resources"></a>De resource maken
 
@@ -155,10 +155,20 @@ ExpressRoute direct biedt u de mogelijkheid om rechtstreeks verbinding te maken 
    Circuits                   : []
    ```
 
-## <a name="change-admin-state-of-links"></a><a name="state"></a>De beheer status van koppelingen wijzigen
+## <a name="generate-the-letter-of-authorization-loa"></a><a name="authorization"></a>De autorisatie brief (LOA) genereren
 
-  Dit proces moet worden gebruikt om een laag 1-test uit te voeren, zodat elke Kruis verbinding op de juiste wijze wordt gerepareerd in elke router voor primair en secundair.
-1. ExpressRoute direct-Details ophalen.
+Raadpleeg de zojuist gemaakte ExpressRoute direct-resource, voer een klant naam in om de LOA naar te schrijven en (optioneel) een bestands locatie te definiëren om het document op te slaan. Als er niet naar een bestandspad wordt verwezen, wordt het document gedownload naar de huidige map.
+
+  ```powershell 
+   New-AzExpressRoutePortLOA -ExpressRoutePort $ERDirect -CustomerName TestCustomerName -Destination "C:\Users\SampleUser\Downloads" 
+   ```
+ **Voorbeeld uitvoer**
+
+   ```powershell
+   Written Letter of Authorization To: C:\Users\SampleUser\Downloads\LOA.pdf
+
+  This process should be used to conduct a Layer 1 test, ensuring that each cross-connection is properly patched into each router for primary and secondary.
+1. Get ExpressRoute Direct details.
 
    ```powershell
    $ERDirect = Get-AzExpressRoutePort -Name $Name -ResourceGroupName $ResourceGroupName
@@ -227,13 +237,13 @@ ExpressRoute direct biedt u de mogelijkheid om rechtstreeks verbinding te maken 
 
 ## <a name="create-a-circuit"></a><a name="circuit"></a>Een circuit maken
 
-Standaard kunt u 10 circuits maken in het abonnement waarin de ExpressRoute direct-resource zich bevindt. Dit kan worden verhoogd met ondersteuning. U bent zelf verantwoordelijk voor het bijhouden van zowel ingerichte als gebruikte band breedte. Ingerichte band breedte is de som van de band breedte van alle circuits op de ExpressRoute direct-resource en gebruikte band breedte is het fysieke gebruik van de onderliggende fysieke interfaces.
+Standaard kunt u 10 circuits maken in het abonnement waarin de ExpressRoute direct-resource zich bevindt. Deze limiet kan worden verhoogd met ondersteuning. U bent zelf verantwoordelijk voor het bijhouden van zowel ingerichte als gebruikte band breedte. Ingerichte band breedte is de som van de band breedte van alle circuits op de ExpressRoute direct-resource en gebruikte band breedte is het fysieke gebruik van de onderliggende fysieke interfaces.
 
-Er zijn extra circuit bandbreedten die alleen op ExpressRoute direct kunnen worden gebruikt om de hierboven beschreven scenario's te ondersteunen. Dit zijn: 40Gbps en 100Gbps.
+Er zijn extra circuit bandbreedten die op ExpressRoute direct kunnen worden gebruikt om alleen de hierboven beschreven scenario's te ondersteunen. Deze band breedten zijn 40 Gbps en 100 Gbps.
 
 **SkuTier** kan lokaal, standaard of Premium zijn.
 
-**SkuFamily** moet MeteredData alleen als onbeperkt worden niet ondersteund op ExpressRoute direct.
+**SkuFamily** kan alleen MeteredData zijn. Onbeperkt wordt niet ondersteund op ExpressRoute direct.
 
 Maak een circuit op de ExpressRoute direct-resource.
 

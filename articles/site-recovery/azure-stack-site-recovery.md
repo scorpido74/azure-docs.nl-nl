@@ -3,12 +3,12 @@ title: Azure Stack Vm's repliceren naar Azure met behulp van Azure Site Recovery
 description: Meer informatie over het instellen van herstel na nood gevallen voor Azure voor Azure Stack Vm's met de Azure Site Recovery-service.
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 5bc78dc5b01bb4790190268b303cb894de2b6f71
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a7e58f5b24786169c9d0c989b79a14c4115acca8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333712"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448978"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Virtuele Azure-machines repliceren naar Azure
 
@@ -314,26 +314,7 @@ Voer een failover als volgt uit:
 
 ### <a name="fail-back-to-azure-stack"></a>Failback naar Azure Stack
 
-Als uw primaire site weer actief is, kunt u een failback uitvoeren van Azure naar Azure Stack. Hiervoor moet u de VHD van de virtuele Azure-machine downloaden en uploaden naar Azure Stack.
-
-1. Sluit de virtuele machine van Azure af zodat de VHD kan worden gedownload.
-2. Installeer [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)om te beginnen met het downloaden van de VHD.
-3. Ga in azure Portal naar de virtuele machine (met behulp van de naam van de virtuele machine).
-4. Klik in **schijven**op de naam van de schijf en verzamel instellingen.
-
-    - De VHD-URI die in onze test wordt gebruikt, `https://502055westcentralus.blob.core.windows.net/wahv9b8d2ceb284fb59287/copied-3676553984.vhd` kan bijvoorbeeld worden uitgesplitst om de volgende invoer parameters op te halen die worden gebruikt voor het downloaden van de VHD.
-        - Opslag account: 502055westcentralus
-        - Container: wahv9b8d2ceb284fb59287
-        - VHD-naam: copied-3676553984. VHD
-
-5. Gebruik nu Azure Storage Explorer om de VHD te downloaden.
-6. Upload de VHD naar Azure Stack met [de volgende stappen](/azure-stack/user/azure-stack-manage-vm-disks#use-powershell-to-add-multiple-disks-to-a-vm).
-7. Koppel de geüploade Vhd's in de bestaande virtuele machine of nieuwe virtuele machine.
-8. Controleer of de besturingssysteem schijf juist is en start de virtuele machine.
-
-
-Tijdens deze fase is de failback voltooid.
-
+Als uw primaire site weer actief is, kunt u een failback uitvoeren van Azure naar Azure Stack. Volg hiervoor de stappen die [hier](https://docs.microsoft.com/azure-stack/operator/site-recovery-failback?view=azs-2005)worden beschreven.
 
 ## <a name="conclusion"></a>Conclusie
 

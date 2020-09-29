@@ -10,23 +10,23 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 09/28/2020
 ms.author: duau
 ms.reviewer: tyao
-ms.openlocfilehash: 558d1c098f07f8e09a6a68a065cac9b7b38cfbf3
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 42697a57d39f4a34eee4866b67e2cde947db1ff5
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399647"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449252"
 ---
 # <a name="geo-filtering-on-a-domain-for-azure-front-door"></a>Geografisch filteren op een domein voor de voor deur van Azure
 
-Standaard reageert Azure front deur op gebruikers aanvragen, ongeacht de locatie van de gebruiker die de aanvraag heeft gedaan. In sommige gevallen wilt u echter mogelijk de toegang tot uw webtoepassingen beperken op basis van land/regio. Met de WAF-service (Web Application firewall) aan de voor deur kunt u een beleid definiëren met aangepaste toegangs regels voor een specifiek pad op uw eind punt om toegang toe te staan of te blok keren voor bepaalde landen/regio's. 
+Standaard reageert Azure front deur op alle gebruikers aanvragen, ongeacht de locatie van waaruit de aanvraag afkomstig is. In sommige scenario's wilt u mogelijk de toegang tot uw webtoepassing beperken op basis van landen/regio's. Met de WAF-service (Web Application firewall) aan de voor deur kunt u een beleid definiëren met aangepaste toegangs regels voor een specifiek pad op uw eind punt om toegang toe te staan of te blok keren voor bepaalde landen/regio's. 
 
-Een WAF-beleid bevat meestal een set aangepaste regels. Een regel bestaat uit voorwaarden voor overeenkomsten, een actie en een prioriteit. In de voorwaarde voor overeenkomst definieert u een overeenkomende variabele, een operator en een overeenkomende waarde.  Voor de geo-filter regel is de overeenkomende variabele REMOTE_ADDR, de operator is geomatch, de waarde is de code van het land of de regio van de tweede letter. U kunt een GeoMatch-voorwaarde combineren met een REQUEST_URI-tekenreeks-voorwaarde voor overeenkomst om een op een pad gebaseerde geo-filterregel te maken.
+Een WAF-beleid bevat een set aangepaste regels. De regel bestaat uit overeenkomende voor waarden, een actie en een prioriteit. In een match-voor waarde definieert u een matching variabele, operator en match-waarde. Voor een geo-filter regel is een match-variabele REMOTE_ADDR, de operator is geomatch en de waarde is een land/regio code van twee letters. U kunt een geomatch-voor waarde en een REQUEST_URI teken reeks overeenkomst combi neren om een op pad gebaseerde geo-filter regel te maken.
 
-U kunt een beleid voor geofiltering configureren voor uw voor deur door gebruik te maken van [Azure PowerShell](front-door-tutorial-geo-filtering.md) of door gebruik te maken van de Quick Start- [sjabloon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering).
+U kunt een beleid voor geofiltering configureren voor uw voor deur door gebruik te maken van [Azure PowerShell](front-door-tutorial-geo-filtering.md) of door gebruik te maken van een Quick Start- [sjabloon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering).
 
 ## <a name="countryregion-code-reference"></a>Verwijzing naar land/regio code
 
@@ -212,5 +212,5 @@ U kunt een beleid voor geofiltering configureren voor uw voor deur door gebruik 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Informatie over [bescherming van de toepassingslaag met Front Door](front-door-application-security.md).
 - Lees hoe u [een Front Door maakt](quickstart-create-front-door.md).
+- Meer informatie over [het instellen van een geo-filtering WAF-beleid](front-door-tutorial-geo-filtering.md).

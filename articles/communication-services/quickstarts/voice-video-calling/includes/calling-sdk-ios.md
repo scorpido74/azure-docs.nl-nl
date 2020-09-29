@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 31f7e348a805c86964a8856fb81b83831c611de5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7ca15baffd3fac4a1f3635ac7377bac620673446
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91376569"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91451410"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -41,7 +41,7 @@ Voeg de Azure Communication Services-clientbibliotheek en de bijbehorende afhank
 5. Open het tabblad **Build-instellingen** van de projectinstellingeneditor en blader naar de secties **Zoekpaden**. Voeg een nieuwe vermelding **Zoekpaden framework** toe voor de map die het **AzureCommunicationCalling.framework** bevat.
     1. Voeg nog een vermelding Zoekpaden framework toe aan de map die de afhankelijkheden bevat.
 
-:::image type="content" source="../media/ios/xcode-framework-search-paths.png" alt-text="Schermopname van het bijwerken van de Zoekpaden framework in XCode.":::
+:::image type="content" source="../media/ios/xcode-framework-search-paths.png" alt-text="Schermafbeelding dat het nieuw aangemaakte venster Nieuw Project in Xcode aantoont.":::
 
 ### <a name="request-access-to-the-microphone"></a>Toegang tot de microfoon aanvragen
 
@@ -113,7 +113,7 @@ Geef het CommunicationUserCredential-object dat hierboven is gemaakt door voor A
 callClient = ACSCallClient()
 callClient?.createCallAgent(userCredential!,
     withCompletionHandler: { (callAgent, error) in
-        if error != nil {
+        if error == nil {
             print("Create agent succeeded")
             self.callAgent = callAgent
         } else {
@@ -186,7 +186,7 @@ Mobiele push meldingen is de pop-upmelding die u op het mobiele apparaat ontvang
 - Stap 2: Xcode & mogelijkheden voor het ondertekenen van >-> mogelijkheden toevoegen-> "achtergrond modi"
 - Stap 3: "achtergrond modi"-> Selecteer "Voice over IP" en "externe meldingen"
 
-:::image type="content" source="../media/ios/xcode-push-notification.png" alt-text="Scherm afbeelding die laat zien hoe u mogelijkheden toevoegt in Xcode." lightbox="../media/ios/xcode-push-notification.png":::
+:::image type="content" source="../media/ios/xcode-push-notification.png" alt-text="Schermafbeelding dat het nieuw aangemaakte venster Nieuw Project in Xcode aantoont." lightbox="../media/ios/xcode-push-notification.png":::
 
 #### <a name="register-for-push-notifications"></a>Registreren voor push meldingen
 

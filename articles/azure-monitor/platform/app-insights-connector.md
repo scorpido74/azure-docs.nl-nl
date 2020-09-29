@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/13/2019
-ms.openlocfilehash: 80e87d6fdab6ecf15c241581f8c19d36b30d7e30
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 09485d3279e4ca4fff5b6492bab432d8034d7e42
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327103"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449418"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights-connector-beheer oplossing (afgeschaft)
 
@@ -55,7 +55,7 @@ In tegens telling tot de meeste andere Log Analytics oplossingen, worden er geen
 - U moet ten minste één geconfigureerde Application Insights Resource hebben.
 - U moet de eigenaar of bijdrager zijn van de Application Insights resource.
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Configuratie
 
 1. Schakel de Azure Web Apps-analyse-oplossing in via de [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AppInsights?tab=Overview) of via het proces dat wordt beschreven in [log Analytics oplossingen toevoegen van de Oplossingengalerie](../insights/solutions.md).
 2. Blader naar [Azure Portal](https://portal.azure.com). Selecteer **alle services** om Application Insights te openen. Zoek vervolgens naar Application Insights. 
@@ -83,20 +83,20 @@ In de volgende secties wordt beschreven hoe u de Blades kunt gebruiken die worde
 
 Klik op de tegel **Application Insights** om het **Application Insights** dash board te openen om de volgende Blades weer te geven.
 
-![Application Insights-dashboard](./media/app-insights-connector/app-insights-dash01.png)
+![Scherm afbeelding van het Application Insights dash board met de Blades voor toepassingen, gegevens volume en beschik baarheid.](./media/app-insights-connector/app-insights-dash01.png)
 
-![Application Insights-dashboard](./media/app-insights-connector/app-insights-dash02.png)
+![Scherm afbeelding van het Application Insights dash board met de Blades voor server aanvragen, fouten en uitzonde ringen.](./media/app-insights-connector/app-insights-dash02.png)
 
 Het dash board bevat de Blades die in de tabel worden weer gegeven. Elke blade bevat maximaal tien items die overeenkomen met de criteria voor het opgegeven bereik en de duur van die blade. U kunt een zoek opdracht in Logboeken uitvoeren die alle records retourneert wanneer u op **alles weer geven** onder aan de Blade klikt of wanneer u op de Blade-kop klikt.
 
 
 | **Kolom** | **Beschrijving** |
 | --- | --- |
-| Toepassingen-aantal toepassingen | Toont het aantal toepassingen in toepassings bronnen. Hierin worden ook de toepassings namen en voor elk het aantal toepassings records weer gegeven. Klik op het nummer om een zoek opdracht voor logboeken uit te voeren voor<code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName</code> <br><br>  Klik op de naam van een toepassing om een logboek zoekopdracht uit te voeren voor de toepassing waarin toepassings records per host worden weer gegeven, records per type telemetrie en alle gegevens op type (op basis van de laatste dag). |
-| Gegevens volume – hosts die gegevens verzenden | Toont het aantal computers waarop de gegevens worden verzonden. Hierin worden ook de hosts en het aantal records van de computer voor elke host weer gegeven. Klik op het nummer om een zoek opdracht voor logboeken uit te voeren voor<code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by Host</code> <br><br> Klik op de naam van een computer om een logboek zoekopdracht uit te voeren voor de host die toepassings records per host weergeeft, records per type telemetrie en alle gegevens op type (op basis van de laatste dag). |
-| Beschik baarheid – webtest-resultaten | Toont een ring diagram voor de resultaten van webtests en geeft aan of het mislukt. Klik op de grafiek om een zoek opdracht voor logboeken uit te voeren voor<code>ApplicationInsights &#124; where TelemetryType == "Availability" &#124; summarize AggregatedValue = sum(SampledCount) by AvailabilityResult</code> <br><br> Met resultaten wordt het aantal gangen en fouten voor alle tests weer gegeven. Alle Web Apps met verkeer voor de laatste minuut worden weer gegeven. Klik op de naam van een toepassing om een zoek opdracht in logboeken weer te geven met details van mislukte webtests. |
+| Toepassingen-aantal toepassingen | Toont het aantal toepassingen in toepassings bronnen. Hierin worden ook de toepassings namen en voor elk het aantal toepassings records weer gegeven. Klik op het nummer om een zoek opdracht voor logboeken uit te voeren voor <code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName</code> <br><br>  Klik op de naam van een toepassing om een logboek zoekopdracht uit te voeren voor de toepassing waarin toepassings records per host worden weer gegeven, records per type telemetrie en alle gegevens op type (op basis van de laatste dag). |
+| Gegevens volume – hosts die gegevens verzenden | Toont het aantal computers waarop de gegevens worden verzonden. Hierin worden ook de hosts en het aantal records van de computer voor elke host weer gegeven. Klik op het nummer om een zoek opdracht voor logboeken uit te voeren voor <code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by Host</code> <br><br> Klik op de naam van een computer om een logboek zoekopdracht uit te voeren voor de host die toepassings records per host weergeeft, records per type telemetrie en alle gegevens op type (op basis van de laatste dag). |
+| Beschik baarheid – webtest-resultaten | Toont een ring diagram voor de resultaten van webtests en geeft aan of het mislukt. Klik op de grafiek om een zoek opdracht voor logboeken uit te voeren voor <code>ApplicationInsights &#124; where TelemetryType == "Availability" &#124; summarize AggregatedValue = sum(SampledCount) by AvailabilityResult</code> <br><br> Met resultaten wordt het aantal gangen en fouten voor alle tests weer gegeven. Alle Web Apps met verkeer voor de laatste minuut worden weer gegeven. Klik op de naam van een toepassing om een zoek opdracht in logboeken weer te geven met details van mislukte webtests. |
 | Server aanvragen-aanvragen per uur | Geeft een lijn diagram weer van de server aanvragen per uur voor verschillende toepassingen. Beweeg de muis aanwijzer over een regel in de grafiek om de bovenste 3 toepassingen te zien die aanvragen voor een bepaald tijdstip ontvangen. Toont ook een lijst met de toepassingen die aanvragen ontvangen en het aantal aanvragen voor de geselecteerde periode. <br><br>Klik op de grafiek om een zoek opdracht in Logboeken uit te voeren <code>ApplicationInsights &#124; where TelemetryType == "Request" &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> waarin een gedetailleerd lijn diagram wordt weer gegeven van de server aanvragen per uur voor verschillende toepassingen. <br><br> Klik op een toepassing in de lijst om een logboek zoekopdracht uit te voeren voor <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true</code> een lijst met aanvragen, grafieken voor aanvragen in de loop van de tijd en de duur van aanvragen en een lijst met antwoord codes voor aanvragen.   |
-| Fouten: mislukte aanvragen per uur | Geeft een lijn diagram weer van mislukte toepassings aanvragen per uur. Beweeg de muis aanwijzer over de grafiek om de bovenste 3 toepassingen met mislukte aanvragen voor een bepaald tijdstip weer te geven. Toont ook een lijst met toepassingen met het aantal mislukte aanvragen voor elke toepassing. Klik op de grafiek om een logboek zoekopdracht uit te voeren voor <code>ApplicationInsights &#124; where TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> een gedetailleerd lijn diagram van mislukte toepassings aanvragen. <br><br>Klik op een item in de lijst om een logboek zoekopdracht uit te voeren voor <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true</code> het weer geven van mislukte aanvragen, grafieken voor mislukte aanvragen gedurende een bepaalde periode en een lijst met mislukte antwoord codes voor aanvragen. |
+| Fouten: mislukte aanvragen per uur | Geeft een lijn diagram weer van mislukte toepassings aanvragen per uur. Beweeg de muis aanwijzer over de grafiek om de bovenste 3 toepassingen met mislukte aanvragen voor een bepaald tijdstip weer te geven. Toont ook een lijst met toepassingen met het aantal mislukte aanvragen voor elke toepassing. Klik op de grafiek om een logboek zoekopdracht uit te voeren voor <code>ApplicationInsights &#124; where TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> een gedetailleerd lijn diagram van mislukte toepassings aanvragen. <br><br>Klik op een item in de lijst om een logboek zoekopdracht uit te voeren voor <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true</code>  het weer geven van mislukte aanvragen, grafieken voor mislukte aanvragen gedurende een bepaalde periode en een lijst met mislukte antwoord codes voor aanvragen. |
 | Uitzonde ringen: uitzonde ringen per uur | Toont een lijn diagram met uitzonde ringen per uur. Beweeg de muis aanwijzer over de grafiek om de bovenste 3 toepassingen met uitzonde ringen voor een bepaald tijdstip weer te geven. Toont ook een lijst met toepassingen met het aantal uitzonde ringen voor elk. Klik op de grafiek om een logboek zoekopdracht uit te voeren voor <code>ApplicationInsights &#124; where TelemetryType == "Exception" &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> een gedetailleerdere koppelings grafiek met uitzonde ringen. <br><br>Klik op een item in de lijst om een logboek zoekopdracht uit te voeren voor <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Exception"</code> een lijst met uitzonde ringen, grafieken voor uitzonde ringen in de loop van de tijd en mislukte aanvragen, en een lijst met uitzonderings typen.  |
 
 ### <a name="view-the-application-insights-perspective-with-log-search"></a>Het Application Insights perspectief weer geven met zoeken in Logboeken
@@ -154,7 +154,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 
 Het veld aantal in de **steek proef** is aanwezig in alle vermeldingen en toont het aantal gegevens punten dat de vermelding vertegenwoordigt. Als u steek proeven voor uw Application Insights-app inschakelt, is het **aantal samples** groter dan 1. Als u het werkelijke aantal vermeldingen wilt tellen dat door de toepassing wordt gegenereerd, moet u de velden voor het **aantal samples** optellen.
 
-Steek proeven zijn alleen van invloed op het totale aantal vermeldingen dat door uw toepassing wordt gegenereerd. U hoeft geen steek proeven te corrigeren voor metrische velden, zoals **RequestDuration** of **AvailabilityDuration** , omdat deze velden het gemiddelde voor weer gegeven vermeldingen tonen.
+Steek proeven zijn alleen van invloed op het totale aantal vermeldingen dat door uw toepassing wordt gegenereerd. U hoeft geen steek proeven te corrigeren voor metrische velden, zoals **RequestDuration** of **AvailabilityDuration**  , omdat deze velden het gemiddelde voor weer gegeven vermeldingen tonen.
 
 ## <a name="input-data"></a>Invoergegevens
 

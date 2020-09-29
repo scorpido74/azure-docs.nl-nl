@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/22/2018
-ms.openlocfilehash: 4f4b914fe5851df0928df9ccc41ca3b20c5d3469
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: d428382493e15d2e0571f4cb4b6f090cf9056fe4
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955952"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449305"
 ---
 # <a name="filters-in-azure-monitor-views"></a>Filters in Azure Monitor weer gaven
 Met een **filter** in een [Azure monitor weergave](view-designer.md) kunnen gebruikers de gegevens in de weer gave filteren op basis van de waarde van een bepaalde eigenschap zonder de weer gave zelf te wijzigen.  Zo kunt u gebruikers van uw weer gave toestaan om de weer gave alleen te filteren op gegevens van een bepaalde computer of een set computers.  U kunt meerdere filters maken op één weer gave zodat gebruikers meerdere eigenschappen kunnen filteren.  In dit artikel wordt beschreven hoe u een filter gebruikt en voegt u er een toe aan een aangepaste weer gave.
@@ -19,12 +19,12 @@ Met een **filter** in een [Azure monitor weergave](view-designer.md) kunnen gebr
 ## <a name="using-a-filter"></a>Een filter gebruiken
 Klik op het datum-en tijd bereik boven aan een weer gave om de vervolg keuzelijst te openen waar u het datum-en tijd bereik voor de weer gave kunt wijzigen.
 
-![Filter voorbeeld](media/view-designer-filters/filters-example-time.png)
+![Scherm opname van het vervolg keuzemenu tijd bereik voor een weer gave in Azure Monitor, waarin het keuze rondje voor de afgelopen zeven dagen wordt weer gegeven.](media/view-designer-filters/filters-example-time.png)
 
 Klik op de **+** om een filter toe te voegen met aangepaste filters die voor de weer gave zijn gedefinieerd. Selecteer een waarde voor het filter in de vervolg keuzelijst of typ een waarde. Blijf filters toevoegen door te klikken op de **+** . 
 
 
-![Filter voorbeeld](media/view-designer-filters/filters-example-custom.png)
+![Scherm afbeelding van het dialoog venster voor het toevoegen van een aangepast filter in Azure Monitor. De eigenschap computers wordt geselecteerd in het vervolg keuzemenu eigenschap selecteren.](media/view-designer-filters/filters-example-custom.png)
 
 Als u alle waarden voor een filter verwijdert, wordt dat filter niet meer toegepast.
 
@@ -50,8 +50,8 @@ De volgende tabel bevat enkele voor beelden van algemene filters.
 | Veldnaam | Query voor waarden | Label |
 |:--|:--|:--|
 | Computer   | Heartbeat &#124; afzonderlijke computer &#124; sorteren op computer ASC | Computers |
-| EventLevelName | Gebeurtenis &#124; afzonderlijke EventLevelName | Severity |
-| SeverityLevel | Syslog &#124; DISTINCT SeverityLevel | Severity |
+| EventLevelName | Gebeurtenis &#124; afzonderlijke EventLevelName | Ernst |
+| SeverityLevel | Syslog &#124; DISTINCT SeverityLevel | Ernst |
 | SvcChangeType | ConfigurationChange &#124; DISTINCT svcChangeType | Change type |
 
 

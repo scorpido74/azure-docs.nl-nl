@@ -9,21 +9,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/10/2018
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: c96dac55df2cdc15b7d3699e947c851a9fe69b02
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 4cbeea8ad20d41daff3d4ad086a36df5e988991f
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399630"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449242"
 ---
 # <a name="health-probes"></a>Statuscontroles
 
-Om de status en nabijheid van elke back-end vanuit een bepaalde front-deur omgeving te bepalen, stuurt elke front-deur omgeving periodiek een synthetische HTTP/HTTPS-aanvraag naar elk van uw geconfigureerde back-ends. Front Door gebruikt de reacties op deze tests dan om te bepalen welke back-ends het beste zijn voor het routeren van echte aanvragen van klanten. 
+Om de status en nabijheid van elke back-end voor een bepaalde front-deur omgeving te bepalen, stuurt elke front-deur omgeving periodiek een synthetische HTTP/HTTPS-aanvraag naar elk van uw geconfigureerde back-ends. De voor deur gebruikt vervolgens deze antwoorden van de test om de ' beste ' back-upbronnen te bepalen om uw client aanvragen te routeren. 
 
 > [!WARNING]
-> Omdat de voor deur veel Edge-omgevingen wereld wijd heeft, vraagt de status test een volume aan uw back-ends een hoge bereik van 25 aanvragen elke minuut tot Maxi maal 1200 aanvragen per minuut, afhankelijk van de frequentie van de Health probe die is geconfigureerd. Met de standaard test frequentie van 30 seconden moet het test volume op uw back-end ongeveer 200 aanvragen per minuut bedragen.
+> Omdat de voor deur veel van de meeste Edge-omgevingen heeft, kan het status controlevolume voor uw back-ends voor elke minuut een hoge mate van 25 aanvragen tot Maxi maal 1200 aanvragen per minuut hebben, afhankelijk van de geconfigureerde Health probe-frequentie. Met de standaard test frequentie van 30 seconden moet het test volume op uw back-end ongeveer 200 aanvragen per minuut bedragen.
 
 ## <a name="supported-protocols"></a>Ondersteunde protocollen
 
@@ -43,8 +43,8 @@ De voor deur ondersteunt de volgende HTTP-methoden voor het verzenden van de sta
 
 | Antwoorden  | Beschrijving | 
 | ------------- | ------------- |
-| Status bepalen  |  Een 200 OK-status code geeft aan dat de back-end in orde is. Alle andere zaken worden beschouwd als een fout. Als er om een of andere reden (inclusief netwerk fout) geen geldig HTTP-antwoord wordt ontvangen voor een test, wordt de test als een fout beschouwd.|
-| Meet latentie  | Latentie is de klok tijd gemeten vanaf het moment onmiddellijk voordat de test aanvraag wordt verzonden naar het moment dat de laatste byte van het antwoord wordt ontvangen. We gebruiken een nieuwe TCP-verbinding voor elke aanvraag, zodat deze meting niet kan worden afgestemd op back-ends met bestaande warme verbindingen.  |
+| Status bepalen  |  Een 200 OK-status code geeft aan dat de back-end in orde is. Alle andere zaken worden beschouwd als een fout. Als er om een of andere reden (inclusief netwerk fout) geen geldig HTTP-antwoord voor een test wordt ontvangen, wordt de test als een fout beschouwd.|
+| Meet latentie  | Latentie is de klok tijd gemeten vanaf het moment onmiddellijk voordat de test aanvraag wordt verzonden naar het moment dat de laatste byte van het antwoord wordt ontvangen. We gebruiken een nieuwe TCP-verbinding voor elke aanvraag, zodat deze meting niet wordt afgestemd op back-ends met bestaande warme verbindingen.  |
 
 ## <a name="how-front-door-determines-backend-health"></a>De status van de back-end voor de deur bepalen
 
@@ -59,7 +59,7 @@ Azure front deur maakt gebruik van hetzelfde proces van drie stappen hieronder v
 
     * _x_ wordt geconfigureerd door de eigenschap SuccessfulSamplesRequired in instellingen voor taak verdeling te wijzigen.
 
-3. Van de set met gezonde back-ends in de back-end-pool, worden ook de latentie (round-trip tijd) voor elke back-end gemeten.
+3. Voor de sets van gezonde back-ends in de back-end-groep meet de voor deur bovendien de latentie (round-trip tijd) voor elke back-end.
 
 
 ## <a name="complete-health-probe-failure"></a>Het volt ooien van de status test is mislukt

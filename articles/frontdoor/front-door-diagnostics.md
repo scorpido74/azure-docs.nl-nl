@@ -9,20 +9,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/18/2018
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 6f5051dd7dedcc49320557f17148bcdc9bf539ab
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: a1e77b5f669d1b492f2d71063a6c77bec1178696
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399749"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449282"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door"></a>Metrische gegevens en logboeken bewaken in azure front deur
 
 Met behulp van de voor deur van Azure kunt u resources op de volgende manieren controleren:
 
-- **Metrische gegevens**. Azure front-deur heeft momenteel zeven metrische gegevens om prestatie meter items weer te geven.
+- **Metrische gegevens**. Azure front-deur heeft momenteel acht metrische gegevens om prestatie meter items weer te geven.
 - **Logboeken**. Met activiteiten en Diagnostische logboeken kunnen prestaties, toegang en andere gegevens worden opgeslagen of verbruikt vanuit een resource voor bewakings doeleinden.
 
 ### <a name="metrics"></a>Metrische gegevens
@@ -38,7 +38,7 @@ Metrische gegevens zijn een functie voor bepaalde Azure-resources waarmee u pres
 | BackendRequestCount | Aantal back-aanvragen | Aantal | Http status</br>HttpStatusGroup</br>Back-end | Het aantal aanvragen dat van de voor deur naar de back-end wordt verzonden. |
 | BackendRequestLatency | Latentie van back-upaanvraag | Milliseconden | Back-end | De tijd die wordt berekend vanaf het moment dat de aanvraag door de voor deur naar de back-end is verzonden tot de voor deur de laatste reactie byte van de back-end heeft ontvangen. |
 | BackendHealthPercentage | Back-status percentage | Percentage | Back-end</br>Hosts | Het percentage geslaagde status tests van front-deur naar back-end. |
-| WebApplicationFirewallRequestCount | Aantal aanvragen voor Web Application firewall | Aantal | PolicyName</br>RuleName</br>Actie | Het aantal client aanvragen dat is verwerkt door de beveiligingslaag van de toepassingslaag. |
+| WebApplicationFirewallRequestCount | Aantal aanvragen voor Web Application firewall | Aantal | PolicyName</br>RuleName</br>Bewerking | Het aantal client aanvragen dat is verwerkt door de beveiligingslaag van de toepassingslaag. |
 
 ## <a name="activity-logs"></a><a name="activity-log"></a>Activiteiten logboeken
 
@@ -52,16 +52,16 @@ U krijgt toegang tot activiteiten Logboeken in uw voor deur of in alle logboeken
 1. Selecteer uw voor deur-exemplaar.
 2. Selecteer **Activiteitenlogboek**.
 
-    ![Activiteitenlogboek](./media/front-door-diagnostics/activity-log.png)
+    :::image type="content" source="./media/front-door-diagnostics/activity-log.png" alt-text="Activiteitenlogboek":::
 
 3. Kies een filter bereik en selecteer vervolgens **Toep assen**.
 
 ## <a name="diagnostic-logs"></a><a name="diagnostic-logging"></a>Diagnostische logboeken
 Diagnostische logboeken bieden uitgebreide informatie over bewerkingen en fouten die belang rijk zijn voor controle en probleem oplossing. Diagnostische logboeken verschillen van activiteiten Logboeken.
 
-Activiteiten logboeken bieden inzicht in de bewerkingen die worden uitgevoerd op Azure-resources. Diagnostische logboeken bieden inzicht in bewerkingen die door uw resource worden uitgevoerd. Zie [Azure monitor Diagnostische logboeken](../azure-monitor/platform/platform-logs-overview.md)voor meer informatie.
+Activiteiten logboeken bieden inzicht in de bewerkingen die worden uitgevoerd op Azure-resources. Diagnostische logboeken bieden inzicht in de bewerkingen die uw resource heeft voltooid. Zie [Azure monitor Diagnostische logboeken](../azure-monitor/platform/platform-logs-overview.md)voor meer informatie.
 
-![Diagnostische logboeken](./media/front-door-diagnostics/diagnostic-log.png)
+:::image type="content" source="./media/front-door-diagnostics/diagnostic-log.png" alt-text="Activiteitenlogboek":::
 
 Diagnostische logboeken voor uw front-deur configureren:
 
@@ -99,11 +99,10 @@ De voor deur bevat momenteel Diagnostische logboeken (batched per uur). Diagnost
 
 | Scenario's | Aantal logboek vermeldingen | POP | BackendHostname | SentToOriginShield | CacheStatus |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
-| Routerings regel zonder caching ingeschakeld | 1 | POP-code van rand | Back-end waar de aanvraag is doorgestuurd | False | CONFIG_NOCACHE |
-| Routerings regel met caching ingeschakeld. Cache treffer aan de rand POP | 1 | POP-code van rand | Leeg | False | BEZOCHT |
+| Routerings regel zonder caching ingeschakeld | 1 | POP-code van rand | Back-end waar de aanvraag is doorgestuurd | Niet waar | CONFIG_NOCACHE |
+| Routerings regel met caching ingeschakeld. Cache treffer aan de rand POP | 1 | POP-code van rand | Leeg | Niet waar | BEZOCHT |
 | Routerings regel met caching ingeschakeld. Geen geheugen meer in de POP-context, maar cache is aanwezig in de POP van de bovenliggende cache | 2 | 1. POP-code van rand</br>2. POP-code van bovenliggende cache | 1. POP-hostnaam van bovenliggende cache</br>2. empty | 1. True</br>2. onwaar | 1. MIS</br>2. PARTIAL_HIT |
 | Routerings regel met caching ingeschakeld. Cache-missers aan de rand en de bovenliggende cache POP | 2 | 1. POP-code van rand</br>2. POP-code van bovenliggende cache | 1. POP-hostnaam van bovenliggende cache</br>2. back-end waarmee cache kan worden gevuld | 1. True</br>2. onwaar | 1. MIS</br>2. MIS |
-
 
 ## <a name="next-steps"></a>Volgende stappen
 
