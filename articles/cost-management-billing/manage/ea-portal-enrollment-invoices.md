@@ -3,17 +3,17 @@ title: Facturen voor Azure Enterprise-inschrijvingen
 description: In dit artikel wordt uitgelegd hoe u uw Azure Enterprise-factuur kunt beheren en erop kunt reageren.
 author: bandersmsft
 ms.author: banders
-ms.date: 09/03/2020
+ms.date: 09/18/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: ca7aaea1e0bac1c00a373c8847623606d629e800
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: fec013395af9aeb3d83f86ab47cc52b3fedd7a1f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442510"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316134"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Facturen voor Azure Enterprise-inschrijvingen
 
@@ -162,20 +162,6 @@ Raadpleeg [Azure-services](https://azure.microsoft.com/services/) en [Azure-prij
 ### <a name="enterprise-agreement-units-of-measure"></a>Maateenheden voor Enterprise Agreement
 
 De maateenheden voor Enterprise Agreement zijn vaak anders dan in onze andere programma's, zoals MOSA (Microsoft Online Subscription Overeenkomst). Dit verschil betekent dat voor een aantal services de maateenheid wordt samengevoegd om de standaardprijzen te leveren. De maateenheid die wordt weergegeven in de weergave Gebruiksoverzicht van de Azure Enterprise-portal, is altijd de Enterprise-meting. Het Excel-bestand [Beschrijvende servicenamen](https://azurepricing.blob.core.windows.net/supplemental/Friendly_Service_Names.xlsx) biedt een volledige lijst met huidige maateenheden en conversies voor elke service.
-
-### <a name="rounding-rules"></a>Regels afronden
-
-Voor afronding in de Azure Enterprise-portal wordt gebruikgemaakt van de IEEE-standaardafrondingsformule van de bankier of de Gaussiaanse afrondingsformule. Met deze formule worden halve waarden afgerond naar het dichtstbijzijnde even getal. Met de meest voorkomende afrondingsformule worden halve waarden altijd naar boven afgerond, naar het eerstvolgende hoogste getal. Deze methode in de Azure Enterprise-portal biedt een nauwkeuriger totaal over de groep in vergelijking met de standaardformules in Excel.
-
-Ter illustratie: wanneer het eerste cijfer een 5 is, en er geen cijfers meer volgen (of wanneer de volgende cijfers nullen zijn), wordt het getal afgerond naar het dichtstbijzijnde even getal. Voorbeeld: zowel 2,315 als 2,325 worden afgerond naar de dichtstbijzijnde 100e, namelijk 2,32.
-
-Ter referentie bevat de volgende tabel de Excel-formules die u kunt gebruiken om de regels voor afronding en conversie in de Azure Enterprise-portal vorm te geven:
-
-| Scenario | Formule van de bankier |
-| --- | --- |
-| Afronden | = MROUND ({_source_}, 0,0002) |
-| Prijzen afronden (2 decimalen) | = MROUND ({_source_}, 0,02) |
-| Prijzen afronden (0 decimalen) | =MROUND({_source_}, 2) |
 
 ### <a name="conversion-between-usage-detail-report-and-the-usage-summary-page"></a>Conversie tussen het gebruiksgegevensrapport en de pagina gebruiksoverzicht
 

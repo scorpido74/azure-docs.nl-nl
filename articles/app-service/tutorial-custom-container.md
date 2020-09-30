@@ -7,12 +7,12 @@ ms.author: msangapu
 keywords: azure-app-service, web-app, linux, windows, docker, container
 ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: fdc15ecd79a6672d2a46b4da284533965977d753
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: f4b2aea0a6782b5484b2f6d15066d71990348596
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90982864"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91312053"
 ---
 # <a name="migrate-custom-software-to-azure-app-service-using-a-custom-container"></a>Aangepaste software naar Azure App Service migreren met een aangepaste container
 
@@ -64,7 +64,7 @@ Omdat de app een geïnstalleerd lettertype gebruikt, kan deze niet worden uitgev
 
 Klik in Solution Explorer met de rechtermuisknop op het project **CustomFontSample** en selecteer **Add** > **Container Orchestration Support**.
 
-:::image type="content" source="media/tutorial-custom-container/enable-container-orchestration.png" alt-text="Schermopname van het Solution Explorer-venster waarin het project CustomFontSample en de menu-items Add en Container Orchestrator Support zijn geselecteerd.":::
+:::image type="content" source="media/tutorial-custom-container/enable-container-orchestration.png" alt-text="Schermopname waarin de app wordt weergegeven in de standaardbrowser.":::
 
 Selecteer **Docker Compose** > **OK**.
 
@@ -72,7 +72,7 @@ Uw project is nu ingesteld om te worden uitgevoerd in een Windows-container. Er 
 
 Open **Dockerfile** vanuit Solution Explorer.
 
-U moet een [ondersteunde bovenliggende installatiekopie](quickstart-custom-container.md#use-a-different-parent-image) gebruiken. Wijzig de bovenliggende installatiekopie door de regel `FROM` ​​te vervangen door de volgende code:
+U moet een [ondersteunde bovenliggende installatiekopie](configure-custom-container.md#supported-parent-images) gebruiken. Wijzig de bovenliggende installatiekopie door de regel `FROM` ​​te vervangen door de volgende code:
 
 ```dockerfile
 FROM mcr.microsoft.com/dotnet/framework/aspnet:4.7.2-windowsservercore-ltsc2019
@@ -98,13 +98,13 @@ U kunt _InstallFont.ps1_ vinden in het project **CustomFontSample**. Het is een 
 
 Klik in Solution Explorer met de rechtermuisknop op het project **CustomFontSample** en selecteer **Publish** (publiceren).
 
-:::image type="content" source="media/tutorial-custom-container/open-publish-wizard.png" alt-text="Schermopname van het Solution Explorer-venster waarin het project CustomFontSample en de optie Publish zijn geselecteerd.":::
+:::image type="content" source="media/tutorial-custom-container/open-publish-wizard.png" alt-text="Schermopname waarin de app wordt weergegeven in de standaardbrowser.":::
 
 ### <a name="create-registry-and-publish"></a>Register maken en publiceren
 
 Selecteer in de publicatiewizard **Container Registry** (containerregister) > **Create New Azure Container Registry** (nieuw Azure-containerregister maken) > **Publish** (publiceren).
 
-:::image type="content" source="media/tutorial-custom-container/create-registry.png" alt-text="Schermopname van de wizard voor publiceren waarin de opties Container Registry, Create New Azure Container Registry en de knop Publish zijn geselecteerd.":::
+:::image type="content" source="media/tutorial-custom-container/create-registry.png" alt-text="Schermopname waarin de app wordt weergegeven in de standaardbrowser.":::
 
 ### <a name="sign-in-with-azure-account"></a>Aanmelden met Azure-account
 
@@ -618,6 +618,8 @@ Voor de resources die u in dit artikel hebt gemaakt, kunnen lopende kosten in re
 az group delete --name AppSvc-DockerTutorial-rg
 ```
 
+::: zone-end
+
 ## <a name="next-steps"></a>Volgende stappen
 
 Wat u hebt geleerd:
@@ -625,9 +627,13 @@ Wat u hebt geleerd:
 > [!div class="checklist"]
 > * Een aangepaste installatiekopie in een privécontainerregister implementeren
 > * De aangepaste installatiekopie implementeren in App Service
+::: zone pivot="container-linux"
 > * De installatiekopie bijwerken en opnieuw implementeren
+::: zone-end
 > * Toegang tot diagnostische logboeken
+::: zone pivot="container-linux"
 > * Verbinding maken met de container via SSH
+::: zone-end
 
 In de volgende zelfstudie leer u hoe u een aangepaste DNS-naam kunt toewijzen aan uw app.
 
@@ -639,7 +645,7 @@ U kunt ook andere resources bekijken:
 > [!div class="nextstepaction"]
 > [Een aangepaste container configureren](configure-custom-container.md)
 
+::: zone pivot="container-linux"
 > [!div class="nextstepaction"]
 > [Zelfstudie: WordPress-app met meerdere containers](tutorial-multi-container-app.md)
-
 ::: zone-end

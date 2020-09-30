@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 925d1178ad630699cfd3d9e48677c0f029fc75af
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: f45c3def84c548ba12221efa59e9ebbd4699df71
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "74976720"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316066"
 ---
 # <a name="tutorial-configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>Zelfstudie: Cloudresources configureren voor apparaatinrichting met de IoT Hub Device Provisioning Service
 
@@ -27,7 +27,7 @@ In deze zelfstudie wordt beschreven hoe u de cloud instelt voor automatische app
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
-## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
+## <a name="prerequisites"></a>Vereisten
 
 Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 

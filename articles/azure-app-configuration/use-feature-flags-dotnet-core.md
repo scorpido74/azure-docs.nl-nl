@@ -11,15 +11,15 @@ ms.service: azure-app-configuration
 ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 08/12/2020
+ms.date: 09/17/2020
 ms.author: lcozzens
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 3f8a43a1ff28206a4bcc5fd059f69492c83eb34d
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: f863ca855ca36603085ed96b5aa17d277ae00516
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224710"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91317307"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Zelfstudie: Functievlaggen gebruiken in een ASP.NET Core-app
 
@@ -230,6 +230,12 @@ public IActionResult Index()
 Wanneer een MVC-controller of -actie wordt geblokkeerd omdat de vlag voor het controleren van de functie *uit* is, wordt een geregistreerde `IDisabledFeaturesHandler`-interface aangeroepen. De standaard `IDisabledFeaturesHandler`-interface retourneert een 404-statuscode naar de client zonder hoofdtekst van de reactie.
 
 ## <a name="mvc-views"></a>MVC-weergaven
+
+Open *_ViewImports.cshtml* in de map *Views* en voeg de taghelper voor functiebeheer toe:
+
+```html
+@addTagHelper *, Microsoft.FeatureManagement.AspNetCore
+```
 
 In MVC-weergaven kunt u een `<feature>`-tag gebruiken om inhoud weer te geven op basis van het feit of een functievlag is ingeschakeld:
 

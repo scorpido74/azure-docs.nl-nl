@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: e1a66da52eea6d5da711fa6def58eba65d0960ed
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 6cca34774038156cfb01e872e751338c1c96efaa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "74976737"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315997"
 ---
 # <a name="tutorial-provision-devices-across-load-balanced-iot-hubs"></a>Zelfstudie: Apparaten inrichten in IoT-hubs met gelijke taakverdeling
 
@@ -67,8 +67,6 @@ Koppel de Device Provisioning Service en IoT Hub zodat de Device Provisioning Se
 4. Geef op de pagina **Koppeling toevoegen aan IoT-hub** met behulp van de keuzerondjes aan of de gekoppelde IoT-hub zich in het huidige abonnement of in een ander abonnement bevindt. Kies vervolgens de naam van de IoT-hub in het vak **IoT-hub**.
 5. Klik op **Opslaan**.
 
-## <a name="next-steps"></a>Volgende stappen
-
 In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
@@ -76,6 +74,8 @@ In deze zelfstudie heeft u het volgende geleerd:
 > * Een vermelding in de registratielijst toevoegen aan het tweede apparaat
 > * Het toewijzingsbeleid van de Device Provisioning Service instellen op **gelijkmatige verdeling**
 > * De nieuwe IoT-hub koppelen aan de Device Provisioning Service
+
+## <a name="next-steps"></a>Volgende stappen
 
 <!-- Advance to the next tutorial to learn how to 
  Replace this .md

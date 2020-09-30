@@ -8,13 +8,13 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 9554fa63d13c5da465653064d69d7950d91f0300
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 005473fa02dda2e5466ffbc5a32499006c41292c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421872"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322696"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>Zelfstudie: Een Node.js-web-app bouwen met behulp van de JavaScript SDK voor het beheren van een SQL API-account in Azure Cosmos DB 
 
@@ -439,7 +439,7 @@ Nu u de toepassing hebt gebouwd, kunt u deze lokaal uitvoeren met behulp van de 
 
 1. Als u de toepassing wilt testen op de lokale machine, voert u `npm start` uit in de terminal om de toepassing te starten. Vernieuw vervolgens de browserpagina `http://localhost:3000`. De pagina ziet er nu uit zoals de volgende schermafbeelding:
    
-    :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-localhost.png" alt-text="Schermopname van de toepassing MyTodo List in een browservenster":::
+    :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-localhost.png" alt-text="Node.js leren - Schermopname van de toepassing Hello World in een browservenster":::
 
     > [!TIP]
     > Als u een fout ontvangt over de inspringing in het layout.jade- of index.jade-bestand, moet u ervoor zorgen dat de eerste twee regels in beide bestanden links worden uitgelijnd, zonder spaties. Als er vóór de eerste twee regels spaties staan, verwijdert u deze, slaat u beide bestanden op en vernieuwt u het browservenster. 
@@ -448,7 +448,7 @@ Nu u de toepassing hebt gebouwd, kunt u deze lokaal uitvoeren met behulp van de 
 
 3. De pagina moet worden bijgewerkt met het nieuwe item in de takenlijst.
    
-    :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-added-task.png" alt-text="Schermopname van de toepassing met een nieuw item in de takenlijst":::
+    :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-added-task.png" alt-text="Node.js leren - Schermopname van de toepassing Hello World in een browservenster":::
 
 4. Als u een taak wilt voltooien, schakelt u het selectievakje in de kolom Voltooid in en selecteert u vervolgens **Taken bijwerken**. Hiermee wordt het door u gemaakte document bijgewerkt en uit de weergave verwijderd.
 

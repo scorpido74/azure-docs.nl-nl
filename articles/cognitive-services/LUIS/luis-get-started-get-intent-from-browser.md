@@ -1,14 +1,16 @@
 ---
 title: "Quickstart: Query's uitvoeren voor voorspellingen met een browser - LUIS"
 description: In deze snelstart gebruikt u een beschikbare openbare LUIS-app om de intentie van een gebruiker te bepalen aan de hand van beschrijvende tekst in een browser.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 04/21/2020
-ms.openlocfilehash: 24c7a8aca410ad10b8a9299c4bca2f13d0feb780
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: ce7544bee32586aa4cdeeb7f47a84744194db5da
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245992"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316270"
 ---
 # <a name="quickstart-query-prediction-runtime-with-user-text"></a>Quickstart: Runtime queryvoorspelling met gebruikerstekst
 

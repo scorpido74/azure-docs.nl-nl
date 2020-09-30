@@ -9,12 +9,12 @@ ms.topic: overview
 ms.custom: sqldbrb=1
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: f8c7e2cfb17ca48a67a009f532a9cbb6894cc05d
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: b0908aee6253a3be486f71c245ea1eee2ff8b9bb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442595"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319466"
 ---
 # <a name="azure-private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure Private Link voor Azure SQL Database en Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -23,28 +23,6 @@ Met een Private Link kunt u via een **privé-eindpunt** verbinding maken met ver
 
 > [!IMPORTANT]
 > Dit artikel is van toepassing op zowel Azure SQL Database als Azure Synapse Analytics (voorheen SQL Data Warehouse). Ter vereenvoudiging verwijst de term “database” naar beide databases in Azure SQL Database en Azure Synapse Analytics. Alle verwijzingen naar “server” verwijzen ook naar de [logische SQL Server](logical-servers.md) die als host fungeert voor Azure SQL Database en Azure Synapse Analytics. Dit artikel is *niet* van toepassing op **Azure SQL Managed Instance**.
-
-## <a name="data-exfiltration-prevention"></a>Preventie van gegevensexfiltratie
-
-Gegevensexfiltratie in Azure SQL Database is wanneer een geautoriseerde gebruiker, zoals een databasebeheerder, gegevens uit het ene systeem kan extraheren en naar een andere locatie of systeem buiten de organisatie kan verplaatsen. De gebruiker verplaatst bijvoorbeeld de gegevens naar een opslagaccount dat eigendom is van een derde partij.
-
-Overweeg een scenario met een gebruiker die SQL Server Management Studio (SSMS) uitvoert binnen een virtuele machine in Azure die verbinding maakt met een database in SQL Database. Deze SQL Database bevindt zich in het datacentrum US - west. In het onderstaande voorbeeld ziet u hoe u de toegang tot de openbare eindpunten op SQL Database met behulp van besturingselementen voor netwerktoegang kunt beperken.
-
-1. Schakel alle Azure-serviceverkeer uit naar SQL Database via het openbare eindpunt door Azure-services toestaan **UIT** te schakelen. Zorg ervoor dat er geen IP-adressen zijn toegestaan in de firewallregels op server- en databaseniveau. Zie [Azure SQL Database en Azure Synapse Analytics-netwerk toegangsbeheer](network-access-controls-overview.md)voor meer informatie.
-1. Alleen verkeer naar de database in SQL Database toestaan met behulp van het privé-IP-adres van de VM. Zie de artikelen over [Service-eindpunt](vnet-service-endpoint-rule-overview.md) en [firewallregels voor virtuele netwerken](firewall-configure.md)voor meer informatie.
-1. Op de Azure VM beperkt u het bereik van de uitgaande verbinding met behulp van [Netwerkbeveiligingsgroepen (NSG's)](../../virtual-network/manage-network-security-group.md) en servicetags als volgt
-    - Geef een NSG-regel op om verkeer voor Service Tag = SQL.WestUs toe te staan – alleen verbinding toestaan met SQL Database in US – West
-    - Geef een NSG-regel (met een **hogere prioriteit**) op om verkeer te weigeren voor Service Tag = SQL – verbindingen met SQL Database in alle regio's weigeren
-
-Aan het einde van deze installatie kan de Azure-VM alleen verbinding maken met een database in SQL Database in de regio US - west. De connectiviteit is echter niet beperkt tot één database in SQL Database. De VM kan nog steeds verbinding maken met elke database in de regio US - west, met inbegrip van de databases die geen onderdeel zijn van het abonnement. Hoewel we het bereik van de gegevensexfiltratie in het bovenstaande scenario naar een bepaalde regio hebben gereduceerd, hebben we het niet geheel verwijderd.
-
-Met Private Link kunnen klanten nu netwerk toegangsbeheer instellen, zoals NSG's om de toegang tot het privé-eindpunt te beperken. Afzonderlijke Azure PaaS-resources worden vervolgens toegewezen aan specifieke privé-eindpunten. Een kwaadwillende Insider heeft alleen toegang tot de toegewezen PaaS-resource (bijvoorbeeld een database in SQL Database) en geen andere resource. 
-
-## <a name="on-premises-connectivity-over-private-peering"></a>On-premises connectiviteit via privé-peering
-
-Wanneer klanten verbinding maken met het openbare eindpunt vanaf on-premises computers, moet hun IP-adres worden toegevoegd aan de op IP-gebaseerde firewall met behulp van een [firewallregel op serverniveau](firewall-create-server-level-portal-quickstart.md). Hoewel dit model goed werkt voor het toestaan van toegang tot afzonderlijke computers voor ontwikkel- of testwerkbelastingen, is het moeilijk te beheren in een productieomgeving.
-
-Met Private Link kunnen klanten cross-premises toegang tot het privé-eindpunt inschakelen met behulp van [ExpressRoute](../../expressroute/expressroute-introduction.md), privé-peering of VPN-tunneling. Klanten kunnen vervolgens alle toegang uitschakelen via het openbare eindpunt en de op IP-gebaseerde firewall niet gebruiken om IP-adressen toe te staan.
 
 ## <a name="how-to-set-up-private-link-for-azure-sql-database"></a>Private Link instellen voor Azure SQL Database 
 
@@ -71,6 +49,12 @@ Zodra de netwerkbeheerder het privé-eindpunt (PE) heeft gemaakt, kan de SQL-beh
 
 1. Na goedkeuring of afwijzing wordt in de lijst de juiste staat en de antwoordtekst weergegeven.
 ![Schermopname van alle PEC's na goedkeuring][5]
+
+## <a name="on-premises-connectivity-over-private-peering"></a>On-premises connectiviteit via privé-peering
+
+Wanneer klanten verbinding maken met het openbare eindpunt vanaf on-premises computers, moet hun IP-adres worden toegevoegd aan de op IP-gebaseerde firewall met behulp van een [firewallregel op serverniveau](firewall-create-server-level-portal-quickstart.md). Hoewel dit model goed werkt voor het toestaan van toegang tot afzonderlijke computers voor ontwikkel- of testwerkbelastingen, is het moeilijk te beheren in een productieomgeving.
+
+Met Private Link kunnen klanten cross-premises toegang tot het privé-eindpunt inschakelen met behulp van [ExpressRoute](../../expressroute/expressroute-introduction.md), privé-peering of VPN-tunneling. Klanten kunnen vervolgens alle toegang uitschakelen via het openbare eindpunt en de op IP-gebaseerde firewall niet gebruiken om IP-adressen toe te staan.
 
 ## <a name="use-cases-of-private-link-for-azure-sql-database"></a>Cases van Private Link gebruiken voor Azure SQL Database 
 
@@ -154,6 +138,22 @@ Volg de onderstaande stappen voor gebruik van [SSMS om verbinding te maken met d
 select client_net_address from sys.dm_exec_connections 
 where session_id=@@SPID
 ````
+
+## <a name="data-exfiltration-prevention"></a>Preventie van gegevensexfiltratie
+
+Gegevensexfiltratie in Azure SQL Database is wanneer een geautoriseerde gebruiker, zoals een databasebeheerder, gegevens uit het ene systeem kan extraheren en naar een andere locatie of systeem buiten de organisatie kan verplaatsen. De gebruiker verplaatst bijvoorbeeld de gegevens naar een opslagaccount dat eigendom is van een derde partij.
+
+Overweeg een scenario met een gebruiker die SQL Server Management Studio (SSMS) uitvoert binnen een virtuele machine in Azure die verbinding maakt met een database in SQL Database. Deze SQL Database bevindt zich in het datacentrum US - west. In het onderstaande voorbeeld ziet u hoe u de toegang tot de openbare eindpunten op SQL Database met behulp van besturingselementen voor netwerktoegang kunt beperken.
+
+1. Schakel alle Azure-serviceverkeer uit naar SQL Database via het openbare eindpunt door Azure-services toestaan **UIT** te schakelen. Zorg ervoor dat er geen IP-adressen zijn toegestaan in de firewallregels op server- en databaseniveau. Zie [Azure SQL Database en Azure Synapse Analytics-netwerk toegangsbeheer](network-access-controls-overview.md)voor meer informatie.
+1. Alleen verkeer naar de database in SQL Database toestaan met behulp van het privé-IP-adres van de VM. Zie de artikelen over [Service-eindpunt](vnet-service-endpoint-rule-overview.md) en [firewallregels voor virtuele netwerken](firewall-configure.md)voor meer informatie.
+1. Op de Azure VM beperkt u het bereik van de uitgaande verbinding met behulp van [Netwerkbeveiligingsgroepen (NSG's)](../../virtual-network/manage-network-security-group.md) en servicetags als volgt
+    - Geef een NSG-regel op om verkeer voor Service Tag = SQL.WestUs toe te staan – alleen verbinding toestaan met SQL Database in US – West
+    - Geef een NSG-regel (met een **hogere prioriteit**) op om verkeer te weigeren voor Service Tag = SQL – verbindingen met SQL Database in alle regio's weigeren
+
+Aan het einde van deze installatie kan de Azure-VM alleen verbinding maken met een database in SQL Database in de regio US - west. De connectiviteit is echter niet beperkt tot één database in SQL Database. De VM kan nog steeds verbinding maken met elke database in de regio US - west, met inbegrip van de databases die geen onderdeel zijn van het abonnement. Hoewel we het bereik van de gegevensexfiltratie in het bovenstaande scenario naar een bepaalde regio hebben gereduceerd, hebben we het niet geheel verwijderd.
+
+Met Private Link kunnen klanten nu netwerk toegangsbeheer instellen, zoals NSG's om de toegang tot het privé-eindpunt te beperken. Afzonderlijke Azure PaaS-resources worden vervolgens toegewezen aan specifieke privé-eindpunten. Een kwaadwillende Insider heeft alleen toegang tot de toegewezen PaaS-resource (bijvoorbeeld een database in SQL Database) en geen andere resource. 
 
 ## <a name="limitations"></a>Beperkingen 
 Verbindingen met een privé-eindpunt ondersteunen uitsluitend **Proxy** als het [verbindingsbeleid](connectivity-architecture.md#connection-policy)

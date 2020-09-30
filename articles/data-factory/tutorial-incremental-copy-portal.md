@@ -1,6 +1,6 @@
 ---
 title: Een tabel incrementeel kopiëren met behulp van de Azure-portal
-description: In deze zelfstudie maakt u een Azure Data Factory-pijplijn waarmee gegevens uit een Azure SQL-database stapsgewijs worden gekopieerd naar Azure Blob Storage.
+description: In deze zelfstudie maakt u een data factory in Azure met een pijplijn waarmee deltagegevens uit een tabel in een Azure SQL Database worden geladen naar Azure-blobopslag.
 services: data-factory
 author: dearandyxu
 ms.author: yexu
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: 10253b435461d62a4176164ea2a929843283f414
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 6567651f76ff19a8105158b243de7582256e0375
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082655"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320911"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Incrementeel gegevens uit een Azure SQL-database laden in Azure Blob Storage met de Azure-portal
 
