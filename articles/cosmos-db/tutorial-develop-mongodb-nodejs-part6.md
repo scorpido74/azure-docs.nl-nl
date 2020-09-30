@@ -8,14 +8,14 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 12/26/2018
 ms.author: jopapa
-ms.custom: seodec18, devx-track-javascript
+ms.custom: seodec18, devx-track-js
 ms.reviewer: sngun
-ms.openlocfilehash: a5d697465f811f468fb0047284126deae0c455dd
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 3116038939a07084f13db22819726dcbb2622a10
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424304"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292418"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---add-crud-functions-to-the-app"></a>Een Angular-app maken met de API voor MongoDB van Azure Cosmos DB - CRUD-functies toevoegen aan de app
 
@@ -88,11 +88,11 @@ Voltooi de stappen in [deel 5](tutorial-develop-mongodb-nodejs-part5.md) van de 
 
 6. Ga terug naar de internetbrowser en open het tabblad Netwerk in de hulpmiddelen voor ontwikkelaars door op F12 te drukken (op de meeste computers). Ga naar `http://localhost:3000` om de aanroepen te bekijken die via het netwerk zijn gedaan.
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/add-new-hero.png" alt-text="Tabblad Netwerk in Chrome met een overzicht van de netwerkactiviteit":::
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/add-new-hero.png" alt-text="routes.js and hero.service.js in Visual Studio Code":::
 
 7. Voeg een nieuwe hero toe door de knop **Add New Hero** te selecteren. Voer de id '999' in, de naam 'Fred' en de uitspraak 'Hello'. Selecteer vervolgens **Opslaan**. Op het tabblad Netwerk zou u een POST-aanvraag voor een nieuwe hero moeten zien. 
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/post-new-hero.png" alt-text="Tabblad Netwerk in Chrome met de netwerkactiviteit voor de functies Get en Post":::
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/post-new-hero.png" alt-text="routes.js and hero.service.js in Visual Studio Code":::
 
     We gaan terug en voegen de functies Put en Delete aan de app toe.
 
@@ -177,11 +177,11 @@ Voltooi de stappen in [deel 5](tutorial-develop-mongodb-nodejs-part5.md) van de 
 
     U kunt nu de id selecteren op het tabblad Network om de payload weer te geven. In de payload kunt u zien dat de uitspraak nu is ingesteld op 'Bye'.
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/put-hero-function.png" alt-text="De app Heroes en het tabblad Netwerk met de payload"::: 
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/put-hero-function.png" alt-text="routes.js and hero.service.js in Visual Studio Code"::: 
 
     U kunt ook een van de hero's in de gebruikersinterface verwijderen en zien hoe lang het duurt om de bewerking Verwijderen te voltooien. Probeer dit uit door de knop Verwijderen voor de hero met de naam Fred te selecteren.
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/times.png" alt-text="De app Heroes en het tabblad Netwerk met de tijdsduur voor het voltooien van de functies"::: 
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/times.png" alt-text="routes.js and hero.service.js in Visual Studio Code"::: 
 
     Als u de pagina vernieuwt, wordt op het tabblad Netwerk weergegeven hoelang het duurt voor de hero's zijn opgehaald. Deze tijden zijn kort, maar het hangt ervan af waar ter wereld uw gegevens zich bevinden en tevens van de mogelijkheid hierop geo-replicatie uit te voeren in een gebied dat in de buurt van uw gebruikers is. Meer informatie over geo-replicatie vindt u in de volgende zelfstudie, die binnenkort wordt uitgebracht.
 

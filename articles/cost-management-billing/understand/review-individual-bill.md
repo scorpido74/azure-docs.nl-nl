@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: a91f3781b490ee6f724e7d28a6be9a96c853426f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 0c93375abd57ff5e96906ef7befbbb546a3a1caf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684623"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91270522"
 ---
 # <a name="tutorial-review-your-individual-azure-bill"></a>Zelfstudie: Inzicht in uw Azure-factuur
 
@@ -22,7 +22,7 @@ Dit artikel helpt u om uw Azure-factuur te begrijpen en controleren. Voor elke f
 
 Deze zelfstudie is alleen van toepassing op Azure-klanten met een individueel abonnement. Bekende voorbeelden van individuele abonnementen zijn abonnementen van het type betalen per gebruik die rechtstreeks zijn gekocht via de Azure-website.
 
-Zie [Onverwachte kosten analyseren](https://docs.microsoft.com/azure/cost-management-billing/manage/getting-started#analyze-unexpected-charges) als u hulp nodig hebt bij onverwachte kosten. Zie [Uw Azure-abonnement annuleren](../manage/cancel-azure-subscription.md) als u uw Azure-abonnement wilt annuleren.
+Zie [Onverwachte kosten analyseren](analyze-unexpected-charges.md) als u hulp nodig hebt bij onverwachte kosten. Zie [Uw Azure-abonnement annuleren](../manage/cancel-azure-subscription.md) als u uw Azure-abonnement wilt annuleren.
 
 In deze zelfstudie leert u het volgende:
 

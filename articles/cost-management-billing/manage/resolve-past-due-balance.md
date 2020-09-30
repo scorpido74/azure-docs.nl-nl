@@ -9,18 +9,18 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 8c792ae1b6ac43ead15fd4f27d2468c517153354
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 3c42db58017dc3a692c227f6eb454cf7b597e77b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684810"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297581"
 ---
 # <a name="resolve-past-due-balance-for-your-azure-subscription"></a>Verschuldigd bedrag betalen voor uw Azure-abonnement
 
 Dit artikel is van toepassing op klanten die zich online met een creditcard hebben geregistreerd voor Azure en die een factureringsaccount hebben voor het Microsoft Online Services-programma. [Uw type factureringsrekening controleren](#check-the-type-of-your-account). Raadpleeg in plaats hiervan [Uw rekening voor Microsoft Azure betalen](../understand/pay-bill.md) als u een factureringsaccount voor het Microsoft Online Services-programma hebt.
 
-Als uw betaling niet is ontvangen of als de betaling niet kan worden verwerkt, ontvangt u een e-mailbericht en ziet u een waarschuwing in de Azure-portal met de melding dat de einddatum voor de betaling van uw abonnement is verstreken. Als creditcard uw standaardbetalingswijze is, kan de [accountbeheerder](billing-subscription-transfer.md#whoisaa) de openstaande kosten betalen in de Azure-portal. Als u per factuur (cheque/overschrijving) betaalt, verzendt u uw betaling naar de locatie die onder aan de factuur wordt vermeld.
+Als uw betaling niet is ontvangen of als de betaling niet kan worden verwerkt, ontvangt u een e-mailbericht en ziet u een waarschuwing in de Azure-portal met de melding dat de einddatum voor de betaling van uw abonnement is verstreken. Als creditcard uw standaardbetalingswijze is, kan de [accountbeheerder](../understand/subscription-transfer.md#whoisaa) de openstaande kosten betalen in de Azure-portal. Als u per factuur (cheque/overschrijving) betaalt, verzendt u uw betaling naar de locatie die onder aan de factuur wordt vermeld.
 
 > [!IMPORTANT]
 > * Als u meerdere abonnementen hebt die gebruikmaken van dezelfde creditcard en deze allemaal verschuldigde betalingen hebben, moet u het volledige openstaande bedrag in één keer betalen.

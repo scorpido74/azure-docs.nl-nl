@@ -1,14 +1,16 @@
 ---
 title: 'Quickstart: Een app met de LUIS-portal implementeren'
 description: In deze quickstart ziet u hoe u een app implementeert door een voorspellingseindpuntresource te maken, de resource toe te wijzen, training uit te voeren en de app te publiceren.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 05/06/2020
-ms.openlocfilehash: 3d12fa2956f962fe7a05b9639c1d32a7069635f9
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 6126c6e37ad43ed6456b224d043dc6695fa2d00e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87336362"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91298406"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Quickstart: Een app in de LUIS-portal implementeren
 
