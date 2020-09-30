@@ -11,13 +11,13 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
-ms.custom: aaddev, devx-track-javascript
-ms.openlocfilehash: 4613e22193de8dc374d1a9e1a293c317fb9c1b9b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: aaddev, devx-track-js
+ms.openlocfilehash: 7a136c03db6e27763a22d92d2c335f23c616856e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87311536"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91256803"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-app-spa-using-auth-code-flow"></a>Zelfstudie: Gebruikers aanmelden en de Microsoft Graph API aanroepen vanuit een JavaScript-app met één pagina met behulp van autorisatiecodestroom
 
@@ -619,23 +619,23 @@ Het maken van de toepassing is voltooid en u bent nu klaar om de Node.js-webserv
 
 Nadat de browser het bestand *index.html* heeft geladen, selecteert u **Aanmelden**. U wordt gevraagd om u aan te melden met het Microsoft-identiteitsplatform-eindpunt:
 
-:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-01-signin-dialog.png" alt-text="Webbrowser waarin het dialoogvenster voor de aanmelding wordt weergegeven":::
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-01-signin-dialog.png" alt-text="Diagram van de autorisatiecodestroom voor een toepassing met één pagina":::
 
 ### <a name="provide-consent-for-application-access"></a>Toestemming voor toegang tot de toepassing geven
 
 De eerste keer dat u zich aanmeldt bij uw toepassing, wordt u gevraagd om deze toegang te geven tot uw profiel en om u aan te melden:
 
-:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-02-consent-dialog.png" alt-text="Dialoogvenster inhoud weergegeven in webbrowser":::
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-02-consent-dialog.png" alt-text="Diagram van de autorisatiecodestroom voor een toepassing met één pagina":::
 
 Als u akkoord gaat met de aangevraagde machtigingen, wordt in de webtoepassingen uw gebruikersnaam weer gegeven, met een geslaagde aanmelding:
 
-:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-03-signed-in.png" alt-text="Resultaten van een geslaagde aanmelding in de webbrowser":::
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-03-signed-in.png" alt-text="Diagram van de autorisatiecodestroom voor een toepassing met één pagina":::
 
 ### <a name="call-the-graph-api"></a>De Graph API aanroepen
 
 Nadat u zich hebt aangemeld, selecteert u **Profiel bekijken** om de profielgegevens van de gebruiker weer te geven die zijn geretourneerd in het antwoord van de aanroep van de Microsoft Graph API:
 
-:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-04-see-profile.png" alt-text="Profielgegevens van Microsoft Graph weergegeven in de browser":::
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-04-see-profile.png" alt-text="Diagram van de autorisatiecodestroom voor een toepassing met één pagina":::
 
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>Meer informatie over bereiken en gedelegeerde machtigingen
 

@@ -1,6 +1,6 @@
 ---
-title: Azure IaaS-VM's verplaatsen naar een andere regio met behulp van Azure Site Recovery
-description: Azure Site Recovery gebruiken om Azure IaaS-VM’s te verplaatsen van de ene Azure-regio naar een andere.
+title: Azure-VM's verplaatsen naar een andere Azure-regio met behulp van Azure Site Recovery
+description: Azure Site Recovery gebruiken om Azure-VM's te verplaatsen van de ene Azure-regio naar de andere.
 services: site-recovery
 author: Sharmistha-Rai
 ms.service: site-recovery
@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: sharrai
 ms.custom: MVC
-ms.openlocfilehash: e8f14b86678f7d395f445438d7e869168b13e54b
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: f33d5ff37cbc9923262963b3e59b9266ea6760a6
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89425922"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90006411"
 ---
-# <a name="move-azure-vms-to-another-region"></a>Virtuele Azure-machines verplaatsen naar een andere regio
+# <a name="move-vms-to-another-azure-region"></a>VM's verplaatsen naar een andere Azure-regio
 
-Er zijn verschillende scenario's denkbaar waarin u uw bestaande Azure IaaS-VM’s (virtuele machines) wellicht wilt verplaatsen van de ene regio naar een andere. Bijvoorbeeld wanneer u de betrouwbaarheid en beschikbaarheid van uw bestaande VM’s wilt verbeteren, de beheersbaarheid wilt verbeteren, of de VM’s om beheerredenen wilt verplaatsen. Zie [Overzicht van het verplaatsen van Azure-VM’s](azure-to-azure-move-overview.md) voor meer informatie. 
+Er zijn scenario's waarin u uw bestaande Azure IaaS-VM's (virtuele machines) wilt verplaatsen van de ene regio naar de andere. Bijvoorbeeld wanneer u de betrouwbaarheid en beschikbaarheid van uw bestaande VM’s wilt verbeteren, de beheersbaarheid wilt verbeteren, of de VM’s om beheerredenen wilt verplaatsen. Zie [Overzicht van het verplaatsen van Azure-VM’s](azure-to-azure-move-overview.md) voor meer informatie. 
 
-U kunt de [Azure Site Recovery](site-recovery-overview.md)-service ook gebruiken om noodherstel van on-premises machines en Azure-VM's te beheren en te organiseren, voor bedrijfscontinuïteit en herstel na noodgevallen (BCDR). U kunt Site Recovery ook gebruiken om de verplaatsing van Azure-VM's naar een secundaire regio te beheren.
+U kunt de service [Azure Site Recovery](site-recovery-overview.md) gebruiken om Azure-VM's naar een secundaire regio te verplaatsen.
 
 In deze zelfstudie leert u het volgende:
 
@@ -30,7 +30,19 @@ In deze zelfstudie leert u het volgende:
 > * De gegevens kopiëren en replicatie inschakelen
 > * De configuratie testen en de verplaatsing uitvoeren
 > * De resources verwijderen in de doelregio
-> 
+
+
+> [!IMPORTANT]
+> Momenteel is het aan te raden [Azure Resource Mover](../resource-mover/tutorial-move-region-virtual-machines.md) te gebruiken om Azure-VM's te verplaatsen naar een andere regio. Azure Resource Mover is momenteel beschikbaar in openbare preview en biedt het volgende:
+> - Eén hub voor het verplaatsen van resources binnen regio's.
+> - Beperkte verplaatsingstijd en complexiteit. Alles wat u nodig hebt, bevindt zich op één locatie.
+> - Een eenvoudige en consistente ervaring voor het verplaatsen van verschillende typen Azure-resources.
+> - Een eenvoudige manier om afhankelijkheden te identificeren binnen resources die u wilt verplaatsen. Dit helpt om gerelateerde resources samen te verplaatsen zodat alles na de verplaatsing naar verwachting werkt in de doelregio.
+> - Automatische opschoning van resources in de bronregio, als u deze na de verplaatsing wilt verwijderen.
+> - Testen. U kunt een verplaatsing uitproberen en deze vervolgens verwijderen als u geen volledige verplaatsing wilt uitvoeren.
+
+
+
 > [!NOTE]
 > Deze zelfstudie laat zien hoe u Azure-VM’s ongewijzigd kunt verplaatsen naar een andere regio. Raadpleeg de [zelfstudie Azure-VM’s verplaatsen naar beschikbaarheidszones](move-azure-vms-avset-azone.md) als u de beschikbaarheid wilt verbeteren door VM’s die zich in een beschikbaarheidsset bevinden, te verplaatsen naar VM’s die zijn vastgemaakt aan een zone in een andere regio.
 

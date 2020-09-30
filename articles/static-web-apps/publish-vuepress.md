@@ -7,13 +7,13 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.custom: devx-track-javascript
-ms.openlocfilehash: c689b31f73d732dda37b64793f988febc409e6da
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.custom: devx-track-js
+ms.openlocfilehash: 72b1bd4d46b0b04364b25a8460361d6a008d42a6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88797952"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250127"
 ---
 # <a name="tutorial-publish-a-vuepress-site-to-azure-static-web-apps-preview"></a>Zelfstudie: Een VuePress-site publiceren in Azure Static Web Apps Preview
 
@@ -127,7 +127,7 @@ De volgende stappen laten zien hoe u een nieuwe Static Web Apps-toepassing maakt
 
 1. Selecteer voor _SKU_ de optie **Gratis**.
 
-   :::image type="content" source="./media/publish-vuepress/basic-app-details.png" alt-text="Ingevulde gegevens":::
+   :::image type="content" source="./media/publish-vuepress/basic-app-details.png" alt-text="Een Static Web Apps-resource (preview) maken in de portal":::
 
 1. Klik op de knop **Aanmelden bij GitHub**.
 
@@ -137,7 +137,7 @@ De volgende stappen laten zien hoe u een nieuwe Static Web Apps-toepassing maakt
 
 1. Selecteer **hoofd** voor de _Vertakking_.
 
-   :::image type="content" source="./media/publish-vuepress/completed-github-info.png" alt-text="Voltooide GitHub-gegevens":::
+   :::image type="content" source="./media/publish-vuepress/completed-github-info.png" alt-text="Een Static Web Apps-resource (preview) maken in de portal":::
 
 ### <a name="build"></a>Ontwikkelen
 
@@ -151,7 +151,7 @@ Vervolgens voegt u configuratie-instellingen toe die tijdens het bouwproces word
 
 Een waarde voor _API-locatie_ is niet nodig omdat u momenteel geen API implementeert.
 
-   :::image type="content" source="./media/publish-vuepress/build-details.png" alt-text="Build-instellingen":::
+   :::image type="content" source="./media/publish-vuepress/build-details.png" alt-text="Een Static Web Apps-resource (preview) maken in de portal":::
 
 ### <a name="review-and-create"></a>Controleren en maken
 
@@ -163,7 +163,7 @@ Een waarde voor _API-locatie_ is niet nodig omdat u momenteel geen API implement
 
 1. Klik in het resourcescherm op de _URL_-koppeling om de geïmplementeerde toepassing te openen. Mogelijk moet u enkele minuten wachten voor de GitHub-actie is voltooid.
 
-   :::image type="content" source="./media/publish-vuepress/deployed-app.png" alt-text="Geïmplementeerde toepassing":::
+   :::image type="content" source="./media/publish-vuepress/deployed-app.png" alt-text="Een Static Web Apps-resource (preview) maken in de portal":::
 
 ### <a name="clean-up-resources"></a>Resources opschonen
 

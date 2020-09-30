@@ -2,19 +2,19 @@
 title: 'Quickstart: een Apache Spark-pool maken (preview) met behulp van Synapse Studio'
 description: Een nieuwe Apache Spark-pool maken met behulp van Synapse Studio door de stappen in deze handleiding uit te voeren.
 services: synapse-analytics
-author: julieMSFT
+author: saveenr
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: spark
 ms.date: 3/19/2020
-ms.author: jrasnick
+ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 87fcbef5a3cedab3142fe9ad47c68752515fdd2e
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: cdf9a1f211e889146c9a6986eeea7502d3177057
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86274336"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260832"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-preview-using-synapse-studio"></a>Quickstart: een Apache Spark-pool maken (preview) met behulp van Synapse Studio
 

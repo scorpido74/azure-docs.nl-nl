@@ -8,13 +8,13 @@ ms.subservice: cosmosdb-cassandra
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 05/18/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 1fa481911be8eb91db498350e57e2ba42e4aedb5
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: 19039f8b87145d6bbb1a6b3636ea0892b06ccfe8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421005"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253425"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-nodejs-sdk-and-azure-cosmos-db"></a>Quickstart: Een Cassandra-app bouwen met Node.js-SDK en Azure Cosmos DB
 
@@ -212,11 +212,11 @@ Ga nu terug naar Azure Portal om de verbindingsreeksinformatie op te halen en ko
 > 
 > Dubbelklik op het CRT-bestand om het te openen in de certificaatweergave. 
 >
-> :::image type="content" source="./media/create-cassandra-nodejs/crtcer1.gif" alt-text="De uitvoer weergeven en controleren":::
+> :::image type="content" source="./media/create-cassandra-nodejs/crtcer1.gif" alt-text="De waarden voor CONTACT POINT, USERNAME en PASSWORD in Azure Portal weergeven en kopiëren, pagina Verbindingsreeks":::
 >
 > Klik in de wizard Certificaat op Volgende. Selecteer Base 64-gecodeerd X.509 (CER), en vervolgens Volgende.
 >
-> :::image type="content" source="./media/create-cassandra-nodejs/crtcer2.gif" alt-text="De uitvoer weergeven en controleren":::
+> :::image type="content" source="./media/create-cassandra-nodejs/crtcer2.gif" alt-text="De waarden voor CONTACT POINT, USERNAME en PASSWORD in Azure Portal weergeven en kopiëren, pagina Verbindingsreeks":::
 >
 > Selecteer Bladeren (om een doellocatie te zoeken) en typ een bestandsnaam.
 > Selecteer Volgende, en vervolgens Voltooid.
@@ -237,13 +237,13 @@ Ga nu terug naar Azure Portal om de verbindingsreeksinformatie op te halen en ko
 
 4. Controleer of de resultaten op de opdrachtregel aan de verwachting voldoen.
 
-    :::image type="content" source="./media/create-cassandra-nodejs/output.png" alt-text="De uitvoer weergeven en controleren":::
+    :::image type="content" source="./media/create-cassandra-nodejs/output.png" alt-text="De waarden voor CONTACT POINT, USERNAME en PASSWORD in Azure Portal weergeven en kopiëren, pagina Verbindingsreeks":::
 
     Druk op Ctrl+C om de uitvoering van het programma te stoppen en het consolevenster te sluiten. 
 
 5. Open **Data Explorer** in de Azure-portal om deze nieuwe gegevens te bekijken, te wijzigen, een query erop uit te voeren of er iets anders mee te doen. 
 
-    :::image type="content" source="./media/create-cassandra-nodejs/data-explorer.png" alt-text="De gegevens weergeven in Data Explorer"::: 
+    :::image type="content" source="./media/create-cassandra-nodejs/data-explorer.png" alt-text="De waarden voor CONTACT POINT, USERNAME en PASSWORD in Azure Portal weergeven en kopiëren, pagina Verbindingsreeks"::: 
 
 ## <a name="review-slas-in-the-azure-portal"></a>SLA’s bekijken in Azure Portal
 

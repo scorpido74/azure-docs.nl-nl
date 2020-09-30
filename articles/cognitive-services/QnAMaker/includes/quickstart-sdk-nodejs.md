@@ -3,13 +3,13 @@ title: 'Quickstart: QnA Maker-clientbibliotheek voor Node.js'
 description: In deze quickstart ziet u hoe u aan de slag gaat met de QnA Maker-clientbibliotheek voor Node.js.
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 4085ec5aaff75f33fc7a87708693084831ff5d8d
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.custom: devx-track-js
+ms.openlocfilehash: b64379e81f6c4d3da37526d75e08bc0fbed37103
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88246176"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91253923"
 ---
 Gebruik de QnA Maker-clientbibliotheek voor Node.js voor het volgende:
 
@@ -120,7 +120,7 @@ Instantieer een client met uw eindpunt en sleutel. Maak een ServiceClientCredent
 
 ## <a name="create-a-knowledge-base"></a>Een kennisdatabase maken
 
-In een Knowledge Base worden vraag-en-antwoord-paren voor het [CreateKbDTO](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/createkbdto?view=azure-node-latest)-object opgeslagen die afkomstig zijn uit drie bronnen:
+In een Knowledge Base worden vraag-en-antwoordparen voor het [CreateKbDTO](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/createkbdto?view=azure-node-latest)-object opgeslagen die afkomstig zijn uit drie bronnen:
 
 * Gebruik voor **redactionele inhoud** het [QnADTO](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/qnadto?view=azure-node-latest)-object.
     * Als u metagegevens en vervolgprompts wilt gebruiken, kiest u de redactionele context, aangezien deze gegevens op het niveau van een afzonderlijk vraag-en-antwoordpaar wordt toegevoegd.
