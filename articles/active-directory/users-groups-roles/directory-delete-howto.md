@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97a8f372a90d3add99390220d89214c6ad205db6
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: bf8eeb2d1f19ca0848ae5c608ba9f0d8e9526e05
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90056299"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541251"
 ---
 # <a name="delete-a-tenant-in-azure-active-directory"></a>Een Tenant verwijderen in Azure Active Directory
 
@@ -123,19 +123,19 @@ U kunt een self-service registratie product, zoals micro soft Power BI of Azure 
 
 2. Selecteer **licenties**en selecteer vervolgens **self-service registratie producten**. U kunt alle Self-service-aanmeldings producten afzonderlijk van de op seat gebaseerde abonnementen bekijken. Kies het product dat u definitief wilt verwijderen. Hier volgt een voor beeld van micro soft Power BI:
 
-    ![de gebruikers naam is onjuist getypt of niet gevonden](./media/directory-delete-howto/licenses-page.png)
+    ![Scherm opname van de pagina licenties-self-service-registratie producten.](./media/directory-delete-howto/licenses-page.png)
 
 3. Selecteer **verwijderen** om het product te verwijderen en de voor waarden te accepteren waarmee gegevens onmiddellijk en onherroepelijk worden verwijderd. Met deze Verwijder actie worden alle gebruikers verwijderd en wordt de organisatie toegang tot het product verwijderd. Klik op Ja om door te gaan met de verwijdering.  
 
-    ![de gebruikers naam is onjuist getypt of niet gevonden](./media/directory-delete-howto/delete-product.png)
+    ![Scherm opname van de pagina licenties-self-service-aanmeldingen, met het venster ' self-service voor aanmelden verwijderen ' geopend.](./media/directory-delete-howto/delete-product.png)
 
 4. Wanneer u **Ja**selecteert, wordt de verwijdering van het self-service product gestart. Er is een melding waarin wordt aangegeven dat de verwijdering wordt uitgevoerd.  
 
-    ![de gebruikers naam is onjuist getypt of niet gevonden](./media/directory-delete-howto/progress-message.png)
+    ![Scherm opname van de pagina licenties-self-service-aanmeldingen, met de melding ' bezig met verwijderen ' wordt weer gegeven.](./media/directory-delete-howto/progress-message.png)
 
 5. Nu is de status van de self-service voor aanmelden gewijzigd in **verwijderd**. Wanneer u de pagina vernieuwt, moet het product worden verwijderd van de pagina met **self-service registratie producten** .  
 
-    ![de gebruikers naam is onjuist getypt of niet gevonden](./media/directory-delete-howto/product-deleted.png)
+    ![Scherm opname van de pagina licenties-self-service-aanmeldingen, met het deel venster ' self-service-product verwijderd ' aan de rechter kant.](./media/directory-delete-howto/product-deleted.png)
 
 6. Zodra u alle producten hebt verwijderd, kunt u zich opnieuw aanmelden bij het Azure AD-beheer centrum en moeten er geen vereiste acties worden uitgevoerd en hoeven er geen producten te worden verwijderd. U moet uw Azure AD-organisatie kunnen verwijderen.
 

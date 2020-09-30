@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 654b10a283c4dcf5a1a1866ec51799aad45a8893
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 04ce45f428604275696d83938708bcee0c6c023f
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90898890"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536763"
 ---
 # <a name="apply-math-operation"></a>Wiskundige bewerking toepassen
 
@@ -22,11 +22,11 @@ In dit artikel wordt een module van Azure Machine Learning Designer beschreven.
 
 Gebruik de bewerking math Toep assen om berekeningen te maken die worden toegepast op numerieke kolommen in de invoer gegevensset. 
 
-Ondersteunde wiskundige bewerkingen zijn onder andere algemene reken functies, zoals vermenigvuldigen en delen, trigonometrische functies, allerlei Afrondings functies en speciale functies die worden gebruikt in data Science, zoals gamma-en fout functies.  
+Wiskundige bewerkingen zijn onder andere reken kundige functies, trigonometrische functies, Afrondings functies en speciale functies die worden gebruikt in data Science, zoals gamma-en fout functies.  
 
 Nadat u een bewerking hebt gedefinieerd en de pijp lijn hebt uitgevoerd, worden de waarden toegevoegd aan uw gegevensset. Afhankelijk van hoe u de module configureert, kunt u het volgende doen:
 
-+ De resultaten toevoegen aan uw gegevensset. Dit is vooral handig wanneer u het resultaat van de bewerking verifieert.
++ De resultaten toevoegen aan uw gegevensset (handig bij het controleren van het resultaat van de bewerking).
 + Kolom waarden vervangen door de nieuwe, berekende waarden.
 + Een nieuwe kolom genereren voor de resultaten en niet de oorspronkelijke gegevens weer geven. 
 
@@ -42,7 +42,7 @@ Zoek naar de bewerking die u nodig hebt in de volgende categorieën:
   
 -   [Bewerkingen](#arithmetic-operations)  
   
-     De categorie **bewerkingen** bevat de wiskundige basis functies: optellen, aftrekken, vermenigvuldigen en delen. U kunt werken met kolommen of constanten. U kunt bijvoorbeeld de waarde in kolom A toevoegen aan de waarde in kolom B. U kunt ook een constante aftrekken, zoals een eerder berekend gemiddelde, van elke waarde in kolom A.  
+     De categorie **bewerkingen** bevat eenvoudige wiskundige functies: optellen, aftrekken, vermenigvuldigen en delen. U kunt werken met kolommen of constanten. U kunt bijvoorbeeld de waarde in kolom A toevoegen aan de waarde in kolom B. U kunt ook een constante aftrekken, zoals een eerder berekend gemiddelde, van elke waarde in kolom A.  
   
 -   [Afronden](#rounding-operations)  
   
@@ -55,7 +55,7 @@ Zoek naar de bewerking die u nodig hebt in de volgende categorieën:
 -   [Trigonometrische](#trigonometric-functions)  
   
      De **trigonometrische** categorie bevat alle standaard trigonometrische functies. U kunt radialen bijvoorbeeld converteren naar graden of reken functies zoals tangens in radialen of graden.
-     Deze functies zijn unaire, wat inhoudt dat ze één kolom met waarden als invoer hebben, de trigonometrische functie Toep assen en een kolom met waarden retour neren als resultaat.  Daarom moet u ervoor zorgen dat de invoer kolom het juiste type is en de juiste soort waarden bevat voor de opgegeven bewerking.   
+     Deze functies zijn unaire, wat inhoudt dat ze één kolom met waarden als invoer hebben, de trigonometrische functie Toep assen en een kolom met waarden retour neren als resultaat. Zorg ervoor dat de invoer kolom het juiste type is en het juiste type waarden bevat voor de opgegeven bewerking.   
 
 ## <a name="how-to-configure-apply-math-operation"></a>De opdracht wiskunde Toep assen configureren  
 
@@ -74,7 +74,7 @@ Elk exemplaar van deze module kan slechts één type bewerking tegelijk uitvoere
     - Een kolom die u kiest, moet een numeriek gegevens type zijn. 
     - Het gegevens bereik moet geldig zijn voor de geselecteerde wiskundige bewerking. Anders treedt er een fout of NaN (geen getal) resultaat op. Bijvoorbeeld: ln (-1,0) is een ongeldige bewerking en resulteert in een waarde van `NaN` .
   
-1.  Klik op **categorie** om het **type** wiskundige bewerking te selecteren dat u wilt uitvoeren.
+1.  Selecteer **categorie** om het **type** wiskundige bewerking te selecteren dat moet worden uitgevoerd.
     
 1. Kies een specifieke bewerking in de lijst in die categorie.
   
@@ -95,7 +95,7 @@ Als u de resultaten genereert met de opties **Append** of **ResultOnly** , geven
 -   **Is gelijk aan (Col2_Col1)**, wat aangeeft dat u col2 op Kol1 hebt getest.  
 -   **Is gelijk aan (Col2_ $10)**, wat aangeeft dat u kolom 2 hebt vergeleken met de constante 10.  
 
-Zelfs als u de optie **InPlace** gebruikt, worden de bron gegevens niet verwijderd of gewijzigd. de kolom in de oorspronkelijke gegevensset is nog steeds beschikbaar in de ontwerp functie. Als u de oorspronkelijke gegevens wilt bekijken, kunt u verbinding maken met de module [kolommen toevoegen](add-columns.md) en deze koppelen aan de uitvoer van de **bewerking wiskunde Toep assen**.  
+Zelfs als u de optie **in plaats** gebruikt, worden de bron gegevens niet verwijderd of gewijzigd. de kolom in de oorspronkelijke gegevensset is nog steeds beschikbaar in de ontwerp functie. Als u de oorspronkelijke gegevens wilt bekijken, kunt u verbinding maken met de module [kolommen toevoegen](add-columns.md) en deze koppelen aan de uitvoer van de **bewerking wiskunde Toep assen**.  
     
 ## <a name="basic-math-operations"></a>Eenvoudige wiskundige bewerkingen 
 
@@ -124,7 +124,7 @@ Retourneert de geconjugeerde voor de waarden in de geselecteerde kolom.
 Hiermee berekent u de derdemachts wortel voor de waarden in de geselecteerde kolom.  
 
 ### <a name="doublefactorial"></a>DoubleFactorial  
- Berekent de dubbele faculteit voor waarden in de geselecteerde kolom. De dubbele faculteit is een uitbrei ding van de normale faculteits functie en wordt aangeduid als x!!.  
+ Berekent de dubbele faculteit voor waarden in de geselecteerde kolom. De dubbele faculteit is een uitbrei ding van de normale faculteits functie en wordt aangeduid als `x!!` .  
 
 ### <a name="eps"></a>EPS
 
@@ -132,7 +132,7 @@ Retourneert de grootte van de tussen ruimte tussen de huidige waarde en het volg
   
 ### <a name="exp"></a>Exp
 
-Retourneert e verheven tot de macht van de waarde in de geselecteerde kolom. Dit is hetzelfde als de Excel EXP-functie.  
+Retourneert e verheven tot de macht van de waarde in de geselecteerde kolom. Deze functie is hetzelfde als de Excel EXP-functie.  
 
 ### <a name="exp2"></a>Exp2
 
@@ -170,11 +170,11 @@ U kunt de basis waarde (het tweede argument) opgeven als constante of door een a
 
 ### <a name="log10"></a>Log10
 
-Retourneert de logaritme met grondtal 10 voor de geselecteerde kolom.  
+Retourneert de grondtal 10-logaritme waarden voor de geselecteerde kolom.  
 
 ### <a name="log2"></a>Log2
 
-Retourneert de grondtal 2 logaritme-waarden voor de geselecteerde kolom.  
+Retourneert de grondtal 2-logaritme voor de geselecteerde kolom.  
 
 ### <a name="nthroot"></a>NthRoot
 Retourneert het ne hoofd van de waarde, met behulp van een n die u opgeeft.  
@@ -360,7 +360,7 @@ De functie Error (ook wel de fout functie Gauss genoemd) is een speciale functie
 
 Retourneert de waarde van de fout functie complementair.  
 
-ErfC is gedefinieerd als 1 – fout (x).  
+`Erfc` is gedefinieerd als 1 – fout (x).  
 
 ### <a name="erfscaled"></a>ErfScaled
 
@@ -370,7 +370,7 @@ De geschaalde versie van de functie Error kan worden gebruikt om reken kundige n
 
 ### <a name="erfinverse"></a>ErfInverse
 
-Retourneert de waarde van de functie inverse fout.  
+Retourneert de waarde van de inverse `erf` functie.  
 
 ### <a name="exponentialintegralein"></a>ExponentialIntegralEin
 

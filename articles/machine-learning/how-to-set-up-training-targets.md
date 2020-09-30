@@ -8,15 +8,15 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 09/25/2020
+ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: f93b6ab43e1dbf9230c92d22f8fb22ca48eb720e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2f05ab2bc7e514f3e58f383faf47a74ef69f94b6
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91275758"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91535090"
 ---
 # <a name="configure-and-submit-training-runs"></a>Trainings uitvoeringen configureren en verzenden
 
@@ -128,7 +128,7 @@ Als u opdracht regel argumenten hebt die u wilt door geven aan uw trainings scri
 Als u de standaard toegestane maximum tijd voor de uitvoering wilt onderdrukken, kunt u dit doen via de **`max_run_duration_seconds`** para meter. Het systeem probeert de uitvoering automatisch te annuleren als deze langer duurt dan deze waarde.
 
 ### <a name="specify-a-distributed-job-configuration"></a>Configuratie van een gedistribueerde taak opgeven
-Als u een gedistribueerde trainings taak wilt uitvoeren, geeft u de gedistribueerde taak-specifieke configuratie op voor de **`distributed_job_config`** para meter. Ondersteunde configuratie typen zijn [MpiConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py&preserve-view=true), [TensorflowConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?view=azure-ml-py&preserve-view=true). 
+Als u een gedistribueerde trainings taak wilt uitvoeren, geeft u de gedistribueerde taak-specifieke configuratie op voor de **`distributed_job_config`** para meter. Ondersteunde configuratie typen zijn [MpiConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py&preserve-view=true), [TensorflowConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?view=azure-ml-py&preserve-view=true)en [PyTorchConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?view=azure-ml-py&preserve-view=true). 
 
 Zie voor meer informatie en voor beelden over het uitvoeren van gedistribueerde Horovod-, tensor flow-en PyTorch-taken:
 
@@ -154,7 +154,7 @@ run.wait_for_completion(show_output=True)
 >
 > Als u artefacten wilt maken tijdens de training (zoals model bestanden, controle punten, gegevens bestanden of geplote afbeeldingen), schrijft u deze naar de `./outputs` map.
 >
-> Op dezelfde manier kunt u de logboeken van uw trainings uitvoering naar de `./logs` map schrijven. Als u de TensorBoard- [integratie](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/export-run-history-to-tensorboard/export-run-history-to-tensorboard.ipynb) van Azure machine learning wilt gebruiken, moet u ervoor zorgen dat u uw TensorBoard-logboeken naar deze map schrijft. Tijdens het uitvoeren van de uitvoering kunt u TensorBoard starten en deze logboeken streamen.  Later kunt u de logboeken ook herstellen vanuit een van de vorige uitvoeringen.
+> Op dezelfde manier kunt u de logboeken van uw trainings uitvoering naar de `./logs` map schrijven. Als u de TensorBoard- [integratie](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/track-and-monitor-experiments/tensorboard/export-run-history-to-tensorboard/export-run-history-to-tensorboard.ipynb) van Azure machine learning wilt gebruiken, moet u ervoor zorgen dat u uw TensorBoard-logboeken naar deze map schrijft. Tijdens het uitvoeren van de uitvoering kunt u TensorBoard starten en deze logboeken streamen.  Later kunt u de logboeken ook herstellen vanuit een van de vorige uitvoeringen.
 >
 > Als u bijvoorbeeld een bestand wilt downloaden naar de map *uitvoer* naar de lokale computer nadat de externe training is uitgevoerd: `run.download_file(name='outputs/my_output_file', output_file_path='my_destination_path')`
 
@@ -165,8 +165,8 @@ Wanneer u begint met het uitvoeren van een training waarbij de bronmap een lokal
 ## <a name="notebook-examples"></a>Voor beelden van notebooks
 
 Bekijk deze notebooks voor voor beelden van het configureren van uitvoeringen voor verschillende trainings scenario's:
-* [procedures voor het gebruik van azureml/training](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training)
-* [procedures voor het gebruik van azureml/ml-Frameworks](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks)
+* [Training over diverse reken doelen](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training)
+* [Training met ML Frameworks](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks)
 * [zelf studies/img-Classification-part1-training. ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/image-classification-mnist-data/img-classification-part1-training.ipynb)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]

@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.custom: dpalled
-ms.openlocfilehash: 43d3e80c66d54e3f7518246f7d75c5661995578c
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 4d4e7f4433171e593f5e61ab6f48afc640857d9b
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89489031"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536576"
 ---
 # <a name="adding-support-for-long-data-type-in-azure-time-series-insights-gen2"></a>Ondersteuning toevoegen voor lang gegevens type in Azure Time Series Insights Gen2
 
@@ -72,11 +72,11 @@ Als u gegevens over deze twee kolommen wilt opvragen voor de eigenschap **proper
 
 *Vorige variabele definitie:*
 
-[![Vorige variabele definitie](media/time-series-insights-long-data-type/var-def-previous.png)](media/time-series-insights-long-data-type/var-def-previous.png#lightbox)
+[![Scherm afbeelding toont het dialoog venster een nieuwe variabele toevoegen voor de variabele PropertyValue en Numeriek.](media/time-series-insights-long-data-type/var-def-previous.png)](media/time-series-insights-long-data-type/var-def-previous.png#lightbox)
 
 *Nieuwe definitie van variabele:*
 
-[![Nieuwe definitie van variabele](media/time-series-insights-long-data-type/var-def.png)](media/time-series-insights-long-data-type/var-def.png#lightbox)
+[![Scherm afbeelding toont het dialoog venster een nieuwe variabele toevoegen voor de variabele PropertyValue met een aangepaste waarde, numeriek.](media/time-series-insights-long-data-type/var-def.png)](media/time-series-insights-long-data-type/var-def.png#lightbox)
 
 U kunt ook **Coalesce ($Event. PropertyValue. double, toDouble ($Event. PropertyValue. Long))** gebruiken als de aangepaste [Time Series-expressie](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax).
 
@@ -139,11 +139,11 @@ Als u momenteel Categorische variabelen gebruikt waarmee gehele waarden worden t
 
 *Vorige variabele definitie:*
 
-[![Vorige variabele definitie](media/time-series-insights-long-data-type/var-def-cat-previous.png)](media/time-series-insights-long-data-type/var-def-cat-previous.png#lightbox)
+[![Scherm afbeelding toont het dialoog venster een nieuwe variabele toevoegen voor de variabele PropertyValue, categorische.](media/time-series-insights-long-data-type/var-def-cat-previous.png)](media/time-series-insights-long-data-type/var-def-cat-previous.png#lightbox)
 
 *Nieuwe definitie van variabele:*
 
-[![Nieuwe definitie van variabele](media/time-series-insights-long-data-type/var-def-cat.png)](media/time-series-insights-long-data-type/var-def-cat.png#lightbox)
+[![Scherm afbeelding toont het dialoog venster een nieuwe variabele toevoegen voor de variabele PropertyValue met een aangepaste waarde, categorische.](media/time-series-insights-long-data-type/var-def-cat.png)](media/time-series-insights-long-data-type/var-def-cat.png#lightbox)
 
 U kunt ook **Coalesce ($Event. PropertyValue. double, toDouble ($Event. PropertyValue. Long))** gebruiken als de aangepaste [Time Series-expressie](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax).
 

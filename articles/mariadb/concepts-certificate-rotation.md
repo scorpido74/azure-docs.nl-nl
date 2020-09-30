@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: a52dd48bb97c8e7979771bdc2dbb50654493b088
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 3182f7fa913cd61e6c51ea91be6b46e83a1ab949
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90972593"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540099"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mariadb"></a>Informatie over de wijzigingen in de basis-CA-wijziging voor Azure Database for MariaDB
 
@@ -119,7 +119,7 @@ Voor servers die zijn gemaakt na 26 oktober 2020 (10/26/2020), kunt u het zojuis
 ### <a name="10-how-often-does-microsoft-update-their-certificates-or-what-is-the-expiry-policy"></a>10. hoe vaak werkt micro soft hun certificaten bij of wat is het verloop beleid?
 Deze certificaten die worden gebruikt door Azure Database for MariaDB worden door vertrouwde certificerings instanties (CA) verschaft. Daarom is de ondersteuning van deze certificaten op Azure Database for MariaDB gekoppeld aan de ondersteuning van deze certificaten per CA. In dit geval kunnen er echter onvoorziene fouten voor komen in deze vooraf gedefinieerde certificaten, die op het eerst moeten worden opgelost.
 
-### <a name="11-if-i-am-using-read-replicas-do-i-need-to-perform-this-update-only-on-master-server-or-the-read-replicas"></a>11. als ik lees replica's gebruik, moet ik deze update alleen op de hoofd server of de Lees replica's uitvoeren?
+### <a name="11-if-i-am-using-read-replicas-do-i-need-to-perform-this-update-only-on-source-server-or-the-read-replicas"></a>11. als ik lees replica's gebruik, moet ik deze update alleen uitvoeren op de bron server of de Lees replica's?
 Omdat deze update een wijziging aan de client zijde is, moet u de wijzigingen voor deze clients ook Toep assen als de client de gegevens van de replica server heeft gelezen.
 
 ### <a name="12-if-i-am-using-data-in-replication-do-i-need-to-perform-any-action"></a>12. als ik gegevens replicatie gebruik, moet ik dan elke actie uitvoeren?
@@ -137,7 +137,7 @@ Als u [gegevens replicatie](concepts-data-in-replication.md) gebruikt om verbind
 
     Als het certificaat wordt weer gegeven voor de CA_file, SSL_Cert en SSL_Key, moet u het bestand bijwerken door het [nieuwe certificaat](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem)toe te voegen.
 
-*   Als de gegevens replicatie tussen twee Azure Database for MySQL ligt, moet u de replica opnieuw instellen door **mysql. az_replication_change_master** uit te voeren en het nieuwe dubbele basis certificaat als laatste para meter [master_ssl_ca](howto-data-in-replication.md#link-the-master-and-replica-servers-to-start-data-in-replication)op te geven.
+*   Als de gegevens replicatie tussen twee Azure Database for MySQL ligt, moet u de replica opnieuw instellen door **mysql. az_replication_change_master** uit te voeren en het nieuwe dubbele basis certificaat als laatste para meter [master_ssl_ca](howto-data-in-replication.md#link-the-source-and-replica-servers-to-start-data-in-replication)op te geven.
 
 ### <a name="13-do-we-have-server-side-query-to-verify-if-ssl-is-being-used"></a>13. hebben we een query aan server zijde om te controleren of SSL wordt gebruikt?
 Raadpleeg [SSL-verificatie](howto-configure-ssl.md#verify-the-ssl-connection)om te controleren of u SSL-verbinding gebruikt om verbinding te maken met de server.

@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 07/22/2020
 ms.custom: how-to, contperfq1, devx-track-python
-ms.openlocfilehash: 639e4cde82fd8496c90f8ebf263dd42661a75748
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e118c22829bc55e8baafb87db20817ab043ef4df
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91296804"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540775"
 ---
 # <a name="connect-to-azure-storage-services"></a>Verbinding maken met Azure-opslagservices
 
@@ -266,5 +266,5 @@ Azure Data Factory biedt een efficiënte en robuuste gegevens overdracht met mee
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Een Azure machine learning-gegevensset maken](how-to-create-register-datasets.md)
-* [Een model trainen](how-to-train-ml-models.md)
+* [Een model trainen](how-to-set-up-training-targets.md)
 * [Een model implementeren](how-to-deploy-and-where.md)

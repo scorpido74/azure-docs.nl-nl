@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: chlound
-ms.openlocfilehash: f2531ebfd8b1eafc04fa6eda660b0eec3d1147f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5a662119d9ccf95eac23785c5fe9a787da882531
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81417080"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537392"
 ---
 # <a name="use-azure-key-vault-secrets-in-pipeline-activities"></a>Azure Key Vault-geheimen gebruiken in pijplijnactiviteiten
 
@@ -35,7 +35,7 @@ Deze functie is afhankelijk van de data factory beheerde identiteit.  Meer infor
 
 2. Open het toegangs beleid voor de sleutel kluis en voeg de beheerde identiteits machtigingen toe om geheimen op te halen en weer te geven.
 
-    ![Toegangs beleid Key Vault](media/how-to-use-azure-key-vault-secrets-pipeline-activities/akvaccesspolicies.png)
+    ![Scherm opname van de pagina ' toegangs beleid ' met de actie ' toegangs beleid toevoegen ' gemarkeerd.](media/how-to-use-azure-key-vault-secrets-pipeline-activities/akvaccesspolicies.png)
 
     ![Toegangs beleid Key Vault](media/how-to-use-azure-key-vault-secrets-pipeline-activities/akvaccesspolicies-2.png)
 
@@ -51,7 +51,7 @@ Deze functie is afhankelijk van de data factory beheerde identiteit.  Meer infor
 
     |Eigenschap  |Waarde  |
     |---------|---------|
-    |Beveiligde uitvoer     |True         |
+    |Beveiligde uitvoer     |Waar         |
     |URL     |[Uw geheime URI-waarde]? API-Version = 7.0         |
     |Methode     |GET         |
     |Verificatie     |MSI         |

@@ -5,12 +5,12 @@ ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
 ms.topic: article
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0aa0393544f5744c6aaf428ca4b4c27922a0c287
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: f239122f7178dbc244c8dc23f3f7e7647f7330da
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987844"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539075"
 ---
 # <a name="back-up-your-app-in-azure"></a>Back-up maken van uw app in Azure
 Met de functie voor het maken en terugzetten van back-ups in [Azure app service](overview.md) kunt u eenvoudig hand matig app-back-ups maken of volgens een planning. U kunt instellen dat de back-ups tot een onbeperkte tijd worden bewaard. U kunt de app herstellen naar een moment opname van een vorige status door de bestaande app te overschrijven of te herstellen naar een andere app.
@@ -66,17 +66,17 @@ De volgende database oplossingen worden ondersteund met de back-upfunctie:
 
 2. Selecteer op de pagina **back-up** de optie **back-up is niet geconfigureerd. Klik hier om een back-up voor uw app te configureren**.
 
-    ![Klik op configureren](./media/manage-backup/configure-start.png)
+    ![Klik op Configureren](./media/manage-backup/configure-start.png)
 
 3. Klik op de pagina **back-upconfiguratie** op **opslag is niet geconfigureerd** voor het configureren van een opslag account.
 
-    :::image type="content" source="./media/manage-backup/configure-storage.png" alt-text="Scherm afbeelding van de sectie Back-upopslag waarvoor de instelling opslag niet geconfigureerd is geselecteerd.":::
+    :::image type="content" source="./media/manage-backup/configure-storage.png" alt-text="Scherm afbeelding van een banner met een bericht voor het bijwerken van het App Service-abonnement om toegang te krijgen tot de functie voor maken en herstellen van back-ups.":::
 
 4. Kies het doel van de back-up door een **opslag account** en **container**te selecteren. Het opslag account moet deel uitmaken van hetzelfde abonnement als de app waarvan u een back-up wilt maken. Als u wilt, kunt u een nieuw opslag account of een nieuwe container maken op de respectieve pagina's. Wanneer u klaar bent, klikt u op **selecteren**.
 
 5. Op de pagina **back-upconfiguratie** die nog geopend is, kunt u de **back-updatabase**configureren en vervolgens de data bases selecteren die u wilt toevoegen in de back-ups (SQL database of MySQL). Klik vervolgens op **OK**.
 
-    :::image type="content" source="./media/manage-backup/configure-database.png" alt-text="Scherm afbeelding van de sectie back-updatabase met de optie voor het insluiten van back-ups.":::
+    :::image type="content" source="./media/manage-backup/configure-database.png" alt-text="Scherm afbeelding van een banner met een bericht voor het bijwerken van het App Service-abonnement om toegang te krijgen tot de functie voor maken en herstellen van back-ups.":::
 
     > [!NOTE]
     > Als u een data base in deze lijst wilt weer geven, moet de connection string bestaan in de sectie **verbindings reeksen** van de pagina **Toepassings instellingen** voor uw app. 
@@ -141,7 +141,7 @@ Voer back-ups op dezelfde manier uit als u normaal gesp roken [hand matig](#crea
 > [!NOTE]
 > U kunt gedeeltelijke back-ups van uw site op dezelfde manier herstellen als [een gewone back-up](web-sites-restore.md). Het herstel proces heeft het recht.
 > 
-> Wanneer een volledige back-up wordt hersteld, wordt alle inhoud op de site vervangen door de naam van de back-up. Als een bestand zich op de site bevindt, maar niet bij de back-up wordt verwijderd. Maar wanneer een gedeeltelijke back-up wordt hersteld, blijft alle inhoud die zich bevindt in een van de genoteerde directory's of een bestand in de zwarte lijst, in de staat.
+> Wanneer een volledige back-up wordt hersteld, wordt alle inhoud op de site vervangen door de naam van de back-up. Als een bestand zich op de site bevindt, maar niet bij de back-up wordt verwijderd. Maar wanneer een gedeeltelijke back-up wordt hersteld, blijft alle inhoud die zich in een van de beperkte directory's of een beperkt bestand bevindt, over.
 > 
 
 

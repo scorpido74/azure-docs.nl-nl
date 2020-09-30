@@ -3,23 +3,21 @@ title: Rang telwoord v2 vooraf gebouwde entiteit-LUIS
 titleSuffix: Azure Cognitive Services
 description: Dit artikel bevat vooraf opgemaakte nummer v2-entiteits gegevens in Language Understanding (LUIS).
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/27/2019
-ms.author: diberry
-ms.openlocfilehash: 5e852313db75e598da647ea0f985e2ee18af16de
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3fd80389dfa54cb8386c13e0e05a1e71ac4bd956
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78270489"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541931"
 ---
 # <a name="ordinal-v2-prebuilt-entity-for-a-luis-app"></a>Rang telwoord v2 vooraf gebouwde entiteit voor een LUIS-app
-Ordinal v2 `next`-nummer breidt [rang telwoord](luis-reference-prebuilt-ordinal.md) uit om relatieve verwijzingen te `last`bieden, `previous`zoals,, en. Deze worden niet geëxtraheerd met behulp van de vooraf gebouwde ordinale entiteit.
+Ordinal v2-nummer breidt [rang telwoord](luis-reference-prebuilt-ordinal.md) uit om relatieve verwijzingen te bieden, zoals `next` , `last` , en `previous` . Deze worden niet geëxtraheerd met behulp van de vooraf gebouwde ordinale entiteit.
 
 ## <a name="resolution-for-prebuilt-ordinal-v2-entity"></a>Oplossing voor vooraf ontwikkelde rang telwoord v2-entiteit
 
@@ -29,7 +27,7 @@ De volgende entiteits objecten worden geretourneerd voor de query:
 
 #### <a name="v3-response"></a>[V3-antwoord](#tab/V3)
 
-De volgende JSON is met de `verbose` para meter ingesteld `false`op:
+De volgende JSON is met de `verbose` para meter ingesteld op `false` :
 
 ```json
 "entities": {
@@ -44,7 +42,7 @@ De volgende JSON is met de `verbose` para meter ingesteld `false`op:
 
 #### <a name="v3-verbose-response"></a>[Uitgebreide respons van v3](#tab/V3-verbose)
 
-De volgende JSON is met de `verbose` para meter ingesteld `true`op:
+De volgende JSON is met de `verbose` para meter ingesteld op `true` :
 
 ```json
 "entities": {

@@ -2,20 +2,18 @@
 title: Entiteiten toevoegen-LUIS
 description: Maak entiteiten voor het extra heren van belang rijke gegevens van gebruikers uitingen in apps van Language Understanding (LUIS). Geëxtraheerde entiteits gegevens worden door de client toepassing gebruikt voor fullfile-aanvragen van klanten.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
-ms.author: diberry
-ms.openlocfilehash: 61e53e6110e545d253dae81e94f8738ee17c4141
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: c5c6836c2d68036bf2b9c5abe191943537349b8d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344472"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540962"
 ---
 # <a name="add-entities-to-extract-data"></a>Entiteiten toevoegen om gegevens op te halen
 
@@ -61,7 +59,7 @@ U kunt alle entiteiten maken op de pagina **entiteiten** , maar u kunt ook een a
 
 Dit proces werkt voor door machines gewerkte entiteiten, lijst entiteiten en reguliere expressie-entiteiten.
 
-1. Meld u aan bij de [Luis-Portal](https://www.luis.ai)en selecteer uw **abonnement** en de resource voor het **ontwerpen** van de apps die zijn toegewezen aan die ontwerp bron.
+1. Meld u aan bij de [LUIS-portal](https://www.luis.ai) en selecteer uw **abonnement** en **Ontwerpresource** om de apps weer te geven die aan die ontwerpresource zijn toegewezen.
 1. Open uw app door de naam ervan op **mijn apps** -pagina te selecteren.
 1. Selecteer de pagina **entiteiten** .
 1. Selecteer **+ maken**en selecteer vervolgens het entiteits type.
@@ -69,7 +67,7 @@ Dit proces werkt voor door machines gewerkte entiteiten, lijst entiteiten en reg
 
 ## <a name="create-a-machine-learned-entity"></a>Een door een machine geleerde entiteit maken
 
-1. Meld u aan bij de [Luis-Portal](https://www.luis.ai)en selecteer uw **abonnement** en de resource voor het **ontwerpen** van de apps die zijn toegewezen aan die ontwerp bron.
+1. Meld u aan bij de [LUIS-portal](https://www.luis.ai) en selecteer uw **abonnement** en **Ontwerpresource** om de apps weer te geven die aan die ontwerpresource zijn toegewezen.
 1. Open uw app door de naam ervan op **mijn apps** -pagina te selecteren.
 1. Selecteer in de sectie **Build** de optie **entiteiten** in het linkerdeel venster en selecteer **+ maken**.
 1. Voer in het dialoog venster **een entiteits type maken** de naam van de entiteit in en selecteer door de **machine geleerd**. Als u subentiteiten wilt toevoegen, selecteert u **structuur toevoegen**. Selecteer **Maken**.
@@ -86,7 +84,7 @@ Dit proces werkt voor door machines gewerkte entiteiten, lijst entiteiten en reg
 
 ## <a name="add-a-feature-to-a-machine-learned-entity"></a>Een functie toevoegen aan een door een machine geleerde entiteit
 
-1. Meld u aan bij de [Luis-Portal](https://www.luis.ai)en selecteer uw **abonnement** en de resource voor het **ontwerpen** van de apps die zijn toegewezen aan die ontwerp bron.
+1. Meld u aan bij de [LUIS-portal](https://www.luis.ai) en selecteer uw **abonnement** en **Ontwerpresource** om de apps weer te geven die aan die ontwerpresource zijn toegewezen.
 1. Open uw app door de naam ervan op **mijn apps** -pagina te selecteren.
 1. Selecteer in de sectie **Build** de optie **entiteiten** in het linkerdeel venster en selecteer vervolgens de door de machine geleerde entiteit.
 1. Voeg een functie toe door de **functie + toevoegen** te selecteren in de rij entiteit of subentiteit.
@@ -98,7 +96,7 @@ Dit proces werkt voor door machines gewerkte entiteiten, lijst entiteiten en reg
 
 ## <a name="create-a-regular-expression-entity"></a>Een reguliere expressie-entiteit maken
 
-1. Meld u aan bij de [Luis-Portal](https://www.luis.ai)en selecteer uw **abonnement** en de resource voor het **ontwerpen** van de apps die zijn toegewezen aan die ontwerp bron.
+1. Meld u aan bij de [LUIS-portal](https://www.luis.ai) en selecteer uw **abonnement** en **Ontwerpresource** om de apps weer te geven die aan die ontwerpresource zijn toegewezen.
 1. Open uw app door de naam ervan op **mijn apps** -pagina te selecteren.
 1. Selecteer in de sectie **Build** de optie **entiteiten** in het linkerdeel venster en selecteer **+ maken**.
 
@@ -118,12 +116,12 @@ In de volgende lijst ziet u de canonieke naam en de synoniemen.
 
 |Kleur-lijst item naam|Kleur-synoniemen|
 |--|--|
-|Rood|Crimson, bloed, Apple, brand engine|
-|Blauw|lucht, kobalt|
-|Groen|Kelly, licht groen|
+|Red|Crimson, bloed, Apple, brand engine|
+|Blue|lucht, kobalt|
+|Green|Kelly, licht groen|
 
 Gebruik de procedure om een lijst entiteit te maken. Zodra de lijst entiteit is gemaakt, hoeft u geen label voor beeld-uitingen in te richten. Lijst items en synoniemen worden vergeleken met de exacte tekst.
-1. Meld u aan bij de [Luis-Portal](https://www.luis.ai)en selecteer uw **abonnement** en de resource voor het **ontwerpen** van de apps die zijn toegewezen aan die ontwerp bron.
+1. Meld u aan bij de [LUIS-portal](https://www.luis.ai) en selecteer uw **abonnement** en **Ontwerpresource** om de apps weer te geven die aan die ontwerpresource zijn toegewezen.
 1. Open uw app door de naam ervan op **mijn apps** -pagina te selecteren.
 1. Selecteer in de sectie **Build** de optie **entiteiten** in het linkerdeel venster en selecteer **+ maken**.
 
@@ -151,7 +149,7 @@ In de volgende utterance zijn er twee locaties en elke naam wordt semantisch doo
 `Pick up the package from Seattle and deliver to New York City.`
 
 In deze procedure voegt `origin` `destination` u rollen toe aan een vooraf samengestelde geographyV2-entiteit.
-1. Meld u aan bij de [Luis-Portal](https://www.luis.ai)en selecteer uw **abonnement** en de resource voor het **ontwerpen** van de apps die zijn toegewezen aan die ontwerp bron.
+1. Meld u aan bij de [LUIS-portal](https://www.luis.ai) en selecteer uw **abonnement** en **Ontwerpresource** om de apps weer te geven die aan die ontwerpresource zijn toegewezen.
 1. Open uw app door de naam ervan op **mijn apps** -pagina te selecteren.
 1. Selecteer in de sectie **Build** de optie **entiteiten** in het linkerdeel venster.
 
@@ -173,20 +171,20 @@ In deze procedure voegt `origin` `destination` u rollen toe aan een vooraf samen
 > [!TIP]
 > Rollen kunnen worden vervangen door het labelen met subentiteiten van een machine learning-entiteit.
 
-1. Meld u aan bij de [Luis-Portal](https://www.luis.ai)en selecteer uw **abonnement** en de resource voor het **ontwerpen** van de apps die zijn toegewezen aan die ontwerp bron.
+1. Meld u aan bij de [LUIS-portal](https://www.luis.ai) en selecteer uw **abonnement** en **Ontwerpresource** om de apps weer te geven die aan die ontwerpresource zijn toegewezen.
 1. Open uw app door de naam ervan op **mijn apps** -pagina te selecteren.
 1. Ga naar de pagina Details van intentie, met bijvoorbeeld uitingen die gebruikmaken van de rol.
 1. Als u een label met de rol wilt hebben, selecteert u het label van de entiteit (effen lijn onder tekst) in het voor beeld utterance en selecteert u vervolgens **weer geven in entiteit deel venster** in de vervolg keuzelijst.
 
     > [!div class="mx-imgBorder"]
-    > ![Scherm opname van het selecteren van weer gave in het entiteits palet](media/add-entities/view-in-entity-pane.png)
+    > ![Scherm afbeelding toont de menu optie weer gave in deel venster entiteit geselecteerd.](media/add-entities/view-in-entity-pane.png)
 
     Het palet entiteit wordt geopend aan de rechter kant.
 
 1. Selecteer de entiteit, ga naar de onderkant van het palet en selecteer de rol.
 
     > [!div class="mx-imgBorder"]
-    > ![Scherm opname van het selecteren van weer gave in het entiteits palet](media/add-entities/select-role-in-entity-palette.png)
+    > ![Scherm afbeelding laat zien waar de rol moet worden geselecteerd.](media/add-entities/select-role-in-entity-palette.png)
 
 <a name="add-pattern-any-entities"></a>
 <a name="add-a-patternany-entity"></a>

@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: fd2a6cdad01302501e30ec60a4d3ccf6efd9c266
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 348fb301d1a36c8df405c641f7644889417b11ba
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80876815"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91545103"
 ---
 ## <a name="azure-cognitive-services-container-security"></a>Azure Cognitive Services-container beveiliging
 
@@ -27,7 +27,7 @@ In het onderstaande diagram ziet u de standaard-en **niet-veilige** benadering:
 
 ![Beveiliging van de container](../media/container-security.svg)
 
-Gebruikers van Cognitive Services containers kunnen een andere en *veilige* benadering van een container met een front-facing component uitbreiden, zodat het container eindpunt persoonlijk blijft. Laten we eens kijken naar een scenario waarin [Istio][istio] wordt gebruikt als een ingangs gateway. Istio ondersteunt HTTPS/TLS en verificatie van client certificaten. In dit scenario wordt de toegang tot de container door de Istio-front-front-front-end weer gegeven, waarbij het client certificaat wordt gepresenteerd dat vooraf is white list met Istio.
+Gebruikers van Cognitive Services containers kunnen een andere en *veilige* benadering van een container met een front-facing component uitbreiden, zodat het container eindpunt persoonlijk blijft. Laten we eens kijken naar een scenario waarin [Istio][istio] wordt gebruikt als een ingangs gateway. Istio ondersteunt HTTPS/TLS en verificatie van client certificaten. In dit scenario wordt de toegang tot de container door de Istio-front-end weer gegeven, waarbij het client certificaat wordt gepresenteerd dat vooraf is goedgekeurd met Istio.
 
 [Nginx][nginx] is een andere populaire keuze in dezelfde categorie. Zowel Istio als nginx fungeren als een service-net en bieden extra functies, zoals taak verdeling, route ring en frequentie beheer.
 

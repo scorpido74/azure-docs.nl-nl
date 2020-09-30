@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: a5856d85b6a967f49fd651942ca6e4596bf15e7d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e1b9aacf96249c3e102c6a3dbf87d8ac1ff20be6
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320970"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533312"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Continue integratie en levering in Azure Data Factory
 
@@ -30,10 +30,6 @@ In Azure Data Factory wordt doorlopende integratie en levering (CI/CD) de mogeli
 
 -    Geautomatiseerde implementatie met de integratie van Data Factory met [Azure-pijp lijnen](https://docs.microsoft.com/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops)
 -    Een resource manager-sjabloon hand matig uploaden met behulp van Data Factory UX-integratie met Azure Resource Manager.
-
-Bekijk de volgende video voor een inleiding tot negen minuten voor deze functie en een demonstratie:
-
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Continuous-integration-and-deployment-using-Azure-Data-Factory/player]
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -309,7 +305,7 @@ Hier volgt een voor beeld van hoe een parameterisering-sjabloon eruit kan zien:
 ```
 Hier volgt een uitleg van de manier waarop de vorige sjabloon is samengesteld, onderverdeeld op resource type.
 
-#### <a name="pipelines"></a>Pipelines
+#### <a name="pipelines"></a>Pijplijnen
     
 * Een eigenschap in het pad `activities/typeProperties/waitTimeInSeconds` is para meters. Alle activiteiten in een pijp lijn met de naam eigenschap `waitTimeInSeconds` (bijvoorbeeld de `Wait` activiteit) worden als een getal met een standaard naam vastgelegd. Maar heeft geen standaard waarde in de Resource Manager-sjabloon. Het is een verplichte invoer tijdens de implementatie van Resource Manager.
 * Op dezelfde manier is een eigenschap `headers` (bijvoorbeeld in een `Web` activiteit) para meters van het type `object` (JObject). Het heeft een standaard waarde. Dit is dezelfde waarde als die van de bron-Factory.

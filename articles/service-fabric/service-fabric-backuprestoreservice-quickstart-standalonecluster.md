@@ -1,16 +1,14 @@
 ---
 title: Periodieke back-ups maken/herstellen in zelfstandige Azure-Service Fabric
 description: Gebruik een zelfstandige Service Fabric periodieke functie voor back-up en herstel voor het inschakelen van periodieke gegevens back-ups van uw toepassings gegevens.
-author: hrushib
 ms.topic: conceptual
 ms.date: 5/24/2019
-ms.author: hrushib
-ms.openlocfilehash: dd91b8eb120de24d752073fd80157e9d2a663594
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: d20882ba5f7f31ef453c5d28f8bc37155cc99abd
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531318"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538582"
 ---
 # <a name="periodic-backup-and-restore-in-a-standalone-service-fabric"></a>Periodieke back-ups maken en herstellen in een zelfstandige Service Fabric
 > [!div class="op_single_selector"]
@@ -18,18 +16,18 @@ ms.locfileid: "90531318"
 > * [Zelfstandige clusters](service-fabric-backuprestoreservice-quickstart-standalonecluster.md)
 > 
 
-Service Fabric is een platform voor gedistribueerde systemen waarmee u gemakkelijk betrouw bare, gedistribueerde, op micro Services gebaseerde Cloud toepassingen kunt ontwikkelen en beheren. Hiermee kan zowel stateless als stateful micro services worden uitgevoerd. Stateful Services kunnen de onveranderlijke, gezaghebbende status behouden naast de aanvraag en het antwoord of een volledige trans actie. Als een stateful service lange tijd inactief is of gegevens verliest als gevolg van een nood geval, moet deze mogelijk worden hersteld naar een recente back-up van de status om de service te kunnen voortzetten nadat er een back-up is gemaakt.
+Service Fabric is een platform voor gedistribueerde systemen waarmee u gemakkelijk betrouw bare, gedistribueerde, op micro Services gebaseerde Cloud toepassingen kunt ontwikkelen en beheren. Hiermee kan zowel stateless als stateful micro services worden uitgevoerd. Stateful Services kunnen de onveranderlijke, gezaghebbende status behouden naast de aanvraag en het antwoord of een volledige trans actie. Als een stateful service gedurende lange tijd niet beschikbaar is of als er gegevens verloren gaan als gevolg van een nood geval, moet deze mogelijk worden hersteld naar een recente back-up van de status om de service te kunnen blijven ontvangen nadat er een back-up is gemaakt.
 
 Service Fabric de status op meerdere knoop punten repliceert om ervoor te zorgen dat de service Maxi maal beschikbaar is. Zelfs als één knoop punt in het cluster uitvalt, blijft de service beschikbaar. In bepaalde gevallen is het echter toch wenselijk dat de service gegevens betrouwbaar zijn voor bredere storingen.
  
-Een service kan bijvoorbeeld een back-up van de gegevens maken om te beschermen tegen de volgende scenario's:
+Een service moet bijvoorbeeld mogelijk een back-up van de gegevens maken om te beschermen tegen de volgende scenario's:
 - Permanent verlies van een volledig Service Fabric cluster.
 - Permanent verlies van een meerderheid van de replica's van een service partitie
 - Administratieve fouten waarbij de status per ongeluk wordt verwijderd of beschadigd. Een beheerder met voldoende bevoegdheden kan bijvoorbeeld de service op een onjuiste wijze verwijderen.
 - Fouten in de service die leiden tot beschadigde gegevens. Dit kan bijvoorbeeld gebeuren wanneer een service code-upgrade begint met het schrijven van fout gegevens naar een betrouw bare verzameling. In dat geval kunnen zowel de code als de gegevens worden teruggedraaid naar een eerdere status.
 - Offline gegevens verwerking. Het kan handig zijn om gegevens offline te verwerken voor business intelligence die los van de service worden uitgevoerd waardoor de gegevens worden gegenereerd.
 
-Service Fabric biedt een API die is ontworpen voor het maken van [back-ups en herstellen](service-fabric-reliable-services-backup-restore.md). Toepassings ontwikkelaars kunnen deze Api's gebruiken om regel matig een back-up te maken van de status van de service. Daarnaast moeten ontwikkel aars een back-up maken (en herstellen) als een API van de service om een back-up te kunnen maken van buiten de service op een bepaald moment, zoals voordat de toepassing wordt geüpgraded. Voor het onderhouden van de back-ups zijn hiervoor extra kosten van toepassing. U kunt bijvoorbeeld elk half uur vijf incrementele back-ups maken, gevolgd door een volledige back-up. Na de volledige back-up kunt u de vorige incrementele back-ups verwijderen. Deze aanpak vereist extra code voor extra kosten tijdens de ontwikkeling van toepassingen.
+Service Fabric biedt een ingebouwde API voor het [maken van back-ups en herstel](service-fabric-reliable-services-backup-restore.md)bewerkingen. Toepassings ontwikkelaars kunnen deze Api's gebruiken om regel matig een back-up te maken van de status van de service. Daarnaast moeten ontwikkel aars een back-up maken (en herstellen) als een API van de service om een back-up te kunnen activeren van buiten de service op een bepaald moment (bijvoorbeeld voordat de toepassing wordt bijgewerkt). Voor het onderhouden van de back-ups zijn hiervoor extra kosten van toepassing. U kunt bijvoorbeeld elk half uur vijf incrementele back-ups maken, gevolgd door een volledige back-up. Na de volledige back-up kunt u de vorige incrementele back-ups verwijderen. Deze aanpak vereist extra code voor extra kosten tijdens de ontwikkeling van toepassingen.
 
 Het maken van een back-up van de toepassings gegevens op periodieke basis is een basis behoefte voor het beheren van een gedistribueerde toepassing en het beschermen van gegevens verlies of het langdurige verlies van de beschik baarheid van de service. Service Fabric biedt een optionele service voor back-up en herstel, waarmee u periodieke back-ups kunt configureren van stateful Reliable Services (inclusief actor Services) zonder dat u extra code hoeft te schrijven. Het vereenvoudigt ook het herstellen van eerder gemaakte back-ups. 
 
@@ -39,7 +37,7 @@ Service Fabric biedt een reeks Api's om de volgende functionaliteit te bieden me
     - Azure Storage
     - Bestands share (on-premises)
 - Back-ups opsommen
-- Een ad-hoc-back-up van een partitie activeren
+- Een ongeplande back-up van een partitie activeren
 - Een partitie herstellen met de vorige back-up
 - Back-ups tijdelijk onderbreken
 - Retentie beheer van back-ups (gepland)
@@ -48,11 +46,11 @@ Service Fabric biedt een reeks Api's om de volgende functionaliteit te bieden me
 * Service Fabric cluster met infrastructuur versie 6,4 of hoger. Raadpleeg dit [artikel](service-fabric-cluster-creation-for-windows-server.md) voor de stappen voor het downloaden van het vereiste pakket.
 * X. 509-certificaat voor het versleutelen van geheimen die nodig zijn om verbinding te maken met opslag om back-ups op te slaan. Raadpleeg het [artikel](service-fabric-windows-cluster-x509-security.md) om te weten hoe u een zelfondertekend X. 509-certificaat kunt verkrijgen of maken.
 
-* Service Fabric betrouw bare stateful toepassing die is gebouwd met Service Fabric SDK-versie 3,0 of hoger. Voor toepassingen die zijn gericht op .net Core 2,0, moet de toepassing worden gebouwd met Service Fabric SDK-versie 3,1 of hoger.
+* Service Fabric betrouw bare stateful toepassing die is gebouwd met Service Fabric SDK-versie 3,0 of hoger. Voor toepassingen die zijn gericht op .NET Core 2,0, moet de toepassing worden gebouwd met Service Fabric SDK-versie 3,1 of hoger.
 * Installeer de micro soft. ServiceFabric. Power shell. http-module [in Preview] om configuratie aanroepen te maken.
 
 ```powershell
-    Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
+    Install-Module -Name Microsoft.ServiceFabric.PowerShell.Http -AllowPrerelease
 ```
 
 * Zorg ervoor dat het cluster is verbonden met behulp van de `Connect-SFCluster` opdracht voordat u een configuratie aanvraag maakt met behulp van de module micro soft. ServiceFabric. Power shell. http.
@@ -106,13 +104,13 @@ Eerst moet u de service voor _back-up en herstel_ inschakelen in uw cluster. Haa
     }
     ```
 
-4. Nadat u het configuratie bestand van het cluster met de voor gaande wijzigingen hebt bijgewerkt, past u deze toe en laat u de implementatie/upgrade volt ooien. Zodra het proces is voltooid, wordt de _back-up-en herstel service_ gestart in uw cluster. De URI van deze service is `fabric:/System/BackupRestoreService` en de service bevindt zich in de sectie systeem service van de service Fabric Explorer. 
+4. Nadat u uw cluster configuratie bestand met de voor gaande wijzigingen hebt bijgewerkt, past u deze toe en laat u de implementatie/upgrade volt ooien. Zodra het proces is voltooid, wordt de _back-up-en herstel service_ gestart in uw cluster. De URI van deze service is `fabric:/System/BackupRestoreService` en de service bevindt zich in de sectie systeem service van de service Fabric Explorer. 
 
 
 
 ## <a name="enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors"></a>Periodieke back-ups inschakelen voor betrouw bare stateful service en Reliable Actors
 We gaan stappen uitvoeren om periodieke back-ups in te scha kelen voor betrouw bare stateful service en Reliable Actors. Bij deze stappen wordt ervan uitgegaan
-- Of het cluster is ingesteld met _Backup-en Restore-service_.
+- Het cluster is geconfigureerd met back-up-en herstel service_.
 - Een betrouw bare stateful service wordt op het cluster geïmplementeerd. Voor het doel van deze Snelstartgids is de toepassings-URI `fabric:/SampleApp` en de URI voor een betrouw bare stateful service die deel uitmaakt van deze toepassing `fabric:/SampleApp/MyStatefulService` . Deze service wordt geïmplementeerd met één partitie en de partitie-ID is `23aebc1e-e9ea-4e16-9d5c-e91a614fefa7` .  
 
 ### <a name="create-backup-policy"></a>Back-upbeleid maken
@@ -203,7 +201,7 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 
     ![Back-up van toepassing inschakelen][3] 
 
-2. Selecteer ten slotte het gewenste beleid en klik op back-up inschakelen.
+2. Selecteer ten slotte het gewenste beleid en selecteer *back-up inschakelen*.
 
     ![Beleid selecteren][4]
 

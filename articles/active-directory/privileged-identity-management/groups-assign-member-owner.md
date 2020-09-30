@@ -15,12 +15,12 @@ ms.date: 08/18/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06e61bb966313265f7e3772dbbf6017a03a42386
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 48c4473cfafce1215219251c47bce1d5730645fc
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869635"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534417"
 ---
 # <a name="assign-eligibility-for-a-privileged-access-group-preview-in-privileged-identity-management"></a>Wijs geschiktheid toe voor een bevoegde toegangs groep (preview) in Privileged Identity Management
 
@@ -48,7 +48,7 @@ Volg deze stappen om een gebruiker in aanmerking te laten komen als lid of eigen
 
 1. Selecteer de leden of eigen aren die u in aanmerking wilt komen voor de groep privileged Access.
 
-    ![Een lid of groeps deel venster selecteren](./media/groups-assign-member-owner/add-assignments.png)
+    ![Scherm opname waarin de pagina toewijzingen toevoegen wordt weer gegeven met het deel venster een lid of groep selecteren geopend en de knop selecteren gemarkeerd.](./media/groups-assign-member-owner/add-assignments.png)
 
 1. Selecteer **volgende** om de duur van het lidmaatschap of de eigendom in te stellen.
 

@@ -3,20 +3,18 @@ title: Intents en entiteiten-LUIS
 titleSuffix: Azure Cognitive Services
 description: Eén intentie vertegenwoordigt een taak of actie die de gebruiker wil uitvoeren. Het is een doel, uitgedrukt in van de uiting van een gebruiker. Definieer een set intenties die overeenkomt met acties die gebruikers in uw toepassing willen uitvoeren.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/10/2019
-ms.author: diberry
-ms.openlocfilehash: f2e4f91dbc03853d6f1a5240f693ea8ff510e8c4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cf138248e878b21531df2035dfeda1b90162ea99
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82101073"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536100"
 ---
 # <a name="intents-in-your-luis-app"></a>Intenties in uw LUIS-app
 
@@ -41,7 +39,7 @@ U wijst een utterance toe aan één intentie. Wanneer LUIS een utterance op het 
 
 Als u de scores voor alle intenties voor de utterance wilt, kunt u een vlag geven op de query reeks van de prediction-API.
 
-|API-versie voor voor spelling|Markering|
+|API-versie voor voor spelling|Vlag|
 |--|--|
 |V2|`verbose=true`|
 |V3|`show-all-intents=true`|
@@ -55,8 +53,8 @@ Maak een intentie wanneer de _bedoeling_ van de gebruiker een actie in uw client
 
 |Intentie   | Entiteit | Voorbeeld van een utterance   |
 |------------------|------------------------------|------------------------------|
-| CheckWeather | {"type": "locatie", "entiteit": "Seattle"}<br>{"type": "Builtin. datetimeV2. date", "entiteit": "morgen", "oplossing": "2018-05-23"} | Wat is het weer `Seattle` `tomorrow`? |
-| CheckWeather | {"type": "date_range", "entiteit": "dit weekend"} | De prognose voor weer geven`this weekend` |
+| CheckWeather | {"type": "locatie", "entiteit": "Seattle"}<br>{"type": "Builtin. datetimeV2. date", "entiteit": "morgen", "oplossing": "2018-05-23"} | Wat is het weer `Seattle` `tomorrow` ? |
+| CheckWeather | {"type": "date_range", "entiteit": "dit weekend"} | De prognose voor weer geven `this weekend` |
 ||||
 
 ## <a name="prebuilt-domain-intents"></a>Vooraf ontwikkelde domein intentie

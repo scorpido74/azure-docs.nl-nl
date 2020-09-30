@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/22/2020
-ms.openlocfilehash: 018c3fb08c7fa0ad35fa567bffbeae48b6fbbce9
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: bae4cb72201bbc1653db5bb549d67531bda71d50
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88928833"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537715"
 ---
 # <a name="query-types-and-composition-in-azure-cognitive-search"></a>Query typen en samen stelling in azure Cognitive Search
 
@@ -92,7 +92,7 @@ De volgende tabel geeft een lijst van de Api's en hulp op basis van gereedschapp
 |-------------|-------------|
 | [Search Explorer (portal)](search-explorer.md) | Voorziet in een zoek balk en opties voor selecties van index en API-versie. Resultaten worden geretourneerd als JSON-documenten. Aanbevolen voor verkennen, testen en valideren. <br/>[Meer informatie.](search-get-started-portal.md#query-index) | 
 | [Postman of andere REST-hulp middelen](search-get-started-postman.md) | Webtest-hulpprogram ma's zijn een uitstekende keuze voor het formuleren van REST-aanroepen. De REST API ondersteunt elke mogelijke bewerking in azure Cognitive Search. In dit artikel vindt u informatie over het instellen van een HTTP-aanvraag header en hoofd tekst voor het verzenden van aanvragen naar Azure Cognitive Search.  |
-| [SearchIndexClient (.NET)](/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) | Client die kan worden gebruikt om een query uit te zoeken op een Azure Cognitive Search-index.  <br/>[Meer informatie.](search-howto-dotnet-sdk.md#core-scenarios)  |
+| [SearchIndexClient (.NET)](/dotnet/api/microsoft.azure.search.searchindexclient) | Client die kan worden gebruikt om een query uit te zoeken op een Azure Cognitive Search-index.  <br/>[Meer informatie.](search-howto-dotnet-sdk.md#core-scenarios)  |
 | [Documenten zoeken (REST API)](/rest/api/searchservice/search-documents) | GET-of POST-methoden voor een index met behulp van query parameters voor aanvullende invoer.  |
 
 ## <a name="choose-a-parser-simple--full"></a>Kies een parser: eenvoudig | waard

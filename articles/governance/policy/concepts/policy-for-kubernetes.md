@@ -1,14 +1,14 @@
 ---
 title: Azure Policy leren voor Kubernetes
 description: Lees hoe Azure Policy Rego gebruikt en beleids agent opent voor het beheren van clusters met Kubernetes in azure of on-premises.
-ms.date: 09/22/2020
+ms.date: 09/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: bb4345426eddb8b0b5250980eb46cf0509a22cff
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 67c6af4842ea1f404468497930b08c36ecd1abb9
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91369991"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540248"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>Azure Policy voor Kubernetes-clusters
 
@@ -55,8 +55,8 @@ De volgende algemene beperkingen zijn van toepassing op de Azure Policy-invoeg t
 - Maximum aantal niet-compatibele records per beleid per cluster: **500**
 - Maximum aantal niet-compatibele records per abonnement: **1.000.000**
 - Installatie van gate keeper buiten de Azure Policy-invoeg toepassing wordt niet ondersteund. Verwijder onderdelen die door een eerdere gate keeper-installatie zijn geïnstalleerd voordat u de invoeg toepassing Azure Policy inschakelt.
-- [Redenen voor niet-naleving](../how-to/determine-non-compliance.md#compliance-reasons) zijn niet beschikbaar voor de `Microsoft.Kubernetes.Data` 
-   [resource provider modus](./definition-structure.md#resource-provider-modes)
+- [Redenen voor niet-naleving](../how-to/determine-non-compliance.md#compliance-reasons) zijn niet beschikbaar voor de modus van de `Microsoft.Kubernetes.Data` 
+   [resource provider](./definition-structure.md#resource-provider-modes). [Onderdeel gegevens](../how-to/determine-non-compliance.md#component-details-for-resource-provider-modes)gebruiken.
 
 De volgende beperkingen gelden alleen voor de Azure Policy-invoeg toepassing voor AKS:
 
@@ -209,7 +209,7 @@ Voordat u de Azure Policy invoeg toepassing installeert of een van de service fu
 
 1. Open poorten voor de invoeg toepassing. De invoeg toepassing Azure Policy gebruikt deze domeinen en poorten om beleids definities en toewijzingen op te halen en de compatibiliteit van het cluster weer te geven aan Azure Policy.
 
-   |Domain |Poort |
+   |Domein |Poort |
    |---|---|
    |`gov-prod-policy-data.trafficmanager.net` |`443` |
    |`raw.githubusercontent.com` |`443` |
@@ -379,7 +379,7 @@ Als onderdeel van de eigenschappen _Details. constraintTemplate_ en _Details. CO
 
 ## <a name="assign-a-built-in-policy-definition"></a>Een ingebouwde beleidsdefinitie toewijzen
 
-Als u een beleids definitie wilt toewijzen aan uw Kubernetes-cluster, moet u de juiste bewerkingen voor beleids toewijzing op basis van op rollen gebaseerde toegangs beheer (RBAC). De ingebouwde functies van het **resource beleid** van de functie voor Azure zijn Inzender en de **eigenaar** hebben deze bewerkingen. Zie voor meer informatie [RBAC-machtigingen in azure Policy](../overview.md#rbac-permissions-in-azure-policy).
+Als u een beleids definitie wilt toewijzen aan uw Kubernetes-cluster, moet u de juiste bewerkingen voor beleids toewijzing van Azure RBAC (Azure op rollen gebaseerd toegangs beheer) krijgen. De ingebouwde functies van het **resource beleid** van de functie voor Azure zijn Inzender en de **eigenaar** hebben deze bewerkingen. Zie [Azure RBAC-machtigingen in azure Policy](../overview.md#azure-rbac-permissions-in-azure-policy)voor meer informatie.
 
 Zoek de ingebouwde beleids definities voor het beheren van uw cluster met behulp van de Azure Portal door de volgende stappen uit te voeren:
 
@@ -430,7 +430,7 @@ Als een naam ruimte in een Kubernetes-cluster een van de volgende labels heeft, 
 > [!NOTE]
 > Hoewel een cluster beheerder gemachtigd is om beperkings sjablonen en Azure Policy beperkingen te maken en bij te werken, worden deze niet ondersteund als hand matige updates worden overschreven. Gate keeper blijft beleid evalueren dat bestond vóór de installatie van de invoeg toepassing en het toewijzen van Azure Policy-beleids definities.
 
-Elke 15 minuten wordt de invoeg toepassing aangeroepen voor een volledige scan van het cluster. Na het verzamelen van Details van de volledige scan en eventuele realtime-evaluaties door gate keeper van pogingen om wijzigingen aan te brengen in het cluster, worden de resultaten weer gegeven in Azure Policy om te worden opgenomen in [compatibiliteits Details](../how-to/get-compliance-data.md) zoals een Azure Policy toewijzing. Er worden alleen resultaten voor actieve beleids toewijzingen geretourneerd tijdens de controle cyclus. Controle resultaten kunnen ook worden gezien als [schendingen](https://github.com/open-policy-agent/gatekeeper#audit) die worden vermeld in het veld status van de beperking mislukt. Zie [nalevings Details voor resource provider modi](../how-to/determine-non-compliance.md#compliance-details-for-resource-provider-modes)voor meer informatie over _niet-compatibele_ resources.
+Elke 15 minuten wordt de invoeg toepassing aangeroepen voor een volledige scan van het cluster. Na het verzamelen van Details van de volledige scan en eventuele realtime-evaluaties door gate keeper van pogingen om wijzigingen aan te brengen in het cluster, worden de resultaten weer gegeven in Azure Policy om te worden opgenomen in [compatibiliteits Details](../how-to/get-compliance-data.md) zoals een Azure Policy toewijzing. Er worden alleen resultaten voor actieve beleids toewijzingen geretourneerd tijdens de controle cyclus. Controle resultaten kunnen ook worden gezien als [schendingen](https://github.com/open-policy-agent/gatekeeper#audit) die worden vermeld in het veld status van de beperking mislukt. Zie voor meer informatie over _niet-compatibele_ resources [onderdeel Details voor de resource provider modi](../how-to/determine-non-compliance.md#component-details-for-resource-provider-modes).
 
 > [!NOTE]
 > Elk nalevings rapport in Azure Policy voor uw Kubernetes-clusters bevatten alle schendingen in de afgelopen 45 minuten. De tijds tempel geeft aan wanneer een schending is opgetreden.

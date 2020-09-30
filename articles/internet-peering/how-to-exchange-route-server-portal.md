@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: how-to
 ms.date: 5/19/2020
 ms.author: derekol
-ms.openlocfilehash: 1eaf7413b01bceacbcbf3640bfe654fdad026672
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e10cd91eadd338217845b1504e8e9160bccfc98
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84700665"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537188"
 ---
 # <a name="create-or-modify-an-exchange-peering-with-route-server-in-azure-portal"></a>Een Exchange-peering maken of wijzigen met route server in Azure Portal
 
@@ -74,7 +74,7 @@ Als Internet Exchange-provider kunt u een uitwisselings aanvraag maken door [een
 1.  Vul onder **directe peering verbinding**de volgende BGP-sessie gegevens in:
 
     > [!div class="mx-imgBorder"]
-    > ![Direct peering-route server configureren](./media/setup-exchange-conf-tab-direct-route.png)
+    > ![Scherm afbeelding toont het deel venster directe peering-verbinding met details toegevoegd.](./media/setup-exchange-conf-tab-direct-route.png)
 
 
      * Peering-faciliteit, selecteer de juiste fysieke locatie voor de peering
@@ -99,19 +99,19 @@ Als Internet Exchange-provider kunt u een uitwisselings aanvraag maken door [een
 1. Selecteer **geregistreerde asn's** in het gedeelte instellingen.
 
     > [!div class="mx-imgBorder"]
-    > ![Direct peering-route server configureren](./media/setup-exchange-registered-asn.png)
+    > ![Scherm afbeelding toont het deel venster voor peering met de geregistreerde A S NS menu-item met de naam.](./media/setup-exchange-registered-asn.png)
 
 1. Selecteer **geregistreerde ASN toevoegen** om een nieuwe klant-ASN te maken onder uw Exchange-abonnement.
 
     > [!div class="mx-imgBorder"]
-    > ![Direct peering-route server configureren](./media/setup-exchange-register-new-asn.png)
+    > ![Scherm afbeelding toont het deel venster A S N registreren met een naam en een S N-tekst vakken.](./media/setup-exchange-register-new-asn.png)
 
 1. Onder een ASN registreren selecteert u een naam, vult u de klant-ASN in en klikt u op opslaan.
 
 1. Onder geregistreerde Asn's wordt een bijbehorende voorvoegsel sleutel toegewezen aan elke ASN. Als Exchange-provider moet u deze voorvoegsel sleutel opgeven aan uw klant zodat deze peering service kan registreren onder hun abonnement.
 
     > [!div class="mx-imgBorder"]
-    > ![Direct peering-route server configureren](./media/setup-exchange-register-asn-prefixkey.png)
+    > ![Scherm afbeelding toont het deel venster geregistreerde A S NS met voorvoegsel sleutels.](./media/setup-exchange-register-asn-prefixkey.png)
 
 
 
@@ -130,6 +130,6 @@ Als Internet Exchange-provider kunt u een uitwisselings aanvraag maken door [een
 * [Een directe peering maken of wijzigen met behulp van de portal](howto-direct-portal.md)
 * [Een verouderde directe peering naar een Azure-resource converteren met behulp van de portal](howto-legacy-direct-portal.md)
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 Zie [Veelgestelde vragen over Internet peering](faqs.md)voor meer informatie.

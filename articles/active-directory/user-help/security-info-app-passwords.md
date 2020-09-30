@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 02/13/2018
 ms.author: curtand
-ms.openlocfilehash: 9de054162a59b10fbd02bed9b3e84634ee12125b
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 84588130788e9be8d3be52a8ea0f3988dce7b952
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799193"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537001"
 ---
 # <a name="create-app-passwords-from-the-security-info-preview-page"></a>App-wacht woorden maken op de pagina beveiligings gegevens (preview)
 
@@ -59,7 +59,7 @@ Als u verificatie in twee stappen gebruikt met uw werk-of school account en de b
 
 4. Typ de naam van de app waarvoor het app-wacht woord is vereist en selecteer **volgende**.
 
-    ![Pagina app-wacht woord, met de naam van de app](media/security-info/securityinfo-myprofile-password-appname.png)
+    ![Scherm opname van de pagina app-wacht woord, met de naam van de app die is ingevoerd.](media/security-info/securityinfo-myprofile-password-appname.png)
 
 5. Kopieer de tekst in het vak **wacht** woord, plak het wacht woord in het gebied wacht woord van de app (in dit voor beeld Outlook 2010) en selecteer vervolgens **gereed**.
 

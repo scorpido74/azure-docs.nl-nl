@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 50c95dc9d045711cb6968b98957d255b4ca73d2c
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 148310419ad4f760219003514dbc078b7c675be6
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88932760"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538784"
 ---
 # <a name="data-import-overview---azure-cognitive-search"></a>Overzicht van het importeren van gegevens-Azure Cognitive Search
 
@@ -35,7 +35,7 @@ Deze aanpak is flexibeler dan het pull-model, omdat u documenten afzonderlijk of
 U kunt de volgende API's gebruiken om één of meerdere documenten in een index te laden:
 
 + [Documenten toevoegen, bijwerken of verwijderen (REST API)](/rest/api/searchservice/AddUpdate-or-Delete-Documents)
-+ [indexAction-klasse](/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet) of [indexBatch-klasse](/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet) 
++ [indexAction-klasse](/dotnet/api/microsoft.azure.search.models.indexaction) of [indexBatch-klasse](/dotnet/api/microsoft.azure.search.models.indexbatch) 
 
 Er is momenteel geen ondersteuning voor het pushen van gegevens via de portal.
 

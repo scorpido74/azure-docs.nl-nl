@@ -16,12 +16,12 @@ ms.date: 02/07/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24471ff5a085be905f9316f1af3c95c3a7912bf1
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 7e0f74f98adcc8a4e8aabc96f7f35c9c55ae277f
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421532"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536355"
 ---
 # <a name="approve-or-deny-requests-for-azure-ad-roles-in-privileged-identity-management"></a>Aanvragen voor Azure AD-rollen in Privileged Identity Management goed keuren of weigeren
 
@@ -44,7 +44,7 @@ Volg de stappen in dit artikel voor het goed keuren of weigeren van aanvragen vo
 
 Als gedelegeerde fiatteur ontvangt u een e-mail melding wanneer een Azure AD-toepassingsrol in afwachting is van uw goed keuring. U kunt deze aanvragen in behandeling bekijken in Privileged Identity Management.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 1. Open **Azure AD privileged Identity Management**.
 
@@ -58,7 +58,7 @@ Als gedelegeerde fiatteur ontvangt u een e-mail melding wanneer een Azure AD-toe
 
 1. Zoek en selecteer de aanvraag die u wilt goed keuren. Er wordt een pagina goed keuren of weigeren weer gegeven.
 
-    ![Verzoeken goed keuren: deel venster goed keuren of weigeren met details en motivering](./media/azure-ad-pim-approval-workflow/resources-approve-pane.png)
+    ![Scherm afbeelding met de pagina aanvragen goed keuren-Azure AD-rollen.](./media/azure-ad-pim-approval-workflow/resources-approve-pane.png)
 
 1. Voer in het vak **motivering** de zakelijke rechtvaardiging in.
 
@@ -94,7 +94,7 @@ Hier vindt u informatie over werk stroom meldingen:
 
 Als gedelegeerde fiatteur ontvangt u een e-mail melding wanneer een Azure AD-toepassingsrol in afwachting is van uw goed keuring. U kunt deze aanvragen in behandeling bekijken in Privileged Identity Management.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 1. Open **Azure AD privileged Identity Management**.
 

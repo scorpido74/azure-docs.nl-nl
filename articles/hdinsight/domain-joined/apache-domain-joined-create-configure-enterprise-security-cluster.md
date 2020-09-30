@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 12/10/2019
-ms.openlocfilehash: acd51fc54e0655af6bfc6c05d2e99be2f26f942b
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: c0e35b94b4322d9273e5793c85792eb2bbd34d05
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080156"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536066"
 ---
 # <a name="create-and-configure-enterprise-security-package-clusters-in-azure-hdinsight"></a>Enterprise Security Package clusters maken en configureren in azure HDInsight
 
@@ -46,9 +46,9 @@ In deze sectie gebruikt u een Azure Quick Start-implementatie sjabloon voor het 
     |Eigenschap | Waarde |
     |---|---|
     |Abonnement|Selecteer het abonnement waarin u de resources wilt implementeren.|
-    |Resourcegroep|Selecteer **nieuwe maken**en voer de naam in`OnPremADVRG`|
+    |Resourcegroep|Selecteer **nieuwe maken**en voer de naam in `OnPremADVRG`|
     |Locatie|Selecteer een locatie.|
-    |Gebruikers naam beheerder|`HDIFabrikamAdmin`|
+    |Gebruikersnaam van beheerder|`HDIFabrikamAdmin`|
     |Beheerderswachtwoord|Voer een wachtwoord in.|
     |Domeinnaam|`HDIFabrikam.com`|
     |DNS-voor voegsel|`hdifabrikam`|
@@ -129,7 +129,7 @@ De gebruikers worden gesynchroniseerd met Azure AD.
 ### <a name="create-a-custom-domain"></a>Een aangepast domein maken
 
 1. Selecteer in uw nieuwe **Azure Active Directory**onder **beheren**de optie **aangepaste domein namen**.
-1. Selecteer **+ aangepast domein toevoegen**.
+1. Selecteer **+ Aangepast domein toevoegen**.
 1. Voer onder **aangepaste domein naam**, `HDIFabrikam.com` en selecteer vervolgens **domein toevoegen**.
 1. Voeg vervolgens [uw DNS-gegevens toe aan de registratie van het domein](../../active-directory/fundamentals/add-custom-domain.md#add-your-dns-information-to-the-domain-registrar).
 
@@ -158,8 +158,8 @@ Maak een Active Directory-Tenant beheerder.
 
     |Eigenschap |Beschrijving |
     |---|---|
-    |Gebruikersnaam|Voer `fabrikamazureadmin` in het tekstvak in. Selecteer in de vervolg keuzelijst domein naam de optie`hdifabrikam.com`|
-    |Name| Voer `fabrikamazureadmin` in.|
+    |Gebruikersnaam|Voer `fabrikamazureadmin` in het tekstvak in. Selecteer in de vervolg keuzelijst domein naam de optie `hdifabrikam.com`|
+    |Naam| Voer `fabrikamazureadmin` in.|
 
     **Wachtwoord**
     1. Selecteer **Ik wil het wacht woord maken**.
@@ -192,11 +192,11 @@ Maak een Active Directory-Tenant beheerder.
 
 1. Voer op de pagina **verbinding maken met Azure AD** de gebruikers naam en het wacht woord in van de globale beheerder voor Azure AD. Gebruik de gebruikers naam `fabrikamazureadmin@hdifabrikam.com` die u hebt gemaakt tijdens het configureren van uw Active Directory-Tenant. Selecteer vervolgens **Volgende**.
 
-    ![De pagina verbinding maken met Azure AD](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0058.png)
+    ![De pagina verbinding maken met Azure A D.](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0058.png)
 
 1. Voer op de pagina **verbinding maken met Active Directory Domain Services** de gebruikers naam en het wacht woord in voor een ondernemings Administrator-account. Gebruik de gebruikers naam `HDIFabrikam\HDIFabrikamAdmin` en het wacht woord dat u eerder hebt gemaakt. Selecteer vervolgens **Volgende**.
 
-   ![De pagina verbinding maken met Azure AD](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0060.png)
+   ![De pagina verbinding maken met D D S.](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0060.png)
 1. Selecteer **volgende**op de pagina **aanmeldings configuratie van Azure AD** .
    ![De pagina configuratie van Azure AD-aanmelding](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0062.png)
 
@@ -351,14 +351,14 @@ Controleer of het certificaat is geïnstalleerd in het **persoonlijke** archief 
 
         | Eigenschap | Waarde |
         |---|---|
-        | Bron | Alle |
+        | Bron | Elk |
         | Poortbereiken van bron | * |
-        | Doel | Alle |
+        | Doel | Elk |
         | Poortbereik van doel | 636 |
-        | Protocol | Alle |
-        | Bewerking | Toestaan |
+        | Protocol | Elk |
+        | Actie | Toestaan |
         | Prioriteit | \<Desired number> |
-        | Name | Port_LDAP_636 |
+        | Naam | Port_LDAP_636 |
 
     ![Het dialoog venster "binnenkomende beveiligings regel toevoegen"](./media/apache-domain-joined-create-configure-enterprise-security-cluster/add-inbound-security-rule.png)
 

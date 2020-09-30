@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 1fbcc1fb27d5e6df4641f79c0d634580f74000b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 66e280f20109967f029a14e368fdb0aeea269aad
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79532057"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536610"
 ---
 # <a name="replicate-data-into-azure-database-for-mariadb"></a>Gegevens repliceren naar Azure Database for MariaDB
 
@@ -26,20 +26,20 @@ De belangrijkste scenario's voor het gebruik van Replicatie van inkomende gegeve
 ## <a name="limitations-and-considerations"></a>Beperkingen en overwegingen
 
 ### <a name="data-not-replicated"></a>Gegevens niet gerepliceerd
-De [*MySQL-systeem database*](https://mariadb.com/kb/en/library/the-mysql-database-tables/) op de hoofd server wordt niet gerepliceerd. Wijzigingen aan accounts en machtigingen op de hoofd server worden niet gerepliceerd. Als u een account op de master server maakt en dit account moet toegang hebben tot de replica server en vervolgens hand matig hetzelfde account maken op de replica server. Zie de [MariaDB-documentatie](https://mariadb.com/kb/en/library/the-mysql-database-tables/)voor meer informatie over de tabellen die zijn opgenomen in de systeem database.
+De [*MySQL-systeem database*](https://mariadb.com/kb/en/library/the-mysql-database-tables/) op de bron server wordt niet gerepliceerd. Wijzigingen van accounts en machtigingen op de bron server worden niet gerepliceerd. Als u een account op de bron server maakt en dit account moet toegang hebben tot de replica server en vervolgens hand matig hetzelfde account maken op de replica server. Zie de [MariaDB-documentatie](https://mariadb.com/kb/en/library/the-mysql-database-tables/)voor meer informatie over de tabellen die zijn opgenomen in de systeem database.
 
 ### <a name="requirements"></a>Vereisten
-- De versie van de hoofd server moet ten minste MariaDB-versie 10,2 zijn.
-- De versies van de hoofd-en replica server moeten hetzelfde zijn. Beide moeten bijvoorbeeld MariaDB versie 10,2 zijn.
+- De versie van de bron server moet ten minste MariaDB versie 10,2 zijn.
+- De bron-en replica server versie moeten gelijk zijn. Beide moeten bijvoorbeeld MariaDB versie 10,2 zijn.
 - Elke tabel moet een primaire sleutel hebben.
-- De hoofd server moet de InnoDB-engine gebruiken.
-- De gebruiker moet machtigingen hebben voor het configureren van binaire logboek registratie en het maken van nieuwe gebruikers op de hoofd server.
-- Als SSL is ingeschakeld op de master server, controleert u of het SSL-CA-certificaat dat is opgegeven voor het domein, is opgenomen in de `mariadb.az_replication_change_master` opgeslagen procedure. Raadpleeg de volgende [voor beelden](https://docs.microsoft.com/azure/mariadb/howto-data-in-replication#link-the-master-and-replica-servers-to-start-data-in-replication) en de `master_ssl_ca` para meter.
-- Zorg ervoor dat het IP-adres van de hoofdserver is toegevoegd aan de firewallregels van de Azure Database for MariaDB-replicaserver. Firewallregels bijwerken met de [Azure-portal](https://docs.microsoft.com/azure/mariadb/howto-manage-firewall-portal) of [Azure CLI](https://docs.microsoft.com/azure/mariadb/howto-manage-firewall-cli).
-- Zorg ervoor dat de computer waarop de hoofdserver wordt gehost zowel binnenkomend als uitgaand verkeer op poort 3306 toestaat.
-- Zorg ervoor dat de hoofd server een **openbaar IP-adres**heeft, dat de DNS openbaar toegankelijk is of een Fully QUALIFIED domain name (FQDN) heeft.
+- De bron server moet de InnoDB-engine gebruiken.
+- De gebruiker moet machtigingen hebben voor het configureren van binaire logboek registratie en het maken van nieuwe gebruikers op de bron server.
+- Als SSL is ingeschakeld op de bron server, moet u ervoor zorgen dat het SSL-CA-certificaat dat is opgegeven voor het domein, is opgenomen in de `mariadb.az_replication_change_master` opgeslagen procedure. Raadpleeg de volgende [voor beelden](https://docs.microsoft.com/azure/mariadb/howto-data-in-replication#link-the-master-and-replica-servers-to-start-data-in-replication) en de `master_ssl_ca` para meter.
+- Zorg ervoor dat het IP-adres van de bron server is toegevoegd aan de firewall regels van de Azure Database for MariaDB replica-server. Firewallregels bijwerken met de [Azure-portal](https://docs.microsoft.com/azure/mariadb/howto-manage-firewall-portal) of [Azure CLI](https://docs.microsoft.com/azure/mariadb/howto-manage-firewall-cli).
+- Zorg ervoor dat de computer die de bron server host, zowel binnenkomend als uitgaand verkeer op poort 3306 toestaat.
+- Controleer of de bron server een **openbaar IP-adres**heeft, of de DNS openbaar toegankelijk is of een Fully QUALIFIED domain name (FQDN) heeft.
 
-### <a name="other"></a>Overig
+### <a name="other"></a>Anders
 - Replicatie van gegevens wordt alleen ondersteund in de Algemeen en de prijs categorieën die zijn geoptimaliseerd voor geheugen.
 
 ## <a name="next-steps"></a>Volgende stappen

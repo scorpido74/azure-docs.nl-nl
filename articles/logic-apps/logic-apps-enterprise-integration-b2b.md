@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/10/2020
-ms.openlocfilehash: 2fd96777a5fe74d44aeed5f6de82e54b2663a024
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: afae49cf6ee44b138a55f58f415fc761308b7894
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090379"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542373"
 ---
 # <a name="receive-and-confirm--b2b-as2-messages-by-using-azure-logic-apps-and-enterprise-integration-pack"></a>B2B AS2-berichten ontvangen en bevestigen met behulp van Azure Logic Apps en Enterprise Integration Pack
 
@@ -63,7 +63,7 @@ In dit voor beeld wordt de Logic app designer in de Azure Portal gebruikt, maar 
 
 Voeg nu de B2B-acties toe die u wilt gebruiken. In dit voor beeld worden AS2-en X12-acties gebruikt.
 
-1. Selecteer **nieuwe stap**onder de trigger. Als u de details van de trigger wilt verbergen, klikt u op de titel balk van de trigger.
+1. Selecteer onder de trigger de optie **Nieuwe stap**. Als u de details van de trigger wilt verbergen, klikt u op de titel balk van de trigger.
 
    ![Nog een stap toevoegen aan de werk stroom van uw logische app](./media/logic-apps-enterprise-integration-b2b/add-new-action-under-trigger.png)
 
@@ -111,7 +111,7 @@ Als u de handels partner wilt melden dat het bericht is ontvangen, kunt u een an
 
    De vorm van de voor waarde wordt nu weer gegeven, met inbegrip van de paden voor of aan de voor waarde wordt voldaan of niet.
 
-   ![Vorm van voor waarde met beslissings paden](./media/logic-apps-enterprise-integration-b2b/added-condition-action.png)
+   ![Scherm afbeelding toont de voorwaarde vorm met lege paden.](./media/logic-apps-enterprise-integration-b2b/added-condition-action.png)
 
 1. Geef nu de voor waarde op die moet worden geëvalueerd. Voer in het vak **een waarde kiezen** de volgende expressie in:
 
@@ -119,7 +119,7 @@ Als u de handels partner wilt melden dat het bericht is ontvangen, kunt u een an
 
    Controleer in het middelste vak of de vergelijkings bewerking is ingesteld op `is equal to` . Voer in het vak aan de rechter kant de waarde in `Expected` . Als u de expressie wilt ophalen die als dit token moet worden omgezet, schakelt u tussen de ontwerp functie en de code weergave.
 
-   ![Vorm van voor waarde met beslissings paden](./media/logic-apps-enterprise-integration-b2b/expression-for-evaluating-condition.png)
+   ![Scherm afbeelding toont de voor waarde waaraan een voor waarde is toegevoegd.](./media/logic-apps-enterprise-integration-b2b/expression-for-evaluating-condition.png)
 
 1. Geef nu de antwoorden op om te retour neren of de **AS2-Decoderings** actie slaagt of niet.
 

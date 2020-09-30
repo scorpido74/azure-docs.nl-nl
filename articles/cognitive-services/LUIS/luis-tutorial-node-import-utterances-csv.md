@@ -3,20 +3,18 @@ title: Uitingen importeren met behulp van Node.js-LUIS
 titleSuffix: Azure Cognitive Services
 description: Meer informatie over het maken van een LUIS-app via een programma vanuit bestaande gegevens in CSV-indeling met behulp van de LUIS authoring API.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18, devx-track-js
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/05/2019
-ms.author: diberry
-ms.openlocfilehash: 13e18e024c2200459e58474f53bed2431e3375a7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 58eb92f4d0bc3de4671ca2ece14a178a876e4a6b
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91298220"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541035"
 ---
 # <a name="build-a-luis-app-programmatically-using-nodejs"></a>Een LUIS-app bouwen via een programma met Node.js
 
@@ -27,7 +25,7 @@ LUIS biedt een programmatische API die alles doet wat de [Luis](luis-reference-r
 ## <a name="prerequisites"></a>Vereisten
 
 * Meld u aan bij de [Luis](luis-reference-regions.md) -website en zoek uw [ontwerp sleutel](luis-how-to-azure-subscription.md#authoring-key) in de account instellingen. U gebruikt deze sleutel om de ontwerp-Api's aan te roepen.
-* Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/cognitive-services/) aan voordat u begint.
+* Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/cognitive-services/) voordat u begint.
 * Dit artikel begint met een CSV voor een hypothetische logboek bestanden van gebruikers aanvragen van een bedrijf. Down load deze [hier](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/IoT.csv).
 * Installeer de nieuwste Node.js met NPM. U kunt het [hier](https://nodejs.org/en/download/) downloaden.
 * **[Aanbevolen]** Visual Studio [code voor IntelliSense](https://code.visualstudio.com/) en fout opsporing kunt u deze gratis downloaden.
@@ -191,7 +189,7 @@ Zodra het script is voltooid, kunt u zich aanmelden bij [Luis](luis-reference-re
 > [!div class="nextstepaction"]
 > [Uw app testen en trainen op LUIS-website](luis-interactive-test.md)
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 Deze voorbeeld toepassing maakt gebruik van de volgende LUIS-Api's:
 - [app maken](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c36)

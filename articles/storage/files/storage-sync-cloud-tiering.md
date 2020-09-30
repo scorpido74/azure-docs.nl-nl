@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9df06a9d81ef3c9fbe3380bab88325a586981db9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5ca65a428af02eaf5ae6ac461006c720da4461bd
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329309"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538177"
 ---
 # <a name="cloud-tiering-overview"></a>Overzicht van Cloud lagen
 Cloud lagen is een optionele functie van Azure File Sync waarbij veelgebruikte bestanden lokaal op de server worden opgeslagen in de cache, terwijl alle andere bestanden worden gelaagd op Azure Files op basis van beleids instellingen. Wanneer een bestand wordt getierd, wordt het bestand door de Azure File Sync File System filter (StorageSync.sys) lokaal vervangen door een aanwijzer of een reparsepunt. Het reparsepunt vertegenwoordigt een URL naar het bestand in Azure Files. Een gelaagd bestand heeft zowel het kenmerk ' offline ' als het kenmerk FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS in NTFS ingesteld, zodat toepassingen van derden veilig gelaagde bestanden kunnen identificeren.
@@ -40,7 +40,7 @@ Cloud lagen zijn niet afhankelijk van de NTFS-functie voor het bijhouden van de 
 <a id="tiering-minimum-file-size"></a>
 ### <a name="what-is-the-minimum-file-size-for-a-file-to-tier"></a>Wat is de minimale bestands grootte voor een bestand dat moet worden gelaagd?
 
-Voor agent versies 12 en hoger is de minimale bestands grootte voor een bestand op laag gebaseerd op de grootte van het bestandssysteem cluster. De minimale bestands grootte die in aanmerking komt voor Cloud lagen, wordt berekend door 2x de cluster grootte en ten minste 8 KB. In de volgende tabel ziet u de minimale bestands grootte die kan worden getierd op basis van de grootte van het volume cluster:
+Voor Agent versie 9 en hoger is de minimale bestands grootte voor een bestand op laag gebaseerd op de grootte van het bestandssysteem cluster. De minimale bestands grootte die in aanmerking komt voor Cloud lagen, wordt berekend door 2x de cluster grootte en ten minste 8 KB. In de volgende tabel ziet u de minimale bestands grootte die kan worden getierd op basis van de grootte van het volume cluster:
 
 |Volume cluster grootte (bytes) |Bestanden van deze grootte of groter kunnen worden getierd  |
 |----------------------------|---------|
@@ -50,7 +50,7 @@ Voor agent versies 12 en hoger is de minimale bestands grootte voor een bestand 
 |32 KB (32768)               | 64 kB   |
 |64 KB (65536) en groter    | 128 kB  |
 
-Met Windows Server 2019 en Azure File Sync agent versie 12 en hoger, worden cluster groottes tot 2 MB ook ondersteund en wordt het trapsgewijs scha kelen van de grotere cluster grootten op dezelfde manier. Oudere versies van het besturings systeem of de agent ondersteunen cluster grootten tot 64 KB, maar dit is niet het geval bij het werken met Cloud lagen.
+Met Windows Server 2019 en Azure File Sync agent versie 12 (toekomstige agent versie) worden cluster grootten tot 2 MB ook ondersteund en wordt het trapsgewijs scha kelen van de grotere cluster grootten op dezelfde manier uitgevoerd. Oudere versies van het besturings systeem of de agent ondersteunen cluster grootten tot 64 KB, maar dit is niet het geval bij het werken met Cloud lagen.
 
 Alle bestands systemen die worden gebruikt door Windows, organiseren de vaste schijf op basis van de cluster grootte (ook wel bekend als Allocation Unit Size). Cluster grootte vertegenwoordigt de kleinste hoeveelheid schijf ruimte die kan worden gebruikt om een bestand te bewaren. Wanneer de bestands grootte niet van een even veelvoud van de cluster grootte komt, moet er extra ruimte worden gebruikt om het bestand op te slaan op het volgende veelvoud van de cluster grootte.
 

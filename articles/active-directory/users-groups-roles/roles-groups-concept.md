@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c3143dac79b37ff6dac04856311394440dec9a1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c6c39fd6ceb9e5623d2b857ce8196ef29e73d78a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91317409"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542305"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>Cloud groepen gebruiken voor het beheren van roltoewijzingen in Azure Active Directory (preview-versie)
 
@@ -58,7 +58,6 @@ De volgende scenario's worden momenteel niet ondersteund:
 
 ## <a name="known-issues"></a>Bekende problemen
 
-- U kunt een dynamische groep niet maken of wijzigen wanneer de rol is toegewezen via een groep.
 - De functie **gefaseerde implementatie voor beheerde gebruikers aanmelding inschakelen** biedt geen ondersteuning voor toewijzing via groep.
 - *Alleen klanten met een licentie voor Azure AD P2*: wijs een groep niet als actief toe aan een rol via Azure ad en PRIVILEGED Identity Management (PIM). Wijs met name geen rol toe aan een door de gebruiker toewijs bare groep wanneer deze wordt gemaakt *en* wijs later met Pim een rol aan de groep toe. Dit leidt tot problemen waar gebruikers hun actieve roltoewijzingen niet kunnen zien in de PIM, en de mogelijkheid tot het verwijderen van die PIM-toewijzing. In dit scenario worden in aanmerking komende toewijzingen niet beïnvloed. Als u probeert deze toewijzing te maken, ziet u mogelijk onverwacht gedrag zoals:
   - De eind tijd voor de roltoewijzing kan onjuist worden weer gegeven.

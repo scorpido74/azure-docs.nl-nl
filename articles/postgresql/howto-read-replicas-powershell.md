@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0caa8e2911046e18e63748fe5bde4b4c965eb965
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: b57fe5879c45225f8ba22e2c94aceeb5b38369e3
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502530"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539432"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-postgresql-using-powershell"></a>Lees replica's maken en beheren in Azure Database for PostgreSQL met behulp van Power shell
 
@@ -30,17 +30,17 @@ U hebt het volgende nodig om deze hand leiding te volt ooien:
 - Een [Azure database for postgresql server](quickstart-create-postgresql-server-database-using-azure-powershell.md)
 
 > [!IMPORTANT]
-> Hoewel de Az.PostgreSql PowerShell-module in preview is, moet u deze afzonderlijk van de Az PowerShell-module installeren met behulp van de volgende opdracht: `Install-Module -Name Az.PostgreSql -AllowPrerelease`.
-> Zodra de Az.PostgreSql PowerShell-module algemeen beschikbaar is, wordt deze onderdeel van toekomstige releases van Az PowerShell-modules en is de module systeemeigen beschikbaar vanuit Azure Cloud Shell.
+> Hoewel de PowerShell-module Az.PostgreSql in preview is, moet u deze afzonderlijk van de PowerShell-module Az installeren met behulp van de volgende opdracht: `Install-Module -Name Az.PostgreSql -AllowPrerelease`.
+> Zodra de PowerShell-module Az.PostgreSql algemeen beschikbaar is, wordt deze onderdeel van toekomstige releases van Az PowerShell en is de module systeemeigen beschikbaar vanuit Azure Cloud Shell.
 
 Als u Power shell lokaal wilt gebruiken, maakt u verbinding met uw Azure-account met behulp van de cmdlet [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) .
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 > [!IMPORTANT]
-> De functie voor het lezen van replica's is alleen beschikbaar voor Azure Database for PostgreSQL-servers in de prijs Categorieën Algemeen of geoptimaliseerd voor geheugen. Zorg ervoor dat de hoofd server zich in een van deze prijs categorieën bevindt.
+> De functie voor het lezen van replica's is alleen beschikbaar voor Azure Database for PostgreSQL-servers in de prijs Categorieën Algemeen of geoptimaliseerd voor geheugen. Zorg ervoor dat de primaire server zich in een van deze prijs categorieën bevindt.
 
-### <a name="create-a-read-replica"></a>Een lees replica maken
+### <a name="create-a-read-replica"></a>Een leesreplica maken
 
 Een lees replica-server kan worden gemaakt met behulp van de volgende opdracht:
 
@@ -54,7 +54,7 @@ Voor de `New-AzPostgreSqlServerReplica` opdracht zijn de volgende para meters ve
 | Instelling | Voorbeeldwaarde | Beschrijving  |
 | --- | --- | --- |
 | ResourceGroupName |  myResourceGroup |  De resource groep waar de replica-server is gemaakt.  |
-| Name | mydemoreplicaserver | De naam van de nieuwe replica server die wordt gemaakt. |
+| Naam | mydemoreplicaserver | De naam van de nieuwe replica server die wordt gemaakt. |
 
 Gebruik de **locatie** parameter om een lees replica te maken. In het volgende voor beeld wordt een replica gemaakt in de regio **VS-West** .
 
@@ -65,14 +65,14 @@ Get-AzPostgreSqlServer -Name mrdemoserver -ResourceGroupName myresourcegroup |
 
 Ga naar het [artikel concepten van replica's lezen](concepts-read-replicas.md)voor meer informatie over de regio's die u kunt maken in de replica.
 
-Lees replica's worden standaard gemaakt met dezelfde server configuratie als de Master, tenzij de **SKU** -para meter is opgegeven.
+Lees replica's worden standaard gemaakt met dezelfde server configuratie als de primaire, tenzij de **SKU** -para meter is opgegeven.
 
 > [!NOTE]
-> Het is raadzaam om de configuratie van de replica server te behouden in gelijke of hogere waarden dan de Master om ervoor te zorgen dat de replica kan blijven werken met de Master.
+> Het is raadzaam om de configuratie van de replica server te behouden met gelijke of hogere waarden dan de primaire waarde om ervoor te zorgen dat de replica kan blijven werken met de Master.
 
-### <a name="list-replicas-for-a-master-server"></a>Replica's voor een hoofd server weer geven
+### <a name="list-replicas-for-a-primary-server"></a>Replica's weer geven voor een primaire server
 
-Als u alle replica's voor een bepaalde hoofd server wilt weer geven, voert u de volgende opdracht uit:
+Voer de volgende opdracht uit om alle replica's voor een bepaalde primaire server weer te geven:
 
 ```azurepowershell-interactive
 Get-AzMariaDReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
@@ -83,7 +83,7 @@ Voor de `Get-AzMariaDReplica` opdracht zijn de volgende para meters vereist:
 | Instelling | Voorbeeldwaarde | Beschrijving  |
 | --- | --- | --- |
 | ResourceGroupName |  myResourceGroup |  De resource groep waar de replica-server wordt gemaakt.  |
-| ServerName | mydemoserver | De naam of ID van de hoofd server. |
+| ServerName | mydemoserver | De naam of ID van de primaire server. |
 
 ### <a name="delete-a-replica-server"></a>Een replica server verwijderen
 
@@ -93,12 +93,12 @@ Het verwijderen van een lees replica-server kan worden uitgevoerd door de cmdlet
 Remove-AzPostgreSqlServer -Name mydemoreplicaserver -ResourceGroupName myresourcegroup
 ```
 
-### <a name="delete-a-master-server"></a>Een hoofd server verwijderen
+### <a name="delete-a-primary-server"></a>Een primaire server verwijderen
 
 > [!IMPORTANT]
-> Als u een hoofdserver verwijdert, wordt de replicatie naar alle replicaservers gestopt en wordt de hoofdserver zelf verwijderd. Replicaservers worden zelfstandige servers die nu zowel lees-als schrijfbewerkingen ondersteunen.
+> Als u een primaire server verwijdert, wordt de replicatie naar alle replica servers gestopt en wordt de primaire server zelf verwijderd. Replicaservers worden zelfstandige servers die nu zowel lees-als schrijfbewerkingen ondersteunen.
 
-Als u een master server wilt verwijderen, kunt u de `Remove-AzPostgreSqlServer` cmdlet uitvoeren.
+Als u een primaire server wilt verwijderen, kunt u de `Remove-AzPostgreSqlServer` cmdlet uitvoeren.
 
 ```azurepowershell-interactive
 Remove-AzPostgreSqlServer -Name mydemoserver -ResourceGroupName myresourcegroup

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 6/10/2020
-ms.openlocfilehash: 075c8b2670121e7d493d0d99397961155fd0de4b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a46c2024269affc06d18806aa186fb8b0feaafe
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736561"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533754"
 ---
 # <a name="incrementally-copy-new-files-based-on-time-partitioned-file-name-by-using-the-copy-data-tool"></a>Kopieer incrementeel nieuwe bestanden op basis van een gepartitioneerde bestands naam met behulp van het Gegevens kopiëren-hulp programma
 
@@ -39,7 +39,7 @@ In deze zelfstudie voert u de volgende stappen uit:
 ## <a name="prerequisites"></a>Vereisten
 
 * **Azure-abonnement**: Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
-* **Azure-opslag account**: Blob Storage gebruiken als _bron_ -en _sink_ -gegevens archief. Als u geen Azure Storage-account hebt, raadpleegt u de instructies in [een opslag account maken](../storage/common/storage-account-create.md).
+* **Azure-opslag account**: Blob Storage gebruiken als _bron_  -en _sink_ -gegevens archief. Als u geen Azure Storage-account hebt, raadpleegt u de instructies in [een opslag account maken](../storage/common/storage-account-create.md).
 
 ### <a name="create-two-containers-in-blob-storage"></a>Twee containers maken in Blob Storage
 
@@ -101,7 +101,7 @@ Bereid de Blob-opslag voor op de zelf studie door de volgende stappen uit te voe
 
     d. Voer **1 uur**in onder **terugkeer patroon**.
 
-    e. Selecteer **Volgende**.
+    e. Selecteer **Next**.
 
     De gebruikersinterface van Data Factory maakt een pijplijn met de opgegeven taaknaam.
 
@@ -122,13 +122,13 @@ Bereid de Blob-opslag voor op de zelf studie door de volgende stappen uit te voe
 
     a. Blader en selecteer de **bron** container en selecteer vervolgens **kiezen**.
 
-    ![Kies het invoerbestand of invoermap.](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/choose-input-file-folder.png)
+    ![Scherm afbeelding toont het dialoog venster invoer bestand of-map kiezen.](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/choose-input-file-folder.png)
 
     b. Selecteer bij **gedrag bij het laden van bestanden**de optie **Incrementeel laden: gepartitioneerde map/bestands namen**.
 
     c. Schrijf het pad naar de dynamische map als **bron/{Year}/{maand}/{Day}/{Hour}/** en wijzig de notatie zoals weer gegeven in de volgende scherm afbeelding. Controleer de **binaire kopie** en klik op **volgende**.
 
-    ![Kies het invoerbestand of invoermap.](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/check-binary-copy.png)     
+    ![Scherm afbeelding toont het dialoog venster invoer bestand of-map kiezen met een geselecteerde map.](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/check-binary-copy.png)     
 
 5. Selecteer op de pagina **doel gegevens archief** de **AzureBlobStorage**, die hetzelfde opslag account als gegevens bron archief is, en klik vervolgens op **volgende**.
 
@@ -139,11 +139,11 @@ Bereid de Blob-opslag voor op de zelf studie door de volgende stappen uit te voe
 
     b. Schrijf het pad naar de dynamische map als **doel/{Year}/{maand}/{Day}/{Hour}/** en wijzig de notatie als volgt:
 
-    ![Het uitvoerbestand of de uitvoermap kiezen](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/output-file-name.png)
+    ![Scherm afbeelding toont het dialoog venster uitvoer bestand of-map kiezen.](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/output-file-name.png)
 
     c. Klik op **Volgende**.
 
-    ![Het uitvoerbestand of de uitvoermap kiezen](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/click-next-after-output-folder.png)
+    ![Scherm afbeelding toont het dialoog venster uitvoer bestand of-map kiezen met de volgende selectie.](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/click-next-after-output-folder.png)
 7. Selecteer op de pagina **Instellingen** de optie **Volgende**.
 
 8. Bekijk op de **Overzichtspagina** de waarden voor alle instellingen en selecteer vervolgens **Volgende**.
@@ -155,14 +155,14 @@ Bereid de Blob-opslag voor op de zelf studie door de volgende stappen uit te voe
 
 10. U ziet dat het tabblad **Controleren** aan de linkerkant automatisch wordt geselecteerd.  U moet wachten op de uitvoering van de pijp lijn wanneer deze automatisch wordt geactiveerd (ongeveer na één uur). Wanneer deze wordt uitgevoerd, klikt u op de pijplijn naam koppeling **DeltaCopyFromBlobPipeline** om de details van de activiteit weer te geven of de pijp lijn opnieuw uit te voeren. Selecteer **Vernieuwen** om de lijst te vernieuwen.
 
-    ![Pijplijnuitvoeringen controleren](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs-1.png)
-11. Omdat er slechts één activiteit (kopieeractiviteit) in de pijplijn is, ziet u slechts één vermelding in de lijst. De kolom breedte van de **bron** -en **doel** kolommen aanpassen (indien nodig) als u meer informatie wilt weer geven, kunt u zien dat het bron bestand (file1.txt) is gekopieerd van *bron/2020/03/17/03/* naar *doel/2020/03/17/03* /met dezelfde bestands naam. 
+    ![Scherm afbeelding toont het deel venster pijplijn uitvoeringen.](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs-1.png)
+11. Omdat er slechts één activiteit (kopieeractiviteit) in de pijplijn is, ziet u slechts één vermelding in de lijst. De kolom breedte van de **bron** -en **doel** kolommen aanpassen (indien nodig) als u meer informatie wilt weer geven, kunt u zien dat het bron bestand (file1.txt) is gekopieerd van  *bron/2020/03/17/03/* naar *doel/2020/03/17/03* /met dezelfde bestands naam. 
 
-    ![Pijplijnuitvoeringen controleren](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs2.png)
+    ![Scherm opname toont details van de pijplijn uitvoering.](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs2.png)
 
     U kunt hetzelfde ook controleren met behulp van Azure Storage Explorer ( https://storageexplorer.com/) om de bestanden te scannen.
 
-    ![Pijplijnuitvoeringen controleren](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs3.png)
+    ![Scherm afbeelding toont details van de pijplijn uitvoering voor het doel.](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs3.png)
 
 12. Maak nog een leeg tekst bestand met de nieuwe naam als **file2.txt**. Upload het file2.txt bestand naar het pad naar de map **Source/2020/03/17/04** in uw opslag account. U kunt verschillende hulpprogramma's gebruiken om deze taken uit te voeren, zoals [Azure Storage Explorer](https://storageexplorer.com/).
 
@@ -171,9 +171,9 @@ Bereid de Blob-opslag voor op de zelf studie door de volgende stappen uit te voe
 
 13. Als u wilt terugkeren naar de weer gave **pijplijn uitvoeringen** , selecteert u **alle pijp lijnen worden uitgevoerd**en wacht u tot dezelfde pijp lijn opnieuw wordt geactiveerd na een uur.  
 
-    ![Pijplijnuitvoeringen controleren](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs5.png)
+    ![Scherm afbeelding toont de koppeling alle pijplijn uitvoeringen om terug te gaan naar die pagina.](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs5.png)
 
-14. Selecteer de nieuwe **DeltaCopyFromBlobPipeline** -koppeling voor de tweede pijplijn uitvoering wanneer deze wordt geleverd en doe hetzelfde om de details te bekijken. U ziet dat het bron bestand (file2.txt) is gekopieerd van **bron/2020/03/17/04/** naar **doel/2020/03/17/04** /met dezelfde bestands naam. U kunt hetzelfde ook controleren met behulp van Azure Storage Explorer ( https://storageexplorer.com/) de bestanden in de **doel** container scannen.
+14. Selecteer de nieuwe **DeltaCopyFromBlobPipeline** -koppeling voor de tweede pijplijn uitvoering wanneer deze wordt geleverd en doe hetzelfde om de details te bekijken. U ziet dat het bron bestand (file2.txt) is gekopieerd van  **bron/2020/03/17/04/**  naar **doel/2020/03/17/04** /met dezelfde bestands naam. U kunt hetzelfde ook controleren met behulp van Azure Storage Explorer ( https://storageexplorer.com/) de bestanden in de **doel** container scannen.
 
 
 ## <a name="next-steps"></a>Volgende stappen
