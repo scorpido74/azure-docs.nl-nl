@@ -7,12 +7,12 @@ ms.date: 07/23/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 9752589c8863cc911369225d268035d9f61c0273
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 165f83e0f021d23c26333a294ffe992838bda6b0
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032024"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577710"
 ---
 # <a name="use-iot-plug-and-play-models-in-an-iot-solution"></a>IoT Plug en Play-modellen gebruiken in een IoT-oplossing
 
@@ -26,7 +26,7 @@ Er zijn twee algemene categorieën van een IoT-oplossing:
 
 Voor het gebruik van een IoT Plug en Play model, een IoT-oplossing:
 
-1. Hiermee wordt de model-ID aangegeven van het model dat is geïmplementeerd door de IoT-Plug en Play apparaat dat met de oplossing is verbonden.
+1. Hiermee wordt de model-ID aangegeven van het model dat is geïmplementeerd door de IoT-Plug en Play apparaat, module of IoT Edge module die met de oplossing is verbonden.
 
 1. Maakt gebruik van de model-ID voor het ophalen van de model definitie van het verbonden apparaat vanuit een model opslagplaats of aangepaste opslag.
 
@@ -40,7 +40,10 @@ Een oplossing kan de model-ID van de IoT-Plug en Play apparaat verkrijgen door e
 
 ### <a name="get-device-twin-api"></a>Dubbele API voor apparaat ophalen
 
-De oplossing kan gebruikmaken van de [dubbele API Get-apparaat](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.deviceclient.getdevicetwin?view=azure-java-stable) om de model-id van de IoT-Plug en Play apparaat op te halen.
+De oplossing kan gebruikmaken van de [dubbele API Get-apparaat](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.deviceclient.getdevicetwin?view=azure-java-stable&preserve-view=true) om de model-id van de IoT-Plug en Play apparaat op te halen.
+
+> [!TIP]
+> Gebruik [ModuleClient. getTwin](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient.gettwin?view=azure-java-stable&preserve-view=true)voor modules en IOT Edge modules.
 
 In het volgende dubbele reactie fragment `modelId` van een apparaat bevat de model-id van een IOT-Plug en Play apparaat:
 

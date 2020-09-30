@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 1484c4bf17d5f437d681e32559b7e6ed4115f5f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a48b30d83e3e7e1667552d107cb457e49494c575
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515129"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578509"
 ---
 # <a name="register-data-from-azure-data-lake-storage-gen1-in-azure-data-catalog"></a>Gegevens van Azure Data Lake Storage Gen1 in Azure Data Catalog registreren
 In dit artikel leert u hoe u Azure Data Lake Storage Gen1 integreert met Azure Data Catalog, zodat uw gegevens binnen een organisatie kunnen worden gedetecteerd door deze te integreren met Data Catalog. Zie [Azure Data Catalog](../data-catalog/data-catalog-what-is-data-catalog.md)voor meer informatie over het catalogiseren van gegevens. Zie [Azure Data Catalog algemene scenario's](../data-catalog/data-catalog-common-scenarios.md)voor meer informatie over scenario's waarin u Data Catalog kunt gebruiken.
@@ -40,7 +40,7 @@ Voordat u met deze zelfstudie begint, moet u het volgende hebben of hebben gedaa
     ![Welkomstscherm](./media/data-lake-store-with-data-catalog/welcome.screen.png "Welkomstscherm")
 1. Selecteer **Azure data Lake Store**op de pagina een gegevens bron selecteren en klik vervolgens op **volgende**.
 
-    ![Gegevens bron selecteren](./media/data-lake-store-with-data-catalog/select-source.png "Gegevensbron selecteren")
+    ![Gegevensbron selecteren](./media/data-lake-store-with-data-catalog/select-source.png "Gegevensbron selecteren")
 1. Geef op de volgende pagina de Data Lake Storage Gen1-account naam op die u wilt registreren in Data Catalog. Wijzig de andere opties als standaard en klik vervolgens op **verbinding maken**.
 
     ![Verbinding maken met gegevensbron](./media/data-lake-store-with-data-catalog/connect-to-source.png "Verbinding maken met gegevensbron")
@@ -52,12 +52,12 @@ Voordat u met deze zelfstudie begint, moet u het volgende hebben of hebben gedaa
 
     c. In het vak objecten die moeten **worden geregistreerd** worden de bestanden en mappen vermeld die u wilt registreren in azure Data Catalog.
 
-    ![Gegevens structuur weer geven](./media/data-lake-store-with-data-catalog/view-data-structure.png "Gegevens structuur weer geven")
+    ![Scherm afbeelding van het dialoog venster Microsoft Azure Data Catalog-opslag account.](./media/data-lake-store-with-data-catalog/view-data-structure.png "Gegevens structuur weer geven")
 1. Voor deze zelf studie moet u alle bestanden in de map registreren. Klik hiervoor op de knop (![objecten verplaatsen](./media/data-lake-store-with-data-catalog/move-objects.png "Objecten verplaatsen")) om alle bestanden te verplaatsen naar objecten die moeten **worden geregistreerd** .
 
     Omdat de gegevens worden geregistreerd in een organisatie-brede Data Catalog, is het een aanbevolen benadering om enkele meta gegevens toe te voegen die u later kunt gebruiken om snel de gegevens te vinden. U kunt bijvoorbeeld een e-mail adres toevoegen voor de gegevens eigenaar (bijvoorbeeld een persoon die de gegevens uploadt) of een tag toevoegen om de gegevens te identificeren. In de onderstaande scherm afbeelding ziet u een label die u aan de gegevens toevoegt.
 
-    ![Gegevens structuur weer geven](./media/data-lake-store-with-data-catalog/view-selected-data-structure.png "Gegevens structuur weer geven")
+    ![Scherm afbeelding van het dialoog venster Microsoft Azure Data Catalog opslag account met het label dat is toegevoegd aan de gegevens.](./media/data-lake-store-with-data-catalog/view-selected-data-structure.png "Gegevens structuur weer geven")
 
     Klik op **Registreren**.
 1. In de volgende scherm opname wordt aangegeven dat de gegevens zijn geregistreerd in de Data Catalog.
@@ -71,7 +71,7 @@ Voordat u met deze zelfstudie begint, moet u het volgende hebben of hebben gedaa
     * [Aantekeningen toevoegen aan gegevens bronnen in Data Catalog](../data-catalog/data-catalog-how-to-annotate.md)
     * [Gegevens bronnen documenteren in Data Catalog](../data-catalog/data-catalog-how-to-documentation.md)
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 * [Aantekeningen toevoegen aan gegevens bronnen in Data Catalog](../data-catalog/data-catalog-how-to-annotate.md)
 * [Gegevens bronnen documenteren in Data Catalog](../data-catalog/data-catalog-how-to-documentation.md)
 * [Data Lake Storage Gen1 integreren met andere Azure-Services](data-lake-store-integrate-with-other-services.md)

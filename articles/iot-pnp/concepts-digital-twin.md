@@ -1,18 +1,18 @@
 ---
 title: Meer informatie over IoT Plug en Play Digital apparaatdubbels
-description: Meer informatie over hoe IoT Plug en Play preview gebruikmaakt van Digital apparaatdubbels
+description: Meer informatie over hoe IoT Plug en Play gebruikmaakt van digitale apparaatdubbels
 author: prashmo
 ms.author: prashmo
 ms.date: 07/17/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 1908abfb3d0ea20c69a68344d54076c6760e9e63
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 5d5ffe4e7d92530f18e278382ab3637c3326e57c
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352272"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578050"
 ---
 # <a name="understand-iot-plug-and-play-digital-twins"></a>Meer informatie over IoT Plug en Play Digital apparaatdubbels
 
@@ -34,7 +34,7 @@ Digitale dubbele Api's worden toegepast op hoogwaardige constructies in de Digit
 
 In een dubbele apparaat wordt de status van een Beschrijf bare eigenschap gesplitst over de gewenste en gerapporteerde secties. Alle alleen-lezen eigenschappen zijn beschikbaar in de gerapporteerde sectie.
 
-In een digitale twee, een uniforme weer gave van de huidige en gewenste status van de eigenschap. De synchronisatie status voor een bepaalde eigenschap wordt opgeslagen in het bijbehorende gedeelte op hoofd niveau of onderdeel `$metadata` .
+In een digitale twee, een uniforme weer gave van de huidige en gewenste status van de eigenschap. De synchronisatie status voor een bepaalde eigenschap wordt opgeslagen in de sectie met de bijbehorende standaard onderdelen `$metadata` .
 
 ### <a name="digital-twin-json-format"></a>Digitale dubbele JSON-indeling
 
@@ -51,9 +51,9 @@ Wanneer het wordt weer gegeven als een JSON-object, bevat een digitaal twee de v
 | `$metadata.{propertyName}.ackCode` | [Vereist, alleen voor Beschrijf bare eigenschappen] De `ack` code die wordt geretourneerd door de apparaat-app die de digitale-twee implementeert |
 | `$metadata.{propertyName}.ackDescription` | [Optioneel, alleen voor Beschrijf bare eigenschappen] De `ack` beschrijving die wordt geretourneerd door de apparaat-app die de digitale-twee implementeert |
 | `$metadata.{propertyName}.lastUpdateTime` | IoT Hub behoudt de tijds tempel van de laatste update van de eigenschap door het apparaat. De tijds tempels zijn in UTC en worden gecodeerd in de ISO8601-indeling JJJJ-MM-DDTUU: MM: SS. mmmZ |
-| `{componentName}` | Een JSON-object dat de eigenschaps waarden en meta gegevens van de component bevat, vergelijkbaar met een hoofd object. |
+| `{componentName}` | Een JSON-object dat de eigenschaps waarden en meta gegevens van de component bevat. |
 | `{componentName}.{propertyName}` | De waarde van de eigenschap van het onderdeel in JSON |
-| `{componentName}.$metadata` | De meta gegevens voor het onderdeel, vergelijkbaar met het hoofd niveau`$metadata` |
+| `{componentName}.$metadata` | De meta gegevens voor het onderdeel. |
 
 #### <a name="device-twin-sample"></a>Dubbele voor beeld van apparaat
 
@@ -131,7 +131,7 @@ Eigenschappen zijn gegevens velden die de status van een entiteit vertegenwoordi
 
 #### <a name="read-only-property"></a>Alleen-lezen eigenschap
 
-Schema
+Schema:
 
 ```json
 {
@@ -171,7 +171,7 @@ De volgende fragmenten tonen de side-by-side JSON-weer gave van de `serialNumber
 
 #### <a name="writable-property"></a>Beschrijf bare eigenschap
 
-Het is ook mogelijk dat het apparaat de volgende Beschrijf bare eigenschap op hoofd niveau heeft:
+Het is ook mogelijk dat het apparaat de volgende Beschrijf bare eigenschap in het standaard onderdeel heeft:
 
 ```json
 {
@@ -228,7 +228,7 @@ Het is ook mogelijk dat het apparaat de volgende Beschrijf bare eigenschap op ho
    :::column-end:::
 :::row-end:::
 
-In dit voor beeld `3.0` is de huidige waarde van de `fanSpeed` eigenschap die wordt gerapporteerd door het apparaat. `2.0`is de gewenste waarde die is ingesteld door de oplossing. De gewenste waarde en synchronisatie status van een eigenschap op hoofd niveau worden ingesteld in het hoofd niveau `$metadata` voor een digitale dubbele. Als het apparaat online is, kan het deze update Toep assen en de bijgewerkte waarde rapporteren.
+In dit voor beeld `3.0` is de huidige waarde van de `fanSpeed` eigenschap die wordt gerapporteerd door het apparaat. `2.0` is de gewenste waarde die is ingesteld door de oplossing. De gewenste waarde en synchronisatie status van een eigenschap op hoofd niveau worden ingesteld in het hoofd niveau `$metadata` voor een digitale dubbele. Als het apparaat online is, kan het deze update Toep assen en de bijgewerkte waarde rapporteren.
 
 ### <a name="components"></a>Onderdelen
 
@@ -240,8 +240,8 @@ In een dubbele apparaat wordt een onderdeel aangeduid met de `{ "__t": "c"}` mar
 
 In dit voor beeld `thermostat1` is dit een onderdeel met twee eigenschappen:
 
-- `maxTempSinceLastReboot`is een alleen-lezen eigenschap.
-- `targetTemperature`is een schrijf bare eigenschap die door het apparaat is gesynchroniseerd. De gewenste waarde en synchronisatie status van deze eigenschappen bevinden zich in het onderdeel `$metadata` .
+- `maxTempSinceLastReboot` is een alleen-lezen eigenschap.
+- `targetTemperature` is een schrijf bare eigenschap die door het apparaat is gesynchroniseerd. De gewenste waarde en synchronisatie status van deze eigenschappen bevinden zich in het onderdeel `$metadata` .
 
 De volgende fragmenten tonen de side-by-side JSON-weer gave van het `thermostat1` onderdeel:
 
@@ -374,11 +374,14 @@ content-encoding:utf-8
 ]
 ```
 
+> [!NOTE]
+> Dubbele wijzigings meldings berichten worden verdubbeld wanneer deze zijn ingeschakeld in het apparaat en de digitale dubbele wijzigings melding.
+
 ## <a name="next-steps"></a>Volgende stappen
 
 Nu u over digitale apparaatdubbels hebt geleerd, zijn hier enkele aanvullende bronnen:
 
 - [IoT Plug en Play digitale dubbele Api's gebruiken](howto-manage-digital-twin.md)
-- [Communiceren met een apparaat vanuit uw oplossing](quickstart-service-node.md)
+- [Interactie met een apparaat vanuit uw oplossing](quickstart-service-node.md)
 - [IoT digitale dubbele REST API](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin)
 - [Azure IoT Explorer](howto-use-iot-explorer.md)

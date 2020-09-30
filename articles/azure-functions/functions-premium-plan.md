@@ -5,13 +5,15 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: jehollan
-ms.custom: references_regions
-ms.openlocfilehash: a650c6d5aeea28e800b1a4ce9db325a52d60d5cc
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.custom:
+- references_regions
+- fasttrack-edit
+ms.openlocfilehash: a037c903a72ba79b79c7e6b011fe025aefd7b51d
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91372218"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578033"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Functions Premium-abonnement
 
@@ -43,7 +45,7 @@ Als er vandaag geen gebeurtenissen en uitvoeringen in het verbruiks abonnement w
 In het Premium-abonnement kunt u uw app altijd gereed hebben voor een bepaald aantal exemplaren.  Het maximum aantal always ready-exemplaren is 20.  Wanneer gebeurtenissen beginnen met het activeren van de app, worden ze eerst doorgestuurd naar de altijd gereede exemplaren.  Wanneer de functie actief wordt, worden extra instanties geheten als een buffer.  Deze buffer voor komt koude start voor nieuwe instanties die zijn vereist tijdens de schaal.  Deze gebufferde instanties worden [vooraf gehete instanties](#pre-warmed-instances)genoemd.  Met de combi natie van de always ready instances en een vooraf gewarmde buffer, kan uw app in feite koud starten elimineren.
 
 > [!NOTE]
-> Elk Premium-abonnement heeft te allen tijde ten minste één actief en gefactureerd exemplaar.
+> Elk Premium-abonnement heeft te allen tijde ten minste één actief (gefactureerd) exemplaar.
 
 U kunt het aantal always ready-instanties in de Azure Portal configureren door uw **functie-app**te selecteren, naar het tabblad **platform functies** te gaan en de opties voor **uitschalen** te selecteren. In het venster functie-app bewerken zijn de altijd gereede exemplaren specifiek voor die app.
 
@@ -59,9 +61,9 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 Voor bereide instanties zijn het aantal exemplaren dat is geheten als een buffer tijdens de schaal-en activerings gebeurtenissen.  Vooraf gewarmde instanties blijven bufferen totdat de limiet voor de maximale uitstel grootte is bereikt.  Het standaard aantal vooraf gewarme instanties is 1 en voor de meeste scenario's moet 1 zijn.  Als een app een lang opwarmen heeft (zoals een aangepaste container installatie kopie), kunt u deze buffer verg Roten.  Een eerder gewarmd exemplaar wordt pas actief wanneer alle actieve instanties voldoende zijn gebruikt.
 
-Bekijk dit voor beeld van de manier waarop always ready instances en vooraf gewarmde instanties samen werken.  Er zijn vijf exemplaren van de Premium-functie-app geconfigureerd en de standaard waarde van een vooraf geheted exemplaar.  Wanneer de app niet actief is en er geen gebeurtenissen worden geactiveerd, wordt de app ingericht en uitgevoerd op vijf exemplaren.  
+Bekijk dit voor beeld van de manier waarop always ready instances en vooraf gewarmde instanties samen werken.  Er zijn vijf exemplaren van de Premium-functie-app geconfigureerd, en de standaard waarde van één vooraf gewarmd exemplaar.  Wanneer de app niet actief is en er geen gebeurtenissen worden geactiveerd, wordt de app ingericht en uitgevoerd op vijf exemplaren.  Op dit moment worden er geen kosten in rekening gebracht voor een vooraf gewarmd exemplaar, omdat de altijd gereede exemplaren niet worden gebruikt en er nog geen vooraf gewarmde instantie is toegewezen.
 
-Zodra de eerste trigger is opgenomen in, worden de vijf altijd bewerkte instanties actief en wordt er een extra vooraf gewarmd exemplaar toegewezen.  De app wordt nu uitgevoerd met zes ingerichte instanties: de vijf nu actieve, altijd bewaarde instanties en de zesde vooraf gewarmde en inactieve buffer.  Als het aantal uitvoeringen blijft toenemen, worden de vijf actieve instanties uiteindelijk gebruikt.  Wanneer het platform beslist tot meer dan vijf instanties heeft geschaald, wordt het geschaald in het vooraf gewarme exemplaar.  Als dat het geval is, zijn er nu zes actieve instanties en wordt er onmiddellijk een zevende exemplaar ingericht en wordt de vooraf gewarmde buffer gevuld.  Deze volg orde van schalen en vooraf opwarmen gaat door totdat het maximum aantal exemplaren voor de app wordt bereikt.  Er worden geen exemplaren vooraf gewarmd of buiten het maximum geactiveerd.
+Zodra de eerste trigger is opgenomen in, worden de vijf altijd bewaarde instanties actief en wordt er een vooraf gewarmd exemplaar toegewezen.  De app wordt nu uitgevoerd met zes ingerichte instanties: de vijf nu actieve, altijd bewaarde instanties en de zesde vooraf gewarmde en inactieve buffer.  Als het aantal uitvoeringen blijft toenemen, worden de vijf actieve instanties uiteindelijk gebruikt.  Wanneer het platform beslist tot meer dan vijf instanties heeft geschaald, wordt het geschaald in het vooraf gewarme exemplaar.  Als dat het geval is, zijn er nu zes actieve instanties en wordt er onmiddellijk een zevende exemplaar ingericht en wordt de vooraf gewarmde buffer gevuld.  Deze volg orde van schalen en vooraf opwarmen gaat door totdat het maximum aantal exemplaren voor de app wordt bereikt.  Er worden geen exemplaren vooraf gewarmd of buiten het maximum geactiveerd.
 
 U kunt het aantal vooraf gehetede instanties voor een app wijzigen met behulp van de Azure CLI.
 
@@ -95,7 +97,7 @@ Azure Functions in een verbruiks abonnement zijn beperkt tot 10 minuten voor é�
 
 Wanneer u het plan maakt, zijn er twee instellingen voor de plan grootte: het minimum aantal exemplaren (of de plan grootte) en de maximale burst-limiet.
 
-Als uw app exemplaren van de altijd gereede exemplaren vereist, kan deze worden uitgeschaald tot het aantal exemplaren de maximale burst-limiet bereikt.  Er worden alleen exemplaren van uw abonnement in rekening gebracht wanneer ze worden uitgevoerd en aan u worden gehuurd.  We maken het beste om uw app te schalen naar de gedefinieerde maximum limiet.
+Als uw app exemplaren van de altijd gereede exemplaren vereist, kan deze worden uitgeschaald tot het aantal exemplaren de maximale burst-limiet bereikt.  Er worden alleen exemplaren van uw abonnement in rekening gebracht wanneer ze worden uitgevoerd en aan u worden toegewezen, per seconde.  We maken het beste om uw app te schalen naar de gedefinieerde maximum limiet.
 
 U kunt de plan grootte en maximum waarden in de Azure Portal configureren door de opties voor **Uitschalen** te selecteren in het plan of een functie-app die is geïmplementeerd in dat plan (onder **platform functies**).
 
@@ -120,7 +122,7 @@ az resource update -g <resource_group> -n <premium_plan_name> --set sku.capacity
 
 ### <a name="available-instance-skus"></a>Beschik bare exemplaar-Sku's
 
-Bij het maken of schalen van uw plan kunt u kiezen uit drie instantie grootten.  Er worden kosten in rekening gebracht voor het totale aantal kernen en het geheugen dat per seconde wordt verbruikt.  Uw app kan automatisch uitschalen naar meerdere exemplaren als dat nodig is.  
+Bij het maken of schalen van uw plan kunt u kiezen uit drie instantie grootten.  U wordt gefactureerd voor het totale aantal kernen en geheugen dat per seconde aan u wordt toegewezen.  Uw app kan automatisch uitschalen naar meerdere exemplaren als dat nodig is.  
 
 |SKU|Kernen|Geheugen|Storage|
 |--|--|--|--|
@@ -139,7 +141,7 @@ Hieronder vindt u de momenteel ondersteunde maximum waarden voor scale-out voor 
 
 Bekijk de volledige regionale Beschik baarheid van functies hier: [Azure.com](https://azure.microsoft.com/global-infrastructure/services/?products=functions)
 
-|Regio| Windows | Linux |
+|Region| Windows | Linux |
 |--| -- | -- |
 |Australië - centraal| 100 | Niet beschikbaar |
 |Australië - centraal 2| 100 | Niet beschikbaar |

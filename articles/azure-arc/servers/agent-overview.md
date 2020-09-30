@@ -1,18 +1,21 @@
 ---
 title: Overzicht van de verbonden computer Windows-agent
 description: Dit artikel bevat een gedetailleerd overzicht van de beschik bare Azure Arc-servers agent, die ondersteuning biedt voor het bewaken van virtuele machines die worden gehost in hybride omgevingen.
-ms.date: 09/24/2020
+ms.date: 09/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 01f1b291fee57d94b95bdeeef5f9f24b011e9fca
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0fa406692ae0ff011c65a2683ea04ad969bdc3b5
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91255040"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577217"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Overzicht van de agent voor servers met Azure Arc ingeschakeld
 
 Met de met Azure Arc ingeschakelde servers verbonden machine-agent kunt u uw Windows-en Linux-machines beheren die buiten Azure worden gehost op uw bedrijfs netwerk of een andere Cloud provider. Dit artikel bevat een gedetailleerd overzicht van de agent-, systeem-en netwerk vereisten en de verschillende implementatie methoden.
+
+>[!NOTE]
+>Met ingang van de algemene versie van Azure Arc-servers in september 2020, worden alle voorlopige versies van de met Azure verbonden machine agent (agents met versies lager dan 1,0) **verouderd** op **2 februari 2021**.  Met deze periode kunt u een upgrade uitvoeren naar versie 1,0 of hoger voordat de vooraf vrijgegeven agents niet meer kunnen communiceren met de service Azure Arc enabled servers.
 
 ## <a name="agent-component-details"></a>Details van agent onderdeel
 
@@ -44,7 +47,7 @@ De Azure Connected machine-agent voor Windows en Linux kan hand matig worden bij
 
 ### <a name="supported-operating-systems"></a>Ondersteunde besturingssystemen
 
-De volgende versies van het Windows-en Linux-besturings systeem worden officieel ondersteund voor de Azure Connected machine agent: 
+De volgende versies van het Windows-en Linux-besturings systeem worden officieel ondersteund voor de Azure Connected machine agent:
 
 - Windows Server 2012 R2 en hoger (inclusief Windows Server Core)
 - Ubuntu 16,04 en 18,04 LTS (x64)

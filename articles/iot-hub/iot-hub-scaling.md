@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: Operations'
-ms.openlocfilehash: 4ded10d9475c363c3f44032c7aa8cc7db03ab37f
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 725fc422bc11a19bebcbb8895cc0a9bedd58afed
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90033639"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577761"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>De juiste IoT Hub-laag kiezen voor uw oplossing
 
@@ -34,13 +34,13 @@ Azure IoT Hub biedt twee lagen, basis en standaard, die verschillen in het aanta
 
 Elke IoT Hub-laag is beschikbaar in drie grootten, op basis van de hoeveelheid gegevens doorvoer die ze op een bepaalde dag kunnen verwerken. Deze grootten worden numeriek aangeduid als 1, 2 en 3. Elk eenheid van een niveau 1 IoT hub kan bijvoorbeeld 400.000 berichten per dag afhandelen, terwijl een eenheid van niveau 3 300.000.000 kan verwerken. Ga verder met de [door Voer van berichten](#message-throughput)voor meer informatie over de richt lijnen voor gegevens.
 
-## <a name="basic-and-standard-tiers"></a>Basis-en standaard lagen
+## <a name="basic-and-standard-tiers"></a>Basic- en standard-lagen
 
 De laag standaard van IoT Hub maakt alle functies mogelijk en is vereist voor IoT-oplossingen die gebruik moeten maken van de bidirectionele communicatie mogelijkheden. Met de Basic-servicelaag beschikt u over een subset van de functies. Dit is bedoeld voor IoT-oplossingen waarvoor u alleen communicatie in één richting (van apparaten naar de cloud) nodig hebt. Beide servicelagen bieden dezelfde beveiligings- en verificatiefuncties.
 
 Er kan slechts één type [versie](https://azure.microsoft.com/pricing/details/iot-hub/) in een laag worden gekozen per IOT hub. U kunt bijvoorbeeld een IoT Hub maken met meerdere eenheden van S1, maar niet met een combi natie van eenheden uit verschillende versies, zoals S1 en S2.
 
-| Mogelijkheid | Basislaag | Laag gratis/Standard |
+| Mogelijkheid | De servicelaag Basic | Laag gratis/Standard |
 | ---------- | ---------- | ------------- |
 | [Telemetrie van apparaat naar Cloud](iot-hub-devguide-messaging.md) | Ja | Ja |
 | [Identiteit per apparaat](iot-hub-devguide-identity-registry.md) | Ja | Ja |
@@ -48,11 +48,11 @@ Er kan slechts één type [versie](https://azure.microsoft.com/pricing/details/i
 | [HTTP-, AMQP-en MQTT-protocollen](iot-hub-devguide-protocols.md) | Ja | Ja |
 | [Device Provisioning Service](../iot-dps/about-iot-dps.md) | Ja | Ja |
 | [Controle en diagnose](iot-hub-monitor-resource-health.md) | Ja | Ja |
-| [Cloud-naar-apparaat-berichten](iot-hub-devguide-c2d-guidance.md) |   | Yes |
-| [Apparaat apparaatdubbels](iot-hub-devguide-device-twins.md), [module apparaatdubbels](iot-hub-devguide-module-twins.md)en [Apparaatbeheer](iot-hub-device-management-overview.md) |   | Yes |
-| [Apparaatversleuteling (preview-versie)](iot-hub-device-streams-overview.md) |   | Yes |
-| [Azure IoT Edge](../iot-edge/about-iot-edge.md) |   | Yes |
-| [Preview van IoT Plug en Play](../iot-pnp/overview-iot-plug-and-play.md) |   | Yes |
+| [Cloud-naar-apparaat-berichten](iot-hub-devguide-c2d-guidance.md) |   | Ja |
+| [Apparaat apparaatdubbels](iot-hub-devguide-device-twins.md), [module apparaatdubbels](iot-hub-devguide-module-twins.md)en [Apparaatbeheer](iot-hub-device-management-overview.md) |   | Ja |
+| [Apparaatversleuteling (preview-versie)](iot-hub-device-streams-overview.md) |   | Ja |
+| [Azure IoT Edge](../iot-edge/about-iot-edge.md) |   | Ja |
+| [IoT Plug and Play](../iot-pnp/overview-iot-plug-and-play.md) |   | Ja |
 
 IoT Hub biedt ook een gratis laag die bedoeld is voor test-en evaluatie doeleinden. Het bevat alle mogelijkheden van de laag standaard, maar beperkte bericht limieten. U kunt geen upgrade uitvoeren van de gratis laag naar Basic of Standard.
 
@@ -75,7 +75,7 @@ De partitie configuratie blijft ongewijzigd wanneer u migreert van de Basic-laag
 
 Het verschil in ondersteunde mogelijkheden tussen de lagen basis en standaard van IoT Hub betekent dat sommige API-aanroepen niet werken met de Basic-laag hubs. In de volgende tabel ziet u welke Api's beschikbaar zijn:
 
-| API | Basislaag | Laag gratis/Standard |
+| API | De servicelaag Basic | Laag gratis/Standard |
 | --- | ---------- | ------------- |
 | [Apparaat verwijderen](https://docs.microsoft.com/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#deletedevice-string--models-registrymanagerdeletedeviceoptionalparams-) | Ja | Ja |
 | [Apparaat ophalen](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-registrymanager-h/iothubregistrymanager-getdevice) | Ja | Ja |
@@ -91,23 +91,23 @@ Het verschil in ondersteunde mogelijkheden tussen de lagen basis en standaard va
 | [Gebeurtenis van apparaat verzenden](https://docs.microsoft.com/rest/api/iothub/device/senddeviceevent) | Ja | Ja |
 | Module gebeurtenis verzenden | Alleen AMQP en MQTT | Alleen AMQP en MQTT |
 | [Upload status van update bestand](https://docs.microsoft.com/rest/api/iothub/device/updatefileuploadstatus) | Ja | Ja |
-| [Bewerking bulksgewijs apparaat](https://docs.microsoft.com/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#bulkdevicecrud-exportimportdevice----msrest-requestoptionsbase-) | Ja, met uitzonde ring van IoT Edge mogelijkheden | Yes |
+| [Bewerking bulksgewijs apparaat](https://docs.microsoft.com/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#bulkdevicecrud-exportimportdevice----msrest-requestoptionsbase-) | Ja, met uitzonde ring van IoT Edge mogelijkheden | Ja |
 | [Export taak importeren annuleren](https://docs.microsoft.com/rest/api/iothub/service/jobs/cancelimportexportjob) | Ja | Ja |
 | [Import export taak maken](https://docs.microsoft.com/rest/api/iothub/service/jobs/createimportexportjob) | Ja | Ja |
 | [Import export taak ophalen](https://docs.microsoft.com/rest/api/iothub/service/jobs/getimportexportjob) | Ja | Ja |
 | [Import-export taken ophalen](https://docs.microsoft.com/rest/api/iothub/service/jobs/getimportexportjobs) | Ja | Ja |
-| [Opdracht wachtrij leegmaken](https://docs.microsoft.com/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#purgecommandqueue-string--msrest-requestoptionsbase-) |   | Yes |
-| [Apparaat dubbele ophalen](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.deviceclient.getdevicetwin?view=azure-java-stable) |   | Yes |
-| [Module dubbele ophalen](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-devicetwin-h/iothubdevicetwin-getmoduletwin) |   | Yes |
-| [Methode aanroepen van apparaat](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-direct-methods) |   | Yes |
-| [Dubbele update van apparaat](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins) |   | Yes |
-| [Module bijwerken dubbele](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-devicetwin-h/iothubdevicetwin-updatemoduletwin) |   | Yes |
-| [Melding van afhankelijkheid van apparaat afbreken](https://docs.microsoft.com/rest/api/iothub/device/abandondeviceboundnotification) |   | Yes |
-| [Bevestiging van afhankelijk apparaat volt ooien](https://docs.microsoft.com/rest/api/iothub/device/completedeviceboundnotification) |   | Yes |
-| [Taak annuleren](https://docs.microsoft.com/rest/api/media/jobs/canceljob) |   | Yes |
-| [Taak maken](https://docs.microsoft.com/rest/api/media/jobs/create) |   | Yes |
-| [Taak ophalen](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.service.jobs.jobclient.getjob?view=azure-java-stable) |   | Yes |
-| [Query taken](https://docs.microsoft.com/javascript/api/azure-iot-digitaltwins-service/jobclient?view=azure-node-latest#queryjobs-jobclientqueryjobsoptionalparams--servicecallback-queryresult--) |   | Yes |
+| [Opdracht wachtrij leegmaken](https://docs.microsoft.com/javascript/api/azure-iot-digitaltwins-service/registrymanager?view=azure-node-latest#purgecommandqueue-string--msrest-requestoptionsbase-) |   | Ja |
+| [Apparaat dubbele ophalen](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.deviceclient.getdevicetwin?view=azure-java-stable) |   | Ja |
+| [Module dubbele ophalen](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-devicetwin-h/iothubdevicetwin-getmoduletwin) |   | Ja |
+| [Methode aanroepen van apparaat](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-direct-methods) |   | Ja |
+| [Dubbele update van apparaat](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins) |   | Ja |
+| [Module bijwerken dubbele](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-devicetwin-h/iothubdevicetwin-updatemoduletwin) |   | Ja |
+| [Melding van afhankelijkheid van apparaat afbreken](https://docs.microsoft.com/rest/api/iothub/device/abandondeviceboundnotification) |   | Ja |
+| [Bevestiging van afhankelijk apparaat volt ooien](https://docs.microsoft.com/rest/api/iothub/device/completedeviceboundnotification) |   | Ja |
+| [Taak annuleren](https://docs.microsoft.com/rest/api/media/jobs/canceljob) |   | Ja |
+| [Taak maken](https://docs.microsoft.com/rest/api/media/jobs/create) |   | Ja |
+| [Taak ophalen](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.service.jobs.jobclient.getjob?view=azure-java-stable) |   | Ja |
+| [Query taken](https://docs.microsoft.com/javascript/api/azure-iot-digitaltwins-service/jobclient?view=azure-node-latest#queryjobs-jobclientqueryjobsoptionalparams--servicecallback-queryresult--) |   | Ja |
 
 ## <a name="message-throughput"></a>Bericht doorvoer
 

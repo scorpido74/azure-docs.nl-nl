@@ -7,16 +7,20 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: fba8433a7964b10901527894eee98722ece970ec
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 7105597ec34e804c2f2b85b01feb4824d63005c5
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90602190"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578118"
 ---
 # <a name="create-an-intune-profile-to-deploy-vpn-client-profiles"></a>Een intune-profiel maken voor het implementeren van VPN-client profielen
 
 U kunt profielen voor Azure VPN-clients (Windows 10) implementeren met behulp van Microsoft Intune. Dit artikel helpt u bij het maken van een intune-profiel met aangepaste instellingen.
+
+> [!NOTE]
+> Deze methode werkt alleen voor het implementeren van profielen die gebruikmaken van Azure Active Directory of een gemeen schappelijk certificaat voor client verificatie. Als er unieke client certificaten worden gebruikt, moet elke gebruiker het juiste certificaat hand matig selecteren in de Azure VPN-client.
+>
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -76,13 +80,13 @@ In deze sectie maakt u een Microsoft Intune profiel met aangepaste instellingen.
 
    Selecteer het mappictogram en kies het bestand dat u in stap 6 in de [XML-](#xml) stappen hebt opgeslagen. Selecteer **Toevoegen**.
 
-   :::image type="content" source="./media/create-profile-intune/configuration-settings.png" alt-text="Configuratie-instellingen" lightbox="./media/create-profile-intune/configuration-settings.png":::
+   :::image type="content" source="./media/create-profile-intune/configuration-settings.png" alt-text="Configuratieprofielen" lightbox="./media/create-profile-intune/configuration-settings.png":::
 1. Selecteer **Next**.
 1. Selecteer onder **toewijzingen**de groep waarnaar u de configuratie wilt pushen. Selecteer vervolgens **Volgende**.
 1. Regels voor toepasselijkheid zijn optioneel. Definieer eventuele regels, indien nodig, en selecteer **volgende**.
 1. Selecteer op de pagina **controleren en maken** de optie **maken**.
 
-    :::image type="content" source="./media/create-profile-intune/create-profile.png" alt-text="Profiel maken":::
+    :::image type="content" source="./media/create-profile-intune/create-profile.png" alt-text="Configuratieprofielen":::
 1. Uw aangepaste profiel wordt nu gemaakt. Zie [gebruikers-en apparaatprofielen toewijzen](https://docs.microsoft.com/mem/intune/configuration/device-profile-assign)voor de Microsoft intune stappen voor het implementeren van dit profiel.
  
 ## <a name="next-steps"></a>Volgende stappen

@@ -1,23 +1,23 @@
 ---
 title: Azure IoT Explorer installeren en gebruiken | Microsoft Docs
-description: Installeer het hulp programma Azure IoT Explorer en gebruik dit om te communiceren met de IoT-Plug en Play preview-apparaten die zijn verbonden met IoT hub.
+description: Installeer het hulp programma Azure IoT Explorer en gebruik dit om te communiceren met de IoT-Plug en Play apparaten die zijn verbonden met IoT hub.
 author: rido-min
 ms.author: rmpablos
-ms.date: 05/06/2020
+ms.date: 09/23/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 083dcde44e56af34f17d952c46e554b234818f27
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: e64586ced7a619de02ae3a9d6beda35660ca04a9
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352232"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577574"
 ---
 # <a name="install-and-use-azure-iot-explorer"></a>Azure IoT Explorer installeren en gebruiken
 
-Azure IoT Explorer is een grafisch hulp programma voor interactie met en het testen van uw IoT Plug en Play preview-apparaten. Nadat u het hulp programma hebt geïnstalleerd op uw lokale computer, kunt u het gebruiken om verbinding te maken met een hub. U kunt het hulp programma gebruiken voor het weer geven van de telemetrie die de apparaten verzenden, het werken met apparaateigenschappen en het aanroepen van opdrachten.
+Azure IoT Explorer is een grafisch hulp programma voor interactie met en het testen van uw IoT Plug en Play-apparaten. Nadat u het hulp programma hebt geïnstalleerd op uw lokale computer, kunt u het gebruiken om verbinding te maken met een hub. U kunt het hulp programma gebruiken voor het weer geven van de telemetrie die de apparaten verzenden, het werken met apparaateigenschappen en het aanroepen van opdrachten.
 
 In dit artikel leest u informatie over:
 
@@ -29,22 +29,18 @@ In dit artikel leest u informatie over:
 Als u het hulp programma Azure IoT Explorer wilt gebruiken, hebt u het volgende nodig:
 
 - Een Azure IoT hub. Er zijn veel manieren om een IoT-hub toe te voegen aan uw Azure-abonnement, zoals [het maken van een IOT-hub met behulp van de Azure cli](../iot-hub/iot-hub-create-using-cli.md). U hebt de IoT hub-connection string nodig om het hulp programma Azure IoT Explorer uit te voeren. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
-- Een apparaat dat is geregistreerd in uw IoT-hub. U kunt de volgende Azure CLI-opdracht gebruiken om een apparaat te registreren. Zorg ervoor dat u de `{YourIoTHubName}` `{YourDeviceID}` tijdelijke aanduidingen vervangt door de waarden:
-
-    ```azurecli-interactive
-    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id {YourDeviceID}
-    ```
+- Een apparaat dat is geregistreerd in uw IoT-hub. U kunt IoT Explorer gebruiken om apparaatregistratie te maken en te beheren in uw IoT Hub.
 
 ## <a name="install-azure-iot-explorer"></a>Azure IoT Explorer installeren
 
 Ga naar [Azure IOT Explorer](https://github.com/Azure/azure-iot-explorer/releases) en vouw de lijst met assets uit voor de meest recente release. Down load en installeer de meest recente versie van de toepassing.
 
 >[!Important]
->Vanuit versie 0.11.0 IoT Explorer ondersteunt alleen de preview-versie van IoT Plug en Play mei 2020. Als u de functies die beschikbaar zijn in de vorige preview-versie van aug 2019 wilt gebruiken, moet u een versie van 0,10. x installeren.
+>Vanuit versie 0.11.0 IoT Explorer ondersteunt alleen de IoT Plug en Play GA release (vanaf september 2020). Als u gebruik wilt maken van de functies die beschikbaar zijn in de vorige preview-versie van aug 2019, installeert u een 0,10. x-versie.
 
 ## <a name="use-azure-iot-explorer"></a>Azure IoT Explorer gebruiken
 
-Voor een apparaat kunt u een verbinding maken met uw eigen apparaat of een van de gesimuleerde voor beelden van apparaten gebruiken. Volg [deze instructies](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview/iothub_client/samples) om het gesimuleerde voor beeld van het apparaat uit te voeren.
+Voor een apparaat kunt u een verbinding maken met uw eigen apparaat of een van de voor beelden van gesimuleerde apparaten gebruiken. Volg [deze instructies](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples) om het gesimuleerde voor beeld van het apparaat uit te voeren.
 
 ### <a name="connect-to-your-hub"></a>Verbinding maken met uw hub
 
@@ -65,7 +61,7 @@ Een bron verwijderen:
 
 Wijzig de bron prioriteiten:
 
-U kunt een van de model definitie bronnen slepen en neerzetten naar een andere classificatie in de lijst. 
+U kunt een van de model definitie bronnen slepen en neerzetten naar een andere classificatie in de lijst.
 
 ### <a name="view-devices"></a>Apparaten weergeven
 
@@ -82,7 +78,7 @@ Selecteer op de pagina **apparaten** lijst een waarde in de kolom **apparaat-id*
 
 ### <a name="device"></a>Apparaat
 
-Deze sectie bevat de **identiteit**van het apparaat, het **apparaat dubbele**, **telemetrie**, **directe methode**, **Cloud-naar-apparaat-bericht**, **module-identiteits** tabbladen.
+Deze sectie bevat de **identiteit**van het apparaat, het  **apparaat dubbele**, **telemetrie**, **directe methode**, **Cloud-naar-apparaat-bericht**, **module-identiteits**  tabbladen.
 
 - U kunt de gegevens van de [apparaat-id](../iot-hub/iot-hub-devguide-identity-registry.md) weer geven en bijwerken op het tabblad **apparaat-id** .
 - U kunt de dubbele gegevens van het [apparaat](../iot-hub/iot-hub-devguide-device-twins.md) openen op het tabblad **apparaat dubbele** .
@@ -99,11 +95,11 @@ Als de **model-id** beschikbaar is in een van de geconfigureerde bronnen-open ba
 
 Op de pagina **onderdeel** kunt u de alleen-lezen eigenschappen weer geven, beschrijf bare eigenschappen bijwerken, opdrachten aanroepen en de telemetriegegevens bekijken die door dit onderdeel worden geproduceerd.
 
-:::image type="content" source="media/howto-use-iot-explorer/components-iot-explorer.png" alt-text="Onderdelen weer geven in azure IoT Explorer":::
+:::image type="content" source="media/howto-use-iot-explorer/components-iot-explorer.png" alt-text="Onderdelen in Azure IoT Explorer weergeven":::
 
 #### <a name="properties"></a>Eigenschappen
 
-:::image type="content" source="media/howto-use-iot-explorer/properties-iot-explorer.png" alt-text="Eigenschappen weer geven in azure IoT Explorer":::
+:::image type="content" source="media/howto-use-iot-explorer/properties-iot-explorer.png" alt-text="Onderdelen in Azure IoT Explorer weergeven":::
 
 U kunt de alleen-lezen eigenschappen die zijn gedefinieerd in een interface weer geven op het tabblad **Eigenschappen (alleen-lezen)** . U kunt de Beschrijf bare eigenschappen die zijn gedefinieerd in een interface op het tabblad **Eigenschappen (schrijfbaar)** bijwerken:
 
@@ -127,6 +123,16 @@ Als u een opdracht wilt verzenden naar een apparaat, gaat u naar het tabblad **o
 #### <a name="telemetry"></a>Telemetrie
 
 Als u de telemetrie voor de geselecteerde interface wilt weer geven, gaat u naar het tabblad **telemetrie** .
+
+#### <a name="known-issues"></a>Bekende problemen
+
+- Ondersteuning voor IoT Edge: in de lijst met apparaten worden IoT Edge apparaten niet weer gegeven in de huidige versie.
+- DTDL-taal functies: IoT Explorer 0.12. x is niet volledig DTDL v2-compatibel. functies die niet worden ondersteund, zijn onder andere:
+  - Interface overname met `extends`
+  - Kaart in kaart (geneste toewijzing)
+  - Matrix type
+  - Aangepaste schema's
+  - Aangepaste semantische typen
 
 ## <a name="next-steps"></a>Volgende stappen
 

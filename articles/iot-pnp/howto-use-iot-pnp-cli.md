@@ -1,5 +1,5 @@
 ---
-title: Gebruik de Azure IoT-extensie voor Azure CLI om te communiceren met IoT Plug en Play preview-apparaten | Microsoft Docs
+title: Gebruik de Azure IoT-extensie voor Azure CLI om te communiceren met IoT Plug en Play-apparaten | Microsoft Docs
 description: Installeer de Azure IoT-extensie voor Azure CLI en gebruik deze om te communiceren met de IoT-Plug en Play apparaten die zijn verbonden met mijn IoT-hub.
 author: dominicbetts
 ms.author: dobett
@@ -7,18 +7,18 @@ ms.date: 07/20/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: dadb1f044547acd6e5f0d274143123e89d7dae46
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 680cd4ef4f73c63850a2137b344fd0af6b27c673
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475478"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577455"
 ---
 # <a name="install-and-use-the-azure-iot-extension-for-the-azure-cli"></a>De Azure IoT-extensie voor de Azure CLI installeren en gebruiken
 
-[Azure cli](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) is een open source-opdracht regel programma voor meerdere platformen voor het beheer van Azure-resources, zoals IOT hub. De Azure CLI is beschikbaar in Windows, Linux en macOS. Met de Azure CLI kunt u Azure IoT Hub-resources, Device Provisioning Service-instanties en gekoppelde hubs beheren zonder de extensies te installeren.
+[Azure cli](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&preserve-view=true) is een open source-opdracht regel programma voor meerdere platformen voor het beheer van Azure-resources, zoals IOT hub. De Azure CLI is beschikbaar in Windows, Linux en macOS. Met de Azure CLI kunt u Azure IoT Hub-resources, Device Provisioning Service-instanties en gekoppelde hubs beheren zonder de extensies te installeren.
 
-De Azure IoT-extensie voor Azure CLI is een opdracht regel programma voor interactie met en het testen van IoT Plug en Play preview-apparaten. U kunt de extensie gebruiken voor het volgende:
+De Azure IoT-extensie voor Azure CLI is een opdracht regel programma voor interactie met en het testen van IoT Plug en Play-apparaten. U kunt de extensie gebruiken voor het volgende:
 
 - Verbinding maken met een apparaat.
 - De telemetrie weer geven die het apparaat verzendt.
@@ -34,11 +34,11 @@ In dit artikel leest u informatie over:
 
 ### <a name="step-1---install-the-azure-cli"></a>Stap 1: de Azure CLI installeren
 
-Volg de [installatie-instructies](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) om de Azure cli in uw omgeving in te stellen. Voor de beste ervaring moet uw Azure CLI-versie versie 2.9.1 of hoger zijn. Gebruik `az -–version` om de versie te valideren.
+Volg de [installatie-instructies](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) om de Azure cli in uw omgeving in te stellen. Voor de beste ervaring moet uw Azure CLI-versie versie 2.9.1 of hoger zijn. Gebruik `az -–version` om de versie te valideren.
 
 ### <a name="step-2---install-iot-extension"></a>Stap 2: IoT-extensie installeren
 
-[In het Leesmij-bestand bij de IoT-extensie](https://github.com/Azure/azure-iot-cli-extension) worden verschillende manieren voor het installeren van de extensie beschreven. De eenvoudigste manier is `az extension add --name azure-iot` uit te voeren. Na de installatie kunt u gebruikmaken van `az extension list` om de momenteel geïnstalleerde extensies te valideren of van `az extension show --name azure-iot` voor informatie over de IoT-extensie. Op het moment van schrijven is het versie nummer van de uitbrei ding `0.9.7` .
+[In het Leesmij-bestand bij de IoT-extensie](https://github.com/Azure/azure-iot-cli-extension) worden verschillende manieren voor het installeren van de extensie beschreven. De eenvoudigste manier is `az extension add --name azure-iot` uit te voeren. Na de installatie kunt u gebruikmaken van `az extension list` om de momenteel geïnstalleerde extensies te valideren of van `az extension show --name azure-iot` voor informatie over de IoT-extensie. Op het moment van schrijven is het versie nummer van de uitbrei ding `0.10.0` .
 
 U kunt `az extension remove --name azure-iot` gebruiken om de extensie te verwijderen.
 

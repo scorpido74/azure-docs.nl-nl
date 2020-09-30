@@ -1,15 +1,15 @@
 ---
 title: 'Begrijpen hoe waarschuwingen voor metrische gegevens werken in Azure Monitor:'
 description: Bekijk een overzicht van wat u met metrische waarschuwingen kunt doen en hoe ze werken in Azure Monitor.
-ms.date: 08/16/2020
+ms.date: 09/30/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 8e57ec698f96826f493d048490ac053672e45895
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 78ec5ff3fc87ef29d25e439b7d4c69bb3a10f3a7
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89595560"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578067"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Begrijpen hoe metrische waarschuwingen werken in Azure Monitor
 
@@ -143,6 +143,7 @@ Deze functie wordt momenteel ondersteund voor platform metrieken (geen aangepast
 | NetApp-bestands capaciteits groepen | **Ja** | **Ja** | **Ja** |
 | Volumes met NetApp-bestanden | **Ja** | **Ja** | **Ja** |
 | Sleutelkluizen | **Ja** | **Ja** | **Ja** |
+| Azure Cache voor Redis | **Ja** | **Ja** | **Ja** |
 | Data Box edge-apparaten | **Ja** | **Ja** | **Ja** |
 
 <sup>1</sup> wordt niet ondersteund voor metrische gegevens van het netwerk van de virtuele machine (netwerk in totaal, totale netwerk verkeer, inkomende stromen, uitgaande stromen, maximum aanmaak frequentie voor inkomende stromen, maximum aanmaak snelheden voor uitgaande stromen).

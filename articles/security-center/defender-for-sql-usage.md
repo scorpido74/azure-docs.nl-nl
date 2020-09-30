@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: ea0df1fb68697ceee55614510cc0295c73fec00e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6d19027cfd406f81d31696c5cd2c1a235574e400
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91301649"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577830"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>Azure Defender voor SQL-servers op computers 
 
@@ -33,7 +33,7 @@ U ziet waarschuwingen wanneer er verdachte database activiteiten, potentiële kw
 |Release status:|Preview|
 |Koers|**Azure Defender voor SQL-servers op computers** wordt gefactureerd zoals wordt weer gegeven op [de pagina met prijzen](security-center-pricing.md)|
 |Beveiligde SQL-versies:|Azure SQL Server (alle versies die worden gedekt door micro soft support)|
-|Clouds|![Yes](./media/icons/yes-icon.png) Commerciële Clouds<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) China gov, andere gov|
+|Clouds|![Ja](./media/icons/yes-icon.png) Commerciële Clouds<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) China gov, andere gov|
 |||
 
 ## <a name="set-up-azure-defender-for-sql-servers-on-machines"></a>Azure Defender voor SQL-servers op computers instellen
@@ -48,7 +48,7 @@ Beide worden hieronder beschreven.
 
 ### <a name="step-1-provision-the-log-analytics-agent-on-your-sql-servers-host"></a>Stap 1. Richt de Log Analytics-agent in op de host van uw SQL-Server:
 
-- **SQL Server op de Azure-VM** : als uw SQL-machine wordt gehost op een Azure-VM, kunt u [de log Analytics agent automatisch inrichten](security-center-enable-data-collection.md#workspace-configuration). U kunt ook de hand matige procedure volgen om [Azure stack machines toe te voegen](quickstart-onboard-machines.md#add-non-azure-computers).
+- **SQL Server op de Azure-VM** : als uw SQL-machine wordt gehost op een Azure-VM, kunt u [de log Analytics agent automatisch inrichten](security-center-enable-data-collection.md#workspace-configuration). U kunt ook de hand matige procedure volgen voor [het Onboarden van uw Azure stack-vm's](quickstart-onboard-machines.md#onboard-your-azure-stack-vms).
 - **SQL Server op Azure Arc** : als uw SQL Server wordt gehost op een [Azure Arc](https://docs.microsoft.com/azure/azure-arc/) -computer, kunt u de log Analytics agent implementeren met behulp van de Security Center aanbeveling ' Log Analytics agent moet worden geïnstalleerd op uw op Windows gebaseerde Azure Arc-computers (preview) '. U kunt ook de hand matige procedure volgen in de [Azure Arc-documentatie](https://docs.microsoft.com/azure/azure-arc/servers/manage-vm-extensions#enable-extensions-from-the-portal).
 
 - **SQL Server on-premises** : als uw SQL Server wordt gehost op een on-premises Windows-machine zonder Azure Arc, hebt u twee opties om deze te verbinden met Azure:
@@ -97,7 +97,7 @@ U kunt de resultaten van de evaluatie van de beveiligings problemen rechtstreeks
 
     De gedetailleerde weer gave voor deze aanbeveling wordt weer gegeven.
 
-    :::image type="content" source="./media/security-center-advanced-iaas-data/all-servers-view.png" alt-text="Gedetailleerde weer gave voor de aanbeveling":::
+    :::image type="content" source="./media/security-center-advanced-iaas-data/all-servers-view.png" alt-text="De resultaten van evaluatie van beveiligings problemen op uw SQL-servers op computers moeten worden hersteld (preview-versie)":::
 
 1. Voor meer informatie, inzoomen:
 

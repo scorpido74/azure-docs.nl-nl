@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 993c0bdf1e8e29a7cff9bd1cad60bf78386b16a2
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: b7a6584b1566d1fa2e1e250938212a01d845e113
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90994894"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578220"
 ---
 # <a name="customer-managed-keys-for-azure-storage-encryption"></a>Door de klant beheerde sleutels voor Azure Storage versleuteling
 
@@ -27,6 +27,8 @@ Zie [Wat is Azure Key Vault?](../../key-vault/general/overview.md)voor meer info
 
 > [!NOTE]
 > Azure Key Vault en Azure Key Vault beheerde HSM ondersteunen dezelfde Api's en beheer interfaces voor configuratie.
+
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="about-customer-managed-keys"></a>Over door de klant beheerde sleutels
 

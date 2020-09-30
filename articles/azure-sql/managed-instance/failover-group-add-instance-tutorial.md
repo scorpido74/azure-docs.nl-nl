@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sashan, sstein
 ms.date: 08/27/2019
-ms.openlocfilehash: 598bb30d21a17b2c39f69a845690c3c754ec2145
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 034940a0990fc97118e62caab051a5a9e2ffd3e7
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325246"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578560"
 ---
 # <a name="tutorial-add-sql-managed-instance-to-a-failover-group"></a>Zelf studie: een door SQL beheerd exemplaar toevoegen aan een failovergroep
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -55,6 +55,8 @@ Zorg ervoor dat u over de volgende items beschikt om de zelf studie te volt ooie
 ## <a name="create-a-resource-group-and-primary-managed-instance"></a>Een resource groep en primair beheerd exemplaar maken
 
 In deze stap maakt u de resource groep en het primaire beheerde exemplaar voor uw failover-groep met behulp van de Azure Portal of Power shell. 
+
+Implementeer beide beheerde instanties in [gekoppelde regio's](../../best-practices-availability-paired-regions.md) om prestatie redenen. Beheerde instanties die zich in geografische paar regio's bevinden, hebben veel betere prestaties ten opzichte van niet-gekoppelde regio's. 
 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal) 
@@ -740,6 +742,8 @@ Voor twee beheerde instanties om deel te nemen aan een failovergroep moet er een
 
 In dit artikel worden de stappen beschreven voor het maken van de twee VPN-gateways en het verbinden ervan, maar u kunt door gaan met het maken van de failovergroep als u in plaats daarvan ExpressRoute hebt geconfigureerd. 
 
+> [!NOTE]
+> De SKU van de gateway is van invloed op de doorvoer prestaties. In deze zelf studie wordt een gateway met de meest elementaire SKU ( `HwGw1` ) geïmplementeerd. Implementeer een hogere SKU (bijvoorbeeld: `VpnGw3` ) om een hogere door voer te krijgen. Zie [Gateway-sku's](../../vpn-gateway/vpn-gateway-about-vpngateways.md#benchmark) voor alle beschik bare opties.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 

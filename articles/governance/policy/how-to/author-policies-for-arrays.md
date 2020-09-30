@@ -1,14 +1,14 @@
 ---
 title: Beleid voor het schrijven van matrix eigenschappen voor bronnen
 description: Meer informatie over het werken met matrix parameters en matrix-taal expressies, de alias [*] evalueren en elementen toevoegen met Azure Policy definitie regels.
-ms.date: 08/17/2020
+ms.date: 09/30/2020
 ms.topic: how-to
-ms.openlocfilehash: 5b9392a943e264ae5eca989ee87eb9ff09b36972
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: c67982197c0161d99f29747d6fd11166cba86079
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89048479"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576894"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Beleid voor het schrijven van matrix eigenschappen op Azure-resources
 
@@ -194,12 +194,24 @@ De volgende resultaten zijn het resultaat van de combi natie van de voor waarde 
 |`{<field>,"Equals":"127.0.0.1"}` |Niets |Alle overeenkomsten |Eén matrix element evalueert als True (127.0.0.1 = = 127.0.0.1) en een als onwaar (127.0.0.1 = = 192.168.1.1), dus is de waarde **equals** _False_ en wordt het effect niet geactiveerd. |
 |`{<field>,"Equals":"10.0.4.1"}` |Niets |Alle overeenkomsten |Beide matrix elementen evalueren als False (10.0.4.1 = = 127.0.0.1 en 10.0.4.1 = 192.168.1.1), dus de voor waarde **equals** is _False_ en het effect wordt niet geactiveerd. |
 
-## <a name="the-append-effect-and-arrays"></a>Het toevoeg effect en de arrays
+## <a name="modifying-arrays"></a>Matrices wijzigen
 
-Het [effect toevoegen](../concepts/effects.md#append) werkt anders, afhankelijk van of het **veld Details** een **\[\*\]** alias is of niet.
+De [toevoeg](../concepts/effects.md#append) -en [wijzigings](../concepts/effects.md#modify) eigenschappen voor een resource tijdens het maken of bijwerken. Wanneer u werkt met matrix eigenschappen, is het gedrag van deze effecten afhankelijk van of de bewerking probeert de alias te wijzigen  **\[\*\]** of niet:
 
-- Als u geen **\[\*\]** alias opgeeft, wordt de volledige matrix vervangen door de eigenschap **Value**
-- Wanneer een **\[\*\]** alias wordt toegevoegd, wordt de eigenschap **Value** aan de bestaande matrix toegevoegd of wordt de nieuwe matrix gemaakt
+> [!NOTE]
+> Het gebruiken van het `modify` effect met aliassen is momenteel beschikbaar als **Preview-versie**.
+
+|Alias |Effect | Resultaat |
+|-|-|-|
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules` | `append` | Azure Policy voegt de volledige matrix toe die is opgegeven in de effect Details als deze ontbreken. |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules` | `modify` met `add` bewerking | Azure Policy voegt de volledige matrix toe die is opgegeven in de effect Details als deze ontbreken. |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules` | `modify` met `addOrReplace` bewerking | Azure Policy voegt de volledige matrix die is opgegeven in de effect Details, toe als de bestaande matrix ontbreekt of wordt vervangen. |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]` | `append` | Azure Policy voegt het matrixlid toe dat is opgegeven in de effect Details. |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]` | `modify` met `add` bewerking | Azure Policy voegt het matrixlid toe dat is opgegeven in de effect Details. |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]` | `modify` met `addOrReplace` bewerking | Azure Policy verwijdert alle bestaande matrix leden en voegt het matrixlid toe dat is opgegeven in de effect Details. |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].action` | `append` | Azure Policy voegt een waarde toe aan de `action` eigenschap van elk matrixlid. |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].action` | `modify` met `add` bewerking | Azure Policy voegt een waarde toe aan de `action` eigenschap van elk matrixlid. |
+| `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].action` | `modify` met `addOrReplace` bewerking | Azure Policy voegt de bestaande `action` eigenschap van elk matrixlid of vervangt deze. |
 
 Zie voor meer informatie de [Append-voor beelden](../concepts/effects.md#append-examples).
 

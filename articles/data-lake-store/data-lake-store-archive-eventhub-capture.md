@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: c5254558c62499ed6864e809dbc93c26ebba94a9
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 8be242369ecae2c809a38428284c9ddcad440e3f
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88190271"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578237"
 ---
 # <a name="use-azure-data-lake-storage-gen1-to-capture-data-from-event-hubs"></a>Azure Data Lake Storage Gen1 gebruiken om gegevens vast te leggen van Event Hubs
 
@@ -42,11 +42,11 @@ In deze sectie maakt u een map in het account waar u de gegevens van Event Hubs 
 
     a. Klik op **Data Explorer**, selecteer de hoofdmap van het data Lake Storage gen1 account en klik vervolgens op **toegang**.
 
-    ![Machtigingen toewijzen voor de Data Lake Storage Gen1 root](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-root.png "Machtigingen toewijzen voor de Data Lake Storage Gen1 root")
+    ![Scherm opname van de Data Explorer met de hoofdmap van het account en de toegangs optie.](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-root.png "Machtigingen toewijzen voor de Data Lake Storage Gen1 root")
 
     b. Klik onder **toegang**op **toevoegen**, klik op **gebruiker of groep selecteren**en zoek vervolgens naar `Microsoft.EventHubs` . 
 
-    ![Machtigingen toewijzen voor de Data Lake Storage Gen1 root](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "Machtigingen toewijzen voor de Data Lake Storage Gen1 root")
+    ![Scherm afbeelding van de Access-pagina met de optie toevoegen, Selecteer gebruiker of groep en de optie micro soft Event hubs.](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "Machtigingen toewijzen voor de Data Lake Storage Gen1 root")
     
     Klik op **Selecteren**.
 
@@ -55,7 +55,7 @@ In deze sectie maakt u een map in het account waar u de gegevens van Event Hubs 
     > [!IMPORTANT]
     > Bij het maken van een nieuwe maphiërarchie voor het vastleggen van gegevens die zijn ontvangen door Azure Event Hubs, is dit een eenvoudige manier om toegang tot de doelmap te garanderen.  Het toevoegen van machtigingen aan alle onderliggende mappen van een map op het hoogste niveau met veel onderliggende bestanden en mappen kan veel tijd in beslag nemen.  Als uw hoofdmap een groot aantal bestanden en mappen bevat, is het wellicht sneller om **uitvoerings** machtigingen toe te voegen voor afzonderlijke `Microsoft.EventHubs` mappen in het pad naar de uiteindelijke doelmap. 
 
-    ![Machtigingen toewijzen voor de Data Lake Storage Gen1 root](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "Machtigingen toewijzen voor de Data Lake Storage Gen1 root")
+    ![Scherm afbeelding van de sectie Machtigingen toewijzen met de optie machtigingen selecteren. De sectie machtigingen selecteren bevindt zich naast de optie uitvoeren, toevoegen aan optie en toevoegen als optie.](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "Machtigingen toewijzen voor de Data Lake Storage Gen1 root")
 
     Klik op **OK**.
 
@@ -63,17 +63,17 @@ In deze sectie maakt u een map in het account waar u de gegevens van Event Hubs 
 
     a. Klik op **Data Explorer**, selecteer de map in het data Lake Storage gen1 account en klik vervolgens op **toegang**.
 
-    ![Machtigingen toewijzen voor de map Data Lake Storage Gen1](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-folder.png "Machtigingen toewijzen voor de map Data Lake Storage Gen1")
+    ![Scherm opname van de Data Explorer met een map in het account en de toegangs optie.](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-folder.png "Machtigingen toewijzen voor de map Data Lake Storage Gen1")
 
     b. Klik onder **toegang**op **toevoegen**, klik op **gebruiker of groep selecteren**en zoek vervolgens naar `Microsoft.EventHubs` . 
 
-    ![Machtigingen toewijzen voor de map Data Lake Storage Gen1](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "Machtigingen toewijzen voor de map Data Lake Storage Gen1")
+    ![Scherm afbeelding van de Access-pagina van Data Explorer met de optie toevoegen, Selecteer gebruiker of groep optie en de optie micro soft Event hubs.](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "Machtigingen toewijzen voor de map Data Lake Storage Gen1")
     
     Klik op **Selecteren**.
 
     c. Klik onder **machtigingen toewijzen**op **machtigingen selecteren**. Stel **machtigingen** in voor **lezen, schrijven en** **uitvoeren**. Stel **toevoegen in** op **deze map en alle onderliggende items**. Stel ten slotte de vermelding **toevoegen als** in op **een toegangs machtiging en een standaard machtiging**.
 
-    ![Machtigingen toewijzen voor de map Data Lake Storage Gen1](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp-folder.png "Machtigingen toewijzen voor de map Data Lake Storage Gen1")
+    ![Scherm afbeelding van de sectie Machtigingen toewijzen met de optie machtigingen selecteren. De sectie machtigingen selecteren bevindt zich naast de opties lezen, schrijven en uitvoeren, de optie toevoegen aan en de optie toevoegen als.](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp-folder.png "Machtigingen toewijzen voor de map Data Lake Storage Gen1")
     
     Klik op **OK**. 
 
@@ -83,11 +83,11 @@ In deze sectie maakt u een event hub binnen een Event Hubs naam ruimte. U kunt o
 
 1. Klik in het deel venster **overzicht** van de naam ruimte Event hubs op **+ Event hub**.
 
-    ![Event hub maken](./media/data-lake-store-archive-eventhub-capture/data-lake-store-create-event-hub.png "Event Hub maken")
+    ![Scherm opname van het overzichts venster met de optie Event hub.](./media/data-lake-store-archive-eventhub-capture/data-lake-store-create-event-hub.png "Event Hub maken")
 
 1. Geef de volgende waarden op om Event Hubs te configureren voor het vastleggen van gegevens in Data Lake Storage Gen1.
 
-    ![Event hub maken](./media/data-lake-store-archive-eventhub-capture/data-lake-store-configure-eventhub.png "Event Hub maken")
+    ![Scherm afbeelding van het dialoog venster Event hub maken met het tekstvak naam, de vastleg optie, de optie voor het vastleggen van de provider, de optie Data Lake Store selecteren en de optie Data Lake pad wordt aangeroepen.](./media/data-lake-store-archive-eventhub-capture/data-lake-store-configure-eventhub.png "Event Hub maken")
 
     a. Geef een naam op voor de Event hub.
     

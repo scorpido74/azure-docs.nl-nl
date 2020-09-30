@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.custom: has-adal-ref
-ms.openlocfilehash: ac585f1c215e5eb7ad5a6628ac85b70e7c76b14e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0dd5d1da41c5fcc596e4c70f797e75c30997ce0b
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85511307"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578543"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Verificatie door eind gebruikers met Azure Data Lake Storage Gen1 met behulp van Azure Active Directory
 > [!div class="op_single_selector"]
@@ -97,15 +97,15 @@ Voer de volgende stappen uit om de omleidings-URI op te halen.
 
 2. Klik op de Blade **instellingen** voor de toepassing op **vereiste machtigingen**en klik vervolgens op **toevoegen**.
 
-    ![client-id](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-1.png)
+    ![Scherm afbeelding van de Blade instellingen met de optie U R I omleiden en de Blade omleiden U R I met de daad werkelijke U R.](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-1.png)
 
 3. Klik op de Blade **API-toegang toevoegen** op **een API selecteren**, klik op **Azure data Lake**en klik vervolgens op **selecteren**.
 
-    ![client-id](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-2.png)
+    ![Scherm opname van de Blade API-toegang toevoegen met de optie een API selecteren en de Blade een API selecteren met de optie Azure Data Lake en de optie selecteren.](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-2.png)
 
 4.  Klik op de Blade **API-toegang toevoegen** op **machtigingen selecteren**, schakel het selectie vakje in als u **volledige toegang tot data Lake Store wilt**geven en klik vervolgens op **selecteren**.
 
-    ![client-id](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-3.png)
+    ![Scherm opname van de Blade API-toegang toevoegen met de optie machtigingen selecteren en de Blade toegang inschakelen met de optie volledige toegang tot de Azure Data Lake-service en de optie selecteren.](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-3.png)
 
     Klik op **Gereed**.
 

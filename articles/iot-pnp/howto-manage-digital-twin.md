@@ -1,26 +1,26 @@
 ---
 title: IoT Plug en Play Digital apparaatdubbels beheren
-description: IoT Plug en Play preview-apparaat beheren met Digital-dubbele Api's
+description: IoT Plug en Play-apparaat beheren met Digital-dubbele Api's
 author: prashmo
 ms.author: prashmo
 ms.date: 07/20/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: f86bf17c34d88fa48df4933e979a590fbc89820b
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: bfbfc6e5e4a0f5721d620c2936e5ea0aa685f8ad
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352239"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577591"
 ---
 # <a name="manage-iot-plug-and-play-digital-twins"></a>IoT Plug en Play Digital apparaatdubbels beheren
 
 IoT Plug en Play biedt ondersteuning voor het verkrijgen van digitale **dubbele** en **bijgewerkte digitale dubbele** bewerkingen om digitale apparaatdubbels te beheren. U kunt de rest- [api's](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin) of een van de [service-sdk's](libraries-sdks.md)gebruiken.
 
-Op het moment van schrijven is de Digital-dubbele API-versie voor open bare preview `2020-05-31-preview` .
+Op het moment van schrijven is de Digital-dubbele API-versie `2020-09-30` .
 
-## <a name="update-a-digital-twin"></a>Een digitale dubbele
+## <a name="update-a-digital-twin"></a>Een digital twin bijwerken
 
 Een IoT Plug en Play-apparaat implementeert een model dat wordt beschreven door [Digital Apparaatdubbels Definition Language v2 (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl). Ontwikkel aars van oplossingen kunnen de **update digitale dubbele API** gebruiken voor het bijwerken van de status van het onderdeel en de eigenschappen van de digitale twee.
 
@@ -72,7 +72,7 @@ U kunt de `targetTemperature` eigenschap bijvoorbeeld als volgt bijwerken:
 ]
 ```
 
-Met de vorige update wordt de gewenste waarde van een eigenschap in het bijbehorende hoofd niveau of onderdeel niveau ingesteld `$metadata` , zoals wordt weer gegeven in het volgende code fragment. IoT Hub werkt de gewenste versie van de eigenschap bij:
+Met de vorige update wordt de gewenste waarde van een eigenschap in het bijbehorende onderdeel niveau ingesteld `$metadata` , zoals wordt weer gegeven in het volgende code fragment. IoT Hub werkt de gewenste versie van de eigenschap bij:
 
 ```json
 "thermostat1": {
@@ -130,7 +130,7 @@ In het volgende voor beeld van de JSON-patch ziet u hoe u een onderdeel kunt toe
 
 Met een toevoeg-of vervang bewerking stelt u de gewenste waarde van een eigenschap in. Het apparaat kan de status synchroniseren en een update van de waarde met een `ack` code, versie en beschrijving rapporteren.
 
-Als u een eigenschap verwijdert, wordt de gewenste waarde van de eigenschap gewist als deze is ingesteld. Het apparaat kan deze eigenschap vervolgens niet meer melden en wordt verwijderd uit het hoofd niveau of het onderdeel. Als deze eigenschap de laatste is in het onderdeel, wordt het onderdeel ook verwijderd.
+Als u een eigenschap verwijdert, wordt de gewenste waarde van de eigenschap gewist als deze is ingesteld. Het apparaat kan de rapportage van deze eigenschap vervolgens stoppen en het wordt verwijderd uit het onderdeel. Als deze eigenschap de laatste is in het onderdeel, wordt het onderdeel ook verwijderd.
 
 In het volgende voor beeld van de JSON-patch ziet u hoe u een eigenschap binnen een onderdeel toevoegt, vervangt of verwijdert:
 
@@ -193,6 +193,6 @@ Updates kunnen mislukken als de gerapporteerde waarden van een apparaat niet vol
 
 Nu u over digitale apparaatdubbels hebt geleerd, zijn hier enkele aanvullende bronnen:
 
-- [Communiceren met een apparaat vanuit uw oplossing](quickstart-service-node.md)
+- [Interactie met een apparaat vanuit uw oplossing](quickstart-service-node.md)
 - [IoT digitale dubbele REST API](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin)
 - [Azure IoT Explorer](howto-use-iot-explorer.md)

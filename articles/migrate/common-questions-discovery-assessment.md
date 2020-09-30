@@ -3,12 +3,12 @@ title: Vragen over detectie, evaluatie en afhankelijkheids analyse in Azure Migr
 description: Krijg antwoorden op veelgestelde vragen over detectie, evaluatie en afhankelijkheids analyse in Azure Migrate.
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: d4f833926541bafbae211caff37e5974b57e1047
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 074f58a2f6c24f106de6b2b5003ce2dfd428f356
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019008"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577268"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Detectie, beoordeling en afhankelijkheids analyse-Veelgestelde vragen
 
@@ -124,7 +124,7 @@ Azure VM-evaluaties op basis van import zijn evaluaties die zijn gemaakt met mac
 
 ## <a name="why-is-the-suggested-migration-tool-in-import-based-avs-assessment-marked-as-unknown"></a>Waarom is het voorgestelde migratie hulpprogramma in op import gebaseerde AVS-evaluatie gemarkeerd als onbekend?
 
-Voor machines die worden geïmporteerd via een CSV-bestand, is het standaard hulp programma voor migratie in een AVS-evaluatie onbekend. Voor VMware-machines is het echter raadzaam de VMware Hybrid Cloud extension (HCX)-oplossing te gebruiken. [Meer informatie](../azure-vmware/hybrid-cloud-extension-installation.md).
+Voor machines die worden geïmporteerd via een CSV-bestand, is het standaard hulp programma voor migratie in een AVS-evaluatie onbekend. Voor VMware-machines is het echter raadzaam de VMware Hybrid Cloud extension (HCX)-oplossing te gebruiken. [Meer informatie](../azure-vmware/tutorial-deploy-vmware-hcx.md).
 
 
 ## <a name="what-is-dependency-visualization"></a>Wat is de visualisatie van afhankelijkheden?
@@ -144,7 +144,7 @@ Ondersteuning | Deze optie is momenteel in Preview en is alleen beschikbaar voor
 Agent | U hoeft geen agents te installeren op computers die u wilt cross-checken. | Agents die moeten worden geïnstalleerd op elke on-premises computer die u wilt analyseren: [micro soft Monitoring Agent (MMA)](../azure-monitor/platform/agent-windows.md)en de [dependency agent](../azure-monitor/platform/agents-overview.md#dependency-agent). 
 Vereisten | [Bekijk](concepts-dependency-visualization.md#agentless-analysis) de vereisten en implementatie behoeften. | [Bekijk](concepts-dependency-visualization.md#agent-based-analysis) de vereisten en implementatie behoeften.
 Log Analytics | Niet vereist. | Azure Migrate gebruikt de [servicetoewijzing](../azure-monitor/insights/service-map.md) oplossing in [Azure monitor logboeken](../azure-monitor/log-query/log-query-overview.md) voor de visualisatie van afhankelijkheden. [Meer informatie](concepts-dependency-visualization.md#agent-based-analysis).
-Hoe het werkt | Hiermee worden TCP-verbindings gegevens vastgelegd op computers die zijn ingeschakeld voor de visualisatie van afhankelijkheden. Na detectie verzamelt het gegevens met intervallen van vijf minuten. | Servicetoewijzing agents die op een computer zijn geïnstalleerd, verzamelen gegevens over TCP-processen en inkomende/uitgaande verbindingen voor elk proces.
+Uitleg | Hiermee worden TCP-verbindings gegevens vastgelegd op computers die zijn ingeschakeld voor de visualisatie van afhankelijkheden. Na detectie verzamelt het gegevens met intervallen van vijf minuten. | Servicetoewijzing agents die op een computer zijn geïnstalleerd, verzamelen gegevens over TCP-processen en inkomende/uitgaande verbindingen voor elk proces.
 Gegevens | Naam van de bron computer server, proces, toepassings naam.<br/><br/> Naam van de doel computer server, proces, toepassings naam en poort. | Naam van de bron computer server, proces, toepassings naam.<br/><br/> Naam van de doel computer server, proces, toepassings naam en poort.<br/><br/> Het aantal gegevens over verbindingen, latentie en gegevens overdracht wordt verzameld en beschikbaar gesteld voor Log Analytics query's. 
 Visualisatie | Afhankelijkheids toewijzing van één server kan worden weer gegeven gedurende een periode van één uur tot 30 dagen. | Afhankelijkheids toewijzing van één server.<br/><br/> De kaart kan alleen over een uur worden weer gegeven.<br/><br/> Afhankelijkheids toewijzing van een groep servers.<br/><br/> Servers in een groep toevoegen aan en verwijderen uit de kaart weergave.
 Gegevensexport | Gegevens van de afgelopen 30 dagen kunnen worden gedownload in een CSV-indeling. | Gegevens kunnen worden opgevraagd met Log Analytics.

@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/08/2020
+ms.date: 09/29/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 8d1e2454dc4b9a9fbc85d2e5edc5ba3ede33f9c0
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: af168fe4c4dca71077464fdb9caf30f27c4b9fe2
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89595648"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578254"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Gebruik en kosten beheren met Azure Monitor-logboeken    
 
@@ -46,9 +46,9 @@ Houd er ook rekening mee dat sommige oplossingen, zoals [Azure Security Center](
 
 ### <a name="log-analytics-dedicated-clusters"></a>Log Analytics toegewezen clusters
 
-Log Analytics toegewezen clusters zijn verzamelingen van werk ruimten in één beheerd Azure Data Explorer-cluster ter ondersteuning van geavanceerde scenario's zoals door de [klant beheerde sleutels](customer-managed-keys.md).  Log Analytics toegewezen clusters bieden alleen ondersteuning voor een prijs model voor capaciteits reservering, te beginnen bij 1000 GB/dag met een korting van 25% ten opzichte van de prijzen voor betalen per gebruik. Elk gebruik boven het reserverings niveau wordt gefactureerd op basis van het betalen naar gebruik-tarief. De reserve ring van de cluster capaciteit heeft een toezeggings periode van 31 dagen nadat het reserverings niveau is verhoogd. Tijdens de toezeggings periode kan het capaciteits reserverings niveau niet worden verminderd, maar het kan op elk gewenst moment worden verhoogd. Meer informatie over het [maken van een log Analytics clusters](customer-managed-keys.md#create-cluster-resource) en [het koppelen van werk ruimten aan het](customer-managed-keys.md#workspace-association-to-cluster-resource)cluster.  
+Log Analytics toegewezen clusters zijn verzamelingen van werk ruimten in één beheerd Azure Data Explorer-cluster ter ondersteuning van geavanceerde scenario's zoals door de [klant beheerde sleutels](customer-managed-keys.md).  Log Analytics toegewezen clusters maken gebruik van een prijs model voor capaciteits reservering, dat moet worden geconfigureerd op ten minste 1000 GB per dag. Voor dit capaciteits niveau geldt een korting van 25% ten opzichte van de prijzen voor betalen per gebruik. Elk gebruik boven het reserverings niveau wordt gefactureerd op basis van het betalen naar gebruik-tarief. De reserve ring van de cluster capaciteit heeft een toezeggings periode van 31 dagen nadat het reserverings niveau is verhoogd. Tijdens de toezeggings periode kan het capaciteits reserverings niveau niet worden verminderd, maar het kan op elk gewenst moment worden verhoogd. Wanneer werk ruimten zijn gekoppeld aan een cluster, wordt de facturering van gegevens opname voor deze werk ruimten uitgevoerd op het cluster niveau met het geconfigureerde capaciteits reserverings niveau. Meer informatie over het [maken van een log Analytics clusters](customer-managed-keys.md#create-cluster-resource) en [het koppelen van werk ruimten aan het](customer-managed-keys.md#workspace-association-to-cluster-resource)cluster. De prijs informatie voor capaciteits reservering is beschikbaar op de [pagina met Azure monitor prijzen]( https://azure.microsoft.com/pricing/details/monitor/).  
 
-Het reserverings niveau voor cluster capaciteit wordt geconfigureerd via programmatisch met Azure Resource Manager met behulp van de `Capacity` para meter onder `Sku` . De `Capacity` is opgegeven in eenheden van GB en kan waarden hebben van 1000 GB/dag of meer in stappen van 100 GB/dag. Dit is een gedetailleerde beschrijving van Azure Monitor door de [klant beheerde sleutel](customer-managed-keys.md#create-cluster-resource). Als voor uw cluster een reserve ring nodig is die hoger is dan 2000 GB/dag, neemt u contact met ons op [LAIngestionRate@microsoft.com](mailto:LAIngestionRate@microsoft.com) .
+Het reserverings niveau voor cluster capaciteit wordt via een programma geconfigureerd met Azure Resource Manager met behulp van de `Capacity` para meter onder `Sku` . De `Capacity` is opgegeven in eenheden van GB en kan waarden hebben van 1000 GB/dag of meer in stappen van 100 GB/dag. Dit is een gedetailleerde beschrijving van Azure Monitor door de [klant beheerde sleutel](customer-managed-keys.md#create-cluster-resource). Als voor uw cluster een reserve ring nodig is die hoger is dan 2000 GB/dag, neemt u contact met ons op [LAIngestionRate@microsoft.com](mailto:LAIngestionRate@microsoft.com) .
 
 Er zijn twee facturerings methoden voor gebruik in een cluster. Deze kunnen worden opgegeven met de `billingType` para meter bij het [configureren van uw cluster](customer-managed-keys.md#cmk-management). De twee modi zijn: 
 
@@ -56,7 +56,7 @@ Er zijn twee facturerings methoden voor gebruik in een cluster. Deze kunnen word
 
 2. **Werk ruimten**: de kosten voor de capaciteits reservering voor uw cluster worden proportioneel toegeschreven aan de werk ruimten in het cluster (na de accounting van toewijzingen per knoop punt van [Azure Security Center](https://docs.microsoft.com/azure/security-center/) voor elke werk ruimte.) Als het totale gegevens volume dat is opgenomen in een werk ruimte voor een dag kleiner is dan de capaciteits reservering, wordt elke werk ruimte gefactureerd voor de gegevens die zijn opgenomen in de capaciteits reservering per GB, waarbij ze een fractie van de capaciteits reservering factureren en het niet-gebruikte deel van de capaciteits reservering wordt gefactureerd aan de cluster bron. Als het totale gegevens volume dat is opgenomen in een werk ruimte voor een dag meer is dan de capaciteits reservering, wordt elke werk ruimte gefactureerd voor een fractie van de capaciteits reservering op basis van de Fractie van de opgenomen gegevens die dag en elke werk ruimte voor een fractie van de opgenomen gegevens boven de capaciteits reservering. Er wordt niets in rekening gebracht voor de cluster resource als het totale gegevens volume dat in een werk ruimte is opgenomen voor een dag de capaciteits reservering overschrijdt.
 
-In de facturerings opties van het cluster wordt het bewaren van gegevens op het niveau van de werk ruimte gefactureerd. Houd er rekening mee dat het factureren van het cluster begint wanneer het cluster wordt gemaakt, ongeacht of er werk ruimten aan het cluster zijn gekoppeld. Houd er ook rekening mee dat werk ruimten die zijn gekoppeld aan een cluster geen prijs categorie meer hebben.
+In de facturerings opties van het cluster wordt de Bewaar periode voor gegevens per werk ruimte gefactureerd. Houd er rekening mee dat het factureren van het cluster begint wanneer het cluster wordt gemaakt, ongeacht of er werk ruimten aan het cluster zijn gekoppeld. Houd er ook rekening mee dat werk ruimten die zijn gekoppeld aan een cluster geen prijs categorie meer hebben.
 
 ## <a name="estimating-the-costs-to-manage-your-environment"></a>Schatting van de kosten voor het beheren van uw omgeving 
 
@@ -234,12 +234,12 @@ De daglimiet kan via ARM worden geconfigureerd door de `dailyQuotaGb` para meter
 
 Hoewel we een visuele hint presen teren in de Azure Portal als aan de drempel waarde voor gegevens limiet is voldaan, wordt dit gedrag niet noodzakelijkerwijs uitgelijnd op de manier waarop u operationele problemen beheert die onmiddellijke aandacht vereisen.  Als u een waarschuwings melding wilt ontvangen, kunt u in Azure Monitor een nieuwe waarschuwings regel maken.  Zie [waarschuwingen maken, weer geven en beheren](alerts-metric.md)voor meer informatie.
 
-Om aan de slag te gaan, zijn dit de aanbevolen instellingen voor de waarschuwing:
+Om aan de slag te gaan, zijn hier de aanbevolen instellingen voor de waarschuwing voor het uitvoeren van query's `Operation` in de tabel met behulp van de `_LogOperation` functie. 
 
 - Doel: Selecteer uw Log Analytics resource
 - Gezocht 
    - Signaal naam: aangepaste zoek opdracht in Logboeken
-   - Zoek query: bewerking | Wat is een overschrijding van Details
+   - Zoek query: `_LogOperation | where Detail has 'OverQuota'`
    - Gebaseerd op: aantal resultaten
    - Voor waarde: groter dan
    - Drempel waarde: 0
@@ -441,7 +441,7 @@ Hieronder vindt u enkele suggesties voor het verkleinen van het aantal logboeken
 
 | Bron van hoog gegevensvolume | Het gegevensvolume verminderen |
 | -------------------------- | ------------------------- |
-| Container inzichten         | [Configureer container Insights](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-cost#controlling-ingestion-to-reduce-cost) om alleen de gegevens te verzamelen die u nodig hebt. |
+| Container Insights         | [Configureer container Insights](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-cost#controlling-ingestion-to-reduce-cost) om alleen de gegevens te verzamelen die u nodig hebt. |
 | Beveiligingsgebeurtenissen            | Selecteer [normale of minimale beveiligingsgebeurtenissen](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection#data-collection-tier) <br> Wijzig het beleid voor beveiligingscontrole zodat alleen de gewenste gebeurtenissen worden verzameld. Controleer vooral de noodzaak voor het verzamelen van gebeurtenissen voor <br> - [filterplatform controleren](https://technet.microsoft.com/library/dd772749(WS.10).aspx) <br> - [register controleren](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941614(v%3dws.10))<br> - [bestandssysteem controleren](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772661(v%3dws.10))<br> - [kernel-object controleren](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941615(v%3dws.10))<br> - [greepbewerking controleren](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772626(v%3dws.10))<br> -Verwissel bare opslag controleren |
 | Prestatiemeteritems       | Wijzig de [Prestatiemeteritemconfiguratie](data-sources-performance-counters.md) in: <br> - Frequentie van het verzamelen van gegevens beperken <br> - Aantal prestatiemeteritems beperken |
 | Gebeurtenislogboeken                 | Wijzig [Configuratie van gebeurtenislogboek](data-sources-windows-events.md) in: <br> - Aantal verzamelde gebeurtenislogboeken beperken <br> - Alleen vereiste gebeurtenisniveaus verzamelen. Bijvoorbeeld, gebeurtenissen op *informatie*niveau niet verzamelen |

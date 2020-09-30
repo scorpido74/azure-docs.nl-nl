@@ -12,19 +12,19 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 08/14/2019
-ms.openlocfilehash: 42326247117c0710c93b45c896bb6e7cb3a8120f
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: ab057e1328efbff294faa1d68f2a27c5a1f03ade
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91444376"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577506"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Een failovergroep voor Azure SQL Database configureren
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 In dit onderwerp leert u hoe u een [groep voor automatische failover](auto-failover-group-overview.md) configureert voor Azure SQL database en Azure SQL Managed instance.
 
-## <a name="single-database-in-azure-sql-database"></a>Eén data base in Azure SQL Database
+## <a name="single-database"></a>Individuele database
 
 Maak de failovergroep en voeg er een toe aan een enkele data base met behulp van de Azure Portal of Power shell.
 
@@ -192,7 +192,7 @@ Herstel de failovergroep terug naar de primaire server:
 > [!IMPORTANT]
 > Als u de secundaire data base moet verwijderen, verwijdert u deze uit de failover-groep voordat u deze verwijdert. Het verwijderen van een secundaire Data Base voordat deze wordt verwijderd uit de failovergroep kan onvoorspelbaar gedrag veroorzaken.
 
-## <a name="elastic-pools-in-azure-sql-database"></a>Elastische Pools in Azure SQL Database
+## <a name="elastic-pool"></a>Elastische pool
 
 Maak de failovergroep en voeg er een elastische pool aan toe met behulp van de Azure Portal of Power shell.  
 
@@ -346,7 +346,9 @@ Failover naar de secundaire server:
 
 Een failover-groep maken tussen twee beheerde exemplaren in een Azure SQL Managed instance met behulp van de Azure Portal of Power shell.
 
-U moet [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) configureren of een gateway maken voor het virtuele netwerk van elk SQL Managed instance, de twee gateways verbinden en vervolgens de failovergroep maken.
+U moet [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) configureren of een gateway maken voor het virtuele netwerk van elk SQL Managed instance, de twee gateways verbinden en vervolgens de failovergroep maken. 
+
+Implementeer beide beheerde instanties in [gekoppelde regio's](../../best-practices-availability-paired-regions.md) om prestatie redenen. Beheerde instanties die zich in geografische paar regio's bevinden, hebben veel betere prestaties ten opzichte van niet-gekoppelde regio's. 
 
 ### <a name="prerequisites"></a>Vereisten
 
@@ -360,6 +362,9 @@ Houd rekening met de volgende vereisten:
 ### <a name="create-primary-virtual-network-gateway"></a>Primaire virtuele netwerk gateway maken
 
 Als u [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md)niet hebt geconfigureerd, kunt u de primaire virtuele netwerk gateway maken met de Azure Portal, of Power shell.
+
+> [!NOTE]
+> De SKU van de gateway is van invloed op de doorvoer prestaties. In dit artikel wordt een gateway met de meest elementaire SKU ( `HwGw1` ) geïmplementeerd. Implementeer een hogere SKU (bijvoorbeeld: `VpnGw3` ) om een hogere door voer te krijgen. Zie [Gateway-sku's](../../vpn-gateway/vpn-gateway-about-vpngateways.md#benchmark) voor alle beschik bare opties. 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 

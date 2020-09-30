@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/20/2018
-ms.openlocfilehash: 3a71c78dcbaa5fb02927e9a2cfdea40cd5b26130
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 04642e69adba82cf33b933829d72c51109ad2ee1
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91269094"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578175"
 ---
 # <a name="handle-content-types-in-azure-logic-apps"></a>Typen inhoud in Azure Logic Apps afhandelen
 
@@ -61,7 +61,7 @@ Logic Apps biedt de mogelijkheid om gebruikers vriendelijke tokens te genereren 
   
   2. Geef onder een voor **beeld van een JSON-nettolading op of plak**een nettolading voor beeld op en kies vervolgens **gereed**. Bijvoorbeeld: 
 
-     ![Scherm afbeelding met het venster ' wanneer een HTTP-aanvraag wordt ontvangen ' met een JSON-voor beeld-nettolading.](./media/logic-apps-content-type/request-trigger.png)
+     ![Scherm opname van de actie ' wanneer een HTTP-aanvraag wordt ontvangen ' met een voor beeld van een JSON-nettolading.](./media/logic-apps-content-type/request-trigger.png)
 
      Het gegenereerde schema wordt nu weer gegeven in de trigger.
 

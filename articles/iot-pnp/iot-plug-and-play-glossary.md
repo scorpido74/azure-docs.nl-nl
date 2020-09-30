@@ -1,20 +1,20 @@
 ---
-title: Verklarende woorden lijst-preview-versie van IoT Plug en Play | Microsoft Docs
-description: 'Concepten: een woorden lijst met algemene termen met betrekking tot IoT Plug en Play preview.'
+title: Woorden lijst met termen-IoT-Plug en Play | Microsoft Docs
+description: 'Concepten: een woorden lijst met algemene termen met betrekking tot IoT Plug en Play.'
 author: dominicbetts
 ms.author: dobett
 ms.date: 07/22/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 2320bed07f574c096be1883a9d82da7311e92fa7
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: d44866e2d04ab1bab5d2eca01374350a7d73a0ea
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88854218"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577336"
 ---
-# <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>Verklarende woorden lijst voor de preview-versie van IoT Plug en Play
+# <a name="glossary-of-terms-for-iot-plug-and-play"></a>Verklarende woorden lijst voor IoT-Plug en Play
 
 Definities van algemene termen die worden gebruikt in de IoT Plug en Play-artikelen.
 
@@ -38,7 +38,7 @@ IoT Hub is een beheerde service die wordt gehost in de cloud en die fungeert als
 
 ## <a name="azure-iot-device-sdk"></a>Azure IoT Device SDK
 
-Er zijn apparaat-Sdk's voor meerdere talen die u kunt gebruiken voor het bouwen van IoT Plug en Play Device-client toepassingen.
+Er zijn apparaat-Sdk's voor meerdere talen die u kunt gebruiken voor het bouwen van IoT Plug en Play Device-client toepassingen. Gebruik **DeviceClient** voor apparaten en **ModuleClient** voor modules en IOT Edge modules.
 
 ## <a name="commands"></a>Opdracht
 
@@ -55,13 +55,19 @@ Een connection string de gegevens die nodig zijn om verbinding te maken met een 
 - Met verbindings reeksen voor apparaten kunnen [iot Plug en Play-apparaten](#iot-plug-and-play-device) verbinding maken met de op het apparaat gerichte eind punten op een IOT-hub. Client code op een apparaat gebruikt de connection string om een beveiligde verbinding met een IoT-hub tot stand te brengen.
 - IoT Hub verbindings reeksen kunnen back-end-oplossingen en hulpprogram ma's gebruiken om veilig verbinding te maken met de service gerichte eind punten op een IoT-hub. Deze oplossingen en hulpprogram ma's beheren de IoT-hub en de apparaten die ermee zijn verbonden.
 
-## <a name="device-certification"></a>Apparaat certificering
+## <a name="default-component"></a>Standaard onderdeel
 
-Met het IoT Plug en Play Device-certificerings programma wordt gecontroleerd of een apparaat voldoet aan de vereisten voor de IoT-Plug en Play-certificering. U kunt een gecertificeerd apparaat toevoegen aan de open bare, [gecertificeerde Azure IOT-apparaatinstantie](https://aka.ms/devicecatalog).
+Alle [apparaatprofielen](#device-model) hebben een standaard onderdeel. Een eenvoudig apparaatprofiel heeft alleen een standaard onderdeel. dit model wordt ook wel een onderdeel apparaat genoemd. Een complexere model heeft meerdere onderdelen genest onder het standaard onderdeel.
+
+## <a name="device-certification"></a>Apparaatcertificering
+
+Het programma voor IoT Plug and Play-apparaatcertificering verifieert dat een apparaat voldoet aan de IoT Plug and Play-certificeringsvereisten. U kunt een gecertificeerd apparaat toevoegen aan de openbare [catalogus Gecertificeerd voor Azure IoT-apparaten](https://aka.ms/devicecatalog).
 
 ## <a name="device-model"></a>Apparaatmodel
 
-Een apparaatprofiel beschrijft een [IOT-Plug en Play apparaat](#iot-plug-and-play-device) en definieert de [onderdelen](#component) waaruit het apparaat is opgebouwd. Een eenvoudig apparaatprofiel heeft geen afzonderlijke onderdelen en bevat een definitie voor één interface op hoofd niveau. Een complexere apparaatprofiel bevat meerdere onderdelen. Een apparaat model komt doorgaans overeen met een fysiek apparaat, product of SKU. U gebruikt de [Digital Apparaatdubbels definition language versie 2](#digital-twins-definition-language) om een model voor een apparaat te definiëren.
+Een apparaatprofiel beschrijft een [IOT-Plug en Play apparaat](#iot-plug-and-play-device) en definieert de [onderdelen](#component) waaruit het apparaat is opgebouwd. Een eenvoudig apparaatprofiel heeft geen afzonderlijke onderdelen en bevat een definitie voor een enkele interface. Het hulp programma Azure IoT Explorer toont een eenvoudig model met één [standaard onderdeel](#default-component).
+
+Een complexere apparaatprofiel bevat meerdere onderdelen. Een apparaat model komt doorgaans overeen met een fysiek apparaat, product of SKU. U gebruikt de [Digital Apparaatdubbels definition language versie 2](#digital-twins-definition-language) om een model voor een apparaat te definiëren.
 
 ## <a name="device-builder"></a>Opbouw functie voor apparaten
 
@@ -69,7 +75,7 @@ Een apparaat Builder gebruikt een [model](#device-model) en [interfaces](#interf
 
 ## <a name="device-modeling"></a>Apparaats modellen
 
-Een [opbouw functie voor apparaten](#device-builder) maakt gebruik van de [taal Digital apparaatdubbels definition](#digital-twins-definition-language) om de mogelijkheden van een [IOT Plug en Play-apparaat](#iot-plug-and-play-device)te model leren. Een [oplossings functie voor oplossingen](#solution-builder) kan een IOT-oplossing van het model configureren.
+Een [opbouw](#device-builder) functie voor apparaten of [module](#module-builder)maakt gebruik van de [taal Digital apparaatdubbels definition](#digital-twins-definition-language) om de mogelijkheden van een [IOT Plug en Play-apparaat](#iot-plug-and-play-device)te model leren. Een [oplossings functie voor oplossingen](#solution-builder) kan een IOT-oplossing van het model configureren.
 
 ## <a name="digital-twin"></a>Digitale dubbele
 
@@ -89,15 +95,19 @@ Een route die is ingesteld in een [IOT-hub](#azure-iot-hub) voor het leveren van
 
 ## <a name="interface"></a>Interface
 
-Een interface beschrijft gerelateerde mogelijkheden die worden geïmplementeerd door een [IOT-Plug en Play apparaat](#iot-plug-and-play-device) of [digitale dubbele](#digital-twin). U kunt interfaces opnieuw gebruiken in verschillende [modellen](#device-model). Wanneer een interface wordt gebruikt in een apparaatprofiel, definieert deze een [onderdeel](#component) van het apparaat.
+Een interface beschrijft gerelateerde mogelijkheden die worden geïmplementeerd door een [IOT-Plug en Play apparaat](#iot-plug-and-play-device) of [digitale dubbele](#digital-twin). U kunt interfaces opnieuw gebruiken in verschillende [modellen](#device-model). Wanneer een interface wordt gebruikt in een apparaatprofiel, definieert deze een [onderdeel](#component) van het apparaat. Een eenvoudig apparaat bevat alleen een standaard interface.
 
 ## <a name="iot-hub-query-language"></a>Query taal IoT Hub
 
 De IoT Hub query taal wordt gebruikt voor meerdere doel einden. U kunt bijvoorbeeld de taal gebruiken om te zoeken naar apparaten die zijn geregistreerd bij uw IoT-hub of om het [digitale dubbele routerings](#digital-twin-route) gedrag te verfijnen.
 
+## <a name="iot-plug-and-play-bridge"></a>IoT Plug en Play-brug
+
+IoT Plug en Play Bridge is een open-source toepassing waarmee bestaande Sens oren en rand apparatuur die zijn gekoppeld aan Windows-of Linux-gateways, verbinding kunnen maken als [IoT Plug en Play-apparaten](#iot-plug-and-play-device).
+
 ## <a name="iot-plug-and-play-device"></a>IoT Plug en Play-apparaat
 
-Een IoT-Plug en Play apparaat is doorgaans een klein, zelfstandig computer apparaat waarmee gegevens worden verzameld of andere apparaten worden beheerd, en waarmee software of firmware wordt uitgevoerd waarmee een [model](#device-model)wordt geïmplementeerd.  Een IoT-Plug en Play apparaat kan bijvoorbeeld een milieubewakings apparaat zijn of een controller voor een irrigatie systeem met een slimme land bouw. U kunt een in de Cloud gehoste IoT-oplossing schrijven naar de opdracht, het besturings element en de gegevens van IoT Plug en Play-apparaten ontvangen.
+Een IoT-Plug en Play apparaat is doorgaans een klein, zelfstandig computer apparaat waarmee gegevens worden verzameld of andere apparaten worden beheerd, en waarmee software of firmware wordt uitgevoerd waarmee een [model](#device-model)wordt geïmplementeerd.  Een IoT-Plug en Play apparaat kan bijvoorbeeld een milieubewakings apparaat zijn of een controller voor een irrigatie systeem met een slimme land bouw. Een IoT-Plug en Play apparaat kan rechtstreeks of als IoT Edge module worden geïmplementeerd. U kunt een in de Cloud gehoste IoT-oplossing schrijven naar de opdracht, het besturings element en de gegevens van IoT Plug en Play-apparaten ontvangen.
 
 ## <a name="iot-plug-and-play-conventions"></a>Conventies voor IoT Plug en Play
 
@@ -114,6 +124,10 @@ Met een [model opslagplaats](concepts-model-repository.md) worden modellen en [i
 ## <a name="model-repository-rest-api"></a>REST API van model opslagplaats
 
 Een API voor het beheer en interactie met de model opslagplaats. U kunt bijvoorbeeld de API gebruiken om [apparaatprofielen](#device-model)toe te voegen en te zoeken.
+
+## <a name="module-builder"></a>Module builder
+
+Een module Builder maakt gebruik van een [model](#device-model) en [interfaces](#interface) voor het uitvoeren van code voor uitvoering op een [IOT Plug en Play-apparaat](#iot-plug-and-play-device). Module Builders implementeren de code als een module of een IoT Edge module om te implementeren in de IoT Edge runtime op een apparaat.
 
 ## <a name="properties"></a>Eigenschappen
 

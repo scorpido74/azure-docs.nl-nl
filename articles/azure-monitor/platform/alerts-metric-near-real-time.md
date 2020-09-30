@@ -5,14 +5,14 @@ author: harelbr
 ms.author: harelbr
 services: monitoring
 ms.topic: conceptual
-ms.date: 8/20/2020
+ms.date: 9/30/2020
 ms.subservice: alerts
-ms.openlocfilehash: 8a608e43ef41abfb7002811df5629eb789c3ae22
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 96f0cda9bdf6a17adb4d8d50b63ef5588e52f700
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89595577"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578101"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Ondersteunde resources voor metrische waarschuwingen in Azure Monitor
 
@@ -32,19 +32,21 @@ Hier volgt de volledige lijst met metrische gegevens bronnen van Azure monitor d
 |---------|---------|-----|----------|
 |Micro soft. Aadiam/azureADMetrics | Ja | Nee | |
 |Microsoft.ApiManagement/service | Ja | Nee | [API Management](./metrics-supported.md#microsoftapimanagementservice) |
-|Micro soft. AppConfiguration/configurationStores |Ja | Nee | [App-configuratie](./metrics-supported.md#microsoftappconfigurationconfigurationstores) |
+|Micro soft. AppConfiguration/configurationStores |Ja | Nee | [App Configuration](./metrics-supported.md#microsoftappconfigurationconfigurationstores) |
 |Micro soft. AppPlatform/lente | Ja | Nee | [Azure Spring Cloud](./metrics-supported.md#microsoftappplatformspring) |
 |Micro soft. Automation/automationAccounts | Ja| Nee | [Automation-accounts](./metrics-supported.md#microsoftautomationautomationaccounts) |
 |Micro soft. AVS/privateClouds | Nee | Nee | |
 |Microsoft.Bat-CH/batchAccounts | Ja | Nee | [Batchaccounts](./metrics-supported.md#microsoftbatchbatchaccounts) |
-|Microsoft.Cache/Redis | Ja | Nee | [Azure Cache voor Redis](./metrics-supported.md#microsoftcacheredis) |
+|Microsoft.Cache/Redis | Ja | Ja | [Azure Cache voor Redis](./metrics-supported.md#microsoftcacheredis) |
+|Micro soft. ClassicCompute/domein naam/sleuven/rollen | Nee | Nee | [Klassieke Cloud Services](./metrics-supported.md#microsoftclassiccomputedomainnamesslotsroles) |
+|Micro soft. ClassicCompute/informatie | Nee | Nee | [Klassieke Virtual Machines](./metrics-supported.md#microsoftclassiccomputevirtualmachines) |
 |Micro soft. ClassicStorage/Storage accounts | Ja | Nee | [Opslag accounts (klassiek)](./metrics-supported.md#microsoftclassicstoragestorageaccounts) |
 |Micro soft. ClassicStorage/Storage accounts/blobServices | Ja | Nee | |
 |Micro soft. ClassicStorage/Storage accounts/fileServices | Ja | Nee | |
 |Micro soft. ClassicStorage/Storage accounts/queueServices | Ja | Nee | |
 |Micro soft. ClassicStorage/Storage accounts/tableServices | Ja | Nee | |
 |Micro soft. CognitiveServices/accounts | Ja | Nee | [Cognitive Services](./metrics-supported.md#microsoftcognitiveservicesaccounts) |
-|Microsoft.Compute/virtualMachines | Yes | Ja<sup>1</sup> | [Virtual Machines](./metrics-supported.md#microsoftcomputevirtualmachines) |
+|Microsoft.Compute/virtualMachines | Ja | Ja<sup>1</sup> | [Virtual Machines](./metrics-supported.md#microsoftcomputevirtualmachines) |
 |Microsoft.Compute/virtualMachineScaleSets | Ja | Nee |[Schaal sets voor virtuele machines](./metrics-supported.md#microsoftcomputevirtualmachinescalesets) |
 |Micro soft. ContainerInstance/containerGroups | Ja| Nee | [Containergroepen](./metrics-supported.md#microsoftcontainerinstancecontainergroups) |
 |Micro soft. ContainerRegistry/registers | Nee | Nee | [Container registers](./metrics-supported.md#microsoftcontainerregistryregistries) |
@@ -55,7 +57,7 @@ Hier volgt de volledige lijst met metrische gegevens bronnen van Azure monitor d
 |Microsoft.DataShare/accounts | Ja | Nee | |
 |Microsoft.DBforMariaDB/servers | Nee | Nee | [DB voor MariaDB](./metrics-supported.md#microsoftdbformariadbservers) |
 |Microsoft.DBforMySQL/servers | Nee | Nee |[DB voor MySQL](./metrics-supported.md#microsoftdbformysqlservers)|
-|Micro soft. DBforPostgreSQL/flexibleServers | Ja | Nee | |
+|Microsoft.DBforPostgreSQL/flexibleServers | Ja | Nee | |
 |Microsoft.DBforPostgreSQL/servers | Nee | Nee | [DB voor PostgreSQL](./metrics-supported.md#microsoftdbforpostgresqlservers)|
 |Micro soft. DBforPostgreSQL/serversv2 | Nee | Nee | [DB voor PostgreSQL v2](./metrics-supported.md#microsoftdbforpostgresqlserversv2)|
 |Micro soft. DBforPostgreSQL/singleservers | Nee | Nee | [DB voor PostgreSQL (enkelvoudige servers)](./metrics-supported.md#microsoftdbforpostgresqlsingleservers)|
@@ -82,7 +84,7 @@ Hier volgt de volledige lijst met metrische gegevens bronnen van Azure monitor d
 |Micro soft. NetApp/netAppAccounts/capacityPools/volumes | Ja | Ja | [Azure NetApp-volumes](./metrics-supported.md#microsoftnetappnetappaccountscapacitypoolsvolumes) |
 |Micro soft. Network/applicationGateways | Ja | Nee | [Toepassings gateways](./metrics-supported.md#microsoftnetworkapplicationgateways) |
 |Micro soft. Network/azurefirewalls | Ja | Nee | [Firewalls](./metrics-supported.md#microsoftnetworkazurefirewalls) |
-|Micro soft. Network/dnsZones | Nee | Nee | [DNS-zones](./metrics-supported.md#microsoftnetworkdnszones) |
+|Microsoft.Network/dnsZones | Nee | Nee | [DNS-zones](./metrics-supported.md#microsoftnetworkdnszones) |
 |Microsoft.Network/expressRouteCircuits | N.v.t. | No |[Express Route-circuits](./metrics-supported.md#microsoftnetworkexpressroutecircuits) |
 |Micro soft. Network/loadBalancers (alleen voor standaard-Sku's)| Ja| Nee | [Load balancers](./metrics-supported.md#microsoftnetworkloadbalancers) |
 |Micro soft. Network/natGateways| Nee | Nee | |
@@ -100,7 +102,7 @@ Hier volgt de volledige lijst met metrische gegevens bronnen van Azure monitor d
 |Micro soft. SQL/managedInstances | Nee | Ja | [Beheerde SQL-exemplaren](./metrics-supported.md#microsoftsqlmanagedinstances) |
 |Microsoft.Sql/servers/databases | Nee | Ja | [SQL Databases](./metrics-supported.md#microsoftsqlserversdatabases) |
 |Micro soft. SQL/servers/elasticPools | Nee | Ja | [Elastische SQL-Pools](./metrics-supported.md#microsoftsqlserverselasticpools) |
-|Microsoft.Storage/storageAccounts |Ja | Nee | [Opslag accounts](./metrics-supported.md#microsoftstoragestorageaccounts)|
+|Microsoft.Storage/storageAccounts |Ja | Nee | [Storage Accounts](./metrics-supported.md#microsoftstoragestorageaccounts)|
 |Micro soft. Storage/Storage accounts/Services | Ja| Nee | [BLOB Services](./metrics-supported.md#microsoftstoragestorageaccountsblobservices), [Bestands Services](./metrics-supported.md#microsoftstoragestorageaccountsfileservices), [wachtrij Services](./metrics-supported.md#microsoftstoragestorageaccountsqueueservices) en [tabel Services](./metrics-supported.md#microsoftstoragestorageaccountstableservices)|
 |Micro soft. StorageCache/caches | Ja | Nee | |
 |Micro soft. StorageSync/storageSyncServices | Ja | Nee | [Opslag synchronisatie Services](./metrics-supported.md#microsoftstoragesyncstoragesyncservices) |

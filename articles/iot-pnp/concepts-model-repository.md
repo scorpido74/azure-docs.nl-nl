@@ -7,22 +7,25 @@ ms.date: 07/24/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 7d736721e2676a42da90aead3144f8016329f730
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: c82858294054b50d6edae42a3d41e9fcb89ca89d
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475495"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577795"
 ---
 # <a name="azure-iot-model-repository"></a>Azure IoT-model opslagplaats
 
 Met de opslag plaats Azure IoT model kunnen apparaten bouwen IoT Plug en Play-apparaten beheren en delen. De modellen van het apparaat zijn JSON-bestanden die zijn gedefinieerd met de [Digital Apparaatdubbels Modeling Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md). De modellen die zijn opgeslagen in de model opslagplaats service kunnen met behulp van toegangs beheer of openbaar worden gedeeld met oplossings ontwikkelaars, zonder dat hiervoor een verificatie vereist is om de IoT Plug en Play Cloud-oplossing te integreren en te ontwikkelen.
 
+> [!NOTE]
+> Apparaat-Builders kunnen ervoor kiezen om IoT Plug en Play-apparaten rechtstreeks op een apparaat te implementeren, modules te gebruiken of in een IoT Edge-module.
+
 U kunt de model opslagplaats openen met behulp van:
 
 - [Bibliotheek Portal van Azure IOT-model](https://aka.ms/iotmodelrepo)
 - [REST API van Azure IoT-model opslagplaats](https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/getmodelasync/getmodelasync)
-- [Opslag opdrachten voor Azure CLI IoT-model](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp?view=azure-cli-latest)
+- [Opslag opdrachten voor Azure CLI IoT-model](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp?view=azure-cli-latest&preserve-view=true)
 
 ## <a name="public-models"></a>Open bare modellen
 
@@ -45,10 +48,10 @@ var httpClient = new HttpClient();
 httpClient.BaseAddress = new Uri("https://repo.azureiotrepository.com");
 
 var modelId = "dtmi:com:mxchip:model;1";
-var response = await httpClient.GetAsync($"/models/{modelId}?api-version=2020-05-01-preview").ConfigureAwait(false);
+var response = await httpClient.GetAsync($"/models/{modelId}?api-version=2020-09-30").ConfigureAwait(false);
 ```
 
-Als u een openbaar model wilt weer geven met de CLI, raadpleegt u de Azure CLI-opdracht voor het [ophalen van modellen](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-show) .
+Als u een openbaar model wilt weer geven met de CLI, raadpleegt u de Azure CLI-opdracht voor het [ophalen van modellen](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-show&preserve-view=true) .
 
 ## <a name="company-models"></a>Bedrijfs modellen
 
@@ -115,10 +118,10 @@ Als u een bedrijfs-of gedeeld model wilt weer geven met behulp van de REST API, 
 
 ```csharp
 var modelId = "dtmi:com:mxchip:model;1";
-var response = await httpClient.GetAsync($"/models/{modelId}?api-version=2020-05-01-preview").ConfigureAwait(false);
+var response = await httpClient.GetAsync($"/models/{modelId}?api-version=2020-09-30").ConfigureAwait(false);
 ```
 
-Als u een bedrijfs model of een gedeeld model wilt weer geven met behulp van de CLI, raadpleegt u de Azure CLI-opdracht voor het [ophalen van modellen](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-show) .
+Als u een bedrijfs model of een gedeeld model wilt weer geven met behulp van de CLI, raadpleegt u de Azure CLI-opdracht voor het [ophalen van modellen](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-show&preserve-view=true) .
 
 ### <a name="manage-roles"></a>Rollen beheren
 
@@ -161,10 +164,10 @@ Als u een model wilt uploaden met behulp van de REST API, raadpleegt u de API [C
 ```csharp
 var httpContent = new StringContent(jsonLdModel, Encoding.UTF8, "application/json");
 var modelId = "dtmi:com:mxchip:model;1";
-var response = await httpClient.PutAsync($"/models/{modelId}?api-version=2020-05-01-preview", httpContent).ConfigureAwait(false);
+var response = await httpClient.PutAsync($"/models/{modelId}?api-version=2020-09-30", httpContent).ConfigureAwait(false);
 ```
 
-Als u een model wilt uploaden met behulp van de CLI, raadpleegt u de Azure CLI-opdracht voor het [maken van een model](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-create) .
+Als u een model wilt uploaden met behulp van de CLI, raadpleegt u de Azure CLI-opdracht voor het [maken van een model](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-create&preserve-view=true) .
 
 ### <a name="publish-a-model"></a>Een model publiceren
 
@@ -189,7 +192,10 @@ Een model publiceren met behulp van de portal:
 
 Als u een model wilt publiceren met behulp van de REST API, raadpleegt u de documentatie [een model publiceren](https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/createorupdateasync/createorupdateasync) rest API. Geef de query teken reeks parameter `update-metadata=true` op om een model te publiceren met behulp van de rest API. Zie [een beveiligings token door geven bij het openen van bedrijfs modellen met een rest API](#passing-a-security-token-when-accessing-company-models-with-a-rest-api) voor informatie over het door geven van een JWT-autorisatie-header in de HTTP-aanvraag.
 
-Als u een model wilt publiceren met behulp van de CLI, raadpleegt u de Azure CLI-opdracht voor het [publiceren van een model](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-publish) .
+Als u een model wilt publiceren met behulp van de CLI, raadpleegt u de Azure CLI-opdracht voor het [publiceren van een model](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-publish&preserve-view=true) .
+
+> [!NOTE]
+> Modellen moeten worden gepubliceerd in de model opslagplaats voordat u de certificerings tests uitvoert. Zie voor meer informatie [hoe u IoT Plug en Play-apparaten kunt certificeren](howto-certify-device.md).
 
 ### <a name="share-a-model"></a>Een model delen
 
