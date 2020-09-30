@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: b65b5b847712ce32c6723d725be9cf2ed1f99050
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fcbf48081484941fd93f209bee21eb14c2c38310
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85801517"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570146"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>Azure Data Factory visueel bewaken
 
@@ -29,7 +29,7 @@ Alle data factory-uitvoeringen worden weer gegeven in de lokale tijd zone van de
 
 De standaard weergave voor bewaking is de lijst met pijplijn uitvoeringen in de geselecteerde tijds periode. De volgende kolommen worden weer gegeven:
 
-| **Kolom naam** | **Beschrijving** |
+| **Kolomnaam** | **Beschrijving** |
 | --- | --- |
 | Naam van pijp lijn | Naam van de pijp lijn |
 | Acties | Pictogrammen waarmee u de details van de activiteit kunt bekijken, annuleren of de pijp lijn opnieuw moet uitvoeren |
@@ -52,7 +52,7 @@ U moet hand matig de knop **vernieuwen** selecteren om de lijst met pijp lijn-en
 
 Als u de uitvoering van de activiteit voor elke pijplijn uitvoering wilt weer geven, selecteert u het pictogram **activiteit uitvoeringen weer geven** in de kolom **acties** . In de lijst weergave worden de uitvoeringen van activiteiten weer gegeven die overeenkomen met elke pijplijn uitvoering.
 
-| **Kolom naam** | **Beschrijving** |
+| **Kolomnaam** | **Beschrijving** |
 | --- | --- |
 | Activiteitsnaam | De naam van de activiteit in de pijp lijn |
 | Type activiteit | Type activiteit, zoals **copy**, **ExecuteDataFlow**of **AzureMLExecutePipeline** |
@@ -90,7 +90,7 @@ Nadat u de gebruikers eigenschappen hebt gemaakt, kunt u deze bewaken in de cont
 
 Scha kelen tussen de uitvoering van de pijp lijn in aflopende of oplopende volg orde op basis van de start tijd. Filter pijplijn wordt uitgevoerd met behulp van de volgende kolommen:
 
-| **Kolom naam** | **Beschrijving** |
+| **Kolomnaam** | **Beschrijving** |
 | --- | --- |
 | Naam van pijp lijn | Filter op de naam van de pijp lijn. |
 | Start uitvoeren |  Bepaal het tijds bereik van de pijplijn uitvoeringen wordt weer gegeven. Opties bevatten snelle filters voor de **afgelopen 24 uur**, de **afgelopen week**, de **afgelopen 30 dagen** of het selecteren van een aangepaste datum en tijd. |
@@ -136,7 +136,7 @@ U kunt ook de uitvoerings geschiedenis weer geven voor een bepaalde pijplijn uit
 
 U kunt de resources die worden gebruikt door een pijplijn uitvoering bekijken door te klikken op het verbruiks pictogram naast de uitvoering. 
 
-![Verbruik bewaken](media/monitor-visually/monitor-consumption-1.png)
+![Scherm afbeelding die laat zien waar u de resources ziet die door een pijp lijn worden verbruikt.](media/monitor-visually/monitor-consumption-1.png)
 
 Als u op het pictogram klikt, wordt een verbruiks rapport geopend met de resources die worden gebruikt door die pijplijn uitvoering. 
 
@@ -190,7 +190,7 @@ Bekijk de volgende video voor een inleiding en demonstratie van zeven minuten vo
 
     ![Vak voor doel criteria](media/monitor-visually/add-criteria-1.png)
 
-    ![Lijst met criteria](media/monitor-visually/add-criteria-2.png)
+    ![Scherm afbeelding die laat zien waar u één metriek selecteert om de waarschuwings voorwaarde in te stellen.](media/monitor-visually/add-criteria-2.png)
 
     ![Lijst met criteria](media/monitor-visually/add-criteria-3.png)
 

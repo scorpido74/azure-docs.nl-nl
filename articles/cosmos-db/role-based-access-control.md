@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: mjbrown
-ms.openlocfilehash: e65c17be47cdc59f929aa539071cf1c758e271f7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 10713b264429b5588826421231e45194ebed33f0
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320877"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569179"
 ---
 # <a name="role-based-access-control-in-azure-cosmos-db"></a>Op rollen gebaseerd toegangsbeheer in Azure Cosmos DB
 
@@ -29,7 +29,7 @@ Hier volgen de ingebouwde rollen die door Azure Cosmos DB worden ondersteund:
 |[Cosmos DB-operator](../role-based-access-control/built-in-roles.md#cosmos-db-operator)|Kan Azure Cosmos-accounts,-data bases en-containers inrichten. Geen toegang tot gegevens of gebruik Data Explorer.|
 
 > [!IMPORTANT]
-> RBAC-ondersteuning in Azure Cosmos DB is alleen van toepassing op beheer vlak bewerkingen. Gegevensvlak bewerkingen worden beveiligd met behulp van hoofd sleutels of bron tokens. Zie [beveiligde toegang tot gegevens in azure Cosmos DB](secure-access-to-data.md) voor meer informatie.
+> RBAC-ondersteuning in Azure Cosmos DB is alleen van toepassing op beheer vlak bewerkingen. Gegevensvlak bewerkingen worden beveiligd met behulp van primaire sleutels of bron tokens. Zie [beveiligde toegang tot gegevens in azure Cosmos DB](secure-access-to-data.md) voor meer informatie.
 
 ## <a name="identity-and-access-management-iam"></a>Identiteits-en toegangs beheer (IAM)
 

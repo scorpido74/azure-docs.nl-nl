@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.reviewer: sngun
-ms.openlocfilehash: a68207b3e5390a26e8d62ee6b725b0768ea565a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7583e35cad03927d003de7a836de03af091b55eb
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85116074"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569699"
 ---
 # <a name="work-with-azure-cosmos-account"></a>Werken met een Azure Cosmos-account
 
@@ -21,7 +21,7 @@ Azure Cosmos DB is een volledig beheerd platform-as-a-Service (PaaS). Als u Azur
 
 Het Azure Cosmos-account is de fundamentele eenheid van wereld wijde distributie en hoge Beschik baarheid. Voor een wereld wijde distributie van uw gegevens en door Voer in meerdere Azure-regio's kunt u op elk gewenst moment Azure-regio's toevoegen aan en verwijderen uit uw Azure Cosmos-account. U kunt uw Azure Cosmos-account configureren om een of meerdere schrijf regio's te hebben. Zie [Azure-regio's toevoegen aan en verwijderen uit uw Azure Cosmos-account](how-to-manage-database-account.md)voor meer informatie. U kunt het [standaard consistentie](consistency-levels.md) niveau configureren voor het Azure Cosmos-account. Azure Cosmos DB biedt uitgebreide Sla's die de door Voer, latentie op het 99e percentiel, consistentie en hoge Beschik baarheid omvatten. Zie [Azure Cosmos DB sla's](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)voor meer informatie.
 
-Als u de toegang tot alle gegevens in uw Azure Cosmos-account veilig wilt beheren, kunt u de [hoofd sleutels](secure-access-to-data.md) gebruiken die aan uw account zijn gekoppeld. Als u de toegang tot uw gegevens verder wilt beveiligen, kunt u een [VNET-service-eind punt](vnet-service-endpoint.md) en [IP-firewall](firewall-support.md) configureren voor uw Azure Cosmos-account. 
+Als u de toegang tot alle gegevens in uw Azure Cosmos-account veilig wilt beheren, kunt u de [primaire sleutels](secure-access-to-data.md) gebruiken die aan uw account zijn gekoppeld. Als u de toegang tot uw gegevens verder wilt beveiligen, kunt u een [VNET-service-eind punt](vnet-service-endpoint.md) en [IP-firewall](firewall-support.md) configureren voor uw Azure Cosmos-account. 
 
 ## <a name="elements-in-an-azure-cosmos-account"></a>Elementen in een Azure Cosmos-account
 

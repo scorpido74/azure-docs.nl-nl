@@ -6,32 +6,32 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: e0a24b52c12bce6a8e016a926dfa64a1e36a7cc6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d98c9a7e58f08d9ad63183805cd6cd0d2ab3b3d
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72753307"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570170"
 ---
 # <a name="optimize-multi-region-cost-in-azure-cosmos-db"></a>Multiregionale kosten optimaliseren in Azure Cosmos DB
 
 U kunt op elk gewenst moment regio's toevoegen aan en verwijderen uit uw Azure Cosmos-account. De door u geconfigureerde door Voer voor verschillende Azure Cosmos-data bases en containers is gereserveerd in elke regio die aan uw account is gekoppeld. Als de door Voer is ingericht per uur, dat wil zeggen de som van RU/s die is geconfigureerd voor alle data bases en containers voor uw Azure Cosmos `T` -account, en het aantal Azure-regio's dat aan uw database account is gekoppeld, is de `N` totale ingerichte door Voer voor uw Cosmos-account voor een gegeven uur gelijk aan:
 
-1. `T x N RU/s`Als uw Azure Cosmos-account is geconfigureerd met één schrijf regio. 
+1. `T x N RU/s` Als uw Azure Cosmos-account is geconfigureerd met één schrijf regio. 
 
-1. `T x (N+1) RU/s`Als uw Azure Cosmos-account is geconfigureerd met alle regio's die schrijf bewerkingen kunnen verwerken. 
+1. `T x (N+1) RU/s` Als uw Azure Cosmos-account is geconfigureerd met alle regio's die schrijf bewerkingen kunnen verwerken. 
 
 Ingerichte doorvoer met één schrijfregio kost $ 0,008/uur per 100 RU/s, en ingerichte doorvoer met meerdere schrijfregio's kost $ 0,016/per uur per 100 RU/s. Zie Azure Cosmos DB- [pagina met prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/)voor meer informatie.
 
 ## <a name="costs-for-multiple-write-regions"></a>Kosten voor meerdere schrijf regio's
 
-In een systeem met meerdere masters neemt het net beschik bare RUs voor schrijf bewerkingen tijden toe, `N` waarbij `N` het aantal schrijf regio's is. In tegens telling tot de schrijf bewerkingen van één regio is elke regio nu schrijfbaar en moet er conflicten worden opgelost. De hoeveelheid werk belasting voor schrijvers is toegenomen. Van het kosten plannings punt van de weer gave, voor het `M` wereld wijd uitvoeren van ru/s voor schrijf bewerkingen, moet u M inrichten `RUs` op een container-of database niveau. U kunt vervolgens zoveel regio's toevoegen als u wilt en deze gebruiken voor schrijf bewerkingen voor het uitvoeren `M` van de wereld wijde schrijf bewerkingen van ru. 
+In een systeem met meerdere regio's schrijft het net beschik bare RUs voor schrijf bewerkingen tot `N` `N` een toename van het aantal schrijf regio's. In tegens telling tot de schrijf bewerkingen van één regio is elke regio nu schrijfbaar en moet er conflicten worden opgelost. De hoeveelheid werk belasting voor schrijvers is toegenomen. Van het kosten plannings punt van de weer gave, voor het `M` wereld wijd uitvoeren van ru/s voor schrijf bewerkingen, moet u M inrichten `RUs` op een container-of database niveau. U kunt vervolgens zoveel regio's toevoegen als u wilt en deze gebruiken voor schrijf bewerkingen voor het uitvoeren `M` van de wereld wijde schrijf bewerkingen van ru. 
 
 ### <a name="example"></a>Voorbeeld
 
 Stel dat u een container hebt die is ingericht met een doorvoer snelheid van 10.000 RU/s en dat deze maand 1 TB aan gegevens opslaat. Stel dat u drie regio's, VS-Oost, Europa-noord en Azië-oost toevoegt, elk met dezelfde opslag en door Voer en u de mogelijkheid wilt geven om naar de containers in alle vier regio's te schrijven vanuit uw wereld wijd gedistribueerde app. Uw totale maandelijkse factuur (aangenomen 31 dagen) in een maand is als volgt:
 
-|**Item**|**Gebruik (maandelijks)**|**Tarief**|**Maandelijkse kosten**|
+|**Item**|**Gebruik (maandelijks)**|**Snelheid**|**Maandelijkse kosten**|
 |----|----|----|----|
 |Doorvoer factuur voor container in West-VS (meerdere schrijf regio's) |10.000 RU/s * 24 * 31 |$0,016 per 100 RU/s per uur |$1.190,40 |
 |Doorvoer factuur voor drie extra regio's: VS-Oost, Europa-noord en Azië-oost (meerdere schrijf regio's) |(3 + 1) * 10.000 RU/s * 24 * 31 |$0,016 per 100 RU/s per uur |$4.761,60 |

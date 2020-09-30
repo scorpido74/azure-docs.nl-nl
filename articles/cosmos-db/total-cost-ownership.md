@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 0955cc8722c2a2b559935341cfd7e87bac6e4d3e
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 1e6d0343a68d502fb567f6010b8c8b3043e282a8
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954652"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569489"
 ---
 # <a name="total-cost-of-ownership-tco-with-azure-cosmos-db"></a>Totale eigendoms kosten (TCO) met Azure Cosmos DB
 
@@ -26,7 +26,7 @@ In tegens telling tot een Cloud-native database service-Azure Cosmos DB zijn de 
 
 Het serverloze inrichtings model van Azure Cosmos DB elimineert de nood zaak om de infra structuur van de data base te overinrichten. Azure Cosmos DB bronnen worden zonder gespecialiseerde configuraties of licenties verschaft. Als gevolg hiervan kunnen de toepassingen met Azure Cosmos DB-ondersteuning worden uitgevoerd met een totale kosten besparing van 70 procent in vergelijking met de OSS NoSQL-data bases. Zie [klant gebruik-cases](https://customers.microsoft.com/en-us/search?sq=Cosmos%20DB&ff=&p=0&so=story_publish_date%20desc)voor enkele voor beelden van realtime. Andere voor delen van het Azure Cosmos DB prijs model zijn:
 
-* **Voordelige prijs:** Markt analisten, klanten en partners hebben een grotere waarde bevestigd van alle functies die Azure Cosmos DB bieden voor een veel lagere prijs vergeleken met wat klanten kunnen krijgen bij het implementeren van deze oplossingen in hun eigen of via andere leveranciers. De data base is voorzien van een dergelijke globale distributie, meerdere modellen, goed gedefinieerde en intuïtieve consistentie modellen, automatische indexering is aanzienlijk vereenvoudigd met Azure Cosmos DB zonder complexiteit, overhead of downtime.
+* **Voordelige prijs:** Markt analisten, klanten en partners hebben een grotere waarde bevestigd van alle functies die Azure Cosmos DB bieden voor een veel lagere prijs vergeleken met wat klanten kunnen krijgen bij het implementeren van deze oplossingen in hun eigen of via andere leveranciers. De Data Base bevat een dergelijke wereld wijde distributie, meerdere regio's schrijft, goed gedefinieerde en intuïtieve consistentie modellen, automatische indexering is aanzienlijk vereenvoudigd met Azure Cosmos DB zonder complexiteit, overhead of downtime.
 
 * **Er is geen NoSQL DevOps-beheer vereist:** Met Azure Cosmos DB één hoeft DevOps niet te worden gebruikt voor het beheren van implementaties, het uitvoeren van onderhoud, schalen of patches. U kunt alle werk belastingen uitvoeren die u zou doen met een OSS NoSQL-cluster dat wordt gehost op locatie of op een Cloud infrastructuur.
 

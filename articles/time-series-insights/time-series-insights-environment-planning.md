@@ -9,16 +9,19 @@ manager: diviso
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: ea243ffd125a527949c4a264177e78de04a22aae
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 546c53334b7700ab73c22edb2d82b324bfad61a9
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046426"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569445"
 ---
 # <a name="plan-your-azure-time-series-insights-gen1-environment"></a>Uw Azure Time Series Insights gen1-omgeving plannen
+
+> [!CAUTION]
+> Dit is een gen1-artikel.
 
 In dit artikel wordt beschreven hoe u uw Azure Time Series Insights gen1-omgeving plant op basis van uw verwachte Ingangs frequentie en de vereisten voor het bewaren van gegevens.
 
@@ -48,12 +51,12 @@ Standaard worden gegevens door Azure Time Series Insights bewaard op basis van d
 
 ## <a name="data-retention"></a>Bewaartijd voor gegevens
 
-U kunt de instelling voor de **Bewaar tijd van gegevens** in uw Azure time series Insights omgeving wijzigen. U kunt Maxi maal 400 dagen retentie inschakelen. 
+U kunt de instelling voor de **Bewaar tijd van gegevens** in uw Azure time series Insights omgeving wijzigen. U kunt Maxi maal 400 dagen retentie inschakelen.
 
 Azure Time Series Insights heeft twee modi:
 
-* De ene modus optimaliseert voor de meest actuele gegevens. Er wordt een beleid afgedwongen om **oude gegevens te verwijderen** die recente gegevens verlaten die beschikbaar zijn bij het exemplaar. Deze modus is standaard ingeschakeld. 
-* De overige optimaliseert gegevens zodat deze onder de geconfigureerde Bewaar limieten blijven. Door **ingangen te onderbreken** voor komt u dat nieuwe gegevens worden uitgeschakeld wanneer de **opslag limiet is overschreden**.
+- De ene modus optimaliseert voor de meest actuele gegevens. Er wordt een beleid afgedwongen om **oude gegevens te verwijderen** die recente gegevens verlaten die beschikbaar zijn bij het exemplaar. Deze modus is standaard ingeschakeld.
+- De overige optimaliseert gegevens zodat deze onder de geconfigureerde Bewaar limieten blijven. Door **ingangen te onderbreken** voor komt u dat nieuwe gegevens worden uitgeschakeld wanneer de **opslag limiet is overschreden**.
 
 U kunt de Bewaar periode aanpassen en scha kelen tussen de twee modi op de configuratie pagina van de omgeving in het Azure Portal.
 
@@ -83,7 +86,7 @@ Het tweede gebied waarop u zich kunt richten voor het plannen van uw Azure Time 
 
 U kunt de capaciteit van een S1-of S2-SKU verhogen tot 10 eenheden in één omgeving. U kunt niet migreren van een S1-omgeving naar een S2. U kunt niet migreren van een S2-omgeving naar een S1.
 
-Voor ingangs capaciteit bepaalt u eerst het totale aantal binnenkomend dat u per maand nodig hebt. Bepaal vervolgens wat uw behoeften per minuut zijn. 
+Voor ingangs capaciteit bepaalt u eerst het totale aantal binnenkomend dat u per maand nodig hebt. Bepaal vervolgens wat uw behoeften per minuut zijn.
 
 Beperking en latentie spelen een rol in capaciteit per minuut. Als u een Prikker hebt in uw gegevens die minder dan 24 uur duren, kan Azure Time Series Insights een ingangs snelheid hebben van twee keer de tarieven die in de voor gaande tabel worden weer gegeven.
 

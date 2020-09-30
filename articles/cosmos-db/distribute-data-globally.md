@@ -1,17 +1,17 @@
 ---
 title: Gegevens globaal distribueren met Azure Cosmos DB
-description: Meer informatie over het schalen van geo-replicatie, multi-master, failover en herstel van gegevens met behulp van globale data bases van Azure Cosmos DB, een wereld wijd gedistribueerde, multi-model database service.
+description: Meer informatie over het schalen van geo-replicatie, het schrijven van meerdere regio's en het herstellen van gegevens met behulp van globale data bases van Azure Cosmos DB, een wereld wijd gedistribueerde, multi-model database service.
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: abd18132c7489153566042b0b7e3557662864f30
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 29917b0911fbab36fbb30a587ee7cac223b993f2
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91399462"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570180"
 ---
 # <a name="distribute-your-data-globally-with-azure-cosmos-db"></a>Gegevens wereldwijd distribueren met Azure Cosmos DB
 
@@ -27,7 +27,7 @@ Met Azure Cosmos DB kunt u op elk gewenst moment de regio's toevoegen of verwijd
 
 ## <a name="key-benefits-of-global-distribution"></a>Belangrijkste voor delen van wereld wijde distributie
 
-**Wereld wijd actieve apps bouwen.** Met het nieuwe multi-master replicatie protocol ondersteunt elke regio zowel schrijf bewerkingen als Lees bewerkingen. De functionaliteit voor meerdere masters biedt ook de volgende mogelijkheden:
+**Wereld wijd actieve apps bouwen.** Met zijn nieuwe Multi-Region writes-replicatie protocol ondersteunt elke regio zowel schrijf bewerkingen als Lees bewerkingen. De functie voor het schrijven van meerdere regio's biedt ook de volgende mogelijkheden:
 
 - Onbeperkte elastische schrijf-en lees schaal baarheid. 
 - 99,999% Beschik baarheid voor lezen en schrijven over de hele wereld.
@@ -50,7 +50,7 @@ Met de Azure Cosmos DB multi-multihoming-Api's is uw toepassing op de hoogte van
 Meer informatie over globale distributie vindt u in de volgende artikelen:
 
 * [Wereldwijde distributie - achter de schermen](global-dist-under-the-hood.md)
-* [Multi-Master configureren in uw toepassingen](how-to-multi-master.md)
+* [Het schrijven van meerdere regio's in uw toepassingen configureren](how-to-multi-master.md)
 * [Clients configureren voor multihoming](how-to-manage-database-account.md#configure-multiple-write-regions)
 * [Regio's toevoegen aan of verwijderen uit uw Azure Cosmos DB-account](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
 * [Een aangepast beleid voor conflict oplossing maken voor SQL-API-accounts](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy)

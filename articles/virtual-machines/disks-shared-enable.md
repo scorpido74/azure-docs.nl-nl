@@ -4,16 +4,16 @@ description: Configureer een Azure Managed disk met gedeelde schijven, zodat u d
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 09/30/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 447380c7aed7e765695ea5389f0b3f2973a16b0d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 82d482cd0a1b3a5b6028b9249030b7b1a093d22d
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328136"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570554"
 ---
 # <a name="enable-shared-disk"></a>Gedeelde schijf inschakelen
 
@@ -209,6 +209,6 @@ U moet ook een permanente reserve ring-sleutel opgeven wanneer u PR_RESERVE, PR_
 ## <a name="next-steps"></a>Volgende stappen
 
 Als u liever Azure Resource Manager sjablonen gebruikt voor het implementeren van uw schijf, zijn de volgende voorbeeld sjablonen beschikbaar:
-- [Premium - SSD](https://aka.ms/SharedPremiumDiskARMtemplate)
+- [Premium SSD](https://aka.ms/SharedPremiumDiskARMtemplate)
 - [Regionale Ultra schijven](https://aka.ms/SharedUltraDiskARMtemplateRegional)
 - [Zonegebonden Ultra schijven](https://aka.ms/SharedUltraDiskARMtemplateZonal)

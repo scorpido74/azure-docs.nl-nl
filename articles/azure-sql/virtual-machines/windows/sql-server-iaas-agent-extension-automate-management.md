@@ -16,12 +16,12 @@ ms.date: 08/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 00dfcad351348ed4ca4f08289e76e85a089c5d86
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: df3e2ae2737aa8bfedd0e8d7daa9d42771f1937b
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91272247"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570342"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-by-using-the-sql-server-iaas-agent-extension"></a>Beheer taken automatiseren op virtuele machines van Azure met behulp van de SQL Server IaaS agent-extensie
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -37,11 +37,11 @@ Als u de klassieke versie van dit artikel wilt bekijken, raadpleegt u [SQL Serve
 ## <a name="supported-services"></a>Ondersteunde services
 De SQL Server IaaS agent-extensie ondersteunt de volgende beheer taken:
 
-| Beheer functie | Beschrijving |
+| Beheer functie | Description |
 | --- | --- |
 | **Automatische back-up SQL Server** |Automatiseert het plannen van back-ups voor alle data bases voor het standaard exemplaar of een [correct geïnstalleerd](frequently-asked-questions-faq.md#administration) benoemd exemplaar van SQL Server op de virtuele machine. Zie [automatische back-up voor SQL Server in azure virtual machines (Resource Manager)](automated-backup-sql-2014.md)voor meer informatie. |
 | **Automatische patching SQL Server** |Hiermee configureert u een onderhouds venster waarin belang rijke Windows-updates voor uw virtuele machine kunnen worden uitgevoerd, zodat u updates kunt voor komen tijdens piek tijden voor uw werk belasting. Zie voor meer informatie [automatische patching voor SQL Server in azure virtual machines (Resource Manager)](automated-patching.md). |
-| **Integratie van Azure Key Vault** |Hiermee kunt u Azure Key Vault automatisch installeren en configureren op uw SQL Server-VM. Zie [Azure Key Vault-integratie configureren voor SQL Server op Azure virtual machines (Resource Manager)](azure-key-vault-integration-configure.md)voor meer informatie. |
+| **Integratie van Azure Sleutelkluis** |Hiermee kunt u Azure Key Vault automatisch installeren en configureren op uw SQL Server-VM. Zie [Azure Key Vault-integratie configureren voor SQL Server op Azure virtual machines (Resource Manager)](azure-key-vault-integration-configure.md)voor meer informatie. |
 
 Nadat de uitbrei ding voor de SQL Server IaaS-agent is geïnstalleerd en wordt uitgevoerd, worden de beheer functies beschikbaar:
 
@@ -85,7 +85,7 @@ De SQL Server IaaS-extensie wordt geïnstalleerd wanneer u uw SQL Server virtuel
     -Version "2.0" -Location "Central US";  
   ```
 
-> [!NOTE]
+> [!WARNING]
 > Als u de uitbrei ding installeert, wordt de SQL Server-service opnieuw gestart. 
 
 

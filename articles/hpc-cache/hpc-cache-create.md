@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: v-erkel
-ms.openlocfilehash: 5b1062556f1f971690f835274be15c11b072eca9
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 5e17c55f8321ba0ad9a9686ada41413d64879d6c
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612077"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570882"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Een HPC-cache van Azure maken
 
@@ -98,7 +98,7 @@ Wanneer het maken is voltooid, wordt er een melding weer gegeven met een koppeli
 > [!NOTE]
 > Als uw cache door de klant beheerde versleutelings sleutels gebruikt, kan de cache worden weer gegeven in de lijst met resources voordat de implementatie status wordt gewijzigd in voltooid. Zodra de status van de cache wacht op de sleutel, kunt u [deze machtigen](customer-keys.md#3-authorize-azure-key-vault-encryption-from-the-cache) voor het gebruik **van** de sleutel kluis.
 
-## <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+## <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ## <a name="create-the-cache-with-azure-cli"></a>De cache maken met Azure CLI
 
@@ -182,6 +182,97 @@ Het maken van de cache duurt enkele minuten. Als de opdracht maken is voltooid, 
     "pendingFirmwareVersion": null
   }
 }
+```
+
+Het bericht bevat nuttige informatie, waaronder de volgende items:
+
+* Client koppel adressen: gebruik deze IP-adressen wanneer u klaar bent om clients te verbinden met de cache. Lees [de Azure HPC-cache koppelen](hpc-cache-mount.md) voor meer informatie.
+* Upgrade status: dit bericht wordt gewijzigd wanneer een software-update wordt uitgebracht. U kunt de [cache software](hpc-cache-manage.md#upgrade-cache-software) hand matig bijwerken op een geschikt tijdstip, of deze wordt na enkele dagen automatisch toegepast.
+
+## <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+> [!CAUTION]
+> De Power shell-module AZ. HPCCache is momenteel beschikbaar als open bare preview. Deze preview-versie is beschikbaar zonder service level agreement. Het wordt niet aanbevolen voor productie werkbelastingen. Sommige functies worden mogelijk niet ondersteund of hebben mogelijk beperkte mogelijkheden. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+
+## <a name="requirements"></a>Vereisten
+
+Als u PowerShell lokaal wilt gebruiken, moet u voor dit artikel de Az-module van PowerShell installeren en verbinding maken met uw Azure-account met behulp van de cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount). Zie [Azure PowerShell installeren](/powershell/azure/install-az-ps) voor meer informatie over het installeren van de Az-module van PowerShell. Zie [overzicht van Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview) voor meer informatie als u ervoor kiest om Cloud shell te gebruiken.
+
+> [!IMPORTANT]
+> Hoewel de Power shell-module **AZ. HPCCache** in preview is, moet u deze afzonderlijk installeren met behulp van de `Install-Module` cmdlet. Nadat deze Power shell-module algemeen beschikbaar is, zal deze deel uitmaken van toekomstige AZ Power shell-module releases en beschikbaar zijn vanuit Azure Cloud Shell.
+
+```azurepowershell-interactive
+Install-Module -Name Az.HPCCache
+```
+
+## <a name="create-the-cache-with-azure-powershell"></a>De cache maken met Azure PowerShell
+
+> [!NOTE]
+> Azure PowerShell biedt momenteel geen ondersteuning voor het maken van een cache met door de klant beheerde versleutelings sleutels. Gebruik de Azure Portal.
+
+Gebruik de cmdlet [New-AzHpcCache](/powershell/module/az.hpccache/new-azhpccache) om een nieuwe Azure HPC-cache te maken.
+
+Geef de volgende waarden op:
+
+* Naam van de resource groep in de cache
+* Cache naam
+* Azure-regio
+* Cache-subnet, in deze indeling:
+
+  `-SubnetUri "/subscriptions/<subscription_id>/resourceGroups/<cache_resource_group>/providers/Microsoft.Network/virtualNetworks/<virtual_network_name>/sub
+nets/<cache_subnet_name>"`
+
+  Het cache-subnet heeft ten minste 64 IP-adressen (/24) nodig en kan geen andere resources bevatten.
+
+* Cache capaciteit. Met twee waarden is de maximale door Voer van uw Azure HPC-cache ingesteld:
+
+  * De cache grootte (in GB)
+  * De SKU van de virtuele machines die worden gebruikt in de cache-infra structuur
+
+  [Get-AzHpcCacheSku](/powershell/module/az.hpccache/get-azhpccachesku) toont de beschik bare sku's en de geldige opties voor cache grootte voor elke. Opties voor cache grootte variëren van 3 TB tot 48 TB, maar slechts enkele waarden worden ondersteund.
+
+  In dit diagram ziet u welke cache grootte en SKU-combi Naties geldig zijn op het moment dat dit document wordt voor bereid (juli 2020).
+
+  | Cachegrootte | Standard_2G | Standard_4G | Standard_8G |
+  |------------|-------------|-------------|-------------|
+  | 3072 GB    | ja         | nee          | nee          |
+  | 6144 GB    | ja         | ja         | nee          |
+  | 12.288 GB   | ja         | ja         | ja         |
+  | 24.576 GB   | nee          | ja         | ja         |
+  | 49.152 GB   | nee          | nee          | ja         |
+
+  Lees de sectie **cache capaciteit instellen** in het tabblad Portal-instructies voor belang rijke informatie over prijzen, door Voer en de grootte van uw cache op de juiste manier voor uw werk stroom.
+
+Voor beeld van het maken van cache:
+
+```azurepowershell-interactive
+$cacheParams = @{
+  ResourceGroupName = 'doc-demo-rg'
+  CacheName = 'my-cache-0619'
+  Location = 'eastus'
+  cacheSize = '3072'
+  SubnetUri = "/subscriptions/<subscription-ID>/resourceGroups/doc-demo-rg/providers/Microsoft.Network/virtualNetworks/vnet-doc0619/subnets/default"
+  Sku = 'Standard_2G'
+}
+New-AzHpcCache @cacheParams
+```
+
+Het maken van de cache duurt enkele minuten. Als de opdracht maken is voltooid, wordt de volgende uitvoer geretourneerd:
+
+```Output
+cacheSizeGb       : 3072
+health            : @{state=Healthy; statusDescription=The cache is in Running state}
+id                : /subscriptions/<subscription-ID>/resourceGroups/doc-demo-rg/providers/Microsoft.StorageCache/caches/my-cache-0619
+location          : eastus
+mountAddresses    : {10.3.0.17, 10.3.0.18, 10.3.0.19}
+name              : my-cache-0619
+provisioningState : Succeeded
+resourceGroup     : doc-demo-rg
+sku               : @{name=Standard_2G}
+subnet            : /subscriptions/<subscription-ID>/resourceGroups/doc-demo-rg/providers/Microsoft.Network/virtualNetworks/vnet-doc0619/subnets/default
+tags              :
+type              : Microsoft.StorageCache/caches
+upgradeStatus     : @{currentFirmwareVersion=5.3.42; firmwareUpdateDeadline=1/1/0001 12:00:00 AM; firmwareUpdateStatus=unavailable; lastFirmwareUpdate=4/1/2020 10:19:54 AM; pendingFirmwareVersion=}
 ```
 
 Het bericht bevat nuttige informatie, waaronder de volgende items:

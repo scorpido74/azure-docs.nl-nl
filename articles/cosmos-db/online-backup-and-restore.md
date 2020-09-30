@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/24/2020
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 6485df342bbe0b2378a67b90e448b2bd98c5e283
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 310fee91ed98409e5a724d1be8de7bc9ccb5601b
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400397"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570920"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Herstel van online back-ups en gegevens op aanvraag in Azure Cosmos DB
 
@@ -26,7 +26,7 @@ Met Azure Cosmos DB, niet alleen uw gegevens, maar ook de back-ups van uw gegeve
 
 * Azure Cosmos DB slaat deze back-ups op in Azure Blob-opslag terwijl de daad werkelijke gegevens lokaal zijn opgeslagen in Azure Cosmos DB.
 
-* Voor het realiseren van een lage latentie wordt de momentopname van uw back-up in Azure Blob Storage opgeslagen in dezelfde regio als de huidige schrijfregio (of **een** van de schrijfregio's in het geval u een configuratie met meerdere masters hebt). Voor tolerantie tegen regionale noodsituaties wordt elke momentopname van de back-upgegevens in Azure Blob-opslag opnieuw gerepliceerd naar een andere regio via geografisch redundante opslag (GRS). De regio waarnaar de back-up wordt gerepliceerd, is gebaseerd op de bronregio en het regionale paar dat aan de bronregio is gekoppeld. Zie de [lijst met geo-redundante paren van Azure-regio's](../best-practices-availability-paired-regions.md) voor meer informatie. U hebt geen rechtstreekse toegang tot deze back-up. Azure Cosmos DB team herstelt uw back-up wanneer u daartoe een verzoek via een ondersteuningsaanvraag doet.
+* Om een lage latentie te garanderen, wordt de moment opname van uw back-up opgeslagen in Azure Blob Storage in dezelfde regio als de huidige schrijf regio (of **een** van de schrijf regio's, voor het geval u een multi-regio schrijf configuratie hebt). Voor tolerantie tegen regionale noodsituaties wordt elke momentopname van de back-upgegevens in Azure Blob-opslag opnieuw gerepliceerd naar een andere regio via geografisch redundante opslag (GRS). De regio waarnaar de back-up wordt gerepliceerd, is gebaseerd op de bronregio en het regionale paar dat aan de bronregio is gekoppeld. Zie de [lijst met geo-redundante paren van Azure-regio's](../best-practices-availability-paired-regions.md) voor meer informatie. U hebt geen rechtstreekse toegang tot deze back-up. Azure Cosmos DB team herstelt uw back-up wanneer u daartoe een verzoek via een ondersteuningsaanvraag doet.
 
    In de volgende afbeelding ziet u hoe een Azure Cosmos-container met alle drie primaire fysieke partities in West VS een back-up maakt in een extern Azure Blob Storage-account in VS-West en vervolgens wordt gerepliceerd naar VS-Oost:
 
@@ -59,11 +59,11 @@ Gebruik de volgende stappen om de standaard back-upopties voor een bestaand Azur
 
    * **Kopieën van opgeslagen gegevens** -standaard worden twee back-ups van uw gegevens gratis aangeboden. Er worden extra kosten in rekening gebracht als u meer dan twee exemplaren nodig hebt. Zie de sectie over verbruikte opslag in de [pagina met prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/) als u wilt weten wat de exacte prijs voor extra exemplaren is.
 
-   :::image type="content" source="./media/online-backup-and-restore/configure-backup-interval-retention.png" alt-text="Het back-upinterval en de retentie voor een bestaand Azure Cosmos-account configureren" border="true":::
+   :::image type="content" source="./media/online-backup-and-restore/configure-backup-interval-retention.png" alt-text="Periodieke volledige back-ups van alle Cosmos DB entiteiten in GRS Azure Storage" border="true":::
 
 Als u de opties voor back-up configureert tijdens het maken van het account, kunt u het **back-upbeleid**configureren, ofwel **periodiek** of **doorlopend**. Met het periodieke beleid kunt u het back-upinterval en de retentie van back-ups configureren. Het doorlopende beleid is momenteel alleen beschikbaar als u zich aanmeldt. Het Azure Cosmos DB-team zal uw werk belasting beoordelen en uw aanvraag goed keuren.
 
-:::image type="content" source="./media/online-backup-and-restore/configure-periodic-continuous-backup-policy.png" alt-text="Periodiek of continu back-upbeleid configureren voor nieuwe Azure Cosmos-accounts" border="true":::
+:::image type="content" source="./media/online-backup-and-restore/configure-periodic-continuous-backup-policy.png" alt-text="Periodieke volledige back-ups van alle Cosmos DB entiteiten in GRS Azure Storage" border="true":::
 
 ## <a name="restore-data-from-an-online-backup"></a>Gegevens herstellen vanuit een online back-up
 

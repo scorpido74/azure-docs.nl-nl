@@ -6,18 +6,19 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 12/9/2019
 ms.author: tvoellm
-ms.openlocfilehash: 16452337eeda86a9b019897954179bfe6db6e1b2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 44a62643c459fb61e7a2a95c2a9dd55ea4f19111
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87031989"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570650"
 ---
-# <a name="restrict-user-access-to-data-operations-only"></a>Gebruikerstoegang beperken tot alleen gegevensbewerkingen
+# <a name="restrict-user-access-to-data-operations-in-azure-cosmos-db"></a>Gebruikers toegang tot gegevens bewerkingen beperken in Azure Cosmos DB
 
 In Azure Cosmos DB zijn er twee manieren om uw interacties te verifiëren met de database service:
+
 - het gebruik van uw Azure Active Directory identiteit bij het communiceren met de Azure Portal,
-- het gebruik van Azure Cosmos DB [sleutels](secure-access-to-data.md#master-keys) of [bron tokens](secure-access-to-data.md#resource-tokens) bij het uitgeven van aanroepen van api's en sdk's.
+- het gebruik van Azure Cosmos DB [sleutels](secure-access-to-data.md#primary-keys) of [bron tokens](secure-access-to-data.md#resource-tokens) bij het uitgeven van aanroepen van api's en sdk's.
 
 Elke verificatie methode biedt toegang tot verschillende sets bewerkingen, met een overlap ping:
 
@@ -35,10 +36,10 @@ In de volgende secties van dit artikel ziet u hoe u deze stappen uitvoert.
 > Als u de opdrachten in de volgende secties wilt uitvoeren, moet u Azure PowerShell module 3.0.0 of hoger installeren, evenals de [rol van Azure-eigenaar](../role-based-access-control/built-in-roles.md#owner) van het abonnement dat u wilt wijzigen.
 
 Vervang in de Power shell-scripts in de volgende secties de volgende tijdelijke aanduidingen door de waarden die specifiek zijn voor uw omgeving:
-- `$MySubscriptionId`-De abonnements-ID die het Azure Cosmos-account bevat waarvoor u de machtigingen wilt beperken. Bijvoorbeeld: `e5c8766a-eeb0-40e8-af56-0eb142ebf78e`.
-- `$MyResourceGroupName`-De resource groep met het Azure Cosmos-account. Bijvoorbeeld: `myresourcegroup`.
-- `$MyAzureCosmosDBAccountName`-De naam van uw Azure Cosmos-account. Bijvoorbeeld: `mycosmosdbsaccount`.
-- `$MyUserName`-De aanmelding ( username@domain ) van de gebruiker voor wie u de toegang wilt beperken. Bijvoorbeeld: `cosmosdbuser@contoso.com`.
+- `$MySubscriptionId` -De abonnements-ID die het Azure Cosmos-account bevat waarvoor u de machtigingen wilt beperken. Bijvoorbeeld: `e5c8766a-eeb0-40e8-af56-0eb142ebf78e`.
+- `$MyResourceGroupName` -De resource groep met het Azure Cosmos-account. Bijvoorbeeld: `myresourcegroup`.
+- `$MyAzureCosmosDBAccountName` -De naam van uw Azure Cosmos-account. Bijvoorbeeld: `mycosmosdbsaccount`.
+- `$MyUserName` -De aanmelding ( username@domain ) van de gebruiker voor wie u de toegang wilt beperken. Bijvoorbeeld: `cosmosdbuser@contoso.com`.
 
 ## <a name="select-your-azure-subscription"></a>Selecteer uw Azure-abonnement
 

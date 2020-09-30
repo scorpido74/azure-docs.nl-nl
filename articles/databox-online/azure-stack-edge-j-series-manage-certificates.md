@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 08/28/2020
+ms.date: 09/29/2020
 ms.author: alkohli
-ms.openlocfilehash: 59924312fe0483d11d0f70ce83b8f6e4b0e198dc
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e5c8a496c60d3bba81040716c74bca7b5cb6095e
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90890749"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569432"
 ---
 # <a name="use-certificates-with-azure-stack-edge-pro-gpu-device"></a>Certificaten gebruiken met Azure Stack Edge Pro GPU-apparaat
 
@@ -61,7 +61,7 @@ Deze certificaten kunnen basis certificaten of tussenliggende certificaten zijn.
 - De basis certificaten moeten keten certificaten ondertekenen.
 - De basis certificaten kunnen worden geüpload op het apparaat in de volgende indeling: 
     - **Der** : deze zijn beschikbaar als `.cer` bestands extensie.
-    - **Base-64 encoded of PEM** : deze zijn ook beschikbaar als `.cer` uitbrei ding.
+    - **Base-64-code ring** : deze zijn beschikbaar als `.cer` bestands extensie.
     - **P7b** : deze indeling wordt alleen gebruikt voor het ondertekenen van ketting certificaten die de basis-en tussenliggende certificaten bevatten.
 - Handtekening keten certificaten worden altijd geüpload voordat u andere certificaten uploadt.
 
@@ -275,11 +275,11 @@ De certificaten die u voor het apparaat hebt gemaakt, bevinden zich standaard in
 
     1. Upload eerst de basis certificaten. Ga in de lokale web-UI naar **certificaten > + certificaat toevoegen**.
 
-        ![Handtekening keten certificaat toevoegen](media/azure-stack-edge-series-manage-certificates/add-cert-1.png)
+        ![Handtekening keten certificaat 1 toevoegen](media/azure-stack-edge-series-manage-certificates/add-cert-1.png)
 
     2. Upload vervolgens de eindpunt certificaten. 
 
-        ![Handtekening keten certificaat toevoegen](media/azure-stack-edge-series-manage-certificates/add-cert-2.png)
+        ![Handtekening keten certificaat 2 toevoegen](media/azure-stack-edge-series-manage-certificates/add-cert-2.png)
 
         Kies de certificaat bestanden in *. pfx* -indeling en voer het wacht woord in dat u hebt opgegeven tijdens het exporteren van het certificaat. Het kan enkele minuten duren voordat het Azure Resource Manager certificaat is toegepast.
 
@@ -383,20 +383,20 @@ De back-up van het pfx-bestand wordt nu opgeslagen op de locatie die u hebt gese
 
 1. Selecteer het basis certificaat in het persoonlijke certificaat archief. Klik met de rechter muisknop en selecteer **alle taken > exporteren...**
 
-    ![Certificaat exporteren 1](media/azure-stack-edge-series-manage-certificates/export-cert-cer-1.png)
+    ![Certificaat exporteren DER 1](media/azure-stack-edge-series-manage-certificates/export-cert-cer-1.png)
 
 2. De wizard certificaat wordt geopend. Selecteer de indeling als **der Encoded Binary X. 509 (. CER)**. Selecteer **Next**.
 
-    ![Certificaat exporteren 2](media/azure-stack-edge-series-manage-certificates/export-cert-cer-2.png)
+    ![Certificaat exporteren DER 2](media/azure-stack-edge-series-manage-certificates/export-cert-cer-2.png)
 
 3. Blader en selecteer de locatie waar u het. CER-indelings bestand wilt exporteren.
 
-    ![Certificaat exporteren 3](media/azure-stack-edge-series-manage-certificates/export-cert-cer-3.png)
+    ![Certificaat exporteren DER 3](media/azure-stack-edge-series-manage-certificates/export-cert-cer-3.png)
 
 
 4. Selecteer **Finish**.
 
-    ![Certificaat exporteren 4](media/azure-stack-edge-series-manage-certificates/export-cert-cer-4.png)
+    ![Certificaat exporteren DER 4](media/azure-stack-edge-series-manage-certificates/export-cert-cer-4.png)
 
 
 ## <a name="supported-certificate-algorithms"></a>Ondersteunde certificaat algoritmen
@@ -410,11 +410,11 @@ De back-up van het pfx-bestand wordt nu opgeslagen op de locatie die u hebt gese
 
 Als u uw eigen certificaten meebrengt, verlopen de certificaten doorgaans in één jaar of 6 maanden. Als u de verval datum van uw certificaat wilt weer geven, gaat u naar de pagina **certificaten** in de lokale webgebruikersinterface van uw apparaat. Als u een specifiek certificaat selecteert, kunt u de verval datum van uw certificaat weer geven.
 
-## <a name="rotate-certificates"></a>Certificaten roteren
+<!--## Rotate certificates
 
-Het draaien van certificaten is niet geïmplementeerd in deze release. U wordt ook niet op de hoogte gesteld van de verval datum in behandeling op uw certificaat. 
+Rotation of certificates is not implemented in this release. You are also not notified of the pending expiration date on your certificate. 
 
-De verval datum van het certificaat weer geven op de pagina **certificaten** in de lokale webgebruikersinterface van uw apparaat. Zodra het certificaat verloopt, maakt en uploadt u nieuwe certificaten conform de gedetailleerde instructies in [certificaten maken en uploaden](azure-stack-edge-j-series-manage-certificates.md).
+View the certificate expiration date on the **Certificates** page in the local web UI of your device. Once the certificate expiration is approaching, create and upload new certificates as per the detailed instructions in [Create and upload certificates](azure-stack-edge-j-series-manage-certificates.md).-->
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 8d795624097877d20f98a6fd205fb7136cf38007
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 11278f558f94fe358be94c914ecfeae6cfd5461e
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069121"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570754"
 ---
 # <a name="spring-data-azure-cosmos-db-v2-for-core-sql-api-release-notes-and-resources"></a>Lente gegevens Azure Cosmos DB v2 voor Core-API (SQL): release opmerkingen en bronnen
 > [!div class="op_single_selector"]
@@ -53,7 +53,7 @@ U kunt lente gegevens Azure Cosmos DB gebruiken in uw [Azure lente-Cloud](https:
 > * [Lente gegevens Gremlin met Azure Cosmos DB](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db)
 >
 > Wilt u snel aan de slag?
-> 1. Installeer de [Mini maal ondersteunde Java-runtime, JDK 8](/java/azure/jdk/?view=azure-java-stable), zodat u de SDK kunt gebruiken.
+> 1. Installeer de [Mini maal ondersteunde Java-runtime, JDK 8](/java/azure/jdk/?view=azure-java-stable&preserve-view=true), zodat u de SDK kunt gebruiken.
 > 2. Maak een lente data Azure Cosmos DB-app met behulp van de [starter](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db). Eenvoudiger kan niet!
 > 3. Werk met de [lente gegevens Azure Cosmos DB ontwikkelaars handleiding](https://docs.microsoft.com/azure/developer/java/spring-framework/how-to-guides-spring-data-cosmosdb), die de basis Azure Cosmos DB aanvragen doorloopt.
 >

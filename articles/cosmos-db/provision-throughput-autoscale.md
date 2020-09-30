@@ -6,12 +6,12 @@ ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 20b0bcfe5043d4767199c36796fa1123ed779363
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 87112af870100859ae008f77eefc4b58eac1b0fb
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791143"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570741"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-with-autoscale-throughput"></a>Azure Cosmos-containers en-data bases maken met de door Voer van automatisch schalen
 
@@ -61,7 +61,7 @@ Het ingangs punt voor automatisch schalen maximale door Voer `Tmax` wordt gestar
 
 Gebruik de [Azure Portal](how-to-provision-autoscale-throughput.md#enable-autoscale-on-existing-database-or-container) om automatisch schalen in te scha kelen op een bestaande data base of container. U kunt op elk gewenst moment scha kelen tussen de ingerichte door Voer van automatisch schalen en standaard (hand matig). Raadpleeg deze [documentatie](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work) voor meer informatie. Voor alle Api's kunt u op dit moment alleen de Azure Portal gebruiken om automatisch schalen in te scha kelen op bestaande resources.
 
-## <a name="throughput-and-storage-limits-for-autoscale"></a><a id="autoscale-limits"></a>Doorvoer-en opslag limieten voor automatisch schalen
+## <a name="throughput-and-storage-limits-for-autoscale"></a><a id="autoscale-limits"></a> Doorvoer-en opslag limieten voor automatisch schalen
 
 Voor elke waarde van `Tmax` kan de data base of container een totaal van bevatten `0.01 * Tmax GB` . Wanneer deze hoeveelheid opslag is bereikt, wordt het maximum aantal RU/s automatisch verhoogd op basis van de nieuwe opslagwaarde, zonder dat dit van invloed is op uw toepassing. 
 
@@ -77,7 +77,7 @@ Raadpleeg deze [documentatie](how-to-choose-offer.md) voor meer informatie over 
 | **Ingerichte door Voer (RU/s)** | Hand matig ingericht. | Automatisch en onmiddellijk geschaald op basis van de gebruiks patronen van de werk belasting. |
 | **Frequentie waarmee aanvragen/bewerkingen worden beperkt (429)**  | Dit kan gebeuren als het verbruik de ingerichte capaciteit overschrijdt. | Treedt niet op als u RU/s gebruikt binnen het bereik voor automatisch schalen dat u hebt ingesteld.    |
 | **Capaciteitsplanning** |  U moet rekening houden met capaciteits planning en de exacte door Voer die u nodig hebt inrichten. |    Het systeem zorgt automatisch voor capaciteits planning en capaciteits beheer. |
-| **Prijzen** | U betaalt voor de hand matig ingerichte RU/s per uur met het [tarief standaard (hand matig) ru/s per uur](https://azure.microsoft.com/pricing/details/cosmos-db/). | U betaalt per uur voor de hoogste RU/s waarbij het systeem binnen het uur omhoog is geschaald. <br/><br/> Voor accounts met enkele schrijf regio's betaalt u de RU/s per uur, met behulp van het tarief voor [automatisch schalen van ru/SEC](https://azure.microsoft.com/pricing/details/cosmos-db/). <br/><br/>Voor accounts met meerdere schrijf regio's zijn er geen extra kosten voor automatisch schalen. U betaalt voor de door Voer die op elk uur wordt gebruikt met hetzelfde tarief van één [of meerdere masters per uur](https://azure.microsoft.com/pricing/details/cosmos-db/). |
+| **Prijzen** | U betaalt voor de hand matig ingerichte RU/s per uur met het [tarief standaard (hand matig) ru/s per uur](https://azure.microsoft.com/pricing/details/cosmos-db/). | U betaalt per uur voor de hoogste RU/s waarbij het systeem binnen het uur omhoog is geschaald. <br/><br/> Voor accounts met enkele schrijf regio's betaalt u de RU/s per uur, met behulp van het tarief voor [automatisch schalen van ru/SEC](https://azure.microsoft.com/pricing/details/cosmos-db/). <br/><br/>Voor accounts met meerdere schrijf regio's zijn er geen extra kosten voor automatisch schalen. U betaalt voor de door Voer die op elk uur wordt gebruikt met dezelfde [multi-regio write ru/s per uur](https://azure.microsoft.com/pricing/details/cosmos-db/). |
 | **Geschikt voor typen werk belastingen** |  Voorspel bare en stabiele workloads|   Onvoorspelbare en variabele workloads  |
 
 ## <a name="next-steps"></a>Volgende stappen

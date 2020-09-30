@@ -8,15 +8,15 @@ ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 09/09/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3dd7df738f49b14a16be8a9741fb2c82ed3bf97c
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.openlocfilehash: 5537b70f9852f5b5a17362c13e2c9b8e8e9fc43c
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91409006"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570607"
 ---
 # <a name="regional-endpoints-for-azure-cosmos-db-graph-account"></a>Regionale eind punten voor Azure Cosmos DB Graph-account
-Azure Cosmos DB Graph-data base is [wereld wijd gedistribueerd](distribute-data-globally.md) zodat toepassingen meerdere Lees eindpunten kunnen gebruiken. Toepassingen waarvoor schrijf toegang op meerdere locaties nodig is, moeten mogelijkheden voor [meerdere masters](how-to-multi-master.md) inschakelen.
+Azure Cosmos DB Graph-data base is [wereld wijd gedistribueerd](distribute-data-globally.md) zodat toepassingen meerdere Lees eindpunten kunnen gebruiken. Toepassingen waarvoor schrijf toegang op meerdere locaties nodig is, moeten schrijf mogelijkheden voor [meerdere regio's](how-to-multi-master.md) inschakelen.
 
 Redenen voor het kiezen van meer dan één regio:
 1. **Horizontale Lees schaal baarheid** : als de toepassings belasting wordt verhoogd, kan het verstandig zijn om Lees verkeer te routeren naar verschillende Azure-regio's.

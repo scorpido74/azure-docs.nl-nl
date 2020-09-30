@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
-ms.date: 6/24/2020
-ms.openlocfilehash: 2bd698d9513310571c0e8c53136f85c62532df43
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 9/29/2020
+ms.openlocfilehash: c406fa6b49e800912edb5738b4d60596d828fc94
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905883"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570501"
 ---
 # <a name="configure-and-access-audit-logs-for-azure-database-for-mysql-in-the-azure-portal"></a>Controle logboeken voor Azure Database for MySQL in het Azure Portal configureren en openen
 
@@ -30,7 +30,7 @@ Als u deze hand leiding wilt door lopen, hebt u het volgende nodig:
 
 Controle logboek registratie inschakelen en configureren.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 1. Selecteer uw Azure Database for MySQL-server.
 
@@ -38,32 +38,32 @@ Controle logboek registratie inschakelen en configureren.
     :::image type="content" source="./media/howto-configure-audit-logs-portal/server-parameters.png" alt-text="Serverparameters":::
 
 1. Werk de para meter **audit_log_enabled** bij naar aan.
-    :::image type="content" source="./media/howto-configure-audit-logs-portal/audit-log-enabled.png" alt-text="Audit logboeken inschakelen":::
+    :::image type="content" source="./media/howto-configure-audit-logs-portal/audit-log-enabled.png" alt-text="Serverparameters":::
 
 1. Selecteer de [gebeurtenis typen](concepts-audit-logs.md#configure-audit-logging) die moeten worden geregistreerd door de **audit_log_events** -para meter bij te werken.
-    :::image type="content" source="./media/howto-configure-audit-logs-portal/audit-log-events.png" alt-text="Controle logboek gebeurtenissen":::
+    :::image type="content" source="./media/howto-configure-audit-logs-portal/audit-log-events.png" alt-text="Serverparameters":::
 
-1. Voeg MySQL-gebruikers toe die moeten worden uitgesloten van logboek registratie door de para meter **audit_log_exclude_users** bij te werken. Geef gebruikers op door hun MySQL-gebruikers naam op te geven.
-    :::image type="content" source="./media/howto-configure-audit-logs-portal/audit-log-exclude-users.png" alt-text="Gebruikers met controle logboek uitsluiten":::
+1. Voeg MySQL-gebruikers toe die moeten worden opgenomen in of uitgesloten van logboek registratie door de **audit_log_exclude_users** -en **audit_log_include_users** -para meters bij te werken. Geef gebruikers op door hun MySQL-gebruikers naam op te geven.
+    :::image type="content" source="./media/howto-configure-audit-logs-portal/audit-log-exclude-users.png" alt-text="Serverparameters":::
 
 1. Wanneer u de para meters hebt gewijzigd, kunt u op **Opslaan**klikken. Of u kunt uw wijzigingen **negeren** .
-    :::image type="content" source="./media/howto-configure-audit-logs-portal/save-parameters.png" alt-text="Opslaan":::
+    :::image type="content" source="./media/howto-configure-audit-logs-portal/save-parameters.png" alt-text="Serverparameters":::
 
 ## <a name="set-up-diagnostic-logs"></a>Diagnostische logboeken instellen
 
 1. Selecteer in de sectie **bewaking** van de zijbalk **Diagnostische instellingen**.
 
-1. Klik op ' + Diagnostische instelling toevoegen ' :::image type="content" source="./media/howto-configure-audit-logs-portal/add-diagnostic-setting.png" alt-text="Diagnostische instelling toevoegen":::
+1. Klik op ' + Diagnostische instelling toevoegen ' :::image type="content" source="./media/howto-configure-audit-logs-portal/add-diagnostic-setting.png" alt-text="Serverparameters":::
 
 1. Geef een naam op voor de diagnostische instelling.
 
 1. Geef op welke gegevens moeten worden gesinkt om de controle Logboeken (opslag account, Event Hub en/of Log Analytics-werk ruimte) te verzenden.
 
 1. Selecteer ' MySqlAuditLogs ' als het logboek type.
-:::image type="content" source="./media/howto-configure-audit-logs-portal/configure-diagnostic-setting.png" alt-text="Diagnostische instelling configureren":::
+:::image type="content" source="./media/howto-configure-audit-logs-portal/configure-diagnostic-setting.png" alt-text="Serverparameters":::
 
 1. Zodra u de gegevens sinks hebt geconfigureerd om de controle logboeken te pipeen naar, kunt u op **Opslaan**klikken.
-:::image type="content" source="./media/howto-configure-audit-logs-portal/save-diagnostic-setting.png" alt-text="Diagnostische instelling opslaan":::
+:::image type="content" source="./media/howto-configure-audit-logs-portal/save-diagnostic-setting.png" alt-text="Serverparameters":::
 
 1. Open de audit logboeken door ze te verkennen in de gegevens-sinks die u hebt geconfigureerd. Het kan tot tien minuten duren voordat de logboeken worden weer gegeven.
 

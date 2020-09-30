@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 5046e40ea15a27e80f4e92ebf36488dedeee1821
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 3c82edd73921e11cd2f43a0d609624267af81575
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91396005"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570070"
 ---
 # <a name="latency-availability-and-performance-tradeoffs-with-different-azure-cosmos-db-consistency-levels"></a>Afwegingen van latentie, Beschik baarheid en prestaties met verschillende Azure Cosmos DB consistentie niveaus
 
@@ -76,9 +76,9 @@ In de onderstaande tabel wordt de relatie tussen consistentie model en gegevens 
 
 *T* = het tijds interval *' t '* sinds de laatste update.
 
-## <a name="strong-consistency-and-multi-master"></a>Sterke consistentie en multi-master
+## <a name="strong-consistency-and-multiple-write-regions"></a>Sterke consistentie en meerdere schrijf regio's
 
-Cosmos-accounts die zijn geconfigureerd voor multi-master, kunnen niet worden geconfigureerd voor sterke consistentie omdat het niet mogelijk is dat een gedistribueerd systeem een RPO van nul en een RTO van nul levert. Daarnaast zijn er geen schrijf latentie voordelen voor het gebruik van sterke consistentie met multi-master, omdat elke schrijf bewerking in een regio moet worden gerepliceerd en doorgevoerd voor alle geconfigureerde regio's binnen het account. Dit resulteert in dezelfde schrijf latentie als één hoofd account.
+Cosmos-accounts die zijn geconfigureerd met meerdere schrijf regio's, kunnen niet worden geconfigureerd voor sterke consistentie omdat het niet mogelijk is dat een gedistribueerd systeem een RPO van nul en een RTO van nul levert. Daarnaast zijn er geen schrijf latentie voordelen voor het gebruik van sterke consistentie met meerdere schrijf regio's, omdat de schrijf aanvraag naar een wille keurige regio moet worden gerepliceerd en doorgevoerd voor alle geconfigureerde regio's binnen het account. Dit resulteert in dezelfde schrijf latentie als een account voor een enkele schrijf regio.
 
 ## <a name="next-steps"></a>Volgende stappen
 

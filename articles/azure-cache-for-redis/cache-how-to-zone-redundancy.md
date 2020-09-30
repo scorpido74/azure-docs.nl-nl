@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: 3c396d6d5b9da9a48e0d68a2d7d49561d6f688de
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 33c346fa2e4572799ad6341bd5115cdd6e3b9ec9
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91344618"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569984"
 ---
 # <a name="enable-zone-redundancy-for-azure-cache-for-redis-preview"></a>Zone redundantie voor Azure cache inschakelen voor redis (preview-versie)
 In dit artikel leert u hoe u een zone-redundante Azure-cache-instantie configureert met behulp van de Azure Portal.
@@ -38,21 +38,25 @@ Voer de volgende stappen uit om een cache te maken:
 
     :::image type="content" source="media/cache-create/new-cache-menu.png" alt-text="Selecteer Azure-cache voor redis.":::
    
-1. Configureer op de pagina **Nieuwe Redis-cache** de instellingen voor de nieuwe cache.
+1. Configureer de instellingen voor de nieuwe cache op de pagina **basis beginselen** .
    
     | Instelling      | Voorgestelde waarde  | Beschrijving |
     | ------------ |  ------- | -------------------------------------------------- |
+    | **Abonnement** | Selecteer uw abonnement. | Het abonnement waarmee dit nieuwe Azure Cache voor Redis-exemplaar wordt gemaakt. | 
+    | **Resourcegroep** | Selecteer een resource groep of selecteer **nieuwe maken** en voer een nieuwe naam voor de resource groep in. | Naam voor de resourcegroep waarin de cache en andere resources moeten worden gemaakt. Door al uw app-resources in één resourcegroep te plaatsen, kunt u ze eenvoudig beheren of verwijderen. | 
     | **DNS-naam** | Geef een wereldwijd unieke naam op. | De cachenaam is een tekenreeks van 1 tot 63 tekens die alleen cijfers, letters en afbreekstreepjes mag bevatten. De naam moet beginnen en eindigen met een cijfer of letter en mag geen opeenvolgende afbreekstreepjes bevatten. De *hostnaam* van uw cache-exemplaar wordt *\<DNS name>.redis.cache.windows.net*. | 
-    | **Abonnement** | Open de vervolgkeuzelijst en selecteer uw abonnement. | Het abonnement waarmee dit nieuwe Azure Cache voor Redis-exemplaar wordt gemaakt. | 
-    | **Resourcegroep** | Open de vervolgkeuzelijst en selecteer een resourcegroep of kies **Nieuwe maken** en geef een naam voor de nieuwe resourcegroep op. | Naam voor de resourcegroep waarin de cache en andere resources moeten worden gemaakt. Door al uw app-resources in één resourcegroep te plaatsen, kunt u ze eenvoudig beheren of verwijderen. | 
-    | **Locatie** | Open de vervolgkeuzelijst en selecteer een locatie. | Selecteer een [regio](https://azure.microsoft.com/regions/) in de buurt van andere services die gaan gebruikmaken van de cache. |
-    | **Prijscategorie** | Vervolg keuzelijst en selecteer een cache voor de [Premium-laag](https://azure.microsoft.com/pricing/details/cache/) . |  De prijscategorie bepaalt de grootte, prestaties en functies die beschikbaar zijn voor de cache. Zie het [Azure Cache voor Redis-overzicht](cache-overview.md) voor meer informatie. |
-    | **Aantal replica's** | Dia om het aantal replica's te kiezen. | Standaard is 1. |
-    | **Beschikbaarheidszones** | Vervolg keuzelijst en selecteer welke zones u wilt gebruiken. | Vm's voor uw cache worden zo gelijkmatig mogelijk verdeeld over de geselecteerde zones. Als uw cache bijvoorbeeld drie replica's heeft en twee zones gebruikt, zijn er twee virtuele machines in elke zone. |
+    | **Locatie** | Selecteer een locatie. | Selecteer een [regio](https://azure.microsoft.com/regions/) in de buurt van andere services die gaan gebruikmaken van de cache. |
+    | **Cache type** | Selecteer een cache voor de [Premium-laag](https://azure.microsoft.com/pricing/details/cache/) . |  De prijscategorie bepaalt de grootte, prestaties en functies die beschikbaar zijn voor de cache. Zie het [Azure Cache voor Redis-overzicht](cache-overview.md) voor meer informatie. |
    
-1. Nadat u een Premium-laag cache hebt geselecteerd, wordt u gevraagd of u redis-Clustering wilt inschakelen. **Clustering** als *uitgeschakeld*laten staan. 
+1. Kies op de pagina **Geavanceerd** de optie **aantal replica's**.
    
-    :::image type="content" source="media/cache-how-to-premium-clustering/redis-clustering-disabled.png" alt-text="Configureer het redis-cluster.":::
+    :::image type="content" source="media/cache-how-to-multi-replicas/create-multi-replicas.png" alt-text="Selecteer Azure-cache voor redis.":::
+
+1. Selecteer **beschikbaarheids zones**. 
+   
+    :::image type="content" source="media/cache-how-to-zone-redundancy/create-zones.png" alt-text="Selecteer Azure-cache voor redis.":::
+
+1. Wijzig de standaard instellingen van andere opties. 
 
     > [!NOTE]
     > Ondersteuning voor zone redundantie werkt momenteel alleen met niet-geclusterde en niet-Geo-gerepliceerde caches. Daarnaast biedt het geen ondersteuning voor persoonlijke koppelingen, schalen, gegevens persistentie of importeren/exporteren.
@@ -60,10 +64,8 @@ Voer de volgende stappen uit om een cache te maken:
 
 1. Klik op **Create**. 
    
-    :::image type="content" source="media/cache-how-to-zone-redundancy/create-zones.png" alt-text="Maak een Azure-cache voor redis.":::
-   
     Het duurt even voordat de cache is gemaakt. U kunt de voortgang bekijken op de **overzichtspagina** van Azure Cache voor Redis. Als u bij **Status** **Wordt uitgevoerd** ziet staan, kunt u de cache gebruiken.
-
+   
     > [!NOTE]
     > Beschikbaarheids zones kunnen niet worden gewijzigd nadat een cache is gemaakt.
     >

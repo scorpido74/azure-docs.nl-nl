@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 406690eb1303a25002d3d787e746bd091dd83fc6
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 6db0965c0b5e28ac1e70da2cbeea276728f29822
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586125"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569932"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK voor SQL API: release opmerkingen en bronnen
 > [!div class="op_single_selector"]
@@ -49,12 +49,12 @@ Dit is de oorspronkelijke Azure Cosmos DB Java SDK v2 voor de SQL-API die synchr
 |**Bijdragen aan SDK**|[GitHub](https://github.com/Azure/azure-documentdb-java/)|
 |**Aan de slag**|[Aan de slag met de Java SDK](sql-api-java-get-started.md)|
 |**Zelf studie voor web-apps**|[Ontwikkeling van webtoepassingen met Azure Cosmos DB](sql-api-java-application.md)|
-|**Minimale ondersteunde runtime**|[Java Development Kit (JDK) 7 +](/java/azure/jdk/?view=azure-java-stable)|
+|**Minimale ondersteunde runtime**|[Java Development Kit (JDK) 7 +](/java/azure/jdk/?view=azure-java-stable&preserve-view=true)|
 
 ## <a name="release-notes"></a>Releaseopmerkingen
 
 ### <a name="251"></a><a name="2.5.1"></a>2.5.1
-* Hiermee wordt het probleem met de hoofd partitie cache op de documentCollection-query opgelost.
+* Hiermee wordt de primaire partitie cache probleem opgelost in de documentCollection-query.
 
 ### <a name="250"></a><a name="2.5.0"></a>2.5.0
 * Ondersteuning toegevoegd voor 449 aangepaste configuratie opnieuw proberen.

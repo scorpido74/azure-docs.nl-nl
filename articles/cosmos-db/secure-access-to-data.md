@@ -1,18 +1,18 @@
 ---
 title: Meer informatie over het beveiligen van toegang tot gegevens in Azure Cosmos DB
-description: Meer informatie over toegangs beheer concepten in Azure Cosmos DB, waaronder hoofd sleutels, alleen-lezen sleutels, gebruikers en machtigingen.
+description: Meer informatie over toegangs beheer concepten in Azure Cosmos DB, waaronder primaire sleutels, alleen-lezen sleutels, gebruikers en machtigingen.
 author: thomasweiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4714ec9773b98887de483b7353eea9f4416eec19
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 0a5411a8fba8456deb59a5c9ede4e9314876dbdb
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017750"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569569"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Beveiligde toegang tot gegevens in Azure Cosmos DB
 
@@ -22,10 +22,10 @@ Azure Cosmos DB gebruikt twee typen sleutels om gebruikers te verifiëren en toe
 
 |Type sleutel|Resources|
 |---|---|
-|[Hoofd sleutels](#master-keys) |Gebruikt voor administratieve resources: database accounts, data bases, gebruikers en machtigingen|
+|[Hoofd sleutels](#primary-keys) |Gebruikt voor administratieve resources: database accounts, data bases, gebruikers en machtigingen|
 |[Bron tokens](#resource-tokens)|Gebruikt voor toepassings resources: containers, documenten, bijlagen, opgeslagen procedures, triggers en Udf's|
 
-<a id="master-keys"></a>
+<a id="primary-keys"></a>
 
 ## <a name="master-keys"></a>Hoofd sleutels
 
@@ -38,15 +38,15 @@ Hoofd sleutels bieden toegang tot alle beheer resources voor het database accoun
 
 Elk account bestaat uit twee hoofd sleutels: een primaire sleutel en secundaire sleutel. Het doel van dubbele sleutels is dat u de sleutel opnieuw kunt genereren of sleutels moet voorzien van een continue toegang tot uw account en gegevens.
 
-Naast de twee hoofd sleutels voor het Cosmos DB-account, zijn er twee alleen-lezen sleutels. Deze alleen-lezen sleutels staan alleen lees bewerkingen voor het account toe. Alleen-lezen sleutels bieden geen toegang tot het lezen van machtigings bronnen.
+Naast de twee primaire sleutels voor het Cosmos DB-account, zijn er twee alleen-lezen sleutels. Deze alleen-lezen sleutels staan alleen lees bewerkingen voor het account toe. Alleen-lezen sleutels bieden geen toegang tot het lezen van machtigings bronnen.
 
-De hoofd sleutels primair, secundair, alleen-lezen en lezen/schrijven kunnen worden opgehaald en opnieuw worden gegenereerd met behulp van de Azure Portal. Zie [toegangs sleutels weer geven, kopiëren en opnieuw genereren](manage-with-cli.md#regenerate-account-key)voor instructies.
+Primaire sleutels primair, secundair, alleen lezen en lezen/schrijven kunnen worden opgehaald en opnieuw worden gegenereerd met behulp van de Azure Portal. Zie [toegangs sleutels weer geven, kopiëren en opnieuw genereren](manage-with-cli.md#regenerate-account-key)voor instructies.
 
 :::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-portal.png" alt-text="Toegangs beheer (IAM) in de Azure Portal-demonstring NoSQL data base Security":::
 
 ### <a name="key-rotation"></a>Sleutel rotatie<a id="key-rotation"></a>
 
-Het proces van het draaien van de hoofd sleutel is eenvoudig. 
+Het proces voor het draaien van uw primaire sleutel is eenvoudig. 
 
 1. Navigeer naar het Azure Portal om uw secundaire sleutel op te halen.
 2. Vervang uw primaire sleutel door de secundaire sleutel in uw toepassing. Zorg ervoor dat alle Cosmos DB-clients in alle implementaties onmiddellijk opnieuw worden opgestart en dat deze de bijgewerkte sleutel gaan gebruiken.
@@ -54,11 +54,11 @@ Het proces van het draaien van de hoofd sleutel is eenvoudig.
 4. Valideer of de nieuwe primaire sleutel geschikt is voor alle resources. Het proces voor het draaien van sleutels kan een waarde van minder dan een minuut tot uur duren, afhankelijk van de grootte van het Cosmos DB-account.
 5. Vervang de secundaire sleutel door de nieuwe primaire sleutel.
 
-:::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-rotate-workflow.png" alt-text="Rotatie van hoofd sleutel in de Azure Portal-demonstring NoSQL data base Security" border="false":::
+:::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-rotate-workflow.png" alt-text="Toegangs beheer (IAM) in de Azure Portal-demonstring NoSQL data base Security" border="false":::
 
-### <a name="code-sample-to-use-a-master-key"></a>Code voorbeeld voor gebruik van een hoofd sleutel
+### <a name="code-sample-to-use-a-primary-key"></a>Code voorbeeld voor het gebruik van een primaire sleutel
 
-In het volgende code voorbeeld ziet u hoe u een Cosmos DB account-eind punt en hoofd sleutel kunt gebruiken om een DocumentClient te instantiëren en een Data Base te maken:
+In het volgende code voorbeeld ziet u hoe u een Cosmos DB account-eind punt en een primaire sleutel kunt gebruiken om een DocumentClient te instantiëren en een Data Base te maken:
 
 ```csharp
 //Read the Azure Cosmos DB endpointUrl and authorization keys from config.
@@ -71,7 +71,7 @@ private static readonly string authorizationKey = ConfigurationManager.AppSettin
 CosmosClient client = new CosmosClient(endpointUrl, authorizationKey);
 ```
 
-In het volgende code voorbeeld ziet u hoe u het eind punt van het Azure Cosmos DB-account en de hoofd sleutel kunt gebruiken om een object te instantiëren `CosmosClient` :
+In het volgende code voorbeeld ziet u hoe u het Azure Cosmos DB account-eind punt en de primaire sleutel kunt gebruiken om een object te instantiëren `CosmosClient` :
 
 :::code language="python" source="~/cosmosdb-python-sdk/sdk/cosmos/azure-cosmos/samples/access_cosmos_with_resource_token.py" id="configureConnectivity":::
 
@@ -84,17 +84,17 @@ Bron tokens bieden toegang tot de toepassings resources binnen een Data Base. Br
 - Worden opnieuw gemaakt wanneer een machtigings resource wordt toegepast op de aanroep POST, GET of PUT.
 - Gebruik een hash-bron token dat specifiek is gemaakt voor de gebruiker, de resource en de machtiging.
 - Zijn tijd gebonden aan een aanpas bare geldigheids periode. De standaard geldige tijds duur is een uur. De levens duur van het token kan echter expliciet worden opgegeven, Maxi maal vijf uur.
-- Geef een veilig alternatief op voor het geven van de hoofd sleutel.
+- Geef een veilig alternatief op voor het geven van de primaire sleutel.
 - Hiermee kunnen clients resources in het Cosmos DB-account lezen, schrijven en verwijderen op basis van de machtigingen die ze hebben verleend.
 
-U kunt een bron token gebruiken (door Cosmos DB gebruikers en machtigingen te maken) wanneer u toegang wilt verlenen tot resources in uw Cosmos DB account aan een client die niet kan worden vertrouwd met de hoofd sleutel.  
+U kunt een bron token gebruiken (door Cosmos DB gebruikers en machtigingen te maken) wanneer u toegang wilt verlenen tot resources in uw Cosmos DB account aan een client die niet kan worden vertrouwd met de primaire sleutel.  
 
-Cosmos DB bron tokens bieden een veilig alternatief waarmee clients resources in uw Cosmos DB account kunnen lezen, schrijven en verwijderen op basis van de machtigingen die u hebt verleend, en zonder dat u een hoofd-of alleen-lezen sleutel hoeft op te geven.
+Cosmos DB bron tokens bieden een veilig alternatief waarmee clients resources in uw Cosmos DB account kunnen lezen, schrijven en verwijderen op basis van de machtigingen die u hebt verleend, en zonder een primaire of alleen-lezen sleutel.
 
 Hier volgt een typisch ontwerp patroon waarbij bron tokens kunnen worden aangevraagd, gegenereerd en geleverd aan clients:
 
 1. Een mid-tier-service is ingesteld voor het gebruik van een mobiele toepassing om gebruikers Foto's te delen.
-2. De mid-tier-service beschikt over de hoofd sleutel van het Cosmos DB-account.
+2. De mid-tier-service beschikt over de primaire sleutel van het Cosmos DB-account.
 3. De foto-app is geïnstalleerd op mobiele apparaten van eind gebruikers.
 4. Bij het aanmelden brengt de foto-app de identiteit van de gebruiker met de mid-tier-service tot stand. Dit mechanisme voor identiteits inrichting is uitsluitend voor de toepassing.
 5. Zodra de identiteit tot stand is gebracht, vraagt de mid-tier-service machtigingen aan op basis van de identiteit.
@@ -102,7 +102,7 @@ Hier volgt een typisch ontwerp patroon waarbij bron tokens kunnen worden aangevr
 7. De telefoon-app kan het bron token blijven gebruiken voor rechtstreekse toegang tot Cosmos DB resources met de machtigingen die zijn gedefinieerd door het bron token en voor het interval dat is toegestaan door het bron token.
 8. Wanneer het bron token verloopt, ontvangen volgende aanvragen een ongeautoriseerde uitzonde ring van 401.  Op dit moment brengt de telefoon-app de identiteit opnieuw tot stand en wordt er een nieuw bron token aangevraagd.
 
-    :::image type="content" source="./media/secure-access-to-data/resourcekeyworkflow.png" alt-text="Werk stroom voor Azure Cosmos DB resource tokens" border="false":::
+    :::image type="content" source="./media/secure-access-to-data/resourcekeyworkflow.png" alt-text="Toegangs beheer (IAM) in de Azure Portal-demonstring NoSQL data base Security" border="false":::
 
 Het genereren en beheren van bron tokens worden verwerkt door de systeem eigen Cosmos DB-client bibliotheken. Als u echter REST gebruikt, moet u de aanvraag-en verificatie headers maken. Zie [Access Control op Cosmos DB resources](/rest/api/cosmos-db/access-control-on-cosmosdb-resources) of de bron code voor onze [.net SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos/src/AuthorizationHelper.cs) of [Node.js SDK](https://github.com/Azure/azure-cosmos-js/blob/master/src/auth.ts)voor meer informatie over het maken van verificatie headers voor rest.
 

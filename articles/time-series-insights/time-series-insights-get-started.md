@@ -9,16 +9,19 @@ manager: diviso
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 02997b421a57363e04a0d988685b76f59954439e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 401d22ee68ba0652eb684b03b06fddf0b0fe3d72
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495139"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569464"
 ---
 # <a name="create-a-new-azure-time-series-insights-gen1-environment-in-the-azure-portal"></a>Maak een nieuwe Azure Time Series Insights gen1-omgeving in de Azure Portal
+
+> [!CAUTION]
+> Dit is een gen1-artikel.
 
 In dit artikel wordt beschreven hoe u een nieuwe Azure Time Series Insights-omgeving maakt met behulp van de Azure Portal.
 
@@ -28,7 +31,7 @@ Met Azure Time Series Insights kunt u aan de slag gaan met het visualiseren en o
 
 Volg deze stappen om een omgeving te maken:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 1. Selecteer de knop **+ een resource maken** .
 

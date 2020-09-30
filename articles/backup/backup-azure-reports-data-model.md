@@ -3,12 +3,12 @@ title: Gegevens model voor diagnostische gebeurtenissen van Azure Backup
 description: Dit gegevens model is een verwijzing naar de resource-specifieke modus voor het verzenden van diagnostische gebeurtenissen naar Log Analytics (LA).
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: adc1442b674b9a6e947ef65967a2c2f1359e7d8a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: c2c5d37596be104c4b1dc7e865586a4728a27bae
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017580"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569595"
 ---
 # <a name="data-model-for-azure-backup-diagnostics-events"></a>Gegevens model voor diagnostische gebeurtenissen van Azure Backup
 
@@ -38,9 +38,9 @@ Deze tabel bevat informatie over de belangrijkste back-upentiteiten, zoals kluiz
 | BackupManagementServerOSVersion   | Tekst          | Versie van het besturings systeem van de server voor back-upbeheer                   |
 | BackupManagementServerVersion     | Tekst          | Versie van de server voor back-upbeheer                      |
 | LatestRecoveryPointLocation       | Tekst          | Locatie van het meest recente herstel punt voor het back-upitem    |
-| LatestRecoveryPointTime           | DateTime      | Datum en tijd van het laatste herstel punt voor het back-upitem   |
+| LatestRecoveryPointTime           | Datum/Tijd      | Datum en tijd van het laatste herstel punt voor het back-upitem   |
 | OldestRecoveryPointLocation       | Tekst          | Locatie van het oudste herstel punt voor het back-upitem    |
-| OldestRecoveryPointTime           | DateTime      | Datum en tijd van het laatste herstel punt voor het back-upitem   |
+| OldestRecoveryPointTime           | Datum/Tijd      | Datum en tijd van het laatste herstel punt voor het back-upitem   |
 | PolicyUniqueId                    | Tekst          | Unieke ID voor het identificeren van het beleid                             |
 | ProtectedContainerFriendlyName    | Tekst          | Beschrijvende naam van de beveiligde server                        |
 | ProtectedContainerLocation        | Tekst          | Of de beveiligde container zich lokaal of in azure bevindt |
@@ -74,17 +74,17 @@ Deze tabel bevat details over velden die betrekking hebben op waarschuwingen.
 | Categorie                       | Tekst          | Categorie diagnostische gegevens die naar Azure Monitor-logboeken zijn gepusht-AddonAzureBackupAlerts |
 | AlertCode                      | Tekst          | Code voor een unieke identificatie van een waarschuwings type                     |
 | AlertConsolidationStatus       | Tekst          | Vaststellen of de waarschuwing een geconsolideerde waarschuwing is         |
-| AlertOccurrenceDateTime        | DateTime      | De datum en het tijdstip waarop de waarschuwing is gemaakt                     |
+| AlertOccurrenceDateTime        | Datum/Tijd      | De datum en het tijdstip waarop de waarschuwing is gemaakt                     |
 | AlertRaisedOn                  | Tekst          | Het type entiteit waarop de waarschuwing is opgetreden                        |
 | AlertSeverity                  | Tekst          | Ernst van de waarschuwing. Bijvoorbeeld kritiek                 |
 | AlertStatus                    | Tekst          | De status van de waarschuwing. Bijvoorbeeld: Active                     |
-| AlertTimeToResolveInMinutes    | Aantal        | De tijd die nodig is om een waarschuwing op te lossen. Leeg voor actieve waarschuwingen.     |
+| AlertTimeToResolveInMinutes    | Getal        | De tijd die nodig is om een waarschuwing op te lossen. Leeg voor actieve waarschuwingen.     |
 | AlertType                      | Tekst          | Type waarschuwing. Bijvoorbeeld back-up                           |
 | AlertUniqueId                  | Tekst          | De unieke id van de gegenereerde waarschuwing                    |
 | BackupItemUniqueId             | Tekst          | De unieke id van het back-upitem dat aan de waarschuwing is gekoppeld |
 | BackupManagementServerUniqueId | Tekst          | Veld voor het identificeren van de back-upbeheerserver waarop het back-upitem is beveiligd, indien van toepassing |
 | BackupManagementType           | Tekst          | Provider type voor het uitvoeren van een back-uptaak van de server, bijvoorbeeld IaaSVM, FileFolder |
-| CountOfAlertsConsolidated      | Aantal        | Aantal waarschuwingen dat is geconsolideerd als het een geconsolideerde waarschuwing is  |
+| CountOfAlertsConsolidated      | Getal        | Aantal waarschuwingen dat is geconsolideerd als het een geconsolideerde waarschuwing is  |
 | ProtectedContainerUniqueId     | Tekst          | De unieke id van de beveiligde server die is gekoppeld aan de waarschuwing |
 | RecommendedAction              | Tekst          | Aanbevolen actie om de waarschuwing op te lossen                      |
 | SchemaVersion                  | Tekst          | Huidige versie van het schema, bijvoorbeeld **v2**            |
@@ -125,17 +125,17 @@ Deze tabel bevat details over projectgerelateerde velden.
 | BackupItemUniqueId             | Tekst          | Unieke ID die wordt gebruikt om het back-upitem te identificeren dat is gerelateerd aan de opslag entiteit |
 | BackupManagementServerUniqueId | Tekst          | Unieke ID die wordt gebruikt om de back-upbeheerserver te identificeren die betrekking heeft op de opslag entiteit |
 | BackupManagementType           | Tekst          | Provider type voor het uitvoeren van back-ups, bijvoorbeeld IaaSVM, FileFolder waartoe deze taak behoort |
-| DataTransferredInMB            | Aantal        | Gegevens die worden overgebracht in MB voor deze taak                          |
-| JobDurationInSecs              | Aantal        | Totale taak duur in seconden                                |
+| DataTransferredInMB            | Getal        | Gegevens die worden overgebracht in MB voor deze taak                          |
+| JobDurationInSecs              | Getal        | Totale taak duur in seconden                                |
 | JobFailureCode                 | Tekst          | De teken reeks voor de fout code omdat de taak fout is opgetreden    |
 | JobOperation                   | Tekst          | Bewerking waarvoor de taak wordt uitgevoerd bijvoorbeeld back-ups maken, herstellen, back-up configureren |
 | JobOperationSubType            | Tekst          | Subtype van de taak bewerking. Bijvoorbeeld ' Log ', in het geval van een logboek back-uptaak |
-| JobStartDateTime               | DateTime      | Datum en tijd waarop de taak is gestart                       |
+| JobStartDateTime               | Datum/Tijd      | Datum en tijd waarop de taak is gestart                       |
 | JobStatus                      | Tekst          | De status van de voltooide taak, bijvoorbeeld voltooid, is mislukt   |
 | JobUniqueId                    | Tekst          | Unieke ID voor het identificeren van de taak                                |
 | ProtectedContainerUniqueId     | Tekst          | De unieke id van de beveiligde server die aan de taak is gekoppeld |
 | RecoveryJobDestination         | Tekst          | Doel van een herstel taak, waarbij de gegevens worden hersteld   |
-| RecoveryJobRPDateTime          | DateTime      | De datum, het tijdstip waarop het herstel punt dat wordt hersteld, is gemaakt |
+| RecoveryJobRPDateTime          | Datum/Tijd      | De datum, het tijdstip waarop het herstel punt dat wordt hersteld, is gemaakt |
 | RecoveryJobLocation            | Tekst          | De locatie waar het herstel punt dat wordt hersteld is opgeslagen |
 | RecoveryLocationType           | Tekst          | Type van de herstel locatie                                |
 | SchemaVersion                  | Tekst          | Huidige versie van het schema, bijvoorbeeld **v2**            |
@@ -208,8 +208,8 @@ Deze tabel bevat details over velden die betrekking hebben op opslag.
 | ProtectedContainerUniqueId     | Tekst          | De unieke id van de beveiligde container die is gekoppeld aan het back-upitem |
 | SchemaVersion                  | Tekst          | De versie van het schema. Bijvoorbeeld **v2**                   |
 | Staat                          | Tekst          | Status van het object voor het back-upitem. Bijvoorbeeld actief, verwijderd |
-| StorageAllocatedInMBs          | Aantal        | Grootte van de opslag die wordt toegewezen door het bijbehorende back-upitem in de bijbehorende opslag van het type schijf |
-| StorageConsumedInMBs           | Aantal        | Grootte van de opslag die wordt gebruikt door het bijbehorende back-upitem in de bijbehorende opslag |
+| StorageAllocatedInMBs          | Getal        | Grootte van de opslag die wordt toegewezen door het bijbehorende back-upitem in de bijbehorende opslag van het type schijf |
+| StorageConsumedInMBs           | Getal        | Grootte van de opslag die wordt gebruikt door het bijbehorende back-upitem in de bijbehorende opslag |
 | StorageName                    | Tekst          | De naam van de opslag entiteit. Bijvoorbeeld E:\                      |
 | StorageTotalSizeInGBs          | Tekst          | Totale grootte van de opslag, in GB, die wordt verbruikt door de opslag entiteit     |
 | Para                    | Tekst          | Type opslag, bijvoorbeeld Cloud, volume, schijf             |
@@ -217,6 +217,29 @@ Deze tabel bevat details over velden die betrekking hebben op opslag.
 | VaultUniqueId                  | Tekst          | Unieke ID die wordt gebruikt om de kluis te identificeren die is gerelateerd aan de opslag entiteit |
 | VolumeFriendlyName             | Tekst          | Beschrijvende naam van het opslag volume                          |
 | SourceSystem                   | Tekst          | Bron systeem van de huidige gegevens-Azure                    |
+
+## <a name="valid-operation-names-for-each-table"></a>Geldige bewerkings namen voor elke tabel
+
+Elke record in de bovenstaande tabellen heeft een bijbehorende **bewerkings naam**. Een bewerkings naam beschrijft het type record (en geeft ook aan welke velden in de tabel voor die record worden ingevuld). Elke tabel (categorie) ondersteunt een of meer verschillende bewerkings namen. Hieronder vindt u een samen vatting van de ondersteunde bewerkings namen voor elk van de bovenstaande tabellen.
+
+| **Tabel naam/-categorie**                   | **Ondersteunde bewerkings namen** | **Beschrijving**              |
+| ------------------------------------------- | ------------------------------|----------------------------- |
+| CoreAzureBackup | BackupItem | Vertegenwoordigt een record met alle details van een gegeven back-upitem, zoals ID, naam, type, enzovoort. |
+| CoreAzureBackup | BackupItemAssociation | Vertegenwoordigt een toewijzing tussen een back-upitem en de bijbehorende beveiligde container (indien van toepassing). |
+| CoreAzureBackup | BackupItemFrontEndSizeConsumption | Vertegenwoordigt een toewijzing tussen een back-upitem en de front-end-grootte. |
+| CoreAzureBackup | ProtectedContainer | Vertegenwoordigt een record met alle details van een gegeven beveiligde container, zoals ID, naam, type, enzovoort. |
+| CoreAzureBackup | ProtectedContainerAssociation | Vertegenwoordigt een toewijzing tussen een beveiligde container en de kluis die wordt gebruikt voor de back-up. |
+| CoreAzureBackup | Kluis | Vertegenwoordigt een record met alle details van een bepaalde kluis, bijvoorbeeld. ID, naam, tags, locatie etc. |
+| CoreAzureBackup | Recovery Point | Vertegenwoordigt een record die het oudste en laatste herstel punt voor een gegeven back-upitem bevat. |
+| AddonAzureBackupJobs | Taak |  Vertegenwoordigt een record met alle details van een bepaalde taak. Bijvoorbeeld taak bewerking, begin tijd, status etc. |
+| AddonAzureBackupAlerts | Waarschuwing | Vertegenwoordigt een record met alle details van een bepaalde waarschuwing. Bijvoorbeeld de aanmaak tijd van de waarschuwing, Ernst, status etc.  |
+| AddonAzureBackupStorage | Storage | Vertegenwoordigt een record die alle details van een bepaalde opslag entiteit bevat. Bijvoorbeeld Storage Name, type, enzovoort. |
+| AddonAzureBackupStorage | StorageAssociation | Vertegenwoordigt een toewijzing tussen een back-upitem en de totale Cloud opslag die door het back-upitem wordt gebruikt. |
+| AddonAzureBackupProtectedInstance | ProtectedInstance | Vertegenwoordigt een record met het aantal beveiligde exemplaren voor elke container of elk back-upitem. Voor Azure VM-back-up is het aantal beveiligde instanties beschikbaar op het niveau van het back-upitem, voor andere werk belastingen die beschikbaar zijn op het niveau van de beveiligde container. |
+| AddonAzureBackupPolicy | Beleid |  Vertegenwoordigt een record met alle details van een back-up-en bewaar beleid. Bijvoorbeeld ID, naam, Bewaar instellingen, enzovoort. |
+| AddonAzureBackupPolicy | PolicyAssociation | Vertegenwoordigt een toewijzing tussen een back-upitem en het toegepaste back-upbeleid. |   
+
+Vaak moet u lid zijn van verschillende tabellen, evenals de verschillende sets records die deel uitmaken van dezelfde tabel (gedifferentieerd op bewerkings naam) om alle velden op te halen die nodig zijn voor de analyse. Raadpleeg de [voorbeeld query's](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor#sample-kusto-queries) om aan de slag te gaan. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

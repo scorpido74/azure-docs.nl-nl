@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 05/29/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 02f868417ef9feea1771174e62152708c1257425
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: d954f7cdda4cae65f822489828226e0364d0fc29
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502899"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570527"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Een schaalset voor virtuele machines beheren met de Azure CLI
 Gedurende de levenscyclus van een schaalset voor virtuele machines moet u mogelijk een of meer beheertaken uitvoeren. Bovendien wilt u misschien scripts maken die verschillende levenscyclustaken automatiseren. In dit artikel vindt u meer informatie over de algemene Azure CLI-opdrachten waarmee u deze taken kunt uitvoeren.
@@ -49,6 +49,20 @@ az vmss get-instance-view \
     --instance-id 0
 ```
 
+U kunt ook gedetailleerde informatie over *instanceView* ophalen voor alle exemplaren in één API-aanroep, waarmee u de API-beperking voor grote installaties kunt voor komen. Geef uw eigen waarden op voor `--resource-group` , `--subscription` en `--name` .
+
+```azurecli
+az vmss list-instances \
+    --expand instanceView \
+    --select instanceView \
+    --resource-group <resourceGroupName> \
+    --subscription <subID> \
+    --name <vmssName>
+```
+
+```rest
+GET "https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/virtualMachineScaleSets/<VMSSName>/virtualMachines?api-version=2019-03-01&%24expand=instanceView"
+```
 
 ## <a name="list-connection-information-for-vms"></a>Verbindings gegevens voor Vm's weer geven
 Als u verbinding wilt maken met de virtuele machines in een schaalset, moet u SSH of RDP naar een toegewezen openbaar IP-adres en poort nummer. Network Address Translation (NAT) regels worden standaard toegevoegd aan de Azure-load balancer die het verkeer van externe verbindingen naar elke virtuele machine doorstuurt. Als u het adres en de poorten wilt weer geven om verbinding te maken met VM-exemplaren in een schaalset, gebruikt u [AZ vmss List-instance-Connection-info](/cli/azure/vmss). In het volgende voor beeld ziet u verbindings gegevens voor VM-exemplaren in de schaalset met de naam *myScaleSet* en in de resource groep *myResourceGroup* . Geef uw eigen waarden op voor deze namen:

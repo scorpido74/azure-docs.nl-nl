@@ -2,13 +2,13 @@
 title: Azure Service Bus-verlopen van berichten
 description: In dit artikel wordt uitgelegd over de verval tijd en de duur van Azure Service Bus berichten. Na een dergelijke deadline wordt het bericht niet meer bezorgd.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 41711428711533a6ecac449f59d415e86474545b
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.date: 09/29/2020
+ms.openlocfilehash: 47f8bdb4440adfeb5197f90cdad5358a442ce6a7
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88064720"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569918"
 ---
 # <a name="message-expiration-time-to-live"></a>Verlopen van berichten (Time to Live)
 
@@ -29,7 +29,7 @@ Alle berichten die worden verzonden naar een wachtrij of onderwerp, zijn onderhe
 > [!NOTE]
 > De standaard waarde voor [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) voor een brokered-bericht is [time span. Max](/dotnet/api/system.timespan.maxvalue) als niet anderszins is opgegeven.
 >
-> Voor Messa ging-entiteiten (wacht rijen en onderwerpen) is de standaard verloop tijd ook [time span. Max](/dotnet/api/system.timespan.maxvalue) voor Service Bus standaard-en Premium-lagen.  Voor de laag basis is de standaard verval tijd 14 dagen.
+> Voor Messa ging-entiteiten (wacht rijen en onderwerpen) is de standaard verloop tijd ook [time span. Max](/dotnet/api/system.timespan.maxvalue) voor Service Bus standaard-en Premium-lagen. Voor de laag **basis** is de standaard verval tijd (ook maximum) **14 dagen**.
 
 Verlopen berichten kunnen eventueel worden verplaatst naar een [wachtrij met onbestelbare](service-bus-dead-letter-queues.md) meldingen door de eigenschap [EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enabledeadletteringonmessageexpiration#Microsoft_ServiceBus_Messaging_QueueDescription_EnableDeadLetteringOnMessageExpiration) in te stellen of het respectieve vak in de portal te controleren. Als de optie is uitgeschakeld, worden verlopen berichten verwijderd. Verlopen berichten die zijn verplaatst naar de wachtrij met onbestelbare meldingen kunnen worden onderscheiden van andere onbestelbare berichten door de [DeadletterReason](service-bus-dead-letter-queues.md#moving-messages-to-the-dlq) -eigenschap te evalueren die de Broker opslaat in de sectie gebruikers eigenschappen. in dit geval is de waarde [TTLExpiredException](service-bus-dead-letter-queues.md#moving-messages-to-the-dlq) .
 

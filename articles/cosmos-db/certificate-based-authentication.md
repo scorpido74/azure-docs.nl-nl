@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/11/2019
 ms.author: tvoellm
 ms.reviewer: sngun
-ms.openlocfilehash: ea8d4180a6e820e72f5ca0ce7e7acaf13348ae67
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0b1fdec12b99edc952d24b0b3cc21bad24ec7554
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262494"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569724"
 ---
 # <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>Verificatie op basis van certificaten voor een Azure AD-identiteit om toegang te krijgen tot sleutels van een Azure Cosmos DB-account
 
@@ -28,7 +28,7 @@ Met verificatie op basis van certificaten kan de clienttoepassing worden geverif
 
 In deze stap maakt u een voor beeld van een webtoepassing in uw Azure AD-account. Deze toepassing wordt later gebruikt voor het lezen van de sleutels uit uw Azure Cosmos DB-account. Gebruik de volgende stappen om een toepassing te registreren: 
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 1. Open het deel venster **Active Directory** van Azure, ga naar het deel venster **app-registraties** en selecteer **nieuwe registratie**. 
 
@@ -40,13 +40,13 @@ In deze stap maakt u een voor beeld van een webtoepassing in uw Azure AD-account
    * **Ondersteunde account typen** : Kies **accounts in deze organisatie-Directory alleen (standaard directory),** zodat resources in uw huidige map toegang hebben tot deze toepassing. 
    * **Omleidings-URL** : Kies toepassing van het type **Web** en geef een URL op waar uw toepassing wordt gehost. Dit kan een wille keurige URL zijn. Voor dit voor beeld kunt u een test-URL opgeven, zoals in `https://sampleApp.com` de richting van de app, zelfs als deze niet bestaat.
 
-   :::image type="content" source="./media/certificate-based-authentication/register-sample-web-app.png" alt-text="Een voor beeld-webtoepassing registreren":::
+   :::image type="content" source="./media/certificate-based-authentication/register-sample-web-app.png" alt-text="Nieuwe toepassings registratie in Active Directory":::
 
 1. Selecteer **registreren** nadat u het formulier hebt ingevuld.
 
 1. Nadat de app is geregistreerd, noteert u de **toepassings-id** en de **object-id**. u gebruikt deze gegevens in de volgende stappen. 
 
-   :::image type="content" source="./media/certificate-based-authentication/get-app-object-ids.png" alt-text="De toepassings-en object-Id's ophalen":::
+   :::image type="content" source="./media/certificate-based-authentication/get-app-object-ids.png" alt-text="Nieuwe toepassings registratie in Active Directory":::
 
 ## <a name="install-the-azuread-module"></a>De AzureAD-module installeren
 
@@ -63,7 +63,7 @@ In deze stap installeert u de Azure AD Power shell-module. Deze module is vereis
    Set-AzContext $context 
    ```
 
-1. De [AzureAD](/powershell/module/azuread/?view=azureadps-2.0) -module installeren en importeren
+1. De [AzureAD](/powershell/module/azuread/?view=azureadps-2.0&preserve-view=true) -module installeren en importeren
 
    ```powershell
    Install-Module AzureAD
@@ -99,17 +99,17 @@ New-AzureADApplicationKeyCredential -ObjectId $application.ObjectId -CustomKeyId
 
 De bovenstaande opdracht resulteert in de uitvoer die lijkt op de onderstaande scherm afbeelding:
 
-:::image type="content" source="./media/certificate-based-authentication/certificate-based-credential-output.png" alt-text="Uitvoer van referenties voor het maken van een certificaat":::
+:::image type="content" source="./media/certificate-based-authentication/certificate-based-credential-output.png" alt-text="Nieuwe toepassings registratie in Active Directory":::
 
 ## <a name="configure-your-azure-cosmos-account-to-use-the-new-identity"></a>Uw Azure Cosmos-account configureren voor het gebruik van de nieuwe identiteit
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 1. Ga naar uw Azure Cosmos-account en open de Blade **toegangs beheer (IAM)** .
 
 1. Selecteer **functie toewijzing** **toevoegen** en toevoegen. Voeg de sampleApp die u in de vorige stap hebt gemaakt, toe aan de rol **Inzender** , zoals weer gegeven in de volgende scherm afbeelding:
 
-   :::image type="content" source="./media/certificate-based-authentication/configure-cosmos-account-with-identify.png" alt-text="Azure Cosmos-account configureren voor het gebruik van de nieuwe identiteit":::
+   :::image type="content" source="./media/certificate-based-authentication/configure-cosmos-account-with-identify.png" alt-text="Nieuwe toepassings registratie in Active Directory":::
 
 1. Selecteer **Opslaan** nadat u het formulier hebt ingevuld
 
@@ -119,7 +119,7 @@ U kunt de op certificaten gebaseerde referentie koppelen aan de client toepassin
 
 In de registratie van de Azure-app voor de client toepassing:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 1. Open het deel venster **Active Directory** van Azure, ga naar het deel venster **app-registraties** en open de voor beeld-app die u in de vorige stap hebt gemaakt. 
 
@@ -148,9 +148,9 @@ In deze stap meldt u zich aan bij Azure met behulp van de toepassing en het cert
       -Type "Keys"
    ```
 
-Met de vorige opdracht worden de primaire en secundaire hoofd sleutels van uw Azure Cosmos-account weer gegeven. U kunt het activiteiten logboek van uw Azure Cosmos-account weer geven om te valideren dat de aanvraag voor het ophalen van sleutels is geslaagd en dat de gebeurtenis wordt geïnitieerd door de toepassing ' sampleApp '.
+Met de vorige opdracht worden de primaire en secundaire primaire sleutels van uw Azure Cosmos-account weer gegeven. U kunt het activiteiten logboek van uw Azure Cosmos-account weer geven om te valideren dat de aanvraag voor het ophalen van sleutels is geslaagd en dat de gebeurtenis wordt geïnitieerd door de toepassing ' sampleApp '.
 
-:::image type="content" source="./media/certificate-based-authentication/activity-log-validate-results.png" alt-text="De aanroep Get Keys in azure AD valideren":::
+:::image type="content" source="./media/certificate-based-authentication/activity-log-validate-results.png" alt-text="Nieuwe toepassings registratie in Active Directory":::
 
 ## <a name="access-the-keys-from-a-c-application"></a>Toegang tot de sleutels vanuit een C#-toepassing 
 
@@ -236,9 +236,9 @@ namespace TodoListDaemonWithCert
 }
 ```
 
-Met dit script worden de primaire en secundaire hoofd sleutels uitgevoerd, zoals weer gegeven in de volgende scherm afbeelding:
+Met dit script worden de primaire en secundaire primaire sleutels uitgevoerd, zoals wordt weer gegeven in de volgende scherm afbeelding:
 
-:::image type="content" source="./media/certificate-based-authentication/csharp-application-output.png" alt-text="uitvoer van csharp-toepassing":::
+:::image type="content" source="./media/certificate-based-authentication/csharp-application-output.png" alt-text="Nieuwe toepassings registratie in Active Directory":::
 
 Net als bij de vorige sectie kunt u het activiteiten logboek van uw Azure Cosmos-account bekijken om te valideren dat de aanvraag voor het ophalen van sleutels wordt gestart door de toepassing ' sampleApp '. 
 

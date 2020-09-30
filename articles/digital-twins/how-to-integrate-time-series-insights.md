@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 7/14/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c6c5c9b00ec3309638a7c5618e5995c8c5f07b11
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: f64e959536b4abea4f2facb5ae3238b4843e4611
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564357"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569957"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Azure Digital Apparaatdubbels integreren met Azure Time Series Insights
 
@@ -65,7 +65,7 @@ De zelf studie over Azure Digital Apparaatdubbels [*: verbinding maken met een e
     az eventhubs eventhub authorization-rule create --rights Listen Send --resource-group <resource group name> --namespace-name <Event Hubs namespace from above> --eventhub-name <Twins event hub name from above> --name <name for your Twins auth rule>
     ```
 
-4. Maak een Azure Digital Apparaatdubbels- [eind punt](concepts-route-events.md#create-an-endpoint) dat uw event grid-onderwerp koppelt aan uw Azure Digital apparaatdubbels-exemplaar.
+4. Maak een Azure Digital Apparaatdubbels- [eind punt](concepts-route-events.md#create-an-endpoint) dat uw event hub koppelt aan uw Azure Digital apparaatdubbels-exemplaar.
 
     ```azurecli
     az dt endpoint create eventhub --endpoint-name <name for your Event Hubs endpoint> --eventhub-resource-group <resource group name> --eventhub-namespace <Event Hubs namespace from above> --eventhub <Twins event hub name from above> --eventhub-policy <Twins auth rule from above> -n <your Azure Digital Twins instance name>
@@ -203,11 +203,11 @@ Vervolgens stelt u een Time Series Insights-exemplaar in om de gegevens van uw t
     1. Selecteer de prijs categorie **payg (preview)** .
     2. U moet een **tijd reeks-id** voor deze omgeving kiezen. De tijd reeks-ID mag Maxi maal drie waarden zijn die u gaat gebruiken om te zoeken naar uw gegevens in Time Series Insights. Voor deze zelf studie kunt u **$dtId**gebruiken. Meer informatie over het selecteren van een ID-waarde in [*Best practices voor het kiezen van een time series-id*](https://docs.microsoft.com/azure/time-series-insights/how-to-select-tsid).
     
-        :::image type="content" source="media/how-to-integrate-time-series-insights/create-twin-id.png" alt-text="De portal voor het maken van een Time Series Insights-omgeving. De prijs categorie PAYG (preview) is geselecteerd en de eigenschaps naam van de tijd reeks-ID is $dtId":::
+        :::image type="content" source="media/how-to-integrate-time-series-insights/create-twin-id.png" alt-text="Een weer gave van Azure-Services in een end-to-end-scenario, markeren Time Series Insights":::
 
 2. Selecteer **volgende: gebeurtenis bron** en selecteer uw event hubs informatie hierboven. U moet ook een nieuwe Event Hubs Consumer groep maken.
     
-    :::image type="content" source="media/how-to-integrate-time-series-insights/event-source-twins.png" alt-text="De portal voor het maken van een Time Series Insights-omgevings gebeurtenis bron. U maakt een gebeurtenis bron met de Event Hub informatie hierboven. U maakt ook een nieuwe consumenten groep.":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/event-source-twins.png" alt-text="Een weer gave van Azure-Services in een end-to-end-scenario, markeren Time Series Insights":::
 
 ## <a name="begin-sending-iot-data-to-azure-digital-twins"></a>Beginnen met het verzenden van IoT-gegevens naar Azure Digital Apparaatdubbels
 
@@ -223,19 +223,19 @@ Gegevens moeten nu worden gestroomd naar uw Time Series Insights-exemplaar, die 
 
 1. Open uw Time Series Insights-exemplaar in de [Azure Portal](https://portal.azure.com) (u kunt zoeken naar de naam van uw exemplaar in de zoek balk van de portal). Ga naar de *URL van Time Series Insights Explorer* die wordt weer gegeven in het overzicht van exemplaren.
     
-    :::image type="content" source="media/how-to-integrate-time-series-insights/view-environment.png" alt-text="Selecteer de URL van Time Series Insights Explorer op het tabblad Overzicht van uw Time Series Insights omgeving":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/view-environment.png" alt-text="Een weer gave van Azure-Services in een end-to-end-scenario, markeren Time Series Insights":::
 
 2. In de Explorer ziet u uw drie apparaatdubbels van Azure Digital Apparaatdubbels die aan de linkerkant worden weer gegeven. Selecteer _**thermostat67**_, selecteer **Tempe ratuur**en druk op **toevoegen**.
 
-    :::image type="content" source="media/how-to-integrate-time-series-insights/add-data.png" alt-text="Selecteer * * thermostat67 * *, selecteer * * Tempe ratuur * * en druk op * * toevoegen * *":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/add-data.png" alt-text="Een weer gave van Azure-Services in een end-to-end-scenario, markeren Time Series Insights":::
 
 3. U ziet nu de oorspronkelijke temperatuur aflezingen van uw Thermo staat, zoals hieronder wordt weer gegeven. Diezelfde temperatuur meting wordt bijgewerkt voor *room21* en *floor1*, en u kunt deze gegevens stromen op elkaar visualiseren.
     
-    :::image type="content" source="media/how-to-integrate-time-series-insights/initial-data.png" alt-text="De initiële temperatuur gegevens worden in een grafiek in de TSI-Verkenner gegrafeerd. Het is een regel met wille keurige waarden tussen 68 en 85":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/initial-data.png" alt-text="Een weer gave van Azure-Services in een end-to-end-scenario, markeren Time Series Insights":::
 
 4. Als u toestaat dat de simulatie veel langer wordt uitgevoerd, ziet uw visualisatie er ongeveer als volgt uit:
     
-    :::image type="content" source="media/how-to-integrate-time-series-insights/day-data.png" alt-text="De gegevens over de Tempe ratuur van elke dubbele kleur worden in drie parallelle lijnen van verschillende kleuren genoteerd.":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/day-data.png" alt-text="Een weer gave van Azure-Services in een end-to-end-scenario, markeren Time Series Insights":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

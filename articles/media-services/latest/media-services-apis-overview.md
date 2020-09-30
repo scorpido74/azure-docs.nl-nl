@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 371cfdc8bf2b09f703e1c7bd0153a433ff60ad16
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 4d1c68ba1e0b7db8afefa64abefc671d51e78bd4
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89298960"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569503"
 ---
 # <a name="develop-with-media-services-v3-apis"></a>Ontwikkelen met Media Services v3-API’s
 
@@ -41,7 +41,7 @@ In plaats van een service-principal te maken, kunt u overwegen beheerde identite
 
 ### <a name="azure-ad-service-principal"></a>Service-Principal van Azure AD
 
-Als u een Azure AD-app en Service-Principal maakt, moet de app zich in een eigen Tenant bevindt. Nadat u de app hebt gemaakt, geeft u de rol app **Inzender** of **eigenaar** toegang tot het Media Services-account.
+De Azure AD-app en service-principal moeten zich in dezelfde Tenant bezien. Nadat u de app hebt gemaakt, geeft u de rol app **Inzender** of **eigenaar** toegang tot het Media Services-account.
 
 Zie [vereiste machtigingen](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)als u niet zeker weet of u gemachtigd bent om een Azure AD-app te maken.
 
@@ -120,7 +120,7 @@ Er wordt slechts één langlopende bewerking ondersteund voor een bepaalde live 
 > [!NOTE]
 > De Azure Media Services v3 Sdk's zijn niet gegarandeerd thread-safe. Wanneer u een app met meerdere threads ontwikkelt, moet u uw eigen thread synchronisatie logica toevoegen om de client te beveiligen of een nieuw AzureMediaServicesClient-object per thread te gebruiken. Wees ook voorzichtig met het oplossen van problemen met meerdere threads die worden geïntroduceerd door de optionele objecten die door uw code worden verstrekt aan de client (zoals een httpclient maakt-exemplaar in .NET).
 
-|SDK|Naslaginformatie|
+|SDK|Referentie|
 |---|---|
 |[.NET SDK](https://aka.ms/ams-v3-dotnet-sdk)|[.NET-ref](https://aka.ms/ams-v3-dotnet-ref)|
 |[Java SDK](https://aka.ms/ams-v3-java-sdk)|[Java-ref](https://aka.ms/ams-v3-java-ref)|

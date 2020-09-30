@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 91054318d4b030d9b2cb9bb80424ade80aeeca85
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 49400ad0da86eddf7bbbd51dd92101084cdf1ee1
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91395835"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570105"
 ---
 # <a name="conflict-types-and-resolution-policies-when-using-multiple-write-regions"></a>Conflict typen en oplossings beleid wanneer meerdere schrijf regio's worden gebruikt
 
@@ -50,6 +50,6 @@ Azure Cosmos DB biedt een flexibel mechanisme op basis van beleid om schrijf con
 
 Meer informatie over het configureren van beleids regels voor conflict oplossing:
 
-* [Multi-Master configureren in uw toepassingen](how-to-multi-master.md)
+* [Meerdere schrijf regio's configureren voor uw toepassingen](how-to-multi-master.md)
 * [Conflict oplossings beleid beheren](how-to-manage-conflicts.md)
 * [De invoer van de conflicten lezen](how-to-manage-conflicts.md#read-from-conflict-feed)

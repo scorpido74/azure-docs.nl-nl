@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: de56ba1281d0f20c8be838fa1bc9ebc24905b26c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e378c1e25fb434e689eadd91e9e8562ffe7e61fd
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85846912"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570091"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>Azure Data Factory pijp lijnen bewaken en beheren met behulp van de app voor bewaking en beheer
 > [!div class="op_single_selector"]
@@ -124,7 +124,7 @@ U kunt klikken op een activiteiten venster om de details ervan weer te geven in 
 
 Ga in het rechterdeel venster naar het tabblad **activiteiten venster Verkenner** om meer details weer te geven.
 
-![Activiteiten venster Verkenner](./media/data-factory-monitor-manage-app/ActivityWindowExplorer.png)
+![Scherm afbeelding die laat zien hoe u het tabblad van het activiteiten venster Verkenner opent.](./media/data-factory-monitor-manage-app/ActivityWindowExplorer.png)
 
 U ziet ook de **opgeloste variabelen** voor elke uitvoerings poging voor een activiteit in de sectie **pogingen** .
 
@@ -187,7 +187,7 @@ Activiteit Vensters kunnen een van de volgende statussen hebben:
 </tr>
 <tr>
 <tr>
-<td rowspan="2">Wordt uitgevoerd</td><td>Valideren</td><td>De validatie wordt uitgevoerd.</td>
+<td rowspan="2">InProgress</td><td>Valideren</td><td>De validatie wordt uitgevoerd.</td>
 </tr>
 <td>-</td>
 <td>Het activiteiten venster wordt verwerkt.</td>
@@ -217,7 +217,7 @@ Activiteit Vensters kunnen een van de volgende statussen hebben:
 
 Wanneer u op een activiteiten venster in de lijst klikt, ziet u details hierover in de **activiteit Windows Verkenner** of in het venster **Eigenschappen** aan de rechter kant.
 
-![Activiteiten venster Verkenner](./media/data-factory-monitor-manage-app/ActivityWindowExplorer-2.png)
+![Scherm afbeelding die laat zien hoe Details over een activiteiten venster worden weer gegeven.](./media/data-factory-monitor-manage-app/ActivityWindowExplorer-2.png)
 
 ### <a name="refresh-activity-windows"></a>Windows-activiteit vernieuwen
 De details worden niet automatisch vernieuwd, dus gebruik de knop Vernieuwen (de tweede knop) op de opdracht balk om de lijst met activiteiten in Windows hand matig te vernieuwen.  

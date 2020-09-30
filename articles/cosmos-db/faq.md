@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: f6b2d081b0dc475e0950b12de31bab83cbe7da8b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4bd29ce3bf2cc7cd69f86dbf172d3cd9a2044e79
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213088"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570365"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Veelgestelde vragen over verschillende API's in Azure Cosmos DB
 
@@ -85,7 +85,7 @@ Probeer Azure Cosmos DB abonnementen worden weer gegeven in de Azure Portal volg
 
 De volgende voor waarden zijn van toepassing om Azure Cosmos DB-abonnementen te proberen:
 
-* Account toegang kan worden verleend aan persoonlijke micro soft-accounts (MSA). Vermijd het gebruik van Active Directory (AAD)-accounts of accounts die deel uitmaken van bedrijfsaad-tenants van het bedrijf, waardoor er mogelijk beperkingen gelden voor het blok keren van de toegang.
+* Account toegang kan worden verleend aan persoonlijke micro soft-accounts (MSA). Vermijd het gebruik van Azure Active Directory (Azure AD)-accounts of accounts die horen bij zakelijke Azure AD-tenants, ze kunnen beperkingen hebben waardoor het verlenen van toegang kan worden geblokkeerd.
 * Eén [door Voer ingerichte container](./set-throughput.md#set-throughput-on-a-container) per abonnement voor SQL, GREMLIN-API en tabel accounts.
 * Maxi maal drie [ingerichte door Voer ingerichte verzamelingen](./set-throughput.md#set-throughput-on-a-container) per abonnement voor MongoDb-accounts.
 * Eén [door Voer ingerichte data base](./set-throughput.md#set-throughput-on-a-database) per abonnement. Data bases met door Voer ingericht kunnen een wille keurig aantal containers bevatten.
@@ -102,9 +102,9 @@ De volgende voor waarden zijn van toepassing om Azure Cosmos DB-abonnementen te 
 
 Azure Cosmos DB is beschikbaar in de Azure Portal. Meld u eerst aan voor een Azure-abonnement. Nadat u zich hebt geregistreerd, kunt u een Azure Cosmos DB-account toevoegen aan uw Azure-abonnement.
 
-### <a name="what-is-a-master-key"></a>Wat is een hoofdsleutel?
+### <a name="what-is-a-primary-key"></a>Wat is een primaire sleutel?
 
-Een hoofdsleutel is een beveiligingstoken voor toegang tot alle resources voor een account. Personen met de sleutel hebben lees-en schrijf toegang tot alle resources in het database account. Wees voorzichtig wanneer u hoofd sleutels distribueert. De primaire hoofd sleutel en secundaire hoofd sleutel zijn beschikbaar op de Blade **sleutels** van de [Azure Portal][azure-portal]. Zie [Toegangssleutels weergeven, kopiëren en opnieuw genereren](manage-with-cli.md#list-account-keys) voor meer informatie over sleutels.
+Een primaire sleutel is een beveiligings token voor toegang tot alle resources voor een account. Personen met de sleutel hebben lees-en schrijf toegang tot alle resources in het database account. Wees voorzichtig wanneer u primaire sleutels distribueert. De primaire primaire sleutel en secundaire primaire sleutel zijn beschikbaar op de Blade **sleutels** van de [Azure Portal][azure-portal]. Zie [Toegangssleutels weergeven, kopiëren en opnieuw genereren](manage-with-cli.md#list-account-keys) voor meer informatie over sleutels.
 
 ### <a name="what-are-the-regions-that-preferredlocations-can-be-set-to"></a>Wat zijn de regio's waarop PreferredLocations kan worden ingesteld?
 

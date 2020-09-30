@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 05/29/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurepowershell
-ms.openlocfilehash: 45bace9ac174b353bb4662a27e800c0de4eada4b
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: eee4dd7fae872f6b3ddd01f60aba732edc170766
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89072720"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570587"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Een schaalset voor virtuele machines beheren met Azure PowerShell
 
@@ -45,6 +45,15 @@ Als u meer informatie wilt weer geven over een specifiek VM-exemplaar, voegt `-I
 Get-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId "0"
 ```
 
+U kunt ook gedetailleerde informatie over *instanceView* ophalen voor alle exemplaren in één API-aanroep, waarmee u de API-beperking voor grote installaties kunt voor komen.
+
+```powershell
+Get-AzVmssVM -InstanceView -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
+```
+
+```rest
+GET "https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/virtualMachineScaleSets/<VMSSName>/virtualMachines?api-version=2019-03-01&%24expand=instanceView"
+```
 
 ## <a name="change-the-capacity-of-a-scale-set"></a>De capaciteit van een schaalset wijzigen
 De voor gaande opdrachten hebben informatie over de schaalset en de VM-exemplaren. Als u het aantal instanties in de schaalset wilt verg Roten of verkleinen, kunt u de capaciteit wijzigen. De schaalset maakt of verwijdert automatisch het vereiste aantal Vm's en configureert vervolgens de virtuele machines om het toepassings verkeer te ontvangen.

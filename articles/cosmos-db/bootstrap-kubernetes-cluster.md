@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: sngun
-ms.openlocfilehash: 31c3c02f2b32594e5b20450d0bb519f4cdf82807
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b9e6e1388465542e9fb3ac69540c981a1fd70d4b
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497757"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570122"
 ---
 # <a name="how-to-use-azure-kubernetes-with-azure-cosmos-db-preview"></a>Azure Kubernetes gebruiken met Azure Cosmos DB (preview-versie)
 
-Met de etcd-API in Azure Cosmos DB kunt u Azure Cosmos DB gebruiken als back-end-Archief voor Azure Kubernetes. Azure Cosmos DB implementeert het etcd wire-protocol, waarmee de API-servers van het Master-knoop punt kunnen worden gebruikt Azure Cosmos DB net zoals een lokaal geïnstalleerd etcd. etcd-API in Azure Cosmos DB is momenteel beschikbaar als preview-versie. Wanneer u Azure Cosmos etcd API gebruikt als de back-upopslag voor Kubernetes, krijgt u de volgende voor delen: 
+Met de etcd-API in Azure Cosmos DB kunt u Azure Cosmos DB gebruiken als back-end-Archief voor Azure Kubernetes. Azure Cosmos DB implementeert het etcd wire-protocol, waarmee de API-servers van het primaire knoop punt kunnen worden gebruikt Azure Cosmos DB net zoals het een lokaal geïnstalleerd etcd zou hebben. etcd-API in Azure Cosmos DB is momenteel beschikbaar als preview-versie. Wanneer u Azure Cosmos etcd API gebruikt als de back-upopslag voor Kubernetes, krijgt u de volgende voor delen: 
 
 * U hoeft etcd niet hand matig te configureren en te beheren.
 * Hoge Beschik baarheid van etcd, gegarandeerd door Cosmos (99,99% in één regio, 99,999% in meerdere regio's).
@@ -27,7 +27,7 @@ Zie het artikel [overzicht](etcd-api-introduction.md) voor meer informatie over 
 
 ## <a name="prerequisites"></a>Vereisten
 
-1. Installeer de nieuwste versie van [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest). U kunt Azure CLI specifiek voor uw besturings systeem downloaden en installeren.
+1. Installeer de nieuwste versie van [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true). U kunt Azure CLI specifiek voor uw besturings systeem downloaden en installeren.
 
 1. Installeer de [nieuwste versie](https://github.com/Azure/aks-engine/releases) van de Azure Kubernetes-engine. De installatie-instructies voor verschillende besturings systemen zijn beschikbaar op de pagina [Azure Kubernetes engine](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md#install-aks-engine) . U hebt alleen de stappen nodig van de sectie **AKS-Engine installeren** van het gekoppelde document. Pak het zip-bestand uit nadat het is gedownload.
 

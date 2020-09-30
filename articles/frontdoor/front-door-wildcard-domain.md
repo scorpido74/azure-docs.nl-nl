@@ -8,18 +8,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/10/2020
+ms.date: 09/29/2020
 ms.author: duau
-ms.openlocfilehash: edeaaf97c818831aa1eda5823ea491110f784549
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 5194e088ce2bd35208a92c5295457e6c34cd2cc1
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91442366"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570324"
 ---
 # <a name="wildcard-domains"></a>Joker tekens domeinen
 
-Met uitzonde ring van Apex-domeinen en subdomeinen kunt u een domein naam voor joker tekens toewijzen aan de lijst met front-end-hosts of aangepaste domeinen in uw Azure front-deur profiel. Het gebruik van joker tekens in uw Azure front-deur configuratie vereenvoudigt het routeren van verkeer voor meerdere subdomeinen voor een API, toepassing of website uit dezelfde routerings regel. U hoeft de configuratie niet te wijzigen om elk subdomein afzonderlijk toe te voegen of op te geven. U kunt bijvoorbeeld het bewerkings plan voor `customer1.contoso.com` , en opgeven met `customer2.contoso.com` `customerN.contoso.com` behulp van dezelfde routerings regel om het domein met het Joker teken toe te voegen `*.contoso.com` .
+Naast Apex-domeinen en subdomeinen kunt u ook een Joker teken toewijzen aan uw front-end-hosts of aangepaste domeinen voor uw Azure front-deur profiel. Het gebruik van joker tekens in uw Azure front-deur configuratie vereenvoudigt het routeren van verkeer voor meerdere subdomeinen voor een API, toepassing of website uit dezelfde routerings regel. U hoeft de configuratie niet te wijzigen om elk subdomein afzonderlijk toe te voegen of op te geven. U kunt bijvoorbeeld het bewerkings plan voor `customer1.contoso.com` , en opgeven met `customer2.contoso.com` `customerN.contoso.com` behulp van dezelfde routerings regel om het domein met het Joker teken toe te voegen `*.contoso.com` .
 
 De belangrijkste scenario's die zijn verbeterd met ondersteuning voor joker tekens zijn onder andere:
 
@@ -31,7 +31,7 @@ De belangrijkste scenario's die zijn verbeterd met ondersteuning voor joker teke
 
 ## <a name="adding-wildcard-domains"></a>Joker tekens toevoegen aan domeinen
 
-U kunt een Joker teken domein toevoegen onder de sectie voor front-end-hosts of-domeinen. Net als bij subdomeinen valideert Azure front-deur dat er CNAME-record toewijzing is voor uw Joker teken domein. Deze DNS-toewijzing kan een directe CNAME-record toewijzing zijn, zoals `*.contoso.com` toegewezen aan `contoso.azurefd.net` . U kunt ook afdverify tijdelijke toewijzing gebruiken. Zo wordt bijvoorbeeld `afdverify.contoso.com` gekoppeld om `afdverify.contoso.azurefd.net` de CNAME-record toewijzing voor het Joker teken te valideren.
+U kunt een Joker teken domein toevoegen onder de sectie voor front-end-hosts of-domeinen. Net als bij subdomeinen valideert Azure front-deur dat de CNAME-record toewijzing voor uw domein met Joker tekens is. Deze DNS-toewijzing kan een directe CNAME-record toewijzing zijn, zoals `*.contoso.com` toegewezen aan `contoso.azurefd.net` . U kunt ook afdverify tijdelijke toewijzing gebruiken. Zo wordt bijvoorbeeld `afdverify.contoso.com` gekoppeld om `afdverify.contoso.azurefd.net` de CNAME-record toewijzing voor het Joker teken te valideren.
 
 > [!NOTE]
 > Azure DNS ondersteunt recordsets met jokertekens.
@@ -47,7 +47,7 @@ U kunt Joker teken domeinen en de bijbehorende subdomeinen toevoegen met bepaald
 - Als een Joker teken domein wordt toegevoegd aan een Azure front deur-profiel:
   - Het Joker teken domein kan niet worden toegevoegd aan een ander Azure front deur-profiel.
   - Subdomeinen van het eerste niveau van het Joker teken domein kunnen niet worden toegevoegd aan een ander profiel voor een Azure-front-deur of een Azure Content Delivery Network-profiel.
-- Als een subdomein van een domein met Joker tekens wordt toegevoegd aan een Azure front deur-profiel of Azure Content Delivery Network-profiel, kan het Joker teken niet worden toegevoegd aan andere profielen van de Azure-front-deur.
+- Als een subdomein van een Joker teken domein al is toegevoegd aan een Azure front deur-profiel of een Azure Content Delivery Network-profiel, kan het Joker teken niet worden gebruikt voor een ander Azure front deur-profiel.
 - Als twee profielen (Azure front-deur of Azure Content Delivery Network) verschillende subdomeinen van een hoofd domein hebben, kunnen joker tekens niet aan een van de profielen worden toegevoegd.
 
 ## <a name="certificate-binding"></a>Certificaat binding
@@ -59,7 +59,7 @@ Voor het accepteren van HTTPS-verkeer op uw Joker teken domein, moet u HTTPS ins
 
 U kunt ervoor kiezen om hetzelfde Joker teken te gebruiken van Azure Key Vault of van Azure front-deur beheerde certificaten voor subdomeinen.
 
-Als er een subdomein wordt toegevoegd voor een Joker teken domein waaraan al een certificaat is gekoppeld, kan HTTPS voor het subdomein niet worden uitgeschakeld. Het subdomein gebruikt de certificaat binding voor het domein met Joker tekens, tenzij een andere Key Vault of een door de Azure front-deur beheerd certificaat overschrijft.
+Als er een subdomein wordt toegevoegd voor een Joker teken domein waaraan al een certificaat is gekoppeld, kunt u HTTPS niet uitschakelen voor het subdomein. Het subdomein gebruikt de certificaat binding voor het domein met Joker tekens, tenzij een andere Key Vault of een door de Azure front-deur beheerd certificaat overschrijft.
 
 ## <a name="waf-policies"></a>WAF-beleid
 

@@ -3,14 +3,14 @@ title: Veelgestelde vragen
 description: Antwoorden op veelgestelde vragen met betrekking tot de Azure Container Registry-service
 author: sajayantony
 ms.topic: article
-ms.date: 03/18/2020
+ms.date: 09/18/2020
 ms.author: sajaya
-ms.openlocfilehash: 02facedda206a5621cabe62a07520303635dc3ff
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 499ef509fc9f8d9365d8db3f7058d12352db9bb2
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245363"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570509"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Veelgestelde vragen over Azure Container Registry
 
@@ -19,7 +19,7 @@ In dit artikel worden veelgestelde vragen en bekende problemen met Azure Contain
 Zie voor hulp bij het oplossen van problemen met:
 * [Problemen met register aanmelding oplossen](container-registry-troubleshoot-login.md)
 * [Problemen met het netwerk oplossen met het REGI ster](container-registry-troubleshoot-access.md)
-* [Problemen met het REGI ster oplossen](container-registry-troubleshoot-performance.md)
+* [Problemen met registerprestaties oplossen](container-registry-troubleshoot-performance.md)
 
 ## <a name="resource-management"></a>Resourcebeheer
 
@@ -261,8 +261,8 @@ Afbeeldings quarantaine is momenteel een preview-functie van ACR. U kunt de quar
 
 Het instellen van een Azure container Registry voor anonieme toegang (openbaar) is momenteel een preview-functie. Als u een [bereik toewijzing (gebruiker) of Token bronnen](https://aka.ms/acr/repo-permissions) in uw REGI ster hebt, moet u deze verwijderen voordat u een ondersteunings ticket gaat maken (systeem bereik toewijzingen kunnen worden genegeerd). Als u open bare toegang wilt inschakelen, opent u een ondersteunings ticket op https://aka.ms/acr/support/create-ticket . Zie het [Feedback forum van Azure](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries)voor meer informatie.
 
-
-
+> [!NOTE]
+> Alleen de Api's die zijn vereist voor het ophalen van een bekende installatie kopie, kunnen anoniem worden geopend. Geen andere Api's voor bewerkingen als label lijst of opslagplaats lijst zijn anoniem toegankelijk.
 
 ## <a name="diagnostics-and-health-checks"></a>Diagnose-en status controles
 
@@ -443,7 +443,7 @@ Neem contact op met uw netwerk beheerder of Controleer de netwerk configuratie e
 ### <a name="why-does-my-pull-or-push-request-fail-with-disallowed-operation"></a>Waarom mislukt mijn pull-of push aanvraag met niet-toegestane bewerking?
 
 Hier volgen enkele scenario's waarin bewerkingen mogelijk niet zijn toegestaan:
-* Klassieke registers worden niet meer ondersteund. Voer een upgrade uit naar [een ondersteunde servicelaag](https://aka.ms/acr/skus) met [AZ ACR update](/cli/azure/acr?view=azure-cli-latest#az-acr-update) of de Azure Portal.
+* Klassieke registers worden niet meer ondersteund. Voer een upgrade uit naar [een ondersteunde servicelaag](https://aka.ms/acr/skus) met [AZ ACR update](/cli/azure/acr#az-acr-update) of de Azure Portal.
 * De installatie kopie of opslag plaats is mogelijk vergrendeld zodat deze niet kan worden verwijderd of bijgewerkt. U kunt de opdracht [AZ ACR show repository](./container-registry-image-lock.md) gebruiken om de huidige kenmerken weer te geven.
 * Sommige bewerkingen zijn niet toegestaan als de installatie kopie zich in quarantaine bevindt. Meer informatie over [quarantaine](https://github.com/Azure/acr/tree/master/docs/preview/quarantine).
 * Het REGI ster heeft mogelijk de [opslag limiet](container-registry-skus.md#service-tier-features-and-limits)bereikt.
@@ -522,7 +522,7 @@ GitLab wordt momenteel niet ondersteund voor bron triggers.
 ## <a name="cicd-integration"></a>CI/CD-integratie
 
 - [CircleCI](https://github.com/Azure/acr/blob/master/docs/integration/CircleCI.md)
-- [GitHub-acties](https://github.com/Azure/acr/blob/master/docs/integration/github-actions/github-actions.md)
+- [GitHub Actions](https://github.com/Azure/acr/blob/master/docs/integration/github-actions/github-actions.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 

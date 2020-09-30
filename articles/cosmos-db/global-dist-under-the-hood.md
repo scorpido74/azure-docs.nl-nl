@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/02/2020
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 7e315a7366793d355967f777cbc1dda0f9277087
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: c86207af51ebd1a9442afe6fa609598ec917bf15
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955910"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570445"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Distributie van globale gegevens met Azure Cosmos DB-onder de motorkap
 
@@ -30,7 +30,7 @@ Wanneer een app die Cosmos DB, elastisch de door Voer op een Cosmos-container sc
 
 Zoals in de volgende afbeelding wordt weer gegeven, worden de gegevens binnen een container verdeeld over twee dimensies: binnen een regio en in verschillende regio's, over het hele land.  
 
-:::image type="content" source="./media/global-dist-under-the-hood/distribution-of-resource-partitions.png" alt-text="fysieke partities" border="false":::
+:::image type="content" source="./media/global-dist-under-the-hood/distribution-of-resource-partitions.png" alt-text="Systeem topologie" border="false":::
 
 Een fysieke partitie wordt geïmplementeerd met een groep replica's, een zogenaamde *replicaset*. Elke machine fungeert als host voor honderden replica's die overeenkomen met verschillende fysieke partities binnen een vaste set processen, zoals wordt weer gegeven in de bovenstaande afbeelding. Replica's die overeenkomen met de fysieke partities worden dynamisch geplaatst en gelijkmatig verdeeld over de computers binnen een cluster en data centers binnen een regio.  
 
@@ -52,7 +52,7 @@ Een fysieke partitie wordt gematerialeerd als een met zichzelf beheerde en dynam
 
 Een groep fysieke partities, één van elk geconfigureerd met de Cosmos-database regio's, bestaat uit het beheren van dezelfde set sleutels die worden gerepliceerd in alle geconfigureerde regio's. Deze hogere coördinatie primitieve wordt een *partitieset* genoemd: een geografisch gedistribueerde dynamische overlay van fysieke partities die een bepaalde set sleutels beheert. Terwijl een bepaalde fysieke partitie (een replicaset) binnen een cluster ligt, kan een partitieset clusters, data centers en geografische regio's omvatten, zoals wordt weer gegeven in de onderstaande afbeelding:  
 
-:::image type="content" source="./media/global-dist-under-the-hood/dynamic-overlay-of-resource-partitions.png" alt-text="Partitie sets" border="false":::
+:::image type="content" source="./media/global-dist-under-the-hood/dynamic-overlay-of-resource-partitions.png" alt-text="Systeem topologie" border="false":::
 
 U kunt een partitie instellen als een geografisch verspreide ' superreplicaset ', die bestaat uit meerdere replica sets die eigenaar zijn van dezelfde set sleutels. Net als bij een replicaset is het lidmaatschap van een partitieset ook dynamisch. Dit kan worden geschommeld op basis van de impliciete bewerkingen voor fysieke partitie beheer om nieuwe partities toe te voegen aan of te verwijderen uit een bepaalde partitieset (bijvoorbeeld wanneer u de door Voer voor een container uitschaalt, een regio aan uw Cosmos-Data Base toevoegt of eruit verwijdert). Omdat elk van de partities (van een partitieset) het lidmaatschap van de partitieset binnen een eigen replicaset beheert, wordt het lidmaatschap volledig gedecentraliseerd en Maxi maal beschikbaar. Tijdens de herconfiguratie van een partitieset wordt ook de topologie van de overlay tussen fysieke partities tot stand gebracht. De topologie wordt dynamisch geselecteerd op basis van het consistentie niveau, de geografische afstand en de beschik bare netwerk bandbreedte tussen de bron-en doel-fysieke partities.  
 
@@ -62,7 +62,7 @@ Met de service kunt u uw Cosmos-data bases configureren met één schrijf regio 
 
 Het ontwerp voor de update doorgifte, conflict oplossing en het bijhouden van causality is geïnspireerd op het vorige werk op de [epidemie-algoritmen](https://www.cs.utexas.edu/~lorenzo/corsi/cs395t/04S/notes/naor98load.pdf) en het [Bayou](https://zoo.cs.yale.edu/classes/cs422/2013/bib/terry95managing.pdf) -systeem. Hoewel de kernels van de ideeën geruime zijn en een handig referentie kader bieden voor het communiceren van het systeem ontwerp van de Cosmos DB, hebben ze ook aanzienlijke trans formatie ondergaan toen we ze op het Cosmos DB systeem hebben toegepast. Dit was nodig omdat de vorige systemen niet zijn ontworpen met de resource governance, noch met de schaal waarop Cosmos DB moet worden uitgevoerd, noch om de mogelijkheden te bieden (bijvoorbeeld gebonden verouderde consistentie) en de strikte en uitgebreide Sla's die Cosmos DB aan zijn klanten.  
 
-Terughalen dat een partitieset wordt gedistribueerd over meerdere regio's en het replicatie Protocol van Cosmos Db's (multi-master) om de gegevens te repliceren tussen de fysieke partities waaruit een bepaalde partitieset bestaat. Elke fysieke partitie (van een partitieset) accepteert schrijf bewerkingen en verzendt normaal gesp roken Lees bewerkingen naar de clients die lokaal zijn voor die regio. Schrijf bewerkingen die worden geaccepteerd door een fysieke partitie binnen een regio worden blijvend vastgelegd en Maxi maal beschikbaar gemaakt in de fysieke partitie voordat ze worden bevestigd aan de client. Dit zijn voorlopige schrijf bewerkingen en worden door gegeven aan andere fysieke partities in de partitieset met een anti-entropie kanaal. Clients kunnen voorlopige of doorgevoerde schrijf bewerkingen aanvragen door een aanvraag header door te geven. De anti-entropie doorgifte (met inbegrip van de frequentie van doorgifte) is dynamisch, op basis van de topologie van de partitieset, de regionale nabijheid van de fysieke partities en het geconfigureerde consistentie niveau. Binnen een partitieset volgt Cosmos DB een primair doorvoer schema met een dynamisch geselecteerde arbiter-partitie. De selectie van arbiter is dynamisch en vormt een integraal onderdeel van de herconfiguratie van de partitieset op basis van de topologie van de overlay. De vastgelegde schrijf bewerkingen (inclusief meerdere rijen/batch-updates) zijn gegarandeerd. 
+Terughalen dat een partitieset wordt gedistribueerd over meerdere regio's en volgt het replicatie protocol Cosmos Db's (Multi-Region Writes) om de gegevens te repliceren tussen de fysieke partities waaruit een bepaalde partitieset bestaat. Elke fysieke partitie (van een partitieset) accepteert schrijf bewerkingen en verzendt normaal gesp roken Lees bewerkingen naar de clients die lokaal zijn voor die regio. Schrijf bewerkingen die worden geaccepteerd door een fysieke partitie binnen een regio worden blijvend vastgelegd en Maxi maal beschikbaar gemaakt in de fysieke partitie voordat ze worden bevestigd aan de client. Dit zijn voorlopige schrijf bewerkingen en worden door gegeven aan andere fysieke partities in de partitieset met een anti-entropie kanaal. Clients kunnen voorlopige of doorgevoerde schrijf bewerkingen aanvragen door een aanvraag header door te geven. De anti-entropie doorgifte (met inbegrip van de frequentie van doorgifte) is dynamisch, op basis van de topologie van de partitieset, de regionale nabijheid van de fysieke partities en het geconfigureerde consistentie niveau. Binnen een partitieset volgt Cosmos DB een primair doorvoer schema met een dynamisch geselecteerde arbiter-partitie. De selectie van arbiter is dynamisch en vormt een integraal onderdeel van de herconfiguratie van de partitieset op basis van de topologie van de overlay. De vastgelegde schrijf bewerkingen (inclusief meerdere rijen/batch-updates) zijn gegarandeerd. 
 
 We hebben gebruikgemaakt van gecodeerde vector klokken (die de regio-ID en logische klokken bevatten die overeenkomen met elk niveau van consensus in de replicaset en de partitieset) voor causality tracking en versie vectoren om update conflicten te detecteren en op te lossen. De topologie en het selectie algoritme voor peers zijn ontworpen om te zorgen voor vaste en minimale opslag en minimale netwerk overhead van versie vectoren. Met het algoritme wordt de strikte convergentie-eigenschap gegarandeerd.  
 

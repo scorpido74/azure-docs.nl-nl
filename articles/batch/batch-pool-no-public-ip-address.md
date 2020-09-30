@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: peshultz
 ms.custom: references_regions
-ms.openlocfilehash: 6c6207e7f52e49b88dc8dc99e0bd20a2c774339d
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: e6922abb48e19157e6905d9ceb71817cfbaff767
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91541897"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570862"
 ---
 # <a name="create-an-azure-batch-pool-without-public-ip-addresses"></a>Een Azure Batch-pool zonder openbare IP-adressen maken
 
@@ -34,8 +34,11 @@ Als u de toegang tot deze knoop punten wilt beperken en de detectie van deze kno
 - **Een Azure-VNet**. Als u uw pool in een [virtueel netwerk](batch-virtual-network.md)maakt, volgt u deze vereisten en configuraties. Als u een VNet met een of meer subnetten vooraf wilt voorbereiden, kunt u de Azure Portal, Azure PowerShell, de Azure-opdracht regel interface (CLI) of een andere methode gebruiken.
   - Het VNet moet in hetzelfde abonnement en dezelfde regio voorkomen als het Batch-account dat u gebruikt om de pool te maken.
   - Het subnet dat is opgegeven voor de pool moet voldoende vrije IP-adressen hebben voor het aantal virtuele machines voor de pool, ofwel de som van de `targetDedicatedNodes`- en `targetLowPriorityNodes`-eigenschappen van de pool. Als het subnet onvoldoende vrije IP-adressen heeft, wijst de pool de rekenknooppunten gedeeltelijk toe en wordt een fout weergegeven voor het aanpassen van de grootte.
-  - U moet de persoonlijke-koppelings service en het eindpunt netwerk beleid uitschakelen. Dit kan worden gedaan met behulp van Azure CLI: ```az network vnet subnet update --vnet-name <vnetname> -n <subnetname> --disable-private-endpoint-network-policies --disable-private-link-service-network-policies```
-  
+  - U moet de persoonlijke-koppelings service en het eindpunt netwerk beleid uitschakelen. Dit kan worden gedaan met behulp van Azure CLI:
+    ```azurecli
+    az network vnet subnet update --vnet-name <vnetname> -n <subnetname> --disable-private-endpoint-network-policies --disable-private-link-service-network-policies
+    ```
+
 > [!IMPORTANT]
 > Voor elke knoop punt met 100 toegewezen of lage prioriteit worden met batch één persoonlijke-koppelings service en één load balancer toegewezen. De beperkingen die voor deze resources gelden, worden bepaald door de [resourcequota](../azure-resource-manager/management/azure-subscription-service-limits.md) van het abonnement. Voor grote Pools moet u mogelijk [een quotum verhoging aanvragen](batch-quota-limit.md#increase-a-quota) voor een of meer van deze resources. Daarnaast moeten er geen resource vergrendelingen worden toegepast op resources die zijn gemaakt door batch, omdat hierdoor het opruimen van resources als gevolg van door de gebruiker geïnitieerde acties wordt voor komen, zoals het verwijderen van een pool of het wijzigen van de grootte in nul.
 

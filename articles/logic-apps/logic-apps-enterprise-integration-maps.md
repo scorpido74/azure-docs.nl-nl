@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/06/2019
-ms.openlocfilehash: ff6bd1a52e05d55d43969644141f39aed8c8eb63
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 62c3d4533dd04dbb5a2ce0c73afa52b81d433913
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072654"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570783"
 ---
 # <a name="transform-xml-with-maps-in-azure-logic-apps-with-enterprise-integration-pack"></a>XML transformeren met kaarten in Azure Logic Apps met Enterprise Integration Pack
 
@@ -40,7 +40,7 @@ Zie [limieten en configuratie-informatie voor Azure Logic apps](../logic-apps/lo
     |------|-------------|
     | [Azure-opslag account](../storage/common/storage-account-overview.md) | Maak in dit account een Azure Blob-container voor de assembly. Meer informatie [over het maken van een opslag account](../storage/common/storage-account-create.md). |
     | Blobcontainer | In deze container kunt u uw assembly uploaden. U hebt ook de locatie van deze container nodig wanneer u de assembly toevoegt aan uw integratie account. Meer informatie over het [maken van een BLOB-container](../storage/blobs/storage-quickstart-blobs-portal.md). |
-    | [Azure-opslagverkenner](../vs-azure-tools-storage-manage-with-storage-explorer.md) | Met dit hulp programma kunt u opslag accounts en BLOB-containers eenvoudiger beheren. Als u Storage Explorer wilt gebruiken, moet u [Azure Storage Explorer downloaden en installeren](https://www.storageexplorer.com/). Vervolgens verbindt u Storage Explorer met uw opslag account door de stappen in aan de [slag met Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md)te volgen. Zie [Quick Start: een BLOB maken in object opslag met Azure Storage Explorer](../storage/blobs/storage-quickstart-blobs-storage-explorer.md)voor meer informatie. <p>U kunt ook uw opslag account zoeken en selecteren in het Azure Portal. Selecteer in het menu van uw opslag account **Storage Explorer**. |
+    | [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) | Met dit hulp programma kunt u opslag accounts en BLOB-containers eenvoudiger beheren. Als u Storage Explorer wilt gebruiken, moet u [Azure Storage Explorer downloaden en installeren](https://www.storageexplorer.com/). Vervolgens verbindt u Storage Explorer met uw opslag account door de stappen in aan de [slag met Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md)te volgen. Zie [Quick Start: een BLOB maken in object opslag met Azure Storage Explorer](../storage/blobs/storage-quickstart-blobs-storage-explorer.md)voor meer informatie. <p>U kunt ook uw opslag account zoeken en selecteren in het Azure Portal. Selecteer in het menu van uw opslag account **Storage Explorer**. |
     |||
 
   * Voor Maps kunt u op dit moment grotere kaarten toevoegen met behulp van de [Azure Logic apps-rest API-kaarten](/rest/api/logic/maps/createorupdate).
@@ -69,7 +69,7 @@ U hebt geen logische app nodig bij het maken en toevoegen van Maps. Voor het geb
 
 1. Nadat de pagina **assembly's** is geopend, kiest u **toevoegen**.
 
-   ![Kies toevoegen](./media/logic-apps-enterprise-integration-maps/add-assembly.png)
+   ![Scherm afbeelding die de knop toevoegen op de pagina Assembly's markeert.](./media/logic-apps-enterprise-integration-maps/add-assembly.png)
 
 Op basis van de grootte van uw assembly-bestand, volgt u de stappen voor het uploaden van een assembly van [Maxi maal 2 MB](#smaller-assembly) of [meer dan 2 MB, maar Maxi maal 8 MB](#larger-assembly).
 Zie [limieten en configuratie voor Azure Logic apps](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)voor limieten voor assembly aantallen in integratie accounts.

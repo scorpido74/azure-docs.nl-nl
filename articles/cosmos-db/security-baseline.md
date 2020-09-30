@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 051f6e6ef15cc94e2b607c74e666bae9c91c1160
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 75344204e03920c96d0868ad584b8701813fabf0
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401619"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569534"
 ---
 # <a name="azure-security-baseline-for-cosmos-db"></a>Azure-beveiligings basislijn voor Cosmos DB
 
@@ -290,7 +290,7 @@ Azure Cosmos DB biedt ingebouwde RBAC voor algemene beheer scenario's in Azure C
 
 U kunt ook de Azure AD Power shell-module gebruiken om ad hoc query's uit te voeren om accounts te detecteren die lid zijn van beheer groepen. 
 
-Daarnaast kunnen sommige acties in Azure Cosmos DB worden beheerd met Azure Active Directory en account-specifieke hoofd sleutels.  Gebruik de account instelling ' disableKeyBasedMetadataWriteAccess ' om de toegang tot sleutels te beheren.
+Daarnaast kunnen sommige acties in Azure Cosmos DB worden beheerd met Azure Active Directory en account-specifieke primaire sleutels.  Gebruik de account instelling ' disableKeyBasedMetadataWriteAccess ' om de toegang tot sleutels te beheren.
 
 Meer informatie over op rollen gebaseerd toegangs beheer in Azure Cosmos DB: https://docs.microsoft.com/azure/cosmos-db/role-based-access-control
 
@@ -298,9 +298,9 @@ Bouw uw eigen aangepaste rollen met behulp van Azure Cosmos DB acties (Microsoft
 
 Een nieuwe rol maken in Azure Active Directory: https://docs.microsoft.com/azure/role-based-access-control/custom-roles
 
-Een directory-rol verkrijgen in Azure Active Directory met Power shell: https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0
+Een directory-rol verkrijgen in Azure Active Directory met Power shell: https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&preserve-view=true
 
-Leden van een directory-rol ophalen in Azure Active Directory met Power shell: https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0
+Leden van een directory-rol ophalen in Azure Active Directory met Power shell: https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&preserve-view=true
 
 Gebruikers toegang beperken tot alleen gegevens bewerkingen: https://docs.microsoft.com/azure/cosmos-db/how-to-restrict-user-data
 
@@ -310,7 +310,7 @@ Gebruikers toegang beperken tot alleen gegevens bewerkingen: https://docs.micros
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3,2: standaard wachtwoorden wijzigen indien van toepassing
 
-**Hulp**: het concept van standaard of leeg wacht woord bestaat niet in relatie tot Azure AD of Azure Cosmos db. In plaats daarvan gebruikt Azure Cosmos DB twee soorten sleutels om gebruikers te verifiëren en toegang te bieden tot de gegevens en bronnen van de gebruiker. hoofd sleutels en bron tokens. De sleutels kunnen op elk gewenst moment opnieuw worden gegenereerd.
+**Hulp**: het concept van standaard of leeg wacht woord bestaat niet in relatie tot Azure AD of Azure Cosmos db. In plaats daarvan gebruikt Azure Cosmos DB twee soorten sleutels om gebruikers te verifiëren en toegang te bieden tot de gegevens en bronnen van de gebruiker. primaire sleutels en bron tokens. De sleutels kunnen op elk gewenst moment opnieuw worden gegenereerd.
 
 Beveiligde toegang tot gegevens in Azure Cosmos DB: https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data
 
@@ -452,7 +452,7 @@ Lijst met door Klanten-lockbox ondersteunde services: https://docs.microsoft.com
 
 **Verantwoordelijkheid**: niet van toepassing
 
-## <a name="data-protection"></a>Gegevensbeveiliging
+## <a name="data-protection"></a>Gegevensbescherming
 
 *Zie [beveiligings beheer: gegevens beveiliging](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
 
@@ -640,7 +640,7 @@ Hoewel klassieke Azure-resources kunnen worden gedetecteerd via resource grafiek
 
 Query's maken met Azure resource Graph: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
-Uw Azure-abonnementen weer geven: https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
+Uw Azure-abonnementen weer geven: https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0&preserve-view=true
 
 Meer informatie over toegangs beheer op basis van rollen in Azure: https://docs.microsoft.com/azure/role-based-access-control/overview
 
@@ -792,7 +792,7 @@ Voorwaardelijke toegang configureren om de toegang tot Azure Resource Manager te
 
 - Cosmos DB moet gebruikmaken van een service-eindpunt voor een virtueel netwerk
 
-Beschik bare Azure Policy aliassen weer geven: https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+Beschik bare Azure Policy aliassen weer geven: https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0&preserve-view=true
 
 Azure Policy configureren en beheren: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -834,7 +834,7 @@ Azure Policy effecten begrijpen: https://docs.microsoft.com/azure/governance/pol
 
 **Richt lijnen**: als u aangepaste Azure Policy definities gebruikt voor uw Cosmos DB of gerelateerde resources, gebruikt u Azure opslag plaatsen om uw code veilig op te slaan en te beheren.
 
-Documentatie voor Azure opslag plaatsen: https://docs.microsoft.com/azure/devops/repos/index?view=azure-devopshttps://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
+Documentatie voor Azure opslag plaatsen: https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops&preserve-view=truehttps://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&preserve-view=true
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -1003,7 +1003,7 @@ https://docs.microsoft.com/azure/cosmos-db/how-to-backup-and-restore
 
 Azure Key Vault geheimen herstellen:
 
-https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0
+https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0&preserve-view=true
 
 **Azure Security Center bewaking**: niet van toepassing
 

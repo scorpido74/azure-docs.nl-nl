@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 3f882375197fa45cfbc74ff7a80ed33fd33f33a3
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 1f2e90f9391654d10332b9f1a21c56fd22e2307b
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400295"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570808"
 ---
 # <a name="how-does-azure-cosmos-db-provide-high-availability"></a>Hoe biedt Azure Cosmos DB hoge Beschik baarheid? 
 
@@ -30,7 +30,7 @@ Als uw Azure Cosmos-account wordt gedistribueerd over *n* Azure-regio's, zijn er
 
 ## <a name="slas-for-availability"></a>Sla's voor Beschik baarheid
 
-Als een wereld wijd gedistribueerde data base biedt Azure Cosmos DB uitgebreide service overeenkomsten die de door Voer, latentie bij het 99e percentiel, consistentie en hoge Beschik baarheid omvatten. In de volgende tabel ziet u de garanties voor maximale Beschik baarheid van Azure Cosmos DB voor accounts met meerdere regio's. Voor maximale Beschik baarheid moet u uw Azure Cosmos-accounts altijd configureren voor meerdere schrijf regio's (ook wel multi-master genoemd).
+Als een wereld wijd gedistribueerde data base biedt Azure Cosmos DB uitgebreide service overeenkomsten die de door Voer, latentie bij het 99e percentiel, consistentie en hoge Beschik baarheid omvatten. In de volgende tabel ziet u de garanties voor maximale Beschik baarheid van Azure Cosmos DB voor accounts met meerdere regio's. Configureer voor hoge Beschik baarheid altijd uw Azure Cosmos-accounts zodat er meerdere schrijf regio's zijn.
 
 |Het type bewerking  | Enkele regio |Meerdere regio's (schrijf bewerkingen in één regio)|Meerdere regio's (schrijf bewerkingen met meerdere regio's) |
 |---------|---------|---------|-------|
@@ -46,7 +46,7 @@ Voor zeldzame gevallen van regionale uitval zorgt Azure Cosmos DB ervoor dat uw 
 
 - Met Azure Cosmos DB voordat een schrijf bewerking wordt bevestigd aan de client, worden de gegevens blijvend vastgelegd door een quorum van replica's binnen de regio die de schrijf bewerkingen accepteert.
 
-- Accounts met meerdere regio's die zijn geconfigureerd met meerdere schrijf regio's/multi-master, zijn Maxi maal beschikbaar voor schrijf bewerkingen en lees bewerkingen. Regionale failovers zijn onmiddellijk en vereisen geen wijzigingen van de toepassing.
+- Multi-regio-accounts die zijn geconfigureerd met meerdere-schrijf regio's, zijn Maxi maal beschikbaar voor schrijf bewerkingen en lees bewerkingen. Regionale failovers zijn onmiddellijk en vereisen geen wijzigingen van de toepassing.
 
 - Accounts met een enkele regio kunnen Beschik baarheid verliezen na een regionale storing. Het is altijd aanbevolen om ten **minste twee regio's** (bij voor keur, ten minste twee schrijf regio's) in te stellen met uw Azure Cosmos-account om te allen tijde hoge Beschik baarheid te garanderen.
 
@@ -125,7 +125,7 @@ az cosmosdb create \
 
 U kunt Beschikbaarheidszones inschakelen met behulp van Azure Portal bij het maken van een Azure Cosmos-account. Wanneer u een account maakt, moet u ervoor zorgen dat u de functie voor **geo-redundantie**, **meerdere regio's**en een regio kiest waar Beschikbaarheidszones worden ondersteund:
 
-:::image type="content" source="./media/high-availability/enable-availability-zones-using-portal.png" alt-text="Beschikbaarheidszones met behulp van Azure Portal inschakelen"::: 
+:::image type="content" source="./media/high-availability/enable-availability-zones-using-portal.png" alt-text="Fysieke partitionering"::: 
 
 ## <a name="building-highly-available-applications"></a>Maxi maal beschik bare toepassingen bouwen
 

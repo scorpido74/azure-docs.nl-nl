@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-python
-ms.openlocfilehash: e9f9daea2c0d570efb81603784ee730b11668426
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 03c8f5acfc10738401f61de099f946c33497d705
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585981"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569811"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB python SDK voor SQL API: release opmerkingen en bronnen
 
@@ -40,7 +40,7 @@ ms.locfileid: "88585981"
 | |  |
 |---|---|
 |**SDK downloaden**|[PyPI](https://pypi.org/project/azure-cosmos)|
-|**API-documentatie**|[Naslag documentatie voor python API](https://docs.microsoft.com/python/api/azure-cosmos/?view=azure-python)|
+|**API-documentatie**|[Naslag documentatie voor python API](https://docs.microsoft.com/python/api/azure-cosmos/?view=azure-python&preserve-view=true)|
 |**SDK-installatie-instructies**|[Installatie-instructies voor python SDK](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos)|
 |**Aan de slag**|[Aan de slag met de python-SDK](create-sql-api-python.md)|
 |**Huidig ondersteund platform**|[Python 2,7](https://www.python.org/downloads/) en [python 3.5.3 +](https://www.python.org/downloads/)|
@@ -113,7 +113,7 @@ ms.locfileid: "88585981"
 
 * Versie 4.0.0 B2 is de tweede iteratie in onze inspanningen voor het bouwen van een client bibliotheek die aansluit bij de aanbevolen procedures voor python-taal.
 
-**Wijzigingen afbreken**
+**Wijzigingen die fouten veroorzaken**
 
 * De client verbinding is aangepast om de HTTP-pijp lijn te gebruiken die is gedefinieerd in `azure.core.pipeline` .
 
@@ -126,7 +126,7 @@ ms.locfileid: "88585981"
 
 * De constructor van `CosmosClient` is bijgewerkt:
 
-  * De `auth` naam van de para meter is gewijzigd in `credential` en er wordt nu rechtstreeks een verificatie type uitgevoerd. Dit betekent dat de waarde van de hoofd sleutel, een dictionary met bron tokens of een lijst met machtigingen kan worden door gegeven. De oude woordenlijst indeling wordt echter nog steeds ondersteund.
+  * De `auth` naam van de para meter is gewijzigd in `credential` en er wordt nu rechtstreeks een verificatie type uitgevoerd. Dit betekent dat de waarde van de primaire sleutel, een woorden lijst met bron tokens of een lijst met machtigingen kan worden door gegeven. De oude woordenlijst indeling wordt echter nog steeds ondersteund.
 
   * De `connection_policy` para meter is een alleen-sleutel parameter gemaakt en hoewel deze nog steeds wordt ondersteund, kunnen alle afzonderlijke kenmerken van het beleid nu worden door gegeven als expliciete trefwoord argumenten:
 
@@ -327,7 +327,7 @@ Micro soft biedt een kennisgeving van ten minste **twaalf maanden** voor het bui
 | [3.0.2](#302) |15 november 2018 |--- |
 | [3.0.1](#301) |Okt 04, 2018 |--- |
 | [2.3.3](#233) |Sept 08, 2018 |30 augustus 2020 |
-| [2.3.2](#232) |08 mei 2018 |30 augustus 2020 |
+| [verschijnsel](#232) |08 mei 2018 |30 augustus 2020 |
 | [2.3.1](#231) |21 december 2017 |30 augustus 2020 |
 | [2.3.0](#230) |10 november 2017 |30 augustus 2020 |
 | [2.2.1](#221) |29 sep, 2017 |30 augustus 2020 |

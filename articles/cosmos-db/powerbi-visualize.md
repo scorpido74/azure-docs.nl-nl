@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: 3dcadd77866a6c57542a43657a1942791cc4d179
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: fc3ca5fdde464ba63671512a6ebecd2c314cb192
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027785"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570829"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Azure Cosmos DB-gegevens visualiseren met behulp van de Power BI-connector 
 
@@ -82,7 +82,7 @@ U haalt de Volcano-gegevens op uit het Azure Cosmos DB-account en visualiseert g
 
 4. Klik op **Azure**, selecteer **Azure Cosmos DB (bèta)** en klik vervolgens op **verbinding maken**. 
 
-   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbigetdata.png" alt-text="Power BI Desktop gegevens ophalen-Power BI-connector":::
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbigetdata.png" alt-text="Power BI Desktop rapport weergave-Power BI-connector":::
 
 5. Klik op de pagina **voor beeld** van de connector op **door gaan**. Het venster **Azure Cosmos DB** wordt weer gegeven.
 
@@ -90,7 +90,7 @@ U haalt de Volcano-gegevens op uit het Azure Cosmos DB-account en visualiseert g
    
 7. Als u voor de eerste keer verbinding maakt met dit eind punt, wordt u gevraagd om de account sleutel op te vragen. Voor uw eigen account haalt u de sleutel op uit het vak **primaire sleutel** op de Blade met **alleen-lezen sleutels** van de Azure Portal. Voer de juiste sleutel in en klik vervolgens op **verbinding maken**.
    
-   U wordt aangeraden de alleen-lezen sleutel te gebruiken bij het maken van rapporten. Dit voor komt onnodige bloot stelling van de hoofd sleutel tot mogelijke beveiligings Risico's. De alleen-lezen sleutel is beschikbaar op de Blade **sleutels** van de Azure Portal. 
+   U wordt aangeraden de alleen-lezen sleutel te gebruiken bij het maken van rapporten. Dit voor komt onnodige bloot stelling van de primaire sleutel tot mogelijke beveiligings Risico's. De alleen-lezen sleutel is beschikbaar op de Blade **sleutels** van de Azure Portal. 
     
 8. Wanneer de verbinding met het account is gemaakt, wordt het deel venster **Navigator** weer gegeven. In de **Navigator** ziet u een lijst met data bases onder het account.
 
@@ -100,34 +100,34 @@ U haalt de Volcano-gegevens op uit het Azure Cosmos DB-account en visualiseert g
     
     In het voorbeeld venster ziet u een lijst met **record** items.  Een document wordt weer gegeven als een **record** type in Power bi. Op dezelfde manier is een genest JSON-blok in een document ook een **record**.
     
-    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbinavigator.png" alt-text="Power BI zelf studie voor Azure Cosmos DB Power BI connector-Navigator venster":::
+    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbinavigator.png" alt-text="Power BI Desktop rapport weergave-Power BI-connector":::
 
 12. Klik op **bewerken** om de query-editor in een nieuw venster te openen om de gegevens te transformeren.
 
 ## <a name="flattening-and-transforming-json-documents"></a>Het afvlakken en transformeren van JSON-documenten
 1. Schakel over naar het venster Power BI query-editor, waarbij de kolom **document** in het middelste deel venster wordt.
 
-   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiqueryeditor.png" alt-text="Query-editor in Power BI Desktop":::
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiqueryeditor.png" alt-text="Power BI Desktop rapport weergave-Power BI-connector":::
 
 1. Klik op de uitbreidings module aan de rechter kant van de kolomkop **document** .  Het context menu met een lijst met velden wordt weer gegeven.  Selecteer de velden die u nodig hebt voor het rapport, bijvoorbeeld Volcano naam, land, regio, locatie, uitbrei ding, type, status en eind afbreken. Schakel het selectie vakje **oorspronkelijke kolom naam gebruiken als voor voegsel** uit en klik vervolgens op **OK**.
    
-   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiqueryeditorexpander.png" alt-text="Power BI zelf studie voor Azure Cosmos DB Power BI connector-documenten uitbreiden":::
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiqueryeditorexpander.png" alt-text="Power BI Desktop rapport weergave-Power BI-connector":::
 
 1. In het middelste deel venster wordt een voor beeld weer gegeven van het resultaat met de geselecteerde velden.
    
-   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiresultflatten.png" alt-text="Power BI zelf studie voor Azure Cosmos DB Power BI connector-afvlakking van resultaten":::
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiresultflatten.png" alt-text="Power BI Desktop rapport weergave-Power BI-connector":::
 
 1. In ons voor beeld is de locatie-eigenschap een geojson-blok in een document.  Zoals u kunt zien, wordt de locatie weer gegeven als een **record** type in Power bi Desktop.  
 
 1. Klik op de uitbreidings module aan de rechter kant van de kolomkop document. locatie.  Het context menu met de velden type en coördinaten wordt weer gegeven.  Laten we het veld coördinaten selecteren, zorg ervoor dat de **oorspronkelijke kolom naam gebruiken als voor voegsel** niet is geselecteerd en klik op **OK**.
    
-   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbilocationrecord.png" alt-text="Power BI zelf studie voor Azure Cosmos DB Power BI connector-locatie record":::
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbilocationrecord.png" alt-text="Power BI Desktop rapport weergave-Power BI-connector":::
 
 1. In het middelste deel venster wordt nu een kolom coördinaten van het **lijst** type weer gegeven.  Zoals aan het begin van de zelf studie wordt weer gegeven, is de geojson-gegevens in deze zelf studie van punt type met de breedte-en lengte waarden die zijn vastgelegd in de coördinaten matrix.
    
    Het element coördinaten [0] vertegenwoordigt een lengte graad terwijl coördinaten [1] de breedte graad aangeeft.
 
-   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiresultflattenlist.png" alt-text="Power BI zelf studie voor Azure Cosmos DB Power BI connector-coördinaten lijst":::
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbiresultflattenlist.png" alt-text="Power BI Desktop rapport weergave-Power BI-connector":::
 
 1. Als u de coördinaten matrix wilt samen voegen, maakt u een **aangepaste kolom** met de naam LatLong.  Selecteer het lint **kolom toevoegen** en klik op **aangepaste kolom**.  Het venster **aangepaste kolom** wordt weer gegeven.
 
@@ -137,21 +137,21 @@ U haalt de Volcano-gegevens op uit het Azure Cosmos DB-account en visualiseert g
    
    Raadpleeg voor meer informatie over Dax (Data Analysis expressions), waaronder DAX-functies, de [basis beginselen van Dax in Power bi Desktop](https://docs.microsoft.com/power-bi/desktop-quickstart-learn-dax-basics).
    
-   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbicustomlatlong.png" alt-text="Power BI zelf studie voor Azure Cosmos DB Power BI-connector-aangepaste kolom toevoegen":::
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbicustomlatlong.png" alt-text="Power BI Desktop rapport weergave-Power BI-connector":::
 
 1. In het middelste deel venster ziet u nu de nieuwe LatLong kolommen gevuld met de waarden.
     
-    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbicolumnlatlong.png" alt-text="Power BI zelf studie voor Azure Cosmos DB Power BI connector-kolom aangepaste LatLong":::
+    :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbicolumnlatlong.png" alt-text="Power BI Desktop rapport weergave-Power BI-connector":::
     
     Als er een fout in de nieuwe kolom wordt weer gegeven, moet u ervoor zorgen dat de toegepaste stappen onder query-instellingen overeenkomen met de volgende afbeelding:
     
-    :::image type="content" source="./media/powerbi-visualize/power-bi-applied-steps.png" alt-text="Toegepaste stappen moeten bron, navigatie, uitgevouwen document, uitgevouwen document. locatie, aangepast zijn toegevoegd":::
+    :::image type="content" source="./media/powerbi-visualize/power-bi-applied-steps.png" alt-text="Power BI Desktop rapport weergave-Power BI-connector":::
     
     Als uw stappen verschillen, verwijdert u de extra stappen en probeert u de aangepaste kolom opnieuw toe te voegen. 
 
 1. Klik op **sluiten en Toep assen** om het gegevens model op te slaan.
 
-   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbicloseapply.png" alt-text="Power BI zelf studie voor Azure Cosmos DB Power BI connector-sluiten & Toep assen":::
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_pbicloseapply.png" alt-text="Power BI Desktop rapport weergave-Power BI-connector":::
 
 <a id="build-the-reports"></a>
 ## <a name="build-the-reports"></a>De rapporten maken
@@ -186,18 +186,18 @@ Als u uw rapport wilt delen, moet u een account hebben in PowerBI.com.
 1. Zodra de referentie is geverifieerd, wordt het rapport gepubliceerd naar uw bestemming die u hebt geselecteerd.
 1. Klik op **PowerBITutorial. Pbix openen in Power bi** om uw rapport te bekijken en te delen op PowerBI.com.
    
-   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_open_in_powerbi.png" alt-text="Publiceren naar Power BI slagen. Open zelf studie in Power BI":::
+   :::image type="content" source="./media/powerbi-visualize/power_bi_connector_open_in_powerbi.png" alt-text="Power BI Desktop rapport weergave-Power BI-connector":::
 
 ## <a name="create-a-dashboard-in-powerbicom"></a>Een dashboard maken op PowerBI.com
 Nu u een rapport hebt, kunt u dit delen op PowerBI.com
 
 Wanneer u uw rapport publiceert van Power BI Desktop naar PowerBI.com, genereert het een **rapport** en een **gegevensset** in uw PowerBI.com-Tenant. Nadat u bijvoorbeeld een rapport met de naam **PowerBITutorial** hebt gepubliceerd naar PowerBI.com, ziet u PowerBITutorial in de secties **rapporten** en **gegevens sets** op PowerBI.com.
 
-   :::image type="content" source="./media/powerbi-visualize/powerbi-reports-datasets.png" alt-text="Scherm afbeelding van het nieuwe rapport en de gegevensset in PowerBI.com":::
+   :::image type="content" source="./media/powerbi-visualize/powerbi-reports-datasets.png" alt-text="Power BI Desktop rapport weergave-Power BI-connector":::
 
 Als u een deelbaar dash board wilt maken, klikt u op de knop **Live-pagina vastzetten** in uw PowerBI.com-rapport.
 
-   :::image type="content" source="./media/powerbi-visualize/power-bi-pin-live-tile.png" alt-text="Scherm afbeelding van het nieuwe rapport en de gegevensset in PowerBI.com":::
+   :::image type="content" source="./media/powerbi-visualize/power-bi-pin-live-tile.png" alt-text="Power BI Desktop rapport weergave-Power BI-connector":::
 
 Volg vervolgens de instructies in [een tegel van een rapport](https://powerbi.microsoft.com/documentation/powerbi-service-pin-a-tile-to-a-dashboard-from-a-report/#pin-a-tile-from-a-report) vastmaken om een nieuw dash board te creëren. 
 
@@ -208,13 +208,13 @@ There are two ways to refresh data, ad hoc and scheduled.
 
 For an ad hoc refresh, simply click on the eclipses (…) by the **Dataset**, e.g. PowerBITutorial. You should see a list of actions including **Refresh Now**. Click **Refresh Now** to refresh the data.
 
-:::image type="content" source="./media/powerbi-visualize/power-bi-refresh-now.png" alt-text="Screenshot of Refresh Now in PowerBI.com":::
+:::image type="content" source="./media/powerbi-visualize/power-bi-refresh-now.png" alt-text="Power BI Desktop rapport weergave-Power BI-connector":::
 
 For a scheduled refresh, do the following.
 
 1. Click **Schedule Refresh** in the action list. 
 
-    :::image type="content" source="./media/powerbi-visualize/power-bi-schedule-refresh.png" alt-text="Screenshot of the Schedule Refresh in PowerBI.com":::
+    :::image type="content" source="./media/powerbi-visualize/power-bi-schedule-refresh.png" alt-text="Power BI Desktop rapport weergave-Power BI-connector":::
 2. In the **Settings** page, expand **Data source credentials**. 
 3. Click on **Edit credentials**. 
    

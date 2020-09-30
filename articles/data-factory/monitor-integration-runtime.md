@@ -10,12 +10,12 @@ ms.date: 08/11/2020
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: b8d3472eeedab72644456b4278d3b9f3625c5850
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 4a0c2813a45fab497173d0101f87b30288e93884
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88078184"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568898"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Een IR bewaken in Azure Data Factory
 
@@ -47,12 +47,12 @@ De volgende tabel bevat beschrijvingen van de eigenschappen die worden geretourn
 
 | Eigenschap | Beschrijving |
 -------- | ------------- | 
-| Naam | De naam van de Azure Integration runtime. |  
-| Status | Status van de Azure Integration runtime. | 
+| Name | De naam van de Azure Integration runtime. |  
+| Staat | Status van de Azure Integration runtime. | 
 | Locatie | Locatie van de Azure Integration runtime. Zie [Inleiding tot Integration runtime](concepts-integration-runtime.md)voor meer informatie over de locatie van een Azure Integration runtime. |
 | DataFactoryName | De naam van de data factory waarvan de Azure Integration runtime deel uitmaakt. | 
 | ResourceGroupName | De naam van de resource groep waartoe de data factory behoort.  |
-| Beschrijving | Beschrijving van de Integration runtime.  |
+| Description | Beschrijving van de Integration runtime.  |
 
 ### <a name="status"></a>Status
 
@@ -76,7 +76,7 @@ De volgende tabel bevat beschrijvingen van de bewakings eigenschappen voor **elk
 
 | Eigenschap | Beschrijving | 
 | -------- | ----------- | 
-| Naam | De naam van de zelf-hostende Integration runtime en knoop punten die eraan zijn gekoppeld. Knoop punt is een on-premises Windows-computer waarop de zelf-hostende Integration runtime is geïnstalleerd. |  
+| Name | De naam van de zelf-hostende Integration runtime en knoop punten die eraan zijn gekoppeld. Knoop punt is een on-premises Windows-computer waarop de zelf-hostende Integration runtime is geïnstalleerd. |  
 | Status | De status van de algemene zelf-hostende Integration runtime en elk knoop punt. Voor beeld: online/offline/beperkt/etc. Zie de volgende sectie voor meer informatie over deze statussen. | 
 | Versie | De versie van de zelf-hostende Integration runtime en elk knoop punt. De versie van de zelf-hostende Integration runtime wordt bepaald op basis van de versie van de knoop punten in de groep. Als er knoop punten met verschillende versies in de zelf-hostende Integration runtime-installatie zijn, worden alleen de knoop punten met hetzelfde versie nummer als de logische zelf-hostende Integration runtime-functie correct uitgevoerd. Andere bevinden zich in de beperkte modus en moeten hand matig worden bijgewerkt (alleen als de automatische update mislukt). | 
 | Beschikbaar geheugen | Beschikbaar geheugen op een zelf-hostend Integration runtime-knoop punt. Deze waarde is een bijna realtime moment opname. | 
@@ -175,13 +175,13 @@ Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $A
 
 De volgende tabel bevat beschrijvingen van eigenschappen die door de bovenstaande cmdlet voor een Azure-SSIS IR worden geretourneerd.
 
-| Eigenschap/status              | Beschrijving                  |
+| Eigenschap/status              | Description                  |
 | ---------------------------- | ---------------------------- |
 | CreateTime                   | De UTC-tijd waarop uw Azure-SSIS IR is gemaakt. |
 | Knooppunten                        | De toegewezen/beschik bare knoop punten van uw Azure-SSIS IR met knooppunt-specifieke statussen (starten/beschikbaar/recyclen/niet beschikbaar) en fouten die kunnen optreden. |
 | OtherErrors                  | De niet-knooppunt specifieke actie fouten op uw Azure-SSIS IR. |
 | LastOperation                | Het resultaat van de laatste start-en stop bewerking op uw Azure-SSIS IR met een actie bare fout (en) als deze is mislukt. |
-| Status                        | De algehele status van uw Azure-SSIS IR (begin/start/gestart/gestopt). |
+| Staat                        | De algehele status van uw Azure-SSIS IR (begin/start/gestart/gestopt). |
 | Locatie                     | De locatie van uw Azure-SSIS IR. |
 | NodeSize                     | De grootte van elk knoop punt in uw Azure-SSIS IR. |
 | NodeCount                    | Het aantal knoop punten in uw Azure-SSIS IR. |
@@ -196,8 +196,8 @@ De volgende tabel bevat beschrijvingen van eigenschappen die door de bovenstaand
 | Type                         | Het IR-type (beheerd/zelf-Hostend) van uw Azure-SSIS IR. |
 | ResourceGroupName            | De naam van uw Azure-resource groep waarin uw ADF en Azure-SSIS IR zijn gemaakt. |
 | DataFactoryName              | De naam van de ADF. |
-| Naam                         | De naam van uw Azure-SSIS IR. |
-| Beschrijving                  | De beschrijving van uw Azure-SSIS IR. |
+| Name                         | De naam van uw Azure-SSIS IR. |
+| Description                  | De beschrijving van uw Azure-SSIS IR. |
   
 #### <a name="status-per-azure-ssis-ir-node"></a>Status (per Azure-SSIS IR knoop punt)
 
@@ -214,7 +214,7 @@ De volgende tabel bevat mogelijke statussen van een Azure-SSIS IR knoop punt:
 
 De volgende tabel bevat mogelijke algemene statussen van een Azure-SSIS IR. De algemene status is afhankelijk van de gecombineerde status van alle knoop punten die deel uitmaken van de Azure-SSIS IR. 
 
-| Algemene status | Beschrijving | 
+| Algemene status | Description | 
 | -------------- | ----------- | 
 | Eerste        | De knoop punten van uw Azure-SSIS IR zijn niet toegewezen/voor bereid. | 
 | Starten       | De knoop punten van uw Azure-SSIS IR worden toegewezen/voor bereid en de facturering is gestart. |
@@ -258,13 +258,13 @@ Als u uw Azure-SSIS IR aan een VNet koppelt, ziet u de tegel **VNet/SUBNET valid
 
 Op de tegel connectiviteit voor het controleren van de **verbinding** van de pagina bewaking van Azure-SSIS IR kunt u de **verbindings koppeling testen** selecteren om een venster te openen. hier kunt u de verbindingen tussen uw Azure-SSIS IR en relevante pakket-en configuratie-en gegevens archieven controleren, evenals beheer Services via hun Fully Qualified Domain Name (FQDN)/IP-adres en de aangewezen poort (Zie [verbindingen testen van uw Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/ssis-integration-runtime-diagnose-connectivity-faq)).
 
-![De tegel Azure-SSIS IR-diagnose controleren](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-diagnose.png)
+![Scherm afbeelding die laat zien waar u de verbindingen tussen uw Azure-SSIS IR en relevante pakket/configuratie/gegevens opslag kunt testen.](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-diagnose.png)
 
 #### <a name="static-public-ip-addresses-tile"></a>Tegel voor statische open bare IP-adressen
 
 Als u uw eigen statische open bare IP-adressen voor Azure-SSIS IR meebrengt, ziet u de tegel **statische open bare IP-adressen** op de pagina voor Azure-SSIS IR bewaking (Zie [uw eigen statische open bare IP-adressen voor Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network#publicIP)plaatsen). Op deze tegel kunt u koppelingen selecteren met uw eerste/tweede statische open bare IP-adressen voor Azure-SSIS IR om een venster te openen waarin u de resource-ID () kunt kopiëren `/subscriptions/YourAzureSubscripton/resourceGroups/YourResourceGroup/providers/Microsoft.Network/publicIPAddresses/YourPublicIPAddress` van een tekstvak. In het pop-upvenster kunt u ook de koppeling **uw eerste/tweede statische open bare IP-adres weer geven** selecteren om uw eerste/tweede statische open bare IP-adres te beheren in azure Portal.
 
-![De tegel Azure-SSIS IR-diagnose controleren](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-static.png)
+![Scherm afbeelding die laat zien waar u uw eerste/tweede statische open bare IP-adressen kunt aanwijzen.](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-static.png)
 
 #### <a name="package-stores-tile"></a>Tegel pakket winkels
 

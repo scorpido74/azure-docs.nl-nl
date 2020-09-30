@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/07/2019
-ms.openlocfilehash: 917a8d6edf04d8a160c3a6a5ac59949623dfee5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0119d134861b54ac14c6fe22b638ab459344c5ec
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81418674"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569877"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>Gegevens transformeren met toewijzing van gegevens stromen
 
@@ -80,10 +80,10 @@ In deze stap maakt u een pijp lijn die een gegevens stroom activiteit bevat.
     ![Activiteit gegevens stroom](media/tutorial-data-flow/dataflow1.png)
 1. Vouw in het deel venster **activiteiten** de accordeon **verplaatsen en transformeren** uit. Sleep de activiteit **gegevens stroom** van het deel venster naar het pijp lijn-canvas.
 
-    ![Activiteit gegevens stroom](media/tutorial-data-flow/activity1.png)
+    ![Scherm opname van het pijplijn doek waar u de activiteit van de gegevens stroom kunt verwijderen.](media/tutorial-data-flow/activity1.png)
 1. Selecteer in het pop-upvenster **gegevens stroom toevoegen** de optie **nieuwe gegevens stroom maken** en geef vervolgens een naam op voor de gegevens stroom **TransformMovies**. Klik op volt ooien wanneer u klaar bent.
 
-    ![Activiteit gegevens stroom](media/tutorial-data-flow/activity2.png)
+    ![Scherm opname van de naam van de gegevens stroom wanneer u een nieuwe gegevens stroom maakt.](media/tutorial-data-flow/activity2.png)
 
 ## <a name="build-transformation-logic-in-the-data-flow-canvas"></a>Transformatie logica bouwen in het canvas voor gegevens stromen
 
@@ -91,19 +91,19 @@ Wanneer u de gegevens stroom hebt gemaakt, wordt u automatisch naar het canvas v
 
 1. Voeg in het canvas gegevens stroom een bron toe door te klikken op het vak **bron toevoegen** .
 
-    ![Canvas voor gegevens stroom](media/tutorial-data-flow/dataflow2.png)
+    ![Scherm opname van het vak Bron toevoegen.](media/tutorial-data-flow/dataflow2.png)
 1. Geef uw bron **MoviesDB**een naam. Klik op **Nieuw** om een nieuwe bron gegevensset te maken.
 
-    ![Canvas voor gegevens stroom](media/tutorial-data-flow/dataflow3.png)
+    ![Scherm afbeelding die laat zien waar u nieuw selecteert nadat u de naam van uw bron hebt gewijzigd.](media/tutorial-data-flow/dataflow3.png)
 1. Kies **Azure data Lake Storage Gen2**. Klik op door gaan.
 
-    ![Gegevensset](media/tutorial-data-flow/dataset1.png)
+    ![Scherm opname van de Azure Data Lake Storage Gen2 tegel.](media/tutorial-data-flow/dataset1.png)
 1. Kies **DelimitedText**. Klik op door gaan.
 
-    ![Gegevensset](media/tutorial-data-flow/dataset2.png)
+    ![Scherm afbeelding waarin de tegel DelimitedText wordt weer gegeven.](media/tutorial-data-flow/dataset2.png)
 1. Geef uw gegevensset een naam **MoviesDB**. Kies in de vervolg keuzelijst gekoppelde service de optie **Nieuw**.
 
-    ![Gegevensset](media/tutorial-data-flow/dataset3.png)
+    ![Scherm opname van de lijst met gekoppelde service vervolg keuzelijst.](media/tutorial-data-flow/dataset3.png)
 1. Typ in het scherm gekoppelde service maken de naam van uw ADLS Gen2-gekoppelde service **ADLSGen2** en geef uw verificatie methode op. Voer vervolgens uw verbindings referenties in. In deze zelf studie gebruiken we de account sleutel om verbinding te maken met het opslag account. U kunt klikken op **verbinding testen** om te controleren of uw referenties correct zijn ingevoerd. Klik op Maken als u klaar bent.
 
     ![Gekoppelde service](media/tutorial-data-flow/ls1.png)
@@ -112,13 +112,13 @@ Wanneer u de gegevens stroom hebt gemaakt, wordt u automatisch naar het canvas v
     ![Gegevenssets](media/tutorial-data-flow/dataset4.png)
 1. Als het cluster voor fout opsporing is gestart, gaat u naar het tabblad **voor beeld van gegevens** van de bron transformatie en klikt u op **vernieuwen** om een moment opname van de gegevens op te halen. U kunt gegevens voorbeeld gebruiken om te controleren of uw trans formatie correct is geconfigureerd.
 
-    ![Canvas voor gegevens stroom](media/tutorial-data-flow/dataflow4.png)
+    ![Scherm afbeelding die laat zien waar u een voor beeld van uw gegevens kunt bekijken om te controleren of uw trans formatie correct is geconfigureerd.](media/tutorial-data-flow/dataflow4.png)
 1. Klik naast het bron knooppunt op het canvas voor gegevens stromen op het plus pictogram om een nieuwe trans formatie toe te voegen. De eerste trans formatie die u toevoegt, is een **filter**.
 
     ![Canvas voor gegevens stroom](media/tutorial-data-flow/dataflow5.png)
 1. Geef een naam op voor de filter transformatie **FilterYears**. Klik op het expressievak naast **filteren op** om de opbouw functie voor expressies te openen. Hier geeft u uw filter voorwaarde op.
 
-    ![Filter](media/tutorial-data-flow/filter1.png)
+    ![Scherm opname van het vak filteren op expressie.](media/tutorial-data-flow/filter1.png)
 1. Met de opbouw functie voor de data flow-expressie kunt u interactief expressies bouwen voor gebruik in verschillende trans formaties. Expressies kunnen ingebouwde functies, kolommen uit het invoer schema en door de gebruiker gedefinieerde para meters bevatten. Zie de [opbouw functie voor data flow](concepts-data-flow-expression-builder.md)-expressies voor meer informatie over het maken van expressies.
 
     In deze zelf studie wilt u de films van genre Comedy filteren die zijn uitgekomen tussen de jaren 1910 en 2000. Als jaar momenteel een teken reeks is, moet u deze converteren naar een geheel getal met behulp van de ```toInteger()``` functie. Gebruik de Opera tors groter dan of gelijk aan (>=) en kleiner dan of gelijk aan (<=) om te vergelijken met de letterlijke jaar waarden 1910 en 200-. Voeg deze expressies samen met de operator and (&&). De expressie wordt als volgt opgehaald:
@@ -137,35 +137,35 @@ Wanneer u de gegevens stroom hebt gemaakt, wordt u automatisch naar het canvas v
 
 1. Een **voor beeld** van een gegevens ophalen om te controleren of het filter goed werkt.
 
-    ![Filter](media/tutorial-data-flow/filter3.png)
+    ![Scherm opname van de voor beeld van de gegevens die u hebt opgehaald.](media/tutorial-data-flow/filter3.png)
 1. De volgende trans formatie die u toevoegt, is een **statistische** trans formatie onder **schema wijzigings functie**.
 
-    ![Samenvoegen](media/tutorial-data-flow/agg1.png)
+    ![Scherm opname van de aggregatie van het cumulatieve schema.](media/tutorial-data-flow/agg1.png)
 1. Geef uw aggregatie transformatie **AggregateComedyRatings**een naam. Selecteer in het tabblad **groeperen op** **jaar** in de vervolg keuzelijst om de aggregaties te groeperen op het jaar dat de film is uitkwam.
 
-    ![Samenvoegen](media/tutorial-data-flow/agg2.png)
+    ![Scherm afbeelding met de optie Year op het tabblad Group by onder statistische instellingen.](media/tutorial-data-flow/agg2.png)
 1. Ga naar het tabblad **aggregaties** . Geef in het vak links de cumulatieve kolom **AverageComedyRating**. Klik op het vak rechter expressie om de statistische expressie op te geven via de opbouw functie voor expressies.
 
-    ![Samenvoegen](media/tutorial-data-flow/agg3.png)
+    ![Scherm afbeelding met de optie Year op het tabblad aggregaties onder aggregatie instellingen.](media/tutorial-data-flow/agg3.png)
 1. Gebruik de functie aggregate om het gemiddelde van de kolom **classificatie**te berekenen ```avg()``` . Als **classificatie** is een teken reeks die ```avg()``` in een numerieke invoer neemt, moeten we de waarde converteren naar een getal via de ```toInteger()``` functie. De expressie ziet er als volgt uit:
 
     ```avg(toInteger(Rating))```
 
     Klik op **opslaan en volt ooien** wanneer u klaar bent.
 
-    ![Samenvoegen](media/tutorial-data-flow/agg4.png)
+    ![Scherm opname waarin de opgeslagen expressie wordt weer gegeven.](media/tutorial-data-flow/agg4.png)
 1. Ga naar het tabblad voor **beeld van gegevens** om de trans formatie-uitvoer weer te geven. U ziet slechts twee kolommen, **jaar** en **AverageComedyRating**.
 
     ![Samenvoegen](media/tutorial-data-flow/agg3.png)
 1. Vervolgens wilt u een **sink** -trans formatie toevoegen onder **bestemming**.
 
-    ![Sink](media/tutorial-data-flow/sink1.png)
+    ![Scherm afbeelding die laat zien waar een Sink-trans formatie onder bestemming moet worden toegevoegd.](media/tutorial-data-flow/sink1.png)
 1. Geef **uw Sink een naam.** Klik op **Nieuw** om uw Sink-gegevensset te maken.
 
-    ![Sink](media/tutorial-data-flow/sink2.png)
+    ![Scherm afbeelding die laat zien waar u uw Sink kunt benoemen en een nieuwe Sink-gegevensset maakt.](media/tutorial-data-flow/sink2.png)
 1. Kies **Azure data Lake Storage Gen2**. Klik op door gaan.
 
-    ![Gegevensset](media/tutorial-data-flow/dataset1.png)
+    ![Scherm opname van de Azure Data Lake Storage Gen2 tegel die u kunt kiezen.](media/tutorial-data-flow/dataset1.png)
 1. Kies **DelimitedText**. Klik op door gaan.
 
     ![Gegevensset](media/tutorial-data-flow/dataset2.png)
@@ -181,16 +181,16 @@ U kunt fouten opsporen in een pijp lijn voordat u deze publiceert. In deze stap 
 
 1. Ga naar het pijp lijn-canvas. Klik op **fout opsporing** om een uitvoering van de fout opsporing te activeren.
 
-    ![Pijplijn](media/tutorial-data-flow/pipeline1.png)
+    ![Scherm opname van het pijplijn doek met de markering debug.](media/tutorial-data-flow/pipeline1.png)
 1. Bij het opsporen van pijp lijn voor gegevens stroom activiteiten wordt het actieve debug-cluster gebruikt, maar het kan wel ten minste een minuut duren om te initialiseren. U kunt de voortgang volgen via het tabblad **uitvoer** . Zodra de uitvoering is geslaagd, klikt u op het pictogram bril om het deel venster bewaking te openen.
 
     ![Pijplijn](media/tutorial-data-flow/pipeline2.png)
 1. In het deel venster bewaking ziet u het aantal rijen en tijd dat aan elke transformatie stap is besteed.
 
-    ![Controleren](media/tutorial-data-flow/pipeline3.png)
+    ![Scherm opname van het deel venster bewaking waarin u het aantal rijen en tijd kunt zien dat elke transformatie stap is doorstaan.](media/tutorial-data-flow/pipeline3.png)
 1. Klik op een trans formatie om gedetailleerde informatie over de kolommen en het partitioneren van de gegevens op te halen.
 
-    ![Controleren](media/tutorial-data-flow/pipeline4.png)
+    ![Bewaking](media/tutorial-data-flow/pipeline4.png)
 
 Als u deze zelf studie correct hebt gevolgd, moet u 83 rijen en 2 kolommen in uw map Sink hebben geschreven. U kunt controleren of de gegevens correct zijn door uw Blob-opslag te controleren.
 

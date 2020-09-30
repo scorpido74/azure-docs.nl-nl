@@ -1,19 +1,19 @@
 ---
-title: Persoonlijke Azure-koppeling gebruiken om netwerken veilig te verbinden met Azure Monitor
-description: Persoonlijke Azure-koppeling gebruiken om netwerken veilig te verbinden met Azure Monitor
+title: Azure Private Link gebruiken om netwerken veilig te verbinden met Azure Monitor
+description: Azure Private Link gebruiken om netwerken veilig te verbinden met Azure Monitor
 author: nkiest
 ms.author: nikiest
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.subservice: ''
-ms.openlocfilehash: 6045fa475b3bb112afee9ceacd8d6b136087feab
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2b94c782b5d7139fae7a01233bffd3b17cf43c7c
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077182"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570402"
 ---
-# <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Persoonlijke Azure-koppeling gebruiken om netwerken veilig te verbinden met Azure Monitor
+# <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Azure Private Link gebruiken om netwerken veilig te verbinden met Azure Monitor
 
 > [!IMPORTANT]
 > Op dit moment moet u **toegang aanvragen** om deze mogelijkheid te gebruiken. U kunt het [aanmeldings formulier](https://aka.ms/AzMonPrivateLinkSignup)gebruiken om toegang te krijgen.
@@ -31,7 +31,7 @@ Met een persoonlijke koppeling kunt u het volgende doen:
 - Uw privé on-premises netwerk veilig verbinden met Azure Monitor met behulp van ExpressRoute en een persoonlijke koppeling
 - Bewaar al het verkeer binnen het Microsoft Azure backbone-netwerk
 
-Zie [belang rijke voor delen van een persoonlijke koppeling](../../private-link/private-link-overview.md#key-benefits)voor meer informatie.
+Zie  [belang rijke voor delen van een persoonlijke koppeling](../../private-link/private-link-overview.md#key-benefits)voor meer informatie.
 
 ## <a name="how-it-works"></a>Uitleg
 
@@ -76,13 +76,13 @@ Er zijn een aantal beperkingen waarmee u rekening moet houden bij het plannen va
 
 * Een VNet kan alleen verbinding maken met één AMPLS-object. Dit betekent dat het AMPLS-object toegang moet bieden tot alle Azure Monitor bronnen waartoe het VNet toegang moet hebben.
 * Een Azure Monitor resource (werk ruimte of Application Insights onderdeel) kan Maxi maal 5 AMPLSs.
-* Een AMPLS-object kan Maxi maal 20 Azure Monitor resources tegelijk verbinden.
+* Een AMPLS-object kan Maxi maal 50 Azure Monitor resources worden verbonden.
 * Een AMPLS-object kan Maxi maal 10 persoonlijke eind punten verbinden.
 
 In de onderstaande topologie:
 * Elk VNet maakt verbinding met één AMPLS-object, waardoor er geen verbinding kan worden gemaakt met andere AMPLSs.
 * AMPLS B maakt verbinding met 2 VNets: met 2/10 van de mogelijke particuliere endpoint-verbindingen.
-* AMPLS A maakt verbinding met 2 werk ruimten en één toepassings inzicht onderdeel: met 3/20 van de mogelijke Azure Monitor resources.
+* AMPLS A maakt verbinding met 2 werk ruimten en één toepassings inzicht onderdeel: met 3/50 van de mogelijke Azure Monitor resources.
 * Werk ruimte 2 maakt verbinding met AMPLS A en AMPLS B: met 2/5 van de mogelijke AMPLS-verbindingen.
 
 ![Diagram van AMPLS-limieten](./media/private-link-security/ampls-limits.png)
@@ -162,10 +162,23 @@ Eerst kunt u deze Log Analytics-resource verbinden met een Azure Monitor persoon
 
 Ten tweede kunt u bepalen hoe deze bron bereikbaar kan zijn vanaf buiten de hierboven vermelde privé-koppelingen. Als u het **toestaan van open bare netwerk toegang** hebt ingesteld op **Nee**, kunnen computers buiten de verbonden bereiken geen gegevens uploaden naar deze werk ruimte. Als u het **toestaan van open bare netwerk toegang voor query's** op **Nee**instelt, hebben computers buiten de scopes geen toegang tot gegevens in deze werk ruimte. Deze gegevens bevatten toegang tot werkmappen, Dash boards, client ervaringen op basis van een query-API, inzichten in de Azure Portal, en meer. Ervaringen die worden uitgevoerd buiten de Azure Portal, en die query Log Analytics gegevens moeten ook worden uitgevoerd binnen het persoonlijk gekoppelde VNET.
 
-Het beperken van toegang op deze manier is alleen van toepassing op gegevens in de werk ruimte. Configuratie wijzigingen, waaronder het inschakelen van deze toegangs instellingen in-of uitschakelen, worden beheerd door Azure Resource Manager. Beperk de toegang tot Resource Manager met behulp van de juiste rollen, machtigingen, netwerk besturings elementen en controle. Zie [Azure monitor rollen, machtigingen en beveiliging](roles-permissions-security.md)voor meer informatie.
+Het beperken van toegang op deze manier is niet van toepassing op de Azure Resource Manager en heeft daarom de volgende beperkingen:
+* Toegang tot gegevens: Hoewel het blok keren van query's van open bare netwerken van toepassing is op de meeste Log Analytics-ervaringen, is het mogelijk dat er een query wordt uitgevoerd op gegevens via Azure Resource Manager en daarom geen gegevens kan worden opgevraagd, tenzij persoonlijke koppelings instellingen worden toegepast op de Resource Manager en ook (binnenkort beschikbaar). Dit omvat bijvoorbeeld Azure Monitor oplossingen, werkmappen en inzichten, en de LogicApp-connector.
+* Werkruimte beheer-werk ruimte-instelling en configuratie wijzigingen (waaronder het inschakelen van deze toegangs instellingen in-of uitschakelen) worden beheerd door Azure Resource Manager. Beperk de toegang tot werk ruimte beheer met de juiste rollen, machtigingen, netwerk besturings elementen en controle. Zie [Azure monitor rollen, machtigingen en beveiliging](roles-permissions-security.md)voor meer informatie.
 
 > [!NOTE]
 > Logboeken en metrische gegevens die zijn geüpload naar een werk ruimte via [Diagnostische instellingen](diagnostic-settings.md) , gaan over een beveiligd persoonlijk micro soft-kanaal en worden niet beheerd door deze instellingen.
+
+### <a name="log-analytics-solution-packs-download"></a>Downloaden van Log Analytics oplossingen pakketten
+
+Als u de Log Analytics-agent wilt toestaan om oplossings pakketten te downloaden, voegt u de juiste FQDN-namen toe aan de acceptatie lijst van de firewall. 
+
+
+| Cloudomgeving | Agentresource | Poorten | Richting |
+|:--|:--|:--|:--|
+|Openbare Azure-peering     | scadvisorcontent.blob.core.windows.net         | 443 | Uitgaand
+|Azure Government | usbn1oicore.blob.core.usgovcloudapi.net | 443 |  Uitgaand
+|Azure China 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | Uitgaand
 
 ## <a name="configure-application-insights"></a>Application Insights configureren
 
@@ -234,17 +247,6 @@ Door deze tags toe te voegen, kunt u acties uitvoeren zoals het opvragen van geg
 ### <a name="application-insights-sdk-downloads-from-a-content-delivery-network"></a>Application Insights SDK-down loads van een Content Delivery Network
 
 Bundel de Java script-code in uw script zodat de browser geen code van een CDN kan downloaden. Er wordt een voor beeld gegeven op [github](https://github.com/microsoft/ApplicationInsights-JS#npm-setup-ignore-if-using-snippet-setup)
-
-### <a name="log-analytics-solution-download"></a>Downloaden van Log Analytics oplossing
-
-Als u de Log Analytics-agent wilt toestaan om oplossings pakketten te downloaden, voegt u de juiste FQDN-namen toe aan de acceptatie lijst van de firewall. 
-
-
-| Cloud omgeving | Agentresource | Poorten | Richting |
-|:--|:--|:--|:--|
-|Openbare Azure-peering     | scadvisorcontent.blob.core.windows.net         | 443 | Uitgaand
-|Azure Government | usbn1oicore.blob.core.usgovcloudapi.net | 443 |  Uitgaand
-|Azure China 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | Uitgaand
 
 ### <a name="browser-dns-settings"></a>DNS-instellingen van browser
 

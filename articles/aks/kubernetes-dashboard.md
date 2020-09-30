@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: mlearned
-ms.openlocfilehash: 35424c0a9e566a9dfa780c524e23945348335040
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 8fda67bea75e973b42aa7f1a9f32be906b1d3e83
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225985"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570816"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>Toegang tot het Kubernetes Web dash board in azure Kubernetes service (AKS)
 
@@ -36,7 +36,7 @@ Ook moet de Azure CLI-versie 2.6.0 of hoger zijn geïnstalleerd en geconfigureer
 
 De uitvoeren-dash board-invoeg toepassing is **standaard ingeschakeld voor clusters die ouder zijn dan K8s 1,18**. De invoeg toepassing kan worden uitgeschakeld door de volgende opdracht uit te voeren.
 
-``` azure-cli
+``` azurecli
 az aks disable-addons -g myRG -n myAKScluster -a kube-dashboard
 ```
 

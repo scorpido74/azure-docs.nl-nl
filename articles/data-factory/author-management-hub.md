@@ -9,12 +9,12 @@ author: djpmsft
 ms.author: daperlov
 manager: anandsub
 ms.date: 06/02/2020
-ms.openlocfilehash: bba49014fd6b082ea015da259402a8e87bf4afff
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: df5a13b3d7c3fea98cd571a241b9d25e36ffeea6
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87851980"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570636"
 ---
 # <a name="management-hub-in-azure-data-factory"></a>Beheer hub in Azure Data Factory
 
@@ -56,7 +56,7 @@ Als u de gegenereerde Resource Manager-sjabloon parameters wilt overschrijven wa
 
 Triggers bepalen wanneer een pijplijn uitvoering moet worden gestart. Momenteel kunnen actieve triggers worden gebruikt voor een muur Clock, een periodiek interval uitvoeren of afhankelijk zijn van een gebeurtenis. Meer informatie vindt u in de [uitvoering van triggers](concepts-pipeline-execution-triggers.md#trigger-execution). In de Management hub kunt u de huidige status van een trigger maken, bewerken, verwijderen of weer geven.
 
-![Aangepaste para meters beheren](media/author-management-hub/management-hub-triggers.png)
+![Scherm afbeelding die laat zien waar u de huidige status van een trigger kunt maken, bewerken, verwijderen of weer geven.](media/author-management-hub/management-hub-triggers.png)
 
 ### <a name="global-parameters"></a>Globale parameters
 

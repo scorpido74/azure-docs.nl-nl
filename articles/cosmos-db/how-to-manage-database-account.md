@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: 6b09c51c68586f6e55b4238b7420460f3f2b4ac3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 98210f26072504c129ba32f765cf6bab74fef604
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330557"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570715"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Een Azure Cosmos-account beheren
 
@@ -31,7 +31,7 @@ Zie [een Azure Cosmos DB-account maken met Azure cli](manage-with-cli.md#create-
 
 Zie [een Azure Cosmos DB-account maken met Power shell](manage-with-powershell.md#create-account)
 
-### <a name="azure-resource-manager-template"></a><a id="create-database-account-via-arm-template"></a>Azure Resource Manager-sjabloon
+### <a name="azure-resource-manager-template"></a><a id="create-database-account-via-arm-template"></a>Azure Resource Manager sjabloon
 
 Zie [Azure Cosmos DB-account maken met Azure Resource Manager sjablonen](manage-sql-with-resource-manager.md)
 
@@ -69,7 +69,7 @@ Zie [regio's toevoegen of verwijderen met Power shell](manage-with-powershell.md
 
 Open het tabblad **gegevens globaal repliceren** en selecteer **inschakelen** om schrijf bewerkingen in meerdere regio's in te scha kelen. Wanneer u meerdere regio's schrijft, worden de regio's die u momenteel op het account hebt gelezen, gelezen en geschreven.
 
-:::image type="content" source="./media/how-to-manage-database-account/single-to-multi-master.png" alt-text="Een Azure Cosmos-account configureert een scherm opname van meerdere masters":::
+:::image type="content" source="./media/how-to-manage-database-account/single-to-multi-master.png" alt-text="Menu Regio's toevoegen of verwijderen":::
 
 ### <a name="azure-cli"></a><a id="configure-multiple-write-regions-cli"></a>Azure CLI
 
@@ -77,11 +77,11 @@ Zie [meerdere-schrijf regio's inschakelen met Azure cli](manage-with-cli.md#enab
 
 ### <a name="azure-powershell"></a><a id="configure-multiple-write-regions-ps"></a>Azure PowerShell
 
-Zie [meerdere schrijven-regio's inschakelen met Power shell](manage-with-powershell.md#multi-master)
+Zie [meerdere schrijven-regio's inschakelen met Power shell](manage-with-powershell.md#multi-region-writes)
 
 ### <a name="resource-manager-template"></a><a id="configure-multiple-write-regions-arm"></a>Resource Manager-sjabloon
 
-Een account kan worden gemigreerd van een Single-Master naar meerdere masters door de Resource Manager-sjabloon te implementeren die wordt gebruikt om het account en de instelling te maken `enableMultipleWriteLocations: true` . De volgende Azure Resource Manager sjabloon is een Maxi maal bare sjabloon waarmee een Azure Cosmos-account voor SQL-API met twee regio's en meerdere schrijf locaties kan worden geïmplementeerd.
+Een account kan worden gemigreerd van een enkele schrijf regio naar meerdere schrijf regio's door de Resource Manager-sjabloon te implementeren die wordt gebruikt om het account en de instelling te maken `enableMultipleWriteLocations: true` . De volgende Azure Resource Manager sjabloon is een Maxi maal bare sjabloon waarmee een Azure Cosmos-account voor SQL-API met twee regio's en meerdere schrijf locaties kan worden geïmplementeerd.
 
 ```json
 {
@@ -149,13 +149,13 @@ Met de optie voor automatische failover kunnen Azure Cosmos DB een failover naar
 
 2. Selecteer bovenin het deelvenster de knop **Automatische failover**.
 
-   :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="Menu Gegevens globaal repliceren":::
+   :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="Menu Regio's toevoegen of verwijderen":::
 
 3. Controleer in het deelvenster **Automatische failover** of **Automatische failover inschakelen** is ingesteld op **AAN**. 
 
 4. Selecteer **Opslaan**.
 
-   :::image type="content" source="./media/how-to-manage-database-account/automatic-failover.png" alt-text="Portalmenu Automatische failover":::
+   :::image type="content" source="./media/how-to-manage-database-account/automatic-failover.png" alt-text="Menu Regio's toevoegen of verwijderen":::
 
 ### <a name="azure-cli"></a><a id="enable-automatic-failover-via-cli"></a>Azure CLI
 
@@ -178,7 +178,7 @@ Nadat een Cosmos-account is geconfigureerd voor automatische failover, kunnen de
 
 2. Selecteer bovenin het deelvenster de knop **Automatische failover**.
 
-   :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="Menu Gegevens globaal repliceren":::
+   :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="Menu Regio's toevoegen of verwijderen":::
 
 3. Controleer in het deelvenster **Automatische failover** of **Automatische failover inschakelen** is ingesteld op **AAN**.
 
@@ -186,7 +186,7 @@ Nadat een Cosmos-account is geconfigureerd voor automatische failover, kunnen de
 
 5. Selecteer **Opslaan**.
 
-   :::image type="content" source="./media/how-to-manage-database-account/automatic-failover.png" alt-text="Portalmenu Automatische failover":::
+   :::image type="content" source="./media/how-to-manage-database-account/automatic-failover.png" alt-text="Menu Regio's toevoegen of verwijderen":::
 
 ### <a name="azure-cli"></a><a id="set-failover-priorities-via-cli"></a>Azure CLI
 
@@ -204,7 +204,7 @@ Zie [prioriteit van failover instellen met Power shell](manage-with-powershell.m
 Het proces voor het uitvoeren van een hand matige failover omvat het wijzigen van de schrijf regio van het account (failover priority = 0) naar een andere regio die is geconfigureerd voor het account.
 
 > [!NOTE]
-> U kunt niet hand matig een failover uitvoeren voor Multi-Master accounts. Voor toepassingen die gebruikmaken van de Azure Cosmos SDK detecteert de SDK wanneer een regio niet meer beschikbaar is en wordt automatisch omgeleid naar de dichtstbijzijnde regio als u gebruikmaakt van de multi-multihoming-API in de SDK.
+> Voor accounts met meerdere schrijf regio's kan hand matig geen failover worden uitgevoerd. Voor toepassingen die gebruikmaken van de Azure Cosmos SDK detecteert de SDK wanneer een regio niet meer beschikbaar is en wordt automatisch omgeleid naar de dichtstbijzijnde regio als u gebruikmaakt van de multi-multihoming-API in de SDK.
 
 ### <a name="azure-portal"></a><a id="enable-manual-failover-via-portal"></a>Azure Portal
 
@@ -212,13 +212,13 @@ Het proces voor het uitvoeren van een hand matige failover omvat het wijzigen va
 
 2. Selecteer bovenaan het menu de optie **Handmatige failover**.
 
-   :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="Menu Gegevens globaal repliceren":::
+   :::image type="content" source="./media/how-to-manage-database-account/replicate-data-globally.png" alt-text="Menu Regio's toevoegen of verwijderen":::
 
 3. Selecteer in het menu **Handmatige failover** de nieuwe schrijfregio. Schakel het selectievakje in om aan te geven dat u begrijpt dat met deze optie de schrijfregio wordt gewijzigd.
 
 4. Selecteer **OK** om de failover te activeren.
 
-   :::image type="content" source="./media/how-to-manage-database-account/manual-failover.png" alt-text="Portalmenu Handmatige failover":::
+   :::image type="content" source="./media/how-to-manage-database-account/manual-failover.png" alt-text="Menu Regio's toevoegen of verwijderen":::
 
 ### <a name="azure-cli"></a><a id="enable-manual-failover-via-cli"></a>Azure CLI
 

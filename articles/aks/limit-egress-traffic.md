@@ -7,12 +7,12 @@ ms.author: jpalma
 ms.date: 06/29/2020
 ms.custom: fasttrack-edit
 author: palma21
-ms.openlocfilehash: 67eeb181f64f5924a90fd2c03e39e1be9887dd2e
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 33355251a06ba076be3677b84e383793f9f25193
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91397161"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570370"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Uitgaand verkeer beheren voor cluster knooppunten in azure Kubernetes service (AKS)
 
@@ -49,11 +49,11 @@ De vereiste netwerk regels en afhankelijkheden voor IP-adressen zijn:
 
 | Doel eindpunt                                                             | Protocol | Poort    | Gebruik  |
 |----------------------------------------------------------------------------------|----------|---------|------|
-| **`*:1194`** <br/> *Of* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:1194`** <br/> *Of* <br/> [Regionale CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:1194`** <br/> *Of* <br/> **`APIServerIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | Voor beveiligde communicatie via een tunnel tussen de knoop punten en het besturings vlak. |
-| **`*:9000`** <br/> *Of* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:9000`** <br/> *Of* <br/> [Regionale CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:9000`** <br/> *Of* <br/> **`APIServerIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | Voor beveiligde communicatie via een tunnel tussen de knoop punten en het besturings vlak. |
+| **`*:1194`** <br/> *Of* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:1194`** <br/> *Of* <br/> [Regionale CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:1194`** <br/> *Of* <br/> **`APIServerIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | Voor beveiligde communicatie via een tunnel tussen de knoop punten en het besturings vlak. Dit is niet vereist voor [particuliere clusters](private-clusters.md)|
+| **`*:9000`** <br/> *Of* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:9000`** <br/> *Of* <br/> [Regionale CIDR](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:9000`** <br/> *Of* <br/> **`APIServerIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | Voor beveiligde communicatie via een tunnel tussen de knoop punten en het besturings vlak. Dit is niet vereist voor [particuliere clusters](private-clusters.md) |
 | **`*:123`** of **`ntp.ubuntu.com:123`** (als u Azure firewall netwerk regels gebruikt)  | UDP      | 123     | Vereist voor NTP-tijd synchronisatie (Network Time Protocol) op Linux-knoop punten.                 |
 | **`CustomDNSIP:53`** `(if using custom DNS servers)`                             | UDP      | 53      | Als u aangepaste DNS-servers gebruikt, moet u ervoor zorgen dat deze toegankelijk zijn voor de cluster knooppunten. |
-| **`APIServerIP:443`** `(if running pods/deployments that access the API Server)` | TCP      | 443     | Vereist voor het uitvoeren van een Peule/implementaties die toegang hebben tot de API-server, wordt het API-IP-adres gebruikt.  |
+| **`APIServerIP:443`** `(if running pods/deployments that access the API Server)` | TCP      | 443     | Vereist voor het uitvoeren van een Peule/implementaties die toegang hebben tot de API-server, wordt het API-IP-adres gebruikt. Dit is niet vereist voor [particuliere clusters](private-clusters.md)  |
 
 ### <a name="azure-global-required-fqdn--application-rules"></a>Azure Global vereist FQDN/toepassings regels 
 

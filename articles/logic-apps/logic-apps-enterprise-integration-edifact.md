@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/22/2020
-ms.openlocfilehash: dfe48a1348929bbe8d4af6793d94d52514df9d74
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b0df55e59bd519a816c4022f2434edfcd4460780
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87001533"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570771"
 ---
 # <a name="exchange-edifact-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>EDIFACT-berichten voor B2B Enterprise-integratie in Azure Logic Apps uitwisselen met Enterprise Integration Pack
 
@@ -63,7 +63,7 @@ Nadat u [een integratie account hebt gemaakt](../logic-apps/logic-apps-enterpris
 
    | Eigenschap | Beschrijving |
    | --- | --- |
-   | Naam |Naam van de overeenkomst |
+   | Name |Naam van de overeenkomst |
    | Type overeenkomst | Moet EDIFACT zijn |
    | Host-partner |Een overeenkomst heeft zowel een host-als een gast partner nodig. De host-partner vertegenwoordigt de organisatie die de overeenkomst configureert. |
    | Host-id |Een id voor de host-partner |
@@ -99,7 +99,7 @@ U bent nu klaar om inkomende berichten af te handelen die overeenkomen met de ge
 | UNB 6.1 (referentie wacht woord van de ontvanger) |Voer een alfanumerieke waarde tussen 1 en 14 tekens in. |
 | UNB 6.2 (referentie kwalificatie van de ontvanger) |Voer een alfanumerieke waarde in met mini maal één teken en Maxi maal twee tekens. |
 
-### <a name="acknowledgments"></a>Erkenningen
+### <a name="acknowledgments"></a>Dankwoord
 
 | Eigenschap | Beschrijving |
 | --- | --- |
@@ -247,7 +247,7 @@ Wanneer u elke validatie rij voltooit, wordt er automatisch een andere toegevoeg
 
 2.  U kunt uw overeenkomsten ook bekijken in het overzicht van het integratie account. Kies **overzicht**in het menu integratie account en selecteer vervolgens de tegel **overeenkomsten** . 
 
-    ![Kies de tegel ' overeenkomsten '](./media/logic-apps-enterprise-integration-edifact/edifact-4.png)   
+    ![Scherm opname van de tegel overeenkomsten.](./media/logic-apps-enterprise-integration-edifact/edifact-4.png)   
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 

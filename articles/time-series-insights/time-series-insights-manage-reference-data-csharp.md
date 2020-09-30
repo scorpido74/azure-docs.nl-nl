@@ -9,16 +9,19 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/12/2020
+ms.date: 09/29/2020
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 2d14d45a6cf7147514cf4fdfc2a3ede470c12835
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: fb0c29fb68d0bcd2405cc031008c1c8e5035476f
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017631"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569384"
 ---
 # <a name="manage-reference-data-for-an-azure-time-series-insights-gen-1-environment-using-c-sharp"></a>Referentie gegevens beheren voor een Azure Time Series Insights-omgeving van 1 generatie met C-Kruis
+
+> [!CAUTION]
+> Dit is een gen1-artikel.
 
 In dit artikel wordt beschreven hoe u C#-, [MSAL.net](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)-en Azure Active Directory kunt combi neren om PROGRAMMATISCHe API-aanvragen te maken voor de [referentie Gegevensbeheer API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api)van Azure time series Insights gen 1.
 

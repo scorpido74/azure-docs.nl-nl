@@ -1,6 +1,6 @@
 ---
-title: Back-up en herstel voor Azure Database for PostgreSQL grootschalige-Server groepen
-description: Back-up en herstel voor Azure Database for PostgreSQL grootschalige-Server groepen
+title: Back-up en herstel voor Azure Database for PostgreSQL Hyperscale-servergroepen
+description: Back-up en herstel voor Azure Database for PostgreSQL Hyperscale-servergroepen
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: d300f3e02d2a1a83410d5b7d981298a4743fb223
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: dde4db7f3eb476b7645e910504e48fea8bb6df0c
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936381"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569713"
 ---
 # <a name="backup-and-restore-for-azure-arc-enabled-postgresql-hyperscale-server-groups"></a>Back-ups maken en herstellen voor Azure Arc ingeschakelde PostgreSQL grootschalige-Server groepen
 
@@ -52,7 +52,7 @@ Bekijk de sectie opslag van de uitvoer:
     }
 ...
 ```
-Als u een sectie ' back-ups ' ziet, betekent dit dat uw server groep is geconfigureerd voor het gebruik van een back-upopslag klasse en dat u klaar bent om back-ups te maken en op te slaan. Als u geen sectie back-ups ziet, moet u de Server groep verwijderen en opnieuw maken om de back-upopslag klasse te configureren. Op dit moment is het nog niet mogelijk om een back-upopslag klasse te configureren nadat de Server groep is gemaakt.
+Als de naam van een opslag klasse wordt weer gegeven in de sectie ' back-ups ' van de uitvoer van die opdracht, betekent dit dat uw server groep is geconfigureerd voor het gebruik van een back-upopslag klasse en dat u klaar bent om back-ups te maken en op te slaan. Als u geen sectie back-ups ziet, moet u de Server groep verwijderen en opnieuw maken om de back-upopslag klasse te configureren. Op dit moment is het nog niet mogelijk om een back-upopslag klasse te configureren nadat de Server groep is gemaakt.
 
 >[!IMPORTANT]
 >Als uw server groep al is geconfigureerd voor het gebruik van een back-upopslag klasse, slaat u de volgende stap over en gaat u rechtstreeks naar stap ' hand matige volledige back-up maken '.
@@ -117,7 +117,7 @@ Wanneer de back-up is voltooid, worden de ID, de naam en de status van de back-u
 > - Automatische back-ups plannen
 > - De voortgang van een back-up weer geven terwijl deze wordt uitgevoerd
 
-## <a name="list-backups"></a>Back-ups weer geven
+## <a name="list-backups"></a>Back-ups weergeven
 
 De back-ups weer geven die beschikbaar zijn voor herstel.
 
@@ -134,10 +134,12 @@ azdata arc postgres backup list --server-name postgres01
 
 Er wordt een uitvoer geretourneerd zoals:
 ```console
-ID                                Name                      State
---------------------------------  ------------------------  -------
-d134f51aa87f4044b5fb07cf95cf797f  MyBackup_Aug31_0730amPST  Done
+ID                                Name                      State    Timestamp
+--------------------------------  ------------------------  -------  ------------------------------
+d134f51aa87f4044b5fb07cf95cf797f  MyBackup_Aug31_0730amPST  Done     2020-08-31 14:30:00:00+00:00
 ```
+
+Tijds tempel geeft het punt aan van de tijd waarop de back-up is gemaakt.
 
 ## <a name="restore-a-backup"></a>Een back-up terugzetten
 
