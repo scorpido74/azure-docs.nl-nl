@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 7f00947504e5c6355379ce1e400fd2325016e05a
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 400585d3e5908268708d93ceeefd26a4a5efdd49
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "77122060"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90972396"
 ---
 # <a name="tutorial-create-a-water-consumption-monitoring-application-with-azure-iot-central"></a>Zelfstudie: Een app voor bewaking van waterverbruik maken met Azure IoT Central
 
@@ -256,4 +256,7 @@ Als u deze toepassing verder niet gaat gebruiken, verwijdert u deze.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over het [Concepten over bewaking van waterverbruik](./concepts-waterconsumptionmonitoring-architecture.md).
+* Meer informatie over 
+
+> [!div class="nextstepaction"]
+> [Bewakingsconcepten voor waterverbruik](./concepts-waterconsumptionmonitoring-architecture.md).

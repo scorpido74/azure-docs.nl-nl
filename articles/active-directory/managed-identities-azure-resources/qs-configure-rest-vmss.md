@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/25/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09a66f45fe3e20bedf5ff99ee924ac267b4fd869
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: a2b776ba64d96d092ad51ad2888b891e19e8b521
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266796"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90968875"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-rest-api-calls"></a>Beheerde identiteiten voor Azure-resources configureren op een virtuele-machineschaalset met behulp van REST API-aanroepen
 
@@ -45,12 +45,9 @@ In dit artikel leert u om met behulp van CURL het Azure Resource Manager REST-ei
     - [Inzender voor virtuele machines](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) voor het maken van een virtuele-machineschaalset en het inschakelen en verwijderen van een door het systeem en/of de gebruiker toegewezen beheerde identiteit op/uit een virtuele-machineschaalset.
     - De rol van [inzender voor beheerde identiteit](../../role-based-access-control/built-in-roles.md#managed-identity-contributor) voor het maken van een door de gebruiker toegewezen beheerde identiteit.
     - De rol van [operator voor beheerde identiteit](../../role-based-access-control/built-in-roles.md#managed-identity-operator) voor het toewijzen/verwijderen van een door de gebruiker toegewezen identiteit aan/uit een virtuele-machine schaalset.
-- Als u Windows gebruikt, installeert u het [Windows-subsysteem voor Linux](/windows/wsl/about) of gebruikt u de [Azure Cloud Shell](../../cloud-shell/overview.md) in Azure Portal.
-- [Installeer de lokale Azure CLI-console](/cli/azure/install-azure-cli) als u het [Windows-subsysteem voor Linux](/windows/wsl/about) of een [Linux-distributie/-besturingssysteem](/cli/azure/install-azure-cli-apt?view=azure-cli-latest) gebruikt.
-- Als u de lokale Azure CLI-console gebruikt, meldt u zich aan bij Azure via `az login` met een account dat is gekoppeld aan het Azure-abonnement waarvoor u de door het systeem of door de gebruiker toegewezen beheerde identiteiten wilt beheren.
-
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+- U kunt alle opdrachten in dit artikel in de cloud of lokaal uitvoeren:
+    - Gebruik de [Azure Cloud Shell](../../cloud-shell/overview.md) om uit te voeren in de cloud.
+    - Als u lokaal wilt uitvoeren, installeer dan [curl](https://curl.haxx.se/download.html) en de [Azure CLI](/cli/azure/install-azure-cli). Meld u daarna aan bij Azure via [az login](/cli/azure/reference-index#az-login) met een account dat gekoppeld is aan het Azure-abonnement waarvoor u de door het systeem of door de gebruiker toegewezen beheerde identiteiten wilt beheren.
 
 ## <a name="system-assigned-managed-identity"></a>Door het systeem toegewezen beheerde identiteit
 

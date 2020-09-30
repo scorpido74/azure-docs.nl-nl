@@ -7,25 +7,24 @@ author: dylankil
 manager: guillasi
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 06/10/2020
+ms.date: 09/14/2020
 ms.author: dylankil
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 0904694a461f57a1988444aea71ffe64bfa7e809
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7c368964ca04662c8bf1dfe79db57f81c90f5699
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88602540"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978318"
 ---
-De [insluitende lezer](https://www.onenote.com/learningtools) is een inclusief ontworpen hulpprogramma dat bewezen technieken implementeert om leesvaardigheid te verbeteren.
+[Insluitende lezer](https://www.onenote.com/learningtools) is een inclusief ontworpen hulpprogramma dat bewezen technieken implementeert om begrijpend lezen te verbeteren voor beginnende lezers, mensen die een taal willen leren en mensen met leerproblemen, zoals dyslexie. U kunt de Insluitende lezer in uw toepassingen gebruiken om tekst te isoleren voor het verbeteren van de focus, het weergeven van afbeeldingen voor veelgebruikte woorden, het markeren van bepaalde secties, het hardop voorlezen van geselecteerde tekst, het vertalen van woorden en zinsdelen in realtime en meer.
 
 In deze Quickstart maakt u een nieuwe Android-app en integreert u de insluitende lezer. U vindt [op GitHub](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-kotlin) een volledig werkend voorbeeld van deze quickstart.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/cognitive-services/) aan voordat u begint.
-
 ## <a name="prerequisites"></a>Vereisten
 
-* Een resource voor insluitende lezers die is geconfigureerd voor Azure Active Directory-verificatie. Volg [deze instructies](../../how-to-create-immersive-reader.md) om deze in te stellen. Enkele waarden die u hier maakt, hebt u nodig bij het configureren van de eigenschappen van de omgeving. Sla de uitvoer van uw sessie op in een tekstbestand voor later gebruik.
+* Azure-abonnement: [Krijg een gratis abonnement](https://azure.microsoft.com/free/cognitive-services)
+* Een insluitende lezer-resource die is geconfigureerd voor Azure Active Directory-verificatie. Volg [deze instructies](../../how-to-create-immersive-reader.md) om deze in te stellen. Enkele waarden die u hier maakt, hebt u nodig bij het configureren van de eigenschappen van de omgeving. Sla de uitvoer van uw sessie op in een tekstbestand voor later gebruik.
 * [Git](https://git-scm.com/).
 * [SDK voor Insluitende lezer](https://github.com/microsoft/immersive-reader-sdk).
 * [Android Studio](https://developer.android.com/studio).
@@ -34,27 +33,27 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 Start een nieuw project in Android Studio. De broncode voor dit voorbeeld is beschikbaar als onderdeel van de [SDK voor Insluitende lezer](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-kotlin).
 
-![Nieuw project](../../media/android/kotlin/android-studio-create-project.png)
+![Nieuw project - Kotlin](../../media/android/kotlin/android-studio-create-project.png)
 
 Selecteer **Empty Activity** in het venster **Choose your project** en selecteer **Next**.
 
-![Project met lege activiteit](../../media/android/kotlin/android-studio-empty-activity.png)
+![Project met lege activiteit - Kotlin](../../media/android/kotlin/android-studio-empty-activity.png)
 
 ## <a name="configure-the-project"></a>Het project configureren
 
 Geef het project de naam **QuickstartKotlin** en selecteer een locatie om het op te slaan. Selecteer **Kotlin** als de programmeertaal en selecteer **Finish**.
 
-![Het project configureren](../../media/android/kotlin/android-studio-configure-project.png)
+![Het project configureren - Kotlin](../../media/android/kotlin/android-studio-configure-project.png)
 
 ## <a name="set-up-assets-and-authentication"></a>Activa en verificatie instellen
 
 Maak een nieuwe map **/assets**.
 
-![Een nieuwe map assets maken](../../media/android/kotlin/android-studio-assets-folder.png)
+![Een nieuwe map assets maken - Kotlin](../../media/android/kotlin/android-studio-assets-folder.png)
 
  Maak een bestand met de naam **env** in de map Assets. Voeg de volgende namen en waarden toe en geef waar nodig waarden op. Zorg ervoor dat u dit env-bestand niet doorvoert in broncodebeheer, omdat er geheimen in staan die niet openbaar mogen worden gemaakt.
 
-![Een nieuw env-bestand maken](../../media/android/kotlin/android-studio-create-env-file.png)
+![Een nieuw env-bestand maken - Kotlin](../../media/android/kotlin/android-studio-create-env-file.png)
 
 ```text
 TENANT_ID=<YOUR_TENANT_ID>
@@ -62,7 +61,7 @@ CLIENT_ID=<YOUR_CLIENT_ID>
 CLIENT_SECRET=<YOUR_CLIENT_SECRET>
 SUBDOMAIN=<YOUR_SUBDOMAIN>
 ```
-![Omgevingsvariabelen in Android Studio](../../media/android/kotlin/android-studio-assets-and-env-file.png)
+![Omgevingsvariabelen in Android Studio - Kotlin](../../media/android/kotlin/android-studio-assets-and-env-file.png)
 
 ## <a name="add-dependencies"></a>Afhankelijkheden toevoegen
 
@@ -85,13 +84,13 @@ dependencies {
 }
 ```
 
-![App Gradle-implementaties](../../media/android/kotlin/android-studio-build-gradle.png)
+![App Gradle-implementaties - Kotlin](../../media/android/kotlin/android-studio-build-gradle.png)
 
 ## <a name="update-app-strings-and-layout-resources"></a>App-tekenreeksen en indelingsresources bijwerken
 
 Vervang de inhoud in **res/strings/strings.xml** door de volgende tekenreeksen die moeten worden gebruikt in de app.
 
-![App strings.xml](../../media/android/kotlin/android-studio-strings.png)
+![App strings.xml - Kotlin](../../media/android/kotlin/android-studio-strings.png)
 
 ```strings.xml
 <resources>
@@ -101,7 +100,7 @@ Vervang de inhoud in **res/strings/strings.xml** door de volgende tekenreeksen d
 
     <string name="app_name">ImmersiveReaderSDK</string>
     <string name="geographyTitle">Geography</string>
-    <string name="geographyTextEn">The study of Earth’s landforms is called physical geography. Landforms can be mountains and valleys. They can also be glaciers, lakes or rivers. Landforms are sometimes called physical features. It is important for students to know about the physical geography of Earth. The seasons, the atmosphere and all the natural processes of Earth affect where people are able to live. Geography is one of a combination of factors that people use to decide where they want to live.The physical features of a region are often rich in resources. Within a nation, mountain ranges become natural borders for settlement areas. In the U.S., major mountain ranges are the Sierra Nevada, the Rocky Mountains, and the Appalachians.Fresh water sources also influence where people settle. People need water to drink. They also need it for washing. Throughout history, people have settled near fresh water. Living near a water source helps ensure that people have the water they need. There was an added bonus, too. Water could be used as a travel route for people and goods. Many Americans live near popular water sources, such as the Mississippi River, the Colorado River and the Great Lakes.Mountains and deserts have been settled by fewer people than the plains areas. However, they have valuable resources of their own.</string>
+    <string name="geographyTextEn">The study of Earth's landforms is called physical geography. Landforms can be mountains and valleys. They can also be glaciers, lakes or rivers. Landforms are sometimes called physical features. It is important for students to know about the physical geography of Earth. The seasons, the atmosphere and all the natural processes of Earth affect where people are able to live. Geography is one of a combination of factors that people use to decide where they want to live.The physical features of a region are often rich in resources. Within a nation, mountain ranges become natural borders for settlement areas. In the U.S., major mountain ranges are the Sierra Nevada, the Rocky Mountains, and the Appalachians. Fresh water sources also influence where people settle. People need water to drink. They also need it for washing. Throughout history, people have settled near fresh water. Living near a water source helps ensure that people have the water they need. There was an added bonus, too. Water could be used as a travel route for people and goods. Many Americans live near popular water sources, such as the Mississippi River, the Colorado River and the Great Lakes.Mountains and deserts have been settled by fewer people than the plains areas. However, they have valuable resources of their own.</string>
     <string name="geographyTextFr">L\'étude des reliefs de la Terre est appelée géographie physique. Les reliefs peuvent être des montagnes et des vallées. Il peut aussi s\'agira de glaciers, delacs ou de rivières. Les reliefs sont parfois appelés caractéristiques physiques. Il est important que les élèves connaissent la géographie physique de laTerre. Les saisons, l\'atmosphère et tous les processus naturels de la Terre affectent l\'endroit où les gens sont capables de vivre. La géographie est l\'un desfacteurs que les gens utilisent pour décider où ils veulent vivre. Les caractéristiques physiques d\'une région sont souvent riches en ressources. Àl\'intérieur d\'une nation, les chaînes de montagnes deviennent des frontières naturelles pour les zones de peuplement. Aux États-Unis, les principaleschaînes de montagnes sont la Sierra Nevada, les montagnes Rocheuses et les Appalaches.Les sources d\'eau douce influencent également l\'endroit où lesgens s\'installent. Les gens ont besoin d\'eau pour boire. Ils en ont aussi besoin pour se laver. Tout au long de l\'histoire, les gens se sont installés près del\'eau douce. Vivre près d\'une source d\'eau permet de s\'assurer que les gens ont l\'eau dont ils ont besoin. Il y avait un bonus supplémentaire, aussi. L\'eaupourrait être utilisée comme voie de voyage pour les personnes et les marchandises. Beaucoup d\'Américains vivent près des sources d\'eau populaires,telles que le fleuve Mississippi, le fleuve Colorado et les Grands Lacs.Mountains et les déserts ont été installés par moins de gens que les zones desplaines. Cependant, ils disposent de ressources précieuses.Les gens ont une réponse.</string>
     <string name="immersiveReaderButtonText">Immersive Reader</string>
 </resources>
@@ -109,7 +108,7 @@ Vervang de inhoud in **res/strings/strings.xml** door de volgende tekenreeksen d
 
 Vervang de inhoud in **res/layout/activity_main.xml** door de volgende XML die moet worden gebruikt in de app. Deze XML bepaalt de indeling van de gebruikersinterface van de app.
 
-![App activity_main.xml](../../media/android/kotlin/android-studio-activity-main-xml.png)
+![App activity_main.xml - Kotlin](../../media/android/kotlin/android-studio-activity-main-xml.png)
 
 ```activity_main.xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -210,9 +209,9 @@ Vervang de inhoud in **res/layout/activity_main.xml** door de volgende XML die m
 
 Maak in de map **/Java/com.example.quickstartkotlin** een nieuwe Kotlin-klasse en geef deze de naam **WebAppInterface**. Voeg de volgende code toe aan de klasse. Met deze code kan de app een interface maken met Javascript-functies in HTML die in een latere stap worden toegevoegd.
 
-![com.example.quickstartkotlin-map](../../media/android/kotlin/android-studio-com-folder.png)
+![com.example.quickstartkotlin-map - Kotlin](../../media/android/kotlin/android-studio-com-folder.png)
 
-![WebAppInterface](../../media/android/kotlin/android-studio-web-app-interface.png)
+![WebAppInterface - Kotlin](../../media/android/kotlin/android-studio-web-app-interface.png)
 
 ```WebAppInterface.kt
 // Copyright (c) Microsoft Corporation. All rights reserved.
@@ -524,9 +523,9 @@ class MainActivity : AppCompatActivity() {
 
 Voor de implementatie van de webweergave moet de HTML goed werken. Klik met de rechtermuisknop op de map **/assets** en maak een nieuw bestand met de naam **immersiveReader.html**.
 
-![Een nieuw HTML-bestand maken](../../media/android/kotlin/android-studio-immersive-reader-html.png)
+![Een nieuw HTML-bestand maken - Kotlin](../../media/android/kotlin/android-studio-immersive-reader-html.png)
 
-![Locatie van HTML-asset](../../media/android/kotlin/android-studio-immersive-reader-html-assets.png)
+![Locatie van HTML-assets - Kotlin](../../media/android/kotlin/android-studio-immersive-reader-html-assets.png)
 
 Voeg de volgende HTML en JavaScript toe. Met deze code wordt de SDK voor Insluitende lezer aan de app toegevoegd en gebruikt om de insluitende lezer te openen met de app-code die we hebben geschreven.
 
@@ -575,7 +574,7 @@ Licensed under the MIT License. -->
 
 ## <a name="set-up-app-permissions"></a>App-machtigingen instellen
 
-![AndroidManifest](../../media/android/kotlin/android-studio-android-manifest-xml.png)
+![AndroidManifest - Kotlin](../../media/android/kotlin/android-studio-android-manifest-xml.png)
 
 Omdat de toepassing netwerkaanroepen naar de SDK voor insluitende lezers moet maken om te kunnen functioneren, moeten we ervoor zorgen dat de app-machtigingen zijn geconfigureerd om netwerktoegang toe te staan. Vervang de inhoud van **/manifests/AndroidManifest.xml** door de volgende XML:
 
@@ -609,7 +608,7 @@ Omdat de toepassing netwerkaanroepen naar de SDK voor insluitende lezers moet ma
 
 Gebruik Android Studio om de app op een apparaat-emulator uit te voeren. Wanneer u **Insluitende lezer** selecteert, wordt de insluitende lezer geopend met de inhoud van de app.
 
-![Insluitende lezer](../../media/android/kotlin/android-studio-device-emulator.png)
+![Insluitende lezer - Kotlin](../../media/android/kotlin/android-studio-device-emulator.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

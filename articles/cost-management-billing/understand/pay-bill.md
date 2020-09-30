@@ -8,14 +8,14 @@ tags: billing, past due, pay now, bill, invoice, pay
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 09/21/2020
 ms.author: banders
-ms.openlocfilehash: 6cfebc9cfbd856567fde3d6736c6ddc5f1a94b4d
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: e9ad580ae5e3ffe7a7f5781423f96897272a4844
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88688705"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90972076"
 ---
 # <a name="how-to-pay-your-bill-for-microsoft-azure"></a>Uw factuur voor Microsoft Azure betalen
 
@@ -29,11 +29,11 @@ Als uw standaardbetalingsmethode een creditcard is, worden kosten elke factureri
 
 ## <a name="pay-now-in-the-azure-portal"></a>Nu betalen in Azure Portal
 
-U moet eigenaar van een factureringsprofiel, inzender of factuurbeheerder zijn om facturen te kunnen betalen in Azure Portal.
+Om facturen te betalen in de Azure Portal, moet u de beheerder van de factureringsrekening zijn. De beheerder van de factureringsrekening is de gebruiker die zich oorspronkelijk heeft geregistreerd voor het MCA-account.
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 1. Zoek naar **kostenbeheer en facturering**.
-1. Selecteer **Facturen** onder Facturering in het menu aan de linkerkant.
+1. Selecteer **Facturen** onder **Facturering** in het menu aan de linkerkant.
 1. Als een van de facturen vervallen of achterstallig is, ziet u een blauwe koppeling **Nu betalen** voor die factuur. Selecteer **Nu betalen**.
 1. Klik in de nieuwe blade op **Een betalingswijze selecteren** om een bestaande creditcard te kiezen of een nieuwe toe te voegen.
 1. Zodra de betalingswijze is geselecteerd, klikt u op **Nu betalen**.
@@ -42,3 +42,7 @@ De status van de factuur wordt bijgewerkt naar betaald op de facturenblade.
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Toegang tot een Microsoft-klantovereenkomst controleren
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
+
+## <a name="next-steps"></a>Volgende stappen
+
+- Zie [Betalen via factuur](../manage/pay-by-invoice.md) als u in aanmerking wilt komen voor betaling met cheque/directe overboeking

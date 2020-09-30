@@ -3,12 +3,12 @@ title: Zelfstudie - vSphere-cluster implementeren in Azure
 description: Meer informatie over het implementeren van een vSphere-cluster in Azure met behulp van Azure VMware Solution
 ms.topic: tutorial
 ms.date: 09/07/2020
-ms.openlocfilehash: 69a29a459ba283bb34169112ac2fa174ac6a14af
-ms.sourcegitcommit: 8791f69d44150767807d215cafc4076f3ed43f9f
+ms.openlocfilehash: 2aa9d64dfa143e77b0edcc0c32a853645803ef67
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89512358"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985949"
 ---
 # <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud-in-azure"></a>Zelfstudie: Een Azure VMware Solution-privécloud implementeren in Azure
 
@@ -76,14 +76,24 @@ azurecli-interactive
 az vmware private-cloud create -g myResourceGroup -n myPrivateCloudName --location eastus --cluster-size 3 --network-block xx.xx.xx.xx/22 --sku AV36
 ```
 
-## <a name="delete-a-private-cloud-azure-portal"></a>Een privécloud verwijderen (Azure Portal)
+## <a name="delete-an-azure-vmware-solution-private-cloud"></a>Een Azure VMware Solution-privécloud verwijderen
 
-Als u een Azure VMware Solution-privécloud hebt die u niet meer nodig hebt, kunt u deze verwijderen. Wanneer u een privécloud verwijdert, worden alle clusters samen met al hun onderdelen verwijderd.
-
-Als u dit wilt doen, gaat u naar uw privécloud in de Azure-portal en selecteert u **Verwijderen**. Bevestig op de pagina Bevestiging de naam van de privécloud en selecteer **Ja**.
+Als u een Azure VMware Solution-privécloud hebt die u niet meer nodig hebt, kunt u deze verwijderen. Een privécloud van Azure VMware Solution bevat een geïsoleerd netwerkdomein, een of meer vSphere-clusters die zijn ingericht op toegewezen serverknooppunten, en meestal veel virtuele machines. Als een privécloud wordt verwijderd, worden alle virtuele machines, hun gegevens en clusters verwijderd. De toegewezen bare-metalknooppunten worden veilig gewist en geretourneerd naar de gratis pool. Het netwerkdomein dat is ingericht voor de klant wordt verwijderd.  
 
 > [!CAUTION]
-> Het verwijderen van de privécloud is een onomkeerbare bewerking. Zodra de privécloud is verwijderd, kunnen de gegevens niet worden hersteld, omdat alle actieve workloads, onderdelen en alle persoonlijke cloudgegevens en configuratie-instellingen met inbegrip van openbare IP-adressen worden vernietigd. 
+> Het verwijderen van de privécloud is een onomkeerbare bewerking. Zodra de privécloud is verwijderd, kunnen de gegevens niet worden hersteld. Dit komt doordat alle actieve workloads en onderdelen worden beëindigd en alle privécloudgegevens en configuratie-instellingen, met inbegrip van openbare IP-adressen, worden vernietigd.
+
+### <a name="prerequisites"></a>Vereisten
+
+Zodra een privécloud is verwijderd, is er geen manier om de virtuele machines en de bijbehorende gegevens te herstellen. Als de gegevens van de virtuele machine later vereist zijn, moet de beheerder eerst een back-up van alle gegevens maken voordat de privécloud wordt verwijderd.
+
+### <a name="steps-to-delete-an-azure-vmware-solution-private-cloud"></a>Stappen om een Azure VMware Solution-privécloud te verwijderen
+
+1. Open de pagina van Azure VMware Solutions in de Azure Portal.
+
+2. Selecteer de privécloud die u wilt verwijderen.
+ 
+3. Voer de naam van de privécloud in en selecteer **Ja**. Binnen een paar uur is het verwijderingsproces voltooid.  
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -91,7 +101,8 @@ In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Een Azure VMware Solution-privécloud maken
-> * Gecontroleerd of de privécloud is geïmplementeerd
+> * Controleer of de privécloud is geïmplementeerd
+> * Een Azure VMware Solution-privécloud verwijderen
 
 Ga door naar de volgende zelfstudie voor meer informatie over het maken van een virtueel netwerk voor gebruik met uw privécloud als onderdeel van het instellen van lokaal beheer voor uw particuliere cloudclusters.
 

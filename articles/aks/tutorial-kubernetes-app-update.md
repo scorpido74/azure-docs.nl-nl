@@ -5,12 +5,12 @@ services: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
 ms.custom: mvc
-ms.openlocfilehash: d5457d790cd3c95bb23ec0c517097b443a2389ed
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: e9981f9df31f6de21262aedc9790dbf1a7725fc7
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "77593373"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985350"
 ---
 # <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>Zelfstudie: Een toepassing bijwerken in AKS (Azure Kubernetes Service)
 
@@ -64,7 +64,7 @@ docker-compose up --build -d
 
 Om te controleren of uw wijzigingen worden weergegeven in de bijgewerkte containerinstallatiekopie, opent u een lokale webbrowser met `http://localhost:8080`.
 
-![Afbeelding van Kubernetes-cluster in Azure](media/container-service-kubernetes-tutorials/vote-app-updated.png)
+:::image type="content" source="media/container-service-kubernetes-tutorials/vote-app-updated.png" alt-text="Schermopname met een voorbeeld van de bijgewerkte containerinstallatiekopie die Azure Voting App geopend heeft met een lokale webbrowser en lokale host.":::
 
 De bijgewerkte waarden die zijn opgegeven in het bestand *config_file.cfg* worden weergegeven in de actieve toepassing.
 
@@ -145,7 +145,7 @@ kubectl get service azure-vote-front
 
 Open nu een lokale webbrowser met het IP-adres van uw service:
 
-![Afbeelding van Kubernetes-cluster in Azure](media/container-service-kubernetes-tutorials/vote-app-updated-external.png)
+:::image type="content" source="media/container-service-kubernetes-tutorials/vote-app-updated-external.png" alt-text="Schermopname met een voorbeeld van de bijgewerkte containerinstallatiekopie die Azure Voting App geopend heeft met een lokale webbrowser en lokale host.":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

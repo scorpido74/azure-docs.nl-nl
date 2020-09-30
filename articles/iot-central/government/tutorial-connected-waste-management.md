@@ -7,12 +7,12 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 274d725a0e7987c8cb15363ba276aec7ebc541d5
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 53304f14286577bf0bc25b2a66442286527c5140
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "77426357"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90972436"
 ---
 # <a name="tutorial-create-a-connected-waste-management-application-in-iot-central"></a>Zelfstudie: Een toepassing voor verbonden afvalbeheer maken in Azure IoT Central
 
@@ -131,13 +131,13 @@ De apparaatsjabloon weergeven:
 
 1. Klik op **Apparaatsjablonen** in het linkerdeelvenster van uw toepassing in IoT Central. 
 
-    ![Apparaatsjabloon](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate.png)
+    ![Schermopname van de lijst met apparaatinstellingen in de toepassing](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate.png)
 
 2. In de lijst met apparaatsjablonen ziet u **Gekoppelde prullenbak**. Open deze door op de naam ervan te klikken.
 
 3. Maak u vertrouwd met de mogelijkheden die de apparaatsjabloon heeft te bieden. U kunt zien dat hier sensoren zoals voor het *vulniveau*, een *geurmeter*, voor het *gewicht*, de *locatie* en andere zijn gedefinieerd.
 
-   ![Apparaatsjabloon](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-connectedbin.png)
+   ![Schermopname met de details van de aangesloten apparaatsjabloon voor prullenbakken](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-connectedbin.png)
 
    
 
@@ -265,8 +265,9 @@ Als u deze toepassing verder niet gaat gebruiken, verwijdert u de toepassing via
 1. Open het tabblad Beheer in het linkerdeelvenster van uw IoT Central-toepassing.
 2. Selecteer Uw toepassing en klik onder aan de pagina op de knop Verwijderen.
 
-  
-
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over de concepten van [verbonden afvalbeheer](./concepts-connectedwastemanagement-architecture.md)
+* Meer informatie over
+ 
+> [!div class="nextstepaction"]
+> [Verbonden afvalbeheerconcepten](./concepts-connectedwastemanagement-architecture.md)

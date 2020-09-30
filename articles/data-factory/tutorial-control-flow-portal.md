@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: e12f0cd44143621d34096a6c1161a22a89d21d9b
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: c046d2e437004146b5ee4c53dd98942ca1781ad4
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077645"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90983732"
 ---
 # <a name="branching-and-chaining-activities-in-an-azure-data-factory-pipeline-using-the-azure-portal"></a>Activiteiten in een Azure Data Factory-pijplijn vertakken en koppelen met behulp van de Azure-portal
 
@@ -24,7 +24,7 @@ ms.locfileid: "86077645"
 
 In deze zelfstudie maakt u een Data Factory-pijplijn die enkele van de stroombeheerfuncties demonstreert. Deze pijplijn voert een eenvoudige kopieerbewerking uit van een container in Azure Blob Storage naar een andere container in hetzelfde opslagaccount. Als de kopieerbewerking is geslaagd, worden de details over de geslaagde kopieerbewerking (zoals de hoeveelheid geschreven gegevens) via de pijplijn verzonden in een e-mail met een succesbericht. Als de kopieerbewerking is mislukt, worden de details over de mislukte kopieerbewerking (zoals de foutmelding) via de pijplijn verzonden in een e-mail met de foutmelding. In de zelfstudie ziet u hoe u parameters kunt doorgeven.
 
-Een overzicht van het scenario: ![Overzicht](media/tutorial-control-flow-portal/overview.png)
+Een overzicht van het scenario: ![In het diagram wordt Azure Blob Storage weergegeven. Dit is het doel van een kopie, die bij voltooiing een e-mail met details of bij een fout een e-mail met foutgegevens verzendt.](media/tutorial-control-flow-portal/overview.png)
 
 In deze zelfstudie voert u de volgende stappen uit:
 

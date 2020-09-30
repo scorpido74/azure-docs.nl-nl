@@ -2,22 +2,22 @@
 title: 'Quickstart: SDK-clientbibliotheken van Language Understanding (LUIS)'
 description: Maak en zoek een LUIS-app met de SDK-clientbibliotheken voor LUIS met deze quickstart die gebruik maakt van C#, python of Java-script.
 ms.topic: quickstart
-ms.date: 09/01/2020
-keywords: Azure, artificial intelligence, ai, natural language processing, nlp, natural language understanding, nlu, ai conversation, conversational ai, ai chatbot, chatbot maker, LUIS, nlp ai, luis ai, azure luis, understanding natural language
+ms.date: 09/14/2020
+keywords: Azure, kunstmatige intelligentie, ai, natuurlijke taalverwerking, nlp, LUIS, azure luis, natuurlijk taalbegrip, ai-chatbot, chatbot-maker, begrip van natuurlijke taal
 ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-set-diberry-3core
-ms.openlocfilehash: 6bcdca85125d44475fadfd195c1dfda88f761f88
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 64288bbffa2d2c24e2f719477d98426f52da4070
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89323063"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90972610"
 ---
 # <a name="quickstart-language-understanding-luis-sdk-client-libraries-to-create-and-query-your-luis-app"></a>Quickstart: SDK-clientbibliotheken voor Language Understanding (LUIS) voor het maken en doorzoeken van uw LUIS-app
 
-Maak en zoek een LUIS-app met de SDK-clientbibliotheken voor LUIS met deze quickstart die gebruik maakt van C#, python of Java-script.
+Maak een LUIS-app en voer er query's op uit met de LUIS SDK-clientbibliotheken in deze quickstart die gebruikmaakt van C#, Python of JavaScript.
 
-Met Language Understanding (LUIS) kunt u aangepaste machine-learning-intelligence toepassen op tekst in de natuurlijke spreektaal van een gebruiker om daar de algemene betekenis en relevante detailinformatie uit te destilleren.
+Met Language Understanding (LUIS) kunt u natuurlijke taalverwerking toepassen (NLP) op tekst in de natuurlijke spreektaal van een gebruiker om de algemene betekenis te voorspellen en relevante informatie eruit te filteren.
 
 * Met de **authoring SDK**-clientbibliotheek kunt u uw LUIS-app maken, bewerken, trainen en publiceren. * Met de **prediction runtime SDK**-clientbibliotheek kunt u een query uitvoeren op de gepubliceerde app.
 
@@ -45,7 +45,7 @@ U kunt de app verwijderen uit de [LUIS-portal](https://www.luis.ai) en de Azure-
 * Training: als u een trainingsfout krijgt, duidt dit meestal op een lege app (geen intenties met voorbeelduitingen) of een app met intenties of entiteiten die misvormd zijn.
 * Diverse fouten: omdat de code clientbibliotheken met tekst- en JSON-objecten aanroept, moet u ervoor zorgen dat u de code niet hebt gewijzigd.
 
-Andere fouten: als er een fout optreedt die hierboven niet wordt behandeld, laat het ons dan weten door onderaan deze pagina feedback te geven. Vermeld de programmeertaal en -versie van de clientbibliotheken die u hebt geïnstalleerd. 
+Andere fouten: als er een fout optreedt die hierboven niet wordt behandeld, laat het ons dan weten door onderaan deze pagina feedback te geven. Vermeld de programmeertaal en -versie van de clientbibliotheken die u hebt geïnstalleerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -53,3 +53,5 @@ Andere fouten: als er een fout optreedt die hierboven niet wordt behandeld, laat
 * [Nieuwe functies](whats-new.md)
 * [Intenties](luis-concept-intent.md), [entiteiten](luis-concept-entity-types.md) en [voorbeelduitingen](luis-concept-utterance.md), en [vooraf samengestelde entiteiten](luis-reference-prebuilt-entities.md)
 * De broncode voor dit voorbeeld is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code).
+* Informatie over natuurlijke taal: [natuurlijk taalbegrip (NLU) en natuurlijke taalverwerking (NLP)](artificial-intelligence.md)
+* Bots: [AI-chatbots](luis-csharp-tutorial-bf-v4.md "zelfstudie om een chatbot te maken")

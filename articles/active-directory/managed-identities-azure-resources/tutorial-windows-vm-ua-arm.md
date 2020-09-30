@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/14/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 030f2b893cd429bfdb451d24e799689fdb8a3cf8
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: d26c7f544c9754f455b67aadf9e923344cda3fdf
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89255695"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90968686"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>Zelfstudie: Toegang krijgen tot Azure Resource Manager met een door de gebruiker toegewezen beheerde identiteit op een Windows-VM
 
@@ -48,19 +48,42 @@ In deze zelfstudie leert u procedures om het volgende te doen:
 - [Een Windows-VM maken](../../virtual-machines/windows/quick-create-portal.md)
 
 - Om de stappen voor het maken van de vereiste resources en het rolbeheer in deze zelfstudie uit te voeren, moet uw account 'Eigenaar'-machtigingen hebben voor het juiste bereik (uw abonnement of resourcegroep). Voor hulp bij roltoewijzing gaat u naar [Op rollen gebaseerd toegangsbeheer gebruiken voor het beheer van de toegang tot de resources van uw Azure-abonnement](../../role-based-access-control/role-assignments-portal.md).
-- [Installeer de meest recente versie van de Azure PowerShell-module](/powershell/azure/install-az-ps). 
-- Voer `Connect-AzAccount` uit om een verbinding op te zetten met Azure.
-- Installeer de [nieuwste versie van PowerShellGet](/powershell/scripting/gallery/installing-psget#for-systems-with-powershell-50-or-newer-you-can-install-the-latest-powershellget).
-- Voer `Install-Module -Name PowerShellGet -AllowPrerelease` uit om de voorlopige versie van de `PowerShellGet`-module op te halen (mogelijk moet u met `Exit` de huidige PowerShell-sessie afsluiten nadat u met deze opdracht de `Az.ManagedServiceIdentity`-module hebt geïnstalleerd).
-- Voer `Install-Module -Name Az.ManagedServiceIdentity -AllowPrerelease` uit om de voorlopige versie van de `Az.ManagedServiceIdentity`-module te installeren en de aan de gebruiker toegewezen identiteitsbewerkingen in dit artikel uit te voeren.
 
+- Als u de voorbeeldscripts wilt uitvoeren, hebt u twee opties:
+    - Gebruik de [Azure Cloud Shell](../../cloud-shell/overview.md), die u kunt openen met behulp van de knop **Probeer het nu** in de rechterbovenhoek van Code::Blocks.
+    - Voer scripts lokaal uit met Azure PowerShell, zoals wordt beschreven in de volgende sectie.
+
+### <a name="configure-azure-powershell-locally"></a>Azure PowerShell lokaal configureren
+
+Als u Azure PowerShell voor dit artikel lokaal wilt gebruiken (in plaats van Cloud Shell), voert u de volgende stappen uit:
+
+1. Installeer de [meest recente versie van Azure PowerShell](/powershell/azure/install-az-ps) als u dat nog niet hebt gedaan.
+
+1. Meld u aan bij Azure:
+
+    ```azurepowershell
+    Connect-AzAccount
+    ```
+
+1. Installeer de [nieuwste versie van PowerShellGet](/powershell/scripting/gallery/installing-psget#for-systems-with-powershell-50-or-newer-you-can-install-the-latest-powershellget).
+
+    ```azurepowershell
+    Install-Module -Name PowerShellGet -AllowPrerelease
+    ```
+
+    Mogelijk moet u `Exit` buiten de huidige PowerShell-sessie nadat u deze opdracht voor de volgende stap hebt uitgevoerd.
+
+1. Installeer de voorlopige versie van de `Az.ManagedServiceIdentity`-module en voer de aan de gebruiker toegewezen identiteitsbewerkingen in dit artikel uit:
+
+    ```azurepowershell
+    Install-Module -Name Az.ManagedServiceIdentity -AllowPrerelease
+    ```
 
 ## <a name="enable"></a>Inschakelen
 
 Voor een scenario dat is gebaseerd op een door de gebruiker toegewezen identiteit, moet u de volgende stappen uitvoeren:
 
 - Een identiteit maken
- 
 - De zojuist gemaakte identiteit toewijzen
 
 ### <a name="create-identity"></a>Identiteit maken

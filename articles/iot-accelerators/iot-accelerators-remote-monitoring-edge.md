@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: a812155474b244682613b38b9b9379fa6cdcdcd8
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 43ba14845765230b9a54c2b34dbc7ccd53af950b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "66117616"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970003"
 ---
 # <a name="tutorial-detect-anomalies-at-the-edge-with-the-remote-monitoring-solution-accelerator"></a>Zelfstudie: Afwijkingen aan de rand detecteren met de verbetering voor de externe bewakingsoplossing
 
@@ -26,7 +26,7 @@ Contoso wil een intelligente randmodule voor de jaknikker implementeren waarmee 
 
 In het volgende diagram worden de belangrijke onderdelen in het zelfstudiescenario weergegeven:
 
-![Overzicht](media/iot-accelerators-remote-monitoring-edge/overview.png)
+![Diagram toont de oliepompconnector die is verbonden met de module IoT Edge-stroomanalyse in het IoT Edge-apparaat voor telemetrie en opdrachten. Gefilterde telemetrie gaat naar het IoT Edge-apparaat in de oplossingsverbetering voor externe bewaking in de cloud. De cloud bevat ook Implementatie en Pakket. Implementatie implementeert de IoT Edge-runtime in het apparaat.](media/iot-accelerators-remote-monitoring-edge/overview.png)
 
 In deze zelfstudie hebt u:
 
