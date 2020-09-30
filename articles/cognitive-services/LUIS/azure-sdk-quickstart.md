@@ -3,15 +3,17 @@ title: 'Quickstart: SDK-clientbibliotheken van Language Understanding (LUIS)'
 description: Maak en zoek een LUIS-app met de SDK-clientbibliotheken voor LUIS met deze quickstart die gebruik maakt van C#, python of Java-script.
 ms.topic: quickstart
 ms.date: 09/14/2020
+ms.service: cognitive-services
+ms.subservice: language-understanding
 keywords: Azure, kunstmatige intelligentie, ai, natuurlijke taalverwerking, nlp, LUIS, azure luis, natuurlijk taalbegrip, ai-chatbot, chatbot-maker, begrip van natuurlijke taal
-ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp, cog-serv-seo-aug-2020
+ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-set-diberry-3core
-ms.openlocfilehash: 64288bbffa2d2c24e2f719477d98426f52da4070
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: c2bc607fb5a5b5b38249453a1d0fce833547191f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90972610"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327266"
 ---
 # <a name="quickstart-language-understanding-luis-sdk-client-libraries-to-create-and-query-your-luis-app"></a>Quickstart: SDK-clientbibliotheken voor Language Understanding (LUIS) voor het maken en doorzoeken van uw LUIS-app
 

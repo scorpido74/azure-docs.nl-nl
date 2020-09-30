@@ -5,14 +5,14 @@ services: vnf-manager
 author: wamota
 ms.service: vnf-manager
 ms.topic: overview
-ms.date: 09/11/2020
+ms.date: 09/22/2020
 ms.author: wamota
-ms.openlocfilehash: 5a858531f578612be8190625ae371992babca34e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: fcc44bb1c8017d63ee7926a31177aebaafd832fc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90943852"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336374"
 ---
 # <a name="what-is-azure-orbital-preview"></a>Wat is Azure Orbital? (Preview)
 
@@ -25,7 +25,7 @@ Azure Orbital is gericht op het bouwen van een partnerecosysteem zodat klanten n
 
 Met Azure Orbital kunnen onze klanten meerdere gebruiksscenario's gebruiken, waaronder Earth Observation en Global Communications. Het biedt ook een platform waarmee digitale transformatie van bestaande grondstations met behulp van virtualisatie mogelijk wordt. U hebt directe toegang tot alle Azure-services, de globale Azure-infrastructuur, de Marketplace en toegang tot ons partner ecosysteem van wereldklasse via onze service.
 
-:::image type="content" source="./media/azure-orbital-overview/orbital-all-overview.png" alt-text="Overzicht van Azure Orbital":::
+:::image type="content" source="./media/azure-orbital-overview/orbital-all-overview.png" alt-text="Azure Orbital Ignite startvideo":::
 
 **Waardevoorstellen voor Azure Orbital-gebruikers zijn onder andere:**
 
@@ -49,13 +49,13 @@ Als u meer informatie wilt over onze preview, of als u interesse hebt in deelnam
 
 ## <a name="earth-observation"></a><a name="earth-observation"></a>Observatie van de aarde
 
-:::image type="content" source="./media/azure-orbital-overview/orbital-eos-dataflow.png" alt-text="Azure Orbital voor observatie van de aarde" lightbox="./media/azure-orbital-overview/orbital-eos-dataflow-expanded.png":::
+:::image type="content" source="./media/azure-orbital-overview/orbital-eos-dataflow.png" alt-text="Azure Orbital Ignite startvideo" lightbox="./media/azure-orbital-overview/orbital-eos-dataflow-expanded.png":::
 
 U kunt Azure Orbital gebruiken om contactmomenten met satellieten te plannen op basis van betalen per gebruik voor onderhoud en payload-downlinks. Gebruik de geplande toegangstijden voor het opnemen van gegevens van de satelliet, het bewaken van de satellietstatus of het verzenden van opdrachten naar de satelliet. Inkomende gegevens worden verzonden naar uw particuliere virtuele netwerk, zodat deze kunnen worden verwerkt of opgeslagen in Azure.
 
 Omdat de service volledig is gedigitaliseerd, kan een softwaremodem van Kratos en Amergint worden gebruikt voor het uitvoeren van de functies modulatie/demodulatie en codering/decodering om de gegevens te herstellen. U hebt de mogelijkheid om via de Marketplace te kopen of ons dit deel voor u te laten beheren. Daarnaast kunt u integreren met Kubos, om volledig gebruik te maken van een end-to-end-oplossing voor het beheer van vlootactiviteiten en TT&C-functies (TT&C staat voor Telemetry, Tracking & Control). Implementeer uw workloads in Azure met behulp van Azure-resources en -werksets om de payload-gegevens te bewerken in de laatste aanbiedingen.
 
-:::image type="content" source="./media/azure-orbital-overview/orbital-eos-schedule.png" alt-text="Azure Orbital voor planning van observatie van de aarde":::
+:::image type="content" source="./media/azure-orbital-overview/orbital-eos-schedule.png" alt-text="Azure Orbital Ignite startvideo":::
 
 ### <a name="scheduling-contacts"></a><a name="scheduling-contacts"></a>Contactmomenten plannen
 
@@ -71,7 +71,7 @@ Als u meer informatie wilt over onze preview, of als u interesse hebt in deelnam
 
 ## <a name="global-communication"></a><a name="global-communication"></a>Wereldwijde communicatie
 
-:::image type="content" source="./media/azure-orbital-overview/orbital-communications-use-flow.png" alt-text="Azure Orbital voor Global Communications Useflow":::
+:::image type="content" source="./media/azure-orbital-overview/orbital-communications-use-flow.png" alt-text="Azure Orbital Ignite startvideo":::
 
 Satellietproviders die wereldwijde communicatiemogelijkheden bieden aan hun klanten, kunnen Azure Orbital gebruiken om hiermee samen ruimte te bieden aan nieuwe grondstations in Azure-datacenters of aan de rand van het Azure-netwerk, of hun bestaande grondstations te koppelen met globale Azure-backbone. Ze kunnen vervolgens hun verkeer op het wereldwijde Microsoft-netwerk routeren, internetbreakout inzetten vanaf de rand van het Azure-netwerk voor het bieden van internetservices en andere beheerde services aan hun klanten.
 
@@ -85,7 +85,7 @@ Met Azure Orbital kunnen klanten niet alleen onze eigen grondstations bouwen, ma
 
 Grondstation- of teleportproviders kunnen samenwerken met Azure Orbital om hun eigen grondstations digitaal te transformeren. Als ze dit doen, kunnen klanten deze grondstations gebruiken om contactmomenten met hun satellieten te plannen en tegelijkertijd gebruik te maken van alle mogelijkheden voor softwareradioverwerking en gegevensverwerking die worden geboden door het platform en Orbital-partners via Marketplace. De service is nauw geïntegreerd met workloads in de cloud en een levendig ecosysteem van oplossingen van derden via Marketplace, zoals modems, resourcebeheer en missiebeheerservices. Alle gegevens kunnen ook gebruikmaken van de lage latentie en het wereldwijde glasvezelnetwerk met hoge betrouwbaarheid van Azure. We zijn ervan overtuigd dat het samen een breed aanbod en grote flexibiliteit biedt zodat onze klanten kunnen communiceren met de satellieten met de hoogst mogelijke flexibiliteit en betrouwbaarheid.
 
-:::image type="content" source="./media/azure-orbital-overview/orbital-all-digital-transformations.png" alt-text="Azure Orbital voor digitale transformatie":::
+:::image type="content" source="./media/azure-orbital-overview/orbital-all-digital-transformations.png" alt-text="Azure Orbital Ignite startvideo":::
 
 Als u meer informatie wilt over onze preview, of als u interesse hebt in deelname aan de preview, vult u [hier](https://aka.ms/iaminterested) het contactformulier in of stuurt u een e-mail naar [MSAzureOrbital@microsoft.com](mailto:MSAzureOrbital@microsoft.com).
 
@@ -93,7 +93,7 @@ Als u meer informatie wilt over onze preview, of als u interesse hebt in deelnam
 
 Tijdens onze voortgang in de reis naar de ruimte voegen we meer partners toe aan ons ecosysteem die onze klanten kunnen helpen meer te bereiken met behulp van Azure Orbital. Bij het bouwen van Azure Orbital laten we ons leiden door onze partners. Ons doel is ook een levendig ecosysteem van partners op te bouwen om gezamenlijk meer waarde toe te voegen voor zowel onze partners als onze klanten. U kunt het beschouwen als een koraalrif.
 
-:::image type="content" source="./media/azure-orbital-overview/orbital-all-partners.png" alt-text="Azure Orbital-partners":::
+:::image type="content" source="./media/azure-orbital-overview/orbital-all-partners.png" alt-text="Azure Orbital Ignite startvideo":::
 
 In de volgende gedeelten ziet u een lijst met partnercategorieën en Azure Orbital-partners die al deel uitmaken van het Orbital-ecosysteem:
 

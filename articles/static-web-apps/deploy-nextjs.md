@@ -7,13 +7,13 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: chnwamba
-ms.custom: devx-track-javascript
-ms.openlocfilehash: c5afd7d912142dd8556e71ba9e0a522b2fa0da1c
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.custom: devx-track-js
+ms.openlocfilehash: 554a7504e4e72eb2b2921c56e535343398cfa8b6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684589"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333644"
 ---
 # <a name="deploy-server-rendered-nextjs-websites-on-azure-static-web-apps-preview"></a>Met de server weergegeven Next.js-websites implementeren in Azure Static Web Apps Preview
 
@@ -63,7 +63,7 @@ Ga naar `http://localhost:3000` om de app te openen. Hier ziet u de volgende web
 
 Wanneer u op een framework/bibliotheek klikt, ziet u een pagina met details over het geselecteerde item:
 
-:::image type="content" source="media/deploy-nextjs/start-nextjs-details.png" alt-text="Pagina Details":::
+:::image type="content" source="media/deploy-nextjs/start-nextjs-details.png" alt-text="Next.js-app starten":::
 
 ## <a name="generate-a-static-website-from-nextjs-build"></a>Een statische website genereren vanuit een Next.js-build
 
@@ -146,7 +146,7 @@ De volgende stappen laten zien hoe u de app die u zojuist naar GitHub hebt gepus
 1. Kies in de vervolgkeuzelijst *Regio* een regio die het dichtst bij u ligt.
 1. Selecteer **Gratis** in de vervolgkeuzelijst SKU.
 
-   :::image type="content" source="media/deploy-nextjs/create-static-web-app.png" alt-text="Statische web-app maken":::
+   :::image type="content" source="media/deploy-nextjs/create-static-web-app.png" alt-text="Next.js-app starten":::
 
 ### <a name="add-a-github-repository"></a>GitHub-opslagplaats toevoegen
 
@@ -157,7 +157,7 @@ Het nieuwe Static Web Apps-account heeft toegang nodig tot de opslagplaats met d
 1. Zoek en selecteer de naam van de opslagplaats die u eerder hebt gemaakt.
 1. Kies **hoofd** als de vertakking in de vervolgkeuzelijst *Vertakking*.
 
-   :::image type="content" source="media/deploy-nextjs/connect-github.png" alt-text="Verbinding maken met GitHub":::
+   :::image type="content" source="media/deploy-nextjs/connect-github.png" alt-text="Next.js-app starten":::
 
 ### <a name="configure-the-build-process"></a>Het buildproces configureren
 
@@ -165,7 +165,7 @@ Azure Static Web Apps is ontworpen om automatisch algemene taken uit te voeren, 
 
 1. Klik op het tabblad **Build** om de map voor statische uitvoer te configureren.
 
-   :::image type="content" source="media/deploy-nextjs/build-tab.png" alt-text="Tabblad Build":::
+   :::image type="content" source="media/deploy-nextjs/build-tab.png" alt-text="Next.js-app starten":::
 
 2. Typ **out** in het tekstvak *Locatie van app-artefact*.
 
@@ -195,7 +195,7 @@ Ga terug naar de terminal en voer de volgende opdracht `git pull origin master` 
 
 Ga naar de zojuist geïmplementeerde site en klik op een van de framework- of bibliotheeklogo's. In plaats van een pagina met details ziet u een 404-foutpagina.
 
-:::image type="content" source="media/deploy-nextjs/404-in-production.png" alt-text="404 bij dynamische routes":::
+:::image type="content" source="media/deploy-nextjs/404-in-production.png" alt-text="Next.js-app starten":::
 
 De reden voor deze fout is dat met Next.js de startpagina alleen is gegenereerd op basis van de configuratie van de toepassing.
 
@@ -231,7 +231,7 @@ De reden voor deze fout is dat met Next.js de startpagina alleen is gegenereerd 
 
 2. Push de nieuwe wijzigingen naar de GitHub-opslagplaats. Na enkele minuten is uw site opnieuw gebouwd met GitHub-acties. Nadat het bouwen is voltooid, verdwijnt de 404-fout.
 
-   :::image type="content" source="media/deploy-nextjs/404-in-production-fixed.png" alt-text="404 bij dynamische routes, opgelost":::
+   :::image type="content" source="media/deploy-nextjs/404-in-production-fixed.png" alt-text="Next.js-app starten":::
 
 > [!div class="nextstepaction"]
 > [Een aangepast domein instellen](custom-domain.md)

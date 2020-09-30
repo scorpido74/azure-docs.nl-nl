@@ -5,12 +5,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/12/2020
 ms.custom: mvc
-ms.openlocfilehash: b0060c0aff8293ca5748cf8c055ebb2bbfb596e2
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: cd0d4928d5cd0eb15f4f1372a0a3417fc85d13bb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017444"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328769"
 ---
 # <a name="back-up-a-virtual-machine-in-azure"></a>Een back-up van een virtuele machine maken in Azure
 
@@ -83,7 +83,7 @@ Als u nog een zelfstudie wilt volgen waarin wordt uitgelegd hoe u gegevens terug
 6. Kies uw resourcegroep in de lijst. Als u de opdrachten in de quickstart voor een voorbeeld-VM hebt gebruikt, heeft de resourcegroep de naam *myResourceGroup*.
 7. Selecteer **Resourcegroep verwijderen**. Voer ter bevestiging de naam van de resourcegroep in en selecteer **Verwijderen**.
 
-    ![De resourcegroep verwijderen in Azure Portal](./media/quick-backup-vm-portal/delete-resource-group.png)
+    ![De resourcegroep verwijderen in Azure Portal](./media/quick-backup-vm-portal/delete-resource-group-from-portal.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

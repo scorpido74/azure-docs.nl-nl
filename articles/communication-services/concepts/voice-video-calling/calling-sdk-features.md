@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 9cc00cfa9f44c69a5880d53c0b7ac623f60be16b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6021bb4fa5d30de423ab56bfb5fdea6af2665a4a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90944599"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334477"
 ---
 # <a name="calling-client-library-overview"></a>Overzicht van de aanroepende clientbibliotheek
 
@@ -55,8 +55,7 @@ De volgende lijst bevat de set van functies die momenteel beschikbaar zijn in de
 |                   | Een groepsaanroep met PSTN-deelnemers plaatsen                                                                           | ✔️   | ✔️            | ✔️
 |                   | Een een-op-een-aanroep promoten met een PSTN-deelnemer in een groepsaanroep                                                 | ✔️   | ✔️            | ✔️
 |                   | Inbellen vanuit een groepsaanroep als een PSTN-deelnemer                                                                    | ✔️   | ✔️            | ✔️   
-| Algemeen           | Deelnemen aan een groepsaanroep met Maximaal 350 deelnemers                                                       |  ✔️  | ✔️            | ✔️    
-|                   | Uw microfoon, spreker en camera testen met een service voor audio testen (beschikbaar door het aanroepen van 8:echo123)                   |  ✔️  | ✔️            | ✔️   
+| Algemeen           | Uw microfoon, spreker en camera testen met een service voor audio testen (beschikbaar door het aanroepen van 8:echo123)                   |  ✔️  | ✔️            | ✔️   
 
 ## <a name="calling-client-library-browser-support"></a>Browser ondersteuning voor clientbibliotheek aanroepen
 
@@ -74,7 +73,7 @@ De volgende tabel bevat de set van ondersteunde browsers en versies die momentee
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Aan de slag met aanroepen](../../quickstarts/voice-video-calling/getting-started-with-calling.md)
+> [Aan de slag met oproepen](../../quickstarts/voice-video-calling/getting-started-with-calling.md)
 
 Raadpleeg voor meer informatie de volgende artikelen:
 - Stel u op de hoogte van algemene [aanroepstromen](../call-flows.md)

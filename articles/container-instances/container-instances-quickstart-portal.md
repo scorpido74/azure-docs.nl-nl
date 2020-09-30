@@ -3,13 +3,13 @@ title: 'Quickstart: een Docker-container implementeren in een containerinstantie
 description: In deze quickstart gebruikt u Azure Portal om snel een in een container geplaatste web-app te implementeren die wordt uitgevoerd in een geïsoleerde Azure-containerinstantie
 ms.topic: quickstart
 ms.date: 08/24/2020
-ms.custom: seodec18, mvc, devx-track-javascript
-ms.openlocfilehash: 0decfdbc468cbf267260ef80634eb8ecb5e710b7
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.custom: seodec18, mvc, devx-track-js
+ms.openlocfilehash: c8477bd91c3a02a2cd02d341c38c16da251902ae
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88870800"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324532"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-portal"></a>Quickstart: Een containerinstantie in Azure implementeren met behulp van Azure Portal
 
@@ -29,7 +29,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account][azure-fre
 
 Selecteer **Een nieuwe resource maken** > **Containers** > **Container Instances**.
 
-:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-01.png" alt-text="Begin met het maken van een nieuwe containerinstantie in Azure Portal":::
+:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-01.png" alt-text="App die is geïmplementeerd met Azure Container Instances, weergegeven in de browser":::
 
 Voer op de pagina **Basisgegevens** de volgende waarden in voor de tekstvakken **Resourcegroep**, **Containernaam** en **Containerinstallatiekopie**. Laat de andere waarden op de standaardwaarden staan en selecteer vervolgens **OK**.
 
@@ -38,25 +38,25 @@ Voer op de pagina **Basisgegevens** de volgende waarden in voor de tekstvakken *
 * Bron van installatiekopie: **Quickstart-installatiekopieën**
 * Containerinstallatiekopie: `mcr.microsoft.com/azuredocs/aci-helloworld` (Linux)
 
-:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-03.png" alt-text="Basisinstellingen configureren voor een nieuwe containerinstantie in Azure Portal":::
+:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-03.png" alt-text="App die is geïmplementeerd met Azure Container Instances, weergegeven in de browser":::
 
 Voor deze quickstart gebruikt u de standaardinstellingen voor het implementeren van de openbare Microsoft `aci-helloworld`-installatiekopie. Dit voorbeeld van een Linux-installatiekopie bevat een kleine web-app die is geschreven in Node.js en die een statische HTML-pagina dient. U kunt ook uw eigen containerinstallatiekopieën gebruiken die zijn opgeslagen in Azure Container Registry, Docker Hub of andere registers.
 
 Geef op de pagina **Netwerken** een **DNS-naamlabel** op voor uw container. De naam moet uniek zijn voor de Azure-regio waarin u de containerinstantie maakt. De container zal openbaar bereikbaar zijn op `<dns-name-label>.<region>.azurecontainer.io`. Als u een foutbericht 'DNS-naamlabel niet beschikbaar' ontvangt, probeert u een ander DNS-naamlabel.
 
-:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-04.png" alt-text="Netwerkinstellingen configureren voor een nieuwe containerinstantie in Azure Portal":::
+:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-04.png" alt-text="App die is geïmplementeerd met Azure Container Instances, weergegeven in de browser":::
 
 Laat de standaardwaarden van de andere instellingen ongewijzigd en selecteer vervolgens **Controleren en maken**.
 
 Wanneer de validatie is voltooid, ziet u een overzicht van de containerinstellingen. Selecteer **Maken** om de aanvraag voor de containerimplementatie te verzenden.
 
-:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-05.png" alt-text="Overzicht van de instellingen voor een nieuwe containerinstantie in Azure Portal":::
+:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-05.png" alt-text="App die is geïmplementeerd met Azure Container Instances, weergegeven in de browser":::
 
 Wanneer de implementatie is gestart, wordt een melding weergegeven die aangeeft dat de implementatie wordt uitgevoerd. Er wordt nog een melding weergegeven wanneer de containergroep is geïmplementeerd.
 
 Open het overzicht voor de containergroep door naar **Resourcegroepen** > **myresourcegroup** > **mycontainer** te navigeren. Noteer de **FQDN** (de FQDN-naam) van de container-instantie, evenals de **Status**.
 
-:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-06.png" alt-text="Overzicht van containergroepen in Azure Portal":::
+:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-06.png" alt-text="App die is geïmplementeerd met Azure Container Instances, weergegeven in de browser":::
 
 Wanneer de **Status** eenmaal *Uitvoeren* is, gaat u naar de FQDN van de container in uw browser.
 
@@ -70,18 +70,18 @@ Het weergeven van de logboeken voor een exemplaar van de container is handig bij
 
 Selecteer om de container-logboeken weer te geven onder **Instellingen** de optie **Containers** en vervolgens **Logboeken**. De HTTP GET-aanvraag wordt als het goed is gegenereerd wanneer u de toepassing in uw browser hebt bekeken.
 
-:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-11.png" alt-text="Container-logboeken in Azure Portal":::
+:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-11.png" alt-text="App die is geïmplementeerd met Azure Container Instances, weergegeven in de browser":::
 
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
 Wanneer u met de container klaar bent, selecteert u **Overzicht** voor de container-instantie *mycontainer* en vervolgens **Verwijderen**.
 
-:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-09.png" alt-text="De containerinstantie verwijderen in de Azure Portal":::
+:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-09.png" alt-text="App die is geïmplementeerd met Azure Container Instances, weergegeven in de browser":::
 
 Selecteer **Ja** als het bevestigingsvenster verschijnt.
 
-:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-10.png" alt-text="Bevestiging van het verwijderen van een containerinstantie in de Azure Portal":::
+:::image type="content" source="media/container-instances-quickstart-portal/qs-portal-10.png" alt-text="App die is geïmplementeerd met Azure Container Instances, weergegeven in de browser":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

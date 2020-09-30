@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 699b3d9c9799b9d3a4ec148cbf395b212715f536
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: b7d7380114046fbeaaf4b6eb2660997d64168715
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686085"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91368563"
 ---
 # <a name="optimize-azure-databricks-costs-with-a-pre-purchase"></a>De kosten voor Azure Databricks optimaliseren door hiervoor vooraf te betalen
 
@@ -63,7 +63,7 @@ U kunt Databricks-abonnementen kopen in de [Azure-portal](https://portal.azure.c
 Na aankoop kunt u de volgende typen wijzigingen aanbrengen in een reservering:
 
 - Het bereik van de reservering bijwerken
-- Op rollen gebaseerde toegang
+- Azure RBAC (op rollen gebaseerd toegangsbeheer van Azure)
 
 U kunt de vooraf gekochte pool Databricks-doorvoereenheden niet splitsen of samenvoegen met een andere pool. Raadpleeg [Reserveringen voor Azure-resources beheren](manage-reserved-vm-instance.md) voor meer informatie over het beheren van reserveringen.
 

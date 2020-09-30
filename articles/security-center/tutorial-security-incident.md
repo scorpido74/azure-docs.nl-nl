@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2018
 ms.author: memildin
-ms.openlocfilehash: c508591fe9909578dcc04b0922c0b76691898743
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 08e04749eae7158abb501f9a4d127cdd7a89a391
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90901080"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336272"
 ---
 # <a name="tutorial-respond-to-security-incidents"></a>Zelfstudie: Reageren op beveiligingsincidenten
 Security Center analyseert voortdurend de werkbelasting van uw hybride cloud met behulp van geavanceerde analysen en bedreigingsinformatie, om u te waarschuwen voor schadelijke activiteiten. Bovendien kunt u waarschuwingen van andere beveiligingsproducten en -services integreren in Security Center en aangepaste waarschuwingen maken op basis van uw eigen indicatoren of informatiebronnen. Wanneer een waarschuwing is gegenereerd, moet onmiddellijk actie worden ondernomen om het probleem te onderzoeken en te herstellen. In deze zelfstudie leert u het volgende:
@@ -76,7 +76,7 @@ Security Center biedt een overkoepelend overzicht van alle beveiligingswaarschuw
 
    ![Waarschuwingsdetails van incident](./media/tutorial-security-incident/tutorial-security-incident-fig3.png)
 
-   Het type waarschuwing kan verschillen. Lees [Beveiligingswaarschuwingen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type) voor meer informatie over het type waarschuwing en mogelijke herstelstappen. Voor waarschuwingen die veilig kunnen worden genegeerd, klikt u met de rechtermuisknop op de waarschuwing en selecteert u de optie **Sluiten**:
+   Het type waarschuwing kan verschillen. Lees [Beveiligingswaarschuwingen in Azure Security Center](security-center-alerts-type.md) voor meer informatie over het type waarschuwing en mogelijke herstelstappen. Voor waarschuwingen die veilig kunnen worden genegeerd, klikt u met de rechtermuisknop op de waarschuwing en selecteert u de optie **Sluiten**:
 
    ![Waarschuwing](./media/tutorial-security-incident/tutorial-security-incident-fig4.png)
 

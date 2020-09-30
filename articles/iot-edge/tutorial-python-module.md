@@ -2,20 +2,20 @@
 title: Aangepaste Python-module maken - Azure IoT Edge | Microsoft Docs
 description: In deze zelfstudie ziet u hoe u een IoT Edge-module met Python-code maakt en deze implementeert op een Edge-apparaat.
 services: iot-edge
-author: shizn
+author: kgremban
 manager: philmea
 ms.reviewer: kgremban
-ms.author: xshi
+ms.author: kgremban
 ms.date: 08/04/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 46e5a2119f05f3b4062044533352a6976a4ae4d8
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: c05124a1f5e5920b94d1925490b6714ba3b33c83
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808767"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336765"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-for-linux-devices"></a>Zelfstudie: Een IoT Edge-module schrijven in Python en implementeren voor Linux-apparaten
 

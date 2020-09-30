@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: cd10421ddcf752625b8040e1afa4e7b15f142ce2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 5892fd732a1e66b2b7dd4c1031cabfcbcc768c6d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90885680"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326147"
 ---
 # <a name="map-an-existing-custom-domain-to-azure-spring-cloud"></a>Een bestaand aangepast domein toewijzen aan Azure Spring Cloud
 
@@ -58,12 +58,12 @@ Of u kunt de Azure CLI gebruiken om Azure Spring Cloud toegang te verlenen tot d
 
 Haal de object-id op via de volgende opdracht.
 ```
-az ad sp show --id 03b39d0f-4213-4864-a245-b1476ec03169 --query objectId
+az ad sp show --id <service principal id> --query objectId
 ```
 
 Verleen Azure Spring Cloud toegang tot de sleutelkluis, vervang de object-id in de volgende opdracht.
 ```
-az keyvault set-policy -g <key vault resource group> -n <key vault name>  --object-id <object id> --certificate-permissions get list --secret-permissions get list
+az keyvault set-policy -g <key vault resource group> -n <key vault name>  --object-id <object id> --certificate-permissions get list
 ``` 
 
 Om een certificaat importeren naar Azure Spring Cloud:
@@ -93,7 +93,7 @@ Wanneer u uw certificaat hebt geïmporteerd, ziet u dit in de lijst met **Persoo
 U kunt ook de Azure CLI gebruiken om een lijst met certificaten weer te geven:
 
 ```
-az spring-cloud certificate list
+az spring-cloud certificate list --resource-group <resource group name> --service <service name>
 ```
 
 > [!IMPORTANT] 
@@ -128,7 +128,7 @@ Ga naar de toepassingspagina.
 
 U kunt ook de Azure CLI gebruiken om een aangepast domein toe te voegen:
 ```
-az spring-cloud app custom-domain bind --domain-name <domain name> --app <app name> 
+az spring-cloud app custom-domain bind --domain-name <domain name> --app <app name> --resource-group <resource group name> --service <service name>
 ```
 
 Eén app kan meerdere domeinen hebben, maar één domein kan slechts aan één app worden toegewezen. Wanneer u uw aangepaste domein hebt toegewezen aan de app, ziet u dit in de tabel aangepast domein.
@@ -137,7 +137,7 @@ Eén app kan meerdere domeinen hebben, maar één domein kan slechts aan één a
 
 U kunt ook de Azure CLI gebruiken om een lijst met aangepaste domeinen weer te geven:
 ```
-az spring-cloud app custom-domain list --app <app name> 
+az spring-cloud app custom-domain list --app <app name> --resource-group <resource group name> --service <service name>
 ```
 
 > [!NOTE]
@@ -168,7 +168,7 @@ Selecteer in het linkernavigatievenster van de app-pagina **Aangepaste domein**.
 
 U kunt ook de Azure CLI gebruiken om HTTPS af te dwingen:
 ```
-az spring-cloud app update -name <app-name> --https-only <true|false> -g <resource group> --service <service-name>
+az spring-cloud app custom-domain update --domain-name <domain name> --certificate <cert name> --app <app name> --resource-group <resource group name> --service <service name>
 ```
 
 Wanneer de bewerking is voltooid, gaat u naar een van de HTTPS-URL's die naar uw app verwijzen. Houd er rekening mee dat HTTP-URL's niet werken.

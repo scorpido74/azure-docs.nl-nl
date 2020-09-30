@@ -5,12 +5,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 01/31/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 98eff02dacb5b44839937f826cd676fe16670cbb
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 92990df3049f7fa1074d55fc34734e13d6673cd7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017473"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328816"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-the-cli"></a>Een back-up van een virtuele machine maken in Azure met de CLI
 
@@ -38,7 +38,7 @@ az backup vault create --resource-group myResourceGroup \
     --location eastus
 ```
 
-De Recovery Services-kluis is standaard ingesteld voor geografisch redundante opslag. In geval van geografisch redundante opslag worden uw back-upgegevens gerepliceerd naar een secundaire Azure-regio die honderden kilometers van de primaire regio is verwijderd. Als de instelling voor opslagredundantie moet worden aangepast, gebruikt u de cmdlet [az backup vault backup-properties set](/cli/azure/backup/vault/backup-properties?view=azure-cli-latest#az-backup-vault-backup-properties-set).
+De Recovery Services-kluis is standaard ingesteld voor geografisch redundante opslag. In geval van geografisch redundante opslag worden uw back-upgegevens gerepliceerd naar een secundaire Azure-regio die honderden kilometers van de primaire regio is verwijderd. Als de instelling voor opslagredundantie moet worden aangepast, gebruikt u de cmdlet [az backup vault backup-properties set](/cli/azure/backup/vault/backup-properties#az-backup-vault-backup-properties-set).
 
 ```azurecli
 az backup vault backup-properties set \
@@ -118,7 +118,7 @@ Wanneer de *status* van de back-uptaak verandert in *Completed*, is de VM beveil
 
 ## <a name="clean-up-deployment"></a>Opschonen van implementatie
 
-Wanneer een back-up niet meer nodig is, kunt u de beveiliging van de VM uitschakelen, de herstelpunten en de Recovery Services-kluis verwijderen, en vervolgens de resourcegroep en de bijbehorende VM-resources verwijderen. Als u een bestaande virtuele machine hebt gebruikt, kunt u de laatste opdracht ([az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete)) overslaan om de resourcegroep en VM te behouden.
+Wanneer een back-up niet meer nodig is, kunt u de beveiliging van de VM uitschakelen, de herstelpunten en de Recovery Services-kluis verwijderen, en vervolgens de resourcegroep en de bijbehorende VM-resources verwijderen. Als u een bestaande virtuele machine hebt gebruikt, kunt u de laatste opdracht ([az group delete](/cli/azure/group#az-group-delete)) overslaan om de resourcegroep en VM te behouden.
 
 Ga naar [Vervolgstappen](#next-steps) voor een zelfstudie over Microsoft Azure Backup, waarin wordt uitgelegd hoe u gegevens voor uw virtuele machine terugzet.
 

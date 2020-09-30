@@ -2,14 +2,16 @@
 title: 'Zelfstudie: Eindpuntuitingen controleren _LUIS'
 description: In deze zelfstudie leert u de voorspellingen van de app te verbeteren door de uitingen die worden ontvangen via het LUIS-HTTP-eindpunt (en waar LUIS niet zeker over is) te controleren of corrigeren. Bij sommige uitingen moet mogelijk de intentie worden gecontroleerd en bij andere de entiteit.
 services: cognitive-services
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 07/02/2020
-ms.openlocfilehash: 082e625efeeb4764aaa1ac5101eb2b0013348b19
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: b8f8fa2cd3c9c22187bb95c55d9de2abb2e8caec
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85959018"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324634"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Zelfstudie: Onzekere voorspellingen herstellen door eindpuntuitingen te controleren
 In deze zelfstudie leert u de voorspellingen van de app te verbeteren door de uitingen die worden ontvangen via het LUIS-HTTP-eindpunt (en waar LUIS niet zeker over is) te controleren of corrigeren. Controleer de eindpuntuitingen regelmatig als onderdeel van uw geplande LUIS-onderhoud.
@@ -82,7 +84,7 @@ Controleer de eindpuntuitingen voor correct uitgelijnde intenties. Hoewel er Ã©Ã
 
 1. Selecteer in het onderdeel **Build** van het portaal **Eindpuntuitingen controleren** in de linkernavigatiebalk. De lijst is gefilterd voor de intentie **ApplyForJob**.
 
-    :::image type="content" source="./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png" alt-text="Schermafbeelding van de knop Eindpuntuitingen beoordelen in de navigatiebalk aan de linkerkant.":::
+    :::image type="content" source="./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png" alt-text="Ga van de pagina Versies naar de pagina Intenties.":::
 
     Deze uiting, `I'm looking for a job with Natural Language Processing`, is niet de correcte intentie, _GetJobInformation_. Deze is ten onrechte voorspeld als _ApplyForJob_ omwille van de overeenkomsten in de taaknaam en werkwoorden in de twee intenties.
 

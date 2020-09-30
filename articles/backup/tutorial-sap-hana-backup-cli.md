@@ -4,12 +4,12 @@ description: In deze zelfstudie ontdekt u hoe u een back-up maakt van SAP HANA-d
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: eb6b9f4d58a94cc8a4b9f70b5ead7d319a0d51b5
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f11e01c6af18cac956d58b9c692d7b57c8fe653a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89007567"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324957"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Zelfstudie: Back-ups maken van SAP HANA-databases in een virtuele Azure-machine met behulp van Azure CLI
 
@@ -50,7 +50,7 @@ az backup vault create --resource-group saphanaResourceGroup \
     --location westus2
 ```
 
-De Recovery Services-kluis is standaard ingesteld voor geografisch redundante opslag. In geval van geografisch redundante opslag worden uw back-upgegevens gerepliceerd naar een secundaire Azure-regio die honderden kilometers van de primaire regio is verwijderd. Als de instelling voor opslagredundantie moet worden aangepast, gebruikt u de cmdlet [az backup vault backup-properties set](/cli/azure/backup/vault/backup-properties?view=azure-cli-latest#az-backup-vault-backup-properties-set).
+De Recovery Services-kluis is standaard ingesteld voor geografisch redundante opslag. In geval van geografisch redundante opslag worden uw back-upgegevens gerepliceerd naar een secundaire Azure-regio die honderden kilometers van de primaire regio is verwijderd. Als de instelling voor opslagredundantie moet worden aangepast, gebruikt u de cmdlet [az backup vault backup-properties set](/cli/azure/backup/vault/backup-properties#az-backup-vault-backup-properties-set).
 
 ```azurecli
 az backup vault backup-properties set \
@@ -59,7 +59,7 @@ az backup vault backup-properties set \
     --backup-storage-redundancy "LocallyRedundant/GeoRedundant"
 ```
 
-Om te controleren of uw kluis is gemaakt, gebruikt u de cmdlet [az backup vault list](/cli/azure/backup/vault?view=azure-cli-latest#az-backup-vault-list). U ziet het volgende antwoord:
+Om te controleren of uw kluis is gemaakt, gebruikt u de cmdlet [az backup vault list](/cli/azure/backup/vault#az-backup-vault-list). U ziet het volgende antwoord:
 
 ```output
 Location   Name             ResourceGroup
@@ -71,7 +71,7 @@ westus2    saphanaVault     saphanaResourceGroup
 
 Als u het SAP HANA-exemplaar (de virtuele machine waarop SAP HANA is geïnstalleerd) door de Azure-services wilt laten detecteren, moet een [pre-registratiescript](https://aka.ms/scriptforpermsonhana) op de SAP HANA-machine worden uitgevoerd. Zorg ervoor dat er aan alle [vereisten](./tutorial-backup-sap-hana-db.md#prerequisites) is voldaan voordat u het script gaat uitvoeren. Raadpleeg de sectie [Wat doet het script vóór registratie](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does) voor meer informatie over wat u met het script kunt doen.
 
-Zodra het script wordt uitgevoerd, kan het SAP HANA-exemplaar worden geregistreerd bij de Recovery Services-kluis die we eerder hebben gemaakt. U kunt het exemplaar registreren met behulp van de cmdlet [az backup container register](/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-register). *VMResourceId* is de resource-id van de virtuele machine die u hebt gemaakt om SAP HANA te installeren.
+Zodra het script wordt uitgevoerd, kan het SAP HANA-exemplaar worden geregistreerd bij de Recovery Services-kluis die we eerder hebben gemaakt. U kunt het exemplaar registreren met behulp van de cmdlet [az backup container register](/cli/azure/backup/container#az-backup-container-register). *VMResourceId* is de resource-id van de virtuele machine die u hebt gemaakt om SAP HANA te installeren.
 
 ```azurecli-interactive
 az backup container register --resource-group saphanaResourceGroup \
@@ -87,7 +87,7 @@ az backup container register --resource-group saphanaResourceGroup \
 
 Door het SAP HANA-exemplaar te registreren, worden automatisch alle huidige databases gedetecteerd. Als u echter nieuwe databases wilt detecteren die wellicht in de toekomst worden toegevoegd, raadpleegt u de sectie [Nieuwe databases detecteren die aan het geregistreerde SAP HANA-exemplaar zijn toegevoegd](tutorial-sap-hana-manage-cli.md#protect-new-databases-added-to-an-sap-hana-instance).
 
-Als u wilt controleren of het SAP HANA-exemplaar is geregistreerd bij uw kluis, gebruikt u de cmdlet [az backup container list](/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-list). U ziet het volgende antwoord:
+Als u wilt controleren of het SAP HANA-exemplaar is geregistreerd bij uw kluis, gebruikt u de cmdlet [az backup container list](/cli/azure/backup/container#az-backup-container-list). U ziet het volgende antwoord:
 
 ```output
 Name                                                    Friendly Name    Resource Group        Type           Registration Status
@@ -100,7 +100,7 @@ VMAppContainer;Compute;saphanaResourceGroup;saphanaVM   saphanaVM        saphana
 
 ## <a name="enable-backup-on-sap-hana-database"></a>Back-ups inschakelen in een SAP HANA-database
 
-De cmdlet [az backup protectable-item list](/cli/azure/backup/protectable-item?view=azure-cli-latest#az-backup-protectable-item-list) vermeldt alle databases die worden gedetecteerd in het SAP HANA-exemplaar dat u in de vorige stap hebt geregistreerd.
+De cmdlet [az backup protectable-item list](/cli/azure/backup/protectable-item#az-backup-protectable-item-list) vermeldt alle databases die worden gedetecteerd in het SAP HANA-exemplaar dat u in de vorige stap hebt geregistreerd.
 
 ```azurecli-interactive
 az backup protectable-item list --resource-group saphanaResourceGroup \
@@ -121,7 +121,7 @@ saphanadatabase;hxe;hxe        SAPHanaDatabase          HXE           hxehost   
 
 Zoals u in de bovenstaande uitvoer ziet, is de SID van het SAP HANA-systeem HXE. In deze zelfstudie gaan we een back-up configureren voor de *saphanadatabase;hxe;hxe*-database die op de *hxehost*-server staat.
 
-Om back-ups in een database stuk voor stuk te beveiligen en te configureren, gebruiken we de cmdlet [az backup protection enable-for-azurewl](/cli/azure/backup/protection?view=azure-cli-latest#az-backup-protection-enable-for-azurewl). Geef de naam op van het beleid dat u wilt gebruiken. Als u een beleid wilt maken met behulp van CLI, gebruikt u de cmdlet [az backup policy create](/cli/azure/backup/policy?view=azure-cli-latest#az-backup-policy-create). Voor deze zelfstudie gebruiken we het *saphanaPolicy*-beleid.
+Om back-ups in een database stuk voor stuk te beveiligen en te configureren, gebruiken we de cmdlet [az backup protection enable-for-azurewl](/cli/azure/backup/protection#az-backup-protection-enable-for-azurewl). Geef de naam op van het beleid dat u wilt gebruiken. Als u een beleid wilt maken met behulp van CLI, gebruikt u de cmdlet [az backup policy create](/cli/azure/backup/policy#az-backup-policy-create). Voor deze zelfstudie gebruiken we het *saphanaPolicy*-beleid.
 
 ```azurecli-interactive
 az backup protection enable-for-azurewl --resource-group saphanaResourceGroup \
@@ -133,7 +133,7 @@ az backup protection enable-for-azurewl --resource-group saphanaResourceGroup \
     --output table
 ```
 
-U kunt controleren of de bovenstaande back-upconfiguratie volledig is met behulp van de cmdlet [az backup job list](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list). De uitvoer ziet er als volgt uit:
+U kunt controleren of de bovenstaande back-upconfiguratie volledig is met behulp van de cmdlet [az backup job list](/cli/azure/backup/job#az-backup-job-list). De uitvoer ziet er als volgt uit:
 
 ```output
 Name                                  Operation         Status     Item Name   Start Time UTC
@@ -141,7 +141,7 @@ Name                                  Operation         Status     Item Name   S
 e0f15dae-7cac-4475-a833-f52c50e5b6c3  ConfigureBackup   Completed  hxe         2019-12-03T03:09:210831+00:00  
 ```
 
-De cmdlet [az backup job list](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list) vermeldt alle back-uptaken (gepland of on-demand) die zijn uitgevoerd of die momenteel worden uitgevoerd op de beveiligde database, naast andere bewerkingen zoals registreren, back-ups configureren en het verwijderen van back-upgegevens.
+De cmdlet [az backup job list](/cli/azure/backup/job#az-backup-job-list) vermeldt alle back-uptaken (gepland of on-demand) die zijn uitgevoerd of die momenteel worden uitgevoerd op de beveiligde database, naast andere bewerkingen zoals registreren, back-ups configureren en het verwijderen van back-upgegevens.
 
 >[!NOTE]
 >Azure Backup past de tijd niet automatisch aan de zomertijd aan wanneer u een back-up van een SAP HANA-database maakt die op een virtuele Azure-machine wordt uitgevoerd.
@@ -173,7 +173,7 @@ Name                                  ResourceGroup
 e0f15dae-7cac-4475-a833-f52c50e5b6c3  saphanaResourceGroup
 ```
 
-Het antwoord is de taaknaam. Deze taaknaam kan worden gebruikt voor het zoeken van de taakstatus met de cmdlet [az backup job show](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show).
+Het antwoord is de taaknaam. Deze taaknaam kan worden gebruikt voor het zoeken van de taakstatus met de cmdlet [az backup job show](/cli/azure/backup/job#az-backup-job-show).
 
 >[!NOTE]
 >Naast het plannen van een volledige of gedeeltelijke back-up kunnen ze momenteel ook handmatig worden geactiveerd. Back-ups van logboeken worden automatisch geactiveerd en intern door SAP HANA beheerd.

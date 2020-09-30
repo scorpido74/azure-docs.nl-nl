@@ -12,14 +12,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/06/2019
+ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 53fdea6a52cc02ddc9aaf22574a6bac5f5b7bca6
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 2eee46f99af247ffd0e11b262ace0a96453270d4
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90943780"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323671"
 ---
 # <a name="what-is-azure-security-center"></a>Wat is Azure Security Center?
 
@@ -67,7 +67,7 @@ Voor een goede beveiliging moet u natuurlijk weten of de workloads veilig zijn e
 
 Met Security Center kunt u **schaduw-IT-abonnementen identificeren**. Wanneer u in uw dashboard abonnementen ziet met het label **valt niet onder beleid**, weet u meteen wanneer er recent gemaakte abonnementen zijn en kunt u ervoor zorgen dat deze onder uw beleid vallen en door Azure Security Center worden beveiligd.
 
-:::image type="content" source="./media/security-center-intro/sc-policy-dashboard.png" alt-text="Beleidsdashboard van Security Center":::
+:::image type="content" source="./media/security-center-intro/sc-policy-dashboard.png" alt-text="Pagina voor beleidsbeheer":::
 
 ### <a name="continuous-assessments"></a>Doorlopende beoordelingen
 
@@ -75,13 +75,13 @@ Security Center detecteert doorlopend nieuwe resources die voor uw workloads wor
 
 Om u te laten zien hoe belangrijk elke aanbeveling is voor uw algehele beveiligingspositie, groepeert Security Center de aanbevelingen in beveiligingsbeheeropties en voegt het een **beveiligingsscore** toe aan elke beheeroptie. Dit is van cruciaal belang bij **het stellen van prioriteiten bij uw beveiligingswerkzaamheden**.
 
-:::image type="content" source="./media/security-center-intro/sc-secure-score.png" alt-text="Security Center-beveiligingsscore":::
+:::image type="content" source="./media/security-center-intro/sc-secure-score.png" alt-text="Pagina voor beleidsbeheer":::
 
 ### <a name="network-map"></a>Netwerkoverzicht
 
 Een van de meest efficiënte hulpprogramma's waarover Security Center beschikt voor het doorlopend controleren van de beveiligingsstatus van uw netwerk is het **netwerkoverzicht**. In het overzicht kunt u de topologie van uw workloads bekijken, zodat u kunt zien of elk knooppunt goed is geconfigureerd. U kunt bekijken hoe uw knooppunten zijn verbonden, zodat u ongewenste verbindingen kunt blokkeren die een aanvaller in staat kunnen stellen om in uw netwerk in te breken.
 
-:::image type="content" source="./media/security-center-intro/sc-net-map.png" alt-text="Security Center-netwerkoverzicht":::
+:::image type="content" source="./media/security-center-intro/sc-net-map.png" alt-text="Pagina voor beleidsbeheer":::
 
 
 ### <a name="optimize-and-improve-security-by-configuring-recommended-controls"></a>De beveiliging optimaliseren en verbeteren door aanbevolen beheeropties te configureren
@@ -92,7 +92,7 @@ Security Center stelt u op deze manier niet alleen in staat om het beveiligingsb
 
 Met de aanbevelingen kunt u de kwetsbaarheid voor aanvallen verminderen voor al uw resources. Dit geldt voor onder andere Azure-VM's, andere servers dan Azure-servers en Azure PaaS-services, zoals SQL- en Azure Storage-accounts. Hierbij wordt elk type resource anders beoordeeld en kent elk type eigen normen.
 
-:::image type="content" source="./media/security-center-intro/sc-recommendation-example.png" alt-text="Voorbeeld van een Security Center-aanbeveling":::
+:::image type="content" source="./media/security-center-intro/sc-recommendation-example.png" alt-text="Pagina voor beleidsbeheer":::
 
 ## <a name="protect-against-threats"></a>Beveiligen tegen bedreigingen
 
@@ -100,7 +100,7 @@ Met de beveiliging tegen bedreigingen van Security Center kunt u bedreigingen de
 
 De beveiliging tegen bedreigingen van Security Center bevat een complete analyse van de aanvalsketen, waarbij automatisch waarschuwingen in uw omgeving aan elkaar worden gerelateerd op basis van de cyberaanvalsketenanalyse, zodat u een beter inzicht hebt in de hele geschiedenis van een aanval; waar deze is gestart en welke impact deze had op uw resources.
 
-:::image type="content" source="./media/security-center-intro/sc-alerts.png" alt-text="Beveiligingswaarschuwingen":::
+:::image type="content" source="./media/security-center-intro/sc-alerts.png" alt-text="Pagina voor beleidsbeheer":::
 
 ### <a name="integration-with-microsoft-defender-advanced-threat-protection"></a>Integratie met Microsoft Defender Advanced Threat Protection
 

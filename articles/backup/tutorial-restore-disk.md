@@ -4,12 +4,12 @@ description: Leer hoe u een schijf kunt herstellen en een herstel-VM maken in Az
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
-ms.openlocfilehash: d93f3d24762f4b9a3da4a9e725d28810f6700fe0
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 861c911e84c9de02467d443751902e71d2504422
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88890665"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324979"
 ---
 # <a name="restore-a-vm-with-azure-cli"></a>Een VM herstellen met Azure CLI
 
@@ -43,13 +43,13 @@ Wanneer de gegevensoverdracht is voltooid, wordt de momentopname verwijderd en w
 
 Voor het herstellen van een schijf selecteert u een herstelpunt als bron voor de te herstellen gegevens. Aangezien het standaardbeleid elke dag een herstelpunt maakt en gedurende 30 dagen bewaart, kunt u een reeks herstelpunten behouden waarmee u een bepaald tijdstip kunt kiezen om te herstellen.
 
-Gebruik [az backup recoverypoint list](/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list) om een lijst met beschikbare herstelpunten te zien. De **naam** van het herstelpunt wordt gebruikt om schijven te herstellen. In deze zelfstudie willen we het meest recente beschikbare herstelpunt gebruiken. Met de parameter `--query [0].name` selecteert u als volgt de naam van het meest recente herstelpunt:
+Gebruik [az backup recoverypoint list](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-list) om een lijst met beschikbare herstelpunten te zien. De **naam** van het herstelpunt wordt gebruikt om schijven te herstellen. In deze zelfstudie willen we het meest recente beschikbare herstelpunt gebruiken. Met de parameter `--query [0].name` selecteert u als volgt de naam van het meest recente herstelpunt:
 
 ```azurecli-interactive
 az backup recoverypoint list \
     --resource-group myResourceGroup \
     --vault-name myRecoveryServicesVault \
-    --backup-management-type AzureIaasVM
+    --backup-management-type AzureIaasVM \
     --container-name myVM \
     --item-name myVM \
     --query [0].name \
@@ -65,7 +65,7 @@ az backup recoverypoint list \
 
 Als de VM waarvan een back-up is gemaakt, beheerde schijven bevat, en als het de bedoeling is dat beheerde schijven worden hersteld vanaf het herstelpunt, geeft u eerst een Azure-opslagaccount op. Dit opslagaccount wordt gebruikt om de VM-configuratie en de implementatiesjabloon op te slaan die later kunnen worden gebruikt om de VM te implementeren vanaf de herstelde schijven. Vervolgens geeft u ook een doelresourcegroep op waarin de beheerde schijven moeten worden hersteld.
 
-1. Gebruik [az storage account create](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) om een opslagaccount te maken. De naam van het opslagaccount mag alleen kleine letters bevatten, en moet globaal uniek zijn. Vervang *mystorageaccount* door uw eigen unieke naam:
+1. Gebruik [az storage account create](/cli/azure/storage/account#az-storage-account-create) om een opslagaccount te maken. De naam van het opslagaccount mag alleen kleine letters bevatten, en moet globaal uniek zijn. Vervang *mystorageaccount* door uw eigen unieke naam:
 
     ```azurecli-interactive
     az storage account create \
@@ -74,7 +74,7 @@ Als de VM waarvan een back-up is gemaakt, beheerde schijven bevat, en als het de
         --sku Standard_LRS
     ```
 
-2. Herstel de schijf vanaf uw herstelpunt met [az backup restore restore-disks](/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-disks). Vervang *mystorageaccount* door de naam van het opslagaccount dat u met de vorige opdracht hebt gemaakt. Vervang *myRecoveryPointName* door de naam van het herstelpunt dat u hebt verkregen met de uitvoer van de vorige opdracht [az backup recoverypoint list](/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list). ***Geef ook een doelresourcegroep op waarin de beheerde schijven worden hersteld***.
+2. Herstel de schijf vanaf uw herstelpunt met [az backup restore restore-disks](/cli/azure/backup/restore#az-backup-restore-restore-disks). Vervang *mystorageaccount* door de naam van het opslagaccount dat u met de vorige opdracht hebt gemaakt. Vervang *myRecoveryPointName* door de naam van het herstelpunt dat u hebt verkregen met de uitvoer van de vorige opdracht [az backup recoverypoint list](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-list). ***Geef ook een doelresourcegroep op waarin de beheerde schijven worden hersteld***.
 
     ```azurecli-interactive
     az backup restore restore-disks \
@@ -109,7 +109,7 @@ Als de VM waarvan een back-up is gemaakt, niet-beheerde schijven bevat, en als h
 
 In latere stappen wordt de herstelde schijf gebruikt voor het maken van een VM.
 
-1. Gebruik [az storage account create](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) om een opslagaccount te maken. De naam van het opslagaccount mag alleen kleine letters bevatten, en moet globaal uniek zijn. Vervang *mystorageaccount* door uw eigen unieke naam:
+1. Gebruik [az storage account create](/cli/azure/storage/account#az-storage-account-create) om een opslagaccount te maken. De naam van het opslagaccount mag alleen kleine letters bevatten, en moet globaal uniek zijn. Vervang *mystorageaccount* door uw eigen unieke naam:
 
     ```azurecli-interactive
     az storage account create \
@@ -118,7 +118,7 @@ In latere stappen wordt de herstelde schijf gebruikt voor het maken van een VM.
         --sku Standard_LRS
     ```
 
-2. Herstel de schijf vanaf uw herstelpunt met [az backup restore restore-disks](/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-disks). Vervang *mystorageaccount* door de naam van het opslagaccount dat u met de vorige opdracht hebt gemaakt. Vervang *myRecoveryPointName* door de naam van het herstelpunt dat u hebt verkregen in de uitvoer van de vorige opdracht [az backup recoverypoint list](/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list):
+2. Herstel de schijf vanaf uw herstelpunt met [az backup restore restore-disks](/cli/azure/backup/restore#az-backup-restore-restore-disks). Vervang *mystorageaccount* door de naam van het opslagaccount dat u met de vorige opdracht hebt gemaakt. Vervang *myRecoveryPointName* door de naam van het herstelpunt dat u hebt verkregen in de uitvoer van de vorige opdracht [az backup recoverypoint list](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-list):
 
     ```azurecli-interactive
     az backup restore restore-disks \
@@ -145,7 +145,7 @@ Zoals hierboven is vermeld, worden de niet-beheerde schijven hersteld in het oor
 
 ## Monitor the restore job
 
-To monitor the status of restore job, use [az backup job list](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list):
+To monitor the status of restore job, use [az backup job list](/cli/azure/backup/job#az-backup-job-list):
 
 ```azurecli-interactive
 az backup job list \
@@ -181,7 +181,7 @@ az backup job show \
     -n 1fc2d55d-f0dc-4ca6-ad48-aca0fe5d0414
 ```
 
-De uitvoer van deze query geeft alle details, maar we zijn alleen geïnteresseerd in de inhoud van het opslagaccount. We kunnen de [querymogelijkheden](/cli/azure/query-azure-cli?view=azure-cli-latest) van Azure CLI gebruiken om de relevante gegevens op te halen
+De uitvoer van deze query geeft alle details, maar we zijn alleen geïnteresseerd in de inhoud van het opslagaccount. We kunnen de [querymogelijkheden](/cli/azure/query-azure-cli) van Azure CLI gebruiken om de relevante gegevens op te halen
 
 ```azurecli-interactive
 az backup job show \
@@ -258,7 +258,7 @@ az group deployment create \
   --template-uri $url?$token
 ```
 
-Om te bevestigen dat uw VM van uw herstelde schijf is gemaakt, maakt u als volgt een lijst van de VM's in uw resourcegroep met [az vm list](/cli/azure/vm?view=azure-cli-latest#az-vm-list):
+Om te bevestigen dat uw VM van uw herstelde schijf is gemaakt, maakt u als volgt een lijst van de VM's in uw resourcegroep met [az vm list](/cli/azure/vm#az-vm-list):
 
 ```azurecli-interactive
 az vm list --resource-group myResourceGroup --output table
