@@ -3,12 +3,12 @@ title: Hand leiding voor Azure Relay Hybride verbindingen Protocol | Microsoft D
 description: In dit artikel wordt de interactie aan de client zijde beschreven met de Hybride verbindingen relay voor het verbinden van clients in de rollen listener en Sender.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: fec021d961a17102f8d979c61ee46af6b938f073
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 893092124961ffa9df2535ca6de75def2930b797
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272006"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531442"
 ---
 # <a name="azure-relay-hybrid-connections-protocol"></a>Azure Relay Hybride verbindingen-Protocol
 
@@ -55,7 +55,7 @@ De versleutelde informatie is alleen geldig voor een korte periode, al naar gela
 
 Naast WebSocket-verbindingen kan de listener ook HTTP-aanvraag frames van een afzender ontvangen, als deze mogelijkheid expliciet is ingeschakeld voor de hybride verbinding.
 
-Listeners die aan Hybride verbindingen zijn gekoppeld met HTTP-ondersteuning, moeten de penbeweging afhandelen `request` . Een listener die geen afhandelt `request` en daarom herhaalde time-outfouten veroorzaakt tijdens de verbinding, kan in de toekomst worden geblack door de service.
+Listeners die aan Hybride verbindingen zijn gekoppeld met HTTP-ondersteuning, moeten de penbeweging afhandelen `request` . Een listener die geen afhandelt `request` en daarom herhaalde time-outfouten veroorzaakt tijdens de verbinding, wordt mogelijk in de toekomst geblokkeerd door de service.
 
 Meta gegevens van HTTP-frame header worden omgezet in JSON voor eenvoudiger verwerking door het listener-Framework, omdat het parseren van de HTTP-header bibliotheken rarer dan JSON-parsers is. HTTP-meta gegevens die alleen relevant zijn voor de relatie tussen de afzender en de relay HTTP-gateway, inclusief verificatie gegevens, worden niet doorgestuurd. HTTP-aanvraag teksten worden transparant overgebracht als binaire WebSocket-frames.
 
@@ -326,7 +326,7 @@ De JSON-inhoud voor `request` is als volgt:
 
 ##### <a name="responding-to-requests"></a>Reageren op aanvragen
 
-De ontvanger moet reageren. Herhaalde mislukte pogingen om te reageren op aanvragen bij het onderhouden van de verbinding kan ertoe leiden dat de listener op zwarte lijst wordt geplaatst.
+De ontvanger moet reageren. Herhaalde fout om te reageren op aanvragen bij het onderhouden van de verbinding kan ertoe leiden dat de listener wordt geblokkeerd.
 
 Antwoorden kunnen in een wille keurige volg orde worden verzonden, maar elke aanvraag moet binnen 60 seconden worden gereageerd of de levering wordt gerapporteerd als mislukt. De deadline van 60 seconden wordt geteld totdat het `response` frame door de service is ontvangen. Een doorlopende reactie met meerdere binaire frames kan langer dan 60 seconden niet actief worden of wordt beëindigd.
 

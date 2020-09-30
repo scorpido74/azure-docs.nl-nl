@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: cshoe
-ms.openlocfilehash: d57b230ceecc8e676eea6a1ab0855761e78f723b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: fdd046a855c4e2114e96e7911a928165f808710c
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242743"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530541"
 ---
 # <a name="azure-function-event-grid-trigger-local-debugging"></a>Lokaal opsporen van fouten in Azure-functies voor Event Grid Trigger
 
@@ -52,7 +52,7 @@ ngrok http -host-header=localhost 7071
 ```
 Wanneer het hulp programma is ingesteld, moet het opdracht venster er ongeveer uitzien als in de volgende scherm afbeelding:
 
-![Ngrok starten](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-ngrok.png)
+![Scherm opname van de opdracht prompt na het starten van het hulp programma ' ngrok '.](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-ngrok.png)
 
 Kopieer de **https** -URL die wordt gegenereerd wanneer *ngrok* wordt uitgevoerd. Deze waarde wordt gebruikt bij het configureren van het gebeurtenis eind punt gebeurtenis raster.
 
@@ -81,7 +81,7 @@ Zodra u de juiste waarde hebt ingevoerd, klikt u op **selectie bevestigen**.
 > [!IMPORTANT]
 > Telkens wanneer u *ngrok*start, wordt de HTTPS-URL opnieuw gegenereerd en wordt de waarde gewijzigd. Daarom moet u telkens wanneer u uw functie beschikbaar maakt, een nieuw gebeurtenis abonnement maken op Azure via *ngrok*.
 
-## <a name="upload-a-file"></a>Een bestand uploaden
+## <a name="upload-a-file"></a>Bestand uploaden
 
 U kunt nu een bestand uploaden naar uw opslag account om een Event Grid gebeurtenis te activeren, zodat uw lokale functie kan worden afgehandeld. 
 

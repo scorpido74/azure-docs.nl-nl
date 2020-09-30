@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 02/29/2020
-ms.openlocfilehash: dd61ac9751010d57cbf5b742a5081beb3ac560e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d161b287f9706473c96d25684fa23a2c94b8c3e
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83826057"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532149"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>Azure Scheduler-taken migreren naar Azure Logic Apps
 
@@ -80,7 +80,7 @@ U kunt meerdere eenmalige taken uitvoeren door slechts één logische app te mak
 
 1. Selecteer **volgende stap**onder de trigger.
 
-1. Voer in het zoekvak in `delay until` als uw filter. Selecteer in de lijst acties de optie deze actie: **vertraging tot**
+1. Voer in het zoekvak `delay until` als uw filter in. Selecteer in de lijst acties de optie deze actie: **vertraging tot**
 
    Met deze actie wordt de werk stroom van uw logische app onderbroken tot een opgegeven datum en tijd.
 
@@ -96,7 +96,7 @@ U kunt meerdere eenmalige taken uitvoeren door slechts één logische app te mak
 
    U kunt bijvoorbeeld een HTTP-actie toevoegen die een aanvraag verzendt naar een URL of acties die werken met opslag wachtrijen, Service Bus wachtrijen of Service Bus onderwerpen:
 
-   ![HTTP-actie](./media/migrate-from-scheduler-to-logic-apps/request-http-action.png)
+   ![Scherm afbeelding toont een vertraging tot actie, gevolgd door een H T T P-actie met een POST-methode.](./media/migrate-from-scheduler-to-logic-apps/request-http-action.png)
 
 1. Wanneer u klaar bent, slaat u de logische app op.
 
@@ -114,7 +114,7 @@ Als u een eenmalige taak hand matig wilt uitvoeren of activeren, stuurt u een aa
 
 Als u bijvoorbeeld de Postman-app gebruikt, kunt u een POST-aanvraag maken met de instellingen die vergelijkbaar zijn met dit voor beeld en vervolgens **verzenden** selecteren om de aanvraag te doen.
 
-| Aanvraag methode | URL | Hoofdtekst | Headers |
+| Aanvraagmethode | URL | Hoofdtekst | Headers |
 |----------------|-----|------|---------|
 | **Verzenden** | <*eind punt-URL*> | **uitgang** <p>**JSON (toepassing/JSON)** <p>Voer in het vak **onbewerkt** de lading in die u in de aanvraag wilt verzenden. <p>**Opmerking**: met deze instelling worden de waarden van de **headers** automatisch geconfigureerd. | **Sleutel**: inhouds type <br>**Waarde**: Application/JSON |
 |||||
@@ -143,7 +143,7 @@ In Logic Apps wordt elke eenmalige taak uitgevoerd als een run-exemplaar van een
 
 1. Voer in het zoekvak ' recurrence ' in als uw filter. Selecteer in de lijst triggers deze trigger: **terugkeer patroon**
 
-   ![De trigger ' recurrence ' toevoegen](./media/migrate-from-scheduler-to-logic-apps/recurrence-trigger.png)
+   ![De trigger Terugkeerpatroon toevoegen](./media/migrate-from-scheduler-to-logic-apps/recurrence-trigger.png)
 
 1. Stel een meer geavanceerde planning in, indien gewenst.
 
@@ -155,7 +155,7 @@ In Logic Apps wordt elke eenmalige taak uitgevoerd als een run-exemplaar van een
 
    U kunt bijvoorbeeld een HTTP-actie toevoegen die een aanvraag verzendt naar een URL of acties die werken met opslag wachtrijen, Service Bus wachtrijen of Service Bus onderwerpen:
 
-   ![HTTP-actie](./media/migrate-from-scheduler-to-logic-apps/recurrence-http-action.png)
+   ![Scherm afbeelding toont een H T T P-actie met een POST-methode.](./media/migrate-from-scheduler-to-logic-apps/recurrence-http-action.png)
 
 1. Wanneer u klaar bent, slaat u de logische app op.
 
@@ -220,7 +220,7 @@ Zie voor meer informatie over het afhandelen van uitzonde [ringen afhandelen en 
 **V**: waar kan ik ondersteuning krijgen voor het migreren van mijn scheduler-taken? <br>
 **A**: Hier volgen enkele manieren om ondersteuning te krijgen:
 
-**Azure-portal**
+**Azure Portal**
 
 Als uw Azure-abonnement een betaald ondersteunings plan heeft, kunt u een aanvraag voor technische ondersteuning in het Azure Portal maken. Anders kunt u een andere ondersteunings optie selecteren.
 

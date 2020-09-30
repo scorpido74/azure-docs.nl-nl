@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: 631f5afbac4337cd0852f46ac4a336107f042397
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b1ad4ead83c9e07966f921a5b192f2791838e6ef
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331638"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530558"
 ---
 # <a name="connect-to-and-index-azure-sql-content-using-an-azure-cognitive-search-indexer"></a>Verbinding maken met Azure SQL-inhoud en deze indexeren met behulp van een Azure Cognitive Search Indexeer functie
 
@@ -39,7 +39,7 @@ Eén Indexeer functie kan slechts één tabel of weer gave gebruiken, maar u kun
 U kunt een Azure SQL-indexer instellen en configureren met:
 
 * Wizard gegevens importeren in de [Azure Portal](https://portal.azure.com)
-* Azure Cognitive Search [.NET SDK](/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
+* Azure Cognitive Search [.NET SDK](/dotnet/api/microsoft.azure.search.models.indexer)
 * Azure Cognitive Search [rest API](/rest/api/searchservice/indexer-operations)
 
 In dit artikel gebruiken we de REST API om **Indexeer functies** en **gegevens bronnen**te maken.
@@ -316,7 +316,7 @@ De **softDeleteMarkerValue** moet een teken reeks zijn: gebruik de teken reeks r
 <a name="TypeMapping"></a>
 
 ## <a name="mapping-between-sql-and-azure-cognitive-search-data-types"></a>Toewijzing tussen SQL-en Azure Cognitive Search-gegevens typen
-| SQL-gegevenstype | Toegestane doel index veld typen | Opmerkingen |
+| SQL-gegevenstype | Toegestane doel index veld typen | Notities |
 | --- | --- | --- |
 | bit |EDM. Boolean, EDM. String | |
 | int, smallint, tinyint |EDM. Int32, EDM. Int64, EDM. String | |

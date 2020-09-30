@@ -6,17 +6,14 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/30/2020
-ms.openlocfilehash: a2f319f7bbd3fa0c6c4efb7e225bfc85a76002f2
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: c087d5eea88a3329d5486afdd2158e80f7ebf778
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88919706"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531022"
 ---
 # <a name="azure-database-for-mysql-infrastructure-double-encryption"></a>Dubbele versleuteling van Azure Database for MySQL-infra structuur
-
-> [!NOTE]
-> Op dit moment moet u toegang aanvragen om deze mogelijkheid te gebruiken. Als u dit wilt doen, neemt u contact op met AskAzureDBforMySQL@service.microsoft.com .
 
 Azure Database for MySQL maakt gebruik van opslag [versleuteling van gegevens op rest](concepts-security.md#at-rest) voor gegevens met behulp van de door micro soft beheerde sleutels. Gegevens, met inbegrip van back-ups, worden versleuteld op schijf en deze versleuteling is altijd ingeschakeld en kan niet worden uitgeschakeld. De versleuteling maakt gebruik van FIPS 140-2-gevalideerde cryptografische modules en een AES 256-bits code ring voor de versleuteling van Azure Storage.
 
@@ -66,7 +63,7 @@ Voor Azure Database for MySQL heeft de ondersteuning voor infra structuur met du
 
    * VS - oost
    * VS - zuid-centraal
-   * US - west 2
+   * VS - west 2
    
 * * Deze functie wordt alleen ondersteund in regio's en servers, die ondersteuning bieden voor opslag tot Maxi maal 16 TB. Raadpleeg de [opslag documentatie](concepts-pricing-tiers.md#storage)voor de lijst met Azure-regio's die ondersteuning bieden voor opslag tot 16 TB.
 

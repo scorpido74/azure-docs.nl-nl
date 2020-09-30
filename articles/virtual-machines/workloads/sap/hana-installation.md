@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 01/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ae4a7dc400b347a963e07a8c696e7581e2dcd703
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 60d889b232857ae69372df8ebabbd0edd01a2f17
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507842"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91529827"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>SAP HANA (grote instanties) installeren en configureren in azure
 
@@ -35,7 +35,7 @@ Valideer het volgende voordat u begint met de HANA-installatie:
 - [HLI-eenheid (s)](#validate-the-hana-large-instance-units)
 - [Configuratie van het besturings systeem](#operating-system)
 - [Netwerkconfiguratie](#networking)
-- [Opslag configuratie](#storage)
+- [Opslagconfiguratie](#storage)
 
 
 ## <a name="validate-the-hana-large-instance-units"></a>Valideer de HANA-eenheid voor grote instanties
@@ -134,7 +134,7 @@ Er zijn enkele details over de netwerken van de afzonderlijke eenheden. Elke HAN
 
 Zie voor meer informatie over Ethernet-Details voor uw architectuur de door [HLI ondersteunde scenario's](hana-supported-scenario.md).
 
-## <a name="storage"></a>Opslag
+## <a name="storage"></a>Storage
 
 De opslag indeling voor SAP HANA op Azure (grote instanties) wordt geconfigureerd door SAP HANA op Azure `service management` via door SAP aanbevolen richt lijnen. Deze richt lijnen zijn gedocumenteerd in het Witboek [SAP Hana Storage-vereisten](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) . 
 
@@ -179,7 +179,7 @@ Deze koppel punten worden geconfigureerd in bestand/etc/fstab, zoals wordt weer 
 
 De uitvoer van de opdracht VG-h voor een S72m HANA-grote instantie-eenheid ziet er als volgt uit:
 
-![fstab aan gekoppelde volumes in HANA grote instantie-eenheid](./media/hana-installation/image2_df_output.PNG)
+![Scherm opname toont uitvoer van de opdracht voor HANA grote instantie-eenheid.](./media/hana-installation/image2_df_output.PNG)
 
 
 De opslag controller en knoop punten in de stempels van grote instanties worden gesynchroniseerd met NTP-servers. Wanneer u de SAP HANA op Azure-eenheden (grote instanties) en Azure-Vm's synchroniseert op basis van een NTP-server, mag er geen significante tijd tussen de infra structuur en de reken eenheden in azure of grote instantie stempels zijn.

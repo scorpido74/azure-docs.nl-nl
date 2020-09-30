@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: end-user-help
 ms.date: 08/12/2019
 ms.author: curtand
-ms.openlocfilehash: 953f74a18ae7874c8772cdc8179e5e5bdd1a86d2
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: 10b6b788077eccda522c9e8c6e631939ca1819fc
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83738639"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530337"
 ---
 # <a name="set-up-an-authenticator-app-as-your-two-factor-verification-method"></a>Een verificator-app instellen als tweeledige verificatiemethode
 
@@ -33,7 +33,7 @@ U kunt een verificator-app instellen voor het verzenden van een melding naar uw 
 
 2. Selecteer **Meldingen voor verificatie ontvangen** in het gedeelte **Hoe wilt u de mobiele app gebruiken?** en selecteer vervolgens **Instellen**.
 
-    ![Pagina Aanvullende beveiligingsverificatie, met opties voor mobiele app en meldingen](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-notification.png)
+    ![Scherm afbeelding waarin de pagina aanvullende beveiligings verificatie wordt weer gegeven, met "mobiele app" en "meldingen voor verificatie ontvangen" geselecteerd.](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-notification.png)
 
     De pagina **Mobiele app configureren** wordt weergegeven.
 
@@ -48,7 +48,7 @@ U kunt een verificator-app instellen voor het verzenden van een melding naar uw 
 
 5. Ga op uw computer terug naar de pagina **Aanvullende beveiligingsverificatie**, controleer of u het bericht hebt gekregen dat uw configuratie is geslaagd en selecteer vervolgens **Volgende**.
 
-    ![Pagina Aanvullende beveiligingsverificatie, met bericht dat de configuratie is geslaagd](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-notification-confirm.png)
+    ![Scherm opname van de pagina aanvullende beveiligings verificatie, waarbij de mobiele app is geconfigureerd... het bericht geslaagd is gemarkeerd.](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-notification-confirm.png)
 
     De Authenticator-app stuurt als test een melding naar uw mobiele apparaat.
 

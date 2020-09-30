@@ -10,14 +10,14 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 8/17/2020
+ms.date: 9/29/2020
 ms.author: yohaddad
-ms.openlocfilehash: bb2b9da291bf75542c942d785d995018b597f742
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.openlocfilehash: bdcf9417aca6ece24e5ef577620734eeb48d9362
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90024295"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531153"
 ---
 # <a name="azure-guest-os"></a>Azure-gast besturingssysteem
 In de volgende tabellen ziet u de micro soft Security Response Center-updates (MSRC) die zijn toegepast op het Azure-gast besturingssysteem. Zoek in dit artikel om te bepalen of een bepaalde update van toepassing is op het gast besturingssysteem dat u gebruikt. Updates worden altijd uitgevoerd voor de desbetreffende [familie][family-explain] waarin ze zijn geïntroduceerd.
@@ -47,11 +47,9 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 |  Rel 20-09 |  [4569778]  |  NET Framework 4.5.2 Security en Quality totalisatie | 2,102 | 8 sep 2020 |
 |  Rel 20-09 |  [4578013]  |  Beveiligings update | 2,102 | 8 sep 2020 |
 |  Rel 20-09 |  [4576750]  |  Onderhouds stack-update | 5,47 | 8 sep 2020 |
-|  Rel 20-09 |  [4576479]  |  NET Framework 4,8 Security en Quality Rollup | 5,47 | 8 sep 2020 |
 |  Rel 20-09 |  [4494175]  |  Micro | 5,47 | 8 sep 2020 |
 |  Rel 20-09 |  [4570332]  |  Onderhouds stack-update | 6,23 | 8 sep 2020 |
 |  Rel 20-09 |  [4570720]  |  Cumulatieve update van .NET Framework 3,5 en 4.7.2 | 6,23 | 8 sep 2020 |
-|  Rel 20-09 |  [4576483]  |  .NET Framework 4,8-beveiliging en-kwaliteit samen vouwen | 6,23 | 8 sep 2020 |
 |  Rel 20-09 |  [4494174]  |  Micro | 6,23 | 8 sep 2020 |
 
 [4577010]: https://support.microsoft.com/kb/4577010
@@ -72,11 +70,9 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 [4569778]: https://support.microsoft.com/kb/4569778
 [4578013]: https://support.microsoft.com/kb/4578013
 [4576750]: https://support.microsoft.com/kb/4576750
-[4576479]: https://support.microsoft.com/kb/4576479
 [4494175]: https://support.microsoft.com/kb/4494175
 [4570332]: https://support.microsoft.com/kb/4570332
 [4570720]: https://support.microsoft.com/kb/4570720
-[4576483]: https://support.microsoft.com/kb/4576483
 [4494174]: https://support.microsoft.com/kb/4494174
 
 ## <a name="august-2020-guest-os"></a>Augustus 2020-gast besturingssysteem
@@ -84,29 +80,26 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 
 | Productcategorie | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
-|  Rel 20-08 |  [4571687]  |  Cumulatieve update voor IE | 2,101, 3,88, 4,81 | 11 augustus 2020 |
-|  Rel 20-08 |  [4561600]  |  Flash-Update | 3,88, 4,81, 5,46, 6,22 | 9 juni 2020 |
-|  Rel 20-08 |  [4571694]  |  Meest recente cumulatieve update | 6,22 | 11 augustus 2020 |
-|  Rel 20-08 |  [4565349]  |  Meest recente cumulatieve update | 5,46 | 11 augustus 2020 |
-|  Rel 20-08 |  [4570673]  |  Onderhouds stack-update | 2,101 | 11 augustus 2020 |
-|  Rel 20-08 |  [4571729]  |  Maandelijks samen vouwen | 2,101 | 11 augustus 2020 |
-|  Rel 20-08 |  [4569767]  |  .NET Framework 3.5.1-beveiliging en-kwaliteit samen vouwen | 2,101 | 11 augustus 2020 |
-|  Rel 20-08 |  [4569780]  |  .NET Framework 4.5.2 beveiliging en kwaliteit samen vouwen | 2,101 | 11 augustus 2020 |
-|  Rel 20-08 |  [4569765]  |  .NET Framework 3,5-beveiliging en-kwaliteit samen vouwen | 3,88 | 11 augustus 2020 |
-|  Rel 20-08 |  [4569779]  |  .NET Framework 4.5.2 beveiliging en kwaliteit samen vouwen | 3,88 | 11 augustus 2020 |
-|  Rel 20-08 |  [4566426]  |  Onderhouds stack-update | 3,88 | Jul 14, 2020 |
-|  Rel 20-08 |  [4571736]  |  Maandelijks samen vouwen | 3,88 | 11 augustus 2020 |
-|  Rel 20-08 |  [4566425]  |  Onderhouds stack-update | 4,81 | Jul 14, 2020 |
-|  Rel 20-08 |  [4571703]  |  Maandelijks samen vouwen | 4,81 | 11 augustus 2020 |
-|  Rel 20-08 |  [4569768]  |  .NET Framework 3,5-beveiliging en-kwaliteit samen vouwen | 4,81 | 11 augustus 2020 |
-|  Rel 20-08 |  [4569778]  |  .NET Framework 4.5.2 beveiliging en kwaliteit samen vouwen | 4,81 | 11 augustus 2020 |
-|  Rel 20-08 |  [4494175]  |  Micro | 5,46 | 25 februari 2020 |
-|  Rel 20-08 |  [4565912]  |  Onderhouds stack-update | 5,46 | Jul 14, 2020 |
-|  Rel 20-08 |  [4569746]  |  .NET Framework 4,8-beveiliging en-kwaliteit samen vouwen | 5,46 | 11 augustus 2020 |
-|  Rel 20-08 |  [4569776]  |  Cumulatieve update van .NET Framework 3,5 en 4.7.2 | 6,22 | 11 augustus 2020 |
-|  Rel 20-08 |  [4569750]  |  Cumulatieve update van .NET Framework 3,5 en 4,8 | 6,22 | 11 augustus 2020 |
-|  Rel 20-08 |  [4566424]  |  Onderhouds stack-update | 6,22 | 11 augustus 2020 |
-
+|  Rel 20-08 |  [4571687]  |  Cumulatieve update voor IE | [2,101], [3,88], [4,81] | 11 augustus 2020 |
+|  Rel 20-08 |  [4561600]  |  Flash-Update | [3,88], [4,81], [5,46], [6,22] | 9 juni 2020 |
+|  Rel 20-08 |  [4571694]  |  Meest recente cumulatieve update | [6,22] | 11 augustus 2020 |
+|  Rel 20-08 |  [4565349]  |  Meest recente cumulatieve update | [5,46] | 11 augustus 2020 |
+|  Rel 20-08 |  [4570673]  |  Onderhouds stack-update | [2,101] | 11 augustus 2020 |
+|  Rel 20-08 |  [4571729]  |  Maandelijks samen vouwen | [2,101] | 11 augustus 2020 |
+|  Rel 20-08 |  [4569767]  |  .NET Framework 3.5.1-beveiliging en-kwaliteit samen vouwen | [2,101] | 11 augustus 2020 |
+|  Rel 20-08 |  [4569780]  |  .NET Framework 4.5.2 beveiliging en kwaliteit samen vouwen | [2,101] | 11 augustus 2020 |
+|  Rel 20-08 |  [4569765]  |  .NET Framework 3,5-beveiliging en-kwaliteit samen vouwen | [3,88] | 11 augustus 2020 |
+|  Rel 20-08 |  [4569779]  |  .NET Framework 4.5.2 beveiliging en kwaliteit samen vouwen | [3,88] | 11 augustus 2020 |
+|  Rel 20-08 |  [4566426]  |  Onderhouds stack-update | [3,88] | Jul 14, 2020 |
+|  Rel 20-08 |  [4571736]  |  Maandelijks samen vouwen | [3,88] | 11 augustus 2020 |
+|  Rel 20-08 |  [4566425]  |  Onderhouds stack-update | [4,81] | Jul 14, 2020 |
+|  Rel 20-08 |  [4571703]  |  Maandelijks samen vouwen | [4,81] | 11 augustus 2020 |
+|  Rel 20-08 |  [4569768]  |  .NET Framework 3,5-beveiliging en-kwaliteit samen vouwen | [4,81] | 11 augustus 2020 |
+|  Rel 20-08 |  [4569778]  |  .NET Framework 4.5.2 beveiliging en kwaliteit samen vouwen | [4,81] | 11 augustus 2020 |
+|  Rel 20-08 |  [4494175]  |  Micro | [5,46] | 25 februari 2020 |
+|  Rel 20-08 |  [4565912]  |  Onderhouds stack-update | [5,46] | Jul 14, 2020 |
+|  Rel 20-08 |  [4569776]  |  Cumulatieve update van .NET Framework 3,5 en 4.7.2 | [6,22] | 11 augustus 2020 |
+|  Rel 20-08 |  [4566424]  |  Onderhouds stack-update | [6,22] | 11 augustus 2020 |
 
 
 [4571687]: https://support.microsoft.com/kb/4571687
@@ -127,10 +120,13 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 [4569778]: https://support.microsoft.com/kb/4569778
 [4494175]: https://support.microsoft.com/kb/4494175
 [4565912]: https://support.microsoft.com/kb/4565912
-[4569746]: https://support.microsoft.com/kb/4569746
 [4569776]: https://support.microsoft.com/kb/4569776
-[4569750]: https://support.microsoft.com/kb/4569750
 [4566424]: https://support.microsoft.com/kb/4566424
+[2,101]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[3,88]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[4,81]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[5,46]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[6,22]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
 
 
 ## <a name="july-2020-guest-os"></a>2020 juli-gast besturingssysteem
@@ -740,8 +736,6 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 |  N.v.t.  |  [4499151]  |  19 mei niet-beveiliging  |  4,67  |  14 mei 2019  |
 |  N.v.t.  |  [4495608]  |  19 .NET 3,5 is niet-beveiliging  |  4,67  |  14 mei 2019  |
 |  N.v.t.  |  [4495592]  |  Kan 19 .NET 4.5.2 niet-beveiliging  |  4,67  |  14 mei 2019  |
-|  N.v.t.  |  [4495610]  |  19 .NET 4,8 is mogelijk cumulatief  |  6.8  |  14 mei 2019  |
-|  N.v.t.  |  [4495618]  |  19 .NET 4,8 is mogelijk cumulatief  |  6.8  |  14 mei 2019  |
 |  N.v.t.  |  [4501226]  |  DST-tijd zone-updates voor Marokko en de Palestijnse autoriteit  |  2,87, 3,74, 4,67  |  23 mei 2019  |
 |  N.v.t.  |  [4490128]  |  TIJD zonetijd updates voor Sao Tomé en Príncipe en Qyzylorda  |  2,87, 3,74, 4,67  |  17 april 2019  |
 
@@ -763,8 +757,6 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 [4499151]: https://support.microsoft.com/kb/KB4499151
 [4495608]: https://support.microsoft.com/kb/KB4495608
 [4495592]: https://support.microsoft.com/kb/KB4495592
-[4495610]: https://support.microsoft.com/kb/KB4495610
-[4495618]: https://support.microsoft.com/kb/KB4495618
 [4501226]: https://support.microsoft.com/kb/KB4501226
 [4490128]: https://support.microsoft.com/kb/KB4490128
 

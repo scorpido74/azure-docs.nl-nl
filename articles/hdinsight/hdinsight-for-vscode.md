@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 04/07/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: bf31ad3311d6cbfd82ad1071d28bb7fee1bb9d2b
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: bb2fff699b31d8b3b311180c4b85e2bfd1da892c
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876781"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530150"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Gebruik de Spark-& Hive-Hulpprogram Ma's voor Visual Studio code
 
@@ -29,7 +29,7 @@ De volgende items zijn vereist voor het volt ooien van de stappen in dit artikel
 - [Visual Studio Code](https://code.visualstudio.com/).
 - [Mono](https://www.mono-project.com/docs/getting-started/install/). Mono is alleen vereist voor Linux en macOS.
 - [Een PySpark Interactive Environment voor Visual Studio code](set-up-pyspark-interactive-environment.md).
-- Een lokale map. In dit artikel wordt gebruikgemaakt van **C:\HD\HDexample**.
+- Een lokale map. In dit artikel wordt gebruikgemaakt van  **C:\HD\HDexample**.
 
 ## <a name="install-spark--hive-tools"></a>& Hive-Hulpprogram Ma's voor Spark installeren
 
@@ -120,7 +120,7 @@ U kunt een normaal cluster koppelen met behulp van een door [Apache Ambari](http
 
 5. Bekijk de **uitvoer** weergave voor verificatie.
 
-## <a name="list-clusters"></a>Clusters weer geven
+## <a name="list-clusters"></a>Clusters weergeven
 
 1. Navigeer in de menu balk naar opdracht palet **weer geven**  >  **...** en voer **Spark/Hive: List cluster**in.
 
@@ -199,11 +199,11 @@ Voer de volgende stappen uit met de interactieve opdracht PySpark om de query's 
 
 4. De prompt voor het installeren van PySpark kernel wordt weer gegeven in de rechter benedenhoek van het venster. U kunt op de knop **installeren** klikken om door te gaan met de PySpark-installaties. u kunt ook op de knop **overs Laan** klikken om deze stap over te slaan.
 
-   ![pyspark-kernel installeren](./media/hdinsight-for-vscode/install-the-pyspark-kernel.png)
+   ![Scherm afbeelding toont een optie om de installatie van PySpark over te slaan.](./media/hdinsight-for-vscode/install-the-pyspark-kernel.png)
 
 5. Als u het later opnieuw moet installeren, kunt u naar de instellingen van de **Bestands**  >  **voorkeur**navigeren  >  **Settings**en vervolgens **Hdinsight uitschakelen: Schakel overs Laan Pyspark-installatie** in de instellingen in. 
     
-    ![pyspark-kernel installeren](./media/hdinsight-for-vscode/enable-skip-pyspark-installation.png)
+    ![Scherm afbeelding toont de optie om de installatie overs Laan Pyspark in te scha kelen.](./media/hdinsight-for-vscode/enable-skip-pyspark-installation.png)
 
 6. Als de installatie is geslaagd in stap 4, wordt het bericht venster ' PySpark geïnstalleerd ' weer gegeven in de rechter benedenhoek van het venster. Klik op de knop **opnieuw laden** om het venster opnieuw te laden.
     ![pyspark is geïnstalleerd](./media/hdinsight-for-vscode/pyspark-kernel-installed-successfully.png)
@@ -331,7 +331,7 @@ Methode 2 een bestand verzenden en u ziet dat de `.vscode` map automatisch wordt
 
     **/Batches plaatsen** Aanvraag tekst
 
-    | naam | beschrijving | type |
+    | name | description | type |
     | --- | --- | --- |
     | file | Bestand met de toepassing die moet worden uitgevoerd | Pad (vereist) |
     | proxyUser | Gebruiker die moet worden geïmiteerd bij het uitvoeren van de taak | Tekenreeks |
@@ -347,18 +347,18 @@ Methode 2 een bestand verzenden en u ziet dat de `.vscode` map automatisch wordt
     | numExecutors | Aantal actieve uitvoerendeers dat voor deze sessie wordt gestart | Int |
     | archieven | Archief archieven die moeten worden gebruikt in deze sessie | Lijst met teken reeksen |
     | wachtrij | De naam van de wachtrij met GARENs die moet worden ingediend| Tekenreeks |
-    | naam | De naam van deze sessie | Tekenreeks |
+    | name | De naam van deze sessie | Tekenreeks |
     | belangen | Eigenschappen van Spark-configuratie | Toewijzing van sleutel = val |
 
     Antwoord tekst het gemaakte batch-object.
 
-    | naam | beschrijving | type |
+    | name | description | type |
     | --- | ---| --- |
     | Id | Sessie-id | Int |
     | appId | Toepassings-ID van deze sessie | Tekenreeks |
     | appInfo | Gedetailleerde toepassings informatie | Toewijzing van sleutel = val |
     | logboek | Logboek regels | Lijst met teken reeksen |
-    | state |Batch status | Tekenreeks |
+    | staat |Batch status | Tekenreeks |
 
     > [!NOTE]
     > De toegewezen livy-configuratie wordt weer gegeven in het deel venster uitvoer wanneer u het script verzendt.

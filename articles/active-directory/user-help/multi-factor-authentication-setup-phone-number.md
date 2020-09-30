@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: end-user-help
 ms.date: 08/12/2019
 ms.author: curtand
-ms.openlocfilehash: 76809a41400502ec48c2dd674f8976bb168ec9f9
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: 40af9ac692a226b12f984db447db9635cba655e4
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735987"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530252"
 ---
 # <a name="set-up-a-mobile-device-as-your-two-factor-verification-method"></a>Een mobiel apparaat instellen als tweeledige verificatiemethode
 
@@ -30,7 +30,7 @@ U kunt uw mobiele apparaat instellen als tweeledige verificatiemethode. Uw mobie
 
 2. Selecteer **Code per sms-bericht verzenden** in het gedeelte **Methode** en selecteer vervolgens **Volgende**.
 
-    ![Pagina met aanvullende beveiligingsverificatie, met telefoon voor verificatie en sms-bericht](media/multi-factor-authentication-verification-methods/multi-factor-authentication-text-message.png)
+    ![Scherm opname van de pagina ' aanvullende beveiligings verificatie ' met ' telefoon voor verificatie ' en ' Stuur mij een code per SMS-bericht ' geselecteerd.](media/multi-factor-authentication-verification-methods/multi-factor-authentication-text-message.png)
 
 3. Typ de verificatiecode uit het sms-bericht dat door Microsoft is verzonden in het gedeelte **Stap 2: Er is een sms-bericht naar uw telefoon verzonden** en selecteer vervolgens **Verifiëren**.
 

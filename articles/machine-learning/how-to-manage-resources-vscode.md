@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
-ms.date: 09/03/2020
-ms.openlocfilehash: abdd04f59ee820585d58817297d161f68bd952f0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/30/2020
+ms.openlocfilehash: 1120a3636b7ce24dde0d33c213f9063f910123c4
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90897391"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530626"
 ---
 # <a name="manage-azure-machine-learning-resources-with-the-vs-code-extension-preview"></a>Azure Machine Learning resources beheren met de extensie VS (preview)
 
@@ -201,6 +201,7 @@ Zie [experimenten](concept-azure-machine-learning-architecture.md#experiments)vo
 1. Vouw het knoop punt **experimenten** in uw werk ruimte uit.
 1. Klik met de rechter muisknop op het experiment dat u wilt uitvoeren.
 1. Selecteer het pictogram **experiment uitvoeren** op de activiteiten balk.
+1. Selecteer of u uw experiment lokaal of op afstand wilt uitvoeren. Raadpleeg de [gids voor fout opsporing](how-to-debug-visual-studio-code.md) voor meer informatie over het lokaal uitvoeren en oplossen van problemen met experimenten.
 1. Kies uw abonnement.
 1. Kies de Azure-ML-werkruimte om het experiment uit te voeren.
 1. Kies uw experiment.
@@ -320,7 +321,7 @@ Een uitvoerings configuratie maken in de extensie:
 
 1. Vouw het knoop punt abonnement uit met uw werk ruimte.
 1. Vouw het knoop punt **reken clusters** in uw werk ruimte uit.
-1. Klik met de rechter muisknop op het berekenings doel dat u wilt gebruiken om de configuratie voor uitvoeren te maken onder en selecteer **uitvoerings configuratie maken**.
+1. Klik met de rechter muisknop op het doel van de berekening waarvoor u de configuratie voor uitvoeren wilt maken en selecteer vervolgens **uitvoerings configuratie maken**.
 1. In de prompt:
     1. Geef een naam op voor het reken doel
     1. Kies of maak een nieuwe omgeving.

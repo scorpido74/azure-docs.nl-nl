@@ -6,13 +6,13 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
-ms.date: 12/12/2019
-ms.openlocfilehash: 12d98406b21ed9a3ea27f9aa4abc0db6f536468d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/23/2020
+ms.openlocfilehash: 8f1e0a6aecc9702552a3dd66acc8dc7eb5bf1d85
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91251912"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91529922"
 ---
 # <a name="azure-hdinsight-id-broker-preview"></a>Azure HDInsight ID Broker (preview-versie)
 
@@ -30,11 +30,13 @@ HIB biedt de verificatie-infra structuur die protocol overgang van OAuth (modern
 
 Het volgende diagram toont de moderne op OAuth gebaseerde verificatie stroom voor alle gebruikers, waaronder federatieve gebruikers, nadat de ID Broker is ingeschakeld:
 
-![Verificatie stroom met ID-Broker](./media/identity-broker/identity-broker-architecture.png)
+:::image type="content" source="media/identity-broker/identity-broker-architecture.png" alt-text="Verificatie stroom met ID-Broker":::
 
 In dit diagram moet de client (ofwel browser of apps) eerst het OAuth-token verkrijgen en vervolgens het token aan de gateway in een HTTP-aanvraag presen teren. Als u zich al hebt aangemeld bij andere Azure-Services, zoals de Azure Portal, kunt u zich aanmelden bij uw HDInsight-cluster met een SSO-ervaring (eenmalige aanmelding).
 
 Er zijn nog steeds veel oudere toepassingen die alleen basis authenticatie ondersteunen (bijvoorbeeld gebruikers naam/wacht woord). Voor deze scenario's kunt u HTTP-basis verificatie blijven gebruiken om verbinding te maken met de cluster gateways. In deze configuratie moet u ervoor zorgen dat de netwerk verbinding van de gateway knooppunten naar het Federation-eind punt (ADFS-eind punt) wordt voor een directe regel van het zicht van Gateway knooppunten.
+
+:::image type="content" source="media/identity-broker/basic-authentication.png" alt-text="Verificatie stroom met ID-Broker":::
 
 Gebruik de volgende tabel om de beste verificatie optie te bepalen op basis van de behoeften van uw organisatie:
 
@@ -49,7 +51,7 @@ Gebruik de volgende tabel om de beste verificatie optie te bepalen op basis van 
 
 Voer de volgende stappen uit om een ESP-cluster met de ID-Broker te maken:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Volg de basis stappen voor het maken van een ESP-cluster. Zie [een HDInsight-cluster met ESP maken](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp)voor meer informatie.
 1. Selecteer **HDINSIGHT id Broker inschakelen**.
 

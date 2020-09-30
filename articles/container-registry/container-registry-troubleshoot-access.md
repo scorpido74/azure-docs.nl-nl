@@ -3,12 +3,12 @@ title: Problemen met het netwerk oplossen met het REGI ster
 description: Symptomen, oorzaken en oplossingen voor veelvoorkomende problemen bij het openen van een Azure container registry in een virtueel netwerk of achter een firewall
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 227eeeadb2aef4b4d3feb7923a198b129a6267d3
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 06c5b65537fd7d256010260bb3a93888721f643b
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88227225"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532445"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>Problemen met het netwerk oplossen met het REGI ster
 
@@ -32,7 +32,7 @@ Dit kan een of meer van de volgende zijn:
 * Een firewall of proxy van de client voor komt toegang tot de [oplossing](#configure-client-firewall-access)
 * Toegangs regels voor open bare netwerken in het REGI ster verhinderen toegang tot de [oplossing](#configure-public-access-to-registry)
 * De configuratie van het virtuele netwerk voor komt toegang tot de [oplossing](#configure-vnet-access)
-* U probeert Azure Security Center te integreren met een REGI ster met een persoonlijk eind punt of service-eind punt- [oplossing](#configure-image-scanning-solution)
+* U probeert Azure Security Center of bepaalde andere Azure-Services te integreren met een REGI ster met een persoonlijk eind punt, service-eind punt of open bare IP-toegangs regels- [oplossing](#configure-service-access)
 
 ## <a name="further-diagnosis"></a>Verdere diagnose 
 
@@ -96,17 +96,22 @@ Gerelateerde koppelingen:
 * [Kubernetes: DNS-omzetting oplossen](https://kubernetes.io/docs/tasks/administer-cluster/dns-debugging-resolution/)
 * [Service tags van virtueel netwerk](../virtual-network/service-tags-overview.md)
 
-### <a name="configure-image-scanning-solution"></a>Scan oplossing voor afbeeldingen configureren
+### <a name="configure-service-access"></a>Service toegang configureren
 
-Als uw REGI ster is geconfigureerd met een privé-eind punt of service-eind punt, kunt u momenteel niet integreren met Azure Security Center voor het scannen van afbeeldingen. U kunt ook andere oplossingen voor het scannen van installatie kopieën configureren die beschikbaar zijn in azure Marketplace, met inbegrip van:
+Op dit moment kan Azure Security Center geen [installatie kopie van het beveiligings probleem](../security-center/azure-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json) in een REGI ster scannen waarmee de toegang wordt beperkt tot persoonlijke eind punten, geselecteerde subnetten of IP-adressen. Resources van de volgende services kunnen ook geen toegang krijgen tot een container register met netwerk beperkingen:
 
-* [Systeem eigen Cloud beveiligings platform met licht blauw](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security)
-* [Twistlock Enter prise Edition](https://azuremarketplace.microsoft.com/marketplace/apps/twistlock.twistlock)
+* Azure DevOps Services 
+* Azure Container Instances
+* Azure Container Registry Tasks
+
+Als toegang tot of integratie van deze Azure-Services met het container register is vereist, verwijdert u de netwerk beperking. U kunt bijvoorbeeld de persoonlijke eind punten van het REGI ster verwijderen of de open bare toegangs regels van het REGI ster verwijderen of wijzigen.
 
 Gerelateerde koppelingen:
 
 * [Azure Container Registry afbeeldingen scannen door Security Center](../security-center/azure-container-registry-integration.md)
 * [Feedback](https://feedback.azure.com/forums/347535-azure-security-center/suggestions/41091577-enable-vulnerability-scanning-for-images-that-are) geven
+* [Open bare IP-netwerk regels configureren](container-registry-access-selected-networks.md)
+* [Persoonlijke verbinding maken met een Azure container Registry met behulp van een persoonlijke Azure-koppeling](container-registry-private-link.md)
 
 
 ## <a name="advanced-troubleshooting"></a>Geavanceerde probleemoplossing
@@ -126,7 +131,7 @@ Als u uw probleem hier niet kunt oplossen, raadpleegt u de volgende opties.
 
 * Andere onderwerpen over het oplossen van problemen met het REGI ster zijn:
   * [Problemen met register aanmelding oplossen](container-registry-troubleshoot-login.md) 
-  * [Problemen met het REGI ster oplossen](container-registry-troubleshoot-performance.md)
+  * [Problemen met registerprestaties oplossen](container-registry-troubleshoot-performance.md)
 * Opties voor [Community-ondersteuning](https://azure.microsoft.com/support/community/)
 * [Microsoft Q&A](https://docs.microsoft.com/answers/products/)
 * [Een ondersteuningsticket openen](https://azure.microsoft.com/support/create-ticket/)

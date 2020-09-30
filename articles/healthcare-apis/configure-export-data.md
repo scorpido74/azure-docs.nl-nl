@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 3/5/2020
 ms.author: matjazl
-ms.openlocfilehash: 7ed4e471764fbf8ecc9b82a7d614ae52b97360f1
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: e4adceea5c2cd2a36d7a867ca9b9d2ad7c33c155
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267255"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91529980"
 ---
 # <a name="configure-export-setting-and-set-up-the-storage-account"></a>De instelling exporteren configureren en het opslag account instellen
 
@@ -40,11 +40,11 @@ De volgende stap bij het exporteren is het toewijzen van een machtiging voor de 
 
 Nadat u een opslag account hebt gemaakt, gaat u naar de Blade Access Control (IAM) in het opslag account en selecteert u roltoewijzingen toevoegen
 
-![Beheerde identiteit inschakelen](media/export-data/fhir-export-role-assignment.png)
+![Roltoewijzing exporteren](media/export-data/fhir-export-role-assignment.png)
 
 Hier gaan we vervolgens rollen opslag BLOB-gegevens Inzender toevoegen aan de service naam.
 
-![Beheerde identiteit inschakelen](media/export-data/fhir-export-role-add.png)
+![Rol toevoegen](media/export-data/fhir-export-role-add.png)
 
 We zijn nu klaar voor de volgende stap, waarbij we het opslag account in azure API voor FHIR kunnen selecteren als standaard opslag account voor $export.
 
@@ -52,7 +52,7 @@ We zijn nu klaar voor de volgende stap, waarbij we het opslag account in azure A
 
 De laatste stap is het toewijzen van het Azure-opslag account dat door Azure API voor FHIR wordt gebruikt om de gegevens te exporteren naar. Hiertoe gaat u naar de Blade integratie in azure API voor de service FHIR in Azure Portal en selecteert u het opslag account
 
-![Beheerde identiteit inschakelen](media/export-data/fhir-export-storage.png)
+![FHIR-export opslag](media/export-data/fhir-export-storage.png)
 
 Daarna kunt u de gegevens exporteren met behulp van $export opdracht.
 

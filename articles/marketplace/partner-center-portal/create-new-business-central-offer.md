@@ -7,12 +7,12 @@ ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 08/07/2020
-ms.openlocfilehash: 1e2af29779c93175ccc4c7f6964862b79febd8e6
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: d92dc562136ef20dac19e7ddfa4339c565793308
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90527085"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531816"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>Een Dynamics 365 Business Central-aanbieding maken
 
@@ -56,11 +56,11 @@ Selecteer de optie die u wilt gebruiken voor deze aanbieding.
 
 #### <a name="get-it-now-free"></a>Nu downloaden (gratis)
 
-Bied uw aanbod aan klanten gratis aan door een geldige URL op te geven (te beginnen met *http* of *https*), waar ze toegang hebben tot uw app.  Bijvoorbeeld `https://contoso.com/my-app`.
+Bied uw aanbod aan klanten gratis aan.
 
 #### <a name="free-trial-listing"></a>Gratis proef versie (lijst)
 
-Bied uw aanbieding aan klanten aan met een koppeling naar een gratis proef versie door een geldige URL op te geven (beginnend met `http` of `https` ), waar een proef versie kan worden verkregen.  Bijvoorbeeld `https://contoso.com/trial/my-app`. Gratis proef versies van aanbieding worden gemaakt, beheerd en geconfigureerd door uw service en er zijn geen abonnementen die door micro soft worden beheerd.
+Bied uw aanbieding aan klanten aan met een koppeling naar een gratis proef versie. Gratis proef versies van aanbieding worden gemaakt, beheerd en geconfigureerd door uw service en er zijn geen abonnementen die door micro soft worden beheerd.
 
 > [!NOTE]
 > De tokens die uw toepassing via uw proef koppeling ontvangt, kunnen alleen worden gebruikt voor het verkrijgen van gebruikers gegevens via Azure Active Directory (Azure AD) om het maken van accounts in uw app te automatiseren. Micro soft-accounts worden niet ondersteund voor verificatie met behulp van dit token.
@@ -132,7 +132,7 @@ Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in
 9. Beschrijving
 10. Scherm afbeeldingen/Video's
 
-### <a name="name"></a>Name
+### <a name="name"></a>Naam
 
 De naam die u hier invoert, wordt aan klanten weer gegeven als de titel van de aanbieding. Dit veld is vooraf ingevuld met de tekst die u hebt ingevoerd voor de **aanbiedings alias** tijdens het maken van de aanbieding, maar u kunt deze waarde wijzigen. Deze naam kan worden aangemerkt (en u kunt symbolen van het handels merk of copyright bevatten). De naam mag niet langer zijn dan 50 tekens en mag geen emojis bevatten.
 

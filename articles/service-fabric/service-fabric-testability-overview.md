@@ -1,16 +1,14 @@
 ---
 title: Overzicht van fout analyse service
 description: In dit artikel wordt de fout analyse service in Service Fabric beschreven om fouten te voor komen en test scenario's uit te voeren op basis van uw services.
-author: anmolah
 ms.topic: conceptual
 ms.date: 06/15/2017
-ms.author: anmola
-ms.openlocfilehash: d5c770a4d823ebe9b2700b081c407c54dd1d18a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e879b0b39d58f115b4661d47cf2ae564ba14e5d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75465569"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531374"
 ---
 # <a name="introduction-to-the-fault-analysis-service"></a>Inleiding tot de fout analyse service
 De fout analyse service is ontworpen voor het testen van services die zijn gebouwd op Microsoft Azure Service Fabric. Met de fout analyse service kunt u zinvolle fouten tegen komen en volledige test scenario's uitvoeren voor uw toepassingen. Deze fouten en scenario's oefenen en valideren de talrijke statussen en overgangen die gedurende de levens duur van een service worden ervaren, op een gecontroleerde, veilige en consistente manier.

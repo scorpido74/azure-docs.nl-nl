@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 98ef2b416c809789307f946ed90fb3138d9a20c1
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c28a3b0f445ca905a882a7ede3fcfed2c1e673a4
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325369"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531187"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Problemen met de Log Analytics-agent voor Linux oplossen 
 
@@ -38,7 +38,7 @@ Als geen van deze stappen voor u werkt, zijn de volgende ondersteunings kanalen 
 
  Categorie | Bestandslocatie
  ----- | -----
- Syslog | `/etc/syslog-ng/syslog-ng.conf`of `/etc/rsyslog.conf` of`/etc/rsyslog.d/95-omsagent.conf`
+ Syslog | `/etc/syslog-ng/syslog-ng.conf` of `/etc/rsyslog.conf` of `/etc/rsyslog.d/95-omsagent.conf`
  Prestaties, nagios, zabbix, Log Analytics uitvoer en algemene agent | `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`
  Aanvullende configuraties | `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/*.conf`
 
@@ -150,7 +150,7 @@ Verwijder onder de invoeg toepassing voor uitvoer de opmerking de volgende secti
 
 ### <a name="probable-causes"></a>Mogelijke oorzaken
 * De proxy die tijdens de onboarding is opgegeven, is onjuist
-* De Azure Monitor-en Azure Automation Service-eind punten zijn niet white list in uw Data Center 
+* De service-eind punten Azure Monitor en Azure Automation zijn niet opgenomen in de lijst met goedgekeurde Services in uw Data Center 
 
 ### <a name="resolution"></a>Oplossing
 1. Onboarding voor Azure Monitor met de Log Analytics-agent voor Linux met behulp van de volgende opdracht met de optie `-v` ingeschakeld. Hiermee kan uitgebreide uitvoer van de agent die verbinding maakt met de proxy, worden Azure Monitor. 
@@ -211,7 +211,7 @@ Problemen met betrekking tot prestaties doen zich niet altijd voor en ze zijn ze
 - Er wordt een back-up gemaakt van Log Analytics agent voor Linux-gegevens
 
 ### <a name="resolution"></a>Oplossing
-1. Controleer of het voorbereidings Azure Monitor is geslaagd door te controleren of het volgende bestand bestaat:`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`
+1. Controleer of het voorbereidings Azure Monitor is geslaagd door te controleren of het volgende bestand bestaat: `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`
 2. Onboarding uitvoeren met behulp van de `omsadmin.sh` opdracht regel instructies
 3. Als u een proxy gebruikt, raadpleegt u de eerder beschreven stappen voor het oplossen van de proxy.
 4. In sommige gevallen, wanneer de Log Analytics-agent voor Linux niet kan communiceren met de service, worden gegevens op de agent in de wachtrij geplaatst voor de volledige buffer grootte, 50 MB. De agent moet opnieuw worden gestart door de volgende opdracht uit te voeren: `/opt/microsoft/omsagent/bin/service_control restart [<workspace id>]` . 
@@ -394,13 +394,13 @@ Deze fout geeft aan dat de Linux Diagnostic extension (LAD) wordt geïnstalleerd
 
 **Achtergrond:** In plaats van de Log Analytics-agent voor Linux dat als een bevoegde gebruiker wordt uitgevoerd `root` , wordt de agent uitgevoerd als de `omsagent` gebruiker. In de meeste gevallen moet er expliciete machtiging aan deze gebruiker worden verleend, zodat bepaalde bestanden kunnen worden gelezen. `omsagent`Voer de volgende opdrachten uit om toestemming te geven aan de gebruiker:
 
-1. De `omsagent` gebruiker toevoegen aan een specifieke groep`sudo usermod -a -G <GROUPNAME> <USERNAME>`
-2. Universele Lees toegang verlenen tot het vereiste bestand`sudo chmod -R ugo+rx <FILE DIRECTORY>`
+1. De `omsagent` gebruiker toevoegen aan een specifieke groep `sudo usermod -a -G <GROUPNAME> <USERNAME>`
+2. Universele Lees toegang verlenen tot het vereiste bestand `sudo chmod -R ugo+rx <FILE DIRECTORY>`
 
 Er is een bekend probleem met een race voorwaarde met de Log Analytics agent voor Linux-versie ouder dan 1.1.0-217. Voer na het bijwerken naar de nieuwste agent de volgende opdracht uit om de meest recente versie van de invoeg toepassing voor uitvoer op te halen `sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.conf /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` .
 
 ## <a name="issue-you-are-trying-to-reonboard-to-a-new-workspace"></a>Probleem: u probeert uit te voeren voor een nieuwe werk ruimte
-Wanneer u probeert een agent voor een nieuwe werk ruimte vrij te maken, moet u de configuratie van de Log Analytics-agent opschonen voordat u het onboarding kunt uitvoeren. Als u de oude configuratie van de agent wilt opschonen, voert u de shell-bundel uit met`--purge`
+Wanneer u probeert een agent voor een nieuwe werk ruimte vrij te maken, moet u de configuratie van de Log Analytics-agent opschonen voordat u het onboarding kunt uitvoeren. Als u de oude configuratie van de agent wilt opschonen, voert u de shell-bundel uit met `--purge`
 
 ```
 sudo sh ./omsagent-*.universal.x64.sh --purge
@@ -444,4 +444,3 @@ Voer de volgende stappen uit om het probleem te verhelpen.
     ```
 
 3. Upgrade pakketten door uit te voeren `sudo sh ./omsagent-*.universal.x64.sh --upgrade` .
-

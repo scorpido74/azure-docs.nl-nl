@@ -5,15 +5,15 @@ author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
 ms.author: crtreasu
-ms.date: 08/17/2020
+ms.date: 09/29/2020
 ms.topic: how-to
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 57ead9636b7218ecfc7d72bb605b469d6a7d1ac6
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: da983719dc66656aa28cab4aea0bae558c2a7162
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89536349"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530410"
 ---
 # <a name="configuring-azure-spatial-anchors-in-a-unity-project"></a>Ruimtelijke Azure-ankers configureren in een Unity-project
 
@@ -31,10 +31,10 @@ De Azure spatiale ankers ondersteunen eenheid 2019,4 (LTS) met de volgende confi
 
 Ruimtelijke-ankers voor Azure voor eenheid worden momenteel gedistribueerd met unit package manager (UPM)-pakketten. Deze pakketten vindt u in het [NPM-REGI ster](https://bintray.com/microsoft/AzureMixedReality-NPM). Zie [de documentatie van](https://docs.unity3d.com/Manual/upm-scoped.html)de officiële eenheid voor meer informatie over het werken met het bereik van pakket registers in een Unity-project.
 
-#### <a name="add-the-registry-to-your-unity-project"></a>Het REGI ster toevoegen aan uw Unity-project
+#### <a name="add-the-registry-to-your-unity-project"></a>Het register toevoegen aan uw Unity-project
 
-1. Navigeer in een bestanden Verkenner naar de map van uw unit-project `Packages` . Open het project manifest bestand, `manifest.json` in een tekst editor.
-2. Voeg boven aan het bestand, op hetzelfde niveau als het `dependencies` gedeelte, de volgende vermelding toe om het Azure spatiale ankers REGI ster aan uw project op te neemt. `scopedRegistries`In de vermelding wordt eenheid aangegeven waar de Azure spatiale-ankers SDK-pakketten moeten worden gezocht.
+1. Ga in een verkenner naar de map `Packages` van uw Unity-project. Open in een teksteditor manifestbestand `manifest.json` van het project.
+2. Voeg boven aan het bestand, op hetzelfde niveau als de sectie `dependencies`, de volgende vermelding toe om het register van Azure Spatial Anchors in uw project op te nemen. De vermelding `scopedRegistries` geeft voor Unity aan waar de Azure Spatial Anchors-SDK-pakketten zijn te vinden.
 
     [!code-json[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-unity-scoped-registry-setup.md?range=9-19&highlight=2-10)]
 
@@ -50,14 +50,14 @@ Ruimtelijke-ankers voor Azure voor eenheid worden momenteel gedistribueerd met u
 
     [!code-json[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-unity-scoped-registry-setup.md?range=9-22&highlight=12-14)]
 
-2. Sla het bestand op en sluit het `manifest.json` . Wanneer u terugkeert naar Unity, moet unit de wijziging van het project manifest automatisch detecteren en de opgegeven pakketten ophalen. U kunt de `Packages` map in de Project weergave uitbreiden om te controleren of de juiste pakketten zijn geïmporteerd.
+2. Sla het bestand `manifest.json` op en sluit het vervolgens. Wanneer u terugkeert naar Unity, zou Unity de wijziging in het projectmanifest automatisch moeten detecteren en de opgegeven pakketten ophalen. U kunt de map `Packages` in uw projectweergave uitvouwen om te controleren of de juiste pakketten zijn geïmporteerd.
 
 #### <a name="android-only-configure-the-maintemplategradle-file"></a>Alleen Android: Configureer het bestand mainTemplate. gradle
 
 1. Ga naar **Edit** > **Project Settings** > **Player**.
 2. Selecteer in het **deel venster Inspector** voor instellingen van de **speler**het pictogram **Android** .
 3. Schakel onder de sectie **bouwen** het selectie vakje **aangepaste hoofd Gradle-sjabloon** in om een aangepaste Gradle-sjabloon te genereren op `Assets\Plugins\Android\mainTemplate.gradle` .
-4. Open het `mainTemplate.gradle` bestand in een tekst editor. 
+4. Open het `mainTemplate.gradle` bestand in een tekst editor.
 5. `dependencies`Plak de volgende afhankelijkheden in de sectie:
 
     ```gradle
@@ -72,10 +72,10 @@ Als alles klaar is, moet uw `dependencies` sectie er ongeveer als volgt uitzien:
 ### <a name="import-the-asset-package"></a>[Het Asset-pakket importeren](#tab/UnityAssetPackage)
 
 > [!WARNING]
-> De verdeling van het eenheids pakket voor de Azure spatiale ankers SDK wordt afgeschaft na SDK-versie 2.5.0.
+> De verdeling van unit Asset-pakketten van de Azure spatiale ankers SDK is afgeschaft in versie 2.5.0 en is niet meer beschikbaar vanaf 2.6.0.
 
-1. Down load het `AzureSpatialAnchors.unitypackage` bestand voor de versie die u wilt richten op basis van de [github-releases](https://github.com/Azure/azure-spatial-anchors-samples/releases). 
-2. Volg de instructies [hier](https://docs.unity3d.com/Manual/AssetPackagesImport.html) om het Asset-pakket Unit te importeren in uw project.    
+1. Down load het `AzureSpatialAnchors.unitypackage` bestand voor de versie die u wilt richten op basis van de [github-releases](https://github.com/Azure/azure-spatial-anchors-samples/releases).
+2. Volg de instructies [hier](https://docs.unity3d.com/Manual/AssetPackagesImport.html) om het Asset-pakket Unit te importeren in uw project.
 
 ---
 

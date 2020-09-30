@@ -6,18 +6,18 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 8/13/2020
-ms.openlocfilehash: 088d2c0a11f7d145f0c8a7ccb2c0aac5bd2d140d
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 35a097f7b6d73a14ac4840839a31d9aa256aa8de
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224082"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532688"
 ---
 # <a name="monitoring-in-azure-database-for-mariadb"></a>Bewaking in Azure Database for MariaDB
 Het bewaken van gegevens over uw servers helpt u bij het oplossen en optimaliseren van uw werk belasting. Azure Database for MariaDB biedt diverse metrische gegevens die inzicht geven in het gedrag van uw server.
 
 ## <a name="metrics"></a>Metrische gegevens
-Alle metrische gegevens van Azure hebben een frequentie van één minuut, en elke metriek biedt een geschiedenis van 30 dagen. U kunt waarschuwingen configureren voor de metrische gegevens. Andere taken zijn onder andere het instellen van geautomatiseerde acties, het uitvoeren van geavanceerde analyses en het archiveren van de geschiedenis. Zie het overzicht van Azure- [metrische](../monitoring-and-diagnostics/monitoring-overview-metrics.md)gegevens voor meer informatie.
+Alle metrische gegevens van Azure hebben een frequentie van één minuut, en elke metriek bevat een geschiedenis van 30 dagen. U kunt waarschuwingen configureren voor de metrische gegevens. Andere taken zijn onder andere het instellen van geautomatiseerde acties, het uitvoeren van geavanceerde analyses en het archiveren van de geschiedenis. Zie het overzicht van Azure- [metrische](../monitoring-and-diagnostics/monitoring-overview-metrics.md)gegevens voor meer informatie.
 
 Zie voor stapsgewijze instructies voor [het instellen van waarschuwingen](howto-alert-metric.md).
 
@@ -37,7 +37,7 @@ Deze metrische gegevens zijn beschikbaar voor Azure Database for MariaDB:
 |storage_limit|Opslag limiet|Bytes|De maximale opslag voor deze server.|
 |active_connections|Actieve verbindingen|Aantal|Het aantal actieve verbindingen met de server.|
 |connections_failed|Mislukte verbindingen|Aantal|Het aantal mislukte verbindingen met de server.|
-|seconds_behind_master|Replicatie vertraging in seconden|Aantal|Het aantal seconden dat de replica server bewaart tegen de hoofd server. (Niet van toepassing op de servers van de Basic-laag)|
+|seconds_behind_master|Replicatie vertraging in seconden|Aantal|Het aantal seconden dat de replica-server zich bevindt op de bron server. (Niet van toepassing op de servers van de Basic-laag)|
 |network_bytes_egress|Netwerk uit|Bytes|Netwerk uit over actieve verbindingen.|
 |network_bytes_ingress|Netwerk in|Bytes|Netwerk in meerdere actieve verbindingen.|
 |backup_storage_used|Gebruikte back-upopslag|Bytes|De hoeveelheid back-upopslag die wordt gebruikt. Deze waarde vertegenwoordigt de som van de opslag die wordt gebruikt door alle back-ups van de volledige data base, differentiële back-ups en logboek back-ups die worden bewaard op basis van de Bewaar periode voor back-ups die is ingesteld voor de server. De frequentie van de back-ups wordt beheerd door de service en uitgelegd in het [artikel concepten](concepts-backup.md). Voor geo-redundante opslag is het gebruik van back-upopslag twee keer zo dat van de lokaal redundante opslag.|

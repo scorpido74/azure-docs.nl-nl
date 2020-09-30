@@ -14,12 +14,12 @@ ms.date: 01/07/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0a5a20498ccd0a133c6e02d366af690acf2665e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fe2f464791995b9168868f1661a3c303d46f7987
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84742263"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530116"
 ---
 # <a name="view-audit-history-for-azure-ad-roles-in-privileged-identity-management"></a>De controle geschiedenis voor Azure AD-rollen in Privileged Identity Management weer geven
 
@@ -32,7 +32,7 @@ Vanaf november 2019 wordt het gedeelte van de Azure AD-functies van Privileged I
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met een gebruiker die zich in de beheerdersrol met [geprivilegieerde rol](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) bevindt.
 1. Open **Azure AD privileged Identity Management**. Als u een banner aan de bovenkant van de overzichts pagina hebt, volgt u de instructies op het tabblad **nieuwe versie** van dit artikel. Als dat niet het geval is, volgt u de instructies op het tabblad **vorige versie** .
 
-    [![Nieuwe versie van Azure AD-rollen](media/pim-how-to-use-audit-log/directory-roles-audit-history.png "Selecteer het tabblad voor uw versie")](media/pim-how-to-use-audit-log/directory-roles-audit-history.png)
+    [![Scherm opname van de pagina ' Azure AD-rollen-Directory rollen van de controle lijst '.](media/pim-how-to-use-audit-log/directory-roles-audit-history.png "Selecteer het tabblad voor uw versie")](media/pim-how-to-use-audit-log/directory-roles-audit-history.png)
 
 # <a name="new-version"></a>[Nieuwe versie](#tab/new)
 
@@ -88,7 +88,7 @@ Volg deze stappen om de controle geschiedenis voor Azure AD-rollen weer te geven
 
     Onder aan de pagina wordt een tabel weer gegeven met informatie over elke actie in de beschik bare controle geschiedenis. De kolommen hebben de volgende betekenissen:
 
-    | Kolom | Description |
+    | Kolom | Beschrijving |
     | --- | --- |
     | Tijd | Wanneer de actie is uitgevoerd. |
     | Requestor | Gebruiker die de functie activeert of wijzigt. Als de waarde **Azure System**is, controleert u de controle geschiedenis van Azure voor meer informatie. |
@@ -123,11 +123,11 @@ Volg deze stappen om de controle geschiedenis voor Azure AD-rollen weer te geven
     - Zie de reden voor een controle gebeurtenis in de kolom **status reden** .
     - Zie de goed keurder in de kolom **geïnitieerd door (actor)** voor de gebeurtenis ' lid toevoegen aan een Role-aanvraag goedgekeurd '.
 
-    [![Nieuwe versie van Azure AD-rollen](media/pim-how-to-use-audit-log/filter-audit-logs.png "Het controle logboek voor de PIM-service filteren")](media/pim-how-to-use-audit-log/filter-audit-logs.png)
+    [![Scherm afbeelding met de pagina controle logboeken waarop het menu gestart door (actor) open en PIM is geselecteerd.](media/pim-how-to-use-audit-log/filter-audit-logs.png "Het controle logboek voor de PIM-service filteren")](media/pim-how-to-use-audit-log/filter-audit-logs.png)
 
 1. Selecteer een gebeurtenis in het controle logboek om het ticket nummer weer te geven op het tabblad **activiteit** van het **detail** venster.
   
-    [![Nieuwe versie van Azure AD-rollen](media/pim-how-to-use-audit-log/audit-event-ticket-number.png "Controleer het ticket nummer voor de controle gebeurtenis")](media/pim-how-to-use-audit-log/audit-event-ticket-number.png)
+    [![Scherm opname van de pagina ' controle logboeken ' met het ticket nummer dat is gemarkeerd in het deel venster Details.](media/pim-how-to-use-audit-log/audit-event-ticket-number.png "Controleer het ticket nummer voor de controle gebeurtenis")](media/pim-how-to-use-audit-log/audit-event-ticket-number.png)
 
 1. U kunt de aanvrager bekijken (persoon die de rol activeert) op het tabblad **doelen** van het **detail** venster voor een controle gebeurtenis. Er zijn twee doel typen voor Azure AD-rollen:
 

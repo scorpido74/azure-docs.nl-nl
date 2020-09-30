@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 4b729e975ddc9c184c1b0f39a6d3be548211cdfc
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 990d8ef275982b6d70c51819e47b33f543345023
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90052712"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531272"
 ---
 # <a name="password-policies-and-account-restrictions-in-azure-active-directory"></a>Wachtwoord beleid en account beperkingen in Azure Active Directory
 
@@ -61,7 +61,7 @@ De volgende opties voor wachtwoord beleid zijn gedefinieerd:
 
 ## <a name="administrator-reset-policy-differences"></a>Administrator reset policy differences (Verschillen herstelbeleid beheerder)
 
-Micro soft dwingt een sterk standaard beleid voor wachtwoord herstel voor *twee poorten* af voor elke rol van Azure-beheerder. Dit beleid kan afwijken van de instelling die u voor uw gebruikers hebt gedefinieerd en dit beleid kan niet worden gewijzigd. U moet de functionaliteit voor het opnieuw instellen van wacht woorden altijd testen als een gebruiker zonder dat er Azure-beheerders rollen zijn toegewezen.
+Beheerders accounts zijn standaard ingeschakeld voor selfservice voor het opnieuw instellen van wacht woorden en een sterk standaard beleid voor het opnieuw instellen van *twee poorten* wordt afgedwongen. Dit beleid kan afwijken van de instelling die u voor uw gebruikers hebt gedefinieerd en dit beleid kan niet worden gewijzigd. U moet de functionaliteit voor het opnieuw instellen van wacht woorden altijd testen als een gebruiker zonder dat er Azure-beheerders rollen zijn toegewezen.
 
 Beheerders kunnen met een twee poort beleid geen beveiligings vragen gebruiken.
 
@@ -93,6 +93,8 @@ Voor het twee-poort beleid zijn twee soorten verificatie gegevens vereist, zoals
 * Als er 30 dagen zijn verstreken in een proef abonnement; of
 * Er is een aangepast domein geconfigureerd voor uw Azure AD-Tenant, zoals *contoso.com*. of
 * De identiteiten van de on-premises Directory Azure AD Connect worden gesynchroniseerd
+
+U kunt het gebruik van SSPR voor beheerders accounts uitschakelen met de Power shell [-cmdlet Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0) . De `-SelfServePasswordResetEnabled $False` para meter schakelt SSPR voor beheerders uit.
 
 ### <a name="exceptions"></a>Uitzonderingen
 

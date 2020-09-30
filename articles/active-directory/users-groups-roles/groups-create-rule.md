@@ -14,33 +14,33 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5c44f72021fa46352ae6ded8fe671ea4f1a4d60
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: a94d1a4fa717bbee9974f7218e704ba06dad530d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88797170"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531527"
 ---
 # <a name="create-or-update-a-dynamic-group-in-azure-active-directory"></a>Een dynamische groep in Azure Active Directory maken of bijwerken
 
 In Azure Active Directory (Azure AD) kunt u regels gebruiken om het groepslid maatschap te bepalen op basis van eigenschappen van gebruikers of apparaten. In dit artikel leest u hoe u een regel instelt voor een dynamische groep in de Azure Portal.
 Dynamische lidmaatschappen worden ondersteund voor beveiligings groepen of Microsoft 365 groepen. Wanneer een regel voor groepslid maatschap wordt toegepast, worden de kenmerken van gebruikers en apparaten geëvalueerd voor overeenkomsten met de lidmaatschaps regel. Wanneer een kenmerk wordt gewijzigd voor een gebruiker of apparaat, worden alle regels voor de dynamische groep in de organisatie verwerkt voor wijzigingen in het lidmaatschap. Gebruikers en apparaten worden toegevoegd of verwijderd als ze voldoen aan de voor waarden voor een groep. Beveiligings groepen kunnen worden gebruikt voor apparaten of gebruikers, maar Microsoft 365 groepen kunnen alleen gebruikers groepen zijn.
 
-## <a name="rule-builder-in-the-azure-portal"></a>De opbouw functie voor regels in de Azure Portal
+## <a name="rule-builder-in-the-azure-portal"></a>De opbouwfunctie voor regels in Azure Portal
 
-Azure AD biedt een regel bouwer om uw belang rijke regels sneller te maken en bij te werken. De opbouw functie voor regels ondersteunt de bouw Maxi maal vijf expressies. Met de opbouw functie voor regels kunt u eenvoudig een regel maken met enkele eenvoudige expressies, maar deze kan niet worden gebruikt om elke regel te reproduceren. Als de regel functie geen ondersteuning biedt voor de regel die u wilt maken, kunt u het tekstvak gebruiken.
+Azure AD biedt een opbouwfunctie voor regels om uw belangrijke regels sneller te maken en bij te werken. De opbouw functie voor regels ondersteunt de bouw Maxi maal vijf expressies. Met de opbouwfunctie voor regels kunt u eenvoudiger een regel maken met enkele eenvoudige expressies, maar u kunt hiermee niet elke regel reproduceren. Als de opbouwfunctie voor regels geen ondersteuning biedt voor de regel die u wilt maken, kunt u het tekstvak gebruiken.
 
-Hier volgen enkele voor beelden van geavanceerde regels of syntaxis voor het maken van het gebruik van het tekstvak:
+Hier volgen enkele voorbeelden van geavanceerde regels of syntaxis die u het beste kunt maken via het tekstvak:
 
 - Regel met meer dan vijf expressies
-- De regel voor directe rapporten
-- De [prioriteit van Opera tors](groups-dynamic-membership.md#operator-precedence) instellen
+- De regel voor direct ondergeschikten
+- [Prioriteit van operator](groups-dynamic-membership.md#operator-precedence) instellen
 - [Regels met complexe expressies](groups-dynamic-membership.md#rules-with-complex-expressions); bijvoorbeeld `(user.proxyAddresses -any (_ -contains "contoso"))`
 
 > [!NOTE]
-> De opbouw functie voor regels kan mogelijk geen regels weer geven die zijn gemaakt in het tekstvak. Mogelijk wordt er een bericht weer gegeven wanneer de regel functie de regel niet kan weer geven. De opbouw functie voor regels wijzigt niet de ondersteunde syntaxis, validatie of verwerking van dynamische groeps regels op enigerlei wijze.
+> De opbouwfunctie voor regels kan mogelijk geen regels weergeven die zijn gemaakt in het tekstvak. Mogelijk wordt een bericht weergegeven wanneer de opbouwfunctie voor regels de regel niet kan weergeven. Met de opbouwfunctie voor regels wijzigt u niet de ondersteunde syntaxis, validatie of verwerking van dynamische groepsregels.
 
-![Lidmaatschaps regel voor een dynamische groep toevoegen](./media/groups-create-rule/update-dynamic-group-rule.png)
+![Scherm opname van de pagina ' Dynamic Membership Rules ' met de actie ' expressie toevoegen ' op het tabblad regels configureren geselecteerd.](./media/groups-create-rule/update-dynamic-group-rule.png)
 
 Zie voor voor beelden van de syntaxis, ondersteunde eigenschappen, Opera tors en waarden voor een lidmaatschaps regel, [dynamische lidmaatschaps regels voor groepen in azure Active Directory](groups-dynamic-membership.md).
 
@@ -54,7 +54,7 @@ Zie voor voor beelden van de syntaxis, ondersteunde eigenschappen, Opera tors en
 
 1. Voer op de pagina **groep** een naam en een beschrijving in voor de nieuwe groep. Selecteer een **lidmaatschaps type** voor gebruikers of apparaten, en selecteer vervolgens **dynamische query toevoegen**. De opbouw functie voor regels ondersteunt Maxi maal vijf expressies. Als u meer dan vijf expressies wilt toevoegen, moet u het tekstvak gebruiken.
 
-   ![Lidmaatschaps regel voor een dynamische groep toevoegen](./media/groups-create-rule/add-dynamic-group-rule.png)
+   ![Scherm opname waarin de pagina alle groepen wordt weer gegeven, waarbij de actie nieuwe groep is geselecteerd.](./media/groups-create-rule/add-dynamic-group-rule.png)
 
 1. Voor een overzicht van de aangepaste extensie-eigenschappen die beschikbaar zijn voor uw lidmaatschaps query:
    1. **Eigenschappen van aangepaste uitbrei ding ophalen** selecteren
@@ -71,7 +71,7 @@ Als de regel die u hebt ingevoerd niet geldig is, wordt uitgelegd waarom de rege
 1. Selecteer een groep om het profiel ervan te openen.
 1. Selecteer op de profiel pagina voor de groep **dynamische lidmaatschaps regels**. De opbouw functie voor regels ondersteunt Maxi maal vijf expressies. Als u meer dan vijf expressies wilt toevoegen, moet u het tekstvak gebruiken.
 
-   ![Lidmaatschaps regel voor een dynamische groep toevoegen](./media/groups-create-rule/update-dynamic-group-rule.png)
+   ![Lidmaatschapsregel voor een dynamische groep toevoegen](./media/groups-create-rule/update-dynamic-group-rule.png)
 
 1. Voor een overzicht van de aangepaste extensie-eigenschappen die beschikbaar zijn voor uw lidmaatschaps regel:
    1. **Eigenschappen van aangepaste uitbrei ding ophalen** selecteren
@@ -106,7 +106,7 @@ Als er een fout optreedt tijdens het verwerken van de lidmaatschaps regel voor e
 
 ![fout bericht waarschuwingen verwerken](./media/groups-create-rule/processing-error.png)
 
-In deze artikelen vindt u aanvullende informatie over groepen in Azure Active Directory.
+Deze artikelen bevatten aanvullende informatie over Azure Active Directory-groepen.
 
 - [Bestaande groepen weergeven](../fundamentals/active-directory-groups-view-azure-portal.md)
 - [Een nieuwe groep maken en leden toevoegen](../fundamentals/active-directory-groups-create-azure-portal.md)

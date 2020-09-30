@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fe4d42fd74b4efd67a01f32611bd170862ec84d0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: a20b6509973c7dc7e54d2e4f702175ad61e88da8
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89007125"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532497"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Veld Toewijzingen en trans formaties met Azure Cognitive Search Indexeer functies
 
@@ -201,7 +201,7 @@ Azure Cognitive Search ondersteunt twee verschillende base64-code ringen. U moet
 
 Azure Cognitive Search ondersteunt URL-veilige base64-code ring en normale base64-code ring. Een teken reeks die met base64 is gecodeerd tijdens het indexeren, moet later worden gedecodeerd met dezelfde coderings opties, anders wordt het resultaat niet met de oorspronkelijke waarde overeenkomen.
 
-Als de `useHttpServerUtilityUrlTokenEncode` or `useHttpServerUtilityUrlTokenDecode` -para meters voor respectievelijk coderen en decoderen zijn ingesteld op `true` , wordt `base64Encode` gereageerd als [HttpServerUtility. UrlTokenEncode](/dotnet/api/system.web.httpserverutility.urltokenencode?view=netframework-4.8) en `base64Decode` gedraagt zich als [HttpServerUtility. UrlTokenDecode](/dotnet/api/system.web.httpserverutility.urltokendecode?view=netframework-4.8).
+Als de `useHttpServerUtilityUrlTokenEncode` or `useHttpServerUtilityUrlTokenDecode` -para meters voor respectievelijk coderen en decoderen zijn ingesteld op `true` , wordt `base64Encode` gereageerd als [HttpServerUtility. UrlTokenEncode](/dotnet/api/system.web.httpserverutility.urltokenencode) en `base64Decode` gedraagt zich als [HttpServerUtility. UrlTokenDecode](/dotnet/api/system.web.httpserverutility.urltokendecode).
 
 > [!WARNING]
 > Als `base64Encode` wordt gebruikt voor het produceren van sleutel waarden, `useHttpServerUtilityUrlTokenEncode` moet worden ingesteld op True. Alleen URL-veilige base64-code ring kan worden gebruikt voor sleutel waarden. Zie [naamgevings regels &#40;Azure Cognitive Search&#41;](/rest/api/searchservice/naming-rules) voor de volledige set beperkingen voor tekens in sleutel waarden.

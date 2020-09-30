@@ -11,23 +11,26 @@ ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 874978288a38ff56ce220dd13cb6f3dfec902b2d
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 98c42a61e65935446f948e35cb08ed2893dd0b7b
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934579"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532514"
 ---
 # <a name="speech-to-text-rest-api"></a>REST API voor spraak-naar-tekst
 
 Als alternatief voor de [Speech-SDK](speech-sdk.md)kunt u met de speech-service spraak-naar-tekst converteren met behulp van een rest API. Elk toegankelijk eind punt is gekoppeld aan een regio. Voor uw toepassing is een abonnements sleutel vereist voor het eind punt dat u wilt gebruiken. De REST API is zeer beperkt en mag alleen worden gebruikt in gevallen van de spraak- [SDK](speech-sdk.md) .
 
-Voordat u de REST API voor spraak naar tekst gebruikt, moet u het volgende weten:
+Houd rekening met het volgende voordat u de spraak-naar-tekst REST API gebruikt:
 
 * Aanvragen die de REST API gebruiken en audio rechtstreeks verzenden, kunnen Maxi maal 60 seconden aan audio bevatten.
 * De REST API voor spraak naar tekst retourneert alleen eind resultaten. Er zijn geen gedeeltelijke resultaten gegeven.
 
 Als het verzenden van meer audio een vereiste is voor uw toepassing, kunt u overwegen om de [spraak-SDK](speech-sdk.md) of een rest API op basis van een bestand te gebruiken, zoals [batch transcriptie](batch-transcription.md).
+
+> [!TIP]
+> Zie de [documentatie](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure) van Azure Government voor Government Cloud (FairFax)-eind punten.
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 

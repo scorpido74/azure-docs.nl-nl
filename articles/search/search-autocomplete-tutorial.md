@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: bf5ebafa1b1ad9e2cfabcfc3d474392ecdbc98e6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: dac1a09b7984cdc8deca22ced1e8018a761979e2
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91268278"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531612"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps"></a>Automatisch aanvullen en suggesties aan client-apps toevoegen
 
@@ -56,8 +56,8 @@ Volg deze koppelingen voor de REST-en .NET SDK-referentie pagina's:
 
 + [Suggesties REST API](/rest/api/searchservice/suggestions) 
 + [REST API automatisch aanvullen](/rest/api/searchservice/autocomplete) 
-+ [Methode SuggestWithHttpMessagesAsync](/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?view=azure-dotnet)
-+ [Methode AutocompleteWithHttpMessagesAsync](/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync?view=azure-dotnet&viewFallbackFrom=azure-dotnet)
++ [Methode SuggestWithHttpMessagesAsync](/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync)
++ [Methode AutocompleteWithHttpMessagesAsync](/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync)
 
 ## <a name="structure-a-response"></a>Een reactie structureren
 
@@ -139,7 +139,7 @@ source: "/home/suggest?highlights=true&fuzzy=true&",
 
 ### <a name="suggest-function"></a>Functie Voorst Ellen
 
-Als u gebruikmaakt van C# en een MVC-toepassing, kunt u in het **HomeController.cs** -bestand onder de map controllers een klasse maken voor de voorgestelde resultaten. In .NET is een functie Voorst Ellen gebaseerd op de [methode DocumentsOperationsExtensions. suggereren](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest?view=azure-dotnet). Zie [Azure Cognitive Search gebruiken vanuit een .NET-toepassing](./search-howto-dotnet-sdk.md)voor meer informatie over de .NET SDK.
+Als u gebruikmaakt van C# en een MVC-toepassing, kunt u in het **HomeController.cs** -bestand onder de map controllers een klasse maken voor de voorgestelde resultaten. In .NET is een functie Voorst Ellen gebaseerd op de [methode DocumentsOperationsExtensions. suggereren](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest). Zie [Azure Cognitive Search gebruiken vanuit een .NET-toepassing](./search-howto-dotnet-sdk.md)voor meer informatie over de .NET SDK.
 
 `InitSearch`Met de-methode wordt een geverifieerde HTTP-index client naar de Azure Cognitive Search-service gemaakt. De eigenschappen van de [SuggestParameters](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggestparameters) -klasse bepalen welke velden worden doorzocht en geretourneerd in de resultaten, het aantal overeenkomsten en of fuzzy matching wordt gebruikt. 
 
@@ -177,7 +177,7 @@ public ActionResult Suggest(bool highlights, bool fuzzy, string term)
 }
 ```
 
-De functie Voorstellen maakt gebruik van twee parameters die bepalen of er bij het invoeren van de zoekterm markeringen voor treffers worden geretourneerd of zoeken bij benadering wordt gebruikt. De methode maakt een [SuggestParameters-object](/dotnet/api/microsoft.azure.search.models.suggestparameters?view=azure-dotnet), dat vervolgens wordt door gegeven aan de API Voorst Ellen. Het resultaat wordt vervolgens geconverteerd naar JSON, zodat deze in de client kan worden weergegeven.
+De functie Voorstellen maakt gebruik van twee parameters die bepalen of er bij het invoeren van de zoekterm markeringen voor treffers worden geretourneerd of zoeken bij benadering wordt gebruikt. De methode maakt een [SuggestParameters-object](/dotnet/api/microsoft.azure.search.models.suggestparameters), dat vervolgens wordt door gegeven aan de API Voorst Ellen. Het resultaat wordt vervolgens geconverteerd naar JSON, zodat deze in de client kan worden weergegeven.
 
 ## <a name="autocomplete"></a>Automatisch aanvullen
 
@@ -220,7 +220,7 @@ $(function () {
 
 ### <a name="autocomplete-function"></a>Functie automatisch aanvullen
 
-Automatisch aanvullen is gebaseerd op de [methode DocumentsOperationsExtensions. autocomplete](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.autocomplete?view=azure-dotnet). Net als bij suggesties gaat dit code blok in het **HomeController.cs** -bestand.
+Automatisch aanvullen is gebaseerd op de [methode DocumentsOperationsExtensions. autocomplete](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.autocomplete). Net als bij suggesties gaat dit code blok in het **HomeController.cs** -bestand.
 
 ```csharp
 public ActionResult AutoComplete(string term)

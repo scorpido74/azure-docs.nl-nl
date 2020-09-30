@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf57bea87fcb5e1d1f1bde4eada5a79d2fef52c8
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 555673d1496ac33642e04c09233ba554ee2cca95
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90706316"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531238"
 ---
 # <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>Cloudresources beveiligen met Azure Multi-Factor Authentication en AD FS
 
@@ -38,12 +38,12 @@ Voor de beveiliging van uw cloudresource stelt u een claimregel in die ervoor zo
 
 5. Selecteer in de wizard Transformatieclaimregels toevoegen **Passthrough of Een binnenkomende claim filteren** in de vervolgkeuzelijst en klik op **Volgende**.
 
-   ![Wizard Claimregel voor transformatie toevoegen](./media/howto-mfa-adfs/trustedip3.png)
+   ![In de scherm afbeelding wordt de wizard claim regel voor transformeren toevoegen weer gegeven, waarin u een claim regel sjabloon selecteert.](./media/howto-mfa-adfs/trustedip3.png)
 
 6. Geef de regel een naam. 
 7. Selecteer **Authenticatiemethodereferenties** als het type voor binnenkomende claims.
 8. Selecteer **Alle claimwaarden doorgeven**.
-    ![Wizard Claimregel voor transformatie toevoegen](./media/howto-mfa-adfs/configurewizard.png)
+    ![In de scherm afbeelding wordt de wizard claim regel voor transformeren toevoegen weer gegeven, waarbij u alle claim waarden door geven selecteert.](./media/howto-mfa-adfs/configurewizard.png)
 9. Klik op **Voltooien**. Sluit de AD FS-beheerconsole.
 
 ## <a name="trusted-ips-for-federated-users"></a>Goedgekeurde IP-adressen voor federatieve gebruikers
@@ -63,7 +63,7 @@ Het eerste wat we moeten doen is de AD FS-claims configureren. U maakt twee clai
 4. Klik bij uitgifte transformatie regels op **regel toevoegen.** 
     ![ Een claim regel toevoegen](./media/howto-mfa-adfs/trustedip2.png)
 5. Selecteer in de wizard Transformatieclaimregels toevoegen **Passthrough of Een binnenkomende claim filteren** in de vervolgkeuzelijst en klik op **Volgende**.
-   ![Wizard Claimregel voor transformatie toevoegen](./media/howto-mfa-adfs/trustedip3.png)
+   ![In de scherm afbeelding wordt de wizard claim regel voor transformeren toevoegen weer gegeven, waarin u door geven of een binnenkomende claim filtert.](./media/howto-mfa-adfs/trustedip3.png)
 6. Geef de claimregel een naam in het vak bij Naam claimregel. Bijvoorbeeld: BinnenBedrijfsNet.
 7. In de vervolgkeuzelijst naast Binnenkomend claimtype, selecteert u **Binnen bedrijfsnetwerk**.
    ![Toevoegen binnen bedrijfs netwerk claim](./media/howto-mfa-adfs/trustedip4.png)
@@ -88,7 +88,7 @@ Het eerste wat we moeten doen is de AD FS-claims configureren. U maakt twee clai
 
 Nu de claims zijn gemaakt, kunnen we goedgekeurde IP-adressen gaan configureren.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Selecteer **Azure Active Directory**  >  **beveiligings**  >  **voorwaardelijke toegang**met de  >  **naam locaties**.
 3. Selecteer op de Blade **voorwaardelijke toegang-benoemde locaties** de optie **MFA-vertrouwde IP-adressen configureren**
 

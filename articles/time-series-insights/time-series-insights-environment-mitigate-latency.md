@@ -10,16 +10,19 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 06/30/2020
+ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9fa47c81aede9de5d083f16f9e1705f687ad39a4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e89189b22b144d9e92ee8315bc6fd9aabe699eec
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046429"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531646"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights-gen1"></a>Beperking controleren en beperken om de latentie in Azure Time Series Insights gen1 te verminderen
+
+> [!CAUTION]
+> Dit is een gen1-artikel.
 
 Wanneer de hoeveelheid binnenkomende gegevens de configuratie van uw omgeving overschrijdt, kan er latentie of beperking in Azure Time Series Insights optreden.
 
@@ -74,17 +77,17 @@ Waarschuwingen kunnen u helpen bij het vaststellen en oplossen van latentie prob
 
 ## <a name="throttling-and-ingress-management"></a>Beperkings-en ingangs beheer
 
-* Als u een beperking ondervindt, wordt een waarde voor de *tijds vertraging van ontvangen berichten weer gegeven* , met de melding dat het aantal seconden achter uw Azure time series Insights-omgeving afkomstig is van de werkelijke tijd dat het bericht de gebeurtenis bron ophaalt (exclusief indexerings tijd van appx). 30-60 seconden).  
+- Als u een beperking ondervindt, wordt een waarde voor de *tijds vertraging van ontvangen berichten weer gegeven* , met de melding dat het aantal seconden achter uw Azure time series Insights-omgeving afkomstig is van de werkelijke tijd dat het bericht de gebeurtenis bron ophaalt (exclusief indexerings tijd van appx). 30-60 seconden).  
 
   De vertraging bij het *Ontvangen van berichten* van het aantal inkomende berichten moet ook een waarde hebben, zodat u kunt bepalen hoeveel achterstanden er achter u zijn.  De eenvoudigste manier om aan de slag te gaan is om de capaciteit van uw omgeving te verg Roten tot een grootte waardoor u het verschil kunt oplossen.  
 
   Als uw S1-omgeving bijvoorbeeld vertraging van 5.000.000 berichten demonstreert, kunt u de grootte van uw omgeving tot zes eenheden verg Roten om ongeveer een dag te krijgen.  U kunt nog meer verg Roten om sneller te kunnen werken. De ophaal periode is een veelvoorkomende gebeurtenis bij het inrichten van een omgeving, met name wanneer u deze verbindt met een gebeurtenis bron die al gebeurtenissen bevat of wanneer u grote hoeveel heden historische gegevens uploadt.
 
-* Een andere techniek is het instellen van een waarschuwing over een **opgeslagen ingangs gebeurtenissen** >= een drempel waarde die iets lager is dan de totale capaciteit van de omgeving voor een periode van twee uur.  Deze waarschuwing helpt u te begrijpen als u voortdurend op capaciteit werkt, wat een hoge kans op latentie aangeeft. 
+- Een andere techniek is het instellen van een waarschuwing over een **opgeslagen ingangs gebeurtenissen** >= een drempel waarde die iets lager is dan de totale capaciteit van de omgeving voor een periode van twee uur.  Deze waarschuwing helpt u te begrijpen als u voortdurend op capaciteit werkt, wat een hoge kans op latentie aangeeft.
 
   Als u bijvoorbeeld drie S1-eenheden hebt ingericht (of 2100 gebeurtenissen per minuut ingangs capaciteit), kunt u voor twee uur een waarschuwing voor de **opgeslagen gebeurtenissen** van de ingang instellen voor >= 1900 gebeurtenissen. Als u deze drempel waarde voortdurend overschrijdt en u de waarschuwing hebt geactiveerd, bent u waarschijnlijk onder provisiond.  
 
-* Als u vermoedt dat u wordt vertraagd, kunt u uw **ontvangen berichten** vergelijken met de egressed-berichten van uw gebeurtenis bron.  Als binnenkomend in uw event hub groter is dan uw **berichten ontvangen**, worden uw Azure time series Insights waarschijnlijk beperkt.
+- Als u vermoedt dat u wordt vertraagd, kunt u uw **ontvangen berichten** vergelijken met de egressed-berichten van uw gebeurtenis bron.  Als binnenkomend in uw event hub groter is dan uw **berichten ontvangen**, worden uw Azure time series Insights waarschijnlijk beperkt.
 
 ## <a name="improving-performance"></a>Prestaties verbeteren
 

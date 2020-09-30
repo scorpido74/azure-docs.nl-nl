@@ -13,12 +13,12 @@ ms.date: 09/15/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: e43ce318ca9e9b14ad059dd296799667653e0f95
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: ec0ab4601e15129ecd8917e0e750a3e1661dc558
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90561343"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530694"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>Micro soft Enter prise SSO-invoeg toepassing voor Apple-apparaten (preview-versie)
 
@@ -93,7 +93,7 @@ U hoeft geen toepassingen toe te voegen die gebruikmaken van MSAL of ASWebAuthen
 
 Standaard biedt de micro soft Enter prise SSO-invoeg toepassing alleen SSO voor geautoriseerde apps wanneer de SSO-invoeg toepassing al een gedeelde referentie heeft. De invoeg toepassing micro soft Enter prise SSO kan een gedeelde referentie verkrijgen als deze wordt aangeroepen door een andere ADAL-of MSAL-toepassing tijdens het ophalen van tokens. De meeste micro soft-apps gebruiken Microsoft Authenticator of SSO-invoeg toepassing. Dit betekent dat standaard-SSO buiten systeem eigen app-stromen het beste is.  
 
-`browser_sso_interaction_enabled`Als u de vlag inschakelt, kunnen niet-MSAL apps en Safari-browser de eerste Boots trap ping uitvoeren en een gedeelde referentie ophalen. Als de micro soft Enter prise SSO-invoeg toepassing nog geen gedeelde referentie heeft, wordt er een opgehaald wanneer een aanmelding wordt aangevraagd vanuit een Azure AD-URL in Safari browser, ASWebAuthenticationSession, SafariViewController of een andere white list systeem eigen toepassing.  
+`browser_sso_interaction_enabled`Als u de vlag inschakelt, kunnen niet-MSAL apps en Safari-browser de eerste Boots trap ping uitvoeren en een gedeelde referentie ophalen. Als de micro soft Enter prise SSO-invoeg toepassing nog geen gedeelde referentie heeft, wordt er een opgehaald wanneer een aanmelding wordt aangevraagd vanuit een Azure AD-URL in de Safari-browser, ASWebAuthenticationSession, SafariViewController of een andere toegestane systeem eigen toepassing.  
 
 - **Sleutel**: `browser_sso_interaction_enabled`
 - **Type**: `Integer`

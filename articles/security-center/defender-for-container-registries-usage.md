@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 1ff28b13d9adc120f8ee40bcd0119bf9b6883d6a
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 79a0db3b9f81368fbdaace5be3fd94ad29649291
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/29/2020
-ms.locfileid: "91449123"
+ms.locfileid: "91532598"
 ---
 # <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>Azure Defender gebruiken voor container registers om uw installatie kopieën te scannen op beveiligings problemen
 
@@ -127,7 +127,7 @@ Wanneer een Zoek resultaat overeenkomt met de criteria die u hebt gedefinieerd i
 > [!IMPORTANT]
 > Als u een regel wilt maken, hebt u machtigingen nodig voor het bewerken van een beleid in Azure Policy.
 >
-> Meer informatie vindt u in de [RBAC-machtigingen in azure Policy](../governance/policy/overview.md#rbac-permissions-in-azure-policy).
+> Meer informatie vindt u in de [Azure RBAC-machtigingen in azure Policy](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy).
 
 U kunt een van de volgende criteria gebruiken: 
 

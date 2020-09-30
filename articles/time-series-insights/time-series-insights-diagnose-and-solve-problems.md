@@ -9,16 +9,19 @@ manager: diviso
 ms.reviewer: v-mamcge
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 06/30/2020
+ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 0630e4dfcfc01e5c20fa6fcc3a516dbea6f6f53b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 231f2e4df1445c60378ac06aab0d0e56f410c1c8
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046456"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530133"
 ---
 # <a name="diagnose-and-solve-issues-in-your-azure-time-series-insights-gen1-environment"></a>Problemen vaststellen en oplossen in uw Azure Time Series Insights gen1-omgeving
+
+> [!CAUTION]
+> Dit is een gen1-artikel.
 
 In dit artikel worden de problemen beschreven die kunnen optreden in uw Azure Time Series Insights omgeving. Het artikel bevat mogelijke oorzaken en oplossingen voor oplossing.
 
@@ -66,8 +69,8 @@ Als u bijvoorbeeld 5.000.000 gebeurtenissen in een gebeurtenis bron hebt wanneer
 
 Als u oude gebeurtenissen in uw gebeurtenis bron hebt, kunt u op een van de volgende twee manieren beperken:
 
-- Wijzig de Bewaar limieten van uw gebeurtenis bron om oude gebeurtenissen die u niet wilt weer geven in Azure Time Series Insights te verwijderen.
-- Richt een grotere omgevings grootte (aantal eenheden) in om de door Voer van oude gebeurtenissen te verg Roten. Als u in het voor gaande voor beeld dezelfde S1-omgeving tot vijf eenheden voor één dag verhoogt, moet de omgeving binnen een dag worden opgevangen. Als uw gebeurtenis productie van de vaste toestand 1.000.000 of minder gebeurtenissen per dag is, kunt u de capaciteit van de gebeurtenis beperken tot één eenheid nadat Azure Time Series Insights is opgevangen.
+* Wijzig de Bewaar limieten van uw gebeurtenis bron om oude gebeurtenissen die u niet wilt weer geven in Azure Time Series Insights te verwijderen.
+* Richt een grotere omgevings grootte (aantal eenheden) in om de door Voer van oude gebeurtenissen te verg Roten. Als u in het voor gaande voor beeld dezelfde S1-omgeving tot vijf eenheden voor één dag verhoogt, moet de omgeving binnen een dag worden opgevangen. Als uw gebeurtenis productie van de vaste toestand 1.000.000 of minder gebeurtenissen per dag is, kunt u de capaciteit van de gebeurtenis beperken tot één eenheid nadat Azure Time Series Insights is opgevangen.
 
 De afgedwongen beperkings limiet is gebaseerd op het SKU-type en de capaciteit van de omgeving. Alle gebeurtenis bronnen in de omgeving delen deze capaciteit. Als de gebeurtenis bron voor uw IoT-hub of Event Hub gegevens na de afgedwongen limieten pusht, treden er vertragingen en vertraging op.
 
@@ -128,12 +131,12 @@ De eerste kolomkop moet de naam van de eigenschap time stamp zijn. Naast het **t
 
 De volgende waarden worden niet weer gegeven:
 
-- *(ABC)*: geeft aan dat Azure time series Insights de gegevens waarden leest als teken reeksen.
-- *Kalender pictogram*: geeft aan dat Azure time series Insights de gegevens waarden als datum/tijd-waarden leest.
-- *#*: Hiermee wordt aangegeven dat Azure Time Series Insights de gegevens waarden leest als gehele getallen.
+* *(ABC)*: geeft aan dat Azure time series Insights de gegevens waarden leest als teken reeksen.
+* *Kalender pictogram*: geeft aan dat Azure time series Insights de gegevens waarden als datum/tijd-waarden leest.
+* *#*: Hiermee wordt aangegeven dat Azure Time Series Insights de gegevens waarden leest als gehele getallen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [het oplossen van latentie in azure time series Insights](time-series-insights-environment-mitigate-latency.md).
+* Meer informatie over [het oplossen van latentie in azure time series Insights](time-series-insights-environment-mitigate-latency.md).
 
-- Meer informatie [over het schalen van uw Azure time series Insights-omgeving](time-series-insights-how-to-scale-your-environment.md).
+* Meer informatie [over het schalen van uw Azure time series Insights-omgeving](time-series-insights-how-to-scale-your-environment.md).

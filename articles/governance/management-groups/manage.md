@@ -3,12 +3,12 @@ title: Werken met uw beheer groepen-Azure governance
 description: Meer informatie over het weer geven, onderhouden, bijwerken en verwijderen van uw beheer groeps hiërarchie.
 ms.date: 08/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 765a3853bbd3ee21bfc2a4aca5d5adb03f413e30
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 82eeb2520815ddac69d27ddccd58c842c3e33deb
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89658762"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531017"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Uw resources beheren met beheergroepen
 
@@ -41,7 +41,7 @@ U kunt de naam van de beheer groep wijzigen met behulp van de portal, Power shel
 
 1. Wanneer het menu wordt geopend, voert u de nieuwe naam in die u wilt weer geven.
 
-   :::image type="content" source="./media/rename_context.png" alt-text="Scherm opname van het venster naam wijzigen van de groep en opties voor het wijzigen van de naam van een beheer groep." border="false":::
+   :::image type="content" source="./media/rename_context.png" alt-text="Scherm afbeelding van de actie balk en de knop naam van groep wijzigen op de pagina beheer groep." border="false":::
 
 1. Selecteer **Opslaan**.
 
@@ -68,7 +68,7 @@ Als u een beheer groep wilt verwijderen, moet aan de volgende vereisten worden v
 1. Er zijn geen onderliggende beheer groepen of-abonnementen in de beheer groep. Zie [beheer groepen en abonnementen verplaatsen in de hiërarchie](#moving-management-groups-and-subscriptions)als u een abonnement of beheer groep naar een andere beheer groep wilt verplaatsen.
 
 1. U moet schrijf machtigingen hebben voor de beheer groep (eigenaar, Inzender of Inzender voor beheer groepen). Als u wilt zien welke machtigingen u hebt, selecteert u de beheer groep en selecteert u vervolgens **iam**. Zie voor meer informatie over Azure-rollen.  
-   [Toegang en machtigingen beheren met RBAC](../../role-based-access-control/overview.md).
+   [Op rollen gebaseerd toegangs beheer op basis van Azure (Azure RBAC)](../../role-based-access-control/overview.md).
 
 ### <a name="delete-in-the-portal"></a>Verwijderen in de portal
 
@@ -82,14 +82,14 @@ Als u een beheer groep wilt verwijderen, moet aan de volgende vereisten worden v
 
 1. Selecteer **verwijderen**
 
-   :::image type="content" source="./media/delete.png" alt-text="Scherm afbeelding van de pagina beheer groep met de knop verwijderen gemarkeerd." border="false":::
+   :::image type="content" source="./media/delete.png" alt-text="Scherm afbeelding van de actie balk en de knop naam van groep wijzigen op de pagina beheer groep." border="false":::
 
    > [!TIP]
    > Als het pictogram is uitgeschakeld, ziet u de reden van het aanwijzen van de muis kiezer op het pictogram.
 
 1. Er is een venster waarin u wordt gevraagd of u de beheer groep wilt verwijderen.
 
-   :::image type="content" source="./media/delete_confirm.png" alt-text="Scherm opname van het bevestigings dialoogvenster ' groep verwijderen ' voor het verwijderen van een beheer groep." border="false":::
+   :::image type="content" source="./media/delete_confirm.png" alt-text="Scherm afbeelding van de actie balk en de knop naam van groep wijzigen op de pagina beheer groep." border="false":::
 
 1. Selecteer **Ja**.
 
@@ -123,7 +123,7 @@ U kunt elke beheer groep weer geven waarop u een directe of overgenomen Azure-ro
 
 1. Als u de details van de beheer groep wilt weer geven, selecteert u de koppeling **(details)** naast de titel van de beheer groep. Als deze koppeling niet beschikbaar is, bent u niet gemachtigd om die beheer groep weer te geven.
 
-   :::image type="content" source="./media/main.png" alt-text="Scherm afbeelding van de pagina beheer groepen met onderliggende beheer groepen en abonnementen." border="false":::
+   :::image type="content" source="./media/main.png" alt-text="Scherm afbeelding van de actie balk en de knop naam van groep wijzigen op de pagina beheer groep." border="false":::
 
 ### <a name="view-in-powershell"></a>Weer geven in Power shell
 
@@ -213,7 +213,7 @@ Als u de verplaatsing wilt uitvoeren, hebt u het volgende nodig:
 
 Als de rol Eigenaar van het abonnement wordt overgenomen van de huidige beheergroep, zijn de verplaatsingsdoelen beperkt. U kunt het abonnement alleen verplaatsen naar een andere beheergroep waarvan u de rol Eigenaar hebt. U kunt het niet verplaatsen naar een beheergroep waarvan u een Inzender bent, omdat u dan het eigendom van het abonnement kwijtraakt. Als u direct wordt toegewezen aan de rol van eigenaar van het abonnement (niet overgenomen van de beheer groep), kunt u dit verplaatsen naar een beheer groep waar u Inzender bent.
 
-Als u wilt zien welke machtigingen u hebt in de Azure Portal, selecteert u de beheer groep en selecteert u vervolgens **iam**. Zie [toegang en machtigingen beheren met RBAC](../../role-based-access-control/overview.md)voor meer informatie over Azure-rollen.
+Als u wilt zien welke machtigingen u hebt in de Azure Portal, selecteert u de beheer groep en selecteert u vervolgens **iam**. Zie voor meer informatie over Azure-rollen [Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](../../role-based-access-control/overview.md).
 
 ## <a name="move-subscriptions"></a>Abonnementen verplaatsen 
 
@@ -229,7 +229,7 @@ Als u wilt zien welke machtigingen u hebt in de Azure Portal, selecteert u de be
 
 1. Selecteer het abonnement in de lijst met de juiste ID.
 
-   :::image type="content" source="./media/add_context_sub.png" alt-text="Scherm afbeelding van de opties voor het toevoegen van een abonnement voor het selecteren van een bestaand abonnement dat aan een beheer groep moet worden toegevoegd." border="false":::
+   :::image type="content" source="./media/add_context_sub.png" alt-text="Scherm afbeelding van de actie balk en de knop naam van groep wijzigen op de pagina beheer groep." border="false":::
 
 1. Selecteer Opslaan.
 
@@ -243,13 +243,13 @@ Als u wilt zien welke machtigingen u hebt in de Azure Portal, selecteert u de be
 
 1. Selecteer de ovaal aan het einde van de rij voor het abonnement in de lijst die u wilt verplaatsen.
 
-   :::image type="content" source="./media/move_small.png" alt-text="Scherm afbeelding van het alternatieve menu voor een abonnement om de optie verplaatsen te selecteren." border="false":::
+   :::image type="content" source="./media/move_small.png" alt-text="Scherm afbeelding van de actie balk en de knop naam van groep wijzigen op de pagina beheer groep." border="false":::
 
 1. Selecteer **verplaatsen**.
 
 1. Selecteer in het menu dat wordt geopend de **bovenliggende beheer groep**.
 
-   :::image type="content" source="./media/move_small_context.png" alt-text="Scherm opname van het venster ' verplaatsen ' en opties voor het verplaatsen van een abonnement naar een andere beheer groep." border="false":::
+   :::image type="content" source="./media/move_small_context.png" alt-text="Scherm afbeelding van de actie balk en de knop naam van groep wijzigen op de pagina beheer groep." border="false":::
 
 1. Selecteer **Opslaan**.
 
@@ -298,7 +298,7 @@ az account management-group subscription remove --name 'Contoso' --subscription 
    - Als u nieuw selecteert, wordt er een nieuwe beheer groep gemaakt.
    - Als u een bestaand selecteert, wordt er een vervolg keuzelijst weer gegeven van alle beheer groepen die u naar deze beheer groep kunt verplaatsen.  
 
-   :::image type="content" source="./media/add_context_MG.png" alt-text="Scherm afbeelding van de opties beheer groep toevoegen voor het maken van een nieuwe beheer groep." border="false":::
+   :::image type="content" source="./media/add_context_MG.png" alt-text="Scherm afbeelding van de actie balk en de knop naam van groep wijzigen op de pagina beheer groep." border="false":::
 
 1. Selecteer **Opslaan**.
 
@@ -323,7 +323,7 @@ az account management-group update --name 'Contoso' --parent ContosoIT
 
 Beheergroepen worden ondersteund door het [Azure-activiteitenlogboek](../../azure-monitor/platform/platform-logs-overview.md). U kunt een query uitvoeren op alle gebeurtenissen die plaatsvinden naar een beheer groep op dezelfde centrale locatie als andere Azure-resources. Zo kunt u alle gewijzigde rol- of beleidstoewijzingen binnen een bepaalde beheergroep bekijken.
 
-:::image type="content" source="./media/al-mg.png" alt-text="Scherm opname van activiteiten logboeken en bewerkingen met betrekking tot de geselecteerde beheer groep." border="false":::
+:::image type="content" source="./media/al-mg.png" alt-text="Scherm afbeelding van de actie balk en de knop naam van groep wijzigen op de pagina beheer groep." border="false":::
 
 Bij het uitvoeren van query's op beheergroepen buiten de Azure-portal, ziet het doelbereik voor beheergroepen er als volgt uit: **/ providers/Microsoft.Management/managementGroups/{yourMgID}** .
 

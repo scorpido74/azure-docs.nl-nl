@@ -1,17 +1,15 @@
 ---
 title: Fouten simuleren in azure Service Fabric-apps
 description: Meer informatie over hoe u uw Azure Service Fabric-Services kunt beveiligen tegen probleemloze en niet-uitgestelde fouten.
-author: anmolah
 ms.topic: conceptual
 ms.date: 06/15/2017
-ms.author: anmola
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c193ef00d56b2d2fc7ad806cc795dcbe360db548
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: c714ae30c64ea073cbac521eac5e15a8d968b7ea
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022102"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531307"
 ---
 # <a name="simulate-failures-during-service-workloads"></a>Fouten simuleren tijdens service werkbelastingen
 De test scenario's in azure Service Fabric ontwikkel aars in staat stellen geen zorgen te maken over afzonderlijke storingen. Er zijn echter scenario's, waarbij een expliciete interleaving van de werk belasting en storingen van de client mogelijk nodig is. De interleaving van de werk belasting en fouten van de client zorgt ervoor dat de service daad werkelijk een actie uitvoert wanneer er een fout optreedt. Op basis van het niveau van de controle die de test baarheid biedt, kunnen deze nauw keurige punten van de werk belasting worden uitgevoerd. Deze inductie van fouten in verschillende statussen in de toepassing kan fouten opsporen en de kwaliteit verbeteren.

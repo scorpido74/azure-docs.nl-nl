@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/10/2020
-ms.openlocfilehash: f6a042dfee000dd6341368b46db32fe36060cc72
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 2f57d20df6adbb7c1a0c73958cc10035126e29b8
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171593"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530983"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL-één server bewaken en afstemmen
 Het bewaken van gegevens over uw servers helpt u bij het oplossen en optimaliseren van uw werk belasting. Azure Database for PostgreSQL biedt verschillende bewakings opties om inzicht te krijgen in het gedrag van uw server.
@@ -38,7 +38,7 @@ Deze metrische gegevens zijn beschikbaar voor Azure Database for PostgreSQL:
 |network_bytes_egress|Netwerk uit|Bytes|Netwerk uit over actieve verbindingen.|
 |network_bytes_ingress|Netwerk in|Bytes|Netwerk in meerdere actieve verbindingen.|
 |backup_storage_used|Gebruikte back-upopslag|Bytes|De hoeveelheid back-upopslag die wordt gebruikt. Deze waarde vertegenwoordigt de som van de opslag die wordt gebruikt door alle back-ups van de volledige data base, differentiële back-ups en logboek back-ups die worden bewaard op basis van de Bewaar periode voor back-ups die is ingesteld voor de server. De frequentie van de back-ups wordt beheerd door de service en uitgelegd in het [artikel concepten](concepts-backup.md). Voor geo-redundante opslag is het gebruik van back-upopslag twee keer zo dat van de lokaal redundante opslag.|
-|pg_replica_log_delay_in_bytes|Maximale vertraging in Replica's|Bytes|De vertraging in bytes tussen het hoofd en de meest bewaarde replica. Deze metriek is alleen beschikbaar op de hoofd server.|
+|pg_replica_log_delay_in_bytes|Maximale vertraging in Replica's|Bytes|De vertraging in bytes tussen de primaire en meest bewaarde replica. Deze metriek is alleen beschikbaar op de primaire server.|
 |pg_replica_log_delay_in_seconds|Replica vertraging|Seconden|De tijd sinds de laatste geplayte trans actie. Deze metriek is alleen beschikbaar voor replica servers.|
 
 ## <a name="server-logs"></a>Serverlogboeken

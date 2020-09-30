@@ -3,20 +3,18 @@ title: Leeftijd preconstrueerde entiteit-LUIS
 titleSuffix: Azure Cognitive Services
 description: Dit artikel bevat informatie over de leeftijds voorgedefinieerde entiteit in Language Understanding (LUIS).
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 10/04/2019
-ms.author: diberry
-ms.openlocfilehash: 1607b80276a9c35bf0ac2f0a00bd2226e2c07f97
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4e1a6b1b6fb99a2786de06e89960e8480a5e1338
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78270796"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532921"
 ---
 # <a name="age-prebuilt-entity-for-a-luis-app"></a>Leeftijd preconstrueerde entiteit voor een LUIS-app
 De vooraf gemaakte leeftijds entiteit legt de leeftijds waarde zowel numeriek als in termen van dagen, weken, maanden en jaren vast. Omdat deze entiteit al is getraind, hoeft u geen voor beeld-uitingen met leeftijd toe te voegen aan de doel stellingen van de toepassing. De leeftijds entiteit wordt in [veel cultures](luis-reference-prebuilt-entities.md)ondersteund.
@@ -30,7 +28,7 @@ De leeftijd wordt beheerd vanuit de map [recognizers-text](https://github.com/Mi
 
 #### <a name="v3-response"></a>[V3-antwoord](#tab/V3)
 
-De volgende JSON is met de `verbose` para meter ingesteld `false`op:
+De volgende JSON is met de `verbose` para meter ingesteld op `false` :
 
 ```json
 "entities": {
@@ -43,7 +41,7 @@ De volgende JSON is met de `verbose` para meter ingesteld `false`op:
 }
 ```
 #### <a name="v3-verbose-response"></a>[Uitgebreide respons van v3](#tab/V3-verbose)
-De volgende JSON is met de `verbose` para meter ingesteld `true`op:
+De volgende JSON is met de `verbose` para meter ingesteld op `true` :
 
 ```json
 "entities": {

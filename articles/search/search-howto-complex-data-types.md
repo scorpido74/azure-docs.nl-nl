@@ -9,12 +9,12 @@ tags: complex data types; compound data types; aggregate data types
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: 2b26a317f7338b3e87623b8312d9f7efd10dbed1
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 5b430d5a8f0c2702617b7f6b3935e1b169753552
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88917853"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530851"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>Complexe gegevens typen model leren in azure Cognitive Search
 
@@ -62,7 +62,7 @@ Het volgende JSON-document bestaat uit eenvoudige velden en complexe velden. Com
 
 ## <a name="creating-complex-fields"></a>Complexe velden maken
 
-Net als bij elke index definitie kunt u de portal, [rest API](/rest/api/searchservice/create-index)of [.NET SDK](/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) gebruiken om een schema te maken dat complexe typen bevat. 
+Net als bij elke index definitie kunt u de portal, [rest API](/rest/api/searchservice/create-index)of [.NET SDK](/dotnet/api/microsoft.azure.search.models.index) gebruiken om een schema te maken dat complexe typen bevat. 
 
 In het volgende voor beeld ziet u een JSON-index schema met eenvoudige velden, verzamelingen en complexe typen. U ziet dat in een complex type elk subveld een type heeft en kan kenmerken hebben, net als velden op het hoogste niveau. Het schema komt overeen met de bovenstaande voorbeeld gegevens. `Address` is een complex veld dat geen verzameling is (een hotel heeft één adres). `Rooms` is een complex verzamelings veld (een hotel heeft veel kamers).
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 04/25/2019
-ms.openlocfilehash: 59a0989157a87c7fb951c8b6d9c7b70474626f42
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 01c0b6610968c8eaa493a63aa9004d8ea4c36ca2
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91361871"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530763"
 ---
 # <a name="powershell-modules-for-azure-machine-learning-studio-classic"></a>Power shell-modules voor Azure Machine Learning Studio (klassiek)
 
@@ -53,12 +53,12 @@ Klassieke Power shell kan worden geïnstalleerd naast AZ of AzureRM voor zowel d
 ## <a name="powershell-support-table"></a><a name="support-table"></a> Power shell-ondersteunings tabel
 
 
-|  **AZ** |  **Klassieke Power shell** |
+| Taak | **AZ** |  **Klassieke Power shell** |
 | --- | --- | --- |
 | Werk ruimten maken/verwijderen | [Resource Manager-sjablonen](https://docs.microsoft.com/azure/machine-learning/studio/deploy-with-resource-manager-template) |  |
 | Toezeggings plannen voor werk ruimten beheren | [New-AzMlCommitmentPlan](https://docs.microsoft.com/powershell/module/az.machinelearning/new-azmlcommitmentplan) | |
 | Werkruimte gebruikers beheren |  | [Add-AmlWorkspaceUsers](https://github.com/hning86/azuremlps#add-amlworkspaceusers)|
-| Webservices beheren | [New-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/new-azmlwebservice) <br>(' nieuwe ' webservices)|| [New-AmlWebService](https://github.com/hning86/azuremlps#manage-classic-web-service) <br>(' klassieke ' webservices) |
+| Webservices beheren | [New-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/new-azmlwebservice) <br>(' nieuwe ' webservices)| [New-AmlWebService](https://github.com/hning86/azuremlps#manage-classic-web-service) <br>(' klassieke ' webservices) |
 | Webservice-eind punten/-sleutels beheren |  [Get-AzMlWebServiceKey](https://docs.microsoft.com/powershell/module/az.machinelearning/get-azmlwebservicekey)|  [Add-AmlWebServiceEndpoint](https://github.com/hning86/azuremlps#manage-classic-web-servcie-endpoint)|
 | Gebruikers gegevens sets/getrainde modellen beheren| | [Get-AmlDataset](https://github.com/hning86/azuremlps#manage-user-assets-dataset-trained-model-transform) |
 | Gebruikers experimenten beheren |  | [Start-AmlExperiment](https://github.com/hning86/azuremlps#manage-experiment) |

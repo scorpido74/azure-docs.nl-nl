@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/20/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b1206d9e4d6eec7b2bf029310360f563849d61d6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 01b57526b15a806271d58b250f06a4372fe56b72
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91268297"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532258"
 ---
 # <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>Analyse functies voor tekst verwerking in azure Cognitive Search
 
@@ -317,7 +317,7 @@ Elke Analyzer die wordt gebruikt als-is, zonder configuratie, is opgegeven voor 
 
 In dit voor beeld worden de Engelse en Franse analyse functies van micro soft toegewezen aan de velden Beschrijving. Het is een fragment dat is gemaakt op basis van een grotere definitie van de hotels-index, gemaakt met behulp van de klasse hotel in het hotels.cs-bestand van het [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) -voor beeld.
 
-Call [Analyzer](/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet), het type [analysator](/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet) opgeven dat een tekst analyse levert die wordt ondersteund in azure Cognitive Search.
+Call [Analyzer](/dotnet/api/microsoft.azure.search.models.analyzer), het type [analysator](/dotnet/api/microsoft.azure.search.models.analyzername) opgeven dat een tekst analyse levert die wordt ondersteund in azure Cognitive Search.
 
 ```csharp
     public partial class Hotel
@@ -343,7 +343,7 @@ Call [Analyzer](/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-do
 
 Wanneer aanpassing of configuratie vereist is, moet u een Analyzer-constructie toevoegen aan een index. Zodra u het hebt gedefinieerd, kunt u de definitie van het veld toevoegen, zoals wordt getoond in het vorige voor beeld.
 
-Maak een [CustomAnalyzer](/dotnet/api/microsoft.azure.search.models.customanalyzer?view=azure-dotnet) -object. Zie [CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Microsoft.Azure.Search/tests/Tests/CustomAnalyzerTests.cs)voor meer voor beelden.
+Maak een [CustomAnalyzer](/dotnet/api/microsoft.azure.search.models.customanalyzer) -object. Zie [CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Microsoft.Azure.Search/tests/Tests/CustomAnalyzerTests.cs)voor meer voor beelden.
 
 ```csharp
 {

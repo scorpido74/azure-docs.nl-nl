@@ -8,19 +8,77 @@ ms.subservice: core
 ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 08/06/2020
-ms.openlocfilehash: a16a8432f61e39a3e36aeb748cabfa2c4b60d796
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/30/2020
+ms.openlocfilehash: 374cc79b42d2dcaed0312c0ec205073906ce1fc5
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91315351"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530671"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>Interactieve fout opsporing met Visual Studio code
 
 
 
-Leer hoe u interactief fouten opspoort Azure Machine Learning pijp lijnen en implementaties met behulp van Visual Studio code (VS code) en [depugpy](https://github.com/microsoft/debugpy/).
+Leer hoe u interactief fouten opspoort Azure Machine Learning experimenten, pijp lijnen en implementaties met Visual Studio code (VS code) en [depugpy](https://github.com/microsoft/debugpy/).
+
+## <a name="run-and-debug-experiments-locally"></a>Experimenten lokaal uitvoeren en fouten opsporen
+
+Gebruik de Azure Machine Learning-extensie om uw machine learning experimenten te valideren, uit te voeren en fouten op te sporen voordat u deze naar de Cloud verzendt.
+
+### <a name="prerequisites"></a>Vereisten
+
+* Azure Machine Learning VS code-extensie (preview-versie). Zie [Azure machine learning VS code-extensie instellen](tutorial-setup-vscode-extension.md)voor meer informatie.
+* [Docker](https://www.docker.com/get-started)
+  * Docker Desktop voor Mac en Windows
+  * Docker-engine voor Linux.
+* [Python 3](https://www.python.org/downloads/)
+
+> [!NOTE]
+> Zorg ervoor dat u in Windows [docker configureert voor het gebruik van Linux-containers](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers).
+
+> [!TIP]
+> Voor Windows, hoewel dit niet vereist is, is het raadzaam [docker te gebruiken met het Windows-subsysteem voor Linux (WSL) 2](https://docs.microsoft.com/windows/wsl/tutorials/wsl-containers#install-docker-desktop).
+
+> [!IMPORTANT]
+> Voordat u uw experiment lokaal uitvoert, moet u ervoor zorgen dat docker actief is.
+
+### <a name="debug-experiment-locally"></a>Debug experiment lokaal
+
+1. Open in VS code de weer gave Azure Machine Learning extensie.
+1. Vouw het knoop punt abonnement met uw werk ruimte uit. Als u er nog geen hebt, kunt u [een Azure machine learning-werk ruimte maken](how-to-manage-resources-vscode.md#create-a-workspace) met behulp van de extensie.
+1. Vouw het knoop punt van de werk ruimte uit.
+1. Klik met de rechter muisknop op het knoop punt **experimenten** en selecteer **experiment maken**. Wanneer de prompt wordt weer gegeven, geeft u een naam op voor uw experiment.
+1. Vouw het knoop punt **experimenten** uit, klik met de rechter muisknop op het experiment dat u wilt uitvoeren en selecteer **Run experimenten**.
+1. Selecteer **lokaal**in de lijst met opties om uw experiment uit te voeren.
+1. De **eerste keer alleen in Windows gebruiken**. Selecteer **Ja**als u wordt gevraagd of u de bestands share wilt toestaan. Wanneer u bestands share inschakelt, kan docker de directory met uw script koppelen aan de container. Daarnaast kunt u met docker de logboeken en uitvoer van de uitvoering opslaan in een tijdelijke map op uw systeem.
+1. Selecteer **Ja** om het experiment op te lossen. Anders selecteert u **Nee**. Als u Nee kiest, wordt uw experiment lokaal uitgevoerd zonder dat dit aan het fout opsporingsprogramma is gekoppeld.
+1. Selecteer **nieuwe uitvoerings configuratie maken** om uw uitvoerings configuratie te maken. De uitvoerings configuratie definieert het script dat u wilt uitvoeren, afhankelijkheden en gegevens sets die worden gebruikt. Als u er al een hebt, selecteert u deze in de vervolg keuzelijst.
+    1. Kies uw omgeving. U kunt kiezen uit een van de [Azure machine learning](resource-curated-environments.md) met de curator of uw eigen maken.
+    1. Geef de naam op van het script dat u wilt uitvoeren. Het pad is relatief ten opzichte van de map die in VS code is geopend.
+    1. Kies of u een Azure Machine Learning gegevensset wilt gebruiken of niet. U kunt [Azure machine learning gegevens sets](how-to-manage-resources-vscode.md#create-dataset) maken met behulp van de extensie.
+    1. Debugpy is vereist om het fout opsporingsprogramma te koppelen aan de container die uw experiment uitvoert. Als u debugpy wilt toevoegen als een afhankelijkheid, selecteert u **Debugpy toevoegen**. Anders selecteert u **overs Laan**. Als u debugpy niet toevoegt als afhankelijkheid, wordt uw experiment uitgevoerd zonder dat het fout opsporingsprogramma is gekoppeld.
+    1. Een configuratie bestand met de instellingen voor het uitvoeren van de configuratie wordt geopend in de editor. Als u tevreden bent met de instellingen, selecteert u **experiment verzenden**. U kunt ook het opdracht palet openen (**> opdracht palet weer geven**) in de menu balk en de `Azure ML: Submit experiment` opdracht invoeren in het tekstvak.
+1. Zodra het experiment is verzonden, wordt een docker-installatie kopie met uw script en de configuraties die zijn opgegeven in de configuratie van de uitvoering, gemaakt.
+
+    Wanneer het proces voor het bouwen van de docker-installatie kopie wordt gestart, wordt de inhoud van de `60_control_log.txt` Bestands stroom naar de uitvoer console in VS code.
+
+    > [!NOTE]
+    > De eerste keer dat uw docker-installatie kopie wordt gemaakt, kan het enkele minuten duren.
+
+1. Zodra uw installatie kopie is gemaakt, wordt er een prompt weer gegeven om het fout opsporingsprogramma te starten. Stel de onderbrekings punten in het script in en selecteer **fout opsporing starten** wanneer u klaar bent om de fout opsporing te starten. Hiermee koppelt u het fout opsporingsprogramma VS code aan de container met uw experiment. U kunt ook in de uitbrei ding Azure Machine Learning de muis aanwijzer boven het knoop punt voor de huidige uitvoering en het pictogram afspelen selecteren om het fout opsporingsprogramma te starten.
+
+    > [!IMPORTANT]
+    > U kunt niet meerdere foutopsporingssessie voor één experiment hebben. U kunt in twee of meer experimenten echter fouten opsporen met behulp van meerdere exemplaren van VS code.
+
+Op dit moment moet u uw code kunnen stapsgewijs door lopen en fouten opsporen met behulp van VS code.
+
+Als u de uitvoering wilt annuleren, klikt u met de rechter muisknop op het knoop punt uitvoeren en selecteert u **uitvoeren annuleren**.
+
+Net als bij extern experimenteren, kunt u het knoop punt uitvoeren uitvouwen om de logboeken en uitvoer te controleren.
+
+> [!TIP]
+> Docker-installatie kopieën die gebruikmaken van de afhankelijkheden die in uw omgeving zijn gedefinieerd, worden tussen uitvoeringen opnieuw gebruikt. Als u echter een experiment uitvoert met een nieuwe of andere omgeving, wordt er een nieuwe installatie kopie gemaakt. Omdat deze installatie kopieën worden opgeslagen in uw lokale opslag, kunt u het beste oude of ongebruikte docker-installatie kopieën verwijderen. Als u installatie kopieën van uw systeem wilt verwijderen, gebruikt u de docker- [cli](https://docs.docker.com/engine/reference/commandline/rmi/) of de [VS code docker-extensie](https://code.visualstudio.com/docs/containers/overview).
 
 ## <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Fouten in Machine Learning-pijplijnen opsporen en oplossen
 
@@ -416,7 +474,7 @@ Voor lokale web service-implementaties is een werkende docker-installatie op uw 
 
 Op dit punt verbindt de VS code met debugpy in de docker-container en stopt dit met het onderbrekings punt dat u eerder hebt ingesteld. U kunt nu de code door lopen terwijl deze wordt uitgevoerd, variabelen weer geven, enzovoort.
 
-Zie [fouten opsporen in uw Python-code](https://docs.microsoft.com/visualstudio/python/debugging-python-in-visual-studio?view=vs-2019&preserve-view=true)voor meer informatie over het gebruik van VS code voor het opsporen van problemen met python.
+Zie [fouten opsporen in uw Python-code](https://code.visualstudio.com/docs/python/debugging)voor meer informatie over het gebruik van VS code voor het opsporen van problemen met python.
 
 ### <a name="stop-the-container"></a>De container stoppen
 
@@ -428,6 +486,6 @@ docker stop debug
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u Visual Studio code Remote hebt ingesteld, kunt u een reken instantie gebruiken als externe Compute van Visual Studio code om uw code interactief te debuggen. 
+Nu u versus externe code hebt ingesteld, kunt u een reken instantie gebruiken als externe Compute van VS code om uw code interactief te debuggen. 
 
 [Zelf studie: uw eerste ml-model trainen](tutorial-1st-experiment-sdk-train.md) laat zien hoe u een reken instantie met een geïntegreerde notebook kunt gebruiken.

@@ -6,18 +6,18 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/01/2020
-ms.openlocfilehash: 49eea969f987a72872cda58ae6a7c41e50a14c10
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2cda79e1b08e67e10d42acb5093230ce8450d67d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830278"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530915"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>Prestaties bewaken met de query Store
 
 **Van toepassing op:** Azure Database for PostgreSQL-één server versie 9,6 en hoger
 
-De functie query Store in Azure Database for PostgreSQL biedt een manier om query prestaties na verloop van tijd bij te houden. Query Store vereenvoudigt het oplossen van prestaties, omdat u snel de langste en meest tijdrovende query's kunt vinden. In de query Store wordt automatisch een geschiedenis van query's en runtime-statistieken vastgelegd en worden deze voor uw beoordeling bewaard. De gegevens worden op tijd Vensters gescheiden, zodat u de database gebruiks patronen kunt zien. Gegevens voor alle gebruikers, data bases en query's worden opgeslagen in een Data Base met de naam **azure_sys** in het Azure database for PostgreSQL-exemplaar.
+De functie query Store in Azure Database for PostgreSQL biedt een manier om query prestaties na verloop van tijd bij te houden. Query Store vereenvoudigt het oplossen van problemen met prestaties, omdat u snel de langstlopende en meest tijdrovende query's kunt vinden. In de query Store wordt automatisch een geschiedenis van query's en runtime-statistieken vastgelegd en worden deze voor uw beoordeling bewaard. De gegevens worden op tijd Vensters gescheiden, zodat u de database gebruiks patronen kunt zien. Gegevens voor alle gebruikers, data bases en query's worden opgeslagen in een Data Base met de naam **azure_sys** in het Azure database for PostgreSQL-exemplaar.
 
 > [!IMPORTANT]
 > Wijzig de **azure_sys** data base of de bijbehorende schema's niet. Dit zorgt ervoor dat query Store en gerelateerde prestatie functies niet goed werken.
@@ -116,7 +116,7 @@ Query's worden genormaliseerd door de structuur te bekijken na het verwijderen v
 ### <a name="query_storeqs_view"></a>query_store. qs_view
 In deze weer gave worden alle gegevens in query Store geretourneerd. Er is één rij voor elke afzonderlijke data base-ID, gebruikers-ID en query-ID. 
 
-|**Naam**   |**Type** | **Referenties**  | **Beschrijving**|
+|**Naam**   |**Type** | **Naslaginformatie**  | **Beschrijving**|
 |---|---|---|---|
 |runtime_stats_entry_id |bigint | | ID uit de runtime_stats_entries tabel|
 |user_id    |nogmaals    |pg_authid. OID  |OID van de gebruiker die de instructie heeft uitgevoerd|
@@ -124,7 +124,7 @@ In deze weer gave worden alle gegevens in query Store geretourneerd. Er is één
 |query_id   |bigint  || Interne hash-code, berekend op basis van de ontledings structuur van de instructie|
 |query_sql_text |Varchar (10000)  || De tekst van een representatieve verklaring. Verschillende query's met dezelfde structuur worden samen geclusterd. deze tekst is de tekst voor de eerste van de query's in het cluster.|
 |plan_id    |bigint |   |De ID van het abonnement dat is gekoppeld aan deze query en die nog niet beschikbaar is|
-|start_time |tijdstempel  ||  Query's worden geaggregeerd op tijd-buckets: de tijds panne van een Bucket is standaard 15 minuten. Dit is de begin tijd die overeenkomt met het tijds interval voor deze vermelding.|
+|start_tijd |tijdstempel  ||  Query's worden geaggregeerd op tijd-buckets: de tijds panne van een Bucket is standaard 15 minuten. Dit is de begin tijd die overeenkomt met het tijds interval voor deze vermelding.|
 |end_time   |tijdstempel  ||  De eind tijd die overeenkomt met het tijds interval voor deze vermelding.|
 |rpc's  |bigint  || Aantal keren dat de query is uitgevoerd|
 |total_time |dubbele precisie   ||  Totale uitvoerings tijd van de query, in milliseconden|
@@ -157,7 +157,7 @@ Deze weer gave retourneert query tekst gegevens in query Store. Er is één rij 
 ### <a name="query_storepgms_wait_sampling_view"></a>query_store. pgms_wait_sampling_view
 Met deze weer gave worden wachtende gebeurtenis gegevens in query Store geretourneerd. Er is één rij voor elke afzonderlijke data base-ID, gebruikers-ID, query-ID en gebeurtenis.
 
-|**Naam**|  **Type**|   **Referenties**| **Beschrijving**|
+|**Naam**|  **Type**|   **Naslaginformatie**| **Beschrijving**|
 |---|---|---|---|
 |user_id    |nogmaals    |pg_authid. OID  |OID van de gebruiker die de instructie heeft uitgevoerd|
 |db_id  |nogmaals    |pg_database. OID    |De OID van de Data Base waarin de instructie is uitgevoerd|
@@ -170,11 +170,11 @@ Met deze weer gave worden wachtende gebeurtenis gegevens in query Store geretour
 ### <a name="functions"></a>Functions
 Query_store. qs_reset () retourneert void
 
-`qs_reset`Hiermee worden alle statistische gegevens verwijderd die tot nu toe zijn verzameld door de query Store. Deze functie kan alleen worden uitgevoerd door de rol Server beheerder.
+`qs_reset` Hiermee worden alle statistische gegevens verwijderd die tot nu toe zijn verzameld door de query Store. Deze functie kan alleen worden uitgevoerd door de rol Server beheerder.
 
 Query_store. staging_data_reset () retourneert void
 
-`staging_data_reset`Hiermee worden alle statistieken die in het geheugen zijn verzameld, verwijderd door de query Store (dat wil zeggen, de gegevens in het geheugen die nog niet zijn leeg gemaakt voor de data base). Deze functie kan alleen worden uitgevoerd door de rol Server beheerder.
+`staging_data_reset` Hiermee worden alle statistieken die in het geheugen zijn verzameld, verwijderd door de query Store (dat wil zeggen, de gegevens in het geheugen die nog niet zijn leeg gemaakt voor de data base). Deze functie kan alleen worden uitgevoerd door de rol Server beheerder.
 
 
 ## <a name="azure-monitor"></a>Azure Monitor
@@ -250,7 +250,7 @@ In de volgende tabellen worden de velden voor de twee logboek typen beschreven. 
 ## <a name="limitations-and-known-issues"></a>Beperkingen en bekende problemen
 - Als een PostgreSQL-server de para meter default_transaction_read_only heeft, kan de query Store geen gegevens vastleggen.
 - De functionaliteit van het query archief kan worden onderbroken als er lange Unicode-query's worden aangetroffen (>= 6000 bytes).
-- [Replica's lezen](concepts-read-replicas.md) query's opslaan gegevens van de hoofd server repliceren. Dit betekent dat het query archief van een lees replica geen statistieken biedt over query's die worden uitgevoerd op de Lees replica.
+- [Replica's lezen](concepts-read-replicas.md) query's opslaan gegevens van de primaire server repliceren. Dit betekent dat het query archief van een lees replica geen statistieken biedt over query's die worden uitgevoerd op de Lees replica.
 
 
 ## <a name="next-steps"></a>Volgende stappen
