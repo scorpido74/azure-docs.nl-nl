@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2020
 ms.author: yelevin
-ms.openlocfilehash: b899069a03b39d068f2b4059cf26d3baf1f3beae
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 502b93b4459fba4da04207d9186f8c7ce6b298c2
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905420"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578475"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>Azure-Sentinel uitbreiden in werkruimten en tenants
 
@@ -27,23 +27,23 @@ ms.locfileid: "90905420"
 
 Azure Sentinel is gebaseerd op een Log Analytics-werk ruimte. U ziet dat de eerste stap bij het onboarding van Azure-Sentinel de Log Analytics werk ruimte moet selecteren die u voor dat doel wilt gebruiken.
 
-U kunt het volledige voor deel van de Azure-Sentinel-ervaring krijgen wanneer u één werk ruimte gebruikt. Er zijn ook enkele omstandigheden waarin u mogelijk meerdere werk ruimten moet hebben. In de volgende tabel worden enkele van deze situaties vermeld en wordt, indien mogelijk, voorgesteld hoe aan de vereiste kan worden voldaan met één werk ruimte:
+U kunt het volledige voordeel van de Azure Sentinel-ervaring verkrijgen wanneer u één werkruimte gebruikt. Er zijn ook enkele omstandigheden waarin u mogelijk meerdere werk ruimten moet hebben. In de volgende tabel worden enkele van deze situaties vermeld en wordt, indien mogelijk, voorgesteld hoe aan de vereiste kan worden voldaan met één werk ruimte:
 
-| Vereiste | Description | Manieren om het aantal werk ruimten te verminderen |
+| Vereiste | Beschrijving | Manieren om het aantal werkruimten te verminderen |
 |-------------|-------------|--------------------------------|
-| Soevereiniteit en naleving van regelgeving | Een werk ruimte is gekoppeld aan een bepaalde regio. Als gegevens in verschillende [Azure-regio's](https://azure.microsoft.com/global-infrastructure/geographies/) moeten worden bewaard om te voldoen aan de wettelijke vereisten, moet deze worden opgesplitst in afzonderlijke werk ruimten. |  |
+| Soevereiniteit en naleving van regelgeving | Een werkruimte is gekoppeld aan een bepaalde regio. Als gegevens in verschillende [Azure-regio's](https://azure.microsoft.com/global-infrastructure/geographies/) moeten worden bewaard om te voldoen aan de wettelijke vereisten, moet deze worden opgesplitst in afzonderlijke werk ruimten. |  |
 | Eigendom van gegevens | De grenzen van gegevens eigendom, bijvoorbeeld door dochter ondernemingen of gelieerde ondernemingen, worden beter afgebakend met afzonderlijke werk ruimten. |  |
-| Meerdere Azure-tenants | Azure Sentinel ondersteunt het verzamelen van gegevens van micro soft en Azure SaaS-resources alleen binnen een eigen Azure Active Directory (Azure AD)-Tenant grens. Daarom is voor elke Azure AD-Tenant een afzonderlijke werk ruimte vereist. |  |
-| Gedetailleerd toegangs beheer voor gegevens | Een organisatie moet mogelijk verschillende groepen binnen of buiten de organisatie toestaan om toegang te krijgen tot een aantal van de gegevens die worden verzameld door Azure Sentinel. Bijvoorbeeld:<br><ul><li>Resource-eigen aren hebben toegang tot gegevens met betrekking tot hun resources</li><li>Regionale of subsidiaire SOCs toegang tot gegevens die relevant zijn voor hun delen van de organisatie</li></ul> | [Resource RBAC](https://techcommunity.microsoft.com/t5/azure-sentinel/controlling-access-to-azure-sentinel-data-resource-rbac/ba-p/1301463) of [tabel niveau RBAC](https://techcommunity.microsoft.com/t5/azure-sentinel/table-level-rbac-in-azure-sentinel/ba-p/965043) gebruiken |
+| Meerdere Azure-tenants | Azure Sentinel ondersteunt het verzamelen van gegevens van micro soft en Azure SaaS-resources alleen binnen een eigen Azure Active Directory (Azure AD)-Tenant grens. Daarom is voor elke Azure AD-tenant een afzonderlijke werkruimte vereist. |  |
+| Gedetailleerde controle over gegevenstoegang | Een organisatie moet mogelijk verschillende groepen binnen of buiten de organisatie toestaan om toegang te krijgen tot een aantal van de gegevens die worden verzameld door Azure Sentinel. Bijvoorbeeld:<br><ul><li>Resource-eigen aren hebben toegang tot gegevens met betrekking tot hun resources</li><li>Regionale of subsidiaire SOCs toegang tot gegevens die relevant zijn voor hun delen van de organisatie</li></ul> | [Resource RBAC](https://techcommunity.microsoft.com/t5/azure-sentinel/controlling-access-to-azure-sentinel-data-resource-rbac/ba-p/1301463) of [tabel niveau RBAC](https://techcommunity.microsoft.com/t5/azure-sentinel/table-level-rbac-in-azure-sentinel/ba-p/965043) gebruiken |
 | Gedetailleerde instellingen voor retentie | In het verleden waren meerdere werk ruimten de enige manier om verschillende Bewaar perioden voor verschillende gegevens typen in te stellen. Dit is in veel gevallen niet langer nodig, dankzij de introductie van instellingen voor het bewaren van een tabel niveau. | Instellingen voor het [bewaren van tabel niveau](https://techcommunity.microsoft.com/t5/azure-sentinel/new-per-data-type-retention-is-now-available-for-azure-sentinel/ba-p/917316) gebruiken of [gegevens verwijdering](../azure-monitor/platform/personal-data-mgmt.md#how-to-export-and-delete-private-data) automatiseren |
-| Facturering splitsen | Door werk ruimten in afzonderlijke abonnementen te plaatsen, kunnen ze worden gefactureerd aan verschillende partijen. | Gebruiks rapportage en cross-oplaad |
-| Verouderde architectuur | Het gebruik van meerdere werk ruimten kan van een historisch ontwerp zijn dat rekening houdt met de beperkingen of aanbevolen procedures die niet meer waar zijn. Het kan ook een wille keurige ontwerp keuze zijn die kan worden aangepast om Azure Sentinel beter te maken.<br><br>Enkele voorbeelden:<br><ul><li>Een standaard werkruimte per abonnement gebruiken bij het implementeren van Azure Security Center</li><li>De nood zaak van nauw keurigere toegangs beheer-of Bewaar instellingen, de oplossingen waarvoor relatief nieuwe</li></ul> | Werk ruimten opnieuw ontwerpen |
+| Gesplitste facturering | Door werk ruimten in afzonderlijke abonnementen te plaatsen, kunnen ze worden gefactureerd aan verschillende partijen. | Gebruiksrapportages en doorberekening |
+| Verouderde architectuur | Het gebruik van meerdere werk ruimten kan van een historisch ontwerp zijn dat rekening houdt met de beperkingen of aanbevolen procedures die niet meer waar zijn. Het kan ook een willekeurige ontwerpkeuze zijn geweest, die kan worden aangepast voor een betere aansluiting op Azure Sentinel.<br><br>Enkele voorbeelden:<br><ul><li>Een standaard werkruimte per abonnement gebruiken bij het implementeren van Azure Security Center</li><li>De nood zaak van nauw keurigere toegangs beheer-of Bewaar instellingen, de oplossingen waarvoor relatief nieuwe</li></ul> | Werkruimten opnieuw ontwerpen |
 
 ### <a name="managed-security-service-provider-mssp"></a>MSSP (Managed Security service provider)
 
 Een bepaalde use-case die meerdere werk ruimten verplicht is, is een MSSP Azure-Sentinel service. In dit geval zijn veel van de bovenstaande vereisten van toepassing, waardoor er meerdere werk ruimten, tussen tenants, het best practice. De MSSP kan [Azure Lighthouse](../lighthouse/overview.md) gebruiken om de functionaliteit van Azure Sentinel cross-Workspace over meerdere tenants uit te breiden.
 
-## <a name="azure-sentinel-multiple-workspace-architecture"></a>Azure Sentinel multiple-werkruimte architectuur
+## <a name="azure-sentinel-multiple-workspace-architecture"></a>Azure Sentinel-architectuur met meerdere werkruimten
 
 Zoals geïmpliceerd door de bovenstaande vereisten, zijn er gevallen waarin meerdere Azure Sentinel-werk ruimten, mogelijk via Azure Active Directory (Azure AD)-tenants, centraal moeten worden bewaakt en beheerd door één SOC.
 
@@ -63,7 +63,7 @@ Dit model biedt grote voor delen ten opzichte van een volledig gecentraliseerd m
 
 - Minder uitdagingen met betrekking tot de eigendom van gegevens, de privacy en de naleving van de regelgeving.
 
-- Minimale netwerk latentie en kosten.
+- Minimale netwerklatentie en -kosten.
 
 - Eenvoudige onboarding en offboarding van nieuwe dochter ondernemingen of klanten.
 
@@ -131,7 +131,7 @@ Zie ook [Azure Sentinel implementeren en beheren als code](https://techcommunity
 
 ## <a name="managing-workspaces-across-tenants-using-azure-lighthouse"></a>Werk ruimten beheren via tenants met behulp van Azure Lighthouse
 
-Zoals eerder vermeld, kunnen de verschillende Azure Sentinel-werk ruimten in veel scenario's in verschillende Azure AD-tenants worden geplaatst. U kunt [Azure Lighthouse](../lighthouse/overview.md) gebruiken om alle activiteiten van meerdere werk ruimten over de grenzen van de Tenant uit te breiden, zodat gebruikers in uw Tenant beheren kunnen werken met de Sentinel-werk ruimten van Azure in alle tenants. Zodra Azure [Lighthouse is](../lighthouse/how-to/onboard-customer.md)uitgevallen, gebruikt u de [map + abonnement kiezer](./multiple-tenants-service-providers.md#how-to-access-azure-sentinel-from-other-tenants) op het Azure Portal om alle abonnementen te selecteren die werk ruimten bevatten die u wilt beheren, om ervoor te zorgen dat ze allemaal beschikbaar zijn in de verschillende selecters van de werk ruimte in de portal.
+Zoals eerder vermeld, kunnen de verschillende Azure Sentinel-werk ruimten in veel scenario's in verschillende Azure AD-tenants worden geplaatst. U kunt [Azure Lighthouse](../lighthouse/overview.md) gebruiken om alle activiteiten van meerdere werk ruimten over de grenzen van de Tenant uit te breiden, zodat gebruikers in uw Tenant beheren kunnen werken met de Sentinel-werk ruimten van Azure in alle tenants. Zodra Azure [Lighthouse is](../lighthouse/how-to/onboard-customer.md)uitgevallen, gebruikt u de [map + abonnement kiezer](./multiple-tenants-service-providers.md#how-to-access-azure-sentinel-in-managed-tenants) op het Azure Portal om alle abonnementen te selecteren die werk ruimten bevatten die u wilt beheren, om ervoor te zorgen dat ze allemaal beschikbaar zijn in de verschillende selecters van de werk ruimte in de portal.
 
 Wanneer u Azure Lighthouse gebruikt, is het raadzaam om een groep te maken voor elke Azure-Sentinel-rol en machtigingen van elke Tenant te delegeren aan die groepen.
 

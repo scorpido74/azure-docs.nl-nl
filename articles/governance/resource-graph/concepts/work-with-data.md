@@ -1,15 +1,15 @@
 ---
 title: Werken met grote gegevenssets
 description: Meer informatie over het ophalen, opmaken, pagina's en overs laan van records in grote gegevens sets tijdens het werken met Azure resource Graph.
-ms.date: 08/10/2020
+ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5f3073986e424c641d884e1c2427d3d519658d37
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ee552908696aa652931bf3555391adcfec0fc6d3
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89005935"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578492"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Werken met grote Azure-resource gegevens sets
 
@@ -48,7 +48,7 @@ De **eerste** heeft momenteel een Maxi maal toegestane waarde van _5000_, die wo
 De volgende optie voor het werken met grote gegevens sets is het besturings element **overs Laan** . Met dit besturings element kan uw query overstappen of het gedefinieerde aantal records overs Laan voordat de resultaten worden geretourneerd. **Overs Laan** is handig voor query's waarbij het sorteren resulteert in een zinvolle manier, waarbij de bedoeling is om records ergens in het midden van de resultatenset op te halen. Als de resultaten aan het einde van de geretourneerde gegevensset worden weer gegeven, is het efficiënter om een andere Sorteer configuratie te gebruiken en de resultaten op te halen uit de bovenkant van de gegevensset in plaats daarvan.
 
 > [!NOTE]
-> Wanneer u **overs Laan**gebruikt, is het raadzaam om de resultaten te rangschikken op ten minste één kolom met `asc` of `desc` . Zonder te sorteren, worden de geretourneerde resultaten wille keurig en niet herhaald.
+> Wanneer u **overs Laan**gebruikt, is het raadzaam om de resultaten te rangschikken op ten minste één kolom met `asc` of `desc` . Zonder te sorteren, worden de geretourneerde resultaten wille keurig en niet herhaald. Als `limit` of wordt `take` gebruikt in de query, wordt **overs Laan** genegeerd.
 
 In de volgende voor beelden ziet u hoe u de eerste _tien_ records kunt overs Laan waarmee een query zou leiden, in plaats daarvan de geretourneerde resultatenset met de elfde record te starten:
 

@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 7dac5976904263de40c7bc240bdb7deac1ec3df6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 428ed96c3223e644b0c78712723231a5fabbdc77
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85509197"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578577"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-portal"></a>Aan de slag met Azure Data Lake Storage Gen1 met behulp van de Azure Portal
 
@@ -42,7 +42,7 @@ Voordat u met deze zelfstudie begint, moet u beschikken over de volgende items:
 
    * **Naam**. Voer een unieke naam in voor het Data Lake Storage Gen1-account.
    * **Abonnement**. Selecteer het abonnement waaronder u een nieuw Data Lake Storage Gen1 account wilt maken.
-   * **Resource groep**. Selecteer een bestaande resourcegroep of selecteer de optie **Nieuwe maken** om er een te maken. Een resourcegroep is een container met verwante resources voor een toepassing. Zie [Resourcegroepen in Azure](../azure-resource-manager/management/overview.md#resource-groups) voor meer informatie.
+   * **Resourcegroep**. Selecteer een bestaande resourcegroep of selecteer de optie **Nieuwe maken** om er een te maken. Een resourcegroep is een container met verwante resources voor een toepassing. Zie [Resourcegroepen in Azure](../azure-resource-manager/management/overview.md#resource-groups) voor meer informatie.
    * **Locatie**: Selecteer een locatie waar u het data Lake Storage gen1 account wilt maken.
    * **Versleutelingsinstellingen**. Er zijn drie opties:
 
@@ -50,7 +50,7 @@ Voordat u met deze zelfstudie begint, moet u beschikken over de volgende items:
      * **Gebruik sleutels die worden beheerd door data Lake Storage gen1**als u wilt dat data Lake Storage gen1 uw versleutelings sleutels beheert.
      * **Sleutels gebruiken uit uw eigen Key Vault**. U kunt een bestaande Azure Key Vault selecteren of een nieuwe Key Vault maken. Als u de sleutels van een Key Vault wilt gebruiken, moet u machtigingen voor het Data Lake Storage Gen1-account toewijzen voor toegang tot de Azure Key Vault. Zie [Machtigingen toewijzen aan Azure Key Vault](#assign-permissions-to-azure-key-vault) voor instructies.
 
-        ![Versleuteling Data Lake Storage Gen1](./media/data-lake-store-get-started-portal/adls-encryption-2.png "Versleuteling Data Lake Storage Gen1")
+        ![Scherm opname van de Blade nieuw Data Lake Storage gen 1 en het tabblad versleutelings instellingen.](./media/data-lake-store-get-started-portal/adls-encryption-2.png "Versleuteling Data Lake Storage Gen1")
 
         Klik op **OK** in de blade **Versleutelingsinstellingen**.
 
@@ -64,10 +64,10 @@ Als u sleutels van een Azure Key Vault hebt gebruikt om versleuteling voor het D
 
 1. Als u sleutels uit de Azure Key Vault hebt gebruikt, wordt in de Blade voor het Data Lake Storage Gen1-account een waarschuwing bovenaan weer gegeven. Klik op de waarschuwing om **Versleuteling** te openen.
 
-    ![Versleuteling Data Lake Storage Gen1](./media/data-lake-store-get-started-portal/adls-encryption-3.png "Versleuteling Data Lake Storage Gen1")
+    ![Scherm opname van de Blade Data Lake Storage Gen1 account met de waarschuwing met de tekst "sleutel kluis-machtigings configuratie vereist. Klik hier om het installatie programma in te stellen.](./media/data-lake-store-get-started-portal/adls-encryption-3.png "Versleuteling Data Lake Storage Gen1")
 2. Op de blade ziet u twee opties om toegang te configureren.
 
-    ![Versleuteling Data Lake Storage Gen1](./media/data-lake-store-get-started-portal/adls-encryption-4.png "Versleuteling Data Lake Storage Gen1")
+    ![Scherm opname van de Blade versleuteling.](./media/data-lake-store-get-started-portal/adls-encryption-4.png "Versleuteling Data Lake Storage Gen1")
 
    * Klik in de eerste optie op **Machtigingen verlenen** om toegang te configureren. De eerste optie is alleen ingeschakeld als de gebruiker die het Data Lake Storage Gen1 account heeft gemaakt ook een beheerder voor de Azure Key Vault is.
    * De andere optie is om de PowerShell-cmdlet uit te voeren die op de blade wordt weergegeven. U moet de eigenaar van de Azure Key Vault zijn of zijn gemachtigd om machtigingen voor de Azure Key Vault te verlenen. Wanneer u de cmdlet hebt uitgevoerd, keert u terug naar de blade en klikt u op **Inschakelen** om toegang te configureren.
@@ -87,10 +87,10 @@ U kunt mappen maken onder uw Data Lake Storage Gen1-account om gegevens te beher
 1. Open het Data Lake Storage Gen1-account dat u hebt gemaakt. Klik in het linkerdeel venster op **alle resources**en klik vervolgens op de Blade **alle resources** op de account naam waaronder u mappen wilt maken. Als u het account hebt vastgemaakt aan het startboard, klikt u op de tegel voor dat account.
 2. Klik op de Blade Data Lake Storage Gen1 account op **Data Explorer**.
 
-    ![Mappen maken in een Data Lake Storage Gen1-account](./media/data-lake-store-get-started-portal/ADL.Create.Folder.png "Mappen maken in een Data Lake Storage Gen1-account")
+    ![Scherm opname van de Blade Data Lake Storage gen 1 met de optie Data Explorer aangeroepen.](./media/data-lake-store-get-started-portal/ADL.Create.Folder.png "Mappen maken in een Data Lake Storage Gen1-account")
 3. Klik op de blade Data Explorer op **Nieuwe map**, voer een naam in voor de nieuwe map en klik op **OK**.
 
-    ![Mappen maken in een Data Lake Storage Gen1-account](./media/data-lake-store-get-started-portal/ADL.Folder.Name.png "Mappen maken in een Data Lake Storage Gen1-account")
+    ![Scherm afbeelding van de Blade Data Explorer met de optie nieuwe map en het tekstvak nieuwe map maken heet out.](./media/data-lake-store-get-started-portal/ADL.Folder.Name.png "Mappen maken in een Data Lake Storage Gen1-account")
 
     De zojuist gemaakte map wordt vermeld op de blade **Data Explorer**. U kunt geneste mappen tot elk gewenst niveau maken.
 
