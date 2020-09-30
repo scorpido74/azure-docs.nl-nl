@@ -69,8 +69,10 @@
       href: load-balancer-tcp-reset.md
     - name: Load Balancer van het type Standard en beschikbaarheidszones
       href: load-balancer-standard-availability-zones.md
-    - name: Ingebouwde beveiligingsmaatregelen
-      href: load-balancer-security-controls.md
+    - name: Beveiliging
+      items:
+        - name: Beveiligingsbasislijn
+          href: security-baseline.md
     - name: Beheer van back-end-pools
       href: backend-pool-management.md
     - name: Standard Load Balancer en Virtual Machine Scale Sets

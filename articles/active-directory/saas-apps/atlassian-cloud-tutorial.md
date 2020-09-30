@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/04/2020
+ms.date: 09/09/2020
 ms.author: jeedes
-ms.openlocfilehash: bdd0530aa580f8f1a1cfdffb81d070827a714115
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: b342731b953f7b68f8fcd9e55c49c907e5e8cc5d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686051"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973509"
 ---
 # <a name="tutorial-integrate-atlassian-cloud-with-azure-active-directory"></a>Zelfstudie: Atlassian Cloud met Azure Active Directory integreren
 
@@ -25,8 +25,6 @@ In deze zelfstudie leert u hoe u Atlassian Cloud integreert met Azure Active Dir
 * Beheren in Azure AD wie toegang heeft tot Atlassian Cloud.
 * Ervoor zorgen dat uw gebruikers zich automatisch met hun Azure AD-account kunnen aanmelden bij Atlassian Cloud.
 * Uw accounts op een centrale locatie beheren: Azure Portal.
-
-Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -45,13 +43,12 @@ In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD 
 
 * Atlassian Cloud ondersteunt door **SP en IDP** geïnitieerde eenmalige aanmelding
 * Atlassian Cloud ondersteunt [automatisch inrichten van gebruikers](atlassian-cloud-provisioning-tutorial.md)
-* Zodra u Atlassian Cloud hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-atlassian-cloud-from-the-gallery"></a>Atlassian Cloud toevoegen vanuit de galerie
 
 Als u de integratie van Atlassian Cloud met Azure AD wilt configureren, voegt u Atlassian Cloud vanuit de galerie toe aan uw lijst met beheerde SaaS-apps.
 
-1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Meld u bij de Azure-portal aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
 1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory**.
 1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
 1. Selecteer **Nieuwe toepassing** om een nieuwe toepassing toe te voegen.
@@ -62,7 +59,7 @@ Als u de integratie van Atlassian Cloud met Azure AD wilt configureren, voegt u 
 
 Configureer en test eenmalige aanmelding van Azure AD met Atlassian Cloud met behulp van een testgebruiker met de naam **B.Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Atlassian Cloud.
 
-Voltooi de volgende stappen om eenmalige aanmelding van Azure AD met Atlassian Cloud te configureren en te testen:
+Voltooi de volgende stappen om eenmalige aanmelding van Azure AD met Atlassian Cloud te configureren en testen:
 
 1. **[Configureer Azure AD met eenmalige aanmelding voor Atlassian Cloud](#configure-azure-ad-sso)** : om uw gebruikers in staat te stellen om eenmalige aanmelding met SAML voor Azure AD met Atlassian Cloud te gebruiken.
     1. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : om eenmalige aanmelding van Azure AD te testen met B.Simon.
@@ -88,54 +85,54 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
    > [!NOTE]
    > De URL moet passen in het `https://<instancename>.atlassian.net`-patroon
 
-   ![image](./media/atlassian-cloud-tutorial/get-atlassian-instance-name.png)
+   ![naam instantie](./media/atlassian-cloud-tutorial/get-atlassian-instance-name.png)
 
 1. Open de [Atlassian-beheerportal](https://admin.atlassian.com/) en klik op de naam van uw organisatie
 
-   ![image](./media/atlassian-cloud-tutorial/click-on-organization-in-atlassian-access.png)
+   ![organisatie](./media/atlassian-cloud-tutorial/click-on-organization-in-atlassian-access.png)
 
 1. U moet uw domein verifiëren voordat u eenmalige aanmelding configureert. Zie het document [Atlassian-domeinverificatie](https://confluence.atlassian.com/cloud/domain-verification-873871234.html) voor meer informatie.
 1. Selecteer in het scherm van de Atlassian-beheerportal de optie **Beveiliging** in de linkerlade
 
-   ![image](./media/atlassian-cloud-tutorial/click-on-security-in-atlassian-access.png)
+   ![security](./media/atlassian-cloud-tutorial/click-on-security-in-atlassian-access.png)
 
 1. Selecteer in het scherm van de Atlassian-beheerportal de optie **Eenmalige aanmelding met SAML** in de linkerlade
 
-   ![image](./media/atlassian-cloud-tutorial/click-on-saml-sso-in-atlassian-access-security.png)
+   ![saml sso](./media/atlassian-cloud-tutorial/click-on-saml-sso-in-atlassian-access-security.png)
 
 1. Klik op **SAML-configuratie toevoegen** en houd de pagina open
 
-   ![image](./media/atlassian-cloud-tutorial/saml-configuration-in-atlassian-access-security-saml-sso.png)
+   ![SAML-configuratie toevoegen](./media/atlassian-cloud-tutorial/saml-configuration-in-atlassian-access-security-saml-sso.png)
 
-   ![image](./media/atlassian-cloud-tutorial/add-saml-configuration.png)
+   ![SAML-configuratie 2 toevoegen](./media/atlassian-cloud-tutorial/add-saml-configuration.png)
 
-1. Zoek in [Azure Portal](https://portal.azure.com/) op de integratiepagina van de toepassing **Atlassian Cloud** de sectie **Beheren** en selecteer **Eenmalige aanmelding instellen**.
+1. Ga in Azure Portal, op de integratiepagina van de toepassing **Atlassian Cloud**, naar de sectie **Beheren** en selecteer **Eenmalige aanmelding instellen**.
 
-   ![image](./media/atlassian-cloud-tutorial/set-up-sso.png)
+   ![sso instellen](./media/atlassian-cloud-tutorial/set-up-sso.png)
 
 1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
 
-   ![image](./media/atlassian-cloud-tutorial/saml-in-azure.png)
+   ![saml in azure](./media/atlassian-cloud-tutorial/saml-in-azure.png)
 
 1. Schuif op de pagina **Eenmalige aanmelding instellen met SAML** omlaag naar **Atlassian Cloud instellen**
    
    a. Klik op **Configuratie-URL's**
 
-   ![image](./media/atlassian-cloud-tutorial/configuration-urls.png)
+   ![url's](./media/atlassian-cloud-tutorial/configuration-urls.png)
    
    b. Kopieer de waarde van de **Azure AD-id** uit Azure Portal en plak deze in het tekstvak **Entiteits-id van id-provider** in Atlassian
    
    c. Kopieer de waarde van de **aanmeldings-URL** uit Azure Portal en plak deze in het tekstvak **SSO-URL van id-provider** in Atlassian
 
-   ![image](./media/atlassian-cloud-tutorial/configuration-urls-azure.png)
+   ![SSO-URL van id-provider](./media/atlassian-cloud-tutorial/configuration-urls-azure.png)
 
-   ![image](./media/atlassian-cloud-tutorial/entity-id-and-ss.png)
+   ![entiteits-id en ss](./media/atlassian-cloud-tutorial/entity-id-and-ss.png)
 
 1. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** gaat u naar **Certificaat (Base64)** en selecteert u **Downloaden** om het certificaat te downloaden en op te slaan op uw computer.
 
-   ![image](./media/atlassian-cloud-tutorial/certificate.png)
+   ![handtekeningcertificaat](./media/atlassian-cloud-tutorial/certificate.png)
 
-   ![image](./media/atlassian-cloud-tutorial/certificate-1.png)
+   ![Certificaat 1](./media/atlassian-cloud-tutorial/certificate-1.png)
 
 1. De SAML-configuratie **Toevoegen/Opslaan** in Atlassian
 
@@ -147,49 +144,49 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
    
    c. Kopieer de waarde van uw **instantie-URL** die u in stap 1 hebt gekopieerd en plak deze in het vak **Relaystatus** in Azure
 
-   ![image](./media/atlassian-cloud-tutorial/copy-urls.png)
+   ![url's kopiëren](./media/atlassian-cloud-tutorial/copy-urls.png)
 
-   ![image](./media/atlassian-cloud-tutorial/edit-button.png)
+   ![knop bewerken](./media/atlassian-cloud-tutorial/edit-button.png)
 
-   ![image](./media/atlassian-cloud-tutorial/urls.png)
+   ![afbeelding van url's](./media/atlassian-cloud-tutorial/urls.png)
    
 1. Als u de toepassing wilt configureren in de door **SP** geïnitieerde modus, bewerkt u de sectie **Basis SAML-configuratie** van de pagina **Eenmalige aanmelding met SAML instellen** in Azure. Kopieer uw **instantie-URL** (uit stap 1) en plak deze in het vak **Aanmeldings-URL** in Azure
 
-   ![image](./media/atlassian-cloud-tutorial/edit-button.png)
+   ![knop bewerken in url's](./media/atlassian-cloud-tutorial/edit-button.png)
 
-   ![image](./media/atlassian-cloud-tutorial/sign-on-URL.png)
+   ![aanmeldings-url](./media/atlassian-cloud-tutorial/sign-on-URL.png)
    
 1. De Atlassian Cloud-toepassing verwacht SAML-asserties in een specifieke indeling. Hiervoor moet u aangepaste kenmerktoewijzingen toevoegen aan de configuratie van uw SAML-tokenkenmerken. U kunt de kenmerktoewijzing bewerken door op het pictogram **Bewerken** te klikken. 
 
-   ![image](./media/atlassian-cloud-tutorial/default-attributes.png)
+   ![kenmerken](./media/atlassian-cloud-tutorial/default-attributes.png)
    
-   1. Kenmerktoewijzing voor een Azure AD-Tenant met een Office 365-licentie
+   1. Kenmerktoewijzing voor een Azure AD-Tenant met een Microsoft 365-licentie
       
       a. Klik op de claim van de **unieke gebruikers-id (naam-id)**
 
-      ![image](./media/atlassian-cloud-tutorial/user-attributes-and-claims.png)
+      ![kenmerken en claims](./media/atlassian-cloud-tutorial/user-attributes-and-claims.png)
       
       b. Atlassian Cloud verwacht dat de **nameidentifier** (**unieke gebruikers-id**) moet worden toegewezen aan het e-mailadres van de gebruiker (**user.email**). Bewerk het **bronkenmerk** en wijzig dit in **user.mail**. Sla de wijzigingen op in de claim.
 
-      ![image](./media/atlassian-cloud-tutorial/unique-user-identifier.png)
+      ![unieke gebruikers-id](./media/atlassian-cloud-tutorial/unique-user-identifier.png)
       
       c. De definitieve kenmerktoewijzingen moeten er als volgt uitzien.
 
-      ![image](common/default-attributes.png)
+      ![afbeelding 2](common/default-attributes.png)
       
-   1. Kenmerktoewijzing voor een Azure AD-tenant met een Office 365-licentie 
+   1. Kenmerktoewijzing voor een Azure AD-Tenant zonder een Microsoft 365-licentie 
 
       a. Klik op de claim `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` .
 
-      ![image](./media/atlassian-cloud-tutorial/email-address.png)
+      ![afbeelding 3](./media/atlassian-cloud-tutorial/email-address.png)
          
-      b. Azure vult het kenmerk **user.mail** niet in voor gebruikers die zijn gemaakt in Azure AD-tenants zonder Office 365-licenties en slaat de e-mail voor dergelijke gebruikers op in het kenmerk **userprincipalname**. Atlassian Cloud verwacht dat de **nameidentifier** (**unieke gebruikers-id**) wordt toegewezen aan het e-mailadres van de gebruiker (**user.userprincipalname**).  Bewerk het **bronkenmerk** en wijzig dit in **user.userprincipalname**. Sla de wijzigingen op in de claim.
+      b. Het kenmerk **user.mail** wordt niet ingevuld voor gebruikers die zijn gemaakt in Azure AD-tenants zonder Microsoft 365-licenties en de e-mail voor dergelijke gebruikers wordt opgeslagen in het kenmerk **userprincipalname**. Atlassian Cloud verwacht dat de **nameidentifier** (**unieke gebruikers-id**) wordt toegewezen aan het e-mailadres van de gebruiker (**user.userprincipalname**).  Bewerk het **bronkenmerk** en wijzig dit in **user.userprincipalname**. Sla de wijzigingen op in de claim.
 
-      ![image](./media/atlassian-cloud-tutorial/set-email.png)
+      ![e-mail instellen](./media/atlassian-cloud-tutorial/set-email.png)
          
       c. De definitieve kenmerktoewijzingen moeten er als volgt uitzien.
 
-      ![image](common/default-attributes.png)
+      ![afbeelding 4](common/default-attributes.png)
      
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
@@ -210,15 +207,9 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 1. Selecteer in Azure Portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
 1. Selecteer **Atlassian Cloud** in de lijst met toepassingen.
 1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
-
-   ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
-
 1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
-
-    ![De koppeling Gebruiker toevoegen](./media/atlassian-cloud-tutorial/add-assign-user.png)
-
 1. Selecteer in het dialoogvenster **Gebruikers en groepen** de optie **B.Simon** in de lijst Gebruikers. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
-1. Als u een waarde voor een rol verwacht in de SAML-assertie, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+1. Als u verwacht dat er een rol aan de gebruikers moet worden toegewezen, kunt u de rol selecteren in de vervolgkeuzelijst **Selecteer een rol**. Als er geen rol is ingesteld voor deze app, wordt de rol Standaardtoegang geselecteerd.
 1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
 ### <a name="create-atlassian-cloud-test-user"></a>Een Atlassian Cloud-testgebruiker maken
@@ -235,7 +226,7 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Atlassian Cloud, ri
 
 1. In het vak **E-mailadres** voert u het e-mailadres van de gebruiker in. Wijs dan toegang tot de toepassing toe.
 
-    ![Een Atlassian Cloud-gebruiker maken](./media/atlassian-cloud-tutorial/tutorial-atlassiancloud-16.png)
+    ![Atlassian Cloud-gebruiker](./media/atlassian-cloud-tutorial/tutorial-atlassiancloud-16.png)
 
 1. Als u per e-mail een uitnodiging naar de gebruiker wilt verzenden, selecteert u **Gebruikers uitnodigen**. Er wordt een e-mailuitnodiging naar de gebruiker verzonden. Als de gebruiker de uitnodiging heeft geaccepteerd, wordt deze actief in het systeem.
 
@@ -244,16 +235,21 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Atlassian Cloud, ri
 
 ### <a name="test-sso"></a>Eenmalige aanmelding testen
 
-Wanneer u in het toegangsvenster de tegel Atlassian Cloud selecteert, wordt u automatisch aangemeld bij het exemplaar van Atlassian Cloud waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+In deze sectie test u de configuratie voor eenmalige aanmelding van Azure AD met behulp van de volgende opties. 
 
-## <a name="additional-resources"></a>Aanvullende resources
+#### <a name="sp-initiated"></a>Met SP geïnitieerd:
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+* Klik in Azure Portal op **Deze toepassing testen**. U wordt omgeleid naar de aanmeldings-URL van Atlassian Cloud, waar u de aanmeldingsstroom kunt initiëren.  
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+* Ga rechtstreeks naar de aanmeldings-URL van Atlassian Cloud en initieer de aanmeldingsstroom daar.
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+#### <a name="idp-initiated"></a>Met IDP geïnitieerd:
 
-- [Probeer Atlassian Cloud met Azure AD](https://aad.portal.azure.com/)
+* Klik in Azure Portal op **Deze toepassing testen**. U wordt automatisch aangemeld bij de instantie van Atlassian Cloud waarvoor u eenmalige aanmelding hebt ingesteld 
 
-- [Atlassian Cloud beveiligen met geavanceerde zichtbaarheid en besturingselementen](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+U kunt ook het Microsoft-toegangsvenster gebruiken om de toepassing in een willekeurige modus te testen. Wanneer u in het toegangsvenster op de tegel Atlassian Cloud klikt en als deze is geconfigureerd in de SP-modus, wordt u omgeleid naar de aanmeldingspagina van de toepassing voor het initiëren van de aanmeldingsstroom. Als deze is geconfigureerd in de IDP-modus, wordt u automatisch aangemeld bij de instantie van Atlassian Cloud waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+
+
+## <a name="next-steps"></a>Volgende stappen
+
+Zodra u Atlassian Cloud hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

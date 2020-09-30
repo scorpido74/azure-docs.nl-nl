@@ -1,14 +1,14 @@
 ---
 title: Beheeropties voor DoD Impact Level 4-blauwdrukvoorbeeld
 description: Beheeropties toewijzen voor het DoD Impact Level 4-blauwdrukvoorbeeld. Elke beheeroptie wordt toegewezen aan een of meer Azure-beleidsregels die helpt bij de evaluatie.
-ms.date: 06/30/2020
+ms.date: 09/17/2020
 ms.topic: sample
-ms.openlocfilehash: a704731f4fe8e810235507fd84c90b17571a8442
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 9ee3214f8cdacd1d70a59bc5a23e4638cadb579d
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923285"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978410"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-4-blueprint-sample"></a>Beheeropties toewijzen voor het DoD Impact Level 4-blauwdrukvoorbeeld
 
@@ -102,11 +102,11 @@ Deze blauwdruk bevat beleidsdefinities waarmee u ervoor kunt zorgen dat meldinge
 Logboekgegevens die door Azure Monitor worden verzameld, worden opgeslagen in een Log Analytics-werkruimte, waardoor gecentraliseerd(e) configuratie en beheer mogelijk wordt. Met deze blauwdruk kunt u ervoor te zorgen dat gebeurtenissen worden geregistreerd door [Azure Policy](../../../policy/overview.md)-definities toe te wijzen die de implementatie van de Log Analytics-agent op virtuele Azure-machines controleren en afdwingen.
 
 - \[Preview\]: Implementatie van de Log Analytics-agent controleren - VM-installatiekopie (besturingssysteem) onvermeld
-- \[Preview\]: Implementatie van de Log Analytics-agent controleren in VMSS - VM-installatiekopie (besturingssysteem) onvermeld
+- Implementatie van de Log Analytics-agent in virtuele-machineschaalsets controleren - VM-installatiekopie (besturingssysteem) niet vermeld
 - \[Preview\]: Log Analytics-werkruimte voor VM controleren - niet-overeenkomende items rapporteren
-- \[Preview\]: Log Analytics-agent voor Linux VM Scale Sets (VMSS) implementeren
+- Log Analytics-agent implementeren voor virtuele-machineschaalsets van Linux
 - \[Preview\]: Log Analytics-agent voor virtuele Linux-machines implementeren
-- \[Preview\]: Log Analytics-agent voor Windows-VM-schaalsets (VMSS) implementeren
+- Log Analytics-agent implementeren voor virtuele-machineschaalsets van Windows
 - \[Preview\]: Log Analytics-agent voor virtuele Windows-machines implementeren
 
 ## <a name="au-5-response-to-audit-processing-failures"></a>AU-5 Response to Audit Processing Failures
@@ -123,11 +123,11 @@ Met deze blauw druk worden [Azure Policy](../../../policy/overview.md)-definitie
 Logboekgegevens die door Azure Monitor worden verzameld, worden opgeslagen in een Log Analytics-werkruimte, waardoor gecentraliseerde rapportage en analyse mogelijk wordt. Met deze blauwdruk kunt u ervoor te zorgen dat gebeurtenissen worden geregistreerd door [Azure Policy](../../../policy/overview.md)-definities toe te wijzen die de implementatie van de Log Analytics-agent op virtuele Azure-machines controleren en afdwingen.
 
 - \[Preview\]: Implementatie van de Log Analytics-agent controleren - VM-installatiekopie (besturingssysteem) onvermeld
-- \[Preview\]: Implementatie van de Log Analytics-agent controleren in VMSS - VM-installatiekopie (besturingssysteem) onvermeld
+- Implementatie van de Log Analytics-agent in virtuele-machineschaalsets controleren - VM-installatiekopie (besturingssysteem) niet vermeld
 - \[Preview\]: Log Analytics-werkruimte voor VM controleren - niet-overeenkomende items rapporteren
-- \[Preview\]: Log Analytics-agent voor Linux VM Scale Sets (VMSS) implementeren
+- Log Analytics-agent implementeren voor virtuele-machineschaalsets van Linux
 - \[Preview\]: Log Analytics-agent voor virtuele Linux-machines implementeren
-- \[Preview\]: Log Analytics-agent voor Windows-VM-schaalsets (VMSS) implementeren
+- Log Analytics-agent implementeren voor virtuele-machineschaalsets van Windows
 - \[Preview\]: Log Analytics-agent voor Windows-VM's implementeren
 
 ## <a name="au-6-5-audit-review-analysis-and-reporting--integration--scanning-and-monitoring-capabilities"></a>AU-6 (5) controle, analyse en rapportage | Integratie/scan- en bewakingsmogelijkheden
@@ -144,7 +144,7 @@ Deze blauwdruk bevat beleidsdefinities waarmee u records kunt controleren met ev
 - Beveiligingsproblemen moeten worden opgelost met een oplossing voor evaluatie van beveiligingsproblemen
 - Beveiligingsproblemen in de beveiligingsconfiguratie van virtuele-machineschaalsets moeten worden hersteld
 - \[Preview\]: Implementatie van de Log Analytics-agent controleren - VM-installatiekopie (besturingssysteem) onvermeld
-- \[Preview\]: Implementatie van de Log Analytics-agent controleren in VMSS - VM-installatiekopie (besturingssysteem) onvermeld
+- Implementatie van de Log Analytics-agent in virtuele-machineschaalsets controleren - VM-installatiekopie (besturingssysteem) niet vermeld
 
 ## <a name="au-12-audit-generation"></a>AU-12 Audit Generation
 
@@ -152,11 +152,11 @@ Deze blauwdruk bevat beleidsdefinities waarmee de implementatie van de Log Analy
 Met deze beleidsdefinities wordt ook de configuratie gecontroleerd van diagnostische logboeken om inzicht te bieden in bewerkingen die worden uitgevoerd binnen Azure-resources. Daarnaast worden controle en Advanced Data Security geconfigureerd op SQL-servers.
 
 - \[Preview\]: Implementatie van de Log Analytics-agent controleren - VM-installatiekopie (besturingssysteem) onvermeld
-- \[Preview\]: Implementatie van de Log Analytics-agent controleren in VMSS - VM-installatiekopie (besturingssysteem) onvermeld
+- Implementatie van de Log Analytics-agent in virtuele-machineschaalsets controleren - VM-installatiekopie (besturingssysteem) niet vermeld
 - \[Preview\]: Log Analytics-werkruimte voor VM controleren - niet-overeenkomende items rapporteren
-- \[Preview\]: Log Analytics-agent voor Linux VM Scale Sets (VMSS) implementeren
+- Log Analytics-agent implementeren voor virtuele-machineschaalsets van Linux
 - \[Preview\]: Log Analytics-agent voor virtuele Linux-machines implementeren
-- \[Preview\]: Log Analytics-agent voor Windows-VM-schaalsets (VMSS) implementeren
+- Log Analytics-agent implementeren voor virtuele-machineschaalsets van Windows
 - \[Preview\]: Log Analytics-agent voor Windows-VM's implementeren
 - Diagnostische instelling voor controleren
 - De controle moet zijn ingeschakeld in de instellingen voor geavanceerde gegevensbeveiliging in SQL Server
@@ -216,7 +216,7 @@ Met deze blauw druk kunt u bevoegde toegang beperken en beheren door [Azure Poli
 
 ## <a name="ia-2-2-identification-and-authentication-organizational-users--network-access-to-non-privileged-accounts"></a>IA-2 (2) Identification and Authentication (gebruikers binnen organisatie) | Netwerktoegang tot niet-bevoegde accounts
 
-Met deze blauw druk kunt u toegang beperken en beheren door een [Azure Policy](../../../policy/overview.md)-definitie toe te wijzen om accounts met leesmachtigingen te controleren waarvoor geen meervoudige verificatie is ingeschakeld. U kunt met meervoudige verificatie accounts veilig houden, zelfs als er wordt geknoeid met één onderdeel van de verificatiegegevens. Door accounts te controleren waarvoor geen meervoudige verificatie is ingeschakeld, kunt u accounts identificeren waarvoor het waarschijnlijker is dat deze worden gecompromitteerd.
+Met deze blauwdruk kunt u toegang beperken en beheren door een [Azure Policy](../../../policy/overview.md)-definitie toe te wijzen om accounts met leesmachtigingen te controleren waarvoor geen meervoudige verificatie is ingeschakeld. U kunt met meervoudige verificatie accounts veilig houden, zelfs als er wordt geknoeid met één onderdeel van de verificatiegegevens. Door accounts te controleren waarvoor geen meervoudige verificatie is ingeschakeld, kunt u accounts identificeren waarvoor het waarschijnlijker is dat deze worden gecompromitteerd.
 
 - MFA moet zijn ingeschakeld voor accounts met leesmachtigingen voor uw abonnement
 
@@ -312,7 +312,7 @@ Met deze blauwdruk kunt u de vertrouwelijkheid en integriteit van verzonden info
 
 ## <a name="sc-28-1-protection-of-information-at-rest--cryptographic-protection"></a>SC-28 (1) Protection of Information at Rest | Cryptografische beveiliging
 
-Met deze blauwdruk kunt u uw beleid afdwingen voor het gebruik van cryptografische beheeropties voor het beveiligen van inactieve informatie door [Azure Policy](../../../policy/overview.md)-definities toe te wijzen die specifieke cryptografische beheeropties afdwingen en het gebruik van zwakke cryptografische instellingen controleren. Wanneer u weet waar uw Azure-resources mogelijk niet-optimale cryptografische configuraties hebben, kunt u corrigerende maatregelen nemen om ervoor te zorgen dat resources worden geconfigureerd in overeenstemming met uw informatiebeveiligingsbeleid. Met name de beleidsdefinities die door deze blauwdrukken worden toegewezen, vereisen versleuteling voor data lake-opslagaccounts en transparante gegevensversleuteling voor SQL-databases, en controleren op ontbrekende versleuteling voor SQL-databases, schijven van virtuele machines en accountvariabelen voor automatisering.
+Met deze blauwdruk kunt u uw beleid afdwingen voor het gebruik van cryptografische beheeropties voor het beveiligen van inactieve informatie door [Azure Policy](../../../policy/overview.md)-definities toe te wijzen die specifieke cryptografische beheeropties afdwingen en het gebruik van zwakke cryptografische instellingen controleren. Wanneer u weet waar uw Azure-resources mogelijk niet-optimale cryptografische configuraties hebben, kunt u corrigerende maatregelen nemen om ervoor te zorgen dat resources worden geconfigureerd in overeenstemming met uw informatiebeveiligingsbeleid. Met name voor de beleidsdefinities die door deze blauwdrukken worden toegewezen, is vereist dat data lake-opslagaccounts en transparante gegevensversleuteling voor SQL-databases zijn versleuteld, en dat wordt gecontroleerd op ontbrekende versleuteling voor SQL-databases, schijven van virtuele machines en accountvariabelen voor automatisering.
 
 - Advanced Data Security moet zijn ingeschakeld voor uw beheerde instanties
 - Advanced Data Security moet zijn ingeschakeld op uw SQL-servers
@@ -336,11 +336,8 @@ Met deze blauwdruk kunt u fouten in informatiesystemen beheren door [Azure Polic
 
 ## <a name="si-02-06-flaw-remediation--removal-of-previous-versions-of-software--firmware"></a>SI-02 (06) Foutherstel | Eerdere versies van software/firmware verwijderen
 
-Met deze blauwdruk worden beleidsdefinities toegewezen waarmee u ervoor kunt zorgen dat toepassingen de nieuwste versie van .NET Framework, HTTP, Java, PHP, Python en TLS gebruiken. Met deze blauwdruk wordt ook een beleidsdefinitie toegewezen die ervoor zorgt dat Kubernetes-services worden bijgewerkt naar een niet-kwetsbare versie.
+Met deze blauwdruk worden beleidsdefinities toegewezen waarmee u ervoor kunt zorgen dat toepassingen de nieuwste versie van HTTP, Java, PHP, Python en TLS gebruiken. Met deze blauwdruk wordt ook een beleidsdefinitie toegewezen die ervoor zorgt dat Kubernetes-services worden bijgewerkt naar een niet-kwetsbare versie.
 
-- Controleren of de versie van ‘.NET Framework’ de meest recente is, als deze wordt gebruikt als onderdeel van de API-app
-- Controleren of de versie van .NET Framework de meest recente is als deze wordt gebruikt als onderdeel van de functie-app
-- Controleren of de versie van ‘.NET Framework’ de meest recente is, als deze wordt gebruikt als onderdeel van de web-app
 - Controleren of de HTTP-versie de meest recente is, als deze wordt gebruikt om de API-app uit te voeren
 - Controleren of de HTTP-versie de meest recente is als deze wordt gebruikt om de functie-app te openen
 - Controleren of de HTTP-versie de meest recente is, als deze wordt gebruikt om de web-app te openen
@@ -348,7 +345,6 @@ Met deze blauwdruk worden beleidsdefinities toegewezen waarmee u ervoor kunt zor
 - Zorg ervoor dat de nieuwste versie van Java wordt gebruikt als onderdeel van de functie-app
 - Controleren of de Java-versie de meest recente is, als deze wordt gebruikt als onderdeel van de web-app
 - Controleren of de PHP-versie de meest recente is, als deze wordt gebruikt als onderdeel van de API-app
-- Controleren of de PHP-versie de meest recente is als deze wordt gebruikt als onderdeel van de functie-app
 - Controleren of de PHP-versie de meest recente is, als deze wordt gebruikt als onderdeel van de web-app
 - Controleren of de Python-versie de meest recente is, als deze wordt gebruikt als onderdeel van de API-app
 - Controleren of de Python-versie de meest recente is als deze wordt gebruikt als onderdeel van de functie-app
@@ -356,7 +352,7 @@ Met deze blauwdruk worden beleidsdefinities toegewezen waarmee u ervoor kunt zor
 - De nieuwste TLS-versie moet worden gebruikt in uw API-app
 - De nieuwste TLS-versie moet worden gebruikt in uw functie-app
 - De nieuwste TLS-versie moet worden gebruikt in uw web-app
-- \[Preview\]: Kubernetes-services moeten worden geüpgraded naar een niet-kwetsbare Kubernetes-versie
+- Kubernetes-services moeten worden geüpgraded naar een niet-kwetsbare Kubernetes-versie
 
 ## <a name="si-3-malicious-code-protection"></a>SI-3 Malicious Code Protection
 
@@ -378,11 +374,11 @@ Met deze blauwdruk kunt u Endpoint Protection beheren, met inbegrip van beveilig
 Met deze blauwdruk kunt u uw systeem controleren door logboekregistraties en gegevensbeveiliging in Azure-resources te controleren en af te dwingen. Met name wordt door de toegewezen beleidsregels de implementatie gecontroleerd en afgedwongen van de Log Analytics-agent, en verbeterde beveiligingsinstellingen voor SQL-databases, opslagaccounts en netwerkbronnen. Deze mogelijkheden kunnen u helpen bij het detecteren van afwijkend gedrag en aanwijzingen van aanvallen, zodat u de juiste actie kunt ondernemen.
 
 - \[Preview\]: Implementatie van de Log Analytics-agent controleren - VM-installatiekopie (besturingssysteem) onvermeld
-- \[Preview\]: Implementatie van de Log Analytics-agent controleren in VMSS - VM-installatiekopie (besturingssysteem) onvermeld
+- Implementatie van de Log Analytics-agent in virtuele-machineschaalsets controleren - VM-installatiekopie (besturingssysteem) niet vermeld
 - \[Preview\]: Log Analytics-werkruimte voor VM controleren - niet-overeenkomende items rapporteren
-- \[Preview\]: Log Analytics-agent voor Linux VM Scale Sets (VMSS) implementeren
+- Log Analytics-agent implementeren voor virtuele-machineschaalsets van Linux
 - \[Preview\]: Log Analytics-agent voor virtuele Linux-machines implementeren
-- \[Preview\]: Log Analytics-agent voor Windows-VM-schaalsets (VMSS) implementeren
+- Log Analytics-agent implementeren voor virtuele-machineschaalsets van Windows
 - \[Preview\]: Log Analytics-agent voor Windows-VM's implementeren
 - Advanced Data Security moet zijn ingeschakeld voor uw beheerde instanties
 - Advanced Data Security moet zijn ingeschakeld op uw SQL-servers

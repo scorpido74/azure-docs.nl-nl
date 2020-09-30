@@ -1,14 +1,14 @@
 ---
 title: Beheeropties voor DoD Impact Level 5-blauwdrukvoorbeeld
 description: Beheeropties toewijzen voor het DoD Impact Level 5-blauwdrukvoorbeeld. Elke beheeroptie wordt toegewezen aan een of meer Azure-beleidsregels die helpt bij de evaluatie.
-ms.date: 06/30/2020
+ms.date: 09/17/2020
 ms.topic: sample
-ms.openlocfilehash: a7d1439a73cf387cee773d558ced50ce1c07f6dc
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 456560a8042b239a4d53e1c309742650c00bfa6a
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921313"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978365"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-5-blueprint-sample"></a>Beheeropties toewijzen voor het DoD Impact Level 5-blauwdrukvoorbeeld
 
@@ -194,7 +194,7 @@ Met deze blauw druk kunt u bevoegde toegang beperken en beheren door [Azure Poli
 
 ## <a name="ia-2-2-identification-and-authentication-organizational-users--network-access-to-non-privileged-accounts"></a>IA-2 (2) Identification and Authentication (gebruikers binnen organisatie) | Netwerktoegang tot niet-bevoegde accounts
 
-Met deze blauw druk kunt u toegang beperken en beheren door een [Azure Policy](../../../policy/overview.md)-definitie toe te wijzen om accounts met leesmachtigingen te controleren waarvoor geen meervoudige verificatie is ingeschakeld. U kunt met meervoudige verificatie accounts veilig houden, zelfs als er wordt geknoeid met één onderdeel van de verificatiegegevens. Door accounts te controleren waarvoor geen meervoudige verificatie is ingeschakeld, kunt u accounts identificeren waarvoor het waarschijnlijker is dat deze worden gecompromitteerd.
+Met deze blauwdruk kunt u toegang beperken en beheren door een [Azure Policy](../../../policy/overview.md)-definitie toe te wijzen om accounts met leesmachtigingen te controleren waarvoor geen meervoudige verificatie is ingeschakeld. U kunt met meervoudige verificatie accounts veilig houden, zelfs als er wordt geknoeid met één onderdeel van de verificatiegegevens. Door accounts te controleren waarvoor geen meervoudige verificatie is ingeschakeld, kunt u accounts identificeren waarvoor het waarschijnlijker is dat deze worden gecompromitteerd.
 
 - MFA moet zijn ingeschakeld voor accounts met leesmachtigingen voor uw abonnement
 
@@ -307,19 +307,15 @@ Met deze blauwdruk kunt u fouten in informatiesystemen beheren door [Azure Polic
 
 ## <a name="si-02-06-flaw-remediation--removal-of-previous-versions-of-software--firmware"></a>SI-02 (06) Foutherstel | Eerdere versies van software/firmware verwijderen
 
-Met deze blauwdruk worden beleidsdefinities toegewezen waarmee u ervoor kunt zorgen dat toepassingen de nieuwste versie van .NET Framework, HTTP, Java, PHP, Python en TLS gebruiken. Met deze blauwdruk wordt ook een beleidsdefinitie toegewezen die ervoor zorgt dat Kubernetes-services worden bijgewerkt naar een niet-kwetsbare versie.
+Met deze blauwdruk worden beleidsdefinities toegewezen waarmee u ervoor kunt zorgen dat toepassingen de nieuwste versie van HTTP, Java, PHP, Python en TLS gebruiken. Met deze blauwdruk wordt ook een beleidsdefinitie toegewezen die ervoor zorgt dat Kubernetes-services worden bijgewerkt naar een niet-kwetsbare versie.
 
-- Controleren of de versie van '.NET Framework' de meest recente is als deze wordt gebruikt als onderdeel van de API-app
-- Controleren of de versie van 'NET Framework' de meest recente is als deze wordt gebruikt als onderdeel van de functie-app
-- Controleren of de versie van '.Net Framework' de meest recente is als deze wordt gebruikt als onderdeel van de web-app
-- Controleren of de HTTP-versie de meest recente is als deze wordt gebruikt om de API-app te openen
+- Controleren of de HTTP-versie de meest recente is, als deze wordt gebruikt om de API-app uit te voeren
 - Controleren of de HTTP-versie de meest recente is als deze wordt gebruikt om de functie-app te openen
 - Controleren of de HTTP-versie de meest recente is, als deze wordt gebruikt om de web-app te openen
 - Controleren of de Java-versie de meest recente is, als deze wordt gebruikt als onderdeel van de API-app
 - Zorg ervoor dat de nieuwste versie van Java wordt gebruikt als onderdeel van de functie-app
 - Controleren of de Java-versie de meest recente is, als deze wordt gebruikt als onderdeel van de web-app
 - Controleren of de PHP-versie de meest recente is, als deze wordt gebruikt als onderdeel van de API-app
-- Controleren of de PHP-versie de meest recente is als deze wordt gebruikt als onderdeel van de functie-app
 - Controleren of de PHP-versie de meest recente is, als deze wordt gebruikt als onderdeel van de web-app
 - Controleren of de Python-versie de meest recente is, als deze wordt gebruikt als onderdeel van de API-app
 - Controleren of de Python-versie de meest recente is als deze wordt gebruikt als onderdeel van de functie-app

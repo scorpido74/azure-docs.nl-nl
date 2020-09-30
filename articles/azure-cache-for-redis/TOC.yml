@@ -4,7 +4,9 @@
   items:
     - name: Over Azure Cache voor Redis
       href: cache-overview.md
-- name: Quickstarts
+    - name: Nieuwe functies
+      href: cache-whats-new.md
+- name: Snelstartgidsen
   expanded: true
   items:
     - name: Een cache maken

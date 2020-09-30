@@ -1,166 +1,154 @@
 ---
-title: Beheerbewerkingen
+title: Overzicht beheerbewerkingen
 titleSuffix: Azure SQL Managed Instance
-description: Meer informatie over Azure SQL Managed instance Management-bewerkingen voor de duur en aanbevolen procedures.
+description: Meer informatie over de duur van en de best practices voor beheerbewerkingen van Azure SQL Managed Instance.
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: operations
-ms.custom: sqldbrb=1
+ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: overview
 author: urosmil
 ms.author: urmilano
 ms.reviewer: sstein, carlrab, MashaMSFT
 ms.date: 07/10/2020
-ms.openlocfilehash: 5cff54b1f71d30f7932c4ead722d1dda0a7aec57
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
-ms.translationtype: MT
+ms.openlocfilehash: 871de5b5b7263a0c4d3b87cc459f3e573316f501
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531489"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90977516"
 ---
-# <a name="overview-of-azure-sql-managed-instance-management-operations"></a>Overzicht van Azure SQL Managed instance Management-bewerkingen
+# <a name="overview-of-azure-sql-managed-instance-management-operations"></a>Overzicht van beheerbewerkingen van Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-## <a name="what-are-management-operations"></a>Wat zijn beheer bewerkingen?
-Azure SQL Managed instance biedt beheer bewerkingen die u kunt gebruiken om automatisch nieuwe beheerde instanties te implementeren, exemplaar-eigenschappen bij te werken en instanties te verwijderen wanneer ze niet meer nodig zijn.
+Azure SQL Managed Instance biedt beheerbewerkingen die u kunt gebruiken om automatisch nieuwe beheerde exemplaren te implementeren, eigenschappen van exemplaren bij te werken en exemplaren te verwijderen als ze niet meer nodig zijn.
 
-Voor de ondersteuning van [implementaties in azure Virtual Networks](../../virtual-network/virtual-network-for-azure-services.md) en het bieden van isolatie en beveiliging voor klanten, is SQL Managed instance afhankelijk van [virtuele clusters](connectivity-architecture-overview.md#high-level-connectivity-architecture). Een virtueel cluster vertegenwoordigt een speciale set geïsoleerde virtuele machines die zijn geïmplementeerd in het subnet van het virtuele netwerk van de klant. In wezen resulteert elke implementatie van een beheerd exemplaar in een leeg subnet in een nieuw virtueel cluster buildout.
-
-Volgende bewerkingen in geïmplementeerde beheerde instanties kunnen ook gevolgen hebben voor het onderliggende virtuele cluster. Deze bewerkingen zijn van invloed op de duur van beheer bewerkingen, zoals het implementeren van aanvullende virtuele machines wordt geleverd met een overhead die moet worden overwogen wanneer u nieuwe implementaties of updates voor bestaande beheerde exemplaren plant.
+## <a name="what-are-management-operations"></a>Wat zijn beheerbewerkingen?
 
 Alle beheerbewerkingen kunnen als volgt worden gecategoriseerd:
 
-- Implementatie van instanties (nieuwe instantie maken).
-- Update van instantie (instantie-eigenschappen wijzigen, zoals vCores of gereserveerde opslag).
-- Instantie verwijderen.
+- Implementatie van exemplaar (maken van nieuw exemplaar)
+- Update van exemplaar (eigenschappen van exemplaar wijzigen, zoals vCores of gereserveerde opslag)
+- Verwijdering van exemplaar
 
-## <a name="management-operations-duration"></a>Beheer bewerkingen duur
-Normaal gesp roken hebben bewerkingen op virtuele clusters het langst. De duur van de bewerkingen op virtuele clusters is afhankelijk van de waarden die u doorgaans kunt verwachten, op basis van de bestaande telemetrie-gegevens van de service:
+Voor de ondersteuning van [implementaties in virtuele Azure-netwerken](../../virtual-network/virtual-network-for-azure-services.md) en het bieden van isolatie en beveiliging voor klanten, is SQL Managed Instance afhankelijk van [virtuele clusters](connectivity-architecture-overview.md#high-level-connectivity-architecture). Het virtuele cluster vertegenwoordigt een speciale set geïsoleerde virtuele machines die is geïmplementeerd in het subnet van het virtuele netwerk van de klant. In wezen resulteert elk beheerd exemplaar dat voor een leeg subnet wordt geïmplementeerd in een uitrol van een nieuw virtueel cluster.
 
-- **Virtueel cluster maken**: maken is een synchrone stap in het beheer van exemplaren. **90% van de bewerkingen zijn voltooid over vier uur**.
-- **Verg Roten/verkleinen van een virtueel cluster (uitbrei ding of krimpen)**: uitbrei ding is een synchrone stap, terwijl het comprimeren wordt asynchroon uitgevoerd (zonder invloed op de duur van de beheer bewerkingen voor exemplaren). **90% van de cluster uitbreidingen eindigen in minder dan 2,5 uur**.
-- **Virtueel cluster verwijderen**: de verwijdering is een asynchrone stap, maar kan ook [hand matig worden gestart](virtual-cluster-delete.md) op een leeg virtueel cluster. in dat geval wordt het synchroon uitgevoerd. **90% van verwijderde virtuele clusters is in 1,5 uur voltooid**.
+Navolgende beheerbewerkingen op beheerde exemplaren kunnen van invloed zijn op het onderliggende virtuele cluster. Wijzigingen die van invloed zijn op het onderliggende virtuele cluster, kunnen van invloed zijn op de duur van beheerbewerkingen. Het implementeren van extra virtuele machines brengt namelijk een overhead met zich mee waar u rekening mee moet houden wanneer u nieuwe implementaties of updates voor bestaande beheerde exemplaren wilt plannen.
 
-Daarnaast kan het beheer van instanties ook een van de bewerkingen op gehoste data bases bevatten, wat resulteert in langere duur:
 
-- **Database bestanden van Azure Storage koppelen**: een synchrone stap, zoals Compute (vCores), of het omhoog of omlaag schalen van opslag in de servicelaag algemeen. **90% van deze bewerkingen zijn voltooid in 5 minuten**.
-- AlwaysOn- **beschikbaarheids groep moet worden geseedd**: een synchrone stap, zoals Compute (vCores), of opslag schalen in de laag bedrijfskritiek en in het wijzigen van de servicelaag van Algemeen in bedrijfskritiek (of andersom). De duur van deze bewerking is evenredig met de totale database grootte en de huidige database activiteit (aantal actieve trans acties). Data base-activiteit bij het bijwerken van een exemplaar kan aanzienlijk verschillen veroorzaken in de totale duur. **90% van deze bewerkingen worden uitgevoerd om 220 GB/uur of hoger**.
+## <a name="duration"></a>Duur
 
-De volgende tabel bevat een overzicht van de bewerkingen en typische totale duur:
+De duur van de bewerkingen op het virtuele cluster kan variëren, maar duren doorgaans het langst. 
 
-|Categorie  |Bewerking  |Langlopend segment  |Geschatte duur  |
-|---------|---------|---------|---------|
-|**Implementatie** |Eerste instantie in een leeg subnet|Virtueel cluster maken|90% van de bewerkingen zijn voltooid over vier uur.|
-|Implementatie |Eerste exemplaar van een andere hardware-generatie in een niet-leeg subnet (bijvoorbeeld eerste generatie 5-exemplaar in een subnet met exemplaren van de generatie 4)|Virtueel cluster maken *|90% van de bewerkingen zijn voltooid over vier uur.|
-|Implementatie |Eerste instantie maken van vier vCores in een leeg of niet-leeg subnet|Virtueel cluster maken * *|90% van de bewerkingen zijn voltooid over vier uur.|
-|Implementatie |Het maken van de volgende instantie binnen het niet-lege subnet (2e, 3e, enz.)|Verg Roten/verkleinen van virtueel cluster|90% van de bewerkingen zijn voltooid over 2,5 uur.|
-|**Bijwerken** |Wijziging van instantie-eigenschap (beheerders wachtwoord, Azure AD-aanmelding, Azure Hybrid Benefit vlag)|N.v.t.|Maxi maal 1 minuut.|
-|Bijwerken |Opslag van exemplaren omhoog/omlaag schalen (Algemeen servicelaag)|Database bestanden koppelen|90% van de bewerkingen zijn voltooid over vijf minuten.|
-|Bijwerken |Opslag van exemplaren omhoog/omlaag schalen (Bedrijfskritiek servicelaag)|-Verg Roten/verkleinen van virtueel cluster<br>-Always on-beschikbaarheids groep seeding|90% van de bewerkingen zijn voltooid om 2,5 uur en tijd om alle data bases te seeden (220 GB/uur).|
-|Bijwerken |VCores (instance Compute) omhoog en omlaag schalen (Algemeen)|-Verg Roten/verkleinen van virtueel cluster<br>-Database bestanden koppelen|90% van de bewerkingen zijn voltooid over 2,5 uur.|
-|Bijwerken |VCores (instance Compute) omhoog en omlaag schalen (Bedrijfskritiek)|-Verg Roten/verkleinen van virtueel cluster<br>-Always on-beschikbaarheids groep seeding|90% van de bewerkingen zijn voltooid om 2,5 uur en tijd om alle data bases te seeden (220 GB/uur).|
-|Bijwerken |Wijziging van de instantie-servicelaag (Algemeen Bedrijfskritiek en omgekeerd)|-Verg Roten/verkleinen van virtueel cluster<br>-Always on-beschikbaarheids groep seeding|90% van de bewerkingen zijn voltooid om 2,5 uur en tijd om alle data bases te seeden (220 GB/uur).|
-|**Verwijdering**|Verwijdering van exemplaar|Back-ups van staart vastleggen voor alle data bases|90% bewerkingen zijn Maxi maal 1 minuut voltooid.<br>Opmerking: als het laatste exemplaar van het subnet wordt verwijderd, wordt de verwijdering van het virtuele cluster na 12 uur door deze bewerking gepland. * *|
-|Verwijdering|Virtueel cluster verwijderen (als door de gebruiker geïnitieerde bewerking)|Virtueel cluster verwijderen|90% van de bewerkingen zijn Maxi maal 1,5 uur voltooid.|
+Hierna volgen de waarden die u normaal gesproken kunt verwachten, op basis van de bestaande telemetriegegevens van de service:
 
-\*Virtueel cluster is gebouwd per generatie van hardware.
+- **Maken van virtueel cluster**:  Het maken is een synchrone stap binnen beheerbewerkingen van exemplaren. <br/> **90% van de bewerkingen is binnen 4 uur voltooid**.
+- **Het uitbreiden of inkrimpen van een virtueel cluster**: Uitbreiding is een synchrone stap, terwijl inkrimping asynchroon wordt uitgevoerd (zonder dat dit van invloed is op de duur van de beheerbewerkingen van exemplaren). <br/>**90% van de clusteruitbreidingen wordt in minder dan 2,5 uur voltooid**.
+- **Verwijderen van virtuele clusters**: Verwijdering is een asynchrone stap, maar kan ook [handmatig geïnitieerd](virtual-cluster-delete.md) worden op een leeg virtueel cluster. In dat geval wordt het synchroon uitgevoerd. <br/>**90% van het aantal verwijderingen van virtuele clusters wordt binnen 1,5 uur uitgevoerd**.
 
-\*\*12 uur is de huidige configuratie, maar dit kan in de toekomst veranderen, dus neem geen vaste afhankelijkheid op. Als u eerder een virtueel cluster moet verwijderen (bijvoorbeeld voor het vrijgeven van het subnet), raadpleegt u [een subnet verwijderen na het verwijderen van een beheerd exemplaar](virtual-cluster-delete.md).
+Daarnaast kan het beheer van exemplaren ook een van de bewerkingen op gehoste databases omvatten, wat tot een langere duur leidt:
 
-## <a name="instance-availability-during-management-operations"></a>Beschik baarheid van exemplaren tijdens beheer bewerkingen
+- **Databasebestanden koppelen vanuit Azure Storage**:  Een synchrone stap, zoals het schalen van rekenkracht (vCores) of het opslaan in de servicelaag Algemeen. <br/>**90% van deze bewerkingen is binnen 5 minuten voltooid**.
+- **Seeding van AlwaysOn-beschikbaarheidsgroepen**: Een synchrone stap, zoals rekenkracht (vCores), of schalen van opslag in de servicelaag Bedrijfskritiek en ook in het wijzigen van de servicelaag van Algemeen in Bedrijfskritiek (of andersom). De duur van deze bewerking is evenredig met de totale databasegrootte en met de huidige databaseactiviteit (aantal actieve transacties). De databaseactiviteit bij het bijwerken van een instantie kan tot aanzienlijke variatie in de totale duur aanleiding geven. <br/>**90% van deze bewerkingen worden uitgevoerd bij 220 GB/uur of hoger**.
 
-SQL Managed instance **is beschikbaar tijdens update bewerkingen**, met uitzonde ring van een korte downtime die wordt veroorzaakt door de failover die aan het einde van de update plaatsvindt. Het duurt meestal Maxi maal 10 seconden, zelfs in het geval van langdurige langlopende trans acties, dankzij het [versnelde herstel van de data base](../accelerated-database-recovery.md).
+In de volgende tabellen vindt u een overzicht van de bewerkingen en de gebruikelijke totale tijdsduur, op basis van de categorie van de bewerking:
+
+**Categorie: implementatie**
+
+|Bewerking  |Langlopend segment  |Geschatte duur  |
+|---------|---------|---------|
+|Eerste instantie in een leeg subnet|Maken van virtuele clusters|90% van de bewerkingen is binnen 4 uur voltooid.|
+|Eerste instantie van een andere hardwaregeneratie in een niet-leeg subnet (bijvoorbeeld eerste vijfde-generatie-instantie in een subnet met vierde-generatie-instanties)|Maken van virtuele clusters<sup>1</sup>|90% van de bewerkingen is binnen 4 uur voltooid.|
+|Het maken van de volgende instantie binnen het niet-lege subnet (2e, 3e instantie, enzovoort)|Grootte van virtuele clusters wijzigen|90% van de bewerkingen is binnen 2,5 uur voltooid.|
+| | | 
+
+<sup>1</sup> Virtueel cluster wordt per hardwaregeneratie gebouwd.
+
+**Categorie: bijwerken**
+
+|Bewerking  |Langlopend segment  |Geschatte duur  |
+|---------|---------|---------|
+|Wijziging van instantie-eigenschap (beheerderswachtwoord, Azure AD-aanmelding, Azure Hybrid Benefit-vlag)|N.v.t.|Maximaal 1 minuut.|
+|Opslag van instanties omhoog/omlaag schalen (servicelaag Algemeen)|Databasebestanden koppelen|90% van de bewerkingen is binnen 5 minuten voltooid.|
+|Opslag van instanties omhoog/omlaag schalen (servicelaag Bedrijfskritiek)|- Grootte van virtuele clusters wijzigen<br>- Seeding van AlwaysOn-beschikbaarheidsgroepen|90% van de bewerkingen is binnen 2,5 uur voltooid, plus de tijd om alle databases te seeden (220 GB/uur).|
+|Rekenkracht van instantie (vCores) omhoog en omlaag schalen (Algemeen)|- Grootte van virtuele clusters wijzigen<br>- Databasebestanden koppelen|90% van de bewerkingen is binnen 2,5 uur voltooid.|
+|Rekenkracht van instantie (vCores) omhoog en omlaag schalen (Bedrijfskritiek)|- Grootte van virtuele clusters wijzigen<br>- Seeding van AlwaysOn-beschikbaarheidsgroepen|90% van de bewerkingen is binnen 2,5 uur voltooid, plus de tijd om alle databases te seeden (220 GB/uur).|
+|Wijziging van de servicelaag van de instantie (van Algemeen naar Bedrijfskritiek en omgekeerd)|- Grootte van virtuele clusters wijzigen<br>- Seeding van AlwaysOn-beschikbaarheidsgroepen|90% van de bewerkingen is binnen 2,5 uur voltooid, plus de tijd om alle databases te seeden (220 GB/uur).|
+| | | 
+
+**Categorie: verwijderen**
+
+|Bewerking  |Langlopend segment  |Geschatte duur  |
+|---------|---------|---------|
+|Verwijdering van exemplaar|Laatste deel van back-up voor alle databases registreren|90% van de bewerkingen is binnen 1 minuten voltooid.<br>Opmerking: als de laatste instantie uit het subnet wordt verwijderd, wordt de verwijdering van het virtuele cluster na 12 uur gepland.<sup>1</sup>|
+|Verwijderen van virtueel cluster (als een door de gebruiker geïnitieerde bewerking)|Verwijderen van virtuele cluster|90% van de bewerkingen is binnen 1,5 uur voltooid.|
+| | | 
+
+<sup>1</sup>12 uur is de huidige configuratie, maar dit is afhankelijk van toekomstige wijzigingen. Als u een virtueel cluster eerder wilt verwijderen (bijvoorbeeld om het subnet vrij te geven), raadpleegt u [Een subnet verwijderen nadat u een beheerd exemplaar hebt verwijderd](virtual-cluster-delete.md).
+
+## <a name="instance-availability"></a>Beschikbaarheid van instanties
+
+SQL Managed Instance **is beschikbaar tijdens updatebewerkingen**, met uitzondering van een korte downtime die wordt veroorzaakt door de failover die aan het einde van de update plaatsvindt. Deze duurt meestal maximaal 10 seconden, zelfs in het geval van onderbroken, langlopende transacties, dankzij het [versnelde databaseherstel](../accelerated-database-recovery.md).
+
+Tijdens implementaties en verwijderingen zijn SQL Managed Instances niet beschikbaar voor clienttoepassingen.
 
 > [!IMPORTANT]
-> Het is niet raadzaam om Compute of opslag van een door Azure SQL beheerd exemplaar te schalen of de servicelaag tegelijkertijd te wijzigen met de langlopende trans acties (gegevens importeren, gegevens verwerkings taken, index Rebuild, enzovoort). Voor de data base-failover die aan het einde van de bewerking wordt uitgevoerd, worden alle lopende trans acties geannuleerd.
+> Het is niet raadzaam om berekeningen of opslag van een Azure SQL Managed Instance te schalen of de servicelaag tegelijkertijd te wijzigen met langlopende transacties (gegevens importeren, gegevensverwerkingstaken, het herbouwen van indexen, enzovoort). De failover van de database aan het einde van de bewerking annuleert alle lopende transacties. 
 
-SQL Managed instance is niet beschikbaar voor client toepassingen tijdens implementatie-en verwijderings bewerkingen.
+## <a name="management-operations-steps"></a>Beheerbewerkingsstappen
 
-## <a name="management-operations-cross-impact"></a>Beheer bewerkingen, cross-effect
+Beheerbewerkingen bestaan uit meerdere stappen. Met de [introductie van de Operations API](management-operations-monitor.md) worden deze stappen blootgesteld aan een subset van bewerkingen (implementatie en update). De implementatiebewerking bestaat uit drie stappen terwijl de updatebewerking in zes stappen wordt uitgevoerd. Zie de sectie [Duur beheerbewerkingen](#duration) voor meer informatie over de duur van bewerkingen. De stappen worden vermeld op volgorde van uitvoering.
 
-Beheer bewerkingen op een beheerd exemplaar kunnen invloed hebben op andere beheer bewerkingen van de instanties die binnen hetzelfde virtuele cluster zijn geplaatst:
+### <a name="managed-instance-deployment-steps"></a>Implementatiestappen van beheerd exemplaar
 
-- Voor **langlopende herstel bewerkingen** in een virtueel cluster worden andere bewerkingen voor het maken of schalen van instanties in hetzelfde subnet opgeslagen.<br/>**Voor beeld:** Als er een langlopende herstel bewerking is en er in hetzelfde subnet een aanvraag voor maken of schalen wordt uitgevoerd, duurt het langer voordat deze aanvraag is voltooid, omdat er wordt gewacht tot de herstel bewerking is voltooid voordat deze wordt voortgezet.
-    
-- **Een volgende bewerking voor het maken of schalen van een exemplaar** wordt in de wacht geplaatst door een eerder geïnitieerde instantie voor het maken of schalen van een exemplaar waarbij het formaat van het virtuele cluster wordt gestart.<br/>**Voor beeld:** Als er meerdere aanvragen voor maken en/of schalen worden uitgevoerd in hetzelfde subnet onder hetzelfde virtuele cluster, en een ervan het formaat van een virtueel cluster initieert, worden alle aanvragen die 5 + minuten na de wijziging van het virtuele cluster zijn ingediend, langer dan verwacht, omdat deze aanvragen moeten wachten tot de grootte is voltooid voordat het proces wordt hervat.
+|Naam van stap  |Beschrijving van stap  |
+|----|---------|
+|Validatie aanvragen |Ingediende parameters worden gevalideerd. Bij een onjuiste configuratie treedt er een fout op. |
+|Grootte van virtuele clusters wijzigen/virtuele clusters maken |Afhankelijk van de status van het subnet, worden virtuele clusters gemaakt of de grootte ervan aangepast. |
+|Opnieuw starten van SQL-exemplaar |Het SQL-proces wordt gestart op het geïmplementeerde virtuele cluster. |
 
-- **Create/Scale-bewerkingen die zijn verzonden in een venster van vijf minuten** , worden parallel in batch verwerkt en uitgevoerd.<br/>**Voor beeld:** Er wordt slechts één grootte van het virtuele cluster uitgevoerd voor alle bewerkingen die zijn ingediend in een periode van vijf minuten (gemeten vanaf het moment waarop de eerste bewerkings aanvraag wordt uitgevoerd). Als een andere aanvraag meer dan vijf minuten na het verzenden van de eerste wordt verzonden, wordt gewacht tot de grootte van het virtuele cluster is voltooid voordat de uitvoering wordt gestart.
+### <a name="managed-instance-update-steps"></a>Bijwerkstappen van beheerd exemplaar
+
+|Naam van stap  |Beschrijving van stap  |
+|----|---------|
+|Validatie aanvragen | Ingediende parameters worden gevalideerd. Bij een onjuiste configuratie treedt er een fout op. |
+|Grootte van virtuele clusters wijzigen/virtuele clusters maken |Afhankelijk van de status van het subnet, worden virtuele clusters gemaakt of de grootte ervan aangepast. |
+|Opnieuw starten van SQL-exemplaar | Het SQL-proces wordt gestart op het geïmplementeerde virtuele cluster. |
+|Databasebestanden seeden/databasebestanden koppelen |Afhankelijk van het type van de updatebewerking, wordt seeden van de database of koppelen van databasebestanden uitgevoerd. |
+|Failover voorbereiden en uitvoeren |Nadat de gegevens zijn geseed of databasebestanden opnieuw zijn gekoppeld, wordt het systeem op failover voorbereid. Wanneer alles is ingesteld, wordt failover uitgevoerd **met een korte downtime**. |
+|Opschonen van oud SQL-exemplaar |Verwijderen van oud SQL-proces uit het virtuele cluster |
+
+> [!NOTE]
+> Als gevolg van het schalen van exemplaren, doorloopt het onderliggende virtuele cluster een proces waarbij ongebruikte capaciteit wordt vrijgegeven en defragmentatie van de capaciteit kan optreden. Dit kan van invloed zijn op exemplaren die niet deelnemen aan maak- of schaalbewerkingen. 
+
+
+## <a name="management-operations-cross-impact"></a>Wederzijdse impact van beheerbewerkingen
+
+Beheerbewerkingen op een beheerd exemplaar kunnen van invloed zijn op andere beheerbewerkingen van de exemplaren die binnen hetzelfde virtuele cluster zijn geplaatst:
+
+- **Langlopende herstelbewerkingen** in een virtueel cluster leiden ertoe dat maak- of schaalbewerkingen van andere instanties in hetzelfde subnet in de wacht worden geplaatst.<br/>**Voorbeeld:** Als er een langlopende herstelbewerking gaande is en er in hetzelfde subnet een aanvraag voor maken of schalen wordt gedaan, duurt het langer voordat deze aanvraag is voltooid, omdat er wordt gewacht tot de herstelbewerking is voltooid voordat er verder wordt gegaan.
+
+- **Een volgende maak- of schaalbewerkingen van een exemplaar** wordt in de wacht geplaatst door een eerder geïnitieerde maak- of schaalbewerking van een exemplaar waarmee de grootte van het virtuele cluster is geïnitieerd.<br/>**Voorbeeld:** Als er meerdere aanvragen voor maken en/of schalen in hetzelfde subnet onder hetzelfde virtuele cluster worden uitgevoerd, en een ervan initieert een formaatwijziging van het virtuele cluster, zullen alle aanvragen die meer dan vijf minuten na de eerste bewerkingsaanvraag zijn ingediend, meer tijd kosten dan verwacht. Deze aanvragen moeten namelijk wachten tot de formaatwijziging is voltooid voordat er verder kan worden gegaan.
+
+- **Maak- en schaalbewerkingen die in een vijfminutenvenster worden ingediend** worden als batch verwerkt en parallel uitgevoerd.<br/>**Voorbeeld:** Er wordt slechts één formaatwijziging van het virtuele cluster uitgevoerd voor alle bewerkingen die binnen een tijdvenster van vijf minuten zijn ingediend (gemeten vanaf het moment waarop de eerste bewerkingsaanvraag wordt uitgevoerd). Als een andere aanvraag meer dan vijf minuten na het indienen van de eerste wordt ingediend, wordt gewacht tot de formaatwijziging van het virtuele cluster is voltooid voordat de uitvoering wordt gestart.
 
 > [!IMPORTANT]
-> Beheer bewerkingen die in de wacht worden gezet omdat een andere bewerking wordt uitgevoerd, worden automatisch hervat wanneer aan de voor waarden wordt voldaan. Er is geen actie van de gebruiker nodig om tijdelijk onderbroken beheer bewerkingen te hervatten.
+> Beheerbewerkingen die in de wacht worden gezet omdat een andere bewerking wordt uitgevoerd, worden automatisch hervat wanneer aan alle voorwaarden wordt voldaan. Er is geen gebruikersactie nodig om de tijdelijk onderbroken beheerbewerkingen te hervatten.
 
-## <a name="canceling-management-operations"></a>Beheer bewerkingen annuleren
+## <a name="monitoring-management-operations"></a>Beheerbewerkingen bewaken
 
-De volgende tabel bevat een overzicht van de mogelijkheid om specifieke beheer bewerkingen en typische totale duur te annuleren:
+Zie [Beheerbewerkingen bewaken](management-operations-monitor.md) voor meer informatie over het bewaken van de voortgang en status van beheerbewerkingen.
 
-Categorie  |Bewerking  |Geannuleerd  |Geschatte annulerings duur  |
-|---------|---------|---------|---------|
-|Implementatie |Instantie maken |Nee |  |
-|Bijwerken |Opslag van exemplaren omhoog/omlaag schalen (Algemeen) |Nee |  |
-|Bijwerken |Opslag van exemplaren omhoog/omlaag schalen (Bedrijfskritiek) |Ja |90% van de bewerkingen zijn voltooid over vijf minuten. |
-|Bijwerken |VCores (instance Compute) omhoog en omlaag schalen (Algemeen) |Ja |90% van de bewerkingen zijn voltooid over vijf minuten. |
-|Bijwerken |VCores (instance Compute) omhoog en omlaag schalen (Bedrijfskritiek) |Ja |90% van de bewerkingen zijn voltooid over vijf minuten. |
-|Bijwerken |Wijziging van de instantie-servicelaag (Algemeen Bedrijfskritiek en omgekeerd) |Ja |90% van de bewerkingen zijn voltooid over vijf minuten. |
-|Verwijderen |Verwijdering van exemplaar |Nee |  |
-|Verwijderen |Virtueel cluster verwijderen (als door de gebruiker geïnitieerde bewerking) |Nee |  |
+## <a name="canceling-management-operations"></a>Beheerbewerkingen annuleren
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+Zie [Beheerbewerkingen annuleren](management-operations-cancel.md) voor meer informatie.
 
-Als u de beheer bewerking wilt annuleren, gaat u naar de Blade overzicht en klikt u op meldingen venster van de actieve bewerking. Aan de rechter kant verschijnt een scherm met de doorlopende bewerking en er wordt een knop weer gegeven voor het annuleren van de bewerking. Nadat u de eerste keer hebt geklikt, wordt u gevraagd opnieuw te klikken en bevestigen dat u de bewerking wilt annuleren.
-
-[![Bewerking annuleren](./media/management-operations-overview/canceling-operation.png)](./media/management-operations-overview/canceling-operation.png#lightbox)
-
-Nadat een annulerings aanvraag is verzonden en verwerkt, ontvangt u een melding als de annulering is geslaagd of niet.
-
-Als de ingediende annulerings aanvraag is voltooid, wordt de beheer bewerking in een paar minuten geannuleerd, wat resulteert in een fout.
-
-![Het resultaat van de bewerking wordt geannuleerd](./media/management-operations-overview/canceling-operation-result.png)
-
-Als de annulerings aanvraag mislukt of de knop Annuleren niet actief is, betekent dit dat de beheer bewerking een niet-Annuleer bare status heeft en dat deze binnen een paar minuten wordt voltooid. De beheer bewerking wordt voortgezet totdat deze is voltooid.
-
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-
-Als Azure PowerShell nog niet is geïnstalleerd, raadpleegt u [de module Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps).
-
-Als u de beheer bewerking wilt annuleren, moet u de naam van de beheer bewerking opgeven. Daarom moet u eerst de opdracht Get gebruiken voor het ophalen van de lijst met bewerkingen en vervolgens een specifieke bewerking annuleren.
-
-```powershell-interactive
-$managedInstance = "yourInstanceName"
-$resourceGroup = "yourResourceGroupName"
-
-$managementOperations = Get-AzSqlInstanceOperation -ManagedInstanceName $managedInstance  -ResourceGroupName $resourceGroup
-
-foreach ($mo in $managementOperations ) {
-    if($mo.State -eq "InProgress" -and $mo.IsCancellable){
-        $cancelRequest = Stop-AzSqlInstanceOperation -ResourceGroupName $resourceGroup -ManagedInstanceName $managedInstance -Name $mo.Name
-        Get-AzSqlInstanceOperation -ManagedInstanceName $managedInstance  -ResourceGroupName $resourceGroup -Name $mo.Name
-    }
-}
-```
-
-Zie [Get-AzSqlInstanceOperation](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstanceoperation) en [Stop-AzSqlInstanceOperation](https://docs.microsoft.com/powershell/module/az.sql/stop-azsqlinstanceoperation)voor gedetailleerde uitleg over opdrachten.
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-Als u de Azure CLI nog niet hebt geïnstalleerd, raadpleegt u [de Azure cli installeren](/cli/azure/install-azure-cli?view=azure-cli-latest).
-
-Als u de beheer bewerking wilt annuleren, moet u de naam van de beheer bewerking opgeven. Daarom moet u eerst de opdracht Get gebruiken voor het ophalen van de lijst met bewerkingen en vervolgens een specifieke bewerking annuleren.
-
-```azurecli-interactive
-az sql mi op list -g yourResourceGroupName --mi yourInstanceName --query "[?state=='InProgress' && isCancellable].{Name: name}" -o tsv |
-while read -r operationName; do
-    az sql mi op cancel -g yourResourceGroupName --mi yourInstanceName -n $operationName
-done
-```
-
-Zie [AZ SQL mi op](https://docs.microsoft.com/cli/azure/sql/mi/op?view=azure-cli-latest)voor gedetailleerde opdracht uitleg.
-
----
 
 ## <a name="next-steps"></a>Volgende stappen
-- Zie [Quick Start Guide (Engelstalig](instance-create-quickstart.md)) voor meer informatie over het maken van uw eerste beheerde exemplaar.
-- Zie [algemene SQL-functies](../database/features-comparison.md)voor een lijst met functies en vergelijkingen.
-- Zie [vnet-configuratie voor SQL Managed instance](connectivity-architecture-overview.md)voor meer informatie over vnet-configuraties.
-- Zie [een beheerd exemplaar maken](instance-create-quickstart.md)voor een Snelstartgids die een beheerd exemplaar maakt en een Data Base herstelt vanuit een back-upbestand.
-- Voor een zelf studie over het gebruik van Azure Database Migration Service voor migratie raadpleegt u [migratie van SQL-beheerde exemplaren met behulp van database Migration service](../../dms/tutorial-sql-server-to-managed-instance.md).
+
+- Zie de [Quickstart-gids](instance-create-quickstart.md) voor meer informatie over het maken van uw eerste beheerde exemplaar.
+- Zie [Veelvoorkomende SQL-functies](../database/features-comparison.md) voor een lijst met functies en vergelijkingen.
+- Zie [VNet-configuratie van SQL Managed Instance](connectivity-architecture-overview.md) voor meer informatie over VNet-configuratie.
+- Zie [Beheerd exemplaar maken](instance-create-quickstart.md) voor een quickstart waarmee u een beheerd exemplaar kunt maken en een database vanuit een back-upbestand kunt herstellen.
+- Zie [Migratie van SQL Managed Instance met behulp van Database Migration Service](../../dms/tutorial-sql-server-to-managed-instance.md) voor een zelfstudie over Azure Database Migration Service voor migratie.

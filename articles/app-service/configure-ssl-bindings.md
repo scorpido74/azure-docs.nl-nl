@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 6c3f4cfe7c896b317edc5897098a1c18c98dc826
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: f7301809b3befc41110a32062d6e478c412fa56e
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962635"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90981110"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>Een aangepaste DNS-naam beveiligen met een TLS/SSL-binding in Azure App Service
 
@@ -108,7 +108,7 @@ Er zijn mogelijk twee wijzigingen die u moet aanbrengen:
 
 Zoek in verschillende browsers naar `https://<your.custom.domain>` om te controleren of het naar uw app leidt.
 
-![Navigatie naar Azure-app in de portal](./media/configure-ssl-bindings/app-with-custom-ssl.png)
+:::image type="content" source="./media/configure-ssl-bindings/app-with-custom-ssl.png" alt-text="Schermopname met een voorbeeld van het bladeren naar uw aangepaste domein met de URL contoso.com gemarkeerd.":::
 
 Uw toepassingscode kan het protocol controleren via de header 'x-appservice-proto'. De header heeft de waarde `http` of `https`. 
 

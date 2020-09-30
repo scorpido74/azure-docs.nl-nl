@@ -2,16 +2,16 @@
 title: Azure Cosmos-emulator downloaden en opmerkingen bij de release
 description: Download de opmerkingen bij de release voor de Azure Cosmos-emulator voor verschillende versies en downloadgegevens.
 ms.service: cosmos-db
-ms.topic: tutorial
+ms.topic: conceptual
 author: milismsft
 ms.author: adrianmi
-ms.date: 06/20/2019
-ms.openlocfilehash: 12e1c79e610526dec11467cc08c753bf90daa095
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.date: 09/21/2020
+ms.openlocfilehash: da17cd1ea6dac52797162e3ac2d733ad1fd50ea1
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083454"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90988174"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos-emulator - opmerkingen bij de release en downloadgegevens
 
@@ -26,13 +26,20 @@ Dit artikel bevat de opmerkingen bij de release voor Azure Cosmos-emulator met e
 
 ## <a name="release-notes"></a>Releaseopmerkingen
 
-### <a name="2112-07072020"></a>2.11.2 (07-07-2020)
+### <a name="2115-23-august-2020"></a>2.11.5 (23 augustus 2020)
 
-- Met deze release wordt gewijzigd hoe ETL-traceringen die zijn vereist bij het oplossen van problemen met de Cosmos-emulator, worden verzameld. WPR-hulpprogramma's (Windows Performance Runtime) zijn nu de standaardhulpprogramma's voor het vastleggen van traceringen op basis van ETL en de oude vastleggingsmethode op basis van Logman is afgeschaft. Deze wijziging is gedeeltelijk vereist omdat de nieuwste beveiligingsupdates van Windows een onverwachte invloed hebben op de werking van Logman wanneer het programma wordt uitgevoerd via de Cosmos-emulator.
+In deze release zijn twee nieuwe opstartopties voor de Cosmos-emulator toegevoegd: 
 
-### <a name="2111-06102020"></a>2.11.1 (10-06-2020)
+* /EnablePreview: hiermee kunnen preview-functies voor de emulator worden ingeschakeld. De preview-functies zijn nog in ontwikkeling en toegankelijk via CI en voorbeeldschrijfbewerkingen.
+* /EnableAadAuthentication: hiermee kan de emulator aangepaste Azure Active Directory-tokens accepteren als alternatief voor de Azure Cosmos-hoofdsleutels. Deze functie is nog in ontwikkeling; specifieke roltoewijzingen en andere machtigingsinstellingen worden momenteel niet ondersteund.
 
-- Deze versie corrigeert een aantal bugs die zijn gerelateerd aan de emulator Data Explorer. In bepaalde gevallen bij het gebruik van de emulator Data Explorer via een webbrowser, kan het voorkomen dat deze geen verbinding kan maken met het Cosmos-emulatoreindpunt en alle gerelateerde acties, zoals het maken van een database of een container, veroorzaken dan een fout. Het tweede probleem dat is opgelost heeft betrekking op het maken van een item vanuit een JSON-bestand met behulp van de uploadactie van Data Explorer.
+### <a name="2112-07-july-2020"></a>2.11.2 (7 juli 2020)
+
+- Met deze release wordt gewijzigd hoe ETL-traceringen die zijn vereist bij het oplossen van problemen met de Cosmos-emulator, worden verzameld. WPR-hulpprogramma's (Windows Performance Runtime) zijn nu de standaardhulpprogramma's voor het vastleggen van ETL-traceringen terwijl de oude vastleggingsmethode op basis van LOGMAN is afgeschaft. Deze wijziging is gedeeltelijk vereist omdat de nieuwste beveiligingsupdates van Windows een onverwachte invloed hebben op de werking van Logman wanneer het programma wordt uitgevoerd via de Cosmos-emulator.
+
+### <a name="2111-10-june-2020"></a>2.11.1 (10 juni 2020)
+
+- Deze versie corrigeert een aantal bugs die zijn gerelateerd aan de emulator Data Explorer. Bij het gebruik van de emulator Data Explorer via een webbrowser, kan het in bepaalde gevallen voorkomen dat deze geen verbinding kan maken met het Cosmos-emulatoreindpunt. Alle gerelateerde acties, zoals het maken van een database of een container, zullen dan mislukken. Het tweede probleem dat is opgelost heeft betrekking op het maken van een item vanuit een JSON-bestand met behulp van de uploadactie van Data Explorer.
 
 ### <a name="2110"></a>2.11.0
 

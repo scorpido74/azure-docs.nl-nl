@@ -11,13 +11,13 @@ metadata:
   author: KumudD
   ms.author: kumud
   manager: mtillman
-  ms.date: 03/17/2020
-  ms.openlocfilehash: 55340e52505498f2475487567f141437347c3d10
-  ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+  ms.date: 09/28/2020
+  ms.openlocfilehash: bb515afe97116041ca30de31bdb70544cfe29e69
+  ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 09/02/2020
-  ms.locfileid: "89290375"
+  ms.lasthandoff: 09/29/2020
+  ms.locfileid: "91446031"
 highlightedContent:
   items:
   - title: Wat is Azure-netwerken?
@@ -32,9 +32,9 @@ highlightedContent:
   - title: Een sternetwerktopologie in Azure
     itemType: architecture
     url: https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke
-  - title: Wat is een routeringsvoorkeur?
+  - title: Wat is Azure Orbital?
     itemType: concept
-    url: ../virtual-network/routing-preference-overview.md
+    url: azure-orbital-overview.md
   - title: Op afstand werken met behulp van Azure-services
     itemType: concept
     url: working-remotely-support.md
@@ -115,7 +115,7 @@ conceptualContent:
       text: Wat is Azure Load Balancer?
     - url: https://azure.microsoft.com/updates/?category=networking&query=load%20balancer
       itemType: whats-new
-      text: Nieuw
+      text: Nieuwe functies
     - url: ../load-balancer/quickstart-load-balancer-standard-public-portal.md
       itemType: quickstart
       text: Internetverkeer gelijkmatig verdelen over VM's
