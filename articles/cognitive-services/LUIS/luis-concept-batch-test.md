@@ -3,20 +3,18 @@ title: Batch testen-LUIS
 titleSuffix: Azure Cognitive Services
 description: Gebruik batch tests om voortdurend aan uw toepassing te werken om deze te verfijnen en de taal overeenkomst te verbeteren.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/25/2019
-ms.author: diberry
-ms.openlocfilehash: a5ebd9b05b2dea9e04d4c9745c13d692ea88fcb8
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: f3a8f5ef8119d9895f67e07ea1b68c660be59f9b
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680420"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541863"
 ---
 # <a name="batch-testing-with-1000-utterances-in-luis-portal"></a>Batch testen met 1000 uitingen in LUIS-Portal
 
@@ -30,7 +28,7 @@ Het is belang rijk dat uitingen dat wordt gebruikt voor het uitvoeren van batch 
 
 Verzend een batch-bestand van uitingen, ook wel een *gegevensset*genoemd, voor batch tests. De gegevensset is een bestand met JSON-indeling met een maximum van 1.000 gelabelde **niet-dubbele** uitingen. U kunt Maxi maal 10 gegevens sets testen in een app. Als u meer wilt testen, verwijdert u een gegevensset en voegt u een nieuwe toe.
 
-|**Wetgeving**|
+|**Regels**|
 |--|
 |* Geen dubbele uitingen|
 |1000 uitingen of minder|

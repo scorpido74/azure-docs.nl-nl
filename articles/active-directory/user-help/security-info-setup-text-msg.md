@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 02/13/2019
 ms.author: curtand
-ms.openlocfilehash: 0fe191ac827c76afd497896611430f6efc6283aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c68e01e0eb7c926f47c99b16efa87d23a10b6711
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83747247"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537030"
 ---
 # <a name="set-up-text-messaging-as-your-verification-method"></a>SMS-berichten instellen als verificatie methode
 
@@ -52,7 +52,7 @@ Afhankelijk van de instellingen van uw organisatie kunt u mogelijk tekst bericht
 
 4. Typ op de pagina **telefoon** het telefoon nummer voor uw mobiele apparaat, kies **tekst mij een code**en selecteer **volgende**.
 
-    ![Telefoon nummer toevoegen en tekst berichten kiezen](media/security-info/securityinfo-myprofile-phonetext-addnumber.png)
+    ![Scherm afbeelding waarin de pagina telefoon wordt weer gegeven, waarbij ' tekst ik een code ' is geselecteerd.](media/security-info/securityinfo-myprofile-phonetext-addnumber.png)
 
 5. Typ de code die u via SMS-bericht naar uw mobiele apparaat stuurt en selecteer **volgende**.
 

@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 08/03/2018
 ms.author: curtand
 ms.reviewer: jairoc
-ms.openlocfilehash: 146b867f1075a7eac1b6817f5fc8dbcd7ba04b02
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: efb3ee24add847baf8264eccdf71278be5ee9496
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333406"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536967"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>Uw werk apparaat toevoegen aan het netwerk van uw organisatie
 Voeg uw werkend Windows 10-apparaat toe aan het netwerk van uw organisatie, zodat u mogelijk beperkte bronnen kunt openen.
@@ -48,7 +48,7 @@ Als uw apparaat een merk nieuw is dat nog niet is ingesteld, kunt u het OOBE-pro
 
 4. Goed keuren uw apparaat op uw mobiele apparaat om toegang tot uw account te krijgen. 
 
-    ![Scherm voor mobiele meldingen](./media/user-help-join-device-on-network/join-device-oobe-mobile.png)
+    ![Scherm afbeelding met het meldings scherm ' Voer uw wacht woord in.](./media/user-help-join-device-on-network/join-device-oobe-mobile.png)
 
 5. Voltooi het OOBE-proces, inclusief het instellen van uw privacy-instellingen en het instellen van Windows hello (indien nodig).
 
@@ -63,7 +63,7 @@ U kunt er zeker van zijn dat u lid bent van uw instellingen.
 
 2. Selecteer **toegang tot werk of school**en zorg ervoor dat er tekst wordt weer geven die er ongeveer als volgt uitziet: **verbonden met *\<your_organization>* Azure AD**.
 
-    ![Het scherm werk of school openen met verbonden contoso-account](./media/user-help-join-device-on-network/join-device-oobe-verify.png)
+    ![Scherm opname van het venster ' toegang tot werk of school ' met het account ' verbonden met (uw organisatie) Azure AD ' geselecteerd.](./media/user-help-join-device-on-network/join-device-oobe-verify.png)
 
 
 ## <a name="to-join-an-already-configured-windows-10-device"></a>Lid worden van een al geconfigureerd Windows 10-apparaat

@@ -1,7 +1,7 @@
 ---
 title: DenseNet
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het maken van een afbeeldings classificatie model met behulp van de densenet-algoritme.
+description: Meer informatie over het maken van een afbeeldings classificatie model met behulp van de DenseNet-algoritme.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/26/2020
-ms.openlocfilehash: d64933f7b2c8ebc8597b93cbd16b34158f936f96
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 2351012738f4cf5697fb29891c9459e4cc86cd3a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/29/2020
-ms.locfileid: "91450093"
+ms.locfileid: "91536627"
 ---
 # <a name="densenet"></a>DenseNet
 
@@ -29,19 +29,19 @@ U kunt het model trainen door het model en de map met de gelabelde afbeelding op
 
 ### <a name="more-about-densenet"></a>Meer informatie over DenseNet
 
-Raadpleeg voor meer informatie de [Convolutional-netwerken met een hoge](https://arxiv.org/abs/1608.06993) benetwerk.
+Zie voor meer informatie over DenseNet het document Research, [dense-verbonden Convolutional-netwerken](https://arxiv.org/abs/1608.06993).
 
 ## <a name="how-to-configure-densenet"></a>DenseNet configureren
 
 1.  Voeg de module **DenseNet** toe aan uw pijp lijn in de ontwerp functie.  
 
-2.  Geef bij **model naam**de naam op van een bepaalde densenet-structuur en u kunt kiezen uit de ondersteunde densenet: ' densenet121 ', ' densenet161 ', ' densenet169 ', ' densenet201 '.
+2.  Geef bij **model naam**de naam op van een bepaalde DenseNet-structuur en u kunt kiezen uit de ondersteunde DenseNet: ' densenet121 ', ' densenet161 ', ' densenet169 ', ' densenet201 '.
 
-3.  Voor vooraf **getrainde**geeft u op of u een voor ImageNet wilt gebruiken. Indien geselecteerd, kunt u model verfijnen op basis van het geselecteerde vooraf getrainde model. Als u dit selectie vakje uitschakelt, kunt u helemaal zelf trainen.
+3.  Voor vooraf **getrainde**geeft u op of u een voor ImageNet wilt gebruiken. Als deze is geselecteerd, kunt u het model op basis van het geselecteerde vooraf getrainde model verfijnen. Als u dit selectie vakje uitschakelt, kunt u helemaal zelf trainen.
 
-4.  Geef voor **geheugen efficiënt**op of controle punten moeten worden gebruikt. Dit is veel meer geheugen-efficiënt, maar langzamer. Zie https://arxiv.org/pdf/1707.06990.pdf voor meer informatie.
+4.  Geef voor **geheugen efficiënt**op of controle punten moeten worden gebruikt. Dit is veel meer geheugen-efficiënt, maar langzamer. Zie voor meer informatie het document Research, [geheugen-efficiënte implementatie van DenseNets](https://arxiv.org/pdf/1707.06990.pdf).
 
-5.  Verbind de uitvoer van de **DenseNet** -module, de trainings-en validatie afbeelding gegevensset-module naar het [Train Pytorch-model](train-pytorch-model.md). 
+5.  Verbind de uitvoer van de module **DenseNet** -module, training en validatie kopie gegevensset naar het [Model Train Pytorch](train-pytorch-model.md). 
 
 6. Verzend de pijp lijn.
 
@@ -56,7 +56,7 @@ Wanneer de uitvoering van de pijp lijn is voltooid, kunt u het model voor scores
 
 | Naam             | Bereik | Type    | Standaard     | Beschrijving                              |
 | ---------------- | ----- | ------- | ----------- | ---------------------------------------- |
-| Modelnaam       | Elk   | Modus    | densenet201 | Naam van een bepaalde densenet-structuur     |
+| Modelnaam       | Elk   | Modus    | densenet201 | Naam van een bepaalde DenseNet-structuur     |
 | Voortraind       | Elk   | Boolean-waarde | True        | Of u een vooraf getrainde model wilt gebruiken op ImageNet |
 | Geheugen efficiënt | Elk   | Booleaans | Niet waar       | Of controle punten moeten worden gebruikt, wat veel geheugen efficiënt maar langzamer is |
 
@@ -64,7 +64,7 @@ Wanneer de uitvoering van de pijp lijn is voltooid, kunt u het model voor scores
 
 | Naam            | Type                    | Beschrijving                              |
 | --------------- | ----------------------- | ---------------------------------------- |
-| Niet-traind model | UntrainedModelDirectory | Een niet-traind densenet-model dat kan worden verbonden met Train Pytorch model. |
+| Niet-traind model | UntrainedModelDirectory | Een niet-traind DenseNet-model dat kan worden verbonden met Train Pytorch model. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: has-adal-ref, devx-track-python
 ms.date: 04/03/2020
-ms.openlocfilehash: 508d054bc4eed88867bb6e3282edbafaae9a5247
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 97bd71dd5a70a867f45915a5a5f95f6513f2a824
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89298042"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541727"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>Interactie met Apache Kafka clusters in azure HDInsight met behulp van een REST-proxy
 
@@ -63,11 +63,11 @@ In de onderstaande stappen wordt gebruikgemaakt van de Azure Portal. Zie voor ee
 
 1. Schakel tijdens de werk stroom voor het maken van het Kafka-cluster op het tabblad **beveiliging en netwerk** de optie **Kafka rest proxy inschakelen** in.
 
-     ![Kafka REST proxy inschakelen en beveiligings groep selecteren](./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest.png)
+     ![Scherm afbeelding toont de pagina H D Insight-cluster maken met beveiliging en netwerken geselecteerd.](./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest.png)
 
 1. Klik op **beveiligings groep selecteren**. Selecteer in de lijst met beveiligings groepen de beveiligings groep waartoe u toegang wilt hebben tot de REST-proxy. U kunt het zoekvak gebruiken om de juiste beveiligings groep te vinden. Klik onderaan op de knop **selecteren** .
 
-     ![Kafka REST proxy inschakelen en beveiligings groep selecteren](./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest2.png)
+     ![Scherm afbeelding toont de pagina H D Insight-cluster maken met de optie om een beveiligings groep te selecteren.](./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest2.png)
 
 1. Voltooi de resterende stappen voor het maken van uw cluster zoals beschreven in [Apache Kafka cluster maken in azure HDInsight met behulp van Azure Portal](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-get-started).
 

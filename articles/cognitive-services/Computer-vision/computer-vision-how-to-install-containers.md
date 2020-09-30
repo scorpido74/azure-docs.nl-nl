@@ -1,7 +1,7 @@
 ---
-title: Docker-containers voor de Computer Vision Lees-API installeren en uitvoeren
+title: Lees de OCR docker-containers van Computer Vision installeren
 titleSuffix: Azure Cognitive Services
-description: Gebruik de docker-container voor de Computer Vision Lees-API om tekst te detecteren en op te halen uit installatie kopieën, on-premises.
+description: Gebruik de lezen van de OCR docker-containers van Computer Vision om tekst uit afbeeldingen en douments on-premises op te halen.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,22 +11,23 @@ ms.topic: conceptual
 ms.date: 09/28/2020
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
-keywords: on-premises, docker, container
-ms.openlocfilehash: 17aa0050ed3e2a2f5a2cc83964d032caa4b8c098
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+keywords: on-premises, OCR, docker, container
+ms.openlocfilehash: acf6a391965dcba20a2dabc18648076b88c5e7c5
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/29/2020
-ms.locfileid: "91460438"
+ms.locfileid: "91536372"
 ---
-# <a name="install-and-run-docker-containers-for-the-read-api-preview"></a>Docker-containers installeren en uitvoeren voor de Lees-API (preview) 
+# <a name="install-read-ocr-docker-containers-preview"></a>Lees de OCR docker-containers (preview) installeren 
 
 [!INCLUDE [container hosting on the Microsoft Container Registry](../containers/includes/gated-container-hosting.md)]
 
-Met containers kunt u de Computer Vision-API's uitvoeren in uw eigen omgeving. Containers zijn ideaal voor specifieke vereisten voor beveiliging en gegevensbeheer. In dit artikel leert u hoe u een Computer Vision-container downloadt, installeert en uitvoert.
+Met containers kunt u de Computer Vision-API's uitvoeren in uw eigen omgeving. Containers zijn ideaal voor specifieke vereisten voor beveiliging en gegevensbeheer. In dit artikel leert u hoe u Computer Vision containers kunt downloaden, installeren en uitvoeren.
 
-De *Lees* container stelt u in staat om *gedrukte tekst* te detecteren en uit te pakken van afbeeldingen van verschillende objecten met verschillende Opper vlakken en achtergronden, zoals bevestigingen, posters en visite kaartjes. Daarnaast detecteert de *Lees* container *handgeschreven tekst* in afbeeldingen en biedt PDF, TIFF en ondersteuning voor meerdere pagina's. Zie de [Lees API-documentatie](concept-recognizing-text.md#read-api)voor meer informatie.
+Met de container OCR *lezen* kunt u gedrukte en handgeschreven tekst uit afbeeldingen en documenten extra heren met ondersteuning voor JPEG-, PNG-, BMP-, PDF-en TIFF-bestands indelingen. Zie de [Lees API-documentatie](concept-recognizing-text.md#read-api)voor meer informatie.
 
+## <a name="read-3x-containers"></a>3. x-containers lezen
 Er zijn twee versies van de 3. x-containers die beschikbaar zijn in de preview-versie. Beide versies bieden extra nauw keurigheid en functies ten opzichte van de vorige container.
 
 De container Lees 3,0-Preview biedt het volgende:

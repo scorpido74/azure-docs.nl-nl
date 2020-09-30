@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/19/2020
-ms.openlocfilehash: 1c2aa9023a7081387d38b9f7c6cfe8323300ad6e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 5fad3e4862b0c40c9edd00a5b9d47b245e529396
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90898608"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536729"
 ---
 # <a name="convert-word-to-vector-module"></a>Woord naar vector module converteren
 
@@ -27,9 +27,9 @@ Deze module maakt gebruik van de Gensim-bibliotheek. Ga voor meer informatie ove
 
 ### <a name="more-about-converting-words-to-vectors"></a>Meer informatie over het converteren van woorden naar vectoren
 
-Over het algemeen is het converteren van woorden naar vectoren, of woord vectorization, een NLP-proces (natuurlijke taal verwerking). Het proces maakt gebruik van taal modellen of technieken voor het toewijzen van woorden aan een vector ruimte, dat wil zeggen, om elk woord weer te geven met een vector van reële getallen. In de tussen tijd kunnen woorden met vergelijk bare betekeniss een vergelijk bare weer gave hebben.
+Het converteren van woorden naar vectoren, of woord vectorization, is een NLP-proces (natuurlijke taal verwerking). Het proces gebruikt taal modellen om woorden in de vector ruimte toe te wijzen. Met een vector ruimte wordt elk woord aangeduid met een vector met echte getallen. Ook kunnen woorden met vergelijk bare betekeniss een vergelijk bare weer gave hebben.
 
-Word-insluitingen kunnen worden gebruikt als eerste invoer voor NLP downstream-taken, zoals tekst classificatie en sentiment-analyse.
+Gebruik Word-insluitingen als eerste invoer voor NLP downstream-taken, zoals tekst classificatie en sentiment-analyse.
 
 In deze module hebben we onder verschillende technologieën voor het insluiten van woorden drie veelgebruikte methoden geïmplementeerd. Twee, Word2Vec en FastText, zijn online trainings modellen. De andere is een vooraf getraind model, ondersteunt-wiki-gigaword-100. 
 
@@ -37,9 +37,9 @@ Online trainings modellen worden getraind op basis van uw invoer gegevens. Voort
 
 Hier volgt informatie over de methoden:
 
-+ Word2Vec is een van de populairste technieken voor het leren van woord insluitingen met behulp van een groot Neural-netwerk. De theorie wordt in dit document besproken en beschikbaar als een PDF-down load: [efficiënte schatting van woord represen in vector ruimte, door Mikolov, Tomas, et al](https://arxiv.org/pdf/1301.3781.pdf). De implementatie in deze module is gebaseerd op de [Gensim-bibliotheek voor Word2Vec](https://radimrehurek.com/gensim/models/word2vec.html).
++ Word2Vec is een van de populairste technieken voor het leren van woord insluitingen met behulp van een groot Neural-netwerk. De theorie wordt in dit document besproken en beschikbaar als een PDF-down load: een [efficiënte schatting van de representaties van woorden in een vector ruimte](https://arxiv.org/pdf/1301.3781.pdf). De implementatie in deze module is gebaseerd op de [Gensim-bibliotheek voor Word2Vec](https://radimrehurek.com/gensim/models/word2vec.html).
 
-+ De FastTexte theorie wordt in dit artikel beschreven, die beschikbaar is als PDF-down load: [verrijkt het downloaden van woord vectoren met informatie over subwoorden, door Bojanowski, Piotr, et al](https://arxiv.org/pdf/1607.04606.pdf). De implementatie in deze module is gebaseerd op de [Gensim-bibliotheek voor FastText](https://radimrehurek.com/gensim/models/fasttext.html).
++ De FastTexte theorie wordt in dit artikel beschreven, die beschikbaar is als PDF-down load: [verrijkt woord vectoren met informatie over subwoorden](https://arxiv.org/pdf/1607.04606.pdf). De implementatie in deze module is gebaseerd op de [Gensim-bibliotheek voor FastText](https://radimrehurek.com/gensim/models/fasttext.html).
 
 + Het vooraf getrainde ondersteunt-model is ondersteunt-wiki-gigaword-100. Het is een verzameling van getrainde vectoren op basis van een Wikipedia-tekst verzameling, die 5.600.000.000-tokens en 400.000 niet-hoofdletter woorden bevat. Er is een PDF-down load beschikbaar: [ondersteunt: globale vectoren voor woord weergave](https://nlp.stanford.edu/pubs/glove.pdf).
 
@@ -71,13 +71,13 @@ Deze module vereist een gegevensset die een tekst kolom bevat. Voor verwerkte te
 
         De standaard venster grootte is 5.
 
-    + Voor het **aantal epoches**geeft u het aantal epoches (iteraties) op voor de verzameling. Deze instelling komt overeen met de `iter` para meter in Gensim.
+    + Voor het **aantal epoches**geeft u het aantal epoches (iteraties) op voor de verzameling. Komt overeen met de `iter` para meter in Gensim.
 
         Het nummer van de standaard-epoche is 5.
 
 6. Voor **maximale woordenlijst grootte**geeft u het maximum aantal woorden in de gegenereerde vocabulaire op.
 
-    Als er meer unieke woorden zijn, haalt u de voor vallen weg.
+    Als er meer unieke woorden zijn dan de maximale grootte, haalt u de voor vallen weg.
 
     De standaard woordenlijst grootte is 10.000.
 
@@ -93,11 +93,11 @@ De module heeft één uitvoer:
 
 + **Vocabulaire with Embedding**: bevat de gegenereerde vocabulaire, samen met het insluiten van elk woord. Eén dimensie neemt één kolom in beslag.
 
-In het volgende voor beeld ziet u hoe de module woord converteren naar vector werkt. Deze module wordt toegepast op basis van de standaard instellingen voor de voor verwerkte gegevensset van Wikipedia SP 500 die is opgenomen in Azure Machine Learning.
+In het volgende voor beeld ziet u hoe de module woord converteren naar vector werkt. De functie gebruikt voor het converteren van Word naar vector met de standaard instellingen naar de voor verwerking van de gegevensset van de voorverwerkte Wikipedia-SP 500.
 
 ### <a name="source-dataset"></a>Brongegevensset
 
-De gegevensset bevat een kolom categorie, samen met de volledige tekst opgehaald uit Wikipedia. In deze tabel worden slechts enkele representatieve voor beelden weer gegeven.
+De gegevensset bevat een kolom categorie, samen met de volledige tekst opgehaald uit Wikipedia. De volgende tabel bevat enkele representatieve voor beelden.
 
 |Tekst|
 |----------|
@@ -136,13 +136,13 @@ Deze sectie bevat tips en antwoorden op veelgestelde vragen.
 
     In dit voor woord omzetten in een vector module hebben we drie verschillende strategieën gegeven: twee online trainings modellen en één vooraf getraind model. De online trainings modellen maken gebruik van uw invoer gegevensset als trainings gegevens en genereren een vocabulaire-en woord Vector tijdens de training. Het vooraf getrainde model wordt al getraind door een veel grotere tekst verzameling, zoals Wikipedia of Twitter-tekst. Het voortrainde model is in feite een verzameling van woord-en sluitings paren.  
 
-    Als het vooraf getrainde ondersteunt-model is gekozen als de vectorization-strategie van Word, wordt een woorden lijst van de invoer-gegevensset samen vatting en wordt er een insluitings vector voor elk woord uit het vooraf getrainde model gegenereerd. Zonder online training kan het gebruik van een voortraind model trainings tijd besparen. Het heeft betere prestaties, vooral wanneer de grootte van de invoer gegevensset relatief klein is.
+    Het ondersteunt vooraf getrainde model bevat een samen vatting van een vocabulaire van de invoer gegevensset en genereert een insluitings vector voor elk woord uit het vooraf getrainde model. Zonder online training kan het gebruik van een voortraind model trainings tijd besparen. Het heeft betere prestaties, vooral wanneer de grootte van de invoer gegevensset relatief klein is.
 
 + Grootte van insluiten:
 
-    Over het algemeen is de lengte van het insluiten van woorden ingesteld op een paar honderd (bijvoorbeeld 100, 200, 300) voor goede prestaties. De reden hiervoor is dat een kleine insluitings grootte een kleine vector ruimte betekent, waardoor er conflicten kunnen ontstaan met het insluiten van woorden.  
+    In het algemeen is de lengte van het insluiten van woorden ingesteld op honderden. Bijvoorbeeld 100, 200, 300. Een kleine insluitings grootte betekent een kleine vector ruimte, wat kan leiden tot conflicten bij het insluiten van woorden.  
 
-    Voor voortrainde modellen is de lengte van woord insluitingen vast. In deze implementatie is de insluitings grootte van ondersteunt-wiki-gigaword-100 100.
+    De lengte van woord insluitingen is vast voor voortrainde modellen. In dit voor beeld is de insluitings grootte van ondersteunt-wiki-gigaword-100 100.
 
 
 ## <a name="next-steps"></a>Volgende stappen

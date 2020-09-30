@@ -3,15 +3,15 @@ title: Een Azure Batch-pool zonder openbare IP-adressen maken
 description: Meer informatie over het maken van een groep zonder open bare IP-adressen
 author: pkshultz
 ms.topic: how-to
-ms.date: 09/25/2020
+ms.date: 09/28/2020
 ms.author: peshultz
 ms.custom: references_regions
-ms.openlocfilehash: 9b36c769c70792e47464c2704e1912dbb2d744dd
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 6c6207e7f52e49b88dc8dc99e0bd20a2c774339d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91367934"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541897"
 ---
 # <a name="create-an-azure-batch-pool-without-public-ip-addresses"></a>Een Azure Batch-pool zonder openbare IP-adressen maken
 
@@ -24,7 +24,7 @@ Standaard wordt aan alle reken knooppunten in een Azure Batch configuratie groep
 Als u de toegang tot deze knoop punten wilt beperken en de detectie van deze knoop punten van het Internet wilt verkorten, kunt u de groep inrichten zonder open bare IP-adressen.
 
 > [!IMPORTANT]
-> Ondersteuning voor Pools zonder open bare IP-adressen in Azure Batch is momenteel een open bare Preview voor alle regio's, met uitzonde ring van China-oost, China-oost 2, China-noord en China-noord 2.
+> Ondersteuning voor Pools zonder open bare IP-adressen in Azure Batch is momenteel beschikbaar als open bare Preview voor de volgende regio's: Frankrijk-centraal, Azië-oost, VS-West-Centraal, Zuid-Centraal VS, VS-West 2, VS-Oost, Europa-noord, VS-Oost 2, VS-midden, Europa-west.
 > Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 ## <a name="prerequisites"></a>Vereisten

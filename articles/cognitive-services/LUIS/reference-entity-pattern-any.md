@@ -3,19 +3,17 @@ title: Patroon. elk entiteits type-LUIS
 titleSuffix: Azure Cognitive Services
 description: Patroon. any is een tijdelijke aanduiding met variabele lengte die alleen wordt gebruikt in de sjabloon van een patroon utterance om te markeren waar de entiteit begint en eindigt.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/29/2019
-ms.author: diberry
-ms.openlocfilehash: 5164bf55ef8233cf34a470524da3bc852678d79a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ec23be3709cebc534c059a21c52452abff683b18
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75979167"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542203"
 ---
 # <a name="patternany-entity"></a>Pattern.any-entiteit
 
@@ -29,7 +27,7 @@ Patroon. alle entiteiten moeten worden gemarkeerd in de voor beelden van [patroo
 
 ## <a name="usage"></a>Gebruik
 
-Aan de hand van een client toepassing die zoekt naar boeken op basis van de titel, het patroon. alle extraheert de volledige titel. Een sjabloon utterance het gebruik van een patroon. elke voor deze `Was {BookTitle} written by an American this year[?]`zoek opdracht in het boek is.
+Aan de hand van een client toepassing die zoekt naar boeken op basis van de titel, het patroon. alle extraheert de volledige titel. Een sjabloon utterance het gebruik van een patroon. elke voor deze zoek opdracht in het boek is `Was {BookTitle} written by an American this year[?]` .
 
 In de volgende tabel heeft elke rij twee versies van de utterance. De bovenste utterance is hoe LUIS aanvankelijk de utterance ziet. Het is niet duidelijk waar de titel van het boek begint en eindigt. De onderste utterance maakt gebruik van een patroon. een wille keurige entiteit om het begin en het einde van de entiteit te markeren.
 
@@ -69,7 +67,7 @@ Met de naam van het Inge sloten formulier dat moet worden geëxtraheerd als een 
 
 #### <a name="v3-prediction-endpoint-response"></a>[V3-Voorspellings eindpunt antwoord](#tab/V3)
 
-Dit is de JSON als `verbose=false` deze is ingesteld in de query reeks:
+Dit is de JSON als deze `verbose=false` is ingesteld in de query reeks:
 
 ```json
 "entities": {
@@ -79,7 +77,7 @@ Dit is de JSON als `verbose=false` deze is ingesteld in de query reeks:
 }
 ```
 
-Dit is de JSON als `verbose=true` deze is ingesteld in de query reeks:
+Dit is de JSON als deze `verbose=true` is ingesteld in de query reeks:
 
 ```json
 "entities": {

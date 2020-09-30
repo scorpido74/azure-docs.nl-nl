@@ -5,15 +5,15 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: include
-ms.date: 08/25/2020
+ms.date: 09/17/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 1ad9630c69e06066e9edc12441d5a42b84b15804
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: e3234289fe56286cb5ff0791d983dee6ec2aa4d8
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89488662"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91544886"
 ---
 > [!NOTE]
-> Azure Security Center kunt op dit moment geen installatie kopie uitvoeren voor het [scannen van beveiligings problemen](../articles/security-center/azure-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json) in een REGI ster waarmee de toegang wordt beperkt tot persoonlijke eind punten, geselecteerde subnetten of IP-adressen.
+> Azure Security Center kunt op dit moment geen installatie kopie uitvoeren voor het [scannen van beveiligings problemen](../articles/security-center/azure-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json) in een REGI ster waarmee de toegang wordt beperkt tot persoonlijke eind punten, geselecteerde subnetten of IP-adressen. Exemplaren van bepaalde Azure-Services, waaronder Azure DevOps-Services en Azure Container Instances, hebben ook geen toegang tot een container register met een beperkt netwerk.

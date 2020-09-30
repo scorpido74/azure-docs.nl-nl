@@ -15,12 +15,12 @@ ms.date: 07/27/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3fbb92c2e3623f5fd9571cd94ae521a41139dd6
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 0a3b6dad33ce678478a201dc8b7b612f4b8507c0
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87505859"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536984"
 ---
 # <a name="approve-activation-requests-for-privileged-access-group-members-and-owners-preview"></a>Activerings aanvragen voor leden en eigen aren van bevoegde toegangs groep goed keuren (preview)
 
@@ -32,7 +32,7 @@ Volg de stappen in dit artikel voor het goed keuren of weigeren van aanvragen vo
 
 Als gedelegeerde fiatteur ontvangt u een e-mail melding wanneer een Azure resource Role-aanvraag in afwachting is van uw goed keuring. U kunt openstaande aanvragen in Privileged Identity Management weer geven.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 1. Open **Azure AD privileged Identity Management**.
 
@@ -46,7 +46,7 @@ Als gedelegeerde fiatteur ontvangt u een e-mail melding wanneer een Azure resour
 
 1. Zoek en selecteer de aanvraag die u wilt goed keuren en selecteer **goed keuren**.
 
-    ![Verzoeken goed keuren: deel venster goed keuren of weigeren met details en motivering](./media/groups-approval-workflow/groups-confirm-approval.png)
+    ![Scherm opname van de pagina ' aanvragen goed keuren ' met de knoppen goed keuren en bevestigen.](./media/groups-approval-workflow/groups-confirm-approval.png)
 
 1. Voer in het vak **motivering** de zakelijke rechtvaardiging in.
 

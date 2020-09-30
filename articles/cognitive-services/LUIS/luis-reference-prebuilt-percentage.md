@@ -3,23 +3,21 @@ title: Percentage vooraf samengestelde entiteit-LUIS
 titleSuffix: Azure Cognitive Services
 description: Dit artikel bevat percentage vooraf opgebouwde entiteits gegevens in Language Understanding (LUIS).
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/27/2019
-ms.author: diberry
-ms.openlocfilehash: 31ea1c36139abcb1e102161ad76a203073ba4dfd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bb64a32e2bdd3976fba3ce63433b13eb4891afc7
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78270501"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541693"
 ---
 # <a name="percentage-prebuilt-entity-for-a-luis-app"></a>Percentage vooraf samengestelde entiteit voor een LUIS-app
-Percentage nummers kunnen worden weer gegeven als breuken, `3 1/2`of als percentage `2%`. Omdat deze entiteit al is getraind, hoeft u geen voor beeld-uitingen met een percentage toe te voegen aan de toepassings intentie. Het percentage entiteit wordt ondersteund in [veel cult uren](luis-reference-prebuilt-entities.md).
+Percentage nummers kunnen worden weer gegeven als breuken, `3 1/2` of als percentage `2%` . Omdat deze entiteit al is getraind, hoeft u geen voor beeld-uitingen met een percentage toe te voegen aan de toepassings intentie. Het percentage entiteit wordt ondersteund in [veel cult uren](luis-reference-prebuilt-entities.md).
 
 ## <a name="types-of-percentage"></a>Typen percentage
 Percentage wordt beheerd vanuit de map [recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml#L114) github
@@ -32,7 +30,7 @@ De volgende entiteits objecten worden geretourneerd voor de query:
 
 #### <a name="v3-response"></a>[V3-antwoord](#tab/V3)
 
-De volgende JSON is met de `verbose` para meter ingesteld `false`op:
+De volgende JSON is met de `verbose` para meter ingesteld op `false` :
 
 ```json
 "entities": {
@@ -42,7 +40,7 @@ De volgende JSON is met de `verbose` para meter ingesteld `false`op:
 }
 ```
 #### <a name="v3-verbose-response"></a>[Uitgebreide respons van v3](#tab/V3-verbose)
-De volgende JSON is met de `verbose` para meter ingesteld `true`op:
+De volgende JSON is met de `verbose` para meter ingesteld op `true` :
 
 ```json
 "entities": {

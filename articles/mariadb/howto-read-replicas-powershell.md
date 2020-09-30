@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/10/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a13ecbb5bed65de9ab8a52258d1f22b9f3520c9f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 6e90e9c2ebbc6ba05e5778f618a5c3de02adf3ac
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498936"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542356"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-powershell"></a>Lees replica's maken en beheren in Azure Database for MariaDB met behulp van Power shell
 
@@ -38,12 +38,12 @@ Als u Power shell lokaal wilt gebruiken, maakt u verbinding met uw Azure-account
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 > [!IMPORTANT]
-> De functie voor het lezen van replica's is alleen beschikbaar voor Azure Database for MariaDB-servers in de prijs Categorieën Algemeen of geoptimaliseerd voor geheugen. Zorg ervoor dat de hoofd server zich in een van deze prijs categorieën bevindt.
+> De functie voor het lezen van replica's is alleen beschikbaar voor Azure Database for MariaDB-servers in de prijs Categorieën Algemeen of geoptimaliseerd voor geheugen. Zorg ervoor dat de bron server zich in een van deze prijs categorieën bevindt.
 
-### <a name="create-a-read-replica"></a>Een lees replica maken
+### <a name="create-a-read-replica"></a>Een leesreplica maken
 
 > [!IMPORTANT]
-> Wanneer u een replica maakt voor een model zonder bestaande replica's, wordt de Master eerst opnieuw opgestart om zichzelf voor te bereiden voor replicatie. Houd dit in overweging en voer deze bewerkingen uit tijdens een rustige periode.
+> Wanneer u een replica maakt voor een bron die geen bestaande replica's heeft, wordt de bron eerst opnieuw opgestart om zichzelf voor te bereiden voor replicatie. Houd dit in overweging en voer deze bewerkingen uit tijdens een rustige periode.
 
 Een lees replica-server kan worden gemaakt met behulp van de volgende opdracht:
 
@@ -57,7 +57,7 @@ Voor de `New-AzMariaDbServerReplica` opdracht zijn de volgende para meters verei
 | Instelling | Voorbeeldwaarde | Beschrijving  |
 | --- | --- | --- |
 | ResourceGroupName |  myResourceGroup |  De resource groep waar de replica-server is gemaakt.  |
-| Name | mydemoreplicaserver | De naam van de nieuwe replica server die wordt gemaakt. |
+| Naam | mydemoreplicaserver | De naam van de nieuwe replica server die wordt gemaakt. |
 
 Gebruik de **locatie** parameter om een lees replica te maken. In het volgende voor beeld wordt een replica gemaakt in de regio **VS-West** .
 
@@ -68,14 +68,14 @@ Get-AzMariaDbServer -Name mrdemoserver -ResourceGroupName myresourcegroup |
 
 Ga naar het [artikel concepten van replica's lezen](concepts-read-replicas.md)voor meer informatie over de regio's die u kunt maken in de replica.
 
-Lees replica's worden standaard gemaakt met dezelfde server configuratie als de Master, tenzij de **SKU** -para meter is opgegeven.
+Lees replica's worden standaard gemaakt met dezelfde server configuratie als de bron, tenzij de **SKU** -para meter is opgegeven.
 
 > [!NOTE]
-> Het is raadzaam om de configuratie van de replica server te behouden in gelijke of hogere waarden dan de Master om ervoor te zorgen dat de replica kan blijven werken met de Master.
+> Het is raadzaam om de configuratie van de replica server te behouden in gelijke of hogere waarden dan de bron om ervoor te zorgen dat de replica kan blijven werken met de Master.
 
-### <a name="list-replicas-for-a-master-server"></a>Replica's voor een hoofd server weer geven
+### <a name="list-replicas-for-a-source-server"></a>Replica's weer geven voor een bron server
 
-Als u alle replica's voor een bepaalde hoofd server wilt weer geven, voert u de volgende opdracht uit:
+Als u alle replica's voor een bepaalde bron server wilt weer geven, voert u de volgende opdracht uit:
 
 ```azurepowershell-interactive
 Get-AzMariaDReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
@@ -86,7 +86,7 @@ Voor de `Get-AzMariaDReplica` opdracht zijn de volgende para meters vereist:
 | Instelling | Voorbeeldwaarde | Beschrijving  |
 | --- | --- | --- |
 | ResourceGroupName |  myResourceGroup |  De resource groep waar de replica-server wordt gemaakt.  |
-| ServerName | mydemoserver | De naam of ID van de hoofd server. |
+| ServerName | mydemoserver | De naam of ID van de bron server. |
 
 ### <a name="delete-a-replica-server"></a>Een replica server verwijderen
 
@@ -96,12 +96,12 @@ Het verwijderen van een lees replica-server kan worden uitgevoerd door de cmdlet
 Remove-AzMariaDbServer -Name mydemoreplicaserver -ResourceGroupName myresourcegroup
 ```
 
-### <a name="delete-a-master-server"></a>Een hoofd server verwijderen
+### <a name="delete-a-source-server"></a>Een bron server verwijderen
 
 > [!IMPORTANT]
-> Als u een hoofdserver verwijdert, wordt de replicatie naar alle replicaservers gestopt en wordt de hoofdserver zelf verwijderd. Replicaservers worden zelfstandige servers die nu zowel lees-als schrijfbewerkingen ondersteunen.
+> Als u een bronserver verwijdert, wordt de replicatie naar alle replicaservers gestopt en wordt de bronserver zelf verwijderd. Replicaservers worden zelfstandige servers die nu zowel lees-als schrijfbewerkingen ondersteunen.
 
-Als u een master server wilt verwijderen, kunt u de `Remove-AzMariaDbServer` cmdlet uitvoeren.
+Als u een bron server wilt verwijderen, kunt u de `Remove-AzMariaDbServer` cmdlet uitvoeren.
 
 ```azurepowershell-interactive
 Remove-AzMariaDbServer -Name mydemoserver -ResourceGroupName myresourcegroup

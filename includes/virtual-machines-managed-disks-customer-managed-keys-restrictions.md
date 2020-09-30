@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 08/24/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 8833639b6efacc664596ecb2aa6f9da41ad23b81
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: b660d3a0d49de80ed85cfbdcdf8e28b9828cbf26
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814129"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91545165"
 ---
 - Alleen [software-en HSM RSA-sleutels](../articles/key-vault/keys/about-keys.md) met een grootte van 2.048 bits, 3.072-bits en 4.096 bits worden ondersteund, geen andere sleutels of grootten.
     - Voor [HSM](../articles/key-vault/keys/hsm-protected-keys.md) -sleutels is de **Premium** -laag van Azure-sleutel kluizen vereist.
 - Schijven die zijn gemaakt op basis van aangepaste installatie kopieën die zijn versleuteld met versleuteling aan de server zijde en door de klant beheerde sleutels moeten worden versleuteld met dezelfde door de klant beheerde sleutels en moeten zich in hetzelfde abonnement bevinden.
 - Moment opnamen die zijn gemaakt op basis van schijven die zijn versleuteld met versleuteling aan de server zijde en door de klant beheerde sleutels moeten worden versleuteld met dezelfde door de klant beheerde sleutels.
 - Alle resources met betrekking tot uw door de klant beheerde sleutels (Azure Key kluizen, schijf versleutelings sets, Vm's, schijven en moment opnamen) moeten zich in hetzelfde abonnement en dezelfde regio bevinden.
-- Schijven, moment opnamen en installatie kopieën die zijn versleuteld met door de klant beheerde sleutels, kunnen niet worden verplaatst naar een ander abonnement.
+- Schijven, moment opnamen en installatie kopieën die zijn versleuteld met door de klant beheerde sleutels, kunnen niet worden verplaatst naar een andere resource groep en een ander abonnement.
 - Beheerde schijven die momenteel of eerder zijn versleuteld met Azure Disk Encryption kunnen niet worden versleuteld met door de klant beheerde sleutels.
 - Kan Maxi maal 50 schijf versleutelings sets per regio per abonnement maken.
 - Zie [Preview: door de klant beheerde sleutels gebruiken voor het versleutelen van afbeeldingen](../articles/virtual-machines/image-version-encryption.md)voor meer informatie over het gebruik van door de klant beheerde sleutels met galerieën met gedeelde afbeeldingen.

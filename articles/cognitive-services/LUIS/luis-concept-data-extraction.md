@@ -3,15 +3,14 @@ title: Gegevens extractie-LUIS
 description: Gegevens uit utterance-tekst ophalen met intents en entiteiten. Meer informatie over wat voor soort gegevens kan worden geëxtraheerd uit Language Understanding (LUIS).
 ms.service: cognitive-services
 ms.subservice: language-understanding
-author: diberry
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: c69971b36bf945086d1a8f398043444071acea5c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9bcc3d08fa29109cf4178f8eb0c3efe661323ef0
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91324821"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541778"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>Gegevens uit utterance-tekst ophalen met intents en entiteiten
 LUIS biedt u de mogelijkheid om gegevens op te halen uit de uitingen van de natuurlijke taal van een gebruiker. De gegevens worden geëxtraheerd op een manier die kan worden gebruikt door een programma, toepassing of chat-bot om actie te ondernemen. In de volgende secties vindt u informatie over de gegevens die worden geretourneerd door intenties en entiteiten met voor beelden van JSON.
@@ -194,7 +193,7 @@ Meer informatie over het [v3-Voorspellings eindpunt](luis-migration-api-v3.md).
 
 * * *
 
-|Domain|Gegevens object|Gegevenstype|Locatie van gegevens|Waarde|
+|Domein|Gegevens object|Gegevenstype|Locatie van gegevens|Waarde|
 |--|--|--|--|--|
 |Hulpprogramma's|Intentie|Tekenreeks|intents [0]. intentie|"<b>Hulpprogram ma's</b>. ShowNext"|
 |Communicatie|Intentie|Tekenreeks|intentie [1]. intentie|<b>Communicatie</b>. StartOver"|

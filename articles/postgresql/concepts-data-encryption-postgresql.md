@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 1be04c0617dc4ed235cc3f3bc29aa58f4c2cb1d2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7361355a81de019af90e908f11c4d283b7f16cc9
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902133"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542118"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>Azure Database for PostgreSQL gegevens versleuteling met één server met een door de klant beheerde sleutel
 
@@ -79,7 +79,7 @@ Wanneer u gegevens versleuteling gebruikt door gebruik te maken van een door de 
 * Zorg ervoor dat Key Vault en Azure Database for PostgreSQL enkele server zich in dezelfde regio bevinden, zodat u een snellere toegang hebt tot DEK-terugloop en de bewerking voor het uitpakken.
 * Vergrendel de Azure-sleutel kluis alleen op **privé-eind punten en geselecteerde netwerken** en sta alleen *vertrouwde micro soft* -Services toe om de bronnen te beveiligen.
 
-    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png" alt-text="Trusted-service-with-Azure":::
+    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png" alt-text="Diagram waarin een overzicht van Bring Your Own Key wordt weer gegeven":::
 
 Hier vindt u aanbevelingen voor het configureren van een door de klant beheerde sleutel:
 
@@ -121,9 +121,9 @@ Configureer de volgende Azure-functies om de status van de data base te controle
 
 Nadat Azure Database for PostgreSQL één server is versleuteld met een door de klant beheerde sleutel die is opgeslagen in Key Vault, wordt een nieuw gemaakt exemplaar van de server ook versleuteld. U kunt deze nieuwe kopie maken via een lokale of geo-herstel bewerking of via het lezen van replica's. De kopie kan echter worden gewijzigd in overeenstemming met de beheerde sleutel van een nieuwe klant voor versleuteling. Wanneer de door de klant beheerde sleutel wordt gewijzigd, beginnen oude back-ups van de server met de meest recente sleutel.
 
-Als u problemen wilt voor komen tijdens het instellen van door de klant beheerde gegevens versleuteling tijdens het terugzetten of het maken van een replica, is het belang rijk dat u deze stappen volgt op de hoofd-en terugzet-of replica servers:
+Als u problemen wilt voor komen tijdens het instellen van door de klant beheerde gegevens versleuteling tijdens het terugzetten of het maken van een replica, is het belang rijk dat u deze stappen volgt op de primaire en de herstelde/replica-servers:
 
-* Start het herstel-of het maken van de replica van de hoofd Azure Database for PostgreSQL één server.
+* Start het herstel-of het maken van de replica van de primaire Azure Database for PostgreSQL één server.
 * Behoud de zojuist gemaakte server (hersteld/replica) in een niet-toegankelijke status, omdat de unieke identiteit nog geen machtigingen heeft gekregen om Key Vault.
 * Valideer op de herstelde/replica-server de door de klant beheerde sleutel opnieuw in de instellingen voor gegevens versleuteling. Dit zorgt ervoor dat de zojuist gemaakte server verloopt en de machtigingen voor het uitpakken van de sleutel die is opgeslagen in Key Vault.
 

@@ -2,13 +2,13 @@
 title: Containerinstallatiekopieën importeren
 description: Container installatie kopieën importeren in een Azure container Registry met behulp van Azure Api's, zonder dat u docker-opdrachten hoeft uit te voeren.
 ms.topic: article
-ms.date: 08/17/2020
-ms.openlocfilehash: 66c3a8b19e2288c1f8720dd4fe79f348a11f052e
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.date: 09/18/2020
+ms.openlocfilehash: 2c99d3c32bf6dad3a1950da56b29f47d2a988161
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660492"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541574"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>Container installatie kopieën importeren in een container register
 
@@ -18,7 +18,7 @@ Azure Container Registry verwerkt een aantal algemene scenario's voor het kopië
 
 * Importeren uit een openbaar REGI ster
 
-* Importeren vanuit een ander Azure container registry in hetzelfde of een ander Azure-abonnement
+* Importeren uit een ander Azure container Registry, in hetzelfde of een ander Azure-abonnement of een andere Tenant
 
 * Importeren uit een persoonlijk niet-Azure-container register
 
@@ -28,7 +28,7 @@ Het importeren van afbeeldingen in een Azure container Registry heeft de volgend
 
 * Bij het importeren van installatie kopieën met meerdere architecturen (zoals officiële docker-installatie kopieën), worden installatie kopieën voor alle architecturen en platformen die zijn opgegeven in de manifest lijst gekopieerd.
 
-* Voor toegang tot de bron-en doel registers hoeven de open bare eind punten van de registers niet te worden gebruikt.
+* Toegang tot het doel register heeft geen gebruik van het open bare eind punt van het REGI ster.
 
 Als u container installatie kopieën wilt importeren, moet u de Azure CLI in Azure Cloud Shell of lokaal uitvoeren (versie 2.0.55 of hoger aanbevolen). Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][azure-cli] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
@@ -83,9 +83,9 @@ az acr import \
 --image servercore:ltsc2019
 ```
 
-## <a name="import-from-another-azure-container-registry"></a>Importeren vanuit een ander Azure container Registry
+## <a name="import-from-an-azure-container-registry-in-the-same-ad-tenant"></a>Importeren uit een Azure container registry in dezelfde AD-Tenant
 
-U kunt een installatie kopie vanuit een ander Azure container Registry importeren met behulp van geïntegreerde Azure Active Directory-machtigingen.
+U kunt een installatie kopie importeren uit een Azure container registry in dezelfde AD-Tenant met behulp van geïntegreerde Azure Active Directory-machtigingen.
 
 * Uw identiteit moet Azure Active Directory machtigingen hebben voor het lezen van het bron register (rol van lezer) en voor het importeren naar het doel register (rol Inzender of een [aangepaste rol](container-registry-roles.md#custom-roles) die de actie importImage toestaat).
 
@@ -136,7 +136,20 @@ az acr import \
 
 ### <a name="import-from-a-registry-using-service-principal-credentials"></a>Importeren uit een REGI ster met de referenties van de Service-Principal
 
-Als u wilt importeren uit een REGI ster waartoe u geen toegang hebt met behulp van Active Directory machtigingen, kunt u de referenties van de Service-Principal gebruiken (indien beschikbaar). Geef de appID en het wacht woord op van een Active Directory [Service-Principal](container-registry-auth-service-principal.md) die toegang heeft tot het bron register ACRPull. Het gebruik van een Service-Principal is handig voor het bouwen van systemen en andere systemen zonder toezicht die installatie kopieën naar uw REGI ster moeten importeren.
+Als u wilt importeren uit een REGI ster waartoe u geen toegang hebt met behulp van geïntegreerde Active Directory-machtigingen, kunt u de referenties van de Service-Principal (indien beschikbaar) gebruiken in het bron register. Geef de appID en het wacht woord op van een Active Directory [Service-Principal](container-registry-auth-service-principal.md) die toegang heeft tot het bron register ACRPull. Het gebruik van een Service-Principal is handig voor het bouwen van systemen en andere systemen zonder toezicht die installatie kopieën naar uw REGI ster moeten importeren.
+
+```azurecli
+az acr import \
+  --name myregistry \
+  --source sourceregistry.azurecr.io/sourcerrepo:tag \
+  --image targetimage:tag \
+  --username <SP_App_ID> \
+  –-password <SP_Passwd>
+```
+
+## <a name="import-from-an-azure-container-registry-in-a-different-ad-tenant"></a>Importeren uit een Azure container registry in een andere AD-Tenant
+
+Als u wilt importeren uit een Azure container registry in een andere Azure Active Directory Tenant, geeft u het bron register op bij de naam van de aanmeldings server en geeft u de gebruikers naam en het wacht woord op waarmee pull-toegang tot het REGI ster mogelijk wordt. U kunt bijvoorbeeld een token en wacht woord van een [opslag plaats bereiken](container-registry-repository-scoped-permissions.md) , of de appID en het wacht woord van een Active Directory [Service-Principal](container-registry-auth-service-principal.md) met ACRPull toegang tot het bron register. 
 
 ```azurecli
 az acr import \
@@ -149,7 +162,7 @@ az acr import \
 
 ## <a name="import-from-a-non-azure-private-container-registry"></a>Importeren uit een persoonlijk niet-Azure-container register
 
-Importeer een installatie kopie uit een persoonlijk REGI ster door referenties op te geven waarmee toegang tot het REGI ster wordt ingeschakeld. U kunt bijvoorbeeld een installatie kopie uit een privé-docker-REGI ster halen: 
+Importeer een installatie kopie uit een persoonlijk niet-Azure-REGI ster door referenties op te geven waarmee pull-toegang tot het REGI ster mogelijk wordt. U kunt bijvoorbeeld een installatie kopie uit een privé-docker-REGI ster halen: 
 
 ```azurecli
 az acr import \

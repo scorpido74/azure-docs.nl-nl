@@ -2,14 +2,14 @@
 title: Privé-eindpunten gebruiken met Azure Batch-accounts
 description: Meer informatie over het verbinden van privé met een Azure Batch-account met behulp van privé-eind punten.
 ms.topic: how-to
-ms.date: 08/07/2020
+ms.date: 09/28/2020
 ms.custom: references_regions
-ms.openlocfilehash: 0fd16e4e11d0b3f08a7ba0e2f425785e3cce7927
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 7dba3dd1d34421666821c6bc7320ef76ab77bb7f
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814107"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542135"
 ---
 # <a name="use-private-endpoints-with-azure-batch-accounts"></a>Privé-eindpunten gebruiken met Azure Batch-accounts
 
@@ -20,7 +20,7 @@ Met behulp van een [persoonlijke Azure-koppeling](../private-link/private-link-o
 Met persoonlijke koppeling kunnen gebruikers toegang krijgen tot een Azure Batch-account vanuit het virtuele netwerk of via een peered virtueel netwerk. Resources die zijn toegewezen aan een privé koppeling, zijn ook on-premises toegankelijk via privé-peering via VPN of [Azure ExpressRoute](../expressroute/expressroute-introduction.md). U kunt verbinding maken met een Azure Batch account dat is geconfigureerd met een persoonlijke koppeling met behulp van de [automatische of hand matige goedkeurings methode](../private-link/private-endpoint-overview.md#access-to-a-private-link-resource-using-approval-workflow).
 
 > [!IMPORTANT]
-> Ondersteuning voor particuliere connectiviteit in Azure Batch is momenteel beschikbaar in de volgende Azure-regio's: VS-centraal, Noord-Centraal VS, Zuid-Centraal VS, West-Centraal VS, VS-Oost, VS-Oost 2, VS-West, VS-West 2, Azië-oost, Frankrijk-centraal, UK-zuid, Europa-noord, Europa-west, Japan-Oost, Japan-West, Australië-Oost en alle US Gov en US DoD regio's.
+> Ondersteuning voor particuliere connectiviteit in Azure Batch is momenteel beschikbaar voor alle open bare regio's, met uitzonde ring van Duitsland-centraal en Duitsland-noordoost.
 
 In dit artikel worden de stappen beschreven voor het maken van een persoonlijk batch-account en het openen met behulp van een persoonlijk eind punt.
 
@@ -35,7 +35,7 @@ Gebruik de volgende stappen om een persoonlijk batch-account te maken met behulp
    :::image type="content" source="media/private-connectivity/private-endpoint-connections.png" alt-text="Verbindingen met privé-eind punten":::
 5. Typ of Selecteer in het deel venster **basis beginselen** het abonnement, de resource groep, de naam van de persoonlijke eindpunt resource en de regio gegevens en selecteer vervolgens **volgende: resource**.
 6. Stel in het deel venster **resource** het **resource type** in op **Microsoft.BatCH/batchAccounts**. Selecteer het persoonlijke batch-account dat u wilt openen en selecteer vervolgens **volgende: Configuratie**.
-   :::image type="content" source="media/private-connectivity/create-private-endpoint.png" alt-text="Een persoonlijk eind punt maken-resource venster":::
+   :::image type="content" source="media/private-connectivity/create-private-endpoint.png" alt-text="Verbindingen met privé-eind punten":::
 7. Voer in het deel venster **configuratie** de volgende gegevens in of Selecteer deze:
    - **Virtueel netwerk**: Selecteer uw virtuele netwerk.
    - **Subnet**: Selecteer uw subnet.
@@ -50,7 +50,7 @@ Nadat het persoonlijke eind punt is ingericht, hebt u toegang tot het batch-acco
 2. Zoek naar het persoonlijke eind punt dat u eerder hebt gemaakt.
 3. Selecteer het tabblad **overzicht** om de DNS-instellingen en IP-adressen te bekijken.
 
-:::image type="content" source="media/private-connectivity/access-private.png" alt-text="DNS-instellingen en IP-adressen van persoonlijk eind punt":::
+:::image type="content" source="media/private-connectivity/access-private.png" alt-text="Verbindingen met privé-eind punten":::
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager-sjabloon
 
@@ -106,5 +106,6 @@ Houd bij het maken van uw persoonlijke batch-account rekening met het volgende:
 ## <a name="next-steps"></a>Volgende stappen
 
 - Meer informatie over het [maken van batch-Pools in virtuele netwerken](batch-virtual-network.md).
+- Meer informatie over het [maken van batch-Pools zonder open bare IP-adressen](batch-pool-no-public-ip-address.md)
 - Meer informatie over het [maken van batch-Pools met opgegeven open bare IP-adressen](create-pool-public-ip.md).
 - Meer informatie over [persoonlijke Azure-koppelingen](../private-link/private-link-overview.md).

@@ -3,20 +3,18 @@ title: Aantal vooraf samengestelde entiteit-LUIS
 titleSuffix: Azure Cognitive Services
 description: Dit artikel bevat informatie over het aantal vooraf gedefinieerde entiteits gegevens in Language Understanding (LUIS).
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/27/2019
-ms.author: diberry
-ms.openlocfilehash: 85e3589d7467691e2b9a11879510ab980bbd875a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 13594886b83d4474ee2531185db5868a5198ca64
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78273468"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541952"
 ---
 # <a name="number-prebuilt-entity-for-a-luis-app"></a>Aantal vooraf samengestelde entiteiten voor een LUIS-app
 Er zijn veel manieren waarop numerieke waarden worden gebruikt om stukjes informatie te kwantificeren, in te delen en te beschrijven. In dit artikel komen alleen enkele van de mogelijke voor beelden aan bod. LUIS interpreteert de variaties in gebruikers uitingen en retourneert consistente numerieke waarden. Omdat deze entiteit al is getraind, hoeft u geen voor beeld-uitingen met een nummer toe te voegen aan de toepassings intentie.
@@ -38,7 +36,7 @@ Nummer wordt beheerd vanuit de map [recognizers-text](https://github.com/Microso
 | ```buy two dozen eggs```    | ```"two dozen"``` | ```"24"``` |
 
 
-LUIS bevat de herkende waarde van **`builtin.number`** een entiteit in `resolution` het veld van de JSON-reactie die wordt geretourneerd.
+LUIS bevat de herkende waarde van een **`builtin.number`** entiteit in het `resolution` veld van de JSON-reactie die wordt geretourneerd.
 
 ## <a name="resolution-for-prebuilt-number"></a>Oplossing voor het vooraf gedefinieerde nummer
 
@@ -48,7 +46,7 @@ De volgende entiteits objecten worden geretourneerd voor de query:
 
 #### <a name="v3-response"></a>[V3-antwoord](#tab/V3)
 
-De volgende JSON is met de `verbose` para meter ingesteld `false`op:
+De volgende JSON is met de `verbose` para meter ingesteld op `false` :
 
 ```json
 "entities": {
@@ -59,7 +57,7 @@ De volgende JSON is met de `verbose` para meter ingesteld `false`op:
 ```
 #### <a name="v3-verbose-response"></a>[Uitgebreide respons van v3](#tab/V3-verbose)
 
-De volgende JSON is met de `verbose` para meter ingesteld `true`op:
+De volgende JSON is met de `verbose` para meter ingesteld op `true` :
 
 ```json
 "entities": {
