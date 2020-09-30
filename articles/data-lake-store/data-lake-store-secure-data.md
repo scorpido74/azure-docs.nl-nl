@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: b1da644d8aca0b197e21ec03c7d0ac0b454f92a9
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 2dc802166b605ad7853c0910f1bab2a51f1f7297
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926294"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91574140"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>Gegevens beveiligen die zijn opgeslagen in Azure Data Lake Storage Gen1
 Het beveiligen van gegevens in Azure Data Lake Storage Gen1 is een benadering van drie stappen.  Op rollen gebaseerd toegangs beheer (RBAC) en toegangs beheer lijsten (Acl's) moet zijn ingesteld om de toegang tot gegevens voor gebruikers en beveiligings groepen volledig in te scha kelen.
 
-1. Begin met het maken van beveiligings groepen in Azure Active Directory (AAD). Deze beveiligings groepen worden gebruikt voor het implementeren van op rollen gebaseerd toegangs beheer (Azure RBAC) van Azure in de Azure Portal. Zie [Azure RBAC](../role-based-access-control/role-assignments-portal.md)voor meer informatie.
-2. Wijs de AAD-beveiligings groepen toe aan het Data Lake Storage Gen1-account. Hiermee beheert u de toegang tot het Data Lake Storage Gen1-account vanuit de portal-en beheer bewerkingen van de portal of Api's.
-3. Wijs de AAD-beveiligings groepen toe als Acl's (toegangs beheer lijsten) op het Data Lake Storage Gen1 bestands systeem.
+1. Begin met het maken van beveiligings groepen in Azure Active Directory (Azure AD). Deze beveiligings groepen worden gebruikt voor het implementeren van op rollen gebaseerd toegangs beheer (Azure RBAC) van Azure in de Azure Portal. Zie [Azure RBAC](../role-based-access-control/role-assignments-portal.md)voor meer informatie.
+2. Wijs de Azure AD-beveiligings groepen toe aan het Data Lake Storage Gen1-account. Hiermee beheert u de toegang tot het Data Lake Storage Gen1-account vanuit de portal-en beheer bewerkingen van de portal of Api's.
+3. Wijs de Azure AD-beveiligings groepen toe als Acl's (toegangs beheer lijsten) op het Data Lake Storage Gen1 bestands systeem.
 4. Daarnaast kunt u ook een IP-adres bereik instellen voor clients die toegang hebben tot de gegevens in Data Lake Storage Gen1.
 
 In dit artikel vindt u instructies voor het gebruik van de Azure Portal om de bovenstaande taken uit te voeren. Zie [beveiliging in azure data Lake Storage gen1](data-lake-store-security-overview.md)voor gedetailleerde informatie over de wijze waarop data Lake Storage gen1 beveiliging implementeert op het niveau van account en gegevens. Zie [overzicht van Access Control in data Lake Storage gen1](data-lake-store-access-control.md)voor uitgebreide informatie over de implementatie van acl's in data Lake Storage gen1.
@@ -36,7 +36,7 @@ Voordat u met deze zelfstudie begint, moet u het volgende hebben of hebben gedaa
 * **Een Data Lake Storage gen1-account**. Zie [aan de slag met Azure data Lake Storage gen1](data-lake-store-get-started-portal.md) voor instructies over het maken van een account.
 
 ## <a name="create-security-groups-in-azure-active-directory"></a>Beveiligings groepen maken in Azure Active Directory
-Zie [beveiligings groepen beheren in azure Active Directory](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)voor instructies over het maken van Aad-beveiligings groepen en het toevoegen van gebruikers aan de groep.
+Zie [beveiligings groepen beheren in azure Active Directory](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)voor instructies over het maken van Azure AD-beveiligings groepen en het toevoegen van gebruikers aan de groep.
 
 > [!NOTE] 
 > U kunt zowel gebruikers als andere groepen toevoegen aan een groep in azure AD met behulp van de Azure Portal. Als u een Service-Principal wilt toevoegen aan een groep, gebruikt u echter [de Power shell-module van Azure AD](../active-directory/users-groups-roles/groups-settings-v2-cmdlets.md).
@@ -104,12 +104,12 @@ Door gebruikers/beveiligings groepen toe te wijzen aan het Data Lake Storage Gen
     ![Een groep toevoegen](./media/data-lake-store-secure-data/adl.acl.3.png "Een groep toevoegen")
 5. Klik op **machtigingen selecteren**, selecteer de machtigingen, of de machtigingen moeten worden toegepast op recursief en of u de machtigingen wilt toewijzen als toegangs-ACL, standaard-ACL of beide. Klik op **OK**.
    
-    ![Machtigingen toewijzen aan groep](./media/data-lake-store-secure-data/adl.acl.4.png "Machtigingen toewijzen aan groep")
+    ![Scherm afbeelding van de Blade machtigingen toewijzen met de optie machtigingen selecteren en de Blade machtigingen selecteren met de optie OK.](./media/data-lake-store-secure-data/adl.acl.4.png "Machtigingen toewijzen aan groep")
    
     Zie [Access Control in data Lake Storage gen1](data-lake-store-access-control.md)voor meer informatie over machtigingen in data Lake Storage gen1 en standaard-acl's.
 6. Nadat u op **OK** hebt geklikt op de Blade **machtigingen selecteren** , worden de zojuist toegevoegde groep en de bijbehorende machtigingen nu weer gegeven op de Blade **toegang** .
    
-    ![Machtigingen toewijzen aan groep](./media/data-lake-store-secure-data/adl.acl.5.png "Machtigingen toewijzen aan groep")
+    ![Scherm afbeelding van de Access-Blade met de optie voor gegevens techniek genoemd.](./media/data-lake-store-secure-data/adl.acl.5.png "Machtigingen toewijzen aan groep")
    
    > [!IMPORTANT]
    > In de huidige versie kunt u Maxi maal 28 vermeldingen onder **toegewezen machtigingen**hebben. Als u meer dan 28 gebruikers wilt toevoegen, moet u beveiligings groepen maken, gebruikers toevoegen aan beveiligings groepen en toegang bieden tot deze beveiligings groepen voor het Data Lake Storage Gen1-account.
@@ -123,7 +123,7 @@ Met Data Lake Storage Gen1 kunt u de toegang tot uw gegevens archief op netwerk 
 ![Firewall instellingen en IP-toegang](./media/data-lake-store-secure-data/firewall-ip-access.png "Firewall instellingen en IP-adres")
 
 ## <a name="remove-security-groups-for-a-data-lake-storage-gen1-account"></a>Beveiligings groepen voor een Data Lake Storage Gen1 account verwijderen
-Wanneer u beveiligings groepen uit Data Lake Storage Gen1 accounts verwijdert, wijzigt u alleen de toegang tot de beheer bewerkingen op het account met behulp van de Azure Portal en de Azure Resource Manager-Api's.  
+Wanneer u beveiligings groepen uit Data Lake Storage Gen1 accounts verwijdert, wijzigt u alleen de toegang tot de beheer bewerkingen op het account met behulp van de Azure Portal-en Azure Resource Manager-Api's.  
 
 Toegang tot gegevens is ongewijzigd en wordt nog steeds beheerd door de toegangs-Acl's.  De uitzonde ring hierop zijn gebruikers/groepen in de rol eigen aren.  Gebruikers/groepen die zijn verwijderd uit de rol eigen aren zijn niet langer super gebruikers en hun toegang tot de toegangs beheer lijst instellingen wordt hersteld. 
 
@@ -145,7 +145,7 @@ Wanneer u de Acl's van beveiligings groepen uit een Data Lake Storage Gen1 besta
     ![Acl's op Data Lake Storage Gen1 bestands systeem instellen](./media/data-lake-store-secure-data/adl.acl.1.png "Acl's op Data Lake Storage Gen1 bestands systeem instellen")
 3. Klik op de Blade **toegang** op de beveiligings groep die u wilt verwijderen. Klik op de Blade **toegangs gegevens** op **verwijderen**.
    
-    ![Machtigingen toewijzen aan groep](./media/data-lake-store-secure-data/adl.remove.acl.png "Machtigingen toewijzen aan groep")
+    ![Scherm opname van de Access-Blade met de optie voor gegevens techniek en de Blade toegangs Details met de optie verwijderen.](./media/data-lake-store-secure-data/adl.remove.acl.png "Machtigingen toewijzen aan groep")
 
 ## <a name="see-also"></a>Zie ook
 * [Overzicht van Azure Data Lake Storage Gen1](data-lake-store-overview.md)
