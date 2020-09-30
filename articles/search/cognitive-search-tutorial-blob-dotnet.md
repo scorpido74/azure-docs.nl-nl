@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 08/20/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 09273cf901830e850acca05c57c0b110ffd7e28a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 13e3f5a7d86d2e9b705fbeb104ba4f8eb690cb3a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89002859"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534094"
 ---
 # <a name="tutorial-ai-generated-searchable-content-from-azure-blobs-using-the-net-sdk"></a>Zelfstudie: Door AI gegenereerde doorzoekbare inhoud van Azure-blobs met behulp van de .NET SDK
 
@@ -170,7 +170,7 @@ Installeer vervolgens het nieuwste NuGet-pakket `Microsoft.Extensions.Configurat
       "AzureBlobConnectionString": "Put your Azure Blob connection string here",
     }
     ```
-    
+
 Voeg de gegevens van uw zoekservice en blob-opslagaccount toe. U kunt deze informatie ophalen via de stappen voor het inrichten van de service, zoals aangegeven in de vorige sectie.
 
 Voor **SearchServiceName** voert u de korte servicenaam in (niet de volledige URL).
@@ -586,11 +586,11 @@ In deze oefening worden de volgende velden en veldtypen gebruikt:
 
 | Veldnamen | Veldtypen |
 | --- | --- |
-| id | Edm.String |
-| content | Edm.String |
-| languageCode | Edm.String |
-| keyPhrases | List<Edm.String> |
-| organizations | List<Edm.String> |
+| `id` | Edm.String |
+| `content` | Edm.String |
+| `languageCode` | Edm.String |
+| `keyPhrases` | List<Edm.String> |
+| `organizations` | List<Edm.String> |
 
 #### <a name="create-demoindex-class"></a>Klasse DemoIndex maken
 
@@ -906,7 +906,7 @@ catch (Exception e)
 }
 ```
 
-Herhaal dit voor andere velden: inhoud, taalcode, sleuteltermen en organisaties in deze oefening. Met behulp van een door komma's gescheiden lijst kunt meerdere velden retourneren via de eigenschap [Select](/dotnet/api/microsoft.azure.search.models.searchparameters.select?view=azure-dotnet).
+Herhaal dit voor andere velden: inhoud, taalcode, sleuteltermen en organisaties in deze oefening. Met behulp van een door komma's gescheiden lijst kunt meerdere velden retourneren via de eigenschap [Select](/dotnet/api/microsoft.azure.search.models.searchparameters.select).
 
 <a name="reset"></a>
 

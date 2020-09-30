@@ -2,20 +2,18 @@
 title: bestand opnemen
 description: bestand opnemen
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.date: 02/14/2020
 ms.subservice: language-understanding
 ms.topic: include
-ms.author: diberry
-ms.openlocfilehash: 9475cc402327cba96546e6ff781c547f797850ec
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 17cf32fe50d9b607e0ec8388bf1c70821f2e28aa
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87374990"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534568"
 ---
 1. Selecteer rechts bovenaan op de LUIS-website de knop **Train**.
 

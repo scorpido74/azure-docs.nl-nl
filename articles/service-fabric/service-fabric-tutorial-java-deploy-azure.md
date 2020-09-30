@@ -1,17 +1,15 @@
 ---
 title: Een Java-app implementeren in een Service Fabric-cluster in Azure
 description: In deze zelfstudie leert u hoe u een Java Service Fabric-toepassing implementeert in een Azure Service Fabric-cluster.
-author: suhuruli
 ms.topic: tutorial
 ms.date: 02/26/2018
-ms.author: suhuruli
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 50ae4d34cd7b238403ee95bd36a97ac82392f3ba
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 3e00e478e20fbd0bc4ff6ed17b330f0d16488be6
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320728"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532055"
 ---
 # <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>Zelfstudie: Een Java-toepassing implementeren in een Service Fabric-cluster in Azure
 

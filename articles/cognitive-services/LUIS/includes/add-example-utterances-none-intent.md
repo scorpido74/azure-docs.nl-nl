@@ -2,20 +2,18 @@
 title: bestand opnemen
 description: bestand opnemen
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
 ms.custom: include file
 ms.date: 02/14/2020
 ms.subservice: language-understanding
-ms.author: diberry
-ms.openlocfilehash: 956aa308bf1cb3736c491031239661ec6b295ddb
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 1509d175979bb65c467424db5de967f56825a3f9
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "77279649"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91545676"
 ---
 De clienttoepassing moet weten of een uiting niet zinvol of gepast is voor de toepassing. De intentie **Geen** wordt als onderdeel van het maakproces aan elke toepassing toegevoegd om te bepalen of een uiting niet moet worden beantwoord door de clienttoepassing.
 

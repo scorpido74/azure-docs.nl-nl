@@ -1,17 +1,15 @@
 ---
 title: Fouten opsporen in een Java-app in een lokale Service Fabric-cluster
 description: In deze zelfstudie vindt u informatie over het opsporen van fouten en logboeken ophalen uit een Service Fabric Java-toepassing die wordt uitgevoerd op een lokaal cluster.
-author: suhuruli
 ms.topic: tutorial
 ms.date: 02/26/2018
-ms.author: suhuruli
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 040eaeb3ef77dfd68feb2aebac71d945ef669d6d
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 801702d43bae6d925fa4f7fbc37cf44bf585fa6d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372430"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531987"
 ---
 # <a name="tutorial-debug-a-java-application-deployed-on-a-local-service-fabric-cluster"></a>Zelfstudie: Fouten opsporen in een Java-toepassing die is geïmplementeerd op een lokaal Service Fabric-cluster
 
