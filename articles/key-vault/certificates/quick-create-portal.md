@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/24/2020
 ms.author: mbaldwin
-ms.openlocfilehash: ec1d02cefcdb443a74fab52496cd9428a852139f
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 0a2c1b39f5688b4fc544e5456666ccb8b4801517
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84169964"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281046"
 ---
 # <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-the-azure-portal"></a>Quickstart: Een certificaat uit Azure Key Vault instellen en ophalen met behulp van de Azure-portal
 
@@ -45,7 +45,7 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
 Let op de onderstaande twee eigenschappen:
 
 * **Kluisnaam**: In het voorbeeld is dat **Example-Vault**. U gebruikt deze naam voor andere stappen.
-* **Kluis-URI**: in het voorbeeld is dat https://example-vault.vault.azure.net/. Toepassingen die via de REST API gebruikmaken van uw kluis, moeten deze URI gebruiken.
+* **Kluis-URI**: in het voorbeeld is dat `https://example-vault.vault.azure.net/`. Toepassingen die via de REST API gebruikmaken van uw kluis, moeten deze URI gebruiken.
 
 Vanaf dit punt is uw Azure-account nu als enige gemachtigd om bewerkingen op deze nieuwe kluis uit te voeren.
 

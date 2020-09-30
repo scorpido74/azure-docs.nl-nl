@@ -8,14 +8,14 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 12/26/2018
 ms.author: jopapa
-ms.custom: seodec18, devx-track-javascript
+ms.custom: seodec18, devx-track-js
 ms.reviewer: sngun
-ms.openlocfilehash: e9cb30ca64fe697f9b8304f55381709083b8fbd2
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: c16d7ccba24680604bc7f083f7242edd53abe102
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424236"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282898"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---build-the-ui-with-angular"></a>Een Angular-app maken met de API voor MongoDB van Azure Cosmos DB - De gebruikersinterface maken met Angular
 
@@ -62,7 +62,7 @@ Voltooi de stappen in [deel 2](tutorial-develop-mongodb-nodejs-part2.md) van de 
 
 4. Open in dezelfde map het bestand **app.module.ts**. U ziet dat `HeroesComponent` aan de declaraties in regel 5 is toegevoegd en dat het ook in regel 10 is geïmporteerd.
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/app-module-file.png" alt-text="Het bestand app-module.ts openen":::
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/app-module-file.png" alt-text="Hero-component installeren":::
 
 5. Ga terug naar het bestand **heroes.component.html** en kopieer er de volgende code in. `<div>` is de container voor de hele pagina. In de container bevindt zich een lijst met hero's die we moeten maken, zodat als u op een ervan klikt, u deze kunt selecteren en in de gebruikersinterface bewerken of verwijderen. In de HTML staat de stijl, zodat u weet welke is geselecteerd. Er is ook een bewerkingsgebied, waar u een nieuwe hero kunt toevoegen of een bestaande hero kunt bewerken. 
 
@@ -394,7 +394,7 @@ Hoe kunnen we de component nu op het scherm weergeven? We gaan de standaardcompo
 
 5. Klik op de term `Hero` en links van het codeblok wordt een gloeilamppictogram weergegeven. 
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/light-bulb.png" alt-text="Gloeilamp in Visual Studio Code":::
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/light-bulb.png" alt-text="Hero-component installeren":::
 
 6. Klik op de gloeilamp en klik op **Import Hero from "/app/hero".** of **Import Hero from "./hero".** (Het bericht dat u ziet, is afhankelijk van uw instellingen)
 
@@ -490,7 +490,7 @@ Hoe kunnen we de component nu op het scherm weergeven? We gaan de standaardcompo
 
 3. Open vervolgens een internetbrowser en ga naar **localhost:3000** om te zien hoe de app lokaal wordt uitgevoerd.
 
-     :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/azure-cosmos-db-mongodb-mean-app.png" alt-text="Hero-app wordt lokaal uitgevoerd":::
+     :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/azure-cosmos-db-mongodb-mean-app.png" alt-text="Hero-component installeren":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

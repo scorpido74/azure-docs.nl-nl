@@ -12,12 +12,12 @@ ms.date: 09/10/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d6341aeb6db89d43ef887a3ae50c4439e3867e6
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 2c7225adcfe970d17f8f86afdd15e36e2ba76de3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89318604"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287012"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>Quickstart: Een nieuwe tenant maken in Azure Active Directory
 U kunt al uw administratieve taken uitvoeren met behulp van de portal van Azure Active Directory (Azure AD), met inbegrip van het maken van een nieuwe tenant voor uw organisatie. 
@@ -37,7 +37,7 @@ Nadat u zich bij Azure Portal aanmeldt, kunt u een nieuwe tenant maken voor uw o
 
     ![De pagina Resource maken van Azure Active Directory](media/active-directory-access-create-new-tenant/azure-ad-portal.png)
 
-1. Selecteer **Identiteit** en vervolgens **Azure Active Directory**.
+1. Zoek en selecteer de optie **Azure Active Directory**.
 
     De pagina **Map maken** wordt weergegeven.
 

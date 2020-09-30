@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, references_regions
-ms.openlocfilehash: 6422874f57b490773f70b6fb27d5b65c654ded07
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 11a0ddc5c7b297d0700e6fd07d60f8efe0e55a8f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212746"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285329"
 ---
 # <a name="what-is-azure-maps"></a>Wat is Azure Maps?
 
@@ -52,7 +52,7 @@ Met de Azure Maps Web-SDK kunt u interactieve kaarten aanpassen met uw eigen inh
 
 Gebruik de Azure Maps Android-SDK om toepassingen voor mobiele toewijzing te maken.
 
-:::image type="content" source="./media/about-azure-maps/android_sdk.png" border="false" alt-text="Voorbeelden van kaarten op een mobiel apparaat":::
+:::image type="content" source="./media/about-azure-maps/android_sdk.png" border="false" alt-text="Voorbeeld van een toewijzing van een gewijzigde populatie die is gemaakt met Azure Maps Web SDK":::
 
 ## <a name="services-in-azure-maps"></a>Services in Azure Maps
 
@@ -78,7 +78,7 @@ Zie de [Mobility-documentatie](https://docs.microsoft.com/rest/api/maps/mobility
 
 De [Render-Service v2](https://docs.microsoft.com/rest/api/maps/renderv2) waarvan nu een preview-versie beschikbaar is, introduceert een nieuwe versie van de [Get Map Tile V2-API](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview). Met de Get Map Tile V2-API kunnen klanten nu Azure Maps wegtegels, weertegels of kaarttegels aanvragen die zijn gemaakt met behulp van Azure Maps Maker. Het is raadzaam om de nieuwe Get Map Tile V2-API te gebruiken.  
 
-:::image type="content" source="./media/about-azure-maps/intro_map.png" border="false" alt-text="Voorbeeld van een kaart uit de Render-service V2":::
+:::image type="content" source="./media/about-azure-maps/intro_map.png" border="false" alt-text="Voorbeeld van een toewijzing van een gewijzigde populatie die is gemaakt met Azure Maps Web SDK":::
 
 Lees de pagina [Render service V2-documentatie](https://docs.microsoft.com/rest/api/maps/renderv2) voor meer informatie.
 
@@ -88,7 +88,7 @@ Voor meer informatie over de Render service v1 die algemeen beschikbaar is, raad
 
 De routeservices kunnen worden gebruikt om de geschatte aankomsttijden (ETAs) voor elke aangevraagde route te berekenen. Route-API's houden rekening met factoren, zoals gegevens over realtime verkeer en historische verkeersgegevens, zoals de typische snelheden op de gewenste dag van de week en het tijdstip van de dag. De API's retourneren de kortste of snelste routes die beschikbaar zijn voor meerdere bestemmingen tegelijk in een reeks of in een geoptimaliseerde volgorde, op basis van tijd of afstand. Met de service kunnen ontwikkelaars richtingen berekenen voor verschillende manieren van reizen, zoals met de auto, vrachtwagen, fiets of wandelen. De service houdt ook rekening met invoerwaarden voor verkeersomstandigheden, zoals vertrektijden, gewichtsbeperkingen of transport van gevaarlijke stoffen.
 
-:::image type="content" source="./media/about-azure-maps/intro_route.png" border="false" alt-text="Voorbeeld van een kaart uit de Route-service":::
+:::image type="content" source="./media/about-azure-maps/intro_route.png" border="false" alt-text="Voorbeeld van een toewijzing van een gewijzigde populatie die is gemaakt met Azure Maps Web SDK":::
 
 De routeservice biedt geavanceerde instelfuncties, zoals:
 
@@ -102,7 +102,7 @@ Lees de pagina [Routeservice-documentatie](https://docs.microsoft.com/rest/api/m
 
 De Search-service helpt ontwikkelaars bij het zoeken naar adressen, plaatsen, bedrijfsvermeldingen op naam of categorie, en andere geografische informatie. Met de Search-service kan ook [de geocode worden omgekeerd](https://en.wikipedia.org/wiki/Reverse_geocoding) voor adressen en dwarsstraten op basis van breedte- en lengtegraden.
 
-:::image type="content" source="./media/about-azure-maps/intro_search.png" border="false" alt-text="Voorbeeld van een zoekopdracht op een kaart":::
+:::image type="content" source="./media/about-azure-maps/intro_search.png" border="false" alt-text="Voorbeeld van een toewijzing van een gewijzigde populatie die is gemaakt met Azure Maps Web SDK":::
 
 De Search-service biedt ook geavanceerde functies zoals:
 
@@ -204,7 +204,7 @@ Azure Maps biedt ook een handig [kaartbesturingselement van JavaScript](https://
 
 De Azure Maps-visual voor Power BI biedt een uitgebreide set gegevensvisualisaties voor ruimtelijke gegevens over een kaart. Naar schatting heeft 80% van de bedrijfsgegevens een geografische context. De Azure Maps-visual biedt een oplossing zonder code om inzicht te krijgen in de manier waarop deze geografische context is gekoppeld aan en invloed heeft op uw bedrijfsgegevens.
 
-:::image type="content" source="./media/about-azure-maps/intro-power-bi.png" border="false" alt-text="Power BI Desktop met de Azure Maps-visual waarop bedrijfsgegevens worden weergegeven":::
+:::image type="content" source="./media/about-azure-maps/intro-power-bi.png" border="false" alt-text="Voorbeeld van een toewijzing van een gewijzigde populatie die is gemaakt met Azure Maps Web SDK":::
 
 Zie de 'Aan de slag gaan‘-documentatie voor de [Azure Maps Power BI-visual](power-bi-visual-getting-started.md) voor meer informatie.
 
@@ -231,10 +231,8 @@ Verifieer of de locatie van uw IP-adres in een ondersteund land/regio is.
 
 Probeer een sample app uit die Azure Maps weergeeft:
 
-> [!div class="nextstepaction"]
-> [Snelstart: Een webtoepassing maken](quick-demo-map-app.md)
+[Snelstart: Een webtoepassing maken](quick-demo-map-app.md)
 
 Houd Azure Maps up-to-date:
 
-> [!div class="nextstepaction"]
-> [Azure Maps-blog](https://azure.microsoft.com/blog/topics/azure-maps/)
+[Azure Maps-blog](https://azure.microsoft.com/blog/topics/azure-maps/)
