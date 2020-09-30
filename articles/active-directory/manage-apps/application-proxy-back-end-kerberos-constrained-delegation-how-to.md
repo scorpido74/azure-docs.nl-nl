@@ -2,26 +2,21 @@
 title: Problemen oplossen met beperkte Kerberos-overdracht-app proxy
 description: Problemen met Kerberos-beperkte overdrachts configuraties voor toepassings proxy oplossen
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 04/23/2019
 ms.author: kenwith
-ms.reviewer: asteen
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d086d816be17699989aafda144493d80837188b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.reviewer: asteen, japere
+ms.openlocfilehash: 3ca3df010426347846b29734426edfad4536516b
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84760436"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568730"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Problemen met Kerberos-beperkte overdrachts configuraties voor toepassings proxy oplossen
 
@@ -165,7 +160,7 @@ Als u nog steeds geen voortgang kunt maken, kan micro soft-ondersteuning u helpe
 
 ## <a name="other-scenarios"></a>Andere scenario's
 
-- Azure-toepassing proxy een Kerberos-ticket aanvraagt voordat het verzoek naar een toepassing wordt verzonden. Sommige toepassingen van derden vallen niet zoals deze verificatie methode. Deze toepassingen verwachten dat er meer conventionele onderhandelingen worden uitgevoerd. De eerste aanvraag is anoniem, waardoor de toepassing kan reageren met de verificatie typen die het ondersteunt via een 401.
+- Azure-toepassing proxy een Kerberos-ticket aanvraagt voordat het verzoek naar een toepassing wordt verzonden. Sommige toepassingen van derden vallen niet zoals deze verificatie methode. Deze toepassingen verwachten dat er meer conventionele onderhandelingen worden uitgevoerd. De eerste aanvraag is anoniem, waardoor de toepassing kan reageren met de verificatie typen die het ondersteunt via een 401. Dit type Kerberos-onderhandeling kan worden ingeschakeld met behulp van de stappen die in dit document worden beschreven: [beperkte Kerberos-overdracht voor eenmalige aanmelding](application-proxy-configure-single-sign-on-with-kcd.md).
 - Verificatie met meerdere hops wordt doorgaans gebruikt in scenario's waarbij een toepassing wordt gelaagd, met een back-end en front-end, waarbij beide verificatie vereisen, zoals SQL Server Reporting Services. Als u het scenario met meerdere hops wilt configureren, raadpleegt u het ondersteunings artikel [Kerberos-beperkte overdracht vereist mogelijk protocol overgang in scenario's met meerdere hops](https://support.microsoft.com/help/2005838/kerberos-constrained-delegation-may-require-protocol-transition-in-mul).
 
 ## <a name="next-steps"></a>Volgende stappen

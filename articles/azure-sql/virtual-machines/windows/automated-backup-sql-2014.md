@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 25f3b1e6a01ba190dffaa8c43534a5e23b7d9b23
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d7938f24e408e72a84003c19e5c294d31f6b65b5
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91299110"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565119"
 ---
 # <a name="automated-backup-for-sql-server-2014-virtual-machines-resource-manager"></a>Automatische back-up voor virtuele SQL Server 2014-machines (Resource Manager)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -34,27 +34,24 @@ Automatische back-up configureert automatisch [beheerde back-ups voor Microsoft 
 ## <a name="prerequisites"></a>Vereisten
 Als u automatische back-ups wilt gebruiken, moet u rekening houden met de volgende vereisten:
 
+
 **Besturings systeem**:
 
-- Windows Server 2012
-- Windows Server 2012 R2
-- Windows Server 2016
+- Windows Server 2012 en hoger 
 
 **SQL Server versie/editie**:
 
 - SQL Server 2014 Standard
 - SQL Server 2014 Enterprise
 
-> [!IMPORTANT]
-> Automatische back-up werkt met SQL Server 2014. Als u SQL Server 2016/2017 gebruikt, kunt u automatische back-up v2 gebruiken om een back-up van uw data bases te maken. Zie voor meer informatie [automatische back-up v2 voor SQL Server 2016 Azure virtual machines](automated-backup.md).
+> [!NOTE]
+> Voor SQL 2016 en hoger raadpleegt u [automatische back-up voor SQL Server 2016](automated-backup.md).
 
 **Database configuratie**:
 
-- Doel databases moeten het volledige herstel model gebruiken. Zie [back-up onder het volledige herstel model](https://technet.microsoft.com/library/ms190217.aspx)voor meer informatie over de impact van het volledige herstel model op back-ups.
-- Doel databases moeten zich op de standaard SQL Server instantie bevinden. De SQL Server IaaS agent-extensie biedt geen ondersteuning voor benoemde instanties.
-
-> [!NOTE]
-> Automatische back-up is afhankelijk van de SQL Server IaaS agent-extensie. Huidige installatie kopieën van de virtuele machine van SQL-machines deze extensie standaard toevoegen. Zie [SQL Server IaaS agent extension](sql-server-iaas-agent-extension-automate-management.md)(Engelstalig) voor meer informatie.
+- Doel _gebruikers_ databases moeten het volledige herstel model gebruiken. Systeem databases hoeven niet het volledige herstel model te gebruiken. Als u echter wilt dat logboek back-ups moeten worden gemaakt voor model of MSDB, moet u het volledige herstel model gebruiken. Zie [back-up onder het volledige herstel model](https://technet.microsoft.com/library/ms190217.aspx)voor meer informatie over de impact van het volledige herstel model op back-ups. 
+- De SQL Server VM is geregistreerd bij de resource provider van de SQL-VM in de [modus volledig beheer](sql-vm-resource-provider-register.md#upgrade-to-full). 
+-  Automatische back-up is afhankelijk van de volledige [SQL Server IaaS agent-extensie](sql-server-iaas-agent-extension-automate-management.md). Daarom wordt automatische back-ups alleen ondersteund in doel databases van het standaard exemplaar of met één benoemd exemplaar. Als er geen standaard instantie en meerdere benoemde instanties zijn, mislukt de SQL IaaS-extensie en werkt automatische back-up niet. 
 
 ## <a name="settings"></a>Instellingen
 

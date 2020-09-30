@@ -11,21 +11,24 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/08/2019
+ms.date: 09/29/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4852f841fc9ac8ebea586d5e24967a1db20b8044
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be48e6e175beae751003895e60322a458cfbc8bd
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743708"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568077"
 ---
 # <a name="discover-azure-resources-to-manage-in-privileged-identity-management"></a>Azure-resources ontdekken om te beheren in Privileged Identity Management
 
-Met Azure Active Directory (Azure AD) Privileged Identity Management (PIM) kunt u de beveiliging van uw Azure-resources verbeteren. Dit is nuttig voor organisaties die al gebruikmaken van Privileged Identity Management voor het beveiligen van Azure AD-rollen, en voor de beheer groep en de eigenaar van het abonnement die productie resources willen beveiligen.
+Met Azure Active Directory (Azure AD) Privileged Identity Management (PIM) kunt u de beveiliging van uw Azure-resources verbeteren. Dit is handig voor het volgende:
 
-Wanneer u Privileged Identity Management voor het eerst instelt voor Azure-resources, moet u de resources ontdekken en selecteren die u wilt beveiligen met Privileged Identity Management. Er is geen limiet voor het aantal resources dat u kunt beheren met Privileged Identity Management. We raden u echter aan om te beginnen met uw meest kritieke resources (productie).
+- Organisaties die al Privileged Identity Management gebruiken om Azure AD-rollen te beveiligen
+- Beheer groep en abonnements eigenaren die proberen productie bronnen te beveiligen
+
+Wanneer u Privileged Identity Management voor het eerst instelt voor Azure-resources, moet u de resources ontdekken en selecteren die u wilt beveiligen met Privileged Identity Management. Er is geen limiet voor het aantal resources dat u kunt beheren met Privileged Identity Management. We raden u echter aan om te beginnen met uw meest kritieke productie bronnen.
 
 ## <a name="discover-resources"></a>Resources ontdekken
 
@@ -49,9 +52,12 @@ Wanneer u Privileged Identity Management voor het eerst instelt voor Azure-resou
 
 1. Gebruik op de pagina **detectie** de **resource status filter** en **Selecteer resource type** om de beheer groepen of abonnementen te filteren waarvoor u schrijf machtigingen hebt. Het is waarschijnlijk het gemakkelijkst om eerst **Alles** te beginnen.
 
-    U kunt alleen zoeken naar en selecteren van beheer groep of abonnements bronnen om te beheren met Privileged Identity Management. Wanneer u een beheer groep of een abonnement beheert in Privileged Identity Management, kunt u ook de bijbehorende onderliggende resources beheren.
+   U kunt zoeken naar en selecteren van beheer groep of abonnements bronnen om te beheren in Privileged Identity Management. Wanneer u een beheer groep of een abonnement beheert in Privileged Identity Management, kunt u ook de bijbehorende onderliggende resources beheren.
 
-1. Schakel het selectie vakje in naast de onbeheerde resources die u wilt beheren.
+   > [!Note]
+   > Wanneer u een nieuwe Azure-resource toevoegt aan een PIM-beheerde beheer groep, kunt u de onderliggende resource onder beheer brengen door ernaar te zoeken in PIM.
+
+1. Selecteer alle onbeheerde resources die u wilt beheren.
 
 1. Selecteer **resource beheren** om te beginnen met het beheren van de geselecteerde resources.
 

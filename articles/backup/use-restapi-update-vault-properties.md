@@ -4,12 +4,12 @@ description: In dit artikel leert u hoe u de configuratie van de kluis kunt bijw
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: 8890cb541e38f8bc8b680fbcfeb821f29723e8c0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 19a335d17ee0aa5ff9f989556656f5cf20d2b1a9
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89007108"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567822"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>Recovery Services kluis configuraties van Azure bijwerken met behulp van REST API
 
@@ -30,20 +30,20 @@ De voorlopig verwijderings status wordt standaard ingeschakeld voor een nieuw ge
 Als u de huidige status van het voorlopig verwijderen van een kluis wilt ophalen, gebruikt u de volgende *Get* -bewerking
 
 ```http
-GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-05-13
+GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-06-15
 ```
 
 De Get-URI heeft `{subscriptionId}` , `{vaultName}` , `{vaultresourceGroupName}` para meters. In dit voor beeld `{vaultName}` is ' testVault ' en `{vaultresourceGroupName}` is ' testVaultRG '. Aangezien alle vereiste para meters in de URI worden opgegeven, is er geen afzonderlijke aanvraag tekst nodig.
 
 ```http
-GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupconfig/vaultconfig?api-version=2019-05-13
+GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupconfig/vaultconfig?api-version=2019-06-15
 ```
 
 #### <a name="responses"></a>Antwoorden
 
 Het geslaagde antwoord voor de GET-bewerking wordt hieronder weer gegeven:
 
-|Naam  |Type  |Beschrijving  |
+|Naam  |Type  |Description  |
 |---------|---------|---------|
 |200 OK     |   [BackupResourceVaultConfig](/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
 
@@ -65,16 +65,16 @@ Zodra de GET-aanvraag is verzonden, wordt een antwoord van 200 (geslaagd) gereto
 
 ### <a name="update-soft-delete-state-using-rest-api"></a>Status van voorlopig verwijderen bijwerken met REST API
 
-Als u de voorlopig verwijderings status van de Recovery Services kluis wilt bijwerken met behulp van REST API, gebruikt u de volgende *patch* bewerking
+Als u de voorlopig verwijderings status van de Recovery Services kluis wilt bijwerken met behulp van REST API, gebruikt u de volgende *put* -bewerking
 
 ```http
-PATCH https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-05-13
+PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-06-15
 ```
 
-De patch-URI heeft `{subscriptionId}` , `{vaultName}` , `{vaultresourceGroupName}` para meters. In dit voor beeld `{vaultName}` is ' testVault ' en `{vaultresourceGroupName}` is ' testVaultRG '. Als de URI wordt vervangen door de bovenstaande waarden, ziet de URI er als volgt uit.
+De put-URI heeft `{subscriptionId}` , `{vaultName}` , `{vaultresourceGroupName}` para meters. In dit voor beeld `{vaultName}` is ' testVault ' en `{vaultresourceGroupName}` is ' testVaultRG '. Als de URI wordt vervangen door de bovenstaande waarden, ziet de URI er als volgt uit.
 
 ```http
-PATCH https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupconfig/vaultconfig?api-version=2019-05-13
+PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupconfig/vaultconfig?api-version=2019-06-15
 ```
 
 #### <a name="create-the-request-body"></a>De aanvraag tekst maken
@@ -83,10 +83,10 @@ De volgende algemene definities worden gebruikt voor het maken van een aanvraag 
 
 Raadpleeg [de rest API-documentatie](/rest/api/backup/backupresourcevaultconfigs/update#request-body) voor meer informatie.
 
-|Naam  |Vereist  |Type  |Beschrijving  |
+|Name  |Vereist  |Type  |Description  |
 |---------|---------|---------|---------|
 |eTag     |         |   Tekenreeks      |  Optionele eTag       |
-|location     |  true       |Tekenreeks         |   Resource locatie      |
+|location     |  true       |Tekenreeks         |   Resourcelocatie      |
 |properties     |         | [VaultProperties](/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  Eigenschappen van de kluis       |
 |tags     |         | Object        |     Resourcetags    |
 
@@ -107,7 +107,7 @@ Het volgende voor beeld wordt gebruikt om de status van zacht verwijderen bij te
 
 Het geslaagde antwoord voor de PATCH bewerking wordt hieronder weer gegeven:
 
-|Naam  |Type  |Beschrijving  |
+|Naam  |Type  |Description  |
 |---------|---------|---------|
 |200 OK     |   [BackupResourceVaultConfig](/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
 

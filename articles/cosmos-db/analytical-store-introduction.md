@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: rosouz
-ms.openlocfilehash: 75ad602eb6b9a0ce52b2b4c4115f351668327c43
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d27eb4dc6c4e4bd8f0a744ad925d91aee0faa8d0
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91253188"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567142"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Wat is Azure Cosmos DB Analytical Store (preview)?
 
@@ -52,7 +52,7 @@ Analytische opslag, een column Store, is beter geschikt voor dergelijke query's,
 
 De volgende afbeelding toont transactionele rijen Store versus analytisch kolom archief in Azure Cosmos DB:
 
-:::image type="content" source="./media/analytical-store-introduction/transactional-analytical-data-stores.png" alt-text="Transactionele rij-archief versus analytisch kolom archief in Azure Cosmos DB" border="false":::
+:::image type="content" source="./media/analytical-store-introduction/transactional-analytical-data-stores.png" alt-text="Voor beeld van operationele tabel" border="false":::
 
 ### <a name="decoupled-performance-for-analytical-workloads"></a>Ontkoppelde prestaties voor analytische werk belastingen
 
@@ -91,7 +91,7 @@ De volgende beperkingen zijn van toepassing op de operationele gegevens in Azure
 
 ##### <a name="schema-representation"></a>Schema representatie
 
-Er zijn twee modi voor schema weergave in de analytische opslag. Deze modi hebben een afweging tussen de eenvoud van een kolom weergave, het afhandelen van polymorphing-schema's en eenvoud van query-ervaring:
+Er zijn twee modi voor schemarepresentatie in de analytische opslag. Deze modi maken een afweging tussen de eenvoud van een kolomweergave, het behandelen van de polymorfe schema's en eenvoud van de query-ervaring:
 
 * Goed gedefinieerde schema representatie
 * Schema representatie van volledig beeld kwaliteit
@@ -149,13 +149,13 @@ Hier volgt een overzicht van alle eigenschaps gegevens typen en de bijbehorende 
 | Dubbel |  ".float64" |    24,99|
 | Matrix | ". matrix" |    ["a", "b"]|
 |Binair | '. binary ' |0|
-|Boolean-waarde    | ". BOOL"   |Waar|
+|Booleaans    | ". BOOL"   |Waar|
 |Int32  | ". Int32"  |123|
 |Int64  | ". int64"  |255486129307|
 |Null   | ". null"   | null|
 |Tekenreeks|    ". teken reeks" | "ABC"|
 |Tijdstempel |    '. time stamp ' |  Tijds tempel (0, 0)|
-|DateTime   |". datum"    | ISODate ("2020-08-21T07:43:07.375 Z")|
+|Datum/Tijd   |". datum"    | ISODate ("2020-08-21T07:43:07.375 Z")|
 |ObjectId   |'. objectId '    | ObjectId ("5f3f7b59330ec25c132623a2")|
 |Document   |'. object ' |    {"a": "a"}|
 
@@ -171,7 +171,7 @@ Als u een wereld wijd gedistribueerd Azure Cosmos DB account hebt, is het beschi
 
 ### <a name="security"></a>Beveiliging
 
-Verificatie met het analytische archief is hetzelfde als het transactionele Archief voor een bepaalde data base. U kunt hoofd-of alleen-lezen sleutels gebruiken voor verificatie. U kunt gebruikmaken van gekoppelde services in Synapse Studio om te voor komen dat de Azure Cosmos DB sleutels in de Spark-notebooks worden geplakt. Toegang tot deze gekoppelde service is beschikbaar voor iedereen die toegang heeft tot de werk ruimte.
+Verificatie met het analytische archief is hetzelfde als het transactionele Archief voor een bepaalde data base. U kunt primaire of alleen-lezen sleutels gebruiken voor verificatie. U kunt gebruikmaken van gekoppelde services in Synapse Studio om te voor komen dat de Azure Cosmos DB sleutels in de Spark-notebooks worden geplakt. Toegang tot deze gekoppelde service is beschikbaar voor iedereen die toegang heeft tot de werk ruimte.
 
 ### <a name="support-for-multiple-azure-synapse-analytics-runtimes"></a>Ondersteuning voor meerdere Azure Synapse Analytics-Runtimes
 

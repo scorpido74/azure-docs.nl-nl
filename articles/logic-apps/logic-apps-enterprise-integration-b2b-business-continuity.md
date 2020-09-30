@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/10/2017
-ms.openlocfilehash: 3b618513965298889fb656750419dedd79729f7f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1e006dd690e9c008afada8a490da6c3238bc0791
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536467"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565408"
 ---
 # <a name="set-up-cross-region-disaster-recovery-for-integration-accounts-in-azure-logic-apps"></a>Herstel na nood geval in meerdere regio's instellen voor integratie accounts in Azure Logic Apps
 
@@ -98,15 +98,15 @@ Als u herstel na nood gevallen voor inkomende berichten wilt inschakelen, select
 
 3. Voer een verbindings naam in, selecteer uw *primaire regio-integratie account* in de lijst en kies **maken**.   
 
-   ![Naam van het primaire gebied voor integratie account](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn2.png)
+   ![Scherm afbeelding die laat zien waar u een verbindings naam invoert en uw primaire regio-integratie account selecteert. ](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn2.png)
 
 4. De **datum/tijd waarop de synchronisatie-instelling voor het controle nummer moet worden gestart** , is optioneel. De **frequentie** kan worden ingesteld op **dag**, **uur**, **minuut**of **seconde** met een interval.   
 
-   ![Datum/tijd en frequentie](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn3.png)
+   ![Scherm opname van de datum/tijd waarop de synchronisatie-instelling voor het controle nummer moet worden gestart.](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn3.png)
 
 5. Selecteer **Nieuwe stap** > **Een actie toevoegen**.
 
-   ![Nieuwe stap, een actie toevoegen](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn4.png)
+   ![Scherm opname van de knop nieuwe stap en de optie een actie toevoegen.](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn4.png)
 
 6. Zoek op **X12**en selecteer **X12-Voeg controle nummers toe of werk**deze bij.   
 
@@ -114,11 +114,11 @@ Als u herstel na nood gevallen voor inkomende berichten wilt inschakelen, select
 
 7. Als u een actie wilt verbinden met een integratie account voor een secundaire regio, selecteert u **verbinding wijzigen**  >  een**nieuwe verbinding toevoegen** voor een lijst met beschik bare integratie accounts. Voer een verbindings naam in, selecteer het *integratie account van de secundaire regio* in de lijst en kies **maken**. 
 
-   ![Naam van het account voor de integratie van secundaire regio's](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn6.png)
+   ![Scherm afbeelding die laat zien waar u de naam van een secundaire regio-integratie account toevoegt.](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn6.png)
 
 8. Schakel over naar ruwe invoer door te klikken op het pictogram in de rechter bovenhoek.
 
-   ![Overschakelen naar ruwe invoer](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12rawinputs.png)
+   ![Scherm opname van het pictogram dat u wilt selecteren om naar RAW te scha kelen.](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12rawinputs.png)
 
 9. Selecteer hoofd tekst in de kiezer voor dynamische inhoud en sla de logische app op.
 
@@ -140,7 +140,7 @@ Bedrijfs continuïteit voor EDI EDIFACT-documenten is gebaseerd op controle numm
 
 Als u herstel na nood gevallen voor inkomende berichten wilt inschakelen, selecteert u de instellingen voor controle op dubbele items in de ontvangst instellingen van uw EDIFACT-overeenkomst.
 
-![Instellingen voor controle op dubbele items selecteren](./media/logic-apps-enterprise-integration-b2b-business-continuity/edifactdupcheck.png)  
+![Scherm afbeelding met de instellingen voor controle op dubbele items in de instellingen voor het ontvangen van de EDIFACT-overeenkomst.](./media/logic-apps-enterprise-integration-b2b-business-continuity/edifactdupcheck.png)  
 
 1. Een [logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md) maken in een secundaire regio.    
 
@@ -157,27 +157,27 @@ Als u herstel na nood gevallen voor inkomende berichten wilt inschakelen, select
 
 4. De **datum/tijd waarop de synchronisatie-instelling voor het controle nummer moet worden gestart** , is optioneel. De **frequentie** kan worden ingesteld op **dag**, **uur**, **minuut**of **seconde** met een interval.    
 
-   ![Datum/tijd en frequentie](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn3.png)
+   ![Scherm afbeelding met de instellingen voor datum/tijd en frequentie.](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn3.png)
 
 6. Selecteer **Nieuwe stap** > **Een actie toevoegen**.    
 
-   ![Nieuwe stap, een actie toevoegen](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn4.png)
+   ![Scherm afbeelding die laat zien waar u een actie toevoegen selecteert.](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn4.png)
 
 7. Zoek op **EDIFACT**en selecteer **EDIFACT-Voeg controle nummers toe of werk**deze bij.   
 
-   ![Controle nummers toevoegen of bijwerken](./media/logic-apps-enterprise-integration-b2b-business-continuity/EdifactChooseAction.png)
+   ![Scherm afbeelding die laat zien waar u controle nummers kunt toevoegen of bijwerken.](./media/logic-apps-enterprise-integration-b2b-business-continuity/EdifactChooseAction.png)
 
 8. Als u een actie wilt verbinden met een integratie account voor een secundaire regio, selecteert u **verbinding wijzigen**  >  een**nieuwe verbinding toevoegen** voor een lijst met beschik bare integratie accounts. Voer een verbindings naam in, selecteer het *integratie account van de secundaire regio* in de lijst en kies **maken**.
 
-   ![Naam van het account voor de integratie van secundaire regio's](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn6.png)
+   ![Maak een naam voor het integratie account voor de secundaire regio.](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn6.png)
 
 9. Schakel over naar ruwe invoer door te klikken op het pictogram in de rechter bovenhoek.
 
-   ![Overschakelen naar ruwe invoer](./media/logic-apps-enterprise-integration-b2b-business-continuity/Edifactrawinputs.png)
+   ![Scherm afbeelding die het pictogram markeert om te selecteren wanneer u wilt overschakelen naar ruwe invoer.](./media/logic-apps-enterprise-integration-b2b-business-continuity/Edifactrawinputs.png)
 
 10. Selecteer hoofd tekst in de kiezer voor dynamische inhoud en sla de logische app op.   
 
-   ![Velden voor dynamische inhoud](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12CN7.png)
+   ![Scherm afbeelding met de kiezer voor dynamische inhoud waar u hoofd tekst kunt selecteren.](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12CN7.png)
 
    Op basis van het tijds interval pollt de trigger de primaire regio tabel ontvangen controle nummers en worden de nieuwe records opgehaald.
    Met deze actie worden de records bijgewerkt naar het integratie account van de secundaire regio. 
@@ -205,7 +205,7 @@ Bedrijfs continuïteit voor documenten die gebruikmaken van het AS2-protocol is 
    
 3. Voer een verbindings naam in, selecteer uw *primaire regio-integratie account* in de lijst en kies **maken**.
 
-   ![Naam van het primaire gebied voor integratie account](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid2.png)
+   ![Scherm afbeelding die laat zien waar een verbindings naam moet worden ingevoerd wanneer een MIC-waarde wordt gemaakt.](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid2.png)
 
 4. De **datum/tijd waarop de synchronisatie-waarde voor de Mic moet worden gestart** , is optioneel. De **frequentie** kan worden ingesteld op **dag**, **uur**, **minuut**of **seconde** met een interval.   
 

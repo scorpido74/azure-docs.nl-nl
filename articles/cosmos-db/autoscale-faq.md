@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/10/2020
-ms.openlocfilehash: 0e6a502ae7ed71beaeefe603e0810264e62187ba
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: bc8e5baa92f507c9abb9bc6b5305773010803f01
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707999"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567584"
 ---
 # <a name="frequently-asked-questions-about-autoscale-provisioned-throughput-in-azure-cosmos-db"></a>Veelgestelde vragen over het automatisch schalen van ingerichte door Voer in Azure Cosmos DB
 
@@ -37,14 +37,14 @@ Gebruik [Azure monitor metrische gegevens](how-to-choose-offer.md#measure-and-mo
 Elk uur wordt u gefactureerd voor de hoogste door Voer `T` die het systeem binnen het uur is geschaald. Als uw resource gedurende het uur geen aanvragen heeft of niet verder is geschaald `0.1 * Tmax` , wordt u gefactureerd voor het minimum van `0.1 * Tmax` . Raadpleeg de pagina met [prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/) voor Azure Cosmos DB voor meer informatie. 
 
 ### <a name="how-does-autoscale-show-up-on-my-bill"></a>Hoe wordt automatisch schalen weer gegeven op mijn factuur?
-Bij accounts met één Master is het automatisch schalen per 100 RU/s 1,5 x het gemiddelde van de ingerichte door Voer (hand matige) standaard. Op uw factuur ziet u de bestaande standaard doorvoer meter voor ingerichte door voer. De hoeveelheid van deze meter wordt vermenigvuldigd met 1,5. Als bijvoorbeeld de hoogste RU/s voor het systeem is geschaald naar binnen een uur 6000 RU/s, wordt u 60 * 1,5 = 90 eenheden van de meter voor dat uur gefactureerd.
+In de accounts voor enkele schrijf regio's is het automatisch schalen per 100 RU/s 1,5 x het gemiddelde van de ingerichte door Voer (hand matige) standaard. Op uw factuur ziet u de bestaande standaard doorvoer meter voor ingerichte door voer. De hoeveelheid van deze meter wordt vermenigvuldigd met 1,5. Als bijvoorbeeld de hoogste RU/s voor het systeem is geschaald naar binnen een uur 6000 RU/s, wordt u 60 * 1,5 = 90 eenheden van de meter voor dat uur gefactureerd.
 
-In Multi-Master accounts is het automatisch schalen per 100 RU/s hetzelfde als het gemiddelde voor de Provisioning van de standaard (hand matig) ingerichte multi-master. Op uw factuur ziet u de bestaande indicator voor meerdere masters. Aangezien de tarieven hetzelfde zijn, ziet u als u automatisch schalen gebruikt, dezelfde hoeveelheid als bij standaard doorvoer.
+In accounts met meerdere schrijf regio's is het automatisch schalen per 100 RU/s hetzelfde als het gemiddelde voor de Provisioning van de standaard (hand matig) beschik bare meerdere schrijf regio's. Op uw factuur ziet u de bestaande meter meerdere schrijf regio's. Aangezien de tarieven hetzelfde zijn, ziet u als u automatisch schalen gebruikt, dezelfde hoeveelheid als bij standaard doorvoer.
 
 ### <a name="does-autoscale-work-with-reserved-capacity"></a>Werkt automatisch schalen met gereserveerde capaciteit?
-Ja. Wanneer u gereserveerde capaciteit van één Master aanschaft, wordt de reserverings korting voor resources automatisch schalen toegepast op het gebruik van de meter tegen een verhouding van 1,5 * de [verhouding van de specifieke regio](../cost-management-billing/reservations/understand-cosmosdb-reservation-charges.md#reservation-discount-per-region). 
+Ja. Wanneer u gereserveerde capaciteit aanschaft voor accounts met meerdere schrijf regio's, wordt de reserverings korting voor resources automatisch schalen toegepast op het gebruik van de meter tegen een verhouding van 1,5 * de [verhouding van de specifieke regio](../cost-management-billing/reservations/understand-cosmosdb-reservation-charges.md#reservation-discount-per-region). 
 
-Gereserveerde multi-master capaciteit werkt op dezelfde voor automatisch schalen en standaard (hand matig) ingerichte door voer. Zie [Azure Cosmos DB gereserveerde capaciteit](cosmos-db-reserved-capacity.md)
+Gereserveerde capaciteit van regio voor meerdere schrijf bewerkingen werkt hetzelfde voor de ingerichte door Voer van automatisch schalen en standaard (hand matig). Zie [Azure Cosmos DB gereserveerde capaciteit](cosmos-db-reserved-capacity.md)
 
 ### <a name="does-autoscale-work-with-free-tier"></a>Werkt automatisch schalen met de gratis laag?
 Ja. In de laag gratis kunt u de door Voer van automatisch schalen gebruiken voor een container. Ondersteuning voor het automatisch schalen van gedeelde doorvoer databases met aangepaste Max. RU/s is nog niet beschikbaar. Bekijk hoe [Facturering met gratis lagen werkt met automatisch schalen](understand-your-bill.md#billing-examples-with-free-tier-accounts).
@@ -52,7 +52,7 @@ Ja. In de laag gratis kunt u de door Voer van automatisch schalen gebruiken voor
 ### <a name="is-autoscale-supported-for-all-apis"></a>Wordt automatisch schalen ondersteund voor alle Api's?
 Ja, automatisch schalen wordt ondersteund voor alle Api's: core (SQL), Gremlin, Table, Cassandra en API voor MongoDB.
 
-### <a name="is-autoscale-supported-for-multi-master-accounts"></a>Wordt automatisch schalen ondersteund voor Multi-Master-accounts?
+### <a name="is-autoscale-supported-for-multi-region-write-accounts"></a>Wordt automatisch schalen ondersteund voor het schrijven van meerdere regio's?
 Ja. Het maximum aantal RU/s is beschikbaar in elke regio die wordt toegevoegd aan het Azure Cosmos DB-account. 
 
 ### <a name="how-do-i-enable-autoscale-on-new-databases-or-containers"></a>Hoe kan ik automatisch schalen op nieuwe data bases of containers inschakelen?

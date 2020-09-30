@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 373463ff9024ec3b657df6d141ed830142b23f2e
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: e4d2da56146a14b295e08a1093fe62a50f87ecfa
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400057"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567550"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Service quota's Azure Cosmos DB
 
@@ -154,11 +154,11 @@ Azure Cosmos DB ondersteunt [ruwe en query bewerkingen](/rest/api/cosmos-db/) vo
 
 Zodra een bewerking als query de time-out voor de uitvoering of de grootte van de reactie bereikt, wordt er een pagina met resultaten en een vervolg token naar de client geretourneerd om de uitvoering te hervatten. Er is geen praktische limiet voor de duur dat één query op meerdere pagina's/voortzettingen kan worden uitgevoerd.
 
-Cosmos DB gebruikt HMAC voor autorisatie. U kunt een hoofd sleutel of een [bron tokens](secure-access-to-data.md) gebruiken voor nauw keurig toegangs beheer voor bronnen als containers, partitie sleutels of items. De volgende tabel bevat de limieten voor autorisatie tokens in Cosmos DB.
+Cosmos DB gebruikt HMAC voor autorisatie. U kunt een primaire sleutel of een [bron tokens](secure-access-to-data.md) gebruiken voor nauw keurig toegangs beheer voor bronnen als containers, partitie sleutels of items. De volgende tabel bevat de limieten voor autorisatie tokens in Cosmos DB.
 
 | Resource | Standaardlimiet |
 | --- | --- |
-| Maximale verloop tijd van Master token | 15 min  |
+| Maximale verloop tijd primaire token | 15 min  |
 | Minimale verloop tijd van bron token | 10 minuten  |
 | Maximale verloop tijd van bron token | standaard 24 uur. U kunt deze verhogen door [een ondersteunings ticket voor Azure te archiveren](create-support-request-quota-increase.md)|
 | Maximale klok scheefheid voor token autorisatie| 15 min |
@@ -171,7 +171,7 @@ Azure Cosmos DB onderhoudt de meta gegevens van het systeem voor elk account. Me
 
 | Resource | Standaardlimiet |
 | --- | --- |
-|Maximum aantal gemaakte aanvragen voor verzameling pnieuw minuut| 5|
+|Maximum aantal gemaakte verzamelingen per minuut| 5|
 |Maximum aantal gemaakte data bases per minuut|   5|
 |Maximale update snelheid van ingerichte door Voer per minuut| 5|
 

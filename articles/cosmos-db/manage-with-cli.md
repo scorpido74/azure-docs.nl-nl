@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/29/2020
 ms.author: mjbrown
-ms.openlocfilehash: 0ae29039702a6f73a33f73afc366532077aa4b71
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: c248755c1f32d41b6926d4492dcc3d0eea2869b8
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432838"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91566870"
 ---
 # <a name="manage-azure-cosmos-resources-using-azure-cli"></a>Azure Cosmos-resources beheren met Azure CLI
 
@@ -33,10 +33,10 @@ In de volgende secties ziet u hoe u het Azure Cosmos-account kunt beheren, met i
 * [Hand matige failover activeren](#trigger-manual-failover)
 * [Lijst met account sleutels](#list-account-keys)
 * [Alleen-lezen-account sleutels weer geven](#list-read-only-account-keys)
-* [Verbindings reeksen weer geven](#list-connection-strings)
+* [Verbindingsreeksen weergeven](#list-connection-strings)
 * [Account sleutel opnieuw genereren](#regenerate-account-key)
 
-### <a name="create-an-azure-cosmos-db-account"></a>Een Azure Cosmos DB-account maken
+### <a name="create-an-azure-cosmos-db-account"></a>Maak een Azure Cosmos DB-account
 
 Een Azure Cosmos DB-account maken met SQL API, sessie consistentie in de regio's vs-West 2 en VS-Oost 2:
 
@@ -87,10 +87,10 @@ az cosmosdb update --name $accountName --resource-group $resourceGroupName \
 
 ### <a name="enable-multiple-write-regions"></a>Meerdere schrijf regio's inschakelen
 
-Multi-Master inschakelen voor een Cosmos-account
+Schrijf bewerkingen met meerdere regio's inschakelen voor een Cosmos-account
 
 ```azurecli-interactive
-# Update an Azure Cosmos account from single to multi-master
+# Update an Azure Cosmos account from single write region to multiple write regions
 resourceGroupName='myResourceGroup'
 accountName='mycosmosaccount'
 
@@ -148,7 +148,7 @@ az cosmosdb failover-priority-change --ids $accountId \
     --failover-policies 'East US 2=0' 'South Central US=1' 'West US 2=2'
 ```
 
-### <a name="list-all-account-keys"></a><a id="list-account-keys"></a>Alle account sleutels weer geven
+### <a name="list-all-account-keys"></a><a id="list-account-keys"></a> Alle account sleutels weer geven
 
 Alle sleutels ophalen voor een Cosmos-account.
 
@@ -177,7 +177,7 @@ az cosmosdb keys list \
     --type read-only-keys
 ```
 
-### <a name="list-connection-strings"></a>Verbindings reeksen weer geven
+### <a name="list-connection-strings"></a>Verbindingsreeksen weergeven
 
 De verbindings reeksen ophalen voor een Cosmos-account.
 
@@ -488,6 +488,6 @@ az lock delete --ids $lockid
 
 Zie voor meer informatie over de Azure CLI:
 
-- [Azure CLI installeren](/cli/azure/install-azure-cli)
+- [Azure-CLI installeren](/cli/azure/install-azure-cli)
 - [Naslag informatie voor Azure CLI](https://docs.microsoft.com/cli/azure/cosmosdb)
 - [Aanvullende voor beelden van Azure CLI voor Azure Cosmos DB](cli-samples.md)

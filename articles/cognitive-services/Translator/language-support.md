@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: e8feb4f2012d323d954ba000323824bc157bcf87
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: a913756c0348622ec0d885c50b55d5cecf6dd91d
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91534057"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568094"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Ondersteuning van talen en regio's voor tekst-en spraak omzetting
 
@@ -38,6 +38,7 @@ Translator ondersteunt de volgende talen voor tekst vertaling.
 |:-----|:-----:|
 |Afrikaans| `af`|
 |Arabisch|    `ar`    |
+|Assamees|  `as`    |
 |Bengalese|    `bn`    |
 |Bosnisch (Latijns)|   `bs`    |
 |Bulgaars| `bg`    |
@@ -345,7 +346,7 @@ De volgende talen zijn beschikbaar voor aanpassing in of vanuit het Engels met [
 | Vietnamees      | `vi`          |
 | Welsh | `cy` |
 
-## <a name="speech-translation"></a>Spraakomzetting
+## <a name="speech-translation"></a>Speech Translation
 Spraak omzetting is beschikbaar via Translator met Cognitive Services Speech Service. Raadpleeg de documentatie van de [Speech-Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/) voor meer informatie over het gebruik van spraak omzetting en voor het weer geven van alle [beschik bare taal opties](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support).
 
 ### <a name="speech-to-text"></a>Spraak naar tekst

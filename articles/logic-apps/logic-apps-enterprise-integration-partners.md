@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
-ms.openlocfilehash: e58cbe85f30ea09adde45d55bb7b80c710c45495
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8e3805fae5bf6cc5ad8cf759d3ba75220c6ddbd8
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74792436"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565068"
 ---
 # <a name="add-trading-partners-to-integration-accounts-for-azure-logic-apps"></a>Handelspartners toevoegen aan integratieaccounts voor Azure Logic Apps
 
@@ -47,7 +47,7 @@ In een overeenkomst geeft u de details op voor het verwerken van binnenkomende e
 
 1. Kies de tegel **partners** .
 
-   ![De tegel partners kiezen](./media/logic-apps-enterprise-integration-partners/choose-partners.png)
+   ![Scherm afbeelding waarin de tegel partners wordt weer gegeven.](./media/logic-apps-enterprise-integration-partners/choose-partners.png)
 
 1. Klik onder **partners**op **toevoegen**. Onder **partner toevoegen**geeft u de details van de partner op, zoals wordt beschreven in de onderstaande tabel.
 
@@ -55,9 +55,9 @@ In een overeenkomst geeft u de details op voor het verwerken van binnenkomende e
 
    | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
-   | **Naam** | Yes | De naam van de partner |
-   | **Kwalificatie** | Yes | De verificatie-tekst die unieke zakelijke identiteiten biedt aan organisaties, bijvoorbeeld **D-U-N-S (Dun & Bradstreet)**. <p>Partners kunnen voor een onderling gedefinieerde zakelijke identiteit kiezen. Voor deze scenario's selecteert u **wederzijds gedefinieerd** voor Edifact of **wederzijds gedefinieerd (X12)** voor X12. <p>Selecteer voor RosettaNet alleen **Duns**. Dit is de standaard. |
-   | **Waarde** | Yes | Een waarde waarmee de documenten worden geïdentificeerd die door uw Logic apps worden ontvangen. <p>Voor RosettaNet moet deze waarde een getal van negen cijfers zijn dat overeenkomt met het DUNS-nummer. |
+   | **Naam** | Ja | De naam van de partner |
+   | **Kwalificatie** | Ja | De verificatie-tekst die unieke zakelijke identiteiten biedt aan organisaties, bijvoorbeeld **D-U-N-S (Dun & Bradstreet)**. <p>Partners kunnen voor een onderling gedefinieerde zakelijke identiteit kiezen. Voor deze scenario's selecteert u **wederzijds gedefinieerd** voor Edifact of **wederzijds gedefinieerd (X12)** voor X12. <p>Selecteer voor RosettaNet alleen **Duns**. Dit is de standaard. |
+   | **Waarde** | Ja | Een waarde waarmee de documenten worden geïdentificeerd die door uw Logic apps worden ontvangen. <p>Voor RosettaNet moet deze waarde een getal van negen cijfers zijn dat overeenkomt met het DUNS-nummer. |
    ||||
 
    > [!NOTE]
@@ -86,12 +86,12 @@ Kies de tegel **partners** .
 
    | Eigenschap | Vereist | Beschrijving |
    |----------|----------|-------------|
-   | **Partner classificatie** | No | Het organisatie type van de partner |
-   | **Toeleverings keten code** | No | De code van de toeleverings keten van de partner, bijvoorbeeld ' informatie technologie ' of ' elektronische onderdelen ' |
-   | **Naam van contact persoon** | No | De naam van de contact persoon van de partner |
-   | **E-mail** | No | Het e-mail adres van de partner |
-   | **Fax** | No | Het faxnummer van de partner |
-   | **Telefoon** | No | Het telefoon nummer van de partner |
+   | **Partner classificatie** | Nee | Het organisatie type van de partner |
+   | **Toeleverings keten code** | Nee | De code van de toeleverings keten van de partner, bijvoorbeeld ' informatie technologie ' of ' elektronische onderdelen ' |
+   | **Naam van contact persoon** | Nee | De naam van de contact persoon van de partner |
+   | **E-mail** | Nee | Het e-mail adres van de partner |
+   | **Fax** | Nee | Het faxnummer van de partner |
+   | **Telefoon** | Nee | Het telefoon nummer van de partner |
    ||||
 
 1. Wanneer u klaar bent, kiest u **OK** om uw wijzigingen op te slaan.
@@ -100,7 +100,7 @@ Kies de tegel **partners** .
 
 1. Zoek en selecteer uw integratie account in de [Azure Portal](https://portal.azure.com). Kies de tegel **partners** .
 
-   ![De tegel partners kiezen](./media/logic-apps-enterprise-integration-partners/choose-partners-to-delete.png)
+   ![Scherm opname van de weer gave partners die u selecteert wanneer u een partner wilt verwijderen.](./media/logic-apps-enterprise-integration-partners/choose-partners-to-delete.png)
 
 1. Selecteer onder **partners**de partner die u wilt verwijderen. Kies **Verwijderen**.
 

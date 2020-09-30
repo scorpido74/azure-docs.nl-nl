@@ -3,12 +3,12 @@ title: Privé-eindpunten
 description: Meer informatie over het proces van het maken van privé-eind punten voor Azure Backup en de scenario's waarbij persoonlijke eind punten worden gebruikt om de beveiliging van uw resources te hand haven.
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: 0a875dfedbf7a3b76b479fd4f23b74a7ced47252
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: e1121f1d1217ebd48c744135c976587545323f44
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89179229"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565157"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Privé-eind punten voor Azure Backup
 
@@ -62,75 +62,13 @@ Met beheerde identiteiten kan de kluis privé-eind punten maken en gebruiken. In
     >[!NOTE]
     >Wanneer de beheerde identiteit is ingeschakeld, mag deze **niet** worden uitgeschakeld (zelfs tijdelijk). Het uitschakelen van de beheerde identiteit kan leiden tot inconsistent gedrag.
 
-## <a name="dns-changes"></a>DNS-wijzigingen
-
-Voor het gebruik van privé-eind punten zijn Privé-DNS zones vereist om de back-upextensie toe te staan om FQDN-adressen van particuliere koppelingen om te zetten naar privé Ip's Samen zijn er drie privé-DNS-zones vereist. Hoewel er twee van deze zones moeten worden gemaakt, kan de derde worden gekozen om te worden geïntegreerd met het persoonlijke eind punt (tijdens het maken van het persoonlijke eind punt) of afzonderlijk kunnen worden gemaakt.
-
-U kunt ook uw aangepaste DNS-servers gebruiken. Raadpleeg [DNS-wijzigingen voor aangepaste DNS-servers](#dns-changes-for-custom-dns-servers) voor meer informatie over het gebruik van aangepaste DNS-servers.
-
-### <a name="creating-mandatory-dns-zones"></a>Verplichte DNS-zones maken
-
-Er zijn twee verplichte DNS-zones die moeten worden gemaakt:
-
-- `privatelink.blob.core.windows.net` (voor back-up/herstel gegevens)
-- `privatelink.queue.core.windows.net` (voor service communicatie)
-
-1. Zoek in de zoek balk **alle services** naar **privé-DNS zone** en selecteer **privé-DNS zone** in de vervolg keuzelijst.
-
-    ![Privé-DNS zone selecteren](./media/private-endpoints/private-dns-zone.png)
-
-1. Selecteer in het deel venster **privé-DNS zone** de knop **+ toevoegen** om te beginnen met het maken van een nieuwe zone.
-
-1. Vul in het deel venster **privé-DNS-zone maken** de benodigde gegevens in. Het abonnement moet hetzelfde zijn als waar het persoonlijke eind punt wordt gemaakt.
-
-    De zones moeten de volgende naam hebben:
-
-    - `privatelink.blob.core.windows.net`
-    - `privatelink.queue.core.windows.net`
-
-    | **Zone**                           | **Service** | **Details van het abonnement en de resource groep (RG)**                  |
-    | ---------------------------------- | ----------- | ------------------------------------------------------------ |
-    | `privatelink.blob.core.windows.net`  | Blob        | **Abonnement**: hetzelfde als het persoonlijke eind punt dat moet worden gemaakt  **RG**: ofwel de RG van het VNET of het persoonlijke eind punt |
-    | `privatelink.queue.core.windows.net` | Wachtrij       | **RG**: de RG van het VNET of van het persoonlijke eind punt |
-
-    ![Privé-DNS zone maken](./media/private-endpoints/create-private-dns-zone.png)
-
-1. Als u klaar bent, gaat u verder met het controleren en maken van de DNS-zone.
-
-### <a name="optional-dns-zone"></a>Optionele DNS-zone
-
-U kunt ervoor kiezen om uw persoonlijke eind punten te integreren met privé-DNS-zones voor Azure Backup (besproken in de sectie voor het [maken en gebruiken van persoonlijke eind punten voor back-up](#creating-and-using-private-endpoints-for-backup)) voor service communicatie. Als u niet wilt integreren met de privé-DNS-zone, kunt u ervoor kiezen om uw eigen DNS-server te gebruiken of een privé-DNS-zone afzonderlijk te maken. Dit is een aanvulling op de twee verplichte privé-DNS-zones die in de vorige sectie zijn besproken.
-
-Als u een afzonderlijke privé-DNS-zone wilt maken in azure, kunt u hetzelfde doen met behulp van dezelfde stappen die worden gebruikt voor het maken van verplichte DNS-zones. De naamgevings-en abonnements gegevens worden hieronder gedeeld:
-
-| **Zone**                                                     | **Service** | **Details van het abonnement en de resource groep**                  |
-| ------------------------------------------------------------ | ----------- | ------------------------------------------------------------ |
-| `privatelink.<geo>.backup.windowsazure.com`  <br><br>   **Opmerking**: *geografische* hier verwijst naar de regio code. Bijvoorbeeld *wcus* en *ne* voor West-Centraal VS en Europa-Noord respectievelijk. | Backup      | **Abonnement**: hetzelfde als waar het persoonlijke eind punt moet worden gemaakt  **RG**: elke rg in het abonnement |
-
-Raadpleeg [deze lijst](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/AzureRegionCodesList.docx) voor regio codes.
-
-Voor URL-naamgevings conventies in nationale regio's:
-
-- [China](/azure/china/resources-developer-guide#check-endpoints-in-azure)
-- [Duitsland](../germany/germany-developer-guide.md#endpoint-mapping)
-- [US Gov](../azure-government/documentation-government-developer-guide.md)
-
-### <a name="linking-private-dns-zones-with-your-virtual-network"></a>Persoonlijke DNS-zones koppelen aan uw virtuele netwerk
-
-De hierboven gemaakte DNS-zones moeten nu zijn gekoppeld aan het virtuele netwerk waarvan de servers waarvan u een back-up wilt maken, zich bevinden. Dit moet worden gedaan voor alle DNS-zones die u hebt gemaakt.
-
-1. Ga naar de DNS-zone (die u in de vorige stap hebt gemaakt) en navigeer naar **virtuele netwerk koppelingen** op de balk aan de linkerkant. Selecteer vervolgens de knop **+ toevoegen**
-1. Vul de vereiste gegevens in. De velden **abonnement** en **virtueel netwerk** moeten worden ingevuld met de overeenkomende gegevens van het virtuele netwerk waarin uw servers zijn opgenomen. De andere velden moeten blijven staan.
-
-    ![Koppeling van virtueel netwerk toevoegen](./media/private-endpoints/add-virtual-network-link.png)
-
 ## <a name="grant-permissions-to-the-vault-to-create-required-private-endpoints"></a>Machtigingen verlenen aan de kluis om vereiste persoonlijke eind punten te maken
 
 Als u de vereiste privé-eind punten voor Azure Backup wilt maken, moet de kluis (de beheerde identiteit van de kluis) machtigingen hebben voor de volgende resource groepen:
 
 - De resource groep die het doel-VNet bevat
 - De resource groep waar de persoonlijke eind punten moeten worden gemaakt
-- De resource groep die de Privé-DNS zones bevat
+- De resource groep die de Privé-DNS zones bevat, zoals [hier](#creating-private-endpoints-for-backup) wordt beschreven
 
 We raden u aan de rol **Inzender** voor deze drie resource groepen toe te kennen aan de kluis (beheerde identiteit). In de volgende stappen wordt beschreven hoe u dit doet voor een bepaalde resource groep (dit moet worden gedaan voor elk van de drie resource groepen):
 
@@ -173,6 +111,8 @@ In deze sectie wordt het proces voor het maken van een persoonlijk eind punt voo
 
         ![Tabblad Configuratie invullen](./media/private-endpoints/configuration-tab.png)
 
+        Raadpleeg [deze sectie](#dns-changes-for-custom-dns-servers) als u uw aangepaste DNS-servers wilt gebruiken in plaats van de integratie met Azure privé-DNS-zones.  
+
     1. U kunt eventueel **labels** voor uw persoonlijke eind punt toevoegen.
 
     1. Ga door met het invoeren van gegevens en het eenmaal **maken** is voltooid. Wanneer de validatie is voltooid, selecteert u **maken** om het persoonlijke eind punt te maken.
@@ -189,51 +129,6 @@ Zie [hand matige goed keuring van privé-eind punten met behulp van de Azure Res
 
     ![Privé-eind punten goed keuren](./media/private-endpoints/approve-private-endpoints.png)
 
-## <a name="adding-dns-records"></a>DNS-records toevoegen
-
->[!NOTE]
-> Deze stap is niet vereist als u gebruikmaakt van een geïntegreerde DNS-zone. Als u echter uw eigen Azure-Privé-DNS zone hebt gemaakt of een aangepaste privé-DNS-zone gebruikt, moet u ervoor zorgen dat de vermeldingen zijn aangebracht zoals beschreven in deze sectie.
-
-Wanneer u de optionele privé-DNS-zone en de persoonlijke eind punten voor uw kluis hebt gemaakt, moet u DNS-records toevoegen aan uw DNS-zone. U kunt dit hand matig doen of met een Power shell-script. Dit moet alleen worden uitgevoerd voor de DNS-zone van de back-up. deze voor blobs en wacht rijen worden automatisch bijgewerkt.
-
-### <a name="add-records-manually"></a>Records hand matig toevoegen
-
-Hiervoor moet u vermeldingen voor elke FQDN in uw privé-eind punt in uw Privé-DNS zone maken.
-
-1. Ga naar uw **privé-DNS-zone** en navigeer naar de optie **overzicht** op de balk aan de linkerkant. Selecteer vervolgens **+ Recordset** om records toe te voegen.
-
-    ![Selecteer + Recordset om records toe te voegen](./media/private-endpoints/select-record-set.png)
-
-1. Voeg in het deel venster **recordset toevoegen** dat wordt geopend één vermelding toe voor elke FQDN en een persoonlijk IP-adres als **een type** record. De lijst met FQDN-namen en IP-adressen kan worden verkregen via uw persoonlijke eind punt (onder **overzicht**). Zoals u in het onderstaande voor beeld ziet, wordt de eerste FQDN van het persoonlijke eind punt toegevoegd aan de recordset in de privé-DNS-zone.
-
-    ![Lijst met FQDN-namen en IP-adressen](./media/private-endpoints/list-of-fqdn-and-ip.png)
-
-    ![Recordset toevoegen](./media/private-endpoints/add-record-set.png)
-
-### <a name="add-records-using-powershell-script"></a>Records toevoegen met behulp van Power shell-script
-
-1. Start de **Cloud shell** in het Azure Portal en selecteer **bestand uploaden** in het Power shell-venster.
-
-    ![Bestand uploaden selecteren in Power shell-venster](./media/private-endpoints/upload-file-in-powershell.png)
-
-1. Dit script uploaden: [DnsZoneCreation](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/dnszonerecordcreation.ps1)
-
-1. Ga naar uw basismap (bijvoorbeeld: `cd /home/user` )
-
-1. Voer het volgende script uit:
-
-    ```azurepowershell
-    ./dnszonerecordcreation.ps1 -Subscription <SubscriptionId> -VaultPEName <VaultPE Name> -VaultPEResourceGroup <Vault PE RG> -DNSResourceGroup <Private DNS RG> -Privatezone <privatednszone>
-    ```
-
-    Dit zijn de para meters:
-
-    - **abonnement**: het abonnement waarin de resources (privé-eind punt van de kluis en de privé-DNS-zone) zich bevinden
-    - **vaultPEName**: de naam van het persoonlijke eind punt dat voor de kluis is gemaakt
-    - **vaultPEResourceGroup**: resource groep die het persoonlijke eind punt van de kluis bevat
-    - **dnsResourceGroup**: een resource groep die de privé-DNS-zones bevat
-    - **Privatezone**: naam van de privé-DNS-zone
-
 ## <a name="using-private-endpoints-for-backup"></a>Privé-eind punten gebruiken voor back-up
 
 Zodra de privé-eind punten die zijn gemaakt voor de kluis in uw VNet zijn goedgekeurd, kunt u deze gebruiken om uw back-ups te maken en op te slaan.
@@ -243,12 +138,9 @@ Zodra de privé-eind punten die zijn gemaakt voor de kluis in uw VNet zijn goedg
 >
 >1. Er is een (nieuwe) Recovery Services kluis gemaakt
 >1. De kluis is ingeschakeld om een door het systeem toegewezen beheerde identiteit te gebruiken
->1. Er zijn drie Privé-DNS zones gemaakt (twee als u een geïntegreerde DNS-zone gebruikt voor back-up)
->1. Uw Privé-DNS-zones koppelen aan uw Azure-Virtual Network
 >1. Relevante machtigingen toegewezen aan de beheerde identiteit van de kluis
 >1. Een persoonlijk eind punt voor uw kluis gemaakt
 >1. Het persoonlijke eind punt is goedgekeurd (indien niet automatisch goedgekeurd)
->1. De vereiste DNS-records zijn aan uw privé-DNS-zone voor back-up toegevoegd (alleen van toepassing als er geen geïntegreerde privé-DNS-zone wordt gebruikt)
 
 ### <a name="backup-and-restore-of-workloads-in-azure-vm-sql-sap-hana"></a>Back-ups maken en herstellen van werk belastingen in azure VM (SQL, SAP HANA)
 
@@ -504,7 +396,11 @@ U moet drie particuliere DNS-zones maken en deze koppelen aan uw virtuele netwer
 >[!NOTE]
 >In de bovenstaande tekst verwijst *geo* naar de regio code. Bijvoorbeeld *wcus* en *ne* voor West-Centraal VS en Europa-Noord respectievelijk.
 
-Raadpleeg [deze lijst](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/AzureRegionCodesList.docx) voor regio codes.
+Raadpleeg [deze lijst](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/AzureRegionCodesList.docx) voor regio codes. Raadpleeg de volgende koppelingen voor URL-naamgevings conventies in nationale regio's:
+
+- [China](https://docs.microsoft.com/azure/china/resources-developer-guide#check-endpoints-in-azure)
+- [Duitsland](https://docs.microsoft.com/azure/germany/germany-developer-guide#endpoint-mapping)
+- [US Gov](https://docs.microsoft.com/azure/azure-government/documentation-government-developer-guide)
 
 #### <a name="adding-dns-records-for-custom-dns-servers"></a>DNS-records toevoegen voor aangepaste DNS-servers
 

@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: a747cf8e1713eb905aee02af95c568a448b47f05
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 87b5ec5eb13f2bc53bdf993547ce3da1c74404bf
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91344326"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91566785"
 ---
 # <a name="add-replicas-to-azure-cache-for-redis-preview"></a>Replica's toevoegen aan Azure cache voor redis (preview-versie)
 In dit artikel leert u hoe u een Azure-cache-exemplaar met aanvullende replica's instelt met behulp van de Azure Portal.
@@ -38,28 +38,27 @@ Voer de volgende stappen uit om een cache te maken:
 
     :::image type="content" source="media/cache-create/new-cache-menu.png" alt-text="Selecteer Azure-cache voor redis.":::
    
-1. Configureer op de pagina **Nieuwe Redis-cache** de instellingen voor de nieuwe cache.
+1. Configureer de instellingen voor de nieuwe cache op de pagina **basis beginselen** .
    
     | Instelling      | Voorgestelde waarde  | Beschrijving |
     | ------------ |  ------- | -------------------------------------------------- |
+    | **Abonnement** | Selecteer uw abonnement. | Het abonnement waarmee dit nieuwe Azure Cache voor Redis-exemplaar wordt gemaakt. | 
+    | **Resourcegroep** | Selecteer een resource groep of selecteer **nieuwe maken** en voer een nieuwe naam voor de resource groep in. | Naam voor de resourcegroep waarin de cache en andere resources moeten worden gemaakt. Door al uw app-resources in één resourcegroep te plaatsen, kunt u ze eenvoudig beheren of verwijderen. | 
     | **DNS-naam** | Geef een wereldwijd unieke naam op. | De cachenaam is een tekenreeks van 1 tot 63 tekens die alleen cijfers, letters en afbreekstreepjes mag bevatten. De naam moet beginnen en eindigen met een cijfer of letter en mag geen opeenvolgende afbreekstreepjes bevatten. De *hostnaam* van uw cache-exemplaar wordt *\<DNS name>.redis.cache.windows.net*. | 
-    | **Abonnement** | Open de vervolgkeuzelijst en selecteer uw abonnement. | Het abonnement waarmee dit nieuwe Azure Cache voor Redis-exemplaar wordt gemaakt. | 
-    | **Resourcegroep** | Open de vervolgkeuzelijst en selecteer een resourcegroep of kies **Nieuwe maken** en geef een naam voor de nieuwe resourcegroep op. | Naam voor de resourcegroep waarin de cache en andere resources moeten worden gemaakt. Door al uw app-resources in één resourcegroep te plaatsen, kunt u ze eenvoudig beheren of verwijderen. | 
-    | **Locatie** | Open de vervolgkeuzelijst en selecteer een locatie. | Selecteer een [regio](https://azure.microsoft.com/regions/) in de buurt van andere services die gaan gebruikmaken van de cache. |
-    | **Prijscategorie** | Vervolg keuzelijst en selecteer een cache voor de [Premium-laag](https://azure.microsoft.com/pricing/details/cache/) . |  De prijscategorie bepaalt de grootte, prestaties en functies die beschikbaar zijn voor de cache. Zie het [Azure Cache voor Redis-overzicht](cache-overview.md) voor meer informatie. |
-    | **Aantal replica's** | Dia om het aantal replica's te kiezen. | Standaard is 1. |
+    | **Locatie** | Selecteer een locatie. | Selecteer een [regio](https://azure.microsoft.com/regions/) in de buurt van andere services die gaan gebruikmaken van de cache. |
+    | **Cache type** | Selecteer een cache voor de [Premium-laag](https://azure.microsoft.com/pricing/details/cache/) . |  De prijscategorie bepaalt de grootte, prestaties en functies die beschikbaar zijn voor de cache. Zie het [Azure Cache voor Redis-overzicht](cache-overview.md) voor meer informatie. |
    
-1. Nadat u een Premium-laag cache hebt geselecteerd, wordt u gevraagd of u redis-Clustering wilt inschakelen. **Clustering** als *uitgeschakeld*laten staan. 
+1. Kies op de pagina **Geavanceerd** de optie **aantal replica's**.
    
-    :::image type="content" source="media/cache-how-to-premium-clustering/redis-clustering-disabled.png" alt-text="Configureer het redis-cluster.":::
+    :::image type="content" source="media/cache-how-to-multi-replicas/create-multi-replicas.png" alt-text="Selecteer Azure-cache voor redis.":::
+
+1. Wijzig de standaard instellingen van andere opties. 
 
     > [!NOTE]
     > Ondersteuning voor meerdere replica's werkt momenteel alleen met niet-geclusterde caches.
     >
 
-1. Klik op **Create**. 
-   
-    :::image type="content" source="media/cache-how-to-multi-replicas/create-multi-replicas.png" alt-text="Maak een Azure-cache voor redis.":::
+1. Klik op **Create**.
    
     Het duurt even voordat de cache is gemaakt. U kunt de voortgang bekijken op de **overzichtspagina** van Azure Cache voor Redis. Als u bij **Status** **Wordt uitgevoerd** ziet staan, kunt u de cache gebruiken.
 

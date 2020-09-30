@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/17/2018
-ms.openlocfilehash: 7d57536eee62c415058dd454f3da6ee5f3d04898
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 03fc17c0d071cef4c8de92c6b50d60d961d18aef
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090328"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565256"
 ---
 # <a name="improve-security-for-b2b-messages-by-using-certificates"></a>De beveiliging van B2B-berichten verbeteren met behulp van certificaten
 
@@ -51,11 +51,11 @@ Als u een *openbaar certificaat* wilt gebruiken in Logic apps die B2B-mogelijkhe
    | **Certificaat** | <*certificaat bestand-naam*> | Klik op het mappictogram naast het vak **certificaat** om het certificaat bestand te zoeken en te selecteren dat u wilt uploaden. |
    ||||
 
-   ![Kies toevoegen, geef certificaat details op](media/logic-apps-enterprise-integration-certificates/public-certificate-details.png)
+   ![Scherm afbeelding laat zien waar u toevoegen selecteert om certificaat details op te geven.](media/logic-apps-enterprise-integration-certificates/public-certificate-details.png)
 
    Nadat uw selectie door Azure is gevalideerd, uploadt Azure uw certificaat.
 
-   ![In azure wordt het nieuwe certificaat weer gegeven](media/logic-apps-enterprise-integration-certificates/new-public-certificate.png) 
+   ![Scherm afbeelding die laat zien waar het nieuwe certificaat wordt weer gegeven in Azure.](media/logic-apps-enterprise-integration-certificates/new-public-certificate.png) 
 
 ## <a name="upload-a-private-certificate"></a>Een persoonlijk certificaat uploaden
 

@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: ramkris
-ms.openlocfilehash: d6039ac3bead535fd9c7de64a8e92a0d7a58f390
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 2f7ef27ea5cc19c60e05fddfe4d00cd4ff234bc2
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89319233"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568043"
 ---
-# <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>Azure Synapse Link voor Azure Cosmos DB: Toepassingsscenario’s voor bijna realtime-analyse
+# <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>Azure Synapse Link voor Azure Cosmos DB: Use cases voor bijna realtime analyses
 
 De [Azure Synapse-koppeling](synapse-link.md) voor Azure Cosmos DB is een native HTAP-functie (hybride transactionele) van de Cloud waarmee u bijna realtime analyses kunt uitvoeren via operationele gegevens. Synapse-koppeling maakt een strakkere integratie tussen Azure Cosmos DB en Azure Synapse Analytics.
 
@@ -70,7 +70,7 @@ Hier volgen enkele richt lijnen voor gegevens integratie voor het uitvoeren van 
 
 De detail handelaren moeten vandaag veilige en schaal bare e-commerce-oplossingen bouwen die voldoen aan de vereisten van klanten en bedrijven. Deze e-commerce-oplossingen moeten klanten betrekken via aangepaste producten en aanbiedingen, trans acties snel en veilig verwerken en zich richten op de uitvoering en de klanten service. Azure Cosmos DB samen met de meest recente Synapse-koppeling voor Azure Cosmos DB kunnen detail handelaren in realtime gepersonaliseerde aanbevelingen voor klanten genereren. Ze gebruiken consistentie-instellingen met lage latentie en instel bare voor direct inzicht, zoals wordt weer gegeven in de volgende architectuur:
 
-:::image type="content" source="./media/synapse-link-use-cases/real-time-personalization.png" alt-text="Azure Synapse-koppeling voor Azure Cosmos DB in realtime personalisatie" border="false":::
+:::image type="content" source="./media/synapse-link-use-cases/real-time-personalization.png" alt-text="Azure Synapse-koppeling voor Azure Cosmos DB in Supply Chain Analytics " border="false":::
 
 Synapse-koppeling voor Azure Cosmos DB use-case:
 
@@ -82,7 +82,7 @@ Industriële IOT-innovaties hebben drastische gereduceerde downtime van machines
 
 Hier volgt een architectuur die gebruikmaakt van de HTAP-mogelijkheden in de cloud van Azure Synapse-koppeling voor Azure Cosmos DB in IoT-voorspellende onderhoud:
 
-:::image type="content" source="./media/synapse-link-use-cases/iot-predictive-maintenance.png" alt-text="Azure Synapse-koppeling voor Azure Cosmos DB in IOT-voorspellend onderhoud" border="false" :::
+:::image type="content" source="./media/synapse-link-use-cases/iot-predictive-maintenance.png" alt-text="Azure Synapse-koppeling voor Azure Cosmos DB in Supply Chain Analytics " border="false" :::
 
 Synapse-koppeling voor Azure Cosmos DB use cases:
 
@@ -92,7 +92,7 @@ Synapse-koppeling voor Azure Cosmos DB use cases:
 
 ## <a name="sample-scenario-htap-for-azure-cosmos-db"></a>Voorbeeld scenario: HTAP voor Azure Cosmos DB
 
-Voor een periode van bijna tien jaar is Azure Cosmos DB gebruikt door duizenden klanten voor essentiële toepassingen waarvoor elastische schaling is vereist, kant-en-klare replicatie van meerdere masters voor lage latentie en hoge Beschik baarheid van zowel lees & schrijf bewerkingen in hun transactionele werk belastingen.
+Azure Cosmos DB is gedurende een periode van bijna een jaar gebruikt door duizenden klanten voor essentiële toepassingen waarvoor elastische schaling is vereist, kant-en-klare, multi-regio write-replicatie voor lage latentie en hoge Beschik baarheid van Lees & schrijf bewerkingen in hun transactionele werk belastingen.
  
 De volgende lijst bevat een overzicht van de verschillende werkbelasting patronen die worden ondersteund met operationele gegevens met behulp van Azure Cosmos DB:
 
@@ -104,17 +104,17 @@ De volgende lijst bevat een overzicht van de verschillende werkbelasting patrone
 
 Met de koppeling Azure Synapse kunnen Azure Cosmos DB niet alleen Power transactionele werk belastingen, maar ook bijna realtime analytische werk belastingen uitvoeren op historische operationele gegevens. Dit gebeurt zonder ETL-vereisten en gegarandeerde prestatie isolatie van de transactionele werk belastingen.
 
-De volgende afbeelding toont de werkbelasting patronen met behulp van Azure Cosmos DB: :::image type="content" source="./media/synapse-link-use-cases/synapse-link-workload-patterns.png" alt-text="Azure Synapse-koppeling voor Azure Cosmos DB werkbelasting patronen" border="false":::
+De volgende afbeelding toont de werkbelasting patronen met behulp van Azure Cosmos DB: :::image type="content" source="./media/synapse-link-use-cases/synapse-link-workload-patterns.png" alt-text="Azure Synapse-koppeling voor Azure Cosmos DB in Supply Chain Analytics " border="false":::
 
 Laat ons het voor beeld van een e-commerce-bedrijf CompanyXYZ met wereld wijde bewerkingen in 20 landen/regio's om de voor delen te illustreren van het kiezen van Azure Cosmos DB als de single realtime-data base, zowel transactionele als analytische vereisten van een platform voor voorraad beheer.
 
 * De kern activiteit van CompanyXYZ is afhankelijk van het voorraadbeheer systeem, dus Beschik baarheid & betrouw baarheid zijn kern vereisten voor de pijler. Voor delen van het gebruik van Azure Cosmos DB:
 
-  * Dankzij een diep gaande integratie met Azure-infra structuur en transparante multi-master globale replicatie, biedt Azure Cosmos DB toonaangevende [99,999% hoge Beschik baarheid](high-availability.md) tegen regionale uitval.
+  * In het kader van diep gaande integratie met Azure-infra structuur en transparante multi-regio schrijf bewerkingen, biedt Azure Cosmos DB wereld wijde replicatie een [hoge Beschik baarheid van 99,999%](high-availability.md) voor regionale uitval.
 
 * De partners van de toeleverings keten van CompanyXYZ kunnen zich op verschillende geografische locaties bevinden, maar het kan ook nodig zijn om een enkele weer gave van de product voorraad over de hele wereld te bekijken om de lokale bewerkingen te ondersteunen. Dit omvat de nood zaak om updates te kunnen lezen die zijn gemaakt door andere partners in de toeleverings keten in real-time. En u kunt updates zonder zorgen te maken over conflicten met andere partners bij een hoge door voer. Voor delen van het gebruik van Azure Cosmos DB:
 
-  * Met het unieke multi-master-replicatie protocol en de voor schrijven geoptimaliseerde transactionele opslag, Azure Cosmos DB gegarandeerd minder dan 10 MS latenties voor zowel geïndexeerde Lees bewerkingen als schrijf bewerkingen in het 99e percentiel wereld wijd.
+  * Met zijn unieke multi-regio writes-replicatie protocol en een vergrendelde transactionele opslag ruimte met schrijf optimalisatie, Azure Cosmos DB gegarandeerd minder dan 10 MS-latenties voor zowel geïndexeerde Lees bewerkingen als schrijf bewerkingen in het 99e percentiel wereld wijd.
 
   * Opname door hoge door Voer van zowel batch-& streaming gegevensfeeds met [realtime-indexering](index-policy.md) in transactionele opslag.
 

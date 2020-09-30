@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: djpmsft
 ms.author: daperlov
 ms.date: 08/31/2020
-ms.openlocfilehash: 96fba5c27115dab65f26be80ce03bef35abcdb92
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: a936fbec23a38c5b96c678b38b92eed9346b88bf
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230824"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567533"
 ---
 # <a name="global-parameters-in-azure-data-factory"></a>Globale para meters in Azure Data Factory
 
@@ -25,11 +25,11 @@ Globale para meters zijn constanten over een data factory die kunnen worden gebr
 
 Als u een globale para meter wilt maken, gaat u naar het tabblad *globale para meters* in de sectie *beheren* . Selecteer **Nieuw** om het maken van de kant-NAV te openen.
 
-![Algemene para meters maken](media/author-global-parameters/create-global-parameter-1.png)
+![Scherm opname van de knop Nieuw die u selecteert voor het maken van algemene para meters.](media/author-global-parameters/create-global-parameter-1.png)
 
 Voer in de zijde-NAV een naam in, selecteer een gegevens type en geef de waarde van de para meter op.
 
-![Algemene para meters maken](media/author-global-parameters/create-global-parameter-2.png)
+![Scherm afbeelding die laat zien waar u de naam, het gegevens type en de waarde voor de nieuwe globale para meter toevoegt.](media/author-global-parameters/create-global-parameter-2.png)
 
 Nadat u een globale para meter hebt gemaakt, kunt u deze bewerken door te klikken op de naam van de para meter. Als u meerdere para meters tegelijk wilt wijzigen, selecteert u **Alles bewerken**.
 

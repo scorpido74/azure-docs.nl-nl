@@ -1,14 +1,14 @@
 ---
-title: Fout referentie voor status controles
+title: Fout referentie voor register status controles
 description: Fout codes en mogelijke oplossingen voor problemen die worden gevonden door de opdracht AZ ACR check-Health Diagnostic uit te voeren in Azure Container Registry
 ms.topic: article
 ms.date: 07/02/2019
-ms.openlocfilehash: a23b95ea0eaffc053c47b70107c95d2b1cdc0645
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9136d41097207bfb17776071e958308f36a9aadd
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82978311"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565595"
 ---
 # <a name="health-check-error-reference"></a>Naslag informatie voor status controle fout
 
@@ -90,7 +90,7 @@ Deze fout betekent dat de aanmeldings server van het REGI ster niet met een toeg
 
 Deze fout betekent dat de client geen beveiligde verbinding kan maken met het container register. Deze fout treedt doorgaans op als u een proxy server uitvoert of gebruikt.
 
-*Mogelijke oplossingen*: [hier](https://github.com/Azure/azure-cli/blob/master/doc/use_cli_effectively.md#working-behind-a-proxy)vindt u meer informatie over het werken achter een proxy.
+*Mogelijke oplossingen*: [hier](/cli/azure/use-cli-effectively)vindt u meer informatie over het werken achter een proxy.
 
 ## <a name="login_server_error"></a>LOGIN_SERVER_ERROR
 

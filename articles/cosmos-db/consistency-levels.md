@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: aa09b1ec1e3f73547d211fab0907c9e3388c008b
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 27c1a896d25a0db00ff5f263d949f6657a658e3d
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91445336"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567198"
 ---
 # <a name="what-are-consistency-levels-in-azure-cosmos-db"></a>Wat zijn de consistentie niveaus in Azure Cosmos DB?
 
@@ -54,10 +54,10 @@ Gebonden veroudering bieden de totale wereld wijde volg orde buiten het verouder
 
 Binnen het verouderde venster biedt gebonden veroudering de volgende consistentie garanties:
 
-- Consistentie voor clients in dezelfde regio voor een account met één Master = Strong
-- Consistentie voor clients in verschillende regio's voor een account met één master = consistent voor voegsel
-- Consistentie voor clients die schrijven naar één regio voor een multi-master account = consistent voor voegsel
-- Consistentie voor clients die schrijven naar verschillende regio's voor een multi-master account = mogelijk
+- Consistentie voor clients in dezelfde regio voor een account met één schrijf regio = Strong
+- Consistentie voor clients in verschillende regio's voor een account met één schrijf regio = consistent voor voegsel
+- Consistentie voor clients die schrijven naar één regio voor een account met meerdere schrijf regio's = consistent voor voegsel
+- Consistentie voor clients die schrijven naar verschillende regio's voor een account met meerdere schrijf regio's = uiteindelijk
 
   Gebonden verouderd wordt vaak gekozen door wereld wijd gedistribueerde toepassingen die weinig schrijf latentie verwachten, maar die de totale garantie voor de globale bestelling vereisen. Gebonden verouderd is handig voor toepassingen met groeps samenwerking en delen, aandelen tikker, publiceren/abonneren/wachtrij, enzovoort. In de volgende afbeelding ziet u de gebonden consistentie van veroudering met muzikale notities. Nadat de gegevens zijn geschreven naar de regio vs-West 2, lezen de regio's ' vs Oost 2 ' en ' Australië-oost ' de geschreven waarde op basis van de geconfigureerde maximale vertragings tijd of het maximum aantal bewerkingen:
 
@@ -67,10 +67,10 @@ Binnen het verouderde venster biedt gebonden veroudering de volgende consistenti
 
 Clients buiten de sessie die schrijf bewerkingen uitvoeren, zien de volgende garanties:
 
-- Consistentie voor clients in dezelfde regio voor een account met één master = consistent voor voegsel
-- Consistentie voor clients in verschillende regio's voor een account met één master = consistent voor voegsel
-- Consistentie voor clients die schrijven naar één regio voor een multi-master account = consistent voor voegsel
-- Consistentie voor clients die schrijven naar meerdere regio's voor een multi-master account = mogelijk
+- Consistentie voor clients in dezelfde regio voor een account met één schrijf regio = consistent voor voegsel
+- Consistentie voor clients in verschillende regio's voor een account met één schrijf regio = consistent voor voegsel
+- Consistentie voor clients die schrijven naar één regio voor een account met meerdere schrijf regio's = consistent voor voegsel
+- Consistentie voor clients die schrijven naar meerdere regio's voor een account met meerdere schrijf regio's = uiteindelijk
 
   Sessie consistentie is het meest gebruikte consistentie niveau voor zowel de ene regio als wereld wijd gedistribueerde toepassingen. Het biedt schrijf latentie, Beschik baarheid en lees doorvoer die vergelijkbaar zijn met die van uiteindelijke consistentie, maar biedt ook de consistentie garanties die van toepassing zijn op de behoeften van toepassingen die zijn geschreven om te kunnen worden gebruikt in de context van een gebruiker. In de volgende afbeelding ziet u de consistentie van de sessie met muzikale notities. De "West US 2 Writer" en de "West US 2 Reader" gebruiken dezelfde sessie (sessie A), zodat ze beide dezelfde gegevens op hetzelfde moment lezen. Terwijl de regio ' Australië-oost ' gebruikmaakt van ' sessie B ', worden gegevens later ontvangen, maar in dezelfde volg orde als de schrijf bewerkingen.
 
@@ -82,10 +82,10 @@ Als schrijf bewerkingen zijn uitgevoerd in de volg orde `A, B, C` , ziet een cli
 
 Hieronder vindt u de consistentie garanties voor consistent voor voegsel:
 
-- Consistentie voor clients in dezelfde regio voor een account met één master = consistent voor voegsel
-- Consistentie voor clients in verschillende regio's voor een account met één master = consistent voor voegsel
-- Consistentie voor clients die schrijven naar één regio voor een multi-master account = consistent voor voegsel
-- Consistentie voor clients die schrijven naar meerdere regio's voor een multi-master account = mogelijk
+- Consistentie voor clients in dezelfde regio voor een account met één schrijf regio = consistent voor voegsel
+- Consistentie voor clients in verschillende regio's voor een account met één schrijf regio = consistent voor voegsel
+- Consistentie voor clients die schrijven naar één regio voor een account met meerdere schrijf regio's = consistent voor voegsel
+- Consistentie voor clients die schrijven naar meerdere regio's voor een account met meerdere schrijf regio's = uiteindelijk
 
 In de volgende afbeelding ziet u de consistentie van het consistentie voorvoegsel met muzikale notities. In alle regio's zien de Lees bewerkingen nooit buiten de juiste volg orde:
 

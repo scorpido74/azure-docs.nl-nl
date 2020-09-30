@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: a5f4ff3dade381cf1a68ac5e9e820be153acf5ee
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: e1d1ffbf198a4e4c2574f93919ef98e36a90004a
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89483742"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91566989"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-azure-vms"></a>Veelgestelde vragen over SQL Server op virtuele Azure-machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -56,7 +56,7 @@ In dit artikel vindt u antwoorden op enkele van de meest voorkomende vragen over
 
 1. **Hoe kan ik generaliseer SQL Server op Azure VM en gebruiken om nieuwe virtuele machines te implementeren?**
 
-   U kunt een Windows Server-VM implementeren (zonder SQL Server geïnstalleerd) en het [SQL Sysprep](/sql/database-engine/install-windows/install-sql-server-using-sysprep?view=sql-server-ver15) -proces gebruiken om SQL Server op Azure VM (Windows) met de SQL Server installatie media te generaliseren. Klanten met [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot%3aprimaryr3) kunnen hun installatie media verkrijgen via het [Volume Licensing Center](https://www.microsoft.com/Licensing/servicecenter/default.aspx). Klanten die geen Software Assurance hebben, kunnen het installatie medium van een Azure Marketplace gebruiken SQL Server VM-installatie kopie met de gewenste versie.
+   U kunt een Windows Server-VM implementeren (zonder SQL Server geïnstalleerd) en het [SQL Sysprep](/sql/database-engine/install-windows/install-sql-server-using-sysprep) -proces gebruiken om SQL Server op Azure VM (Windows) met de SQL Server installatie media te generaliseren. Klanten met [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot%3aprimaryr3) kunnen hun installatie media verkrijgen via het [Volume Licensing Center](https://www.microsoft.com/Licensing/servicecenter/default.aspx). Klanten die geen Software Assurance hebben, kunnen het installatie medium van een Azure Marketplace gebruiken SQL Server VM-installatie kopie met de gewenste versie.
 
    U kunt ook een van de SQL Server-installatie kopieën van Azure Marketplace gebruiken om SQL Server op Azure VM te generaliseren. Houd er rekening mee dat u de volgende register sleutel in de bron installatie kopie moet verwijderen voordat u uw eigen installatie kopie maakt. Als u dit niet doet, kan dit ertoe leiden dat de SQL Server Setup Boots trap-map en/of de SQL IaaS-extensie in de status mislukt.
 
@@ -179,13 +179,21 @@ In dit artikel vindt u antwoorden op enkele van de meest voorkomende vragen over
    
    Ja, als het benoemde exemplaar het enige exemplaar op het SQL Server is, en als het oorspronkelijke standaard exemplaar [correct is verwijderd](sql-server-iaas-agent-extension-automate-management.md#install-on-a-vm-with-a-single-named-sql-server-instance). Als er geen standaard exemplaar is en er meerdere benoemde exemplaren op één SQL Server virtuele machine staan, kan de uitbrei ding van de SQL Server IaaS-agent niet worden geïnstalleerd. 
 
-1. **Kan ik SQL Server volledig verwijderen van VM met SQL Server?**
+1. **Kan ik SQL Server en de bijbehorende licentie factuur van een SQL Server VM verwijderen?**
 
-   Ja, maar er worden nog steeds kosten in rekening gebracht voor uw SQL Server virtuele machine, zoals beschreven in [prijs informatie voor SQL Server virtuele machines van Azure](pricing-guidance.md). Als u de SQL Server niet langer nodig hebt, kunt u een nieuwe virtuele machine implementeren en de gegevens en toepassingen migreren naar de nieuwe virtuele machine. Vervolgens kunt u de virtuele SQL Server-machine verwijderen.
+   Ja, maar u moet extra stappen ondernemen om te voor komen dat uw SQL Server-exemplaar in rekening wordt gebracht, zoals beschreven in [prijs informatie](pricing-guidance.md). Als u het SQL Server exemplaar volledig wilt verwijderen, kunt u migreren naar een andere Azure-VM zonder SQL Server vooraf geïnstalleerd op de virtuele machine en de huidige SQL Server virtuele machine te verwijderen. Voer de volgende stappen uit als u de virtuele machine wilt blijven gebruiken, maar SQL Server facturering wilt stoppen: 
+
+   1. Maak, indien nodig, back-ups van al uw gegevens, inclusief systeem databases. 
+   1. SQL Server volledig verwijderen, met inbegrip van de SQL IaaS-extensie (indien aanwezig).
+   1. Installeer de gratis [SQL Express-editie](https://www.microsoft.com/sql-server/sql-server-downloads).
+   1. Meld u aan bij de resource provider van de SQL-VM in de [Lightweight-modus](sql-vm-resource-provider-register.md).
+   1. Beschrijving Schakel de Service Express SQL Server uit door het starten van de service uit te scha kelen. 
 
 1. **Kan ik de Azure-portal gebruiken om meerdere exemplaren op dezelfde VM te beheren?**
+
    Nee. Portal beheer wordt verzorgd door de resource provider van de SQL-VM, die afhankelijk is van de SQL Server IaaS agent-extensie. Als zodanig gelden dezelfde beperkingen voor de resource provider als de extensie. De portal kan slechts één standaard exemplaar of één benoemd exemplaar beheren, zolang de configuratie op de juiste wijze is geconfigureerd. Zie [SQL Server IaaS agent extension](sql-server-iaas-agent-extension-automate-management.md) (Engelstalig) voor meer informatie. 
-   
+
+
 ## <a name="updating-and-patching"></a>Updates en patches
 
 1. **Hoe kan ik overschakelen naar een andere versie of editie van SQL Server in een Azure VM?**

@@ -6,12 +6,12 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/09/2020
-ms.openlocfilehash: b2fc13158d197aaa2e870d1b772386628ee3f9bc
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 34bc8e3775c2334b0cdbb22c8cad8f8d1dd5c732
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91398798"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568614"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Veelgestelde vragen over Azure Synapse Link voor Azure Cosmos DB
 
@@ -25,7 +25,7 @@ In de open bare preview-versie wordt Synapse link ondersteund voor de Azure Cosm
 
 ### <a name="is-synapse-link-supported-for-multi-region-azure-cosmos-accounts"></a>Wordt de Synapse-koppeling ondersteund voor Azure Cosmos-accounts met meerdere regio's?
 
-Ja, voor Azure Cosmos-accounts met meerdere regio's, worden de gegevens die zijn opgeslagen in de analytische opslag ook wereld wijd gedistribueerd. Analytische query's die vanuit Azure Synapse Analytics worden uitgevoerd, kunnen worden bediend vanuit de dichtstbijzijnde lokale regio, ongeacht de ene schrijf regio (Single Master) of meerdere schrijf regio's (ook wel bekend als multi-master).
+Ja, voor Azure Cosmos-accounts met meerdere regio's, worden de gegevens die zijn opgeslagen in de analytische opslag ook wereld wijd gedistribueerd. Analytische query's die vanuit Azure Synapse Analytics worden uitgevoerd, kunnen vanuit de dichtstbijzijnde lokale regio worden geleverd, ongeacht of er één of meer schrijfregio's zijn.
 
 Wanneer u van plan bent een Azure Cosmos-account met meerdere regio's te configureren met ondersteuning voor analytische opslag, is het raadzaam om alle benodigde regio's toe te voegen op het moment dat het account wordt gemaakt.
 
@@ -120,7 +120,7 @@ Alle transactionele updates en verwijderingen worden gekopieerd naar het analyti
 
 ### <a name="what-are-the-ways-to-authenticate-with-the-analytical-store"></a>Wat zijn de manieren om te verifiëren met de analytische opslag?
 
-Verificatie met de analytische opslag is hetzelfde als een transactioneel archief. Voor een bepaalde data base kunt u verifiëren met de sleutel Master of alleen-lezen. U kunt gebruikmaken van gekoppelde services in Synapse Studio om te voor komen dat de Azure Cosmos DB sleutels in de Spark-notebooks worden geplakt. Toegang tot deze gekoppelde service is beschikbaar voor iedereen die toegang heeft tot de werk ruimte.
+Verificatie met de analytische opslag is hetzelfde als een transactioneel archief. Voor een bepaalde data base kunt u verifiëren met de primaire of alleen-lezen sleutel. U kunt gebruikmaken van gekoppelde services in Synapse Studio om te voor komen dat de Azure Cosmos DB sleutels in de Spark-notebooks worden geplakt. Toegang tot deze gekoppelde service is beschikbaar voor iedereen die toegang heeft tot de werk ruimte.
 
 ## <a name="synapse-run-times"></a>Synapse-uitvoerings tijden
 
@@ -150,7 +150,7 @@ Een Azure Cosmos DB container waarvoor een analytische opslag is ingeschakeld, h
 
 Een transactionele opslag container wordt weer gegeven met het volgende pictogram:
 
-:::image type="content" source="./media/synapse-link-frequently-asked-questions/transactional-store-icon.png" alt-text="Azure Cosmos DB container ingeschakeld met transactionele Store-pictogram":::
+:::image type="content" source="./media/synapse-link-frequently-asked-questions/transactional-store-icon.png" alt-text="Azure Cosmos DB container ingeschakeld met analytische archief-pictogram":::
  
 ### <a name="how-do-you-pass-azure-cosmos-db-credentials-from-synapse-studio"></a>Hoe geeft u Azure Cosmos DB referenties door van Synapse Studio?
 

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: a73a2bc82c7f4e77808f751bb8ba24adcacd2e31
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: e2046673cda17c58153ceb12eee31edb83365092
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400380"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565691"
 ---
 # <a name="configure-and-access-slow-query-logs-for-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>Langzame query logboeken voor Azure Database for MySQL-flexibele server configureren en openen met behulp van de Azure Portal
 
@@ -26,20 +26,21 @@ Voor de stappen in dit artikel moet u een [flexibele server](quickstart-create-s
 ## <a name="configure-logging"></a>Logboek registratie configureren
 Configureer de toegang tot het MySQL-logboek voor langzame query's. 
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 1. Selecteer uw flexibele server.
 
 1. Selecteer in de sectie **instellingen** van de zijbalk **server parameters**.
-   <!-- :::image type="content" source="./media/howto-configure-server-logs-in-portal/1-select-server-logs-configure.png" alt-text="Screenshot of Server logs options":::-->
+   :::image type="content" source="./media/how-to-configure-slow-query-logs-portal/server-parameters.png" alt-text="Pagina Server parameters.":::
 
 1. Werk de **slow_query_log** para meter slow_query_log **bij naar aan**.
+   :::image type="content" source="./media/how-to-configure-slow-query-logs-portal/slow-query-log-enable.png" alt-text="Pagina Server parameters.":::
 
 1. Andere benodigde para meters wijzigen (bijvoorbeeld `long_query_time`, `log_slow_admin_statements`). Raadpleeg de [langzame query logs](./concepts-slow-query-logs.md#configure-slow-query-logging) documenten voor meer para meters.  
+   :::image type="content" source="./media/how-to-configure-slow-query-logs-portal/long-query-time.png" alt-text="Pagina Server parameters.":::
 
 1. Selecteer **Opslaan**. 
-
-   <!-- :::image type="content" source="./media/howto-configure-server-logs-in-portal/3-save-discard.png" alt-text="Screenshot of slow query log parameters and save."::: -->
+   :::image type="content" source="./media/how-to-configure-slow-query-logs-portal/save-parameters.png" alt-text="Pagina Server parameters.":::
 
 Op de pagina **server parameters** kunt u teruggaan naar de lijst met Logboeken door de pagina te sluiten.
 
@@ -49,17 +50,17 @@ Langzame query logboeken zijn geïntegreerd met Azure Monitor Diagnostische inst
 
 1. Selecteer in de sectie **bewaking** van de zijbalk **Diagnostische instellingen**  >  **Diagnostische instellingen toevoegen**.
 
-   <!--:::image type="content" source="./media/howto-configure-server-logs-in-portal/add-diagnostic-setting.png" alt-text="Screenshot of Diagnostic settings options":::-->
+   :::image type="content" source="./media/how-to-configure-slow-query-logs-portal/add-diagnostic-setting.png" alt-text="Pagina Server parameters.":::
 
 1. Geef een naam op voor de diagnostische instelling.
 
 1. Geef op welke doelen de langzame query Logboeken (opslag account, Event Hub of Log Analytics-werk ruimte) moeten verzenden.
 
 1. Selecteer **MySqlSlowLogs** als het logboek type.
-    <!--:::image type="content" source="./media/howto-configure-server-logs-in-portal/configure-diagnostic-setting.png" alt-text="Screenshot of Diagnostic settings configuration options":::-->
+    :::image type="content" source="./media/how-to-configure-slow-query-logs-portal/configure-diagnostic-setting.png" alt-text="Pagina Server parameters.":::
 
 1. Nadat u de gegevens sinks hebt geconfigureerd om de langzame query logboeken te pipeen, selecteert u **Opslaan**.
-    <!--:::image type="content" source="./media/howto-configure-server-logs-in-portal/save-diagnostic-setting.png" alt-text="Screenshot of Diagnostic settings configuration options, with Save highlighted":::-->
+    :::image type="content" source="./media/how-to-configure-slow-query-logs-portal/save-diagnostic-setting.png" alt-text="Pagina Server parameters.":::
 
 1. Open de logboeken voor trage query's door ze te verkennen in de gegevens-sinks die u hebt geconfigureerd. Het kan tot tien minuten duren voordat de logboeken worden weer gegeven.
 

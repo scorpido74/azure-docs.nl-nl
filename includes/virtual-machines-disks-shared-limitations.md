@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 09/22/2020
+ms.date: 09/30/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 11901e0b68fed9a6a83287d50896bf2afc51fa37
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9aa8857ab10423f460874870a3663929e8e5a5c5
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91279554"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91566942"
 ---
 Het inschakelen van gedeelde schijven is alleen beschikbaar voor een subset van schijf typen. Op dit moment kunnen alleen Ultra disks en Premium Ssd's gedeelde schijven inschakelen. Op elke beheerde schijf waarvoor gedeelde schijven zijn ingeschakeld, gelden de volgende beperkingen, geordend op schijf type:
 
@@ -30,7 +30,6 @@ Gedeelde Ultra schijven zijn beschikbaar in alle regio's die standaard ondersteu
 
 ### <a name="premium-ssds"></a>Premium-SSD's
 
-- Momenteel alleen ondersteund in [een subset van regio's](#regional-availability).
 - Momenteel beperkt tot Azure Resource Manager-of SDK-ondersteuning. 
 - Kan alleen worden ingeschakeld op gegevens schijven, niet op OS-schijven.
 - **Alleen-lezen** host-caching is niet beschikbaar voor Premium-ssd's met `maxShares>1` .
@@ -42,24 +41,4 @@ Gedeelde Ultra schijven zijn beschikbaar in alle regio's die standaard ondersteu
 
 #### <a name="regional-availability"></a>Regionale beschikbaarheid
 
-Gedeelde Premium-Ssd's worden alleen ondersteund in de volgende regio's:
-
-- VS - oost
-- VS - oost 2
-- VS - west
-- VS - west 2
-- VS - west-centraal
-- South Central US
-- VS - noord-centraal
-- Central US
-- Europa -west
-- Europa - noord
-- Korea - centraal
-- Canada - midden
-- Canada - oost
-- Japan - oost
-- Japan - west
-- Azië - zuidoost
-- Azië - oost
-- VS (overheid) - Virginia
-- VS (overheid) - Arizona
+Gedeelde Premium-Ssd's zijn beschikbaar in alle regio's waar Managed disks beschikbaar zijn.

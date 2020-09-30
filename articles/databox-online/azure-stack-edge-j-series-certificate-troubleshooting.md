@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 08/28/2020
+ms.date: 09/29/2020
 ms.author: alkohli
-ms.openlocfilehash: a0918c6cebd50231a9664811bb467e04d2d2bfd9
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f0f9dfa6e3d6ae02f66ac71f62586953cb21517e
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90891322"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568349"
 ---
 # <a name="troubleshooting-certificate-errors"></a>Certificaat fouten oplossen
 
@@ -30,7 +30,6 @@ De volgende tabel bevat algemene certificaat fouten en gedetailleerde informatie
 |---|---|
 | CertificateManagement_UntrustedCertificate | De certificaat keten van het certificaat met de onderwerpnaam {0} is verbroken. Upload het handtekening keten certificaat voordat u dit certificaat uploadt.|
 | CertificateManagement_DeviceNotRegistered| Het apparaat is niet geactiveerd. U kunt een ondersteunings certificaat pas na activering uploaden.|
-| CertificateManagement_EmptySAN | Het certificaat met de onderwerpnaam heeft {0} geen alternatieve naam voor het onderwerp. Controleer de certificaat eigenschappen en breng een nieuw certificaat in.|
 | CertificateManagement_ExpiredCertificate | Het certificaat van het type {0} is binnenkort verlopen of verlopen. Controleer het verlopen van het certificaat en breng zo nodig een nieuw certificaat in.|
 | CertificateManagement_FormatMismatch | De certificaat indeling wordt niet ondersteund. Controleer de indeling van het certificaat en breng, indien nodig, een nieuw certificaat in.  Verwacht {0} , gevonden {1} . |
 | CertificateManagement_GenericError | Kan de bewerking voor certificaat beheer niet uitvoeren. Voer de bewerking over enkele minuten opnieuw uit. Als het probleem zich blijft voordoen, neemt u contact op met Microsoft Ondersteuning. |
@@ -42,7 +41,6 @@ De volgende tabel bevat algemene certificaat fouten en gedetailleerde informatie
 | CertificateManagement_KeySizeNotSufficient | Het certificaat met de onderwerpnaam {0} heeft onvoldoende sleutel grootte {1} . De minimale sleutel grootte is 4096.|
 | CertificateManagement_MissingClientOid | Het certificaat met de onderwerpnaam heeft {0} geen OID voor client verificatie. Controleer de certificaat eigenschappen en breng indien nodig een nieuw certificaat in.|
 | CertificateManagement_MissingDigitalSignatureKeyUsage | Het certificaat met de onderwerpnaam heeft {0} geen digitale hand tekening in het sleutel gebruik. Controleer de certificaat eigenschappen en breng indien nodig een nieuw certificaat in. |
-| CertificateManagement_MissingEntryInSAN | Het certificaat met de onderwerpnaam heeft {0} geen onderwerpnaam in alternatieve naam voor het onderwerp. Controleer de certificaat eigenschappen en breng een nieuw certificaat in. |
 | CertificateManagement_MissingKeyCertSignKeyUsage | Het certificaat met de onderwerpnaam heeft {0} geen certificaat ondertekening in het sleutel gebruik. Controleer de certificaat eigenschappen en breng indien nodig een nieuw certificaat in.|
 | CertificateManagement_MissingKeyEnciphermentKeyUsage | Het certificaat met de onderwerpnaam heeft {0} geen sleutel codering in het sleutel gebruik. Controleer de certificaat eigenschappen en breng indien nodig een nieuw certificaat in. |
 | CertificateManagement_MissingServerOid | Het certificaat met de onderwerpnaam {0} heeft geen OID voor Server verificatie. Controleer de certificaat eigenschappen en breng indien nodig een nieuw certificaat in.|
@@ -55,6 +53,10 @@ De volgende tabel bevat algemene certificaat fouten en gedetailleerde informatie
 | CertificateManagement_SubjectNamesInvalid | Het certificaat met de onderwerpnaam heeft {0} niet de juiste onderwerpnaam of alternatieve onderwerpnaam voor het {1} certificaat. Controleer het certificaat dat u hebt geüpload en breng zo nodig een nieuw certificaat in. Controleer ook of de DNS-naam overeenkomt met de SAN'S namen.|
 | CertificateManagement_UnreadableCertificate | Het certificaat met het type {0} kan niet worden gelezen. Deze fout treedt op wanneer het certificaat onleesbaar of beschadigd is. Een nieuw certificaat meenemen.|
 | CertificateSubjectNotFound | Kan het certificaat met de onderwerpnaam {0} niet vinden. Een nieuw certificaat meenemen.|
+| CertificateRotationGenericFailure | Het draaien van een of meer certificaten is mislukt. Probeer het over enkele minuten opnieuw. Als het probleem zich blijft voordoen, neemt u contact op met Microsoft Ondersteuning.|
+| CertificateImportFailure | Het certificaat met de vinger afdruk {0} is niet geïmporteerd op het knoop punt {1} . Als het probleem zich blijft voordoen, neemt u contact op met Microsoft Ondersteuning. |
+| CertificateApplyFailure | Het certificaat met de vinger afdruk {0} is niet toegepast op het knoop punt {1} . Als het probleem zich blijft voordoen, neemt u contact op met Microsoft Ondersteuning.|
+| NodeNotReachable | Kan certificaat niet valideren op {0} . Controleer de hardware-en software status van het systeem.|
 
 ## <a name="next-steps"></a>Volgende stappen
 

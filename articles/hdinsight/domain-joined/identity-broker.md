@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 09/23/2020
-ms.openlocfilehash: 8f1e0a6aecc9702552a3dd66acc8dc7eb5bf1d85
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 24f15b8a4d5a5afd3a2794fe686d3acb0036cdd8
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91529922"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565323"
 ---
 # <a name="azure-hdinsight-id-broker-preview"></a>Azure HDInsight ID Broker (preview-versie)
 
@@ -28,16 +28,6 @@ HIB vereenvoudigt complexe verificatie-instellingen in de volgende scenario's:
 
 HIB biedt de verificatie-infra structuur die protocol overgang van OAuth (modern) naar Kerberos (verouderd) mogelijk maakt zonder dat wacht woord-hashes moeten worden gesynchroniseerd met AAD-DS. Deze infra structuur bestaat uit onderdelen die worden uitgevoerd op een Windows Server-VM (ID Broker-knoop punt), samen met cluster gateway-knoop punten.
 
-Het volgende diagram toont de moderne op OAuth gebaseerde verificatie stroom voor alle gebruikers, waaronder federatieve gebruikers, nadat de ID Broker is ingeschakeld:
-
-:::image type="content" source="media/identity-broker/identity-broker-architecture.png" alt-text="Verificatie stroom met ID-Broker":::
-
-In dit diagram moet de client (ofwel browser of apps) eerst het OAuth-token verkrijgen en vervolgens het token aan de gateway in een HTTP-aanvraag presen teren. Als u zich al hebt aangemeld bij andere Azure-Services, zoals de Azure Portal, kunt u zich aanmelden bij uw HDInsight-cluster met een SSO-ervaring (eenmalige aanmelding).
-
-Er zijn nog steeds veel oudere toepassingen die alleen basis authenticatie ondersteunen (bijvoorbeeld gebruikers naam/wacht woord). Voor deze scenario's kunt u HTTP-basis verificatie blijven gebruiken om verbinding te maken met de cluster gateways. In deze configuratie moet u ervoor zorgen dat de netwerk verbinding van de gateway knooppunten naar het Federation-eind punt (ADFS-eind punt) wordt voor een directe regel van het zicht van Gateway knooppunten.
-
-:::image type="content" source="media/identity-broker/basic-authentication.png" alt-text="Verificatie stroom met ID-Broker":::
-
 Gebruik de volgende tabel om de beste verificatie optie te bepalen op basis van de behoeften van uw organisatie:
 
 |Verificatieopties |HDInsight-configuratie | Factoren om rekening mee te houden |
@@ -45,6 +35,18 @@ Gebruik de volgende tabel om de beste verificatie optie te bepalen op basis van 
 | Volledig OAuth | ESP + HIB | 1. de veiligste optie (MFA wordt ondersteund) 2.    Hash-synchronisatie is niet vereist. 3.  Geen SSH/kinit/keytab-toegang voor on-premises accounts, die geen wacht woord-hash in AAD-DS hebben. 4.   Alleen Cloud accounts kunnen nog wel SSH/kinit/keytab. 5. Webgebaseerde toegang tot Ambari via OAuth 6.  Vereist het bijwerken van verouderde apps (JDBC/ODBC, etc.) voor de ondersteuning van OAuth.|
 | OAuth + Basic auth | ESP + HIB | 1. webgebaseerde toegang tot Ambari via OAuth 2. Oudere apps blijven de basis verificatie gebruiken. 3. MFA moet zijn uitgeschakeld voor toegang tot basis verificatie. 4. Hash-synchronisatie is niet vereist. 5. Geen SSH/kinit/keytab-toegang voor on-premises accounts, die geen wacht woord-hash in AAD-DS hebben. 6. Alleen Cloud accounts kunnen nog SSH-kinit. |
 | Volledige basis verificatie | PROTOCOLSPECIFIEKE | 1. Dit is vergelijkbaar met on-premises Setup. 2. Wachtwoord hash-synchronisatie met AAD-DS is vereist. 3. On-premises accounts kunnen SSH-kinit of keytab gebruiken. 4. MFA moet worden uitgeschakeld als de back-upopslag ADLS Gen2 |
+
+Het volgende diagram toont de moderne op OAuth gebaseerde verificatie stroom voor alle gebruikers, waaronder federatieve gebruikers, nadat de ID Broker is ingeschakeld:
+
+:::image type="content" source="media/identity-broker/identity-broker-architecture.png" alt-text="Verificatie stroom met ID-Broker":::
+
+In dit diagram moet de client (ofwel browser of apps) eerst het OAuth-token verkrijgen en vervolgens het token aan de gateway in een HTTP-aanvraag presen teren. Als u zich al hebt aangemeld bij andere Azure-Services, zoals de Azure Portal, kunt u zich aanmelden bij uw HDInsight-cluster met een SSO-ervaring (eenmalige aanmelding).
+
+Er zijn nog steeds veel oudere toepassingen die alleen basis authenticatie ondersteunen (bijvoorbeeld gebruikers naam/wacht woord). Voor deze scenario's kunt u HTTP-basis verificatie blijven gebruiken om verbinding te maken met de cluster gateways. In deze installatie moet u ervoor zorgen dat de netwerk verbinding van de gateway knooppunten naar het Federatie-eind punt (AD FS-eind punt) wordt voor een directe regel voor het controleren van Gateway knooppunten. 
+
+In het volgende diagram ziet u de basis verificatie stroom voor federatieve gebruikers. Ten eerste probeert de gateway de verificatie te volt ooien met behulp van de [ROPC-stroom](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth-ropc) . als er geen wacht woord-hashes zijn gesynchroniseerd met Azure AD, valt deze weer op het detecteren van AD FS-eind punt en de verificatie te volt ooien door het AD FS-eind punt te gebruiken.
+
+:::image type="content" source="media/identity-broker/basic-authentication.png" alt-text="Verificatie stroom met ID-Broker":::
 
 
 ## <a name="enable-hdinsight-id-broker"></a>HDInsight ID Broker inschakelen

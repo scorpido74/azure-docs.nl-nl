@@ -1,6 +1,6 @@
 ---
-title: Beschik bare Azure Files protocollen
-description: Meer informatie over de beschik bare protocollen voordat u een Azure-bestands share maakt.
+title: 'Beschik bare Azure Files protocollen: NFS en SMB'
+description: Meer informatie over de beschik bare protocollen voordat u een Azure-bestands share maakt, waaronder Server Message Block (SMB) en Network File System (NFS).
 author: roygara
 ms.service: storage
 ms.topic: conceptual
@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 8082e694c4282759c9c38560c14eb3659fcd55ec
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 5149024f8621754451520e0ae249ed61f0b07f99
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90708135"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568468"
 ---
 # <a name="azure-file-share-protocols"></a>Protocollen voor Azure-bestands shares
 
@@ -25,8 +25,8 @@ Azure Files biedt twee protocollen voor het koppelen en koppelen van uw Azure-be
 |---------|---------|---------|
 |Toegangs protocollen     |NFS 4,1         |SMB 2,1, SMB 3,0         |
 |Ondersteund besturings systeem     |Linux-kernel versie 4.3 +         |Windows 2008 R2 +, Linux-kernel versie 4.11 +         |
-|Beschikbare lagen     |Premium Storage         |Premium-opslag, standaard opslag, warm, cool         |
-|Replicatie     |LRS         |LRS, ZRS, GRS         |
+|[Beschikbare lagen](storage-files-planning.md#storage-tiers)     |Premium Storage         |Premium-opslag, geoptimaliseerde trans actie, hot, cool         |
+|[Redundantie](storage-files-planning.md#redundancy)     |LRS         |LRS, ZRS, GRS         |
 |Verificatie     |Alleen voor de host gebaseerde verificatie        |Verificatie op basis van identiteit, verificatie op basis van een gebruiker         |
 |Machtigingen     |UNIX-stijl machtigingen         |NTFS-machtigingen         |
 |Bestandssysteem semantiek     |POSIX-compatibel         |Niet POSIX-compatibel         |
@@ -93,4 +93,4 @@ SMB met Azure Files is ideaal voor:
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Een NFS-bestands share maken](storage-files-how-to-create-nfs-shares.md)
-- [Een SMB-bestands share maken](storage-how-to-create-file-share.md)
+- [Een SMB-bestandsshare maken](storage-how-to-create-file-share.md)

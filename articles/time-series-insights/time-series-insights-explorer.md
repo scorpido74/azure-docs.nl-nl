@@ -10,16 +10,19 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1bcf8ec2395dbc94154072c1c4d839bf45125a3e
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 49a763af8d936ec9fd15c59c908ba9015f803930
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89487297"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568635"
 ---
 # <a name="azure-time-series-insights-gen1-explorer"></a>Azure Time Series Insights gen1 Explorer
+
+> [!CAUTION]
+> Dit is een gen1-artikel.
 
 In dit artikel worden de functies en opties beschreven voor de [Web-app](https://insights.timeseries.azure.com/)Azure time series Insights gen1 Explorer. De Azure Time Series Insights Explorer demonstreert de krachtige functies voor gegevens visualisatie die door de service worden geboden en kunnen worden geopend in uw eigen omgeving.
 
@@ -108,7 +111,7 @@ Binnen enkele minuten nadat u uw gebeurtenis bron hebt verbonden met uw Azure Ti
 
 1. Gebruik de **heatmap** om snel unieke of afwijkende gegevens reeksen in een bepaalde query op te sporen. Er kan slechts één zoek term worden gevisualiseerd als een heatmap.
 
-    [![Time Series Insights Explorer heatmap-grafiek ](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png)](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png#lightbox)
+    [Time Series Insights Explorer heatmap grafieken](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png)] (media/Time-Series-Insights-Explorer/tsi-ga-example-heatmap-charting.png # Lightbox)
 
 1. Wanneer u gebeurtenissen bekijkt door te selecteren of met de rechter muisknop te klikken, wordt het deel venster **gebeurtenissen** beschikbaar gesteld. Hier kunt u al uw onbewerkte gebeurtenissen controleren en uw gebeurtenissen exporteren als JSON-of CSV-bestanden. Azure Time Series Insights worden alle onbewerkte gegevens opgeslagen.
 

@@ -1,5 +1,5 @@
 ---
-title: Quota en limieten voor spraak Services
+title: Quota en limieten voor Speech Services
 titleSuffix: Azure Cognitive Services
 description: Naslag informatie, gedetailleerde beschrijving en aanbevolen procedures voor de Quota's en limieten van Azure cognitieve speech Services
 services: cognitive-services
@@ -8,22 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 09/30/2020
 ms.author: alexeyo
-ms.openlocfilehash: 554dd0967979bc2457c3a9c8371152e09535381f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 7e22b772ec35ff9b63c99acd81ad6bb5abe328a0
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690133"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567159"
 ---
-# <a name="speech-services-quotas-and-limits"></a>Quota en limieten voor spraak Services
+# <a name="speech-services-quotas-and-limits"></a>Quota en limieten voor Speech Services
 
 Dit artikel bevat een korte naslag informatie en een **gedetailleerde beschrijving** van de Quota's en limieten voor de Azure cognitieve speech-Services voor alle [prijs categorieën](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/). Het bevat ook enkele aanbevolen procedures om het beperken van aanvragen te voor komen. 
 
 ## <a name="quotas-and-limits-quick-reference"></a>Naslag informatie over quota's en beperkingen
 Overschakelen naar de [quota en limieten voor tekst naar spraak](#text-to-speech-quotas-and-limits-per-speech-resource)
-### <a name="speech-to-text-quotas-and-limits-per-speech-resource"></a>Spraak-naar-tekst-Quota's en limieten per spraak resource
+### <a name="speech-to-text-quotas-and-limits-per-speech-resource"></a>Quota en limieten voor spraak-naar-tekst per spraakresource
 In de onderstaande tabel zijn para meters zonder ' aanpas bare ' rij **niet** aanpasbaar voor alle prijs categorieën.
 
 | Quota | Gratis (F0)<sup>1</sup> | Standard (S0) |
@@ -36,6 +36,7 @@ In de onderstaande tabel zijn para meters zonder ' aanpas bare ' rij **niet** aa
 | **Maximale grootte van invoer-BLOB voor batch-transcriptie** | N.v.t. | 2,5 GB |
 | **Maximale grootte van de BLOB-container voor batch-transcriptie** | N.v.t. | 5 GB |
 | **Maximum aantal blobs per container voor batch-transcriptie** | N.v.t. | 10.000 |
+| **Maximum aantal bestanden per transcriptie-aanvraag voor batch-transcriptie (wanneer meerdere Url's voor inhoud als invoer worden gebruikt)** | N.v.t. | 1000  |
 | **Maximum aantal gelijktijdig uitgevoerde taken voor batch-transcriptie** | N.v.t. | 2000  |
 
 de prijs categorie <sup>1</sup> voor **gratis (F0)** Zie ook maandelijkse vergoedingen op de [pagina met prijzen](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).<br/>
@@ -93,9 +94,9 @@ De bestaande waarde van de para meter voor gelijktijdige aanvraag limiet is **ni
 #### <a name="have-the-required-information-ready"></a>De vereiste gegevens zijn gereed:
 - Voor **basis model**:
   - Spraak Resource-ID
-  - Regio
+  - Region
 - Voor **aangepast model**: 
-  - Regio
+  - Region
   - Aangepaste eind punt-ID
 
 - **Informatie over het ophalen van gegevens (basis model)**:  

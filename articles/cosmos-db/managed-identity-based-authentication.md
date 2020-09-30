@@ -1,5 +1,5 @@
 ---
-title: Een door het systeem toegewezen beheerde identiteit gebruiken om toegang te krijgen tot Azure Cosmos DB gegevens
+title: Een door het systeem toegewezen beheerde identiteit gebruiken voor toegang tot Azure Cosmos DB-gegevens
 description: Meer informatie over het configureren van een door Azure Active Directory het systeem toegewezen beheerde identiteit (beheerde service-identiteit voor Azure AD) voor het verkrijgen van toegang tot sleutels van Azure Cosmos DB.
 author: j-patrick
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 25ec74f3638ce857e4472d73a51e45f24c4df5ec
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 07bfaabf051a016ca9617245ba8628ef6c7e80c0
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997724"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91566615"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>Door het systeem toegewezen beheerde identiteiten gebruiken om toegang te krijgen tot Azure Cosmos DB gegevens
 
@@ -35,19 +35,19 @@ In deze stap wijst u een door het systeem toegewezen beheerde identiteit toe aan
 
 1. Schakel op het tabblad **identiteit** de **status** van de systeem identiteit **in** en selecteer **Opslaan**. Het **identiteits** venster moet er als volgt uitzien:  
 
-   :::image type="content" source="./media/managed-identity-based-authentication/identity-tab-system-managed-on.png" alt-text="Scherm afbeelding met de status van de systeem identiteit ingesteld op aan.":::
+   :::image type="content" source="./media/managed-identity-based-authentication/identity-tab-system-managed-on.png" alt-text="Scherm opname van platform functies en identiteits opties voor de functie-app.":::
 
 ## <a name="grant-access-to-your-azure-cosmos-account"></a>Toegang verlenen tot uw Azure Cosmos-account
 
 In deze stap wijst u een rol toe aan de door het systeem toegewezen beheerde identiteit van de functie-app. Azure Cosmos DB heeft meerdere ingebouwde rollen die u aan de beheerde identiteit kunt toewijzen. Voor deze oplossing gebruikt u de volgende twee rollen:
 
-|Ingebouwde rol  |Beschrijving  |
+|Ingebouwde rol  |Description  |
 |---------|---------|
 |[Inzender voor DocumentDB-accounts](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|Kan Azure Cosmos DB accounts beheren. Het ophalen van sleutels voor lezen/schrijven is toegestaan. |
 |[Rol van Cosmos DB-account lezer](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Kan gegevens van Azure Cosmos DB-account lezen. Kan Lees sleutels ophalen. |
 
 > [!IMPORTANT]
-> Ondersteuning voor op rollen gebaseerd toegangs beheer in Azure Cosmos DB is alleen van toepassing op beheer vlak bewerkingen. Data-vlak bewerkingen worden beveiligd via hoofd sleutels of bron tokens. Zie het artikel [beveiligde toegang tot gegevens](secure-access-to-data.md) voor meer informatie.
+> Ondersteuning voor op rollen gebaseerd toegangs beheer in Azure Cosmos DB is alleen van toepassing op beheer vlak bewerkingen. Gegevensvlak bewerkingen worden beveiligd via primaire sleutels of bron tokens. Zie het artikel [beveiligde toegang tot gegevens](secure-access-to-data.md) voor meer informatie.
 
 > [!TIP] 
 > Wijs, wanneer u rollen toewijst, alleen de benodigde toegang toe. Als uw service alleen gegevens heeft gelezen, wijst u de rol van **Cosmos DB-account lezer** toe aan de beheerde identiteit. Zie het artikel [onderbelichting van geprivilegieerde accounts](../security/fundamentals/identity-management-best-practices.md#lower-exposure-of-privileged-accounts) voor meer informatie over het belang van de minimale toegang tot bevoegdheden.
@@ -58,19 +58,19 @@ In dit scenario leest de functie-app de Tempe ratuur van het aquarium en schrijf
 
 1. Meld u aan bij de Azure Portal en ga naar uw Azure Cosmos DB-account. Open het deel venster **toegangs beheer (IAM)** en vervolgens het tabblad **roltoewijzingen** :
 
-   :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab.png" alt-text="Scherm opname van het deel venster toegangs beheer en het tabblad roltoewijzingen.":::
+   :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab.png" alt-text="Scherm opname van platform functies en identiteits opties voor de functie-app.":::
 
 1. Selecteer **+ Toevoegen** > **Roltoewijzing toevoegen**.
 
 1. Het deel venster **roltoewijzing toevoegen** wordt aan de rechter kant geopend:
 
-   :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane.png" alt-text="Scherm opname van het deel venster toewijzing van rol toevoegen.":::
+   :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane.png" alt-text="Scherm opname van platform functies en identiteits opties voor de functie-app.":::
 
    * **Rol**: Selecteer **Inzender** voor het DocumentDB-account
    * **Toegang toewijzen aan**: Selecteer onder de Subsectie door het **systeem toegewezen beheerde identiteit selecteren** de optie **functie-app**.
    * **Selecteren**: het deel venster wordt gevuld met alle functie-apps in uw abonnement die een **beheerde systeem identiteit**hebben. In dit geval selecteert u de functie-app **FishTankTemperatureService** : 
 
-      :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane-filled.png" alt-text="Scherm opname waarin het deel venster roltoewijzing toevoegen is ingevuld met voor beelden.":::
+      :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane-filled.png" alt-text="Scherm opname van platform functies en identiteits opties voor de functie-app.":::
 
 1. Nadat u de functie-app hebt geselecteerd, selecteert u **Opslaan**.
 

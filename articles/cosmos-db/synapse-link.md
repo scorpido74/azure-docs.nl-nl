@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 89282b0cc07f210e7bbf80503c9dbef5f97b13a2
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 0e02f0bf1bb9646a644a40279a8bae930de34c0b
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91397331"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567992"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>Wat is een Azure Synapse-koppeling voor Azure Cosmos DB (preview)?
 
@@ -56,7 +56,7 @@ Met de koppeling Azure Synapse kunt u een door de kosten geoptimaliseerde, volle
 Azure Cosmos DB Analytical Store volgt een prijs model op basis van verbruik, dat is gebaseerd op gegevens opslag en analytische Lees-en schrijf bewerkingen en query's die worden uitgevoerd. U hoeft geen door Voer in te richten, zoals u dat wel doet voor de transactionele werk belastingen. Als u toegang hebt tot uw gegevens met zeer elastische Compute-engines van Azure Synapse Analytics, worden de totale kosten voor het uitvoeren van opslag en de berekening zeer efficiënt berekend.
 
 
-### <a name="analytics-for-locally-available-globally-distributed-multi-master-data"></a>Analyse voor lokaal beschik bare, wereld wijd gedistribueerde, multi master-gegevens
+### <a name="analytics-for-locally-available-globally-distributed-multi-region-writes"></a>Analyse voor lokaal beschik bare, wereld wijd gedistribueerde, multi-regio schrijf bewerkingen
 
 U kunt analytische query's effectief uitvoeren met de dichtstbijzijnde regionale kopie van de gegevens in Azure Cosmos DB. Azure Cosmos DB voorziet in geavanceerde mogelijkheden voor het uitvoeren van de wereld wijd gedistribueerde analytische werk belastingen samen met transactionele werk belastingen op een actief/actief manier.
 

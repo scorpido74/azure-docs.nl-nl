@@ -4,18 +4,19 @@ description: In dit artikel wordt beschreven hoe u een schema register maakt in 
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 691279ea4fbadf5a905de4bab0304a1ad526146d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b977ed8d6b4444daa1e125c61a8d38b2a6512e44
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91344738"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91566360"
 ---
 # <a name="create-an-azure-event-hubs-schema-registry-preview"></a>Een Azure Event Hubs-schema register maken (preview)
 In dit artikel wordt beschreven hoe u een schema groep maakt met schema's in een schema register dat wordt gehost door Azure Event Hubs. Zie [Azure schema Registry in Event hubs](schema-registry-overview.md)voor een overzicht van de schema register functie van Azure Event hubs.
 
 > [!NOTE]
-> - De **schema register** functie is momenteel in **Preview** en is alleen beschikbaar in de lagen **Standard** en **dedicated** , niet in de **Basic** -laag.
+> - De **schema register** functie is momenteel beschikbaar als **Preview-versie**en wordt niet aanbevolen voor productie werkbelastingen.
+> - De functie is alleen beschikbaar in de lagen **Standard** en **dedicated** , niet in de laag **Basic** .
 > - Deze preview is momenteel alleen beschikbaar in de regio **West-Centraal VS** . 
 
 ## <a name="prerequisites"></a>Vereisten
@@ -33,10 +34,10 @@ In dit artikel wordt beschreven hoe u een schema groep maakt met schema's in een
     1. Selecteer vervolgens **maken** om de schema groep te maken. 
 1. Selecteer de naam van de **schema groep** in de lijst met schema groepen.
 
-    :::image type="content" source="./media/create-schema-registry/select-schema-group.png" alt-text="Selecteer uw schema groep in de lijst":::    
+    :::image type="content" source="./media/create-schema-registry/select-schema-group.png" alt-text="Schema register pagina":::    
 1. U ziet de pagina **schema groep** voor de groep.
 
-    :::image type="content" source="./media/create-schema-registry/schema-group-page.png" alt-text="Pagina schema groep":::
+    :::image type="content" source="./media/create-schema-registry/schema-group-page.png" alt-text="Schema register pagina":::
     
 
 ## <a name="add-a-schema-to-the-schema-group"></a>Een schema toevoegen aan de schema groep
@@ -67,27 +68,27 @@ In deze sectie voegt u een schema aan de schema groep toe met behulp van de Azur
     1. Selecteer **Maken**. 
 1. Selecteer het **schema** in de lijst met schema's. 
 
-    :::image type="content" source="./media/create-schema-registry/select-schema.png" alt-text="Schema selecteren":::
+    :::image type="content" source="./media/create-schema-registry/select-schema.png" alt-text="Schema register pagina":::
 1. U ziet de **schema-overzichts** pagina voor het schema. 
 
-    :::image type="content" source="./media/create-schema-registry/schema-overview-page.png" alt-text="Pagina schema overzicht":::    
+    :::image type="content" source="./media/create-schema-registry/schema-overview-page.png" alt-text="Schema register pagina":::    
 1. Als er meerdere versies van een schema zijn, ziet u deze in de vervolg keuzelijst **versies** . Selecteer een versie om over te scha kelen naar dat versie schema. 
 
 ## <a name="create-a-new-version-of-schema"></a>Een nieuwe versie van schema maken
 
 1. Werk het schema bij in het tekstvak en selecteer **valideren**. In het volgende voor beeld is een nieuw veld `id` toegevoegd aan het schema. 
 
-    :::image type="content" source="./media/create-schema-registry/update-schema.png" alt-text="Schema bijwerken":::    
+    :::image type="content" source="./media/create-schema-registry/update-schema.png" alt-text="Schema register pagina":::    
     
 1. Controleer de validatie status en wijzigingen en selecteer **Opslaan**. 
 
-    :::image type="content" source="./media/create-schema-registry/compare-save-schema.png" alt-text="De validatie status, wijzigingen controleren en opslaan":::     
+    :::image type="content" source="./media/create-schema-registry/compare-save-schema.png" alt-text="Schema register pagina":::     
 1. U ziet dat `2` is geselecteerd voor de **versie** op de **overzichts** pagina van het schema. 
 
-    :::image type="content" source="./media/create-schema-registry/new-version.png" alt-text="Nieuwe versie van schema":::    
+    :::image type="content" source="./media/create-schema-registry/new-version.png" alt-text="Schema register pagina":::    
 1. Selecteren `1` om de versie 1 van het schema weer te geven. 
 
-    :::image type="content" source="./media/create-schema-registry/select-version.png" alt-text="Versie selecteren":::    
+    :::image type="content" source="./media/create-schema-registry/select-version.png" alt-text="Schema register pagina":::    
 
 
 ## <a name="next-steps"></a>Volgende stappen

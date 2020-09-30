@@ -6,12 +6,12 @@ ms.author: sudbalas
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 08/25/2020
-ms.openlocfilehash: bfcaf9d4b1d03457f2e4cddd2e0eaf9d9d58eee2
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: f77d197c30d00083b280a97079fe03146fcfeb82
+ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869181"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90061798"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>Zelfstudie: De Azure Key Vault-provider voor het stuurprogramma voor het Secrets Store CSI-stuurprogramma configureren en uitvoeren op Kubernetes
 
@@ -70,7 +70,7 @@ Voltooi de secties 'Een resource groep maken', 'AKS-cluster maken' en 'Verbindin
     ```azurecli
     kubectl version
     ```
-1. Zorg ervoor dat uw Kubernetes-versie 1.16.0 of hoger is. Met de volgende opdracht worden zowel het Kubernetes-cluster als de knooppuntpool bijgewerkt. Het uitvoeren van de opdracht kan een paar minuten duren. In dit voorbeeld is de resourcegroep *contosoResourceGroup* en is het Kubernetes-cluster *contosoAKSCluster*.
+1. Zorg ervoor dat uw Kubernetes-versie 1.16.0 of hoger is. Zorg er voor Windows-clusters voor dat uw Kubernetes-versie 1.18.0 of hoger is. Met de volgende opdracht worden zowel het Kubernetes-cluster als de knooppuntpool bijgewerkt. Het uitvoeren van de opdracht kan een paar minuten duren. In dit voorbeeld is de resourcegroep *contosoResourceGroup* en is het Kubernetes-cluster *contosoAKSCluster*.
     ```azurecli
     az aks upgrade --kubernetes-version 1.16.9 --name contosoAKSCluster --resource-group contosoResourceGroup
     ```
@@ -110,18 +110,20 @@ Als u uw eigen sleutel kluis wilt maken en uw geheimen wilt instellen, volgt u d
 
 ## <a name="create-your-own-secretproviderclass-object"></a>Uw eigen SecretProviderClass-object maken
 
-[Gebruik deze sjabloon](https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/test/bats/tests/azure_v1alpha1_secretproviderclass.yaml) om uw eigen aangepast SecretProviderClass-object te maken met providerspecifieke parameters voor het stuurprogramma Secrets Store CSI. Dit object biedt identiteit- en toegangsbeheer voor uw sleutelkluis.
+[Gebruik deze sjabloon](https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/examples/v1alpha1_secretproviderclass_service_principal.yaml) om uw eigen aangepast SecretProviderClass-object te maken met providerspecifieke parameters voor het stuurprogramma Secrets Store CSI. Dit object biedt identiteit- en toegangsbeheer voor uw sleutelkluis.
 
 Vul in het SecretProviderClass YAML-voorbeeldbestand de ontbrekende parameters in. De volgende parameters zijn vereist:
 
-* **userAssignedIdentityID**: De client-id van de service-principal
+* **userAssignedIdentityID**: # [VEREIST] Als u gebruikmaakt van een service-principal, gebruikt u de client-id om op te geven welke door de gebruiker toegewezen beheerde identiteit moet worden gebruikt. Als u een door de gebruiker toegewezen identiteit gebruikt als de beheerde identiteit van de VM, geeft u de client-id van de identiteit op. Als de waarde leeg is, wordt standaard de door het systeem toegewezen identiteit op de VM gebruikt 
 * **keyvaultName**: De naam van de sleutelkluis
 * **objects**: De container voor alle geheime inhoud die u wilt koppelen
     * **objectName**: De naam van de geheime inhoud
     * **objectType**: Het objecttype (geheim, sleutel, certificaat)
-* **resourceGroup**: De naam van de resourcegroep
-* **subscriptionId**: De abonnements-id van de sleutelkluis
+* **resourceGroup**: De naam van de resourcegroep # [VEREIST voor versie < 0.0.4] de resourcegroep van de sleutelkluis
+* **subscriptionId**: De abonnements-id van uw sleutelkluis # [VEREIST voor versie < 0.0.4] de abonnements-id van de hoofdkluis
 * **tenantID**: De tenant-id of map-id van de sleutelkluis
+
+Documentatie over alle vereiste velden is hier beschikbaar: [Koppeling](https://github.com/Azure/secrets-store-csi-driver-provider-azure#create-a-new-azure-key-vault-resource-or-use-an-existing-one)
 
 De bijgewerkte sjabloon wordt weergegeven in de volgende code. Download deze als een YAML-bestand en vul de vereiste velden in. In dit voorbeeld is de sleutelkluis **contosoKeyVault5**. De kluis heeft twee geheimen: **secret1** en **secret2**.
 
@@ -210,6 +212,11 @@ Als u beheerde identiteiten gebruikt, wijst u specifieke rollen toe aan het AKS-
 1. Als u een door de gebruiker toegewezen beheerde identiteit wilt maken, vermelden of lezen, moet aan uw AKS-cluster de rol [Operator beheerde identiteit](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator) worden toegewezen. Zorg ervoor dat de **$clientId** de client-id van het Kubernetes-cluster is. Het bereik valt onder uw Azure-abonnementsservice, met name de knooppuntresourcegroep die is gemaakt toen het AKS-cluster werd gemaakt. Met dit bereik worden alleen resources in deze groep beïnvloed door de rollen die hieronder worden toegewezen. 
 
     ```azurecli
+    RESOURCE_GROUP=contosoResourceGroup
+    az role assignment create --role "Managed Identity Operator" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$RESOURCE_GROUP
+
+    az role assignment create --role "Virtual Machine Contributor" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$RESOURCE_GROUP
+    
     az role assignment create --role "Managed Identity Operator" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP
     
     az role assignment create --role "Virtual Machine Contributor" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP
@@ -304,6 +311,8 @@ spec:
         readOnly: true
         volumeAttributes:
           secretProviderClass: azure-kvname
+          nodePublishSecretRef:
+              name: secrets-store-creds 
 ```
 
 Voer de volgende opdracht uit om de pod te implementeren:
