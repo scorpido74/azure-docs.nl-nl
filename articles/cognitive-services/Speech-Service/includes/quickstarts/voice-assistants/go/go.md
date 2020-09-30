@@ -4,19 +4,19 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/25/2020
 ms.author: trrwilson
-ms.openlocfilehash: ee6b6c29c89c39c72144371af8268760da843170
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 59e862fe04e7bf715e6e44c783f2cf9c0ecbc7c3
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87375490"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377118"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
 Voordat u aan de slag gaat:
 
 > [!div class="checklist"]
-> * [Een resource voor de Azure Speech-service maken](../../../../get-started.md)
+> * [Een resource voor de Azure Speech-service maken](../../../../overview.md#try-the-speech-service-for-free)
 > * [Uw ontwikkelomgeving instellen en een leeg project maken](../../../../quickstarts/setup-platform.md)
 > * Een bot maken die verbonden is met het [Direct Line Speech-kanaal](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
 > * Ervoor zorgen dat u toegang tot een microfoon hebt voor het vastleggen van audio
@@ -113,7 +113,7 @@ Vervang de waarden `YOUR_SUBSCRIPTION_KEY` en `YOUR_BOT_REGION` door de werkelij
 ## <a name="code-explanation"></a>Uitleg bij de code
 De sleutel en de regio voor het Spraak-abonnement zijn vereist voor het maken van een spraakconfiguratieobject. Het configuratieobject is vereist voor het instantiëren van een spraakherkenningsobject.
 
-Het Recognizer-exemplaar biedt meerdere manieren om spraak te herkennen. In dit voorbeeld wordt spraak continu herkend. Door deze functionaliteit weet de Spraakservice dat u veel frasen ter herkenning verzendt, en dat het herkennen van spraak moet stoppen wanneer het programma wordt beëindigd. Wanneer er resultaten worden verkregen, worden deze door de code naar de console geschreven.
+Het Recognizer-exemplaar biedt meerdere manieren om spraak te herkennen. In dit voorbeeld wordt spraak continu herkend. Door deze functionaliteit weet de Spraak-service dat u veel frasen ter herkenning verzendt, en dat het herkennen van spraak moet stoppen wanneer het programma wordt beëindigd. Wanneer er resultaten worden verkregen, worden deze door de code naar de console geschreven.
 
 ## <a name="build-and-run"></a>Bouwen en uitvoeren
 U bent nu klaar om uw app te bouwen en uw aangepaste spraakassistent met behulp van de Spraakservice te testen.

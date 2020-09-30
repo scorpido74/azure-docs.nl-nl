@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: ralphe
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dff5c7c7018945bb93ce492ee3205f3567dff1d7
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: a8aa2fc0b5ba76a92a0aa0234635dadee5a00f28
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88925884"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377397"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
 Voordat u aan de slag gaat, moet u het volgende doen:
 
 > [!div class="checklist"]
-> * [Een resource voor de Azure-spraakservice maken](../../../../get-started.md)
+> * [Een resource voor de Azure-spraakservice maken](../../../../overview.md#try-the-speech-service-for-free)
 > * [Uw ontwikkelomgeving instellen en een leeg project maken](../../../../quickstarts/setup-platform.md?tabs=dotnet&pivots=programming-language-csharp)
 
 ## <a name="add-sample-code"></a>Voorbeeldcode toevoegen

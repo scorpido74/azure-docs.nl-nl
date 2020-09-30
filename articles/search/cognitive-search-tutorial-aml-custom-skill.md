@@ -7,13 +7,13 @@ author: tchristiani
 ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 06/10/2020
-ms.openlocfilehash: a4e686fe7adcc7e990a26484bc5850de977e862a
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/25/2020
+ms.openlocfilehash: 3ecef629e38e2823bea101af47899f9b7d6845f0
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88924585"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399836"
 ---
 # <a name="tutorial-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>Zelfstudie: Een aangepaste vaardigheid ontwerpen en implementeren met Azure Machine Learning 
 
@@ -82,8 +82,7 @@ Sectie 4 in het notebook heeft vier cellen waarmee de vaardighedenset en indexee
 
 Ga in de portal naar ‘Vaardighedenset’ en selecteer de koppeling ‘Definitie van vaardighedenset (JSON)’. De portal toont de JSON van uw vaardighedenset die in de eerste cellen van het notebook is gemaakt. Rechts daarvan staat een vervolgkeuzemenu waarin u het sjabloon voor definitie van vaardighedenset kunt selecteren. Selecteer het sjabloon ‘Azure Machine Learning (AML)’. Geef de naam op van de Azure ML-werkruimte en het eindpunt voor het model dat in de deductiecluster wordt geïmplementeerd. Het sjabloon wordt bijgewerkt met de eindpunt-URI en -sleutel.
 
-> [!div class="mx-imgBorder"]
-> ![Sjabloon voor definitie van vaardighedenset](media/cognitive-search-aml-skill/portal-aml-skillset-definition.png)
+> :::image type="content" source="media/cognitive-search-aml-skill/portal-aml-skillset-definition.png" alt-text="Sjabloon voor definitie van vaardighedenset":::
 
 Kopieer het vaardighedensetsjabloon uit het venster en plak het in de vaardighedensetdefinitie aan de linkerkant. Bewerk het sjabloon om de ontbrekende waarden op te geven voor:
 

@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 06/23/2020
+ms.date: 09/25/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9c8647e28701316ecd7305e206918c53281deb6b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e04c7da40719f77ca478f2ce577688af773f523d
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004252"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399224"
 ---
 # <a name="tutorial-index-azure-sql-data-using-the-net-sdk"></a>Zelfstudie: Azure SQL-gegevens indexeren met de .NET SDK
 
@@ -57,7 +57,7 @@ Als u een bestaande Azure SQL Database-resource hebt, kunt u de tabel hotels er 
 
 1. **Een SQL Database** vinden of maken. U kunt de standaardinstellingen en de laagste prijscategorie gebruiken. Eén voordeel van het maken van een server is dat u de gebruikersnaam en het wachtwoord van een beheerder kunt opgeven die in een latere stap nodig zijn om tabellen te maken en te laden.
 
-   ![De pagina Nieuwe database](./media/search-indexer-tutorial/indexer-new-sqldb.png "De pagina Nieuwe database")
+   :::image type="content" source="media/search-indexer-tutorial/indexer-new-sqldb.png" alt-text="De pagina Nieuwe database" border="false":::
 
 1. Klik op **Beoordelen + maken** om de nieuwe server en database te implementeren. Wacht tot de server en database zijn geïmplementeerd.
 
@@ -69,7 +69,7 @@ Als u een bestaande Azure SQL Database-resource hebt, kunt u de tabel hotels er 
 
 1. Selecteer het bestand en klik op **Openen**. Het script moet er ongeveer uitzien als in de volgende schermafbeelding:
 
-   ![SQL-script](./media/search-indexer-tutorial/sql-script.png "SQL-script")
+   :::image type="content" source="media/search-indexer-tutorial/sql-script.png" alt-text="De pagina Nieuwe database" border="false":::
 
 1. Klik op **Uitvoeren** om de query uit te voeren. In het resultatenvenster zou u het bericht moeten zien dat de query is gelukt voor 3 rijen.
 
@@ -99,7 +99,7 @@ Voor API-aanroepen is de service-URL en een toegangssleutel vereist. Een zoekser
 
 1. Haal onder **Instellingen** > **Sleutels** een beheersleutel op voor volledige rechten op de service. Er zijn twee uitwisselbare beheersleutels die voor bedrijfscontinuïteit worden verstrekt voor het geval u een moet overschakelen. U kunt de primaire of secundaire sleutel gebruiken op aanvragen voor het toevoegen, wijzigen en verwijderen van objecten.
 
-   ![Een HTTP-eindpunt en toegangssleutel ophalen](media/search-get-started-postman/get-url-key.png "Een HTTP-eindpunt en toegangssleutel ophalen")
+   :::image type="content" source="media/search-get-started-postman/get-url-key.png" alt-text="De pagina Nieuwe database" border="false":::
 
 ## <a name="2---set-up-your-environment"></a>2 - De omgeving instellen
 
@@ -201,7 +201,7 @@ Een indexeerfunctie-object is platform-neutraal, waarbij de configuratie, planni
 
 Druk op F5 om de oplossing te bouwen en uit te voeren. Het programma wordt uitgevoerd in de foutopsporingsmodus. De status van elke bewerking wordt weergegeven in een consolevenster.
 
-   ![Console-uitvoer](./media/search-indexer-tutorial/console-output.png "Console-uitvoer")
+   :::image type="content" source="media/search-indexer-tutorial/console-output.png" alt-text="De pagina Nieuwe database" border="false":::
 
 Uw code wordt lokaal uitgevoerd in Visual Studio en maakt verbinding met uw zoekservice in Azure, die op zijn beurt verbinding maakt met Azure SQL Database en de gegevensset op te halen. Met dit aantal bewerkingen zijn er verschillende mogelijke foutpunten. Als er een fout optreedt, controleert u eerst de volgende voorwaarden:
 
@@ -217,7 +217,7 @@ Gebruik de Azure-portal om het maken van objecten te controleren en gebruik verv
 
 1. [Meld u aan bij de Azure-portal](https://portal.azure.com/) en open op de pagina **Overzicht** van de zoekservice de lijst om te controleren of het object is gemaakt. **Indexen**, **Indexeerfuncties** en **Gegevensbronnen** hebben respectievelijk ‘hotels’, ‘azure-sql-indexer’, and ‘azure-sql’.
 
-   ![Tegels met indexeerfuncties en gegevensbronnen](./media/search-indexer-tutorial/tiles-portal.png)
+   :::image type="content" source="media/search-indexer-tutorial/tiles-portal.png" alt-text="De pagina Nieuwe database" border="false":::
 
 1. Selecteer de index hotels. **Search Explorer** is het eerste tabblad op de pagina hotels. 
 
@@ -225,7 +225,7 @@ Gebruik de Azure-portal om het maken van objecten te controleren en gebruik verv
 
    De drie vermeldingen in de index worden geretourneerd als JSON-documenten. Search Explorer retourneert documenten in JSON, zodat u de volledige structuur kunt bekijken.
 
-   ![Een query op uitvoeren op een index](./media/search-indexer-tutorial/portal-search.png "Een query op uitvoeren op een index")
+   :::image type="content" source="media/search-indexer-tutorial/portal-search.png" alt-text="De pagina Nieuwe database" border="false":::
    
 1. Geef vervolgens een zoekreeks op: `search=river&$count=true`. 
 

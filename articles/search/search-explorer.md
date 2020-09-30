@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/07/2020
-ms.openlocfilehash: 8f004ff8118829ebf2d245a136cf22cdde23accc
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/25/2020
+ms.openlocfilehash: adcd07ad370ad9f1301caa41c494a33958743dd8
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88929785"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398405"
 ---
 # <a name="quickstart-use-search-explorer-to-run-queries-in-the-portal"></a>Quickstart: Gebruik Search Explorer om query's uit te voeren in de portal
 
@@ -37,11 +37,11 @@ Voordat u begint, moet u het volgende hebben:
 
 1. Open Search Explorer vanuit de opdrachtbalk:
 
-   ![Search Explorer-opdracht in portal](./media/search-explorer/search-explorer-cmd2.png "Search Explorer-opdracht in portal")
+   :::image type="content" source="media/search-explorer/search-explorer-cmd2.png" alt-text="Search Explorer-opdracht in portal" border="false":::
 
     Of gebruik het ingesloten tabblad **Search Explorer** in een geopende index:
 
-   ![Het tabblad Search Explorer](./media/search-explorer/search-explorer-tab.png "Het tabblad Search Explorer")
+   :::image type="content" source="media/search-explorer/search-explorer-tab.png" alt-text="Search Explorer-opdracht in portal" border="false":::
 
 ## <a name="unspecified-query"></a>Query zonder specificaties
 
@@ -55,7 +55,7 @@ De syntaxis voor een lege zoekopdracht is `*` of `search=*`.
 
    **Results**
    
-   ![Voorbeeld van een lege query](./media/search-explorer/search-explorer-example-empty.png "Voorbeeld van niet-gekwalificeerde of lege query")
+   :::image type="content" source="media/search-explorer/search-explorer-example-empty.png" alt-text="Search Explorer-opdracht in portal" border="false":::
 
 ## <a name="free-text-search"></a>Vrij zoeken in tekst
 
@@ -71,7 +71,7 @@ Wanneer u zoekcriteria opgeeft, zoals zoektermen of expressies, is er sprake van
 
    U kunt Ctrl-F gebruiken om in de resultaten te zoeken naar specifieke termen.
 
-   ![Voorbeeld van vrij zoeken in tekst](./media/search-explorer/search-explorer-example-freetext.png "Voorbeeld van vrij zoeken in tekst")
+   :::image type="content" source="media/search-explorer/search-explorer-example-freetext.png" alt-text="Search Explorer-opdracht in portal" border="false":::
 
 ## <a name="count-of-matching-documents"></a>Aantal overeenkomende documenten 
 
@@ -83,7 +83,7 @@ Voeg **$count=true** toe om het aantal matches dat in een index is gevonden op t
 
    **Results**
 
-   ![Voorbeeld van aantal documenten](./media/search-explorer/search-explorer-example-count.png "Aantal overeenkomende documenten in index")
+   :::image type="content" source="media/search-explorer/search-explorer-example-count.png" alt-text="Search Explorer-opdracht in portal" border="false":::
 
 ## <a name="limit-fields-in-search-results"></a>De velden in de zoekresultaten beperken
 
@@ -95,7 +95,7 @@ Voeg [ **$select**](search-query-odata-select.md) toe om de resultaten te beperk
 
    **Results**
 
-   ![Voorbeeld van het beperken van velden](./media/search-explorer/search-explorer-example-selectfield.png "De velden in de zoekresultaten beperken")
+   :::image type="content" source="media/search-explorer/search-explorer-example-selectfield.png" alt-text="Search Explorer-opdracht in portal" border="false":::
 
 ## <a name="return-next-batch-of-results"></a>Volgende batch met resultaten retourneren
 
@@ -107,7 +107,7 @@ Azure Cognitive Search retourneert de beste 50 matches op basis van de zoekrangs
 
    **Results**
 
-   ![Zoekresultaten in batch verwerken](./media/search-explorer/search-explorer-example-topskip.png "Volgende batch met zoekresultaten retourneren")
+   :::image type="content" source="media/search-explorer/search-explorer-example-topskip.png" alt-text="Search Explorer-opdracht in portal" border="false":::
 
 ## <a name="filter-expressions-greater-than-less-than-equal-to"></a>Filterexpressies (groter dan, kleiner dan, gelijk aan)
 
@@ -119,7 +119,7 @@ Gebruik de parameter [ **$filter**](search-query-odata-filter.md) wanneer u prec
    
    **Results**
 
-   ![Filterexpressie](./media/search-explorer/search-explorer-example-filter.png "Filteren op criteria")
+   :::image type="content" source="media/search-explorer/search-explorer-example-filter.png" alt-text="Search Explorer-opdracht in portal" border="false":::
 
 ## <a name="order-by-expressions"></a>Orderby-expressies
 
@@ -131,7 +131,7 @@ Voeg [ **$orderby**](search-query-odata-orderby.md) toe om resultaten niet allee
    
    **Results**
 
-   ![Orderby-expressie](./media/search-explorer/search-explorer-example-ordery.png "De sorteervolgorde wijzigen")
+   :::image type="content" source="media/search-explorer/search-explorer-example-ordery.png" alt-text="Search Explorer-opdracht in portal" border="false":::
 
 De expressie **$filter** en de expressie **$orderby** zijn beide een OData-constructie. Zie [OData-syntaxis filteren](/rest/api/searchservice/odata-expression-syntax-for-azure-search) voor meer informatie.
 

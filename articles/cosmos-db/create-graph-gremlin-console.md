@@ -1,18 +1,18 @@
 ---
 title: 'Query uitvoeren met Azure Cosmos DB Gremlin-API met behulp van TinkerPop Gremlin-console: Zelfstudie'
 description: Een Azure Cosmos DB-snelstartgids voor het maken van hoekpunten, randen en query's met behulp van de Azure Cosmos DB Gremlin-API.
-author: luisbosquez
+author: jasonwhowell
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: quickstart
 ms.date: 07/10/2020
-ms.author: lbosq
-ms.openlocfilehash: e1ce632a04269704b498a69e1a0dd4fe72e00c87
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.author: jasonh
+ms.openlocfilehash: ca1ca258296f5ac8f1fb7120d2965ccacf74b5d5
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543772"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409388"
 ---
 # <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>Quickstart: Gebruik de Gremlin-console om een Azure Cosmos DB-grafiekdatabase te maken, er query’s op uit te voeren en erdoorheen te gaan
 
@@ -65,11 +65,11 @@ U moet ook de [Gremlin-console](https://tinkerpop.apache.org/downloads.html) ins
 
    Kopieer voor de waarde voor hosts de **Gremlin-URI** op de pagina **Overzicht**:
 
-   :::image type="content" source="./media/create-graph-gremlin-console/gremlin-uri.png" alt-text="De Gremlin-URI op de pagina Overzicht in Azure Portal bekijken en kopiëren":::
+   :::image type="content" source="./media/create-graph-gremlin-console/gremlin-uri.png" alt-text="Azure Cosmo DB vanuit de Apache Gremlin-console":::
 
    Kopieer voor het wachtwoord de **primaire sleutel** op de pagina**Sleutels**:
 
-   :::image type="content" source="./media/create-graph-gremlin-console/keys.png" alt-text="De primaire sleutel bekijken en kopiëren op de pagina Sleutels in Azure Portal":::
+   :::image type="content" source="./media/create-graph-gremlin-console/keys.png" alt-text="Azure Cosmo DB vanuit de Apache Gremlin-console":::
 
    Het remote-secure.yaml-bestand moet er als volgt uitzien:
 

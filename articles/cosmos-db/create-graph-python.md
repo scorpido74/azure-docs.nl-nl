@@ -1,20 +1,20 @@
 ---
 title: 'Quickstart: Gremlin-API met Python - Azure Cosmos DB'
 description: In deze snelstart ziet u hoe u de Gremlin-API in Azure Cosmos DB gebruikt om een toepassing te maken met Azure Portal en Python
-author: luisbosquez
+author: jasonwhowell
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2019
-ms.author: lbosq
+ms.author: jasonh
 ms.custom: devx-track-python
-ms.openlocfilehash: b927a0a64256283536a73002cc5915bcaddd2efc
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 624aa946df5e637c98a11ada3b455c50dec896f5
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873140"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409337"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-python-and-the-azure-portal"></a>Quickstart: een grafiekdatabase maken in Azure Cosmos DB met behulp van Python en de Azure-portal
 
@@ -172,15 +172,15 @@ Zodra de hoekpunten en randen zijn ingevoegd, kunt u teruggaan naar Data Explore
 
 1. In uw Azure Cosmos DB-account in Azure Portal selecteert u **Data Explorer**. Vouw hier **sample-graph** uit, selecteer **Grafiek** en selecteer vervolgens **Filter toepassen**. 
 
-   :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-expanded.png" alt-text="Nieuwe documenten maken in Data Explorer in de Azure-portal":::
+   :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-expanded.png" alt-text="Een toegangssleutel in Azure Portal bekijken en kopiëren op de pagina Sleutels":::
 
 2. In de lijst met **resultaten** ziet u drie nieuwe gebruikers die zijn toegevoegd aan de grafiek. U kunt de hoekpunten verplaatsen via slepen en neerzetten, in- en uitzoomen door te scrollen met het muiswiel en de grafiek uitvouwen met de dubbele pijl. 
 
-   :::image type="content" source="./media/create-graph-python/azure-cosmosdb-graph-explorer-new.png" alt-text="Nieuwe hoekpunten in de grafiek in Data Explorer in Azure Portal":::
+   :::image type="content" source="./media/create-graph-python/azure-cosmosdb-graph-explorer-new.png" alt-text="Een toegangssleutel in Azure Portal bekijken en kopiëren op de pagina Sleutels":::
 
 3. Laten we nu enkele nieuwe gebruikers toevoegen. Selecteer de knop **Nieuw hoekpunt** om gegevens toe te voegen aan uw grafiek.
 
-   :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-new-vertex.png" alt-text="Nieuwe documenten maken in Data Explorer in de Azure-portal":::
+   :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-new-vertex.png" alt-text="Een toegangssleutel in Azure Portal bekijken en kopiëren op de pagina Sleutels":::
 
 4. Geef het label *persoon* op.
 
@@ -219,15 +219,15 @@ Zodra de hoekpunten en randen zijn ingevoegd, kunt u teruggaan naar Data Explore
 
 12. Nu kunnen we rakesh en ashley met elkaar verbinden. Zorg ervoor dat **ashley** in de lijst met **resultaten** is geselecteerd en selecteer vervolgens rechtsonder, naast **Doelen**, de knop Bewerken. Mogelijk moet u het scherm verbreden om het gedeelte **Eigenschappen** te kunnen zien.
 
-    :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-edit-target.png" alt-text="Het doel van een hoekpunt in een grafiek wijzigen":::
+    :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-edit-target.png" alt-text="Een toegangssleutel in Azure Portal bekijken en kopiëren op de pagina Sleutels":::
 
 13. Typ in het vak **Doel** de naam *rakesh* en in het vak **Edge-label** het woord *kent*. Schakel vervolgens het selectievakje in.
 
-    :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-set-target.png" alt-text="Een verbinding tussen ashley en rakesh toevoegen in Data Explorer":::
+    :::image type="content" source="./media/create-graph-python/azure-cosmosdb-data-explorer-set-target.png" alt-text="Een toegangssleutel in Azure Portal bekijken en kopiëren op de pagina Sleutels":::
 
 14. Selecteer nu **rakesh** in de lijst met resultaten en kijk of ashley en rakesh zijn verbonden. 
 
-    :::image type="content" source="./media/create-graph-python/azure-cosmosdb-graph-explorer.png" alt-text="Twee hoekpunten die zijn verbonden in Data Explorer":::
+    :::image type="content" source="./media/create-graph-python/azure-cosmosdb-graph-explorer.png" alt-text="Een toegangssleutel in Azure Portal bekijken en kopiëren op de pagina Sleutels":::
 
 Hiermee is het onderdeel voor het maken van resources van deze zelfstudie voltooid. U kunt naar eigen inzicht verdergaan met toevoegen van hoekpunten, aanpassen van de bestaande hoekpunten of wijzigen van de query's. Laten we nu de metrische gegevens bekijken die Azure Cosmos DB biedt en vervolgens de resources opschonen. 
 

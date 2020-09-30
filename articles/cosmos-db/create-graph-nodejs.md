@@ -1,20 +1,20 @@
 ---
 title: Een Azure Cosmos DB Node.js-toepassing ontwikkelen met de Gremlin-API
 description: Is een Node.js-codevoorbeeld dat u kunt gebruiken om verbinding te maken met en gegevens op te vragen uit Azure Cosmos DB
-author: luisbosquez
+author: jasonwhowell
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 06/05/2019
-ms.author: lbosq
-ms.custom: devx-track-javascript
-ms.openlocfilehash: f1e619468ecbcd533c8cda725cb316d1e2a0e256
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.author: jasonh
+ms.custom: devx-track-js
+ms.openlocfilehash: c44f7218734af4bc3144137356b85e8845208f6f
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420427"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409371"
 ---
 # <a name="quickstart-build-a-nodejs-application-by-using-azure-cosmos-db-gremlin-api-account"></a>Quickstart: Een Node.js-toepassing ontwikkelen met het Gremlin-API-account van Azure Cosmos DB
 
@@ -161,7 +161,7 @@ In deze console-app wordt gebruik gemaakt van het opensource-stuurprogramma [Gre
 
     `config.primaryKey = "PRIMARYKEY";`
 
-   :::image type="content" source="./media/create-graph-nodejs/keys.png" alt-text="De blade Sleutels in Azure Portal":::
+   :::image type="content" source="./media/create-graph-nodejs/keys.png" alt-text="Een toegangssleutel in Azure Portal weergeven en kopiëren op de pagina Overzicht":::
 
 4. Voer de databasenaam en de naam van de graaf (container) in voor de waarde van config.database en config.collection. 
 

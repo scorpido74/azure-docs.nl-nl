@@ -8,14 +8,14 @@ ms.author: heidist
 ms.devlang: nodejs
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/23/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 2c97a770dc10168284bebbc038d8c48145c2a385
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/25/2020
+ms.custom: devx-track-js
+ms.openlocfilehash: ab3142426b12f86b9f8afa84ce0ea05fc1939eec
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88917887"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400601"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-nodejs-using-rest-apis"></a>Quickstart: Een Azure Cognitive Search-index maken in Node.js met behulp van REST API's
 > [!div class="op_single_selector"]
@@ -60,7 +60,7 @@ Voor aanroepen naar de service zijn voor elke aanvraag een URL-eindpunt en een t
 
     Haal ook de querysleutel op. Het is een aanbevolen procedure voor het uitgeven van queryaanvragen met alleen-lezen-toegang.
 
-![De naam van de service en de querysleutels voor beheer ophalen](media/search-get-started-nodejs/service-name-and-keys.png)
+:::image type="content" source="media/search-get-started-nodejs/service-name-and-keys.png" alt-text="De naam van de service en de querysleutels voor beheer ophalen" border="false":::
 
 Voor alle aanvragen is een API-sleutel vereist in de header die naar uw service wordt verzonden. Me een geldige sleutel stelt u per aanvraag een vertrouwensrelatie in tussen de toepassing die de aanvraag verzendt en de service die de aanvraag afhandelt.
 
@@ -473,7 +473,7 @@ U ziet nu een reeks berichten waarin de acties worden beschreven die door het pr
 
 Open het **Overzicht** van uw zoekservice in Azure Portal. Selecteer het tabblad **Indexen**. Er verschijnt informatie die er ongeveer als volgt uitziet:
 
-![Schermopname van Azure Portal, overzicht van de zoekservice, het tabblad Indexen](media/search-get-started-nodejs/create-index-no-data.png)
+:::image type="content" source="media/search-get-started-nodejs/create-index-no-data.png" alt-text="De naam van de service en de querysleutels voor beheer ophalen" border="false":::
 
 In de volgende stap gaat u gegevens aan de index toevoegen. 
 

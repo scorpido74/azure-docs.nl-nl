@@ -8,12 +8,12 @@ ms.subservice: enterprise
 ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: banders
-ms.openlocfilehash: 564acd6d6072a4308141942666cc0ebcc0ad0136
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 13b344d3f13993dc7b6acf7bfe9a0ccdea0c866b
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89433514"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371351"
 ---
 # <a name="managing-azure-enterprise-roles"></a>Azure Enterprise-rollen beheren
 
@@ -114,12 +114,12 @@ In de volgende tabel ziet u de relatie tussen de Enterprise Agreement-beheerders
 |Accounteigenaar of afdelingsbeheerder|✘ Uitgeschakeld |geen|Geen prijzen|
 |Geen|Niet van toepassing |Eigenaar|Retailprijzen|
 
-U stelt de zakelijke beheerdersrol en beleidsregels voor weergavekosten in via de zakelijke portal. De Azure-rol kan worden bijgewerkt in de Azure-portal. Zie [Toegang beheren met op rollen gebaseerd toegangsbeheer en Azure Portal](../../role-based-access-control/role-assignments-portal.md) voor meer informatie.
+U stelt de zakelijke beheerdersrol en beleidsregels voor weergavekosten in via de zakelijke portal. De Azure-rol kan worden bijgewerkt in de Azure-portal. Zie [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de Azure-portal](../../role-based-access-control/role-assignments-portal.md) voor meer informatie.
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Toegang tot factureringsgegevens beheren voor Azure](manage-billing-access.md)
-- [Toegang beheren met op rollen gebaseerd toegangsbeheer en Azure Portal](../../role-based-access-control/role-assignments-portal.md)
+- [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de Azure-portal](../../role-based-access-control/role-assignments-portal.md)
 - [Ingebouwde Azure-rollen](../../role-based-access-control/built-in-roles.md)

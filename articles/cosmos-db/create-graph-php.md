@@ -1,19 +1,19 @@
 ---
 title: 'Quickstart: Gremlin-API met PHP - Azure Cosmos DB'
 description: In deze snelstart ziet u hoe u de Gremlin API in Azure Cosmos DB gebruikt om een toepassing te maken met Azure Portal en PHP
-author: luisbosquez
+author: jasonwhowell
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.devlang: php
 ms.topic: quickstart
 ms.date: 01/05/2019
-ms.author: lbosq
-ms.openlocfilehash: 4a979fd4b3947be62f77bbd6d7c046c6af78466c
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.author: jasonh
+ms.openlocfilehash: e8848ee0a1fe5755316b59432c465b3836a0bab1
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118284"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409354"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-php-and-the-azure-portal"></a>Quickstart: een grafiekdatabase maken in Azure Cosmos DB met behulp van PHP en de Azure-portal
 
@@ -193,15 +193,15 @@ U kunt nu teruggaan naar Data Explorer en de hoekpunten bekijken die zijn toegev
 
 1. Klik op **Data Explorer**, vouw **sample-graph** uit, en klik achtereenvolgens op **Grafiek** en op **Filter toepassen**. 
 
-   :::image type="content" source="./media/create-graph-php/azure-cosmosdb-data-explorer-expanded.png" alt-text="Nieuwe documenten maken in Data Explorer in de Azure-portal":::
+   :::image type="content" source="./media/create-graph-php/azure-cosmosdb-data-explorer-expanded.png" alt-text="Een toegangssleutel in Azure Portal bekijken en kopiëren op de pagina Sleutels":::
 
 2. In de lijst met **resultaten** ziet u de nieuwe gebruikers die zijn toegevoegd aan de grafiek. Als u **ben** selecteert, ziet u dat hij is verbonden met robin. U kunt de hoekpunten verplaatsen via slepen en neerzetten, in- en uitzoomen door te scrollen met het muiswiel en de grafiek uitvouwen met de dubbele pijl. 
 
-   :::image type="content" source="./media/create-graph-php/azure-cosmosdb-graph-explorer-new.png" alt-text="Nieuwe hoekpunten in de grafiek in Data Explorer in Azure Portal":::
+   :::image type="content" source="./media/create-graph-php/azure-cosmosdb-graph-explorer-new.png" alt-text="Een toegangssleutel in Azure Portal bekijken en kopiëren op de pagina Sleutels":::
 
 3. Laten we nu enkele nieuwe gebruikers toevoegen. Klik op de knop **Nieuw hoekpunt** om gegevens toe te voegen aan uw grafiek.
 
-   :::image type="content" source="./media/create-graph-php/azure-cosmosdb-data-explorer-new-vertex.png" alt-text="Nieuwe documenten maken in Data Explorer in de Azure-portal":::
+   :::image type="content" source="./media/create-graph-php/azure-cosmosdb-data-explorer-new-vertex.png" alt-text="Een toegangssleutel in Azure Portal bekijken en kopiëren op de pagina Sleutels":::
 
 4. Geef het label *persoon* op.
 
@@ -238,15 +238,15 @@ U kunt nu teruggaan naar Data Explorer en de hoekpunten bekijken die zijn toegev
 
 12. Nu kunt u rakesh en ashley met elkaar verbinden. Zorg ervoor dat **ashley** in de lijst met **resultaten** is geselecteerd en klik vervolgens rechtsonder, naast **Doelen**, op de knop Bewerken. Mogelijk moet u het scherm verbreden om het gedeelte **Eigenschappen** te kunnen zien.
 
-    :::image type="content" source="./media/create-graph-php/azure-cosmosdb-data-explorer-edit-target.png" alt-text="Het doel van een hoekpunt in een grafiek wijzigen":::
+    :::image type="content" source="./media/create-graph-php/azure-cosmosdb-data-explorer-edit-target.png" alt-text="Een toegangssleutel in Azure Portal bekijken en kopiëren op de pagina Sleutels":::
 
 13. Typ in het vak **Doel** de naam *rakesh* en in het vak **Edge-label** het woord *kent*. Klik vervolgens op het selectievakje.
 
-    :::image type="content" source="./media/create-graph-php/azure-cosmosdb-data-explorer-set-target.png" alt-text="Een verbinding tussen ashley en rakesh toevoegen in Data Explorer":::
+    :::image type="content" source="./media/create-graph-php/azure-cosmosdb-data-explorer-set-target.png" alt-text="Een toegangssleutel in Azure Portal bekijken en kopiëren op de pagina Sleutels":::
 
 14. Selecteer nu **rakesh** in de lijst met resultaten en kijk of ashley en rakesh zijn verbonden. 
 
-    :::image type="content" source="./media/create-graph-php/azure-cosmosdb-graph-explorer.png" alt-text="Twee hoekpunten die zijn verbonden in Data Explorer":::
+    :::image type="content" source="./media/create-graph-php/azure-cosmosdb-graph-explorer.png" alt-text="Een toegangssleutel in Azure Portal bekijken en kopiëren op de pagina Sleutels":::
 
     Hiermee is het onderdeel voor het maken van resources van deze snelstart voltooid. U kunt naar eigen inzicht verdergaan met toevoegen van hoekpunten, aanpassen van de bestaande hoekpunten of wijzigen van de query's. Laten we nu de metrische gegevens bekijken die Azure Cosmos DB biedt en vervolgens de resources opschonen. 
 

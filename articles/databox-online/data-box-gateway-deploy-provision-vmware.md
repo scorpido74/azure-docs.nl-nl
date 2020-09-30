@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 03/25/2019
+ms.date: 09/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 6488871067416b2cee533561bae47874413d9012
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 4818755e48a4d497d70920a62a9505346176ed73
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892113"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371283"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware"></a>Zelfstudie: Azure Data Box Gateway inrichten in VMware
 
@@ -194,7 +194,7 @@ Voer de volgende stappen uit om uw virtuele apparaat te starten en verbinding te
 
    ![Wachtwoord voor het virtuele apparaat invoeren](./media/data-box-gateway-deploy-provision-vmware/image23.png)
 
-6. De stappen 5 - 7 gelden alleen als het opstarten in een niet-DHCP-omgeving gebeurt. Als u zich in een DHCP-omgeving bevindt, kunt u deze stappen overslaan en gaat u naar stap 8. Als u uw apparaat hebt opgestart in een niet-DHCP-omgeving wordt er een bericht van deze strekking weergegeven: **Gebruik de cmdlet Set-HcsIPAddress om het netwerk te configureren**. 
+6. De stappen 6-8 gelden alleen als het apparaat wordt opgestart in een niet-DHCP-omgeving. In een DHCP-omgeving kunt u deze stappen overslaan en verder gaan met stap 9. Als u uw apparaat hebt opgestart in een niet-DHCP-omgeving wordt er een bericht van deze strekking weergegeven: **Gebruik de cmdlet Set-HcsIPAddress om het netwerk te configureren**. 
    
 7. Gebruik voor het configureren van het netwerk bij de opdrachtprompt de opdracht `Get-HcsIpAddress` om een lijst met netwerkinterfaces weer te geven die zijn ingeschakeld op uw virtuele apparaat. Als voor uw apparaat één netwerkinterface is ingeschakeld, wordt `Ethernet` als standaardnaam aan deze interface toegewezen.
 

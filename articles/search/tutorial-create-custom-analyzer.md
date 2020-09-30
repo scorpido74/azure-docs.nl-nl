@@ -7,13 +7,13 @@ author: dereklegenzoff
 ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 06/22/2020
-ms.openlocfilehash: e714c58827ebb4ee7e50696db27644fa65a73af1
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.date: 09/25/2020
+ms.openlocfilehash: ac7cee2c1d72b4102fb397aa8093c2d38686fc88
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89290307"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397263"
 ---
 # <a name="tutorial-create-a-custom-analyzer-for-phone-numbers"></a>Zelfstudie: Een aangepaste analyse voor telefoonnummers maken
 
@@ -59,7 +59,7 @@ Voor elke aanvraag moet u het volgende doen:
 
 1. Vervang `<YOUR-ADMIN-API-KEY>` door de primaire of de secundaire sleutel van uw zoekservice.
 
-  ![URL en header voor Postman-aanvraag](media/search-get-started-postman/postman-url.png "URL en header voor Postman-aanvraag")
+  :::image type="content" source="media/search-get-started-postman/postman-url.png" alt-text="URL en header voor Postman-aanvraag" border="false":::
 
 Als u niet bekend bent met Postman, raadpleegt u [REST API's van Azure Cognitive Search verkennen in Postman](search-get-started-postman.md).
 
@@ -239,11 +239,11 @@ Analyses bestaan uit drie onderdelen:
 
 In het onderstaande diagram kunt u zien hoe deze drie onderdelen samenwerken om een zin te tokeniseren:
 
-  ![Diagram van het analyseproces om een zin te tokeniseren](media/tutorial-create-custom-analyzer/analyzers-explained.png)
+  :::image type="content" source="media/tutorial-create-custom-analyzer/analyzers-explained.png" alt-text="URL en header voor Postman-aanvraag":::
 
 Deze tokens worden vervolgens opgeslagen in een omgekeerde index, waardoor snelle zoekopdrachten in volledige tekst mogelijk zijn.  Met een omgekeerde index kunt u zoeken in volledige tekst toestaan door alle unieke termen die zijn geëxtraheerd tijdens de lexicale analyse, toe te wijzen aan de documenten waarin ze voorkomen. In het onderstaande diagram ziet u een voorbeeld:
 
-  ![Voorbeeld van een omgekeerde index](media/tutorial-create-custom-analyzer/inverted-index-explained.png)
+  :::image type="content" source="media/tutorial-create-custom-analyzer/inverted-index-explained.png" alt-text="URL en header voor Postman-aanvraag":::
 
 Elke zoekopdracht komt neer op het zoeken naar de termen die in de omgekeerde index zijn opgeslagen. Wanneer een gebruiker een query opgeeft:
 
@@ -251,7 +251,7 @@ Elke zoekopdracht komt neer op het zoeken naar de termen die in de omgekeerde in
 1. De omgekeerde index wordt vervolgens gescand op documenten die overeenkomende termen bevatten.
 1. Ten slotte worden de opgehaalde documenten gerangschikt met behulp van het [vergelijkbaarheidsalgoritme](index-ranking-similarity.md).
 
-  ![Diagram van het rangschikken van vergelijkbaarheid in het analyseproces](media/tutorial-create-custom-analyzer/query-architecture-explained.png)
+  :::image type="content" source="media/tutorial-create-custom-analyzer/query-architecture-explained.png" alt-text="URL en header voor Postman-aanvraag":::
 
 Als de querytermen niet overeenkomen met de termen in de omgekeerde index, worden er geen resultaten geretourneerd. Voor meer informatie over hoe query's werken, raadpleegt u dit artikel over [zoeken in volledige tekst](search-lucene-query-architecture.md).
 

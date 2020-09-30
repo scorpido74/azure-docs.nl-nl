@@ -4,19 +4,19 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/25/2020
 ms.author: trrwilson
-ms.openlocfilehash: 99540e8518aa31a2221844aa954ff665609d8217
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: a18ce7b7c28b99967668bc33c5a94cbb58bfbc34
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374672"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376940"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
 Voordat u aan de slag gaat:
 
 > [!div class="checklist"]
-> * [Een resource voor de Azure-spraakservice maken](../../../../get-started.md)
+> * [Een resource voor de Azure-spraakservice maken](../../../../overview.md#try-the-speech-service-for-free)
 > * [Uw ontwikkelomgeving instellen en een leeg project maken](../../../../quickstarts/setup-platform.md)
 > * Ervoor zorgen dat u toegang tot een microfoon hebt voor het vastleggen van audio
 

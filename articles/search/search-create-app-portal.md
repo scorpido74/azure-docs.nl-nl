@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 07/01/2020
-ms.openlocfilehash: 6adbd83ddfbdb82d1054d4e74dd9492d08583ede
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.date: 09/25/2020
+ms.openlocfilehash: b69feec7249c80fc63d803a14f360614bcf880fa
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89292534"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91399819"
 ---
 # <a name="quickstart-create-a-demo-app-in-the-portal-azure-cognitive-search"></a>Quickstart: Een demo-app maken in de portal (Azure Cognitive Search)
 
@@ -35,7 +35,7 @@ Voordat u begint, moet u het volgende hebben:
 
   In deze quickstart wordt gebruikgemaakt van de ingebouwde vastgoedsamplegegevens en -index omdat deze miniatuurafbeeldingen bevat (de wizard ondersteunt het toevoegen van afbeeldingen aan de resultaatpagina). U maakt de index die in deze oefening wordt gebruikt door de wizard **Gegevens importeren** uit te voeren en de gegevensbron *realestate-us-sample* te kiezen.
 
-  ![gegevensbronpagina voor samplegegevens](media/search-create-app-portal/import-data-realestate.png)
+  :::image type="content" source="media/search-create-app-portal/import-data-realestate.png" alt-text="gegevensbronpagina voor samplegegevens" border="false":::
 
 Wanneer de index klaar is voor gebruik, gaat u verder met de volgende stap.
 
@@ -61,7 +61,7 @@ De wizard biedt een basisindeling voor weergegeven zoekresultaten die ruimte bev
 
 1. Kies bij Beschrijving een veld dat details biedt waarmee iemand kan bepalen of er moet worden geklikt op het desbetreffende document.
 
-   ![resultaten voor voorbeeldgegevens configureren](media/search-create-app-portal/configure-results.png)
+   :::image type="content" source="media/search-create-app-portal/configure-results.png" alt-text="gegevensbronpagina voor samplegegevens" border="false":::
 
 ## <a name="add-a-sidebar"></a>Een zijbalk toevoegen
 
@@ -83,7 +83,7 @@ Suggesties worden ingeschakeld voor specifieke velddefinities. De wizard biedt o
 
 In de volgende schermopname ziet u de opties in de wizard met daarnaast een weergegeven pagina in de app. U kunt zien hoe veldselecties worden gebruikt en hoe Veldnaam weergeven wordt gebruikt voor het opnemen of weglaten van labels in de suggestie.
 
-![Configuratie van querysuggesties](media/search-create-app-portal/suggestions.png)
+:::image type="content" source="media/search-create-app-portal/suggestions.png" alt-text="gegevensbronpagina voor samplegegevens":::
 
 ## <a name="create-download-and-execute"></a>Maken, downloaden en uitvoeren
 
@@ -95,7 +95,7 @@ In de volgende schermopname ziet u de opties in de wizard met daarnaast een weer
 
 De onderliggende index bestaat uit fictieve gegenereerde gegevens die zijn gedupliceerd in andere documenten en beschrijvingen die soms niet overeenkomen met de afbeelding. U kunt een samenhangende ervaring verwachten als u een app maakt op basis van uw eigen indexen.
 
-![De app uitvoeren](media/search-create-app-portal/run-app.png)
+:::image type="content" source="media/search-create-app-portal/run-app.png" alt-text="gegevensbronpagina voor samplegegevens":::
 
 
 ## <a name="clean-up-resources"></a>Resources opschonen

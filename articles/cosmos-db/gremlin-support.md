@@ -1,18 +1,18 @@
 ---
 title: Ondersteuning voor Gremlin in Azure Cosmos DB
 description: Meer informatie over de Gremlin-taal van Apache TinkerPop. Leer welke functies en stappen beschikbaar zijn in Azure Cosmos DB
-author: LuisBosquez
+author: jasonwhowell
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 04/23/2020
-ms.author: lbosq
-ms.openlocfilehash: 75a796a860acbd4279938b315fafccb9333906bd
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.author: jasonh
+ms.openlocfilehash: 2629cfc40a9f3c0745df78d9a22883be8476beb9
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89567262"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409741"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Ondersteuning voor Gremlin-grafieken in Azure Cosmos DB
 Azure Cosmos DB ondersteunt de taal voor grafiekdoorkruising van [Apache Tinkerpop](https://tinkerpop.apache.org), ook wel [Gremlin](https://tinkerpop.apache.org/docs/3.3.2/reference/#graph-traversal-steps) genoemd. U kunt de Gremlin-taal gebruiken om grafiekentiteiten (hoekpunten en randen) te maken, eigenschappen binnen deze entiteiten te wijzigen, query’s en traversals uit te voeren, en entiteiten te verwijderen. 

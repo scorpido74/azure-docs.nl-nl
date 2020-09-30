@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 09/22/2020
-ms.openlocfilehash: 71cf11673756dcefb828ad1fad0412a791b43efd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 268eedf6f9d64d52539e20006322b6b1dd9964e8
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90943813"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439956"
 ---
 # <a name="azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL - Flexible Server
 
@@ -49,15 +49,14 @@ Tijdens geplande of niet-geplande gebeurtenissen, als de server uitvalt, behoudt
 1. Er wordt een nieuwe Linux reken-VM ingericht.
 2. De opslag met gegevensbestanden wordt toegewezen aan de nieuwe virtuele machine
 3. De PostgreSQL-database-engine wordt online gebracht op de nieuwe virtuele machine.
-4. De gatewayservice zorgt voor een transparante failover waarbij geen wijzigingen aan de kant van de toepassing nodig zijn.
 
 Onderstaande afbeelding toont de overgang voor de virtuele machine en de opslagfout.
 
- :::image type="content" source="./media/overview/overview-azure-postgres-flex-virtualmachine-storage-failure.png" alt-text="Flexibele Server - VM- en opslagfouten":::
+ :::image type="content" source="./media/overview/overview-azure-postgres-flex-virtualmachine.png" alt-text="Flexibele Server - VM- en opslagfouten":::
 
 Als zone-redundante hoge beschikbaarheid is geconfigureerd, wordt in de service een dynamische stand-byserver voor de beschikbaarheidszone binnen dezelfde Azure-regio onderhouden. De gegevenswijzigingen op de bronserver worden synchroon gerepliceerd naar de stand-byserver om ervoor te zorgen dat er geen gegevens verloren gaan. Als de geplande of niet-geplande failovergebeurtenis wordt geactiveerd met zone-redundante hoge beschikbaarheid, komt de stand-byserver onmiddellijk online en is deze beschikbaar voor het verwerken van binnenkomende transacties. Dit geeft de service tolerantie tegen mislukking van de beschikbaarheidszone binnen een Azure-regio die ondersteuning biedt voor meerdere beschikbaarheidszones, zoals wordt weergegeven in de onderstaande afbeelding.
 
- :::image type="content" source="./media/business-continuity/concepts-zone-redundant-high-availability-architecture.png" alt-text="Zone-redundante hoge beschikbaarheid":::
+ :::image type="content" source="./media/business-continuity/concepts-zone-redundant-high-availability-architecture.png" alt-text="Flexibele Server - VM- en opslagfouten":::
 
  Zie [Document over hoge beschikbaarheid](./concepts-high-availability.md) voor meer informatie.
 
