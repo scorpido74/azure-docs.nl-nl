@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: hermannd
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 699a8a69621642d07d3547c07bb20c0d32ca7686
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c186b73cb00d03b731cd015b3ee06bf8f2233fa4
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77616997"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541149"
 ---
 # <a name="set-up-smt-server-for-suse-linux"></a>Een SMT-server instellen voor SUSE Linux
 Grote instanties van SAP HANA hebben geen directe verbinding met internet. Het is geen eenvoudig proces om een dergelijke eenheid te registreren bij de provider van het besturings systeem en om updates te downloaden en toe te passen. Een oplossing voor SUSE Linux is het instellen van een SMT-server in een virtuele machine van Azure. Host de virtuele machine in een virtueel Azure-netwerk dat is verbonden met de HANA grote instantie. Met een dergelijke SMT-server kan de HANA-eenheid voor grote instanties updates registreren en downloaden. 
@@ -44,7 +44,7 @@ De geïmplementeerde virtuele machine is kleiner en het interne IP-adres in het 
 
 Voeg een schijf toe aan de virtuele machine. U gebruikt deze schijf om de updates te bewaren en de opstart schijf zelf kan te klein zijn. Hier is de schijf gekoppeld aan/srv/www/htdocs, zoals weer gegeven in de volgende scherm afbeelding. Een schijf van 100 GB moet voldoende zijn.
 
-![Scherm afbeelding van de implementatie van de virtuele machine voor een SMT-server](./media/hana-installation/image4_additional_disk_on_smtserver.PNG)
+![Scherm afbeelding toont de toegevoegde schijf in het PuTTy-venster.](./media/hana-installation/image4_additional_disk_on_smtserver.PNG)
 
 Meld u aan bij de HANA grote instantie-eenheid of-eenheden, onderhoud bestand/etc/hosts en controleer of u de virtuele machine van Azure kunt bereiken waarop de SMT-server moet worden uitgevoerd via het netwerk.
 

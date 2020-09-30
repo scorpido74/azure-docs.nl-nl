@@ -3,20 +3,18 @@ title: Functies gebruiken om de LUIS woorden lijst te verbeteren
 titleSuffix: Azure Cognitive Services
 description: Gebruik Language Understanding (LUIS) om app-functies toe te voegen die de detectie of voor spelling van intenties en entiteiten die categorieën en patronen kunnen verbeteren
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
-ms.author: diberry
-ms.openlocfilehash: 25698fe2b05cbfb564e441e488bfa93221a9618a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 33435d2367b92f312d41f0e32fdbb3a93d59a9fd
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075200"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540877"
 ---
 # <a name="use-features-to-boost-signal-of-word-list"></a>Functies gebruiken om het signaal van een woorden lijst te verhogen
 

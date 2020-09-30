@@ -3,12 +3,12 @@ title: Uw resource hiërarchie beveiligen-Azure governance
 description: Meer informatie over het beveiligen van uw resource hiërarchie met hiërarchie-instellingen, zoals het instellen van de standaard beheer groep.
 ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 19d699b54a9979df1030c0f6e294d5a4492f2853
-ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
+ms.openlocfilehash: 8630562786da922a36baa3bec4863acbb21b197d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89469776"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533976"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>Uw resource hiërarchie beveiligen
 
@@ -16,9 +16,9 @@ Uw resources, resource groepen, abonnementen, beheer groepen en Tenant vormen sa
 
 Beheer groepen hebben nu hiërarchie-instellingen waarmee de Tenant beheerder dit gedrag kan beheren. In dit artikel worden alle beschik bare hiërarchie-instellingen beschreven en wordt uitgelegd hoe u deze kunt instellen.
 
-## <a name="rbac-permissions-for-hierarchy-settings"></a>RBAC-machtigingen voor hiërarchie-instellingen
+## <a name="azure-rbac-permissions-for-hierarchy-settings"></a>Azure RBAC-machtigingen voor hiërarchie-instellingen
 
-Voor het configureren van een van de hiërarchie-instellingen zijn de volgende twee RBAC-bewerkingen vereist voor de hoofd beheer groep:
+Voor het configureren van een van de hiërarchie-instellingen zijn de volgende twee resource provider bewerkingen vereist voor de hoofd beheer groep:
 
 - `Microsoft.Management/managementgroups/settings/write`
 - `Microsoft.Management/managementgroups/settings/read`
@@ -27,7 +27,7 @@ Met deze bewerkingen kan een gebruiker de hiërarchie-instellingen niet lezen en
 
 ## <a name="setting---default-management-group"></a>Instelling: standaard beheer groep
 
-Een nieuw abonnement dat in een Tenant wordt toegevoegd, wordt standaard toegevoegd als lid van de hoofd beheer groep. Als beleids toewijzingen, op rollen gebaseerd toegangs beheer (RBAC) en andere governance-constructies zijn toegewezen aan de hoofd beheer groep, hebben ze direct invloed op deze nieuwe abonnementen. Daarom passen veel organisaties deze constructs niet toe aan de hoofd beheer groep, zelfs als dat wel de gewenste plaats is om ze toe te wijzen. In andere gevallen is een meer beperkende set besturings elementen gewenst voor nieuwe abonnementen, maar niet aan alle abonnementen. Deze instelling ondersteunt beide use-cases.
+Een nieuw abonnement dat in een Tenant wordt toegevoegd, wordt standaard toegevoegd als lid van de hoofd beheer groep. Als beleids toewijzingen, Toegangs beheer op basis van rollen (Azure RBAC) en andere governance-constructies zijn toegewezen aan de hoofd beheer groep, worden deze nieuwe abonnementen direct van kracht. Daarom passen veel organisaties deze constructs niet toe aan de hoofd beheer groep, zelfs als dat wel de gewenste plaats is om ze toe te wijzen. In andere gevallen is een meer beperkende set besturings elementen gewenst voor nieuwe abonnementen, maar niet aan alle abonnementen. Deze instelling ondersteunt beide use-cases.
 
 Door toe te staan dat de standaard beheer groep voor nieuwe abonnementen kan worden gedefinieerd, kunnen bedrijfsbrede governance-constructies worden toegepast in de hoofd beheer groep en een afzonderlijke beheer groep met beleids toewijzingen of Azure-roltoewijzingen die geschikter zijn voor een nieuw abonnement, kan worden gedefinieerd.
 

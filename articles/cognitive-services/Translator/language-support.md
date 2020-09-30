@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 9c745395026b8b7e8c58fcb4b7cc67971d971a7c
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: e8feb4f2012d323d954ba000323824bc157bcf87
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300218"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534057"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Ondersteuning van talen en regio's voor tekst-en spraak omzetting
 
@@ -71,7 +71,6 @@ Translator ondersteunt de volgende talen voor tekst vertaling.
 |Japans|  `ja`    |
 |Kannada|`kn`|
 |Kazachs|`kk`|
-|Swahili| `sw`    |
 |Klingon|   `tlh-Latn`  |
 |Klingon (plqaD)|   `tlh-Piqd`  |
 |Koreaans |`ko`   |
@@ -102,6 +101,7 @@ Translator ondersteunt de volgende talen voor tekst vertaling.
 |Slowaaks|    `sk`    |
 |Sloveens| `sl`    |
 |Spaans|   `es`    |
+|Swahili|   `sw`    |
 |Zweeds|   `sv`    |
 |Tahitian|  `ty`    |
 |Tamil| `ta`    |
@@ -152,7 +152,6 @@ Translator detecteert de volgende talen voor vertaal-en vele.
 |Iers | `ga`|
 |Italiaans|   `it`    |
 |Japans|  `ja`    |
-|Swahili| `sw`    |
 |Klingon|   `tlh-Latn`  |
 |Koreaans |`ko`   |
 |Koerdisch (centraal)  |`ku-Arab`  |
@@ -173,6 +172,7 @@ Translator detecteert de volgende talen voor vertaal-en vele.
 |Slowaaks|    `sk`    |
 |Sloveens| `sl`    |
 |Spaans|   `es`    |
+|Swahili|   `sw`    |
 |Zweeds|   `sv`    |
 |Tahitian|  `ty`    |
 |Thai|  `th`    |
@@ -246,7 +246,6 @@ Referentie documentatie weer geven voor de bewerkingen voor het [opzoeken van wo
 | Indonesisch      | `id`          |
 | Italiaans      | `it`          |
 | Japans      | `ja`          |
-| Swahili      | `sw`          |
 | Klingon      | `tlh`          |
 | Koreaans      | `ko`          |
 | Lets      | `lv`          |
@@ -263,6 +262,7 @@ Referentie documentatie weer geven voor de bewerkingen voor het [opzoeken van wo
 | Slowaaks     | `sk`          |
 | Sloveens      | `sl`          |
 | Spaans      | `es`          |
+| Swahili      | `sw`          |
 | Zweeds      | `sv`          |
 | Tamil      | `ta`          |
 | Thai      | `th`          |
@@ -314,7 +314,6 @@ De volgende talen zijn beschikbaar voor aanpassing in of vanuit het Engels met [
 | Italiaans      | `it`          |
 | Japans      | `ja`          |
 |Kannada|`kn`|
-| Swahili|    `sw`    |
 | Koreaans      | `ko`          |
 | Lets      | `lv`          |
 | Litouws      | `lt`          |
@@ -335,6 +334,7 @@ De volgende talen zijn beschikbaar voor aanpassing in of vanuit het Engels met [
 | Slowaaks     | `sk`          |
 | Sloveens      | `sl`          |
 | Spaans      | `es`          |
+| Swahili|  `sw`    |
 | Zweeds      | `sv`          |
 |Tahitian|  `ty`    |
 | Thai      | `th`          |
@@ -345,7 +345,7 @@ De volgende talen zijn beschikbaar voor aanpassing in of vanuit het Engels met [
 | Vietnamees      | `vi`          |
 | Welsh | `cy` |
 
-## <a name="speech-translation"></a>Speech Translation
+## <a name="speech-translation"></a>Spraakomzetting
 Spraak omzetting is beschikbaar via Translator met Cognitive Services Speech Service. Raadpleeg de documentatie van de [Speech-Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/) voor meer informatie over het gebruik van spraak omzetting en voor het weer geven van alle [beschik bare taal opties](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support).
 
 ### <a name="speech-to-text"></a>Spraak naar tekst

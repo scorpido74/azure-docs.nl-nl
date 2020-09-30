@@ -3,21 +3,18 @@ title: Resource Health-waarschuwingen maken met behulp van Azure Portal
 description: Maak een waarschuwing met behulp van Azure Portal die u op de hoogte stelt wanneer uw Azure-resources niet meer beschikbaar zijn.
 ms.topic: conceptual
 ms.date: 6/23/2020
-ms.openlocfilehash: 3a0f4704880d040106a2e4112d621b6d8ffbede6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 127aad1691f7bb6b6c64332eefde734a809ab75f
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091569"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540673"
 ---
 # <a name="configure-resource-health-alerts-using-azure-portal"></a>Resourcestatuswaarschuwingen configureren met de Azure-portal
 
 Dit artikel laat u zien hoe u waarschuwingen voor activiteiten logboeken voor resource Health Notifications kunt instellen met behulp van de Azure Portal.
 
 Azure Resource Health houdt u op de hoogte van de huidige en historische status van uw Azure-resources. Azure Resource Health waarschuwingen kunnen u in bijna realtime een melding sturen wanneer deze resources een wijziging in hun integriteits status hebben. Door Resource Health waarschuwingen via een programma te maken, kunnen gebruikers waarschuwingen bulksgewijs maken en aanpassen.
-
-> [!NOTE]
-> Er zijn momenteel Resource Health waarschuwingen in de preview-versie.
 
 Resource Health-meldingen worden opgeslagen in het [Azure-activiteiten logboek](../azure-monitor/platform/platform-logs-overview.md) , gezien het mogelijk grote hoeveelheid gegevens die in het activiteiten logboek is opgeslagen, is er een afzonderlijke gebruikers interface waarmee u waarschuwingen voor resource status meldingen gemakkelijker kunt weer geven en instellen.
 U kunt een waarschuwing ontvangen wanneer Azure resource status meldingen verzendt naar uw Azure-abonnement. U kunt de waarschuwing configureren op basis van:

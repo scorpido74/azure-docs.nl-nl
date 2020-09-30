@@ -15,15 +15,29 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2018
 ms.author: apimpm
-ms.openlocfilehash: 7ef1c09b12d3c7e365f090391aa3fa8afa03749b
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: ad1ad622b354215e9837b1154a13bac148d54164
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213995"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537341"
 ---
 # <a name="advanced-request-throttling-with-azure-api-management"></a>Geavanceerde aanvraagbeperking met Azure API Management
 Het beperken van binnenkomende aanvragen is een belang rijke rol van Azure API Management. Door de frequentie van aanvragen of het totale aantal overgedragen aanvragen/gegevens te beheren, kunnen met API Management API-providers hun Api's tegen misbruik beveiligen en waarde maken voor verschillende API-product lagen.
+
+## <a name="rate-limits-and-quotas"></a>Frequentie limieten en quota
+Frequentie limieten en quota worden gebruikt voor verschillende doel einden.
+
+### <a name="rate-limits"></a>Frequentielimieten
+Frequentie limieten worden meestal gebruikt om te beschermen tegen korte en intense volume-bursts. Als u bijvoorbeeld weet dat uw back-end-service een knel punt op de data base heeft met een hoog oproep volume, kunt u een `rate-limit-by-key` beleid instellen om een hoog oproep volume niet toe te staan met behulp van deze instelling.
+
+### <a name="quotas"></a>Quota
+Quota worden meestal gebruikt voor het beheren van oproep tarieven gedurende een langere periode. Ze kunnen bijvoorbeeld het totaal aantal aanroepen instellen dat een bepaalde abonnee binnen een bepaalde maand kan maken. Voor inkomsten uw API kunnen quota ook verschillend worden ingesteld voor op lagen gebaseerde abonnementen. Zo kan een abonnement van de Basic-laag bijvoorbeeld een maand niet meer dan 10.000 aanroepen, maar een Premium-laag kan elke maand tot 100.000.000 oproepen lopen.
+
+Binnen Azure API Management worden frequentie limieten doorgaans sneller door gegeven over de knoop punten om te beschermen tegen pieken. Gebruiks quotum gegevens worden daarentegen gebruikt voor een langere periode en daarom is de implementatie anders.
+
+> [!CAUTION]
+> Vanwege de gedistribueerde aard van beperkings architectuur is de frequentie beperking nooit volledig nauw keurig. Het verschil tussen het geconfigureerde en reële aantal toegestane aanvragen varieert op basis van het volume en de frequentie van de aanvraag, de back-uplatentie en andere factoren.
 
 ## <a name="product-based-throttling"></a>Op product gebaseerde beperking
 Tot nu toe zijn de snelheids beperkings mogelijkheden beperkt tot het bereik van een bepaald product abonnement dat is gedefinieerd in de Azure Portal. Dit is nuttig voor de API-provider om beperkingen toe te passen op de ontwikkel aars die zich hebben geregistreerd voor het gebruik van hun API. het is bijvoorbeeld niet mogelijk om afzonderlijke eind gebruikers van de API te beperken. Het is mogelijk dat voor één gebruiker van de ontwikkelaar van de toepassing het volledige quotum verbruikt en dat andere klanten van de ontwikkelaar de toepassing niet kunnen gebruiken. Daarnaast kunnen meerdere klanten die een groot aantal aanvragen kunnen genereren de toegang tot incidentele gebruikers beperken.

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: e7ca86d0146f05d5171d5eae18aac81d75122bcc
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: bf87a61633706cb5db384e8a8ab957fa6a3f37f1
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258550"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533720"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Server parameters in Azure Database for MySQL
 
@@ -214,7 +214,7 @@ Als er een fout bericht wordt weer gegeven dat vergelijkbaar is met het ' Rijgro
 Deze para meter kan worden ingesteld op sessie niveau met `init_connect` . Als u **innodb_strict_mode** wilt instellen op sessie niveau, raadpleegt u de [instellings parameter wordt niet weer gegeven](https://docs.microsoft.com/azure/mysql/howto-server-parameters#setting-parameters-not-listed).
 
 > [!NOTE]
-> Als u een server voor het lezen van replica's hebt, wordt het instellen van **innodb_strict_mode** op het sessie niveau van een hoofd server als de replicatie wordt verbroken. U wordt aangeraden de para meter in te stellen op uit als u replica's hebt gelezen.
+> Als u een replica-server lezen hebt ingesteld, wordt het instellen van **innodb_strict_mode** op sessie niveau op een bron server uitgeschakeld. U wordt aangeraden de para meter in te stellen op uit als u replica's hebt gelezen.
 
 ### <a name="sort_buffer_size"></a>sort_buffer_size
 

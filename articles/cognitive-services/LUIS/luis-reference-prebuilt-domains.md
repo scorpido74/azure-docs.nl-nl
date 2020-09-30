@@ -3,20 +3,18 @@ title: Vooraf gebouwde domein verwijzing-LUIS
 titleSuffix: Azure Cognitive Services
 description: Naslag informatie voor de vooraf gemaakte domeinen, die vooraf gebouwde verzamelingen van intenties en entiteiten van Language Understanding intelligent Services (LUIS) zijn.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/27/2019
-ms.author: diberry
-ms.openlocfilehash: d41ec3abfa2e562d5a6e11dd9ed0fcbcffead5c6
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: e93822f4a2992f619b598474082caa56562b6e36
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88191972"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538361"
 ---
 # <a name="prebuilt-domain-reference-for-your-luis-app"></a>Vooraf ontwikkelde domein referentie voor uw LUIS-app
 Deze verwijzing bevat informatie over de [vooraf ontwikkelde domeinen](luis-how-to-use-prebuilt-domains.md), die vooraf gebouwde verzamelingen van intenties en entiteiten zijn die Luis aanbieden.

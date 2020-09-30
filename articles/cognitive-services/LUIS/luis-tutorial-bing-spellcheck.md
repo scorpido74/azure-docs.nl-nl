@@ -3,20 +3,18 @@ title: Verkeerd gespelde woorden corrigeren-LUIS
 titleSuffix: Azure Cognitive Services
 description: Corrigeer verkeerd gespelde woorden in uitingen door Bing Spellingcontrole-API V7 toe te voegen aan LUIS-eindpunt query's.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/19/2019
-ms.author: diberry
-ms.openlocfilehash: ee0c659cf510eb0a438ae0c78a554c98dccffa89
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 120852c3e66594b1cf5cd28bb52ce06634211060
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86144274"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541086"
 ---
 # <a name="correct-misspelled-words-with-bing-spell-check"></a>Verkeerd gespelde woorden corrigeren met Bing Spellingcontrole
 

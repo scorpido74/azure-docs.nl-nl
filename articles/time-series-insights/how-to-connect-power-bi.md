@@ -8,12 +8,12 @@ services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 08/26/2020
-ms.openlocfilehash: f15686cf07bae4aee41095c970cd8a474724c2ed
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 6825627b77e3ea227cad88e347dbbabd5e6f5d0c
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89230973"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540333"
 ---
 # <a name="visualize-data-from-azure-time-series-insights-in-power-bi"></a>Gegevens visualiseren van Azure Time Series Insights in Power BI
 
@@ -69,7 +69,7 @@ Aan de slag:
        > [!NOTE]
        > Er is een limiet van 250.000 gebeurtenissen voor onbewerkte gebeurtenis niveau gegevens.
 
-       [![Verbinden](media/how-to-connect-power-bi/connect-to-power-bi.png)](media/how-to-connect-power-bi/connect-to-power-bi.png#lightbox)
+       [![Verbinding maken](media/how-to-connect-power-bi/connect-to-power-bi.png)](media/how-to-connect-power-bi/connect-to-power-bi.png#lightbox)
 
    1. Als u uw Azure Time Series Insights-omgeving niet hebt geconfigureerd met een **warme archief**, wordt een waarschuwing weer gegeven.
 
@@ -110,13 +110,13 @@ Nu u de gegevens in Power BI hebt geïmporteerd, is het tijd om een rapport met 
 
 1. Zorg ervoor dat op de linkerkant van het venster de **rapport** weergave is geselecteerd.
 
-    [![De rapport weergave selecteren](media/how-to-connect-power-bi/select-the-report-view.png)](media/how-to-connect-power-bi/select-the-report-view.png#lightbox)
+    [![Scherm afbeelding toont pictogram rapport weergave.](media/how-to-connect-power-bi/select-the-report-view.png)](media/how-to-connect-power-bi/select-the-report-view.png#lightbox)
 
 1. Selecteer in de kolom **Visualisaties** uw visuele element van uw keuze. Selecteer bijvoorbeeld **lijn diagram**. Hiermee wordt een leeg lijn diagram aan uw canvas toegevoegd.
 
 1. Selecteer in de lijst **velden** **_Timestamp** en sleep het veld naar het **asveld** om items weer te geven langs de X-as. Zorg ervoor dat u overschakelt naar **_Timestamp** als de waarde voor de **as** (standaard is **datum hiërarchie**).
 
-    [![De rapport weergave selecteren](media/how-to-connect-power-bi/select-timestamp.png)](media/how-to-connect-power-bi/select-timestamp.png#lightbox)
+    [![In de scherm afbeelding wordt het tijds tempel menu met _Timestamp geselecteerd weer gegeven.](media/how-to-connect-power-bi/select-timestamp.png)](media/how-to-connect-power-bi/select-timestamp.png#lightbox)
 
 1. Klik opnieuw in de lijst **velden** op **TimeSeriesId** en sleep deze naar het veld **waarden** om items weer te geven op de Y-as.
 

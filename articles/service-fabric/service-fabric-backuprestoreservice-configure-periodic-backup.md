@@ -1,16 +1,14 @@
 ---
 title: Inzicht in periodieke back-upconfiguratie
 description: Gebruik Service Fabric periodieke functie voor back-up en herstel om periodieke back-ups te configureren van uw betrouw bare stateful Services of Reliable Actors.
-author: hrushib
 ms.topic: article
 ms.date: 2/01/2019
-ms.author: hrushib
-ms.openlocfilehash: 53f63f341fe614f2287a09f37fafd2eedc614be7
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 852e430a9183d92e13536fd6499f3d1404985455
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530910"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538616"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Informatie over periodieke back-upconfiguratie in azure Service Fabric
 

@@ -3,20 +3,18 @@ title: Migratie van v1 tot v2 API
 titleSuffix: Azure Cognitive Services
 description: De Api's voor het versie 1-eind punt en de ontwerp-Language Understanding zijn afgeschaft. Gebruik deze hand leiding om te begrijpen hoe u kunt migreren naar versie 2-eind punt-en ontwerp-Api's.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 04/02/2019
-ms.author: diberry
-ms.openlocfilehash: c5880aac01e0611565afb825a61b682197baf5d6
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: e1e9ac4ceef843712cc2e39f26ff0aca5341e201
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344744"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541319"
 ---
 # <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>API v1 naar v2-migratie handleiding voor LUIS-apps
 De api's voor het versie 1- [eind punt](https://aka.ms/v1-endpoint-api-docs) en het [ontwerp](https://aka.ms/v1-authoring-api-docs) zijn afgeschaft. Gebruik deze hand leiding om te begrijpen hoe u kunt migreren naar versie 2- [eind punt](https://go.microsoft.com/fwlink/?linkid=2092356) -en [ontwerp](https://go.microsoft.com/fwlink/?linkid=2092087) -api's.

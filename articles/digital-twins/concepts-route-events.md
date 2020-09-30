@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 96da89fa8d7e4783afa11807534bbaeba52b79fe
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d41518b1fc0d8cdda3ded1e8036bd29e24e2b34a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91334256"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541353"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Gebeurtenissen binnen en buiten Azure Digital Apparaatdubbels routeren
 
@@ -55,7 +55,9 @@ Ontwikkel aars moeten eerst eind punten definiëren om een gebeurtenis route te 
 * Event Hub
 * Service Bus
 
-Eind punten worden ingesteld met behulp van Control-Api's (ondersteund door de [Azure Digital APPARAATDUBBELS cli](how-to-use-cli.md)of via de Azure Portal. Met een eindpunt definitie kunt u het volgende doen:
+Als u een eind punt wilt maken, kunt u de Azure Digital Apparaatdubbels [**Control-api's**](how-to-manage-routes-apis-cli.md#create-an-endpoint-for-azure-digital-twins), [**cli-opdrachten**](how-to-manage-routes-apis-cli.md#manage-endpoints-and-routes-with-cli)of de [**Azure Portal**](how-to-manage-routes-portal.md#create-an-endpoint-for-azure-digital-twins)gebruiken. 
+
+Wanneer u een eind punt definieert, moet u het volgende opgeven:
 * De naam van het eind punt
 * Het type eind punt (Event Grid, Event hub of Service Bus)
 * De primaire connection string en secundaire connection string voor verificatie 
@@ -69,7 +71,9 @@ De eindpunt-Api's die beschikbaar zijn in het besturings vlak zijn:
 
 ## <a name="create-an-event-route"></a>Een gebeurtenis route maken
  
-Gebeurtenis routes worden gemaakt in een client toepassing. Een manier om dit te doen is met behulp van de `CreateEventRoute` [.net (C#) SDK-](how-to-use-apis-sdks.md) aanroep: 
+Als u een gebeurtenis route wilt maken, kunt u de Azure Digital Apparaatdubbels [**Data-vlak-api's**](how-to-manage-routes-apis-cli.md#create-an-event-route), CLI- [**opdrachten**](how-to-manage-routes-apis-cli.md#manage-endpoints-and-routes-with-cli)of de [**Azure Portal**](how-to-manage-routes-portal.md#create-an-event-route)gebruiken. 
+
+Hier volgt een voor beeld van het maken van een gebeurtenis route binnen een client toepassing, met behulp van de `CreateEventRoute` [.net (C#) SDK-](how-to-use-apis-sdks.md) aanroep: 
 
 ```csharp
 EventRoute er = new EventRoute("endpointName");

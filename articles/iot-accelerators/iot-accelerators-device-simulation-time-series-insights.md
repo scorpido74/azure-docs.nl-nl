@@ -8,12 +8,12 @@ ms.date: 08/20/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 2bbd7911a40d6a256d478e2533ad2469b8fd6973
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 88255e60593403951db5b984bb9c69b1060a93c2
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73889333"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540571"
 ---
 # <a name="use-time-series-insights-to-visualize-telemetry-sent-from-the-device-simulation-solution-accelerator"></a>Time Series Insights gebruiken om telemetrie te visualiseren die wordt verzonden vanuit de apparaat simulatie oplossings versneller
 
@@ -21,7 +21,7 @@ Met de Device simulatie Solution Accelerator kunt u telemetrie genereren op basi
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u de stappen in deze hand leiding wilt volgen, hebt u een actief Azure-abonnement nodig. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u de stappen in deze hand leiding wilt volgen, hebt u een actief Azure-abonnement nodig. Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 In de stappen in deze hand leiding wordt ervan uitgegaan dat u de apparaat simulatie oplossings versneller hebt geïmplementeerd in uw Azure-abonnement. Als u de oplossings versneller nog niet hebt geïmplementeerd, volgt u de stappen in de Snelstartgids [een simulatie van een Cloud oplossing implementeren en uitvoeren](quickstart-device-simulation-deploy.md) .
 
@@ -77,7 +77,7 @@ In de volgende stappen wordt de Azure CLI in de Azure Cloud Shell gebruikt voor 
     > [!NOTE]
     > Als u de Time Series Insights-omgeving toevoegt aan dezelfde resource groep als de oplossings versneller, wordt deze verwijderd wanneer u de oplossings versneller verwijdert.
 
-1. Klik op **Create**. Het kan enkele minuten duren voordat de omgeving is gemaakt.
+1. Klik op **Maken**. Het kan enkele minuten duren voordat de omgeving is gemaakt.
 
 ## <a name="create-event-source"></a>Gebeurtenisbron maken
 
@@ -104,13 +104,13 @@ Maak een nieuwe gebeurtenis bron om verbinding te maken met uw IoT-hub. Gebruik 
     | IOT-hub-naam | **Contoso-simulation7d894**. Gebruik de naam van uw IoT-hub via de computer simulatie oplossings versneller. |
     | Naam van het IoT-hub-beleid | **iothubowner** |
     | Beleids sleutel voor IOT hub | Dit veld wordt automatisch ingevuld. |
-    | IoT-hub-consumentengroep | **devicesimulationtsi** |
+    | Klanten groep voor IOT hub | **devicesimulationtsi** |
     | Serialisatie-indeling voor gebeurtenissen | **JSON** |
     | Naam van de timestamp-eigenschap | Leeg laten |
 
     ![Gebeurtenis bron maken](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-event-source-create.png)
 
-1. Klik op **Create**.
+1. Klik op **Maken**.
 
 > [!NOTE]
 > U kunt [aanvullende gebruikers toegang verlenen](../../articles/time-series-insights/time-series-insights-data-access.md#grant-data-access) tot de time series Insights Explorer.
@@ -137,7 +137,7 @@ De Time Series Insights Explorer is een web-app die u kunt gebruiken voor het vi
 
 1. Selecteer in het deel venster voor waarden aan de linkerkant de optie **Tempe ratuur** als **meting** en **iothub-verbinding-apparaat-id** als **splitsing op** waarde:
 
-    ![Time Series Insights Explorer-query](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-query1.png)
+    ![Scherm opname van het Time Series Insights paneel ' termen ', met de waarden ' meten ' en ' splitsen op ' gemarkeerd.](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-query1.png)
 
 1. Klik met de rechter muisknop op de grafiek en selecteer **gebeurtenissen verkennen**:
 

@@ -3,20 +3,18 @@ title: Afgeschafte vooraf samengestelde entiteiten-LUIS
 titleSuffix: Azure Cognitive Services
 description: Dit artikel bevat afgeschafte vooraf opgebouwde entiteits gegevens in Language Understanding (LUIS).
 services: cognitive-services
-author: diberry
 ms.custom: seodec18
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 07/29/2019
-ms.author: diberry
-ms.openlocfilehash: 46da828b7553fdf9cdded817febd3bb95cd4cbb9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6a050990c28b9137440ec05d918774d76f216be8
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78270679"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540843"
 ---
 # <a name="deprecated-prebuilt-entities-in-a-luis-app"></a>Afgeschafte vooraf gemaakte entiteiten in een LUIS-app
 De volgende vooraf gemaakte entiteiten zijn afgeschaft en kunnen niet worden toegevoegd aan nieuwe LUIS-apps.
@@ -40,7 +38,7 @@ Vooraf gebouwde entiteit   |   Voorbeeld van een utterance   |   JSON
 `builtin.geography.pointOfInterest`   |   `sahara desert`|`{ "type": "builtin.geography.pointOfInterest", "entity": "sahara desert" }`|
 
 ## <a name="encyclopedia-culture"></a>Encyclopedie-cultuur
-De **encyclopedie** is alleen beschikbaar `en-US` in de land instelling.
+De **encyclopedie** is alleen beschikbaar in de `en-US` land instelling.
 
 #### <a name="encyclopedia-subtypes"></a>Subtypen voor encyclopedie
 De ingebouwde invoeg entiteit van de encyclopedie omvat meer dan 100 subtypen in de volgende tabel: de encyclopedie-entiteiten worden bovendien vaak aan meerdere typen toegewezen. De query Ronald Reagan levert bijvoorbeeld het volgende resultaat:

@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b297ee3d03d61b654e2b7fffa17141a1fd5268f3
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 93c97055c6e31050dbc545445ec144ba37abc865
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90971169"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539891"
 ---
 # <a name="assign-a-role-to-a-group-using-privileged-identity-management"></a>Een rol toewijzen aan een groep met behulp van Privileged Identity Management
 
@@ -35,7 +35,7 @@ In dit artikel wordt beschreven hoe u een Azure Active Directory-rol (Azure AD) 
 
 1. Selecteer een rol en selecteer vervolgens een groep. Alleen groepen die in aanmerking komen voor roltoewijzing (groepen die kunnen worden toegewezen aan rollen) worden weer gegeven, niet alle groepen.
 
-    ![Selecteer de gebruiker aan wie u de rol wilt toewijzen](./media/roles-groups-pim-eligible/select-member.png)
+    ![Scherm opname van de pagina toewijzingen toevoegen met de secties ' rol selecteren ' en ' leden selecteren ' gemarkeerd.](./media/roles-groups-pim-eligible/select-member.png)
 
 1. Selecteer de gewenste lidmaatschaps instelling. Kies **in aanmerking komend**voor rollen die moeten worden geactiveerd. Standaard komt de gebruiker permanent in aanmerking, maar u kunt ook een begin-en eind tijd instellen voor de geschiktheid van de gebruiker. Zodra u klaar bent, klikt u op opslaan en toevoegen om de roltoewijzing te volt ooien.
 

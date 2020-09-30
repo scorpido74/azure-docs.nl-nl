@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: article
 ms.date: 04/23/2020
 ms.author: cshoe
-ms.openlocfilehash: 37f79d717b7ea0e26717e7b51f9e66b908b96521
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 79aebf7ed80fea370ff7a5d5cc40911da4144414
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640957"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537698"
 ---
 # <a name="manually-run-a-non-http-triggered-function"></a>Handmatig een niet door HTTP geactiveerde functie uitvoeren
 
@@ -43,11 +43,11 @@ Gebruik de aanvraaglocatie in Postman in combinatie met de hoofdsleutel van de f
 
 1. Kopieer de sleutel waarde in het gedeelte **sleutel bewerken** naar het klem bord en selecteer **OK**.
 
-    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-functions-master-key-copy.png" alt-text="Kopieer de hoofd sleutel naar het klem bord." border="true":::
+    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-functions-master-key-copy.png" alt-text="Zoek de hoofd sleutel die u wilt kopiëren." border="true":::
 
 1. Nadat u de *_master* sleutel hebt gekopieerd, selecteert u **code + test**en selecteert u vervolgens **Logboeken**. Hier zijn de berichten van de functie gelogd als u de functie handmatig in Postman uitvoert.
 
-    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-function-log.png" alt-text="Bekijk de logboeken om de resultaten van de hoofd sleutel test weer te geven." border="true":::
+    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-function-log.png" alt-text="Zoek de hoofd sleutel die u wilt kopiëren." border="true":::
 
 > [!CAUTION]  
 > Vanwege verhoogde machtigingen in de functie-app die door de hoofdsleutel zijn verleend, dient u deze sleutel niet te delen met derden of in een toepassing te distribueren. De sleutel mag alleen naar een HTTPS-eind punt worden verzonden.
@@ -62,22 +62,22 @@ Open Postman en volg deze stappen:
 1. Typ **x-functions-Key** als de eerste sleutel en plak de hoofd sleutel (van het klem bord) als waarde.
 1. Typ **Content-type** als tweede sleutel en typ **Application/JSON** als waarde.
 
-    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-headers.png" alt-text="Instellingen van Postman-headers." border="true":::
+    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-headers.png" alt-text="Zoek de hoofd sleutel die u wilt kopiëren." border="true":::
 
 1. Selecteer het tabblad **Hoofdtekst**.
 1. Typ **{"input": "test"}** als de hoofd tekst van de aanvraag.
 
-    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-body.png" alt-text="Instellingen van de Postman-hoofd tekst." border="true":::
+    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-body.png" alt-text="Zoek de hoofd sleutel die u wilt kopiëren." border="true":::
 
 1. Selecteer **Verzenden**.
         
-    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-send.png" alt-text="Verzend een aanvraag met een bericht." border="true":::
+    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-send.png" alt-text="Zoek de hoofd sleutel die u wilt kopiëren." border="true":::
 
     Postman rapporteert vervolgens de status **202 - Geaccepteerd**.
 
 1. Ga vervolgens terug naar uw functie in de Azure-portal. Bekijk de logboeken en er worden berichten weer geven die afkomstig zijn van de hand matige aanroep van de functie.
 
-    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-functions-master-key-logs.png" alt-text="Bekijk de logboeken om de resultaten van de hoofd sleutel test weer te geven." border="true":::
+    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-functions-master-key-logs.png" alt-text="Zoek de hoofd sleutel die u wilt kopiëren." border="true":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

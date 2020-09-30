@@ -8,12 +8,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/25/2020
-ms.openlocfilehash: 210a4a352f5130bc67d70f47bdf6305c5a992282
-ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
+ms.openlocfilehash: 2e73039418233c97fc20242ed7af7df14c5b47ee
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91403778"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534774"
 ---
 # <a name="how-to-set-up-change-and-deletion-detection-for-blobs-in-azure-cognitive-search-indexing"></a>De detectie van wijzigingen en verwijderingen voor blobs in azure Cognitive Search indexeren instellen
 
@@ -100,7 +100,11 @@ Wanneer een Indexeer functie een verwijderde BLOB verwerkt en het bijbehorende Z
 
 Als u het document opnieuw wilt indexeren, wijzigt u de `"softDeleteMarkerValue" : "false"` voor die Blob en voert u de Indexeer functie opnieuw uit.
 
-## <a name="see-also"></a>Zie ook
+## <a name="help-us-make-azure-cognitive-search-better"></a>Help ons Azure Cognitive Search beter te maken
+
+Als u een functie verzoek of ideeën voor verbeteringen hebt, geeft u uw invoer op [UserVoice](https://feedback.azure.com/forums/263029-azure-search/)op. Als u hulp nodig hebt bij het gebruik van de bestaande functie, plaatst u uw vraag op [stack overflow](https://stackoverflow.microsoft.com/questions/tagged/18870).
+
+## <a name="next-steps"></a>Volgende stappen
 
 * [Indexeerfuncties in Azure Cognitive Search](search-indexer-overview.md)
 * [Een BLOB-Indexeer functie configureren](search-howto-indexing-azure-blob-storage.md)

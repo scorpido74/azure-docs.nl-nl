@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 59d181d8f4c176a8fc00ac0fb8ab0216c6ae27f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 417cc13c4a201a0dd86a846c347cb395b8d81c43
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080032"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91535522"
 ---
 # <a name="built-in-cognitive-skills-for-text-and-image-processing-during-indexing-azure-cognitive-search"></a>Ingebouwde cognitieve vaardig heden voor tekst-en afbeeldings verwerking tijdens het indexeren (Azure Cognitive Search)
 
@@ -31,14 +31,14 @@ In dit artikel vindt u informatie over de cognitieve vaardig heden van Azure Cog
 
 Verschillende vaardig heden zijn flexibel in wat ze gebruiken of produceren. Over het algemeen zijn de meeste vaardig heden gebaseerd op vooraf getrainde modellen, wat betekent dat u het model niet kunt trainen met uw eigen trainings gegevens. In de volgende tabel worden de vaardig heden van micro soft opgesomd en beschreven. 
 
-| Eigen | Description |
+| Vaardigheid | Beschrijving |
 |-------|-------------|
 |[Micro soft. skills. Text. CustomEntityLookupSkill](cognitive-search-skill-custom-entity-lookup.md)| Zoekt naar tekst uit een aangepaste, door de gebruiker gedefinieerde lijst met woorden en zinsdelen.|
 | [Micro soft. skills. Text. KeyPhraseSkill](cognitive-search-skill-keyphrases.md) | Deze vaardigheid maakt gebruik van een voortraind model voor het detecteren van belang rijke zinnen op basis van de term plaatsing, taal kundige regels, nabij de andere voor waarden en hoe ongebruikelijk de term binnen de bron gegevens valt. |
 | [Micro soft. skills. Text. LanguageDetectionSkill](cognitive-search-skill-language-detection.md)  | Deze vaardigheid maakt gebruik van een voortraind model om te detecteren welke taal wordt gebruikt (één taal-ID per document). Wanneer er meerdere talen worden gebruikt binnen dezelfde tekst segmenten, is de uitvoer de LCID van de taal die het meest in gebruik is.|
 | [Micro soft. skills. Text. MergeSkill](cognitive-search-skill-textmerger.md) | Consolideert tekst van een verzameling velden in één veld.  |
 | [Micro soft. skills. Text. EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md) | Deze vaardigheid maakt gebruik van een voortraind model voor het instellen van entiteiten voor een vaste set categorieën: personen, locatie, organisatie, e-mails, Url's, datum/tijd-velden. |
-| [Micro soft. skills. Text. PIIDetectionSkill](cognitive-search-skill-pii-detection.md)  | Deze vaardigheid maakt gebruik van een voortraind model om persoons gegevens uit een bepaalde tekst op te halen. De vaardigheid biedt ook verschillende opties voor het maskeren van de gedetecteerde persoons gegevens entiteiten in de tekst.  |
+| [Micro soft. skills. Text. PIIDetectionSkill](cognitive-search-skill-pii-detection.md)  | Deze vaardigheid maakt gebruik van een voortraind model voor het extra heren van persoonlijke gegevens uit een bepaalde tekst. De vaardigheid biedt ook verschillende opties voor het maskeren van de gedetecteerde persoonlijke gegevens entiteiten in de tekst.  |
 | [Micro soft. skills. Text. SentimentSkill](cognitive-search-skill-sentiment.md)  | Deze vaardigheid maakt gebruik van een pretraind model om positieve of negatieve sentiment te beoordelen op basis van een record. De Score ligt tussen 0 en 1. Er treden neutrale scores op voor de null-case wanneer sentiment niet kan worden gedetecteerd en voor tekst die als neutraal wordt beschouwd.  |
 | [Micro soft. skills. Text. SplitSkill](cognitive-search-skill-textsplit.md) | Splitst tekst op pagina's zodat u inhoud stapsgewijs kunt verrijken of uitbreiden. |
 | [Micro soft. skills. Text. TranslationSkill](cognitive-search-skill-text-translation.md) | Deze vaardigheid maakt gebruik van een voortraind model voor het vertalen van de invoer tekst in een groot aantal talen voor het gebruik van normalisatie-of lokalisatie-use cases. |
@@ -53,7 +53,7 @@ Verschillende vaardig heden zijn flexibel in wat ze gebruiken of produceren. Ove
 
 Zie [een aangepaste interface definiëren](cognitive-search-custom-skill-interface.md) voor meer informatie over het maken van een aangepaste [vaardigheid](cognitive-search-custom-skill-web-api.md). voor [Beeld: een aangepaste vaardigheid maken voor AI-verrijking](cognitive-search-create-custom-skill-example.md).
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 + [Een vaardig heden definiëren](cognitive-search-defining-skillset.md)
 + [Definitie van aangepaste vaardigheden interface](cognitive-search-custom-skill-interface.md)

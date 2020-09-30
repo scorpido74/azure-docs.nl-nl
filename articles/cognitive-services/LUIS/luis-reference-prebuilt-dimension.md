@@ -4,19 +4,17 @@ titleSuffix: Azure Cognitive Services
 description: Dit artikel bevat vooraf samengestelde entiteits gegevens in Language Understanding (LUIS).
 services: cognitive-services
 ms.custom: seodec18
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 10/14/2019
-ms.author: diberry
-ms.openlocfilehash: 3c7bebb38d0331c76eeaaa1d9d6464c568a61b83
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0b5f081dc8c0bc203ccafde4a513371d11e36879
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78270636"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538344"
 ---
 # <a name="dimension-prebuilt-entity-for-a-luis-app"></a>Samengestelde dimensie-entiteit voor een LUIS-app
 De vooraf samengestelde dimensie-entiteit detecteert verschillende typen dimensies, ongeacht de LUIS-app-cultuur. Omdat deze entiteit al is getraind, hoeft u geen voorbeeld uitingen met dimensies toe te voegen aan de toepassings intentie. Dimensie-entiteit wordt ondersteund in [veel cult uren](luis-reference-prebuilt-entities.md).
@@ -33,7 +31,7 @@ De volgende entiteits objecten worden geretourneerd voor de query:
 
 #### <a name="v3-response"></a>[V3-antwoord](#tab/V3)
 
-De volgende JSON is met de `verbose` para meter ingesteld `false`op:
+De volgende JSON is met de `verbose` para meter ingesteld op `false` :
 
 ```json
 "entities": {
@@ -46,7 +44,7 @@ De volgende JSON is met de `verbose` para meter ingesteld `false`op:
 }
 ```
 #### <a name="v3-verbose-response"></a>[Uitgebreide respons van v3](#tab/V3-verbose)
-De volgende JSON is met de `verbose` para meter ingesteld `true`op:
+De volgende JSON is met de `verbose` para meter ingesteld op `true` :
 
 ```json
 "entities": {

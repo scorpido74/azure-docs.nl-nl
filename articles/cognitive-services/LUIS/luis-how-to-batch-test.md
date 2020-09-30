@@ -3,20 +3,18 @@ title: Een batch test uitvoeren-LUIS
 titleSuffix: Azure Cognitive Services
 description: Gebruik Language Understanding (LUIS) batch test sets om uitingen te vinden met onjuiste doel stellingen en entiteiten.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
-ms.author: diberry
-ms.openlocfilehash: ee15d08c820492cfa2c0701dfe3b682d57e00187
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 8b34005f2796403e32b41a93e4163c7da16d40bb
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344404"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540945"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>Batch tests met een set voor beeld-uitingen
 
@@ -30,13 +28,13 @@ ms.locfileid: "84344404"
 
     ![Koppeling voor batch testen](./media/luis-how-to-batch-test/batch-testing-link.png)
 
-2. Selecteer **gegevensset importeren**. Het dialoog venster **nieuwe gegevensset importeren** wordt weer gegeven. Selecteer **bestand kiezen** en zoek naar een JSON-bestand met de juiste [JSON-indeling](luis-concept-batch-test.md#batch-file-format) die *niet meer dan 1.000* uitingen bevat om te testen.
+2. Selecteer **Gegevensset importeren**. Het dialoog venster **nieuwe gegevensset importeren** wordt weer gegeven. Selecteer **bestand kiezen** en zoek naar een JSON-bestand met de juiste [JSON-indeling](luis-concept-batch-test.md#batch-file-format) die *niet meer dan 1.000* uitingen bevat om te testen.
 
     Import fouten worden gerapporteerd in een rode meldingen balk boven aan de browser. Wanneer een import fouten bevat, wordt er geen gegevensset gemaakt. Zie [common Errors](luis-concept-batch-test.md#common-errors-importing-a-batch)(Engelstalig) voor meer informatie.
 
 3. Voer in het veld **naam van gegevensset** een naam in voor het gegevenssetbestand. Het gegevenssetbestand bevat een **matrix met uitingen** , met inbegrip van het *Label intentie* en *entiteiten*. Bekijk het [voor beeld van een batch bestand](luis-concept-batch-test.md#batch-file-format) op syntaxis.
 
-4. Selecteer **Done**. Het gegevenssetbestand wordt toegevoegd.
+4. Selecteer **Gereed**. Het gegevenssetbestand wordt toegevoegd.
 
 ## <a name="run-rename-export-or-delete-dataset"></a>Gegevensset uitvoeren, naam wijzigen, exporteren of verwijderen
 

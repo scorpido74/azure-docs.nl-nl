@@ -3,20 +3,18 @@ title: Intenties toevoegen-LUIS
 titleSuffix: Azure Cognitive Services
 description: Voeg intenties toe aan uw LUIS-app om groepen vragen of opdrachten te identificeren die dezelfde bedoelingen hebben.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
-ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: fe1c157d6847366a59739cd5128987127d01da94
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: c2802f1b41ed2842e12c808a8c380ebd646ffa03
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344421"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540928"
 ---
 # <a name="add-intents-to-determine-user-intention-of-utterances"></a>Intenties toevoegen om te bepalen wat de gebruikers intentie van uitingen zijn
 
@@ -26,7 +24,7 @@ In de LUIS-Portal worden de intenties beheerd vanuit de **eerste sectie van de n
 
 ## <a name="add-an-intent-to-your-app"></a>Een intentie toevoegen aan uw app
 
-1. Meld u aan bij de [Luis-Portal](https://www.luis.ai)en selecteer uw **abonnement** en de resource voor het **ontwerpen** van de apps die zijn toegewezen aan die ontwerp bron.
+1. Meld u aan bij de [LUIS-portal](https://www.luis.ai) en selecteer uw **abonnement** en **Ontwerpresource** om de apps weer te geven die aan die ontwerpresource zijn toegewezen.
 1. Open uw app door de naam ervan op **mijn apps** -pagina te selecteren.
 1. Selecteer op de pagina **intenties** **+ maken**.
 1. In het dialoog venster **nieuwe intentie maken** voert u de naam van de doel groep in, bijvoorbeeld `ModifyOrder` en selecteert u **gereed**.

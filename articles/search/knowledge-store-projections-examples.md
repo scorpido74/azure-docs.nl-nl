@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 18646fc92dda7cebb7a8c1030285956d8fe4df74
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: f40841887b8116ad1384dc2b827d8215ea659490
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88924158"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537494"
 ---
 # <a name="how-to-shape-and-export-enrichments"></a>Verrijkingen vorm geven en exporteren
 
@@ -356,7 +356,7 @@ Bij het segmenteren wordt impliciet een relatie tussen de bovenliggende en onder
 
 De ```generatedKeyName``` ```referenceKeyName``` Eigenschappen en worden gebruikt voor het koppelen van gegevens in tabellen of zelfs in projectie typen. Elke rij in de onderliggende tabel/projectie heeft een eigenschap die terugkeert naar het bovenliggende item. De naam van de kolom of eigenschap in het onderliggende element is ```referenceKeyName``` van het bovenliggende item. Wanneer de ```referenceKeyName``` niet is ingesteld, wordt de service standaard ingesteld op de ```generatedKeyName``` van het bovenliggende item. 
 
-Power BI is afhankelijk van deze gegenereerde sleutels om relaties in de tabellen te detecteren. Als u de kolom in de onderliggende tabel anders wilt hebben, stelt u de ```referenceKeyName``` eigenschap in voor de bovenliggende tabel. Een voor beeld hiervan is het instellen ```generatedKeyName``` van de as-id in de tabel pbiDocument en de ```referenceKeyName``` as documentID. Dit resulteert in de kolom in de pbiEntities-en pbiKeyPhrases-tabellen met de document-id met de naam DocumentID.
+Power BI is afhankelijk van deze gegenereerde sleutels om relaties in de tabellen te detecteren. Als u de kolom in de onderliggende tabel anders wilt hebben, stelt u de ```referenceKeyName``` eigenschap in voor de bovenliggende tabel. Een voor beeld hiervan is het instellen ```generatedKeyName``` van de as-id in de tabel pbiDocument en de ```referenceKeyName``` as documentID. Dit resulteert in de kolom in de pbiEntities-en pbiKeyPhrases-tabellen met de document-ID met de naam DocumentID.
 
 ## <a name="projecting-to-objects"></a>Projecteren op objecten
 

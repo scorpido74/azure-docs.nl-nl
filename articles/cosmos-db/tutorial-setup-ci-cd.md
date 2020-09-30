@@ -8,12 +8,12 @@ ms.date: 01/28/2020
 ms.author: dech
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 605fba03e65d4200d0f1e18219e892ec6d207bc4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: af3c8713b70911399b2382184dc9fd78d585e03a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019314"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540282"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Een CI/CD-pijplijn instellen met de build-taak van Azure Cosmos DB Emulator in Azure DevOps
 
@@ -34,7 +34,7 @@ Kies vervolgens de organisatie waarin u de extensie installeren.
 > [!NOTE]
 > Als u een uitbrei ding wilt installeren in een Azure DevOps-organisatie, moet u een account eigenaar of beheerder van een project verzameling zijn. Als u niet bevoegd bent, maar wel lid bent van het account, kunt u extensies aanvragen. [Meer informatie.](https://docs.microsoft.com/azure/devops/marketplace/faq-extensions?view=vsts)
 
-:::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_2.png" alt-text="Een Azure DevOps-organisatie kiezen voor het installeren van een uitbrei ding":::
+:::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_2.png" alt-text="Build-taak van Azure Cosmos DB Emulator zoeken en installeren in de Marketplace van Azure DevOps":::
 
 ## <a name="create-a-build-definition"></a>Een build-definitie maken
 
@@ -42,11 +42,11 @@ Nu de uitbrei ding is geïnstalleerd, meldt u zich aan bij uw Azure DevOps-organ
 
 1. Om een nieuwe build-definitie te maken, gaat u naar het tabblad **Builds** in Azure DevOps. Selecteer **+ Nieuw.** \> **Nieuwe build-pipeline**
 
-   :::image type="content" source="./media/tutorial-setup-ci-cd/CreateNewBuildDef_1.png" alt-text="Een nieuwe build-pipeline maken":::
+   :::image type="content" source="./media/tutorial-setup-ci-cd/CreateNewBuildDef_1.png" alt-text="Build-taak van Azure Cosmos DB Emulator zoeken en installeren in de Marketplace van Azure DevOps":::
 
 2. Selecteer de gewenste **bron**, **teamproject**, **opslagplaats**, en de **standaardvertakking voor handmatige en geplande builds**. Nadat u vereiste opties hebt gekozen, selecteert u **Doorgaan**
 
-   :::image type="content" source="./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png" alt-text="Selecteer het teamproject, de opslagplaats en de vertakking voor de build-pipeline":::
+   :::image type="content" source="./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png" alt-text="Build-taak van Azure Cosmos DB Emulator zoeken en installeren in de Marketplace van Azure DevOps":::
 
 3. Selecteer ten slotte de gewenste sjabloon voor de build-pipeline. We selecteren de sjabloon **ASP.NET** voor deze zelfstudie. U hebt nu een build-pijp lijn die u kunt instellen voor het gebruik van de Azure Cosmos DB emulator-opbouw taak. 
 
@@ -66,7 +66,7 @@ Start-CosmosDbEmulator
 
 1. Selecteer vervolgens het **+** pictogram naast de agent taak om de emulator-build-taak toe te voegen. Zoek naar **cosmos** in het zoekvak, selecteer **Azure Cosmos DB Emulator** en voeg deze toe aan de agent-taak. De build-taak start een container waarop al een exemplaar van de Cosmos DB-emulator wordt uitgevoerd. De Azure Cosmos DB Emulator-taak moet vóór alle andere taken worden geplaatst die ervan uitgaan dat de emulator wordt uitgevoerd.
 
-   :::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_3.png" alt-text="De Emulator-build-taak toevoegen aan de build-definitie":::
+   :::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_3.png" alt-text="Build-taak van Azure Cosmos DB Emulator zoeken en installeren in de Marketplace van Azure DevOps":::
 
 In deze zelfstudie voegt u de taak toe aan het begin om ervoor te zorgen dat de emulator beschikbaar is voordat onze tests worden uitgevoerd.
 
@@ -159,21 +159,21 @@ namespace todo.Tests
 
 Navigeer naar de uitvoeringsopties in de taak VSTest. Geef bij **Settings file** aan dat de tests worden geconfigureerd via een **.runsettings**-bestand. Voeg `-endpoint $(CosmosDbEmulator.Endpoint)` toe voor de optie **Override test run parameters**. Hiermee stelt u in dat de testtaak moet verwijzen naar het eindpunt van de build-taak van de emulator, en niet naar het eindpunt dat is gedefinieerd in het **.runsettings**-bestand.  
 
-:::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_5.png" alt-text="Variabele voor eindpunt vervangen door eindpunt van build-taak van emulator":::
+:::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_5.png" alt-text="Build-taak van Azure Cosmos DB Emulator zoeken en installeren in de Marketplace van Azure DevOps":::
 
 ## <a name="run-the-build"></a>De build uitvoeren
 
 Nu gaan we de build **Opslaan en in de wachtrij zetten**. 
 
-:::image type="content" source="./media/tutorial-setup-ci-cd/runBuild_1.png" alt-text="De build opslaan en uitvoeren":::
+:::image type="content" source="./media/tutorial-setup-ci-cd/runBuild_1.png" alt-text="Build-taak van Azure Cosmos DB Emulator zoeken en installeren in de Marketplace van Azure DevOps":::
 
 Als de build is gestart, ziet u dat de taak van Cosmos DB Emulator de Docker-installatiekopie gaat downloaden met de emulator geïnstalleerd. 
 
-:::image type="content" source="./media/tutorial-setup-ci-cd/runBuild_4.png" alt-text="De build opslaan en uitvoeren":::
+:::image type="content" source="./media/tutorial-setup-ci-cd/runBuild_4.png" alt-text="Build-taak van Azure Cosmos DB Emulator zoeken en installeren in de Marketplace van Azure DevOps":::
 
 Als de build is voltooid, kijkt u of de tests zijn gelukt, en of ze allemaal vanuit de build-taak zijn uitgevoerd met de Cosmos DB Emulator.
 
-:::image type="content" source="./media/tutorial-setup-ci-cd/buildComplete_1.png" alt-text="De build opslaan en uitvoeren":::
+:::image type="content" source="./media/tutorial-setup-ci-cd/buildComplete_1.png" alt-text="Build-taak van Azure Cosmos DB Emulator zoeken en installeren in de Marketplace van Azure DevOps":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

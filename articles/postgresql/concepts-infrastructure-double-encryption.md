@@ -6,17 +6,14 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/30/2020
-ms.openlocfilehash: d54bef277d80a178c45ce918290d46c11387b7d1
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 241c404eff1242c52520f94d5d955db7e260148c
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918091"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537902"
 ---
 # <a name="azure-database-for-postgresql-infrastructure-double-encryption"></a>Dubbele versleuteling van Azure Database for PostgreSQL-infra structuur
-
-> [!NOTE]
-> Op dit moment moet u toegang aanvragen om deze mogelijkheid te gebruiken. Als u dit wilt doen, neemt u contact op met AskAzureDBforPostgreSQL@service.microsoft.com .
 
 Azure Database for PostgreSQL maakt gebruik van opslag [versleuteling van gegevens op rest](concepts-security.md#at-rest) voor gegevens met behulp van de door micro soft beheerde sleutels. Gegevens, met inbegrip van back-ups, worden versleuteld op schijf en deze versleuteling is altijd ingeschakeld en kan niet worden uitgeschakeld. De versleuteling maakt gebruik van FIPS 140-2-gevalideerde cryptografische modules en een AES 256-bits code ring voor de versleuteling van Azure Storage.
 
@@ -66,7 +63,7 @@ Voor Azure Database for PostgreSQL heeft de ondersteuning voor infra structuur m
 
    * VS - oost
    * VS - zuid-centraal
-   * US - west 2
+   * VS - west 2
    
 * Deze functie wordt alleen ondersteund in regio's en servers, die ondersteuning bieden voor opslag tot Maxi maal 16 TB. Raadpleeg de [opslag documentatie](concepts-pricing-tiers.md#storage)voor de lijst met Azure-regio's die ondersteuning bieden voor opslag tot 16 TB.
 

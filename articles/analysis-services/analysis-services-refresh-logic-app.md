@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: chlound
 ms.custom: references_regions
-ms.openlocfilehash: fd5c4043d417a99c7ffa57534fd7808f1710190a
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: c4908373035b1a3148cd77db513f4e6bd23a50d7
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448577"
+ms.locfileid: "91540724"
 ---
 # <a name="refresh-with-logic-apps"></a>Vernieuwen met Logic Apps
 
@@ -27,7 +27,7 @@ Alle aanroepen moeten worden geverifieerd met een geldig Azure Active Directory 
 ## <a name="design-the-logic-app"></a>De logische app ontwerpen
 
 > [!IMPORTANT]
-> In de volgende voor beelden wordt ervan uitgegaan dat de Azure Analysis Services firewall is uitgeschakeld. Als de firewall is ingeschakeld, moet het open bare IP-adres van de initiator van de aanvraag worden white list in de firewall van Azure Analysis Services. Zie [limieten en configuratie-informatie voor Azure Logic apps](../logic-apps/logic-apps-limits-and-config.md#configuration)voor meer informatie over Azure Logic apps IP-bereiken per regio.
+> In de volgende voor beelden wordt ervan uitgegaan dat de Azure Analysis Services firewall is uitgeschakeld. Als de firewall is ingeschakeld, moet het open bare IP-adres van de aanvrager van de aanvraag worden toegevoegd aan de lijst goedgekeurd in de Azure Analysis Services firewall. Zie [limieten en configuratie-informatie voor Azure Logic apps](../logic-apps/logic-apps-limits-and-config.md#configuration)voor meer informatie over Azure Logic apps IP-bereiken per regio.
 
 ### <a name="prerequisites"></a>Vereisten
 

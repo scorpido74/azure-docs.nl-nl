@@ -3,20 +3,18 @@ title: Versies beheren-LUIS
 titleSuffix: Azure Cognitive Services
 description: Met versies kunt u verschillende modellen bouwen en publiceren. Het is een goed idee om het huidige actieve model te klonen naar een andere versie van de app voordat u wijzigingen aanbrengt in het model.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
-ms.author: diberry
-ms.openlocfilehash: 3aa7958ea4edf6cf3e3c1b170e2351f49f719983
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.openlocfilehash: 3cf4ce5dc7061065ea501ae1c00cd5b9e5404770
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84782837"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540860"
 ---
 # <a name="use-versions-to-edit-and-test-without-impacting-staging-or-production-apps"></a>Versies gebruiken om te bewerken en te testen zonder dat dit van invloed is op staging-of productie-apps
 
@@ -26,7 +24,7 @@ De actieve versie is de versie die u bewerkt in de LUIS-portal voor het **maken*
 
 Als u met versies wilt werken, opent u uw app door de naam ervan te selecteren op **mijn apps** pagina en vervolgens **beheren** te selecteren in de bovenste balk en vervolgens **versies** in de linkernavigatiebalk te selecteren.
 
-In de lijst met versies ziet u welke versies worden gepubliceerd, waar ze worden gepubliceerd en welke versie momenteel actief is.
+De lijst met versies toont welke versies er zijn gepubliceerd, waar ze zijn gepubliceerd en welke versie momenteel actief is.
 
 ## <a name="clone-a-version"></a>Een versie klonen
 

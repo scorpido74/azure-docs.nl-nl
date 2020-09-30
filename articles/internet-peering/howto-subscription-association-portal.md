@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: how-to
 ms.date: 5/18/2020
 ms.author: derekol
-ms.openlocfilehash: 57c38d3b6eeb26a38a36fb67da25bcf960cee2dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 22cb179925f95fd0762371cc904fcbd02675339a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710844"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540265"
 ---
 # <a name="associate-peer-asn-to-azure-subscription-using-the-portal"></a>Peer-ASN koppelen aan Azure-abonnement met de portal
 
@@ -70,12 +70,12 @@ Als Internet provider of provider van Internet Exchange kunt u een nieuwe PeerAs
 1. Klik vervolgens op **controleren + maken** en houd er rekening mee dat de basis validatie van de gegevens die u hebt ingevoerd, wordt uitgevoerd. Dit wordt weer gegeven in een lint bovenaan, zoals het *uitvoeren van definitieve validatie...*.
 
     > [!div class="mx-imgBorder"]
-    > ![Tabblad controle PeerAsn](./media/peerasn-review-tab-validation.png)
+    > ![Scherm afbeelding toont het tabblad een peer A S N-basis beginselen koppelen.](./media/peerasn-review-tab-validation.png)
 
 1. Wanneer het bericht in het lint wordt *gevalideerd*, controleert u uw gegevens en verzendt u de aanvraag door op **maken**te klikken. Als de validatie niet is geslaagd, klikt u op **vorige** en herhaalt u de bovenstaande stappen om uw aanvraag aan te passen en te controleren of de ingevoerde waarden geen fouten bevatten.
 
     > [!div class="mx-imgBorder"]
-    > ![Tabblad controle PeerAsn](./media/peerasn-review-tab.png)
+    > ![Scherm afbeelding toont het tabblad een peer A S N-basis beginselen koppelen waarvoor validatie is geslaagd.](./media/peerasn-review-tab.png)
 
 1. Nadat u de aanvraag hebt ingediend, wacht u totdat de implementatie is voltooid. Als de implementatie mislukt, neemt u contact op met [micro soft-peering](mailto:peering@microsoft.com). Er wordt een geslaagde implementatie weer gegeven.
 
@@ -101,6 +101,6 @@ Het is momenteel niet mogelijk om een PeerAsn te verwijderen. Als u PeerAsn moet
 * [Exchange-peering maken of wijzigen met behulp van de portal](howto-exchange-portal.md)
 * [Een verouderde Exchange-peering converteren in een Azure-resource met de portal](howto-legacy-exchange-portal.md)
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 Ga voor meer informatie naar [Veelgestelde vragen over Internet peering](faqs.md)

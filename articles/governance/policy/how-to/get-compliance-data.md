@@ -3,12 +3,12 @@ title: Nalevings gegevens voor beleid ophalen
 description: Azure Policy evaluaties en effecten bepalen de naleving. Meer informatie over hoe u de compatibiliteits Details van uw Azure-resources kunt ophalen.
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 83bf00710346193a89b59c6a72a0e4840dd5abfb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5a308a23e84587eba69951081674d3525f083441
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91291013"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537947"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Compatibiliteits gegevens van Azure-resources ophalen
 
@@ -22,7 +22,7 @@ Er zijn verschillende manieren om toegang te krijgen tot de nalevings gegevens d
 Voordat u de methoden voor het rapporteren van naleving bekijkt, kijken we naar wanneer de compatibiliteits informatie wordt bijgewerkt en de frequentie en gebeurtenissen die een evaluatie cyclus activeren.
 
 > [!WARNING]
-> Als de nalevings status wordt gerapporteerd als **niet geregistreerd**, controleert u of de resource provider **micro soft. PolicyInsights** is geregistreerd en of de gebruiker beschikt over de juiste RBAC-machtigingen (op rollen gebaseerde toegangs beheer), zoals beschreven in [RBAC in azure Policy](../overview.md#rbac-permissions-in-azure-policy).
+> Als de nalevings status wordt gerapporteerd als **niet geregistreerd**, controleert u of de resource provider **micro soft. PolicyInsights** is geregistreerd en of de gebruiker beschikt over de juiste machtigingen voor Azure op rollen gebaseerde toegangs beheer (Azure RBAC), zoals beschreven in [azure RBAC-machtigingen in azure Policy](../overview.md#azure-rbac-permissions-in-azure-policy).
 
 ## <a name="evaluation-triggers"></a>Evaluatie triggers
 
@@ -148,7 +148,7 @@ Stel dat u een resource groep hebt – ContsoRG, waarbij sommige opslag accounts
 
 In dit voor beeld moet u zich op het hoede zijn voor beveiligings Risico's. Nu u een beleids toewijzing hebt gemaakt, wordt deze geëvalueerd voor alle opgenomen en niet-uitgesloten opslag accounts in de resource groep ContosoRG. De drie niet-compatibele opslag accounts worden gecontroleerd, waardoor de status ervan wordt gewijzigd in **niet-compatibel.**
 
-:::image type="complex" source="../media/getting-compliance-data/resource-group03.png" alt-text="Diagram van naleving van het opslag account in de resource groep contoso R G." border="false":::
+:::image type="complex" source="../media/getting-compliance-data/resource-group03.png" alt-text="Diagram van opslag accounts die worden blootgesteld aan open bare netwerken in de resource groep contoso R G." border="false":::
    Diagram met afbeeldingen voor vijf opslag accounts in de resource groep contoso R G. Opslag accounts die zich in één en drie bevinden, hebben nu een groen vinkje, terwijl voor opslag accounts twee, vier en vijf nu rode waarschuwings tekens onder zijn.
 :::image-end:::
 
@@ -164,7 +164,7 @@ Azure Policy gebruikt de velden **type** en **naam** in de definitie om te bepal
 Het nalevings percentage wordt bepaald door het verdelen van de **compatibele** en **vrijgestelde** resources op basis van het _totale aantal resources_. _Het totale aantal resources_ wordt gedefinieerd als de som van de **compatibele**, **niet-compatibele**, **uitgesloten**en **conflicterende** resources. De algemene compatibiliteits aantallen zijn de som van afzonderlijke resources die in **overeenstemming** zijn met of worden **uitgesloten** van de som van alle afzonderlijke resources. In de onderstaande afbeelding zijn er 20 afzonderlijke resources die van toepassing zijn en slechts één **niet-compatibel**is.
 De algemene bron compatibiliteit is 95% (19 van 20).
 
-:::image type="content" source="../media/getting-compliance-data/simple-compliance.png" alt-text="Scherm opname van Details van beleids naleving van de pagina naleving." border="false":::
+:::image type="content" source="../media/getting-compliance-data/simple-compliance.png" alt-text="Diagram van opslag accounts die worden blootgesteld aan open bare netwerken in de resource groep contoso R G." border="false":::
 
 > [!NOTE]
 > Naleving van regelgeving in Azure Policy is een preview-functie. Nalevings eigenschappen van de SDK en pagina's in de portal zijn anders voor ingeschakelde initiatieven. Zie [naleving van regelgeving](../concepts/regulatory-compliance.md) voor meer informatie
@@ -173,11 +173,11 @@ De algemene bron compatibiliteit is 95% (19 van 20).
 
 De Azure Portal demonstreert een grafische ervaring voor het visualiseren en het leren van de status van naleving in uw omgeving. Op de pagina **beleid** bevat de optie **overzicht** Details over de beschik bare bereiken over de naleving van beide beleids regels en initiatieven. Samen met de compatibiliteits status en het aantal per toewijzing bevat het een diagram met de compatibiliteit van de afgelopen zeven dagen. De pagina **naleving** bevat veel dezelfde informatie (met uitzonde ring van de grafiek), maar biedt extra filters en sorteer opties.
 
-:::image type="content" source="../media/getting-compliance-data/compliance-page.png" alt-text="Scherm afbeelding van de nalevings pagina, filter opties en Details." border="false":::
+:::image type="content" source="../media/getting-compliance-data/compliance-page.png" alt-text="Diagram van opslag accounts die worden blootgesteld aan open bare netwerken in de resource groep contoso R G." border="false":::
 
 Omdat een beleid of initiatief kan worden toegewezen aan verschillende bereiken, bevat de tabel het bereik voor elke toewijzing en het type definitie dat is toegewezen. Er worden ook het aantal niet-compatibele resources en niet-compatibele beleids regels voor elke toewijzing gegeven. Het selecteren van een beleid of initiatief in de tabel biedt een diep gaande blik op de naleving van de desbetreffende toewijzing.
 
-:::image type="content" source="../media/getting-compliance-data/compliance-details.png" alt-text="Scherm opname van de pagina nalevings Details, inclusief aantallen en Details van resource-compatibel." border="false":::
+:::image type="content" source="../media/getting-compliance-data/compliance-details.png" alt-text="Diagram van opslag accounts die worden blootgesteld aan open bare netwerken in de resource groep contoso R G." border="false":::
 
 De lijst met resources op het tabblad **resource compatibiliteit** bevat de evaluatie status van bestaande resources voor de huidige toewijzing. Het tabblad wordt standaard ingesteld op **niet-compatibel**, maar kan worden gefilterd.
 Gebeurtenissen (toevoegen, controleren, weigeren, implementeren) die zijn geactiveerd door de aanvraag om een resource te maken, worden weer gegeven op het tabblad **gebeurtenissen** .
@@ -185,15 +185,15 @@ Gebeurtenissen (toevoegen, controleren, weigeren, implementeren) die zijn geacti
 > [!NOTE]
 > Voor een AKS-engine beleid is de weer gegeven resource de resource groep.
 
-:::image type="content" source="../media/getting-compliance-data/compliance-events.png" alt-text="Scherm afbeelding van het tabblad gebeurtenissen op de pagina nalevings Details." border="false":::
+:::image type="content" source="../media/getting-compliance-data/compliance-events.png" alt-text="Diagram van opslag accounts die worden blootgesteld aan open bare netwerken in de resource groep contoso R G." border="false":::
 
 Voor resources van de [resource provider modus](../concepts/definition-structure.md#resource-provider-modes) selecteert u op het tabblad **resource naleving** de resource, klikt u met de rechter muisknop op de rij en selecteert u **compatibiliteits details weer geven** de details van de onderdeel naleving. Deze pagina bevat ook tabbladen voor een overzicht van de beleids regels die zijn toegewezen aan deze resource, gebeurtenissen, onderdeel gebeurtenissen en wijzigings geschiedenis.
 
-:::image type="content" source="../media/getting-compliance-data/compliance-components.png" alt-text="Scherm afbeelding van het tabblad Compatibiliteit van onderdelen en Details van naleving voor een toewijzing van de resource provider modus." border="false":::
+:::image type="content" source="../media/getting-compliance-data/compliance-components.png" alt-text="Diagram van opslag accounts die worden blootgesteld aan open bare netwerken in de resource groep contoso R G." border="false":::
 
 Klik op de pagina Resource naleving met de rechter muisknop op de rij van de gebeurtenis waarvoor u meer informatie wilt verzamelen en selecteer **activiteiten logboeken weer geven**. De pagina activiteiten logboek wordt geopend en wordt vooraf gefilterd op de zoek opdracht met Details voor de toewijzing en de gebeurtenissen. Het activiteiten logboek bevat aanvullende context en informatie over deze gebeurtenissen.
 
-:::image type="content" source="../media/getting-compliance-data/compliance-activitylog.png" alt-text="Scherm opname van het activiteiten logboek voor de Azure Policy activiteiten en evaluaties." border="false":::
+:::image type="content" source="../media/getting-compliance-data/compliance-activitylog.png" alt-text="Diagram van opslag accounts die worden blootgesteld aan open bare netwerken in de resource groep contoso R G." border="false":::
 
 ### <a name="understand-non-compliance"></a>Meer informatie over niet-naleving
 
@@ -649,7 +649,7 @@ Trent Baker
 
 Als u een [log Analytics-werk ruimte](../../../azure-monitor/log-query/log-query-overview.md) hebt met `AzureActivity` van de [analyse van activiteitenlogboek oplossing](../../../azure-monitor/platform/activity-log.md) die aan uw abonnement is gekoppeld, kunt u de resultaten van de niet-naleving van de evaluatie van nieuwe en bijgewerkte resources ook weer geven met behulp van eenvoudige Kusto-query's en de `AzureActivity` tabel. Met details in Azure Monitor-logboeken kunnen waarschuwingen worden geconfigureerd om niet-naleving te controleren.
 
-:::image type="content" source="../media/getting-compliance-data/compliance-loganalytics.png" alt-text="Scherm opname van Azure Monitor logboeken met Azure Policy acties in de tabel AzureActivity." border="false":::
+:::image type="content" source="../media/getting-compliance-data/compliance-loganalytics.png" alt-text="Diagram van opslag accounts die worden blootgesteld aan open bare netwerken in de resource groep contoso R G." border="false":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,16 +1,14 @@
 ---
 title: Periodic backup and restore in Azure Service Fabric (Periodieke back-up en herstel in Azure Service Fabric)
 description: Gebruik de periodieke back-up-en herstel functie van Service Fabric voor het inschakelen van periodieke gegevens back-ups van uw toepassings gegevens.
-author: hrushib
 ms.topic: conceptual
 ms.date: 5/24/2019
-ms.author: hrushib
-ms.openlocfilehash: 9a99a936b3e6cf53c30c0264b70046008dab283c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 18d10b365cb2e4f4b4e3592233d5f467714bd5b5
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261256"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538667"
 ---
 # <a name="periodic-backup-and-restore-in-an-azure-service-fabric-cluster"></a>Periodieke back-ups maken en herstellen in een Azure Service Fabric-cluster
 > [!div class="op_single_selector"]

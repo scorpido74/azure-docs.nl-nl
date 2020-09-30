@@ -3,20 +3,18 @@ title: DatetimeV2 prebuiled entities-LUIS
 titleSuffix: Azure Cognitive Services
 description: Dit artikel heeft datetimeV2 prebuiled entity Information in Language Understanding (LUIS).
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/13/2020
-ms.author: diberry
-ms.openlocfilehash: 33f8b787119e1c5d6d1a1bb28c94d9791a1c048e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 83522de9c00056a3808b002b3103f45c72553399
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81272607"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534179"
 ---
 # <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>DatetimeV2 prebuiled-entiteit voor een LUIS-app
 
@@ -120,7 +118,7 @@ De volgende utterance en de gedeeltelijke JSON-respons worden hieronder weer geg
 |Start index|**int** -de index in de utterance waarbij de entiteit begint.|
 |endIndex|**int** -de index in de utterance waarbij de entiteit eindigt.|
 |opgelost|Heeft een `values` matrix met een, twee of vier [waarden voor de oplossing](#values-of-resolution).|
-|beëindigen|De eind waarde van een tijd of datum bereik, in dezelfde notatie als `value`. Wordt alleen gebruikt `type` als `daterange`is `timerange`, of`datetimerange`|
+|beëindigen|De eind waarde van een tijd of datum bereik, in dezelfde notatie als `value` . Wordt alleen gebruikt als `type` is `daterange` , `timerange` of `datetimerange`|
 
 * * *
 
@@ -143,18 +141,18 @@ De vooraf gebouwde **datetimeV2** -entiteit heeft de volgende subtypen, en voor 
 
 Elk element van de `values` matrix kan de volgende velden bevatten:
 
-|Naam van eigenschap|Beschrijving van eigenschap|
+|Naam van eigenschap|Eigenschapsbeschrijving|
 |--|--|
 |Timex|tijd, datum of datum bereik in de TIMEX-indeling die volgt op de [ISO 8601-standaard](https://en.wikipedia.org/wiki/ISO_8601) en de TIMEX3-kenmerken voor aantekening met behulp van de TimeML-taal.|
-|mod|de term die wordt gebruikt om te beschrijven hoe de waarde `before`kan `after`worden gebruikt, zoals,.|
-|type|Het subtype, dat een van de volgende items kan zijn: `datetime`, `date`, `time`, `daterange`, `timerange`, `datetimerange`, `duration`, `set`.|
-|waarde|**Beschrijving.** Een datetime-object in de notatie JJJJ-MM-DD (datum), uu: mm: SS (tijd) JJJJ-MM-DD uu: mm: SS (datetime). Als `type` dat `duration`het geval is, is de waarde het aantal seconden (duur) <br/> Wordt alleen gebruikt `type` als `datetime` is `date`or `time`,, of ' duration '.|
+|mod|de term die wordt gebruikt om te beschrijven hoe de waarde `before` kan worden gebruikt, zoals, `after` .|
+|type|Het subtype, dat een van de volgende items kan zijn: `datetime` , `date` , `time` , `daterange` , `timerange` , `datetimerange` , `duration` , `set` .|
+|waarde|**Beschrijving.** Een datetime-object in de notatie JJJJ-MM-DD (datum), uu: mm: SS (tijd) JJJJ-MM-DD uu: mm: SS (datetime). Als `type` dat `duration` het geval is, is de waarde het aantal seconden (duur) <br/> Wordt alleen gebruikt als `type` is `datetime` or `date` , `time` , of ' duration '.|
 
 ## <a name="valid-date-values"></a>Geldige datum waarden
 
 De **datetimeV2** ondersteunt datums tussen de volgende bereiken:
 
-| Min. | Max. |
+| Min. | Max |
 |----------|-------------|
 | 1e januari 1900   | 31 december 2099 |
 
@@ -274,7 +272,7 @@ De volgende utterance en de gedeeltelijke JSON-respons worden hieronder weer geg
 
 ## <a name="date-range-resolution-examples-for-numeric-date"></a>Voor beelden van resolutie van datum bereik voor numerieke datum
 
-De `datetimeV2` entiteit extraheert de datum-en tijds bereik. De `start` velden `end` en bepalen het begin en het einde van het bereik. Voor de utterance `May 2nd to May 5th`levert Luis **daterange** -waarden voor zowel het huidige jaar als het volgende jaar. In het `timex` veld geven de `XXXX` waarden de dubbel zinnigheid van het jaar. `P3D`geeft aan dat de periode drie dagen lang is.
+De `datetimeV2` entiteit extraheert de datum-en tijds bereik. De `start` `end` velden en bepalen het begin en het einde van het bereik. Voor de utterance `May 2nd to May 5th` levert Luis **daterange** -waarden voor zowel het huidige jaar als het volgende jaar. In het `timex` veld geven de `XXXX` waarden de dubbel zinnigheid van het jaar. `P3D` geeft aan dat de periode drie dagen lang is.
 
 De volgende utterance en de gedeeltelijke JSON-respons worden hieronder weer gegeven.
 
@@ -378,7 +376,7 @@ De volgende utterance en de gedeeltelijke JSON-respons worden hieronder weer geg
 
 ## <a name="date-range-resolution-examples-for-day-of-week"></a>Voor beelden van resolutie van datum bereik voor dag van week
 
-In het volgende voor beeld ziet u **datetimeV2** hoe Luis gebruikmaakt van datetimeV2 `Tuesday to Thursday`om de utterance op te lossen. In dit voor beeld is de huidige datum 19 juni. LUIS bevat **daterange** -waarden voor beide datumbereiken die voorafgaat en de huidige datum volgen.
+In het volgende voor beeld ziet u hoe LUIS gebruikmaakt van **datetimeV2** om de utterance op te lossen `Tuesday to Thursday` . In dit voor beeld is de huidige datum 19 juni. LUIS bevat **daterange** -waarden voor beide datumbereiken die voorafgaat en de huidige datum volgen.
 
 De volgende utterance en de gedeeltelijke JSON-respons worden hieronder weer gegeven.
 
@@ -485,8 +483,8 @@ De waarden matrix heeft twee tijd elementen als de tijd of het tijds bereik niet
 DatetimeV2 JSON-antwoord is gewijzigd in de API v3. In het volgende voor beeld ziet u hoe LUIS gebruikmaakt van **datetimeV2** om de utterance met een tijds bereik op te lossen.
 
 Wijzigingen van API v2:
-* `datetimeV2.timex.type`de eigenschap wordt niet meer geretourneerd omdat deze wordt geretourneerd op het bovenliggende niveau `datetimev2.type`.
-* De `datetimeV2.value` naam van de eigenschap is gewijzigd in `datetimeV2.timex`.
+* `datetimeV2.timex.type` de eigenschap wordt niet meer geretourneerd omdat deze wordt geretourneerd op het bovenliggende niveau `datetimev2.type` .
+* De `datetimeV2.value` naam van de eigenschap is gewijzigd in `datetimeV2.timex` .
 
 De volgende utterance en de gedeeltelijke JSON-respons worden hieronder weer gegeven.
 
@@ -494,7 +492,7 @@ De volgende utterance en de gedeeltelijke JSON-respons worden hieronder weer geg
 
 #### <a name="v3-response"></a>[V3-antwoord](#tab/5-1)
 
-De volgende JSON is met de `verbose` para meter ingesteld `false`op:
+De volgende JSON is met de `verbose` para meter ingesteld op `false` :
 
 ```JSON
 
@@ -519,7 +517,7 @@ De volgende JSON is met de `verbose` para meter ingesteld `false`op:
 ```
 #### <a name="v3-verbose-response"></a>[Uitgebreide respons van v3](#tab/5-2)
 
-De volgende JSON is met de `verbose` para meter ingesteld `true`op:
+De volgende JSON is met de `verbose` para meter ingesteld op `true` :
 
 ```json
 
@@ -673,7 +671,7 @@ De volgende utterance en de gedeeltelijke JSON-respons worden hieronder weer geg
 
 De `datetime` vooraf samengestelde entiteit wordt afgeschaft en vervangen door **datetimeV2**.
 
-Als u `datetime` wilt `datetimeV2` vervangen door in uw Luis-app, voert u de volgende stappen uit:
+Als u wilt vervangen `datetime` door `datetimeV2` in uw Luis-app, voert u de volgende stappen uit:
 
 1. Open het deel venster **entiteiten** van de web-interface van Luis.
 2. De **datum/** prebuilende entiteit verwijderen.

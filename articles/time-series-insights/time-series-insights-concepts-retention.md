@@ -9,16 +9,19 @@ manager: diviso
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 005725acf7270ff87ac9418f27941bdb205ae986
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4f236679d0662df852581a6a8408ed6bc0d4e3fe
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87059420"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91535686"
 ---
 # <a name="understand-data-retention-in-azure-time-series-insights-gen1"></a>Meer informatie over gegevens retentie in Azure Time Series Insights gen1
+
+> [!CAUTION]
+> Dit is een gen1-artikel.
 
 In dit artikel worden twee primaire instellingen beschreven die van invloed zijn op de Bewaar periode van gegevens in uw Azure Time Series Insights omgeving.
 
@@ -37,7 +40,8 @@ Daarnaast heeft uw Azure Time Series Insights omgeving een instelling voor het g
 
 > [!NOTE]
 > Wanneer u een nieuwe omgeving maakt, wordt standaard de Bewaar periode geconfigureerd om **oude gegevens te verwijderen**. Deze instelling kan worden in-of uitgeschakeld nadat deze is gemaakt met behulp van de Azure Portal op de pagina **configureren** van de Azure time series Insights omgeving.
-> * Lees voor meer informatie over het configureren van Bewaar beleid het [configureren van Bewaar periode in azure time series Insights](time-series-insights-how-to-configure-retention.md).
+>
+> - Lees voor meer informatie over het configureren van Bewaar beleid het [configureren van Bewaar periode in azure time series Insights](time-series-insights-how-to-configure-retention.md).
 
 Beide beleids regels voor het bewaren van gegevens worden in meer detail beschreven.
 
@@ -69,8 +73,8 @@ Wanneer het dagelijkse ingangs gemiddelde van deze omgeving meer dan 0,166 GB pe
 - Het helpt u bij het verlies van gegevens, maar u kunt ook een kans maken voor het verlies van uw meest recente gegevens als binnenkomend wordt gepauzeerd na de Bewaar periode van de bron van de gebeurtenis.
 - Zodra de maximum capaciteit van een omgeving is bereikt, worden de gegevens in de omgeving echter onderbroken totdat de volgende aanvullende acties worden uitgevoerd:
 
-   - U verhoogt de maximum capaciteit van de omgeving om meer schaal eenheden toe te voegen, zoals wordt beschreven in [uw Azure time series Insights omgeving schalen](time-series-insights-how-to-scale-your-environment.md).
-   - De Bewaar periode voor gegevens is bereikt en de gegevens worden opgeschoond, waardoor de omgeving onder de maximum capaciteit komt.
+  - U verhoogt de maximum capaciteit van de omgeving om meer schaal eenheden toe te voegen, zoals wordt beschreven in [uw Azure time series Insights omgeving schalen](time-series-insights-how-to-scale-your-environment.md).
+  - De Bewaar periode voor gegevens is bereikt en de gegevens worden opgeschoond, waardoor de omgeving onder de maximum capaciteit komt.
 
 ### <a name="example-three"></a>Voor beeld drie
 

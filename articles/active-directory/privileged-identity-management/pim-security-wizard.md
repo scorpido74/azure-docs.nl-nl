@@ -14,12 +14,12 @@ ms.date: 09/01/2020
 ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b826c6a1fd5a60247f8c69cb10cd24e7e001fe71
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ff5d15ef66b597fdf56fefe90f35cbf122bb093f
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91335881"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534434"
 ---
 # <a name="discovery-and-insights-preview-for-azure-ad-roles-formerly-security-wizard"></a>Detectie en inzichten (preview) voor Azure AD-rollen (voorheen beveiligings wizard)
 
@@ -35,7 +35,7 @@ Zorg er ook voor dat de roltoewijzingen permanent blijven als een gebruiker een 
 
 ## <a name="open-discovery-and-insights-preview"></a>Detectie en inzichten openen (preview-versie)
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 1. Open **Azure AD privileged Identity Management**.
 
@@ -45,7 +45,7 @@ Zorg er ook voor dat de roltoewijzingen permanent blijven als een gebruiker een 
 
 1. Selecteer **globale beheerders verminderen**.
 
-    ![Het deel venster globale beheerders verlagen: alle leden worden weer gegeven](./media/pim-security-wizard/new-preview-page.png)
+    ![Scherm opname waarin de ' detectie en inzichten (preview) ' wordt weer gegeven met de actie ' minder algemene beheerders ' geselecteerd.](./media/pim-security-wizard/new-preview-page.png)
 
 1. Bekijk de lijst met algemene toewijzingen voor beheerdersrol.
 

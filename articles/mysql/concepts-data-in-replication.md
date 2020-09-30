@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 8/7/2020
-ms.openlocfilehash: a9d6c1b2438f20a06062842b96b147e094760238
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 9212142ff6f43a84b141b0781fbe9828eebcbd40
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031214"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537154"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>Gegevens repliceren naar Azure Database for MySQL
 
@@ -28,25 +28,25 @@ Gebruik de [Azure database Migration service](https://azure.microsoft.com/servic
 ## <a name="limitations-and-considerations"></a>Beperkingen en overwegingen
 
 ### <a name="data-not-replicated"></a>Gegevens niet gerepliceerd
-De [*MySQL-systeem database*](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html) op de hoofd server wordt niet gerepliceerd. Wijzigingen van accounts en machtigingen op de hoofd server worden niet gerepliceerd. Als u een account op de master server maakt en dit account toegang heeft tot de replica server, moet u het account hand matig op de replica server maken. Zie de [MySQL-hand leiding](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html)voor meer informatie over de tabellen die zijn opgenomen in de systeem database.
+De [*MySQL-systeem database*](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html) op de bron server wordt niet gerepliceerd. Wijzigingen van accounts en machtigingen op de bron server worden niet gerepliceerd. Als u een account op de bron server maakt en dit account toegang heeft tot de replica server, moet u het account hand matig op de replica server maken. Zie de [MySQL-hand leiding](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html)voor meer informatie over de tabellen die zijn opgenomen in de systeem database.
 
 ### <a name="filtering"></a>Filteren
-Voor het overs laan van gerepliceerde tabellen van de hoofd server (lokaal gehost, in virtuele machines of een database service die wordt gehost door andere cloud providers), `replicate_wild_ignore_table` wordt de para meter ondersteund. U kunt deze para meter eventueel bijwerken op de replica server die wordt gehost in azure met behulp van de [Azure Portal](howto-server-parameters.md) of [Azure cli](howto-configure-server-parameters-using-cli.md).
+Voor het overs laan van replicerende tabellen van de bron server (lokaal gehost, op virtuele machines of een database service die wordt gehost door andere cloud providers), `replicate_wild_ignore_table` wordt de para meter ondersteund. U kunt deze para meter eventueel bijwerken op de replica server die wordt gehost in azure met behulp van de [Azure Portal](howto-server-parameters.md) of [Azure cli](howto-configure-server-parameters-using-cli.md).
 
 Raadpleeg de [MySQL-documentatie](https://dev.mysql.com/doc/refman/8.0/en/replication-options-replica.html#option_mysqld_replicate-wild-ignore-table) voor meer informatie over deze para meter.
 
 ### <a name="requirements"></a>Vereisten
-- De versie van de hoofd server moet ten minste MySQL-versie 5,6 zijn. 
-- De versies van de hoofd-en replica server moeten hetzelfde zijn. Beide moeten bijvoorbeeld MySQL-versie 5,6 zijn of beide moeten MySQL-versie 5,7 zijn.
+- De versie van de bron server moet ten minste MySQL-versie 5,6 zijn. 
+- De bron-en replica server versie moeten gelijk zijn. Beide moeten bijvoorbeeld MySQL-versie 5,6 zijn of beide moeten MySQL-versie 5,7 zijn.
 - Elke tabel moet een primaire sleutel hebben.
-- De MySQL InnoDB-engine moet worden gebruikt voor de hoofd server.
-- De gebruiker moet machtigingen hebben voor het configureren van binaire logboek registratie en het maken van nieuwe gebruikers op de hoofd server.
-- Als SSL is ingeschakeld op de master server, controleert u of het SSL-CA-certificaat dat is opgegeven voor het domein, is opgenomen in de `mysql.az_replication_change_master` opgeslagen procedure. Raadpleeg de volgende [voor beelden](https://docs.microsoft.com/azure/mysql/howto-data-in-replication#link-master-and-replica-servers-to-start-data-in-replication) en de `master_ssl_ca` para meter.
-- Zorg ervoor dat het IP-adres van de hoofdserver is toegevoegd aan de firewallregels van de Azure Database for MySQL-replicaserver. Firewallregels bijwerken met de [Azure-portal](https://docs.microsoft.com/azure/mysql/howto-manage-firewall-using-portal) of [Azure CLI](https://docs.microsoft.com/azure/mysql/howto-manage-firewall-using-cli).
-- Zorg ervoor dat de computer waarop de hoofdserver wordt gehost zowel binnenkomend als uitgaand verkeer op poort 3306 toestaat.
-- Zorg ervoor dat de hoofd server een **openbaar IP-adres**heeft, dat de DNS openbaar toegankelijk is of een Fully QUALIFIED domain name (FQDN) heeft.
+- De MySQL InnoDB-engine moet worden gebruikt voor de bron server.
+- De gebruiker moet machtigingen hebben voor het configureren van binaire logboek registratie en het maken van nieuwe gebruikers op de bron server.
+- Als SSL is ingeschakeld op de bron server, moet u ervoor zorgen dat het SSL-CA-certificaat dat is opgegeven voor het domein, is opgenomen in de `mysql.az_replication_change_master` opgeslagen procedure. Raadpleeg de volgende [voor beelden](https://docs.microsoft.com/azure/mysql/howto-data-in-replication#link-master-and-replica-servers-to-start-data-in-replication) en de `master_ssl_ca` para meter.
+- Zorg ervoor dat het IP-adres van de bron server is toegevoegd aan de firewall regels van de Azure Database for MySQL replica-server. Firewallregels bijwerken met de [Azure-portal](https://docs.microsoft.com/azure/mysql/howto-manage-firewall-using-portal) of [Azure CLI](https://docs.microsoft.com/azure/mysql/howto-manage-firewall-using-cli).
+- Zorg ervoor dat de computer die de bron server host, zowel binnenkomend als uitgaand verkeer op poort 3306 toestaat.
+- Controleer of de bron server een **openbaar IP-adres**heeft, of de DNS openbaar toegankelijk is of een Fully QUALIFIED domain name (FQDN) heeft.
 
-### <a name="other"></a>Overige
+### <a name="other"></a>Anders
 - Replicatie van gegevens wordt alleen ondersteund in de Algemeen en de prijs categorieën die zijn geoptimaliseerd voor geheugen.
 - Algemene trans actie-id's (GTID) worden niet ondersteund.
 

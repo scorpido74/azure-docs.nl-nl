@@ -3,12 +3,12 @@ title: Bron vergrendeling begrijpen
 description: Meer informatie over de vergrendelings opties in azure blauw drukken om resources te beveiligen wanneer u een blauw druk toewijst.
 ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9d400abce5d428c01b43cdda38a5c6f0df2d4db8
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 30d5528b4613dc04d1e825d10e11b7eeadc57698
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651932"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534859"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Meer informatie over het vergren delen van resources in azure-blauw drukken
 
@@ -33,7 +33,7 @@ Resources die zijn gemaakt door artefacten in een blauw druk-toewijzing, hebben 
 
 ## <a name="overriding-locking-states"></a>Vergrendelings status negeren
 
-Het is doorgaans mogelijk dat iemand met het juiste op [rollen gebaseerde toegangs beheer](../../../role-based-access-control/overview.md) (RBAC) op het abonnement, zoals de rol ' eigenaar ', toestemming mag geven om een resource te wijzigen of te verwijderen. Deze toegang is niet het geval wanneer Azure-blauw drukken wordt toegepast op vergren deling als onderdeel van een geïmplementeerde toewijzing. Als de toewijzing is ingesteld met de optie **alleen-lezen** of **niet verwijderen** , niet zelfs de eigenaar van het abonnement kan de geblokkeerde actie uitvoeren op de beveiligde bron.
+Het is doorgaans mogelijk dat iemand met de juiste op [rollen gebaseerd toegangs beheer van Azure (Azure RBAC)](../../../role-based-access-control/overview.md) voor het abonnement, zoals de rol ' eigenaar ', toestemming mag geven om resources te wijzigen of te verwijderen. Deze toegang is niet het geval wanneer Azure-blauw drukken wordt toegepast op vergren deling als onderdeel van een geïmplementeerde toewijzing. Als de toewijzing is ingesteld met de optie **alleen-lezen** of **niet verwijderen** , niet zelfs de eigenaar van het abonnement kan de geblokkeerde actie uitvoeren op de beveiligde bron.
 
 Deze beveiligings maatregel beveiligt de consistentie van de gedefinieerde blauw druk en de omgeving die is ontworpen om te worden gemaakt op basis van per ongeluk of programmatische verwijdering of wijziging.
 
@@ -101,7 +101,7 @@ Wanneer de toewijzing wordt verwijderd, worden de vergren delingen die zijn gema
 
 ## <a name="how-blueprint-locks-work"></a>Hoe blauw drukken werkt
 
-Een RBAC-actie voor het weigeren van [toewijzingen](../../../role-based-access-control/deny-assignments.md) wordt toegepast op artefact resources tijdens de toewijzing van een blauw druk als de toewijzing de optie **alleen-lezen** of **niet verwijderen** is geselecteerd. De actie voor weigeren wordt toegevoegd door de beheerde identiteit van de blauw druk toewijzing en kan alleen worden verwijderd uit de artefact resources met dezelfde beheerde identiteit. Deze beveiligings meting dwingt het vergrendelings mechanisme af en voor komt het verwijderen van de blauw druk buiten Azure blauw drukken.
+Een actie voor weigeren voor het weigeren van een [Azure RBAC-toewijzing wordt](../../../role-based-access-control/deny-assignments.md) toegepast op artefact resources tijdens de toewijzing van een blauw druk als de toewijzing de optie **alleen-lezen** of **niet verwijderen** is geselecteerd. De actie voor weigeren wordt toegevoegd door de beheerde identiteit van de blauw druk toewijzing en kan alleen worden verwijderd uit de artefact resources met dezelfde beheerde identiteit. Deze beveiligings meting dwingt het vergrendelings mechanisme af en voor komt het verwijderen van de blauw druk buiten Azure blauw drukken.
 
 :::image type="content" source="../media/resource-locking/blueprint-deny-assignment.png" alt-text="Scherm afbeelding van de pagina toegangs beheer (I A M) en het tabblad Toewijzingen weigeren voor een resource groep." border="false":::
 
@@ -161,7 +161,7 @@ In sommige ontwerp-of beveiligings scenario's kan het nodig zijn om een principa
 
 ## <a name="exclude-an-action-from-a-deny-assignment"></a>Een actie uitsluiten van een weiger toewijzing
 
-Net als bij het uitsluiten van [een principal](#exclude-a-principal-from-a-deny-assignment) op een [toekennings toewijzing](../../../role-based-access-control/deny-assignments.md) in een blauw druk-toewijzing, kunt u specifieke [RBAC-bewerkingen](../../../role-based-access-control/resource-provider-operations.md)uit te sluiten. Binnen het blok **Properties. Locks** , op dezelfde locatie die **excludedPrincipals** is, kan een **excludedActions** worden toegevoegd:
+Net als bij het uitsluiten van [een principal](#exclude-a-principal-from-a-deny-assignment) bij een [toewijzing weigeren](../../../role-based-access-control/deny-assignments.md) in een blauw druk-toewijzing, kunt u specifieke bewerkingen van de [Azure-resource provider](../../../role-based-access-control/resource-provider-operations.md)uitsluiten. Binnen het blok **Properties. Locks** , op dezelfde locatie die **excludedPrincipals** is, kan een **excludedActions** worden toegevoegd:
 
 ```json
 "locks": {
@@ -177,7 +177,7 @@ Net als bij het uitsluiten van [een principal](#exclude-a-principal-from-a-deny-
 },
 ```
 
-Hoewel **excludedPrincipals** moet expliciet zijn, kunnen **excludedActions** -vermeldingen gebruikmaken van `*` voor joker tekens die overeenkomen met RBAC-bewerkingen.
+Hoewel **excludedPrincipals** moet expliciet zijn, kunnen **excludedActions** -vermeldingen gebruikmaken van `*` voor joker tekens die overeenkomen met de bewerkingen van de resource provider.
 
 ## <a name="next-steps"></a>Volgende stappen
 

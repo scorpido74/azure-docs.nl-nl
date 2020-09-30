@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/02/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 6c6bd3ab87013aba04f43c95b3a986a64f2bc394
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 8b18da5e41e235b560918ad26117a0162078862c
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231466"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540979"
 ---
 # <a name="azure-policy-security-baseline-for-azure-security-benchmark"></a>Azure Policy beveiligings basislijn voor Azure Security Bench Mark
 
@@ -76,7 +76,7 @@ U kunt ook een just-in-time-of just-out-Access-oplossing inschakelen met behulp 
 
 **Richt lijnen**: gebruik Azure op rollen gebaseerd toegangs beheer (Azure RBAC) voor het beheren van de toegang tot Azure Policy.
 
-* [Azure RBAC-machtigingen in Azure Policy](../overview.md#rbac-permissions-in-azure-policy)
+* [Azure RBAC-machtigingen in Azure Policy](../overview.md#azure-rbac-permissions-in-azure-policy)
 
 * [Azure RBAC configureren](../../../role-based-access-control/role-assignments-portal.md)
 

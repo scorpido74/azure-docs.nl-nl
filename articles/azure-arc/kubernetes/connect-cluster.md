@@ -9,12 +9,12 @@ ms.author: mlearned
 description: Een Azure Arc-Kubernetes-cluster verbinden met Azure Arc
 keywords: Kubernetes, Arc, azure, K8s, containers
 ms.custom: references_regions
-ms.openlocfilehash: eb3921d3ab2090b6bac54c9b68e9def3949ed4b5
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 8f1d95db9c30e78e1ca697d5d7e5638988bc9965
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723738"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540622"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Een Azure Arc-Kubernetes-cluster verbinden (preview-versie)
 
@@ -30,7 +30,7 @@ Controleer of u de volgende vereisten hebt voor bereid:
 * U hebt een kubeconfig-bestand nodig om toegang te krijgen tot de rol cluster en Cluster beheerder op het cluster voor de implementatie van Kubernetes-agents die zijn ingeschakeld voor Arc.
 * De gebruiker of service-principal die wordt gebruikt met `az login` en `az connectedk8s connect` opdrachten moeten de machtigingen lezen en schrijven hebben voor het resource type micro soft. Kubernetes/connectedclusters. De rol ' Kubernetes cluster-Azure Arc-onboarding ' heeft deze machtigingen en kan worden gebruikt voor roltoewijzingen op de gebruiker of Service-Principal.
 * Helm 3 is vereist voor de onboarding van het cluster met behulp van de connectedk8s-extensie. [Installeer de nieuwste versie van helm 3](https://helm.sh/docs/intro/install) om te voldoen aan deze vereiste.
-* De Azure CLI-versie 2.3 + is vereist voor de installatie van de Azure Arc enabled Kubernetes CLI-extensies. [Installeer Azure cli](/cli/azure/install-azure-cli?view=azure-cli-latest) of werk bij naar de nieuwste versie om ervoor te zorgen dat u beschikt over Azure CLI-versie 2.3 +.
+* De Azure CLI-versie 2.3 + is vereist voor de installatie van de Azure Arc enabled Kubernetes CLI-extensies. [Installeer Azure cli](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) of werk bij naar de nieuwste versie om ervoor te zorgen dat u beschikt over Azure CLI-versie 2.3 +.
 * De Arc enabled Kubernetes CLI-extensies installeren:
   
   Installeer de `connectedk8s` extensie, waarmee u Kubernetes-clusters kunt verbinden met Azure:
@@ -52,7 +52,7 @@ Controleer of u de volgende vereisten hebt voor bereid:
   az extension update --name k8sconfiguration
   ```
 
-## <a name="supported-regions"></a>Ondersteunde regio’s
+## <a name="supported-regions"></a>Ondersteunde regio's
 
 * VS - oost
 * Europa -west
@@ -179,27 +179,16 @@ Als uw cluster zich achter een uitgaande proxy server bevindt, moeten Azure CLI 
 
 1. Controleer de versie van de `connectedk8s` extensie die op uw computer is geïnstalleerd door deze opdracht uit te voeren:
 
-    ```bash
+    ```console
     az -v
     ```
 
     U hebt `connectedk8s` extensie versie >= 0.2.3 nodig om agents met een uitgaande proxy in te stellen. Als u versie < 0.2.3 op uw computer, volgt u de [stappen](#before-you-begin) voor het bijwerken om de nieuwste versie van de extensie op uw computer te verkrijgen.
 
-2. Stel de omgevings variabelen in die nodig zijn voor Azure CLI:
+2. Voer de opdracht Connect uit met de opgegeven proxy parameters:
 
-    ```bash
-    export HTTP_PROXY=<proxy-server-ip-address>:<port>
-    export HTTPS_PROXY=<proxy-server-ip-address>:<port>
-    export NO_PROXY=<cluster-apiserver-ip-address>:<port>
-    ```
-
-3. Voer de opdracht Connect uit met de opgegeven proxy parameters:
-
-    ```bash
-    az connectedk8s connect -n <cluster-name> -g <resource-group> \
-    --proxy-https https://<proxy-server-ip-address>:<port> \
-    --proxy-http http://<proxy-server-ip-address>:<port> \
-    --proxy-skip-range <excludedIP>,<excludedCIDR>
+    ```console
+    az connectedk8s connect -n <cluster-name> -g <resource-group> --proxy-https https://<proxy-server-ip-address>:<port> --proxy-http http://<proxy-server-ip-address>:<port> --proxy-skip-range <excludedIP>,<excludedCIDR>
     ```
 
 > [!NOTE]

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.author: b-juche
-ms.openlocfilehash: b8707b6fb006a45d63f1b2b426530a7e25f5b497
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: e2838b759a611cb55b9fd3fadf834c84eb74210d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87512921"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533635"
 ---
 # <a name="register-for-azure-netapp-files"></a>Registreren voor Azure NetApp Files
 
@@ -50,13 +50,13 @@ Voor het gebruik van de service moet u de Azure-resourceprovider registreren voo
 
       ![Pictogram voor Azure Cloud Shell](../media/azure-netapp-files/azure-netapp-files-azure-cloud-shell.png)
 
-2. Als u meerdere abonnementen voor uw Azure-account hebt, selecteert u het abonnement dat is opgenomen in de whitelist voor Azure NetApp Files:
+2. Als u meerdere abonnementen hebt op uw Azure-account, selecteert u het abonnement dat is goedgekeurd voor Azure NetApp Files:
     
     ```azurepowershell
     az account set --subscription <subscriptionId>
     ```
 
-3. Voer de volgende opdracht uit in de Azure Cloud Shell-console om te controleren of uw abonnement in de whitelist is opgenomen:
+3. Voer in de Azure Cloud Shell-console de volgende opdracht in om te controleren of uw abonnement is goedgekeurd:
     
     ```azurepowershell
     az feature list | grep NetApp
