@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: how-to
 ms.date: 05/20/2020
 ms.author: alkohli
-ms.openlocfilehash: 7b069d1bf16e8cbf4dfc245fbb3c66863cd0b994
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: c4b3479e5728c32e66bc40f950bc948bf61dce42
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90055565"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575160"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-disk-in-the-azure-portal"></a>Zelf-beheerde verzen ding voor Azure Data Box Disk gebruiken in de Azure Portal
 
@@ -37,13 +37,13 @@ Wanneer u een Data Box Disk order plaatst, kunt u de optie voor zelf-beheerde ve
 
 1. Selecteer in uw Azure Data Box Disk bestelling, onder de **contact gegevens**, **+ Verzend adres toevoegen**.
 
-   ![Zelfbeheerde verzending](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-1.png)
+   ![Scherm opname van de wizard voor het weer geven van de contact gegevens stap met de optie verzend adres toevoegen.](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-1.png)
 
 2. Wanneer u verzend type kiest, selecteert u de optie **zelf beheerde verzen ding** . Deze optie is alleen beschikbaar als u zich in een ondersteunde regio bevindt, zoals beschreven in de vereisten.
 
 3. Zodra u uw verzend adres hebt ingevoerd, moet u dit valideren en uw bestelling volt ooien.
 
-   ![Zelfbeheerde verzending](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
+   ![Scherm afbeelding van het dialoog venster verzend adres toevoegen met de opties verzenden met en de optie verzend adres toevoegen.](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
 
 4. Zodra het apparaat is voor bereid en u een e-mail melding hebt ontvangen, kunt u een ophaling plannen. Ga in uw Azure Data Box Disk order naar **overzicht** en selecteer vervolgens **ophalen plannen**.
 
@@ -55,7 +55,7 @@ Wanneer u een Data Box Disk order plaatst, kunt u de optie voor zelf-beheerde ve
 
 6. Nadat u het ophalen van uw apparaten hebt gepland, kunt u uw autorisatie code bekijken in het  **ophalen van plannen voor Azure**.
 
-   ![Uw autorisatie code weer geven](media\data-box-disk-portal-customer-managed-shipping\data-box-disk-authcode-01b.png)
+   ![Scherm afbeelding van het dialoog venster voor het ophalen van Azure-inhoud, met het tekstvak autorisatie code voor ophalen.](media\data-box-disk-portal-customer-managed-shipping\data-box-disk-authcode-01b.png)
 
    Noteer deze **autorisatie code**.
 
@@ -78,7 +78,7 @@ Wanneer u een Data Box Disk order plaatst, kunt u de optie voor zelf-beheerde ve
 
 9. Als u een afspraak hebt ontvangen die u wilt verwijderen, moet u nu de status **gereed hebben om te ontvangen bij Azure Data Center** in de Azure Portal.
 
-   ![Uw autorisatie code weer geven](media\data-box-disk-portal-customer-managed-shipping\data-box-disk-authcode-dropoff-02b.png)
+   ![Scherm afbeelding van het dialoog venster verzend adres toevoegen met het verzenden via opties en de optie verzend adres toevoegen.](media\data-box-disk-portal-customer-managed-shipping\data-box-disk-authcode-dropoff-02b.png)
 
 10. Nadat uw ID en autorisatie code zijn geverifieerd en u het apparaat in het Data Center hebt verwijderd, moet de status van de bestelling worden **ontvangen**.
 

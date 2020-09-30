@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/02/2019
 ms.author: memildin
-ms.openlocfilehash: b60798ad1fab0ed66f3d4a39b2fd7faf79fd515e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1d452406b05a3ad6b2be2e31bce1063f20e6c622
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91268058"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575942"
 ---
 # <a name="cloud-smart-alert-correlation-in-azure-security-center-incidents"></a>Azure Security Center voor de correlatie van de cloud in een andere (incidenten)
 
@@ -35,6 +35,9 @@ Security Center maakt gebruik van MITRE-aanvals matrix om waarschuwingen te kopp
 Omdat aanvallen vaak voor verschillende tenants optreden, kan Security Center AI-algoritmen combi neren voor het analyseren van aanvals reeksen die op elk abonnement worden gerapporteerd. Deze techniek identificeert de aanvals reeksen als bekende waarschuwings patronen, in plaats van alleen incidenteel te koppelen aan elkaar.
 
 Tijdens een onderzoek naar een incident hebben analisten vaak extra context nodig om een verdict te bereiken over de aard van de dreiging en hoe de oplossing kan worden verholpen. Als er bijvoorbeeld een afwijkend netwerk wordt gedetecteerd, zonder te begrijpen wat er gebeurt op het netwerk of met betrekking tot de doel resource, is het moeilijk te weten welke acties u vervolgens moet uitvoeren. Om u te helpen, kan een beveiligings incident artefacten, gerelateerde gebeurtenissen en informatie bevatten. De extra informatie die beschikbaar is voor beveiligings incidenten varieert, afhankelijk van het type bedreiging dat is gedetecteerd en de configuratie van uw omgeving. 
+
+> [!TIP]
+> Zie de [naslag tabel met waarschuwingen](alerts-reference.md#alerts-fusion)voor een lijst met waarschuwingen over beveiligings incidenten die kunnen worden geproduceerd door de Fusion Analytics.
 
 ![Scherm afbeelding van gedetecteerd rapport van beveiligings incident](./media/security-center-alerts-cloud-smart/security-incident.png)
 

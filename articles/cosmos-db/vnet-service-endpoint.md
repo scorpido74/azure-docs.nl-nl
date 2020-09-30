@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: d264ead87e7fa638830bf25fdb07983b164334b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 10f2b44d00361885778a523109a8fcb05dabe9dd
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83698660"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91574344"
 ---
 # <a name="access-azure-cosmos-db-from-virtual-networks-vnet"></a>Toegang tot Azure Cosmos DB vanuit virtuele netwerken (VNet)
 
@@ -24,9 +24,9 @@ Een Azure Cosmos-account is standaard toegankelijk vanuit elke bron als de aanvr
 
 Hier volgen enkele veelgestelde vragen over het configureren van toegang vanaf virtuele netwerken:
 
-### <a name="are-notebooks-and-mongo-shell-currently-compatible-with-virtual-network-enabled-accounts"></a>Zijn momenteel notebooks en Mongo shell compatibel met Virtual Network ingeschakelde accounts?
+### <a name="are-notebooks-and-mongocassandra-shell-currently-compatible-with-virtual-network-enabled-accounts"></a>Zijn er momenteel notebooks en Mongo/Cassandra shell compatibel met Virtual Network ingeschakelde accounts?
 
-Op het moment dat de [integratie van de Mongo-shell in de Cosmos DB Data Explorer](https://devblogs.microsoft.com/cosmosdb/preview-native-mongo-shell/) en de [Jupyter-notitieblok service](https://docs.microsoft.com/azure/cosmos-db/cosmosdb-jupyter-notebooks) wordt niet ondersteund met VNET-toegang. Dit is momenteel actief in ontwikkeling.
+Op het moment dat de [Mongo-shell](https://devblogs.microsoft.com/cosmosdb/preview-native-mongo-shell/) en Cassandra- [Shell](https://devblogs.microsoft.com/cosmosdb/announcing-native-cassandra-shell-preview/) integraties in de Cosmos DB Data Explorer en de [Jupyter-notebooks-service](https://docs.microsoft.com/azure/cosmos-db/cosmosdb-jupyter-notebooks), worden niet ondersteund met VNET-toegang. Dit is momenteel actief in ontwikkeling.
 
 ### <a name="can-i-specify-both-virtual-network-service-endpoint-and-ip-access-control-policy-on-an-azure-cosmos-account"></a>Kan ik zowel het virtuele netwerk service-eind punt als het IP-toegangs beheer beleid voor een Azure Cosmos-account opgeven? 
 

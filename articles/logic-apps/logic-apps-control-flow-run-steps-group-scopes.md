@@ -6,20 +6,20 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: ef8862ebbcdd1ee79178af56b7c6cc81c7a68a43
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1ee8c7eabd33ad2d8773d55041fcdf54a7dd489b
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91269281"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575007"
 ---
 # <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>Acties uitvoeren op basis van de groeps status met behulp van scopes in Azure Logic Apps
 
 Als u alleen acties wilt uitvoeren nadat een andere groep acties is geslaagd of mislukt, groepeert u deze acties binnen een *bereik*. Deze structuur is handig als u acties wilt ordenen als logische groep, de status van die groep wilt evalueren en acties wilt uitvoeren die zijn gebaseerd op de status van het bereik. Nadat alle acties in een bereik zijn uitgevoerd, krijgt de scope ook een eigen status. U kunt bijvoorbeeld bereiken gebruiken als u [uitzonde ringen en fout afhandeling](../logic-apps/logic-apps-exception-handling.md#scopes)wilt implementeren. 
 
-Als u de status van een bereik wilt controleren, kunt u dezelfde criteria gebruiken die u gebruikt om de uitvoerings status van een Logic apps te bepalen, zoals geslaagd, mislukt, geannuleerd, enzovoort. Wanneer alle acties van het bereik slagen, is de status van het bereik standaard gemarkeerd als geslaagd. Maar wanneer een actie in de scope mislukt of wordt geannuleerd, wordt de status van het bereik gemarkeerd als mislukt. Zie [limieten en configuratie](../logic-apps/logic-apps-limits-and-config.md)voor limieten voor scopes. 
+Als u de status van een bereik wilt controleren, kunt u dezelfde criteria gebruiken die u gebruikt om de uitvoerings status van een Logic apps, zoals **geslaagd**, **mislukt**, **geannuleerd**, te bepalen. Wanneer alle acties van het bereik slagen, is de status van het bereik standaard gemarkeerd als **geslaagd**. Maar wanneer een actie in de scope mislukt of wordt geannuleerd, wordt de status van het bereik gemarkeerd als **mislukt**. Zie [limieten en configuratie](../logic-apps/logic-apps-limits-and-config.md)voor limieten voor scopes. 
 
-Dit is bijvoorbeeld een logische app op hoog niveau die gebruikmaakt van een bereik voor het uitvoeren van specifieke acties en een voor waarde om de status van het bereik te controleren. Als een of meer acties in de scope onverwacht zijn mislukt of eindigen, wordt het bereik gemarkeerd als ' mislukt ' of ' afgebroken ' en verzendt de logische app een bericht dat de scope is mislukt. Als alle acties binnen het bereik zijn geslaagd, verzendt de logische app een bericht ' scope geslaagd '.
+Dit is bijvoorbeeld een logische app op hoog niveau die gebruikmaakt van een bereik voor het uitvoeren van specifieke acties en een voor waarde om de status van het bereik te controleren. Als een of meer acties in de scope onverwacht zijn mislukt of eindigen, wordt het bereik gemarkeerd als **mislukt** of **afgebroken** , en verzendt de logische app een bericht ' scope failed '. Als alle acties binnen het bereik zijn geslaagd, verzendt de logische app een bericht ' scope geslaagd '.
 
 ![Diagram toont de bereik stroom van de logische app met voor beelden van ' scope failed ' en ' scope geslaagd '.](./media/logic-apps-control-flow-run-steps-group-scopes/scope-high-level.png)
 
@@ -192,7 +192,7 @@ Vervolgens voegt u een bereik toe zodat u specifieke acties kunt groeperen en de
    
       `result('Scope')[0]['status']`
 
-      ![Scherm afbeelding met het venster ' expressie toevoegen ', waarin de resultaat expressie is gemarkeerd.](./media/logic-apps-control-flow-run-steps-group-scopes/check-scope-status.png)
+      ![Scherm opname van het vak ' expressie ' waarin de resultaat expressie is gemarkeerd.](./media/logic-apps-control-flow-run-steps-group-scopes/check-scope-status.png)
 
    1. Voor beide rijen selecteert u **is gelijk aan** als de operator. 
    

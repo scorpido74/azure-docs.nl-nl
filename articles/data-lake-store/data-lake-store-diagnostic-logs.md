@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: e50091750e01435912a2a5163cc786e79dc09f5c
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: cd1b03c8cecf84e75bac32be0570c2f4f3db9b2e
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985061"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575534"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>Diagnostische logboeken openen voor Azure Data Lake Storage Gen1
 Meer informatie over het inschakelen van diagnostische logboek registratie voor uw Azure Data Lake Storage Gen1-account en het weer geven van de logboeken die voor uw account zijn verzameld.
@@ -26,18 +26,18 @@ Organisaties kunnen diagnostische logboek registratie inschakelen voor hun Azure
 
 ## <a name="prerequisites"></a>Vereisten
 * **Een Azure-abonnement**. Zie [Gratis proefversie van Azure ophalen](https://azure.microsoft.com/pricing/free-trial/).
-* **Azure data Lake Storage gen1-account**. Volg de instructies in aan [de slag met Azure data Lake Storage gen1 met behulp van Azure Portal](data-lake-store-get-started-portal.md).
+* **Azure data Lake Storage gen1-account**. Volg de instructies in aan [de slag met Azure data Lake Storage gen1 met behulp van de Azure Portal](data-lake-store-get-started-portal.md).
 
 ## <a name="enable-diagnostic-logging-for-your-data-lake-storage-gen1-account"></a>Diagnostische logboek registratie inschakelen voor uw Data Lake Storage Gen1-account
 1. Meld u aan bij de nieuwe [Azure Portal](https://portal.azure.com).
 2. Open uw Data Lake Storage Gen1-account en klik op de Blade Data Lake Storage Gen1 account op **Diagnostische instellingen**.
 3. Klik op de Blade **Diagnostische instellingen** op **Diagnostische gegevens inschakelen**.
 
-    ![registratie in het diagnoselogboek inschakelen](./media/data-lake-store-diagnostic-logs/turn-on-diagnostics.png "Diagnostische logboeken inschakelen")
+    ![Scherm opname van het Data Lake Storage gen 1-account met de optie diagnostische instelling en de optie diagnostische gegevens inschakelen.](./media/data-lake-store-diagnostic-logs/turn-on-diagnostics.png "Diagnostische logboeken inschakelen")
 
 3. Voer op de Blade **Diagnostische instellingen** de volgende wijzigingen uit om diagnostische logboek registratie in te stellen.
    
-    ![registratie in het diagnoselogboek inschakelen](./media/data-lake-store-diagnostic-logs/enable-diagnostic-logs.png "Diagnostische logboeken inschakelen")
+    ![Scherm afbeelding van de sectie diagnostische instelling met het tekstvak Naam en de optie opslaan.](./media/data-lake-store-diagnostic-logs/enable-diagnostic-logs.png "Diagnostische logboeken inschakelen")
    
    * Voer bij **naam**een waarde in voor de configuratie van het diagnostische logboek.
    * U kunt ervoor kiezen om de gegevens op verschillende manieren op te slaan/te verwerken.
@@ -73,17 +73,17 @@ Er zijn twee manieren om de logboek gegevens voor uw Data Lake Storage Gen1-acco
 ### <a name="from-the-azure-storage-account-that-contains-log-data"></a>Van het Azure Storage-account dat logboek gegevens bevat
 1. Open de Blade Azure Storage account die is gekoppeld aan Data Lake Storage Gen1 voor logboek registratie en klik vervolgens op blobs. Op de Blade **BLOB service** worden twee containers weer gegeven.
    
-    ![Diagnostische logboek registratie weer geven](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account.png "Diagnostische logboeken weergeven")
+    ![Scherm afbeelding van de Blade Data Lake Storage gen 1 de optie blobs is geselecteerd en de Blade blog service met de namen van de twee BLOB-services die worden genoemd.](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account.png "Diagnostische logboeken weergeven")
    
    * De container **Insights-logs-audit** bevat de audit Logboeken.
    * De container **Insights-logboeken-aanvragen** bevat de logboeken van de aanvraag.
 2. In deze containers worden de Logboeken opgeslagen onder de volgende structuur.
    
-    ![Diagnostische logboek registratie weer geven](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account-structure.png "Diagnostische logboeken weergeven")
+    ![Scherm opname van de logboek structuur, zoals deze is opgeslagen in de container.](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs-storage-account-structure.png "Diagnostische logboeken weergeven")
    
-    Een voor beeld: het volledige pad naar een audit logboek kan worden`https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestorage/y=2016/m=07/d=18/h=04/m=00/PT1H.json`
+    Een voor beeld: het volledige pad naar een audit logboek kan worden `https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestorage/y=2016/m=07/d=18/h=04/m=00/PT1H.json`
    
-    Het volledige pad naar een aanvraag logboek kan ook worden`https://adllogs.blob.core.windows.net/insights-logs-requests/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestorage/y=2016/m=07/d=18/h=14/m=00/PT1H.json`
+    Het volledige pad naar een aanvraag logboek kan ook worden `https://adllogs.blob.core.windows.net/insights-logs-requests/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/mydatalakestorage/y=2016/m=07/d=18/h=14/m=00/PT1H.json`
 
 ## <a name="understand-the-structure-of-the-log-data"></a>Inzicht in de structuur van de logboek gegevens
 De audit-en aanvraag logboeken hebben een JSON-indeling. In deze sectie kijken we naar de structuur van JSON voor aanvraag-en audit Logboeken.
@@ -115,7 +115,7 @@ Hier volgt een voor beeld van een vermelding in het aanvraag logboek in JSON-ind
 ```
 
 #### <a name="request-log-schema"></a>Schema voor aanvraag logboek
-| Naam | Type | Description |
+| Naam | Type | Beschrijving |
 | --- | --- | --- |
 | tijd |Tekenreeks |De tijds tempel (in UTC) van het logboek |
 | resourceId |Tekenreeks |De ID van de resource waarop de bewerking plaatsvond |
@@ -128,7 +128,7 @@ Hier volgt een voor beeld van een vermelding in het aanvraag logboek in JSON-ind
 | properties |JSON |Zie hieronder voor meer informatie |
 
 #### <a name="request-log-properties-schema"></a>Schema eigenschappen van het aanvraag logboek
-| Naam | Type | Description |
+| Naam | Type | Beschrijving |
 | --- | --- | --- |
 | HttpMethod |Tekenreeks |De HTTP-methode die wordt gebruikt voor de bewerking. Bijvoorbeeld ophalen. |
 | Pad |Tekenreeks |Het pad waarin de bewerking is uitgevoerd |
@@ -164,7 +164,7 @@ Hier volgt een voor beeld van een vermelding in het audit logboek in JSON-indeli
 ```
 
 #### <a name="audit-log-schema"></a>Schema van auditlogboek
-| Naam | Type | Description |
+| Naam | Type | Beschrijving |
 | --- | --- | --- |
 | tijd |Tekenreeks |De tijds tempel (in UTC) van het logboek |
 | resourceId |Tekenreeks |De ID van de resource waarop de bewerking plaatsvond |
@@ -177,7 +177,7 @@ Hier volgt een voor beeld van een vermelding in het audit logboek in JSON-indeli
 | properties |JSON |Zie hieronder voor meer informatie |
 
 #### <a name="audit-log-properties-schema"></a>Schema eigenschappen van controle logboek
-| Naam | Type | Description |
+| Naam | Type | Beschrijving |
 | --- | --- | --- |
 | StreamName |Tekenreeks |Het pad waarin de bewerking is uitgevoerd |
 
@@ -193,7 +193,7 @@ search *
 
 Azure Data Lake Storage Gen1 biedt een voor beeld van hoe u de logboek gegevens kunt verwerken en analyseren. U kunt het voor beeld vinden op [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample) . 
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 * [Overzicht van Azure Data Lake Storage Gen1](data-lake-store-overview.md)
 * [Gegevens beveiligen in Data Lake Storage Gen1](data-lake-store-secure-data.md)
 

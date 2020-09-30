@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 03a32b37f5ca29c6a0dd6b810b4e097379c6c32e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9dc195f98310e63cbde06885effe86ea3c239249
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515144"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576095"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Service-naar-service verificatie met Azure Data Lake Storage Gen1 met behulp van Azure Active Directory
 > [!div class="op_single_selector"]
@@ -65,12 +65,12 @@ Wanneer u zich programmatisch aanmeldt, hebt u de ID voor uw toepassing nodig. A
     ![Een groep toevoegen](./media/data-lake-store-authenticate-using-active-directory/adl.acl.3.png "Een groep toevoegen")
 6. Klik op **machtigingen selecteren**, selecteer de machtigingen en geef aan of u de machtigingen wilt toewijzen als standaard-ACL, toegangs-ACL of beide. Klik op **OK**.
    
-    ![Machtigingen toewijzen aan groep](./media/data-lake-store-authenticate-using-active-directory/adl.acl.4.png "Machtigingen toewijzen aan groep")
+    ![Scherm opname van de Blade aangepaste toegang toevoegen met de optie machtigingen selecteren en de Blade machtigingen selecteren met de optie OK.](./media/data-lake-store-authenticate-using-active-directory/adl.acl.4.png "Machtigingen toewijzen aan groep")
    
     Zie [Access Control in data Lake Storage gen1](data-lake-store-access-control.md)voor meer informatie over machtigingen in data Lake Storage gen1 en standaard-acl's.
 7. Klik op de Blade **aangepaste toegang toevoegen** op **OK**. De toegevoegde groepen, met de bijbehorende machtigingen, worden weer gegeven op de Blade **toegang** .
    
-    ![Machtigingen toewijzen aan groep](./media/data-lake-store-authenticate-using-active-directory/adl.acl.5.png "Machtigingen toewijzen aan groep")
+    ![Scherm afbeelding van de Access-Blade met de zojuist toegevoegde groep, die wordt genoemd in de sectie aangepaste toegang.](./media/data-lake-store-authenticate-using-active-directory/adl.acl.5.png "Machtigingen toewijzen aan groep")
 
 > [!NOTE]
 > Als u van plan bent om uw Azure Active Directory-toepassing te beperken tot een specifieke map, moet u ook dezelfde machtiging voor het **uitvoeren** van Azure Active Directory-toepassing voor de hoofdmap geven om toegang tot het maken van bestanden via de .NET SDK in te scha kelen.
@@ -88,11 +88,11 @@ Wanneer u zich programmatisch aanmeldt, hebt u de ID voor uw toepassing nodig. A
 
 3. Klik boven aan de Blade App-registraties op **eind punten**.
 
-    ![OAuth-token eindpunt](./media/data-lake-store-authenticate-using-active-directory/oauth-token-endpoint.png "OAuth-token eindpunt")
+    ![Scherm opname van Active Directory met de optie App-registraties en de optie voor eind punten genoemd.](./media/data-lake-store-authenticate-using-active-directory/oauth-token-endpoint.png "OAuth-token eindpunt")
 
 4. Kopieer het OAuth 2,0-token-eind punt uit de lijst met eind punten.
 
-    ![OAuth-token eindpunt](./media/data-lake-store-authenticate-using-active-directory/oauth-token-endpoint-1.png "OAuth-token eindpunt")   
+    ![Scherm opname van de Blade eind punten met het pictogram O-verificatie punt 0 punt O van het TOKEN EINDPUNT.](./media/data-lake-store-authenticate-using-active-directory/oauth-token-endpoint-1.png "OAuth-token eindpunt")   
 
 ## <a name="next-steps"></a>Volgende stappen
 In dit artikel hebt u een Azure AD-webtoepassing gemaakt en de informatie verzameld die u nodig hebt in uw client toepassingen die u hebt geschreven met behulp van .NET SDK, Java, Python, REST API, enzovoort. U kunt nu door gaan met de volgende artikelen over het gebruik van de systeem eigen Azure AD-toepassing om u eerst te verifiëren met Data Lake Storage Gen1 en vervolgens andere bewerkingen uit te voeren in de Store.

@@ -1,18 +1,18 @@
 ---
-title: Informatie over conversies ophalen
-description: Informatie over conversies ophalen
+title: Informatie ophalen over omzettingen
+description: Informatie ophalen over omzettingen
 author: malcolmtyrrell
 ms.author: matyrr
 ms.date: 03/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 529bfb61b3af7040f3656c04071683841f5abe86
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 89ec0ad40822785457e988cf9e0f9bd6d00ed81f
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88870286"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576622"
 ---
-# <a name="get-information-about-conversions"></a>Informatie over conversies ophalen
+# <a name="get-information-about-conversions"></a>Informatie ophalen over omzettingen
 
 ## <a name="information-about-a-conversion-the-result-file"></a>Informatie over een conversie: het resultaat bestand
 
@@ -65,6 +65,10 @@ Hier volgt een voor *beeld van een bestand dat* wordt gegenereerd door het conve
         "numMeshUsagesInScene": 236,
         "maxNodeDepth": 3
     },
+    "materialOverrides": {
+        "numOverrides": 4,
+        "numOverriddenMaterials": 4
+    },
     "outputInfo": {
         "conversionToolVersion": "3b28d840de9916f9d628342f474d38c3ab949590",
         "conversionHash": "CCDB1F7A4C09F565"
@@ -114,6 +118,13 @@ In deze sectie vindt u informatie over de indeling van het bron bestand.
 * `sourceAssetFormat`: Een beschrijving van de bron bestands indeling.
 * `sourceAssetFormatVersion`: De versie van de bron bestands indeling.
 * `sourceAssetGenerator`: De naam van het hulp programma dat het bron bestand heeft gegenereerd, indien beschikbaar.
+
+### <a name="the-materialoverrides-section"></a>De sectie *materialOverrides*
+
+In deze sectie vindt u informatie over het overschrijven van [materialen](override-materials.md) wanneer een materiaal overschrijving aan de conversie service werd door gegeven.
+De sectie bevat de volgende informatie:
+* `numOverrides`: Het aantal onderdrukkings vermeldingen dat is gelezen uit het bestand material override.
+* `numOverriddenMaterials`: Het aantal materialen dat is overschreven.
 
 ### <a name="the-inputstatistics-section"></a>De sectie *inputStatistics*
 

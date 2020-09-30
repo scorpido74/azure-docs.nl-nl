@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/28/2020
-ms.openlocfilehash: 469620456fecb7c0cb398988c4a4fc25da97f863
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 82a109dd5c2813861e21e11aa40774b6b868cfe3
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91357706"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576180"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Gebruik groepen voor automatische failover om transparante en gecoördineerde failover van meerdere data bases mogelijk te maken
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -33,7 +33,7 @@ Daarnaast bieden automatische-failover-groepen alleen-lezen-en alleen-lezen list
 
 Wanneer u groepen voor automatische failover gebruikt met automatische failoverbeleid, wordt elke storing die invloed heeft op data bases op een server of een beheerd exemplaar, automatisch failover. U kunt de groep voor automatische failover beheren met:
 
-- [Azure-portal](geo-distributed-application-configure-tutorial.md)
+- [Azure Portal](geo-distributed-application-configure-tutorial.md)
 - [Azure CLI: failover-groep](scripts/add-database-to-failover-group-cli.md)
 - [Power shell: failover-groep](scripts/add-database-to-failover-group-powershell.md)
 - [Rest API: failovergroep](/rest/api/sql/failovergroups).
@@ -76,9 +76,9 @@ Voor een echte bedrijfs continuïteit is het toevoegen van database redundantie 
   
 - **Eerste seeding**
 
-  Bij het toevoegen van data bases, elastische Pools of beheerde exemplaren aan een failovergroep, is er een initiële seeding-fase voordat de gegevens replicatie wordt gestart. De eerste seeding-fase is de langste en duurste bewerking. Zodra de initiële seeding is voltooid, worden de gegevens gesynchroniseerd, waarna alleen de volgende gegevens wijzigingen worden gerepliceerd. De tijd die nodig is om het oorspronkelijke Seed te volt ooien, is afhankelijk van de grootte van uw gegevens, het aantal gerepliceerde data bases en de snelheid van de koppeling tussen de entiteiten in de failovergroep. Onder normale omstandigheden is een typische seeding-snelheid van 50-500 GB per uur voor SQL Database en 18-35 GB per uur voor een SQL-beheerd exemplaar. Seeding wordt uitgevoerd voor alle data bases parallel. U kunt de vermelde seeding-snelheid, samen met het aantal data bases en de totale grootte van gegevens, gebruiken om te schatten hoe lang de eerste seeding-fase duurt voordat de replicatie van de gegevens wordt gestart.
+  Bij het toevoegen van data bases, elastische Pools of beheerde exemplaren aan een failovergroep, is er een initiële seeding-fase voordat de gegevens replicatie wordt gestart. De eerste seeding-fase is de langste en duurste bewerking. Zodra de initiële seeding is voltooid, worden de gegevens gesynchroniseerd, waarna alleen de volgende gegevens wijzigingen worden gerepliceerd. De tijd die nodig is om het oorspronkelijke Seed te volt ooien, is afhankelijk van de grootte van uw gegevens, het aantal gerepliceerde data bases en de snelheid van de koppeling tussen de entiteiten in de failovergroep. Onder normale omstandigheden geldt een mogelijke seeding-snelheid van Maxi maal 500 GB per uur voor SQL Database en tot 360 GB per uur voor een SQL-beheerd exemplaar. Seeding wordt uitgevoerd voor alle data bases parallel.
 
-  Voor SQL Managed instance moet de snelheid van de koppeling van de Express-route tussen de twee instanties ook worden overwogen bij het schatten van de tijd van de eerste seeding-fase. Als de snelheid van de koppeling tussen de twee instanties langzamer is dan nodig is, wordt de tijd tot Seed waarschijnlijk vooral beïnvloed. U kunt de vermelde seeding-snelheid, het aantal data bases, de totale grootte van de gegevens en de koppelings snelheid gebruiken om te schatten hoe lang de eerste seeding duurt voordat de replicatie van de gegevens wordt gestart. Voor een Data Base van één 100 GB zou de eerste seed-fase een wille keurige periode van 2,8 tot 5,5 uur duren als de koppeling in staat is om 35 GB per uur te pushen. Als de koppeling 10 GB per uur kan overdragen, neemt de seeding van een Data Base van 100 GB ongeveer 10 uur in beslag. Als er meerdere data bases zijn om te repliceren, wordt seeding parallel uitgevoerd en, in combi natie met een langzame verbindings snelheid, kan de initiële seeding-fase aanzienlijk langer duren, met name als de parallelle seeding van gegevens uit alle data bases de beschik bare koppelings bandbreedte overschrijdt. Als de netwerk bandbreedte tussen twee instanties beperkt is en u meerdere beheerde exemplaren aan een failovergroep toevoegt, kunt u overwegen meerdere beheerde instanties opeenvolgend toe te voegen aan de failovergroep, één voor één.
+  Voor SQL Managed Instance kunt u de snelheid van de snelle route koppeling tussen de twee instanties bepalen bij het schatten van de tijd van de eerste seeding-fase. Als de snelheid van de koppeling tussen de twee instanties langzamer is dan nodig is, wordt de tijd tot Seed waarschijnlijk vooral beïnvloed. U kunt de vermelde seeding-snelheid, het aantal data bases, de totale grootte van de gegevens en de koppelings snelheid gebruiken om te schatten hoe lang de eerste seeding duurt voordat de replicatie van de gegevens wordt gestart. Voor een Data Base van één 100 GB zou de eerste seed-fase ongeveer 1,2 uur duren als de koppeling in staat is om 84 GB per uur te pushen, en als er geen andere data bases worden seeding. Als de koppeling 10 GB per uur kan overdragen, neemt de seeding van een Data Base van 100 GB ongeveer 10 uur in beslag. Als er meerdere data bases zijn om te repliceren, wordt seeding parallel uitgevoerd en, in combi natie met een langzame verbindings snelheid, kan de initiële seeding-fase aanzienlijk langer duren, met name als de parallelle seeding van gegevens uit alle data bases de beschik bare koppelings bandbreedte overschrijdt. Als de netwerk bandbreedte tussen twee instanties beperkt is en u meerdere beheerde exemplaren aan een failovergroep toevoegt, kunt u overwegen meerdere beheerde instanties opeenvolgend toe te voegen aan de failovergroep, één voor één. Gezien de gateway-SKU van een juiste grootte tussen de twee beheerde instanties, en als de band breedte van het bedrijfs netwerk dit toestaat, is het mogelijk dat er snelheden van Maxi maal 360 GB per uur kunnen worden gerealiseerd.  
 
 - **DNS-zone**
 
@@ -232,6 +232,10 @@ Om ervoor te zorgen dat de verbinding met het primaire SQL-beheerde exemplaar na
 > Het eerste beheerde exemplaar dat in het subnet wordt gemaakt, bepaalt de DNS-zone voor alle volgende instanties in hetzelfde subnet. Dit betekent dat twee exemplaren van hetzelfde subnet geen deel kunnen uitmaken van verschillende DNS-zones.
 
 Zie [een secundaire beheerde instantie maken](../managed-instance/failover-group-add-instance-tutorial.md#create-a-secondary-managed-instance)voor meer informatie over het maken van het secundaire SQL-beheerde exemplaar in dezelfde DNS-zone als het primaire exemplaar.
+
+### <a name="using-geo-paired-regions"></a>Geografisch gekoppelde regio's gebruiken
+
+Implementeer beide beheerde instanties in [gekoppelde regio's](../../best-practices-availability-paired-regions.md) om prestatie redenen. Beheerde instanties die zich in geografische paar regio's bevinden, hebben veel betere prestaties ten opzichte van niet-gekoppelde regio's. 
 
 ### <a name="enabling-replication-traffic-between-two-instances"></a>Replicatie verkeer tussen twee instanties inschakelen
 

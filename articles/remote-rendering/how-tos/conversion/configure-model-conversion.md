@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: dda2676f258705ed833068c966bcc57115434b0d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 2134dde0fa0b92bec4519c0d6a24dcaad3792baa
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90967208"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575177"
 ---
 # <a name="configure-the-model-conversion"></a>De modelconversie configureren
 
@@ -33,7 +33,6 @@ De inhoud van het bestand moet voldoen aan het volgende JSON-schema:
         "scaling" : { "type" : "number", "exclusiveMinimum" : 0, "default" : 1.0 },
         "recenterToOrigin" : { "type" : "boolean", "default" : false },
         "opaqueMaterialDefaultSidedness" : { "type" : "string", "enum" : [ "SingleSided", "DoubleSided" ], "default" : "DoubleSided" },
-        "material-override" : { "type" : "string", "default" : "" },
         "gammaToLinearMaterial" : { "type" : "boolean", "default" : false },
         "gammaToLinearVertex" : { "type" : "boolean", "default" : false },
         "sceneGraphMode": { "type" : "string", "enum" : [ "none", "static", "dynamic" ], "default" : "dynamic" },
@@ -85,10 +84,6 @@ Het model centreren kan in deze situatie helpen.
 
 * `opaqueMaterialDefaultSidedness` -De rendering-engine veronderstelt dat dekkende materialen dubbelzijdig worden weer gegeven.
 Als deze veronderstelling niet van toepassing is op een bepaald model, moet deze para meter worden ingesteld op ' SingleSided '. Zie [ :::no-loc text="single sided"::: rendering](../../overview/features/single-sided-rendering.md)voor meer informatie.
-
-### <a name="material-overrides"></a>Overschrijvingen van materiaal
-
-* `material-override` -Met deze para meter kan de verwerking van materialen [tijdens de conversie worden aangepast](override-materials.md).
 
 ### <a name="material-de-duplication"></a>Materiaal van de duplicatie
 
@@ -305,6 +300,8 @@ In deze gebruiks gevallen hebben de modellen vaak zeer veel details binnen een k
 
 Het opgeven van instellingen met de niet-model-specifieke bestands naam `conversionSettings.json` wordt nog steeds ondersteund, maar is afgeschaft.
 Gebruik in plaats daarvan de model-specifieke bestands naam `<modelName>.ConversionSettings.json` .
+
+Het gebruik van een `material-override` instelling voor het identificeren van een bestand voor het [overschrijven van materiaal](override-materials.md) in het bestand met conversie-instellingen wordt nog steeds ondersteund, maar is afgeschaft. Gebruik in plaats daarvan de model-specifieke bestands naam `<modelName>.MaterialOverrides.json` .
 
 ## <a name="next-steps"></a>Volgende stappen
 

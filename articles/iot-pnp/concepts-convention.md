@@ -7,29 +7,31 @@ ms.date: 07/10/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: ef29be53e776c4c185ac8430b3340c53ca85d855
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 8b5492a737b733f486455507a8a813b5d583d453
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88856046"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91573834"
 ---
 # <a name="iot-plug-and-play-conventions"></a>Conventies voor IoT Plug en Play
 
-IoT Plug en Play preview-apparaten moeten een aantal conventies volgen wanneer ze berichten uitwisselen met een IoT-hub. IoT Plug en Play preview-apparaten gebruiken het MQTT-protocol om te communiceren met IoT Hub.
+IoT Plug en Play-apparaten moeten een aantal conventies volgen wanneer ze berichten uitwisselen met een IoT-hub. IoT Plug en Play-apparaten gebruiken het MQTT-protocol om te communiceren met IoT Hub.
+
+Apparaten kunnen [modules](../iot-hub/iot-hub-devguide-module-twins.md)bevatten of worden geïmplementeerd in een [IOT Edge module](../iot-edge/about-iot-edge.md) die wordt gehost door de IOT Edge-runtime.
 
 U beschrijft de telemetrie, eigenschappen en opdrachten die een IoT Plug en Play-apparaat implementeert met een [DTDL-model (Digital Apparaatdubbels Definition Language v2)](https://github.com/Azure/opendigitaltwins-dtdl) _model_. Er zijn twee typen model waarnaar wordt verwezen in dit artikel:
 
-- **Geen onderdeel** : een model zonder onderdelen. Het model declareert telemetrie, eigenschappen en opdrachten als eigenschappen op het hoogste niveau in de sectie inhoud van de hoofd interface.
-- **Meerdere onderdelen** : een model dat uit twee of meer interfaces bestaat. Een hoofd interface met telemetrie, eigenschappen en opdrachten. Een of meer interfaces die zijn gedeclareerd als onderdelen met aanvullende telemetrie, eigenschappen en opdrachten.
+- **Geen onderdeel** : een model zonder onderdelen. Het model declareert telemetrie, eigenschappen en opdrachten als eigenschappen op het hoogste niveau in de sectie inhoud van de hoofd interface. In het hulp programma Azure IoT Explorer wordt dit model weer gegeven als één _standaard onderdeel_.
+- **Meerdere onderdelen** : een model dat uit twee of meer interfaces bestaat. Een hoofd interface, die wordt weer gegeven als het _standaard onderdeel_, met telemetrie, eigenschappen en opdrachten. Een of meer interfaces die zijn gedeclareerd als onderdelen met aanvullende telemetrie, eigenschappen en opdrachten.
 
 Zie [IoT Plug en Play-onderdelen in modellen](concepts-components.md)voor meer informatie.
 
 ## <a name="identify-the-model"></a>Het model identificeren
 
-Voor het aankondigen van het model dat wordt geïmplementeerd, bevat een IoT-Plug en Play apparaat de model-ID in het MQTT-verbindings pakket door toe te voegen `model-id` aan het `USERNAME` veld.
+Voor het aankondigen van het model dat wordt geïmplementeerd, bevat een IoT-Plug en Play apparaat of-module de model-ID in het MQTT-verbindings pakket door toe te voegen `model-id` aan het `USERNAME` veld.
 
-Voor het identificeren van het model dat een apparaat implementeert, kan een service de model-ID ophalen uit:
+Voor het identificeren van het model dat een apparaat of module implementeert, kan een service de model-ID ophalen uit:
 
 - Het dubbele veld van het apparaat `modelId` .
 - Het digitale dubbele `$metadata.$model` veld.
@@ -45,217 +47,296 @@ De telemetrie die vanaf een apparaat met meerdere onderdelen wordt verzonden, mo
 
 ### <a name="sample-no-component-read-only-property"></a>Voor beeld geen eigenschap met het kenmerk alleen-lezen
 
-Een apparaat kan een wille keurige geldige JSON verzenden die volgt op de DTDL v2-regels.
+Een apparaat of module kan een wille keurige geldige JSON verzenden die volgt op de DTDL v2-regels.
 
-:::row:::
-   :::column span="":::
-      **DTDL**
+DTDL:
 
-      ```json
-      "@context": "dtmi:dtdl:context;2",
-      "@id": "dtmi:example: Thermostat;1",
-      "@type": "Interface",
-      "contents": [
-        {
-          "@type": "Property",
-          "name": "temperature",
-          "schema": "double"
-        }
-      ]
-      ```
-   :::column-end:::
-   :::column span="":::
-      **Voorbeeld lading**
+```json
+{
+  "@context": "dtmi:dtdl:context;2",
+  "@id": "dtmi:example: Thermostat;1",
+  "@type": "Interface",
+  "contents": [
+    {
+      "@type": "Property",
+      "name": "temperature",
+      "schema": "double"
+    }
+  ]
+}
+```
 
-      ```json
-      "reported" :
-      {
-        "temperature" : 21.3
-      }
-      ```
-   :::column-end:::
-:::row-end:::
+Voor beeld van gerapporteerde payload van eigenschap:
+
+```json
+"reported" :
+{
+  "temperature" : 21.3
+}
+```
 
 ### <a name="sample-multiple-components-read-only-property"></a>Voor beeld van meerdere eigenschappen met het kenmerk alleen-lezen
 
-Het apparaat moet de markering toevoegen om aan te `{"__t": "c"}` geven dat het element verwijst naar een onderdeel.
+Het apparaat of de module moet de `{"__t": "c"}` markering toevoegen om aan te geven dat het element naar een onderdeel verwijst.
 
-:::row:::
-   :::column span="":::
-      **DTDL**
+DTDL:
 
-      ```json
-      "@context": "dtmi:dtdl:context;2",
-      "@id": "dtmi:com:example:TemperatureController;1",
-      "@type": "Interface",
-      "displayName": "Temperature Controller",
-      "contents": [
-        {
-          "@type" : "Component",
-          "schema": "dtmi:com:example:Thermostat;1",
-          "name": "thermostat1"
-        }
-      ]
+```json
+{
+  "@context": "dtmi:dtdl:context;2",
+  "@id": "dtmi:com:example:TemperatureController;1",
+  "@type": "Interface",
+  "displayName": "Temperature Controller",
+  "contents": [
+    {
+      "@type" : "Component",
+      "schema": "dtmi:com:example:Thermostat;1",
+      "name": "thermostat1"
+    }
+  ]
+}
 
-      "@context": "dtmi:dtdl:context;2",
-      "@id": "dtmi:com:example:Thermostat;1",
-      "@type": "Interface",
-      "contents": [
-        {
-          "@type": "Property",
-          "name": "temperature",
-          "schema": "double"
-        }
-      ]
-      ```
-   :::column-end:::
-   :::column span="":::
-      **Gerapporteerde eigenschap**
+{
+  "@context": "dtmi:dtdl:context;2",
+  "@id": "dtmi:com:example:Thermostat;1",
+  "@type": "Interface",
+  "contents": [
+    {
+      "@type": "Property",
+      "name": "temperature",
+      "schema": "double"
+    }
+  ]
+}
+```
 
-      ```json
-      "reported": {
-        "thermostat1": {
-          "__t": "c",
-          "temperature": 21.3
-        }
-      }
-      ```
-   :::column-end:::
-:::row-end:::
+Voor beeld van gerapporteerde payload van eigenschap:
+
+```json
+"reported": {
+  "thermostat1": {
+    "__t": "c",
+    "temperature": 21.3
+  }
+}
+```
 
 ## <a name="writable-properties"></a>Beschrijf bare eigenschappen
 
-Het apparaat moet bevestigen dat het de eigenschap heeft ontvangen door een gerapporteerde eigenschap te verzenden. De gerapporteerde eigenschap moet het volgende bevatten:
+Het apparaat of de module moet bevestigen dat deze de eigenschap heeft ontvangen door een gerapporteerde eigenschap te verzenden. De gerapporteerde eigenschap moet het volgende bevatten:
 
 - `value` -de werkelijke waarde van de eigenschap (doorgaans de ontvangen waarde, maar het apparaat kan besluiten een andere waarde te rapporteren).
 - `ac` -een bevestigings code die gebruikmaakt van een HTTP-status code.
-- `av` -een bevestigings versie die naar de `$version` gewenste eigenschap verwijst.
+- `av` -een bevestigings versie die naar de `$version` gewenste eigenschap verwijst. U kunt deze waarde vinden in de gewenste JSON-payload van de eigenschap.
 - `ad` -een optionele beschrijving van de bevestiging.
+
+Wanneer een apparaat wordt gestart, moet dit het apparaat dubbele aanvragen en controleren of er Beschrijf bare eigenschaps updates zijn. Als de versie van een Beschrijf bare eigenschap is verhoogd terwijl het apparaat offline was, moet het apparaat een antwoord op een eigenschap hebben verzonden om te bevestigen dat het een update heeft ontvangen.
+
+Wanneer een apparaat voor de eerste keer wordt gestart, kan het een initiële waarde voor een gerapporteerde eigenschap verzenden als er geen oorspronkelijke gewenste eigenschap van de hub wordt ontvangen. In dit geval moet het apparaat worden ingesteld `av` op `1` . Bijvoorbeeld:
+
+```json
+"reported": {
+  "targetTemperature": {
+    "value": 20.0,
+    "ac": 200,
+    "av": 1,
+    "ad": "initialize"
+  }
+}
+```
+
+Een apparaat kan de gerapporteerde eigenschap gebruiken om andere informatie aan de hub door te geven. Het apparaat kan bijvoorbeeld reageren met een reeks lopende berichten, zoals:
+
+```json
+"reported": {
+  "targetTemperature": {
+    "value": 35.0,
+    "ac": 202,
+    "av": 3,
+    "ad": "In-progress - reporting current temperature"
+  }
+}
+```
+
+Wanneer het apparaat de doel temperatuur bereikt, verzendt het het volgende bericht:
+
+```json
+"reported": {
+  "targetTemperature": {
+    "value": 20.0,
+    "ac": 200,
+    "av": 3,
+    "ad": "Reached target temperature"
+  }
+}
+```
+
+Een apparaat kan een fout melden, zoals:
+
+```json
+"reported": {
+  "targetTemperature": {
+    "value": 120.0,
+    "ac": 500,
+    "av": 3,
+    "ad": "Target temperature out of range. Valid range is 10 to 99."
+  }
+}
+```
 
 ### <a name="sample-no-component-writable-property"></a>Voor beeld van geen onderdeel schrijf bare eigenschap
 
-Een apparaat kan een wille keurige geldige JSON verzenden die volgt op de DTDL v2-regels:
+Wanneer een apparaat meerdere gerapporteerde eigenschappen in één nettolading ontvangt, kunnen de gerapporteerde eigenschaps reacties over meerdere nettoladingen worden verzonden.
 
-:::row:::
-   :::column span="":::
-      **DTDL**
+Een apparaat of module kan een wille keurige geldige JSON verzenden die volgt op de DTDL v2-regels:
 
-      ```json
-      "@context": "dtmi:dtdl:context;2",
-      "@id": "dtmi:example: Thermostat;1",
-      "@type": "Interface",
-      "contents": [
-        {
-          "@type": "Property",
-          "name": "targetTemperature",
-          "schema": "double",
-          "writable": true
-        }
-      ]
-      ```
-   :::column-end:::
-   :::column span="":::
-      **Gewenste eigenschap**
+DTDL:
 
-      ```json
-      "desired" :
-      {
-        "targetTemperature" : 21.3
-      },
-      "$version" : 3
-      ```
-   :::column-end:::
-   :::column span="":::
-      **Gerapporteerde eigenschap**
+```json
+{
+  "@context": "dtmi:dtdl:context;2",
+  "@id": "dtmi:example: Thermostat;1",
+  "@type": "Interface",
+  "contents": [
+    {
+      "@type": "Property",
+      "name": "targetTemperature",
+      "schema": "double",
+      "writable": true
+    }
+  ]
+}
+```
 
-      ```json
-      "reported": {
-        "targetTemperature": {
-          "value": 21.3,
-          "ac": 200,
-          "av": 3,
-          "ad": "complete"
-       }
-     }
-      ```
-   :::column-end:::
-:::row-end:::
+Voor beeld van gewenste payload van eigenschap:
+
+```json
+"desired" :
+{
+  "targetTemperature" : 21.3,
+  "targetHumidity" : 80
+},
+"$version" : 3
+```
+
+Voor beeld van de gerapporteerde eigenschap First Payload:
+
+```json
+"reported": {
+  "targetTemperature": {
+    "value": 21.3,
+    "ac": 200,
+    "av": 3,
+    "ad": "complete"
+  }
+}
+```
+
+Voor beeld van een gerapporteerde eigenschap Second Payload:
+
+```json
+"reported": {
+  "targetHumidity": {
+    "value": 80,
+    "ac": 200,
+    "av": 3,
+    "ad": "complete"
+  }
+}
+```
 
 ### <a name="sample-multiple-components-writable-property"></a>Voor beeld van de eigenschap schrijf bare meerdere componenten
 
-Het apparaat moet de markering toevoegen om aan te `{"__t": "c"}` geven dat het element verwijst naar een onderdeel.
+Het apparaat of de module moet de `{"__t": "c"}` markering toevoegen om aan te geven dat het element naar een onderdeel verwijst.
 
-De markering wordt alleen verzonden voor updates op onderdeel niveau, waardoor apparaten mag controleren op deze vlag.
+De markering wordt alleen verzonden voor updates van eigenschappen die in een onderdeel zijn gedefinieerd. Updates van eigenschappen die in het standaard onderdeel zijn gedefinieerd, bevatten niet de markering. Zie voor [beeld geen onderdeel schrijf bare eigenschap](#sample-no-component-writable-property)
 
-Het apparaat moet bevestigen dat het de eigenschap heeft ontvangen door het verzenden van een gerapporteerde eigenschap:
+Wanneer een apparaat meerdere gerapporteerde eigenschappen in één nettolading ontvangt, kunnen de gerapporteerde eigenschaps reacties over meerdere nettoladingen worden verzonden.
 
-:::row:::
-   :::column span="":::
-      **DTDL**
+Het apparaat of de module moet bevestigen dat de eigenschappen zijn ontvangen door de gerapporteerde eigenschappen te verzenden:
 
-      ```json
-      "@context": "dtmi:dtdl:context;2",
-      "@id": "dtmi:com:example:TemperatureController;1",
-      "@type": "Interface",
-      "displayName": "Temperature Controller",
-      "contents": [
-        {
-          "@type" : "Component",
-          "schema": "dtmi:com:example:Thermostat;1",
-          "name": "thermostat1"
-        }
-      ]
+DTDL:
 
-      "@context": "dtmi:dtdl:context;2",
-      "@id": "dtmi:com:example:Thermostat;1",
-      "@type": "Interface",
-      "contents": [
-        {
-          "@type": "Property",
-          "name": "targetTemperature",
-          "schema": "double",
-          "writable": true
-        }
-      ]
-      ```
-   :::column-end:::
-   :::column span="":::
-      **Gewenste eigenschap**
+```json
+{
+  "@context": "dtmi:dtdl:context;2",
+  "@id": "dtmi:com:example:TemperatureController;1",
+  "@type": "Interface",
+  "displayName": "Temperature Controller",
+  "contents": [
+    {
+      "@type" : "Component",
+      "schema": "dtmi:com:example:Thermostat;1",
+      "name": "thermostat1"
+    }
+  ]
+}
 
-      ```json
-      "desired": {
-        "thermostat1": {
-          "__t": "c",
-          "targetTemperature": 21.3
-        }
-      },
-      "$version" : 3
-      ```
-   :::column-end:::
-   :::column span="":::
-      **Gerapporteerde eigenschap**
+{
+  "@context": "dtmi:dtdl:context;2",
+  "@id": "dtmi:com:example:Thermostat;1",
+  "@type": "Interface",
+  "contents": [
+    {
+      "@type": "Property",
+      "name": "targetTemperature",
+      "schema": "double",
+      "writable": true
+    }
+  ]
+}
+```
 
-      ```json
-      "reported": {
-        "thermostat1": {
-          "__t": "c",
-          "targetTemperature": {
-            "value": 23,
-            "ac": 200,
-            "av": 3,
-            "ad": "complete"
-          }
-        }
-      }
-      ```
-   :::column-end:::
-:::row-end:::
+Voor beeld van gewenste payload van eigenschap:
+
+```json
+"desired": {
+  "thermostat1": {
+    "__t": "c",
+    "targetTemperature": 21.3,
+    "targetHumidity": 80
+  }
+},
+"$version" : 3
+```
+
+Voor beeld van de gerapporteerde eigenschap First Payload:
+
+```json
+"reported": {
+  "thermostat1": {
+    "__t": "c",
+    "targetTemperature": {
+      "value": 23,
+      "ac": 200,
+      "av": 3,
+      "ad": "complete"
+    }
+  }
+}
+```
+
+Voor beeld van een gerapporteerde eigenschap Second Payload:
+
+```json
+"reported": {
+  "thermostat1": {
+    "__t": "c",
+    "targetHumidity": {
+      "value": 80,
+      "ac": 200,
+      "av": 3,
+      "ad": "complete"
+    }
+  }
+}
+```
 
 ## <a name="commands"></a>Opdracht
 
 Geen onderdeel interfaces gebruiken de opdracht naam zonder voor voegsel.
 
-Op een apparaat gebruiken meerdere onderdeel interfaces opdracht namen met de volgende indeling: `componentName*commandName` .
+Op een apparaat of module gebruiken meerdere onderdeel interfaces opdracht namen met de volgende indeling: `componentName*commandName` .
 
 ## <a name="next-steps"></a>Volgende stappen
 

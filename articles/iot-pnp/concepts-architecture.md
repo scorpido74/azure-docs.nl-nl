@@ -3,26 +3,26 @@ title: IoT-Plug en Play architectuur | Microsoft Docs
 description: Als opbouw functie voor oplossingen begrijpt u belang rijke onderdelen van IoT Plug en Play.
 author: ridomin
 ms.author: rmpablos
-ms.date: 07/06/2020
+ms.date: 09/15/2020
 ms.topic: conceptual
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: f656de0bb2e5244e137ae21a6d7af88f3430b12c
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 32e67bd7f30fecee3449935a35235844a047957b
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475682"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91574315"
 ---
-# <a name="iot-plug-and-play-preview-architecture"></a>Architectuur van IoT Plug en Play (preview)
+# <a name="iot-plug-and-play-architecture"></a>IoT-Plug en Play architectuur
 
-Met IoT Plug en Play Preview kunnen bouwers van oplossingen smart-apparaten integreren met hun oplossingen zonder hand matige configuratie. De kern van IoT Plug en Play is een _model_ apparaat waarmee de mogelijkheden van een apparaat worden beschreven in een IoT-Plug en Play toepassing. Dit model is gestructureerd als een reeks interfaces die het volgende definiëren:
+Met IoT Plug en Play kunnen bouwers van oplossingen slimme apparaten integreren met hun oplossingen zonder hand matige configuratie. De kern van IoT Plug en Play is een _model_ apparaat waarmee de mogelijkheden van een apparaat worden beschreven in een IoT-Plug en Play toepassing. Dit model is gestructureerd als een reeks interfaces die het volgende definiëren:
 
-- _Eigenschappen_ die de status alleen-lezen of beschrijfbaar van een apparaat of andere entiteit vertegenwoordigen. Een serie nummer van een apparaat kan bijvoorbeeld een alleen-lezen eigenschap zijn en een doel temperatuur op een thermo staat kan een Beschrijf bare eigenschap zijn.
-- _Telemetrie_ die de gegevens die door een apparaat worden verzonden, ongeacht of de gegevens een gewone stroom van sensor leesingen, een incidentele fout of een informatie bericht zijn.
-- _Opdrachten_ die een functie of bewerking beschrijven die op een apparaat kan worden uitgevoerd. Een opdracht kan bijvoorbeeld een gateway opnieuw opstarten of een foto nemen met een externe camera.
+- _Eigenschappen_ die de alleen-lezen- of schrijfbare status van apparaat of andere entiteit vertegenwoordigen. Een serienummer van een apparaat kan bijvoorbeeld een alleen-lezeneigenschap zijn en een doeltemperatuur op een thermostaat kan een schrijfbare eigenschap zijn.
+- _Telemetrie_ ofwel de gegevens die door een apparaat worden verzonden, ongeacht of het gaat om gegevens van een normale stroom met sensorwaarden, een incidentele fout of een informatiebericht.
+- _Opdrachten_ waarmee functies of bewerkingen die op het apparaat kunnen worden uitgevoerd, worden beschreven. Met een opdracht kan bijvoorbeeld een gateway opnieuw worden opgestart of een foto worden gemaakt met een externe camera.
 
 Elk model en elke interface heeft een unieke ID.
 
@@ -30,7 +30,7 @@ In het volgende diagram ziet u de belangrijkste elementen van een IoT Plug en Pl
 
 :::image type="content" source="media/concepts-architecture/pnp-architecture.png" alt-text="IoT-Plug en Play architectuur":::
 
-## <a name="model-repository"></a>Model opslagplaats
+## <a name="model-repository"></a>Modelopslagplaats
 
 De [model opslagplaats](./concepts-model-repository.md) is een archief voor model-en Interface definities. U definieert modellen en interfaces met behulp van de [Digital Apparaatdubbels Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl).
 
@@ -43,9 +43,27 @@ De model opslagplaats maakt gebruik van RBAC zodat u de toegang tot Interface de
 Een apparaat Builder implementeert de code om uit te voeren op een IoT-Smart Device met behulp van een van de [Azure IOT-apparaat-sdk's](./libraries-sdks.md). De Sdk's van het apparaat helpen de opbouw functie voor apparaten bij het volgende:
 
 - Veilig verbinding maken met een IoT-hub.
-- Registreer het apparaat bij uw IoT-hub en laat de model-ID aankondigen waarmee de verzameling interfaces wordt geïdentificeerd die het apparaat implementeert.
-- Update de eigenschappen die zijn gedefinieerd in de DTDL-interfaces die het apparaat implementeert. Deze eigenschappen worden geïmplementeerd met Digital apparaatdubbels die de synchronisatie met uw IoT-hub beheren.
-- Opdracht-handlers toevoegen voor de opdrachten die zijn gedefinieerd in de DTDL-interfaces die het apparaat implementeert.
+- Registreer het apparaat bij uw IoT-hub en kondigt de model-ID aan waarmee de verzameling DTDL-interfaces wordt geïdentificeerd die het apparaat implementeert.
+- Synchroniseer de eigenschappen die zijn gedefinieerd in de DTDL-interfaces tussen het apparaat en uw IoT-hub.
+- Opdracht-handlers toevoegen voor de opdrachten die zijn gedefinieerd in de DTDL-interfaces.
+- Telemetrie verzenden naar de IoT-hub.
+
+## <a name="iot-edge-gateway"></a>IoT Edge gateway
+
+Een IoT Edge gateway fungeert als een intermediair voor het verbinden van IoT-Plug en Play apparaten die niet rechtstreeks verbinding kunnen maken met een IoT-hub. Zie [hoe een IOT edge apparaat kan worden gebruikt als een gateway](../iot-edge/iot-edge-as-gateway.md)voor meer informatie.
+
+## <a name="iot-edge-modules"></a>IoT Edge-modules
+
+Met een _IOT Edge module_ kunt u bedrijfs logica op de rand implementeren en beheren. Azure IoT Edge modules zijn de kleinste reken eenheid die wordt beheerd door IoT Edge en kunnen Azure-Services (zoals Azure Stream Analytics) of uw eigen oplossings code bevatten.
+
+De _IOT Edge hub_ is een van de modules waaruit de Azure IOT Edge-runtime bestaat. Het fungeert als een lokale proxy voor IoT Hub door dezelfde protocol eindpunten als IoT Hub weer te geven. Deze consistentie betekent dat clients (ongeacht of apparaten of modules) verbinding kunnen maken met de IoT Edge runtime, net zoals ze zouden IoT Hub.
+
+De Sdk's van het apparaat helpen een module Builder:
+
+- Gebruik de IoT Edge hub om veilig verbinding te maken met uw IoT-hub.
+- De module registreren bij uw IoT-hub en de model-ID aankondigen die de verzameling DTDL-interfaces identificeert die het apparaat implementeert.
+- Synchroniseer de eigenschappen die zijn gedefinieerd in de DTDL-interfaces tussen het apparaat en uw IoT-hub.
+- Opdracht-handlers toevoegen voor de opdrachten die zijn gedefinieerd in de DTDL-interfaces.
 - Telemetrie verzenden naar de IoT-hub.
 
 ## <a name="iot-hub"></a>IoT Hub
@@ -80,4 +98,4 @@ Nu u een overzicht hebt van de architectuur van een IoT-Plug en Play oplossing, 
 
 - [De model opslagplaats](./concepts-model-repository.md)
 - [Digitale dubbele model integratie](./concepts-model-discovery.md)
-- [Ontwikkelen voor IoT-Plug en Play](./concepts-developer-guide.md)
+- [Ontwikkelen voor IoT-Plug en Play](./concepts-developer-guide-device-csharp.md)

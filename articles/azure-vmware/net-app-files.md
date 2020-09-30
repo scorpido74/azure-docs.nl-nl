@@ -3,12 +3,12 @@ title: NetApp-bestanden voor de Azure VMware-oplossing
 description: Gebruik Azure NetApp Files met Azure VMware-Vm's voor het migreren en synchroniseren van gegevens over on-premises servers, virtuele machines met Azure VMware-oplossingen en Cloud infrastructuren.
 ms.topic: how-to
 ms.date: 09/17/2020
-ms.openlocfilehash: 0adf137db358d3561365a3a1ed2def338eeeb158
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 993a67f82d5af971a4c4a0010bd9d19e2a3113b2
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90708710"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91573919"
 ---
 # <a name="netapp-files-for-azure-vmware-solution"></a>NetApp-bestanden voor de Azure VMware-oplossing
 
@@ -38,21 +38,21 @@ Controleer eerst de configuratie van Azure NetApp Files, gemaakt in azure op een
 
 2. Als u een NetApp-account selecteert, kunt u verschillende instellingen weer geven. Als u bijvoorbeeld **Contoso-anf2**selecteert, ziet u de instellingen ervan. 
 
-    :::image type="content" source="media/net-app-files/net-app-settings.png" alt-text="Instellingen van een NetApp-account weer geven."::: 
+    :::image type="content" source="media/net-app-files/net-app-settings.png" alt-text="Lijst met Azure NetApp Files."::: 
 
 3. Selecteer de **capaciteits groepen** om de geconfigureerde groep te controleren. 
 
-    :::image type="content" source="media/net-app-files/capacity-pools.png" alt-text="Geconfigureerde groep controleren.":::
+    :::image type="content" source="media/net-app-files/capacity-pools.png" alt-text="Lijst met Azure NetApp Files.":::
 
     U kunt zien dat de opslag groep is geconfigureerd als 4 TiB met een Premium-schijf.
 
 4. Selecteer **volumes** (zie scherm afbeelding van stap 2) om volumes weer te geven die zijn gemaakt onder de capaciteits groep.  
 
-    :::image type="content" source="media/net-app-files/azure-net-app-volumes.png" alt-text="Azure NetApp Files volume.":::
+    :::image type="content" source="media/net-app-files/azure-net-app-volumes.png" alt-text="Lijst met Azure NetApp Files.":::
 
 5. Selecteer een volume om de configuratie ervan weer te geven.  
 
-    :::image type="content" source="media/net-app-files/configuration-of-volume.png" alt-text="Configuratie details van een volume.":::
+    :::image type="content" source="media/net-app-files/configuration-of-volume.png" alt-text="Lijst met Azure NetApp Files.":::
 
     U kunt zien dat de anfpool-volume groep, met 200 GiB, is gemaakt als een NetApp-bestands share. Er is een virtueel particulier IP-netwerk gemaakt voor Azure NetApp Files dat het NFS-pad naar de virtuele machines van de Azure VMware-oplossing kan koppelen. 
 
@@ -78,23 +78,23 @@ Azure NetApp Files ondersteunt SMB-toewijzing (Server Message Block) en NFS-shar
 
 2. Voer de vereiste gegevens in voor de naam van de volume groep, het service niveau en de schijf grootte (FQDN) of het IP en gewicht. Selecteer **Toevoegen**.
 
-    :::image type="content" source="media/net-app-files/add-capacity-pool.png" alt-text="Een capaciteits pool toevoegen aan NetApp-bestanden.":::
+    :::image type="content" source="media/net-app-files/add-capacity-pool.png" alt-text="Lijst met Azure NetApp Files.":::
 
 3. Als u volumes onder de capaciteits groep wilt maken, selecteert u **volumes** in het zoek venster en selecteert u **+ volume toevoegen**. 
  
 4. Vul de vereiste velden in, zoals wordt weer gegeven in de volgende scherm afbeelding.
 
-    :::image type="content" source="media/net-app-files/create-a-volume.png" alt-text="Voeg volumes toe onder de capaciteits groep.":::
+    :::image type="content" source="media/net-app-files/create-a-volume.png" alt-text="Lijst met Azure NetApp Files.":::
 
 5. Selecteer op de volgende pagina de protocol type share. Selecteer de versies als deze een NFS-share zijn en selecteer het Active Directory domein als het een SMB-share is.  
 
 6. Als het een NFS-share is, voegt u het bron-IP-adres toe vanaf waar de protocol type share wordt geopend. Selecteer **Controleren + maken**. 
 
-    :::image type="content" source="media/net-app-files/select-volume-details.png" alt-text="Selecteer de volume gegevens.":::
+    :::image type="content" source="media/net-app-files/select-volume-details.png" alt-text="Lijst met Azure NetApp Files.":::
  
     Onder Azure NetApp Files in de Azure Portal is de NFS-share klaar voor gebruik.
 
-    :::image type="content" source="media/net-app-files/share-ready.png" alt-text="De NFS-share is gereed.":::
+    :::image type="content" source="media/net-app-files/share-ready.png" alt-text="Lijst met Azure NetApp Files.":::
 
 ## <a name="mount-an-nfs-file-share-on-your-azure-vmware-solution-vms"></a>Een NFS-bestands share koppelen op uw Azure VMware-oplossing Vm's
 
@@ -102,9 +102,9 @@ Azure NetApp Files ondersteunt SMB-toewijzing (Server Message Block) en NFS-shar
 
 - Open een opdracht prompt en voer de opdracht uit om de NFS-bestands share toe te wijzen. In de volgende scherm afbeeldingen wordt het share station weer gegeven dat is toegewezen op een Windows-VM in azure VMware-oplossing.  
 
-    :::image type="content" source="media/net-app-files/share-mapped-to-windows-vm.png" alt-text="Deel het station dat is toegewezen op een Windows-VM in azure VMware-oplossing.":::
+    :::image type="content" source="media/net-app-files/share-mapped-to-windows-vm.png" alt-text="Lijst met Azure NetApp Files.":::
  
-    :::image type="content" source="media/net-app-files/mapped-to-windows-drive.png" alt-text="Station delen dat is toegewezen op een Windows-VM.":::
+    :::image type="content" source="media/net-app-files/mapped-to-windows-drive.png" alt-text="Lijst met Azure NetApp Files.":::
 
 ### <a name="mount-an-nfs-file-share-on-an-azure-vmware-solution-linux-vm"></a>Een NFS-bestands share koppelen aan een Azure VMware-oplossing Linux VM
 
@@ -129,7 +129,7 @@ Azure NetApp Files ondersteunt SMB-toewijzing (Server Message Block) en NFS-shar
 
 3. Uw bestands systeem koppelen: `sudo mount -t nfs -o rw,hard,rsize=1048576,wsize=1048576,vers=3,tcp 10.22.3.4:/ANFPOOL ANFPOOL`
 
-    :::image type="content" source="media/net-app-files/root-test.png" alt-text="Hoofd test.":::
+    :::image type="content" source="media/net-app-files/root-test.png" alt-text="Lijst met Azure NetApp Files.":::
 
 ## <a name="create-an-active-directory-connection-for-an-smb-share"></a>Een Active Directory verbinding maken voor een SMB-share
 
@@ -137,19 +137,19 @@ Azure NetApp Files ondersteunt SMB-toewijzing (Server Message Block) en NFS-shar
 
 2. Selecteer **Active Directory verbindingen**onder Azure NetApp files.
 
-    :::image type="content" source="media/net-app-files/active-directory-connections.png" alt-text="Active Directory verbindingen."::: 
+    :::image type="content" source="media/net-app-files/active-directory-connections.png" alt-text="Lijst met Azure NetApp Files."::: 
 
 3. Selecteer **samen voegen** om de SMB-share toe te voegen aan Active Directory. In de volgende scherm afbeelding ziet u de domein Details van de SMB-share.
 
-    :::image type="content" source="media/net-app-files/active-directory-connect-details.png" alt-text="Domein Details van SMB-share."::: 
+    :::image type="content" source="media/net-app-files/active-directory-connect-details.png" alt-text="Lijst met Azure NetApp Files."::: 
 
     Uw Azure SMB-bestands share is klaar voor gebruik.  
 
-    :::image type="content" source="media/net-app-files/smb-file-share-details.png" alt-text="De SMB-bestands share is gereed."::: 
+    :::image type="content" source="media/net-app-files/smb-file-share-details.png" alt-text="Lijst met Azure NetApp Files."::: 
 
 4. Wijs de SMB-share toe aan uw VM met Windows Azure VMware-oplossing. Gebruik het pad SMB-koppeling zoals wordt weer gegeven in de vorige scherm afbeelding. Zie [een netwerk station toewijzen in Windows 10](https://support.microsoft.com/help/4026635/windows-10-map-a-network-drive) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 - Meer informatie over de [opslag hiërarchie van Azure NetApp files](../azure-netapp-files/azure-netapp-files-understand-storage-hierarchy.md).
 - Bekijk [levenscyclus beheer van virtuele machines van Azure VMware-oplossingen](lifecycle-management-of-azure-vmware-solution-vms.md)
-- Zie [Azure VMware-oplossing integreren in een hub-en spoke-architectuur](concepts-avs-hub-and-spoke-integration.md)
+- Zie [Azure VMware-oplossing integreren in een hub-en spoke-architectuur](concepts-hub-and-spoke.md)

@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 5494c2dd57220888ad846aaf69fde2f7a59353e4
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 5c3f87620c8a2a2d2438d7a5630541c0f76f9f17
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90053022"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575568"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box-preview"></a>Zelf studie: export volgorde voor Azure Data Box maken (preview)
 
@@ -159,34 +159,34 @@ Voer de volgende stappen uit in de Azure-portal om een apparaat te bestellen.
 Als u **XML-bestand gebruiken**selecteert, kunt u specifieke containers en blobs opgeven (pagina en blok keren) die u wilt exporteren. U moet de [XML-voorbeeld bestands tabel](#sample-xml-file) specificaties volgen voor het opmaken van uw XML. De volgende stappen laten zien hoe u een XML-bestand gebruikt voor het exporteren van uw gegevens:
 
 1. Voor **Export type**selecteert **u XML-bestand gebruiken**. Dit is het XML-bestand waarin specifieke blobs en Azure-bestanden worden opgegeven die u wilt exporteren. Als u het XML-bestand wilt toevoegen, selecteert u **hier klikken om een XML-bestand te selecteren**.
-     ![XML-bestand](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-01.png)
+     ![Scherm afbeelding van de optie export selecteren met de Klik hier om een bestands optie van X M L te selecteren.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-01.png)
 
 2. Selecteer **+ container** om een container te maken.
-    ![XML-bestand](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-02.png)
+    ![Scherm afbeelding van de sectie containers.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-02.png)
 
 3. Voeg op het tabblad **nieuwe container** die aan de rechter kant van de Azure Portal, een naam voor de container toe. De naam moet een kleine letter zijn en u kunt cijfers en streepjes '-' bevatten. Selecteer vervolgens het **niveau Public Access** in de vervolg keuzelijst. U wordt aangeraden **particuliere (niet-anonieme toegang)** te kiezen om te voor komen dat anderen toegang krijgen tot uw gegevens. Zie [toegangs machtigingen voor containers](../storage/blobs/storage-manage-access-to-resources.md#grant-anonymous-users-permissions-to-containers-and-blobs)voor meer informatie over toegangs niveaus voor containers.
 
-   ![XML-bestand](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-04.png)
+   ![Scherm afbeelding van het tabblad nieuwe container met de optie privé (geen anonieme toegang) geselecteerd.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-04.png)
 
 4. Selecteer **Maken**.
 
-   ![XML-bestand](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-07.png)
+   ![Scherm afbeelding van het tabblad nieuwe container met de optie voor het maken van een naam.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-07.png)
 
    Als uw container is gemaakt, wordt het volgende bericht weer gegeven:
 
-   ![XML-bestand](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-09.png)
+   ![Scherm afbeelding van het bericht met de tekst ' de opslag container is gemaakt '.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-09.png)
 
 5. Selecteer de container die u hebt gemaakt en dubbel klik erop.
 
-   ![XML-bestand](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-08.png)
+   ![Scherm afbeelding van de sectie containers met de container mijn persoonlijke test container met de naam.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-08.png)
 
 6. Door te dubbel klikken op de container verschijnt de weer gave container eigenschappen. Nu wilt u het XML-bestand dat de lijst met blobs en/of Azure-bestanden bevat die u wilt exporteren, koppelen (of naar). Selecteer **Uploaden**.
 
-   ![XML-bestand](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-10c.png)
+   ![Scherm afbeelding van het dialoog venster BLOB uploaden met de Upload optie.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-10c.png)
 
 7. Het XML-bestand is toegevoegd aan de container. Alleen blobs en Azure-bestanden die u in deze XML hebt opgegeven, worden geëxporteerd.
 
-   ![XML-bestand](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-12.png)
+   ![Scherm opname van de wizard bestelling met de volgende: beveiligings optie met de naam.](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-12.png)
 
 ## <a name="track-the-order"></a>De bestelling volgen
 

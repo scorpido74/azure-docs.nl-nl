@@ -5,25 +5,25 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/13/2020
 ms.topic: how-to
-ms.openlocfilehash: 2e9cb216c100f1732230a90572284bd3f8462584
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 11bd79a1bc88d2605a20744f5a6b6536d754c100
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87433144"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576639"
 ---
 # <a name="override-materials-during-model-conversion"></a>Materialen overschrijven tijden modelconversie
 
 De materiaal instellingen in het bron model worden gebruikt voor het definiëren van de [PBR-materialen](../../overview/features/pbr-materials.md) die worden gebruikt door de renderer.
 Soms geeft de [standaard conversie](../../reference/material-mapping.md) niet de gewenste resultaten en u moet wijzigingen aanbrengen.
 Wanneer een model wordt geconverteerd voor gebruik in azure-rendering op afstand, kunt u een bestand voor het overschrijven van materialen opgeven om te bepalen hoe de conversie van materialen per materiaal wordt uitgevoerd.
-De sectie over het configureren van de [model conversie](configure-model-conversion.md) bevat instructies voor het declareren van de bestands naam voor het overschrijven van materiaal.
+Als een bestand met de naam `<modelName>.MaterialOverrides.json` wordt gevonden in de invoer container naast het invoer model `<modelName>.<ext>` , wordt het gebruikt als het overschrijvings bestand van het materiaal.
 
 ## <a name="the-override-file-used-during-conversion"></a>Het overschrijvings bestand dat wordt gebruikt tijdens de conversie
 
 Stel dat een box-model een enkel materiaal heeft met de naam standaard.
 Daarnaast moeten we de kleur van de albedo aanpassen voor gebruik in ARR.
-In dit geval kan een `box_materials_override.json` bestand als volgt worden gemaakt:
+In dit geval kan een `box.MaterialOverrides.json` bestand als volgt worden gemaakt:
 
 ```json
 [
@@ -39,15 +39,7 @@ In dit geval kan een `box_materials_override.json` bestand als volgt worden gema
 ]
 ```
 
-Het `box_materials_override.json` bestand wordt in de invoer container geplaatst en er `box.ConversionSettings.json` wordt een toegevoegd naast `box.fbx` , waarmee wordt aangegeven dat het overschrijvings bestand moet worden gevonden (Zie [de model conversie configureren](configure-model-conversion.md)):
-
-```json
-{
-    "material-override" : "box_materials_override.json"
-}
-```
-
-Wanneer het model wordt geconverteerd, worden de nieuwe instellingen toegepast.
+Het `box.MaterialOverrides.json` bestand wordt geplaatst in de invoer container naast `box.fbx` , waarmee wordt aangegeven dat de conversie service de nieuwe instellingen toepast.
 
 ### <a name="color-materials"></a>Kleurmaterialen
 
@@ -84,6 +76,36 @@ Het principe is eenvoudig. Voeg een eigenschap toe met de naam `ignoreTextureMap
 ```
 
 Zie het onderstaande JSON-schema voor een volledige lijst met patroon toewijzingen die u kunt negeren.
+
+### <a name="applying-the-same-overrides-to-multiple-materials"></a>Dezelfde onderdrukkingen Toep assen op meerdere materialen
+
+Standaard wordt een vermelding in het bestand materiaal onderdrukkingen toegepast wanneer de naam overeenkomt met de naam van het materiaal exact.
+Omdat het vaak gebruikelijk is dat dezelfde onderdrukking op meerdere materialen van toepassing is, kunt u eventueel een reguliere expressie opgeven als de naam van de vermelding.
+Het veld `nameMatching` heeft een standaard waarde `exact` , maar kan worden ingesteld op `regex` om aan te duiden dat de vermelding moet worden toegepast op elk overeenkomend materiaal.
+De syntaxis die wordt gebruikt, is hetzelfde als die voor Java script. In het volgende voor beeld ziet u een onderdrukking die van toepassing is op materialen met namen als "Material2", "Material01" en "Material999".
+
+```json
+[
+    {
+        "name": "Material[0-9]+",
+        "nameMatching": "regex",
+        "albedoColor": {
+            "r": 0.0,
+            "g": 0.0,
+            "b": 1.0,
+            "a": 1.0
+        }
+    }
+]
+```
+
+Er is Maxi maal één vermelding in een materiaal overschrijvings bestand van toepassing op één enkel materiaal.
+Als er een exacte overeenkomst is (bijvoorbeeld `nameMatching` afwezig of gelijk aan `exact` ) voor de naam van het materiaal, wordt deze vermelding gekozen.
+Anders wordt de eerste regex-vermelding in het bestand dat overeenkomt met de naam van het materiaal gekozen.
+
+### <a name="getting-information-about-which-entries-applied"></a>Informatie opvragen over welke vermeldingen zijn toegepast
+
+Het [Info bestand](get-information.md#information-about-a-converted-model-the-info-file) dat naar de uitvoer container wordt geschreven, bevat informatie over het aantal overschrijvingen dat wordt gegeven en het aantal materialen dat is overschreven.
 
 ## <a name="json-schema"></a>JSON-schema
 
@@ -154,6 +176,7 @@ Hier wordt het volledige JSON-schema voor materiaal bestanden gegeven. Met uitzo
         "properties":
         {
             "name": { "type" : "string"},
+            "nameMatching" : { "type" : "string", "enum" : ["exact", "regex"] },
             "unlit": { "type" : "boolean" },
             "albedoColor": { "$ref": "#/definitions/colorOrAlpha" },
             "roughness": { "type": "number" },

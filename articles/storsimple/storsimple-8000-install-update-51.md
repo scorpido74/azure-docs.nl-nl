@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 03/05/2020
 ms.author: alkohli
-ms.openlocfilehash: 1c9d4747b227c7ff83e4c43292badd65836edfef
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 5b9958f3dd497aa612a92947b8d968439ef9d0e4
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90052168"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575959"
 ---
 # <a name="install-update-51-on-your-storsimple-device"></a>Update 5,1 op uw StorSimple-apparaat installeren
 
@@ -60,15 +60,15 @@ Voer de volgende stappen uit om uw apparaat bij te werken naar [update 5,1](stor
 
 2. Navigeren naar **Apparaatinstellingen apparaat-**  >  **updates**.
 
-    ![Klik op updates voor apparaten](./media/storsimple-8000-install-update-51/update2.png)
+    ![Scherm afbeelding van de Blade instellingen met de optie voor het bijwerken van het apparaat.](./media/storsimple-8000-install-update-51/update2.png)
 
 3. Er wordt een melding weer gegeven als er nieuwe updates beschikbaar zijn. U kunt ook op de Blade **updates voor apparaten** klikken op **updates scannen**. Er wordt een taak gemaakt om te zoeken naar beschikbare updates. U ontvangt een melding wanneer de taak is voltooid.
 
-    ![Klik op updates voor apparaten](./media/storsimple-8000-install-update-51/update3.png)
+    ![Scherm afbeelding van de Blade instellingen met de optie updates van het apparaat wordt aangeroepen en de Blade apparaat bijwerken met de nieuwe reguliere updates is beschikbaar bericht met de naam.](./media/storsimple-8000-install-update-51/update3.png)
 
 4. We raden u aan de releaseopmerkingen te bekijken voordat u een update toepast op uw apparaat. Klik op **updates installeren**om updates toe te passen. Controleer op de Blade **regel matige updates bevestigen** de vereiste onderdelen om te volt ooien voordat u updates toepast. Schakel het selectie vakje in om aan te geven dat u klaar bent voor het bijwerken van het apparaat en klik vervolgens op **installeren**.
 
-    ![Klik op updates voor apparaten](./media/storsimple-8000-install-update-51/update4.png)
+    ![Scherm afbeelding van de Blade updates van het apparaat met de optie voor het installeren van updates en de optie regel matige updates bevestigen met de optie akkoord en installeren.](./media/storsimple-8000-install-update-51/update4.png)
 
 5. Er wordt een reeks vereiste controles gestart. Deze controles zijn onder andere:
    
@@ -80,17 +80,17 @@ Voer de volgende stappen uit om uw apparaat bij te werken naar [update 5,1](stor
 
 7. Nadat de voor controle is voltooid, wordt een update taak gemaakt. U krijgt een melding wanneer de bijwerktaak is gemaakt.
    
-    ![Maken van bijwerktaak](./media/storsimple-8000-install-update-51/update6.png)
+    ![Scherm afbeelding van de melding met de tekst ' de taak software-updates starten '.](./media/storsimple-8000-install-update-51/update6.png)
    
     De update wordt vervolgens op het apparaat toegepast.
 
 9. De update neemt enkele uren in beslag. Selecteer de bijwerktaak en klik op **Details** om de details van de taak te bekijken.
 
-    ![Maken van bijwerktaak](./media/storsimple-8000-install-update-51/update8.png)
+    ![Scherm afbeelding van de Blade apparaat bijwerken met de optie Software-updates downloaden en installeren die worden uitgevoerd en de Blade updates installeren.](./media/storsimple-8000-install-update-51/update8.png)
 
      U kunt ook de voortgang van de update taak controleren op basis van **apparaatinstellingen > taken**. Op de Blade **taken** ziet u de voortgang van de update.
 
-     ![Maken van bijwerktaak](./media/storsimple-8000-install-update-51/update7.png)
+     ![Scherm opname van de Blade instellingen met taken die worden genoemd en de Blade taken met de voortgang van de update.](./media/storsimple-8000-install-update-51/update7.png)
 
 10. Nadat de taak is voltooid, gaat u naar de **apparaatinstellingen > updates**van het apparaat. De software versie moet nu worden bijgewerkt.
 

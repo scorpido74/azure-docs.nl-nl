@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: 4ad3aa7169fcf7eeda6e56a2eab6669b8783d77d
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: 714a43ec197ac150488d4443c1eb6fe1be1da232
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91461458"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575517"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor logboeken toegewezen clusters
 
@@ -19,7 +19,7 @@ Azure Monitor logboeken toegewezen clusters zijn een implementatie optie die bes
 
 Met uitzonde ring van de ondersteuning voor hoog volume zijn er andere voor delen van het gebruik van speciale clusters:
 
-- **Frequentie limiet** : een klant kan alleen hogere opname frequentie limieten hebben op een toegewezen cluster.
+- **Frequentie limiet** : een klant kan alleen hogere [opname frequentie limieten](../service-limits.md#data-ingestion-volume-rate) hebben op een toegewezen cluster.
 - **Functies** : bepaalde bedrijfs functies zijn alleen beschikbaar voor speciale clusters, met name door de klant beheerde sleutels (CMK) en lockbox-ondersteuning. 
 - **Consistentie** : klanten hebben hun eigen toegewezen resources en er is geen invloed op de andere klanten die worden uitgevoerd op dezelfde gedeelde infra structuur.
 - **Kosten efficiëntie** : het is mogelijk rendabeler om een toegewezen cluster te gebruiken, omdat de toegewezen capaciteits reserverings lagen rekening houden met alle cluster opname en van toepassing zijn op alle werk ruimten, zelfs als deze klein zijn en niet in aanmerking komen voor de korting op capaciteits reservering.
@@ -38,14 +38,23 @@ Zodra het cluster is gemaakt, kan het worden geconfigureerd en worden de werk ru
 
 Voor alle bewerkingen op het cluster niveau is de `Microsoft.OperationalInsights/clusters/write` actie machtiging vereist voor het cluster. Deze machtiging kan worden verleend via de eigenaar of Inzender die de `*/write` actie bevat of via de log Analytics rol Inzender die de `Microsoft.OperationalInsights/*` actie bevat. Zie [toegang tot logboek gegevens en werk ruimten in azure monitor beheren](../platform/manage-access.md)voor meer informatie over log Analytics machtigingen. 
 
-## <a name="billing"></a>Billing
 
-Speciale clusters worden alleen ondersteund voor werk ruimten die gebruikmaken van plannen per GB met of zonder capaciteits reserverings lagen. Speciale clusters hebben geen extra kosten voor klanten die de opslag van meer dan 1 TB voor een dergelijk cluster door voeren. "Door voeren naar opname" betekent dat ze een laag voor capaciteits reservering hebben toegewezen van ten minste 1 TB/dag op het cluster niveau. Terwijl de capaciteits reservering op het cluster niveau is gekoppeld, zijn er twee opties voor de werkelijke kosten voor het laden van de gegevens:
+## <a name="cluster-pricing-model"></a>Prijs model voor cluster
 
-- *Cluster* (standaard): de kosten voor de capaciteits reservering voor uw cluster worden toegeschreven aan de *cluster* bron.
-- *Werk ruimten* : de kosten voor de capaciteits reservering voor uw cluster worden proportioneel toegeschreven aan de werk ruimten in het cluster. In de *cluster* resource wordt een deel van het gebruik gefactureerd als de totale opgenomen gegevens voor de dag onder de capaciteits reservering vallen. Zie [log Analytics toegewezen clusters](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters) voor meer informatie over het prijs model van het cluster.
+Log Analytics toegewezen clusters gebruiken een prijs model voor capaciteits reservering dat ten minste 1000 GB/dag is. Elk gebruik boven het reserverings niveau wordt gefactureerd op basis van het betalen naar gebruik-tarief.  De prijs informatie voor capaciteits reservering is beschikbaar op de [pagina met Azure monitor prijzen]( https://azure.microsoft.com/pricing/details/monitor/).  
 
-Zie [log Analytics toegewezen cluster facturering](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters)voor meer informatie over het factureren van toegewezen clusters.
+Het reserverings niveau voor cluster capaciteit wordt via een programma geconfigureerd met Azure Resource Manager met behulp van de `Capacity` para meter onder `Sku` . De `Capacity` is opgegeven in eenheden van GB en kan waarden hebben van 1000 GB/dag of meer in stappen van 100 GB/dag.
+
+Er zijn twee facturerings methoden voor gebruik in een cluster. Deze kunnen worden opgegeven met de `billingType` para meter bij het configureren van uw cluster. 
+
+1. **Cluster**: in dit geval (dit is de standaard instelling), wordt de facturering voor opgenomen gegevens uitgevoerd op het cluster niveau. De opgenomen gegevens aantallen uit elke werk ruimte die aan een cluster is gekoppeld, worden geaggregeerd voor het berekenen van de dagelijkse factuur voor het cluster. 
+
+2. **Werk ruimten**: de kosten voor de capaciteits reservering voor uw cluster worden proportioneel toegeschreven aan de werk ruimten in het cluster (na de accounting van toewijzingen per knoop punt van [Azure Security Center](https://docs.microsoft.com/azure/security-center/) voor elke werk ruimte.)
+
+Houd er rekening mee dat als uw werk ruimte verouderde prijs categorie per knoop punt gebruikt, wanneer deze is gekoppeld aan een cluster, wordt gefactureerd op basis van gegevens die zijn opgenomen in de capaciteits reservering van het cluster en niet langer per knoop punt. Gegevens toewijzingen per knoop punt van Azure Security Center worden nog steeds toegepast.
+
+[Hier]( https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-dedicated-clusters)vindt u meer informatie over facturering voor log Analytics toegewezen clusters.
+
 
 ## <a name="creating-a-cluster"></a>Een cluster maken
 
@@ -155,8 +164,8 @@ Nadat u de *cluster* bron hebt gemaakt en volledig is ingericht, kunt u aanvulle
 
 - **keyVaultProperties**: wordt gebruikt om de Azure Key Vault te configureren die wordt gebruikt om een Azure monitor door de [klant beheerde sleutel](../platform/customer-managed-keys.md#cmk-provisioning-procedure)in te richten. Het bevat de volgende para meters:  *KeyVaultUri*, *naam*van de *versie*. 
 - **billingType** : de eigenschap *billingType* bepaalt het facturerings kenmerk voor de *cluster* bron en de bijbehorende gegevens.
-- **Cluster** (standaard): de kosten voor de capaciteits reservering voor uw cluster worden toegeschreven aan de *cluster* bron.
-- **Werk ruimten** : de kosten voor de capaciteits reservering voor uw cluster worden proportioneel toegeschreven aan de werk ruimten in het cluster, waarbij een deel van de *cluster* resource wordt gefactureerd als de totale opgenomen gegevens voor de dag onder de capaciteits reservering vallen. Zie [log Analytics toegewezen clusters](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters) voor meer informatie over het prijs model van het cluster. 
+  - **Cluster** (standaard): de kosten voor de capaciteits reservering voor uw cluster worden toegeschreven aan de *cluster* bron.
+  - **Werk ruimten** : de kosten voor de capaciteits reservering voor uw cluster worden proportioneel toegeschreven aan de werk ruimten in het cluster, waarbij een deel van de *cluster* resource wordt gefactureerd als de totale opgenomen gegevens voor de dag onder de capaciteits reservering vallen. Zie [log Analytics toegewezen clusters](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters) voor meer informatie over het prijs model van het cluster. 
 
 > [!NOTE]
 > De eigenschap *billingType* wordt niet ondersteund in Power shell.
@@ -185,7 +194,7 @@ Content-type: application/json
 {
    "sku": {
      "name": "capacityReservation",
-     "capacity": 1000
+     "capacity": <capacity-reservation-amount-in-GB>
      },
    "properties": {
     "billingType": "cluster",
@@ -265,8 +274,6 @@ Bij elke cluster bewerking kan het koppelen van een werk ruimte alleen worden ui
 > [!WARNING]
 > Voor het koppelen van een werk ruimte aan een cluster moet u meerdere back-end-onderdelen synchroniseren en de cache Hydration. Het kan tot twee uur duren voordat deze bewerking is voltooid. U wordt aangeraden deze asynchroon uit te voeren.
 
-
-### <a name="link-operations"></a>Koppelings bewerkingen
 
 **PowerShell**
 
@@ -366,7 +373,36 @@ U kunt een werk ruimte ontkoppelen van een cluster. Nadat een werk ruimte is ont
 
 ## <a name="delete-a-dedicated-cluster"></a>Een toegewezen cluster verwijderen
 
-Een toegewezen cluster bron kan worden verwijderd. U moet alle werk ruimten ontkoppelen van het cluster voordat u deze verwijdert. Zodra de cluster bron is verwijderd, voert het fysieke cluster een verwijderings-en verwijder proces uit. Als een cluster wordt verwijderd, worden alle gegevens die zijn opgeslagen op het cluster verwijderd. De gegevens kunnen afkomstig zijn uit werk ruimten die in het verleden zijn gekoppeld aan het cluster.
+Een toegewezen cluster bron kan worden verwijderd. U moet alle werk ruimten ontkoppelen van het cluster voordat u deze verwijdert. U hebt schrijf machtigingen voor de *cluster* bron nodig om deze bewerking uit te voeren. 
+
+Zodra de cluster bron is verwijderd, voert het fysieke cluster een verwijderings-en verwijder proces uit. Als een cluster wordt verwijderd, worden alle gegevens die zijn opgeslagen op het cluster verwijderd. De gegevens kunnen afkomstig zijn uit werk ruimten die in het verleden zijn gekoppeld aan het cluster.
+
+Een *cluster* bron die in de afgelopen 14 dagen is verwijderd, is in de status voorlopig verwijderen en kan worden hersteld met de bijbehorende gegevens. Omdat alle werk ruimten die niet zijn gekoppeld aan de *cluster* bron *,* worden verwijderd, moet u na het herstel uw werk ruimten opnieuw koppelen. De herstel bewerking kan niet worden uitgevoerd door de gebruiker. Neem contact op met uw micro soft-kanaal of ondersteuning voor herstel aanvragen.
+
+Binnen 14 dagen na de verwijdering is de naam van de cluster resource gereserveerd en kan deze niet worden gebruikt door andere resources.
+
+**PowerShell**
+
+Gebruik de volgende Power shell-opdracht voor het verwijderen van een cluster:
+
+  ```powershell
+  Remove-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name"
+  ```
+
+**REST**
+
+Gebruik de volgende REST-aanroep om een cluster te verwijderen:
+
+  ```rst
+  DELETE https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
+  Authorization: Bearer <token>
+  ```
+
+  **Response**
+
+  200 OK
+
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

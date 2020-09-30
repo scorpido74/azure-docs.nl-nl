@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 282ac6f87d5ecff75e77b075ee1092f79b4923ad
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: bcc561cd5eea4372d798fff4580362ba0879c3a4
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192864"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91574191"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen1-by-using-power-bi"></a>Gegevens in Azure Data Lake Storage Gen1 analyseren met behulp van Power BI
 In dit artikel leert u hoe u Power BI Desktop kunt gebruiken voor het analyseren en visualiseren van gegevens die zijn opgeslagen in Azure Data Lake Storage Gen1.
@@ -27,7 +27,7 @@ Voordat u met deze zelfstudie begint, moet u het volgende hebben of hebben gedaa
 1. Start Power BI Desktop op de computer.
 2. Klik op het lint **Start** op **gegevens ophalen**en klik vervolgens op meer. Klik in het dialoog venster **gegevens ophalen** op **Azure**, klik op **Azure data Lake Store**en klik vervolgens op **verbinding maken**.
    
-    ![Verbinding maken met Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account.png "Verbinding maken met Data Lake Storage Gen1")
+    ![Scherm afbeelding van het dialoog venster gegevens ophalen met de optie Azure Data Lake Store gemarkeerd en de optie verbinding maken.](./media/data-lake-store-power-bi/get-data-lake-store-account.png "Verbinding maken met Data Lake Storage Gen1")
 3. Als er een dialoog venster wordt weer geven over de connector die zich in een ontwikkelings fase bevinden, kunt u kiezen om door te gaan.
 4. Geef in het dialoog venster **Azure data Lake Store** de URL naar uw data Lake Storage gen1-account op en klik vervolgens op **OK**.
    
@@ -37,7 +37,7 @@ Voordat u met deze zelfstudie begint, moet u het volgende hebben of hebben gedaa
     ![Aanmelden bij Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account-signin.png "Aanmelden bij Data Lake Storage Gen1")
 6. Nadat u bent aangemeld, klikt u op **verbinding maken**.
    
-    ![Verbinding maken met Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account-connect.png "Verbinding maken met Data Lake Storage Gen1")
+    ![Scherm afbeelding van het dialoog venster Azure Data Lake Store met de optie verbinding maken.](./media/data-lake-store-power-bi/get-data-lake-store-account-connect.png "Verbinding maken met Data Lake Storage Gen1")
 7. In het volgende dialoog venster ziet u het bestand dat u hebt geüpload naar uw Data Lake Storage Gen1-account. Controleer de gegevens en klik vervolgens op **laden**.
    
     ![Gegevens laden uit Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account-load.png "Gegevens laden uit Data Lake Storage Gen1")
@@ -52,19 +52,19 @@ Voordat u met deze zelfstudie begint, moet u het volgende hebben of hebben gedaa
     In de volgende stappen wordt de query bijgewerkt voor het converteren van de geïmporteerde gegevens in de gewenste indeling.
 9. Klik op het lint **Start** op **query's bewerken**.
    
-    ![Query's bewerken](./media/data-lake-store-power-bi/edit-queries.png "Query's bewerken")
+    ![Scherm opname van het lint start met de optie Query's bewerken aangeroepen.](./media/data-lake-store-power-bi/edit-queries.png "Query's bewerken")
 10. Klik in de query-editor, onder de kolom **inhoud** , op **binair**.
     
-    ![Query's bewerken](./media/data-lake-store-power-bi/convert-query1.png "Query's bewerken")
+    ![Scherm afbeelding van de query-editor met de inhouds kolom out out.](./media/data-lake-store-power-bi/convert-query1.png "Query's bewerken")
 11. U ziet een pictogram met een bestand dat het **Drivers.txt** bestand vertegenwoordigt dat u hebt geüpload. Klik met de rechter muisknop op het bestand en klik op **CSV**.    
     
-    ![Query's bewerken](./media/data-lake-store-power-bi/convert-query2.png "Query's bewerken")
+    ![Scherm opname van de query-editor met de CSV-optie.](./media/data-lake-store-power-bi/convert-query2.png "Query's bewerken")
 12. U ziet een uitvoer zoals hieronder wordt weer gegeven. Uw gegevens zijn nu beschikbaar in een indeling die u kunt gebruiken om visualisaties te maken.
     
-    ![Query's bewerken](./media/data-lake-store-power-bi/convert-query3.png "Query's bewerken")
+    ![Scherm afbeelding van de query-editor waarbij de uitvoer wordt weer gegeven zoals verwacht.](./media/data-lake-store-power-bi/convert-query3.png "Query's bewerken")
 13. Klik op het lint **Start** op **sluiten en Toep assen**en klik vervolgens op **sluiten en Toep assen**.
     
-    ![Query's bewerken](./media/data-lake-store-power-bi/load-edited-query.png "Query's bewerken")
+    ![Scherm opname van het lint start met de optie sluiten en Toep assen aangeroepen.](./media/data-lake-store-power-bi/load-edited-query.png "Query's bewerken")
 14. Zodra de query is bijgewerkt, worden de nieuwe velden die beschikbaar zijn voor visualisatie weer gegeven op het tabblad **velden** .
     
     ![Bijgewerkte velden](./media/data-lake-store-power-bi/updated-query-fields.png "Bijgewerkte velden")

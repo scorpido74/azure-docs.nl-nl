@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: b8ee222b7d65fe9b6b9a605bf055e127aef58ff9
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: e375ce88b8e5bd96e19dc4f5da2143c3f9de53a9
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91439290"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575857"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Veelgestelde vragen over Azure IaaS VM-schijven en beheerde en onbeheerde Premium-schijven
 
 In dit artikel vindt u antwoorden op enkele veelgestelde vragen over Azure Managed Disks en Azure Premium-SSD-schijven.
 
-## <a name="managed-disks"></a>Beheerde schijven
+## <a name="managed-disks"></a>Managed Disks
 
 **Wat is Azure Managed Disks?**
 
@@ -396,13 +396,19 @@ Nee, het wordt alleen ondersteund op Premium SSD Managed disks.
 
 Nee, standaard SSD-beheerde schijven van elke grootte kunnen niet worden gebruikt met niet-beheerde schijven of pagina-blobs.
 
-**Wat is de grootste beheerde schijf grootte die wordt ondersteund voor besturings systeem en gegevens schijven?**
+**Wat is de grootste beheerde schijf grootte die wordt ondersteund voor besturings systeem en gegevens schijven op gen1 Vm's?**
 
-Het partitie type dat door Azure wordt ondersteund voor een besturingssysteem schijf is de Master Boot Record (MBR) en de GUID-partitie tabel (GPT) voor virtuele machines van generatie 1 en generatie 2. De MBR-indeling ondersteunt een schijf grootte van Maxi maal twee TiB. Voor virtuele machines van generatie 1, kunt u Maxi maal twee TiB voor het besturings systeem, maar Maxi maal 2 TiB van deze schijf ruimte toewijzen. Voor virtuele machines van generatie 2 is de maximale grootte die u kunt toewijzen en gebruiken voor een besturingssysteem schijf 4 TiB. Azure biedt ondersteuning voor Maxi maal 32 TiB voor beheerde gegevens schijven.
+Het partitie type dat door Azure wordt ondersteund voor gen1-besturingssysteem schijven is de Master Boot Record (MBR). Hoewel gen1-besturingssysteem schijven alleen ondersteuning bieden voor MBR, ondersteunen de gegevens schijven GPT. Hoewel u Maxi maal een 4 TiB-besturingssysteem schijf kunt toewijzen, kan het MBR-partitie type Maxi maal 2 TiB aan deze schijf ruimte voor het besturings systeem gebruiken. Azure biedt ondersteuning voor Maxi maal 32 TiB voor beheerde gegevens schijven.
+
+**Wat is de grootste beheerde schijf grootte die wordt ondersteund voor besturings systeem en gegevens schijven op Gen2 Vm's?**
+
+Het partitie type dat door Azure wordt ondersteund voor Gen2-besturingssysteem schijven is een GUID-partitie tabel (GPT). Gen2 Vm's bieden ondersteuning voor Maxi maal 4 TiB besturingssysteem schijf. Azure biedt ondersteuning voor Maxi maal 32 TiB voor beheerde gegevens schijven.
+
 
 **Wat is de grootste niet-beheerde schijf grootte die wordt ondersteund voor besturings systeem en gegevens schijven?**
 
-Het partitie type dat door Azure wordt ondersteund voor een besturingssysteem schijf is de Master Boot Record (MBR). De MBR-indeling ondersteunt een schijf grootte van Maxi maal twee TiB. De maximale grootte die door Azure wordt ondersteund voor een onbeheerde schijf van het besturings systeem is 4 TiB. Azure biedt ondersteuning voor Maxi maal 4 TiB voor gegevens niet-beheerde schijven.
+Het partitie type dat door Azure wordt ondersteund voor een besturingssysteem schijf met onbeheerde schijven is de Master Boot Record (MBR).  Hoewel u Maxi maal een 4 TiB-besturingssysteem schijf kunt toewijzen, kan het MBR-partitie type Maxi maal 2 TiB aan deze schijf ruimte voor het besturings systeem gebruiken. Azure biedt ondersteuning voor Maxi maal 4 TiB voor niet-beheerde gegevens schijven.
+
 
 **Wat is de grootste grootte van de pagina-blob die wordt ondersteund?**
 
