@@ -3,26 +3,24 @@ title: Vooraf gemaakte telefoon nummers-LUIS
 titleSuffix: Azure Cognitive Services
 description: Dit artikel bevat vooraf opgebouwde telefoon nummer entiteits gegevens in Language Understanding (LUIS).
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/27/2019
-ms.author: diberry
-ms.openlocfilehash: 4e2c8e27c6d4195252c6a5b423fa98b2a4247182
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 598ecaddbab3b70297a460521c7ec3386b390a8d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78270471"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91535386"
 ---
 # <a name="phone-number-prebuilt-entity-for-a-luis-app"></a>Op telefoon nummer vooraf gebouwde entiteit voor een LUIS-app
-De `phonenumber` entiteit extraheert diverse telefoon nummers, inclusief land code. Omdat deze entiteit al is getraind, hoeft u geen voor beeld-uitingen aan de toepassing toe te voegen. De `phonenumber` entiteit wordt alleen ondersteund `en-us` in cultuur.
+De `phonenumber` entiteit extraheert diverse telefoon nummers, inclusief land code. Omdat deze entiteit al is getraind, hoeft u geen voor beeld-uitingen aan de toepassing toe te voegen. De `phonenumber` entiteit wordt alleen ondersteund in `en-us` cultuur.
 
 ## <a name="types-of-a-phone-number"></a>Typen van een telefoon nummer
-`Phonenumber`wordt beheerd vanuit de map [recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-PhoneNumbers.yaml) github
+`Phonenumber` wordt beheerd vanuit de map [recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-PhoneNumbers.yaml) github
 
 ## <a name="resolution-for-this-prebuilt-entity"></a>Oplossing voor deze vooraf gebouwde entiteit
 
@@ -32,7 +30,7 @@ De volgende entiteits objecten worden geretourneerd voor de query:
 
 #### <a name="v3-response"></a>[V3-antwoord](#tab/V3)
 
-De volgende JSON is met de `verbose` para meter ingesteld `false`op:
+De volgende JSON is met de `verbose` para meter ingesteld op `false` :
 
 ```json
 "entities": {
@@ -42,7 +40,7 @@ De volgende JSON is met de `verbose` para meter ingesteld `false`op:
 }
 ```
 #### <a name="v3-verbose-response"></a>[Uitgebreide respons van v3](#tab/V3-verbose)
-De volgende JSON is met de `verbose` para meter ingesteld `true`op:
+De volgende JSON is met de `verbose` para meter ingesteld op `true` :
 
 ```json
 "entities": {

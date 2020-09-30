@@ -13,14 +13,14 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fea05ada52ba4281acb3451769446d7f0bad790d
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: e548e99cc60d67b477fd087b993764bf7f223592
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448691"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541183"
 ---
-# <a name="view-and-assign-administrator-roles-in-azure-active-directory"></a>Beheerders rollen in Azure Active Directory weer geven en toewijzen
+# <a name="view-and-assign-administrator-roles-in-azure-active-directory"></a>Beheerdersrollen bekijken en toewijzen in Azure Active Directory
 
 U kunt nu alle leden van de beheerders rollen weer geven en beheren in de Azure Active Directory Portal. Als u regel matig roltoewijzingen beheert, hebt u waarschijnlijk de voor keur. En als u ooit hebt gevraagd wat de bedoeling is dat deze rollen echt doen, kunt u een gedetailleerde lijst met machtigingen voor elk van de Azure AD-beheerders rollen weer geven.
 
@@ -55,7 +55,7 @@ Als u een globale beheerder of een beheerder van een bevoegde rol bent, kunt u e
 
 Wanneer u de leden van een rol bekijkt, selecteert u **Beschrijving** om de volledige lijst met machtigingen te zien die zijn verleend door de roltoewijzing. De pagina bevat koppelingen naar relevante documentatie om u te helpen bij het beheren van Directory rollen.
 
-![lijst met machtigingen voor een beheerdersrol](./media/directory-manage-roles-portal/role-description.png)
+![Scherm afbeelding met de pagina ' algemene beheerders beschrijving '.](./media/directory-manage-roles-portal/role-description.png)
 
 ## <a name="download-role-assignments"></a>Roltoewijzingen downloaden
 
@@ -71,7 +71,7 @@ Als u alle toewijzingen voor een specifieke functie wilt downloaden, selecteert 
 
 1. Selecteer een rol om de bijbehorende toewijzingen te bekijken.
 
-    ![lijst met machtigingen voor een beheerdersrol](./media/directory-manage-roles-portal/member-list.png)
+    ![Scherm opname van de pagina ' gebruikers beheerder-toewijzingen ' met de actie ' beheren in PIM ' geselecteerd.](./media/directory-manage-roles-portal/member-list.png)
 
 1. Selecteer **toewijzingen toevoegen** en selecteer de functies die u wilt toewijzen. U kunt **beheren in PIM** selecteren voor extra beheer mogelijkheden. Als u iets anders ziet in de volgende afbeelding, leest u de opmerking in [toewijzingen weer geven voor geprivilegieerde rollen](#view-assignments-for-privileged-roles) om te controleren of u zich in PIM bevindt.
 
@@ -79,6 +79,6 @@ Als u alle toewijzingen voor een specifieke functie wilt downloaden, selecteert 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* U kunt graag delen met ons op het [forum van Azure AD-beheerders](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
+* U kunt dit met ons delen op het forum voor [Azure AD-beheerders](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
 * Zie [beheerders rollen toewijzen](directory-assign-admin-roles.md)voor meer informatie over functies en de toewijzing van beheerdersrol.
 * Zie voor standaard gebruikers machtigingen een [vergelijking van de standaard machtigingen voor gast-en gebruikers rechten](../fundamentals/users-default-permissions.md).

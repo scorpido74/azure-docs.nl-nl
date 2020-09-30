@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: 6fafb668ecc2ae36dbe5a6bbc3d1e1d501545b50
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: c7c43e02e6bdf75c9551ccdbb9dd8f75bf37a806
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056802"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534978"
 ---
 # <a name="text-to-speech-rest-api"></a>REST API voor tekst-naar-spraak
 
@@ -33,6 +33,9 @@ Voordat u deze API gebruikt, moet u het volgende weten:
 
 * De tekst-naar-spraak-REST API vereist een autorisatie-header. Dit betekent dat u een token uitwisseling moet volt ooien om toegang te krijgen tot de service. Zie [Verificatie](#authentication) voor meer informatie.
 
+> [!TIP]
+> Zie de [documentatie](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure) van Azure Government voor Government Cloud (FairFax)-eind punten.
+
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 
 ## <a name="get-a-list-of-voices"></a>Een lijst met stemmen ophalen
@@ -41,7 +44,7 @@ Voordat u deze API gebruikt, moet u het volgende weten:
 
 ### <a name="regions-and-endpoints"></a>Regio's en eind punten
 
-| Regio | Eindpunt |
+| Region | Eindpunt |
 |--------|----------|
 | Australië - oost | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Brazilië - zuid | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
@@ -233,7 +236,7 @@ De HTTP-status code voor elke reactie wijst op geslaagde of veelvoorkomende fout
 | 400 | Onjuiste aanvraag | Een vereiste para meter ontbreekt, is leeg of null. Of de waarde die is door gegeven aan een vereiste of optionele para meter is ongeldig. Een veelvoorkomend probleem is een header die te lang is. |
 | 401 | Niet geautoriseerd | De aanvraag is niet geautoriseerd. Controleer of de abonnements sleutel of het token geldig is en in de juiste regio is. |
 | 413 | De aanvraag entiteit is te groot | De SSML-invoer is langer dan 1024 tekens. |
-| 415 | Niet-ondersteund media type | Het is mogelijk dat de verkeerde naam `Content-Type` is gegeven. `Content-Type`moet worden ingesteld op `application/ssml+xml` . |
+| 415 | Niet-ondersteund media type | Het is mogelijk dat de verkeerde naam `Content-Type` is gegeven. `Content-Type` moet worden ingesteld op `application/ssml+xml` . |
 | 429 | Te veel aanvragen | U hebt het quotum of de frequentie overschreden van aanvragen die zijn toegestaan voor uw abonnement. |
 | 502 | Ongeldige gateway    | Probleem met het netwerk of de server. Kan ook duiden op ongeldige headers. |
 

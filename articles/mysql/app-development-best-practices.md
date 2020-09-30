@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: 93bd6972a89065832a20fbd66949cde5b7510534
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: dc9764ce68d54418578c293833c1fd38080ba0ef
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88794198"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538905"
 ---
 # <a name="best-practices-for-building-an-application-with-azure-database-for-mysql"></a>Aanbevolen procedures voor het bouwen van een toepassing met Azure Database for MySQL 
 
@@ -24,7 +24,7 @@ Zorg ervoor dat alle afhankelijkheden zich in dezelfde regio bevinden wanneer u 
 
 ### <a name="keep-your-mysql-server-secure"></a>De MySQL-server beveiligen
 Configureer uw MySQL-server zodanig dat deze [veilig](https://docs.microsoft.com/azure/mysql/concepts-security) is en niet openbaar toegankelijk is. Gebruik een van de volgende opties om uw server te beveiligen: 
-- [Firewallregels](https://docs.microsoft.com/azure/mysql/concepts-firewall-rules)
+- [Firewall-regels](https://docs.microsoft.com/azure/mysql/concepts-firewall-rules)
 - [Virtuele netwerken](https://docs.microsoft.com/azure/mysql/concepts-data-access-and-security-vnet) 
 - [Azure Private Link](https://docs.microsoft.com/azure/mysql/concepts-data-access-security-private-link)
 
@@ -69,9 +69,9 @@ Uw toepassing kan [tijdelijke fouten](https://docs.microsoft.com/azure/mysql/con
 Het is een goed idee om vijf seconden te wachten voordat u voor het eerst opnieuw probeert. Volg daarna elke nieuwe poging door de wacht tijd geleidelijk te verhogen tot 60 seconden. Beperk het maximum aantal nieuwe pogingen waarbij de bewerking door uw toepassing wordt beschouwd als mislukt, zodat u vervolgens verder kunt onderzoeken. Zie [verbindings fouten oplossen](https://docs.microsoft.com/azure/mysql/howto-troubleshoot-common-connection-issues) voor meer informatie. 
 
 ### <a name="enable-read-replication-to-mitigate-failovers"></a>Lees replicatie inschakelen om failovers te beperken
-U kunt [replicatie van inkomende gegevens](https://docs.microsoft.com/azure/mysql/howto-data-in-replication) gebruiken voor failover-scenario's. Wanneer u Replicas lezen gebruikt, vindt er geen automatische failover tussen Master-en replica servers plaats. 
+U kunt [replicatie van inkomende gegevens](https://docs.microsoft.com/azure/mysql/howto-data-in-replication) gebruiken voor failover-scenario's. Wanneer u Replicas lezen gebruikt, vindt er geen automatische failover tussen bron-en replica servers plaats. 
 
-U ziet een vertraging tussen het hoofd en de replica omdat de replicatie asynchroon is. Netwerk vertraging kan worden beïnvloed door veel factoren, zoals de grootte van de werk belasting die wordt uitgevoerd op de master server en de latentie tussen data centers. In de meeste gevallen ligt de replica vertraging van een paar seconden naar een paar minuten.
+U ziet een vertraging tussen de bron en de replica, omdat de replicatie asynchroon is. Netwerk vertraging kan worden beïnvloed door veel factoren, zoals de grootte van de werk belasting die wordt uitgevoerd op de bron server en de latentie tussen data centers. In de meeste gevallen ligt de replica vertraging van een paar seconden naar een paar minuten.
 
 ## <a name="database-deployment"></a>Data base-implementatie 
 

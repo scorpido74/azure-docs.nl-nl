@@ -3,20 +3,18 @@ title: Dash board-Language Understanding-LUIS
 titleSuffix: Azure Cognitive Services
 description: Verhelp de intenties en entiteiten met het dash board van uw getrainde app. In het dash board worden algemene app-gegevens weer gegeven, met de kenmerken van de intenties die moeten worden opgelost.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/08/2019
-ms.author: diberry
-ms.openlocfilehash: 0ff59819c3bfda6e19d14cbe2deaea43e1694375
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 4867a065a85fab1e4abc7f19401239e5b76e1da4
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84345237"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541404"
 ---
 # <a name="how-to-use-the-dashboard-to-improve-your-app"></a>Het dash board gebruiken om uw app te verbeteren
 
@@ -33,8 +31,8 @@ De drie problemen die worden behandeld in het dash board zijn:
 |Probleem|Grafiek kleur|Uitleg|
 |--|--|--|
 |Onevenwichtige gegevens|-|Dit gebeurt wanneer het aantal voor beeld-uitingen significant varieert. Alle doel stellingen moeten _ongeveer_ hetzelfde aantal voorbeeld uitingen hebben, behalve de geen intentie. Het mag slechts 10%-15% bevatten van het totale aantal uitingen in de app.<br><br> Als de gegevens niet in balans zijn, maar de intentie nauwkeurigheid boven bepaalde drempel waarde ligt, wordt deze onevenwichtigheid niet gerapporteerd als een probleem.<br><br>**Begin met dit probleem: het kan de hoofd oorzaak van de andere problemen zijn.**|
-|Onduidelijke voor spellingen|Orange|Dit doet zich voor wanneer het beste doel en de volgende intentie scores dicht genoeg zijn dat ze in de volgende training kunnen spie gelen, vanwege [negatieve steek proeven](luis-how-to-train.md#train-with-all-data) of meer voorbeeld uitingen die aan de intentie zijn toegevoegd. |
-|Onjuiste voor spellingen|Rood|Dit probleem treedt op wanneer een voor beeld-utterance niet wordt voor speld voor de gelabelde intentie (het doel van de intentie).|
+|Onduidelijke voor spellingen|Oranje|Dit doet zich voor wanneer het beste doel en de volgende intentie scores dicht genoeg zijn dat ze in de volgende training kunnen spie gelen, vanwege [negatieve steek proeven](luis-how-to-train.md#train-with-all-data) of meer voorbeeld uitingen die aan de intentie zijn toegevoegd. |
+|Onjuiste voor spellingen|Red|Dit probleem treedt op wanneer een voor beeld-utterance niet wordt voor speld voor de gelabelde intentie (het doel van de intentie).|
 
 Corrigerende voor spellingen worden weer gegeven met de kleur blauw.
 
@@ -92,7 +90,7 @@ Begin met dit probleem: het kan de hoofd oorzaak van de andere problemen zijn.
 
 De lijst met intenties van **gegevens onevenwichtigheden** bevat intenties die meer uitingen nodig hebben om het onevenwicht van de gegevens te corrigeren.
 
-**U kunt dit probleem als volgt oplossen**:
+**Ga als volgt te werk om dit probleem op te lossen**:
 
 * Voeg meer uitingen toe aan de intentie en Train opnieuw.
 
@@ -106,7 +104,7 @@ Voeg geen uitingen toe aan de geen intentie, tenzij dit wordt voorgesteld op het
 
 In de lijst met **onjuiste Voorspellings** intentie worden intenties met uitingen weer gegeven die als voor beeld voor een specifiek doel worden gebruikt, maar worden voor speld voor verschillende doel stellingen.
 
-**U kunt dit probleem als volgt oplossen**:
+**Ga als volgt te werk om dit probleem op te lossen**:
 
 * Bewerk uitingen zodat het doel specifiek is en Train het opnieuw.
 * Combi neer intenties als uitingen te nauw keurig zijn uitgelijnd en opnieuw trainen.
@@ -130,11 +128,11 @@ In het volgende diagram ziet u een app met een goed gebalanceerde toepassing met
 
 In het volgende diagram ziet u een slecht gebalanceerde app met veel problemen die moeten worden opgelost.
 
-![In het volgende diagram ziet u een app met een goed gebalanceerde toepassing met bijna geen problemen.](./media/luis-how-to-use-dashboard/utterance-per-intent-shows-data-imbalance.png)
+![Scherm opname toont de voor spellingen per intentie met verschillende onduidelijke of onjuist voorspelde resultaten.](./media/luis-how-to-use-dashboard/utterance-per-intent-shows-data-imbalance.png)
 
 Beweeg de muis aanwijzer over elke intentie balk om informatie over de bedoeling op te halen.
 
-![In het volgende diagram ziet u een app met een goed gebalanceerde toepassing met bijna geen problemen.](./media/luis-how-to-use-dashboard/utterances-per-intent-with-details-of-errors.png)
+![Scherm opname toont de voor spellingen per intentie met details van onduidelijke of onjuist voorspelde resultaten.](./media/luis-how-to-use-dashboard/utterances-per-intent-with-details-of-errors.png)
 
 Gebruik de functie **sorteren op** om de intenties te rangschikken op basis van het probleem type, zodat u zich kunt concentreren op de meest problematische doel stellingen van het probleem.
 
@@ -154,7 +152,7 @@ Bepaal de drempel percentages waarmee u vertrouwd bent voor uw bedrijf.
 
 Met het filter kunt u intenties met een specifiek probleem zoeken:
 
-|Filter|Voorgesteld percentage|Functie|
+|Filteren|Voorgesteld percentage|Doel|
 |--|--|--|
 |Meest problematische doel stellingen|-|**Begin hier** : als u de uitingen in deze intentie herstelt, worden de apps meer dan andere oplossingen verbeterd.|
 |Corrigeer de voor spellingen hieronder|60%|Dit is het percentage uitingen in de geselecteerde intentie die juist zijn, maar waarvoor een betrouw baarheid is ingesteld onder de drempel waarde. |

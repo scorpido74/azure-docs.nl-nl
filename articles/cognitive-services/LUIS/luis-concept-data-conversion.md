@@ -3,20 +3,18 @@ title: Gegevens conversie-LUIS
 titleSuffix: Azure Cognitive Services
 description: Meer informatie over hoe uitingen kan worden gewijzigd voordat voor spellingen in Language Understanding (LUIS)
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.author: diberry
-ms.openlocfilehash: b2455df87c8eae1a48cb6c8b1381dad85d304bf4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b305be693f59b65a62570f656a0132f4f03cf099
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82099237"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541795"
 ---
 # <a name="convert-data-format-of-utterances"></a>De gegevens indeling van uitingen converteren
 LUIS biedt de volgende conversies van een gebruiker utterance vóór voor spelling '

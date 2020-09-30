@@ -10,12 +10,12 @@ ms.author: minxia
 ms.date: 02/27/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: b6d4ac2727e558ed3d4538b6d325b7304d7928f8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2ed8910db8b903dab3b81d9db6c9b5798d2b6b69
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91250875"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542050"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>Experimentele uitvoeringen en metrische gegevens visualiseren met TensorBoard en Azure Machine Learning
 
@@ -39,8 +39,8 @@ Hoe u TensorBoard start met Azure Machine Learning experimenten is afhankelijk v
     * Azure Machine Learning Compute-instantie-geen down loads of installatie vereist
         * Voltooi de [zelf studie: installatie omgeving en werk ruimte](tutorial-1st-experiment-sdk-setup.md) om een toegewezen notebook server te maken vooraf geladen met de SDK en de voor beeld-opslag plaats.
         * Zoek in de map met voor beelden op de notebook server twee voltooide en uitgevouwen notitie blokken door te navigeren naar deze directory's:
-            * **instructies voor het gebruik van azureml > training-met-diep Learning > export-run-out-to-tensorboard > export-run-history-to-tensorboard. ipynb**
-            * **instructies voor het gebruik van azureml > track-and-monitor-experimenten > tensorboard. ipynb**
+            * **instructies voor het gebruik van azureml > track-and-monitor-experimenten > tensorboard > export-run-history-to-tensorboard > export-run-history-to-tensorboard. ipynb**
+            * **instructies voor het gebruik van azureml > track-and-monitor-experimenten > tensorboard > tensorboard > tensorboard. ipynb**
     * Uw eigen Juptyer-notebook server
        * [Installeer de Azure machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true) met de `tensorboard` extra
         * [Een Azure Machine Learning-werkruimte maken](how-to-manage-workspace.md)  

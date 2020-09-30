@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: GitOps gebruiken voor een Azure Arc-cluster configuratie (preview-versie)
 keywords: GitOps, Kubernetes, K8s, azure, Arc, Azure Kubernetes service, containers
-ms.openlocfilehash: e25fdf3a51b3e9264c85707df31d3a4d107b25ea
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 142c131f0382eb887d51185db920511ccf4eb735
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87049979"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541625"
 ---
 # <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Configuraties implementeren met behulp van GitOps op het Kubernetes-cluster waarvoor Arc is ingeschakeld (preview)
 
@@ -29,11 +29,13 @@ Hetzelfde patroon kan worden gebruikt om een grotere verzameling clusters te beh
 
 In deze hand leiding vindt u instructies voor het Toep assen van een set configuraties met het bereik Cluster beheer.
 
+## <a name="before-you-begin"></a>Voordat u begint
+
+In dit artikel wordt ervan uitgegaan dat u beschikt over een bestaand Kubernetes-verbonden Azure-Arc-cluster. Als u een verbonden cluster nodig hebt, raadpleegt u de [Snelstartgids een cluster verbinden](./connect-cluster.md).
+
 ## <a name="create-a-configuration"></a>Een configuratie maken
 
-- Voor beeld van opslag plaats:<https://github.com/Azure/arc-k8s-demo>
-
-De voor beeld-opslag plaats is gestructureerd rond de persoon van een cluster operator die een paar naam ruimten wil inrichten, een gemeen schappelijke werk belasting moet implementeren en een bepaalde specifieke configuratie voor het team moet bieden. Met deze opslag plaats worden de volgende resources op het cluster gemaakt:
+De [voor beeld-opslag plaats](https://github.com/Azure/arc-k8s-demo) die in dit document wordt gebruikt, is gestructureerd rond de persoon van een cluster operator die een paar naam ruimten wil inrichten, een gemeen schappelijke werk belasting moet implementeren en een bepaalde specifieke configuratie voor het team moet bieden. Met deze opslag plaats worden de volgende resources op het cluster gemaakt:
 
 **Naam ruimten:** `cluster-config` , `team-a` , `team-b` 
  **implementatie:** `cluster-config/azure-vote` 
@@ -47,12 +49,7 @@ Als u een persoonlijke opslag plaats koppelt aan de `sourceControlConfiguration`
 Met de Azure CLI-extensie voor kunt `k8sconfiguration` u ons verbonden cluster koppelen aan een [voor beeld van een Git-opslag plaats](https://github.com/Azure/arc-k8s-demo). We zullen deze configuratie een naam geven `cluster-config` , de agent instrueren de operator in de `cluster-config` naam ruimte te implementeren en de operator `cluster-admin` machtigingen geven.
 
 ```console
-az k8sconfiguration create \
-    --name cluster-config \
-    --cluster-name AzureArcTest1 --resource-group AzureArcTest \
-    --operator-instance-name cluster-config --operator-namespace cluster-config \
-    --repository-url https://github.com/Azure/arc-k8s-demo \
-    --scope cluster --cluster-type connectedClusters
+az k8sconfiguration create --name cluster-config --cluster-name AzureArcTest1 --resource-group AzureArcTest --operator-instance-name cluster-config --operator-namespace cluster-config --repository-url https://github.com/Azure/arc-k8s-demo --scope cluster --cluster-type connectedClusters
 ```
 
 **Uitvoer**
@@ -102,7 +99,7 @@ Dit zijn de ondersteunde scenario's voor de waarde van de para meter---Repositor
 | Scenario | Indeling | Beschrijving |
 | ------------- | ------------- | ------------- |
 | Privé GitHub opslag plaats-SSH | git@github.com:username/repo | SSH-sleutel paar gegenereerd door stroom.  Gebruiker moet de open bare sleutel toevoegen aan het GitHub-account als Deploy-sleutel. |
-| Open bare GitHub-opslag plaats | `http://github.com/username/repo`of git://github.com/username/repo   | Openbaar Git-opslag plaats  |
+| Open bare GitHub-opslag plaats | `http://github.com/username/repo` of git://github.com/username/repo   | Openbaar Git-opslag plaats  |
 
 Deze scenario's worden nog ondersteund door stroom, maar niet door sourceControlConfiguration. 
 
@@ -117,15 +114,15 @@ Deze scenario's worden nog ondersteund door stroom, maar niet door sourceControl
 
 Hier volgen enkele aanvullende para meters om het maken van de configuratie aan te passen:
 
-`--enable-helm-operator`: *Optionele* Schakel optie voor het inschakelen van ondersteuning voor helm-grafiek implementaties.
+`--enable-helm-operator` : *Optionele* Schakel optie voor het inschakelen van ondersteuning voor helm-grafiek implementaties.
 
-`--helm-operator-chart-values`: *Optionele* grafiek waarden voor de operator helm (indien ingeschakeld).  Bijvoorbeeld: '--set helm. Verses = v3 '.
+`--helm-operator-chart-values` : *Optionele* grafiek waarden voor de operator helm (indien ingeschakeld).  Bijvoorbeeld: '--set helm. Verses = v3 '.
 
-`--helm-operator-chart-version`: *Optionele* grafiek versie voor de helm-operator (indien ingeschakeld). Standaard: ' 0.6.0 '.
+`--helm-operator-chart-version` : *Optionele* grafiek versie voor de helm-operator (indien ingeschakeld). Standaard: ' 0.6.0 '.
 
-`--operator-namespace`: *Optionele* naam voor de operator naam ruimte. Standaard: ' default '
+`--operator-namespace` : *Optionele* naam voor de operator naam ruimte. Standaard: ' default '
 
-`--operator-params`: *Optionele* para meters voor de operator. Moet binnen enkele aanhalings tekens worden opgegeven. Bijvoorbeeld: ```--operator-params='--git-readonly --git-path=releases' ```
+`--operator-params` : *Optionele* para meters voor de operator. Moet binnen enkele aanhalings tekens worden opgegeven. Bijvoorbeeld: ```--operator-params='--git-readonly --git-path=releases' ```
 
 Opties die worden ondersteund in--operator-params
 
@@ -159,7 +156,7 @@ Zie [vloei documentatie](https://aka.ms/FluxcdReadme)voor meer informatie.
 Als u de Azure CLI gebruikt, controleert u of deze `sourceControlConfiguration` is gemaakt.
 
 ```console
-az k8sconfiguration show --resource-group AzureArcTest --name cluster-config --cluster-name AzureArcTest1 --cluster-type connectedClusters
+az k8sconfiguration show --name cluster-config --cluster-name AzureArcTest1 --resource-group AzureArcTest --cluster-type connectedClusters
 ```
 
 Houd er rekening mee dat de `sourceControlConfiguration` resource wordt bijgewerkt met de nalevings status, berichten en informatie over fout opsporing.
@@ -194,12 +191,12 @@ Wanneer de `sourceControlConfiguration` is gemaakt, zijn er enkele dingen die zi
 
 1. De Azure-Arc `config-agent` bewaakt Azure Resource Manager voor nieuwe of bijgewerkte configuraties ( `Microsoft.KubernetesConfiguration/sourceControlConfiguration` )
 1. `config-agent`de nieuwe configuratie wordt gekennisgevingd `Pending`
-1. `config-agent`de configuratie-eigenschappen worden gelezen en voor bereidingen voor het implementeren van een beheerd exemplaar van`flux`
-    * `config-agent`maakt de doel naam ruimte
-    * `config-agent`bereidt een Kubernetes-service account voor met de juiste machtiging ( `cluster` of `namespace` bereik)
-    * `config-agent`implementeert een exemplaar van`flux`
-    * `flux`Hiermee wordt een SSH-sleutel gegenereerd en wordt de open bare sleutel geregistreerd
-1. `config-agent`rapporteert de status terug naar de`sourceControlConfiguration`
+1. `config-agent` de configuratie-eigenschappen worden gelezen en voor bereidingen voor het implementeren van een beheerd exemplaar van `flux`
+    * `config-agent` maakt de doel naam ruimte
+    * `config-agent` bereidt een Kubernetes-service account voor met de juiste machtiging ( `cluster` of `namespace` bereik)
+    * `config-agent` implementeert een exemplaar van `flux`
+    * `flux` Hiermee wordt een SSH-sleutel gegenereerd en wordt de open bare sleutel geregistreerd
+1. `config-agent` rapporteert de status terug naar de `sourceControlConfiguration`
 
 Terwijl het inrichtings proces plaatsvindt, `sourceControlConfiguration` wordt de status van een aantal wijzigingen gewijzigd. Bewaak de voortgang met de `az k8sconfiguration show ...` bovenstaande opdracht:
 
@@ -229,7 +226,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 **De open bare sleutel toevoegen als een Deploy-sleutel voor de Git-opslag plaats**
 
 1. Open GitHub, navigeer naar uw Fork, naar **instellingen**en **Implementeer sleutels**
-2. Klik op **Deploy-sleutel toevoegen**
+2. Klik op  **Deploy-sleutel toevoegen**
 3. Een titel opgeven
 4. **Schrijf toegang toestaan** inschakelen
 5. Plak de open bare sleutel (min eventuele omringende aanhalings tekens)
@@ -240,10 +237,10 @@ Zie de documentatie van GitHub voor meer informatie over het beheren van deze sl
 **Als u een Azure DevOps-opslag plaats gebruikt, voegt u de sleutel toe aan uw SSH-sleutels**
 
 1. Klik onder **gebruikers instellingen** in de rechter bovenhoek (naast de profiel afbeelding) op **open bare SSH-sleutels**
-1. Selecteer **+ nieuwe sleutel**
+1. Selecteer  **+ nieuwe sleutel**
 1. Een naam opgeven
 1. De open bare sleutel zonder omringende aanhalings tekens plakken
-1. Klik op **toevoegen**
+1. Klik op **Toevoegen**
 
 ## <a name="validate-the-kubernetes-configuration"></a>De Kubernetes-configuratie valideren
 
@@ -284,7 +281,7 @@ cluster-config   1/1     1            1           3h    flux         docker.io/f
 memcached        1/1     1            1           3h    memcached    memcached:1.5.15               name=memcached
 ```
 
-## <a name="further-exploration"></a>Verdere exploratie
+## <a name="further-exploration"></a>Verdere verkenning
 
 U kunt de andere resources die zijn geïmplementeerd als onderdeel van de configuratie opslagplaats verkennen:
 
@@ -302,7 +299,7 @@ Een `sourceControlConfiguration` gebruiken van Azure CLI of Azure Portal verwijd
 > Wijzigingen in het cluster die het resultaat zijn van implementaties van de getraceerde Git-opslag plaats, worden niet verwijderd wanneer het `sourceControlConfiguration` wordt verwijderd.
 
 ```console
-az k8sconfiguration delete --name '<config name>' -g '<resource group name>' --cluster-name '<cluster name>' --cluster-type connectedClusters
+az k8sconfiguration delete --name cluster-config --cluster-name AzureArcTest1 --resource-group AzureArcTest --cluster-type connectedClusters
 ```
 
 **Uitvoer**

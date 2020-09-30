@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 51d6920d9ab52b907f2cb51e29d85f82dc74d45b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 842d43c82875a1a8e5e45ba14f47ceb6eac26727
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91250229"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538803"
 ---
 # <a name="example-add-synonyms-for-azure-cognitive-search-in-c"></a>Voor beeld: synoniemen voor Azure-Cognitive Search in C toevoegen #
 
@@ -23,8 +23,8 @@ Met synoniemen breidt u een query uit door termen te gebruiken die semantisch ov
 In azure Cognitive Search worden synoniemen gedefinieerd in een *synoniemen toewijzing*via *toewijzings regels* die gelijkwaardige voor waarden koppelen. In dit voor beeld worden de essentiële stappen beschreven voor het toevoegen en gebruiken van synoniemen met een bestaande index. In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
-> * Maak een synoniemen toewijzing met behulp van de  [SynonymMap](/dotnet/api/microsoft.azure.search.models.synonymmap?view=azure-dotnet) -klasse. 
-> * Stel de eigenschap [SynonymMaps](/dotnet/api/microsoft.azure.search.models.field.synonymmaps?view=azure-dotnet) in op velden die query-uitbrei ding moeten ondersteunen via synoniemen.
+> * Maak een synoniemen toewijzing met behulp van de  [SynonymMap](/dotnet/api/microsoft.azure.search.models.synonymmap) -klasse. 
+> * Stel de eigenschap [SynonymMaps](/dotnet/api/microsoft.azure.search.models.field.synonymmaps) in op velden die query-uitbrei ding moeten ondersteunen via synoniemen.
 
 U kunt een veld met synoniemen uitvoeren zoals u dat normaal zou doen. Er is geen aanvullende query syntaxis vereist voor toegang tot synoniemen.
 

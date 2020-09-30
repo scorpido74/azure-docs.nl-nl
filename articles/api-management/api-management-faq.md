@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: c49e92cda89cfc1d72a0550c2a53430f3e6f2844
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 351503db52e4c62414cd5dcbae1f750032a37eb7
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050325"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542271"
 ---
 # <a name="azure-api-management-faqs"></a>Veelgestelde vragen over Azure API Management
 Krijg antwoorden op veelgestelde vragen, patronen en aanbevolen procedures voor Azure API Management.
@@ -53,7 +53,7 @@ U hebt verschillende opties om de verbinding tussen de API Management Gateway en
 
 * Gebruik HTTP-basis verificatie. Zie [uw eerste API importeren en publiceren](import-and-publish.md)voor meer informatie.
 * Gebruik verificatie op basis van TLS, zoals beschreven in [How to Secure back-end services met behulp van client certificaat authenticatie in Azure API Management](api-management-howto-mutual-certificates.md).
-* Gebruik IP-white list in uw back-end-service. In alle lagen van API Management, met uitzonde ring van de laag verbruik, blijft het IP-adres van de gateway constant, met enkele voor behoud die worden beschreven in [het artikel over de IP-documentatie](api-management-howto-ip-addresses.md).
+* Gebruik IP-filtering voor uw back-end-service. In alle lagen van API Management, met uitzonde ring van de laag verbruik, blijft het IP-adres van de gateway constant, met enkele voor behoud die worden beschreven in [het artikel over de IP-documentatie](api-management-howto-ip-addresses.md).
 * Verbind uw API Management-exemplaar met een Azure Virtual Network.
 
 ### <a name="how-do-i-copy-my-api-management-service-instance-to-a-new-instance"></a>How do I copy my API Management service instance to a new instance? (Hoe kopieer ik mijn exemplaar van de API Management service naar een nieuw exemplaar?)

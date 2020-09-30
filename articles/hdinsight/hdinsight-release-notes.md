@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 09/27/2020
-ms.openlocfilehash: f6527a0c5712d68756310b699d214013e89f38e1
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: feb186fbe216305039fcc0a23a10419c44fd0483
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/29/2020
-ms.locfileid: "91449579"
+ms.locfileid: "91535607"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Opmerkingen bij de release van Azure HDInsight
 
@@ -28,8 +28,8 @@ Azure HDInsight is een van de populairste services van zakelijke klanten voor op
 Deze versie is van toepassing op zowel HDInsight 3,6 als HDInsight 4,0. HDInsight-release wordt beschikbaar gesteld voor alle regio's over enkele dagen. De release datum geeft hier de release datum van de eerste regio aan. Als de onderstaande wijzigingen niet worden weer gegeven, wacht u tot de release over enkele dagen in uw regio actief is.
 
 ## <a name="new-features"></a>Nieuwe functies
-### <a name="llap-cluster-auto-scale-general-available"></a>Algemene Beschik baarheid voor automatisch schalen van LLAP-cluster
-Automatisch schalen voor het LLAP-cluster type is nu algemeen beschikbaar (GA). Alle LLAP-clusters die na 27 augustus 2020 zijn gemaakt, hebben GA ondersteuning voor automatisch schalen.
+### <a name="autoscale-for-interactive-query-with-hdinsight-40-is-now-generally-available"></a>Automatisch schalen voor interactieve Query's met HDInsight 4,0 is nu algemeen beschikbaar
+Automatisch schalen voor interactief query cluster type is nu algemeen beschikbaar (GA) voor HDInsight 4,0. Alle interactieve query 4,0-clusters die zijn gemaakt na 27 augustus 2020, hebben ondersteuning voor automatisch schalen.
 
 ### <a name="hbase-cluster-supports-premium-adls-gen2"></a>HBase-cluster ondersteunt Premium-ADLS Gen2
 HDInsight ondersteunt nu Premium ADLS Gen2 als primair opslag account voor HDInsight HBase 3,6-en 4,0-clusters. In combi natie met [versnelde schrijf bewerkingen](./hbase/apache-hbase-accelerated-writes.md)kunt u betere prestaties voor uw HBase-clusters krijgen.

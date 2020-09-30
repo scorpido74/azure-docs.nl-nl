@@ -7,16 +7,16 @@ ms.service: sql-db-mi
 ms.subservice: backup-restore
 ms.custom: references_regions
 ms.topic: conceptual
-author: anosov1960
-ms.author: sashan
-ms.reviewer: mathoma, carlrab, danil
+author: shkale-msft
+ms.author: shkale
+ms.reviewer: mathoma, stevestein, danil
 ms.date: 09/25/2020
-ms.openlocfilehash: b28c175656b0951980f861198c93ccd794605839
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 93370050b503875d670283b720088b0871377c09
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/29/2020
-ms.locfileid: "91444272"
+ms.locfileid: "91535080"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatische back-ups-Azure SQL Database & SQL Managed instance
 
@@ -415,6 +415,9 @@ Set-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -DatabaseName "Database01
 
 Ga voor meer informatie naar [set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase)
 
+> [!NOTE]
+> Als u de para meter-BackupStorageRedundancy wilt gebruiken bij het herstellen van de data base, het kopiëren van de data base of het maken van secundaire bewerkingen, gebruikt u Azure PowerShell versie AZ. SQL 
+
 
 #### <a name="sql-managed-instance"></a>[SQL Managed Instance](#tab/managed-instance)
 
@@ -425,6 +428,8 @@ New-AzSqlInstance -Name managedInstance2 -ResourceGroupName ResourceGroup01 -Loc
 ```
 
 Ga voor meer informatie naar [New-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance).
+
+---
 
 ## <a name="use-azure-policy-to-enforce-backup-storage-redundancy"></a>Azure Policy gebruiken om redundantie van back-upopslag af te dwingen
 
@@ -440,11 +445,13 @@ Volgende nieuwe ingebouwde beleids regels worden toegevoegd, die kunnen worden t
 
 [Hier](https://docs.microsoft.com/azure/azure-sql/database/policy-reference)vindt u een volledige lijst met ingebouwde beleids definities voor de SQL database en het beheerde exemplaar.
 
-Voor het afdwingen van vereisten voor gegevens locatie op een organisatie niveau, kunnen deze beleids regels worden toegewezen aan een abonnement. Nadat deze zijn toegewezen op abonnements niveau, kunnen gebruikers in het gegeven abonnement geen data base of een beheerd exemplaar maken met geografisch redundante back-upopslag via Azure Portal of Azure PowerShell. Houd er rekening mee dat Azure-beleid niet wordt afgedwongen bij het maken van een Data Base via T-SQL. 
+Voor het afdwingen van vereisten voor gegevens locatie op een organisatie niveau, kunnen deze beleids regels worden toegewezen aan een abonnement. Nadat deze zijn toegewezen op abonnements niveau, kunnen gebruikers in het gegeven abonnement geen data base of een beheerd exemplaar maken met geografisch redundante back-upopslag via Azure Portal of Azure PowerShell. 
+
+> [!IMPORTANT]
+> Azure-beleid wordt niet afgedwongen bij het maken van een Data Base via T-SQL. Als u gegevens locatie wilt afdwingen bij het maken van een Data Base met behulp van T-SQL, [gebruikt u ' local ' of ' zone ' als invoer voor BACKUP_STORAGE_REDUNDANCY para meter in de instructie Create Data Base](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current#create-database-using-zone-redundancy-for-backups).
 
 Meer informatie over het toewijzen van beleid met behulp van de [Azure Portal](https://docs.microsoft.com/azure/governance/policy/assign-policy-portal) of [Azure PowerShell](https://docs.microsoft.com/azure/governance/policy/assign-policy-powershell)
 
----
 
 ## <a name="next-steps"></a>Volgende stappen
 

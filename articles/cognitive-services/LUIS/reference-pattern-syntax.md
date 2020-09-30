@@ -5,13 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/14/2020
-ms.author: diberry
-ms.openlocfilehash: 533dc87e50abc5a689d1157b294070ece39dab9f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3caccd6766226ce68b371856b081b052c1033f71
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322815"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542186"
 ---
 # <a name="pattern-syntax"></a>Patroonsyntaxis
 
@@ -24,7 +23,7 @@ Entiteiten in patronen worden omgeven door accolades, `{}` . Patronen kunnen ent
 
 De syntaxis van het patroon ondersteunt de volgende syntaxis:
 
-|Functie|Syntax|Niveau nesten|Voorbeeld|
+|Functie|Syntaxis|Niveau nesten|Voorbeeld|
 |--|--|--|--|
 |vennootschap| {} -accolades|2|Waar is formulier {entity-name}?|
 |optioneel|[]-vier Kante haken<BR><BR>Er is een limiet van 3 op geneste niveaus van een combi natie van optioneel en groepering |2|Het vraag teken is optioneel [?]|
@@ -58,8 +57,8 @@ Een combi natie van **groepering** met **optionele** syntaxis heeft een limiet v
 
 |Toegestaan|Voorbeeld|
 |--|--|
-|Yes|([(test1 &#x7c; Test2)] &#x7c; Test3)|
-|No|([([test1] &#x7c; Test2)] &#x7c; Test3)|
+|Ja|([(test1 &#x7c; Test2)] &#x7c; Test3)|
+|Nee|([([test1] &#x7c; Test2)] &#x7c; Test3)|
 
 ## <a name="nesting-limits-for-groups-with-or-ing-syntax"></a>Limieten voor het nesten van groepen met de syntaxis
 
@@ -67,8 +66,8 @@ Een combi natie van **groepering** met **of-ING-** syntaxis heeft een limiet van
 
 |Toegestaan|Voorbeeld|
 |--|--|
-|Yes|(test1 &#x7c; Test2 &#x7c; (Test3 &#x7c; test4))|
-|No|(test1 &#x7c; Test2 &#x7c; Test3 &#x7c; (test4 &#x7c; test5)) |
+|Ja|(test1 &#x7c; Test2 &#x7c; (Test3 &#x7c; test4))|
+|Nee|(test1 &#x7c; Test2 &#x7c; Test3 &#x7c; (test4 &#x7c; test5)) |
 
 ## <a name="syntax-to-add-an-entity-to-a-pattern-template"></a>Syntaxis om een entiteit toe te voegen aan een patroon sjabloon
 Als u een entiteit wilt toevoegen aan de patroon sjabloon, plaatst u de naam van de entiteit tussen accolades, zoals `Who does {Employee} manage?` .

@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 07/22/2020
 ms.author: apimpm
 ms.custom: references_regions
-ms.openlocfilehash: ee23b2bc58f8c1f15a7e51b05dee954c1e584293
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5b96ac9cf43782764e88039d736ba61454d65911
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489619"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539194"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Azure API Management gebruiken met virtuele netwerken
 Met Azure Virtual Networks (VNETs) kunt u uw Azure-resources in een routeerbaar netwerk (buiten internet) plaatsen waarvan u de toegang beheert. Deze netwerken kunnen vervolgens worden verbonden met uw on-premises netwerken met behulp van verschillende VPN-technologieën. Voor meer informatie over Azure Virtual Networks begint u met de informatie hier: [overzicht van azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -145,7 +145,7 @@ Hieronder vindt u een lijst met veelvoorkomende fouten die zich kunnen voordoen 
 
 + **Regionale service Tags**: NSG regels voor het toestaan van uitgaande connectiviteit naar opslag-, SQL-en Event hubs-service tags kunnen de regionale versies van deze tags gebruiken die overeenkomen met de regio die het API Management-exemplaar bevat (bijvoorbeeld Storage. westus voor een API Management-exemplaar in de regio vs-West). In implementaties met meerdere regio's moet de NSG in elke regio verkeer naar de service tags voor die regio en de primaire regio toestaan.
 
-+ **SMTP-relay**: uitgaande netwerk verbinding voor de SMTP-relay, die wordt omgezet onder de host `smtpi-co1.msn.com` ,, `smtpi-ch1.msn.com` `smtpi-db3.msn.com` `smtpi-sin.msn.com` en`ies.global.microsoft.com`
++ **SMTP-relay**: uitgaande netwerk verbinding voor de SMTP-relay, die wordt omgezet onder de host `smtpi-co1.msn.com` ,, `smtpi-ch1.msn.com` `smtpi-db3.msn.com` `smtpi-sin.msn.com` en `ies.global.microsoft.com`
 
 + **Ontwikkelaars Portal CAPTCHA**: uitgaand netwerk connectiviteit voor de CAPTCHA van de ontwikkelaars Portal, die wordt omgezet onder de hosts `client.hip.live.com` en `partner.hip.live.com` .
 
@@ -203,7 +203,7 @@ Voor elke extra schaal eenheid van API Management zijn twee meer IP-adressen ver
 
 ## <a name="control-plane-ip-addresses"></a><a name="control-plane-ips"> </a> IP-adressen van besturings vlak
 
-De IP-adressen worden gedeeld door **Azure-omgeving**. Wanneer het IP-adres voor binnenkomende aanvragen dat is gemarkeerd met **Global** moet worden white list samen met het specifieke IP-adres van de **regio** .
+De IP-adressen worden gedeeld door **Azure-omgeving**. Wanneer het IP-adres voor binnenkomende aanvragen dat is gemarkeerd met **Global** , moet worden toegestaan naast het specifieke IP-adres van de **regio** .
 
 | **Azure-omgeving**|   **Regio**|  **IP-adres**|
 |-----------------|-------------------------|---------------|
@@ -217,27 +217,27 @@ De IP-adressen worden gedeeld door **Azure-omgeving**. Wanneer het IP-adres voor
 | Openbare Azure-peering| Verenigd Koninkrijk Zuid| 51.145.56.125|
 | Openbare Azure-peering| India - west| 40.81.89.24|
 | Openbare Azure-peering| VS - oost| 52.224.186.99|
-| Openbare Azure-peering| Europa - west| 51.145.179.78|
+| Openbare Azure-peering| Europa -west| 51.145.179.78|
 | Openbare Azure-peering| Japan East| 52.140.238.179|
 | Openbare Azure-peering| Frankrijk - centraal| 40.66.60.111|
 | Openbare Azure-peering| Canada - oost| 52.139.80.117|
-| Openbare Azure-peering| UAE - noord| 20.46.144.85|
+| Openbare Azure-peering| VAE - noord| 20.46.144.85|
 | Openbare Azure-peering| Brazil South| 191.233.24.179|
 | Openbare Azure-peering| Azië - zuidoost| 40.90.185.46|
 | Openbare Azure-peering| Zuid-Afrika - noord| 102.133.130.197|
 | Openbare Azure-peering| Canada - midden| 52.139.20.34|
 | Openbare Azure-peering| Korea - zuid| 40.80.232.185|
-| Openbare Azure-peering| India - centraal| 13.71.49.1|
+| Openbare Azure-peering| Central India| 13.71.49.1|
 | Openbare Azure-peering| VS - west| 13.64.39.16|
 | Openbare Azure-peering| Australia Southeast| 20.40.160.107|
 | Openbare Azure-peering| Australië - centraal| 20.37.52.67|
 | Openbare Azure-peering| India - zuid| 20.44.33.246|
 | Openbare Azure-peering| Central US| 13.86.102.66|
 | Openbare Azure-peering| Australië - oost| 20.40.125.155|
-| Openbare Azure-peering| US - west 2| 51.143.127.203|
+| Openbare Azure-peering| West US 2| 51.143.127.203|
 | Openbare Azure-peering| VS-Oost 2 EUAP| 52.253.229.253|
 | Openbare Azure-peering| VS - centraal EUAP| 52.253.159.160|
-| Openbare Azure-peering| VS - zuid-centraal| 20.188.77.119|
+| Openbare Azure-peering| South Central US| 20.188.77.119|
 | Openbare Azure-peering| VS - oost 2| 20.44.72.3|
 | Openbare Azure-peering| Europa - noord| 52.142.95.35|
 | Openbare Azure-peering| Azië - oost| 52.139.152.27|
@@ -255,8 +255,8 @@ De IP-adressen worden gedeeld door **Azure-omgeving**. Wanneer het IP-adres voor
 | Azure China 21Vianet| China-oost (globaal)| 139.217.171.176|
 | Azure China 21Vianet| China - noord| 40.125.137.220|
 | Azure China 21Vianet| China East| 40.126.120.30|
-| Azure China 21Vianet| China-noord 2| 40.73.41.178|
-| Azure China 21Vianet| China-oost 2| 40.73.104.4|
+| Azure China 21Vianet| China - noord 2| 40.73.41.178|
+| Azure China 21Vianet| China - oost 2| 40.73.104.4|
 | Azure Government| USGove Virginia (Global)| 52.127.42.160|
 | Azure Government| USGov Texas (wereld wijd)| 52.127.34.192|
 | Azure Government| USGov Virginia| 52.227.222.92|

@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 87085d4a4911801933993720ae0ab23aeb19956d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 53132cc21b8298f951f2daa979ed433103ad0ac0
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90974370"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541285"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Zelf studie: workday configureren voor het automatisch inrichten van gebruikers
 
@@ -39,7 +39,7 @@ De [Azure Active Directory User Provisioning Service](../app-provisioning/user-p
 
 * Opnieuw **inhuren van werk nemers** : wanneer een werk nemer in workday opnieuw wordt ingehuurd, kan het oude account automatisch opnieuw worden geactiveerd of worden ingericht (afhankelijk van uw voor keur) tot Active Directory, Azure Active Directory en optioneel Microsoft 365 en [andere SaaS-toepassingen die worden ondersteund door Azure AD](../app-provisioning/user-provisioning.md).
 
-### <a name="whats-new"></a>Wat is er nieuw?
+### <a name="whats-new"></a>Nieuwe functies
 In deze sectie worden verbeteringen voor de recente werk dagen van integratie vastgelegd. Voor een lijst met uitgebreide updates, geplande wijzigingen en archieven gaat u naar de pagina [Wat is er nieuw in azure Active Directory?](../fundamentals/whats-new.md) 
 
 * **Kan 2020-de mogelijkheid om telefoon nummers naar workday te terugschrijven:** Naast e-mail en gebruikers naam kunt u nu een telefoon nummer en een mobiel telefoon nummer van Azure AD naar werkdag terugschrijven. Raadpleeg de [zelf studie write-app](workday-writeback-tutorial.md)voor meer informatie.
@@ -129,7 +129,7 @@ In deze stap maakt u een onbeperkte of beperkte beveiligings groep voor integrat
 1. Voer in het zoekvak beveiligings groep maken in en klik vervolgens op **beveiligings groep maken**.
 
    > [!div class="mx-imgBorder"]
-   > ![CreateSecurity-groep](./media/workday-inbound-tutorial/wd_isu_03.png "CreateSecurity-groep")
+   > ![Scherm opname van ' beveiligings groep maken ' die is ingevoerd in het zoekvak en ' beveiligings groep maken-taak ' weer gegeven in de zoek resultaten.](./media/workday-inbound-tutorial/wd_isu_03.png)
 2. Voltooi de taak **beveiligings groep maken** . 
 
    * Er zijn twee typen beveiligings groepen in workday:
@@ -154,7 +154,7 @@ In deze stap verleent u machtigingen voor domein beleid voor de gegevens van de 
 
 1. Voer **domein beveiligings configuratie** in het zoekvak in en klik vervolgens op het **beveiligings configuratie rapport**van het domein koppelen.  
    >[!div class="mx-imgBorder"]
-   >![Beveiligings beleid voor domein](./media/workday-inbound-tutorial/wd_isu_06.png "Beveiligings beleid voor domein")  
+   >![Scherm opname van ' domein beveiligings configuratie ' in het zoekvak met ' domein beveiligings configuratie-rapport ' weer gegeven in de resultaten.](./media/workday-inbound-tutorial/wd_isu_06.png "Beveiligings beleid voor domein")  
 2. Zoek in het tekstvak **domein** naar de volgende domeinen en voeg deze toe aan het filter met één voor één.  
    * *Externe account inrichten*
    * *Werknemers gegevens: werk rollen*
@@ -166,10 +166,10 @@ In deze stap verleent u machtigingen voor domein beleid voor de gegevens van de 
    * *Workday-accounts*
    
      >[!div class="mx-imgBorder"]
-     >![Beveiligings beleid voor domein](./media/workday-inbound-tutorial/wd_isu_07.png "Beveiligings beleid voor domein")  
+     >![Scherm opname van het beveiligings configuratie rapport van het domein met het externe account in het tekstvak domein.](./media/workday-inbound-tutorial/wd_isu_07.png "Beveiligings beleid voor domein")  
 
      >[!div class="mx-imgBorder"]
-     >![Beveiligings beleid voor domein](./media/workday-inbound-tutorial/wd_isu_08.png "Beveiligings beleid voor domein") 
+     >![Scherm opname van het beveiligings configuratie rapport van het domein met een lijst met geselecteerde domeinen.](./media/workday-inbound-tutorial/wd_isu_08.png "Beveiligings beleid voor domein") 
 
      Klik op **OK**.
 
@@ -179,7 +179,7 @@ In deze stap verleent u machtigingen voor domein beleid voor de gegevens van de 
 
 4. Blader op de pagina **machtigingen voor domein beveiligings beleid bewerken** omlaag naar de sectie **integratie machtigingen**. Klik op het plus teken (+) om de integratie systeem groep toe te voegen aan de lijst met beveiligings groepen met de machtigingen **Get** en **put** .
    >[!div class="mx-imgBorder"]
-   >![Machtiging bewerken](./media/workday-inbound-tutorial/wd_isu_10.png "Machtiging bewerken")  
+   >![Scherm afbeelding met de sectie ' integratie machtigingen ' gemarkeerd.](./media/workday-inbound-tutorial/wd_isu_10.png "Machtiging bewerken")  
 
 5. Klik op het plus teken (+) om de integratie systeem groep toe te voegen aan de lijst met beveiligings groepen met de machtigingen **Get** en **put** .
 
@@ -210,12 +210,12 @@ In deze stap geeft u de beleids machtigingen ' beveiliging van bedrijfs processe
 1. Voer het **beleid voor bedrijfs processen** in het zoekvak in en klik vervolgens op de taak koppeling **bewerken beveiligings beleid voor bedrijfs processen** .  
 
    >[!div class="mx-imgBorder"]
-   >![Beveiligings beleid voor bedrijfs processen](./media/workday-inbound-tutorial/wd_isu_12.png "Beveiligings beleid voor bedrijfs processen")  
+   >![Scherm opname van ' beleid voor bedrijfs processen ' in het zoekvak en ' beveiligings beleid voor bedrijfs processen bewerken-taak ' geselecteerd.](./media/workday-inbound-tutorial/wd_isu_12.png "Beveiligings beleid voor bedrijfs processen")  
 
 2. In het tekstvak **bedrijfsproces type** zoekt u naar *contact* en selecteert u zakelijke proces **contact persoon wijzigen** en klikt u op **OK**.
 
    >[!div class="mx-imgBorder"]
-   >![Beveiligings beleid voor bedrijfs processen](./media/workday-inbound-tutorial/wd_isu_13.png "Beveiligings beleid voor bedrijfs processen")  
+   >![Scherm opname van de pagina ' beveiligings beleid voor bedrijfs processen bewerken ' en ' wijziging van contact persoon in werk ' geselecteerd in het menu bedrijfs proces type.](./media/workday-inbound-tutorial/wd_isu_13.png "Beveiligings beleid voor bedrijfs processen")  
 
 3. Ga op de pagina **beveiligings beleid voor bedrijfs processen bewerken** naar de sectie **werk contact gegevens wijzigen (webservice)** .
     
@@ -390,9 +390,9 @@ In deze stap maken we verbinding met werkdag en Active Directory in de Azure Por
    
      | URL-indeling | WWS API-versie gebruikt | XPATH-wijzigingen vereist |
      |------------|----------------------|------------------------|
-     | https://####.workday.com/ccx/service/tenantName | v 21.1 | No |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | No |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Yes |
+     | https://####.workday.com/ccx/service/tenantName | v 21.1 | Nee |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | Nee |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Ja |
 
       > [!NOTE]
      > Als er geen versie gegevens zijn opgegeven in de URL, gebruikt de app workday Web Services (WWS) v 21.1 en zijn er geen wijzigingen vereist voor de standaard XPATH API-expressies die worden geleverd bij de app. Als u een specifieke API-versie van WWS wilt gebruiken, geeft u het versie nummer op in de URL <br>
@@ -415,7 +415,7 @@ In deze stap maken we verbinding met werkdag en Active Directory in de Azure Por
    * Klik op de knop **verbinding testen** . Als de verbindings test is geslaagd, klikt u bovenaan op de knop **Opslaan** . Als dit mislukt, controleert u of de workday-referenties en de AD-referenties die zijn geconfigureerd voor de installatie van de agent geldig zijn.
 
      >[!div class="mx-imgBorder"]
-     >![Azure-portal](./media/workday-inbound-tutorial/wd_1.png)
+     >![Scherm opname van de pagina inrichten met opgegeven referenties.](./media/workday-inbound-tutorial/wd_1.png)
 
    * Zodra de referenties zijn opgeslagen, wordt in de sectie **toewijzingen** de standaard toewijzing voor **werk dagen op locatie Active Directory**
 
@@ -480,7 +480,7 @@ In deze sectie configureert u hoe gebruikers gegevens stromen van workday naar A
 
 1. Klik boven aan de sectie kenmerk toewijzing op **Opslaan** om uw toewijzingen op te slaan.
    >[!div class="mx-imgBorder"]
-   >![Azure-portal](./media/workday-inbound-tutorial/wd_2.png)
+   >![Scherm opname waarin de pagina kenmerk toewijzing wordt weer gegeven en de actie opslaan is geselecteerd.](./media/workday-inbound-tutorial/wd_2.png)
 
 #### <a name="below-are-some-example-attribute-mappings-between-workday-and-active-directory-with-some-common-expressions"></a>Hieronder ziet u enkele voor beelden van kenmerk toewijzingen tussen werk dagen en Active Directory, met enkele algemene expressies
 
@@ -503,7 +503,7 @@ In deze sectie configureert u hoe gebruikers gegevens stromen van workday naar A
 | **Company**         | bedrijf   |     |  + Update maken |
 | **SupervisoryOrganization**  | department  |     |  + Update maken |
 | **ManagerReference**   | manager  |     |  + Update maken |
-| **BusinessTitle**   |  title     |     |  + Update maken | 
+| **BusinessTitle**   |  titel     |     |  + Update maken | 
 | **AddressLineData**    |  streetAddress  |     |   + Update maken |
 | **Gemeenschap**   |   l   |     | + Update maken |
 | **CountryReferenceTwoLetter**      |   co |     |   + Update maken |
@@ -942,11 +942,11 @@ Wanneer u op een van de records in het controle logboek klikt, wordt de pagina *
 
   Zoek naar een HTTP POST-record die overeenkomt met het tijds tempel van de export bewerking met *gebeurtenis-id = 2*. Deze record bevat de kenmerk waarden die door de inrichtings service zijn verzonden naar de inrichtings agent.
 
-  [![SCIM toevoegen](media/workday-inbound-tutorial/wd_event_viewer_05.png)](media/workday-inbound-tutorial/wd_event_viewer_05.png#lightbox)
+  :::image type="content" source="media/workday-inbound-tutorial/wd_event_viewer_05.png" alt-text="Scherm opname van de record ' HTTP POST ' in het logboek van de inrichtings agent." lightbox="media/workday-inbound-tutorial/wd_event_viewer_05.png":::
 
   Direct na bovenstaande gebeurtenis moet er een andere gebeurtenis zijn die de reactie van de bewerking AD-account maken vastlegt. Deze gebeurtenis retourneert de nieuwe objectGuid die in AD is gemaakt en wordt ingesteld als het kenmerk TargetAnchor in de inrichtings service.
 
-  [![SCIM toevoegen](media/workday-inbound-tutorial/wd_event_viewer_06.png)](media/workday-inbound-tutorial/wd_event_viewer_06.png#lightbox)
+  :::image type="content" source="media/workday-inbound-tutorial/wd_event_viewer_06.png" alt-text="Scherm opname van de record ' HTTP POST ' in het logboek van de inrichtings agent." lightbox="media/workday-inbound-tutorial/wd_event_viewer_06.png":::
 
 ### <a name="understanding-logs-for-manager-update-operations"></a>Logboeken voor update bewerkingen voor managers
 
@@ -1040,14 +1040,14 @@ Als u deze wijziging wilt uitvoeren, moet u [werkdag Studio](https://community.w
 
 5. Selecteer **extern**en selecteer het Human_Resources WSDL-bestand dat u hebt gedownload in stap 2.
 
-    ![Workday Studio](./media/workday-inbound-tutorial/wdstudio1.png)
+    ![Scherm opname van het bestand ' Human_Resources ' dat in workday Studio wordt geopend.](./media/workday-inbound-tutorial/wdstudio1.png)
 
 6. Stel het veld **locatie** in op `https://IMPL-CC.workday.com/ccx/service/TENANT/Human_Resources` , maar vervang ' IMPL-CC ' door het daad werkelijke exemplaar type en ' TENANT ' door de naam van uw echte TENANT.
 
 7. De **bewerking** instellen op **Get_Workers**
 
 8.    Klik op de kleine koppeling **configureren** onder de deel Vensters aanvraag/antwoord om uw workday-referenties in te stellen. Controleer de **verificatie**en voer vervolgens de gebruikers naam en het wacht woord in voor uw workday-integratie systeem account. Zorg ervoor dat u de naam van de gebruiker wijzigt als \@ Tenant en de optie **WS-Security UsernameToken** geselecteerd laten.
-   ![Workday Studio](./media/workday-inbound-tutorial/wdstudio2.png)
+   ![Scherm opname van het tabblad ' Beveiliging ' met de invoer ' gebruikers naam ' en ' wacht woord ' en ' gebruikers naam WS-Security-token ' geselecteerd.](./media/workday-inbound-tutorial/wdstudio2.png)
 
 9. Selecteer **OK**.
 
@@ -1086,7 +1086,7 @@ Als u deze wijziging wilt uitvoeren, moet u [werkdag Studio](https://community.w
 
 13. Selecteer in de opdracht balk van workday Studio **file > bestand openen...** en open het XML-bestand dat u hebt opgeslagen. Met deze actie wordt het bestand in de workday Studio XML-editor geopend.
 
-    ![Workday Studio](./media/workday-inbound-tutorial/wdstudio3.png)
+    ![Scherm opname van een X M L-bestand geopend in de werk dagen Studio X M L-editor.](./media/workday-inbound-tutorial/wdstudio3.png)
 
 14. Navigeer in de bestands structuur naar **/env: envelop > env: Body > WD: Get_Workers_Response > WD: Response_Data > WD: worker** om de gegevens van uw gebruiker te vinden.
 
@@ -1112,7 +1112,7 @@ Als u deze wijziging wilt uitvoeren, moet u [werkdag Studio](https://community.w
 
 5. Selecteer **kenmerk lijst bewerken voor werkdag**.
 
-    ![Workday Studio](./media/workday-inbound-tutorial/wdstudio_aad1.png)
+    ![Scherm opname van de pagina ' werkdag naar Azure A D gebruikers inrichten-inrichting ' met de actie ' kenmerk lijst bewerken voor werkdag ' gemarkeerd.](./media/workday-inbound-tutorial/wdstudio_aad1.png)
 
 6. Schuif naar de onderkant van de lijst met kenmerken naar de locatie waar de invoer velden zich bevinden.
 

@@ -9,18 +9,18 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/27/2020
-ms.openlocfilehash: d5ef8d6a9b0c0039b500ce9d0238609e8a8edc93
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 252ea54cf6be9dd381648d67e56a7a5ff2c7acc6
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90908010"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542285"
 ---
 # <a name="execute-r-script-module"></a>R-script module uitvoeren
 
 In dit artikel wordt beschreven hoe u de script module Execute r gebruikt voor het uitvoeren van R-code in uw Azure Machine Learning Designer-pijp lijn.
 
-Met R kunt u taken uitvoeren die momenteel niet worden ondersteund door bestaande modules, zoals: 
+Met R kunt u taken uitvoeren die niet worden ondersteund door bestaande modules, zoals: 
 - Aangepaste gegevens transformaties maken
 - Uw eigen metrische gegevens gebruiken om voor spellingen te evalueren
 - Modellen bouwen met behulp van algoritmen die niet zijn geïmplementeerd als zelfstandige modules in de ontwerp functie
@@ -137,7 +137,7 @@ U kunt de volgende voorbeeld code [gebruiken om toegang te krijgen tot de geregi
 
 ## <a name="how-to-configure-execute-r-script"></a>Het uitvoeren van een R-script configureren
 
-De module voor het uitvoeren van R-scripts bevat voorbeeld code die u als uitgangs punt kunt gebruiken. Als u de module voor het uitvoeren van een R-script wilt configureren, geeft u een aantal invoer en code op om uit te voeren.
+De script module Execute R bevat voorbeeld code als uitgangs punt.
 
 ![Diagram van invoer voor een R-module](media/module/execute-r-script.png)
 
@@ -196,7 +196,10 @@ Gegevens sets die zijn opgeslagen in de ontwerp functie worden automatisch gecon
 
     Als uw script groter is dan 16 KB, gebruikt u de **script bundel** poort om fouten te voor komen, zoals *commandline de limiet van 16597 tekens overschrijdt*. 
     
-    Bundel het script en andere aangepaste resources aan een zip-bestand en upload het zip-bestand als een **Bestands gegevensset** naar de Studio. Vervolgens kunt u de module gegevensset slepen vanuit de lijst *mijn gegevens sets* in het deel venster met de linker module op de ontwerp pagina ontwerpen. Verbind de module gegevensset met de **script bundel** poort van de **script module Execute R** .
+    1. Het script en andere aangepaste resources bundelen naar een zip-bestand.
+    1. Upload het zip-bestand als een **bestand gegevensset** naar de Studio. 
+    1. Sleep de module gegevensset van de lijst *mijn gegevens sets* in het deel venster met de linker module op de ontwerp pagina voor ontwerpen. 
+    1. Verbind de module gegevensset met de **script bundel** poort van de **script module Execute R** .
     
     Hieronder ziet u de voorbeeld code voor het gebruik van het script in de script bundel:
 
@@ -219,7 +222,7 @@ Gegevens sets die zijn opgeslagen in de ontwerp functie worden automatisch gecon
 
 ## <a name="results"></a>Resultaten
 
-Het uitvoeren van R-script modules kan meerdere uitvoer retour neren, maar ze moeten worden weer gegeven als R-gegevens frames. Gegevens frames worden automatisch geconverteerd naar gegevens sets in de ontwerp functie voor compatibiliteit met andere modules.
+Het uitvoeren van R-script modules kan meerdere uitvoer retour neren, maar ze moeten worden weer gegeven als R-gegevens frames. De ontwerp functie zet de gegevens frames automatisch om in sets voor compatibiliteit met andere modules.
 
 Standaard berichten en fouten van R worden teruggestuurd naar het logboek van de module.
 
@@ -236,7 +239,7 @@ De script module Execute R ondersteunt wille keurige R-script bestanden als invo
 
 1. Als u een zip-bestand met R-code naar uw werk ruimte wilt uploaden, gaat u naar de pagina **gegevens sets** . Selecteer **gegevensset maken**en selecteer vervolgens **uit lokaal bestand** en de optie type **Bestands** gegevensset.  
 
-1. Controleer of het gezipte bestand beschikbaar is in de lijst **mijn gegevens sets** onder de categorie **gegevens sets** in de structuur van de linker module.
+1. Controleer of het gezipte bestand wordt weer gegeven in **mijn gegevens sets** onder de categorie **gegevens sets** in de structuur van de linker module.
 
 1.  Verbind de gegevensset met de invoer poort van de **script bundel** .
 

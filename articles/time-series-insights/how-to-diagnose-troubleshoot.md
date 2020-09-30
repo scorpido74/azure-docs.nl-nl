@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: d9a4f7aa270aa4ed2b02e61da984e14379a241a9
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 106600b608586175cbab1098cf0eb7ac6fad94fa
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289928"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540299"
 ---
 # <a name="diagnose-and-troubleshoot-an-azure-time-series-insights-gen2-environment"></a>Een Azure Time Series Insights Gen2-omgeving diagnosticeren en problemen oplossen
 
@@ -81,11 +81,11 @@ Dit probleem treedt op wanneer de sleutel die u hebt gemaakt bij het maken van d
 
 Als u uw Time Series Insights Gen2-omgeving wilt bijwerken met de nieuwe sleutel opent u uw hub-resource in de Azure Portal en kopieert u de nieuwe sleutel. Navigeer naar de resource van de TSI en klik op gebeurtenis bronnen. 
 
-   [![Sleutel bijwerken.](media/preview-troubleshoot/update-hub-key-step-1.png)](media/preview-troubleshoot/update-hub-key-step-1.png#lightbox)
+   [![In de scherm afbeelding wordt de resource T S I met gebeurtenis bronnen weer gegeven menu-item met de naam out out.](media/preview-troubleshoot/update-hub-key-step-1.png)](media/preview-troubleshoot/update-hub-key-step-1.png#lightbox)
 
 Selecteer de bron (nen) van de gebeurtenis waarvan de opname is gestopt, plak de nieuwe sleutel en klik op opslaan.
 
-   [![Sleutel bijwerken.](media/preview-troubleshoot/update-hub-key-step-2.png)](media/preview-troubleshoot/update-hub-key-step-2.png#lightbox)
+   [![In de scherm afbeelding wordt de resource T S I weer gegeven met de I/o-hub-beleids sleutel ingevoerd.](media/preview-troubleshoot/update-hub-key-step-2.png)](media/preview-troubleshoot/update-hub-key-step-2.png#lightbox)
 
 ## <a name="problem-my-event-sources-timestamp-property-name-doesnt-work"></a>Probleem: de eigenschaps naam van de tijds tempel van de gebeurtenis bron werkt niet
 
@@ -129,7 +129,7 @@ Dit probleem kan zich voordoen als in uw omgeving geen hiërarchie voor tijdreek
 
 Dit probleem kan optreden als u geen gebruik maakt van de nieuwste versie van de Power BI-connector in Power BI Desktop.
 
-[![Bij niet-bovenliggende instanties wordt een waarschuwing weer gegeven.](media/preview-troubleshoot/power-bi-unable-to-connect.png)](media/preview-troubleshoot/power-bi-unable-to-connect.png#lightbox)
+[![Scherm afbeelding toont het dialoog venster kan geen verbinding maken.](media/preview-troubleshoot/power-bi-unable-to-connect.png)](media/preview-troubleshoot/power-bi-unable-to-connect.png#lightbox)
 
 * Controleer de versie van uw Power BI Desktop en zorg ervoor dat u de versie van juli 2020 gebruikt. Als dat niet het geval is, werkt u de Power BI Desktop bij en voert u de connector opnieuw uit. 
 

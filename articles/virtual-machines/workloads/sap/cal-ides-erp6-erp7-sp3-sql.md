@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/16/2016
 ms.author: hermannd
-ms.openlocfilehash: 3efd92226b7c69590f3960458ffec49b63b8364f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 56f5072c90a699270a92af317976c8f56bd3e2cb
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77616695"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536525"
 ---
 # <a name="deploy-sap-ides-ehp7-sp3-for-sap-erp-60-on-azure"></a>SAP IDE'S EHP7 SP3 implementeren voor SAP ERP 6,0 op Azure
 In dit artikel wordt beschreven hoe u een SAP IDE'S-systeem dat wordt uitgevoerd met SQL Server en het Windows-besturings systeem op Azure implementeert via de SAP Cloud Appliance Library (SAP CAL) 3,0. In de scherm afbeeldingen wordt het stapsgewijze proces weer gegeven. Volg dezelfde stappen om een andere oplossing te implementeren.
@@ -54,11 +54,11 @@ Nadat u zich hebt aangemeld bij de SAP CAL, leidt de eerste pagina meestal naar 
 
     b. **Microsoft Azure** is het nieuwe implementatie model van Resource Manager.
 
-    ![SAP CAL-accounts](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic-2a.PNG)
+    ![Scherm opname toont S A P CAL-accounts met Microsoft Azure.](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic-2a.PNG)
 
     Selecteer **Microsoft Azure**om in het Resource Manager-model te implementeren.
 
-    ![SAP CAL-accounts](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic3c.PNG)
+    ![Scherm opname toont S A P CAL-accounts.](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic3c.PNG)
 
 1. Voer de Azure **-abonnements-id** in die u kunt vinden op de Azure Portal. 
 
@@ -105,7 +105,7 @@ U hebt een SAP CAL-account gemaakt dat het volgende kan:
 
     ![Basis modus SAP-CAL: exemplaar maken](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic10a.png)
 
-1. Klik op **Create**. Afhankelijk van de grootte en complexiteit van de oplossing (de SAP CAL biedt een schatting), wordt de status na enige tijd weer gegeven als actief en klaar voor gebruik: 
+1. Klik op **Maken**. Afhankelijk van de grootte en complexiteit van de oplossing (de SAP CAL biedt een schatting), wordt de status na enige tijd weer gegeven als actief en klaar voor gebruik: 
 
     ![SAP CAL-exemplaren](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic12a.png)
 

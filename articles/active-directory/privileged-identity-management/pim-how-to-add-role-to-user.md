@@ -13,12 +13,12 @@ ms.subservice: pim
 ms.date: 09/16/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 919585d557a668e44f229451ab202fb8bcab9079
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 9f4d1e0d43758645d43843417eadf0ce21d43cb7
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985167"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533839"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>Azure AD-rollen toewijzen in Privileged Identity Management
 
@@ -51,7 +51,7 @@ Volg deze stappen om een gebruiker in aanmerking te laten komen voor een Azure A
 
 1. Selecteer **rollen** om de lijst met rollen voor Azure AD-machtigingen weer te geven.
 
-    ![Azure AD-rollen](./media/pim-how-to-add-role-to-user/roles-list.png)
+    ![Scherm afbeelding van de pagina ' roles ' waarvoor de actie ' toewijzingen toevoegen ' is geselecteerd.](./media/pim-how-to-add-role-to-user/roles-list.png)
 
 1. Selecteer **toewijzingen toevoegen** om de pagina **toewijzingen toevoegen** te openen.
 

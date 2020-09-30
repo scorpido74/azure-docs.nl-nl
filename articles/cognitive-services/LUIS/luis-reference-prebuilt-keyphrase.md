@@ -3,20 +3,18 @@ title: Vooraf samengestelde LUIS van de woordgroepen-entiteit
 titleSuffix: Azure Cognitive Services
 description: Dit artikel bevat vooraf opgemaakte woordgroepen entiteits gegevens in Language Understanding (LUIS).
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/27/2019
-ms.author: diberry
-ms.openlocfilehash: 53be1b13f1e2744e143a4be0777e3a8e3135460e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 02a48c8d106795b970d573bb71f52ba92e0a90ac
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78270533"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541982"
 ---
 # <a name="keyphrase-prebuilt-entity-for-a-luis-app"></a>vooraf samengestelde woordgroepen instantie voor een LUIS-app
 De entiteit woordgroep haalt een aantal sleutel zinnen op uit een utterance. U hoeft geen voorbeeld uitingen met een Woordgroeps groep aan de toepassing toe te voegen. De woordgroepen entiteit wordt in [veel cultures](luis-language-support.md#languages-supported) ondersteund als onderdeel van de functie voor [tekst analyse](../text-analytics/overview.md) .
@@ -29,7 +27,7 @@ De volgende entiteits objecten worden geretourneerd voor de query:
 
 #### <a name="v3-response"></a>[V3-antwoord](#tab/V3)
 
-De volgende JSON is met de `verbose` para meter ingesteld `false`op:
+De volgende JSON is met de `verbose` para meter ingesteld op `false` :
 
 ```json
 "entities": {
@@ -40,7 +38,7 @@ De volgende JSON is met de `verbose` para meter ingesteld `false`op:
 }
 ```
 #### <a name="v3-verbose-response"></a>[Uitgebreide respons van v3](#tab/V3-verbose)
-De volgende JSON is met de `verbose` para meter ingesteld `true`op:
+De volgende JSON is met de `verbose` para meter ingesteld op `true` :
 
 ```json
 "entities": {

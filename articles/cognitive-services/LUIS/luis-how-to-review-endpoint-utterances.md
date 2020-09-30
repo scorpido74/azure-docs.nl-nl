@@ -3,24 +3,22 @@ title: Gebruikers uitingen bekijken-LUIS
 titleSuffix: Azure Cognitive Services
 description: Bekijk de uitingen die door actief leren zijn vastgelegd om intentie te selecteren en entiteiten te markeren voor Read-World uitingen; wijzigingen accepteren, trainen en publiceren.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/07/2020
-ms.author: diberry
-ms.openlocfilehash: 58674bf38ec1efb970fa8e79f7d970ecefb36712
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 9777e4f9b2205d2f6cdf6158b035e2a18403d69f
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055610"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541455"
 ---
 # <a name="how-to-improve-the-luis-app-by-reviewing-endpoint-utterances"></a>De LUIS-app verbeteren door eind punt uitingen te controleren
 
-Het proces voor het controleren van het eind punt uitingen voor de juiste voor spellingen wordt [actief leren](luis-concept-review-endpoint-utterances.md)genoemd. Met het actieve leer proces worden eindpunt query's vastgelegd en wordt het uitingen van de gebruiker geselecteerd. U kunt deze uitingen bekijken om de intentie te selecteren en entiteiten te markeren voor deze uitingen. Ga akkoord met deze wijzigingen in uw voor beeld uitingen en klik vervolgens op publiceren. LUIS identificeert uitingen nauw keuriger.
+Het proces voor het controleren van het eind punt uitingen voor de juiste voor spellingen wordt [actief leren](luis-concept-review-endpoint-utterances.md)genoemd. Met het actieve leer proces worden eindpunt query's vastgelegd en wordt het uitingen van de gebruiker geselecteerd. U kunt deze uitingen bekijken om de intentie te selecteren en entiteiten te markeren voor deze uitingen. Ga akkoord met deze wijzigingen in uw voorbeelduitingen en klik vervolgens op trainen en publiceren. LUIS identificeert uitingen nauw keuriger.
 
 ## <a name="enable-active-learning"></a>Actief leren inschakelen
 
@@ -28,20 +26,20 @@ Als u actief leren wilt inschakelen, moet u gebruikers query's registreren. Dit 
 
 Gebruik de LUIS-Portal om de juiste eindpunt query te maken.
 
-1. Meld u aan bij de [Luis-Portal](https://www.luis.ai)en selecteer uw **abonnement** en de resource voor het **ontwerpen** van de apps die zijn toegewezen aan die ontwerp bron.
+1. Meld u aan bij de [LUIS-portal](https://www.luis.ai) en selecteer uw **abonnement** en **Ontwerpresource** om de apps weer te geven die aan die ontwerpresource zijn toegewezen.
 1. Open uw app door de naam ervan op **mijn apps** -pagina te selecteren.
 1. Ga naar de sectie **beheren** en selecteer vervolgens **Azure-resources**.
 1. Voor de toegewezen Voorspellings resource selecteert u **query parameters wijzigen**.
 
     > [!div class="mx-imgBorder"]
-    > ![Gebruik de LUIS-Portal om logboeken op te slaan. Dit is vereist voor actief leren.](./media/luis-tutorial-review-endpoint-utterances/azure-portal-change-query-url-settings.png)
+    > ![Scherm afbeelding toont de koppeling voor het wijzigen van query parameters.](./media/luis-tutorial-review-endpoint-utterances/azure-portal-change-query-url-settings.png)
 
 1. Schakel **logboeken opslaan** vervolgens opslaan door **gereed**te selecteren.
 
     > [!div class="mx-imgBorder"]
     > ![Gebruik de LUIS-Portal om logboeken op te slaan. Dit is vereist voor actief leren.](./media/luis-tutorial-review-endpoint-utterances/luis-portal-manage-azure-resource-save-logs.png)
 
-     Met deze actie wordt de voorbeeld-URL gewijzigd door de `log=true` query string-para meter toe te voegen. Kopieer en gebruik de gewijzigde voorbeeld query-URL bij het maken van voorspellings query's voor het runtime-eind punt.
+     Met deze actie wordt de voorbeeld-URL gewijzigd door de querytekenreeksparameter `log=true` toe te voegen. Kopieer en gebruik de gewijzigde voorbeeldquery-URL wanneer u voorspellingsquery's voor het runtime-eindpunt maakt.
 
 ## <a name="correct-intent-predictions-to-align-utterances"></a>De intentie voorspellingen corrigeren om uitingen uit te lijnen
 

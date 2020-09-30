@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: a4186909db3d784938ada4baaaf08aba02b31d30
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6bdc7a087e60791ba3e3367aca3ea3a4500478ab
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91317120"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534196"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>De implementatie van uw Azure Monitor-logboeken ontwerpen
 
@@ -26,6 +26,8 @@ Een Log Analytics-werk ruimte biedt:
 * Een geografische locatie voor de opslag van gegevens.
 * Gegevens isolatie door verschillende gebruikers toegangs rechten te verlenen volgens een van onze aanbevolen ontwerp strategieën.
 * Bereik voor configuratie van instellingen, zoals de [prijs categorie](./manage-cost-storage.md#changing-pricing-tier), [retentie](./manage-cost-storage.md#change-the-data-retention-period)en het beperken van [gegevens](./manage-cost-storage.md#manage-your-maximum-daily-data-volume).
+
+Werk ruimten worden gehost op een fysiek cluster. Standaard worden deze clusters door het systeem gemaakt en beheerd. Klanten die meer dan 4 TB/dag hebben opgenomen, zullen hun eigen toegewezen clusters voor hun werk ruimten maken. Hiermee kunnen ze betere controle en een hoger opname niveau krijgen.
 
 Dit artikel bevat een gedetailleerd overzicht van de overwegingen voor het ontwerpen en migreren, het overzicht van toegangs beheer en een uitleg van de ontwerp implementaties die wij voor uw IT-organisatie raden.
 
@@ -125,37 +127,16 @@ De *Access Control-modus* is een instelling voor elke werk ruimte die definieert
 
 Zie de [modus toegangs beheer configureren](manage-access.md#configure-access-control-mode)voor meer informatie over het wijzigen van de toegangs beheer modus in de portal, met Power shell of het gebruik van een resource manager-sjabloon.
 
-## <a name="ingestion-volume-rate-limit"></a>Frequentie limiet opname volume
+## <a name="scale-and-ingestion-volume-rate-limit"></a>Frequentie limiet voor schaal en opname volume
 
-Azure Monitor is een grootschalige gegevensservice die elke maand een groeiend aantal terabytes aan gegevens van duizenden klanten verwerkt. De limiet voor het opnamevolume moet de klanten van Azure Monitor isoleren tegen plotselinge opnamepieken in een multitenancy-omgeving. Er is een standaarddrempel van 500 MB (gecomprimeerd) voor het opnamevolume gedefenieerd in werkruimtes. Dit staat gelijk aan een niet-gecomprimeerd volume van ongeveer **6 GB/min**. De werkelijke grootte kan per gegevenstype variëren afhankelijk van de logboeklengte en de compressieratio ervan. Deze volumebeperking geldt voor elke gegevensopname, ongeacht of deze is verzonden vanuit Azure-resources met behulp van [Diagnostische instellingen](diagnostic-settings.md), [Gegevensverzamelaar-API](data-collector-api.md) of agents.
+Azure Monitor is een grootschalige gegevens service waarmee duizenden klanten elke maand PETA bytes van gegevens kunnen verzenden in een groei tempo. Werk ruimten zijn niet beperkt in hun opslag ruimte en kunnen worden uitgebreid tot PETA bytes aan gegevens. Het is niet nodig om werk ruimten te splitsen als gevolg van schalen.
 
-Als u gegevens naar een werkruimte verzendt met een volumesnelheid die hoger is dan 80 % van de drempel die in uw werkruimte is geconfigureerd, wordt er om de zes uur een gebeurtenis verzonden naar de *bewerkingstabel* in uw werkruimte, zolang de drempel nog steeds wordt overschreden. Als het opnamevolume hoger is dan de drempel, worden sommige gegevens verwijderd en wordt er om de zes uur een gebeurtenis verzonden naar de *bewerkingstabel* in uw werkruimte, zolang de drempel wordt overschreden. Als uw opnamevolume de drempel blijft overschrijden of als u verwacht de drempel binnenkort te bereiken, kunt u een verhoging aanvragen door een ondersteuningsaanvraag te openen. 
+Voor het beveiligen en isoleren van Azure Monitor klanten en de back-end-infra structuur, is er een standaard limiet voor opname frequentie die is ontworpen om te beschermen tegen pieken en flooden. De standaard frequentie limiet is ongeveer **6 GB/minuut** en is ontworpen voor het inschakelen van normale opname. Zie [Azure Monitor-service limieten](../service-limits.md#data-ingestion-volume-rate)voor meer informatie over het meten van opname volume limieten.
 
-Als u een melding wilt ontvangen over de snelheids limiet voor opname volumes in uw werk ruimte, maakt u een [waarschuwings regel](alerts-log.md) voor het logboek met behulp van de volgende query met een waarschuwing Logic Base op het aantal resultaten dat groter is dan nul, evaluatie periode van 5 minuten en frequentie van 5 minuten.
+Klanten die minder dan 4 TB per dag opnemen, voldoen meestal niet aan deze limieten. Klanten die hogere volumes opnemen of die pieken hebben als onderdeel van hun normale bedrijfs voering, moeten overwegen over te stappen op [toegewezen clusters](../log-query/logs-dedicated-clusters.md) waarbij de limiet voor opname snelheden kan worden verhoogd.
 
-Frequentie van opname volume heeft de drempel waarde overschreden
-```Kusto
-Operation
-| where Category == "Ingestion"
-| where OperationKey == "Ingestion rate limit"
-| where Level == "Error"
-```
+Wanneer de limiet voor opname frequentie wordt geactiveerd of 80% van de drempel waarde wordt bereikt, wordt er een gebeurtenis toegevoegd aan de *bewerkings* tabel in uw werk ruimte. Het is raadzaam om het te controleren en een waarschuwing te maken. Bekijk meer informatie over de frequentie van het [volume voor gegevens opname](../service-limits.md#data-ingestion-volume-rate).
 
-Frequentie van opname volume is 80% van de drempel waarde overschreden
-```Kusto
-Operation
-| where Category == "Ingestion"
-| where OperationKey == "Ingestion rate limit"
-| where Level == "Warning"
-```
-
-Frequentie van opname volume is 70% van de drempel waarde overschreden
-```Kusto
-Operation
-| where Category == "Ingestion"
-| where OperationKey == "Ingestion rate limit"
-| where Level == "Info"
-```
 
 ## <a name="recommendations"></a>Aanbevelingen
 

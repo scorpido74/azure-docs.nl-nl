@@ -9,12 +9,12 @@ ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e4d25637498bec223e294eecf2be6dc88fa2aa0d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 1726f3a1ddc62cbb76a65f1d284793e57ea2f2a8
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997163"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538242"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Verificatie en autorisatie voor Azure spatiale ankers
 
@@ -22,7 +22,7 @@ In deze sectie worden de verschillende manieren beschreven waarop u kunt verifiÃ
 
 ## <a name="overview"></a>Overzicht
 
-![Een overzicht van verificatie voor Azure spatiale ankers](./media/spatial-anchors-authentication-overview.png)
+![Diagram met een overzicht van verificatie voor Azure spatiale ankers.](./media/spatial-anchors-authentication-overview.png)
 
 Om toegang te krijgen tot een bepaald Azure spatiale-anker account moeten clients eerst een toegangs token verkrijgen van de Azure Mixed Reality-beveiligings token service (STS). Tokens die zijn verkregen van STS Live gedurende 24 uur en die informatie bevatten over de spatiale ankers Services om autorisatie beslissingen te nemen voor het account en ervoor te zorgen dat alleen geautoriseerde principals toegang hebben tot dat account.
 
@@ -39,7 +39,7 @@ Azure AD-verificatie tokens kunnen op twee manieren worden verkregen:
 
 Het gebruik van account sleutels voor toegang tot uw Azure spatiale-ankers account is de eenvoudigste manier om aan de slag te gaan. U vindt uw account sleutels op het Azure Portal. Navigeer naar uw account en selecteer het tabblad sleutels.
 
-![Een overzicht van verificatie voor Azure spatiale ankers](../../../includes/media/spatial-anchors-get-started-create-resource/view-account-key.png)
+![Scherm afbeelding waarop de pagina sleutels wordt weer gegeven met de knop kopiÃ«ren voor de primaire sleutel gemarkeerd.](../../../includes/media/spatial-anchors-get-started-create-resource/view-account-key.png)
 
 Er worden twee sleutels beschikbaar gemaakt, die beide gelijktijdig geldig zijn voor toegang tot het ruimtelijke-ankers account. Het is raadzaam om de sleutel die u gebruikt voor toegang tot het account, regel matig bij te werken. Als er twee afzonderlijke geldige sleutels zijn, kunnen deze updates zonder downtime worden ingeschakeld. u hoeft alleen de primaire sleutel en de secundaire sleutel bij te werken.
 

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 6a3fa40eaae174d3616fd0318f81576b7c59eac7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e67130516410f64c32eadbf15857ca3ec4c976fc
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80067704"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542475"
 ---
 # <a name="azure-database-for-mysql-management-stored-procedures"></a>Opgeslagen procedures voor Azure Database for MySQL beheer
 
@@ -21,17 +21,17 @@ Opgeslagen procedures zijn beschikbaar op Azure Database for MySQL servers om uw
 
 Met replicatie van inkomende gegevens kunt u gegevens synchroniseren die afkomstig zijn van een MySQL-server die wordt uitgevoerd on-premises, in virtuele machines (VM's) of in databaseservices gehost door andere cloudproviders in de Azure Database for MySQL-service.
 
-De volgende opgeslagen procedures worden gebruikt om Replicatie van inkomende gegevens in te stellen of te verwijderen tussen een hoofd database en een replica.
+De volgende opgeslagen procedures worden gebruikt om Replicatie van inkomende gegevens tussen een bron en replica in te stellen of te verwijderen.
 
 |**Naam van opgeslagen procedure**|**Invoerparameters**|**Uitvoer parameters**|**Opmerking over gebruik**|
 |-----|-----|-----|-----|
 |*MySQL. az_replication_change_master*|master_host<br/>master_user<br/>master_password<br/>master_port<br/>master_log_file<br/>master_log_pos<br/>master_ssl_ca|N.v.t.|Als u gegevens wilt overdragen met de SSL-modus, geeft u de context van het CA-certificaat door aan de para meter master_ssl_ca. </br><br>Als u gegevens zonder SSL wilt overdragen, geeft u een lege teken reeks door in de para meter master_ssl_ca.|
 |*MySQL. az_replication _start*|N.v.t.|N.v.t.|Replicatie wordt gestart.|
 |*MySQL. az_replication _stop*|N.v.t.|N.v.t.|De replicatie wordt gestopt.|
-|*MySQL. az_replication _remove_master*|N.v.t.|N.v.t.|Hiermee verwijdert u de replicatie relatie tussen het hoofd en de replica.|
+|*MySQL. az_replication _remove_master*|N.v.t.|N.v.t.|Hiermee verwijdert u de replicatie relatie tussen de bron en de replica.|
 |*MySQL. az_replication_skip_counter*|N.v.t.|N.v.t.|Hiermee wordt één replicatie fout overs Laan.|
 
-Zie [replicatie van inkomende gegevens configureren voor informatie over het](howto-data-in-replication.md)instellen van replicatie van inkomende gegevens tussen een Master en een replica in azure database for MySQL.
+Zie [replicatie van inkomende gegevens configureren voor het](howto-data-in-replication.md)instellen van replicatie van inkomende gegevens tussen een bron en een replica in azure database for MySQL.
 
 ## <a name="other-stored-procedures"></a>Andere opgeslagen procedures
 

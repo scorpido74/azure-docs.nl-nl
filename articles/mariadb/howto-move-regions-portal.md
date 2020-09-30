@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/29/2020
-ms.openlocfilehash: abb692f71a3ed69c6779b6141c9098dc94c75c4f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2e4bc71a0883c6fef6f0115080a79a74ced92b0
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85568554"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542424"
 ---
 # <a name="move-an-azure-database-for-mariadb-server-to-another-region-by-using-the-azure-portal"></a>Een Azure Database for MariaDB-server naar een andere regio verplaatsen met behulp van de Azure Portal
 
@@ -33,16 +33,16 @@ U kunt een Azure Database for MariaDB [Kruis regio lezen replica](concepts-read-
 
 Als u in de doel regio een cross-Region replica server wilt maken met behulp van de Azure Portal, gebruikt u de volgende stappen:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 1. Selecteer de bestaande Azure Database for MariaDB-server die u wilt gebruiken als de bron server. Met deze actie wordt de pagina **overzicht** geopend.
 1. Selecteer **replicatie** in het menu onder **instellingen**.
 1. Selecteer **replica toevoegen**.
 1. Voer een naam in voor de replica server.
-1. Selecteer de locatie voor de replica server. De standaard locatie is dezelfde als die van de hoofd server. Controleer of u de doel locatie hebt geselecteerd waarop u de replica wilt implementeren.
+1. Selecteer de locatie voor de replica server. De standaard locatie is dezelfde als die van de bron server. Controleer of u de doel locatie hebt geselecteerd waarop u de replica wilt implementeren.
 1. Selecteer **OK** om te bevestigen dat u de replica wilt maken. Tijdens het maken van de replica worden gegevens van de bron server naar de replica gekopieerd. Het maken van een tijd kan een paar minuten of meer duren, in verhouding tot de grootte van de bron server.
 
 >[!NOTE]
-> Wanneer u een replica maakt, neemt deze geen over van de VNet-service-eind punten van de hoofd server. Deze regels moeten onafhankelijk worden ingesteld voor de replica.
+> Wanneer u een replica maakt, neemt deze de VNet-service-eind punten van de bron server niet over. Deze regels moeten onafhankelijk worden ingesteld voor de replica.
 
 ## <a name="move"></a>Verplaatsen
 

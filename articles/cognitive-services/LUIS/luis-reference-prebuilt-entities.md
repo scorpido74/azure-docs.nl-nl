@@ -3,20 +3,18 @@ title: Alle vooraf gemaakte entiteiten-LUIS
 titleSuffix: Azure Cognitive Services
 description: Dit artikel bevat een lijst van de vooraf gemaakte entiteiten die zijn opgenomen in Language Understanding (LUIS).
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 07/20/2020
-ms.author: diberry
-ms.openlocfilehash: 7ec9cd8aade1edb7d2df2bab5cec8de445af7e44
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 7a4654b8f389ad18010bb4ad211103f2816a18ee
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337973"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541999"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>Entiteiten per cultuur in uw LUIS-model
 
@@ -30,14 +28,14 @@ Het gedrag van vooraf gemaakte entiteiten kan niet worden gewijzigd, maar u kunt
 ## <a name="availability"></a>Beschikbaarheid
 Tenzij anders vermeld, zijn vooraf gebouwde entiteiten beschikbaar in alle land instellingen van de LUIS-toepassing (cultures). In de volgende tabel ziet u de vooraf gemaakte entiteiten die voor elke cultuur worden ondersteund.
 
-|Cultuur|Subcultuur|Opmerkingen|
+|Cultuur|Subcultuur|Notities|
 |--|--|--|
 |Chinees|[zh-CN](#chinese-entity-support)||
 |Nederlands|[nl-NL](#dutch-entity-support)||
 |Engels|[en-US (Amerikaans)](#english-american-entity-support)||
 |Frans|[fr-ca (Canada)](#french-canadian-entity-support), [fr-fr (Frank rijk)](#french-france-entity-support), ||
 |Duits|[de-DE](#german-entity-support)||
-|Italiaans|[it-IT](#italian-entity-support)||
+|Italiaans|[IT-IT](#italian-entity-support)||
 |Japans|[ja-JP](#japanese-entity-support)||
 |Koreaans|[ko-KR](#korean-entity-support)||
 |Portugees|[pt-BR (Brazilië)](#portuguese-brazil-entity-support)||
@@ -56,13 +54,13 @@ De volgende entiteiten worden ondersteund:
 | --------------- | :---: |
 [Leeftijd](luis-reference-prebuilt-age.md):<br>jaar<br>maand<br>gevormd<br>day   |    V2, V3   |
 [Valuta (Money)](luis-reference-prebuilt-currency.md):<br>Gulden<br>Fractionele eenheid (ex: afronding)  |    V2, V3   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>tijd<br>time Range   |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>datum<br>daterange<br>tijd<br>time Range   |    V2, V3   |
 [Dimensie](luis-reference-prebuilt-dimension.md):<br>volume<br>gebied<br>gewicht<br>informatie (bijvoorbeeld: bit/byte)<br>lengte (bijvoorbeeld: meter)<br>snelheid (bijvoorbeeld: mijl per uur)  |    V2, V3   |
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [Woordgroep](luis-reference-prebuilt-keyphrase.md)   |    -   |
 [Number](luis-reference-prebuilt-number.md)   |    V2, V3   |
-[Rang telwoord](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
+[Rangtelwoord](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Percentage](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
 [Persoonnaam](luis-reference-prebuilt-person.md)   |    V2, V3   |
@@ -84,7 +82,7 @@ De volgende entiteiten worden ondersteund:
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [Woordgroep](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
 [Number](luis-reference-prebuilt-number.md)   |    V2, V3   |
-[Rang telwoord](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
+[Rangtelwoord](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Percentage](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
 [Persoonnaam](luis-reference-prebuilt-person.md)   |    -   |
@@ -100,13 +98,13 @@ De volgende entiteiten worden ondersteund:
 | --------------- | :---: |
 [Leeftijd](luis-reference-prebuilt-age.md):<br>jaar<br>maand<br>gevormd<br>day   |    V2, V3   |
 [Valuta (Money)](luis-reference-prebuilt-currency.md):<br>Gulden<br>Fractionele eenheid (ex: afronding)  |    V2, V3   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>tijd<br>time Range   |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>datum<br>daterange<br>tijd<br>time Range   |    V2, V3   |
 [Dimensie](luis-reference-prebuilt-dimension.md):<br>volume<br>gebied<br>gewicht<br>informatie (bijvoorbeeld: bit/byte)<br>lengte (bijvoorbeeld: meter)<br>snelheid (bijvoorbeeld: mijl per uur)  |    V2, V3   |
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    V2, V3   |
 [Woordgroep](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
 [Number](luis-reference-prebuilt-number.md)   |    V2, V3   |
-[Rang telwoord](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
+[Rangtelwoord](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    V2, V3   |
 [Percentage](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
 [Persoonnaam](luis-reference-prebuilt-person.md)   |    V2, V3   |
@@ -122,13 +120,13 @@ De volgende entiteiten worden ondersteund:
 | --------------- | :---: |
 [Leeftijd](luis-reference-prebuilt-age.md):<br>jaar<br>maand<br>gevormd<br>day   |    V2, V3   |
 [Valuta (Money)](luis-reference-prebuilt-currency.md):<br>Gulden<br>Fractionele eenheid (ex: afronding)  |    V2, V3   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>tijd<br>time Range   |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>datum<br>daterange<br>tijd<br>time Range   |    V2, V3   |
 [Dimensie](luis-reference-prebuilt-dimension.md):<br>volume<br>gebied<br>gewicht<br>informatie (bijvoorbeeld: bit/byte)<br>lengte (bijvoorbeeld: meter)<br>snelheid (bijvoorbeeld: mijl per uur)  |    V2, V3   |
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [Woordgroep](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
 [Number](luis-reference-prebuilt-number.md)   |    V2, V3   |
-[Rang telwoord](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
+[Rangtelwoord](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Percentage](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
 [Persoonnaam](luis-reference-prebuilt-person.md)   |   -   |
@@ -144,13 +142,13 @@ De volgende entiteiten worden ondersteund:
 | --------------- | :---: |
 [Leeftijd](luis-reference-prebuilt-age.md):<br>jaar<br>maand<br>gevormd<br>day   |    V2, V3   |
 [Valuta (Money)](luis-reference-prebuilt-currency.md):<br>Gulden<br>Fractionele eenheid (ex: afronding)  |    V2, V3   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>tijd<br>time Range   |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>datum<br>daterange<br>tijd<br>time Range   |    V2, V3   |
 [Dimensie](luis-reference-prebuilt-dimension.md):<br>volume<br>gebied<br>gewicht<br>informatie (bijvoorbeeld: bit/byte)<br>lengte (bijvoorbeeld: meter)<br>snelheid (bijvoorbeeld: mijl per uur)  |    V2, V3   |
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [Woordgroep](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
 [Number](luis-reference-prebuilt-number.md)   |    V2, V3   |
-[Rang telwoord](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
+[Rangtelwoord](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Percentage](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
 [Persoonnaam](luis-reference-prebuilt-person.md)   |    -   |
@@ -166,13 +164,13 @@ De volgende entiteiten worden ondersteund:
 | -------------- | :---: |
 [Leeftijd](luis-reference-prebuilt-age.md):<br>jaar<br>maand<br>gevormd<br>day   |    V2, V3   |
 [Valuta (Money)](luis-reference-prebuilt-currency.md):<br>Gulden<br>Fractionele eenheid (ex: afronding)  |    V2, V3   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>tijd<br>time Range   |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>datum<br>daterange<br>tijd<br>time Range   |    V2, V3   |
 [Dimensie](luis-reference-prebuilt-dimension.md):<br>volume<br>gebied<br>gewicht<br>informatie (bijvoorbeeld: bit/byte)<br>lengte (bijvoorbeeld: meter)<br>snelheid (bijvoorbeeld: mijl per uur)  |    V2, V3   |
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [Woordgroep](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
 [Number](luis-reference-prebuilt-number.md)   |    V2, V3   |
-[Rang telwoord](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
+[Rangtelwoord](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Percentage](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
 [Persoonnaam](luis-reference-prebuilt-person.md)   |    -   |
@@ -196,7 +194,7 @@ De volgende entiteiten worden ondersteund:
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [Woordgroep](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
 [Number](luis-reference-prebuilt-number.md)   |    V2, V3   |
-[Rang telwoord](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
+[Rangtelwoord](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Percentage](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
 [Persoonnaam](luis-reference-prebuilt-person.md)   |    -   |
@@ -218,7 +216,7 @@ De volgende entiteiten worden ondersteund:
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [Woordgroep](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
 [Number](luis-reference-prebuilt-number.md)   |    V2,-   |
-[Rang telwoord](luis-reference-prebuilt-ordinal.md)   |    V2,-   |
+[Rangtelwoord](luis-reference-prebuilt-ordinal.md)   |    V2,-   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Percentage](luis-reference-prebuilt-percentage.md)   |    V2,-   |
 [Persoonnaam](luis-reference-prebuilt-person.md)   |    -   |
@@ -240,7 +238,7 @@ De volgende entiteiten worden ondersteund:
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [Woordgroep](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
 [Number](luis-reference-prebuilt-number.md)   |    -   |
-[Rang telwoord](luis-reference-prebuilt-ordinal.md)   |    -   |
+[Rangtelwoord](luis-reference-prebuilt-ordinal.md)   |    -   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Percentage](luis-reference-prebuilt-percentage.md)   |    -   |
 [Persoonnaam](luis-reference-prebuilt-person.md)   |    -   |
@@ -256,13 +254,13 @@ De volgende entiteiten worden ondersteund:
 | --------------- | :---: |
 [Leeftijd](luis-reference-prebuilt-age.md):<br>jaar<br>maand<br>gevormd<br>day   |    V2, V3   |
 [Valuta (Money)](luis-reference-prebuilt-currency.md):<br>Gulden<br>Fractionele eenheid (ex: afronding)  |    V2, V3   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>tijd<br>time Range   |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>datum<br>daterange<br>tijd<br>time Range   |    V2, V3   |
 [Dimensie](luis-reference-prebuilt-dimension.md):<br>volume<br>gebied<br>gewicht<br>informatie (bijvoorbeeld: bit/byte)<br>lengte (bijvoorbeeld: meter)<br>snelheid (bijvoorbeeld: mijl per uur)  |    V2, V3   |
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [Woordgroep](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
 [Number](luis-reference-prebuilt-number.md)   |    V2, V3   |
-[Rang telwoord](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
+[Rangtelwoord](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Percentage](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
 [Persoonnaam](luis-reference-prebuilt-person.md)   |    -   |
@@ -278,13 +276,13 @@ De volgende entiteiten worden ondersteund:
 | --------------- | :---: |
 [Leeftijd](luis-reference-prebuilt-age.md):<br>jaar<br>maand<br>gevormd<br>day   |    V2, V3   |
 [Valuta (Money)](luis-reference-prebuilt-currency.md):<br>Gulden<br>Fractionele eenheid (ex: afronding)  |    V2, V3   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>tijd<br>time Range   |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>datum<br>daterange<br>tijd<br>time Range   |    V2, V3   |
 [Dimensie](luis-reference-prebuilt-dimension.md):<br>volume<br>gebied<br>gewicht<br>informatie (bijvoorbeeld: bit/byte)<br>lengte (bijvoorbeeld: meter)<br>snelheid (bijvoorbeeld: mijl per uur)  |    V2, V3   |
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [Woordgroep](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
 [Number](luis-reference-prebuilt-number.md)   |    V2, V3   |
-[Rang telwoord](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
+[Rangtelwoord](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Percentage](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
 [Persoonnaam](luis-reference-prebuilt-person.md)   |    -   |
@@ -300,13 +298,13 @@ De volgende entiteiten worden ondersteund:
 | --------------- | :---: |
 [Leeftijd](luis-reference-prebuilt-age.md):<br>jaar<br>maand<br>gevormd<br>day   |    -   |
 [Valuta (Money)](luis-reference-prebuilt-currency.md):<br>Gulden<br>Fractionele eenheid (ex: afronding)  |    -   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>tijd<br>time Range   |    -   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>datum<br>daterange<br>tijd<br>time Range   |    -   |
 [Dimensie](luis-reference-prebuilt-dimension.md):<br>volume<br>gebied<br>gewicht<br>informatie (bijvoorbeeld: bit/byte)<br>lengte (bijvoorbeeld: meter)<br>snelheid (bijvoorbeeld: mijl per uur)  |    -   |
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [Woordgroep](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
 [Number](luis-reference-prebuilt-number.md)   |    V2, V3   |
-[Rang telwoord](luis-reference-prebuilt-ordinal.md)   |    -   |
+[Rangtelwoord](luis-reference-prebuilt-ordinal.md)   |    -   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Percentage](luis-reference-prebuilt-percentage.md)   |    -   |
 [Persoonnaam](luis-reference-prebuilt-person.md)   |    -   |

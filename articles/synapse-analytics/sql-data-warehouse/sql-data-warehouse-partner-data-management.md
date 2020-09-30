@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6214174cbec0b784ec0167c59f952478b2a14625
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: 8f2e41779e72d565e24b67fd8b18afd87a112e62
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89425654"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542089"
 ---
 # <a name="azure-synapse-analytics-data-management-partners"></a>Azure Synapse Analytics-gegevens beheer partners
 
@@ -25,6 +25,7 @@ In dit artikel worden micro soft-partner bedrijven beschreven met gegevens behee
 ## <a name="data-management-partners"></a>Gegevens beheer partners
 | Partner | Beschrijving | Website/product koppeling |
 | ------- | ----------- | -------------------- |
+| ![Aginity](./media/sql-data-warehouse-partner-data-management/aginity-logo.png) |**Aginity**<br>Aginity is een hulp programma voor analyse ontwikkeling waarmee de volledige kracht van het Synapse-platform van micro soft in de handen van analisten en technici. Dankzij de uitgebreide en intuïtieve SQL-ontwikkel omgeving kunnen team leden verbinding maken met meer dan tien toonaangevende analyse platforms, gegevens opnemen in verschillende indelingen en snel complexe bedrijfs berekeningen bouwen om de resultaten te leveren in Business Intelligence en Machine Learning use cases. De volledige toepassing is gebouwd rond een centrale catalogus, waardoor samen werking in het analyse team een werkelijkheid wordt gemaakt, en de geavanceerde beheer mogelijkheden en de verfijnde beveiliging voor een koud belang. |[Product pagina](https://www.aginity.com/databases/microsoft/)<br> |
 | ![Alatie](./media/sql-data-warehouse-partner-data-management/alation-logo.png) |**Alatie**<br>De gegevens catalogus van de alatie verbetert de productiviteit, verhoogt de nauw keurigheid en biedt de vertrouw bare gegevensgestuurde besluit vorming voor analisten. Met de Data Catalog van de toewijzing kunnen iedereen binnen uw organisatie gegevens vinden, begrijpen en beheren. |[Product pagina](https://www.alation.com/product/data-catalog/)<br> |
 | ![Coffing-gegevens opslag](./media/sql-data-warehouse-partner-data-management/coffing-data-warehousing-logo.png) |**Coffing-gegevens opslag**<br>Coffing data warehousing biedt Nexus Chameleon, een hulp programma met tien jaar aan ontwerp dat speciaal is gericht op het opvragen van systemen. Nexus is beschikbaar als een hulp programma voor het uitvoeren van een query voor een Azure Synapse SQL-groep. Gebruik Nexus om in-House-en Cloud computers op te vragen en gegevens op verschillende platformen te koppelen. Punt-klikken-rapport! |[Product pagina](https://www.coffingdw.com/software/nexus/)<br> |
 | ![Inbrein](./media/sql-data-warehouse-partner-data-management/inbrein-logo.png) |**Inbrein MicroERD**<br>Inbrein MicroERD biedt de hulp middelen die u nodig hebt om een nauw keurig gegevens model te maken, gegevens redundantie te verminderen, productiviteit te verbeteren en normen te observeren. Door gebruik te maken van de gebruikers interface, die is ontwikkeld op basis van uitgebreide gebruikers ervaring, kan een modelleerder gemakkelijk en handig werken aan DB-modellen. U kunt voortdurend gebruikmaken van nieuwe en verbeterde functies van MicroERD via functionele verbeteringen en updates van de functie. |[Product pagina](http://microerd.com/)<br> |

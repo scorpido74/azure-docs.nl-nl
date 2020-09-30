@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ade326b7dda19478398de4ec3ab2be8996d98535
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 7f0e994cd41fc55824cf347a51ccfed25589a310
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923208"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539534"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-5"></a>Een upgrade uitvoeren naar Azure Search .NET SDK versie 5
 
@@ -35,7 +35,7 @@ Versie 5 van de Azure Search .NET SDK bevat enkele wijzigingen ten opzichte van 
 Versie 5 van de Azure Search .NET SDK streeft naar de meest recente, algemeen beschik bare versie van de Azure Search REST API, met name 2017-11-11. Dit maakt het mogelijk om nieuwe functies van Azure Search van een .NET-toepassing te gebruiken, met inbegrip van het volgende:
 
 * [Synoniemen](search-synonyms.md).
-* U kunt nu programmatisch toegang krijgen tot waarschuwingen in de indexerings geschiedenis (Zie de `Warning` eigenschap van `IndexerExecutionResult` in de [.net-referentie](/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet) voor meer informatie).
+* U kunt nu programmatisch toegang krijgen tot waarschuwingen in de indexerings geschiedenis (Zie de `Warning` eigenschap van `IndexerExecutionResult` in de [.net-referentie](/dotnet/api/microsoft.azure.search.models.indexerexecutionresult) voor meer informatie).
 * Ondersteuning voor .NET Core 2.
 * De nieuwe pakket structuur biedt ondersteuning voor het gebruik van alleen de onderdelen van de SDK die u nodig hebt (Zie voor meer informatie [wijzigingen in versie 5 afbreken](#ListOfChanges) ).
 

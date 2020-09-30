@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d83c4ffe4e60ef2896e16b97e1ec34d71a022b9b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f953d87c53bc13af623c2bfd49ceb953280f8f2a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91279005"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540707"
 ---
-# <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines DBMS-implementatie voor SAP-workload
+# <a name="azure-virtual-machines-oracle-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines Oracle DBMS-implementatie voor SAP-workload
 
 [767598]:https://launchpad.support.sap.com/#/notes/767598
 [773830]:https://launchpad.support.sap.com/#/notes/773830
@@ -409,7 +409,7 @@ Als er meer IOPS vereist zijn in het geval van Azure Premium-opslag, raden we u 
 Voor virtuele machines uit de M-serie van Azure kan de latentie die in de online logboeken voor opnieuw uitvoeren wordt geschreven, worden verminderd met factoren in vergelijking met Azure Premium Storage. Schakel Azure Write Accelerator in voor de schijven (Vhd's) op basis van Azure Premium Storage die worden gebruikt voor online logboek bestanden voor opnieuw uitvoeren. Zie [Write Accelerator](../../how-to-enable-write-accelerator.md)voor meer informatie. Of gebruik Azure Ultra disk voor het online logboek volume voor opnieuw uitvoeren.
 
 
-### <a name="backuprestore"></a>Back-up maken/herstellen
+### <a name="backuprestore"></a>Back-up/herstel
 Voor de functionaliteit voor back-up/herstel worden de SAP BR *-Hulpprogram Ma's voor Oracle ondersteund op dezelfde manier als bij de standaard Windows Server-besturings systemen. Oracle Recovery Manager (RMAN) wordt ook ondersteund voor back-ups naar schijf en terugzetten van schijf.
 
 U kunt Azure Backup ook gebruiken om een toepassings consistente back-up van de virtuele machine uit te voeren. In het artikel wordt [uw VM-back-upinfrastructuur gepland in azure](../../../backup/backup-azure-vms-introduction.md) wordt uitgelegd hoe Azure backup de Windows VSS-functionaliteit gebruikt voor het uitvoeren van toepassings consistente back-ups. De Oracle-DBMS-releases die worden ondersteund in azure door SAP, kunnen gebruikmaken van de VSS-functionaliteit voor back-ups. Zie de [basis concepten van de Oracle-documentatie van database back-ups en-herstel met VSS](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/ntqrf/basic-concepts-of-database-backup-and-recovery-with-vss.html#GUID-C085101B-237F-4773-A2BF-1C8FD040C701)voor meer informatie.
@@ -505,7 +505,7 @@ Als er meer IOPS vereist zijn bij het gebruik van Azure Premium Storage, raden w
 Voor virtuele machines uit de M-serie van Azure, wanneer u Azure Write Accelerator gebruikt, kan de latentie die in de online logboeken voor opnieuw uitvoeren wordt geschreven, worden verminderd met de factoren die Azure Premium Storage gebruiken. Schakel Azure Write Accelerator in voor de schijven (Vhd's) op basis van Azure Premium Storage die worden gebruikt voor online logboek bestanden voor opnieuw uitvoeren. Zie [Write Accelerator](../../how-to-enable-write-accelerator.md)voor meer informatie. Of gebruik Azure Ultra disk voor het online logboek volume voor opnieuw uitvoeren.
 
 
-### <a name="backuprestore"></a>Back-up maken/herstellen
+### <a name="backuprestore"></a>Back-up/herstel
 Voor de functionaliteit voor back-up/herstel worden de SAP BR *-Hulpprogram Ma's voor Oracle ondersteund op dezelfde manier als op bare metal-en Hyper-V. Oracle Recovery Manager (RMAN) wordt ook ondersteund voor back-ups naar schijf en terugzetten van schijf.
 
 Zie een [back-up maken van een Oracle database 12c-Data Base op een virtuele machine van Azure Linux](../oracle/oracle-backup-recovery.md)voor meer informatie over hoe u Azure backup en herstel Services kunt gebruiken voor het maken van back-ups van Oracle-data bases en het herstellen ervan.

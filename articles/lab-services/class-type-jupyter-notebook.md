@@ -3,14 +3,14 @@ title: Stel een lab in om data Science te leren met python-en Jupyter-notebooks 
 description: Meer informatie over het instellen van een lab om data Science te leren werken met python-en Jupyter-notebooks.
 author: emaher
 ms.topic: article
-ms.date: 06/26/2020
+ms.date: 09/29/2020
 ms.author: enewman
-ms.openlocfilehash: 25fd090f76c0aa11617b34503ea18d1b45a0e1ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4bbf4c9d4bc83b48b8ecc62946fa9bffa8af50bc
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445012"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533517"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>Stel een lab in om data Science te leren met python-en Jupyter-notebooks
 In dit artikel wordt beschreven hoe u een virtuele machine (VM) in Lab-Services instelt met de hulpprogram ma's die nodig zijn om studenten te leren hoe ze [Jupyter-notebooks](http://jupyter-notebook.readthedocs.io/)gebruiken en hoe studenten verbinding kunnen maken met hun notebooks op hun virtuele machines (vm's).
@@ -20,7 +20,7 @@ Jupyter-notebooks is een open-source project waarmee u eenvoudig uitgebreide tek
 ## <a name="set-up-the-lab"></a>Het lab instellen
 
 ### <a name="lab-configuration"></a>Lab-configuratie
-Als u dit Lab wilt instellen, moet u toegang hebben tot een Azure-abonnement en een Lab-account. Neem contact op met de beheerder van uw organisatie om te controleren of u toegang kunt krijgen tot een bestaand Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+Als u dit Lab wilt instellen, moet u toegang hebben tot een Azure-abonnement en een Lab-account. Neem contact op met de beheerder van uw organisatie om te controleren of u toegang kunt krijgen tot een bestaand Azure-abonnement. Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 Zodra u een Azure-abonnement hebt, maakt u een nieuw Lab-account in Azure Lab Services door de volgende instructies in de zelf studie te volgen: [een Lab-account instellen](tutorial-setup-lab-account.md). U kunt ook een bestaand Lab-account gebruiken.
 
@@ -112,7 +112,7 @@ De **Data Science virtual machine-Ubuntu-** installatie kopie is al ingericht me
 4. Zodra u deze informatie hebt, opent u de X2Go-client app en maakt u een nieuwe sessie. 
 5.  Vul de volgende waarden in het deel venster **sessie voorkeuren** in:
     - **Sessie naam**: het kan alles wat u wilt, maar u kunt het beste de naam van uw test-VM gebruiken.
-     - **Host**:`ml-lab-00000000-0000-0000-0000-000000000000.eastus2.cloudapp.azure.com`
+     - **Host**: `ml-lab-00000000-0000-0000-0000-000000000000.eastus2.cloudapp.azure.com`
      - **Aanmelden**: student
      - **SSH-poort**: 12345
      - **Sessie type**: XFce

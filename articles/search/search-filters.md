@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4d1e120073e5bf4306c89628fc4e2e9c9f7ed2cf
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 6c46dfb3f36c3ef7f67ce2f3b52c2ffe4c805a61
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89002416"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534791"
 ---
 # <a name="filters-in-azure-cognitive-search"></a>Filters in azure Cognitive Search 
 
@@ -138,7 +138,7 @@ Volg deze artikelen voor uitgebreide informatie over specifieke gebruiks voorbee
 
 In de REST API is filteren standaard *ingeschakeld* voor eenvoudige velden. Filter bare velden verg Roten index grootte; Zorg ervoor dat `"filterable": false` u velden instelt die u niet wilt gebruiken in een filter. Zie [Create Index](/rest/api/searchservice/create-index)voor meer informatie over de instellingen voor veld definities.
 
-In de .NET SDK is het filterable standaard *uitgeschakeld* . U kunt een veld filterbaar maken door de [eigenschap IsFilterable](/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet) van het bijbehorende [veld](/dotnet/api/microsoft.azure.search.models.field?view=azure-dotnet) object in te stellen op `true` . U kunt dit ook declaratief doen met behulp van het [kenmerk IsFilterable](/dotnet/api/microsoft.azure.search.isfilterableattribute). In het onderstaande voor beeld is het kenmerk ingesteld op de `BaseRate` eigenschap van een model klasse die is toegewezen aan de index definitie.
+In de .NET SDK is het filterable standaard *uitgeschakeld* . U kunt een veld filterbaar maken door de [eigenschap IsFilterable](/dotnet/api/microsoft.azure.search.models.field.isfilterable) van het bijbehorende [veld](/dotnet/api/microsoft.azure.search.models.field) object in te stellen op `true` . U kunt dit ook declaratief doen met behulp van het [kenmerk IsFilterable](/dotnet/api/microsoft.azure.search.isfilterableattribute). In het onderstaande voor beeld is het kenmerk ingesteld op de `BaseRate` eigenschap van een model klasse die is toegewezen aan de index definitie.
 
 ```csharp
     [IsFilterable, IsSortable, IsFacetable]

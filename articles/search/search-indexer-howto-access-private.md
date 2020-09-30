@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/07/2020
-ms.openlocfilehash: e9944e95dd452cd00e63280ad8002141591f521e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 94763cee852893057348f8eea1fa74fa742f62a1
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90971426"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534723"
 ---
 # <a name="accessing-secure-resources-via-private-endpoints"></a>Toegang tot beveiligde resources via persoonlijke eind punten
 
@@ -45,7 +45,7 @@ De lijst met Azure-resources waarvoor uitgaande particuliere endpoint-verbinding
 Voor de doel einden van deze hand leiding worden een combi natie van [ARMClient](https://github.com/projectkudu/ARMClient) en [postman](https://www.postman.com/) gebruikt om de rest API-aanroepen te demonstreren.
 
 > [!NOTE]
-> In deze hand leiding wordt ervan uitgegaan dat de naam van de zoek service __Contoso-Search__ is die bestaat in de resource groep __Contoso__ van een abonnement met abonnements-id __00000000-0000-0000-0000-000000000000__. De resource-id van deze zoek service wordt `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search`
+> In deze hand leiding wordt ervan uitgegaan dat de naam van de zoek service __Contoso-Search__ is die bestaat in de resource groep __Contoso__ van een abonnement met abonnements-id __00000000-0000-0000-0000-000000000000__. De resource-ID van deze zoek service wordt `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Search/searchServices/contoso-search`
 
 De rest van de hand leiding laat zien hoe de service __Contoso-Search__ kan worden geconfigureerd zodat de bijbehorende Indexeer functies toegang hebben tot gegevens uit het beveiligde-opslag account `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contoso/providers/Microsoft.Storage/storageAccounts/contoso-storage`
 

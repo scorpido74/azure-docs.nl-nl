@@ -12,12 +12,12 @@ ms.date: 04/14/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 864225238c10ab2fda96e95448790201cc8a16ae
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: a4dcb6774990c03ce3d55fb6c519b0600a1086f9
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422994"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536882"
 ---
 # <a name="use-your-phone-number-as-a-user-name-preview"></a>Gebruik uw telefoon nummer als een gebruikers naam (preview-versie)
 
@@ -52,7 +52,7 @@ Als u al een telefoon nummer met een organisatie gebruikt en u uw telefoon numme
 
 1. Wanneer SMS-aanmelding beschikbaar is, wordt er een banner weer gegeven waarin u wordt gevraagd of u het telefoon nummer voor SMS-aanmelding wilt inschakelen:
 
-    [![Banner om SMS-aanmelding in te scha kelen voor een telefoon nummer.](media/sms-sign-in-explainer/sms-sign-in-banner.png)](media/sms-sign-in-explainer/sms-sign-in-banner.png#lightbox)
+    :::image type="content" source="media/sms-sign-in-explainer/sms-sign-in-banner.png" alt-text="Scherm opname van de banner om SMS-aanmelding in te scha kelen voor een telefoon nummer waarbij de actie inschakelen is geselecteerd." lightbox="media/sms-sign-in-explainer/sms-sign-in-banner.png":::
 
 1. Er wordt ook een knop **inschakelen** weer gegeven als u het caret selecteert op de tegel telefoon methode:
 

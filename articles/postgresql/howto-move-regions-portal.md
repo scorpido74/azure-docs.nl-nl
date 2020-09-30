@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/29/2020
-ms.openlocfilehash: 00cd291824eabfe8e1b43f35bc3618bfd793077d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c7c095aa710d97292afc7d2d8f633058c21fa4d0
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85568509"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539228"
 ---
 # <a name="move-an-azure-database-for-azure-database-for-postgresql---single-server-to-another-region-by-using-the-azure-portal"></a>Een Azure-Data Base voor Azure Database for PostgreSQL-één server naar een andere regio verplaatsen met behulp van de Azure Portal
 
@@ -33,7 +33,7 @@ U kunt een Azure Database for PostgreSQL [Kruis regio lezen replica](concepts-re
 
 Gebruik de volgende stappen om de bron server voor te bereiden voor replicatie met behulp van de Azure Portal: 
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 1. Selecteer de bestaande Azure Database for PostgreSQL-server die u wilt gebruiken als de bron server. Met deze actie wordt de pagina **overzicht** geopend.
 1. Selecteer in het menu van de server de optie **replicatie**. Als ondersteuning voor Azure-replicatie is ingesteld op ten minste een **replica**, kunt u lees replica's maken. 
 1. Als Azure-replicatie ondersteuning niet is ingesteld op ten minste een **replica**, stelt u deze in. Selecteer **Opslaan**.
@@ -47,11 +47,11 @@ Als u in de doel regio een cross-Region replica server wilt maken met behulp van
 1. Selecteer **replicatie** in het menu onder **instellingen**.
 1. Selecteer **replica toevoegen**.
 1. Voer een naam in voor de replica server.
-1. Selecteer de locatie voor de replica server. De standaard locatie is dezelfde als die van de hoofd server. Controleer of u de doel locatie hebt geselecteerd waarop u de replica wilt implementeren.
+1. Selecteer de locatie voor de replica server. De standaard locatie is dezelfde als die van de primaire server. Controleer of u de doel locatie hebt geselecteerd waarop u de replica wilt implementeren.
 1. Selecteer **OK** om te bevestigen dat u de replica wilt maken. Tijdens het maken van de replica worden gegevens van de bron server naar de replica gekopieerd. Het maken van een tijd kan een paar minuten of meer duren, in verhouding tot de grootte van de bron server.
 
 >[!NOTE]
-> Wanneer u een replica maakt, neemt deze de firewall regels en de VNet-service-eind punten van de hoofd server niet over. Deze regels moeten onafhankelijk worden ingesteld voor de replica.
+> Wanneer u een replica maakt, neemt deze de firewall regels en de VNet-service-eind punten van de primaire server niet over. Deze regels moeten onafhankelijk worden ingesteld voor de replica.
 
 ## <a name="move"></a>Verplaatsen
 
