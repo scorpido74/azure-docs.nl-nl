@@ -8,12 +8,12 @@ ms.date: 03/26/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: dd2b9bc462a9d4bc11f49a7e3294e52f88a926fb
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7a9f4f165f457dfb902a4c0ecce3f4a9b13e2ec8
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511837"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611534"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>Meer informatie over het implementeren van modules en het vaststellen van routes naar IoT Edge
 
@@ -32,13 +32,13 @@ Alle IoT Edge apparaten moeten worden geconfigureerd met een implementatie manif
 
 In de Azure IoT Edge zelf studies maakt u een implementatie manifest door een wizard in de Azure IoT Edge portal te door lopen. U kunt ook een implementatie manifest programmatisch Toep assen met behulp van REST of de IoT Hub Service-SDK. Zie [IOT Edge-implementaties begrijpen](module-deployment-monitoring.md)voor meer informatie.
 
-## <a name="create-a-deployment-manifest"></a>Een implementatie manifest maken
+## <a name="create-a-deployment-manifest"></a>Een implementatiemanifest maken
 
 Op hoog niveau is een implementatie manifest een lijst met module apparaatdubbels die zijn geconfigureerd met de gewenste eigenschappen. Een implementatie manifest vertelt een IoT Edge apparaat (of een groep apparaten) welke modules moeten worden geïnstalleerd en hoe ze moeten worden geconfigureerd. Implementatie manifesten bevatten de *gewenste eigenschappen* voor elke module dubbele. IoT Edge-apparaten melden de *gerapporteerde eigenschappen* voor elke module terug.
 
 In elk implementatie manifest zijn twee modules vereist: `$edgeAgent` , en `$edgeHub` . Deze modules maken deel uit van de IoT Edge runtime waarmee het IoT Edge apparaat en de modules worden beheerd die erop worden uitgevoerd. Zie voor meer informatie over deze modules [inzicht in de runtime van IOT Edge en de bijbehorende architectuur](iot-edge-runtime.md).
 
-Naast de twee runtime modules kunt u Maxi maal 30 modules van uw eigen toevoegen om te worden uitgevoerd op een IoT Edge apparaat.
+Naast de twee runtime modules kunt u Maxi maal 50 modules van uw eigen toepassing toevoegen voor uitvoering op een IoT Edge apparaat.
 
 Een implementatie manifest dat alleen de IoT Edge runtime (edgeAgent en edgeHub) bevat, is geldig.
 
@@ -151,7 +151,7 @@ De eigenschap source kan een van de volgende waarden hebben:
 | `/messages/modules/<moduleId>/outputs/*` | Een apparaat-naar-Cloud-bericht dat door een bepaalde module wordt verzonden via een bepaalde uitvoer |
 | `/messages/modules/<moduleId>/outputs/<output>` | Een apparaat-naar-Cloud-bericht dat door een specifieke module wordt verzonden via een specifieke uitvoer |
 
-### <a name="condition"></a>Voorwaarde
+### <a name="condition"></a>Conditie
 
 De voor waarde is optioneel in een route declaratie. Als u alle berichten van de bron wilt door geven aan de sink, laat u de **where** -component gewoon weg. U kunt ook de [IOT hub query taal](../iot-hub/iot-hub-devguide-routing-query-syntax.md) gebruiken om te filteren op bepaalde berichten of bericht typen die voldoen aan de voor waarde. IoT Edge routes bieden geen ondersteuning voor het filteren van berichten op basis van dubbele Tags of eigenschappen.
 
@@ -159,9 +159,9 @@ De berichten die tussen modules in IoT Edge worden door gegeven, hebben dezelfde
 
 U kunt query's maken rond een van de drie para meters met de volgende syntaxis:
 
-* Systeem eigenschappen: `$<propertyName>` of`{$<propertyName>}`
-* Toepassings eigenschappen:`<propertyName>`
-* Eigenschappen van hoofd tekst:`$body.<propertyName>`
+* Systeem eigenschappen: `$<propertyName>` of `{$<propertyName>}`
+* Toepassings eigenschappen: `<propertyName>`
+* Eigenschappen van hoofd tekst: `$body.<propertyName>`
 
 Zie voor beelden van het maken van query's voor bericht eigenschappen [apparaat-naar-Cloud-bericht routes query-expressies](../iot-hub/iot-hub-devguide-routing-query-syntax.md).
 

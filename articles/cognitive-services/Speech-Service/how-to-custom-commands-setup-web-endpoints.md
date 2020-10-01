@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 0197bb81fdba8bab20742d95aebaa2028bb90c18
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
-ms.translationtype: HT
+ms.openlocfilehash: 1b7b5e209329bd5dc4c95f81f61fecf48fb74e40
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027678"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362107"
 ---
 # <a name="set-up-web-endpoints"></a>Webeindpunten instellen
 
@@ -29,7 +29,7 @@ In dit artikel leert u hoe u webeindpunten instelt in de toepassing aangepaste o
 ## <a name="prerequisites"></a>Vereisten
 > [!div class = "checklist"]
 > * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
-> * Een Azure-abonnementssleutel voor de Spraak-service: [haal gratis een sleutel op](get-started.md) of maak er een met de [Azure-portal](https://portal.azure.com)
+> * Een Azure-abonnementssleutel voor de Spraak-service: [haal gratis een sleutel op](overview.md#try-the-speech-service-for-free) of maak er een met de [Azure-portal](https://portal.azure.com)
 > * Een eerder [gemaakte aangepaste opdrachten-app](quickstart-custom-commands-application.md)
 > * Een client-app die de Spraak-SDK ondersteunt: [Instructies: activiteit naar clienttoepassing beëindigen](./how-to-custom-commands-setup-speech-sdk.md)
 

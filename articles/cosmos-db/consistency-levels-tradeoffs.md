@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 3c82edd73921e11cd2f43a0d609624267af81575
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: b96902603deca4b7a184659e6274d65f02ac712d
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91570070"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613523"
 ---
 # <a name="latency-availability-and-performance-tradeoffs-with-different-azure-cosmos-db-consistency-levels"></a>Afwegingen van latentie, Beschik baarheid en prestaties met verschillende Azure Cosmos DB consistentie niveaus
 
@@ -65,12 +65,12 @@ In de onderstaande tabel wordt de relatie tussen consistentie model en gegevens 
 
 |**Regio (s)**|**Replicatie modus**|**Consistentieniveau**|**RPO**|**RTO**|
 |---------|---------|---------|---------|---------|
-|1|Eén of meerdere masters|Elk consistentie niveau|< 240 minuten|<1 week|
-|>1|Eén Master|Sessie, consistent voor voegsel, uiteindelijk|< 15 minuten|< 15 minuten|
-|>1|Eén Master|Gebonden veroudering|*K*  &  *T*|< 15 minuten|
-|>1|Eén Master|Sterk|0|< 15 minuten|
-|>1|Multi-Master|Sessie, consistent voor voegsel, uiteindelijk|< 15 minuten|0|
-|>1|Multi-Master|Gebonden veroudering|*K*  &  *T*|0|
+|1|Enkele of meerdere schrijf regio's|Elk consistentie niveau|< 240 minuten|<1 week|
+|>1|Enkele schrijf regio|Sessie, consistent voor voegsel, uiteindelijk|< 15 minuten|< 15 minuten|
+|>1|Enkele schrijf regio|Gebonden veroudering|*K*  &  *T*|< 15 minuten|
+|>1|Enkele schrijf regio|Sterk|0|< 15 minuten|
+|>1|Meerdere schrijf regio's|Sessie, consistent voor voegsel, uiteindelijk|< 15 minuten|0|
+|>1|Meerdere schrijf regio's|Gebonden veroudering|*K*  &  *T*|0|
 
 *K* = het aantal *"K"* versies (bijvoorbeeld updates) van een item.
 

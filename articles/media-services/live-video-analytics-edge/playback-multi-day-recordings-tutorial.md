@@ -3,12 +3,12 @@ title: Opnamen van meerdere dagen afspelen - Azure
 description: In deze zelfstudie leert u hoe u Azure Media Service-API's gebruikt om een continue video-opname van meerdere dagen af te spelen.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 19a42c61ef250fecce4503d3aed70b36d71ee3cf
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: e01c8603869f17ef2d68a39861f11818a4cea975
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649088"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530570"
 ---
 # <a name="tutorial-playback-of-multi-day-recordings"></a>Zelfstudie: Opnamen van meerdere dagen afspelen  
 
@@ -72,11 +72,11 @@ Open vervolgens in Visual Studio Code de map src/ams-asset-player. Deze map beva
 
 In Visual Studio Code kunt u aan de linkerkant op het pictogram Uitvoeren (of Ctrl + Shift + D) klikken om de beschikbare toepassingen te tonen die kunnen worden uitgevoerd:
 
-![Voer](./media/playback-multi-day-recordings-tutorial/run.png)
+![In de schermafbeelding wordt een menu weergegeven in Visual Studio Code; Item uitvoeren is geselecteerd.](./media/playback-multi-day-recordings-tutorial/run.png)
  
 Selecteer de AMS Asset Player-toepassing in de vervolgkeuzelijst, zoals hieronder wordt weergegeven, en druk op F5 om de foutopsporing te starten.
 
-![Fouten opsporen](./media/playback-multi-day-recordings-tutorial/debug.png)
+![In de schermafbeelding wordt een menu weergegeven in Visual Studio Code; ASM Asset Player is geselecteerd.](./media/playback-multi-day-recordings-tutorial/debug.png)
 
 De voorbeeldtoepassing bouwt en start uw standaard browser-app en opent de AMS Asset Player-pagina.
 

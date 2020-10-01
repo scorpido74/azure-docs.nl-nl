@@ -6,21 +6,21 @@ ms.topic: tutorial
 ms.date: 03/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8eac40ad958a10b8c853304ee2be8b2dc27af1a2
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: b8eb8378480b8784939e3ab63327e73e3705c74a
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008709"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526507"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>Zelfstudie: Een hostpool voor het valideren van service-updates maken
 
 >[!IMPORTANT]
 >Deze inhoud is van toepassing op Windows Virtual Desktop met Azure Resource Manager Windows Virtual Desktop-objecten. Zie [dit artikel](./virtual-desktop-fall-2019/create-validation-host-pool-2019.md) als u Windows Virtual Desktop (klassiek) zonder Azure Resource Manager-objecten gebruikt.
 
-Hostgroepen zijn een verzameling van een of meer identieke virtuele machines in Windows Virtual Desktop-tenantomgevingen. Voordat u hostgroepen in uw productieomgeving implementeert, raden we u ten zeerste aan een validatiehostgroep te maken. Updates worden eerst toegepast op validatiehostgroepen, zodat u service-updates kunt bewaken voordat deze in de productieomgeving worden geïmplementeerd. Zonder een validatiehostgroep kan het zijn dat u wijzigingen over het hoofd ziet die fouten veroorzaken. Dit kan leiden tot uitvaltijd voor gebruikers in uw productieomgeving.
+Hostgroepen zijn een verzameling van een of meer identieke virtuele machines in Windows Virtual Desktop-omgevingen. We adviseren u dringend om een validatiehostgroep maken waarop service-updates eerst worden toegepast. Zo kunt u service-updates bewaken voordat deze met de service worden toegepast op uw standaardomgeving of omgeving zonder validatie worden toegepast. Zonder een validatiehostgroep kan het zijn dat u wijzigingen over het hoofd ziet die fouten veroorzaken. Dit kan leiden tot uitvaltijd voor gebruikers in uw standaardomgeving.
 
-Om ervoor te zorgen dat uw apps goed werken met de nieuwste updates, moet de validatiehostgroep zo veel mogelijk lijken op de hostgroepen in uw productieomgeving. Gebruikers moeten net zo vaak verbinding maken met de validatiehostgroep als met de productiehostgroep. Als u automatische tests gebruikt voor uw hostgroep, moet u deze ook uitvoeren op de validatiehostgroep.
+Om ervoor te zorgen dat uw apps goed werken met de nieuwste updates, moet de validatiehostgroep zo veel mogelijk lijken op de hostgroepen in uw omgeving zonder validatie. Gebruikers moeten net zo vaak verbinding maken met de validatiehostgroep als met de standaardhostgroep. Als u automatische tests gebruikt voor uw hostgroep, moet u deze ook uitvoeren op de validatiehostgroep.
 
 U kunt problemen in de validatiehostgroep opsporen met [de diagnostische functie](diagnostics-role-service.md) of de [artikelen voor het oplossen van problemen met Windows Virtual Desktop](troubleshoot-set-up-overview.md).
 

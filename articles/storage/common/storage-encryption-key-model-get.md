@@ -10,13 +10,13 @@ ms.date: 03/13/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 17be7cb8e3330a9bd0391e0750f5e37ac64b0484
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: f59e4238c983cdb336500a68c52730ae5346b1c7
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90971011"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612418"
 ---
 # <a name="determine-which-azure-storage-encryption-key-model-is-in-use-for-the-storage-account"></a>Bepalen welk Azure Storage versleutelings sleutel model wordt gebruikt voor het opslag account
 
@@ -33,7 +33,7 @@ Zie [Azure Storage versleuteling voor Data-at-rest](storage-service-encryption.m
 
 Gebruik een van de volgende benaderingen om te bepalen of een opslag account gebruikmaakt van door micro soft beheerde sleutels of door de klant beheerde sleutels voor versleuteling.
 
-# <a name="azure-portal"></a>[Azure-portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 Voer de volgende stappen uit om het versleutelings model voor het opslag account te controleren met behulp van de Azure Portal:
 
@@ -60,7 +60,7 @@ $account.Encryption.KeySource
 
 Als de waarde van de eigenschap sleutel **bron** is `Microsoft.Storage` , wordt het account versleuteld met door micro soft beheerde sleutels. Als de waarde van de eigenschap sleutel **bron** is `Microsoft.Keyvault` , wordt het account versleuteld met door de klant beheerde sleutels.
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
 Als u het versleutelings model voor het opslag account wilt controleren met behulp van Azure CLI, roept u de opdracht [AZ Storage account show](/cli/azure/storage/account#az-storage-account-show) aan en controleert u vervolgens de eigenschap sleutel **bron** voor het account.
 

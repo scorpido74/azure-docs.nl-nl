@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/21/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 280dda4d3864f2c659272ffb63d6ac2566524c45
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 64a95a14f6832e3f109335b5525b9a5dc1a9ec27
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549423"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662291"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-askspoke"></a>Zelfstudie: Integratie van eenmalige aanmelding (SSO) bij Azure Active Directory met askSpoke
 
@@ -35,9 +35,6 @@ U hebt het volgende nodig om aan de slag te gaan:
 * Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/) krijgen.
 * askSpoke SSO-abonnement met eenmalige aanmelding (SSO) ingeschakeld.
 
-> [!NOTE]
-> De id van deze toepassing is een vaste tekenreekswaarde zodat maar één exemplaar in één tenant kan worden geconfigureerd.
-
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
@@ -45,6 +42,9 @@ In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD 
 * askSpoke biedt ondersteuning voor door **SP en IDP** geïnitieerde eenmalige aanmelding
 * askSpoke ondersteunt het **Just-In-Time** inrichten van gebruikers
 * Zodra u askSpoke hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+
+> [!NOTE]
+> De id van deze toepassing is een vaste tekenreekswaarde zodat maar één instantie in één tenant kan worden geconfigureerd.
 
 ## <a name="adding-askspoke-from-the-gallery"></a>askSpoke uit de galerie toevoegen
 
@@ -57,7 +57,7 @@ Als u de integratie van askSpoke in Azure AD wilt configureren, moet u askSpoke 
 1. Typ **askSpoke** in het zoekvak in het gedeelte **Toevoegen uit de galerie**.
 1. Selecteer **askSpoke** in het paneel met resultaten en voeg vervolgens de app toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-askspoke"></a>Eenmalige aanmelding van Azure AD configureren en testen voor askSpoke
+## <a name="configure-and-test-azure-ad-sso-for-askspoke"></a>Eenmalige aanmelding van Azure AD configureren en testen voor askSpoke
 
 Configureer en test eenmalige aanmelding van Azure AD met askSpoke met behulp van een testgebruiker met de naam **B.Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in askSpoke.
 
@@ -89,7 +89,7 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 1. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    In het tekstvak **Aanmeldings-URL** typt u een URL: `https://askspoke.com/login`
+    In het tekstvak **Aanmeldings-URL** typt u de URL: `https://askspoke.com/login`
 
 1. In de askSpoke-toepassing worden de SAML-asserties in een specifieke indeling verwacht. Hiervoor moet u aangepaste kenmerktoewijzingen toevoegen aan de configuratie van uw SAML-tokenkenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
 
@@ -146,15 +146,15 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 1. Klik in het linkernavigatievenster op **Settings**.
 
-    ![Configuratie van askSpoke](./media/askspoke-tutorial/configure1.png)
+    ![Het tabblad Instellingen in askSpoke](./media/askspoke-tutorial/configure1.png)
 
 1. Schuif omlaag naar **SSO** en klik op **Connect**.
 
-    ![Configuratie van askSpoke](./media/askspoke-tutorial/configure2.png)
+    ![Verbinding maken met askSpoke](./media/askspoke-tutorial/configure2.png)
 
 1. Voer in de sectie **Enable SAML & SCIM** de volgende stappen uit:
 
-    ![Configuratie van askSpoke](./media/askspoke-tutorial/configure3.png)
+    ![Het kopje SAML en SCIM inschakelen in askSpoke](./media/askspoke-tutorial/configure3.png)
 
     1. Plak in het tekstvak **Sign on URL** de waarde van de **aanmeldings-URL** die u uit Azure Portal hebt gekopieerd.
 
@@ -187,6 +187,3 @@ Wanneer u op de tegel askSpoke in het toegangsvenster klikt, wordt u automatisch
 - [askSpoke proberen met Azure AD](https://aad.portal.azure.com/)
 
 - [Wat is sessiebeheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
-- [askSpoke beveiligen met geavanceerde zichtbaarheid en besturingselementen](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-

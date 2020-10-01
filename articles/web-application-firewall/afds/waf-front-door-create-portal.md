@@ -5,14 +5,14 @@ author: vhorne
 ms.service: web-application-firewall
 services: web-application-firewall
 ms.topic: tutorial
-ms.date: 03/10/2020
+ms.date: 09/15/2020
 ms.author: victorh
-ms.openlocfilehash: be66a93ea4a518b26d973d222caf58e73b6986a3
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 7c7ea5297276ed9a1d1f2ca8f4190997dcab57c3
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "79475838"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90602214"
 ---
 # <a name="tutorial-create-a-web-application-firewall-policy-on-azure-front-door-using-the-azure-portal"></a>Zelfstudie: Een Web Application Firewall-beleid maken op Azure Front Door met behulp van de Azure Portal
 
@@ -68,7 +68,7 @@ Als u WAF in actie wilt zien, kunt u de modusinstellingen van **Detectie** wijzi
 
 U kunt een aangepaste regel maken door **Aangepaste regel toevoegen** onder het gedeelte **Aangepaste regels** te selecteren. Hiermee opent u de pagina voor de configuratie van aangepaste regels. Hieronder ziet u een voorbeeld van het configureren van een aangepaste regel voor het blokkeren van een aanvraag als de queryreeks **blockme** bevat.
 
-![WAF-beleidsmodus wijzigen](../media/waf-front-door-create-portal/customquerystring2.png)
+![Aangepaste regels](../media/waf-front-door-create-portal/customquerystring2.png)
 
 ### <a name="default-rule-set-drs"></a>Standaardregelset (DRS)
 
@@ -76,8 +76,11 @@ De standaardregelset die door Azure wordt beheerd, is standaard ingeschakeld. Al
 
  ![WAF-regelset wijzigen](../media/waf-front-door-create-portal/managed2.png)
 
+## <a name="clean-up-resources"></a>Resources opschonen
+
+Verwijder de resourcegroep en alle gerelateerde resources als u deze niet meer nodig hebt.
+
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Meer informatie over Azure Web Application Firewall](../overview.md)
 > [Meer informatie over Azure Front Door](../../frontdoor/front-door-overview.md)

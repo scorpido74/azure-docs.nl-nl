@@ -1,6 +1,6 @@
 ---
 title: 'Zelfstudie: -een IoT Edge-exemplaar voor videoanalyse maken in Azure IoT Central (Linux-VM)'
-description: In deze zelfstudie leert u hoe u een IoT Edge-exemplaar voor videoanalyse kunt maken dat kan worden gebruikt met de toepassingssjabloon voor object- en bewegingsdetectie in videoanalyse.
+description: In deze zelfstudie leert u hoe u een IoT Edge-exemplaar voor videoanalyse kunt maken op een virtuele Linux-machine dat kan worden gebruikt met de toepassingssjabloon voor object- en bewegingsdetectie in videoanalyse.
 services: iot-central
 ms.service: iot-central
 ms.subservice: iot-central-retail
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: 69e5b757036a2d68fa779e3fc232cc42a034e33c
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 0b39ec9c8cb70adac1474b2647ac1c9591b9d5cd
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037914"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526388"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-linux-vm"></a>Zelfstudie: een IoT Edge-exemplaar voor videoanalyse maken in Azure IoT Central (Linux-VM)
 

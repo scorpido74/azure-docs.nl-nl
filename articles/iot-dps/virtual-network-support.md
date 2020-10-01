@@ -7,12 +7,12 @@ ms.service: iot-dps
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: wesmc
-ms.openlocfilehash: 8912ef907641367bda89d7c0e98f9da811c6e577
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 43d7b3ae906909312a9e9ec4517061a788267a0c
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534597"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612775"
 ---
 # <a name="azure-iot-hub-device-provisioning-service-dps-support-for-virtual-networks"></a>Azure IoT Hub Device Provisioning Service (DPS)-ondersteuning voor virtuele netwerken
 
@@ -75,7 +75,7 @@ Voer de volgende stappen uit om een persoonlijk eind punt in te stellen:
 
 2. Voer op de pagina basis beginselen voor het _maken van een persoonlijk eind punt_ de informatie in de onderstaande tabel in.
 
-    ![De resource configureren waaraan een nieuw persoonlijk eind punt is toegewezen](./media/virtual-network-support/create-private-endpoint-basics.png)
+    ![Basis beginselen voor persoonlijke eind punten maken](./media/virtual-network-support/create-private-endpoint-basics.png)
 
     | Veld | Waarde |
     | :---- | :-----|
@@ -88,7 +88,7 @@ Voer de volgende stappen uit om een persoonlijk eind punt in te stellen:
 
 3. Voer op de pagina _een persoonlijke eindpunt resource maken_ de gegevens in die in de onderstaande tabel worden vermeld.
 
-    ![De resource configureren waaraan een nieuw persoonlijk eind punt is toegewezen](./media/virtual-network-support/create-private-endpoint-resource.png)
+    ![Een persoonlijke eindpunt resource maken](./media/virtual-network-support/create-private-endpoint-resource.png)
 
     | Veld | Waarde |
     | :---- | :-----|
@@ -107,7 +107,7 @@ Voer de volgende stappen uit om een persoonlijk eind punt in te stellen:
  
     Klik op **volgende: Tags**en geef eventueel labels voor uw resource op.
 
-    ![De resource configureren waaraan een nieuw persoonlijk eind punt is toegewezen](./media/virtual-network-support/create-private-endpoint-configuration.png)
+    ![Persoonlijk eind punt configureren](./media/virtual-network-support/create-private-endpoint-configuration.png)
 
 6. Klik op **beoordeling + maken** en vervolgens op **maken** om uw persoonlijke eindpunt resource te maken.
 
@@ -141,7 +141,7 @@ U kunt een persoonlijk eind punt aanvragen bij een DPS-resource per resource-ID.
 
 5. De eigenaar van de DPS ziet de aanvraag voor het privé-eind punt in de lijst met verbindingen van het **privé-eind punt** op het tabblad DPS Networking. Op die pagina kan de eigenaar de aanvraag voor een privé-eind punt **goed keuren** of **afwijzen** , zoals hieronder wordt weer gegeven.
 
-    ![Het tabblad DPS-eigenschappen](./media/virtual-network-support/approve-dps-private-endpoint.png)
+    ![DPS-goed keuring](./media/virtual-network-support/approve-dps-private-endpoint.png)
 
 
 ## <a name="pricing-private-endpoints"></a>Privé-eind punten voor prijzen

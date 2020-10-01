@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: alkohli
-ms.openlocfilehash: 2fc869448bac8303acee902b5d8819fdd3f26138
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 8b36eee38275d18e6977c056192176f6fd54a917
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258512"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611653"
 ---
 # <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>Gebruik de Azure Portal om uw Azure Data Box en Azure Data Box Heavy te beheren
 
@@ -202,7 +202,7 @@ Voer de volgende stappen uit om de ordergeschiedenis te downloaden.
 
 U kunt ook de bewakingsketenlogboeken bekijken die de auditlogboeken en de BOM-bestanden bevatten.
 
-![Logboeken in opslagaccounts](media/data-box-portal-admin/logs-in-storage-acct-1.png)
+![Logboeken in opslag accounts 2](media/data-box-portal-admin/logs-in-storage-acct-1.png)
 
 ## <a name="view-order-status"></a>Orderstatus bekijken
 
@@ -225,7 +225,7 @@ Dit zijn de statussen voor een import volgorde.
 |Voltooid met fouten| Het kopiëren van gegevens is voltooid, maar er zijn fouten opgetreden tijdens het kopiëren. <br> Bekijk de logboeken met kopieerbewerkingen via het pad in de Azure-portal. Zie [voor beelden van Kopieer Logboeken wanneer het uploaden is voltooid met fouten](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-errors).   |
 |Voltooid met waarschuwingen| De gegevens kopie is voltooid, maar de gegevens zijn gewijzigd. De gegevens bevatten niet-kritieke BLOB-of bestandsnaam fouten die zijn opgelost door het wijzigen van de naam van het bestand of de blob. <br> Bekijk de logboeken met kopieerbewerkingen via het pad in de Azure-portal. Noteer de wijzigingen in uw gegevens. Zie [voor beelden van Kopieer Logboeken wanneer het uploaden is voltooid met waarschuwingen](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-warnings).   |
 |Geannuleerd            |De order is geannuleerd. <br> U hebt de order zelf geannuleerd, of er is een fout opgetreden waardoor de service de order heeft geannuleerd. Als de order niet binnen 90 dagen kan worden voltooid, wordt deze ook geannuleerd en wordt u op de hoogte gesteld.     |
-|Opschonen | De gegevens op het apparaat worden gewist. Het opruimen van het apparaat wordt als voltooid beschouwd zodra de ordergeschiedenis beschikbaar is om te downloaden in de Azure-portal.|
+|Opruimen | De gegevens op het apparaat worden gewist. Het opruimen van het apparaat wordt als voltooid beschouwd zodra de ordergeschiedenis beschikbaar is om te downloaden in de Azure-portal.|
 
 ### <a name="statuses-for-export-order"></a>Statussen voor export volgorde
 
@@ -246,7 +246,7 @@ Dit zijn de statussen voor een export volgorde.
 |Opgehaald     |Uw retourzending is opgehaald en gescand door de vervoerder.         |
 |Ontvangen     | Uw apparaat is ontvangen en gescand in het Azure-datacenter. <br> De verzen ding wordt geïnspecteerd.      |
 |Voltooid           |De volg orde is voltooid.     |
-|Opschonen | De gegevens op het apparaat worden gewist. Het opruimen van het apparaat wordt als voltooid beschouwd zodra de ordergeschiedenis beschikbaar is om te downloaden in de Azure-portal.|
+|Opruimen | De gegevens op het apparaat worden gewist. Het opruimen van het apparaat wordt als voltooid beschouwd zodra de ordergeschiedenis beschikbaar is om te downloaden in de Azure-portal.|
 
 > [!NOTE]
 > Als de Kopieer taak voor het exporteren van gegevens van Azure Storage accounts naar Data Box is voltooid met fouten of waarschuwingen, wordt het apparaat nog steeds geleverd. Alleen als er een Kopieer fout is opgetreden, wordt de order beëindigd en wordt het apparaat niet verzonden.

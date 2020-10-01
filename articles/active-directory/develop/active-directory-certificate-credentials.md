@@ -9,26 +9,26 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/12/2020
+ms.date: 09/30/2020
 ms.author: hirsin
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 6330621aac78d5e9df52f2cd3ad9c3968bb0120d
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 77e34e4a18012f15b9e907e3b9efc1965b98f824
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88853386"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612117"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Referenties voor verificatie certificaat voor micro soft-identiteits platform
 
-Met het micro soft Identity-platform kan een toepassing eigen referenties voor verificatie gebruiken, bijvoorbeeld in de OAuth 2,0-  [client referenties toekennings](v2-oauth2-client-creds-grant-flow.md) stroom en de OBO-stroom ( [on-of](v2-oauth2-on-behalf-of-flow.md) --).
+Met het micro soft Identity-platform kan een toepassing eigen referenties voor verificatie gebruiken overal waar een client geheim kan worden gebruikt, bijvoorbeeld in de OAuth 2,0-  [client referenties toekenning](v2-oauth2-client-creds-grant-flow.md) flow en de OBO-stroom ( [on-of](v2-oauth2-on-behalf-of-flow.md) ---).
 
 Een van de referenties die een toepassing voor verificatie kan gebruiken is een [JSON Web token](./security-tokens.md#json-web-tokens-jwts-and-claims) (JWT)-verklaring die is ondertekend met een certificaat waarvan de toepassing eigenaar is.
 
 ## <a name="assertion-format"></a>Bevestigings indeling
 
-Als u de bewering wilt berekenen, kunt u een van de vele JWT-bibliotheken gebruiken in de taal van uw keuze. De informatie wordt uitgevoerd door het token in de [header](#header), [claims](#claims-payload)en [hand tekening](#signature).
+Als u de bewering wilt berekenen, kunt u een van de vele JWT-bibliotheken gebruiken in de taal van uw keuze- [MSAL `.WithCertificate()` ondersteunt dit met ](msal-net-client-assertions.md). De informatie wordt uitgevoerd door het token in de [header](#header), [claims](#claims-payload)en [hand tekening](#signature).
 
 ### <a name="header"></a>Koptekst
 
@@ -40,14 +40,14 @@ Als u de bewering wilt berekenen, kunt u een van de vele JWT-bibliotheken gebrui
 
 ### <a name="claims-payload"></a>Claims (Payload)
 
-| Parameter |  Opmerkingen |
-| --- | --- |
-| `aud` | Doel groep: moet `https://login.microsoftonline.com/<your-tenant-id>/oauth2/token` |
-| `exp` | Verval datum: de datum waarop het token verloopt. De tijd wordt weer gegeven als het aantal seconden van 1 januari 1970 (1970-01-01T0:0: 0Z) UTC tot het moment dat de geldigheid van het token verloopt. We raden u aan om een korte verloop tijd-10 minuten tot een uur te gebruiken.|
-| `iss` | Verlener: moet de client_id (client-*id)* van de client service zijn. |
-| `jti` | GUID: de JWT-ID |
-| `nbf` | Niet vóór: de datum waarop het token niet kan worden gebruikt. De tijd wordt weer gegeven als het aantal seconden van 1 januari 1970 (1970-01-01T0:0: 0Z) UTC tot het moment waarop de bevestiging is gemaakt. |
-| `sub` | Onderwerp: als voor `iss` , moet de client_id (*client-id)* van de client service zijn. |
+Claimtype | Waarde | Beschrijving
+---------- | ---------- | ----------
+aud | `https://login.microsoftonline.com/{tenantId}/v2.0` | De claim ' AUD ' (doel groep) identificeert de ontvangers waarvoor de JWT is bedoeld (hier Azure AD) Zie [RFC 7519, sectie 4.1.3](https://tools.ietf.org/html/rfc7519#section-4.1.3).  In dit geval is die ontvanger de aanmeldings server (login.microsoftonline.com).
+geldig | 1601519414 | De claim ' exp ' (verval tijd) identificeert de verval tijd op of waarna de JWT niet moet worden geaccepteerd voor verwerking. Zie [RFC 7519, sectie 4.1.4](https://tools.ietf.org/html/rfc7519#section-4.1.4).  Op deze manier kan de bevestiging worden gebruikt tot dat tijdstip, dus kort 5-10 minuten na de `nbf` meeste.  Azure AD plaatst op dit moment geen beperkingen `exp` . 
+ISS | ClientID | De claim ' ISS ' (verlener) identificeert de principal die de JWT heeft uitgegeven, in dit geval uw client toepassing.  Gebruik de GUID-toepassings-ID.
+jti | (een GUID) | De claim ' JTI ' (JWT-ID) biedt een unieke id voor de JWT. De id-waarde moet worden toegewezen op een manier die ervoor zorgt dat er een Verwaarloos bare kans is dat dezelfde waarde per ongeluk wordt toegewezen aan een ander gegevens object. Als de toepassing meerdere verleners gebruikt, moeten conflicten worden voor komen tussen waarden die door verschillende verleners worden geproduceerd. De waarde ' JTI ' is een hoofdletter gevoelige teken reeks. [RFC 7519, sectie 4.1.7](https://tools.ietf.org/html/rfc7519#section-4.1.7)
+NBF | 1601519114 | De claim ' NBF ' (niet vóór) identificeert de tijd waarna de JWT niet moet worden geaccepteerd voor verwerking. [RFC 7519, sectie 4.1.5](https://tools.ietf.org/html/rfc7519#section-4.1.5).  Het gebruik van de huidige tijd is van toepassing. 
+sub | ClientID | De claim ' sub ' (subject) identificeert het onderwerp van de JWT, in dit geval ook voor uw toepassing. Gebruik dezelfde waarde als `iss` . 
 
 ### <a name="signature"></a>Handtekening
 
@@ -94,7 +94,7 @@ U kunt de certificaat referentie koppelen aan de client toepassing in het micro 
 ### <a name="uploading-the-certificate-file"></a>Het certificaat bestand uploaden
 
 In de registratie van de Azure-app voor de client toepassing:
-1. Selecteer **certificaten & geheimen**.
+1. Selecteer **Certificaten en geheimen**.
 2. Klik op **certificaat uploaden** en selecteer het certificaat bestand dat u wilt uploaden.
 3. Klik op **Add**.
   Zodra het certificaat is geüpload, worden de vinger afdruk, de start datum en de verval waarden weer gegeven.
@@ -126,7 +126,18 @@ In de registratie van de Azure-app voor de client toepassing:
 3. Sla de wijzigingen op in het manifest van de toepassing en upload het manifest naar het micro soft Identity-platform.
 
    De `keyCredentials` eigenschap is meerdere waarden, dus u kunt meerdere certificaten uploaden voor uitgebreid sleutel beheer.
+   
+## <a name="using-a-client-assertion"></a>Een client bevestiging gebruiken
+
+Client verklaringen kunnen overal worden gebruikt waar een client geheim zou worden gebruikt.  In de [autorisatie code stroom](v2-oauth2-auth-code-flow.md)kunt u bijvoorbeeld door geven in een `client_secret` om te bewijzen dat de aanvraag afkomstig is uit uw app. U kunt dit vervangen door `client_assertion` en `client_assertion_type` para meters. 
+
+| Parameter | Waarde | Beschrijving|
+|-----------|-------|------------|
+|`client_assertion_type`|`urn:ietf:params:oauth:client-assertion-type:jwt-bearer`| Dit is een vaste waarde die aangeeft dat u een certificaat referentie gebruikt. |
+|`client_assertion`| JWT |Dit is de JWT die hierboven is gemaakt. |
 
 ## <a name="next-steps"></a>Volgende stappen
+
+De [MSAL.net-bibliotheek verwerkt dit scenario](msal-net-client-assertions.md) in één regel code.
 
 De [.net core daemon-console toepassing met behulp van het micro soft Identity platform](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) -code voorbeeld op github laat zien hoe een toepassing zijn eigen referenties voor verificatie gebruikt. Ook wordt uitgelegd hoe u [een zelfondertekend certificaat kunt maken](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/1-Call-MSGraph#optional-use-the-automation-script) met behulp van de `New-SelfSignedCertificate` Power shell-cmdlet. U kunt ook de scripts voor het [maken van apps](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/AppCreationScripts-withCert/AppCreationScripts.md) in het voor beeld-opslag plaats gebruiken om certificaten te maken, de vinger afdruk te berekenen, enzovoort.

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0a5411a8fba8456deb59a5c9ede4e9314876dbdb
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: d06ec62f2ef1438657a4406b0f9a5b2c85feee16
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91569569"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611636"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Beveiligde toegang tot gegevens in Azure Cosmos DB
 
@@ -22,21 +22,21 @@ Azure Cosmos DB gebruikt twee typen sleutels om gebruikers te verifiëren en toe
 
 |Type sleutel|Resources|
 |---|---|
-|[Hoofd sleutels](#primary-keys) |Gebruikt voor administratieve resources: database accounts, data bases, gebruikers en machtigingen|
+|[Primaire sleutels](#primary-keys) |Gebruikt voor administratieve resources: database accounts, data bases, gebruikers en machtigingen|
 |[Bron tokens](#resource-tokens)|Gebruikt voor toepassings resources: containers, documenten, bijlagen, opgeslagen procedures, triggers en Udf's|
 
 <a id="primary-keys"></a>
 
-## <a name="master-keys"></a>Hoofd sleutels
+## <a name="primary-keys"></a>Primaire sleutels
 
-Hoofd sleutels bieden toegang tot alle beheer resources voor het database account. Hoofd sleutels:
+Primaire sleutels bieden toegang tot alle beheer resources voor het database account. Primaire sleutels:
 
 - Toegang bieden tot accounts, data bases, gebruikers en machtigingen. 
 - Kan niet worden gebruikt om nauw keurige toegang tot containers en documenten te bieden.
 - Worden gemaakt tijdens het maken van een account.
 - Kan op elk gewenst moment opnieuw worden gegenereerd.
 
-Elk account bestaat uit twee hoofd sleutels: een primaire sleutel en secundaire sleutel. Het doel van dubbele sleutels is dat u de sleutel opnieuw kunt genereren of sleutels moet voorzien van een continue toegang tot uw account en gegevens.
+Elk account bestaat uit twee primaire sleutels: een primaire sleutel en secundaire sleutel. Het doel van dubbele sleutels is dat u de sleutel opnieuw kunt genereren of sleutels moet voorzien van een continue toegang tot uw account en gegevens.
 
 Naast de twee primaire sleutels voor het Cosmos DB-account, zijn er twee alleen-lezen sleutels. Deze alleen-lezen sleutels staan alleen lees bewerkingen voor het account toe. Alleen-lezen sleutels bieden geen toegang tot het lezen van machtigings bronnen.
 

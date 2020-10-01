@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/29/2018
+ms.date: 09/30/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2f9ac119a3365eff39fe1a65ff8b553d3900b117
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 15ccc0faa4d74a2ef95aca00a6257f27b9a209c3
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90969324"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611942"
 ---
 # <a name="view-the-service-principal-of-a-managed-identity-using-powershell"></a>De service-principal van een beheerde identiteit weer geven met behulp van Power shell
 
@@ -36,16 +36,16 @@ In dit artikel leert u hoe u de service-principal van een beheerde identiteit ku
 - Als u niet bekend bent met beheerde identiteiten voor Azure-resources, raadpleegt u de sectie [Overzicht](overview.md).
 - Als u nog geen Azure-account hebt, [meldt u zich aan voor een gratis account](https://azure.microsoft.com/free/).
 - [Systeem toegewezen identiteit inschakelen op een virtuele machine](./qs-configure-portal-windows-vm.md#system-assigned-managed-identity) of [toepassing](../../app-service/overview-managed-identity.md#add-a-system-assigned-identity).
-- Als u de voorbeeld scripts wilt uitvoeren, hebt u twee opties:
-    - Gebruik de [Azure Cloud shell](../../cloud-shell/overview.md), die u kunt openen met behulp van de knop **try it** in de rechter bovenhoek van code blokken.
-    - Voer scripts lokaal uit door de nieuwste versie van [Azure PowerShell](/powershell/azure/install-az-ps)te installeren en meld u vervolgens aan bij Azure met `Connect-AzAccount` .
+- Als u de voorbeeldscripts wilt uitvoeren, hebt u twee opties:
+    - Gebruik de [Azure Cloud Shell](../../cloud-shell/overview.md), die u kunt openen met behulp van de knop **Probeer het nu** in de rechterbovenhoek van Code::Blocks.
+    - Voer scripts lokaal uit door de nieuwste versie van [Azure PowerShell](/powershell/azure/install-az-ps)te installeren en u vervolgens aan te melden bij Azure met `Connect-AzAccount`.
 
 ## <a name="view-the-service-principal"></a>De Service-Principal weer geven
 
-De volgende opdracht laat zien hoe u de service-principal van een virtuele machine of toepassing kunt bekijken waarbij de systeem-id is ingeschakeld. Vervang door `<VM or application name>` uw eigen waarden.
+De volgende opdracht laat zien hoe u de service-principal van een virtuele machine of toepassing kunt bekijken waarbij de systeem-id is ingeschakeld. Vervang door `<Azure resource name>` uw eigen waarden.
 
 ```azurepowershell-interactive
-Get-AzADServicePrincipal -DisplayName <VM or application name>
+Get-AzADServicePrincipal -DisplayName <Azure resource name>
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

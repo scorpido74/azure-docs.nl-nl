@@ -10,13 +10,13 @@ ms.date: 05/28/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: cad80a554db0424ad8635e81cbfb4225705e9c89
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 242700c05053aa9d07e3a561a21986c8451a46c7
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89073009"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612441"
 ---
 # <a name="check-the-last-sync-time-property-for-a-storage-account"></a>De eigenschap van de laatste synchronisatie tijd voor een opslag account controleren
 
@@ -46,7 +46,7 @@ $lastSyncTime = $(Get-AzStorageAccount -ResourceGroupName <resource-group> `
     -IncludeGeoReplicationStats).GeoReplicationStats.LastSyncTime
 ```
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Als u de laatste synchronisatie tijd voor het opslag account met Azure CLI wilt ophalen, controleert u de eigenschap **geoReplicationStats. lastSyncTime** van het opslag account. Gebruik de `--expand` para meter om waarden te retour neren voor de eigenschappen die onder **geoReplicationStats**zijn genest. Vergeet niet om de waarden van de tijdelijke aanduidingen te vervangen door uw eigen waarden:
 

@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 11/18/2019
+ms.date: 9/30/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: aeef0c4f139f9721449ba2c503f08fafa2c627d3
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: bb1ce0a8ba568dc651accdc5f8c84e9c2c980e73
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166311"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612809"
 ---
 # <a name="confidential-client-assertions"></a>Verklaringen van vertrouwelijke client
 
@@ -48,16 +48,16 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .Build();
 ```
 
-De claims die worden verwacht door Azure AD zijn:
+De [claims die worden verwacht door Azure AD](active-directory-certificate-credentials.md) zijn:
 
 Claimtype | Waarde | Beschrijving
 ---------- | ---------- | ----------
-aud | `https://login.microsoftonline.com/{tenantId}/v2.0` | De claim ' AUD ' (doel groep) identificeert de ontvangers waarvoor de JWT is bedoeld (hier Azure AD) Zie [RFC 7519, sectie 4.1.3]
-geldig | Do jun 27 2019 15:04:17 GMT + 0200 (Romaanse zomer tijd) | De claim ' exp ' (verval tijd) identificeert de verval tijd op of waarna de JWT niet moet worden geaccepteerd voor verwerking. Zie [RFC 7519, sectie 4.1.4]
-ISS | ClientID | De claim ' ISS ' (verlener) identificeert de principal die de JWT heeft uitgegeven. De verwerking van deze claim is toepassingsspecifiek. De "ISS"-waarde is een hoofdletter gevoelige teken reeks met een StringOrURI-waarde. [RFC 7519, sectie 4.1.1]
-jti | (een GUID) | De claim ' JTI ' (JWT-ID) biedt een unieke id voor de JWT. De id-waarde moet worden toegewezen op een manier die ervoor zorgt dat er een Verwaarloos bare kans is dat dezelfde waarde per ongeluk wordt toegewezen aan een ander gegevens object. Als de toepassing meerdere verleners gebruikt, moeten conflicten worden voor komen tussen waarden die door verschillende verleners worden geproduceerd. De claim ' JTI ' kan worden gebruikt om te voor komen dat de JWT opnieuw wordt afgespeeld. De waarde ' JTI ' is een hoofdletter gevoelige teken reeks. [RFC 7519, sectie 4.1.7]
-NBF | Do jun 27 2019 14:54:17 GMT + 0200 (Romaanse zomer tijd) | De claim ' NBF ' (niet vóór) identificeert de tijd waarna de JWT niet moet worden geaccepteerd voor verwerking. [RFC 7519, sectie 4.1.5]
-sub | ClientID | De claim ' sub ' (subject) identificeert het onderwerp van de JWT. De claims in een JWT hebben doorgaans instructies over het onderwerp. De onderwerpwaarde moet worden ingesteld op lokaal uniek in de context van de verlener of wereld wijd uniek zijn. De Zie [RFC 7519, rubriek 4.1.2]
+aud | `https://login.microsoftonline.com/{tenantId}/v2.0` | De claim ' AUD ' (doel groep) identificeert de ontvangers waarvoor de JWT is bedoeld (hier Azure AD) Zie [RFC 7519, sectie 4.1.3](https://tools.ietf.org/html/rfc7519#section-4.1.3).  In dit geval is die ontvanger de aanmeldings server (login.microsoftonline.com).
+geldig | 1601519414 | De claim ' exp ' (verval tijd) identificeert de verval tijd op of waarna de JWT niet moet worden geaccepteerd voor verwerking. Zie [RFC 7519, sectie 4.1.4](https://tools.ietf.org/html/rfc7519#section-4.1.4).  Op deze manier kan de bevestiging worden gebruikt tot dat tijdstip, dus kort 5-10 minuten na de `nbf` meeste.  Azure AD plaatst op dit moment geen beperkingen `exp` . 
+ISS | ClientID | De claim ' ISS ' (verlener) identificeert de principal die de JWT heeft uitgegeven, in dit geval uw client toepassing.  Gebruik de GUID-toepassings-ID.
+jti | (een GUID) | De claim ' JTI ' (JWT-ID) biedt een unieke id voor de JWT. De id-waarde moet worden toegewezen op een manier die ervoor zorgt dat er een Verwaarloos bare kans is dat dezelfde waarde per ongeluk wordt toegewezen aan een ander gegevens object. Als de toepassing meerdere verleners gebruikt, moeten conflicten worden voor komen tussen waarden die door verschillende verleners worden geproduceerd. De waarde ' JTI ' is een hoofdletter gevoelige teken reeks. [RFC 7519, sectie 4.1.7](https://tools.ietf.org/html/rfc7519#section-4.1.7)
+NBF | 1601519114 | De claim ' NBF ' (niet vóór) identificeert de tijd waarna de JWT niet moet worden geaccepteerd voor verwerking. [RFC 7519, sectie 4.1.5](https://tools.ietf.org/html/rfc7519#section-4.1.5).  Het gebruik van de huidige tijd is van toepassing. 
+sub | ClientID | De claim ' sub ' (subject) identificeert het onderwerp van de JWT, in dit geval ook voor uw toepassing. Gebruik dezelfde waarde als `iss` . 
 
 Hier volgt een voor beeld van het aanwijzen van deze claims:
 
@@ -181,7 +181,7 @@ Zodra u de ondertekende client bevestiging hebt, kunt u deze gebruiken met de MS
 
 ### <a name="withclientclaims"></a>WithClientClaims
 
-`WithClientClaims(X509Certificate2 certificate, IDictionary<string, string> claimsToSign, bool mergeWithDefaultClaims = true)`Er wordt standaard een ondertekende bevestiging geproduceerd met de claims die worden verwacht door Azure AD plus aanvullende client claims die u wilt verzenden. Hier volgt een code fragment waarmee u dit kunt doen.
+`WithClientClaims(X509Certificate2 certificate, IDictionary<string, string> claimsToSign, bool mergeWithDefaultClaims = true)` Er wordt standaard een ondertekende bevestiging geproduceerd met de claims die worden verwacht door Azure AD plus aanvullende client claims die u wilt verzenden. Hier volgt een code fragment waarmee u dit kunt doen.
 
 ```csharp
 string ipAddress = "192.168.1.2";

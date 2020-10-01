@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/29/2018
+ms.date: 09/30/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c88f3cdc880888162301ace5c896161f669d2ede
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 9b25f2691646192faf4d4c133835b456038abd94
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269196"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611925"
 ---
 # <a name="view-the-service-principal-of-a-managed-identity-in-the-azure-portal"></a>De service-principal van een beheerde identiteit weer geven in de Azure Portal
 
@@ -43,7 +43,7 @@ In deze procedure ziet u hoe u de service-principal van een virtuele machine kun
 
 1. Klik op **Azure Active Directory** en klik vervolgens op **bedrijfs toepassingen**.
 2. Kies onder **toepassings type** **alle toepassingen** en klik vervolgens op **Toep assen**.
-3. In het vak Zoek filter typt u de naam van de virtuele machine of toepassing waarvoor beheerde identiteit is ingeschakeld of kiest u deze in de weer gegeven lijst.
+3. In het vak Zoek filter typt u de naam van de Azure-resource waarvoor beheerde identiteit is ingeschakeld of kiest u deze in de weer gegeven lijst.
 
    ![Service-Principal beheerde identiteit weer geven in de portal](./media/how-to-view-managed-identity-service-principal-portal/view-managed-identity-service-principal-portal.png)
 

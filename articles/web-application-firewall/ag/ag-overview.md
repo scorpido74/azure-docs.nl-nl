@@ -5,15 +5,15 @@ description: Dit artikel geeft een overzicht van Web Application Firewall (WAF) 
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 08/31/2020
+ms.date: 09/16/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: e3b7e3ae10afd45105358743ef1fc0f4c6d14e78
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 659e7fcdbd2284110282d14fc89bd4d8d5ac2472
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226995"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91267020"
 ---
 # <a name="what-is-azure-web-application-firewall-on-azure-application-gateway"></a>Wat is Azure Web Application Firewall voor Azure Application Gateway?
 
@@ -75,9 +75,21 @@ In deze sectie worden de belangrijkste voordelen beschreven die WAF in Applicati
 - Pas geografische filters toe op verkeer om bepaalde landen/regio's al dan niet toegang te geven tot uw toepassingen. (preview)
 - Beveilig uw toepassingen tegen bots met de regelset voor beperking voor bots. (preview)
 
-## <a name="waf-policy"></a>WAF-beleid
+## <a name="waf-policy-and-rules"></a>WAF-beleid en -regels
 
-Als u een Web Application Firewall wilt inschakelen op een toepassingsgateway, moet u een WAF-beleid maken. Dit beleid is de plek waar alle beheerde regels, aangepaste regels, uitsluitingen en andere aanpassingen zijn verzameld, zoals de uploadlimiet voor bestanden. 
+Als u een Web Application Firewall wilt inschakelen op Application Gateway, moet u een WAF-beleid maken. In dit beleid zijn alle beheerde regels, aangepaste regels, uitsluitingen en andere aanpassingen verzameld, zoals de uploadlimiet voor bestanden.
+
+U kunt een WAF-beleid configureren en dit beleid aan een of meer toepassingsgateways koppelen voor beveiliging. Een WAF-beleid bestaat uit twee typen beveiligingsregels:
+
+- Aangepaste regels die u kunt maken
+
+- Beheerde regelsets; een verzameling door Azure beheerde, vooraf geconfigureerde set regels
+
+Als beide typen regels aanwezig zijn, worden aangepaste regels eerst verwerkt en daarna de regels in een beheerde regelset. Een regel bestaat uit een voorwaarde voor overeenkomst, een prioriteit en een actie. Dit zijn de ondersteunde actietypen: ALLOW, BLOCK en LOG. U kunt een volledig aangepast beleid maken dat voldoet aan uw specifieke vereisten voor toepassingsbeveiliging door beheerde en aangepaste regels te combineren.
+
+Regels in een beleid worden verwerkt in een prioriteitsvolgorde. Prioriteit is een uniek geheel getal dat de volgorde bepaalt van de te verwerken regels. Een lager geheel getal geeft een hogere prioriteit aan, en deze regels worden eerder geëvalueerd dan regels met een hoger geheel getal. Zodra een overeenkomst met een regel is gevonden, wordt op de aanvraag de actie toegepast die is gedefinieerd in de regel. Zodra een dergelijke overeenkomst is verwerkt, worden regels met lagere prioriteiten niet meer verwerkt.
+
+Aan een door Application Gateway geleverde webtoepassing kan een WAF-beleid op globaal niveau gekoppeld zijn, maar dat kan ook per site of per URI.
 
 ### <a name="core-rule-sets"></a>Core Rule Sets
 
@@ -159,6 +171,11 @@ Met de ingebouwde werkmap voor firewallgebeurtenissen van Azure WAF kunt u een o
 
 
 ![Werkmap voor Azure WAF-firewallgebeurtenissen](../media/ag-overview/sentinel.png)
+
+
+#### <a name="azure-monitor-workbook-for-waf"></a>Azure Monitor-werkmap voor WAF
+
+Met deze werkmap kunt u aangepaste visualisaties van WAF-gebeurtenissen met betrekking tot beveiliging voor verschillende filterbare deelvensters inschakelen. De werkmap werkt met alle WAF-typen, waaronder Application Gateway, Front Door en CDN, en kan worden gefilterd op basis van het WAF-type of een specifiek WAF-exemplaar. Importeren via ARM-sjabloon of galeriesjabloon. Zie [WAF-werkmap](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20WAF/Azure%20Monitor%20Workbook) als u deze werkmap wilt implementeren.
 
 #### <a name="logging"></a>Logboekregistratie
 

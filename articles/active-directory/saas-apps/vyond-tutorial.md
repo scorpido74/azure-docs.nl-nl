@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/19/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 01a40e48f606c2e9c92d38b453a058d3ad5ba058
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: fe1f5f718ce54845dea2fc9da3ea2c9f4e18ce92
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88531283"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89659398"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-vyond"></a>Zelfstudie: Integratie van eenmalige aanmelding via Azure Active Directory met Vyond
 
@@ -35,9 +35,6 @@ U hebt het volgende nodig om aan de slag te gaan:
 * Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/) krijgen.
 * Vyond-abonnement met eenmalige aanmelding.
 
-> [!NOTE]
-> De id van deze toepassing is een vaste tekenreekswaarde zodat maar één exemplaar in één tenant kan worden geconfigureerd.
-
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
@@ -45,6 +42,9 @@ In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD 
 * Vyond ondersteunt door **SP en IDP** geïnitieerde eenmalige aanmelding
 
 * Zodra u Vyond hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+
+> [!NOTE]
+> De id van deze toepassing is een vaste tekenreekswaarde zodat maar één instantie in één tenant kan worden geconfigureerd.
 
 ## <a name="adding-vyond-from-the-gallery"></a>Vyond toevoegen uit de galerie
 
@@ -58,7 +58,7 @@ Voor het configureren van de integratie van Vyond met Azure Active Directory moe
 1. Selecteer **Vyond** in het deelvenster met resultaten en voeg vervolgens de app toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-vyond"></a>Eenmalige aanmelding van Azure AD configureren en testen voor Vyond
+## <a name="configure-and-test-azure-ad-sso-for-vyond"></a>Eenmalige aanmelding van Azure AD configureren en testen voor Vyond
 
 Configureer en test eenmalige aanmelding van Azure AD met Vyond met behulp van een testgebruiker met de naam **B.Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Vyond.
 

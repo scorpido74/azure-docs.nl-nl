@@ -1,25 +1,25 @@
 ---
-title: De geaggregeerde naam ruimte in de Azure HPC-cache gebruiken
+title: Meer informatie over de geaggregeerde naam ruimte Azure HPC cache
 description: De virtuele naam ruimte voor uw Azure HPC-cache plannen
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 10/30/2019
+ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: c16d2f9e9c94603361d9a096f33d559105f2d28d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1c28f549cf93d77f6aef6bcde6a2225345a79cc9
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497026"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612945"
 ---
 # <a name="plan-the-aggregated-namespace"></a>De geaggregeerde naamruimte plannen
 
 Met de HPC-cache van Azure kunnen clients toegang krijgen tot diverse opslag systemen via een virtuele naam ruimte die de details van het back-end-opslag systeem verbergt.
 
-Wanneer u een opslag doel toevoegt, stelt u het op de client gerichte bestandspad in. Client computers koppelen dit bestandspad en kunnen aanvragen voor het lezen van bestanden naar de cache maken in plaats van het opslag systeem rechtstreeks te koppelen.
+Nadat u een opslag doel hebt toegevoegd, stelt u een of meer client gerichte naam ruimte paden in voor het opslag doel. Client computers koppelen dit bestandspad en kunnen aanvragen voor het lezen van bestanden naar de cache maken in plaats van het opslag systeem rechtstreeks te koppelen.
 
-Omdat Azure HPC cache dit virtuele bestands systeem beheert, kunt u het opslag doel wijzigen zonder het client gerichte pad te wijzigen. U kunt bijvoorbeeld een hardware-opslag systeem vervangen door de Cloud opslag zonder dat u client gerichte procedures moet herschrijven.
+Omdat Azure HPC cache dit virtuele bestands systeem beheert, kunt u het opslag doel wijzigen zonder het client gerichte pad te wijzigen. U kunt bijvoorbeeld een hardware-opslag systeem vervangen door de opslag van de Cloud zonder dat de procedures voor de client zijde opnieuw moeten worden geschreven.
 
 ## <a name="aggregated-namespace-example"></a>Voor beeld van geaggregeerde naam ruimte
 
@@ -48,7 +48,7 @@ Als u eenvoudige toegang via de cache wilt toestaan, kunt u overwegen om opslag 
 | /goldline/templates/acme2017/sku980     | /templates/sku980      |
 | sourcecollection                        | /source               |
 
-Een NFS-opslag doel kan meerdere paden voor virtuele naam ruimten hebben, zolang elk een pad naar een uniek exportpad verwijst.
+Een NFS-opslag doel kan meerdere paden voor virtuele naam ruimten hebben, zolang elk een pad naar een uniek exportpad verwijst. ( [NFS-naam ruimte paden](add-namespace-paths.md#nfs-namespace-paths) lezen voor meer informatie over het aanbevolen maximum aantal naam ruimte paden per NFS-opslag doel.)
 
 Omdat de NFS-bron paden submappen van dezelfde export zijn, moet u meerdere naam ruimte paden van hetzelfde opslag doel definiëren.
 
@@ -59,6 +59,13 @@ Omdat de NFS-bron paden submappen van dezelfde export zijn, moet u meerdere naam
 
 Een client toepassing kan de cache koppelen en eenvoudig toegang krijgen tot de geaggregeerde bestands paden van de naam ruimte ``/source`` , ``/templates/sku798`` en ``/templates/sku980`` .
 
+Een alternatieve methode is het maken van een virtueel pad `/templates` , zoals koppelingen naar de bovenliggende map, `acme2017` en de clients vervolgens naar de persoon `sku798` en mappen navigeren `sku980` nadat de cache is gekoppeld. U kunt echter geen pad naar een naam ruimte maken dat een submap van een ander pad van een naam ruimte is. Als u dus een pad naar de map maakt, `acme2017` kunt u ook geen naam ruimte paden maken om rechtstreeks toegang te krijgen tot de submappen.
+
+Op de pagina instellingen van **naam ruimte** Azure HPC-cache wordt het client gerichte bestands systeem weer gegeven en kunt u paden toevoegen of bewerken. Lees [de geaggregeerde naam ruimte instellen](add-namespace-paths.md) voor meer informatie.
+
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u hebt bepaald hoe uw virtuele bestands systeem moet worden ingesteld, [maakt u opslag doelen](hpc-cache-add-storage.md) om uw back-end-opslag toe te wijzen aan de client gerichte virtuele bestands paden.
+Nadat u hebt bepaald hoe u het virtuele bestands systeem moet instellen, voert u de volgende stappen uit om het te maken:
+
+* [Opslag doelen maken](hpc-cache-add-storage.md) om uw back-end-opslag systemen toe te voegen aan uw Azure HPC-cache
+* [Naam ruimte paden toevoegen](add-namespace-paths.md) om de geaggregeerde naam ruimte te maken die door client computers wordt gebruikt voor toegang tot bestanden

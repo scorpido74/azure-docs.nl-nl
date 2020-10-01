@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/24/2020
-ms.openlocfilehash: a5047e4e63f71c482cd1bcc98152ae35e10e94b1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 407183837f7be01f5182ff0890426170da223161
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/25/2020
-ms.locfileid: "91291636"
+ms.locfileid: "91363168"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>Zelfstudie: Oracle online migreren naar Azure Database for PostgreSQL met DMS (preview)
 
@@ -214,11 +214,11 @@ Als u een PostgreSQL-schema maakt met behulp van hulpprogramma's zoals ora2pg vo
 
 1. Wanneer u een nieuw project maakt voor een migratie van Oracle naar Azure Database for PostgreSQL, wordt u gevraagd om de doeldatabase en het doelschema te selecteren in de stap Schema's selecteren. Vul de doeldatabase en het doelschema in.
 
-   ![Portal-abonnementen weergeven](media/tutorial-oracle-azure-postgresql-online/dms-map-to-target-databases.png)
+   ![Schermopname met Kaart om databases te selecteren.](media/tutorial-oracle-azure-postgresql-online/dms-map-to-target-databases.png)
 
 2. In het scherm **Migratie** ziet u een lijst met tabellen uit de Oracle-bron. Azure Database Migration Service probeert tabellen in de bron- en doeltabellen op basis van tabelnaam te koppelen. Als er meerdere doeltabellen bestaan met dezelfde naam maar met een ander hoofdlettergebruik, kunt u de doeltabel selecteren die u wilt gebruiken.
 
-    ![Portal-abonnementen weergeven](media/tutorial-oracle-azure-postgresql-online/dms-migration-settings.png)
+    ![Schermopname met instellingen voor Migratie.](media/tutorial-oracle-azure-postgresql-online/dms-migration-settings.png)
 
 > [!NOTE]
 > Als u namen van brontabellen wilt koppelen aan tabellen met andere namen, stuurt u een e-mail naar [dmsfeedback@microsoft.com](mailto:dmsfeedbac@microsoft.com) en krijgt u van ons een script om het proces te automatiseren.

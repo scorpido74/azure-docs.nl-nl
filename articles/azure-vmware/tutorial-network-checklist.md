@@ -3,12 +3,12 @@ title: 'Zelfstudie: checklist voor netwerkplanning'
 description: Lees hier alles over de netwerkvereisten en informatie over netwerkconnectiviteit en netwerkpoorten voor Azure VMware Solution.
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: c9a3c18d69cb81ed2810c0516820a9ef348402f1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5538f9c5d6543ca312835f4ef6437e413dea231b
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91254394"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576674"
 ---
 # <a name="networking-planning-checklist-for-azure-vmware-solution"></a>Checklist voor netwerkplanning voor Azure VMware Solution 
 
@@ -21,8 +21,6 @@ In deze zelfstudie wordt aandacht besteed aan:
 > * Vereisten voor routering en subnet
 > * Vereiste netwerkpoorten voor communicatie met de services
 > * DHCP- en DNS-overwegingen in Azure VMware Solution
-
-
 
 ## <a name="virtual-network-and-expressroute-circuit-considerations"></a>Overwegingen voor virtuele netwerken en ExpressRoute-circuits
 Wanneer u een verbinding voor een virtueel netwerk maakt in uw abonnement, wordt het ExpressRoute-circuit tot stand gebracht via peering, een autorisatiesleutel en een peering-ID die u in de Azure-portal kunt aanvragen. De peering is een particuliere, een-op-een-verbinding tussen uw privécloud en het virtuele netwerk.

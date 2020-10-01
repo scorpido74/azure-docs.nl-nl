@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/28/2020
+ms.date: 08/24/2020
 ms.author: jeedes
-ms.openlocfilehash: fdea1f3b2d4cff0203951b6ec5ef6b86b62cdf9c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a631ab7190891ae3716a28615bcdbfe4d219ea27
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88527495"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90053443"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-slack"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met Slack
 
@@ -50,6 +50,9 @@ In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD 
 * Slack biedt ondersteuning voor het [**geautomatiseerd**](https://docs.microsoft.com/azure/active-directory/saas-apps/slack-provisioning-tutorial) inrichten van gebruikers
 * Zodra u Slack hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
+> [!NOTE]
+> De id van deze toepassing is een vaste tekenreekswaarde zodat maar één exemplaar in één tenant kan worden geconfigureerd.
+
 ## <a name="adding-slack-from-the-gallery"></a>Slack toevoegen vanuit de galerie
 
 Als u de integratie van Slack in Azure AD wilt configureren, moet u Slack vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
@@ -61,7 +64,7 @@ Als u de integratie van Slack in Azure AD wilt configureren, moet u Slack vanuit
 1. Typ **Slack** in het zoekvak in het gedeelte **Toevoegen uit de galerie**.
 1. Selecteer **Slack** in het venster met resultaten en voeg de app vervolgens toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-slack"></a>Eenmalige aanmelding van Azure AD configureren en testen voor Slack
+## <a name="configure-and-test-azure-ad-sso-for-slack"></a>Eenmalige aanmelding van Azure AD voor Slack configureren en testen
 
 Configureer en test eenmalige aanmelding van Azure AD met Slack met behulp van een testgebruiker met de naam **B.Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Slack.
 
@@ -86,13 +89,20 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in de Azu
 
 1. In de sectie **Standaard-SAML-configuratie** voert u de waarden in voor de volgende velden:
 
-    a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://< DOMAIN NAME>.slack.com/sso/saml/start`
+    a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<DOMAIN NAME>.slack.com/sso/saml/start`
 
-    b. Typ een URL in het vak **Id (Entiteits-id)** : `https://slack.com`
+    b. Typ in het tekstvak **Id (Entiteits-id)** de volgende URL: `https://slack.com`
+    
+    c. Voer bij **Antwoord-URL** een van de volgende URL-patronen in:
+    
+    | Antwoord-URL|
+    |----------|
+    | `https://<DOMAIN NAME>.slack.com/sso/saml` |
+    | `https://<DOMAIN NAME>.enterprise.slack.com/sso/saml` |
 
     > [!NOTE]
-    > De waarde van de aanmeldings-URL is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met [Slack-clientondersteuningsteam](https://slack.com/help/contact) om de waarde te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
-    
+    > Dit zijn geen echte waarden. U moet deze waarden bijwerken met de werkelijke aanmeldings-URL en antwoord-URL. Neem contact op met [Slack-clientondersteuningsteam](https://slack.com/help/contact) om de waarde te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+
     > [!NOTE]
     > De waarde voor de **id (entiteits-id)** kan een variabele zijn als u meer dan één exemplaar van Slack wilt integreren met de tenant. Gebruik het patroon `https://<DOMAIN NAME>.slack.com`. In dit scenario moet u ook een koppeling met een andere instelling in Slack tot stand brengen door dezelfde waarde te gebruiken.
 
@@ -106,7 +116,6 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in de Azu
     | -----|---------|
     | emailaddress | user.userprincipalname |
     | e-mail | user.userprincipalname |
-    | | |
 
    > [!NOTE]
    > Als u de configuratie van de serviceprovider (SP) wilt instellen, klikt u op **Uitvouwen** naast **Geavanceerde opties** op de pagina SAML-configuratie. Voer in het vak **Verlener serviceprovider** de werkruimte-URL in. De standaardwaarde is slack.com. 
@@ -155,15 +164,15 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 2. Navigeer naar **Microsoft Azure AD** en ga naar **Teaminstellingen**.
 
-     ![Eenmalige aanmelding in de app configureren](./media/slack-tutorial/tutorial-slack-team-settings.png)
+     ![Eenmalige aanmelding configureren in Microsoft Azure AD](./media/slack-tutorial/tutorial-slack-team-settings.png)
 
 3. Klik in het gedeelte **Teaminstellingen** op het tabblad **Verificatie** en klik op **Instellingen wijzigen**.
 
-    ![Eenmalige aanmelding in de app configureren](./media/slack-tutorial/tutorial-slack-authentication.png)
+    ![Eenmalige aanmelding configureren voor teaminstellingen](./media/slack-tutorial/tutorial-slack-authentication.png)
 
 4. Voer in het dialoogvenster **SAML-verificatie-instellingen** de volgende stappen uit:
 
-    ![Eenmalige aanmelding in de app configureren](./media/slack-tutorial/tutorial-slack-save-authentication.png)
+    ![Eenmalige aanmelding configureren voor SAML-verificatie-instellingen](./media/slack-tutorial/tutorial-slack-save-authentication.png)
 
     a.  Plak de waarde van **Aanmeldings-URL**, die u hebt gekopieerd vanuit Azure Portal, in het tekstvak **SAML 2.0-eindpunt (HTTP)** .
 

@@ -10,12 +10,12 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/18/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 20418dbc7432000116dcbe73a64987d83f38419d
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 26e1852058383ef1e4cc4b3b604e1bdc79d60e14
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585063"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612180"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>Sleutels voor opslagaccounts beheren met Key Vault en de Azure CLI
 
@@ -28,7 +28,6 @@ Houd rekening met het volgende wanneer u de functie voor sleutels van beheerde o
 - Sleutelwaarden worden nooit geretourneerd als antwoord op een aanroep.
 - De sleutels van uw opslagaccount mogen alleen door Key Vault worden beheerd. Beheer de sleutels niet zelf en voorkom conflicten met Key Vault-processen.
 - De sleutels van een opslagaccount mogen alleen door één Key Vault-object worden beheerd. Sta geen sleutelbeheer door meerdere objecten toe.
-- U kunt een aanvraag indienen bij Key Vault voor beheer van uw opslagaccount met een gebruikers-principal, maar niet met een service-principal.
 - Genereer sleutels alleen opnieuw met behulp van Key Vault. Genereer de sleutels voor uw opslagaccount niet handmatig opnieuw.
 
 We adviseren om Azure Storage-integratie te gebruiken met Azure Active Directory (Azure AD), de identiteits- en toegangsbeheerservice van Microsoft op basis van de cloud. Azure AD-integratie is beschikbaar voor [Azure-blobs en -wachtrijen](../../storage/common/storage-auth-aad.md) en biedt toegang tot Azure Storage op basis van OAuth2-tokens (net als Azure Key Vault).

@@ -7,12 +7,12 @@ ms.date: 09/22/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: b952c2663750c055ec6838bf66df31fec5a0d730
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 4c84fbb131809c92d597b46d18c53e46b636f8ef
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91579950"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613472"
 ---
 # <a name="how-to-connect-an--iot-plug-and-play-bridge-sample-running-on-linux-or-windows-to-iot-hub"></a>Verbinding maken met een IoT Plug en Play Bridge-voor beeld dat wordt uitgevoerd in Linux of Windows naar IoT Hub
 
@@ -88,7 +88,7 @@ Wanneer u de code in de onderstaande stap downloadt, bevat de voorbeeld model be
 Open een opdrachtprompt in de map van uw keuze. Voer de volgende opdracht uit om de [IoT Plug en Play](https://aka.ms/iotplugandplaybridge) -github-opslag plaats naar deze locatie te klonen:
 
 ```cmd
-git clone https://github.com/Azure/AzurePnPBridgePreview.git
+git clone https://github.com/Azure/iot-plug-and-play-bridge.git
 ```
 
 Nadat u de IoT Plug en Play Bridge opslag plaats naar uw computer hebt gekloond, opent u een opdracht prompt van de beheer opdracht en navigeert u naar de map van de gekloonde opslag plaats:

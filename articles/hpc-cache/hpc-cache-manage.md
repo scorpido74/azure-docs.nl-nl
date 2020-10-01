@@ -4,14 +4,14 @@ description: De Azure HPC-cache beheren en bijwerken met behulp van de Azure Por
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 07/08/2020
+ms.date: 08/31/2020
 ms.author: v-erkel
-ms.openlocfilehash: 66b084cca3d1cd54362a538423988755a3d31ced
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 19950ca215abbac3a56bdb901448c9d92ad369be
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497217"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613038"
 ---
 # <a name="manage-your-cache"></a>Uw cache beheren
 
@@ -28,6 +28,7 @@ Met de knoppen boven aan de pagina kunt u de cache beheren:
 * **Starten** en [**stoppen**](#stop-the-cache) -de cache bewerking hervatten of onderbreken
 * [**Flush**](#flush-cached-data) -schrijft gewijzigde gegevens naar opslag doelen
 * [**Upgrade**](#upgrade-cache-software) -de cache software bijwerken
+* [**Diagnostische gegevens verzamelen**](#collect-diagnostics) : uploads van fout opsporingsgegevens
 * **Vernieuwen** : Hiermee wordt de pagina Overzicht opnieuw geladen
 * [**Verwijderen**](#delete-the-cache) : de cache wordt definitief vernietigd
 
@@ -196,6 +197,16 @@ $
 ```
 
 ---
+
+## <a name="collect-diagnostics"></a>Diagnostische gegevens verzamelen
+
+Met de knop **Diagnostische gegevens verzamelen** wordt het proces hand matig gestart om systeem gegevens te verzamelen en te uploaden naar de micro soft-service en ondersteuning voor probleem oplossing. Uw cache verzamelt en uploadt automatisch dezelfde diagnostische gegevens als er een ernstig probleem met de cache optreedt.
+
+Gebruik dit besturings element als deze door micro soft service en support wordt aangevraagd.
+
+Nadat u op de knop hebt geklikt, klikt u op **Ja** om de upload te bevestigen.
+
+![scherm afbeelding van het pop-upbericht ' Diagnostische verzameling starten ' wordt bevestigd. De standaard knop Ja is gemarkeerd.](media/diagnostics-confirm.png)
 
 ## <a name="delete-the-cache"></a>De cache verwijderen
 

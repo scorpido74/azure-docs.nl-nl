@@ -8,24 +8,32 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 09/30/2020
 ms.author: ryanwi
 ms.custom: aaddev, seoapril2019
-ms.openlocfilehash: 8de6a7aafdd402e4ee75862e69ac60af3af0e041
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 7eb01ccda3c3e13827a8977b8ee0e244aef6b0be
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88114928"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613235"
 ---
 # <a name="how-to-change-the-token-lifetime-defaults-for-a-custom-developed-application"></a>De standaard waarden voor de levens duur van tokens wijzigen voor een aangepaste toepassing
 
 In dit artikel wordt beschreven hoe u Azure AD Power shell gebruikt om een beleid voor levens duur van tokens in te stellen. Met Azure AD Premium kunnen app-ontwikkel aars en Tenant beheerders de levens duur configureren van tokens die zijn uitgegeven voor niet-vertrouwelijke clients. Het token levensduur beleid wordt ingesteld op basis van de Tenant of de bronnen waartoe toegang wordt verkregen.
 
-1. Als u een token levensduur beleid wilt instellen, moet u de [Azure AD Power shell-module](https://www.powershellgallery.com/packages/AzureADPreview)downloaden.
-1. Voer de opdracht **Connect-AzureAD-confirm** uit.
+Als u een token levensduur beleid wilt instellen, moet u de [Azure AD Power shell-module](https://www.powershellgallery.com/packages/AzureADPreview)downloaden.
+Voer de opdracht **Connect-AzureAD-confirm** uit.
 
-    Hier volgt een voor beeld van een beleid waarmee het maximale leeftijds token voor het vernieuwen van één factor wordt ingesteld. Het beleid maken:```New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1, "MaxAgeSingleFactor":"until-revoked"}}') -DisplayName "OrganizationDefaultPolicyScenario" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"```
+Hier volgt een voor beeld van een beleid dat gebruikers in uw web-app vaker moeten verifiëren. Met dit beleid wordt de levens duur van de toegangs-ID-tokens en de maximale leeftijd van een multi-factor-sessie token ingesteld op de service-principal van uw web-app. Maak het beleid en wijs dit toe aan uw service-principal. U moet ook de ObjectId voor uw Service-Principal ophalen.
+
+```powershell
+$policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"AccessTokenLifetime":"02:00:00","MaxAgeSessionSingleFactor":"02:00:00"}}') -DisplayName "WebPolicyScenario" -IsOrganizationDefault $false -Type "TokenLifetimePolicy"
+
+$sp = Get-AzureADServicePrincipal -Filter "DisplayName eq '<service principal display name>'"
+
+Add-AzureADServicePrincipalPolicy -Id $sp.ObjectId -RefObjectId $policy.Id
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 08/27/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 2e3cfd27d36558587ca35cc1c573999a48092b0d
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: e4a13fb22fd826f82252383587bc4a273c43099f
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297660"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613506"
 ---
 # <a name="blob-versioning"></a>BLOB-versie beheer
 
@@ -79,11 +79,11 @@ Als u de bewerking [Delete BLOB](/rest/api/storageservices/delete-blob) aanroept
 
 In het volgende diagram ziet u het effect van een Verwijder bewerking op een blob met een versie:
 
-:::image type="content" source="media/versioning-overview/delete-versioned-base-blob.png" alt-text="Diagram waarin de verwijdering van de versie van de BLOB wordt verwijderd.":::
+:::image type="content" source="media/versioning-overview/delete-versioned-base-blob.png" alt-text="Diagram waarin wordt weer gegeven hoe schrijf bewerkingen van invloed zijn op blobs in versie.":::
 
 Door nieuwe gegevens naar de BLOB te schrijven, maakt u een nieuwe versie van de blob. Eventuele bestaande versies worden niet beïnvloed, zoals wordt weer gegeven in het volgende diagram.
 
-:::image type="content" source="media/versioning-overview/recreate-deleted-base-blob.png" alt-text="Diagram van het opnieuw maken van de versie-BLOB na verwijdering.":::
+:::image type="content" source="media/versioning-overview/recreate-deleted-base-blob.png" alt-text="Diagram waarin wordt weer gegeven hoe schrijf bewerkingen van invloed zijn op blobs in versie.":::
 
 ### <a name="blob-types"></a>Blob-typen
 
@@ -122,7 +122,7 @@ U kunt versies lezen of verwijderen met de versie-ID nadat versie beheer is uitg
 
 In het volgende diagram ziet u hoe het wijzigen van een BLOB nadat versie beheer is uitgeschakeld, wordt een BLOB gemaakt die geen versie heeft. Eventuele bestaande versies die aan de BLOB zijn gekoppeld, blijven behouden.
 
-:::image type="content" source="media/versioning-overview/modify-base-blob-versioning-disabled.png" alt-text="Diagram waarin de basis-blob is gewijzigd nadat de versie is uitgeschakeld.":::
+:::image type="content" source="media/versioning-overview/modify-base-blob-versioning-disabled.png" alt-text="Diagram waarin wordt weer gegeven hoe schrijf bewerkingen van invloed zijn op blobs in versie.":::
 
 ## <a name="blob-versioning-and-soft-delete"></a>BLOB-versie en zacht verwijderen
 
@@ -138,7 +138,7 @@ Als u een vorige versie van een BLOB wilt verwijderen, verwijdert u deze explici
 
 In het volgende diagram ziet u wat er gebeurt wanneer u een BLOB of een BLOB-versie verwijdert.
 
-:::image type="content" source="media/versioning-overview/soft-delete-historical-version.png" alt-text="Diagram van het verwijderen van een versie waarvoor zacht verwijderen is ingeschakeld.":::
+:::image type="content" source="media/versioning-overview/soft-delete-historical-version.png" alt-text="Diagram waarin wordt weer gegeven hoe schrijf bewerkingen van invloed zijn op blobs in versie.":::
 
 Als versie beheer en voorlopig verwijderen zijn ingeschakeld voor een opslag account, wordt er geen voorlopig verwijderde moment opname gemaakt wanneer een BLOB of BLOB-versie wordt gewijzigd of verwijderd.
 
@@ -150,7 +150,7 @@ Als u de voorlopig verwijderde versies herstelt met de bewerking voor het **onge
 
 In het volgende diagram ziet u hoe u de Soft verwijderde BLOB-versies herstelt met de bewerking **BLOB verwijderen** en hoe u de huidige versie van de BLOB herstelt met de bewerking **BLOB kopiëren** .
 
-:::image type="content" source="media/versioning-overview/undelete-version.png" alt-text="Diagram waarin wordt getoond hoe u met Soft verwijderde versies herstelt.":::
+:::image type="content" source="media/versioning-overview/undelete-version.png" alt-text="Diagram waarin wordt weer gegeven hoe schrijf bewerkingen van invloed zijn op blobs in versie.":::
 
 Nadat de Bewaar periode voor de tijdelijke verwijdering is verstreken, worden de door soft verwijderde BLOB-versies definitief verwijderd.
 
@@ -169,7 +169,7 @@ Wanneer u een moment opname van een blob met een versie maakt, wordt er een nieu
 
 In het volgende diagram ziet u wat er gebeurt wanneer u een moment opname van een blob met een versie maakt. In het diagram bevatten de BLOB-versies en moment opnamen met versie 2 en 3 identieke gegevens.
 
-:::image type="content" source="media/versioning-overview/snapshot-versioned-blob.png" alt-text="Diagram waarin moment opnamen van een blob met versie nummer worden weer gegeven.":::
+:::image type="content" source="media/versioning-overview/snapshot-versioned-blob.png" alt-text="Diagram waarin wordt weer gegeven hoe schrijf bewerkingen van invloed zijn op blobs in versie.":::
 
 ## <a name="authorize-operations-on-blob-versions"></a>Bewerkingen op BLOB-versies autoriseren
 
@@ -188,7 +188,7 @@ In de volgende tabel ziet u welke RBAC-acties ondersteuning bieden bij het verwi
 | Beschrijving | Blob service bewerking | RBAC-gegevens actie vereist | Ondersteuning voor geïntegreerde RBAC-rollen |
 |----------------------------------------------|------------------------|---------------------------------------------------------------------------------------|-------------------------------|
 | De huidige versie van de BLOB verwijderen | BLOB verwijderen | **Micro soft. Storage/Storage accounts/blobServices/containers/blobs/verwijderen** | Inzender voor Storage Blob-gegevens |
-| Een versie verwijderen | BLOB verwijderen | **Micro soft. Storage/Storage accounts/blobServices/containers/blobs/deleteBlobVersion/Action** | Eigenaar van gegevens van opslag-BLOB |
+| Een versie verwijderen | BLOB verwijderen | **Micro soft. Storage/Storage accounts/blobServices/containers/blobs/deleteBlobVersion/Action** | Eigenaar van opslagblobgegevens |
 
 ### <a name="shared-access-signature-sas-parameters"></a>Para meters voor Shared Access Signature (SAS)
 
@@ -269,7 +269,7 @@ In de volgende tabel wordt het facturerings gedrag voor een BLOB of versie besch
 
 In het volgende diagram ziet u hoe objecten worden gefactureerd wanneer een blob met een versie wordt verplaatst naar een andere laag.
 
-:::image type="content" source="media/versioning-overview/versioning-billing-tiers.png" alt-text="Diagram waarin wordt getoond hoe objecten worden gefactureerd wanneer een versie van een BLOB expliciet wordt gelaagd.":::
+:::image type="content" source="media/versioning-overview/versioning-billing-tiers.png" alt-text="Diagram waarin wordt weer gegeven hoe schrijf bewerkingen van invloed zijn op blobs in versie.":::
 
 Het expliciet instellen van de laag voor een blob, versie of moment opname kan niet ongedaan worden gemaakt. Als u een BLOB naar een nieuwe laag verplaatst en vervolgens weer naar de oorspronkelijke laag verplaatst, worden er kosten in rekening gebracht voor de volledige lengte van de inhoud van het object, zelfs als er blokken met andere objecten in de oorspronkelijke laag worden gedeeld.
 

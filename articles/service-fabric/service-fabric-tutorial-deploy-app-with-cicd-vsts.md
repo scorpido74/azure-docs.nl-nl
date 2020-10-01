@@ -4,12 +4,12 @@ description: In deze zelfstudie leert u hoe u een continue integratie en impleme
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 992d720d86fc2e7fedd8e7fd4b559220ff3c0512
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 302ad1dcfaa93564d70fab739726787ef09c79df
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260361"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563927"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>Zelfstudie: Een toepassing met CI/CD implementeren in een Service Fabric-cluster
 
@@ -139,7 +139,7 @@ Controleer of de implementatie is gelukt en de toepassing in het cluster wordt u
 
 Controleer of de pijplijn voor continue integratie correct functioneert door enkele codewijzigingen aan te brengen in Azure DevOps.
 
-Terwijl u de code schrijft, worden de wijzigingen automatisch in Visual Studio bijgehouden. Voer wijzigingen door in de lokale Git-opslagplaats door het pictogram voor wijzigingen in behandeling (![In behandeling][pending]) te selecteren op de statusbalk rechtsonder.
+Terwijl u de code schrijft, worden de wijzigingen automatisch in Visual Studio bijgehouden. Voer wijzigingen door in de lokale Git-opslagplaats door het pictogram voor wijzigingen in behandeling (![Pictogram Wijzigingen in behandeling met een potlood en een getal.][pending]) te selecteren op de statusbalk rechtsonder.
 
 Voeg aan de weergave **Changes** in Team Explorer een bericht toe waarin u de update beschrijft en voer de wijzigingen door.
 

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 0c7efc94bcde18e7b6ff43726602fa87641f3e76
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 61d596c4b3a65c54e1a70682adad5b7328c384f8
+ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130616"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "90007363"
 ---
 # <a name="moving-azure-vms-to-another-azure-region"></a>Azure-VM’s verplaatsen naar een andere Azure-regio
 
@@ -26,9 +26,21 @@ U verplaatst VM’s wellicht om de volgende redenen:
 - U hebt al in één regio geïmplementeerd en er wordt een nieuwe ondersteunde regio toegevoegd die zich dichter bij de eindgebruikers van uw toepassing of service bevindt. In dit scenario wilt u uw VM’s ongewijzigd naar de nieuwe regio verplaatsen om latentie te verminderen. Gebruik diezelfde aanpak als u abonnementen wilt samenvoegen of als er bestuurlijke of organisatieregels zijn op basis waarvan u verplicht bent te verplaatsen.
 - Uw VM is geïmplementeerd als een VM met één exemplaar of als onderdeel van een beschikbaarheidsset. Als u de beschikbaarheids-SLA’s wilt vergroten, kunt u uw VM’s verplaatsen naar een beschikbaarheidszone.
 
-## <a name="steps-to-move-azure-vms"></a>Stappen om Azure-VM’s te verplaatsen
+## <a name="move-vms-with-resource-mover"></a>Virtuele machines verplaatsen met Resource Mover
 
-Het verplaatsen van virtuele machines omvat de volgende stappen:
+U kunt nu virtuele machines naar een andere regio verplaatsen met [Azure Resource Mover](../resource-mover/tutorial-move-region-virtual-machines.md). Azure Resource Mover is momenteel beschikbaar in openbare preview en biedt het volgende:
+- Eén hub voor het verplaatsen van resources binnen regio's.
+- Beperkte verplaatsingstijd en complexiteit. Alles wat u nodig hebt, bevindt zich op één locatie.
+- Een eenvoudige en consistente ervaring voor het verplaatsen van verschillende typen Azure-resources.
+- Een eenvoudige manier om afhankelijkheden te identificeren binnen resources die u wilt verplaatsen. Dit helpt om gerelateerde resources samen te verplaatsen zodat alles na de verplaatsing naar verwachting werkt in de doelregio.
+- Automatische opschoning van resources in de bronregio, als u deze na de verplaatsing wilt verwijderen.
+- Testen. U kunt een verplaatsing uitproberen en deze vervolgens verwijderen als u geen volledige verplaatsing wilt uitvoeren.
+
+
+
+## <a name="move-vms-with-site-recovery"></a>Virtuele machines verplaatsen met Site Recovery
+
+Het verplaatsen van virtuele machines met Site Recovery omvat de volgende stappen:
 
 1. Controleer de vereisten.
 2. Bereid de bron-VM’s voor.
@@ -49,7 +61,7 @@ In deze sectie worden de meest voorkomende implementatie-architecturen beschreve
 
 * **VM’s met één exemplaar die zijn geïmplementeerd in verschillende lagen:** Elke VM in een laag is geconfigureerd als een VM met één exemplaar, en is via load balancers met de andere lagen verbonden. Deze configuratie is de eenvoudigste om te gebruiken.
 
-     ![Implementatie van VM’s met één exemplaar in verschillende lagen](media/move-vm-overview/regular-deployment.png)
+     ![Selectie om implementatie van virtuele machines met één exemplaar te verplaatsen tussen verschillende lagen](media/move-vm-overview/regular-deployment.png)
 
 * **VM’s in elke laag die zijn geïmplementeerd in beschikbaarheidssets**: Elke VM in een laag wordt geconfigureerd in een beschikbaarheidsset. [Beschikbaarheidssets](../virtual-machines/windows/tutorial-availability-sets.md) zorgen ervoor dat de VM's die u in Azure implementeert over meerdere geïsoleerde hardwareknooppunten in een cluster worden verdeeld. Dit zorgt ervoor dat als er zich binnen Azure een hardware- of softwarestoring voordoet, er slechts een subset van uw VM's wordt beïnvloed en uw totale oplossing beschikbaar en operationeel blijft.
 
@@ -64,16 +76,8 @@ In deze sectie worden de meest voorkomende implementatie-architecturen beschreve
 Op basis van de eerder genoemde [architecturen](#typical-architectures-for-a-multi-tier-deployment) ziet u hier hoe de implementaties eruitzien nadat u de VM’s ongewijzigd naar de doelregio hebt verplaatst.
 
 * **VM’s met één exemplaar die zijn geïmplementeerd in verschillende lagen**
-
-     ![Implementatie van VM’s met één exemplaar in verschillende lagen](media/move-vm-overview/single-zone.png)
-
 * **VM’s in elke laag die zijn geïmplementeerd in beschikbaarheidssets**
-
-     ![Beschikbaarheidssets voor meerdere regio’s](media/move-vm-overview/crossregionaset.png)
-
 * **VM’s in elke laag die zijn geïmplementeerd in beschikbaarheidszones**
-
-     ![Implementatie van VM’s in beschikbaarheidszones](media/move-vm-overview/azonecross.png)
 
 ## <a name="move-vms-to-increase-availability"></a>Virtuele machines verplaatsen om beschikbaarheid te vergroten
 

@@ -1,27 +1,23 @@
 ---
-title: Een API beveiligen met behulp van OAuth 2,0 met AAD en API Management
+title: API-back-end beveiligen in API Management met OAuth 2,0 en Azure AD
 titleSuffix: Azure API Management
-description: Meer informatie over het beveiligen van een web-API-back-end met Azure Active Directory en API Management.
+description: Meer informatie over het beveiligen van de toegang tot een web-API-back-end in azure API Management met OAuth 2,0-gebruikers autorisatie en Azure Active Directory
 services: api-management
-documentationcenter: ''
 author: miaojiang
-manager: dcscontentpm
-editor: ''
 ms.service: api-management
-ms.workload: mobile
 ms.topic: article
-ms.date: 06/24/2020
+ms.date: 09/23/2020
 ms.author: apimpm
-ms.openlocfilehash: 455444fe78171e3e2b37a309fd5708f283121ed6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 285a99bd47fa94940187aa0a4406e773a254dcb4
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243406"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612333"
 ---
-# <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Een API beveiligen met behulp van OAuth 2.0 met Azure Active Directory en API Management
+# <a name="protect-a-web-api-backend-in-azure-api-management-by-using-oauth-20-authorization-with-azure-ad"></a>Een web-API-back-end beveiligen in azure API Management met behulp van OAuth 2,0-autorisatie met Azure AD 
 
-In deze hand leiding wordt beschreven hoe u uw Azure API Management-exemplaar configureert om een API te beveiligen met behulp van het OAuth 2,0-protocol met Azure Active Directory (Azure AD). 
+In deze hand leiding wordt beschreven hoe u uw [Azure API Management](api-management-key-concepts.md) -exemplaar configureert om een API te beveiligen met behulp van het [OAuth 2,0-protocol met Azure Active Directory (Azure AD)](../active-directory/develop/active-directory-v2-protocols.md). 
 
 > [!NOTE]
 > Deze functie is beschikbaar in de lagen **ontwikkelaars**, **Basic**, **Standard**en **Premium** van API management.
@@ -46,13 +42,13 @@ Hier volgt een kort overzicht van de stappen:
 
 ## <a name="register-an-application-in-azure-ad-to-represent-the-api"></a>Een toepassing registreren in azure AD om de API aan te duiden
 
-Als u een API met Azure AD wilt beveiligen, moet u eerst een toepassing registreren in azure AD die de API vertegenwoordigt. 
+Als u een API met Azure AD wilt beveiligen, moet u eerst een toepassing registreren in azure AD die de API vertegenwoordigt. In de volgende stappen wordt gebruikgemaakt van de Azure Portal om de toepassing te registreren. Zie [Quick Start: een toepassing configureren om een web-API beschikbaar te](../active-directory/develop/quickstart-configure-app-expose-web-apis.md)maken voor meer informatie over app-registratie.
 
 1. Ga naar de [Azure Portal](https://portal.azure.com) om uw toepassing te registreren. Zoek en selecteer **app-registraties**.
 
 1. Selecteer **Nieuwe registratie**. 
 
-1. Wanneer de **pagina een toepassing registreren** wordt weer gegeven, voert u de registratie gegevens van uw toepassing in:
+1. Wanneer de pagina **Een toepassing registreren** verschijnt, voert u de registratiegegevens van de toepassing in:
 
    - Voer in de sectie **naam** een zinvolle toepassings naam in die wordt weer gegeven voor gebruikers van de app, zoals *back-end-app*. 
    - Selecteer in de sectie **ondersteunde account typen** een optie die aansluit bij uw scenario. 
@@ -61,7 +57,7 @@ Als u een API met Azure AD wilt beveiligen, moet u eerst een toepassing registre
 
 1. Selecteer **Registreren** om de toepassing te maken. 
 
-1. Zoek op de pagina app- **overzicht** de waarde van de **toepassing (client)** en noteer deze voor later.
+1. Zoek de waarde **Toepassings-id (client)** op de app-pagina **Overzicht** en noteer deze voor later.
 
 1. Selecteer **een API beschikbaar** maken en stel de **URI voor de toepassings-id** in met de standaard waarde. Noteer deze waarde voor later.
 
@@ -79,11 +75,11 @@ Een andere toepassing registreren in azure AD om de ontwikkelaars console te ver
 
 1. Ga naar de [Azure Portal](https://portal.azure.com) om uw toepassing te registreren.
 
-1.  Zoek en selecteer **app-registraties**.
+1. Zoek en selecteer **app-registraties**.
 
 1. Selecteer **Nieuwe registratie**.
 
-1. Wanneer de **pagina een toepassing registreren** wordt weer gegeven, voert u de registratie gegevens van uw toepassing in:
+1. Wanneer de pagina **Een toepassing registreren** verschijnt, voert u de registratiegegevens van de toepassing in:
 
    - Voer in de sectie **naam** een zinvolle toepassings naam in die wordt weer gegeven voor gebruikers van de app, zoals *client-app*. 
    - Selecteer in de sectie **ondersteunde account typen** de optie **accounts in elke organisatie Directory (een Azure AD-Directory-multi tenant)**. 
@@ -92,7 +88,7 @@ Een andere toepassing registreren in azure AD om de ontwikkelaars console te ver
 
 1. Selecteer **Registreren** om de toepassing te maken. 
 
-1. Zoek op de pagina app- **overzicht** de waarde van de **toepassing (client)** en noteer deze voor later.
+1. Zoek de waarde **Toepassings-id (client)** op de app-pagina **Overzicht** en noteer deze voor later.
 
 1. Maak een client geheim voor deze toepassing voor gebruik in een volgende stap.
 

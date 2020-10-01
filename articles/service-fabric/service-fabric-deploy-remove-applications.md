@@ -3,12 +3,12 @@ title: Azure Service Fabric-implementatie met Power shell
 description: Meer informatie over het verwijderen en implementeren van toepassingen in azure Service Fabric en het uitvoeren van deze acties in Power shell.
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: e3fdd194f2949f1246e991968e02b3278f33f7db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a6f5411c30087e15d1164cd02d4e6eb66566388
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84699835"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91611449"
 ---
 # <a name="deploy-and-remove-applications-using-powershell"></a>Toepassingen implementeren en verwijderen met behulp van Power shell
 
@@ -347,7 +347,7 @@ Zie [de afbeeldings store Connection String](service-fabric-image-store-connecti
 ### <a name="deploy-large-application-package"></a>Omvang rijk toepassings pakket implementeren
 
 Probleem: [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) keer een time-out voor een groot toepassings pakket (volg orde van GB).
-Meld
+Probeer:
 - Geef een grotere time-out op voor de opdracht [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) met de `TimeoutSec` para meter. De time-out is standaard 30 minuten.
 - Controleer de netwerk verbinding tussen de bron computer en het cluster. Als de verbinding langzaam is, kunt u overwegen om een computer met een betere netwerk verbinding te gebruiken.
 Als de client computer zich in een andere regio bevindt dan het cluster, kunt u overwegen om een client computer in een dichter of dezelfde regio als het cluster te gebruiken.
@@ -373,7 +373,7 @@ DefaultParameters      : { "Stateless1_InstanceCount" = "-1" }
 ### <a name="deploy-application-package-with-many-files"></a>Een toepassings pakket met veel bestanden implementeren
 
 Probleem: er is een time [-](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) out opgetreden voor een toepassings pakket met veel bestanden (volg orde van duizenden).
-Meld
+Probeer:
 - [Comprimeer het pakket](service-fabric-package-apps.md#compress-a-package) voordat u het kopieert naar het archief met installatie kopieën. De compressie vermindert het aantal bestanden.
 - Geef een grotere time-out op voor [REGI ster-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) met de `TimeoutSec` para meter.
 - Geef `Async` Switch op voor [REGI ster-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps). De opdracht wordt geretourneerd wanneer het cluster de opdracht accepteert en de registratie van het toepassings type asynchroon voortzet.

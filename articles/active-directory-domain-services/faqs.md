@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/05/2020
+ms.date: 09/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 6a18dbf5c00c3f3aba2b2d58f060856aba9fb080
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 6e2daa60e99eb7aab34b11f240a2e2fb03c98582
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88722892"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612401"
 ---
 # <a name="frequently-asked-questions-faqs-about-azure-active-directory-ad-domain-services"></a>Veelgestelde vragen over Azure Active Directory (AD) Domain Services
 
@@ -34,7 +34,7 @@ Op deze pagina vindt u antwoorden op veelgestelde vragen over Azure Active Direc
 * [Kan ik Azure AD Domain Services inschakelen met behulp van Power shell?](#can-i-enable-azure-ad-domain-services-using-powershell)
 * [Kan ik Azure AD Domain Services inschakelen met een resource manager-sjabloon?](#can-i-enable-azure-ad-domain-services-using-a-resource-manager-template)
 * [Kan ik domein controllers toevoegen aan een Azure AD Domain Services beheerd domein?](#can-i-add-domain-controllers-to-an-azure-ad-domain-services-managed-domain)
-* [Kunnen gast gebruikers die worden uitgenodigd voor mijn Directory Azure AD Domain Services gebruiken?](#can-guest-users-invited-to-my-directory-use-azure-ad-domain-services)
+* [Kunnen gast gebruikers worden uitgenodigd voor mijn Directory Azure AD Domain Services gebruiken?](#can-guest-users-be-invited-to-my-directory-use-azure-ad-domain-services)
 * [Kan ik een bestaand Azure AD Domain Services beheerd domein verplaatsen naar een ander abonnement, een andere resource groep, een andere regio of een virtueel netwerk?](#can-i-move-an-existing-azure-ad-domain-services-managed-domain-to-a-different-subscription-resource-group-region-or-virtual-network)
 * [Bevat Azure AD Domain Services opties voor hoge Beschik baarheid?](#does-azure-ad-domain-services-include-high-availability-options)
 
@@ -72,7 +72,7 @@ Ja, u kunt een Azure AD Domain Services beheerd domein maken met behulp van een 
 ### <a name="can-i-add-domain-controllers-to-an-azure-ad-domain-services-managed-domain"></a>Kan ik domein controllers toevoegen aan een Azure AD Domain Services beheerd domein?
 Nee. Het door Azure AD Domain Services verschafte domein is een beheerd domein. U hoeft geen domein controllers in te richten, configureren of anderszins te beheren voor dit domein. Deze beheer activiteiten worden door micro soft als service verschaft. Daarom kunt u geen extra domein controllers (lezen/schrijven of alleen-lezen) toevoegen voor het beheerde domein.
 
-### <a name="can-guest-users-invited-to-my-directory-use-azure-ad-domain-services"></a>Kunnen gast gebruikers die worden uitgenodigd voor mijn Directory Azure AD Domain Services gebruiken?
+### <a name="can-guest-users-be-invited-to-my-directory-use-azure-ad-domain-services"></a>Kunnen gast gebruikers worden uitgenodigd voor mijn Directory Azure AD Domain Services gebruiken?
 Nee. Gast gebruikers die zijn uitgenodigd voor uw Azure AD-adres lijst met het [Azure AD B2B](../active-directory/external-identities/what-is-b2b.md) -invite-proces, worden gesynchroniseerd met uw Azure AD Domain Services beheerde domein. Wacht woorden voor deze gebruikers worden echter niet opgeslagen in uw Azure AD-adres lijst. Daarom heeft Azure AD Domain Services geen manier om NTLM-en Kerberos-hashes te synchroniseren voor deze gebruikers in uw beheerde domein. Dergelijke gebruikers kunnen zich niet aanmelden of computers toevoegen aan het beheerde domein.
 
 ### <a name="can-i-move-an-existing-azure-ad-domain-services-managed-domain-to-a-different-subscription-resource-group-region-or-virtual-network"></a>Kan ik een bestaand Azure AD Domain Services beheerd domein verplaatsen naar een ander abonnement, een andere resource groep, een andere regio of een virtueel netwerk?
@@ -94,6 +94,7 @@ Ja. Elk Azure AD Domain Services beheerd domein bevat twee domein controllers. U
 * [Wat is het beleid voor de levens duur van wacht woorden op een beheerd domein?](#what-is-the-password-lifetime-policy-on-a-managed-domain)
 * [Biedt Azure AD Domain Services AD-account vergrendelings beveiliging?](#does-azure-ad-domain-services-provide-ad-account-lockout-protection)
 * [Kan ik Distributed File System (DFS) en replicatie binnen Azure AD Domain Services configureren?](#can-i-configure-distributed-file-system-and-replication-within-azure-ad-domain-services)
+* [Hoe worden Windows-updates toegepast in Azure AD Domain Services?](#how-are-windows-updates-applied-in-azure-ad-domain-services)
 
 ### <a name="can-i-connect-to-the-domain-controller-for-my-managed-domain-using-remote-desktop"></a>Kan ik verbinding maken met de domein controller voor mijn beheerde domein met behulp van Extern bureaublad?
 Nee. U bent niet gemachtigd om verbinding te maken met domein controllers voor het beheerde domein met behulp van Extern bureaublad. Leden van de groep *Aad DC-Administrators* kunnen het beheerde domein beheren met AD-beheer Programma's zoals het Active Directory Administration Center (ADAC) of AD Power shell. Deze hulpprogram ma's worden geïnstalleerd met behulp van de functie *Remote Server Administration Tools* op een Windows-Server die is gekoppeld aan het beheerde domein. Zie [een beheer-VM maken voor het configureren en beheren van een Azure AD Domain Services beheerd domein](tutorial-create-management-vm.md)voor meer informatie.
@@ -114,7 +115,7 @@ Wijzigingen die zijn aangebracht in uw Azure AD-adres lijst met behulp van de Az
 Nee. Het schema wordt door micro soft beheerd voor het beheerde domein. Schema-uitbrei dingen worden niet ondersteund door Azure AD Domain Services.
 
 ### <a name="can-i-modify-or-add-dns-records-in-my-managed-domain"></a>Kan ik DNS-records in mijn beheerde domein wijzigen of toevoegen?
-Ja. Leden van de groep *Aad DC-Administrators* krijgen *DNS-administrator* bevoegdheden voor het wijzigen van DNS-records in het beheerde domein. Deze gebruikers kunnen de DNS-beheer console gebruiken op een computer met Windows Server die is toegevoegd aan het beheerde domein voor het beheren van DNS. Als u de DNS-beheer console wilt gebruiken, installeert u de *Hulpprogram ma's voor DNS-server*, die deel uitmaakt van de optionele functie *Remote Server Administration Tools* op de-server. Zie [DNS beheren in een Azure AD Domain Services beheerd domein](manage-dns.md)voor meer informatie.
+Ja. Leden van de groep *Aad DC-Administrators* krijgen *DNS-administrator* bevoegdheden voor het wijzigen van DNS-records in het beheerde domein. Deze gebruikers kunnen de DNS-beheer console gebruiken op een computer met Windows Server die is toegevoegd aan het beheerde domein voor het beheren van DNS. Als u de DNS-beheer console wilt gebruiken, installeert u de *Hulpprogram ma's voor DNS-server*, die deel uitmaken van de optionele functie *Remote Server Administration Tools* op de-server. Zie [DNS beheren in een Azure AD Domain Services beheerd domein](manage-dns.md)voor meer informatie.
 
 ### <a name="what-is-the-password-lifetime-policy-on-a-managed-domain"></a>Wat is het beleid voor de levens duur van wacht woorden op een beheerd domein?
 De standaard levensduur van het wacht woord voor een Azure AD Domain Services beheerd domein is 90 dagen. De levens duur van het wacht woord is niet gesynchroniseerd met de levens duur van het wacht woord dat is geconfigureerd in azure AD. Daarom hebt u mogelijk een situatie waarin gebruikers wachtwoorden verlopen in uw beheerde domein, maar nog steeds geldig zijn in azure AD. In dergelijke scenario's moeten gebruikers hun wacht woord wijzigen in azure AD en wordt het nieuwe wacht woord gesynchroniseerd met uw beheerde domein. Als u de standaard levensduur van het wacht woord in een beheerd domein wilt wijzigen, kunt u [aangepaste wachtwoord beleidsregels maken en configureren.](password-policy.md)
@@ -129,17 +130,20 @@ Ja. Vijf ongeldige wachtwoord pogingen binnen twee minuten op het beheerde domei
 ### <a name="can-i-configure-distributed-file-system-and-replication-within-azure-ad-domain-services"></a>Kan ik Distributed File System en replicatie binnen Azure AD Domain Services configureren?
 Nee. Distributed File System (DFS) en replicatie zijn niet beschikbaar wanneer u Azure AD Domain Services gebruikt.
 
+### <a name="how-are-windows-updates-applied-in-azure-ad-domain-services"></a>Hoe worden Windows-updates toegepast in Azure AD Domain Services?
+Op domein controllers in een beheerd domein worden automatisch de vereiste Windows-updates toegepast. U kunt hier niets configureren of beheren. Zorg ervoor dat u geen regels voor netwerk beveiligings groepen maakt waarmee uitgaand verkeer naar Windows-updates wordt geblokkeerd. Voor uw eigen Vm's die zijn gekoppeld aan het beheerde domein, bent u verantwoordelijk voor het configureren en Toep assen van vereiste updates voor het besturings systeem en de toepassing.
+
 ## <a name="billing-and-availability"></a>Facturering en beschik baarheid
 
 * [Is er Azure AD Domain Services een betaalde service?](#is-azure-ad-domain-services-a-paid-service)
 * [Is er een gratis proef versie voor de service?](#is-there-a-free-trial-for-the-service)
 * [Kan ik een Azure AD Domain Services beheerd domein onderbreken?](#can-i-pause-an-azure-ad-domain-services-managed-domain)
-* [Kan ik een failover-Azure AD Domain Services naar een andere regio voor een DR-gebeurtenis?](#can-i-pause-an-azure-ad-domain-services-managed-domain)
-* [Kan ik Azure AD Domain Services krijgen als onderdeel van de Enter prise Mobility Suite (EMS)? Heb ik Azure AD Premium nodig om Azure AD Domain Services te gebruiken?](#can-i-failover-azure-ad-domain-services-to-another-region-for-a-dr-event)
+* [Kan ik een failover uitvoeren van Azure AD Domain Services naar een andere regio voor een DR-gebeurtenis?](#can-i-pause-an-azure-ad-domain-services-managed-domain)
+* [Kan ik Azure AD Domain Services krijgen als onderdeel van de Enter prise Mobility Suite (EMS)? Heb ik Azure AD Premium nodig om Azure AD Domain Services te gebruiken?](#can-i-fail-over-azure-ad-domain-services-to-another-region-for-a-dr-event)
 * [In welke Azure-regio's is de service beschikbaar?](#can-i-get-azure-ad-domain-services-as-part-of-enterprise-mobility-suite-ems-do-i-need-azure-ad-premium-to-use-azure-ad-domain-services)
 
 ### <a name="is-azure-ad-domain-services-a-paid-service"></a>Is er Azure AD Domain Services een betaalde service?
-Ja. Zie de pagina [prijzen](https://azure.microsoft.com/pricing/details/active-directory-ds/) voor meer informatie.
+Ja. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/active-directory-ds/)voor meer informatie.
 
 ### <a name="is-there-a-free-trial-for-the-service"></a>Is er een gratis proef versie voor de service?
 Azure AD Domain Services is opgenomen in de gratis proef versie voor Azure. U kunt zich registreren voor een [gratis proef versie van Azure voor één maand](https://azure.microsoft.com/pricing/free-trial/).
@@ -147,7 +151,7 @@ Azure AD Domain Services is opgenomen in de gratis proef versie voor Azure. U ku
 ### <a name="can-i-pause-an-azure-ad-domain-services-managed-domain"></a>Kan ik een Azure AD Domain Services beheerd domein onderbreken?
 Nee. Zodra u een Azure AD Domain Services beheerd domein hebt ingeschakeld, is de service beschikbaar in het geselecteerde virtuele netwerk totdat u het beheerde domein verwijdert. Er is geen manier om de service te onderbreken. De facturering blijft elk uur in beslag totdat u het beheerde domein verwijdert.
 
-### <a name="can-i-failover-azure-ad-domain-services-to-another-region-for-a-dr-event"></a>Kan ik een failover-Azure AD Domain Services naar een andere regio voor een DR-gebeurtenis?
+### <a name="can-i-fail-over-azure-ad-domain-services-to-another-region-for-a-dr-event"></a>Kan ik een failover uitvoeren van Azure AD Domain Services naar een andere regio voor een DR-gebeurtenis?
 Nee. Azure AD Domain Services biedt momenteel geen geo-redundant implementatie model. Het is beperkt tot één virtueel netwerk in een Azure-regio. Als u meerdere Azure-regio's wilt gebruiken, moet u uw Active Directory-domein-controllers uitvoeren op virtuele Azure IaaS-machines. Zie [uw on-premises Active Directory domein uitbreiden naar Azure](/azure/architecture/reference-architectures/identity/adds-extend-domain)voor architectuur richtlijnen.
 
 ### <a name="can-i-get-azure-ad-domain-services-as-part-of-enterprise-mobility-suite-ems-do-i-need-azure-ad-premium-to-use-azure-ad-domain-services"></a>Kan ik Azure AD Domain Services krijgen als onderdeel van de Enter prise Mobility Suite (EMS)? Heb ik Azure AD Premium nodig om Azure AD Domain Services te gebruiken?

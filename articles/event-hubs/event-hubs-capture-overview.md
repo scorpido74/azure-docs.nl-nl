@@ -3,12 +3,12 @@ title: Streaming-gebeurtenissen vastleggen-Azure Event Hubs | Microsoft Docs
 description: Dit artikel bevat een overzicht van de functie Capture waarmee u gebeurtenissen streaming kunt vastleggen via Azure Event Hubs.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 2302f31130b6179b187c17e2f44c5fa7cc50648b
-ms.sourcegitcommit: 0194a29a960e3615f96a2d9d8a7e681cf3e8f9ab
+ms.openlocfilehash: 1b79db7a7f8d0fe03b21e005ef696d5fe55ac0a1
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89667441"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613404"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Gebeurtenissen vastleggen via Azure Event Hubs in Azure Blob Storage of Azure Data Lake Storage
 Met Azure Event Hubs kunt u automatisch de streaminggegevens vastleggen in Event Hubs in een [Azure Blob-opslag](https://azure.microsoft.com/services/storage/blobs/) of [Azure data Lake Storage gen 1-of gen 2](https://azure.microsoft.com/services/data-lake-store/) -account van uw keuze, met extra flexibiliteit voor het opgeven van een tijd-of grootte-interval. Het instellen van vastleggen is snel, er zijn geen administratieve kosten om deze uit te voeren en deze worden automatisch geschaald met Event Hubs [doorvoer eenheden](event-hubs-scalability.md#throughput-units). Event Hubs Capture is de eenvoudigste manier om streaminggegevens te laden in azure, en u kunt zich concentreren op gegevens verwerking in plaats van op het vastleggen van gegevens.
@@ -18,6 +18,8 @@ Met Azure Event Hubs kunt u automatisch de streaminggegevens vastleggen in Event
 
 Met Event Hubs Capture kunt u in realtime en op batch gebaseerde pijp lijnen op dezelfde stroom verwerken. Dit betekent dat u oplossingen kunt bouwen die in de loop van de tijd met uw behoeften groeien. Of u nu batch-gebaseerde systemen bouwt met een ogen blik naar toekomstige realtime verwerking, of als u een efficiënt koud pad wilt toevoegen aan een bestaande realtime-oplossing, kunt u met Event Hubs Capture gemakkelijker werken met streaming-gegevens.
 
+> [!IMPORTANT]
+> Het Azure Storage-of Azure Data Lake Storage-account van de doel opslag moet zich in hetzelfde abonnement als de Event Hub bevallen. 
 
 ## <a name="how-event-hubs-capture-works"></a>Hoe Event Hubs Capture werkt
 

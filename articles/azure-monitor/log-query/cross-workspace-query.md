@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/01/2020
-ms.openlocfilehash: e2f9430ae039cc54c3e6180eb8ea76791d17f67f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8eb163c95fb1426ebae8956d50f6d8f6aec6fd7f
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91285125"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91612079"
 ---
 # <a name="perform-log-query-in-azure-monitor-that-span-across-workspaces-and-apps"></a>Een logboek query uitvoeren in Azure Monitor die betrekking hebben op alle werk ruimten en apps
 
@@ -143,5 +143,4 @@ applicationsScoping
 ## <a name="next-steps"></a>Volgende stappen
 
 - Bekijk [logboek gegevens analyseren in azure monitor](log-query-overview.md) voor een overzicht van logboek query's en hoe Azure monitor logboek gegevens zijn gestructureerd.
-- Bekijk [Azure monitor-logboek query's](query-language.md) om alle resources voor Azure monitor-logboek query's weer te geven.
 
