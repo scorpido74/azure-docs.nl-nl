@@ -3,12 +3,12 @@ title: Streaming-gebeurtenissen Event Hubs vastleggen met behulp van Azure Porta
 description: In dit artikel wordt beschreven hoe u het vastleggen van streaming-gebeurtenissen via Azure Event Hubs kunt inschakelen met behulp van Azure Portal.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 103aa4e3da84e41275bec6310035c117fe780a18
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2381bfa627d00a78ed91af0ba81579588ee016ce
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85315733"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613574"
 ---
 # <a name="enable-capturing-of-events-streaming-through-azure-event-hubs"></a>Vastleggen van streaming-gebeurtenissen via Azure Event Hubs inschakelen
 
@@ -17,6 +17,9 @@ Met Azure [Event hubs Capture][capture-overview] kunt u automatisch de streaming
 Wanneer u de gebeurtenishub maakt, kunt u Capture configureren met behulp van de [Azure-portal](https://portal.azure.com). U kunt de gegevens vastleggen in een Azure [Blob-opslag](https://azure.microsoft.com/services/storage/blobs/) container of op een [Azure data Lake Storage gen 1-of gen 2](https://azure.microsoft.com/services/data-lake-store/) -account.
 
 Zie voor meer informatie het [overzicht van Event Hubs Capture][capture-overview].
+
+> [!IMPORTANT]
+> Het Azure Storage-of Azure Data Lake Storage-account van de doel opslag moet zich in hetzelfde abonnement als de Event Hub bevallen.
 
 ## <a name="capture-data-to-azure-storage"></a>Gegevens vastleggen in Azure Storage
 
@@ -84,7 +87,7 @@ U kunt Capture configureren op bestaande Event Hubs in Event Hubs-naamruimten. O
 
 ![Azure Data Lake Storage gen 2 configureren](./media/event-hubs-capture-enable-through-portal/configure-data-lake-storage-gen2.png)
 
-### <a name="azure-data-lake-storage-gen-1"></a>Azure Data Lake Storage gen 1 
+### <a name="azure-data-lake-storage-gen-1"></a>Azure Data Lake Storage Gen 1 
 
 ![Azure Data Lake Storage configureren][4]
 

@@ -4,12 +4,12 @@ description: Meer informatie over het oplossen van veelvoorkomende problemen bij
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: 855e5e5e23371f600a7e73139f2e6da1eebc91d0
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 81adbfe7a5a04ffb8fcb3311ad3561135b77ab7b
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90068826"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91614016"
 ---
 # <a name="aks-troubleshooting"></a>AKS-problemen oplossen
 
@@ -183,6 +183,14 @@ Gebruik de volgende tijdelijke oplossingen voor dit probleem:
 ## <a name="im-getting-aadsts7000215-invalid-client-secret-is-provided-when-using-aks-api-what-should-i-do"></a>Ik krijg het `"AADSTS7000215: Invalid client secret is provided."` gebruik van AKS-API. Wat moet ik doen?
 
 Dit wordt meestal veroorzaakt door het vervallen van de referenties van de Service-Principal. [Werk de referenties voor een AKS-cluster bij.](update-credentials.md)
+
+## <a name="i-cant-access-my-cluster-api-from-my-automationdev-machinetooling-when-using-api-server-authorized-ip-ranges-how-do-i-fix-this-problem"></a>Ik heb geen toegang tot mijn cluster-API vanaf mijn Automation/dev-computer/-hulp programma bij het gebruik van een API server-toegestaan IP-bereik. Dit probleem Hoe kan ik oplossen?
+
+Hiervoor moet `--api-server-authorized-ip-ranges` u de IP (s) of IP-bereik (en) van de gebruikte automatiserings-/dev/hulp programma-systemen bevatten. Zie de sectie ' mijn IP zoeken ' in [beveiligde toegang tot de API-server met behulp van geautoriseerde IP-](api-server-authorized-ip-ranges.md)adresbereiken.
+
+## <a name="im-unable-to-view-resources-in-kubernetes-resource-viewer-in-azure-portal-for-my-cluster-configured-with-api-server-authorized-ip-ranges-how-do-i-fix-this-problem"></a>Ik kan geen resources weer geven in de Kubernetes-resource viewer in Azure Portal voor mijn cluster dat is geconfigureerd met de API-server geautoriseerde IP-adresbereiken. Dit probleem Hoe kan ik oplossen?
+
+De [Kubernetes-resource Viewer](kubernetes-portal.md) moet toegang hebben tot `--api-server-authorized-ip-ranges` de lokale client computer of het IP-adres bereik (van waaruit de portal wordt gebladerd). Zie de sectie ' mijn IP zoeken ' in [beveiligde toegang tot de API-server met behulp van geautoriseerde IP-](api-server-authorized-ip-ranges.md)adresbereiken.
 
 ## <a name="im-receiving-errors-after-restricting-egress-traffic"></a>Ik ontvang fouten na het beperken van het uitgaande verkeer
 

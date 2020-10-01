@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/6/2020
 ms.reviewer: sngun
-ms.openlocfilehash: af777efda769315019ecee41d4053f5ab82f3047
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: bb8a413f2e2a3aa4a8facd533d822312bb61fa0e
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920429"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613557"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>Consistentieniveaus en Azure Cosmos DB-API's
 
@@ -49,11 +49,11 @@ Tijdens het gebruik van de API van Azure Cosmos DB voor MongoDB:
 
 * Azure Cosmos DB wijst de Lees bezorgdheid die door het MongoDB-client stuur programma is opgegeven, dynamisch toe aan een van de Azure Cosmos DB consistentie niveaus die dynamisch zijn geconfigureerd voor een lees aanvraag.  
 
-* U kunt aantekeningen toevoegen aan een specifieke regio die is gekoppeld aan uw Azure Cosmos-account als ' Master ' door de regio als de eerste Beschrijf bare regio te maken. 
+* U kunt aantekeningen toevoegen aan een specifieke regio die is gekoppeld aan uw Azure Cosmos-account als ' primair ' door de regio als de eerste Beschrijf bare regio te maken. 
 
 In de volgende tabel ziet u hoe de systeem eigen MongoDB-schrijf-en lees problemen worden toegewezen aan de consistentie niveaus van Azure Cosmos wanneer u de API van Azure Cosmos DB gebruikt voor MongoDB:
 
-:::image type="content" source="./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png" alt-text="Toewijzing van MongoDB-consistentie model" lightbox= "./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png":::
+:::image type="content" source="./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png" alt-text="Toewijzing van Cassandra-consistentie model" lightbox= "./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

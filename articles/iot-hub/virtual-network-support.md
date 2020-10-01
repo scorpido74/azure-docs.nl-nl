@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 09/24/2020
 ms.author: jlian
-ms.openlocfilehash: eb25fc0d7831bc06b708431ce3d47c73b36fe5c6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6c562f7a5d9c7c02c737898821eef5ee5271eea4
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91281247"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613897"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>Ondersteuning voor virtuele netwerken IoT Hub met persoonlijke koppelingen en beheerde identiteit
 
@@ -38,7 +38,7 @@ In dit artikel wordt beschreven hoe u deze doelen kunt bereiken met behulp van e
 
 Een persoonlijk eind punt is een privé-IP-adres dat is toegewezen in een VNet van de klant via welke een Azure-resource bereikbaar is. Met de persoonlijke koppeling van Azure kunt u een persoonlijk eind punt instellen voor uw IoT-hub zodat services in uw VNet IoT Hub kunnen bereiken zonder dat er verkeer naar het open bare eind punt van IoT Hub hoeft te worden verzonden. Op dezelfde manier kunnen uw on-premises apparaten gebruikmaken van [virtueel particulier netwerk (VPN)](../vpn-gateway/vpn-gateway-about-vpngateways.md) of [ExpressRoute](https://azure.microsoft.com/services/expressroute/) peering om verbinding te krijgen met uw VNet en uw IOT hub (via het persoonlijke eind punt). Als gevolg hiervan kunt u de verbinding met de open bare eind punten van uw IoT-hub beperken of volledig blok keren met behulp van [IOT hub IP-filter](./iot-hub-ip-filtering.md) en [route ring configureren om geen gegevens naar het ingebouwde eind punt te verzenden](#built-in-event-hub-compatible-endpoint-doesnt-support-access-over-private-endpoint). Deze aanpak houdt connectiviteit met uw hub met behulp van het privé-eind punt voor apparaten. De hoofd focus van deze installatie is voor apparaten in een on-premises netwerk. Deze installatie wordt niet aanbevolen voor apparaten die zijn geïmplementeerd in een Wide Area-netwerk.
 
-![IoT Hub openbaar eind punt](./media/virtual-network-support/virtual-network-ingress.png)
+![Engress virtuele netwerk IoT Hub](./media/virtual-network-support/virtual-network-ingress.png)
 
 Voordat u doorgaat, controleert u of aan de volgende vereisten wordt voldaan:
 
@@ -92,7 +92,7 @@ Om ervoor te zorgen dat andere services uw IoT-hub als een vertrouwde micro soft
 
 1. Onder **status**selecteert u **aan**en klikt u vervolgens op **Opslaan**.
 
-    :::image type="content" source="media/virtual-network-support/managed-identity.png" alt-text="Scherm afbeelding die laat zien hoe u de beheerde identiteit voor IoT Hub inschakelt":::
+    :::image type="content" source="media/virtual-network-support/managed-identity.png" alt-text="Scherm opname waarin wordt getoond waar een persoonlijk eind punt moet worden toegevoegd voor IoT Hub":::
 
 ### <a name="assign-managed-identity-to-your-iot-hub-at-creation-time-using-arm-template"></a>Beheerde identiteit aan uw IoT Hub toewijzen tijdens het maken van een ARM-sjabloon
 

@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
-ms.date: 08/14/2020
-ms.openlocfilehash: ceb1c9711d67b32f9a31e6105df0e0e0eec42907
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/30/2020
+ms.openlocfilehash: 44dafd1b0043c2daa7065069f571f13529303a73
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321370"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91614424"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>overzicht van vCore-model-Azure SQL Database en Azure SQL Managed instance 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -31,7 +31,7 @@ Het Virtual core (vCore)-aankoop model dat wordt gebruikt door Azure SQL Databas
 
 Opties voor de servicelaag in het vCore-model bevatten Algemeen, Bedrijfskritiek en grootschalige. De servicelaag definieert in het algemeen de opslag architectuur, ruimte en I/O-limieten en opties voor bedrijfs continuïteit die betrekking hebben op Beschik baarheid en herstel na nood gevallen.
 
-|-|**Algemeen**|**Bedrijfskritiek**|**Hyperscale**|
+|-|**Algemeen doel**|**Bedrijfskritiek**|**Hyperscale**|
 |---|---|---|---|
 |Ideaal voor|De meeste zakelijke workloads. Biedt budgetgerichte, gebalanceerde en schaalbare reken- en opslagopties. |Biedt zakelijke toepassingen de hoogste flexibiliteit voor storingen met behulp van verschillende geïsoleerde replica's en biedt de hoogste I/O-prestaties per database replica.|De meeste zakelijke workloads met zeer schaal bare opslag-en lees vereisten.  Biedt meer flexibiliteit voor storingen door de configuratie van meer dan één geïsoleerde database replica toe te staan. |
 |Storage|Maakt gebruik van externe opslag.<br/>**SQL database voorziene Compute**:<br/>5 GB – 4 TB<br/>**Serverloze Compute**:<br/>5 GB-3 TB<br/>**SQL Managed instance**: 32 GB-8 TB |Maakt gebruik van lokale SSD-opslag.<br/>**SQL database voorziene Compute**:<br/>5 GB – 4 TB<br/>**SQL-beheerd exemplaar**:<br/>32 GB-4 TB |Flexibele Automatische toename van opslag als dat nodig is. Ondersteunt Maxi maal 100 TB aan opslag ruimte. Maakt gebruik van lokale SSD-opslag voor lokale buffer-pool cache en lokale gegevens opslag. Maakt gebruik van Azure externe opslag als definitieve gegevens opslag op lange termijn. |
@@ -91,7 +91,11 @@ De Fsv2-serie wordt alleen ondersteund in de laag Algemeen. Zie de [Beschik baar
 - M-serie is een optie voor geoptimaliseerd voor geheugen voor werk belastingen die meer geheugen en hogere reken limieten hebben dan wordt verzorgd door GEN5.
 - De M-serie biedt 29 GB per vCore en Maxi maal 128 vCores, waardoor de geheugen limiet wordt verhoogd ten opzichte van GEN5, 8x tot bijna 4 TB.
 
-De M-serie wordt alleen ondersteund in de laag Bedrijfskritiek en biedt geen ondersteuning voor zone redundantie.  Het abonnement moet een betaald aanbod type zijn, inclusief betalen naar gebruik of Enterprise Agreement (EA). Zie de [Beschik baarheid van de m-serie](#m-series-1)voor regio's waar de m-serie beschikbaar is.
+De M-serie wordt alleen ondersteund in de laag Bedrijfskritiek en biedt geen ondersteuning voor zone redundantie.  Zie de [Beschik baarheid van de m-serie](#m-series-1)voor regio's waar de m-serie beschikbaar is.
+
+#### <a name="azure-offer-types-supported-by-m-series"></a>Azure-aanbiedings typen die worden ondersteund door M-serie
+
+Voor toegang tot de M-serie moet het abonnement een betaald aanbod type zijn, inclusief betalen naar gebruik of Enterprise Agreement (EA).  Zie [huidige aanbiedingen zonder bestedings limieten](https://azure.microsoft.com/support/legal/offer-details)voor een volledige lijst met Azure-aanbiedings typen die door de M-serie worden ondersteund.
 
 <!--
 To enable M-series hardware for a subscription and region, a support request must be opened. The subscription must be a paid offer type including Pay-As-You-Go or Enterprise Agreement (EA).  If the support request is approved, then the selection and provisioning experience of M-series follows the same pattern as for other hardware generations. For regions where M-series is available, see [M-series availability](#m-series).

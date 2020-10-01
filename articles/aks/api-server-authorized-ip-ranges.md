@@ -4,12 +4,12 @@ description: Meer informatie over het beveiligen van uw cluster met behulp van e
 services: container-service
 ms.topic: article
 ms.date: 09/21/2020
-ms.openlocfilehash: 5dbe5061253fb18222a476a88a1ec94a5ce4b0fa
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 99c6b173d96bbd54f12a0edc501d49e8c65caf01
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91299660"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613727"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Veilige toegang tot de API-server met behulp van geautoriseerde IP-adresbereiken in azure Kubernetes service (AKS)
 
@@ -129,6 +129,32 @@ az aks update \
     --name myAKSCluster \
     --api-server-authorized-ip-ranges ""
 ```
+
+## <a name="how-to-find-my-ip-to-include-in---api-server-authorized-ip-ranges"></a>Hoe vind ik mijn IP-adres om in te voegen `--api-server-authorized-ip-ranges` ?
+
+U moet uw ontwikkel computers, hulpprogram ma's of automatiserings-IP-adressen toevoegen aan de AKS-cluster lijst met goedgekeurde IP-bereiken om vanaf daar toegang te krijgen tot de API-server. 
+
+Een andere optie is het configureren van een JumpBox met het benodigde hulp programma binnen een afzonderlijk subnet in het virtuele netwerk van de firewall. Hierbij wordt ervan uitgegaan dat uw omgeving een firewall heeft met het respectieve netwerk en dat u de firewall-Ip's hebt toegevoegd aan de gemachtigde bereiken. En als u tunneling van het subnet AKS naar het subnet van de firewall hebt geforceerd, dan is de JumpBox in het subnet van het cluster ook goed.
+
+Voeg een ander IP-adres toe aan de goedgekeurde bereiken met de volgende opdracht.
+
+```bash
+# Retrieve your IP address
+CURRENT_IP=$(dig @resolver1.opendns.com ANY myip.opendns.com +short)
+# Add to AKS approved list
+az aks update -g $RG -n $AKSNAME --api-server-authorized-ip-ranges $CURRENT_IP/32
+```
+
+>> [!NOTE]
+> In het bovenstaande voor beeld worden de door de API server geautoriseerde IP-adresbereiken toegevoegd aan het cluster. Als u gemachtigde IP-bereiken wilt uitschakelen, gebruikt u AZ AKS update en geeft u een leeg bereik op. 
+
+U kunt ook de onderstaande opdracht op Windows-systemen gebruiken om het open bare IPv4-adres op te halen, of gebruik de stappen in [uw IP-adres zoeken](https://support.microsoft.com/en-gb/help/4026518/windows-10-find-your-ip-address).
+
+```azurepowershell-interactive
+Invoke-RestMethod http://ipinfo.io/json | Select -exp ip
+```
+
+U kunt dit adres ook vinden door te zoeken in ' wat is mijn IP-adres ' in een Internet browser.
 
 ## <a name="next-steps"></a>Volgende stappen
 

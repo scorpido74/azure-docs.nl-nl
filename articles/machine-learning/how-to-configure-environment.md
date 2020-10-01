@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 54c607ebac02a9d7e534d24656a8687e9ff39725
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: b97d36a5773eeb82a60330d0398ea19232f72b1e
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91533176"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613710"
 ---
 # <a name="set-up-a-development-environment-for-azure-machine-learning"></a>Een ontwikkel omgeving instellen voor Azure Machine Learning
 
@@ -122,7 +122,7 @@ Wanneer u een lokale Jupyter Notebook server uitvoert, is het raadzaam om een IP
 
 Raadpleeg de [opslag plaats Azure machine learning notitie blokken](https://github.com/Azure/MachineLearningNotebooks) om aan de slag te gaan met Azure machine learning-en Jupyter-notebooks.
 
-### <a name="visual-studio-code"></a><a id="vscode"></a>Visual Studio Code
+### <a name="visual-studio-code"></a><a id="vscode"></a>Visual Studio code
 
 Visual Studio code gebruiken voor ontwikkeling:
 
@@ -228,7 +228,7 @@ Gebruik deze instellingen:
 | Instelling |Van toepassing op| Waarde |
 |----|---|---|
 | Clusternaam |altijd| yourclustername |
-| Databricks Runtime |altijd|Niet-ML runtime 6,5 (scala 2,11, Spark 2.4.3) |
+| Databricks Runtime |altijd|Niet-ML runtime 7,1 (scala 2,21, Spark 3.0.0) |
 | Python-versie |altijd| 3 |
 | IT |altijd| 2 of hoger |
 | VM-typen worker-knoop punt <br>(bepaalt het maximum aantal gelijktijdige iteraties) |Geautomatiseerde machine learning<br>alleen| Voorkeurs-VM geoptimaliseerd voor geheugen |
@@ -238,19 +238,18 @@ Wacht totdat het cluster wordt uitgevoerd voordat u doorgaat.
 
 ### <a name="install-the-correct-sdk-into-a-databricks-library"></a>De juiste SDK installeren in een Databricks-bibliotheek
 
-Zodra het cluster wordt uitgevoerd, [maakt u een bibliotheek](https://docs.databricks.com/user-guide/libraries.html#create-a-library) om het juiste Azure machine learning SDK-pakket aan uw cluster toe te voegen.
+Zodra het cluster wordt uitgevoerd, [maakt u een bibliotheek](https://docs.databricks.com/user-guide/libraries.html#create-a-library) om het juiste Azure machine learning SDK-pakket aan uw cluster toe te voegen. Voor automatische MILLILITERs slaat u de [sectie SDK voor Databricks met automatische machine learning](#sdk-for-databricks-with-automated-machine-learning)over.
 
 1. Klik met de rechter muisknop op de huidige werkruimte map waar u de bibliotheek wilt opslaan. Selecteer **Create**  >  **bibliotheek**maken.
 
-1. Kies **slechts één** optie (er worden geen andere SDK-installaties ondersteund)
+1. Kies de volgende optie (er worden geen andere SDK-installaties ondersteund)
 
    |SDK- &nbsp; pakket &nbsp; extra's|Bron|PyPi- &nbsp; naam&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
    |----|---|---|
    |Voor Databricks| Python-ei of PyPI uploaden | azureml-SDK [databricks]|
-   |Voor Databricks-with-<br> automatische ML-mogelijkheden| Python-ei of PyPI uploaden | `azureml-sdk[automl]`|
 
    > [!Warning]
-   > Er kunnen geen andere SDK-extra's worden geïnstalleerd. Kies slechts een van de voor gaande opties [ `databricks` ] of [ `automl` ].
+   > Er kunnen geen andere SDK-extra's worden geïnstalleerd. Kies alleen de `databricks` optie [].
 
    * Selecteer niet **automatisch koppelen aan alle clusters**.
    * Selecteer  **koppelen** naast de naam van uw cluster.
@@ -270,9 +269,17 @@ Zodra het cluster wordt uitgevoerd, [maakt u een bibliotheek](https://docs.datab
 
 Als de installatie is voltooid, moet de geïmporteerde bibliotheek er ongeveer als volgt uitzien:
 
-SDK voor Databricks **_zonder_** geautomatiseerde machine learning ![ Azure machine learning SDK voor Databricks](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
+#### <a name="sdk-for-databricks"></a>SDK voor Databricks
+![Azure Machine Learning SDK voor Databricks](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
 
-SDK voor Databricks **met** geautomatiseerde machine learning ![ SDK met geautomatiseerde machine learning geïnstalleerd op Databricks](./media/how-to-configure-environment/automlonadb.png)
+#### <a name="sdk-for-databricks-with-automated-machine-learning"></a>SDK voor Databricks met geautomatiseerde machine learning
+Als het cluster is gemaakt met Databricks niet-ML runtime 7,1 of hoger, voert u de volgende opdracht uit in de eerste cel van uw notitie blok om de AML-SDK te installeren.
+
+```
+%pip install -r https://aka.ms/automl_linux_requirements.txt
+```
+Voor Databricks niet-ML runtime 7,0 en lager installeert u de AML-SDK met het [init-script](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks/automl/README.md).
+
 
 ### <a name="start-exploring"></a>Begin met verkennen
 

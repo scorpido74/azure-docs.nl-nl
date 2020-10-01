@@ -3,18 +3,20 @@ title: Uw back-up regelen met behulp van Back-upcentrum
 description: Meer informatie over het beheren van uw Azure-omgeving om ervoor te zorgen dat al uw resources compatibel zijn met een Back-upcentrum met backup Center.
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: 009ee461b0372a3fb73ffb3b0ee5151b77bd8ef8
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 8a16769be827bf34e5be82409d5b8eb014cdcf1a
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90995766"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91614317"
 ---
 # <a name="govern-your-backup-estate-using-backup-center"></a>Uw back-up regelen met behulp van Back-upcentrum
 
 Back-upcentrum helpt u bij het beheren van uw Azure-omgeving om ervoor te zorgen dat al uw resources compatibel zijn met een back-upperspectief. Hieronder vindt u een aantal beheer mogelijkheden van Back-upcentrum:
 
 * Azure-beleid voor back-ups weer geven en toewijzen
+
+* Bekijk de compatibiliteit van uw resources op alle ingebouwde Azure-beleids regels voor back-up.
 
 * Alle gegevens bronnen weer geven die niet zijn geconfigureerd voor back-up.
 
@@ -29,6 +31,12 @@ Als u alle beschik bare [Azure-beleids regels](https://docs.microsoft.com/azure/
 Als u een van de definities selecteert, kunt u [het beleid toewijzen](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage#assign-a-policy) aan een bereik.
 
 ![Azure Policy definities selecteren](./media/backup-center-govern-environment/azure-policy-definitions.png)
+
+## <a name="backup-compliance"></a>Naleving van back-ups
+
+Door te klikken op het menu-item voor het maken van een back-up kunt u de [compatibiliteit](https://docs.microsoft.com/azure/governance/policy/how-to/get-compliance-data) van uw resources bekijken op basis van de verschillende ingebouwde beleids regels die u hebt toegewezen aan uw Azure-omgeving. U kunt het percentage van de resources weer geven die compatibel zijn met alle beleids regels en de beleids regels met een of meer niet-compatibele resources.
+
+![Naleving van back-ups weer geven](./media/backup-center-govern-environment/azure-policy-compliance.png)
 
 ## <a name="protectable-datasources"></a>Beveilig bare gegevens bronnen
 

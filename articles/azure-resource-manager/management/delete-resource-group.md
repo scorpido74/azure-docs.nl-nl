@@ -3,13 +3,13 @@ title: Resource groep en-resources verwijderen
 description: Hierin wordt beschreven hoe u resource groepen en-resources verwijdert. Hierin wordt beschreven hoe Azure Resource Manager het verwijderen van resources ordent bij het verwijderen van een resource groep. Hierin worden de antwoord codes beschreven en hoe Resource Manager deze verwerkt om te bepalen of het verwijderen is geslaagd.
 ms.topic: conceptual
 ms.date: 09/03/2019
-ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 2720a9ae8c0a67d8e6f9c1105b33c0a3c343cf47
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: seodec18
+ms.openlocfilehash: d6c38169916cc6c47d6f05c88645fa435bbdb146
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498494"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91614407"
 ---
 # <a name="azure-resource-manager-resource-group-and-resource-deletion"></a>Azure Resource Manager resource groep en verwijderen van resources
 
@@ -75,13 +75,13 @@ az group delete --name ExampleResourceGroup
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. Selecteer in de [Portal](https://portal.azure.com)de resource groep die u wilt verwijderen.
+1. Selecteer de resourcegroep die u wilt verwijderen in de [portal](https://portal.azure.com).
 
 1. Selecteer **Resourcegroep verwijderen**.
 
    ![Resourcegroep verwijderen](./media/delete-resource-group/delete-group.png)
 
-1. Om het verwijderen te bevestigen, typt u de naam van de resource groep
+1. Typ de naam van de resourcegroep om het verwijderen te bevestigen
 
 ---
 
@@ -123,4 +123,4 @@ az resource delete \
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [Azure Resource Manager-overzicht](overview.md)voor meer informatie over de concepten van Resource Manager.
-* Zie [Power shell](/powershell/module/az.resources/Remove-AzResourceGroup), [Azure cli](/cli/azure/group?view=azure-cli-latest#az-group-delete)en [rest API](/rest/api/resources/resourcegroups/delete)voor verwijderings opdrachten.
+* Zie [Power shell](/powershell/module/az.resources/Remove-AzResourceGroup), [Azure cli](/cli/azure/group#az-group-delete)en [rest API](/rest/api/resources/resourcegroups/delete)voor verwijderings opdrachten.

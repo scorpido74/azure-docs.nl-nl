@@ -7,12 +7,12 @@ ms.date: 09/24/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: e7728af831b26bff19f347e5b85db6420e7966ed
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: f082e4d4c6c71e460842f80a5aa17130b6a41279
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91579989"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91614220"
 ---
 # <a name="iot-plug-and-play-service-developer-guide"></a>Ontwikkelaars handleiding voor IoT Plug en Play-service
 
@@ -28,19 +28,20 @@ Gebruik de Azure IoT-service-Sdk's in uw oplossing om te communiceren met appara
 
 Met de Sdk's van de service krijgt u toegang tot apparaatgegevens van een oplossing, zoals een bureau blad of webtoepassing. De service-Sdk's bevatten twee naam ruimten en object modellen die u kunt gebruiken om de model-ID op te halen:
 
-- IOT hub-service-client.
-- Digital Apparaatdubbels service-client.
+- IOT hub-service-client. Met deze service wordt de model-ID als een dubbele eigenschap van een apparaat weer gegeven.
 
-| Taal | IoT Hub-serviceclient | Digital Apparaatdubbels service-client |
+- Digital Apparaatdubbels service-client. De nieuwe Digital Apparaatdubbels-API werkt op hoogwaardige constructies zoals onderdelen, eigenschappen en opdrachten die een Digital Apparaatdubbels Definition Language model definiëren. De digitale twee Api's maken het gemakkelijker voor oplossingen bouwers om IoT-Plug en Play oplossingen te maken.
+
+| Platform | IoT Hub-serviceclient | Digital Apparaatdubbels service-client |
 | -------- | ---------------------- | ---------------------------- |
-| C#       | [Documentatie](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.shared.twin.modelid?view=azure-dotnet#Microsoft_Azure_Devices_Shared_Twin_ModelId&preserve-view=true) <br/> [Voorbeeld](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/service/PnpServiceSamples/Thermostat/Program.cs)| [Voorbeeld](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/service/DigitalTwinClientSamples) |
-| Java     | [Documentatie](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.service.devicetwin.devicetwindevice?view=azure-java-stable&preserve-view=true) <br/> [Voorbeeld](https://github.com/Azure/azure-iot-sdk-java/blob/master/service/iot-service-samples/pnp-service-sample/thermostat-service-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/service/Thermostat.java)| [Voorbeeld](https://github.com/Azure/azure-iot-sdk-java/tree/master/service/iot-service-samples/digitaltwin-service-samples) |
-| Node.js  | [Documentatie](https://docs.microsoft.com/javascript/api/azure-iothub/twin?view=azure-node-latest&preserve-view=true) <br/> [Voorbeeld](https://github.com/Azure/azure-iot-sdk-node/blob/master/service/samples/javascript/twin.js)| [Documentatie](https://docs.microsoft.com/javascript/api/azure-iot-digitaltwins-service/?view=azure-node-latest&preserve-view=true) |
-| Python   | [Documentatie](https://docs.microsoft.com/python/api/azure-iot-hub/azure.iot.hub.iothubregistrymanager?view=azure-python&preserve-view=true) <br/> [Voorbeeld](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-hub/samples/iothub_registry_manager_method_sample.py)| [Documentatie](https://docs.microsoft.com/python/api/azure-iot-hub/azure.iot.hub.iothubdigitaltwinmanager?view=azure-python&preserve-view=true) | 
+| .NET     | [Documentatie](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.shared.twin.modelid?view=azure-dotnet#Microsoft_Azure_Devices_Shared_Twin_ModelId&preserve-view=true) <br/> [Voorbeelden](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/service/PnpServiceSamples)| [Voorbeelden](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/service/DigitalTwinClientSamples) |
+| Java     | [Documentatie](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.service.devicetwin.devicetwindevice?view=azure-java-stable&preserve-view=true) <br/> [Voorbeelden](https://github.com/Azure/azure-iot-sdk-java/blob/master/service/iot-service-samples/pnp-service-sample)| [Voorbeelden](https://github.com/Azure/azure-iot-sdk-java/tree/master/service/iot-service-samples/digitaltwin-service-samples) |
+| Node.js  | [Documentatie](https://docs.microsoft.com/javascript/api/azure-iothub/twin?view=azure-node-latest&preserve-view=true) <br/> [Voorbeeld](https://github.com/Azure/azure-iot-sdk-node/blob/master/service/samples/javascript/twin.js)| [Documentatie](https://docs.microsoft.com/javascript/api/azure-iot-digitaltwins-service/?view=azure-node-latest&preserve-view=true) <br/> [Voorbeeld](https://github.com/Azure/azure-iot-sdk-node/blob/master/service/samples/javascript/get_digital_twin.js) |
+| Python   | [Documentatie](https://docs.microsoft.com/python/api/azure-iot-hub/azure.iot.hub.iothubregistrymanager?view=azure-python&preserve-view=true) <br/> [Voorbeeld](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-hub/samples/iothub_registry_manager_method_sample.py)| [Documentatie](https://docs.microsoft.com/python/api/azure-iot-hub/azure.iot.hub.iothubdigitaltwinmanager?view=azure-python&preserve-view=true) <br/> [Voorbeeld](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-hub/samples/get_digital_twin_sample.py) |
 
 ## <a name="rest-api"></a>REST-API
 
-De volgende voor beelden gebruiken de IoT Hub REST API om te communiceren met een verbonden IoT Plug en Play-apparaat. De huidige versie van de API is `2020-09-30` . Voeg `?api-version=2020-05-31` toe aan uw rest Pi-aanroepen.
+De volgende voor beelden gebruiken de IoT Hub REST API om te communiceren met een verbonden IoT Plug en Play-apparaat. De huidige versie van de API is `2020-09-30` . Voeg `?api-version=2020-09-30` toe aan uw rest Pi-aanroepen.
 
 > [!NOTE]
 > Module apparaatdubbels worden momenteel niet ondersteund door de `digitalTwins` API.

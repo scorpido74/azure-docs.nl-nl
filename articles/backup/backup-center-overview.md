@@ -2,13 +2,13 @@
 title: Overzicht van Back-upcentrum
 description: Dit artikel bevat een overzicht van Back-upcentrum voor Azure.
 ms.topic: conceptual
-ms.date: 09/01/2020
-ms.openlocfilehash: e7577f302b9a137f5f3c257dc35d0fdf339f69a4
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.date: 09/30/2020
+ms.openlocfilehash: 2857433e00a678603e30c8e5fc276020c4658f2e
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90995439"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91614276"
 ---
 # <a name="overview-of-backup-center"></a>Overzicht van Back-upcentrum
 
@@ -39,7 +39,11 @@ In de tegel **taken** ziet u een overzicht van alle back-up-en herstel taken die
 
 In de tegel **back-Upinstanties** ziet u een overzicht van alle back-upinstanties in uw back-up. U kunt bijvoorbeeld het aantal back-upinstanties zien die zich in de modus voor zacht verwijderen bevinden, vergeleken met het aantal exemplaren dat nog steeds is geconfigureerd voor beveiliging. Als u een van de getallen in deze tegel selecteert, kunt u meer informatie over back-upinstanties voor een bepaald gegevens bron type en beveiligings status weer geven.
 
-Volg de onderstaande stappen om inzicht te krijgen in de verschillende mogelijkheden van het Back-upcentrum en hoe u deze mogelijkheden kunt gebruiken om uw back-ups efficiënt te beheren.
+Bekijk de volgende video om inzicht te krijgen in de mogelijkheden van Back-upcentrum:
+
+> [!VIDEO https://www.youtube.com/embed/pFRMBSXZcUk?t=497]
+
+Volg de [volgende stappen](#next-steps) om inzicht te krijgen in de verschillende mogelijkheden van het Back-upcentrum en hoe u deze mogelijkheden kunt gebruiken om uw back-ups efficiënt te beheren.
 
 ## <a name="next-steps"></a>Volgende stappen
 

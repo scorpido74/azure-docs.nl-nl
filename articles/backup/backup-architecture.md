@@ -3,12 +3,12 @@ title: Overzicht van de architectuur
 description: Hierin wordt een overzicht gegeven van de architectuur, onderdelen en processen die door de Azure Backup-service worden gebruikt.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: e70fe13e895315763ae305b48a72d688f09931f0
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 6f95e8f6edaef61a7c5971a46ed4bff1a34e3dbe
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986498"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613999"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Architectuur en onderdelen van Azure Backup
 
@@ -35,7 +35,7 @@ Meer informatie over [waarvan u een back-up kunt maken](backup-overview.md) en o
 
 ## <a name="where-is-data-backed-up"></a>Waar wordt een back-up van gegevens gemaakt?
 
-Azure Backup slaat back-upgegevens op in een kluis-Services-kluizen en back-upkluizen herstellen. Een kluis is een online opslag entiteit in azure die wordt gebruikt om gegevens op te slaan, zoals back-ups, herstel punten en back-upbeleid.
+Azure Backup opgeslagen back-ups van gegevens in een kluis-Recovery Services kluizen en back-upkluizen. Een kluis is een online opslag entiteit in azure die wordt gebruikt om gegevens op te slaan, zoals back-ups, herstel punten en back-upbeleid.
 
 Kluizen hebben de volgende kenmerken:
 
@@ -99,8 +99,8 @@ De volgende tabel bevat een overzicht van de ondersteunde functies voor de versc
 **Functie** | **Directe back-ups van bestanden en mappen (met behulp van de MARS-agent)** | **Back-up van Azure VM** | **Computers of apps met DPM/MABS**
 --- | --- | --- | ---
 Back-up naar kluis maken | ![Ja][green] | ![Ja][green] | ![Ja][green]
-Back-up naar DPM/MABS-schijf en vervolgens naar Azure | | | ![Yes][green]
-Gegevens comprimeren die voor back-up zijn verzonden | ![Yes][green] | Er wordt geen compressie gebruikt bij de overdracht van gegevens. De opslag is enigszins geflateerd, maar het herstellen gaat sneller.  | ![Yes][green]
+Back-up naar DPM/MABS-schijf en vervolgens naar Azure | | | ![Ja][green]
+Gegevens comprimeren die voor back-up zijn verzonden | ![Ja][green] | Er wordt geen compressie gebruikt bij de overdracht van gegevens. De opslag is enigszins geflateerd, maar het herstellen gaat sneller.  | ![Ja][green]
 Incrementele back-up uitvoeren |![Ja][green] |![Ja][green] |![Ja][green]
 Back-ups maken van ontdubbelde schijven | | | ![Gedeeltelijk][yellow]<br/><br/> Voor DPM-MABS-servers die alleen on-premises worden geïmplementeerd.
 

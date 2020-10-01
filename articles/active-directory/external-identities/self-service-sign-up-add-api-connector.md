@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f241fd038d0d7309d8e1e5578dd77f950261b68
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: db68528a810ebc9cd61b205dd5167396d75db7f7
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88165172"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613982"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>Een API-connector toevoegen aan een gebruikers stroom
 
@@ -37,14 +37,14 @@ Als u een [API-connector](api-connectors-overview.md)wilt gebruiken, maakt u eer
 
    - Momenteel wordt alleen basis verificatie ondersteund. Als u een API zonder basis verificatie voor ontwikkelings doeleinden wilt gebruiken, voert u een dummy **gebruikers naam** en **wacht woord** in die door uw API kunnen worden genegeerd. Voor gebruik met een Azure-functie met een API-sleutel kunt u de code als een query parameter in de **eind punt-URL** toevoegen (bijvoorbeeld https []() ://contoso.azurewebsites.net/API/endpoint<b>? code = 0123456789</b>).
 
-   ![Een nieuwe API-connector toevoegen](./media/self-service-sign-up-add-api-connector/api-connector-config.png)
+   ![Een nieuwe API-connector configureren](./media/self-service-sign-up-add-api-connector/api-connector-config.png)
 8. Selecteer **Opslaan**.
 
 > [!IMPORTANT]
 > Voorheen moest u configureren welke gebruikers kenmerken moeten worden verzonden naar de API (' claims to send ') en welke gebruikers kenmerken moeten worden geaccepteerd van de API (' claims to receive '). Nu worden alle gebruikers kenmerken standaard verzonden als ze een waarde hebben en elk gebruikers kenmerk kan worden geretourneerd door de API in een vervolg-antwoord.
 
 ## <a name="the-request-sent-to-your-api"></a>De aanvraag die naar uw API wordt verzonden
-Een API-connector resultatenset als een **http post-** aanvraag, waarbij gebruikers kenmerken (' claims ') worden verzonden als sleutel-waardeparen in een JSON-hoofd tekst. Kenmerken worden op dezelfde manier geserialiseerd als [Microsoft Graph](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0#properties) gebruikers eigenschappen. 
+Een API-connector resultatenset als een **http post-** aanvraag, waarbij gebruikers kenmerken (' claims ') worden verzonden als sleutel-waardeparen in een JSON-hoofd tekst. Kenmerken worden op dezelfde manier geserialiseerd als [Microsoft Graph](https://docs.microsoft.com/graph/api/resources/user#properties) gebruikers eigenschappen. 
 
 **Voorbeeldaanvraag**
 ```http
@@ -77,7 +77,7 @@ Content-type: application/json
 
 Alleen gebruikers eigenschappen en aangepaste kenmerken die worden weer gegeven in de **Azure Active Directory**  >  aangepaste gebruikers kenmerken van**externe identiteiten**kunnen  >  **Custom user attributes** in de aanvraag worden verzonden.
 
-Aangepaste kenmerken bestaan in de indeling **extension_ \<extensions-app-id> _AttributeName** in de map. Uw API moet verwachten dat er claims in dezelfde geserialiseerde indeling worden ontvangen. Zie voor meer informatie over aangepaste kenmerken [aangepaste kenmerken definiëren voor Self-service aanmeldingen](user-flow-add-custom-attributes.md).
+Aangepaste kenmerken bestaan in de indeling **extension_ \<extensions-app-id> _AttributeName**  in de map. Uw API moet verwachten dat er claims in dezelfde geserialiseerde indeling worden ontvangen. Zie voor meer informatie over aangepaste kenmerken [aangepaste kenmerken definiëren voor Self-service aanmeldingen](user-flow-add-custom-attributes.md).
 
 Daarnaast wordt de **gebruikers interface land instellingen (' ui_locales ')** standaard in alle aanvragen verzonden. Het biedt de land instellingen van een gebruiker, zoals geconfigureerd op hun apparaat, dat door de API kan worden gebruikt om internationale reacties te retour neren.
 
@@ -85,7 +85,7 @@ Daarnaast wordt de **gebruikers interface land instellingen (' ui_locales ')** s
 > Als een claim voor verzenden geen waarde heeft op het moment dat het API-eind punt wordt aangeroepen, wordt de claim niet verzonden naar de API. Uw API moet worden ontworpen om expliciet te controleren op de verwachte waarde.
 
 > [!TIP] 
-> [**identiteiten (' Identities ')**](https://docs.microsoft.com/graph/api/resources/objectidentity?view=graph-rest-1.0) en het **e-mail adres (' e-mail ')** kunnen worden gebruikt door uw API om een gebruiker te identificeren voordat ze een account in uw Tenant hebben. De claim ' Identities ' wordt verzonden wanneer een gebruiker zich verifieert met een id-provider zoals Google of Facebook. e-mail bericht wordt altijd verzonden.
+> [**identiteiten (' Identities ')**](https://docs.microsoft.com/graph/api/resources/objectidentity) en het **e-mail adres (' e-mail ')** kunnen worden gebruikt door uw API om een gebruiker te identificeren voordat ze een account in uw Tenant hebben. De claim ' Identities ' wordt verzonden wanneer een gebruiker zich verifieert met een id-provider zoals Google of Facebook. e-mail bericht wordt altijd verzonden.
 
 ## <a name="enable-the-api-connector-in-a-user-flow"></a>De API-connector inschakelen in een gebruikers stroom
 
@@ -269,7 +269,7 @@ Content-type: application/json
 | Parameter   | Type   | Vereist | Beschrijving                                                                |
 | ----------- | ------ | -------- | -------------------------------------------------------------------------- |
 | versie     | Tekenreeks | Ja      | De versie van de API.                                                    |
-| actie      | Tekenreeks | Ja      | Waarde moet`ShowBlockPage`                                              |
+| actie      | Tekenreeks | Ja      | Waarde moet `ShowBlockPage`                                              |
 | userMessage | Tekenreeks | Ja      | Bericht dat wordt weergegeven aan de gebruiker.                                            |
 | code        | Tekenreeks | Nee       | Foutcode. Kan worden gebruikt voor fout opsporing. Niet weer gegeven voor de gebruiker. |
 
@@ -304,11 +304,29 @@ Content-type: application/json
 
 ![Voorbeeld validatie pagina](./media/api-connectors-overview/validation-error-postal-code.png)
 
-## <a name="using-azure-functions"></a>Azure-functies gebruiken
-U kunt een HTTP-trigger in Azure Functions een eenvoudige manier gebruiken om een API-eind punt te maken voor gebruik met de API-connector. U gebruikt de functie Azure om [bijvoorbeeld](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts)validatie logica uit te voeren en aanmeldings pogingen te beperken tot specifieke domeinen. U kunt ook andere web-Api's, gebruikers archieven en andere Cloud Services aanroepen en aanroepen vanuit uw Azure-functie voor uitgebreide scenario's.
+
+## <a name="best-practices-and-how-to-troubleshoot"></a>Aanbevolen procedures en problemen oplossen
+
+### <a name="using-serverless-cloud-functions"></a>Cloud functies zonder server gebruiken
+Serverloze functies, zoals HTTP-triggers in Azure Functions, bieden een eenvoudige manier om API-eind punten te maken voor gebruik met de API-connector. U kunt de Cloud functie zonder server gebruiken om [bijvoorbeeld](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts)validatie logica uit te voeren en aanmeldings pogingen te beperken tot specifieke domeinen. De Cloud functie zonder server kan ook andere web-Api's, gebruikers archieven en andere Cloud Services aanroepen en aanroepen voor complexere scenario's.
+
+### <a name="best-practices"></a>Aanbevolen procedures
+Zorg ervoor dat:
+* Uw API volgt de API-aanvraag-en respons contracten zoals hierboven wordt beschreven. 
+* De **eind punt-URL** van de API-connector verwijst naar het juiste API-eind punt.
+* Uw API controleert expliciet op null-waarden van ontvangen claims.
+* Uw API reageert zo snel mogelijk om een onervaren gebruikers ervaring te garanderen.
+    * Als u een serverloze functie of schaal bare webservice gebruikt, gebruikt u een hosting abonnement waarmee de API ' actief ' of ' warme ' wordt bewaard. Voor Azure Functions is het raadzaam om het [Premium-abonnement](../../azure-functions/functions-scale.md#premium-plan)te gebruiken. 
+
+
+### <a name="use-logging"></a>Logboek registratie gebruiken
+Over het algemeen is het handig om de hulpprogram ma's voor logboek registratie te gebruiken die zijn ingeschakeld door uw web API-service, zoals [Application Insights](../../azure-functions/functions-monitoring.md), om uw API te controleren op onverwachte fout codes, uitzonde ringen en slechte prestaties.
+* Monitor voor HTTP-status codes die niet HTTP 200 of 400 zijn.
+* Een 401-of 403 HTTP-status code geeft meestal aan dat er een probleem is met uw verificatie. Controleer de Authentication Layer van de API en de bijbehorende configuratie in de API-connector.
+* Gebruik zo nodig meer agressieve niveaus van logboek registratie (bijvoorbeeld ' tracering ' of ' fout opsporing ') in ontwikkeling.
+* Controleer uw API op lange reactie tijden.
 
 ## <a name="next-steps"></a>Volgende stappen
-
 <!-- - Learn [where you can enable an API connector](api-connectors-overview.md#where-you-can-enable-an-api-connector-in-a-user-flow) -->
 - Meer informatie over het [toevoegen van een aangepaste goedkeurings werk stroom aan self-service registratie](self-service-sign-up-add-approvals.md)
 - Ga aan de slag met onze voor [beelden van Azure function Quick](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts)start.

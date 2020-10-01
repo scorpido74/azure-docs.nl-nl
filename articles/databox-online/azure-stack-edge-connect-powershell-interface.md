@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 06/25/2019
+ms.date: 09/30/2020
 ms.author: alkohli
-ms.openlocfilehash: b6b0fe7e9e096b252d33d25c4a70305e57d206b1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 93678735237c25b19d04b7d901583ba785d7f594
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90894426"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613540"
 ---
-# <a name="manage-an-azure-stack-edge-pro-device-via-windows-powershell"></a>Een Azure Stack Edge Pro-apparaat beheren via Windows Power shell
+# <a name="manage-an-azure-stack-edge-pro-fpga-device-via-windows-powershell"></a>Een Azure Stack Edge Pro FPGA-apparaat beheren via Windows Power shell
 
 Met Azure Stack Edge Pro-oplossing kunt u gegevens verwerken en via het netwerk verzenden naar Azure. In dit artikel worden enkele van de configuratie-en beheer taken voor uw Azure Stack Edge Pro-apparaat beschreven. U kunt de Azure Portal, de lokale webgebruikersinterface of de Windows Power shell-interface gebruiken om uw apparaat te beheren.
 
@@ -43,16 +43,16 @@ Dit artikel bevat de volgende procedures:
 
 [!INCLUDE [Upload certificate](../../includes/data-box-edge-gateway-upload-certificate.md)]
 
-U kunt ook IoT Edge-certificaten uploaden om een beveiligde verbinding mogelijk te maken tussen uw IoT Edge-apparaat en de downstreamapparaten waarmee verbinding kan worden gemaakt. Er zijn drie IoT Edge certificaten (*PEM* -indeling) die u moet installeren:
+U kunt ook IoT Edge-certificaten uploaden om een beveiligde verbinding mogelijk te maken tussen uw IoT Edge-apparaat en de downstreamapparaten waarmee verbinding kan worden gemaakt. Er zijn drie bestanden (*. pem* -indeling) die u moet installeren:
 
 - Basis-CA-certificaat of de eigenaar-CA
 - CA-certificaat van apparaat
-- Certificaat van de apparaats sleutel
+- Persoonlijke sleutel van het apparaat 
 
 In het volgende voor beeld ziet u het gebruik van deze cmdlet om IoT Edge certificaten te installeren:
 
 ```
-Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cert.pem" -DeviceCertificateFilePath "\\hcfs\device-ca-cert.pem\" -DeviceKeyFilePath "\\hcfs\device-key-cert.pem" -Credential "username"
+Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cert.pem" -DeviceCertificateFilePath "\\hcfs\device-ca-cert.pem\" -DeviceKeyFilePath "\\hcfs\device-private-key.pem" -Credential "username"
 ```
 Wanneer u deze cmdlet uitvoert, wordt u gevraagd het wacht woord voor de netwerk share op te geven.
 

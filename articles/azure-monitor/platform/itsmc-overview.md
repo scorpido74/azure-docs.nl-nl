@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: 0940521873b8d6746381acbd8e6c4c6d3a273c49
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0a632e8c57ab57869e4454b0d6a4018de6bd5548
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325756"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613761"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Verbinding maken tussen Azure en ITSM-hulpprogramma's met behulp van IT Service Management-connector
 
@@ -112,6 +112,10 @@ Zodra u uw ITSM-verbinding hebt gemaakt, kunt u een of meer werk items maken in 
 
 Actie groepen bieden een modulaire en herbruikbare manier om acties voor uw Azure-waarschuwingen te activeren. U kunt actie groepen met metrische waarschuwingen, waarschuwingen voor activiteiten logboeken en waarschuwingen voor Azure Log Analytics gebruiken in Azure Portal.
 
+> [!NOTE]
+> Zodra de ITSM-verbinding is gemaakt, moet u 30 minuten wachten nadat de connector die is gemaakt met het synchronisatie proces is voltooid
+> 
+
 Gebruik de volgende procedure:
 
 1. Klik in Azure Portal op  **monitor**.
@@ -182,7 +186,7 @@ ServiceDeskWorkItemType_s = "incident"
 
 - ServiceDeskConnectionName
 - Service Desk-ID
-- Status
+- Staat
 - Urgentie
 - Impact
 - Prioriteit
@@ -216,7 +220,7 @@ ServiceDeskWorkItemType_s = "ChangeRequest"
 - Titel
 - Type
 - Categorie
-- Status
+- Staat
 - Escalatie
 - Conflict status
 - Urgentie
@@ -240,7 +244,7 @@ ServiceDeskWorkItemType_s = "ChangeRequest"
 | Log Analytics veld | Het veld ServiceNow |
 |:--- |:--- |
 | ServiceDeskId_s| Getal |
-| IncidentState_s | Status |
+| IncidentState_s | Staat |
 | Urgency_s |Urgentie |
 | Impact_s |Impact|
 | Priority_s | Prioriteit |
@@ -268,7 +272,7 @@ ServiceDeskWorkItemType_s = "ChangeRequest"
 | Title_s|  Korte beschrijving |
 | Type_s|  Type |
 | Category_s|  Categorie |
-| CRState_s|  Status|
+| CRState_s|  Staat|
 | Urgency_s|  Urgentie |
 | Priority_s| Prioriteit|
 | Risk_s| Risico|

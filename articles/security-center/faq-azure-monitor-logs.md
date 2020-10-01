@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 0f4552d6488ecd083b6ee5d4cae2ef2bd660efc7
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c4af0e8eda818fcb57ea9e050b760c3754c46e2c
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906378"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613642"
 ---
 # <a name="faq-for-customers-already-using-azure-monitor-logs"></a>Veelgestelde vragen voor klanten die Azure Monitor-logboeken al gebruiken<a name="existingloganalyticscust"></a>
 
@@ -35,7 +35,6 @@ Er wordt een Security Center oplossing geïnstalleerd op de werk ruimte die is g
 Als Security Center identificeert dat een virtuele machine al is verbonden met een werk ruimte die u hebt gemaakt, Security Center de oplossingen in deze werk ruimte op basis van uw prijs configuratie. De oplossingen worden alleen toegepast op de relevante Azure-Vm's, via [oplossings doelen](../operations-management-suite/operations-management-suite-solution-targeting.md), zodat de facturering op dezelfde manier blijft.
 
 - **Azure Defender uit** : Security Center installeert de oplossing ' SecurityCenterFree ' in de werk ruimte. Er worden geen kosten in rekening gebracht.
-- 
 - **Met Azure Defender on** – Security Center installeert u de oplossing beveiliging in de werk ruimte.
 
    ![Oplossingen in de standaardwerk ruimte](./media/security-center-platform-migration-faq/solutions.png)

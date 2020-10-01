@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/02/2019
 ms.author: memildin
-ms.openlocfilehash: 1d452406b05a3ad6b2be2e31bce1063f20e6c622
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 742d7122c60b383e8ab7aa73f73b11b47843a9d5
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91575942"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91613816"
 ---
 # <a name="cloud-smart-alert-correlation-in-azure-security-center-incidents"></a>Azure Security Center voor de correlatie van de cloud in een andere (incidenten)
 
@@ -39,7 +39,8 @@ Tijdens een onderzoek naar een incident hebben analisten vaak extra context nodi
 > [!TIP]
 > Zie de [naslag tabel met waarschuwingen](alerts-reference.md#alerts-fusion)voor een lijst met waarschuwingen over beveiligings incidenten die kunnen worden geproduceerd door de Fusion Analytics.
 
-![Scherm afbeelding van gedetecteerd rapport van beveiligings incident](./media/security-center-alerts-cloud-smart/security-incident.png)
+:::image type="content" source="./media/security-center-alerts-cloud-smart/security-incident.png" alt-text="Scherm afbeelding van gedetecteerd rapport van beveiligings incident":::
 
-Zie [beveiligings incidenten afhandelen in azure Security Center](security-center-incident.md)voor meer informatie over beveiligings incidenten.
+
+Zie [beveiligings incidenten beheren in azure Security Center](security-center-incident.md)voor meer informatie over beveiligings incidenten.
 

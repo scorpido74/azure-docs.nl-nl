@@ -4,12 +4,12 @@ description: Een Azure Service Fabric-cluster gebruiken voor het hosten van een 
 ms.topic: conceptual
 ms.date: 12/06/2017
 ms.custom: devx-track-js
-ms.openlocfilehash: 29278faa80340d17e9ed9093dd5f432fd24a3a2d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: dfd1fe9db54925bc17a53a7686fa34d5ea53cd5a
+ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91314280"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91614101"
 ---
 # <a name="host-a-nodejs-application-on-azure-service-fabric"></a>Een Node.js-toepassing hosten in Azure Service Fabric
 
@@ -31,7 +31,7 @@ Maak een project met `CTRL`+`SHIFT`+`N`
 
 Kies in het dialoogvenster **Nieuw Project** de optie **Cloud > Service Fabric-toepassing**.
 
-Noem de toepassing **MyGuestApp** en druk op **OK**.
+Noem de toepassing **MyGuestApp** en druk op **maken**.
 
 >[!IMPORTANT]
 >Node.js kan gemakkelijk de limiet van 260 tekens overschrijden voor paden in Windows. Gebruik een kort pad voor het project zelf, zoals **c:\code\svc1**. Desgewenst kunt u **[deze instructies](https://stackoverflow.com/a/41687101/1664231)** volgen om lange bestands paden in te scha kelen in Windows 10.
@@ -86,7 +86,7 @@ Open het bestand **ServiceManifest.xml** in het project. Onder aan het manifest 
   </Resources>
 ```
 
-## <a name="deploy-to-azure"></a>Implementeren op Azure
+## <a name="deploy-to-azure"></a>Implementeren in Azure
 
 Als u op **F5** drukt en het project uitvoert, wordt het geïmplementeerd naar het lokale cluster. Echter, we gaan in plaats daarvan implementeren in Azure.
 
