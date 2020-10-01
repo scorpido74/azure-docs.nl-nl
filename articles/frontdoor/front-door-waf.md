@@ -1,6 +1,6 @@
 ---
-title: Schaal en bescherm een webtoepassing snel met Azure Front Door en Azure Web Application Firewall (WAF) | Microsoft Docs
-description: In deze zelfstudie wordt uitgelegd hoe u Web Application Firewall gebruikt met uw Azure Front Door Service
+title: Een web-app schalen en beveiligen met behulp van Azure Front Door en WAF
+description: In deze zelfstudie wordt uitgelegd hoe u Azure Web Application Firewall gebruikt met de Azure Front Door-service
 services: frontdoor
 documentationcenter: ''
 author: duongau
@@ -11,58 +11,60 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/14/2020
 ms.author: duau
-ms.openlocfilehash: 1958481193b66c8cec2cb6a1ac6648a6900d70ac
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 2d531289a1d6e8c484b0334e570d943acdb82268
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531199"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276251"
 ---
-# <a name="tutorial-quickly-scale-and-protect-a-web-application-using-azure-front-door-and-azure-web-application-firewall-waf"></a>Zelfstudie: Schaal en bescherm een webtoepassing snel met Azure Front Door en Azure Web Application Firewall (WAF)
+# <a name="tutorial-quickly-scale-and-protect-a-web-application-by-using-azure-front-door-and-azure-web-application-firewall-waf"></a>Zelfstudie: een webtoepassing snel schalen en beveiligen met Azure Front Door en Azure Web Application Firewall (WAF)
 
-Veel webtoepassingen hebben in de afgelopen weken een snelle toename van verkeer ervaren door COVID-19. Bovendien zien deze webtoepassingen ook een toename in schadelijk verkeer, waaronder in Denial of Service-aanvallen. Een efficiënte manieren om aan deze beide behoeften te voldoen, uitschalen voor verkeerstoename en bescherming tegen aanvallen, is om Azure Front Door in te stellen met Azure WAF als versnellings-, caching- en beveiligingslaag voor uw webtoepassing. In dit artikel wordt uitgelegd hoe u snel Azure Front Door instelt met Azure WAF voor elke webtoepassing die binnen of buiten Azure wordt uitgevoerd. 
+Veel webtoepassingen hebben in de afgelopen weken een snelle toename van verkeer ervaren door COVID-19. Bovendien zien deze webtoepassingen ook een toename in schadelijk verkeer, waaronder Denial of Service-aanvallen. Er is echter een efficiënte manier om uit te schalen bij verkeerspieken en te beschermen tegen aanvallen: configureer Azure Front Door met Azure WAF als een laag voor versnelling, caching en beveiliging vóór uw webtoepassing. In dit artikel wordt uitgelegd hoe u Azure Front Door snel samen met Azure WAF kunt configureren voor elke web-app die binnen of buiten Azure wordt uitgevoerd. 
 
-In deze zelfstudie gebruiken we Azure CLI om de WAF in te stellen, maar al deze stappen worden ook volledig ondersteund in Azure Portal, Azure PowerShell, Azure ARM en Azure REST API's. 
+We gebruiken de Azure CLI om WAF in deze zelfstudie in te stellen. U kunt echter hetzelfde bereiken met behulp van de Azure-portal, Azure PowerShell, Azure Resource Manager of de Azure REST-API's. 
 
 In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]
 > - Een Front Door maken.
 > - Een Azure WAF-beleid maken.
-> - Regelsets instellen voor WAF-beleid.
-> - WAF-beleid koppelen aan Front Door
-> - Aangepast domein configureren
+> - Regelsets configureren voor een WAF-beleid.
+> - Een WAF-beleid koppelen aan Front Door.
+> - Een aangepast domein configureren.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
-De instructies in dit blog maken gebruik van de Azure Command Line Interface (CLI). Raadpleeg deze handleiding [om aan de slag te gaan met Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest).
+- In de instructies in deze zelfstudie wordt de Azure CLI gebruikt. [Raadpleeg deze handleiding](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) om aan de slag te gaan met de Azure CLI.
 
-*Tip: een eenvoudige en snelle manier om aan de slag te gaan met Azure CLI is met [Bash in Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart)*
+  > [!TIP] 
+  > Een eenvoudige en snelle manier om aan de slag te gaan met de Azure CLI is met [Bash in Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart).
 
-Zorg ervoor dat de Front Door-extensie is toegevoegd aan uw Azure CLI
+- Zorg ervoor dat de extensie `front-door` is toegevoegd aan de Azure CLI:
 
-```azurecli-interactive 
-az extension add --name front-door
-```
+   ```azurecli-interactive 
+   az extension add --name front-door
+   ```
 
-Opmerking: Raadpleeg [Azure CLI-verwijzing voor Front Door](https://docs.microsoft.com/cli/azure/ext/front-door/?view=azure-cli-latest) voor meer informatie over de hieronder vermelde opdrachten.
+> [!NOTE] 
+> Raadpleeg de [Azure CLI-naslag voor front-door](https://docs.microsoft.com/cli/azure/ext/front-door/?view=azure-cli-latest) voor meer informatie over de opdrachten die in deze zelfstudie worden gebruikt.
 
-## <a name="create-an-azure-front-door-afd-resource"></a>Een Azure Front Door-resource (AFD) maken
+## <a name="create-an-azure-front-door-resource"></a>Een Azure Front Door-resource maken
 
 ```azurecli-interactive 
 az network front-door create --backend-address <>  --accepted-protocols <> --name <> --resource-group <>
 ```
 
-**--backend-address**: Het back-endadres is de Fully Qualified Domain Name (FQDN) van de toepassing die u wilt beschermen. Bijvoorbeeld myapplication.contoso.com
+`--backend-address`: De FQDN (Fully Qualified Domain Name) van de toepassing die u wilt beschermen. Bijvoorbeeld `myapplication.contoso.com`.
 
-**--accepted-protocols**: De geaccepteerde protocollen specificeren welke protocollen AFD moet ondersteunen voor uw webtoepassing. Een voorbeeld zou zijn --accepted-protocols Http Https.
+`--accepted-protocols`: De protocollen die Azure Front Door moet ondersteunen voor uw webtoepassing. Bijvoorbeeld `--accepted-protocols Http Https`.
 
-**--name**: Geef een naam op voor uw AFD-resource
+`--name`: De naam van uw Azure Front Door-resource.
 
-**--resource-group**: De resourcegroep waarin u deze AFD-resource wilt plaatsen.  Raadpleeg resourcegroepen beheren in Azure voor meer informatie over resourcegroepen
+`--resource-group`: De resourcegroep waarin u deze Azure Front Door-resource wilt plaatsen. Zie [Resourcegroepen beheren in Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal) voor meer informatie over resourcegroepen.
 
-Zoek in het antwoord van de succesvol uitgevoerde opdracht naar de sleutel "hostName" en schrijf deze waarde op voor een latere stap. De hostName is de DNS-naam van de AFD-resource die u hebt gemaakt
+In de respons die u krijgt wanneer u deze opdracht uitvoert, zoekt u naar de sleutel `hostName`. U hebt deze waarde in een latere stap nodig. De `hostName` is de DNS-naam van de Azure Front Door-resource die u hebt gemaakt.
 
 ## <a name="create-an-azure-waf-profile-to-use-with-azure-front-door-resources"></a>Een Azure WAF-profiel maken voor gebruik met Azure Front Door-resources
 
@@ -70,85 +72,92 @@ Zoek in het antwoord van de succesvol uitgevoerde opdracht naar de sleutel "host
 az network front-door waf-policy create --name <>  --resource-group <>  --disabled false --mode Prevention
 ```
 
---name Geef een naam op voor uw Azure WAF-beleid
+`--name`: De naam van het nieuwe Azure WAF-beleid.
 
---resource-group De resourcegroep waarin u deze WAF-resource wilt plaatsen. 
+`--resource-group`: De resourcegroep waarin u deze WAF-resource wilt plaatsen. 
 
-De bovenstaande CLI-code maakt een WAF-beleid dat is ingeschakeld en zich in de preventiemodus bevindt. 
+Met de bovenstaande CLI-code maakt u een WAF-beleid dat is ingeschakeld en dat zich in de preventiemodus bevindt. 
 
-Opmerking: u wilt mogelijk ook de WAF in de detectiemodus maken en bekijken hoe die schadelijke verzoeken detecteert en registreert (en niet blokkeert) voordat u besluit om de beschermingsmodus aan te zetten.
+> [!NOTE] 
+> Mogelijk wilt u het WAF-beleid in de detectiemodus maken en kijken hoe schadelijke aanvragen worden gedetecteerd en geregistreerd (zonder deze te blokkeren) voordat u besluit de beveiligingsmodus te gebruiken.
 
-Zoek in het antwoord van de succesvol uitgevoerde opdracht naar de sleutel "ID" en schrijf deze waarde op voor een latere stap. Het ID-veld zou de volgende indeling moeten hebben
+In de respons die u krijgt wanneer u deze opdracht uitvoert, zoekt u naar de sleutel `ID`. U hebt deze waarde in een latere stap nodig. 
+
+Het veld `ID` moet de volgende indeling hebben:
 
 /abonnementen/**abonnement-id**/resourcegroepen/**resourcegroepnaam**/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/**WAF-beleidsnaam**
 
-## <a name="add-managed-rulesets-to-this-waf-policy"></a>Beheerde regelsets toevoegen aan dit WAF-beleid
+## <a name="add-managed-rule-sets-to-the-waf-policy"></a>Beheerde regelsets toevoegen aan dit WAF-beleid
 
-In een WAF-beleid kunt u beheerde regelsets toevoegen die een set regels zijn die gebouwd en beheerd worden door Microsoft en externe bescherming bieden tegen hele klassen aan bedreigingen. In dit voorbeeld voegen we regelsets toe: (1) Standaardregelset die bescherming biedt tegen algemene webbedreigingen en (2) Bot-beschermingsregelset, die u beschermt tegen schadelijke bots
+U kunt beheerde regelsets toevoegen aan een WAF-beleid. Een beheerde regelset is een set regels die door Microsoft zijn samengesteld en beheerd waarmee u zich kunt beschermen tegen een bepaalde klasse van bedreigingen. In dit voorbeeld voegen we twee regelsets toe:
+- De standaardregelset, waarmee u zich kunt beveiligen tegen veelvoorkomende webbedreigingen. 
+- De regelset Bot Manager, waarmee u zich kunt beveiligen tegen schadelijke bots.
 
-(1) De standaardregelset toevoegen
+De standaardregelset toevoegen:
 
-```azurecli-interactive 
-az network front-door waf-policy managed-rules add --policy-name <> --resource-group <> --type DefaultRuleSet --version 1.0
-```
+   ```azurecli-interactive 
+   az network front-door waf-policy managed-rules add --policy-name <> --resource-group <> --type DefaultRuleSet --version 1.0
+   ```
 
-(2) De botbeheerdersregelset toevoegen
+De regelset Bot Manager toevoegen:
 
-```azurecli-interactive 
-az network front-door waf-policy managed-rules add --policy-name <> --resource-group <> --type Microsoft_BotManagerRuleSet --version 1.0
-```
+   ```azurecli-interactive 
+   az network front-door waf-policy managed-rules add --policy-name <> --resource-group <> --type Microsoft_BotManagerRuleSet --version 1.0
+   ```
 
---policy-name De naam die u aan uw Azure WAF-resource hebt gegeven
+`--policy-name`: De naam die u hebt opgegeven voor uw Azure WAF-resource.
 
---resource-group De resourcegroep waarin u deze WAF-resource hebt geplaatst.
+`--resource-group`: De resourcegroep waarin u de WAF-resource hebt geplaatst.
 
-## <a name="associate-the-waf-policy-with-the-afd-resource"></a>Het WAF-beleid koppelen aan de AFD-resource
+## <a name="associate-the-waf-policy-with-the-azure-front-door-resource"></a>Het WAF-beleid koppelen aan de Azure Front Door-resource
 
-In deze stap koppelen we het WAF-beleid dat we hebben gemaakt met de AFD-resource die zich voorin uw webtoepassing bevindt.
+In deze stap koppelen we het WAF-beleid dat we hebben gemaakt aan de Azure Front Door-resource die zich vóór uw webtoepassing bevindt:
 
 ```azurecli-interactive 
 az network front-door update --name <> --resource-group <> --set frontendEndpoints[0].webApplicationFirewallPolicyLink='{"id":"<>"}'
 ```
 
---name De naam die u hebt opgegeven voor uw AFD-resource
+`--name`: De naam die u hebt opgegeven voor uw Azure Front Door-resource.
 
---resource-group De resourcegroep waarin u de Azure Front Door-resource hebt geplaatst.
+`--resource-group`: De resourcegroep waarin u de Azure Front Door-resource hebt geplaatst.
 
---set Dit is waar u het kenmerk WebApplicationFirewallPolicyLink bijwerkt voor de frontendEndpoint dat is gekoppeld aan uw AFD-resource met het nieuw gemaakte WAF-beleid. De id van het WAF-beleid vindt u in de reactie die u in de hierboven genoemde stap 2 hebt ontvangen
+`--set`: Hiermee werkt u het kenmerk `WebApplicationFirewallPolicyLink` bij voor het `frontendEndpoint` dat is gekoppeld aan uw Azure Front Door-resource met het nieuwe WAF-beleid. U moet de id van het WAF-beleid gebruiken uit de respons die u hebt gekregen toen u het WAF-profiel eerder in deze zelfstudie hebt gemaakt.
 
-Opmerking: het bovenstaande voorbeeld is voor het geval waar u geen aangepast domein gebruikt, indien u dat wel doet
+ > [!NOTE] 
+> Het bovenstaande voorbeeld is van toepassing wanneer u geen aangepast domein gebruikt. Als u geen aangepaste domeinen gebruikt voor toegang tot uw webtoepassingen, kunt u de volgende sectie overslaan. In dat geval geeft u uw klanten de `hostName` die u hebt verkregen tijdens het maken van de Azure Front Door-resource. Ze gebruiken deze `hostName` om naar uw webtoepassing te gaan.
 
-Als u geen aangepast domein gebruikt voor toegang tot uw webtoepassingen, kunt u stap 5 overslaan. In dat geval geeft u bij uw eindgebruikers de hostName op die u in stap 1 hebt gekregen om naar uw webtoepassing te navigeren
+## <a name="configure-the-custom-domain-for-your-web-application"></a>Aangepast domein configureren voor uw webtoepassing
 
-## <a name="configure-custom-domain-for-your-web-application"></a>Aangepast domein configureren voor uw webtoepassing
+De naam van het aangepaste domein van uw webtoepassing is de naam die klanten gebruiken om naar uw toepassing te verwijzen, bijvoorbeeld www.contoso.com. In eerste instantie was de naam van dit aangepaste domein gekoppeld aan de locatie waar het domein zich bevond voordat u Azure Front Door introduceerde. Nadat u Azure Front Door en WAF hebt toegevoegd om de toepassing te beveiligen, moet de DNS-vermelding die overeenkomt met dat aangepaste domein verwijzen naar de Azure Front Door-resource. U kunt deze wijziging aanbrengen door de vermelding in uw DNS-server te koppelen aan de `hostName` van Azure Front Door die u hebt genoteerd tijdens het maken van de Azure Front Door-resource.
 
-De aangepast domeinnaam van uw webtoepassing (die klanten gebruiken om naar uw webtoepassing te verwijzen, bijvoorbeeld www.contose.com) richtte zich in eerste instantie op de plek waar die werd uitgevoerd voordat AFD werd geïntroduceerd. Na deze architectuurwijziging waarbij AFD+WAF werd toegevoegd aan de toepassing, moet de DNS-invoer die bij die aangepaste domeinnaam hoort nu verwijzen naar deze AFD-resource. Dit doet u door deze invoer in uw DNS-server opnieuw toe te wijzen aan de AFD-hostnaam die u hebt genoteerd in stap 1.
+De specifieke stappen voor het bijwerken van uw DNS-records zijn afhankelijk van uw DNS-serviceprovider. Als u Azure DNS gebruikt voor het hosten van uw DNS-naam, raadpleegt u de informatie over [het bijwerken van een DNS-record](https://docs.microsoft.com/azure/dns/dns-operations-recordsets-cli) en verwijst u naar de `hostName` van Azure Front Door. 
 
-Specifieke stappen om uw DNS-records bij te werken hangen af van uw DNS-serviceprovider, maar als u Azure DNS gebruikt om uw DNS-naam te hosten, kunt u de documentatie raadplegen voor [stappen om een DNS-record bij te werken](https://docs.microsoft.com/azure/dns/dns-operations-recordsets-cli) en verwijzen naar de AFD-hostName. 
+Er is een belangrijk punt om te weten als uw klanten via de zone-apex (zoals contoso.com) toegang moeten krijgen tot uw website. In dit geval moet u Azure DNS en het bijbehorende [aliasrecordtype](https://docs.microsoft.com/azure/dns/dns-alias) gebruiken om uw DNS-naam te hosten. 
 
-Een belangrijke opmerking hier is dat als uw gebruikers naar uw website moeten navigeren met de zone-apex, bijvoorbeeld www.contoso.com, u Azure DNS moet gebruiken en de [recordtype ALIAS](https://docs.microsoft.com/azure/dns/dns-alias) uw DNS-naam moet laten hosten. 
+Bovendien moet u de configuratie van Azure Front Door bijwerken door [het aangepaste domein toe te voegen](https://docs.microsoft.com/azure/frontdoor/front-door-custom-domain), zodat Front Door op de hoogte is van de toewijzing.
 
-Bovendien moet u uw AFD-configuratie bijwerken naar [dit aangepast domein toevoegen](https://docs.microsoft.com/azure/frontdoor/front-door-custom-domain), zodat AFD deze toewijzing begrijpt.
-
-Ten slotte moet u de [certificaten voor uw aangepaste domein in AFD hebben ingesteld](https://docs.microsoft.com/azure/frontdoor/front-door-custom-domain-https) als u een aangepast domein gebruikt om uw webtoepassing te bereiken en u het HTTPS-protocol wilt inschakelen. 
+Als u een aangepast domein gebruikt om uw webtoepassing te bereiken en u het HTTPS-protocol wilt inschakelen, moet u ook nog [de certificaten voor uw aangepaste domein instellen in Azure Front Door](https://docs.microsoft.com/azure/frontdoor/front-door-custom-domain-https). 
 
 ## <a name="lock-down-your-web-application"></a>Uw webtoepassing vergrendelen
 
-Een optionele best practice is om ervoor te zorgen dat alleen AFD-edges kunnen communiceren met uw webtoepassing. Met deze actie zorgt u ervoor dat niemand rond de AFD-bescherming kan en uw toepassingen rechtstreeks kan bereiken. U kunt deze vergrendeling bereik door [het gedeelte met veelgestelde vragen voor AFD](https://docs.microsoft.com/azure/frontdoor/front-door-faq) te bezoeken en te verwijzen naar de vraag met betrekking tot de vergrendeling van back-ends voor toegang door alleen AFD.
+We adviseren om ervoor te zorgen dat alleen apparaten in de periferie van Azure Front Door kunnen communiceren met uw webtoepassing. U weet dan zeker dat niemand de beveiliging van Azure Front Door kan omzeilen en rechtstreeks toegang heeft tot uw toepassing. Als u deze vergrendeling wilt instellen, raadpleegt u [How do I lock down the access to my backend to only Azure Front Door?](https://docs.microsoft.com/azure/frontdoor/front-door-faq#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door) (Hoe kan ik de toegang tot mijn back-end beperken tot alleen Azure Front Door?).
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u de resources in deze zelfstudie niet langer nodig hebt, gebruikt u de opdracht [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) om de resourcegroep, Front Door en het WAF-beleid te verwijderen.
+Wanneer u de resources in deze zelfstudie niet langer nodig hebt, gebruikt u de opdracht [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) om de resourcegroep, Front Door en het WAF-beleid te verwijderen:
 
 ```azurecli-interactive
   az group delete \
     --name <>
 ```
---name De naam van de resourcegroep voor alle resources die in deze zelfstudie zijn gebruikt.
+`--name`: De naam van de resourcegroep voor alle resources die in deze zelfstudie worden gebruikt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Voor meer informatie over het oplossen van problemen van uw Front Door, gaat u verder met de instructiegidsen.
+Voor meer informatie over het oplossen van problemen met Front Door, raadpleegt u deze handleidingen voor het oplossen van problemen:
 
 > [!div class="nextstepaction"]
 > [Algemene routeringsproblemen oplossen](front-door-troubleshoot-routing.md)
+
+> [!div class="nextstepaction"]
+> [Toegestane certificeringsinstanties](https://docs.microsoft.com/azure/frontdoor/front-door-troubleshoot-allowed-ca)

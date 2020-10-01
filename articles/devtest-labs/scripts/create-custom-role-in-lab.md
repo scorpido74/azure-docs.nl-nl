@@ -1,26 +1,26 @@
 ---
-title: 'Power shell: een aangepaste rol maken in een lab in Azure DevTest Labs'
-description: Dit artikel bevat een Azure PowerShell script waarmee een externe gebruiker wordt toegevoegd aan een lab in Azure DevTest Labs.
+title: 'PowerShell: een aangepaste rol maken in een lab in Azure DevTest Labs'
+description: Dit artikel bevat een Azure PowerShell-script waarmee een aangepaste rol wordt gemaakt in een lab in Azure DevTest Labs.
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/11/2020
-ms.openlocfilehash: 9b6e4d47babd17916e31ab2762ec87f6aa433da6
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 3757d6c16a762a0f76f4718f117da93322af074c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136198"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91252796"
 ---
-# <a name="use-powershell-to-create-a-custom-role-in-a-lab-in-azure-devtest-labs"></a>Power shell gebruiken voor het maken van een aangepaste rol in een lab in Azure DevTest Labs
+# <a name="use-powershell-to-create-a-custom-role-in-a-lab-in-azure-devtest-labs"></a>PowerShell gebruiken om een aangepaste rol te maken in een lab in Azure DevTest Labs
 
-Met dit Power shell-voorbeeld script maakt u een aangepaste rol voor gebruik in een lab in Azure DevTest Labs. 
+Met dit voorbeeld van een PowerShell-script maakt u een aangepaste rol in een lab in Azure DevTest Labs. 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
 ## <a name="prerequisites"></a>Vereisten
-* **Een Lab**. Het script vereist dat u een bestaand Lab hebt. 
+* **Een lab**. Het script vereist dat u een bestaand lab hebt. 
 
 ## <a name="sample-script"></a>Voorbeeldscript
 
@@ -32,12 +32,12 @@ In dit script worden de volgende opdrachten gebruikt:
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) | Hiermee worden de bewerkingen opgehaald voor een Azure-resource provider die kan worden beveiligd met behulp van Azure RBAC. |
-| [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) | Een lijst met alle Azure-functies die beschikbaar zijn voor toewijzing. |
+| [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) | Hiermee worden de bewerkingen opgehaald voor een Azure-resourceprovider die kunnen worden beveiligd met behulp van op rollen gebaseerd toegangsbeheer van Azure. |
+| [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) | Hiermee vraagt u een lijst op met alle Azure-functies die beschikbaar zijn voor toewijzing. |
 | [New-AzRoleDefinition](/powershell/module/az.resources/new-azroledefinition) | Hiermee maakt u een aangepaste rol. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie [Documentatie over Azure PowerShell](/powershell/) voor meer informatie over Azure PowerShell.
 
-Aanvullende Azure Lab Services Power shell-voorbeeld scripts vindt u in de [Azure Lab Services Power shell](../samples-powershell.md)-voor beelden.
+Er zijn extra voorbeelden van Azure Lab Services PowerShell-scripts te vinden in de [PowerShell-voorbeelden van Azure Lab Services CLI](../samples-powershell.md).

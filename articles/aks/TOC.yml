@@ -4,6 +4,8 @@
   items:
     - name: Meer informatie over AKS
       href: intro-kubernetes.md
+    - name: Oplossingsarchitecturen
+      href: /azure/architecture/reference-architectures/containers/aks-start-here?bc=%2fazure%2faks%2fbreadcrumb%2ftoc.json&toc=%2fazure%2faks%2ftoc.json
 - name: Quickstarts
   expanded: true
   items:

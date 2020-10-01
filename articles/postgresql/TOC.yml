@@ -4,6 +4,8 @@
   items:
     - name: Wat is Azure DB voor PostgreSQL?
       href: overview.md
+    - name: Welke PostgreSQL-implementatie moet u kiezen
+      href: overview-postgres-choose-server-options.md
     - name: Service-updates
       items:
         - name: SSL-basiscertificaat verloopt

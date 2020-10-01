@@ -1,20 +1,20 @@
 ---
-title: 'Zelfstudie: Webservices migreren vanuit Google Maps | Microsoft Azure Maps'
-description: Webservices migreren van Google Maps naar Microsoft Azure Maps.
+title: Webservices migreren vanuit Google Maps | Microsoft Azure Maps
+description: Webservices migreren van Google Maps naar Microsoft Azure Maps
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/17/2019
-ms.topic: tutorial
+ms.date: 08/19/2020
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 8cc16e611002748dad2716a1c8dc914f297da9f1
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 57d71d517cb953a2a2c84b7e003fd08541416539
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090547"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319568"
 ---
 # <a name="migrate-web-service-from-google-maps"></a>Webservice migreren vanuit Google Maps
 
@@ -293,9 +293,8 @@ Laten we bijvoorbeeld een rode, middelgrote markering toevoegen aan de kaart op 
 &markers=color:red|size:mid|45,-110
 ```
 
-<center>
 
-![Markering in Google Maps](media/migrate-google-maps-web-services/google-maps-marker.png)</center>
+![Markering in Google Maps](media/migrate-google-maps-web-services/google-maps-marker.png)
 
 **Na: Azure Maps**
 
@@ -335,9 +334,8 @@ Laten we een rood (`FF0000`) standaardpictogram toevoegen met daaronder (15 50) 
 &pins=default|coFF0000|la15 50||'Space Needle' -122.349300 47.620180
 ```
 
-<center>
 
-![Markering in Azure Maps](media/migrate-google-maps-web-services/azure-maps-marker.png)</center>
+![Markering in Azure Maps](media/migrate-google-maps-web-services/azure-maps-marker.png)
 
 Voeg drie spelden toe met de labelwaarden 1, 2 en 3:
 
@@ -345,9 +343,9 @@ Voeg drie spelden toe met de labelwaarden 1, 2 en 3:
 &pins=default||'1'-122 45|'2'-119.5 43.2|'3'-121.67 47.12
 ```
 
-<center>
 
-![Meerdere markeringen in Azure Maps](media/migrate-google-maps-web-services/azure-maps-multiple-markers.png)</center>
+
+![Meerdere markeringen in Azure Maps](media/migrate-google-maps-web-services/azure-maps-multiple-markers.png)
 
 ### <a name="path-url-parameter-format-comparison"></a>Vergelijking van de indeling van de pad-URL-parameter
 
@@ -376,9 +374,7 @@ Voeg tussen de coördinaten een rode lijnmatheid en pixeldikte toe aan de kaart,
 &path=color:0xFF000088|weight:4|45,-110|50,-100
 ```
 
-<center>
-
-![Polylijn in Google Maps](media/migrate-google-maps-web-services/google-maps-polyline.png)</center>
+![Polylijn in Google Maps](media/migrate-google-maps-web-services/google-maps-polyline.png)
 
 **Na: Azure Maps**
 
@@ -405,9 +401,7 @@ Voeg tussen de coördinaten een rode lijnmatheid en pixeldikte toe, in de URL-pa
 &path=lcFF0000|la.5|lw4||-110 45|-100 50
 ```
 
-<center>
-
-![Polylijn in Azure Maps](media/migrate-google-maps-web-services/azure-maps-polyline.png)</center>
+![Polylijn in Azure Maps](media/migrate-google-maps-web-services/azure-maps-polyline.png)
 
 ## <a name="calculate-a-distance-matrix"></a>Een afstandsmatrix berekenen
 
@@ -482,22 +476,5 @@ Hieronder vindt u aanvullende documentatie en resources voor de REST-services va
 - [Zoeken naar een adres](how-to-search-for-address.md)
 - [Best practices voor routering](how-to-use-best-practices-for-routing.md)
 - [Naslagdocumentatie over de REST-service-API van Azure Maps](https://docs.microsoft.com/rest/api/maps/)
-
-## <a name="next-steps"></a>Volgende stappen
-
-Meer informatie over de REST-services van Azure Maps.
-
-> [!div class="nextstepaction"]
-> [Aanbevolen procedures voor het gebruik van Zoekservice](how-to-use-best-practices-for-search.md)
-
-> [!div class="nextstepaction"]
-> [Best practices voor het gebruik van de routeringsservice](how-to-use-best-practices-for-search.md)
-
-> [!div class="nextstepaction"]
-> [De services-module gebruiken (Web SDK)](how-to-use-best-practices-for-routing.md)
-
-> [!div class="nextstepaction"]
-> [Naslagdocumentatie over de REST-service-API van Azure Maps](https://docs.microsoft.com/rest/api/maps/)
-
-> [!div class="nextstepaction"]
-> [Codevoorbeelden](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+- [Codevoorbeelden](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+- [De services-module gebruiken (Web SDK)](how-to-use-best-practices-for-routing.md)

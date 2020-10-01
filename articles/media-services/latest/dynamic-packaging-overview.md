@@ -2,7 +2,7 @@
 title: Dynamische pakketten in Azure Media Services v3
 titleSuffix: Azure Media Services
 description: Dit artikel geeft een overzicht van dynamische pakketten in Azure Media Services.
-author: IngridAtMicrosoft
+author: myoungerman
 manager: femila
 editor: ''
 services: media-services
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/31/2020
-ms.author: inhenkel
-ms.openlocfilehash: dfa87921bc6a5a6c34b4dec33f4aae1907507730
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.author: v-myoung
+ms.openlocfilehash: 3607ecb7d1ef01b968b67c704e12136cc1888b69
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89291616"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296226"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Dynamische pakketten in Media Services v3
 
@@ -27,7 +27,7 @@ ms.locfileid: "89291616"
 
 Microsoft Azure Media Services kunnen worden gebruikt voor het coderen van veel mediabronbestandsindelingen. Deze worden geleverd via verschillende streamingprotocollen, met of zonder inhoudsbeveiliging, om alle grote apparaten te bereiken (zoals iOS- en Android-apparaten). Deze clients werken met verschillende protocollen. Zo vereist iOS dat stromen worden geleverd in HLS-indeling (HTTP Live Streaming), en Android-apparaten ondersteunen zowel HLS als MPEG DASH.
 
-In Media Services vertegenwoordigt een [streaming-eindpunt](streaming-endpoint-concept.md) (origin) een dynamische service (just-in-time) die u uw live en on-demand-inhoud rechtstreeks kan leveren aan een client-speler-app. De service maakt gebruik van een van de algemene protocollen voor het streamen van media die worden vermeld in de volgende sectie. *Dynamische pakketten* is een functie die standaard wordt geleverd op alle streaming-eindpunten (Standard of Premium).
+In Media Services vertegenwoordigt een [streaming-eindpunt](streaming-endpoint-concept.md) (origin) een dynamische service (just-in-time) die u uw live en on-demand-inhoud rechtstreeks kan leveren aan een client-speler-app. De service maakt gebruik van een van de algemene protocollen voor het streamen van media die worden vermeld in de volgende sectie. *Dynamische pakketten* is een functie die standaard wordt geleverd op alle streaming-eindpunten.
 
 > [!NOTE]
 > U kunt de [Azure-portal](https://portal.azure.com/) gebruiken voor het beheren van v3 [live gebeurtenissen](live-events-outputs-concept.md), v3 [assets](assets-concept.md) weergeven, informatie opvragen over toegang tot API's. Gebruik voor alle andere beheertaken (bijvoorbeeld transformaties en taken) de [REST API](/rest/api/media/), [CLI](https://aka.ms/ams-v3-cli-ref)of een van de ondersteunde [SDK's](media-services-apis-overview.md#sdks).
@@ -132,7 +132,7 @@ Zie [Overzicht van live streamen](live-streaming-overview.md) voor informatie ov
 Dynamische pakketten ondersteunen videobestanden in de bestandsindeling MP4-container en bevatten video die is gecodeerd met [H.264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) (MPEG-4 AVC of AVC1) of [H.265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC, hev1 of hvc1).
 
 > [!NOTE]
-> Resoluties van maximaal 4.000 en framesnelheden van maximaal 60 frames per seconde zijn getest met *dynamische pakketten*. De [Premium-encoder](../previous/media-services-encode-asset.md#media-encoder-premium-workflow) ondersteunt het coderen van H. 265 via de oudere v2-API's.
+> Resoluties van maximaal 4.000 en framesnelheden van maximaal 60 frames per seconde zijn getest met *dynamische pakketten*.
 
 ## <a name="audio-codecs-supported-by-dynamic-packaging"></a>Audio-codecs die worden ondersteund door dynamische pakketten
 

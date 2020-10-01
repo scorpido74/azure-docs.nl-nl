@@ -5,25 +5,28 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 06/27/2019
 ms.author: pafarley
-ms.openlocfilehash: 11783f8fac147e6fb2cf371ee1a588cf318a5e9c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 5de121a1a905a58f8b5eaf8e60c1f8da71ee8cd6
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75379423"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276936"
 ---
-Formulier herkenning werkt op invoer documenten die aan de volgende vereisten voldoen:
+Form Recognizer werkt met invoerdocumenten die aan de volgende vereisten voldoen:
 
-* Indeling moet JPG, PNG, PDF (tekst of gescand) of TIFF zijn. Tekst-Inge sloten Pdf's zijn het beste omdat er geen mogelijke fout is in teken extractie en locatie.
-* Als uw Pdf's met een wacht woord zijn vergrendeld, moet u de vergren deling verwijderen voordat u ze verzendt.
-* PDF-en TIFF-documenten moeten 200 pagina's of minder zijn en de totale grootte van de set met trainings gegevens moet 500 pagina's of minder zijn.
-* Voor afbeeldingen moeten de afmetingen tussen 600 x 100 pixels en 4200 x 4200 pixels liggen.
-* Als u scant vanuit papieren documenten, moeten formulieren kwalitatief hoogwaardige scans zijn.
+* De indeling moet JPEG, PNG, PDF (tekst of gescand) of TIFF zijn. PDF-bestanden met ingesloten tekst hebben de voorkeur omdat hierbij geen fouten optreden met locatie en extractie van tekens.
+* Grootte van bestand moet 20 MB of minder zijn.
+* De afmetingen van afbeeldingen moeten tussen 50 x 50 en 10000 x 10000 pixels liggen.
+* PDF-afmetingen mogen maximaal 17 x 17 inch zijn, wat overeenkomt met de papierformaten Legal of A3 en kleiner.
+* Voor PDF en TIFF worden alleen de eerste 200 pagina's verwerkt (met een abonnement in de prijscategorie Gratis worden alleen de eerste twee pagina's verwerkt).
+* De totale grootte van de set met trainingsgegevens mag niet meer bedragen dan 500 pagina's.
+* Als uw PDF's met een wachtwoord zijn vergrendeld, moet u de vergrendeling verwijderen voordat u ze verzendt.
+* Als formulieren worden gescand van papieren documenten, moeten de formulieren scans van hoge kwaliteit zijn.
 * Tekst moet het Latijnse alfabet (Engelse tekens) gebruiken.
-* Gegevens moeten sleutels en waarden bevatten voor leren zonder super visie (geen gelabelde gegevens).
-* Voor niet-verouderd leren (zonder gelabelde gegevens), moeten sleutels boven of links van de waarden worden weer gegeven. ze kunnen niet onder of rechts worden weer gegeven.
+* De service kan alleen zonder tussenkomst leren (zonder gelabelde gegevens) als de gegevens sleutels en waarden bevatten.
+* De service kan alleen zonder tussenkomst leren (zonder gelabelde gegevens) als er boven of links van de waarden sleutels worden weergegeven. Deze mogen niet onder of rechts van de waarden worden weergegeven.
 
-Dit type invoer gegevens wordt momenteel niet door de formulier herkenning ondersteund:
+Form Recognizer biedt op dit moment geen ondersteuning voor deze typen invoergegevens:
 
 * Complexe tabellen (geneste tabellen, samengevoegde kopteksten of cellen, enzovoort).
-* Selectie vakjes of keuze rondjes.
+* Selectievakjes of keuzerondjes.

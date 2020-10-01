@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
-ms.openlocfilehash: 8e8479179aa74f2fb2ead41dec28d247de9657c3
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: dd54dd17e5a9a828935ad0d6ac3d713aaedd9535
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585097"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91251589"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>Sleutels voor opslagaccounts beheren met Key Vault en Azure PowerShell
 
@@ -75,7 +75,7 @@ Set-AzContext -SubscriptionId <subscriptionId>
 
 ### <a name="set-variables"></a>Variabelen instellen
 
-Stel eerst de variabelen in die door de PowerShell-cmdlets moeten worden gebruikt in de volgende stappen. Zorg ervoor dat u de tijdelijke aanduidingen <YourResourceGroupName>, <YourStorageAccountName>en <YourKeyVaultName> bijwerkt en stel $keyVaultSpAppId in op `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` (zoals aangegeven in [Toepassings-id in de vorm van een service-principal](#service-principal-application-id) hierboven).
+Stel eerst de variabelen in die door de PowerShell-cmdlets moeten worden gebruikt in de volgende stappen. Zorg ervoor dat u de tijdelijke aanduidingen "YourResourceGroupName", "YourStorageAccountName" en "YourKeyVaultName" bijwerkt en $keyVaultSpAppId instelt op `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` (zoals hierboven is aangegeven in [Toepassings-id in de vorm van een service-principal](#service-principal-application-id)).
 
 We gebruiken ook de Azure PowerShell-cmdlets [Get-AzContext](/powershell/module/az.accounts/get-azcontext?view=azps-2.6.0) en [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount?view=azps-2.6.0) om uw gebruikers-id en de context van uw Azure opslagaccount op te halen.
 

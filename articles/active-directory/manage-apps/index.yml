@@ -1,25 +1,25 @@
 ### YamlMime:Landing
 title: Documentatie over toepassingsbeheer
-summary: Azure Active Directory biedt veilige en naadloze toegang tot cloud- en on-premises toepassingen. Bovendien is het niet nodig om wachtwoorden te beheren. Uw eindgebruikers hoeven zich maar één keer aan te melden om toegang te krijgen tot Microsoft 365 en duizenden andere toepassingen. Leer aan de hand van onze snelstartgidsen, zelfstudies en richtlijnen hoe u toepassingen beheert en implementeert.
+summary: Azure Active Directory is een IAM-systeem (identiteits- en toegangsbeheer). Het biedt één plaats voor het opslaan van informatie over digitale identiteiten. U kunt uw softwaretoepassingen configureren voor het gebruik van Azure AD als de locatie waar de gebruikersgegevens worden opgeslagen.
 metadata:
   title: Documentatie over toepassingsbeheer
-  description: Azure Active Directory biedt veilige en naadloze toegang tot cloud- en on-premises toepassingen. Bovendien is het niet nodig om wachtwoorden te beheren. Uw eindgebruikers hoeven zich maar één keer aan te melden om toegang te krijgen tot Microsoft 365 en duizenden andere toepassingen. Leer aan de hand van onze snelstartgidsen, zelfstudies en richtlijnen hoe u toepassingen beheert en implementeert.
+  description: Azure AD is een IAM-systeem (identiteits- en toegangsbeheer). Het biedt één plaats voor het opslaan van informatie over digitale identiteiten. U kunt uw softwaretoepassingen configureren voor het gebruik van Azure AD als de locatie waar de gebruikersgegevens worden opgeslagen.
   ms.service: active-directory
   ms.subservice: app-mgmt
   ms.workload: identity
   ms.topic: landing-page
-  ms.date: 10/10/2019
+  ms.date: 09/28/2020
   author: kenwith
   ms.author: kenwith
   manager: celested
-  ms.openlocfilehash: dc056bbfb880b8cdfc2326edc3036657803f24d7
-  ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+  ms.openlocfilehash: e3232f319c14af6724bc5b844f71a5c6ff34bfa9
+  ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 08/14/2020
-  ms.locfileid: "88209109"
+  ms.lasthandoff: 09/29/2020
+  ms.locfileid: "91534995"
 landingContent:
-- title: Over toepassingsbeheer
+- title: Over app-beheer
   linkLists:
   - linkListType: overview
     links:
@@ -27,75 +27,91 @@ landingContent:
       url: what-is-application-management.md
     - text: Wat is eenmalige aanmelding?
       url: what-is-single-sign-on.md
+- title: Aan de slag
+  linkLists:
   - linkListType: quickstart
     links:
-    - text: Quickstart-serie
+    - text: Uw apps weergeven
       url: view-applications-portal.md
-- title: Cloud-apps en eenmalige aanmelding beheren
+    - text: Een app toevoegen
+      url: add-application-portal.md
+- title: Apps toevoegen en configureren
   linkLists:
-  - linkListType: concept
+  - linkListType: learn
     links:
-    - text: Meer informatie over eenmalige aanmelding
+    - text: Een app toevoegen
+      url: add-application-portal.md
+    - text: Een app configureren
+      url: add-application-portal-configure.md
+- title: Apps beheren
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Aanbevolen procedures
+      url: application-management-fundamentals.md
+    - text: Algemene scenario's
+      url: common-scenarios.md
+- title: Eenmalige aanmelding begrijpen
+  linkLists:
+  - linkListType: architecture
+    links:
+    - text: Concepten van eenmalige aanmelding
       url: what-is-single-sign-on.md
-    - text: Ervaringen voor de eindgebruiker
-      url: end-user-experiences.md
-  - linkListType: how-to-guide
-    links:
-    - text: Eenmalige aanmelding configureren
-      url: configure-saml-single-sign-on.md
-    - text: Een gebruiker of groep toewijzen aan een app
-      url: assign-user-or-group-access-portal.md
-- title: Gebruikers en groepen inrichten in een app
+    - text: Opties voor eenmalige aanmelding
+      url: sso-options.md
+- title: Toestemming voor de app
   linkLists:
-  - linkListType: overview
+  - linkListType: learn
     links:
-    - text: Wat is toepassingsinrichting?
-      url: /azure/active-directory/app-provisioning/user-provisioning?context=azure/active-directory/manage-apps/context/manage-apps-context
-  - linkListType: tutorial
-    links:
-    - text: Zelfstudies voor het inrichten van SaaS-apps
-      url: /azure/active-directory/saas-apps/
-  - linkListType: how-to-guide
-    links:
-    - text: Een app bouwen? SCIM gebruiken voor inrichting (documentatie voor app-inrichting)
-      url: /azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups
-    - text: Een galerie-app toevoegen? Inrichting configureren (documentatie voor app-inrichting)
-      url: /azure/active-directory/app-provisioning/configure-automatic-user-provisioning-portal
-- title: On-premises apps publiceren met toepassingsproxy
+    - text: Gebruikerstoestemming configureren
+      url: configure-user-consent.md
+    - text: Beheerderstoestemming configureren
+      url: configure-admin-consent-workflow.md
+- title: Apps migreren
   linkLists:
-  - linkListType: overview
+  - linkListType: learn
     links:
-    - text: Wat is toepassingsproxy?
+    - text: Migratieresources
+      url: migration-resources.md
+    - text: Een AD FS-app migreren naar Azure
+      url: migrate-adfs-apps-to-azure.md
+- title: On-premises apps gebruiken
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Wat is App Proxy?
       url: what-is-application-proxy.md
-  - linkListType: concept
-    links:
-    - text: Toepassingsproxy plannen
+    - text: App Proxy implementeren
       url: application-proxy-deployment-plan.md
-  - linkListType: tutorial
-    links:
-    - text: Een on-premises app toevoegen
-      url: application-proxy-add-on-premises-application.md
-  - linkListType: how-to-guide
-    links:
-    - text: Connectors configureren met proxyservers
-      url: application-proxy-configure-connectors-with-proxy-servers.md
-    - text: Een aangepaste startpagina configureren
-      url: application-proxy-configure-custom-home-page.md
-  - linkListType: deploy
-    links:
-    - text: Extern bureaublad publiceren met toepassingsproxy
-      url: application-proxy-integrate-with-remote-desktop-services.md
-    - text: Externe toegang tot SharePoint inschakelen met Azure AD-toepassingsproxy
-      url: application-proxy-integrate-with-sharepoint-server.md
-- title: Verouderde apps beveiligen met app-leveringscontrollers en -netwerken
+- title: Beveiligde apps
   linkLists:
-  - linkListType: overview
+  - linkListType: learn
     links:
-    - text: Veilige, hybride toegang voor verouderde apps (cloud en on-premises)
-      url: secure-hybrid-access.md
-  - linkListType: how-to-guide
+    - text: Toegang tot apps beheren
+      url: what-is-access-management.md
+    - text: Tenantbeperkingen beheren
+      url: tenant-restrictions.md
+- title: Mijn apps configureren
+  linkLists:
+  - linkListType: learn
     links:
-    - text: Uw apps beveiligen met behulp van F5 Big-IP APM
-      url: https://aka.ms/f5-hybridaccessguide
-    - text: Uw apps beveiligen met behulp van Zscaler ZPA
-      url: https://aka.ms/zscaler-hybridaccessguide
+    - text: Een My Apps-implementatie plannen
+      url: access-panel-deployment-plan.md
+    - text: Verzamelingen maken
+      url: access-panel-collections.md
+- title: Nieuwe apps ontwikkelen
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Begeleiding voor ontwikkelaars
+      url: developer-guidance-for-integrating-applications.md
+    - text: Meer informatie over het platform
+      url: ../develop/v2-overview.md
+- title: Nieuw in docs
+  linkLists:
+  - linkListType: whats-new
+    links:
+    - text: Op SAML gebaseerde SSO instellen
+      url: add-application-portal-setup-sso.md
+    - text: Op OIDC gebaseerde SSO instellen
+      url: add-application-portal-setup-oidc-sso.md

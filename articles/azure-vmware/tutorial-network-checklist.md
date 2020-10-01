@@ -1,32 +1,36 @@
 ---
-title: 'Zelfstudie: Controlelijst voor netwerken'
-description: Vereisten voor netwerkvereisten en informatie over netwerkconnectiviteit en netwerkpoorten
+title: 'Zelfstudie: checklist voor netwerkplanning'
+description: Lees hier alles over de netwerkvereisten en informatie over netwerkconnectiviteit en netwerkpoorten voor Azure VMware Solution.
 ms.topic: tutorial
-ms.date: 08/21/2020
-ms.openlocfilehash: aba5d7767e420b3ade6238621487884e44fbb6e2
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 09/21/2020
+ms.openlocfilehash: c9a3c18d69cb81ed2810c0516820a9ef348402f1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750412"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91254394"
 ---
-# <a name="networking-checklist-for-azure-vmware-solution"></a>Netwerkcontrolelijst voor Azure VMware-oplossing 
+# <a name="networking-planning-checklist-for-azure-vmware-solution"></a>Checklist voor netwerkplanning voor Azure VMware Solution 
 
-De Azure VMware-oplossing biedt een VMware-privécloud, die toegankelijk is voor gebruikers en toepassingen van on-premises en Azure-omgevingen of -resources. De connectiviteit wordt geleverd via netwerkservices, zoals Azure ExpressRoute en VPN-verbindingen, en vereist een aantal specifieke netwerkadresbereiken en firewall-poorten voor het inschakelen van de services. In dit artikel vindt u de informatie die u nodig hebt om uw netwerk correct te configureren voor gebruik met de Azure VMware-oplossing.
+De Azure VMware-oplossing biedt een VMware-privécloud, die toegankelijk is voor gebruikers en toepassingen van on-premises en Azure-omgevingen of -resources. De connectiviteit wordt geleverd via netwerkservices zoals Azure ExpressRoute en VPN-verbindingen, en vereist een aantal specifieke netwerkadresbereiken en firewallpoorten voor het inschakelen van de services. In dit artikel vindt u de informatie die u nodig hebt om uw netwerk correct te configureren voor gebruik met Azure VMware Solution.
 
-In deze zelfstudie leert u het volgende:
+In deze zelfstudie wordt aandacht besteed aan:
 
 > [!div class="checklist"]
-> * Vereisten voor netwerkconnectiviteit
-> * DHCP in Azure VMware Solution
+> * Overwegingen voor virtuele netwerken en ExpressRoute-circuits
+> * Vereisten voor routering en subnet
+> * Vereiste netwerkpoorten voor communicatie met de services
+> * DHCP- en DNS-overwegingen in Azure VMware Solution
 
-## <a name="virtual--network-and-expressroute-circuit--considerations"></a>Overwegingen voor virtuele netwerken en ExpressRoute-circuits
-Wanneer u verbinding maakt vanuit een virtueel netwerk in uw abonnement, wordt het ExpressRoute-circuit tot stand gebracht via peering, een autorisatiesleutel en een peering-ID die u in de Azure-portal kunt aanvragen. De peering is een particuliere, een-op-een-verbinding tussen uw privécloud en het virtuele netwerk.
+
+
+## <a name="virtual-network-and-expressroute-circuit-considerations"></a>Overwegingen voor virtuele netwerken en ExpressRoute-circuits
+Wanneer u een verbinding voor een virtueel netwerk maakt in uw abonnement, wordt het ExpressRoute-circuit tot stand gebracht via peering, een autorisatiesleutel en een peering-ID die u in de Azure-portal kunt aanvragen. De peering is een particuliere, een-op-een-verbinding tussen uw privécloud en het virtuele netwerk.
 
 > [!NOTE] 
 > Het ExpressRoute-circuit maakt geen deel uit van een implementatie van een privécloud. Het on-premises ExpressRoute-circuit valt buiten het bereik van dit document. Als u een on-premises verbinding met uw privécloud nodig hebt, kunt u een van uw bestaande ExpressRoute-circuits gebruiken of deze in de Azure-portal aanschaffen.
 
-Wanneer u een privécloud implementeert, ontvangt u IP-adressen voor vCenter en NSX-T-beheer. Voor toegang tot deze beheerinterfaces moet u extra resources maken in een virtueel netwerk van uw abonnement. U vindt de procedures voor het maken van deze resources en het tot stand brengen van persoonlijke peering met ExpressRoute in de zelfstudies.
+Wanneer u een privécloud implementeert, ontvangt u IP-adressen voor vCenter en NSX-T-beheer. Voor toegang tot deze beheerinterfaces moet u extra resources maken in het virtuele netwerk van uw abonnement. U vindt de procedures voor het maken van deze resources en het tot stand brengen van [persoonlijke peering met ExpressRoute](tutorial-expressroute-global-reach-private-cloud.md) in de zelfstudies.
 
 Het logisch netwerk van de privécloud wordt geleverd met vooraf ingerichte NSX-T. Een Tier-0-gateway en een Tier-1-gateway is vooraf ingericht voor u. U kunt een segment maken en dit koppelen aan de bestaande gateway van de Tier-1 of koppelen aan een nieuwe door u opgegeven tier-1-gateway. NSX-T-onderdelen voor logische netwerken bieden oost-west-connectiviteit tussen workloads en bieden een noord-zuid-verbinding met het internet en Azure-services.
 
@@ -39,15 +43,15 @@ Voorbeeld `/22` CIDR-netwerkadresblok:  `10.10.0.0/22`
 
 De subnetten:
 
-| Netwerkgebruik             | Subnet | Voorbeeld        |
-| ------------------------- | ------ | -------------- |
-| Privécloudbeheer  | `/24`  | `10.10.0.0/24` |
-| vMotion-netwerk           | `/24`  | `10.10.1.0/24` |
-| VM-workloads              | `/24`  | `10.10.2.0/24` |
-| ExpressRoute-peering      | `/24`  | `10.10.3.8/30` |
+| Netwerkgebruik             | Subnet | Voorbeeld          |
+| ------------------------- | ------ | ---------------- |
+| Privécloudbeheer  | `/26`  | `10.10.0.0/26`   |
+| vMotion-netwerk           | `/25`  | `10.10.1.128/25` |
+| VM-workloads              | `/24`  | `10.10.2.0/24`   |
+| ExpressRoute-peering      | `/29`  | `10.10.3.8/29`   |
 
 
-### <a name="network-ports-required-to-communicate-with-the-service"></a>Netwerkpoorten die nodig zijn om te communiceren met de service
+## <a name="required-network-ports"></a>Vereiste netwerkpoorten
 
 | Bron | Doel | Protocol | Poort | Beschrijving  | 
 | ------ | ----------- | :------: | :---:| ------------ | 
@@ -69,18 +73,15 @@ De subnetten:
 ## <a name="dhcp-and-dns-resolution-considerations"></a>Overwegingen voor DHCP- en DNS-omzetting
 Toepassingen en workloads die worden uitgevoerd in een privécloud-omgeving, moeten naamomzetting en DHCP-services hebben voor het opzoeken en toewijzen van IP-adressen. U hebt de juiste DHCP- en DNS-infrastructuur nodig om deze services te kunnen leveren. U kunt een virtuele machine configureren om deze services in uw privécloud te leveren.  
 
-Het is raadzaam om de DHCP-service te gebruiken die is ingebouwd in NSX of om een lokale DHCP-server in de privécloud te gebruiken in plaats van broadcast-DHCP-verkeer via het WAN terug naar on-premises te leiden.
+Gebruik de DHCP-service die is ingebouwd in NSX of een lokale DHCP-server in de privécloud in plaats van broadcast-DHCP-verkeer via het WAN terug naar on-premises te leiden.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie hebt u gelezen over de overwegingen en vereisten voor het implementeren van een privécloud van Azure VMware Solution. 
 
-> [!div class="checklist"]
-> * Vereisten voor netwerkconnectiviteit
-> * DHCP in Azure VMware Solution
 
 Zodra u de juiste netwerken hebt ingesteld, gaat u verder met de volgende zelfstudie om uw Azure VMware Solution-privécloud te maken.
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Een Azure VMware Solution-privécloud maken](tutorial-create-private-cloud.md)
+> [Een Azure VMware Solution-privécloud maken](tutorial-create-private-cloud.md)

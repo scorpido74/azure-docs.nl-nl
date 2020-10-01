@@ -4,39 +4,39 @@ ms.service: site-recovery
 ms.topic: include
 ms.date: 04/28/2019
 ms.author: ramamill
-ms.openlocfilehash: 00b0c1b1a40ad16db177916c57dba6e9d5a187a7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: bff9457220efbb6a6b318550a5b2dd9af4ae230f
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67176563"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361383"
 ---
 Volg de stappen voor uw specifieke omstandigheden.
 
-### <a name="unregister-a-connected-process-server"></a>Registratie van een verbonden proces server ongedaan maken
+### <a name="unregister-a-connected-process-server"></a>Registratie van een verbonden processerver ongedaan maken
 
-1. Maak een externe verbinding met de proces server als beheerder.
-2. Open **Program ma's > een programma verwijderen**in het **configuratie scherm**.
-3. Verwijder het programma **Microsoft Azure site Recovery Mobility service/Master doel server**.
-4. Verwijder het programma **Microsoft Azure site Recovery configuratie/proces server**.
-5. Nadat de Program ma's in stap 3 en 4 zijn verwijderd, verwijdert u **Microsoft Azure site Recovery afhankelijkheden van de configuratie/proces server**.
+1. Breng als beheerder een externe verbinding met de processerver tot stand.
+2. Ga naar het **Configuratiescherm** en open **Programma's > Een programma verwijderen**.
+3. Verwijder het programma **Microsoft Azure Site Recovery Mobility Service/Master Target Server**.
+4. Verwijder het programma **Microsoft Azure Site Recovery Configuration/Process Server**.
+5. Als de programma's uit stappen 3 en 4 zijn verwijderd, verwijdert u **Microsoft Azure Site Recovery Configuration/Process Server Dependencies**.
 
-### <a name="unregister-a-disconnected-process-server"></a>Registratie van een niet-verbonden proces server ongedaan maken
+### <a name="unregister-a-disconnected-process-server"></a>Registratie van een niet-verbonden processerver beëindigen
 
-Gebruik deze stappen alleen als er geen manier is om de computer waarop de proces server is geïnstalleerd, opnieuw in te stellen.
+Gebruik deze stappen alleen als het niet mogelijk is om de computer waarop de processerver is geïnstalleerd, aan de praat te krijgen.
 
-1. Meld u als beheerder aan bij de configuratie server.
-2. Open een opdracht prompt met beheerders rechten en blader naar `%ProgramData%\ASR\home\svsystems\bin` .
-3. Voer deze opdracht uit om een lijst met een of meer proces servers op te halen.
+1. Meld u bij uw configuratieserver aan als beheerder.
+2. Open een opdrachtprompt met beheerdersbevoegdheden en blader naar `%ProgramData%\ASR\home\svsystems\bin`.
+3. Voer deze opdracht uit om een lijst met de beschikbare processervers weer te geven.
 
     ```
     perl Unregister-ASRComponent.pl -IPAddress <IP_of_Process_Server> -Component PS
     ```
-    - S. Nee: het serie nummer van de proces server.
-    - IP/naam: het IP-adres en de naam van de computer waarop de proces server wordt uitgevoerd.
-    - Heartbeat: laatste heartbeat van de proces Server computer.
-    ![Registratie ongedaan maken-cmd](media/site-recovery-vmware-unregister-process-server/Unregister-cmd.PNG)
+    - S. No: het serienummer van de processerver.
+    - IP/Name: het IP-adres en de naam van de computer waarop de processerver wordt uitgevoerd.
+    - Heartbeat: laatste heartbeat van de computer met de processerver.
+    ![Schermopname met informatie over de processervers en de tekst Please choose one of the above servers to un-register.(media/site-recovery-vmware-unregister-process-server/Unregister-cmd.PNG)
 
-4. Geef het serie nummer op van de proces server waarvoor u de registratie ongedaan wilt maken.
-5. Bij het ongedaan maken van de registratie van een proces server worden alle details van het systeem verwijderd en wordt het volgende bericht weer gegeven: de registratie van de **Server naam is ongedaan gemaakt> (server-IP-adres)**
+4. Geef het serienummer op van de processerver waarvan u de registratie ongedaan wilt maken.
+5. Als u de registratie van een processerver ongedaan maakt, worden alle gegevens van de server uit het systeem verwijderd en wordt het volgende bericht weergegeven: **Successfully unregistered server-name> (IP-adres van server)**
 

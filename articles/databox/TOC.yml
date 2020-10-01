@@ -78,6 +78,8 @@
                   href: security-baseline.md
                 - name: Beveiliging controleren
                   href: data-box-security.md
+            - name: ACL's en metagegevens overdragen
+              href: data-box-file-acls-preservation.md
             - name: Veelgestelde vragen
               href: data-box-faq.md
         - name: Procedures

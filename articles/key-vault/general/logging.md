@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 0ed50b8d128386008a73eb4d1a8b412a42fdb945
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 0364495d751465f644686824758992d47f0b8bdf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89485452"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91290650"
 ---
 # <a name="azure-key-vault-logging"></a>Logboekregistratie voor Azure Key Vault
 
@@ -133,6 +133,7 @@ Wat wordt in het logboek vastgelegd?
   * Het maken, wijzigen of verwijderen van die sleutels of geheimen.
   * Het ondertekenen, verifiëren, versleutelen, ontsleutelen, verpakken en uitpakken van sleutels, het ophalen van geheimen en het vermelden van sleutels en geheimen (en hun versies).
 * Niet-geverifieerde aanvragen die in een 401-respons resulteren. Voorbeelden daarvan zijn aanvragen die geen Bearer-token hebben, die ongeldig of verlopen zijn, of die een ongeldig token hebben.  
+* Meldingsgebeurtenissen van Event Grid voor bijna verlopen, verlopen en toegangsbeleid van kluis gewijzigd (gebeurtenis voor nieuwe versie wordt niet vastgelegd). Gebeurtenissen worden vastgelegd ongeacht of er een gebeurtenisabonnement is gemaakt voor de sleutelkluis. Zie [Azure Event Grid-gebeurtenisschema voor Key Vault](https://docs.microsoft.com/azure/event-grid/event-schema-key-vault) voor meer informatie.
 
 ## <a name="enable-logging-using-azure-cli"></a>Logboekregistratie inschakelen met CLI
 
@@ -289,6 +290,8 @@ De veldwaarden voor **operationName** hebben de *ObjectVerb*-indeling. Bijvoorbe
 
 De volgende tabel bevat de **operationName**-waarden en de bijbehorende REST-API-opdrachten:
 
+### <a name="operation-names-table"></a>Tabel met waarden voor operationName
+
 | operationName | REST-API-opdracht |
 | --- | --- |
 | **Verificatie** |Verifiëren via het Azure Active Directory-eindpunt |
@@ -318,6 +321,13 @@ De volgende tabel bevat de **operationName**-waarden en de bijbehorende REST-API
 | **SecretDelete** |[Een geheim verwijderen](https://msdn.microsoft.com/library/azure/dn903613.aspx) |
 | **SecretList** |[Geheimen in een kluis weergeven](https://msdn.microsoft.com/library/azure/dn903614.aspx) |
 | **SecretListVersions** |[Versies van een geheim weergeven](https://msdn.microsoft.com/library/azure/dn986824.aspx) |
+| **VaultAccessPolicyChangedEventGridNotification** | Gebeurtenis gepubliceerd voor wijzigen van toegangsbeleid voor kluis |
+| **SecretNearExpiryEventGridNotification** |Gebeurtenis gepubliceerd voor bijna verlopen van geheim |
+| **SecretExpiredEventGridNotification** |Gebeurtenis gepubliceerd voor verlopen van geheim |
+| **KeyNearExpiryEventGridNotification** |Gebeurtenis gepubliceerd voor bijna verlopen van sleutel |
+| **KeyExpiredEventGridNotification** |Gebeurtenis gepubliceerd voor verlopen van sleutel |
+| **CertificateNearExpiryEventGridNotification** |Gebeurtenis gepubliceerd voor bijna verlopen van certificaat |
+| **CertificateExpiredEventGridNotification** |Gebeurtenis gepubliceerd voor verlopen van certificaat |
 
 ## <a name="use-azure-monitor-logs"></a><a id="loganalytics"></a>Azure Monitor-logboeken gebruiken
 

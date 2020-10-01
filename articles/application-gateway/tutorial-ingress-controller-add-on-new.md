@@ -1,18 +1,18 @@
 ---
-title: De invoegtoepassing voor inkomend verkeer inschakelen voor een nieuw AKS-cluster met een nieuwe Azure Application Gateway-instantie
-description: Leer hoe u de Azure CLI kunt gebruiken om de invoegtoepassing voor inkomend verkeer voor uw nieuwe AKS-cluster in kunt schakelen met een nieuwe Application Gateway-instantie.
+title: 'Zelfstudie: De invoegtoepassing voor inkomend verkeer inschakelen voor een nieuw AKS-cluster met een nieuwe Azure Application Gateway-instantie'
+description: Gebruik deze zelfstudie om te leren hoe u de Azure CLI kunt gebruiken om de invoegtoepassing voor inkomend verkeer voor uw nieuwe AKS-cluster in kunt schakelen met een nieuwe Application Gateway-instantie.
 services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 06/10/2020
+ms.date: 09/24/2020
 ms.author: caya
-ms.openlocfilehash: 620fe5851f9dbde01b2206595fa79b61f62deb66
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: ab917fe476a40eb8ea559bc08e52d4bbf16a8436
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89595917"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285584"
 ---
 # <a name="tutorial-enable-the-ingress-controller-add-on-preview-for-a-new-aks-cluster-with-a-new-application-gateway-instance"></a>Zelfstudie: De invoegtoepassing voor inkomend verkeer (preview) inschakelen voor een nieuw AKS-cluster met een nieuwe Application Gateway-instantie
 
@@ -30,11 +30,12 @@ In deze zelfstudie leert u het volgende:
 > * Een voorbeeldtoepassing implementeren met behulp van AGIC voor inkomend verkeer op het AKS-cluster.
 > * Controleren of de toepassing bereikbaar is via Application Gateway.
 
+## <a name="prerequisites"></a>Vereisten
+
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>Vereisten
 
 Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze zelfstudie de Azure CLI (versie 2.0.4 of hoger) uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli).
 
@@ -134,7 +135,7 @@ az group delete --name myResourceGroup
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Meer informatie over het uitschakelen van de AGIC-invoegtoepassing](./ingress-controller-disable-addon.md)
-* [Meer informatie over welke aantekeningen worden ondersteund door AGIC](./ingress-controller-annotations.md)
-* [Problemen met AGIC oplossen](./ingress-controller-troubleshoot.md)
+
+> [!div class="nextstepaction"]
+> [Meer informatie over het uitschakelen van de AGIC-invoegtoepassing](./ingress-controller-disable-addon.md)
 

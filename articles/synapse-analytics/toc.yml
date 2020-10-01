@@ -10,34 +10,24 @@
       items:
         - name: Inleiding
           href: get-started.md
-          displayName: 'get, started'
-        - name: 1 Een werkruimte maken
+        - name: 1 Een Synapse-werkruimte maken
           href: get-started-create-workspace.md
-          displayName: 'get, started'
-        - name: 2 SQL-pools gebruiken
+        - name: 2 Analyseren met behulp van een SQL-pool
           href: get-started-analyze-sql-pool.md
-          displayName: 'get, started'
-        - name: 3 Spark gebruiken
+        - name: 3 Analyseren met Spark
           href: get-started-analyze-spark.md
-          displayName: 'get, started'
-        - name: 4 SQL on-demand gebruiken
+        - name: 4 Analyseren met behulp van SQL on demand
           href: get-started-analyze-sql-on-demand.md
-          displayName: 'get, started'
         - name: 5 Gegevens analyseren in een opslagaccount
           href: get-started-analyze-storage.md
-          displayName: 'get, started'
         - name: 6 Organiseren met pijplijnen
           href: get-started-pipelines.md
-          displayName: 'get, started'
         - name: 7 Visualiseren met Power BI
           href: get-started-visualize-power-bi.md
-          displayName: 'get, started'
         - name: 8 Bewaken
           href: get-started-monitor.md
-          displayName: 'get, started'
-        - name: 9 Explore the Knowledge center
+        - name: 9 Het Knowledge Center verkennen
           href: get-started-knowledge-center.md
-          displayName: 'get, started'
     - name: Cheatsheet
       href: overview-cheat-sheet.md
     - name: Veelgestelde vragen
@@ -58,16 +48,16 @@
       href: quickstart-power-bi.md
     - name: Pools maken
       items:
-        - name: SQL-pool maken met behulp van Synapse Studio
-          href: quickstart-create-sql-pool-studio.md
+        - name: Apache Spark-notebook maken met behulp van webhulpprogramma's
+          href: quickstart-apache-spark-notebook.md
+        - name: Apache Spark-pool maken met behulp van de Azure-portal
+          href: quickstart-create-apache-spark-pool-portal.md
+        - name: Apache Spark-pool maken met behulp van Synapse Studio
+          href: quickstart-create-apache-spark-pool-studio.md
         - name: SQL-pool maken met behulp van de Azure-portal
           href: quickstart-create-sql-pool-portal.md
-        - name: Een notebook maken
-          href: quickstart-apache-spark-notebook.md
-        - name: Een Spark-pool maken met de Azure Portal
-          href: quickstart-create-apache-spark-pool-portal.md
-        - name: Een Spark-pool maken met Synapse Studio
-          href: quickstart-create-apache-spark-pool-studio.md
+        - name: SQL-pool maken met behulp van Synapse Studio
+          href: quickstart-create-sql-pool-studio.md
     - name: Gegevens laden met SQL-pools
       items:
         - name: COPY-instructie
@@ -84,16 +74,12 @@
   items:
     - name: Apache Spark-toepassingen uitvoeren
       href: ./spark/intellij-tool-synapse.md
-    - name: PySpark-toepassingen voor Spark-pools uitvoeren
-      href: ./spark/vscode-tool-synapse.md
     - name: Spark-taakdefinities
       href: ./spark/apache-spark-job-definitions.md
     - name: Power BI Desktop
       href: ./sql/tutorial-connect-power-bi-desktop.md
     - name: Gegevenswetenschapper
       items:
-        - name: Een regressie-experiment uitvoeren met Azure AutoML
-          href: ./spark/apache-spark-azure-machine-learning-tutorial.md
         - name: Een classificatiemodel maken met Apache Spark MLlib
           href: ./spark/apache-spark-machine-learning-mllib-notebook.md
     - name: Gegevensanalist
@@ -212,8 +198,8 @@
               href: ../data-factory/concepts-data-flow-expression-builder.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Expressietaal
               href: ../data-factory/data-flow-expression-functions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Verschillen met Azure Data Factory
-              href: ./data-integration/concepts-data-factory-differences.md
+        - name: Verschillen met Azure Data Factory
+          href: ./data-integration/concepts-data-factory-differences.md
     - name: Spark
       items:
         - name: Overzicht
@@ -386,6 +372,22 @@
           href: ../cosmos-db/synapse-link-frequently-asked-questions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Use cases van Synapse Link
           href: ../cosmos-db/synapse-link-use-cases.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+    - name: Machine Learning
+      items:
+        - name: Overzicht
+          items:
+            - name: Wat is machine learning in Synapse Analytics?
+              href: machine-learning/what-is-machine-learning.md
+        - name: Quickstarts
+          items:
+            - name: Een nieuwe gekoppelde Azure Machine Learning-service maken
+              href: machine-learning/quickstart-integrate-azure-machine-learning.md
+        - name: Zelfstudies
+          items:
+            - name: Wizard om modellen te beoordelen voor SQL-pools
+              href: machine-learning/tutorial-sql-pool-model-scoring-wizard.md
+            - name: Een regressie-experiment uitvoeren met Azure AutoML (beoordelen in DW)
+              href: ./spark/apache-spark-azure-machine-learning-tutorial.md
     - name: 'Integratie van hulpprogramma''s (AI, ETL, BI)'
       items:
         - name: Probleem met Synapse Studio oplossen
@@ -478,31 +480,27 @@
               href: ../cosmos-db/configure-synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Verbinding maken met Azure Synapse Link voor Cosmos DB
               href: ./synapse-link/how-to-connect-synapse-link-cosmos-db.md
-            - name: Query's uitvoeren op de analytische opslag van Azure Cosmos DB met Apache Spark
+            - name: Een query uitvoeren op analytische opslag in Azure Cosmos DB met Apache Spark voor Azure Synapse Analytics
               href: ./synapse-link/how-to-query-analytical-store-spark.md
             - name: Gegevens kopiëren van Synapse Link naar een SQL-pool met Apache Spark
               href: ./synapse-link/how-to-copy-to-sql-pool.md
-            - name: Query's uitvoeren op de analytische opslag van Azure Cosmos DB met SQL on demand
-              href: sql/query-cosmos-db-analytical-store.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Synapse SQL
           items:
-            - name: Externe gegevens ophalen
+            - name: Query uitvoeren op gegevens in opslag
               items:
                 - name: Overzicht
                   href: sql/query-data-storage.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: Query uitvoeren op CSV-bestanden
+                - name: Query uitvoeren op CSV-bestand
                   href: sql/query-single-csv-file.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: Query uitvoeren op Parquet-bestanden
                   href: sql/query-parquet-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                - name: Query uitvoeren op met Parquet geneste typen
+                  href: sql/query-parquet-nested-types.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: Query uitvoeren op JSON-bestanden
                   href: sql/query-json-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: Query Azure Cosmos DB
-                  href: sql/query-cosmos-db-analytical-store.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: Query uitvoeren op geneste typen
-                  href: sql/query-parquet-nested-types.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: Query uitvoeren op mappen en meerdere bestanden
                   href: sql/query-folders-multiple-csv-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-                - name: Gepartitioneerde bestanden doorzoeken met behulp van metagegevens van bestanden
+                - name: Metagegevens van bestand gebruiken
                   href: sql/query-specific-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: Weergaven maken en gebruiken
                   href: sql/create-use-views.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json

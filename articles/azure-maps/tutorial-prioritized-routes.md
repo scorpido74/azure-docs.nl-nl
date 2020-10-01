@@ -1,40 +1,46 @@
 ---
-title: 'Zelfstudie: Meerdere routes op basis van vervoersoptie | Microsoft Azure Maps'
-description: Meer informatie over het gebruik van Azure Maps om routes voor specifieke reismodi te vinden naar nuttige plaatsen. Ontdek hoe u meerdere routes op kaarten kunt weergeven.
+title: 'Zelfstudie: Routes voor specifieke reismodi vinden en weergeven met Microsoft Azure Maps'
+description: Meer informatie over het gebruik van Azure Maps om routes voor specifieke reismodi te vinden en weer te geven.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 01/14/2020
+ms.date: 09/10/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 7d17b9474edef245f7db16f33c72d722f356f712
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: a5b8dba920db0227c400e62ef7ddaf718d27c78a
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037589"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90085056"
 ---
-# <a name="tutorial-find-routes-for-different-modes-of-travel-using-azure-maps"></a>Zelfstudie: Routes vinden voor verschillende manieren van reizen met Azure Maps
+# <a name="tutorial-find-and-display-routes-for-different-modes-of-travel-using-azure-maps"></a>Zelfstudie: Routes vinden en weergeven voor verschillende manieren van reizen met Azure Maps
 
-Deze zelfstudie laat zien hoe u uw Azure Maps-account en de routeservice gebruikt. De routeservice kan de route naar uw nuttige plaats vinden en geeft de prioriteit aan uw vervoersoptie. U kunt twee verschillende routes weergeven op uw kaart, één voor auto's en één voor vrachtwagens. De routeplanningsservice houdt rekening met de beperkingen die gerelateerd zijn aan de hoogte en het gewicht van het voertuig, of als het voertuig een gevaarlijke lading vervoert. In deze zelfstudie leert u het volgende:
+In deze zelfstudie leert u hoe u de [Route-service](https://docs.microsoft.com/rest/api/maps/route) van Azure Maps en [Map control](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control) gebruikt om routebeschrijvingen voor zowel privé- als bedrijfsvoertuigen (vrachtwagens) met het ladingtype `USHazmatClass2` weer te geven. Daarnaast leest u hoe u realtime verkeersgegevens op een kaart visualiseert. In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Een nieuwe webpagina maken met de kaartbesturingselement-API
-> * Verkeerstromen op de kaart visualiseren
-> * Routequery's maken die de manier van reizen declareren
-> * Meerdere routes op de kaart weergeven
+> * Het kaartbesturingselement maken en weergeven op een webpagina
+> * Realtime verkeersgegevens op een kaart weergeven
+> * De route van privé- en bedrijfsvoertuigen op een kaart aanvragen en weergeven
 
 ## <a name="prerequisites"></a>Vereisten
-Voordat u verdergaat, volgt u de instructies in [Een account maken](quick-demo-map-app.md#create-an-azure-maps-account) en selecteert u het S1-prijsniveau. Volg de stappen in [primaire sleutel ophalen](quick-demo-map-app.md#get-the-primary-key-for-your-account) om uw primaire sleutel voor uw account op te halen. Zie [Verificatie beheren in Azure Maps](how-to-manage-authentication.md) voor meer informatie over verificatie in Azure Maps.
 
-## <a name="create-a-new-map"></a>Een nieuwe kaart maken
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
-Gebruik de volgende stappen voor het maken van een statische HTML-pagina, ingesloten met de Map Control-API.
+2. [Maak een Azure Maps-account](quick-demo-map-app.md#create-an-azure-maps-account).
+
+3. [Een primaire sleutel voor een abonnement verkrijgen](quick-demo-map-app.md#get-the-primary-key-for-your-account), ook wel bekend als de primaire sleutel of de abonnementssleutel. Zie [Verificatie beheren in Azure Maps](how-to-manage-authentication.md) voor meer informatie over verificatie in Azure Maps.
+
+U kunt de volledige broncode voor het voorbeeld [hier](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/truckRoute.html) ophalen. Een livevoorbeeld is [hier](https://azuremapscodesamples.azurewebsites.net/?sample=Multiple%20routes%20by%20mode%20of%20travel) te vinden.
+
+## <a name="create-a-new-web-page-using-the-map-control-api"></a>Een nieuwe webpagina maken met de kaartbesturingselement-API
+
+De volgende stappen laten zien hoe u het kaartbesturingselement maakt en weergeeft op een webpagina.
 
 1. Maak een nieuw bestand op uw lokale computer en noem dit **MapTruckRoute.html**.
-2. Voeg de volgende HTML-onderdelen toe aan het bestand:
+2. Kopieer de volgende HTML-opmaak en plak deze in het bestand.
 
     ```HTML
     <!DOCTYPE html>
@@ -79,7 +85,7 @@ Gebruik de volgende stappen voor het maken van een statische HTML-pagina, ingesl
     </html>
     ```
 
-    U ziet dat de HTML-header de CSS- en JavaScript-bronbestanden bevat, gehost door de Azure Map Control-bibliotheek. Let op de gebeurtenis `onload` in het hoofdtekstgedeelte van de pagina. Deze zorgt ervoor dat de functie `GetMap` wordt aangeroepen nadat het hoofdtekstgedeelte van de pagina is geladen. Deze functie bevat de inline JavaScript-code voor toegang tot de API's van Azure Maps.
+     De HTML-header bevat de CSS- en JavaScript-bronbestanden die worden gehost door de Azure-bibliotheek voor kaartbesturingselementen. De gebeurtenis `onload` van de hoofdtekst roept de functie `GetMap` aan. In de volgende stap voegen we de initialisatiecode van het kaartbesturingselement toe.
 
 3. Voeg de volgende JavaScript-code toe aan de functie `GetMap`. Vervang de tekenreeks `<Your Azure Maps Key>` door de primaire sleutel die u hebt gekopieerd uit uw Maps-account.
 
@@ -94,15 +100,13 @@ Gebruik de volgende stappen voor het maken van een statische HTML-pagina, ingesl
     });
     ```
 
-    De klasse `atlas.Map` biedt het besturingselement voor een visuele en interactieve webkaart en is een onderdeel van de Azure Map Control API.
+4. Sla het bestand op en open het in uw browser. Er wordt een eenvoudig kaartbesturingselement weergegeven.
 
-4. Sla het bestand op en open het in uw browser. U hebt nu een basiskaart die u verder kunt ontwikkelen.
+    :::image type="content" source="./media/tutorial-prioritized-routes/basic-map.png" alt-text="Eenvoudige kaartweergave van kaartbesturingselement":::
 
-   ![Basiskaart weergeven](./media/tutorial-prioritized-routes/basic-map.png)
+## <a name="render-real-time-traffic-data-on-a-map"></a>Realtime verkeersgegevens op een kaart weergeven
 
-## <a name="visualize-traffic-flow"></a>Verkeerstromen visualiseren
-
-1. Voeg de weergave van de verkeersstroom toe aan de kaart. De folders gebeurtenis `ready` wacht totdat de resources van de toewijzing zijn geladen en klaar zijn om ermee te communiceren.
+1. Voeg de volgende JavaScript-code toe aan de functie `GetMap`. Met deze code wordt de gebeurtenis-handler `ready` van het kaartbesturingselement geïmplementeerd. De rest van de code in deze zelfstudie wordt binnen de gebeurtenis-handler `ready` geplaatst.
 
     ```javascript
     map.events.add("ready", function() {
@@ -113,54 +117,54 @@ Gebruik de volgende stappen voor het maken van een statische HTML-pagina, ingesl
     });
     ```
 
-    In de gebeurtenis-handler voor kaart `ready` is de instelling voor de verkeersstroom op de kaart ingesteld op `relative`, dit is de snelheid van de weg ten opzichte van een situatie met een vrije verkeersstroom. U kunt deze ook instellen op `absolute` snelheid van de weg of `relative-delay` de relatieve snelheid weergeven, waar deze verschilt van een vrije stroom.
+    In de gebeurtenis-handler voor kaart `ready` is de instelling voor de verkeersstroom op de kaart ingesteld op `relative`, dit is de snelheid van de weg ten opzichte van een situatie met een vrije verkeersstroom. Zie [TrafficOptions-interface](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.trafficoptions?view=azure-maps-typescript-latest&preserve-view=false) voor meer verkeersopties.
 
-2. Sla het bestand **MapTruckRoute.html** op en vernieuw de pagina in uw browser. Als u met de kaart communiceert en inzoomt op Los Angeles, ziet u de straten met de huidige verkeersgegevens.
+2. Sla het bestand **MapTruckRoute.html** op en vernieuw de pagina in uw browser. Als u inzoomt op een stad, zoals Los Angeles, ziet u dat de straten worden weergegeven met de huidige verkeersstroomgegevens.
 
-   ![Verkeer op een kaart weergeven](./media/tutorial-prioritized-routes/traffic-map.png)
+    :::image type="content" source="./media/tutorial-prioritized-routes/traffic-map.png" alt-text="Eenvoudige kaartweergave van kaartbesturingselement":::
 
 <a id="queryroutes"></a>
 
-## <a name="define-how-the-route-will-be-rendered"></a>Definiëren hoe de route wordt weergegeven
+## <a name="define-route-display-rendering"></a>Rendering van routeweergave definiëren
 
-In deze zelfstudie worden twee routes berekend en weergegeven op de kaart. Eén route die toegankelijk is voor auto's en de andere die toegankelijk is voor vrachtwagens. Samen met de routes wordt een pictogram met een symbool weergegeven dat het begin- en het eindpunt van elke route aanduidt evenals lijnen met een andere kleur voor elk routepad.
+In deze zelfstudie worden twee routes berekend en weergegeven op de kaart. De eerste route wordt berekend voor een privévoertuig (auto). De tweede route wordt berekend voor een bedrijfsvoertuig (vrachtwagen) om het verschil tussen de resultaten aan te geven. Samen met de routes wordt een symboolpictogram weergegeven dat het begin- en het eindpunt van elke route aanduidt evenals lijnen met een andere kleur voor elk routepad. Zie [Een lijnlaag toevoegen aan een kaart](map-add-line-layer.md) voor meer informatie over het toevoegen van lijnlagen. Zie [Een symboollaag toevoegen aan een kaart](map-add-pin.md) voor meer informatie over symboollagen.
 
-1. Voeg de volgende JavaScript-code toe in de gebeurtenis-handler voor kaart `ready` nadat de kaart is geïnitialiseerd.
+1. Voeg de volgende code toe aan de gebeurtenis-handler `ready` van het kaartbesturingselement.
 
     ```JavaScript
-    //Wait until the map resources have fully loaded.
-    map.events.add('ready', function () {
 
-        //Create a data source and add it to the map.
-        datasource = new atlas.source.DataSource();
-        map.sources.add(datasource);
+    //Create a data source and add it to the map.
+    datasource = new atlas.source.DataSource();
+    map.sources.add(datasource);
 
-        //Add a layer for rendering the route lines and have it render under the map labels.
-        map.layers.add(new atlas.layer.LineLayer(datasource, null, {
-            strokeColor: ['get', 'strokeColor'],
-            strokeWidth: ['get', 'strokeWidth'],
-            lineJoin: 'round',
-            lineCap: 'round'
-        }), 'labels');
+    //Add a layer for rendering the route lines and have it render under the map labels.
+    map.layers.add(new atlas.layer.LineLayer(datasource, null, {
+        strokeColor: ['get', 'strokeColor'],
+        strokeWidth: ['get', 'strokeWidth'],
+        lineJoin: 'round',
+        lineCap: 'round'
+    }), 'labels');
 
-        //Add a layer for rendering point data.
-        map.layers.add(new atlas.layer.SymbolLayer(datasource, null, {
-            iconOptions: {
-                image: ['get', 'icon'],
-                allowOverlap: true
-            },
-            textOptions: {
-                textField: ['get', 'title'],
-                offset: [0, 1.2]
-            },
-            filter: ['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']] //Only render Point or MultiPoints in this layer.
-        }));
-    });
+    //Add a layer for rendering point data.
+    map.layers.add(new atlas.layer.SymbolLayer(datasource, null, {
+        iconOptions: {
+            image: ['get', 'icon'],
+            allowOverlap: true
+        },
+        textOptions: {
+            textField: ['get', 'title'],
+            offset: [0, 1.2]
+        },
+        filter: ['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']] //Only render Point or MultiPoints in this layer.
+    }));
+
     ```
-    
-    In de gebeurtenis-handler voor kaart `ready` wordt een gegevensbron gemaakt waarin de routelijnen en de begin- en eindpunten worden opgeslagen. Er wordt een lijnlaag gemaakt en aan de gegevensbron gekoppeld waarmee wordt gedefinieerd hoe de routelijn wordt weergegeven. Er wordt gebruikgemaakt van expressies om de lijndikte en kleur op te halen uit de eigenschappen van de routelijnfunctie. Als u de laag toevoegt aan de kaart wordt een tweede parameter met de waarde `'labels'` doorgegeven. Hiermee wordt bepaald dat deze laag onder de kaartlabels wordt weergegeven. Zo bent u er zeker van dat de routelijnen de straatlabels niet bedekken. Er wordt een symboollaag gemaakt en aan de gegevensbron gekoppeld. In deze laag wordt aangegeven hoe de begin- en eindpunten worden weergegeven. In dit geval zijn er expressies toegevoegd om de afbeelding van het pictogram en de tekstlabelgegevens op te halen uit de eigenschappen van elk puntobject. 
-    
-2. Voor deze zelfstudie, moet u een fictief bedrijf in Seattle, genaamd Fabrikam, instellen als beginpunt, en een kantoor van Microsoft als eindpunt (bestemming). Voeg de volgende code toe aan de gebeurtenis-handler voor kaart `ready`.
+
+    In de gebeurtenis-handler `ready` van Map control wordt een gegevensbron gemaakt waarin de route vanaf het begin- tot het eindpunt wordt opgeslagen. Er wordt gebruikgemaakt van [expressies](data-driven-style-expressions-web-sdk.md) om de lijndikte en kleur op te halen uit de eigenschappen van de routelijnfunctie. Er is een tweede parameter met de waarde `'labels'` doorgegeven om ervoor te zorgen dat de routelijn de labels van de weg niet bedekt.
+
+    Vervolgens wordt er een symboollaag gemaakt en aan de gegevensbron gekoppeld. Deze laag geeft aan hoe de begin- en eindpunten worden weergegeven. In dit geval zijn er expressies toegevoegd om de afbeelding van het pictogram en de tekstlabelgegevens op te halen uit de eigenschappen van elk puntobject. Zie [Gegevensgestuurde stijlexpressies](data-driven-style-expressions-web-sdk.md)voor meer informatie over expressies.
+
+2. Stel het beginpunt in als een fictief bedrijf in Seattle, genaamd Fabrikam, en als eindpunt (bestemming) een kantoor van Microsoft.  Voeg de volgende code toe aan de gebeurtenis-handler `ready` van het kaartbesturingselement.
 
     ```JavaScript
     //Create the GeoJSON objects which represent the start and end point of the route.
@@ -173,13 +177,7 @@ In deze zelfstudie worden twee routes berekend en weergegeven op de kaart. Eén 
         title: 'Microsoft - Lincoln Square',
         icon: 'pin-round-blue'
     });
-    ```
 
-    Deze code maakt twee [GeoJSON-objecten](https://en.wikipedia.org/wiki/GeoJSON) die de begin- en eindpunten van de route vertegenwoordigen. Aan elk punt wordt een eigenschap `title` en `icon` toegevoegd.
-
-3. Voeg nu de volgende JavaScript-code toe om de spelden voor de begin- en eindpunten toe te voegen aan de kaart:
-
-    ```JavaScript
     //Add the data to the data source.
     datasource.add([startPoint, endPoint]);
 
@@ -188,25 +186,27 @@ In deze zelfstudie worden twee routes berekend en weergegeven op de kaart. Eén 
         bounds: atlas.data.BoundingBox.fromData([startPoint, endPoint]),
         padding: 100
     });
+
     ```
 
-    De begin- en eindpunten worden toegevoegd aan de gegevensbron. Het begrenzingsvak voor de begin- en eindpunten wordt berekend met behulp van de functie `atlas.data.BoundingBox.fromData`. Dit begrenzingsvak wordt gebruikt om de cameraweergave van de kaart met behulp van de functie `map.setCamera` in te stellen op de hele route. Er wordt opvulling toegevoegd om de grootte van de pixels in de symboolpictogrammen te compenseren.
+    Deze code maakt twee [GeoJSON-puntobjecten](https://en.wikipedia.org/wiki/GeoJSON) die de begin- en eindpunten vertegenwoordigen, die vervolgens aan de gegevensbron worden toegevoegd.
 
-4. Sla het bestand op en vernieuw de browser. De spelden worden weergegeven op de kaart. De kaart wordt nu gecentreerd op Seattle. U ziet de ronde blauwe speld die het beginpunt aangeeft en de blauwe speld die het eindpunt aangeeft.
+    In het laatste codeblok wordt de cameraweergave ingesteld met de breedtegraad en de lengtegraad van het begin- en eindpunt. De begin- en eindpunten worden toegevoegd aan de gegevensbron. Het begrenzingsvak voor de begin- en eindpunten wordt berekend met behulp van de functie `atlas.data.BoundingBox.fromData`. Dit begrenzingsvak wordt gebruikt om de cameraweergave van de kaart met behulp van de functie `map.setCamera` in te stellen op de hele route. Er wordt opvulling toegevoegd om de grootte van de pixels in de symboolpictogrammen te compenseren. Zie de eigenschap [setCamera(CameraOptions | CameraBoundsOptions & AnimationOptions)](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-maps-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-&preserve-view=false) voor meer informatie over de eigenschap setCamera van het kaartbesturingselement.
 
-   ![Kaart met begin- en eindpunt weergeven](./media/tutorial-prioritized-routes/pins-map.png)
+3. Sla **TruckRoute.html** op en vernieuw de browser. De kaart is nu gecentreerd op Seattle. De blauwe druppelvormige speld duidt het beginpunt aan. De blauwe ronde speld duidt het eindpunt aan.
+
+   :::image type="content" source="./media/tutorial-prioritized-routes/pins-map.png" alt-text="Eenvoudige kaartweergave van kaartbesturingselement":::
 
 <a id="multipleroutes"></a>
 
-## <a name="render-routes-prioritized-by-mode-of-travel"></a>Routes weergeven gerangschikt naar de manier van reizen
+## <a name="request-and-display-private-and-commercial-vehicle-routes-on-a-map"></a>De route van privé- en bedrijfsvoertuigen op een kaart aanvragen en weergeven
 
-In deze sectie wordt beschreven hoe u de API voor Azure Maps-routeservices gebruikt. De route-API wordt gebruikt om meerdere routes van een bepaald beginpunt naar het eindpunt te zoeken, op basis van uw vervoersopties. De routeservice biedt API's om de *snelste*, *kortste*, *zuinigste* of *leukste* route te plannen. Niet alleen kunnen de API's routes tussen twee locaties plannen, maar ook rekening houden met de huidige verkeersomstandigheden. 
+In deze sectie wordt beschreven hoe u de API Azure Maps-routeservice kunt gebruiken om routebeschrijving van het ene naar het andere punt op te halen, op basis van uw vervoersmiddel. We gebruiken twee vervoermiddelen: vrachtwagen en auto.
 
-Met de route-API kunnen gebruikers in de toekomst routes plannen met behulp van de uitgebreide historische verkeersdatabase van Azure. De API kan de routeduur voor een bepaalde dag en tijd voorspellen. Zie [GetRoute Directions](https://docs.microsoft.com/rest/api/maps/route/getroutedirections) (Routebeschrijvingen ophalen) voor meer informatie. 
+>[!TIP]
+>De Route-service biedt API's om de *snelste*, *kortste*, *zuinigste* of *leukste* route te plannen, waarbij rekening wordt gehouden met afstand, verkeersomstandigheden en vervoersmiddel. Met de service kunnen gebruikers ook toekomstige routes plannen op basis van historische verkeersomstandigheden. Gebruikers kunnen de voorspelling van de duur van de route voor elke gewenste tijd bekijken. Zie [API Routebeschrijving ophalen](https://docs.microsoft.com/rest/api/maps/route/getroutedirections) voor meer informatie.
 
-Alle volgende codeblokken moeten worden toegevoegd **binnen de map.loadEventListener** om ervoor te zorgen dat de blokken worden geladen nadat de kaart volledig laadt.
-
-1. Voeg in de functie GetMap het volgende toe aan JavaScript-code.
+1. Voeg in de functie `GetMap` in de gebeurtenis-handler `ready` van het besturingselement het volgende toe aan de JavaScript-code.
 
     ```JavaScript
     // Use SubscriptionKeyCredential with a subscription key
@@ -219,9 +219,9 @@ Alle volgende codeblokken moeten worden toegevoegd **binnen de map.loadEventList
     var routeURL = new atlas.service.RouteURL(pipeline);
     ```
 
-   De `SubscriptionKeyCredential` maakt een `SubscriptionKeyCredentialPolicy` voor het verifiëren van HTTP-aanvragen voor Azure Maps met de abonnementssleutel. De `atlas.service.MapsURL.newPipeline()` neemt het beleid `SubscriptionKeyCredential` op en maakt een [pijplijn](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest)instantie. De `routeURL` staat voor een URL voor [route](https://docs.microsoft.com/rest/api/maps/route)bewerkingen van Azure Maps.
+   De `SubscriptionKeyCredential` maakt een `SubscriptionKeyCredentialPolicy` voor het verifiëren van HTTP-aanvragen voor Azure Maps met de abonnementssleutel. De `atlas.service.MapsURL.newPipeline()` neemt het beleid `SubscriptionKeyCredential` op en maakt een [pijplijn](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline)instantie. De `routeURL` staat voor een URL voor [route](https://docs.microsoft.com/rest/api/maps/route)bewerkingen van Azure Maps.
 
-2. Nadat u referenties en de URL hebt ingesteld, voegt u de volgende JavaScript-code toe om een route van het begin naar het eindpunt te maken voor een truck met USHazmatClass2-lading en worden de resultaten weergegeven.
+2. Nadat u de referenties en de URL hebt ingesteld, voegt u de volgende JavaScript-code toe om een vrachtwagenroute van het begin- tot het eindpunt te maken. Deze route wordt gemaakt en weergegeven voor een vrachtwagen die lading van de klasse `USHazmatClass2` vervoert.
 
     ```JavaScript
     //Start and end point input to the routeURL
@@ -248,9 +248,12 @@ Alle volgende codeblokken moeten worden toegevoegd **binnen de map.loadEventList
     });
     ```
 
-    Dit codefragment hierboven voert een query uit op de Azure Maps-routeplanningsservice via de methode [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-maps-typescript-latest). De routelijn wordt vervolgens uit de verzameling GeoJSON-kenmerken geëxtraheerd en aan de gegevensbron toegevoegd met de methode `geojson.getFeatures()`. De routeregel wordt vervolgens toegevoegd aan de gegevensbron. Een index van 0 zorgt ervoor dat deze wordt weergegeven vóór andere regels in de gegevensbron. Dit wordt gedaan omdat de berekening van de truckroute vaak langzamer is dan de berekening voor een autoroute. Als de routelijn voor de vrachtwagen wordt toegevoegd aan de gegevensbron na de autoroute, wordt deze hierboven weergegeven. Er worden twee eigenschappen toegevoegd aan de lijn voor de vrachtwagenroute: een mooie blauwe lijnkleur en een lijndikte van negen pixels.
+    De bovenstaande code voert een query uit op de Azure Maps Route-service via de [Azure Maps Route Directions-API](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routeurl#calculateroutedirections-aborter--geojson-position----calculateroutedirectionsoptions-). De routelijn wordt vervolgens uit de verzameling GeoJSON-kenmerken geëxtraheerd en aan de gegevensbron toegevoegd met de methode `geojson.getFeatures()`. Ten slotte wordt de routeregel toegevoegd aan de gegevensbron. We voegen het toe aan de index van 0, om ervoor te zorgen dat de vrachtwagenroute wordt gerenderd vóór eventuele andere regels in de gegevensbron, omdat de berekening van de vrachtwagenroute vaak langzamer is dan de berekening van een autoroute. Als de routelijn voor de vrachtwagen wordt toegevoegd aan de gegevensbron na de autoroute, wordt deze hierboven weergegeven. Er worden twee eigenschappen toegevoegd aan de lijn voor de vrachtwagenroute: een blauwe lijnkleur en een lijndikte van negen pixels.
 
-3. Voeg de volgende JavaScript-code toe om een route voor een auto te maken en de resultaten weer te geven.
+    >[!TIP]
+    > Als u alle mogelijke opties en waarden voor de Azure Maps Route Directions-API wilt weergeven, raadpleegt u [URI-parameters voor Post Route Directions](https://docs.microsoft.com/rest/api/maps/route/postroutedirections#uri-parameters).
+
+3. Voeg nu de volgende JavaScript-code toe om een route voor een auto te maken.
 
     ```JavaScript
     routeURL.calculateRouteDirections(atlas.service.Aborter.timeout(10000), coordinates).then((directions) => {
@@ -263,39 +266,24 @@ Alle volgende codeblokken moeten worden toegevoegd **binnen de map.loadEventList
         routeLine.properties.strokeColor = '#B76DAB';
         routeLine.properties.strokeWidth = 5;
 
-        //Add the route line to the data source. We want this to render below the car route which will likely be added to the data source faster, so insert it at index 0.  
+        //Add the route line to the data source. This will add the car route after the truck route.  
         datasource.add(routeLine);
     });
     ```
 
-    Dit codefragment hierboven voert een query uit op de Azure Maps-routeplanningsservice via de methode [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-maps-typescript-latest). De routelijn wordt vervolgens uit de verzameling GeoJSON-kenmerken geëxtraheerd en aan de gegevensbron toegevoegd met de methode `geojson.getFeatures()`. De routeregel wordt vervolgens toegevoegd aan de gegevensbron. Er worden twee eigenschappen toegevoegd aan de lijn voor de autoroute: lijnkleur paars en lijndikte van vijf pixels.  
+    De bovenstaande code voert een query uit op de Azure Maps Route-service via de methode [Azure Maps Route Directions-API](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routeurl#calculateroutedirections-aborter--geojson-position----calculateroutedirectionsoptions-). De routelijn wordt vervolgens uit de verzameling GeoJSON-kenmerken geëxtraheerd en aan de gegevensbron toegevoegd met de methode `geojson.getFeatures()`. Ten slotte wordt de routeregel toegevoegd aan de gegevensbron. Er worden twee eigenschappen toegevoegd aan de lijn voor de vrachtwagenroute: een paarse lijnkleur en een lijndikte van vijf pixels.
 
-4. Sla het bestand **MapTruckRoute.html** op en vernieuw de browser om het resultaat te bekijken. Bij een succesvolle verbinding met de-API's van Maps ziet de kaart er ongeveer als volgt uit.
+4. Sla het bestand **TruckRoute.html** op en vernieuw de webbrowser. De kaart zou nu de vrachtwagen- en auto-routes moeten weergeven.
 
-    ![Routes rangschikken met Azure Route Service](./media/tutorial-prioritized-routes/prioritized-routes.png)
+    :::image type="content" source="./media/tutorial-prioritized-routes/prioritized-routes.png" alt-text="Eenvoudige kaartweergave van kaartbesturingselement":::
 
-    De truckroute is dik en blauw en de route van de auto is dun en paars. De route voor auto's gaat over Lake Washington via de I-90 door tunnels onder woongebieden. Omdat de tunnels zich dicht bij de buurt bevinden, is de lading gevaarlijk afval verboden. De route voor vrachtwagens, met een lading met de Amerikaanse gevarenklasse USHazmatClass2, loopt via een andere snelweg.
+    De vrachtwagenroute wordt weergegeven met een dikke blauwe lijn. De autoroute wordt weergegeven met een dunne paarse lijn. De autoroute gaat over Lake Washington via I-90 door tunnels onder woongebieden. Omdat de tunnels zich dicht bij de buurt bevinden, is de lading gevaarlijk afval verboden. De route voor vrachtwagens, met een lading met de Amerikaanse gevarenklasse `USHazmatClass2`, loopt via een andere snelweg.
+
+    U kunt de volledige broncode voor het voorbeeld [hier](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/truckRoute.html) ophalen. Een livevoorbeeld is [hier](https://azuremapscodesamples.azurewebsites.net/?sample=Multiple%20routes%20by%20mode%20of%20travel) te vinden.
 
 ## <a name="next-steps"></a>Volgende stappen
-
-In deze zelfstudie heeft u het volgende geleerd:
-
-> [!div class="checklist"]
-> * Een nieuwe webpagina maken met de kaartbesturingselement-API
-> * Verkeerstromen op de kaart visualiseren
-> * Routequery's maken die de manier van reizen declareren
-> * Meerdere routes op de kaart weergeven
-
-> [!div class="nextstepaction"]
-> [Volledige broncode weergeven](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/truckRoute.html)
-
-> [!div class="nextstepaction"]
-> [Livevoorbeeld weergeven](https://azuremapscodesamples.azurewebsites.net/?sample=Multiple%20routes%20by%20mode%20of%20travel)
 
 In de volgende zelfstudie ziet u het proces voor het maken van een eenvoudige winkellocator met behulp van Azure Maps.
 
 > [!div class="nextstepaction"]
 > [Een winkellocator maken met behulp van Azure Maps](./tutorial-create-store-locator.md)
-
-> [!div class="nextstepaction"]
-> [Gegevensgestuurde stijlexpressies gebruiken](data-driven-style-expressions-web-sdk.md)

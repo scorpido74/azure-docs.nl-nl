@@ -1,18 +1,18 @@
 ---
-title: De invoegtoepassing Ingress Controller inschakelen voor een bestaand AKS-cluster met een bestaande Azure Application Gateway
+title: 'Zelfstudie: De invoegtoepassing Ingress Controller inschakelen voor een bestaand AKS-cluster met een bestaande Azure Application Gateway'
 description: Gebruik deze zelfstudie om de invoegtoepassing Ingress Controller in te schakelen voor uw bestaande AKS-cluster met een bestaande Application Gateway
 services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 06/10/2020
+ms.date: 09/24/2020
 ms.author: caya
-ms.openlocfilehash: 35d9396ac1f4569002b95549a8752745537621cf
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: d0ce58c5bb6de4712117959f10b48ae3449f0b97
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89595934"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285619"
 ---
 # <a name="tutorial-enable-application-gateway-ingress-controller-add-on-for-an-existing-aks-cluster-with-an-existing-application-gateway-through-azure-cli-preview"></a>Zelfstudie: De invoegtoepassing Application Gateway Ingress Controller inschakelen voor een bestaand AKS cluster met een bestaande Application Gateway via Azure CLI (preview)
 
@@ -28,6 +28,8 @@ In deze zelfstudie leert u het volgende:
 > * Het virtuele netwerk van Application Gateway koppelen aan het virtuele netwerk van het AKS-cluster
 > * Een voorbeeldtoepassing implementeren met behulp van AGIC voor inkomend verkeer op het AKS-cluster
 > * Controleren of de toepassing bereikbaar is via Application Gateway
+
+## <a name="prerequisites"></a>Vereisten
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -151,7 +153,6 @@ az group delete --name myResourceGroup
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Meer informatie over het uitschakelen van de AGIC-invoegtoepassing](./ingress-controller-disable-addon.md)
-* [Meer informatie over welke aantekeningen worden ondersteund door AGIC](./ingress-controller-annotations.md)
-* [Problemen met AGIC oplossen](./ingress-controller-troubleshoot.md)
 
+> [!div class="nextstepaction"]
+> [Meer informatie over het uitschakelen van de AGIC-invoegtoepassing](./ingress-controller-disable-addon.md)
