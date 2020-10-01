@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: reference
 author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: 7f0f50de3f74f0e8040118035e28b3e905ed5616
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c8f73c0789cd0211deeb66af5c7300a81d7b1be0
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84046955"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619811"
 ---
 # <a name="extended-events-in-azure-sql-database"></a>Uitgebreide gebeurtenissen in Azure SQL Database 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -66,14 +66,14 @@ Verwante onderwerpen bieden twee voor beelden van code:
 - Wanneer u de opdracht [gebeurtenis sessie maken](/sql/t-sql/statements/create-event-session-transact-sql) op SQL Server uitvoert, gebruikt u de component **on server** . Maar op Azure SQL Database u in plaats daarvan de component **on-data base** gebruiken.
 - De component **on data base** is ook van toepassing op de opdrachten [ALTER Event Session](/sql/t-sql/statements/alter-event-session-transact-sql) en [Drop Event Session](/sql/t-sql/statements/drop-event-session-transact-sql) Transact-SQL.
 
-- Een best practice is het toevoegen van de optie voor gebeurtenis sessies van **STARTUP_STATE = aan** in uw **gebeurtenis sessie maken** of instructies voor **gebeurtenis sessies wijzigen** .
+- Een best practice is het toevoegen van de optie voor gebeurtenis sessies van **STARTUP_STATE = aan** in uw **gebeurtenis sessie maken**  of instructies voor **gebeurtenis sessies wijzigen** .
   - De **= on** -waarde ondersteunt een automatische herstart na een herconfiguratie van de logische data base vanwege een failover.
 
 ## <a name="new-catalog-views"></a>Nieuwe catalogus weergaven
 
 De functie Extended Events wordt ondersteund door verschillende [catalogus weergaven](https://msdn.microsoft.com/library/ms174365.aspx). Catalogus weergaven geven informatie over *meta gegevens of definities* van door gebruikers gemaakte gebeurtenis sessies in de huidige data base. De weer gaven retour neren geen informatie over exemplaren van actieve gebeurtenis sessies.
 
-| Naam van<br/>Catalogus weergave | Description |
+| Naam van<br/>Catalogus weergave | Beschrijving |
 |:--- |:--- |
 | **sys. database_event_session_actions** |Retourneert een rij voor elke actie op elke gebeurtenis van een gebeurtenis sessie. |
 | **sys. database_event_session_events** |Retourneert een rij voor elke gebeurtenis in een gebeurtenis sessie. |
@@ -87,7 +87,7 @@ In Microsoft SQL Server hebben vergelijk bare catalogus weergaven namen die *. s
 
 Azure SQL Database heeft [dynamische beheer weergaven (dmv's)](https://msdn.microsoft.com/library/bb677293.aspx) die ondersteuning bieden voor uitgebreide gebeurtenissen. Dmv's vertelt u over *actieve* gebeurtenis sessies.
 
-| Naam van DMV | Description |
+| Naam van DMV | Beschrijving |
 |:--- |:--- |
 | **sys. dm_xe_database_session_event_actions** |Hiermee wordt informatie over gebeurtenis sessie acties geretourneerd. |
 | **sys. dm_xe_database_session_events** |Retourneert informatie over sessie gebeurtenissen. |

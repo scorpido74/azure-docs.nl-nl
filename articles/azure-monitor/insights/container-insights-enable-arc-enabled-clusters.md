@@ -2,13 +2,13 @@
 title: Azure Arc enabled Kubernetes-cluster configureren met Azure Monitor voor containers | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u bewaking configureert met Azure Monitor voor containers op Azure Arc ingeschakelde Kubernetes-clusters.
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: 44512acbd09df449dbba2177bb10f22f480b82d6
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.date: 09/23/2020
+ms.openlocfilehash: 79a534e4f37fb0154115e43402f031752a603ccb
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90977532"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91620287"
 ---
 # <a name="enable-monitoring-of-azure-arc-enabled-kubernetes-cluster"></a>Bewaking van Azure Arc enabled Kubernetes-cluster inschakelen
 
@@ -21,8 +21,6 @@ Azure Monitor voor containers kunnen worden ingeschakeld voor een of meer bestaa
 Azure Monitor voor containers ondersteunt bewaking van Azure Arc enabled Kubernetes (preview), zoals beschreven in het [overzichts](container-insights-overview.md) artikel, met uitzonde ring van de volgende functies:
 
 - Live-gegevens (preview-versie)
-
-- [Metrische gegevens verzamelen](container-insights-update-metrics.md) van cluster knooppunten en peulen en deze opslaan in de data base met Azure monitor gegevens
 
 Het volgende wordt officieel ondersteund met Azure Monitor voor containers:
 
@@ -106,7 +104,7 @@ Als u de bewaking van uw cluster wilt inschakelen met het Power shell-of bash-sc
 1. Down load het script en sla het op in een lokale map die uw cluster configureert met de invoeg toepassing voor bewaking met behulp van de volgende opdrachten:
 
     ```powershell
-    wget https://aka.ms/enable-monitoring-powershell-script -outfile enable-monitoring.ps1
+    Invoke-WebRequest https://aka.ms/enable-monitoring-powershell-script -OutFile enable-monitoring.ps1
     ```
 
 2. Configureer de `$azureArcClusterResourceId` variabele door de bijbehorende waarden in te stellen voor `subscriptionId` `resourceGroupName` en `clusterName` de resource-id van uw Azure Arc-Kubernetes-cluster resource weer te geven.

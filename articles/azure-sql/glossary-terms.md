@@ -7,27 +7,27 @@ ms.service: sql-database
 ms.subservice: service
 ms.custom: sqldbrb=4
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/22/2020
-ms.openlocfilehash: f05871c41e2deec3f6a52446844c0b8fd2c9038d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 18ff2c9690de1708cd8382d83a0c01662a8e6fb0
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84221389"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619777"
 ---
 # <a name="azure-sql-database-glossary-of-terms"></a>Woorden lijst met termen Azure SQL Database
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
 
 ## <a name="azure-sql-database"></a>Azure SQL Database
 
-|Context|Termijn|Meer informatie|
+|Context|Term|Meer informatie|
 |:---|:---|:---|
 |Azure-service|Azure SQL Database of SQL Database|[Azure SQL Database](database/sql-database-paas-overview.md)|
-|Aankoop model|Op DTU gebaseerd inkoop model|[Op DTU gebaseerd inkoop model](database/service-tiers-dtu.md)|
+|Aankoopmodel|Op DTU gebaseerd inkoop model|[Op DTU gebaseerd inkoop model](database/service-tiers-dtu.md)|
 ||Aankoopmodel op basis van vCore|[Aankoopmodel op basis van vCore](database/service-tiers-vcore.md)|
 |Implementatie optie |Individuele database|[Individuele databases](database/single-database-overview.md)|
 ||Elastische pool|[Elastische pool](database/elastic-pool-overview.md)|
@@ -41,10 +41,10 @@ ms.locfileid: "84221389"
 
 ## <a name="azure-sql-managed-instance"></a>Azure SQL Managed Instance
 
-|Context|Termijn|Meer informatie|
+|Context|Term|Meer informatie|
 |:---|:---|:---|
 |Azure-service|Azure SQL Managed Instance|[SQL Managed Instance](managed-instance/sql-managed-instance-paas-overview.md)|
-|Aankoop model|Aankoopmodel op basis van vCore|[Aankoopmodel op basis van vCore](database/service-tiers-vcore.md)|
+|Aankoopmodel|Aankoopmodel op basis van vCore|[Aankoopmodel op basis van vCore](database/service-tiers-vcore.md)|
 |Implementatie optie |Eén exemplaar|[Eén exemplaar](managed-instance/sql-managed-instance-paas-overview.md)|
 ||Exemplaar groep (preview-versie)|[Exemplaargroepen](managed-instance/instance-pools-overview.md)|
 |Servicelaag|Algemeen, Bedrijfskritiek|[Service lagen van SQL Managed instance](managed-instance/sql-managed-instance-paas-overview.md#service-tiers)|

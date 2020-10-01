@@ -6,19 +6,19 @@ ms.service: sql-managed-instance
 ms.subservice: security
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 f1_keywords:
 - mi.azure.sqlaudit.general.f1
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 05/26/2020
-ms.openlocfilehash: 213a4fdb0e064e1c36a04f7190f14fab80cb4daa
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: d8a6ead23e080b5e1e17403873e2dbaedc0ce177
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87117346"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91620355"
 ---
 # <a name="get-started-with-azure-sql-managed-instance-auditing"></a>Aan de slag met controle van Azure SQL Managed instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -32,7 +32,7 @@ Met controle van [Azure SQL Managed instance](sql-managed-instance-paas-overview
 
 In de volgende sectie wordt de configuratie van de controle op uw beheerde exemplaar beschreven.
 
-1. Ga naar de [Azure Portal](https://portal.azure.com).
+1. Ga naar [Azure Portal](https://portal.azure.com).
 2. Een Azure Storage- **container** maken waar audit logboeken worden opgeslagen.
 
    1. Ga naar het Azure Storage-account waar u de audit logboeken wilt opslaan.
@@ -65,7 +65,7 @@ In de volgende sectie wordt de configuratie van de controle op uw beheerde exemp
 
         ![Knop Eigenschappen van BLOB-container](./media/auditing-configure/4_container_properties_button.png)
 
-     1. Kopieer de URL van de container door te klikken op het Kopieer pictogram en de URL op te slaan (bijvoorbeeld in Klad blok) voor toekomstig gebruik. De indeling van de container-URL moet`https://<StorageName>.blob.core.windows.net/<ContainerName>`
+     1. Kopieer de URL van de container door te klikken op het Kopieer pictogram en de URL op te slaan (bijvoorbeeld in Klad blok) voor toekomstig gebruik. De indeling van de container-URL moet `https://<StorageName>.blob.core.windows.net/<ContainerName>`
 
         ![Kopie-URL van BLOB-container](./media/auditing-configure/5_container_copy_name.png)
 
@@ -242,7 +242,7 @@ De belangrijkste verschillen in de `CREATE AUDIT` syntaxis voor de controle van 
 - Er wordt een nieuwe syntaxis `TO EXTERNAL MONITOR` gegeven om event hubs-en Azure monitor-logboek doelen in te scha kelen.
 - De syntaxis `TO FILE` wordt **niet ondersteund** omdat een door Azure SQL beheerd exemplaar geen toegang heeft tot Windows-bestands shares.
 - De optie shutdown wordt **niet ondersteund**.
-- `queue_delay`van 0 wordt **niet ondersteund**.
+- `queue_delay` van 0 wordt **niet ondersteund**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

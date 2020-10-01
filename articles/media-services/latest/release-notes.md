@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 5a22bd9508feac1348bcd8042fa6ac791864c261
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: 88b1eb70814c349d488933179a16c084a0af803c
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89425633"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619964"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Release opmerkingen bij Azure Media Services v3
 
@@ -42,7 +42,7 @@ Om u op de hoogte te houden van de nieuwste ontwikkelingen, biedt dit artikel u 
 ## <a name="august-2020"></a>Augustus 2020
 
 ### <a name="dynamic-encryption"></a>Dynamische versleuteling
-Ondersteuning voor de verouderde (PIFF 1,1) versleuteling van de oudere PlayReady-bestands indeling is nu beschikbaar in de dynamische Pakketset. Dit biedt ondersteuning voor verouderde slimme TV-sets van Samsung en LG waarmee de vroege concepten van de Common Encryption Standard (CENC) die door micro soft zijn gepubliceerd, zijn geïmplementeerd.  De PIFF 1,1-indeling wordt ook wel bekend als de versleutelings indeling die eerder werd ondersteund door de Silverlight-client bibliotheek. Het enige use-case scenario voor deze versleutelings indeling is het doel van de verouderde Smart TV-markt als er een niet-trivial aantal Smart TV-apparaten in sommige regio's aanwezig zijn die alleen Smooth Streaming ondersteunen met PIFF 1,1-versleuteling. 
+Ondersteuning voor de verouderde (PIFF 1,1) versleuteling van de oudere PlayReady-bestands indeling is nu beschikbaar in de dynamische Pakketset. Dit biedt ondersteuning voor verouderde slimme TV-sets van Samsung en LG waarmee de vroege concepten van de Common Encryption Standard (CENC) die door micro soft zijn gepubliceerd, zijn geïmplementeerd.  De PIFF 1,1-indeling wordt ook wel bekend als de versleutelings indeling die eerder werd ondersteund door de Silverlight-client bibliotheek. Het enige use-case scenario voor deze versleutelings indeling is het doel van de verouderde Smart TV-markt als er een niet-gelastig aantal Smart Tv's in sommige regio's wordt ondersteund dat alleen ondersteuning biedt voor Smooth Streaming met PIFF 1,1-versleuteling. 
 
 Als u de nieuwe ondersteuning voor PIFF 1,1-versleuteling wilt gebruiken, wijzigt u de versleutelings waarde in ' piff ' in het URL-pad van de streaming-Locator. Zie [Content Protection-overzicht](content-protection-overview.md) voor meer informatie.
 Bijvoorbeeld: `https://amsv3account-usw22.streaming.media.azure.net/00000000-0000-0000-0000-000000000000/ignite.ism/manifest(encryption=piff)`|
@@ -60,7 +60,7 @@ Live transcripties ondersteunt nu 19 talen en 8 regio's.
 
 We hebben een zelf studie gepubliceerd met de naam [end-to-end inhouds beveiliging met behulp van Azure AD](./azure-ad-content-protection.md).
 
-### <a name="high-availablity"></a>High-Beschik baarheid
+### <a name="high-availability"></a>Hoge beschikbaarheid
 
 We hebben een hoge Beschik baarheid gepubliceerd met het [overzicht](./media-services-high-availability-encoding.md) van Media Services en video on demand (VOD) en voor [beeld](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/HighAvailabilityEncodingStreaming).
 
@@ -135,13 +135,13 @@ Er is ondersteuning toegevoegd voor de volgende nieuwe aanbevolen partner encode
 ### <a name="file-encoding-enhancements"></a>Verbeteringen voor bestands codering
 
 - Er is nu een nieuwe voor instelling voor het coderen van inhoud beschikbaar. Er wordt een set GOP terug-uitgelijnde Mp4's gemaakt met behulp van inhoud-bewuste code ring. Op basis van de invoer inhoud voert de service een eerste licht gewicht analyse van de invoer inhoud uit. Deze resultaten worden gebruikt om het optimale aantal lagen, de juiste bitsnelheid en resolutie-instellingen voor levering door adaptieve streaming te bepalen. Deze standaard instelling is met name van toepassing op Video's met een lage complexiteit en middel grote complexiteit, waarbij de uitvoer bestanden een lagere bitsnelheid hebben, maar met een kwaliteit die nog steeds een goede ervaring voor kijkers biedt. De uitvoer bevat MP4-bestanden met Interleaved video-en audio-indeling. Zie de [open API-specificaties](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/Encoding.json)voor meer informatie.
-- Verbeterde prestaties en meerdere threads voor de nieuwe grootte in de standaard encoder. Onder specifieke voor waarden moet de klant een prestatie verbetering van 5-40% VOD-code ring zien. Inhoud met weinig complexiteit die is gecodeerd in meerdere bitsnelheden, ziet de hoogste prestatie verhoging. 
+- Verbeterde prestaties en multithreading voor de de in de standaard encoder. Onder specifieke voor waarden moet de klant een prestatie verbetering van 5-40% VOD-code ring zien. Inhoud met weinig complexiteit die is gecodeerd in meerdere bitsnelheden, ziet de hoogste prestatie verhoging. 
 - Standaard codering onderhoudt nu een reguliere GOP terug-uitgebracht voor de VFR-inhoud (variable frame rate) tijdens VOD-code ring wanneer u de GOP terug-instelling op basis van tijd gebruikt.  Dit betekent dat de klant de prijs informatie voor gemengde frames indient die varieert tussen 15-30 fps, bijvoorbeeld de normale GOP terug-afstanden die worden berekend voor de uitvoer naar Adaptive Bitrate Streaming MP4-bestanden. Dit verbetert de mogelijkheid om naadloos tussen sporen te scha kelen bij het leveren van HLS of een streepje. 
 -  Verbeterde AV-synchronisatie voor variabele frame frequentie (VFR)-bron inhoud
 
 ### <a name="video-indexer-video-analytics"></a>Video Indexer, video analyse
 
-- Keyframes die zijn geëxtraheerd met behulp van de VideoAnalyzer-voor instelling zijn nu in de oorspronkelijke resolutie van de video in plaats van het formaat te wijzigen. Met de High-Solution-extractie van keyframes beschikt u over originele installatie kopieën en kunt u gebruikmaken van de op installatie kopieën gebaseerde kunst matige intelligentie modellen die worden verstrekt door de micro soft-Computer Vision en Custom Vision-Services om nog meer inzicht te krijgen in uw video.
+- Keyframes die zijn geëxtraheerd met behulp van de VideoAnalyzer-voor instelling zijn nu in de oorspronkelijke resolutie van de video in plaats van het formaat te wijzigen. Met een hoge resolutie voor keyframes beschikt u over originele installatie kopieën en kunt u gebruikmaken van de op afbeeldingen gebaseerde kunst matige intelligentie modellen die worden verstrekt door de micro soft-Computer Vision en Custom Vision-Services om nog meer inzicht te krijgen in uw video.
 
 ## <a name="september-2019"></a>September 2019
 
@@ -155,7 +155,7 @@ Media Services v3 kondigt de preview van 24 uur x 365 dagen aan live lineaire co
 
 #### <a name="deprecation-of-media-processors"></a>Afschaffing van media processors
 
-Er wordt een afschaffing van *Azure media indexer* en *Azure media indexer 2 Preview*aangekondigd. Zie het onderwerp  [oudere onderdelen](../previous/legacy-components.md) voor de pensioen datums. [Azure Media Services video indexer](../video-indexer/index.yml) vervangt deze verouderde media processors.
+Er wordt een afschaffing van *Azure media indexer* en *Azure media indexer 2 Preview*aangekondigd. Zie het artikel  [verouderde onderdelen](../previous/legacy-components.md) voor de pensioen datums. [Azure Media Services video indexer](../video-indexer/index.yml) vervangt deze verouderde media processors.
 
 Zie [Migrate from Azure media indexer en Azure media indexer 2 to Azure Media Services video indexer](../previous/migrate-indexer-v1-v2.md)voor meer informatie.
 
@@ -173,7 +173,7 @@ Zie [Clouds en regio's waarin Media Services v3 bestaat](azure-clouds-regions.md
 
 #### <a name="deprecation-of-media-processors"></a>Afschaffing van media processors
 
-Er wordt een afschaffing van de media processors van *Windows Azure Media Encoder* (WAME) en *Azure Media Encoder* (AAM) aangekondigd. deze worden buiten gebruik gesteld. Voor de pensioen datums raadpleegt u dit onderwerp over [oudere onderdelen](../previous/legacy-components.md) .
+Er wordt een afschaffing van de media processors van *Windows Azure Media Encoder* (WAME) en *Azure Media Encoder* (AAM) aangekondigd. deze worden buiten gebruik gesteld. Voor de pensioen datums raadpleegt u dit artikel over [verouderde onderdelen](../previous/legacy-components.md) .
 
 Zie [WAME migreren naar Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101334) en [aam migreren naar Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101335)voor meer informatie.
  
@@ -224,7 +224,7 @@ Zie [Clouds en regio's waarin Media Services v3 bestaat](azure-clouds-regions.md
 Er zijn updates toegevoegd die Media Services prestatie verbeteringen bevatten.
 
 * De maximale bestands grootte die wordt ondersteund voor de verwerking, is bijgewerkt. Zie, [quota en limieten](limits-quotas-constraints.md).
-* De [versleutelings snelheid wordt verbeterd](media-reserved-units-cli-how-to.md#choosing-between-different-reserved-unit-types).
+* De [versleutelings snelheid wordt verbeterd](concept-media-reserved-units.md).
 
 ## <a name="april-2019"></a>April 2019
 

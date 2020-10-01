@@ -6,17 +6,17 @@ ms.service: sql-database
 ms.subservice: scenario
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: a0ad71e870005ce1cbe0ffe0f56bcbd0104c3dd2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b9550f365eb11ffff87add041824504488c0de15
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84042055"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619930"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>Multi tenant-toepassingen met Elastic data base-hulpprogram ma's en beveiliging op rijniveau
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -35,7 +35,7 @@ Het doel is de client bibliotheek voor Elastic data base te gebruiken die [afhan
 
 ![App-architectuur voor blogs][1]
 
-## <a name="download-the-sample-project"></a>Het voorbeeld project downloaden
+## <a name="download-the-sample-project"></a>Het voorbeeldproject downloaden
 
 ### <a name="prerequisites"></a>Vereisten
 

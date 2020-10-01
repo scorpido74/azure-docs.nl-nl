@@ -3,12 +3,12 @@ title: Azure Red Hat open Shift v4. x configureren met Azure Monitor voor contai
 description: In dit artikel wordt beschreven hoe u bewaking configureert voor een Kubernetes-cluster met Azure Monitor dat wordt gehost op Azure Red Hat open Shift versie 4 of hoger.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 91b5644c13ac560910703454c4052e223f958014
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 63db888419ee691e83ea456fcd7fc28a4d9909fe
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499168"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91620321"
 ---
 # <a name="configure-azure-red-hat-openshift-v4x-with-azure-monitor-for-containers"></a>Azure Red Hat open Shift v4. x configureren met Azure Monitor voor containers
 
@@ -20,7 +20,7 @@ Azure Monitor voor containers biedt een uitgebreide bewakings ervaring voor Azur
 
 U kunt Azure Monitor voor containers inschakelen voor een of meer bestaande implementaties van Azure Red Hat open Shift v4. x door gebruik te maken van de ondersteunde methoden die in dit artikel worden beschreven.
 
-Voer voor een bestaand cluster dit [bash-script uit in de Azure cli](/cli/azure/openshift?view=azure-cli-latest#az-openshift-create).
+Voer voor een bestaand cluster dit [bash-script uit in de Azure cli](/cli/azure/openshift?view=azure-cli-latest#az-openshift-create&preserve-view=true).
 
 ## <a name="supported-and-unsupported-features"></a>Ondersteunde en niet-ondersteunde functies
 
@@ -39,7 +39,7 @@ Azure Monitor voor containers ondersteunt de bewaking van Azure Red Hat open Shi
 
 - Het opdracht regel programma [Kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 
-- Een [log Analytics-werk ruimte](../platform/design-logs-deployment.md).
+- Een [Log Analytics-werkruimte](../platform/design-logs-deployment.md).
 
     Azure Monitor voor containers ondersteunt een Log Analytics-werk ruimte in de regio's die worden vermeld in azure- [producten per regio](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor). Om uw eigen werk ruimte te maken, kan deze worden gemaakt via [Azure Resource Manager](../platform/template-workspace-configuration.md), via [Power shell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)of in de [Azure Portal](../learn/quick-create-workspace.md).
 
@@ -138,7 +138,7 @@ De standaardwerk ruimte die wordt gemaakt, heeft de indeling *DefaultWorkspace- 
 Vervang de waarden voor de `azureAroV4ClusterResourceId` `kubeContext` para meters en.
 
 ```bash
-export azureAroV4ClusterResourceId=“/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/<clusterName>”
+export azureAroV4ClusterResourceId="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/<clusterName>"
 export kubeContext="<kubeContext name of your ARO v4 cluster>"
 ```
 
@@ -152,7 +152,7 @@ Nadat u bewaking hebt ingeschakeld, kan het ongeveer 15 minuten duren voordat u 
 
 In de weer gave met meerdere clusters in Azure Monitor voor containers worden uw Azure Red Hat open Shift-clusters gemarkeerd waarvoor geen bewaking is ingeschakeld op het tabblad niet- **bewaakte clusters** . De optie **inschakelen** naast het cluster initieert geen controle van de bewaking vanuit de portal. U wordt omgeleid naar dit artikel om de bewaking hand matig in te scha kelen door de stappen te volgen die eerder in dit artikel zijn beschreven.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 
 1. Selecteer **Azure monitor**in het linkerdeel venster of op de start pagina.
 

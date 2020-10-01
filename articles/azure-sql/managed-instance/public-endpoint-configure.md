@@ -5,17 +5,17 @@ services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: security
 ms.custom: sqldbrb=1
-ms.topic: conceptual
+ms.topic: how-to
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, sstein
 ms.date: 05/07/2019
-ms.openlocfilehash: a9bf3fbf28d8ac525f2937812742e850a5427cc9
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: f3708885759a6a353742fe89b4454b39496aeeab
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91360817"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619981"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-managed-instance"></a>Openbaar eindpunt configureren in een beheerd Azure SQL-exemplaar
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -98,7 +98,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
     |---------|---------|---------|
     |**Bron**     |Een IP-adres of service label         |<ul><li>Voor Azure-Services, zoals Power BI, selecteert u de Azure Cloud service-tag</li> <li>Gebruik NAT IP-adres voor uw computer of virtuele Azure-machine</li></ul> |
     |**Poortbereiken van bron**     |* |Dit op * (alle) laten staan als bron poorten worden meestal dynamisch toegewezen en als zodanig, onvoorspelbaar |
-    |**Doel**     |Elk         |Bestemming weglaten om verkeer naar het subnet van het beheerde exemplaar toe te staan |
+    |**Doel**     |Alle         |Bestemming weglaten om verkeer naar het subnet van het beheerde exemplaar toe te staan |
     |**Poortbereiken van doel**     |3342         |Doel poort van bereik tot 3342, wat het open bare TDS-eind punt van het beheerde exemplaar is |
     |**Protocol**     |TCP         |SQL Managed instance gebruikt TCP-protocol voor TDS |
     |**Actie**     |Toestaan         |Binnenkomend verkeer naar een beheerd exemplaar via het open bare eind punt toestaan |

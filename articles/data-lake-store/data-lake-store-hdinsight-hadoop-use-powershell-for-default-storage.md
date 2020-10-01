@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: f7c41dc11e7321d6fb9e6f8c030eb74b586a1b3e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d96718176c3cd7486c51e57942c4d12bf0d57992
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075025"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91620003"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-as-default-storage-by-using-powershell"></a>HDInsight-clusters met Azure Data Lake Storage Gen1 als standaard opslag maken met behulp van Power shell
 
@@ -67,7 +67,7 @@ Ga als volgt te werk om een Data Lake Storage Gen1-account te maken:
     ```
 
     > [!NOTE]
-    > Als u de Data Lake Storage Gen1 resource provider registreert en er een fout melding ziet die vergelijkbaar is met `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` , is uw abonnement mogelijk niet white list voor data Lake Storage gen1. Als u uw Azure-abonnement voor Data Lake Storage Gen1 wilt inschakelen, volgt u de instructies in [aan de slag met Azure data Lake Storage gen1 met behulp van de Azure Portal](data-lake-store-get-started-portal.md).
+    > Als u de resource provider van Data Lake Storage Gen1 registreert en er een fout melding ziet die vergelijkbaar `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` is met, is uw abonnement mogelijk niet goedgekeurd voor data Lake Storage gen1. Als u uw Azure-abonnement voor Data Lake Storage Gen1 wilt inschakelen, volgt u de instructies in [aan de slag met Azure data Lake Storage gen1 met behulp van de Azure Portal](data-lake-store-get-started-portal.md).
     >
 
 2. Een Data Lake Storage Gen1-account is gekoppeld aan een Azure-resource groep. Begin met het maken van een resource groep.
@@ -77,7 +77,7 @@ Ga als volgt te werk om een Data Lake Storage Gen1-account te maken:
     New-AzResourceGroup -Name $resourceGroupName -Location "East US 2"
     ```
 
-    De uitvoer ziet er als volgt uit:
+    De uitvoer ziet er ongeveer als volgt uit:
 
     ```output
     ResourceGroupName : hdiadlgrp
@@ -281,7 +281,7 @@ hdfs dfs -ls adl:///
 
 U kunt ook de `hdfs dfs -put` opdracht gebruiken om bestanden te uploaden naar Data Lake Storage gen1 en vervolgens gebruiken `hdfs dfs -ls` om te controleren of de bestanden zijn geüpload.
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 * [Data Lake Storage Gen1 gebruiken met Azure HDInsight-clusters](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)
 * [Azure Portal: een HDInsight-cluster maken voor het gebruik van Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)
 

@@ -1,18 +1,18 @@
 ---
-title: Metrische waarschuwingen van Azure Monitor voor containers | Microsoft Docs
+title: Metrische waarschuwingen van Azure Monitor voor containers
 description: In dit artikel worden de aanbevolen metrische waarschuwingen weer gegeven die beschikbaar zijn via Azure Monitor voor containers in de open bare preview.
 ms.topic: conceptual
-ms.date: 08/04/2020
-ms.openlocfilehash: aace260ff22d63211424f2ce4a7319bf577436f4
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.date: 09/24/2020
+ms.openlocfilehash: 83394faf3d7296522151b815bddd910d47e45d24
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90019883"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619947"
 ---
 # <a name="recommended-metric-alerts-preview-from-azure-monitor-for-containers"></a>Aanbevolen metrische waarschuwingen (preview) van Azure Monitor voor containers
 
-Als u een waarschuwing wilt ontvangen over problemen met de systeem bronnen wanneer er sprake is van piek vraag en de buurt van de capaciteit wordt uitgevoerd, kunt u met Azure Monitor voor containers een logboek waarschuwing maken op basis van de prestatie gegevens die zijn opgeslagen in Azure Monitor Logboeken. Azure Monitor voor containers bevat nu vooraf geconfigureerde metrische waarschuwings regels voor uw AKS-cluster, in open bare preview.
+Als u een waarschuwing wilt ontvangen over problemen met de systeem bronnen wanneer er sprake is van piek vraag en de buurt van de capaciteit wordt uitgevoerd, kunt u met Azure Monitor voor containers een logboek waarschuwing maken op basis van de prestatie gegevens die zijn opgeslagen in Azure Monitor Logboeken. Azure Monitor voor containers bevat nu vooraf geconfigureerde metrische waarschuwings regels voor uw AKS en Azure Arc Kubernetes-cluster, dat in de open bare preview-versie wordt gebruikt.
 
 In dit artikel wordt de ervaring beoordeeld en vindt u richt lijnen voor het configureren en beheren van deze waarschuwings regels.
 
@@ -22,22 +22,22 @@ Als u niet bekend bent met Azure Monitor waarschuwingen, raadpleegt u [overzicht
 
 Voordat u begint, controleert u het volgende:
 
-* Aangepaste metrische gegevens zijn alleen beschikbaar in een subset van Azure-regio's. [Hier](../platform/metrics-custom-overview.md#supported-regions)wordt een lijst met ondersteunde regio's beschreven.
+* Aangepaste metrische gegevens zijn alleen beschikbaar in een subset van Azure-regio's. Een lijst met ondersteunde regio's wordt beschreven in [ondersteunde regio's](../platform/metrics-custom-overview.md#supported-regions).
 
-* Voor het ondersteunen van metrische waarschuwingen en de introductie van extra metrische gegevens, is de mini maal vereiste agent versie **micro soft/OMS: ciprod05262020**.
+* Voor het ondersteunen van metrische waarschuwingen en de introductie van extra metrische gegevens, is de mini maal vereiste agent versie **micro soft/OMS: ciprod05262020** for AKS en **micro soft/OMS: Ciprod09252020** for Azure Arc enabled Kubernetes cluster.
 
     Als u wilt controleren of op uw cluster de nieuwere versie van de agent wordt uitgevoerd, kunt u het volgende doen:
 
     * Voer de opdracht uit: `kubectl describe <omsagent-pod-name> --namespace=kube-system` . In de status die is geretourneerd, noteert u de waarde onder **afbeelding** voor omsagent in de sectie *containers* van de uitvoer. 
     * Op het tabblad **knoop punten** selecteert u het cluster knooppunt en in het deel venster **Eigenschappen** aan de rechter kant, noteer de waarde onder **Agent-installatie kopie code**.
 
-    De weer gegeven waarde moet een versie zijn die hoger is dan **ciprod05262020**. Als uw cluster een oudere versie heeft, volgt u de [upgrade-agent op de AKS-cluster](container-insights-manage-agent.md#upgrade-agent-on-aks-cluster) stappen om de nieuwste versie op te halen.
-    
+    De waarde die wordt weer gegeven voor AKS moet versie **ciprod05262020** of hoger zijn. De waarde die wordt weer gegeven voor Azure Arc enabled Kubernetes cluster moet versie **ciprod09252020** of hoger zijn. Als uw cluster een oudere versie heeft, raadpleegt u [de Azure monitor van de agent voor containers bijwerken](container-insights-manage-agent.md#upgrade-agent-on-aks-cluster) voor stappen om de nieuwste versie te verkrijgen.
+
     Zie [release geschiedenis van agent](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)voor meer informatie over de agent release. U kunt controleren of de metrische gegevens worden verzameld door Azure Monitor Metrics Explorer te gebruiken **en te controleren** in de **metrische naam ruimte** die wordt weer gegeven. Als dat het geval is, kunt u door gaan met het instellen van de waarschuwingen. Als er geen metrische gegevens worden verzameld, ontbreken de benodigde machtigingen voor de Cluster-service-principal of MSI. Als u wilt controleren of de SPN of MSI lid is van de Publisher-rol **bewakings metrieken** , volgt u de stappen die worden beschreven in de sectie [upgrade per cluster met behulp van Azure cli](container-insights-update-metrics.md#upgrade-per-cluster-using-azure-cli) om de roltoewijzing te bevestigen en in te stellen.
 
 ## <a name="alert-rules-overview"></a>Overzicht van waarschuwings regels
 
-Azure Monitor voor containers bevatten de volgende metrische waarschuwingen voor uw AKS-clusters om te waarschuwen wat er gebeurt:
+Azure Monitor voor containers bevatten de volgende metrische waarschuwingen voor uw AKS-en Azure Arc ingeschakelde Kubernetes-clusters:
 
 |Naam| Beschrijving |Standaard drempelwaarde |
 |----|-------------|------------------|

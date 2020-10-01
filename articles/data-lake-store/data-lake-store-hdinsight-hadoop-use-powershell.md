@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: b1a228e9d15a349f032291fb0678bdd0ad9d95b3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 69cfe529f3d2b0f956bfbe9d002a5a220b37e19f
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87048848"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91620002"
 ---
 # <a name="use-azure-powershell-to-create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-as-additional-storage"></a>Azure PowerShell gebruiken om een HDInsight-cluster te maken met Azure Data Lake Storage Gen1 (als extra opslag)
 
@@ -77,7 +77,7 @@ Volg deze stappen om een Data Lake Storage Gen1-account te maken.
     ```
 
    > [!NOTE]
-   > Als er een fout bericht wordt weer gegeven `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` die vergelijkbaar is met het registreren van de data Lake Storage gen1 resource provider, is het mogelijk dat uw abonnement niet white list is voor data Lake Storage gen1. Zorg ervoor dat u uw Azure-abonnement voor Data Lake Storage Gen1 inschakelt door deze [instructies](data-lake-store-get-started-portal.md)te volgen.
+   > Als er een fout bericht wordt weer gegeven dat vergelijkbaar is met `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` het registreren van de data Lake Storage gen1 resource provider, is het mogelijk dat uw abonnement niet is goedgekeurd voor data Lake Storage gen1. Zorg ervoor dat u uw Azure-abonnement voor Data Lake Storage Gen1 inschakelt door deze [instructies](data-lake-store-get-started-portal.md)te volgen.
    >
    >
 2. Een Data Lake Storage Gen1-account is gekoppeld aan een Azure-resource groep. Maak daarom eerst een Azure-resourcegroep.
@@ -87,7 +87,7 @@ Volg deze stappen om een Data Lake Storage Gen1-account te maken.
     New-AzResourceGroup -Name $resourceGroupName -Location "East US 2"
     ```
 
-    De uitvoer ziet er als volgt uit:
+    De uitvoer ziet er ongeveer als volgt uit:
 
     ```output
     ResourceGroupName : hdiadlgrp

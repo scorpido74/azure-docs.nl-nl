@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 19b37472d7decb46825da4760511f1761493c246
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 9ae4970383802adad755fff4a6ce382db6ce32fe
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441932"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619913"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory-beveiligings overwegingen voor gegevens verplaatsing
 
@@ -142,7 +142,7 @@ De volgende installatie kopieën tonen het gebruik van Data Management Gateway v
 
 ![IPSec VPN met gateway](media/data-factory-data-movement-security-considerations/ipsec-vpn-for-gateway.png)
 
-### <a name="firewall-configurations-and-whitelisting-ip-address-of-gateway"></a>Firewall configuraties en white list IP-adres van Gateway
+### <a name="firewall-configurations-and-filtering-ip-address-of-gateway"></a>Firewall configuraties en filteren van het IP-adres van de gateway
 
 #### <a name="firewall-requirements-for-on-premisesprivate-network"></a>Firewall vereisten voor on-premises/particulier netwerk  
 In een onderneming wordt een **bedrijfs firewall** uitgevoerd op de centrale router van de organisatie. En **Windows Firewall** wordt uitgevoerd als een daemon op de lokale computer waarop de gateway is geïnstalleerd. 
@@ -158,7 +158,7 @@ De volgende tabel bevat de **uitgaande poort** -en domein vereisten voor de **be
 | `*.azuredatalakestore.net` | 443 | (Optioneel) vereist wanneer uw bestemming Azure Data Lake archief is | 
 
 > [!NOTE] 
-> Mogelijk moet u poorten/white list-domeinen op het niveau van de bedrijfs firewall beheren zoals vereist door de respectieve gegevens bronnen. In deze tabel worden alleen Azure SQL Database, Azure Synapse Analytics, Azure Data Lake Store als voor beeld gebruikt.   
+> Mogelijk moet u poorten/filter domeinen op het niveau van de bedrijfs firewall beheren zoals vereist door de respectieve gegevens bronnen. In deze tabel worden alleen Azure SQL Database, Azure Synapse Analytics, Azure Data Lake Store als voor beeld gebruikt.   
 
 De volgende tabel bevat de **Binnenkomende poort** vereisten voor de **Windows Firewall**.
 
@@ -168,10 +168,10 @@ De volgende tabel bevat de **Binnenkomende poort** vereisten voor de **Windows F
 
 ![Gateway poort vereisten](media/data-factory-data-movement-security-considerations/gateway-port-requirements.png)
 
-#### <a name="ip-configurations-whitelisting-in-data-store"></a>IP-configuraties/white list in gegevens opslag
-Sommige gegevens archieven in de Cloud vereisen ook white list IP-adres van de computer die toegang heeft tot de bestanden. Zorg ervoor dat het IP-adres van de gateway computer op de juiste wijze is white list/geconfigureerd in de firewall.
+#### <a name="ip-configurationsfiltering-in-data-store"></a>IP-configuraties/filteren in gegevens archief
+Sommige gegevens archieven in de Cloud moeten ook het goed keuren van het IP-adres van de computer die toegang tot deze bestanden heeft. Zorg ervoor dat het IP-adres van de gateway computer op de juiste wijze wordt goedgekeurd/geconfigureerd in de firewall.
 
-Voor de volgende gegevens archieven in de Cloud is white list van het IP-adres van de gateway computer vereist. Voor sommige van deze gegevens archieven is standaard mogelijk geen white list van het IP-adres vereist. 
+Voor de volgende gegevens archieven in de Cloud moet het IP-adres van de gateway computer worden goedgekeurd. Voor sommige van deze gegevens archieven is het niet mogelijk om het IP-adres goed te keuren. 
 
 - [Azure SQL Database](../../azure-sql/database/firewall-configure.md) 
 - [Azure Synapse Analytics](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
@@ -185,12 +185,10 @@ Voor de volgende gegevens archieven in de Cloud is white list van het IP-adres v
 **Antwoord:** Deze functie wordt nog niet ondersteund. We zijn hier druk mee bezig.
 
 **Vraag:** Wat zijn de poort vereisten voor het werken met de gateway?
-**Antwoord:** Gateway maakt HTTP-verbindingen voor het openen van Internet. De **uitgaande poorten 443 en 80** moeten voor de gateway worden geopend om deze verbinding te kunnen maken. Open de **Binnenkomende poort 8050** alleen op computer niveau (niet op het niveau van de bedrijfs firewall) voor de toepassing referentie beheer. Als Azure SQL Database of Azure Synapse Analytics als bron/doel wordt gebruikt, moet u ook **1433** -poort openen. Zie de sectie [firewall configuraties en white list IP-adressen](#firewall-configurations-and-whitelisting-ip-address-of gateway) voor meer informatie. 
+**Antwoord:** Gateway maakt HTTP-verbindingen voor het openen van Internet. De **uitgaande poorten 443 en 80** moeten voor de gateway worden geopend om deze verbinding te kunnen maken. Open de **Binnenkomende poort 8050** alleen op computer niveau (niet op het niveau van de bedrijfs firewall) voor de toepassing referentie beheer. Als Azure SQL Database of Azure Synapse Analytics als bron/doel wordt gebruikt, moet u ook **1433** -poort openen. Zie de sectie [firewall configuraties en IP-adressen filteren](#firewall-configurations-and-filtering-ip-address-of gateway) voor meer informatie. 
 
 **Vraag:** Wat zijn de certificaat vereisten voor de gateway?
 **Antwoord:** Voor de huidige gateway is een certificaat vereist dat door de Credential Manager-toepassing wordt gebruikt voor het veilig instellen van referenties voor het gegevens archief. Dit certificaat is een zelfondertekend certificaat dat is gemaakt en geconfigureerd door de gateway-installatie. U kunt in plaats daarvan uw eigen TLS/SSL-certificaat gebruiken. Zie voor meer informatie klikt u op de sectie voor [het toepassings beheer van referenties](#click-once-credentials-manager-app) . 
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie voor meer informatie over de prestaties van de Kopieer activiteit [Kopieer activiteit prestaties en afstemmings handleiding](data-factory-copy-activity-performance.md).
-
- 

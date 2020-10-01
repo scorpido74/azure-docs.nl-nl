@@ -6,19 +6,19 @@ ms.service: sql-database
 ms.subservice: performance
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: troubleshooting
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnick, sstein
 ms.date: 03/10/2020
-ms.openlocfilehash: 0a7cd807de7e723d48faaa0944ea55b1887c9721
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: afc142ec9de0e275d505276d959cfac3e652c55d
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91284105"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619760"
 ---
-# <a name="detectable-types-of-query-performance-bottlenecks-in-azure-sql-database"></a>Detecteer bare typen query prestaties knelpunten in Azure SQL Database
+# <a name="detectable-types-of-query-performance-bottlenecks-in-azure-sql-database"></a>Detecteerbare typen queryprestatieknelpunten in Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
 
 Wanneer u probeert een prestatie knelpunt op te lossen, begint u met het bepalen of het probleem zich voordoet wanneer de query wordt uitgevoerd in de actieve staat of in de wacht stand. Er zijn verschillende resoluties van toepassing, afhankelijk van deze bepaling. Gebruik het volgende diagram om inzicht te krijgen in de factoren die kunnen leiden tot een probleem met betrekking tot een actief of een wacht probleem. Problemen en oplossingen met betrekking tot elk type probleem worden beschreven in dit artikel.
