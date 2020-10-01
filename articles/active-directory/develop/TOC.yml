@@ -418,6 +418,8 @@
               href: id-tokens.md
             - name: Toegangstokens
               href: access-tokens.md
+            - name: Levensduur van tokens configureren
+              href: active-directory-configurable-token-lifetimes.md
             - name: Eindpunt voor gebruikersinfo
               href: userinfo.md
             - name: Certificaatreferenties
@@ -522,7 +524,7 @@
         - name: Kenmerken van directory-schema-extensies gebruiken in claims
           href: active-directory-schema-extensions.md
         - name: Levensduur van tokens configureren
-          href: active-directory-configurable-token-lifetimes.md
+          href: configure-token-lifetimes.md
         - name: SameSite-cookiewijzigingen in Chrome-browser verwerken
           href: howto-handle-samesite-cookie-changes-chrome-browser.md
         - name: ITP in Safari verwerken
