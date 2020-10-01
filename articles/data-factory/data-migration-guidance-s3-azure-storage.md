@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/04/2019
-ms.openlocfilehash: 5de1ef97050f37bb44d87ebae1d95df365952ace
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 963a541835c5e45c5642f2d516da53fd165142b4
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90984889"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91616921"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>Azure Data Factory gebruiken om gegevens te migreren van Amazon S3 naar Azure Storage 
 
@@ -74,7 +74,7 @@ Gegevens migreren via een persoonlijke koppeling:
 
 - In deze architectuur wordt de gegevens migratie uitgevoerd via een koppeling voor een privé-peering tussen AWS Direct Connect en Azure Express route zodat de gegevens nooit via het open bare Internet worden gepasseerd.  Hiervoor is het gebruik van AWS VPC en een virtueel Azure-netwerk vereist. 
 - U moet de zelf-hostende Integration runtime van ADF installeren op een Windows-VM in uw virtuele Azure-netwerk om deze architectuur te verzorgen.  U kunt uw zelf-hostende IR-Vm's hand matig schalen of uitschalen naar meerdere Vm's (Maxi maal 4 knoop punten) om uw netwerk en opslag-IOPS/band breedte volledig te benutten. 
-- Als het acceptabel is om gegevens over te dragen, maar u de netwerk toegang tot de bron-S3 wilt vergren delen voor een specifiek IP-bereik, kunt u een variatie van deze architectuur aannemen door AWS VPC te verwijderen en de persoonlijke koppeling te vervangen door HTTPS.  U wilt Azure Virtual en zelf-hostende IR op Azure VM blijven gebruiken, zodat u een statisch, openbaar routeerbaar IP-adres kunt hebben voor het white list-doel. 
+- Als het acceptabel is om gegevens over te dragen, maar u de netwerk toegang tot de bron-S3 wilt vergren delen voor een specifiek IP-bereik, kunt u een variatie van deze architectuur aannemen door AWS VPC te verwijderen en de persoonlijke koppeling te vervangen door HTTPS.  U wilt Azure Virtual en zelf-hostende IR op Azure VM blijven gebruiken, zodat u een statisch, openbaar routeerbaar IP-adres kunt hebben voor filter doeleinden. 
 - U kunt zowel de initiële momentopname gegevens migratie als de migratie van de Delta gegevens bereiken met behulp van deze architectuur. 
 
 ## <a name="implementation-best-practices"></a>Aanbevolen procedures voor implementatie 

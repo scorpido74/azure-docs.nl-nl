@@ -1,6 +1,6 @@
 ---
 title: 'Zelfstudie: Ruimtelijke IoT-analyse implementeren met Microsoft Azure Maps'
-description: Integreer IoT Hub met API’s van de Microsoft Azure Maps-service.
+description: Integreer IoT Hub met API's van de Azure Maps-service.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 09/01/2020
@@ -9,25 +9,25 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 4150464b5c59b631afea0c788b1e351dee5185f9
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 25665e75a361fbaa5479e2717d5e6aa9290c3d3a
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299371"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90056565"
 ---
-# <a name="tutorial-implement-iot-spatial-analytics-using-azure-maps"></a>Zelfstudie: Ruimtelijke IoT-analyse implementeren met behulp van Azure Maps
+# <a name="tutorial-implement-iot-spatial-analytics-by-using-azure-maps"></a>Zelfstudie: Ruimtelijke IoT-analyse implementeren met behulp van Azure Maps
 
-In een IoT-scenario is het gebruikelijk om relevante gebeurtenissen die zich in ruimte en tijd voordoen, vast te leggen en bij te houden. Voorbeeldscenario's omvatten wagenparkbeheer, assets bijhouden, mobiliteit, en Smart City-toepassingen. Deze zelfstudie begeleidt u door een oplossing waarmee het verplaatsen van tweedehandshuurauto’s wordt getraceerd, met behulp van de Azure Maps-API’s.
+In een IoT-scenario is het gebruikelijk om relevante gebeurtenissen die zich in ruimte en tijd voordoen, vast te leggen en bij te houden. Voorbeelden omvatten wagenparkbeheer, assets bijhouden, mobiliteit en Smart City-toepassingen. Deze zelfstudie begeleidt u door een oplossing waarmee het verplaatsen van tweedehandshuurauto's wordt getraceerd, met behulp van de Azure Maps-API's.
 
 In deze zelfstudie gaat u:
 
 > [!div class="checklist"]
-> * Een Azure Storage-account maken om traceringsgegevens voor auto’s te registreren.
-> * Een geofence uploaden in de gegevensservices van Azure Maps met behulp van de Data Upload-API.
-> * Een IoT-hub maken en uw apparaat registreren.
+> * Een Azure-opslagaccount maken om traceringsgegevens voor auto's te registreren.
+> * Een geofence uploaden naar de Azure Maps Data-service met behulp van de Data Upload-API.
+> * Een hub maken in Azure IoT Hub en een apparaat registreren.
 > * Een functie maken in Azure Functions, waarbij u bedrijfslogica implementeert op basis van de ruimtelijke analyse van Azure Maps.
-> * U abonneren op telemetriegebeurtenissen voor IoT-apparaten vanuit de Azure-functie via Event Grid.
+> * U abonneren op telemetriegebeurtenissen voor IoT-apparaten vanuit de Azure-functie via Azure Event Grid.
 > * De telemetriegebeurtenissen filteren met behulp van berichtroutering van IoT Hub.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -36,19 +36,19 @@ In deze zelfstudie gaat u:
 
 2. [Maak een Azure Maps-account](quick-demo-map-app.md#create-an-azure-maps-account).
 
-3. [Een primaire sleutel voor een abonnement verkrijgen](quick-demo-map-app.md#get-the-primary-key-for-your-account), ook wel bekend als de primaire sleutel of de abonnementssleutel. Zie [Verificatie beheren in Azure Maps](how-to-manage-authentication.md) voor meer informatie over verificatie in Azure Maps.
+3. [Een primaire sleutel voor een abonnement verkrijgen](quick-demo-map-app.md#get-the-primary-key-for-your-account), ook wel bekend als de primaire sleutel of de abonnementssleutel. Zie [Verificatie beheren in Azure Maps](how-to-manage-authentication.md) voor meer informatie.
 
 4. [Maak een resourcegroep.](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal#create-resource-groups) In deze zelfstudie noemen we de resourcegroep *ContosoRental*, maar u kunt elke gewenste naam kiezen.
 
 5. Download het [C#-project rentalCarSimulation](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/tree/master/src/rentalCarSimulation).
 
-In deze zelfstudie wordt gebruikgemaakt van de [Postman](https://www.postman.com/)-toepassing, maar u kunt ook een andere API-ontwikkelomgeving kiezen.
+In deze zelfstudie wordt gebruikgemaakt van de toepassing [Postman](https://www.postman.com/), maar u kunt ook een andere API-ontwikkelomgeving kiezen.
 
 ## <a name="use-case-rental-car-tracking"></a>Use-case: huurauto traceren
 
-In deze zelfstudie wordt het volgende scenario gedemonstreerd: Een autoverhuurbedrijf wil locatiegegevens, reisafstand en actieve status voor de huurauto's van het bedrijf registreren. Het bedrijf wil deze informatie opslaan telkens wanneer een auto de correcte geautoriseerde geografische regio verlaat.
+Stel dat een autoverhuurbedrijf locatiegegevens, reisafstand en actieve status voor de huurauto's van het bedrijf wil registreren. Het bedrijf wil deze informatie ook opslaan telkens wanneer een auto de correcte geautoriseerde geografische regio verlaat.
 
-In onze use-case zijn de huurauto's uitgerust met IoT-apparaten die regelmatig telemetriegegevens naar Azure IoT Hub verzenden. De telemetrie bevat de huidige locatie en geeft aan of de motor van de auto loopt. Het apparaatlocatieschema houdt zich aan het IoT [Plug and Play-schema voor georuimtelijke gegeven](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v1-preview/schemas/geospatial.md). Het schema voor de apparaattelemetrie van de huurauto ziet eruit als de volgende JSON-code:
+De huurauto's zijn uitgerust met IoT-apparaten die regelmatig telemetriegegevens naar IoT Hub verzenden. De telemetrie bevat de huidige locatie en geeft aan of de motor van de auto loopt. Het apparaatlocatieschema houdt zich aan het IoT [Plug and Play-schema voor georuimtelijke gegeven](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v1-preview/schemas/geospatial.md). Het schema voor de apparaattelemetrie van de huurauto ziet eruit als de volgende JSON-code:
 
 ```JSON
 {
@@ -75,53 +75,53 @@ In onze use-case zijn de huurauto's uitgerust met IoT-apparaten die regelmatig t
 }
 ```
 
-In deze zelfstudie wordt één voertuig gevolgd. Nadat de Azure-services zijn ingesteld, moet u het [C#-project rentalCarSimulation](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/tree/master/src/rentalCarSimulation) downloaden om de voertuigsimulator uit te voeren. Het hele proces, van gebeurtenis tot uitvoering van de functie, wordt samengevat in de volgende stappen:
+In deze zelfstudie volgt u maar één voertuig. Nadat de Azure-services zijn ingesteld, moet u het [C#-project rentalCarSimulation](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/tree/master/src/rentalCarSimulation) downloaden om de voertuigsimulator uit te voeren. Het hele proces, van gebeurtenis tot uitvoering van de functie, wordt samengevat in de volgende stappen:
 
-1. Het apparaat in het voertuig verzendt telemetriegegevens naar een IoT-hub.
+1. Het apparaat in het voertuig verzendt telemetriegegevens naar IoT Hub.
 
-2. Als de motor van de auto loopt, publiceert de IoT-hub de telemetriegegevens in de Event Grid.
+2. Als de motor van de auto loopt, publiceert de hub de telemetriegegevens in Event Grid.
 
 3. Er wordt een Azure-functie geactiveerd vanwege het bijbehorende gebeurtenisabonnement op telemetriegebeurtenissen van het apparaat.
 
-4. Met de functie worden de locatiecoördinaten van het voertuigapparaat, de gebeurtenistijd, en de apparaat-id geregistreerd. Vervolgens wordt de [Ruimtelijke Geofence Get API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) gebruikt om te bepalen of de auto zich buiten de geofence heeft begeven. Als de auto buiten de grenzen van de geofence is geweest, worden de locatiegegevens die zijn ontvangen van de gebeurtenis, met de functie opgeslagen in onze blobcontainer. Via de functie wordt ook de [omgekeerde zoekopdracht voor adressen](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) uitgevoerd om de locatiecoördinaten om te zetten in een straatnaam, en deze op te slaan bij de andere locatiegegevens voor het apparaat.
+4. Met de functie worden de locatiecoördinaten van het voertuig, de gebeurtenistijd en de apparaat-id geregistreerd. Vervolgens wordt de [Spatial Geofence Get API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) gebruikt om te bepalen of de auto zich buiten de geofence heeft begeven. Als de auto buiten de grenzen van de geofence is geweest, worden de locatiegegevens die zijn ontvangen van de gebeurtenis, met de functie opgeslagen in een blobcontainer. Via de functie wordt ook de [omgekeerde zoekopdracht voor adressen](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) uitgevoerd om de locatiecoördinaten om te zetten in een straatnaam; deze wordt vervolgens opgeslagen bij de andere locatiegegevens voor het apparaat.
 
-Het volgende diagram geeft je een overzicht op hoog niveau van het systeem.
+In het volgende diagram ziet u een overzicht op hoog niveau van het systeem.
 
-   :::image type="content" source="./media/tutorial-iot-hub-maps/system-diagram.png" border="false" alt-text="Systeemoverzicht":::
+   :::image type="content" source="./media/tutorial-iot-hub-maps/system-diagram.png" border="false" alt-text="Diagram van systeemoverzicht.":::
 
 In de volgende afbeelding is het geofence-gebied blauw gemarkeerd. De route van de huurauto wordt aangegeven met een groene lijn.
 
-   :::image type="content" source="./media/tutorial-iot-hub-maps/geofence-route.png" border="false" alt-text="Geofence-route":::
+   :::image type="content" source="./media/tutorial-iot-hub-maps/geofence-route.png" border="false" alt-text="Diagram van systeemoverzicht.":::
 
 ## <a name="create-an-azure-storage-account"></a>Een Azure-opslagaccount maken
 
-Om de traceringsgegevens over schendingen van de auto op te slaan maken we een [algemeen v2-opslagaccount](https://docs.microsoft.com/azure/storage/common/storage-account-overview#general-purpose-v2-accounts) in de resourcegroep. Als u nog geen resourcegroep hebt gemaakt, volgt u de instructies in [Een resourcegroep maken](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal#create-resource-groups). In deze zelfstudie noemen we de resourcegroep *ContosoRental*.
+Om de traceringsgegevens over schendingen van de auto op te slaan, maakt u een [algemeen v2-opslagaccount](https://docs.microsoft.com/azure/storage/common/storage-account-overview#general-purpose-v2-accounts) in de resourcegroep. Als u nog geen resourcegroep hebt gemaakt, volgt u de instructies in [Een resourcegroep maken](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal#create-resource-groups). In deze zelfstudie geeft u de resourcegroep de naam *ContosoRental*.
 
-Volg de instructies in [Een opslagaccount maken](https://docs.microsoft.com/azure/storage/common/storage-account-create?tabs=azure-portal) om een opslagaccount te maken. In deze zelfstudie noemen we het opslagaccount *contosorentalstorage*, maar u kunt elke gewenste naam kiezen.
+Volg de instructies in [Een opslagaccount maken](https://docs.microsoft.com/azure/storage/common/storage-account-create?tabs=azure-portal) om een opslagaccount te maken. In deze zelfstudie geeft u het opslagaccount de naam *contosorentalstorage*, maar over het algemeen kunt u elke gewenste naam kiezen.
 
-Zodra het opslagaccount is gemaakt, moet u een container maken om logboekgegevens in op te slaan.
+Wanneer u het opslagaccount hebt gemaakt, moet u een container maken om logboekgegevens in op te slaan.
 
-1. Ga naar het zojuist gemaakte opslagaccount. Klik op de koppeling **Containers** in de sectie Essentials.
+1. Ga naar het zojuist gemaakte opslagaccount. Selecteer de koppeling **Containers** in de sectie **Essentials**.
 
-    :::image type="content" source="./media/tutorial-iot-hub-maps/containers.png" alt-text="Containers voor blobopslag":::
+    :::image type="content" source="./media/tutorial-iot-hub-maps/containers.png" alt-text="Diagram van systeemoverzicht.":::
 
-2. Klik op de knop **+ Container** in de linkerbovenhoek. Aan de rechterkant van de browser wordt een paneel weergegeven. Geef de container de naam *contoso-rental-logs* en klik op **Maken**.
+2. Selecteer **+ Container** in de linkerbovenhoek. Aan de rechterkant van de browser wordt een deelvenster weergegeven. Geef de container de naam *contoso-rental-logs* en selecteer **Maken**.
 
-     :::image type="content" source="./media/tutorial-iot-hub-maps/container-new.png" alt-text="Een blobcontainer maken":::
+     :::image type="content" source="./media/tutorial-iot-hub-maps/container-new.png" alt-text="Diagram van systeemoverzicht.":::
 
-3. Ga naar de blade **Toegangssleutels** in uw opslagaccount, en kopieer de waarden bij **Opslagaccountnaam** en **Sleutel** in de sectie **key1**. Beide waarden hebben we nodig in de sectie [Een Azure-functie maken en een Event Grid-abonnement toevoegen](#create-an-azure-function-and-add-an-event-grid-subscription).
+3. Ga naar het deelvenster **Toegangssleutels** in uw opslagaccount en kopieer de waarden bij **Opslagaccountnaam** en **Sleutel** in de sectie **key1**. U hebt deze beide waarden nodig in de sectie 'Een Azure-functie maken en een Event Grid-abonnement toevoegen'.
 
-    :::image type="content" source="./media/tutorial-iot-hub-maps/access-keys.png" alt-text="De naam en sleutel van het opslagaccount kopiëren":::
+    :::image type="content" source="./media/tutorial-iot-hub-maps/access-keys.png" alt-text="Diagram van systeemoverzicht.":::
 
 ## <a name="upload-a-geofence"></a>Een geofence uploaden
 
-Nu gebruiken we de [Postman-app](https://www.getpostman.com) om [de geofence te uploaden](https://docs.microsoft.com/azure/azure-maps/geofence-geojson) naar de Azure Maps-service. De geofence definieert het toegestane geografische gebied voor het huurvoertuig.  We gebruiken de geofence in de Azure-functie om te bepalen of een auto is verplaatst buiten het geofence-gebied.
+Gebruik nu de [Postman-app](https://www.getpostman.com) om [de geofence te uploaden](https://docs.microsoft.com/azure/azure-maps/geofence-geojson) naar Azure Maps. De geofence definieert het toegestane geografische gebied voor het huurvoertuig. U gebruikt de geofence in de Azure-functie om te bepalen of een auto is verplaatst buiten het geofence-gebied.
 
-Open de Postman-app en volg de onderstaande stappen om de geofence te uploaden met behulp van de Azure Maps Data Upload-API.  
+Volg deze stappen om de geofence te uploaden met behulp van de Azure Maps Data Upload-API: 
 
-1. Open de Postman-app. Selecteer **New** (Nieuw) bovenaan de Postman-app. Selecteer **Collection** (Verzameling) in het venster **Create New** (Nieuwe maken).  Geef de verzameling een naam en selecteer de knop **Create** (Maken).
+1. Open de Postman-app en selecteer **Nieuw**. Selecteer **Collection** (Verzameling) in het venster **Create New** (Nieuwe maken). Geef de verzameling een naam en selecteer **Maken**.
 
-2. Selecteer nogmaals **New** (Nieuw) om de aanvraag te maken. Selecteer **Request** (Aanvraag) in het venster **Create New** (Nieuwe maken). Voer een **Request name** (Aanvraagnaam) in voor de aanvraag. Selecteer de verzameling die u in de vorige stap hebt gemaakt en selecteer **Save** (Opslaan).
+2. Selecteer nogmaals **New** (Nieuw) om de aanvraag te maken. Selecteer **Aanvraag** in het venster **Nieuwe maken** en voer een aanvraagnaam in voor de aanvraag. Selecteer de verzameling die u in de vorige stap hebt gemaakt en selecteer **Save** (Opslaan).
 
 3. Selecteer de HTTP-methode **POST** op het tabblad Builder en voer de volgende URL in om de geofence te uploaden naar de Data Upload-API. Vergeet niet om `{subscription-key}` te vervangen door de primaire abonnementssleutel.
 
@@ -129,11 +129,11 @@ Open de Postman-app en volg de onderstaande stappen om de geofence te uploaden m
     https://atlas.microsoft.com/mapData/upload?subscription-key={subscription-key}&api-version=1.0&dataFormat=geojson
     ```
 
-    De waarde "geojson" naast de parameter `dataFormat` in het URL-pad vertegenwoordigt de indeling van de gegevens die worden geüpload.
+    De waarde `geojson` naast de parameter `dataFormat` in het URL-pad vertegenwoordigt de indeling van de gegevens die worden geüpload.
 
-4. Klik op **Hoofdtekst** en selecteer vervolgens de **onbewerkte** invoerindeling. Kies de invoerindeling **JSON** in de vervolgkeuzelijst. Open [hier](https://raw.githubusercontent.com/Azure-Samples/iothub-to-azure-maps-geofencing/master/src/Data/geofence.json?token=AKD25BYJYKDJBJ55PT62N4C5LRNN4) het JSON-gegevensbestand, en kopieer het bestand in de sectie met de hoofdtekst. Klik op **Verzenden**.
+4. Selecteer **Hoofdtekst** > **onbewerkt** voor de invoerindeling en kies **JSON** in de vervolgkeuzelijst. [Open het JSON-gegevensbestand](https://raw.githubusercontent.com/Azure-Samples/iothub-to-azure-maps-geofencing/master/src/Data/geofence.json?token=AKD25BYJYKDJBJ55PT62N4C5LRNN4) en kopieer het bestand in de sectie met de hoofdtekst. Selecteer **Verzenden**.
 
-5. Klik op de blauwe **Send**-knop (Verzenden) en wacht tot de aanvraag is verwerkt. Zodra de aanvraag is voltooid, gaat u naar het tabblad **Headers** (Kopteksten) van het antwoord. Kopieer de waarde van de **Location**-sleutel (Locatie), de `status URL`.
+5. Selecteer **Verzenden** en wacht totdat de aanvraag is verwerkt. Wanneer de aanvraag is voltooid, gaat u naar het tabblad **Kopteksten** van het antwoord. Kopieer de waarde van de **Location**-sleutel (Locatie), de `status URL`.
 
     ```http
     https://atlas.microsoft.com/mapData/operations/<operationId>?api-version=1.0
@@ -144,7 +144,7 @@ Open de Postman-app en volg de onderstaande stappen om de geofence te uploaden m
    ```HTTP
    https://atlas.microsoft.com/mapData/<operationId>/status?api-version=1.0&subscription-key={subscription-key}
 
-7. When the **GET** HTTP request completes successfully, it will return a `resourceLocation`. The `resourceLocation` contains the unique `udid` for the uploaded content. You'll need to copy this `udid` for later use in this tutorial.
+7. When the **GET** HTTP request completes successfully, it returns a `resourceLocation`. The `resourceLocation` contains the unique `udid` for the uploaded content. Copy this `udid` for later use in this tutorial.
 
       ```json
       {
@@ -153,93 +153,95 @@ Open de Postman-app en volg de onderstaande stappen om de geofence te uploaden m
       }
       ```
 
-## <a name="create-an-azure-iot-hub"></a>Een Azure IoT-hub maken
+## <a name="create-an-iot-hub"></a>Een IoT-hub maken
 
-Azure IoT Hub maakt veilige en betrouwbare communicatie in twee richtingen mogelijk tussen een IoT-toepassing en de beheerde apparaten.  In ons scenario willen we informatie ontvangen van het apparaat in het voertuig om zo de locatie van de huurauto te bepalen. In deze sectie maken we een IoT-hub in de resourcegroep *ContosoRental*. De IoT-hub is verantwoordelijk voor het publiceren van de telemetriegebeurtenissen van het apparaat.
+IoT Hub maakt veilige en betrouwbare tweerichtingscommunicatie mogelijk tussen een IoT-toepassing en de beheerde apparaten. Voor deze zelfstudie wilt u informatie ontvangen van het apparaat in het voertuig om zo de locatie van de huurauto te bepalen. In deze sectie maakt u een IoT-hub in de resourcegroep *ContosoRental*. Deze hub is verantwoordelijk voor het publiceren van de telemetriegebeurtenissen van het apparaat.
 
 > [!NOTE]
-> De functionaliteit van IoT Hub om telemetriegebeurtenissen van apparaten op Event Grid te publiceren, is in openbare preview. Openbare preview-functies zijn beschikbaar in alle regio's behalve **Oost-VS, West-VS, West-Europa, Azure Government, Azure China 21Vianet** en **Azure Germany**.
+> De mogelijkheid om telemetriegebeurtenissen van apparaten in Event Grid te publiceren, is momenteel in openbare preview. Deze functie is beschikbaar in alle regio's, met uitzondering van de volgende: US - oost, US - west, Europa - west, Azure Government, Azure China 21Vianet en Microsoft Azure Duitsland.
 
-Als u een Iot-hub wilt maken in de resourcegroep *ContosoRental*, volgt u de stappen in [Een IoT-hub maken](https://docs.microsoft.com/azure/iot-hub/quickstart-send-telemetry-dotnet#create-an-iot-hub).
+Als u een IoT-hub wilt maken in de resourcegroep *ContosoRental*, volgt u de stappen in [Een IoT-hub maken](https://docs.microsoft.com/azure/iot-hub/quickstart-send-telemetry-dotnet#create-an-iot-hub).
 
-## <a name="register-a-device-in-iot-hub"></a>Een apparaat registreren in IoT Hub
+## <a name="register-a-device-in-your-iot-hub"></a>Een apparaat registreren in uw IoT-hub
 
-Apparaten kunnen geen verbinding maken met de IoT-hub, tenzij ze zijn geregistreerd in het IoT Hub-identiteitsregister. In ons scenario maakt u één apparaat met de naam *InVehicleDevice*. Als u het apparaat wilt maken en registreren in IoT Hub, volgt u de stappen in [Een nieuw apparaat registreren in de IoT-hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal#register-a-new-device-in-the-iot-hub). Zorg ervoor dat u de **Primaire verbindingsreeks** van het apparaat kopieert, omdat deze in een latere stap wordt gebruikt.
+Apparaten kunnen geen verbinding maken met de IoT-hub, tenzij ze zijn geregistreerd in het IoT Hub-identiteitsregister. Hier maakt u één apparaat met de naam *InVehicleDevice*. Als u het apparaat wilt maken en registreren in uw IoT-hub, volgt u de stappen in [Een nieuw apparaat registreren in de IoT-hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal#register-a-new-device-in-the-iot-hub). Zorg ervoor dat u de primaire verbindingsreeks van het apparaat kopieert. U hebt deze later nodig.
 
-## <a name="create-an-azure-function-and-add-an-event-grid-subscription"></a>Maak een Azure-functie en voeg een Event Grid-abonnement toe
+## <a name="create-a-function-and-add-an-event-grid-subscription"></a>Een functie maken en een Event Grid-abonnement toevoegen
 
-Azure Functions is een serverloze rekenservice waarmee u kleine codefragmenten (functies) kunt uitvoeren, zonder dat u de rekeninfrastructuur expliciet hoeft in te richten of te beheren. Raadpleeg de documentatie voor [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) voor meer informatie over Azure Functions.
+Azure Functions is een serverloze rekenservice waarmee u kleine codefragmenten (functies) kunt uitvoeren zonder dat u de rekeninfrastructuur expliciet hoeft in te richten of te beheren. Zie [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview)voor meer informatie.
 
-Een functie wordt geactiveerd via een bepaalde gebeurtenis. In ons scenario maakt u een functie die wordt geactiveerd met een Event Grid-trigger. U maakt de relatie tussen de trigger en de functie door een gebeurtenisabonnement te maken voor de telemetriegebeurtenissen van het IoT Hub-apparaat. Wanneer een telemetriegebeurtenis van het apparaat optreedt, wordt de functie aangeroepen als eindpunt, en ontvangt deze de relevante gegevens voor het [apparaat dat we eerder hebben geregistreerd in IoT Hub](#register-a-device-in-iot-hub).
+Een functie wordt geactiveerd via een bepaalde gebeurtenis. Hier maakt u een functie die wordt geactiveerd met een Event Grid-trigger. Maak de relatie tussen de trigger en de functie door een gebeurtenisabonnement te maken voor de telemetriegebeurtenissen van het IoT Hub-apparaat. Wanneer een telemetriegebeurtenis van het apparaat optreedt, wordt de functie aangeroepen als eindpunt, en ontvangt deze de relevante gegevens voor het apparaat dat u eerder hebt geregistreerd in IoT Hub.
 
-[Hier](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/blob/master/src/Azure%20Function/run.csx) ziet u de C#-scriptcode die onze functie bevat.
+Hier ziet u de [C#-scriptcode die uw functie bevat](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/blob/master/src/Azure%20Function/run.csx).
 
-Nu gaan we de Azure-functie instellen.
+Stel nu uw Azure-functie in.
 
-1. Klik op het dashboard in de Azure-portal op **Een resource maken**. Typ in het tekstvak: **Functie-app**. Klik op **Functie-app**. Klik op **Create**.
+1. Selecteer **Een resource maken** in het dashboard van Azure Portal. Typ in het tekstvak: **Functie-app**. Selecteer **Functie-app** > **Maken**.
 
-2. Geef de functie-app een naam op de aanmaakpagina van **Functie-app**. Selecteer onder **Resourcegroep** de optie *ContosoRental* in de vervolgkeuzelijst.  Selecteer *.NET Core* als **Runtimestack**. Klik op **Next: Hosten >** onderaan de pagina.
+1. Geef de functie-app een naam op de aanmaakpagina van **Functie-app**. Selecteer onder **Resourcegroep** de optie **ContosoRental** in de vervolgkeuzelijst. Selecteer **.NET Core** als **Runtimestack**. Selecteer onderaan de pagina **Volgende: Hosting>** .
 
-    :::image type="content" source="./media/tutorial-iot-hub-maps/rental-app.png" alt-text="Een functie-app maken":::
+    :::image type="content" source="./media/tutorial-iot-hub-maps/rental-app.png" alt-text="Diagram van systeemoverzicht.":::
 
-3. Selecteer voor **Opslagaccount** het opslagaccount dat u hebt gemaakt in [Een Azure-opslagaccount maken](#create-an-azure-storage-account). Klik op **Controleren + maken**.
+1. Selecteer voor **Opslagaccount** het opslagaccount dat u hebt gemaakt in [Een Azure-opslagaccount maken](#create-an-azure-storage-account). Selecteer **Controleren + maken**.
 
-4. Bekijk de details van de functie-app en klik op **Maken**.
+1. Bekijk de details van de functie-app en selecteer **Maken**.
 
-5. Zodra de app is gemaakt, voegen we een functie toe. Ga naar functie app. Klik op de blade **Functies**. Klik bovenaan de pagina op **+ Toevoegen**. Het paneel met functiesjablonen wordt weergegeven. Schuif omlaag in het paneel. Klik op **Azure Event Grid-trigger**.
+1. Wanneer de app is gemaakt, voegt u er een functie aan toe. Ga naar functie app. Selecteer het deelvenster **Functies**. Selecteer **+ Toevoegen** bovenaan de pagina. Het deelvenster met functiesjablonen wordt weergegeven. Schuif omlaag in het deelvenster en selecteer **Azure Event Grid-trigger**.
 
-     >[!WARNING]
-    > De namen van de sjablonen **Azure Event Hub-trigger** en **Azure Event Grid-trigger** lijken op elkaar. Zorg ervoor dat u op de sjabloon **Azure Event Grid-trigger** klikt.
+     >[!IMPORTANT]
+    > De namen van de sjablonen **Azure Event Hub-trigger** en **Azure Event Grid-trigger** lijken op elkaar. Zorg ervoor dat u de sjabloon **Azure Event Grid-trigger** selecteert.
 
-    :::image type="content" source="./media/tutorial-iot-hub-maps/function-create.png" alt-text="Een functie maken":::
+    :::image type="content" source="./media/tutorial-iot-hub-maps/function-create.png" alt-text="Diagram van systeemoverzicht.":::
 
-6. Geef een naam op voor de functie. In deze zelfstudie gebruiken we de naam *GetGeoFunction*, maar u kunt elke gewenste naam gebruiken. Klik op **Functie maken**.
+1. Geef een naam op voor de functie. In deze zelfstudie gebruikt u de naam *GetGeoFunction*, maar over het algemeen kunt u elke gewenste naam gebruiken. Selecteer **Functie maken**.
 
-7. Klik op de blade **Code + Test** in het menu aan de linkerkant. Kopieer en plak het [C#-script](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/blob/master/src/Azure%20Function/run.csx) in het codevenster.
+1. Selecteer in het linkermenu het deelvenster **Code + testen**. Kopieer en plak het [C#-script](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/blob/master/src/Azure%20Function/run.csx) in het codevenster.
 
-     :::image type="content" source="./media/tutorial-iot-hub-maps/function-code.png" alt-text="Code kopiëren/plakken in het functievenster":::
+     :::image type="content" source="./media/tutorial-iot-hub-maps/function-code.png" alt-text="Diagram van systeemoverzicht.":::
 
-8. Vervang de volgende parameters in de C#-code. Klik op **Opslaan**. Klik nog niet op **Testen/Uitvoeren**
+1. Vervang de volgende parameters in de C#-code:
     * Vervang **SUBSCRIPTION_KEY** door de primaire abonnementssleutel van uw Azure Maps-account.
     * Vervang **UDID** door de `udid` van de geofence die u hebt geüpload in [Een geofence uploaden](#upload-a-geofence).
-    * De functie **CreateBlobAsync** in het script maakt een blob per gebeurtenis in het gegevensopslagaccount. Vervang de **ACCESS_KEY**, **ACCOUNT_NAME** en **STORAGE_CONTAINER_NAME** door de toegangssleutel, accountnaam en gegevensopslagcontainer van je opslagaccount. Deze waarden zijn gegenereerd tijdens het maken van het opslagaccount in [Een Azure-opslagaccount maken](#create-an-azure-storage-account).
+    * De functie `CreateBlobAsync` in het script maakt een blob per gebeurtenis in het gegevensopslagaccount. Vervang de **ACCESS_KEY**, **ACCOUNT_NAME** en **STORAGE_CONTAINER_NAME** door de toegangssleutel, accountnaam en gegevensopslagcontainer van je opslagaccount. Deze waarden zijn gegenereerd tijdens het maken van het opslagaccount in [Een Azure-opslagaccount maken](#create-an-azure-storage-account).
 
-9. Klik op de blade **Integratie** in het menu aan de linkerkant. Klik in het diagram op **Event Grid-trigger**. Typ een naam voor de trigger, bijvoorbeeld *eventCarTelemetry*, en klik op **Event Grid-abonnement maken**.
+1. Selecteer in het linkermenu het deelvenster **Integratie**. Selecteer **Event Grid-trigger** in het diagram. Typ een naam voor de trigger, bijvoorbeeld *eventGridEvent* en selecteer **Event Grid-abonnement maken**.
 
-     :::image type="content" source="./media/tutorial-iot-hub-maps/function-integration.png" alt-text="Gebeurtenisabonnement toevoegen":::
+     :::image type="content" source="./media/tutorial-iot-hub-maps/function-integration.png" alt-text="Diagram van systeemoverzicht.":::
 
-10. Vul de abonnementsgegevens in. Geef het gebeurtenisabonnement een naam. Selecteer bij *Gebeurtenisschema* de optie *Gebeurtenisrasterschema*. Selecteer bij **Onderwerptypen** de optie *Azure IoT Hub-accounts*. Selecteer bij **Resourcegroep** de resourcegroep die u hebt gemaakt aan het begin van deze zelfstudie. Selecteer bij **Resource** de IoT-hub die u hebt gemaakt in [Een Azure IoT-hub maken](#create-an-azure-iot-hub). Selecteer bij **Filteren op gebeurtenistype** de optie *Apparaattelemetrie*. Nadat u deze opties hebt gekozen, ziet u dat **Onderwerptype** is gewijzigd in *IoT Hub*. Voor **Systeemonderwerpnaam** kunt u dezelfde naam gebruiken als voor uw resource.  Klik ten slotte in de sectie **Eindpuntgegevens** op **Een eindpunt selecteren**. Accepteer alle instellingen en klik op **Selectie bevestigen**.
+1. Vul de abonnementsgegevens in. Geef het gebeurtenisabonnement een naam. Selecteer bij **Gebeurtenisschema** de optie **Gebeurtenisrasterschema**. Selecteer bij **Onderwerptypen** de optie **Azure IoT Hub-accounts**. Selecteer bij **Resourcegroep** de resourcegroep die u hebt gemaakt aan het begin van deze zelfstudie. Selecteer bij **Resource** de IoT-hub die u hebt gemaakt in 'Een Azure IoT-hub maken'. Selecteer bij **Filteren op gebeurtenistype** de optie **Apparaattelemetrie**.
 
-    :::image type="content" source="./media/tutorial-iot-hub-maps/function-create-event-subscription.png" alt-text="Gebeurtenisabonnement maken":::
+   Nadat u deze opties hebt gekozen, ziet u dat **Onderwerptype** is gewijzigd in **IoT Hub**. Voor **Systeemonderwerpnaam** kunt u dezelfde naam gebruiken als voor uw resource. Selecteer ten slotte in de sectie **Eindpuntgegevens** de optie **Een eindpunt selecteren**. Accepteer alle instellingen en selecteer **Selectie bevestigen**.
 
-11. Controleer de instellingen. Zorg ervoor dat het eindpunt de functie opgeeft die u in het begin van deze sectie hebt gemaakt. Klik op **Create**.
+    :::image type="content" source="./media/tutorial-iot-hub-maps/function-create-event-subscription.png" alt-text="Diagram van systeemoverzicht.":::
 
-    :::image type="content" source="./media/tutorial-iot-hub-maps/function-create-event-subscription-confirm.png" alt-text="Bevestiging voor Gebeurtenisabonnement maken":::
+1. Controleer de instellingen. Zorg ervoor dat het eindpunt de functie opgeeft die u in het begin van deze sectie hebt gemaakt. Selecteer **Maken**.
 
-12. Nu bent u terug bij het paneel **Trigger bewerken**. Klik op **Opslaan**.
+    :::image type="content" source="./media/tutorial-iot-hub-maps/function-create-event-subscription-confirm.png" alt-text="Diagram van systeemoverzicht.":::
 
-## <a name="filter-events-using-iot-hub-message-routing"></a>De gebeurtenissen filteren met behulp van berichtroutering van IoT Hub
+1. Nu bent u terug bij het paneel **Trigger bewerken**. Selecteer **Opslaan**.
 
-Wanneer u een Event Grid-abonnement toevoegt aan de Azure-functie, wordt automatisch een berichtroute gemaakt in de opgegeven IoT-hub. Met berichtroutering kunt u verschillende gegevenstypen naar meerdere eindpunten routeren. Je kunt bijvoorbeeld telemetrieberichten van apparaten, levenscyclusgebeurtenissen van apparaten en dubbele wijzigingen van apparaten routeren. Voor meer informatie over IoT Hub-berichtenroutering ga je naar [IoT Hub-berichtroutering gebruiken](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c).
+## <a name="filter-events-by-using-iot-hub-message-routing"></a>Gebeurtenissen filteren met behulp van berichtroutering van IoT Hub
 
-:::image type="content" source="./media/tutorial-iot-hub-maps/hub-route.png" alt-text="Berichtroutering in IoT Hub":::
+Wanneer u een Event Grid-abonnement toevoegt aan de Azure-functie, wordt automatisch een berichtroute gemaakt in de opgegeven IoT-hub. Met berichtroutering kunt u verschillende gegevenstypen naar meerdere eindpunten routeren. Je kunt bijvoorbeeld telemetrieberichten van apparaten, levenscyclusgebeurtenissen van apparaten en dubbele wijzigingen van apparaten routeren. Zie [IoT Hub-berichtroutering gebruiken](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c) voor meer informatie.
 
-In het voorbeeldscenario willen we alleen berichten ontvangen wanneer de huurauto wordt verplaatst. We maken een routeringsquery om de gebeurtenissen te filteren waarbij de eigenschap `Engine` gelijk is aan **ON**. Als je een routeringsquery wilt maken, klik je op de **RouteToEventGrid**-route, vervang je de **Routing-query** door **"Engine = 'ON'"** en klik je op **Opslaan**. Nu zal de IoT-hub alleen apparaattelemetrie publiceren als de engine is ingeschakeld.
+:::image type="content" source="./media/tutorial-iot-hub-maps/hub-route.png" alt-text="Diagram van systeemoverzicht.":::
 
-:::image type="content" source="./media/tutorial-iot-hub-maps/hub-filter.png" alt-text="Routeringsberichten filteren":::
+In het voorbeeldscenario wilt u alleen berichten ontvangen wanneer de huurauto wordt verplaatst. Maak een routeringsquery om de gebeurtenissen te filteren waarbij de eigenschap `Engine` gelijk is aan **ON**. Als u een routeringsquery wilt maken, selecteert u de route **RouteToEventGrid** en vervangt u de **Routing-query** door **"Engine = 'ON'"** . Selecteer vervolgens **Opslaan**. De IoT-hub publiceert nu alleen apparaattelemetrie als de motor is ingeschakeld.
+
+:::image type="content" source="./media/tutorial-iot-hub-maps/hub-filter.png" alt-text="Diagram van systeemoverzicht.":::
 
 >[!TIP]
->Er zijn verschillende manieren om IoT-apparaat-naar-cloud-berichten te doorzoeken. Voor meer informatie over de syntaxis van berichtroutering ga je naar [IoT Hub-berichtroutering](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax).
+>Er zijn verschillende manieren om een query uit te voeren op IoT-apparaat-naar-cloud-berichten. Raadpleeg [IoT Hub-berichtroutering gebruiken](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax) voor meer informatie over syntaxis van berichtroutering.
 
 ## <a name="send-telemetry-data-to-iot-hub"></a>Stuur telemetriegegevens naar IoT Hub
 
-Zodra de Azure-functie actief is, kunnen we telemetriegegevens verzenden naar de IoT-hub, vanwaaruit ze naar het Event Grid worden gerouteerd. Laten we een C#-applicatie gebruiken om locatiegegevens te simuleren voor een in-voertuig apparaat van een huurauto. Om de applicatie uit te voeren, heb je .NET Core SDK 2.1.0 of hoger nodig op je ontwikkelingsmachine. Volg de onderstaande stappen om gesimuleerde telemetriegegevens naar IoT Hub te verzenden.
+Wanneer de Azure-functie actief is, kunt u telemetriegegevens verzenden naar de IoT-hub, vanwaaruit ze naar Event Grid worden gerouteerd. Gebruik een C#-applicatie om locatiegegevens te simuleren voor een in-voertuig apparaat van een huurauto. U hebt .NET Core SDK 2.1.0 of hoger nodig op de ontwikkelcomputer om de toepassing uit te voeren. Volg deze stappen om gesimuleerde telemetriegegevens naar de IoT-hub te verzenden:
 
 1. Als u dit nog niet hebt gedaan, downloadt u het C#-project [rentalCarSimulation](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/tree/master/src/rentalCarSimulation).
 
-2. Open het simulatedCar.cs-bestand in een teksteditor naar keuze en vervang de waarde van de `connectionString` door degene die je hebt opgeslagen toen je het apparaat registreerde en sla de wijzigingen in het bestand op.
+2. Open het bestand `simulatedCar.cs` in een teksteditor naar keuze en vervang de waarde van de `connectionString` door de waarde die u hebt opgeslagen toen u het apparaat registreerde. Sla de wijzigingen in het bestand op.
 
-3. Zorg ervoor dat .NET Core op je computer is geïnstalleerd. Navigeer in je lokale terminalvenster naar de hoofdmap van het C#-project en voer de volgende opdracht uit om de vereiste pakketten voor gesimuleerde apparaattoepassing te installeren:
+3. Zorg ervoor dat .NET Core op je computer is geïnstalleerd. Ga in uw lokale terminalvenster naar de hoofdmap van het C#-project en voer de volgende opdracht uit om de vereiste pakketten voor gesimuleerde apparaattoepassing te installeren:
 
     ```cmd/sh
     dotnet restore
@@ -253,19 +255,19 @@ Zodra de Azure-functie actief is, kunnen we telemetriegegevens verzenden naar de
 
   Je lokale terminal zou er als volgt uit moeten zien.
 
-:::image type="content" source="./media/tutorial-iot-hub-maps/terminal.png" alt-text="Terminal uitvoer":::
+:::image type="content" source="./media/tutorial-iot-hub-maps/terminal.png" alt-text="Diagram van systeemoverzicht.":::
 
 Als u nu de blobopslagcontainer opent, ziet u vier blobs voor locaties waar het voertuig zich buiten de geofence bevond.
 
-:::image type="content" source="./media/tutorial-iot-hub-maps/blob.png" alt-text="Blobs in een container weergeven":::
+:::image type="content" source="./media/tutorial-iot-hub-maps/blob.png" alt-text="Diagram van systeemoverzicht.":::
 
-Op de onderstaande kaart worden vier locatiepunten van het voertuig weergegeven die buiten de geofence vallen. Elke locatie is met regelmatige tijdsintervallen geregistreerd.
+Op de volgende kaart worden vier locatiepunten van het voertuig weergegeven die buiten de geofence vallen. Elke locatie is met regelmatige tijdsintervallen geregistreerd.
 
-:::image type="content" source="./media/tutorial-iot-hub-maps/violation-map.png" alt-text="Kaart met schendingen":::
+:::image type="content" source="./media/tutorial-iot-hub-maps/violation-map.png" alt-text="Diagram van systeemoverzicht.":::
 
 ## <a name="explore-azure-maps-and-iot"></a>Azure Maps en IoT verkennen
 
-Voor meer informatie over het verkennen van Azure Maps API's die in deze zelfstudie worden gebruikt, ga naar:
+Ga voor meer informatie over het verkennen van de Azure Maps API's die in deze zelfstudie worden gebruikt naar:
 
 * [Zoekadres omkeren](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)
 * [Geofence downloaden](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence)
@@ -284,7 +286,7 @@ Voor een lijst met apparaten die Azure-gecertificeerd zijn voor IoT ga je naar:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Voor meer informatie over het verzenden van apparaat naar cloud-telemetrie en omgekeerd, bekijk:
+Ga voor meer informatie over het verzenden van apparaat-naar-cloud-telemetrie en omgekeerd naar:
 
 > [!div class="nextstepaction"]
 > [Telemetrie verzenden vanaf een apparaat](https://docs.microsoft.com/azure/iot-hub/quickstart-send-telemetry-dotnet)

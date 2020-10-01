@@ -2,18 +2,18 @@
 title: Azure Monitor voor containers bijwerken voor metrische gegevens | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u Azure Monitor voor containers bijwerkt om de functie voor aangepaste metrische gegevens in te scha kelen die ondersteuning biedt voor het verkennen en waarschuwen van geaggregeerde metrische gegevens.
 ms.topic: conceptual
-ms.date: 07/17/2020
+ms.date: 09/24/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d56a280bdef2058c28d596f6c259eb319d80b08e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 6c420c91e20cc1cf9ab5e4f58bdd352ead3ba4d0
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499956"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91618142"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>Azure Monitor voor containers bijwerken om metrische gegevens in te schakelen
 
-Azure Monitor voor containers wordt ondersteuning geïntroduceerd voor het verzamelen van metrische gegevens van knoop punten van Azure Kubernetes Services (AKS) en van peulen en het schrijven naar de opslag voor de Azure Monitor metrische gegevens. Deze wijziging is bedoeld om een verbeterde tijd lijn te bieden bij het presen teren van geaggregeerde berekeningen (Gem, aantal, Max, min, Sum) in prestatie grafieken, ondersteuning voor het vastmaken van prestatie grafieken in Azure Portal Dash boards en het ondersteunen van metrische waarschuwingen.
+Azure Monitor voor containers wordt ondersteuning geïntroduceerd voor het verzamelen van metrische gegevens van Azure Kubernetes Services (AKS) en Azure Arc enabled Kubernetes-clusters knoop punten en een Peul en schrijf ze naar de opslag voor de Azure Monitor metrische gegevens. Deze wijziging is bedoeld om een verbeterde tijd lijn te bieden bij het presen teren van geaggregeerde berekeningen (Gem, aantal, Max, min, Sum) in prestatie grafieken, ondersteuning voor het vastmaken van prestatie grafieken in Azure Portal Dash boards en het ondersteunen van metrische waarschuwingen.
 
 >[!NOTE]
 >Deze functie biedt momenteel geen ondersteuning voor Azure Red Hat open Shift-clusters.
@@ -27,9 +27,12 @@ De volgende metrische gegevens zijn ingeschakeld als onderdeel van deze functie:
 | Inzichten. container/peul | podCount, completedJobsCount, restartingContainerCount, oomKilledContainerCount, podReadyPercentage | Als *pod* -metrische gegevens bevatten ze de volgende dimensies: afmetingen-controller, Kubernetes naam ruimte, naam, fase. |
 | Inzichten. container/containers | cpuExceededPercentage, memoryRssExceededPercentage, memoryWorkingSetExceededPercentage | |
 
-Ter ondersteuning van deze nieuwe mogelijkheden wordt een nieuwe container met Agent versie **micro soft/OMS: ciprod02212019**, opgenomen in de release. Nieuwe implementaties van AKS bevatten automatisch deze configuratie wijziging en mogelijkheden. Het bijwerken van uw cluster ter ondersteuning van deze functie kan worden uitgevoerd vanuit de Azure Portal, Azure PowerShell of met Azure CLI. Met Azure PowerShell en CLI. U kunt dit per cluster of voor alle clusters in uw abonnement inschakelen.
+Ter ondersteuning van deze nieuwe mogelijkheden is een nieuwe container met agents opgenomen in de release, versie **micro soft/OMS: ciprod05262020** for AKS en Version **micro soft/OMS: Ciprod09252020** for Azure Arc enabled Kubernetes clusters. Nieuwe implementaties van AKS bevatten automatisch deze configuratie wijziging en mogelijkheden. Het bijwerken van uw cluster ter ondersteuning van deze functie kan worden uitgevoerd vanuit de Azure Portal, Azure PowerShell of met Azure CLI. Met Azure PowerShell en CLI. U kunt dit per cluster of voor alle clusters in uw abonnement inschakelen.
 
-In beide gevallen wordt de rol **bewakings metrieken** voor de uitgever toegewezen aan de service-principal van het cluster of de door de gebruiker toegewezen MSI voor de invoeg toepassing voor bewaking, zodat de gegevens die door de agent worden verzameld, kunnen worden gepubliceerd naar de cluster bron. Bewaking van metrische gegevens van de uitgever heeft alleen toestemming voor het pushen van metrische gegevens naar de resource, het kan geen status wijzigen, de resource bijwerken of gegevens lezen. Zie voor meer informatie over de rol [bewaking metrische gegevens van uitgever](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher).
+In beide gevallen wordt de rol **bewakings metrieken** voor de uitgever toegewezen aan de service-principal van het cluster of de door de gebruiker toegewezen MSI voor de invoeg toepassing voor bewaking, zodat de gegevens die door de agent worden verzameld, kunnen worden gepubliceerd naar de cluster bron. Bewaking van metrische gegevens van de uitgever heeft alleen toestemming voor het pushen van metrische gegevens naar de resource, het kan geen status wijzigen, de resource bijwerken of gegevens lezen. Zie voor meer informatie over de rol [bewaking metrische gegevens van uitgever](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher). De rol vereiste voor de uitgever van de bewakings gegevens is niet van toepassing op Kubernetes-clusters met Azure Arc-functionaliteit.
+
+> [!IMPORTANT]
+> De upgrade is niet vereist voor Azure Arc enabled Kubernetes-clusters, omdat deze al beschikken over de mini maal vereiste agent versie.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -37,7 +40,7 @@ Controleer het volgende voordat u het cluster bijwerkt:
 
 * Aangepaste metrische gegevens zijn alleen beschikbaar in een subset van Azure-regio's. [Hier](../platform/metrics-custom-overview.md#supported-regions)wordt een lijst met ondersteunde regio's beschreven.
 
-* U bent lid van de rol **[eigenaar](../../role-based-access-control/built-in-roles.md#owner)** op de AKS-cluster bron om het verzamelen van aangepaste prestatie gegevens voor knoop punten en pod in te scha kelen.
+* U bent lid van de rol **[eigenaar](../../role-based-access-control/built-in-roles.md#owner)** op de AKS-cluster bron om het verzamelen van aangepaste prestatie gegevens voor knoop punten en pod in te scha kelen. Deze vereiste is niet van toepassing op Azure Arc enabled Kubernetes-clusters.
 
 Als u ervoor kiest om de Azure CLI te gebruiken, moet u de CLI eerst lokaal installeren en gebruiken. U moet de Azure CLI-versie 2.0.59 of hoger uitvoeren. Voer uit om uw versie te identificeren `az --version` . Als u de Azure CLI wilt installeren of upgraden, raadpleegt u [de Azure cli installeren](/cli/azure/install-azure-cli).
 

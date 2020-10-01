@@ -7,17 +7,17 @@ ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: reference
 author: bonova
 ms.author: bonova
 ms.reviewer: sstein, jovanpop, sachinp
 ms.date: 09/14/2020
-ms.openlocfilehash: c563862c777dd9b5bf4c9f31155aa65c430acd1a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 71392b652f305f085e8eddbfe75e0585a756bc4a
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323232"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91618111"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Overzicht van resource limieten voor Azure SQL Managed instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -65,7 +65,7 @@ SQL Managed instance heeft twee service lagen: [Algemeen](../database/service-ti
 > [!Important]
 > Bedrijfskritiek service-laag biedt een extra ingebouwde kopie van de SQL Managed instance (secundaire replica) die kan worden gebruikt voor alleen-lezen werk belasting. Als u lees-en schrijf query's en query's met het kenmerk alleen-lezen/analyse kunt onderscheiden, krijgt u twee maal de vCores en het geheugen voor dezelfde prijs. De secundaire replica kan een paar seconden achter het primaire exemplaar vertraging hebben, zodat het is ontworpen voor het offloaden van rapportage-en analytische workloads die niet de exacte huidige status van gegevens nodig hebben. In de onderstaande tabel zijn **alleen-lezen query's** de query's die worden uitgevoerd op de secundaire replica.
 
-| **Functie** | **Algemeen** | **Bedrijfskritiek** |
+| **Functie** | **Algemeen doel** | **Bedrijfskritiek** |
 | --- | --- | --- |
 | Aantal vCores\* | Gen4:8, 16, 24<br/>GEN5:4, 8, 16, 24, 32, 40, 64, 80 | Gen4:8, 16, 24 <br/> GEN5:4, 8, 16, 24, 32, 40, 64, 80 <br/>\*Hetzelfde aantal vCores is toegewezen voor alleen-lezen query's. |
 | Maxi maal geheugen | Gen4:56 GB-168 GB (7GB/vCore)<br/>GEN5:20,4 GB-408 GB (5,1 GB/vCore)<br/>Voeg meer vCores toe om meer geheugen te verkrijgen. | Gen4:56 GB-168 GB (7GB/vCore)<br/>GEN5:20,4 GB-408 GB (5,1 GB/vCore) voor lees-en schrijf query's<br/>+ extra 20,4 GB-408 GB (5,1 GB/vCore) voor alleen-lezen query's.<br/>Voeg meer vCores toe om meer geheugen te verkrijgen. |
@@ -110,7 +110,7 @@ Als u een hoge IO-latentie krijgt bij een bepaald database bestand of als u ziet
 
 Er is ook een limiet op exemplaar niveau voor de maximale schrijf doorvoer in het logboek (22 MB/s), zodat u het Maxi maal toegestane bestand niet in het logboek bestand kunt bereiken omdat u de limiet voor de door Voer van het exemplaar bereikt.
 
-## <a name="supported-regions"></a>Ondersteunde regio’s
+## <a name="supported-regions"></a>Ondersteunde regio's
 
 Een SQL Managed instance kan alleen worden gemaakt in [ondersteunde regio's](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Als u een SQL Managed instance wilt maken in een regio die momenteel niet wordt ondersteund, kunt u [via de Azure Portal een ondersteunings aanvraag verzenden](../database/quota-increase-request.md).
 

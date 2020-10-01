@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/28/2020
-ms.openlocfilehash: 76181f089511a6645a51707f9a8537c1589d82bf
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: a4d8d7eaed40b876adecb82f339be4a4c434325f
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89484949"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91616853"
 ---
 # <a name="data-access-strategies"></a>Strategieën voor gegevenstoegang
 
@@ -38,10 +38,10 @@ Dit kan in veel scenario's werken en we begrijpen dat een uniek, statisch IP-adr
 ## <a name="data-access-strategies-through-azure-data-factory"></a>Strategieën voor gegevens toegang via Azure Data Factory
 
 * **[Privé-koppeling](https://docs.microsoft.com/azure/private-link/private-link-overview)** : u kunt een Azure Integration runtime maken binnen Azure Data Factory beheerde Virtual Network en maakt gebruik van privé-eind punten om een beveiligde verbinding te maken met ondersteunde gegevens archieven. Verkeer tussen beheerde Virtual Network en gegevens bronnen wordt het micro soft-backbone-netwerk verplaatst en worden niet blootgesteld aan een openbaar netwerk.
-* **[Trusted service](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)** -Azure Storage (Blob, ADLS Gen2) ondersteunt firewall configuratie waarmee betrouw bare Azure-platform Services kunnen worden geselecteerd om veilig toegang te krijgen tot het opslag account. Vertrouwde services afdwingt beheerde identiteits verificatie, zodat er geen andere data factory verbinding kan maken met deze opslag, tenzij white list dat doet met behulp van de beheerde identiteit. U vindt meer informatie in **[deze blog](https://techcommunity.microsoft.com/t5/azure-data-factory/data-factory-is-now-a-trusted-service-in-azure-storage-and-azure/ba-p/964993)**. Dit is daarom zeer veilig en wordt aanbevolen. 
+* **[Trusted service](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)** -Azure Storage (Blob, ADLS Gen2) ondersteunt firewall configuratie waarmee betrouw bare Azure-platform Services kunnen worden geselecteerd om veilig toegang te krijgen tot het opslag account. Vertrouwde services afdwingt beheerde identiteits verificatie, zodat er geen andere data factory verbinding kan maken met deze opslag, tenzij dit wordt goedgekeurd met behulp van de beheerde identiteit. U vindt meer informatie in **[deze blog](https://techcommunity.microsoft.com/t5/azure-data-factory/data-factory-is-now-a-trusted-service-in-azure-storage-and-azure/ba-p/964993)**. Dit is daarom zeer veilig en wordt aanbevolen. 
 * **Uniek statisch IP** -u moet een zelf-hostende Integration runtime instellen om een statisch IP-adres voor Data Factory-connectors te krijgen. Dit mechanisme zorgt ervoor dat u de toegang tot alle andere IP-adressen kunt blok keren. 
 * **[Statisch IP-bereik](https://docs.microsoft.com/azure/data-factory/azure-integration-runtime-ip-addresses)** : u kunt IP-adressen van Azure Integration runtime gebruiken om deze in uw opslag ruimte weer te geven (bijvoorbeeld S3, Sales Force, enz.). Het is zeker dat IP-adressen die verbinding kunnen maken met de gegevens archieven worden beperkt, maar ook afhankelijk zijn van verificatie-en autorisatie regels.
-* **[Servicetag: een](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)** service label vertegenwoordigt een groep IP-adres voorvoegsels van een bepaalde Azure-service (zoals Azure Data Factory). Micro soft beheert de adres voorvoegsels die zijn opgenomen in het servicetag en werkt de servicetag automatisch bij met gewijzigde adressen, zodat de complexiteit van regel matige updates voor netwerk beveiligings regels wordt geminimaliseerd. Het is handig wanneer u gegevens toegang White List op IaaS gehoste gegevens archieven in Virtual Network.
+* **[Servicetag: een](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)** service label vertegenwoordigt een groep IP-adres voorvoegsels van een bepaalde Azure-service (zoals Azure Data Factory). Micro soft beheert de adres voorvoegsels die zijn opgenomen in het servicetag en werkt de servicetag automatisch bij met gewijzigde adressen, zodat de complexiteit van regel matige updates voor netwerk beveiligings regels wordt geminimaliseerd. Het is handig bij het filteren van gegevens toegang op IaaS-gehoste gegevens archieven in Virtual Network.
 * **Azure-Services toestaan** : met sommige services kunt u alle Azure-Services verbinding laten maken voor het geval u deze optie kiest. 
 
 Zie onder twee tabellen voor meer informatie over ondersteunde netwerk beveiligings mechanismen voor gegevens archieven in Azure Integration Runtime en zelf-hostende Integration Runtime.  
@@ -54,12 +54,12 @@ Zie onder twee tabellen voor meer informatie over ondersteunde netwerk beveiligi
     |                              | Azure Data Lake gen1                                | -                | -                   | Ja             | -            | Ja                  |
     |                              | Azure Database for MariaDB, MySQL, PostgreSQL       | -                | -                   | Ja             | -            | Ja                  |
     |                              | Azure File Storage                                  | Ja              | -                   | Ja             | -            | .                    |
-    |                              | Azure Storage (BLOB, ADLS Gen2)                     | Yes              | Ja (alleen MSI-verificatie) | Yes             | -            | .                    |
+    |                              | Azure Storage (BLOB, ADLS Gen2)                     | Ja              | Ja (alleen MSI-verificatie) | Ja             | -            | .                    |
     |                              | Azure SQL DB, Azure Synapse Analytics), SQL ml  | Ja (alleen Azure SQL DB/DW)        | -                   | Ja             | -            | Ja                  |
     |                              | Azure Key Vault (voor het ophalen van geheimen/connection string) | ja      | Ja                 | Ja             | -            | -                    |
-    | Andere PaaS/SaaS-gegevens archieven | AWS S3, Sales Force, Google Cloud Storage, enzovoort.    | -                | -                   | Yes             | -            | -                    |
+    | Andere PaaS/SaaS-gegevens archieven | AWS S3, Sales Force, Google Cloud Storage, enzovoort.    | -                | -                   | Ja             | -            | -                    |
     | Azure-laaS                   | SQL Server, Oracle, etc.                          | -                | -                   | Ja             | Ja          | -                    |
-    | On-premises laaS              | SQL Server, Oracle, etc.                          | -                | -                   | Yes             | -            | -                    |
+    | On-premises laaS              | SQL Server, Oracle, etc.                          | -                | -                   | Ja             | -            | -                    |
     
     **Alleen van toepassing als Azure Data Explorer virtueel netwerk is geïnjecteerd en IP-bereik kan worden toegepast op NSG/firewall.* 
 
@@ -69,14 +69,14 @@ Zie onder twee tabellen voor meer informatie over ondersteunde netwerk beveiligi
     |--------------------------------|---------------------------------------------------------------|-----------|---------------------|
     | Azure PaaS-gegevens opslag       | Azure Cosmos DB                                               | Ja       | -                   |
     |                                | Azure Data Explorer                                           | -         | -                   |
-    |                                | Azure Data Lake gen1                                          | Yes       | -                   |
-    |                                | Azure Database for MariaDB, MySQL, PostgreSQL               | Yes       | -                   |
-    |                                | Azure File Storage                                            | Yes       | -                   |
-    |                                | Azure Storage (blog, ADLS Gen2)                             | Yes       | Ja (alleen MSI-verificatie) |
-    |                                | Azure SQL DB, Azure Synapse Analytics), SQL ml          | Yes       | -                   |
+    |                                | Azure Data Lake gen1                                          | Ja       | -                   |
+    |                                | Azure Database for MariaDB, MySQL, PostgreSQL               | Ja       | -                   |
+    |                                | Azure File Storage                                            | Ja       | -                   |
+    |                                | Azure Storage (blog, ADLS Gen2)                             | Ja       | Ja (alleen MSI-verificatie) |
+    |                                | Azure SQL DB, Azure Synapse Analytics), SQL ml          | Ja       | -                   |
     |                                | Azure Key Vault (voor het ophalen van geheimen/connection string) | Ja       | Ja                 |
-    | Andere PaaS/SaaS-gegevens archieven | AWS S3, Sales Force, Google Cloud Storage, enzovoort.              | Yes       | -                   |
-    | Azure-laaS                     | SQL Server, Oracle, etc.                                  | Yes       | -                   |
+    | Andere PaaS/SaaS-gegevens archieven | AWS S3, Sales Force, Google Cloud Storage, enzovoort.              | Ja       | -                   |
+    | Azure-laaS                     | SQL Server, Oracle, etc.                                  | Ja       | -                   |
     | On-premises laaS              | SQL Server, Oracle, etc.                                  | Ja       | -                   |    
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -7,17 +7,17 @@ ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 03/17/2020
-ms.openlocfilehash: 17838d4a652be3a1b50da56812731e0f634a0c08
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 461acc07ee2217a38f7bb59805d4c7e0de4a1e22
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323121"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91617651"
 ---
 # <a name="configure-an-existing-virtual-network-for-azure-sql-managed-instance"></a>Een bestaand virtueel netwerk configureren voor Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -31,7 +31,7 @@ Als een van de volgende gevallen van toepassing is, kunt u uw netwerk valideren 
 - U wilt controleren of het subnet nog steeds voldoet aan de [netwerk vereisten](connectivity-architecture-overview.md#network-requirements) nadat u wijzigingen hebt aangebracht.
 
 > [!Note]
-> U kunt alleen een beheerd exemplaar maken in virtuele netwerken die zijn gemaakt via het Azure Resource Manager-implementatie model. Virtuele Azure-netwerken die zijn gemaakt via het klassieke implementatie model, worden niet ondersteund. Bereken de grootte van het subnet door de richt lijnen te volgen in het artikel [grootte van subnet voor SQL beheerd exemplaar bepalen](vnet-subnet-determine-size.md) . U kunt het formaat van het subnet niet wijzigen nadat u de resources in hebt geïmplementeerd.
+> U kunt alleen een beheerd exemplaar maken in virtuele netwerken die zijn gemaakt via het Azure Resource Manager-implementatie model. Virtuele Azure-netwerken die zijn gemaakt via het klassieke implementatie model, worden niet ondersteund. Bereken de grootte van het subnet door de richt lijnen te volgen in het artikel [grootte van subnet voor SQL beheerd exemplaar bepalen](vnet-subnet-determine-size.md) . U kunt de grootte van het subnet niet wijzigen nadat u de resources er in hebt geïmplementeerd.
 >
 > Nadat het beheerde exemplaar is gemaakt, wordt het verplaatsen van het exemplaar of VNet naar een andere resource groep of een ander abonnement niet ondersteund.
 

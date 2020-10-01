@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: e1b9aacf96249c3e102c6a3dbf87d8ac1ff20be6
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 6b091406b15db036007ba6a11049ee63ffe99cf0
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91533312"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91616888"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Continue integratie en levering in Azure Data Factory
 
@@ -305,7 +305,7 @@ Hier volgt een voor beeld van hoe een parameterisering-sjabloon eruit kan zien:
 ```
 Hier volgt een uitleg van de manier waarop de vorige sjabloon is samengesteld, onderverdeeld op resource type.
 
-#### <a name="pipelines"></a>Pijplijnen
+#### <a name="pipelines"></a>Pipelines
     
 * Een eigenschap in het pad `activities/typeProperties/waitTimeInSeconds` is para meters. Alle activiteiten in een pijp lijn met de naam eigenschap `waitTimeInSeconds` (bijvoorbeeld de `Wait` activiteit) worden als een getal met een standaard naam vastgelegd. Maar heeft geen standaard waarde in de Resource Manager-sjabloon. Het is een verplichte invoer tijdens de implementatie van Resource Manager.
 * Op dezelfde manier is een eigenschap `headers` (bijvoorbeeld in een `Web` activiteit) para meters van het type `object` (JObject). Het heeft een standaard waarde. Dit is dezelfde waarde als die van de bron-Factory.
@@ -461,7 +461,13 @@ Hieronder ziet u de huidige standaard sjabloon parameterisering. Als u slechts e
                 }
             }
         }
+    },
+    "Microsoft.DataFactory/factories/managedVirtualNetworks/managedPrivateEndpoints": {
+        "properties": {
+            "*": "="
+        }
     }
+}
 ```
 
 ### <a name="example-parameterizing-an-existing-azure-databricks-interactive-cluster-id"></a>Voor beeld: een bestaande Azure Databricks interactieve cluster-ID parameterizing
@@ -553,7 +559,7 @@ In het volgende voor beeld ziet u hoe u een enkele waarde kunt toevoegen aan de 
                     "database": "=",
                     "serviceEndpoint": "=",
                     "batchUri": "=",
-            "poolName": "=",
+                    "poolName": "=",
                     "databaseName": "=",
                     "systemNumber": "=",
                     "server": "=",
@@ -636,6 +642,8 @@ Als u gebruik wilt maken van Git-integratie met uw data factory en een CI/CD-pij
 -   **Script vóór en na de implementatie**. Vóór de implementatie stap van resource manager in CI/CD moet u bepaalde taken uitvoeren, zoals Triggers stoppen en opnieuw starten en het opschonen uitvoeren. Het is raadzaam om Power shell-scripts voor en na de implementatie taak te gebruiken. Zie [actieve triggers bijwerken](#updating-active-triggers)voor meer informatie. Het data factory-team heeft [een script ontvangen](#script) dat zich onder aan deze pagina bevindt.
 
 -   **Integration Runtimes en delen**. Integration Runtimes veranderen niet vaak en zijn vergelijkbaar in alle fasen van uw CI/CD. Data Factory verwacht dat u dezelfde naam en hetzelfde type Integration runtime in alle fasen van CI/CD hebt. Als u integratie-Runtimes in alle fasen wilt delen, kunt u overwegen een ternaire fabriek alleen te gebruiken om de gedeelde integratie-runtime te bevatten. U kunt deze gedeelde Factory in al uw omgevingen gebruiken als het type gekoppelde integratie runtime.
+
+-   **Beheerde implementatie van een privé-eind punt**. Als er al een persoonlijk eind punt in een Factory bestaat en u probeert een ARM-sjabloon te implementeren dat een persoonlijk eind punt met dezelfde naam, maar met gewijzigde eigenschappen bevat, mislukt de implementatie. Met andere woorden, u kunt een persoonlijk eind punt implementeren op dezelfde wijze als de eigenschappen die al in de fabriek aanwezig zijn. Als een van de eigenschappen verschilt tussen omgevingen, kunt u deze overschrijven door parameterizing die eigenschap en de desbetreffende waarde op te geven tijdens de implementatie.
 
 -   **Key Vault**. Wanneer u gekoppelde services gebruikt waarvan de verbindings gegevens zijn opgeslagen in Azure Key Vault, wordt aanbevolen om afzonderlijke sleutel kluizen voor verschillende omgevingen te houden. U kunt ook afzonderlijke machtigings niveaus configureren voor elke sleutel kluis. Het is bijvoorbeeld mogelijk dat uw team leden geen machtigingen voor productie geheimen mogen hebben. Als u deze aanpak volgt, wordt u aangeraden dezelfde geheime namen in alle fasen te houden. Als u dezelfde geheime namen behoudt, hoeft u niet elk connection string te para metersen in de CI/CD-omgevingen, omdat de naam van de sleutel kluis een afzonderlijke para meter is.
 

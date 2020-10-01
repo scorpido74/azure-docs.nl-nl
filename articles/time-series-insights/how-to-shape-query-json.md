@@ -7,16 +7,19 @@ ms.author: dpalled
 manager: diviso
 ms.service: time-series-insights
 ms.topic: article
-ms.date: 08/12/2020
+ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1a7a88e0db38f399dc47c030f3b97f6b26f4da07
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: b5723433cca20c934d4cb5b129d77c1c6d65feef
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88168232"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91617108"
 ---
 # <a name="shape-json-to-maximize-query-performance-in-your-gen1-environment"></a>JSON van shape om query prestaties in uw gen1 omgeving te maximaliseren
+
+> [!CAUTION]
+> Dit is een gen1-artikel.
 
 In dit artikel vindt u richt lijnen voor het optimaliseren van de effectiviteit van uw Azure Time Series Insights query's.
 

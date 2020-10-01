@@ -1,9 +1,9 @@
 ---
-title: Overzicht van media verwerking schalen | Microsoft Docs
-description: Dit onderwerp bevat een overzicht van het schalen van media verwerking met Azure Media Services.
+title: Overzicht van gereserveerde media-eenheden | Microsoft Docs
+description: Dit artikel bevat een overzicht van het schalen van media verwerking met Azure Media Services.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,68 +11,53 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/26/2019
-ms.author: juliako
-ms.openlocfilehash: 1d2ef02ea77ad2bca37f1e397b784d06481538fa
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.date: 09/30/2020
+ms.author: inhenkel
+ms.openlocfilehash: 8867e680be0aba187daf83bc538dd47c582c71fe
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89264008"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91618502"
 ---
-# <a name="scaling-media-processing-overview"></a>Overzicht mediaverwerkingsschaling 
+# <a name="media-reserved-units"></a>Gereserveerde media-eenheden
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
-Deze pagina geeft een overzicht van hoe en waarom media verwerking kan worden geschaald. 
-
-## <a name="overview"></a>Overzicht
-Media Services-accounts worden gekoppeld aan een gereserveerde-eenheidstype, waarmee wordt bepaald hoe snel de mediaverwerkingstaken worden verwerkt. U kunt kiezen uit de volgende gereserveerde-eenheidstypen: **S1**, **S2** en **S3**. Een coderingstaak wordt bijvoorbeeld sneller uitgevoerd wanneer u het gereserveerde-eenheidstype **S2** gebruikt (in vergelijking met het type **S1**). Zie de [typen gereserveerde eenheden](https://azure.microsoft.com/blog/high-speed-encoding-with-azure-media-services/)voor meer informatie.
-
-Naast het opgeven van het type gereserveerde eenheid kunt u opgeven om uw account in te richten met gereserveerde eenheden. Op basis van het aantal ingerichte, gereserveerde eenheden wordt bepaald hoeveel mediataken tegelijk kunnen worden verwerkt voor een bepaald account. Als uw account bijvoorbeeld vijf gereserveerde eenheden heeft, zullen vijf media taken gelijktijdig worden uitgevoerd, zolang er taken moeten worden verwerkt. De resterende taken wachten in de wachtrij en worden opgehaald voor verwerking opeenvolgend wanneer een actieve taak wordt voltooid. Als er voor een account geen gereserveerde eenheden zijn ingericht, worden de taken sequentieel opgehaald. In dit geval is de wacht tijd tussen het volt ooien van een taak en de volgende begint afhankelijk van de beschik baarheid van resources in het systeem.
+Met Azure Media Services kunt u media verwerking schalen door gereserveerde media-eenheden (MRUs) te beheren. Een MRU biedt extra computer capaciteit die is vereist voor het coderen van media. Het aantal MRUs bepaalt de snelheid waarmee uw media taken worden verwerkt en hoeveel media taken gelijktijdig kunnen worden verwerkt in een account. Als uw account bijvoorbeeld vijf MRUs heeft en er taken zijn die moeten worden verwerkt, dan kunnen vijf media taken gelijktijdig worden uitgevoerd. Alle resterende taken worden in de wachtrij geplaatst en kunnen worden opgehaald om opeenvolgend te worden verwerkt wanneer een actieve taak is voltooid. Elke MRU die u inricht, resulteert in een capaciteits reservering, maar biedt geen speciale resource. Tijdens een extreem hoge vraag is het niet mogelijk om al uw MRUss onmiddellijk te verwerken.
 
 ## <a name="choosing-between-different-reserved-unit-types"></a>Kiezen tussen verschillende typen gereserveerde eenheden
-In de volgende tabel kunt u een beslissing nemen bij het kiezen van verschillende coderings snelheden. Het biedt ook enkele benchmark cases voor [een video die u kunt downloaden](https://nimbuspmteam.blob.core.windows.net/asset-46f1f723-5d76-477e-a153-3fd0f9f90f73/SeattlePikePlaceMarket_7min.ts?sv=2015-07-08&sr=c&si=013ab6a6-5ebf-431e-8243-9983a6b5b01c&sig=YCgEB8DxYKK%2B8W9LnBykzm1ZRUTwQAAH9QFUGw%2BIWuc%3D&se=2118-09-21T19%3A28%3A57Z) om uw eigen tests uit te voeren:
 
-|RU-type|Scenario|Voorbeeld resultaten voor de [7 min 1080p-video](https://nimbuspmteam.blob.core.windows.net/asset-46f1f723-5d76-477e-a153-3fd0f9f90f73/SeattlePikePlaceMarket_7min.ts?sv=2015-07-08&sr=c&si=013ab6a6-5ebf-431e-8243-9983a6b5b01c&sig=YCgEB8DxYKK%2B8W9LnBykzm1ZRUTwQAAH9QFUGw%2BIWuc%3D&se=2118-09-21T19%3A28%3A57Z)|
+In de volgende tabel kunt u een beslissing nemen bij het kiezen van verschillende coderings snelheden.  Het toont de duur van de code ring voor een 7 minuut, 1080p video, afhankelijk van de gebruikte MRU.
+
+|RU-type|Scenario|Voorbeeld resultaten voor de 7 min 1080p-video |
 |---|---|---|
 | **S1**|Code ring met één bitsnelheid. <br/>Bestanden in SD of onder oplossingen, niet tijd gevoelig, lage kosten.|De code ring voor een MP4-bestand van de SD-resolutie met één bitsnelheid met ' H264 single bitrate SD 16x9 ' duurt circa 7 minuten.|
 | **S2**|Code ring met één bitrate en meerdere bitrates.<br/>Normaal gebruik voor zowel SD-als HD-code ring.|De code ring met de voor instelling ' H264 single bitrate 720p ' duurt circa 6 minuten.<br/><br/>De code ring met de voor instelling ' H264 multiple bitrate 720p ' duurt ongeveer 12 minuten.|
 | **S3**|Code ring met één bitrate en meerdere bitrates.<br/>Volledige HD-en 4.000 video-oplossingen. Tijd gevoelige, snellere aflever code.|De code ring met de voor instelling ' H264 single bitrate 1080p ' duurt ongeveer drie minuten.<br/><br/>De code ring met de voor instelling ' H264 multiple bitrate 1080p ' duurt ongeveer acht minuten.|
 
-## <a name="considerations"></a>Overwegingen
-> [!IMPORTANT]
-> Bekijk de overwegingen die in deze sectie worden beschreven.  
-> 
-> 
+> [!NOTE]
+> Als u de MRU niet voorbereidt voor uw account, worden uw media taken verwerkt met de prestaties van een MRU-voor-S1 en worden de taken sequentieel opgehaald. Er is geen verwerkings capaciteit gereserveerd, dus de wacht tijd tussen het volt ooien van een taak en de volgende begint, is afhankelijk van de beschik baarheid van resources in het systeem.
 
-* Voor de taken voor audio analyse en video analyse die worden geactiveerd door Media Services v3 of Video Indexer, wordt het type S3-eenheid nadrukkelijk aanbevolen.
-* Als u de gedeelde groep gebruikt, dat wil zeggen, zonder gereserveerde eenheden, hebben uw versleutelings taken dezelfde prestaties als met S1 RUs. Er is echter geen bovengrens voor de tijd dat uw taken in de wachtrij staan en op elk gewenst moment maar één taak wordt uitgevoerd.
+## <a name="considerations"></a>Overwegingen
+
+* Voor audio analyse en video analyse taken die worden geactiveerd door Media Services v3 of Video Indexer, wordt het inrichten van het account met tien S3-eenheden nadrukkelijk aanbevolen. Als u meer dan 10 S3 MRUs nodig hebt, kunt u een ondersteunings ticket openen met behulp van de [Azure Portal](https://portal.azure.com/).
+* Voor het coderen van taken die geen MRUs hebben, is er geen bovengrens voor de tijd die uw taken in de wachtrij status kunnen best Eden. er wordt Maxi maal één taak tegelijk uitgevoerd.
 
 ## <a name="billing"></a>Billing
 
-Er worden kosten in rekening gebracht op basis van het aantal minuten dat de gereserveerde media-eenheden in uw account zijn ingericht. Dit gebeurt onafhankelijk van het feit of er taken worden uitgevoerd in uw account. Zie de sectie Veelgestelde vragen op de pagina met prijzen voor [Media Services](https://azure.microsoft.com/pricing/details/media-services/) voor een gedetailleerde uitleg.   
+Er worden kosten in rekening gebracht op basis van het aantal minuten dat de gereserveerde media-eenheden in uw account zijn ingericht. Dit gebeurt onafhankelijk van het feit of er taken worden uitgevoerd in uw account. Zie de sectie Veelgestelde vragen op de pagina met prijzen voor [Media Services](https://azure.microsoft.com/pricing/details/media-services/) voor een gedetailleerde uitleg.
 
 ## <a name="quotas-and-limitations"></a>Quota en beperkingen
+
 Zie [quota's en beperkingen](media-services-quotas-and-limitations.md)voor meer informatie over quota en beperkingen en het openen van een ondersteunings ticket.
 
-## <a name="next-step"></a>Volgende stap
-Behaal de verwerkings taak voor de schaal van media met een van deze technologieën: 
+## <a name="next-steps"></a>Volgende stappen
 
-> [!div class="op_single_selector"]
-> * [.NET](media-services-dotnet-encoding-units.md)
-> * [Portal](media-services-portal-scale-media-processing.md)
-> * [REST](/rest/api/media/operations/encodingreservedunittype)
-> * [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
-> * [PHP](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
-> 
+Probeer Media verwerking te schalen met een van deze technologieën:
 
-> [!NOTE]
-> Zie [Aan de slag met de SDK voor Java-clients voor Azure Media Services](./media-services-java-how-to-use.md) om de nieuwste versie van de Java-SDK op te halen en te ontwikkelen met Java. <br/>
-> Als u de nieuwste PHP-SDK voor Media Services wilt downloaden, zoekt u versie 0.5.7 van het Microsoft/WindowAzure-pakket in de [Packagist-opslagplaats](https://packagist.org/packages/microsoft/windowsazure#v0.5.7).  
-
-## <a name="media-services-learning-paths"></a>Media Services-leertrajecten
-[!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
-
-## <a name="provide-feedback"></a>Feedback geven
-[!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
+[.Net](media-services-dotnet-encoding-units.md) 
+ [Portal](media-services-portal-scale-media-processing.md) 
+ [Rest](/rest/api/media/operations/encodingreservedunittype) 
+ [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples) 
+ [Php](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)

@@ -35,8 +35,8 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 Als u PowerShell lokaal wilt gebruiken, moet u voor dit artikel de Az-module van PowerShell installeren en verbinding maken met uw Azure-account met behulp van de cmdlet [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount). Zie [Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps) voor meer informatie over het installeren van de Az-module van PowerShell.
 
 > [!IMPORTANT]
-> Hoewel de Az.PostgreSql PowerShell-module in preview is, moet u deze afzonderlijk van de Az PowerShell-module installeren met behulp van de volgende opdracht: `Install-Module -Name Az.PostgreSql -AllowPrerelease`.
-> Zodra de Az.PostgreSql PowerShell-module algemeen beschikbaar is, wordt deze onderdeel van toekomstige releases van Az PowerShell-modules en is de module systeemeigen beschikbaar vanuit Azure Cloud Shell.
+> Hoewel de PowerShell-module Az.PostgreSql in preview is, moet u deze afzonderlijk van de PowerShell-module Az installeren met behulp van de volgende opdracht: `Install-Module -Name Az.PostgreSql -AllowPrerelease`.
+> Zodra de PowerShell-module Az.PostgreSql algemeen beschikbaar is, wordt deze onderdeel van toekomstige releases van Az PowerShell en is de module systeemeigen beschikbaar vanuit Azure Cloud Shell.
 
 Als dit de eerste keer is dat u de Azure Database for PostgreSQL-service gebruikt, moet u de resourceprovider van **Microsoft.DBforPostgreSQL** registreren.
 
@@ -64,7 +64,7 @@ New-AzResourceGroup -Name myresourcegroup -Location westus
 
 ## <a name="create-an-azure-database-for-postgresql-server"></a>Een Azure-database voor PostgreSQL-server maken
 
-Maak een Azure Database for PostgreSQL-server aan met de `New-AzPostgreSqlServer`cmdlet. Een server kan meerdere databases beheren. Een aparte database wordt doorgaans gebruikt voor elk project of voor elke gebruiker.
+Maak een Azure Database for PostgreSQL-server met de cmdlet `New-AzPostgreSqlServer`. Een server kan meerdere databases beheren. Een aparte database wordt doorgaans gebruikt voor elk project of voor elke gebruiker.
 
 In het volgende voorbeeld wordt een PostgreSQL-server gemaakt in de regio **US - west**. De server heeft de naam **mydemoserver** en bevindt zich in de resourcegroep **myresourcegroup**. De serverbeheerder kan zich aanmelden met **myadmin**. De server is een Gen 5-server in de prijscategorie Algemeen en beschikt over twee vCores. Daarnaast is geografisch redundante back-ups ingeschakeld. Noteer het wachtwoord dat in de eerste regel van het voorbeeld wordt gebruikt, aangezien dit het wachtwoord voor het beheerdersaccount van de PostgreSQL-server is.
 
@@ -91,7 +91,7 @@ Overweeg het gebruik van de prijscategorie Basic als lichte reken- en I/O-capaci
 
 ## <a name="configure-a-firewall-rule"></a>Een firewallregel configureren
 
-Maak op serverniveau een firewallregel voor de Azure Database for PostgreSQL met behulp van de `New-AzPostgreSqlFirewallRule` cmdlet. Een firewallregel op serverniveau stelt een externe toepassing, zoals het `psql` opdrachtregelprogramma of PostgreSQL Workbench, in staat om via de Azure Database for PostgreSQL-servicefirewall verbinding te maken met uw server.
+Maak een firewallregel op Azure Database for PostgreSQL-serverniveau met de cmdlet `New-AzPostgreSqlFirewallRule`. Een firewallregel op serverniveau stelt een externe toepassing, zoals het opdrachtregelprogramma `psql` of PostgreSQL Workbench, in staat om via de Azure Database for PostgreSQL-servicefirewall verbinding te maken met uw server.
 
 In het volgende voorbeeld wordt een firewallregel met de naam **AllowMyIP** gemaakt waarmee verbindingen van een specifiek IP-adres, 192.168.0.1, worden toegestaan. Vervang dit door een IP-adres of een bereik van IP-adressen dat overeenkomt met de locatie van waaruit u verbinding maakt.
 
@@ -121,7 +121,7 @@ mydemoserver.postgresql.database.azure.com       myadmin
 
 Als op uw clientcomputer PostgreSQL is geïnstalleerd, kunt u een lokale instantie van [psql](https://www.postgresql.org/docs/current/static/app-psql.html) gebruiken om verbinding te maken met een Azure PostgreSQL-server. U kunt ook een vooraf geïnstalleerde versie openen van het opdrachtregelhulpprogramma `psql` in Azure Cloud Shell door in een codevoorbeeld in dit artikel de knop **Proberen** te selecteren. Andere manieren om toegang te krijgen tot Azure Cloud Shell zijn de selectie van de knop **> _** in de werkbalk rechtsboven in de Azure Portal of een bezoek aan [shell.azure.com](https://shell.azure.com/).
 
-1. Maak verbinding met uw Azure PostgreSQL-server met behulp van het `psql`opdrachtregelprogramma.
+1. Maak verbinding met uw Azure PostgreSQL-server met behulp van het opdrachtregelprogramma `psql`.
 
    ```azurepowershell-interactive
    psql --host=<servername> --port=<port> --username=<user@servername> --dbname=<dbname>

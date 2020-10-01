@@ -1,6 +1,6 @@
 ---
 title: Aangepaste analyse regels maken voor het detecteren van bedreigingen met Azure Sentinel | Microsoft Docs
-description: Gebruik deze zelf studie voor meer informatie over het maken van aangepaste analyse regels voor het detecteren van beveiligings Risico's met Azure Sentinel.
+description: Gebruik deze zelf studie voor meer informatie over het maken van aangepaste analyse regels voor het detecteren van beveiligings Risico's met Azure Sentinel. Profiteer van de groepering van gebeurtenissen en het groeperen van waarschuwingen en inzicht in automatisch uitgeschakeld.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/06/2020
 ms.author: yelevin
-ms.openlocfilehash: 0e5989490603e22745a8bc972b16ed016c894893
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 55853cc6a3dc27df4c63e0a28ab079813040e45d
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605879"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91617176"
 ---
 # <a name="tutorial-create-custom-analytics-rules-to-detect-threats"></a>Zelf studie: aangepaste analyse regels maken voor het detecteren van bedreigingen
 
@@ -53,13 +53,15 @@ U kunt aangepaste analyse regels maken om u te helpen bij het zoeken naar de typ
 
       Hier volgt een voorbeeld query waarmee u wordt gewaarschuwd wanneer een afwijkend aantal resources wordt gemaakt in azure activity.
 
-      `AzureActivity
-     \| where OperationName == "Create or Update Virtual Machine" or OperationName =="Create Deployment"
-     \| where ActivityStatus == "Succeeded"
-     \| make-series dcount(ResourceId)  default=0 on EventSubmissionTimestamp in range(ago(7d), now(), 1d) by Caller`
+      ```kusto
+      AzureActivity
+      | where OperationName == "Create or Update Virtual Machine" or OperationName =="Create Deployment"
+      | where ActivityStatus == "Succeeded"
+      | make-series dcount(ResourceId)  default=0 on EventSubmissionTimestamp in range(ago(7d), now(), 1d) by Caller
+      ```
 
-      > [!NOTE]
-      > De lengte van de query moet tussen 1 en 10.000 tekens lang zijn en mag niet ' Search \* ' of ' Union \* ' bevatten.
+        > [!NOTE]
+        > De lengte van de query moet tussen 1 en 10.000 tekens lang zijn en mag niet ' Search \* ' of ' Union \* ' bevatten.
 
     1. Gebruik de sectie **entiteiten toewijzen** om de para meters van uw query resultaten te koppelen aan door Sentinel herkende entiteiten van Azure. Deze entiteiten vormen de basis voor verdere analyse, met inbegrip van het groeperen van waarschuwingen in incidenten op het tabblad **incident instellingen** .
   
@@ -69,8 +71,12 @@ U kunt aangepaste analyse regels maken om u te helpen bij het zoeken naar de typ
 
        1. Stel **opzoek gegevens van de laatste** in om de tijds periode te bepalen van de gegevens die worden gedekt door de query. Dit kan bijvoorbeeld de afgelopen 10 minuten aan gegevens of de afgelopen 6 uur aan gegevens opvragen.
 
-       > [!NOTE]
-       > Deze twee instellingen zijn onafhankelijk van elkaar, tot een bepaald punt. U kunt een query uitvoeren met een kort interval voor een tijds periode die langer is dan het interval (als gevolg van overlappende query's), maar u kunt geen query uitvoeren met een interval dat de dekkings periode overschrijdt, anders worden er hiaten in de algehele query dekking.
+          > [!NOTE]
+          > **Query-intervallen en lookback periode**
+          > - Deze twee instellingen zijn onafhankelijk van elkaar, tot een bepaald punt. U kunt een query uitvoeren met een kort interval voor een tijds periode die langer is dan het interval (als gevolg van overlappende query's), maar u kunt geen query uitvoeren met een interval dat de dekkings periode overschrijdt, anders worden er hiaten in de algehele query dekking.
+          >
+          > **Opname vertraging**
+          > - Voor een **latentie** die kan optreden tussen de generatie van een gebeurtenis bij de bron en de opname in azure Sentinel, en om ervoor te zorgen dat het volledige dekking zonder gegevens duplicatie plaatsvindt, voert Azure Sentinel geplande analyse regels uit op een **vertraging van vijf minuten** van de geplande tijd.
 
     1. Gebruik de sectie **waarschuwings drempel** om een basis lijn te definiëren. Stel bijvoorbeeld een **waarschuwing genereren wanneer het aantal query resultaten** **groter is dan** en voer het getal 1000 in als u wilt dat de regel alleen een waarschuwing genereert als de query meer dan 1000 resultaten retourneert telkens wanneer deze wordt uitgevoerd. Dit is een verplicht veld. Als u geen basis lijn wilt instellen, dus als u wilt dat uw waarschuwing elke gebeurtenis registreert, voert u 0 in het veld getal in.
     
@@ -134,6 +140,43 @@ U kunt aangepaste analyse regels maken om u te helpen bij het zoeken naar de typ
 
 > [!NOTE]
 > Waarschuwingen die zijn gegenereerd in azure Sentinel zijn beschikbaar via [Microsoft Graph beveiliging](https://aka.ms/securitygraphdocs). Zie de [documentatie over Microsoft Graph Security Alerts](https://aka.ms/graphsecurityreferencebetadocs)(Engelstalig) voor meer informatie.
+
+## <a name="troubleshooting"></a>Problemen oplossen
+
+### <a name="a-scheduled-rule-failed-to-execute-or-appears-with-auto-disabled-added-to-the-name"></a>Een geplande regel kan niet worden uitgevoerd, of wordt weer gegeven wanneer automatisch uitgeschakeld is toegevoegd aan de naam
+
+Het is een zeldzame voorval dat een geplande query regel niet kan worden uitgevoerd, maar dit kan gebeuren. Azure Sentinel classificeert fouten vooraf als tijdelijk of permanent, op basis van het specifieke type fout en de omstandigheden die ernaar hebben geleid.
+
+#### <a name="transient-failure"></a>Tijdelijke fout
+
+Een tijdelijke fout treedt op als gevolg van een tijdelijke situatie en gaat binnenkort terug naar normaal, waarbij de uitvoering van de regel slaagt. Enkele voor beelden van fouten die door Azure Sentinel worden geclassificeerd als tijdelijk:
+
+- Het duurt te lang voordat een regel query wordt uitgevoerd en er een time-out optreedt.
+- Verbindings problemen tussen gegevens bronnen en Log Analytics, of tussen Log Analytics en Azure Sentinel.
+- Andere nieuwe en onbekende fouten worden beschouwd als tijdelijk.
+
+In het geval van een tijdelijke storing wordt de regel door Azure Sentinel continu opnieuw proberen uit te voeren na vooraf vastgestelde en steeds toenemende intervallen, tot een bepaald punt. Daarna wordt de regel opnieuw uitgevoerd op het volgende geplande tijdstip. Een regel wordt nooit automatisch uitgeschakeld vanwege een tijdelijke fout.
+
+#### <a name="permanent-failure---rule-auto-disabled"></a>Permanente fout-automatische uitgeschakelde regel
+
+Een permanente fout treedt op als gevolg van een wijziging in de voor waarden waardoor de regel kan worden uitgevoerd, zonder dat er sprake is van een menselijke interventie. Hier volgen enkele voor beelden van fouten die zijn geclassificeerd als permanent:
+
+- De doel werkruimte (waarop de regel query wordt uitgevoerd) is verwijderd.
+- De doel tabel (waarop de regel query wordt uitgevoerd) is verwijderd.
+- De Azure-Sentinel is verwijderd uit de doel werkruimte.
+- Een functie die door de regel query wordt gebruikt, is niet meer geldig. de service is gewijzigd of verwijderd.
+- De machtigingen voor een van de gegevens bronnen van de regel query zijn gewijzigd.
+- Een van de gegevens bronnen van de regel query is verwijderd of de verbinding is verbroken.
+
+**In het geval van een vooraf bepaald aantal opeenvolgende permanente fouten, van hetzelfde type en van dezelfde regel,** Azure Sentinel stopt met het uitvoeren van de regel en neemt ook de volgende stappen:
+
+- Hiermee schakelt u de regel uit.
+- Voegt de woorden **' automatisch uitgeschakeld '** toe aan het begin van de naam van de regel.
+- Hiermee wordt de reden voor de fout (en het uitschakelen) toegevoegd aan de beschrijving van de regel.
+
+U kunt eenvoudig de aanwezigheid van automatische uitgeschakelde regels bepalen door de regel lijst te sorteren op naam. De regels voor automatisch uitschakelen bevinden zich boven aan de lijst.
+
+SOC managers moeten de regel lijst regel matig controleren op de aanwezigheid van automatische uitgeschakelde regels.
 
 ## <a name="next-steps"></a>Volgende stappen
 

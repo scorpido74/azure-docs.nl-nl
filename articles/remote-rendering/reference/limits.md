@@ -5,12 +5,12 @@ author: erscorms
 ms.author: erscor
 ms.date: 02/11/2020
 ms.topic: reference
-ms.openlocfilehash: e6b12c2bac4a9732f868f6a6ac3491ef993f54c3
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 61085a5d28fcd74bbf6a393ddc0731e36094a63f
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90976561"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91617495"
 ---
 # <a name="limitations"></a>Beperkingen
 
@@ -28,10 +28,12 @@ Een aantal functies hebben een grootte, aantal of andere beperkingen.
 
 ## <a name="geometry"></a>Geometrie
 
-* Totaal aantal toegestane materialen in een Asset: 65.535. Zie [materiaal deduplication (Engelstalig)](../how-tos/conversion/configure-model-conversion.md#material-de-duplication) voor meer informatie.
-* Maximale dimensie van één textuur: 16.384 x 16.384. Grotere bron structuren worden omlaag geschaald door het conversie proces.
+* **Animatie:** Animaties zijn beperkt tot het animeren van afzonderlijke trans formaties van Game-objecten. Skeletal-animaties met skins of vertex animaties worden niet ondersteund. Animatie tracks van het bron Asset-bestand blijven niet behouden. In plaats daarvan moeten animaties voor object transformatie worden aangedreven door client code.
+* **Aangepaste shaders:** Het ontwerpen van aangepaste shaders wordt niet ondersteund. Alleen ingebouwde [kleur materialen](../overview/features/color-materials.md) of PBR- [materialen](../overview/features/pbr-materials.md) kunnen worden gebruikt.
+* **Maximum aantal afzonderlijke materialen** in een asset: 65.535. Voor meer informatie over het automatisch verminderen van het aantal materialen raadpleegt u het hoofd stuk materiaal uit de [duplicatie](../how-tos/conversion/configure-model-conversion.md#material-de-duplication) .
+* **Maximale dimensie van één textuur**: 16.384 x 16.384. Grotere bron structuren worden verkleind door het conversie proces.
 
-## <a name="overall-number-of-polygons"></a>Totaal aantal veelhoeken
+### <a name="overall-number-of-polygons"></a>Totaal aantal veelhoeken
 
 Het toegestane aantal veelhoeken voor alle geladen modellen is afhankelijk van de grootte van de virtuele machine die wordt door gegeven aan [de rest API voor sessie beheer](../how-tos/session-rest-api.md#create-a-session):
 
@@ -40,7 +42,7 @@ Het toegestane aantal veelhoeken voor alle geladen modellen is afhankelijk van d
 |Standard| 20.000.000 |
 |ultieme| geen limiet |
 
-Zie het hoofd stuk [Server grootte](../reference/vm-sizes.md) voor meer gedetailleerde informatie over deze beperking.
+Zie het hoofd stuk [Server grootte](../reference/vm-sizes.md) voor gedetailleerde informatie over deze beperking.
 
 ## <a name="platform-limitations"></a>Platform beperkingen
 
@@ -48,6 +50,6 @@ Zie het hoofd stuk [Server grootte](../reference/vm-sizes.md) voor meer gedetail
 
 * Win32/x64 is het enige win32-platform dat wordt ondersteund. Win32/x86 wordt niet ondersteund.
 
-**Hololens 2**
+**HoloLens 2**
 
 * De [weer gave van de HW-camera](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers#render-from-the-pv-camera-opt-in) functie wordt niet ondersteund.

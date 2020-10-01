@@ -7,17 +7,17 @@ ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: seo-lt-2019, sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 02/22/2019
-ms.openlocfilehash: 04f0fca06c2e50ef6d99d51c03e58b468a476e9d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 156a4c74eea24b20c28df88be85cb32c0ebe2981
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323104"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91617635"
 ---
 # <a name="determine-required-subnet-size--range-for-azure-sql-managed-instance"></a>Vereiste subnet grootte bepalen & bereik voor Azure SQL Managed instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -28,7 +28,7 @@ Het aantal beheerde instanties dat kan worden geïmplementeerd in het subnet van
 
 Wanneer u een beheerd exemplaar maakt, wijst Azure een aantal virtuele machines toe, afhankelijk van de laag die u hebt geselecteerd tijdens het inrichten. Omdat deze virtuele machines zijn gekoppeld aan uw subnet, zijn er IP-adressen nodig. Azure kan extra virtuele machines toewijzen om hoge Beschik baarheid te garanderen tijdens reguliere bewerkingen en onderhoud van services. Als gevolg hiervan is het aantal vereiste IP-adressen in een subnet groter dan het aantal beheerde exemplaren in dat subnet.
 
-Een beheerd exemplaar heeft standaard Mini maal 32 IP-adressen in een subnet nodig. Als gevolg hiervan kunt u het minimale subnetmasker/27 gebruiken bij het definiëren van de IP-adresbereiken van uw subnet. Een zorgvuldige planning van de grootte van het subnet voor uw beheerde exemplaar-implementaties wordt aanbevolen. De invoer die tijdens de planning in aanmerking moet worden genomen, is als volgt:
+Een beheerd exemplaar heeft standaard minimaal 32 IP-adressen in een subnet nodig. Als gevolg hiervan kunt u het minimale subnetmasker van /27 gebruiken bij het definiëren van de IP-adresbereiken voor uw subnet. Een zorgvuldige planning van de subnetgrootte voor uw implementaties van beheerde exemplaren wordt aanbevolen. De invoer die tijdens de planning in aanmerking moet worden genomen, is als volgt:
 
 - Aantal beheerde exemplaren, inclusief de volgende instantie parameters:
   - servicelaag

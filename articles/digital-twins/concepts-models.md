@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 1f6fc7bff31faa62c290a4c02be3e80fee6fa200
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 7da19ddd96c15ff5688d6e153d1859ed8c11ec8e
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042629"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91616547"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Meer informatie over dubbele modellen in azure Digital Apparaatdubbels
 
@@ -28,8 +28,10 @@ Modellen voor Azure Digital Apparaatdubbels worden gedefinieerd met behulp van d
 
 Azure Digital Apparaatdubbels maakt gebruik van **DTDL _versie 2_**. Voor meer informatie over deze versie van DTDL raadpleegt u de documentatie van de specificatie in GitHub: [*Digital Apparaatdubbels Definition Language (DTDL)-versie 2*](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md). Het gebruik van DTDL- _versie 1_ met Azure Digital apparaatdubbels is nu afgeschaft.
 
-> [!TIP] 
-> Niet alle services die gebruikmaken van DTDL, implementeren exact dezelfde functies van DTDL. IoT Plug en Play maakt bijvoorbeeld geen gebruik van de DTDL-functies die voor grafieken gelden, terwijl Azure Digital Apparaatdubbels momenteel geen DTDL-opdrachten implementeert. Voor meer informatie over de DTDL-functies die specifiek zijn voor Azure Digital Apparaatdubbels raadpleegt u de sectie verderop in dit artikel over de [Implementatie Details van Azure Digital APPARAATDUBBELS DTDL](#azure-digital-twins-dtdl-implementation-specifics).
+> [!NOTE] 
+> Niet alle services die gebruikmaken van DTDL, implementeren exact dezelfde functies van DTDL. IoT Plug en Play maakt bijvoorbeeld geen gebruik van de DTDL-functies die voor grafieken gelden, terwijl Azure Digital Apparaatdubbels momenteel geen DTDL-opdrachten implementeert.
+>
+> Voor meer informatie over de DTDL-functies die specifiek zijn voor Azure Digital Apparaatdubbels raadpleegt u de sectie verderop in dit artikel over de [Implementatie Details van Azure Digital APPARAATDUBBELS DTDL](#azure-digital-twins-dtdl-implementation-specifics).
 
 ## <a name="elements-of-a-model"></a>Elementen van een model
 
@@ -75,6 +77,8 @@ Een DTDL-model om compatibel te zijn met Azure Digital Apparaatdubbels, moet aan
 * DTDL voor Azure Digital Apparaatdubbels mogen geen *opdrachten*definiëren.
 * Azure Digital Apparaatdubbels staat slechts één niveau van geneste onderdelen toe. Dit betekent dat een interface die als onderdeel wordt gebruikt, zelf geen onderdelen kan hebben. 
 * Interfaces kunnen niet in line worden gedefinieerd binnen andere DTDL-interfaces; ze moeten worden gedefinieerd als afzonderlijke entiteiten op het hoogste niveau met hun eigen Id's. Wanneer een andere interface die interface wil toevoegen als een onderdeel of via overname, kan deze verwijzen naar de ID.
+
+Azure Digital Apparaatdubbels houdt ook geen rekening `writable` met het kenmerk voor eigenschappen of relaties. Hoewel dit kan worden ingesteld met de specificaties per DTDL, wordt de waarde niet gebruikt door Azure Digital Apparaatdubbels. In plaats daarvan worden deze altijd behandeld als beschrijfbaar door externe clients die algemene schrijf machtigingen hebben voor de Azure Digital Apparaatdubbels-service.
 
 ## <a name="example-model-code"></a>Voorbeeld model code
 

@@ -2,20 +2,20 @@
 title: 'Zelfstudie: een sjabloon implementeren met behulp van een parameterbestand'
 description: Gebruik parameterbestanden die de waarden bevatten voor het implementeren van uw Azure Resource Manager-sjabloon.
 author: mumian
-ms.date: 03/27/2020
+ms.date: 09/10/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: bd7917a96550d45b14eb5a5b5cae1ac957aa78b5
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: de72f9f32a3b08ad1742ee2055efce5b93cab899
+ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502797"
+ms.lasthandoff: 09/14/2020
+ms.locfileid: "90069506"
 ---
 # <a name="tutorial-use-parameter-files-to-deploy-your-arm-template"></a>Zelfstudie: Parameterbestanden gebruiken voor het implementeren van uw ARM-sjabloon
 
-In deze zelfstudie leert u hoe u [parameterbestanden](parameter-files.md) kunt gebruiken om de waarden op te slaan die tijdens de implementatie worden doorgegeven. In de vorige zelfstudies hebt u inline parameters gebruikt bij de implementatieopdracht. Deze aanpak werkt voor het testen van uw ARM-sjabloon (Azure Resource Manager), maar voor het automatiseren van implementaties is het makkelijker om een set waarden voor uw omgeving door te geven. Met parameterbestanden kunt u gemakkelijker parameterwaarden voor een specifieke omgeving inpakken. In deze zelfstudie maakt u parameterbestanden voor ontwikkel- en productieomgevingen. Dit neemt ongeveer **12 minuten** in beslag.
+In deze zelfstudie leert u hoe u [parameterbestanden](parameter-files.md) kunt gebruiken om de waarden op te slaan die tijdens de implementatie worden doorgegeven. In de vorige zelfstudies hebt u inline parameters gebruikt bij de implementatieopdracht. Deze aanpak werkt voor het testen van uw ARM-sjabloon (Azure Resource Manager), maar voor het automatiseren van implementaties is het gemakkelijker om een set waarden voor uw omgeving door te geven. Met parameterbestanden kunt u gemakkelijker parameterwaarden voor een specifieke omgeving inpakken. In deze zelfstudie maakt u parameterbestanden voor ontwikkel- en productieomgevingen. Dit neemt ongeveer **12 minuten** in beslag.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -34,6 +34,12 @@ Deze sjabloon werkt goed, maar nu wilt u de parameters die u aan de sjabloon doo
 ## <a name="add-parameter-files"></a>Parameterbestanden toevoegen
 
 Parameterbestanden zijn JSON-bestanden met een structuur die vergelijkbaar is met die van uw sjabloon. In het bestand geeft u de parameterwaarden op die u tijdens de implementatie wilt doorgeven.
+
+In het parameterbestand geeft u waarden op voor de parameters in uw sjabloon. De naam van elke parameter in het parameterbestand moet overeenkomen met de naam van een parameter in uw sjabloon. De naam is niet hoofdlettergevoelig, maar om eenvoudig de overeenkomende waarden te zien, is het raadzaam om het hoofdlettergebruik van de sjabloon aan te houden.
+
+U hoeft niet voor alle parameters een waarde op te geven. Als een ongespecificeerde parameter een standaardwaarde heeft, wordt die waarde gebruikt tijdens de implementatie. Als een parameter geen standaardwaarde heeft en er geen waarde is opgegeven in het parameterbestand, wordt u gevraagd een waarde op te geven tijdens de implementatie.
+
+U kunt geen parameternaam in het parameterbestand opgeven die niet overeenkomt met een parameternaam in de sjabloon. Er wordt een foutbericht weergegeven wanneer er onbekende parameters worden opgegeven.
 
 Maak in Visual Studio Code een nieuw bestand met de volgende inhoud. Sla het bestand op met de naam **azuredeploy.parameters.dev.json**.
 
@@ -122,7 +128,7 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> Als de implementatie is mislukt, gebruikt u de schakeloptie **debug** met de implementatieopdracht om de logboeken voor foutopsporing weer te geven.  U kunt ook de schakeloptie **verbose** gebruiken om de volledige logboeken voor foutopsporing weer te geven.
+> Als de implementatie is mislukt, gebruikt u de schakeloptie **verbose** voor informatie over de resources die worden gemaakt. Gebruik de schakeloptie **debug** voor meer informatie over foutopsporing.
 
 ## <a name="verify-deployment"></a>Implementatie verifiëren
 
