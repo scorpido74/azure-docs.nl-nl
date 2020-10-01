@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: c000d48043a46ecdbdfee263cc5c8ce877f66b4b
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 30a782c7d7c13eb9c92e4a4bf64e268416a2b382
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923701"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561547"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Zelfstudie: Coderen met de Azure Digital Twins-API's
 
@@ -112,7 +112,7 @@ Als u zich wilt verifiëren, hebt u soorten informatie nodig:
 >[!TIP]
 > Als u uw *Map-id* niet weet, kunt u deze downloaden door deze opdracht uit te voeren in [Azure Cloud Shell](https://shell.azure.com):
 > 
-> ```azurecli-interactive
+> ```azurecli
 > az account show --query tenantId
 > ```
 
@@ -322,12 +322,13 @@ U ziet dat er geen fout wordt gegenereerd wanneer de tweelingen de tweede keer w
 
 Vervolgens kunt u **relaties** maken tussen deze gemaakte tweelingen, om ze te verbinden in een **tweelinggrafiek**. [Tweelinggrafieken](concepts-twins-graph.md) worden gebruikt om uw gehele omgeving voor te stellen.
 
-Als u relaties wilt maken, voegt u een `using`-instructie toe voor het basistype relatie in de SDK: sla dit over als deze al is toegevoegd.
+U hebt de `Azure.DigitalTwins.Core.Serialization`-naamruimte nodig om relaties te kunnen maken. U hebt dit eerder aan het project toegevoegd met deze `using`-instructie:
+
 ```csharp
 using Azure.DigitalTwins.Core.Serialization;
 ```
 
-Voeg vervolgens een nieuwe statische methode toe aan de klasse `Program`, onder de methode `Main`:
+Voeg een nieuwe statische methode toe aan de klasse `Program`, onder de methode `Main`:
 ```csharp
 public async static Task CreateRelationship(DigitalTwinsClient client, string srcId, string targetId)
 {
