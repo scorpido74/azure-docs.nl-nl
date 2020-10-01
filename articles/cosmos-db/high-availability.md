@@ -4,15 +4,15 @@ description: In dit artikel wordt beschreven hoe Azure Cosmos DB hoge Beschik ba
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/29/2020
+ms.date: 09/30/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 1f2e90f9391654d10332b9f1a21c56fd22e2307b
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 4e1a2fdd772c7b318ba36b1aee623c663689526f
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/30/2020
-ms.locfileid: "91570808"
+ms.locfileid: "91597284"
 ---
 # <a name="how-does-azure-cosmos-db-provide-high-availability"></a>Hoe biedt Azure Cosmos DB hoge Beschik baarheid? 
 
@@ -81,9 +81,6 @@ Bij het configureren van schrijf bewerkingen met meerdere regio's voor uw Azure 
 
 Deze functie is beschikbaar in: *UK-Zuid, Zuidoost-Azië, VS Oost, VS-Oost 2, VS-midden, Europa-West, VS-West 2, Japan-Oost, Europa-Noord, Frankrijk-centraal, Australië-Oost, VS-Oost 2 EUAP* regio's.
 
-> [!NOTE]
-> Als u Beschikbaarheidszones inschakelt voor een Azure Cosmos-account in één regio, worden er kosten in rekening gebracht die gelijk zijn aan het toevoegen van een extra regio aan uw account. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/) en de [kosten voor meerdere regio's in azure Cosmos DB](optimize-cost-regions.md) artikelen voor meer informatie over prijzen.
-
 De volgende tabel bevat een overzicht van de mogelijkheden voor hoge Beschik baarheid van verschillende account configuraties:
 
 |KPI  |Eén regio zonder Beschikbaarheidszones (niet-AZ)  |Eén regio met Beschikbaarheidszones (AZ)  |Meerdere regio's schrijven met Beschikbaarheidszones (AZ, 2 regio's) – meest aanbevolen instelling |
@@ -97,7 +94,7 @@ De volgende tabel bevat een overzicht van de mogelijkheden voor hoge Beschik baa
 |Schrijf latentie | Kruis regio | Kruis regio | Beperkt |
 |Regionale storing – gegevens verlies | Gegevens verlies |  Gegevens verlies | Gegevens verlies <br/><br/> Wanneer de consistentie van de afhankelijke veroudering met meerdere schrijf regio's en meer dan één regio wordt gebruikt, wordt het gegevens verlies beperkt tot de gebonden veroudering die is geconfigureerd voor uw account <br /><br />U kunt gegevens verlies voor komen tijdens een regionale storing door sterke consistentie met meerdere regio's te configureren. Deze optie is ook van invloed op de beschik baarheid en prestaties. Het kan alleen worden geconfigureerd voor accounts die zijn geconfigureerd voor schrijf bewerkingen met één regio. |
 |Regionale storingen-Beschik baarheid | Beschikbaarheids verlies | Beschikbaarheids verlies | Geen beschikbaar verlies |
-|Doorvoer | Ingerichte door Voer van X RU/s | Ingerichte door Voer van X RU/s | 2X RU/s ingerichte door Voer <br/><br/> Deze configuratie modus vereist twee keer de hoeveelheid door Voer in vergelijking met een enkele regio met Beschikbaarheidszones omdat er twee regio's zijn. |
+|Doorvoer | Ingerichte door Voer van X RU/s | X RU/s ingerichte door Voer * 1,25 | 2X RU/s ingerichte door Voer <br/><br/> Deze configuratie modus vereist twee keer de hoeveelheid door Voer in vergelijking met een enkele regio met Beschikbaarheidszones omdat er twee regio's zijn. |
 
 > [!NOTE]
 > Als u ondersteuning voor beschikbaarheids zones wilt inschakelen voor een Azure Cosmos-account met meerdere regio's, moet voor het account meerdere regio's schrijf bewerkingen worden ingeschakeld.

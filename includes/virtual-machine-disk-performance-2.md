@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 09/25/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 7a546c06e990d7fdb0fa7865c176f39772136539
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: e5a6dae98e786bf55dc17d8fabe42f84e9927442
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91539988"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91606044"
 ---
 ![Documentatie voor Dsv3](media/vm-disk-performance/dsv3-documentation.jpg)
 
-De maximale door Voer van een schijf **in cache** is de standaard opslag limiet die de virtuele machine kan verwerken. De maximale doorvoer limiet voor opslag **in de cache** is een afzonderlijke limiet bij het inschakelen van de caching van hosts. Bij het opslaan van de host wordt de opslag dichter bij de virtuele machine geplaatst die snel kan worden geschreven of gelezen. De hoeveelheid opslag ruimte die voor de virtuele machine beschikbaar is, is in de documentatie. U kunt bijvoorbeeld zien dat de Standard_D8s_v3 wordt geleverd met 200 GiB van cache opslag. Laten we 
+De maximale door Voer van een schijf **in cache** is de standaard opslag limiet die de virtuele machine kan verwerken. De maximale doorvoer limiet voor opslag **in de cache** is een afzonderlijke limiet bij het inschakelen van de caching van hosts. Bij het opslaan van de host wordt de opslag dichter bij de virtuele machine geplaatst die snel kan worden geschreven of gelezen. De hoeveelheid opslag ruimte die voor de virtuele machine beschikbaar is, is in de documentatie. U kunt bijvoorbeeld zien dat de Standard_D8s_v3 wordt geleverd met 200 GiB van cache opslag.
 
 Het inschakelen van de caching van hosts kan worden uitgevoerd bij het maken van de virtuele machine en het koppelen van schijven. U kunt ook aanpassen om de schijven in de cache in of uit te scha kelen op een bestaande virtuele machine.
 
@@ -94,7 +94,7 @@ Instellen:
     - Host-caching: lezen/schrijven
 - 2 P30-gegevens schijven X 2
     - IOPS: 5.000
-    - Host-caching: lezen/schrijven
+    - Caching van host: uitgeschakeld
 
 ![Voor beeld van host-caching met externe opslag](media/vm-disk-performance/host-caching-example-with-remote.jpg)
 

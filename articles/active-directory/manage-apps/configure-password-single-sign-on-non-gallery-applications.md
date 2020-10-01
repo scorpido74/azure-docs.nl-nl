@@ -1,25 +1,25 @@
 ---
-title: Eenmalige aanmelding op basis van wacht woorden configureren voor Azure AD-apps
-description: Eenmalige aanmelding op basis van wacht woorden (SSO) configureren voor uw Azure AD-toepassingen in micro soft Identity platform (Azure AD)
+title: Informatie over eenmalige aanmelding op basis van wacht woorden (SSO) voor apps in Azure Active Directory
+description: Informatie over eenmalige aanmelding op basis van wacht woorden (SSO) voor apps in Azure Active Directory
 services: active-directory
 author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: kenwith
-ms.openlocfilehash: e04a3aab128bb8f0bdee01361bc0d09aad6ed2fb
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 9b48bc62fc0548c0c4f431e71598fdfa6850de13
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049057"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598338"
 ---
-# <a name="configure-password-based-single-sign-on"></a>Eenmalige aanmelding op basis van wacht woorden configureren
+# <a name="understand-password-based-single-sign-on"></a>Informatie over eenmalige aanmelding op basis van wacht woorden
 
-In de [Quick](view-applications-portal.md) start-serie op toepassings beheer hebt u geleerd hoe u Azure AD als id-provider (IDP) gebruikt voor een toepassing. In de Snelstartgids kunt u op SAML gebaseerde SSO instellen. Een andere optie is SSO op basis van een wacht woord. In dit artikel vindt u meer informatie over de optie voor eenmalige aanmelding op basis van wacht woorden. 
+In de [Quick](view-applications-portal.md) start-serie op toepassings beheer hebt u geleerd hoe u Azure AD als id-provider (IDP) gebruikt voor een toepassing. In de hand leiding Snelstartgids configureert u op SAML gebaseerde SSO-of OIDC. Een andere optie is SSO op basis van een wacht woord. In dit artikel vindt u meer informatie over de optie voor eenmalige aanmelding op basis van wacht woorden. 
 
 Deze optie is beschikbaar voor elke website met een HTML-aanmeldings pagina. Eenmalige aanmelding op basis van wacht woorden is ook bekend als wachtwoord kluis. Met op wacht woord gebaseerde SSO kunt u gebruikers toegang en-wacht woorden beheren voor webtoepassingen die geen ondersteuning bieden voor identiteits Federatie. Het is ook handig wanneer meerdere gebruikers één account moeten delen, zoals de accounts voor sociale media-apps van uw organisatie.
 
@@ -39,12 +39,12 @@ SSO op basis van wacht woorden is een uitstekende manier om snel toepassingen te
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Het gebruik van Azure AD als uw ID-provider (IdP) en het instellen van eenmalige aanmelding (SSO) kan eenvoudig of complex zijn, afhankelijk van de toepassing die wordt gebruikt. Sommige toepassingen kunnen met slechts een paar acties worden geconfigureerd. Andere gebruikers moeten een gedetailleerde configuratie hebben. Volg de Quick Start- [serie](view-applications-portal.md) op toepassings beheer om snel aan de slag te gaan. Als de toepassing die u wilt toevoegen, eenvoudig is, hoeft u dit artikel waarschijnlijk niet te lezen. Als voor de toepassing die u wilt toevoegen aangepaste configuratie vereist is en u op wacht woord gebaseerde SSO wilt gebruiken, is dit artikel voor u.
+Het gebruik van Azure AD als uw ID-provider (IdP) en het configureren van eenmalige aanmelding (SSO) kan eenvoudig of complex zijn, afhankelijk van de toepassing die wordt gebruikt. Sommige toepassingen kunnen met slechts een paar acties worden geconfigureerd. Andere gebruikers moeten een gedetailleerde configuratie hebben. Volg de Quick Start- [serie](view-applications-portal.md) op toepassings beheer om kennis snel te vinden. Als de toepassing die u wilt toevoegen, eenvoudig is, hoeft u dit artikel waarschijnlijk niet te lezen. Als voor de toepassing die u wilt toevoegen aangepaste configuratie vereist is en u op wacht woord gebaseerde SSO wilt gebruiken, is dit artikel voor u.
 
 > [!IMPORTANT] 
 > Er zijn enkele scenario's waarbij de optie voor **eenmalige aanmelding** niet voor komt in de navigatie voor een toepassing in **bedrijfs toepassingen**. 
 >
-> Als de toepassing is geregistreerd met behulp van **app-registraties** , wordt de mogelijkheid voor eenmalige aanmelding standaard ingesteld voor het gebruik van OIDC OAuth. In dit geval wordt de optie **voor eenmalige aanmelding** niet weer gegeven in de navigatie onder **bedrijfs toepassingen**. Wanneer u **app-registraties** gebruikt om uw aangepaste app toe te voegen, configureert u de opties in het manifest bestand. Zie [Azure Active Directory app-manifest](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)voor meer informatie over het manifest bestand. Zie [verificatie en autorisatie met behulp van micro soft Identity platform](https://docs.microsoft.com/azure/active-directory/develop/authentication-vs-authorization#authentication-and-authorization-using-microsoft-identity-platform)voor meer informatie over SSO-standaarden. 
+> Als de toepassing is geregistreerd met behulp van **app-registraties** , is de mogelijkheid voor eenmalige aanmelding standaard geconfigureerd voor het gebruik van OIDC OAuth. In dit geval wordt de optie **voor eenmalige aanmelding** niet weer gegeven in de navigatie onder **bedrijfs toepassingen**. Wanneer u **app-registraties** gebruikt om uw aangepaste app toe te voegen, configureert u de opties in het manifest bestand. Zie [Azure Active Directory app-manifest](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)voor meer informatie over het manifest bestand. Zie [verificatie en autorisatie met behulp van micro soft Identity platform](https://docs.microsoft.com/azure/active-directory/develop/authentication-vs-authorization#authentication-and-authorization-using-microsoft-identity-platform)voor meer informatie over SSO-standaarden. 
 >
 > Andere scenario's waarin **eenmalige aanmelding** ontbreekt in de navigatie, zijn, wanneer een toepassing wordt gehost in een andere Tenant of als uw account niet over de vereiste machtigingen (globale beheerder, Cloud toepassings beheerder, toepassings beheerder of eigenaar van de service-principal) beschikt. Machtigingen kunnen ook leiden tot een scenario waarin u **eenmalige aanmelding** kunt openen, maar niet kunt opslaan. Zie (voor meer informatie over Azure AD-beheerders rollen https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) .
 
@@ -60,7 +60,7 @@ De configuratie pagina voor SSO op basis van een wacht woord is eenvoudig. Het b
 
 Nadat u de URL hebt ingevoerd, selecteert u **Opslaan**. Azure AD parseert de HTML-code van de aanmeldings pagina voor de invoer velden gebruikers naam en wacht woord. Als de poging slaagt, bent u klaar.
  
-De volgende stap is het [toewijzen van gebruikers of groepen aan de toepassing](methods-for-assigning-users-and-groups.md). Nadat u gebruikers en groepen hebt toegewezen, kunt u referenties opgeven die moeten worden gebruikt voor een gebruiker wanneer deze zich aanmeldt bij de toepassing. Selecteer **gebruikers en groepen**, schakel het selectie vakje in voor de rij van de gebruiker of groep en selecteer vervolgens **referenties bijwerken**. Voer ten slotte de gebruikers naam en het wacht woord in die moeten worden gebruikt voor de gebruiker of groep. Als u dit niet doet, wordt gebruikers gevraagd de referenties zelf bij het starten in te voeren.
+De volgende stap is het [toewijzen van gebruikers of groepen aan de toepassing](methods-for-assigning-users-and-groups.md). Nadat u gebruikers en groepen hebt toegewezen, kunt u referenties opgeven die moeten worden gebruikt voor een gebruiker wanneer deze zich aanmeldt bij de toepassing. Selecteer **gebruikers en groepen**, schakel het selectie vakje in voor de rij van de gebruiker of groep en selecteer vervolgens **referenties bijwerken**. Voer ten slotte de gebruikers naam en het wacht woord in die moeten worden gebruikt voor de gebruiker of groep. Als u dit niet doet, wordt gebruikers gevraagd de referenties zelf in te voeren bij het starten.
  
 
 ## <a name="manual-configuration"></a>Handmatige configuratie

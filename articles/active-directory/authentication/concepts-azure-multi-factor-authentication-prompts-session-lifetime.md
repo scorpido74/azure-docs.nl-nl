@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d5ffaf996f51348334f4adeeae150db9eb0defa
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: ab36eb9d5c66f61fbb320c91087659cc811eca85
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90052661"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91595539"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-multi-factor-authentication"></a>Herauthenticatie vragen en de levens duur van sessies voor Azure Multi-Factor Authentication optimaliseren
 
@@ -121,7 +121,7 @@ Als u beleid voor voorwaardelijke toegang wilt configureren voor aanmeldings fre
 1. Selecteer **beveiliging**en vervolgens **voorwaardelijke toegang**.
 1. Configureer een beleid met de aanbevolen opties voor sessie beheer die in dit artikel worden beschreven.
 
-Als u de levens duur van tokens wilt bekijken, [gebruikt u Azure AD Power shell voor het uitvoeren van een query op Azure AD-beleid](../develop/active-directory-configurable-token-lifetimes.md#prerequisites) Schakel alle beleids regels uit die u hebt geïnstalleerd.
+Als u de levens duur van tokens wilt bekijken, [gebruikt u Azure AD Power shell voor het uitvoeren van een query op Azure AD-beleid](../develop/configure-token-lifetimes.md#prerequisites) Schakel alle beleids regels uit die u hebt geïnstalleerd.
 
 Als er meer dan één instelling is ingeschakeld in uw Tenant, wordt u aangeraden uw instellingen bij te werken op basis van de licenties die voor u beschikbaar zijn. Als u bijvoorbeeld Azure AD Premium-licenties hebt, moet u alleen het beleid voor voorwaardelijke toegang van de *aanmeldings frequentie* en *permanente browser sessie*gebruiken. Als u Microsoft 365 apps of gratis Azure AD-licenties hebt, moet u de configuratie *ingelogd blijven gebruiken?*
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: c488daeafefce23d1fc65fe61e8c0f39cd1c0490
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 106ad6c1669506b5a8086afc1a74d967478e556c
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646712"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597289"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>Een Dynamics 365 for Customer Engagement- en PowerApps-aanbieding maken
 
@@ -36,7 +36,8 @@ Voordat u begint, moet u [een commercieel Marketplace-account maken in Partner C
 Voer een **aanbiedings-id**in. Dit is een unieke id voor elke aanbieding in uw account.
 
 - Deze ID is zichtbaar voor klanten in het webadres voor de Marketplace-aanbieding en Azure Resource Manager sjablonen, indien van toepassing.
-- Gebruik alleen kleine letters en cijfers. Dit kan afbreek streepjes en onderstrepings tekens bevatten, maar mag niet langer zijn dan 50. Als u bijvoorbeeld **test-aanbieding-1**invoert, is het webadres van de aanbieding `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
+- De aanbiedings-ID gecombineerd met de uitgevers-ID moet langer zijn dan 40 tekens.
+- Gebruik alleen kleine letters en cijfers. Dit kan afbreek streepjes en onderstrepings tekens bevatten, maar geen spaties. Als uw uitgevers-ID bijvoorbeeld testpublisherid is en u **test-aanbieding-1**invoert, is het webadres van de aanbieding `https://appsource.microsoft.com/product/dynamics-365/testpublisherid.test-offer-1` .
 - De aanbiedings-ID kan niet worden gewijzigd nadat u **maken**hebt geselecteerd.
 
 Voer een **alias**voor de aanbieding in. Dit is de naam die wordt gebruikt voor de aanbieding in Partner Center.
@@ -56,11 +57,11 @@ Selecteer de optie die u wilt gebruiken voor deze aanbieding.
 
 #### <a name="get-it-now-free"></a>Nu downloaden (gratis)
 
-Bied uw aanbod aan klanten gratis aan door een geldige URL op te geven (te beginnen met *http* of *https*), waar ze toegang hebben tot uw app.  Bijvoorbeeld `https://contoso.com/my-app`.
+Bied uw aanbod aan klanten gratis aan.
 
 #### <a name="free-trial-listing"></a>Gratis proef versie (lijst)
 
-Bied uw aanbieding aan klanten aan met een koppeling naar een gratis proef versie door een geldige URL op te geven (beginnend met `http` of `https` ), waar een proef versie kan worden verkregen.  Bijvoorbeeld `https://contoso.com/trial/my-app`. Gratis proef versies van aanbieding worden gemaakt, beheerd en geconfigureerd door uw service en er zijn geen abonnementen die door micro soft worden beheerd.
+Bied uw aanbieding aan klanten aan met een koppeling naar een gratis proef versie. Gratis proef versies van aanbieding worden gemaakt, beheerd en geconfigureerd door uw service en er zijn geen abonnementen die door micro soft worden beheerd.
 
 > [!NOTE]
 > De tokens die uw toepassing via uw proef koppeling ontvangt, kunnen alleen worden gebruikt voor het verkrijgen van gebruikers gegevens via Azure Active Directory (Azure AD) om het maken van accounts in uw app te automatiseren. Micro soft-accounts worden niet ondersteund voor verificatie met behulp van dit token.

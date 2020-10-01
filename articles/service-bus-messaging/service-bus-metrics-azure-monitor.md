@@ -2,13 +2,13 @@
 title: Azure Service Bus metrische gegevens in Azure Monitor | Microsoft Docs
 description: In dit artikel wordt uitgelegd hoe u Azure Monitor kunt gebruiken om Service Bus entiteiten (wacht rijen, onderwerpen en abonnementen) te bewaken.
 ms.topic: article
-ms.date: 07/15/2020
-ms.openlocfilehash: 158662a5d0fc3489b2cac638b28a64aa218b888e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/30/2020
+ms.openlocfilehash: 169edb651a59302d0ea1245fd48787404dd3e555
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320435"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598124"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Service Bus metrische gegevens in Azure Monitor
 
@@ -93,7 +93,7 @@ De volgende twee typen fouten worden geclassificeerd als gebruikers fouten:
 
 | Naam meetwaarde | Beschrijving |
 | ------------------- | ----------------- |
-|Actieve verbindingen|Het aantal actieve verbindingen op een naam ruimte en op een entiteit.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: naam van entiteit|
+|Actieve verbindingen|Het aantal actieve verbindingen op een naam ruimte en een entiteit in de naam ruimte. De waarde voor deze metriek is een tijdgebonden waarde. Verbindingen die direct na dat tijdstip zijn geactiveerd, worden mogelijk niet weer spie geld in de metrische gegevens.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: naam van entiteit|
 |Geopende verbindingen |Het aantal geopende verbindingen.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: naam van entiteit|
 |Gesloten verbindingen |Het aantal gesloten verbindingen.<br/><br/> Eenheid: aantal <br/> Aggregatie type: totaal <br/> Dimensie: naam van entiteit|
 

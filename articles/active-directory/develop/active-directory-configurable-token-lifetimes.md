@@ -8,29 +8,30 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.topic: how-to
-ms.date: 09/25/2020
+ms.topic: conceptual
+ms.date: 09/29/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: c5866ddfee049499a4179505e0c1a206b1c68945
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: a9bf992a65914afb8fa800041b57ad9f44ba4fa0
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447308"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91595608"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Configureer bare levens duur van tokens in micro soft Identity platform (preview-versie)
 
-U kunt de levens duur opgeven van een token dat is uitgegeven door het micro soft Identity-platform. U kunt de levensduur van een token instellen voor alle apps in uw organisatie, voor een multitenanttoepassing (voor meerdere organisaties) of voor een specifieke service-principal in uw organisatie. 
-> Het configureren van de levens duur van tokens voor beheerde identiteits service-principals wordt momenteel niet ondersteund.
+U kunt de levens duur opgeven van een token dat is uitgegeven door het micro soft Identity-platform. U kunt de levensduur van een token instellen voor alle apps in uw organisatie, voor een multitenanttoepassing (voor meerdere organisaties) of voor een specifieke service-principal in uw organisatie. We bieden momenteel geen ondersteuning voor het configureren van de levens duur van tokens voor [beheerde ID service-principals](../managed-identities-azure-resources/overview.md).
 
 > [!IMPORTANT]
-> Nadat klanten tijdens de preview-periode hebben gehoord, hebben we [verificatie sessie beheer functies](https://go.microsoft.com/fwlink/?linkid=2083106) geïmplementeerd in voorwaardelijke toegang van Azure AD. Met deze nieuwe functie kunt u de levens duur van het vernieuwings token configureren door de aanmeldings frequentie in te stellen. Na 30 mei 2020 kan geen enkele nieuwe Tenant gebruikmaken van het beleid voor de levens duur van tokens voor het configureren van sessie-en vernieuwings tokens. De afschaffing vindt plaats binnen een aantal maanden na dat, wat betekent dat we de bestaande sessie niet meer zullen door lopen en tokens voor vernieuwen worden vernieuwd. U kunt de levens duur van toegangs tokens na de afschaffing nog steeds configureren.
+> Nadat klanten tijdens de preview-periode hebben gehoord, hebben we [verificatie sessie beheer functies](../conditional-access/howto-conditional-access-session-lifetime.md) geïmplementeerd in voorwaardelijke toegang van Azure AD. Met deze nieuwe functie kunt u de levens duur van het vernieuwings token configureren door de aanmeldings frequentie in te stellen. Na 30 mei 2020 kan geen enkele nieuwe Tenant gebruikmaken van het beleid voor de levens duur van tokens voor het configureren van sessie-en vernieuwings tokens. De afschaffing vindt plaats binnen een aantal maanden na dat, wat betekent dat we de bestaande sessie niet meer zullen door lopen en tokens voor vernieuwen worden vernieuwd. U kunt de levens duur van toegangs tokens na de afschaffing nog steeds configureren.
 
 In azure AD vertegenwoordigt een beleids object een set regels die worden afgedwongen voor afzonderlijke toepassingen of voor alle toepassingen in een organisatie. Elk beleids type heeft een unieke structuur, met een reeks eigenschappen die worden toegepast op objecten waaraan ze zijn toegewezen.
 
 U kunt een beleid instellen als het standaard beleid voor uw organisatie. Het beleid wordt toegepast op alle toepassingen in de organisatie, zolang deze niet worden overschreven door een beleid met een hogere prioriteit. U kunt ook een beleid toewijzen aan specifieke toepassingen. De volg orde van prioriteit is afhankelijk van het beleids type.
+
+Voor voor beelden leest u voor [beelden van het configureren van de levens duur van tokens](configure-token-lifetimes.md).
 
 > [!NOTE]
 > Configureerbaar token levensduur beleid is alleen van toepassing op mobiele en desktop-clients die toegang hebben tot share point online en OneDrive voor bedrijven-resources, en is niet van toepassing op webbrowser sessies.
@@ -63,7 +64,7 @@ Vertrouwelijke clients zijn toepassingen die een client wachtwoord (geheim) veil
 
 #### <a name="token-lifetimes-with-public-client-refresh-tokens"></a>Levens duur van tokens met open bare client vernieuwings tokens
 
-Open bare clients kunnen een client wachtwoord (geheim) niet veilig opslaan. Een iOS/Android-app kan bijvoorbeeld geen geheim van de resource-eigenaar maken, dus wordt het beschouwd als een open bare client. U kunt beleids regels instellen op resources om te voor komen dat de vernieuwings tokens van open bare clients ouder dan een opgegeven periode een nieuw token paar voor toegang/vernieuwing verkrijgen. (Als u dit wilt doen, gebruikt u de eigenschap voor het vernieuwen van het token voor de maximale inactieve tijd ( `MaxInactiveTime` ).) U kunt ook beleid gebruiken om een periode in te stellen waarboven de vernieuwings tokens niet langer worden geaccepteerd. (Als u dit wilt doen, gebruikt u de eigenschap maximum leeftijd van het token vernieuwen.) U kunt de levens duur van een vernieuwings token aanpassen om te bepalen wanneer en hoe vaak de gebruiker de referenties opnieuw moet invoeren, in plaats van dat deze wordt geauthenticeerd wanneer een open bare client toepassing wordt gebruikt.
+Open bare clients kunnen een client wachtwoord (geheim) niet veilig opslaan. Een iOS/Android-app kan bijvoorbeeld geen geheim van de resource-eigenaar maken, dus wordt het beschouwd als een open bare client. U kunt beleids regels instellen op resources om te voor komen dat de vernieuwings tokens van open bare clients ouder dan een opgegeven periode een nieuw token paar voor toegang/vernieuwing verkrijgen. U doet dit door de eigenschap voor het [vernieuwings token (max. inactieve tijd](#refresh-token-max-inactive-time) ) te gebruiken `MaxInactiveTime` . U kunt ook beleid gebruiken om een periode in te stellen waarboven de vernieuwings tokens niet langer worden geaccepteerd. Als u dit wilt doen, gebruikt u de eigenschap maximum leeftijd van het token voor het vernieuwen van de [enkelvoudige factor](#single-factor-session-token-max-age) of het [token met meerdere factoren](#multi-factor-refresh-token-max-age) . U kunt de levens duur van een vernieuwings token aanpassen om te bepalen wanneer en hoe vaak de gebruiker de referenties opnieuw moet invoeren, in plaats van dat deze wordt geauthenticeerd wanneer een open bare client toepassing wordt gebruikt.
 
 > [!NOTE]
 > De maximale leeftijds eigenschap is de tijds duur dat één token kan worden gebruikt. 
@@ -148,6 +149,8 @@ Alle TimeSpans die hier worden gebruikt, zijn ingedeeld volgens het C# [time](/d
 
 **Samen vatting:** Dit beleid bepaalt hoe lang de toegangs-en ID-tokens voor deze bron worden beschouwd als geldig. Het verminderen van de eigenschap levens duur van het toegangs token vermindert het risico dat een toegangs token of ID-token gedurende lange tijd wordt gebruikt door een schadelijke actor. (Deze tokens kunnen niet worden ingetrokken.) De afweging is dat de prestaties nadelig worden beïnvloed, omdat de tokens vaker moeten worden vervangen.
 
+Zie [een beleid voor webaanmelding maken](configure-token-lifetimes.md#create-a-policy-for-web-sign-in)voor een voor beeld.
+
 ### <a name="refresh-token-max-inactive-time"></a>Maximum aantal inactieve tijd voor het vernieuwen van token
 **Teken reeks:** MaxInactiveTime
 
@@ -159,6 +162,8 @@ Dit beleid dwingt gebruikers die niet actief zijn geweest op hun client om opnie
 
 De eigenschap Max. voor het vernieuwings token van de inactieve tijd moet worden ingesteld op een lagere waarde dan de maximale leeftijd van het token met één factor en de maximale leeftijds eigenschappen voor multi-factor Refresh-tokens.
 
+Zie voor een voor beeld [een beleid maken voor een systeem eigen app die een web-API aanroept](configure-token-lifetimes.md#create-a-policy-for-a-native-app-that-calls-a-web-api).
+
 ### <a name="single-factor-refresh-token-max-age"></a>Maximum leeftijd van het token voor eenmalige vernieuwing
 **Teken reeks:** MaxAgeSingleFactor
 
@@ -167,6 +172,8 @@ De eigenschap Max. voor het vernieuwings token van de inactieve tijd moet worden
 **Samen vatting:** Dit beleid bepaalt hoe lang een gebruiker een vernieuwings token kan gebruiken om een nieuw toegangs-en vernieuwings token paar te verkrijgen nadat het voor het laatst is geverifieerd met behulp van slechts één factor. Nadat een gebruiker een nieuw vernieuwings token heeft geverifieerd en ontvangen, kan de gebruiker de stroom voor het vernieuwen van tokens gebruiken voor de opgegeven periode. (Dit geldt zo lang het huidige vernieuwings token niet is ingetrokken en niet langer dan de inactieve tijd niet wordt gebruikt.) Op dat moment wordt de gebruiker gedwongen opnieuw te verifiëren om een nieuw vernieuwings token te ontvangen.
 
 Het verminderen van de maximale leeftijd dwingt gebruikers vaker te verifiëren. Omdat verificatie met één factor minder veilig wordt beschouwd dan multi-factor Authentication, raden we u aan deze eigenschap in te stellen op een waarde die gelijk is aan of kleiner is dan de maximale leeftijds eigenschap van de multi-factor Refresh-token.
+
+Zie voor een voor beeld [een beleid maken voor een systeem eigen app die een web-API aanroept](configure-token-lifetimes.md#create-a-policy-for-a-native-app-that-calls-a-web-api).
 
 ### <a name="multi-factor-refresh-token-max-age"></a>Maximum leeftijd van multi-factor Refresh-token
 **Teken reeks:** MaxAgeMultiFactor
@@ -177,6 +184,8 @@ Het verminderen van de maximale leeftijd dwingt gebruikers vaker te verifiëren.
 
 Het verminderen van de maximale leeftijd dwingt gebruikers vaker te verifiëren. Omdat verificatie met één factor minder veilig wordt beschouwd dan multi-factor Authentication, raden we u aan deze eigenschap in te stellen op een waarde die gelijk is aan of groter is dan de eigenschap Max Age van het token voor het vernieuwen van één factor.
 
+Zie voor een voor beeld [een beleid maken voor een systeem eigen app die een web-API aanroept](configure-token-lifetimes.md#create-a-policy-for-a-native-app-that-calls-a-web-api).
+
 ### <a name="single-factor-session-token-max-age"></a>Maximum leeftijd van het token voor één factor-sessie
 **Teken reeks:** MaxAgeSessionSingleFactor
 
@@ -186,6 +195,8 @@ Het verminderen van de maximale leeftijd dwingt gebruikers vaker te verifiëren.
 
 Het verminderen van de maximale leeftijd dwingt gebruikers vaker te verifiëren. Omdat verificatie met één factor minder veilig wordt beschouwd dan multi-factor Authentication, raden we u aan deze eigenschap in te stellen op een waarde die gelijk is aan of kleiner is dan de maximale leeftijds eigenschap voor het multi-factor-sessie token.
 
+Zie [een beleid voor webaanmelding maken](configure-token-lifetimes.md#create-a-policy-for-web-sign-in)voor een voor beeld.
+
 ### <a name="multi-factor-session-token-max-age"></a>Maximale leeftijds duur multi-factor Session-token
 **Teken reeks:** MaxAgeSessionMultiFactor
 
@@ -194,191 +205,6 @@ Het verminderen van de maximale leeftijd dwingt gebruikers vaker te verifiëren.
 **Samen vatting:** Dit beleid bepaalt hoe lang een gebruiker met behulp van meerdere factoren een sessie token kan gebruiken om een nieuw ID-en sessie token te verkrijgen. Nadat een gebruiker een nieuw sessie token heeft geverifieerd en ontvangen, kan de gebruiker de sessie token stroom voor de opgegeven periode gebruiken. (Dit geldt zo lang het token van de huidige sessie niet is ingetrokken en niet is verlopen.) Na de opgegeven periode moet de gebruiker opnieuw worden geverifieerd om een nieuw sessie token te ontvangen.
 
 Het verminderen van de maximale leeftijd dwingt gebruikers vaker te verifiëren. Omdat verificatie met één factor minder veilig wordt beschouwd dan multi-factor Authentication, raden we u aan deze eigenschap in te stellen op een waarde die gelijk is aan of groter is dan de eigenschap Max Age van het token met één factor-sessie.
-
-## <a name="example-token-lifetime-policies"></a>Voor beeld van levens duur beleid token
-Er zijn veel scenario's mogelijk in azure AD wanneer u de levens duur van tokens voor apps, service-principals en uw hele organisatie kunt maken en beheren. In deze sectie laten we een paar algemene beleids scenario's door lopen waarmee u nieuwe regels kunt opstellen voor:
-
-* Levensduur van token
-* Maximale inactieve tijd van token
-* Maximale leeftijd van token
-
-In de voor beelden vindt u informatie over:
-
-* Het standaard beleid van een organisatie beheren
-* Een beleid maken voor aanmelden via het web
-* Een beleid maken voor een systeem eigen app die een web-API aanroept
-* Een geavanceerd beleid beheren
-
-### <a name="prerequisites"></a>Vereisten
-In de volgende voor beelden maakt, bijwerkt, koppelt en verwijdert u beleid voor apps, service-principals en uw hele organisatie. Als u geen ervaring hebt met Azure AD, raden we u aan meer te weten te komen over [het verkrijgen van een Azure AD-Tenant](quickstart-create-new-tenant.md) voordat u verdergaat met deze voor beelden.  
-
-Voer de volgende stappen uit om aan de slag te gaan:
-
-1. Down load de nieuwste [open bare preview-versie van Azure AD Power shell-module](https://www.powershellgallery.com/packages/AzureADPreview).
-2. Voer de `Connect` opdracht uit om u aan te melden bij uw Azure AD-beheerders account. Voer deze opdracht telkens uit wanneer u een nieuwe sessie start.
-
-    ```powershell
-    Connect-AzureAD -Confirm
-    ```
-
-3. Voer de volgende opdracht uit om alle beleids regels weer te geven die in uw organisatie zijn gemaakt. Voer deze opdracht na de meeste bewerkingen uit in de volgende scenario's. Als u de opdracht uitvoert, kunt u ook de * * * * van uw beleid ophalen.
-
-    ```powershell
-    Get-AzureADPolicy
-    ```
-
-### <a name="example-manage-an-organizations-default-policy"></a>Voor beeld: het standaard beleid van een organisatie beheren
-In dit voor beeld maakt u een beleid waarmee uw gebruikers zich minder vaak kunnen aanmelden in uw hele organisatie. Als u dit wilt doen, maakt u een beleid voor de levens duur van tokens voor het vernieuwen van tokens die in uw organisatie worden toegepast. Het beleid wordt toegepast op elke toepassing in uw organisatie en op elke service-principal waarvoor nog geen beleid is ingesteld.
-
-1. Maak een beleid voor levens duur van tokens.
-
-    1. Stel het token voor het vernieuwen van de enkelvoudige factor in op ' until-ingetrokken '. Het token verloopt niet totdat de toegang is ingetrokken. Maak de volgende beleids definitie:
-
-        ```powershell
-        @('{
-            "TokenLifetimePolicy":
-            {
-                "Version":1,
-                "MaxAgeSingleFactor":"until-revoked"
-            }
-        }')
-        ```
-
-    1. Voer de volgende opdracht uit om het beleid te maken:
-
-        ```powershell
-        $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1, "MaxAgeSingleFactor":"until-revoked"}}') -DisplayName "OrganizationDefaultPolicyScenario" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"
-        ```
-
-    1. Als u witruimte wilt verwijderen, voert u de volgende opdracht uit:
-
-        ```powershell
-        Get-AzureADPolicy -id | set-azureadpolicy -Definition @($((Get-AzureADPolicy -id ).Replace(" ","")))
-        ```
-
-    1. Voer de volgende opdracht uit om het nieuwe beleid te bekijken en de **ObjectId**van het beleid op te halen:
-
-        ```powershell
-        Get-AzureADPolicy -Id $policy.Id
-        ```
-
-1. Werk het beleid bij.
-
-    U kunt besluiten dat het eerste beleid dat u in dit voor beeld hebt ingesteld, niet zo strikt is als uw service vereist. Voer de volgende opdracht uit om in te stellen dat uw token voor het vernieuwen van één factor binnen twee dagen verloopt:
-
-    ```powershell
-    Set-AzureADPolicy -Id $policy.Id -DisplayName $policy.DisplayName -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxAgeSingleFactor":"2.00:00:00"}}')
-    ```
-
-### <a name="example-create-a-policy-for-web-sign-in"></a>Voor beeld: een beleid maken voor aanmelden via Internet
-
-In dit voor beeld maakt u een beleid waarmee gebruikers vaker moeten worden geverifieerd in uw web-app. Met dit beleid wordt de levens duur van de toegangs-ID-tokens en de maximale leeftijd van een multi-factor-sessie token ingesteld op de service-principal van uw web-app.
-
-1. Maak een beleid voor levens duur van tokens.
-
-    Dit beleid, voor aanmelding bij het web, stelt de levens duur van het toegangs-en ID-token en de maximale leeftijd van het single-factor sessie token in op twee uur.
-
-    1. Voer de volgende opdracht uit om het beleid te maken:
-
-        ```powershell
-        $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"AccessTokenLifetime":"02:00:00","MaxAgeSessionSingleFactor":"02:00:00"}}') -DisplayName "WebPolicyScenario" -IsOrganizationDefault $false -Type "TokenLifetimePolicy"
-        ```
-
-    1. Voer de volgende opdracht uit om het nieuwe beleid te bekijken en de beleids- **ObjectId**op te halen:
-
-        ```powershell
-        Get-AzureADPolicy -Id $policy.Id
-        ```
-
-1. Wijs het beleid toe aan uw service-principal. U moet ook de **ObjectId** voor uw Service-Principal ophalen.
-
-    1. Gebruik de cmdlet [Get-azureadserviceprincipal namelijk niet](/powershell/module/azuread/get-azureadserviceprincipal) om de service-principals van uw organisatie of een enkele service-principal te bekijken.
-        ```powershell
-        # Get ID of the service principal
-        $sp = Get-AzureADServicePrincipal -Filter "DisplayName eq '<service principal display name>'"
-        ```
-
-    1. Wanneer u de Service-Principal hebt, voert u de volgende opdracht uit:
-        ```powershell
-        # Assign policy to a service principal
-        Add-AzureADServicePrincipalPolicy -Id $sp.ObjectId -RefObjectId $policy.Id
-        ```
-
-### <a name="example-create-a-policy-for-a-native-app-that-calls-a-web-api"></a>Voor beeld: een beleid maken voor een systeem eigen app die een web-API aanroept
-In dit voor beeld maakt u een beleid dat vereist dat gebruikers minder vaak verifiëren. Het beleid verlengt ook de hoeveelheid tijd die een gebruiker inactief mag zijn voordat de gebruiker opnieuw moet worden geverifieerd. Het beleid wordt toegepast op de Web-API. Wanneer de systeem eigen app de Web-API als bron aanvraagt, wordt dit beleid toegepast.
-
-1. Maak een beleid voor levens duur van tokens.
-
-    1. Voer de volgende opdracht uit om een strikt beleid voor een web-API te maken:
-
-        ```powershell
-        $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"30.00:00:00","MaxAgeMultiFactor":"until-revoked","MaxAgeSingleFactor":"180.00:00:00"}}') -DisplayName "WebApiDefaultPolicyScenario" -IsOrganizationDefault $false -Type "TokenLifetimePolicy"
-        ```
-
-    1. Voer de volgende opdracht uit om het nieuwe beleid weer te geven:
-
-        ```powershell
-        Get-AzureADPolicy -Id $policy.Id
-        ```
-
-1. Wijs het beleid toe aan uw web-API. U moet ook de **ObjectId** van uw toepassing ophalen. Gebruik de cmdlet [Get-AzureADApplication](/powershell/module/azuread/get-azureadapplication) om de **ObjectId**van uw app te vinden, of gebruik de [Azure Portal](https://portal.azure.com/).
-
-    Haal de **ObjectId** van uw app op en wijs het beleid toe:
-
-    ```powershell
-    # Get the application
-    $app = Get-AzureADApplication -Filter "DisplayName eq 'Fourth Coffee Web API'"
-
-    # Assign the policy to your web API.
-    Add-AzureADApplicationPolicy -Id $app.ObjectId -RefObjectId $policy.Id
-    ```
-
-### <a name="example-manage-an-advanced-policy"></a>Voor beeld: een geavanceerd beleid beheren
-In dit voor beeld maakt u een paar beleids regels om te leren hoe het prioriteits systeem werkt. U leert ook hoe u meerdere beleids regels beheert die op verschillende objecten worden toegepast.
-
-1. Maak een beleid voor levens duur van tokens.
-
-    1. Voer de volgende opdracht uit om een standaard beleid voor de organisatie te maken waarmee de levens duur van het token voor de vernieuwing van één factor wordt ingesteld op 30 dagen:
-
-        ```powershell
-        $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxAgeSingleFactor":"30.00:00:00"}}') -DisplayName "ComplexPolicyScenario" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"
-        ```
-
-    1. Voer de volgende opdracht uit om het nieuwe beleid weer te geven:
-
-        ```powershell
-        Get-AzureADPolicy -Id $policy.Id
-        ```
-
-1. Wijs het beleid toe aan een service-principal.
-
-    Nu hebt u een beleid dat van toepassing is op de hele organisatie. U kunt dit beleid voor 30 dagen voor een specifieke Service-Principal bewaren, maar u kunt het standaard beleid van de organisatie wijzigen in de bovengrens van ' tot-ingetrokken '.
-
-    1. Als u de service-principals van uw organisatie wilt weer geven, gebruikt u de cmdlet [Get-azureadserviceprincipal namelijk niet](/powershell/module/azuread/get-azureadserviceprincipal) .
-
-    1. Wanneer u de Service-Principal hebt, voert u de volgende opdracht uit:
-
-        ```powershell
-        # Get ID of the service principal
-        $sp = Get-AzureADServicePrincipal -Filter "DisplayName eq '<service principal display name>'"
-
-        # Assign policy to a service principal
-        Add-AzureADServicePrincipalPolicy -Id $sp.ObjectId -RefObjectId $policy.Id
-        ```
-
-1. Stel de `IsOrganizationDefault` vlag in op False:
-
-    ```powershell
-    Set-AzureADPolicy -Id $policy.Id -DisplayName "ComplexPolicyScenario" -IsOrganizationDefault $false
-    ```
-
-1. Maak een nieuw standaard beleid voor organisaties:
-
-    ```powershell
-    New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxAgeSingleFactor":"until-revoked"}}') -DisplayName "ComplexPolicyScenarioTwo" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"
-    ```
-
-    U hebt nu het oorspronkelijke beleid gekoppeld aan uw Service-Principal en het nieuwe beleid is ingesteld als standaard beleid voor uw organisatie. Het is belang rijk om te onthouden dat beleids regels die worden toegepast op service-principals prioriteit hebben boven het standaard beleid van de organisatie.
 
 ## <a name="cmdlet-reference"></a>Cmdlet-naslaginformatie
 
@@ -419,3 +245,7 @@ U kunt de volgende cmdlets gebruiken voor Service Principal-beleids regels.
 Voor deze functie hebt u een Azure AD Premium P1-licentie nodig. Zie [Algemeen beschik bare functies van de gratis en Premium-edities vergelijken](https://azure.microsoft.com/pricing/details/active-directory/)om de juiste licentie voor uw vereisten te vinden.
 
 Klanten met een [Microsoft 365 Business-licentie](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) hebben ook toegang tot de functies voor voorwaardelijke toegang.
+
+## <a name="next-steps"></a>Volgende stappen
+
+Meer informatie vindt u in [voor beelden van het configureren van de levens duur van tokens](configure-token-lifetimes.md).

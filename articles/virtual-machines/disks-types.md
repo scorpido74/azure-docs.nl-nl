@@ -3,17 +3,17 @@ title: Selecteer een schijf type voor Azure IaaS Vm's-beheerde schijven
 description: Meer informatie over de beschik bare Azure-schijf typen voor virtuele machines, waaronder Ultra schijven, Premium Ssd's, Standard Ssd's en Standard Hdd's.
 author: roygara
 ms.author: rogarana
-ms.date: 06/03/2020
+ms.date: 09/30/2020
 ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: bfc1a818aeb85eca04faca713d4c7acbbce3626a
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 7f274827e646ea0a7c0fd103983cfc566d699228
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90088490"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596785"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Welke schijftypen zijn beschikbaar in Azure?
 
@@ -57,7 +57,7 @@ Enkele belang rijke mogelijkheden van ultra disk zijn:
 |64     |19.200         |2.000         |
 |128     |38.400         |2.000         |
 |256     |76.800         |2.000         |
-|512     |80,000         |2.000         |
+|512     |153.600         |2.000         |
 |1024-65536 (grootten in dit bereik worden verhoogd in stappen van 1 TiB)     |160.000         |2.000         |
 
 ### <a name="ga-scope-and-limitations"></a>GA bereik en beperkingen
@@ -67,7 +67,7 @@ Enkele belang rijke mogelijkheden van ultra disk zijn:
 
 Als u ultra disks wilt gaan gebruiken, raadpleegt u ons artikel over het onderwerp: [Azure Ultra Disk gebruiken](disks-enable-ultra-ssd.md).
 
-## <a name="premium-ssd"></a>Premium - SSD
+## <a name="premium-ssd"></a>Premium SSD
 
 Azure Premium Ssd's bieden ondersteuning voor hoge prestaties en lage latentie voor virtuele machines (Vm's) met invoer/uitvoer-intensieve workloads. Als u gebruik wilt maken van de snelheid en prestaties van Premium-opslag schijven, kunt u bestaande VM-schijven migreren naar Premium-Ssd's. Premium-Ssd's zijn geschikt voor essentiële productie toepassingen. Premium-Ssd's kan alleen worden gebruikt in combi natie met een VM-reeks die compatibel is met Premium Storage.
 
@@ -88,7 +88,7 @@ Schijven die ondersteuning bieden voor bursting, worden standaard ingeschakeld v
 
 Voor Premium-Ssd's wordt elke I/O-bewerking kleiner dan of gelijk aan 256 KiB van de door Voer beschouwd als één I/O-bewerking. I/O-bewerkingen die groter zijn dan 256 KiB door Voer, worden beschouwd als meerdere I/O's van grootte 256 KiB.
 
-## <a name="standard-ssd"></a>Standard - SSD
+## <a name="standard-ssd"></a>Standard SSD
 
 Azure Standard Ssd's is een voordelige opslag optie die is geoptimaliseerd voor workloads die consistente prestaties op lagere IOPS-niveaus nodig hebben. Standard-SSD biedt een goede ervaring op instap niveau voor degenen die willen overstappen op de Cloud, met name als u problemen ondervindt met de variantie van werk belastingen die op uw HDD-oplossingen op locatie worden uitgevoerd. In vergelijking met de standaard-Hdd's bieden de standaard-Ssd's betere Beschik baarheid, consistentie, betrouw baarheid en latentie. Standaard Ssd's zijn geschikt voor webservers, lage IOPS-toepassings servers, intensief gebruikte zakelijke toepassingen en werk belastingen voor ontwikkelen en testen. Net als standaard Hdd's zijn standaard Ssd's beschikbaar op alle Azure-Vm's.
 
@@ -101,7 +101,7 @@ Standaard Ssd's zijn ontworpen om latentie van één cijfer en de IOPS en door v
 
 Voor standaard Ssd's wordt elke I/O-bewerking kleiner dan of gelijk aan 256 KiB van de door Voer beschouwd als één I/O-bewerking. I/O-bewerkingen die groter zijn dan 256 KiB door Voer, worden beschouwd als meerdere I/O's van grootte 256 KiB. Deze trans acties hebben een facturerings impact.
 
-## <a name="standard-hdd"></a>Standard - HDD
+## <a name="standard-hdd"></a>Standard HDD
 
 Azure Standard Hdd's levert betrouw bare, voordelige schijf ondersteuning voor virtuele machines met latentie-ongevoelig werk belastingen. Bij standaard opslag worden de gegevens opgeslagen op de harde schijven (Hdd's). Latentie, IOPS en door Voer van Standard-HDD schijven kunnen veel meer verschillen in vergelijking met schijven op basis van SSD. Standard-HDD schijven zijn ontworpen voor het leveren van schrijf latentie onder 10 MS en lees latentie onder 20ms voor de meeste i/o-bewerkingen, maar de werkelijke prestaties kunnen echter variëren, afhankelijk van de i/o-grootte en het werkbelasting patroon. Wanneer u werkt met Vm's, kunt u standaard HDD-schijven gebruiken voor dev/test-scenario's en minder kritieke workloads. Standaard Hdd's zijn beschikbaar in alle Azure-regio's en kunnen worden gebruikt met alle Azure-Vm's.
 

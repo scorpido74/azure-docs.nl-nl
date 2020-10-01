@@ -7,14 +7,14 @@ ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: deffa5c75cbde4f9d95be549844478d4de87a685
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: c64c376e8f283336573500e69ac31989b5947961
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069625"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598244"
 ---
-# <a name="deploy-azure-file-sync"></a>Azure File Sync implementeren
+# <a name="deploy-azure-file-sync"></a>Azure Files SYNC implementeren
 Gebruik Azure File Sync om de bestands shares van uw organisatie in Azure Files te centraliseren, terwijl u de flexibiliteit, prestaties en compatibiliteit van een on-premises Bestands server bijhoudt. Door Azure File Sync wordt Windows Server getransformeerd in een snelle cache van uw Azure-bestandsshare. U kunt elk protocol dat beschikbaar is in Windows Server, inclusief SMB, NFS en FTPS, gebruiken voor lokale toegang tot uw gegevens. U kunt zoveel caches hebben als u nodig hebt in de hele wereld.
 
 We raden u ten zeerste [aan de planning voor een Azure files-implementatie](storage-files-planning.md) te lezen en te [plannen voor een Azure file sync-implementatie](storage-sync-files-planning.md) voordat u de stappen in dit artikel uitvoert.
@@ -61,7 +61,7 @@ We raden u ten zeerste [aan de planning voor een Azure files-implementatie](stor
     > [!Note]  
     > De module AZ. StorageSync wordt nu automatisch geïnstalleerd tijdens de installatie van de AZ Power shell-module.
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 1. Een Azure-bestands share in dezelfde regio die u wilt implementeren Azure File Sync. Zie voor meer informatie:
     - [Beschik baarheid](storage-sync-files-planning.md#azure-file-sync-region-availability) van de regio voor Azure file sync.
@@ -140,7 +140,7 @@ if ($installType -ne "Server Core") {
 }
 ``` 
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Volg de instructies voor de Azure Portal of Power shell.
 
@@ -211,7 +211,7 @@ $storageSyncName = "<my_storage_sync_service>"
 $storageSync = New-AzStorageSyncService -ResourceGroupName $resourceGroup -Name $storageSyncName -Location $region
 ```
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Volg de instructies voor de Azure Portal of Power shell.
 
@@ -267,7 +267,7 @@ Start-Process -FilePath "StorageSyncAgent.msi" -ArgumentList "/quiet" -Wait
 # You may remove the temp folder containing the MSI and the EXE installer
 Remove-Item -Path ".\StorageSyncAgent.msi" -Recurse -Force
 ```
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Volg de instructies voor de Azure Portal of Power shell.
 
@@ -378,7 +378,7 @@ New-AzStorageSyncCloudEndpoint `
     -AzureFileShareName $fileShare.Name
 ```
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Gebruik de opdracht [AZ storagesync Sync-Group](/cli/azure/ext/storagesync/storagesync/sync-group#ext-storagesync-az-storagesync-sync-group-create) om een nieuwe synchronisatie groep te maken.  Voor een standaard resource groep voor alle CLI-opdrachten gebruikt u [AZ configure](/cli/azure/reference-index#az-configure).
 
@@ -460,7 +460,7 @@ if ($cloudTieringDesired) {
 }
 ```
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Gebruik de opdracht [AZ storagesync Sync-Group server-endpoint](/cli/azure/ext/storagesync/storagesync/sync-group/server-endpoint#ext-storagesync-az-storagesync-sync-group-server-endpoint-create) om een nieuw server eindpunt te maken.
 
@@ -524,13 +524,12 @@ De aanbevolen stappen voor het onboarden van Azure File Sync voor het eerst met 
 Als u geen extra opslag ruimte hebt voor het eerste onboarding en u wilt koppelen aan de bestaande shares, kunt u de gegevens in de Azure-bestands shares vooraf seeden. Deze methode wordt alleen voorgesteld als en alleen als u uitval tijd kunt accepteren en absoluut geen gegevens wijzigingen op de server shares tijdens het oorspronkelijke voorbereidings proces gegarandeerd. 
  
 1. Zorg ervoor dat de gegevens op een van de servers niet kunnen worden gewijzigd tijdens het voorbereidings proces.
-2. Azure-bestands shares vooraf seeden met de server gegevens via elk hulp programma voor gegevens overdracht via het SMB, bijvoorbeeld Robocopy, direct SMB-kopie. Omdat AzCopy geen gegevens via de SMB uploadt, kan deze niet worden gebruikt voor pre-seeding.
+2. Azure-bestands shares vooraf seeden met de server gegevens via een hulp programma voor gegevens overdracht via de SMB. Robocopy, bijvoorbeeld. U kunt AzCopy ook gebruiken via REST. Zorg ervoor dat u AzCopy gebruikt met de juiste switches om de time Stamps en kenmerken van de toegangs beheer lijst te behouden.
 3. Maak Azure File Sync topologie met de gewenste server eindpunten die verwijzen naar de bestaande shares.
 4. Afstemmings proces voor synchronisatie volt ooien op alle eind punten toestaan. 
 5. Zodra de afstemming is voltooid, kunt u shares openen voor wijzigingen.
  
 Op dit moment heeft de pre-seeding-benadering een aantal beperkingen: 
-- Volledige betrouw baarheid van bestanden blijft niet behouden. Zo kunnen bestanden Acl's en tijds tempels verloren gaan.
 - Gegevens wijzigingen op de server voordat de synchronisatie topologie volledig actief is en wordt uitgevoerd, kunnen conflicten veroorzaken op de server eindpunten.  
 - Nadat het Cloud-eind punt is gemaakt, wordt door Azure File Sync een proces uitgevoerd om de bestanden in de cloud te detecteren voordat de initiële synchronisatie wordt gestart. De tijd die nodig is om dit proces te volt ooien, is afhankelijk van de verschillende factoren, zoals de netwerk snelheid, de beschik bare band breedte en het aantal bestanden en mappen. Voor de ruwe schatting van de preview-versie voert het detectie proces ongeveer 10 bestanden per seconde uit.  Zelfs als vooraf seeding snel wordt uitgevoerd, kan de totale tijd voor het verkrijgen van een volledig uitgevoerd systeem aanzienlijk langer zijn wanneer gegevens in de Cloud vooraf worden geseed.
 

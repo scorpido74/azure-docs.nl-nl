@@ -2,23 +2,19 @@
 title: Aanbevolen procedures voor Azure RBAC
 description: Aanbevolen procedures voor het gebruik van op rollen gebaseerd toegangs beheer van Azure (Azure RBAC).
 services: active-directory
-documentationcenter: ''
 author: rolyon
 manager: mtillman
 ms.service: role-based-access-control
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/17/2020
+ms.date: 09/30/2020
 ms.author: rolyon
-ms.reviewer: bagovind
-ms.openlocfilehash: 053e86f3493c7a11a3cbbaad0871e45345697878
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4cb3e1fe0275c676e2ce54ff9201502fc3595937
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82735331"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91595484"
 ---
 # <a name="best-practices-for-azure-rbac"></a>Aanbevolen procedures voor Azure RBAC
 
@@ -28,7 +24,9 @@ In dit artikel worden enkele aanbevolen procedures beschreven voor het gebruik v
 
 Met op rollen gebaseerd toegangsbeheer van Azure kunt u taken scheiden binnen uw team en alleen de mate van toegang verlenen aan gebruikers die nodig is om de taken uit te voeren. In plaats van iedereen onbeperkte machtigingen te verlenen in uw Azure-abonnement of -resources, kunt u zelf bepalen welke acties er met een bepaalde bereik zijn toegestaan.
 
-Het is een aanbevolen procedure om tijdens het plannen van een strategie voor toegangsbeheer gebruikers minimale bevoegdheden te verlenen om hun werk gedaan te krijgen. Het volgende diagram toont een voorgesteld patroon voor het gebruik van Azure RBAC.
+Het is een aanbevolen procedure om tijdens het plannen van een strategie voor toegangsbeheer gebruikers minimale bevoegdheden te verlenen om hun werk gedaan te krijgen. Vermijd het toewijzen van bredere rollen in bredere bereiken, zelfs als deze in eerste instantie handiger lijkt te zijn. Door de rollen en bereiken te beperken, beperken we welke bronnen risico lopen als de beveiligings-principal ooit is aangetast.
+
+Het volgende diagram toont een voorgesteld patroon voor het gebruik van Azure RBAC.
 
 ![Azure RBAC en minimale bevoegdheid](./media/best-practices/rbac-least-privilege.png)
 

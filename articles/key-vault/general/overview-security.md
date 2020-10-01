@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 4c0430f96934c16a26ca3ab908da6aa017810ad0
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: b6163ca0cb02670024fe95459f31ac81c4da756c
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377570"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596355"
 ---
 # <a name="azure-key-vault-security"></a>Azure Key Vault-beveiliging
 
@@ -75,6 +75,14 @@ U kunt de bloot stelling van uw kluizen verminderen door op te geven welke IP-ad
 Nadat de firewall regels van kracht zijn, kunnen gebruikers alleen gegevens van Key Vault lezen wanneer hun aanvragen afkomstig zijn van toegestane virtuele netwerken of IPv4-adresbereiken. Dit is tevens van toepassing voor toegang tot Key Vault vanuit Azure Portal. Hoewel gebruikers kunnen bladeren naar een sleutelkluis van Azure Portal, kunnen ze mogelijk geen sleutels, geheimen of certificaten weergeven als hun clientcomputer niet in de lijst met toegestane clients staat. Dit is ook van invloed op de Key Vault-kiezer door andere Azure-Services. Gebruikers zien mogelijk een lijst met sleutelkluizen, maar geen lijst met sleutels als firewallregels hun clientcomputer weigeren.
 
 Raadpleeg voor meer informatie over Azure Key Vault netwerk adres [service-eind punten voor virtuele netwerken voor Azure Key Vault](overview-vnet-service-endpoints.md))
+
+### <a name="tls-and-https"></a>TLS en HTTPS
+
+*   De front-end van Key Vault (Data-vlak) is een multi tenant-server. Dit betekent dat sleutel kluizen van verschillende klanten hetzelfde open bare IP-adres kunnen delen. Om isolatie te kunnen garanderen, wordt elke HTTP-aanvraag geverifieerd en onafhankelijk van andere aanvragen geautoriseerd.
+*   U kunt oudere versies van TLS identificeren om beveiligings problemen te melden, maar omdat het open bare IP-adres wordt gedeeld, is het niet mogelijk om oude versies van TLS uit te scha kelen voor afzonderlijke sleutel kluizen op het niveau van het Trans Port.
+*   Met het HTTPS-protocol kan de client deel nemen aan TLS-onderhandeling. **Clients kunnen de meest recente versie van TLS afdwingen**en wanneer een client dit doet, wordt de bijbehorende beveiliging op het niveau van de volledige verbinding gebruikt. Het feit dat Key Vault nog steeds oudere versies van TLS ondersteunt, heeft geen invloed op de beveiliging van verbindingen met nieuwere TLS-versies.
+*   Ondanks bekende beveiligings problemen in het TLS-protocol is er geen bekende aanval waarmee een kwaadwillende agent informatie kan ophalen uit uw sleutel kluis wanneer de aanvaller een verbinding initieert met een TLS-versie met beveiligings problemen. De aanvaller moet zich nog steeds zelf verifiëren en autoriseren, en zolang legitieme clients altijd verbinding maken met recente TLS-versies, is er geen manier waarop referenties kunnen worden gelekt van beveiligings problemen in oude TLS-versies.
+
 
 ## <a name="monitoring"></a>Bewaking
 

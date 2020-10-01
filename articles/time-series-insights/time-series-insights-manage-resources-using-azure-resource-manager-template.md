@@ -9,16 +9,19 @@ manager: diviso
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3e9075014863e653a986dc4dbec7b9bc5e9f31bc
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: ee4d3957403e169d41fb9e3befa0d62e4b0d9075
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421192"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597862"
 ---
 # <a name="create-azure-time-series-insights-gen-1-resources-using-azure-resource-manager-templates"></a>Azure Time Series Insights gen 1-resources maken met behulp van Azure Resource Manager sjablonen
+
+> [!CAUTION]
+> Dit is een gen1-artikel.
 
 In dit artikel wordt beschreven hoe u Azure Time Series Insights-resources maakt en implementeert met behulp van [Azure Resource Manager sjablonen](https://docs.microsoft.com/azure/azure-resource-manager/), Power shell en de resource provider van Azure time series Insights.
 
@@ -37,7 +40,7 @@ Een resource manager-sjabloon is een JSON-bestand dat de infra structuur en conf
 - [Resources implementeren met Resource Manager-sjablonen en Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
 - [Resource typen van micro soft. TimeSeriesInsights](/azure/templates/microsoft.timeseriesinsights/allversions)
 
-De Quick Start-sjabloon [201-timeseriesinsights-met-eventhub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-timeseriesinsights-environment-with-eventhub) wordt gepubliceerd op github. Met deze sjabloon maakt u een Azure Time Series Insights omgeving, een onderliggende gebeurtenis bron die is geconfigureerd voor het gebruik van gebeurtenissen van een event hub en toegangs beleid dat toegang verleent tot de gegevens van de omgeving. Als er geen bestaande Event hub wordt opgegeven, wordt er een gemaakt met de implementatie.
+De Quick Start-sjabloon [201-timeseriesinsights-met-eventhub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-timeseriesinsights-environment-with-eventhub) wordt gepubliceerd op github. Met deze sjabloon wordt een Azure Time Series Insights omgeving gemaakt, een onderliggende gebeurtenis bron die is geconfigureerd voor het gebruik van gebeurtenissen van een event hub en toegangs beleid waarmee toegang wordt verleend tot de gegevens van de omgeving. Als er geen bestaande Event hub wordt opgegeven, wordt er een gemaakt met de implementatie.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -49,7 +52,7 @@ In de volgende procedure wordt beschreven hoe u Power shell gebruikt om een Azur
 
 1. Kloon of kopieer de sjabloon [201-timeseriesinsights-with-eventhub](https://github.com/Azure/azure-quickstart-templates/blob/master/201-timeseriesinsights-environment-with-eventhub/azuredeploy.json) van github.
 
-   * Een parameter bestand maken
+   - Een parameter bestand maken
 
      Als u een parameter bestand wilt maken, kopieert u het bestand [201-timeseriesinsights-environment-with-eventhub](https://github.com/Azure/azure-quickstart-templates/blob/master/201-timeseriesinsights-environment-with-eventhub/azuredeploy.parameters.json) .
 
@@ -57,19 +60,19 @@ In de volgende procedure wordt beschreven hoe u Power shell gebruikt om een Azur
 
     <div id="required-parameters"></div>
 
-   * Vereiste parameters
+   - Vereiste parameters
 
      | Parameter | Beschrijving |
      | --- | --- |
      | eventHubNamespaceName | De naam ruimte van de bron Event Hub. |
      | eventHubName | De naam van de bron Event Hub. |
      | consumerGroupName | De naam van de Consumer groep die door de Azure Time Series Insights-service wordt gebruikt om de gegevens van de Event Hub te lezen. **Opmerking:** Om bron conflicten te voor komen, moet deze Consumer groep worden toegewezen aan de Azure Time Series Insights-service en niet worden gedeeld met andere lezers. |
-     | environmentName | De naam van de omgeving. De naam mag niet de volgende tekens bevatten: `<` ,,,,,,,, `>` `%` `&` `:` `\\` `?` `/` en alle Stuur codes. Alle andere tekens zijn toegestaan.|
-     | eventSourceName | De naam van de onderliggende bron van de gebeurtenis bron. De naam mag niet de volgende tekens bevatten: `<` ,,,,,,,, `>` `%` `&` `:` `\\` `?` `/` en alle Stuur codes. Alle andere tekens zijn toegestaan. |
+     | environmentName | De naam van de omgeving. De naam mag niet de volgende tekens bevatten:   `<` ,,,,,,,, `>` `%` `&` `:` `\\` `?` `/` en alle Stuur codes. Alle andere tekens zijn toegestaan.|
+     | eventSourceName | De naam van de onderliggende bron van de gebeurtenis bron. De naam mag niet de volgende tekens bevatten:   `<` ,,,,,,,, `>` `%` `&` `:` `\\` `?` `/` en alle Stuur codes. Alle andere tekens zijn toegestaan. |
 
     <div id="optional-parameters"></div>
 
-   * Optionele parameters
+   - Optionele parameters
 
      | Parameter | Beschrijving |
      | --- | --- |
@@ -84,7 +87,7 @@ In de volgende procedure wordt beschreven hoe u Power shell gebruikt om een Azur
      | accessPolicyReaderObjectIds | Een lijst met object-Id's van de gebruikers of toepassingen in azure AD die lezers toegang moeten hebben tot de omgeving. U kunt de objectId voor de Service-Principal verkrijgen door de cmdlets **Get-AzADUser** of **Get-AzADServicePrincipal** aan te roepen. Het maken van een toegangs beleid voor Azure AD-groepen wordt nog niet ondersteund. |
      | accessPolicyContributorObjectIds | Een lijst met object-Id's van de gebruikers of toepassingen in azure AD die Inzender toegang moeten hebben tot de omgeving. U kunt de objectId voor de Service-Principal verkrijgen door de cmdlets **Get-AzADUser** of **Get-AzADServicePrincipal** aan te roepen. Het maken van een toegangs beleid voor Azure AD-groepen wordt nog niet ondersteund. |
 
-   * Als voor beeld wordt het volgende parameter bestand gebruikt voor het maken van een omgeving en een gebeurtenis bron die gebeurtenissen uit een bestaande Event Hub leest. Er worden ook twee toegangs beleidsregels gemaakt waarmee Inzender toegang tot de omgeving kan worden verleend.
+   - Als voor beeld wordt het volgende parameter bestand gebruikt voor het maken van een omgeving en een gebeurtenis bron die gebeurtenissen uit een bestaande Event Hub leest. Er worden ook twee toegangs beleidsregels gemaakt waarmee Inzender toegang tot de omgeving kan worden verleend.
 
      ```JSON
      {
@@ -114,12 +117,12 @@ In de volgende procedure wordt beschreven hoe u Power shell gebruikt om een Azur
                      "AGUID001-0000-0000-0000-000000000000",
                      "AGUID002-0000-0000-0000-000000000000"
                  ]
-             }    
+             }
          }
      }
      ```
 
-    * Lees het artikel [para meters](../azure-resource-manager/templates/parameter-files.md) voor meer informatie.
+   - Lees het artikel [para meters](../azure-resource-manager/templates/parameter-files.md) voor meer informatie.
 
 ## <a name="deploy-the-quickstart-template-locally-using-powershell"></a>De Quick Start-sjabloon lokaal implementeren met Power shell
 
@@ -128,19 +131,19 @@ In de volgende procedure wordt beschreven hoe u Power shell gebruikt om een Azur
 
 1. Meld u in Power shell aan bij uw Azure-account.
 
-    * Voer de volgende opdracht uit vanuit een Power shell-prompt:
+    - Voer de volgende opdracht uit vanuit een Power shell-prompt:
 
       ```powershell
       Connect-AzAccount
       ```
 
-    * U wordt gevraagd om u aan te melden bij uw Azure-account. Nadat u zich hebt aangemeld, voert u de volgende opdracht uit om uw beschik bare abonnementen weer te geven:
+    - U wordt gevraagd om u aan te melden bij uw Azure-account. Nadat u zich hebt aangemeld, voert u de volgende opdracht uit om uw beschik bare abonnementen weer te geven:
 
       ```powershell
       Get-AzSubscription
       ```
 
-    * Met deze opdracht wordt een lijst met beschik bare Azure-abonnementen geretourneerd. Kies een abonnement voor de huidige sessie door de volgende opdracht uit te voeren. Vervang door `<YourSubscriptionId>` de GUID voor het Azure-abonnement dat u wilt gebruiken:
+    - Met deze opdracht wordt een lijst met beschik bare Azure-abonnementen geretourneerd. Kies een abonnement voor de huidige sessie door de volgende opdracht uit te voeren. Vervang door `<YourSubscriptionId>` de GUID voor het Azure-abonnement dat u wilt gebruiken:
 
       ```powershell
       Set-AzContext -SubscriptionID <YourSubscriptionId>
@@ -148,13 +151,13 @@ In de volgende procedure wordt beschreven hoe u Power shell gebruikt om een Azur
 
 1. Maak een nieuwe resource groep als deze niet bestaat.
 
-   * Als u geen bestaande resource groep hebt, maakt u een nieuwe resource groep met de opdracht **New-AzResourceGroup** . Geef de naam op van de resource groep en de locatie die u wilt gebruiken. Bijvoorbeeld:
+   - Als u geen bestaande resource groep hebt, maakt u een nieuwe resource groep met de opdracht **New-AzResourceGroup** . Geef de naam op van de resource groep en de locatie die u wilt gebruiken. Bijvoorbeeld:
 
      ```powershell
      New-AzResourceGroup -Name MyDemoRG -Location "West US"
      ```
 
-   * Als dit lukt, wordt een samen vatting van de nieuwe resource groep weer gegeven.
+   - Als dit lukt, wordt een samen vatting van de nieuwe resource groep weer gegeven.
 
      ```powershell
      ResourceGroupName : MyDemoRG
@@ -166,7 +169,7 @@ In de volgende procedure wordt beschreven hoe u Power shell gebruikt om een Azur
 
 1. De implementatie testen.
 
-   * Valideer uw implementatie door de cmdlet uit te voeren `Test-AzResourceGroupDeployment` . Wanneer u de implementatie test, geeft u de para meters op exact dezelfde manier op als bij het uitvoeren van de implementatie.
+   - Valideer uw implementatie door de cmdlet uit te voeren `Test-AzResourceGroupDeployment` . Wanneer u de implementatie test, geeft u de para meters op exact dezelfde manier op als bij het uitvoeren van de implementatie.
 
      ```powershell
      Test-AzResourceGroupDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -TemplateParameterFile <path to parameters file>\azuredeploy.parameters.json
@@ -174,27 +177,27 @@ In de volgende procedure wordt beschreven hoe u Power shell gebruikt om een Azur
 
 1. De implementatie maken
 
-    * Als u de nieuwe implementatie wilt maken, voert u de `New-AzResourceGroupDeployment` cmdlet uit en geeft u de benodigde para meters op wanneer u hierom wordt gevraagd. De para meters bevatten een naam voor uw implementatie, de naam van uw resource groep en het pad of de URL naar het sjabloon bestand. Als de **modus** parameter niet is opgegeven, wordt de standaard waarde **Incrementeel** gebruikt. Lees [incrementele en volledige implementaties](../azure-resource-manager/templates/deployment-modes.md)voor meer informatie.
+    - Als u de nieuwe implementatie wilt maken, voert u de `New-AzResourceGroupDeployment` cmdlet uit en geeft u de benodigde para meters op wanneer u hierom wordt gevraagd. De para meters bevatten een naam voor uw implementatie, de naam van uw resource groep en het pad of de URL naar het sjabloon bestand. Als de **modus** parameter niet is opgegeven, wordt de standaard waarde **Incrementeel** gebruikt. Lees [incrementele en volledige implementaties](../azure-resource-manager/templates/deployment-modes.md)voor meer informatie.
 
-    * Met de volgende opdracht wordt u gevraagd om de vijf vereiste para meters in het Power shell-venster:
+    - Met de volgende opdracht wordt u gevraagd om de vijf vereiste para meters in het Power shell-venster:
 
       ```powershell
       New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
       ```
 
-    * Als u in plaats daarvan een parameter bestand wilt opgeven, gebruikt u de volgende opdracht:
+    - Als u in plaats daarvan een parameter bestand wilt opgeven, gebruikt u de volgende opdracht:
 
       ```powershell
       New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -TemplateParameterFile <path to parameters file>\azuredeploy.parameters.json
       ```
 
-    * U kunt ook inline-para meters gebruiken wanneer u de cmdlet implementatie uitvoert. De opdracht is als volgt:
+    - U kunt ook inline-para meters gebruiken wanneer u de cmdlet implementatie uitvoert. De opdracht is als volgt:
 
       ```powershell
       New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -parameterName "parameterValue"
       ```
 
-    * Als u een [volledige](../azure-resource-manager/templates/deployment-modes.md) implementatie wilt uitvoeren, stelt u de para meter voor de **modus** in op **voltooid**:
+    - Als u een [volledige](../azure-resource-manager/templates/deployment-modes.md) implementatie wilt uitvoeren, stelt u de para meter voor de **modus** in op **voltooid**:
 
       ```powershell
       New-AzResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
@@ -202,7 +205,7 @@ In de volgende procedure wordt beschreven hoe u Power shell gebruikt om een Azur
 
 1. De implementatie controleren
 
-    * Als de resources met succes zijn geïmplementeerd, wordt een samen vatting van de implementatie weer gegeven in het Power shell-venster:
+    - Als de resources met succes zijn geïmplementeerd, wordt een samen vatting van de implementatie weer gegeven in het Power shell-venster:
 
       ```powershell
        DeploymentName          : MyDemoDeployment
@@ -243,7 +246,7 @@ In de volgende procedure wordt beschreven hoe u Power shell gebruikt om een Azur
 
 1. Implementeer de Quick Start-sjabloon via de Azure Portal
 
-   * De start pagina van de Snelstartgids op GitHub bevat ook een knop **implementeren naar Azure** . Als u op deze knop klikt, wordt er een aangepaste implementatie pagina in de Azure Portal. Op deze pagina kunt u waarden voor elk van de para meters invoeren of selecteren in de tabellen [vereiste para meters](#required-parameters) of [optionele para meters](#optional-parameters) . Wanneer u de instellingen hebt ingevuld, wordt de sjabloon implementatie gestart wanneer u op de knop **aanschaffen** klikt.
+   - De start pagina van de Snelstartgids op GitHub bevat ook een knop **implementeren naar Azure** . Als u op deze knop klikt, wordt er een aangepaste implementatie pagina in de Azure Portal. Op deze pagina kunt u waarden voor elk van de para meters invoeren of selecteren in de tabellen [vereiste para meters](#required-parameters) of [optionele para meters](#optional-parameters) . Wanneer u de instellingen hebt ingevuld, wordt de sjabloon implementatie gestart wanneer u op de knop **aanschaffen** klikt.
     </br>
     </br>
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-timeseriesinsights-environment-with-eventhub%2Fazuredeploy.json" target="_blank">

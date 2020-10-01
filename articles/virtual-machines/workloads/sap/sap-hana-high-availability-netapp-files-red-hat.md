@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 08/11/2020
+ms.date: 09/30/2020
 ms.author: radeltch
-ms.openlocfilehash: 030677276fa077c06a95e7c677fec956b9c2a947
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3a5238ec9e9bc30da330be206eb559acc3c2ec07
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88556314"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598075"
 ---
 # <a name="high-availability-of-sap-hana-scale-up-with-azure-netapp-files-on-red-hat-enterprise-linux"></a>Hoge Beschik baarheid van SAP HANA omhoog schalen met Azure NetApp Files op Red Hat Enterprise Linux
 
@@ -219,7 +219,7 @@ Om te voldoen aan de SAP-vereisten voor minimale door Voer voor/Hana/data en/Han
 
 Eerst moet u de Azure NetApp Files volumes maken. Voer vervolgens de volgende stappen uit:
 
-1.  Maak een resourcegroep.
+1.  Een resourcegroep maken.
 2.  Maak een virtueel netwerk.
 3.  Maak een beschikbaarheidsset. Stel het maximale update domein in.
 4.  Maak een load balancer (intern). Standaard load balancer worden aanbevolen.
@@ -548,13 +548,18 @@ In dit voor beeld heeft elk cluster knooppunt een eigen HANA NFS-bestands systee
 
     ```
     pcs constraint location SAPHanaTopology_HN1_03-clone rule score=-INFINITY hana_nfs1_active ne true and hana_nfs2_active ne true
+    # On RHEL 7.x
     pcs constraint location SAPHana_HN1_03-master rule score=-INFINITY hana_nfs1_active ne true and hana_nfs2_active ne true
+    # On RHEL 8.x
+    pcs constraint location SAPHana_HN1_03-clone rule score=-INFINITY hana_nfs1_active ne true and hana_nfs2_active ne true
     # Take the cluster out of maintenance mode
     sudo pcs property set maintenance-mode=false
     ```
 
    Controleer de status van het cluster en alle resources
-
+   > [!NOTE]
+   > Dit artikel bevat verwijzingen naar de term *Slave*, een term die door micro soft niet meer wordt gebruikt. Wanneer de periode van de software wordt verwijderd, worden deze uit dit artikel verwijderd.
+   
     ```
     sudo pcs status
     

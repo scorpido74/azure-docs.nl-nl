@@ -7,16 +7,16 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: a899927166d7e1294ad89d48e5c646e6abb5ed76
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 9b0eeda443aefc105fb36d6075c717fafae4cb61
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707608"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598036"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>Problemen met Azure Files oplossen in Windows (SMB)
 
-In dit artikel vindt u algemene problemen die betrekking hebben op Microsoft Azure-bestanden wanneer u verbinding maakt vanaf Windows-clients. Het biedt ook mogelijke oorzaken en oplossingen voor deze problemen. Naast de stappen voor probleem oplossing in dit artikel, kunt u ook [AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows)gebruiken   om ervoor te zorgen dat de Windows-client omgeving voldoet aan de vereisten. AzFileDiagnostics automatiseert de detectie van de meeste symptomen die in dit artikel worden genoemd en helpt u bij het instellen van uw omgeving om optimaal gebruik te maken van de prestaties. U kunt deze informatie ook vinden in de [probleem oplosser voor Azure files-shares](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares) die stappen biedt om u te helpen bij het verbinden/koppelen van Azure files shares.
+In dit artikel vindt u algemene problemen die betrekking hebben op Microsoft Azure-bestanden wanneer u verbinding maakt vanaf Windows-clients. Het biedt ook mogelijke oorzaken en oplossingen voor deze problemen. Naast de stappen voor probleem oplossing in dit artikel, kunt u ook [AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows)gebruiken   om ervoor te zorgen dat de Windows-client omgeving voldoet aan de vereisten. AzFileDiagnostics automatiseert de detectie van de meeste symptomen die in dit artikel worden genoemd en helpt u bij het instellen van uw omgeving om optimaal gebruik te maken van de prestaties.
 
 > [!IMPORTANT]
 > De inhoud van dit artikel is alleen van toepassing op SMB-shares. Zie [problemen met Azure NFS-bestands shares oplossen](storage-troubleshooting-files-nfs.md)voor meer informatie over NFS-shares.
@@ -343,7 +343,7 @@ De cmdlet voert deze controles hieronder uit, en biedt richt lijnen voor fouten:
 1. CheckADObjectPasswordIsCorrect: Zorg ervoor dat het wacht woord dat is geconfigureerd voor de AD-identiteit die het opslag account vertegenwoordigt, overeenkomt met de sleutel kerb1 of kerb2 van het opslag account. Als het wacht woord onjuist is, kunt u [Update-AzStorageAccountADObjectPassword](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-update-password) uitvoeren om het wacht woord opnieuw in te stellen. 
 2. CheckADObject: Bevestig dat er een object in de Active Directory is dat het opslag account vertegenwoordigt en de juiste SPN (Service Principal Name) heeft. Als de SPN niet juist is ingesteld, voert u de set-AD-cmdlet uit die is geretourneerd in de cmdlet debug om de SPN te configureren.
 3. CheckDomainJoined: Controleer of de client computer lid is van een domein dat is gekoppeld aan AD. Als uw computer niet is gekoppeld aan AD, raadpleegt u dit [artikel](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/join-a-computer-to-a-domain#:~:text=To%20join%20a%20computer%20to%20a%20domain&text=Navigate%20to%20System%20and%20Security,join%2C%20and%20then%20click%20OK) voor instructies over het toevoegen van een domein.
-4. CheckPort445Connectivity: Controleer of poort 445 is geopend voor de SMB-verbinding. Als de vereiste poort niet open is, raadpleegt u het hulp programma voor probleem oplossing [AzFileDiagnostics.ps1](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) voor verbindings problemen met Azure files.
+4. CheckPort445Connectivity: Controleer of poort 445 is geopend voor de SMB-verbinding. Als de vereiste poort niet open is, raadpleegt u het hulp programma voor probleem oplossing [AzFileDiagnostics.ps1](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) voor verbindings problemen met Azure files.
 5. CheckSidHasAadUser: Controleer of de aangemelde AD-gebruiker is gesynchroniseerd met Azure AD. Als u wilt controleren of een specifieke AD-gebruiker is gesynchroniseerd met Azure AD, kunt u de-gebruikers naam en-domein opgeven in de invoer parameters. 
 6. CheckGetKerberosTicket: er wordt geprobeerd een Kerberos-ticket op te halen om verbinding te maken met het opslag account. Als er geen geldig Kerberos-token is, voert u de cmdlet Klist ophalen CIFS/Storage-account-name. file. core. Windows. net uit en controleert u de fout code in het hoofd knooppunt waardoor het ophalen van het ticket mislukt.
 7. CheckStorageAccountDomainJoined: Controleer of de AD-verificatie is ingeschakeld en of de AD-eigenschappen van het account zijn ingevuld. Als dat niet het geval is, raadpleegt u de instructie [hier](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-enable) om AD DS verificatie in te scha kelen op Azure files. 

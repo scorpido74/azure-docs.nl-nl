@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 09/10/2019
 ms.author: v-miegge
-ms.openlocfilehash: 66dfd198b543ec49fabe381b50174b182cf070c7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 82bebcbda3110d51ae72df1fb4b18fedaa6c2f4e
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336034"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597712"
 ---
 # <a name="repair-a-windows-vm-by-using-the-azure-virtual-machine-repair-commands"></a>Een Windows-VM herstellen met de reparatieopdrachten van Azure Virtual Machine
 
@@ -43,7 +43,7 @@ Volg deze stappen om het VM-probleem op te lossen:
 1. Azure Cloud Shell starten
 2. Voer AZ extension add/update uit.
 3. Voer AZ VM Repair Create.
-4. Voer AZ VM Repair run uit.
+4. Voer AZ VM Repair run uit of voer beperkings stappen uit.
 5. Voer AZ VM Repair Restore.
 
 Zie [AZ VM Repair](/cli/azure/ext/vm-repair/vm/repair)(Engelstalig) voor aanvullende documentatie en instructies.
@@ -60,7 +60,7 @@ Zie [AZ VM Repair](/cli/azure/ext/vm-repair/vm/repair)(Engelstalig) voor aanvull
 
    Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, hebt u voor deze snelstart versie 2.0.30 of hoger van Azure CLI nodig. Voer ``az --version`` uit om de versie te bekijken. Als u Azure CLI wilt installeren of upgraden, raadpleegt u [Azure cli installeren](/cli/azure/install-azure-cli).
    
-   Als u zich moet aanmelden bij Cloud Shell met een ander account dan u momenteel bent aangemeld bij de Azure Portal met kunt u referenties voor ``az login`` [Aanmelden](/cli/azure/reference-index?view=azure-cli-latest#az-login)gebruiken.  Als u wilt scha kelen tussen de abonnementen die zijn gekoppeld aan uw account, kunt u ``az account set --subscription`` [AZ account set reference](/cli/azure/account?view=azure-cli-latest#az-account-set)gebruiken.
+   Als u zich moet aanmelden bij Cloud Shell met een ander account dan u momenteel bent aangemeld bij de Azure Portal met kunt u referenties voor ``az login`` [Aanmelden](/cli/azure/reference-index?view=azure-cli-latest#az-login&preserve-view=true)gebruiken.  Als u wilt scha kelen tussen de abonnementen die zijn gekoppeld aan uw account, kunt u ``az account set --subscription`` [AZ account set reference](/cli/azure/account?view=azure-cli-latest#az-account-set&preserve-view=true)gebruiken.
 
 2. Als dit de eerste keer is dat u de `az vm repair` opdrachten gebruikt, voegt u de extensie VM-herstel cli toe.
 
@@ -80,11 +80,13 @@ Zie [AZ VM Repair](/cli/azure/ext/vm-repair/vm/repair)(Engelstalig) voor aanvull
    az vm repair create -g MyResourceGroup -n myVM --repair-username username --repair-password 'password!234' --verbose
    ```
 
-4. Voer `az vm repair run` uit. Met deze opdracht wordt het opgegeven herstel script op de gekoppelde schijf uitgevoerd via de reparatie-VM. Als in de hand leiding voor probleem oplossing die u gebruikt, een run-id wordt gebruikt, kunt u deze hier gebruiken `az vm repair list-scripts` om beschik bare herstel scripts te bekijken. De resource groep en de VM-naam die hier worden gebruikt voor de niet-functionele VM die u in stap 3 gebruikt.
+4. Voer `az vm repair run` uit. Met deze opdracht wordt het opgegeven herstel script op de gekoppelde schijf uitgevoerd via de reparatie-VM. Als in de hand leiding voor probleem oplossing die u gebruikt, een run-id wordt gebruikt, kunt u deze hier gebruiken `az vm repair list-scripts` om beschik bare herstel scripts te bekijken. De resource groep en de VM-naam die hier worden gebruikt voor de niet-functionele VM die u in stap 3 gebruikt. Meer informatie over de herstel scripts vindt u in de [herstel script bibliotheek](https://github.com/Azure/repair-script-library).
 
    ```azurecli-interactive
    az vm repair run -g MyResourceGroup -n MyVM --run-on-repair --run-id win-hello-world --verbose
    ```
+   
+   U kunt eventueel benodigde hand matige stappen voor het oplossen van problemen uitvoeren met de reparatie-VM en vervolgens door gaan naar stap 5.
 
 5. Voer `az vm repair restore` uit. Met deze opdracht wordt de gerepareerde besturingssysteem schijf vervangen door de oorspronkelijke besturingssysteem schijf van de virtuele machine. De resource groep en de VM-naam die hier worden gebruikt voor de niet-functionele VM die u in stap 3 gebruikt.
 

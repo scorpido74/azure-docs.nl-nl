@@ -15,18 +15,20 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: d0f040961bfb72082f8c5accb86999d489a93de5
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 5d6530cf7b8d8611ff23a3517112cb0aa7442d6d
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401381"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91595963"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>Uw inhoud beveiligen met Media Services dynamische versleuteling
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Met Azure Media Services kunt u uw media beveiligen vanaf het moment dat deze uw computer verlaten en ze worden opgeslagen, verwerkt en afgeleverd. Met Media Services kunt u uw live en on-demand inhoud dynamisch versleutelen met Advanced Encryption Standard (AES-128) of een van de drie belangrijkste Digital Rights Management-systemen (DRM): Microsoft PlayReady, Google Widevine en Apple FairPlay. Media Services biedt ook een service voor het leveren van AES-sleutels en DRM-licenties (PlayReady, Widevine en FairPlay) aan geautoriseerde klanten. Als inhoud is versleuteld met een AES-sleutel en via HTTPS wordt verzonden, wordt deze niet duidelijk totdat de client wordt bereikt. 
+Met Azure Media Services kunt u uw media beveiligen vanaf het moment dat deze uw computer verlaten en ze worden opgeslagen, verwerkt en afgeleverd. Met Media Services kunt u uw live en on-demand inhoud dynamisch versleutelen met Advanced Encryption Standard (AES-128) of een van de drie belangrijkste Digital Rights Management-systemen (DRM): Microsoft PlayReady, Google Widevine en Apple FairPlay. Media Services biedt ook een service voor het leveren van AES-sleutels en DRM-licenties (PlayReady, Widevine en FairPlay) aan geautoriseerde klanten. Als inhoud is versleuteld met een AES-sleutel en via HTTPS wordt verzonden, wordt deze niet duidelijk totdat de client wordt bereikt.
+
+[!INCLUDE [Widevine is not available in the GovCloud region.](./includes/widevine-not-available-govcloud.md)]
 
 In Media Services v3 is een inhouds sleutel gekoppeld aan streaming-Locator (Zie [dit voor beeld](protect-with-aes128.md)). Als u de Media Services key delivery-service gebruikt, kunt u Azure Media Services de inhouds sleutel voor u laten genereren. De inhouds sleutel moet zelf worden gegenereerd als u de service voor de levering van sleutels gebruikt, of als u een scenario met een hoge Beschik baarheid wilt afhandelen, waarbij u dezelfde inhouds sleutel moet hebben in twee data centers.
 
@@ -136,7 +138,7 @@ HLS/CMAF + FairPlay (inclusief HEVC/H. 265) wordt ondersteund op de volgende app
 
 * iOS 11 of hoger.
 * iPhone 8 of hoger.
-* MacOS High Sierra met Intel 7 Generation CPU.
+* macOS High Sierra met Intel 7 Generation CPU.
 
 ### <a name="mpeg-dash"></a>MPEG-DASH
 

@@ -9,14 +9,14 @@ manager: diviso
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: ee94a36ea27a15067cbcbab22b10629bc4b37634
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c7f811991cdc325a3901a696216af21883f02fdb
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097573"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596247"
 ---
 # <a name="add-an-event-hub-event-source-to-your-azure-time-series-insights-environment"></a>Een Event Hub gebeurtenis bron toevoegen aan uw Azure Time Series Insights omgeving
 
@@ -42,7 +42,7 @@ Een nieuwe consumenten groep toevoegen aan uw Event Hub:
 
     [![De Event Hub naam ruimte openen](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-connect-event-hub-namespace.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-connect-event-hub-namespace.png#lightbox)
 
-1. Selecteer in uw Event Hub-exemplaar **entiteiten > consumenten groepen**. Selecteer vervolgens **+ consumenten groep** om een nieuwe consumenten groep toe te voegen. 
+1. Selecteer in uw Event Hub-exemplaar **entiteiten > consumenten groepen**. Selecteer vervolgens **+ consumenten groep** om een nieuwe consumenten groep toe te voegen.
 
    [![Event hub-een Consumer groep toevoegen](media/time-series-insights-how-to-add-an-event-source-eventhub/add-event-hub-consumer-group.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/add-event-hub-consumer-group.png#lightbox)
 
@@ -54,7 +54,7 @@ Een nieuwe consumenten groep toevoegen aan uw Event Hub:
 
 ## <a name="add-a-new-event-source"></a>Een nieuwe gebeurtenis bron toevoegen
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Zoek uw bestaande Azure Time Series Insights-omgeving. Selecteer in het menu links **alle resources**en selecteer vervolgens uw Azure time series Insights omgeving.
 
@@ -68,11 +68,11 @@ Een nieuwe consumenten groep toevoegen aan uw Event Hub:
 
 1. Selecteer de juiste waarden voor de **optie importeren**:
 
-   * Als u een bestaande Event Hub hebt in een van uw abonnementen, selecteert u **Event hub gebruiken uit beschik bare abonnementen**. Deze optie is de eenvoudigste benadering.
+   - Als u een bestaande Event Hub hebt in een van uw abonnementen, selecteert u **Event hub gebruiken uit beschik bare abonnementen**. Deze optie is de eenvoudigste benadering.
 
      [![Selecteer een optie voor het importeren van gebeurtenis bronnen](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-event-hub-select-import-option.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-event-hub-select-import-option.png#lightbox)
 
-    *  In de volgende tabel worden de vereiste eigenschappen voor de optie **Event hub gebruiken van beschik bare abonnementen** beschreven:
+   - In de volgende tabel worden de vereiste eigenschappen voor de optie **Event hub gebruiken van beschik bare abonnementen** beschreven:
 
        [![Details van abonnement en Event Hub](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-configure-create-confirm.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-configure-create-confirm.png#lightbox)
 
@@ -84,10 +84,10 @@ Een nieuwe consumenten groep toevoegen aan uw Event Hub:
        | Waarde van Event hub-beleid | Selecteer het gewenste beleid voor gedeelde toegang. U kunt het beleid voor gedeelde toegang maken op het tabblad Event Hub **configureren** . Elk gedeeld toegangs beleid heeft een naam, machtigingen die u instelt en toegangs sleutels. Het gedeelde toegangs beleid voor uw gebeurtenis bron *moet* **Lees** machtigingen hebben. |
        | Event hub-beleids sleutel | Vooraf ingevuld op basis van de geselecteerde Event hub-beleids waarde. |
 
-    * Als de Event Hub extern is voor uw abonnementen of als u geavanceerde opties wilt selecteren, selecteert u **Event hub-instellingen hand matig opgeven**.
+   - Als de Event Hub extern is voor uw abonnementen of als u geavanceerde opties wilt selecteren, selecteert u **Event hub-instellingen hand matig opgeven**.
 
        De volgende tabel beschrijft de vereiste eigenschappen voor de optie voor het **opgeven van Event hub-instellingen hand matig** :
- 
+
        | Eigenschap | Beschrijving |
        | --- | --- |
        | Abonnements-id | Het abonnement waartoe de gewenste Event Hub instantie en naam ruimte behoort. |
@@ -97,7 +97,7 @@ Een nieuwe consumenten groep toevoegen aan uw Event Hub:
        | Waarde van Event hub-beleid | Selecteer het gewenste beleid voor gedeelde toegang. U kunt het beleid voor gedeelde toegang maken op het tabblad Event Hub **configureren** . Elk gedeeld toegangs beleid heeft een naam, machtigingen die u instelt en toegangs sleutels. Het gedeelde toegangs beleid voor uw gebeurtenis bron *moet* **Lees** machtigingen hebben. |
        | Event hub-beleids sleutel | De gedeelde toegangs sleutel die wordt gebruikt voor het verifiëren van toegang tot de naam ruimte Service Bus. Voer hier de primaire of secundaire sleutel in. |
 
-    * Beide opties delen de volgende configuratie opties:
+   - Beide opties delen de volgende configuratie opties:
 
        | Eigenschap | Beschrijving |
        | --- | --- |
@@ -113,8 +113,8 @@ Een nieuwe consumenten groep toevoegen aan uw Event Hub:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Definieer gegevens toegangs beleid](time-series-insights-data-access.md) voor het beveiligen van de gegevens.
+- [Definieer gegevens toegangs beleid](time-series-insights-data-access.md) voor het beveiligen van de gegevens.
 
-* [Gebeurtenissen verzenden](time-series-insights-send-events.md) naar de bron van de gebeurtenis.
+- [Gebeurtenissen verzenden](time-series-insights-send-events.md) naar de bron van de gebeurtenis.
 
-* Toegang tot uw omgeving in de [Azure time series Insights Explorer](https://insights.timeseries.azure.com).
+- Toegang tot uw omgeving in de [Azure time series Insights Explorer](https://insights.timeseries.azure.com).

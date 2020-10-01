@@ -1,14 +1,14 @@
 ---
 title: Beleid ontwerpen als codewerkstromen
 description: Meer informatie over het ontwerpen van werk stromen om uw Azure Policy definities als code te implementeren en om resources automatisch te valideren.
-ms.date: 08/27/2020
+ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: bc7a6d72e344868a799638f724b5c225516b5a32
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 7fa8eb36283821527e16c1d97e326aa9dcde9dba
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651891"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598211"
 ---
 # <a name="design-policy-as-code-workflows"></a>Beleid ontwerpen als codewerkstromen
 
@@ -38,6 +38,8 @@ Voor beelden van deze bestands indelingen vindt u in de [Azure Policy github ops
 
 - Beleids definitie: [een tag toevoegen aan resources](https://github.com/Azure/azure-policy/tree/master/samples/Tags/add-tag)
 - Initiatief definitie: [facturerings Tags](https://github.com/Azure/azure-policy/tree/master/samples/PolicyInitiatives/multiple-billing-tags)
+
+Controleer ook de [Export Azure Policy resources](../how-to/export-resources.md) om uw bestaande definities en toewijzingen op te halen in de [github](https://www.github.com)van de bron code beheer omgeving.
 
 ## <a name="workflow-overview"></a>Overzicht werk stroom
 
@@ -140,7 +142,7 @@ De algemene werk stroom voor beleid als code is voor het ontwikkelen en implemen
 
 In deze gevallen moet er na de implementatie van de toepassing of infra structuur een test abonnement of resource groep worden uitgevoerd om de validatie van alle bestaande beleids regels en initiatieven te controleren. Hoewel ze kunnen worden geconfigureerd als **enforcementMode** die in een dergelijke omgeving worden _uitgeschakeld_ , is het nuttig om te weten te komen als een toepassing of infrastructuur implementatie in een vroeg stadium wordt geschonden door beleids definities. Deze beleids evaluatie moet daarom een stap zijn in deze werk stromen en er kunnen geen implementaties worden uitgevoerd die niet-compatibele resources maken.
 
-## <a name="review"></a>Beoordelen
+## <a name="review"></a>Controleren
 
 In dit artikel wordt de algemene werk stroom voor het beleid behandeld als code en ook de beleids evaluatie moet deel uitmaken van andere implementatie werk stromen. Deze werk stroom kan worden gebruikt in elke omgeving die script stappen en automatisering ondersteunt op basis van triggers.
 

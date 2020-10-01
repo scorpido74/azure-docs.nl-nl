@@ -1,14 +1,14 @@
 ---
 title: Azure Sentinel-werk ruimten op schaal beheren
 description: Meer informatie over het effectief beheren van Azure Sentinel op gedelegeerde klant resources.
-ms.date: 08/27/2020
+ms.date: 09/30/2020
 ms.topic: how-to
-ms.openlocfilehash: 78896d6458f6b1c40655bc36d2bf63e05ddb0a59
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: d1ab392ee946e09a5f9e32ddf01ec2cd1e8bd41f
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90019730"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596932"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>Azure Sentinel-werk ruimten op schaal beheren
 
@@ -35,6 +35,9 @@ Dit gecentraliseerde implementatie model biedt de volgende voor delen:
 - Gegevens van alle gegevens bronnen en gegevens connectors die zijn geïntegreerd met Azure Sentinel (zoals Azure AD-activiteiten logboeken, Office 365-Logboeken of waarschuwingen van micro soft Threat Protection) blijven binnen elke Tenant van de klant.
 - De netwerk latentie wordt verminderd.
 - Eenvoudig om nieuwe dochter ondernemingen of klanten toe te voegen of te verwijderen.
+
+> [!NOTE]
+> U kunt gedelegeerde resources beheren die zich in verschillende [regio's](../../availability-zones/az-overview.md#regions)bevinden. Overdracht van abonnementen over een [nationale Cloud](../../active-directory/develop/authentication-national-cloud.md) en de open bare Azure-Cloud, of over twee afzonderlijke nationale Clouds, wordt echter niet ondersteund.
 
 ## <a name="granular-role-based-access-control-rbac"></a>Gedetailleerd toegangs beheer op basis van rollen (RBAC)
 

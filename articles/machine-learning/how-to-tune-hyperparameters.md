@@ -1,7 +1,7 @@
 ---
 title: Hyper parameters voor uw model afstemmen
 titleSuffix: Azure Machine Learning
-description: Hyper parameters efficiënt afstemmen op uw diepe leer-en machine learning model met behulp van Azure Machine Learning. U leert hoe u de zoek ruimte voor de para meters definieert, een primaire metriek opgeeft die u wilt optimaliseren, en vervroegde uitvoeringen worden uitgevoerd.
+description: Hyper parameters efficiënt afstemmen op diep gaande lessen en machine learning modellen met behulp van Azure Machine Learning.
 ms.author: swatig
 author: swatig007
 ms.reviewer: sgilley
@@ -10,45 +10,43 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 03/30/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 44616d5d90f9c5c3a4f3abf8b8cf2128dc4f0585
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.custom: how-to, devx-track-python, contperfq1
+ms.openlocfilehash: 16a1c966b3f5a674f0ae1dc9c7ee078f45f8bdc2
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333797"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598224"
 ---
 # <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning"></a>Hyper parameters voor uw model afstemmen met Azure Machine Learning
 
 
-Hyper parameters efficiënt afstemmen voor uw model met behulp van Azure Machine Learning.  Afstemming tuning omvat de volgende stappen:
+Automatiseer efficiënt afstemmen van afstemming met behulp van Azure Machine Learning [HyperDrive-pakket](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive?view=azure-ml-py&preserve-view=true). Meer informatie over het uitvoeren van de stappen die nodig zijn om Hyper parameters af te stemmen met de [Azure machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py&preserve-view=true):
 
-* De zoek ruimte voor de para meter definiëren
-* Geef een primaire metriek op om te optimaliseren  
-* Criteria voor vroegtijdige beëindiging opgeven voor slecht uitgevoerde uitvoeringen
-* Resources toewijzen voor afstemming-afstemming
-* Een experiment met de bovenstaande configuratie starten
-* De trainings uitvoeringen visualiseren
-* Selecteer de best presterende configuratie voor uw model
+1. De zoek ruimte voor de para meter definiëren
+1. Geef een primaire metriek op om te optimaliseren  
+1. Beleid voor vroegtijdige beëindiging opgeven voor uitvoeringen die weinig worden uitgevoerd
+1. Resources toewijzen
+1. Een experiment met de gedefinieerde configuratie starten
+1. De trainings uitvoeringen visualiseren
+1. De beste configuratie voor uw model selecteren
 
 ## <a name="what-are-hyperparameters"></a>Wat zijn Hyper parameters?
 
-Hyper parameters zijn aanpas bare para meters die u hebt gekozen voor het trainen van een model dat het trainings proces zelf bepaalt. Als u bijvoorbeeld een diep Neural-netwerk wilt trainen, bepaalt u het aantal verborgen lagen in het netwerk en het aantal knoop punten in elke laag voordat het model wordt getraind. Deze waarden blijven doorgaans constant tijdens het trainings proces.
+**Hyper parameters** zijn aanpas bare para meters waarmee u het model trainings proces kunt beheren. Met Neural-netwerken bepaalt u bijvoorbeeld het aantal verborgen lagen en het aantal knoop punten in elke laag. Model prestaties zijn sterk afhankelijk van Hyper parameters.
 
-In diepe leer-en machine learning scenario's is model prestaties sterk afhankelijk van de geselecteerde afstemming-waarden. Het doel van afstemming verkennen is om in verschillende afstemming-configuraties te zoeken naar een configuratie die de beste prestaties levert. Normaal gesp roken is het afstemming-onderzoek proces erg hand matig, gezien de duur van de zoek ruimte en de evaluatie van elke configuratie kan kostbaar zijn.
+ **Afstemming tuning** is het proces van het vinden van de configuratie van Hyper parameters die de beste prestaties oplevert. Het proces is doorgaans kostbaar en hand matig.
 
-Met Azure Machine Learning kunt u afstemming-exploratie op een efficiënte manier automatiseren, waardoor u veel tijd en bronnen bespaart. U geeft het bereik van afstemming-waarden en een maximum aantal trainings runs op. Het systeem start vervolgens automatisch meerdere gelijktijdige uitvoeringen met verschillende parameter configuraties en zoekt de configuratie die de beste prestaties levert, gemeten op basis van de metrische gegevens die u kiest. Slecht uitgevoerde trainings uitvoeringen worden automatisch afgesloten, waardoor er minder verspilling van reken bronnen kan worden uitgevoerd. Deze resources worden in plaats daarvan gebruikt om andere afstemming-configuraties te verkennen.
+Met Azure Machine Learning kunt u afstemming-tuning automatiseren en experimenten parallel gebruiken om Hyper parameters efficiënt te optimaliseren.
 
 
-## <a name="define-search-space"></a>Zoek ruimte definiëren
+## <a name="define-the-search-space"></a>De zoek ruimte definiëren
 
-Hyper parameters automatisch afstemmen door het bereik van waarden te verkennen dat voor elke afstemming is gedefinieerd.
+Hyper parameters afstemmen door het bereik van waarden te verkennen dat voor elke afstemming is gedefinieerd.
 
-### <a name="types-of-hyperparameters"></a>Typen Hyper parameters
+Hyper parameters kan afzonderlijk of doorlopend zijn en heeft een distributie van waarden die worden beschreven door een [parameter expressie](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.parameter_expressions?view=azure-ml-py&preserve-view=true).
 
-Elke afstemming kan afzonderlijk of doorlopend zijn en heeft een distributie van waarden die worden beschreven door een [parameter expressie](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.parameter_expressions?view=azure-ml-py&preserve-view=true).
-
-#### <a name="discrete-hyperparameters"></a>Discrete Hyper parameters 
+### <a name="discrete-hyperparameters"></a>Discrete Hyper parameters 
 
 Discrete Hyper parameters zijn opgegeven als een `choice` onder discrete waarden. `choice` kan zijn:
 
@@ -64,18 +62,18 @@ Discrete Hyper parameters zijn opgegeven als een `choice` onder discrete waarden
     }
 ```
 
-In dit geval `batch_size` neemt de waarde [16, 32, 64, 128] in `number_of_hidden_layers` beslag op een van de waarden [1, 2, 3, 4].
+In dit geval wordt `batch_size` een van de waarden [16, 32, 64, 128] en wordt `number_of_hidden_layers` een van de waarden [1, 2, 3, 4] gebruikt.
 
-Geavanceerde discrete Hyper parameters kunnen ook worden opgegeven met behulp van een distributie. De volgende distributies worden ondersteund:
+De volgende geavanceerde discrete Hyper parameters kunnen ook worden opgegeven met behulp van een distributie:
 
 * `quniform(low, high, q)` -Retourneert een waarde zoals Round (Uniform (laag, hoog)/q) * q
 * `qloguniform(low, high, q)` -Retourneert een waarde zoals Round (exp (Uniform (laag, hoog)/q) * q
 * `qnormal(mu, sigma, q)` -Retourneert een waarde zoals Round (normaal (mu, Sigma)/q) * q
 * `qlognormal(mu, sigma, q)` -Retourneert een waarde zoals Round (exp (normaal (mu, Sigma)/q) * q
 
-#### <a name="continuous-hyperparameters"></a>Doorlopend Hyper parameters 
+### <a name="continuous-hyperparameters"></a>Doorlopend Hyper parameters 
 
-Doorlopende Hyper parameters worden opgegeven als een distributie over een doorlopend bereik van waarden. Ondersteunde distributies zijn:
+De doorlopende Hyper parameters worden opgegeven als een distributie over een doorlopend bereik van waarden:
 
 * `uniform(low, high)` -Retourneert een waarde die gelijkmatig wordt verdeeld tussen laag en hoog
 * `loguniform(low, high)` -Retourneert een waarde die is getekend op basis van exp (Uniform (Low, High)), zodat de logaritme van de geretourneerde waarde gelijkmatig wordt gedistribueerd
@@ -95,17 +93,17 @@ Deze code definieert een zoek ruimte met twee para meters: `learning_rate` en `k
 
 ### <a name="sampling-the-hyperparameter-space"></a>De afstemming ruimte bemonsteren
 
-U kunt ook de bemonsterings methode voor para meters opgeven die u wilt gebruiken voor de definitie van de afstemming-ruimte. Azure Machine Learning ondersteunt wille keurige steek proeven, Raster sampling en Bayesiaanse-steek proeven.
+Geef de parameter bemonsterings methode op die u wilt gebruiken voor de afstemming ruimte. Azure Machine Learning ondersteunt de volgende methoden:
 
-#### <a name="picking-a-sampling-method"></a>Een steekproef methode kiezen
-
-* Raster sampling kan worden gebruikt als uw afstemming ruimte kan worden gedefinieerd als keuze tussen discrete waarden en als u voldoende budget hebt om uitgebreid te zoeken naar alle waarden in de gedefinieerde zoek ruimte. Daarnaast kan een automatische vroegtijdige beëindiging van slecht uitgevoerde uitvoeringen worden gebruikt, waardoor er minder verspilling van resources is.
-* Met wille keurige steek proeven kan de afstemming ruimte zowel discrete als doorlopende Hyper parameters bevatten. In de praktijk levert de meeste tijd de meeste tijden op en biedt het gebruik van automatische vroegtijdige beëindiging van slechtere uitvoeringen. Sommige gebruikers voeren een eerste zoek opdracht uit met wille keurige steek proeven en verfijnen de zoek ruimte iteratief om de resultaten te verbeteren.
-* Bayesiaanse-bemonstering maakt gebruik van kennis van voor gaande voor beelden bij het kiezen van afstemming-waarden, waardoor de gerapporteerde primaire metriek daad werkelijk wordt verbeterd. Bayesiaanse-steek proeven worden aanbevolen wanneer u voldoende budget hebt om de afstemming-ruimte te verkennen. voor de beste resultaten met Bayesiaanse-steek proeven wordt het aanbevolen een maximum aantal uitvoeringen te gebruiken dat groter is dan of gelijk is aan 20 maal het aantal Hyper parameters dat is afgestemd. Houd er rekening mee dat Bayesiaanse-steek proeven momenteel geen beleid voor vroegtijdige beëindiging ondersteunt.
+* Wille keurige steek proef
+* Raster sampling
+* Bayesiaanse steekproeven
 
 #### <a name="random-sampling"></a>Wille keurige steek proef
 
-In wille keurige steek proeven worden afstemming waarden wille keurig geselecteerd uit de gedefinieerde zoek ruimte. Met een [wille keurige steek proef](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.randomparametersampling?view=azure-ml-py&preserve-view=true) kan de zoek ruimte zowel discrete als doorlopende Hyper parameters bevatten.
+[Wille keurige steek proeven](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.randomparametersampling?view=azure-ml-py&preserve-view=true) ondersteunen discrete en doorlopende Hyper parameters. Het biedt ondersteuning voor vroege beëindiging van uitvoeringen met lage prestaties. Sommige gebruikers voeren een eerste zoek opdracht uit met wille keurige steek proeven en verfijnen de zoek ruimte om de resultaten te verbeteren.
+
+In wille keurige steek proeven worden afstemming waarden wille keurig geselecteerd uit de gedefinieerde zoek ruimte. 
 
 ```Python
 from azureml.train.hyperdrive import RandomParameterSampling
@@ -120,7 +118,9 @@ param_sampling = RandomParameterSampling( {
 
 #### <a name="grid-sampling"></a>Raster sampling
 
-[Raster sampling](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.gridparametersampling?view=azure-ml-py&preserve-view=true) voert een eenvoudige raster zoekactie uit op alle bruikbare waarden in de gedefinieerde zoek ruimte. Het kan alleen worden gebruikt met Hyper parameters die is opgegeven met `choice` . De volgende ruimte bevat bijvoorbeeld in totaal zes voor beelden:
+[Raster sampling](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.gridparametersampling?view=azure-ml-py&preserve-view=true) ondersteunt discrete Hyper parameters. Gebruik raster sampling als u een budget kunt gebruiken om de zoek ruimte uitgebreid te doorzoeken. Biedt ondersteuning voor vroegtijdige beëindiging van uitvoeringen met lage prestaties.
+
+Hiermee wordt een eenvoudige raster zoekactie uitgevoerd voor alle mogelijke waarden. Raster sampling kan alleen worden gebruikt met `choice` Hyper parameters. De volgende ruimte heeft bijvoorbeeld zes voor beelden:
 
 ```Python
 from azureml.train.hyperdrive import GridParameterSampling
@@ -134,9 +134,11 @@ param_sampling = GridParameterSampling( {
 
 #### <a name="bayesian-sampling"></a>Bayesiaanse steekproeven
 
-[Bayesiaanse-steek proeven](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.bayesianparametersampling?view=azure-ml-py&preserve-view=true) zijn gebaseerd op het Bayesiaanse-optimalisatie algoritme en maken intelligente keuzes voor de afstemming-waarden voor het volgende voor beeld. Hiermee wordt het voor beeld gekozen op basis van de manier waarop de vorige voor beelden zijn uitgevoerd, zodat de gerapporteerde primaire metriek door het nieuwe voor beeld wordt verbeterd.
+[Bayesiaanse-steek proeven](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.bayesianparametersampling?view=azure-ml-py&preserve-view=true) zijn gebaseerd op het Bayesiaanse-optimalisatie algoritme. Er worden voor beelden gekozen op basis van de manier waarop eerdere steek proeven worden uitgevoerd, zodat nieuwe voor beelden de primaire metriek verbeteren.
 
-Wanneer u Bayesiaanse-steek proeven gebruikt, heeft het aantal gelijktijdige uitvoeringen gevolgen voor de effectiviteit van het afstemmings proces. Normaal gesp roken kan een kleiner aantal gelijktijdige uitvoeringen leiden tot een betere steek proef van de convergentie, omdat de kleinere mate van parallellisme het aantal uitvoeringen verhoogt dat van eerder voltooide uitvoeringen voor komt.
+Bayesiaanse-steek proeven worden aanbevolen als u voldoende budget hebt om de afstemming ruimte te verkennen. Voor de beste resultaten raden wij u aan een maximum aantal uitvoeringen te hebben dat groter is dan of gelijk is aan 20 maal het aantal Hyper parameters dat wordt afgestemd. 
+
+Het aantal gelijktijdige uitvoeringen heeft invloed op de effectiviteit van het afstemmings proces. Een kleiner aantal gelijktijdige uitvoeringen kan leiden tot een betere steek proef van de convergentie, omdat de kleinere mate van parallellisme het aantal uitvoeringen verhoogt dat van eerder voltooide uitvoeringen van het voor deel is.
 
 Bayesiaanse-steek proeven bieden alleen ondersteuning voor `choice` , `uniform` en `quniform` distributies in de zoek ruimte.
 
@@ -150,14 +152,15 @@ param_sampling = BayesianParameterSampling( {
 )
 ```
 
-> [!NOTE]
-> Bayesiaanse-steek proeven bieden geen ondersteuning voor het beleid voor vroegtijdige beëindiging (Zie [een beleid voor vroegtijdige beëindiging opgeven](#early-termination)). Bij gebruik van Bayesiaanse parameter sampling, set `early_termination_policy = None` of out de `early_termination_policy` para meter.
+
 
 ## <a name="specify-primary-metric"></a><a name="specify-primary-metric-to-optimize"></a> Primaire metriek opgeven
 
-Geef de [primaire meet waarde](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.primarymetricgoal?view=azure-ml-py&preserve-view=true) op voor het afstemming-afstemmings experiment dat u wilt optimaliseren. Elke trainings uitvoering wordt geëvalueerd voor de primaire metriek. Slecht uitgevoerde uitvoeringen (waarbij de primaire metriek niet voldoet aan de criteria die zijn ingesteld door het beleid voor vroegtijdige beëindiging) wordt beëindigd. Naast de primaire metrische naam moet u ook het doel van de optimalisatie opgeven, of u de primaire metriek wilt maximaliseren of minimaliseren.
+Geef de [primaire metriek](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.primarymetricgoal?view=azure-ml-py&preserve-view=true) op die u wilt afstemming optimaliseren. Elke trainings uitvoering wordt geëvalueerd voor de primaire metriek. Voor het beleid voor vroegtijdige beëindiging wordt gebruikgemaakt van de primaire metriek om uitvoeringen met een lage prestaties te identificeren.
 
-* `primary_metric_name`: De naam van de primaire metriek die moet worden geoptimaliseerd. De naam van de primaire metriek moet exact overeenkomen met de naam van de metrische gegevens die door het trainings script worden vastgelegd. Zie [metrische logboek gegevens voor afstemming-afstemming](#log-metrics-for-hyperparameter-tuning).
+Geef de volgende kenmerken op voor uw primaire metriek:
+
+* `primary_metric_name`: De naam van de primaire metriek moet exact overeenkomen met de naam van de metrische gegevens die door het trainings script worden vastgelegd
 * `primary_metric_goal`: Het kan ofwel `PrimaryMetricGoal.MAXIMIZE` of `PrimaryMetricGoal.MINIMIZE` en bepalen of de primaire metriek wordt gemaximaliseerd of geminimaliseerd bij het evalueren van de uitvoeringen. 
 
 ```Python
@@ -165,13 +168,13 @@ primary_metric_name="accuracy",
 primary_metric_goal=PrimaryMetricGoal.MAXIMIZE
 ```
 
-Optimaliseer de uitvoeringen om de nauw keurigheid te maximaliseren.  Zorg ervoor dat u deze waarde in uw trainings script aanmeldt.
+Dit voor beeld maximaliseert ' nauw keurig '.
 
 ### <a name="log-metrics-for-hyperparameter-tuning"></a><a name="log-metrics-for-hyperparameter-tuning"></a>Metrische logboek gegevens voor afstemming-afstemming
 
-Het trainings script voor uw model moet de relevante metrische gegevens registreren tijdens de model training. Wanneer u de afstemming-afstemming configureert, geeft u de primaire meet waarde op die moet worden gebruikt voor het evalueren van de prestaties van de uitvoering. (Zie [een primaire metriek opgeven om te optimaliseren](#specify-primary-metric-to-optimize).)  In uw trainings script moet u deze metriek vastleggen zodat deze beschikbaar is voor het afstemmings proces van afstemming.
+Het trainings script voor uw model **moet** de primaire metriek registreren tijdens de model training, zodat HyperDrive toegang kan krijgen tot de gegevens voor afstemming-afstemming.
 
-Registreer deze metrische gegevens in uw trainings script met het volgende voorbeeld fragment:
+Registreer de primaire metrische gegevens in uw trainings script met het volgende voorbeeld fragment:
 
 ```Python
 from azureml.core.run import Run
@@ -179,28 +182,40 @@ run_logger = Run.get_context()
 run_logger.log("accuracy", float(val_accuracy))
 ```
 
-Het trainings script berekent de `val_accuracy` en registreert dit als ' nauwkeurigheid ', die wordt gebruikt als primaire metriek. Telkens wanneer de metriek wordt geregistreerd, wordt deze ontvangen door de afstemming tuning service. Het is de ontwikkelaar van het model om te bepalen hoe vaak deze metrische gegevens moeten worden gerapporteerd.
+Het trainings script berekent de `val_accuracy` en registreert dit als de primaire metriek "nauw keurig". Telkens wanneer de metriek wordt geregistreerd, wordt deze ontvangen door de afstemming tuning service. Het is aan te raden om de frequentie van rapportage te bepalen.
+
+Zie [logboek registratie inschakelen in azure ml-trainings uitvoeringen](how-to-track-experiments.md)voor meer informatie over het uitvoeren van registratie waarden in model training.
 
 ## <a name="specify-early-termination-policy"></a><a name="early-termination"></a> Beleid voor vroegtijdige beëindiging opgeven
 
-Het afsluiten van de uitvoering van het programma wordt niet goed uitgevoerd met een beleid voor vroegtijdige beëindiging. Beëindiging vermindert de verspilling van resources en maakt in plaats daarvan gebruik van deze bronnen voor het verkennen van andere parameter configuraties.
+Automatisch aflopende uitvoeringen uitvoeren met een beleid voor vroegtijdige beëindiging. Vroege beëindiging verbetert de verwerkings efficiëntie.
 
-Wanneer u een beleid voor vroegtijdige beëindiging gebruikt, kunt u de volgende para meters configureren die bepalen wanneer een beleid wordt toegepast:
+U kunt de volgende para meters configureren die bepalen wanneer een beleid wordt toegepast:
 
-* `evaluation_interval`: de frequentie waarmee het beleid wordt toegepast. Telkens wanneer het trainings script de primaire metriek registreert als één interval. Daarom `evaluation_interval` wordt het beleid door een van 1 toegepast telkens wanneer het trainings script de primaire metriek rapporteert. `evaluation_interval`Met 2 wordt het beleid elke keer toegepast wanneer het trainings script de primaire metriek rapporteert. Als u niets opgeeft, `evaluation_interval` wordt standaard ingesteld op 1.
-* `delay_evaluation`: de eerste beleids evaluatie voor een opgegeven aantal intervallen wordt uitgesteld. Het is een optionele para meter waarmee alle configuraties kunnen worden uitgevoerd voor een eerste minimum aantal intervallen, waardoor het voor tijdig beëindigen van de trainings uitvoeringen wordt voor komen. Indien opgegeven, wordt het beleid toegepast op elk veelvoud van evaluation_interval dat groter is dan of gelijk is aan delay_evaluation.
+* `evaluation_interval`: de frequentie waarmee het beleid wordt toegepast. Telkens wanneer het trainings script de primaire metriek registreert als één interval. `evaluation_interval`Als 1 wordt het beleid toegepast wanneer het trainings script de primaire metriek rapporteert. `evaluation_interval`Met 2 wordt het beleid elke keer toegepast. Als u niets opgeeft, `evaluation_interval` wordt standaard ingesteld op 1.
+* `delay_evaluation`: de eerste beleids evaluatie voor een opgegeven aantal intervallen wordt uitgesteld. Dit is een optionele para meter waarmee het voor tijdig beëindigen van de trainings uitvoeringen wordt voor komen door ervoor te zorgen dat alle configuraties voor een minimum aantal intervallen worden uitgevoerd. Indien opgegeven, wordt het beleid toegepast op elk veelvoud van evaluation_interval dat groter is dan of gelijk is aan delay_evaluation.
 
-Azure Machine Learning ondersteunt de volgende beleids regels voor vroegtijdige beëindiging.
+Azure Machine Learning ondersteunt de volgende beleids regels voor vroegtijdige beëindiging:
+* [Bandit-beleid](#bandit-policy)
+* [Beleid voor mediaan stoppen](#median-stopping-policy)
+* [Selectie beleid voor afkap ping](#truncation-selection-policy)
+* [Geen beleid voor beëindiging](#no-termination-policy-default)
+
 
 ### <a name="bandit-policy"></a>Bandit-beleid
 
-[Bandit](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy?view=azure-ml-py&preserve-view=true#&preserve-view=truedefinition) is een afsluitings beleid op basis van een toegestane factor en een toegestane vertragings hoeveelheid en evaluatie-interval. Het beleid verbreekt alle uitvoeringen waarbij de primaire metriek zich niet binnen het opgegeven aantal toegestane vertragings factoren bevindt met betrekking tot de best presterende uitvoering van de training. Hierbij worden de volgende configuratie parameters gebruikt:
+Het [Bandit-beleid](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy?view=azure-ml-py&preserve-view=true#&preserve-view=truedefinition) is gebaseerd op de toegestane factor en het toegestane aantal en de evaluatie-interval. Bandit wordt beëindigd wanneer de primaire metriek zich niet binnen het opgegeven aantal toegestane vertragings factoren bevindt vergeleken met de best presterende uitvoering.
+
+> [!NOTE]
+> Bayesiaanse-steek proeven bieden geen ondersteuning voor vroege beëindiging. Wanneer u Bayesiaanse-steek proeven gebruikt, stelt u in `early_termination_policy = None` .
+
+Geef de volgende configuratie parameters op:
 
 * `slack_factor` of `slack_amount` : de toegestane vertraging met betrekking tot de best presterende trainings uitvoering. `slack_factor` Hiermee geeft u de toegestane vertraging als een ratio op. `slack_amount` Hiermee geeft u de toegestane vertraging als een absoluut bedrag op in plaats van een ratio.
 
-    Stel dat er een Bandit-beleid wordt toegepast tijdens interval 10. Stel dat de best presterende uitvoering bij interval 10 een primaire metriek 0,8 heeft gerapporteerd met een doel om de primaire metriek te maximaliseren. Als het beleid is opgegeven met een `slack_factor` van 0,2, worden alle trainingen uitgevoerd, waarvan de beste metrische waarde bij interval 10 kleiner is dan 0,66 (0,8/(1 + `slack_factor` )). Als u in plaats daarvan het beleid hebt opgegeven met een `slack_amount` van 0,2, worden alle trainingen uitgevoerd, waarvan de aanbevolen metrische waarde bij interval 10 kleiner is dan 0,6 (0,8 `slack_amount` ).
-* `evaluation_interval`: de frequentie voor het Toep assen van het beleid (optionele para meter).
-* `delay_evaluation`: de eerste beleids evaluatie wordt uitgesteld voor een opgegeven aantal intervallen (optionele para meter).
+    Denk bijvoorbeeld aan een Bandit-beleid dat wordt toegepast tijdens interval 10. Stel dat de best presterende run bij interval 10 een primaire metriek heeft gerapporteerd, 0,8 is met een doel om de primaire meet waarde te maximaliseren. Als in het beleid een van de 0,2 wordt opgegeven, wordt een `slack_factor` training uitgevoerd waarvan de beste metrische waarde bij interval 10 kleiner is dan 0,66 (0,8/(1 + `slack_factor` )).
+* `evaluation_interval`: (optioneel) de frequentie voor het Toep assen van het beleid
+* `delay_evaluation`: (optioneel) de eerste beleids evaluatie voor een opgegeven aantal intervallen wordt vertraagd
 
 
 ```Python
@@ -212,7 +227,9 @@ In dit voor beeld wordt het beleid voor vroegtijdige beëindiging toegepast op e
 
 ### <a name="median-stopping-policy"></a>Beleid voor mediaan stoppen
 
-[Mediaan stoppen](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.medianstoppingpolicy?view=azure-ml-py&preserve-view=true) is een beleid voor vroegtijdige beëindiging op basis van het actieve gemiddelde van primaire metrische gegevens die door de uitvoeringen worden gerapporteerd. Met deze beleids regel berekent u de gemiddelden van alle trainings runs en beëindigt u de uitvoeringen waarvan de prestaties slechter zijn dan de mediaan van de lopende gemiddelden. Voor dit beleid worden de volgende configuratie parameters gebruikt:
+[Mediaan stoppen](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.medianstoppingpolicy?view=azure-ml-py&preserve-view=true) is een beleid voor vroegtijdige beëindiging op basis van het actieve gemiddelde van primaire metrische gegevens die door de uitvoeringen worden gerapporteerd. Dit beleid berekent de lopende gemiddelden voor alle trainings uitvoeringen en beëindigt uitvoeringen met primaire meet waarden, erger dan de mediaan van gemiddelden.
+
+Voor dit beleid worden de volgende configuratie parameters gebruikt:
 * `evaluation_interval`: de frequentie voor het Toep assen van het beleid (optionele para meter).
 * `delay_evaluation`: de eerste beleids evaluatie wordt uitgesteld voor een opgegeven aantal intervallen (optionele para meter).
 
@@ -226,11 +243,13 @@ In dit voor beeld wordt het beleid voor vroegtijdige beëindiging toegepast op e
 
 ### <a name="truncation-selection-policy"></a>Selectie beleid voor afkap ping
 
-Met de selectie van de [Afkap ping](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.truncationselectionpolicy?view=azure-ml-py&preserve-view=true) wordt een bepaald percentage van de laagste uitvoeringen bij elk evaluatie-interval geannuleerd. Uitvoeringen worden vergeleken op basis van de prestaties van de primaire metriek en de laagste X% wordt beëindigd. Hierbij worden de volgende configuratie parameters gebruikt:
+Met de selectie van de [Afkap ping](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.truncationselectionpolicy?view=azure-ml-py&preserve-view=true) wordt een percentage van de laagste uitgevoerde uitvoeringen bij elk evaluatie-interval geannuleerd. Uitvoeringen worden vergeleken met de primaire metriek. 
 
-* `truncation_percentage`: het percentage van de laagste uitvoeringen dat bij elk evaluatie-interval wordt beëindigd. Geef een geheel getal op tussen 1 en 99.
-* `evaluation_interval`: de frequentie voor het Toep assen van het beleid (optionele para meter).
-* `delay_evaluation`: de eerste beleids evaluatie wordt uitgesteld voor een opgegeven aantal intervallen (optionele para meter).
+Voor dit beleid worden de volgende configuratie parameters gebruikt:
+
+* `truncation_percentage`: het percentage van de laagste uitvoeringen dat bij elk evaluatie-interval wordt beëindigd. Een integer-waarde tussen 1 en 99.
+* `evaluation_interval`: (optioneel) de frequentie voor het Toep assen van het beleid
+* `delay_evaluation`: (optioneel) de eerste beleids evaluatie voor een opgegeven aantal intervallen wordt vertraagd
 
 
 ```Python
@@ -238,43 +257,37 @@ from azureml.train.hyperdrive import TruncationSelectionPolicy
 early_termination_policy = TruncationSelectionPolicy(evaluation_interval=1, truncation_percentage=20, delay_evaluation=5)
 ```
 
-In dit voor beeld wordt het beleid voor vroegtijdige beëindiging toegepast op elk interval, te beginnen bij de evaluatie-interval 5. Een run wordt beëindigd bij interval 5 als de prestaties bij interval 5 in de laagste 20% van de prestaties van alle uitvoeringen in interval 5 liggen.
+In dit voor beeld wordt het beleid voor vroegtijdige beëindiging toegepast op elk interval, te beginnen bij de evaluatie-interval 5. Een uitvoering eindigt bij interval 5 als de prestaties bij interval 5 in de laagste 20% van de prestaties van alle uitvoeringen in interval 5 liggen.
 
-### <a name="no-termination-policy"></a>Geen beleid voor beëindiging
+### <a name="no-termination-policy-default"></a>Geen beëindigings beleid (standaard)
 
-Stel beleid in op geen als u wilt dat alle trainings uitvoeringen worden uitgevoerd om te worden voltooid. Dit heeft tot gevolg dat er geen beleid voor vroegtijdige beëindiging wordt toegepast.
+Als er geen beleid is opgegeven, kan de afstemming-afstemmings service alle trainings uitvoeringen uitvoeren tot voltooiing.
 
 ```Python
 policy=None
 ```
 
-### <a name="default-policy"></a>Standaard beleid
-
-Als er geen beleid is opgegeven, kan de afstemming-afstemmings service alle trainings uitvoeringen uitvoeren tot voltooiing.
-
 ### <a name="picking-an-early-termination-policy"></a>Een beleid voor vroegtijdige beëindiging kiezen
 
-* Als u op zoek bent naar een conservatief beleid waarmee u rekening moet houden zonder het beëindigen van toezeggings taken, kunt u een beleid voor mediaan stoppen gebruiken met `evaluation_interval` 1 en `delay_evaluation` 5. Dit zijn voorzichtige instellingen, die ongeveer 25%-35% besparingen kunnen bieden zonder verlies van primaire metriek (op basis van de evaluatie gegevens).
-* Als u op zoek bent naar meer agressieve besparingen van vroegtijdige beëindiging, kunt u Bandit-beleid gebruiken met een striktere (kleinere) toegestane vertraging of selectie beleid voor Afkap ping met een grotere Afbrekings percentage.
+* Voor een conservatief beleid dat besparingen oplevert zonder toezeggings taken te beëindigen, moet u een mediaan beleid voor stoppen met `evaluation_interval` 1 en `delay_evaluation` 5 overwegen. Dit zijn voorzichtige instellingen, die ongeveer 25%-35% besparingen kunnen bieden zonder verlies van primaire metriek (op basis van de evaluatie gegevens).
+* Voor meer agressieve besparingen gebruikt u Bandit-beleid met een kleinere toegestane vertraging of selectie beleid voor Afkap ping met een grotere Afbrekings percentage.
 
 ## <a name="allocate-resources"></a>Resources toewijzen
 
-Beheer uw resource budget voor uw afstemming-afstemmings experiment door het maximum aantal trainings runs op te geven.  Geef desgewenst de maximale duur op voor uw afstemming-afstemmings experiment.
+Beheer uw resource budget door het maximum aantal trainings uitvoeringen op te geven.
 
-* `max_total_runs`: Het maximum aantal trainings runs dat wordt gemaakt. Bovengrens: er kunnen minder uitvoeringen zijn, bijvoorbeeld als de afstemming ruimte eindig is en minder voor beelden heeft. Moet een getal tussen 1 en 1000 zijn.
-* `max_duration_minutes`: De maximale duur in minuten van het experiment voor het afstemmen van afstemming. De para meter is optioneel, en indien aanwezig, alle uitvoeringen die worden uitgevoerd na deze duur, worden automatisch geannuleerd.
+* `max_total_runs`: Het maximum aantal trainings uitvoeringen. Moet een geheel getal tussen 1 en 1000 zijn.
+* `max_duration_minutes`: (optioneel) maximum duur, in minuten, van het afstemming tuning-experiment. Wordt uitgevoerd nadat deze duur is geannuleerd.
 
 >[!NOTE] 
 >Als beide `max_total_runs` en `max_duration_minutes` zijn opgegeven, wordt het afstemming-afstemmings experiment beëindigd wanneer de eerste van deze twee drempel waarden wordt bereikt.
 
 Daarnaast geeft u het maximum aantal trainings uitvoeringen op dat gelijktijdig moet worden uitgevoerd tijdens uw afstemming-afstemmings zoek opdracht.
 
-* `max_concurrent_runs`: Het maximum aantal uitvoeringen dat gelijktijdig kan worden uitgevoerd. Als niets is opgegeven, `max_total_runs` worden alle gelijktijdig gestart. Indien opgegeven, moet een getal tussen 1 en 100 zijn.
+* `max_concurrent_runs`: (optioneel) maximum aantal uitvoeringen dat gelijktijdig kan worden uitgevoerd. Als niet wordt opgegeven, worden alle uitgevoerd parallel gestart. Indien opgegeven, moet een geheel getal tussen 1 en 100 zijn.
 
 >[!NOTE] 
->Het aantal gelijktijdige uitvoeringen wordt gegatedd op de resources die beschikbaar zijn in het opgegeven Compute-doel. Daarom moet u ervoor zorgen dat het Compute-doel de beschik bare resources voor de gewenste gelijktijdigheid heeft.
-
-Resources toewijzen voor afstemming tuning:
+>Het aantal gelijktijdige uitvoeringen wordt gegatedd op de resources die beschikbaar zijn in het opgegeven Compute-doel. Zorg ervoor dat het Compute-doel de beschik bare resources voor de gewenste gelijktijdigheid heeft.
 
 ```Python
 max_total_runs=20,
@@ -285,7 +298,17 @@ Met deze code wordt het afstemming-afstemmings experiment geconfigureerd voor ge
 
 ## <a name="configure-experiment"></a>Experiment configureren
 
-[Configureer uw afstemming-afstemmings](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.hyperdriverunconfig?view=azure-ml-py&preserve-view=true) experiment met behulp van de gedefinieerde afstemming Zoek ruimte, het beleid voor vroegtijdige beëindiging, de primaire metriek en de resource toewijzing van de bovenstaande secties. Daarnaast geeft u de ScriptRunConfig `src` voor de uitvoering op die wordt aangeroepen met de Hyper parameters van de steek proef. De ScriptRunConfig definieert het trainings script dat moet worden uitgevoerd, de resources per taak (één of meerdere knoop punten) en het reken doel dat moet worden gebruikt. Omdat gelijktijdigheid voor uw afstemming-afstemmings experiment wordt gegatedeerd op de beschik bare resources, moet u ervoor zorgen dat het reken doel dat is opgegeven in, `src` voldoende resources heeft voor de gewenste gelijktijdigheid. (Zie [trainings uitvoeringen configureren](how-to-set-up-training-targets.md)voor meer informatie over ScriptRunConfig.)
+Als u [uw afstemming tuning](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.hyperdriverunconfig?view=azure-ml-py&preserve-view=true) -experiment wilt configureren, geeft u het volgende op:
+* De gedefinieerde afstemming-Zoek ruimte
+* Uw beleid voor vroegtijdige beëindiging
+* De primaire metriek
+* Toewijzings instellingen voor resources
+* ScriptRunConfig `src`
+
+De ScriptRunConfig is het trainings script dat wordt uitgevoerd met de Hyper parameters van de steek proef. Het definieert de resources per taak (één of meerdere knoop punten) en het reken doel dat moet worden gebruikt.
+
+> [!NOTE]
+>Het Compute-doel dat is opgegeven in, `src` moet voldoende resources hebben om te voldoen aan het gelijktijdigheids niveau. Zie [Configure training runs](how-to-set-up-training-targets.md)(Engelstalig) voor meer informatie over ScriptRunConfig.
 
 Uw afstemming-afstemmings experiment configureren:
 
@@ -302,7 +325,7 @@ hd_config = HyperDriveConfig(run_config=src,
 
 ## <a name="submit-experiment"></a>Experiment verzenden
 
-Wanneer u de afstemming-afstemmings configuratie hebt gedefinieerd, moet u [een experiment verzenden](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truesubmit-config--tags-none----kwargs-):
+Nadat u de afstemming-afstemmings configuratie hebt gedefinieerd, moet u [het experiment verzenden](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truesubmit-config--tags-none----kwargs-):
 
 ```Python
 from azureml.core.experiment import Experiment
@@ -310,13 +333,16 @@ experiment = Experiment(workspace, experiment_name)
 hyperdrive_run = experiment.submit(hd_config)
 ```
 
-`experiment_name` is de naam die u toewijst aan uw afstemming-afstemmings experiment en `workspace` is de werk ruimte waarin u het experiment wilt maken (Zie [hoe werkt Azure machine learning?](concept-azure-machine-learning-architecture.md)) voor meer informatie over experimenten.
-
 ## <a name="warm-start-your-hyperparameter-tuning-experiment-optional"></a>Start uw afstemming tuning-experiment warme (optioneel)
 
-Het zoeken naar de beste afstemming-waarden voor uw model kan vaak een iteratief proces zijn, maar er zijn meerdere afstemmings uitvoeringen nodig die van vorige afstemming-afstemmings uitvoeringen leren. Door de kennis van deze vorige uitvoeringen te hergebruiken, wordt het afstemming-tuning-proces versneld, waardoor de kosten voor het afstemmen van het model worden verminderd en de primaire metriek van het resulterende model mogelijk wordt verbeterd. Wanneer u een afstemming-afstemmings experiment met Bayesiaanse-steek proeven hebt gestart, worden tests van de vorige uitvoering gebruikt als eerdere kennis om op intelligente wijze nieuwe voor beelden te kiezen om de primaire metriek te verbeteren. Wanneer u een wille keurige of raster bemonstering gebruikt, worden er bovendien metrische gegevens uit de vorige uitvoeringen in rekening worden opgevolgd om te bepalen of er slecht uitgevoerde trainings uitvoeringen worden uitgevoerd. 
+Het zoeken naar de beste afstemming-waarden voor uw model kan een iteratief proces zijn. U kunt kennis van de vijf vorige uitvoeringen hergebruiken om afstemming-afstemming te versnellen.
 
-Met Azure Machine Learning kunt u uw afstemming-afstemmings proces warm starten door gebruik te maken van de kennis van Maxi maal 5 eerder voltooide/geannuleerde afstemming-afstemming van bovenliggende uitvoeringen. U kunt de lijst met bovenliggende uitvoeringen opgeven die u wilt warmen om te beginnen met het gebruik van dit fragment:
+
+Warme start wordt op verschillende manieren afgehandeld, afhankelijk van de bemonsterings methode:
+- **Bayesiaanse sampling**: proef versies van de vorige uitvoering worden gebruikt als eerdere kennis om nieuwe voor beelden te kiezen en om de primaire meet waarde te verbeteren.
+- **Steekproefsgewijze steek proef of** **raster sampling**: vroege beëindiging maakt gebruik van kennis van eerdere uitvoeringen om te bepalen of er slecht uitgevoerde uitvoeringen zijn. 
+
+Geef de lijst van bovenliggende uitvoeringen op waaruit u wilt warmen.
 
 ```Python
 from azureml.train.hyperdrive import HyperDriveRun
@@ -326,7 +352,9 @@ warmstart_parent_2 = HyperDriveRun(experiment, "warmstart_parent_run_ID_2")
 warmstart_parents_to_resume_from = [warmstart_parent_1, warmstart_parent_2]
 ```
 
-Daarnaast kunnen er situaties zijn waarin het experiment voor het afstemmen van een afstemming wordt geannuleerd als gevolg van budget beperkingen of als gevolg van andere redenen. Het is nu mogelijk om dergelijke afzonderlijke trainingen uit het laatste controle punt uit te voeren (ervan uitgaande dat uw trainings script controle punten afhandelt). Als u een afzonderlijke training hervat, wordt dezelfde afstemming-configuratie gebruikt en wordt de map outputs gekoppeld die wordt gebruikt voor die uitvoering. Het trainings script moet het `resume-from` argument accepteren dat het controle punt of de model bestanden bevat van waaruit de trainings uitvoering moet worden hervat. U kunt afzonderlijke trainings uitvoeringen hervatten met het volgende code fragment:
+Als een afstemming-afstemmings experiment wordt geannuleerd, kunt u de trainings uitvoeringen van het laatste controle punt hervatten. Uw trainings script moet echter de controlepunt logica verwerken.
+
+De uitvoering van de training moet dezelfde afstemming-configuratie gebruiken en de uitvoer mappen hebben gekoppeld. Het trainings script moet het `resume-from` argument accepteren dat het controle punt of de model bestanden bevat waaruit de trainings uitvoering moet worden hervat. U kunt afzonderlijke trainings uitvoeringen hervatten met het volgende code fragment:
 
 ```Python
 from azureml.core.run import Run
@@ -354,7 +382,7 @@ hd_config = HyperDriveConfig(run_config=src,
 
 ## <a name="visualize-experiment"></a>Experimenteren met visualiseren
 
-De Azure Machine Learning SDK bevat een [notebook-widget](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets.rundetails?view=azure-ml-py&preserve-view=true) waarmee de voortgang van uw trainings uitvoeringen wordt gevisualiseerd. In het volgende code fragment worden alle afstemming-afstemmings uitvoeringen op één plek in een Jupyter-notebook gevisualiseerd:
+Gebruik de [widget notitie blok](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets.rundetails?view=azure-ml-py&preserve-view=true) om de voortgang van uw trainings uitvoeringen te visualiseren. In het volgende code fragment worden alle afstemming-afstemmings uitvoeringen op één plek in een Jupyter-notebook gevisualiseerd:
 
 ```Python
 from azureml.widgets import RunDetails
@@ -369,15 +397,15 @@ U kunt ook de prestaties van elk van de uitvoeringen visualiseren als de voortga
 
 ![afstemming-afstemmings plot](./media/how-to-tune-hyperparameters/HyperparameterTuningPlot.png)
 
-Daarnaast kunt u de correlatie tussen de prestaties en waarden van afzonderlijke Hyper parameters visueel identificeren met behulp van een parallelle coördinaten tekening. 
+U kunt de correlatie tussen de prestaties en waarden van afzonderlijke Hyper parameters visueel identificeren met behulp van een parallelle coördinaten tekening. 
 
 [![parallelle coördinaten voor afstemming afstemmen](./media/how-to-tune-hyperparameters/HyperparameterTuningParallelCoordinates.png)](media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates-expanded.png)
 
-U kunt ook visualiseren van al uw afstemming-afstemmings uitvoeringen in de Azure-webportal. Zie [experimenten volgen](how-to-monitor-view-training-logs.md#view-the-experiment-in-the-web-portal)voor meer informatie over het weer geven van een experiment in de webportal.
+U kunt ook al uw afstemming-afstemmings uitvoeringen visualiseren in de Azure-webportal. Zie [experimenten volgen](how-to-monitor-view-training-logs.md#view-the-experiment-in-the-web-portal)voor meer informatie over het weer geven van een experiment in de portal.
 
 ## <a name="find-the-best-model"></a>Het beste model zoeken
 
-Wanneer alle afstemmings uitvoeringen van de afstemming zijn voltooid, [identificeert u de best presterende configuratie](/python/api/azureml-train-core/azureml.train.hyperdrive.hyperdriverun?view=azure-ml-py&preserve-view=true#&preserve-view=trueget-best-run-by-primary-metric-include-failed-true--include-canceled-true--include-resume-from-runs-true-----typing-union-azureml-core-run-run--nonetype-) en de bijbehorende afstemming-waarden:
+Wanneer alle afstemmings uitvoeringen van afstemming zijn voltooid, identificeert u de best presterende configuratie-en afstemming-waarden:
 
 ```Python
 best_run = hyperdrive_run.get_best_run_by_primary_metric()

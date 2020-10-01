@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 609c06eedb5c28e31c19df1595c8e4b3b0a59956
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: b8c4bed81a73957cc80318064f2aa2a58b3cfe11
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90532219"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597074"
 ---
 # <a name="offline-widevine-streaming-for-android-with-media-services-v3"></a>Offline Widevine streaming voor Android met Media Services v3
 
@@ -30,6 +30,8 @@ Naast het beveiligen van inhoud voor online streaming bieden media-inhouds abonn
 
 - Sommige inhouds providers kunnen geen DRM-licentie levering toestaan buiten de rand van een land/regio. Als een gebruiker inhoud wil bekijken terwijl u in het buiten land reist, is offline downloaden vereist.
 - In sommige landen/regio's is Internet Beschik baarheid en/of band breedte beperkt. Gebruikers kunnen ervoor kiezen om inhoud te downloaden om deze te kunnen bekijken met een hoge resolutie voor een goede weergave ervaring.
+
+[!INCLUDE [Widevine is not available in the GovCloud region.](./includes/widevine-not-available-govcloud.md)]
 
 In dit artikel wordt beschreven hoe u het afspelen van offline modus kunt implementeren voor de DASH-inhoud die wordt beveiligd door Widevine op Android-apparaten. Met behulp van offline DRM kunt u voor uw inhoud abonnements-, huur-en aankoop modellen aanbieden, zodat klanten van uw services eenvoudig inhoud kunnen meenemen wanneer de verbinding met internet is verbroken.
 

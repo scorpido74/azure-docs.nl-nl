@@ -3,12 +3,12 @@ title: Nalevings gegevens voor beleid ophalen
 description: Azure Policy evaluaties en effecten bepalen de naleving. Meer informatie over hoe u de compatibiliteits Details van uw Azure-resources kunt ophalen.
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 5a308a23e84587eba69951081674d3525f083441
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 2b4db7daf75f153cadb03e5dd028084e311bb874
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91537947"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596044"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Compatibiliteits gegevens van Azure-resources ophalen
 
@@ -46,7 +46,37 @@ De evaluaties van toegewezen beleid en initiatieven worden uitgevoerd als gevolg
 
 ### <a name="on-demand-evaluation-scan"></a>Evaluatiescan op aanvraag
 
-Een evaluatie scan voor een abonnement of een resource groep kan worden gestart met Azure CLI, Azure PowerShell of een aanroep naar de REST API. Deze scan is een asynchroon proces.
+Een evaluatie scan voor een abonnement of een resource groep kan worden gestart met Azure CLI, Azure PowerShell, een aanroep van de REST API of met behulp van de [Azure Policy compatibiliteits scan github actie](https://github.com/marketplace/actions/azure-policy-compliance-scan).
+Deze scan is een asynchroon proces.
+
+#### <a name="on-demand-evaluation-scan---github-action"></a>Evaluatie scan op aanvraag-GitHub-actie
+
+Gebruik de [Azure Policy compatibiliteits scan actie](https://github.com/marketplace/actions/azure-policy-compliance-scan) om een evaluatie scan op aanvraag te activeren vanuit uw [github-werk stroom](https://docs.github.com/actions/configuring-and-managing-workflows/configuring-a-workflow#about-workflows) op een of meer resources, resource groepen of abonnementen, en Gate the workflow op basis van de compatibiliteits status van bronnen. U kunt de werk stroom ook zo configureren dat deze op een gepland tijdstip wordt uitgevoerd, zodat u de meest recente nalevings status op een geschikt tijdstip krijgt. Deze GitHub actie kan optioneel een rapport genereren over de nalevings status van gescande resources voor verdere analyse of voor archivering.
+
+In het volgende voor beeld wordt een compatibiliteits scan voor een abonnement uitgevoerd. 
+
+```yaml
+on:
+  schedule:    
+    - cron:  '0 8 * * *'  # runs every morning 8am
+jobs:
+  assess-policy-compliance:    
+    runs-on: ubuntu-latest
+    steps:         
+    - name: Login to Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{secrets.AZURE_CREDENTIALS}} 
+
+    
+    - name: Check for resource compliance
+      uses: azure/policy-compliance-scan@v0
+      with:
+        scopes: |
+          /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+```
+
+Voor meer informatie en voor beelden van werk stromen raadpleegt u de [github-actie voor Azure Policy nalevings scan opslag plaats](https://github.com/Azure/policy-compliance-scan).
 
 #### <a name="on-demand-evaluation-scan---azure-cli"></a>Evaluatie scan op aanvraag-Azure CLI
 

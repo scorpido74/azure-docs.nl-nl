@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: how-to
-ms.date: 6/11/2020
-ms.openlocfilehash: 6836461e9f1d4f14bc39161a99ad9d151caafaa5
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.date: 9/29/2020
+ms.openlocfilehash: 2de6b6311a1a5d452907b8c4b6a2ffeb9c0e133e
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91540792"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598198"
 ---
 # <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>Replicatie van inkomende gegevens configureren in Azure Database for MariaDB
 
@@ -54,9 +54,40 @@ In de volgende stappen wordt de MariaDB-server die on-premises, in een VM of in 
 
 1. Controleer de [vereisten van de hoofd server](concepts-data-in-replication.md#requirements) voordat u doorgaat. 
 
-   Zorg er bijvoorbeeld voor dat de bron server zowel binnenkomend als uitgaand verkeer op poort 3306 toestaat en dat de bron server een **openbaar IP-adres**heeft, de DNS openbaar toegankelijk is of een Fully QUALIFIED domain name (FQDN) heeft. 
+2. Zorg ervoor dat de bron server zowel binnenkomend als uitgaand verkeer op poort 3306 toestaat en dat de bron server een **openbaar IP-adres**heeft, de DNS openbaar toegankelijk is of een Fully QUALIFIED domain name (FQDN) heeft. 
    
    Test de verbinding met de bron server door te proberen verbinding te maken vanaf een hulp programma zoals de MySQL-opdracht regel die wordt gehost op een andere computer of op basis van het [Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview) dat beschikbaar is in de Azure Portal.
+
+   Als uw organisatie een strikt beveiligings beleid heeft en niet alle IP-adressen op de bron server toestaat communicatie van Azure naar uw bron server in te scha kelen, kunt u de onderstaande opdracht gebruiken om het IP-adres van uw Azure Database for MariaDB server te bepalen.
+    
+   1. Meld u aan bij uw Azure Database for MariaDB met een hulp programma zoals MySQL opdracht regel.
+   2. Voer de onderstaande query uit.
+      ```bash
+      mysql> SELECT @@global.redirect_server_host;
+      ```
+      Hieronder ziet u een voor beeld van uitvoer:
+      ```bash 
+      +-----------------------------------------------------------+
+      | @@global.redirect_server_host                             |
+      +-----------------------------------------------------------+
+      | e299ae56f000.tr1830.westus1-a.worker.database.windows.net |
+       +-----------------------------------------------------------+
+      ```
+   3. Sluit af vanaf de MySQL-opdracht regel.
+   4. Voer de onderstaande stappen uit in het hulp programma Ping om het IP-adres op te halen.
+      ```bash
+      ping <output of step 2b>
+      ``` 
+      Bijvoorbeeld: 
+      ```bash      
+      C:\Users\testuser> ping e299ae56f000.tr1830.westus1-a.worker.database.windows.net
+      Pinging tr1830.westus1-a.worker.database.windows.net (**11.11.111.111**) 56(84) bytes of data.
+      ```
+
+   5. Configureer de firewall regels van uw bron server zodanig dat het IP-adres van de vorige stap wordt vermeld op poort 3306.
+
+   > [!NOTE]
+   > Dit IP-adres kan gewijzigd worden door onderhouds-en implementatie bewerkingen. Deze verbindings methode is alleen voor klanten die niet in staat zijn om alle IP-adressen op 3306-poort toe te staan.
 
 2. Schakel binaire logboek registratie in.
     

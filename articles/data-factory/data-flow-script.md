@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/29/2020
-ms.openlocfilehash: 6802e3f6c0892993f9ffe4373f43274362b8a003
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 8310c34e06d52dc12af42f8bc33f4a4d7e99d68d
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/30/2020
-ms.locfileid: "91569677"
+ms.locfileid: "91598093"
 ---
 # <a name="data-flow-script-dfs"></a>Gegevens stroom script (DFS)
 
@@ -176,13 +176,13 @@ aggregate(groupBy(movie),
 Gebruik deze code in uw gegevensstroom script om een nieuwe afgeleide kolom te maken met de naam ```DWhash``` die een ```sha1``` hash van drie kolommen produceert.
 
 ```
-derive(DWhash = sha1(Name,ProductNumber,Color))
+derive(DWhash = sha1(Name,ProductNumber,Color)) ~> DWHash
 ```
 
 U kunt dit script ook hieronder gebruiken om een rij-hash te genereren met alle kolommen die aanwezig zijn in uw stream, zonder dat u elke kolom een naam hoeft te geven:
 
 ```
-derive(DWhash = sha1(columns()))
+derive(DWhash = sha1(columns())) ~> DWHash
 ```
 
 ### <a name="string_agg-equivalent"></a>String_agg equivalent
@@ -191,7 +191,7 @@ Deze code fungeert als de T-SQL- ```string_agg()``` functie, en voegt teken reek
 ```
 source1 aggregate(groupBy(year),
     string_agg = collect(title)) ~> Aggregate1
-Aggregate1 derive(string_agg = toString(string_agg)) ~> DerivedColumn2
+Aggregate1 derive(string_agg = toString(string_agg)) ~> StringAgg
 ```
 
 ### <a name="count-number-of-updates-upserts-inserts-deletes"></a>Aantal updates, upsert, invoeg acties, verwijderen
@@ -216,7 +216,7 @@ aggregate(groupBy(mycols = sha2(256,columns())),
 Dit is een fragment dat u in uw gegevens stroom kunt plakken, zodat u alle kolommen voor NULL-waarden voor het algemeen controleert. Deze techniek maakt gebruik van schema drift om alle kolommen in alle rijen te bekijken en gebruikt een voorwaardelijke splitsing om de rijen met NULL-waarden uit de rijen te scheiden zonder NULL-waarden. 
 
 ```
-CreateColumnArray split(contains(array(columns()),isNull(#item)),
+split(contains(array(columns()),isNull(#item)),
     disjoint: false) ~> LookForNULLs@(hasNULLs, noNULLs)
 ```
 

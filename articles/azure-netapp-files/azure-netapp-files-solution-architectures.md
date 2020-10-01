@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 09/30/2020
 ms.author: b-juche
-ms.openlocfilehash: 9b44b27730fff888685ef7e0ad06d35e7bdc88c7
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: f6e38585e86dd962bc5f94a7c2a8a67c55f2a8fd
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91439740"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91595899"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Oplossingsarchitecturen op basis van Azure NetApp Files
 Dit artikel bevat verwijzingen naar aanbevolen procedures waarmee u inzicht krijgt in de oplossings architecturen voor het gebruik van Azure NetApp Files.  
@@ -34,6 +34,7 @@ Deze sectie bevat verwijzingen naar oplossingen voor Linux OSS-toepassingen en-d
 
 ### <a name="oracle"></a>Oracle
 
+* [Prestaties van Oracle-Data Base op Azure NetApp Files afzonderlijke volumes](performance-oracle-single-volumes.md)
 * [best practice hand leiding Oracle op Azure-implementatie met behulp van Azure NetApp Files](https://www.netapp.com/us/media/tr-4780.pdf)
 * [Oracle-VM-installatie kopieën en hun implementatie op Microsoft Azure: configuratie opties voor gedeelde opslag](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-vm-solutions#shared-storage-configuration-options)
 * [Voordelen van het gebruik van Azure NetApp Files met Oracle Database](solutions-benefits-azure-netapp-files-oracle-database.md)

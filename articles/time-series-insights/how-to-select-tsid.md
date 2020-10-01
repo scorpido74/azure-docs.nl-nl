@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 94abdf8735fa487f46d423f17f7e1ff7bc853eb7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: fb409673e028375812551ec146b43c27e3755d2a
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289883"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91595534"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>Best practices voor het kiezen van een tijdreeks-id
 
@@ -23,7 +23,7 @@ Dit artikel bevat een overzicht van het belang van de tijd reeks-ID voor uw Azur
 
 ## <a name="choose-a-time-series-id"></a>Een Time Series-id kiezen
 
-Het selecteren van de juiste tijd reeks-ID is van cruciaal belang. Het kiezen van een tijd reeks-ID is hetzelfde als het kiezen van een partitie sleutel voor een Data Base. Dit is vereist wanneer u een Azure Time Series Insights Gen2-omgeving maakt. 
+Het selecteren van de juiste tijd reeks-ID is van cruciaal belang. Het kiezen van een tijd reeks-ID is hetzelfde als het kiezen van een partitie sleutel voor een Data Base. Dit is vereist wanneer u een Azure Time Series Insights Gen2-omgeving maakt.
 
 > [!IMPORTANT]
 > De time series-Id's zijn:
@@ -40,7 +40,7 @@ De belangrijkste aanbevolen procedures zijn:
 * De time series-ID moet uniek zijn op het leaf-knooppunt niveau van uw [Time Series-model](./concepts-model-overview.md).
 * De teken limiet voor de eigenschaps naam van de tijd reeks-ID is 128. De teken limiet voor de eigenschaps waarde van de tijd reeks-ID is 1.024.
 * Als een unieke eigenschaps waarde voor de time series-ID ontbreekt, wordt deze behandeld als een null-waarde en volgt dezelfde regel van de uniekheids beperking.
-* Als uw tijd reeks-ID is genest in een complex JSON-object, moet u de inkomende [regels](./concepts-json-flattening-escaping-rules.md) volgen wanneer u de naam van uw eigenschap opgeeft. Bekijk voor beeld [B](concepts-json-flattening-escaping-rules.md#example-b). 
+* Als uw tijd reeks-ID is genest in een complex JSON-object, moet u de inkomende [regels](./concepts-json-flattening-escaping-rules.md) volgen wanneer u de naam van uw eigenschap opgeeft. Bekijk voor beeld [B](concepts-json-flattening-escaping-rules.md#example-b).
 * U kunt ook Maxi maal *drie* sleutel eigenschappen selecteren als uw tijd reeks-id. De combi natie hiervan is een samengestelde sleutel die de tijd reeks-ID vertegenwoordigt.  
   > [!NOTE]
   > Uw drie sleutel eigenschappen moeten teken reeksen zijn.
@@ -75,7 +75,7 @@ Voor beeld van onbewerkte gebeurtenis:
 ```
 
 In de Azure Portal, kunt u de samengestelde sleutel als volgt invoeren:
- 
+
 [![Configureer de Time Series-id voor de omgeving.](media/v2-how-to-tsid/configure-environment-key.png)](media/v2-how-to-tsid/configure-environment-key.png#lightbox)
 
   > [!NOTE]

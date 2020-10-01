@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/28/2020
 ms.author: aahi
 keywords: on-premises, docker, container, Kubernetes
-ms.openlocfilehash: 48bfad4b101556dfcc4e57cf684341bda8063202
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: ccba46c1e83f92b1f27c64cb4d9ca32039862bd1
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91461203"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597447"
 ---
 # <a name="azure-cognitive-services-containers"></a>Azure Cognitive Services-containers
 
@@ -58,9 +58,9 @@ Azure Cognitive Services-containers bieden de volgende set docker-containers, di
 | Service | Ondersteunde prijs categorie | Container | Beschrijving |
 |--|--|--|--|
 | [Anomalie detectie][ad-containers] | F0, S0 | **Anomaliey-detector** ([installatie kopie](https://hub.docker.com/_/azure-cognitive-services-decision-anomaly-detector))  | Met de Anomaly Detector-API kunt u anomalieën in uw tijdreeksgegevens controleren en detecteren met behulp van machine learning.<br>[Toegang aanvragen][request-access] |
-| [Computer Vision][cv-containers] | F0, S1 | **Lezen** | Hiermee wordt afgedrukte tekst geëxtraheerd uit afbeeldingen van verschillende objecten met verschillende Opper vlakken en achtergronden, zoals bevestigingen, posters en visite kaartjes. De Lees container detecteert ook *handgeschreven tekst* in afbeeldingen en biedt ondersteuning voor PDF/TIFF/meerdere pagina's.<br/><br/>**Belang rijk:** De Lees container werkt momenteel alleen met Engels. |
-| [Face][fa-containers] | F0, S0 | **Face** | Detecteert menselijke gezichten in afbeeldingen en identificeert kenmerken, met inbegrip van gezichts bezienswaardigheden (zoals neus en ogen), geslacht, leeftijd en andere computer-voorspelde gezichts functies. Naast detectie kan het gezicht controleren of twee gezichten in dezelfde afbeelding of verschillende afbeeldingen hetzelfde zijn door gebruik te maken van een betrouwbaarheids Score, of de gezichten vergelijken met een Data Base om te zien of er al een vergelijkbaar of identiek gezicht bestaat. Het kan ook gelijksoortige gezichten in groepen indelen met behulp van gedeelde visuele elementen.<br>[Toegang aanvragen][request-access] |
-| [Formulier herkenning][fr-containers] | F0, S0 | **Form Recognizer** | Formulier uitleg is van toepassing machine learning technologie om sleutel-waardeparen en tabellen uit formulieren te identificeren en uit te pakken.<br>[Toegang aanvragen][request-access] |
+| [Computer Vision][cv-containers] | F0, S1 | **Lezen** OCR ([afbeelding](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-read)) | Met de container OCR lezen kunt u gedrukte en handgeschreven tekst uit afbeeldingen en documenten extra heren met ondersteuning voor JPEG-, PNG-, BMP-, PDF-en TIFF-bestands indelingen. Zie de [Lees API-documentatie](./computer-vision/concept-recognizing-text.md)voor meer informatie.<br>[Toegang aanvragen][request-access] |
+| [Face][fa-containers] | F0, S0 | **Face** | Detecteert menselijke gezichten in afbeeldingen en identificeert kenmerken, met inbegrip van gezichts bezienswaardigheden (zoals neus en ogen), geslacht, leeftijd en andere computer-voorspelde gezichts functies. Naast detectie kan het gezicht controleren of twee gezichten in dezelfde afbeelding of verschillende afbeeldingen hetzelfde zijn door gebruik te maken van een betrouwbaarheids Score, of de gezichten vergelijken met een Data Base om te zien of er al een vergelijkbaar of identiek gezicht bestaat. Het kan ook gelijksoortige gezichten in groepen indelen met behulp van gedeelde visuele elementen. |
+| [Formulier herkenning][fr-containers] | F0, S0 | **Form Recognizer** | Formulier uitleg is van toepassing machine learning technologie om sleutel-waardeparen en tabellen uit formulieren te identificeren en uit te pakken. |
 | [LUIS][lu-containers] | F0, S0 | **Luis** ([afbeelding](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409)) | Laadt een getraind of gepubliceerd Language Understanding model, ook wel een LUIS-app genoemd, op in een docker-container en biedt toegang tot de query voorspellingen vanuit de API-eind punten van de container. U kunt query logboeken van de container verzamelen en deze weer uploaden naar de [Luis-Portal](https://www.luis.ai) om de nauw keurigheid van de app te verbeteren. |
 | [Speech Service-API][sp-containers-stt] | F0, S0 | **Spraak naar tekst** ([afbeelding](https://hub.docker.com/_/azure-cognitive-services-speechservices-speech-to-text)) | Transcribeert continue realtime spraak naar tekst. |
 | [Speech Service-API][sp-containers-cstt] | F0, S0 | **Custom speech-naar-tekst** ([afbeelding](https://hub.docker.com/_/azure-cognitive-services-speechservices-custom-speech-to-text)) | Transcribeert doorlopend realtime spraak naar tekst met behulp van een aangepast model. |

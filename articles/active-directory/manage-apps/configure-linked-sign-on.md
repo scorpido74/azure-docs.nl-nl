@@ -1,26 +1,26 @@
 ---
-title: Een gekoppelde aanmelding configureren in Azure Active Directory
-description: Een gekoppelde aanmelding configureren in azure AD.
+title: Informatie over gekoppelde aanmelding in Azure Active Directory
+description: Meer informatie over gekoppelde aanmelding in Azure Active Directory.
 services: active-directory
 author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
-ms.topic: how-to
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 07/30/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: bad4fe7f0cf090e5d61506e775fccf677df45fa5
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 67cb8d6bf6dd61fb5ba7aec70a79078cbe2b8b13
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88641973"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597835"
 ---
-# <a name="configure-linked-sign-on"></a>Gekoppelde aanmelding configureren
+# <a name="understand-linked-sign-on"></a>Informatie over gekoppelde aanmelding
 
-In de [Quick](view-applications-portal.md) start-serie op toepassings beheer hebt u geleerd hoe u Azure AD als id-provider (IDP) gebruikt voor een toepassing. In de Snelstartgids kunt u op SAML gebaseerde SSO instellen. Een andere optie is **gekoppeld**. In dit artikel vindt u meer informatie over de gekoppelde optie.
+In de [Quick](view-applications-portal.md) start-serie op toepassings beheer hebt u geleerd hoe u Azure AD als id-provider (IDP) gebruikt voor een toepassing. In de hand leiding Snelstartgids configureert u op SAML gebaseerde SSO-of OIDC. Een andere optie is **gekoppeld**. In dit artikel vindt u meer informatie over de gekoppelde optie.
 
 Met de optie **gekoppeld** kunt u de doel locatie configureren wanneer een gebruiker de app selecteert in [mijn Apps](https://myapps.microsoft.com/) of Office 365-portal van uw organisatie.
 
@@ -33,14 +33,14 @@ Enkele veelvoorkomende scenario's waarbij de koppelings optie waardevol is:
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Volg de Quick Start- [serie](view-applications-portal.md) op toepassings beheer om snel aan de slag te gaan. In de Quick Start, waar u eenmalige aanmelding configureert, vindt u ook de optie **gekoppeld** . 
+Volg de Quick Start- [serie](view-applications-portal.md) op toepassings beheer om kennis snel te vinden. In de Quick Start, waar u eenmalige aanmelding configureert, vindt u ook de optie **gekoppeld** . 
 
 De optie **gekoppeld** biedt geen aanmeldings functionaliteit via Azure AD. Met deze optie stelt u alleen de locatie gebruikers worden verzonden naar wanneer ze de app selecteren in [mijn apps](https://myapps.microsoft.com/) of het start programma voor apps van de Microsoft 365.
 
 > [!IMPORTANT] 
 > Er zijn enkele scenario's waarbij de optie voor **eenmalige aanmelding** niet voor komt in de navigatie voor een toepassing in **bedrijfs toepassingen**. 
 >
-> Als de toepassing is geregistreerd met behulp van **app-registraties** , wordt de mogelijkheid voor eenmalige aanmelding standaard ingesteld voor het gebruik van OIDC OAuth. In dit geval wordt de optie **voor eenmalige aanmelding** niet weer gegeven in de navigatie onder **bedrijfs toepassingen**. Wanneer u **app-registraties** gebruikt om uw aangepaste app toe te voegen, configureert u de opties in het manifest bestand. Zie [Azure Active Directory app-manifest](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)voor meer informatie over het manifest bestand. Zie [verificatie en autorisatie met behulp van micro soft Identity platform](https://docs.microsoft.com/azure/active-directory/develop/authentication-vs-authorization#authentication-and-authorization-using-microsoft-identity-platform)voor meer informatie over SSO-standaarden. 
+> Als de toepassing is geregistreerd met behulp van **app-registraties** , is de functionaliteit voor eenmalige aanmelding standaard ingesteld op het gebruik van OIDC OAuth. In dit geval wordt de optie **voor eenmalige aanmelding** niet weer gegeven in de navigatie onder **bedrijfs toepassingen**. Wanneer u **app-registraties** gebruikt om uw aangepaste app toe te voegen, configureert u de opties in het manifest bestand. Zie [Azure Active Directory app-manifest](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)voor meer informatie over het manifest bestand. Zie [verificatie en autorisatie met behulp van micro soft Identity platform](https://docs.microsoft.com/azure/active-directory/develop/authentication-vs-authorization#authentication-and-authorization-using-microsoft-identity-platform)voor meer informatie over SSO-standaarden. 
 >
 > Andere scenario's waarin **eenmalige aanmelding** ontbreekt in de navigatie, zijn, wanneer een toepassing wordt gehost in een andere Tenant of als uw account niet over de vereiste machtigingen (globale beheerder, Cloud toepassings beheerder, toepassings beheerder of eigenaar van de service-principal) beschikt. Machtigingen kunnen ook leiden tot een scenario waarin u **eenmalige aanmelding** kunt openen, maar niet kunt opslaan. Zie (voor meer informatie over Azure AD-beheerders rollen https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) .
 

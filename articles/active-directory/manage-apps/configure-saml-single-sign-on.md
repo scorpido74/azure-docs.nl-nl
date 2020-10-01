@@ -1,38 +1,38 @@
 ---
-title: Op SAML gebaseerde eenmalige aanmelding (SSO) configureren voor apps in azure AD
-description: Op SAML gebaseerde eenmalige aanmelding (SSO) configureren voor apps in azure AD
+title: Meer informatie over op SAML gebaseerde eenmalige aanmelding (SSO) voor apps in Azure Active Directory
+description: Meer informatie over op SAML gebaseerde eenmalige aanmelding (SSO) voor apps in Azure Active Directory
 services: active-directory
 author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
-ms.topic: how-to
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 07/28/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: afa927f8faa1ac2bd9cd910b3e78b690c16259e5
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 28bf7e631c8693434d686022891bb2e45152f0ce
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90605138"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597910"
 ---
-# <a name="configure-saml-based-single-sign-on"></a>Eenmalige aanmelding op basis van SAML configureren
+# <a name="understand-saml-based-single-sign-on"></a>Informatie over eenmalige aanmelding op basis van SAML
 
 In de [Quick](view-applications-portal.md) start-serie op toepassings beheer hebt u geleerd hoe u Azure AD als id-provider (IDP) gebruikt voor een toepassing. In dit artikel vindt u meer informatie over de op SAML gebaseerde optie voor eenmalige aanmelding. 
 
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Het gebruik van Azure AD als uw ID-provider (IdP) en het instellen van eenmalige aanmelding (SSO) kan eenvoudig of complex zijn, afhankelijk van de toepassing die wordt gebruikt. Sommige toepassingen kunnen met slechts een paar acties worden geconfigureerd. Andere gebruikers moeten een gedetailleerde configuratie hebben. Volg de Quick Start- [serie](view-applications-portal.md) op toepassings beheer om snel aan de slag te gaan. Als de toepassing die u wilt toevoegen, eenvoudig is, hoeft u dit artikel waarschijnlijk niet te lezen. Als voor de toepassing die u wilt toevoegen aangepaste configuratie voor op SAML gebaseerde SSO vereist is, is dit artikel voor u.
+Het gebruik van Azure AD als uw ID-provider (IdP) en het configureren van eenmalige aanmelding (SSO) kan eenvoudig of complex zijn, afhankelijk van de toepassing die wordt gebruikt. Sommige toepassingen kunnen met slechts een paar acties worden geconfigureerd. Andere gebruikers moeten een gedetailleerde configuratie hebben. Volg de Quick Start- [serie](view-applications-portal.md) op toepassings beheer om kennis snel te vinden. Als de toepassing die u wilt toevoegen, eenvoudig is, hoeft u dit artikel waarschijnlijk niet te lezen. Als voor de toepassing die u wilt toevoegen aangepaste configuratie voor op SAML gebaseerde SSO vereist is, is dit artikel voor u.
 
 In de [Quick Start serie](add-application-portal-setup-sso.md)is er een artikel over het configureren van eenmalige aanmelding. Hierin leert u hoe u toegang kunt krijgen tot de configuratie pagina van SAML voor een app. De configuratie pagina van SAML bevat vijf secties. Deze secties worden gedetailleerd beschreven in dit artikel.
 
 > [!IMPORTANT] 
 > Er zijn enkele scenario's waarbij de optie voor **eenmalige aanmelding** niet aanwezig is in de navigatie voor een toepassing in **bedrijfs toepassingen**. 
 >
-> Als de toepassing is geregistreerd met behulp van **app-registraties** , wordt de mogelijkheid voor eenmalige aanmelding standaard ingesteld voor het gebruik van OIDC OAuth. In dit geval wordt de optie **voor eenmalige aanmelding** niet weer gegeven in de navigatie onder **bedrijfs toepassingen**. Wanneer u **app-registraties** gebruikt om uw aangepaste app toe te voegen, configureert u de opties in het manifest bestand. Zie [Azure Active Directory app-manifest](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)voor meer informatie over het manifest bestand. Zie [verificatie en autorisatie met behulp van micro soft Identity platform](https://docs.microsoft.com/azure/active-directory/develop/authentication-vs-authorization#authentication-and-authorization-using-microsoft-identity-platform)voor meer informatie over SSO-standaarden. 
+> Als de toepassing is geregistreerd met behulp van **app-registraties** , is de mogelijkheid voor eenmalige aanmelding standaard geconfigureerd voor het gebruik van OIDC OAuth. In dit geval wordt de optie **voor eenmalige aanmelding** niet weer gegeven in de navigatie onder **bedrijfs toepassingen**. Wanneer u **app-registraties** gebruikt om uw aangepaste app toe te voegen, configureert u de opties in het manifest bestand. Zie [Azure Active Directory app-manifest](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)voor meer informatie over het manifest bestand. Zie [verificatie en autorisatie met behulp van micro soft Identity platform](https://docs.microsoft.com/azure/active-directory/develop/authentication-vs-authorization#authentication-and-authorization-using-microsoft-identity-platform)voor meer informatie over SSO-standaarden. 
 >
 > Andere scenario's waarin **eenmalige aanmelding** ontbreekt in de navigatie, zijn, wanneer een toepassing wordt gehost in een andere Tenant of als uw account niet over de vereiste machtigingen (globale beheerder, Cloud toepassings beheerder, toepassings beheerder of eigenaar van de service-principal) beschikt. Machtigingen kunnen ook leiden tot een scenario waarin u **eenmalige aanmelding** kunt openen, maar niet kunt opslaan. Zie (voor meer informatie over Azure AD-beheerders rollen https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) .
 
@@ -42,7 +42,7 @@ In de [Quick Start serie](add-application-portal-setup-sso.md)is er een artikel 
 U moet de waarden van de leverancier van de toepassing ophalen. U kunt de waarden hand matig invoeren of een meta gegevensbestand uploaden om de waarde van de velden te extra heren.
 
 > [!TIP]
-> Veel apps zijn al vooraf geconfigureerd voor gebruik met Azure AD. Deze apps worden weer gegeven in de galerie met apps die u kunt bezoeken wanneer u een app toevoegt aan uw Azure AD-Tenant. In de Quick Start- [serie](add-application-portal-setup-sso.md) wordt u begeleid bij het proces. Voor de apps in de galerie vindt u gedetailleerde stapsgewijze instructies voor het instellen van een stap. Als u de stappen wilt openen, klikt u op de koppeling op de configuratie pagina van SAML voor de app, zoals beschreven in de Quick Start-serie of kunt u een lijst met alle zelf studies over app-configuratie bekijken in [zelf studies voor SaaS-app-configuratie](../saas-apps/tutorial-list.md).
+> Veel apps zijn al vooraf geconfigureerd voor gebruik met Azure AD. Deze apps worden weer gegeven in de galerie met apps die u kunt bezoeken wanneer u een app toevoegt aan uw Azure AD-Tenant. In de Quick Start- [serie](add-application-portal-setup-sso.md) wordt u begeleid bij het proces. Voor de apps in de galerie vindt u gedetailleerde, stapsgewijze instructies. Als u de stappen wilt openen, klikt u op de koppeling op de configuratie pagina van SAML voor de app, zoals beschreven in de Quick Start-serie of kunt u een lijst met alle zelf studies over app-configuratie bekijken in [zelf studies voor SaaS-app-configuratie](../saas-apps/tutorial-list.md).
 
 | Basis configuratie-instelling voor SAML | SP-geïnitieerd | idP-geïnitieerd | Beschrijving |
 |:--|:--|:--|:--|
@@ -76,7 +76,7 @@ U kunt nieuwe claims toevoegen, voor meer informatie Raadpleeg [het toevoegen va
 
 ## <a name="saml-signing-certificate"></a>SAML-handtekening certificaat
 
-Azure AD maakt gebruik van een certificaat voor het ondertekenen van de SAML-tokens die worden verzonden naar de toepassing. U hebt dit certificaat nodig om de vertrouwens relatie tussen Azure AD en de toepassing in te stellen. Zie de SAML-documentatie van de toepassing voor meer informatie over de indeling van het certificaat. Zie voor meer informatie [certificaten beheren voor federatieve eenmalige aanmelding](manage-certificates-for-federated-single-sign-on.md) en [Geavanceerde opties voor certificaat ondertekening in het SAML-token](certificate-signing-options.md).
+Azure AD maakt gebruik van een certificaat voor het ondertekenen van de SAML-tokens die worden verzonden naar de toepassing. U hebt dit certificaat nodig om de vertrouwens relatie tussen Azure AD en de toepassing te configureren. Zie de SAML-documentatie van de toepassing voor meer informatie over de indeling van het certificaat. Zie voor meer informatie [certificaten beheren voor federatieve eenmalige aanmelding](manage-certificates-for-federated-single-sign-on.md) en [Geavanceerde opties voor certificaat ondertekening in het SAML-token](certificate-signing-options.md).
 
 > [!IMPORTANT]
 > Veel apps zijn al vooraf geconfigureerd en in de app-galerie en u hoeft geen certificaten aan te gaan. De [Quick](add-application-portal.md) start-serie helpt u bij het toevoegen en configureren van apps.
@@ -99,7 +99,7 @@ Selecteer de knop bewerken om certificaat wijzigingen door te voeren. Er zijn ve
 
 ## <a name="set-up-the-application-to-use-azure-ad"></a>De toepassing instellen voor gebruik van Azure AD
 
-In de sectie **instellen \<applicationName> ** worden de waarden vermeld die moeten worden geconfigureerd in de toepassing, zodat Azure AD wordt gebruikt als een SAML-ID-provider. U stelt de waarden in op de configuratie pagina op de website toepassingen. Als u bijvoorbeeld GitHub instelt, gaat u naar de github.com-site en stelt u de waarden in. Als de toepassing al vooraf is geconfigureerd en in de Azure AD-galerie, vindt u een koppeling waarmee u **Stapsgewijze instructies kunt bekijken**. Als dat niet het geval is, moet u de documentatie voor de toepassing die u instelt, zoeken. 
+In de sectie **instellen \<applicationName> ** worden de waarden vermeld die moeten worden geconfigureerd in de toepassing, zodat Azure AD wordt gebruikt als een SAML-ID-provider. U stelt de waarden in op de configuratie pagina op de website toepassingen. Als u bijvoorbeeld GitHub configureert, gaat u naar de github.com-site en stelt u de waarden in. Als de toepassing al vooraf is geconfigureerd en in de Azure AD-galerie, vindt u een koppeling waarmee u **Stapsgewijze instructies kunt bekijken**. Als dat niet het geval is, moet u de documentatie vinden voor de toepassing die u configureert. 
 
 De waarden van de **aanmeldings-URL** en de **afmeldings-URL** worden beide omgezet naar hetzelfde eind punt. Dit is het SAML-eind punt voor aanvraag verwerking voor de Azure AD-Tenant. 
 
@@ -111,7 +111,7 @@ Nadat u uw toepassing hebt geconfigureerd voor het gebruik van Azure AD als id-p
 
 Selecteer **testen** en kies vervolgens om te testen met de gebruiker die momenteel is aangemeld of als iemand anders. 
 
-Als de aanmelding is geslaagd, kunt u gebruikers en groepen toewijzen aan uw SAML-toepassing. Gefeliciteerd
+Als de aanmelding is geslaagd, kunt u gebruikers en groepen toewijzen aan uw SAML-toepassing. Gefeliciteerd!
 
 Als er een fout bericht wordt weer gegeven, voert u de volgende stappen uit:
 

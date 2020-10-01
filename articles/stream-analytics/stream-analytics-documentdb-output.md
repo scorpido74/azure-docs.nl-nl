@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/2/2020
 ms.custom: seodec18
-ms.openlocfilehash: dbeb1305a64fcace0be527708bc9122a4ffb931d
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 891cd651278906c6ff4b24d91342c612c67604de
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88870830"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596559"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Stream Analytics uitvoer naar Azure Cosmos DB  
 Azure Stream Analytics kan gericht zijn op [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) voor json-uitvoer, waardoor gegevens worden gearchiveerd en query's met lage latentie worden uitgevoerd op ONgestructureerde JSON-gegevens. Dit document bevat enkele aanbevolen procedures voor het implementeren van deze configuratie.
@@ -72,7 +72,9 @@ Afhankelijk van de partitie sleutel die u kiest, kan deze _waarschuwing_worden w
 
 Het is belang rijk om een partitie sleutel eigenschap te kiezen die een aantal afzonderlijke waarden heeft en waarmee u de werk belasting gelijkmatig over deze waarden kunt verdelen. Als een natuurlijk artefact van partitioneren, worden aanvragen die betrekking hebben op dezelfde partitie sleutel beperkt door de maximale door Voer van één partitie. 
 
-De opslag grootte voor documenten die deel uitmaken van dezelfde partitie sleutel is beperkt tot 20 GB. Een ideale partitie sleutel is een code die regel matig wordt weer gegeven als filter in uw query's en voldoende kardinaliteit heeft om ervoor te zorgen dat uw oplossing schaalbaar is.
+De opslag grootte voor documenten die deel uitmaken van dezelfde partitie sleutel waarde is beperkt tot 20 GB (de limiet voor de [fysieke partitie grootte](../cosmos-db/partition-data.md) is 50 GB). Een [ideale partitie sleutel](../cosmos-db/partitioning-overview.md#choose-partitionkey) is een code die regel matig wordt weer gegeven als filter in uw query's en voldoende kardinaliteit heeft om ervoor te zorgen dat uw oplossing schaalbaar is.
+
+Partitie sleutels die worden gebruikt voor Stream Analytics query's en Cosmos DB hoeven niet identiek te zijn. Volledig parallelle topologieën raden u aan om een *invoer partitie sleutel*te gebruiken, `PartitionId` , als de stream Analytics de partitie sleutel van de query, maar dit is mogelijk niet de aanbevolen keuze voor de partitie sleutel van een Cosmos DB container.
 
 Een partitie sleutel is ook de grens voor trans acties in opgeslagen procedures en triggers voor Azure Cosmos DB. U moet de partitie sleutel kiezen, zodat documenten die in trans acties samen komen, dezelfde partitie sleutel waarde hebben. Het artikel [partitioneren in azure Cosmos DB](../cosmos-db/partitioning-overview.md) biedt meer informatie over het kiezen van een partitie sleutel.
 

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, rohitha, vikanand, hongzili, sopai, absaafan, logicappspm
 ms.topic: conceptual
 ms.date: 09/26/2020
-ms.openlocfilehash: 1595051c851d1c21242bcbb5368baa28a1da740d
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.openlocfilehash: cc52358af203bafc87c5f9ac3ae1f237c0c7ae6c
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91409847"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597789"
 ---
 # <a name="create-stateful-or-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Stateful of stateless werk stromen maken in Visual Studio code met de extensie Azure Logic Apps (preview)
 
@@ -389,9 +389,11 @@ De werk stroom van de logische app in dit voor beeld maakt gebruik van deze trig
 
 1. Voer de volgende stappen uit als u een item in de ontwerp functie wilt verwijderen:
 
-   1. Selecteer het item op de ontwerp functie.
+   1. Selecteer op de Designer het item, waarmee het detail venster van het item aan de rechter kant wordt geopend.
 
-   1. In het detail venster van het item dat aan de rechter kant wordt geopend, selecteert u de knop met weglatings tekens (**...**) **>** **verwijderen**. Selecteer **OK**om de verwijdering te bevestigen.
+   1. Vouw het Visual Studio-code venster breed genoeg uit zodat naast de trigger of actie naam de knop met de weglatings tekens (**...**) in de rechter bovenhoek wordt weer gegeven. 
+
+   1. Open het menu met weglatings tekens (**...**) en selecteer **verwijderen**. Selecteer **OK**om de verwijdering te bevestigen.
 
       ![Scherm opname van het geselecteerde item in de ontwerp functie met het deel venster Details openen en met de optie voor het selecteren van de knop verwijderen.](./media/create-stateful-stateless-workflows-visual-studio-code/delete-item-from-designer.png)
 

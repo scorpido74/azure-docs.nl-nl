@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1788eba0ef9be781fb7cf23f1eb86b48c9c360e1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: cb12777a6a4fa1e75cd65bc597c87442d592aad5
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287408"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598120"
 ---
 # <a name="plan-your-azure-time-series-insights-gen2-environment"></a>Uw Azure Time Series Insights Gen2-omgeving plannen
 
@@ -36,7 +36,6 @@ Azure Time Series Insights maakt gebruik van een zakelijk model voor betalen per
 ## <a name="the-gen2-environment"></a>De Gen2 omgeving
 
 Wanneer u een Azure Time Series Insights Gen2-omgeving inricht, maakt u twee Azure-resources:
-
 
 * Een Azure Time Series Insights Gen2-omgeving
 * Een Azure Storage-account
@@ -94,8 +93,8 @@ Lees de [regels voor json-afvlakking en-Escapes](./concepts-json-flattening-esca
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Bekijk [Azure Advisor](../advisor/advisor-overview.md) om de configuratie opties voor uw bedrijfs herstel te plannen.
-- Bekijk [Azure Advisor](../advisor/advisor-overview.md) om de configuratie opties voor uw bedrijfs herstel te plannen.
-- Meer informatie over [gegevens opname](./concepts-ingestion-overview.md) vindt u in azure time series Insights Gen2.
-- Raadpleeg het artikel over [gegevens opslag](./concepts-storage.md) in azure time series Insights Gen2.
-- Meer informatie over [gegevens modellering](./concepts-model-overview.md) in azure time series Insights Gen2.
+* Bekijk [Azure Advisor](../advisor/advisor-overview.md) om de configuratie opties voor uw bedrijfs herstel te plannen.
+* Bekijk [Azure Advisor](../advisor/advisor-overview.md) om de configuratie opties voor uw bedrijfs herstel te plannen.
+* Meer informatie over [gegevens opname](./concepts-ingestion-overview.md) vindt u in azure time series Insights Gen2.
+* Raadpleeg het artikel over [gegevens opslag](./concepts-storage.md) in azure time series Insights Gen2.
+* Meer informatie over [gegevens modellering](./concepts-model-overview.md) in azure time series Insights Gen2.

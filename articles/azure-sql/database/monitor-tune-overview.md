@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnick, sstein
-ms.date: 03/10/2020
-ms.openlocfilehash: 36a1be4f802292e62c98098508927b06a5851afa
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/30/2020
+ms.openlocfilehash: 6c8d048d43a16191cc7b1245ad2d686ba2ca22ab
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333083"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596978"
 ---
 # <a name="monitoring-and-performance-tuning-in-azure-sql-database-and-azure-sql-managed-instance"></a>Bewaking en prestatieafstemming van Azure SQL Database en Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -27,11 +27,14 @@ Azure SQL Database biedt een aantal database adviseurs voor het leveren van aanb
 
 Azure SQL Database en Azure SQL Managed instance bieden geavanceerde mogelijkheden voor bewaking en afstemming, die worden ondersteund door kunst matige intelligentie om u te helpen bij het oplossen van problemen en het maximaliseren van de prestaties van uw data bases en oplossingen. U kunt ervoor kiezen om de [streaming-export](metrics-diagnostic-telemetry-logging-streaming-export-configure.md) van deze [intelligent Insights](intelligent-insights-overview.md) en andere database bron logboeken en-metrische gegevens te configureren naar een van de verschillende bestemmingen voor verbruik en analyse, met name met behulp van [SQL Analytics](../../azure-monitor/insights/azure-sql.md). Azure SQL-analyse is een geavanceerde Cloud bewakings oplossing voor het bewaken van de prestaties van al uw data bases op schaal en op meerdere abonnementen in één weer gave. Voor een lijst met de logboeken en metrische gegevens die u kunt exporteren, raadpleegt u [Diagnostische telemetrie voor exporteren](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#diagnostic-telemetry-for-export)
 
-Ten slotte heeft SQL Server een eigen bewakings-en diagnostische mogelijkheden die SQL Database en SQL Managed instance-gebruik, zoals [query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) en [dynamische beheer weergaven (dmv's)](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views). Zie [bewaking met behulp van dmv's](monitoring-with-dmvs.md) voor scripts om te controleren op diverse prestatie problemen.
+SQL Server heeft zijn eigen bewakings-en diagnostische mogelijkheden die gebruikmaken van SQL Database en het gebruik van SQL Managed instance, zoals [query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) en [dynamische beheer weergaven (dmv's)](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views). Zie [bewaking met behulp van dmv's](monitoring-with-dmvs.md) voor scripts om te controleren op diverse prestatie problemen.
 
 ## <a name="monitoring-and-tuning-capabilities-in-the-azure-portal"></a>Mogelijkheden voor bewaking en afstemming in de Azure Portal
 
-In de Azure Portal, Azure SQL Database en Azure SQL Managed instance bewaken de metrische gegevens van de resource. Daarnaast biedt Azure SQL Database data base Advisor en Query Performance Insight u aanbevelingen voor het afstemmen van query's en analyse van query prestaties. Ten slotte kunt u in het Azure Portal automatische inschakelen voor [logische SQL-servers](logical-servers.md) en de afzonderlijke data bases en groepen.
+In de Azure Portal, Azure SQL Database en Azure SQL Managed instance bewaken de metrische gegevens van de resource. Azure SQL Database biedt database advies en Query Performance Insight biedt aanbevelingen voor het afstemmen van query's en analyse van query prestaties. In de Azure Portal kunt u automatisch afstemmen inschakelen voor [logische SQL-servers](logical-servers.md) en de afzonderlijke data bases en groepen.
+
+> [!NOTE]
+> Data bases met een extreem laag gebruik kunnen worden weer gegeven in de portal met minder dan het werkelijke gebruik. Als gevolg van de manier waarop telemetrie wordt verzonden bij het converteren van een dubbele waarde naar het dichtstbijzijnde gehele getal, moeten bepaalde gebruiks bedragen kleiner dan 0,5 worden afgerond op 0, waardoor een verlies in granulatie van de verzonden telemetrie wordt veroorzaakt. Zie voor meer informatie de metrische gegevens voor [lage data base en elastische groepen afronden op nul](#low-database-and-elastic-pool-metrics-rounding-to-zero).
 
 ### <a name="azure-sql-database-and-azure-sql-managed-instance-resource-monitoring"></a>Bewakings bron voor Azure SQL Database en Azure SQL Managed instance
 
@@ -46,6 +49,33 @@ Azure SQL Database omvatten [Data Base Advisor](database-advisor-implement-perfo
 ### <a name="query-performance-insight-in-azure-sql-database"></a>Query Performance Insight in Azure SQL Database
 
 [Query Performance Insight](query-performance-insight-use.md) toont de prestaties in het Azure portal van de meest gebruikte en langste query's die worden uitgevoerd voor één en gepoolde data bases.
+
+### <a name="low-database-and-elastic-pool-metrics-rounding-to-zero"></a>De metrische gegevens van de data base en de elastische pool worden afgerond op nul
+
+Vanaf september 2020 kunnen data bases met een extreem laag gebruik worden weer gegeven in de portal met minder dan het werkelijke gebruik. Als gevolg van de manier waarop telemetrie wordt verzonden bij het converteren van een dubbele waarde naar het dichtstbijzijnde gehele getal, moeten bepaalde gebruiks bedragen kleiner dan 0,5 worden afgerond op 0, waardoor een verlies in granulatie van de verzonden telemetrie wordt veroorzaakt.
+
+Bijvoorbeeld: overweeg een venster van één minuut met de volgende vier gegevens punten: 0,1, 0,1, 0,1, 0,1, deze lage waarden worden afgerond op 0, 0, 0, 0 en geven een gemiddelde van 0. Als een van de gegevens punten groter is dan 0,5, bijvoorbeeld: 0,1, 0,1, 0,9, 0,1, worden ze afgerond op 0, 0, 1, 0 en wordt een gemiddelde van 0,25 weer gegeven.
+
+Betroffen data base-metrische gegevens:
+- cpu_percent
+- log_write_percent
+- workers_percent
+- sessions_percent
+- physical_data_read_percent
+- dtu_consumption_percent2
+- xtp_storage_percent
+
+Beïnvloede metrische gegevens van elastische groep:
+- cpu_percent
+- physical_data_read_percent
+- log_write_percent
+- memory_usage_percent
+- data_storage_percent
+- peak_worker_percent
+- peak_session_percent
+- xtp_storage_percent
+- allocated_data_storage_percent
+
 
 ## <a name="generate-intelligent-assessments-of-performance-issues"></a>Intelligente beoordelingen van prestatie problemen genereren
 

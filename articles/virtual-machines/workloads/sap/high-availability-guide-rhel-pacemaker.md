@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/04/2020
+ms.date: 09/29/2020
 ms.author: radeltch
-ms.openlocfilehash: a1e097692eade956446b46782bca5ecf3a17de75
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 4c444cb84f215ba4f42c14eb64f1d2f441e4280d
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800259"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598301"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>Pacemaker instellen voor Red Hat Enterprise Linux in azure
 
@@ -66,6 +66,7 @@ Lees eerst de volgende SAP-opmerkingen en-documenten:
 * Documentatie voor Azure-specifieke RHEL:
   * [Ondersteunings beleid voor RHEL-clusters met hoge Beschik baarheid-Microsoft Azure Virtual Machines als cluster leden](https://access.redhat.com/articles/3131341)
   * [Installeren en configureren van een cluster met hoge Beschik baarheid van Red Hat Enterprise Linux 7,4 (en hoger) op Microsoft Azure](https://access.redhat.com/articles/3252491)
+  * [Overwegingen bij het aannemen van RHEL 8-hoge Beschik baarheid en clusters](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/considerations_in_adopting_rhel_8/high-availability-and-clusters_considerations-in-adopting-rhel-8)
   * [SAP S/4HANA ASCS/ERS met zelfstandige server 2 (ENSA2) configureren in pacemaker op RHEL 7,6](https://access.redhat.com/articles/3974941)
 
 ## <a name="cluster-installation"></a>Cluster installatie
@@ -78,7 +79,7 @@ Lees eerst de volgende SAP-opmerkingen en-documenten:
 
 De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoop punten, **[1]** -alleen van toepassing op knoop punt 1 of **[2]** -alleen van toepassing op knoop punt 2.
 
-1. **[A]** registreren
+1. **[A]** registreren. Deze stap is niet vereist als u gebruikmaakt van installatie kopieën met RHEL 8. x HA.  
 
    Registreer uw virtuele machines en koppel deze aan een groep die opslag plaatsen voor RHEL 7 bevat.
 
@@ -88,9 +89,9 @@ De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoo
    sudo subscription-manager attach --pool=&lt;pool id&gt;
    </code></pre>
 
-   Als u een pool koppelt aan een Azure Marketplace PAYG RHEL-installatie kopie, wordt u in feite gefactureerd voor uw RHEL-gebruik: eenmaal voor de PAYG-installatie kopie en eenmaal voor het RHEL recht van de groep die u koppelt. Azure biedt nu BYOS RHEL-installatie kopieën om dit te verhelpen. Meer informatie is [hier](../redhat/byos.md)beschikbaar.
+   Door een pool aan een Azure Marketplace PAYG RHEL-installatie kopie te koppelen, wordt u in feite gefactureerd voor uw RHEL-gebruik: eenmaal voor de PAYG-installatie kopie en eenmaal voor het RHEL recht van de groep die u koppelt. Azure biedt nu BYOS RHEL-installatie kopieën om dit te verhelpen. Meer informatie vindt u [hier](../redhat/byos.md).
 
-1. **[A]** RHEL inschakelen voor SAP opslag plaatsen
+1. **[A]** Schakel RHEL in voor SAP opslag plaatsen. Deze stap is niet vereist als u gebruikmaakt van installatie kopieën met RHEL 8. x HA.  
 
    Schakel de volgende opslag plaatsen in om de vereiste pakketten te installeren.
 
@@ -108,6 +109,7 @@ De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoo
 
    > [!IMPORTANT]
    > We raden u aan de volgende versies van de Azure Fence-agent (of hoger) voor klanten te laten profiteren van een snellere failover, als het stoppen van een resource mislukt of als de cluster knooppunten niet meer kunnen communiceren.  
+   > RHEL 7,7 of hoger gebruiken de nieuwste beschik bare versie van het pakket omheining-agents  
    > RHEL 7,6: omheining-agents-4.2.1-11. el7_6.8  
    > RHEL 7,5: omheining-agents-4.0.11-86. el7_5.8  
    > RHEL 7,4: omheining-agents-4.0.11-66. el7_4.12  
@@ -165,15 +167,23 @@ De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoo
 
 1. **[1]** pacemaker-cluster maken
 
-   Voer de volgende opdrachten uit om de knoop punten te verifiëren en het cluster te maken. Stel het token in op 30000 om onderhoud van het geheugen mogelijk te maken. Zie [dit artikel voor Linux][virtual-machines-linux-maintenance]voor meer informatie.
-
+   Voer de volgende opdrachten uit om de knoop punten te verifiëren en het cluster te maken. Stel het token in op 30000 om onderhoud van het geheugen mogelijk te maken. Zie [dit artikel voor Linux][virtual-machines-linux-maintenance]voor meer informatie.  
+   
+   Als u een cluster op **RHEL 7. x**maakt, gebruikt u de volgende opdrachten:  
    <pre><code>sudo pcs cluster auth <b>prod-cl1-0</b> <b>prod-cl1-1</b> -u hacluster
    sudo pcs cluster setup --name <b>nw1-azr</b> <b>prod-cl1-0</b> <b>prod-cl1-1</b> --token 30000
    sudo pcs cluster start --all
+   </code></pre>
 
-   # Run the following command until the status of both nodes is online
+   Als u een cluster op **RHEL 8. X**maakt, gebruikt u de volgende opdrachten:  
+   <pre><code>sudo pcs host auth <b>prod-cl1-0</b> <b>prod-cl1-1</b> -u hacluster
+   sudo pcs cluster setup <b>nw1-azr</b> <b>prod-cl1-0</b> <b>prod-cl1-1</b> totem token=30000
+   sudo pcs cluster start --all
+   </code></pre>
+
+   Controleer de cluster status door de volgende opdracht uit te voeren:  
+   <pre><code> # Run the following command until the status of both nodes is online
    sudo pcs status
-
    # Cluster name: nw1-azr
    # WARNING: no stonith devices and stonith-enabled is not false
    # Stack: corosync
@@ -188,17 +198,22 @@ De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoo
    #
    # No resources
    #
-   #
    # Daemon Status:
    #   corosync: active/disabled
    #   pacemaker: active/disabled
    #   pcsd: active/enabled
    </code></pre>
 
-1. **[A]** verwachte stemmen instellen
-
-   <pre><code>sudo pcs quorum expected-votes 2
+1. **[A]** verwachte stemmen instellen. 
+   
+   <pre><code># Check the quorum votes 
+    pcs quorum status
+    # If the quorum votes are not set to 2, execute the next command
+    sudo pcs quorum expected-votes 2
    </code></pre>
+
+   >[!TIP]
+   > Als u een cluster met meerdere knoop punten wilt bouwen, dat cluster met meer dan twee knooppunten is, stelt u de stemmen niet in op 2.    
 
 1. **[1]** gelijktijdige omheinings acties toestaan
 
@@ -211,7 +226,7 @@ Het STONITH-apparaat gebruikt een Service-Principal om te autoriseren bij Micros
 
 1. Ga naar <https://portal.azure.com>
 1. Open de Blade Azure Active Directory  
-   Ga naar Eigenschappen en noteer de map-id. Dit is de **Tenant-id**.
+   Ga naar eigenschappen en noteer de map-ID. Dit is de **Tenant-id**.
 1. Klik op App-registraties
 1. Klik op nieuwe registratie
 1. Voer een naam in, selecteer alleen accounts in deze organisatie Directory 
@@ -219,8 +234,8 @@ Het STONITH-apparaat gebruikt een Service-Principal om te autoriseren bij Micros
    De aanmeldings-URL wordt niet gebruikt en kan een geldige URL zijn
 1. Selecteer certificaten en geheimen en klik vervolgens op nieuw client geheim
 1. Voer een beschrijving in voor een nieuwe sleutel, selecteer nooit verloopt en klik op toevoegen
-1. Schrijf de waarde op. Dit wordt gebruikt als het **wacht woord** voor de Service-Principal
-1. Selecteer Overzicht. Noteer de toepassings-id. Deze wordt gebruikt als de gebruikers naam (**aanmeldings-id** in de onderstaande stappen) van de Service-Principal
+1. Maak een knoop punt van de waarde. Dit wordt gebruikt als het **wacht woord** voor de Service-Principal
+1. Selecteer Overzicht. Noteer de toepassings-ID. Deze wordt gebruikt als de gebruikers naam (**aanmeldings-id** in de onderstaande stappen) van de Service-Principal
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** een aangepaste rol maken voor de Fence-agent
 
@@ -264,7 +279,7 @@ Wijs de aangepaste rol Linux Fence-agent rol toe die in het laatste hoofd stuk i
 1. Klik op roltoewijzing toevoegen
 1. Selecteer de rol ' Linux Fence-agent functie '
 1. Voer de naam in van de toepassing die u hierboven hebt gemaakt
-1. Op Opslaan klikken
+1. Klik op Opslaan
 
 Herhaal de bovenstaande stappen voor het tweede cluster knooppunt.
 
@@ -276,12 +291,17 @@ Nadat u de machtigingen voor de virtuele machines hebt bewerkt, kunt u de STONIT
 sudo pcs property set stonith-timeout=900
 </code></pre>
 
-Gebruik de volgende opdracht om het Fence-apparaat te configureren.
-
 > [!NOTE]
 > De optie pcmk_host_map is alleen vereist in de opdracht als de hostnamen van de RHEL en de namen van Azure-knoop punten niet identiek zijn. Raadpleeg de sectie vet in de opdracht.
 
+Voor RHEL **7. X**gebruikt u de volgende opdracht om het Fence-apparaat te configureren:    
 <pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm login="<b>login ID</b>" passwd="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:10.0.0.6;prod-cl1-1:10.0.0.7"</b> \
+power_timeout=240 pcmk_reboot_timeout=900 pcmk_monitor_timeout=120 pcmk_monitor_retries=4 pcmk_action_limit=3 \
+op monitor interval=3600
+</code></pre>
+
+Voor RHEL **8. X**gebruikt u de volgende opdracht om het Fence-apparaat te configureren:  
+<pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm username="<b>login ID</b>" password="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:10.0.0.6;prod-cl1-1:10.0.0.7"</b> \
 power_timeout=240 pcmk_reboot_timeout=900 pcmk_monitor_timeout=120 pcmk_monitor_retries=4 pcmk_action_limit=3 \
 op monitor interval=3600
 </code></pre>

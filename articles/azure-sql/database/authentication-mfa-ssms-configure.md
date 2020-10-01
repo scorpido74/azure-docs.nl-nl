@@ -12,12 +12,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/27/2019
-ms.openlocfilehash: 2aac6979839d630645b4a05a029ce4c32037547b
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 1fb90c106c334073cea18cf014edce491029edec
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91444227"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596182"
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>Multi-factor Authentication configureren voor SQL Server Management Studio en Azure AD
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -37,6 +37,8 @@ Dit artikel laat u zien hoe u Azure Active Directory (Azure AD) multi-factor Aut
 ## <a name="connecting-by-using-universal-authentication-with-ssms"></a>Verbinding maken met behulp van universele verificatie met SSMS
 
 De volgende stappen laten zien hoe u verbinding maakt met behulp van de nieuwste SSMS.
+
+[!INCLUDE[ssms-connect-azure-ad](../includes/ssms-connect-azure-ad.md)]
 
 1. Als u verbinding wilt maken met behulp van universele verificatie, selecteert u in het dialoog venster **verbinding maken met server** in SQL Server Management Studio (SSMS) de optie **Active Directory-Universal met MFA-ondersteuning**. (Als u **Active Directory universele verificatie** ziet, bent u niet de nieuwste versie van SSMS.)
 

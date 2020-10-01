@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: references_regions
-ms.openlocfilehash: e9da87f3b5f7cb513b4b5d51c93a59d1703d401d
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 9c54482dc188141c4fc697bd43628b81e0ddc29f
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89258653"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597130"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>Clouds en regio's waarin Azure Media Services v3 bestaat
 
@@ -46,7 +46,7 @@ Azure Media Services v3 is beschikbaar via Azure Resource Manager-manifest in Gl
 - VS - oost
 - Central US
 - VS - zuid-centraal
-- US - west 2
+- VS - west 2
 - Brazil South
 
 ## <a name="regionsgeographieslocations"></a>Regio's/geografi/locaties
@@ -95,6 +95,8 @@ De volgende eind punten zijn belang rijk om te weten wanneer u verbinding maakt 
 | Azure Resource Manager |  `https://management.usgovcloudapi.net/` |
 | Verificatie | `https://login.microsoftonline.us/` |
 | Token doelgroep | `https://management.core.usgovcloudapi.net/` |
+
+[!INCLUDE [Widevine is not available in the GovCloud region.](./includes/widevine-not-available-govcloud.md)]
 
 ### <a name="azure-germany"></a>Azure Duitsland
 

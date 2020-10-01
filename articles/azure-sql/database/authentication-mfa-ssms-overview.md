@@ -13,12 +13,12 @@ ms.author: mireks
 ms.reviewer: vanto
 ms.date: 09/28/2020
 tags: azure-synapse
-ms.openlocfilehash: e526b8e2e4f31187bb958ec37c2ffa4d30f0265b
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: 2a3e1e7279e915c0c5992190ef0c8d1d83880dbb
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91461152"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596117"
 ---
 # <a name="using-multi-factor-azure-active-directory-authentication"></a>Multi-factor Azure Active Directory-verificatie gebruiken
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -27,14 +27,12 @@ Azure SQL Database, Azure SQL Managed instance en Azure Synapse Analytics onders
 
 **Download de nieuwste versie van SSMS** Download op de clientcomputer de meest recente versie van SSMS. Ga hiervoor naar de pagina [Download SQL Server Management Studio (SSMS)](https://aka.ms/ssms) (SQL Server Management Studio (SSMS) downloaden). 
 
-> [!Note]
-> In december 2021 kunnen releases van SSMS vóór 18,6 niet meer worden geverifieerd door Azure Active Directory met MFA. Als u wilt door gaan met het gebruik van Azure Active Directory verificatie met MFA, installeert u of werkt u bij naar SSMS 18,6 of hoger.
+[!INCLUDE[ssms-connect-azure-ad](../includes/ssms-connect-azure-ad.md)]
+
 
 Voor alle functies die in dit artikel worden besproken, hebt u ten minste versie 17.2 van juli 2017 nodig. Het meest recente dialoogvenster Verbinding maken met server moet er ongeveer uitzien als in de volgende afbeelding:
 
   ![Scherm afbeelding van het dialoog venster verbinding maken met server in SQL Server Management Studio, met de instellingen voor het server type, de server naam en de verificatie.](./media/authentication-mfa-ssms-overview/1mfa-universal-connect.png)
-  
-    
 
 ## <a name="authentication-options"></a>Verificatieopties
 

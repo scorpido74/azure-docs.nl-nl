@@ -11,42 +11,31 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/24/2020
+ms.date: 09/30/2020
 ms.author: allensu
-ms.openlocfilehash: 79399d0890f61d723f371528408d226f6a192ce4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d778b3ae0889ea0bf9cc38ca5813ac61fc5fcdbe
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336493"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91595652"
 ---
 # <a name="outbound-connections"></a>Uitgaande verbindingen
 
 Azure Load Balancer biedt uitgaande connectiviteit via verschillende mechanismen. In dit artikel worden de scenario's beschreven en hoe u deze beheert. 
 
-## <a name="outbound-connections-scenario-overview"></a><a name="scenarios"></a>Overzicht van scenario voor uitgaande verbindingen
 
-De termen die in deze scenario's worden gebruikt. Voor meer informatie, Zie [terminologie](#terms):
+## <a name="scenarios"></a>Scenario's
 
-* [Adres omzetting van bron netwerk (SNAT)](#snat)
-* [Poort maskering (PAT)](#pat)
-* Transmission Control Protocol (TCP)
-* UDP (User Data gram Protocol)
-* Network Address Translation
-* Internet Control Message Protocol
-* Encapsulating Security Protocol
+* Virtuele machine met een openbaar IP-adres.
+* Virtuele machine zonder openbaar IP-adres.
+* Virtuele machine zonder openbaar IP-adres en zonder standaard load balancer.
 
-### <a name="scenarios"></a>Scenario's
-
-* [Scenario 1](#scenario1) : een virtuele machine met een openbaar IP-adres.
-* [Scenario 2](#scenario2) : virtuele machine zonder openbaar IP-adres.
-* [Scenario 3](#scenario3) : virtuele machine zonder openbaar IP-adres en zonder standaard Load Balancer.
-
-### <a name="scenario-1---virtual-machine-with-public-ip"></a><a name="scenario1"></a>Scenario 1: een virtuele machine met een openbaar IP-adres
+### <a name="virtual-machine-with-public-ip"></a><a name="scenario1"></a>Virtuele machine met openbaar IP-adres
 
 | Lidkoppelingen | Methode | IP-protocollen |
 | ---------- | ------ | ------------ |
-| Openbaar load balancer of zelfstandig | [SNAT](#snat) </br> [Poort maskering](#pat) niet gebruikt. | TCP </br> UDP </br> ICMP </br> PROTOCOLSPECIFIEKE |
+| Openbaar load balancer of zelfstandig | [SNAT (bron netwerk adres omzetting)](#snat) </br> [Pat (poort maskering)](#pat) niet gebruikt. | TCP (Transmission Control Protocol) </br> UDP (User Data gram Protocol) </br> ICMP (Internet Control Message Protocol) </br> ESP (Encapsulating Security Payload) |
 
 #### <a name="description"></a>Beschrijving
 
@@ -54,11 +43,11 @@ Azure gebruikt het open bare IP-adres dat is toegewezen aan de IP-configuratie v
 
 Een openbaar IP-adres dat is toegewezen aan een virtuele machine is een 1:1-relatie (in plaats van 1: veel) en geïmplementeerd als een stateless 1:1 NAT.
 
-### <a name="scenario-2---virtual-machine-without-public-ip"></a><a name="scenario2"></a>Scenario 2: virtuele machine zonder openbaar IP-adres
+### <a name="virtual-machine-without-public-ip"></a><a name="scenario2"></a>Virtuele machine zonder openbaar IP-adres
 
 | Lidkoppelingen | Methode | IP-protocollen |
 | ------------ | ------ | ------------ |
-| Openbare load balancer | Gebruik van load balancer frontend voor [SNAT](#snat) met [poort maskering (Pat)](#pat).| TCP </br> UDP |
+| Openbare load balancer | Gebruik van load balancer frontend voor [SNAT](#snat) met [Pat (poort maskering)](#pat).| TCP </br> UDP |
 
 #### <a name="description"></a>Beschrijving
 
@@ -74,7 +63,7 @@ Tijdelijke poorten van het open bare IP-adres van de load balancer frontend word
 
 In deze context worden de tijdelijke poorten die worden gebruikt voor SNAT de SNAT-poorten genoemd. De SNAT-poorten worden vooraf toegewezen, zoals wordt beschreven in de [standaard toewijzings tabel](#snatporttable)voor de SNAT-poorten.
 
-### <a name="scenario-3---virtual-machine-without-public-ip-and-without-standard-load-balancer"></a><a name="scenario3"></a> Scenario 3: virtuele machine zonder openbaar IP-adres en zonder standaard load balancer
+### <a name="virtual-machine-without-public-ip-and-without-standard-load-balancer"></a><a name="scenario3"></a>Virtuele machine zonder openbaar IP-adres en zonder standaard load balancer
 
 | Lidkoppelingen | Methode | IP-protocollen |
 | ------------ | ------ | ------------ |
@@ -82,7 +71,7 @@ In deze context worden de tijdelijke poorten die worden gebruikt voor SNAT de SN
 
 #### <a name="description"></a>Beschrijving
 
-Wanneer de virtuele machine een uitgaande stroom maakt, vertaalt Azure het bron-IP-adres van de uitgaande stroom naar een IP-adres van een open bare bron. Dit open bare IP-adres kan **niet worden geconfigureerd** en kan niet worden gereserveerd. Dit adres telt niet op basis van de open bare IP-resource limiet van het abonnement. 
+Wanneer de virtuele machine een uitgaande stroom maakt, vertaalt Azure het bron-IP-adres naar een IP-adres van een open bare bron. Dit open bare IP-adres kan **niet worden geconfigureerd** en kan niet worden gereserveerd. Dit adres telt niet op basis van de open bare IP-resource limiet van het abonnement. 
 
 Het open bare IP-adres wordt vrijgegeven en er is een nieuwe open bare IP aangevraagd als u de volgende handelingen opnieuw implementeert: 
 
@@ -136,7 +125,7 @@ Het wijzigen van de grootte van uw back-end-pool kan invloed hebben op sommige v
 > [!NOTE]
 > **Azure Virtual Network NAT** kan uitgaande connectiviteit bieden voor virtuele machines in een virtueel netwerk.  Zie [Wat is Azure Virtual Network NAT?](../virtual-network/nat-overview.md) voor meer informatie.
 
-U hebt volledige declaratieve controle over uitgaande connectiviteit om deze mogelijkheid te schalen en af te stemmen op uw behoeften. In deze sectie wordt scenario 2 uitgevouwen, zoals hierboven wordt beschreven.
+U hebt volledige declaratieve controle over uitgaande connectiviteit om deze mogelijkheid te schalen en af te stemmen op uw behoeften.
 
 ![Uitgaande regels van Load Balancer](media/load-balancer-outbound-rules-overview/load-balancer-outbound-rules.png)
 
@@ -196,24 +185,20 @@ Soms is het niet wenselijk dat een virtuele machine een uitgaande stroom maakt. 
 
 Wanneer u een NSG toepast op een virtuele machine met taak verdeling, moet u rekening houden met de [service Tags](../virtual-network/security-overview.md#service-tags) en de [standaard beveiligings regels](../virtual-network/security-overview.md#default-security-rules). Zorg ervoor dat de VM Health probe-aanvragen van Azure Load Balancer kan ontvangen.
 
-Als een NSG de status test aanvragen blokkeert vanuit het standaard label AZURE_LOADBALANCER, mislukt de VM-status test en wordt de virtuele machine gemarkeerd. Load Balancer stopt met het verzenden van nieuwe stromen naar die virtuele machine.
+Als een NSG de status test aanvragen blokkeert vanuit het standaard label AZURE_LOADBALANCER, mislukt de VM-status test en wordt de VM gemarkeerd als niet beschikbaar. Load Balancer stopt met het verzenden van nieuwe stromen naar die virtuele machine.
 
 ## <a name="scenarios-with-outbound-rules"></a>Scenario's met uitgaande regels
 
 ### <a name="outbound-rules-scenarios"></a>Scenario's voor uitgaande regels
 
-* [Scenario 1](#scenario1out) : uitgaande verbindingen configureren voor een specifieke set open bare ip's of voor voegsel.
-* [Scenario 2](#scenario2out) : toewijzing van de [SNAT](#snat) -poort wijzigen.
-* [Scenario 3](#scenario3out) : alleen uitgaand verkeer inschakelen.
-* [Scenario 4](#scenario4out) : uitgaand NAT-verkeer alleen voor vm's (geen inkomend).
-* [Scenario 5](#scenario5out) : uitgaand NAT voor interne standaard Load Balancer.
-* [Scenario 6](#scenario6out) : Schakel TCP-& UDP-protocollen in voor uitgaande nat met een open bare standaard Load Balancer.
+* Configureer uitgaande verbindingen naar een specifieke set open bare Ip's of voor voegsel.
+* Wijzig de toewijzing van de [SNAT](#snat) -poort.
+* Alleen uitgaand verkeer inschakelen.
+* Alleen uitgaand NAT voor Vm's (geen inkomend).
+* Uitgaand NAT voor interne standaard load balancer.
+* Schakel TCP & UDP-protocollen in voor uitgaande NAT met een open bare standaard load balancer.
 
-### <a name="scenario-1"></a><a name="scenario1out"></a>Scenario 1
-
-| Scenario |
-| -------- |
-| Uitgaande verbindingen configureren voor een specifieke set open bare Ip's of voor voegsel|
+### <a name="configure-outbound-connections-to-a-specific-set-of-public-ips-or-prefix"></a><a name="scenario1out"></a>Uitgaande verbindingen configureren voor een specifieke set open bare Ip's of voor voegsel
 
 #### <a name="details"></a>Details
 
@@ -229,11 +214,7 @@ Een ander openbaar IP-adres of-voor voegsel gebruiken dan wordt gebruikt door ee
 4. Hergebruik een back-end-pool of maak een back-end-pool en plaats de virtuele machines in een back-end-groep van de open bare load balancer
 5. Configureer een uitgaande regel op de open bare load balancer om uitgaande NAT voor de virtuele machines in te scha kelen met behulp van de front-end. Als u niet wilt dat de taakverdelings regel voor uitgaand verkeer wordt gebruikt, schakelt u uitgaande SNAT uit op de regel voor taak verdeling.
 
-### <a name="scenario-2"></a><a name="scenario2out"></a>Scenario 2
-
-| Scenario |
-| -------- |
-| Toewijzing van [SNAT](#snat) -poort wijzigen |
+### <a name="modify-snat-port-allocation"></a><a name="scenario2out"></a>Toewijzing van [SNAT](#snat) -poort wijzigen
 
 #### <a name="details"></a>Details
 
@@ -251,26 +232,18 @@ Als u meer [SNAT](#snat) -poorten probeert te geven dan beschikbaar zijn op basi
 
 Als u 10.000 poorten per VM en zeven Vm's in een back-end-groep met één openbaar IP-adres deelt, wordt de configuratie geweigerd. Zeven vermenigvuldigd met 10.000 overschrijdt de limiet voor 64.000 poorten. Voeg meer open bare IP-adressen toe aan de front-end van de regel voor uitgaande verbindingen om het scenario in te scha kelen. 
 
-Keer terug naar de [standaard poort toewijzing](load-balancer-outbound-connections.md#preallocatedports) door 0 op te geven voor het aantal poorten. De eerste 50 VM-exemplaren krijgen 1024 poorten, 51-100 VM-instanties krijgen 512 tot Maxi maal het maximum aantal exemplaren.  Zie [hierboven](#snatporttable)voor meer informatie over de standaard toewijzing van de SNAT-poort.
+Keer terug naar de [standaard poort toewijzing](load-balancer-outbound-connections.md#preallocatedports) door 0 op te geven voor het aantal poorten. De eerste 50 VM-exemplaren krijgen 1024 poorten, 51-100 VM-instanties krijgen 512 tot Maxi maal het maximum aantal exemplaren.  Zie [toewijzings tabel voor SNAT-poorten](#snatporttable)voor meer informatie over de standaard toewijzing van de SNAT-poort.
 
-### <a name="scenario-3"></a><a name="scenario3out"></a>Scenario 3
-
-| Scenario |
-| -------- |
-| Alleen uitgaand verkeer inschakelen |
+### <a name="enable-outbound-only"></a><a name="scenario3out"></a>Alleen uitgaand verkeer inschakelen
 
 #### <a name="details"></a>Details
 
-U kunt een open bare standaard load balancer gebruiken om uitgaande NAT te bieden voor een groep Vm's. In dit scenario gebruikt u een regel voor uitgaande verbindingen, zonder dat er extra regels nodig zijn.
+Gebruik een open bare standaard load balancer om uitgaande NAT te bieden voor een groep Vm's. In dit scenario gebruikt u een regel voor uitgaande verbindingen, zonder dat er extra regels nodig zijn.
 
 > [!NOTE]
 > **Azure Virtual Network NAT** kan uitgaande connectiviteit bieden voor virtuele machines zonder dat hiervoor een Load Balancer nodig is.  Zie [Wat is Azure Virtual Network NAT?](../virtual-network/nat-overview.md) voor meer informatie.
 
-### <a name="scenario-4"></a><a name="scenario4out"></a>Scenario 4
-
-| Scenario |
-| -------- |
-| Alleen uitgaand NAT voor Vm's (geen inkomend) |
+### <a name="outbound-nat-for-vms-only-no-inbound"></a><a name="scenario4out"></a>Alleen uitgaand NAT voor Vm's (geen inkomend)
 
 > [!NOTE]
 > **Azure Virtual Network NAT** kan uitgaande connectiviteit bieden voor virtuele machines zonder dat hiervoor een Load Balancer nodig is.  Zie [Wat is Azure Virtual Network NAT?](../virtual-network/nat-overview.md) voor meer informatie.
@@ -288,11 +261,7 @@ Voor dit scenario:
 
 Gebruik een voor voegsel of openbaar IP-adres om [SNAT](#snat) -poorten te schalen. Voeg de bron van uitgaande verbindingen toe aan een lijst voor toestaan of weigeren.
 
-### <a name="scenario-5"></a><a name="scenario5out"></a>Scenario 5
-
-| Scenario |
-| -------- |
-| Uitgaand NAT voor interne standaard load balancer |
+### <a name="outbound-nat-for-internal-standard-load-balancer"></a><a name="scenario5out"></a>Uitgaand NAT voor interne standaard load balancer
 
 > [!NOTE]
 > **Azure Virtual Network NAT** kan uitgaande connectiviteit bieden voor virtuele machines die gebruikmaken van een interne standaard Load Balancer.  Zie [Wat is Azure Virtual Network NAT?](../virtual-network/nat-overview.md) voor meer informatie.
@@ -304,11 +273,7 @@ Uitgaande connectiviteit is niet beschikbaar voor een interne standaard load bal
 Zie voor meer informatie [Load Balancer configuratie voor alleen-uitgaand verkeer](https://docs.microsoft.com/azure/load-balancer/egress-only).
 
 
-### <a name="scenario-6"></a><a name="scenario6out"></a>Scenario 6
-
-| Scenario |
-| -------- |
-| Schakel TCP & UDP-protocollen in voor uitgaande NAT met een open bare standaard load balancer |
+### <a name="enable-both-tcp--udp-protocols-for-outbound-nat-with-a-public-standard-load-balancer"></a><a name="scenario6out"></a>Schakel TCP & UDP-protocollen in voor uitgaande NAT met een open bare standaard load balancer
 
 #### <a name="details"></a>Details
 
@@ -360,7 +325,7 @@ Wanneer een open bare load balancer is gekoppeld aan Vm's zonder open bare IP-ad
 
 De bron wordt herschreven van het privé-IP-adres van het virtuele netwerk naar het open bare IP-adres van de load balancer. 
 
-In de open bare IP-adres ruimte moet de vijf tupel van de onderstaande stroom uniek zijn:
+In de open bare IP-adres ruimte moet de vijf tupel van de stroom uniek zijn:
 
 * IP-adres van bron
 * Bronpoort

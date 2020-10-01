@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 09/28/2020
 ms.author: rolyon
 ms.custom: contperfq1
-ms.openlocfilehash: 17a32b27fba4fcde2e148e44e9db768cc9270e01
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 16ead03af14da70b5aaedc21118488c6dd3012c6
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91441981"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597647"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-azure-cli"></a>Azure-roltoewijzingen toevoegen of verwijderen met behulp van Azure CLI
 
@@ -95,7 +95,7 @@ Zie [Azure Role-definities weer](role-definitions-list.md#azure-cli)geven voor m
  
 ### <a name="step-3-identify-the-needed-scope"></a>Stap 3: het benodigde bereik identificeren
 
-Azure biedt vier niveaus van bereik: resource, [resource groep](../azure-resource-manager/management/overview.md#resource-groups), abonnement en [beheer groep](../governance/management-groups/overview.md). Het is een best practice om toegang te verlenen met de mini maal benodigde bevoegdheden, dus vermijd het toewijzen van een rol in een breder bereik.
+Azure biedt vier niveaus van bereik: resource, [resource groep](../azure-resource-manager/management/overview.md#resource-groups), abonnement en [beheer groep](../governance/management-groups/overview.md). Het is een best practice om toegang te verlenen met de mini maal benodigde bevoegdheden, dus vermijd het toewijzen van een rol in een breder bereik. Zie [inzicht in bereik](scope-overview.md)voor meer informatie over het bereik.
 
 **Resourcebereik**
 

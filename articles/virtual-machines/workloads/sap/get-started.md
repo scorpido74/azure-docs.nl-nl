@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/28/2020
+ms.date: 09/30/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1b636c1b01bb3b4a8a4ab285c812d04dedfcc966
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 450bd87c6dd1f55c58f4c8a620dbddcfdf42ec7f
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91536321"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596539"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Azure gebruiken om SAP-werkbelasting scenario's te hosten en uit te voeren
 
@@ -82,6 +82,7 @@ In deze sectie vindt u informatie over het configureren van SSO met de meeste SA
 
 ## <a name="change-log"></a>Wijzigingen logboek
 
+- 09/30/2020: wijziging in [hoge Beschik baarheid van SAP Hana op virtuele machines van Azure op RHEL](./sap-hana-high-availability-rhel.md), [ha voor SAP Hana scale-up met ANF op RHEL](./sap-hana-high-availability-netapp-files-red-hat.md) en [instellen pacemaker op RHEL in azure](./high-availability-guide-rhel-pacemaker.md) om de instructies voor RHEL 8,1 aan te passen
 - 09/28/2020: het toevoegen van een nieuwe opslag bewerkings handleiding voor SAP HANA met behulp van Azure NetApp Files met het document [NFS v 4.1-volumes op Azure NetApp files voor SAP Hana](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp)
 - 09/23/2020: nieuwe gecertificeerde Sku's voor HLI toevoegen in [beschik bare sku's voor HLI](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-available-skus) 
 - 09/20/2020: wijzigingen in document [overwegingen voor Azure virtual machines DBMS-implementatie voor SAP-werk belasting](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general), [SQL Server Azure virtual machines DBMS-implementatie voor SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_sqlserver), [Azure virtual machines Oracle DBMS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_oracle)-implementatie voor SAP-WORKLOAD, [IBM Db2 Azure virtual machines DBMS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_ibm) -implementatie voor SAP-werk belasting zodat deze kan worden aangepast aan de nieuwe configuratie suggestie die de binaire DBMS-en SAP binaire bestanden in verschillende Azure-schijven afsluit U kunt ook zeer schijf aanbevelingen toevoegen aan de verschillende hand leidingen.

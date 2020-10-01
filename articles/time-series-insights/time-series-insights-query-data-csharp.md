@@ -9,16 +9,19 @@ manager: diviso
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/12/2020
+ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: e7f5750d89c661cad7616cf1c56157c6e92e1175
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: a7dd67387a541ff62bfa85a7afc2f1bbf31c6180
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654460"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596437"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-gen1-environment-using-c-sharp"></a>Gegevens opvragen uit de Azure Time Series Insights gen1-omgeving met C-Kruis
+
+> [!CAUTION]
+> Dit is een gen1-artikel.
 
 In dit C#-voor beeld ziet u hoe u de [gen1-query-api's](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query) kunt gebruiken om gegevens uit Azure time series Insights gen1-omgevingen op te vragen.
 
@@ -75,7 +78,7 @@ U kunt de pakketten ook toevoegen met behulp van [NuGet 2.12 +](https://www.nuge
 
 ## <a name="c-sample-code"></a>C#-voorbeeld code
 
-Raadpleeg het [Azure time series Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen1-sample/csharp-tsi-gen1-sample/Program.cs)] opslag plaats voor toegang tot de C#-voorbeeld code. 
+Raadpleeg het [Azure time series Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen1-sample/csharp-tsi-gen1-sample/Program.cs)] opslag plaats voor toegang tot de C#-voorbeeld code.
 
 ## <a name="next-steps"></a>Volgende stappen
 
