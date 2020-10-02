@@ -6,25 +6,25 @@ services: cognitive-services
 author: nitinme
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: immersive-reader
 ms.topic: include
-ms.date: 05/20/2020
+ms.date: 09/14/2020
 ms.author: nitinme
-ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: f3d694a1e1eb368a97d994ebe9885c279ff44463
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: 08996d7343ccab4c5d6e688b580a8e6e1ca5bceb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89505379"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376507"
 ---
-De [Insluitende lezer](https://www.onenote.com/learningtools) is een inclusief ontworpen hulpprogramma waarmee bewezen technieken worden geïmplementeerd om de leesvaardigheid te verbeteren.
+[Insluitende lezer](https://www.onenote.com/learningtools) is een inclusief ontworpen hulpprogramma dat bewezen technieken implementeert om begrijpend lezen te verbeteren voor beginnende lezers, mensen die een taal willen leren en mensen met leerproblemen, zoals dyslexie. U kunt de Insluitende lezer in uw toepassingen gebruiken om tekst te isoleren voor het verbeteren van de focus, het weergeven van afbeeldingen voor veelgebruikte woorden, het markeren van bepaalde secties, het hardop voorlezen van geselecteerde tekst, het vertalen van woorden en zinsdelen in realtime en meer.
 
-In deze Quickstart maakt u een nieuwe web-app en integreert u de Insluitende lezer door de clientbibliotheek voor de insluitende lezer te gebruiken. U vindt [hier](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-csharp) een volledig werkend voorbeeld van deze quickstart.
-
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/cognitive-services/) aan voordat u begint.
+In deze quickstart maakt u een nieuwe web-app en integreert u Insluitende lezer door de clientbibliotheek voor Insluitende lezer te gebruiken. U vindt [op GitHub](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-csharp) een volledig werkend voorbeeld van deze quickstart.
 
 ## <a name="prerequisites"></a>Vereisten
 
+* Azure-abonnement: [Krijg een gratis abonnement](https://azure.microsoft.com/free/cognitive-services)
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads)
 * Een Insluitende lezer-resource die is geconfigureerd voor Azure Active Directory-verificatie. Volg [deze instructies](../../how-to-create-immersive-reader.md) om deze in te stellen. U hebt enkele waarden nodig die u hier hebt gemaakt wanneer u de eigenschappen van het voorbeeldproject configureert. Sla de uitvoer van uw sessie op in een tekstbestand voor later gebruik.
 
@@ -32,17 +32,17 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 Maak een nieuw project in Visual Studio met behulp van de sjabloon voor ASP.NET Core-webtoepassing met ingebouwde Model-View-Controller en ASP.NET Core 2.1. Geef het project de naam 'QuickstartSampleWebApp'.
 
-![Nieuw project](../../media/quickstart-csharp/1-createproject.png)
+![Nieuw project - C#](../../media/quickstart-csharp/1-createproject.png)
 
-![Nieuw project configureren](../../media/quickstart-csharp/2-configureproject.png)
+![Nieuw project configureren - C#](../../media/quickstart-csharp/2-configureproject.png)
 
-![Nieuwe ASP.NET Core-webtoepassing](../../media/quickstart-csharp/3-createmvc.png)
+![Nieuwe ASP.NET Core-webtoepassing - C#](../../media/quickstart-csharp/3-createmvc.png)
 
 ## <a name="set-up-authentication"></a>Verificatie instellen
 
 ### <a name="configure-authentication-values"></a>Verificatietypewaarden configureren
 
-Klik met de rechtermuisknop op het project in de _Solution Explorer_ en kies **Gebruikersgeheimen beheren**. Hiermee opent u een bestand met de naam _Secrets.json_. Dit bestand is niet ingecheckt in broncodebeheer. Klik [hier](https://docs.microsoft.com/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows) voor meer informatie. Vervang de inhoud van _secrets.json_ met het volgende, waarbij u de waarden opgeeft die zijn verstrekt bij het maken van uw Insluitende lezer-resource.
+Klik met de rechtermuisknop op het project in de _Solution Explorer_ en kies **Gebruikersgeheimen beheren**. Hiermee opent u een bestand met de naam _Secrets.json_. Dit bestand is niet ingecheckt in broncodebeheer. Klik [hier](https://docs.microsoft.com/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows&preserve-view=true) voor meer informatie. Vervang de inhoud van _secrets.json_ met het volgende, waarbij u de waarden opgeeft die zijn verstrekt bij het maken van uw Insluitende lezer-resource.
 
 ```json
 {
@@ -53,7 +53,7 @@ Klik met de rechtermuisknop op het project in de _Solution Explorer_ en kies **G
 }
 ```
 
-### <a name="add-the-microsoftidentitymodelclientsactivedirectory-nuget-package"></a>Voeg het Microsoft.IdentityModel.Clients.ActiveDirectory-NuGet-pakket toe
+### <a name="install-active-directory"></a>Active Directory installeren
 
 De volgende code gebruikt objecten uit het **Microsoft.IdentityModel.Clients.ActiveDirectory**-NuGet-pakket, zodat u een verwijzing naar dat pakket in uw project moet toevoegen.
 
@@ -216,7 +216,7 @@ Nu gaan we voorbeeldinhoud toevoegen aan deze web-app. Open _Views\Home\Index.cs
 
 U ziet dat alle tekst een **taal**-kenmerk bevat waarmee de talen van de tekst worden beschreven. Dit kenmerk helpt de Insluitende lezer de relevante taal-en grammaticafuncties te bieden.
 
-## <a name="add-javascript-to-handle-launching-the-immersive-reader"></a>Voeg Javascript toevoegen aan de ingang voor het starten van de Insluitende lezer
+## <a name="add-javascript-to-handle-launching-immersive-reader"></a>Javascript toevoegen aan de ingang voor het starten van Insluitende lezer
 
 De bibliotheek voor insluitende lezers biedt functionaliteiten zoals het starten van de Insluitende lezer en het weergeven van Insluitende lezer-knoppen. Klik [hier](https://docs.microsoft.com/azure/cognitive-services/immersive-reader/reference) voor meer informatie.
 
@@ -296,18 +296,14 @@ Selecteer in de menubalk **Debug > Start Debugging** of druk op **F5** om de toe
 
 In uw browser ziet u het volgende:
 
-![Voorbeeld-app](../../media/quickstart-csharp/4-buildapp.png)
+![Voorbeeld-app - C#](../../media/quickstart-csharp/4-buildapp.png)
 
 ## <a name="launch-the-immersive-reader"></a>De Insluitende lezer starten
 
 Wanneer u op de knop ‘Immersive Reader’ klikt, ziet u dat de Insluitende lezer wordt gestart met de inhoud van de pagina.
 
-![Insluitende lezer](../../media/quickstart-csharp/5-viewimmersivereader.png)
+![Insluitende lezer - C#](../../media/quickstart-csharp/5-viewimmersivereader.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Bekijk de [Node.js-quickstart](../../tutorial-nodejs.md) om te zien wat u nog meer kunt doen met de clientbibliotheek voor Insluitende lezer met behulp van Node.js
-* Bekijk de zelfstudie over [Android](../../tutorial-android.md) om te zien wat u nog meer kunt doen met de Insluitende lezer-SDK met Java of Kotlin voor Android
-* Bekijk de [iOS-zelfstudie](../../tutorial-ios.md) om te zien wat u nog meer kunt doen met de Insluitende lezer-SDK met behulp van Swift voor iOS
-* Bekijk de [Python-zelfstudie](../../tutorial-python.md) om te zien wat u nog meer kunt doen met de clientbibliotheek voor Insluitende lezer met behulp van Python
 * De [SDK voor Insluitende lezer](https://github.com/microsoft/immersive-reader-sdk) en de [naslaginformatie voor de SDK voor Insluitende lezer](../../reference.md) verkennen

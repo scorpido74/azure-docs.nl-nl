@@ -4,14 +4,14 @@ description: In dit artikel leert u hoe u een eenvoudig grafisch runbook kunt ma
 keywords: runbook, runbook-sjabloon, runbook-automatisering, azure-runbook
 services: automation
 ms.subservice: process-automation
-ms.date: 04/19/2020
+ms.date: 09/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: fa92cd4f4cba63eee09714813954af9fa9c9c4ea
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 81dc23c208ca9fb292c849bdf35d8b91311ed9ce
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290948"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987652"
 ---
 # <a name="tutorial-create-a-graphical-runbook"></a>Zelfstudie: Een grafisch runbook maken
 
@@ -29,7 +29,7 @@ In deze zelfstudie leert u het volgende:
 
 Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 
-* Azure-abonnement. Als u nog geen abonnement hebt, kunt u [uw voordelen als MSDN-abonnee activeren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) of u aanmelden voor een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Azure-abonnement. Als u nog geen abonnement hebt, kunt u [uw voordelen als MSDN-abonnee activeren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) of u aanmelden voor een [gratis account](https://azure.microsoft.com/free).
 * [Automation-account](../index.yml) om het runbook te bevatten en te verifiëren voor Azure-resources. Dit account moet machtigingen hebben om de virtuele machine te starten en stoppen.
 * Een virtuele machine van Azure. Aangezien u deze machine stopt en start, mag dit geen productie-VM zijn.
 * [Imorteer Azure-modules](../shared-resources/modules.md) indien nodig of [update de modules](../automation-update-azure-modules.md) op basis van de cmdlets die u gebruikt.
@@ -38,7 +38,7 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 
 Begin door een eenvoudig runbook te maken waarmee de tekst `Hello World` als uitvoer wordt gegeven.
 
-1. Open uw Automation-account in Azure Portal. 
+1. Open uw Automation-account in Azure Portal.
 
     Op de Automation-accountpagina vindt u een beknopte weergave van de resources in dit account. U hebt als het goed is al enkele assets. De meeste van deze assets zijn de modules die automatisch zijn opgenomen in een nieuw Automation-account. U zou ook de referentieasset voor uw abonnement moeten hebben.
 
@@ -48,7 +48,9 @@ Begin door een eenvoudig runbook te maken waarmee de tekst `Hello World` als uit
 
 4. Geef het runbook de naam **MyFirstRunbook-Graphical**.
 
-5. In dit geval gaat u een [grafisch runbook](../automation-graphical-authoring-intro.md) maken. Selecteer **Grafisch** voor **Runbook-type**.<br> ![Nieuw runbook](../media/automation-tutorial-runbook-graphical/create-new-runbook.png)<br>
+5. In dit geval gaat u een [grafisch runbook](../automation-graphical-authoring-intro.md) maken. Selecteer **Grafisch** voor **Runbook-type**.
+
+    ![Nieuw runbook](../media/automation-tutorial-runbook-graphical/create-new-runbook.png)
 
 6. Klik op **Maken** om het runbook te maken en de grafische editor te openen.
 
@@ -56,7 +58,9 @@ Begin door een eenvoudig runbook te maken waarmee de tekst `Hello World` als uit
 
 Met het besturingselement Bibliotheek aan de linkerkant van de editor kunt u activiteiten selecteren die u aan uw runbook wilt toevoegen. U gaat een `Write-Output`-cmdlet toevoegen om tekst als uitvoer van het runbook te krijgen.
 
-1. Klik in het besturingselement bibliotheek op het zoekveld en typ `write-output`. Zoekresultaten worden weergegeven op de volgende afbeelding. <br> ![Microsoft.PowerShell.Utility](../media/automation-tutorial-runbook-graphical/search-powershell-cmdlet-writeoutput.png)
+1. Klik in het besturingselement bibliotheek op het zoekveld en typ `write-output`. Zoekresultaten worden weergegeven op de volgende afbeelding.
+
+    ![Microsoft.PowerShell.Utility](../media/automation-tutorial-runbook-graphical/search-powershell-cmdlet-writeoutput.png)
 
 2. Schuif omlaag naar de onderkant van de lijst. Klik met de rechtermuisknop op **Write-output** en selecteer **Toevoegen aan canvas**. U kunt ook op het beletselteken (...) naast de naam van de cmdlet klikken en vervolgens **Toevoegen aan canvas**selecteren.
 
@@ -70,9 +74,9 @@ Met het besturingselement Bibliotheek aan de linkerkant van de editor kunt u act
 
 6. Selecteer de parameter `InputObject`. Dit is de parameter die u gebruikt om de tekst op te geven die naar de uitvoerstroom moet worden verzonden.
 
-7. In de vervolgkeuzelijst **Gegevensbron** staan bronnen die u kunt gebruiken om een parameterwaarde te vullen. Selecteer in dit menu de optie **Power shell-expressie**. 
+7. In de vervolgkeuzelijst **Gegevensbron** staan bronnen die u kunt gebruiken om een parameterwaarde te vullen. Selecteer in dit menu de optie **Power shell-expressie**.
 
-   U kunt uitvoer van deze bronnen gebruiken, zoals een andere activiteit, een Automation-asset of een PowerShell-expressie. In dit geval is de uitvoer gewoon `Hello World`. U kunt een PowerShell-expressie gebruiken en een tekenreeks opgeven.<br>
+   U kunt uitvoer van deze bronnen gebruiken, zoals een andere activiteit, een Automation-asset of een PowerShell-expressie. In dit geval is de uitvoer gewoon `Hello World`. U kunt een PowerShell-expressie gebruiken en een tekenreeks opgeven.
 
 8. Typ in het veld **Expressie** de tekst `Hello World` en klik vervolgens tweemaal op **OK** om terug te gaan naar het canvas.
 
@@ -92,7 +96,7 @@ Voordat u het runbook publiceert om het beschikbaar te maken in productie, moet 
 
 4. Wanneer de runbooktaak is voltooid, wordt de uitvoer weergegeven in het testvenster. In dit geval ziet u `Hello World`.
 
-    ![Hallo wereld](../media/automation-tutorial-runbook-graphical/runbook-test-results.png)
+    ![Uitvoer van runbook Hallo wereld](../media/automation-tutorial-runbook-graphical/runbook-test-results.png)
 
 5. Sluit het testvenster om terug te gaan naar het papier.
 
@@ -116,7 +120,7 @@ Het runbook dat u hebt gemaakt, bevindt zich nog steeds in de modus Concept. Het
 
 7. Sluit de pagina Uitvoer.
 
-8. Klik op **Alle logboeken** om het deelvenster Streams voor de runbooktaak te openen. U ziet enkel `Hello World` in de uitvoerstroom. 
+8. Klik op **Alle logboeken** om het deelvenster Streams voor de runbooktaak te openen. U ziet enkel `Hello World` in de uitvoerstroom.
 
     Merk op dat er andere stromen voor een runbooktaak kunnen worden weergegeven in het deelvenster Streams, zoals uitgebreide en foutstromen als het runbook hiernaar schrijft.
 
@@ -139,7 +143,7 @@ U hebt het runbook getest en gepubliceerd, maar tot nu toe doet het nog niets nu
 4. Stel op de pagina Nieuwe variabele de volgende instellingen in de velden in.
 
     * **Naam**: voer `AzureSubscriptionId` in.
-    * **Waarde**: voer de id van uw Azure-abonnement in. 
+    * **Waarde**: voer de id van uw Azure-abonnement in.
     * **Type**: houd de tekenreeks geselecteerd.
     * **Versleuteling**: gebruik de standaardwaarde.
 
@@ -147,7 +151,7 @@ U hebt het runbook getest en gepubliceerd, maar tot nu toe doet het nog niets nu
 
 ## <a name="step-6---add-authentication"></a>Stap 6 - Verificatie toevoegen
 
-Nu u een variabele hebt die onze abonnements-id kan bevatten, kunt u uw runbook configureren voor verificatie met de Uitvoeren als referenties voor uw abonnement. Dit doet u door de Azure Uitvoeren als-verbinding als een asset toe te voegen. U moet ook de cmdlet [Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount?view=azps-3.5.0) en de cmdlet [set-AzContext](/powershell/module/az.accounts/Set-AzContext?view=azps-3.5.0) toevoegen aan het canvas.
+Nu u een variabele hebt die onze abonnements-id kan bevatten, kunt u uw runbook configureren voor verificatie met de Uitvoeren als referenties voor uw abonnement. Dit doet u door de Azure Uitvoeren als-verbinding als een asset toe te voegen. U moet ook de cmdlet [Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount) en de cmdlet [set-AzContext](/powershell/module/az.accounts/Set-AzContext) toevoegen aan het canvas.
 
 >[!NOTE]
 >Voor PowerShell-runbooks zijn `Add-AzAccount` en `Add-AzureRMAccount` aliassen voor `Connect-AzAccount`. Houd er rekening mee dat deze aliassen niet beschikbaar zijn voor uw grafische runbooks. Een grafisch runbook kan alleen `Connect-AzAccount`zichzelf gebruiken.
@@ -164,7 +168,9 @@ Nu u een variabele hebt die onze abonnements-id kan bevatten, kunt u uw runbook 
 
 6. Voeg `Connect-AzAccount` toe aan het canvas.
 
-7. Beweeg de muisaanwijzer over `Get Run As Connection` totdat een cirkel wordt weergegeven aan de onderkant van de vorm. Klik op de cirkel en sleep de pijl naar `Connect-AzAccount` om een koppeling te vormen. Het runbook wordt gestart met `Get Run As Connection` en voert vervolgens `Connect-AzAccount` uit.<br> ![Koppeling tussen activiteiten maken](../media/automation-tutorial-runbook-graphical/runbook-link-auth-activities.png)
+7. Beweeg de muisaanwijzer over `Get Run As Connection` totdat een cirkel wordt weergegeven aan de onderkant van de vorm. Klik op de cirkel en sleep de pijl naar `Connect-AzAccount` om een koppeling te vormen. Het runbook wordt gestart met `Get Run As Connection` en voert vervolgens `Connect-AzAccount` uit.
+
+    ![Koppeling tussen activiteiten maken](../media/automation-tutorial-runbook-graphical/runbook-link-auth-activities.png)
 
 8. Selecteer `Connect-AzAccount` op het canvas. Typ in het deelvenster Configuratie **Aanmelden bij Azure** in het veld **Label**.
 
@@ -172,7 +178,9 @@ Nu u een variabele hebt die onze abonnements-id kan bevatten, kunt u uw runbook 
 
 10. De cmdlet `Connect-AzAccount` heeft meerdere parametersets. U moet er een selecteren voordat u parameterwaarden opgeeft. Klik op **Parameterset** en selecteer vervolgens **ServicePrincipalCertificatewithSubscriptionId**.
 
-11. De parameters voor deze parameterset worden weergegeven op de pagina Parameterconfiguratie van activiteit. Klik op **APPLICATIONID**.<br> ![Parameters voor Azure-account toevoegen](../media/automation-tutorial-runbook-graphical/Add-AzureRmAccount-params.png)
+11. De parameters voor deze parameterset worden weergegeven op de pagina Parameterconfiguratie van activiteit. Klik op **APPLICATIONID**.
+
+    ![Parameters voor Azure-account toevoegen](../media/automation-tutorial-runbook-graphical/Add-AzureRmAccount-params.png)
 
 12. Voer op de pagina Parameterwaarde de volgende instellingen in en klik vervolgens op **OK**.
 
@@ -186,13 +194,13 @@ Nu u een variabele hebt die onze abonnements-id kan bevatten, kunt u uw runbook 
     * Lijst met gegevensbronnen: selecteer **Automation-verbinding ophalen**.
     * **Pad naar veld**: typ `CertificateThumbprint`.
 
-14. Klik op **SERVICEPRINCIPAL** en selecteer op de pagina Parameterwaarde **ConstantValue** voor de **Gegevensbron**, klik op de optie **Waar** en klik vervolgens op **OK**.
+14. Klik op **SERVICEPRINCIPAL** en selecteer op de pagina Parameterwaarde **ConstantValue** voor het veld **Gegevensbron**. Klik op de optie **Waar** en klik vervolgens op **OK**.
 
 15. Klik op **TENANTID** en stel de volgende instellingen in op de pagina Parameterwaarde. Als u klaar bent, klikt u tweemaal op **OK**.
 
-    * **Gegevensbron**: selecteer **Activiteitsuitvoer**. 
+    * **Gegevensbron**: selecteer **Activiteitsuitvoer**.
     * Lijst met gegevensbronnen: selecteer **Automation-verbinding ophalen**.
-    * **Pad naar veld**: typ `TenantId`. 
+    * **Pad naar veld**: typ `TenantId`.
 
 16. In het besturingselement Bibliotheek typt u `Set-AzContext` in het zoekveld.
 
@@ -210,11 +218,11 @@ Nu u een variabele hebt die onze abonnements-id kan bevatten, kunt u uw runbook 
 
 23. Beweeg de muisaanwijzer over `Login to Azure` totdat een cirkel wordt weergegeven aan de onderkant van de vorm. Klik op de cirkel en sleep de pijl naar `Specify Subscription Id`. Uw runbook zou er op dit punt als volgt moeten uitzien.
 
-    ![Configuratie runbookverificatie](../media/automation-tutorial-runbook-graphical/runbook-auth-config.png)
+    :::image type="content" source="../media/automation-tutorial-runbook-graphical/runbook-auth-config.png" alt-text="Schermopname van het runbook na het verslepen van de pijl naar 'Specify Subscription Id'.":::
 
 ## <a name="step-7---add-activity-to-start-a-virtual-machine"></a>Stap 7: activiteit toevoegen om een virtuele machine te starten
 
-Nu moet u een `Start-AzVM`-activiteit toevoegen om een virtuele machine te starten. U kunt een willekeurige VM in uw Azure-abonnement kiezen. Voor nu gebruikt u de naam via hardcoding in de cmdlet [start-AzVM](/powershell/module/az.compute/start-azvm?view=azps-3.5.0).
+Nu moet u een `Start-AzVM`-activiteit toevoegen om een virtuele machine te starten. U kunt een willekeurige VM in uw Azure-abonnement kiezen. Voor nu gebruikt u de naam via hardcoding in de cmdlet [start-AzVM](/powershell/module/az.compute/start-azvm).
 
 1. In het besturingselement Bibliotheek typt u `Start-Az` in het zoekveld.
 
@@ -234,7 +242,7 @@ Nu moet u een `Start-AzVM`-activiteit toevoegen om een virtuele machine te start
 
 9. Klik op **Start** om de test te starten. Nadat deze is voltooid, controleert u of de VM is gestart. Uw runbook zou er op dit punt als volgt moeten uitzien.
 
-    ![Configuratie runbookverificatie](../media/automation-tutorial-runbook-graphical/runbook-startvm.png)
+    ![Uitvoer van runbook Start-AzVM](../media/automation-tutorial-runbook-graphical/runbook-startvm.png)
 
 ## <a name="step-8---add-additional-input-parameters"></a>Stap 8: aanvullende invoerparameters toevoegen
 
@@ -249,13 +257,17 @@ Met uw runbook wordt momenteel de virtuele machine gestart in de resourcegroep d
    * **Type**: behoud de tekenreeksinstelling.
    * **Verplicht**: wijzig de waarde in **Ja**.
 
-4. Maak een tweede verplichte invoerparameter met de naam `ResourceGroupName` en klik vervolgens op **OK** om het venster Invoer en uitvoer te sluiten.<br> ![Invoerparameters voor runbook](../media/automation-tutorial-runbook-graphical/start-azurermvm-params-outputs.png)
+4. Maak een tweede verplichte invoerparameter met de naam `ResourceGroupName` en klik vervolgens op **OK** om het venster Invoer en uitvoer te sluiten.
+
+    ![Invoerparameters van runbook](../media/automation-tutorial-runbook-graphical/start-azurermvm-params-outputs.png)
 
 5. Selecteer de activiteit `Start-AzVM` en klik vervolgens op **Parameters**.
 
 6. Wijzig het veld **Gegevensbron** voor **Naam** in **Runbookinvoer**. Selecteer vervolgens **VMName**.
 
-7. Wijzig het veld **gegevensbron** voor **ResourceGroupName** in **Runbookinvoer** en selecteer vervolgens **ResourceGroupName**.<br> ![Start-AzVM-parameters](../media/automation-tutorial-runbook-graphical/start-azurermvm-params-runbookinput.png)
+7. Wijzig het veld **gegevensbron** voor **ResourceGroupName** in **Runbookinvoer** en selecteer vervolgens **ResourceGroupName**.
+
+    ![Start-AzVM-parameters](../media/automation-tutorial-runbook-graphical/start-azurermvm-params-runbookinput.png)
 
 8. Sla het runbook op en open het testvenster. U kunt nu waarden opgeven voor de twee invoervariabelen die in de test worden gebruikt.
 
@@ -271,7 +283,7 @@ Met uw runbook wordt momenteel de virtuele machine gestart in de resourcegroep d
 
 ## <a name="step-9---create-a-conditional-link"></a>Stap 9: een voorwaardelijke koppeling maken
 
-U kunt het runbook nu wijzigen zodat alleen wordt geprobeerd de VM te starten als deze nog niet is gestart. Dit doet u door een [Get-AzVM](/powershell/module/Az.Compute/Get-AzVM?view=azps-3.5.0)-cmdlet toe te voegen waarmee de status op instantieniveau van de virtuele machine wordt opgehaald. We voegen vervolgens een PowerShell Workflow-codemodule genaamd `Get Status` toe met een PowerShell-codefragment om te bepalen of de status van de VM actief of gestopt is. Met een voorwaardelijke koppeling van de module `Get Status` wordt `Start-AzVM` alleen uitgevoerd als de huidige uitvoerstatus is gestopt. Aan het einde van deze procedure gebruikt uw runbook de cmdlet `Write-Output` om een bericht uit te voeren om u te laten weten dat de VM is gestart.
+U kunt het runbook nu wijzigen zodat alleen wordt geprobeerd de VM te starten als deze nog niet is gestart. Dit doet u door een [Get-AzVM](/powershell/module/Az.Compute/Get-AzVM)-cmdlet toe te voegen waarmee de status op instantieniveau van de virtuele machine wordt opgehaald. We voegen vervolgens een PowerShell Workflow-codemodule genaamd `Get Status` toe met een PowerShell-codefragment om te bepalen of de status van de VM actief of gestopt is. Met een voorwaardelijke koppeling van de module `Get Status` wordt `Start-AzVM` alleen uitgevoerd als de huidige uitvoerstatus is gestopt. Aan het einde van deze procedure gebruikt uw runbook de cmdlet `Write-Output` om een bericht uit te voeren om u te laten weten dat de VM is gestart.
 
 1. Open **MyFirstRunbook-Graphical** in de grafische editor.
 
@@ -281,7 +293,7 @@ U kunt het runbook nu wijzigen zodat alleen wordt geprobeerd de VM te starten al
 
 4. Voeg `Get-AzVM` toe aan het canvas.
 
-5. Selecteer `Get-AzVM` en klik vervolgens op **Parameterset** om de sets voor de cmdlet weer te geven. 
+5. Selecteer `Get-AzVM` en klik vervolgens op **Parameterset** om de sets voor de cmdlet weer te geven.
 
 6. Selecteer de parameterset **GetVirtualMachineInResourceGroupNameParamSet**. De velden **ResourceGroupName** en **Naam** hebben een uitroepteken ernaast, waarmee wordt aangegeven dat hiermee verplichte parameters worden opgegeven. Houd er rekening mee dat in beide velden tekenreekswaarden worden verwacht.
 
@@ -303,16 +315,17 @@ U kunt het runbook nu wijzigen zodat alleen wordt geprobeerd de VM te starten al
 
 15. Plak het volgende codefragment in de editorpagina.
 
-    ```powershell-interactive
-     $StatusesJson = $ActivityOutput['Get-AzVM'].StatusesText
-     $Statuses = ConvertFrom-Json $StatusesJson
-     $StatusOut =""
-     foreach ($Status in $Statuses){
-     if($Status.Code -eq "Powerstate/running"){$StatusOut = "running"}
-     elseif ($Status.Code -eq "Powerstate/deallocated") {$StatusOut = "stopped"}
-     }
-     $StatusOut
-     ```
+    ```powershell
+    $Statuses = $ActivityOutput['Get-AzVM'].Statuses
+    $StatusOut = ""
+    foreach ($Status in $Statuses) {
+      if($Status.Code -eq "Powerstate/running")
+        {$StatusOut = "running"}
+      elseif ($Status.Code -eq "Powerstate/deallocated")
+        {$StatusOut = "stopped"}
+    }
+    $StatusOut
+    ```
 
 16. Maak een koppeling van `Get Status` naar `Start-AzVM`.
 
@@ -355,4 +368,4 @@ U kunt het runbook nu wijzigen zodat alleen wordt geprobeerd de VM te starten al
 * Zie [Grafisch runbook ontwerpen in Azure Automation](../automation-graphical-authoring-intro.md) voor meer informatie over grafisch ontwerpen.
 * Zie [Een PowerShell-runbook maken](automation-tutorial-runbook-textual-powershell.md) om aan de slag te gaan met PowerShell-runbooks.
 * Zie [Een PowerShell Workflow-runbook maken](automation-tutorial-runbook-textual.md) om aan de slag te gaan met PowerShell Workflow-runbooks.
-* Zie [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation) voor een naslagdocumentatie voor een PowerShell-cmdlet.
+* Zie [Az.Automation](/powershell/module/az.automation) voor een naslagdocumentatie voor een PowerShell-cmdlet.

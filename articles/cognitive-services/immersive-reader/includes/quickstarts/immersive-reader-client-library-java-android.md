@@ -6,18 +6,19 @@ services: cognitive-services
 author: dylankil
 manager: guillasi
 ms.service: cognitive-services
+ms.subservice: immersive-reader
 ms.topic: include
-ms.date: 06/10/2020
-ms.custom: devx-track-java, devx-track-javascript
+ms.date: 09/14/2020
+ms.custom: devx-track-java, devx-track-js
 ms.author: dylankil
-ms.openlocfilehash: 63a7e7756eee80b8d57c168890ba3613bbd11f01
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 32522958b21d31b09c019ebde0862c49e3535488
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88602300"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376588"
 ---
-De [insluitende lezer](https://www.onenote.com/learningtools) is een inclusief ontworpen hulpprogramma dat bewezen technieken implementeert om leesvaardigheid te verbeteren.
+[Insluitende lezer](https://www.onenote.com/learningtools) is een inclusief ontworpen hulpprogramma dat bewezen technieken implementeert om begrijpend lezen te verbeteren voor beginnende lezers, mensen die een taal willen leren en mensen met leerproblemen, zoals dyslexie. U kunt de Insluitende lezer in uw toepassingen gebruiken om tekst te isoleren voor het verbeteren van de focus, het weergeven van afbeeldingen voor veelgebruikte woorden, het markeren van bepaalde secties, het hardop voorlezen van geselecteerde tekst, het vertalen van woorden en zinsdelen in realtime en meer.
 
 In deze Quickstart maakt u een nieuwe Android-app en integreert u de insluitende lezer. U vindt [op GitHub](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-java-android) een volledig werkend voorbeeld van deze quickstart.
 
@@ -25,7 +26,8 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Insluitende lezer-resource die is geconfigureerd voor Azure Active Directory-verificatie. Volg [deze instructies](../../how-to-create-immersive-reader.md) om deze in te stellen. Enkele waarden die u hier maakt, hebt u nodig bij het configureren van de eigenschappen van de omgeving. Sla de uitvoer van uw sessie op in een tekstbestand voor later gebruik.
+* Azure-abonnement: [Krijg een gratis abonnement](https://azure.microsoft.com/free/cognitive-services)
+* Een insluitende lezer-resource die is geconfigureerd voor Azure Active Directory-verificatie. Volg [deze instructies](../../how-to-create-immersive-reader.md) om deze in te stellen. Enkele waarden die u hier maakt, hebt u nodig bij het configureren van de eigenschappen van de omgeving. Sla de uitvoer van uw sessie op in een tekstbestand voor later gebruik.
 * [Git](https://git-scm.com/).
 * [SDK voor Insluitende lezer](https://github.com/microsoft/immersive-reader-sdk).
 * [Android Studio](https://developer.android.com/studio).
@@ -34,27 +36,27 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 Start een nieuw project in Android Studio. De broncode voor dit voorbeeld is beschikbaar als onderdeel van de [SDK voor Insluitende lezer](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-java-android).
 
-![Nieuw project](../../media/android/java/android-studio-create-project.png)
+![Nieuw project - Android](../../media/android/java/android-studio-create-project.png)
 
 Selecteer **Empty Activity** in het venster **Choose your project** en selecteer **Next**.
 
-![Project met lege activiteit](../../media/android/java/android-studio-empty-activity.png)
+![Project met lege activiteit - Android](../../media/android/java/android-studio-empty-activity.png)
 
 ## <a name="configure-the-project"></a>Het project configureren
 
 Geef het project de naam **QuickstartJava** en selecteer een locatie om het op te slaan. Selecteer **Java** als de programmeertaal en selecteer **Finish**.
 
-![Het project configureren](../../media/android/java/android-studio-configure-project.png)
+![Het project configureren - Android](../../media/android/java/android-studio-configure-project.png)
 
 ## <a name="set-up-assets-and-authentication"></a>Activa en verificatie instellen
 
 Maak een nieuwe map **/assets**.
 
-![Een nieuwe map assets maken](../../media/android/java/android-studio-assets-folder.png)
+![Een nieuwe map assets maken - Android](../../media/android/java/android-studio-assets-folder.png)
 
  Maak een bestand met de naam **env** in de map Assets. Voeg de volgende namen en waarden toe en geef waar nodig waarden op. Zorg ervoor dat u dit env-bestand niet doorvoert in broncodebeheer, omdat er geheimen in staan die niet openbaar mogen worden gemaakt.
 
-![Een nieuw env-bestand maken](../../media/android/java/android-studio-create-env-file.png)
+![Een nieuw env-bestand maken - Android](../../media/android/java/android-studio-create-env-file.png)
 
 ```text
 TENANT_ID=<YOUR_TENANT_ID>
@@ -81,13 +83,13 @@ dependencies {
 }
 ```
 
-![App Gradle-implementaties](../../media/android/java/android-studio-build-gradle.png)
+![App Gradle-implementaties - Android](../../media/android/java/android-studio-build-gradle.png)
 
 ## <a name="update-app-strings-and-layout-resources"></a>App-tekenreeksen en indelingsresources bijwerken
 
 Vervang de inhoud in **res/strings/strings.xml** door de volgende tekenreeksen die moeten worden gebruikt in de app.
 
-![App strings.xml](../../media/android/java/android-studio-strings.png)
+![App strings.xml - Android](../../media/android/java/android-studio-strings.png)
 
 ```strings.xml
 <resources>
@@ -97,7 +99,7 @@ Vervang de inhoud in **res/strings/strings.xml** door de volgende tekenreeksen d
 
     <string name="app_name">ImmersiveReaderSDK</string>
     <string name="geographyTitle">Geography</string>
-    <string name="geographyTextEn">The study of Earth’s landforms is called physical geography. Landforms can be mountains and valleys. They can also be glaciers, lakes or rivers. Landforms are sometimes called physical features. It is important for students to know about the physical geography of Earth. The seasons, the atmosphere and all the natural processes of Earth affect where people are able to live. Geography is one of a combination of factors that people use to decide where they want to live. The physical features of a region are often rich in resources. Within a nation, mountain ranges become natural borders for settlement areas. In the U.S., major mountain ranges are the Sierra Nevada, the Rocky Mountains, and the Appalachians.Fresh water sources also influence where people settle. People need water to drink. They also need it for washing. Throughout history, people have settled near fresh water. Living near a water source helps ensure that people have the water they need. There was an added bonus, too. Water could be used as a travel route for people and goods. Many Americans live near popular water sources, such as the Mississippi River, the Colorado River and the Great Lakes.Mountains and deserts have been settled by fewer people than the plains areas. However, they have valuable resources of their own.</string>
+    <string name="geographyTextEn">The study of Earth's landforms is called physical geography. Landforms can be mountains and valleys. They can also be glaciers, lakes or rivers. Landforms are sometimes called physical features. It is important for students to know about the physical geography of Earth. The seasons, the atmosphere and all the natural processes of Earth affect where people are able to live. Geography is one of a combination of factors that people use to decide where they want to live. The physical features of a region are often rich in resources. Within a nation, mountain ranges become natural borders for settlement areas. In the U.S., major mountain ranges are the Sierra Nevada, the Rocky Mountains, and the Appalachians. Fresh water sources also influence where people settle. People need water to drink. They also need it for washing. Throughout history, people have settled near fresh water. Living near a water source helps ensure that people have the water they need. There was an added bonus, too. Water could be used as a travel route for people and goods. Many Americans live near popular water sources, such as the Mississippi River, the Colorado River and the Great Lakes.Mountains and deserts have been settled by fewer people than the plains areas. However, they have valuable resources of their own.</string>
     <string name="geographyTextFr">L\'étude des reliefs de la Terre est appelée géographie physique. Les reliefs peuvent être des montagnes et des vallées. Il peut aussi s\'agira de glaciers, delacs ou de rivières. Les reliefs sont parfois appelés caractéristiques physiques. Il est important que les élèves connaissent la géographie physique de laTerre. Les saisons, l\'atmosphère et tous les processus naturels de la Terre affectent l\'endroit où les gens sont capables de vivre. La géographie est l\'un desfacteurs que les gens utilisent pour décider où ils veulent vivre. Les caractéristiques physiques d\'une région sont souvent riches en ressources. Àl\'intérieur d\'une nation, les chaînes de montagnes deviennent des frontières naturelles pour les zones de peuplement. Aux États-Unis, les principaleschaînes de montagnes sont la Sierra Nevada, les montagnes Rocheuses et les Appalaches.Les sources d\'eau douce influencent également l\'endroit où lesgens s\'installent. Les gens ont besoin d\'eau pour boire. Ils en ont aussi besoin pour se laver. Tout au long de l\'histoire, les gens se sont installés près del\'eau douce. Vivre près d\'une source d\'eau permet de s\'assurer que les gens ont l\'eau dont ils ont besoin. Il y avait un bonus supplémentaire, aussi. L\'eaupourrait être utilisée comme voie de voyage pour les personnes et les marchandises. Beaucoup d\'Américains vivent près des sources d\'eau populaires,telles que le fleuve Mississippi, le fleuve Colorado et les Grands Lacs.Mountains et les déserts ont été installés par moins de gens que les zones desplaines. Cependant, ils disposent de ressources précieuses.Les gens ont une réponse.</string>
     <string name="immersiveReaderButtonText">Immersive Reader</string>
 </resources>
@@ -105,7 +107,7 @@ Vervang de inhoud in **res/strings/strings.xml** door de volgende tekenreeksen d
 
 Vervang de inhoud in **res/layout/activity_main.xml** door de volgende XML die moet worden gebruikt in de app. Deze XML bepaalt de indeling van de gebruikersinterface van de app.
 
-![App activity_main.xml](../../media/android/java/android-studio-activity-main-xml.png)
+![App activity_main.xml - Android](../../media/android/java/android-studio-activity-main-xml.png)
 
 ```activity_main.xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -206,9 +208,9 @@ Vervang de inhoud in **res/layout/activity_main.xml** door de volgende XML die m
 
 Maak in de map **res/layout/** een nieuw indelingsbronbestand en geef het de naam **activity_immersive_reader**. Vervang vervolgens de inhoud van het bestand door de volgende XML. Met deze XML voegt u het WebView-onderdeel toe dat moet worden gebruikt door de IRActivity Java-code die in een latere stap wordt gemaakt. Deze code is nu niet gedefinieerd en veroorzaakt fouten.
 
-![Nieuw indelingsbronbestand maken](../../media/android/java/android-studio-new-layout-resource.png)
+![Nieuw indelingsbronbestand maken - Android](../../media/android/java/android-studio-new-layout-resource.png)
 
-![De nieuwe indelingsbron configureren](../../media/android/java/android-studio-activity-immersive-reader.png)
+![De nieuwe indelingsbron configureren - Android](../../media/android/java/android-studio-activity-immersive-reader.png)
 
 ```activity_immersive_reader.xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -235,7 +237,7 @@ Maak in de map **res/layout/** een nieuw indelingsbronbestand en geef het de naa
 
 In de map **/Java/com.example.quickstartjava** ziet u een bestaand Java-klassebestand **MainActivity.java**. In deze map wordt de logica van de app gemaakt.
 
-![MainActivity](../../media/android/java/android-studio-main-activity-java.png)
+![MainActivity - Android](../../media/android/java/android-studio-main-activity-java.png)
 
 Vervang de inhoud van **MainActivity.java** door de volgende code. Er wordt in de code naar een aantal klassen verwezen die nog niet bestaan en later worden gemaakt.
 
@@ -292,7 +294,7 @@ U maakt later nog 16 Java-klassebestanden in de map **/Java/com.example.quicksta
 
 Als u een nieuw Java-klassebestand **ImmersiveReader.java** wilt maken, klikt u met de rechtermuisknop op de map in Android Studio, selecteert u **New** en vervolgens **Java Class**. U gebruikt dezelfde methode voor het maken van Java-klassebestanden voor elk nieuw Java-klassebestand dat u maakt.
 
-![ImmersiveReader](../../media/android/java/android-studio-immersivereader-java.png)
+![ImmersiveReader - Android](../../media/android/java/android-studio-immersivereader-java.png)
 
 Vervang de inhoud van **ImmersiveReader.java** door de volgende code:
 
@@ -376,7 +378,7 @@ public class ImmersiveReader {
 
 Maak een nieuw Java-klassebestand **IRActivity.java**.
 
-![IRActivity](../../media/android/java/android-studio-iractivity-java.png)
+![IRActivity - Android](../../media/android/java/android-studio-iractivity-java.png)
 
 Vervang de inhoud van **IRActivity.java** door de volgende code:
 
@@ -460,7 +462,7 @@ public class ImmersiveReader {
 
 Maak een nieuw Java-klassebestand **IRError.java**.
 
-![IRError](../../media/android/java/android-studio-irerror-java.png)
+![IRError - Android](../../media/android/java/android-studio-irerror-java.png)
 
 Vervang de inhoud van **IRError.java** door de volgende code:
 
@@ -539,7 +541,7 @@ public class IRError implements Parcelable {
 
 Maak een nieuw Java-klassebestand **Error.java**.
 
-![Fout](../../media/android/java/android-studio-error-java.png)
+![Error - Android](../../media/android/java/android-studio-error-java.png)
 
 Vervang de inhoud van **Error.java** door de volgende code:
 
@@ -570,7 +572,7 @@ public class Error {
 
 Maak een nieuw Java-klassebestand **ReadableContent.java**.
 
-![ReadableContent](../../media/android/java/android-studio-readablecontent-java.png)
+![ReadableContent - Android](../../media/android/java/android-studio-readablecontent-java.png)
 
 Vervang de inhoud van **ReadableContent.java** door de volgende code:
 
@@ -614,7 +616,7 @@ public class ReadableContent {
 
 Maak een nieuw Java-klassebestand **ReadableTextChunk.java**.
 
-![ReadableTextChunk](../../media/android/java/android-studio-readabletextchunk-java.png)
+![ReadableTextChunk - Android](../../media/android/java/android-studio-readabletextchunk-java.png)
 
 Vervang de inhoud van **ReadableTextChunk.java** door de volgende code:
 
@@ -646,7 +648,7 @@ public class ReadableTextChunk {
 
 Maak een nieuw Java-klassebestand **IRDataHolder.java**.
 
-![IRDataHolder](../../media/android/java/android-studio-irdataholder-java.png)
+![IRDataHolder - Android](../../media/android/java/android-studio-irdataholder-java.png)
 
 Vervang de inhoud van **IRDataHolder.java** door de volgende code:
 
@@ -711,7 +713,7 @@ public class IRDataHolder {
 
 Maak een nieuw Java-klassebestand **IRAuthenticator.java**.
 
-![IRAuthenticator](../../media/android/java/android-studio-irauthenticator-java.png)
+![IRAuthenticator - Android](../../media/android/java/android-studio-irauthenticator-java.png)
 
 Vervang de inhoud van **IRAuthenticator.java** door de volgende code:
 
@@ -822,7 +824,7 @@ public class IRAuthenticator implements ImmersiveReader.IAuthenticator {
 
 Maak een nieuw Java-klassebestand **IRLauncher.java**.
 
-![IRLauncher](../../media/android/java/android-studio-irlauncher-java.png)
+![IRLauncher - Android](../../media/android/java/android-studio-irlauncher-java.png)
 
 Vervang de inhoud van **IRLauncher.java** door de volgende code:
 
@@ -1015,7 +1017,7 @@ public class IRLauncher {
 
 Maak een nieuw Java-klassebestand **IRStore.java**.
 
-![IRStore](../../media/android/java/android-studio-irstore-java.png)
+![IRStore - Android](../../media/android/java/android-studio-irstore-java.png)
 
 Vervang de inhoud van **IRStore.java** door de volgende code:
 
@@ -1097,7 +1099,7 @@ public class AuthenticationTask extends AsyncTask<Void, Void, String> {
 
 Maak een nieuw Java-klassebestand **Chunk.java**.
 
-![Chunk](../../media/android/java/android-studio-chunk-java.png)
+![Chunk - Android](../../media/android/java/android-studio-chunk-java.png)
 
 Vervang de inhoud van **Chunk.java** door de volgende code:
 
@@ -1134,7 +1136,7 @@ public class Chunk {
 
 Maak een nieuw Java-klassebestand **Content.java**.
 
-![Inhoud](../../media/android/java/android-studio-content-java.png)
+![Content - Android](../../media/android/java/android-studio-content-java.png)
 
 Vervang de inhoud van **Content.java** door de volgende code:
 
@@ -1170,7 +1172,7 @@ public class Content {
 
 Maak een nieuw Java-klassebestand **Options.java**.
 
-![Opties](../../media/android/java/android-studio-options-java.png)
+![Options - Android](../../media/android/java/android-studio-options-java.png)
 
 Vervang de inhoud van **Options.java** door de volgende code:
 
@@ -1204,7 +1206,7 @@ public class Options {
 
 Maak een nieuw Java-klassebestand **Message.java**.
 
-![Bericht](../../media/android/java/android-studio-message-java.png)
+![Message - Android](../../media/android/java/android-studio-message-java.png)
 
 Vervang de inhoud van **Message.java** door de volgende code:
 
@@ -1242,7 +1244,7 @@ public class Message {
 
 Maak een nieuw Java-klassebestand **WebAppInterface.java**.
 
-![WebAppInterface](../../media/android/java/android-studio-webappinterface-java.png)
+![WebAppInterface - Android](../../media/android/java/android-studio-webappinterface-java.png)
 
 Vervang de inhoud van **WebAppInterface.java** door de volgende code:
 
@@ -1293,9 +1295,9 @@ public class WebAppInterface {
 
 Voor de implementatie van de webweergave moet de HTML goed werken. Klik met de rechtermuisknop op de map **/assets** en maak een nieuw bestand met de naam **immersiveReader.html**.
 
-![Een nieuw HTML-bestand maken](../../media/android/java/android-studio-immersive-reader-html.png)
+![Een nieuw HTML-bestand maken - Android](../../media/android/java/android-studio-immersive-reader-html.png)
 
-![Locatie van HTML-asset](../../media/android/java/android-studio-immersive-reader-html-assets.png)
+![Locatie van HTML-assets - Android](../../media/android/java/android-studio-immersive-reader-html-assets.png)
 
 Voeg de volgende HTML en JavaScript toe. Met deze code wordt de SDK voor Insluitende lezer aan de app toegevoegd en gebruikt om de insluitende lezer te openen met de app-code die we hebben geschreven.
 
@@ -1352,7 +1354,7 @@ Licensed under the MIT License. -->
 
 ## <a name="set-up-app-permissions"></a>App-machtigingen instellen
 
-![AndroidManifest](../../media/android/java/android-studio-android-manifest-xml.png)
+![AndroidManifest - Android](../../media/android/java/android-studio-android-manifest-xml.png)
 
 Omdat de toepassing netwerkaanroepen naar de SDK voor insluitende lezers moet maken om te kunnen functioneren, moeten we ervoor zorgen dat de app-machtigingen zijn geconfigureerd om netwerktoegang toe te staan. Vervang de inhoud van **/manifests/AndroidManifest.xml** door de volgende XML:
 
@@ -1389,7 +1391,7 @@ Omdat de toepassing netwerkaanroepen naar de SDK voor insluitende lezers moet ma
 
 Gebruik Android Studio om de app op een apparaat-emulator uit te voeren. Wanneer u **Insluitende lezer** selecteert, wordt de insluitende lezer geopend met de inhoud van de app.
 
-![Insluitende lezer](../../media/android/java/android-studio-device-emulator.png)
+![Insluitende lezer - Android](../../media/android/java/android-studio-device-emulator.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: 3cae2902385eb82f65243c631745df5ca48825f3
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: c72825f4645919468f8b59bbc4b9d9498fe11009
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719211"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979399"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>Oplossingen voor de detailhandel bouwen met Azure IoT Central
 
@@ -41,9 +41,9 @@ Oplossingen voor verbonden logistiek kennen onder andere de volgende voordelen:
 
 In de volgende schermopnamen ziet u het kant-en-klare dashboard in de toepassingssjabloon. Het dashboard kan volledig worden aangepast aan uw specifieke vereisten voor de oplossing:
 
-:::image type="content" source="media/overview-iot-central-retail/connected-logistics-dashboard1.png" alt-text="Dashboard voor verbonden logistiek":::
+:::image type="content" source="media/overview-iot-central-retail/connected-logistics-dashboard1.png" alt-text="Overzicht van Azure IoT Retail":::
 
-:::image type="content" source="media/overview-iot-central-retail/connected-logistics-dashboard2.png" alt-text="Dashboard voor verbonden logistiek":::
+:::image type="content" source="media/overview-iot-central-retail/connected-logistics-dashboard2.png" alt-text="Overzicht van Azure IoT Retail":::
 
 Zie de zelfstudie [Een toepassingssjabloon voor verbonden logistiek implementeren en doorlopen](./tutorial-iot-central-connected-logistics.md) voor meer informatie.
 
@@ -64,7 +64,7 @@ Een digitaal distributiecentrum heeft onder meer de volgende voordelen:
 
 In de volgende schermopname ziet u het kant-en-klare dashboard in de toepassingssjabloon. Het dashboard kan volledig worden aangepast aan uw specifieke vereisten voor de oplossing: 
 
-:::image type="content" source="media/overview-iot-central-retail/digital-distribution-center-dashboard.png" alt-text="Dashboard van een digitaal distributiecentrum":::
+:::image type="content" source="media/overview-iot-central-retail/digital-distribution-center-dashboard.png" alt-text="Overzicht van Azure IoT Retail":::
 
 Zie de zelfstudie [Een toepassingssjabloon voor een digitaal distributiecentrum implementeren en doorlopen](./tutorial-iot-central-digital-distribution-center.md) voor meer informatie.
 
@@ -86,7 +86,7 @@ De toepassingssjabloon wordt geleverd met een aantal apparaatsjablonen en er wor
 
 In de volgende schermopname ziet u het kant-en-klare dashboard in de toepassingssjabloon. Het dashboard kan volledig worden aangepast aan uw specifieke vereisten voor de oplossing: 
 
-:::image type="content" source="media/overview-iot-central-retail/in-store-analytics-condition-dashboard.png" alt-text="In-Store Analytics: bewaking van condities":::
+:::image type="content" source="media/overview-iot-central-retail/in-store-analytics-condition-dashboard.png" alt-text="Overzicht van Azure IoT Retail":::
 
 Raadpleeg de zelfstudie [Een in-store analysetoepassing maken in Azure IoT Central](./tutorial-in-store-analytics-create-app.md) voor meer informatie.
 
@@ -108,7 +108,7 @@ De toepassingssjabloon wordt geleverd met een aantal apparaatsjablonen en er wor
 
 In de volgende schermopname ziet u het kant-en-klare dashboard in de toepassingssjabloon. Het dashboard kan volledig worden aangepast aan uw specifieke vereisten voor de oplossing: 
 
-:::image type="content" source="media/overview-iot-central-retail/In-Store-Analytics-Checkout-Dashboard.png" alt-text="In-Store Analytics: betaling":::
+:::image type="content" source="media/overview-iot-central-retail/In-Store-Analytics-Checkout-Dashboard.png" alt-text="Overzicht van Azure IoT Retail":::
 
 Raadpleeg de zelfstudie [Een in-store analysetoepassing maken in Azure IoT Central](./tutorial-in-store-analytics-create-app.md) voor meer informatie.
 
@@ -128,7 +128,7 @@ Deze toepassingssjabloon is gericht op de connectiviteit van apparaten en de con
 
 In de volgende schermopname ziet u het kant-en-klare dashboard in de toepassingssjabloon. Het dashboard kan volledig worden aangepast aan uw specifieke vereisten voor de oplossing:
 
-:::image type="content" source="media/overview-iot-central-retail/smart-inventory-management-dashboard.png" alt-text="Dashboard voor slim voorraadbeheer":::
+:::image type="content" source="media/overview-iot-central-retail/smart-inventory-management-dashboard.png" alt-text="Overzicht van Azure IoT Retail":::
 
 Zie de zelfstudie [Een toepassingssjabloon voor slim voorraadbeheer implementeren en doorlopen](./tutorial-iot-central-smart-inventory-management.md) voor meer informatie.
 
@@ -148,7 +148,7 @@ Met het toepassingssjabloon kunt u onder meer:
 
 In de volgende schermopname ziet u het kant-en-klare dashboard in de toepassingssjabloon. Het dashboard kan volledig worden aangepast aan uw specifieke vereisten voor de oplossing:
 
-:::image type="content" source="media/overview-iot-central-retail/MFC-Dashboard.png" alt-text="Micro-uitvoeringscentrum":::
+:::image type="content" source="media/overview-iot-central-retail/MFC-Dashboard.png" alt-text="Overzicht van Azure IoT Retail":::
 
 Zie de zelfstudie [Een toepassingssjabloon voor een micro-uitvoeringscentrum implementeren en doorlopen](./tutorial-micro-fulfillment-center.md) voor meer informatie.
 
@@ -165,7 +165,7 @@ De toepassingssjabloon omvat vier toepassingsdashboards:
 * **(Voorbeeld) Real Camera Management** gebruikt gesimuleerde camera's om te laten zien hoe u uw camera's vanuit de toepassing kunt beheren.
 * **(Voorbeeld) Real Camera Monitor** gebruikt gesimuleerde camera's om te laten zien hoe u uw camera's vanuit de toepassing kunt bewaken.
 
-:::image type="content" source="media/overview-iot-central-retail/live-video-analytics.png" alt-text="Videoanalyse: object- en bewegingsdetectie":::
+:::image type="content" source="media/overview-iot-central-retail/live-video-analytics.png" alt-text="Overzicht van Azure IoT Retail":::
 
 Zie [De architectuur van de videoanalysetoepassing](architecture-video-analytics.md) voor meer informatie over de architectuur van een oplossing.
 

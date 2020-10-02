@@ -6,46 +6,46 @@ services: cognitive-services
 author: nitinme
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: immersive-reader
 ms.topic: include
-ms.date: 05/20/2020
+ms.date: 09/14/2020
 ms.author: nitinme
-ms.openlocfilehash: 2455297cd9dd77d2b5f605bf36ed46b6240b3f4d
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.openlocfilehash: 967a7d9a78b5edd0c4e5b60545520baef635b340
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89505378"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377002"
 ---
-De [insluitende lezer](https://www.onenote.com/learningtools) is een inclusief ontworpen hulpprogramma waarmee bewezen technieken worden geïmplementeerd om de leesvaardigheid te verbeteren.
+[Insluitende lezer](https://www.onenote.com/learningtools) is een inclusief ontworpen hulpprogramma dat bewezen technieken implementeert om begrijpend lezen te verbeteren voor beginnende lezers, mensen die een taal willen leren en mensen met leerproblemen, zoals dyslexie. U kunt de Insluitende lezer in uw toepassingen gebruiken om tekst te isoleren voor het verbeteren van de focus, het weergeven van afbeeldingen voor veelgebruikte woorden, het markeren van bepaalde secties, het hardop voorlezen van geselecteerde tekst, het vertalen van woorden en zinsdelen in realtime en meer.
 
 In deze quickstart maakt u een nieuwe iOS-app en integreert u de insluitende lezer. U vindt [hier](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/ios) een volledig werkend voorbeeld van deze quickstart.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/cognitive-services/) aan voordat u begint.
-
 ## <a name="prerequisites"></a>Vereisten
 
+* Azure-abonnement: [Krijg een gratis abonnement](https://azure.microsoft.com/free/cognitive-services)
 * [Xcode](https://apps.apple.com/us/app/xcode/id497799835?mt=12)
-* Een insluitende lezer-resource die is geconfigureerd voor Azure Active Directory-verificatie. Volg [deze instructies](../../how-to-create-immersive-reader.md) om deze in te stellen. U hebt enkele waarden nodig die u hier hebt gemaakt, wanneer u de eigenschappen van het voorbeeldproject configureert. Sla de uitvoer van uw sessie op in een tekstbestand voor later gebruik.
+* Een insluitende lezer-resource die is geconfigureerd voor Azure Active Directory-verificatie. Volg [deze instructies](../../how-to-create-immersive-reader.md) om deze in te stellen. U hebt enkele waarden nodig die u hier hebt gemaakt wanneer u de eigenschappen van het voorbeeldproject configureert. Sla de uitvoer van uw sessie op in een tekstbestand voor later gebruik.
 
 ## <a name="create-an-xcode-project"></a>Een Xcode-project maken
 
 Maak een nieuw project in Xcode.
 
-![Nieuw project](../../media/ios/xcode-create-project.png)
+![Nieuw project - Swift](../../media/ios/xcode-create-project.png)
 
 Kies **Single View App**.
 
-![Nieuwe app voor één weergave](../../media/ios/xcode-single-view-app.png)
+![Nieuwe app voor één weergave - Swift](../../media/ios/xcode-single-view-app.png)
 
 ## <a name="set-up-authentication"></a>Verificatie instellen
 
 Klik in het bovenste menu op **Product > Scheme > Edit Scheme**.
 
-![Schema bewerken](../../media/ios/quickstart-ios-edit-scheme.png)
+![Schema bewerken - Swift](../../media/ios/quickstart-ios-edit-scheme.png)
 
 Klik in de weergave **Run** op het tabblad **Arguments**.
 
-![Schema bewerken](../../media/ios/quickstart-ios-env-vars.png)
+![Omgevingsvariabelen voor het schema bewerken - Swift](../../media/ios/quickstart-ios-env-vars.png)
 
 Voeg de volgende namen en waarden toe in de sectie **Environment Variables**, waarbij u de waarden opgeeft die u hebt gebruikt bij het maken van uw insluitende lezer-resource.
 
@@ -557,20 +557,20 @@ function sendContentToReader(message) {
 
 Stel het archiefschema in Xcode in door een simulator of apparaatdoel te selecteren.
 
-![Archiefschema](../../media/ios/xcode-archive-scheme.png)
+![Archiefschema - Swift](../../media/ios/xcode-archive-scheme.png)
 
-![Doel selecteren](../../media/ios/xcode-select-target.png)
+![Doel selecteren - Swift](../../media/ios/xcode-select-target.png)
 
 Druk in Xcode op **Ctrl+R** of klik op de afspeelknop om het project uit te voeren. De app wordt gestart op de opgegeven simulator of op het apparaat.
 
 In uw app ziet u het volgende:
 
-![Voorbeeld-app](../../media/ios/sample-app-ipad.png)
+![Voorbeeld-app - Swift](../../media/ios/sample-app-ipad.png)
 
-Wanneer u op de knop **Immersive Reader** klikt, ziet u dat de insluitende lezer wordt gestart met de inhoud van de app.
+Wanneer u op de knop **insluitende lezer** klikt, ziet u dat de insluitende lezer wordt gestart met de inhoud van de app.
 
-![Insluitende lezer](../../media/ios/immersive-reader-ipad.png)
+![Insluitende lezer - Swift](../../media/ios/immersive-reader-ipad.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* De [SDK voor insluitende lezers](https://github.com/microsoft/immersive-reader-sdk) en de [naslaginformatie voor de SDK voor insluitende lezers](../../reference.md) verkennen
+* De [SDK voor Insluitende lezer](https://github.com/microsoft/immersive-reader-sdk) en de [naslaginformatie voor de SDK voor Insluitende lezer](../../reference.md) verkennen

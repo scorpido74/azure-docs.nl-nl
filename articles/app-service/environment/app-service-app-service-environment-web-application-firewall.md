@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/03/2018
 ms.author: stefsch
 ms.custom: mvc, seodec18
-ms.openlocfilehash: e40a42afc99d505dc48794d5ad919e4d682b7070
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 354568fa3ab3816b643a8f08305ab55868a9b0b6
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961836"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90973702"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>Een Web Application Firewall (WAF) voor App Service Environment configureren
 ## <a name="overview"></a>Overzicht
@@ -26,7 +26,7 @@ Naast de Azure Application Gateway zijn er meerdere opties, zoals de [Barracuda 
 ## <a name="setup"></a>Instellen
 Voor dit document wordt de App Service Environment achter meerdere exemplaren met gelijke taakverdeling van de Barracuda WAF zodanig geconfigureerd dat alleen het verkeer vanaf de WAF de App Service Environment kan bereiken en deze niet toegankelijk is vanaf de DMZ. We hebben ook Azure Traffic Manager voor de Barracuda WAF-exemplaren geplaatst om de taken gelijk te verdelen over Azure-datacenters en -regio's. Een diagram op hoog niveau van de installatie ziet eruit als in de volgende afbeelding:
 
-![Architectuur][Architecture] 
+![Diagram van een optionele Azure Traffic Manager die verbinding maakt met exemplaren van Web Application Firewall, die verbinding maakt met een netwerktoegangsbeheerlijst zodat alleen verkeer van de firewall wordt toegestaan in een App Service Environment met Web, API en Mobile App voor twee regio's.][Architecture] 
 
 > [!NOTE]
 > Dankzij de introductie van [ILB-ondersteuning voor App Service Environment](app-service-environment-with-internal-load-balancer.md), kunt u de ASE zodanig configureren dat deze niet toegankelijk is vanaf de DMZ en alleen beschikbaar is voor het particuliere netwerk. 

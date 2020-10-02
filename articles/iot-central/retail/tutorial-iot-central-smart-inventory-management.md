@@ -1,118 +1,120 @@
 ---
-title: Zelf studie van IoT Smart Inventory Management | Microsoft Docs
-description: Een zelf studie van de sjabloon slimme inventaris beheer toepassing voor IoT Central
+title: Zelfstudie van slim voorraadbeheer voor IoT | Microsoft Docs
+description: Een zelfstudie van een toepassingssjabloon voor slim voorraadbeheer voor IoT Central
 author: KishorIoT
 ms.author: nandab
 ms.service: iot-central
 ms.subservice: iot-central-retail
-ms.topic: overview
+ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: 430f477422e040e0e7e28fd69a1cbc18bce7d656
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 827d571a6545d0aaffb0f96134fcf094eaa5f26b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81000544"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980615"
 ---
-# <a name="tutorial-deploy-and-walk-through-a-smart-inventory-management-application-template"></a>Zelf studie: een sjabloon voor slimme inventaris beheer toepassing implementeren en door lopen
+# <a name="tutorial-deploy-and-walk-through-a-smart-inventory-management-application-template"></a>Zelfstudie: Een toepassingssjabloon voor slim voorraadbeheer implementeren en doorlopen
 
 
 
-In deze zelf studie leert u hoe u aan de slag gaat door een IoT Central **Smart Inventory Management** -toepassings sjabloon te implementeren. U leert hoe u de sjabloon implementeert, wat is opgenomen in het vak en wat u mogelijk op de volgende manier wilt doen.
+In deze zelfstudie leert u hoe u aan de slag gaat door een toepassingssjabloon voor **slim voorraadbeheer** voor IoT Central te implementeren. U leert hoe u de sjabloon implementeert, wat er kant-en-klaar in is opgenomen, en wat u hierna kunt doen.
 
-In deze zelf studie leert u hoe u 
-* Smart Inventory Management-toepassing maken 
-* door loop de toepassing 
+In deze zelfstudie leert u het volgende: 
+* een toepassing voor slim voorraadbeheer maken 
+* de toepassing doorlopen 
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Er zijn geen specifieke vereisten vereist voor het implementeren van deze app
-* We raden u aan om Azure-abonnement te hebben, maar u kunt zelfs zonder dit te proberen
+* Er zijn geen specifieke vereisten voor het implementeren van deze app
+* Een Azure-abonnement wordt aanbevolen, maar u kunt het ook zonder abonnement proberen
 
-## <a name="create-smart-inventory-management-application-template"></a>Sjabloon voor slimme inventaris beheer toepassing maken
+## <a name="create-smart-inventory-management-application-template"></a>Sjabloon voor het maken van een toepassing voor slim voorraadbeheer
 
 U kunt een toepassing maken met behulp van de volgende stappen
 
-1. Ga naar de website van Azure IoT Central Application Manager. Selecteer **samen stellen** in de navigatie balk aan de linkerkant en klik vervolgens op het tabblad **detail handel** .
+1. Navigeer naar de website Azure IoT Central-toepassingsbeheer. Selecteer **Bouwen** in de navigatiebalk aan de linkerkant en klik vervolgens op het tabblad **Detailhandel**.
 
     > [!div class="mx-imgBorder"]
-    > ![Dash board voor Smart Inventory Management](./media/tutorial-iot-central-smart-inventory-management/iotc_retail_homepage.png)
+    > ![Schermopname waarin wordt getoond hoe u de toepassingssjabloon voor slim voorraadbeheer](./media/tutorial-iot-central-smart-inventory-management/iotc_retail_homepage.png)
 
-2. Selecteer het tabblad **Retail** en selecteer **app maken** onder **Smart Inventory Management**
+2. Selecteer het tabblad **Detailhandel** en selecteer **App maken** onder **slim voorraadbeheer**
 
-3. Bij het maken van de **app** wordt een nieuw toepassings formulier geopend en worden de aangevraagde gegevens ingevuld zoals hieronder wordt weer gegeven.
-   **Toepassings naam**: u kunt de voorgestelde standaard naam gebruiken of een beschrijvende toepassings naam invoeren.
-   **URL**: u kunt een aanbevolen standaard-URL gebruiken of uw BESCHRIJVENDE unieke URL voor onthouden opgeven. Vervolgens wordt de standaard instelling aanbevolen als u al een Azure-abonnement hebt. U kunt beginnen met een gratis proef abonnement van 7 dagen en ervoor kiezen om op elk gewenst moment te converteren naar een Standard-prijs plan voordat het gratis Trail verloopt.
-   **Facturerings gegevens**: de adres lijst, het Azure-abonnement en de regio gegevens zijn vereist om de resources in te richten.
-   **Maken**: Selecteer maken onder aan de pagina om uw toepassing te implementeren.
-
-    > [!div class="mx-imgBorder"]
-    > ![Dash board voor Smart Inventory Management](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_app_create.png)
+3. Met **App maken** wordt het formulier Nieuwe toepassing geopend en worden de aangevraagde gegevens ingevuld zoals hieronder wordt weergegeven.
+   **Naam van de app**: u kunt de voorgestelde standaardnaam gebruiken of een beschrijvende naam invoeren voor uw app.
+   **URL**: u kunt de aanbevolen standaard-URL gebruiken of een beschrijvende en unieke URL opgeven die u goed kunt onthouden. Als u al een Azure-abonnement hebt, wordt vervolgens de standaardinstelling aanbevolen. U kunt beginnen met een gratis proefabonnement van 7 dagen en ervoor kiezen om dit op elk gewenst moment om te zetten naar een Standard-prijsplan voordat het gratis proefabonnement verloopt.
+   **Factureringsgegevens**: De map, het Azure-abonnement en de locatiegegevens zijn vereist voor het inrichten van de resources.
+   **Maken**: Selecteer Maken onderin de pagina om uw app te implementeren.
 
     > [!div class="mx-imgBorder"]
-    > ![Facturerings gegevens voor Smart Inventory Management](./media/tutorial-iot-central-smart-inventory-management/smart-inventory-management-app-create-billinginfo.png)
+    > ![Schermopname waarin wordt getoond hoe u een app maakt op basis van de toepassingssjabloon voor slim voorraadbeheer](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_app_create.png)
 
-## <a name="walk-through-the-application"></a>Door loop de toepassing 
+    > [!div class="mx-imgBorder"]
+    > ![Schermopname met de factureringsopties wanneer u de app maakt](./media/tutorial-iot-central-smart-inventory-management/smart-inventory-management-app-create-billinginfo.png)
+
+## <a name="walk-through-the-application"></a>De toepassing doorlopen 
 
 ### <a name="dashboard"></a>Dashboard 
 
-Nadat de app-sjabloon is geïmplementeerd, is uw standaard dashboard een webbeheer operator die gericht is op de portal. North Wind handelaar is een fictieve Smart Inventory-provider die Warehouse beheert met behulp van een laag energie verbruik van Bluetooth en een Retail Store met RFID (Radio-Frequency Identification). In dit dash board ziet u twee verschillende gateways die telemetrie over de inventaris bieden, samen met de bijbehorende opdrachten, taken en acties die u kunt uitvoeren. Dit dash board is vooraf geconfigureerd om de activiteiten activiteit van het kritieke Smart Inventory Management-apparaat te presen teren.
-Het dash board is logisch verdeeld over twee verschillende beheer bewerkingen voor gateway apparaten, 
-   * Het magazijn wordt geïmplementeerd met een vaste baan gateway & de baan codes op pallets om de inventaris van & tracering bij een grotere faciliteit te volgen
-   * Retail Store wordt geïmplementeerd met een vaste RFID-gateway & RFID-tags op het niveau van een item om het aandeel in een Store-uitgang te volgen en te traceren
-   * De gateway locatie, status & gerelateerde gegevens weer geven 
+Nadat u de app-sjabloon hebt geïmplementeerd, is het standaarddashboard een portal voor operators van slim voorraadbeheer. Northwind Traders is een fictieve provider van slim voorraadbeheer die een warehouse beheert met behulp van BLE (Bluetooth Low Energy) en een winkel met RFID (Radio-Frequency Identification). In dit dashboard ziet u twee verschillende gateways die telemetrische gegevens over voorraadbeheer leveren, samen met de bijbehorende opdrachten, taken en acties die u kunt uitvoeren. Dit dashboard is vooraf geconfigureerd om de activiteiten van het kritieke slim-voorraadbeheerapparaat weer te geven.
+Het dashboard is logisch onderverdeel in twee verschillende gatewayapparaatbeheerbewerkingen: 
+   * Het warehouse is geïmplementeerd met een vaste BLE-gateway en BLE-tags op pallets om de voorraad in een grotere faciliteit te kunnen bijhouden en volgen
+   * De winkel is geïmplementeerd met een vaste RFID-gateway en RFID-tags op afzonderlijke artikelen om de voorraad in een winkel te kunnen bijhouden en volgen
+   * De locatie, status en gerelateerde details van de gateway weergeven 
 
 > [!div class="mx-imgBorder"]
-> ![Dash board voor Smart Inventory Management](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_dashboard1.png)
+> ![Schermopname van de bovenste helft van het dashboard voor slim voorraadbeheer](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_dashboard1.png)
 
-   * U kunt eenvoudig het totale aantal gateways, actieve en onbekende Tags bijhouden.
-   * U kunt bewerkingen voor Apparaatbeheer uitvoeren, zoals firmware bijwerken, sensor uitschakelen, sensor inschakelen, drempel waarde voor bijwerken van sensors instellen, telemetrie-intervallen bijwerken & contract service contracten bijwerken
-   * Gateway apparaten kunnen voorraad beheer op aanvraag uitvoeren met een volledige of incrementele scan.
-
-> [!div class="mx-imgBorder"]
-> ![Dash board voor Smart Inventory Management](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_dashboard2.png)
-
-## <a name="device-template"></a>Apparaatprofiel
-Klik op het tabblad Apparaatinstellingen en u ziet het gateway-functionaliteits model. Een mogelijkheidsprofiel is gestructureerd rond twee verschillende interfaces- **telemetrie gateway & eigenschap** en **Gateway opdrachten**
-
-**& eigenschap gateway-telemetrie** : deze interface vertegenwoordigt alle telemetrie die betrekking hebben op Sens oren, locatie, apparaatgegevens en de dubbele eigenschap van het apparaat, zoals gateway drempels en update-intervallen.
+   * U kunt het totale aantal gateways, actieve tags en onbekende tags eenvoudig volgen.
+   * U kunt bewerkingen voor apparaatbeheer uitvoeren, zoals: firmware bijwerken, sensoren uitschakelen en inschakelen, een sensordrempel bijwerken, telemetrie-intervallen bijwerken en servicecontracten bijwerken
+   * Gatewayapparaten kunnen voorraadbeheer op aanvraag uitvoeren met een volledige of incrementele scan.
 
 > [!div class="mx-imgBorder"]
-> ![Dash board voor Smart Inventory Management](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_devicetemplate1.png)
+> ![Schermopname van de onderste helft van het dashboard voor slim voorraadbeheer](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_dashboard2.png)
 
+## <a name="device-template"></a>Apparaatsjabloon
+Klik op het tabblad Apparaatinstellingen om het mogelijkheidsmodel van de gateway weer te geven. Een mogelijkheidsprofiel is gestructureerd rond twee verschillende interfaces: **Gatewaytelemetrie en -eigenschap** en **Gatewayopdrachten**
 
-**Gateway opdrachten** : deze interface organiseert de opdracht mogelijkheden van de gateway
+**Gatewaytelemetrie en -eigenschap**: deze interface vertegenwoordigt alle telemetrie die betrekking heeft op de sensoren, locaties, apparaatgegevens en de mogelijkheid voor eigenschappen van apparaatdubbels, zoals gatewaydrempels en update-intervallen.
 
 > [!div class="mx-imgBorder"]
-> ![Dash board voor Smart Inventory Management](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_devicetemplate2.png)
+> ![Schermopname van de apparaatsjabloon voor de gateway voor voorraadbeheer in de toepassing](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_devicetemplate1.png)
+
+
+**Gateway-opdrachten** - Deze interface organiseert alle mogelijkheden van de gatewayopdracht
+
+> [!div class="mx-imgBorder"]
+> ![Schermopname van de interface van gatewayopdrachten in de apparaatsjabloon voor de gateway voor voorraadbeheer](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_devicetemplate2.png)
 
 ## <a name="rules"></a>Regels
-Selecteer het tabblad regels om twee verschillende regels te zien die voor komen in deze toepassings sjabloon. Deze regels worden geconfigureerd voor het e-mailen van meldingen aan de Opera tors voor verdere onderzoek.
+Selecteer het tabblad Regels om twee verschillende regels weer te geven die voorkomen in deze toepassingssjabloon. Deze regels zijn geconfigureerd voor het verzenden van e-mailmeldingen naar de operators voor verdere onderzoeken.
 
-**Gateway offline**: deze regel wordt geactiveerd als de gateway gedurende een lange periode niet wordt gerapporteerd aan de Cloud. De gateway kan niet worden gereageerd vanwege een laag batterij niveau, de connectiviteit is verbroken, de status van het apparaat.
+**Gateway offline**: Deze regel wordt geactiveerd als de gateway voor langere tijd niet rapporteert aan de cloud. De gateway reageert mogelijk niet vanwege een laag accuniveau, een storing in de connectiviteit of een beschadiging aan het apparaat.
 
-**Onbekende Tags**: het is essentieel om elke RFID-&e-tag voor een Asset bij te houden. Als de gateway te veel onbekende tags detecteert, is dit een indicatie van de synchronisatie uitdagingen met behulp van tag sourcing-toepassingen.
+**Onbekende tags**: Het is van essentieel belang dat alle RFID- en BLE-tags die zijn gekoppeld aan assets, kan worden gevolgd. Als de gateway te veel onbekende tags detecteert, is dit een indicatie van synchronisatieproblemen met tagbrontoepassingen.
 
 > [!div class="mx-imgBorder"]
-> ![Dash board voor Smart Inventory Management](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_rules.png)
+> ![Schermopname van de lijst met regels in de toepassing voor slim voorraadbeheer](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_rules.png)
 
 ## <a name="jobs"></a>Taken
-Selecteer het tabblad taken om vijf verschillende taken weer te geven die als onderdeel van deze toepassings sjabloon bestaan: u kunt de functie taken gebruiken voor het uitvoeren van bewerkingen voor de hele oplossing. In deze taken voor voorraad beheer worden de opdrachten voor het apparaat gebruikt en dubbele mogelijkheden om taken uit te voeren, zoals,
+Selecteer het tabblad Taken om vijf verschillende taken weer te geven die voorkomen in deze toepassingssjabloon: U kunt taken gebruiken voor het uitvoeren van bewerkingen voor de hele oplossing. Hierbij wordt gebruik gemaakt van de mogelijkheden van apparaatopdrachten en dubbels om voorraadbeheertaken uit te voeren, zoals:
    * lezers uitschakelen op alle gateways
-   * de limiet voor telemetrie wijzigen tussen 
-   * scan op aanvraag inventarisatie op basis van de volledige oplossing.
+   * de telemetriedrempelwaarde wijzigen tussen 
+   * voorraadbeheerscans op aanvraag uitvoeren voor de hele oplossing.
 
 > [!div class="mx-imgBorder"]
-> ![Dash board voor Smart Inventory Management](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_jobs.png)
+> ![Schermopname van de lijst met taken in de toepassing voor slim voorraadbeheer](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_jobs.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u deze toepassing niet wilt blijven gebruiken, verwijdert u de toepassings sjabloon door de instellingen van de **beheer** > **toepassing** te bezoeken en op **verwijderen**te klikken.
+Als u deze app niet meer wilt gebruiken, verwijdert u de app door **Beheer** > **App-instellingen** te bezoeken en te klikken op **Verwijderen**.
 
 > [!div class="mx-imgBorder"]
-> ![Dash board voor Smart Inventory Management](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_cleanup.png)
+> ![Schermopname die laat zien hoe u de toepassing verwijdert wanneer u deze niet meer nodig hebt](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_cleanup.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over Smart Inventory Management [Smart Inventory Management concept](./architecture-smart-inventory-management.md)
-* Meer informatie over andere [IOT Central Retail-sjablonen](./overview-iot-central-retail.md)
-* Raadpleeg [IOT Central Overview](../core/overview-iot-central.md) voor meer informatie over IOT Central
+* Meer informatie over slim voorraadbeheer 
+> [!div class="nextstepaction"]
+> [Concept van slim voorraadbeheer](./architecture-smart-inventory-management.md)
+* Meer informatie over andere [IoT Central-retailsjablonen](./overview-iot-central-retail.md)
+* Zie [Overzicht van IoT Central](../core/overview-iot-central.md) voor meer informatie over IoT Central

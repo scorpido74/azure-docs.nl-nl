@@ -7,25 +7,24 @@ author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 05/20/2020
+ms.date: 09/14/2020
 ms.author: nitinme
 ms.custom: devx-track-javascript
-ms.openlocfilehash: bbef435bc7cf0bf146009859044bcabe3c0f55ee
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.openlocfilehash: d485e95e0f41b323d1297c669c13fb1fe5886619
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89505380"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978314"
 ---
-De [Insluitende lezer](https://www.onenote.com/learningtools) is een inclusief ontworpen hulpprogramma waarmee bewezen technieken worden geïmplementeerd om de leesvaardigheid te verbeteren.
+[Insluitende lezer](https://www.onenote.com/learningtools) is een inclusief ontworpen hulpprogramma dat bewezen technieken implementeert om begrijpend lezen te verbeteren voor beginnende lezers, mensen die een taal willen leren en mensen met leerproblemen, zoals dyslexie. U kunt de Insluitende lezer in uw toepassingen gebruiken om tekst te isoleren voor het verbeteren van de focus, het weergeven van afbeeldingen voor veelgebruikte woorden, het markeren van bepaalde secties, het hardop voorlezen van geselecteerde tekst, het vertalen van woorden en zinsdelen in realtime en meer.
 
-In deze Quickstart maakt u een nieuwe web-app en integreert u de Insluitende lezer door de clientbibliotheek voor de insluitende lezer te gebruiken. U vindt [hier](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-nodejs) een volledig werkend voorbeeld van deze quickstart.
-
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/cognitive-services/) aan voordat u begint.
+In deze quickstart maakt u een nieuwe web-app en integreert u Insluitende lezer door de clientbibliotheek voor Insluitende lezer te gebruiken. U vindt [op GitHub](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-nodejs) een volledig werkend voorbeeld van deze quickstart.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Insluitende lezer-resource die is geconfigureerd voor Azure Active Directory-verificatie. Volg [deze instructies](../../how-to-create-immersive-reader.md) om deze in te stellen. U hebt enkele waarden nodig die u hier hebt gemaakt bij het configureren van de eigenschappen van de omgeving. Sla de uitvoer van uw sessie op in een tekstbestand voor later gebruik.
+* Azure-abonnement: [Krijg een gratis abonnement](https://azure.microsoft.com/free/cognitive-services)
+* Een insluitende lezer-resource die is geconfigureerd voor Azure Active Directory-verificatie. Volg [deze instructies](../../how-to-create-immersive-reader.md) om deze in te stellen. U hebt enkele waarden nodig die u hier hebt gemaakt bij het configureren van de eigenschappen van de omgeving. Sla de uitvoer van uw sessie op in een tekstbestand voor later gebruik.
 * [Node.js](https://nodejs.org/) en [Yarn](https://yarnpkg.com)
 * Een code-editor, zoals [Visual Studio Code](https://code.visualstudio.com/)
 
@@ -63,7 +62,7 @@ SUBDOMAIN={YOUR_SUBDOMAIN}
 
 Zorg ervoor dat u dit bestand niet doorvoert in broncodebeheer, omdat het geheimen bevat die niet openbaar moeten worden gemaakt.
 
-Open vervolgens _app.js_ en voeg het volgende toe aan het begin van het bestand. Hiermee worden de eigenschappen die in het ENV-bestand zijn gedefinieerd, geladen als omgevingsvariabelen in Node.
+Open vervolgens _app.js_ en voeg het volgende toe boven aan het bestand. Hiermee worden de eigenschappen die in het ENV-bestand zijn gedefinieerd, geladen als omgevingsvariabelen in Node.
 
 ```javascript
 require('dotenv').config();
@@ -72,7 +71,7 @@ require('dotenv').config();
 ### <a name="update-the-router-to-acquire-the-token"></a>De router bijwerken om het token te verkrijgen
 Open het bestand _routes\index.js_ en vervang de automatisch gegenereerde code door de volgende code.
 
-Met deze code wordt er een API-eindpunt gemaakt waarmee een Azure AD-verificatietoken wordt verkregen met behulp van uw wachtwoord voor de service-principal. Ook wordt hiermee het subdomein opgehaald. Vervolgens wordt een-object met het token en het subdomein geretourneerd.
+Met deze code wordt er een API-eindpunt gemaakt waarmee een Azure AD-verificatietoken wordt verkregen met behulp van uw wachtwoord voor de service-principal. Ook wordt het subdomein opgehaald. Vervolgens wordt een-object met het token en het subdomein geretourneerd.
 
 ```javascript
 var express = require('express');
@@ -246,13 +245,13 @@ npm start
 
 Open uw browser en ga naar _http://localhost:3000_ . U ziet nu het volgende:
 
-![Voorbeeld-app](../../media/quickstart-nodejs/1-buildapp.png)
+![Voorbeeld-app - Node.js](../../media/quickstart-nodejs/1-buildapp.png)
 
 ## <a name="launch-the-immersive-reader"></a>De Insluitende lezer starten
 
 Wanneer u op de knop ‘Immersive Reader’ klikt, ziet u dat de Insluitende lezer wordt gestart met de inhoud van de pagina.
 
-![Insluitende lezer](../../media/quickstart-nodejs/2-viewimmersivereader.png)
+![Insluitende lezer - Node.js](../../media/quickstart-nodejs/2-viewimmersivereader.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
