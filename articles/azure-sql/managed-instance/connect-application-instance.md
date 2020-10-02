@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, vanto
 ms.date: 11/09/2018
-ms.openlocfilehash: 9d58a8c1dc79c10ed42fd1675115eb14f2ad4d3e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a59e498435aab7b3e3e2ecf2e6096c044550a1b8
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91283725"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91628363"
 ---
 # <a name="connect-your-application-to-azure-sql-managed-instance"></a>Uw toepassing verbinden met het beheerde Azure SQL-exemplaar
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -45,10 +45,10 @@ Er zijn twee opties voor het verbinden van virtuele netwerken:
 - [Azure VNet-peering](../../virtual-network/virtual-network-peering-overview.md)
 - VNet-naar-VNet VPN-gateway ([Azure Portal](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md), [Power shell](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md), [Azure cli](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-cli.md))
 
-Peering is de voor keur omdat deze gebruikmaakt van het micro soft backbone-netwerk, dus in het oogpunt van connectiviteit is er geen merkbaar verschil in latentie tussen virtuele machines in een gekoppeld virtueel netwerk en in hetzelfde virtuele netwerk. Peering van virtuele netwerken is beperkt tot de netwerken in dezelfde regio.  
+Peering is de voor keur omdat deze gebruikmaakt van het micro soft backbone-netwerk, dus in het oogpunt van connectiviteit is er geen merkbaar verschil in latentie tussen virtuele machines in een gekoppeld virtueel netwerk en in hetzelfde virtuele netwerk. De peering van het virtuele netwerk moet worden ondersteund tussen de netwerken in dezelfde regio. Globale Virtual Network-peering wordt ook ondersteund met de beperking die wordt beschreven in de onderstaande opmerking.  
 
 > [!IMPORTANT]
-> Het scenario voor peering van het virtuele netwerk voor een SQL Managed instance is beperkt tot de netwerken in dezelfde regio vanwege de [beperkingen van globale virtuele netwerk peering](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints). Zie ook de relevante sectie van het artikel Veelgestelde [vragen over virtuele netwerken van Azure](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) voor meer informatie. 
+> [Op 9/22/2020 zijn wereld wijde virtuele netwerk peering aangekondigd voor nieuwe virtuele clusters](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/). Dit betekent dat de peering van globale virtuele netwerken wordt ondersteund voor SQL-beheerde instanties die zijn gemaakt in lege subnetten na de aankondigings datum, en ook voor alle daaropvolgende beheerde exemplaren die in deze subnetten zijn gemaakt. Voor alle andere SQL Managed instances-ondersteuning voor peering is beperkt tot de netwerken in dezelfde regio vanwege de [beperkingen van globale virtuele netwerk peering](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints). Zie ook de relevante sectie van het artikel Veelgestelde [vragen over virtuele netwerken van Azure](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) voor meer informatie. 
 
 ## <a name="connect-from-on-premises"></a>Verbinding maken vanaf on-premises 
 

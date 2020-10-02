@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 author: shganesh-dev
 ms.author: shganesh
-ms.openlocfilehash: f0f14bf24bd867344ec72c86a6fd517085b66d1f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ed836e3df28c5e39aa7f9d21f020c0d37292dcfc
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317549"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631797"
 ---
 # <a name="commercial-marketplace-analytics-terminology-and-common-questions"></a>Commercial Marketplace Analytics terminologie en veelgestelde vragen
 
@@ -45,6 +45,7 @@ Als u dit bericht ontvangt, betekent dit dat u Analytics-gegevens hebt, maar er 
 | Azure-licentie type: Enter prise | Klant, order | De eind klant schaft Azure en uw Marketplace-aanbieding aan via een Enterprise Agreement, die rechtstreeks is ondertekend met micro soft.|
 | Azure-licentie type: Enter prise through reseller  | Klant, order | De eind klant schaft Azure en uw Marketplace-aanbieding aan via een wederverkoper die hun Enterprise Agreement met micro soft vereenvoudigt.|
 | Azure-licentie type: betalen naar gebruik| Klant, order | De eind klant aanschaft Azure en uw Marketplace-aanbieding via een overeenkomst voor betalen naar gebruik, die rechtstreeks is ondertekend met micro soft.|
+| Facturerings account-ID| Klant, order, gebruik| De id van het account waarop de facturering wordt gegenereerd. Gebruik dit kenmerk om analytische rapporten met het rapport uitbetalings transactie te verbinden.|
 | Naam van Cloud exemplaar| Bestellen| De Microsoft Cloud waarin een VM-implementatie is opgetreden.|
 | Naam van Cloud exemplaar: Azure Global| Bestellen| De open bare wereld wijde micro soft-Cloud.|
 | Naam van Cloud exemplaar: Azure Government | Bestellen| Government-specifieke micro soft-Clouds voor een van de volgende overheden: China, Duitsland of de Verenigde Staten van Amerika.| |
@@ -69,7 +70,7 @@ Als u dit bericht ontvangt, betekent dit dat u Analytics-gegevens hebt, maar er 
 | Marketplace-licentie type: micro soft als wederverkoper  | Bestellen| Micro soft is uw wederverkoper voor deze Marketplace-aanbieding.|
 | Marketplace-abonnements-ID | Klant, order | De unieke id die is gekoppeld aan het Azure-abonnement dat de klant heeft gebruikt voor het kopen van uw Marketplace-aanbieding. De ID was voorheen de GUID van het Azure-abonnement.|
 | Naam van aanbieding  | Bestellen| De naam van de Marketplace-aanbieding.|
-| Aanbiedings type  | Bestellen| Het type Microsoft Marketplace aanbieding.|
+| Type aanbieding  | Bestellen| Het type Microsoft Marketplace aanbieding.|
 | Aanbiedings type: beheerde toepassing  | Bestellen | Gebruik het aanbiedings type Azure app: beheerde app wanneer de volgende voor waarden zijn vereist: u implementeert een op abonnementen gebaseerde oplossing voor uw klant met behulp van een virtuele machine of een volledige oplossing op basis van IaaS. U of uw klant vereist dat de oplossing wordt beheerd door een partner. |
 | Aanbiedings type: Azure-toepassing| Bestellen | Gebruik het Azure-toepassing aanbieding van de oplossings sjabloon wanneer voor uw oplossing extra implementatie-en configuratie automatisering nodig is dan een eenvoudige virtuele machine.|
 | Aanbiedings type: Consulting Service| Bestellen| Advies Services in azure Marketplace helpen klanten met services te verbinden en hun gebruik van Azure te ondersteunen en uit te breiden.|
@@ -88,7 +89,7 @@ Als u dit bericht ontvangt, betekent dit dat u Analytics-gegevens hebt, maar er 
 | Status van bestelling: actief  | Bestellen| De klant heeft een bestelling gekocht en heeft zijn order niet geannuleerd.|
 | Status van bestelling: geannuleerd | Bestellen| De klant heeft eerder een order aangeschaft en vervolgens de bestelling geannuleerd.|
 | E-mail van provider| Klant| Het e-mail adres van de provider die deel uitmaakt van de relatie tussen micro soft en de eind klant. Als de klant een onderneming is via wederverkoper, is dit de wederverkoper. Als er een Cloud Solution Provider (CSP) betrokken is, wordt dit de CSP.|
-| Provider naam| Klant| De naam van de provider die deel uitmaakt van de relatie tussen micro soft en de eind klant. Als de klant een onderneming is via wederverkoper, is dit de wederverkoper. Als er een Cloud Solution Provider (CSP) betrokken is, wordt dit de CSP.|
+| Naam van provider| Klant| De naam van de provider die deel uitmaakt van de relatie tussen micro soft en de eind klant. Als de klant een onderneming is via wederverkoper, is dit de wederverkoper. Als er een Cloud Solution Provider (CSP) betrokken is, wordt dit de CSP.|
 | SKU| Bestellen| SKU (nu naam van plan) zoals gedefinieerd tijdens het publiceren. Een aanbieding kan veel Sku's (abonnementen) hebben, maar elk kan slechts worden gekoppeld aan één aanbieding.|
 | Eind datum van proef versie| Bestellen| De datum waarop de proef periode voor deze order wordt beëindigd of beëindigd.|
 |||

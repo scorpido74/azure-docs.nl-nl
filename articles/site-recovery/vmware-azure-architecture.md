@@ -7,12 +7,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
-ms.openlocfilehash: 217e3b9de7c9a46174c6ce6d1a3b151c904a7bf2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 45baee286fede0ab16da62b7c2e84008d58690b1
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91314110"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91626493"
 ---
 # <a name="vmware-to-azure-disaster-recovery-architecture"></a>Architectuur voor herstel na noodgeval van VMware naar Azure
 
@@ -50,7 +50,7 @@ Als u een URL-firewallproxy gebruikt om de uitgaande connectiviteit te beheren, 
 | Replicatie               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | Maakt het de VM mogelijk te communiceren met de Site Recovery-service. |
 | Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | Maakt het de VM mogelijk bewakings- en diagnosegegevens van Site Recovery te schrijven. |
 
-Raadpleeg [de sectie netwerk vereisten in het artikel](vmware-azure-deploy-configuration-server.md#prerequisites)vereisten voor een uitgebreide lijst met url's die moeten worden white list voor communicatie tussen on-premises Azure site Recovery-infra structuur en Azure-Services.
+Raadpleeg [de sectie netwerk vereisten in het artikel](vmware-azure-deploy-configuration-server.md#prerequisites)vereisten voor een uitgebreide lijst met url's die moeten worden gefilterd voor communicatie tussen on-premises Azure site Recovery-infra structuur en Azure-Services.
 
 ## <a name="replication-process"></a>Replicatieproces
 

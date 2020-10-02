@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 92a9370ec866b6d2c14988871e3c742a40679885
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0e071a20051f047efbd040dfc01a30e3c1381367
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077802"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631321"
 ---
 # <a name="use-azuer-active-directory-ad-authentication-for-your-storsimple"></a>Azure Active Directory (AD)-verificatie gebruiken voor uw StorSimple
 
@@ -54,7 +54,7 @@ Als u een StorSimple 8000-serie apparaat gebruikt, gebruikt u de volgende tabel 
 
 | Als uw apparaat wordt uitgevoerd| De volgende actie uitvoeren                                    |
 |--------------------------|------------------------|
-| Update 5 of hoger en het apparaat is offline. <br> U ziet een waarschuwing dat de URL niet white list is.|1. Wijzig de firewall regels zodat de verificatie-URL moet worden toegevoegd. Zie [verificatie-url's](#url-changes-for-aad-authentication).<br>2. [Haal de Aad-registratie sleutel op uit de service](#aad-based-registration-keys).<br>3. [Maak verbinding met de Windows Power shell-interface van het apparaat met de StorSimple 8000-serie](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).<br>4. Gebruik `Redo-DeviceRegistration` cmdlet om het apparaat te registreren via de Windows Power shell. Geef de sleutel op die u in de vorige stap hebt gekregen.|
+| Update 5 of hoger en het apparaat is offline. <br> U ziet een waarschuwing dat de URL niet is goedgekeurd.|1. Wijzig de firewall regels zodat de verificatie-URL moet worden toegevoegd. Zie [verificatie-url's](#url-changes-for-aad-authentication).<br>2. [Haal de Aad-registratie sleutel op uit de service](#aad-based-registration-keys).<br>3. [Maak verbinding met de Windows Power shell-interface van het apparaat met de StorSimple 8000-serie](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).<br>4. Gebruik `Redo-DeviceRegistration` cmdlet om het apparaat te registreren via de Windows Power shell. Geef de sleutel op die u in de vorige stap hebt gekregen.|
 | Update 5 of hoger en het apparaat online.| Geen actie vereist.                                       |
 | Update 4 of lager en het apparaat is offline. |1. Wijzig de firewall regels zodat de verificatie-URL moet worden toegevoegd.<br>2. [down load Update 5 via de catalogus server](storsimple-8000-install-update-5.md#download-updates-for-your-device).<br>3. [Pas Update 5 toe via de hotfix-methode](storsimple-8000-install-update-5.md#install-update-5-as-a-hotfix).<br>4. [Haal de Aad-registratie sleutel op uit de service](#aad-based-registration-keys).<br>5. [Maak verbinding met de Windows Power shell-interface van het apparaat met de StorSimple 8000-serie](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console). <br>6. Gebruik `Redo-DeviceRegistration` cmdlet om het apparaat te registreren via de Windows Power shell. Geef de sleutel op die u in de vorige stap hebt gekregen.|
 | Update 4 of lager en het apparaat is online. |Wijzig de firewall regels zodanig dat ze de verificatie-URL bevatten.<br> Installeer update 5 via de Azure Portal.              |
@@ -91,4 +91,3 @@ Voer de volgende stappen uit om een AAD-service registratie sleutel te genereren
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over het implementeren van een [StorSimple 8000 Series-apparaat](storsimple-8000-deployment-walkthrough-u2.md).
-

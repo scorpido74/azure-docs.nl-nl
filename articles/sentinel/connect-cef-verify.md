@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/19/2020
+ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: f6892f4ebb250290a0faad546fd000530baf4479
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 643b28b2e88f233d2924270511d3c87fa4d9b767
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038168"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631627"
 ---
 # <a name="step-3-validate-connectivity"></a>STAP 3: connectiviteit valideren
 
@@ -54,7 +54,7 @@ Het validatie script voert de volgende controles uit:
 
 1. Hiermee wordt gecontroleerd of het bestand de volgende tekst bevat:
 
-    ```console
+    ```bash
     <source>
         type syslog
         port 25226
@@ -72,24 +72,59 @@ Het validatie script voert de volgende controles uit:
     </filter>
     ```
 
+1. Controleert of de Cisco ASA-parsering voor Firewall gebeurtenissen is geconfigureerd zoals verwacht:
+
+    ```bash
+    sed -i "s|return '%ASA' if ident.include?('%ASA')|return ident if ident.include?('%ASA')|g" 
+        /opt/microsoft/omsagent/plugin/security_lib.rb && 
+        sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+    ```
+
+1. Hiermee wordt gecontroleerd of het *computer* veld in de syslog-bron juist is toegewezen in de log Analytics-agent:
+
+    ```bash
+    sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" 
+        -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/pl ugin/
+        filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+    ```
+
 1. Hiermee wordt gecontroleerd of er beveiligings uitbreidingen worden uitgevoerd op de computer die netwerk verkeer mogelijk blokkeert (zoals een firewall van een host).
 
-1. Controleert of de syslog-daemon (rsyslog) correct is geconfigureerd voor het verzenden van berichten die worden geïdentificeerd als CEF (met behulp van een reguliere expressie) naar de Log Analytics agent op TCP-poort 25226:
+1. Controleert of de syslog-daemon (rsyslog) correct is geconfigureerd voor het verzenden van berichten (die worden geïdentificeerd als CEF) naar de Log Analytics-agent op TCP-poort 25226:
 
-    - Configuratie bestand:`/etc/rsyslog.d/security-config-omsagent.conf`
+    - Configuratie bestand: `/etc/rsyslog.d/security-config-omsagent.conf`
 
-        ```console
-        :rawmsg, regex, "CEF"|"ASA"
-        *.* @@127.0.0.1:25226
+        ```bash
+        if $rawmsg contains "CEF:" or $rawmsg contains "ASA-" then @@127.0.0.1:25226 
         ```
-  
-1. Controleert of de syslog-daemon gegevens ontvangt op poort 514
 
-1. Controleert of de benodigde verbindingen tot stand zijn gebracht: TCP 514 voor het ontvangen van gegevens, TCP 25226 voor interne communicatie tussen de syslog-daemon en de Log Analytics-agent
+1. De syslog-daemon en de Log Analytics-agent opnieuw starten:
+
+    ```bash
+    service rsyslog restart
+
+    /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+    ```
+
+1. Controleert of de benodigde verbindingen tot stand zijn gebracht: TCP 514 voor het ontvangen van gegevens, TCP 25226 voor interne communicatie tussen de syslog-daemon en de Log Analytics-agent:
+
+    ```bash
+    netstat -an | grep 514
+
+    netstat -an | grep 25226
+    ```
+
+1. Controleert of de syslog-daemon gegevens ontvangt op poort 514 en dat de agent gegevens ontvangt op poort 25226:
+
+    ```bash
+    sudo tcpdump -A -ni any port 514 -vv
+
+    sudo tcpdump -A -ni any port 25226 -vv
+    ```
 
 1. Verzendt gegevens over het model naar poort 514 op localhost. Deze gegevens moeten worden waarneembaar in de Azure Sentinel-werk ruimte door de volgende query uit te voeren:
 
-    ```console
+    ```kusto
     CommonSecurityLog
     | where DeviceProduct == "MOCK"
     ```
@@ -102,7 +137,7 @@ Het validatie script voert de volgende controles uit:
 
 1. Hiermee wordt gecontroleerd of het bestand de volgende tekst bevat:
 
-    ```console
+    ```bash
     <source>
         type syslog
         port 25226
@@ -120,25 +155,61 @@ Het validatie script voert de volgende controles uit:
     </filter>
     ```
 
+1. Controleert of de Cisco ASA-parsering voor Firewall gebeurtenissen is geconfigureerd zoals verwacht:
+
+    ```bash
+    sed -i "s|return '%ASA' if ident.include?('%ASA')|return ident if ident.include?('%ASA')|g" 
+        /opt/microsoft/omsagent/plugin/security_lib.rb && 
+        sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+    ```
+
+1. Hiermee wordt gecontroleerd of het *computer* veld in de syslog-bron juist is toegewezen in de log Analytics-agent:
+
+    ```bash
+    sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" 
+        -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/pl ugin/
+        filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+    ```
+
 1. Hiermee wordt gecontroleerd of er beveiligings uitbreidingen worden uitgevoerd op de computer die netwerk verkeer mogelijk blokkeert (zoals een firewall van een host).
 
 1. Controleert of de syslog-daemon (syslog-ng) correct is geconfigureerd voor het verzenden van berichten die worden geïdentificeerd als CEF (met behulp van een reguliere expressie) naar de Log Analytics-agent op TCP-poort 25226:
 
-    - Configuratie bestand:`/etc/syslog-ng/conf.d/security-config-omsagent.conf`
+    - Configuratie bestand: `/etc/syslog-ng/conf.d/security-config-omsagent.conf`
 
-        ```console
+        ```bash
         filter f_oms_filter {match(\"CEF\|ASA\" ) ;};
         destination oms_destination {tcp(\"127.0.0.1\" port("25226"));};
         log {source(s_src);filter(f_oms_filter);destination(oms_destination);};
         ```
 
-1. Controleert of de syslog-daemon gegevens ontvangt op poort 514
+1. De syslog-daemon en de Log Analytics-agent opnieuw starten:
 
-1. Controleert of de benodigde verbindingen tot stand zijn gebracht: TCP 514 voor het ontvangen van gegevens, TCP 25226 voor interne communicatie tussen de syslog-daemon en de Log Analytics-agent
+    ```bash
+    service syslog-ng restart
+
+    /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+    ```
+
+1. Controleert of de benodigde verbindingen tot stand zijn gebracht: TCP 514 voor het ontvangen van gegevens, TCP 25226 voor interne communicatie tussen de syslog-daemon en de Log Analytics-agent:
+
+    ```bash
+    netstat -an | grep 514
+
+    netstat -an | grep 25226
+    ```
+
+1. Controleert of de syslog-daemon gegevens ontvangt op poort 514 en dat de agent gegevens ontvangt op poort 25226:
+
+    ```bash
+    sudo tcpdump -A -ni any port 514 -vv
+
+    sudo tcpdump -A -ni any port 25226 -vv
+    ```
 
 1. Verzendt gegevens over het model naar poort 514 op localhost. Deze gegevens moeten worden waarneembaar in de Azure Sentinel-werk ruimte door de volgende query uit te voeren:
 
-    ```console
+    ```kusto
     CommonSecurityLog
     | where DeviceProduct == "MOCK"
     ```

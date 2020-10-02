@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 09/24/2020
 ms.custom: contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: df3872f5675b55d845bc88e704b1dc4932091ac7
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 784a0acf139aa05179fd92afb4eab299c2669590
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91532411"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91630845"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Een Azure Machine Learning omgeving voor het afwijzen van interferentie beveiligen met virtuele netwerken
 
@@ -32,6 +32,7 @@ In dit artikel leert u hoe u de volgende bronnen voor het afwijzen van een virtu
 > [!div class="checklist"]
 > - Standaard cluster voor Azure Kubernetes service (AKS)
 > - Persoonlijk AKS-cluster
+> - AKS-cluster met persoonlijke koppeling
 > - Azure Container Instances (ACI)
 
 
@@ -204,7 +205,7 @@ except:
     aks_target.wait_for_completion(show_output = True)
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 ```azurecli
 az ml computetarget create aks -n myaks --load-balancer-type InternalLoadBalancer

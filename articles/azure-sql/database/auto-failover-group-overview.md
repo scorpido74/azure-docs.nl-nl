@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 08/28/2020
-ms.openlocfilehash: 023d6512a13e1add1e9980d450a91ed2183e7793
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 2035fa811ed6bb5760f2527f66e0f2ca48ccb2c9
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/01/2020
-ms.locfileid: "91614441"
+ms.locfileid: "91627222"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Gebruik groepen voor automatische failover om transparante en gecoördineerde failover van meerdere data bases mogelijk te maken
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -359,7 +359,11 @@ Wanneer u een failovergroep tussen de primaire en secundaire SQL Managed instanc
 - De twee exemplaren van SQL Managed instance moeten zich in verschillende Azure-regio's bevindt.
 - De twee exemplaren van SQL Managed instance moeten dezelfde servicelaag hebben en dezelfde opslag grootte hebben.
 - Uw secundaire exemplaar van een door SQL beheerd exemplaar moet leeg zijn (geen gebruikers databases).
-- De virtuele netwerken die worden gebruikt door de instanties van SQL Managed instance moeten worden verbonden via een [VPN gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md) of [Express route](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md). Wanneer twee virtuele netwerken verbinding maken via een on-premises netwerk, zorg er dan voor dat er geen firewallregel is die poorten 5022 en 11000-11999 blokkeert. Globale VNet-peering wordt niet ondersteund.
+- De virtuele netwerken die worden gebruikt door de instanties van SQL Managed instance moeten worden verbonden via een [VPN gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md) of [Express route](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md). Wanneer twee virtuele netwerken verbinding maken via een on-premises netwerk, zorg er dan voor dat er geen firewallregel is die poorten 5022 en 11000-11999 blokkeert. Wereld wijde VNet-peering wordt ondersteund door de beperking die wordt beschreven in de onderstaande opmerking.
+
+   > [!IMPORTANT]
+   > [Op 9/22/2020 zijn wereld wijde virtuele netwerk peering aangekondigd voor nieuwe virtuele clusters](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/). Dit betekent dat de peering van globale virtuele netwerken wordt ondersteund voor SQL-beheerde instanties die zijn gemaakt in lege subnetten na de aankondigings datum, en ook voor alle daaropvolgende beheerde exemplaren die in deze subnetten zijn gemaakt. Voor alle andere SQL Managed instances-ondersteuning voor peering is beperkt tot de netwerken in dezelfde regio vanwege de [beperkingen van globale virtuele netwerk peering](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints). Zie ook de relevante sectie van het artikel Veelgestelde [vragen over virtuele netwerken van Azure](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) voor meer informatie. 
+
 - De twee SQL Managed instance VNets kunnen geen overlappende IP-adressen hebben.
 - U moet uw netwerkbeveiligingsgroepen (NSG) zodanig instellen dat poort 5022 en het bereik 11000–12000 zijn geopend voor inkomende en uitgaande verbindingen van het subnet van het andere beheerde exemplaar. Dit is om replicatieverkeer tussen de exemplaren mogelijk te maken.
 
@@ -417,7 +421,7 @@ Zoals eerder besproken, kunnen automatische failover-groepen en actieve geo-repl
 | [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup) | Hiermee wordt een failover van een failovergroep naar de secundaire server geactiveerd |
 | [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup)|Voegt een of meer data bases toe aan een failovergroep|
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 | Opdracht | Beschrijving |
 | --- | --- |
@@ -455,7 +459,7 @@ Zoals eerder besproken, kunnen automatische failover-groepen en actieve geo-repl
 | [Remove-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/remove-azsqldatabaseinstancefailovergroup) | Hiermee verwijdert u een failovergroep|
 
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 | Opdracht | Beschrijving |
 | --- | --- |

@@ -13,14 +13,14 @@ ms.topic: how-to
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/08/2020
+ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: 63acffd16fa4374d4f8541a9d3327b29a3641f71
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c1df52f027c23b2e3618ad17494b06c2ccecfaf6
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90895804"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627139"
 ---
 # <a name="connect-data-sources"></a>Verbinding maken met gegevensbronnen
 
@@ -45,17 +45,22 @@ De volgende gegevens verbindings methoden worden ondersteund door Azure Sentinel
 
 - **Integratie van service naar service**:<br> Sommige services zijn systeem eigen verbonden, zoals AWS en micro soft-Services, maar deze services maken gebruik van de Azure Foundation voor out-of-the-box Integration, de volgende oplossingen kunnen met een paar klikken worden verbonden:
     - [Amazon Web Services-CloudTrail](connect-aws.md)
-    - [Azure-activiteit](connect-azure-activity.md)
     - [Azure Active Directory](connect-azure-active-directory.md) -audit logboeken en aanmeldings logboeken
+    - [Azure-activiteit](connect-azure-activity.md)
     - [Azure AD-identiteitsbeveiliging](connect-azure-ad-Identity-protection.md)
-    - [Micro soft Defender voor identiteit](connect-azure-atp.md) (voorheen Azure Advanced Threat Protection)
+    - [Azure DDoS Protection](connect-azure-ddos-protection.md)
+    - [Azure Defender voor IOT](connect-asc-iot.md) (voorheen Azure Security Center voor IOT)
     - [Azure Information Protection](connect-azure-information-protection.md)
+    - [Azure Firewall](connect-azure-firewall.md)
     - [Azure Security Center](connect-azure-security-center.md) -waarschuwingen van Azure Defender-oplossingen
+    - [Azure Web Application firewall (WAF)](connect-azure-waf.md) (voorheen micro soft WAF)
     - [Cloud App Security](connect-cloud-app-security.md)
     - [Domeinnaamserver](connect-dns.md)
-    - [Office 365](connect-office-365.md)
+    - [Microsoft 365 Defender](connect-microsoft-365-defender.md) : bevat MDATP RAW data
     - [Micro soft Defender voor eind punt](connect-microsoft-defender-advanced-threat-protection.md) (voorheen micro soft Defender Advanced Threat Protection)
-    - [Microsoft Web Application Firewall](connect-microsoft-waf.md)
+    - [Micro soft Defender voor identiteit](connect-azure-atp.md) (voorheen Azure Advanced Threat Protection)
+    - [Micro soft Defender voor Office 365](connect-office-365-advanced-threat-protection.md) (voorheen Office 365 Advanced Threat Protection)
+    - [Office 365](connect-office-365.md) (nu met teams!)
     - [Windows Firewall](connect-windows-firewall.md)
     - [Windows-beveiligingsgebeurtenissen](connect-windows-security-events.md)
 
@@ -67,9 +72,14 @@ De volgende gegevens verbindings methoden worden ondersteund door Azure Sentinel
     - [Citrix Analytics (Security)](connect-citrix-analytics.md)
     - [F5 BIG-IP](connect-f5-big-ip.md)
     - [Forcepoint DLP](connect-forcepoint-dlp.md)
+    - [Okta SSO](connect-okta-single-sign-on.md)
+    - [Orca Security](connect-orca-security-alerts.md)
     - [Perimeter 81 logs](connect-perimeter-81-logs.md)
+    - [Proofpoint TAP](connect-proofpoint-tap.md)
+    - [Qualys-VM](connect-qualys-vm.md)
     - [Squadra Technologies secRMM](connect-squadra-secrmm.md)
     - [Symantec ICDX](connect-symantec.md)
+    - [VMware Carbon Black Cloud Endpoint Standard](connect-vmware-carbon-black.md)
     - [Zimperium](connect-zimperium-mtd.md)
 
 
@@ -79,7 +89,7 @@ De volgende gegevens verbindings methoden worden ondersteund door Azure Sentinel
 
     De Azure Sentinel-agent, die in feite de Log Analytics-agent is, converteert CEF-Logboeken in een indeling die door Log Analytics kan worden opgenomen. Afhankelijk van het type apparaat, wordt de agent rechtstreeks op het apparaat geïnstalleerd of op een speciale, op Linux gebaseerde logboek doorstuur server. De agent voor Linux ontvangt gebeurtenissen van de syslog-daemon via UDP, maar als een Linux-machine verwacht een hoog volume aan syslog-gebeurtenissen te verzamelen, worden ze via TCP van de syslog-daemon naar de agent verzonden en van daaruit naar Log Analytics.
 
-    - **Firewalls, proxy's en eind punten:**
+    - **Firewalls, proxy's en eind punten-CEF:**
         - [AI Vectra Detect](connect-ai-vectra-detect.md)
         - [Check Point](connect-checkpoint.md)
         - [Cisco ASA](connect-cisco.md)
@@ -87,21 +97,29 @@ De volgende gegevens verbindings methoden worden ondersteund door Azure Sentinel
         - [F5 ASM](connect-f5.md)
         - [Force Point-producten](connect-forcepoint-casb-ngfw.md)
         - [Fortinet](connect-fortinet.md)
-        - [Palo Alto Networks](connect-paloalto.md)
+        - [Illusive Networks AMS](connect-illusive-attack-management-system.md)
         - [One Identity Safeguard](connect-one-identity.md)
-        - [Andere CEF-apparaten](connect-common-event-format.md)
-        - [Andere syslog-apparaten](connect-syslog.md)
+        - [Palo Alto Networks](connect-paloalto.md)
         - [Deep Security van Trend Micro](connect-trend-micro.md)
         - [Zscaler](connect-zscaler.md)
+        - [Andere op CEF gebaseerde apparaten](connect-common-event-format.md)
+    - **Firewalls, proxy's en eind punten-syslog:**
+        - [Infoblox NIOS](connect-infoblox.md)
+        - [Pulse Connect Secure](connect-pulse-connect-secure.md)
+        - [Sophos XG](connect-sophos-xg-firewall.md)
+        - [Symantec Proxy SG](connect-symantec-proxy-sg.md)
+        - [Symantec VIP](connect-symantec-vip.md)
+        - [Andere apparaten op basis van syslog](connect-syslog.md)
     - DLP-oplossingen
-    - [Threat Intelligence-providers](connect-threat-intelligence.md)
+    - [Providers van bedreigingsinformatie](connect-threat-intelligence.md)
     - [DNS-machines](connect-dns.md) -agent rechtstreeks geïnstalleerd op de DNS-computer
+    - [Azure Stack Vm's](connect-azure-stack.md)
     - Linux-servers
     - Andere Clouds
     
 ## <a name="agent-connection-options"></a>Verbindingsopties voor agenten<a name="agent-options"></a>
 
-Om uw externe apparaat te verbinden met Azure Sentinel, moet de agent worden geïmplementeerd op een toegewezen machine (VM of on-premises) om de communicatie tussen het apparaat en de Azure-Sentinel te ondersteunen. U kunt de agent automatisch of hand matig implementeren. Automatische implementatie is alleen beschikbaar als uw toegewezen computer een nieuwe VM is die u in azure maakt. 
+Om uw externe apparaat te verbinden met Azure Sentinel, moet de agent worden geïmplementeerd op een toegewezen machine (VM of on-premises) om de communicatie tussen het apparaat en de Azure-Sentinel te ondersteunen. U kunt de agent automatisch of handmatig implementeren. Automatische implementatie is alleen beschikbaar als uw toegewezen computer een nieuwe VM is die u in azure maakt. 
 
 
 ![CEF in azure](./media/connect-cef/cef-syslog-azure.png)

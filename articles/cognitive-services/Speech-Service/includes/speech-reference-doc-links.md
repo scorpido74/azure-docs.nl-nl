@@ -9,14 +9,14 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/06/2019
 ms.author: trbye
-ms.openlocfilehash: 1b837797bf0baf025d350cec1918cf4a5b639416
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 9074b10b9bf7f8147f70d77bcfbe02749e39154b
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650603"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91640757"
 ---
-## <a name="reference-docs"></a>Referentie documenten
+## <a name="reference-docs"></a>Naslagdocumentatie
 
 De speech-service biedt twee Sdk's. De eerste SDK is de primaire [spraak-SDK](../speech-sdk.md) en biedt de meeste functies die nodig zijn om te communiceren met de spraak service. De tweede SDK is specifiek voor apparaten, die op de juiste wijze de [SDK voor spraak apparaten](../speech-devices-sdk.md)heeft genoemd. Beide Sdk's zijn beschikbaar in veel talen.
 
@@ -24,12 +24,12 @@ De speech-service biedt twee Sdk's. De eerste SDK is de primaire [spraak-SDK](..
 
 Gebruik de volgende lijst om de juiste Speech SDK-referentie documenten te vinden:
 
-- <a href="https://aka.ms/csspeech/csharpref" target="_blank" rel="noopener">C#-SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://aka.ms/csspeech/cppref" target="_blank" rel="noopener">C++ SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://aka.ms/csspeech/javaref" target="_blank" rel="noopener">Java-SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://aka.ms/csspeech/csharpref" target="_blank" rel="noopener">C#-SDK <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://aka.ms/csspeech/cppref" target="_blank" rel="noopener">C++ SDK <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://aka.ms/csspeech/javaref" target="_blank" rel="noopener">Java-SDK <span class="docon docon-navigate-external x-hidden-focus"></span></a>
 - <a href="https://aka.ms/csspeech/pythonref" target="_blank" rel="noopener">Python-SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://aka.ms/csspeech/javascriptref" target="_blank" rel="noopener">Java script-SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://aka.ms/csspeech/objectivecref" target="_blank" rel="noopener">Doel-C SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://aka.ms/csspeech/javascriptref" target="_blank" rel="noopener">JavaScript SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://aka.ms/csspeech/objectivecref" target="_blank" rel="noopener">Doel-C SDK <span class="docon docon-navigate-external x-hidden-focus"></span></a>
 
 > [!TIP]
 > De Speech Service SDK wordt actief bijgehouden en bijgewerkt. Voor het bijhouden van wijzigingen, verwijzen updates en functie toevoegingen naar de opmerkingen bij de release van de [SDK](../releasenotes.md).
@@ -42,7 +42,7 @@ De [SDK voor spraak apparaten](../speech-devices-sdk.md) is een superset van de 
 
 Raadpleeg de onderstaande vermelding voor verwijzingen van de REST Api's van de speech-service:
 
-- [REST API: spraak naar tekst](../rest-speech-to-text.md)
+- [REST API: Spraak-naar-tekst](../rest-speech-to-text.md)
 - [REST API: beoordeling van de uitspraak](../rest-speech-to-text.md#pronunciation-assessment-parameters)
-- [REST API: tekst-naar-spraak](../rest-text-to-speech.md)
-- <a href="https://cris.ai/swagger/ui/index" target="_blank" rel="noopener">REST API: batch transcriptie en-aanpassing<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- [REST API: Tekst-naar-spraak](../rest-text-to-speech.md)
+- <a href="https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0" target="_blank" rel="noopener">REST API: batch transcriptie en-aanpassing <span class="docon docon-navigate-external x-hidden-focus"></span></a>

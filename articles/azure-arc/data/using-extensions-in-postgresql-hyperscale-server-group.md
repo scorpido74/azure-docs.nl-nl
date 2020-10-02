@@ -10,12 +10,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 19b2ec283619df0cc8d3c880cb2df6f53f6fb332
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 58386786266c48c6e721094f9f2837709bb684e5
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936037"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631763"
 ---
 # <a name="use-postgresql-extensions-in-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>PostgreSQL-extensies gebruiken in uw Azure-PostgreSQL grootschalige-Server groep
 
@@ -30,6 +30,7 @@ Naast de uitbrei dingen in [`contrib`](https://www.postgresql.org/docs/12/contri
 - `pg_cron`, v: 1,2
 - `plpgsql`, v: 1,0
 - `postgis`, v: 3.0.2
+- `plv8`, v: 2.3.14
 
 In deze lijst worden de overtijd en updates die in dit document worden geplaatst, gewerkt. Het is nog niet mogelijk om uitbrei dingen toe te voegen dan hierboven vermeld.
 
@@ -240,3 +241,7 @@ Raadpleeg het [Leesmij-bestand van pg_cron](https://github.com/citusdata/pg_cron
 >[!NOTE]
 >Het wordt niet ondersteund om de `citus` uitbrei ding te verwijderen. De `citus` uitbrei ding is vereist om de grootschalige-ervaring te bieden.
 
+## <a name="next-steps"></a>Volgende stappen:
+- Documentatie lezen over [plv8](https://plv8.github.io/)
+- Documentatie lezen over [postgis](https://postgis.net/)
+- Documentatie lezen op [`pg_cron`](https://github.com/citusdata/pg_cron)

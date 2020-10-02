@@ -2,13 +2,13 @@
 title: Problemen met het netwerk oplossen met het REGI ster
 description: Symptomen, oorzaken en oplossingen voor veelvoorkomende problemen bij het openen van een Azure container registry in een virtueel netwerk of achter een firewall
 ms.topic: article
-ms.date: 08/11/2020
-ms.openlocfilehash: 06c5b65537fd7d256010260bb3a93888721f643b
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.date: 10/01/2020
+ms.openlocfilehash: c2ae8609dbd28a1a39a634e3c065030552aefb06
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91532445"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91630947"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>Problemen met het netwerk oplossen met het REGI ster
 
@@ -22,6 +22,7 @@ Dit kan een of meer van de volgende zijn:
 * Kan geen installatie kopieën pushen of ophalen en u ontvangt een Azure CLI-fout `Could not connect to the registry login server`
 * Kan geen installatie kopieën van het REGI ster ophalen naar een Azure Kubernetes-service of een andere Azure-service
 * Geen toegang tot een REGI ster achter een HTTPS-proxy en er wordt een fout bericht weer gegeven `Error response from daemon: login attempt failed with status: 403 Forbidden`
+* De instellingen van het virtuele netwerk kunnen niet worden geconfigureerd en er wordt een fout bericht weer gegeven `Failed to save firewall and virtual network settings for container registry`
 * Kan geen toegang krijgen tot of register instellingen weer geven in Azure Portal of het REGI ster niet beheren met de Azure CLI
 * Kan de instellingen van het virtuele netwerk of de regels voor open bare toegang niet toevoegen of wijzigen
 * ACR-taken kunnen geen push-of pull-installatie kopieën uitvoeren
@@ -47,7 +48,7 @@ Zie [de status van een Azure container Registry controleren](container-registry-
 
 ### <a name="configure-client-firewall-access"></a>Firewall toegang voor clients configureren
 
-Als u toegang wilt krijgen tot een REGI ster van achter een client firewall of proxy server, configureert u firewall regels om toegang te krijgen tot de REST-en data-eind punten van het REGI ster. Als [toegewezen data-eind punten](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints) zijn ingeschakeld, hebt u regels nodig om toegang te krijgen tot:
+Als u toegang wilt krijgen tot een REGI ster van achter een firewall of proxy server, configureert u firewall regels voor toegang tot de open bare REST-en data-eind punten van het REGI ster. Als [toegewezen data-eind punten](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints) zijn ingeschakeld, hebt u regels nodig om toegang te krijgen tot:
 
 * REST-eind punt: `<registryname>.azurecr.io`
 * Data-eind punt (en): `<registry-name>.<region>.data.azurecr.io`
@@ -85,6 +86,8 @@ Controleer of het virtuele netwerk is geconfigureerd met een persoonlijk eind pu
 Bekijk de NSG-regels en service tags die worden gebruikt om verkeer van andere bronnen in het netwerk te beperken tot het REGI ster. 
 
 Als een service-eind punt naar het REGI ster is geconfigureerd, controleert u of er een netwerk regel is toegevoegd aan het REGI ster waarmee toegang vanuit dat subnet is toegestaan. Het service-eind punt ondersteunt alleen toegang vanaf virtuele machines en AKS-clusters in het netwerk.
+
+Als u de toegang tot het REGI ster wilt beperken met behulp van een virtueel netwerk in een ander Azure-abonnement, moet u ervoor zorgen dat u de `Microsoft.ContainerRegistry` resource provider in dat abonnement registreert. [Registreer de resource provider](../azure-resource-manager/management/resource-providers-and-types.md) voor Azure container Registry met behulp van de Azure Portal, Azure CLI of andere Azure-hulpprogram ma's.
 
 Als Azure Firewall of een vergelijk bare oplossing in het netwerk is geconfigureerd, controleert u of het uitgaande verkeer van andere resources, zoals een AKS-cluster, is ingeschakeld om de register eindpunten te bereiken.
 

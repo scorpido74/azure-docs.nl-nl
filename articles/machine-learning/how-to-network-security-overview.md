@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
-ms.date: 09/25/2020
+ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperfq1
-ms.openlocfilehash: c1d351cf7a3d66f6051bf5c9d17672b054c2d862
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: d4690062dead8186022cc53ca47dbc7e17a9376f
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91538379"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631185"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Overzicht van virtuele netwerk isolatie en privacy
 
@@ -80,19 +80,7 @@ Zie [een Azure machine learning-werk ruimte beveiligen](how-to-secure-workspace-
 ### <a name="limitations"></a>Beperkingen
 
 Voor het beveiligen van uw werk ruimte en de bijbehorende resources binnen een virtueel netwerk gelden de volgende beperkingen:
-- De persoonlijke werkruimte koppeling is alleen beschikbaar in de volgende regio's:
-    - **VS - oost**
-    - **South Central US**
-    - **VS - west**
-    - **West US 2**
-    - **Centraal-Canada**
-    - **Azië - zuidoost**
-    - **Japan East**
-    - **Europa - noord**
-    - **Oost-Australië**
-    - **Verenigd Koninkrijk Zuid**
-    
-    Deze beperking is niet van toepassing op de bijbehorende resources. U kunt bijvoorbeeld VNet inschakelen voor opslag in een Azure Machine Learning regio.
+- Het gebruik van een Azure Machine Learning werk ruimte met een persoonlijke koppeling is niet beschikbaar in de regio's Azure Government of Azure China 21Vianet.
 - Alle resources moeten zich achter hetzelfde VNet bevindt. Subnetten binnen hetzelfde VNet zijn echter toegestaan.
 
 ## <a name="secure-the-training-environment"></a>De trainings omgeving beveiligen

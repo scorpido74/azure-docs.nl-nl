@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: larryfr
 author: Blackmist
-ms.date: 07/28/2020
+ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 0919e2b0703d56c61bd9ee37cb70021de4deff45
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: cb6c49ce779fe8b1e764471c31b392e31d6572ce
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322271"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631202"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Een werk ruimte maken voor Azure Machine Learning met Azure CLI
 
@@ -142,21 +142,7 @@ De uitvoer van deze opdracht is vergelijkbaar met de volgende JSON:
 ### <a name="virtual-network-and-private-endpoint"></a>Virtueel netwerk en persoonlijk eind punt
 
 > [!IMPORTANT]
-> Het gebruik van een persoonlijke Azure-koppeling met Azure Machine Learning werk ruimte bevindt zich momenteel in de open bare preview. Deze functionaliteit is alleen beschikbaar in de volgende regio's:
->
-> * **VS - oost**
-> * **South Central US**
-> * **VS - west**
-> * **West US 2**
-> * **Centraal-Canada**
-> * **Azië - zuidoost**
-> * **Japan East**
-> * **Europa - noord**
-> * **Oost-Australië**
-> * **Verenigd Koninkrijk Zuid**
->
-> Deze preview-versie wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. 
-> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+> Het gebruik van een Azure Machine Learning werk ruimte met een persoonlijke koppeling is niet beschikbaar in de regio's Azure Government regio's en Azure China 21Vianet.
 
 Als u de toegang tot uw werk ruimte wilt beperken tot een virtueel netwerk, kunt u de volgende para meters gebruiken:
 

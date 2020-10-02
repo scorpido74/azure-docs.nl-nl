@@ -3,12 +3,12 @@ title: Ondersteuning voor het verplaatsen van bewerkingen per resource type
 description: Een lijst met de Azure-resource typen die kunnen worden verplaatst naar een nieuwe resource groep of een nieuw abonnement.
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: e1e90a7cbc4f817f5dd6c854020e2711e8ac097b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 675f7bb11ed98dd17e8f4ee4a0197d05128af851
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91284972"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627105"
 ---
 # <a name="move-operation-support-for-resources"></a>Ondersteuning voor het verplaatsen van resources voor bronnen
 
@@ -1416,7 +1416,7 @@ Ga naar de naam ruimte van een resource provider:
 > | frontdoors | Nee | Nee |
 > | ipallocations | Ja | Ja |
 > | ipgroups | Ja | Ja |
-> | loadbalancers | Ja, basis-SKU<br>Geen standaard-SKU | Ja, basis-SKU<br>Geen standaard-SKU |
+> | loadbalancers | Ja, basis-SKU<br> Ja, standaard-SKU | Ja, basis-SKU<br>Geen standaard-SKU |
 > | localnetworkgateways | Ja | Ja |
 > | natgateways | Nee | Nee |
 > | networkexperimentprofiles | Nee | Nee |
@@ -1435,7 +1435,7 @@ Ga naar de naam ruimte van een resource provider:
 > | privateendpointredirectmaps | Nee | Nee |
 > | privateendpoints | Ja | Ja |
 > | privatelinkservices | Nee | Nee |
-> | publicipaddresses | Ja, basis-SKU<br>Geen standaard-SKU | Ja, basis-SKU<br>Geen standaard-SKU |
+> | publicipaddresses | Ja, basis-SKU<br>Ja, standaard-SKU | Ja, basis-SKU<br>Geen standaard-SKU |
 > | publicipprefixes | Ja | Ja |
 > | routefilters | Nee | Nee |
 > | routetables | Ja | Ja |

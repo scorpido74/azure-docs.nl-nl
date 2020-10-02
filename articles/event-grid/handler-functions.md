@@ -3,12 +3,12 @@ title: Azure function als gebeurtenis-handler voor Azure Event Grid gebeurteniss
 description: Hierin wordt beschreven hoe u Azure functions kunt gebruiken als gebeurtenis-handlers voor Event Grid-gebeurtenissen.
 ms.topic: conceptual
 ms.date: 09/18/2020
-ms.openlocfilehash: 87aeb78729dcc7bec9f193fab389e5c0952e63d5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: db06962c020eb954bf0c595e5a4019b1df774898
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91270309"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629685"
 ---
 # <a name="azure-function-as-an-event-handler-for-event-grid-events"></a>Azure function als gebeurtenis-handler voor Event Grid gebeurtenissen
 
@@ -60,7 +60,7 @@ Op het moment dat u een abonnement maakt in de gebruikers interface, gaat u op d
 
 U kunt deze waarden voor een bestaand abonnement bijwerken op het tabblad **functies** van de pagina **Event grid onderwerp** . 
 
-:::image type="content" source="./media/custom-event-to-function/features-batch-settings.png" alt-text="Batch verwerking inschakelen na het maken":::
+:::image type="content" source="./media/custom-event-to-function/features-batch-settings.png" alt-text="Batch verwerking inschakelen op het moment van het maken van een abonnement":::
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager-sjabloon
 U kunt **maxEventsPerBatch** en **preferredBatchSizeInKilobytes** instellen in een Azure Resource Manager sjabloon. Zie voor meer informatie [micro soft. EventGrid eventSubscriptions-sjabloon verwijzing](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/eventsubscriptions).
@@ -70,9 +70,6 @@ U kunt de opdracht [AZ eventgrid Event-Subscription Create](https://docs.microso
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 U kunt de cmdlet [New-AzEventGridSubscription](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridsubscription) of [Update-AzEventGridSubscription](https://docs.microsoft.com/powershell/module/az.eventgrid/update-azeventgridsubscription) gebruiken om batch instellingen te configureren met behulp van de volgende para meters: `-MaxEventsPerBatch` of `-PreferredBatchSizeInKiloBytes` .
-
-> [!NOTE]
-> Het leveren van gebeurtenissen aan een Azure-functie in **een andere Tenant** wordt niet ondersteund. 
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie het artikel over [gebeurtenis-handlers](event-handlers.md) voor een lijst met ondersteunde gebeurtenis-handlers. 

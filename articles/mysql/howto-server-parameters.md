@@ -5,29 +5,32 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
-ms.date: 6/11/2020
-ms.openlocfilehash: a37fbee4361d4a87c43a42cae66c425eba1e0877
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/1/2020
+ms.openlocfilehash: c28f0edafd72794a60ef577fc3177e4436157950
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90887049"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631474"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql-using-the-azure-portal"></a>Configureer Server parameters in Azure Database for MySQL met behulp van de Azure Portal
 
 Azure Database for MySQL ondersteunt de configuratie van sommige server parameters. In dit artikel wordt beschreven hoe u deze para meters configureert met behulp van de Azure Portal. Niet alle server parameters kunnen worden aangepast.
 
+>[!Note]
+> Server parameters kunnen globaal worden bijgewerkt op server niveau, gebruik de [Azure cli](./howto-configure-server-parameters-using-cli.md), [power shell](./howto-configure-server-parameters-using-powershell.md)of [Azure Portal](./howto-server-parameters.md).
+
 ## <a name="configure-server-parameters"></a>Parameters van de server configureren
 
-1. Meld u aan bij de Azure Portal en zoek vervolgens de Azure Database for MySQL-server.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en zoek vervolgens de Azure database for mysql-server.
 2. Klik onder de sectie **instellingen** op **server parameters** om de pagina server parameters voor de Azure database for mysql-server te openen.
 :::image type="content" source="./media/howto-server-parameters/auzre-portal-server-parameters.png" alt-text="Pagina Azure Portal Server parameters":::
 3. Zoek alle instellingen die u moet aanpassen. Bekijk de kolom **Beschrijving** om inzicht te krijgen in het doel en de toegestane waarden.
-:::image type="content" source="./media/howto-server-parameters/3-toggle_parameter.png" alt-text="Vervolg keuzelijst opsommen":::
+:::image type="content" source="./media/howto-server-parameters/3-toggle_parameter.png" alt-text="Pagina Azure Portal Server parameters":::
 4. Klik op  **Opslaan** om uw wijzigingen op te slaan.
-:::image type="content" source="./media/howto-server-parameters/4-save_parameters.png" alt-text="Wijzigingen opslaan of negeren":::
+:::image type="content" source="./media/howto-server-parameters/4-save_parameters.png" alt-text="Pagina Azure Portal Server parameters":::
 5. Als u nieuwe waarden voor de para meters hebt opgeslagen, kunt u altijd terugkeren naar de standaard waarden door **alles opnieuw instellen op de standaard**waarde te selecteren.
-:::image type="content" source="./media/howto-server-parameters/5-reset_parameters.png" alt-text="Alles opnieuw instellen op standaard waarden":::
+:::image type="content" source="./media/howto-server-parameters/5-reset_parameters.png" alt-text="Pagina Azure Portal Server parameters":::
 
 ## <a name="setting-parameters-not-listed"></a>Ingestelde para meters niet vermeld
 
@@ -69,7 +72,7 @@ SELECT name FROM mysql.time_zone_name;
 
 De tijd zone op het globale niveau kan worden ingesteld op de pagina **server parameters** in de Azure Portal. In het onderstaande voor de globale tijd zone wordt de waarde ' VS/Pacific ' ingesteld.
 
-:::image type="content" source="./media/howto-server-parameters/timezone.png" alt-text="De para meter voor de tijd zone instellen":::
+:::image type="content" source="./media/howto-server-parameters/timezone.png" alt-text="Pagina Azure Portal Server parameters":::
 
 ### <a name="setting-the-session-level-time-zone"></a>De tijd zone op sessie niveau instellen
 

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 7/7/2020
-ms.openlocfilehash: 4550f1da0ac87a55bab64566a0035451dee8d225
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.date: 10/1/2020
+ms.openlocfilehash: b32ef80ad670e369315ec3ddb6972aef30bec27a
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91538259"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627564"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Leesreplica's in Azure Database for MySQL
 
@@ -36,6 +36,9 @@ Een veelvoorkomend scenario is om BI-en analytische werk belastingen de Lees rep
 Omdat replica's alleen-lezen zijn, worden ze niet rechtstreeks op de Master gereduceerd. Deze functie is niet gericht op schrijfintensieve werkbelastingen.
 
 De functie replica lezen maakt gebruik van MySQL-asynchrone replicatie. De functie is niet bedoeld voor synchrone replicatie scenario's. Er is een meet bare vertraging tussen de bron en de replica. De gegevens op de replica worden uiteindelijk consistent met de gegevens op de Master. Gebruik deze functie voor werk belastingen die deze vertraging kunnen bevatten.
+
+> [!IMPORTANT]
+> Azure Database for MySQL gebruikt op **rijen** gebaseerde binaire logboek registratie. Als voor de tabel een primaire sleutel ontbreekt, worden alle rijen in de tabel gescand op DML-bewerkingen. Dit veroorzaakt een verhoogde replicatie vertraging. Om ervoor te zorgen dat de replica wijzigingen kan aanbrengen in de bron, is het raadzaam om een primaire sleutel toe te voegen aan tabellen in de bron server voordat u de replica server maakt of de replica server opnieuw maakt als u er al een hebt.
 
 ## <a name="cross-region-replication"></a>Replicatie in meerdere regio's
 U kunt een lees replica maken in een andere regio dan de bron server. Replicatie tussen regio's kan handig zijn voor scenario's zoals het plannen van herstel na nood gevallen of gegevens dichter bij uw gebruikers te brengen.

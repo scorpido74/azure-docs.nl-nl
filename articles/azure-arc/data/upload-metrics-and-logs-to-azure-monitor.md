@@ -9,16 +9,37 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 7c8e92604cc6188d17411a266f8b27db55c8fbad
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3e3b804e2a3c43eb9579d1c6a1195511df528de2
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91317273"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629995"
 ---
 # <a name="upload-usage-data-metrics-and-logs-to-azure-monitor"></a>De gebruiks gegevens, de metrieken en de logboeken uploaden naar Azure Monitor
 
-Bewaking is een van de vele ingebouwde mogelijkheden die door Azure Arc ingeschakelde gegevens services worden gebruikt. 
+U kunt regel matig gebruiks gegevens voor facturerings doeleinden exporteren, metrische gegevens en logboeken bewaken en deze vervolgens uploaden naar Azure.  Als u een van deze drie typen gegevens exporteert en uploadt, worden ook de gegevens controller, SQL Managed instance en PostgreSQL grootschalige server-groeps resources in azure gemaakt en bijgewerkt.
+
+> [!NOTE] 
+Tijdens de preview-periode zijn er geen kosten verbonden aan het gebruik van Azure Arc enabled Data Services.
+
+## <a name="prerequisites"></a>Vereisten
+
+U hebt de Azure CLI (AZ) en de Azure data CLI (azdata) nodig.  [Hulpprogram Ma's installeren](./install-client-tools.md).
+
+Voordat u gegevens naar Azure uploadt, moet u ervoor zorgen dat de resource provider micro soft. Azureworden is geregistreerd voor uw Azure-abonnement.
+
+U kunt dit controleren door de volgende opdracht uit te voeren:
+
+```console
+az provider show -n Microsoft.AzureData -o table
+```
+
+Als de resource provider momenteel niet is geregistreerd in uw abonnement, kunt u deze registreren door de volgende opdracht uit te voeren.  Het duurt een paar minuten voordat deze opdracht is voltooid.
+
+```console
+az provider register -n Microsoft.AzureData --wait
+```
 
 ## <a name="upload-usage-data"></a>Gebruiks gegevens uploaden
 

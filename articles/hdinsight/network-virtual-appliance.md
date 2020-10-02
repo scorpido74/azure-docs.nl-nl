@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: 1dcc345260c6a0844344bb33dec94c40d1dd9a54
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 407160a5c315844003db4c5e371a03e6e25d2694
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650869"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91630930"
 ---
 # <a name="configure-network-virtual-appliance-in-azure-hdinsight"></a>Virtueel netwerk apparaat configureren in azure HDInsight
 
@@ -23,7 +23,7 @@ Azure Firewall wordt automatisch geconfigureerd om verkeer toe te staan voor vee
 
 * Services die geschikt zijn voor service-eind punten kunnen worden geconfigureerd met Service-eind punten die leiden tot het overs laan van de NVA, meestal voor kosten-of prestatie overwegingen.
 * Afhankelijkheden van IP-adressen zijn voor niet-HTTP/S-verkeer (TCP-en UDP-verkeer).
-* FQDN HTTP/HTTPS-eind punten kunnen worden white list in uw NVA-apparaat.
+* FQDN HTTP/HTTPS-eind punten kunnen worden goedgekeurd in uw NVA-apparaat.
 * Wijs de route tabel toe die u hebt gemaakt voor uw HDInsight-subnet.
 
 ## <a name="service-endpoint-capable-dependencies"></a>Afhankelijkheden voor service-eind punten

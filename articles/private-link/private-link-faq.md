@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 7870b68ca931123d50e88e846aa066ce53972dbc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f557bb271c88b32a9b53cf9b41b911314427530a
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75349940"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629944"
 ---
 # <a name="azure-private-link-frequently-asked-questions-faq"></a>Veelgestelde vragen over persoonlijke koppelingen van Azure
 
@@ -65,7 +65,7 @@ Ja. Een service voor persoonlijke koppelingen kan verbindingen van meerdere pers
 U kunt de bloot stelling regelen met behulp van de zichtbaarheids configuratie voor de service private link. De zicht baarheid ondersteunt drie instellingen:
 
 - **Geen** : alleen abonnementen met RBAC-toegang kunnen de service vinden. 
-- **Beperkte** abonnementen die white list zijn en met RBAC-toegang, kunnen de service vinden. 
+- Met **beperkte** abonnementen die zijn goedgekeurd en met RBAC-toegang, kan de service worden gevonden. 
 - **Alle** -iedereen kan de service vinden. 
  
 ### <a name="can-i-create-a-private-link-service-with-basic-load-balancer"></a>Kan ik een persoonlijke koppelings service maken met basis Load Balancer? 

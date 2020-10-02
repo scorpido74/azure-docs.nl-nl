@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/23/2020
+ms.date: 10/01/2020
 ms.author: mimart
 ms.reviewer: arvinh
-ms.openlocfilehash: 52819fc37cf0d10cb36009feb82dec234184752c
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: f7cbe9e9f81b3b71ee7da2feac2908c36f1777e5
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235533"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629009"
 ---
 # <a name="on-demand-provisioning"></a>Inrichting op aanvraag
 Inrichting op aanvraag gebruiken om binnen enkele seconden een gebruiker in te richten in een toepassing. U kunt met behulp van deze mogelijkheid onder andere het volgende:
@@ -28,12 +28,15 @@ Inrichting op aanvraag gebruiken om binnen enkele seconden een gebruiker in te r
 ## <a name="how-to-use-on-demand-provisioning"></a>Inrichting op aanvraag gebruiken
 
 1. Meld u aan bij **Azure Portal**.
-2. Ga naar **alle services**  >  **bedrijfs toepassingen**.
-3. Selecteer uw toepassing en ga vervolgens naar de pagina inrichtings configuratie.
-4. Configureer inrichting door uw beheerders referenties op te geven.
-5. Selecteer **inrichten op aanvraag**.
-6. Zoek naar een gebruiker op voor naam, achternaam, weergave naam, user principal name of e-mail adres.
-7. Selecteer aan de onderkant van de pagina **inrichten** .
+1. Ga naar **alle services**  >  **bedrijfs toepassingen**.
+1. Selecteer uw toepassing en ga vervolgens naar de pagina inrichtings configuratie.
+1. Configureer inrichting door uw beheerders referenties op te geven.
+1. Selecteer **inrichten op aanvraag**.
+1. Zoek naar een gebruiker op voor naam, achternaam, weergave naam, user principal name of e-mail adres.
+   > [!NOTE]
+   > Voor de Cloud HR-inrichtings toepassing (werkdag/SuccessFactors naar AD/Azure AD) is de invoer waarde anders. Geef voor het scenario voor werk dagen ' WID ' op voor de gebruiker in workday. Geef voor SuccessFactors scenario ' personIdExternal ' van de gebruiker op in SuccessFactors. 
+ 
+1. Selecteer aan de onderkant van de pagina **inrichten** .
 
 :::image type="content" source="media/provision-on-demand/on-demand-provision-user.jpg" alt-text="Scherm opname van de Azure Portal gebruikers interface voor het inrichten van een gebruiker op aanvraag.":::
 
@@ -121,7 +124,7 @@ Ten slotte neemt de inrichtings service een actie, zoals het maken, bijwerken, v
 
 Hier volgt een voor beeld van wat u kunt zien nadat het inrichten van een gebruiker op aanvraag is voltooid:
 
-:::image type="content" source="media/provision-on-demand/success-on-demand-provision.jpg" alt-text="Scherm afbeelding met de geslaagde on-demand inrichting van een gebruiker.":::
+:::image type="content" source="media/provision-on-demand/success-on-demand-provision.jpg" alt-text="Scherm opname van de Azure Portal gebruikers interface voor het inrichten van een gebruiker op aanvraag.":::
 
 #### <a name="view-details"></a>Details weergeven
 
@@ -144,7 +147,7 @@ Er zijn momenteel enkele bekende beperkingen voor het inrichten op aanvraag. Pos
 > [!NOTE]
 > De volgende beperkingen zijn specifiek voor de inrichtings mogelijkheid op aanvraag. Raadpleeg de zelf studie voor de desbetreffende toepassing voor informatie over of een toepassing inrichtings groepen, verwijderingen of andere mogelijkheden ondersteunt.
 
-* Werk dagen, Amazon Web Services (AWS) en SuccessFactors-toepassingen bieden geen ondersteuning voor het inrichten op aanvraag. 
+* Amazon Web Services-toepassing (AWS) biedt geen ondersteuning voor inrichting op aanvraag. 
 * Inrichting op aanvraag van groepen en rollen wordt niet ondersteund.
 * Inrichting op aanvraag biedt ondersteuning voor het uitschakelen van gebruikers die de toewijzing van de toepassing ongedaan hebben gemaakt. Het is echter niet mogelijk om gebruikers uit te scha kelen of te verwijderen die zijn uitgeschakeld of verwijderd uit Azure AD. Deze gebruikers worden niet weer gegeven wanneer u zoekt naar een gebruiker.
 

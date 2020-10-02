@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db76ec2bc2fc8640214f962a809fee559b4c4af3
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: bebd32d2773ca86638de221d305079bb262e3e5e
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948195"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631423"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>Problemen met het hulpprogramma What If in Voorwaardelijke toegang oplossen
 
@@ -30,13 +30,13 @@ Met het **What if beleid voor voorwaardelijke toegang** kunt u inzicht krijgen i
 
 Het hulp programma **What if** biedt een manier om snel te bepalen welke beleids regels van toepassing zijn op een specifieke gebruiker. U kunt de informatie gebruiken, bijvoorbeeld als u een probleem moet oplossen.    
 
-## <a name="how-it-works"></a>Hoe het werkt
+## <a name="how-it-works"></a>Uitleg
 
 In het **What if hulp programma voor voorwaardelijke toegang**moet u eerst de instellingen configureren van het aanmeldings scenario dat u wilt simuleren. Deze instellingen zijn onder meer:
 
 - De gebruiker die u wilt testen 
 - De Cloud-apps waartoe de gebruiker toegang probeert te krijgen
-- De omstandigheden waaronder toegang tot de Configuring Cloud-apps wordt uitgevoerd
+- De voor waarden waaronder toegang tot de geconfigureerde Cloud-apps wordt uitgevoerd
      
 Als volgende stap kunt u een simulatie uitvoering initiëren waarmee uw instellingen worden geëvalueerd. Alleen beleids regels die zijn ingeschakeld, maken deel uit van een evaluatie-uitvoering.
 
@@ -66,7 +66,7 @@ U kunt slechts één gebruiker selecteren. Dit is het enige vereiste veld.
 
 De standaard waarde voor deze instelling is **alle Cloud-apps**. De standaard instelling voert een evaluatie uit van alle beschik bare beleids regels in uw omgeving. U kunt het bereik beperken tot beleids regels die van invloed zijn op specifieke Cloud-apps.
 
-### <a name="ip-address"></a>IP-adres
+### <a name="ip-address"></a>Het IP-adres
 
 Het IP-adres is een enkel IPv4-adres voor het nabootsen van de [locatie voorwaarde](location-condition.md). Het adres vertegenwoordigt het Internet adres van het apparaat dat door uw gebruiker wordt gebruikt om u aan te melden. U kunt het IP-adres van een apparaat controleren door bijvoorbeeld te navigeren naar [Wat is mijn IP-adres](https://whatismyipaddress.com).    
 

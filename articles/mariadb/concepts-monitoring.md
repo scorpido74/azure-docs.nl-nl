@@ -5,13 +5,14 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
+ms.custom: references_regions
 ms.date: 8/13/2020
-ms.openlocfilehash: 35a097f7b6d73a14ac4840839a31d9aa256aa8de
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 9868403f69f3dc0b56aae06be1afda2134472805
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91532688"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631032"
 ---
 # <a name="monitoring-in-azure-database-for-mariadb"></a>Bewaking in Azure Database for MariaDB
 Het bewaken van gegevens over uw servers helpt u bij het oplossen en optimaliseren van uw werk belasting. Azure Database for MariaDB biedt diverse metrische gegevens die inzicht geven in het gedrag van uw server.
@@ -62,8 +63,10 @@ De functie voor [prestatie aanbevelingen](concepts-performance-recommendations.m
 
 Met **geplande onderhouds meldingen** kunt u waarschuwingen ontvangen voor gepland onderhoud naar uw Azure database for MariaDB. Deze meldingen zijn geïntegreerd met [het geplande onderhoud van service Health](../service-health/overview.md) en bieden u de mogelijkheid om het geplande onderhoud voor uw abonnementen op één plek weer te geven. Het helpt ook om de melding te schalen naar de juiste doel groep voor verschillende resource groepen, omdat u mogelijk verschillende contact personen hebt die verantwoordelijk zijn voor verschillende resources. U ontvangt de melding over het komende onderhoud van 72 uur vóór de gebeurtenis.
 
-> [!Note]
-> Elke keer dat er wordt gewaarschuwd voor **gepland onderhouds melding** 72 uur voor alle gebeurtenissen. In het geval van essentiële of beveiligings patches kunnen meldingen echter dichter bij het evenement worden verzonden of worden wegge laten.
+Tijdens gepland onderhoud kunt u verwachten dat de server opnieuw wordt opgestart en dat er [tijdelijke fouten](concepts-connectivity.md#transient-errors) kunnen optreden. De meeste van deze gebeurtenissen worden in minder dan 60 seconden automatisch door het systeem beperkt. 
+
+> [!IMPORTANT]
+> Geplande onderhouds meldingen zijn momenteel beschikbaar als preview-versie in alle regio's **, behalve** voor West-Centraal vs.
 
 ### <a name="to-receive-planned-maintenance-notification"></a>Een melding over gepland onderhoud ontvangen
 
@@ -78,8 +81,8 @@ Met **geplande onderhouds meldingen** kunt u waarschuwingen ontvangen voor gepla
 
 Zie [waarschuwingen voor activiteiten logboek maken voor service meldingen](../service-health/alerts-activity-log-service-notifications.md)voor gedetailleerde stappen voor het maken van **service Health-waarschuwingen**.
 
-> [!IMPORTANT]
-> Geplande onderhouds meldingen zijn momenteel beschikbaar als preview-versie in alle regio's **, behalve** voor West-Centraal VS
+> [!Note]
+> Elke keer dat er wordt gewaarschuwd voor **gepland onderhouds melding** 72 uur voor alle gebeurtenissen. In het geval van essentiële of beveiligings patches kunnen meldingen echter dichter bij het evenement worden verzonden of worden wegge laten.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 0be60208146681135c7502746a271e4e007dc0ea
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 40fb5a1623175445065f0546403661a1f6eb399f
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91249583"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629434"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux-smb"></a>Problemen met Azure Files oplossen in Linux (SMB)
 
@@ -298,6 +298,32 @@ Deze fout wordt geregistreerd omdat Azure Files [momenteel geen SMB meerdere kan
 
 ### <a name="solution"></a>Oplossing
 Deze fout kan worden genegeerd.
+
+
+### <a name="unable-to-access-folders-or-files-which-name-has-a-space-or-a-dot-at-the-end"></a>Kan geen toegang krijgen tot mappen of bestanden waarvan de naam een spatie of een punt aan het einde bevat
+
+U hebt geen toegang tot mappen of bestanden vanuit de Azure-bestands share tijdens het koppelen aan linux, opdrachten als du en LS en/of toepassingen van derden kunnen mislukken met de fout bericht ' no file or directory ' tijdens het openen van de share, maar u kunt wel bestanden uploaden naar genoemde mappen via de portal.
+
+### <a name="cause"></a>Oorzaak
+
+De mappen of bestanden zijn geüpload vanaf een systeem waarmee de tekens aan het einde van de naam naar een ander teken worden verzonden. bestanden die worden geüpload vanaf een Macintosh-computer, hebben mogelijk een ' 0xF028 ' of ' 0xF029 ' in plaats van 0x20 (spatie) of 0X2E (punt).
+
+### <a name="solution"></a>Oplossing
+
+Gebruik de optie mapchars op de share terwijl u de share op Linux koppelt: 
+
+In plaats van:
+
+```bash
+sudo mount -t cifs $smbPath $mntPath -o vers=3.0,username=$storageAccountName,password=$storageAccountKey,serverino
+```
+
+gebruiken
+
+```bash
+sudo mount -t cifs $smbPath $mntPath -o vers=3.0,username=$storageAccountName,password=$storageAccountKey,serverino,mapchars
+```
+
 
 ## <a name="need-help-contact-support"></a>Hebt u hulp nodig? Neem contact op met ondersteuning.
 

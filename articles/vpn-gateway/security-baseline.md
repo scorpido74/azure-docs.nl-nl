@@ -4,35 +4,35 @@ description: De VPN Gateway Security Baseline voorziet in procedure richtlijnen 
 author: msmbaldwin
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/30/2020
+ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 2ad40f83ece1a68fe49be39551aaa1a3b93ea064
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 7604e8519e7ae8db255a0e033ca3df0bb941a845
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/01/2020
-ms.locfileid: "91614559"
+ms.locfileid: "91626255"
 ---
 # <a name="azure-security-baseline-for-vpn-gateway"></a>Azure-beveiligings basislijn voor VPN Gateway
 
-In deze beveiligings basislijn worden richt lijnen van de [Azure Security Bench Mark-versie 1,0](https://docs.microsoft.com/azure/security/benchmarks/overview) ingesteld op VPN gateway. De Azure Security-benchmark biedt aanbevelingen voor hoe u uw cloudoplossingen in Azure kunt beveiligen. De inhoud wordt gegroepeerd op de **beveiligings controles** die zijn gedefinieerd door de Azure Security-benchmark en de bijbehorende richt lijnen die van toepassing zijn op VPN gateway. **Besturings elementen** die niet van toepassing zijn op VPN gateway, zijn uitgesloten.
+In deze beveiligings basislijn worden richt lijnen van de [Azure Security Bench Mark-versie 1,0](../security/benchmarks/overview-v1.md) ingesteld op VPN gateway. De Azure Security-benchmark biedt aanbevelingen voor hoe u uw cloudoplossingen in Azure kunt beveiligen. De inhoud wordt gegroepeerd op de **beveiligings controles** die zijn gedefinieerd door de Azure Security-benchmark en de bijbehorende richt lijnen die van toepassing zijn op VPN gateway. **Besturings elementen** die niet van toepassing zijn op VPN gateway, zijn uitgesloten.
 
 Als u wilt zien hoe VPN Gateway volledig is toegewezen aan de beveiligings benchmark van Azure, raadpleegt u het [volledige VPN gateway beveiligings basislijn toewijzings bestand](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines).
 
 ## <a name="network-security"></a>Netwerkbeveiliging
 
-*Zie [Azure Security Bench Mark: Network Security](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)(Engelstalig) voor meer informatie.*
+*Zie [Azure Security Bench Mark: Network Security](../security/benchmarks/security-control-network-security.md)(Engelstalig) voor meer informatie.*
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1,1: Azure-resources in virtuele netwerken beveiligen
 
 **Richt lijnen**: wanneer u werkt met subnetten van VPN-gateway, moet u geen netwerk beveiligings groep (NSG) koppelen aan het subnet van de gateway. Een koppeling van een netwerkbeveiligingsgroep naar dit subnet zorgt er mogelijk voor dat uw VPN-gateway niet meer werkt zoals verwacht.  Schakel echter netwerk beveiligings groepen in voor andere niet-VPN-gateway subnetten in uw Virtual Network.
 
-- [Een Virtual Network maken](https://docs.microsoft.com/azure/virtual-network/quick-create-portal) 
+- [Een Virtual Network maken](../virtual-network/quick-create-portal.md) 
 
-- [Een NSG maken met een beveiligings configuratie](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic) 
+- [Een NSG maken met een beveiligings configuratie](../virtual-network/tutorial-filter-network-traffic.md) 
 
-- [Een op een route gebaseerde VPN-gateway maken met behulp van de Azure Portal](https://docs.microsoft.com/azure/vpn-gateway/create-routebased-vpn-gateway-portal)
+- [Een op een route gebaseerde VPN-gateway maken met behulp van de Azure Portal](create-routebased-vpn-gateway-portal.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -42,7 +42,7 @@ Als u wilt zien hoe VPN Gateway volledig is toegewezen aan de beveiligings bench
 
 **Hulp**: gebruik Azure Security Center en volg aanbevelingen voor netwerk beveiliging om uw netwerk bronnen in azure te beveiligen. 
 
-- [Informatie over de netwerk beveiliging die wordt verschaft door Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
+- [Informatie over de netwerk beveiliging die wordt verschaft door Azure Security Center](../security-center/security-center-network-recommendations.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -52,7 +52,7 @@ Als u wilt zien hoe VPN Gateway volledig is toegewezen aan de beveiligings bench
 
 **Hulp**: Schakel het pakket voor de VPN-gateway in op de gateway of op een specifieke verbinding, afhankelijk van uw vereisten.
 
-- [Pakket opnames voor VPN-gateways configureren](https://docs.microsoft.com/azure/vpn-gateway/packet-capture)
+- [Pakket opnames voor VPN-gateways configureren](packet-capture.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -64,11 +64,11 @@ Als u wilt zien hoe VPN Gateway volledig is toegewezen aan de beveiligings bench
 
 U kunt ook Azure-blauw drukken gebruiken om grootschalige Azure-implementaties te vereenvoudigen door sleutel omgevings artefacten, zoals Azure Resource Manager sjablonen, Azure RBAC-toewijzingen en Azure Policy toewijzingen, in één blauw druk te definiëren. U kunt de blauw druk Toep assen op nieuwe of bestaande abonnementen en het beheer en het beheer verfijnen door gebruik te maken van versies.
 
-- [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage) 
+- [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md) 
 
-- [Voor beelden Azure Policy voor netwerken](https://docs.microsoft.com/azure/governance/policy/samples/#network) 
+- [Voor beelden Azure Policy voor netwerken](/azure/governance/policy/samples/#network) 
 
-- [Een Azure Blueprint maken](https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal)
+- [Een Azure Blueprint maken](../governance/blueprints/create-blueprint-portal.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -78,9 +78,9 @@ U kunt ook Azure-blauw drukken gebruiken om grootschalige Azure-implementaties t
 
 **Hulp**: Azure-activiteiten logboek gebruiken om resource configuraties te bewaken en wijzigingen in uw virtuele netwerk bronnen te detecteren. Maak waarschuwingen in Azure Monitor die worden geactiveerd wanneer er wijzigingen in essentiële resources met betrekking tot uw VPN-gateway plaatsvinden.
 
-- [Activiteiten logboek gebeurtenissen van Azure weer geven en ophalen](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
+- [Activiteiten logboek gebeurtenissen van Azure weer geven en ophalen](/azure/azure-monitor/platform/activity-log-view)
 
-- [Waarschuwingen maken in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+- [Waarschuwingen maken in Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -88,7 +88,7 @@ U kunt ook Azure-blauw drukken gebruiken om grootschalige Azure-implementaties t
 
 ## <a name="logging-and-monitoring"></a>Logboekregistratie en bewaking
 
-*Zie [Azure Security Bench Mark: Logging and monitoring](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring)(Engelstalig) voor meer informatie.*
+*Zie [Azure Security Bench Mark: Logging and monitoring](../security/benchmarks/security-control-logging-monitoring.md)(Engelstalig) voor meer informatie.*
 
 ### <a name="22-configure-central-security-log-management"></a>2,2: Centraal beveiligings logboek beheer configureren
 
@@ -96,11 +96,11 @@ U kunt ook Azure-blauw drukken gebruiken om grootschalige Azure-implementaties t
 
 U kunt ook gegevens in-of uitschakelen voor Azure Sentinel of een SIEM van derden.
 
-- [Waarschuwingen instellen voor diagnostische logboek gebeurtenissen van VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log)
+- [Waarschuwingen instellen voor diagnostische logboek gebeurtenissen van VPN Gateway](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md)
 
-- [Azure-Sentinel onboarden](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [Azure-Sentinel onboarden](../sentinel/quickstart-onboard.md)
 
-- [Platform logboeken en metrische gegevens verzamelen met Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings)
+- [Platform logboeken en metrische gegevens verzamelen met Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
 
 - [Aan de slag met Azure Monitor en integratie van SIEM van derden](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
@@ -112,9 +112,9 @@ U kunt ook gegevens in-of uitschakelen voor Azure Sentinel of een SIEM van derde
 
 **Hulp**: Schakel Diagnostische instellingen in op uw VPN gateway-resources voor toegang tot controle-, beveiligings-en Diagnostische logboeken. Activiteiten logboeken, die automatisch beschikbaar zijn, omvatten gebeurtenis bron, datum, gebruiker, tijds tempel, bron adressen, doel adressen en andere nuttige elementen. 
 
-- [Platform logboeken en metrische gegevens verzamelen met Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) 
+- [Platform logboeken en metrische gegevens verzamelen met Azure Monitor](../azure-monitor/platform/diagnostic-settings.md) 
 
-- [Logboek registratie en verschillende logboek typen in azure](https://docs.microsoft.com/azure/azure-monitor/platform/platform-logs-overview)
+- [Logboek registratie en verschillende logboek typen in azure](../azure-monitor/platform/platform-logs-overview.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -124,9 +124,9 @@ U kunt ook gegevens in-of uitschakelen voor Azure Sentinel of een SIEM van derde
 
 **Richt lijnen**: stel in azure monitor uw Bewaar periode voor log Analytics werkruimte in volgens de nalevings voorschriften van uw organisatie. Gebruik Azure Storage accounts voor lange termijn-en archiverings opslag. 
 
-- [De Bewaar periode voor gegevens wijzigen in Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period) 
+- [De Bewaar periode voor gegevens wijzigen in Log Analytics](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period) 
 
-- [Bewaar beleid configureren voor logboeken van Azure Storage-account](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account#configure-logging)
+- [Bewaar beleid configureren voor logboeken van Azure Storage-account](../storage/common/storage-monitor-storage-account.md#configure-logging)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -138,11 +138,11 @@ U kunt ook gegevens in-of uitschakelen voor Azure Sentinel of een SIEM van derde
 
 U kunt ook gegevens in-en inschakelen voor Azure Sentinel of een SIEM van derden. 
 
-- [Azure-Sentinel onboarden](https://docs.microsoft.com/azure/sentinel/quickstart-onboard) 
+- [Azure-Sentinel onboarden](../sentinel/quickstart-onboard.md) 
 
-- [Aan de slag met Log Analytics query's](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) 
+- [Aan de slag met Log Analytics query's](../azure-monitor/log-query/get-started-portal.md) 
 
-- [Aangepaste query's uitvoeren in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries)
+- [Aangepaste query's uitvoeren in Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -154,11 +154,11 @@ U kunt ook gegevens in-en inschakelen voor Azure Sentinel of een SIEM van derden
 
 U kunt ook gegevens naar Azure-Sentinel inschakelen en op het bord zetten.
 
-- [Azure-Sentinel onboarden](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [Azure-Sentinel onboarden](../sentinel/quickstart-onboard.md)
 
-- [Waarschuwingen beheren in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)
+- [Waarschuwingen beheren in Azure Security Center](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Een waarschuwing over logboek gegevens van log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response)
+- [Een waarschuwing over logboek gegevens van log Analytics](../azure-monitor/learn/tutorial-response.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -174,7 +174,7 @@ U kunt ook gegevens naar Azure-Sentinel inschakelen en op het bord zetten.
 
 ## <a name="identity-and-access-control"></a>Identiteits- en toegangsbeheer
 
-*Zie [Azure Security Bench Mark: identiteits-en toegangs beheer](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)voor meer informatie.*
+*Zie [Azure Security Bench Mark: identiteits-en toegangs beheer](../security/benchmarks/security-control-identity-access-control.md)voor meer informatie.*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: een inventaris van beheerders accounts onderhouden
 
@@ -194,7 +194,7 @@ U kunt ook gegevens naar Azure-Sentinel inschakelen en op het bord zetten.
 
 U kunt ook Just-in-time-toegang inschakelen met behulp van Azure AD Privileged Identity Management en Azure Resource Manager. 
 
-- [Meer informatie over Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/)
+- [Meer informatie over Privileged Identity Management](/azure/active-directory/privileged-identity-management/)
 
 **Azure Security Center bewaking**: Ja
 
@@ -204,7 +204,7 @@ U kunt ook Just-in-time-toegang inschakelen met behulp van Azure AD Privileged I
 
 **Richt lijnen**: gebruik waar mogelijk Azure Active Directory-SSO in plaats van afzonderlijke zelfstandige referenties per service te configureren. Gebruik Azure Security Center-aanbevelingen voor identiteit en toegang. 
 
-- [Informatie over eenmalige aanmelding met Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Informatie over eenmalige aanmelding met Azure AD](../active-directory/manage-apps/what-is-single-sign-on.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -214,9 +214,9 @@ U kunt ook Just-in-time-toegang inschakelen met behulp van Azure AD Privileged I
 
 **Hulp**: Azure AD MFA inschakelen en aanbevelingen voor Azure Security Center identiteit en toegang volgen. 
 
-- [MFA inschakelen in azure](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted) 
+- [MFA inschakelen in azure](../active-directory/authentication/howto-mfa-getstarted.md) 
 
-- [Identiteit en toegang bewaken in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+- [Identiteit en toegang bewaken in Azure Security Center](../security-center/security-center-identity-access.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -226,9 +226,9 @@ U kunt ook Just-in-time-toegang inschakelen met behulp van Azure AD Privileged I
 
 **Hulp**: gebruik een beveiligd, door Azure beheerd werk station (ook wel een privileged Access Workstation of paw) voor beheer taken waarvoor verhoogde bevoegdheden zijn vereist.
 
-- [Meer informatie over veilige, door Azure beheerde werk stations](https://docs.microsoft.com/azure/active-directory/devices/concept-azure-managed-workstation)
+- [Meer informatie over veilige, door Azure beheerde werk stations](../active-directory/devices/concept-azure-managed-workstation.md)
 
-- [Azure AD MFA inschakelen](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+- [Azure AD MFA inschakelen](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -238,9 +238,9 @@ U kunt ook Just-in-time-toegang inschakelen met behulp van Azure AD Privileged I
 
 **Hulp**: gebruik Azure Active Directory beveiligings rapporten en-bewaking om te detecteren wanneer verdachte of onveilige activiteiten in de omgeving worden uitgevoerd. Gebruik Azure Security Center om identiteits-en toegangs activiteiten te bewaken.
 
-- [Azure AD-gebruikers identificeren die zijn gemarkeerd voor Risk ante activiteiten](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk)
+- [Azure AD-gebruikers identificeren die zijn gemarkeerd voor Risk ante activiteiten](/azure/active-directory/reports-monitoring/concept-user-at-risk)
 
-- [Identiteits-en toegangs activiteiten van gebruikers controleren in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+- [Identiteits-en toegangs activiteiten van gebruikers controleren in Azure Security Center](../security-center/security-center-identity-access.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -250,7 +250,7 @@ U kunt ook Just-in-time-toegang inschakelen met behulp van Azure AD Privileged I
 
 **Richt lijnen**: gebruik Azure AD benoemde locaties om alleen toegang toe te staan vanuit specifieke logische groepen met IP-adresbereiken of landen/regio's. 
 
-- [De benoemde locaties van Azure AD configureren](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+- [De benoemde locaties van Azure AD configureren](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -260,7 +260,7 @@ U kunt ook Just-in-time-toegang inschakelen met behulp van Azure AD Privileged I
 
 **Hulp**: gebruik Azure Active Directory (Azure AD) als centrale verificatie-en autorisatie systeem. Azure AD beveiligt gegevens door gebruik te maken van sterke versleuteling voor gegevens in rust en onderweg. Azure AD bevat ook zouten, hashes en veilige gebruikers referenties. 
 
-- [Een Azure AD-exemplaar maken en configureren](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+- [Een Azure AD-exemplaar maken en configureren](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -270,9 +270,9 @@ U kunt ook Just-in-time-toegang inschakelen met behulp van Azure AD Privileged I
 
 **Hulp**: Azure Active Directory (Azure AD) biedt logboeken waarmee u verlopen accounts kunt detecteren. Daarnaast kunt u Azure AD Identity and Access revisies gebruiken om groepslid maatschappen, toegang tot bedrijfs toepassingen en roltoewijzingen op efficiënte wijze te beheren. Gebruikers toegang kan regel matig worden gecontroleerd om ervoor te zorgen dat alleen de juiste gebruikers toegang hebben. 
 
-- [Meer informatie over Azure AD-rapportage](https://docs.microsoft.com/azure/active-directory/reports-monitoring/) 
+- [Meer informatie over Azure AD-rapportage](/azure/active-directory/reports-monitoring/) 
 
-- [Azure AD-identiteits-en toegangs beoordelingen gebruiken](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+- [Azure AD-identiteits-en toegangs beoordelingen gebruiken](../active-directory/governance/access-reviews-overview.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -284,7 +284,7 @@ U kunt ook Just-in-time-toegang inschakelen met behulp van Azure AD Privileged I
 
 U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure AD-gebruikers accounts te maken en de audit logboeken en aanmeldings logboeken te verzenden naar een Log Analytics-werk ruimte. U kunt de gewenste waarschuwingen configureren in Log Analytics werk ruimte. 
 
-- [Azure-activiteiten logboeken integreren met Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure-activiteiten logboeken integreren met Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -294,11 +294,11 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure AD-ge
 
 **Hulp**: gebruik Azure AD Identity Protection functies om automatische antwoorden te configureren op gedetecteerde verdachte acties met betrekking tot gebruikers identiteiten. U kunt ook gegevens opnemen in azure Sentinel voor verder onderzoek. 
 
-- [Risk ante aanmeldingen voor Azure AD weer geven](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Risk ante aanmeldingen voor Azure AD weer geven](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
 
-- [Risico beleid voor identiteits beveiliging configureren en inschakelen](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies) 
+- [Risico beleid voor identiteits beveiliging configureren en inschakelen](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md) 
 
-- [Azure-Sentinel onboarden](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [Azure-Sentinel onboarden](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -306,17 +306,17 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure AD-ge
 
 ## <a name="data-protection"></a>Gegevensbeveiliging
 
-*Zie [Azure Security Bench Mark: Data Protection](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)voor meer informatie.*
+*Zie [Azure Security Bench Mark: Data Protection](../security/benchmarks/security-control-data-protection.md)voor meer informatie.*
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: systemen isoleren die gevoelige informatie opslaan of verwerken
 
 **Hulp**: VPN-gateways hebben toegewezen VM-exemplaren voor elk virtueel netwerk van de klant. Implementeer isolatie met behulp van afzonderlijke virtuele netwerken, abonnementen en beheer groepen voor afzonderlijke beveiligings domeinen, zoals omgevings type en gegevens gevoeligheids niveau. U kunt het toegangs niveau voor uw Azure-resources beperken die worden vereist door uw toepassingen en bedrijfs omgevingen. U kunt de toegang tot Azure-resources beheren via Azure Active Directory op rollen gebaseerd toegangs beheer.
 
-- [Aanvullende Azure-abonnementen maken](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+- [Aanvullende Azure-abonnementen maken](/azure/billing/billing-create-subscription)
 
-- [Beheergroepen maken](https://docs.microsoft.com/azure/governance/management-groups/create)
+- [Beheergroepen maken](/azure/governance/management-groups/create)
 
-- [Tags maken en gebruiken](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Tags maken en gebruiken](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -328,7 +328,7 @@ U kunt dit proces stroom lijnen door Diagnostische instellingen voor Azure AD-ge
 
 Voor het onderliggende platform dat door micro soft wordt beheerd, behandelt micro soft alle klant inhoud als gevoelig en bescherming tegen verlies en bloot stelling van klant gegevens. Om ervoor te zorgen dat klant gegevens binnen Azure veilig blijven, heeft micro soft een reeks robuuste besturings elementen en mogelijkheden voor gegevens bescherming geïmplementeerd en onderhouden. 
 
-- [Informatie over beveiliging van klanten in azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+- [Informatie over beveiliging van klanten in azure](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -340,15 +340,15 @@ Voor het onderliggende platform dat door micro soft wordt beheerd, behandelt mic
 
 Volg Azure Security Center aanbevelingen voor versleuteling bij rest en versleuteling in transit, voor relevante bronnen in uw virtuele netwerk.
 
-- [Over VPN-typen](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings#vpntype)
+- [Over VPN-typen](vpn-gateway-about-vpn-gateway-settings.md#vpntype)
 
-- [VPN-apparaten en IPSec-/IKE-parameters voor site-naar-site-VPN-gateway-verbindingen](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices#ipsec)
+- [VPN-apparaten en IPSec-/IKE-parameters voor site-naar-site-VPN-gateway-verbindingen](vpn-gateway-about-vpn-devices.md#ipsec)
 
-- [Over cryptografische vereisten en Azure VPN-gateways](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-compliance-crypto)
+- [Over cryptografische vereisten en Azure VPN-gateways](vpn-gateway-about-compliance-crypto.md)
 
-- [IPsec/IKE-beleid configureren voor S2S VPN-verbindingen of VNet-naar-VNet-verbindingen](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-ipsecikepolicy-rm-powershell)
+- [IPsec/IKE-beleid configureren voor S2S VPN-verbindingen of VNet-naar-VNet-verbindingen](vpn-gateway-ipsecikepolicy-rm-powershell.md)
 
-- [Meer informatie over versleuteling in transit met Azure](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit)
+- [Meer informatie over versleuteling in transit met Azure](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
 **Azure Security Center bewaking**: Ja
 
@@ -366,9 +366,9 @@ Volg Azure Security Center aanbevelingen voor versleuteling bij rest en versleut
 
 **Richt lijnen**: gebruik Azure AD RBAC om de toegang tot gegevens en resources te beheren. anders kunt u gebruikmaken van specifieke methoden voor toegangs beheer van de service. Gebruik ingebouwde op rollen gebaseerde toegangs beheer rollen zoals eigenaar, bijdrager of netwerk bijdrager en wijs de rol vervolgens toe aan het juiste bereik. Wijs specifieke machtigingen toe voor een subset van virtuele netwerk mogelijkheden door een aangepaste rol te maken en de specifieke machtigingen toe te wijzen die vereist zijn voor virtuele netwerken, subnetten, VPN-gateways, netwerk interfaces, netwerk beveiligings groepen en route tabellen naar de rol.
 
-- [RBAC configureren in azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+- [RBAC configureren in azure](../role-based-access-control/role-assignments-portal.md)
 
-- [Virtuele netwerken plannen](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm#permissions)
+- [Virtuele netwerken plannen](../virtual-network/virtual-network-vnet-plan-design-arm.md#permissions)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -378,11 +378,11 @@ Volg Azure Security Center aanbevelingen voor versleuteling bij rest en versleut
 
 **Hulp**bij het configureren van Azure monitor waarschuwingen voor het activeren van uw Azure-activiteiten logboeken voor wanneer wijzigingen worden doorgevoerd in essentiële Azure-resources zoals uw VPN-gateways. 
 
-- [Waarschuwingen instellen voor VPN Gateway metrische gegevens](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric)
+- [Waarschuwingen instellen voor VPN Gateway metrische gegevens](vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md)
 
-- [Waarschuwingen instellen voor diagnostische logboek gebeurtenissen van VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log)
+- [Waarschuwingen instellen voor diagnostische logboek gebeurtenissen van VPN Gateway](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md)
 
-- [Waarschuwingen maken voor gebeurtenissen in het Azure-activiteiten logboek](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+- [Waarschuwingen maken voor gebeurtenissen in het Azure-activiteiten logboek](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -390,7 +390,7 @@ Volg Azure Security Center aanbevelingen voor versleuteling bij rest en versleut
 
 ## <a name="vulnerability-management"></a>Beheer van beveiligingsproblemen
 
-*Zie voor meer informatie de [Azure Security Bench Mark: beveiligingslek beheer](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management).*
+*Zie voor meer informatie de [Azure Security Bench Mark: beveiligingslek beheer](../security/benchmarks/security-control-vulnerability-management.md).*
 
 ### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5,5: een risico classificatie proces gebruiken om prioriteit te geven aan het herstel van ontdekte beveiligings problemen
 
@@ -404,19 +404,19 @@ Volg Azure Security Center aanbevelingen voor versleuteling bij rest en versleut
 
 ## <a name="inventory-and-asset-management"></a>Inventarisatie en asset-management
 
-*Zie [Azure Security Bench Mark: Inventory and Asset Management](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management)voor meer informatie.*
+*Zie [Azure Security Bench Mark: Inventory and Asset Management](../security/benchmarks/security-control-inventory-asset-management.md)voor meer informatie.*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6,1: automatische Asset-detectie oplossing gebruiken
 
 **Hulp**: Azure resource Graph gebruiken om alle resources te doorzoeken en te detecteren die betrekking hebben op uw VPN-gateways in uw abonnementen. Zorg ervoor dat u de juiste machtigingen (lezen) hebt in uw Tenant en dat u alle resources in uw abonnementen kunt opsommen. Daarnaast kunt u ook de Azure CLI gebruiken om uw VPN Gateway-resources te inventariseren.
 
-- [Query's maken met Azure Graph](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+- [Query's maken met Azure Graph](../governance/resource-graph/first-query-portal.md)
 
 - [Azure CLI voor VPN-gateway](https://docs.microsoft.com/cli/azure/network/vnet-gateway?view=azure-cli-latest)
 
 - [Uw Azure-abonnementen weer geven](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
-- [Meer informatie over Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
+- [Meer informatie over Azure RBAC](../role-based-access-control/overview.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -426,7 +426,7 @@ Volg Azure Security Center aanbevelingen voor versleuteling bij rest en versleut
 
 **Hulp**: Labels Toep assen op VPN gateway resources om ze logisch te organiseren volgens een gedefinieerde taxonomie.
 
-- [Tags maken en gebruiken](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Tags maken en gebruiken](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -436,11 +436,11 @@ Volg Azure Security Center aanbevelingen voor versleuteling bij rest en versleut
 
 **Richt lijnen**: Gebruik labels, beheer groepen en afzonderlijke abonnementen, indien van toepassing, om VPN gateway resources in te delen en bij te houden. Sluit de inventaris regel matig af en zorg ervoor dat niet-geautoriseerde resources tijdig worden verwijderd uit het abonnement. 
 
-- [Aanvullende Azure-abonnementen maken](https://docs.microsoft.com/azure/billing/billing-create-subscription) 
+- [Aanvullende Azure-abonnementen maken](/azure/billing/billing-create-subscription) 
 
-- [Beheer groepen maken](https://docs.microsoft.com/azure/governance/management-groups/create) 
+- [Beheer groepen maken](/azure/governance/management-groups/create) 
 
-- [Tags maken en gebruiken](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Tags maken en gebruiken](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -464,11 +464,11 @@ Volg Azure Security Center aanbevelingen voor versleuteling bij rest en versleut
 
 Daarnaast kunt u de Azure-resource grafiek gebruiken om resources in de abonnementen op te vragen en te detecteren. 
 
-- [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
-- [Query's maken met Azure Graph](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+- [Query's maken met Azure Graph](../governance/resource-graph/first-query-portal.md)
 
-- [Voor beeld van Azure-beleid voor het virtuele netwerk](https://docs.microsoft.com/azure/virtual-network/policy-samples)
+- [Voor beeld van Azure-beleid voor het virtuele netwerk](/azure/virtual-network/policy-samples)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -478,7 +478,7 @@ Daarnaast kunt u de Azure-resource grafiek gebruiken om resources in de abonneme
 
 **Hulp**: klanten kunnen het maken of het gebruik van resources voor komen door Azure Policy definities toe te wijzen die vereist zijn voor de beveiligings vereisten van de organisatie. U moet echter uw eigen proces voor het verwijderen van niet-goedgekeurde of niet-geautoriseerde resources implementeren.
 
-- [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -492,11 +492,11 @@ Daarnaast kunt u de Azure-resource grafiek gebruiken om resources in de abonneme
 
 - Toegestane brontypen
 
-- [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
-- [Een specifiek resource type weigeren met Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
+- [Een specifiek resource type weigeren met Azure Policy](/azure/governance/policy/samples/not-allowed-resource-types)
 
-- [Voor beeld van Azure-beleid voor het virtuele netwerk](https://docs.microsoft.com/azure/virtual-network/policy-samples)
+- [Voor beeld van Azure-beleid voor het virtuele netwerk](/azure/virtual-network/policy-samples)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -506,7 +506,7 @@ Daarnaast kunt u de Azure-resource grafiek gebruiken om resources in de abonneme
 
 **Richt lijnen**: gebruik de voorwaardelijke toegang van Azure AD om de interactie van gebruikers met Azure Resources Manager te beperken door ' toegang blok keren ' te configureren voor de app Microsoft Azure management. 
 
-- [Voorwaardelijke toegang configureren om de toegang tot Azure-bronnen beheer te blok keren](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+- [Voorwaardelijke toegang configureren om de toegang tot Azure-bronnen beheer te blok keren](../role-based-access-control/conditional-access-azure-management.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -514,7 +514,7 @@ Daarnaast kunt u de Azure-resource grafiek gebruiken om resources in de abonneme
 
 ## <a name="secure-configuration"></a>Veilige configuratie
 
-*Zie [Azure Security Bench Mark: Secure Configuration](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration)(Engelstalig) voor meer informatie.*
+*Zie [Azure Security Bench Mark: Secure Configuration](../security/benchmarks/security-control-secure-configuration.md)(Engelstalig) voor meer informatie.*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: veilige configuraties instellen voor alle Azure-resources
 
@@ -526,13 +526,13 @@ U kunt ook aanbevelingen van Azure Security Center gebruiken als een veilige con
 
 - [Beschik bare Azure Policy aliassen weer geven](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
-- [Zelfstudie: Beleidsregels voor het afdwingen van naleving maken en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Zelfstudie: Beleidsregels voor het afdwingen van naleving maken en beheren](../governance/policy/tutorials/create-and-manage.md)
 
-- [Voor beeld van Azure-beleid voor het virtuele netwerk](https://docs.microsoft.com/azure/virtual-network/policy-samples)
+- [Voor beeld van Azure-beleid voor het virtuele netwerk](/azure/virtual-network/policy-samples)
 
-- [Eén en meerdere resources exporteren naar een sjabloon in Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/export-template-portal)
+- [Eén en meerdere resources exporteren naar een sjabloon in Azure Portal](../azure-resource-manager/templates/export-template-portal.md)
 
-- [Aanbevelingen voor beveiliging: een referentie gids](https://docs.microsoft.com/azure/security-center/recommendations-reference)
+- [Aanbevelingen voor beveiliging: een referentie gids](../security-center/recommendations-reference.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -542,15 +542,15 @@ U kunt ook aanbevelingen van Azure Security Center gebruiken als een veilige con
 
 **Hulp**: gebruik Azure Resource Manager sjablonen en Azure Policy toewijzingen om Azure-resources die zijn gekoppeld aan de VPN gateway en gerelateerde resources, veilig te configureren. Azure Resource Manager sjablonen zijn JSON-bestanden die worden gebruikt voor het implementeren van de virtuele machine, samen met Azure-resources en aangepaste sjablonen moeten worden behouden. Micro soft voert het onderhoud uit op basis van deze sjablonen.  Gebruik Azure Policy in de modi [deny] en [implementeren indien niet aanwezig] voor het afdwingen van beveiligde instellingen voor uw Azure-resources.
 
-- [Informatie over het maken van Azure Resource Manager sjablonen](https://docs.microsoft.com/azure/virtual-machines/windows/ps-template)
+- [Informatie over het maken van Azure Resource Manager sjablonen](../virtual-machines/windows/ps-template.md)
 
-- [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
-- [Wat zijn Azure Policy effecten?](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+- [Wat zijn Azure Policy effecten?](../governance/policy/concepts/effects.md)
 
-- [Voorbeeldsjablonen van Azure Resource Manager voor virtueel netwerk](https://docs.microsoft.com/azure/virtual-network/template-samples)
+- [Voorbeeldsjablonen van Azure Resource Manager voor virtueel netwerk](../virtual-network/template-samples.md)
 
-- [Voor beeld van Azure-beleid voor het virtuele netwerk](https://docs.microsoft.com/azure/virtual-network/policy-samples)
+- [Voor beeld van Azure-beleid voor het virtuele netwerk](/azure/virtual-network/policy-samples)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -562,7 +562,7 @@ U kunt ook aanbevelingen van Azure Security Center gebruiken als een veilige con
 
 - [Code opslaan in azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops) 
 
-- [Over machtigingen en groepen in azure DevOps](https://docs.microsoft.com/azure/devops/organizations/security/about-permissions)
+- [Over machtigingen en groepen in azure DevOps](/azure/devops/organizations/security/about-permissions)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -572,9 +572,9 @@ U kunt ook aanbevelingen van Azure Security Center gebruiken als een veilige con
 
 **Richt lijnen**: standaard beveiligings configuraties voor Azure-resources definiëren en implementeren met behulp van Azure Policy. Gebruik Azure Policy aliassen om aangepaste beleids regels te maken om de configuraties van uw Azure-resources te controleren of af te dwingen. U kunt ook gebruik maken van ingebouwde beleids definities die betrekking hebben op uw specifieke resources. Daarnaast kunt u Azure Automation gebruiken om configuratie wijzigingen te implementeren. 
 
-- [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage) 
+- [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md) 
 
-- [Aliassen gebruiken](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases)
+- [Aliassen gebruiken](../governance/policy/concepts/definition-structure.md#aliases)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -584,9 +584,9 @@ U kunt ook aanbevelingen van Azure Security Center gebruiken als een veilige con
 
 **Hulp**: wijs Azure Policy definities toe om resource configuraties te meten die betrekking hebben op u VPN gateway resources. Gebruik Azure Policy inzichten om resource configuraties te controleren en waarschuwingen te ontvangen over kritieke configuratie wijzigingen.
 
-- [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [Azure Policy configureren en beheren](../governance/policy/tutorials/create-and-manage.md)
 
-- [Voor beeld van Azure-beleid voor het virtuele netwerk](https://docs.microsoft.com/azure/virtual-network/policy-samples)
+- [Voor beeld van Azure-beleid voor het virtuele netwerk](/azure/virtual-network/policy-samples)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -610,15 +610,15 @@ U kunt ook aanbevelingen van Azure Security Center gebruiken als een veilige con
 
 Azure AD wordt aanbevolen omdat u hiermee beheerde identiteiten kunt gebruiken.
 
-- [Een tenant configureren](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-tenant)
+- [Een tenant configureren](openvpn-azure-ad-tenant.md)
 
-- [Een tenant met meerdere client-apps configureren](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-tenant-multi-app)
+- [Een tenant met meerdere client-apps configureren](openvpn-azure-ad-tenant-multi-app.md)
 
-- [Multi-Factor Authentication configureren](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-mfa)
+- [Multi-Factor Authentication configureren](openvpn-azure-ad-mfa.md)
 
-- [Een VPN-client configureren](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-client)
+- [Een VPN-client configureren](openvpn-azure-ad-client.md)
 
-- [Beheerde identiteiten configureren](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)
+- [Beheerde identiteiten configureren](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -636,19 +636,19 @@ Azure AD wordt aanbevolen omdat u hiermee beheerde identiteiten kunt gebruiken.
 
 ## <a name="data-recovery"></a>Gegevensherstel
 
-*Zie [Azure Security Bench Mark: Data Recovery](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery)(Engelstalig) voor meer informatie.*
+*Zie [Azure Security Bench Mark: Data Recovery](../security/benchmarks/security-control-data-recovery.md)(Engelstalig) voor meer informatie.*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9,1: zorg voor regel matige automatische back-ups
 
 **Hulp**: gebruik Azure Resource Manager om VPN gateway resources te implementeren. Azure Resource Manager biedt de mogelijkheid om sjablonen te exporteren die als back-ups kunnen worden gebruikt om VPN Gateway-resources te herstellen. Gebruik Azure Automation om de API van de Azure Resource Manager-sjabloon regel matig te kunnen aanroepen.
 
-- [Overzicht van Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/overview)
+- [Overzicht van Azure Resource Manager](../azure-resource-manager/management/overview.md)
 
-- [Voorbeeldsjablonen van Azure Resource Manager voor virtueel netwerk](https://docs.microsoft.com/azure/virtual-network/template-samples)
+- [Voorbeeldsjablonen van Azure Resource Manager voor virtueel netwerk](../virtual-network/template-samples.md)
 
-- [Resource groepen-sjabloon exporteren](https://docs.microsoft.com/rest/api/resources/resourcegroups/exporttemplate)
+- [Resource groepen-sjabloon exporteren](/rest/api/resources/resourcegroups/exporttemplate)
 
-- [Inleiding tot Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro)
+- [Inleiding tot Azure Automation](../automation/automation-intro.md)
 
 **Azure Security Center bewaking**: momenteel niet beschikbaar
 
@@ -658,11 +658,11 @@ Azure AD wordt aanbevolen omdat u hiermee beheerde identiteiten kunt gebruiken.
 
 **Hulp**: gebruik Azure Resource Manager om VPN gateway resources te implementeren. Azure Resource Manager biedt de mogelijkheid om sjablonen te exporteren die als back-ups kunnen worden gebruikt om de VPN-gateway en gerelateerde resources te herstellen. Gebruik Azure Automation om de API van de Azure Resource Manager-sjabloon regel matig te kunnen aanroepen.
 
-- [Eén en meerdere resources exporteren naar een sjabloon in Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/export-template-portal)
+- [Eén en meerdere resources exporteren naar een sjabloon in Azure Portal](../azure-resource-manager/templates/export-template-portal.md)
 
-- [Resource groepen-sjabloon exporteren](https://docs.microsoft.com/rest/api/resources/resourcegroups/exporttemplate)
+- [Resource groepen-sjabloon exporteren](/rest/api/resources/resourcegroups/exporttemplate)
 
-- [Inleiding tot Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro)
+- [Inleiding tot Azure Automation](../automation/automation-intro.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -672,7 +672,7 @@ Azure AD wordt aanbevolen omdat u hiermee beheerde identiteiten kunt gebruiken.
 
 **Richt lijnen**: Zorg ervoor dat u regel matig de implementatie van Azure Resource Manager sjablonen regel matig uitvoert op een geïsoleerd abonnement, indien nodig.
 
-- [Resources implementeren met ARM-sjablonen en Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal)
+- [Resources implementeren met ARM-sjablonen en Azure Portal](../azure-resource-manager/templates/deploy-portal.md)
 
 - [Sleutel kluis sleutels herstellen in azure](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
@@ -686,7 +686,7 @@ Azure AD wordt aanbevolen omdat u hiermee beheerde identiteiten kunt gebruiken.
 
 - [Code opslaan in azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-- [Over machtigingen en groepen in azure DevOps](https://docs.microsoft.com/azure/devops/organizations/security/about-permissions)
+- [Over machtigingen en groepen in azure DevOps](/azure/devops/organizations/security/about-permissions)
 
 - [Voorlopig verwijderen voor Azure Storage-blobs](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
 
@@ -696,7 +696,7 @@ Azure AD wordt aanbevolen omdat u hiermee beheerde identiteiten kunt gebruiken.
 
 ## <a name="incident-response"></a>Reageren op incidenten
 
-*Zie [Azure Security Bench Mark: Incident Response](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response)(Engelstalig) voor meer informatie.*
+*Zie [Azure Security Bench Mark: Incident Response](../security/benchmarks/security-control-incident-response.md)(Engelstalig) voor meer informatie.*
 
 ### <a name="101-create-an-incident-response-guide"></a>10,1: een hand leiding voor reactie op incidenten maken
 
@@ -718,9 +718,9 @@ Azure AD wordt aanbevolen omdat u hiermee beheerde identiteiten kunt gebruiken.
 
 Markeer bovendien abonnementen met tags en maak een naamgevings systeem voor het identificeren en categoriseren van Azure-resources, met name voor de verwerking van gevoelige gegevens.  Het is uw verantwoordelijkheid om prioriteit te geven aan het herstel van waarschuwingen op basis van de ernst van de Azure-resources en-omgeving waar het incident heeft plaatsgevonden. 
 
-- [Beveiligingswaarschuwingen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview) 
+- [Beveiligingswaarschuwingen in Azure Security Center](../security-center/security-center-alerts-overview.md) 
 
-- [Labels gebruiken om uw Azure-resources te organiseren](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [Labels gebruiken om uw Azure-resources te organiseren](/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure Security Center bewaking**: Ja
 
@@ -740,7 +740,7 @@ Markeer bovendien abonnementen met tags en maak een naamgevings systeem voor het
 
 **Hulp**: contact gegevens van beveiligings incidenten worden door micro soft gebruikt om contact met u op te nemen als het micro soft Security Response Center (MSRC) detecteert dat uw gegevens zijn geopend door een onrecht matige of niet-gemachtigde partij. Bekijk incidenten na het feit om te controleren of de problemen zijn opgelost. 
 
-- [De Azure Security Center Security-contact persoon instellen](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+- [De Azure Security Center Security-contact persoon instellen](../security-center/security-center-provide-security-contact-details.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -750,9 +750,9 @@ Markeer bovendien abonnementen met tags en maak een naamgevings systeem voor het
 
 **Hulp**: exporteer uw Azure Security Center waarschuwingen en aanbevelingen met behulp van de functie continue export om Risico's voor Azure-resources te identificeren. Met doorlopend exporteren kunt u waarschuwingen en aanbevelingen hand matig of op een doorlopende manier exporteren. U kunt de Azure Security Center Data Connector gebruiken om de waarschuwingen naar Azure Sentinel te streamen. 
 
-- [Continue export configureren](https://docs.microsoft.com/azure/security-center/continuous-export) 
+- [Continue export configureren](../security-center/continuous-export.md) 
 
-- [Waarschuwingen streamen naar Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+- [Waarschuwingen streamen naar Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
 **Azure Security Center bewaking**: Ja
 
@@ -762,7 +762,7 @@ Markeer bovendien abonnementen met tags en maak een naamgevings systeem voor het
 
 **Hulp**: werk stroom automatisering gebruiken Azure Security Center om automatisch reacties te activeren op beveiligings waarschuwingen en aanbevelingen voor het beveiligen van uw Azure-resources. 
 
-- [Werk stroom automatisering configureren in Security Center](https://docs.microsoft.com/azure/security-center/workflow-automation)
+- [Werk stroom automatisering configureren in Security Center](../security-center/workflow-automation.md)
 
 **Azure Security Center bewaking**: niet van toepassing
 
@@ -770,7 +770,7 @@ Markeer bovendien abonnementen met tags en maak een naamgevings systeem voor het
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Penetratietests en Red Team-oefeningen
 
-*Zie [Azure Security Bench Mark: Indringings tests en rode team oefeningen](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)voor meer informatie.*
+*Zie [Azure Security Bench Mark: Indringings tests en rode team oefeningen](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)voor meer informatie.*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11,1: voert regel matig indringings tests van uw Azure-resources uit en zorgt voor herbemiddeling van alle essentiële beveiligings resultaten
 

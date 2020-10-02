@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: 7d530180b499495e97cb635186fc6a0d5cbd9044
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b5064e3cef7def1aca5aa0c97d031d519fd610cf
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392723"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91626391"
 ---
 # <a name="server-parameters-in-azure-database-for-mariadb"></a>Server parameters in Azure Database for MariaDB
 
@@ -28,6 +28,12 @@ Azure Database for MariaDB geeft de mogelijkheid om de waarde van verschillende 
 De lijst met ondersteunde server parameters groeit voortdurend. Gebruik het tabblad Server parameters in het Azure Portal om de volledige lijst weer te geven en de waarden voor de server parameters te configureren.
 
 Raadpleeg de volgende secties voor meer informatie over de limieten van de verschillende vaak bijgewerkte server parameters. De limieten worden bepaald door de prijs categorie en vCores van de-server.
+
+### <a name="log_bin_trust_function_creators"></a>log_bin_trust_function_creators
+
+In Azure Database for MariaDB zijn binaire logboeken altijd ingeschakeld (bijvoorbeeld `log_bin` ingesteld op aan). Als u triggers wilt gebruiken, wordt er een fout bericht weer gegeven die vergelijkbaar *is met de superrechts-en binaire logboek registratie is ingeschakeld (mogelijk wilt u de minder veilige `log_bin_trust_function_creators` variabele gebruiken)*.
+
+De indeling van de binaire logboek registratie is altijd **rij** en alle verbindingen met de server gebruiken **altijd** binaire logboek registratie van rijen. Met binaire logboek registratie op basis van rijen bestaan geen beveiligings problemen en kan binaire logboek registratie niet breken, dus u kunt veilig instellen [`log_bin_trust_function_creators`](https://mariadb.com/docs/reference/mdb/system-variables/log_bin_trust_function_creators/) op **True**.
 
 ### <a name="innodb_buffer_pool_size"></a>innodb_buffer_pool_size
 
@@ -72,7 +78,7 @@ Raadpleeg de [MariaDB-documentatie](https://mariadb.com/kb/en/innodb-system-vari
 ### <a name="innodb_file_per_table"></a>innodb_file_per_table
 
 > [!NOTE]
-> `innodb_file_per_table`kan alleen worden bijgewerkt in de prijs Categorieën Algemeen en geoptimaliseerd voor geheugen.
+> `innodb_file_per_table` kan alleen worden bijgewerkt in de prijs Categorieën Algemeen en geoptimaliseerd voor geheugen.
 
 MariaDB slaat de InnoDB-tabel op in verschillende tablespaces op basis van de configuratie die u hebt gemaakt tijdens het maken van de tabel. De [systeem-tabel ruimte](https://mariadb.com/kb/en/innodb-system-tablespaces/) is het opslag gebied voor de InnoDB-data dictionary. Een [bestand-per-tabel tabel ruimte](https://mariadb.com/kb/en/innodb-file-per-table-tablespaces/) bevat gegevens en indexen voor één InnoDB-tabel en wordt opgeslagen in het bestands systeem in een eigen gegevens bestand. Dit gedrag wordt bepaald door de `innodb_file_per_table` para meter server. Instelling `innodb_file_per_table` om `OFF` ervoor te zorgen dat InnoDB tabellen maakt in de ruimte van het systeem. Anders maakt InnoDB tabellen in file-per-tabel tablespaces.
 
@@ -100,7 +106,7 @@ Raadpleeg de [MariaDB-documentatie](https://mariadb.com/kb/en/server-system-vari
 
 ### <a name="max_connections"></a>max_connections
 
-|**Prijscategorie**|**vCore (s)**|**Standaardwaarde**|**Minimum waarde**|**Maximum waarde**|
+|**Prijscategorie**|**vCore (s)**|**Standaardwaarde**|**Minimumwaarde**|**Maximumwaarde**|
 |---|---|---|---|---|
 |Basic|1|50|10|50|
 |Basic|2|100|10|100|

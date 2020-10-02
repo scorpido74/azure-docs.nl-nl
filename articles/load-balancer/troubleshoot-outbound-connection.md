@@ -7,18 +7,18 @@ ms.service: load-balancer
 ms.topic: troubleshooting
 ms.date: 05/7/2020
 ms.author: errobin
-ms.openlocfilehash: cd98d5b8d2d4a959a48bfb04fe2eb9e16c4113c9
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: c37c0e9b914854ff41053526740d3454c5c23f90
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851135"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91628992"
 ---
-# <a name="troubleshooting-outbound-connections-failures"></a><a name="obconnecttsg"></a>Problemen met mislukte uitgaande verbindingen oplossen
+# <a name="troubleshooting-outbound-connections-failures"></a><a name="obconnecttsg"></a> Problemen met mislukte uitgaande verbindingen oplossen
 
 Dit artikel is bedoeld voor het bieden van oplossingen voor veelvoorkomende problemen die kunnen optreden bij uitgaande verbindingen van een Azure Load Balancer. De meeste problemen met een uitgaande verbinding die klanten ervaren, worden veroorzaakt door de verval tijd van de SNAT-poort en verbindingstime-outs voor verwijderde pakketten. In dit artikel worden de stappen beschreven voor het beperken van elk van deze problemen.
 
-## <a name="managing-snat-pat-port-exhaustion"></a><a name="snatexhaust"></a>Poort uitputting van SNAT (PAT) beheren
+## <a name="managing-snat-pat-port-exhaustion"></a><a name="snatexhaust"></a> Poort uitputting van SNAT (PAT) beheren
 [Tijdelijke poorten](load-balancer-outbound-connections.md) die worden gebruikt voor [Pat](load-balancer-outbound-connections.md) zijn een exhaustible-resource, zoals beschreven in [zelfstandige virtuele machine zonder openbaar IP-adres](load-balancer-outbound-connections.md) en [VM met gelijke taak verdeling zonder openbaar IP-adres](load-balancer-outbound-connections.md). Met [deze](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics#how-do-i-check-my-snat-port-usage-and-allocation) hand leiding kunt u uw gebruik van tijdelijke poorten bewaken en vergelijken met uw huidige toewijzing om het risico van of te bevestigen dat de SNAT-uitputting wordt bevestigd.
 
 Als u weet dat u een groot aantal uitgaande TCP-of UDP-verbindingen met hetzelfde doel-IP-adres en dezelfde poort wilt initiëren, kunt u zien dat uitgaande verbindingen mislukken of worden aanbevolen door ondersteuning te bieden voor de SNAT-poorten (vooraf toegewezen [tijdelijke poorten](load-balancer-outbound-connections.md#preallocatedports) die worden gebruikt door [Pat](load-balancer-outbound-connections.md)), hebt u verschillende algemene opties voor risico beperking. Bekijk deze opties en beslis wat er beschikbaar en beste is voor uw scenario. Het is mogelijk dat een of meer informatie kan helpen bij het beheren van dit scenario.
@@ -44,7 +44,7 @@ Wanneer [tijdelijke poorten](load-balancer-outbound-connections.md#preallocatedp
 Tijdelijke poorten hebben een time-out van 4 minuten (niet aanpasbaar). Als de nieuwe pogingen te agressief zijn, heeft de uitputting geen mogelijkheid om zichzelf zelf te wissen. Daarom is het een belang rijk onderdeel van het ontwerp om te overwegen hoe--en hoe vaak uw toepassingen nieuwe pogingen doen.
 
 ## <a name="assign-a-public-ip-to-each-vm"></a><a name="assignilpip"></a>Een openbaar IP-adres toewijzen aan elke VM
-Als u een openbaar IP-adres toewijst, wordt uw scenario gewijzigd in [een open bare IP voor een VM](load-balancer-outbound-connections.md). Alle tijdelijke poorten van het open bare IP-adres dat voor elke VM worden gebruikt, zijn beschikbaar voor de VM. (In tegens telling tot scenario's waarbij tijdelijke poorten van een openbaar IP-adres worden gedeeld met alle virtuele machines die zijn gekoppeld aan de bijbehorende back-end-groep) Er zijn zaken die u moet overwegen, zoals de extra kosten van open bare IP-adressen en de mogelijke impact van White List op een groot aantal afzonderlijke IP-adressen.
+Als u een openbaar IP-adres toewijst, wordt uw scenario gewijzigd in [een open bare IP voor een VM](load-balancer-outbound-connections.md). Alle tijdelijke poorten van het open bare IP-adres dat voor elke VM worden gebruikt, zijn beschikbaar voor de VM. (In tegens telling tot scenario's waarbij tijdelijke poorten van een openbaar IP-adres worden gedeeld met alle virtuele machines die zijn gekoppeld aan de bijbehorende back-end-groep) Er zijn zaken die u moet overwegen, zoals de extra kosten van open bare IP-adressen en de mogelijke gevolgen van het filteren van een groot aantal afzonderlijke IP-adressen.
 
 >[!NOTE] 
 >Deze optie is niet beschikbaar voor Web Worker-rollen.
