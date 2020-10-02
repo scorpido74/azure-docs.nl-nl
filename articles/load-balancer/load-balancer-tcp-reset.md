@@ -1,5 +1,5 @@
 ---
-title: Load Balancer TCP opnieuw instellen bij inactief in azure
+title: Load Balancer TCP Reset en time-out voor inactiviteit in azure
 titleSuffix: Azure Load Balancer
 description: In dit artikel vindt u informatie over Azure Load Balancer met bidirectionele TCP eerste pakketten bij time-out voor inactiviteit.
 services: load-balancer
@@ -11,21 +11,23 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/03/2019
+ms.date: 11/09/2019
 ms.author: allensu
-ms.openlocfilehash: 68714053ac92faf8550a3e5f83a526afa1222971
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f77dd21a2c017ee41f955fdf5e0848df190dec2a
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808484"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651272"
 ---
-# <a name="load-balancer-with-tcp-reset-on-idle"></a>Load Balancer met opnieuw instellen van TCP bij inactiviteit
+# <a name="load-balancer-tcp-reset-and-idle-timeout"></a>Load Balancer TCP Reset en time-out voor inactiviteit
 
 U kunt [Standard Load Balancer](load-balancer-standard-overview.md) gebruiken om een meer voorspel bare toepassings gedrag te maken voor uw SCENARIO'S door TCP reset in te scha kelen bij niet-actief voor een bepaalde regel. Het standaard gedrag van Load Balancer is het op de achtergrond neerzetten van stromen wanneer de time-out van een stroom niet actief is.  Als u deze functie inschakelt, worden Load Balancer bidirectionele TCP resets (TCP eerste pakket) verzonden naar time-out voor inactiviteit.  Hiermee wordt de eind punten van uw toepassing geïnformeerd dat er een time-out voor de verbinding is opgetreden. deze kan niet meer worden gebruikt.  Eind punten kunnen onmiddellijk een nieuwe verbinding tot stand brengen, indien nodig.
 
 ![Load Balancer TCP opnieuw instellen](media/load-balancer-tcp-reset/load-balancer-tcp-reset.png)
  
+## <a name="tcp-reset"></a>TCP opnieuw instellen
+
 U wijzigt dit standaard gedrag en schakelt het verzenden van TCP-opnieuw instellen in op inactieve time-outwaarde voor binnenkomende NAT-regels, taakverdelings regels en [Uitgaande regels](https://aka.ms/lboutboundrules).  Wanneer dit is ingeschakeld per regel, verzendt Load Balancer bidirectionele TCP-opnieuw instellen (eerste TCP-pakketten) naar zowel client-als server eindpunten op het moment van time-out voor inactiviteit voor alle overeenkomende stromen.
 
 Eind punten die TCP eerste pakketten ontvangen, sluiten de overeenkomstige socket direct. Dit biedt een onmiddellijke melding aan de eind punten die de release van de verbinding heeft en toekomstige communicatie op dezelfde TCP-verbinding zal mislukken.  Toepassingen kunnen verbindingen opschonen wanneer de socket wordt gesloten en de verbindingen zo nodig opnieuw tot stand worden gebracht, zonder te wachten tot de TCP-verbinding uiteindelijk een time-out heeft.
@@ -36,41 +38,24 @@ Als uw niet-actieve duur groter is dan de limieten die zijn toegestaan door de c
 
 Bekijk zorgvuldig het volledige end-to-end-scenario om te bepalen of u voor delen hebt voor het inschakelen van TCP-opnieuw instellen, het aanpassen van de time-out voor inactiviteit, en als er extra stappen nodig zijn om ervoor te zorgen dat het gewenste toepassings gedrag
 
-## <a name="enabling-tcp-reset-on-idle-timeout"></a>TCP Reset inschakelen bij time-out inactiviteit
+## <a name="configurable-tcp-idle-timeout"></a>Configureerbare time-out voor TCP-inactiviteit
 
-Met API-versie 2018-07-01 kunt u verzen ding van bidirectionele TCP-bewerkingen voor time-out voor inactiviteit per regel inschakelen:
+Azure Load Balancer een time-out voor inactiviteit heeft van 4 minuten tot 120 minuten. Standaard is deze ingesteld op 4 minuten. Als een periode van inactiviteit langer is dan de time-outwaarde, is er geen garantie dat de TCP-of HTTP-sessie tussen de client en de Cloud service wordt bewaard.
 
-```json
-      "loadBalancingRules": [
-        {
-          "enableTcpReset": true | false,
-        }
-      ]
-```
+Wanneer de verbinding wordt gesloten, kan uw client toepassing het volgende fout bericht ontvangen: ' de onderliggende verbinding is gesloten: er is een verbinding die naar verwachting wordt gehouden door de server verbroken. '
 
-```json
-      "inboundNatRules": [
-        {
-          "enableTcpReset": true | false,
-        }
-      ]
-```
+Een veelvoorkomende procedure is het gebruik van een TCP-Keep-Alive. Deze procedure houdt de verbinding gedurende een langere periode actief. Zie voor meer informatie deze [.net-voor beelden](https://msdn.microsoft.com/library/system.net.servicepoint.settcpkeepalive.aspx). Als Keep-Alive is ingeschakeld, worden pakketten verzonden tijdens peri Oden van inactiviteit op de verbinding. Keep-Alive-pakketten zorgen ervoor dat de time-outwaarde niet wordt bereikt en de verbinding gedurende een lange periode wordt bewaard.
 
-```json
-      "outboundRules": [
-        {
-          "enableTcpReset": true | false,
-        }
-      ]
-```
+De instelling werkt alleen voor binnenkomende verbindingen. Om te voor komen dat de verbinding wordt verbroken, configureert u de TCP Keep-Alive met een interval van minder dan de instelling voor niet-actieve time-out of verhoogt u de time-outwaarde. Ter ondersteuning van deze scenario's is ondersteuning voor een Configureer bare time-out voor inactiviteit toegevoegd.
 
-## <a name="region-availability"></a><a name="regions"></a>Beschik baarheid van regio
+TCP Keep-Alive werkt voor scenario's waarbij de levens duur van de accu geen beperking is. Het wordt niet aanbevolen voor mobiele toepassingen. Het gebruik van een TCP-Keep-Alive in een mobiele toepassing kan de accu van het apparaat sneller leeg laten.
 
-Beschikbaar in alle regio's.
 
 ## <a name="limitations"></a>Beperkingen
 
-- EERSTE TCP wordt alleen verzonden tijdens de TCP-verbinding in de INGESTELDe status.
+- TCP Reset wordt alleen verzonden tijdens de TCP-verbinding in de INGESTELDe status.
+- TCP Reset wordt niet verzonden voor interne load balancers waarvoor HA-poorten zijn geconfigureerd.
+- De time-out voor inactiviteit van TCP heeft geen invloed op de taakverdelings regels op het UDP-protocol.
 
 ## <a name="next-steps"></a>Volgende stappen
 

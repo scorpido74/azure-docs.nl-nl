@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 9/21/2020
-ms.openlocfilehash: 64f4b6e87f038b265fbd2c3e13f3779fb4c24f74
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/1/2020
+ms.openlocfilehash: 6fff7f22e7d265eb9b15bcec8604eeab692ac1c0
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936157"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650286"
 ---
 # <a name="limitations-in-azure-database-for-mysql---flexible-server-preview"></a>Beperkingen in Azure Database for MySQL flexibele server (preview-versie)
 
@@ -26,6 +26,8 @@ In dit artikel worden de beperkingen in de Azure Database for MySQL flexibele Se
 > Als u op zoek bent naar de minimale/maximale waarden voor server parameters zoals `max_connections` en `innodb_buffer_pool_size` , wordt deze informatie verplaatst naar de concepten van server parameters <!-- **[server parameters](./concepts-server-parameters.md)** --> .
 
 Azure Database for MySQL biedt ondersteuning voor het afstemmen van de waarden van server parameters. De minimum-en maximum waarde van sommige para meters (bijvoorbeeld `max_connections`, `join_buffer_size` , `query_cache_size` ) wordt bepaald door de compute-laag en de reken grootte van de server. Raadpleeg de concepten van server parameters <!-- [server parameters](./concepts-server-parameters.md)--> voor meer informatie over deze limieten.
+
+De invoeg toepassingen voor wacht woorden, zoals ' validate_password ' en ' caching_sha2_password ', worden niet ondersteund door de service.
 
 ## <a name="storage-engines"></a>Opslag engines
 

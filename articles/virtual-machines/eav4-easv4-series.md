@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 775b296185f9f0f0e967ada2688e24158f36360e
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: f95ffb662d830c432d3286eca8c935e2737f8043
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88648357"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91649538"
 ---
 # <a name="eav4-and-easv4-series"></a>Eav4- en Easv4-serie
 
@@ -20,15 +20,13 @@ De Eav4-serie en de Easv4-serie maken gebruik van AMD 2.35 GHz EPYC<sup>TM</sup>
 
 ## <a name="eav4-series"></a>Eav4-serie
 
-ACU: 230-260
-
-Premium Storage: niet ondersteund
-
-Premium Storage caching: niet ondersteund
-
-Livemigratie: ondersteund
-
-Updates voor geheugen behoud: ondersteund
+[ACU](acu.md): 230-260<br>
+[Premium Storage](premium-storage-performance.md): niet ondersteund<br>
+[Premium Storage caching](premium-storage-performance.md): niet ondersteund<br>
+[Livemigratie](maintenance-and-updates.md): ondersteund<br>
+[Updates voor geheugen behoud](maintenance-and-updates.md): ondersteund<br>
+[Ondersteuning](generation-2.md)voor het genereren van vm's: generatie 1<br>
+<br>
 
 De grootte van de Eav4-serie is gebaseerd op de 2.35 GHz AMD EPYC<sup>TM</sup> 7452-processor die een hogere maximum frequentie van 3.35 GHz kan bereiken en Premium SSD kan gebruiken. De grootten van de Eav4-serie zijn ideaal voor geheugenintensieve bedrijfs toepassingen. Gegevensschijfopslag wordt apart van virtuele machines in rekening gebracht. Als u Premium SSD wilt gebruiken, gebruikt u de grootte van de Easv4-serie. De prijs-en facturerings meters voor Easv4-grootten zijn gelijk aan die van de Eav3-serie.
 
@@ -46,15 +44,13 @@ De grootte van de Eav4-serie is gebaseerd op de 2.35 GHz AMD EPYC<sup>TM</sup> 7
 
 ## <a name="easv4-series"></a>Easv4-serie
 
-ACU: 230-260
-
-Premium Storage: ondersteund
-
-Premium Storage caching: ondersteund
-
-Livemigratie: ondersteund
-
-Updates voor geheugen behoud: ondersteund
+[ACU](acu.md): 230-260<br>
+[Premium Storage](premium-storage-performance.md): ondersteund<br>
+[Premium Storage caching](premium-storage-performance.md): ondersteund<br>
+[Livemigratie](maintenance-and-updates.md): ondersteund<br>
+[Updates voor geheugen behoud](maintenance-and-updates.md): ondersteund<br>
+[Ondersteuning](generation-2.md)voor het genereren van vm's: generatie 1<br>
+<br>
 
 De grootte van de Easv4-serie is gebaseerd op de 2.35 GHz AMD EPYC<sup>TM</sup> 7452-processor die een hogere maximum frequentie van 3.35 GHz kan bereiken en Premium SSD kan gebruiken. De grootten van de Easv4-serie zijn ideaal voor geheugenintensieve bedrijfs toepassingen.
 
@@ -74,7 +70,7 @@ De grootte van de Easv4-serie is gebaseerd op de 2.35 GHz AMD EPYC<sup>TM</sup> 
 
 ## <a name="other-sizes-and-information"></a>Andere grootten en informatie
 
-- [Algemeen doel](sizes-general.md)
+- [Algemeen gebruik](sizes-general.md)
 - [Geoptimaliseerd geheugen](sizes-memory.md)
 - [Geoptimaliseerde opslag](sizes-storage.md)
 - [Geoptimaliseerde GPU](sizes-gpu.md)

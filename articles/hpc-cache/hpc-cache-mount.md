@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: e29d031bc3461c4adab87b1d784ef19c89c7c12d
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 7f1d8d34d6351fc344fdb101ac8e9a96678df9d5
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91613000"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651425"
 ---
 # <a name="mount-the-azure-hpc-cache"></a>De Azure HPC Cache koppelen
 
@@ -79,7 +79,7 @@ Volg deze procedure om de koppelings opdracht te maken.
 
 1. Kies het **pad van de virtuele naam ruimte** dat u voor de client wilt gebruiken. Deze paden zijn gekoppeld aan exports op het back-end-opslag systeem.
 
-   ![scherm afbeelding van het veld naam ruimte paden, waarbij selector is geopend](media/mount-select-target.png)
+   ![Scherm opname van het veld ' virtuele naam ruimte-pad ', waarbij selector geopend is.](media/mount-select-target.png)
 
    U kunt de virtuele naam ruimte paden bekijken en wijzigen op de pagina **naam ruimte** Portal. Lees [de geaggregeerde naam ruimte instellen](add-namespace-paths.md) om te zien hoe u dit kunt doen.
 

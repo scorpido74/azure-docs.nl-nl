@@ -28,6 +28,10 @@
       href: tutorial-custom-role-cli.md
 - name: Concepten
   items:
+    - name: Roldefinities
+      href: role-definitions.md
+    - name: Bereik
+      href: scope-overview.md
     - name: Aanbevolen procedures
       href: best-practices.md
     - name: Voorwaardelijke toegang voor Azure-beheer
@@ -40,11 +44,7 @@
 - name: Instructiegidsen
   items:
     - name: Lijst met roldefinities weergeven
-      items:
-        - name: Overzicht
-          href: role-definitions.md
-        - name: Lijst met roldefinities weergeven
-          href: role-definitions-list.md
+      href: role-definitions-list.md
     - name: Lijst met roltoewijzingen weergeven
       items:
         - name: Portal
@@ -57,6 +57,8 @@
           href: role-assignments-list-rest.md
     - name: Roltoewijzingen toevoegen of verwijderen
       items:
+        - name: Stappen om een roltoewijzing toe te voegen
+          href: role-assignments-steps.md
         - name: Portal
           href: role-assignments-portal.md
         - name: Portal - gastgebruikers

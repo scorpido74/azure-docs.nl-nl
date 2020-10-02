@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: jushiman
-ms.openlocfilehash: db85774dd1cf1e7dd5a284182faf354004671618
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: eff3ff3d8fa2ab3025ca8b8d4f974d6944c88433
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90891770"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91649640"
 ---
 # <a name="dv3-and-dsv3-series"></a>Dv3- en DSv3-serie
 
@@ -28,15 +28,13 @@ Gegevensschijfopslag wordt apart van virtuele machines in rekening gebracht. Als
 
 Virtuele machines uit de Dv3-serie bieden een Intel® Hyper-Threading-technologie.
 
-ACU: 160-190
-
-Premium Storage: niet ondersteund
-
-Premium Storage caching: niet ondersteund
-
-Livemigratie: ondersteund
-
-Updates voor geheugen behoud: ondersteund
+[ACU](acu.md): 160-190<br>
+[Premium Storage](premium-storage-performance.md): niet ondersteund<br>
+[Premium Storage caching](premium-storage-performance.md): niet ondersteund<br>
+[Livemigratie](maintenance-and-updates.md): ondersteund<br>
+[Updates voor geheugen behoud](maintenance-and-updates.md): ondersteund<br>
+[Ondersteuning](generation-2.md)voor het genereren van vm's: generatie 1<br>
+<br>
 
 | Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Max. aantal gegevensschijven | Maximale tijdelijke opslag doorvoer: IOPS/MBps lezen/MBps schrijven | Maximum aantal Nic's/netwerk bandbreedte |
 |---|---|---|---|---|---|---|
@@ -54,15 +52,13 @@ Dsv3-serie-grootten worden uitgevoerd op Intel® Xeon® Platinum 8272CL (Cascade
 
 Virtuele machines uit de Dsv3-serie bieden een Intel® Hyper-Threading-technologie.
 
-ACU: 160-190
-
-Premium Storage: ondersteund
-
-Premium Storage caching: ondersteund
-
-Livemigratie: ondersteund
-
-Updates voor geheugen behoud: ondersteund
+[ACU](acu.md): 160-190<br>
+[Premium Storage](premium-storage-performance.md): ondersteund<br>
+[Premium Storage caching](premium-storage-performance.md): ondersteund<br>
+[Livemigratie](maintenance-and-updates.md): ondersteund<br>
+[Updates voor geheugen behoud](maintenance-and-updates.md): ondersteund<br>
+[Ondersteuning](generation-2.md)voor het genereren van vm's: generatie 1 en 2<br>
+<br>
 
 | Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Max. aantal gegevensschijven | Maxi maal cache geheugen en tijdelijke opslag doorvoer: IOPS/MBps (cache grootte in GiB) | Maximale burst-cache en tijdelijke opslag doorvoer: IOPS/MBps<sup>1</sup> | Maxi maal aantal niet-opgeslagen schijf doorvoer: IOPS/MBps | Maximale burst-schijf doorvoer in cache: IOPS/MBps<sup>1</sup> | Maximum aantal Nic's/verwachte netwerk bandbreedte (Mbps) |
 |---|---|---|---|---|---|---|---|---|---|

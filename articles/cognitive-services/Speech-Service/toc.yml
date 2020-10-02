@@ -10,6 +10,10 @@
       href: language-support.md
     - name: Ondersteuning voor regio
       href: regions.md
+    - name: Prijzen
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
+    - name: Quota en limieten
+      href: speech-services-quotas-and-limits.md
     - name: Wat is er nieuw in Docs?
       href: whats-new.md
 - name: Spraak naar tekst
@@ -76,7 +80,7 @@
         - name: Java
           displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
           href: 'https://aka.ms/csspeech/javaref'
-        - name: Javascript
+        - name: JavaScript
           displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
           href: 'https://aka.ms/csspeech/javascriptref'
         - name: Objective-C
@@ -155,7 +159,7 @@
         - name: Java
           displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
           href: 'https://aka.ms/csspeech/javaref'
-        - name: Javascript
+        - name: JavaScript
           displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
           href: 'https://aka.ms/csspeech/javascriptref'
         - name: Objective-C
@@ -205,7 +209,7 @@
         - name: Java
           displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
           href: 'https://aka.ms/csspeech/javaref'
-        - name: Javascript
+        - name: JavaScript
           displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
           href: 'https://aka.ms/csspeech/javascriptref'
         - name: Objective-C
@@ -248,7 +252,7 @@
             - name: Java
               displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
               href: 'https://aka.ms/csspeech/javaref'
-            - name: Javascript
+            - name: JavaScript
               displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
               href: 'https://aka.ms/csspeech/javascriptref'
             - name: Objective-C
@@ -303,7 +307,7 @@
                 - name: Java
                   displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
                   href: 'https://aka.ms/csspeech/javaref'
-                - name: Javascript
+                - name: JavaScript
                   displayName: 'Node, Node.js, NodeJS, JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
                   href: 'https://aka.ms/csspeech/javascriptref'
                 - name: Objective-C
@@ -347,6 +351,8 @@
       items:
         - name: Wat is een spraakassistent?
           href: voice-assistants.md
+        - name: Voorbeelden van Spraakassistent (GitHub)
+          href: 'https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant'
     - name: Aangepaste opdrachten
       items:
         - name: Wat zijn aangepaste opdrachten?
@@ -459,11 +465,58 @@
       items:
         - name: Sprekerherkenning REST API
           href: 'https://docs.microsoft.com/rest/api/speakerrecognition/'
-- name: Hosting
+- name: Hulpprogramma's
   items:
-    - name: Documentatie over hosting
-      href: index-hosting.yml
-    - name: Instructiegidsen
+    - name: Speech-SDK
+      items:
+        - name: Overzicht van Speech-SDK
+          href: speech-sdk.md
+        - name: Speech-SDK instellen
+          href: quickstarts/setup-platform.md
+        - name: Releaseopmerkingen bij Speech SDK
+          href: releasenotes.md
+        - name: Naslaginformatie
+          items:
+            - name: C++
+              href: 'https://aka.ms/csspeech/cppref'
+            - name: C#
+              href: 'https://aka.ms/csspeech/csharpref'
+            - name: Java
+              href: 'https://aka.ms/csspeech/javaref'
+            - name: JavaScript
+              href: 'https://aka.ms/csspeech/javascriptref'
+            - name: Objective-C
+              href: 'https://aka.ms/csspeech/objectivecref'
+            - name: Python
+              href: 'https://aka.ms/csspeech/pythonref'
+    - name: Speech-CLI
+      displayName: SPX
+      items:
+        - name: Overzicht van Speech-CLI
+          displayName: What is SPX?
+          href: spx-overview.md
+        - name: Basisbeginselen van de Speech-CLI
+          displayName: SPX basics
+          href: spx-basics.md
+    - name: Speech Studio
+      items:
+        - name: Overzicht van Speech Studio
+          href: 'https://speech.microsoft.com'
+        - name: Een app voor aangepaste opdrachten maken met Speech Studio
+          href: quickstart-custom-speech-commands-create-new.md
+- name: Implementeren
+  items:
+    - name: Logboekregistratie inschakelen
+      href: how-to-use-logging.md
+    - name: Geheugenverbruik bijhouden
+      href: how-to-track-speech-sdk-memory-usage.md
+    - name: OpenSSL voor Linux configureren
+      displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
+      href: how-to-configure-openssl-linux.md
+    - name: RHEL/CentOS 7 configureren
+      href: how-to-configure-rhel-centos-7.md
+      displayName: 'RHEL, CentOS 7, CentOS, Configure RHEL, Configure CentO'
+    - name: Containers
       items:
         - name: Spraakcontainers installeren en uitvoeren
           displayName: 'containers,install container,run container'
@@ -479,53 +532,8 @@
         - name: Spraakcontainers in Azure-containerinstanties
           displayName: 'ACI,azure container instances,container instances,containers'
           href: deploy-speech-on-container-instances.md
-    - name: Resources
-      items:
         - name: Veelgestelde vragen over containers
           href: speech-container-faq.md
-- name: Speech-SDK
-  items:
-    - name: Overzicht van Speech-SDK
-      href: speech-sdk.md
-    - name: Speech-SDK instellen
-      displayName: 'install the speech sdk, install the speech sdk java, install the speech sdk C#, install the speech sdk python, install the speech sdk C++, setup speech sdk, install, install C#, install C++, install Python, install Java, install Javascript'
-      href: quickstarts/setup-platform.md
-    - name: Instructiegidsen
-      items:
-        - name: Logboekregistratie inschakelen
-          href: how-to-use-logging.md
-        - name: Geheugenverbruik bijhouden
-          href: how-to-track-speech-sdk-memory-usage.md
-        - name: OpenSSL voor Linux configureren
-          displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
-          href: how-to-configure-openssl-linux.md
-        - name: RHEL/CentOS 7 configureren
-          href: how-to-configure-rhel-centos-7.md
-          displayName: 'RHEL, CentOS 7, CentOS, Configure RHEL, Configure CentOS'
-    - name: Voorbeelden
-      items:
-        - name: Voorbeelden van Speech-SDK (GitHub)
-          href: 'https://github.com/Azure-Samples/cognitive-services-speech-sdk'
-        - name: Voorbeelden van de Speech Devices SDK (GitHub)
-          href: 'https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK'
-        - name: Voorbeelden van Spraakassistent (GitHub)
-          href: 'https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant'
-    - name: Naslaginformatie
-      items:
-        - name: C++
-          href: 'https://aka.ms/csspeech/cppref'
-        - name: C#
-          href: 'https://aka.ms/csspeech/csharpref'
-        - name: Java
-          href: 'https://aka.ms/csspeech/javaref'
-        - name: Javascript
-          href: 'https://aka.ms/csspeech/javascriptref'
-        - name: Objective-C
-          href: 'https://aka.ms/csspeech/objectivecref'
-        - name: Python
-          href: 'https://aka.ms/csspeech/pythonref'
-        - name: Releaseopmerkingen bij Speech SDK
-          href: releasenotes.md
 - name: Apparaten
   items:
     - name: Documentatie over Speech Devices
@@ -536,6 +544,8 @@
           href: speech-devices-sdk.md
         - name: De Speech Devices SDK ophalen
           href: get-speech-devices-sdk.md
+        - name: Voorbeelden van de Speech Devices SDK (GitHub)
+          href: 'https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK'
     - name: Hardware
       items:
         - name: Aanbeveling voor microfoonmatrix
@@ -560,23 +570,6 @@
       items:
         - name: Releaseopmerkingen bij de Speech Devices SDK
           href: devices-sdk-release-notes.md
-- name: Hulpprogramma's
-  items:
-    - name: Speech-CLI
-      displayName: SPX
-      items:
-        - name: Wat is de Speech-CLI?
-          displayName: What is SPX?
-          href: spx-overview.md
-        - name: Basisbeginselen van de Speech-CLI
-          displayName: SPX basics
-          href: spx-basics.md
-    - name: Speech Studio
-      items:
-        - name: Wat is Speech Studio?
-          href: 'https://speech.microsoft.com'
-        - name: Een app voor aangepaste opdrachten maken met Speech Studio
-          href: quickstart-custom-speech-commands-create-new.md
 - name: Migratie
   items:
     - name: Vanuit Bing Speech
@@ -595,12 +588,8 @@
     - name: Onafhankelijke clouds
       displayName: 'fairfax,mooncake,compliant,secret,compliance,government,government cloud,dod,china'
       href: sovereign-clouds.md
-    - name: Prijzen
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
     - name: Prijscalculator
       href: 'https://azure.microsoft.com/pricing/calculator/#cognitive-services'
-    - name: Quota en limieten
-      href: speech-services-quotas-and-limits.md
     - name: Naleving
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Versleuteling

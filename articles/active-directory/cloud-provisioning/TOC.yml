@@ -34,6 +34,10 @@
           href: how-to-install.md
         - name: Configuratie voor cloudinrichting
           href: how-to-configure.md
+        - name: Inrichting on-demand
+          href: how-to-on-demand-provision.md
+        - name: Kenmerktoewijzing
+          href: how-to-attribute-mapping.md
         - name: Eenmalige aanmelding gebruiken
           href: how-to-sso.md
     - name: Plannen en ontwerpen
@@ -56,7 +60,7 @@
           href: how-to-troubleshoot.md
         - name: Dubbele kenmerken
           href: /office365/troubleshoot/administration/duplicate-attributes-prevent-dirsync
-- name: Verwijzing
+- name: Naslaginformatie
   items:
     - name: Versiegeschiedenis voor de agent voor Azure AD Connect-cloudinrichting
       href: ../app-provisioning/provisioning-agent-release-version-history.md?context=azure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context

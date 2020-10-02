@@ -4,6 +4,8 @@
   items:
     - name: Wat is Azure NetApp Files?
       href: azure-netapp-files-introduction.md
+    - name: Nieuw
+      href: whats-new.md
     - name: Opslaghiërarchie van Azure NetApp Files
       href: azure-netapp-files-understand-storage-hierarchy.md
 - name: Snelstartgidsen
@@ -27,6 +29,8 @@
           href: azure-netapp-files-performance-metrics-volumes.md
         - name: Prestatiebenchmarks voor Linux
           href: performance-benchmarks-linux.md
+        - name: Oracle-databaseprestaties in afzonderlijke Azure NetApp Files-volumes
+          href: performance-oracle-single-volumes.md
         - name: Veelgestelde vragen over SMB-prestaties
           href: azure-netapp-files-smb-performance.md
     - name: Kostenmodel voor Azure NetApp Files

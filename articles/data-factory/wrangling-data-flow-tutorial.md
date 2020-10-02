@@ -7,12 +7,12 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: f9b5380fa219d768651703eeb9fe445fcd215332
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: e9a4f7266522fc17c33e2086af6cb7367bbed39e
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921767"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650677"
 ---
 # <a name="prepare-data-with-wrangling-data-flow"></a>Gegevens voorbereiden met wrangling-gegevens stroom
 
@@ -25,13 +25,13 @@ ms.locfileid: "85921767"
 
 Er zijn twee manieren om een wrangling-gegevens stroom te maken in Azure Data Factory. U kunt ook op het plus-pictogram klikken en **gegevens stroom** selecteren in het deel venster Factory resources.
 
-![Wrangling](media/wrangling-data-flow/tutorial7.png)
+![Scherm opname van de gegevens stroom in het deel venster Factory-resources.](media/wrangling-data-flow/tutorial7.png)
 
 De andere methode bevindt zich in het deel venster activiteiten van het pijp lijn-canvas. Open de accordeon voor **verplaatsen en transformeren** en sleep de activiteit **gegevens stroom** naar het canvas.
 
 Selecteer in beide methoden in het zijvenster dat wordt geopend, de optie **nieuwe gegevens stroom maken** en kies **Wrangling data flow**. Klik op OK.
 
-![Wrangling](media/wrangling-data-flow/tutorial1.png)
+![Scherm afbeelding die de Wrangling-gegevens stroom optie markeert.](media/wrangling-data-flow/tutorial1.png)
 
 ## <a name="author-a-wrangling-data-flow"></a>Een wrangling-gegevens stroom schrijven
 
@@ -44,21 +44,21 @@ Voeg een **bron gegevensset** toe voor uw wrangling-gegevens stroom. U kunt ofwe
 
 Klik op **maken** om de Power query online Mashup-Editor te openen.
 
-![Wrangling](media/wrangling-data-flow/tutorial5.png)
+![Scherm opname van de knop maken waarmee de Power Query online Mashup-Editor wordt geopend.](media/wrangling-data-flow/tutorial5.png)
 
-Maak uw wrangling-gegevens stroom met behulp van code-Free Data Preparation. Zie [transformatie functies](wrangling-data-flow-functions.md) voor een lijst met beschik bare functies/
+Maak uw wrangling-gegevens stroom met behulp van code-Free Data Preparation. Zie [transformatie functies](wrangling-data-flow-functions.md)voor een lijst met beschik bare functies.
 
-![Wrangling](media/wrangling-data-flow/tutorial6.png)
+![Scherm opname van het proces voor het ontwerpen van uw wrangling-gegevens stroom.](media/wrangling-data-flow/tutorial6.png)
 
 ## <a name="running-and-monitoring-a-wrangling-data-flow"></a>Een wrangling-gegevens stroom uitvoeren en controleren
 
 Klik op **debug** in het canvas op de pijp lijn om het uitvoeren van een pijp lijn fout opsporing uit te voeren voor een wrangling-gegevens stroom. Zodra u de gegevens stroom hebt gepubliceerd, voert de **trigger nu** een uitvoering op aanvraag uit van de laatste gepubliceerde pijp lijn. Wrangling-gegevens stromen kunnen worden gepland met alle bestaande Azure Data Factory triggers.
 
-![Wrangling](media/wrangling-data-flow/tutorial3.png)
+![Scherm afbeelding die laat zien hoe u een wrangling-gegevens stroom kunt toevoegen.](media/wrangling-data-flow/tutorial3.png)
 
 Ga naar het tabblad **monitor** om de uitvoer te visualiseren van een triggered wrangling-activiteit voor het uitvoeren van gegevens stromen.
 
-![Wrangling](media/wrangling-data-flow/tutorial2.png)
+![Scherm opname van de uitvoer van een triggered wrangling-activiteit voor het uitvoeren van gegevens stromen.](media/wrangling-data-flow/tutorial2.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

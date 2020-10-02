@@ -8,13 +8,13 @@ metadata:
   ms.topic: landing-page
   author: dikamath
   ms.author: dikamath
-  ms.date: 05/04/2020
-  ms.openlocfilehash: aad6bc60066d76c96dd38fa3ba1e94069bb9e25a
-  ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+  ms.date: 09/21/2020
+  ms.openlocfilehash: 76a879f1c2c228fd509f0b0725b7ff3ddac4fa41
+  ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 08/22/2020
-  ms.locfileid: "88752112"
+  ms.lasthandoff: 09/30/2020
+  ms.locfileid: "91574905"
 landingContent:
 - title: Over Azure VMware Solution
   linkLists:
@@ -22,15 +22,61 @@ landingContent:
     links:
     - text: Wat is Azure VMware Solution?
       url: introduction.md
+  - linkListType: concept
+    links:
+    - text: Privécloud en clusters
+      url: concepts-private-clouds-clusters.md
+    - text: Privécloudnetwerken en interconnectiviteit
+      url: concepts-networking.md
+    - text: Opslag in privéclouds
+      url: concepts-storage.md
+    - text: Toegang en identiteit voor privéclouds
+      url: concepts-identity.md
+    - text: Op rollen gebaseerd toegangsbeheer
+      url: concepts-role-based-access-control.md
+    - text: Upgrades voor privéclouds
+      url: concepts-upgrades.md
+- title: Azure VMware Solution implementeren
+  linkLists:
   - linkListType: get-started
     links:
-    - text: Controlelijst voor netwerken
-      url: tutorial-network-checklist.md
+    - text: Pre-implementatieproces
+      url: production-ready-deployment-steps.md
+    - text: Controlelijst voorafgaande aan de implementatie
+      url: pre-deployment-checklist.md
+    - text: 1 - Azure VMware Solution implementeren
+      url: deploy-azure-vmware-solution.md
+    - text: 2 - Verbinding maken met on-premises gegevens
+      url: azure-vmware-solution-on-premises.md
+    - text: 3 - HCX implementeren en configureren
+      url: tutorial-deploy-vmware-hcx.md
   - linkListType: tutorial
     links:
-    - text: Een AVS-privécloud maken
+    - text: Checklist voor netwerkplanning
+      url: tutorial-network-checklist.md
+    - text: Een privécloud maken
       url: tutorial-create-private-cloud.md
-    - text: Netwerk configureren
-      url: tutorial-configure-networking.md
     - text: Toegang tot een privécloud
       url: tutorial-access-private-cloud.md
+    - text: Netwerk configureren
+      url: tutorial-configure-networking.md
+    - text: Een NSX-T-netwerksegment maken
+      url: tutorial-nsx-t-network-segment.md
+    - text: On-premises peer naar privécloud
+      url: tutorial-expressroute-global-reach-private-cloud.md
+    - text: VMware HCX implementeren en configureren
+      url: tutorial-deploy-vmware-hcx.md
+    - text: Een privécloud schalen
+      url: tutorial-scale-private-cloud.md
+- title: Azure VMware Solution uitbreiden
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Migratie-evaluatie
+      url: ../migrate/how-to-create-azure-vmware-solution-assessment.md?context=/azure/migrate/context/migrate-context.json
+    - text: DHCP beheren
+      url: manage-dhcp.md
+    - text: Herstel na noodgevallen implementeren voor VM's
+      url: disaster-recovery-for-virtual-machines.md
+    - text: VM implementeren via inhoudsbibliotheek
+      url: tutorial-deploy-vm-content-library.md

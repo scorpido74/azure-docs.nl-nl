@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/04/2016
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c5ae587438e2cc3c583307c3d6b41ec986193216
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 57df05918b590cedbf4af0464690ef2524f8ba79
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134751"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650498"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-the-azure-portal"></a>Privé IP-adressen configureren voor een virtuele machine (klassiek) met behulp van de Azure Portal
 
@@ -43,20 +43,20 @@ Als u een virtuele machine met de naam *DNS01* in het *frontend* -subnet van een
 1. Navigeer in een browser naar https://portal.azure.com en meld u, indien nodig, aan met uw Azure-account.
 2. Selecteer **Nieuw**  >  **Compute**  >  **Windows Server 2012 R2 Data Center**, Let op dat de lijst **een implementatie model selecteren** reeds **klassiek**bevat en selecteer vervolgens **maken**.
    
-    ![Een VM maken in Azure Portal](./media/virtual-networks-static-ip-classic-pportal/figure01.png)
+    ![Scherm opname van de Azure Portal met de nieuwe > Compute > Windows Server 2012 R2 Data Center-tegel gemarkeerd.](./media/virtual-networks-static-ip-classic-pportal/figure01.png)
 3. Voer onder **VM maken**de naam in van de virtuele machine die moet worden gemaakt (*DNS01* in het scenario), het lokale beheerders account en het wacht woord.
    
-    ![Een VM maken in Azure Portal](./media/virtual-networks-static-ip-classic-pportal/figure02.png)
+    ![Scherm afbeelding die laat zien hoe u een virtuele machine maakt door de naam van de virtuele machine, de gebruikers naam van de lokale beheerder en het wacht woord in te voeren.](./media/virtual-networks-static-ip-classic-pportal/figure02.png)
 4. Selecteer **optioneel configuratie**  >  **netwerk**  >  **Virtual Network**en selecteer vervolgens **TestVNet**. Als **TestVNet** niet beschikbaar is, moet u ervoor zorgen dat u de centrale locatie van de *VS* gebruikt en de test omgeving hebt gemaakt die aan het begin van dit artikel is beschreven.
    
-    ![Een VM maken in Azure Portal](./media/virtual-networks-static-ip-classic-pportal/figure03.png)
+    ![Scherm opname van de optionele configuratie > netwerk > Virtual Network > TestVNet-optie gemarkeerd.](./media/virtual-networks-static-ip-classic-pportal/figure03.png)
 5. Zorg **Network**ervoor dat het momenteel geselecteerde subnet een front- *End*is en selecteer vervolgens **IP-adressen**onder **IP-adres toewijzing** , selecteer **statisch**en voer *192.168.1.101* in voor het **IP-adres** zoals hieronder wordt weer gegeven.
    
-    ![Een VM maken in Azure Portal](./media/virtual-networks-static-ip-classic-pportal/figure04.png)    
+    ![Scherm opname van het veld IP-adressen waar u het vaste IP-adres typt.](./media/virtual-networks-static-ip-classic-pportal/figure04.png)    
 6. Selecteer **OK** onder **IP-adressen**, selecteer **OK** onder **netwerk**en selecteer **OK** onder **optionele configuratie**.
 7. Selecteer bij **virtuele machine maken**de optie **maken**. De onderstaande tegel wordt weer gegeven in het dash board:
    
-    ![Een VM maken in Azure Portal](./media/virtual-networks-static-ip-classic-pportal/figure05.png)
+    ![Scherm afbeelding met de tegel Windows Server 2012 R2 Data Center maken.](./media/virtual-networks-static-ip-classic-pportal/figure05.png)
 
 ## <a name="how-to-retrieve-static-private-ip-address-information-for-a-vm"></a>Informatie over statisch privé-IP-adres ophalen voor een virtuele machine
 Voer de volgende stappen uit om de gegevens van het statische privé-IP-adres te bekijken voor de virtuele machine die is gemaakt met de bovenstaande stappen.
@@ -69,7 +69,7 @@ Voer de volgende stappen uit om de gegevens van het statische privé-IP-adres te
 
 Onder **IP-adressen**selecteert u **dynamische** , rechts van de **toewijzing van IP-** adressen, selecteert u **Opslaan**en selecteert u vervolgens **Ja**, zoals wordt weer gegeven in de volgende afbeelding:
    
-![Een VM maken in Azure Portal](./media/virtual-networks-static-ip-classic-pportal/figure07.png)
+![Scherm afbeelding die laat zien hoe het statische privé-IP-adres uit een virtuele machine moet worden verwijderd door dynamische te selecteren rechts van het label voor de toewijzing van IP-adressen.](./media/virtual-networks-static-ip-classic-pportal/figure07.png)
 
 ## <a name="how-to-add-a-static-private-ip-address-to-an-existing-vm"></a>Een statisch privé-IP-adres toevoegen aan een bestaande virtuele machine
 
@@ -78,7 +78,7 @@ Onder **IP-adressen**selecteert u **dynamische** , rechts van de **toewijzing va
 
 ## <a name="set-ip-addresses-within-the-operating-system"></a>IP-adressen in het besturings systeem instellen
 
-Het is raadzaam dat u het privé-IP-adres dat is toegewezen aan de virtuele machine van Azure niet statisch toewijst in het besturings systeem van een VM, tenzij dat nodig is. Als u het privé-IP-adres hand matig instelt in het besturings systeem, moet u ervoor zorgen dat het hetzelfde adres is als het privé-IP-adres dat is toegewezen aan de Azure VM, of u kunt de verbinding met de virtuele machine verliezen. U moet het open bare IP-adres dat is toegewezen aan een virtuele machine van Azure in het besturings systeem van de virtuele machine nooit hand matig toewijzen.
+Het is raadzaam dat u het privé-IP-adres dat is toegewezen aan de virtuele machine van Azure niet statisch toewijst in het besturings systeem van een VM, tenzij dat nodig is. Als u het privé-IP-adres hand matig instelt in het besturings systeem, moet u ervoor zorgen dat het hetzelfde adres is als het privé-IP-adres dat is toegewezen aan de Azure VM, of u kunt de verbinding met de virtuele machine verliezen. U moet het openbare IP-adres dat is toegewezen aan een virtuele machine van Azure in het besturingssysteem van de virtuele machine nooit handmatig toewijzen.
 
 ## <a name="next-steps"></a>Volgende stappen
 * Meer informatie over [gereserveerde open bare IP-](virtual-networks-reserved-public-ip.md) adressen.

@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: bf982b313c99034065aad5f246a69caf665a2657
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 85264eae325d9ed7049daac47a124cf1efb806e0
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563432"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91649946"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planning voor de implementatie van Azure Files
 [Azure files](storage-files-introduction.md) kunnen op twee manieren worden geïmplementeerd: door de Serverloze Azure-bestands shares rechtstreeks te koppelen of door Azure-bestands shares on-premises in de cache op te maken met behulp van Azure file sync. Welke implementatie optie u kiest, wijzigt de dingen die u moet overwegen bij het plannen van uw implementatie. 
@@ -117,7 +117,7 @@ Zie [Advanced Threat Protection voor Azure Storage](https://docs.microsoft.com/a
 
 Over het algemeen zijn Azure Files functies en interoperabiliteit met andere services hetzelfde als die van Premium-bestands shares en standaard bestands shares (inclusief geoptimaliseerde, hot en coole bestands shares). er zijn echter enkele belang rijke verschillen:
 - **Factureringsmodel**
-    - Premium-bestands shares worden gefactureerd met behulp van een ingericht facturerings model. Dit betekent dat u betaalt voor de hoeveelheid opslag ruimte die u in plaats van de hoeveelheid opslag die u daad werkelijk vraagt. 
+    - Premium-bestands shares worden gefactureerd met behulp van een ingericht facturerings model, wat betekent dat u vaste prijs betaalt voor de opslag ruimte die u in plaats van de hoeveelheid opslag ruimte die u gebruikt. Er zijn geen extra kosten voor trans acties en meta gegevens op rest.
     - Standaard bestands shares worden gefactureerd op basis van een betalen per gebruik-model, dat een basis kosten voor opslag bevat voor de hoeveelheid opslag die u daad werkelijk verbruikt en vervolgens een extra transactie kosten op basis van hoe u de share gebruikt. Bij standaard bestands shares neemt uw factuur toe als u de Azure-bestands share gebruikt (lezen/schrijven/koppelen).
 - **Redundantie opties**
     - Premium-bestands shares zijn alleen beschikbaar voor lokaal redundante (LRS) en zone redundante opslag (ZRS).
@@ -126,7 +126,7 @@ Over het algemeen zijn Azure Files functies en interoperabiliteit met andere ser
     - Premium-bestands shares kunnen Maxi maal 100 TiB worden ingericht zonder verdere werkzaamheden.
     - Standaard kunnen standaard bestands shares slechts tot 5 TiB groot zijn, hoewel de limiet voor delen kan worden verhoogd tot 100 TiB door u aan te melden bij de functie vlag voor het opslag account voor *grote bestands shares* . Standaard bestands shares kunnen Maxi maal 100 TiB zijn voor lokaal redundante of zone redundante opslag accounts. Zie [grote bestands shares inschakelen en maken](https://docs.microsoft.com/azure/storage/files/storage-files-how-to-create-large-file-share)voor meer informatie over het verhogen van de grootte van de bestands share.
 - **Regionale beschikbaarheid**
-    - Premium-bestands shares zijn niet beschikbaar in elke regio en zone redundante ondersteuning is beschikbaar in een kleinere subset van regio's. Zie de pagina [producten beschikbaar per regio](https://azure.microsoft.com/global-infrastructure/services/?products=storage) voor Azure als u wilt weten of Premium-bestands shares op dit moment beschikbaar zijn in uw regio. Zie [Azure Availability zone Support per regio](../../availability-zones/az-region.md)als u wilt weten welke regio's ZRS ondersteunen. Vul deze [enquête](https://aka.ms/pfsfeedback)in om u te helpen bij het bepalen van de prioriteit van nieuwe regio's en de functies van de Premium-laag.
+    - Premium-bestands shares zijn beschikbaar in de meeste Azure-regio's, met uitzonde ring van enkele regio's. Zone redundante ondersteuning is beschikbaar in een subset van regio's. Zie de pagina [producten beschikbaar per regio](https://azure.microsoft.com/global-infrastructure/services/?products=storage) voor Azure als u wilt weten of Premium-bestands shares op dit moment beschikbaar zijn in uw regio. Zie [zone-redundante opslag](../common/storage-redundancy.md#zone-redundant-storage)als u wilt weten welke regio's ZRS ondersteunen. Vul deze [enquête](https://aka.ms/pfsfeedback)in om u te helpen bij het bepalen van de prioriteit van nieuwe regio's en de functies van de Premium-laag.
     - Standaard bestands shares zijn beschikbaar in elke Azure-regio.
 - Azure Kubernetes service (AKS) biedt ondersteuning voor Premium-bestands shares in versie 1,13 en hoger.
 

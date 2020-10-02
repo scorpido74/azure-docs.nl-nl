@@ -7,12 +7,12 @@ ms.topic: article
 author: emuench
 ms.author: navits
 ms.date: 07/17/2020
-ms.openlocfilehash: e512c233ccfd793b87f203f837b11e97966d8102
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 10137e59e0ea06fa785fccc215c867b6d8c0cb76
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90016242"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651153"
 ---
 # <a name="appsource-dynamics-365-finance-and-operations-functional-validation"></a>AppSource Dynamics 365 Finance and Operations functionele validatie
 
@@ -58,7 +58,7 @@ Als u een laatste beoordelings oproep wilt plannen, neemt u contact op [appsourc
 
     | Veld | Installatiekopie <img src="" width="400px">|
     | --- | --- |
-    | Overzicht van pakket | [![Scherm overzicht van package](media/dynamics-365-finance-operations/package-overview-45.png)](media/dynamics-365-finance-operations/package-overview.png#lightbox) |
+    | Overzicht van pakket | [![Scherm opname van het venster pakket overzicht.](media/dynamics-365-finance-operations/package-overview-45.png)](media/dynamics-365-finance-operations/package-overview.png#lightbox) |
     | <ul><li>Oplossings fiatteurs</li></ul> | [![Scherm overzicht van package](media/dynamics-365-finance-operations/solution-approvers-45.png)](media/dynamics-365-finance-operations/solution-approvers.png#lightbox) |
     | Pakket inhoud<ul><li>Model</li><li>Software-implementeerbaar pakket</li></ul> | [![Scherm inhoud van pakket 1](media/dynamics-365-finance-operations/package-contents-1-45.png)](media/dynamics-365-finance-operations/package-contents-1.png#lightbox) |
     | <ul><li>GER-configuratie</li><li>Back-up van data base</li></ul><br>Artefacten zijn niet vereist in de sectie **Ger-configuratie** . | [![Scherm inhoud van pakket twee](media/dynamics-365-finance-operations/package-contents-2-45.png)](media/dynamics-365-finance-operations/package-contents-2.png#lightbox) |

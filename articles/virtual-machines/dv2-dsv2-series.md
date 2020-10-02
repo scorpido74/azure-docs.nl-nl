@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: ede5b84620217e472d930d86eaebfaad2397ca6b
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 785e72a47d68bf368e160b1f3bf2a6d762d1f100
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88648425"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91649691"
 ---
 # <a name="dv2-and-dsv2-series"></a>Dv2- en DSv2-serie
 
@@ -22,15 +22,13 @@ De dv2-en Dsv2-serie, een follow-on van de oorspronkelijke D-serie, is voorzien 
 
 Dv2-serie grootten worden uitgevoerd op Intel® Xeon® Platinum 8272CL (Cascade Lake), Intel® Xeon® 8171M 2.1 GHz (Skylake) of de Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell) of de Intel® Xeon-® E5-2673 v3 2,4 GHz (Haswell)-processors met Intel Turbo Boost Technology 2,0.
 
-ACU: 210-250
-
-Premium Storage: niet ondersteund
-
-Premium Storage caching: niet ondersteund
-
-Livemigratie: ondersteund
-
-Updates voor geheugen behoud: ondersteund
+[ACU](acu.md): 210-250<br>
+[Premium Storage](premium-storage-performance.md): niet ondersteund<br>
+[Premium Storage caching](premium-storage-performance.md): niet ondersteund<br>
+[Livemigratie](maintenance-and-updates.md): ondersteund<br>
+[Updates voor geheugen behoud](maintenance-and-updates.md): ondersteund<br>
+[Ondersteuning](generation-2.md)voor het genereren van vm's: generatie 1<br>
+<br>
 
 | Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Maximale tijdelijke opslag doorvoer: IOPS/MBps lezen/MBps schrijven | Max. aantal gegevensschijven | Door Voer: IOPS | Max. aantal NIC's | Verwachte netwerk bandbreedte (Mbps) |
 |---|---|---|---|---|---|---|---|---|
@@ -44,15 +42,13 @@ Updates voor geheugen behoud: ondersteund
 
 DSv2-serie grootten worden uitgevoerd op Intel® Xeon® Platinum 8272CL (Cascade Lake), Intel® Xeon® 8171M 2.1 GHz (Skylake) of de Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell) of de Intel® Xeon-® E5-2673 v3 2,4 GHz (Haswell)-processors met Intel Turbo Boost Technology 2,0 en Premium Storage gebruiken.
 
-ACU: 210-250
-
-Premium Storage: ondersteund
-
-Premium Storage caching: ondersteund
-
-Livemigratie: ondersteund
-
-Updates voor geheugen behoud: ondersteund
+[ACU](acu.md): 210-250<br>
+[Premium Storage](premium-storage-performance.md): ondersteund<br>
+[Premium Storage caching](premium-storage-performance.md): ondersteund<br>
+[Livemigratie](maintenance-and-updates.md): ondersteund<br>
+[Updates voor geheugen behoud](maintenance-and-updates.md): ondersteund<br>
+[Ondersteuning](generation-2.md)voor het genereren van vm's: generatie 1 en 2<br>
+<br>
 
 | Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Max. aantal gegevensschijven | Maxi maal cache geheugen en tijdelijke opslag doorvoer: IOPS/MBps (cache grootte in GiB) | Maxi maal aantal niet-opgeslagen schijf doorvoer: IOPS/MBps | Max. aantal NIC's|Verwachte netwerk bandbreedte (Mbps) |
 |---|---|---|---|---|---|---|---|---|
@@ -66,7 +62,7 @@ Updates voor geheugen behoud: ondersteund
 
 ## <a name="other-sizes-and-information"></a>Andere grootten en informatie
 
-- [Algemeen doel](sizes-general.md)
+- [Algemeen gebruik](sizes-general.md)
 - [Geoptimaliseerd geheugen](sizes-memory.md)
 - [Geoptimaliseerde opslag](sizes-storage.md)
 - [Geoptimaliseerde GPU](sizes-gpu.md)

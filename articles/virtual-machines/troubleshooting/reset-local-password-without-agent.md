@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: genli
-ms.openlocfilehash: c7e6772799d98cd2997a1fe6b48efe1c7632cfaa
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: 4cec8f77cacc5d3492dd6a5f8a8baa060f910763
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91598360"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650593"
 ---
 # <a name="reset-local-windows-password-for-azure-vm-offline"></a>Offline een lokaal Windows-wachtwoord opnieuw instellen voor een virtuele Azure-machine
 U kunt het lokale Windows-wacht woord van een virtuele machine in azure opnieuw instellen met behulp van de [Azure portal of Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) , op voor waarde dat de Azure-gast agent is geïnstalleerd. Deze methode is de belangrijkste manier om een wacht woord opnieuw in te stellen voor een Azure-VM. Als u problemen ondervindt met de Azure Guest agent die niet reageert of als u niet kunt installeren na het uploaden van een aangepaste installatie kopie, kunt u een Windows-wacht woord hand matig opnieuw instellen. In dit artikel wordt beschreven hoe u een wacht woord voor een lokaal account opnieuw instelt door de virtuele schijf van het bron besturingssysteem te koppelen aan een andere virtuele machine. De stappen die in dit artikel worden beschreven, zijn niet van toepassing op Windows-domein controllers. 
@@ -59,7 +59,7 @@ Probeer altijd een wacht woord opnieuw in te stellen met behulp van de [Azure po
      Version=1
      ```
      
-     :::image type="content" source="./media/reset-local-password-without-agent/create-gpt-ini.png" alt-text="gpt.inimaken ":::
+     :::image type="content" source="./media/reset-local-password-without-agent/create-gpt-ini.png" alt-text="Scherm afbeelding met de updates die zijn aangebracht in het gpt.ini-bestand.":::
 
 4. Maken `scripts.ini` in `\Windows\System32\GroupPolicy\Machine\Scripts\` . Zorg ervoor dat verborgen mappen worden weer gegeven. Als dat nodig is, maakt u de `Machine` `Scripts` mappen of. 
    
@@ -71,10 +71,10 @@ Probeer altijd een wacht woord opnieuw in te stellen met behulp van de [Azure po
      0Parameters=
      ```
      
-     :::image type="content" source="./media/reset-local-password-without-agent/create-scripts-ini-1.png" alt-text="gpt.inimaken " <username> /add
+     :::image type="content" source="./media/reset-local-password-without-agent/create-scripts-ini-1.png" alt-text="Scherm afbeelding met de updates die zijn aangebracht in het gpt.ini-bestand." <username> /add
     ```
 
-    :::image type="content" source="./media/reset-local-password-without-agent/create-fixazure-cmd-1.png" alt-text="gpt.inimaken ":::
+    :::image type="content" source="./media/reset-local-password-without-agent/create-fixazure-cmd-1.png" alt-text="Scherm afbeelding met de updates die zijn aangebracht in het gpt.ini-bestand.":::
    
     U moet voldoen aan de geconfigureerde wachtwoord complexiteits vereisten voor uw virtuele machine bij het definiëren van het nieuwe wacht woord.
 
@@ -106,31 +106,31 @@ Probeer altijd een wacht woord opnieuw in te stellen met behulp van de [Azure po
    
    * Selecteer de virtuele machine in de Azure Portal en klik vervolgens op *verwijderen*:
      
-     :::image type="content" source="./media/reset-local-password-without-agent/delete-vm-classic.png" alt-text="gpt.inimaken ":::
+     :::image type="content" source="./media/reset-local-password-without-agent/delete-vm-classic.png" alt-text="Scherm afbeelding met de updates die zijn aangebracht in het gpt.ini-bestand.":::
 
 2. Koppel de besturingssysteem schijf van de bron-VM aan de virtuele machine voor probleem oplossing. De virtuele machine voor probleem oplossing moet zich in dezelfde regio bevinden als de besturingssysteem schijf van de bron-VM (zoals `West US` ):
    
    1. Selecteer de virtuele machine voor probleem oplossing in de Azure Portal. Klik op *schijven*  |  *bestaande koppelen*:
      
-      :::image type="content" source="./media/reset-local-password-without-agent/disks-attach-existing-classic.png" alt-text="gpt.inimaken ":::
+      :::image type="content" source="./media/reset-local-password-without-agent/disks-attach-existing-classic.png" alt-text="Scherm afbeelding met de updates die zijn aangebracht in het gpt.ini-bestand.":::
      
    2. Selecteer *VHD-bestand* en selecteer vervolgens het opslag account dat uw bron-VM bevat:
      
-      :::image type="content" source="./media/reset-local-password-without-agent/disks-select-storage-account-classic.png" alt-text="gpt.inimaken ":::
+      :::image type="content" source="./media/reset-local-password-without-agent/disks-select-storage-account-classic.png" alt-text="Scherm afbeelding met de updates die zijn aangebracht in het gpt.ini-bestand.":::
      
    3. Schakel het selectie vakje *klassieke opslag accounts weer geven*in en selecteer vervolgens de bron container. De bron container is doorgaans *vhd's*:
      
-      :::image type="content" source="./media/reset-local-password-without-agent/disks-select-container-classic.png" alt-text="gpt.inimaken ":::
+      :::image type="content" source="./media/reset-local-password-without-agent/disks-select-container-classic.png" alt-text="Scherm afbeelding met de updates die zijn aangebracht in het gpt.ini-bestand.":::
 
-      :::image type="content" source="./media/reset-local-password-without-agent/disks-select-container-vhds-classic.png" alt-text="gpt.inimaken ":::
+      :::image type="content" source="./media/reset-local-password-without-agent/disks-select-container-vhds-classic.png" alt-text="Scherm afbeelding met de updates die zijn aangebracht in het gpt.ini-bestand.":::
      
    4. Selecteer de VHD van het besturings systeem die u wilt koppelen. Klik op *selecteren* om het proces te volt ooien:
      
-      :::image type="content" source="./media/reset-local-password-without-agent/disks-select-source-vhd-classic.png" alt-text="gpt.inimaken ":::
+      :::image type="content" source="./media/reset-local-password-without-agent/disks-select-source-vhd-classic.png" alt-text="Scherm afbeelding met de updates die zijn aangebracht in het gpt.ini-bestand.":::
 
    5. Klik op OK om de schijf te koppelen
 
-      :::image type="content" source="./media/reset-local-password-without-agent/disks-attach-okay-classic.png" alt-text="gpt.inimaken ":::
+      :::image type="content" source="./media/reset-local-password-without-agent/disks-attach-okay-classic.png" alt-text="Scherm afbeelding met de updates die zijn aangebracht in het gpt.ini-bestand.":::
 
 3. Maak verbinding met de virtuele machine voor probleem oplossing met Extern bureaublad en zorg ervoor dat de besturingssysteem schijf van de bron-VM zichtbaar is:
 
@@ -140,7 +140,7 @@ Probeer altijd een wacht woord opnieuw in te stellen met behulp van de [Azure po
 
    3. Zoek in Verkenner naar de gegevens schijf die u hebt toegevoegd. Als de VHD van de bron-VM de enige gegevens schijf is die is gekoppeld aan de virtuele machine voor probleem oplossing, moet deze het station F: zijn:
      
-      :::image type="content" source="./media/reset-local-password-without-agent/troubleshooting-vm-file-explorer-classic.png" alt-text="gpt.inimaken ":::
+      :::image type="content" source="./media/reset-local-password-without-agent/troubleshooting-vm-file-explorer-classic.png" alt-text="Scherm afbeelding met de updates die zijn aangebracht in het gpt.ini-bestand.":::
 
 4. Maken `gpt.ini` in `\Windows\System32\GroupPolicy` op het station van de bron-VM (indien `gpt.ini` aanwezig, naam wijzigen in `gpt.ini.bak` ):
    
@@ -156,7 +156,7 @@ Probeer altijd een wacht woord opnieuw in te stellen met behulp van de [Azure po
      Version=1
      ```
      
-     :::image type="content" source="./media/reset-local-password-without-agent/create-gpt-ini-classic.png" alt-text="gpt.inimaken ":::
+     :::image type="content" source="./media/reset-local-password-without-agent/create-gpt-ini-classic.png" alt-text="Scherm afbeelding met de updates die zijn aangebracht in het gpt.ini-bestand.":::
 
 5. Maken `scripts.ini` in `\Windows\System32\GroupPolicy\Machine\Scripts\` . Zorg ervoor dat verborgen mappen worden weer gegeven. Als dat nodig is, maakt u de `Machine` `Scripts` mappen of.
    
@@ -168,10 +168,10 @@ Probeer altijd een wacht woord opnieuw in te stellen met behulp van de [Azure po
      0Parameters=
      ```
      
-     :::image type="content" source="./media/reset-local-password-without-agent/create-scripts-ini-classic-1.png" alt-text="gpt.inimaken " <username> /add
+     :::image type="content" source="./media/reset-local-password-without-agent/create-scripts-ini-classic-1.png" alt-text="Scherm afbeelding met de updates die zijn aangebracht in het gpt.ini-bestand." <username> /add
     ```
 
-    :::image type="content" source="./media/reset-local-password-without-agent/create-fixazure-cmd-1.png" alt-text="gpt.inimaken ":::
+    :::image type="content" source="./media/reset-local-password-without-agent/create-fixazure-cmd-1.png" alt-text="Scherm afbeelding met de updates die zijn aangebracht in het gpt.ini-bestand.":::
    
     U moet voldoen aan de geconfigureerde wachtwoord complexiteits vereisten voor uw virtuele machine bij het definiëren van het nieuwe wacht woord.
 
@@ -181,17 +181,17 @@ Probeer altijd een wacht woord opnieuw in te stellen met behulp van de [Azure po
    
    2. Selecteer de gegevens schijf die is gekoppeld in stap 2, klik op **ontkoppelen**en klik vervolgens op **OK**.
 
-     :::image type="content" source="./media/reset-local-password-without-agent/data-disks-classic.png" alt-text="gpt.inimaken ":::
+     :::image type="content" source="./media/reset-local-password-without-agent/data-disks-classic.png" alt-text="Scherm afbeelding met de updates die zijn aangebracht in het gpt.ini-bestand.":::
      
-     :::image type="content" source="./media/reset-local-password-without-agent/detach-disk-classic.png" alt-text="gpt.inimaken ":::
+     :::image type="content" source="./media/reset-local-password-without-agent/detach-disk-classic.png" alt-text="Scherm afbeelding met de updates die zijn aangebracht in het gpt.ini-bestand.":::
 
 8. Maak een VM op basis van de besturingssysteem schijf van de bron-VM:
    
-     :::image type="content" source="./media/reset-local-password-without-agent/create-new-vm-from-template-classic.png" alt-text="gpt.inimaken ":::
+     :::image type="content" source="./media/reset-local-password-without-agent/create-new-vm-from-template-classic.png" alt-text="Scherm afbeelding met de updates die zijn aangebracht in het gpt.ini-bestand.":::
 
-     :::image type="content" source="./media/reset-local-password-without-agent/choose-subscription-classic.png" alt-text="gpt.inimaken ":::
+     :::image type="content" source="./media/reset-local-password-without-agent/choose-subscription-classic.png" alt-text="Scherm afbeelding met de updates die zijn aangebracht in het gpt.ini-bestand.":::
 
-     :::image type="content" source="./media/reset-local-password-without-agent/create-vm-classic.png" alt-text="gpt.inimaken ":::
+     :::image type="content" source="./media/reset-local-password-without-agent/create-vm-classic.png" alt-text="Scherm afbeelding met de updates die zijn aangebracht in het gpt.ini-bestand.":::
 
 ## <a name="complete-the-create-virtual-machine-experience"></a>De ervaring voor het maken van virtuele machines volt ooien
 

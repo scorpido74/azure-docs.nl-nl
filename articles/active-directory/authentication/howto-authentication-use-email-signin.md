@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 06/24/2020
+ms.date: 10/01/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
-ms.reviewer: scottsta
-ms.openlocfilehash: 084c50a67fe332751a3679da4c97f67d414ebb94
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.reviewer: calui
+ms.openlocfilehash: 9b9617b4109318257895587cc0d8e75054a7f729
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419526"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650303"
 ---
 # <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>Meld u aan Azure Active Directory gebruik te maken van een e-mail adres als een alternatieve aanmeldings-ID (preview-versie)
 
@@ -29,8 +29,10 @@ Sommige organisaties zijn niet naar hybride verificatie verplaatst om de volgend
 
 Om u te helpen bij het verplaatsen naar hybride verificatie kunt u Azure AD nu configureren zodat gebruikers zich kunnen aanmelden met een e-mail adres in uw geverifieerde domein als een alternatieve aanmeldings-ID. Als *Contoso* bijvoorbeeld is gebrandt op *fabrikam*, in plaats van zich te blijven aanmelden met de verouderde `balas@contoso.com` UPN, kan e-mail als alternatieve aanmeldings-id nu worden gebruikt. Om toegang te krijgen tot een toepassing of services, melden gebruikers zich aan bij Azure AD via hun toegewezen e-mail adres, zoals `balas@fabrikam.com` .
 
+In dit artikel leest u hoe u e-mail kunt inschakelen en gebruiken als een alternatieve aanmeldings-ID. Deze functie is beschikbaar in de Azure AD Free-editie en hoger.
+
 > [!NOTE]
-> Meld u aan bij Azure AD met een e-mail adres als alternatieve aanmeldings-ID. Dit is een open bare preview-functie van Azure Active Directory. Zie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)voor meer informatie over Previews.
+> Meld u aan bij Azure AD met een e-mail adres als alternatieve aanmeldings-ID. Dit is een open bare preview-functie van Azure Active Directory. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 ## <a name="overview-of-azure-ad-sign-in-approaches"></a>Overzicht van de benaderingen van Azure AD-aanmelding
 
@@ -45,6 +47,8 @@ De gebruikelijke tijdelijke oplossing voor dit probleem is het instellen van de 
 Een andere manier is om de Azure AD-en on-premises Upn's te synchroniseren met dezelfde waarde en vervolgens Azure AD te configureren zodat gebruikers zich kunnen aanmelden bij Azure AD met een geverifieerd e-mail adres. Als u deze mogelijkheid wilt bieden, definieert u een of meer e-mail adressen in het kenmerk *proxyAddresses* van de gebruiker in de on-premises Directory. *ProxyAddresses* worden vervolgens automatisch met Azure AD Connect gesynchroniseerd met Azure AD.
 
 ## <a name="preview-limitations"></a>Preview-beperkingen
+
+Meld u aan bij Azure AD met een e-mail adres als een alternatieve aanmeldings-ID is beschikbaar in de Azure AD Free-editie en hoger.
 
 In de huidige preview-status gelden de volgende beperkingen wanneer een gebruiker zich aanmeldt met een niet-UPN-e-mail als een alternatieve aanmeldings-ID:
 

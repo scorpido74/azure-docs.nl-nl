@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3bc68b7f4682ff00d2b93a75e39e0e5eabe4637b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4d1d071a36531ed5f159543e33e9ac043160cd70
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287437"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650762"
 ---
 # <a name="streaming-ingestion-throughput-limits"></a>Doorvoer limieten voor stroom inslikken
 
@@ -28,7 +28,7 @@ Azure Time Series Insights beperkingen voor het inkomen van Gen2 streaming-gegev
 
 Over het algemeen worden de ingangs snelheden weer gegeven als de factor van het aantal apparaten in uw organisatie, de gebeurtenis emissie frequentie en de grootte van elke gebeurtenis:
 
-*  **Aantal apparaten** × **gebeurtenis emissie frequentie** × **grootte van elke gebeurtenis**.
+* **Aantal apparaten** × **gebeurtenis emissie frequentie** × **grootte van elke gebeurtenis**.
 
 Standaard kan Azure Time Series Insights Gen2 binnenkomende gegevens opnemen met een snelheid van **Maxi maal 1 MB per seconde (Mbps) per Azure time series Insights Gen2-omgeving**. Er zijn extra beperkingen [per hub-partitie](./concepts-streaming-ingress-throughput-limits.md#hub-partitions-and-per-partition-limits).
 
@@ -36,12 +36,12 @@ Standaard kan Azure Time Series Insights Gen2 binnenkomende gegevens opnemen met
 >
 > * Omgevings ondersteuning voor het opnemen van snelheden van Maxi maal 8 MBps kan worden geboden door de aanvraag.
 > * Neem contact met ons op als u een hogere door voer nodig hebt door een ondersteunings ticket in te dienen via de Azure Portal.
- 
+
 * **Voor beeld 1:**
 
     Contoso-verzen ding heeft 100.000 apparaten die drie keer per minuut een gebeurtenis verzenden. De grootte van een gebeurtenis is 200 bytes. Ze gebruiken een IoT Hub met vier partities als de bron van de Azure Time Series Insights Gen2-gebeurtenis.
 
-    * De opname frequentie voor hun Azure Time Series Insights Gen2-omgeving zou zijn: **100.000 apparaten * 200 bytes/gebeurtenis * (3/60 gebeurtenis/sec) = 1 Mbps**.
+  * De opname frequentie voor hun Azure Time Series Insights Gen2-omgeving zou zijn: **100.000 apparaten * 200 bytes/gebeurtenis * (3/60 gebeurtenis/sec) = 1 Mbps**.
     * Uitgebalanceerde partities, het opname tempo per partitie is 0,25 MBps.
     * De opname frequentie van Contoso-verzen ding zou binnen de schaal beperkingen vallen.
 
@@ -49,13 +49,13 @@ Standaard kan Azure Time Series Insights Gen2 binnenkomende gegevens opnemen met
 
     Contoso vloot Analytics heeft 40.000 apparaten die elke seconde een gebeurtenis verzenden. Ze gebruiken een event hub met een aantal partities van 2 als de Azure Time Series Insights gebeurtenis bron Gen2. De grootte van een gebeurtenis is 200 bytes.
 
-    * Het opname tempo van de omgeving is: **40.000 apparaten * 200 bytes/gebeurtenis * 1 gebeurtenis/SEC = 8 Mbps**.
+  * Het opname tempo van de omgeving is: **40.000 apparaten * 200 bytes/gebeurtenis * 1 gebeurtenis/SEC = 8 Mbps**.
     * Uitgebalanceerde partities, de frequentie per partitie is 4 MBps.
     * De opname frequentie van Contoso vloot Analytics ligt boven de omgeving en de partitie limieten. Ze kunnen een aanvraag indienen bij Azure Time Series Insights Gen2 via de Azure Portal om de opname frequentie voor hun omgeving te verhogen en een event hub te maken met meer partities die binnen de grenzen vallen.
 
 ## <a name="hub-partitions-and-per-partition-limits"></a>Hub-partities en limieten per partitie
 
-Bij het plannen van uw Azure Time Series Insights Gen2-omgeving is het belang rijk dat u rekening houdt met de configuratie van de bron (nen) van de gebeurtenis die u wilt verbinden met Azure Time Series Insights Gen2. Zowel Azure IoT Hub als Event Hubs gebruiken partities om een horizontale schaal in te scha kelen voor gebeurtenis verwerking. 
+Bij het plannen van uw Azure Time Series Insights Gen2-omgeving is het belang rijk dat u rekening houdt met de configuratie van de bron (nen) van de gebeurtenis die u wilt verbinden met Azure Time Series Insights Gen2. Zowel Azure IoT Hub als Event Hubs gebruiken partities om een horizontale schaal in te scha kelen voor gebeurtenis verwerking.
 
 Een *partitie* is een geordende reeks gebeurtenissen die in een hub worden bewaard. Het aantal partities wordt ingesteld tijdens het maken van de hub en kan niet worden gewijzigd.
 
@@ -64,7 +64,7 @@ Bekijk voor Event Hubs aanbevolen procedures voor het partitioneren van [het aan
 > [!NOTE]
 > De meeste IoT-hubs die worden gebruikt met Azure Time Series Insights Gen2 hebben slechts vier partities nodig.
 
-Of u nu een nieuwe hub voor uw Azure Time Series Insights Gen2-omgeving maakt of een bestaand gebruikt, u moet de opname frequentie per partitie berekenen om te bepalen of deze binnen de limieten valt. 
+Of u nu een nieuwe hub voor uw Azure Time Series Insights Gen2-omgeving maakt of een bestaand gebruikt, u moet de opname frequentie per partitie berekenen om te bepalen of deze binnen de limieten valt.
 
 Azure Time Series Insights Gen2 heeft momenteel een **limiet van 0,5 Mbps voor algemeen per partitie**.
 

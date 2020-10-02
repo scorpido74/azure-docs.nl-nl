@@ -4,22 +4,36 @@
   items:
     - name: Over Azure VMware Solution
       href: introduction.md
+- name: Snel starten
+  items:
+    - name: Pre-implementatieproces
+      href: production-ready-deployment-steps.md
+    - name: Controlelijst voorafgaande aan de implementatie
+      href: pre-deployment-checklist.md
+    - name: 1 - Azure VMware Solution implementeren
+      href: deploy-azure-vmware-solution.md
+    - name: 2 - Verbinding maken met on-premises gegevens
+      href: azure-vmware-solution-on-premises.md
+    - name: 3 - VMware HCX implementeren en configureren
+      href: tutorial-deploy-vmware-hcx.md
 - name: Zelfstudies
   items:
-    - name: 1 - Netwerkplanning
+    - name: 1 - Checklist voor netwerkplanning
       href: tutorial-network-checklist.md
-    - name: 2 - Privécloud maken
+    - name: 2 - Een privécloud maken
       href: tutorial-create-private-cloud.md
-    - name: 3 - Netwerk configureren
-      href: tutorial-configure-networking.md
-    - name: 4- Toegang tot een privécloud
+    - name: 3- Toegang tot een privécloud
       href: tutorial-access-private-cloud.md
-    - name: 5- Een privécloud schalen
-      href: tutorial-scale-private-cloud.md
-    - name: 6 - Een NSX-T-netwerksegment maken
+    - name: 4 - Netwerk configureren
+      href: tutorial-configure-networking.md
+    - name: 5 - Een NSX-T-netwerksegment maken
       href: tutorial-nsx-t-network-segment.md
-    - name: 7 - On-premises peer naar privécloud
+    - name: 6 - On-premises peer naar privécloud
       href: tutorial-expressroute-global-reach-private-cloud.md
+    - name: 7 - VMware HCX implementeren en configureren
+      href: tutorial-deploy-vmware-hcx.md
+    - name: 8 - Een privécloud schalen
+      href: tutorial-scale-private-cloud.md
 - name: Concepten
   items:
     - name: Privéclouds en -clusters
@@ -31,11 +45,9 @@
     - name: Toegang en identiteit voor privéclouds
       href: concepts-identity.md
     - name: Op rollen gebaseerd toegangsbeheer
-      href: concepts-rbac.md
+      href: concepts-role-based-access-control.md
     - name: Upgrades voor privéclouds
       href: concepts-upgrades.md
-    - name: Privéclouds bewaken en herstellen
-      href: concepts-monitor-repair-private-cloud.md
 - name: Instructiegidsen
   items:
     - name: Azure VMware Solution inschakelen
@@ -44,46 +56,34 @@
       href: reserved-instance.md
     - name: Migratie-evaluatie
       href: ../migrate/how-to-create-azure-vmware-solution-assessment.md?context=/azure/migrate/context/migrate-context.json
-    - name: HCX instellen
-      href: hybrid-cloud-extension-installation.md
     - name: DHCP beheren
       href: manage-dhcp.md
-    - name: Herstel na noodgeval
-      href: disaster-recovery.md
-    - name: Een VM implementeren via een inhoudsbibliotheek
-      href: deploy-vm-content-library.md
+    - name: Herstel na noodgevallen implementeren voor VM's
+      href: disaster-recovery-for-virtual-machines.md
+    - name: VM implementeren via inhoudsbibliotheek
+      href: tutorial-deploy-vm-content-library.md
     - name: Systeemeigen Azure-integratie
       items:
         - name: API Management
           href: concepts-api-management.md
         - name: Hub en spoke
-          href: concepts-avs-hub-and-spoke-integration.md
+          href: concepts-hub-and-spoke.md
         - name: Azure Backup-server
           items:
             - name: Backup-server instellen
-              href: set-up-mabs-for-avs.md
+              href: set-up-backup-server-for-azure-vmware-solution.md
             - name: Back-ups maken van privécloud-VM's met Backup-server
-              href: backup-avs-vms-with-mabs.md
+              href: backup-azure-vmware-solution-virtual-machines.md
         - name: Levenscyclusbeheer van VM's
           href: lifecycle-management-of-azure-vmware-solution-vms.md
         - name: Application Gateway
-          href: protect-avs-web-apps-with-app-gateway.md
+          href: protect-azure-vmware-solution-with-application-gateway.md
         - name: Traffic Manager
-          href: deploy-traffic-manager-to-balance-avs-workloads.md
-        - name: NetApp Files
-          href: net-app-files.md
-    - name: GitHub Enterprise Server
-      href: github-enterprise-server.md
+          href: deploy-traffic-manager-balance-workloads.md
     - name: VMware-oplossingen
       items:
         - name: vRealize-bewerkingen instellen
-          href: vrealize-operations-for-avs.md
-    - name: VMware-ecosysteem
-      items:
-        - name: Back-upoplossingen voor VM's
-          href: ecosystem-back-up-vms.md
-- name: Naslaginformatie
-  items: null
+          href: vrealize-operations-for-azure-vmware-solution.md
 - name: Resources
   items:
     - name: Problemen oplossen

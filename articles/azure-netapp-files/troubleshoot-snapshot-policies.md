@@ -14,45 +14,25 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/23/2020
 ms.author: b-juche
-ms.openlocfilehash: 1d7a91de8fa505fe4c2b06eea59f3acc2ae1f7e8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6ba8b18876bdae2754a6a772ce3909ff2f5a71b7
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91343314"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651001"
 ---
-# <a name="troubleshoot-snapshot-policies"></a>Problemen met het momentopname beleid oplossen
+# <a name="troubleshoot-snapshot-policies"></a>Problemen met momentopnamebeleid oplossen
 
 In dit artikel worden de fout scenario's beschreven die u kunt tegen komen bij het beheren van Azure NetApp Files snap shot-beleids regels. Het bevat ook oplossingen die u kunnen helpen bij het oplossen van de problemen.
 
-## <a name="snapshot-policy-creation-failing-with-invalid-snapshot-policy-name"></a>Het maken van het momentopname beleid mislukt met een ongeldige naam voor het momentopname beleid
+## <a name="error-conditions-and-resolutions"></a>Fout voorwaarden en oplossingen 
 
-Er treedt een fout op tijdens het maken van het momentopname beleid als de naam van uw momentopname beleid ongeldig is. De volgende richt lijnen zijn van toepassing op naam van het momentopname beleid:  
-
-* De naam van het momentopname beleid mag geen niet-ASCII of speciale tekens bevatten.
-* De naam van het momentopname beleid moet beginnen met een letter of een cijfer en mag alleen letters, cijfers, onderstrepings tekens (' _ ') en afbreek streepjes ('-') bevatten.
-* De naam van het momentopname beleid moet tussen 1 en 64 tekens lang zijn.  
-
-U moet de naam van het momentopname beleid herzien volgens de richt lijnen.  
-
-## <a name="snapshot-policy-creation-failing-with-invalid-values"></a>Het maken van het momentopname beleid mislukt met ongeldige waarden 
-
-Azure NetApp Files kan geen momentopname beleid maken als u een ongeldige waarde voor een veld opgeeft, zoals `Number of snapshots to keep` of `Minute on the hour to take snapshot` .  
- 
-De geldige waarden zijn als volgt:   
-
-* De waarde moet een geldig getal zijn.
-* De waarde moet tussen 0 en 59.
-
-Zorg ervoor dat er een geldige waarde wordt gegeven voor de velden.
-
-## <a name="snapshot-policy-creation-failing-with-total-number-of-snapshots-to-keep-exceeds-255-error"></a>Het maken van het momentopname beleid mislukt met het fout bericht ' totale aantal moment opnamen dat moet worden bewaard overschrijdt 255 ' 
-
-Elk volume kan [Maxi maal 255 moment opnamen](azure-netapp-files-resource-limits.md)hebben. Het maximum omvat de som van de moment opnamen van elk uur, dagelijks, wekelijks en maandelijks. U moet de `Snapshots to keep` waarde verlagen en het opnieuw proberen.
-
-## <a name="assigning-policy-to-a-volume-failing-with-total-snapshot-policy-is-over-the-max-255-error"></a>Beleid toewijzen aan een volume met een fout ' het totaal beleid voor moment opnamen is groter dan de maximum ' 255 '
-
-Elk volume kan [Maxi maal 255 moment opnamen](azure-netapp-files-resource-limits.md)hebben. Wanneer de som van alle on-demand-, uur-, dagelijkse, wekelijkse en maandelijkse moment opnamen het maximum overschrijdt, treedt er een fout op. Verklein de `snapshots to keep` waarde of verwijder een aantal moment opnamen op aanvraag en probeer het opnieuw.
+|     Foutvoorwaarde    |     Oplossing    |
+|-|-|
+| Maken van het momentopname beleid mislukt met ongeldige naam voor het momentopname beleid. | Er treedt een fout op tijdens het maken van het momentopname beleid als de naam van uw momentopname beleid ongeldig is. De volgende richt lijnen zijn van toepassing op naam van het momentopname beleid:  <ul><li> De naam van het momentopname beleid mag geen niet-ASCII of speciale tekens bevatten. </li> <li> De naam van het momentopname beleid moet beginnen met een letter of een cijfer en mag alleen letters, cijfers, onderstrepings tekens (' _ ') en afbreek streepjes ('-') bevatten. </li> <li> De naam van het momentopname beleid moet tussen 1 en 64 tekens lang zijn.  </li></ul> Wijzig de naam van het momentopname beleid volgens de richt lijnen.  |
+| Het maken van het momentopname beleid mislukt met ongeldige waarden. | Azure NetApp Files kan geen momentopname beleid maken als u een ongeldige waarde voor een veld opgeeft, zoals `Number of snapshots to keep` of `Minute on the hour to take snapshot` . De geldige waarden zijn als volgt:  <ul><li>De waarde moet een geldig getal zijn.</li> <li>De waarde moet tussen 0 en 59.</li></ul> Zorg ervoor dat er een geldige waarde wordt gegeven voor de velden. | 
+| Het maken van het momentopname beleid mislukt met de fout `Total number of snapshots to keep exceeds 255` . | Elk volume kan [Maxi maal 255 moment opnamen](azure-netapp-files-resource-limits.md)hebben. Het maximum omvat de som van de moment opnamen van elk uur, dagelijks, wekelijks en maandelijks. <br> Verklein de `Snapshots to keep` waarde en probeer het opnieuw. |
+| Het toewijzen van beleid aan een volume mislukt met de fout `Total snapshot policy is over the max '255'` . | Elk volume kan [Maxi maal 255 moment opnamen](azure-netapp-files-resource-limits.md)hebben. Wanneer de som van alle on-demand-, uur-, dagelijkse, wekelijkse en maandelijkse moment opnamen het maximum overschrijdt, treedt er een fout op. <br> Verklein de `snapshots to keep` waarde of verwijder een aantal moment opnamen op aanvraag en probeer het opnieuw. | 
 
 ## <a name="next-steps"></a>Volgende stappen  
 

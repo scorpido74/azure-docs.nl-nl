@@ -595,10 +595,6 @@
                   href: ../../bastion/create-host-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Bastion gebruiken om verbinding te maken
               href: ../../bastion/bastion-connect-vm-ssh.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-              items:
-                - name: Bastion SSH-verbinding
-            - name: Bastion RDP-verbinding
-              href: ../../bastion/bastion-connect-vm-rdp.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Versleutelen
           items:
             - name: Schijfversleutelingsscenario's voor Linux
@@ -625,7 +621,7 @@
               href: disk-encryption-troubleshooting.md
             - name: Veelgestelde vragen over schijfversleuteling
               href: disk-encryption-faq.md
-            - name: Schijfversleuteling - vorige versie (Azure AD)
+            - name: Schijfversleuteling - vorige versie
               items:
                 - name: Overzicht
                   href: disk-encryption-overview-aad.md
@@ -640,6 +636,7 @@
         - name: Een sleutelkluis maken
           href: key-vault-setup.md
         - name: SSH-sleutels maken en gebruiken
+          displayName: ssh keys ssh openssh
           items:
             - name: In Linux of macOS
               href: mac-create-ssh-keys.md

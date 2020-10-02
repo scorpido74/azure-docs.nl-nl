@@ -43,6 +43,8 @@
       href: basic-concepts.md
     - name: Beveiliging
       items:
+        - name: Basisprincipes van Key Vault-verificatie
+          href: authentication-fundamentals.md
         - name: Azure Key Vault-beveiliging
           href: overview-security.md
         - name: Aanbevolen procedures voor het gebruik van Key Vault - Azure Key Vault
@@ -130,6 +132,8 @@
           href: access-behind-firewall.md
     - name: Voorlopig verwijderen
       items:
+        - name: Key Vault-herstel (voorlopig verwijderen en opschoningbescherming)
+          href: key-vault-recovery.md
         - name: Voorlopig verwijderen gebruiken met CLI
           href: soft-delete-cli.md
         - name: Voorlopig verwijderen gebruiken met PowerShell

@@ -9,12 +9,12 @@ ms.date: 07/22/2020
 ms.author: euang
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: b815dd9218ac395786e7ab7ed3a02ba440fe2807
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ad3231652056244fdfc814251e6caad025db77e5
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91260169"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91649895"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Bibliotheken voor Apache Spark beheren in azure Synapse Analytics
 
@@ -85,7 +85,7 @@ Als u een bibliotheek wilt installeren op een Spark-pool (preview), rechtstreeks
 
  4. Upload het omgevings configuratie bestand met de bestands kiezer.
 
-![Python-bibliotheken toevoegen](./media/apache-spark-azure-portal-add-libraries/apache-spark-add-library-azure.png "Python-bibliotheken toevoegen")
+![Scherm afbeelding van de knop configuratie bestand voor het uploaden van de omgeving.](./media/apache-spark-azure-portal-add-libraries/apache-spark-add-library-azure.png "Python-bibliotheken toevoegen")
 
 ### <a name="verify-installed-libraries"></a>Geïnstalleerde bibliotheken verifiëren
 

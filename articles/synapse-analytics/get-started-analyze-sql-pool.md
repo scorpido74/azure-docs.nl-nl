@@ -9,24 +9,67 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: e2e1d0479b8edacaae8816d74db061eeedb805a7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b1060bcc8603cb7f7395a50056424b3d6c0ebe5a
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325216"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90015497"
 ---
 # <a name="analyze-data-with-sql-pools"></a>Gegevens analyseren met SQL-pools
 
 Azure Synapse Analytics biedt u de mogelijkheid om gegevens te analyseren met behulp van een SQL-pool. In deze zelfstudie gebruikt u de voorbeeldgegevens van NYC Taxi om de analysemogelijkheden van een SQL-pool te verkennen.
 
-## <a name="load-the-nyc-taxi-sample-data-into-the-sqldb1-database"></a>De gegevens van het NYC-taxivoorbeeld laden in de SQLDB1-database
+## <a name="load-the-nyc-taxi-data-into-sqldb1"></a>Laad de NYCe Taxi-gegevens in SQLDB1
 
-1. Selecteer in Synapse Studio in het bovenste blauwe menu het vraagteken ( **?** ).
-1. Selecteer **Aan de slag** > **Aan de slag-hub**.
-1. Selecteer in de kaart **Query uitvoeren op voorbeeldgegevens** de SQL-pool met de naam **SQLDB1**.
-1. Selecteer **Querygegevens**. Er wordt kort een melding over het laden van voorbeeldgegevens weergegeven. Een lichtblauwe statusbalk boven in Synapse Studio geeft aan dat gegevens in SQLDB1 worden geladen.
-1. Nadat de statusbalk groen wordt, sluit u deze.
+1. Ga in Synapse Studio naar de hub **Ontwikkelen** en maak vervolgens een nieuw SQL-script
+1. Voer de volgende code in:
+    ```
+    CREATE TABLE [dbo].[Trip]
+    (
+        [DateID] int NOT NULL,
+        [MedallionID] int NOT NULL,
+        [HackneyLicenseID] int NOT NULL,
+        [PickupTimeID] int NOT NULL,
+        [DropoffTimeID] int NOT NULL,
+        [PickupGeographyID] int NULL,
+        [DropoffGeographyID] int NULL,
+        [PickupLatitude] float NULL,
+        [PickupLongitude] float NULL,
+        [PickupLatLong] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [DropoffLatitude] float NULL,
+        [DropoffLongitude] float NULL,
+        [DropoffLatLong] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [PassengerCount] int NULL,
+        [TripDurationSeconds] int NULL,
+        [TripDistanceMiles] float NULL,
+        [PaymentType] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [FareAmount] money NULL,
+        [SurchargeAmount] money NULL,
+        [TaxAmount] money NULL,
+        [TipAmount] money NULL,
+        [TollsAmount] money NULL,
+        [TotalAmount] money NULL
+    )
+    WITH
+    (
+        DISTRIBUTION = ROUND_ROBIN,
+        CLUSTERED COLUMNSTORE INDEX
+    );
+
+    COPY INTO [dbo].[Trip]
+    FROM 'https://nytaxiblob.blob.core.windows.net/2013/Trip2013/QID6392_20171107_05910_0.txt.gz'
+    WITH
+    (
+        FILE_TYPE = 'CSV',
+        FIELDTERMINATOR = '|',
+        FIELDQUOTE = '',
+        ROWTERMINATOR='0X0A',
+        COMPRESSION = 'GZIP'
+    )
+    OPTION (LABEL = 'COPY : Load [dbo].[Trip] - Taxi dataset');
+    ```
+1. Het uitvoeren van dit script duurt ongeveer 1 minuut. Er worden 2 miljoen rijen aan NYC Taxi-gegevens geladen in een tabel met de naam **dbo.Trip**
 
 ## <a name="explore-the-nyc-taxi-data-in-the-sql-pool"></a>De NYC-taxigegevens in de SQL-pool verkennen
 

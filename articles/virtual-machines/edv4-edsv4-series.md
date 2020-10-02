@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: 15a53ddaa669f0720632901edfd58eb273518867
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 5b0301a57c4223666ac612b997c87c87271fe49b
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049618"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91649521"
 ---
 # <a name="edv4-and-edsv4-series"></a>Edv4- en Edsv4-serie
 
@@ -24,15 +24,13 @@ De Edv4-en Edsv4-serie worden uitgevoerd op de Intel &reg; Xeon &reg; Platinum 8
 
 Edv4-serie-grootten worden uitgevoerd op de Intel &reg; Xeon &reg; Platinum 8272CL-processors (Cascade Lake). De Edv4-grootten van virtuele machines bieden Maxi maal 504 GiB aan RAM-geheugen, naast snelle en grote lokale SSD-opslag (Maxi maal 2.400 GiB). Deze virtuele machines zijn ideaal voor geheugenintensieve bedrijfs toepassingen en-toepassingen die profiteren van lage latentie en hoge snelheid voor lokale opslag. U kunt standaard Ssd's en standaard Hdd's-schijf opslag koppelen aan de virtuele machines van Edv4. 
 
-ACU: 195-210
-
-Premium Storage: niet ondersteund
-
-Premium Storage caching: niet ondersteund
-
-Livemigratie: ondersteund
-
-Updates voor geheugen behoud: ondersteund
+[ACU](acu.md): 195-210<br>
+[Premium Storage](premium-storage-performance.md): niet ondersteund<br>
+[Premium Storage caching](premium-storage-performance.md): niet ondersteund<br>
+[Livemigratie](maintenance-and-updates.md): ondersteund<br>
+[Updates voor geheugen behoud](maintenance-and-updates.md): ondersteund<br>
+[Ondersteuning](generation-2.md)voor het genereren van vm's: generatie 1<br>
+<br>
 
 | Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Max. aantal gegevensschijven | Max. door Voer in cache en tijdelijke opslag: IOPS/MBps | Max. aantal NIC's|Verwachte netwerk bandbreedte (Mbps) |
 |---|---|---|---|---|---|---|---|
@@ -50,15 +48,13 @@ Updates voor geheugen behoud: ondersteund
 
 Edsv4-serie-grootten worden uitgevoerd op de Intel &reg; Xeon &reg; Platinum 8272CL-processors (Cascade Lake). De Edsv4-grootten van virtuele machines bieden Maxi maal 504 GiB aan RAM-geheugen, naast snelle en grote lokale SSD-opslag (Maxi maal 2.400 GiB). Deze virtuele machines zijn ideaal voor geheugenintensieve bedrijfs toepassingen en-toepassingen die profiteren van lage latentie en hoge snelheid voor lokale opslag.
 
-ACU: 195-210
-
-Premium Storage: ondersteund
-
-Premium Storage caching: ondersteund
-
-Livemigratie: ondersteund
-
-Updates voor geheugen behoud: ondersteund
+[ACU](acu.md): 195-210<br>
+[Premium Storage](premium-storage-performance.md): ondersteund<br>
+[Premium Storage caching](premium-storage-performance.md): ondersteund<br>
+[Livemigratie](maintenance-and-updates.md): ondersteund<br>
+[Updates voor geheugen behoud](maintenance-and-updates.md): ondersteund<br>
+[Ondersteuning](generation-2.md)voor het genereren van vm's: generatie 1<br>
+<br>
 
 | Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Max. aantal gegevensschijven | Maxi maal cache geheugen en tijdelijke opslag doorvoer: IOPS/MBps (cache grootte in GiB) | Maxi maal aantal niet-opgeslagen schijf doorvoer: IOPS/MBps | Max. aantal NIC's|Verwachte netwerk bandbreedte (Mbps) |
 |---|---|---|---|---|---|---|---|---|
@@ -78,7 +74,7 @@ Er zijn <sup>1</sup> [beperkte core-grootten beschikbaar](./constrained-vcpu.md)
 
 ## <a name="other-sizes-and-information"></a>Andere grootten en informatie
 
-- [Algemeen doel](sizes-general.md)
+- [Algemeen gebruik](sizes-general.md)
 - [Geoptimaliseerd geheugen](sizes-memory.md)
 - [Geoptimaliseerde opslag](sizes-storage.md)
 - [Geoptimaliseerde GPU](sizes-gpu.md)

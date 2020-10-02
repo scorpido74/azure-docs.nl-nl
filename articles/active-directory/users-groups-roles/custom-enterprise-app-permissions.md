@@ -12,12 +12,12 @@ ms.date: 09/22/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 1d196ea33eafbfae0d9db68588c0adb131a383f4
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 2ebba2bb957a1c05fd591181f0a784ed778c6c57
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90998374"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333372"
 ---
 # <a name="enterprise-application-permissions-for-custom-roles-in-azure-active-directory"></a>Zakelijke app-toestemmingen voor aangepaste rollen in Azure Active Directory
 
@@ -138,7 +138,6 @@ microsoft.directory/servicePrincipals/appRoleAssignedTo/read | Geef roltoewijzin
 microsoft.directory/servicePrincipals/appRoleAssignedTo/update | Werk roltoewijzingen van service-principals bij.
 microsoft.directory/servicePrincipals/appRoleAssignments/read | Geef roltoewijzingen die aan service-principals zijn toegewezen weer.
 microsoft.directory/servicePrincipals/audience/update | Werk doelgroepeigenschappen bij voor service-principals.
-microsoft.directory/servicePrincipals/authentication/read |  
 microsoft.directory/servicePrincipals/authentication/update | Werk verificatie-eigenschappen bij voor service-principals.
 microsoft.directory/servicePrincipals/basic/update | Werk basiseigenschappen van service-principals bij.
 microsoft.directory/servicePrincipals/create | Maak service-principals.

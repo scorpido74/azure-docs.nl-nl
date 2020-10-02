@@ -112,7 +112,7 @@
           displayName: 'request units, RUs, RU'
           href: scaling-throughput.md
         - name: Conflicttypen en oplossingsbeleid
-          displayName: 'last write wins, custom, multi master, multi-master'
+          displayName: 'last write wins, custom, multi-region writes, multi-master'
           href: conflict-resolution-policies.md
         - name: Wereldwijde distributie - achter de schermen
           href: global-dist-under-the-hood.md
@@ -584,7 +584,7 @@
         - name: Gegevensversleuteling
           href: database-encryption-at-rest.md
         - name: Gegevenstoegang beveiligen
-          displayName: 'master key, resource token, users, roles'
+          displayName: 'primary key, resource token, users, roles'
           href: secure-access-to-data.md
         - name: IP-firewall
           href: firewall-support.md
@@ -977,7 +977,7 @@
           href: how-to-move-regions.md
     - name: Wereldwijde distributie
       items:
-        - name: Meerdere masters configureren
+        - name: Schrijfbewerkingen voor meerdere regio's configureren
           href: how-to-multi-master.md
         - name: Consistentieniveaus beheren
           displayName: 'session, consistency prefix, strong, eventual, bounded staleness'

@@ -4,16 +4,17 @@ description: Include-bestand
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 09/22/2020
+ms.date: 09/30/2020
 ms.author: dacoulte
-ms.openlocfilehash: 2707523947cae77dd800dd5f560ebe1c47f3893a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f3f706789e14cb20214bf17fd91f6ec1e503848f
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905981"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91605826"
 ---
-Voor elk objecttype in Azure Policy bestaat er een maximum. De vermelding _Bereik_ slaat op het abonnement of op de [beheergroep](../articles/governance/management-groups/overview.md).
+Voor elk objecttype in Azure Policy bestaat er een maximum. Voor definities betekent _Bereik_ de [beheergroep](../articles/governance/management-groups/overview.md) of het abonnement.
+Voor toewijzingen en uitzonderingen betekent _Bereik_ de [beheergroep](../articles/governance/management-groups/overview.md), het abonnement, de resource groep of een afzonderlijke resource.
 
 | Waar | Wat | Maximum |
 |---|---|---|

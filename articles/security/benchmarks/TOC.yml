@@ -69,7 +69,7 @@
       href: ../../backup/security-baseline.md
     - name: Azure Cache voor Redis-beveiligingsbasislijn
       href: ../../azure-cache-for-redis/security-baseline.md
-    - name: Azure Cognitive Searchsecurity-basislijn
+    - name: Azure Cognitive Search-beveiligingsbasislijn
       href: ../../search/security-baseline.md
     - name: Azure Data Box-beveiligingsbasislijn
       href: ../../databox/security-baseline.md
@@ -97,6 +97,8 @@
       href: ../../azure-functions/security-baseline.md
     - name: Azure IoT Hub-beveiligingsbasislijn
       href: ../../iot-hub/security-baseline.md
+    - name: Azure Kubernetes Service-beveiligingsbasislijn
+      href: ../../aks/security-baseline.md
     - name: Azure Load Balancer-beveiligingsbasislijn
       href: ../../load-balancer/security-baseline.md
     - name: Azure Monitor-beveiligingsbasislijn
@@ -117,6 +119,8 @@
       href: ../../sql-database/security-baseline.md
     - name: Azure Storage-beveiligingsbasislijn
       href: ../../storage/common/security-baseline.md
+    - name: Azure Traffic Manager-beveiligingsbasislijn
+      href: ../../traffic-manager/security-baseline.md
     - name: Basislijn voor batch-beveiliging
       href: ../../batch/security-baseline.md
     - name: Cognitive Services-beveiligingsbasislijn
@@ -163,3 +167,7 @@
       href: ../../virtual-machines/linux/security-baseline.md
     - name: Virtual Machines Windows-beveiligingsbasislijn
       href: ../../virtual-machines/windows/security-baseline.md
+    - name: Virtual Network-beveiligingsbasislijn
+      href: ../../virtual-network/security-baseline.md
+    - name: VPN Gateway-beveiligingsbasislijn
+      href: ../../vpn-gateway/security-baseline.md

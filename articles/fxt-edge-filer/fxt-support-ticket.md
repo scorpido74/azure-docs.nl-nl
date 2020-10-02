@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: rohogue
-ms.openlocfilehash: 16b219afa329cc105fb70000d8a088d67883feed
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: a6630a04f3811aae0b75bc378a66e8a05e4f8203
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88184666"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650439"
 ---
 # <a name="open-a-support-ticket-for-the-azure-fxt-edge-filer"></a>Open een ondersteunings ticket voor de Azure FXT Edge-Bestandsr
 
@@ -23,7 +23,7 @@ Gebruik de Azure Portal om een ondersteunings ticket te openen met de klanten se
 1. Schuif in het linkerdeel venster naar beneden en klik op **Help en ondersteuning**.
 1. Klik op **nieuwe ondersteunings aanvraag**. 
 
-   ![Scherm opname van leeg ondersteunings aanvraag formulier](media/fxt-support-blank.png)
+   ![Scherm opname van de pagina ' Help + ondersteuning ' met ' nieuwe ondersteunings aanvraag ' geselecteerd.](media/fxt-support-blank.png)
 
 1. Vul het aanvraag formulier in.  
     1. Kies op het tabblad **basis beginselen** het **type probleem** ``Technical`` . 
@@ -31,7 +31,7 @@ Gebruik de Azure Portal om een ondersteunings ticket te openen met de klanten se
     1. Onder **service**selecteert u **Azure FXT Edge-bestands**server. Mogelijk moet u op het filter besturings element **alle services** klikken om het te vinden. 
     1. Voer een **samen vatting** in en kies het **probleem type**. 
     ![Scherm opname van leeg ondersteunings aanvraag formulier](media/fxt-support-populated.png) 
-    1. Klik op **Volgende** om verder te gaan. 
+    1. Klik op **Volgende** om door te gaan. 
 1. Voeg op het tabblad **Details** meer informatie over het probleem en contact met u op te nemen. U kunt een bestand uploaden dat betrekking heeft op het probleem. 
 1. In **controleren en maken**, Controleer de informatie en klik op de knop **maken** om uw aanvraag in te dienen.
 

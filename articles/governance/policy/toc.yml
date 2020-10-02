@@ -17,6 +17,9 @@
     - name: Een beleid toewijzen - Azure PowerShell
       displayName: 'assign, compliance'
       href: ./assign-policy-powershell.md
+    - name: Een beleid toewijzen - .NET
+      displayName: 'assign, compliance'
+      href: ./assign-policy-dotnet.md
     - name: Een beleid toewijzen - JavaScript
       displayName: 'assign, compliance'
       href: ./assign-policy-javascript.md
@@ -139,6 +142,9 @@
     - name: Beleid voor array-eigenschappen opstellen
       displayName: 'array property, alias, aliases, in, notIn, type, defaultValue'
       href: ./how-to/author-policies-for-arrays.md
+    - name: Azure Policy-beleid exporteren
+      displayName: 'github, json, definition'
+      href: ./how-to/export-resources.md
     - name: Gastconfiguratie
       items:
         - name: Configuratiebeleid voor gasten maken in Windows

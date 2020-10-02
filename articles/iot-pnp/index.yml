@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: Vernieuwde documentatie over IoT Plug en Play (preview)
+title: Documentatie voor IoT Plug en Play
 summary: Met IoT Plug en Play kunt u een apparaatmodel definiëren waarmee cloudoplossingen uw apparaat automatisch kunnen begrijpen en ermee kunnen werken.
 metadata:
-  title: Architectuur van IoT Plug en Play (preview)
-  description: Met IoT Plug en Play (preview) kunnen ontwikkelaars apparaten in hun oplossing integreren zonder dat hiervoor handmatige configuratie nodig is. In dit artikel leest u meer over de belangrijkste onderdelen van de architectuur die dit mogelijk maken.
+  title: IoT Plug and Play-architectuur
+  description: Met IoT Plug en Play kunnen ontwikkelaars apparaten in hun oplossing integreren zonder dat hiervoor handmatige configuratie nodig is. In dit artikel leest u meer over de belangrijkste onderdelen van de architectuur die deze taak mogelijk maken.
   services: iot-pnp
   ms.service: iot-pnp
   ms.topic: landing-page
@@ -11,12 +11,12 @@ metadata:
   ms.author: dobett
   manager: philmea
   ms.date: 10/31/2019
-  ms.openlocfilehash: 6fe77d059974bcc37fb0b0bbc6a171d371a93478
-  ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+  ms.openlocfilehash: 5b01154fa3e5821ca577e4a910facff8d9cb968a
+  ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 07/28/2020
-  ms.locfileid: "87337361"
+  ms.lasthandoff: 09/30/2020
+  ms.locfileid: "91598046"
 landingContent:
 - title: Info over IoT Plug en Play
   linkLists:
@@ -24,8 +24,8 @@ landingContent:
     links:
     - text: Wat is IoT Plug en Play?
       url: overview-iot-plug-and-play.md
-    - text: Nieuwe preview-updates 2020
-      url: overview-iot-plug-and-play-preview-updates.md
+    - text: Wat is er in de huidige release
+      url: overview-iot-plug-and-play-current-release.md
 - title: Apparaten bouwen
   linkLists:
   - linkListType: quickstart
@@ -43,11 +43,13 @@ landingContent:
   - linkListType: concept
     links:
     - text: Ontwikkelaarsgids
-      url: concepts-developer-guide.md
-    - text: Conventies voor IoT Plug en Play
-      url: concepts-convention.md
+      url: concepts-developer-guide-device-csharp.md
     - text: Onderdelen
       url: concepts-components.md
+    - text: Conventies voor IoT Plug en Play
+      url: concepts-convention.md
+    - text: IoT Plug and Play-brug
+      url: concepts-iot-pnp-bridge.md
 - title: Oplossingen bouwen
   linkLists:
   - linkListType: quickstart

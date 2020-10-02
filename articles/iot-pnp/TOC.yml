@@ -4,11 +4,13 @@
   items:
     - name: Wat is IoT Plug en Play?
       href: overview-iot-plug-and-play.md
-    - name: Nieuwe preview-updates
-      href: overview-iot-plug-and-play-preview-updates.md
+    - name: Wat is er in de huidige release
+      href: overview-iot-plug-and-play-current-release.md
 - name: Snelstartgidsen
   expanded: true
   items:
+    - name: Uw omgeving instellen
+      href: set-up-environment.md
     - name: Een apparaat verbinden met IoT Hub
       items:
         - name: C
@@ -27,6 +29,10 @@
           href: quickstart-service-node.md
         - name: Python
           href: quickstart-service-python.md
+        - name: C#
+          href: quickstart-service-csharp.md
+        - name: Java
+          href: quickstart-service-java.md
 - name: Zelfstudies
   items:
     - name: Een apparaat met meerdere onderdelen verbinden (C)
@@ -41,18 +47,38 @@
       href: tutorial-multiple-components-python.md
     - name: MQTT gebruiken om een apparaat te verbinden
       href: tutorial-use-mqtt.md
+    - name: Interactie met een MXChip-apparaat (voorbeeld)
+      href: 'https://docs.microsoft.com/samples/azure-samples/mxchip-iot-devkit-pnp-get-started/sample/'
+    - name: Een apparaat naar een module migreren
+      href: tutorial-migrate-device-to-module.md
 - name: Concepten
   items:
     - name: Architectuur
       href: concepts-architecture.md
-    - name: Ontwikkelaarsgids
-      href: concepts-developer-guide.md
+    - name: Handleiding van apparaatontiwkkelaar
+      items:
+        - name: C#
+          href: concepts-developer-guide-device-csharp.md
+        - name: Node.js
+          href: concepts-developer-guide-device-node.md
+        - name: Java
+          href: concepts-developer-guide-device-java.md
+        - name: Python
+          href: concepts-developer-guide-device-python.md
+        - name: C
+          href: concepts-developer-guide-device-c.md
+    - name: Handleiding voor serviceontwikkelaar
+      href: concepts-developer-guide-service.md
     - name: Onderdelen
       href: concepts-components.md
     - name: Conventies voor IoT Plug en Play
       href: concepts-convention.md
+    - name: IoT Plug and Play-brug
+      href: concepts-iot-pnp-bridge.md
     - name: Digitale tweelingen
       href: concepts-digital-twin.md
+    - name: Apparaatcertificering
+      href: concepts-certification-program.md
     - name: Modelopslagplaats
       href: concepts-model-repository.md
     - name: Modellen gebruiken in een oplossing
@@ -67,8 +93,14 @@
   items:
     - name: IoT Explorer installeren en gebruiken
       href: howto-use-iot-explorer.md
+    - name: IoT Plug and Play-brug installeren en gebruiken
+      href: howto-use-iot-pnp-bridge.md
     - name: Azure IoT CLI-extensie installeren en gebruiken
       href: howto-use-iot-pnp-cli.md
+    - name: DTDL-bewerkingsprogramma's installeren en gebruiken
+      href: howto-use-dtdl-authoring-tools.md
+    - name: Ingesloten C gebruiken
+      href: howto-use-embedded-c.md
     - name: Digitale tweelingen beheren
       href: howto-manage-digital-twin.md
     - name: Een apparaat certificeren
@@ -78,7 +110,7 @@
     - name: Bibliotheken en SDK's
       href: libraries-sdks.md
     - name: Digital Twin-REST API
-      href: 'https://aka.ms/iot-pnp-preview-rest'
+      href: 'https://docs.microsoft.com/rest/api/iothub/service/digitaltwin'
     - name: Azure CLI
       href: /cli/azure/azure-cli-reference-for-IoT
 - name: Resources

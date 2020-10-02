@@ -407,7 +407,7 @@
           href: ps-template.md
         - name: Verbinding maken met een VM
           href: connect-logon.md
-        - name: Verbinding maken met virtuele Linux-machines
+        - name: SSH in Linux-VM'ss
           displayName: ssh keygen ssk-key putty
           items:
             - name: In de portal
@@ -595,7 +595,7 @@
               href: disk-encryption-troubleshooting.md
             - name: Veelgestelde vragen over schijfversleuteling
               href: disk-encryption-faq.md
-            - name: Schijfversleuteling - vorige versie (Azure AD)
+            - name: Schijfversleuteling - vorige versie
               items:
                 - name: Overzicht
                   href: disk-encryption-overview-aad.md

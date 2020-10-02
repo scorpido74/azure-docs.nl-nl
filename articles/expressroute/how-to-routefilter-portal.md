@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/01/2019
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 37f8903adbc676ae2e48e2ef5841d8f5b122842c
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 468c7a0113a4603f4f47bb529145261ff50d96d4
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89566242"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650541"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-azure-portal"></a>Route filters voor micro soft-peering configureren: Azure Portal
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ Met routefilters kunt u een subset van ondersteunde services gebruiken via Micro
 
 Microsoft 365 services zoals Exchange Online, share point online en Skype voor bedrijven, en Azure-Services, zoals Storage en SQL DB, zijn toegankelijk via micro soft-peering. Wanneer micro soft-peering is geconfigureerd in een ExpressRoute-circuit, worden alle voor voegsels die betrekking hebben op deze services, geadverteerd via de BGP-sessies die zijn ingesteld. Er wordt aan elk voorvoegsel een BGP-communitywaarde gekoppeld om de service te identificeren die via het voorvoegsel wordt aangeboden. Zie [BGP-community's](expressroute-routing.md#bgp)voor een lijst met de waarden van de BGP-Community en de services waaraan ze zijn toegewezen.
 
-Als u verbinding met alle services nodig hebt, worden er een groot aantal voor voegsels via BGP geadverteerd. Dit verg root de grootte van de route tabellen die worden beheerd door routers in uw netwerk. Als u van plan bent slechts een subset van services te gebruiken die worden aangeboden via micro soft-peering, kunt u de grootte van uw route tabellen op twee manieren verkleinen. U kunt het volgende doen:
+Als u verbinding met alle services nodig hebt, worden er een groot aantal voor voegsels via BGP geadverteerd. Dit verg root de grootte van de route tabellen die worden beheerd door routers in uw netwerk. Als u van plan bent slechts een subset van services te gebruiken die worden aangeboden via micro soft-peering, kunt u de grootte van uw route tabellen op twee manieren verkleinen. U kunt:
 
 - Ongewenste voor voegsels uitfilteren door route filters op BGP-community's toe te passen. Dit is een standaard netwerk praktijk en wordt meestal gebruikt in veel netwerken.
 
@@ -88,33 +88,33 @@ Een route filter kan slechts één regel bevatten en de regel moet van het type 
 ### <a name="1-create-a-route-filter"></a>1. een route filter maken
 U kunt een route filter maken door de optie voor het maken van een nieuwe resource te selecteren. Klik op **een resource maken**  >  **netwerk**  >  -**RouteFilter**, zoals wordt weer gegeven in de volgende afbeelding:
 
-![Een route filter maken](./media/how-to-routefilter-portal/CreateRouteFilter1.png)
+![Scherm opname van de pagina route filter.](./media/how-to-routefilter-portal/CreateRouteFilter1.png)
 
 U moet het route filter in een resource groep plaatsen. 
 
-![Een route filter maken](./media/how-to-routefilter-portal/CreateRouteFilter.png)
+![Scherm opname van de pagina ' route filter maken ' met voor waarden die worden ingevoerd.](./media/how-to-routefilter-portal/CreateRouteFilter.png)
 
 ### <a name="2-create-a-filter-rule"></a>2. een filter regel maken
 
 U kunt regels toevoegen en bijwerken door het tabblad regel beheren voor uw route filter te selecteren.
 
-![Een route filter maken](./media/how-to-routefilter-portal/ManageRouteFilter.png)
+![Scherm opname van de pagina ' overzicht ' met de actie ' regel beheren ' gemarkeerd.](./media/how-to-routefilter-portal/ManageRouteFilter.png)
 
 
 U kunt de services selecteren waarmee u verbinding wilt maken in de vervolg keuzelijst en de regel opslaan wanneer u klaar bent.
 
-![Een route filter maken](./media/how-to-routefilter-portal/AddRouteFilterRule.png)
+![Scherm opname van het venster ' regel beheren ' met services die zijn geselecteerd in de vervolg keuzelijst toegestane service community's.](./media/how-to-routefilter-portal/AddRouteFilterRule.png)
 
 
 ## <a name="step-3-attach-the-route-filter-to-an-expressroute-circuit"></a><a name="attach"></a>Stap 3: het route filter koppelen aan een ExpressRoute-circuit
 
 U kunt het route filter koppelen aan een circuit door de knop circuit toevoegen te selecteren en het ExpressRoute-circuit te selecteren in de vervolg keuzelijst.
 
-![Een route filter maken](./media/how-to-routefilter-portal/AddCktToRouteFilter.png)
+![Scherm opname van de pagina ' overzicht ' met de actie ' circuit toevoegen ' geselecteerd.](./media/how-to-routefilter-portal/AddCktToRouteFilter.png)
 
 Als de connectiviteits provider peering voor uw ExpressRoute-circuit configureert, vernieuwt u het circuit van de Blade ExpressRoute circuit voordat u de knop circuit toevoegen selecteert.
 
-![Een route filter maken](./media/how-to-routefilter-portal/RefreshExpressRouteCircuit.png)
+![Scherm opname van de pagina overzicht waarop de Actie vernieuwen is geselecteerd.](./media/how-to-routefilter-portal/RefreshExpressRouteCircuit.png)
 
 ## <a name="common-tasks"></a><a name="tasks"></a>Algemene taken
 
@@ -122,7 +122,7 @@ Als de connectiviteits provider peering voor uw ExpressRoute-circuit configureer
 
 U kunt de eigenschappen van een route filter weer geven wanneer u de resource in de portal opent.
 
-![Een route filter maken](./media/how-to-routefilter-portal/ViewRouteFilter.png)
+![Scherm afbeelding waarin de pagina overzicht wordt weer gegeven.](./media/how-to-routefilter-portal/ViewRouteFilter.png)
 
 
 ### <a name="to-update-the-properties-of-a-route-filter"></a><a name="updateproperties"></a>De eigenschappen van een route filter bijwerken
@@ -130,16 +130,16 @@ U kunt de eigenschappen van een route filter weer geven wanneer u de resource in
 U kunt de lijst met BGP Community-waarden die zijn gekoppeld aan een circuit bijwerken door de knop regel beheren te selecteren.
 
 
-![Een route filter maken](./media/how-to-routefilter-portal/ManageRouteFilter.png)
+![Scherm opname van de pagina ' overzicht ' met de actie ' regel beheren ' gemarkeerd.](./media/how-to-routefilter-portal/ManageRouteFilter.png)
 
-![Een route filter maken](./media/how-to-routefilter-portal/AddRouteFilterRule.png) 
+![Scherm opname van het venster ' regel beheren met geselecteerde services '.](./media/how-to-routefilter-portal/AddRouteFilterRule.png) 
 
 
 ### <a name="to-detach-a-route-filter-from-an-expressroute-circuit"></a><a name="detach"></a>Een route filter loskoppelen van een ExpressRoute-circuit
 
 Als u een circuit wilt ontkoppelen van het route filter, klikt u met de rechter muisknop op het circuit en klikt u op de koppeling loskoppelen.
 
-![Een route filter maken](./media/how-to-routefilter-portal/DetachRouteFilter.png) 
+![Scherm opname van de pagina ' overzicht ' met de actie ' ontkoppelen ' gemarkeerd.](./media/how-to-routefilter-portal/DetachRouteFilter.png) 
 
 
 ### <a name="to-delete-a-route-filter"></a><a name="delete"></a>Een route filter verwijderen

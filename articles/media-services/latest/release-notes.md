@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 88b1eb70814c349d488933179a16c084a0af803c
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: efdfc1c12191977c0422cda6c52eb9b73c95c55f
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91619964"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651187"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Release opmerkingen bij Azure Media Services v3
 
@@ -37,7 +37,6 @@ Om u op de hoogte te houden van de nieuwste ontwikkelingen, biedt dit artikel u 
 > U kunt de [Azure Portal](https://portal.azure.com/) gebruiken om v3 [Live-gebeurtenissen](live-events-outputs-concept.md)te beheren, v3- [assets](assets-concept.md) en-taken weer te geven, informatie over het openen van api's te verkrijgen, inhoud te versleutelen. Gebruik voor alle andere beheer taken (bijvoorbeeld trans formaties en taken beheren) de [rest API](https://aka.ms/ams-v3-rest-ref), [cli](https://aka.ms/ams-v3-cli-ref)of een van de ondersteunde [sdk's](media-services-apis-overview.md#sdks).
 >
 > Zie voor meer informatie: [de Azure Portal beperkingen voor Media Services v3](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3).
-
 
 ## <a name="august-2020"></a>Augustus 2020
 
@@ -264,21 +263,21 @@ Updates van de GA-versie van de V3 API zijn onder andere:
 
 ## <a name="november-2018"></a>November 2018
 
-De CLI 2,0-module is nu beschikbaar voor [Azure Media Services v3 ga](/cli/azure/ams?view=azure-cli-latest) – v-2.0.50.
+De CLI 2,0-module is nu beschikbaar voor [Azure Media Services v3 ga](/cli/azure/ams?view=azure-cli-latest&preserve-view=true) – v-2.0.50.
 
 ### <a name="new-commands"></a>Nieuwe opdrachten
 
-- [AZ AMS account](/cli/azure/ams/account?view=azure-cli-latest)
-- [AZ AMS account-filter](/cli/azure/ams/account-filter?view=azure-cli-latest)
-- [AZ AMS Asset](/cli/azure/ams/asset?view=azure-cli-latest)
-- [AZ AMS Asset-filter](/cli/azure/ams/asset-filter?view=azure-cli-latest)
-- [AZ AMS content-Key-policy](/cli/azure/ams/content-key-policy?view=azure-cli-latest)
-- [AZ AMS job](/cli/azure/ams/job?view=azure-cli-latest)
-- [AZ AMS Live-Event](/cli/azure/ams/live-event?view=azure-cli-latest)
-- [AZ AMS live-output](/cli/azure/ams/live-output?view=azure-cli-latest)
-- [AZ AMS streaming-Endpoint](/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
-- [AZ AMS streaming-Locator](/cli/azure/ams/streaming-locator?view=azure-cli-latest)
-- [AZ AMS account MRU](/cli/azure/ams/account/mru?view=azure-cli-latest) -Hiermee kunt u gereserveerde media-eenheden beheren. Zie [gereserveerde media-eenheden schalen](media-reserved-units-cli-how-to.md)voor meer informatie.
+- [AZ AMS account](/cli/azure/ams/account?view=azure-cli-latest&preserve-view=true)
+- [AZ AMS account-filter](/cli/azure/ams/account-filter?view=azure-cli-latest&preserve-view=true)
+- [AZ AMS Asset](/cli/azure/ams/asset?view=azure-cli-latest&preserve-view=true)
+- [AZ AMS Asset-filter](/cli/azure/ams/asset-filter?view=azure-cli-latest&preserve-view=true)
+- [AZ AMS content-Key-policy](/cli/azure/ams/content-key-policy?view=azure-cli-latest&preserve-view=true)
+- [AZ AMS job](/cli/azure/ams/job?view=azure-cli-latest&preserve-view=true)
+- [AZ AMS Live-Event](/cli/azure/ams/live-event?view=azure-cli-latest&preserve-view=true)
+- [AZ AMS live-output](/cli/azure/ams/live-output?view=azure-cli-latest&preserve-view=true)
+- [AZ AMS streaming-Endpoint](/cli/azure/ams/streaming-endpoint?view=azure-cli-latest&preserve-view=true)
+- [AZ AMS streaming-Locator](/cli/azure/ams/streaming-locator?view=azure-cli-latest&preserve-view=true)
+- [AZ AMS account MRU](/cli/azure/ams/account/mru?view=azure-cli-latest&preserve-view=true) -Hiermee kunt u gereserveerde media-eenheden beheren. Zie [gereserveerde media-eenheden schalen](media-reserved-units-cli-how-to.md)voor meer informatie.
 
 ### <a name="new-features-and-breaking-changes"></a>Nieuwe functies en belang rijke wijzigingen
 

@@ -1,39 +1,39 @@
 ---
-title: Overzicht van Azure Defender en de beschik bare abonnementen
-description: Meer informatie over de plannen, beveiligingen en waarschuwingen van Azure Defender. Ga vervolgens door met het inschakelen van Azure Defender voor uw abonnementen.
+title: Overzicht van Azure Defender en de beschikbare abonnementen
+description: Lees meer informatie over de abonnementen, beschermingen en waarschuwingen van Azure Defender. Stel Azure Defender vervolgens in voor uw abonnementen.
 author: memildin
 ms.author: memildin
 ms.date: 9/22/2020
-ms.topic: conceptual
+ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: bb1c1e6443b5087b48aad7c3171bef557707adb1
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
-ms.translationtype: MT
+ms.openlocfilehash: 5a5b96d5a9ea6aa05da30238690b8f5fa745b3f3
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90977300"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448420"
 ---
 # <a name="introduction-to-azure-defender"></a>Inleiding tot Azure Defender
 
-De functies van Azure Security Center omvatten de twee grote pijlers van Cloud beveiliging:
+De twee grote pijlers van cloudbeveiliging zijn verwerkt in de functies van Azure Security Center:
 
-- **Cloud Security postuur Management (CSPM)**
-- **Beveiliging van Cloud werkbelasting (CWP)**
+- **Beheer van cloudbeveiligingspostuur (CSPM)**
+- **Beveiliging van cloudworkloads (CWP)**
 
-De CSPM-functies van Security Center, zoals een beveiligde Score, de detectie van onjuiste beveiligings configuraties op uw Windows-en Linux Azure-machines, zijn allemaal deel van de gratis Security Center-ervaring die beschikbaar is voor alle Azure-gebruikers. Gebruik deze CSPM-functies om uw postuur te versterken en te zorgen voor naleving van de regelgeving.
+De CSPM-functies van Security Center, zoals de beveiligingsscore en detectie van onjuiste beveiligingsconfiguraties op uw Azure-machines op Windows en Linux, maken allemaal deel uit van de gratis Security Center-versie die voor alle Azure-gebruikers beschikbaar is. Gebruik deze CSPM-functies om uw beveiligingspostuur te versterken en naleving van de regelgeving te waarborgen.
 
-**Azure Defender** is het Cloud werkbelasting platform (CWPP) geïntegreerd in Security Center voor geavanceerde, intelligente beveiliging van uw Azure-en hybride werk belastingen.
+**Azure Defender** is het Cloud Workload Protection Platform (CWPP) dat is geïntegreerd in Security Center voor geavanceerde, intelligente beveiliging van uw Azure- en hybride workloads.
 
-Dit is het Azure Defender-dash board in Azure Security Center:
+Het Azure Defender-dashboard in Azure Security Center ziet er als volgt uit:
 
-:::image type="content" source="./media/azure-defender/sample-defender-dashboard.png" alt-text="Een voor beeld van het dash board van Azure Defender" lightbox="./media/azure-defender/sample-defender-dashboard.png":::
+:::image type="content" source="./media/azure-defender/sample-defender-dashboard.png" alt-text="Een voorbeeld van het Azure Defender-dashboard" lightbox="./media/azure-defender/sample-defender-dashboard.png":::
 
-## <a name="what-resource-types-can-azure-defender-secure"></a>Welke resource typen kan Azure Defender beveiligen?
+## <a name="what-resource-types-can-azure-defender-secure"></a>Welke brontypen kan Azure Defender beveiligen?
 
-Azure Defender biedt beveiligings waarschuwingen en geavanceerde bedreigings beveiliging voor virtuele machines, SQL-data bases, containers, webtoepassingen, uw netwerk en meer.
+Azure Defender biedt beveiligingswaarschuwingen en geavanceerde bescherming tegen dreigingen voor virtuele machines, SQL databases, containers, webtoepassingen, uw netwerk en meer.
 
-Wanneer u Azure Defender inschakelt vanuit het gebied met **prijzen en instellingen** van Azure Security Center, zijn de volgende Defender-abonnementen allemaal tegelijkertijd ingeschakeld en bieden zij uitgebreide beveiligingen voor de reken-, gegevens-en service lagen van uw omgeving:
+Als u Azure Defender inschakelt in het gedeelte **Prijzen en instellingen** van Azure Security Center, worden de volgende Defender-abonnementen allemaal tegelijkertijd ingeschakeld en kunt u gebruikmaken van een totaaloplossing voor de bescherming van de berekenings-, gegevens- en servicelagen in uw omgeving:
 
 - [Azure Defender voor servers](defender-for-servers-introduction.md)
 - [Azure Defender voor App Service](defender-for-app-service-introduction.md)
@@ -44,58 +44,58 @@ Wanneer u Azure Defender inschakelt vanuit het gebied met **prijzen en instellin
 - [Azure Defender voor containerregisters](defender-for-container-registries-introduction.md)
 - [Azure Defender voor Key Vault](defender-for-key-vault-introduction.md)
 
-Elk van deze plannen wordt afzonderlijk uitgelegd in de Security Center documentatie.
+Elk van deze abonnementen wordt afzonderlijk beschreven in de documentatie voor Security Center.
 
 
-## <a name="hybrid-cloud-protection"></a>Hybride Cloud beveiliging
+## <a name="hybrid-cloud-protection"></a>Bescherming voor hybride cloud
 
-En uw Azure-omgeving te beschermen, kunt u Azure Defender-mogelijkheden toevoegen aan uw hybride cloud omgeving:
+Met Azure Defender kunt u niet alleen uw Azure-omgeving, maar ook uw hybride cloudomgeving beveiligen:
 
-- Uw niet-Azure-servers beveiligen
-- Beveilig uw virtuele machines in andere Clouds (zoals AWS en GCP)
-- Uw IoT-apparaten beveiligen
+- Bescherm niet-Azure-servers
+- Bescherm virtuele machines in andere cloudomgevingen (zoals AWS en GCP)
+- Bescherm IoT-apparaten
 
-U krijgt aangepaste bedreigings informatie en waarschuwingen met prioriteit op basis van uw specifieke omgeving, zodat u zich kunt concentreren op de belangrijkste zaken
+U kunt gebruikmaken van aangepaste bedreigingsinformatie en op prioriteit gerangschikte waarschuwingen afgestemd op uw specifieke omgeving. Zo kunt u zich richten op de belangrijkste zaken.
 
-Implementeer [Azure-Arc](https://azure.microsoft.com/services/azure-arc/) en schakel Azure Defender in om de beveiliging uit te breiden naar on-premises en virtuele machines met meerdere clouds en SQL-data bases. Azure Arc voor servers is een gratis service, maar services die worden gebruikt op servers met Arc-functionaliteit, zoals Azure Defender, worden in rekening gebracht volgens de prijzen voor die service.
+Implementeer [Azure Arc](https://azure.microsoft.com/services/azure-arc/) en schakel Azure Defender in om de bescherming uit te breiden naar on-premises en multi-cloud virtuele machines plus SQL databases. Azure Arc voor servers is een gratis service, maar services die worden gebruikt op servers met Arc-functionaliteit, zoals Azure Defender, worden in rekening gebracht volgens de prijzen voor die service.
 
-Meer [informatie over Azure Arc](https://docs.microsoft.com/azure/azure-arc/overview).
+[Meer informatie over Azure Arc](https://docs.microsoft.com/azure/azure-arc/overview)
 
 
 ## <a name="azure-defender-alerts"></a>Azure Defender-waarschuwingen 
 
-Wanneer Azure Defender een bedreiging in een wille keurig gebied van uw omgeving detecteert, wordt er een waarschuwing gegenereerd. Deze waarschuwingen beschrijven de details van de betrokken resources, voorgestelde herstels tappen en in sommige gevallen een logische app activeren als reactie.
+Wanneer Azure Defender een bedreiging detecteert in een gedeelte van uw omgeving, wordt een waarschuwing gegenereerd. Deze waarschuwingen bevatten details over de relevante bronnen, voorgestelde stappen voor herstel en soms ook de optie om een logische app te activeren.
 
-Of een waarschuwing wordt gegenereerd door Security Center of wordt ontvangen door Security Center van een geïntegreerd beveiligings product, kunt u het exporteren. Als u uw waarschuwingen wilt exporteren naar Azure Sentinel, eventuele SIEM van derden of een ander extern hulp programma, volgt u de instructies in [waarschuwingen exporteren naar een Siem](continuous-export.md).
+U kunt een waarschuwing altijd exporteren, ongeacht of deze is gegenereerd door Security Center of door Security Center is ontvangen van een geïntegreerd beveiligingsproduct. Als u waarschuwingen wilt exporteren naar Azure Sentinel, een extern SIEM of een ander extern hulpprogramma, volgt u de instructies in [Waarschuwingen naar een SIEM exporteren](continuous-export.md).
 
 > [!NOTE]
-> Het kan even duren voordat waarschuwingen van verschillende bronnen worden weer gegeven. Waarschuwingen waarvoor analyse van netwerk verkeer nodig is, kunnen bijvoorbeeld langer duren dan waarschuwingen die betrekking hebben op de verdachte processen die op virtuele machines worden uitgevoerd.
+> Hoe snel een waarschuwing wordt weergegeven, hangt af van de bron van de waarschuwing. Waarschuwingen waarvoor analyse van netwerkverkeer is vereist, worden bijvoorbeeld later weergegeven dan waarschuwingen met betrekking tot verdachte processen op virtuele machines.
 
 
-## <a name="azure-defender-advanced-protection-capabilities"></a>Mogelijkheden voor geavanceerde beveiliging van Azure Defender
+## <a name="azure-defender-advanced-protection-capabilities"></a>Geavanceerde beschermingsfunctionaliteit van Azure Defender
 
-Azure Defender maakt gebruik van geavanceerde analyses voor aangepaste aanbevelingen met betrekking tot uw resources. 
+Azure Defender maakt gebruik van geavanceerde analyses voor aanbevelingen op maat voor uw bronnen. 
 
-Beveiligingen zijn onder andere het beveiligen van de beheer poorten van uw Vm's met Just-in-time-toegangs-en adaptieve toepassings besturings elementen voor het maken van lijsten met toegestane apps en die niet moeten worden uitgevoerd op uw computers. 
+U kunt bijvoorbeeld het beheer van de poorten van virtuele machines beveiligen met Just-In-Time-toegang of met adaptieve toepassingsregelaars acceptatielijsten maken voor welke apps wel en niet op uw machines mogen worden uitgevoerd. 
 
-Gebruik de tegels voor geavanceerde beveiliging in het dash board van Azure Defender om elk van deze beveiligingen te controleren en te configureren. 
+Gebruik de tegels voor geavanceerde bescherming in het Azure Defender-dashboard om deze beschermingen te bekijken en configureren. 
 
-## <a name="vulnerability-assessment-and-management"></a>Beoordeling en beheer van beveiligings problemen
+## <a name="vulnerability-assessment-and-management"></a>Evaluatie en beheer van beveiligingsproblemen
 
-Azure Defender bevat beveiligings problemen met het scannen van uw virtuele machines en container registers zonder extra kosten. De scanners worden aangedreven door Qualys, maar u hebt geen Qualys-licentie nodig of zelfs een Qualys-account: alles wordt naadloos verwerkt binnen Security Center. 
+Azure Defender omvat scannen op beveiligingsproblemen voor uw virtuele machines en containerregisters. Hiervoor betaalt u geen extra kosten. De scanners werken op basis van Qualys, maar u hebt geen Qualys-licentie of Qualys-account nodig. De scans worden naadloos uitgevoerd in Security Center. 
 
-Bekijk de resultaten van deze beveiligings problemen met scanners en reageer op alle in Security Center. Dit brengt Security Center dichter om het enige glas venster te zijn voor al uw Cloud beveiligings pogingen.
+Bekijk de bevindingen van de beveiligingsscanners en voer voor elke bevinding een relevante actie uit in Security Center. Hiermee is centralisering van alle cloudbeveiligingsactiviteiten in Security Center een stap dichterbij gekomen.
 
-Meer informatie vindt u op de volgende pagina's:
+Op de volgende pagina's vindt u meer informatie:
 
-- [De oplossing voor het evalueren van geïntegreerde beveiligings problemen voor Azure virtual machines Security Center](deploy-vulnerability-assessment-vm.md)
-- [Beveiligings problemen in installatie kopieën in azure-container registers identificeren](defender-for-container-registries-usage.md#identify-vulnerabilities-in-images-in-other-container-registries)
+- [De geïntegreerde oplossing van Security Center voor de beoordeling van beveiligingsproblemen met virtuele Azure-machines](deploy-vulnerability-assessment-vm.md)
+- [Beveiligingsproblemen met installatiekopieën in Azure-containerregisters identificeren](defender-for-container-registries-usage.md#identify-vulnerabilities-in-images-in-other-container-registries)
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd wat de voor delen van Azure Defender zijn. 
+In dit artikel bent u meer te weten gekomen over de voordelen van Azure Defender. 
 
 > [!div class="nextstepaction"]
 > [Azure Defender inschakelen](security-center-pricing.md)

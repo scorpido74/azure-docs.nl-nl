@@ -700,6 +700,8 @@
               href: how-to-data-flow-error-rows.md
             - name: Azure SQL DB naar Azure Cosmos DB
               href: how-to-sqldb-to-cosmosdb.md
+            - name: Dedupliceren en NULL-checks met snippets
+              href: how-to-data-flow-dedupe-nulls-snippets.md
         - name: SSIS-migratie van on-premises
           items:
             - name: Overzicht SSIS-gegevensmigratie

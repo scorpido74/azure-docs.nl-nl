@@ -76,6 +76,8 @@
       href: upgrade-virtual-wan.md
     - name: Een NVA in een virtuele hub maken
       href: How-to-nva-hub.md
+    - name: Een VNet-verbinding maken tussen meerdere tenants
+      href: cross-tenant-vnet.md
     - name: ExpressRoute
       items:
         - name: Een ExpressRoute-verbinding maken

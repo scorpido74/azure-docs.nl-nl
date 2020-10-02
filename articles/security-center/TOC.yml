@@ -39,6 +39,7 @@
         - name: Azure Defender voor App Service
           href: defender-for-app-service-introduction.md
         - name: Azure Defender voor Storage
+          displayName: 'blob, adls, files'
           href: defender-for-storage-introduction.md
         - name: Azure Defender voor SQL
           displayName: database
@@ -46,7 +47,7 @@
         - name: Azure Defender voor IoT
           href: defender-for-iot-introduction.md
         - name: Azure Defender voor Key Vault
-          displayName: KV
+          displayName: 'KV, akv'
           href: defender-for-key-vault-introduction.md
         - name: Azure Defender voor Kubernetes
           displayName: 'clusters, k8s'
@@ -65,13 +66,13 @@
   items:
     - name: Aan de slag
       href: security-center-get-started.md
-    - name: Verbinding maken met niet-Azure-machines
-      displayName: 'azure stack, windows, linux'
-      href: quickstart-onboard-machines.md
-    - name: Verbinding maken met AWS- en GCP-accounts
+    - name: Je hybride omgeving instellen
       items:
+        - name: Verbinding maken met niet-Azure-machines
+          displayName: 'azure stack, ash, windows, linux, hybrid, arc'
+          href: quickstart-onboard-machines.md
         - name: Verbinding maken met AWS-accounts
-          displayName: 'hybrid, multicloud, amazon'
+          displayName: 'hybrid, multicloud, amazon, arc'
           href: quickstart-onboard-aws.md
         - name: Verbinding maken met GCP-accounts
           displayName: 'hybrid, multicloud, google'
@@ -90,7 +91,7 @@
       href: security-center-planning-and-operations-guide.md
     - name: Uw resources beveiligen
       href: tutorial-protect-resources.md
-    - name: Reageren op incidenten
+    - name: Beveiligingswaarschuwingen onderzoeken en erop reageren
       href: tutorial-security-incident.md
     - name: Uw regelnaleving verbeteren
       href: security-center-compliance-dashboard.md
@@ -206,6 +207,7 @@
       items:
         - name: Azure Defender voor SQL configureren op virtuele Azure-machines
           href: defender-for-sql-usage.md
+          displayName: 'hybrid, arc'
         - name: Het informatiebeschermingsbeleid aanpassen
           href: security-center-info-protection-policy.md
     - name: Azure Defender voor containerregisters gebruiken
@@ -218,6 +220,7 @@
         - name: Regels voor het onderdrukken van waarschuwingen maken en beheren
           href: alerts-suppression-rules.md
         - name: Reageren op Azure Defender voor Key Vault-waarschuwingen
+          displayName: 'akv, kv'
           href: defender-for-key-vault-usage.md
         - name: Beveiligingsincidenten beheren
           href: security-center-incident.md

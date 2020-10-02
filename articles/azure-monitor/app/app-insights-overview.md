@@ -4,12 +4,12 @@ description: Dit is een service waarmee u de prestaties van toepassingen kunt be
 ms.topic: overview
 ms.date: 06/03/2019
 ms.custom: mvc
-ms.openlocfilehash: 4576c8a7657ea3da1f8a732c2efd38302f33300c
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: f00eea37c43fba10e0a89498dd81366630852db7
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90974052"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371375"
 ---
 # <a name="what-is-application-insights"></a>Wat is Application Insights?
 Application Insights, een functie van [Azure Monitor](../overview.md), is een uitbreidbare APM-service (Application Performance Management) voor ontwikkelaars en DevOps-professionals. Hiermee kunt u uw livetoepassingen controleren. De service detecteert automatisch afwijkingen in prestaties en bevat krachtige analysehulpmiddelen om u te helpen bij het vaststellen van problemen en te begrijpen wat gebruikers daadwerkelijk doen met uw app.  De service is bedoeld om u te helpen de prestaties en bruikbaarheid van uw apps continu te verbeteren. Het werkt voor apps op uiteenlopende platforms, waaronder .NET, Node.js, Java en Python, on-premises, of in een hybride of openbare cloud gehost. De service kan ook worden geïntegreerd met uw DevOps-proces en bevat verbindingspunten naar verschillende hulpmiddelen voor ontwikkelaars. Gebruik de service voor het controleren en analyseren van telemetrie van mobiele apps door Application Insights te integreren met Visual Studio App Center.
@@ -122,6 +122,7 @@ Gebruik tijdens het ontwikkelen:
 * [Java](./java-get-started.md)
 * [Node.js](./nodejs.md)
 * [Python](./opencensus-python.md)
+* [JavaScript](./javascript.md)
 
 
 ## <a name="support-and-feedback"></a>Ondersteuning en feedback

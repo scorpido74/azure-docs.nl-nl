@@ -43,6 +43,8 @@
           href: cache-java-spring-boot-initializer-with-redis-cache.md
     - name: Klassementen maken
       href: cache-web-app-cache-aside-leaderboard.md
+    - name: Een machine learning-model implementeren
+      href: cache-ml.md
     - name: Beheren met Azure PowerShell
       href: cache-how-to-manage-redis-cache-powershell.md
     - name: Beheren met Azure CLI
@@ -68,6 +70,8 @@
       items:
         - name: Een cachelaag selecteren
           href: cache-overview.md#choosing-the-right-tier
+        - name: Redis-versie instellen
+          href: cache-how-to-version.md
         - name: Uw cache distribueren via clustering
           href: cache-how-to-premium-clustering.md
         - name: Uw cache behouden met Redis-gegevenspersistentie

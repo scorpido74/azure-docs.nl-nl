@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
-ms.date: 4/2/2020
-ms.openlocfilehash: 9b79a0f21135e91ab72a4c8a9e604b84b67df0a9
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/1/2020
+ms.openlocfilehash: ed653ffb6fc24a75170d51d345c0c64724ff90f1
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902817"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651018"
 ---
 # <a name="create-databases-and-users-in-azure-database-for-mysql-server"></a>Data bases en gebruikers maken op Azure Database for MySQL server
 
@@ -35,7 +35,8 @@ De gebruiker met de server beheerder heeft bepaalde bevoegdheden voor uw server 
 Zodra de Azure Database for MySQL-server is gemaakt, kunt u het eerste gebruikers account van de server beheerder gebruiken om extra gebruikers te maken en beheerders toegang te verlenen. Het account voor de server beheerder kan ook worden gebruikt om gebruikers met minder bevoegdheden te maken die toegang hebben tot afzonderlijke database schema's.
 
 > [!NOTE]
-> De rol SUPER privilege en DBA worden niet ondersteund. Lees de [bevoegdheden](concepts-limits.md#privilege-support) in het artikel beperkingen om te begrijpen wat er niet wordt ondersteund in de service.
+> De rol SUPER privilege en DBA worden niet ondersteund. Lees de [bevoegdheden](concepts-limits.md#privileges--data-manipulation-support) in het artikel beperkingen om te begrijpen wat er niet wordt ondersteund in de service.<br><br>
+> De invoeg toepassingen voor wacht woorden, zoals ' validate_password ' en ' caching_sha2_password ', worden niet ondersteund door de service.
 
 ## <a name="how-to-create-database-with-non-admin-user-in-azure-database-for-mysql"></a>Data Base met niet-beheerder-gebruiker maken in Azure Database for MySQL
 
@@ -69,12 +70,12 @@ Zodra de Azure Database for MySQL-server is gemaakt, kunt u het eerste gebruiker
 
 5. Meld u aan bij de server, waarbij u de aangewezen data base opgeeft, met de nieuwe gebruikers naam en wacht woord. In dit voor beeld wordt de MySQL-opdracht regel weer gegeven. Met deze opdracht wordt u gevraagd om het wacht woord voor de gebruikers naam. Vervang uw eigen server naam, database naam en gebruikers naam.
 
-# <a name="single-server"></a>[Eén server](#tab/single-server)
+# <a name="single-server"></a>[Enkele server](#tab/single-server)
 
    ```azurecli-interactive
    mysql --host mydemoserver.mysql.database.azure.com --database testdb --user db_user@mydemoserver -p
    ```
-# <a name="flexible-server"></a>[Flexibele server](#tab/flexible-server)
+# <a name="flexible-server"></a>[Flexible server](#tab/flexible-server)
 
    ```azurecli-interactive
    mysql --host mydemoserver.mysql.database.azure.com --database testdb --user db_user -p
@@ -106,6 +107,10 @@ Zodra de Azure Database for MySQL-server is gemaakt, kunt u het eerste gebruiker
 
    SHOW GRANTS FOR 'new_master_user'@'%';
    ```
+
+## <a name="azure_superuser"></a>azure_superuser
+
+Alle Azure Database for MySQL-servers worden gemaakt met een gebruiker met de naam ' azure_superuser '. Dit is een systeem account dat door micro soft is gemaakt voor het beheren van de server voor het uitvoeren van bewaking, back-ups en andere regel matig onderhoud. Engineers van de oproep kunnen dit account ook gebruiken om toegang te krijgen tot de server tijdens een incident met certificaat verificatie en moeten toegang aanvragen met Just-in-time (JIT)-processen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
