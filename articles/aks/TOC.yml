@@ -50,6 +50,8 @@
       href: concepts-identity.md
     - name: Beveiliging
       items:
+        - name: Beveiligingsbasislijn
+          href: security-baseline.md
         - name: Beveiliging voor toepassingen en clusters
           href: concepts-security.md
         - name: Besturingselementen voor beveiliging van Azure Policy

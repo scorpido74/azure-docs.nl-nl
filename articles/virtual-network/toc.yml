@@ -4,7 +4,7 @@
   items:
     - name: Over Virtual Network
       href: virtual-networks-overview.md
-- name: Snelstartgidsen
+- name: Quickstarts
   items:
     - name: Een virtueel netwerk maken - Portal
       href: quick-create-portal.md
@@ -95,6 +95,8 @@
           href: public-ip-security-baseline.md
     - name: Beveiliging
       items:
+        - name: Beveiligingsbasislijn
+          href: security-baseline.md
         - name: Netwerkbeveiligingsgroepen
           items:
             - name: Overzicht

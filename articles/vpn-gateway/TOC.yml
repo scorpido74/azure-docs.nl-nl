@@ -42,8 +42,10 @@
       href: vpn-gateway-about-point-to-site-routing.md
     - name: Over zone-redundante gateways voor Beschikbaarheidszones
       href: about-zone-redundant-vnet-gateways.md
-    - name: Ingebouwde beveiligingsmaatregelen
-      href: vpn-gateway-security-controls.md
+    - name: Beveiliging
+      items:
+        - name: Beveiligingsbasislijn
+          href: security-baseline.md
     - name: Interoperabiliteit van back-endconnectiviteit
       items:
         - name: Vooraf instellen en testen
