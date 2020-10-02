@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: b-juche
-ms.openlocfilehash: 24b3710861f0ee158619ae9103584dcdb181f3d5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b01ab9787f86e6905f8d25ad4609385e3f6b6a5a
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79460446"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91628488"
 ---
 # <a name="faqs-about-smb-performance-for-azure-netapp-files"></a>Veelgestelde vragen over SMB-prestaties voor Azure NetApp Files
 
@@ -46,7 +46,7 @@ SMB meerdere kanalen sinds Windows 2012 wordt ondersteund om de beste prestaties
 
 Als u wilt weten of de Nic's van uw virtuele Azure-machine RSS ondersteunen, voert u de opdracht `Get-SmbClientNetworkInterface` als volgt uit en controleert u het veld `RSS Capable` : 
 
-![RSS-ondersteuning voor virtuele Azure-machines](../media/azure-netapp-files/azure-netapp-files-formance-rss-support.png)
+![Scherm opname van de RSS-uitvoer voor de virtuele machine van Azure.](../media/azure-netapp-files/azure-netapp-files-formance-rss-support.png)
 
 ## <a name="does-azure-netapp-files-support-smb-direct"></a>Ondersteunt Azure NetApp Files SMB direct?
 
@@ -60,9 +60,9 @@ Met de functie SMB meerdere kanalen kan een SMB3-client een pool met verbindinge
 
 Nee. De SMB-client komt overeen met het aantal NIC'S dat door de SMB-server wordt geretourneerd.  Elk opslag volume is toegankelijk vanuit één en slechts één opslag eindpunt.  Dit betekent dat er slechts één NIC wordt gebruikt voor een bepaalde SMB-relatie.  
 
-In de uitvoer van `Get-SmbClientNetworkInterace` Hieronder ziet u de virtuele machine met twee netwerk interfaces:--15 en 12.  Zoals hieronder wordt weer gegeven onder de opdracht `Get-SmbMultichannelConnection` , hoewel er twee met RSS geschikte nic's zijn, wordt alleen interface 12 gebruikt in combi natie met de SMB-share; interface 15 wordt niet gebruikt.
+`Get-SmbClientNetworkInterace`De virtuele machine heeft twee netwerk interfaces:--15 en 12, zoals hieronder wordt weer gegeven.  Zoals wordt weer gegeven onder de volgende opdracht `Get-SmbMultichannelConnection` , hoewel er twee met RSS geschikte nic's zijn, wordt alleen interface 12 gebruikt in combi natie met de SMB-share; interface 15 wordt niet gebruikt.
 
-![Met RSS compatibele NIC'S](../media/azure-netapp-files/azure-netapp-files-rss-capable-nics.png)
+![Screeshot die de uitvoer voor RSS-compatibele NIC'S toont.](../media/azure-netapp-files/azure-netapp-files-rss-capable-nics.png)
 
 ## <a name="is-nic-teaming-supported-in-azure"></a>Worden NIC-teams ondersteund in azure?
 
@@ -74,25 +74,61 @@ De volgende tests en grafieken tonen de kracht van SMB meerdere kanalen voor wor
 
 ### <a name="random-io"></a>Wille keurige I/O  
 
-Als SMB meerdere kanalen is uitgeschakeld op de client, zijn er KiB Lees-en schrijf tests uitgevoerd met behulp van FIO en een 40-GiB werkset.  De SMB-share is losgekoppeld van elke test, met stappen van het aantal SMB-client verbindingen per RSS-netwerk interface-instellingen van,,,, `1` `4` `8` `16` `set-SmbClientConfiguration -ConnectionCountPerRSSNetworkInterface <count>` . De tests laten zien dat de standaard instelling van `4` voldoende is voor I/O-intensieve workloads; er wordt verhoogd naar `8` en `16` heeft geen effect. 
+Als SMB meerdere kanalen is uitgeschakeld op de client, zijn er zuivere 4 KiB-Lees-en schrijf tests uitgevoerd met behulp van FIO en een GiB-werkset van 40.  De SMB-share is losgekoppeld van elke test, met stappen van het aantal SMB-client verbindingen per RSS-netwerk interface-instellingen van,,,, `1` `4` `8` `16` `set-SmbClientConfiguration -ConnectionCountPerRSSNetworkInterface <count>` . De tests laten zien dat de standaard instelling van `4` voldoende is voor I/O-intensieve workloads, waardoor het effect kan worden verhoogd `8` `16` . 
 
 De opdracht heeft `netstat -na | findstr 445` aangetoond dat er extra verbindingen tot stand zijn gebracht met stappen van `1` naar `4` `8` en tot `16` .  Er zijn vier CPU-kernen voor SMB tijdens elke test volledig gebruikt, zoals bevestigd door de prestatie `Per Processor Network Activity Cycles` Statistieken (niet opgenomen in dit artikel).
 
-![Wille keurige I/O-tests](../media/azure-netapp-files/azure-netapp-files-random-io-tests.png)
+![Grafiek met een wille keurige I/O-vergelijking van SMB meerdere kanalen.](../media/azure-netapp-files/azure-netapp-files-random-io-tests.png)
 
-De virtuele machine van Azure heeft geen invloed op I/O-opslag limieten voor SMB (of NFS).  Zoals hieronder wordt weer gegeven, heeft het D16-exemplaar type een beperkt aantal van 32.000 voor opslag-IOPS in de cache en 25.600 voor niet-opgeslagen opslag-IOPS.  In het bovenstaande diagram ziet u echter veel meer I/O over SMB.
+De virtuele machine van Azure heeft geen invloed op I/O-opslag limieten voor SMB (of NFS).  Zoals weer gegeven in de volgende grafiek, heeft het D32ds-exemplaar type een beperkt aantal van 308.000 voor opslag-IOPS in de cache en 51.200 voor niet-opgeslagen opslag-IOPS.  In het bovenstaande diagram ziet u echter veel meer I/O over SMB.
 
-![Wille keurige I/O-vergelijking](../media/azure-netapp-files/azure-netapp-files-random-io-tests-list.png)
+![Grafiek waarin de test voor wille keurige I/O-vergelijking wordt weer gegeven.](../media/azure-netapp-files/azure-netapp-files-random-io-tests-list.png)
 
 ### <a name="sequential-io"></a>Sequentiële IO 
 
-Tests die vergelijkbaar zijn met de hierboven beschreven tests voor wille keurige I/O's zijn uitgevoerd met 64-KiB sequentiële I/O. Hoewel de toename van het aantal client verbindingen per RSS-netwerk interface meer dan 4 heeft geen merkbaar effect op wille keurige I/O, is hetzelfde niet van toepassing op opeenvolgende I/O's. Zoals in het volgende diagram wordt weer gegeven, is elke toename gekoppeld aan een overeenkomstige toename van de Lees doorvoer. De schrijf doorvoer bleef plat vanwege de beperkingen van de netwerk bandbreedte die worden geplaatst door Azure voor elk type exemplaar/grootte. 
+Tests die vergelijkbaar zijn met de tests voor wille keurige I/O's die eerder zijn beschreven, zijn uitgevoerd met 64-KiB sequentiële I/O. Hoewel de toename van het aantal client verbindingen per RSS-netwerk interface meer dan 4 heeft geen merkbaar effect op wille keurige I/O, is hetzelfde niet van toepassing op opeenvolgende I/O's. Zoals in het volgende diagram wordt weer gegeven, is elke toename gekoppeld aan een overeenkomstige toename van de Lees doorvoer. De schrijf doorvoer bleef plat vanwege de beperkingen van de netwerk bandbreedte die worden geplaatst door Azure voor elk type exemplaar/grootte. 
 
-![Sequentiële I/O-tests](../media/azure-netapp-files/azure-netapp-files-sequential-io-tests.png)
+![Grafiek waarin de vergelijking van de doorvoer test wordt weer gegeven.](../media/azure-netapp-files/azure-netapp-files-sequential-io-tests.png)
 
-Azure plaatst netwerk frequentie limieten voor elk type virtuele machine/grootte. De frequentie limiet wordt alleen opgelegd voor uitgaand verkeer. Het aantal Nic's dat aanwezig is op een virtuele machine heeft geen invloed op de totale hoeveelheid band breedte die beschikbaar is voor de machine.  Het D16-exemplaar type heeft bijvoorbeeld een ingestelde netwerk limiet van 8000 Mbps (1.000 MiB/s).  Zoals in de sequentiële grafiek hierboven wordt weer gegeven, is de limiet van invloed op het uitgaande verkeer (schrijf bewerkingen), maar niet op meerkanaalse Lees bewerkingen.
+Azure plaatst netwerk frequentie limieten voor elk type virtuele machine/grootte. De frequentie limiet wordt alleen opgelegd voor uitgaand verkeer. Het aantal Nic's dat aanwezig is op een virtuele machine heeft geen invloed op de totale hoeveelheid band breedte die beschikbaar is voor de machine.  Het D32ds-exemplaar type heeft bijvoorbeeld een ingestelde netwerk limiet van 16.000 Mbps (2.000 MiB/s).  Zoals in de sequentiële grafiek hierboven wordt weer gegeven, is de limiet van invloed op het uitgaande verkeer (schrijf bewerkingen), maar niet op meerkanaalse Lees bewerkingen.
 
-![Vergelijking van opeenvolgende I/O-bewerkingen](../media/azure-netapp-files/azure-netapp-files-sequential-io-tests-list.png)
+![Grafiek waarin de opeenvolgende I/O-vergelijking test wordt weer gegeven.](../media/azure-netapp-files/azure-netapp-files-sequential-io-tests-list.png)
+
+## <a name="what-performance-is-expected-with-a-single-instance-with-a-1-tb-dataset"></a>Welke prestaties worden verwacht met één exemplaar met een gegevensset van 1 TB?
+
+Om meer inzicht te krijgen in werk belastingen met mixen voor lezen/schrijven, worden in de volgende twee grafieken de prestaties weer gegeven van een single, Ultra service-volume van 50 TB met een gegevensset van 1 TB en met SMB meerdere kanalen van 4. Er is een optimale IODepth van 16 gebruikt en er zijn flexibele i/o-para meters (FIO) gebruikt om het volledige gebruik van de netwerk bandbreedte () te garanderen `numjobs=16` .
+
+In het volgende diagram ziet u de resultaten voor wille keurige I/O van 4 KB, met één VM-exemplaar en een lezen/schrijven-mix van 10% intervallen:
+
+![Grafiek met een wille keurige i/o-test voor Windows 2019 Standard _D32ds_v4 4 KB.](../media/azure-netapp-files/smb-performance-standard-4k-random-io.png)
+
+In het volgende diagram ziet u de resultaten voor sequentiële I/O's:
+
+![Grafiek waarin Windows 2019 Standard _D32ds_v4 64 KB sequentiële door Voer wordt weer gegeven.](../media/azure-netapp-files/smb-performance-standard-64k-throughput.png)
+
+## <a name="what-performance-is-expected-when-scaling-out-using-5-vms-with-a-1-tb-dataset"></a>Welke prestaties worden er verwacht bij het uitschalen van vijf Vm's met een gegevensset van 1 TB?
+
+Deze tests met vijf Vm's gebruiken dezelfde test omgeving als de enkele virtuele machine, waarbij elk proces naar een eigen bestand schrijft.
+
+In het volgende diagram ziet u de resultaten voor wille keurige I/O:
+
+![Grafiek met de Windows 2019 Standard _D32ds_v4-IO-test met 5 exemplaren van 4 KB-randio.](../media/azure-netapp-files/smb-performance-standard-4k-random-io-5-instances.png)
+
+In het volgende diagram ziet u de resultaten voor sequentiële I/O's:
+
+![Grafiek met de Windows 2019 Standard _D32ds_v4 64K 5-opeenvolgende door Voer voor instanties.](../media/azure-netapp-files/smb-performance-standard-64k-throughput-5-instances.png)
+
+## <a name="how-do-you-monitor-hyper-v-ethernet-adapters-and-ensure-that-you-maximize-network-capacity"></a>Hoe bewaakt u Hyper-V Ethernet-adapters en zorgt u ervoor dat u de netwerk capaciteit maximaliseert?  
+
+Een strategie die wordt gebruikt om met FIO te testen, is om in te stellen `numjobs=16` . Hiermee splitst u elke taak in 16 specifieke instanties om de Microsoft Hyper-V netwerk adapter te maximaliseren.
+
+U kunt op elk van de adapters in Windows prestatie meter controleren door **prestatie meter te selecteren > items toe te voegen > netwerk Interface > Microsoft Hyper-V netwerk adapter**.
+
+![Scherm opname van de prestatie meter die de item interface toevoegen weergeeft.](../media/azure-netapp-files/smb-performance-performance-monitor-add-counter.png)
+
+Nadat u gegevens verkeer hebt uitgevoerd op uw volumes, kunt u uw adapters bewaken in de prestatie meter van Windows. Als u niet al deze 16 virtuele adapters gebruikt, is het mogelijk dat u de capaciteit van uw netwerk bandbreedte niet optimaal kunt benutten.
+
+![Scherm opname van de uitvoer van de prestatie meter.](../media/azure-netapp-files/smb-performance-performance-monitor-output.png)
 
 ## <a name="is-accelerated-networking-recommended"></a>Wordt versneld netwerken aanbevolen?
 
@@ -115,7 +151,7 @@ SMB-ondertekening wordt ondersteund voor alle SMB-protocol versies die worden on
 
 SMB-ondertekening heeft een deleterious-effect op SMB-prestaties. De digitale ondertekening van elk pakket verbruikt onder andere mogelijke oorzaken van de prestaties van de uitvoering van extra CPU-aan client zijde, zoals hieronder wordt weer gegeven. In dit geval is core 0 verantwoordelijk voor SMB, met inbegrip van SMB-ondertekening.  Een vergelijking met het aantal sequentiële Lees doorvoer van niet-meerkanaals in de vorige sectie laat zien dat SMB-ondertekening de algehele door Voer van 875MiB/s naar ongeveer 250MiB/s vermindert. 
 
-![Invloed op de prestaties van SMB-ondertekening](../media/azure-netapp-files/azure-netapp-files-smb-signing-performance.png)
+![Grafiek waarin de prestaties van de SMB-ondertekening worden weer gegeven.](../media/azure-netapp-files/azure-netapp-files-smb-signing-performance.png)
 
 
 ## <a name="next-steps"></a>Volgende stappen  

@@ -11,12 +11,12 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 9428ad0756fac59f54e7036d26a1b7d6408cab31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 06f62fd656357e16396a0458a9afee12dcfa507f
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85200967"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91629366"
 ---
 # <a name="secure-a-database-in-azure-synapse"></a>Een data base in azure Synapse beveiligen
 
@@ -33,7 +33,7 @@ Dit artikel begeleidt u stapsgewijs door de basis beginselen van het beveiligen 
 
 Verbindingsbeveiliging verwijst naar de manier waarop u verbindingen met uw database beperkt en beveiligt met behulp van firewallregels en verbindingsversleuteling.
 
-Firewall regels worden door de [logische SQL-Server](../../azure-sql/database/logical-servers.md) en de bijbehorende data bases gebruikt om verbindings pogingen te weigeren van IP-adressen die niet expliciet zijn white list. Als u verbindingen van uw toepassing of het open bare IP-adres van de client computer wilt toestaan, moet u eerst een firewall regel op server niveau maken met behulp van de Azure Portal, REST API of Power shell.
+Firewall regels worden door de [logische SQL-Server](../../azure-sql/database/logical-servers.md) en de bijbehorende data bases gebruikt om verbindings pogingen te weigeren van IP-adressen die niet expliciet zijn goedgekeurd. Als u verbindingen van uw toepassing of het open bare IP-adres van de client computer wilt toestaan, moet u eerst een firewall regel op server niveau maken met behulp van de Azure Portal, REST API of Power shell.
 
 Als best practice moet u de IP-adresbereiken zo veel mogelijk beperken via de firewall op server niveau.  Als u toegang wilt krijgen tot de SQL-groep vanaf uw lokale computer, zorgt u ervoor dat de firewall op uw netwerk en lokale computer uitgaande communicatie toestaat op TCP-poort 1433.  
 

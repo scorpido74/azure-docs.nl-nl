@@ -3,12 +3,12 @@ title: Stel een ethische hacking Lab in met Azure Lab Services | Microsoft Docs
 description: Meer informatie over het instellen van een Lab met Azure Lab Services om ethische hacking te leren.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 5134a7db824bad69f42a4051319479f712051446
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: ae0d57223edb68d1bed4ad64a005dd33da019dd0
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297583"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631678"
 ---
 # <a name="set-up-a-lab-to-teach-ethical-hacking-class"></a>Een Lab instellen om ethische hacking-klasse te leren 
 In dit artikel wordt beschreven hoe u een klasse instelt die zich richt op forensischee-hacking. Indringings tests, een praktijk die wordt gebruikt door de ethische hacking-Community, treedt op wanneer iemand probeert toegang te krijgen tot het systeem of netwerk om beveiligings problemen te demonstreren die een kwaadwillende aanvaller kan misbruiken. 
@@ -70,26 +70,23 @@ Kali is een Linux-distributie met hulpprogram ma's voor indringings tests en bev
 ## <a name="set-up-a-nested-vm-with-metasploitable-image"></a>Een geneste VM met Metasploitable-installatie kopie instellen  
 De Rapid7 Metasploitable-installatie kopie is een installatie kopie die als doel is geconfigureerd met beveiligings problemen. U gebruikt deze afbeelding om problemen te testen en op te sporen. De volgende instructies laten zien hoe u een vooraf gemaakte Metasploitable-installatie kopie gebruikt. Als er echter een nieuwere versie van de Metasploitable-installatie kopie nodig is, raadpleegt u [https://github.com/rapid7/metasploitable3](https://github.com/rapid7/metasploitable3) .
 
-1. Navigeer naar [https://information.rapid7.com/download-metasploitable-2017.html](https://information.rapid7.com/download-metasploitable-2017.html) . Vul het formulier in om de installatie kopie te downloaden en selecteer de knop **verzenden** .
-1. Selecteer de knop **Metasploitable nu downloaden** .
-1. Wanneer het zip-bestand wordt gedownload, pakt u het zip-bestand uit en onthoud u de locatie.
-1. Converteer het uitgepakte VMDK-bestand naar een vhdx-bestand, zodat u het kunt gebruiken met Hyper-V. Hiertoe opent u Power shell met beheerders bevoegdheden, navigeert u naar de map waar het VMDK-bestand zich bevindt en volgt u deze instructies:
-    1. Down load het [conversie programma van micro soft virtual machine](https://download.microsoft.com/download/9/1/E/91E9F42C-3F1F-4AD9-92B7-8DD65DA3B0C2/mvmc_setup.msi)en voer mvmc_setup.msi bestand uit wanneer u hierom wordt gevraagd.
-    1. Importeer de PowerShell-module.  De standaard locatie waarin de module is geïnstalleerd, is C:\Program Files\Microsoft virtual machine Converter \
-
-        ```powershell
-        Import-Module 'C:\Program Files\Microsoft Virtual Machine Converter\MvmcCmdlet.psd1'
-        ```
-    1. Converteer de VMDK naar een VHD-bestand dat kan worden gebruikt door Hyper-V. Deze bewerking kan enkele minuten duren.
-    
-        ```powershell
-        ConvertTo-MvmcVirtualHardDisk -SourceLiteralPath .\Metasploitable.vmdk -DestinationLiteralPath .\Metasploitable.vhdx -VhdType DynamicHardDisk -VhdFormat vhdx
-        ```
-    1. Kopieer de zojuist gemaakte metasploitable. vhdx naar C:\Users\Public\Documents\Hyper-V\Virtual hard Disks\. 
+1. Down load de Metasploitable-installatie kopie.
+    1. Navigeer naar [https://information.rapid7.com/download-metasploitable-2017.html](https://information.rapid7.com/download-metasploitable-2017.html) . Vul het formulier in om de installatie kopie te downloaden en selecteer de knop **verzenden** .
+    2. Selecteer de knop **Metasploitable nu downloaden** .
+    3. Wanneer het zip-bestand is gedownload, pakt u het zip-bestand uit en herinnert u de locatie van het Metasploitable. VMDK-bestand.
+1. Converteer het uitgepakte VMDK-bestand naar een vhdx-bestand, zodat u het vhdx-bestand kunt gebruiken met Hyper-V. Er zijn verschillende hulpprogram ma's beschikbaar om VMware-installatie kopieën te converteren naar Hyper-V-installatie kopieën en andersom.  We gebruiken het [Star wind V2V-conversie programma](https://www.starwindsoftware.com/starwind-v2v-converter).  Zie [Star wind V2V Converter-Download pagina](https://www.starwindsoftware.com/starwind-v2v-converter#download)om te downloaden.
+    1. Start het **Star wind V2V-conversie programma**.
+    1. Kies **lokaal bestand**op de pagina **Selecteer de locatie van de afbeelding die u wilt converteren** .  Selecteer **Next**.
+    1. Ga op de pagina **bron installatie kopie** naar en selecteer de Metasploitable. vmdk geëxtraheerd in de vorige stap voor de instelling van de **Bestands naam** .  Selecteer **Next**.
+    1. Kies **lokaal bestand**op de **locatie van de doel installatie kopie selecteren**.  Selecteer **Next**.
+    1. Kies op de pagina **indeling van doel afbeelding selecteren** de optie **VHD/VHDX**.  Selecteer **Next**.
+    1. Kies op de **optie selecteren voor de pagina afbeeldings indeling voor VHD/vhdx** een **groter formaat voor VHDX**.  Selecteer **Next**.
+    1. Accepteer op de pagina Selecteer de naam van het **doel bestand** de standaard naam van het bestand.  Selecteer **converteren**.
+    1. Wacht op de pagina **converteren** naar de afbeelding die moet worden geconverteerd.  Dit kan enkele minuten duren.  Selecteer **volt ooien** wanneer de conversie is voltooid.
 1. Maak een nieuwe Hyper-V-virtuele machine.
     1. Open **Hyper-V-beheer**.
     1. Kies **actie**  ->  **nieuwe**  ->  **virtuele machine**.
-    1. Klik op de pagina **voordat u begint** van de **wizard Nieuwe virtuele machine**op **volgende**.
+    1. Selecteer op de pagina **voordat u begint** van de **wizard Nieuwe virtuele machine**de optie **volgende**.
     1. Voer op de pagina **naam en locatie opgeven** **Metasploitable** in als **naam**en selecteer **volgende**.
 
         ![Wizard nieuwe VM-installatie kopie](./media/class-type-ethical-hacking/new-vm-wizard-1.png)

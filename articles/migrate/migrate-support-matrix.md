@@ -4,12 +4,12 @@ description: Hierin wordt een overzicht gegeven van de ondersteunings instelling
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: raynew
-ms.openlocfilehash: 6137201f8accb901ffe1892d9876b172411cfe6b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ee45d2f489b23289e4f92a544590a510e77ece13
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329589"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627947"
 ---
 # <a name="azure-migrate-support-matrix"></a>Ondersteunings matrix Azure Migrate
 
@@ -97,7 +97,7 @@ Verenigd Koninkrijk | UK-zuid of UK-west
 Verenigde Staten | VS-midden, VS-West 2
 
 > [!NOTE]
-> Voor Geografie: Zwitserland-west is alleen beschikbaar voor REST API gebruikers en u hebt een white list-abonnement nodig.
+> Voor geografie is Zwitserland-west alleen beschikbaar voor REST API gebruikers en moet er een goedgekeurd abonnement zijn.
 
 ## <a name="supported-geographies-azure-government"></a>Ondersteunde geographs (Azure Government)
 

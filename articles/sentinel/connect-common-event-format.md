@@ -12,17 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/26/2019
+ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: cd84a4b50ba32ee3f562ace9b2583cf5e561be84
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d63893ab219854a270652da38c474e3ccad83abc
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320384"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91630505"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>Verbind uw externe oplossing met de algemene gebeurtenis indeling
-
 
 Wanneer u verbinding maakt met een externe oplossing die CEF berichten verzendt, zijn er drie stappen om verbinding te maken met Azure Sentinel:
 
@@ -43,29 +42,28 @@ Deze installatie bestaat ook als u een virtuele machine in een andere Cloud of o
 
  ![CEF on-premises](./media/connect-cef/cef-syslog-onprem.png)
 
-
 ## <a name="security-considerations"></a>Beveiligingsoverwegingen
 
 Zorg ervoor dat u de beveiliging van de computer configureert op basis van het beveiligings beleid van uw organisatie. U kunt bijvoorbeeld uw netwerk zodanig configureren dat het wordt uitgelijnd met het beveiligings beleid van uw bedrijfs netwerk en de poorten en protocollen in de daemon wijzigen om af te stemmen op uw vereisten. U kunt de volgende instructies gebruiken om de beveiligings configuratie van uw computer te verbeteren:  [Beveilig de virtuele machine in azure](../virtual-machines/security-policy.md), [Aanbevolen procedures voor netwerk beveiliging](../security/fundamentals/network-best-practices.md).
 
 Als u TLS-communicatie tussen de syslog-bron en de syslog-doorstuur server wilt gebruiken, moet u de syslog-daemon (rsyslog of syslog-ng) configureren om te communiceren in TLS: [syslog-verkeer met TLS-rsyslog versleutelen](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html), [logboek berichten versleutelen met TLS-syslog-aardgas](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298).
-
  
 ## <a name="prerequisites"></a>Vereisten
+
 Zorg ervoor dat op de Linux-machine die u als proxy gebruikt, een van de volgende besturings systemen wordt uitgevoerd:
 
 - 64-bits
-  - CentOS 6 en 7
+  - CentOS 7 en subversies en hoger (niet 6)
   - Amazon Linux 2017,09
   - Oracle Linux 6 en 7
-  - Red Hat Enterprise Linux Server 6 en 7
+  - Red Hat Enterprise Linux (RHEL) Server 7 en subversies en hoger (niet 6)
   - Debian GNU/Linux 8 en 9
   - Ubuntu Linux 14,04 LTS, 16,04 LTS en 18,04 LTS
   - SUSE Linux Enterprise Server 12
 - 32-bits
-   - CentOS 6
+   - CentOS 7
    - Oracle Linux 6
-   - Red Hat Enterprise Linux Server 6
+   - Red Hat Enterprise Linux Server 7
    - Debian GNU/Linux 8 en 9
    - Ubuntu Linux 14,04 LTS en 16,04 LTS
  
@@ -81,11 +79,10 @@ Zorg ervoor dat uw computer ook aan de volgende vereisten voldoet:
 - Machtigingen
     - U moet over verhoogde machtigingen (sudo) beschikken op uw computer. 
 - Softwarevereisten
-    - Zorg ervoor dat python op uw computer wordt uitgevoerd
-
-
+    - Zorg ervoor dat op uw computer python (2,7 of hoger) wordt uitgevoerd
 
 ## <a name="next-steps"></a>Volgende stappen
+
 In dit document hebt u geleerd hoe u CEF-apparaten verbindt met Azure Sentinel. Zie de volgende artikelen voor meer informatie over Azure Sentinel:
 - Meer informatie over het [verkrijgen van inzicht in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
 - Ga aan de slag met [het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats.md).

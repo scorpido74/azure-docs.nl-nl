@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
-ms.date: 09/10/2020
+ms.date: 09/30/2020
 ms.author: aahi
-ms.openlocfilehash: 0fde9a0f46073a2f3a24962ea58431581455f474
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e4a75bdd6147ee2189660c37062c5bec9d55d512
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936002"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631733"
 ---
 # <a name="metrics-advisor-frequently-asked-questions"></a>Veelgestelde vragen over metrische gegevens adviseur
 
@@ -74,9 +74,26 @@ Op basis van de granulatie van uw gegevens worden de volgende gegevens weer gege
 
 ### <a name="more-concepts-and-technical-terms"></a>Meer concepten en technische voor waarden
 
-Ga naar de [woorden lijst](glossary.md) voor meer informatie.
+Zie ook de [woorden lijst](glossary.md) voor meer informatie.
 
-## <a name="how-do-i-detect-such-kinds-of-anomalies"></a>Hoe kan ik deze soorten afwijkingen detecteren? 
+###  <a name="how-do-i-write-a-valid-query-for-ingesting-my-data"></a>Hoe kan ik een geldige query schrijven voor het opnemen van mijn gegevens?  
+
+Als u wilt dat de gegevens worden opgenomen in de data Advisor, moet u een query maken die de afmetingen van uw gegevens in één tijds tempel retourneert. Metrics Advisor voert deze query meermaals uit om de gegevens van elke tijds tempel op te halen. 
+
+Houd er rekening mee dat de query ten hoogste één record moet retour neren voor elke dimensie combinatie, met een bepaalde tijds tempel. Alle records die worden geretourneerd, moeten dezelfde tijds tempel hebben. Er mogen geen dubbele records worden geretourneerd door de query.
+
+Stel dat u de onderstaande query hebt gemaakt, voor een dagelijkse metrische waarde: 
+ 
+`select timestamp, city, category, revenue from sampledata where Timestamp >= @StartTime and Timestamp < dateadd(DAY, 1, @StartTime)`
+
+Zorg ervoor dat u de juiste granulatie voor uw tijd reeks gebruikt. Voor de metrische gegevens per uur gebruikt u: 
+
+`select timestamp, city, category, revenue from sampledata where Timestamp >= @StartTime and Timestamp < dateadd(hour, 1, @StartTime)`
+
+Houd er rekening mee dat deze query's alleen gegevens retour neren met één tijds tempel en alle dimensie combinaties bevatten die moeten worden opgenomen door de para meters Advisor. 
+
+:::image type="content" source="media/query-result.png" alt-text="Bericht wanneer een F0-resource al bestaat" lightbox="media/query-result.png":::
+
 
 ### <a name="how-do-i-detect-spikes--dips-as-anomalies"></a>Hoe kan ik detecteert pieken & spannings dips als afwijkingen?
 

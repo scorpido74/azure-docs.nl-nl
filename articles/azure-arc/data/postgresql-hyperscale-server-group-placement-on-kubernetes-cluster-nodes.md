@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 5da00916a3f7a6a3685b1de1c56dd032355e28fa
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 2b69eb076c727a4383b7459ef914ac79dca31c84
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935822"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91628414"
 ---
 # <a name="azure-arc-enabled-postgresql-hyperscale-server-group-placement"></a>Plaatsing van Azure-PostgreSQL grootschalige-Server groep
 
@@ -46,7 +46,7 @@ aks-agentpool-42715708-vmss000003   Ready    agent   11h   v1.17.9
 
 De architectuur kan worden weer gegeven als:
 
-:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/2_logical_cluster.png" alt-text="Logische weer gave van vier knoop punten gegroepeerd in een Kubernetes-cluster":::
+:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/2_logical_cluster.png" alt-text="AKS cluster met 4 knoop punten in Azure Portal":::
 
 Het Kubernetes-cluster fungeert als host voor een Azure-Arc-gegevens controller en één grootschalige-Server groep voor Azure-Arc ingeschakelde PostgreSQL. Deze server groep is samengesteld uit drie PostgreSQL-instanties: één coördinator en twee werk nemers.
 
@@ -121,7 +121,7 @@ Containers:
 
 Elke pod die deel uitmaakt van de PostgreSQL grootschalige-Server groep voor Azure-Arc, host de volgende drie containers:
 
-|Containers|Description
+|Containers|Beschrijving
 |----|----|
 |`Fluentbit` |Gegevens * logboek verzamelaar: https://fluentbit.io/
 |`Postgres`|PostgreSQL-exemplaar onderdeel van de Azure-PosgreSQL grootschalige-Server groep ingeschakeld
@@ -129,7 +129,7 @@ Elke pod die deel uitmaakt van de PostgreSQL grootschalige-Server groep voor Azu
 
 De architectuur ziet er als volgt uit:
 
-:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/3_pod_placement.png" alt-text="3 elke plaats op afzonderlijke knoop punten":::
+:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/3_pod_placement.png" alt-text="AKS cluster met 4 knoop punten in Azure Portal":::
 
 Dit betekent dat op dit moment elk PostgreSQL-exemplaar dat de Azure-PostgreSQL grootschalige-Server groep vormt, wordt gehost op een specifieke fysieke host in de Kubernetes-container. Dit is de beste configuratie om de prestaties van de Azure-PostgreSQL grootschalige-Server groep optimaal te benutten, aangezien elke rol (coördinator en werk nemers) de bronnen van elk fysiek knoop punt gebruikt. Deze resources worden niet gedeeld tussen verschillende PostgreSQL-rollen.
 
@@ -207,7 +207,7 @@ U ziet dat de pod van de nieuwe werk nemer (postgres01-3) is geplaatst op hetzel
 
 De architectuur ziet er als volgt uit:
 
-:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/4_pod_placement_.png" alt-text="Vierde pod op hetzelfde knoop punt als coördinator":::
+:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/4_pod_placement_.png" alt-text="AKS cluster met 4 knoop punten in Azure Portal":::
 
 Waarom is de nieuwe werk nemer-pod niet geplaatst op het resterende fysieke knoop punt van het Kubernetes-cluster AKS-agent pool-42715708-vmss000003?
 
@@ -217,25 +217,25 @@ Dezelfde opdrachten gebruiken als hierboven. We zien wat elk fysiek knoop punt h
 
 |Andere namen van peulen\* |Gebruik|Fysiek Kubernetes-knoop punt dat als host fungeert voor het Peul
 |----|----|----
-|Boots Trapper-jh48b||AKS-agent pool-42715708-vmss000003
+|Boots Trapper-jh48b|Dit is een service die inkomende aanvragen verwerkt voor het maken, bewerken en verwijderen van aangepaste resources, zoals SQL Managed instances, PostgreSQL grootschalige server groups en gegevens controllers|AKS-agent pool-42715708-vmss000003
 |Control-gwmbs||AKS-agent pool-42715708-vmss000002
-|controldb-0||AKS-agent pool-42715708-vmss000001
-|controlwd-zzjp7||AKS-agent pool-42715708-vmss000000
-|logsdb-0|Elasticsearch, ontvangt gegevens van `Fluentbit` de container van elke pod|AKS-agent pool-42715708-vmss000003
-|logsui-5fzv5||AKS-agent pool-42715708-vmss000003
-|metricsdb-0|InfluxDB, ontvangt gegevens van de `Telegraf` container van elke pod|AKS-agent pool-42715708-vmss000000
-|metricsdc-47d47||AKS-agent pool-42715708-vmss000002
-|metricsdc-864kj||AKS-agent pool-42715708-vmss000001
-|metricsdc-l8jkf||AKS-agent pool-42715708-vmss000003
-|metricsdc-nxm4l||AKS-agent pool-42715708-vmss000000
-|metricsui-4fb7l||AKS-agent pool-42715708-vmss000003
-|mgmtproxy-4qppp||AKS-agent pool-42715708-vmss000002
+|controldb-0|Dit is de controller gegevens opslag die wordt gebruikt voor het opslaan van de configuratie en status voor de gegevens controller.|AKS-agent pool-42715708-vmss000001
+|controlwd-zzjp7|Dit is de service ' Watch hond ' die de beschik baarheid van de gegevens controller in de gaten houdt.|AKS-agent pool-42715708-vmss000000
+|logsdb-0|Dit is een elastisch Zoek exemplaar dat wordt gebruikt voor het opslaan van alle logboeken die in alle gegevens services van de boog worden verzameld. Elasticsearch, ontvangt gegevens van `Fluentbit` de container van elke pod|AKS-agent pool-42715708-vmss000003
+|logsui-5fzv5|Dit is een Kibana-exemplaar dat zich boven op de Elastic Search-Data Base bevindt om een log Analytics-gebruikers interface te presen teren.|AKS-agent pool-42715708-vmss000003
+|metricsdb-0|Dit is een InfluxDB-exemplaar dat wordt gebruikt voor het opslaan van alle metrische gegevens die worden verzameld over alle Arc Data Services-peulen. InfluxDB, ontvangt gegevens van de `Telegraf` container van elke pod|AKS-agent pool-42715708-vmss000000
+|metricsdc-47d47|Dit is een daemonset die is geïmplementeerd op alle Kubernetes-knoop punten in het cluster om metrische gegevens op knooppunt niveau over de knoop punten te verzamelen.|AKS-agent pool-42715708-vmss000002
+|metricsdc-864kj|Dit is een daemonset die is geïmplementeerd op alle Kubernetes-knoop punten in het cluster om metrische gegevens op knooppunt niveau over de knoop punten te verzamelen.|AKS-agent pool-42715708-vmss000001
+|metricsdc-l8jkf|Dit is een daemonset die is geïmplementeerd op alle Kubernetes-knoop punten in het cluster om metrische gegevens op knooppunt niveau over de knoop punten te verzamelen.|AKS-agent pool-42715708-vmss000003
+|metricsdc-nxm4l|Dit is een daemonset die is geïmplementeerd op alle Kubernetes-knoop punten in het cluster om metrische gegevens op knooppunt niveau over de knoop punten te verzamelen.|AKS-agent pool-42715708-vmss000000
+|metricsui-4fb7l|Dit is een Grafana-exemplaar dat zich boven op de InfluxDB-Data Base bevindt, zodat de gebruikers interface van het bewakings dashboard wordt weer gegeven.|AKS-agent pool-42715708-vmss000003
+|mgmtproxy-4qppp|Dit is een webtoepassingsproxy die zich vóór de Grafana-en Kibana-instanties bevindt.|AKS-agent pool-42715708-vmss000002
 
 > \* Het achtervoegsel voor pod namen is afhankelijk van andere implementaties. We bieden hier alleen de peulen die worden gehost in de Kubernetes-naam ruimte van de Azure Arc data controller.
 
 De architectuur ziet er als volgt uit:
 
-:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/5_full_list_of_pods.png" alt-text="Alle peulen in de naam ruimte op verschillende knoop punten":::
+:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/5_full_list_of_pods.png" alt-text="AKS cluster met 4 knoop punten in Azure Portal":::
 
 Dit betekent dat de knoop punten van de coördinator (pod 1) van de grootschalige-Server groep Azure-Arc ingeschakelde post gres dezelfde fysieke resources delen als het derde worker-knoop punt (pod 4) van de Server groep. Dit is acceptabel omdat het coördinator knooppunt doorgaans weinig resources gebruikt in vergelijking met wat een worker-knoop punt kan gebruiken. Hier kunt u afleiden dat u zorgvuldig moet worden gekozen:
 - de grootte van het Kubernetes-cluster en de kenmerken van elk van de fysieke knoop punten (geheugen, vCore)
@@ -259,16 +259,16 @@ We gaan een vijfde knoop punt toevoegen aan het AKS-cluster:
 :::row-end:::
 :::row:::
     :::column:::
-        :::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/6_layout_before.png" alt-text="Azure Portal indeling vóór":::
+        :::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/6_layout_before.png" alt-text="AKS cluster met 4 knoop punten in Azure Portal":::
     :::column-end:::
     :::column:::
-        :::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/7_layout_after.png" alt-text="Azure Portal indeling na":::
+        :::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/7_layout_after.png" alt-text="AKS cluster met 4 knoop punten in Azure Portal":::
     :::column-end:::
 :::row-end:::
 
 De architectuur ziet er als volgt uit:
 
-:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/8_logical_layout_after.png" alt-text="Logische indeling op Kubernetes-cluster na update":::
+:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/8_logical_layout_after.png" alt-text="AKS cluster met 4 knoop punten in Azure Portal":::
 
 Laten we eens kijken naar welk doel van de Arc data controller-naam ruimte wordt gehost op het nieuwe fysieke AKS-knoop punt door de opdracht uit te voeren:
 
@@ -278,7 +278,7 @@ kubectl describe node aks-agentpool-42715708-vmss000004
 
 En laten we de weer gave van de architectuur van ons systeem bijwerken:
 
-:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/9_updated_list_of_pods.png" alt-text="Alle peulen in het logische diagram van het cluster":::
+:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/9_updated_list_of_pods.png" alt-text="AKS cluster met 4 knoop punten in Azure Portal":::
 
 We kunnen zien dat het nieuwe fysieke knoop punt van het Kubernetes-cluster alleen de metrische pod-gegevens host die nodig zijn voor Azure Arc Data Services. Houd er rekening mee dat in dit voor beeld alleen aandacht wordt besteed aan de naam ruimte van de Arc-gegevens controller, maar niet voor het andere peul.
 
@@ -353,7 +353,7 @@ En kijk op welke peul het draait:
 
 En de architectuur ziet er als volgt uit:
 
-:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/10_kubernetes_schedules_newest_pod.png" alt-text="Kubernetes plant de nieuwste pod in het knoop punt met het laagste gebruik":::
+:::image type="content" source="media/migrate-postgresql-data-into-postgresql-hyperscale-server-group/10_kubernetes_schedules_newest_pod.png" alt-text="AKS cluster met 4 knoop punten in Azure Portal":::
 
 Kubernetes heeft de nieuwe PostgreSQL-pod gepland in het minst geladen fysieke knoop punt van het Kubernetes-cluster.
 

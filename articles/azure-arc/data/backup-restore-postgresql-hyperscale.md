@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: dde4db7f3eb476b7645e910504e48fea8bb6df0c
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 4fb64a2ea55744d66b203ef4d901f22ae4695e1a
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91569713"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91630420"
 ---
 # <a name="backup-and-restore-for-azure-arc-enabled-postgresql-hyperscale-server-groups"></a>Back-ups maken en herstellen voor Azure Arc ingeschakelde PostgreSQL grootschalige-Server groepen
 
@@ -93,8 +93,6 @@ Waar:
 - __naam__ geeft de naam van een back-up aan
 - __Server naam__ geeft een server groep aan
 - __no-wait__ geeft aan dat de opdracht regel niet wacht totdat de back-up is voltooid, zodat u dit opdracht regel venster kunt blijven gebruiken
-
->**Opmerking**: de opdracht waarmee u de back-ups kunt weer geven die beschikbaar zijn om te worden hersteld, is nog niet zichtbaar, de datum en tijd waarop de back-up is gemaakt. Daarom kunt u het beste een naam aan de back-up geven (met de para meter-name) die de datum/tijd-informatie bevat.
 
 Met deze opdracht wordt een gedistribueerde volledige back-up gecoördineerd op alle knoop punten die de PostgreSQL grootschalige-Server groep voor Azure Arc ondersteunen. Met andere woorden, Hiermee maakt u een back-up van alle gegevens in uw coördinator en worker-knoop punten.
 

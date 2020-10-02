@@ -1,5 +1,6 @@
 ---
-title: Integratie met micro soft Identity platform
+title: Integratie met micro soft Identity platform | Azure
+titleSuffix: Microsoft identity platform
 description: Ontdek de voor delen van het integreren van uw toepassing met micro soft Identity platform en ontvang resources voor functies zoals vereenvoudigde aanmelding, identiteits beheer, multi-factor Authentication en toegangs beheer.
 services: active-directory
 author: rwike77
@@ -8,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/08/2019
+ms.date: 10/01/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, seoapril2019
-ms.openlocfilehash: bdeb27f9e761fefc52c9c97b28d15770e22221f4
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: e9724bb2e5377f84904dc77c33375c39f3077dd4
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90706163"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631406"
 ---
 # <a name="integrating-with-microsoft-identity-platform"></a>Integreren met micro soft Identity platform
 
@@ -45,9 +46,9 @@ Uw toepassing kan op verschillende manieren worden geïntegreerd met het micro s
 
 **Gebruik het micro soft-identiteits platform voor rollen op basis van Access Control.**  Beheerders en eigen aren van toepassingen kunnen gebruikers en groepen toewijzen aan rollen die u definieert wanneer u uw toepassing registreert in het micro soft Identity-platform. De functie gegevens worden naar uw toepassing verzonden in aanmeldings tokens en kunnen ook worden gelezen met behulp van de Microsoft Graph-API. Meer informatie over het [gebruik van micro soft Identity platform voor autorisatie](https://cloudblogs.microsoft.com/enterprisemobility/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles/).
 
-### <a name="get-access-to-users-profile-calendar-email-contacts-files-and-more"></a>Toegang krijgen tot het profiel van de gebruiker, de agenda, het e-mail adres, de contact personen, bestanden en meer
+### <a name="get-access-to-users-profile-calendar-email-contacts-files-and-more"></a>Toegang krijgen tot profiel, agenda, e-mail, contact personen, bestanden en meer voor gebruikers
 
-**Micro soft Identity platform is de autorisatie server voor Microsoft 365 en andere zakelijke services van micro soft.**  Als u het micro soft Identity-platform voor het aanmelden bij uw toepassing ondersteunt of als ondersteuning voor het koppelen van uw huidige gebruikers accounts aan Azure AD-gebruikers accounts met behulp van OAuth 2,0, kunt u lees-en schrijf toegang aanvragen voor het profiel van een gebruiker, agenda, e-mail, contact personen, bestanden en andere informatie. U kunt eenvoudig gebeurtenissen naar de agenda van de gebruiker schrijven en bestanden in OneDrive lezen of schrijven. Meer informatie over [het openen van de Microsoft 365-api's](/previous-versions/office/office-365-api/).
+**Micro soft Identity platform is de autorisatie server voor Microsoft 365 en andere zakelijke services van micro soft.**  Als u het micro soft Identity-platform voor het aanmelden bij uw toepassing ondersteunt of als ondersteuning voor het koppelen van uw huidige gebruikers accounts aan Azure AD-gebruikers accounts met behulp van OAuth 2,0, kunt u lees-en schrijf toegang aanvragen voor het profiel van een gebruiker, agenda, e-mail, contact personen, bestanden en andere informatie. U kunt eenvoudig gebeurtenissen naar de agenda van de gebruiker schrijven en bestanden in OneDrive lezen of schrijven. Meer informatie over [de Microsoft 365-api's](/graph/overview).
 
 ### <a name="promote-your-application-in-the-azure-and-microsoft-365-marketplaces"></a>Promoot uw toepassing in Azure en Microsoft 365 marketplaces
 

@@ -5,12 +5,12 @@ author: chrpap
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: chrpap
-ms.openlocfilehash: 0f25627c852befb03c2c32d741b8fe9b64cd4dc2
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: b8db69792b31fd82646757423e669e39e8539d06
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88948960"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91630699"
 ---
 # <a name="networking"></a>Netwerken
 
@@ -47,7 +47,7 @@ Als u versneld netwerken op een bestaand Service Fabric cluster wilt inschakelen
 
 Er is een uitbrei ding van de infra structuur vereist om versnelde netwerken in te scha kelen op een bestaand cluster, omdat het inschakelen van versneld netwerken op locatie downtime zou kunnen veroorzaken, omdat alle virtuele machines in een beschikbaarheidsset moeten worden gestopt en de toewijzing ongedaan wordt gemaakt [voordat er versnelde netwerken op een bestaande NIC worden ingeschakeld](../virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms).
 
-## <a name="cluster-networking"></a>Cluster netwerken
+## <a name="cluster-networking"></a>Clusternetwerken
 
 * Service Fabric clusters kunnen worden geïmplementeerd in een bestaand virtueel netwerk door de stappen te volgen die worden beschreven in [service Fabric-netwerk patronen](./service-fabric-patterns-networking.md).
 
@@ -59,7 +59,7 @@ Er is een uitbrei ding van de infra structuur vereist om versnelde netwerken in 
 
 ## <a name="network-security-rules"></a>Netwerk beveiligings regels
 
-De basis regels hier zijn het minimum voor een beveiligings vergrendeling van een door Azure beheerd Service Fabric cluster. Fout bij het openen van de volgende poorten of White List de IP/URL voor komt dat de cluster correct werkt en wordt mogelijk niet ondersteund. Als deze regel is ingesteld, is deze strikt vereist voor het gebruik van [automatische upgrades van besturings systeem installatie kopieën](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md), anders moeten extra poorten worden geopend.
+De basis regels hier zijn het minimum voor een beveiligings vergrendeling van een door Azure beheerd Service Fabric cluster. Het openen van de volgende poorten of het goed keuren van de IP/URL verhindert de juiste werking van het cluster en wordt mogelijk niet ondersteund. Als deze regel is ingesteld, is deze strikt vereist voor het gebruik van [automatische upgrades van besturings systeem installatie kopieën](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md), anders moeten extra poorten worden geopend.
 
 ### <a name="inbound"></a>Inkomend 
 |Prioriteit   |Naam               |Poort        |Protocol  |Bron             |Doel       |Bewerking   

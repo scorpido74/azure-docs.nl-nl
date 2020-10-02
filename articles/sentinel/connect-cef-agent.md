@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/19/2020
+ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: a7d7c7b7236841835866ccb7786e7e4eab767c1f
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: a54dfa0f2b072d30cac605937a1b623ef9d4051d
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88565584"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631491"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>Stap 1: de logboek-doorstuur server implementeren
 
@@ -39,7 +39,7 @@ In deze stap wijst en configureert u de Linux-computer waarmee de logboeken word
 - Python moet zijn geïnstalleerd op de Linux-machine.<br>Gebruik de `python -version` opdracht om te controleren.
 - De Linux-machine mag niet worden verbonden met een Azure-werk ruimte voordat u de Log Analytics-Agent installeert.
 
-## <a name="run-the-deployment-script"></a>Het implementatie script uitvoeren
+## <a name="run-the-deployment-script"></a>Het implementatiescript uitvoeren
  
 1. Klik in het navigatie menu van de Azure-Sentinel op **Data connectors**. Klik in de lijst met connectors op de tegel **algemene gebeurtenis indeling (CEF)** en klik vervolgens op de knop **pagina connector openen** op de rechter benedenhoek. 
 
@@ -71,74 +71,131 @@ Kies een syslog-daemon om de juiste beschrijving te bekijken.
 
 1. **De Log Analytics-agent downloaden en installeren:**
 
-    - Hiermee wordt het installatie script voor de Linux-agent van Log Analytics (OMS) gedownload<br>
-        `wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh`
+    - Hiermee wordt het installatie script gedownload voor de Linux-agent van Log Analytics (OMS).
 
-    - Hiermee wordt de Log Analytics agent geïnstalleerd<br>
-        `sh onboard_agent.sh -w [workspaceID] -s [Primary Key] -d opinsights.azure.com`
+        ```bash
+        wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/
+            onboard_agent.sh
+        ```
+
+    - Hiermee wordt de Log Analytics-agent geïnstalleerd.
+    
+        ```bash
+        sh onboard_agent.sh -w [workspaceID] -s [Primary Key] -d opinsights.azure.com
+        ```
+
+1. **De configuratie van de Log Analytics-agent instellen om te Luis teren op poort 25226 en CEF-berichten door sturen naar Azure Sentinel:**
+
+    - Hiermee wordt de configuratie gedownload uit de GitHub-opslag plaats van de Log Analytics agent.
+
+        ```bash
+        wget -o /etc/opt/microsoft/omsagent/[workspaceID]/conf/omsagent.d/security_events.conf
+            https://raw.githubusercontent.com/microsoft/OMS-Agent-for-Linux/master/installer/conf/
+            omsagent.d/security_events.conf
+        ```
 
 1. **De syslog-daemon configureren:**
 
-    1. Opent poort 514 voor TCP-communicatie met het syslog-configuratie bestand `/etc/rsyslog.conf` .
+    - Opent poort 514 voor TCP-communicatie met het syslog-configuratie bestand `/etc/rsyslog.conf` .
 
-    1. Hiermee configureert u de daemon voor het door sturen van CEF-berichten naar de Log Analytics-agent op TCP-poort 25226 door een speciaal configuratie bestand in te voegen `security-config-omsagent.conf` in de map syslog daemon `/etc/rsyslog.d/` .
+    - Hiermee configureert u de daemon voor het door sturen van CEF-berichten naar de Log Analytics-agent op TCP-poort 25226 door een speciaal configuratie bestand in te voegen `security-config-omsagent.conf` in de map syslog daemon `/etc/rsyslog.d/` .
 
         Inhoud van het `security-config-omsagent.conf` bestand:
 
-        ```console
-        :rawmsg, regex, "CEF"|"ASA"
-        *.* @@127.0.0.1:25226
+        ```bash
+        if $rawmsg contains "CEF:" or $rawmsg contains "ASA-" then @@127.0.0.1:25226 
         ```
 
-1. **Syslog-daemon opnieuw starten**
+1. **De syslog-daemon en de Log Analytics-agent opnieuw starten:**
 
-    `service rsyslog restart`
+    - Hiermee wordt de rsyslog-daemon opnieuw gestart.
+    
+        ```bash
+        service rsyslog restart
+        ```
 
-1. **De configuratie van de Log Analytics-agent instellen om te Luis teren op poort 25226 en CEF-berichten door sturen naar Azure Sentinel**
+    - Hiermee wordt de Log Analytics-agent opnieuw gestart.
 
-    1. Hiermee wordt de configuratie van de GitHub-opslag plaats van Log Analytics agent gedownload<br>
-        `wget -o /etc/opt/microsoft/omsagent/[workspaceID]/conf/omsagent.d/security_events.conf https://raw.githubusercontent.com/microsoft/OMS-Agent-for-Linux/master/installer/conf/omsagent.d/security_events.conf`
+        ```bash
+        /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        ```
 
+1. **De toewijzing van het *computer* veld zoals verwacht controleren:**
 
-    1. Hiermee wordt de Log Analytics agent opnieuw gestart<br>
-        `/opt/microsoft/omsagent/bin/service_control restart [workspaceID]`
+    - Hiermee zorgt u ervoor dat het veld *computer* in de syslog-bron juist is toegewezen in de log Analytics agent door deze opdracht uit te voeren en de agent opnieuw te starten.
+
+        ```bash
+        sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" 
+            -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/pl ugin/
+            filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        ```
 
 # <a name="syslog-ng-daemon"></a>[syslog-ng-daemon](#tab/syslogng)
 
 1. **De Log Analytics-agent downloaden en installeren:**
 
-    - Hiermee wordt het installatie script voor de Linux-agent van Log Analytics (OMS) gedownload<br>`wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh`
+    - Hiermee wordt het installatie script gedownload voor de Linux-agent van Log Analytics (OMS).
 
-    - Hiermee wordt de Log Analytics agent geïnstalleerd<br>`sh onboard_agent.sh -w [workspaceID] -s [Primary Key] -d opinsights.azure.com`
+        ```bash
+        wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/
+            onboard_agent.sh
+        ```
+
+    - Hiermee wordt de Log Analytics-agent geïnstalleerd.
+    
+        ```bash
+        sh onboard_agent.sh -w [workspaceID] -s [Primary Key] -d opinsights.azure.com
+        ```
+
+1. **De configuratie van de Log Analytics-agent instellen om te Luis teren op poort 25226 en CEF-berichten door sturen naar Azure Sentinel:**
+
+    - Hiermee wordt de configuratie gedownload uit de GitHub-opslag plaats van de Log Analytics agent.
+
+        ```bash
+        wget -o /etc/opt/microsoft/omsagent/[workspaceID]/conf/omsagent.d/security_events.conf
+            https://raw.githubusercontent.com/microsoft/OMS-Agent-for-Linux/master/installer/conf/
+            omsagent.d/security_events.conf
+        ```
 
 1. **De syslog-daemon configureren:**
 
-    1. Opent poort 514 voor TCP-communicatie met het syslog-configuratie bestand `/etc/syslog-ng/syslog-ng.conf` .
+    - Opent poort 514 voor TCP-communicatie met het syslog-configuratie bestand `/etc/syslog-ng/syslog-ng.conf` .
 
-    1. Hiermee configureert u de daemon voor het door sturen van CEF-berichten naar de Log Analytics-agent op TCP-poort 25226 door een speciaal configuratie bestand in te voegen `security-config-omsagent.conf` in de map syslog daemon `/etc/syslog-ng/conf.d/` .
+    - Hiermee configureert u de daemon voor het door sturen van CEF-berichten naar de Log Analytics-agent op TCP-poort 25226 door een speciaal configuratie bestand in te voegen `security-config-omsagent.conf` in de map syslog daemon `/etc/syslog-ng/conf.d/` .
 
         Inhoud van het `security-config-omsagent.conf` bestand:
 
-        ```console
+        ```bash
         filter f_oms_filter {match(\"CEF\|ASA\" ) ;};
         destination oms_destination {tcp(\"127.0.0.1\" port("25226"));};
         log {source(s_src);filter(f_oms_filter);destination(oms_destination);};
         ```
 
-1. **Syslog-daemon opnieuw starten**
+1. **De syslog-daemon en de Log Analytics-agent opnieuw starten:**
 
-    `service syslog-ng restart`
+    - Hiermee wordt de syslog-ng-daemon opnieuw gestart.
+    
+        ```bash
+        service syslog-ng restart
+        ```
 
-1. **De configuratie van de Log Analytics-agent instellen om te Luis teren op poort 25226 en CEF-berichten door sturen naar Azure Sentinel**
+    - Hiermee wordt de Log Analytics-agent opnieuw gestart.
 
-    1. Hiermee wordt de configuratie van de GitHub-opslag plaats van Log Analytics agent gedownload<br>
-        `wget -o /etc/opt/microsoft/omsagent/[workspaceID]/conf/omsagent.d/security_events.conf https://raw.githubusercontent.com/microsoft/OMS-Agent-for-Linux/master/installer/conf/omsagent.d/security_events.conf`
+        ```bash
+        /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        ```
+
+1. **De toewijzing van het *computer* veld zoals verwacht controleren:**
+
+    - Hiermee zorgt u ervoor dat het veld *computer* in de syslog-bron juist is toegewezen in de log Analytics agent door deze opdracht uit te voeren en de agent opnieuw te starten.
+
+        ```bash
+        sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" 
+            -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/pl ugin/
+            filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
+        ```
 
 
-    1. Hiermee wordt de Log Analytics agent opnieuw gestart<br>
-        `/opt/microsoft/omsagent/bin/service_control restart [workspaceID]`
-
----
 
 ## <a name="next-steps"></a>Volgende stappen
 In dit document hebt u geleerd hoe u de Log Analytics-agent implementeert voor het verbinden van CEF-apparaten met Azure Sentinel. Zie de volgende artikelen voor meer informatie over Azure Sentinel:

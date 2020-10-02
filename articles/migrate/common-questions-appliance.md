@@ -3,12 +3,12 @@ title: Veelgestelde vragen over Azure Migrate apparaat
 description: Krijg antwoorden op veelgestelde vragen over het Azure Migrate-apparaat.
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: 6c1e5099f208788919d27ba3d2b1de296f0d91a6
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 7839c2678152837cc9217e6afe13f7cca36ab4b0
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526558"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91630488"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate apparaat: veelgestelde vragen
 
@@ -42,7 +42,7 @@ Het apparaat kan als volgt worden geïmplementeerd:
 
 ## <a name="how-does-the-appliance-connect-to-azure"></a>Hoe maakt het apparaat verbinding met Azure?
 
-Het apparaat kan verbinding maken via internet of met behulp van Azure ExpressRoute. Zorg ervoor dat deze [url's](https://docs.microsoft.com/azure/migrate/migrate-appliance#url-access) white list zijn voor het apparaat om verbinding te maken met Azure.
+Het apparaat kan verbinding maken via internet of met behulp van Azure ExpressRoute. Zorg ervoor dat deze [url's](https://docs.microsoft.com/azure/migrate/migrate-appliance#url-access) zijn goedgekeurd voor het apparaat om verbinding te maken met Azure.
 
 - Als u Azure ExpressRoute wilt gebruiken voor Azure Migrate replicatie verkeer, is micro soft-peering of een bestaande open bare peering vereist (open bare peering is afgeschaft voor nieuwe gemaakte aanmaak bewerkingen).
 - Replicatie via Azure ExpressRoute met (alleen) persoonlijke peering is ingeschakeld, wordt niet ondersteund.

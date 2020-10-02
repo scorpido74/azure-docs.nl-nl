@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 09/21/2020
-ms.openlocfilehash: 74c603576016b72edddb4c0fe7aa970bd8626a4a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fedbcf00512e2eb671656ca1c585df83560a8c02
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325212"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627615"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Veelgestelde vragen over Azure SQL Managed Instance (FAQ)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -277,7 +277,7 @@ Het subnet moet voldoende beschik bare [IP-adressen](connectivity-architecture-o
 
 **Wat gebeurt er als er onvoldoende IP-adressen zijn voor het uitvoeren van een update bewerking voor een instantie?**
 
-Als er onvoldoende [IP-adressen](connectivity-architecture-overview.md#network-requirements) zijn in het subnet waar uw beheerde exemplaar is ingericht, moet u een nieuw subnet en een nieuw beheerd exemplaar maken. We raden ook aan dat het nieuwe subnet wordt gemaakt met meer IP-adressen die zijn toegewezen zodat toekomstige update bewerkingen voor komen dat er soort gelijke situaties zijn. Nadat het nieuwe exemplaar is ingericht, kunt u hand matig een back-up maken van gegevens en deze herstellen tussen de oude en nieuwe instanties of het [herstel punt in de tijd](point-in-time-restore.md?tabs=azure-powershell)van meerdere exemplaren uitvoeren.
+Als er onvoldoende [IP-adressen](connectivity-architecture-overview.md#network-requirements) zijn in het subnet waar uw beheerde exemplaar is ingericht, moet u een nieuw subnet en een nieuw beheerd exemplaar maken. Het wordt ook aanbevolen het nieuwe subnet te maken met meer toegewezen IP-adressen zodat toekomstige updatebewerkingen dergelijke situaties voorkomen. Nadat het nieuwe exemplaar is ingericht, kunt u hand matig een back-up maken van gegevens en deze herstellen tussen de oude en nieuwe instanties of het [herstel punt in de tijd](point-in-time-restore.md?tabs=azure-powershell)van meerdere exemplaren uitvoeren.
 
 **Heb ik een leeg subnet nodig om een beheerd exemplaar te maken?**
 
@@ -334,9 +334,12 @@ Nee, deze optie is niet beschikbaar.  Voor het eind punt van een persoonlijke ge
 
 **Wat is de aanbevolen manier om een verbinding te maken tussen beheerde instanties die in verschillende regio's zijn geplaatst?**
 
-De peering voor Express route-circuits is de beste manier om dat te doen. Dit kan niet worden gemengd met de cross-regio peering van het virtuele netwerk die niet wordt ondersteund vanwege een interne load balancer gerelateerde [beperking](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview).
+De peering voor Express route-circuits is de beste manier om dat te doen. Globale Virtual Network-peering wordt ondersteund met de beperking die wordt beschreven in de onderstaande opmerking.  
 
-Als de peering voor Express route-Circuit niet mogelijk is, is de enige andere optie het maken van een site-naar-site-VPN-verbinding ([Azure Portal](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal), [Power shell](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell), [Azure cli](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli)).
+> [!IMPORTANT]
+> [Op 9/22/2020 zijn wereld wijde virtuele netwerk peering aangekondigd voor nieuwe virtuele clusters](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/). Dit betekent dat de peering van globale virtuele netwerken wordt ondersteund voor SQL-beheerde instanties die zijn gemaakt in lege subnetten na de aankondigings datum, en ook voor alle daaropvolgende beheerde exemplaren die in deze subnetten zijn gemaakt. Voor alle andere SQL Managed instances-ondersteuning voor peering is beperkt tot de netwerken in dezelfde regio vanwege de [beperkingen van globale virtuele netwerk peering](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints). Zie ook de relevante sectie van het artikel Veelgestelde [vragen over virtuele netwerken van Azure](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) voor meer informatie. 
+
+Als multi route-Circuit peering en globale virtuele netwerk peering niet mogelijk is, is de enige andere optie het maken van een site-naar-site-VPN-verbinding ([Azure Portal](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal), [Power shell](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell), [Azure cli](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli)).
 
 ## <a name="mitigate-data-exfiltration-risks"></a>Gegevens exfiltration Risico's beperken  
 
@@ -484,10 +487,10 @@ Bij elke aanmelding moet het wacht woord bij aanmelding worden ingesteld en het 
 
 | **Beleid** | **Beveiligingsinstelling** |
 | --- | --- |
-| Maximale wachtwoord duur | 42 dagen |
-| Minimale wachtwoord duur | 1 dag |
+| Maximale gebruiksduur wachtwoord | 42 dagen |
+| Minimale gebruiksduur wachtwoord | 1 dag |
 | Minimale wachtwoordlengte | 10 tekens |
-| Wacht woord moet voldoen aan complexiteits vereisten | Ingeschakeld |
+| Wachtwoord moet voldoen aan complexiteitsvereisten | Ingeschakeld |
 
 **Is het mogelijk om wachtwoord complexiteit en verloop tijd in SQL Managed instance op aanmeldings niveau uit te scha kelen?**
 

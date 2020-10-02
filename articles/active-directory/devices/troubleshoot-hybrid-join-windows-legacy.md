@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e168deea1ba442d48f483264c1e97ce618040f18
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 361b27ce84417b30fe58ac7651f70f8c72f8a16a
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74379108"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627369"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Problemen oplossen met hybride Azure Active Directory-gekoppelde, downlevel apparaten 
 
@@ -40,7 +40,6 @@ In dit artikel vindt u richt lijnen voor probleem oplossing voor het oplossen va
 
 - Hybride Azure AD-deelname voor down level Windows-apparaten werkt iets anders dan in Windows 10. Veel klanten realiseren zich niet dat ze AD FS nodig hebben (voor federatieve domeinen) of naadloze SSO geconfigureerd (voor beheerde domeinen).
 - Als het service aansluitpunt (SCP) zo is geconfigureerd dat deze verwijst naar de naam van het beheerde domein (bijvoorbeeld contoso.onmicrosoft.com in plaats van contoso.com), werkt de hybride Azure AD-deelname voor down level Windows-apparaten niet.
-- Het maximum aantal apparaten per gebruiker is momenteel ook van toepassing op Down Level Hybrid Azure AD gekoppelde apparaten. 
 - Hetzelfde fysieke apparaat wordt meerdere keren weer gegeven in azure AD wanneer meerdere domein gebruikers zich aanmelden bij de Down Level Hybrid Azure AD gekoppelde apparaten.  Als bijvoorbeeld *jdoe* -en *jharnett* -aanmelding bij een apparaat, wordt er een afzonderlijke registratie (DeviceID) gemaakt voor elk van deze op het tabblad **gebruikers** gegevens. 
 - U kunt ook meerdere vermeldingen voor een apparaat vinden op het tabblad gebruikers gegevens, omdat het besturings systeem opnieuw wordt geïnstalleerd of hand matig opnieuw wordt geregistreerd.
 - De eerste registratie/samen voeging van apparaten is geconfigureerd voor het uitvoeren van een poging bij het aanmelden of vergren delen/ontgrendelen. Er kan een vertraging van 5 minuten worden geactiveerd door een taak planner taak. 
@@ -52,7 +51,7 @@ In dit artikel vindt u richt lijnen voor probleem oplossing voor het oplossen va
 
 1. Meld u aan met het gebruikers account dat een hybride Azure AD-deelname heeft uitgevoerd.
 1. Open de opdracht prompt 
-1. Type `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe" /i`
+1. Typ `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe" /i`
 
 Met deze opdracht wordt een dialoog venster weer gegeven met informatie over de status van de samen voeging.
 

@@ -13,12 +13,12 @@ ms.date: 03/17/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 7ff1e6e3b422f55da332e206aea184ca1b5902a6
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 3578562839069eb4b9c99b16d938efe48821fcec
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90705891"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631304"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Procedure: Een Azure Active Directory-gebruiker aanmelden met behulp van het patroon voor multitenant-toepassingen
 
@@ -97,7 +97,7 @@ Omdat het/veelvoorkomende-eind punt niet overeenkomt met een Tenant en geen verl
     https://sts.windows.net/{tenantid}/
 ```
 
-Daarom kan een toepassing met meerdere tenants geen tokens valideren door te voldoen aan de waarde van de verlener in de meta gegevens met de `issuer` waarde in het token. Een toepassing met meerdere tenants heeft logica nodig om te bepalen welke Issuer-waarden geldig zijn en die niet zijn gebaseerd op het Tenant-ID-gedeelte van de waarde van de verlener. 
+Daarom kan een toepassing met meerdere tenants geen tokens valideren door te voldoen aan de waarde van de verlener in de meta gegevens met de `issuer` waarde in het token. Een toepassing met meerdere tenants heeft logica nodig om te bepalen welke Issuer-waarden geldig zijn en die niet zijn gebaseerd op het Tenant-ID-gedeelte van de waarde van de verlener.
 
 Als bijvoorbeeld een multi tenant-toepassing alleen aanmelding toestaat vanuit specifieke tenants die zich hebben geregistreerd voor hun service, dan moet de waarde van de verlener of `tid` claim waarde in het token worden gecontroleerd om ervoor te zorgen dat de Tenant zich in de lijst met abonnees bevindt. Als een toepassing met meerdere tenants alleen met individuen werkt en geen toegangs beslissingen maakt op basis van tenants, dan kan de waarde van de verlener worden genegeerd.
 
@@ -116,7 +116,7 @@ Deze bestemmings ervaring wordt beïnvloed door de machtigingen die de toepassin
 * Een gedelegeerde machtiging verleent een toepassing de mogelijkheid om te fungeren als een aangemelde gebruiker voor een subset van de dingen die de gebruiker kan doen. U kunt bijvoorbeeld een toepassing de gedelegeerde machtiging verlenen voor het lezen van de agenda van de aangemelde gebruiker.
 * Een machtiging alleen voor apps wordt rechtstreeks verleend aan de identiteit van de toepassing. U kunt bijvoorbeeld een toepassing de machtiging alleen voor de app verlenen om de lijst met gebruikers in een Tenant te lezen, ongeacht wie zich heeft aangemeld bij de toepassing.
 
-Sommige machtigingen kunnen worden doorgestuurd naar een gewone gebruiker, terwijl anderen toestemming van de Tenant beheerder vereisen. 
+Sommige machtigingen kunnen worden doorgestuurd naar een gewone gebruiker, terwijl anderen toestemming van de Tenant beheerder vereisen.
 
 ### <a name="admin-consent"></a>toestemming van de beheerder
 
@@ -179,10 +179,6 @@ Als een beheerder een toepassing voor alle gebruikers in een Tenant toestuurt, k
 
 Toepassingen met meerdere tenants kunnen ook toegangs tokens krijgen om Api's aan te roepen die door Azure AD worden beveiligd. Een veelvoorkomende fout bij het gebruik van de Active Directory Authentication Library (ADAL) met een toepassing met meerdere tenants is om eerst een token aan te vragen voor een gebruiker met behulp van/veelvoorkomende, een antwoord te ontvangen en vervolgens een volgend token aan te vragen voor diezelfde gebruiker met behulp van/common. Omdat het antwoord van Azure AD afkomstig is van een Tenant, niet/veelvoorkomende, ADAL het token in de cache van de Tenant opgeslagen. De volgende aanroep van/veelvoorkomende voor het ophalen van een toegangs token voor de gebruiker heeft de cache vermelding missen en de gebruiker wordt gevraagd zich opnieuw aan te melden. Om te voor komen dat de cache ontbreekt, moet u ervoor zorgen dat de volgende aanroepen voor een al aangemelde gebruiker worden gemaakt aan het eind punt van de Tenant.
 
-## <a name="next-steps"></a>Volgende stappen
-
-In dit artikel hebt u geleerd hoe u een toepassing bouwt die kan worden aangemeld bij een gebruiker vanuit een Azure AD-Tenant. Nadat u eenmalige aanmelding (SSO) tussen uw app en Azure AD hebt ingeschakeld, kunt u uw toepassing ook bijwerken om toegang te krijgen tot Api's die door micro soft-resources zoals Microsoft 365 worden weer gegeven. Zo kunt u een persoonlijke ervaring bieden in uw toepassing, zoals het weer geven van contextuele informatie aan de gebruikers, zoals de profiel afbeelding of de volgende agenda-afspraak. Ga voor meer informatie over het maken van API-aanroepen naar Azure AD en Microsoft 365 services zoals Exchange, share point, OneDrive, OneNote en meer naar [Microsoft Graph-API][MSFT-Graph-overview].
-
 ## <a name="related-content"></a>Gerelateerde inhoud
 
 * [Voor beeld van multi tenant-toepassing](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/2-WebApp-graph-user/2-3-Multi-Tenant/README.md)
@@ -191,6 +187,10 @@ In dit artikel hebt u geleerd hoe u een toepassing bouwt die kan worden aangemel
 * [Toepassingen integreren met Azure Active Directory][AAD-Integrating-Apps]
 * [Overzicht van het instemming raamwerk][AAD-Consent-Overview]
 * [Microsoft Graph API-machtigings bereik][MSFT-Graph-permission-scopes]
+
+## <a name="next-steps"></a>Volgende stappen
+
+In dit artikel hebt u geleerd hoe u een toepassing bouwt die kan worden aangemeld bij een gebruiker vanuit een Azure AD-Tenant. Nadat u eenmalige aanmelding (SSO) tussen uw app en Azure AD hebt ingeschakeld, kunt u uw toepassing ook bijwerken om toegang te krijgen tot Api's die door micro soft-resources zoals Microsoft 365 worden weer gegeven. Zo kunt u een persoonlijke ervaring bieden in uw toepassing, zoals het weer geven van contextuele informatie aan de gebruikers, zoals de profiel afbeelding of de volgende agenda-afspraak. Ga voor meer informatie over het maken van API-aanroepen naar Azure AD en Microsoft 365 services zoals Exchange, share point, OneDrive, OneNote en meer naar [Microsoft Graph-API][MSFT-Graph-overview].
 
 <!--Reference style links IN USE -->
 [AAD-Access-Panel]:  https://myapps.microsoft.com
@@ -228,8 +228,7 @@ In dit artikel hebt u geleerd hoe u een toepassing bouwt die kan worden aangemel
 [JWT]: https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32
 [O365-Perm-Ref]: /graph/permissions-reference
 [OAuth2-Access-Token-Scopes]: https://tools.ietf.org/html/rfc6749#section-3.3
-[OAuth2-AuthZ-Code-Grant-Flow]: /previous-versions/azure/dn645542(v=azure.100)
-[OAuth2-AuthZ-Grant-Types]: https://tools.ietf.org/html/rfc6749#section-1.3 
+[OAuth2-AuthZ-Grant-Types]: https://tools.ietf.org/html/rfc6749#section-1.3
 [OAuth2-Client-Types]: https://tools.ietf.org/html/rfc6749#section-2.1
 [OAuth2-Role-Def]: https://tools.ietf.org/html/rfc6749#page-6
 [OpenIDConnect]: https://openid.net/specs/openid-connect-core-1_0.html

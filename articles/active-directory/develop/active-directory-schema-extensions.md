@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 07/29/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 4450b0bcc06b048fd9ad42d2a7bf1c588816eae7
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 8861e641f5ee6a10576425a7702ba02da297a0bf
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115608"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631270"
 ---
 # <a name="using-directory-schema-extension-attributes-in-claims"></a>Kenmerken van Directory-schema-extensies in claims gebruiken
 
@@ -35,7 +35,7 @@ De id voor een Directory schema-extensie kenmerk is van het formulier *Extension
 De extensie kenmerken van het Directory-schema kunnen op een van de volgende twee manieren worden geregistreerd en ingevuld:
 
 - Door AD Connect te configureren om ze te maken en gegevens te synchroniseren vanuit on-premises AD. Zie [Azure AD Connect Directory-extensies voor synchronisatie](../hybrid/how-to-connect-sync-feature-directory-extensions.md).
-- Microsoft Graph registreren, de waarden van en lezen van de Directory schema extensie kenmerken Directory schema- [extensies | Graph API concepten](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-directory-schema-extensions) en/of Power shell + [beheer extensie kenmerken met AzureAD Power shell-cmdlets](/powershell/azure/active-directory/using-extension-attributes-sample?view=azureadps-2.0).
+- Als u Microsoft Graph wilt registreren, stelt u de waarden in en leest u uit [schema-uitbrei dingen](/graph/extensibility-overview). [Power shell-cmdlets](/powershell/azure/active-directory/using-extension-attributes-sample) zijn ook beschikbaar.
 
 ### <a name="emitting-claims-with-data-from-directory-schema-extension-attributes-created-with-ad-connect"></a>Claims verzenden met gegevens uit Directory-schema extensie kenmerken die zijn gemaakt met AD Connect
 Kenmerken van Directory-schema-extensies die met AD Connect zijn gemaakt en gesynchroniseerd, worden altijd gekoppeld aan de toepassings-ID die wordt gebruikt door AD Connect. Ze kunnen worden gebruikt als bron voor claims, door ze te configureren als claims in de configuratie van de **bedrijfs toepassingen** in de portal-gebruikers interface voor SAML-toepassingen die zijn geregistreerd met de galerie of de toepassings configuratie van de niet-galerie onder **bedrijfs toepassingen**, en via een claim toewijzings beleid voor toepassingen die zijn geregistreerd via de registratie-ervaring van de toepassing.  Zodra een directory-extensie kenmerk dat is gemaakt via AD Connect zich in de map bevindt, wordt het weer gegeven in de gebruikers interface voor de configuratie van SAML SSO-claims.
@@ -58,7 +58,7 @@ Dit is bijvoorbeeld een claim toewijzings beleid voor het verzenden van één cl
                 "Source": "User",
                 "ExtensionID": "extension_xxxxxxx_test",
                 "JWTClaimType": "http://schemas.contoso.com/identity/claims/exampleclaim"
-            }, 
+            },
         ]
     }
 }
@@ -72,5 +72,5 @@ Waarbij *XXXXXXX* de toepassings-id is waarmee de extensie is geregistreerd.
 > De id-para meter in het claim schema dat wordt gebruikt voor ingebouwde adreslijst kenmerken is ' ExtensionID ' voor Directory-extensie kenmerken.
 
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over het [toevoegen van aangepaste of extra claims aan de JWT-tokens (SAML 2,0 en JSON Web tokens)](active-directory-optional-claims.md). 
+- Meer informatie over het [toevoegen van aangepaste of extra claims aan de JWT-tokens (SAML 2,0 en JSON Web tokens)](active-directory-optional-claims.md).
 - Meer informatie over het aanpassen van claims die worden [verzonden in tokens voor een specifieke app](active-directory-claims-mapping.md).

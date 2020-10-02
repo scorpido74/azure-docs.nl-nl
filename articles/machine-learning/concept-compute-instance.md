@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 08/25/2020
-ms.openlocfilehash: 14229af9766f6604e71713f835935d43f6c7fcc6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 56febc6c2a0e88b2be547c71a2f90ccfa9b78f26
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330142"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91630828"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Wat is een Azure Machine Learning-rekeninstantie?
 
@@ -91,6 +91,8 @@ Of u kunt op een van de volgende manieren toegang krijgen tot een Terminal venst
 * Jupyter Lab: Selecteer de tegel **Terminal** onder de **andere** kop op het tabblad Start.
 * Jupyter: Selecteer **nieuwe>Terminal** rechtsboven op het tabblad bestanden.
 * SSH naar de computer.  Installeer Python-pakketten vervolgens in de **Python 3,6-AzureML-** omgeving.  R-pakketten installeren in de **R** -omgeving.
+
+Zorg er tijdens het aanpassen van het reken proces voor dat u de azureml_py36 Conda-omgeving of de python 3,6-AzureML-kernel niet verwijdert. Dit is nodig voor de functionaliteit van Jupyter/Jjupyterlab
 
 ### <a name="add-new-kernels"></a>Nieuwe kernels toevoegen
 

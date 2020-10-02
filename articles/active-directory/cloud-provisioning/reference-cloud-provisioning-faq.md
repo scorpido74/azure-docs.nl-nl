@@ -11,12 +11,12 @@ ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 622d38e09f65d05d7cba7a34f30a070c27d3fd37
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 28fb9da04c9c9d3e98b5226e1aee4cf5dde7183b
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89658370"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91628669"
 ---
 # <a name="azure-active-directory-connect-cloud-provisioning-faq"></a>Veelgestelde vragen over het inrichten van Clouds Azure Active Directory Connect
 
@@ -83,6 +83,18 @@ Nee, het installeren van de agent op Server Core wordt niet ondersteund.
 **V: kan ik een staging-server met de Cloud inrichtings agent gebruiken?**
 
 Nee, staging-servers worden niet ondersteund.
+
+**V: kan ik gast gebruikers accounts synchroniseren?**
+
+Nee, het synchroniseren van gast gebruikers accounts wordt niet ondersteund.
+
+**V: als ik een gebruiker Verplaats van een organisatie-eenheid die is gericht op het inrichten van Clouds naar een organisatie-eenheid met een bereik voor Azure AD Connect, wat gebeurt er dan?**
+
+De gebruiker wordt verwijderd en opnieuw gemaakt.  Het verplaatsen van een gebruiker van een organisatie-eenheid met het bereik voor Cloud inrichting wordt weer gegeven als een verwijderings bewerking.  Als de gebruiker wordt verplaatst naar een organisatie-eenheid die wordt beheerd door Azure AD Connect, wordt deze opnieuw ingericht naar Azure AD en een nieuwe gebruiker gemaakt.
+
+**V: als ik de organisatie-eenheid die binnen het bereik van het inrichtings filter voor de Cloud valt, de naam wijzigt of verplaatst, wat gebeurt er dan met de gebruiker die is gemaakt in azure AD?**
+
+Niets.  De gebruikers worden niet verwijderd als de naam van de organisatie-eenheid wordt gewijzigd of als deze wordt verplaatst.
 
 ## <a name="next-steps"></a>Volgende stappen 
 

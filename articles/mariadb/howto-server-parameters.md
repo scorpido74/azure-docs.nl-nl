@@ -5,17 +5,20 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: how-to
-ms.date: 6/11/2020
-ms.openlocfilehash: 53ba3c71679ebda1e8e2bf0a59a6ef69d051df4f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 10/1/2020
+ms.openlocfilehash: 9d0b6865c7fb5b59f379568d15bd9b96883202e9
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120412"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91626425"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mariadb-using-the-azure-portal"></a>Configureer Server parameters in Azure Database for MariaDB met behulp van de Azure Portal
 
 Azure Database for MariaDB ondersteunt de configuratie van sommige server parameters. In dit artikel wordt beschreven hoe u deze para meters configureert met behulp van de Azure Portal. Niet alle server parameters kunnen worden aangepast.
+
+>[!Note]
+> Server parameters kunnen globaal worden bijgewerkt op server niveau, gebruik de [Azure cli](./howto-configure-server-parameters-cli.md), [power shell](./howto-configure-server-parameters-using-powershell.md)of [Azure Portal](./howto-server-parameters.md).
 
 ## <a name="configure-server-parameters"></a>Parameters van de server configureren
 
@@ -24,7 +27,7 @@ Azure Database for MariaDB ondersteunt de configuratie van sommige server parame
 ![Pagina Azure Portal Server parameters](./media/howto-server-parameters/azure-portal-server-parameters.png)
 3. Zoek alle instellingen die u moet aanpassen. Bekijk de kolom **Beschrijving** om inzicht te krijgen in het doel en de toegestane waarden.
 ![Vervolg keuzelijst opsommen](./media/howto-server-parameters/3-toggle_parameter.png)
-4. Klik op **Opslaan** om uw wijzigingen op te slaan.
+4. Klik op  **Opslaan** om uw wijzigingen op te slaan.
 ![Wijzigingen opslaan of negeren](./media/howto-server-parameters/4-save_parameters.png)
 5. Als u nieuwe waarden voor de para meters hebt opgeslagen, kunt u altijd terugkeren naar de standaard waarden door **alles opnieuw instellen op de standaard**waarde te selecteren.
 ![Alles opnieuw instellen op standaard waarden](./media/howto-server-parameters/5-reset_parameters.png)
@@ -34,10 +37,10 @@ Azure Database for MariaDB ondersteunt de configuratie van sommige server parame
 Als de server parameter die u wilt bijwerken niet wordt weer gegeven in de Azure Portal, kunt u eventueel de para meter instellen op het verbindings niveau met `init_connect` . Hiermee stelt u de server parameters in voor elke client die verbinding maakt met de server. 
 
 1. Klik onder de sectie **instellingen** op **server parameters** om de pagina server parameters voor de Azure database for MariaDB-server te openen.
-2. Zoeken naar`init_connect`
+2. Zoeken naar `init_connect`
 3. Voeg de server parameters toe met de volgende indeling: `SET parameter_name=YOUR_DESIRED_VALUE` in waarde de kolom waarde.
 
-    U kunt bijvoorbeeld de tekenset van uw server wijzigen door `init_connect` in te stellen op`SET character_set_client=utf8;SET character_set_database=utf8mb4;SET character_set_connection=latin1;SET character_set_results=latin1;`
+    U kunt bijvoorbeeld de tekenset van uw server wijzigen door `init_connect` in te stellen op `SET character_set_client=utf8;SET character_set_database=utf8mb4;SET character_set_connection=latin1;SET character_set_results=latin1;`
 4. Klik op **Opslaan** om uw wijzigingen op te slaan.
 
 ## <a name="working-with-the-time-zone-parameter"></a>Werken met de para meter tijd zone

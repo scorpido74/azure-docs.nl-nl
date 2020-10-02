@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c6e3316afc09992d16e17d9d2e2afe6b92dcd22
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: a09c4513206bea3462577ecba49b5d77b655b0e0
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049040"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91628261"
 ---
 # <a name="conditional-access-sign-in-risk-based-conditional-access"></a>Voorwaardelijke toegang: op Risico's gebaseerde voorwaardelijke toegang op basis van een aanmelding
 
@@ -37,7 +37,7 @@ Er zijn twee locaties waar dit beleid kan worden toegewezen. Organisaties moeten
    1. Onder **uitsluiten**selecteert u **gebruikers en groepen** en kiest u de accounts voor nood toegang of het afbreek glas van uw organisatie. 
    1. Selecteer **Gereed**.
 1. Onder **Cloud-apps of acties**  >  **Include**, selecteert u **alle Cloud-apps**.
-1. Stel onder **voor waarden**  >  **gebruikers risico** **configureren** in op **Ja**. Onder **Selecteer het risico niveau voor aanmelden wordt dit beleid van toepassing op** 
+1. Stel onder **voor waarden**  >  **aanmeldings risico** **configureren** in op **Ja**. Onder **Selecteer het risico niveau voor aanmelden wordt dit beleid van toepassing op** 
    1. Selecteer **hoog** en **gemiddeld**.
    1. Selecteer **Gereed**.
 1. Onder **toegangs beheer**  >  **toekennen**selecteert u **toegang verlenen**, **multi-factor Authentication vereisen**en selecteert u **selecteren**.

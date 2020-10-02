@@ -7,16 +7,22 @@ author: markjbrown
 ms.author: mjbrown
 ms.date: 09/22/2020
 ms.custom: devx-track-csharp, contperfq1
-ms.openlocfilehash: 2ee20035fbb7b417897290caba4500f2c3862fee
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 64da8084ec8d40e17a0005f2e70486c7d51bf640
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/01/2020
-ms.locfileid: "91611806"
+ms.locfileid: "91627586"
 ---
 # <a name="install-and-use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>De Azure Cosmos-emulator installeren en gebruiken voor lokale ontwikkeling en tests
 
-De Azure Cosmos-emulator biedt een lokale omgeving die de Azure Cosmos DB-Service voor ontwikkelings doeleinden emuleert. Met de Azure Cosmos-emulator kunt u uw toepassing lokaal ontwikkelen en testen zonder een Azure-abonnement te maken of kosten te betalen. Wanneer u tevreden bent over hoe uw toepassing werkt in de Azure Cosmos-emulator, kunt u overschakelen naar het gebruik van een Azure Cosmos-account in de Cloud. Down load en installeer de nieuwste versie van de [Azure Cosmos-emulator](https://aka.ms/cosmosdb-emulator) op uw lokale computer om aan de slag te gaan. In dit artikel wordt beschreven hoe u de emulator installeert en gebruikt in Windows-, Linux-, macOS-en Windows docker-omgevingen.
+De Azure Cosmos-emulator biedt een lokale omgeving die de Azure Cosmos DB-Service voor ontwikkelings doeleinden emuleert. Met de Azure Cosmos-emulator kunt u uw toepassing lokaal ontwikkelen en testen zonder een Azure-abonnement te maken of kosten te betalen. Wanneer u tevreden bent over hoe uw toepassing werkt in de Azure Cosmos-emulator, kunt u overschakelen naar het gebruik van een Azure Cosmos-account in de Cloud. In dit artikel wordt beschreven hoe u de emulator installeert en gebruikt in Windows-, Linux-, macOS-en Windows docker-omgevingen.
+
+## <a name="download-the-emulator"></a>De emulator downloaden
+
+Down load en installeer de nieuwste versie van de Azure Cosmos-emulator op uw lokale computer om aan de slag te gaan. In het artikel over de release van de [emulator](local-emulator-release-notes.md) wordt een lijst weer gegeven met alle beschik bare versies en de functie-updates die in elke release zijn aangebracht.
+
+:::image type="icon" source="media/local-emulator/download-icon.png" border="false":::**[De Azure Cosmos-emulator downloaden](https://aka.ms/cosmosdb-emulator)**
 
 U kunt toepassingen ontwikkelen met behulp van de Azure Cosmos-emulator met de [SQL](local-emulator.md#sql-api)-, [Cassandra](local-emulator.md#cassandra-api)-, [MongoDb](local-emulator.md#azure-cosmos-dbs-api-for-mongodb)-, [Gremlin](local-emulator.md#gremlin-api)-en [Table](local-emulator.md#table-api) -API-accounts. De Data Explorer in de emulator biedt momenteel alleen ondersteuning voor het weer geven van SQL-gegevens. de gegevens die zijn gemaakt met behulp van MongoDB, Gremlin/Graph en Cassandra-client toepassingen, worden op dit moment niet weer gegeven. Zie [verbinding maken met het Emulator-eind punt](#connect-with-emulator-apis) vanaf verschillende api's voor meer informatie.
 
@@ -38,7 +44,7 @@ Omdat de Azure Cosmos-emulator een geëmuleerde omgeving biedt die wordt uitgevo
 
 * Met de emulator kunt u alleen een Azure Cosmos-account maken in de [ingerichte doorvoer](set-throughput.md) modus. Er wordt momenteel geen [serverloze](serverless.md) modus ondersteund.
 
-* De emulator is geen schaal bare service en biedt geen ondersteuning voor een groot aantal containers. Wanneer u de Azure Cosmos-emulator gebruikt, kunt u standaard Maxi maal 25 containers met een vaste grootte maken op 400 RU/s (alleen ondersteund met behulp van Azure Cosmos DB Sdk's) of 5 onbeperkte containers. Zie voor meer informatie over het wijzigen van deze waarde [[PartitionCount Value] emulator-opdracht regel-para meters. MD # set-PartitionCount) artikel.
+* De emulator is geen schaal bare service en biedt geen ondersteuning voor een groot aantal containers. Wanneer u de Azure Cosmos-emulator gebruikt, kunt u standaard Maxi maal 25 containers met een vaste grootte maken op 400 RU/s (alleen ondersteund met behulp van Azure Cosmos DB Sdk's) of 5 onbeperkte containers. Zie [het artikel PartitionCount value instellen](emulator-command-line-parameters.md#set-partitioncount) voor meer informatie over het wijzigen van deze waarde.
 
 * De emulator biedt geen verschillende [Azure Cosmos DB consistentie niveaus](consistency-levels.md) , zoals de Cloud service.
 
@@ -64,7 +70,7 @@ Controleer voordat u de emulator installeert of u over de volgende hardware-en s
 
 Down load en installeer de nieuwste versie van de [Azure Cosmos-emulator](https://aka.ms/cosmosdb-emulator) op uw lokale computer om aan de slag te gaan. Als u problemen ondervindt bij het installeren van de emulator, raadpleegt u het artikel [over het oplossen van problemen](troubleshoot-local-emulator.md) met de emulator voor fout opsporing.
 
-Afhankelijk van uw systeem vereisten kunt u de emulator uitvoeren op [Windows](#run-on-windows), [docker voor Windows](#run-on-windows-docker), [Linux of [macOS](#run-on-linux-macos) , zoals beschreven in de volgende secties van dit artikel.
+Afhankelijk van uw systeem vereisten kunt u de emulator uitvoeren op [Windows](#run-on-windows), [docker voor Windows](#run-on-windows-docker), [Linux of macOS,](#run-on-linux-macos) zoals beschreven in de volgende secties van dit artikel.
 
 ## <a name="check-for-emulator-updates"></a>Controleren op emulator-updates
 

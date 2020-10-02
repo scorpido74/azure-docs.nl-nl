@@ -10,12 +10,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: reference
 ms.date: 12/16/2019
-ms.openlocfilehash: b6e4845ca626dc8805b9bec6ca50076371d35b55
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 30b7e34f2a791cfd8dec1a6d8e81d706fa07939f
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419126"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91631219"
 ---
 # <a name="azure-key-vault-rest-api-error-codes"></a>Azure Key Vault REST API fout codes
  
@@ -128,7 +128,7 @@ Als u alleen het toegangs token voor de reactie kunt ophalen, kunt u dit decoder
 HTTP 403 betekent dat de aanvraag is geverifieerd (de aangevraagde identiteit kent), maar de identiteit heeft geen machtiging voor toegang tot de aangevraagde resource. Er zijn twee oorzaken:
 
 - Er is geen toegangs beleid voor de identiteit.
-- Het IP-adres van de aanvragende bron is niet white list in de firewall instellingen van de sleutel kluis.
+- Het IP-adres van de aanvragende bron is niet goedgekeurd in de firewall instellingen van de sleutel kluis.
 
 HTTP 403 treedt vaak op wanneer de toepassing van de klant niet de client-ID gebruikt die de klant denkt dat deze is. Dit betekent meestal dat het toegangs beleid niet juist is ingesteld voor de daad werkelijke aanroep-id.
 
@@ -166,5 +166,3 @@ Het gebruik van deze technieken verloopt als volgt:
 - Als het aantal aanvragen niet kan worden verkleind door caching en tijdgebonden uitstel niet werkt, kunt u de sleutels in meerdere sleutel kluizen splitsen. De service limiet voor één abonnement is 5x de limiet voor individuele Key Vault. Als u meer dan 5 sleutel kluizen gebruikt, moet aandacht worden besteed aan het gebruik van meerdere abonnementen. 
 
 Gedetailleerde richt lijnen, waaronder aanvragen voor het verhogen van limieten, vindt u hier: [Key Vault beperkings richtlijnen](overview-throttling.md)
-
-

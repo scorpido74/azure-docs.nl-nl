@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: aahi
-ms.openlocfilehash: f9df17afe8b6d25df3d9dcc5f4eec0b9a028404f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 80f0d29de6b3013ad02ed1a5d34bebdf81a8766b
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91254003"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91628210"
 ---
 # <a name="spatial-analysis-operations"></a>Ruimtelijke analyse bewerkingen
 
@@ -39,7 +39,7 @@ Alle bovenstaande bewerkingen zijn ook beschikbaar in de `.debug` versie, die de
 | cognitiveservices. Vision. spatialanalysis-personcrossingpolygon. debug | Hiermee wordt getraceerd wanneer een persoon een opgegeven regel in het veld weer gave van de camera kruist. <br> Hiermee wordt een _personLineEvent_ -gebeurtenis verzonden wanneer de persoon de zone kruist en informatie bevat. |
 | cognitiveservices. Vision. spatialanalysis-persondistance. debug | Hiermee wordt getraceerd wanneer mensen een afstands regel schenden. <br> Verzendt een _personDistanceEvent_ regel matig met de locatie van elke afstands schending. |
 
-Ruimtelijke analyse kan ook worden uitgevoerd met [Live video Analytics](https://azure.microsoft.com/services/media-services/live-video-analytics/) als video Ai-module. 
+Ruimtelijke analyse kan ook worden uitgevoerd met [Live video Analytics](https://aka.ms/lva-spatial-analysis) als video Ai-module. 
 
 <!--more details on the setup can be found in the [LVA Setup page](LVA-Setup.md). Below is the list of the operations supported with Live Video Analytics. -->
 
