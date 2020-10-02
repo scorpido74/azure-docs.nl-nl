@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 07/10/2020
+ms.date: 10/01/2020
 ms.author: alkohli
-ms.openlocfilehash: 7d699fc47fa0a0cb57d103ff42ff17bdc0f3a82b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: b193247fee843796da0cb2fcfc1a874b1a1b72fb
+ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202688"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91660918"
 ---
 # <a name="azure-data-box-limits"></a>Azure Data Box limieten
 
@@ -28,6 +28,7 @@ Houd rekening met deze beperkingen tijdens het implementeren en uitvoeren van uw
 - Data Box kunt Maxi maal 500.000.000 bestanden opslaan voor importeren en exporteren.
 - Data Box ondersteunt Maxi maal 512 containers of shares in de Cloud. De mappen op het hoogste niveau binnen de gebruikers share worden containers of Azure-bestands shares in de Cloud. 
 - Data Box gebruiks capaciteit kan kleiner zijn dan 80 TB vanwege het gebruik van ReFS-meta gegevens ruimte.
+- Data Box ondersteunt Maxi maal vijf client verbindingen tegelijk op een NFS-share. 
 
 ## <a name="azure-storage-limits"></a>Limieten voor Azure Storage
 
@@ -46,13 +47,13 @@ Data Box aanvullende opmerkingen voor een import volgorde zijn onder andere:
 
 Data Box aanvullende opmerkingen voor een export volgorde zijn onder andere:
 
-- Data Box is een Windows-apparaat en ondersteunt geen hoofdletter gevoelige bestands namen. U kunt bijvoorbeeld twee verschillende bestanden in azure hebben met namen die alleen in de behuizing verschillen. Gebruik data box niet om dergelijke bestanden te exporteren, omdat deze worden overschreven op het apparaat.
-- Als er dubbele Tags aanwezig zijn in de invoer bestanden of tags die verwijzen naar dezelfde gegevens, kan Data Box export de bestanden overs Laan of overschrijven. Het aantal bestanden en de grootte van de gegevens die op de Azure Portal worden weer gegeven, kan afwijken van de werkelijke grootte van de gegevens op het apparaat. 
-- Data Box exporteert gegevens naar Windows op basis van SMB en wordt beperkt door SMB-beperkingen voor bestanden en mappen. Bestanden en mappen met niet-ondersteunde namen worden niet geëxporteerd.
+- Data Box is een Windows-apparaat dat geen hoofdletter gevoelige bestands namen ondersteunt. U kunt bijvoorbeeld twee verschillende bestanden in azure hebben met namen die alleen in de behuizing verschillen. Gebruik Data Box niet om dergelijke bestanden te exporteren wanneer de bestanden op het apparaat worden overschreven.
+- Als er dubbele Tags aanwezig zijn in de invoer bestanden of labels die naar dezelfde gegevens verwijzen, worden de bestanden mogelijk overgeslagen of overschreven door de Data Box export. Het aantal bestanden en de grootte van de gegevens die door de Azure Portal worden weer gegeven, kan afwijken van de werkelijke grootte van de gegevens op het apparaat. 
+- Data Box exporteert gegevens naar een Windows-systeem via SMB en wordt beperkt door SMB-beperkingen voor bestanden en mappen. Bestanden en mappen met niet-ondersteunde namen worden niet geëxporteerd.
 - Er is een 1:1-toewijzing van het voor voegsel van de container.
-- De maximale bestands grootte is 1024 tekens bestanden, bestands namen die deze lengte overschrijden, worden niet geëxporteerd.
+- De maximale bestands grootte is 1024 tekens. Bestands namen die deze lengte overschrijden, worden niet geëxporteerd.
 - Dubbele voor voegsels in het *XML-* bestand (geüpload tijdens het maken van de order) worden geëxporteerd. Dubbele voor voegsels worden niet genegeerd.
-- Pagina-blobs en container namen zijn hoofdletter gevoelig, dus als de behuizing niet overeenkomt, wordt de BLOB en/of container niet gevonden.
+- Pagina-blobs en container namen zijn hoofdletter gevoelig. Als de behuizing niet overeenkomt, wordt de BLOB en/of container niet gevonden.
  
 
 ## <a name="azure-storage-account-size-limits"></a>Maximale grootte van Azure Storage-account

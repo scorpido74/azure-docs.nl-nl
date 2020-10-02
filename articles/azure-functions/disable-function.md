@@ -4,18 +4,18 @@ description: Meer informatie over het uitschakelen en inschakelen van functies i
 ms.topic: conceptual
 ms.date: 04/08/2020
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 761a78f050aa25a62075dd7a53836afb48f89cd7
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 4d93f728103aabdd1bd5557033a8bd36ffac2d42
+ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213144"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91661020"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Functies in Azure Functions uitschakelen
 
 In dit artikel wordt uitgelegd hoe u een functie in Azure Functions kunt uitschakelen. Als u een functie wilt *uitschakelen* , moet u ervoor zorgen dat de runtime de automatische trigger die voor de functie is gedefinieerd, negeert. Zo kunt u voor komen dat een specifieke functie wordt uitgevoerd zonder de volledige functie-app te stoppen.
 
-De aanbevolen manier om een functie uit te scha kelen is door gebruik te maken van een app-instelling in de indeling `AzureWebJobs.<FUNCTION_NAME>.Disabled` . U kunt deze toepassings instelling op verschillende manieren maken en wijzigen, zoals met behulp van [Azure cli](/cli/azure/) en op het tabblad **beheren** van uw functie in de [Azure Portal](https://portal.azure.com). 
+De aanbevolen manier om een functie uit te scha kelen is een app-instelling in de indeling `AzureWebJobs.<FUNCTION_NAME>.Disabled` die is ingesteld op `true` . U kunt deze toepassings instelling op verschillende manieren maken en wijzigen, zoals met behulp van [Azure cli](/cli/azure/) en op het tabblad **beheren** van uw functie in de [Azure Portal](https://portal.azure.com). 
 
 > [!NOTE]  
 > Wanneer u een door HTTP geactiveerde functie uitschakelt met behulp van de methoden die in dit artikel worden beschreven, kan het eind punt nog steeds toegankelijk zijn wanneer het wordt uitgevoerd op de lokale computer.  
@@ -40,7 +40,7 @@ az functionapp config appsettings set --name <myFunctionApp> \
 
 ## <a name="use-the-portal"></a>De portal gebruiken
 
-U kunt ook de knoppen **inschakelen** en **uitschakelen** op de **overzichts** pagina van de functie gebruiken. Deze knoppen werken door het maken en verwijderen van de `AzureWebJobs.<FUNCTION_NAME>.Disabled` app-instelling.
+U kunt ook de knoppen **inschakelen** en **uitschakelen** op de **overzichts** pagina van de functie gebruiken. Deze knoppen werken door de waarde van de app-instelling te wijzigen `AzureWebJobs.<FUNCTION_NAME>.Disabled` . Deze functie-specifieke instelling wordt gemaakt wanneer deze voor de eerste keer wordt uitgeschakeld.
 
 ![Functie status schakelaar](media/disable-function/function-state-switch.png)
 

@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 087b021f088e344926a44f7e009f273d265dd82b
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: bfdda75c0826ed12fbce1eb47680f91abbde4934
+ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91397620"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91661054"
 ---
 # <a name="create-azure-arc-data-controller-using-kubernetes-tools"></a>Azure Arc data controller maken met behulp van Kubernetes-hulpprogram ma's
 
@@ -31,11 +31,11 @@ Als u de Azure-Arc-gegevens controller wilt maken met behulp van Kubernetes-hulp
 > [!NOTE]
 > Enkele van de stappen voor het maken van de Azure-Arc-gegevens controller die hieronder worden aangegeven, vereisen Kubernetes-cluster beheerders machtigingen.  Als u geen Kubernetes-cluster beheerder bent, moet u de Kubernetes-cluster beheerder deze stappen namens u laten uitvoeren.
 
-#### <a name="cleanup-from-past-installations"></a>Opschonen uit eerdere installaties
+### <a name="cleanup-from-past-installations"></a>Opschonen uit eerdere installaties
 
-Als u de Azure Arc-gegevens controller in het verleden op hetzelfde cluster hebt geïnstalleerd en de Azure-Arc-gegevens controller hebt verwijderd met behulp van de `azdata arc dc delete` opdracht, zijn er mogelijk een aantal objecten op cluster niveau die nog steeds moeten worden verwijderd. Voer de volgende opdrachten uit om Azure Arc data controller-cluster niveau objecten te verwijderen:
+Als u in het verleden Azure Arc data controller hebt geïnstalleerd en u de Azure Arc-gegevens controller hebt verwijderd met behulp van de `azdata arc dc delete` opdracht, zijn er mogelijk een aantal objecten op cluster niveau die nog steeds moeten worden verwijderd. Voer de volgende opdrachten uit om Azure Arc data controller-cluster niveau objecten te verwijderen:
 
-```
+```console
 # Cleanup azure arc data service artifacts
 kubectl delete crd datacontrollers.arcdata.microsoft.com 
 kubectl delete sqlmanagedinstances.sql.arcdata.microsoft.com 

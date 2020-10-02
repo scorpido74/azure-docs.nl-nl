@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 04/16/2020
-ms.openlocfilehash: a1fcaced7783d09f1733fbee8744ba725b639a02
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 2e976b895c6aa63b73c55b458668c00b64c6f960
+ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119528"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91660901"
 ---
 # <a name="publish-an-integrated-solution"></a>Een geïntegreerde oplossing publiceren
 
@@ -38,9 +38,9 @@ Bekijk de [overzichts video voor partners](https://partner.microsoft.com/asset/d
 
     * Ontwikkeling van toepassingen
     * Integratie van toepassingen
-    * Beheer van toepassings levenscyclus
+    * Beheer van toepassingslevenscyclus
     * Cloud platform
-    * Gegevensanalyse
+    * Data Analytics
     * Datacenter
     * Gegevens platform
     * DevOps
@@ -114,4 +114,4 @@ Als uw oplossing Live is in Microsoft AppSource of Azure Marketplace, kunt u op 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Integrated Solutions](./integrated-solutions.md)(Engelstalig) voor meer informatie over het aanschaffen van een geïntegreerde oplossing in Marketplace.
+- [Het formulier benoeming van geïntegreerde oplossingen](https://aka.ms/AA5qicu)

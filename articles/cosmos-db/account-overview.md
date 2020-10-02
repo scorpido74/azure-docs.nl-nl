@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 7583e35cad03927d003de7a836de03af091b55eb
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: d01164552b1f3f10f592cedf80eafe57566bf09c
+ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91569699"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91661071"
 ---
 # <a name="work-with-azure-cosmos-account"></a>Werken met een Azure Cosmos-account
 
@@ -27,7 +27,7 @@ Als u de toegang tot alle gegevens in uw Azure Cosmos-account veilig wilt behere
 
 Azure Cosmos-container is de fundamentele eenheid voor schaal baarheid. U kunt vrijwel een onbeperkte ingerichte door Voer (RU/s) en opslag in een container hebben. Azure Cosmos DB uw container op transparante wijze partitioneren met behulp van de logische partitie sleutel die u opgeeft om uw ingerichte door Voer en opslag elastisch te schalen. Zie [werken met Azure Cosmos-containers en-items](databases-containers-items.md)voor meer informatie.
 
-Op dit moment kunt u een maximum van 100 Azure Cosmos-accounts maken onder een Azure-abonnement. Met één Azure Cosmos-account kunt u een onbeperkte hoeveelheid gegevens en ingerichte door Voer beheren. Als u uw gegevens en de ingerichte door voer wilt beheren, kunt u een of meer Azure Cosmos-data bases maken onder uw account en binnen die data base, kunt u een of meer containers maken. In de volgende afbeelding ziet u de hiërarchie van elementen in een Azure Cosmos-account:
+Op dit moment kunt u een maximum van 50 Azure Cosmos-accounts maken onder een Azure-abonnement (dit is een zachte limiet die kan worden verhoogd via de ondersteunings aanvraag). Met één Azure Cosmos-account kunt u een onbeperkte hoeveelheid gegevens en ingerichte door Voer beheren. Als u uw gegevens en de ingerichte door voer wilt beheren, kunt u een of meer Azure Cosmos-data bases maken onder uw account en binnen die data base, kunt u een of meer containers maken. In de volgende afbeelding ziet u de hiërarchie van elementen in een Azure Cosmos-account:
 
 :::image type="content" source="./media/account-overview/hierarchy.png" alt-text="Hiërarchie van een Azure Cosmos-account" border="false":::
 

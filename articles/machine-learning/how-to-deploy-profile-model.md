@@ -10,12 +10,12 @@ author: gvashishtha
 ms.date: 07/31/2020
 ms.topic: conceptual
 zone_pivot_groups: aml-control-methods
-ms.openlocfilehash: a3aed23441df225316f52eb3acb1387cbba6d807
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: aac5fba68c43892216cbd16dd99b0c6a9bf70217
+ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935582"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91660986"
 ---
 # <a name="profile-your-model-to-determine-resource-utilization"></a>Uw model profileren om het resource gebruik te bepalen
 
@@ -24,6 +24,10 @@ In dit artikel wordt beschreven hoe u een machine learning in een model kunt mak
 ## <a name="prerequisites"></a>Vereisten
 
 In dit artikel wordt ervan uitgegaan dat u een model hebt getraind en geregistreerd met Azure Machine Learning. Zie de voor beeld van de [zelf studie](how-to-train-scikit-learn.md) voor een training en het registreren van een scikit-leer model met Azure machine learning.
+
+## <a name="limitations"></a>Beperkingen
+
+* Profile ring werkt niet wanneer de Azure Container Registry (ACR) voor uw werk ruimte zich achter een virtueel netwerk bevindt.
 
 ## <a name="run-the-profiler"></a>Profiler uitvoeren
 

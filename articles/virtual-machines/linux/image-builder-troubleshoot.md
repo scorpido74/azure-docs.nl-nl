@@ -3,16 +3,16 @@ title: Problemen met de Azure Image Builder-service oplossen
 description: Veelvoorkomende problemen en fouten bij het gebruik van de Azure VM Image Builder-service oplossen
 author: cynthn
 ms.author: danis
-ms.date: 09/03/2020
+ms.date: 10/02/2020
 ms.topic: troubleshooting
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: ee65cd1605e23dfd5699f92a900bdb5e7952fe13
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: dd17057a56e8dfb269a22458b9aa20fefaab68bc
+ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89459926"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91661105"
 ---
 # <a name="troubleshoot-azure-image-builder-service"></a>Problemen met de Azure Image Builder-service oplossen
 
@@ -591,6 +591,18 @@ Zie door [micro soft gehoste agents](https://docs.microsoft.com/azure/devops/pip
 #### <a name="solution"></a>Oplossing
 
 U kunt uw eigen DevOps-agents hosten of de tijd van uw build beperken. Als u bijvoorbeeld distribueert naar de galerie met gedeelde afbeeldingen, repliceert u naar één regio. Als u asynchroon wilt repliceren. 
+
+### <a name="slow-windows-logon-please-wait-for-the-windows-modules-installer"></a>Langzame Windows-aanmelding: een ogen blik geduld op het installatie programma voor Windows-modules
+
+#### <a name="error"></a>Fout
+Nadat u een Windows 10-installatie kopie met de opbouw functie voor installatie kopieën hebt gemaakt, maakt u een virtuele machine op basis van de installatie kopie, u RDP en moet u minuten wachten bij de eerste aanmelding een blauw scherm zien met het bericht:
+```text
+Please wait for the Windows Modules Installer
+```
+
+#### <a name="solution"></a>Oplossing
+In eerste versie van de installatie kopie moet u controleren of er geen openstaande opnieuw opgestart hoeft te worden door een Windows-aanpassings programma voor opnieuw opstarten toe te voegen als de laatste aanpassing en dat alle software-installatie is voltooid. Voeg ten slotte [/mode: VM](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep-command-line-options) -optie toe aan de standaard-Sysprep die AIB gebruikt. Zie hieronder voor ' vm's die zijn gemaakt op basis van AIB installatie kopieën worden niet gemaakt ' > ' de opdrachten worden overschreven '  
+
  
 ## <a name="vms-created-from-aib-images-do-not-create-successfully"></a>Vm's die zijn gemaakt op basis van AIB-installatie kopieën worden niet gemaakt
 
