@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: keferna
 ms.author: keferna
-ms.date: 03/30/2020
-ms.openlocfilehash: 9ee433f226b37c8ffd6ad466cca7cbd844d53524
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 10/01/2020
+ms.openlocfilehash: 5627d6afab22defebeebd3f04695ef95390f1163
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86535974"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653312"
 ---
 # <a name="customer-leads-from-your-commercial-marketplace-offer"></a>Leads van klanten van uw aanbieding voor commerciële Marketplace
 
@@ -44,7 +44,7 @@ Hier vindt u plaatsen waar een lead wordt gegenereerd:
 
 ## <a name="connect-to-your-crm-system"></a>Verbinding maken met uw CRM-systeem
 
-[!INCLUDE [Test drive content](./includes/connect-lead-management.md)]
+[!INCLUDE [Links to lead configuration for different CRM systems](./includes/connect-lead-management.md)]
 
 ## <a name="understand-lead-data"></a>Informatie over leads
 
@@ -94,78 +94,8 @@ Hier volgen enkele aanbevelingen voor het aansturen van leads via uw verkoop cyc
 - **Follow-up**: Vergeet niet binnen 24 uur om te volgen. U krijgt de lead in uw CRM-keuze onmiddellijk nadat de klant een test drive heeft geïmplementeerd. u kunt ze in een e-mail verzenden terwijl ze nog steeds warm zijn. Vraag een telefoon gesprek aan te vragen om beter te kunnen begrijpen of uw product een goede oplossing voor het probleem is. Verwacht wordt dat de gebruikelijke trans actie talloze opvolgings aanroepen vereist.
 - **Nurture**: nurture uw leads om u op weg te helpen met een hogere winst marge. Inchecken, maar niet BOMBARD. We raden u aan om ten minste een paar keer e-mail berichten te verzenden voordat u deze sluit. Geef na de eerste poging niets op. Houd er rekening mee dat deze klanten rechtstreeks samen werken met uw product en tijd hebben besteed aan een gratis proef versie. Dit zijn fantastische kandidaten.
 
-## <a name="common-questions-about-lead-management"></a>Veelgestelde vragen over Lead beheer
-
-### <a name="where-can-i-get-help-in-setting-up-my-lead-destination"></a>Waar kan ik hulp krijgen bij het instellen van mijn lead bestemming?
-
-Volg de stappen in de sectie [verbinding maken met uw CRM-systeem](#connect-to-your-crm-system)of dien een ondersteunings ticket in via de [Help en ondersteuning van het partner centrum](https://aka.ms/marketplacepublishersupport). Selecteer vervolgens **aanbieding maken**  >  **uw type**  >  **configuratie van lead beheer**.
-
-### <a name="am-i-required-to-configure-a-lead-destination-in-order-to-publish-an-offer-in-the-commercial-marketplace"></a>Moet ik een lead bestemming configureren om een aanbieding in de commerciële Marketplace te publiceren?
-
-Het antwoord is afhankelijk van het type aanbieding dat u publiceert. Software as a Service (SaaS) en Dynamics 365 Customer engagement gebruiken **contact met mij** om een lijst te maken met alle Dynamics 365 voor Financiën en operationele aanbiedingen, alle Dynamics 365 Business Central-aanbiedingen en alle advies service aanbiedingen. Als gevolg hiervan is een verbinding met een lead bestemming vereist. Als uw aanbiedings type niet wordt vermeld, is er geen verbinding met een doel voor de lead vereist. We raden u aan om een doel voor de lead te configureren zodat u geen zakelijke kansen meer hebt.
-
-### <a name="how-can-i-find-the-test-lead"></a>Hoe kan ik de test lead vinden?
-
-Zoek naar `"MSFT_TEST"` de doel locatie van de lead. Hieronder vindt u een voor beeld van een test lead van micro soft. Houd er rekening mee dat de indeling van de leider van de test afhankelijk is van de doel locatie van de lead.
-
-```
-{
-    "UserDetails": {
-      "FirstName": "MSFT_TEST_636573304831318844",
-      "LastName": "MSFT_TEST_636573304831318844",
-      "Email": "MSFT_TEST_636573304831318844@test.com",
-      "Phone": "1234567890",
-      "Country": "US",
-      "Company": "MSFT_TEST_636573304831318844",
-      "Title": "MSFT_TEST_636573304831318844"
-    },
-    "LeadSource": "AzureMarketplace",
-    "ActionCode": "INS",
-    "OfferTitle": "Contoso Test"
-    "Description": "MSFT_TEST_636573304831318844"
-}
-```
-
-### <a name="i-have-a-live-offer-but-why-am-i-not-seeing-any-leads"></a>Ik heb een live aanbieding, maar waarom krijg ik geen leads te zien?
-
-Zorg ervoor dat de verbinding met de doel locatie van de lead geldig is. U ontvangt een test lead nadat u **publiceren** op uw aanbieding hebt geselecteerd in partner centrum. Als u de test leider ziet, is de verbinding geldig. U kunt ook uw lead verbinding testen door te proberen de preview-versie van de aanbieding te verkrijgen tijdens de preview-stap. Selecteer **nu downloaden**, **Neem contact met mij**op of **Maak een gratis proef versie** van de aanbieding in de commerciële Marketplace.
-
-Zorg er ook voor dat u de juiste gegevens zoekt. De inhoud van de sectie [lead gegevens begrijpen](#understand-lead-data) van dit artikel beschrijft de lead gegevens die we verzenden naar uw lead bestemming.
-
-### <a name="i-configured-azure-blob-storage-as-my-lead-destination-but-why-dont-i-see-the-lead"></a>Ik heb Azure Blob-opslag geconfigureerd als mijn lead-doel, maar waarom zie ik de lead niet?
-
-Azure Blob-opslag wordt niet langer ondersteund als een lead bestemming, dus er ontbreken potentiële klant leads die zijn gegenereerd door uw aanbieding. Schakel over naar een van de andere opties voor de [doel bestemming](./commercial-marketplace-get-customer-leads.md). 
-
-### <a name="i-received-an-email-from-the-commercial-marketplace-but-why-cant-i-find-the-lead-in-my-crm"></a>Ik heb een e-mail bericht ontvangen van de commerciële Marketplace, maar waarom kan ik de lead niet vinden in mijn CRM?
-
-Het is mogelijk dat het e-mail domein van de eind gebruiker afkomstig is van. edu. Uit het oogpunt van privacy geven we geen persoonlijke gegevens uit het domein. edu door. Verzend een ondersteunings ticket via het [partner centrum hulp en ondersteuning](https://aka.ms/marketplacepublishersupport).
-
-### <a name="i-configured-an-azure-table-as-my-lead-destination-how-can-i-view-the-leads"></a>Ik heb een Azure-tabel geconfigureerd als mijn lead bestemming. Hoe kan ik de leads weer geven?
-
-U kunt toegang krijgen tot de lead gegevens die zijn opgeslagen in de Azure-tabel vanuit het Azure Portal. U kunt [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) ook gratis downloaden en installeren om de tabel gegevens van uw Azure Storage-account weer te geven.
-
-### <a name="i-configured-an-azure-table-as-my-lead-destination-can-i-get-notified-whenever-a-new-commercial-marketplace-lead-is-sent"></a>Ik heb een Azure-tabel geconfigureerd als mijn lead bestemming. Kan ik een melding ontvangen wanneer een nieuwe lead voor een commerciële Marketplace wordt verzonden?
-
-Ja. Volg de instructies in [beheer van leads configureren met behulp van een Azure-tabel](./commercial-marketplace-lead-management-instructions-azure-table.md) voor het instellen van een micro soft flow waarmee een e-mail wordt verzonden als een lead wordt toegevoegd aan de Azure-tabel.
-
-### <a name="i-configured-salesforce-as-my-lead-destination-but-why-cant-i-find-the-leads"></a>Ik heb Sales Force geconfigureerd als mijn lead-doel, maar waarom kan ik de leads niet vinden?
-
-Controleer of het formulier web-naar-lead een verplicht veld is op basis van een keuze lijst. Als dat het geval is, schakelt u het veld in op een niet-verplicht tekst veld.
-
-### <a name="there-was-an-issue-with-my-lead-destination-and-i-missed-some-leads-can-i-have-them-sent-to-me-in-an-email"></a>Er is een probleem met mijn lead doel en er zijn enkele leads gemist. Kan ik ze in een e-mail bericht naar mij verzenden?
-
-Vanwege het beleid voor persoonlijke gegevens kunnen we geen lead gegevens delen via onbeveiligde e-mail berichten.
-
-### <a name="i-configured-an-azure-table-as-my-lead-destination-how-much-will-it-cost"></a>Ik heb een Azure-tabel geconfigureerd als mijn lead bestemming. Hoeveel kost het?
-
-De gegevens voor het genereren van leads zijn laag. Het is minder dan 1 GB voor bijna alle uitgevers. De kosten zijn afhankelijk van het aantal ontvangen leads. Als bijvoorbeeld 1.000-leads per maand worden ontvangen, zijn de kosten ongeveer 50 cent. Zie [Azure Storage-overzicht](https://azure.microsoft.com/pricing/details/storage/)voor meer informatie over prijzen voor opslag.
-
-Als uw vraag niet wordt beantwoord, neemt u contact op met Microsoft Ondersteuning via de [Help en ondersteuning van het partner centrum](https://aka.ms/marketplacepublishersupport). Selecteer vervolgens **aanbieding maken**  >  **uw type**  >  **configuratie van lead beheer**.
-
-### <a name="im-receiving-email-notifications-when-new-customer-leads-are-received-how-can-i-configure-someone-else-to-receive-these-emails"></a>Ik ontvang e-mail meldingen wanneer er nieuwe leads van klanten worden ontvangen. Hoe kan ik iemand anders configureren voor het ontvangen van deze e-mail berichten?
-
-Krijg toegang tot uw aanbieding in Partner Center en ga naar de pagina voor het instellen van de **aanbieding** > **lead beheer**  >  **bewerken**. Werk de e-mail adressen bij in het veld **e-mail adres van contact persoon** .
+Nadat de technische installatie is uitgevoerd, moet u deze leads opnemen in uw huidige verkoop-en marketing strategie en operationele processen. We zijn geïnteresseerd in een beter inzicht in uw algehele verkoop proces en willen nauw keurig samen werken om leads van hoge kwaliteit en voldoende gegevens te bieden om u te laten slagen. We stellen uw feedback op de manier waarop we u kunnen helpen bij het optimaliseren en verbeteren van de leads die wij u met aanvullende gegevens sturen om deze klanten succesvol te maken. Laat het ons weten als u geïnteresseerd bent in [feedback](mailto:AzureMarketOnboard@microsoft.com) en suggesties zodat uw verkoop team succes voller kan maken met leads voor commerciële Marketplace.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat de technische installatie is uitgevoerd, moet u deze leads opnemen in uw huidige verkoop-en marketing strategie en operationele processen. We zijn geïnteresseerd in een beter inzicht in uw algehele verkoop proces en willen nauw keurig samen werken om leads van hoge kwaliteit en voldoende gegevens te bieden om u te laten slagen. We stellen uw feedback op de manier waarop we u kunnen helpen bij het optimaliseren en verbeteren van de leads die wij u met aanvullende gegevens sturen om deze klanten succesvol te maken. Laat het ons weten als u geïnteresseerd bent in [feedback](mailto:AzureMarketOnboard@microsoft.com) en suggesties zodat uw verkoop team succes voller kan maken met leads voor commerciële Marketplace.
+- [Veelgestelde vragen over Lead beheer en probleem oplossing](../lead-management-faq.md)

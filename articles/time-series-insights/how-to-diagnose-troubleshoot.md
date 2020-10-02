@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 106600b608586175cbab1098cf0eb7ac6fad94fa
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: b994e8ce34319da4827d389b49e23ed6e5bcde95
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91540299"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653754"
 ---
 # <a name="diagnose-and-troubleshoot-an-azure-time-series-insights-gen2-environment"></a>Een Azure Time Series Insights Gen2-omgeving diagnosticeren en problemen oplossen
 
@@ -43,17 +43,17 @@ Er zijn verschillende veelvoorkomende redenen waarom uw gegevens mogelijk niet w
 
 - Er ontbreekt een vereiste machtiging voor de bron sleutel van uw gebeurtenis.
 
-  * Voor een IoT-hub moet u de sleutel opgeven die **service Connect** -machtiging heeft.
+  - Voor een IoT-hub moet u de sleutel opgeven die **service Connect** -machtiging heeft.
 
     [![De IoT hub-machtigingen verifiëren.](media/preview-troubleshoot/verify-correct-permissions.png)](media/preview-troubleshoot/verify-correct-permissions.png#lightbox)
 
-    * Zowel het beleid **iothubowner** als het **service** werk, omdat ze **service CONNECT** -machtiging hebben.
+    - Zowel het beleid **iothubowner** als het **service** werk, omdat ze **service CONNECT** -machtiging hebben.
 
-  * Voor een Event Hub moet u de sleutel met de machtiging **Luis teren** opgeven.
+  - Voor een Event Hub moet u de sleutel met de machtiging **Luis teren** opgeven.
   
     [![Controleer de Event Hub machtigingen.](media/preview-troubleshoot/verify-eh-permissions.png)](media/preview-troubleshoot/verify-eh-permissions.png#lightbox)
 
-    * Het **Lees** -en **beheer** beleid werkt omdat de machtiging **Luis teren is geluisterd** .
+    - Het **Lees** -en **beheer** beleid werkt omdat de machtiging **Luis teren is geluisterd** .
 
 - Uw verleende consumenten groep is niet exclusief voor de Time Series Insights.
 
@@ -77,9 +77,9 @@ Mogelijk verzendt u gegevens zonder de tijd reeks-ID.
 
 - De bron sleutel van de gebeurtenis is mogelijk opnieuw gegenereerd en uw Gen2-omgeving moet de nieuwe gebeurtenis bron sleutel hebben.
 
-Dit probleem treedt op wanneer de sleutel die u hebt gemaakt bij het maken van de gebeurtenis bron niet langer geldig is. U ziet telemetrie in uw hub, maar er zijn geen inkomende berichten ontvangen in Time Series Insights. Als u niet zeker weet of de sleutel opnieuw is gegenereerd, kunt u zoeken in het activiteiten logboek van de Event Hubs voor het maken of bijwerken van naam ruimte autorisatie regels of zoekt u in de IotHub-resource maken of bijwerken voor IoT hub. 
+Dit probleem treedt op wanneer de sleutel die u hebt gemaakt bij het maken van de gebeurtenis bron niet langer geldig is. U ziet telemetrie in uw hub, maar er zijn geen inkomende berichten ontvangen in Time Series Insights. Als u niet zeker weet of de sleutel opnieuw is gegenereerd, kunt u zoeken in het activiteiten logboek van de Event Hubs voor het maken of bijwerken van naam ruimte autorisatie regels of zoekt u naar de IotHub-resource maken of bijwerken voor IoT hub.
 
-Als u uw Time Series Insights Gen2-omgeving wilt bijwerken met de nieuwe sleutel opent u uw hub-resource in de Azure Portal en kopieert u de nieuwe sleutel. Navigeer naar de resource van de TSI en klik op gebeurtenis bronnen. 
+Als u uw Time Series Insights Gen2-omgeving wilt bijwerken met de nieuwe sleutel opent u uw hub-resource in de Azure Portal en kopieert u de nieuwe sleutel. Navigeer naar de resource van de TSI en klik op gebeurtenis bronnen.
 
    [![In de scherm afbeelding wordt de resource T S I met gebeurtenis bronnen weer gegeven menu-item met de naam out out.](media/preview-troubleshoot/update-hub-key-step-1.png)](media/preview-troubleshoot/update-hub-key-step-1.png#lightbox)
 
@@ -91,14 +91,14 @@ Selecteer de bron (nen) van de gebeurtenis waarvan de opname is gestopt, plak de
 
 Zorg ervoor dat de naam en de waarde voldoen aan de volgende regels:
 
-* De naam van de tijds tempel eigenschap is hoofdletter gevoelig.
-* De waarde van de tijds tempel eigenschap die afkomstig is van uw gebeurtenis bron als JSON-teken reeks heeft de indeling `yyyy-MM-ddTHH:mm:ss.FFFFFFFK` . Een voor beeld van een dergelijke teken reeks is `"2008-04-12T12:53Z"` .
+- De naam van de tijds tempel eigenschap is hoofdletter gevoelig.
+- De waarde van de tijds tempel eigenschap die afkomstig is van uw gebeurtenis bron als JSON-teken reeks heeft de indeling `yyyy-MM-ddTHH:mm:ss.FFFFFFFK` . Een voor beeld van een dergelijke teken reeks is `"2008-04-12T12:53Z"` .
 
 De eenvoudigste manier om ervoor te zorgen dat de naam van de tijds tempel eigenschap wordt vastgelegd en correct werkt, is door de Time Series Insights Gen2 Explorer te gebruiken. Gebruik in de Time Series Insights Gen2 Explorer de grafiek om een periode te selecteren nadat u de naam van de tijds tempel eigenschap hebt ingesteld. Klik met de rechter muisknop op de selectie en selecteer de optie **gebeurtenissen verkennen** . De eerste kolomkop is de naam van de eigenschap time stamp. Dit moet `($ts)` naast het woord staan `Timestamp` , in plaats van:
 
-* `(abc)`. Dit geeft aan dat Time Series Insights de gegevens waarden als teken reeksen leest.
-* Het **kalender** pictogram, waarmee wordt aangegeven dat Time Series Insights de gegevens waarde als datum/tijd leest.
-* `#`. Dit geeft aan dat Time Series Insights de gegevens waarden als een geheel getal leest.
+- `(abc)`. Dit geeft aan dat Time Series Insights de gegevens waarden als teken reeksen leest.
+- Het **kalender** pictogram, waarmee wordt aangegeven dat Time Series Insights de gegevens waarde als datum/tijd leest.
+- `#`. Dit geeft aan dat Time Series Insights de gegevens waarden als een geheel getal leest.
 
 Als de tijds tempel eigenschap niet expliciet is opgegeven, wordt de IoT-hub van een gebeurtenis of Event Hub tijd in de wachtrij gebruikt als de standaard tijds tempel.
 
@@ -131,7 +131,7 @@ Dit probleem kan optreden als u geen gebruik maakt van de nieuwste versie van de
 
 [![Scherm afbeelding toont het dialoog venster kan geen verbinding maken.](media/preview-troubleshoot/power-bi-unable-to-connect.png)](media/preview-troubleshoot/power-bi-unable-to-connect.png#lightbox)
 
-* Controleer de versie van uw Power BI Desktop en zorg ervoor dat u de versie van juli 2020 gebruikt. Als dat niet het geval is, werkt u de Power BI Desktop bij en voert u de connector opnieuw uit. 
+- Controleer de versie van uw Power BI Desktop en zorg ervoor dat u de versie van juli 2020 gebruikt. Als dat niet het geval is, werkt u de Power BI Desktop bij en voert u de connector opnieuw uit.
 
 ## <a name="next-steps"></a>Volgende stappen
 

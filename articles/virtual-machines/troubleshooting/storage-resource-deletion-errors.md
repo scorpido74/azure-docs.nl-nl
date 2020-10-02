@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 8209f5b7fc02f59c33ad0a7b58ec6305d6eecf0c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8d727bc8bdc8f015504baa57f9596b3bacac9712
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320078"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651630"
 ---
 # <a name="troubleshoot-storage-resource-deletion-errors"></a>Fouten bij het verwijderen van een opslagresource oplossen
 
@@ -95,7 +95,7 @@ Als de VHD een gegevens schijf is, koppelt u de VHD los van de virtuele machine 
 7. Selecteer **bewerken** in het deel venster boven aan de **schijven** .
 8. Klik op het **pictogram loskoppelen** van de gegevens schijf die u wilt verwijderen.
 
-     ![Scherm opname van de portal, met het deel venster voor het opslaan van de meta gegevens van de BLOB](./media/troubleshoot-vhds/utd-vm-disks-edit.png)
+     ![Scherm afbeelding van de portal, met het deel venster voor het opslaan van de meta gegevens van de blob, markeert het ontkoppelings pictogram van de gegevens schijf die moet worden verwijderd.](./media/troubleshoot-vhds/utd-vm-disks-edit.png)
 
 9. Selecteer **Opslaan**. De schijf wordt nu losgekoppeld van de virtuele machine en de VHD wordt niet meer geleasd. Het kan enkele minuten duren voordat de lease is vrijgegeven. Als u wilt controleren of de lease is vrijgegeven, bladert u naar de BLOB-locatie en in het deel venster **BLOB-eigenschappen** , de waarde voor de **lease status** moet worden **ontgrendeld** of **beschikbaar**.
 

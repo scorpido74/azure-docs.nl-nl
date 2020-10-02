@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8a70097cbae3bc5ebf48c0358faa32aea0a6be5
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: de383bfa9f943cd5644d35ed83db8a80ec8017bd
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91370174"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653210"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Procedure: uw Azure AD-koppelings implementatie plannen
 
@@ -187,6 +187,7 @@ Voor verbinding met extern bureau blad met een aan Azure AD gekoppelde apparaten
 Als u Windows 10 2004 Update start, kunnen gebruikers ook extern bureau blad van een Azure AD-geregistreerde Windows 10-apparaat op een aan Azure AD toegevoegd apparaat gebruiken. 
 
 ## <a name="understand-your-provisioning-options"></a>Inzicht in uw inrichtings opties
+**Opmerking**: aan Azure AD gekoppelde apparaten kunnen niet worden geïmplementeerd met het hulp programma voor systeem voorbereiding (Sysprep) of vergelijk bare Imaging-hulpprogram ma's
 
 U kunt Azure AD-deelname inrichten met behulp van de volgende methoden:
 

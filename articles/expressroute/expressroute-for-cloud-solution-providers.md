@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: ec3f8f71713abb818f29458748eb0054390f474e
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 17b8fc3824fb1c7e6cfcfc3d4333dc226b51724d
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89396672"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653635"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>ExpressRoute voor Cloud Solution Providers (CSP)
 Microsoft biedt grootschalige services waarmee traditionele leveranciers en distributeurs (CSP) snel nieuwe services en oplossingen voor uw klanten kunnen inrichten, zonder dat ze hoeven te investeren in de ontwikkeling van deze nieuwe services. Microsoft biedt programma's en API's waarmee de Cloud Solution Provider (CSP) Microsoft Azure-resources kan beheren namens uw klanten. Zo kan de Cloud Solution Provider (CSP) deze nieuwe services rechtstreeks beheren. Een van deze resources is ExpressRoute. Met ExpressRoute kan de CSP verbinding maken tussen de bestaande resources van de klant en de Azure-services. ExpressRoute is een snelle, persoonlijke communicatie koppeling naar Services in Azure. 
@@ -34,18 +34,18 @@ Micro soft biedt Csp's met Api's voor het beheren van de Azure-klanten abonnemen
 Het contract dat u met uw klant hebt, bepaalt hoe het abonnement wordt beheerd. De CSP kan het maken en het onderhouden van resources rechtstreeks beheren, maar de klant kan ook zelf de controle behouden over het Microsoft Azure-abonnement en de Azure-resources naar behoefte maken. Als uw klant het maken van resources in hun Microsoft Azure-abonnement beheert, zullen ze een van de twee modellen gebruiken: '*connect-through*' model of '*direct-to '-* model. Deze modellen worden gedetailleerd beschreven in de volgende gedeelten.  
 
 ### <a name="connect-through-model"></a>Het model 'Doorverbinden'
-![alternatieve tekst](./media/expressroute-for-cloud-solution-providers/connect-through.png)  
+![Diagram waarin het model ' Connect-through ' wordt weer gegeven.](./media/expressroute-for-cloud-solution-providers/connect-through.png)  
 
 In het model 'Doorverbinden' maakt de CSP een rechtstreekse verbinding tussen uw datacenter en het Azure-abonnement van uw klant. De rechtstreekse verbinding wordt gemaakt met behulp van ExpressRoute en verbindt uw netwerk met Azure. De klant maakt vervolgens verbinding met uw netwerk. Dit scenario vereist dat de klant het CSP-netwerk gebruikt voor toegang tot de Azure-services. 
 
 Als uw klant andere Azure-abonnementen heeft die niet door u worden beheerd, gebruiken ze het open bare Internet of hun eigen particuliere verbinding om verbinding te maken met de services die zijn ingericht onder het niet-CSP-abonnement. 
 
-Voor CSP die Azure-Services beheert, wordt ervan uitgegaan dat de CSP een eerder vastgelegde identiteits opslag voor klanten heeft, die vervolgens moet worden gerepliceerd naar Azure Active Directory voor het beheer van hun CSP-abonnement via het beheren van namens-of (ADMINISTRATE). Belangrijkste Stuur Programma's voor dit scenario zijn onder andere waar een bepaalde partner of service provider een bestaande relatie met de klant heeft, de klant al gebruikmaakt van provider Services of omdat de partner een combi natie van door de provider gehoste en door Azure gehoste oplossingen biedt om flexibiliteit te bieden en klant uitdagingen te verhelpen die niet kunnen worden voldaan door de CSP. Dit model wordt weergegeven in onderstaande **afbeelding**.
+Voor CSP die Azure-Services beheert, wordt ervan uitgegaan dat de CSP een eerder vastgelegde identiteits opslag voor klanten heeft, die vervolgens moet worden gerepliceerd naar Azure Active Directory voor het beheer van hun CSP-abonnement via het beheren van namens-of (ADMINISTRATE). Belangrijkste Stuur Programma's voor dit scenario zijn onder andere waar een bepaalde partner of service provider een bestaande relatie met de klant heeft, de klant al gebruikmaakt van provider Services of omdat de partner een combi natie van door de provider gehoste en door Azure gehoste oplossingen biedt om flexibiliteit te bieden en klant uitdagingen te verhelpen die niet kunnen worden voldaan door de CSP. Dit model wordt geïllustreerd in de **afbeelding** hieronder.
 
-![alternatieve tekst](./media/expressroute-for-cloud-solution-providers/connect-through-model.png)
+![Diagram waarin een gedetailleerd scenario voor het model ' Connect-through ' wordt weer gegeven.](./media/expressroute-for-cloud-solution-providers/connect-through-model.png)
 
 ### <a name="connect-to-model"></a>Het model 'Verbinden met'
-![alternatieve tekst](./media/expressroute-for-cloud-solution-providers/connect-to.png)
+![Diagram waarin het model ' Connect-to ' wordt weer gegeven.](./media/expressroute-for-cloud-solution-providers/connect-to.png)
 
 In het model 'Verbinden met' maakt de serviceprovider een rechtstreekse verbinding tussen het datacenter van de klant en het door de CSP ingerichte Azure-abonnement. Hiervoor wordt ExpressRoute gebruikt via het (klant)netwerk van de klant.
 
@@ -56,7 +56,7 @@ In het model 'Verbinden met' maakt de serviceprovider een rechtstreekse verbindi
 
 Voor dit verbindings scenario moet de klant rechtstreeks verbinding maken via een klant netwerk om toegang te krijgen tot het door de CSP beheerde Azure-abonnement, met behulp van een rechtstreekse netwerk verbinding die geheel of gedeeltelijk wordt gemaakt, eigendom en beheerd. Voor deze klanten wordt ervan uitgegaan dat er op dit moment geen klant identiteits opslag is ingesteld voor de provider en dat de provider de klant helpt bij het repliceren van hun huidige identificerende Store in Azure Active Directory voor het beheer van hun abonnement via ADMINISTRATE. Situaties waarvoor dit scenario geschikt is, zijn bijvoorbeeld: wanneer een partner of serviceprovider al een bestaande relatie met de klant heeft, de klant al gebruikmaakt van de services van de provider of de partner services wil bieden die alleen zijn gebaseerd op in Azure gehoste oplossingen, zonder dat hiervoor een bestaand datacenter of een bestaande infrastructuur van de provider nodig is.
 
-![alternatieve tekst](./media/expressroute-for-cloud-solution-providers/connect-to-model.png)
+![Diagram waarin een gedetailleerd scenario voor het model ' Connect-to ' wordt weer gegeven.](./media/expressroute-for-cloud-solution-providers/connect-to-model.png)
 
 De keuze tussen deze twee opties zijn gebaseerd op de behoeften van uw klant en uw huidige behoefte om Azure-Services te leveren. Voor gedetailleerde informatie over deze modellen en het bijbehorende op rollen gebaseerde toegangsbeheer, de netwerken en de ontwerppatronen voor de identiteit volgt u de volgende links:
 
@@ -109,7 +109,7 @@ De standaardroutetabel bevat de volgende routes:
 * Virtueel netwerk-naar-virtueel netwerk via VPN-gateway
 * Virtueel netwerk-naar-on-premises netwerk via een VPN- of ExpressRoute-gateway
 
-![alternatieve tekst](./media/expressroute-for-cloud-solution-providers/default-routing.png)  
+![Diagram waarin de standaard routerings opties worden weer gegeven.](./media/expressroute-for-cloud-solution-providers/default-routing.png)  
 
 ### <a name="user-defined-routing-udr"></a>Door de gebruiker gedefinieerde routering
 Door de gebruiker gedefinieerde routes geven u controle over het uitgaande verkeer vanuit het toegewezen subnet naar andere subnetten in het virtuele netwerk of via een van de andere vooraf gedefinieerde gateways (ExpressRoute; internet of VPN). De standaardrouteringstabel kan worden vervangen door een door de gebruiker gedefinieerde routeringstabel. Hiermee wordt de standaardrouteringstabel vervangen door aangepaste routes. Met door de gebruiker gedefinieerde routering kunnen klanten specifieke routes maken voor apparaten, zoals firewalls of inbraakdetectieapparaten. Daarnaast kunnen klanten de toegang tot specifieke subnetten blokkeren vanuit het subnet dat de door de gebruiker gedefinieerde route host. Bekijk [hier](../virtual-network/virtual-networks-udr-overview.md)voor een overzicht van door de gebruiker gedefinieerde routes. 

@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: how-to
 manager: philmea
-ms.openlocfilehash: 02481d5dcbaba15c9b17a27348207d9af64f3355
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e000e2979436605b9274792ad3dde8eb1fa80976
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80982035"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653346"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>Een Azure IoT Central-toepassing maken en beheren vanuit de CSP-Portal
 
@@ -35,7 +35,7 @@ U bent op de pagina Azure IoT Central Application Manager. Azure IoT Central hou
 
 Als u een Azure IoT Central-toepassing wilt maken, selecteert u **samen stellen** in het menu links. Kies een van de branche sjablonen of kies **aangepaste app** om een volledig nieuwe toepassing te maken. Hiermee wordt de pagina voor het maken van de toepassing geladen. U moet alle velden op deze pagina volt ooien en vervolgens **maken**kiezen. U vindt meer informatie over elk van de onderstaande velden.
 
-![Toepassings pagina voor Csp's maken](media/howto-create-and-manage-applications-csp/image4.png)
+![Scherm opname van de pagina ' uw IoT-toepassing bouwen ' met de knop opbouwen geselecteerd.](media/howto-create-and-manage-applications-csp/image4.png)
 
 ![Toepassings pagina voor Csp's maken](media/howto-create-and-manage-applications-csp/image4-1.png)
 
@@ -43,9 +43,9 @@ Als u een Azure IoT Central-toepassing wilt maken, selecteert u **samen stellen*
 
 ## <a name="pricing-plan"></a>Prijs plan
 
-U kunt alleen toepassingen maken die gebruikmaken van een standaard prijs plan als CSP. Als u Azure IoT Central wilt presen teren aan uw klant, kunt u een toepassing maken die gebruikmaakt van het gratis prijs plan afzonderlijk. Meer informatie over de gratis en standaard prijzen abonnementen op de [pagina met prijzen voor Azure IOT Central](https://azure.microsoft.com/pricing/details/iot-central/).
+U kunt alleen toepassingen maken die gebruikmaken van een standaard prijs plan als CSP. Als u Azure IoT Central wilt presen teren aan uw klant, kunt u een toepassing maken die gebruikmaakt van het gratis prijs plan afzonderlijk. Meer informatie over de gratis en standaardabonnementen vindt u op de [pagina met prijzen voor Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/).
 
-U kunt alleen toepassingen maken die gebruikmaken van een standaard prijs plan als CSP. Als u Azure IoT Central wilt presen teren aan uw klant, kunt u een toepassing maken die gebruikmaakt van het gratis prijs plan afzonderlijk. Meer informatie over de gratis en standaard prijzen abonnementen op de [pagina met prijzen voor Azure IOT Central](https://azure.microsoft.com/pricing/details/iot-central/).
+U kunt alleen toepassingen maken die gebruikmaken van een standaard prijs plan als CSP. Als u Azure IoT Central wilt presen teren aan uw klant, kunt u een toepassing maken die gebruikmaakt van het gratis prijs plan afzonderlijk. Meer informatie over de gratis en standaardabonnementen vindt u op de [pagina met prijzen voor Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/).
 
 ## <a name="application-name"></a>De naam van de toepassing
 
@@ -75,7 +75,7 @@ Zie [Azure-abonnementen](https://docs.microsoft.com/azure/guides/developer/azure
 
 ## <a name="location"></a>Locatie
 
-De **locatie** is de [geografie](https://azure.microsoft.com/global-infrastructure/geographies/) waar u de toepassing wilt maken. Normaal gesp roken kiest u de locatie die zich het dichtst in de buurt van uw apparaten bevindt om optimaal te pres teren. Op dit moment kunt u een IoT Central-toepassing maken in de geografs **Australia**, **Azië en Stille Oceaan**, **Europa**, **Verenigde Staten**, het **Verenigd Konink rijk**en **Japan** . Wanneer u een locatie hebt gekozen, kunt u de toepassing later niet verplaatsen naar een andere locatie.
+De **locatie** is de [geografie](https://azure.microsoft.com/global-infrastructure/geographies/) waar u de toepassing wilt maken. Gewoonlijk kiest u de locatie die zich het dichtst in de buurt van uw apparaten bevindt om de beste prestaties te verkrijgen. Op dit moment kunt u een IoT Central-toepassing maken in de geografs **Australia**, **Azië en Stille Oceaan**, **Europa**, **Verenigde Staten**, het **Verenigd Konink rijk**en **Japan** . Als u eenmaal een locatie hebt gekozen, kunt u de toepassing later niet meer naar een andere locatie verplaatsen.
 
 ## <a name="application-template"></a>Toepassingsjabloon
 

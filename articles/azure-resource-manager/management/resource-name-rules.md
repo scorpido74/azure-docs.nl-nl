@@ -2,13 +2,13 @@
 title: Naamgevings beperkingen voor resources
 description: Hier worden de regels en beperkingen voor het benoemen van Azure-resources weer gegeven.
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: a4c3bf58bf5e84051b1e21863d2d581af5fa9f23
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.date: 10/01/2020
+ms.openlocfilehash: ff92eff9351e944f8baa11cf981e8511ad8e4ae1
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447519"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653363"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Naamgevingsregels en -beperkingen voor Azure-resources
 
@@ -39,8 +39,8 @@ In de volgende tabellen verwijst de term alfanumeriek naar:
 > | service | internationaal | 1-50 | Alfanumerieke tekens en afbreek streepjes.<br><br>Begin met letter en sluit af met een alfanumerieke teken. |
 > | Service/api's | service | 1-256 | Kan niet gebruiken:<br> `*#&+:<>?` |
 > | Service/api's/problemen | api | 1-256 | Kan niet gebruiken:<br> `*#&+:<>?` |
-> | Service/api's/problemen/bijlagen | name | 1-256 | Kan niet gebruiken:<br> `*#&+:<>?` |
-> | Service/api's/problemen/opmerkingen | name | 1-256 | Kan niet gebruiken:<br> `*#&+:<>?` |
+> | Service/api's/problemen/bijlagen | issue | 1-256 | Kan niet gebruiken:<br> `*#&+:<>?` |
+> | Service/api's/problemen/opmerkingen | issue | 1-256 | Kan niet gebruiken:<br> `*#&+:<>?` |
 > | Service/api's/bewerkingen | api | 1-256 | Kan niet gebruiken:<br> `*#&+:<>?` |
 > | Service/api's/bewerkingen/Tags | bewerking | 1-256 | Kan niet gebruiken:<br> `*#&+:<>?` |
 > | Service/api's/releases | api | 1-80 | Alfanumeriek, onderstrepings tekens en afbreek streepjes.<br><br>Beginnen en eindigen met een alfanumeriek of onderstrepings teken. |
@@ -107,7 +107,7 @@ In de volgende tabellen verwijst de term alfanumeriek naar:
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | batchAccounts | Region | 3-24 | Kleine letters en cijfers. |
+> | batchAccounts | Regio | 3-24 | Kleine letters en cijfers. |
 > | batchAccounts/toepassingen | batch-account | 1-64 | Alfanumeriek, onderstrepings tekens en afbreek streepjes. |
 > | batchAccounts/certificaten | batch-account | 5-45 | Alfanumeriek, onderstrepings tekens en afbreek streepjes. |
 > | batchAccounts/Pools | batch-account | 1-64 | Alfanumeriek, onderstrepings tekens en afbreek streepjes. |
@@ -174,7 +174,7 @@ In de volgende tabellen verwijst de term alfanumeriek naar:
 > | galerieën/afbeeldingen/versies | image | 32-bits geheel getal | Cijfers en peri Oden. |
 > | images | resourcegroep | 1-80 | Alfanumeriek, onderstrepings tekens, punten en afbreek streepjes.<br><br>Begin met alfanumeriek. Eindigen met een alfanumeriek of onderstrepings teken. |
 > | momentopnamen | resourcegroep | 1-80 | Alfanumeriek, onderstrepings tekens, punten en afbreek streepjes.<br><br>Begin met alfanumeriek. Eindigen met een alfanumeriek of onderstrepings teken. |
-> | Informatie | resourcegroep | 1-15 (Windows)<br>1-64 (Linux)<br><br>Zie de opmerking hieronder. | Kan geen spatie of deze tekens gebruiken:<br> `\/"'[]:|<>+=;,?*@&`<br><br>Kan niet beginnen met een onderstrepings teken. Kan niet eindigen met een punt of afbreek streepje. |
+> | Informatie | resourcegroep | 1-15 (Windows)<br>1-64 (Linux)<br><br>Zie de opmerking hieronder. | Kan geen spatie of deze tekens gebruiken:<br> `\/"'[]:|<>+=;,?*@&_`<br><br>Windows-Vm's kunnen geen punt bevatten of eindigen met een afbreek streepje.<br><br>Linux-Vm's mogen niet eindigen op een punt of afbreek streepje. |
 > | virtualMachineScaleSets | resourcegroep | 1-15 (Windows)<br>1-64 (Linux)<br><br>Zie de opmerking hieronder. | Kan geen spatie of deze tekens gebruiken:<br> `\/"'[]:|<>+=;,?*@&`<br><br>Kan niet beginnen met een onderstrepings teken. Kan niet eindigen met een punt of afbreek streepje. |
 
 > [!NOTE]

@@ -8,12 +8,12 @@ ms.date: 10/16/2018
 ms.author: glenga
 ms.reviewer: msangapu;suwatch;pbatum;naren.soni
 ms.custom: seodec18
-ms.openlocfilehash: 028551f04b2e44e9456e2f7343159ad9b52fd25f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 235d82e54c79350f110ab0cda4f4b672e396c61d
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82085141"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652003"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Achtergrond taken uitvoeren met webjobs in Azure App Service
 
@@ -54,7 +54,7 @@ De volgende bestandstypen worden ondersteund:
 * . js (met behulp van Node.js)
 * . jar (met behulp van Java)
 
-## <a name="create-a-continuous-webjob"></a><a name="CreateContinuous"></a>Een doorlopende Webtaak maken
+## <a name="create-a-continuous-webjob"></a><a name="CreateContinuous"></a> Een doorlopende Webtaak maken
 
 <!-- 
 Several steps in the three "Create..." sections are identical; 
@@ -73,7 +73,7 @@ when making changes in one don't forget the other two.
 
 3. Gebruik de instellingen voor het **toevoegen van Webtaaks** zoals opgegeven in de tabel.
 
-   ![Pagina Webtaak toevoegen](./media/web-sites-create-web-jobs/addwjcontinuous.png)
+   ![Scherm afbeelding met de instellingen voor het toevoegen van webtaaken die u moet configureren.](./media/web-sites-create-web-jobs/addwjcontinuous.png)
 
    | Instelling      | Voorbeeldwaarde   | Beschrijving  |
    | ------------ | ----------------- | ------------ |
@@ -92,7 +92,7 @@ when making changes in one don't forget the other two.
 
     ![Een doorlopende Webtaak stoppen](./media/web-sites-create-web-jobs/continuousstop.png)
 
-## <a name="create-a-manually-triggered-webjob"></a><a name="CreateOnDemand"></a>Een hand matig geactiveerde Webtaak maken
+## <a name="create-a-manually-triggered-webjob"></a><a name="CreateOnDemand"></a> Een hand matig geactiveerde Webtaak maken
 
 <!-- 
 Several steps in the three "Create..." sections are identical; 
@@ -111,7 +111,7 @@ when making changes in one don't forget the other two.
 
 3. Gebruik de instellingen voor het **toevoegen van Webtaaks** zoals opgegeven in de tabel.
 
-   ![Pagina Webtaak toevoegen](./media/web-sites-create-web-jobs/addwjtriggered.png)
+   ![Scherm afbeelding met de instellingen die moeten worden ingesteld voor het maken van een hand matig geactiveerde Webtaak.](./media/web-sites-create-web-jobs/addwjtriggered.png)
 
    | Instelling      | Voorbeeldwaarde   | Beschrijving  |
    | ------------ | ----------------- | ------------ |
@@ -130,7 +130,7 @@ when making changes in one don't forget the other two.
    
     ![Webtaak uitvoeren](./media/web-sites-create-web-jobs/runondemand.png)
 
-## <a name="create-a-scheduled-webjob"></a><a name="CreateScheduledCRON"></a>Een geplande Webtaak maken
+## <a name="create-a-scheduled-webjob"></a><a name="CreateScheduledCRON"></a> Een geplande Webtaak maken
 
 <!-- 
 Several steps in the three "Create..." sections are identical; 
@@ -179,7 +179,7 @@ Zie [een geactiveerde Webtaak plannen](webjobs-dotnet-deploy-vs.md#scheduling-a-
 
 [!INCLUDE [webjobs-cron-timezone-note](../../includes/webjobs-cron-timezone-note.md)]
 
-## <a name="view-the-job-history"></a><a name="ViewJobHistory"></a>De taak geschiedenis weer geven
+## <a name="view-the-job-history"></a><a name="ViewJobHistory"></a> De taak geschiedenis weer geven
 
 1. Selecteer de Webtaak waarvan u de geschiedenis wilt bekijken en selecteer vervolgens de knop **Logboeken** .
    
@@ -201,6 +201,6 @@ Zie [een geactiveerde Webtaak plannen](webjobs-dotnet-deploy-vs.md#scheduling-a-
    
     ![Lijst met webtaken in het dash board geschiedenis](./media/web-sites-create-web-jobs/webjobslist.png)
    
-## <a name="next-steps"></a><a name="NextSteps"></a>Volgende stappen
+## <a name="next-steps"></a><a name="NextSteps"></a> Volgende stappen
 
 De Azure WebJobs SDK kan worden gebruikt met webjobs om veel programmeer taken te vereenvoudigen. Zie [Wat is de Webjobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki)? voor meer informatie.

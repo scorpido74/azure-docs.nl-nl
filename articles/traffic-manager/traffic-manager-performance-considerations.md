@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: duau
-ms.openlocfilehash: b72126933c5454b8fabe19dda08ad5eb66edd1ba
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: f080f5011311101ed8f9faa2ee807c030a048409
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89392667"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653040"
 ---
 # <a name="performance-considerations-for-traffic-manager"></a>Prestatieoverwegingen voor Traffic Manager
 
@@ -50,7 +50,7 @@ De hulpprogram ma's op deze sites meten DNS-latentie en geven de opgeloste IP-ad
 
     Een van de eenvoudigste hulpprogram ma's is WebSitePulse. Voer de URL in om de DNS-omzettings tijd, de eerste byte, de laatste byte en andere prestatie statistieken weer te geven. U kunt kiezen uit drie verschillende test locaties. In dit voor beeld ziet u dat de eerste uitvoering laat zien dat de DNS-zoek opdracht 0,204 sec.
 
-    ![pulse1](./media/traffic-manager-performance-considerations/traffic-manager-web-site-pulse.png)
+    ![Scherm opname waarin het ' WebSitePulse-hulp programma met het Zoek resultaat ' DNS ' wordt weer gegeven.](./media/traffic-manager-performance-considerations/traffic-manager-web-site-pulse.png)
 
     Omdat de resultaten in de cache worden opgeslagen, wordt de tweede test voor hetzelfde Traffic Manager-eind punt dat de DNS-zoek opdracht 0,002 sec.
 

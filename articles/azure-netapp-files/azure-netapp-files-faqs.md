@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: b-juche
-ms.openlocfilehash: 4b8c879a89da47a081e4b95382d17b3d2baede9d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2a64e595f0ea07510f416be56a54a3c74294b95d
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325569"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653618"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Veelgestelde vragen over Azure NetApp Files
 
@@ -178,15 +178,11 @@ Yes, Azure NetApp Files supports LDAP signing by default. This functionality ena
 
 ### <a name="i-tried-to-use-the-root-and-local-users-to-access-a-dual-protocol-volume-with-the-ntfs-security-style-on-a-unix-system-why-did-i-encounter-a-permission-denied-error"></a>Ik heb geprobeerd de root-en lokale gebruikers te gebruiken voor toegang tot een Dual-protocol volume met de NTFS-beveiligings stijl op een UNIX-systeem. Waarom is de fout ' toestemming geweigerd ' aangetroffen?   
 
-Een volume met dubbele protocollen ondersteunt zowel de NFS-als de SMB-protocollen.  Wanneer u probeert toegang te krijgen tot het gekoppelde volume op het UNIX-systeem, probeert het systeem de UNIX-gebruiker toe te wijzen die u gebruikt voor een Windows-gebruiker. Als er geen toewijzing wordt gevonden, treedt de fout ' permission denied ' op.  Deze situatie is ook van toepassing wanneer u de gebruiker ' root ' gebruikt voor de toegang.    
-
-Om het probleem ' toestemming geweigerd ' te vermijden, moet u ervoor zorgen dat Windows Active Directory bevat `pcuser` voordat u toegang krijgt tot het koppel punt. Als u toevoegt `pcuser` nadat het probleem ' toestemming geweigerd ' is aangetroffen, wacht u 24 uur totdat de cache vermelding is gewist voordat u de toegang opnieuw probeert.
+Zie [problemen met Dual-protocol volumes oplossen](troubleshoot-dual-protocol-volumes.md) voor oplossingen.
 
 ### <a name="when-i-try-to-create-a-dual-protocol-volume-why-does-the-creation-process-fail-with-the-error-failed-to-validate-ldap-configuration-try-again-after-correcting-ldap-configuration"></a>Wanneer ik een volume met dubbele protocollen probeer te maken, mislukt het aanmaak proces met de fout ' kan de LDAP-configuratie niet valideren. Probeer het opnieuw nadat u de LDAP-configuratie hebt gecorrigeerd '?  
 
-De PTR-record (pointer) van de computer van de AD-host ontbreekt mogelijk op de DNS-server. U moet een zone voor reverse lookup maken op de DNS-server en vervolgens een PTR-record van de AD-hostcomputer toevoegen in de zone voor reverse lookup.
-
-Stel dat het IP-adres van de AD-machine is `1.1.1.1` , de hostnaam van de AD-machine (zoals gevonden met behulp van de `hostname` opdracht) `AD1` en de domein naam `myDomain.com` .  De PTR-record die is toegevoegd aan de zone voor reverse lookup moet zijn `1.1.1.1`  ->  `AD1.myDomain.com` .
+Zie [problemen met Dual-protocol volumes oplossen](troubleshoot-dual-protocol-volumes.md) voor oplossingen.
 
 ## <a name="capacity-management-faqs"></a>Veelgestelde vragen over capaciteits beheer
 

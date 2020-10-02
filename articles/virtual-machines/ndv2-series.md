@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: e63cb73b726c495d4124447028b681a81b8fcca9
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7ab9d270ae5da52cbf9b5ba0ed4730233225a7c1
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286203"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653438"
 ---
 # <a name="updated-ndv2-series"></a>Bijgewerkte NDv2-serie
 
@@ -24,6 +24,7 @@ NDv2-instanties bieden uitstekende prestaties voor HPC-en AI-workloads die gebru
 
 De NDv2 is in de praktijk opgebouwd voor zowel reken kundige, intense schaling (bundeling van 8 Gpu's per VM) en uitschalen (waarbij meerdere Vm's samen werken). De NDv2-serie biedt nu ondersteuning voor 100-Gigabit InfiniBand EDR back-end-netwerken, vergelijkbaar met die van de HB-serie HPC-VM, om hoogwaardige clusters mogelijk te maken voor parallelle scenario's, waaronder gedistribueerde trainingen voor AI en ML. Dit back-upnetwerk biedt ondersteuning voor alle belang rijke InfiniBand-protocollen, met inbegrip van die van de NCCL2-bibliotheken van NVIDIA, waardoor het clusteren van Gpu's naadloos kan worden gegroepeerd.
 
+> [!IMPORTANT]
 > Als u InfiniBand op de ND40rs_v2 virtuele machine [inschakelt](./workloads/hpc/enable-infiniband.md) , gebruikt u het OFED-stuur programma 4.7-1.0.0.1 Mellanox.
 >
 > Vanwege het toegenomen GPU-geheugen vereist de nieuwe ND40rs_v2 VM het gebruik van [virtuele machines van de tweede generatie](./windows/generation-2.md) en Marketplace-installatie kopieën. 
@@ -32,15 +33,13 @@ De NDv2 is in de praktijk opgebouwd voor zowel reken kundige, intense schaling (
 
 <br>
 
-Premium Storage: ondersteund
-
-Premium Storage caching: ondersteund
-
-Livemigratie: niet ondersteund
-
-Updates voor het behouden van geheugen: niet ondersteund
-
-InfiniBand: ondersteund
+[Premium Storage](premium-storage-performance.md): ondersteund<br>
+[Premium Storage caching](premium-storage-performance.md): ondersteund<br>
+[Livemigratie](maintenance-and-updates.md): niet ondersteund<br>
+[Updates](maintenance-and-updates.md)voor het behouden van geheugen: niet ondersteund<br>
+[Ondersteuning](generation-2.md)voor het genereren van vm's: generatie 1<br>
+InfiniBand: ondersteund<br>
+<br>
 
 | Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD): GiB | GPU | GPU-geheugen: GiB | Max. aantal gegevensschijven | Max. doorvoer voor schijf zonder caching: IOPS/MBps | Maximale netwerk bandbreedte | Max. aantal NIC's |
 |---|---|---|---|---|---|---|---|---|---|
@@ -58,7 +57,7 @@ Als u ervoor kiest om de NVIDIA GPU-Stuur Programma's hand matig te installeren,
 
 ## <a name="other-sizes"></a>Andere grootten
 
-- [Algemeen doel](sizes-general.md)
+- [Algemeen gebruik](sizes-general.md)
 - [Geoptimaliseerd geheugen](sizes-memory.md)
 - [Geoptimaliseerde opslag](sizes-storage.md)
 - [Geoptimaliseerde GPU](sizes-gpu.md)

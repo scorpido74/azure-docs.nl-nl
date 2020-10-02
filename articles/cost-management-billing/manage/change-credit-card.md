@@ -9,18 +9,18 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: banders
-ms.openlocfilehash: 0f1b4751ae2448b519387d57e4dbfa1eecf8a576
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 8366c0681f1ac29d9e265225dfaeeab44aa4b8ca
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90984300"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91252966"
 ---
 # <a name="add-or-update-a-credit-card-for-azure"></a>Een creditcard toevoegen of bijwerken voor Azure
 
 Dit document is van toepassing op klanten die zich online met een creditcard hebben geregistreerd voor Azure.
 
-In de Azure Portal kunt u uw standaardbetalingswijze wijzigen in een nieuwe creditcard en uw creditcardgegevens bijwerken. U moet een [accountbeheerder](billing-subscription-transfer.md#whoisaa) zijn om deze wijzigingen door te voeren.
+In de Azure Portal kunt u uw standaardbetalingswijze wijzigen in een nieuwe creditcard en uw creditcardgegevens bijwerken. U moet een [accountbeheerder](../understand/subscription-transfer.md#whoisaa) zijn om deze wijzigingen door te voeren.
 
 Als u een creditcard wilt verwijderen, raadpleegt u [Een betalingswijze voor Azure-facturering verwijderen](delete-azure-payment-method.md).
 

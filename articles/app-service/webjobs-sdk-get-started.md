@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: eebdf053cc3eea1dfc91476bff3817891bec42a3
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 4a22602dd9638b981cfe3d8bae9b5cdaacbf90dc
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88959051"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652037"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Aan de slag met de Azure WebJobs SDK voor gebeurtenisgestuurde verwerking op de achtergrond
 
@@ -186,7 +186,7 @@ Vanaf versie 3. x moet u de opslag bindings extensie expliciet installeren die i
 
    De `message` para meter moet geen teken reeks zijn. U kunt ook binden aan een JSON-object, een byte matrix of een [CloudQueueMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) -object. [Zie het gebruik van wachtrij Triggers](../azure-functions/functions-bindings-storage-queue-trigger.md?tabs=csharp#usage). Elk bindings type (zoals wacht rijen, blobs of tabellen) heeft een andere set parameter typen waarmee u verbinding kunt maken.
 
-## <a name="create-a-storage-account"></a>Een opslagaccount maken
+## <a name="create-a-storage-account"></a>Create a storage account
 
 De Azure Storage-emulator die lokaal wordt uitgevoerd, beschikt niet over alle functies die nodig zijn voor de webjobs SDK. In dit gedeelte maakt u een opslag account in Azure en configureert u het project om het te gebruiken. Als u al een opslag account hebt, gaat u verder met stap 6.
 
@@ -264,13 +264,13 @@ In deze sectie maakt en voert u het project lokaal uit en wordt de functie geact
 
 1. Geef een *wachtrij* op als naam voor de wachtrij en selecteer **OK**.
 
-   ![Wachtrij maken](./media/webjobs-sdk-get-started/create-queue.png)
+   ![Scherm afbeelding die laat zien waar u de wachtrij maakt en de naam wachtrij geeft. ](./media/webjobs-sdk-get-started/create-queue.png)
 
 1. Klik met de rechter muisknop op het knoop punt voor de nieuwe wachtrij en selecteer vervolgens **wachtrij weer geven**.
 
 1. Selecteer het pictogram **bericht toevoegen** .
 
-   ![Wachtrij maken](./media/webjobs-sdk-get-started/create-queue-message.png)
+   ![Scherm afbeelding die het pictogram bericht toevoegen markeert.](./media/webjobs-sdk-get-started/create-queue-message.png)
 
 1. Voer in het dialoog venster **bericht toevoegen** *Hallo wereld in.* Als de **tekst**van het bericht en selecteer vervolgens **OK**. Er bevindt zich nu een bericht in de wachtrij.
 
@@ -429,7 +429,7 @@ In deze sectie voert u lokaal opnieuw uit om te controleren of logboek gegevens 
 
 1. Sluit het console venster.
 
-## <a name="deploy-to-azure"></a><a name="deploy-as-a-webjob"></a>Implementeren in Azure
+## <a name="deploy-to-azure"></a><a name="deploy-as-a-webjob"></a>Implementeren op Azure
 
 Tijdens de implementatie maakt u een app service-exemplaar waarin u uw functies kunt uitvoeren. Wanneer u een .NET Core-Console-app publiceert naar App Service in azure, wordt deze automatisch uitgevoerd als Webtaak. Zie [Webjobs ontwikkelen en implementeren met Visual Studio](webjobs-dotnet-deploy-vs.md)voor meer informatie over publiceren.
 

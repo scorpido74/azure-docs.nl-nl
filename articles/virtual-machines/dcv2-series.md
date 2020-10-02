@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: 41dbb42637db98dcd97e3487f252e88f2ba5f9a3
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: fccdaaab121f315f1cb98b2b6ee3bffcb9ac2b3b
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649887"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653006"
 ---
 # <a name="dcsv2-series"></a>DCsv2-serie
 
@@ -21,17 +21,13 @@ De DCsv2-serie kan u helpen de vertrouwelijkheid en integriteit van uw gegevens 
 
 Voor beelden van use cases zijn: vertrouwelijk delen van gegevens, fraude detectie, anti-Money witwassen, Block Chain, analyse van vertrouwelijk gebruik, intelligentie analyse en vertrouwelijke machine learning.
 
-Premium Storage: ondersteund *
-
-Premium Storage caching: ondersteund *
-
-Livemigratie: niet ondersteund
-
-Updates voor het behouden van geheugen: niet ondersteund
+[Premium Storage](premium-storage-performance.md): ondersteund *<br>
+[Premium Storage caching](premium-storage-performance.md): ondersteund<br>
+[Livemigratie](maintenance-and-updates.md): niet ondersteund<br>
+[Updates](maintenance-and-updates.md)voor het behouden van geheugen: niet ondersteund<br>
+[Ondersteuning](generation-2.md)voor het genereren van vm's: generatie 1 en 2<br>
 
 * Met uitzonde ring van Standard_DC8_v2
-
-
 
 | Grootte             | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Max. aantal gegevensschijven | Maximale doorvoer voor schijven met caching en tijdelijke opslag: IOPS / MBps (cachegrootte in GiB) | Maximum aantal Nic's/verwachte netwerk bandbreedte (MBps) | EPC-geheugen (MiB) |
 |------------------|------|-------------|------------------------|----------------|-------------------------------------------------------------------------|----------------------------------------------|---------------------|
@@ -49,7 +45,7 @@ Updates voor het behouden van geheugen: niet ondersteund
 
 ## <a name="other-sizes-and-information"></a>Andere grootten en informatie
 
-- [Algemeen doel](sizes-general.md)
+- [Algemeen gebruik](sizes-general.md)
 - [Geoptimaliseerd geheugen](sizes-memory.md)
 - [Geoptimaliseerde opslag](sizes-storage.md)
 - [Geoptimaliseerde GPU](sizes-gpu.md)

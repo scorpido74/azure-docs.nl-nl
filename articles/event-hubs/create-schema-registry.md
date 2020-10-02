@@ -4,12 +4,12 @@ description: In dit artikel wordt beschreven hoe u een schema register maakt in 
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: b977ed8d6b4444daa1e125c61a8d38b2a6512e44
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 90556e0843cda94dc79330321d027f8d28eb7d20
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91566360"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652190"
 ---
 # <a name="create-an-azure-event-hubs-schema-registry-preview"></a>Een Azure Event Hubs-schema register maken (preview)
 In dit artikel wordt beschreven hoe u een schema groep maakt met schema's in een schema register dat wordt gehost door Azure Event Hubs. Zie [Azure schema Registry in Event hubs](schema-registry-overview.md)voor een overzicht van de schema register functie van Azure Event hubs.
@@ -17,7 +17,6 @@ In dit artikel wordt beschreven hoe u een schema groep maakt met schema's in een
 > [!NOTE]
 > - De **schema register** functie is momenteel beschikbaar als **Preview-versie**en wordt niet aanbevolen voor productie werkbelastingen.
 > - De functie is alleen beschikbaar in de lagen **Standard** en **dedicated** , niet in de laag **Basic** .
-> - Deze preview is momenteel alleen beschikbaar in de regio **West-Centraal VS** . 
 
 ## <a name="prerequisites"></a>Vereisten
 [Maak een event hubs naam ruimte](event-hubs-create.md#create-an-event-hubs-namespace). U kunt ook een bestaande naam ruimte gebruiken. 

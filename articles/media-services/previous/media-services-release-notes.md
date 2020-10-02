@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7764452d0e52a29204b276b4939c4a8a5c144ca4
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 4d335affa5a06bdb8e5c733c871654cf58947581
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268652"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652955"
 ---
 # <a name="azure-media-services-release-notes"></a>Opmerkingen bij de release Azure Media Services
 
@@ -48,6 +48,18 @@ We horen graag van onze klanten, zodat we zich kunnen richten op het oplossen va
 
 ## <a name="rest-api-version-history"></a><a name="rest_version_history"></a>Geschiedenis van REST API-versie
 Zie de [referentie Azure Media Services rest API]voor informatie over de versie geschiedenis van Media Services rest API.
+
+## <a name="september-2020"></a>September 2020
+
+De volgende v2-eigenschappen worden niet meer gevuld met historische taak voortgangs gegevens:
+
+* [HistoricalEvents](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.mediaservices.client.itask.historicalevents)
+* [PerfMessage](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.mediaservices.client.itask.perfmessage)
+
+Als u de taak geschiedenis wilt ophalen, moet u de v2-taak meldingen via webhooks of wachtrij berichten gebruiken met behulp van meldings eindpunten. Zie voor meer informatie:
+
+* [Azure Queue-opslag gebruiken voor het bewaken van Media Services taak meldingen](media-services-dotnet-check-job-progress-with-queues.md)
+* [Azure-webhooks gebruiken voor het bewaken van Media Services taak meldingen](media-services-dotnet-check-job-progress-with-webhooks.md)
 
 ## <a name="february-2020"></a>Februari 2020
 

@@ -2,13 +2,13 @@
 title: Verwijderingen in de implementatiegeschiedenis
 description: Hierin wordt beschreven hoe Azure Resource Manager automatisch implementaties uit de implementatie geschiedenis verwijdert. Implementaties worden verwijderd wanneer de geschiedenis bijna de limiet van 800 overschrijdt.
 ms.topic: conceptual
-ms.date: 09/15/2020
-ms.openlocfilehash: 0c5d972eea9bc9cf2bf8716b26cd0e07d0a07b82
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 10/01/2020
+ms.openlocfilehash: 13c65f3311e308708034bb5befb7e3c3ee158d38
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91284730"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652479"
 ---
 # <a name="automatic-deletions-from-deployment-history"></a>Automatische verwijderingen van de implementatie geschiedenis
 
@@ -23,7 +23,7 @@ Met Azure Resource Manager worden implementaties automatisch uit uw geschiedenis
 
 ## <a name="when-deployments-are-deleted"></a>Wanneer implementaties worden verwijderd
 
-Implementaties worden verwijderd uit uw geschiedenis wanneer u 775 of meer implementaties bereikt. Azure Resource Manager kunt implementaties verwijderen totdat de geschiedenis 750 is. De oudste implementaties worden eerst altijd verwijderd.
+Implementaties worden verwijderd uit uw geschiedenis wanneer u meer dan 775 implementaties overschrijdt. Azure Resource Manager kunt implementaties verwijderen totdat de geschiedenis 750 is. De oudste implementaties worden eerst altijd verwijderd.
 
 :::image type="content" border="false" source="./media/deployment-history-deletions/deployment-history.svg" alt-text="Verwijderingen uit de implementatie geschiedenis":::
 
@@ -76,7 +76,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Resources -FeatureName Disabl
 
 Als u automatische verwijderingen opnieuw wilt inschakelen, gebruikt u Azure REST API of Azure CLI.
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 Gebruik [AZ feature REGI ster](/cli/azure/feature#az-feature-register)voor Azure cli.
 

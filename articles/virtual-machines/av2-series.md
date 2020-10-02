@@ -7,27 +7,24 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 33d481d546d94bb1279cafbd85ae23c8ac4d00b8
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 65aab240dd0be97aafa370883aa953f8eb766cf2
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89437264"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91650745"
 ---
 # <a name="av2-series"></a>Av2-serie
 
 De virtuele machines uit de Av2-serie kunnen worden geïmplementeerd op diverse typen hardware en processors. Vm's uit de Av2-serie hebben CPU-prestaties en geheugen configuraties die het meest geschikt zijn voor workloads op instap niveau, zoals ontwikkelen en testen. De grootte wordt beperkt om consistente processor prestaties te bieden voor het actieve exemplaar, ongeacht de hardware waarop het wordt geïmplementeerd. Om de fysieke hardware te bepalen waarop deze grootte is geïmplementeerd, vraagt u vanuit de virtuele machine gegevens over de virtuele hardware op. Enkele voor beelden van use-cases zijn: ontwikkelings-en test servers, webservers met weinig verkeer, kleine tot middel grote data bases, controle van concepten en code opslagplaatsen.
 
-ACU: 100
-
-Premium Storage: niet ondersteund
-
-Premium Storage caching: niet ondersteund
-
-Livemigratie: ondersteund
-
-Updates voor geheugen behoud: ondersteund
-
+[ACU](acu.md): 100<br>
+[Premium Storage](premium-storage-performance.md): niet ondersteund <br>
+[Premium Storage caching](premium-storage-performance.md): niet ondersteund <br>
+[Livemigratie](maintenance-and-updates.md): ondersteund <br>
+[Updates voor geheugen behoud](maintenance-and-updates.md): ondersteund <br>
+[Ondersteuning](generation-2.md)voor het genereren van vm's: generatie 1 <br>
+<br>
 
 | Grootte | vCore | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Maximale tijdelijke opslag doorvoer: IOPS/MBps lezen/MBps schrijven | Maximum aantal gegevens schijven/door Voer: IOPS | Max. aantal NIC's | Verwachte netwerk bandbreedte (Mbps)
 |---|---|---|---|---|---|---|---|

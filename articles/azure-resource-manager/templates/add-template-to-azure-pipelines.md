@@ -1,38 +1,36 @@
 ---
 title: CI/CD met Azure-pijp lijnen en-sjablonen
-description: Hierin wordt beschreven hoe u doorlopende integratie in azure-pijp lijnen instelt met behulp van implementatie projecten van Azure-resource groepen in Visual Studio voor het implementeren van Resource Manager-sjablonen.
+description: Hierin wordt beschreven hoe u doorlopende integratie in azure-pijp lijnen configureert met behulp van Azure Resource Manager sjablonen. U ziet hoe u een Power shell-script gebruikt of bestanden kopieert naar een faserings locatie en vanaf daar implementeert.
 ms.topic: conceptual
-ms.date: 10/17/2019
-ms.openlocfilehash: d8eff1c7efae319106eb8a85af7823a820a0da39
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 10/01/2020
+ms.openlocfilehash: 6784df30340e4c54b8b1d6e82b45046666824315
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82084648"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653397"
 ---
 # <a name="integrate-arm-templates-with-azure-pipelines"></a>ARM-sjablonen integreren met Azure-pijp lijnen
 
-Visual Studio biedt het project van de Azure-resource groep voor het maken van Azure Resource Manager-sjablonen (ARM) en het implementeren ervan in uw Azure-abonnement. U kunt dit project integreren met Azure-pijp lijnen voor continue integratie en continue implementatie (CI/CD).
+U kunt Azure Resource Manager sjablonen (ARM-sjablonen) integreren met Azure-pijp lijnen voor continue integratie en continue implementatie (CI/CD). De zelf studie [doorlopende integratie van arm-sjablonen met Azure-pijp lijnen](deployment-tutorial-pipeline.md) laat zien hoe u de [implementatie taak arm-sjabloon](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md) kunt gebruiken om een sjabloon te implementeren vanuit uw github opslag plaats. Deze aanpak werkt wanneer u een sjabloon rechtstreeks vanuit een opslag plaats wilt implementeren.
 
-Er zijn twee manieren om sjablonen met Azure-pijp lijnen te implementeren:
+In dit artikel leert u twee meer manieren om sjablonen te implementeren met Azure-pijp lijnen. In dit artikel wordt beschreven hoe u:
 
-* **Voeg een taak toe die een Azure PowerShell script uitvoert**. Deze optie biedt het voor deel dat u binnen de levens cyclus van de ontwikkeling consistentie kunt bieden, omdat u hetzelfde script gebruikt dat is opgenomen in het Visual Studio-project (Deploy-AzureResourceGroup.ps1). Het script faseert artefacten van uw project naar een opslag account dat door Resource Manager kan worden geopend. Artefacten zijn items in uw project, zoals gekoppelde sjablonen, scripts en binaire bestanden voor toepassingen. Vervolgens implementeert het script de sjabloon.
+* **Voeg een taak toe die een Azure PowerShell script uitvoert**. Deze optie biedt het voor deel dat u binnen de levens cyclus van de ontwikkeling consistentie krijgt, omdat u hetzelfde script kunt gebruiken dat u hebt gebruikt bij het uitvoeren van lokale tests. Uw script implementeert de sjabloon, maar kan ook andere bewerkingen uitvoeren, zoals het ophalen van waarden die worden gebruikt als para meters.
 
-* **Voeg taken toe om taken te kopiëren en te implementeren**. Deze optie biedt een handig alternatief voor het project script. U configureert twee taken in de pijp lijn. Met een taak worden de artefacten en de andere taak in de sjabloon geïmplementeerd.
+   Visual Studio biedt het [Azure-resource groeps project](create-visual-studio-deployment-project.md) dat een Power shell-script bevat. Het script faseert artefacten van uw project naar een opslag account dat door Resource Manager kan worden geopend. Artefacten zijn items in uw project, zoals gekoppelde sjablonen, scripts en binaire bestanden voor toepassingen. Als u het script van het project wilt blijven gebruiken, gebruikt u de Power shell-script taak die in dit artikel wordt weer gegeven.
 
-In dit artikel worden beide benaderingen beschreven.
+* **Voeg taken toe om taken te kopiëren en te implementeren**. Deze optie biedt een handig alternatief voor het project script. U configureert twee taken in de pijp lijn. Met een taak worden de artefacten op een toegankelijke locatie faseert. De andere taak implementeert de sjabloon vanaf die locatie.
 
 ## <a name="prepare-your-project"></a>Uw project voorbereiden
 
-In dit artikel wordt ervan uitgegaan dat uw Visual Studio-project en Azure DevOps-organisatie klaar zijn voor het maken van de pijp lijn. De volgende stappen laten zien hoe u ervoor kunt zorgen dat u klaar bent:
+In dit artikel wordt ervan uitgegaan dat uw ARM-sjabloon en Azure DevOps-organisatie klaar zijn voor het maken van de pijp lijn. De volgende stappen laten zien hoe u ervoor kunt zorgen dat u klaar bent:
 
-* U hebt een Azure DevOps-organisatie. Als u er nog geen hebt, [maakt u er gratis een](/azure/devops/pipelines/get-started/pipelines-sign-up?view=azure-devops). Als uw team al een Azure DevOps-organisatie heeft, zorg er dan voor dat u een beheerder bent van het Azure DevOps-project dat u wilt gebruiken.
+* U hebt een Azure DevOps-organisatie. Als u er nog geen hebt, [maakt u er gratis een](/azure/devops/pipelines/get-started/pipelines-sign-up). Als uw team al een Azure DevOps-organisatie heeft, zorg er dan voor dat u een beheerder bent van het Azure DevOps-project dat u wilt gebruiken.
 
-* U hebt een [service verbinding](/azure/devops/pipelines/library/connect-to-azure?view=azure-devops) met uw Azure-abonnement geconfigureerd. De taken in de pijp lijn worden uitgevoerd onder de identiteit van de Service-Principal. Zie [een DevOps-project maken](deployment-tutorial-pipeline.md#create-a-devops-project)voor de stappen voor het maken van de verbinding.
+* U hebt een [service verbinding](/azure/devops/pipelines/library/connect-to-azure) met uw Azure-abonnement geconfigureerd. De taken in de pijp lijn worden uitgevoerd onder de identiteit van de Service-Principal. Zie [een DevOps-project maken](deployment-tutorial-pipeline.md#create-a-devops-project)voor de stappen voor het maken van de verbinding.
 
-* U hebt een Visual Studio-project dat is gemaakt op basis van de starter-sjabloon van de **Azure-resource groep** . Zie voor meer informatie over het maken van dit type project [Azure-resource groepen maken en implementeren via Visual Studio](create-visual-studio-deployment-project.md).
-
-* Uw Visual Studio-project is [verbonden met een Azure DevOps-project](/azure/devops/repos/git/share-your-code-in-git-vs-2017?view=azure-devops).
+* U hebt een [arm-sjabloon](quickstart-create-templates-use-visual-studio-code.md) waarmee de infra structuur voor uw project wordt gedefinieerd.
 
 ## <a name="create-pipeline"></a>Pijplijn maken
 
@@ -56,27 +54,32 @@ U kunt een Azure PowerShell-taak of het kopieer bestand toevoegen en taken imple
 
 ## <a name="azure-powershell-task"></a>Azure PowerShell taak
 
-In deze sectie wordt uitgelegd hoe u doorlopende implementatie kunt configureren met één taak die het Power shell-script in uw project uitvoert. Met het volgende YAML-bestand wordt een [Azure PowerShell taak](/azure/devops/pipelines/tasks/deploy/azure-powershell?view=azure-devops)gemaakt:
+In deze sectie wordt uitgelegd hoe u doorlopende implementatie kunt configureren met één taak die het Power shell-script in uw project uitvoert. Zie [Deploy-AzTemplate.ps1](https://github.com/Azure/azure-quickstart-templates/blob/master/Deploy-AzTemplate.ps1) of [Deploy-AzureResourceGroup.ps1](https://github.com/Azure/azure-quickstart-templates/blob/master/Deploy-AzureResourceGroup.ps1)als u een Power shell-script nodig hebt dat een sjabloon implementeert.
 
-```yaml
+Met het volgende YAML-bestand wordt een [Azure PowerShell taak](/azure/devops/pipelines/tasks/deploy/azure-powershell)gemaakt:
+
+```yml
+trigger:
+- master
+
 pool:
-  name: Hosted Windows 2019 with VS2019
-  demands: azureps
+  vmImage: 'ubuntu-latest'
 
 steps:
-- task: AzurePowerShell@3
+- task: AzurePowerShell@5
   inputs:
-    azureSubscription: 'demo-deploy-sp'
-    ScriptPath: 'AzureResourceGroupDemo/Deploy-AzureResourceGroup.ps1'
-    ScriptArguments: -ResourceGroupName 'demogroup' -ResourceGroupLocation 'centralus'
-    azurePowerShellVersion: LatestVersion
+    azureSubscription: 'script-connection'
+    ScriptType: 'FilePath'
+    ScriptPath: './Deploy-Template.ps1'
+    ScriptArguments: -Location 'centralus' -ResourceGroupName 'demogroup' -TemplateFile templates\mainTemplate.json
+    azurePowerShellVersion: 'LatestVersion'
 ```
 
-Wanneer u de taak instelt op `AzurePowerShell@3` , gebruikt de pijp lijn opdrachten uit de AzureRM-module om de verbinding te verifiëren. Het Power shell-script in het Visual Studio-project maakt standaard gebruik van de AzureRM-module. Als u uw script hebt bijgewerkt voor het gebruik van de [AZ-module](/powershell/azure/new-azureps-module-az), stelt u de taak in op `AzurePowerShell@4` .
+Wanneer u de taak instelt op `AzurePowerShell@5` , gebruikt de pijp lijn de [module AZ](/powershell/azure/new-azureps-module-az). Als u de AzureRM-module in uw script gebruikt, stelt u de taak in op `AzurePowerShell@3` .
 
 ```yaml
 steps:
-- task: AzurePowerShell@4
+- task: AzurePowerShell@3
 ```
 
 `azureSubscription`Geef voor de naam op van de service verbinding die u hebt gemaakt.
@@ -92,69 +95,45 @@ inputs:
 ScriptPath: '<your-relative-path>/<script-file-name>.ps1'
 ```
 
-Als u artefacten niet nodig hebt, geeft u gewoon de naam en locatie van een resource groep door om te gebruiken voor de implementatie. Met het Visual Studio-script wordt de resource groep gemaakt als deze nog niet bestaat.
+`ScriptArguments`Geef in alle para meters op die nodig zijn voor het script. In het volgende voor beeld ziet u enkele para meters voor een script, maar u moet de para meters voor uw script aanpassen.
 
 ```yaml
-ScriptArguments: -ResourceGroupName '<resource-group-name>' -ResourceGroupLocation '<location>'
+ScriptArguments: -Location 'centralus' -ResourceGroupName 'demogroup' -TemplateFile templates\mainTemplate.json
 ```
 
-Als u artefacten naar een bestaand opslag account moet faseren, gebruikt u:
+Wanneer u **Opslaan**selecteert, wordt de build-pijp lijn automatisch uitgevoerd. Ga terug naar de samen vatting van uw build-pijp lijn en Bekijk de status.
 
-```yaml
-ScriptArguments: -ResourceGroupName '<resource-group-name>' -ResourceGroupLocation '<location>' -UploadArtifacts -ArtifactStagingDirectory '$(Build.StagingDirectory)' -StorageAccountName '<your-storage-account>'
-```
-
-Nu u begrijpt hoe u de taak maakt, gaan we de stappen door lopen om de pijp lijn te bewerken.
-
-1. Open de pijp lijn en vervang de inhoud door uw YAML:
-
-   ```yaml
-   pool:
-     name: Hosted Windows 2019 with VS2019
-     demands: azureps
-
-   steps:
-   - task: AzurePowerShell@3
-     inputs:
-       azureSubscription: 'demo-deploy-sp'
-       ScriptPath: 'AzureResourceGroupDemo/Deploy-AzureResourceGroup.ps1'
-       ScriptArguments: -ResourceGroupName 'demogroup' -ResourceGroupLocation 'centralus' -UploadArtifacts -ArtifactStagingDirectory '$(Build.StagingDirectory)' -StorageAccountName 'stage3a4176e058d34bb88cc'
-       azurePowerShellVersion: LatestVersion
-   ```
-
-1. Selecteer **Opslaan**.
-
-   ![Pijplijn opslaan](./media/add-template-to-azure-pipelines/save-pipeline.png)
-
-1. Geef een bericht op dat moet worden doorgevoerd en rechtstreeks door te voeren naar de **hoofd server**.
-
-1. Wanneer u **Opslaan**selecteert, wordt de build-pijp lijn automatisch uitgevoerd. Ga terug naar de samen vatting van uw build-pijp lijn en Bekijk de status.
-
-   ![Resultaten weergeven](./media/add-template-to-azure-pipelines/view-results.png)
+![Resultaten weergeven](./media/add-template-to-azure-pipelines/view-results.png)
 
 U kunt de pijp lijn die momenteel wordt uitgevoerd selecteren om details over de taken weer te geven. Wanneer deze is voltooid, ziet u de resultaten voor elke stap.
 
 ## <a name="copy-and-deploy-tasks"></a>Taken kopiëren en implementeren
 
-In deze sectie wordt beschreven hoe u doorlopende implementatie kunt configureren met behulp van een twee taken voor het faseren van de artefacten en het implementeren van de sjabloon.
+In deze sectie wordt beschreven hoe u doorlopende implementatie kunt configureren met behulp van twee taken. Met de eerste taak worden de artefacten naar een opslag account en de tweede taak voor het implementeren van de sjabloon.
 
-In de volgende YAML wordt de [Azure File Copy-taak](/azure/devops/pipelines/tasks/deploy/azure-file-copy?view=azure-devops)weer gegeven:
+Als u bestanden naar een opslag account wilt kopiëren, moet aan de service-principal voor de service verbinding de rol Storage BLOB data contributor of Storage BLOB data owner worden toegewezen. Zie [aan de slag met AzCopy](../../storage/common/storage-use-azcopy-v10.md)voor meer informatie.
 
-```yaml
-- task: AzureFileCopy@3
-  displayName: 'Stage files'
+In de volgende YAML wordt de [Azure File Copy-taak](/azure/devops/pipelines/tasks/deploy/azure-file-copy)weer gegeven.
+
+```yml
+trigger:
+- master
+
+pool:
+  vmImage: 'windows-latest'
+
+steps:
+- task: AzureFileCopy@4
   inputs:
-    SourcePath: 'AzureResourceGroup1'
-    azureSubscription: 'demo-deploy-sp'
+    SourcePath: 'templates'
+    azureSubscription: 'copy-connection'
     Destination: 'AzureBlob'
-    storage: 'stage3a4176e058d34bb88cc'
-    ContainerName: 'democontainer'
-    outputStorageUri: 'artifactsLocation'
-    outputStorageContainerSasToken: 'artifactsLocationSasToken'
-    sasTokenTimeOutInMinutes: '240'
+    storage: 'demostorage'
+    ContainerName: 'projecttemplates'
+  name: AzureFileCopy
 ```
 
-Er zijn verschillende onderdelen van deze taak voor het herzien van uw omgeving. `SourcePath`Hiermee wordt de locatie van de artefacten ten opzichte van het pijplijn bestand aangegeven. In dit voor beeld bestaan de bestanden in een map met `AzureResourceGroup1` de naam.
+Er zijn verschillende onderdelen van deze taak voor het herzien van uw omgeving. `SourcePath`Hiermee wordt de locatie van de artefacten ten opzichte van het pijplijn bestand aangegeven.
 
 ```yaml
 SourcePath: '<path-to-artifacts>'
@@ -173,92 +152,82 @@ storage: '<your-storage-account-name>'
 ContainerName: '<container-name>'
 ```
 
+Nadat u de taak voor het kopiëren van het bestand hebt gemaakt, kunt u de taak toevoegen om de gefaseerde sjabloon te implementeren.
+
 De volgende YAML toont de [implementatie taak voor de Azure Resource Manager sjabloon](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md):
 
 ```yaml
-- task: AzureResourceGroupDeployment@2
-  displayName: 'Deploy template'
+- task: AzureResourceManagerTemplateDeployment@3
   inputs:
     deploymentScope: 'Resource Group'
-    ConnectedServiceName: 'demo-deploy-sp'
-    subscriptionName: '01234567-89AB-CDEF-0123-4567890ABCDEF'
+    azureResourceManagerConnection: 'copy-connection'
+    subscriptionId: '00000000-0000-0000-0000-000000000000'
     action: 'Create Or Update Resource Group'
     resourceGroupName: 'demogroup'
-    location: 'Central US'
+    location: 'West US'
     templateLocation: 'URL of the file'
-    csmFileLink: '$(artifactsLocation)WebSite.json$(artifactsLocationSasToken)'
-    csmParametersFileLink: '$(artifactsLocation)WebSite.parameters.json$(artifactsLocationSasToken)'
-    overrideParameters: '-_artifactsLocation $(artifactsLocation) -_artifactsLocationSasToken "$(artifactsLocationSasToken)"'
+    csmFileLink: '$(AzureFileCopy.StorageContainerUri)templates/mainTemplate.json$(AzureFileCopy.StorageContainerSasToken)'
+    csmParametersFileLink: '$(AzureFileCopy.StorageContainerUri)templates/mainTemplate.parameters.json$(AzureFileCopy.StorageContainerSasToken)'
     deploymentMode: 'Incremental'
+    deploymentName: 'deploy1'
 ```
 
-Er zijn verschillende onderdelen van deze taak voor het herzien van uw omgeving.
+Er zijn verschillende onderdelen van deze taak om meer details te bekijken.
 
-- `deploymentScope`: Selecteer het implementatie bereik in de opties: `Management Group` , `Subscription` en `Resource Group` . Gebruik de **resource groep** in deze stapsgewijze instructies. Zie [implementatie bereiken](deploy-rest.md#deployment-scope)voor meer informatie over de scopes.
+- `deploymentScope`: Selecteer het implementatie bereik in de opties: `Management Group` , `Subscription` en `Resource Group` . Zie [Implementatiebereiken](deploy-rest.md#deployment-scope) voor meer informatie over de bereiken.
 
-- `ConnectedServiceName`: Geef de naam op van de service verbinding die u hebt gemaakt.
+- `azureResourceManagerConnection`: Geef de naam op van de service verbinding die u hebt gemaakt.
 
-    ```yaml
-    ConnectedServiceName: '<your-connection-name>'
-    ```
+- `subscriptionId`: Geef de ID van het doel abonnement op. Deze eigenschap is alleen van toepassing op het implementatie bereik van de resource groep en het implementatie bereik van het abonnement.
 
-- `subscriptionName`: Geef de ID van het doel abonnement op. Deze eigenschap is alleen van toepassing op het implementatie bereik van de resource groep en het implementatie bereik van het abonnement.
+- `resourceGroupName` en `location` : Geef de naam en de locatie op van de resource groep die u wilt implementeren. Met de taak wordt de resource groep gemaakt als deze nog niet bestaat.
 
-- `resourceGroupName`en `location` : Geef de naam en de locatie op van de resource groep die u wilt implementeren. Met de taak wordt de resource groep gemaakt als deze nog niet bestaat.
-
-    ```yaml
-    resourceGroupName: '<resource-group-name>'
-    location: '<location>'
-    ```
-
-De implementatie taak is gekoppeld aan een sjabloon met de naam `WebSite.json` en een para meters-bestand genaamd WebSite.parameters.jsop. Gebruik de namen van uw sjabloon en parameter bestanden.
-
-Nu u begrijpt hoe u de taken maakt, gaan we de stappen door lopen om de pijp lijn te bewerken.
-
-1. Open de pijp lijn en vervang de inhoud door uw YAML:
-
-   ```yaml
-   pool:
-     name: Hosted Windows 2019 with VS2019
-
-   steps:
-   - task: AzureFileCopy@3
-     displayName: 'Stage files'
-     inputs:
-       SourcePath: 'AzureResourceGroup1'
-       azureSubscription: 'demo-deploy-sp'
-       Destination: 'AzureBlob'
-       storage: 'stage3a4176e058d34bb88cc'
-       ContainerName: 'democontainer'
-       outputStorageUri: 'artifactsLocation'
-       outputStorageContainerSasToken: 'artifactsLocationSasToken'
-       sasTokenTimeOutInMinutes: '240'
-    - task: AzureResourceGroupDeployment@2
-      displayName: 'Deploy template'
-      inputs:
-        deploymentScope: 'Resource Group'
-        ConnectedServiceName: 'demo-deploy-sp'
-        subscriptionName: '01234567-89AB-CDEF-0123-4567890ABCDEF'
-        action: 'Create Or Update Resource Group'
-        resourceGroupName: 'demogroup'
-        location: 'Central US'
-        templateLocation: 'URL of the file'
-        csmFileLink: '$(artifactsLocation)WebSite.json$(artifactsLocationSasToken)'
-        csmParametersFileLink: '$(artifactsLocation)WebSite.parameters.json$(artifactsLocationSasToken)'
-        overrideParameters: '-_artifactsLocation $(artifactsLocation) -_artifactsLocationSasToken "$(artifactsLocationSasToken)"'
-        deploymentMode: 'Incremental'
+   ```yml
+   resourceGroupName: '<resource-group-name>'
+   location: '<location>'
    ```
 
-1. Selecteer **Opslaan**.
+- `csmFileLink`: Geef de koppeling op voor de sjabloon die wordt gefaseerd. Gebruik bij het instellen van de waarde variabelen die worden geretourneerd door de Kopieer taak voor het bestand. Het volgende voor beeld is een koppeling naar een sjabloon met de naam mainTemplate.jsop. De map met de naam **sjablonen** is opgenomen, omdat het bestand door de Kopieer taak van het bestand is gekopieerd. Geef in uw pijp lijn het pad naar uw sjabloon en de naam van uw sjabloon op.
 
-1. Geef een bericht op dat moet worden doorgevoerd en rechtstreeks door te voeren naar de **hoofd server**.
+   ```yml
+   csmFileLink: '$(AzureFileCopy.StorageContainerUri)templates/mainTemplate.json$(AzureFileCopy.StorageContainerSasToken)'
+   ```
 
-1. Wanneer u **Opslaan**selecteert, wordt de build-pijp lijn automatisch uitgevoerd. Ga terug naar de samen vatting van uw build-pijp lijn en Bekijk de status.
+Uw pijp lijn ziet er als volgt uit:
 
-   ![Resultaten weergeven](./media/add-template-to-azure-pipelines/view-results.png)
+```yml
+trigger:
+- master
 
-U kunt de pijp lijn die momenteel wordt uitgevoerd selecteren om details over de taken weer te geven. Wanneer deze is voltooid, ziet u de resultaten voor elke stap.
+pool:
+  vmImage: 'windows-latest'
+
+steps:
+- task: AzureFileCopy@4
+  inputs:
+    SourcePath: 'templates'
+    azureSubscription: 'copy-connection'
+    Destination: 'AzureBlob'
+    storage: 'demostorage'
+    ContainerName: 'projecttemplates'
+  name: AzureFileCopy
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: 'copy-connection'
+    subscriptionId: '00000000-0000-0000-0000-000000000000'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: 'demogroup'
+    location: 'West US'
+    templateLocation: 'URL of the file'
+    csmFileLink: '$(AzureFileCopy.StorageContainerUri)templates/mainTemplate.json$(AzureFileCopy.StorageContainerSasToken)'
+    csmParametersFileLink: '$(AzureFileCopy.StorageContainerUri)templates/mainTemplate.parameters.json$(AzureFileCopy.StorageContainerSasToken)'
+    deploymentMode: 'Incremental'
+    deploymentName: 'deploy1'
+```
+
+Wanneer u **Opslaan**selecteert, wordt de build-pijp lijn automatisch uitgevoerd. Ga terug naar de samen vatting van uw build-pijp lijn en Bekijk de status.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [zelf studie: doorlopende integratie van Azure Resource Manager sjablonen met Azure-pijp lijnen](deployment-tutorial-pipeline.md)voor stapsgewijze instructies voor het gebruik van Azure-pijp lijnen met arm-sjablonen.
+Zie [Azure Resource Manager sjablonen implementeren met behulp van github-acties](deploy-github-actions.md)voor meer informatie over het gebruik van arm-sjablonen met github-acties.

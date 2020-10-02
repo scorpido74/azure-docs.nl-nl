@@ -3,12 +3,12 @@ title: IP-adressen in Azure Functions
 description: Meer informatie over het vinden van binnenkomende en uitgaande IP-adressen voor functie-apps en wat ertoe leidt dat deze worden gewijzigd.
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.openlocfilehash: 4b99855d8cc28a41d9eb91bdcf691747910ed4a1
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 1d2cf34ee4712705eaa1c0da5ad63712f9e649fe
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874075"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652462"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>IP-adressen in Azure Functions
 
@@ -25,7 +25,7 @@ IP-adressen zijn gekoppeld aan functie-apps, niet met afzonderlijke functies. In
 
 Elke functie-app heeft één inkomend IP-adres. Het IP-adres zoeken:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Navigeer naar de functie-app.
 3. Selecteer **Platformfuncties**.
 4. Selecteer **Eigenschappen**en het inkomende IP-adres wordt weer gegeven onder **virtueel IP-adres**.
@@ -51,7 +51,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 ```
 
 > [!NOTE]
-> Wanneer een functie-app die wordt uitgevoerd op het [verbruiks abonnement](functions-scale.md#consumption-plan) , wordt geschaald, kan er een nieuw bereik van uitgaande IP-adressen worden toegewezen. Wanneer u het verbruiks abonnement uitvoert, moet u mogelijk het hele Data Center toevoegen aan een acceptatie lijst.
+> Wanneer een functie-app die wordt uitgevoerd op het [verbruiks plan](functions-scale.md#consumption-plan) of het [Premium-plan](functions-scale.md#premium-plan) wordt geschaald, kan een nieuw bereik aan uitgaande IP-adressen worden toegewezen. Wanneer u een van deze abonnementen uitvoert, moet u mogelijk het hele Data Center toevoegen aan een acceptatie lijst.
 
 ## <a name="data-center-outbound-ip-addresses"></a>Uitgaande IP-adressen van data centers
 
@@ -89,7 +89,7 @@ Het inkomende IP-adres **kan** veranderen wanneer u:
 - Verwijder de laatste functie-app in een combi natie van resource groep en regio en maak deze opnieuw.
 - Verwijder een TLS-binding, bijvoorbeeld tijdens het vernieuwen van het [certificaat](../app-service/configure-ssl-certificate.md#renew-certificate).
 
-Wanneer uw functie-app wordt uitgevoerd in een [verbruiks abonnement](functions-scale.md#consumption-plan), kan het binnenkomende IP-adres ook worden gewijzigd, zelfs als u geen acties hebt uitgevoerd zoals [hierboven vermeld](#inbound-ip-address-changes).
+Wanneer uw functie-app wordt uitgevoerd in een [verbruiks abonnement](functions-scale.md#consumption-plan) of in een [Premium-abonnement](functions-scale.md#premium-plan), kan het binnenkomende IP-adres ook worden gewijzigd, zelfs als u geen acties hebt uitgevoerd zoals [hierboven vermeld](#inbound-ip-address-changes).
 
 ## <a name="outbound-ip-address-changes"></a>Wijzigingen in het uitgaande IP-adres
 
@@ -98,7 +98,7 @@ De set beschik bare uitgaande IP-adressen voor een functie-app kan veranderen wa
 * Onderneem elke actie die het inkomende IP-adres kan wijzigen.
 * Wijzig de prijs categorie van uw App Service abonnement. De lijst met alle mogelijke uitgaande IP-adressen die uw app kan gebruiken voor alle prijs categorieën, bevindt zich in de `possibleOutboundIPAddresses` eigenschap. Zie [uitgaande Ip's zoeken](#find-outbound-ip-addresses).
 
-Wanneer uw functie-app wordt uitgevoerd in een [verbruiks abonnement](functions-scale.md#consumption-plan), kan het uitgaande IP-adres ook worden gewijzigd, zelfs als u geen acties hebt uitgevoerd zoals [hierboven vermeld](#inbound-ip-address-changes).
+Wanneer uw functie-app wordt uitgevoerd in een [verbruiks abonnement](functions-scale.md#consumption-plan) of in een [Premium-abonnement](functions-scale.md#premium-plan), kan het uitgaande IP-adres ook worden gewijzigd, zelfs als u geen acties hebt uitgevoerd zoals [hierboven vermeld](#inbound-ip-address-changes).
 
 Als u de wijziging van een uitgaand IP-adres wilt forceren:
 
@@ -116,7 +116,7 @@ Als u statische, specifieke IP-adressen nodig hebt, raden wij u aan [app service
 
 Als u wilt weten of uw functie-app wordt uitgevoerd in een App Service Environment:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Navigeer naar de functie-app.
 3. Selecteer het tabblad **Overzicht**.
 4. De laag App Service plan wordt weer gegeven onder **app service plan/prijs categorie**. De prijs Categorie App Service Environment is **geïsoleerd**.

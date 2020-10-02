@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/22/2020
+ms.date: 09/21/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 59e811b7813ef94682896e0f95e971ca0094ef65
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 8f3fd462a52b035cd5b5447560e5472b41f237fa
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119637"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653227"
 ---
 # <a name="microsoft-identity-platform-userinfo-endpoint"></a>User info-eind punt voor micro soft Identity platform
 
@@ -28,7 +28,7 @@ Het user info-eind punt maakt deel uit van de [OpenID Connect Connect Standard](
 
 U kunt het user info-eind punt met behulp van het OpenID Connect Connect Discovery-document op een programmatische manier detecteren `https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration` . Deze wordt weer gegeven in het `userinfo_endpoint` veld en dit patroon kan worden gebruikt in verschillende Clouds om het juiste eind punt aan te wijzen.  Het is niet raadzaam het user info-eind punt in uw app op te nemen. gebruik in plaats daarvan het OIDC Discovery-document om dit eind punt tijdens runtime te vinden.
 
-Als onderdeel van de OpenID Connect Connect-specificatie wordt het user info-eind punt vaak automatisch aangeroepen door [OIDC compatibele bibliotheken](https://openid.net/developers/certified/) om informatie over de gebruiker te verkrijgen.  Zonder dat dit eind punt wordt gehost, is micro soft Identity platform niet compatibel met standaarden en kunnen sommige tape wisselaars mislukken.  In de [lijst met claims die zijn geïdentificeerd in de OIDC-standaard](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims) , produceren we de naam claims, de onderwerps claim en de e-mail wanneer deze beschikbaar zijn en worden verzonden voor.  
+Als onderdeel van de OpenID Connect Connect-specificatie wordt het user info-eind punt vaak automatisch aangeroepen door [OIDC compatibele bibliotheken](https://openid.net/developers/certified/)  om informatie over de gebruiker te verkrijgen.  Zonder dat dit eind punt wordt gehost, is micro soft Identity platform niet compatibel met standaarden en kunnen sommige tape wisselaars mislukken.  In de [lijst met claims die zijn geïdentificeerd in de OIDC-standaard](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims) , produceren we de naam claims, de onderwerps claim en de e-mail wanneer deze beschikbaar zijn en worden verzonden voor.  
 
 ## <a name="consider-use-an-id-token-instead"></a>Overwegen: gebruik in plaats daarvan een ID-token
 
@@ -42,7 +42,7 @@ User info is een standaard OAuth Bearer-token-API, die net als andere Microsoft 
 
 ### <a name="permissions"></a>Machtigingen
 
-Gebruik de volgende [OIDC-machtigingen](v2-permissions-and-consent.md#openid-connect-scopes) om de user info-API aan te roepen. `openid`is vereist en de `profile` en- `email` bereiken zorgen ervoor dat er aanvullende informatie wordt verstrekt in het antwoord.
+Gebruik de volgende [OIDC-machtigingen](v2-permissions-and-consent.md#openid-connect-scopes) om de user info-API aan te roepen. `openid` is vereist en de `profile` en- `email` bereiken zorgen ervoor dat er aanvullende informatie wordt verstrekt in het antwoord.
 
 |Machtigings type      | Machtigingen    |
 |:--------------------|:---------------------------------------------------------|
@@ -81,7 +81,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6Il…
 }
 ```
 
-De claims die hier worden vermeld, inclusief `sub` , zijn dezelfde claims die in de app worden weer gegeven in het [id-token](id-tokens.md) dat is uitgegeven aan de app.  
+De claims die hier worden weer gegeven, zijn alle claims die het user info-eind punt kan retour neren.  Dit zijn dezelfde waarden die in de app worden weer gegeven in het [id-token](id-tokens.md) dat is uitgegeven voor de app.  
 
 ## <a name="notes-and-caveats-on-the-userinfo-endpoint"></a>Opmerkingen en aanvullende informatie over het user info-eind punt
 

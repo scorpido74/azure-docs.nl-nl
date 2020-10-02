@@ -8,30 +8,29 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 08/10/2020
 ms.author: vikancha
-ms.openlocfilehash: 17ce5314f58a92158ff4fd187ad0ca46bb14a275
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7c3423e8bd5cd3e38c05205842845bec2243ed83
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320163"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653499"
 ---
 # <a name="ncast4_v3-series-in-preview"></a>NCasT4_v3-serie (in preview-versie) 
 
 De virtuele machines uit de NCasT4_v3-serie worden aangedreven door [Nvidia Tesla T4](https://www.nvidia.com/en-us/data-center/tesla-t4/) GPU'S en AMD EPYC 7V12 (Rome) cpu's. De virtuele machines beschikken over Maxi maal 4 NVIDIA T4-Gpu's met 16 GB geheugen per, Maxi maal 64 niet-multi threaded AMD EPYC 7V12 (Rome)-processor kernen en 440 GiB van het systeem geheugen. Deze virtuele machines zijn ideaal voor het implementeren van AI-Services, zoals realtime deprocessoren van door de gebruiker gegenereerde aanvragen of voor interactieve grafische en visualisatie werk belastingen met behulp van het GRID-stuur programma en virtuele GPU-technologie van NVIDIA. Standaard GPU Compute-workloads op basis van CUDA, TensorRT, Caffe, ONNX en andere frameworks of GPU-versnelde grafische toepassingen op basis van OpenGL en DirectX kunnen economisch worden geïmplementeerd, met dichtbij de buurt van gebruikers op de NCasT4_v3 serie.
 
-U kunt [een aanvraag indienen](https://aka.ms/NCT4v3Preview) om deel te uitmaken van het preview-programma.
+> [!NOTe]
+> [Dien een aanvraag](https://aka.ms/NCT4v3Preview) in als onderdeel van het preview-programma.
 
 <br>
 
-ACU: 230-260
-
-Premium Storage: ondersteund
-
-Premium Storage caching: ondersteund
-
-Livemigratie: niet ondersteund
-
-Updates voor het behouden van geheugen: niet ondersteund
+[ACU](acu.md): 230-260<br>
+[Premium Storage](premium-storage-performance.md): ondersteund<br>
+[Premium Storage caching](premium-storage-performance.md): ondersteund<br>
+[Livemigratie](maintenance-and-updates.md): niet ondersteund<br>
+[Updates](maintenance-and-updates.md)voor het behouden van geheugen: niet ondersteund<br>
+[Ondersteuning](generation-2.md)voor het genereren van vm's: generatie 1<br>
+<br>
 
 | Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | GPU | GPU-geheugen: GiB | Max. aantal gegevensschijven | Max. aantal NIC's |
 | --- | --- | --- | --- | --- | --- | --- | --- |

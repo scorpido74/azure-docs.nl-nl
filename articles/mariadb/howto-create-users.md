@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: how-to
-ms.date: 4/2/2020
-ms.openlocfilehash: 34fcb8d28ae8deda88a6ce91261301ab5d08a743
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 10/1/2020
+ms.openlocfilehash: 7a3515850027963dcabbf2cef4efd8bf43802cbe
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104551"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653057"
 ---
 # <a name="create-users-in-azure-database-for-mariadb"></a>Create users in Azure Database for MariaDB (Gebruikers maken in Azure Database for MariaDB) 
 In dit artikel wordt beschreven hoe u gebruikers kunt maken in Azure Database for MariaDB.
@@ -29,7 +29,8 @@ De gebruiker van de server beheerder heeft bepaalde bevoegdheden voor uw server 
 Zodra de Azure Database for MariaDB-server is gemaakt, kunt u het eerste gebruikers account van de server beheerder gebruiken om extra gebruikers te maken en beheerders toegang te verlenen. Het account voor de server beheerder kan ook worden gebruikt om gebruikers met minder bevoegdheden te maken die toegang hebben tot afzonderlijke database schema's.
 
 > [!NOTE]
-> De rol SUPER privilege en DBA worden niet ondersteund. Lees de [bevoegdheden](concepts-limits.md#privilege-support) in het artikel beperkingen om te begrijpen wat er niet wordt ondersteund in de service.
+> De rol SUPER privilege en DBA worden niet ondersteund. Lees de [bevoegdheden](concepts-limits.md#privileges--data-manipulation-support) in het artikel beperkingen om te begrijpen wat er niet wordt ondersteund in de service.<br><br>
+> De invoeg toepassingen voor wacht woorden, zoals ' validate_password ' en ' caching_sha2_password ', worden niet ondersteund door de service.
 
 ## <a name="create-additional-admin-users"></a>Extra gebruikers met beheerders rechten maken
 1. De verbindings gegevens en de gebruikers naam van de beheerder ophalen.
@@ -55,7 +56,7 @@ Zodra de Azure Database for MariaDB-server is gemaakt, kunt u het eerste gebruik
    SHOW GRANTS FOR 'new_master_user'@'%';
    ```
 
-## <a name="create-database-users"></a>Database gebruikers maken
+## <a name="create-database-users"></a>Databasegebruikers maken
 
 1. De verbindings gegevens en de gebruikers naam van de beheerder ophalen.
    Voor verbinding met uw databaseserver moet u beschikken over de volledige servernaam en aanmeldingsreferenties van de beheerder. U kunt eenvoudig de server naam en aanmeldings gegevens vinden op de pagina **overzicht** van de server of op de pagina **eigenschappen** in de Azure Portal. 
@@ -90,6 +91,10 @@ Zodra de Azure Database for MariaDB-server is gemaakt, kunt u het eerste gebruik
    mysql --host mydemoserver.mariadb.database.azure.com --database testdb --user db_user@mydemoserver -p
    ```
    Zie MariaDB-documentatie voor Gebruikersaccountbeheer, [syntaxis](https://mariadb.com/kb/en/library/grant/)voor [gebruikers](https://mariadb.com/kb/en/library/user-account-management/)en [bevoegdheden](https://mariadb.com/kb/en/library/grant/#privilege-levels)voor meer informatie over het beheer van gebruikers accounts.
+
+## <a name="azure_superuser"></a>azure_superuser
+
+Alle Azure Database for MySQL-servers worden gemaakt met een gebruiker met de naam ' azure_superuser '. Dit is een systeem account dat door micro soft is gemaakt voor het beheren van de server voor het uitvoeren van bewaking, back-ups en andere regel matig onderhoud. Engineers van de oproep kunnen dit account ook gebruiken om toegang te krijgen tot de server tijdens een incident met certificaat verificatie en moeten toegang aanvragen met Just-in-time (JIT)-processen.
 
 ## <a name="next-steps"></a>Volgende stappen
 Open de firewall voor de IP-adressen van de computers van de nieuwe gebruikers zodat ze verbinding kunnen maken: [Azure database for MariaDB firewall regels maken en beheren met behulp van de Azure Portal](howto-manage-firewall-portal.md)  

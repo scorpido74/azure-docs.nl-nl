@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 78d707c0b5afd745ae805c9513243f3791d47c60
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: dd755e1bc220d61aa540a0e7da9e3f174bde9d76
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654749"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652921"
 ---
 # <a name="lsv2-series"></a>Lsv2-serie
 
@@ -25,17 +25,14 @@ De Lsv2-serie biedt een hoge door Voer, lage latentie, rechtstreeks toegewezen l
 >
 > Zie prestaties optimaliseren voor de virtuele machines uit de Lsv2-serie voor [Windows](../virtual-machines/windows/storage-performance.md) of [Linux](../virtual-machines/linux/storage-performance.md)voor meer informatie.  
 
-ACU: 150-175
-
-Bursting: ondersteund
-
-Premium Storage: ondersteund
-
-Premium Storage caching: niet ondersteund
-
-Livemigratie: niet ondersteund
-
-Updates voor het behouden van geheugen: niet ondersteund
+[ACU](acu.md): 150-175<br>
+[Premium Storage](premium-storage-performance.md): ondersteund<br>
+[Premium Storage caching](premium-storage-performance.md): niet ondersteund<br>
+[Livemigratie](maintenance-and-updates.md): niet ondersteund<br>
+[Updates](maintenance-and-updates.md)voor het behouden van geheugen: niet ondersteund<br>
+[Ondersteuning](generation-2.md)voor het genereren van vm's: generatie 1 en 2<br>
+Bursting: ondersteund<br>
+<br>
 
 | Grootte | vCPU | Geheugen (GiB) | Tijdelijke schijf<sup>1</sup> (GIB) | NVMe-schijven<sup>2</sup> | NVMe-schijf doorvoer<sup>3</sup> (IOPS lezen/Mbps) | Door Voer van gegevens schijf in cache (IOPs/MBps)<sup>4</sup> | Max. door Voer van gegevens schijf met burst uncache (IOPs/MBps)<sup>5</sup>| Maximum aantal gegevens schijven | Max. aantal NIC's | Verwachte netwerk bandbreedte (Mbps) |
 |---|---|---|---|---|---|---|---|---|---|---|
@@ -78,7 +75,7 @@ voor <sup>6</sup> vm's met meer dan 64 vcpu's is een van de volgende ondersteund
 
 ## <a name="other-sizes-and-information"></a>Andere grootten en informatie
 
-- [Algemeen doel](sizes-general.md)
+- [Algemeen gebruik](sizes-general.md)
 - [Geoptimaliseerd geheugen](sizes-memory.md)
 - [Geoptimaliseerde opslag](sizes-storage.md)
 - [Geoptimaliseerde GPU](sizes-gpu.md)

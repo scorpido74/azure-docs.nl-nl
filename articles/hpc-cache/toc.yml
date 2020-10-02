@@ -18,6 +18,8 @@
       items:
         - name: Opslagdoelen toevoegen
           href: hpc-cache-add-storage.md
+        - name: Pad naar naamruimte toevoegen
+          href: add-namespace-paths.md
         - name: Gegevens verplaatsen naar opslagdoelen (indien nodig)
           items:
             - name: Nieuwe Blob-opslag vooraf laden
@@ -42,8 +44,6 @@
   items:
     - name: Azure CLI
       href: /cli/azure/ext/hpc-cache/hpc-cache
-    - name: Azure PowerShell
-      href: /powershell/module/Az.HPCCache
 - name: Resources
   items:
     - name: Een ondersteuningsticket openen

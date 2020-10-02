@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 02/11/2020
 ms.topic: how-to
 manager: philmea
-ms.openlocfilehash: e7efda8efa27044168386e3ebbc557bf7fb74e8c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0802169898cad51e9a5d208e546a004f7ea7b3c0
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80157922"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653329"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>IoT Central beheren via de Azure Portal
 
@@ -41,7 +41,7 @@ Vul alle velden in het formulier in. Dit formulier is vergelijkbaar met het form
 
 ![IoT Central formulier maken](media/howto-manage-iot-central-from-portal/image6a.png)
 
-**Locatie** is de [geografie](https://azure.microsoft.com/global-infrastructure/geographies/) waar u de toepassing wilt maken. Normaal gesp roken kiest u de locatie die zich het dichtst in de buurt van uw apparaten bevindt om optimaal te pres teren. Azure IoT Central is momenteel beschikbaar in de geografi **Australia**, **Azië en Stille Oceaan**, **Europa**, **Verenigde Staten**, het **Verenigd Konink rijk**en **Japan** . Wanneer u een locatie hebt gekozen, kunt u de toepassing later niet meer naar een andere locatie verplaatsen.
+De **locatie** is de [geografie](https://azure.microsoft.com/global-infrastructure/geographies/) waar u de toepassing wilt maken. Gewoonlijk kiest u de locatie die zich het dichtst in de buurt van uw apparaten bevindt om de beste prestaties te verkrijgen. Azure IoT Central is momenteel beschikbaar in de geografi **Australia**, **Azië en Stille Oceaan**, **Europa**, **Verenigde Staten**, het **Verenigd Konink rijk**en **Japan** . Wanneer u een locatie hebt gekozen, kunt u de toepassing later niet meer naar een andere locatie verplaatsen.
 
 Nadat u alle velden hebt ingevuld, selecteert u **maken**.
 
@@ -56,13 +56,13 @@ Selecteer **alle resources** in de portal om aan de slag te gaan. Selecteer **ve
 
 Als u naar de toepassing wilt navigeren, selecteert u de **IOT Central toepassings-URL**:
 
-![Beheer Portal: resource beheer](media/howto-manage-iot-central-from-portal/image3.png)
+![Scherm opname van de pagina ' overzicht ' met de ' IoT Central-toepassings-URL ' gemarkeerd.](media/howto-manage-iot-central-from-portal/image3.png)
 
 Als u de toepassing wilt verplaatsen naar een andere resource groep, selecteert u **wijzigen** naast de resource groep. Kies op de pagina **resources verplaatsen** de resource groep waar u deze toepassing naartoe wilt verplaatsen:
 
-![Beheer Portal: resource beheer](media/howto-manage-iot-central-from-portal/image4a.png)
+![Scherm opname waarin de pagina overzicht wordt weer gegeven met de ' resource groep (wijzigen) ' gemarkeerd.](media/howto-manage-iot-central-from-portal/image4a.png)
 
-Als u de toepassing wilt verplaatsen naar een ander abonnement, selecteert u **wijzigen** naast het abonnement. Kies op de pagina **resources verplaatsen** het abonnement waarnaar u deze toepassing wilt verplaatsen:
+Als u de toepassing wilt verplaatsen naar een ander abonnement, selecteert u  **wijzigen** naast het abonnement. Kies op de pagina **resources verplaatsen** het abonnement waarnaar u deze toepassing wilt verplaatsen:
 
 ![Beheer Portal: resource beheer](media/howto-manage-iot-central-from-portal/image5a.png)
 

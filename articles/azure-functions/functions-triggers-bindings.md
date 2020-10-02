@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: ddcf6758c8c648678c69070fa5b65ae6c4947018
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: e00fd3d1dac0a18ac7f7377e08ae8d20ae132c56
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252688"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652608"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Concepten van Azure Functions-triggers en -bindingen
 
@@ -33,7 +33,7 @@ Bekijk de volgende voor beelden van hoe u verschillende functies kunt implemente
 |De Event Grid wordt gebruikt voor het lezen van een afbeelding van Blob Storage en een document van Cosmos DB om een e-mail bericht te verzenden. | Event Grid | Blob Storage en Cosmos DB | SendGrid |
 | Een webhook die gebruikmaakt van Microsoft Graph om een Excel-werk blad bij te werken. | HTTP | *Geen* | Microsoft Graph |
 
-<sup>\*</sup>Vertegenwoordigt verschillende wacht rijen
+<sup>\*</sup> Vertegenwoordigt verschillende wacht rijen
 
 Deze voor beelden zijn niet volledig, maar zijn bedoeld om te laten zien hoe u triggers en bindingen samen kunt gebruiken.
 
@@ -67,17 +67,27 @@ Andere opties voor `dataType` zijn `stream` en `string` .
 
 Alle triggers en bindingen hebben een `direction` eigenschap in de [function.jsvoor](./functions-reference.md) het volgende bestand:
 
-- Voor triggers is de richting altijd`in`
-- Invoer-en uitvoer bindingen gebruiken `in` en`out`
+- Voor triggers is de richting altijd `in`
+- Invoer-en uitvoer bindingen gebruiken `in` en `out`
 - Sommige bindingen bieden ondersteuning voor een speciale richting `inout` . Als u gebruikt `inout` , is alleen de **Geavanceerde editor** beschikbaar via het tabblad **integreren** in de portal.
 
 Wanneer u [kenmerken in een klassen bibliotheek](functions-dotnet-class-library.md) gebruikt om triggers en bindingen te configureren, wordt de richting in een kenmerk-constructor of afgeleid van het parameter type gegeven.
+
+## <a name="add-bindings-to-a-function"></a>Bindingen aan een functie toevoegen
+
+U kunt uw functie verbinden met andere services met behulp van invoer-of uitvoer bindingen. Voeg een binding toe door de specifieke definities aan uw functie toe te voegen. Zie [bindingen toevoegen aan een bestaande functie in azure functions](add-bindings-existing-function.md)voor meer informatie.  
 
 ## <a name="supported-bindings"></a>Ondersteunde bindingen
 
 [!INCLUDE [Full bindings table](../../includes/functions-bindings.md)]
 
 Zie [ondersteunde talen](supported-languages.md)voor informatie over welke bindingen in Preview zijn of die zijn goedgekeurd voor productie gebruik.
+
+## <a name="bindings-code-examples"></a>Code voorbeelden voor bindingen
+
+Gebruik de volgende tabel om voor beelden te vinden van specifieke bindings typen die laten zien hoe u met bindingen kunt werken in uw-functies. Kies eerst het tabblad taal dat overeenkomt met uw project. 
+
+[!INCLUDE [functions-bindings-code-example-chooser](../../includes/functions-bindings-code-example-chooser.md)]
 
 ## <a name="resources"></a>Resources
 - [Expressies en patronen binden](./functions-bindings-expressions-patterns.md)

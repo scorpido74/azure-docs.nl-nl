@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: d6ad132513c2ec61dd5a290da1a88e50f0ad6eb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be61a6e75c4aa9b5714ffbf3b4f19656b347c493
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510364"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91653244"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 en 8600 migratie naar Azure File Sync
 
@@ -119,7 +119,7 @@ Nu u fase 1 hebt voltooid, hebt u het volgende gedaan:
 
 :::row:::
     :::column:::
-        ![Een afbeelding die een deel van de eerder overzichts afbeelding illustreert en die de aandacht van deze subsectie van het artikel kan richten.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-2.png)
+        ![Afbeelding waarin wordt weer gegeven dat het nu gaat om een virtuele machine in te richten en de kopie van het volume (of meerdere) beschikbaar te maken voor de virtuele machine via iSCSI.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-2.png)
     :::column-end:::
     :::column:::
         Nadat de eerste kloon beschikbaar is op het virtuele apparaat StorSimple 8020 in azure, is het nu tijd om een virtuele machine in te richten en de kopie van het volume (of meerdere) beschikbaar te maken voor de VM via iSCSI.
@@ -175,7 +175,7 @@ Ga alleen verder met fase 3 wanneer u deze stappen hebt uitgevoerd voor alle vol
 
 :::row:::
     :::column:::
-        ![Een afbeelding die een deel van de eerder overzichts afbeelding illustreert en die de aandacht van deze subsectie van het artikel kan richten.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-3.png)
+        ![Illustratie van de nood zaak om een aantal Azure-bestands shares te bepalen en in te richten en een Windows Server on-premises te maken als een StorSimple-apparaat vervangen.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-3.png)
     :::column-end:::
     :::column:::
         In deze fase gaat u een aantal Azure-bestands shares vaststellen en inrichten, een on-premises Windows-Server maken als een StorSimple-apparaat en de server configureren voor Azure File Sync. 
@@ -225,7 +225,7 @@ Uw geregistreerde on-premises Windows-Server moet gereed zijn en verbonden zijn 
 
 :::row:::
     :::column:::
-        ![Een afbeelding die een deel van de eerder overzichts afbeelding illustreert en die de aandacht van deze subsectie van het artikel kan richten.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-4.png)
+        ![Illustratie van de manier waarop u de virtuele machine die is verbonden via Azure File Sync krijgt en een eerste afronding start van het verplaatsen van bestanden van uw StorSimple volume-kloon (s).](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-4.png)
     :::column-end:::
     :::column:::
         Deze fase heeft betrekking op uw Azure-VM met de iSCSI-gekoppelde, eerste volume-kloon (en). Tijdens deze fase krijgt u de virtuele machine die is verbonden via Azure File Sync en begint u een eerste ronde van het verplaatsen van bestanden van uw StorSimple volume-kloon (s).
@@ -253,9 +253,9 @@ Tijdens dit migratie proces moet u verschillende volume klonen koppelen aan uw V
 > Om dit te laten werken, moet een register sleutel op de server worden ingesteld voordat Azure File Sync is geconfigureerd.
 
 1. Maak een nieuwe map op het systeem station van de virtuele machine. Azure File Sync gegevens moeten worden bewaard in plaats van op de gekoppelde volume klonen. Bijvoorbeeld: `"C:\syncmetadata"`
-2. Open regedit en ga naar de volgende register component:`HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync`
+2. Open regedit en ga naar de volgende register component: `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync`
 3. Maak een nieuwe sleutel van het type teken reeks met de naam: ***MetadataRootPath***
-4. Stel het volledige pad naar de map die u hebt gemaakt op het systeem volume in, bijvoorbeeld:`C:\syncmetadata"`
+4. Stel het volledige pad naar de map die u hebt gemaakt op het systeem volume in, bijvoorbeeld: `C:\syncmetadata"`
 
 ### <a name="configure-azure-file-sync-on-the-azure-vm"></a>Azure File Sync op de Azure-VM configureren
 
@@ -281,7 +281,7 @@ Vanuit de praktijk kunnen we aannemen dat de band breedte, dus de werkelijke geg
 
 :::row:::
     :::column:::
-        ![Een afbeelding die een deel van de eerder overzichts afbeelding illustreert en die de aandacht van deze subsectie van het artikel kan richten.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-5.png)
+        ![Afbeelding die laat zien hoe downtime kan worden geminimaliseerd door meerdere volume klonen te gebruiken en te vertellen wanneer de synchronisatie is voltooid.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-5.png)
     :::column-end:::
     :::column:::
         Zoals beschreven in de vorige fase kan de initiële synchronisatie lang duren. Uw gebruikers en toepassingen hebben nog steeds toegang tot het on-premises StorSimple 8100-of 8600-apparaat. Dit betekent dat wijzigingen worden samengevoegd en dat elke dag een grotere Delta tussen de Live gegevens en de eerste volume kloon is, u momenteel een migratie, formulier. In deze sectie leert u hoe u de downtime kunt minimaliseren door meerdere volume klonen te gebruiken en te vertellen wanneer de synchronisatie is voltooid.
@@ -338,7 +338,7 @@ Op dit moment zijn er twee verschillen tussen uw on-premises Windows-Server en h
 1. Mogelijk zijn er bestanden die niet zijn gesynchroniseerd (Zie **PerItemErrors** in het bovenstaande gebeurtenis logboek)
 2. Het StorSimple-apparaat heeft een gevulde cache vs. de Windows-Server alleen een naam ruimte zonder bestands inhoud lokaal opgeslagen.
 
-![Een afbeelding die een deel van de eerder overzichts afbeelding illustreert en die de aandacht van deze subsectie van het artikel kan richten.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-6.png)
+![Illustratie van de manier waarop de cache van de Windows-Server is ingesteld op de status van het apparaat en ervoor zorgt dat er geen bestanden achterblijven met een laatste RoboCopy.](media/storage-files-migration-storsimple-shared/storsimple-8000-migration-phase-6.png)
 
 We kunnen de cache van de Windows-Server tot de status van het apparaat halen en ervoor zorgen dat er geen bestanden achterblijven met een laatste RoboCopy.
 

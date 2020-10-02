@@ -3,12 +3,12 @@ title: Gids voor de installatie van een versneld leslokaal Lab voor Azure Lab Se
 description: Deze hand leiding helpt Lab-makers snel een Lab-account in te stellen voor gebruik op hun school.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: ad1a679c556316c2d23a713ffa5ac5dfe86cce0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 510aa97a0a47e62f627203495c601bb2538e19ad
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445573"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652207"
 ---
 # <a name="classroom-lab-setup-guide"></a>Setup-hand leiding voor klas Lab
 
@@ -60,9 +60,6 @@ Lab Services maakt gebruik van een prijs model voor betalen per gebruik, wat bet
 - **Planning**: met een schema kunt u automatisch bepalen wanneer de virtuele machines van uw Labs worden gestart en afgesloten.
 - **Quotum**: het quotum bepaalt het aantal uren dat studenten buiten de geplande uren toegang hebben tot een virtuele machine. Als het quotum is bereikt terwijl een student het gebruikt, wordt de virtuele machine automatisch afgesloten. De student kan de virtuele machine niet opnieuw opstarten, tenzij het quotum is verhoogd.
 - **Automatisch afsluiten**: wanneer deze optie is ingeschakeld, worden Windows-vm's na een bepaalde periode automatisch afgesloten nadat een student is losgekoppeld van een Remote Desktop Protocol-sessie (RDP). Deze instelling is standaard uitgeschakeld.  
-
-    > [!NOTE]
-    > Deze instelling bestaat momenteel alleen voor Windows.
 
 ### <a name="how-will-students-save-their-work"></a>Hoe kunnen studenten hun werk opslaan?
 

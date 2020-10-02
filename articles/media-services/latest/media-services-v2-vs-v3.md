@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 08/31/2020
+ms.date: 10/01/2020
 ms.author: inhenkel
-ms.openlocfilehash: 061ae48de9a73270ed499282c9fc9a4f8f1dba90
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 515379a4207a582b441d132b1c28ff11bc83c714
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89298943"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651749"
 ---
 # <a name="media-services-v2-vs-v3"></a>Media Services v2 versus v3
 
@@ -30,18 +30,17 @@ In dit artikel worden wijzigingen beschreven die in Azure Media Services v3 zijn
 
 ## <a name="general-changes-from-v2"></a>Algemene wijzigingen van v2
 
-* Voor assets die zijn gemaakt met v3, Media Services alleen de [Azure storage opslag versleuteling aan de server zijde](../../storage/common/storage-service-encryption.md)ondersteunt.
-    * U kunt v3-Api's gebruiken met assets die zijn gemaakt met v2-Api's met de [opslag versleuteling](../previous/media-services-rest-storage-encryption.md) (AES 256) van Media Services.
-    * U kunt geen nieuwe assets maken met de verouderde AES 256- [opslag versleuteling](../previous/media-services-rest-storage-encryption.md) met behulp van v3-api's.
-* De eigenschappen van het [activum](assets-concept.md)in v3 verschillen van v2, Zie [hoe de eigenschappen worden toegewezen](#map-v3-asset-properties-to-v2).
+* Zie de sectie [activa-specifieke wijzigingen](#asset-specific-changes) voor activa die gerelateerd zijn.
 * De V3 Sdk's zijn nu losgekoppeld van de opslag-SDK, waarmee u meer controle hebt over de versie van de opslag-SDK die u wilt gebruiken en voor komt versie problemen. 
 * In de V3-Api's bevinden alle coderings bitsnelheden zich in bits per seconde. Dit wijkt af van de v2-Media Encoder Standard voor instellingen. De bitrate in v2 wordt bijvoorbeeld opgegeven als 128 (kbps), maar in v3 zou 128000 (bits/seconde) zijn. 
 * Entiteiten AssetFiles, AccessPolicies en IngestManifests bestaan niet in v3.
-* De eigenschap IAsset. ParentAssets bestaat niet in v3.
 * ContentKeys is geen entiteit meer, het is nu een eigenschap van de streaming-Locator.
 * Event Grid-ondersteuning vervangt NotificationEndpoints.
-* De naam van de volgende entiteiten is gewijzigd
-    * Taak uitvoer vervangt taak en maakt nu deel uit van een taak.
+* De naam van de volgende entiteiten is gewijzigd:
+
+   * V3 JobOutput vervangt v2 taak en maakt nu deel uit van een taak. Invoer en uitvoer zijn nu op taak niveau. Zie [een taak invoer maken op basis van een lokaal bestand](job-input-from-local-file-how-to.md)voor meer informatie. 
+
+       Als u de geschiedenis van de voortgang van de taak wilt weer geven, luistert u naar de EventGrid-gebeurtenissen. Zie [Handling Event grid Events](reacting-to-media-services-events.md)(Engelstalig) voor meer informatie.
     * De streaming-Locator vervangt Locator.
     * Live gebeurtenis vervangt kanaal.<br/>Facturering van Live-gebeurtenissen is gebaseerd op Live Channel meters. Zie [facturering](live-event-states-billing.md) en [prijzen](https://azure.microsoft.com/pricing/details/media-services/)voor meer informatie.
     * Live uitvoer vervangt programma.
@@ -89,6 +88,12 @@ De V3 API heeft de volgende functie hiaten ten opzichte van de v2 API. Het sluit
 
 ## <a name="asset-specific-changes"></a>Activa-specifieke wijzigingen
 
+* Voor assets die zijn gemaakt met v3, Media Services alleen de [Azure storage opslag versleuteling aan de server zijde](../../storage/common/storage-service-encryption.md)ondersteunt.
+    * U kunt v3-Api's gebruiken met assets die zijn gemaakt met v2-Api's met de [opslag versleuteling](../previous/media-services-rest-storage-encryption.md) (AES 256) van Media Services.
+    * U kunt geen nieuwe assets maken met de verouderde AES 256- [opslag versleuteling](../previous/media-services-rest-storage-encryption.md) met behulp van v3-api's.
+* De eigenschappen van het [activum](assets-concept.md)in v3 verschillen van v2, Zie [hoe de eigenschappen worden toegewezen](#map-v3-asset-properties-to-v2).
+* De eigenschap IAsset. ParentAssets bestaat niet in v3.
+
 ### <a name="map-v3-asset-properties-to-v2"></a>V3-Asset-eigenschappen toewijzen aan v2
 
 In de volgende tabel ziet u hoe de eigenschappen van het [element](/rest/api/media/assets/createorupdate#asset)in v3 worden toegewezen aan de eigenschappen van het element in v2.
@@ -124,7 +129,7 @@ Ter bescherming van uw assets op rest moeten de activa worden versleuteld door d
 
 In de volgende tabel ziet u de code verschillen tussen v2 en v3 voor algemene scenario's.
 
-|Scenario|V2-API|V3-API|
+|Scenario|v2-API|V3-API|
 |---|---|---|
 |Een Asset maken en een bestand uploaden |[v2 .NET-voor beeld](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L113)|[v3 .NET-voor beeld](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L169)|
 |Een taak indienen|[v2 .NET-voor beeld](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L146)|[v3 .NET-voor beeld](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L298)<br/><br/>Laat zien hoe u eerst een trans formatie maakt en vervolgens een taak verzendt.|

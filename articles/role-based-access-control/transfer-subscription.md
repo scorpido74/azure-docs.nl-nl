@@ -1,5 +1,5 @@
 ---
-title: Een Azure-abonnement overdragen naar een andere Azure AD-Directory (preview)
+title: Een Azure-abonnement overdragen naar een andere Azure AD-adres lijst
 description: Meer informatie over het overdragen van een Azure-abonnement en bekende gerelateerde resources naar een andere Azure Active Directory-Directory (Azure AD).
 services: active-directory
 author: rolyon
@@ -10,19 +10,14 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 08/31/2020
 ms.author: rolyon
-ms.openlocfilehash: ab004c11b46428c5fad28177b0d94edc04b95654
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 6d0c0333186655d4f105337021164814453ab47a
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400541"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652381"
 ---
-# <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory-preview"></a>Een Azure-abonnement overdragen naar een andere Azure AD-Directory (preview)
-
-> [!IMPORTANT]
-> Volg deze stappen om een abonnement over te dragen naar een andere Azure AD-Directory, momenteel beschikbaar als open bare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
-> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+# <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Een Azure-abonnement overdragen naar een andere Azure AD-adres lijst
 
 Organisaties kunnen verschillende Azure-abonnementen hebben. Elk abonnement is gekoppeld aan een bepaalde Azure Active Directory-Directory (Azure AD). Als u het beheer eenvoudiger wilt maken, kunt u een abonnement overdragen naar een andere Azure AD-adres lijst. Wanneer u een abonnement overbrengt naar een andere Azure AD-adres lijst, worden sommige resources niet overgebracht naar de doel directory. Alle roltoewijzingen en aangepaste rollen in azure op rollen gebaseerd toegangs beheer (Azure RBAC) worden bijvoorbeeld **permanent** verwijderd uit de bronmap en worden niet overgebracht naar de doel directory.
 
@@ -91,7 +86,7 @@ Verschillende Azure-resources hebben een afhankelijkheid van een abonnement of e
 
 Als u deze stappen wilt uitvoeren, hebt u het volgende nodig:
 
-- [Bash in azure Cloud shell](/azure/cloud-shell/overview) of [Azure cli](https://docs.microsoft.com/cli/azure)
+- [Bash in azure Cloud shell](/azure/cloud-shell/overview) of [Azure cli](/cli/azure)
 - Account beheerder van het abonnement dat u wilt overdragen in de bron directory
 - De rol van [eigenaar](built-in-roles.md#owner) in de doel directory
 
@@ -101,13 +96,13 @@ Als u deze stappen wilt uitvoeren, hebt u het volgende nodig:
 
 1. Meld u als beheerder aan bij Azure.
 
-1. Een lijst met uw abonnementen ophalen met de opdracht [AZ account list](/cli/azure/account#az-account-list) .
+1. Een lijst met uw abonnementen ophalen met de opdracht [AZ account list](/cli/azure/account#az_account_list) .
 
     ```azurecli
     az account list --output table
     ```
 
-1. Gebruik [AZ account set](https://docs.microsoft.com/cli/azure/account#az-account-set) om het actieve abonnement in te stellen dat u wilt overdragen.
+1. Gebruik [AZ account set](/cli/azure/account#az_account_set) om het actieve abonnement in te stellen dat u wilt overdragen.
 
     ```azurecli
     az account set --subscription "Marketing"
@@ -115,9 +110,9 @@ Als u deze stappen wilt uitvoeren, hebt u het volgende nodig:
 
 ### <a name="install-the-resource-graph-extension"></a>De resource-Graph-extensie installeren
 
- Met de resource grafiek extensie kunt u de opdracht [AZ Graph](https://docs.microsoft.com/cli/azure/ext/resource-graph/graph) gebruiken om te zoeken naar resources die worden beheerd door Azure Resource Manager. U gebruikt deze opdracht in latere stappen.
+ Met de resource grafiek extensie kunt u de opdracht [AZ Graph](/cli/azure/ext/resource-graph/graph) gebruiken om te zoeken naar resources die worden beheerd door Azure Resource Manager. U gebruikt deze opdracht in latere stappen.
 
-1. Gebruik [AZ Extension List](https://docs.microsoft.com/cli/azure/extension#az-extension-list) om te zien of de *resource-Graph-* extensie is geïnstalleerd.
+1. Gebruik [AZ Extension List](/cli/azure/extension#az_extension_list) om te zien of de *resource-Graph-* extensie is geïnstalleerd.
 
     ```azurecli
     az extension list
@@ -131,7 +126,7 @@ Als u deze stappen wilt uitvoeren, hebt u het volgende nodig:
 
 ### <a name="save-all-role-assignments"></a>Alle roltoewijzingen opslaan
 
-1. Gebruik [AZ Role Assignment List](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-list) om alle roltoewijzingen (inclusief overgenomen roltoewijzingen) weer te geven.
+1. Gebruik [AZ Role Assignment List](/cli/azure/role/assignment#az_role_assignment_list) om alle roltoewijzingen (inclusief overgenomen roltoewijzingen) weer te geven.
 
     Om het gemakkelijker te maken om de lijst te bekijken, kunt u de uitvoer exporteren als JSON, TSV of een tabel. Zie roltoewijzingen weer geven [met behulp van Azure RBAC en Azure cli](role-assignments-list-cli.md)voor meer informatie.
 
@@ -149,7 +144,7 @@ Als u deze stappen wilt uitvoeren, hebt u het volgende nodig:
 
 ### <a name="save-custom-roles"></a>Aangepaste rollen opslaan
 
-1. Gebruik de [lijst AZ Role definition](https://docs.microsoft.com/cli/azure/role/definition#az-role-definition-list) om uw aangepaste rollen weer te geven. Zie [aangepaste Azure-rollen maken of bijwerken met behulp van Azure cli](custom-roles-cli.md)voor meer informatie.
+1. Gebruik de [lijst AZ Role definition](/cli/azure/role/definition#az_role_definition_list) om uw aangepaste rollen weer te geven. Zie [aangepaste Azure-rollen maken of bijwerken met behulp van Azure cli](custom-roles-cli.md)voor meer informatie.
 
     ```azurecli
     az role definition list --custom-role-only true --output json --query '[].{roleName:roleName, roleType:roleType}'
@@ -193,7 +188,7 @@ Beheerde identiteiten worden niet bijgewerkt wanneer een abonnement wordt overge
 
 1. Bekijk de [lijst met Azure-Services die beheerde identiteiten ondersteunen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md) om te weten waar u mogelijk beheerde identiteiten gebruikt.
 
-1. Gebruik [AZ AD SP List](/cli/azure/identity?view=azure-cli-latest#az-identity-list) om uw door het systeem toegewezen en door de gebruiker toegewezen beheerde identiteiten weer te geven.
+1. Gebruik [AZ AD SP List](/cli/azure/ad/sp#az_ad_sp_list) om uw door het systeem toegewezen en door de gebruiker toegewezen beheerde identiteiten weer te geven.
 
     ```azurecli
     az ad sp list --all --filter "servicePrincipalType eq 'ManagedIdentity'"
@@ -207,7 +202,7 @@ Beheerde identiteiten worden niet bijgewerkt wanneer een abonnement wordt overge
     | `alternativeNames` de eigenschap omvat niet `isExplicit` | Systeem toegewezen |
     | `alternativeNames` eigenschap bevat `isExplicit=True` | Gebruiker toegewezen |
 
-    U kunt ook [AZ ID List](https://docs.microsoft.com/cli/azure/identity#az-identity-list) gebruiken om alleen door de gebruiker toegewezen beheerde identiteiten te vermelden. Zie [een door de gebruiker toegewezen beheerde identiteit maken, weer geven of verwijderen met behulp van de Azure cli](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)voor meer informatie.
+    U kunt ook [AZ ID List](/cli/azure/identity#az_identity_list) gebruiken om alleen door de gebruiker toegewezen beheerde identiteiten te vermelden. Zie [een door de gebruiker toegewezen beheerde identiteit maken, weer geven of verwijderen met behulp van de Azure cli](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)voor meer informatie.
 
     ```azurecli
     az identity list
@@ -224,7 +219,7 @@ Wanneer u een sleutel kluis maakt, wordt deze automatisch gebonden aan de standa
 > [!WARNING]
 > Als u versleuteling op rest gebruikt voor een resource, zoals een opslag account of SQL database, die een afhankelijkheid heeft van een sleutel kluis die zich **niet** in hetzelfde abonnement bevindt dat wordt overgedragen, kan dit leiden tot een onherstelbaar scenario. Als u deze situatie hebt, moet u stappen ondernemen voor het gebruik van een andere sleutel kluis of het tijdelijk uitschakelen van door de klant beheerde sleutels om dit onherstelbare scenario te voor komen.
 
-- Als u een sleutel kluis hebt, gebruikt u [AZ Key kluis show](https://docs.microsoft.com/cli/azure/keyvault#az-keyvault-show) om het toegangs beleid weer te geven. Zie [een Key Vault toegangs beleid toewijzen](../key-vault/general/assign-access-policy-cli.md)voor meer informatie.
+- Als u een sleutel kluis hebt, gebruikt u [AZ Key kluis show](/cli/azure/keyvault#az_keyvault_show) om het toegangs beleid weer te geven. Zie [een Key Vault toegangs beleid toewijzen](../key-vault/general/assign-access-policy-cli.md)voor meer informatie.
 
     ```azurecli
     az keyvault show --name MyKeyVault
@@ -232,7 +227,7 @@ Wanneer u een sleutel kluis maakt, wordt deze automatisch gebonden aan de standa
 
 ### <a name="list-azure-sql-databases-with-azure-ad-authentication"></a>Azure SQL-data bases weer geven met Azure AD-verificatie
 
-- Gebruik [AZ SQL Server AD-admin List](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-list) en de [AZ Graph](https://docs.microsoft.com/cli/azure/ext/resource-graph/graph) extension om te zien of u Azure SQL-data bases gebruikt met Azure AD-verificatie integratie ingeschakeld. Zie [Configure and manage Azure Active Directory Authentication with SQL](../azure-sql/database/authentication-aad-configure.md)(Engelstalig) voor meer informatie.
+- Gebruik [AZ SQL Server AD-admin List](/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_list) en de [AZ Graph](/cli/azure/ext/resource-graph/graph) extension om te zien of u Azure SQL-data bases gebruikt met Azure AD-verificatie integratie ingeschakeld. Zie [Configure and manage Azure Active Directory Authentication with SQL](../azure-sql/database/authentication-aad-configure.md)(Engelstalig) voor meer informatie.
 
     ```azurecli
     az sql server ad-admin list --ids $(az graph query -q 'resources | where type == "microsoft.sql/servers" | project id' -o tsv | cut -f1)
@@ -248,13 +243,13 @@ Wanneer u een sleutel kluis maakt, wordt deze automatisch gebonden aan de standa
 
 ### <a name="list-other-known-resources"></a>Andere bekende bronnen weer geven
 
-1. Gebruik [AZ account show](https://docs.microsoft.com/cli/azure/account#az-account-show) om uw abonnements-id op te halen.
+1. Gebruik [AZ account show](/cli/azure/account#az_account_show) om uw abonnements-id op te halen.
 
     ```azurecli
     subscriptionId=$(az account show --query id | sed -e 's/^"//' -e 's/"$//')
     ```
 
-1. Gebruik de [AZ-grafiek](https://docs.microsoft.com/cli/azure/ext/resource-graph/graph) extensie om andere Azure-resources met bekende Azure AD-adreslijst afhankelijkheden weer te geven.
+1. Gebruik de [AZ-grafiek](/cli/azure/ext/resource-graph/graph) extensie om andere Azure-resources met bekende Azure AD-adreslijst afhankelijkheden weer te geven.
 
     ```azurecli
     az graph query -q \
@@ -286,13 +281,13 @@ In deze stap brengt u het abonnement over van de bron directory naar de doel dir
 
     Alleen de gebruiker in het nieuwe account die de overdrachts aanvraag heeft geaccepteerd, heeft toegang tot de resources beheren.
 
-1. Een lijst met uw abonnementen ophalen met de opdracht [AZ account list](https://docs.microsoft.com/cli/azure/account#az-account-list) .
+1. Een lijst met uw abonnementen ophalen met de opdracht [AZ account list](/cli/azure/account#az_account_list) .
 
     ```azurecli
     az account list --output table
     ```
 
-1. Gebruik [AZ account set](https://docs.microsoft.com/cli/azure/account#az-account-set) om het actieve abonnement in te stellen dat u wilt gebruiken.
+1. Gebruik [AZ account set](/cli/azure/account#az_account_set) om het actieve abonnement in te stellen dat u wilt gebruiken.
 
     ```azurecli
     az account set --subscription "Contoso"
@@ -300,7 +295,7 @@ In deze stap brengt u het abonnement over van de bron directory naar de doel dir
 
 ### <a name="create-custom-roles"></a>Aangepast rollen maken
         
-- Gebruik [AZ Role definition Create](https://docs.microsoft.com/cli/azure/role/definition#az-role-definition-create) om elke aangepaste rol te maken op basis van de bestanden die u eerder hebt gemaakt. Zie [aangepaste Azure-rollen maken of bijwerken met behulp van Azure cli](custom-roles-cli.md)voor meer informatie.
+- Gebruik [AZ Role definition Create](/cli/azure/role/definition#az_role_definition_create) om elke aangepaste rol te maken op basis van de bestanden die u eerder hebt gemaakt. Zie [aangepaste Azure-rollen maken of bijwerken met behulp van Azure cli](custom-roles-cli.md)voor meer informatie.
 
     ```azurecli
     az role definition create --role-definition <role_definition>
@@ -308,7 +303,7 @@ In deze stap brengt u het abonnement over van de bron directory naar de doel dir
 
 ### <a name="create-role-assignments"></a>Maak roltoewijzingen
 
-- Gebruik [AZ Role Assignment maken](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-create) om de roltoewijzingen voor gebruikers, groepen en service-principals te maken. Zie voor meer informatie [roltoewijzingen toevoegen of verwijderen met behulp van Azure RBAC en Azure cli](role-assignments-cli.md).
+- Gebruik [AZ Role Assignment maken](/cli/azure/role/assignment#az_role_assignment_create) om de roltoewijzingen voor gebruikers, groepen en service-principals te maken. Zie voor meer informatie [roltoewijzingen toevoegen of verwijderen met behulp van Azure RBAC en Azure cli](role-assignments-cli.md).
 
     ```azurecli
     az role assignment create --role <role_name_or_id> --assignee <assignee> --resource-group <resource_group>
@@ -324,7 +319,7 @@ In deze stap brengt u het abonnement over van de bron directory naar de doel dir
     | Virtuele-machineschaalsets | [Beheerde identiteiten voor Azure-resources configureren op een virtuele-machineschaalset met Azure CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vmss.md#system-assigned-managed-identity) |
     | Overige services | [Services die beheerde identiteiten voor Azure-resources ondersteunen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md) |
 
-1. Gebruik [AZ Role Assignment maken](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-create) om de roltoewijzingen te maken voor door het systeem toegewezen beheerde identiteiten. Zie [een beheerde identiteits toegang toewijzen aan een resource met behulp van Azure cli](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md)voor meer informatie.
+1. Gebruik [AZ Role Assignment maken](/cli/azure/role/assignment#az_role_assignment_create) om de roltoewijzingen te maken voor door het systeem toegewezen beheerde identiteiten. Zie [een beheerde identiteits toegang toewijzen aan een resource met behulp van Azure cli](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md)voor meer informatie.
 
     ```azurecli
     az role assignment create --assignee <objectid> --role '<role_name_or_id>' --scope <scope>
@@ -340,7 +335,7 @@ In deze stap brengt u het abonnement over van de bron directory naar de doel dir
     | Virtuele-machineschaalsets | [Beheerde identiteiten voor Azure-resources configureren op een virtuele-machineschaalset met Azure CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vmss.md#user-assigned-managed-identity) |
     | Overige services | [Services die beheerde identiteiten voor Azure-resources ondersteunen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)<br/>[Een door de gebruiker toegewezen beheerde identiteit maken, weer geven of verwijderen met behulp van de Azure CLI](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md) |
 
-1. Gebruik [AZ Role Assignment maken](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-create) om de roltoewijzingen voor door de gebruiker toegewezen beheerde identiteiten te maken. Zie [een beheerde identiteits toegang toewijzen aan een resource met behulp van Azure cli](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md)voor meer informatie.
+1. Gebruik [AZ Role Assignment maken](/cli/azure/role/assignment#az_role_assignment_create) om de roltoewijzingen voor door de gebruiker toegewezen beheerde identiteiten te maken. Zie [een beheerde identiteits toegang toewijzen aan een resource met behulp van Azure cli](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md)voor meer informatie.
 
     ```azurecli
     az role assignment create --assignee <objectid> --role '<role_name_or_id>' --scope <scope>

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 02/13/2019
 ms.author: duau
-ms.openlocfilehash: 8ac38c25821a9f636ac98903599ee7d3acfa5e17
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: ccbd9645ac7d331c06e528298b3a45a184c6cc49
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89395720"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91652224"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>Peering voor een ExpressRoute-circuit maken en wijzigen
 
@@ -60,12 +60,12 @@ In deze sectie leert u hoe u de micro soft-peering-configuratie voor een Express
 
    **Status van circuit provider: niet ingericht**
 
-   [![Scherm opname van de pagina overzicht voor het ExpressRoute-demo circuit met een rood vak met de status van de provider die is ingesteld op niet-ingericht.](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-m.png)](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-m-lightbox.png#lightbox)
+   [![Scherm afbeelding met de overzichts pagina voor het ExpressRoute-demo circuit met een rood vak waarin de provider status is ingesteld op niet-ingericht.](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-m.png)](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-m-lightbox.png#lightbox)
 
 
    **Status van circuit provider: ingericht**
 
-   [![Scherm opname van de pagina overzicht voor het ExpressRoute-demo circuit met een rood vak met de status van de provider die is ingesteld op ingericht.](./media/expressroute-howto-routing-portal-resource-manager/provisioned-m.png)](./media/expressroute-howto-routing-portal-resource-manager/provisioned-m-lightbox.png#lightbox)
+   [![Scherm afbeelding met de overzichts pagina voor het ExpressRoute-demo circuit met een rood vak waarin de provider status is ingesteld op ingericht.](./media/expressroute-howto-routing-portal-resource-manager/provisioned-m.png)](./media/expressroute-howto-routing-portal-resource-manager/provisioned-m-lightbox.png#lightbox)
 
 2. Configureer Microsoft-peering voor het circuit. Zorg ervoor dat u over de volgende informatie beschikt voordat u verder gaat.
 
