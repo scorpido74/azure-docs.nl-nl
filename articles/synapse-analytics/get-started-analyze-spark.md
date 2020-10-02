@@ -1,6 +1,6 @@
 ---
 title: 'Zelfstudie: aan de slag met het analyseren met behulp van Spark'
-description: In deze zelfstudie leert u de basisstappen voor het instellen en gebruiken van Azure Synapse Analytics.
+description: In deze zelfstudie leert u hoe u gegevens kunt analyseren met Apache Spark
 services: synapse-analytics
 author: saveenr
 ms.author: saveenr
@@ -9,16 +9,30 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 5c6b35c1d9f00cae8fc688569e3a491679900995
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ebcec3907e40a8ba58aab841cd788c58ec7a94fe
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87093479"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90017911"
 ---
 # <a name="analyze-with-apache-spark"></a>Analyseren met behulp van Apache Spark
 
+## <a name="analyze-nyc-taxi-data-in-blob-storage--using-spark"></a>NYC Taxi-gegevens analyseren in blob-opslag met Spark
+
 In deze zelfstudie leert u de basisstappen voor het laden en analyseren van gegevens met Apache Spark voor Azure Synapse.
+
+1. Klik in de hub **Data** onder **Gekoppeld** met de rechter muisknop op **Azure Blob Storage > Voorbeeldgegevenssets > nyc_tlc_yellow** en selecteer **Nieuw notebook SELECTEREN**
+1. Hiermee maakt u een nieuw notebook met de volgende code:
+    ```
+    from azureml.opendatasets import NycTlcYellow
+
+    data = NycTlcYellow()
+    data_df = data.to_spark_dataframe()
+    display(data_df.limit(10))
+    ```
+1. Kies in het notebook een Spark-groep in het menu **Koppelen aan**
+1. Klik op **Uitvoeren** op de cel
 
 ## <a name="load-the-nyc-taxi-data-into-the-spark-nyctaxi-database"></a>De gegevens van NYC-taxi laden in de Apache Spark-database nyctaxi
 

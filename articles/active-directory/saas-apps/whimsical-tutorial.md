@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/15/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: ee5fe4a856e75e9833b9d69dd24efd932f760a91
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 443cd6ce3805dbd5ebc250556c6d8ec28161f50e
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88523274"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658904"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-whimsical"></a>Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met Whimsical
 
@@ -35,9 +35,6 @@ U hebt het volgende nodig om aan de slag te gaan:
 * Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/) krijgen.
 * Whimsical-teamwerkruimte.
 
-> [!NOTE]
-> De id van deze toepassing is een vaste tekenreekswaarde zodat maar één exemplaar in één tenant kan worden geconfigureerd.
-
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
@@ -45,6 +42,9 @@ In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD 
 * Whimsical ondersteunt door **SP en IDP** geïnitieerde eenmalige aanmelding
 * Whimsical biedt ondersteuning voor **Just-In-Time**-inrichting van gebruikers
 * Zodra u Whimsical hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+
+> [!NOTE]
+> De id van deze toepassing is een vaste tekenreekswaarde zodat maar één instantie in één tenant kan worden geconfigureerd.
 
 ## <a name="adding-whimsical-from-the-gallery"></a>Whimsical toevoegen uit de galerie
 
@@ -57,7 +57,7 @@ Voor het configureren van de integratie van Whimsical in Azure AD moet u Whimsic
 1. Typ **Whimsical** in het zoekvak in de sectie **Toevoegen uit de galerie**.
 1. Selecteer **Whimsical** uit het resultatenvenster en voeg de app vervolgens toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-whimsical"></a>Eenmalige aanmelding van Azure AD configureren en testen voor Whimsical
+## <a name="configure-and-test-azure-ad-sso-for-whimsical"></a>Eenmalige aanmelding van Azure AD voor Whimsical configureren en testen
 
 Configureer en test eenmalige aanmelding van Azure AD met Whimsical met behulp van een testgebruiker met de naam **B.Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Whimsical.
 
@@ -169,5 +169,3 @@ Wanneer u op de tegel Whimsical in het toegangsvenster klikt, wordt u automatisc
 - [Probeer Whimsical met Azure AD](https://aad.portal.azure.com/)
 
 - [Wat is sessiebeheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
-- [Whimsical beveiligen met geavanceerde zichtbaarheid en besturingselementen](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

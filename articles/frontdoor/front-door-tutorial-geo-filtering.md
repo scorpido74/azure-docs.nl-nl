@@ -1,6 +1,6 @@
 ---
 title: 'Zelfstudie: WAF-beleid voor geofilters configureren - Azure Front Door'
-description: In deze zelfstudie leert u hoe u een beleid voor geofilters maakt en het beleid koppelt aan uw bestaande front-endhost van uw Front Door
+description: In deze zelfstudie leert u hoe u een beleid voor geofilters maakt en het beleid koppelt aan uw bestaande front-endhost van uw Front Door.
 services: frontdoor
 documentationcenter: ''
 author: duongau
@@ -9,45 +9,30 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/21/2019
+ms.date: 09/14/2020
 ms.author: duau
-ms.openlocfilehash: 31892232d5483bd2cb99d27c4672dbf347b904ef
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 20aa038e15b1ae5734ad6f463c6f450368617119
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399018"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90090024"
 ---
-# <a name="how-to-set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>WAF-beleid voor geofilters instellen voor uw Front Door
+# <a name="tutorial-how-to-set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>Zelfstudie: WAF-beleid voor geofilters instellen voor uw Front Door
 In deze zelfstudie leert u hoe u Azure PowerShell gebruikt om een voorbeeldbeleid voor geofilters te maken en het beleid koppelt aan uw bestaande front-endhost van uw Front Door. In dit voorbeeldbeleid voor geofilters worden aanvragen uit alle andere landen/regio's, met uitzondering van de Verenigde Staten, geblokkeerd.
 
-Als u nog geen abonnement op Azure hebt, maak dan nu een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+In deze zelfstudie leert u het volgende:
+> [!div class="checklist"]
+> - Overeenkomstvoorwaarde voor geofilters definiëren.
+> - Overeenkomstvoorwaarde voor geofilters toevoegen aan een regel.
+> - Regels toevoegen aan een beleid.
+> - WAF-beleid koppelen aan een front-endhost van Front Door.
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Vereisten
-Voordat u begint met het instellen van een beleid voor geofilters, stelt u uw PowerShell-omgeving in en maakt u een Front Door-profiel.
-### <a name="set-up-your-powershell-environment"></a>Uw PowerShell-omgeving instellen
-Azure PowerShell voorziet in een set van cmdlets die gebruikmaken van het [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)-model om uw Azure-resources te beheren. 
-
-U kunt [Azure PowerShell](https://docs.microsoft.com/powershell/azure/) op uw lokale computer installeren en in elke PowerShell-sessie gebruiken. Volg de instructies op de pagina om u aan te melden met uw Azure-referenties en Az PowerShell te installeren.
-
-#### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>Verbinding maken met Azure met een interactief dialoogvenster voor aanmelden
-```
-Install-Module -Name Az
-Connect-AzAccount
-```
-Zorg ervoor dat bij u de huidige versie van PowerShellGet is geïnstalleerd. Voer de onderstaande opdracht uit en open PowerShell opnieuw.
-
-```
-Install-Module PowerShellGet -Force -AllowClobber
-``` 
-#### <a name="install-azfrontdoor-module"></a>De AzureRM.FrontDoor-module installeren 
-
-```
-Install-Module -Name Az.FrontDoor
-```
-
-### <a name="create-a-front-door-profile"></a>Een Front Door-profiel maken
-Maak een Front Door-profiel door de instructies op te volgen in [Quickstart: Een Front Door-profiel maken](quickstart-create-front-door.md).
+* Voordat u begint met het instellen van een beleid voor geofilters, stelt u uw PowerShell-omgeving in en maakt u een Front Door-profiel.
+* Maak Front Door door de instructies op te volgen in [Quickstart: Een Front Door-profiel maken](quickstart-create-front-door.md).
 
 ## <a name="define-geo-filtering-match-condition"></a>Overeenkomstvoorwaarde voor geofilters definiëren
 
@@ -60,7 +45,6 @@ $nonUSGeoMatchCondition = New-AzFrontDoorWafMatchConditionObject `
 -NegateCondition $true `
 -MatchValue "US"
 ```
- 
 ## <a name="add-geo-filtering-match-condition-to-a-rule-with-action-and-priority"></a>Overeenkomstvoorwaarde voor geofilter toevoegen aan een regel met Actie en Prioriteit
 
 Maak vervolgens een CustomRule-object `nonUSBlockRule` op basis van de overeenkomstvoorwaarde, een Actie en een Prioriteit met behulp van [New-AzFrontDoorWafCustomRuleObject](/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject).  Een CustomRule kan meerdere overeenkomstvoorwaarden hebben.  In dit voorbeeld is Actie ingesteld op Blokkeren en is Prioriteit ingesteld op 1, de hoogste prioriteit.
@@ -73,31 +57,28 @@ $nonUSBlockRule = New-AzFrontDoorWafCustomRuleObject `
 -Action Block `
 -Priority 1
 ```
-
 ## <a name="add-rules-to-a-policy"></a>Regels toevoegen aan een beleid
 Zoek de naam van de resourcegroep die het Front Door-profiel bevat met behulp van `Get-AzResourceGroup`. Maak vervolgens een `geoPolicy`-beleidsobject met `nonUSBlockRule` met behulp van [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) in de opgegeven resourcegroep die het Front Door-profiel bevat. U moet een unieke naam opgeven voor het beleid voor geofilters. 
 
-In het onderstaande voorbeeld wordt de naam van de resourcegroep *myResourceGroupFD1* gebruikt in de veronderstelling dat u het Front Door-profiel hebt gemaakt met behulp van de instructies in het artikel [Quickstart: Een Front Door maken](quickstart-create-front-door.md). Vervang in het onderstaande voorbeeld de beleidsnaam *geoPolicyAllowUSOnly* door een unieke beleidsnaam.
+In het onderstaande voorbeeld wordt de naam van de resourcegroep *FrontDoorQS_rg0* gebruikt in de veronderstelling dat u het Front Door-profiel hebt gemaakt met behulp van de instructies in het artikel [Quickstart: Een Front Door maken](quickstart-create-front-door.md). Vervang in het onderstaande voorbeeld de beleidsnaam *geoPolicyAllowUSOnly* door een unieke beleidsnaam.
 
 ```
 $geoPolicy = New-AzFrontDoorWafPolicy `
 -Name "geoPolicyAllowUSOnly" `
--resourceGroupName myResourceGroupFD1 `
+-resourceGroupName FrontDoorQS_rg0 `
 -Customrule $nonUSBlockRule  `
 -Mode Prevention `
 -EnabledState Enabled
 ```
-
 ## <a name="link-waf-policy-to-a-front-door-frontend-host"></a>WAF-beleid koppelen aan een front-endhost van Front Door
 Koppel het WAF-beleidobject aan de bestaande front-endhost van Front Door en werk de eigenschappen van Front Door bij. 
 
 Als u dit wilt doen, haalt u eerst uw Front Door-object op met behulp van [Get-AzFrontDoor](/powershell/module/az.frontdoor/get-azfrontdoor). 
 
 ```
-$geoFrontDoorObjectExample = Get-AzFrontDoor -ResourceGroupName myResourceGroupFD1
+$geoFrontDoorObjectExample = Get-AzFrontDoor -ResourceGroupName FrontDoorQS_rg0
 $geoFrontDoorObjectExample[0].FrontendEndpoints[0].WebApplicationFirewallPolicyLink = $geoPolicy.Id
 ```
-
 Stel vervolgens de front-end-eigenschap WebApplicationFirewallPolicyLink in op de resourceId van de `geoPolicy`gebruikte [Set-AzFrontDoor](/powershell/module/az.frontdoor/set-azfrontdoor).
 
 ```
@@ -107,6 +88,15 @@ Set-AzFrontDoor -InputObject $geoFrontDoorObjectExample[0]
 > [!NOTE] 
 > U hoeft de eigenschap WebApplicationFirewallPolicyLink maar één keer in te stellen om een WAF-beleid te koppelen aan een front-endhost van Front Door. De volgende beleidsupdates worden automatisch toegepast op de front-endhost.
 
+## <a name="clean-up-resources"></a>Resources opschonen
+
+In de voorgaande stappen hebt u een geo-filterregel geconfigureerd die is gekoppeld aan een WAF-beleid. Vervolgens koppelde u het beleid aan een frontend-host van uw Front Door. Als u de geo-filterregel of het WAF-beleid niet meer nodig hebt, moet u eerst het beleid loskoppelen van de frontend-host voordat het WAF-beleid kan worden verwijderd.
+
+:::image type="content" source="media/front-door-geo-filtering/front-door-disassociate-policy.png" alt-text="WAF-beleid loskoppelen":::
+
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over [Web Application Firewall](waf-overview.md).
-- Lees hoe u [een Front Door maakt](quickstart-create-front-door.md).
+
+Ga verder met de volgende zelfstudie voor meer informatie over het configureren van een Web Application Firewall voor uw Front Door.
+
+> [!div class="nextstepaction"]
+> [Web Application Firewall en Front Door](front-door-waf.md)

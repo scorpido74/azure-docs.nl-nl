@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: 8917c73474b81ee76e6acdf8c6f274e962ee1215
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: b337065f125d12e309dd1f7fcc56c2af72b1c28c
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874228"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088354"
 ---
 # <a name="tutorial-get-started-with-log-analytics-queries"></a>Zelfstudie: Aan de slag met de Log Analytics-query's
 
@@ -42,7 +42,7 @@ Een *schema* is een verzameling tabellen die onder logische categorieën zijn ge
 
 De schematabellen worden weergegeven op het tabblad **Tabellen** van de Log Analytics-werkruimte. De tabellen bevatten kolommen, elk met een gegevenstype dat wordt aangegeven met het pictogram naast de naam van de kolom. De tabel **Event** bevat bijvoorbeeld tekstkolommen als **Computer** en numerieke kolommen als **EventCategory**.
 
-![Schema](media/get-started-portal/schema.png)
+![Schermopname van de pagina met logboeken in de Azure Portal met een nieuwe query, met nadruk op het deelvenster Tabellen met Computer en EventCategory.](media/get-started-portal/schema.png)
 
 ## <a name="write-and-run-basic-queries"></a>Eenvoudige query's schrijven en uitvoeren
 
@@ -120,7 +120,7 @@ Ga als volgt te werk als u de resultaten van de `Event`-query wilt filteren op *
    
 1. Selecteer **Filter**.
    
-   ![Filteren](media/get-started-portal/filter.png)
+   ![Schermopname van een tabel met resultaten met een contextmenu voor het filteren van resultaten op EventLevelName.](media/get-started-portal/filter.png)
 
 ## <a name="sort-group-and-select-columns"></a>Kolommen sorteren, groeperen en selecteren
 Als u queryresultaten wilt sorteren op een specifieke kolom, zoals **TimeGenerated [UTC]** , selecteert u de kolomkop. Selecteer de kop opnieuw om tussen oplopende en aflopende volgorde te schakelen.
@@ -129,7 +129,7 @@ Als u queryresultaten wilt sorteren op een specifieke kolom, zoals **TimeGenerat
 
 U kunt resultaten ook ordenen op groepen. Als u resultaten op een specifieke kolom wilt groeperen, sleept u de kolomkop naar de balk boven de resultatentabel met het label **Sleep een kolomkop en zet deze hier neer als u gegevens op basis van die kolom wilt groeperen**. Als u subgroepen wilt maken, sleept u de andere kolommen naar de bovenste balk. U kunt de hiërarchie en de sortering van de groepen en subgroepen in de balk herschikken.
 
-![Groepen](media/get-started-portal/groups.png)
+![Schermopname met queryresultaten met subgroepen voor EventLevelName en Computer.](media/get-started-portal/groups.png)
 
 Als u kolommen in de resultaten wilt verbergen of weergeven, selecteert u boven de tabel **Kolommen** en selecteert of deselecteert u de gewenste kolommen in de vervolgkeuzelijst.
 

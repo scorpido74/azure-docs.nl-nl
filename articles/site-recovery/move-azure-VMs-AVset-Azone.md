@@ -1,5 +1,6 @@
 ---
 title: VM's verplaatsen naar een Azure-regio met beschikbaarheidszones met Azure Site Recovery
+description: Meer informatie over het verplaatsen van virtuele machines naar een beschikbaarheidszone in een andere regio met Site Recovery
 services: site-recovery
 author: sideeksh
 ms.service: site-recovery
@@ -7,14 +8,18 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: sideeksh
 ms.custom: MVC
-ms.openlocfilehash: c1a552ba634234ac3b4d4a8eec260c739ce0d846
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: fd541e551102b205acff28b6bc06bc88abd14763
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89425469"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90605104"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>Virtuele Azure-machines verplaatsen naar beschikbaarheidszones
+
+In deze artikelen wordt beschreven hoe u virtuele Azure-machines verplaatst naar een beschikbaarheidszone in een andere regio. [Raadpleeg dit artikel](./azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md) als u wilt overschakelen naar een andere zone in dezelfde regio.
+
+
 Beschikbaarheidszones in Azure beschermen uw toepassingen en gegevens tegen storingen in datacentra. Elke beschikbaarheidszone bestaat uit een of meer datacentra die zijn voorzien van een onafhankelijke stroomvoorziening, koeling en netwerk. Om voor tolerantie te zorgen, is er een minimum van drie afzonderlijke zones in alle ingeschakelde regio's. De fysieke scheiding tussen beschikbaarheidszones binnen een Azure-regio beschermt toepassingen en gegevens tegen storingen van het datacentrum. Met beschikbaarheidszones biedt Azure een SLA (Service Level Agreement) van 99,99% voor de uptime van virtuele machines (VM's). Beschikbaarheidszones worden ondersteund in geselecteerde regio's, zoals vermeld in [Regio's die ondersteuning bieden voor beschikbaarheidszones](../availability-zones/az-region.md).
 
 In een scenario waarin u uw virtuele machines als *één exemplaar* in een bepaalde regio hebt vermeld, en u de beschikbaarheid wilt verbeteren door deze te verplaatsen naar een beschikbaarheidszone, kunt u dit doen met behulp van Azure Site Recovery. Deze actie kan verder worden onderverdeeld in:
@@ -23,7 +28,15 @@ In een scenario waarin u uw virtuele machines als *één exemplaar* in een bepaa
 - Verplaatsen van VM’s naar beschikbaarheidszones in een doelregio
 
 > [!IMPORTANT]
-> Momenteel biedt Azure Site Recovery ondersteuning voor het verplaatsen van VM's van de ene regio naar een andere. Alleen het verplaatsen over zones binnen een regio in enkele regio's wordt ondersteund. [Meer informatie](./azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md).
+> We adviseren om [Azure Resource Mover](../resource-mover/move-region-availability-zone.md) te gebruiken om virtuele Azure-machines te verplaatsen naar een beschikbaarheidszone in een andere regio. Azure Resource Mover is momenteel beschikbaar in openbare preview en biedt het volgende:
+> - Eén hub voor het verplaatsen van resources binnen regio's.
+> - Beperkte verplaatsingstijd en complexiteit. Alles wat u nodig hebt, bevindt zich op één locatie.
+> - Een eenvoudige en consistente ervaring voor het verplaatsen van verschillende typen Azure-resources.
+> - Een eenvoudige manier om afhankelijkheden te identificeren binnen resources die u wilt verplaatsen. Dit helpt om gerelateerde resources samen te verplaatsen zodat alles na de verplaatsing naar verwachting werkt in de doelregio.
+> - Automatische opschoning van resources in de bronregio, als u deze na de verplaatsing wilt verwijderen.
+> - Testen. U kunt een verplaatsing uitproberen en deze vervolgens verwijderen als u geen volledige verplaatsing wilt uitvoeren.
+
+
 
 ## <a name="check-prerequisites"></a>Vereisten controleren
 

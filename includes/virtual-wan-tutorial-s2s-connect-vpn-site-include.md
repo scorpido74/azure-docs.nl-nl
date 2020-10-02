@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 8b338f25e9771f5947fd494cfb00d0f6cb9ef67a
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 897e36a6c5165549d7809512d0298fa2cfed2fa8
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "75450840"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90606243"
 ---
 1. Selecteer **VPN-sites verbinden** om de pagina **Sites verbinden** te openen.
 
-    ![verbinding maken](./media/virtual-wan-tutorial-connect-vpn-site-include/connect.png "verbinding maken")
+    ![Schermopname van het deelvenster Verbonden sites voor een virtuele HUB die gereed is voor een Vooraf gedeelde sleutel en de bijbehorende instellingen.](./media/virtual-wan-tutorial-connect-vpn-site-include/connect.png "verbinding maken")
 
    Vul de volgende velden in:
 
@@ -28,7 +28,7 @@ ms.locfileid: "75450840"
 2. Selecteer **Verbinding maken**.
 3. Na enkele minuten worden de verbinding en de connectiviteitsstatus weergegeven op de site.
 
-   ![status](./media/virtual-wan-tutorial-connect-vpn-site-include/status.png "status")
+   ![Schermopname van een V P N site-naar-site-verbinding en connectiviteitsstatus.](./media/virtual-wan-tutorial-connect-vpn-site-include/status.png "status")
 
    **Verbindingsstatus:** Dit is de status van de Azure-resource voor de verbinding die de VPN-site verbindt met de VPN-gateway van de Azure-hub. Wanneer dit controlesysteem goed werkt, wordt een verbinding tot stand gebracht tussen de Azure VPN-gateway en het on-premises VPN-apparaat.
 

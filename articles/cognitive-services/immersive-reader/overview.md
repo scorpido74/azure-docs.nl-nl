@@ -1,7 +1,7 @@
 ---
-title: Wat is de insluitende Reader-API?
+title: Wat is Insluitende lezer?
 titleSuffix: Azure Cognitive Services
-description: De insluitende Reader-API is een hulp programma dat kan worden gebruikt om personen te voorzien van verschillende leer verschillen of om nieuwe lezers en taal kennis te helpen.
+description: Insluitende lezer is een hulpprogramma dat is ontworpen om gebruikers met leerproblemen te helpen of om nieuwe lezers en personen die een taal willen leren, taalbegrip bij te brengen.
 services: cognitive-services
 author: metanMSFT
 manager: nitinme
@@ -10,57 +10,72 @@ ms.subservice: immersive-reader
 ms.topic: overview
 ms.date: 01/4/2020
 ms.author: metan
-ms.openlocfilehash: b9efe70e8658e25d61decffbe44dec776890b17b
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
-ms.translationtype: MT
+ms.custom: cog-serv-seo-aug-2020
+keywords: lezers, personen die een taal willen leren, afbeeldingen weergeven, lezen verbeteren, inhoud lezen, vertalen
+ms.openlocfilehash: a537845c0256316f9c47317a8805fa989a624f60
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267270"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90985743"
 ---
 # <a name="what-is-immersive-reader"></a>Wat is Insluitende lezer?
 
-[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
+[Insluitende lezer](https://www.onenote.com/learningtools) is een exclusief ontworpen hulpprogramma dat bewezen technieken implementeert om begrijpend lezen te verbeteren voor beginnende lezers, personen die een taal willen leren en mensen met leerproblemen, zoals dyslexie. Met de clientbibliotheek van Insluitende lezer kunt u gebruikmaken van dezelfde technologie die wordt gebruikt in Microsoft Word en Microsoft OneNote om uw webtoepassingen te verbeteren. 
 
-De [insluitende lezer](https://www.onenote.com/learningtools) is een inclusief ontworpen hulp programma dat bewezen technieken implementeert om de Lees vaardigheid van opkomende lezers, taal kennisers en mensen te verbeteren, zoals Dyslexia.
+## <a name="use-immersive-reader-to-improve-reading-accessibility"></a>Insluitende lezer gebruiken om de leestoegang te verbeteren 
 
-U kunt de Insluitende lezer gebruiken in uw webtoepassing door de SDK voor de Insluitende lezer te gebruiken.
+Insluitende lezer is ontworpen om lezen eenvoudiger en toegankelijker te maken voor iedereen. Laten we eens kijken naar enkele van de belangrijkste functies van Insluitende lezer.
 
-## <a name="what-does-immersive-reader-do"></a>Wat doet insluitende lezer?
+### <a name="isolate-content-for-improved-readability"></a>Inhoud isoleren voor verbeterde leesbaarheid
 
-De insluitende lezer is ontworpen om het lezen van iedereen toegankelijk te maken.
+Insluitende lezer isoleert inhoud om de leesbaarheid te verbeteren. 
 
-* Hiermee wordt inhoud in een minimale Lees weergave weer gegeven
+  ![Inhoud isoleren voor verbeterde leesbaarheid met Insluitende lezer](./media/immersive-reader.png)
 
-  ![Immersive Reader](./media/immersive-reader.png)
+### <a name="display-pictures-for-common-words"></a>Afbeeldingen voor veelgebruikte woorden weergeven
 
-* Afbeeldingen van veelgebruikte woorden weer geven
+Voor veelgebruikte termen wordt in Insluitende lezer een afbeelding weergegeven.
 
-  ![Afbeeldings woordenlijst](./media/picture-dictionary.png)
+  ![Afbeeldingenlijst bij Insluitende lezer](./media/picture-dictionary.png)
 
-* De naam van zelfstandige naam woorden, werk woorden, bijvoegingen en bewerkings parameters
+### <a name="highlight-parts-of-speech"></a>Delen van de spraak benadrukken
 
-  ![Spraak onderdelen](./media/parts-of-speech.png)
+Insluitende lezer kan worden gebruikt om lezers bepaalde onderdelen van spraak en grammatica te laten begrijpen door werkwoorden, zelfstandige naamwoorden, voornaamwoorden en nog veel meer te benadrukken.
 
-* Hiermee wordt uw inhoud hardop voor u gelezen
+  ![Delen van spraak weergeven met Insluitende lezer](./media/parts-of-speech.png)
 
-  ![Hardop voor lezen](./media/read-aloud.png)
+### <a name="read-content-aloud"></a>Inhoud hardop lezen
 
-* Zet uw inhoud om in een andere taal
+Spraaksynthese (of tekst-naar-spraak) is geïntegreerd in de service Insluitende lezer. Hiermee kunnen uw lezers tekst selecteren die hardop moet worden voorgelezen. 
 
-  ![Omzetting](./media/translation.png)
+  ![Tekst hardop voorlezen met Insluitende lezer](./media/read-aloud.png)
 
-* Onderbreekt woorden in letter grepen
+### <a name="translate-content-in-real-time"></a>Inhoud in realtime vertalen
 
-  ![Syllabification](./media/syllabification.png)
+Insluitende lezer kan tekst in vele talen in realtime vertalen. Dit is handig voor het verbeteren van het leesbegrip van lezers die een nieuwe taal leren.
 
-## <a name="how-does-immersive-reader-work"></a>Hoe werkt insluitende lezer?
+  ![Tekst vertalen met Insluitende lezer](./media/translation.png)
 
-De insluitende lezer is een zelfstandige web-app die, wanneer deze wordt aangeroepen met behulp van de Java script SDK van de insluitende lezer, boven op uw bestaande web-app wordt weer gegeven via een `iframe` . Wanneer u de API aanroept om de insluitende lezer te starten, geeft u de inhoud op die u wilt weer geven in de insluitende lezer. Onze SDK verwerkt het maken en de stijl van de `iframe` en communicatie met de back-end van de insluitende lezer, die de inhoud verwerkt voor onderdelen van spraak, tekst naar spraak, vertaling, enzovoort.
+### <a name="split-words-into-syllables"></a>Woorden in lettergrepen splitsen
+
+Met Insluitende lezer kunt u woorden in lettergrepen splitsen om de leesbaarheid te verbeteren of nieuwe woorden duidelijker te laten klinken.
+
+  ![Woorden in lettergrepen splitsen met Insluitende lezer](./media/syllabification.png)
+
+## <a name="how-does-immersive-reader-work"></a>Hoe werkt Insluitende lezer?
+
+Insluitende lezer is een zelfstandige webtoepassing. Wanneer u de clientbibliotheek van Insluitende lezer aanroept, wordt deze in een afzonderlijk `iframe` buiten de bestaande webtoepassing weergegeven. Wanneer uw webtoepassing de service Insluitende lezer aanroept, bepaalt u welke inhoud aan de lezer moet worden getoond. De clientbibliotheek van Insluitende lezer verwerkt het maken en opmaken van het `iframe` en de communicatie met de back-endservice van Insluitende lezer. De service Insluitende lezer verwerkt de inhoud voor delen van spraak, tekst-naar-spraak, vertaling en meer.
+
+## <a name="get-started-with-immersive-reader"></a>Aan de slag met Insluitende lezer
+
+De clientbibliotheek van Insluitende lezer is beschikbaar in C#, JavaScript, Java (Android), Kotlin (Android) en Swift (iOS). Ga aan de slag met:
+
+* [Quickstart: Gebruik de clientbibliotheek voor de Insluitende lezer](quickstarts/client-libraries.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Aan de slag met Insluitende lezer:
 
-* Ga naar de [Quick](./quickstarts/client-libraries.md?pivots=programming-language-csharp) starts
-* De [insluitende lezer-SDK op github](https://github.com/microsoft/immersive-reader-sdk) verkennen
-* Lees de [referentie voor de insluitende lezer-SDK](./reference.md)
+* Lees de [naslaginformatie over de clientbibliotheek van Insluitende lezer](./reference.md)
+* Maak kennis met de [clientbibliotheek voor Insluitende lezer op GitHub](https://github.com/microsoft/immersive-reader-sdk)

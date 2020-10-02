@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/15/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 67016d930e2cc40ccf38e89c8dfc7700db7d3109
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7d249005e77328460a0e7152e0a3ff125857534b
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536713"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89659488"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-datava-enterprise-service-platform"></a>Zelfstudie: SSO-integratie (eenmalige aanmelding) van Azure Active Directory met Datava Enterprise Service Platform
 
@@ -35,9 +35,6 @@ U hebt het volgende nodig om aan de slag te gaan:
 * Een Azure AD-abonnement Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis account](https://azure.microsoft.com/free/).
 * Een abonnement waarvoor eenmalige aanmelding (SSO) voor Datava Enterprise Service Platform is ingeschakeld.
 
-> [!NOTE]
-> De id van deze toepassing is een vaste tekenreekswaarde zodat maar één instantie in één tenant kan worden geconfigureerd.
-
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
@@ -45,6 +42,9 @@ In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD 
 * Datava Enterprise Service Platform ondersteunt door **SP** geïnitieerde eenmalige aanmelding
 * Datava Enterprise Service Platform ondersteunt het **Just-In-Time** inrichten van gebruikers
 * Zodra u Datava Enterprise Service Platform hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+
+> [!NOTE]
+> De id van deze toepassing is een vaste tekenreekswaarde zodat maar één instantie in één tenant kan worden geconfigureerd.
 
 ## <a name="adding-datava-enterprise-service-platform-from-the-gallery"></a>Datava Enterprise Service Platform toevoegen vanuit de galerie
 
@@ -57,7 +57,7 @@ Om de integratie van Datava Enterprise Service Platform te configureren in Azure
 1. In de sectie **Toevoegen uit de galerie** typt u **Datava Enterprise Service Platform** in het zoekvak.
 1. Selecteer **Datava Enterprise Service Platform** uit het resultatenvenster en voeg de app toe. Wacht enkele seconden tot de app is toegevoegd aan uw tenant.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-datava-enterprise-service-platform"></a>Eenmalige aanmelding van Azure AD voor Datava Enterprise Service Platform configureren en testen
+## <a name="configure-and-test-azure-ad-sso-for-datava-enterprise-service-platform"></a>Eenmalige aanmelding van Azure AD voor Datava Enterprise Service Platform configureren en testen
 
 Eenmalige aanmelding van Azure AD met Datava Enterprise Service Platform met behulp van de testgebruiker **B.Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Datava Enterprise Service Platform.
 
@@ -84,7 +84,7 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://go.datava.com/<TENANT_NAME>`
 
-    b. Typ een URL in het tekstvak **Antwoord-URL**: `https://go.datava.com/saml/module.php/saml/sp/saml2-acs.php/azure-sp`
+    b. Typ de URL in het tekstvak **Antwoord-URL**: `https://go.datava.com/saml/module.php/saml/sp/saml2-acs.php/azure-sp`
 
     > [!NOTE]
     > De waarde is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met [het klantondersteuningsteam van Datava Enterprise Service Platform](mailto:support@datava.com) om de waarde te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
@@ -148,5 +148,3 @@ Wanneer u op de tegel Datava Enterprise Service Platform klikt in het Toegangsve
 - [Datava Enterprise Service Platform met Azure AD proberen](https://aad.portal.azure.com/)
 
 - [Wat is sessiebeheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
-- [Datava Enterprise Service Platform beveiligen met geavanceerde zichtbaarheid en controles](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

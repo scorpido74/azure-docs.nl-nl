@@ -6,20 +6,33 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 08/01/2020
+ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 788b3f5e9f4012e418ece691ebb5fbc5d2f866af
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 4526e4916a89b53ae13a31bcdef6cd4715dd7e8c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88931842"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90979591"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Nieuwe functies in Azure Cognitive Search
 
 Meer informatie over nieuwe functies in de service. Voeg een bladwijzer toe aan deze pagina om up-to-date te blijven over de service.
 
 ## <a name="feature-announcements-in-2020"></a>Aankondigingen van functies in 2020
+
+### <a name="september-2020"></a>September 2020
+
+Maak een identiteit voor een zoekservice in Azure Active Directory en gebruik vervolgens RBAC-machtigingen om machtigingen voor Azure-gegevensbronnen toe te kennen aan de identiteit 'Alleen-lezen'. Kies desgewenst de mogelijkheid [Vertrouwde service-uitzondering](search-indexer-howto-access-trusted-service-exception.md) als IP-regels geen optie zijn.
+
+
+|Functie&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Categorie | Beschrijving | Beschikbaarheid  |
+|------------------------------|----------|-------------|---------------|
+| [Beheerde service-identiteit](search-howto-managed-identities-data-sources.md) | Indexeerfuncties, beveiliging | Maak een identiteit voor een zoekservice in Azure Active Directory en gebruik vervolgens RBAC-machtigingen om toegang tot Azure-gegevensbronnen toe te kennen. Deze aanpak elimineert de noodzaak van referenties op de verbindingsreeks. <br><br>Een andere manier om een beheerde service-identiteit te gebruiken als IP-regels geen optie zijn, is via een [Vertrouwde service-uitzondering](search-indexer-howto-access-trusted-service-exception.md). | Algemeen verkrijgbaar. Gebruik deze mogelijkheid wanneer u de portal of [Gegevensbron maken (REST)](https://docs.microsoft.com/rest/api/searchservice/create-data-source) met api-version=2020-06-30 gebruikt. |
+| [Uitgaande aanvragen met behulp van een privélink](search-indexer-howto-access-private.md) | Indexeerfuncties, beveiliging | Maak een gedeelde privélinkresource die gebruikt kan worden door indexeerfuncties om toegang te krijgen tot Azure-resources die zijn beveiligd met Azure Private Link. Voor meer informatie over alle manieren waarop u indexeerfuncties kunt beveiligen, kunt u [Resources van indexeerfunctie beveiligen met Azure-netwerkbeveiligingsvoorzieningen](search-indexer-securing-resources.md) raadplegen. | Algemeen verkrijgbaar. Gebruik deze mogelijkheid wanneer u de portal of [Gedeelde privélink (REST)](https://docs.microsoft.com/rest/api/searchmanagement/sharedprivatelinkresources) met api-version=2020-08-01 gebruikt. |
+| [Beheer van REST API (2020-08-01)](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) | REST | Nieuwe stabiele REST API voegt ondersteuning toe bij het maken van gedeelde privélinkresources. | Algemeen verkrijgbaar. |
+| [Beheer van REST API (2020-08-01-Preview)](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) | REST | Hiermee wordt een gedeelde privélinkresource toegevoegd voor Azure Functions en Azure SQL voor MySQL-databases. | Openbare preview. |
+| [Beheer van .NET SDK 4.0](https://docs.microsoft.com/dotnet/api/overview/azure/search/management) | .NET SDK | Azure SDK-update voor het beheer van SDK, gericht op REST API versie 2020-08-01. | Algemeen verkrijgbaar. |
 
 ### <a name="august-2020"></a>Augustus 2020
 
@@ -31,9 +44,9 @@ Meer informatie over nieuwe functies in de service. Voeg een bladwijzer toe aan 
 
 |Functie&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Categorie | Beschrijving | Beschikbaarheid  |
 |---------|------------------|-------------|---------------|
-| [Azure.Search.Documents-clientbibliotheek](/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet) | Azure-SDK voor .NET | E.NET-clientbibliotheek uitgebracht door het team van Azure SDK. Deze is compatibel met andere .NET-clientbibliotheken. <br/><br/>Versie 11 is gericht op de Search REST api-version=2020-06-30, maar biedt nog geen ondersteuning voor het kennisarchief, georuimtelijke typen of [FieldBuilder](/dotnet/api/microsoft.azure.search.fieldbuilder?view=azure-dotnet). <br/><br/>Zie voor meer informatie [Quickstart: Een index maken](search-get-started-dotnet.md) en [Upgraden naar Azure.Search.Documents (v11)](search-dotnet-sdk-migration-version-11.md). | Algemeen verkrijgbaar. </br> Installeer het [Azure.Search.Documents-pakket](https://www.nuget.org/packages/Azure.Search.Documents/) van NuGet. |
-| [azure.search.documents-clientbibliotheek](/python/api/overview/azure/search-documents-readme?view=azure-python)  | Azure-SDK voor Python| Python-clientbibliotheek uitgebracht door het team van Azure SDK. Deze is compatibel met andere Python-clientbibliotheken. <br/><br/>Versie 11 is gericht op de Search REST api-version=2020-06-30. | Algemeen verkrijgbaar. </br> Installeer het [azure-search-documents-pakket](https://pypi.org/project/azure-search-documents/) van PyPI. |
-| [@azure/search-documents clientbibliotheek](/javascript/api/overview/azure/search-documents-readme?view=azure-node-latest)  | Azure-SDK voor JavaScript | JavaScript-clientbibliotheek uitgebracht door het team van Azure SDK. Deze is compatibel met andere JavaScript-clientbibliotheken. <br/><br/>Versie 11 is gericht op de Search REST api-version=2020-06-30. | Algemeen verkrijgbaar. </br> Installeer het [@azure/search-documents-pakket](https://www.npmjs.com/package/@azure/search-documents) van npm. |
+| [Azure.Search.Documents-clientbibliotheek](/dotnet/api/overview/azure/search.documents-readme) | Azure-SDK voor .NET | E.NET-clientbibliotheek uitgebracht door het team van Azure SDK. Deze is compatibel met andere .NET-clientbibliotheken. <br/><br/>Versie 11 is gericht op de Search REST api-version=2020-06-30, maar biedt nog geen ondersteuning voor het kennisarchief, georuimtelijke typen of [FieldBuilder](/dotnet/api/microsoft.azure.search.fieldbuilder). <br/><br/>Zie voor meer informatie [Quickstart: Een index maken](search-get-started-dotnet.md) en [Upgraden naar Azure.Search.Documents (v11)](search-dotnet-sdk-migration-version-11.md). | Algemeen verkrijgbaar. </br> Installeer het [Azure.Search.Documents-pakket](https://www.nuget.org/packages/Azure.Search.Documents/) van NuGet. |
+| [azure.search.documents-clientbibliotheek](/python/api/overview/azure/search-documents-readme)  | Azure-SDK voor Python| Python-clientbibliotheek uitgebracht door het team van Azure SDK. Deze is compatibel met andere Python-clientbibliotheken. <br/><br/>Versie 11 is gericht op de Search REST api-version=2020-06-30. | Algemeen verkrijgbaar. </br> Installeer het [azure-search-documents-pakket](https://pypi.org/project/azure-search-documents/) van PyPI. |
+| [@azure/search-documents clientbibliotheek](/javascript/api/overview/azure/search-documents-readme)  | Azure-SDK voor JavaScript | JavaScript-clientbibliotheek uitgebracht door het team van Azure SDK. Deze is compatibel met andere JavaScript-clientbibliotheken. <br/><br/>Versie 11 is gericht op de Search REST api-version=2020-06-30. | Algemeen verkrijgbaar. </br> Installeer het [@azure/search-documents-pakket](https://www.npmjs.com/package/@azure/search-documents) van npm. |
 
 ### <a name="june-2020"></a>Juni 2020
 

@@ -1,6 +1,6 @@
 ---
-title: Bouw energie oplossingen met IoT Central | Microsoft Docs
-description: Meer informatie over het bouwen van een energie oplossing met behulp van Azure IoT Central-toepassings sjablonen.
+title: Oplossingen voor de energiesector bouwen met IoT Central | Microsoft Docs
+description: Meer informatie over het bouwen van energie-oplossingen met behulp van Azure IoT Central-toepassingssjablonen.
 author: op-ravi
 ms.author: omravi
 ms.date: 10/23/2019
@@ -8,65 +8,64 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 13b626945743c17bad8df58fba77e1c960e90ef3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 1a7502a77f8dca526c95e92302f0ca0a06a1dd32
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77016559"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970449"
 ---
 # <a name="build-energy-solutions-with-iot-central"></a>Oplossingen voor de energiesector bouwen met IoT Central 
 
 
 
 
-Slimme meters en zonne panelen spelen een belang rijke rol in de trans formatie van de energie-industrie. De slimme meters geven meer besturings elementen en real-time inzichten over het energie verbruik en de groei van het zonne deel van de schermen door braak in Hernieuw bare energie generatie. Het slimme meter-en zonne deel venster voor monitor-apps zijn voorbeeld sjablonen waarmee de verschillende mogelijkheden worden weer gegeven. Partners kunnen gebruikmaken van deze sjablonen om energie oplossingen te bouwen met IoT Central voor hun specifieke behoeften. Geen nieuwe code ring en er zijn geen extra kosten vereist voor het implementeren en gebruiken van deze toepassingen. Meer informatie over energie toepassings sjablonen en hun mogelijkheden.
+Slimme meters en zonnepanelen spelen een belangrijke rol in de transformatie van de energie-industrie. De slimme meters geven meer besturingselementen en inzichten in realtime over het energieverbruik. En de groeiende populariteit van zonnepanelen zorgt voor doorbraken in de opwekking van groene energie. De apps voor slimme meters en zonnepaneelbewaking zijn voorbeeldsjablonen waarmee de verschillende mogelijkheden worden weergegeven. Partners kunnen gebruikmaken van deze sjablonen om energie-oplossingen te bouwen met IoT Central voor hun specifieke behoeften. Er zijn geen nieuwe codering en geen extra kosten vereist voor het implementeren en gebruiken van deze apps. Meer informatie over toepassingssjablonen voor energie en hun mogelijkheden.
 
 
-## <a name="what-is-the-smart-meter-monitoring-application"></a>Wat is de toepassing slimme meter bewaking?
- Met de slimme meters wordt niet alleen gebruikgemaakt van automatische facturering ingeschakeld, maar ook geavanceerde meet aanvragen zoals realtime-leesingen en bidirectionele communicatie. Met de sjabloon slimme meter app kunnen hulpprogram ma's en partners de status en gegevens van Smart meters controleren, waarschuwingen en meldingen definiëren. Het biedt voorbeeld opdrachten, zoals verbindings meter en update-software. De meter gegevens kunnen worden ingesteld op uitgaand verkeer naar andere zakelijke toepassingen en om aangepaste oplossingen te ontwikkelen. 
+## <a name="what-is-the-smart-meter-monitoring-application"></a>Wat is de app Slimme meterbewaking?
+ Met slimme meters wordt niet alleen automatische facturering, maar ook geavanceerde meetgebruiksvoorbeelden (zoals realtime metingen en bi-directionele communicatie) ingeschakeld. Met de sjabloon voor slimme meter-apps kunnen nutsbedrijven en partners de status en gegevens van slimme meters controleren, waarschuwingen definiëren en meldingen definiëren. De sjabloon biedt voorbeeldopdrachten, zoals 'verbinding verbreken' en 'software updaten'. De metergegevens kunnen worden ingesteld zodat gegevens worden verzonden naar andere zakelijke toepassingen en om aangepaste oplossingen te ontwikkelen. 
 
-Belangrijkste functionele functies van de app: 
+Belangrijkste functies van de app: 
 
-* Model voor beeld apparaat voor meter 
-* Meter gegevens en live status 
-* Metings aflezingen zoals energie, kracht en spanningen
-* Voor beelden van meter opdracht 
-* Ingebouwde visualisatie en dash boards
-* Uitbreid baarheid voor het ontwikkelen van aangepaste oplossingen
+* Apparaatmodel voor een metervoorbeeld 
+* Metergegevens en live status 
+* Metingen van energie, vermogen en spanning
+* Voorbeelden van een meteropdracht 
+* Ingebouwde visualisatie en dashboards
+* Uitbreidbaarheid voor het ontwikkelen van aangepaste oplossingen
 
-U kunt de [app voor het bewaken van slimme meters gratis](https://apps.azureiotcentral.com/build/new/smart-meter-monitoring) uitproberen zonder een Azure-abonnement en eventuele toezeg gingen.
-
-
-Nadat u de app hebt geïmplementeerd, ziet u de gesimuleerde meter gegevens op het dash board, zoals wordt weer gegeven in de afbeelding hieronder. Deze sjabloon is een voor beeld-app die u eenvoudig kunt uitbreiden en aanpassen voor uw specifieke gebruiks voorbeelden.
-
-> [!div class="mx-imgBorder"]
-> ![App-dash board voor slimme meter](media/overview-iot-central-energy/smart-meter-app-dashboard.png)
+U kunt de [Bewakings-app voor slimme meter gratis](https://apps.azureiotcentral.com/build/new/smart-meter-monitoring) en vrijblijvend uitproberen zonder een Azure-abonnement.
 
 
-## <a name="what-is-the-solar-panel-monitoring-application"></a>Wat is de toepassing voor het bewaken van het zonne deel venster?
-Met de toepassing voor het bewaken van het zonne deel venster kunt u met hulpprogram ma's en partners zonne panelen bewaken, zoals hun energie generatie en de verbindings status in de buurt van real-time. Er kunnen meldingen worden verzonden op basis van gedefinieerde drempel criteria. Het biedt voorbeeld opdrachten, zoals firmware bijwerken en andere eigenschappen. De gegevens van het zonne deel venster kunnen worden ingesteld om te worden opgevolgd in andere zakelijke toepassingen en om aangepaste oplossingen te ontwikkelen. 
-
-Belangrijkste functionele functies van de app: 
-
-* Voorbeeld model voor zonne deel venster 
-* Informatie over zonne panels en live status
-* Zonne-energie generatie en andere leesingen
-* Voor beelden van opdrachten en besturings elementen
-* Ingebouwde visualisatie en dash boards
-* Uitbreid baarheid voor het ontwikkelen van aangepaste oplossingen
-
-U kunt de [toepassing voor het bewaken van het zonne deel venster gratis](https://apps.azureiotcentral.com/build/new/solar-panel-monitoring) uitproberen zonder een Azure-abonnement en toezeg gingen.
-
-Nadat u de app hebt geïmplementeerd, ziet u de gesimuleerde zonne deel venster gegevens binnen 1-2 minuten, zoals wordt weer gegeven in het onderstaande dash board. Deze sjabloon is een voor beeld-app die u eenvoudig kunt uitbreiden en aanpassen voor uw specifieke gebruiks voorbeelden. 
+Nadat u de app hebt geïmplementeerd, ziet u de gesimuleerde metergegevens op het dashboard, zoals wordt weergegeven in de afbeelding hieronder. Deze sjabloon is een voorbeeld-app die u eenvoudig kunt uitbreiden en aanpassen voor uw specifieke gebruikstoepassingen.
 
 > [!div class="mx-imgBorder"]
-> ![App-dash board voor zonne deel venster](media/overview-iot-central-energy/solar-panel-app-dashboard.png)
+> ![Dashboard voor de slimme meter-app](media/overview-iot-central-energy/smart-meter-app-dashboard.png)
 
+
+## <a name="what-is-the-solar-panel-monitoring-application"></a>Wat is de app voor zonnepaneelbewaking?
+Met de app voor zonnepaneelbewaking kunnen nutsbedrijven en partners nagenoeg in realtime zonnepanelen bewaken op basis van bijvoorbeeld hun energie-opwekking en de verbindingsstatus. Er kunnen meldingen worden verzonden op basis van gedefinieerde drempelcriteria. De app biedt voorbeeldopdrachten, zoals 'firmware bijwerken', en andere eigenschappen. De gegevens van het zonnepaneel kunnen worden ingesteld zodat gegevens worden verzonden naar andere zakelijke toepassingen en om aangepaste oplossingen te ontwikkelen. 
+
+Belangrijkste functies van de app: 
+
+* Apparaatmodel voor een zonnepaneelvoorbeeld 
+* Zonnepaneelgegevens en live status
+* Opwekking van zonne-energie en andere metingen
+* Voorbeelden van opdrachten en controle
+* Ingebouwde visualisatie en dashboards
+* Uitbreidbaarheid voor het ontwikkelen van aangepaste oplossingen
+
+U kunt de [app voor zonnepaneelbewaking gratis](https://apps.azureiotcentral.com/build/new/solar-panel-monitoring) en vrijblijvend uitproberen zonder een Azure-abonnement.
+
+Nadat u de app hebt geïmplementeerd, ziet u de gesimuleerde zonnepaneelgegevens binnen een of twee minuten op het dashboard, zoals wordt weergegeven in de afbeelding hieronder. Deze sjabloon is een voorbeeld-app die u eenvoudig kunt uitbreiden en aanpassen voor uw specifieke gebruikstoepassingen. 
+
+> [!div class="mx-imgBorder"]
+> ![Dashboard van de zonnepaneel-app](media/overview-iot-central-energy/solar-panel-app-dashboard.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-Om aan de slag te gaan met het bouwen van een energie oplossing:
-* Maak toepassings sjablonen gratis: [slimme meter app](https://apps.azureiotcentral.com/build/new/smart-meter-monitoring), [zonne deel venster](https://apps.azureiotcentral.com/build/new/solar-panel-monitoring) -app
-* Meer informatie over de concepten van de [app monitoring voor slimme meters](https://docs.microsoft.com/azure/iot-central/energy/concept-iot-central-smart-meter-app)
-* Meer informatie over [app-concepten voor het bewaken van zonneën paneel](https://docs.microsoft.com/azure/iot-central/energy/concept-iot-central-solar-panel-app)
-* Meer informatie over [IOT Central platform](https://docs.microsoft.com/azure/iot-central/)
+U begint als volgt met het maken van een energie-oplossing:
+* Maak gratis toepassingssjablonen: [slimme meter-app](https://apps.azureiotcentral.com/build/new/smart-meter-monitoring), [zonnepanneel-app](https://apps.azureiotcentral.com/build/new/solar-panel-monitoring)
+* Meer informatie over [concepten voor bewakings-apps voor slimme meters](https://docs.microsoft.com/azure/iot-central/energy/concept-iot-central-smart-meter-app)
+* Meer informatie over [concepten voor bewakings-apps voor zonnepanelen](https://docs.microsoft.com/azure/iot-central/energy/concept-iot-central-solar-panel-app)
+* Meer informatie over het [IoT Central-platform](https://docs.microsoft.com/azure/iot-central/)

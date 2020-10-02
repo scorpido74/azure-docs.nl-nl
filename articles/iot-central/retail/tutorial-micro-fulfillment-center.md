@@ -1,96 +1,99 @@
 ---
-title: Zelf studie over de app-sjabloon van micro fulfill Center | Microsoft Docs
-description: Een zelf studie over de micro-fulfillment Center-toepassings sjabloon voor Azure IoT Central
+title: Zelfstudie voor de app-sjabloon voor micro-fulfillmentcentra | Microsoft Docs
+description: Een zelfstudie over de toepassingssjabloon voor micro-fulfillmentcentra voor Azure IoT Central
 author: avneet723
 ms.author: avneets
 ms.service: iot-central
 ms.subservice: iot-central-retail
-ms.topic: overview
+ms.topic: tutorial
 ms.date: 01/09/2020
-ms.openlocfilehash: 74deb4253a21445e21f7ef04f53f3bfe3f1fe0d0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 880d8ee0e6e2b3984f6bea4b994642724085d512
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81000537"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90980546"
 ---
-# <a name="tutorial-deploy-and-walk-through-a-micro-fulfillment-center-application-template"></a>Zelf studie: een toepassings sjabloon voor micro uitvoerings centrum implementeren en door lopen
+# <a name="tutorial-deploy-and-walk-through-a-micro-fulfillment-center-application-template"></a>Zelfstudie: Een toepassingssjabloon voor een micro-fulfillmentcentrum implementeren en doorlopen
 
-In deze zelf studie gebruikt u de Azure IoT Central micro fulfillment Center-toepassings sjabloon om een handels oplossing te bouwen. U leert hoe u de sjabloon implementeert, wat erin is opgenomen en wat u mogelijk wilt doen.
+In deze zelfstudie gebruikt u het toepassingssjabloon van het Azure IoT Central-micro-fulfillmentcentrum om een handelsoplossing te bouwen. U leert hoe u de sjabloon implementeert, wat erin is opgenomen en wat u mogelijk als volgende wilt doen.
 
 ## <a name="prerequisites"></a>Vereisten
-U hebt een Azure-abonnement nodig om deze reeks zelf studies te volt ooien. U kunt eventueel een gratis proef versie van 7 dagen gebruiken. Als u geen Azure-abonnement hebt, kunt u er een maken op de [Azure-aanmeldings pagina](https://aka.ms/createazuresubscription).
+U hebt een Azure-abonnement nodig om deze zelfstudie te voltooien. U kunt eventueel een gratis proefversie van zeven dagen gebruiken. Als u geen Azure-abonnement hebt, kunt u er een maken via de [Azure-registratiepagina](https://aka.ms/createazuresubscription).
 
 ## <a name="create-an-application"></a>Een app maken 
-In deze sectie maakt u een nieuwe Azure IoT Central-toepassing op basis van een sjabloon. U gebruikt deze toepassing in de reeks zelf studies om een volledige oplossing te bouwen.
+In deze sectie maakt u een nieuwe Azure IoT Central-toepassing op basis van een sjabloon. U gebruikt deze toepassing in de rest van de zelfstudiereeks om een volledige oplossing te ontwikkelen.
 
 Een nieuwe Azure IoT Central-toepassing maken:
 
-1. Ga naar de website van [Azure IOT Central Application Manager](https://aka.ms/iotcentral) .
-1. Als u een Azure-abonnement hebt, meldt u zich aan met de referenties die u gebruikt voor toegang tot de app. Als dat niet het geval is, meldt u zich aan met een Microsoft-account:
+1. Ga naar de website [Azure IoT Central-toepassingsbeheer](https://aka.ms/iotcentral).
+1. Als u een Azure-abonnement hebt, meldt u zich aan met de referenties die u gebruikt om toegang te krijgen tot dat abonnement. Of meld u aan met behulp van een Microsoft-account.
 
-   ![Scherm afbeelding van het dialoog venster Microsoft-account-aanmelding](./media/tutorial-in-store-analytics-create-app/sign-in.png)
+   ![Schermopname van het dialoogvenster voor aanmelding bij Microsoft](./media/tutorial-in-store-analytics-create-app/sign-in.png)
 
 1. Als u wilt beginnen met het maken van een nieuwe Azure IoT Central-toepassing, selecteert u **Nieuwe toepassing**.
 
-1. Selecteer **detail handel**.  Op de pagina Retail worden verschillende sjablonen voor de retail toepassing weer gegeven.
+1. Selecteer **Detailhandel**.  De detailhandelspagina toont verschillende toepassingssjablonen voor detailhandels.
 
-Een nieuw micro fulfillment Center-toepassing maken die gebruikmaakt van preview-functies:  
-1. Selecteer de toepassings sjabloon **micro fulfillment Center** . Deze sjabloon bevat sjablonen voor alle apparaten die in de zelf studie worden gebruikt. De sjabloon biedt ook een operator dashboard voor het bewaken van voor waarden binnen het fulfillment Center en de voor waarden voor uw geautomatiseerde vervoerders. 
+Een nieuwe app voor het micro-fulfillmentcentrum maken die gebruikmaakt van preview-functies:  
+1. Selecteer de toepassingssjabloon **Micro-fulfillmentcentrum**. Deze sjabloon bevat apparaatsjablonen voor alle apparaten die in de zelfstudie worden gebruikt. De sjabloon biedt ook een operatordashboard voor het bewaken van waarden binnen uw fulfillmentcentrum en de voorwaarden voor uw geautomatiseerde providers. 
 
-    ![Scherm opname van Azure IoT Central uw IoT-toepassings pagina bouwen](./media/tutorial-micro-fulfillment-center-app/iotc-retail-homepage-mfc.png)
+    ![Schermopname van de pagina 'Uw IoT-app bouwen' in Azure IoT Central](./media/tutorial-micro-fulfillment-center-app/iotc-retail-homepage-mfc.png)
     
-1. U kunt desgewenst een beschrijvende **toepassings naam**kiezen. De toepassings sjabloon is gebaseerd op het fictieve bedrijf North Wind Traders. 
+1. Kies desgewenst een beschrijvende **Toepassingsnaam**. De toepassingssjabloon is gebaseerd op het fictieve bedrijf Northwind Traders. 
 
     >[!NOTE]
-    >Als u een beschrijvende toepassings naam gebruikt, moet u nog steeds een unieke waarde voor de URL van de toepassing gebruiken.
+    >Als u een beschrijvende toepassingsnaam gebruikt, moet u nog steeds een unieke waarde gebruiken voor de URL van de app.
 
-1. Als u een Azure-abonnement hebt, voert u uw adres lijst, het Azure-abonnement en de regio in. Als u geen abonnement hebt, kunt u een gratis proef versie van 7 dagen inschakelen en de vereiste contact gegevens volt ooien.  
+1. Als u een Azure-abonnement hebt, voert u uw map, Azure-abonnement en locatie in. Als u geen abonnement hebt, kunt u een gratis proefversie van zeven dagen inschakelen en de vereiste contactgegevens aanvullen.  
 
-    Zie de Snelstartgids [een toepassing maken](../preview/quick-deploy-iot-central.md) voor meer informatie over directory's en abonnementen.
+    Zie de quickstart [Create an Azure IoT Central application](../preview/quick-deploy-iot-central.md) (Een Azure IoT Central-toepassing maken) voor meer informatie over mappen en abonnementen.
 
 1. Selecteer **Maken**.
 
-    ![Scherm afbeelding van de pagina nieuwe toepassing IoT Central van Azure](./media/tutorial-micro-fulfillment-center-app/iotc-retail-create-app-mfc.png)
+    ![Schermopname van de pagina 'Nieuwe app' in Azure IoT Central](./media/tutorial-micro-fulfillment-center-app/iotc-retail-create-app-mfc.png)
 
-## <a name="walk-through-the-application"></a>Door loop de toepassing 
+## <a name="walk-through-the-application"></a>De app doorlopen 
 
-Nadat u de app-sjabloon hebt geïmplementeerd, ziet u het **dash board van het micro fulfillment Center van North Wind Traders**. North Wind Traders is een fictieve detail handel met een micro-fulfillment-centrum dat wordt beheerd in deze Azure IoT Central-toepassing. Op dit dash board van de operator ziet u informatie en telemetrie over de apparaten in deze sjabloon, samen met een set opdrachten, taken en acties die u kunt uitvoeren. Het dash board is logisch gesplitst in twee secties. Aan de linkerkant kunt u de omgevings voorwaarden in de fulfillment-structuur bewaken en aan de rechter kant kunt u de status van een automatische provider in de faciliteit bewaken.  
+Nadat de toepassingssjabloon is geïmplementeerd, ziet u het **dashboard voor het micro-fulfillmentcentrum van Northwind Traders**. Northwind Traders is een fictieve handelaar met een micro-fulfillmentcentrum dat wordt beheerd in deze Azure IoT Central-app. Op dit operatordashboard ziet u informatie en telemetrie over de apparaten in deze sjabloon, samen met een set opdrachten, taken en acties die u kunt uitvoeren. Het dashboard is op een logische manier gesplitst in twee secties. Aan de linkerkant kunt u de omgevingsvoorwaarden in het fulfillmentcentrum bewaken en aan de rechterkant kunt u de status van een automatische orderpicker in de faciliteit bewaken.  
 
-Vanuit het dash board kunt u het volgende doen:
-   * Zie telemetrie van apparaten, zoals het aantal picks, het aantal verwerkte orders en eigenschappen, zoals de status van het structuur systeem.  
-   * Bekijk het vloer plan en de locatie van de geautomatiseerde vervoerders binnen de fulfillment-structuur.
-   * Trigger opdrachten, zoals het opnieuw instellen van het besturings systeem, het bijwerken van de firmware van de provider en het opnieuw configureren van het netwerk.
+Vanuit het dashboard kunt u het volgende doen:
+   * Telemetrie inzien van apparaten, zoals het aantal picks, het aantal verwerkte orders en eigenschappen zoals de status van het structuursysteem.  
+   * Bekijk de plattegrond en de locatie van de geautomatiseerde orderpickers binnen het fulfillmentcentrum.
+   * Activeer opdrachten, zoals het opnieuw instellen van het besturingssysteem, het bijwerken van de firmware van de provider en het opnieuw configureren van het netwerk.
 
-     ![Scherm afbeelding van het micro fulfillment Center-dash board van noorden wind](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard1.png)
-   * Bekijk een voor beeld van het dash board dat een operator kan gebruiken om de voor waarden in het fulfillment Center te bewaken. 
-   * Controleer de status van de nettoladingen die worden uitgevoerd op het gateway apparaat binnen het fulfillment-centrum.    
+     ![Schermopname van de bovenste helft van het micro-fulfillmentcentrum-dashboard van Northwind Traders](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard1.png)
+   * Bekijk een voorbeeld van het dashboard dat een operator kan gebruiken om voorwaarden binnen het fulfillmentcentrum te bewaken. 
+   * Controleer de status van de nettoladingen die worden uitgevoerd op het gatewayapparaat binnen het fulfillmentcentrum.    
 
-     ![Scherm afbeelding van het micro fulfillment Center-dash board van noorden wind](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard2.png)
+     ![Schermopname van de onderste helft van het micro-fulfillmentcentrum-dashboard van Northwind Traders](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard2.png)
 
-## <a name="device-template"></a>Apparaatprofiel
-Als u het tabblad Device templates selecteert, ziet u dat er twee verschillende typen apparaten zijn die deel uitmaken van de sjabloon: 
-   * **Robot-provider**: deze Device-sjabloon vertegenwoordigt de definitie voor een werkende automatische provider die is geïmplementeerd in de verwerkings structuur, en voert de juiste opslag-en ophaal bewerkingen uit. Als u de sjabloon selecteert, ziet u dat de robot apparaatgegevens verzendt, zoals de positie van de Tempe ratuur en de as en eigenschappen, zoals de status van de geautomatiseerde transporteur. 
-   * **Bewaking van de structuur voorwaarde**: deze Device-sjabloon vertegenwoordigt een verzameling apparaten waarmee u de omgevings voorwaarde kunt bewaken, evenals het gateway apparaat dat als host fungeert voor de verschillende werk belasting van de rand om uw fulfillment Center te verbeteren. Het apparaat verzendt telemetriegegevens, zoals de Tempe ratuur, het aantal picks en het aantal orders. Er wordt ook informatie verzonden over de status en status van de reken werkbelastingen die in uw omgeving worden uitgevoerd. 
+## <a name="device-template"></a>Apparaatsjabloon
+Als u op het tabblad Apparaatsjablonen klikt, ziet u dat er twee verschillende typen apparaten zijn die deel uitmaken van de sjabloon: 
+   * **Geautomatiseerde orderpicker**: Deze apparaatsjabloon vertegenwoordigt de definitie voor een werkende, geautomatiseerde orderpicker die is geïmplementeerd in de fulfillmentstructuur en die de juiste opslag- en ophaalbewerkingen uitvoert. Als u de sjabloon selecteert, ziet u dat de orderpicker apparaatgegevens verzendt, zoals de temperatuur, de positie op de as en eigenschappen zoals de status van de geautomatiseerde orderpicker. 
+   * **Bewaking van de structuurstaat**: Deze apparaatsjabloon vertegenwoordigt een verzameling van apparaten waarmee u omgevingsvoorwaarden kunt bewaken, evenals het gatewayapparaat dat als host fungeert voor de verschillende randwerkbelastingen om uw fulfillmentcentrum te versterken. Het apparaat verzendt telemetriegegevens, zoals de temperatuur, het aantal picks en het aantal orders. Er wordt ook informatie verzonden over de status en gesteldheid van de rekenwerkbelastingen die in uw omgeving worden uitgevoerd. 
 
-     ![Micro-fulfillment Center-sjablonen voor apparaten](./media/tutorial-micro-fulfillment-center-app/device-templates.png)
+     ![Apparaatsjablonen van het micro-fulfillmentcentrum](./media/tutorial-micro-fulfillment-center-app/device-templates.png)
 
-Als u het tabblad apparaatgroepen selecteert, kunt u ook zien dat voor deze Apparaatinstellingen automatisch apparaatgroepen worden gemaakt.
+Als u het tabblad Apparaatgroepen selecteert, kunt u ook zien dat voor deze apparaatsjablonen automatisch apparaatgroepen worden gemaakt.
 
 ## <a name="rules"></a>Regels
-Op het tabblad **regels** ziet u een voorbeeld regel die voor komt in de toepassings sjabloon om de temperatuur voorwaarden voor de automatische provider te controleren. U kunt deze regel gebruiken om de operator te waarschuwen als een specifieke robot in de faciliteit oververhit is en offline moet worden gehaald voor onderhoud. 
+Op het tabblad **Regels** ziet u een voorbeeldregel in de toepassingssjabloon om de temperatuurvoorwaarden voor de automatische orderpicker te bewaken. U kunt deze regel gebruiken om de operator te waarschuwen als een specifieke orderpicker in de faciliteit oververhit raakt en offline moet worden gehaald voor onderhoud. 
 
-Gebruik de voorbeeld regel als inspiratie om regels te definiëren die geschikter zijn voor uw bedrijfs functies.
+Gebruik de voorbeeldregel als inspiratie om regels te definiëren die geschikter zijn voor uw bedrijfsfuncties.
 
-![Scherm afbeelding van het tabblad regels](./media/tutorial-micro-fulfillment-center-app/rules.png)
+![Schermopname van het tabblad Regels](./media/tutorial-micro-fulfillment-center-app/rules.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u deze toepassing niet wilt blijven gebruiken, verwijdert u de toepassings sjabloon. Ga naar instellingen van **beheer** > **toepassingen**en selecteer **verwijderen**.
+Als u deze app niet langer gaat gebruiken, verwijder dan de toepassingssjabloon. Ga naar **Beheer** > **App-instellingen** en selecteer **Verwijderen**.
 
-![Scherm afbeelding van de pagina Toepassings instellingen van micro fulfill Center](./media/tutorial-micro-fulfillment-center-app/delete.png)
+![Schermopname van de pagina Toepassingsinstellingen van het micro-fulfillmentcentrum](./media/tutorial-micro-fulfillment-center-app/delete.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over de [oplossings architectuur voor micro-fulfillment Center](./architecture-micro-fulfillment-center.md).
-* Meer informatie over andere [sjablonen voor Azure IOT Central Retail](./overview-iot-central-retail.md).
-* Lees het [overzicht van Azure IOT Central](../preview/overview-iot-central.md).
+
+Meer informatie over
+> [!div class="nextstepaction"]
+> [Oplossingsarchitectuur voor het micro-fulfillmentcentrum](./architecture-micro-fulfillment-center.md)
+* Meer informatie over de [Azure IoT Central-retailsjablonen](./overview-iot-central-retail.md)
+* Meer informatie over andere [Azure IoT Central-overzichten](../preview/overview-iot-central.md)

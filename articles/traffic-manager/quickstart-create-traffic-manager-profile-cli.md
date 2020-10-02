@@ -1,6 +1,6 @@
 ---
 title: 'Quickstart: Een profiel maken voor de hoge beschikbaarheid van toepassingen - Azure CLI - Azure Traffic Manager'
-description: In dit quickstartartikel wordt beschreven hoe u een Traffic Manager-profiel maakt voor het bouwen van een webtoepassing met hoge beschikbaarheid.
+description: In dit quickstartartikel wordt beschreven hoe u een Traffic Manager-profiel maakt met Azure CLI, voor het bouwen van een webtoepassing met hoge beschikbaarheid.
 services: traffic-manager
 author: duongau
 mnager: kumud
@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 08/26/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 429d107a68c8631983bf791108f5091f31a480c3
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 3c74cceb1f0142a53b8222472d0adad8629a1ebf
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89178077"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90978104"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-cli"></a>Quickstart: Een Traffic Manager-profiel maken voor webtoepassingen met hoge beschikbaarheid met behulp van Azure CLI
 

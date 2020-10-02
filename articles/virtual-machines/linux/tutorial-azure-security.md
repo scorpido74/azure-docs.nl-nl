@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 24117e914afa0e443ce979ae71eb506156fa11b3
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 4fc8a0a4ea5063f52b6f9553018bddddd7bcf312
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830407"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90974612"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>Zelfstudie: Azure Security Center gebruiken om virtuele Linux-machines te controleren
 
@@ -41,7 +41,7 @@ Als u het Security Center-dashboard wilt openen, selecteert u in het menu van Az
 
 Security Center biedt niet alleen gegevensdetectie maar ook aanbevelingen voor gedetecteerde problemen. Als een VM bijvoorbeeld zonder een gekoppelde netwerkbeveiligingsgroep is geïmplementeerd, geeft Security Center een aanbeveling weer inclusief herstelstappen. U krijgt automatisch herstelstappen zonder de context van Security Center te verlaten.  
 
-![Aanbevelingen](./media/tutorial-azure-security/recommendations.png)
+![Schermopname toont de pagina met aanbevelingen, met daarop een beschrijving, resource, status en de ernst van de aanbevelingen.](./media/tutorial-azure-security/recommendations.png)
 
 ## <a name="set-up-data-collection"></a>Gegevensverzameling kunt instellen
 

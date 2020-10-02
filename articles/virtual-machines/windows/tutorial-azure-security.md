@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c6afdae275b98a86eba14b920a6969c967c5a7db
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 057cbd5d42eafaa693abc418de62c3ae03a6b995
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86508233"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90984591"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>Zelfstudie: Azure Security Center gebruiken om virtuele Windows-machines te bewaken
 
@@ -36,7 +36,7 @@ Als u het Security Center-dashboard wilt openen, selecteert u in het menu van Az
 
 Security Center biedt niet alleen gegevensdetectie maar ook aanbevelingen voor gedetecteerde problemen. Als een VM bijvoorbeeld zonder een gekoppelde netwerkbeveiligingsgroep is geïmplementeerd, geeft Security Center een aanbeveling weer inclusief herstelstappen. U krijgt automatisch herstelstappen zonder de context van Security Center te verlaten.  
 
-![Aanbevelingen](./media/tutorial-azure-security/recommendations.png)
+![Schermopname toont de pagina met aanbevelingen, met daarop een beschrijving, resource, status en de ernst van de aanbevelingen.](./media/tutorial-azure-security/recommendations.png)
 
 ## <a name="set-up-data-collection"></a>Gegevensverzameling kunt instellen
 

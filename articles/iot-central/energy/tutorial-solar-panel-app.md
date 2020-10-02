@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 5a48ea0747a110720a29a9c34fa2dca0f5a74f16
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: c0f4c4deaa57b1414a3ef55226e4c451b53ba72c
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309999"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90971308"
 ---
 # <a name="tutorial-create-and-walk-through-the-solar-panel-monitoring-app-template"></a>Zelfstudie: Een app maken met IoT Central om de werking van zonnepanelen bij te houden 
 
@@ -105,8 +105,9 @@ Als u besluit deze toepassing niet te blijven gebruiken, verwijdert u de toepass
     > [!div class="mx-imgBorder"]
     > ![Toepassing verwijderen](media/tutorial-iot-central-solar-panel/solar-panel-delete-app.png)
 
-
 ## <a name="next-steps"></a>Volgende stappen
-* Lees meer over de architectuur van de app voor de werking van uw zonnepaneel door dit [conceptartikel](https://docs.microsoft.com/azure/iot-central/energy/concept-iot-central-solar-panel-app) te raadplegen
+* Lees meer over de architectuur van uw zonnepaneel-app 
+> [!div class="nextstepaction"]
+> [het conceptartikel](https://docs.microsoft.com/azure/iot-central/energy/concept-iot-central-solar-panel-app)
 * Maak gratis sjablonen voor de app voor zonnepanelen: [app voor bewaking van zonnepaneel](https://apps.azureiotcentral.com/build/new/solar-panel-monitoring)
 * Zie [Overzicht van IoT Central](https://docs.microsoft.com/azure/iot-central/) voor meer informatie over IoT Central

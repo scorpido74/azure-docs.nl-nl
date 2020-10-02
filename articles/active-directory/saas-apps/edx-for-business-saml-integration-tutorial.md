@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/04/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: 1e1ec1dc4d6982194fc10a8701629adba2c8b24c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 31e8533da91fdab86313e21c20c2ebb107eef848
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544309"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660605"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-edx-for-business-saml-integration"></a>Zelfstudie: Integratie van eenmalige aanmelding bij Azure Active Directory met edX for Business SAML Integration
 
@@ -43,6 +43,9 @@ In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD 
 
 * Zodra u edX for Business SAML Integration hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
+> [!NOTE]
+> De id van deze toepassing is een vaste tekenreekswaarde zodat maar één instantie in één tenant kan worden geconfigureerd.
+
 ## <a name="adding-edx-for-business-saml-integration-from-the-gallery"></a>edX for Business SAML Integration toevoegen vanuit de galerie
 
 Voor het configureren van de integratie van edX for Business SAML Integration in Azure AD moet u edX for Business SAML Integration vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
@@ -55,7 +58,7 @@ Voor het configureren van de integratie van edX for Business SAML Integration in
 1. Selecteer **edX for Business SAML Integration** in de zoekresultaten en voeg de app vervolgens toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-edx-for-business-saml-integration"></a>Eenmalige aanmelding van Azure AD configureren en testen voor edX for Business SAML Integration
+## <a name="configure-and-test-azure-ad-sso-for-edx-for-business-saml-integration"></a>Eenmalige aanmelding van Azure AD configureren en testen voor edX for Business SAML Integration
 
 Configureer en test Azure AD-eenmalige aanmelding met edX for Business SAML Integration met behulp van een testgebruiker met de naam **B.Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in edX for Business SAML Integration.
 

@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: jeedes
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1934b6256ecf4f35c54bbc2ac497c331b2c5ee89
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f36c80b9d08f2fde07483c1dde3afe99ec9f92d7
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88543921"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90705619"
 ---
 # <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>Een OpenID/OAuth-toepassing uit de Azure AD-app-galerie configureren
 
@@ -76,13 +76,13 @@ Azure AD promoot standaard toepassingen met meerdere tenants. Ze zijn eenvoudig 
 ## <a name="consent-framework"></a>Toestemmingsframework
 
 U kunt u het Azure AD-toestemmingsframework gebruiken om clienttoepassingen met meerdere tenants (op internet en systeemeigen) te maken. Bij deze toepassingen kunnen gebruikersaccounts zich aanmelden uit Azure AD-tenants die verschillen van de tenant waarin de toepassing is geregistreerd. Mogelijk hebben ze ook toegang nodig tot web-API's zoals:
-- De Microsoft Graph-API, voor toegang tot Azure AD, Intune en services in Office 365.
+- De Microsoft Graph-API, voor toegang tot Azure AD, Intune en services in Microsoft 365.
 - De API's van andere Microsoft-services.
 - Uw eigen web-API's.
 
 Het framework is gebaseerd op een gebruiker of beheerder die toestemming geeft aan een toepassing die vraagt in de map te worden geregistreerd. De registratie kan toegang tot mapgegevens omvatten. Wanneer er toestemming is gegeven, kan de clienttoepassing de Microsoft Graph-API namens de gebruiker aanroepen en op basis van behoefte gebruikmaken van gegevens.
 
-De [Microsoft Graph-API](https://developer.microsoft.com/graph/) biedt toegang tot gegevens in Office 365, zoals:
+De [Microsoft Graph-API](https://developer.microsoft.com/graph/) biedt toegang tot gegevens in Microsoft 365, zoals:
 
 - Agenda's en berichten uit Exchange.
 - Sites en lijsten uit SharePoint.
@@ -121,7 +121,7 @@ In de volgende stappen ontdekt u hoe de toestemmingservaring werkt voor de toepa
 
 3. Als de gebruiker nog niet is geverifieerd, vraagt het Azure AD-eindpunt /authorize om aanmelding.
 
-    ![Verificatie](./media/openidoauth-tutorial/authentication.png)
+    ![Een schermopname van de aanmeldingsprompt voor het account](./media/openidoauth-tutorial/authentication.png)
 
 4. Wanneer de gebruiker zich heeft aangemeld, bepaalt Azure AD of de gebruiker een toestemmingspagina te zien krijgt. Hierbij wordt gecontroleerd of de gebruiker (of de beheerder in de organisatie) de toepassing al toestemming heeft gegeven.
 

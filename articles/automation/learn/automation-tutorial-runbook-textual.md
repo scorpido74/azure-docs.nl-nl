@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
-ms.openlocfilehash: dd9aee01edf45f89feb6a6010c8d958511bc3904
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 613ce41820dc5f388af441836bdb4a93e43e5d07
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185395"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987625"
 ---
 # <a name="tutorial-create-a-powershell-workflow-runbook"></a>Zelfstudie: Een PowerShell Workflow-runbook maken
 
@@ -109,17 +109,17 @@ De runbook die u hebt gemaakt, bevindt zich nog steeds in de modus Concept. U mo
 
 6. Merk op dat de taakstatus wordt weergegeven onder **Taaksamenvatting**. Deze status komt overeen met de statussen bij het testen van het runbook.
 
-   ![Taakoverzicht](../media/automation-tutorial-runbook-textual/job-pane-status-blade-jobsummary.png)
+   :::image type="content" source="../media/automation-tutorial-runbook-textual/job-pane-status-blade-jobsummary.png" alt-text="Schermopname van het deelvenster Taakrunbook, waarbij de sectie Taaksamenvatting is uitgelicht.":::
 
 7. Zodra voor het runbook de status Voltooid wordt weergegeven, klikt u op **Uitvoer**. De pagina Uitvoer wordt geopend waar u uw `Hello World`-bericht kunt zien.
 
-   ![Taakoverzicht](../media/automation-tutorial-runbook-textual/job-pane-status-blade-outputtile.png)
+   :::image type="content" source="../media/automation-tutorial-runbook-textual/job-pane-status-blade-outputtile.png" alt-text="Schermopname van het deelvenster Taakrunbook, waarbij de sectie Taaksamenvatting is uitgelicht.":::
 
 8. Sluit de pagina Uitvoer.
 
 9. Klik op **Alle logboeken** om het deelvenster Streams voor de runbooktaak te openen. U ziet enkel `Hello World` in de uitvoerstroom. Merk op dat er andere stromen voor een runbooktaak kunnen worden weergegeven in het deelvenster Streams, zoals uitgebreide en foutstromen als het runbook hiernaar schrijft.
 
-   ![Taakoverzicht](../media/automation-tutorial-runbook-textual/job-pane-status-blade-alllogstile.png)
+   :::image type="content" source="../media/automation-tutorial-runbook-textual/job-pane-status-blade-alllogstile.png" alt-text="Schermopname van het deelvenster Taakrunbook, waarbij de sectie Taaksamenvatting is uitgelicht.":::
 
 10. Sluit het deelvenster Streams en het deelvenster Taak om terug te gaan naar het deelvenster MyFirstRunbook.
 

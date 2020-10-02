@@ -1,6 +1,6 @@
 ---
-title: Een Azure IoT Central-toepassing maken | Microsoft Docs
-description: Maak een nieuwe Azure IoT Central-toepassing. Maak de toepassing met behulp van het gratis abonnement of een van de standaardabonnementen.
+title: Snelstart - Een Azure IoT Central-app maken | Microsoft Docs
+description: Snelstart - Een nieuwe Azure IoT Central-app maken. Maak de toepassing met behulp van het gratis abonnement of een van de standaardabonnementen.
 author: viv-liu
 ms.author: viviali
 ms.date: 07/30/2020
@@ -9,14 +9,14 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: 4b939505f807385f235def2606d0f29564f5d08f
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 477da41bab48ee49727ec2a8c029e748d6e7f863
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552574"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987379"
 ---
-# <a name="create-an-azure-iot-central-application"></a>Een Azure IoT Central-toepassing maken
+# <a name="quickstart---create-an-azure-iot-central-application"></a>Snelstart - Een Azure IoT Central-app maken
 
 In deze quickstart ziet u hoe u een Azure IoT Central-toepassing maakt.
 

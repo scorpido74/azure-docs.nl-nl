@@ -7,94 +7,121 @@ author: duongau
 editor: ''
 ms.service: frontdoor
 ms.devlang: na
-ms.topic: overview
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 4/30/2020
+ms.date: 09/09/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1ff8ca7d7c5972869de4c0d394129c591c7f4a7c
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 3366f1a16777ecf46951296e4a1c2c28aed75feb
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399069"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90031922"
 ---
-# <a name="configure-your-rules-engine"></a>Regelengine configureren
+# <a name="tutorial-configure-your-rules-engine"></a>Zelfstudie: Regelengine configureren
 
-Dit artikel bevat stappen voor het maken van een configuratie van de regelengine en uw eerste regel in de Azure-portal en CLI. 
+In deze zelfstudie leert u hoe u een configuratie van de regelengine en uw eerste regel in de Azure Portal en CLI kunt maken. 
+
+In deze zelfstudie leert u het volgende:
+> [!div class="checklist"]
+> - Regelengine configureren met behulp van de portal.
+> - Regelengine configureren met behulp van Azure CLI
+
+## <a name="prerequisites"></a>Vereisten
+
+* Voordat u de stappen in deze zelfstudie kunt voltooien, moet u een Front Door maken. Raadpleeg [Snelstartgids: Een Front Door maken](quickstart-create-front-door.md) voor meer informatie.
 
 ## <a name="configure-rules-engine-in-azure-portal"></a>Regelengine configureren in de Azure-portal
-1. Voordat u de regelengine gaat configureren, moet u [een front door maken](quickstart-create-front-door.md).
+1. Ga in de resource van de front door naar **Instellingen** en selecteer **Configuratie van regelengine**. Klik op **Toevoegen**, geef een naam op voor de configuratie en begin met het maken van uw eerste configuratie van de regelengine.
 
-2. Ga in de resource van de front door naar **Instellingen** en selecteer **Configuratie van regelengine**. Klik op **Toevoegen**, geef een naam op voor de configuratie en begin met het maken van uw eerste configuratie van de regelengine.
+    ![Het menu Instellingen voor Front Door](./media/front-door-rules-engine/rules-engine-tutorial-1.png)
 
-    ![Locatie van regelengine](./media/front-door-rules-engine/rules-engine-tutorial-1.png)
-
-3. Klik op **Regel toevoegen** om uw eerste regel te maken. Klik vervolgens op **Voorwaarde toevoegen** of **Actie toevoegen** om de regel te definiëren.
+1. Klik op **Regel toevoegen** om uw eerste regel te maken. Klik vervolgens op **Voorwaarde toevoegen** of **Actie toevoegen** om de regel te definiëren.
     
     > [!NOTE]
     >- Als u een voorwaarde of actie wilt verwijderen uit een regel, gebruikt u het pictogram Prullenbak rechts van de voorwaarde of actie die u wilt verwijderen.
     > - Als u een regel wilt maken die van toepassing is op alle binnenkomend verkeer, geeft u geen voorwaarden op.
     > - Als u wilt stoppen met het evalueren van regels zodra aan de eerste voorwaarde is voldaan, selecteert u **Stoppen met evalueren van resterende regels**. Als deze optie is ingeschakeld en aan alle voorwaarden van een bepaalde regel wordt voldaan, worden de resterende regels in de configuratie niet uitgevoerd.  
 
-    ![Locatie van regelengine](./media/front-door-rules-engine/rules-engine-tutorial-4.png) 
+    ![Configuratie van een regelengine](./media/front-door-rules-engine/rules-engine-tutorial-4.png) 
 
-4. Bepaal de prioriteit van de regels binnen uw configuratie met behulp van de knoppen Omhoog, Omlaag en Bovenaan. De prioriteit werkt in oplopende volgorde, wat betekent dat de regel die het eerst wordt vermeld, de belangrijkste regel is.
+1. Bepaal de prioriteit van de regels binnen uw configuratie met behulp van de knoppen Omhoog, Omlaag en Bovenaan. De prioriteit werkt in oplopende volgorde, wat betekent dat de regel die het eerst wordt vermeld, de belangrijkste regel is.
 
-5. Als u een of meer regels hebt gemaakt, selecteert u **Opslaan**. De configuratie van de regelengine wordt nu gemaakt.
+1. Als u een of meer regels hebt gemaakt, selecteert u **Opslaan**. De configuratie van de regelengine wordt nu gemaakt.
 
-6. Wanneer u een of meer configuraties hebt gemaakt, koppelt u een configuratie van de regelengine aan een routeregel. Hoewel één configuratie kan worden toegepast op verschillende routeregels, mag een routeregel slechts één configuratie van de regelengine bevatten. Als u de koppeling wilt maken, gaat u naar de **ontwerpfunctie van Front Door** > **Routeregels**. Selecteer de routeregel waaraan u de configuratie van de regelengine wilt toevoegen, ga naar **Routedetails** > **Configuratie van regelengine**en selecteer de configuratie die u wilt koppelen.
+1. Wanneer u een of meer configuraties hebt gemaakt, koppelt u een configuratie van de regelengine aan een routeregel. Hoewel één configuratie kan worden toegepast op verschillende routeregels, mag een routeregel slechts één configuratie van de regelengine bevatten. Als u de koppeling wilt maken, gaat u naar de **ontwerpfunctie van Front Door** > **Routeregels**. Selecteer de routeregel waaraan u de configuratie van de regelengine wilt toevoegen, ga naar **Routedetails** > **Configuratie van regelengine**en selecteer de configuratie die u wilt koppelen.
 
-    ![Locatie van regelengine](./media/front-door-rules-engine/rules-engine-tutorial-5.png)
+    ![Configureren voor een routeringsregel](./media/front-door-rules-engine/rules-engine-tutorial-5.png)
 
 
 ## <a name="configure-rules-engine-in-azure-cli"></a>Regelengine configureren in de Azure CLI
 
-1. Installeer [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) als u dat nog niet hebt gedaan. Voeg de extensie 'front-door' toe: -az extension add --name front-door. Meld u vervolgens aan en schakel over naar uw abonnement met az account set --subscription <naam_of_id>.
+1. Installeer [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) als u dat nog niet hebt gedaan. Voeg de extensie 'front-door' toe: -az extension add --name front-door. Meld u vervolgens aan en schakel over naar uw abonnement met az account set --subscription <naam_of_id>.
 
-2. Begin met het maken van een regelengine. In dit voorbeeld maakt u één regel met één actie op basis van de header en één match-voorwaarde. 
+1. Begin met het maken van een regelengine. In dit voorbeeld maakt u één regel met één actie op basis van de header en één match-voorwaarde. 
 
-```azurecli-interactive
-az network front-door rules-engine rule create -f {front_door} -g {resource_group} --rules-engine-name {rules_engine} --name {rule1} --priority 1 --action-type RequestHeader --header-action Overwrite --header-name Rewrite --header-value True --match-variable RequestFilenameExtension --operator Contains --match-values jpg png --transforms Lowercase
-```
+    ```azurecli-interactive
+    az network front-door rules-engine rule create -f {front_door} -g {resource_group} --rules-engine-name {rules_engine} --name {rule1} --priority 1 --action-type RequestHeader --header-action Overwrite --header-name Rewrite --header-value True --match-variable RequestFilenameExtension --operator Contains --match-values jpg png --transforms Lowercase
+    ```
 
-3. Geef alle regels weer. 
+1. Geef alle regels weer. 
 
-```azurecli-interactive
-az network front-door rules-engine rule list -f {front_door} -g {rg} --name {rules_engine}
-```
+    ```azurecli-interactive
+    az network front-door rules-engine rule list -f {front_door} -g {rg} --name {rules_engine}
+    ```
 
-4. Voeg een actie toe voor het overschrijven van een doorstuurroute. 
+1. Voeg een actie toe voor het overschrijven van een doorstuurroute. 
 
-```azurecli-interactive
-az network front-door rules-engine rule action add -f {front_door} -g {rg} --rules-engine-name {rules_engine} --name {rule1} --action-type ForwardRouteOverride --backend-pool {backend_pool_name} --caching Disabled
-```
+    ```azurecli-interactive
+    az network front-door rules-engine rule action add -f {front_door} -g {rg} --rules-engine-name {rules_engine} --name {rule1} --action-type ForwardRouteOverride --backend-pool {backend_pool_name} --caching Disabled
+    ```
 
-5. Geef alle acties in een regel weer. 
+1. Geef alle acties in een regel weer. 
 
-```azurecli-interactive
-az network front-door rules-engine rule action list -f {front_door} -g {rg} -r {rules_engine} --name {rule1}
-```
+    ```azurecli-interactive
+    az network front-door rules-engine rule action list -f {front_door} -g {rg} -r {rules_engine} --name {rule1}
+    ```
 
-6. Koppel een configuratie van de regelengine aan een routeregel.  
+1. Koppel een configuratie van de regelengine aan een routeregel.  
 
-```azurecli-interactive
-az network front-door routing-rule update -g {rg} -f {front_door} -n {routing_rule_name} --rules-engine {rules_engine}
-```
+    ```azurecli-interactive
+    az network front-door routing-rule update -g {rg} -f {front_door} -n {routing_rule_name} --rules-engine {rules_engine}
+    ```
 
-7. Koppel de regelengine los. 
+1. Koppel de regelengine los. 
 
-```azurecli-interactive
-az network front-door routing-rule update -g {rg} -f {front_door} -n {routing_rule_name} --remove rulesEngine # case sensitive word ‘rulesEngine’
-```
+    ```azurecli-interactive
+    az network front-door routing-rule update -g {rg} -f {front_door} -n {routing_rule_name} --remove rulesEngine # case sensitive word ‘rulesEngine’
+    ```
 
-Voor meer informatie vindt u [hier](https://docs.microsoft.com/cli/azure/ext/front-door/network/front-door/rules-engine?view=azure-cli-latest) een volledige lijst met opdrachten voor de AFD-regelengine.   
+Voor meer informatie vindt u [hier](https://docs.microsoft.com/cli/azure/ext/front-door/network/front-door/rules-engine?view=azure-cli-latest&preserve-view=true) een volledige lijst met opdrachten voor de AFD-regelengine.   
+
+## <a name="clean-up-resources"></a>Resources opschonen
+
+In de voorgaande stappen hebt u de configuratie van de regelengine geconfigureerd en gekoppeld aan uw routeringsregels. Als u de configuratie van de regelengine die aan uw Front door is gekoppeld niet meer wilt, kunt u de configuratie verwijderen door de volgende stappen uit te voeren:
+
+1. Koppel alle routeringsregels uit de configuratie van de regelengine los door te klikken op de drie stippen naast de naam van de regelengine.
+
+    :::image type="content" source="./media/front-door-rules-engine/front-door-rule-engine-routing-association.png" alt-text="Routeringsregels koppelen":::
+
+1. Schakel alle routeringsregels uit waaraan deze regelengine-configuratie is gekoppeld en klik op Opslaan.
+
+    :::image type="content" source="./media/front-door-rules-engine/front-door-routing-rule-association.png" alt-text="Routeringsregels koppelen":::
+
+1. U kunt nu de configuratie van de regelengine verwijderen van uw Front Door.
+
+    :::image type="content" source="./media/front-door-rules-engine/front-door-delete-rule-engine-configuration.png" alt-text="Routeringsregels koppelen":::
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [AFD-regelengine](front-door-rules-engine.md). 
-- Lees hoe u [een Front Door maakt](quickstart-create-front-door.md).
-- Lees [hoe Front Door werkt](front-door-routing-architecture.md).
-- Meer informatie vindt u in de [CLI-referentie](https://docs.microsoft.com/cli/azure/ext/front-door/network/front-door/rules-engine?view=azure-cli-latest) van de AFD-regelengine. 
-- Meer informatie vindt u in de [PowerShell-referentie](https://docs.microsoft.com/powershell/module/az.frontdoor/?view=azps-3.8.0) van de AFD-regelengine. 
+In deze zelfstudie heeft u het volgende geleerd:
+
+* Een regelengine-configuratie verwijderen
+* Koppel de configuratie aan uw Front Door-routeringsregels.
+
+Ga naar de volgende zelfstudie om te leren hoe u beveiligingskopteksten kunt toevoegen met de regelengine.
+
+> [!div class="nextstepaction"]
+> [Beveiligingsheaders met de regelengine](front-door-security-headers.md)

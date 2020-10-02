@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/20/2020
+ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: f4a4c38cf079c22dbd2b8eda5e68cc3f147b1fc0
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 84db28348baebc4f6b62f9cacb0035b4df1f6145
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88534947"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89660764"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-meraki-dashboard"></a>Zelfstudie: Integratie van eenmalige aanmelding (SSO) van Azure Active Directory met Meraki Dashboard
 
@@ -42,6 +42,9 @@ In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD 
 * Meraki Dashboard biedt ondersteuning voor door **IDP** geïnitieerde eenmalige aanmelding
 * Zodra u Meraki Dashboard hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
+> [!NOTE]
+> De id van deze toepassing is een vaste tekenreekswaarde zodat maar één instantie in één tenant kan worden geconfigureerd.
+
 ## <a name="adding-meraki-dashboard-from-the-gallery"></a>Meraki Dashboard toevoegen vanuit de galerie
 
 Voor het configureren van de integratie van Meraki Dashboard in Azure Active Directory, moet u Meraki Dashboard vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
@@ -53,7 +56,7 @@ Voor het configureren van de integratie van Meraki Dashboard in Azure Active Dir
 1. Typ in de sectie **Toevoegen uit de galerie** **Meraki Dashboard** in het zoekvak.
 1. Selecteer **Meraki Dashboard** in de resultaten en voeg de app toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-meraki-dashboard"></a>Eenmalige aanmelding van Azure AD configureren en testen voor Meraki Dashboard
+## <a name="configure-and-test-azure-ad-sso-for-meraki-dashboard"></a>Eenmalige aanmelding van Azure AD configureren en testen voor Meraki Dashboard
 
 Configureer en test eenmalige aanmelding van Azure AD met Meraki Dashboard met behulp van een testgebruiker met de naam **B.Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Meraki Dashboard.
 
@@ -147,15 +150,15 @@ In deze sectie stelt u in dat B.Simon eenmalige aanmelding van Azure kan gebruik
 
 1. Navigeer naar **Organization** -> **Settings**.
 
-    ![Configuratie van Meraki Dashboard](./media/meraki-dashboard-tutorial/configure1.png)
+    ![Het tabblad Instellingen op het Meraki-dashboard](./media/meraki-dashboard-tutorial/configure1.png)
 
 1. Onder Authentication wijzigt u **SAML SSO** in **SAML SSO enabled**.
 
-    ![Configuratie van Meraki Dashboard](./media/meraki-dashboard-tutorial/configure2.png)
+    ![Meraki-dashboardverificatie](./media/meraki-dashboard-tutorial/configure2.png)
 
 1. Klik op **Add a SAML IdP**.
 
-    ![Configuratie van Meraki Dashboard](./media/meraki-dashboard-tutorial/configure3.png)
+    ![Een SAML-IdP toevoegen op het Meraki-dashboard](./media/meraki-dashboard-tutorial/configure3.png)
 
 1. Plak de waarde van **Thumbprint**, die u vanuit Azure Portal hebt gekopieerd in het tekstvak **X.590 cert SHA1 fingerprint**. Klik vervolgens op **Opslaan**. Na het opslaan wordt de URL van de consument weergegeven. Kopieer de URL van de consument in het tekstvak **Reply URL** in de sectie **Basic SAML Configuration** in Azure Portal.
 
@@ -167,15 +170,15 @@ In deze sectie stelt u in dat B.Simon eenmalige aanmelding van Azure kan gebruik
 
 1. Navigeer naar **Organization** -> **Administrators**.
 
-    ![Configuratie van Meraki Dashboard](./media/meraki-dashboard-tutorial/user1.png)
+    ![Meraki-dashboardbeheerders](./media/meraki-dashboard-tutorial/user1.png)
 
 1. Klik in de sectie voor de SAML-beheerdersrollen op de knop **Add SAML role**.
 
-    ![Configuratie van Meraki Dashboard](./media/meraki-dashboard-tutorial/user2.png)
+    ![Knop voor toevoegen van SAML-rol op het Meraki-dashboard](./media/meraki-dashboard-tutorial/user2.png)
 
 1. Voer de rol **meraki_full_admin** in, markeer **Organization access** als **Full** en klik op **Create role**. Herhaal het proces voor **meraki_readonly_admin**, maar markeer **Organization access** dit keer als **Read-only**.
  
-    ![Configuratie van Meraki Dashboard](./media/meraki-dashboard-tutorial/user3.png)
+    ![Een gebruiker maken op het Meraki-dashboard](./media/meraki-dashboard-tutorial/user3.png)
 
 ## <a name="test-sso"></a>Eenmalige aanmelding testen 
 
@@ -194,6 +197,3 @@ Wanneer u in het toegangsvenster op de tegel Meraki Dashboard klikt, zou u autom
 - [Meraki Dashboard met Azure AD uitproberen](https://aad.portal.azure.com/)
 
 - [Wat is sessiebeheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
-- [Meraki Dashboard beveiligen met geavanceerde zichtbaarheid en besturingselementen](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-

@@ -1,14 +1,14 @@
 ---
-title: ISM-BEVEILIGING Australische overheid blauwdrukvoorbeeldoverzicht
-description: Overzicht van blauwdrukvoorbeeld van de ISM-BEVEILIGING van de Australische overheid. Met dit blauwdrukvoorbeeld kunnen klanten specifieke beheeropties van ISM-BEVEILIGING bekijken.
-ms.date: 08/03/2020
+title: Besturingselementen in het voorbeeld van het ISM-BEVEILIGING-blauwdrukvoorbeeld voor de Australische overheid
+description: Toewijzing van beheeropties van het blauwdrukvoorbeeld van de ISM-BEVEILIGING van de Australische overheid. Elke beheeroptie wordt toegewezen aan een of meer Azure Policy-definities die helpen bij de evaluatie.
+ms.date: 09/11/2020
 ms.topic: sample
-ms.openlocfilehash: 750cc5551f0bbf05e0da6ad41d46729231243f72
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 605e92b75da1e5363884fc6ef9457251cfbc6e4e
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760427"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030103"
 ---
 # <a name="control-mapping-of-the-australian-government-ism-protected-blueprint-sample"></a>Toewijzing van beheeropties van het blauwdrukvoorbeeld van de ISM-BEVEILIGING van de Australische overheid
 
@@ -350,6 +350,10 @@ Met deze blauwdruk kunt u de locatie voor de implementatie van alle resources en
 ## <a name="next-steps"></a>Volgende stappen
 
 Aanvullende artikelen over blauwdrukken en het gebruik hiervan:
+
+> [!div class="nextstepaction"]
+> [ISM BEVEILIGING-blauwdruk - Overzicht](./index.md)
+> [ISM BEVEILIGING-blauwdruk - Implementatiestappen](./deploy.md)
 
 - Meer informatie over de [levenscyclus van een blauwdruk](../../concepts/lifecycle.md).
 - Meer informatie over hoe u [statische en dynamische parameters](../../concepts/parameters.md) gebruikt.

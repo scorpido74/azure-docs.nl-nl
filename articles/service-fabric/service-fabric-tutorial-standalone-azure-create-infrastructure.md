@@ -4,12 +4,12 @@ description: In deze zelfstudie leert u hoe u de Azure-VM-infrastructuur instelt
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 93a7e2507ab3a467ef83924479872694cae2dd5b
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: e9f62f944fff331bcf2dad1b380161e563614219
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "75614006"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90561837"
 ---
 # <a name="tutorial-create-azure-vm-infrastructure-to-host-a-service-fabric-cluster"></a>Zelfstudie: Azure-VM-infrastructuur maken voor het hosten van een Service Fabric-cluster
 
@@ -49,7 +49,7 @@ U hebt een Azure-abonnement nodig om deze zelfstudie te voltooien.  Als u nog ge
 
 8. Stel vervolgens de **NIC-netwerkbeveiligingsgroep** in op **Geavanceerd**. Maak een nieuwe beveiligingsgroep, noteer de naam ervan en maak de volgende regels om TCP-verkeer van elke bron toe te staan:
 
-   ![sf-inbound][sf-inbound]
+   ![Schermopname met het maken van regels om inkomend TCP-verkeer toe te staan.][sf-inbound]
 
    * Poort `3389`, voor RDP en ICMP (basisconnectiviteit).
    * Poort `19000-19003`, voor Service Fabric.
@@ -61,7 +61,7 @@ U hebt een Azure-abonnement nodig om deze zelfstudie te voltooien.  Als u nog ge
 
 9. Voeg nog een regel toe. Stel de bron in op **Servicetag** en stel de bronservicetag in op **VirtualNetwork**. Voor Service Fabric moeten de volgende poorten zijn geopend voor communicatie binnen het cluster: 135, 137-139, 445, 20001-20031 en 20606-20861.
 
-   ![vnet-inbound][vnet-inbound]
+   ![Schermopname met het maken van regels om TCP-verkeer toe te staan voor een cluster.][vnet-inbound]
 
 10. Voor de rest van de opties kunt u de standaardinstelling accepteren. Controleer deze, indien gewenst, en start vervolgens de virtuele machine.
 

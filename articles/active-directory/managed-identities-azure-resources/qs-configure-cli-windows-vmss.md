@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/26/2019
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3915108b9bd182053b62ee427fb95b5b984233db
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: caf37fcd236f1483580d007d1432284116f728ca
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89255321"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90969043"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-azure-cli"></a>Beheerde identiteiten voor Azure-resources configureren op een virtuele-machineschaalset met Azure CLI
 
@@ -45,15 +45,9 @@ In dit artikel leert u hoe u de volgende beheerde identiteiten uitvoert voor bew
     - [Inzender voor virtuele machines](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) voor het maken van een virtuele-machineschaalset en het inschakelen en verwijderen van een door het systeem en/of de gebruiker toegewezen beheerde identiteit op/uit een virtuele-machineschaalset.
     - De rol van [inzender voor beheerde identiteit](../../role-based-access-control/built-in-roles.md#managed-identity-contributor) voor het maken van een door de gebruiker toegewezen beheerde identiteit.
     - De rol van [operator voor beheerde identiteit](../../role-based-access-control/built-in-roles.md#managed-identity-operator) voor het toewijzen/verwijderen van een door de gebruiker toegewezen beheerde identiteit aan/uit een virtuele-machine schaalset.
-- Als u de CLI-scriptvoorbeelden wilt uitvoeren, hebt u drie opties:
-    - Gebruik [Azure Cloud Shell](../../cloud-shell/overview.md) vanaf Azure Portal (zie volgende sectie).
-    - Gebruik de ingesloten Azure Cloud Shell via de knop 'Nu proberen' in de rechterbovenhoek van elk codeblok.
-    - [Installeer de nieuwste versie van de Azure CLI](/cli/azure/install-azure-cli) (2.0.13 of later) als u liever een lokale CLI-console gebruikt. 
-      
-      > [!NOTE]
-      > De opdrachten zijn bijgewerkt zodat de meest recente versie van de [Azure CLI](/cli/azure/install-azure-cli) wordt weergegeven.
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+- Als u de voorbeeldscripts wilt uitvoeren, hebt u twee opties:
+    - Gebruik de [Azure Cloud Shell](../../cloud-shell/overview.md), die u kunt openen met behulp van de knop **Probeer het nu** in de rechterbovenhoek van Code::Blocks.
+    - Voer scripts lokaal uit door de nieuwste versie van de [Azure CLI](/cli/azure/install-azure-cli) te installeren en u vervolgens aan te melden bij Azure met [az login](/cli/azure/reference-index#az-login). Gebruik een account dat is gekoppeld aan het Azure-abonnement waarin u resources wilt maken.
 
 ## <a name="system-assigned-managed-identity"></a>Door het systeem toegewezen beheerde identiteit
 
@@ -63,19 +57,13 @@ In deze sectie leert u hoe u de door het systeem toegewezen beheerde identiteit 
 
 Doe het volgende om een virtuele-machineschaalset te maken met de door het systeem toegewezen beheerde identiteit ingeschakeld:
 
-1. Als u de Azure CLI in een lokale console gebruikt, meldt u zich eerst aan bij Azure met [az login](/cli/azure/reference-index#az-login). Gebruik een account dat is gekoppeld aan het Azure-abonnement waaronder u de virtuele-machineschaalset wilt implementeren:
-
-   ```azurecli-interactive
-   az login
-   ```
-
-2. Maak met [az group create](/cli/azure/group/#az-group-create) een [resourcegroep](../../azure-resource-manager/management/overview.md#terminology) voor de insluiting en implementatie van uw virtuele-machineschaalset en de bijbehorende resources. U kunt deze stap overslaan als u al een resourcegroep hebt die u in plaats daarvan wilt gebruiken:
+1. Maak met [az group create](/cli/azure/group/#az-group-create) een [resourcegroep](../../azure-resource-manager/management/overview.md#terminology) voor de insluiting en implementatie van uw virtuele-machineschaalset en de bijbehorende resources. U kunt deze stap overslaan als u al een resourcegroep hebt die u in plaats daarvan wilt gebruiken:
 
    ```azurecli-interactive 
    az group create --name myResourceGroup --location westus
    ```
 
-3. [Maak](/cli/azure/vmss/#az-vmss-create) een virtuele-machineschaalset. In het volgende voorbeeld wordt een virtuele-machineschaalset met de naam *myVMSS* gemaakt met een door het systeem toegewezen beheerde identiteit, zoals is aangevraagd met de parameter `--assign-identity`. Met de parameters `--admin-username` en `--admin-password` worden de naam van de gebruiker met beheerdersrechten en het wachtwoord van het account voor aanmelding bij de virtuele machine opgegeven. Werk deze waarden bij met waarden die geschikt zijn voor uw omgeving: 
+1. [Maak](/cli/azure/vmss/#az-vmss-create) een virtuele-machineschaalset. In het volgende voorbeeld wordt een virtuele-machineschaalset met de naam *myVMSS* gemaakt met een door het systeem toegewezen beheerde identiteit, zoals is aangevraagd met de parameter `--assign-identity`. Met de parameters `--admin-username` en `--admin-password` worden de naam van de gebruiker met beheerdersrechten en het wachtwoord van het account voor aanmelding bij de virtuele machine opgegeven. Werk deze waarden bij met waarden die geschikt zijn voor uw omgeving: 
 
    ```azurecli-interactive 
    az vmss create --resource-group myResourceGroup --name myVMSS --image win2016datacenter --upgrade-policy-mode automatic --custom-data cloud-init.txt --admin-username azureuser --admin-password myPassword12 --assign-identity --generate-ssh-keys
@@ -83,19 +71,11 @@ Doe het volgende om een virtuele-machineschaalset te maken met de door het syste
 
 ### <a name="enable-system-assigned-managed-identity-on-an-existing-azure-virtual-machine-scale-set"></a>Een door het systeem toegewezen beheerde identiteit inschakelen op een bestaande virtuele-machineschaalset van Azure
 
-Als u de door het systeem toegewezen beheerde identiteit moet inschakelen op een bestaande virtuele-machineschaalset van Azure:
+Als u de door het systeem toegewezen beheerde identiteit moet [Inschakelen](/cli/azure/vmss/identity/#az-vmss-identity-assign) op een bestaande virtuele-machineschaalset van Azure:
 
-1. Als u de Azure CLI in een lokale console gebruikt, meldt u zich eerst aan bij Azure met [az login](/cli/azure/reference-index#az-login). Gebruik een account dat is gekoppeld aan het Azure-abonnement dat de virtuele-machineschaalset bevat.
-
-   ```azurecli-interactive
-   az login
-   ```
-
-2. Een door het systeem toegewezen beheerde identiteit [inschakelen](/cli/azure/vmss/identity/#az-vmss-identity-assign) op een bestaande VM:
-
-   ```azurecli-interactive
-   az vmss identity assign -g myResourceGroup -n myVMSS
-   ```
+```azurecli-interactive
+az vmss identity assign -g myResourceGroup -n myVMSS
+```
 
 ### <a name="disable-system-assigned-managed-identity-from-an-azure-virtual-machine-scale-set"></a>Een door het systeem toegewezen beheerde identiteit uitschakelen vanuit een virtuele-machineschaalset van Azure
 
@@ -114,9 +94,7 @@ Gebruik de volgende opdracht als u een virtuele machine hebt die geen door het s
 az vmss update -n myVM -g myResourceGroup --set identity.type="none"
 ```
 
-
-
-## <a name="user-assigned-managed-identity"></a>door een gebruiker toegewezen beheerde identiteit
+## <a name="user-assigned-managed-identity"></a>Door een gebruiker toegewezen beheerde identiteit
 
 In deze sectie leert u hoe u een door een gebruiker toegewezen beheerde identiteit kunt inschakelen en verwijderen met behulp van Azure CLI.
 
@@ -216,6 +194,4 @@ az vmss update -n myVMSS -g myResourceGroup --set identity.type='SystemAssigned'
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Overzicht van beheerde identiteiten voor Azure-resources](overview.md)
-- Zie het volgende artikel voor de volledige Quickstart voor het maken van virtuele-machineschaalsets van Azure: 
-
-  - [Een virtuele-machineschaalset maken met CLI](../../virtual-machines/linux/tutorial-create-vmss.md#create-a-scale-set)
+- Voor de volledige quickstart voor het maken van Azure virtuele-machineschaalsets, zie [Een virtuele-machineschaalset maken met CLI](../../virtual-machines/linux/tutorial-create-vmss.md#create-a-scale-set)

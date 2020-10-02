@@ -2,18 +2,18 @@
 title: Zelfstudie voor Azure Data Box bestellen | Microsoft Docs
 description: In deze zelfstudie leert u over Azure Data Box, een hybride oplossing waarmee u on-premises gegevens kunt importeren in Azure en hoe u Azure Data Box kunt bestellen.
 services: databox
-author: twooley
+author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 07/21/2020
-ms.author: twooley
-ms.openlocfilehash: 2000ecc84a92bef5ad6b80fecde4aee0157e4bc5
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.date: 09/15/2020
+ms.author: alkohli
+ms.openlocfilehash: c2d971c2c9375f58fd5f41a46716fac4bff29f88
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783566"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604305"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Zelfstudie: Azure Data Box bestellen
 
@@ -138,7 +138,7 @@ Zorg voordat u begint dat u het volgende hebt gedaan:
 * Windows PowerShell 6.2.4 of hoger installeren.
 * De AZ-module van Azure PowerShell installeren.
 * De Azure Data Box-module (Az.DataBox) installeren.
-* Aanmelden bij Azure.
+* Meld u aan bij Azure.
 
 #### <a name="install-azure-powershell-and-modules-locally"></a>Azure PowerShell en modules lokaal installeren
 
@@ -268,8 +268,21 @@ Voer de volgende stappen uit in Azure Portal om een apparaat te bestellen.
     ![Data Box-bestelling voor beheerde schijf](media/data-box-deploy-ordered/select-data-box-import-07b.png)
 
     Het opslagaccount dat is opgegeven voor beheerde schijven wordt gebruikt als een opslagaccount waarin de gegevens worden klaargezet. De Data Box-service uploadt de virtuele harde schijven als pagina-blobs naar dit opslagaccount waarna de schijven worden omgezet in beheerde schijven en naar de resourcegroepen worden verplaatst. Zie [Uploaden van gegevens naar Azure controleren](data-box-deploy-picked-up.md#verify-data-upload-to-azure) voor meer informatie.
+   > [!NOTE]
+   > Als een pagina-blob niet naar een beheerde schijf is geconverteerd, blijft deze in het opslagaccount en worden er kosten in rekening gebracht voor opslag.
 
-    Selecteer **Volgende: Contactgegevens** om verder te gaan.
+    Selecteer **Volgende: Beveiliging** om door te gaan.
+
+1. Als u dubbele versleuteling op basis van software wilt inschakelen, selecteert u onder **Beveiliging** de optie **Dubbele versleuteling inschakelen voor de volgorde**. 
+
+   De op software gebaseerde versleuteling wordt uitgevoerd naast de AES-256-bits versleuteling van de gegevens op de Data Box.
+
+   > [!NOTE]
+   > Als u deze optie inschakelt, kan verwerking van de opdracht en het kopiëren van gegevens langer duren. U kunt deze optie niet wijzigen nadat u uw opdracht hebt gemaakt.
+
+   ![Beveiligingsscherm voor het importeren in Data Box, dubbele versleuteling](media/data-box-deploy-ordered/select-data-box-import-07c.png)
+
+   Selecteer **Volgende: Contactgegevens** om verder te gaan.
 
 8. Selecteer in **Contactgegevens** de optie **+ Verzendadres toevoegen**.
 

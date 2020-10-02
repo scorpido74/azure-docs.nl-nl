@@ -3,12 +3,12 @@ title: 'Azure Event Hubs: gebeurtenissen van Apache Kafka verwerken'
 description: 'Zelfstudie: In dit artikel wordt beschreven hoe u Kafka-gebeurtenissen verwerkt die via Event Hubs worden opgenomen met behulp van Azure Stream Analytics'
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: 6dfca5b476dff1ee3367b5365c15869c8cff819b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1f0c7bf40b721a3f35fcf68c71cb38a4302a56f6
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074916"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90531284"
 ---
 # <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Zelfstudie: Apache Kafka voor Event Hubs-gebeurtenissen verwerken met behulp van Stream Analytics 
 In dit artikel wordt beschreven hoe u gegevens streamt naar Event Hubs en hoe u deze verwerkt met Azure Stream Analytics. U wordt door de volgende stappen geleid: 
@@ -136,7 +136,7 @@ Nadat u een Stream Analytics-taak zodanig hebt ingesteld dat een binnenkomende g
 3. Vervang `[YourInputAlias]` door de invoeralias die u eerder hebt gemaakt. 
 4. Selecteer **Opslaan** op de werkbalk. 
 
-    ![Query’s uitvoeren](./media/event-hubs-kafka-stream-analytics/query.png)
+    ![Schermopname van het queryvenster met waarden voor invoer- en uitvoervariabelen.](./media/event-hubs-kafka-stream-analytics/query.png)
 
 
 ### <a name="run-the-stream-analytics-job"></a>De Stream Analytics-taak uitvoeren

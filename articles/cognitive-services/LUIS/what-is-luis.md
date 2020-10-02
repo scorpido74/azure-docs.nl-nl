@@ -1,24 +1,26 @@
 ---
 title: Wat is Language Understanding (LUIS)?
 description: 'Language Understanding (LUIS): een API-cloudservice waarbij machine learning wordt toegepast op natuurlijke spreektaal om betekenissen te voorspellen en informatie te extraheren.'
-keywords: Azure, artificial intelligence, ai, natural language processing, nlp, natural language understanding, nlu, ai conversation, conversational ai, ai chatbot, chatbot maker, LUIS, nlp ai, luis ai, azure luis, understanding natural language
+keywords: Azure, kunstmatige intelligentie, ai, natuurlijke taalverwerking, nlp, natuurlijk taalbegrip, nlu, LUIS, AI met gespreksfuncties, AI-chatbot, nlp AI, Azure LUIS
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: overview
 ms.date: 09/02/2020
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: ff9aa2652fe8a1e503b5e2c93ca149112770b081
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 242d131e79966ebdb286a20f75d20f91f5fa7406
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400939"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334647"
 ---
 # <a name="what-is-language-understanding-luis"></a>Wat is Language Understanding (LUIS)?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Language Understanding (LUIS) is een API-cloudservice die aangepaste machine-learning-intelligence toepast op tekst in natuurlijke spreektaal van een gebruiker om daar de algemene betekenis en relevante detailinformatie uit te destilleren.
+Language Understanding (LUIS) is een cloudgebaseerde AI met gespreksfuncties die aangepaste machine-learningintelligentie toepast op de natuurlijke spreektaal van een gebruiker in tekstvorm om daar de algemene betekenis van te voorspellen en relevante detailinformatie uit te destilleren.
 
-Een clienttoepassing voor LUIS is een gesprekstoepassing waarin een gebruiker in natuurlijke taal communiceert om een taak te voltooien. Voorbeelden van clienttoepassingen zijn socialemedia-apps, chatbots en met spraak bestuurde bureaubladtoepassingen.
+Een clienttoepassing voor LUIS is een gesprekstoepassing waarin een gebruiker in natuurlijke taal communiceert om een taak te voltooien. Voorbeelden van clienttoepassingen zijn sociale media-apps, AI chatbots en met spraak bestuurde bureaubladtoepassingen.
 
 ![Conceptuele afbeelding van 3 clienttoepassingen die werken met Cognitive Services Language Understanding (LUIS)](./media/luis-overview/luis-entry-point.png "Conceptuele afbeelding van 3 clienttoepassingen die werken met Cognitive Services Language Understanding (LUIS)")
 
@@ -26,7 +28,7 @@ Een clienttoepassing voor LUIS is een gesprekstoepassing waarin een gebruiker in
 
 <a name="Accessing-LUIS"></a>
 
-Als de LUIS-app is gepubliceerd, worden uitingen (tekst) door een clienttoepassing verzonden naar de [API][endpoint-apis] van het eindpunt voor verwerking van natuurlijke taal in LUIS en worden de resultaten ontvangen als JSON-antwoorden. Een algemene clienttoepassing voor LUIS is een chatbot.
+Wanneer de LUIS-app is gepubliceerd, worden uitingen (tekst) door een clienttoepassing verzonden naar de eindpunt-[API][endpoint-apis] voor verwerking van natuurlijke taal in LUIS en worden de resultaten ontvangen als JSON-antwoorden. Een algemene clienttoepassing voor LUIS is een chatbot.
 
 
 ![Conceptuele afbeelding van LUIS die met Chat bot werkt om gebruikerstekst te voorspellen met begrip van natuurlijk taalgebruik (NLP)](./media/luis-overview/LUIS-chat-bot-request-response.svg "Conceptuele afbeelding van LUIS die met Chat bot werkt om gebruikerstekst te voorspellen met begrip van natuurlijk taalgebruik (NLP)")
@@ -44,7 +46,7 @@ De LUIS-app levert intelligence zodat er slimme keuzen kunnen worden gemaakt in 
 
 ## <a name="natural-language-understanding-nlu"></a>NLU (natuurlijk taalbegrip)
 
-[LUIS biedt kunstmatige intelligentie (AI)](artificial-intelligence.md "LUIS biedt kunstmatige intelligentie (AI)") in de vorm van NLU, een subset van NLP (natuurlijke taalverwerking).
+[LUIS biedt kunstmatige intelligentie (AI)](artificial-intelligence.md "LUIS biedt kunstmatige intelligentie (AI)") in de vorm van NLU, een subset van AI voor natuurlijke taalverwerking.
 
 Uw LUIS-app bevat een domein-specifiek model voor natuurlijke taal. U kunt de LUIS-app starten met een vooraf gedefinieerd domeinmodel, uw eigen model bouwen of onderdelen van een vooraf gedefinieerd domein combineren met uw eigen aangepaste gegevens.
 
@@ -52,7 +54,7 @@ Uw LUIS-app bevat een domein-specifiek model voor natuurlijke taal. U kunt de LU
 
 * **Aangepast model** LUIS biedt u een aantal manieren om uw eigen aangepaste modellen e identificeren, inclusief intenties en entiteiten. Entiteiten zijn machine learning-entiteiten, specifieke of letterlijke entiteiten, en een combinatie van machine learning en letterlijk.
 
-Leer meer over [NLP](artificial-intelligence.md "NLP") en het specifieke gebied van NLU voor LUIS.
+Leer meer over [NLP AI](artificial-intelligence.md "NLP") en het specifieke gebied van NLU voor LUIS.
 
 ## <a name="step-1-design-and-build-your-model"></a>Stap 1: Uw model ontwerpen en bouwen
 

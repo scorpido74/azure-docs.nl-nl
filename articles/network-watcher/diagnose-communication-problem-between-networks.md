@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 04/27/2018
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 974e45b761fb45e4bc1c451fa6755e16cab49e11
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 25c58f99f56a4328527d1dd970e3ade21eb51819
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "76834678"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987173"
 ---
 # <a name="tutorial-diagnose-a-communication-problem-between-networks-using-the-azure-portal"></a>Zelfstudie: Communicatieproblemen tussen netwerken onderzoeken met Azure Portal
 
@@ -73,12 +73,12 @@ Als u al een netwerk-watcher hebt ingeschakeld in de regio VS - oost, ga dan ver
 8. Terwijl de test wordt uitgevoerd, wordt **In uitvoering** weergegeven in de kolom **STATUS VAN PROBLEEMOPLOSSING** waar in de vorige afbeelding **Niet gestart** werd weergegeven. De test kan enkele minuten duren.
 9. Bekijk de status van een voltooide test. In de volgende afbeelding ziet u de statusresultaten van een voltooide diagnostische test:
 
-    ![Status](./media/diagnose-communication-problem-between-networks/status.png)
+    ![Schermopname toont de statusresultaten van een diagnostische test (in dit voorbeeld: 'niet in orde') met inbegrip van een samenvatting en detailinformatie.](./media/diagnose-communication-problem-between-networks/status.png)
 
     U ziet dat de **STATUS VAN PROBLEEMOPLOSSING****Niet in orde** is. U ziet ook een **samenvatting** en de **details** van het probleem op het tabblad **Status**.
 10. Wanneer u het tabblad **Actie** ziet, vindt u in de diagnostische gegevens van VPN aanvullende informatie. In het voorbeeld, dat in de volgende afbeelding wordt weergegeven, ziet u in de diagnostische gegevens van VPN dat u wordt geadviseerd om de status van elke verbinding te controleren:
 
-    ![Bewerking](./media/diagnose-communication-problem-between-networks/action.png)
+    ![Schermopname toont het tabblad Actie, dat u aanvullende informatie biedt.](./media/diagnose-communication-problem-between-networks/action.png)
 
 ## <a name="diagnose-a-gateway-connection"></a>Een gatewayverbinding onderzoeken
 
@@ -86,7 +86,7 @@ Een gateway is via een gatewayverbinding verbonden met andere netwerken. Zowel d
 
 1. Voer stap 7 van [Een gateway onderzoeken](#diagnose-a-gateway) nogmaals uit, maar selecteer deze keer een verbinding. In het volgende voorbeeld wordt de verbinding **VNet1toSite1** getest:
 
-    ![Verbinding](./media/diagnose-communication-problem-between-networks/connection.png)
+    ![Schermopname laat zien hoe u start met het oplossen van problemen met een geselecteerde verbinding.](./media/diagnose-communication-problem-between-networks/connection.png)
 
     De test wordt gedurende enkele minuten uitgevoerd.
 2. Nadat de test van de verbinding is voltooid, worden op de tabbladen **Status** en **Actie** resultaten weergegeven die vergelijkbaar zijn met die in de volgende afbeeldingen:

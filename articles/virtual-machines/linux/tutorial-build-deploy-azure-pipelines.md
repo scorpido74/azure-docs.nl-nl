@@ -10,13 +10,13 @@ ms.tgt_pltfrm: azure-pipelines
 ms.workload: infrastructure
 ms.date: 1/3/2020
 ms.author: ushan
-ms.custom: devops, devx-track-javascript
-ms.openlocfilehash: c83a67f7d524a062485f2c68e0adb7fdd2855a84
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.custom: devops, devx-track-js
+ms.openlocfilehash: 6bc6776df889c5c8ccc6acfe5764549ccf7354a5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462170"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320197"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>Zelfstudie: Uw app implementeren naar virtuele Linux-machines in Azure met behulp van Azure DevOps Services en Azure Pipelines
 
@@ -147,6 +147,7 @@ U hebt een build-pipeline voor continue integratie (CI) nodig die uw webtoepassi
 Selecteer de **starter**-sjabloon en kopieer het onderstaande YAML-fragment voor het compileren van het Java-project en het uitvoeren van tests met Apache Maven:
 
 ```YAML
+jobs:
 - job: Build
   displayName: Build Maven Project
   steps:
@@ -209,7 +210,7 @@ Volg de stappen in [Node.js-app bouwen met gulp](/azure/devops/pipelines/ecosyst
 
 ## <a name="define-cd-steps-to-deploy-to-the-linux-vm"></a>CD-stappen definiëren voor implementatie naar de Linux-VM
 
-1. Bewerk de bovenstaande pijplijn en voeg een [implementatietaak](/azure/devops/pipelines/process/deployment-jobs) toe door te verwijzen naar de omgeving en de VM-resources die u eerder hebt gedefinieerd. Gebruik hiervoor de YAML-syntaxis:
+1. Wijzig het YAML-bestand voor de bovenstaande pijplijn en voeg een [implementatietaak](/azure/devops/pipelines/process/deployment-jobs) toe door te verwijzen naar de omgeving en de VM-resources die u eerder hebt gedefinieerd. Gebruik hiervoor de YAML-syntaxis:
 
    ```YAML
    jobs:  
@@ -218,8 +219,7 @@ Volg de stappen in [Node.js-app bouwen met gulp](/azure/devops/pipelines/ecosyst
      environment:
        name:  <environment name>
        resourceType: VirtualMachine
-       tags: web1
-     strategy:
+       tags: web
    ```
 2. U kunt specifieke sets virtuele machines selecteren in de omgeving voor de implementatie door de **tags** op te geven die u hebt gedefinieerd voor elke virtuele machine in de omgeving.
 [Hier](/azure/devops/pipelines/yaml-schema?view=azure-devops&tabs=schema#deployment-job) vindt u het volledige YAML-schema voor de implementatietaak.

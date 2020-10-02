@@ -1,6 +1,6 @@
 ---
 title: Wat is Toegewezen HSM? - Azure Toegewezen HSM | Microsoft Docs
-description: Overzicht van Azure Toegewezen HSM, welke mogelijkheden biedt voor sleutelopslag binnen Azure die voldoet aan de FIPS 140-2 Niveau 3-certificering
+description: Meer informatie over Azure Dedicated HSM, een Azure-service die opslag biedt van cryptografische sleutels in Azure.
 services: dedicated-hsm
 author: msmbaldwin
 manager: rkarlin
@@ -13,12 +13,12 @@ ms.topic: overview
 ms.custom: mvc, seodec18
 ms.date: 12/07/2018
 ms.author: mbaldwin
-ms.openlocfilehash: dd5ce117645ef2b368bbf8f0e441770d6e746b5b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 6eb82400b2f598b4b54da4b238f4bce71d83de6b
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "70881074"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90970207"
 ---
 # <a name="what-is-azure-dedicated-hsm"></a>Wat is Azure Toegewezen HSM?
 
@@ -60,7 +60,7 @@ Azure Dedicated HSM is een gespecialiseerde service die zich richt op de unieke 
 
 ### <a name="best-fit"></a>Geschikt voor
 
-Azure Dedicated HSM is het meest geschikt voor lift-and-shift-scenario's waarvoor directe en exclusieve toegang tot HSM-apparaten is vereist. Voorbeelden zijn:
+Azure Dedicated HSM is het meest geschikt voor lift-and-shift-scenario's waarvoor directe en exclusieve toegang tot HSM-apparaten is vereist. Enkele voorbeelden:
 
 - Toepassingen migreren van on-premises naar Azure Virtual Machines
 - Toepassingen migreren vanuit Amazon AWS EC2 naar virtuele machines die gebruikmaken van de service AWS Cloud HSM Classic (Amazon biedt deze aanbieding niet aan nieuwe klanten)
@@ -68,9 +68,9 @@ Azure Dedicated HSM is het meest geschikt voor lift-and-shift-scenario's waarvoo
 
 ### <a name="not-a-fit"></a>Niet geschikt voor
 
-De toegewezen HSM van Azure is niet geschikt voor het volgende type scenario: micro soft-Cloud Services die versleuteling ondersteunen met door de klant beheerde sleutels (zoals Azure Information Protection, Azure Disk Encryption, Azure Data Lake Store, Azure Storage, Azure SQL Database en de klant sleutel voor Office 365) die niet zijn geïntegreerd met de speciale HSM van Azure.
+Azure Dedicated HSM is niet geschikt voor de volgende typen scenario's: Microsoft-cloudservices die ondersteuning bieden voor versleuteling met door de klant beheerde sleutels (zoals Azure Information Protection, Azure Disk Encryption, Azure Data Lake Store, Azure Storage, Azure SQL Database en Customer Key voor Office 365) en niet zijn geïntegreerd met Azure Dedicated HSM.
 
-### <a name="it-depends"></a>Geschikt onder bepaalde omstandigheden
+### <a name="it-depends"></a>Dat hangt ervan af
 
 Of Azure Dedicated HSM geschikt is voor u, is afhankelijk van een complexe mengeling van vereisten en van de compromissen die wel of niet kunnen worden gesloten. Een voorbeeld is de vereiste voor FIPS 140-2 Niveau 3. Deze vereiste is algemeen en Dedicated HSM is momenteel de enige optie die hieraan kan voldoen. Als deze verplichte vereisten niet relevant zijn, kunt u vaak kiezen tussen Azure Key Vault en Dedicated HSM. Bekijk wat uw vereisten zijn voordat u een keuze maakt.
 
@@ -87,8 +87,8 @@ Dit is een zeer gespecialiseerde service. Het is daarom belangrijk dat u de bela
 
 De [Gemalto-integratiehandleidingen](https://safenet.gemalto.com/partners/microsoft/) helpen u bij de inrichting van HSM's in een bestaand virtueel netwerk. Er zijn ook handleidingen waarmee u kunt bepalen hoe u uw implementatiearchitectuur instelt.
 
-* [Hoge Beschik baarheid](high-availability.md)
+* [Hoge beschikbaarheid](high-availability.md)
 * [Fysieke beveiliging](physical-security.md)
 * [Netwerken](networking.md)
 * [Ondersteuning](supportability.md)
-* [Bewaking](monitoring.md)
+* [Controle](monitoring.md)

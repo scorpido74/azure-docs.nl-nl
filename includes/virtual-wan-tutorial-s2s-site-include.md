@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 06/23/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: bc94f31887526f387413f78fe3270784a4e3bd88
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ba69b94514a0c1b59001011a64a4fb28e5e4a827
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525152"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90606596"
 ---
 1. Selecteer **VPN-sites** in het onderdeel **Connectiviteit** op de portaalpagina voor uw virtuele WAN om de pagina voor VPN-sites te openen.
 2. Op de pagina **VPN sites** klikt u op **+Site maken**.
 
-   ![Basisinstellingen](./media/virtual-wan-tutorial-site-include/basics.png "Basisbeginselen")
+   ![Schermopname van het venster V P N site-naar-site; het deelvenster VPN-site maken is geopend.](./media/virtual-wan-tutorial-site-include/basics.png "Basisbeginselen")
 3. Op het tabblad **Basisinstellingen** van de pagina **VPN-sites maken** vult u de volgende velden in:
 
     * **Regio** - voorheen locatie genoemd. Dit is de locatie waar u deze websiteresource in wilt maken.
@@ -29,7 +29,7 @@ ms.locfileid: "86525152"
     * **Hubs**: de hub waarmee u de site wilt verbinden. Een site kan alleen worden verbonden met hubs die een VPN-gateway hebben. Als u een hub niet ziet, maak dan eerst een VPN-gateway in die hub.
 4. Selecteer **koppelingen** om informatie over de fysieke koppelingen op de vertakking toe te voegen. Als u een CPE-apparaat van een Virtual WAN-partner heeft, vraag dan bij hen na of deze informatie wordt uitgewisseld met Azure als onderdeel van de upload van informatie over de vertakking die is ingesteld in hun systemen.
 
-   ![koppelingen](./media/virtual-wan-tutorial-site-include/links.png "Koppelingen")
+   ![Schermopname toont het deelvenster 'V P N-site maken' waarbij het tabblad Koppelingen is geselecteerd.](./media/virtual-wan-tutorial-site-include/links.png "Koppelingen")
 
     * **Koppelingsnaam**: een naam die u wilt opgeven voor de fysieke koppeling op de VPN-site. Voorbeeld: mylink1.
     * **Providernaam**: de naam van de fysieke koppeling op de VPN-site. Voorbeeld: ATT, Verizon.

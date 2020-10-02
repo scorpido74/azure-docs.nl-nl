@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 105ab0c71d9e7e935842550ecdc4c8d2ff2a2d8c
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.openlocfilehash: 64470b42efeea49b7c778d6dffd88465b8445e36
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84977915"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90606505"
 ---
 1. Zoek naar de virtuele WAN die u hebt gemaakt. Op de pagina Virtuele WAN, onder het gedeelte **Connectiviteit**, selecteert u **Hubs**.
 2. Op de pagina Hubs selecteert u **+Nieuwe hub** om de pagina **Virtuele hub maken** te openen.
 
-    ![Basisinstellingen](./media/virtual-wan-tutorial-hub-include/basics.png "Basisbeginselen")
+    ![Schermopname van het deelvenster Virtuele hub maken waarbij het tabblad Basisprincipes geselecteerd is.](./media/virtual-wan-tutorial-hub-include/basics.png "Basisbeginselen")
 3. Op de pagina **Basisinstellingen** van de pagina **Virtuele hub maken** vult u de volgende velden in:
 
     **Projectgegevens**
@@ -28,7 +28,7 @@ ms.locfileid: "84977915"
    * Privé-adresruimte van hub. De minimale adresruimte is /24 voor het maken van een hub, wat impliceert dat alles tussen /25 en /32 een fout produceert tijdens het maken. Azure Virtual WAN is een beheerde service van Microsoft en maakt de juiste subnetten in de virtuele hub voor de verschillende gateways/services (bijvoorbeeld VPN-gateways, ExpressRoute-gateways, gebruikers-VPN/punt-naar-site gateways, firewall, routering, enzovoort). De gebruiker hoeft niet uitdrukkelijk de adresruimte van het subnet voor de services in de virtuele hub in te plannen, aangezien Microsoft dit al doet als onderdeel van de service.
 4. Selecteer **Volgende: Site-naar-site**
 
-    ![Site-naar-site](./media/virtual-wan-tutorial-hub-include/site-to-site.png "Site-naar-site")
+    ![Schermopname van het deelvenster Virtuele hub maken waarin Site-naar-site is geselecteerd.](./media/virtual-wan-tutorial-hub-include/site-to-site.png "Site-naar-site")
 
 5. Vul op het tabblad **Site-naar-site** de volgende velden in:
 

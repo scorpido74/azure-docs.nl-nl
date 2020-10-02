@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 49b7a3700bf497ad868b7c4ab1f0802564b61bf3
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 3a5489241aa15ce105dbe4d89086aff00373ca55
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89652274"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90603965"
 ---
 # <a name="tutorial-move-azure-vms-across-regions"></a>Zelfstudie: Virtuele Azure-machines tussen regio's verplaatsen
 
@@ -68,19 +68,19 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 Selecteer de resources die u wilt verplaatsen.
 
 - Alle ondersteunde resourcetypen in resourcegroepen binnen de geselecteerde bronregio worden weergegeven.
+- Resources die al zijn toegevoegd voor het verplaatsen tussen regio's worden niet weergegeven.
 - U verplaatst resources naar een doelregio in hetzelfde abonnement als de bronregio. Als u het abonnement wilt wijzigen, kunt u dat doen nadat de resources zijn verplaatst.
 
-1. Zoek in Azure Portal naar *resource mover*. Selecteer vervolgens **Azure Resource Mover** onder **Services**.
+1. Zoek in de Azure-portal naar *resource mover*. Selecteer vervolgens **Azure Resource Mover** onder **Services**.
 
-    ![Zoekresultaten voor resource mover in Azure Portal](./media/tutorial-move-region-virtual-machines/search.png)
+    ![Zoekresultaten voor resource mover in de Azure-portal](./media/tutorial-move-region-virtual-machines/search.png)
 
 2. Klik in **Overzicht**op **Aan de slag**.
 
-    ![Knop voor het toevoegen van resources die naar een andere regio moeten worden verplaatst](./media/tutorial-move-region-virtual-machines/get-started.png)
+    ![Knop voor het toevoegen van naar een andere regio te verplaatsen resources](./media/tutorial-move-region-virtual-machines/get-started.png)
 
 3. Selecteer in **Resources verplaatsen** > **Bron en doel**, het bronabonnement en de regio.
 4. Selecteer in **Doel** de regio waarnaar u de virtuele machines wilt verplaatsen. Klik op **Volgende**.
-5. Selecteer in **Metagegevensregio** de locatie waar u metagegevens wilt opslaan over de resources die u verplaatst. Er wordt speciaal voor dit doel een resourcegroep gemaakt. Klik op **Volgende**.
 
     ![Pagina voor het selecteren van bron- en doelregio](./media/tutorial-move-region-virtual-machines/source-target.png)
 
@@ -90,7 +90,7 @@ Selecteer de resources die u wilt verplaatsen.
     ![Pagina voor het selecteren van virtuele machines die moeten worden verplaatst](./media/tutorial-move-region-virtual-machines/select-vm.png)
 
 8.  Klik in **Resources die moeten worden verplaatst** op **Volgende**.
-9. Controleer de bron- en doelinstellingen in **Controleren en toevoegen**. Geef aan dat u begrijpt dat metagegevens over de verplaatsing worden opgeslagen in een voor dit doel gemaakte resourcegroep in de metagegevensregio.
+9. Controleer de bron-en doel instellingen in **Controleren en toevoegen**. 
 
     ![Pagina voor het controleren van instellingen en doorgaan met de verplaatsing](./media/tutorial-move-region-virtual-machines/review.png)
 10. Klik op **Doorgaan** om te beginnen met toevoegen van de resources.
@@ -199,7 +199,7 @@ Nu de resources zijn voorbereid, kunt u de verplaatsing initiëren.
 Na de eerste verplaatsing kunt u beslissen of u de verplaatsing wilt doorvoeren of verwijderen. 
 
 - **Verwijderen**: Mogelijk wilt u een verplaatsing verwijderen als u een test uitvoert en de bronresource niet echt wilt verplaatsen. Als u de verplaatsing negeert, wordt de resource teruggezet in de status *Initiëren verplaatsing in behandeling*.
-- **Doorvoeren**: Met doorvoeren wordt de verplaatsing naar de doelregio voltooid. Na het doorvoeren heeft een bronresource de status *Verwijderen bron in behandeling* en kunt u besluiten of u deze wilt verwijderen.
+- **Doorvoeren**: Met doorvoeren wordt de verplaatsing naar de doelregio voltooid. Na het doorvoeren heeft een bronresource de status *Verwijderen bron in behandeling*en kunt u besluiten of u deze wilt verwijderen.
 
 
 ## <a name="discard-the-move"></a>De verplaatsing verwijderen 
@@ -235,7 +235,8 @@ Als u het verplaatsingsproces wilt voltooien, moet u de verplaatsing doorvoeren.
 
 ## <a name="configure-settings-after-the-move"></a>Instellingen configureren na de verplaatsing
 
-De Mobility-service wordt niet automatisch van VM's verwijderd. Verwijder de service handmatig of laat deze staan als u van plan bent de server opnieuw te verplaatsen.
+- De Mobility-service wordt niet automatisch van VM's verwijderd. Verwijder de service handmatig of laat deze staan als u van plan bent de server opnieuw te verplaatsen.
+- Wijzig de regels voor op rollen gebaseerd toegangsbeheer van Azure (Azure RBAC) na de verplaatsing.
 
 ## <a name="delete-source-resources-after-commit"></a>Bronresources verwijderen na doorvoeren
 

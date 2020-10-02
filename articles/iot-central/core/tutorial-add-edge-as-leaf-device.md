@@ -1,6 +1,6 @@
 ---
-title: Een Azure IoT Edge-apparaat toevoegen aan Azure IoT Central | Microsoft Docs
-description: Als operator kunt u een Azure IoT Edge-apparaat toevoegen aan uw Azure IoT Central-toepassing
+title: Zelfstudie - Een Azure IoT Edge-apparaat toevoegen aan Azure IoT Central | Microsoft Docs
+description: Zelfstudie - Als operator kunt u een Azure IoT Edge-apparaat toevoegen aan uw Azure IoT Central-app
 author: rangv
 ms.author: rangv
 ms.date: 05/29/2020
@@ -11,12 +11,12 @@ ms.custom:
 - mvc
 - device-developer
 - iot-edge
-ms.openlocfilehash: cc612d5dc21594da855799ed965effeb4b547d00
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 9b4bb462c94ab5a59dbd9d8fdd4cf619e311df56
+ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90018659"
+ms.lasthandoff: 09/22/2020
+ms.locfileid: "90987022"
 ---
 # <a name="tutorial-add-an-azure-iot-edge-device-to-your-azure-iot-central-application"></a>Zelfstudie: Een Azure IoT Edge-apparaat toevoegen aan uw Azure IoT Central-toepassing
 
@@ -99,7 +99,7 @@ Om de telemetrie-definities toe te voegen aan de sjabloon voor het apparaat:
 
 De interface **Beheren** bevat nu de telemetrietypen **machine**, **omgeving** en **timeCreated**:
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/manage-interface.png" alt-text="Interface met telemetrietypen machine en omgeving":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/manage-interface.png" alt-text="Het apparaatprofiel is gemaakt op basis van IoT Edge-manifest":::
 
 ### <a name="add-views-to-template"></a>Weergaven toevoegen aan sjabloon
 
@@ -115,7 +115,7 @@ De sjabloon voor het apparaat heeft nog geen weergave waarmee een operator de te
 
 1. Selecteer **Opslaan** om de weergave **Telemetrie van IoT Edge-apparaat weergeven** op te slaan.
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/template-telemetry-view.png" alt-text="Apparaatsjabloon met telemetrieweergave":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/template-telemetry-view.png" alt-text="Het apparaatprofiel is gemaakt op basis van IoT Edge-manifest":::
 
 ### <a name="publish-the-template"></a>De sjabloon publiceren
 
@@ -123,7 +123,7 @@ Voordat u een apparaat kunt toevoegen dat gebruikmaakt van de apparaatsjabloon *
 
 Ga naar het sjabloon **Omgevingssensor van Edge-apparaat** en selecteer **Publiceren**. Selecteer **Publiceren** in het deelvenster **Dit apparaatsjabloon op de toepassing publiceren** om het sjabloon te publiceren:
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/publish-template.png" alt-text="De sjabloon van het apparaat publiceren":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/publish-template.png" alt-text="Het apparaatprofiel is gemaakt op basis van IoT Edge-manifest":::
 
 ## <a name="add-iot-edge-device"></a>IoT Edge-apparaat toevoegen
 
@@ -135,7 +135,7 @@ Nu u het sjabloon **Omgevingssensor van het Edge-apparaat** hebt gepubliceerd, k
 
 U hebt nu een nieuw apparaat met de status **Geregistreerd**:
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/new-device.png" alt-text="Nieuw, geregistreerd apparaat":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/new-device.png" alt-text="Het apparaatprofiel is gemaakt op basis van IoT Edge-manifest":::
 
 ### <a name="get-the-device-credentials"></a>De apparaatreferenties ophalen
 
@@ -181,7 +181,7 @@ Op de pagina **Aangepaste implementatie**:
 
 1. Controleer uw keuzes en selecteer vervolgens **Maken**:
 
-    :::image type="content" source="media/tutorial-add-edge-as-leaf-device/vm-deployment.png" alt-text="Een IoT Edge-VM maken":::
+    :::image type="content" source="media/tutorial-add-edge-as-leaf-device/vm-deployment.png" alt-text="Het apparaatprofiel is gemaakt op basis van IoT Edge-manifest":::
 
 Het uitvoeren van implementatie duurt enkele minuten. Wanneer de implementatie is voltooid, gaat u naar de resourcegroep **central-edge-rg** in de Azure-portal.
 
@@ -269,15 +269,15 @@ Als u IoT Edge in de VM wilt configureren om DPM te gebruiken om uw IoT Central-
 
 Het gesimuleerde IoT Edge-apparaat wordt nu uitgevoerd in de virtuele machine. In uw IoT Central-toepassing is de apparaatstatus nu **Ingericht** op de pagina **Apparaten**:
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/provisioned-device.png" alt-text="Ingericht IoT Edge-apparaat":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/provisioned-device.png" alt-text="Het apparaatprofiel is gemaakt op basis van IoT Edge-manifest":::
 
 U kunt de telemetrie van het apparaat zien op de pagina **Telemetrie van IoT Edge-apparaat weergeven**:
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/device-telemetry-view.png" alt-text="Apparaattelemetrie":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/device-telemetry-view.png" alt-text="Het apparaatprofiel is gemaakt op basis van IoT Edge-manifest":::
 
 Op de pagina **Modules** wordt de status van de IoT Edge-modules op het apparaat weergegeven:
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/edge-module-status.png" alt-text="Status van apparaatmodule":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/edge-module-status.png" alt-text="Het apparaatprofiel is gemaakt op basis van IoT Edge-manifest":::
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -286,14 +286,14 @@ Als u van plan bent om verder te gaan met de IoT Edge-VM, kunt u de resources di
 * Als u de IoT Edge-VM en de bijbehorende resources wilt verwijderen, verwijdert u de resourcegroep **contoso-edge-rg** in de Azure-portal.
 * Als u de IoT Central-toepassing wilt verwijderen, gaat u naar de pagina **Uw toepassing** in het gedeelte **Beheer** van de toepassing en selecteert u **Verwijderen**.
 
+Als ontwikkelaar van oplossingen of als operator, hebt u nu geleerd hoe u IoT Edge-apparaten in IoT Central kunt gebruiken en beheren. Een voorgestelde volgende stap is:
+
+> [!div class="nextstepaction"]
+> [Apparaatgroepen gebruiken om apparaattelemetrie te analyseren](./tutorial-use-device-groups.md)
+
 ## <a name="next-steps"></a>Volgende stappen
 
 Als ontwikkelaar van apparaten, hebt u nu geleerd hoe u IoT Edge-apparaten in IoT Central kunt gebruiken en beheren. Een voorgestelde volgende stap is om deze artikelen te lezen:
 
 > [!div class="nextstepaction"]
 > [IoT Edge-modules ontwikkelen](../../iot-edge/tutorial-develop-for-linux.md)
-
-Als ontwikkelaar van oplossingen of als operator, hebt u nu geleerd hoe u IoT Edge-apparaten in IoT Central kunt gebruiken en beheren. Een voorgestelde volgende stap is:
-
-> [!div class="nextstepaction"]
-> [Apparaatgroepen gebruiken om apparaattelemetrie te analyseren](./tutorial-use-device-groups.md)

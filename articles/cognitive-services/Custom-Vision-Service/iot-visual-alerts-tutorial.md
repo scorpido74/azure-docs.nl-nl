@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 5582056f1bae2dbeb69a7d05044f055ff1394bd5
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: ebc6ca630ea3cabb519805ae8505abf336a2a9ea
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88244666"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604288"
 ---
 # <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>Zelfstudie: Gebruik Custom Vision met een IoT-apparaat om visuele toestanden te melden
 
@@ -52,7 +52,7 @@ De app IoT Visual Alerts wordt uitgevoerd in een doorlopende lus, waarbij zo nod
 * **Wachten op getraind model**: In deze toestand roept de app elke seconde de Custom Vision-API aan om te controleren of het doelproject een getrainde iteratie bevat. Wanneer er een wordt gevonden, wordt het bijbehorende ONNX-model gedownload naar een lokaal bestand en wordt overgeschakeld naar de toestand **Scoren** toestand.
 * **Scoren**: In deze toestand gebruikt de app Windows ML om één frame van de camera te evalueren op basis van het lokale ONNX-model. De resulterende afbeeldingsclassificatie wordt weergegeven op het scherm en als een bericht naar IoT Hub verzonden. De app gaat vervolgens één seconde in de slaapstand voordat een nieuwe afbeelding wordt gescoord.
 
-## <a name="understand-the-code-structure"></a>Inzicht in de codestructuur
+## <a name="examine-the-code-structure"></a>De codestructuur controleren
 
 Met de volgende bestanden wordt de belangrijkste functionaliteit van de app afgehandeld.
 
@@ -98,13 +98,13 @@ Terwijl de app afbeeldingen vastlegt, moet u de camera diverse typen visuele toe
 
 ## <a name="train-the-custom-vision-model"></a>Het Custom Vision-model trainen
 
-Zodra de app klaar is met het vastleggen van afbeeldingen, worden deze geüpload en wordt vervolgens overgeschakeld naar de toestand **Wachten op getraind model**. Op dit punt gaat u naar de [Custom Vision-portal](https://www.customvision.ai/) en bouwt u een model op basis van de nieuwe trainingsafbeeldingen. In de volgende animatie ziet u een voorbeeld van dit proces.
+Zodra de app klaar is met het vastleggen van afbeeldingen, worden deze geüpload en wordt vervolgens overgeschakeld naar de toestand **Wachten op getraind model**. Op dit punt gaat u naar de [Custom Vision-website](https://www.customvision.ai/) en bouwt u een model op basis van de nieuwe trainingsafbeeldingen. In de volgende animatie ziet u een voorbeeld van dit proces.
 
 ![Animatie: meerdere afbeeldingen van bananen taggen](./media/iot-visual-alerts-tutorial/labeling.gif)
 
 Als u dit proces wilt herhalen met uw eigen scenario, gaat u als volgt te werk:
 
-1. Meld u aan bij de [Custom Vision-portal](http://customvision.ai).
+1. Meld u aan bij de [Custom Vision-website](http://customvision.ai).
 1. Zoek uw doelproject. Dit moet nu alle trainingsafbeeldingen bevatten die door de app zijn geüpload.
 1. Selecteer voor elke visuele toestand die u wilt identificeren de juiste afbeeldingen en voeg de tag handmatig toe.
     * Als u bijvoorbeeld onderscheid wilt maken tussen een lege kamer en een kamer met personen, wordt u aangeraden vijf of meer afbeeldingen met personen als een nieuwe klasse, **Personen**, te taggen. Geef vijf of meer afbeeldingen zonder personen de tag **Negatief**. Hierdoor leert het model beter onderscheid maken tussen de twee toestanden.

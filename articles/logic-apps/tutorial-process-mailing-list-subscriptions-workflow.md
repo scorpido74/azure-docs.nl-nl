@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/20/2019
-ms.openlocfilehash: d9d2f29ffc34c203e5f3b3ebf094e73fb9cdfb75
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: c802fafa92ace2260002f7156b0df9841af8338c
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132395"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90029576"
 ---
 # <a name="tutorial-create-automated-approval-based-workflows-by-using-azure-logic-apps"></a>Zelfstudie: Geautomatiseerde op goedkeuring gebaseerde workflows maken met behulp van Azure Logic Apps
 
@@ -40,7 +40,7 @@ Wanneer u bent klaar, ziet uw logische app eruit als deze werkstroom op hoog niv
 
 * Een MailChimp-account dat een lijst bevat met de naam test-leden-ML waaraan uw logische app e-mailadressen voor goedgekeurde leden kan toevoegen. Als u geen account hebt, kunt u zich [aanmelden voor een gratis account](https://login.mailchimp.com/signup/) en leren [hoe u een MailChimp-lijst kunt maken](https://us17.admin.mailchimp.com/lists/#).
 
-* Een e-mailaccount in Office 365 Outlook of Outlook.com, die goedkeuringswerkstromen. In dit artikel wordt gebruikgemaakt van Outlook van Office 365. Als u een ander e-mailaccount gebruikt, blijven de algemene stappen gelijk, maar uw gebruikersinterface kan er iets anders uitzien.
+* Een e-mailaccount in Outlook voor Microsoft 365 of Outlook.com met ondersteuning voor goedkeuringswerkstromen. In dit artikel wordt gebruikgemaakt van Outlook van Office 365. Als u een ander e-mailaccount gebruikt, blijven de algemene stappen gelijk, maar uw gebruikersinterface kan er iets anders uitzien.
 
 ## <a name="create-your-logic-app"></a>Uw logische app maken
 

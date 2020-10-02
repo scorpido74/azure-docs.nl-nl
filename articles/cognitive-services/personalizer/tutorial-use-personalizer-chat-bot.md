@@ -4,12 +4,12 @@ description: Pas een C# .NET-chatbot aan met een Personalizer-lus om de juiste i
 ms.topic: tutorial
 ms.date: 07/17/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ee037632b068b0d8d2f3ed3b6ea7a83d157c5083
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 2d95a6999186b964e59ff8f287d917b1f93e1813
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935650"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90089884"
 ---
 # <a name="tutorial-use-personalizer-in-net-chat-bot"></a>Zelfstudie: Personalizer gebruiken in een .NET-chatbot
 
@@ -21,7 +21,7 @@ Gebruik een C# .NET-chatbot met een Personalizer-lus om de juiste inhoud te bied
 > [!div class="checklist"]
 > * Azure-resources instellen
 > * De bot configureren en uitvoeren
-> * Werken met de bot met behulp van Bot Emulator
+> * Werken met de bot met behulp van Bot Framework Emulator
 > * Begrijpen waar en hoe de bot gebruikmaakt van Personalizer
 
 
@@ -174,20 +174,20 @@ Zorg ervoor dat de website actief blijft, omdat in de zelfstudie wordt uitgelegd
 
 ## <a name="set-up-the-bot-emulator"></a>De Bot Emulator instellen
 
-1. Open de Bot Emulator en selecteer **Bot openen**.
+1. Open de Bot Framework Emulator en selecteer **Bot openen**.
 
-    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-startup.png" alt-text="Schermopname van het opstartscherm van de Bot Emulator.":::
+    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-startup.png" alt-text="Schermopname van de browser waarin de website van de chatbot wordt weergegeven.":::
 
 
 1. Configureer de bot met de volgende **bot-URL**. Selecteer vervolgens **Verbinding maken**:
 
     `http://localhost:3978/api/messages`
 
-    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-open-bot-settings.png" alt-text="Schermopname van Bot openen in de Bot Emulator-instellingen.":::
+    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-open-bot-settings.png" alt-text="Schermopname van de browser waarin de website van de chatbot wordt weergegeven.":::
 
     De emulator maakt verbinding met de chatbot en geeft de instructietekst weer, samen met informatie over logboekregistratie en foutopsporing die nuttig is voor lokale ontwikkeling.
 
-    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-bot-conversation-first-turn.png" alt-text="Schermopname van de Bot Emulator bij de eerste wending in het gesprek.":::
+    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-bot-conversation-first-turn.png" alt-text="Schermopname van de browser waarin de website van de chatbot wordt weergegeven.":::
 
 ## <a name="use-the-bot-in-the-bot-emulator"></a>De bot gebruiken in de Bot Emulator
 
