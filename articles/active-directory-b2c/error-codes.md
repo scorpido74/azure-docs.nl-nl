@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 01/10/2020
+ms.date: 10/02/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9d205998ad5710ecad346db4d7be18a68747c087
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0122fa43c9d99c01797e3523748e4f31b4b7469a
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85388524"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91664848"
 ---
 # <a name="error-codes-azure-active-directory-b2c"></a>Fout codes: Azure Active Directory B2C
 
@@ -34,7 +34,7 @@ De volgende fouten kunnen worden geretourneerd door de Azure Active Directory B2
 | `AADB2C90013` | Het aangevraagde reactie type ' {0} ' dat is opgegeven in de aanvraag, wordt niet ondersteund. |
 | `AADB2C90014` | De aangevraagde antwoord modus ' {0} ' die in de aanvraag is opgegeven, wordt niet ondersteund. |
 | `AADB2C90016` | Het gevraagde client bevestigings type ' {0} ' komt niet overeen met het verwachte type ' {1} '. |
-| `AADB2C90017` | De client bevestiging die in de aanvraag is gegeven, is ongeldig:{0} |
+| `AADB2C90017` | De client bevestiging die in de aanvraag is gegeven, is ongeldig: {0} |
 | `AADB2C90018` | De client-id {0} die in de aanvraag is opgegeven, is niet geregistreerd in de Tenant {1} . |
 | `AADB2C90019` | De sleutel container met de id ' {0} ' in de Tenant ' {1} ' heeft geen geldige sleutel. Reden: {2} . |
 | `AADB2C90021` | Het technische profiel {0} bestaat niet in het beleid {1} van de Tenant {2} . |
@@ -73,7 +73,8 @@ De volgende fouten kunnen worden geretourneerd door de Azure Active Directory B2
 | `AADB2C90085` | Er is een interne fout opgetreden in de service. Voer opnieuw een verificatie uit en probeer het opnieuw. |
 | `AADB2C90086` | De opgegeven grant_type [ {0} ] wordt niet ondersteund. |
 | `AADB2C90087` | De verstrekte toestemming is niet verleend voor deze versie van het protocol eindpunt. |
-| `AADB2C90088` | De verstrekte toestemming is niet uitgegeven voor dit eind punt. Werkelijke waarde: {0} en verwachte waarde:{1} |
+| `AADB2C90088` | De verstrekte toestemming is niet uitgegeven voor dit eind punt. Werkelijke waarde: {0} en verwachte waarde: {1} |
+| `AADB2C90091` | Gebruikers annulering. |
 | `AADB2C90092` | De gegeven toepassing met de ID ' {0} ' is uitgeschakeld voor de Tenant ' {1} '. Schakel de toepassing in en probeer het opnieuw. |
 | `AADB2C90107` | De toepassing met de ID ' {0} ' kan geen ID-Token ophalen omdat het OpenID Connect-bereik niet is ingesteld in de aanvraag of omdat de toepassing hiervoor niet is geautoriseerd. |
 | `AADB2C90108` | In de Orchestration-stap ' {0} ' wordt geen CpimIssuerTechnicalProfileReferenceId opgegeven wanneer er een wordt verwacht. |

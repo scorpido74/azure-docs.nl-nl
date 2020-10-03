@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 5b3ea0a2037ae80116e9578999414677db1089ef
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 199e19116e0d8ba6bcc4954e767265e6fb4cd238
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319024"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666344"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>De synthese verbeteren met Markup Language voor spraak synthese (SSML)
 
@@ -432,7 +432,7 @@ Als u wilt definiëren hoe meerdere entiteiten worden gelezen, kunt u een aangep
 
 Het `lexicon` element bevat ten minste één `lexeme` element. Elk `lexeme` element bevat ten minste één `grapheme` element en een of meer `grapheme` `alias` elementen, en `phoneme` . Het `grapheme` element bevat tekst met een beschrijving van de <a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> orthography </a>. De `alias` elementen worden gebruikt om de uitspraak van een acroniem of een kortere term aan te geven. Het `phoneme` element biedt tekst die beschrijft hoe de `lexeme` wordt uitgesp roken.
 
-Het is belang rijk te weten dat u de uitspraak van een woord niet rechtstreeks kunt instellen met behulp van het aangepaste lexicon. Als u de uitspraak voor een acroniem of een afkorting wilt instellen, geeft u eerst een `alias` op en koppelt u deze aan `phoneme` die `alias` . Bijvoorbeeld:
+Het is belang rijk te weten dat u de uitspraak van een woord groep niet rechtstreeks kunt instellen met behulp van het aangepaste lexicon. Als u de uitspraak voor een acroniem of een afkorting wilt instellen, geeft u eerst een `alias` op en koppelt u deze aan `phoneme` die `alias` . Bijvoorbeeld:
 
 ```xml
   <lexeme>
@@ -442,6 +442,14 @@ Het is belang rijk te weten dat u de uitspraak van een woord niet rechtstreeks k
   <lexeme>
     <grapheme>ScotlandMV</grapheme> 
     <phoneme>ˈskɒtlənd.ˈmiːdiəm.weɪv</phoneme>
+  </lexeme>
+```
+
+U kunt ook uw verwachte `alias` acroniem of afgekort term direct opgeven. Bijvoorbeeld:
+```xml
+  <lexeme>
+    <grapheme>Scotland MV</grapheme> 
+    <alias>Scotland Media Wave</alias> 
   </lexeme>
 ```
 

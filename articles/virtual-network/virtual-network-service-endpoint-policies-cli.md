@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: rdhillon
 ms.custom: ''
-ms.openlocfilehash: 702ee5dd8d432582ce1df75ce71c220aa0507cba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 53f10996a7f15e32261f151600163f41df4e58ca
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708209"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666769"
 ---
 # <a name="manage-data-exfiltration-to-azure-storage-accounts-with-virtual-network-service-endpoint-policies-using-the-azure-cli"></a>Gegevens exfiltration beheren om accounts te Azure Storage met het eindpunt beleid van een virtueel netwerk met behulp van de Azure CLI
 
@@ -252,7 +252,7 @@ az storage account network-rule add \
 
 Azure service Endpoint-beleids regels zijn alleen beschikbaar voor Azure Storage. Daarom wordt service-eind punt voor *micro soft. Storage* op dit subnet ingeschakeld voor dit voor beeld van Setup.
 
-Service-eindpunt beleid wordt toegepast via service-eind punten. We gaan eerst een service-eindpunt beleid maken. Vervolgens worden de beleids definities in dit beleid gemaakt voor Azure Storage accounts die worden white list voor dit subnet
+Service-eindpunt beleid wordt toegepast via service-eind punten. We gaan eerst een service-eindpunt beleid maken. Vervolgens worden de beleids definities in dit beleid gemaakt voor Azure Storage accounts die moeten worden goedgekeurd voor dit subnet
 
 Een service-eindpunt beleid maken
 

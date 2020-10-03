@@ -4,17 +4,17 @@ description: Meer informatie over functies voor het aanvragen van klant gegevens
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.date: 04/17/2020
 ms.topic: conceptual
 ms.service: time-series-insights
 services: time-series-insights
+ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 30b3832dfe3e1c4564d1d89b5c318421e48f554f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5565dd43689d0420fbb9b73f088f24a38a2d54db
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501692"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665902"
 ---
 # <a name="summary-of-customer-data-request-features"></a>Samenvatting van functies voor gegevensaanvragen van klanten
 
@@ -54,13 +54,13 @@ Het is ook mogelijk om export bewerkingen uit te voeren op toegangs beleid met b
 
 Persoonlijke gegevens kunnen worden omgezet in Time Series Insights opslag, een ander scenario van gebruikers-en beheerder gegevens. Als u rekening houdt met de gegevens die zijn opgeslagen in Time Series Insights als persoons gegevens, kunt u die gegevens exporteren en verwijderen met behulp van de volgende stappen:
 
-**Gegevens weer geven en exporteren**
+### <a name="view-and-export-data"></a>Gegevens weer geven en exporteren
 
 Als u gegevens wilt weer geven en exporteren die zijn opgeslagen in Time Series Insights, moet u zoeken naar die gegevens. U kunt de Time Series Insights Explorer-of Time Series Insights query-Api's gebruiken om gegevens weer te geven en te exporteren. Als u gegevens wilt weer geven en exporteren met behulp van de Time Series Insights Explorer, zoekt u eerst naar de betreffende gebruikers gegevens. Klik na het zoeken met de rechter muisknop op de grafiek en selecteer **gebeurtenissen verkennen**. Het raster gebeurtenissen wordt weer gegeven en toont opties voor het exporteren van de gegevens als CSV en JSON.
 
 Lees [Azure time series Insights Explorer](time-series-insights-explorer.md)voor meer informatie.
 
-**Gegevens verwijderen**
+### <a name="delete-data"></a>Gegevens verwijderen
 
 Op dit moment ondersteunt Time Series Insights geen gedetailleerde verwijdering van gegevens. Time Series Insights biedt echter de mogelijkheid om klant gegevens te verwijderen die zijn opgeslagen in Time Series Insights door het configureren van Bewaar beleid. U kunt de Bewaar periode van de hele Time Series Insights omgeving aanpassen tot een wille keurig aantal dagen om uw verwijderings vereisten te ondersteunen.
 

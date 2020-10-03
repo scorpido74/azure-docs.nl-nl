@@ -15,12 +15,12 @@ ms.date: 09/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 2f96e48d0c7b14178185f751b8c708e75ab3f322
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 415af4d71365a88a5998f6a9356d5240bc5e2518
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91441831"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665987"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Problemen met Azure RBAC oplossen
 
@@ -86,7 +86,7 @@ $ras.Count
 
 ## <a name="transferring-a-subscription-to-a-different-directory"></a>Een abonnement overdragen naar een andere map
 
-- Zie [een Azure-abonnement overdragen naar een andere Azure AD-Directory (preview)](transfer-subscription.md)als u stappen nodig hebt voor het overdragen van een abonnement naar een andere Azure AD-adres lijst.
+- Zie [een Azure-abonnement overdragen naar een andere Azure AD-adres lijst](transfer-subscription.md)als u stappen nodig hebt voor het overdragen van een abonnement naar een andere Azure AD-adres lijst.
 - Als u een abonnement overbrengt naar een andere Azure AD-adres lijst, worden alle roltoewijzingen **permanent** verwijderd uit de Azure AD-bron directory en worden ze niet gemigreerd naar de Azure AD-doel directory. U moet uw roltoewijzingen opnieuw maken in de doel directory. U moet ook hand matig beheerde identiteiten voor Azure-resources maken. Zie [Veelgestelde vragen en bekende problemen met beheerde identiteiten](../active-directory/managed-identities-azure-resources/known-issues.md)voor meer informatie.
 - Als u een globale Azure AD-beheerder bent en u geen toegang hebt tot een abonnement nadat het is overgebracht tussen directory's, gebruikt u de wissel knop **voor het toegangs beheer voor Azure-resources** om uw toegang tijdelijk uit te [breiden](elevate-access-global-admin.md) om toegang te krijgen tot het abonnement.
 

@@ -6,14 +6,14 @@ ms.subservice: sizes
 author: mimckitt
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 02/20/2020
+ms.date: 10/02/2020
 ms.author: jushiman
-ms.openlocfilehash: 18389f3058bcc60c22f8598040f4fea4b036f1ee
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: afad68be53637cf258223eafab0a13f525a92f4c
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89298909"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666616"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>Vorige generaties virtuele machine grootten
 
@@ -163,7 +163,7 @@ Grootten uit de A8-A11- en H-serie worden ook wel *rekenintensieve exemplaren* g
 <sup>1</sup> Voor MPI-toepassingen wordt een toegewijd RDMA-back-end-netwerk ingeschakeld door FDR InfiniBand-netwerk. Dit biedt een zeer lage latentie en hoge band breedte.  
 
 > [!NOTE]
-> De A8-A11-Vm's worden gepland voor buiten gebruiks telling op 3/2021. Zie voor meer informatie [HPC-migratie handleiding](https://azure.microsoft.com/resources/hpc-migration-guide/).
+> De A8-A11-Vm's worden gepland voor buiten gebruiks telling op 3/2021. We raden u ten zeerste aan geen nieuwe A8-A11-Vm's te maken. Migreer alle bestaande A8-A11-Vm's naar nieuwere en krachtige computing VM-grootten zoals H, HB, HC, HBv2 en de grootte van Compute-VM'S voor algemeen gebruik, zoals D, E en F voor een betere prijs-prestatie verhouding. Zie voor meer informatie [HPC-migratie handleiding](https://azure.microsoft.com/resources/hpc-migration-guide/).
 
 <br>
 

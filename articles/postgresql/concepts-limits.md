@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/28/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 047e722a0e0ade60d1eb93a48e37333fffafd674
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6733e373b35dd160af94e3178cd11f657f362c1c
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76836453"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665254"
 ---
 # <a name="limits-in-azure-database-for-postgresql---single-server"></a>Limieten in Azure Database for PostgreSQL-één server
 In de volgende secties worden de capaciteits-en functionele limieten in de database service beschreven. Zie het artikel over de [prijs categorieën](concepts-pricing-tiers.md) als u meer wilt weten over resource-lagen (compute, geheugen, opslag).
@@ -56,7 +56,7 @@ Een PostgreSQL-verbinding, zelfs inactief, kan ongeveer 10 MB aan geheugen in be
 > Houd er rekening mee dat het [postgresql-versie beleid](https://www.postgresql.org/support/versioning/) als een _primaire versie_ -upgrade voor postgresql versie 10 als een verhoging van het eerste _of_ tweede nummer moet worden uitgevoerd (bijvoorbeeld 9,5 tot 9,6 werd beschouwd als een _primaire_ versie-upgrade).
 > Vanaf versie 10 wordt alleen een wijziging in het eerste nummer beschouwd als een primaire versie-upgrade (bijvoorbeeld 10,0 tot 10,1 is een _secundaire_ versie-upgrade en 10 tot 11 is een _primaire_ versie-upgrade).
 
-### <a name="vnet-service-endpoints"></a>VNet-service-eindpunten
+### <a name="vnet-service-endpoints"></a>VNeT-service-eindpunten
 - Ondersteuning voor VNet-service-eind punten is alleen voor servers met Algemeen en geoptimaliseerd voor geheugen.
 
 ### <a name="restoring-a-server"></a>Een server herstellen
@@ -66,6 +66,11 @@ Een PostgreSQL-verbinding, zelfs inactief, kan ongeveer 10 MB aan geheugen in be
 
 ### <a name="utf-8-characters-on-windows"></a>UTF-8-tekens in Windows
 - In sommige scenario's worden UTF-8-tekens niet volledig ondersteund in open-source PostgreSQL in Windows, wat van invloed is op Azure Database for PostgreSQL. Raadpleeg de thread on [Bug #15476 in de postgresql-Archive](https://www.postgresql-archive.org/BUG-15476-Problem-on-show-trgm-with-4-byte-UTF-8-characters-td6056677.html) voor meer informatie.
+
+### <a name="gss-error"></a>GSS-fout
+Als er een fout wordt weer geven die betrekking heeft op **gss**, gebruikt u waarschijnlijk een nieuwere versie van het client/stuur programma die de Azure post gres-server nog niet volledig ondersteunt. Deze fout is bekend bij het beïnvloeden van de [versies 42.2.15 en 42.2.16 van het JDBC-stuur programma](https://github.com/pgjdbc/pgjdbc/issues/1868).
+   - We zijn van plan om de update te volt ooien aan het einde van november. Overweeg in de tussen tijd een werkende versie van het stuur programma te gebruiken.
+   - Of overweeg de GSS-aanvraag uit te scha kelen.  Gebruik een verbindings parameter zoals `gssEncMode=disable` .
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Meer informatie over wat er beschikbaar is in elke prijs categorie](concepts-pricing-tiers.md)

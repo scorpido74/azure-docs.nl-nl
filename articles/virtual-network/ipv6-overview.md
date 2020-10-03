@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 5c175a1575a4efbdc2294412e3743e201d8c4bb1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c0d4c72bd60f35088773ec6dc5df80709c5ae98c
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83653298"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666820"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network"></a>Wat is IPv6 voor Azure Virtual Network?
 
@@ -40,7 +40,7 @@ Voor delen van IPv6 voor Azure VNET:
 - Bouwt voort op lange, stabiele Azure VM-to-Internet IPv6-connectiviteit.
 - Standaard beveiligd omdat de IPv6-verbinding met het internet alleen wordt ingesteld wanneer u deze expliciet aanvraagt in uw implementatie.
 
-## <a name="capabilities"></a>Functies
+## <a name="capabilities"></a>Functionaliteit
 
 IPv6 voor Azure VNet bevat de volgende mogelijkheden:
 
@@ -61,7 +61,7 @@ IPv6 voor Azure VNet bevat de volgende mogelijkheden:
     - Opmerking: IPv6 kan alleen worden verdeeld over de primaire netwerk interface (NIC) op Azure-Vm's. 
 - [Standaard-IPv6-ondersteuning voor interne Load Balancer](ipv6-dual-stack-standard-internal-load-balancer-powershell.md) voor het maken van robuuste toepassingen met meerdere lagen in azure VNETs.   
 - Standaard IPv6-ondersteuning voor open bare Load Balancer voor compatibiliteit met oudere implementaties
-- [Gereserveerde IPv6-adressen en](ipv6-public-ip-address-prefix.md) adresbereiken bieden stabiele, voorspel bare IPv6-adressen waarmee u uw door Azure gehoste toepassingen voor uw bedrijf en uw klanten eenvoudig kunt white list.
+- [Gereserveerde IPv6-adressen en](ipv6-public-ip-address-prefix.md) adresbereiken bieden stabiele, voorspel bare IPv6-adressen die het filteren van uw door Azure gehoste toepassingen voor uw bedrijf en uw klanten vereenvoudigen.
 - Openbaar IP op exemplaarniveau biedt IPv6-Internet connectiviteit rechtstreeks aan afzonderlijke Vm's.
 - [IPv6 toevoegen aan bestaande alleen-IPv4-implementaties](ipv6-add-to-existing-vnet-powershell.md): met deze functie kunt u eenvoudig IPv6-connectiviteit toevoegen aan bestaande IPv4-implementaties zonder dat u opnieuw implementaties hoeft te maken.  Het IPv4-netwerk verkeer wordt niet beïnvloed tijdens dit proces, zodat u, afhankelijk van uw toepassing en besturings systeem, mogelijk IPv6 kunt toevoegen, zelfs bij Live Services.    
 - Laat Internet-clients naadloos toegang krijgen tot uw dual stack-toepassing met behulp van het Protocol van de keuze met Azure DNS ondersteuning voor IPv6-records (AAAA). 

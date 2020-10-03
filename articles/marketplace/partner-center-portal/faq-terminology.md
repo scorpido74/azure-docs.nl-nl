@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 author: shganesh-dev
 ms.author: shganesh
-ms.openlocfilehash: ed836e3df28c5e39aa7f9d21f020c0d37292dcfc
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: aff26d3b491896aa9a1b1fee93d39a5ec93d730c
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91631797"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665138"
 ---
 # <a name="commercial-marketplace-analytics-terminology-and-common-questions"></a>Commercial Marketplace Analytics terminologie en veelgestelde vragen
 
@@ -45,7 +45,7 @@ Als u dit bericht ontvangt, betekent dit dat u Analytics-gegevens hebt, maar er 
 | Azure-licentie type: Enter prise | Klant, order | De eind klant schaft Azure en uw Marketplace-aanbieding aan via een Enterprise Agreement, die rechtstreeks is ondertekend met micro soft.|
 | Azure-licentie type: Enter prise through reseller  | Klant, order | De eind klant schaft Azure en uw Marketplace-aanbieding aan via een wederverkoper die hun Enterprise Agreement met micro soft vereenvoudigt.|
 | Azure-licentie type: betalen naar gebruik| Klant, order | De eind klant aanschaft Azure en uw Marketplace-aanbieding via een overeenkomst voor betalen naar gebruik, die rechtstreeks is ondertekend met micro soft.|
-| Facturerings account-ID| Klant, order, gebruik| De id van het account waarop de facturering wordt gegenereerd. Gebruik dit kenmerk om analytische rapporten met het rapport uitbetalings transactie te verbinden.|
+| Facturerings account-ID| Klant, order, gebruik| De id van het account waarop de facturering wordt gegenereerd. Wijs de **facturerings account-id** toe aan **CustomerID** om uw rapport met de uitbetalings transacties te koppelen aan de klant-, order-en gebruiks rapporten.|
 | Naam van Cloud exemplaar| Bestellen| De Microsoft Cloud waarin een VM-implementatie is opgetreden.|
 | Naam van Cloud exemplaar: Azure Global| Bestellen| De open bare wereld wijde micro soft-Cloud.|
 | Naam van Cloud exemplaar: Azure Government | Bestellen| Government-specifieke micro soft-Clouds voor een van de volgende overheden: China, Duitsland of de Verenigde Staten van Amerika.| |

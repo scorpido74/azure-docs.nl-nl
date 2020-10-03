@@ -1,5 +1,5 @@
 ---
-title: Aangepaste tref woorden maken-spraak service
+title: Het tref woord Quick Start-speech service maken
 titleSuffix: Azure Cognitive Services
 description: Het apparaat luistert altijd naar een tref woord (of woord groep). Wanneer de gebruiker het tref woord heeft gestaan, stuurt het apparaat alle volgende audio naar de Cloud totdat de gebruiker stopt met spreken. Het aanpassen van uw tref woord is een efficiënte manier om uw apparaat te onderscheiden en uw huis stijl te versterken.
 services: cognitive-services
@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/20/2019
+ms.date: 10/02/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 188824b9c43387cf106a3cdd53a09fd6bcb198b8
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: f2f333cd01057ff5f6f904924880f88b0685c72f
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91360664"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667690"
 ---
-# <a name="custom-keyword-basics"></a>Basisbeginselen van aangepaste trefwoorden
+# <a name="get-started-with-custom-keyword"></a>Aan de slag met aangepast tref woord
 
-In dit artikel leert u de basis beginselen van het werken met aangepaste tref woorden, met behulp van speech Studio en de Speech SDK. Een tref woord is een woord of korte woord groep waarmee uw product spraak kan worden geactiveerd. Trefwoord modellen maakt u in speech Studio en vervolgens exporteert u een model bestand dat u gebruikt met de spraak-SDK in uw toepassingen.
+In deze Quick Start leert u de basis beginselen van het werken met aangepaste tref woorden, met behulp van speech Studio en de Speech SDK. Een tref woord is een woord of korte woord groep waarmee uw product spraak kan worden geactiveerd. Trefwoord modellen maakt u in speech Studio en vervolgens exporteert u een model bestand dat u gebruikt met de spraak-SDK in uw toepassingen.
 
 ## <a name="prerequisites"></a>Vereisten
 

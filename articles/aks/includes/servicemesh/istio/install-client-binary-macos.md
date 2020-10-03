@@ -1,31 +1,30 @@
 ---
 author: paulbouwer
 ms.topic: include
-ms.date: 11/15/2019
+ms.date: 10/02/2020
 ms.author: pabouwer
-ms.openlocfilehash: 74f5b22ccc822a188059b29d9c661a15cf8412bf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5dc9686e4a9994a085cc9f4a4631e66b05d7949d
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77593946"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666699"
 ---
 ## <a name="download-and-install-the-istio-istioctl-client-binary"></a>Down load en installeer het binaire bestand voor de Istio istioctl-client
 
-In een op bash gebaseerde shell op MacOS kunt u `curl` de Istio-release downloaden en vervolgens `tar` als volgt ophalen:
+In een op bash gebaseerde shell op macOS kunt u `curl` de Istio-release downloaden en vervolgens `tar` als volgt ophalen:
 
 ```bash
 # Specify the Istio version that will be leveraged throughout these instructions
-ISTIO_VERSION=1.4.0
+ISTIO_VERSION=1.7.3
 
-curl -sL "https://github.com/istio/istio/releases/download/$ISTIO_VERSION/istio-$ISTIO_VERSION-osx.tar.gz" | tar xz
+curl -sL "https://github.com/istio/istio/releases/download/$ISTIO_VERSION/istioctl-$ISTIO_VERSION-osx.tar.gz" | tar xz
 ```
 
-De `istioctl` binaire client wordt uitgevoerd op uw client computer en maakt het mogelijk om te communiceren met het Istio-service-net. Gebruik de volgende opdrachten om het binaire bestand van de Istio-client te installeren `istioctl` in een op bash gebaseerde shell op MacOS. Met deze opdrachten `istioctl` wordt de binaire client gekopieerd naar de standaard gebruikers programma locatie in uw `PATH` .
+De `istioctl` binaire client wordt uitgevoerd op uw client computer en u kunt Istio installeren en beheren in uw AKS-cluster. Gebruik de volgende opdrachten om het binaire bestand van de Istio-client te installeren `istioctl` in een op bash gebaseerde shell op macOS. Met deze opdrachten `istioctl` wordt de binaire client gekopieerd naar de standaard gebruikers programma locatie in uw `PATH` .
 
 ```bash
-cd istio-$ISTIO_VERSION
-sudo cp ./bin/istioctl /usr/local/bin/istioctl
+sudo mv ./istioctl /usr/local/bin/istioctl
 sudo chmod +x /usr/local/bin/istioctl
 ```
 

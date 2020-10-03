@@ -3,12 +3,12 @@ title: Afhankelijkheids analyse zonder agent instellen in de evaluatie van Azure
 description: Een afhankelijkheids analyse zonder agent instellen in de evaluatie van Azure Migrate server.
 ms.topic: how-to
 ms.date: 6/08/2020
-ms.openlocfilehash: 164cc20632faa1d444d06da6688000e9b40d7e76
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 57e5add810cf4fac232bce08fc7ca96df0a7c3a0
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91275588"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667466"
 ---
 # <a name="analyze-machine-dependencies-agentless"></a>Machine-afhankelijkheden analyseren (zonder agents)
 
@@ -137,12 +137,12 @@ Kies de computers waarop u de detectie van afhankelijkheden wilt stoppen.
 Als u de afhankelijkheid op meerdere computers wilt stoppen, kunt u [Power shell](#start-or-stop-dependency-discovery-using-powershell) gebruiken om dit te doen.
 
 
-### <a name="start-or-stop-dependency-discovery-using-powershell"></a>Detectie van afhankelijkheden starten of stoppen met Power shell
+## <a name="start-or-stop-dependency-discovery-using-powershell"></a>Detectie van afhankelijkheden starten of stoppen met Power shell
 
 Down load de Power shell-module van [Azure PowerShell samples](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale) opslag plaats op github.
 
 
-#### <a name="log-in-to-azure"></a>Meld u aan bij Azure.
+### <a name="log-in-to-azure"></a>Meld u aan bij Azure.
 
 1. Meld u aan bij uw Azure-abonnement met de cmdlet Connect-AzAccount.
 
@@ -166,7 +166,7 @@ Down load de Power shell-module van [Azure PowerShell samples](https://github.co
     Import-Module .\AzMig_Dependencies.psm1
     ```
 
-#### <a name="enable-or-disable-dependency-data-collection"></a>Verzamelen van afhankelijkheids gegevens in-of uitschakelen
+### <a name="enable-or-disable-dependency-data-collection"></a>Verzamelen van afhankelijkheids gegevens in-of uitschakelen
 
 1. Bekijk de lijst met gedetecteerde virtuele VMware-machines in uw Azure Migrate-project met behulp van de volgende opdrachten. In het onderstaande voor beeld is de project naam FabrikamDemoProject en de resource groep waartoe deze behoort, is FabrikamDemoRG. De lijst met computers wordt opgeslagen in FabrikamDemo_VMs.csv
 

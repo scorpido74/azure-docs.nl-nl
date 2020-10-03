@@ -13,12 +13,12 @@ ms.custom:
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
 - contperfq1
-ms.openlocfilehash: 2e1c8975c0f37fff2e177c9aa0dcf8f3b92a9d3f
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 0a5cf5ad4a7cbf7d732d1fafdcafd434cba20d13
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89421404"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91664933"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Communiceren met uw IoT-hub met het MQTT-protocol
 
@@ -53,9 +53,9 @@ De volgende tabel bevat koppelingen naar code voorbeelden voor elke ondersteunde
 | Taal | Para meter MQTT-Protocol | MQTT over web sockets protocol-para meter
 | --- | --- | --- |
 | [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device.js) | Azure-IOT-Device-mqtt. Mqtt | Azure-IOT-Device-mqtt. MqttWs |
-| [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |[IotHubClientProtocol](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.iothubclientprotocol?view=azure-java-stable). MQTT | IotHubClientProtocol. MQTT_WS |
+| [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |[IotHubClientProtocol](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.iothubclientprotocol?view=azure-java-stable). MQTT | IotHubClientProtocol.MQTT_WS |
 | [C](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_client_sample_mqtt_dm) | [MQTT_Protocol](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-h/mqtt-protocol) | [MQTT_WebSocket_Protocol](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-websockets-h/mqtt-websocket-protocol) |
-| [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) | [Transport type](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.transporttype?view=azure-dotnet). Mqtt | Transport type. Mqtt valt terug naar MQTT via web sockets als MQTT mislukt. Als u alleen MQTT via web-sockets wilt opgeven, gebruikt u transport type. Mqtt_WebSocket_Only |
+| [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) | [Transport type](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.transporttype?view=azure-dotnet). Mqtt | Transport type. Mqtt valt terug naar MQTT via web sockets als MQTT mislukt. Als u alleen MQTT via web-sockets wilt opgeven, gebruikt u TransportType.Mqtt_WebSocket_Only |
 | [Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples) | Biedt standaard ondersteuning voor MQTT | Toevoegen `websockets=True` in de aanroep voor het maken van de client |
 
 Het volgende fragment laat zien hoe u het MQTT via web sockets kunt opgeven wanneer u de Azure IoT Node.js SDK gebruikt:
@@ -103,6 +103,38 @@ Zorg er daarom voor dat u de volgende items controleert:
 
 * AMQP wordt niet ondersteund in de python-SDK.
 
+## <a name="example-in-c-using-mqtt-without-an-azure-iot-sdk"></a>Voor beeld in C met MQTT zonder Azure IoT SDK
+
+In de [MQTT van de IOT-voorbeeld opslagplaats](https://github.com/Azure-Samples/IoTMQTTSample)vindt u een aantal C/C++-demo projecten die laten zien hoe u telemetrie-berichten verzendt en gebeurtenissen ontvangt met een IOT-hub zonder de Azure IOT C SDK te gebruiken. 
+
+In deze voor beelden wordt de Mosquitto-bibliotheek voor eclips gebruikt voor het verzenden van berichten naar de MQTT-Broker die in de IoT hub is geïmplementeerd.
+
+Deze opslag plaats bevat:
+
+**Voor Windows:**
+
+* TelemetryMQTTWin32: bevat code voor het verzenden van een telemetrie-bericht naar een Azure IoT hub, gebouwd en uitgevoerd op een Windows-computer.
+
+* SubscribeMQTTWin32: bevat code voor het abonneren op gebeurtenissen van een bepaalde IoT-hub op een Windows-computer.
+
+* DeviceTwinMQTTWin32: bevat code voor het zoeken naar en abonneren op de dubbele gebeurtenissen van een apparaat in de Azure IoT hub op een Windows-computer.
+
+* PnPMQTTWin32: bevat code voor het verzenden van een telemetrie-bericht met IoT plug & Play preview-mogelijkheden voor apparaten naar een Azure IoT hub, gebouwd en uitgevoerd op een Windows-computer. Meer informatie over [IOT Plug & Play](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play)
+
+**Voor Linux:**
+
+* MQTTLinux: bevat code en bouw script voor uitvoering op Linux (WSL, Ubuntu en Raspbian zijn tot nu toe getest).
+
+* LinuxConsoleVS2019: bevat dezelfde code, maar in een VS2019-project gericht WSL (Windows Linux-subsysteem). Met dit project kunt u fouten opsporen in de code die wordt uitgevoerd in Linux stap voor stap van Visual Studio.
+
+**Voor mosquitto_pub:**
+
+Deze map bevat twee voor beelden van opdrachten die worden gebruikt met mosquitto_pub hulp programma van Mosquitto.org.
+
+* Mosquitto_sendmessage: een eenvoudig tekst bericht verzenden naar een Azure IoT hub die fungeert als een apparaat.
+
+* Mosquitto_subscribe: om gebeurtenissen weer te geven die in een Azure IoT-hub optreden.
+
 ## <a name="using-the-mqtt-protocol-directly-as-a-device"></a>Het MQTT-protocol direct gebruiken (als een apparaat)
 
 Als een apparaat de Sdk's van het apparaat niet kan gebruiken, kan het nog steeds verbinding maken met de eind punten van het open bare apparaat met behulp van het MQTT-protocol op poort 8883. In het **Connect** -pakket moet het apparaat de volgende waarden gebruiken:
@@ -147,38 +179,6 @@ Als een apparaat de Sdk's van het apparaat niet kan gebruiken, kan het nog steed
 Voor MQTT Connect-en Disconnect-pakketten IoT Hub een gebeurtenis op het kanaal van de **Operations-bewaking** . Deze gebeurtenis bevat aanvullende informatie die u kan helpen bij het oplossen van verbindings problemen.
 
 De apparaat-app **kan een bericht** in het **Connect** -pakket opgeven. De app van het apparaat moet de naam van het `devices/{device_id}/messages/events/` `devices/{device_id}/messages/events/{property_bag}` onderwerp gebruiken om **Will** te definiëren dat berichten worden doorgestuurd als een telemetrie-bericht. **Will** Als de netwerk verbinding is gesloten, maar er nog geen **Verbrekings** pakket van het apparaat is ontvangen, stuurt IOT hub **het bericht dat** in het **Connect** -pakket is opgegeven, naar het telemetrie-kanaal. Het telemetrie-kanaal kan het eind punt van de standaard **gebeurtenissen** zijn of een aangepast eind punt dat is gedefinieerd door IOT hub route ring. Aan het bericht is de eigenschap **iothub-Message type** met de waarde **van toegewezen** .
-
-### <a name="an-example-of-c-code-using-mqtt-without-azure-iot-c-sdk"></a>Een voor beeld van een C-code met behulp van MQTT zonder Azure IoT C SDK
-
-In de [MQTT van de IOT-voorbeeld opslagplaats](https://github.com/Azure-Samples/IoTMQTTSample)vindt u een aantal C/C++-demo projecten die laten zien hoe u telemetrie-berichten verzendt en gebeurtenissen ontvangt met een IOT-hub zonder de Azure IOT C SDK te gebruiken. 
-
-In deze voor beelden wordt de Mosquitto-bibliotheek voor eclips gebruikt voor het verzenden van berichten naar de MQTT-Broker die in de IoT hub is geïmplementeerd.
-
-Deze opslag plaats bevat:
-
-**Voor Windows:**
-
-* TelemetryMQTTWin32: bevat code voor het verzenden van een telemetrie-bericht naar een Azure IoT hub, gebouwd en uitgevoerd op een Windows-computer.
-
-* SubscribeMQTTWin32: bevat code voor het abonneren op gebeurtenissen van een bepaalde IoT-hub op een Windows-computer.
-
-* DeviceTwinMQTTWin32: bevat code voor het zoeken naar en abonneren op de dubbele gebeurtenissen van een apparaat in de Azure IoT hub op een Windows-computer.
-
-* PnPMQTTWin32: bevat code voor het verzenden van een telemetrie-bericht met IoT plug & Play preview-mogelijkheden voor apparaten naar een Azure IoT hub, gebouwd en uitgevoerd op een Windows-computer. Meer informatie over [IOT Plug & Play](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play)
-
-**Voor Linux:**
-
-* MQTTLinux: bevat code en bouw script voor uitvoering op Linux (WSL, Ubuntu en Raspbian zijn tot nu toe getest).
-
-* LinuxConsoleVS2019: bevat dezelfde code, maar in een VS2019-project gericht WSL (Windows Linux-subsysteem). Met dit project kunt u fouten opsporen in de code die wordt uitgevoerd in Linux stap voor stap van Visual Studio.
-
-**Voor mosquitto_pub:**
-
-Deze map bevat twee voor beelden van opdrachten die worden gebruikt met mosquitto_pub hulp programma van Mosquitto.org.
-
-* Mosquitto_sendmessage: een eenvoudig tekst bericht verzenden naar een Azure IoT hub die fungeert als een apparaat.
-
-* Mosquitto_subscribe: om gebeurtenissen weer te geven die in een Azure IoT-hub optreden.
 
 ## <a name="using-the-mqtt-protocol-directly-as-a-module"></a>Het MQTT-protocol direct gebruiken (als een module)
 

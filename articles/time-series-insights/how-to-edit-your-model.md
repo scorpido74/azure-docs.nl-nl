@@ -8,26 +8,27 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: ac5322b93fc5f804292cfbff2c2e7eeb79b5989f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cac4234d5bd93de8b059ea53a4697dae1bf5c64c
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097064"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667876"
 ---
 # <a name="data-modeling-in-azure-time-series-insights-gen2"></a>Gegevens modellering in Azure Time Series Insights Gen2
 
 In dit artikel wordt beschreven hoe u kunt werken met een time series-model in Azure Time Series Insights Gen2. Het bevat een aantal veelvoorkomende gegevens scenario's.
 
 > [!TIP]
+>
 > * Meer informatie over het [Time Series-model](concepts-model-overview.md).
 > * Meer informatie over het navigeren in de [Azure time series Insights Gen2 Explorer](./time-series-insights-update-explorer.md).
 
 ## <a name="instances"></a>exemplaren
 
-De Azure Time Series Insights Explorer ondersteunt instanties voor **maken**, **lezen**, **bijwerken**en **verwijderen** in de browser. 
+De Azure Time Series Insights Explorer ondersteunt instanties voor **maken**, **lezen**, **bijwerken**en **verwijderen** in de browser.
 
 Selecteer om te beginnen de **model** weergave in de weer gave **analyse** van Azure time series Insights Explorer.
 
@@ -57,7 +58,7 @@ Selecteer om te beginnen de **model** weergave in de weer gave **analyse** van A
 
 ### <a name="edit-a-single-instance"></a>Eén exemplaar bewerken
 
-1. Selecteer het exemplaar en selecteer het pictogram **bewerken** of **Potlood**. 
+1. Selecteer het exemplaar en selecteer het pictogram **bewerken** of **Potlood**.
 1. Breng de gewenste wijzigingen aan en selecteer **Opslaan**.
 
     [![Bewerk één exemplaar.](media/v2-update-how-to-tsm/how-to-tsm-edit-instance.png)](media/v2-update-how-to-tsm/how-to-tsm-edit-instance.png#lightbox)
@@ -75,7 +76,7 @@ Selecteer om te beginnen de **model** weergave in de weer gave **analyse** van A
 
 ## <a name="hierarchies"></a>Hiërarchieën
 
-De Azure Time Series Insights Explorer ondersteunt de bewerkingen voor het **maken**, **lezen**, **bijwerken**en **verwijderen** van hiërarchieën in de browser. 
+De Azure Time Series Insights Explorer ondersteunt de bewerkingen voor het **maken**, **lezen**, **bijwerken**en **verwijderen** van hiërarchieën in de browser.
 
 Selecteer om te beginnen de **model** weergave in de weer gave **analyse** van Azure time series Insights Explorer.
 
@@ -117,7 +118,7 @@ Selecteer om te beginnen de **model** weergave in de weer gave **analyse** van A
 
 ### <a name="delete-a-hierarchy"></a>Een hiërarchie verwijderen
 
-1. Selecteer de hiërarchie en selecteer het pictogram **verwijderen** of **afval lade**. 
+1. Selecteer de hiërarchie en selecteer het pictogram **verwijderen** of **afval lade**.
 
     [![Een hiërarchie verwijderen door de knop verwijderen te selecteren.](media/v2-update-how-to-tsm/how-to-tsm-delete-hierarchy.png)](media/v2-update-how-to-tsm/how-to-tsm-delete-hierarchy.png#lightbox)
 
@@ -125,7 +126,7 @@ Selecteer om te beginnen de **model** weergave in de weer gave **analyse** van A
 
 ## <a name="types"></a>Typen
 
-De Azure Time Series Insights Explorer ondersteunt het type **Create**-, **Read**-, **Update**-en **Delete** -bewerkingen in de browser. 
+De Azure Time Series Insights Explorer ondersteunt het type **Create**-, **Read**-, **Update**-en **Delete** -bewerkingen in de browser.
 
 Selecteer om te beginnen de **model** weergave in de weer gave **analyse** van Azure time series Insights Explorer.
 
@@ -136,7 +137,7 @@ Selecteer om te beginnen de **model** weergave in de weer gave **analyse** van A
     [![Deel venster tijd reeks model typen.](media/v2-update-how-to-tsm/how-to-tsm-type-panel.png)](media/v2-update-how-to-tsm/how-to-tsm-type-panel.png#lightbox)
 
 1. Selecteer **+ toevoegen** om het pop-upvenster **een nieuw type toevoegen** modaal weer te geven.
-1. Voer eigenschappen en variabelen in voor uw type. Klik op **Opslaan**als u het bestand hebt ingevoerd. 
+1. Voer eigenschappen en variabelen in voor uw type. Klik op **Opslaan**als u het bestand hebt ingevoerd.
 
     [![Configuratie-instellingen om een type toe te voegen.](media/v2-update-how-to-tsm/how-to-tsm-add-new-type.png)](media/v2-update-how-to-tsm/how-to-tsm-add-new-type.png#lightbox)
 
@@ -168,8 +169,8 @@ Selecteer om te beginnen de **model** weergave in de weer gave **analyse** van A
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Lees [gegevens modellering](./concepts-model-overview.md)voor meer informatie over het time series-model.
+* Lees [gegevens modellering](./concepts-model-overview.md)voor meer informatie over het time series-model.
 
-- Lees voor meer informatie over de Gen2 [visualiseren gegevens in de Azure time series Insights Gen2 Explorer](./time-series-insights-update-explorer.md).
+* Lees voor meer informatie over de Gen2 [visualiseren gegevens in de Azure time series Insights Gen2 Explorer](./time-series-insights-update-explorer.md).
 
-- Lees [ondersteunde JSON-vormen](./time-series-insights-send-events.md#supported-json-shapes)voor meer informatie over ondersteunde JSON-vormen.
+* Lees [ondersteunde JSON-vormen](./time-series-insights-send-events.md#supported-json-shapes)voor meer informatie over ondersteunde JSON-vormen.

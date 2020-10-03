@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: diviso
 ms.topic: conceptual
 ms.workload: big-data
-ms.date: 07/07/2020
+ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2673bb70582640cda97160eb31f16f7c7f1d60e6
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 9bf857a66643b1e95ea2559601761a7217babad4
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421178"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665324"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Een aangepaste weergave delen via een geparameteriseerde URL
 
@@ -24,6 +24,7 @@ Als u een aangepaste weer gave in Azure Time Series Insights Explorer wilt delen
 Azure Time Series Insights Explorer ondersteunt URL-query parameters om weer gaven in de ervaring rechtstreeks vanuit de URL op te geven. U kunt bijvoorbeeld via de URL een doelomgeving, een zoekpredicaat en de gewenste tijdspanne opgeven. Wanneer een gebruiker de aangepaste URL selecteert, biedt de interface een koppeling rechtstreeks naar die asset in de Azure Time Series Insights Portal. Beleid voor gegevenstoegang wordt toegepast.
 
 > [!TIP]
+>
 > * Bekijk de gratis [Azure time series Insights demo](https://insights.timeseries.azure.com/samples).
 > * Lees de documentatie bij de bijbehorende [Azure time series Insights Explorer](./time-series-insights-explorer.md) .
 
@@ -55,14 +56,14 @@ Voor een relatieve tijd waarde gebruikt u `relativeMillis=<value>` , waarbij *wa
 
 Geaccepteerde waarden komen overeen met het menu **snelle tijd** van Azure time series Insights Explorer en bevatten het volgende:
 
-* `1800000`(Afgelopen 30 minuten)
-* `3600000`(Afgelopen 60 minuten)
-* `10800000`(Afgelopen 3 uur)
-* `21600000`(Afgelopen 6 uur)
-* `43200000`(Afgelopen 12 uur)
-* `86400000`(Afgelopen 24 uur)
-* `604800000`(Afgelopen 7 dagen)
-* `2592000000`(Afgelopen 30 uur)
+* `1800000` (Afgelopen 30 minuten)
+* `3600000` (Afgelopen 60 minuten)
+* `10800000` (Afgelopen 3 uur)
+* `21600000` (Afgelopen 6 uur)
+* `43200000` (Afgelopen 12 uur)
+* `86400000` (Afgelopen 24 uur)
+* `604800000` (Afgelopen 7 dagen)
+* `2592000000` (Afgelopen 30 uur)
 
 ### <a name="optional-parameters"></a>Optionele parameters
 
@@ -70,7 +71,7 @@ De `timeSeriesDefinitions=<collection of term objects>` para meter bepaalt de vo
 
 | Parameter | URL-item | Beschrijving |
 | --- | --- | --- |
-| **naam** | `\<string>` | De naam van het *onderdeel*. |
+| **name** | `\<string>` | De naam van het *onderdeel*. |
 | **splitBy** | `\<string>` | De naam van de kolom waarop moet worden *gesplitst*. |
 | **measureName** | `\<string>` | De kolomnaam van de *meting*. |
 | **predicaat** | `\<string>` | De *where*-component voor filteren aan de serverzijde. |
@@ -87,7 +88,7 @@ De `timeSeriesDefinitions=<collection of term objects>` para meter bepaalt de vo
 
 | Paar (s) | Beschrijving |
 | --- | --- |
-| `multiChartStack=false` | `true`is standaard ingeschakeld, dus door gegeven `false` aan stack. |
+| `multiChartStack=false` | `true` is standaard ingeschakeld, dus door gegeven `false` aan stack. |
 | `multiChartStack=false&multiChartSameScale=true` | Stapelen moet zijn ingeschakeld om dezelfde schaling van de Y-as te gebruiken voor verschillende onderdelen.  `false` `true` Deze functie is standaard ingeschakeld. |
 | `timeBucketUnit=<Unit>&timeBucketSize=<integer>` | Units = `days` ,,, `hours` `minutes` `seconds` , `milliseconds` .  Gebruik altijd een hoofdletter voor de eenheid. </br> Definieer het aantal eenheden door het gewenste gehele getal voor **timeBucketSize**door te geven.  |
 | `timezoneOffset=-<integer>` | Het gehele getal is altijd in milliseconden. |
@@ -123,7 +124,7 @@ https://insights.timeseries.azure.com/classic/samples?environmentId=10000000-000
 > Bekijk de Explorer Live [met behulp van het bovenstaande URL](https://insights.timeseries.azure.com/classic/samples?environmentId=10000000-0000-0000-0000-100000000108&relativeMillis=3600000&timeSeriesDefinitions=[%7B%22name%22:%22F1PressureId%22,%22splitBy%22:%22Id%22,%22measureName%22:%22Pressure%22,%22predicate%22:%22%27Factory1%27%22%7D,%7B%22name%22:%22F2TempStation%22,%22splitBy%22:%22Station%22,%22measureName%22:%22Temperature%22,%22predicate%22:%22%27Factory2%27%22%7D,%7B%22name%22:%22F3VibrationPL%22,%22splitBy%22:%22ProductionLine%22,%22measureName%22:%22Vibration%22,%22predicate%22:%22%27Factory3%27%22%7D]
 ) -voor beeld.
 
-De URL hierboven wordt beschreven en geeft de weer gave Azure Time Series Insights Explorer met para meters. 
+De URL hierboven wordt beschreven en geeft de weer gave Azure Time Series Insights Explorer met para meters.
 
 * De para meters-predikaten.
 

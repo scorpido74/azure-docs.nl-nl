@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/12/2020
+ms.date: 10/02/2020
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 9e032b8bb2dd8c82e8b076517f4309baae41c6f9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7408e3fb279536f61dd2e5cf1858476da57219d4
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320315"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665804"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Verificatie en autorisatie voor Azure Time Series Insights-API
 
@@ -56,7 +56,7 @@ In het volgende voor **stap 3**kunt u met behulp van de referenties van uw toepa
 
 [!INCLUDE [Azure Active Directory app registration](../../includes/time-series-insights-aad-registration.md)]
 
-### <a name="granting-data-access"></a>Toegang tot gegevens verlenen
+### <a name="granting-data-access"></a>Toegang verlenen tot gegevens
 
 1. Selecteer voor de Azure Time Series Insights omgeving **Data Access policies** en selecteer **toevoegen**.
 

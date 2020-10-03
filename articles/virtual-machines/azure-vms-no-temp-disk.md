@@ -7,18 +7,15 @@ ms.topic: conceptual
 ms.author: brbell
 ms.reviewer: mimckitt
 ms.date: 06/15/2020
-ms.openlocfilehash: 15b9495b95ec4efb4f8e9f315595ea6bfca6cd5a
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 30587fac7d7be37d7595a78502b7999adee9a30f
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88191139"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665307"
 ---
 # <a name="azure-vm-sizes-with-no-local-temporary-disk"></a>Azure VM-grootten zonder lokale tijdelijke schijf 
 In dit artikel vindt u antwoorden op veelgestelde vragen over Azure VM-grootten die geen lokale tijdelijke schijf hebben (d.w.z. geen lokale tijdelijke schijf). Zie voor meer informatie over deze VM-grootten [specificaties voor Dv4-en Dsv4-Series (algemeen workloads)](dv4-dsv4-series.md) of [specificaties voor Ev4-en Esv4-serie (voor geheugen geoptimaliseerde workloads)](ev4-esv4-series.md).
-
-> [!IMPORTANT]
-> De Dv4-, Dsv4-, Ev4-en Esv4-serie-VM-grootten zijn nu beschikbaar als open bare preview. Vul dit [formulier](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_Y3toRKxchLjARedqtguBRURE1ZSkdDUzg1VzJDN0cwWUlKTkcyUlo5Mi4u)in om u aan te melden voor open bare preview. 
 
 ## <a name="what-does-no-local-temp-disk-mean"></a>Wat betekent er geen lokale tijdelijke schijf? 
 Normaal gesp roken hebben we VM-grootten (bijvoorbeeld Standard_D2s_v3, Standard_E48_v3) die een kleine lokale schijf (bijvoorbeeld een D: station) bevatten. Nu met deze nieuwe VM-grootten is de kleine lokale schijf niet meer aanwezig; u kunt echter nog steeds Standard-HDD, Premium-SSD of Ultra-SSD bijvoegen.

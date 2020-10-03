@@ -8,14 +8,14 @@ ms.author: lyhughes
 manager: dpalled
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/12/2020
+ms.date: 10/02/2020
 ms.custom: lyhughes
-ms.openlocfilehash: 9a345661a50b18d53411d073ccf12375fe17cdb9
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 320d92ef0ad6d02dbe7c31b883eb7f73472378ce
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90088592"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667806"
 ---
 # <a name="upcoming-changes-to-json-flattening-and-escaping-rules-for-new-environments"></a>Aanstaande wijzigingen in JSON-afvlakking en-Escape regels voor nieuwe omgevingen
 
@@ -47,8 +47,9 @@ Nieuwe implementaties moeten overeenkomen met de nieuwe opname regels. Als uw TS
 ### <a name="if-your-payload-contains-nested-json-or-special-characters-and-you-automate-authoring-time-series-model-variable-expressions"></a>Als uw payload geneste JSON of speciale tekens bevat en u de variabelen expressies voor het maken van de [tijd reeks](.\time-series-insights-update-tsm.md) kunt automatiseren
 
 Werk uw client code bij waarmee [TypesBatchPut](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch#typesbatchput) wordt uitgevoerd, zodat deze overeenkomen met de nieuwe opname regels. U moet bijvoorbeeld een eerdere [Time Series-expressie](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax) van `"value": {"tsx": "$event.series_value.Double"}` op een van de volgende opties bijwerken:
-  * `"value": {"tsx": "$event.series.value.Double"}`
-  * `"value": {"tsx": "$event['series']['value'].Double"}`
+
+* `"value": {"tsx": "$event.series.value.Double"}`
+* `"value": {"tsx": "$event['series']['value'].Double"}`
 
 ## <a name="next-steps"></a>Volgende stappen
 

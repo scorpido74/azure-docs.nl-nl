@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: allensu
-ms.openlocfilehash: 5efcf944f5d22759f9d448da5862bcf1f19e2efe
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.openlocfilehash: 75a2bb187b2ed7a234e99d8cd293cb30148bcb1f
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91409558"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667194"
 ---
 # <a name="what-is-virtual-network-nat"></a>Wat is Azure Virtual Network NAT?
 
@@ -43,7 +43,7 @@ Virtual Network NAT (Network Address Translation) vereenvoudigt uitsluitend uitg
 
 Voor elk subnet met NAT kan uitgaande connectiviteit worden gedefinieerd.  Meerdere subnetten binnen hetzelfde virtuele netwerk kunnen verschillende NAT's hebben. Een subnet wordt geconfigureerd door de NAT-gatewayresource op te geven die moet worden gebruikt. Alle uitgaande UDP- en TCP-stromen van elk exemplaar van een virtuele machine gebruiken NAT. 
 
-NAT is compatibel met resources van openbare IP-adressen van de standaard-SKU of resources van openbare IP-voorvoegsels of een combinatie van beide.  U kunt een openbaar IP-voorvoegsel rechtstreeks gebruiken of de openbare IP-adressen van het voorvoegsel verdelen over meerdere NAT-gatewayresources. NAT zal al het verkeer opschonen naar het bereik van de IP-adressen van het voorvoegsel.  Het is nu eenvoudig om elke IP op te nemen in de whitelist van uw implementaties.
+NAT is compatibel met resources van openbare IP-adressen van de standaard-SKU of resources van openbare IP-voorvoegsels of een combinatie van beide.  U kunt een openbaar IP-voorvoegsel rechtstreeks gebruiken of de openbare IP-adressen van het voorvoegsel verdelen over meerdere NAT-gatewayresources. NAT zal al het verkeer opschonen naar het bereik van de IP-adressen van het voorvoegsel.  IP-filtering van uw implementaties is nu eenvoudig.
 
 Al het uitgaande verkeer voor het subnet wordt automatisch door NAT verwerkt zonder klantconfiguratie.  Door de gebruiker gedefinieerde routes zijn niet nodig. NAT heeft voorrang op andere uitgaande scenario's en vervangt de standaardinternetbestemming van een subnet.
 
@@ -145,4 +145,3 @@ We willen graag weten hoe we de service kunnen verbeteren. Doe een voorstel en s
 
 * Meer informatie over [NAT-gatewayresource](./nat-gateway-resource.md).
 * [Vertel ons in UserVoice wat we verder kunnen ontwikkelen voor Virtual Network NAT](https://aka.ms/natuservoice).
-

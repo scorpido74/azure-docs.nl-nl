@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
-ms.openlocfilehash: d53097c7884b9908cd3a2c7f21dc059ed9d00c39
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9abca58aa79e0924281ab69314271f2aeca6bfa6
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540159"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667558"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Toepassings wijzigings analyse (preview) gebruiken in Azure Monitor
 
@@ -101,7 +101,7 @@ Analyse van toepassings wijzigingen is een zelfstandige detectie in de web-app d
 
    ![Scherm opname van de knop ' toepassings crashes '](./media/change-analysis/application-changes.png)
 
-3. Selecteer **nu inschakelen**om de analyse van wijzigingen in te scha kelen.
+3. De koppeling leidt naar de Aalysis-gebruikers interface van de toepassing die is gewijzigd in de web-app. Als het bijhouden van de web-app in gast wijzigingen niet is ingeschakeld, volgt u de banner om wijzigingen in bestands-en app-instellingen op te halen.
 
    ![Scherm opname van de opties ' toepassings crashes '](./media/change-analysis/enable-changeanalysis.png)
 
@@ -109,11 +109,33 @@ Analyse van toepassings wijzigingen is een zelfstandige detectie in de web-app d
 
     ![Scherm opname van de gebruikers interface voor het inschakelen van een analyse](./media/change-analysis/change-analysis-on.png)
 
-5. Als u de wijzigings analyse wilt openen, selecteert u **diagnoses en problemen oplossen**  >  **Beschik baarheid en**  >  **crashes van toepassing**. U ziet een grafiek met een overzicht van het type wijzigingen in de loop van de tijd, samen met details over deze wijzigingen. Standaard worden wijzigingen in de afgelopen 24 uur weer gegeven om onmiddellijke problemen op te lossen.
+5. Wijzigings gegevens zijn ook beschikbaar in de Select- **Web-app down** en de detecties van **toepassingen vastlopen** . U ziet een grafiek met een overzicht van het type wijzigingen in de loop van de tijd, samen met details over deze wijzigingen. Standaard worden wijzigingen in de afgelopen 24 uur weer gegeven om onmiddellijke problemen op te lossen.
 
      ![Scherm opname van de weer gave diff wijzigen](./media/change-analysis/change-view.png)
 
-### <a name="enable-change-analysis-at-scale"></a>Wijzigings analyse op schaal inschakelen
+
+
+### <a name="virtual-machine-diagnose-and-solve-problems"></a>Problemen met virtuele machines vaststellen en oplossen
+
+Ga naar het hulp programma problemen vaststellen en oplossen voor een virtuele machine.  Ga naar **Hulpprogram ma's voor probleem oplossing**, blader naar beneden op de pagina en selecteer **recente wijzigingen analyseren** om wijzigingen op de virtuele machine weer te geven.
+
+![Scherm opname van de VM problemen vaststellen en oplossen](./media/change-analysis/vm-dnsp-troubleshootingtools.png)
+
+![Analyse wijzigen in hulpprogram ma's voor probleem oplossing](./media/change-analysis/analyze-recent-changes.png)
+
+### <a name="activity-log-change-history"></a>Wijzigings geschiedenis van activiteiten logboek
+De functie [wijzigings geschiedenis weer geven](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log#view-change-history) in het activiteiten logboek roept de back-end van de analyse service van de toepassings wijziging aan om wijzigingen aan te brengen die aan een bewerking **Wijzigings geschiedenis** die wordt gebruikt om de [Azure-resource grafiek](https://docs.microsoft.com/azure/governance/resource-graph/overview) rechtstreeks aan te roepen, maar de back-end heeft gewisseld om de analyse van toepassings wijzigingen aan te roepen, zodat wijzigingen die zijn geretourneerd, wijzigingen aanbrengen in het resource niveau van [Azure resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview), resource-eigenschappen van [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/overview)en in-Guest wijzigingen van PaaS Services, zoals app Services Web-app. Om ervoor te zorgen dat de service voor het wijzigen van de toepassings wijziging kan scannen op wijzigingen in de abonnementen van gebruikers, moet een resource provider worden geregistreerd. De eerste keer dat u het tabblad **wijzigings overzicht** opgeeft, start het hulp programma automatisch om de resource provider **micro soft. ChangeAnalysis** te registreren. Na de registratie zijn wijzigingen van de **Azure-resource grafiek** onmiddellijk beschikbaar en de afgelopen veer tien dagen. Wijzigingen van andere bronnen zijn na ongeveer 4 uur beschikbaar nadat het abonnement op de onboarding is uitgevoerd.
+
+![Integratie van wijzigings geschiedenis van activiteiten logboek](./media/change-analysis/activity-log-change-history.png)
+
+### <a name="vm-insights-integration"></a>Integratie van VM Insights
+Gebruikers die [VM Insights](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-overview) hebben ingeschakeld, kunnen weer geven wat er is gewijzigd in hun virtuele machines, waardoor er pieken kunnen ontstaan in een metrieke grafiek, zoals CPU of geheugen en zich afvraagt wat de oorzaak van het probleem is. Wijzigings gegevens worden geïntegreerd in de navigatie balk van de VM Insights-zijde. De gebruiker kan zien of er wijzigingen zijn aangebracht in de virtuele machine en op **wijzigingen onderzoeken** klikken om wijzigings details weer te geven in de zelfstandige gebruikers interface voor het wijzigen van de toepassing.
+
+[![Integratie van VM Insights](./media/change-analysis/vm-insights.png)](./media/change-analysis/vm-insights.png#lightbox)
+
+
+
+## <a name="enable-change-analysis-at-scale"></a>Wijzigings analyse op schaal inschakelen
 
 Als uw abonnement een groot aantal web-apps bevat, kan het inschakelen van de service op het niveau van de web-app inefficiënt zijn. Voer het volgende script uit om alle web-apps in uw abonnement in te scha kelen.
 
@@ -147,13 +169,25 @@ foreach ($webapp in $webapp_list)
 
 ```
 
-### <a name="virtual-machine-diagnose-and-solve-problems"></a>Problemen met virtuele machines vaststellen en oplossen
+## <a name="troubleshoot"></a>Problemen oplossen
 
-Ga naar het hulp programma problemen vaststellen en oplossen voor een virtuele machine.  Ga naar **Hulpprogram ma's voor probleem oplossing**, blader naar beneden op de pagina en selecteer **recente wijzigingen analyseren** om wijzigingen op de virtuele machine weer te geven.
+### <a name="having-trouble-registering-microsoftchange-analysis-resource-provider-from-change-history-tab"></a>Problemen bij het registreren van micro soft. resource provider voor analyse wijzigen van het tabblad wijzigings overzicht
+Als dit de eerste keer is dat u het wijzigings overzicht bekijkt na de integratie met de analyse van de toepassings wijzigingen, ziet u dat er automatisch een resource provider **micro soft. ChangeAnalysis**wordt geregistreerd. In zeldzame gevallen kan het om de volgende redenen mislukken:
 
-![Scherm opname van de VM problemen vaststellen en oplossen](./media/change-analysis/vm-dnsp-troubleshootingtools.png)
+- **U hebt onvoldoende machtigingen om de resource provider micro soft. ChangeAnalysis te registreren**. Dit fout bericht betekent dat aan uw rol in het huidige abonnement geen **micro soft. support/registreer/Action-** bereik is gekoppeld. Dit kan gebeuren als u niet de eigenaar van een abonnement bent en gedeelde toegangs machtigingen hebt via een collega. bijvoorbeeld toegang tot een resource groep weer geven. U kunt dit probleem oplossen door contact op te nemen met de eigenaar van uw abonnement om de resource provider **micro soft. ChangeAnalysis** te registreren. Dit kan worden gedaan in Azure Portal via **abonnementen | Resource providers** en zoeken ```Microsoft.ChangeAnalysis``` en registreren in de gebruikers interface of via Azure PowerShell of Azure cli.
 
-![Scherm opname van de VM problemen vaststellen en oplossen](./media/change-analysis/analyze-recent-changes.png)
+    Registreer de resource provider via Power shell: 
+    ```PowerShell
+    # Register resource provider
+    Register-AzResourceProvider -ProviderNamespace "Microsoft.ChangeAnalysis"
+    ```
+
+- **Kan de micro soft. ChangeAnalysis-resource provider niet registreren**. Dit bericht geeft aan dat er direct een fout is opgetreden bij de gebruikers interface heeft een aanvraag verzonden om de resource provider te registreren en is niet gerelateerd aan het probleem met de machtiging. Waarschijnlijk is het een probleem met een tijdelijke Internet verbinding. Vernieuw de pagina en controleer de Internet verbinding. Als de fout zich blijft voordoen, neemt u contact op met changeanalysishelp@microsoft.com
+
+- **Dit duurt langer dan verwacht**. Dit bericht geeft aan dat de registratie langer dan twee minuten duurt. Dit is ongebruikelijk, maar dit betekent niet noodzakelijkerwijs dat er iets verkeerd is gegaan. U kunt naar **Abonnementen gaan | Resource provider** die moet worden gecontroleerd op de registratie status van de **micro soft. ChangeAnalysis** -resource provider. U kunt proberen de gebruikers interface te gebruiken voor het opheffen van de registratie, opnieuw registreren of vernieuwen om te zien of het helpt. Neem contact op met de ondersteuning als het probleem zich blijft voordoen changeanalysishelp@microsoft.com .
+    ![Problemen met de RP-registratie oplossen](./media/change-analysis/troubleshoot-registration-taking-too-long.png)
+
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

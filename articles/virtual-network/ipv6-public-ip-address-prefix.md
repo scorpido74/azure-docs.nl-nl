@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 096dbcb6b6a732bd21622658f6f30c5158a821c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff33bf771065e7af209934a5c54b6f8f2e34835e
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80420529"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666780"
 ---
 # <a name="reserved-public-ipv6-address-prefix"></a>Voor voegsel van gereserveerd openbaar IPv6-adres
 
@@ -28,7 +28,7 @@ Open bare Ip's die u reserveert, zijn gekoppeld aan een Azure-regio van uw keuze
 > [!WARNING]
 > Wees voorzichtig om uw open bare IP-adressen niet per ongeluk te verwijderen. Als u een openbaar IP-adres verwijdert, wordt dit verwijderd uit uw abonnement en kunt u het niet herstellen (zelfs niet met de ondersteuning van Azure support).
 
-Naast het reserveren van afzonderlijke IPv6-adressen, kunt u aaneengesloten bereiken van Azure IPv6-adressen (IP-voor voegsel) voor uw gebruik behouden.  Net als bij afzonderlijke IP-adressen zijn gereserveerde voor voegsels gekoppeld aan een Azure-regio van uw keuze en met uw Azure-abonnement. Het reserveren van een voorspelbaar, aaneengesloten adres bereik heeft veel toepassingen. U kunt bijvoorbeeld de IP- *white list* van uw door Azure gehoste toepassingen door uw bedrijf en uw klanten aanzienlijk vereenvoudigen, omdat uw vaste IP-bereiken gemakkelijk kunnen worden geprogrammeerd in on-premises firewalls.  U kunt indien nodig afzonderlijke open bare Ip's van uw IP-voor voegsel maken en wanneer u deze afzonderlijke open bare Ip's verwijdert, worden ze *teruggestuurd* naar het gereserveerde bereik, zodat u deze later opnieuw kunt gebruiken. Alle IP-adressen in uw IP-voor voegsel zijn gereserveerd voor exclusief gebruik totdat u het voor voegsel verwijdert.
+Naast het reserveren van afzonderlijke IPv6-adressen, kunt u aaneengesloten bereiken van Azure IPv6-adressen (IP-voor voegsel) voor uw gebruik behouden.  Net als bij afzonderlijke IP-adressen zijn gereserveerde voor voegsels gekoppeld aan een Azure-regio van uw keuze en met uw Azure-abonnement. Het reserveren van een voorspelbaar, aaneengesloten adres bereik heeft veel toepassingen. U kunt bijvoorbeeld de IP- *filtering* van uw door Azure gehoste toepassingen door uw bedrijf en uw klanten aanzienlijk vereenvoudigen, omdat uw vaste IP-bereiken gemakkelijk kunnen worden geprogrammeerd in on-premises firewalls.  U kunt indien nodig afzonderlijke open bare Ip's van uw IP-voor voegsel maken en wanneer u deze afzonderlijke open bare Ip's verwijdert, worden ze *teruggestuurd* naar het gereserveerde bereik, zodat u deze later opnieuw kunt gebruiken. Alle IP-adressen in uw IP-voor voegsel zijn gereserveerd voor exclusief gebruik totdat u het voor voegsel verwijdert.
 
 
 

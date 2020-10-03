@@ -4,17 +4,17 @@ description: Gebruik functies zoals opslag analyse, logboek registratie aan clie
 author: normesta
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 09/23/2019
+ms.date: 10/02/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 79e108303575d5a9969e04f01bdeb126bf078762
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: a63af55161c2e60724fd35987f9dcbf05b12df2e
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90031480"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667908"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage bewaken, problemen opsporen en oplossen
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -256,6 +256,14 @@ De opslag service genereert automatisch server aanvraag-Id's.
 >
 >
 
+# <a name="net-v12"></a>[.NET-V12](#tab/dotnet)
+
+In het volgende code voorbeeld ziet u hoe u een aangepaste client aanvraag-ID gebruikt. 
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Monitoring.cs" id="Snippet_UseCustomRequestID":::
+
+# <a name="net-v11"></a>[.NET-V11](#tab/dotnet11)
+
 Als de opslag-client bibliotheek een **StorageException** in de client genereert, bevat de eigenschap **RequestInformation** een **RequestResult** -object met daarin een **ServiceRequestID** -eigenschap. U kunt ook toegang krijgen tot een **RequestResult** -object vanuit een **OperationContext** -exemplaar.
 
 In het volgende code voorbeeld ziet u hoe u een aangepaste **ClientRequestId** -waarde instelt door een **OperationContext** -object te koppelen aan de opslag service. Ook wordt uitgelegd hoe u de **ServerRequestId** -waarde ophaalt uit het antwoord bericht.
@@ -291,6 +299,8 @@ catch (StorageException storageException)
     }
 }
 ```
+
+---
 
 ### <a name="timestamps"></a><a name="timestamps"></a>Timestamps
 U kunt ook tijds tempels gebruiken om gerelateerde logboek vermeldingen te vinden, maar wees voorzichtig met de klok scheefheid tussen de client en de server die mogelijk bestaat. Zoek plus of min 15 minuten voor overeenkomende vermeldingen aan de server zijde op basis van de tijds tempel van de client. Houd er rekening mee dat de BLOB-meta gegevens voor de blobs die meet waarden bevatten, het tijds bereik aangeven voor metrische gegevens die zijn opgeslagen in de blob. Dit tijds bereik is handig als u veel metrische blobs voor dezelfde minuut of uur hebt.
@@ -358,13 +368,19 @@ Mogelijke oorzaken voor de client lopen langzaam, zoals een beperkt aantal besch
 
 Voor de tabel-en wachtrij Services kan het Nagle-algoritme ook hoge **AverageE2ELatency** veroorzaken ten opzichte van **averageserverlatency aan**: Zie het [algoritme van post Nagle is niet geschikt voor kleine aanvragen](https://docs.microsoft.com/archive/blogs/windowsazurestorage/nagles-algorithm-is-not-friendly-towards-small-requests)voor meer informatie. U kunt de Nagle-algoritme in code uitschakelen met behulp van de klasse **ServicePointManager** in de naam ruimte **System.net** . U moet dit doen voordat u aanroepen naar de tabel-of wachtrij Services in uw toepassing, omdat dit geen invloed heeft op verbindingen die al zijn geopend. Het volgende voor beeld wordt opgehaald uit de **Application_Start** -methode in een werk rollen.
 
+# <a name="net-v12"></a>[.NET-V12](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Monitoring.cs" id="Snippet_DisableNagle":::
+
+# <a name="net-v11"></a>[.NET-V11](#tab/dotnet11)
+
 ```csharp
 var storageAccount = CloudStorageAccount.Parse(connStr);
-ServicePoint tableServicePoint = ServicePointManager.FindServicePoint(storageAccount.TableEndpoint);
-tableServicePoint.UseNagleAlgorithm = false;
 ServicePoint queueServicePoint = ServicePointManager.FindServicePoint(storageAccount.QueueEndpoint);
 queueServicePoint.UseNagleAlgorithm = false;
 ```
+
+---
 
 Controleer de logboeken aan de client om te zien hoeveel aanvragen uw client toepassing verzendt en controleer op algemene .NET-gerelateerde prestatie knelpunten in uw client zoals CPU, .NET-garbagecollection, netwerk gebruik of geheugen. Als uitgangs punt voor het oplossen van problemen met .NET-client toepassingen raadpleegt u [fout opsporing, tracering en profile ring](https://msdn.microsoft.com/library/7fe0dd2y).
 
@@ -594,6 +610,12 @@ U kunt het Java script-probleem omzeilen door cross Origin Resource Sharing (COR
 
 In het volgende code voorbeeld ziet u hoe u de BLOB-service zo configureert dat Java script wordt uitgevoerd in het contoso-domein om toegang te krijgen tot een BLOB in de Blob Storage-service:
 
+# <a name="net-v12"></a>[.NET-V12](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Monitoring.cs" id="Snippet_ConfigureCORS":::
+
+# <a name="net-v11"></a>[.NET-V11](#tab/dotnet11)
+
 ```csharp
 CloudBlobClient client = new CloudBlobClient(blobEndpoint, new StorageCredentials(accountName, accountKey));
 // Set the service properties.
@@ -609,6 +631,8 @@ sp.Cors.CorsRules.Clear();
 sp.Cors.CorsRules.Add(cr);
 client.SetServiceProperties(sp);
 ```
+
+---
 
 #### <a name="network-failure"></a><a name="network-failure"></a>Netwerk fout
 In sommige gevallen kunnen verloren netwerk pakketten leiden tot de opslag service die HTTP 404-berichten retourneert aan de client. Als uw client toepassing bijvoorbeeld een entiteit uit de tabel service verwijdert, ziet u dat de client een uitzonderings rapport voor een opslag uitzondering genereert met het status bericht ' HTTP 404 (niet gevonden) ' uit de tabel service. Wanneer u de tabel in de Table Storage-service onderzoekt, ziet u dat de service de entiteit heeft verwijderd zoals aangevraagd.

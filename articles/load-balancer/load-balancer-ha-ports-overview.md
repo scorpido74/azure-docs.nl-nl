@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2019
 ms.author: allensu
-ms.openlocfilehash: 5115190d944e78d476f369442dccdbda394e46ba
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: b0b19eaa86269feff28c73275e4db4a3d332b3df
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90564046"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91664870"
 ---
 # <a name="high-availability-ports-overview"></a>Overzicht van poorten met hoge Beschik baarheid
 
-Met Azure Standard Load Balancer kunt u TCP-en UDP-stromen op alle poorten tegelijk laden wanneer u een interne load balancer gebruikt. 
+Met Azure Standard Load Balancer kunt u **alle** protocol stromen op **alle** poorten tegelijk verdelen wanneer u een interne Load Balancer via ha-poorten gebruikt.
 
-Een regel voor Load Balancing met hoge Beschik baarheid (HA) is een variant van een taakverdelings regel, geconfigureerd op een interne Standard Load Balancer. U kunt het gebruik van een load balancer vereenvoudigen door één regel te bieden voor het verdelen van alle TCP-en UDP-stromen die binnenkomen op alle poorten van een interne Standard Load Balancer. Er wordt per stroom een beslissing voor taakverdeling gemaakt. Deze actie is gebaseerd op de volgende vijf-tuple-verbinding: bron-IP-adres, bron poort, doel-IP-adres, doel poort en protocol
+Poorten met hoge Beschik baarheid (HA) is een soort taakverdelings regel die een eenvoudige manier biedt om **alle** stromen te verdelen die binnenkomen op **alle** poorten van een interne Standard Load Balancer. Er wordt per stroom een beslissing voor taakverdeling gemaakt. Deze actie is gebaseerd op de volgende vijf-tuple-verbinding: bron-IP-adres, bron poort, doel-IP-adres, doel poort en protocol
 
 De taakverdelingsregels voor de HA-poorten helpen u bij kritieke scenario's, zoals hoge beschikbaarheid en schaal aanpassen voor NVA's (Network Virtual Appliance) in virtuele netwerken. De functie kan ook helpen wanneer over een groot aantal poorten taakverdeling moet worden uitgevoerd. 
 

@@ -1,20 +1,20 @@
 ---
-title: Client-en server architectuur
+title: Architectuur van client en server
 titleSuffix: An Azure Communication Services concept document
 description: Meer informatie over de architectuur van communicatie Services.
 author: mikben
 manager: mikben
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2020
+ms.date: 09/30/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 38d6b131c972b4fd890af53624fdd6a36b3ecb6c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: b844f61963081bf355837fd26254915112cbce11
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935479"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666939"
 ---
 # <a name="client-and-server-architecture"></a>Client-en server architectuur
 
@@ -43,13 +43,13 @@ Bekijk de [best mogelijke procedures voor identiteits beheer](https://docs.micro
 
 Azure Communications java script-client bibliotheken kunnen webtoepassingen inschakelen met de interactie van tekst, spraak en video. De toepassing communiceert rechtstreeks met Azure Communication Services via de client bibliotheek om toegang te krijgen tot het gegevens vlak en om in realtime tekst, spraak en video communicatie te leveren. Hieronder vindt u een voor beeld van een architectuur stroom:
 
-:::image type="content" source="../media/scenarios/archdiagram-browser.png" alt-text="Diagram waarin de browser wordt weer gegeven voor de browser architectuur voor communicatie Services.":::
+:::image type="content" source="../media/scenarios/archdiagram-browser.png" alt-text="Diagram waarin de architectuur van de gebruikers toegangs token wordt weer gegeven.":::
 
 ## <a name="native-app-communication"></a>Systeem eigen app-communicatie
 
 Veel scenario's worden het beste geleverd met systeem eigen toepassingen. Azure Communication Services ondersteunt zowel browser-naar-app-als app-to-app-communicatie.  Bij het bouwen van een systeem eigen toepassing, met push meldingen kunnen gebruikers oproepen ontvangen, zelfs wanneer de toepassing niet wordt uitgevoerd. Met Azure Communication Services kunt u eenvoudig geïntegreerde push meldingen verzenden naar Google Firebase, Apple Push Notification Service en Windows push meldingen. Hieronder vindt u een voor beeld van een architectuur stroom:
 
-:::image type="content" source="../media/scenarios/archdiagram-app.png" alt-text="Diagram waarin de communicatie Services-architectuur voor systeem eigen app-communicatie wordt weer gegeven.":::
+:::image type="content" source="../media/scenarios/archdiagram-app.png" alt-text="Diagram waarin de architectuur van de gebruikers toegangs token wordt weer gegeven.":::
 
 ## <a name="voice-and-sms-over-the-public-switched-telephony-network-pstn"></a>Spraak-en SMS-verkeer via het open bare telefoon netwerk (PSTN)
 
@@ -58,7 +58,7 @@ Door te communiceren via het telefoon systeem kan het bereik van uw toepassing a
 > [!Note]
 > Tijdens de open bare preview is de inrichting van telefoon nummers in de Verenigde Staten beschikbaar voor klanten met facturerings adressen die zich binnen de Verenigde Staten en Canada bevinden. 
 
-:::image type="content" source="../media/scenarios/archdiagram-pstn.png" alt-text="Diagram dat de PSTN-architectuur van communicatie Services weergeeft.":::
+:::image type="content" source="../media/scenarios/archdiagram-pstn.png" alt-text="Diagram waarin de architectuur van de gebruikers toegangs token wordt weer gegeven.":::
 
 Zie [uw PSTN-en SMS-oplossing plannen](../concepts/telephony-sms/plan-solution.md) voor meer informatie over PSTN-en SMS-oplossingen
 
@@ -66,7 +66,7 @@ Zie [uw PSTN-en SMS-oplossing plannen](../concepts/telephony-sms/plan-solution.m
 
 Azure Communication Services ondersteunt Human-to-System-communicatie, met tekst-en spraak kanalen, met services die rechtstreeks toegang hebben tot het gegevens vlak van Azure Communication Services. U kunt bijvoorbeeld een bot laten beantwoorden van binnenkomende telefoon gesprekken of deel nemen aan een web-chat. Azure Communication Services biedt client bibliotheken die deze scenario's mogelijk maken voor aanroepen en chatten. Hieronder vindt u een voor beeld van een architectuur stroom:
 
-:::image type="content" source="../media/scenarios/archdiagram-bot.png" alt-text="Diagram van de architectuur van de communicatie Services-bot.":::
+:::image type="content" source="../media/scenarios/archdiagram-bot.png" alt-text="Diagram waarin de architectuur van de gebruikers toegangs token wordt weer gegeven.":::
 
 ## <a name="networking"></a>Netwerken
 
@@ -78,12 +78,12 @@ Mogelijk wilt u wille keurige gegevens uitwisselen tussen gebruikers, bijvoorbee
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Tokens voor gebruikers toegang maken](../quickstarts/access-tokens.md)
+> [Tokens voor gebruikerstoegang maken](../quickstarts/access-tokens.md)
 
 Raadpleeg voor meer informatie de volgende artikelen:
 
 - Meer informatie over [verificatie](../concepts/authentication.md)
 - Meer informatie over [PSTN-en SMS-oplossingen](../concepts/telephony-sms/plan-solution.md)
 
-- [Chat toevoegen aan uw app](../quickstarts/chat/get-started.md)
-- [Spraak oproep toevoegen aan uw app](../quickstarts/voice-video-calling/getting-started-with-calling.md)
+- [Chat aan uw app toevoegen](../quickstarts/chat/get-started.md)
+- [Spraakoproep aan uw app toevoegen](../quickstarts/voice-video-calling/getting-started-with-calling.md)

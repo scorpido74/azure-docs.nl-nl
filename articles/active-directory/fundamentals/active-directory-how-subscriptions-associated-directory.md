@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ddca4bc684646854ae8d308043b3de56ec65924
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.openlocfilehash: 747edfdb2a2709a842f767d2ace09662d139c827
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89426092"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666429"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Een Azure-abonnement aan uw Azure Active Directory-tenant toevoegen of koppelen
 
@@ -50,7 +50,7 @@ Voordat u uw abonnement kunt koppelen of toevoegen, moet u de volgende taken uit
   - Als u sleutel kluizen hebt, zijn ze niet toegankelijk en moet u deze na de koppeling oplossen
   - Als u beheerde identiteiten hebt voor resources zoals Virtual Machines of Logic Apps, moet u deze opnieuw inschakelen of opnieuw maken na de koppeling
   - Als u een geregistreerde Azure Stack hebt, moet u deze na de koppeling opnieuw registreren
-  - Zie voor meer informatie [Transfer an Azure subscription to a different Azure AD directory (Preview)](../../role-based-access-control/transfer-subscription.md).
+  - Zie [een Azure-abonnement overdragen naar een andere Azure AD-Directory](../../role-based-access-control/transfer-subscription.md)voor meer informatie.
 
 - Meld u aan met een account dat:
 
@@ -93,7 +93,7 @@ Nadat u een abonnement aan een andere map hebt gekoppeld, moet u mogelijk de vol
 
 - Als u een Azure Stack met dit abonnement hebt geregistreerd, moet u zich opnieuw registreren. Zie [Azure stack registreren bij Azure](/azure-stack/operator/azure-stack-registration)voor meer informatie.
 
-- Zie voor meer informatie [Transfer an Azure subscription to a different Azure AD directory (Preview)](../../role-based-access-control/transfer-subscription.md).
+- Zie [een Azure-abonnement overdragen naar een andere Azure AD-Directory](../../role-based-access-control/transfer-subscription.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

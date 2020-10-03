@@ -7,12 +7,12 @@ ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 08/07/2020
-ms.openlocfilehash: d92dc562136ef20dac19e7ddfa4339c565793308
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: e42111de7d05f184e1153ddc351c3f1fa10cc86f
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91531816"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665235"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>Een Dynamics 365 Business Central-aanbieding maken
 
@@ -256,9 +256,8 @@ Upload het bestand met het extensie pakket (. app) voor uw aanbieding.
 
 Vereist als uw aanbieding moet worden geïnstalleerd samen met een andere extensie die niet op Marketplace wordt gepubliceerd. Als u het app-bestand hier uploadt.
 
-#### <a name="dependency-package-file"></a>Afhankelijkheids pakket bestand
-
-Vereist als uw aanbieding moet worden geïnstalleerd samen met een andere extensie die al op de Marketplace is gepubliceerd. Als dit het geval is, uploadt u het `.app` of `.zip` bestand hier.
+>[!NOTE]
+>Het afhankelijkheids pakket bestand wordt niet meer gebruikt. Upload een bibliotheek pakket bestand in plaats daarvan.
 
 ### <a name="url-to-app-installation"></a>URL voor installatie van de app
 

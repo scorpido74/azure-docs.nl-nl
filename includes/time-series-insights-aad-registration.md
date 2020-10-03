@@ -8,13 +8,13 @@ ms.service: time-series-insights
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.date: 02/03/2020
-ms.openlocfilehash: b2e86a92c253bc1926386269e289cdb7ae578746
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 10/02/2020
+ms.openlocfilehash: 7de4dc21391f7dbd817c56ce51606a808cf9e3c4
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080757"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665805"
 ---
 1. Selecteer in de [Azure Portal](https://ms.portal.azure.com/) **Azure Active Directory**  >  **app-registraties**  >  **nieuwe registratie**.
 
@@ -22,7 +22,7 @@ ms.locfileid: "87080757"
 
     Uw app wordt hier weer gegeven nadat u deze hebt geregistreerd.
 
-1. Geef de toepassing een naam en selecteer **accounts in deze organisatie Directory alleen** om de **ondersteunde account typen** op te geven die toegang kunnen krijgen tot de API. Kies een geldige URI voor het omleiden van gebruikers naar nadat ze zijn geverifieerd en **Registreer**deze vervolgens.
+1. Geef de toepassing een naam en selecteer **accounts in deze organisatie Directory alleen** om de **ondersteunde account typen** op te geven die toegang kunnen krijgen tot de API. Als u een [open bare client-app](https://docs.microsoft.com/azure/active-directory/develop/msal-client-application-configuration#redirect-uri)maakt, moet u een geldige omleidings-URI toevoegen en vervolgens **registreren**.
 
    [![De toepassing maken in Azure Active Directory](media/time-series-insights-aad-registration/active-directory-registration.png)](media/time-series-insights-aad-registration/active-directory-registration.png#lightbox)
 
@@ -32,7 +32,7 @@ ms.locfileid: "87080757"
 
    Kopieer de **client-id** die moet worden gebruikt in uw client toepassing.
 
-1. De Blade **verificatie** specificeert belang rijke instellingen voor verificatie configuratie. 
+1. De Blade **verificatie** specificeert belang rijke instellingen voor verificatie configuratie.
 
     1. Voeg **omleidings-uri's** toe en configureer **toegangs tokens** door **+ een platform toe te voegen**.
 
@@ -66,7 +66,7 @@ ms.locfileid: "87080757"
    > [!NOTE]
    > U kunt in plaats daarvan een certificaat importeren. Voor een betere beveiliging wordt een certificaat aanbevolen. Als u een certificaat wilt gebruiken, selecteert u **certificaat uploaden**.
 
-1. Koppel uw Azure Active Directory-app-Azure Time Series Insights. Selecteer **API-machtigingen**  >  **een machtigings**  >  **-api's toevoegen die mijn organisatie gebruikt**. 
+1. Koppel uw Azure Active Directory-app-Azure Time Series Insights. Selecteer **API-machtigingen**  >  **een machtigings**  >  **-api's toevoegen die mijn organisatie gebruikt**.
 
     [![Een API koppelen aan uw Azure Active Directory-app](media/time-series-insights-aad-registration/active-directory-app-api-permission.png)](media/time-series-insights-aad-registration/active-directory-app-api-permission.png#lightbox)
 

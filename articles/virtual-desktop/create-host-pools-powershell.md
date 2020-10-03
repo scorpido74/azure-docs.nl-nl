@@ -3,15 +3,15 @@ title: Windows Virtual Desktop-hostgroep maken Power shell-Azure
 description: Een hostgroep in Windows Virtual Desktop maken met Power shell-cmdlets.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 08/11/2020
+ms.date: 10/02/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ce3b2b30b1ed421937c11e58bc014cc740b45480
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a47126a48ea63efd4e49097428679b85b7a95a61
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287284"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91667160"
 ---
 # <a name="create-a-windows-virtual-desktop-host-pool-with-powershell"></a>Een Windows-hostgroep voor virtueel bureau blad maken met Power shell
 
@@ -99,6 +99,9 @@ Ga als volgt te werk op elke virtuele machine voor een geslaagde domein koppelin
 
     >[!NOTE]
     > Als u uw Vm's lid maakt van een Azure Active Directory Domain Services-omgeving (Azure AD DS), moet u ervoor zorgen dat uw domein deelname ook lid is van de [groep Aad DC-Administrators](../active-directory-domain-services/tutorial-create-instance-advanced.md#configure-an-administrative-group).
+
+>[!IMPORTANT]
+>U wordt aangeraden geen beleids regels of configuraties in te scha kelen die Windows Installer uitschakelen. Als u Windows Installer uitschakelt, kan de service geen agent updates op uw sessie-hosts installeren en worden uw sessie-hosts niet goed werkt.
 
 ## <a name="register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool"></a>De virtuele machines registreren bij de hostgroep voor virtuele Windows-Bureau bladen
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: d4b44deda1bd17e65c3e2c2a9c46dddccd411996
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: c331334df64ea1bea45949152a34241a73fa5bb9
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90602031"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666157"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Welke authenticatie- en verificatiemethoden zijn er beschikbaar in Azure Active Directory?
 
@@ -43,7 +43,7 @@ De volgende tabel bevat een overzicht van de beveiligings overwegingen voor de b
 | FIDO2-beveiligings sleutel (preview-versie)   | Hoog     | Hoog      | Hoog         |
 | OATH-hardware-tokens (preview-versie) | Gemiddeld   | Gemiddeld    | Hoog         |
 | OATH-software tokens           | Gemiddeld   | Gemiddeld    | Hoog         |
-| Sms                            | Middelgroot   | Hoog      | Gemiddeld       |
+| Sms                            | Normaal   | Hoog      | Gemiddeld       |
 | Spraak                          | Gemiddeld   | Gemiddeld    | Gemiddeld       |
 | Wachtwoord                       | Laag      | Hoog      | Hoog         |
 
@@ -100,6 +100,8 @@ Zie [hoe Azure AD self-service password reset werkt][concept-sspr]voor meer info
 Zie [hoe Azure multi-factor Authentication werkt][concept-mfa]voor meer informatie over MFA-concepten.
 
 Meer informatie over het configureren van verificatie methoden met behulp van de [Microsoft Graph rest API bèta](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta).
+
+Zie [Azure multi-factor authentication-verificatie methode analyse met Power shell](/samples/azure-samples/azure-mfa-authentication-method-analysis/azure-mfa-authentication-method-analysis/)om te controleren welke verificatie methoden in gebruik zijn.
 
 <!-- INTERNAL LINKS -->
 [tutorial-sspr]: tutorial-enable-sspr.md

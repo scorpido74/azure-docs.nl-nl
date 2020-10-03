@@ -1,18 +1,18 @@
 ---
 title: Isolatie voor virtuele machines in azure
 description: Meer informatie over VM-isolatie werkt in Azure.
-author: ayshakeen
+author: styli365
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/18/2019
-ms.author: ayshak
-ms.openlocfilehash: 58b3f9c3655a2e15842f7fa28ad3e6921395beba
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.author: sttsinar
+ms.openlocfilehash: d6a77cac049ef32949eeba4cbd6fe9217100a360
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831444"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666837"
 ---
 # <a name="virtual-machine-isolation-in-azure"></a>Isolatie van virtuele machines in azure
 
@@ -42,7 +42,7 @@ Net als geïsoleerde VM-grootten zijn hardwarematige grootten een periode van 12
 | Standard_DS15_v2<sup>1</sup> | 15 mei 2020 |
 | Standard_D15_v2<sup>1</sup>  | 15 mei 2020 |
 
-<sup>1</sup> Zie Veelgestelde vragen voor meer informatie over Standard_DS15_v2 en Standard_D15_v2 buiten gebruik gesteld programma voor isolatie
+<sup>1</sup>  Zie Veelgestelde vragen voor meer informatie over Standard_DS15_v2 en Standard_D15_v2 buiten gebruik gesteld programma voor isolatie
 
 
 ## <a name="faq"></a>Veelgestelde vragen
