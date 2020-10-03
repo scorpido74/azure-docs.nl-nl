@@ -449,12 +449,6 @@
               href: windows-voice-assistants-best-practices.md
             - name: Voorbeelden en veelgestelde vragen
               href: windows-voice-assistants-faq.md
-    - name: Aangepast trefwoord
-      items:
-        - name: Overzicht van aangepaste trefwoorden
-          href: custom-keyword-overview.md
-        - name: Basisbeginselen van aangepaste trefwoorden
-          href: custom-keyword-basics.md
 - name: Speaker Recognition
   items:
     - name: Overzicht van Speaker Recognition
@@ -465,6 +459,12 @@
       items:
         - name: Sprekerherkenning REST API
           href: 'https://docs.microsoft.com/rest/api/speakerrecognition/'
+- name: Aangepast trefwoord
+  items:
+    - name: Overzicht van aangepaste trefwoorden
+      href: custom-keyword-overview.md
+    - name: Basisbeginselen van aangepaste trefwoorden
+      href: custom-keyword-basics.md
 - name: Hulpprogramma's
   items:
     - name: Speech-SDK

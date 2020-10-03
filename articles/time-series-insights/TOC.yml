@@ -131,8 +131,6 @@
           href: time-series-insights-send-events.md
         - name: De schaal van uw omgeving aanpassen
           href: time-series-insights-how-to-scale-your-environment.md
-        - name: JSON vormen voor opname en query's
-          href: how-to-shape-query-json.md
         - name: Aanvraagbeperkingen minimaliseren
           href: time-series-insights-environment-mitigate-latency.md
         - name: Problemen vaststellen en oplossen
