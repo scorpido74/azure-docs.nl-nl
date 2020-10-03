@@ -51,6 +51,8 @@
       href: cli-samples.md
 - name: Concepten
   items:
+    - name: Hoge beschikbaarheid
+      href: cache-high-availability.md
     - name: Failover en patching
       href: cache-failover.md
     - name: Aanbevolen procedures
@@ -90,8 +92,6 @@
           href: cache-reserved-pricing.md
         - name: Migreren naar Azure Cache voor Redis
           href: cache-migration-guide.md
-        - name: Migreren vanuit Managed Cache Service (afgeschaft)
-          href: cache-migrate-to-redis.md
         - name: Veelgestelde vragen over planning
           href: cache-planning-faq.md
     - name: Build
