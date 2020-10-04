@@ -1,17 +1,17 @@
 ---
 title: Waarschuwingen configureren-Azure Portal-Azure Database for PostgreSQL-één-server
 description: In dit artikel wordt beschreven hoe u metrische waarschuwingen kunt configureren en openen voor Azure Database for PostgreSQL-één server van de Azure Portal.
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 0866df5f4f78fff429e75d586450bce72faece63
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: fba5c868a146529a981e23cd88b413f2eb441896
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907543"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708931"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---single-server"></a>Gebruik de Azure Portal om waarschuwingen in te stellen voor de Azure Database for PostgreSQL-één-server
 
@@ -25,7 +25,7 @@ U kunt een waarschuwing configureren om de volgende acties uit te voeren wanneer
 * Een webhook aanroepen.
 
 U kunt informatie over waarschuwings regels configureren en ophalen met behulp van:
-* [Azure-portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
+* [Azure Portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
 * [Azure-CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
 * [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/metricalerts)
 
@@ -40,19 +40,19 @@ U kunt informatie over waarschuwings regels configureren en ophalen met behulp v
 
 4. De pagina **regel maken** wordt geopend, zoals hieronder wordt weer gegeven. Vul de vereiste gegevens in:
 
-   :::image type="content" source="./media/howto-alert-on-metric/4-add-rule-form.png" alt-text="Formulier voor metrische waarschuwing toevoegen":::
+   :::image type="content" source="./media/howto-alert-on-metric/4-add-rule-form.png" alt-text="Waarschuwings regels selecteren":::
 
 5. Selecteer **voor waarde toevoegen**in de sectie **voor waarde** .
 
 6. Selecteer een waarde in de lijst met signalen waarop u wilt worden gewaarschuwd. In dit voor beeld selecteert u ' opslag percentage '.
    
-   :::image type="content" source="./media/howto-alert-on-metric/6-configure-signal-logic.png" alt-text="Metrische waarde selecteren":::
+   :::image type="content" source="./media/howto-alert-on-metric/6-configure-signal-logic.png" alt-text="Waarschuwings regels selecteren":::
 
 7. Configureer de waarschuwings logica met inbegrip van de **voor waarde** (bijvoorbeeld ' Groter dan '), **drempel waarde** (bijvoorbeeld 85 procent), **tijd aggregatie**, **periode waarbinnen** de metrische regel moet worden voldaan voordat de waarschuwingen worden geactiveerd (bijvoorbeeld ' In de afgelopen 30 minuten ') en **frequentie**.
    
    Selecteer **gereed** wanneer u klaar bent.
 
-   :::image type="content" source="./media/howto-alert-on-metric/7-set-threshold-time.png" alt-text="Metrische waarde selecteren":::
+   :::image type="content" source="./media/howto-alert-on-metric/7-set-threshold-time.png" alt-text="Waarschuwings regels selecteren":::
 
 8. Selecteer in de sectie **actie groepen** de optie **nieuwe maken** om een nieuwe groep te maken voor het ontvangen van meldingen over de waarschuwing.
 
@@ -66,11 +66,11 @@ U kunt informatie over waarschuwings regels configureren en ophalen met behulp v
 
     Selecteer **OK** wanneer u klaar bent.
 
-    :::image type="content" source="./media/howto-alert-on-metric/10-action-group-type.png" alt-text="Actiegroep":::
+    :::image type="content" source="./media/howto-alert-on-metric/10-action-group-type.png" alt-text="Waarschuwings regels selecteren":::
 
 11. Geef een naam, beschrijving en ernst voor de waarschuwings regel op.
 
-    :::image type="content" source="./media/howto-alert-on-metric/11-name-description-severity.png" alt-text="Actiegroep"::: 
+    :::image type="content" source="./media/howto-alert-on-metric/11-name-description-severity.png" alt-text="Waarschuwings regels selecteren"::: 
 
 12. Selecteer **waarschuwings regel maken** om de waarschuwing te maken.
 

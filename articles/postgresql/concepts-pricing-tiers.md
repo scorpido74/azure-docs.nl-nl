@@ -1,23 +1,23 @@
 ---
 title: Prijs categorieën-Azure Database for PostgreSQL-één server
 description: In dit artikel worden de berekenings-en opslag opties in Azure Database for PostgreSQL-één server beschreven.
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: 77ce6c8112e8c694b4ccb6a657b24649437d2f07
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 5760d5e140919c9309b22f6f597e73c88f7a9069
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87279233"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710274"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Prijscategorieën in Azure Database for PostgreSQL - enkele server
 
 U kunt een Azure Database for PostgreSQL-server maken in een van drie verschillende prijs Categorieën: basis, Algemeen en geoptimaliseerd voor geheugen. De prijs categorieën worden onderscheiden van de hoeveelheid Compute in vCores die kan worden ingericht, het geheugen per vCore en de opslag technologie die wordt gebruikt om de gegevens op te slaan. Alle resources worden ingericht op het niveau van de PostgreSQL-server. Een server kan een of meer data bases bevatten.
 
-| Resource/laag | **Basic** | **Algemeen** | **Geoptimaliseerd voor geheugen** |
+| Resource/laag | **Basic** | **Algemeen doel** | **Geoptimaliseerd voor geheugen** |
 |:---|:----------|:--------------------|:---------------------|
 | Compute genereren | Gen 4, Gen 5 | Gen 4, Gen 5 | Gen 5 |
 | vCores | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
@@ -30,8 +30,8 @@ Als u een prijs categorie wilt kiezen, gebruikt u de volgende tabel als uitgangs
 | Prijscategorie | Beoogde workloads |
 |:-------------|:-----------------|
 | Basic | Werk belastingen waarvoor lichte reken kracht en I/O-prestaties zijn vereist. Voor beelden zijn servers die worden gebruikt voor ontwikkeling of testen of kleinschalige, niet-veelgebruikte toepassingen. |
-| Algemeen gebruik | De meeste zakelijke workloads die evenwichtige reken kracht en geheugen vereisen met schaal bare I/O-door voer. Voor beelden zijn servers voor het hosten van web-en mobiele apps en andere zakelijke toepassingen.|
-| Geoptimaliseerd geheugen | Data bases met hoogwaardige prestaties waarvoor de prestaties in het geheugen zijn vereist voor een snellere transactie verwerking en hogere gelijktijdigheid. Voor beelden zijn servers voor het verwerken van real-time gegevens en transactionele of analytische toepassingen met hoge prestaties.|
+| Algemeen gebruik | De meeste zakelijke workloads die evenwichtige reken kracht en geheugen vereisen met schaal bare I/O-door voer. Voorbeelden zijn onder meer servers voor het hosten van web- en mobiele apps en andere zakelijke toepassingen.|
+| Geoptimaliseerd geheugen | Data bases met hoogwaardige prestaties waarvoor de prestaties in het geheugen zijn vereist voor een snellere transactie verwerking en hogere gelijktijdigheid. Voorbeelden zijn onder meer servers voor het verwerken van realtime gegevens en transactionele of analytische toepassingen met hoge prestaties.|
 
 Nadat u een server hebt gemaakt, kunt u binnen enkele seconden het aantal vCores, de generatie van de hardware en de prijs categorie (met uitzonde ring van en van basis) wijzigen. U kunt ook onafhankelijk de hoeveelheid opslag ruimte en de Bewaar periode voor back-ups op afstand aanpassen zonder uitval tijd van de toepassing. U kunt het opslag type voor back-ups niet wijzigen nadat een server is gemaakt. Zie de sectie [resources schalen](#scale-resources) voor meer informatie.
 
@@ -39,11 +39,11 @@ Nadat u een server hebt gemaakt, kunt u binnen enkele seconden het aantal vCores
 
 Reken bronnen worden weer gegeven als vCores, die de logische CPU van de onderliggende hardware vertegenwoordigen. China-oost 1, China-noord 1, US DoD-centraal en US DoD-oost logische Cpu's van generatie 4 gebruiken die zijn gebaseerd op Intel E5-2673 v3 (Haswell) 2,4-GHz processors. Alle andere regio's maken gebruik van generatie 5 logische Cpu's die zijn gebaseerd op Intel E5-2673 v4 (Broadwell) 2,3-GHz processors.
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Opslag
 
 De opslag ruimte die u inricht, is de hoeveelheid opslag capaciteit die beschikbaar is voor uw Azure Database for PostgreSQL-server. De opslag wordt gebruikt voor de database bestanden, tijdelijke bestanden, transactie logboeken en de PostgreSQL-server Logboeken. De totale hoeveelheid opslag ruimte die u hebt ingericht, definieert ook de I/O-capaciteit die beschikbaar is voor uw server.
 
-| Opslag kenmerken | **Basic** | **Algemeen** | **Geoptimaliseerd voor geheugen** |
+| Opslag kenmerken | **Basic** | **Algemeen doel** | **Geoptimaliseerd voor geheugen** |
 |:---|:----------|:--------------------|:---------------------|
 | Opslagtype | Basis opslag | Opslag Algemeen | Opslag Algemeen |
 | Opslag grootte | 5 GB tot 1 TB | 5 GB tot 16 TB | 5 GB tot 16 TB |

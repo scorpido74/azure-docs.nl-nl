@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/01/2020
 author: parthpandyaMSFT
 ms.author: parthp
-ms.openlocfilehash: 64788544971eaa7738013ab1a0475771c13bab88
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 96a11caa93a925731ad2f24ac860b21301a29cdf
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89647660"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708183"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Een commercieel Marketplace-account maken in het partner centrum
 
@@ -80,7 +80,7 @@ Uw uitgevers profiel bevat uw bedrijfs naam en MPN-ID. Als u dit nog niet hebt g
     
 1. Als u wilt controleren of het account voor commerciële Marketplace als geregistreerd wordt vermeld, selecteert u **instellingen**  >  **partner instellingen**  >  **Program ma's**.
 
-U hebt nu een commercieel Marketplace-account gemaakt in het partner centrum. Zie [Commercial Marketplace Overview](./commercial-marketplace-overview.md)(Engelstalig) voor meer informatie. Zie [nieuwe uitgevers toevoegen aan de commerciële Marketplace](#add-new-publishers-to-the-commercial-marketplace-program)voor hulp bij het toevoegen van uitgevers.
+U hebt nu een commercieel Marketplace-account gemaakt in het partner centrum. Zie [nieuwe uitgevers toevoegen aan de commerciële Marketplace](#add-new-publishers-to-the-commercial-marketplace-program)voor hulp bij het toevoegen van uitgevers.
 
 ## <a name="create-an-account-by-using-existing-microsoft-partner-center-enrollments"></a>Een account maken met behulp van bestaande inschrijvingen van micro soft-partner centrum
 
@@ -129,7 +129,7 @@ Nadat u zich hebt aangemeld, voltooit u het instellen van uw account door het vo
     
 1. Als u wilt controleren of het account voor commerciële Marketplace als geregistreerd wordt vermeld, selecteert u **instellingen**  >  **partner instellingen**  >  **Program ma's**.
 
-U hebt nu een commercieel Marketplace-account gemaakt in het partner centrum. Zie [Commercial Marketplace Overview](./commercial-marketplace-overview.md)(Engelstalig) voor meer informatie. Zie [nieuwe uitgevers toevoegen aan de commerciële Marketplace](#add-new-publishers-to-the-commercial-marketplace-program)voor hulp bij het toevoegen van uitgevers.
+U hebt nu een commercieel Marketplace-account gemaakt in het partner centrum. Zie [nieuwe uitgevers toevoegen aan de commerciële Marketplace](#add-new-publishers-to-the-commercial-marketplace-program)voor hulp bij het toevoegen van uitgevers.
 
 ### <a name="what-if-im-already-enrolled-in-a-developer-program"></a>Wat als ik al heb Inge schreven in een ontwikkelaars programma?
 
@@ -157,7 +157,7 @@ Nadat u zich hebt aangemeld bij partner centrum, voltooit u het instellen van uw
     
 1. Als u wilt controleren of het account voor commerciële Marketplace als geregistreerd wordt vermeld, selecteert u **instellingen**  >  **partner instellingen**  >  **Program ma's**.
 
-U hebt nu een commercieel Marketplace-account gemaakt in het partner centrum. Zie [Commercial Marketplace Overview](./commercial-marketplace-overview.md)(Engelstalig) voor meer informatie. Zie [nieuwe uitgevers toevoegen aan de commerciële Marketplace](#add-new-publishers-to-the-commercial-marketplace-program)voor hulp bij het toevoegen van uitgevers.
+U hebt nu een commercieel Marketplace-account gemaakt in het partner centrum. Zie [nieuwe uitgevers toevoegen aan de commerciële Marketplace](#add-new-publishers-to-the-commercial-marketplace-program)voor hulp bij het toevoegen van uitgevers.
 
 ## <a name="for-publishers-who-moved-from-the-cloud-partner-portal"></a>Voor uitgevers die zijn verplaatst van de Cloud Partner-portal
 
@@ -190,4 +190,5 @@ Nadat dit proces is voltooid, kunt u de zojuist gemaakte Uitgever beheren door n
 
 ## <a name="next-steps"></a>Volgende stappen
 
+- [Wat is de micro soft Commercial Marketplace?](../overview.md)
 - [Uw commerciële Marketplace-account beheren in het partner centrum](./manage-account.md)

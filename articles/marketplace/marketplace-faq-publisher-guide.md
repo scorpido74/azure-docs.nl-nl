@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 09/11/2020
-ms.openlocfilehash: 5bf94faff86edf954c687ca3024c63229829ca04
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: a706ced5c65b9de3cb3bfdb623d810bb1ea43623
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91369719"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707979"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Veelgestelde vragen over de micro soft Commercial Marketplace
 
@@ -311,9 +311,8 @@ Voor het ontvangen van terugbetalingen kunnen klanten binnen een opgegeven perio
 
 Hier volgen enkele bronnen om aan de slag te gaan:
 
-- [Inleiding tot de commerciële marketplace van Microsoft](/azure/marketplace/marketplace-publishers-guide)
+- [Wat is de micro soft Commercial Marketplace?](overview.md)
 - [Micro soft Commercial Marketplace-partner-hub](https://partner.microsoft.com/asset/collection/commercial-marketplace#/)
-- [Welkom bij de commerciële marketplace](index.yml)
 
 ### <a name="how-can-i-engage-with-microsoft-and-other-partners"></a>Hoe kan ik contact opnemen met micro soft en andere partners?
 
@@ -324,7 +323,7 @@ Deze resources worden aangeraden:
 
 ### <a name="where-can-i-learn-more-about-partner-center"></a>Waar kan ik meer informatie vinden over Partner Center?
 
-- [Documentatie voor Partner Center](https://docs.microsoft.com/partner-center/)
+- [Documentatie voor Partner Center](/partner-center/)
 - [Welkom bij de commerciële marketplace](index.yml)
 
 ### <a name="where-can-i-learn-more-about-the-microsoft-admin-center"></a>Waar kan ik meer informatie vinden over het micro soft-beheer centrum?

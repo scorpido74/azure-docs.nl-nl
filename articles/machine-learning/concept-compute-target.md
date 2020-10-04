@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 07/27/2020
-ms.openlocfilehash: 6b166e46c8ebb640e15c005e2ddae3161e141f10
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.date: 09/29/2020
+ms.openlocfilehash: ca23bb49a3592dcc139bcc04875f3867018e158d
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91446776"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707728"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Wat zijn Compute-doelen in Azure Machine Learning? 
 
@@ -28,18 +28,31 @@ In een typische levens cyclus voor model ontwikkeling kunt u het volgende doen:
 De reken resources die u voor uw reken doelen gebruikt, worden aan een [werk ruimte](concept-workspace.md)gekoppeld. Andere reken bronnen dan de lokale computer worden gedeeld door gebruikers van de werk ruimte.
 
 ## <a name="training-compute-targets"></a><a name="train"></a> Doelen van de trainings compute
-
-Azure Machine Learning heeft verschillende ondersteuning voor verschillende reken bronnen.  U kunt ook uw eigen reken resource toevoegen, maar ondersteuning voor verschillende scenario's kan variëren.
+Azure Machine Learning heeft verschillende ondersteuning voor verschillende Compute-doelen. Een typische levens cyclus voor model ontwikkeling begint met het ontwikkelen/experimenteren van een kleine hoeveelheid gegevens. In deze fase raden we u aan om een lokale omgeving te gebruiken. Bijvoorbeeld uw lokale computer of een VM op basis van de Cloud. Wanneer u uw training op grotere gegevens sets schaalt of gedistribueerde trainingen uitvoert, raden we u aan Azure Machine Learning Compute te gebruiken voor het maken van een cluster met één of meerdere knoop punten dat automatisch wordt geschaald wanneer u een uitvoering verzendt. U kunt ook uw eigen reken resource koppelen, maar de ondersteuning voor verschillende scenario's kan variëren zoals hieronder wordt beschreven:
 
 [!INCLUDE [aml-compute-target-train](../../includes/aml-compute-target-train.md)]
 
-Meer informatie over [het gebruik van een reken doel voor model training](how-to-set-up-training-targets.md).
+Meer informatie over het [verzenden van een trainings uitvoering naar een compute-doel](how-to-set-up-training-targets.md).
 
-## <a name="deployment-targets"></a><a name="deploy"></a>Implementatiedoelen
+## <a name="compute-targets-for-inference"></a><a name="deploy"></a> Reken doelen voor demijnen
 
 De volgende reken bronnen kunnen worden gebruikt voor het hosten van uw model implementatie.
 
 [!INCLUDE [aml-compute-target-deploy](../../includes/aml-compute-target-deploy.md)]
+
+Bij het uitvoeren van een dematiging maakt Azure Machine Learning een docker-container die het model host en de bijbehorende resources die nodig zijn om het te gebruiken. Deze container wordt vervolgens gebruikt in een van de volgende implementatie scenario's:
+
+* Als een __webservice__ die wordt gebruikt voor realtime-interferentie. Implementaties van webservices gebruiken een van de volgende Compute-doelen:
+
+    * [Lokale computer](how-to-attach-compute-targets.md#local)
+    * [Azure Machine Learning-rekeninstantie](how-to-create-manage-compute-instance.md)
+    * [Azure Container Instances](how-to-attach-compute-targets.md#aci)
+    * [Azure Kubernetes Services](how-to-create-attach-kubernetes.md)
+    * Azure Functions (preview-versie). Implementatie naar Azure Functions is alleen afhankelijk van Azure Machine Learning voor het bouwen van de docker-container. Van daaruit wordt geïmplementeerd met behulp van Azure Functions. Zie [een machine learning model implementeren op Azure functions (preview)](how-to-deploy-functions.md)voor meer informatie.
+
+* Als een __batch-interferentie__ -eind punt dat wordt gebruikt om periodiek batches gegevens te verwerken. Voor batch-interferenties wordt [Azure machine learning Compute-Cluster](how-to-create-attach-compute-cluster.md)gebruikt.
+
+* Naar een __IOT-apparaat__ (preview-versie). Implementatie naar een IoT-apparaat is alleen afhankelijk van Azure Machine Learning voor het bouwen van de docker-container. Van daaruit wordt geïmplementeerd met behulp van Azure IoT Edge. Zie [Deploy as a IOT Edge module (preview)](/azure/iot-edge/tutorial-deploy-machine-learning)voor meer informatie.
 
 Meer informatie over [waar en hoe u uw model implementeert in een compute-doel](how-to-deploy-and-where.md).
 
@@ -50,8 +63,9 @@ Een beheerde Compute-resource wordt gemaakt en beheerd door Azure Machine Learni
 
 U kunt Azure Machine Learning Compute-exemplaren of reken clusters maken van:
 * [Azure Machine Learning Studio](how-to-create-attach-compute-studio.md)
-* Azure Portal
-* Python SDK [ComputeInstance](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance%28class%29?view=azure-ml-py&preserve-view=true) -en [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?view=azure-ml-py&preserve-view=true) -klassen
+* Python-SDK en CLI:
+    * [Rekenproces](how-to-create-manage-compute-instance.md)
+    * [Reken cluster](how-to-create-attach-compute-cluster.md)
 * [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets) (preview-versie)
 * Resource Manager-sjabloon. Zie de [sjabloon create Azure machine learning Compute](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-amlcompute)voor een voorbeeld sjabloon.
 * Machine learning- [extensie voor de Azure cli](reference-azure-machine-learning-cli.md#resource-management).  
@@ -68,7 +82,7 @@ Wanneer u deze reken resources maakt, maakt u automatisch deel uit van uw werk r
 
 
 > [!NOTE]
-> Wanneer een berekenings cluster niet actief is, wordt het automatisch geschaald naar 0 knoop punten, zodat u niet betaalt wanneer het niet in gebruik is.  Een reken *instantie*is echter altijd ingeschakeld en wordt niet automatisch geschaald.  U moet [het reken exemplaar stoppen](concept-compute-instance.md#managing-a-compute-instance) wanneer u het niet gebruikt om extra kosten te voor komen. 
+> Wanneer een berekenings cluster niet actief is, wordt het automatisch geschaald naar 0 knoop punten, zodat u niet betaalt wanneer het niet in gebruik is.  Een reken *instantie*is echter altijd ingeschakeld en wordt niet automatisch geschaald.  U moet [het reken exemplaar stoppen](how-to-create-manage-compute-instance.md#manage) wanneer u het niet gebruikt om extra kosten te voor komen. 
 
 ### <a name="supported-vm-series-and-sizes"></a>Ondersteunde VM-reeksen en-groottes
 

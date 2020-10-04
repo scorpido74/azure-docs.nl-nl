@@ -1,17 +1,17 @@
 ---
 title: Extensies-Azure Database for PostgreSQL-flexibele server
 description: Meer informatie over de beschik bare post gres-extensies in Azure Database for PostgreSQL-flexibele server
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: f38006e83be47142a6d7a6db25eefb3daccd0d92
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7e9268f69b0ec8d06cd86fe5aec19a46b20a3a76
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91307582"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710580"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---flexible-server"></a>PostgreSQL-extensies in Azure Database for PostgreSQL-flexibele server
 
@@ -36,14 +36,14 @@ De volgende uitbrei dingen zijn beschikbaar in Azure Database for PostgreSQL fle
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 3.0.0           | Wordt gebruikt om een adres te parseren in onderdeel elementen. |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 3.0.0           | Adres van voor beeld van een gegevensset voor de standaardiserer|
 > |[amcheck](https://www.postgresql.org/docs/12/amcheck.html)                    | 1.2             | functies voor het controleren van relatie-integriteit|
-> |[bloei](https://www.postgresql.org/docs/12/bloom.html)                    | 1,0             | toegangs methode voor bloei-hand tekening bestand op basis van index|
+> |[bloei](https://www.postgresql.org/docs/12/bloom.html)                    | 1.0             | toegangs methode voor bloei-hand tekening bestand op basis van index|
 > |[btree_gin](https://www.postgresql.org/docs/12/btree-gin.html)                    | 1.3             | ondersteuning voor het indexeren van algemene gegevens typen in EGINNEN|
 > |[btree_gist](https://www.postgresql.org/docs/12/btree-gist.html)                   | 1.5             | ondersteuning voor het indexeren van veelvoorkomende gegevens typen in het REGI ster|
 > |[citext](https://www.postgresql.org/docs/12/citext.html)                       | 1.6             | gegevens type voor niet-hoofdletter gevoelige teken reeksen|
 > |[kubus](https://www.postgresql.org/docs/12/cube.html)                         | 1.4             | gegevens type voor multidimensionale kubussen|
 > |[dblink](https://www.postgresql.org/docs/12/dblink.html)                       | 1.2             | verbinding maken met andere PostgreSQL-data bases vanuit een Data Base|
-> |[dict_int](https://www.postgresql.org/docs/12/dict-int.html)                     | 1,0             | Zoek woordenlijst sjabloon voor tekst met gehele getallen|
-> |[dict_xsyn](https://www.postgresql.org/docs/12/dict-xsyn.html)                     | 1,0             | tekst zoeken woordenlijst sjabloon voor uitgebreide synoniemen verwerking|
+> |[dict_int](https://www.postgresql.org/docs/12/dict-int.html)                     | 1.0             | Zoek woordenlijst sjabloon voor tekst met gehele getallen|
+> |[dict_xsyn](https://www.postgresql.org/docs/12/dict-xsyn.html)                     | 1.0             | tekst zoeken woordenlijst sjabloon voor uitgebreide synoniemen verwerking|
 > |[earthdistance](https://www.postgresql.org/docs/12/earthdistance.html)                | 1.1             | de afstanden van de cirkel op het Opper vlak van de aarde berekenen|
 > |[fuzzystrmatch](https://www.postgresql.org/docs/12/fuzzystrmatch.html)                | 1.1             | Vergelijk bare en afstand tussen teken reeksen bepalen|
 > |[hstore](https://www.postgresql.org/docs/12/hstore.html)                       | 1.6             | gegevens type voor het opslaan van sets van (sleutel-, waarde-) paren|
@@ -62,16 +62,16 @@ De volgende uitbrei dingen zijn beschikbaar in Azure Database for PostgreSQL fle
 > |[pgcrypto](https://www.postgresql.org/docs/12/pgcrypto.html)                     | 1.3             | cryptografische functies|
 > |[pgrowlocks](https://www.postgresql.org/docs/12/pgrowlocks.html)                   | 1.2             | vergrendelings informatie op rijniveau weer geven|
 > |[pgstattuple](https://www.postgresql.org/docs/12/pgstattuple.html)                  | 1.5             | statistieken van tuple-niveau weer geven|
-> |[plpgsql](https://www.postgresql.org/docs/12/plpgsql.html)                      | 1,0             | Taal van PL/pgSQL-procedure|
+> |[plpgsql](https://www.postgresql.org/docs/12/plpgsql.html)                      | 1.0             | Taal van PL/pgSQL-procedure|
 > |[postgis](https://www.postgis.net/)                      | 3.0.0           | PostGIS geometrie, geografie |
 > |[postgis_raster](https://www.postgis.net/)               | 3.0.0           | Raster typen en-functies van PostGIS| 
 > |[postgis_sfcgal](https://www.postgis.net/)               | 3.0.0           | PostGIS SFCGAL-functies|
 > |[postgis_tiger_geocoder](https://www.postgis.net/)       | 3.0.0           | PostGIS Tiger geocodeer en reverse geocodeer|
 > |[postgis_topology](https://postgis.net/docs/Topology.html)             | 3.0.0           | Ruimtelijke typen en functies van de PostGIS-topologie|
-> |[postgres_fdw](https://www.postgresql.org/docs/12/postgres-fdw.html)                 | 1,0             | externe-gegevens wrapper voor externe PostgreSQL-servers|
+> |[postgres_fdw](https://www.postgresql.org/docs/12/postgres-fdw.html)                 | 1.0             | externe-gegevens wrapper voor externe PostgreSQL-servers|
 > |[sslinfo](https://www.postgresql.org/docs/12/sslinfo.html)                    | 1.2             | informatie over SSL-certificaten|
-> |[tsm_system_rows](https://www.postgresql.org/docs/12/tsm-system-rows.html)                    | 1,0             |  TABLESAMPLE-methode die het aantal rijen als een limiet accepteert|
-> |[tsm_system_time](https://www.postgresql.org/docs/12/tsm-system-time.html)                    | 1,0             |  Methode TABLESAMPLE waarmee tijd in milliseconden als limiet wordt geaccepteerd|
+> |[tsm_system_rows](https://www.postgresql.org/docs/12/tsm-system-rows.html)                    | 1.0             |  TABLESAMPLE-methode die het aantal rijen als een limiet accepteert|
+> |[tsm_system_time](https://www.postgresql.org/docs/12/tsm-system-time.html)                    | 1.0             |  Methode TABLESAMPLE waarmee tijd in milliseconden als limiet wordt geaccepteerd|
 > |[accenten opzeggen](https://www.postgresql.org/docs/12/unaccent.html)                     | 1.1             | Zoek woordenlijst voor tekst die accenten verwijdert|
 > |[uuid-ossp](https://www.postgresql.org/docs/12/uuid-ossp.html)                    | 1.1             | Universele unieke id's (UUID) genereren|
 
@@ -85,14 +85,14 @@ De volgende uitbrei dingen zijn beschikbaar in Azure Database for PostgreSQL fle
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.5.1           | Wordt gebruikt om een adres te parseren in onderdeel elementen. |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.5.1           | Adres van voor beeld van een gegevensset voor de standaardiserer|
 > |[amcheck](https://www.postgresql.org/docs/11/amcheck.html)                    | 1.1             | functies voor het controleren van relatie-integriteit|
-> |[bloei](https://www.postgresql.org/docs/11/bloom.html)                    | 1,0             | toegangs methode voor bloei-hand tekening bestand op basis van index|
+> |[bloei](https://www.postgresql.org/docs/11/bloom.html)                    | 1.0             | toegangs methode voor bloei-hand tekening bestand op basis van index|
 > |[btree_gin](https://www.postgresql.org/docs/11/btree-gin.html)                    | 1.3             | ondersteuning voor het indexeren van algemene gegevens typen in EGINNEN|
 > |[btree_gist](https://www.postgresql.org/docs/11/btree-gist.html)                   | 1.5             | ondersteuning voor het indexeren van veelvoorkomende gegevens typen in het REGI ster|
 > |[citext](https://www.postgresql.org/docs/11/citext.html)                       | 1.5             | gegevens type voor niet-hoofdletter gevoelige teken reeksen|
 > |[kubus](https://www.postgresql.org/docs/11/cube.html)                         | 1.4             | gegevens type voor multidimensionale kubussen|
 > |[dblink](https://www.postgresql.org/docs/11/dblink.html)                       | 1.2             | verbinding maken met andere PostgreSQL-data bases vanuit een Data Base|
-> |[dict_int](https://www.postgresql.org/docs/11/dict-int.html)                     | 1,0             | Zoek woordenlijst sjabloon voor tekst met gehele getallen|
-> |[dict_xsyn](https://www.postgresql.org/docs/11/dict-xsyn.html)                     | 1,0             | tekst zoeken woordenlijst sjabloon voor uitgebreide synoniemen verwerking|
+> |[dict_int](https://www.postgresql.org/docs/11/dict-int.html)                     | 1.0             | Zoek woordenlijst sjabloon voor tekst met gehele getallen|
+> |[dict_xsyn](https://www.postgresql.org/docs/11/dict-xsyn.html)                     | 1.0             | tekst zoeken woordenlijst sjabloon voor uitgebreide synoniemen verwerking|
 > |[earthdistance](https://www.postgresql.org/docs/11/earthdistance.html)                | 1.1             | de afstanden van de cirkel op het Opper vlak van de aarde berekenen|
 > |[fuzzystrmatch](https://www.postgresql.org/docs/11/fuzzystrmatch.html)                | 1.1             | Vergelijk bare en afstand tussen teken reeksen bepalen|
 > |[hstore](https://www.postgresql.org/docs/11/hstore.html)                       | 1.5             | gegevens type voor het opslaan van sets van (sleutel-, waarde-) paren|
@@ -111,16 +111,16 @@ De volgende uitbrei dingen zijn beschikbaar in Azure Database for PostgreSQL fle
 > |[pgcrypto](https://www.postgresql.org/docs/11/pgcrypto.html)                     | 1.3             | cryptografische functies|
 > |[pgrowlocks](https://www.postgresql.org/docs/11/pgrowlocks.html)                   | 1.2             | vergrendelings informatie op rijniveau weer geven|
 > |[pgstattuple](https://www.postgresql.org/docs/11/pgstattuple.html)                  | 1.5             | statistieken van tuple-niveau weer geven|
-> |[plpgsql](https://www.postgresql.org/docs/11/plpgsql.html)                      | 1,0             | Taal van PL/pgSQL-procedure|
+> |[plpgsql](https://www.postgresql.org/docs/11/plpgsql.html)                      | 1.0             | Taal van PL/pgSQL-procedure|
 > |[postgis](https://www.postgis.net/)                      | 2.5.1           | Ruimtelijke typen en functies voor PostGIS geometrie, geografie en raster|
 > |[postgis_sfcgal](https://www.postgis.net/)               | 2.5.1           | PostGIS SFCGAL-functies|
 > |[postgis_tiger_geocoder](https://www.postgis.net/)       | 2.5.1           | PostGIS Tiger geocodeer en reverse geocodeer|
 > |[postgis_topology](https://postgis.net/docs/Topology.html)             | 2.5.1           | Ruimtelijke typen en functies van de PostGIS-topologie|
-> |[postgres_fdw](https://www.postgresql.org/docs/11/postgres-fdw.html)                 | 1,0             | externe-gegevens wrapper voor externe PostgreSQL-servers|
+> |[postgres_fdw](https://www.postgresql.org/docs/11/postgres-fdw.html)                 | 1.0             | externe-gegevens wrapper voor externe PostgreSQL-servers|
 > |[sslinfo](https://www.postgresql.org/docs/11/sslinfo.html)                    | 1.2             | informatie over SSL-certificaten|
-> |[tablefunc](https://www.postgresql.org/docs/11/tablefunc.html)                    | 1,0             | functies voor het bewerken van hele tabellen, inclusief Kruistabel query's|
-> |[tsm_system_rows](https://www.postgresql.org/docs/11/tsm-system-rows.html)                    | 1,0             |  TABLESAMPLE-methode die het aantal rijen als een limiet accepteert|
-> |[tsm_system_time](https://www.postgresql.org/docs/11/tsm-system-time.html)                    | 1,0             |  Methode TABLESAMPLE waarmee tijd in milliseconden als limiet wordt geaccepteerd|
+> |[tablefunc](https://www.postgresql.org/docs/11/tablefunc.html)                    | 1.0             | functies voor het bewerken van hele tabellen, inclusief Kruistabel query's|
+> |[tsm_system_rows](https://www.postgresql.org/docs/11/tsm-system-rows.html)                    | 1.0             |  TABLESAMPLE-methode die het aantal rijen als een limiet accepteert|
+> |[tsm_system_time](https://www.postgresql.org/docs/11/tsm-system-time.html)                    | 1.0             |  Methode TABLESAMPLE waarmee tijd in milliseconden als limiet wordt geaccepteerd|
 > |[accenten opzeggen](https://www.postgresql.org/docs/11/unaccent.html)                     | 1.1             | Zoek woordenlijst voor tekst die accenten verwijdert|
 > |[uuid-ossp](https://www.postgresql.org/docs/11/uuid-ossp.html)                    | 1.1             | Universele unieke id's (UUID) genereren|
 

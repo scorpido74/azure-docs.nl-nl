@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/06/2020
-ms.openlocfilehash: c3ffcea27fa16fd4f5449b42407a7e4779ca27f9
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 33198f95ef0309cada6f5f11c809811f23d7f826
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89420928"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708642"
 ---
 # <a name="offer-listing-best-practices"></a>Best practices voor aanbiedingsvermeldingen
 
@@ -61,7 +61,8 @@ Selecteer categorieën en subcategorieën die het beste aansluiten bij uw oploss
 
 #### <a name="important-saas-offers-and-microsoft-365-add-ins"></a>BELANG rijk: SaaS-aanbiedingen en Microsoft 365-invoeg toepassingen
 
-Raadpleeg de [hand leiding van het aanbiedings type](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-overview) voor specifieke informatie over hoe de Transact-mogelijkheden kunnen beïnvloeden hoe uw aanbieding kan worden weer gegeven en gekocht door klanten van Marketplace. Voor SaaS-aanbiedingen wordt de transactie capaciteit van de aanbieding en de categorie selectie bepaald door de online winkel waar uw aanbieding wordt gepubliceerd:
+Zie trans acties [in de commerciële Marketplace](marketplace-commercial-transaction-capabilities-and-considerations.md) voor specifieke informatie over hoe de Transact-mogelijkheden van invloed kunnen zijn op hoe uw aanbieding kan worden weer gegeven en aangeschaft door klanten van Marketplace. Voor SaaS-aanbiedingen wordt de transactie capaciteit van de aanbieding en de categorie selectie bepaald door de online winkel waar uw aanbieding wordt gepubliceerd.
+
 
 | Aanbieding voor SaaS    | Aanbieding voor SaaS   | Aanbieding voor SaaS  | Aanbieding voor SaaS   | Aanbieding voor SaaS   | Aanbieding voor SaaS   | Aanbieding voor SaaS    | Toepas bare online winkel| Toepas bare online winkel |
 |:-------------:|:---:|:--------:|:---------:|:--:|:--:|:---:|:---------------------:|:-------------:|

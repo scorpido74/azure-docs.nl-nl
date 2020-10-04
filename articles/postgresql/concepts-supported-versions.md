@@ -1,18 +1,18 @@
 ---
 title: Ondersteunde versies-Azure Database for PostgreSQL-één server
 description: Beschrijft de ondersteunde post gres primaire en secundaire versies in Azure Database for PostgreSQL-één server.
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 1640395b3a73116c27894a2b3f2b95b8bd5bb2eb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cfe4b92dbed69440ee2c07cff758faad7e01293f
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084157"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707911"
 ---
 # <a name="supported-postgresql-major-versions"></a>Ondersteunde PostgreSQL primaire versies
 Micro soft streeft ernaar ondersteuning te bieden voor n-2 versies van de PostgreSQL-engine in Azure Database for PostgreSQL-één server. De versies zijn de huidige primaire versie op Azure (n) en de twee voor gaande primaire versies (-2).

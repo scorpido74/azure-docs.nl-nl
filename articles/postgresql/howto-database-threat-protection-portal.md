@@ -1,17 +1,17 @@
 ---
 title: Advanced Threat Protection gebruiken-Azure Database for PostgreSQL-één server
 description: Bedreigings beveiliging detecteert afwijkende database activiteiten die duiden op mogelijke beveiligings dreigingen voor de data base.
-author: rachel-msft
-ms.author: raagyema
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 25f263a5c9ccdc67f1ab8353e616a6dded0c7f7e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6aa0a0f798df2fd69d6f69badd0dcbbb92a0cf39
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90901670"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708217"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-postgresql---single-server"></a>Advanced Threat Protection voor Azure Database for PostgreSQL-één server
 
@@ -42,15 +42,15 @@ U ontvangt een e-mail melding wanneer er afwijkende database activiteiten worden
     
 1. Klik op de koppeling **recente waarschuwingen weer geven** in het e-mail bericht om de Azure portal te starten en de pagina Azure Security Center waarschuwingen weer te geven. Deze bevat een overzicht van actieve bedreigingen die zijn gedetecteerd op de SQL database.
     
-    :::image type="content" source="./media/howto-database-threat-protection-portal/anomalous-activity-report.png" alt-text="Rapport afwijkende activiteiten":::
+    :::image type="content" source="./media/howto-database-threat-protection-portal/anomalous-activity-report.png" alt-text="Detectie van bedreigingen instellen":::
 
     Actieve bedreigingen weer geven:
 
-    :::image type="content" source="./media/howto-database-threat-protection-portal/active-threats.png" alt-text="Actieve bedreigingen":::
+    :::image type="content" source="./media/howto-database-threat-protection-portal/active-threats.png" alt-text="Detectie van bedreigingen instellen":::
 
 2. Klik op een specifieke waarschuwing voor aanvullende details en acties voor het onderzoeken van deze dreiging en het oplossen van toekomstige bedreigingen.
     
-    :::image type="content" source="./media/howto-database-threat-protection-portal/specific-alert.png" alt-text="Specifieke waarschuwing":::
+    :::image type="content" source="./media/howto-database-threat-protection-portal/specific-alert.png" alt-text="Detectie van bedreigingen instellen":::
 
 ## <a name="explore-threat-detection-alerts"></a>Waarschuwingen voor detectie van dreigingen verkennen
 
@@ -58,7 +58,7 @@ Geavanceerde beveiliging tegen bedreigingen integreert de waarschuwingen met [Az
 
 Klik op **beveiligings waarschuwingen** onder **bedreigings beveiliging** om de pagina Azure Security Center waarschuwingen te starten en een overzicht te krijgen van actieve SQL-bedreigingen die zijn gedetecteerd op de data base.
 
-  :::image type="content" source="./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png" alt-text="Beveiliging tegen bedreigingen ASC":::
+  :::image type="content" source="./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png" alt-text="Detectie van bedreigingen instellen":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

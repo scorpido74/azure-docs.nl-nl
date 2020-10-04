@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 2d14207bada52c937875bc62bdbde63d788c1aca
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: e67346eb1a0fccc7a788e8698df734536e1e395b
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653584"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708948"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Service quota's Azure Cosmos DB
 
@@ -137,6 +137,7 @@ Afhankelijk van de API die u gebruikt, kan een Azure Cosmos-item een document in
 | Maximale lengte van eigenschaps waarde | Geen praktische limiet |
 | Maximale lengte van de waarde van de teken reeks eigenschap | Geen praktische limiet |
 | Maximale lengte van de waarde van de numerieke eigenschap | IEEE754 met dubbele precisie van 64 bits |
+| Maximum niveau van nesten voor Inge sloten objecten/matrices | 128 |
 | Maximale TTL-waarde |2147483647|
 
 Er zijn geen beperkingen voor de nettoladingen van het item, zoals het aantal eigenschappen en de diepte van het nesten, met uitzonde ring van de lengte beperkingen voor de waarden van de partitie sleutel en-ID en de totale grootte beperking van 2 MB. Mogelijk moet u het indexerings beleid voor containers met grote of complexe item structuren configureren om het gebruik van RU te verminderen. Zie [modellerings items in Cosmos DB](how-to-model-partition-example.md) voor een echt voor beeld en patronen voor het beheren van grote items.

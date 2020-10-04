@@ -10,27 +10,29 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: how-to
-ms.date: 09/03/2020
+ms.date: 10/02/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e0c8e6fb3bab179483d03320e6d90ab712ec528
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: be0d428120f53a4edb9763199a78b0e50409b19a
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89493347"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708731"
 ---
 # <a name="user-management-enhancements-preview-in-azure-active-directory"></a>Verbeteringen in gebruikers beheer (preview) in Azure Active Directory
 
-In dit artikel wordt beschreven hoe u de preview-versie van verbeterd gebruikers beheer gebruikt in de portal van Azure Active Directory (Azure AD). De pagina's **alle gebruikers** en **Verwijderde gebruikers** zijn bijgewerkt met meer informatie en kunnen gebruikers gemakkelijker vinden. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+In dit artikel wordt beschreven hoe u de preview-versie van gebruikers beheer kunt gebruiken in de portal van Azure Active Directory (Azure AD). De pagina's **alle gebruikers** en **Verwijderde gebruikers** zijn bijgewerkt met meer informatie en kunnen gebruikers gemakkelijker vinden. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 Wijzigingen in de preview zijn onder andere:
 
 - Meer zicht bare gebruikers eigenschappen, waaronder de object-ID, de synchronisatie status van de Directory, het aanmaak type en de identiteits verlener
 - Met zoeken kunt u nu gecombineerde Zoek opdrachten van namen, e-mails en object-Id's
-- Verbeterd filteren op gebruikers type (lid en gast), adreslijst synchronisatie status en aanmaak type
+- Uitgebreid filteren op gebruikers type (lid, gast, geen), synchronisatie status van de Directory, aanmaak type, bedrijfs naam en domein naam
+- Nieuwe sorteer mogelijkheden op Eigenschappen als naam en user principal name
+- Een nieuw totaal aantal gebruikers dat updates met Zoek opdrachten of filters heeft
 
 > [!NOTE]
 > Deze preview is momenteel niet beschikbaar voor Azure AD B2C-tenants.
@@ -66,7 +68,7 @@ Hieronder ziet u de eigenschappen van de gebruiker op de pagina **alle gebruiker
 - Uitnodigings status: de status van de uitnodiging voor een gast gebruiker.
 - Mail: het e-mail adres van de gebruiker.
 
-   ![nieuwe gebruikers eigenschappen die worden weer gegeven op de pagina's van alle gebruikers en verwijderde gebruikers](./media/users-search-enhanced/user-properties.png)
+![nieuwe gebruikers eigenschappen die worden weer gegeven op de pagina's van alle gebruikers en verwijderde gebruikers](./media/users-search-enhanced/user-properties.png)
 
 ### <a name="deleted-users-page"></a>Pagina verwijderde gebruikers
 
@@ -96,22 +98,36 @@ Filter mogelijkheden zijn uitgebreid om meer filter opties te bieden voor de pag
 
 Hieronder ziet u de eigenschappen die kunnen worden gefilterd op de pagina **alle gebruikers** :
 
-- Gebruikers type-lid of gast
-- Status van Directory-synchronisatie-Ja
-- Type uitnodiging maken, E-mail geverifieerd, lokaal account
+- Gebruikers type: lid, gast, geen
+- Status Directory gesynchroniseerd: Ja, nee
+- Type maken: uitnodiging, E-mail geverifieerd, lokaal account
 - Uitnodigings status: acceptatie in behandeling, geaccepteerd
-- Beheer eenheid: Selecteer deze optie om het bereik van de gebruikers die u bekijkt tot één beheer eenheid te beperken. Zie beheer van [administratieve eenheden](directory-administrative-units.md)voor meer informatie.
+- Domein naam: Voer een domein naam in
+- Bedrijfs naam: Voer een bedrijfs naam in
+- Administratieve eenheid: Selecteer deze optie om het bereik van de gebruikers die u bekijkt tot één beheer eenheid te beperken. Zie beheer van [administratieve eenheden](directory-administrative-units.md)voor meer informatie.
 
-## <a name="filtering-deleted-users-list"></a>Lijst met verwijderde gebruikers filteren
+### <a name="filtering-deleted-users-list"></a>Lijst met verwijderde gebruikers filteren
 
 De pagina **Verwijderde gebruikers** bevat extra filters, niet op de pagina **alle gebruikers** . Hieronder ziet u de eigenschappen die kunnen worden gefilterd op de pagina **Verwijderde gebruikers** :
 
-- Gebruikers type-lid of gast
-- Status van Directory-synchronisatie-Ja
-- Type uitnodiging maken, E-mail geverifieerd, lokaal account
+- Gebruikers type: lid, gast, geen
+- Status Directory gesynchroniseerd: Ja, nee
+- Type maken: uitnodiging, E-mail geverifieerd, lokaal account
 - Uitnodigings status: acceptatie in behandeling, geaccepteerd
-- Verwijderings datum-laatste 7, 14 of 30 dagen
-- Datum van definitieve verwijdering-afgelopen 7, 14 of 30 dagen
+- Verwijderings datum: afgelopen 7, 14 of 30 dagen
+- Domein naam: Voer een domein naam in
+- Bedrijfs naam: Voer een bedrijfs naam in
+- Datum van definitieve verwijdering: laatste 7, 14 of 30 dagen
+
+## <a name="user-list-sorting"></a>Sortering gebruikers lijst
+
+U kunt nu sorteren op naam en user principal name op de pagina's **alle gebruikers** en **Verwijderde gebruikers** . U kunt in de lijst **Verwijderde gebruikers** ook sorteren op verwijderings datum.
+
+## <a name="user-list-counts"></a>Aantal gebruikers lijsten
+
+U kunt het totale aantal gebruikers weer geven op de pagina's **alle gebruikers** en **Verwijderde gebruikers** . Wanneer u de lijsten zoekt of filtert, wordt de telling bijgewerkt om het totale aantal gevonden gebruikers weer te geven.
+
+![Afbeelding van aantallen gebruikers lijsten op de pagina alle gebruikers](./media/users-search-enhanced/user-list-sorting.png)
 
 ## <a name="frequently-asked-questions-faq"></a>Veelgestelde vragen
 
@@ -121,8 +137,6 @@ Wat gebeurt er met de bulk mogelijkheden voor gebruikers en gasten? | De bulk be
 Wat is er gebeurd met de bron kolom? | De **bron** kolom is vervangen door andere kolommen die vergelijk bare informatie geven, terwijl u kunt filteren op die waarden onafhankelijk van elkaar. Voor beelden zijn onder meer het **type maken**, de **Directory is gesynchroniseerd** en de identiteit van de **Uitgever**.
 Wat is er gebeurd met de kolom gebruikers naam? | De kolom **gebruikers naam** is nog steeds, maar is gewijzigd in Principal-naam van **gebruiker**. Dit komt overeen met de informatie in die kolom. U ziet ook dat de volledige Principal-naam van de gebruiker nu wordt weer gegeven voor B2B-gasten. Dit komt overeen met wat u in MS Graph zou krijgen.  
 Waarom kan ik alleen een zoek opdracht uitvoeren met ' starten met ' en niet naar ' bevat '? | Er zijn enkele beperkingen waardoor het niet mogelijk is om een ' contains '-Zoek opdracht uit te voeren. We hebben de feedback gehoord en blijven daarom afgestemd.
-Waarom kan ik de kolommen niet sorteren? | Er zijn enkele beperkingen waardoor het niet mogelijk is om de kolommen te sorteren. We hebben de feedback gehoord en blijven daarom afgestemd.
-Waarom kan ik de **gesynchroniseerde** kolom alleen filteren op Ja? | Er zijn enkele beperkingen waardoor het niet mogelijk is om deze eigenschap te filteren op geen waarde. We hebben de feedback gehoord en blijven daarom afgestemd.
 
 ## <a name="next-steps"></a>Volgende stappen
 

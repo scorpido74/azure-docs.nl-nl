@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 06/17/2020
-ms.openlocfilehash: 12987ae687e9af59fdd71b3aa846612c947b9a90
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: cbaca0b9d608d7703beec559e5434f52308629ab
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89649270"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91709101"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>Een Azure Container-aanbieding maken in Azure Marketplace
 
@@ -80,10 +80,10 @@ Wanneer u uw aanbieding naar de commerciële Marketplace met het partner centrum
 
 Hier volgen enkele aanvullende bronnen voor het beheer van leads:
 
-- [Overzicht Lead beheer](commercial-marketplace-get-customer-leads.md)
-- [Veelgestelde vragen over leadmanagement](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)
-- [Algemene leadconfiguratiefouten](../lead-management-for-cloud-marketplace.md#publishing-config-errors)
-- [Overzicht Lead beheer](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (zorg ervoor dat de pop-upblokkering is uitgeschakeld)
+- [Leads van klanten van uw aanbieding voor commerciële Marketplace](commercial-marketplace-get-customer-leads.md)
+- [Veelgestelde vragen over Lead beheer](../lead-management-faq.md#common-questions-about-lead-management)
+- [Problemen met configuratie fouten van de lead oplossen](../lead-management-faq.md#publishing-config-errors)
+- [Overzicht Lead beheer](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (zorg ervoor dat de pop-upblokkering is uitgeschakeld).
 
 Selecteer **concept opslaan** voordat u doorgaat.
 
@@ -122,7 +122,7 @@ Als u het standaard contract wilt gebruiken, selecteert u het * * gebruik het st
 
 ##### <a name="your-own-terms-and-conditions"></a>Uw eigen voor waarden
 
-Als u uw eigen aangepaste voor waarden wilt opgeven, voert u deze in het vak voor **waarden** in. U kunt een onbeperkte hoeveelheid tekst tekens in dit vak invoeren. Klanten moeten deze voor waarden accepteren voordat ze uw aanbieding kunnen proberen.
+Als u uw eigen aangepaste voor waarden wilt opgeven, voert u deze in het vak voor **waarden** in. U kunt een onbeperkt aantal tekens van tekst in dit vak invoeren. Klanten moeten deze voor waarden accepteren voordat ze uw aanbieding kunnen proberen.
 
 Selecteer **concept opslaan** voordat u doorgaat naar de volgende sectie, aanbieding aanbieden.
 
@@ -180,7 +180,7 @@ U moet de naam, het e-mail adres en het telefoon nummer opgeven voor een **onder
 
 Geef in de sectie **ondersteunings contact op met** de **ondersteunings website** waar partners ondersteuning voor uw aanbieding kunnen vinden op basis van het feit of de aanbieding beschikbaar is in wereld wijd Azure, Azure Government of beide.
 
-Geef in de sectie **contact persoon** van het CSP-programma de koppeling op ( **CSP-programma marketing materiaal** ) waarin CSP-partners marketing materiaal voor uw aanbieding kunnen vinden.
+Geef in de sectie **contact persoon** van het CSP-programma de koppeling op (**CSP-programma marketing materiaal**) waarin CSP-partners marketing materiaal voor uw aanbieding kunnen vinden.
 
 #### <a name="additional-marketplace-listing-resources"></a>Aanvullende bronnen voor Marketplace-lijst
 
@@ -190,7 +190,7 @@ Zie [Best practices](../gtm-offer-listing-best-practices.md) voor aanbiedings aa
 
 Bied logo's en installatie kopieën die u kunt gebruiken met uw aanbieding. Alle installatie kopieën moeten de PNG-indeling hebben. Vage afbeeldingen worden geweigerd.
 
-[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+[!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 >[!Note]
 >Als u een probleem hebt met het uploaden van bestanden, moet u ervoor zorgen dat uw lokale netwerk de door https://upload.xboxlive.com Partner Center gebruikte service niet blokkeert.
@@ -223,19 +223,19 @@ In de volgende voor beelden ziet u hoe de velden van het aanbod lijst worden wee
 
 Hiermee wordt de **aanbiedings** pagina weer gegeven in azure Marketplace:
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-6-offer-listing-mkt-plc.png" alt-text="Illustreert de aanbiedings pagina in azure Marketplace." :::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-6-offer-listing-mkt-plc.png" alt-text="Illustreert het gebruik van het standaard contract voor het selectie vakje commerciële Marketplace van micro soft." :::
 
 Hiermee worden Zoek resultaten weer gegeven in azure Marketplace:
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-7-search-results-mkt-plc.png" alt-text="Illustreert de zoek resultaten in azure Marketplace.":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-7-search-results-mkt-plc.png" alt-text="Illustreert het gebruik van het standaard contract voor het selectie vakje commerciële Marketplace van micro soft.":::
 
 Hiermee **wordt de pagina aanbieding weer** gegeven in azure portal:
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-8-offer-listing-portal.png" alt-text="Illustreert de aanbiedings pagina van de aanbieding in Azure Portal.":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-8-offer-listing-portal.png" alt-text="Illustreert het gebruik van het standaard contract voor het selectie vakje commerciële Marketplace van micro soft.":::
 
 Hiermee worden Zoek resultaten weer gegeven in Azure Portal:
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-9-search-results-portal.png" alt-text="Illustreert de zoek resultaten in Azure Portal.":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-9-search-results-portal.png" alt-text="Illustreert het gebruik van het standaard contract voor het selectie vakje commerciële Marketplace van micro soft.":::
 
 ## <a name="preview"></a>Preview
 
@@ -328,11 +328,11 @@ In de volgende voor beelden ziet u hoe de velden van het plan vermelding worden 
 
 Dit zijn de velden in azure Marketplace wanneer u de details van het abonnement bekijkt:
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-10-plan-details-mtplc.png" alt-text="Illustreert de velden die u ziet wanneer u de details van het plan bekijkt in azure Marketplace.":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-10-plan-details-mtplc.png" alt-text="Illustreert het gebruik van het standaard contract voor het selectie vakje commerciële Marketplace van micro soft.":::
 
 Dit zijn de details van het abonnement op de Azure Portal:
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-11-plan-details-portal.png" alt-text="Illustreert Details van het abonnement op de Azure Portal.":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-11-plan-details-portal.png" alt-text="Illustreert het gebruik van het standaard contract voor het selectie vakje commerciële Marketplace van micro soft.":::
 
 ### <a name="plan-availability"></a>Beschik baarheid plannen
 
@@ -363,11 +363,11 @@ Geef de volgende informatie op het tabblad Details van de **afbeeldings opslagpl
 
 **Gebruikers naam van de beheerder voor de Azure container Registry** : Geef de [gebruikers naam](../../container-registry/container-registry-authentication.md#admin-account)van de beheerder op die is gekoppeld aan de Azure container Registry met de container installatie kopie. De gebruikers naam en het wacht woord zijn vereist om ervoor te zorgen dat uw bedrijf toegang heeft tot het REGI ster. Als u de gebruikers naam en het wacht woord van de beheerder wilt ophalen, stelt u de eigenschap met **beheerders** rechten in op **True** met behulp van de Azure-opdracht regel interface (CLI). U kunt optioneel een **admin-gebruiker** instellen om in azure Portal in te **scha kelen** .
 
- :::image type="content" source="media/azure-create-container-offer-images/azure-create-12-update-container-registry-edit.png" alt-text="Illustreert het dialoog venster update container Registry.":::
+ :::image type="content" source="media/azure-create-container-offer-images/azure-create-12-update-container-registry-edit.png" alt-text="Illustreert het gebruik van het standaard contract voor het selectie vakje commerciële Marketplace van micro soft.":::
 
 **Wacht woord voor de Azure container Registry** : Geef het wacht woord op voor de beheerder van de gebruikers naam die is gekoppeld aan de Azure container Registry en heeft de container installatie kopie. De gebruikers naam en het wacht woord zijn vereist om ervoor te zorgen dat uw bedrijf toegang heeft tot het REGI ster. U kunt het wacht woord ophalen van de Azure portal door naar **container Registry**  >  **toegangs sleutels** of met Azure CLI te gaan met behulp van de [weer geven opdracht](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show).
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-13-access-keys.png" alt-text="Illustreert het menu toegangs sleutel.":::
+:::image type="content" source="media/azure-create-container-offer-images/azure-create-13-access-keys.png" alt-text="Illustreert het gebruik van het standaard contract voor het selectie vakje commerciële Marketplace van micro soft.":::
 
 **De naam van de opslag plaats in de Azure container Registry**. Geef de naam op van de Azure Container Registry opslag plaats met uw installatie kopie. Neem de naam van de opslag plaats op wanneer u de installatie kopie naar het REGI ster pusht. U kunt de naam van de opslag plaats vinden door naar de pagina [container Registry](https://azure.microsoft.com/services/container-registry/)  >  **opslagplaatsen** te gaan. Zie [container register opslagplaatsen weer geven in azure Portal](../../container-registry/container-registry-repositories.md)voor meer informatie.
 

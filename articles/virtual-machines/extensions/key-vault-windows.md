@@ -8,12 +8,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f4a345fe62a1d13a6be7dc71ecc0529fec2a6a4e
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 72f8f4d490ce6af5897c31e725fa61cb47e147b6
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401500"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710036"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Extensie van de virtuele machine Key Vault voor Windows
 
@@ -85,12 +85,12 @@ De volgende JSON toont het schema voor de extensie van de Key Vault-VM. Voor de 
 | apiVersion | 2019-07-01 | datum |
 | publisher | Microsoft.Azure.KeyVault | tekenreeks |
 | type | KeyVaultForWindows | tekenreeks |
-| typeHandlerVersion | 1,0 | int |
+| typeHandlerVersion | 1.0 | int |
 | pollingIntervalInS | 3600 | tekenreeks |
 | Naam certificaat archief | MY | tekenreeks |
-| linkOnRenewal | false | boolean |
+| linkOnRenewal | false | booleaans |
 | certificateStoreLocation  | LocalMachine of CurrentUser (hoofdletter gevoelig) | tekenreeks |
-| requiredInitialSync | true | boolean |
+| requiredInitialSync | true | booleaans |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | teken reeks matrix
 | msiEndpoint | http://169.254.169.254/metadata/identity | tekenreeks |
 | msiClientId | c7373ae5-91c2-4165-8ab6-7381d6e75619 | tekenreeks |
@@ -189,7 +189,7 @@ De Azure CLI kan worden gebruikt om de Key Vault VM-extensie te implementeren op
          --publisher Microsoft.Azure.KeyVault `
          -g "<resourcegroup>" `
          --vm-name "<vmName>" `
-         --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\ <observedCerts>\"] }}'
+         --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\"<observedCerts>\"] }}'
     ```
 
 * De uitbrei ding implementeren op een schaalset voor virtuele machines:
@@ -200,7 +200,7 @@ De Azure CLI kan worden gebruikt om de Key Vault VM-extensie te implementeren op
          --publisher Microsoft.Azure.KeyVault `
          -g "<resourcegroup>" `
          --vmss-name "<vmName>" `
-         --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\ <observedCerts>\"] }}'
+         --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\"<observedCerts>\"] }}'
     ```
 
 Houd rekening met de volgende beperkingen/vereisten:

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: b2c994d23e63f9e2118cd3e6571c5dcc0449a367
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: e17f2015ed4428cfd3c1a6c8a7bc4f92854a6b71
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90601092"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710597"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>De Text Analytics aanroepen REST API
 
@@ -26,6 +26,8 @@ Elke aanvraag moet uw toegangs sleutel en een HTTP-eind punt bevatten. Met het e
 Intrekken dat Text Analytics stateless is, zodat er geen gegevensassets zijn om te beheren. Uw tekst wordt geüpload, geanalyseerd na ontvangst en de resultaten worden direct naar de aanroepende toepassing geretourneerd.
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
+
+[!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -114,7 +116,7 @@ De service accepteert een aanvraag met een grootte van Maxi maal 1 MB. Als u Pos
 
    In postman wordt het antwoord in het volgende venster weer gegeven als één JSON-document met een item voor elke document-ID die in de aanvraag is opgenomen.
 
-## <a name="see-also"></a>Zie ook 
+## <a name="see-also"></a>Zie tevens 
 
  [Overzicht van Text Analytics](../overview.md)  
  [Veelgestelde vragen](../text-analytics-resource-faq.md)

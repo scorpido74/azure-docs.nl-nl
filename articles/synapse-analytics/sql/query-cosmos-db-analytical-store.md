@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 028f47fcfb4a6a4d94d672e950b4c37d739e672b
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: 9d36cee1ebf9f58991db6fd40fd6aa9422546b61
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91597314"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710750"
 ---
 # <a name="query-azure-cosmos-db-data-using-sql-serverless-in-azure-synapse-link-preview"></a>Query's uitvoeren op Azure Cosmos DB gegevens met behulp van SQL serverloze koppeling in azure Synapse (preview)
 
-SQL serverloze (voorheen SQL Server) biedt u de mogelijkheid om gegevens in uw Azure Cosmos DB containers te analyseren die in bijna realtime zijn ingeschakeld met de [koppeling van Azure Synapse](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) , zonder dat dit van invloed is op de prestaties van uw transactionele werk belastingen. Het biedt een bekende T-SQL-syntaxis voor het opvragen van gegevens uit de [analytische opslag](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) en de geïntegreerde connectiviteit met een breed scala aan bi-en ad-hoc hulp middelen voor query's via de T-SQL-interface.
+Met Synapse SQL serverloze (voorheen SQL on-demand) kunt u gegevens in uw Azure Cosmos DB containers [die in bijna](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) realtime zijn ingeschakeld, analyseren zonder dat dit van invloed is op de prestaties van uw transactionele werk belastingen. Het biedt een bekende T-SQL-syntaxis voor het opvragen van gegevens uit de [analytische opslag](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) en de geïntegreerde connectiviteit met een breed scala aan bi-en ad-hoc hulp middelen voor query's via de T-SQL-interface.
 
 > [!NOTE]
 > Ondersteuning voor het uitvoeren van query's in een Azure Cosmos DB analytische archief met SQL serverloze bevindt zich momenteel in de test preview. 
@@ -242,7 +242,7 @@ Azure Cosmos DB-accounts van de SQL-API (core) ondersteunen JSON-eigenschaps typ
 
 | Azure Cosmos DB eigenschaps type | SQL-kolom Type |
 | --- | --- |
-| Booleaans | bit |
+| Boolean | bit |
 | Geheel getal | bigint |
 | Decimaal | float |
 | Tekenreeks | varchar (UTF8-database sortering) |

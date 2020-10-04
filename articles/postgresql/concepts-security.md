@@ -1,17 +1,17 @@
 ---
 title: Beveiliging in Azure Database for PostgreSQL-één server
 description: Een overzicht van de beveiligings functies in Azure Database for PostgreSQL-één server.
-author: rachel-msft
-ms.author: raagyema
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: b95e02046b2f05dd89ec8fce5da438380a8894e9
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: be042a0ec076538cf0f0d155667acea6f1ae19cb
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89375785"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710478"
 ---
 # <a name="security-in-azure-database-for-postgresql---single-server"></a>Beveiliging in Azure Database for PostgreSQL-één server
 
@@ -38,7 +38,7 @@ IP-firewall regels verlenen toegang tot servers op basis van het oorspronkelijke
 Met Service-eind punten van een virtueel netwerk breidt u de connectiviteit van uw virtuele netwerk uit via de Azure-backbone. Met regels voor virtuele netwerken kunt u uw Azure Database for PostgreSQL-server in staat stellen verbindingen van geselecteerde subnetten in een virtueel netwerk toe te staan. Zie het overzicht van het [virtuele netwerk service-eind punt](concepts-data-access-and-security-vnet.md)voor meer informatie.
 
 ### <a name="private-ip"></a>Privé IP-adres
-Met persoonlijke koppeling kunt u verbinding maken met uw Azure Database for PostgreSQL één server in azure via een persoonlijk eind punt. Met Azure private link worden Azure-Services binnen uw persoonlijke Virtual Network (VNet) geplaatst. De PaaS-bronnen kunnen worden geopend met behulp van het privé-IP-adres, net zoals elke andere resource in het VNet. Zie voor meer informatie het [overzicht van persoonlijke koppelingen](concepts-data-access-and-security-private-link.md)
+Met persoonlijke koppeling kunt u verbinding maken met uw Azure Database for PostgreSQL één server in azure via een persoonlijk eind punt. Met Azure Private Link worden Azure-services binnen uw persoonlijke virtuele network (VNet) geplaatst. De PaaS-resources kunnen worden geopend met behulp van het privé-IP-adres, net zoals elke andere resource op het VNet. Zie voor meer informatie het [overzicht van persoonlijke koppelingen](concepts-data-access-and-security-private-link.md)
 
 
 ## <a name="access-management"></a>Toegangsbeheer
@@ -54,6 +54,9 @@ U kunt ervoor kiezen om [geavanceerde bedreigingen te beveiligen](concepts-data-
 
 [Controle logboek registratie](concepts-audit.md) is beschikbaar om de activiteiten in uw data bases bij te houden. 
 
+## <a name="migrating-from-oracle"></a>Migreren vanuit Oracle
+
+Oracle ondersteunt Transparent Data Encryption (TDE) om tabel-en tabel ruimte gegevens te versleutelen. In azure voor PostgreSQL worden de gegevens automatisch versleuteld op verschillende lagen. Zie de sectie ' aan de rest ' op deze pagina en Raadpleeg ook de verschillende onderwerpen over beveiliging, waaronder door de [klant beheerde sleutels](./concepts-data-encryption-postgresql.md) en [infra structuur met dubbele code ring](./concepts-infrastructure-double-encryption.md). U kunt ook overwegen om de [pgcrypto](https://www.postgresql.org/docs/11/pgcrypto.html) -extensie te gebruiken die wordt ondersteund in [Azure voor postgresql](./concepts-extensions.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 - Firewall regels voor [IP-adressen](concepts-firewall-rules.md) of [virtuele netwerken](concepts-data-access-and-security-vnet.md) inschakelen

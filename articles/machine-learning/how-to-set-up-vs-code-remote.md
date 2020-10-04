@@ -10,12 +10,12 @@ ms.custom: how-to
 ms.author: jmartens
 author: j-martens
 ms.date: 09/03/2020
-ms.openlocfilehash: 2c7ff633705d3db327c563b41ce199a5342dda82
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 6ac116b315d4a11b51b37c5b51edf35aa0676713
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461558"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708370"
 ---
 # <a name="connect-to-an-azure-machine-learning-compute-instance-in-visual-studio-code-preview"></a>Verbinding maken met een Azure Machine Learning Compute-instantie in Visual Studio code (preview)
 
@@ -68,7 +68,7 @@ U kunt nu door gaan met het uitvoeren van cellen in uw Jupyter-notebook.
 Voor een volledig functionele externe ontwikkel ervaring hebt u enkele vereisten nodig:
 
 * [Visual Studio code remote SSH-extensie](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh).
-* Reken instantie met SSH-functionaliteit. [Zie de hand leiding Create a Compute instance](concept-compute-instance.md#create)voor meer informatie.
+* Reken instantie met SSH-functionaliteit. [Zie de hand leiding Create a Compute instance](how-to-create-manage-compute-instance.md)voor meer informatie.
 
 > [!NOTE]
 > Op Windows-platforms moet u [een met OpenSSH compatibele SSH-client installeren](https://code.visualstudio.com/docs/remote/troubleshooting#_installing-a-supported-ssh-client) als deze nog niet aanwezig is. PuTTy wordt niet ondersteund in Windows omdat de SSH-opdracht zich in het pad moet bevinden.

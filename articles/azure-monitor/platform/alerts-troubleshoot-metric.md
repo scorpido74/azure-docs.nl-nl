@@ -4,14 +4,14 @@ description: Veelvoorkomende problemen met Azure Monitor metrische waarschuwinge
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 09/14/2020
+ms.date: 10/04/2020
 ms.subservice: alerts
-ms.openlocfilehash: f9003aa7b9b2c28e443485484ccd4eb50fa6e0dd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1280529aa758194dbd02196d71a715310431a73b
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91294222"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710291"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Problemen in Azure Monitor metrische waarschuwingen oplossen 
 
@@ -75,6 +75,9 @@ Zie [hier](../insights/monitor-vm-azure.md#guest-operating-system)voor meer info
     
 > [!NOTE] 
 > Als u de metrische gegevens van de gast hebt geconfigureerd om te worden verzonden naar een Log Analytics-werk ruimte, worden de metrische gegevens weer gegeven onder de Log Analytics werkruimte resource en worden **alleen** data weer gegeven nadat u een waarschuwings regel hebt gemaakt waarmee deze worden gecontroleerd. Volg hiervoor de stappen voor het [configureren van een metrische waarschuwing voor logboeken](./alerts-metric-logs.md#configuring-metric-alert-for-logs).
+
+> [!NOTE] 
+> Het bewaken van een gast metriek voor meerdere virtuele machines met één waarschuwings regel wordt momenteel niet ondersteund door metrische waarschuwingen. U kunt dit doen met een [waarschuwings regel](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)voor het logboek. Als u dit wilt doen, controleert u of de gegevens van de gast worden verzameld naar een Log Analytics-werk ruimte en maakt u een waarschuwings regel voor het logboek in de werk ruimte.
 
 ## <a name="cant-find-the-metric-to-alert-on"></a>Kan de metrische gegevens niet vinden voor waarschuwing
 
@@ -252,6 +255,12 @@ Bijvoorbeeld:
     - Ik wil de eerste voor waarde bijwerken en alleen trans acties bewaken waarbij de dimensie **ApiName** gelijk is aan *' GetBlob '*
     - Omdat zowel de metrische gegevens van de **trans acties** als de **SuccessE2ELatency** een **ApiName** -dimensie ondersteunen, moet ik beide voor waarden bijwerken en beide de dimensie **ApiName** opgeven met de waarde *' GetBlob '* .
 
+## <a name="setting-the-alert-rules-period-and-frequency"></a>De periode en frequentie van de waarschuwings regel instellen
+
+U kunt het beste een *aggregatie granulatie (punt)* kiezen die groter is dan de *frequentie van de evaluatie*, om de kans te verminderen dat de eerste evaluatie van toegevoegde tijd reeksen in de volgende gevallen wordt gereduceerd:
+-   Waarschuwings regel voor metrische gegevens die meerdere dimensies bewaakt: wanneer een nieuwe Dimensiewaardecombinatie wordt toegevoegd
+-   Waarschuwings regel voor metrische gegevens die meerdere resources bewaakt: wanneer een nieuwe resource wordt toegevoegd aan het bereik
+-   Waarschuwings regel voor metrische gegevens die een metriek bewaakt die niet continu wordt uitgezonden (sparse metrisch): wanneer de metriek wordt verzonden na een periode van meer dan 24 uur waarin deze niet is verzonden
 
 ## <a name="next-steps"></a>Volgende stappen
 

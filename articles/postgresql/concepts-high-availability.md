@@ -1,17 +1,17 @@
 ---
 title: Hoge Beschik baarheid-Azure Database for PostgreSQL-één server
 description: In dit artikel vindt u informatie over hoge Beschik baarheid in Azure Database for PostgreSQL-één server
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/15/2020
-ms.openlocfilehash: 0d723e1613e96f0aea243eace8ece3f0473e3742
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 075f5fde272d4ee2e932e5f6c1f0e34324c38837
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90884436"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707928"
 ---
 # <a name="high-availability-in-azure-database-for-postgresql--single-server"></a>Hoge Beschik baarheid in Azure Database for PostgreSQL-één server
 De Azure Database for PostgreSQL-service met één server biedt een gegarandeerd hoog niveau van Beschik baarheid met de SLA (financieel ondersteunde service level agreement) van [99,99%](https://azure.microsoft.com/support/legal/sla/postgresql) uptime. Azure Database for PostgreSQL biedt een hoge Beschik baarheid tijdens geplande gebeurtenissen, zoals de initated van de gebruiker en ook wanneer niet-geplande gebeurtenissen, zoals onderliggende hardware, software of netwerk fouten, optreden. Azure Database for PostgreSQL kan snel van de meeste kritieke omstandigheden worden hersteld, waardoor er bijna geen toepassings tijd meer is bij het gebruik van deze service.
@@ -49,7 +49,7 @@ Hier volgen enkele geplande onderhouds scenario's:
 Ongeplande uitval tijd kan optreden als gevolg van onvoorziene storingen, waaronder onderliggende hardwarestoringen, netwerk problemen en software fouten. Als de database server onverwacht uitvalt, wordt er in een paar seconden automatisch een nieuwe database server ingericht. De externe opslag wordt automatisch gekoppeld aan de nieuwe database server. De PostgreSQL-engine voert de herstel bewerking uit met WAL en database bestanden, en opent de database server om clients toe te staan verbinding te maken. Niet-doorgevoerde trans acties gaan verloren en moeten opnieuw worden geprobeerd door de toepassing. Hoewel een ongeplande uitval tijd niet kan worden vermeden, Azure Database for PostgreSQL de uitval tijd verminderen door automatisch herstel bewerkingen uit te voeren op de database server en opslag lagen zonder menselijke tussen komst. 
 
 
-:::image type="content" source="./media/concepts-high-availability/azure-postgresql-built-in-high-availability.png" alt-text="weer gave van hoge Beschik baarheid in azure PostgreSQL":::
+:::image type="content" source="./media/concepts-high-availability/azure-postgresql-built-in-high-availability.png" alt-text="weer gave van elastisch schalen in azure PostgreSQL":::
 
 1. Azure PostgreSQL-servers met snelle schaal mogelijkheden.
 2. Gateway die fungeert als een proxy voor het routeren van client verbindingen met de juiste database server

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
-ms.openlocfilehash: 382a6056076179be0d25e0fee0d55b978a3b7169
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 1d75e0d9f57aee495524e2d35231dd3c78cedea1
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89420435"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708115"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>Een SaaS-aanbieding plannen voor de commerciële Marketplace
 
@@ -57,7 +57,7 @@ De aanbiedings opties gratis _downloaden_, _gratis proef versie_en _verkopen via
 
 Deze aanvullende technische vereisten zijn alleen van toepassing op de aanbiedings optie _micro soft_ (alleen voor trans acties):
 
-- Azure AD met identiteits beheer en verificatie via eenmalige aanmelding (SSO) is vereist. Zie [Azure AD en transactable SaaS-aanbiedingen in de commerciële Marketplace](azure-ad-saas.md)voor gedetailleerde richt lijnen.
+- Azure AD met eenmalige aanmelding (SSO) en verificatie is vereist voor de kopende gebruiker die toegang krijgt tot de landings pagina. Zie [Azure AD en transactable SaaS-aanbiedingen in de commerciële Marketplace](azure-ad-saas.md)voor gedetailleerde richt lijnen.
 - U moet de [SaaS-fulfillment-api's](./partner-center-portal/pc-saas-fulfillment-api-v2.md) gebruiken om te integreren met Azure Marketplace en Microsoft AppSource. U moet een service beschikbaar stellen die kan communiceren met het SaaS-abonnement om een gebruikers account en service plan te maken, bij te werken en te verwijderen. Essentiële wijzigingen in de API moeten binnen 24 uur worden ondersteund. Wijzigingen van niet-kritieke API'S worden periodiek vrijgegeven. Diagrammen en gedetailleerde uitleg die het gebruik van de verzamelde velden beschrijven, zijn beschikbaar in de documentatie voor de [api's](./partner-center-portal/pc-saas-fulfillment-api-v2.md).
 - U moet ten minste één abonnement maken voor uw aanbieding. De prijs van uw abonnement is gebaseerd op het prijs model dat u selecteert voordat u publiceert: _vast tarief_ of _per gebruiker_. Verderop in dit artikel vindt u meer informatie over [plannen](#plans) .
 - De klant kan uw aanbieding op elk gewenst moment annuleren.
@@ -68,7 +68,7 @@ Als u een voor bereide aanbieding maakt, moet u de volgende informatie verzamele
 
 - **URL van de landings pagina**: de URL van de SaaS-site (bijvoorbeeld: `https://contoso.com/signup` ) waarmee gebruikers na het verkrijgen van uw aanbieding van de commerciële Marketplace worden omgeleid naar het configuratie proces van het zojuist gemaakte SaaS-abonnement. Deze URL ontvangt een token dat kan worden gebruikt om de fulfillment-Api's aan te roepen om de inrichtings gegevens voor uw interactieve registratie pagina op te halen.
 
-  Deze URL wordt aangeroepen met de para meter voor het kopen van id-tokens voor Marketplace waarmee de SaaS-aankoop van de specifieke klant wordt geïdentificeerd. U moet dit token omruilen voor de bijbehorende details van het SaaS-abonnement met behulp van de [API voor omzetten](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription). Deze details en andere personen die u wilt verzamelen, moeten worden gebruikt als onderdeel van een klant-interactieve webpagina die in uw ervaring is gebouwd om de registratie van de klant te volt ooien en hun aankoop te activeren. Op deze pagina moet de gebruiker zich aanmelden met één klik op verificatie met behulp van Azure Active Directory (Azure AD).
+  Deze URL wordt aangeroepen met de para meter voor het kopen van id-tokens voor Marketplace waarmee de SaaS-aankoop van de specifieke klant uniek wordt geïdentificeerd. U moet dit token omruilen voor de bijbehorende details van het SaaS-abonnement met behulp van de [API voor omzetten](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription). Deze details en andere personen die u wilt verzamelen, moeten worden gebruikt als onderdeel van een klant-interactieve webpagina die in uw ervaring is gebouwd om de registratie van de klant te volt ooien en hun aankoop te activeren. Op deze pagina moet de gebruiker zich aanmelden met één klik op verificatie met behulp van Azure Active Directory (Azure AD).
 
   Deze URL met Marketplace-aankoop identificatie token para meter wordt ook aangeroepen wanneer de klant een beheerde SaaS-ervaring start vanuit het Azure Portal-of M365-beheer centrum. U moet beide stromen afhandelen: wanneer het token voor de eerste keer wordt ingesteld na een nieuwe klant, en wanneer deze opnieuw wordt ingevoerd voor een bestaande klant die de SaaS-oplossing beheert.
 
@@ -90,7 +90,7 @@ Als u een voor bereide aanbieding maakt, moet u de volgende informatie verzamele
   > [!NOTE]
   > Als de uitgever twee of meer verschillende accounts in het partner centrum heeft, moeten er twee of meer verschillende Azure AD-App-Id's worden gebruikt, elk voor een van de accounts. Elk partner account in het partner centrum moet een unieke Azure AD-App-ID gebruiken voor alle SaaS-aanbiedingen die via dit account worden gepubliceerd.
 
-## <a name="test-drives"></a>Stations testen
+## <a name="test-drives"></a>Test drives
 U kunt ervoor kiezen om een test drive in te scha kelen voor uw SaaS-app. Test stations geven klanten een vast aantal uur toegang tot een vooraf geconfigureerde omgeving. U kunt test stations voor elke publicatie optie inschakelen, maar deze functie heeft aanvullende vereisten. Zie [Wat is een test drive?](what-is-test-drive.md)voor meer informatie over test stations. Zie [technische configuratie testen](test-drive-technical-configuration.md)voor meer informatie over het configureren van verschillende soorten test stations.
 
 > [!TIP]
@@ -100,7 +100,7 @@ U kunt ervoor kiezen om een test drive in te scha kelen voor uw SaaS-app. Test s
 
 U moet uw aanbieding verbinden met het CRM-systeem (Customer Relationship Management) om klant gegevens te verzamelen. De klant wordt gevraagd om toestemming te krijgen om hun gegevens te delen. Deze klant gegevens, samen met de naam van de aanbieding, de ID en de online winkel waar ze uw aanbieding vinden, worden verzonden naar het CRM-systeem dat u hebt geconfigureerd. De commerciële Marketplace ondersteunt een groot aantal CRM-systemen, samen met de optie voor het gebruik van een Azure-tabel of het configureren van een HTTPS-eind punt met behulp van energie automatisering.
 
-U kunt op elk gewenst moment een CRM-verbinding toevoegen of wijzigen tijdens of na het maken van de aanbieding. Zie [lead management voor de commerciële Marketplace](lead-management-for-cloud-marketplace.md)voor gedetailleerde richt lijnen.
+U kunt op elk gewenst moment een CRM-verbinding toevoegen of wijzigen tijdens of na het maken van de aanbieding. Zie [leads van klanten van uw aanbieding voor commerciële Marketplace](partner-center-portal/commercial-marketplace-get-customer-leads.md)voor gedetailleerde richt lijnen.
 
 ## <a name="selecting-an-online-store"></a>Een online winkel selecteren
 

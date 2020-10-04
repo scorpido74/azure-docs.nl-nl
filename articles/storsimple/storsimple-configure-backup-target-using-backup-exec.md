@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/05/2016
 ms.author: matd
-ms.openlocfilehash: 397dac67ea94db22829080a65dfae857bb3706dd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a35b4e398757cb3d4b17e4fd6a5e342fe3c82918
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87036927"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710376"
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>StorSimple als back-updoel met Backup Exec
 
@@ -92,10 +92,10 @@ In de volgende tabellen ziet u de richt lijnen voor het model naar architectuur 
 
 | Opslagcapaciteit       | 8100          | 8600            |
 |------------------------|---------------|-----------------|
-| Lokale opslagcapaciteit | &lt;10 TiB\*  | &lt;20 TiB\*  |
-| Capaciteit van de Cloud opslag | &gt;200 TiB\* | &gt;500 TiB\* |
+| Lokale opslagcapaciteit | &lt; 10 TiB\*  | &lt; 20 TiB\*  |
+| Capaciteit van de Cloud opslag | &gt; 200 TiB\* | &gt; 500 TiB\* |
 
-\*Bij de opslag grootte wordt ervan uitgegaan dat er geen ontdubbeling of compressie wordt toegepast.
+\* Bij de opslag grootte wordt ervan uitgegaan dat er geen ontdubbeling of compressie wordt toegepast.
 
 **StorSimple-capaciteit voor primaire en secundaire back-ups**
 
@@ -261,7 +261,7 @@ Maak op basis van de voor gaande hypo theses een gelaagd volume van 26 TiB StorS
 | GFS-vereiste |   | 38 |   |
 | Extra quotum  | 4  |   | 42 totale GFS-vereiste  |
 
-\*De GFS vermenigvuldiger is het aantal kopieën dat u moet beveiligen en bewaren om te voldoen aan de vereisten voor het back-upbeleid.
+\* De GFS vermenigvuldiger is het aantal kopieën dat u moet beveiligen en bewaren om te voldoen aan de vereisten voor het back-upbeleid.
 
 ## <a name="set-up-backup-exec-storage"></a>Backup Exec-opslag instellen
 
@@ -376,7 +376,7 @@ In de volgende tabel ziet u hoe u back-ups kunt instellen om uit te voeren op de
 | Jaarlijks volledig |StorSimple-schijf (lange termijn) | 1 | 1 | 1 |
 |Vereiste voor grootte van GFS-volumes |  |  |  | 18,0|
 
-\*De totale capaciteit omvat 17 TiB van StorSimple schijven en 1 TiB van het lokale RAID-volume.
+\* De totale capaciteit omvat 17 TiB van StorSimple schijven en 1 TiB van het lokale RAID-volume.
 
 
 ### <a name="gfs-example-schedule-gfs-rotation-weekly-monthly-and-yearly-schedule"></a>Voorbeeld schema voor GFS: GFS draai hoek per week, maandelijks en jaarlijks schema
@@ -409,15 +409,15 @@ In de volgende tabel ziet u hoe u back-ups kunt instellen om uit te voeren op de
 
 4.  Selecteer in de vervolg keuzelijst **opslag** het StorSimple-volume waar u de gegevens wilt opslaan met de archief taak.
 
-    ![Backup Exec-beheer console, eigenschappen van back-updefinities en dubbele opties](./media/storsimple-configure-backup-target-using-backup-exec/image22.png)
+    ![Scherm opname van de lijst waarin u opslag wilt selecteren.](./media/storsimple-configure-backup-target-using-backup-exec/image22.png)
 
 5.  Selecteer **verifiëren**en schakel vervolgens het selectie vakje de **gegevens niet controleren voor deze taak** in.
 
-    ![Backup Exec-beheer console, eigenschappen van back-updefinities en dubbele opties](./media/storsimple-configure-backup-target-using-backup-exec/image23.png)
+    ![Scherm afbeelding die laat zien waar u de optie geen gegevens controleren voor deze taak selecteert.](./media/storsimple-configure-backup-target-using-backup-exec/image23.png)
 
 6.  Selecteer **OK**.
 
-    ![Backup Exec-beheer console, eigenschappen van back-updefinities en dubbele opties](./media/storsimple-configure-backup-target-using-backup-exec/image24.png)
+    ![Scherm opname van de eigenschappen van de back-updefinitie.](./media/storsimple-configure-backup-target-using-backup-exec/image24.png)
 
 7.  Voeg in de kolom **back-up** een nieuwe fase toe. Gebruik **Incrementeel**voor de bron. Kies voor het doel het StorSimple-volume waarop de incrementele back-uptaak wordt gearchiveerd. Herhaal stap 1-6.
 
@@ -472,13 +472,13 @@ Herstellen vanaf een StorSimple-apparaat werkt zoals herstellen vanuit elk appar
 
 Een nood geval kan worden veroorzaakt door diverse factoren. De volgende tabel geeft een lijst van veelvoorkomende scenario's voor herstel na nood gevallen.
 
-| Scenario | Impact | Herstellen | Opmerkingen |
+| Scenario | Impact | Herstellen | Notities |
 |---|---|---|---|
 | StorSimple-apparaat is mislukt | Back-up-en herstel bewerkingen worden onderbroken. | Vervang het apparaat dat is mislukt en voer een [StorSimple-failover en nood herstel](storsimple-device-failover-disaster-recovery.md)uit. | Als u na het herstel van het apparaat een herstel bewerking moet uitvoeren, worden volledige gegevens verzamelingen opgehaald uit de Cloud naar het nieuwe apparaat. Alle bewerkingen bevinden zich in de Cloud snelheid. Het proces voor het opnieuw scannen van indexeren en catalogiseren kan ertoe leiden dat alle back-upsets worden gescand en worden opgehaald uit de Cloud laag naar de laag van het lokale apparaat. Dit kan een tijdrovend proces zijn. |
 | Backup Exec-server fout | Back-up-en herstel bewerkingen worden onderbroken. | Bouw de back-upserver opnieuw op en voer data base terugzetten uit, zoals beschreven in [een hand matige back-up en herstel van de data base Backup Exec (BEDB)](http://www.veritas.com/docs/000041083). | U moet de Backup Exec-server opnieuw samen stellen of herstellen op de site voor nood herstel. Zet de data base terug naar het meest recente punt. Als de herstelde data base van Backup Exec niet synchroon is met uw meest recente back-uptaken, is indexeren en catalogiseren vereist. Dit proces voor het opnieuw scannen van index en catalogus kan ertoe leiden dat alle back-upsets worden gescand en van de Cloud laag worden opgehaald naar de laag van het lokale apparaat. Hierdoor is het veel tijdrovender. |
 | Site fout die leidt tot verlies van zowel de back-upserver als de StorSimple | Back-up-en herstel bewerkingen worden onderbroken. | Herstel eerst StorSimple en herstel vervolgens de functie voor het maken van back-ups. | Herstel eerst StorSimple en herstel vervolgens de functie voor het maken van back-ups. Als u na het herstel van het apparaat een herstel bewerking moet uitvoeren, worden de volledige gegevens sets van de Cloud naar het nieuwe apparaat opgehaald. Alle bewerkingen bevinden zich in de Cloud snelheid. |
 
-## <a name="references"></a>Referenties
+## <a name="references"></a>Verwijzingen
 
 In dit artikel wordt verwezen naar de volgende documenten:
 

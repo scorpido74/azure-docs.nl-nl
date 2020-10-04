@@ -7,16 +7,16 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 07/22/2020
-ms.openlocfilehash: f011f2703286cd7eb4e19588ae1ae1fe9319500f
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: e0dcd5db36e41093bf1cd75779770b04df2fc26a
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646679"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710648"
 ---
 # <a name="create-a-power-bi-app-offer"></a>Een Power BI-app-aanbieding maken
 
-In dit artikel wordt beschreven hoe u een Power BI app-aanbieding maakt en publiceert naar micro soft [AppSource](https://appsource.microsoft.com/).
+In dit artikel wordt beschreven hoe u een Power BI app-aanbieding maakt en publiceert naar [Microsoft AppSource](https://appsource.microsoft.com/).
 
 Voordat u begint, moet u [een commercieel Marketplace-account maken in Partner Center](create-account.md) als u dit nog niet hebt gedaan. Zorg ervoor dat uw account is inge schreven in het Commercial Marketplace-programma.
 
@@ -55,10 +55,10 @@ Op deze pagina ziet u een visuele weer gave van de stappen die nodig zijn om dez
 
 Het bevat koppelingen voor het uitvoeren van bewerkingen op deze aanbieding op basis van de selectie die u maakt. Bijvoorbeeld:
 
-- Als de aanbieding een concept is- [concept verwijderen](update-existing-offer.md#delete-a-draft-offer)?
-- Als de aanbieding Live is- [stopt met het verkopen van de aanbieding](update-existing-offer.md#stop-selling-an-offer-or-plan))
-- Als de aanbieding in Preview- [Go-Live](publishing-status.md#publisher-approval)staat)
-- Als u Publisher-afmelding niet hebt voltooid, [Publicatie annuleren](update-existing-offer.md#cancel-publishing))
+- Als de aanbieding een concept is- [concept verwijderen](update-existing-offer.md#delete-a-draft-offer)
+- Als de aanbieding Live is: [de aanbieding wordt niet meer verkocht](update-existing-offer.md#stop-selling-an-offer-or-plan)
+- Als de aanbieding in Preview- [Live](publishing-status.md#publisher-approval) staat
+- Als u publicatie niet hebt voltooid, [Publicatie annuleren](update-existing-offer.md#cancel-publishing)
 
 ## <a name="offer-setup"></a>Installatie van aanbieding
 
@@ -73,7 +73,7 @@ Wanneer u uw aanbieding naar Marketplace publiceert met partner centrum, moet u 
     - [Salesforce](commercial-marketplace-lead-management-instructions-salesforce.md)
 
     > [!NOTE]
-    > Als uw CRM-systeem niet hierboven wordt vermeld, gebruikt u [Azure Table](commercial-marketplace-lead-management-instructions-azure-table.md) of [https-eind punt](commercial-marketplace-lead-management-instructions-https.md) om klant lead gegevens op te slaan. Exporteer de gegevens vervolgens naar uw CRM-systeem.
+    > Als uw CRM-systeem zich niet in deze lijst bevindt, gebruikt u [Azure Table](commercial-marketplace-lead-management-instructions-azure-table.md) of en [https-eind punt](commercial-marketplace-lead-management-instructions-https.md) om klant lead gegevens op te slaan. Exporteer de gegevens vervolgens naar uw CRM-systeem.
 
 2. Verbind uw aanbieding met de doel locatie van de lead wanneer u publiceert in het partner centrum.
 3. Controleer of de verbinding met de doel locatie juist is geconfigureerd. Nadat u het in het partner centrum hebt gepubliceerd, valideren we de verbinding en sturen we u een test lead. Wanneer u een voor beeld van de aanbieding bekijkt voordat deze live gaat, kunt u ook uw lead verbinding testen door zelf te proberen de aanbieding aan te schaffen in de preview-omgeving.
@@ -81,10 +81,10 @@ Wanneer u uw aanbieding naar Marketplace publiceert met partner centrum, moet u 
 
 Hier volgen enkele aanvullende bronnen voor het beheer van leads:
 
-- [Overzicht Lead beheer](commercial-marketplace-get-customer-leads.md)
-- [Veelgestelde vragen over Lead beheer](../lead-management-for-cloud-marketplace.md#frequently-asked-questions))
-- [Veelvoorkomende fouten van de lead configuratie](../lead-management-for-cloud-marketplace.md#publishing-config-errors))
-- [Overzicht Lead beheer](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (zorg ervoor dat de pop-upblokkering is uitgeschakeld)
+- [Leads van klanten van uw aanbieding voor commerciële Marketplace](commercial-marketplace-get-customer-leads.md)
+- [Veelgestelde vragen over Lead beheer](../lead-management-faq.md#common-questions-about-lead-management)
+- [Problemen met configuratie fouten van de lead oplossen](../lead-management-faq.md#publishing-config-errors)
+- [Overzicht Lead beheer](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (zorg ervoor dat de pop-upblokkering is uitgeschakeld).
 
 Selecteer **concept opslaan** voordat u doorgaat.
 
@@ -202,7 +202,7 @@ Geef ten minste één en Maxi maal drie gerelateerde marketing documenten op in 
 
 Bied logo's en installatie kopieën die u kunt gebruiken met uw aanbieding. Alle installatie kopieën moeten de PNG-indeling hebben. Vage afbeeldingen worden geweigerd.
 
-[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+[!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 >[!NOTE]
 >Als u een probleem hebt met het uploaden van bestanden, moet u ervoor zorgen dat uw lokale netwerk de door `https://upload.xboxlive.com` Partner Center gebruikte service niet blokkeert.
@@ -218,7 +218,7 @@ Deze logo's worden op verschillende plaatsen in de vermelding gebruikt:
 
 [!INCLUDE [logos-appsource-only](../includes/logos-appsource-only.md)]
 
-[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+[!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Schermopnamen
 

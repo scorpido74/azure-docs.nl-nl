@@ -1,18 +1,18 @@
 ---
 title: Server opnieuw starten-Azure PowerShell-Azure Database for PostgreSQL
 description: In dit artikel wordt beschreven hoe u een Azure Database for PostgreSQL server opnieuw kunt opstarten met behulp van Power shell.
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3fd4bcdd2f80bfd5f79488e7e4c93219be97927c
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5037975bcfbf9b19de5cc203d26e1caf0f85893f
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503545"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710138"
 ---
 # <a name="restart-azure-database-for-postgresql-server-using-powershell"></a>Azure Database for PostgreSQL server opnieuw opstarten met Power shell
 
@@ -30,8 +30,8 @@ U hebt het volgende nodig om deze hand leiding te volt ooien:
 - Een [Azure database for postgresql server](quickstart-create-postgresql-server-database-using-azure-powershell.md)
 
 > [!IMPORTANT]
-> Hoewel de Az.PostgreSql PowerShell-module in preview is, moet u deze afzonderlijk van de Az PowerShell-module installeren met behulp van de volgende opdracht: `Install-Module -Name Az.PostgreSql -AllowPrerelease`.
-> Zodra de Az.PostgreSql PowerShell-module algemeen beschikbaar is, wordt deze onderdeel van toekomstige releases van Az PowerShell-modules en is de module systeemeigen beschikbaar vanuit Azure Cloud Shell.
+> Hoewel de PowerShell-module Az.PostgreSql in preview is, moet u deze afzonderlijk van de PowerShell-module Az installeren met behulp van de volgende opdracht: `Install-Module -Name Az.PostgreSql -AllowPrerelease`.
+> Zodra de PowerShell-module Az.PostgreSql algemeen beschikbaar is, wordt deze onderdeel van toekomstige releases van Az PowerShell en is de module systeemeigen beschikbaar vanuit Azure Cloud Shell.
 
 Als u Power shell lokaal wilt gebruiken, maakt u verbinding met uw Azure-account met behulp van de cmdlet [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) .
 

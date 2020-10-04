@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f5a3488be3fdc0eb3bc8956db66c06df25ff18c0
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 09c306b85c910e8ec2021abf15013935c44b0df3
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89296618"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707707"
 ---
 # <a name="monitor-media-services-metrics"></a>Metrische gegevens voor Media Services controleren
 
@@ -48,7 +48,7 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 
     Selecteer de resource en druk op **Toep assen**. Zie [Media Services metrische gegevens controleren](media-services-metrics-diagnostic-logs.md)voor meer informatie over ondersteunde bronnen en metrische gegevens.
 
-    ![Metrische gegevens](media/media-services-metrics/metrics02.png)
+    ![Scherm opname van de geselecteerde resource en markeert de knop Toep assen.](media/media-services-metrics/metrics02.png)
 
     > [!NOTE]
     > Als u wilt scha kelen tussen resources waarvoor u de metrische gegevens wilt controleren, klikt u nogmaals op het vak **resource** en herhaalt u deze stap.
@@ -70,7 +70,7 @@ az monitor metrics list --resource \
 
 Als u andere metrische gegevens wilt ophalen, vervangt u ' uitgang ' door de naam van de metrische gegevens die u wilt gebruiken.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 * [Azure Monitor metrische gegevens](../../azure-monitor/platform/data-platform.md)
 * [Metrische waarschuwingen maken, weer geven en beheren met behulp van Azure monitor](../../azure-monitor/platform/alerts-metric.md).

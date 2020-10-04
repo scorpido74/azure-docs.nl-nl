@@ -1,5 +1,5 @@
 ---
-title: Software aanschaffen op AppSource | Azure Marketplace
+title: Software aanschaffen op Microsoft AppSource
 description: Stappen voor een om software te kopen op AppSource | Azure Marketplace.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -7,18 +7,18 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 03/20/2020
-ms.openlocfilehash: 6ea96f23f6d8c6a2e95a6217522f23545d49e9df
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: bfdae8de4c1a460844b09f82048e1e1d6abdb2ad
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032840"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708030"
 ---
 # <a name="how-to-purchase-software-on-microsoft-appsource"></a>Software aanschaffen op Microsoft AppSource
 
 Met micro soft [AppSource](https://appsource.microsoft.com/) kunnen klanten zich nu abonneren op SaaS-toepassingen die worden aangeboden door micro soft-partners. Klanten kunnen gecertificeerde webtoepassingen vinden in de Store en kunnen de kosten, upgrades, downgrades en annuleringen op één plek beheren via het beheer centrum van micro soft. In dit artikel wordt beschreven hoe u een app kunt kopen vanuit de Store.
 
-AppSource biedt u een keuze uit apps waaruit u kunt kiezen, inclusief gratis, proef versies en betaalde abonnementen. In dit artikel wordt beschreven hoe betaalde abonnementen kunnen worden aangeschaft via AppSource.
+AppSource biedt u een aantal apps waaruit u kunt kiezen, inclusief gratis proef versies en betaalde abonnementen. In dit artikel wordt beschreven hoe betaalde abonnementen kunnen worden aangeschaft via AppSource.
 
 ## <a name="requirements"></a>Vereisten
 
@@ -51,7 +51,7 @@ Voor het kopen van SaaS-aanbiedingen hebt u het volgende nodig:
 
 Nadat uw bestelling is ontvangen, kan het enkele seconden duren voordat deze wordt bevestigd. U ontvangt een koppeling om uw SaaS-abonnement op de pagina te configureren, evenals een e-mail met een bevestiging van de aankoop en de koppeling om de configuratie te volt ooien.
 
-1. Selecteer **configureren**op de pagina **order bevestiging** . U kunt ook de configuratie koppeling gebruiken die u in het bevestigings-e-mail bericht hebt ontvangen.
+1. Selecteer **configureren**op de pagina **order bevestiging** . U kunt ook de configuratie koppeling die u in de bevestigings-e-mail naar u hebt verzonden, in plaats daarvan gebruiken.
 1. Het inrichten en instellen op de website van de software provider volt ooien.
 
     > [!Note]
@@ -65,4 +65,4 @@ Een [ondersteunings ticket](https://admin.microsoft.com/Adminportal/Home?source=
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Raadpleeg de [documentatie voor commerciële Marketplace](partner-center-portal/commercial-marketplace-overview.md) voor meer informatie.
+- [Micro soft Marketplace-klant documentatie](/marketplace/)

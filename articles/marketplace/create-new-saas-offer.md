@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: 93b47d2147a7438ebd38a5ae36363950639ba414
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 2679d24a9e8c821dae73114f32adbeb3d22a1458
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89380767"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708897"
 ---
 # <a name="how-to-create-a-saas-offer-in-the-commercial-marketplace"></a>Een SaaS-aanbieding maken in de commerciële Marketplace
 
@@ -69,7 +69,7 @@ Een test drive is een fantastische manier om uw aanbieding aan potentiële klant
 Verbind uw Customer Relationship Management-systeem (CRM) met uw commerciële Marketplace-aanbieding zodat u contact gegevens van klanten kunt ontvangen wanneer een klant rente uitbrengt of uw product implementeert. U kunt deze verbinding wijzigen op elk gewenst moment tijdens of na het maken van de aanbieding.
 
 > [!NOTE]
-> U moet Lead beheer configureren als u uw aanbieding via micro soft wilt verkopen of als u de optie **contact opnemen met mij** hebt geselecteerd. Zie [lead management voor de commerciële Marketplace](lead-management-for-cloud-marketplace.md)voor gedetailleerde richt lijnen.
+> U moet Lead beheer configureren als u uw aanbieding via micro soft wilt verkopen of als u de optie **contact opnemen met mij** hebt geselecteerd. Zie [leads van klanten van uw aanbieding voor commerciële Marketplace](partner-center-portal/commercial-marketplace-get-customer-leads.md)voor gedetailleerde richt lijnen.
 
 #### <a name="to-configure-the-connection-details-in-partner-center"></a>De verbindings Details configureren in het partner centrum
 

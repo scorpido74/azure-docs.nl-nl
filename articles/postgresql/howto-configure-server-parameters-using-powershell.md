@@ -1,19 +1,19 @@
 ---
 title: Server parameters configureren-Azure PowerShell-Azure Database for PostgreSQL
 description: In dit artikel wordt beschreven hoe u de service parameters in Azure Database for PostgreSQL kunt configureren met behulp van Power shell.
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.devlang: azurepowershell
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2948e0b916eab75f0e0cf1d0ba1b5be1fcf188f4
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 0fa49714365c00060ef7f11f5c9646141f707f4b
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87493462"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707809"
 ---
 # <a name="customize-azure-database-for-postgresql-server-parameters-using-powershell"></a>Azure Database for PostgreSQL server parameters aanpassen met behulp van Power shell
 
@@ -27,8 +27,8 @@ U hebt het volgende nodig om deze hand leiding te volt ooien:
 - Een [Azure database for postgresql server](quickstart-create-postgresql-server-database-using-azure-powershell.md)
 
 > [!IMPORTANT]
-> Hoewel de Az.PostgreSql PowerShell-module in preview is, moet u deze afzonderlijk van de Az PowerShell-module installeren met behulp van de volgende opdracht: `Install-Module -Name Az.PostgreSql -AllowPrerelease`.
-> Zodra de Az.PostgreSql PowerShell-module algemeen beschikbaar is, wordt deze onderdeel van toekomstige releases van Az PowerShell-modules en is de module systeemeigen beschikbaar vanuit Azure Cloud Shell.
+> Hoewel de PowerShell-module Az.PostgreSql in preview is, moet u deze afzonderlijk van de PowerShell-module Az installeren met behulp van de volgende opdracht: `Install-Module -Name Az.PostgreSql -AllowPrerelease`.
+> Zodra de PowerShell-module Az.PostgreSql algemeen beschikbaar is, wordt deze onderdeel van toekomstige releases van Az PowerShell en is de module systeemeigen beschikbaar vanuit Azure Cloud Shell.
 
 Als u Power shell lokaal wilt gebruiken, maakt u verbinding met uw Azure-account met behulp van de cmdlet [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) .
 

@@ -1,19 +1,19 @@
 ---
 title: Backup en Restore-Azure PowerShell-Azure Database for PostgreSQL
 description: Meer informatie over het maken van een back-up en het herstellen van een server in Azure Database for PostgreSQL met behulp van Azure PowerShell.
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.devlang: azurepowershell
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f582159b0ce1355b34c42496dc7516264b62d365
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: cf15898a7077f08ff4ab337cf5ad77ebcd2f3f1a
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87902028"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708098"
 ---
 # <a name="how-to-back-up-and-restore-an-azure-database-for-postgresql-server-using-powershell"></a>Een back-up van Azure Database for PostgreSQL-server maken en deze terugzetten met behulp van PowerShell
 
@@ -27,8 +27,8 @@ U hebt het volgende nodig om deze hand leiding te volt ooien:
 - Een [Azure database for postgresql server](quickstart-create-postgresql-server-database-using-azure-powershell.md)
 
 > [!IMPORTANT]
-> Hoewel de Az.PostgreSql PowerShell-module in preview is, moet u deze afzonderlijk van de Az PowerShell-module installeren met behulp van de volgende opdracht: `Install-Module -Name Az.PostgreSql -AllowPrerelease`.
-> Zodra de Az.PostgreSql PowerShell-module algemeen beschikbaar is, wordt deze onderdeel van toekomstige releases van Az PowerShell-modules en is de module systeemeigen beschikbaar vanuit Azure Cloud Shell.
+> Hoewel de PowerShell-module Az.PostgreSql in preview is, moet u deze afzonderlijk van de PowerShell-module Az installeren met behulp van de volgende opdracht: `Install-Module -Name Az.PostgreSql -AllowPrerelease`.
+> Zodra de PowerShell-module Az.PostgreSql algemeen beschikbaar is, wordt deze onderdeel van toekomstige releases van Az PowerShell en is de module systeemeigen beschikbaar vanuit Azure Cloud Shell.
 
 Als u Power shell lokaal wilt gebruiken, maakt u verbinding met uw Azure-account met behulp van de cmdlet [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) .
 

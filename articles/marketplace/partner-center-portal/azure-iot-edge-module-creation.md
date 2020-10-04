@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 08/07/2020
-ms.openlocfilehash: dc1e8bfa9b747b9933762af1b6a5b59cf8cd98de
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 5b823b0429feffa87a05faadc78574287bc9b4a4
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815773"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708336"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>Aanbieding voor IoT Edge-module maken
 
@@ -78,9 +78,9 @@ Wanneer u uw aanbieding naar Marketplace publiceert met het partner centrum, kun
 
 Hier volgen enkele aanvullende bronnen voor het beheer van leads:
 
-- [Overzicht Lead beheer](commercial-marketplace-get-customer-leads.md)
-- [Veelgestelde vragen over Lead beheer](../lead-management-for-cloud-marketplace.md#frequently-asked-questions))
-- [Veelvoorkomende fouten van de lead configuratie](../lead-management-for-cloud-marketplace.md#publishing-config-errors))
+- [Leads van klanten van uw aanbieding voor commerciële Marketplace](commercial-marketplace-get-customer-leads.md)
+- [Veelgestelde vragen over Lead beheer](../lead-management-faq.md#common-questions-about-lead-management)
+- [Problemen met configuratie fouten van de lead oplossen](../lead-management-faq.md#publishing-config-errors)
 - [Overzicht Lead beheer](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (zorg ervoor dat de pop-upblokkering is uitgeschakeld).
 
 Selecteer **concept opslaan** voordat u doorgaat.
@@ -194,7 +194,7 @@ Zie [Aanbevolen procedures](../gtm-offer-listing-best-practices.md)voor aanbiedi
 
 Bied logo's en installatie kopieën die u kunt gebruiken met uw aanbieding. Alle installatie kopieën moeten de PNG-indeling hebben. Vage afbeeldingen worden geweigerd.
 
-[!INCLUDE [logostips](../includes/graphics-suggestions.md)]
+[!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 >[!Note]
 >Als u een probleem hebt met het uploaden van bestanden, moet u ervoor zorgen dat uw lokale netwerk de door https://upload.xboxlive.com Partner Center gebruikte service niet blokkeert.
@@ -242,7 +242,7 @@ Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in
 
 <br>Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in de zoek resultaten van Azure Marketplace:
 
-:::image type="content" source="media/example-iot-azure-marketplace-offer-search-results.png" alt-text="Illustreert hoe deze aanbieding wordt weer gegeven in de zoek resultaten voor Azure Marketplace.":::
+:::image type="content" source="media/example-iot-azure-marketplace-offer-search-results.png" alt-text="Illustreert hoe deze aanbieding wordt weer gegeven in azure Marketplace.":::
 
 #### <a name="call-out-descriptions"></a>Beschrijvingen van aanroepen
 
@@ -252,7 +252,7 @@ Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in
 
 <br>Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in de Azure Portal:
 
-:::image type="content" source="media/example-iot-azure-portal-offer.png" alt-text="Illustreert hoe deze aanbieding wordt weer gegeven in de Azure Portal.":::
+:::image type="content" source="media/example-iot-azure-portal-offer.png" alt-text="Illustreert hoe deze aanbieding wordt weer gegeven in azure Marketplace.":::
 
 #### <a name="call-out-descriptions"></a>Beschrijvingen van aanroepen
 
@@ -263,7 +263,7 @@ Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in
 
 <br>Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in de Azure Portal Zoek resultaten:
 
-:::image type="content" source="media/example-iot-azure-portal-offer-search-results.png" alt-text="Illustreert hoe deze aanbieding wordt weer gegeven in de Azure Portal Zoek resultaten.":::
+:::image type="content" source="media/example-iot-azure-portal-offer-search-results.png" alt-text="Illustreert hoe deze aanbieding wordt weer gegeven in azure Marketplace.":::
 
 #### <a name="call-out-descriptions"></a>Beschrijvingen van aanroepen
 
@@ -362,7 +362,7 @@ Selecteer **concept opslaan** nadat u deze velden hebt voltooid.
 
 Hier volgt een voor beeld van de details van het Azure Marketplace-plan (alle prijzen in de lijst zijn alleen bedoeld als voor beeld van de werkelijke kosten):
 
-:::image type="content" source="media/example-iot-azure-marketplace-plan.png" alt-text="Illustreert Details van het Azure Marketplace-abonnement.":::
+:::image type="content" source="media/example-iot-azure-marketplace-plan.png" alt-text="Illustreert hoe deze aanbieding wordt weer gegeven in azure Marketplace.":::
 
 #### <a name="call-out-descriptions"></a>Beschrijvingen van aanroepen
 
@@ -372,7 +372,7 @@ Hier volgt een voor beeld van de details van het Azure Marketplace-plan (alle pr
 
 <br>Hier volgt een voor beeld van de details van het Azure Portal plan (alle prijzen in de lijst zijn alleen bedoeld als voor beeld van de werkelijke kosten):
 
-:::image type="content" source="media/example-iot-azure-marketplace-plan-details.png" alt-text="Illustreert de details van het Azure Portal plan.":::
+:::image type="content" source="media/example-iot-azure-marketplace-plan-details.png" alt-text="Illustreert hoe deze aanbieding wordt weer gegeven in azure Marketplace.":::
 
 #### <a name="call-out-descriptions"></a>Beschrijvingen van aanroepen
 
@@ -393,7 +393,7 @@ Dit veld wordt meestal gebruikt wanneer:
 
 ## <a name="technical-configuration"></a>Technische configuratie
 
-Het **IOT Edge-module** aanbod type is een specifiek type container dat wordt uitgevoerd op een IOT edge apparaat. Op het tabblad **technische configuratie** geeft u referentie gegevens op voor de opslag plaats van de container installatie kopie in de [Azure container Registry](https://azure.microsoft.com/services/container-registry/), samen met de configuratie-instellingen waarmee klanten de module eenvoudig kunnen gebruiken.
+Het **IOT Edge-module** aanbod type is een specifiek type container dat wordt uitgevoerd op een IOT edge apparaat. Op het tabblad **technische configuratie** vindt u referentie gegevens voor de opslag plaats van de container installatie kopie in de [Azure container Registry](https://azure.microsoft.com/services/container-registry/), samen met de configuratie-instellingen waarmee klanten de module eenvoudig kunnen gebruiken.
 
 Nadat de aanbieding is gepubliceerd, wordt uw IoT Edge container installatie kopie gekopieerd naar Azure Marketplace in een specifiek openbaar container register. Alle aanvragen van Azure-gebruikers die gebruikmaken van uw module, worden aangeboden vanuit het open bare container register van Azure Marketplace, niet in uw persoonlijke container register.
 
@@ -413,7 +413,7 @@ U geeft de volgende informatie op het tabblad **Details van de afbeeldings opsla
 
 **Gebruikers naam van de beheerder voor de Azure container Registry**: Geef de [gebruikers naam](../../container-registry/container-registry-authentication.md#admin-account)van de beheerder op die is gekoppeld aan de Azure container Registry met de container installatie kopie. De gebruikers naam en het wacht woord zijn vereist om ervoor te zorgen dat uw bedrijf toegang heeft tot het REGI ster. Als u de gebruikers naam en het wacht woord van de beheerder wilt ophalen, stelt u de eigenschap met **beheerders** rechten in op **True** met behulp van de Azure-opdracht regel interface (CLI). U kunt desgewenst **beheerder** instellen om in te **scha kelen** in de Azure Portal.
 
-:::image type="content" source="media/example-iot-update-container-registry.png" alt-text="Illustreert het dialoog venster update container Registry.":::
+:::image type="content" source="media/example-iot-update-container-registry.png" alt-text="Illustreert hoe deze aanbieding wordt weer gegeven in azure Marketplace.":::
 
 #### <a name="call-out-description"></a>Beschrijving van aanroep
 
@@ -421,7 +421,7 @@ U geeft de volgende informatie op het tabblad **Details van de afbeeldings opsla
 
 <br>**Wacht woord voor de Azure container Registry**: Geef het wacht woord op voor de beheerder van de gebruikers naam die is gekoppeld aan de Azure container Registry en heeft de container installatie kopie. De gebruikers naam en het wacht woord zijn vereist om ervoor te zorgen dat uw bedrijf toegang heeft tot het REGI ster. U kunt het wacht woord ophalen van de Azure portal door naar **container Registry**  >  **toegangs sleutels** of met Azure CLI te gaan met behulp van de [weer geven opdracht.](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show)
 
-:::image type="content" source="media/example-iot-access-keys.png" alt-text="Illustreert het scherm toegangs sleutel in de Azure Portal.":::
+:::image type="content" source="media/example-iot-access-keys.png" alt-text="Illustreert hoe deze aanbieding wordt weer gegeven in azure Marketplace.":::
 
 #### <a name="call-out-descriptions"></a>Beschrijvingen van aanroepen
 
@@ -429,7 +429,7 @@ U geeft de volgende informatie op het tabblad **Details van de afbeeldings opsla
 2. Gebruikersnaam
 3. Wachtwoord
 
-**De naam van de opslag plaats in de Azure container Registry**. Geef de naam op van de Azure Container Registry opslag plaats met uw installatie kopie. U geeft de naam van de opslag plaats op wanneer u de installatie kopie naar het REGI ster pusht. U kunt de naam van de opslag plaats vinden door naar de [Container Registry](https://azure.microsoft.com/services/container-registry/)  >  **pagina container Registry opslagplaatsen**te gaan. Zie [container register opslagplaatsen weer geven in de Azure Portal](../../container-registry/container-registry-repositories.md)voor meer informatie. Houd er rekening mee dat de naam niet kan worden gewijzigd nadat deze is ingesteld. Gebruik een unieke naam voor elke aanbieding in uw account.
+**De naam van de opslag plaats in de Azure container Registry**. Geef de naam op van de Azure Container Registry opslag plaats met uw installatie kopie. U geeft de naam van de opslag plaats op wanneer u de installatie kopie naar het REGI ster pusht. U kunt de naam van de opslag plaats vinden door naar de [Container Registry](https://azure.microsoft.com/services/container-registry/)  >  **pagina container Registry opslagplaatsen**te gaan. Zie [container register opslagplaatsen weer geven in de Azure Portal](../../container-registry/container-registry-repositories.md)voor meer informatie. Nadat de naam is ingesteld, kan deze niet meer worden gewijzigd. Gebruik een unieke naam voor elke aanbieding in uw account.
 
 ### <a name="image-tags-for-new-versions-of-your-offer"></a>Afbeeldings Tags voor nieuwe versies van uw aanbieding
 

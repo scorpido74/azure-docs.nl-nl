@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: 67c924c350fa2bc69f724d44a1b43c7e878e493a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8a1b30803494facf6eaabcc3695770d694b4e221
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936668"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708676"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-mysql---flexible-server-preview"></a>Berekenings-en opslag opties in Azure Database for MySQL-flexibele server (preview-versie)
 
@@ -20,10 +20,10 @@ ms.locfileid: "90936668"
 
 U kunt een Azure Database for MySQL flexibele server maken in een van de drie verschillende reken lagen: Burstable, Algemeen en geoptimaliseerd voor geheugen. De reken lagen worden onderscheiden door de onderliggende VM-SKU gebruikte de B-serie, D-serie en E-Series. De gekozen reken laag en grootte bepalen het geheugen en de vCores die beschikbaar zijn op de server. Dezelfde opslag technologie wordt gebruikt in alle reken lagen. Alle resources worden ingericht op het niveau van de MySQL-server. Een server kan een of meer data bases bevatten.
 
-| Resource/laag | **Bebreekbaar** | **Algemeen** | **Geoptimaliseerd voor geheugen** |
+| Resource/laag | **Bebreekbaar** | **Algemeen doel** | **Geoptimaliseerd voor geheugen** |
 |:---|:----------|:--------------------|:---------------------|
 | VM-reeks| B-serie | Ddsv4-serie | Edsv4-serie|
-| vCores | 1, 2 | 2, 4, 8, 16, 32, 64 | 2, 4, 8, 16, 32, 48, 64 |
+| vCores | 1, 2 | 2, 4, 8, 16, 32, 48, 64 | 2, 4, 8, 16, 32, 48, 64 |
 | Geheugen per vCore | Variabele | 4 GiB | 8 GiB * |
 | Opslag grootte | 5 GiB tot 16 TiB | 5 GiB tot 16 TiB | 5 GiB tot 16 TiB |
 | Bewaar periode voor database back-ups | 1 tot 35 dagen | 1 tot 35 dagen | 1 tot 35 dagen |
@@ -52,7 +52,7 @@ De gedetailleerde specificaties van de beschik bare server typen zijn als volgt:
 | B1s                  | 1      | 1                 |  
 | B1ms                 | 1      | 2                 | 
 | B2s                  | 2      | 4                 |  
-| **Algemeen**  |        |                   | 
+| **Algemeen doel**  |        |                   | 
 | D2ds_v4              | 2      | 8                 |  
 | D4ds_v4              | 4      | 16                | 
 | D8ds_v4              | 8      | 32                | 
@@ -71,7 +71,7 @@ De gedetailleerde specificaties van de beschik bare server typen zijn als volgt:
 
 Voor meer informatie over de beschik bare reken reeks raadpleegt u de Azure VM-documentatie voor de [Burstable (B-serie)](../../virtual-machines/sizes-b-series-burstable.md), [Algemeen (Ddsv4-serie)](../../virtual-machines/ddv4-ddsv4-series.md)en [geoptimaliseerd voor geheugen (Edsv4-serie)](../../virtual-machines/edv4-edsv4-series.md).
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Opslag
 
 De opslag ruimte die u hebt ingericht, is de opslag capaciteit die beschikbaar is voor uw flexibele server. Opslag wordt gebruikt voor de database bestanden, tijdelijke bestanden, transactie logboeken en de MySQL-server Logboeken. In alle reken lagen is de minimale opslag die wordt ondersteund, 5 GiB en maximum 16 TiB. Opslag wordt geschaald in 1 GiB-stappen en kan worden geschaald nadat de server is gemaakt.
 
@@ -113,7 +113,7 @@ Zie hieronder voor meer informatie over de Max effectief IOPS per reken grootte 
 | B1s                  | 320                 |
 | B1ms                 | 640                 |
 | B2s                  | 1280                | 
-| **Algemeen**  |                     |
+| **Algemeen doel**  |                     |
 | D2ds_v4              | 3200                |
 | D4ds_v4              | 6400                |
 | D8ds_v4              | 12800               |

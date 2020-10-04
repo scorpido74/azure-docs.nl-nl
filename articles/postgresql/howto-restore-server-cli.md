@@ -1,19 +1,19 @@
 ---
 title: Back-up en herstel-Azure CLI-Azure Database for PostgreSQL-één server
 description: Meer informatie over het instellen van back-upconfiguraties en het herstellen van een server in Azure Database for PostgreSQL-één server met behulp van de Azure CLI.
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 10/25/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 49acce96012df0a45bc1833ae0397a3d989142ef
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: c7e8f0fc3a90a0811d38840004f7ae12a9a225ce
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500637"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708506"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>Een back-up maken en herstellen van een server in Azure Database for PostgreSQL-één server met behulp van de Azure CLI
 
@@ -72,7 +72,7 @@ Voor de `az postgres server restore` opdracht zijn de volgende para meters verei
 | Instelling | Voorgestelde waarde | Beschrijving  |
 | --- | --- | --- |
 | resource-group |  myResourceGroup |  De resource groep waar de bron server zich bevindt.  |
-| name | mydemoserver-restored | De naam van de nieuwe server die door de opdracht restore is gemaakt. |
+| naam | mydemoserver-restored | De naam van de nieuwe server die door de opdracht restore is gemaakt. |
 | restore-point-in-time | 2018-03-13T13:59:00Z | Selecteer een punt in de tijd waarnaar u wilt herstellen. Deze datum en tijd moet binnen de back-upretentieperiode van de bronserver vallen. Gebruik de ISO8601 datum-en tijd notatie. U kunt bijvoorbeeld uw eigen lokale tijd zone gebruiken, zoals `2018-03-13T05:59:00-08:00` . U kunt ook de notatie UTC-Zulu gebruiken, bijvoorbeeld `2018-03-13T13:59:00Z` . |
 | source-server | mydemoserver | De naam of ID van de bronserver voor het herstellen. |
 

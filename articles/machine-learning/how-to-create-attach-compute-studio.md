@@ -11,19 +11,22 @@ ms.subservice: core
 ms.date: 08/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
-ms.openlocfilehash: 5345fd81e41bbb354e11e1be23329c3130d4d0c2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c22593fbd1e1653efa98c760d5bbb73b03761059
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90898080"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708392"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-in-azure-machine-learning-studio"></a>Reken doelen voor model training en implementatie in Azure Machine Learning Studio maken
 
 In dit artikel leert u hoe u Compute-doelen kunt maken en beheren in azure machine Studio.  U kunt ook Compute-doelen maken en beheren met:
 
-* [Azure machine learning Learning-SDK](how-to-create-attach-compute-sdk.md), 
-* De [cli-extensie](reference-azure-machine-learning-cli.md#resource-management) voor Azure machine learning
+* Azure Machine Learning Learning SDK of CLI-extensie voor Azure Machine Learning
+  * [Rekenproces](how-to-create-manage-compute-instance.md)
+  * [Reken cluster](how-to-create-attach-compute-cluster.md)
+  * [Azure Kubernetes service-cluster](how-to-create-attach-kubernetes.md)
+  * [Andere reken bronnen](how-to-attach-compute-targets.md)
 * De [VS code-extensie](how-to-manage-resources-vscode.md#compute-clusters) voor Azure machine learning.
 
 
@@ -56,11 +59,11 @@ Volg de vorige stappen om de lijst met Compute-doelen weer te geven. Gebruik ver
 
 1. Als u geen Compute-doelen hebt, selecteert u in het midden van de pagina  **maken** .
   
-    :::image type="content" source="media/how-to-create-attach-studio/create-compute-target.png" alt-text="Reken doel maken":::
+    :::image type="content" source="media/how-to-create-attach-studio/create-compute-target.png" alt-text="Lijst met Compute-doelen weer geven":::
 
 1. Als u een lijst met reken resources ziet, selecteert u **+ Nieuw** boven de lijst.
 
-    :::image type="content" source="media/how-to-create-attach-studio/select-new.png" alt-text="Selecteer Nieuw":::
+    :::image type="content" source="media/how-to-create-attach-studio/select-new.png" alt-text="Lijst met Compute-doelen weer geven":::
 
 
 1. Vul het formulier in voor het reken type:
@@ -74,17 +77,17 @@ Volg de vorige stappen om de lijst met Compute-doelen weer te geven. Gebruik ver
 
 1. Bekijk de status van de maak bewerking door het doel van de berekening te selecteren in de lijst:
 
-    :::image type="content" source="media/how-to-create-attach-studio/view-list.png" alt-text="Reken status weer geven uit een lijst":::
+    :::image type="content" source="media/how-to-create-attach-studio/view-list.png" alt-text="Lijst met Compute-doelen weer geven":::
 
 
 ### <a name="compute-instance"></a>Rekenproces
 
 Gebruik de [bovenstaande stappen](#portal-create) om het reken exemplaar te maken.  Vul het formulier vervolgens als volgt in:
 
-:::image type="content" source="media/concept-compute-instance/create-compute-instance.png" alt-text="Een nieuw reken exemplaar maken":::
+:::image type="content" source="media/concept-compute-instance/create-compute-instance.png" alt-text="Lijst met Compute-doelen weer geven":::
 
 
-|Veld  |Description  |
+|Veld  |Beschrijving  |
 |---------|---------|
 |Naam berekening     |  <li>De naam is vereist en moet tussen de 3 en 24 tekens lang zijn.</li><li>Geldige tekens zijn onder andere hoofd letters, cijfers en het  **-** teken.</li><li>De naam moet beginnen met een letter</li><li>De naam moet uniek zijn voor alle bestaande berekeningen binnen een Azure-regio. U ziet een waarschuwing als de naam die u kiest, niet uniek is</li><li>Als het **-**  teken wordt gebruikt, moet dit worden gevolgd door ten minste één letter later in de naam</li>     |
 |Type virtuele machine |  Kies CPU of GPU. Dit type kan niet worden gewijzigd nadat het is gemaakt     |
@@ -97,7 +100,7 @@ Gebruik de [bovenstaande stappen](#portal-create) om het reken exemplaar te make
 Maak een berekenings cluster met één of meerdere knoop punten voor uw training, het afleiden van batch demijnen of de werk belasting van het onderwijs. Gebruik de [bovenstaande stappen](#portal-create) om het berekenings cluster te maken.  Vul het formulier vervolgens als volgt in:
 
 
-|Veld  |Description  |
+|Veld  |Beschrijving  |
 |---------|---------|
 |Naam berekening     |  <li>De naam is vereist en moet tussen de 3 en 24 tekens lang zijn.</li><li>Geldige tekens zijn onder andere hoofd letters, cijfers en het  **-** teken.</li><li>De naam moet beginnen met een letter</li><li>De naam moet uniek zijn voor alle bestaande berekeningen binnen een Azure-regio. U ziet een waarschuwing als de naam die u kiest, niet uniek is</li><li>Als het **-**  teken wordt gebruikt, moet dit worden gevolgd door ten minste één letter later in de naam</li>     |
 |Type virtuele machine |  Kies CPU of GPU. Dit type kan niet worden gewijzigd nadat het is gemaakt     |
@@ -107,7 +110,7 @@ Maak een berekenings cluster met één of meerdere knoop punten voor uw training
 |Maximum aantal knoop punten | Het maximum aantal knoop punten dat u wilt inrichten. De compute wordt automatisch geschaald naar een maximum van dit aantal knoop punten wanneer een taak wordt verzonden. |
 |Geavanceerde instellingen     |  Optioneel. Configureer een virtueel netwerk. Geef de **resource groep**, het **virtuele netwerk**en het **subnet** op om het reken exemplaar te maken binnen een Azure-Virtual Network (vnet). Zie deze [netwerk vereisten](how-to-enable-virtual-network.md#compute-instance) voor vnet voor meer informatie.   Ook [beheerde identiteiten](#managed-identity) koppelen om toegang tot resources te verlenen     |
 
-#### <a name="set-up-managed-identity"></a><a id="managed-identity"></a> Beheerde identiteit instellen
+#### <a name="set-up-managed-identity"></a><a name="managed-identity"></a> Beheerde identiteit instellen
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-managed-identity-intro.md)]
 
@@ -125,7 +128,7 @@ Tijdens het maken van het cluster of bij het bewerken van de details van het rek
 Maak of koppel een Azure Kubernetes service-cluster (AKS) voor grootschalige deinterferentie. Gebruik de [bovenstaande stappen](#portal-create) om het AKS-cluster te maken.  Vul het formulier vervolgens als volgt in:
 
 
-|Veld  |Description  |
+|Veld  |Beschrijving  |
 |---------|---------|
 |Naam berekening     |  <li>De naam is vereist. De naam moet tussen 2 en 16 tekens lang zijn. </li><li>Geldige tekens zijn onder andere hoofd letters, cijfers en het  **-** teken.</li><li>De naam moet beginnen met een letter</li><li>De naam moet uniek zijn voor alle bestaande berekeningen binnen een Azure-regio. U ziet een waarschuwing als de naam die u kiest, niet uniek is</li><li>Als het **-**  teken wordt gebruikt, moet dit worden gevolgd door ten minste één letter later in de naam</li>     |
 |Kubernetes-service | Selecteer **nieuwe maken** en vul de rest van het formulier in.  Of selecteer **bestaande gebruiken** en selecteer vervolgens een bestaand AKS-cluster in uw abonnement.

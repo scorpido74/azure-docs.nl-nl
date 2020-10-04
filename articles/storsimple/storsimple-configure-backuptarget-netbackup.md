@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2017
 ms.author: matd
-ms.openlocfilehash: b186fadcc99c6cc538b61eaa94d5d84d649c233f
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 23afa82ffda5341242c01cbe024fb71f482345d5
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88184003"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710920"
 ---
 # <a name="storsimple-as-a-backup-target-with-netbackup"></a>StorSimple als back-updoel met NetBackup
 
@@ -92,10 +92,10 @@ In de volgende tabellen ziet u de richt lijnen voor het model naar architectuur 
 
 | Opslagcapaciteit       | 8100          | 8600            |
 |------------------------|---------------|-----------------|
-| Lokale opslagcapaciteit | &lt;10 TiB\*  | &lt;20 TiB\*  |
-| Capaciteit van de Cloud opslag | &gt;200 TiB\* | &gt;500 TiB\* |
+| Lokale opslagcapaciteit | &lt; 10 TiB\*  | &lt; 20 TiB\*  |
+| Capaciteit van de Cloud opslag | &gt; 200 TiB\* | &gt; 500 TiB\* |
 
-\*Bij de opslag grootte wordt ervan uitgegaan dat er geen ontdubbeling of compressie wordt toegepast.
+\* Bij de opslag grootte wordt ervan uitgegaan dat er geen ontdubbeling of compressie wordt toegepast.
 
 **StorSimple-capaciteit voor primaire en secundaire back-ups**
 
@@ -132,7 +132,7 @@ In de volgende afbeelding ziet u een architectuur waarin de eerste back-ups word
 
 Het is belang rijk om uw volume met hoge prestaties te verg Roten, zodat het de capaciteit en prestaties van uw Bewaar beleid kan afhandelen.
 
-![StorSimple als een logisch diagram van een secundair back-updoel](./media/storsimple-configure-backup-target-using-netbackup/secondarybackuptargetlogicaldiagram.png)
+![Diagram waarin een architectuur wordt weer gegeven waarin eerste back-ups worden gemaakt en een volume met hoge prestaties wordt hersteld.](./media/storsimple-configure-backup-target-using-netbackup/secondarybackuptargetlogicaldiagram.png)
 
 ### <a name="secondary-target-backup-logical-steps"></a>Logische back-upprocedure voor secundaire doel
 
@@ -259,7 +259,7 @@ Maak op basis van de voor gaande hypo theses een gelaagd volume van 26 TiB StorS
 | GFS-vereiste |   | 38 |   |
 | Extra quotum  | 4  |   | 42 totale GFS-vereiste  |
 
-\*De GFS vermenigvuldiger is het aantal kopieën dat u moet beveiligen en bewaren om te voldoen aan de vereisten voor het back-upbeleid.
+\* De GFS vermenigvuldiger is het aantal kopieën dat u moet beveiligen en bewaren om te voldoen aan de vereisten voor het back-upbeleid.
 
 ## <a name="set-up-netbackup-storage"></a>Opslag voor netback-ups instellen
 
@@ -403,7 +403,7 @@ In de volgende tabel ziet u hoe u back-ups kunt instellen om uit te voeren op de
 | Jaarlijks volledig |StorSimple-schijf (lange termijn) | 1 | 1 | 1 |
 |Vereiste voor grootte van GFS-volumes |  |  |  | 18,0|
 
-\*De totale capaciteit omvat 17 TiB van StorSimple schijven en 1 TiB van het lokale RAID-volume.
+\* De totale capaciteit omvat 17 TiB van StorSimple schijven en 1 TiB van het lokale RAID-volume.
 
 
 ### <a name="gfs-example-schedule-gfs-rotation-weekly-monthly-and-yearly-schedule"></a>Voorbeeld schema voor GFS: GFS draai hoek per week, maandelijks en jaarlijks schema
@@ -478,7 +478,7 @@ Nadat u de eerste schijf groepen hebt gedefinieerd, moet u drie extra opslag lev
 | GFS-vereiste  |     |     | 38 |
 | Extra quotum  | 4  |    | 42 totale GFS-vereiste |
 
-\*De GFS vermenigvuldiger is het aantal kopieën dat u moet beveiligen en bewaren om te voldoen aan de vereisten voor het back-upbeleid.
+\* De GFS vermenigvuldiger is het aantal kopieën dat u moet beveiligen en bewaren om te voldoen aan de vereisten voor het back-upbeleid.
 
 ## <a name="storsimple-cloud-snapshots"></a>StorSimple-Cloud momentopnamen
 
@@ -529,13 +529,13 @@ Herstellen vanaf een StorSimple-apparaat werkt zoals herstellen vanuit elk appar
 
 Een nood geval kan worden veroorzaakt door diverse factoren. De volgende tabel geeft een lijst van veelvoorkomende scenario's voor herstel na nood gevallen.
 
-| Scenario | Impact | Herstellen | Opmerkingen |
+| Scenario | Impact | Herstellen | Notities |
 |---|---|---|---|
 | StorSimple-apparaat is mislukt | Back-up-en herstel bewerkingen worden onderbroken. | Vervang het apparaat dat is mislukt en voer een [StorSimple-failover en nood herstel](storsimple-device-failover-disaster-recovery.md)uit. | Als u na het herstel van het apparaat een herstel bewerking moet uitvoeren, worden volledige gegevens verzamelingen opgehaald uit de Cloud naar het nieuwe apparaat. Alle bewerkingen bevinden zich in de Cloud snelheid. Het proces voor het opnieuw scannen van indexen en catalogussen kan ertoe leiden dat alle back-upsets worden gescand en opgehaald van de Cloud laag naar de laag van het lokale apparaat. Dit kan een tijdrovend proces zijn. |
 | NetBackup-server fout | Back-up-en herstel bewerkingen worden onderbroken. | Maak de back-upserver opnieuw en herstel de data base. | U moet de NetBackup-server opnieuw bouwen of herstellen op de site voor nood herstel. Zet de data base terug naar het meest recente punt. Als de herstelde NetBackup-data base niet is gesynchroniseerd met uw meest recente back-uptaken, is indexeren en catalogiseren vereist. Dit proces voor het opnieuw scannen van index en catalogus kan ertoe leiden dat alle back-upsets worden gescand en van de Cloud laag worden opgehaald naar de laag van het lokale apparaat. Hierdoor is het veel tijdrovender. |
 | Site fout die leidt tot verlies van zowel de back-upserver als de StorSimple | Back-up-en herstel bewerkingen worden onderbroken. | Herstel StorSimple eerst en herstel vervolgens NetBackup. | Herstel StorSimple eerst en herstel vervolgens NetBackup. Als u na het herstel van het apparaat een herstel bewerking moet uitvoeren, worden de volledige gegevens sets van de Cloud naar het nieuwe apparaat opgehaald. Alle bewerkingen bevinden zich in de Cloud snelheid. |
 
-## <a name="references"></a>Naslaginformatie
+## <a name="references"></a>Verwijzingen
 
 In dit artikel wordt verwezen naar de volgende documenten:
 

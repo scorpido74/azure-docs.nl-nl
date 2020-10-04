@@ -8,19 +8,19 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/16/2020
 ms.author: aahi
-ms.openlocfilehash: c50beef5c9c5dcae7edd487e8bf3d192ba557865
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 74586222bbd92b2d6182b34b4667cda0bc599b93
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662824"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91709306"
 ---
 > [!NOTE]
 > Gebruik de `domain=phi` para meter en model versie of hoger om de beschermde status informatie te detecteren (Phi) `2020-04-01` .
 >
-> Bijvoorbeeld: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.1/entities/recognition/pii?domain=phi&model-version=2020-04-01`
+> Bijvoorbeeld: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/entities/recognition/pii?domain=phi&model-version=2020-07-01`
  
-De volgende entiteits categorieën worden geretourneerd wanneer u aanvragen naar het `/v3.1-preview.1/entities/recognition/pii` eind punt verzendt.
+De volgende entiteits categorieën worden geretourneerd wanneer u aanvragen naar het `/v3.1-preview.2/entities/recognition/pii` eind punt verzendt.
 
 | Categorie   | Subcategorie | Beschrijving                          | Model versie starten | Notities |
 |------------|-------------|--------------------------------------|------------------------|---|
@@ -36,7 +36,7 @@ De volgende entiteits categorieën worden geretourneerd wanneer u aanvragen naar
 | E-mail | N.v.t. | E-mail adressen. | `2019-10-01` | Ook geretourneerd met `domain=phi` .   |
 | URL | N.v.t. | Url's naar websites. | `2019-10-01` | Ook geretourneerd met `domain=phi` . |
 | IP | N.v.t. | IP-adressen van het netwerk. | `2019-10-01` | Ook geretourneerd met `domain=phi` . |
-| Datum/Tijd | N.v.t. | Datums en tijden van de dag. | `2019-10-01` |  | 
+| DateTime | N.v.t. | Datums en tijden van de dag. | `2019-10-01` |  | 
 | Datum/Tijd | Datum | Kalender datums. | `2019-10-01` | Ook geretourneerd met `domain=phi` . |
 | Hoeveelheid | N.v.t. | Cijfers en numerieke aantallen. | `2019-10-01` |  |
 | Hoeveelheid | Leeftijd | Leeftijd. | `2019-10-01` | | |

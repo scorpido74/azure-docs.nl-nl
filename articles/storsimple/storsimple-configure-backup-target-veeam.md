@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2016
 ms.author: matd
-ms.openlocfilehash: 71a5434d985aad4033e4392dd31e6b7d112692de
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 052859e99ffd0082994d313508ebb6f0496d980b
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88183975"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710342"
 ---
 # <a name="storsimple-as-a-backup-target-with-veeam"></a>StorSimple als een back-updoel met Veeam
 
@@ -94,10 +94,10 @@ In de volgende tabellen ziet u de richt lijnen voor het model naar architectuur 
 
 | Opslagcapaciteit | 8100 | 8600 |
 |---|---|---|
-| Lokale opslagcapaciteit | &lt;10 TiB\*  | &lt;20 TiB\*  |
-| Capaciteit van de Cloud opslag | &gt;200 TiB\* | &gt;500 TiB\* |
+| Lokale opslagcapaciteit | &lt; 10 TiB\*  | &lt; 20 TiB\*  |
+| Capaciteit van de Cloud opslag | &gt; 200 TiB\* | &gt; 500 TiB\* |
 
-\*Bij de opslag grootte wordt ervan uitgegaan dat er geen ontdubbeling of compressie wordt toegepast.
+\* Bij de opslag grootte wordt ervan uitgegaan dat er geen ontdubbeling of compressie wordt toegepast.
 
 **StorSimple-capaciteit voor primaire en secundaire back-ups**
 
@@ -266,7 +266,7 @@ Maak op basis van de voor gaande hypo theses een gelaagd volume van 26 TiB StorS
 | GFS-vereiste |   | 38 |   |
 | Extra quotum  | 4  |   | 42 totale GFS-vereiste  |
 
-\*De GFS vermenigvuldiger is het aantal kopieën dat u moet beveiligen en bewaren om te voldoen aan de vereisten voor het back-upbeleid.
+\* De GFS vermenigvuldiger is het aantal kopieën dat u moet beveiligen en bewaren om te voldoen aan de vereisten voor het back-upbeleid.
 
 ## <a name="set-up-veeam-storage"></a>Veeam-opslag instellen
 
@@ -274,7 +274,7 @@ Maak op basis van de voor gaande hypo theses een gelaagd volume van 26 TiB StorS
 
 1.  Ga in de Veeam-back-up en de replicatie console naar **back-upinfrastructuur**in de **bibliotheek hulpprogram ma's**. Klik met de rechter muisknop op **back-Upopslagplaatsen**en selecteer vervolgens **back-upopslagplaats toevoegen**.
 
-    ![Veeam-beheer console, pagina Back-upopslagplaats](./media/storsimple-configure-backup-target-using-veeam/veeamimage1.png)
+    ![Scherm opname van de Veeam-beheer console en markeert de optie back-upopslagplaats toevoegen.](./media/storsimple-configure-backup-target-using-veeam/veeamimage1.png)
 
 2.  Voer in het dialoog venster **nieuwe back-upopslagplaats** een naam en een beschrijving in voor de opslag plaats. Selecteer **Next**.
 
@@ -295,7 +295,7 @@ Maak op basis van de voor gaande hypo theses een gelaagd volume van 26 TiB StorS
 
 6.  Schakel in het dialoog venster **nieuwe back-upopslagplaats** het selectie vakje **vPower NFS-service inschakelen op het koppel server (aanbevolen)** in. Selecteer **Next**.
 
-    ![Veeam-beheer console, pagina Back-upopslagplaats](./media/storsimple-configure-backup-target-using-veeam/veeamimage6.png)
+    ![Scherm opname van de Veeam-beheer console waar u een nieuwe back-upopslagplaats kunt toevoegen.](./media/storsimple-configure-backup-target-using-veeam/veeamimage6.png)
 
 7.  Controleer de instellingen en selecteer vervolgens **volgende**.
 
@@ -335,11 +335,11 @@ Maak voor primair scenario voor back-updoel een dagelijkse taak met uw primaire 
 
 2.  Voer in het dialoog venster **nieuwe back-uptaak** een naam en een beschrijving in voor de dagelijkse back-uptaak.
 
-    ![Veeam-beheer console, pagina nieuwe back-uptaak](./media/storsimple-configure-backup-target-using-veeam/veeamimage9.png)
+    ![Scherm opname van de Veeam-beheer console waar u de naam en beschrijving toevoegt.](./media/storsimple-configure-backup-target-using-veeam/veeamimage9.png)
 
 3.  Selecteer een virtuele machine waarvan u een back-up wilt maken.
 
-    ![Veeam-beheer console, pagina nieuwe back-uptaak](./media/storsimple-configure-backup-target-using-veeam/veeamimage10.png)
+    ![Scherm opname van de Veeam-beheer console waar u de virtuele machine selecteert.](./media/storsimple-configure-backup-target-using-veeam/veeamimage10.png)
 
 4.  Selecteer de gewenste waarden voor **back-upproxy** en **back-upopslagplaats**. Selecteer een waarde voor **herstel punten die op schijf** moet worden bewaard volgens de RPO-en RTO definities voor uw omgeving op lokaal gekoppelde opslag. Selecteer **Geavanceerd**.
 
@@ -347,7 +347,7 @@ Maak voor primair scenario voor back-updoel een dagelijkse taak met uw primaire 
 
 5. Selecteer in het dialoog venster **Geavanceerde instellingen** op het tabblad **back-up** de optie **Incrementeel**. Zorg ervoor dat het selectie vakje **synthetische volledige back-ups maken regel matig** wordt uitgeschakeld. Schakel het selectie vakje **periodiek actieve volledige back-ups maken** in. Schakel onder **actieve volledige back-up**het selectie vakje **wekelijks op geselecteerde dagen** in voor zaterdag.
 
-    ![Veeam-beheer console, nieuwe pagina Geavanceerde instellingen voor back-uptaak](./media/storsimple-configure-backup-target-using-veeam/veeamimage12.png)
+    ![Scherm opname van de Veeam-beheer console, met name de nieuwe pagina Geavanceerde instellingen voor de back-uptaak](./media/storsimple-configure-backup-target-using-veeam/veeamimage12.png)
 
 6. Controleer op het tabblad **opslag** of het selectie vakje **inline gegevensontdubbeling inschakelen** is uitgeschakeld. Schakel het selectie vakje **wissel bestand blokken uitsluiten** in en schakel het selectie vakje **Verwijder verwijderde bestands blokken** in. Stel **compressie niveau** in op **geen**. Voor evenwichtige prestaties en ontdubbeling stelt u de **opslag optimalisatie** in op het **LAN-doel**. Selecteer **OK**.
 
@@ -386,7 +386,7 @@ In de volgende tabel ziet u hoe u back-ups kunt instellen om uit te voeren op de
 | Jaarlijks volledig |StorSimple-schijf (lange termijn) | 1 | 1 | 1 |
 |Vereiste voor grootte van GFS-volumes |  |  |  | 18,0|
 
-\*De totale capaciteit omvat 17 TiB van StorSimple schijven en 1 TiB van het lokale RAID-volume.
+\* De totale capaciteit omvat 17 TiB van StorSimple schijven en 1 TiB van het lokale RAID-volume.
 
 
 ### <a name="gfs-example-schedule"></a>Voorbeeld schema voor GFS
@@ -408,11 +408,11 @@ GFS draaiing wekelijks, maandelijks en jaarlijks plannen
 
 1.  Selecteer **back-up & replicatie**in de Veeam-back-up en replicatie console. Klik met de rechter muisknop op **back-up**en selecteer vervolgens **VMware** of **Hyper-V**, afhankelijk van uw omgeving.
 
-    ![Veeam-beheer console, nieuwe pagina back-upkopie taak](./media/storsimple-configure-backup-target-using-veeam/veeamimage16.png)
+    ![Scherm opname van de Veeam-beheer console met de VMware-en Hyper-V-opties die u kunt selecteren.](./media/storsimple-configure-backup-target-using-veeam/veeamimage16.png)
 
 2.  Voer in het dialoog venster **nieuwe back-upkopie taak** een naam en een beschrijving in voor de taak.
 
-    ![Veeam-beheer console, nieuwe pagina back-upkopie taak](./media/storsimple-configure-backup-target-using-veeam/veeamimage17.png)
+    ![Scherm opname van de Veeam-beheer console waarin u de naam en beschrijving voor de taak opgeeft.](./media/storsimple-configure-backup-target-using-veeam/veeamimage17.png)
 
 3.  Selecteer de Vm's die u wilt verwerken. Selecteer een back-up en selecteer vervolgens de dagelijkse back-up die u eerder hebt gemaakt.
 
@@ -422,13 +422,13 @@ GFS draaiing wekelijks, maandelijks en jaarlijks plannen
 
 5.  Selecteer uw back-upopslagplaats en stel een waarde **in voor de herstel punten die u wilt laten staan**. Zorg ervoor dat u het selectie vakje **de volgende herstel punten voor archiverings doeleinden gebruiken** inschakelt. Definieer de back-upfrequentie en selecteer vervolgens **Geavanceerd**.
 
-    ![Veeam-beheer console, nieuwe pagina back-upkopie taak](./media/storsimple-configure-backup-target-using-veeam/veeamimage19.png)
+    ![Scherm afbeelding die laat zien waar u de back-upfrequentie definieert.](./media/storsimple-configure-backup-target-using-veeam/veeamimage19.png)
 
 6.  Geef de volgende geavanceerde instellingen op:
 
     * Schakel op het tabblad **onderhoud** de beveiliging tegen beschadiging van opslag niveau uit.
 
-    ![Veeam-beheer console, nieuwe pagina Geavanceerde instellingen voor back-upkopie taak](./media/storsimple-configure-backup-target-using-veeam/veeamimage20.png)
+    ![Scherm opname van het tabblad Onderhoud in de Veeam-beheer console.](./media/storsimple-configure-backup-target-using-veeam/veeamimage20.png)
 
     * Zorg ervoor dat ontdubbeling en compressie is uitgeschakeld op het tabblad **opslag** .
 
@@ -500,14 +500,14 @@ Met Veeam krijgt u snel en gedetailleerd herstel op bestands niveau via StorSimp
 
 Een nood geval kan worden veroorzaakt door diverse factoren. De volgende tabel geeft een lijst van veelvoorkomende scenario's voor herstel na nood gevallen.
 
-| Scenario | Impact | Herstellen | Opmerkingen |
+| Scenario | Impact | Herstellen | Notities |
 |---|---|---|---|
 | StorSimple-apparaat is mislukt | Back-up-en herstel bewerkingen worden onderbroken. | Vervang het apparaat dat is mislukt en voer een [StorSimple-failover en nood herstel](storsimple-device-failover-disaster-recovery.md)uit. | Als u na het herstel van het apparaat een herstel bewerking moet uitvoeren, worden volledige gegevens verzamelingen opgehaald uit de Cloud naar het nieuwe apparaat. Alle bewerkingen bevinden zich in de Cloud snelheid. Het proces voor het opnieuw scannen van indexen en catalogussen kan ertoe leiden dat alle back-upsets worden gescand en opgehaald van de Cloud laag naar de laag van het lokale apparaat. Dit kan een tijdrovend proces zijn. |
 | Veeam-server fout | Back-up-en herstel bewerkingen worden onderbroken. | Bouw de back-upserver opnieuw op en voer data base terugzetten uit zoals beschreven in [Veeam Help Center (technische documentatie)](https://www.veeam.com/documentation-guides-datasheets.html).  | U moet de Veeam-server opnieuw samen stellen of herstellen op de site voor nood herstel. Zet de data base terug naar het meest recente punt. Als de herstelde Veeam-data base niet is gesynchroniseerd met uw meest recente back-uptaken, is indexeren en catalogiseren vereist. Dit proces voor het opnieuw scannen van index en catalogus kan ertoe leiden dat alle back-upsets worden gescand en van de Cloud laag worden opgehaald naar de laag van het lokale apparaat. Hierdoor is het veel tijdrovender. |
 | Site fout die leidt tot verlies van zowel de back-upserver als de StorSimple | Back-up-en herstel bewerkingen worden onderbroken. | Herstel StorSimple eerst en herstel vervolgens Veeam. | Herstel StorSimple eerst en herstel vervolgens Veeam. Als u na het herstel van het apparaat een herstel bewerking moet uitvoeren, worden de volledige gegevens sets van de Cloud naar het nieuwe apparaat opgehaald. Alle bewerkingen bevinden zich in de Cloud snelheid. |
 
 
-## <a name="references"></a>Naslaginformatie
+## <a name="references"></a>Verwijzingen
 
 In dit artikel wordt verwezen naar de volgende documenten:
 

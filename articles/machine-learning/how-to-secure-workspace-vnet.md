@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 07/07/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: e593cfa06b160539a0d830b9149c9aa9a069a984
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: be476af3696e0753c8e36cfc34a024f8b585c605
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91542067"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708313"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>Een Azure Machine Learning-werk ruimte beveiligen met virtuele netwerken
 
@@ -137,7 +137,7 @@ De syntaxis voor het overs laan van de validatie van de gegevensset is vergelijk
 - JSON 
 - Parquet
 - SQL
-- Bestand
+- File
 
 Met de volgende code wordt een nieuwe JSON-gegevensset en-sets gemaakt `validate=False` .
 
@@ -176,7 +176,7 @@ Als u Azure Container Registry binnen een virtueel netwerk wilt gebruiken, moet 
 
 * Uw Azure Container Registry moeten zich in hetzelfde virtuele netwerk en subnet bevinden als het opslag account en reken doelen die worden gebruikt voor training of deinterferentie.
 
-* Uw Azure Machine Learning-werk ruimte moet een [Azure machine learning Compute-Cluster](how-to-create-attach-compute-sdk.md#amlcompute)bevatten.
+* Uw Azure Machine Learning-werk ruimte moet een [Azure machine learning Compute-Cluster](how-to-create-attach-compute-cluster.md)bevatten.
 
     Wanneer ACR zich achter een virtueel netwerk bevindt, kan Azure Machine Learning het niet gebruiken om docker-installatie kopieën rechtstreeks te bouwen. In plaats daarvan wordt het berekenings cluster gebruikt voor het bouwen van de installatie kopieën.
 
@@ -192,7 +192,7 @@ Als aan deze vereisten wordt voldaan, gebruikt u de volgende stappen om Azure Co
 
     :::image type="content" source="./media/how-to-enable-virtual-network/azure-machine-learning-container-registry.png" alt-text="Azure Container Registry voor de werk ruimte" border="true":::
 
-    __Azure CLI__
+    __Azure-CLI__
 
     Als u [de machine learning extensie voor Azure cli hebt geïnstalleerd](reference-azure-machine-learning-cli.md), kunt u de `az ml workspace show` opdracht gebruiken om de werkruimte gegevens weer te geven.
 

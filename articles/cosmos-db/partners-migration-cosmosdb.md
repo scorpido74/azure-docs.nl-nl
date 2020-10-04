@@ -6,18 +6,18 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: 4507b3f3338dccbf51f7342081997549e62f13fe
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: bd0ec4cf085fb19c89c6be48d4f4534383560fd5
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290076"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707775"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB NoSQL-migratie en partners voor toepassings ontwikkeling
 
-Van NoSQL-migratie naar toepassings ontwikkeling, kunt u kiezen uit een groot aantal partners en hulpprogram ma's van ervaren systeem integrator ter ondersteuning van uw Azure Cosmos DB-oplossingen. 
+Van NoSQL-migratie naar toepassings ontwikkeling, kunt u kiezen uit een groot aantal partners en hulpprogram ma's van ervaren systeem integrator ter ondersteuning van uw Azure Cosmos DB-oplossingen. In dit artikel vindt u een lijst met partners met oplossingen of services die gebruikmaken van Azure Cosmos DB. Deze lijst wordt na verloop van tijd gewijzigd, micro soft is niet verantwoordelijk voor wijzigingen of updates die zijn aangebracht in de oplossingen van deze partners.
 
-## <a name="systems-integrator-partners"></a>Partners van systeem integrator
+## <a name="systems-integrator-and-tooling-partners"></a>Systeem integrator en hulpprogram ma's
 
 |**Partner**  |**Mogelijkheden & ervaring**  |**Ondersteunde landen/regio's**  |
 |---------|---------|---------|

@@ -1,17 +1,17 @@
 ---
 title: Backup en Restore-Azure Database for PostgreSQL-één server
 description: Meer informatie over automatische back-ups en het herstellen van uw Azure Database for PostgreSQL server-één server.
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: d3630b631944befaf8a8c3d32e90e775dd6d63fc
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 0c1b0b5ac0c5c71dc5c98cb91d86f879a82809bc
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292864"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708451"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>Back-ups maken en herstellen in Azure Database for PostgreSQL-één server
 
@@ -19,7 +19,7 @@ Azure Database for PostgreSQL maakt automatisch server back-ups en slaat ze op i
 
 ## <a name="backups"></a>Back-ups
 
-Azure Database for PostgreSQL maakt back-ups van de gegevens bestanden en het transactie logboek. Afhankelijk van de ondersteunde maximale opslag grootte, nemen we volledige en differentiële back-ups (Maxi maal 4 TB opslag servers) of momentopname back-ups (Maxi maal 16 TB aan opslag servers). Met deze back-ups kunt u een server herstellen naar elk gewenst moment binnen de geconfigureerde back-upperiode. De standaard retentie periode voor back-ups is zeven dagen. U kunt deze optioneel configureren tot 35 dagen. Alle back-ups worden versleuteld met AES 256-bits versleuteling.
+Azure Database for PostgreSQL maakt back-ups van de gegevens bestanden en het transactie logboek. Afhankelijk van de ondersteunde maximale opslag grootte, nemen we volledige en differentiële back-ups (Maxi maal 4 TB opslag servers) of momentopname back-ups (Maxi maal 16 TB aan opslag servers). Met deze back-ups kunt u een server herstellen naar elk gewenst moment binnen de geconfigureerde back-upperiode. De standaardretentieperiode voor back-ups is zeven dagen. U kunt deze optioneel configureren tot 35 dagen. Alle back-ups worden versleuteld met AES 256-bits versleuteling.
 
 Deze back-upbestanden kunnen niet worden geëxporteerd. De back-ups kunnen alleen worden gebruikt voor herstel bewerkingen in Azure Database for PostgreSQL. U kunt [pg_dump](howto-migrate-using-dump-and-restore.md) gebruiken om een Data Base te kopiëren.
 
@@ -27,14 +27,14 @@ Deze back-upbestanden kunnen niet worden geëxporteerd. De back-ups kunnen allee
 
 #### <a name="servers-with-up-to-4-tb-storage"></a>Servers met Maxi maal 4 TB opslag
 
-Voor servers die Maxi maal 4 TB aan maximale opslag ondersteunen, worden er één keer per week volledige back-ups uitgevoerd. Differentiële back-ups worden twee keer per dag uitgevoerd. Back-ups van transactie logboeken worden om de vijf minuten uitgevoerd.
+Voor servers die Maxi maal 4 TB aan maximale opslag ondersteunen, worden er één keer per week volledige back-ups uitgevoerd. Differentiële back-ups worden twee keer per dag uitgevoerd. Back-ups van transactielogboeken worden elke vijf minuten uitgevoerd.
 
 
 #### <a name="servers-with-up-to-16-tb-storage"></a>Servers met Maxi maal 16 TB opslag
 
-In een subset van [Azure-regio's](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers#storage)kan alle nieuw ingerichte servers Maxi maal 16 TB opslag ondersteunen. Back-ups op deze grote opslag servers zijn gebaseerd op moment opnamen. De eerste volledige back-up van de moment opname wordt onmiddellijk gepland nadat een server is gemaakt. De eerste volledige back-up van de moment opname wordt bewaard als basis back-up van de server. Volgende back-ups voor moment opnamen zijn alleen differentiële back-ups. Back-ups van differentiële moment opnamen worden niet uitgevoerd volgens een vast schema. Op een dag worden er drie back-ups van differentiële moment opnamen uitgevoerd. Back-ups van transactie logboeken worden om de vijf minuten uitgevoerd. 
+In een subset van [Azure-regio's](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers#storage)kan alle nieuw ingerichte servers Maxi maal 16 TB opslag ondersteunen. Back-ups op deze grote opslag servers zijn gebaseerd op moment opnamen. De eerste volledige momentopnameback-up wordt gepland direct nadat een server is gemaakt. De eerste volledige back-up van de moment opname wordt bewaard als basis back-up van de server. Volgende momentopnameback-ups zijn alleen differentiële back-ups. Differentiële momentopnameback-ups worden niet uitgevoerd volgens een vast schema. Op een dag worden er drie back-ups van differentiële moment opnamen uitgevoerd. Back-ups van transactielogboeken worden elke vijf minuten uitgevoerd. 
 
-### <a name="backup-retention"></a>Retentie van back-ups
+### <a name="backup-retention"></a>Back-upretentie
 
 Back-ups worden bewaard op basis van de instelling voor de Bewaar periode voor back-ups op de server. U kunt een Bewaar periode van 7 tot 35 dagen selecteren. De standaard Bewaar periode is 7 dagen. U kunt de Bewaar periode instellen tijdens het maken van de server of later door de back-upconfiguratie bij te werken met [Azure Portal](https://docs.microsoft.com/azure/postgresql/howto-restore-server-portal#set-backup-configuration) of [Azure cli](https://docs.microsoft.com/azure/postgresql/howto-restore-server-cli#set-backup-configuration). 
 
@@ -53,7 +53,7 @@ Azure Database for PostgreSQL biedt de flexibiliteit om te kiezen tussen lokaal 
 
 Azure Database for PostgreSQL biedt Maxi maal 100% van uw ingerichte Server opslag als back-upopslag zonder extra kosten. Alle extra back-upopslag wordt in GB per maand in rekening gebracht. Als u bijvoorbeeld een server hebt ingericht met 250 GB opslag, hebt u 250 GB aan extra opslag ruimte beschikbaar voor Server back-ups zonder extra kosten. Opslag die voor back-250 ups wordt gebruikt, wordt in rekening gebracht volgens het [prijs model](https://azure.microsoft.com/pricing/details/postgresql/).
 
-U kunt de gebruikte waarde voor [back-upopslag](concepts-monitoring.md) gebruiken in azure monitor beschikbaar in de Azure Portal om de back-upopslag te bewaken die door een server wordt gebruikt. De metrische back-upopslagwaarde vertegenwoordigt de som van de opslag die wordt gebruikt door alle back-ups van de volledige data base, differentiële back-ups en logboek back-ups die worden bewaard op basis van de Bewaar periode voor back-ups die is ingesteld voor de server. De frequentie van de back-ups is service beheerd en wordt eerder uitgelegd. Zware transactionele activiteit op de server kan ertoe leiden dat het gebruik van back-ups wordt verg root onafhankelijk van de totale database grootte. Voor geo-redundante opslag is het gebruik van back-upopslag twee keer zo dat van de lokaal redundante opslag. 
+U kunt de gebruikte waarde voor [back-upopslag](concepts-monitoring.md) gebruiken in azure monitor beschikbaar in de Azure Portal om de back-upopslag te bewaken die door een server wordt gebruikt. De metrische back-upopslagwaarde vertegenwoordigt de som van de opslag die wordt gebruikt door alle back-ups van de volledige data base, differentiële back-ups en logboek back-ups die worden bewaard op basis van de Bewaar periode voor back-ups die is ingesteld voor de server. De frequentie van de back-ups is service beheerd en wordt eerder uitgelegd. Intensieve transactionele activiteit op de server kan ertoe leiden dat het gebruik van back-upopslag toeneemt, onafhankelijk van de totale databasegrootte. Voor geo-redundante opslag is het gebruik van back-upopslag twee keer zo dat van de lokaal redundante opslag. 
 
 De belangrijkste manier om de opslag kosten voor back-ups te beheren, is door de juiste Bewaar periode voor back-ups in te stellen en de opties voor de juiste back-upredundantie te kiezen om te voldoen aan de gewenste herstel doelen. U kunt een Bewaar periode van 7 tot 35 dagen selecteren. Algemeen-servers en geoptimaliseerd voor geheugen kunnen ervoor kiezen om geografisch redundante opslag te hebben voor back-ups.
 

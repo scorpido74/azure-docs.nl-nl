@@ -1,17 +1,17 @@
 ---
 title: Firewall regels-Azure Database for PostgreSQL-één server
 description: In dit artikel wordt beschreven hoe u firewall regels gebruikt om verbinding te maken met Azure Database for PostgreSQL-één-server.
-author: rachel-msft
-ms.author: raagyema
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 7048fac4804e16ae70145c8fadc1cd6e0859fcfc
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e677aef7a90e7372c5af4bfa48c6160c439b3ee8
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903909"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707962"
 ---
 # <a name="firewall-rules-in-azure-database-for-postgresql---single-server"></a>Firewall regels in Azure Database for PostgreSQL-één server
 Azure Database for PostgreSQL Server firewall voor komt dat de toegang tot uw database server wordt verhinderd totdat u opgeeft welke computers zijn gemachtigd. De firewall verleent toegang tot de server op basis van het oorspronkelijke IP-adres van elke aanvraag.
@@ -40,7 +40,7 @@ Als er geen vast uitgaand IP-adres beschikbaar is voor uw Azure-service, kunt u 
 > Met de optie **toegang tot Azure-Services toestaan wordt** de firewall zodanig geconfigureerd dat alle verbindingen van Azure, inclusief verbindingen van de abonnementen van andere klanten, worden toegestaan. Wanneer u deze optie selecteert, zorgt u er dan voor dat uw aanmeldings- en gebruikersmachtigingen de toegang beperken tot alleen geautoriseerde gebruikers.
 > 
 
-:::image type="content" source="media/concepts-firewall-rules/allow-azure-services.png" alt-text="Toegang tot Azure-Services in de portal toestaan configureren":::
+:::image type="content" source="media/concepts-firewall-rules/allow-azure-services.png" alt-text="Voor beeld van de werking van de firewall":::
 
 ### <a name="connecting-from-a-vnet"></a>Verbinding maken vanaf een VNet
 Als u een beveiligde verbinding wilt maken met uw Azure Database for PostgreSQL-server vanuit een VNet, kunt u gebruikmaken van [vnet-service-eind punten](./concepts-data-access-and-security-vnet.md). 

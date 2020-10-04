@@ -1,17 +1,17 @@
 ---
 title: Aanbevelingen voor prestaties-Azure Database for PostgreSQL-één server
 description: In dit artikel wordt de functie aanbevolen prestatie aanbeveling in Azure Database for PostgreSQL-één server.
-author: rachel-msft
-ms.author: raagyema
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: f0ce3843752ebd6ed56281f6699783181b52fdc6
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d547844671e6485e71be7dd8c355de08f3dec5e6
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903874"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710563"
 ---
 # <a name="performance-recommendations-in-azure-database-for-postgresql---single-server"></a>Aanbevelingen voor prestaties in Azure Database for PostgreSQL-één server
 
@@ -33,7 +33,7 @@ Selecteer **analyseren** en kies een Data Base, waarmee de analyse wordt gestart
 
 In het venster **aanbevelingen** wordt een lijst met aanbevelingen weer gegeven als deze zijn gevonden.
 
-:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-result.png" alt-text="Nieuwe pagina prestatie aanbevelingen":::
+:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-result.png" alt-text="Landingspagina van Prestatieaanbevelingen":::
 
 Aanbevelingen worden niet automatisch toegepast. Als u de aanbeveling wilt Toep assen, kopieert u de query tekst en voert u deze uit vanaf de client van uw keuze. Vergeet niet om te testen en te controleren om de aanbeveling te evalueren. 
 

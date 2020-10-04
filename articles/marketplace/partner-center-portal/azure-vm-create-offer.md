@@ -7,12 +7,12 @@ ms.topic: how-to
 author: emuench
 ms.author: mingshen
 ms.date: 08/07/2020
-ms.openlocfilehash: 9f48c06f075ccdc3c3c212e1ba7912707565cd87
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.openlocfilehash: 46749015d5141053eaea3f2f251bbba7d9455481
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91405051"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91709013"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Een Azure virtual machine-aanbieding maken op Azure Marketplace
 
@@ -242,7 +242,7 @@ Geef contact gegevens op die micro soft kan gebruiken wanneer er problemen zijn 
 
 Bied logo's en installatie kopieën die u kunt gebruiken met uw aanbieding. Alle installatie kopieën moeten de PNG-indeling hebben. Vage afbeeldingen zorgen ervoor dat uw inzending wordt afgewezen.
 
-[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+[!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 >[!NOTE]
 >Als u een probleem hebt met het uploaden van bestanden, moet u ervoor zorgen dat uw lokale netwerk de https://upload.xboxlive.com service die wordt gebruikt door het partner centrum niet blokkeert.
@@ -547,7 +547,7 @@ Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in
 
 <br>Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in de zoek resultaten van Azure Marketplace:
 
-:::image type="content" source="media/example-azure-marketplace-virtual-machine-search-results.png" alt-text="Illustreert hoe deze aanbieding wordt weer gegeven in de zoek resultaten voor Azure Marketplace.":::
+:::image type="content" source="media/example-azure-marketplace-virtual-machine-search-results.png" alt-text="Illustreert hoe deze aanbieding wordt weer gegeven in azure Marketplace.":::
 
 #### <a name="call-out-descriptions"></a>Beschrijvingen van aanroepen
 
@@ -558,7 +558,7 @@ Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in
 
 <br>Hier volgt een voor beeld van Details van het Azure Marketplace-abonnement:
 
-:::image type="content" source="media/example-azure-marketplace-virtual-machine-plan-details.png" alt-text="Illustreert Details van het Azure Marketplace-abonnement.":::
+:::image type="content" source="media/example-azure-marketplace-virtual-machine-plan-details.png" alt-text="Illustreert hoe deze aanbieding wordt weer gegeven in azure Marketplace.":::
 
 #### <a name="call-out-descriptions"></a>Beschrijvingen van aanroepen
 
@@ -568,7 +568,7 @@ Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in
 
 <br>Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in de Azure Portal:
 
-:::image type="content" source="media/example-azure-portal-virtual-machine-offer.png" alt-text="Illustreert hoe deze aanbieding wordt weer gegeven in de Azure Portal.":::
+:::image type="content" source="media/example-azure-portal-virtual-machine-offer.png" alt-text="Illustreert hoe deze aanbieding wordt weer gegeven in azure Marketplace.":::
 
 #### <a name="call-out-descriptions"></a>Beschrijvingen van aanroepen
 
@@ -579,7 +579,7 @@ Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in
 
 <br>Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in de Azure Portal Zoek resultaten:
 
-:::image type="content" source="media/example-azure-portal-virtual-machine-search-results.png" alt-text="Illustreert hoe deze aanbieding wordt weer gegeven in de Azure Portal Zoek resultaten.":::
+:::image type="content" source="media/example-azure-portal-virtual-machine-search-results.png" alt-text="Illustreert hoe deze aanbieding wordt weer gegeven in azure Marketplace.":::
 
 #### <a name="call-out-descriptions"></a>Beschrijvingen van aanroepen
 
@@ -589,7 +589,7 @@ Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in
 
 <br>Hier volgt een voor beeld van de details van het Azure Portal plan:
 
-:::image type="content" source="media/example-azure-portal-virtual-machine-plan-details.png" alt-text="Illustreert de details van het Azure Portal plan.":::
+:::image type="content" source="media/example-azure-portal-virtual-machine-plan-details.png" alt-text="Illustreert hoe deze aanbieding wordt weer gegeven in azure Marketplace.":::
 
 #### <a name="call-out-descriptions"></a>Beschrijvingen van aanroepen
 

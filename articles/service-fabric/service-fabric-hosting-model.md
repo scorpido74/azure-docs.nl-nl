@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: harahma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2e14995b92e99e1a9695f81fb71bcab6dd62303a
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 5f3f6238bb72704d13fef4a7171aeaebee5f9141
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89011664"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708693"
 ---
 # <a name="azure-service-fabric-hosting-model"></a>Hosting model voor Azure Service Fabric
 Dit artikel bevat een overzicht van de toepassings hosting modellen van Azure Service Fabric en beschrijft de verschillen tussen de modellen **gedeeld proces** en **exclusief proces** . Hierin wordt beschreven hoe een geïmplementeerde toepassing eruitziet op een Service Fabric knoop punt en de relatie tussen replica's (of exemplaren) van de service en het proces-hostproces.
@@ -30,19 +30,19 @@ Laten we een voor beeld door lopen om inzicht te krijgen in het hosting model. S
 Stel dat we een cluster met drie knoop punten hebben en dat we een *toepassings* **infrastructuur maken:/App1** van het type MyAppType. In deze Application **Fabric:/App1**maakt u een service **Fabric:/App1/servicea** van het type MyServiceType. Deze service heeft twee partities (bijvoorbeeld **P1** en **P2**) en drie replica's per partitie. In het volgende diagram ziet u de weer gave van deze toepassing, wanneer deze op een knoop punt wordt geïmplementeerd.
 
 
-![Diagram van knooppunt weergave van geïmplementeerde toepassing][node-view-one]
+![Diagram waarin de weer gave van deze toepassing wordt weer gegeven wanneer deze op een knoop punt wordt geïmplementeerd.][node-view-one]
 
 
 Service Fabric geactiveerd: ' MyServicePackage ', waarbij ' MyCodePackage ' is gestart, dat als host fungeert voor replica's van beide partities. Alle knoop punten in het cluster hebben dezelfde weer gave, omdat we het aantal replica's per partitie hebben gekozen om gelijk te zijn aan het aantal knoop punten in het cluster. We gaan een andere service, **Fabric:/App1/ServiceB**maken in de Application **Fabric:/App1**. Deze service heeft één partitie (bijvoorbeeld **P3**) en drie replica's per partitie. In het volgende diagram ziet u de nieuwe weer gave op het knoop punt:
 
 
-![Diagram van knooppunt weergave van geïmplementeerde toepassing][node-view-two]
+![Diagram waarin de nieuwe weer gave van het knoop punt wordt weer gegeven.][node-view-two]
 
 
 Service Fabric de nieuwe replica voor partitie **P3** van service **Fabric:/App1/ServiceB** in de bestaande activering van ' MyServicePackage ' geplaatst. Hierna. We gaan een andere toepassings **infrastructuur maken:/App2** van het type MyAppType. In **Fabric:/App2**maakt u een service **Fabric:/App2/servicea**. Deze service heeft twee partities (**P4** en **P5**) en drie replica's per partitie. In het volgende diagram ziet u de nieuwe knooppunt weergave:
 
 
-![Diagram van knooppunt weergave van geïmplementeerde toepassing][node-view-three]
+![Diagram waarin de weer gave van het nieuwe knoop punt wordt weer gegeven.][node-view-three]
 
 
 Service Fabric activeert een nieuwe kopie van ' MyServicePackage ', waarmee een nieuw exemplaar van ' MyCodePackage ' wordt gestart. Replica's van beide partities van service **Fabric:/App2/servicea** (**P4** en **P5**) worden in deze nieuwe kopie ' MyCodePackage ' geplaatst.
@@ -157,7 +157,7 @@ Stel nu dat we een toepassing maken, **Fabric:/SpecialApp**. Binnen **Fabric:/Sp
 Op een bepaald knoop punt hebben beide services twee replica's. Omdat we het exclusieve proces model voor het maken van de services hebben gebruikt, Service Fabric een nieuwe kopie van ' MyServicePackage ' geactiveerd voor elke replica. Elke activering van ' MultiTypeServicePackage ' Start een kopie van ' MyCodePackageA ' en ' MyCodePackageB '. Maar slechts één van ' MyCodePackageA ' of ' MyCodePackageB ' fungeert als host voor de replica waarvoor ' MultiTypeServicePackage ' is geactiveerd. In het volgende diagram ziet u de knooppunt weergave:
 
 
-![Diagram van de knooppunt weergave van de geïmplementeerde toepassing][node-view-five]
+![Diagram waarin de knooppunt weergave wordt weer gegeven.][node-view-five]
 
 
 Bij de activering van ' MultiTypeServicePackage ' voor de replica van partitie **P1** van service **Fabric:/SpecialApp/servicea**, ' MyCodePackageA ' fungeert als host voor de replica. ' MyCodePackageB ' wordt uitgevoerd. Op dezelfde manier wordt bij het activeren van ' MultiTypeServicePackage ' voor de replica van partitie **P3** van service **Fabric:/SpecialApp/ServiceB**, ' MyCodePackageB ' de replica gehost. ' MyCodePackageA ' wordt uitgevoerd. Daarom is het groter dan het aantal *CodePackages* (registreren van verschillende *ServiceTypes*) per *ServicePackage*, hoe hoger het redundante resource gebruik is. 

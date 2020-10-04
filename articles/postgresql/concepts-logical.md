@@ -1,17 +1,17 @@
 ---
 title: Logische decodering-Azure Database for PostgreSQL-één server
 description: Hierin worden logische decoderings-en wal2json voor change data capture in Azure Database for PostgreSQL-één-server beschreven
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/22/2020
-ms.openlocfilehash: bd886bea90c1092e38fac191a60a118aab0bef1f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4ab4a64fa395c105ced8e47cdcec019373f7f835
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903890"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708608"
 ---
 # <a name="logical-decoding"></a>Logische decodering
  
@@ -38,7 +38,7 @@ De server moet opnieuw worden opgestart na het wijzigen van deze para meter. Int
 
 ### <a name="using-azure-cli"></a>Azure CLI gebruiken
 
-1. Stel Azure. replication_support in op `logical` .
+1. Stel azure.replication_support in op `logical` .
    ```
    az postgres server configuration set --resource-group mygroup --server-name myserver --name azure.replication_support --value logical
    ``` 
@@ -56,7 +56,7 @@ De server moet opnieuw worden opgestart na het wijzigen van deze para meter. Int
 
 2. Start de server opnieuw op om de wijziging toe te passen door **Ja**te selecteren.
 
-   :::image type="content" source="./media/concepts-logical/confirm-restart.png" alt-text="Azure Database for PostgreSQL-replicatie: bevestig opnieuw opstarten":::
+   :::image type="content" source="./media/concepts-logical/confirm-restart.png" alt-text="Azure Database for PostgreSQL-replicatie-ondersteuning van Azure-replicatie":::
 
 
 ## <a name="start-logical-decoding"></a>Logische decodering starten
@@ -159,7 +159,7 @@ SELECT pg_drop_replication_slot('test_slot');
 ```
 
 > [!IMPORTANT]
-> Als u geen logische decodering meer gebruikt, wijzigt u Azure. replication_support terug naar `replica` of `off` . De WAL-gegevens die `logical` worden bewaard door zijn uitgebreider en moeten worden uitgeschakeld wanneer de logische decodering niet wordt gebruikt. 
+> Als u geen logische decodering meer gebruikt, wijzigt u azure.replication_support terug naar `replica` of `off` . De WAL-gegevens die `logical` worden bewaard door zijn uitgebreider en moeten worden uitgeschakeld wanneer de logische decodering niet wordt gebruikt. 
 
  
 ## <a name="next-steps"></a>Volgende stappen

@@ -1,17 +1,17 @@
 ---
 title: Query Performance Insight-Azure Database for PostgreSQL-één server
 description: In dit artikel wordt de functie Query Performance Insight van Azure Database for PostgreSQL-één-server beschreven.
-author: rachel-msft
-ms.author: raagyema
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: a7573e99de96e3d13509056c49bc24be7fe166bf
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: babf2c8208732a194184549dfa5ed3228b376d0f
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906523"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710257"
 ---
 # <a name="query-performance-insight"></a>Inzicht in queryprestaties 
 
@@ -40,7 +40,7 @@ De tabel onder de grafiek bevat meer informatie over de langlopende query's in d
 
 Selecteer het tabblad **Wachtstatistieken** om de bijbehorende visualisaties voor wachttijden in de server weer te geven.
 
-:::image type="content" source="./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png" alt-text="Query Performance Insight wacht op statistieken":::
+:::image type="content" source="./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png" alt-text="Langlopende query's Query Performance Insight":::
 
 ## <a name="considerations"></a>Overwegingen
 * Query Performance Insight is niet beschikbaar voor het [lezen van replica's](concepts-read-replicas.md).

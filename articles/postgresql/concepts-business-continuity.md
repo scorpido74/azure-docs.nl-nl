@@ -1,17 +1,17 @@
 ---
 title: Bedrijfs continuïteit-Azure Database for PostgreSQL-één server
 description: In dit artikel wordt een beschrijving gegeven van de bedrijfs continuïteit (herstel naar een bepaald tijdstip, de storing in het Data Center, geo-Restore, replica's) bij het gebruik van Azure Database for PostgreSQL.
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/07/2020
-ms.openlocfilehash: 75cd86bd1587a9294caef00efdf973fe8a26c150
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 6bcb1ea6c16fd387dfb7f15f909d1908c20a44d7
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612018"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710903"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>Overzicht van bedrijfs continuïteit met Azure Database for PostgreSQL-één server
 
@@ -19,16 +19,20 @@ In dit overzicht worden de mogelijkheden beschreven die Azure Database for Postg
 
 ## <a name="features-that-you-can-use-to-provide-business-continuity"></a>Functies die u kunt gebruiken om bedrijfs continuïteit te bieden
 
-Azure Database for PostgreSQL biedt functies voor bedrijfs continuïteit, waaronder geautomatiseerde back-ups en de mogelijkheid voor gebruikers om geo-herstel te initiëren. Elk heeft verschillende kenmerken voor de geschatte herstel tijd (ERT) en het mogelijke gegevens verlies. De geschatte herstel tijd (ERT) is de geschatte duur voor de data base die volledig functioneel is na een herstel-of failover-aanvraag. Wanneer u deze opties kent, kunt u er een kiezen en ze samen gebruiken voor verschillende scenario's. Wanneer u uw bedrijfs continuïteits plan ontwikkelt, moet u weten wat de Maxi maal toegestane tijd is voordat de toepassing volledig wordt hersteld nadat de gebeurtenis is verstoord. Dit is de beoogde herstel tijd (RTO). U moet ook inzicht krijgen in de maximale hoeveelheid recente gegevens updates (tijds interval) die de toepassing kan afnemen bij het herstellen na het verstorings proces. Dit is het beoogde herstel punt (RPO).
+Wanneer u uw bedrijfs continuïteits plan ontwikkelt, moet u weten wat de Maxi maal toegestane tijd is voordat de toepassing volledig wordt hersteld nadat de gebeurtenis is verstoord. Dit is de beoogde herstel tijd (RTO). U moet ook inzicht krijgen in de maximale hoeveelheid recente gegevens updates (tijds interval) die de toepassing kan afnemen bij het herstellen na het verstorings proces. Dit is het beoogde herstel punt (RPO).
 
-De volgende tabel vergelijkt de ERT en RPO voor de beschik bare functies:
+Azure Database for PostgreSQL biedt functies voor bedrijfs continuïteit die geo-redundante back-ups bevatten met de mogelijkheid om geo-herstel te initiëren en lees replica's in een andere regio te implementeren. Elk heeft verschillende kenmerken voor de herstel tijd en het mogelijke gegevens verlies. Met de functie voor [geo-Restore](concepts-backup.md) wordt een nieuwe server gemaakt met behulp van de back-upgegevens die vanuit een andere regio worden gerepliceerd. De totale tijd die nodig is om te herstellen en te herstellen, is afhankelijk van de grootte van de data base en het aantal logboeken dat moet worden hersteld. De totale tijd voor het instellen van de server varieert van enkele minuten tot enkele uren. Bij het [lezen van replica's](concepts-read-replicas.md)worden transactie logboeken van de primaire replica asynchroon naar de replica gestreamd. De vertraging tussen de primaire en de replica is afhankelijk van de latentie tussen de sites en ook de hoeveelheid gegevens die moet worden verzonden. In het geval van een storing van een primaire site, zoals een fout in de beschikbaarheids zone, biedt het promo veren van de replica een kortere RTO en minder gegevens verlies. 
 
-| **Mogelijkheid** | **Basic** | **Algemeen** | **Geoptimaliseerd geheugen** |
+De volgende tabel vergelijkt RTO en RPO in een typisch scenario:
+
+| **Mogelijkheid** | **Basic** | **Algemeen doel** | **Geoptimaliseerd geheugen** |
 | :------------: | :-------: | :-----------------: | :------------------: |
 | Herstel naar een bepaald tijdstip vanuit back-up | Elk herstel punt binnen de Bewaar periode | Elk herstel punt binnen de Bewaar periode | Elk herstel punt binnen de Bewaar periode |
-| Geo-herstel van geo-gerepliceerde back-ups | Niet ondersteund | ERT < 12 uur<br/>RPO < 1 uur | ERT < 12 uur<br/>RPO < 1 uur |
+| Geo-herstel van geo-gerepliceerde back-ups | Niet ondersteund | RTO-varieert <br/>RPO < 1 uur | RTO-varieert <br/>RPO < 1 uur |
+| Leesreplica's | RTO-minuten <br/>RPO < 5 min | RTO-minuten <br/>RPO < 5 min| RTO-minuten <br/>RPO < 5 min|
 
-U kunt ook overwegen gebruik te maken van [replica's](concepts-read-replicas.md).
+> [!IMPORTANT]
+> De verwachte RTO en RPO die hier worden vermeld, zijn alleen bedoeld ter referentie. Voor deze metrische gegevens worden geen service overeenkomsten aangeboden.
 
 ## <a name="recover-a-server-after-a-user-or-application-error"></a>Een server herstellen na een gebruikers-of toepassings fout
 

@@ -1,17 +1,17 @@
 ---
 title: Azure Database for PostgreSQL-één server bewaken en afstemmen
 description: In dit artikel worden de functies voor het controleren en afstemmen in Azure Database for PostgreSQL-één server beschreven.
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/10/2020
-ms.openlocfilehash: 2f57d20df6adbb7c1a0c73958cc10035126e29b8
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 4fd16e9dcf9f0b75b48311adf3e9282adbce2a25
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91530983"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708710"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL-één server bewaken en afstemmen
 Het bewaken van gegevens over uw servers helpt u bij het oplossen en optimaliseren van uw werk belasting. Azure Database for PostgreSQL biedt verschillende bewakings opties om inzicht te krijgen in het gedrag van uw server.

@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: a149d147b9817d8fde7a4fa7eb1b0e7a7eea8283
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ca60c44d1e167367e2c138af1e7bfd4ba1a69417
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936608"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710070"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-postgresql---flexible-server"></a>Berekenings-en opslag opties in Azure Database for PostgreSQL-flexibele server
 
@@ -20,9 +20,9 @@ ms.locfileid: "90936608"
 
 U kunt in een van de volgende drie verschillende prijs categorieën een Azure Database for PostgreSQL-server maken: Burstable, Algemeen en geoptimaliseerd voor geheugen. De prijs categorieën worden onderscheiden van de hoeveelheid Compute in vCores die kan worden ingericht, het geheugen per vCore en de opslag technologie die wordt gebruikt om de gegevens op te slaan. Alle resources worden ingericht op het niveau van de PostgreSQL-server. Een server kan een of meer data bases bevatten.
 
-| Resource/laag | **Bebreekbaar** | **Algemeen** | **Geoptimaliseerd voor geheugen** |
+| Resource/laag | **Bebreekbaar** | **Algemeen doel** | **Geoptimaliseerd voor geheugen** |
 |:---|:----------|:--------------------|:---------------------|
-| vCores | 1, 2 | 4, 8, 16, 32, 64 | 4, 8, 16, 32, 48, 64 |
+| vCores | 1, 2 | 2, 4, 8, 16, 32, 48, 64 | 2, 4, 8, 16, 32, 48, 64 |
 | Geheugen per vCore | Variabele | 4 GB | 6,75 tot 8 GB |
 | Opslag grootte | 32 GB tot 16 TB | 32 GB tot 16 TB | 32 GB tot 16 TB |
 | Bewaar periode voor database back-ups | 7 tot 35 dagen | 7 tot 35 dagen | 7 tot 35 dagen |
@@ -48,7 +48,7 @@ De gedetailleerde specificaties van de beschik bare server typen zijn als volgt:
 | **Bebreekbaar**        |        |             |                    |                             |
 | B1ms                 | 1      | 2 GiB       | 640                | 15 MiB per seconde                  |
 | B2s                  | 2      | 4 GiB       | 1280               | 15 MiB per seconde                  |
-| **Algemeen**  |        |             |                    |                             |
+| **Algemeen doel**  |        |             |                    |                             |
 | D2s_v3               | 2      | 8 GiB       | 3200               | 48-MiB per seconde                  |
 | D4s_v3               | 4      | 16 GiB      | 6400               | 96-MiB per seconde                  |
 | D8s_v3               | 8      | 32 GiB      | 12800              | 192-MiB per seconde                 |
@@ -65,7 +65,7 @@ De gedetailleerde specificaties van de beschik bare server typen zijn als volgt:
 | E48s_v3              | 48     | 384 GiB     | 18000              | 750-MiB per seconde                 |
 | E64s_v3              | 64     | 432 GiB     | 18000              | 750-MiB per seconde                 |
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Opslag
 
 De opslag ruimte die u inricht, is de hoeveelheid opslag capaciteit die beschikbaar is voor uw Azure Database for PostgreSQL-server. De opslag wordt gebruikt voor de database bestanden, tijdelijke bestanden, transactie logboeken en de PostgreSQL-server Logboeken. De totale hoeveelheid opslag ruimte die u hebt ingericht, definieert ook de I/O-capaciteit die beschikbaar is voor uw server.
 
@@ -101,7 +101,7 @@ U kunt uw I/O-gebruik bewaken in de Azure Portal of met behulp van Azure CLI-opd
 |**Bebreekbaar**       |                                          |   |   |    |    |     |     |     |     |      |      |
 |B1ms                |640 IOPS                                  |120|240|500 |640 *|640 * |640 * |640 * |640 * |640 *  |640 *  |
 |B2s                 |1280 IOPS                                 |120|240|500 |1100|1280 *|1280 *|1280 *|1280 *|1280 * |1280 * |
-|**Algemeen** |                                          |   |   |    |    |     |     |     |     |      |      |
+|**Algemeen doel** |                                          |   |   |    |    |     |     |     |     |      |      |
 |D2s_v3              |3200 IOPS                                 |120|240|500 |1100|2300 |3200 *|3200 *|3200 *|3200 * |3200 * |
 |D4s_v3              |6.400 IOPS                                |120|240|500 |1100|2300 |5000 |6400 *|6400 *|6400 * |6400 * |
 |D8s_v3              |12.800 IOPS                               |120|240|500 |1100|2300 |5000 |7500 |7500 |12800 *|12800 *|
@@ -128,7 +128,7 @@ Wanneer het is gemarkeerd met een \* , worden IOPS beperkt door het VM-type dat 
 |**Bebreekbaar**       |                                              |   |   |    |    |     |     |     |     |      |      |
 |B1ms                |10 MiB per seconde                                    |6|6|6 |6 |6  |6  |6  |6  |6   |6   |
 |B2s                 |15 MiB per seconde                                    |15|15|15 |15 |15  |15  |15  |15  |15   |15   |
-|**Algemeen** |                                              |   |   |    |    |     |     |     |     |      |      |
+|**Algemeen doel** |                                              |   |   |    |    |     |     |     |     |      |      |
 |D2s_v3              |48-MiB per seconde                                    |25 |48 *|48 * |48 * |48 *  |48 *  |48 *  |48 *  |48 *   |48 *   |
 |D4s_v3              |96-MiB per seconde                                    |25 |50 |96 * |96 * |96 *  |96 *  |96 *  |96 *  |96 *   |96 *   |
 |D8s_v3              |192-MiB per seconde                                   |25 |50 |100 |125 |150  |192 * |192 * |192 * |192 *  |192 *  |

@@ -10,18 +10,18 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: 46572853cf882df4d6909297dd058d5ccaf782e1
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 0745957620aab7ed4d08cb016c706b56e6da1c5a
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89144767"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708965"
 ---
 # <a name="create-a-shared-pool-of-data-science-virtual-machines"></a>Een gedeelde groep data Science maken Virtual Machines
 
 In dit artikel leert u hoe u een gedeelde pool van data Science Virtual Machines (Dsvm) kunt maken voor een team. De voor delen van het gebruik van een gedeelde groep zijn het verbeteren van het resource gebruik, het eenvoudig delen en samen werken en een efficiëntere beheer van DSVM-resources.
 
-U kunt veel methoden en technologieën gebruiken om een pool met Dsvm te maken. Dit artikel richt zich op Pools voor interactieve virtuele machines (Vm's). Een alternatieve beheerde Compute-infra structuur is Azure Machine Learning Reken kracht. Zie [Compute-doelen maken met PYTHON SDK](../how-to-create-attach-compute-sdk.md)voor meer informatie.
+U kunt veel methoden en technologieën gebruiken om een pool met Dsvm te maken. Dit artikel richt zich op Pools voor interactieve virtuele machines (Vm's). Een alternatieve beheerde Compute-infra structuur is Azure Machine Learning Reken kracht. Zie [reken cluster maken](../how-to-create-attach-compute-cluster.md)voor meer informatie.
 
 ## <a name="interactive-vm-pool"></a>Interactieve VM-groep
 

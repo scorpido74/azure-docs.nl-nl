@@ -1,18 +1,18 @@
 ---
 title: Een connection string genereren met Power shell-Azure Database for PostgreSQL
 description: In dit artikel vindt u een Azure PowerShell voor beeld van het genereren van een connection string om verbinding te maken met Azure Database for PostgreSQL.
-author: rachel-msft
-ms.author: raagyema
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.custom: mvc, devx-track-azurepowershell
 ms.topic: how-to
 ms.date: 8/6/2020
-ms.openlocfilehash: a8e82c1863fde7a7580300606949e00a34c4e58c
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 29641bdc3696f0722ca430dde912768071fd9b16
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908888"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708166"
 ---
 # <a name="how-to-generate-an-azure-database-for-postgresql-connection-string-with-powershell"></a>Een Azure Database for PostgreSQL connection string genereren met Power shell
 
@@ -20,13 +20,13 @@ In dit artikel wordt beschreven hoe u een connection string genereert voor een A
 
 ## <a name="requirements"></a>Vereisten
 
-In dit artikel worden de resources gebruikt die in de volgende hand leiding zijn gemaakt als uitgangs punt:
+In dit artikel worden de resources die in de volgende handleiding zijn gemaakt, als uitgangspunt gebruikt:
 
 * [Snelstartgids: een Azure Database for PostgreSQL-server maken met behulp van Power shell](quickstart-create-postgresql-server-database-using-azure-powershell.md)
 
 ## <a name="get-the-connection-string"></a>De verbindingsreeks ophalen
 
-De `Get-AzPostgreSqlConnectionString` cmdlet wordt gebruikt voor het genereren van een Connection String voor het verbinden van toepassingen met Azure database for PostgreSQL. In het volgende voor beeld wordt de connection string voor een PHP-client uit **mydemoserver**geretourneerd.
+De `Get-AzPostgreSqlConnectionString` cmdlet wordt gebruikt voor het genereren van een Connection String voor het verbinden van toepassingen met Azure database for PostgreSQL. In het volgende voorbeeld wordt de verbindingsreeks voor een PHP-client uit **mydemoserver** geretourneerd.
 
 ```azurepowershell-interactive
 Get-AzPostgreSqlConnectionString -Client PHP -Name mydemoserver -ResourceGroupName myresourcegroup
@@ -36,7 +36,7 @@ Get-AzPostgreSqlConnectionString -Client PHP -Name mydemoserver -ResourceGroupNa
 host=mydemoserver.postgres.database.azure.com port=5432 dbname={your_database} user=myadmin@mydemoserver password={your_password} sslmode=require
 ```
 
-Geldige waarden voor de `Client` para meter zijn:
+Geldige waarden voor de parameter `Client` zijn:
 
 * ADO&#46;NET
 * JDBC

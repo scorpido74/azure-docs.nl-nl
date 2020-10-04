@@ -7,16 +7,16 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 07/14/2020
-ms.openlocfilehash: 247a5c89b52c6b58f2e1d04723f4f73b85aeb153
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: bdd2dacbba4ef8b7c439a345ea70771354b7fb5a
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91400737"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708591"
 ---
 # <a name="cloud-solution-provider-program"></a>Programma Cloud Solution Provider
 
-In dit artikel wordt uitgelegd hoe u uw aanbieding zo configureert dat deze beschikbaar is voor het programma Cloud Solution Provider (CSP). Naast het publiceren van uw aanbiedingen via [online winkels voor commerciële Marketplace](comparing-appsource-azure-marketplace.md)kunt u ook via het CSP-programma verkopen om miljoenen micro soft-klanten te bereiken die het programma gebruikt.
+In dit artikel wordt uitgelegd hoe u uw aanbieding zo configureert dat deze beschikbaar is voor het programma Cloud Solution Provider (CSP). Naast het publiceren van uw aanbiedingen via [online winkels voor commerciële Marketplace](overview.md#commercial-marketplace-online-stores)kunt u ook via het CSP-programma verkopen om miljoenen micro soft-klanten te bereiken die het programma gebruikt.
 
 U kunt nieuwe of bestaande aanbiedingen voor Beschik baarheid configureren in het CSP-programma, zodat CSP-partners uw producten kunnen verkopen en gebundelde oplossingen voor klanten kunnen maken.
 
@@ -60,7 +60,7 @@ U kunt kiezen uit drie opties:
 
 Als u deze optie kiest, machtigt u welke partners in het CSP-programma in aanmerking komen voor het verkopen van uw aanbieding.
 
-Als u partners wilt autoriseren, klikt u op **CSP-partners selecteren** en een menu wordt weer gegeven waarin u kunt zoeken op partner naam of CSP-Azure Active Directory (Aad) Tenant-id.
+Als u partners wilt machtigen, selecteert u **CSP-partners selecteren** en een menu wordt weer gegeven waarin u kunt zoeken op partner naam of CSP Azure Active Directory (Azure AD) Tenant-id.
 
 ![CSP-menu selecteren](media/marketplace-publishers-guide/csp-pop-up-module.png)
 
@@ -81,7 +81,7 @@ Selecteer **concept opslaan** om uw wijzigingen te registreren.
 Als deze aanbieding niet is gepubliceerd, moet u uw aanbieding publiceren om deze beschikbaar te maken voor uw geselecteerde partners.
 
 >[!NOTE]
->Als u een partner machtigt in het CSP-programma in een bepaalde regio, kunnen ze de aanbieding verkopen aan elke klant die tot die specifieke regio behoort. Zie de [regionale markten en valuta van het programma Cloud Solution Provider Program](https://docs.microsoft.com/partner-center/regional-authorization-overview) voor meer informatie over hoe CSP-aanbiedingen worden geclassificeerd onder regio's.
+>Als u een partner machtigt in het CSP-programma in een bepaalde regio, kunnen ze de aanbieding verkopen aan elke klant die tot die specifieke regio behoort. Voor meer informatie over hoe CSP-aanbiedingen worden geclassificeerd onder regio's, zie de [regionale markten en valuta van het Cloud Solution Provider-programma](https://docs.microsoft.com/partner-center/regional-authorization-overview).
 
 Als u de lijst met CSP'S van een al gepubliceerde aanbieding bijwerkt, voegt u de aanvullende partners toe en selecteert u **CSP-doel groep synchroniseren**.
 
@@ -170,14 +170,11 @@ Om ervoor te zorgen dat partners in het Cloud Solution Provider-programma het me
 
 ### <a name="partner-center-csp-channel"></a>Partner centrum CSP-kanaal
 
-Als u in het partner centrum hebt gekozen voor het CSP-kanaal, moeten uitgevers een URL invoeren die als host fungeert voor relevante marketing materialen en kanaal contact gegevens naar het CSP-kanaal onder de module aanbieding:
+Als u in het partner centrum hebt gekozen voor het CSP-kanaal, moeten uitgevers een URL invoeren die als host fungeert voor relevante marketing materialen en kanaal contactpersoongegevens onder de module aanbieding.
 
 ![Partner centrum CSP-informatie over onderpand](media/marketplace-publishers-guide/pc-csp-channel.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga naar de [Publisher-hand leiding voor Azure Marketplace en AppSource](marketplace-publishers-guide.md).
-
-Zie [Go-to-Market Services](https://partner.microsoft.com/reach-customers/gtm)(Engelstalig) voor meer informatie over Marketplace gtm Services.
-
-Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) om uw aanbieding te maken en te configureren.
+- Meer informatie over [Go-to-Market-Services](https://partner.microsoft.com/reach-customers/gtm).
+- Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) om uw aanbieding te maken en te configureren.

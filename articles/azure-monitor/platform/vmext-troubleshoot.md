@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/06/2019
-ms.openlocfilehash: 873f6beaa88e1631397827a94161ce4427b5f0bb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2e96ac5052221475d9aec11d4ed96e8f9c308d70
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323380"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710104"
 ---
 # <a name="troubleshooting-the-log-analytics-vm-extension-in-azure-monitor"></a>Problemen met de Log Analytics VM-extensie in Azure Monitor oplossen
 Dit artikel biedt hulp bij het oplossen van problemen die u mogelijk ondervindt met de Log Analytics VM-extensie voor virtuele Windows-en Linux-machines die worden uitgevoerd op Microsoft Azure, en stelt mogelijke oplossingen voor om deze op te lossen.
@@ -35,14 +35,14 @@ Als u de status van de uitbrei ding wilt controleren, voert u de volgende stappe
 Als de VM-extensie van *micro soft Monitoring Agent* niet wordt geïnstalleerd of gerapporteerd, kunt u de volgende stappen uitvoeren om het probleem op te lossen.
 
 1. Controleer of de Azure VM-agent is geïnstalleerd en correct werkt door de stappen in [KB 2965986](https://support.microsoft.com/kb/2965986#mt1)te gebruiken.
-   * U kunt ook het logboek bestand van de VM-agent bekijken`C:\WindowsAzure\logs\WaAppAgent.log`
+   * U kunt ook het logboek bestand van de VM-agent bekijken `C:\WindowsAzure\logs\WaAppAgent.log`
    * Als het logboek niet bestaat, is de VM-agent niet geïnstalleerd.
    * [De Azure VM-agent installeren](../learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)
-2. Bekijk de logboek bestanden van de VM-extensie van micro soft monitoring agent in`C:\Packages\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent`
+2. Bekijk de logboek bestanden van de VM-extensie van micro soft monitoring agent in `C:\Packages\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent`
 3. Zorg ervoor dat de virtuele machine Power shell-scripts kan uitvoeren
 4. Controleren of de machtigingen voor C:\Windows\temp niet zijn gewijzigd
-5. Bekijk de status van de micro soft monitoring agent door het volgende te typen in een Power shell-venster met verhoogde bevoegdheden op de virtuele machine`(New-Object -ComObject 'AgentConfigManager.MgmtSvcCfg').GetCloudWorkspaces() | Format-List`
-6. Bekijk de logboek bestanden voor de installatie van micro soft monitoring agent in`C:\Windows\System32\config\systemprofile\AppData\Local\SCOM\Logs`
+5. Bekijk de status van de micro soft monitoring agent door het volgende te typen in een Power shell-venster met verhoogde bevoegdheden op de virtuele machine `(New-Object -ComObject 'AgentConfigManager.MgmtSvcCfg').GetCloudWorkspaces() | Format-List`
+6. Bekijk de logboek bestanden voor de installatie van micro soft monitoring agent in `C:\Windows\System32\config\systemprofile\AppData\Local\SCOM\Logs`
 
 Zie [Troubleshooting Windows Extensions](../../virtual-machines/extensions/oms-windows.md)(Engelstalig) voor meer informatie.
 
@@ -50,11 +50,11 @@ Zie [Troubleshooting Windows Extensions](../../virtual-machines/extensions/oms-w
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)] 
 Als de *log Analytics agent voor Linux* VM-extensie niet wordt geïnstalleerd of gerapporteerd, kunt u de volgende stappen uitvoeren om het probleem op te lossen.
 
-1. Als de extensie status *onbekend* is, controleert u of de Azure VM-agent is geïnstalleerd en goed werkt door het logboek bestand van de VM-agent te controleren`/var/log/waagent.log`
+1. Als de extensie status *onbekend* is, controleert u of de Azure VM-agent is geïnstalleerd en goed werkt door het logboek bestand van de VM-agent te controleren `/var/log/waagent.log`
    * Als het logboek niet bestaat, is de VM-agent niet geïnstalleerd.
-   * [De Azure VM-agent installeren op virtuele Linux-machines](../learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)
-2. Raadpleeg voor andere slechte statussen de Log Analytics agent voor Linux VM extension logboek bestanden in `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/extension.log` en`/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/CommandExecution.log`
-3. Als de status van de extensie in orde is, maar de gegevens niet worden geüpload, controleert u de Log Analytics agent voor Linux-logboek bestanden in`/var/opt/microsoft/omsagent/log/omsagent.log`
+   * [De Azure VM-agent installeren op virtuele Linux-machines](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux#installation)
+2. Raadpleeg voor andere slechte statussen de Log Analytics agent voor Linux VM extension logboek bestanden in `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/extension.log` en `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/CommandExecution.log`
+3. Als de status van de extensie in orde is, maar de gegevens niet worden geüpload, controleert u de Log Analytics agent voor Linux-logboek bestanden in `/var/opt/microsoft/omsagent/log/omsagent.log`
 
 Zie [Troubleshooting Linux Extensions](../../virtual-machines/extensions/oms-linux.md)(Engelstalig) voor meer informatie.
 

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 2f05ab2bc7e514f3e58f383faf47a74ef69f94b6
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 53d821809820b11a9a126a826db79726dd43e382
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91535090"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708234"
 ---
 # <a name="configure-and-submit-training-runs"></a>Trainings uitvoeringen configureren en verzenden
 
@@ -31,9 +31,7 @@ Het enige wat u hoeft te doen, is het definiëren van de omgeving voor elk reken
 * Als u geen Azure-abonnement hebt, maak dan een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree)
 * De [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py&preserve-view=true) (>= 1.13.0)
 * Een [Azure machine learning-werk ruimte](how-to-manage-workspace.md), `ws`
-* Een reken doel, `my_compute_target` .  Een compute-doel maken met:
-  * [Python SDK](how-to-create-attach-compute-sdk.md) 
-  * [Azure Machine Learning Studio](how-to-create-attach-compute-studio.md)
+* Een reken doel, `my_compute_target` .  [Een rekendoel maken](how-to-create-attach-compute-studio.md) 
 
 ## <a name="whats-a-script-run-configuration"></a><a name="whats-a-run-configuration"></a>Wat is een script voor het uitvoeren van een configuratie?
 Een [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) wordt gebruikt voor het configureren van de informatie die nodig is voor het indienen van een training die als onderdeel van een experiment moet worden uitgevoerd.
@@ -94,7 +92,7 @@ myenv = Environment.get(workspace=ws, name="AzureML-Minimal")
 
 Zie [& software omgevingen maken in azure machine learning](how-to-use-environments.md)voor meer informatie over omgevingen.
   
-### <a name="local-compute-target"></a>Lokaal Compute-doel
+### <a name="local-compute-target"></a><a name="local"></a>Lokaal Compute-doel
 
 Als uw reken doel uw **lokale computer**is, bent u verantwoordelijk voor het controleren of alle benodigde pakketten beschikbaar zijn in de python-omgeving waarin het script wordt uitgevoerd.  Gebruik `python.user_managed_dependencies` om uw huidige python-omgeving (of de python op het door u opgegeven pad) te gebruiken.
 
@@ -119,6 +117,10 @@ src = ScriptRunConfig(source_directory=project_folder,
                       script='train.py',
                       compute_target=my_compute_target,
                       environment=myenv)
+
+# Set compute target
+# Skip this if you are running on your local computer
+script_run_config.run_config.target = my_compute_target
 ```
 
 Als u geen omgeving opgeeft, wordt er een standaard omgeving voor u gemaakt.

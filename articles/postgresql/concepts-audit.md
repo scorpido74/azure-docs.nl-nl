@@ -1,17 +1,17 @@
 ---
 title: Controle logboek registratie-Azure Database for PostgreSQL-één server
 description: Concepten voor pgAudit-controle logboek registratie in Azure Database for PostgreSQL-één server.
-author: rachel-msft
-ms.author: raagyema
+author: niklarin
+ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/28/2020
-ms.openlocfilehash: 165e7984c21b74fa7730fc02756b9e75b4b33aa7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: efd4cb7c0c5db50729539373938ebccd689dee42
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82131243"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708982"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>Controle logboek registratie in Azure Database for PostgreSQL-één server
 
@@ -66,7 +66,7 @@ Nadat u [pgAudit hebt geïnstalleerd](#installing-pgaudit), kunt u de para meter
 
 > [!NOTE]
 > Als `pgaudit.log_client` wordt ingesteld op aan, worden logboeken omgeleid naar een client proces (zoals psql) in plaats van naar het bestand te schrijven. Deze instelling moet over het algemeen uitgeschakeld blijven. <br> <br>
-> `pgaudit.log_level`is alleen ingeschakeld wanneer `pgaudit.log_client` zich op bevindt.
+> `pgaudit.log_level` is alleen ingeschakeld wanneer `pgaudit.log_client` zich op bevindt.
 
 > [!NOTE]
 > In Azure Database for PostgreSQL `pgaudit.log` kan niet worden ingesteld met behulp van een `-` (minteken) snelkoppeling-teken zoals beschreven in de pgAudit-documentatie. Alle vereiste instructieklassen (lezen, schrijven, enzovoort) moeten afzonderlijk worden opgegeven.
@@ -74,7 +74,7 @@ Nadat u [pgAudit hebt geïnstalleerd](#installing-pgaudit), kunt u de para meter
 ### <a name="audit-log-format"></a>Indeling van auditlogboek
 Elke controle vermelding wordt aan `AUDIT:` het begin van de logboek regel aangeduid. De indeling van de rest van de vermelding wordt beschreven in de [pgAudit-documentatie](https://github.com/pgaudit/pgaudit/blob/master/README.md#format).
 
-Als u andere velden nodig hebt om te voldoen aan uw audit vereisten, gebruikt u de para meter post gres `log_line_prefix` . `log_line_prefix`is een teken reeks die aan het begin van elke post gres-logboek regel wordt uitgevoerd. De volgende `log_line_prefix` instelling bevat bijvoorbeeld tijds tempel, gebruikers naam, database naam en proces-id:
+Als u andere velden nodig hebt om te voldoen aan uw audit vereisten, gebruikt u de para meter post gres `log_line_prefix` . `log_line_prefix` is een teken reeks die aan het begin van elke post gres-logboek regel wordt uitgevoerd. De volgende `log_line_prefix` instelling bevat bijvoorbeeld tijds tempel, gebruikers naam, database naam en proces-id:
 
 ```
 t=%m u=%u db=%d pid=[%p]:

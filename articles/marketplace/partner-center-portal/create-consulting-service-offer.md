@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 06/17/2020
-ms.openlocfilehash: 7b42c12499977b5f7bc1704c57904e90be2e8466
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 464e75e55bc67ce619134be01ba00f2606a271a4
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91398011"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91709067"
 ---
 # <a name="create-a-consulting-service-offer"></a>Een adviesservice-aanbieding maken
 
@@ -76,10 +76,10 @@ Wanneer u uw aanbieding naar Marketplace publiceert met het partner centrum, _mo
 
 Hier volgen enkele aanvullende bronnen voor het beheer van leads:
 
-- [Overzicht Lead beheer](commercial-marketplace-get-customer-leads.md)
-- [Veelgestelde vragen over Lead beheer](../lead-management-for-cloud-marketplace.md#frequently-asked-questions))
-- [Veelvoorkomende fouten van de lead configuratie](../lead-management-for-cloud-marketplace.md#publishing-config-errors))
-- [Overzicht Lead beheer](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (zorg ervoor dat de pop-upblokkering is uitgeschakeld)
+- [Leads van klanten van uw aanbieding voor commerciële Marketplace](commercial-marketplace-get-customer-leads.md)
+- [Veelgestelde vragen over Lead beheer](../lead-management-faq.md#common-questions-about-lead-management)
+- [Problemen met configuratie fouten van de lead oplossen](../lead-management-faq.md#publishing-config-errors)
+- [Overzicht Lead beheer](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (zorg ervoor dat de pop-upblokkering is uitgeschakeld).
 
 Selecteer **concept opslaan** voordat u doorgaat.
 
@@ -146,7 +146,7 @@ Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in
 
 <br>Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in Microsoft AppSource (alle prijzen zijn bijvoorbeeld alleen bedoeld als voor beeld van de werkelijke kosten):
 
-:::image type="content" source="media/example-consulting-service-offer-appsource.png" alt-text="Illustreert hoe deze aanbieding wordt weer gegeven in Microsoft AppSource.":::
+:::image type="content" source="media/example-consulting-service-offer-appsource.png" alt-text="Illustreert hoe deze aanbieding wordt weer gegeven in azure Marketplace.":::
 
 #### <a name="call-out-descriptions"></a>Beschrijvingen van aanroepen
 
@@ -202,7 +202,7 @@ Voeg Maxi maal drie (maar ten minste één) PDF-documenten voor uw aanbieding to
 
 Bied logo's en installatie kopieën die u kunt gebruiken met uw aanbieding. Alle installatie kopieën moeten de PNG-indeling hebben. Vage afbeeldingen worden geweigerd.
 
-[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+[!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 >[!Note]
 >Als u een probleem hebt met het uploaden van bestanden, moet u ervoor zorgen dat uw lokale netwerk de door https://upload.xboxlive.com Partner Center gebruikte service niet blokkeert.
@@ -247,7 +247,7 @@ Hier definieert u elementen zoals prijzen, de markt en een persoonlijke sleutel.
 
 Nadat u alle vereiste gedeelten van de aanbieding hebt voltooid, kunt u uw aanbieding verzenden om deze te controleren en te publiceren.
 
-1. Wanneer u klaar bent om uw advies service-aanbieding te publiceren, klikt u op **controleren en publiceren**.
+1. Wanneer u klaar bent om uw advies service-aanbieding te publiceren, selecteert u **controleren en publiceren**.
 2. Bekijk de details op de pagina definitieve verzen ding.
 3. Als dat nodig is, schrijft u een opmerking naar het certificerings team als u denkt dat de details van uw aanbieding uitleg vereisen.
 4. Wanneer u klaar bent, selecteert u **verzenden**.

@@ -1,17 +1,17 @@
 ---
 title: Extensies-Azure Database for PostgreSQL-één server
 description: Meer informatie over de beschik bare post gres-uitbrei dingen in Azure Database for PostgreSQL-één server
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/14/2020
-ms.openlocfilehash: 3f7796dd565238eb853fcea431a6bcb7d18ee05a
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: f6c73362d554ada6c4845ab8dca2093d3dcbf173
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530230"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707945"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>PostgreSQL-extensies in Azure Database for PostgreSQL - individuele server
 PostgreSQL biedt de mogelijkheid om de functionaliteit van uw data base uit te breiden met behulp van extensies. Extensies bundelen meerdere SQL-objecten in één pakket dat met één opdracht kan worden geladen in of verwijderd uit uw database. Nadat de gegevens in de database zijn geladen, functioneren de extensies als ingebouwde functies.
@@ -35,7 +35,7 @@ De volgende uitbrei dingen zijn beschikbaar op Azure Database for PostgreSQL ser
 > |[citext](https://www.postgresql.org/docs/11/citext.html)                       | 1.5             | gegevens type voor niet-hoofdletter gevoelige teken reeksen|
 > |[kubus](https://www.postgresql.org/docs/11/cube.html)                         | 1.4             | gegevens type voor multidimensionale kubussen|
 > |[dblink](https://www.postgresql.org/docs/11/dblink.html)                       | 1.2             | verbinding maken met andere PostgreSQL-data bases vanuit een Data Base|
-> |[dict_int](https://www.postgresql.org/docs/11/dict-int.html)                     | 1,0             | Zoek woordenlijst sjabloon voor tekst met gehele getallen|
+> |[dict_int](https://www.postgresql.org/docs/11/dict-int.html)                     | 1.0             | Zoek woordenlijst sjabloon voor tekst met gehele getallen|
 > |[earthdistance](https://www.postgresql.org/docs/11/earthdistance.html)                | 1.1             | de afstanden van de cirkel op het Opper vlak van de aarde berekenen|
 > |[fuzzystrmatch](https://www.postgresql.org/docs/11/fuzzystrmatch.html)                | 1.1             | Vergelijk bare en afstand tussen teken reeksen bepalen|
 > |[hstore](https://www.postgresql.org/docs/11/hstore.html)                       | 1.5             | gegevens type voor het opslaan van sets van (sleutel-, waarde-) paren|
@@ -54,14 +54,14 @@ De volgende uitbrei dingen zijn beschikbaar op Azure Database for PostgreSQL ser
 > |[pg_prewarm](https://www.postgresql.org/docs/11/pgprewarm.html)                   | 1.2             | prewarme-relatie gegevens|
 > |[pg_stat_statements](https://www.postgresql.org/docs/11/pgstatstatements.html)           | 1.6             | uitvoerings statistieken bijhouden van alle SQL-instructies die zijn uitgevoerd|
 > |[pg_trgm](https://www.postgresql.org/docs/11/pgtrgm.html)                      | 1.4             | tekstgelijkeniss meting en index zoeken op basis van trigrams|
-> |[plpgsql](https://www.postgresql.org/docs/11/plpgsql.html)                      | 1,0             | Taal van PL/pgSQL-procedure|
+> |[plpgsql](https://www.postgresql.org/docs/11/plpgsql.html)                      | 1.0             | Taal van PL/pgSQL-procedure|
 > |[plv8](https://plv8.github.io/)                         | 2.3.11          | PL/java script (V8) betrouw bare procedure taal|
 > |[postgis](https://www.postgis.net/)                      | 2.5.1           | Ruimtelijke typen en functies voor PostGIS geometrie, geografie en raster|
 > |[postgis_sfcgal](https://www.postgis.net/)               | 2.5.1           | PostGIS SFCGAL-functies|
 > |[postgis_tiger_geocoder](https://www.postgis.net/)       | 2.5.1           | PostGIS Tiger geocodeer en reverse geocodeer|
 > |[postgis_topology](https://postgis.net/docs/Topology.html)             | 2.5.1           | Ruimtelijke typen en functies van de PostGIS-topologie|
-> |[postgres_fdw](https://www.postgresql.org/docs/11/postgres-fdw.html)                 | 1,0             | externe-gegevens wrapper voor externe PostgreSQL-servers|
-> |[tablefunc](https://www.postgresql.org/docs/11/tablefunc.html)                    | 1,0             | functies voor het bewerken van hele tabellen, inclusief Kruistabel query's|
+> |[postgres_fdw](https://www.postgresql.org/docs/11/postgres-fdw.html)                 | 1.0             | externe-gegevens wrapper voor externe PostgreSQL-servers|
+> |[tablefunc](https://www.postgresql.org/docs/11/tablefunc.html)                    | 1.0             | functies voor het bewerken van hele tabellen, inclusief Kruistabel query's|
 > |[timescaledb](https://docs.timescale.com/latest)                    | 1.3.2             | Schakelt schaal bare invoegen en complexe query's voor tijdreeks gegevens in|
 > |[accenten opzeggen](https://www.postgresql.org/docs/11/unaccent.html)                     | 1.1             | Zoek woordenlijst voor tekst die accenten verwijdert|
 > |[uuid-ossp](https://www.postgresql.org/docs/11/uuid-ossp.html)                    | 1.1             | Universele unieke id's (UUID) genereren|
@@ -77,11 +77,11 @@ De volgende uitbrei dingen zijn beschikbaar op Azure Database for PostgreSQL ser
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.5.1           | Adres van voor beeld van een gegevensset voor de standaardiserer|
 > |[btree_gin](https://www.postgresql.org/docs/10/btree-gin.html)                    | 1.3             | ondersteuning voor het indexeren van algemene gegevens typen in EGINNEN|
 > |[btree_gist](https://www.postgresql.org/docs/10/btree-gist.html)                   | 1.5             | ondersteuning voor het indexeren van veelvoorkomende gegevens typen in het REGI ster|
-> |[chkpass](https://www.postgresql.org/docs/10/chkpass.html)                       | 1,0             | gegevens type voor automatisch versleutelde wacht woorden|
+> |[chkpass](https://www.postgresql.org/docs/10/chkpass.html)                       | 1.0             | gegevens type voor automatisch versleutelde wacht woorden|
 > |[citext](https://www.postgresql.org/docs/10/citext.html)                       | 1.4             | gegevens type voor niet-hoofdletter gevoelige teken reeksen|
 > |[kubus](https://www.postgresql.org/docs/10/cube.html)                         | 1.2             | gegevens type voor multidimensionale kubussen|
 > |[dblink](https://www.postgresql.org/docs/10/dblink.html)                       | 1.2             | verbinding maken met andere PostgreSQL-data bases vanuit een Data Base|
-> |[dict_int](https://www.postgresql.org/docs/10/dict-int.html)                     | 1,0             | Zoek woordenlijst sjabloon voor tekst met gehele getallen|
+> |[dict_int](https://www.postgresql.org/docs/10/dict-int.html)                     | 1.0             | Zoek woordenlijst sjabloon voor tekst met gehele getallen|
 > |[earthdistance](https://www.postgresql.org/docs/10/earthdistance.html)                | 1.1             | de afstanden van de cirkel op het Opper vlak van de aarde berekenen|
 > |[fuzzystrmatch](https://www.postgresql.org/docs/10/fuzzystrmatch.html)                | 1.1             | Vergelijk bare en afstand tussen teken reeksen bepalen|
 > |[hstore](https://www.postgresql.org/docs/10/hstore.html)                       | 1.4             | gegevens type voor het opslaan van sets van (sleutel-, waarde-) paren|
@@ -100,14 +100,14 @@ De volgende uitbrei dingen zijn beschikbaar op Azure Database for PostgreSQL ser
 > |[pg_prewarm](https://www.postgresql.org/docs/10/pgprewarm.html)                   | 1.1             | prewarme-relatie gegevens|
 > |[pg_stat_statements](https://www.postgresql.org/docs/10/pgstatstatements.html)           | 1.6             | uitvoerings statistieken bijhouden van alle SQL-instructies die zijn uitgevoerd|
 > |[pg_trgm](https://www.postgresql.org/docs/10/pgtrgm.html)                      | 1.3             | tekstgelijkeniss meting en index zoeken op basis van trigrams|
-> |[plpgsql](https://www.postgresql.org/docs/10/plpgsql.html)                      | 1,0             | Taal van PL/pgSQL-procedure|
+> |[plpgsql](https://www.postgresql.org/docs/10/plpgsql.html)                      | 1.0             | Taal van PL/pgSQL-procedure|
 > |[plv8](https://plv8.github.io/)                         | 2.1.0          | PL/java script (V8) betrouw bare procedure taal|
 > |[postgis](https://www.postgis.net/)                      | 2.4.3           | Ruimtelijke typen en functies voor PostGIS geometrie, geografie en raster|
 > |[postgis_sfcgal](https://www.postgis.net/)               | 2.4.3           | PostGIS SFCGAL-functies|
 > |[postgis_tiger_geocoder](https://www.postgis.net/)       | 2.4.3           | PostGIS Tiger geocodeer en reverse geocodeer|
 > |[postgis_topology](https://postgis.net/docs/Topology.html)             | 2.4.3           | Ruimtelijke typen en functies van de PostGIS-topologie|
-> |[postgres_fdw](https://www.postgresql.org/docs/10/postgres-fdw.html)                 | 1,0             | externe-gegevens wrapper voor externe PostgreSQL-servers|
-> |[tablefunc](https://www.postgresql.org/docs/10/tablefunc.html)                    | 1,0             | functies voor het bewerken van hele tabellen, inclusief Kruistabel query's|
+> |[postgres_fdw](https://www.postgresql.org/docs/10/postgres-fdw.html)                 | 1.0             | externe-gegevens wrapper voor externe PostgreSQL-servers|
+> |[tablefunc](https://www.postgresql.org/docs/10/tablefunc.html)                    | 1.0             | functies voor het bewerken van hele tabellen, inclusief Kruistabel query's|
 > |[timescaledb](https://docs.timescale.com/latest)                    | 1.1.1             | Schakelt schaal bare invoegen en complexe query's voor tijdreeks gegevens in|
 > |[accenten opzeggen](https://www.postgresql.org/docs/10/unaccent.html)                     | 1.1             | Zoek woordenlijst voor tekst die accenten verwijdert|
 > |[uuid-ossp](https://www.postgresql.org/docs/10/uuid-ossp.html)                    | 1.1             | Universele unieke id's (UUID) genereren|
@@ -121,13 +121,13 @@ De volgende uitbrei dingen zijn beschikbaar op Azure Database for PostgreSQL ser
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.3.2           | Wordt gebruikt om een adres te parseren in onderdeel elementen. |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.3.2           | Adres van voor beeld van een gegevensset voor de standaardiserer|
-> |[btree_gin](https://www.postgresql.org/docs/9.6/btree-gin.html)                    | 1,0             | ondersteuning voor het indexeren van algemene gegevens typen in EGINNEN|
+> |[btree_gin](https://www.postgresql.org/docs/9.6/btree-gin.html)                    | 1.0             | ondersteuning voor het indexeren van algemene gegevens typen in EGINNEN|
 > |[btree_gist](https://www.postgresql.org/docs/9.6/btree-gist.html)                   | 1.2             | ondersteuning voor het indexeren van veelvoorkomende gegevens typen in het REGI ster|
-> |[chkpass](https://www.postgresql.org/docs/9.6/chkpass.html)                       | 1,0             | gegevens type voor automatisch versleutelde wacht woorden|
+> |[chkpass](https://www.postgresql.org/docs/9.6/chkpass.html)                       | 1.0             | gegevens type voor automatisch versleutelde wacht woorden|
 > |[citext](https://www.postgresql.org/docs/9.6/citext.html)                       | 1.3             | gegevens type voor niet-hoofdletter gevoelige teken reeksen|
 > |[kubus](https://www.postgresql.org/docs/9.6/cube.html)                         | 1.2             | gegevens type voor multidimensionale kubussen|
 > |[dblink](https://www.postgresql.org/docs/9.6/dblink.html)                       | 1.2             | verbinding maken met andere PostgreSQL-data bases vanuit een Data Base|
-> |[dict_int](https://www.postgresql.org/docs/9.6/dict-int.html)                     | 1,0             | Zoek woordenlijst sjabloon voor tekst met gehele getallen|
+> |[dict_int](https://www.postgresql.org/docs/9.6/dict-int.html)                     | 1.0             | Zoek woordenlijst sjabloon voor tekst met gehele getallen|
 > |[earthdistance](https://www.postgresql.org/docs/9.6/earthdistance.html)                | 1.1             | de afstanden van de cirkel op het Opper vlak van de aarde berekenen|
 > |[fuzzystrmatch](https://www.postgresql.org/docs/9.6/fuzzystrmatch.html)                | 1.1             | Vergelijk bare en afstand tussen teken reeksen bepalen|
 > |[hstore](https://www.postgresql.org/docs/9.6/hstore.html)                       | 1.4             | gegevens type voor het opslaan van sets van (sleutel-, waarde-) paren|
@@ -146,14 +146,14 @@ De volgende uitbrei dingen zijn beschikbaar op Azure Database for PostgreSQL ser
 > |[pg_prewarm](https://www.postgresql.org/docs/9.6/pgprewarm.html)                   | 1.1             | prewarme-relatie gegevens|
 > |[pg_stat_statements](https://www.postgresql.org/docs/9.6/pgstatstatements.html)           | 1.4             | uitvoerings statistieken bijhouden van alle SQL-instructies die zijn uitgevoerd|
 > |[pg_trgm](https://www.postgresql.org/docs/9.6/pgtrgm.html)                      | 1.3             | tekstgelijkeniss meting en index zoeken op basis van trigrams|
-> |[plpgsql](https://www.postgresql.org/docs/9.6/plpgsql.html)                      | 1,0             | Taal van PL/pgSQL-procedure|
+> |[plpgsql](https://www.postgresql.org/docs/9.6/plpgsql.html)                      | 1.0             | Taal van PL/pgSQL-procedure|
 > |[plv8](https://plv8.github.io/)                         | 2.1.0          | PL/java script (V8) betrouw bare procedure taal|
 > |[postgis](https://www.postgis.net/)                      | 2.3.2           | Ruimtelijke typen en functies voor PostGIS geometrie, geografie en raster|
 > |[postgis_sfcgal](https://www.postgis.net/)               | 2.3.2           | PostGIS SFCGAL-functies|
 > |[postgis_tiger_geocoder](https://www.postgis.net/)       | 2.3.2           | PostGIS Tiger geocodeer en reverse geocodeer|
 > |[postgis_topology](https://postgis.net/docs/Topology.html)             | 2.3.2           | Ruimtelijke typen en functies van de PostGIS-topologie|
-> |[postgres_fdw](https://www.postgresql.org/docs/9.6/postgres-fdw.html)                 | 1,0             | externe-gegevens wrapper voor externe PostgreSQL-servers|
-> |[tablefunc](https://www.postgresql.org/docs/9.6/tablefunc.html)                    | 1,0             | functies voor het bewerken van hele tabellen, inclusief Kruistabel query's|
+> |[postgres_fdw](https://www.postgresql.org/docs/9.6/postgres-fdw.html)                 | 1.0             | externe-gegevens wrapper voor externe PostgreSQL-servers|
+> |[tablefunc](https://www.postgresql.org/docs/9.6/tablefunc.html)                    | 1.0             | functies voor het bewerken van hele tabellen, inclusief Kruistabel query's|
 > |[timescaledb](https://docs.timescale.com/latest)                    | 1.1.1             | Schakelt schaal bare invoegen en complexe query's voor tijdreeks gegevens in|
 > |[accenten opzeggen](https://www.postgresql.org/docs/9.6/unaccent.html)                     | 1.1             | Zoek woordenlijst voor tekst die accenten verwijdert|
 > |[uuid-ossp](https://www.postgresql.org/docs/9.6/uuid-ossp.html)                    | 1.1             | Universele unieke id's (UUID) genereren|
@@ -167,20 +167,20 @@ De volgende uitbrei dingen zijn beschikbaar op Azure Database for PostgreSQL ser
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.3.0           | Wordt gebruikt om een adres te parseren in onderdeel elementen. |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.3.0           | Adres van voor beeld van een gegevensset voor de standaardiserer|
-> |[btree_gin](https://www.postgresql.org/docs/9.5/btree-gin.html)                    | 1,0             | ondersteuning voor het indexeren van algemene gegevens typen in EGINNEN|
+> |[btree_gin](https://www.postgresql.org/docs/9.5/btree-gin.html)                    | 1.0             | ondersteuning voor het indexeren van algemene gegevens typen in EGINNEN|
 > |[btree_gist](https://www.postgresql.org/docs/9.5/btree-gist.html)                   | 1.1             | ondersteuning voor het indexeren van veelvoorkomende gegevens typen in het REGI ster|
-> |[chkpass](https://www.postgresql.org/docs/9.5/chkpass.html)                       | 1,0             | gegevens type voor automatisch versleutelde wacht woorden|
+> |[chkpass](https://www.postgresql.org/docs/9.5/chkpass.html)                       | 1.0             | gegevens type voor automatisch versleutelde wacht woorden|
 > |[citext](https://www.postgresql.org/docs/9.5/citext.html)                       | 1.1             | gegevens type voor niet-hoofdletter gevoelige teken reeksen|
-> |[kubus](https://www.postgresql.org/docs/9.5/cube.html)                         | 1,0             | gegevens type voor multidimensionale kubussen|
+> |[kubus](https://www.postgresql.org/docs/9.5/cube.html)                         | 1.0             | gegevens type voor multidimensionale kubussen|
 > |[dblink](https://www.postgresql.org/docs/9.5/dblink.html)                       | 1.1             | verbinding maken met andere PostgreSQL-data bases vanuit een Data Base|
-> |[dict_int](https://www.postgresql.org/docs/9.5/dict-int.html)                     | 1,0             | Zoek woordenlijst sjabloon voor tekst met gehele getallen|
-> |[earthdistance](https://www.postgresql.org/docs/9.5/earthdistance.html)                | 1,0             | de afstanden van de cirkel op het Opper vlak van de aarde berekenen|
-> |[fuzzystrmatch](https://www.postgresql.org/docs/9.5/fuzzystrmatch.html)                | 1,0             | Vergelijk bare en afstand tussen teken reeksen bepalen|
+> |[dict_int](https://www.postgresql.org/docs/9.5/dict-int.html)                     | 1.0             | Zoek woordenlijst sjabloon voor tekst met gehele getallen|
+> |[earthdistance](https://www.postgresql.org/docs/9.5/earthdistance.html)                | 1.0             | de afstanden van de cirkel op het Opper vlak van de aarde berekenen|
+> |[fuzzystrmatch](https://www.postgresql.org/docs/9.5/fuzzystrmatch.html)                | 1.0             | Vergelijk bare en afstand tussen teken reeksen bepalen|
 > |[hstore](https://www.postgresql.org/docs/9.5/hstore.html)                       | 1.3             | gegevens type voor het opslaan van sets van (sleutel-, waarde-) paren|
 > |[hypopg](https://hypopg.readthedocs.io/en/latest/)                       | 1.1.1           | Hypothetische indexen voor PostgreSQL|
-> |[intarray](https://www.postgresql.org/docs/9.5/intarray.html)                     | 1,0             | ondersteuning voor functies, Opera tors en index voor 1d-matrices met gehele getallen|
-> |[hebben](https://www.postgresql.org/docs/9.5/isn.html)                          | 1,0             | gegevens typen voor International product Numbering Standards|
-> |[ltree](https://www.postgresql.org/docs/9.5/ltree.html)                        | 1,0             | gegevens type voor hiërarchische structuren in structuur|
+> |[intarray](https://www.postgresql.org/docs/9.5/intarray.html)                     | 1.0             | ondersteuning voor functies, Opera tors en index voor 1d-matrices met gehele getallen|
+> |[hebben](https://www.postgresql.org/docs/9.5/isn.html)                          | 1.0             | gegevens typen voor International product Numbering Standards|
+> |[ltree](https://www.postgresql.org/docs/9.5/ltree.html)                        | 1.0             | gegevens type voor hiërarchische structuren in structuur|
 > |[orafce](https://github.com/orafce/orafce)                       | 3.7             | Functies en Opera tors die een subset van functies en pakketten van commerciële RDBMS emuleren|
 > |[pgaudit](https://www.pgaudit.org/)                     | 1.0.7             | biedt controle functionaliteit|
 > |[pgcrypto](https://www.postgresql.org/docs/9.5/pgcrypto.html)                     | 1.2             | cryptografische functies|
@@ -189,18 +189,18 @@ De volgende uitbrei dingen zijn beschikbaar op Azure Database for PostgreSQL ser
 > |[pgstattuple](https://www.postgresql.org/docs/9.5/pgstattuple.html)                  | 1.3             | statistieken van tuple-niveau weer geven|
 > |[pg_buffercache](https://www.postgresql.org/docs/9.5/pgbuffercache.html)               | 1.1             | de gedeelde buffer cache controleren|
 > |[pg_partman](https://github.com/pgpartman/pg_partman)                   | 2.6.3           | Extensie voor het beheren van gepartitioneerde tabellen op tijd of ID|
-> |[pg_prewarm](https://www.postgresql.org/docs/9.5/pgprewarm.html)                   | 1,0             | prewarme-relatie gegevens|
+> |[pg_prewarm](https://www.postgresql.org/docs/9.5/pgprewarm.html)                   | 1.0             | prewarme-relatie gegevens|
 > |[pg_stat_statements](https://www.postgresql.org/docs/9.5/pgstatstatements.html)           | 1.3             | uitvoerings statistieken bijhouden van alle SQL-instructies die zijn uitgevoerd|
 > |[pg_trgm](https://www.postgresql.org/docs/9.5/pgtrgm.html)                      | 1.1             | tekstgelijkeniss meting en index zoeken op basis van trigrams|
-> |[plpgsql](https://www.postgresql.org/docs/9.5/plpgsql.html)                      | 1,0             | Taal van PL/pgSQL-procedure|
+> |[plpgsql](https://www.postgresql.org/docs/9.5/plpgsql.html)                      | 1.0             | Taal van PL/pgSQL-procedure|
 > |[postgis](https://www.postgis.net/)                      | 2.3.0           | Ruimtelijke typen en functies voor PostGIS geometrie, geografie en raster|
 > |[postgis_sfcgal](https://www.postgis.net/)               | 2.3.0           | PostGIS SFCGAL-functies|
 > |[postgis_tiger_geocoder](https://www.postgis.net/)       | 2.3.0           | PostGIS Tiger geocodeer en reverse geocodeer|
 > |[postgis_topology](https://postgis.net/docs/Topology.html)             | 2.3.0           | Ruimtelijke typen en functies van de PostGIS-topologie|
-> |[postgres_fdw](https://www.postgresql.org/docs/9.5/postgres-fdw.html)                 | 1,0             | externe-gegevens wrapper voor externe PostgreSQL-servers|
-> |[tablefunc](https://www.postgresql.org/docs/9.5/tablefunc.html)                    | 1,0             | functies voor het bewerken van hele tabellen, inclusief Kruistabel query's|
-> |[accenten opzeggen](https://www.postgresql.org/docs/9.5/unaccent.html)                     | 1,0             | Zoek woordenlijst voor tekst die accenten verwijdert|
-> |[uuid-ossp](https://www.postgresql.org/docs/9.5/uuid-ossp.html)                    | 1,0             | Universele unieke id's (UUID) genereren|
+> |[postgres_fdw](https://www.postgresql.org/docs/9.5/postgres-fdw.html)                 | 1.0             | externe-gegevens wrapper voor externe PostgreSQL-servers|
+> |[tablefunc](https://www.postgresql.org/docs/9.5/tablefunc.html)                    | 1.0             | functies voor het bewerken van hele tabellen, inclusief Kruistabel query's|
+> |[accenten opzeggen](https://www.postgresql.org/docs/9.5/unaccent.html)                     | 1.0             | Zoek woordenlijst voor tekst die accenten verwijdert|
+> |[uuid-ossp](https://www.postgresql.org/docs/9.5/uuid-ossp.html)                    | 1.0             | Universele unieke id's (UUID) genereren|
 
 
 ## <a name="pg_stat_statements"></a>pg_stat_statements

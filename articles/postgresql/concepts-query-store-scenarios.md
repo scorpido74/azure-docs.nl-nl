@@ -1,17 +1,17 @@
 ---
 title: Scenario's voor het opslaan van query's-Azure Database for PostgreSQL-één server
 description: In dit artikel worden enkele scenario's beschreven voor het query archief in Azure Database for PostgreSQL-één-server.
-author: rachel-msft
-ms.author: raagyema
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 31e3f82b6ea1b1fc15c0832dc03edce2a59f1e1b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad646e39e9b6a87611dc2f40330a77fe70c92c27
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74768347"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710546"
 ---
 # <a name="usage-scenarios-for-query-store"></a>Gebruiks scenario's voor query Store
 
@@ -19,7 +19,7 @@ ms.locfileid: "74768347"
 
 U kunt query Store gebruiken in een groot aantal scenario's waarin de prestaties van voorspel bare werk belastingen kritiek zijn. Bekijk de volgende voorbeelden: 
 - Best dure query's identificeren en afstemmen 
-- A/B testen 
+- A/B-tests 
 - Prestaties stabiel houden tijdens upgrades 
 - Ad hoc-workloads identificeren en verbeteren 
 
@@ -38,7 +38,7 @@ Wanneer u een query met optimale prestaties identificeert, is de actie die u uit
 - Overweeg duurste query's te herschrijven. U kunt bijvoorbeeld gebruikmaken van query parameterisering en het gebruik van dynamische SQL verminderen. Implementeer optimale logica bij het lezen van gegevens, zoals het Toep assen van gegevens filtering aan de data base en niet aan de kant van de toepassing. 
 
 
-## <a name="ab-testing"></a>A/B testen 
+## <a name="ab-testing"></a>A/B-tests 
 Gebruik query Store om de prestaties van de werk belasting te vergelijken vóór en na de wijziging van een toepassing die u wilt introduceren. Voor beelden van scenario's voor het gebruik van query Store voor het beoordelen van de impact van de omgeving of de toepassing die wordt gewijzigd voor de prestaties van de werk belasting: 
 - Een nieuwe versie van een toepassing uit te vouwen. 
 - Extra resources toevoegen aan de server. 
