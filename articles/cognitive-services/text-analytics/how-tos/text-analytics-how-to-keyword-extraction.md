@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 05/13/2020
 ms.author: aahi
-ms.openlocfilehash: c1ca14b8471ef6257c0603e61d78e789e846f0ae
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: e4a652b146286965c68154bd362525861158ecb2
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142398"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91704375"
 ---
 # <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>Voor beeld: sleutel zinnen extra heren met behulp van Text Analytics
 
@@ -30,7 +30,9 @@ Zie voor meer informatie [Ondersteunde talen](../text-analytics-supported-langua
 
 ## <a name="preparation"></a>Voorbereiding
 
-Sleuteltermextractie werkt het beste wanneer u grotere segmenten tekst opgeeft. Dit is het tegenovergestelde van sentimentanalyse, wat beter presteert op kleinere blokken tekst. Overweeg dienovereenkomstig herstructurering van de invoer voor de beste resultaten uit beide bewerkingen.
+[!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
+
+Sleuteltermextractie werkt het beste wanneer u grotere segmenten tekst opgeeft. Dit is het tegenovergestelde van sentimentanalyse, wat beter presteert op kleinere blokken tekst. Voor de beste resultaten bij beide activiteiten, zou u de invoeren dienovereenkomstig kunnen herstructureren.
 
 U moet JSON-documenten hebben met de volgende indeling: ID, tekst, taal
 
@@ -72,11 +74,11 @@ De document grootte moet 5.120 of minder tekens per document zijn en u kunt Maxi
 
 Zie [de Text Analytics-API aanroepen](text-analytics-how-to-call-api.md)voor informatie over de definitie van aanvragen. De volgende punten zijn voor uw gemak opnieuw geformuleerd:
 
-+ Maak een **POST**-aanvraag. Raadpleeg de API-documentatie voor deze aanvraag: [Key frases-API](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/KeyPhrases).
++ Maak een **post** -aanvraag. Raadpleeg de API-documentatie voor deze aanvraag: [Key frases-API](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/KeyPhrases).
 
-+ Stel het HTTP-eind punt voor de extractie van sleutel woordgroepen in met behulp van een Text Analytics bron in azure of een geïnstantieerd [Text Analytics container](text-analytics-how-to-install-containers.md). U moet `/text/analytics/v3.0/keyPhrases` in de URL toevoegen. Bijvoorbeeld: `https://<your-custom-subdomain>.api.cognitiveservices.azure.com/text/analytics/v3.0/keyPhrases`.
++ Stel het HTTP-eind punt voor de extractie van sleutel woordgroepen in met behulp van een Text Analytics bron in azure of een geïnstantieerd [Text Analytics container](text-analytics-how-to-install-containers.md). U moet `/text/analytics/v3.0/keyPhrases` in de URL opnemen. Bijvoorbeeld: `https://<your-custom-subdomain>.api.cognitiveservices.azure.com/text/analytics/v3.0/keyPhrases`.
 
-+ Stel een aanvraag header in voor het toevoegen van de [toegangs sleutel](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) voor Text Analytics bewerkingen.
++ Stel een aanvraagheader in om de [toegangssleutel](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) voor de Text Analytics-bewerkingen op te nemen.
 
 + Verstrek in de hoofdtekst van de aanvraag de JSON-documentenverzameling die u hebt voorbereid voor deze analyse.
 
@@ -95,57 +97,66 @@ Alle POST-verzoeken retourneren een ingedeeld JSON-antwoord met de id's en gedet
 
 Uitvoer wordt onmiddellijk geretourneerd. U kunt de resultaten streamen naar een toepassing die JSON accepteert of u kunt de uitvoer opslaan als lokaal bestand en vervolgens importeren in een toepassing waarmee u kunt sorteren, zoeken en de gegevens kunt manipuleren.
 
-Een voorbeeld van de uitvoer voor sleuteltermextractie:
+Hier ziet u een voor beeld van de uitvoer voor het uitpakken van de sleutel woordgroep van de v 3.1-Preview. 2-eind punt:
 
 ```json
     {
-        "documents": [
-            {
-                "keyPhrases": [
-                    "year",
-                    "trail",
-                    "trip",
-                    "views"
-                ],
-                "id": "1"
-            },
-            {
-                "keyPhrases": [
-                    "marked trails",
-                    "Worst hike",
-                    "goners"
-                ],
-                "id": "2"
-            },
-            {
-                "keyPhrases": [
-                    "trail",
-                    "small children",
-                    "family"
-                ],
-                "id": "3"
-            },
-            {
-                "keyPhrases": [
-                    "spectacular views",
-                    "trail",
-                    "area"
-                ],
-                "id": "4"
-            },
-            {
-                "keyPhrases": [
-                    "places",
-                    "beautiful views",
-                    "favorite trail"
-                ],
-                "id": "5"
-            }
-        ],
-        "errors": []
+       "documents":[
+          {
+             "id":"1",
+             "keyPhrases":[
+                "year",
+                "trail",
+                "trip",
+                "views",
+                "hike"
+             ],
+             "warnings":[]
+          },
+          {
+             "id":"2",
+             "keyPhrases":[
+                "marked trails",
+                "Worst hike",
+                "goners"
+             ],
+             "warnings":[]
+          },
+          {
+             "id":"3",
+             "keyPhrases":[
+                "trail",
+                "small children",
+                "family"
+             ],
+             "warnings":[]
+          },
+          {
+             "id":"4",
+             "keyPhrases":[
+                "spectacular views",
+                "trail",
+                "Worth",
+                "area"
+             ],
+             "warnings":[]
+          },
+          {
+             "id":"5",
+             "keyPhrases":[
+                "places",
+                "beautiful views",
+                "favorite trail",
+                "rest"
+             ],
+             "warnings":[]
+          }
+       ],
+       "errors":[],
+       "modelVersion":"2020-07-01"
     }
-```
 
+```
 Zoals aangegeven, detecteert en negeert het analyse programma niet-essentiële woorden en worden enkele termen of zinsdelen weer gegeven die het onderwerp of object van een zin lijken te zijn.
 
 ## <a name="summary"></a>Samenvatting
@@ -153,11 +164,11 @@ Zoals aangegeven, detecteert en negeert het analyse programma niet-essentiële w
 In dit artikel hebt u concepten en werk stromen geleerd voor het uitpakken van sleutel zinnen door gebruik te maken van Text Analytics in Cognitive Services. Samenvatting:
 
 + [Sleuteltermextractie-API](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/KeyPhrases) is beschikbaar in bepaalde talen.
-+ JSON-documenten in de hoofd tekst van de aanvraag bevatten een ID, tekst en taal code.
++ JSON-documenten in de aanvraagbody omvatten een id, tekst en taalcode.
 + POST-aanvraag is een `/keyphrases`-eindpunt die een persoonlijke [toegangssleutel en een eindpunt](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) gebruikt die geldig zijn voor uw abonnement.
 + De uitvoer van antwoorden, die bestaat uit sleutel woorden en zinsdelen voor elke document-ID, kan worden gestreamd naar elke app die JSON accepteert, met inbegrip van Microsoft Office Excel en Power BI, om een paar te noemen.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
  [Overzicht van Text Analytics](../overview.md) [Veelgestelde vragen](../text-analytics-resource-faq.md)</br>
  [Text Analytics-productpagina](//go.microsoft.com/fwlink/?LinkID=759712)
@@ -165,5 +176,5 @@ In dit artikel hebt u concepten en werk stromen geleerd voor het uitpakken van s
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Overzicht van Text Analytics](../overview.md)
-* [De Text Analytics-client bibliotheek gebruiken](../quickstarts/text-analytics-sdk.md)
-* [Wat is er nieuw](../whats-new.md)
+* [De Text Analytics-clientbibliotheek gebruiken](../quickstarts/text-analytics-sdk.md)
+* [Nieuwe functies](../whats-new.md)

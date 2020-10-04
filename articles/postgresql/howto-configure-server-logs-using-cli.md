@@ -1,19 +1,19 @@
 ---
 title: Logboeken beheren-Azure CLI-Azure Database for PostgreSQL-één server
 description: In dit artikel wordt beschreven hoe u de server Logboeken (logboek bestanden) kunt configureren en openen in Azure Database for PostgreSQL-één server met behulp van de Azure CLI.
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 5/6/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 50875d0575da7287269bee55004a2acfa5396cd5
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 71dac0b6ea2202e712280607a73e860ae68bdb73
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87493547"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91704868"
 ---
 # <a name="configure-and-access-server-logs-by-using-azure-cli"></a>Server logboeken configureren en openen met behulp van Azure CLI
 U kunt de fouten logboeken van de PostgreSQL-server downloaden met behulp van de opdracht regel interface (Azure CLI). Toegang tot transactie Logboeken wordt echter niet ondersteund. 
@@ -25,7 +25,7 @@ Als u deze hand leiding wilt door lopen, hebt u het volgende nodig:
 
 ## <a name="configure-logging"></a>Logboek registratie configureren
 U kunt de server configureren voor toegang tot de query logboeken en fout Logboeken. Fout logboeken kunnen automatische vacuüm-, verbindings-en controlepunt gegevens hebben.
-1. Schakel logboek registratie in.
+1. Logboekregistratie inschakelen.
 2. Als u query logboek registratie wilt inschakelen, geeft u de instructie update **Log \_ ** en **Log \_ min \_ duration \_ **op.
 3. Bewaar periode bijwerken.
 

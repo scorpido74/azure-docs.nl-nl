@@ -1,17 +1,17 @@
 ---
 title: Azure Database for PostgreSQL beheren-Azure Portal
 description: Meer informatie over het beheren van een Azure Database for PostgreSQL-server vanuit de Azure Portal.
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 11/20/2019
-ms.openlocfilehash: 02a50a94b0b07d1755abe78c567df7ff5c7eda92
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 393e67d1b690f7231b5bf298b44f4db7c489d184
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907443"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91704511"
 ---
 # <a name="manage-an-azure-database-for-postgresql-server-using-the-azure-portal"></a>Een Azure Database for PostgreSQL-server beheren met behulp van de Azure Portal
 
@@ -50,7 +50,7 @@ U kunt schalen van Algemeen naar geoptimaliseerd voor geheugen en vice versa. Wi
 
 2. Wijzig de instelling **vCore** door de schuif regelaar naar de gewenste waarde te verplaatsen.
 
-   :::image type="content" source="./media/howto-create-manage-server-portal/scaling-compute.png" alt-text="Scherm opname van Azure Portal om de optie vCore te kiezen in Azure Database for PostgreSQL":::
+   :::image type="content" source="./media/howto-create-manage-server-portal/scaling-compute.png" alt-text="Scherm opname van Azure Portal om de laag basis, Algemeen of geoptimaliseerd voor geheugen te kiezen in Azure Database for PostgreSQL":::
 
    > [!NOTE]
    > Het schalen van vCores zorgt ervoor dat de server opnieuw wordt opgestart.
@@ -63,7 +63,7 @@ U kunt schalen van Algemeen naar geoptimaliseerd voor geheugen en vice versa. Wi
 
 2. Wijzig de **opslag** instelling door de schuif regelaar omhoog te verplaatsen naar de gewenste waarde.
 
-   :::image type="content" source="./media/howto-create-manage-server-portal/scaling-storage.png" alt-text="Scherm opname van Azure Portal voor het kiezen van opslag schaal in Azure Database for PostgreSQL":::
+   :::image type="content" source="./media/howto-create-manage-server-portal/scaling-storage.png" alt-text="Scherm opname van Azure Portal om de laag basis, Algemeen of geoptimaliseerd voor geheugen te kiezen in Azure Database for PostgreSQL":::
 
    > [!NOTE]
    > De opslag kan niet omlaag worden geschaald.
@@ -76,11 +76,11 @@ U kunt het wacht woord van de beheerdersrol wijzigen met behulp van de Azure Por
 
 1. Selecteer uw server in de Azure Portal. Selecteer **wacht woord opnieuw instellen**in het venster **overzicht** .
 
-   :::image type="content" source="./media/howto-create-manage-server-portal/overview-reset-password.png" alt-text="Scherm opname van Azure Portal om het wacht woord in Azure Database for PostgreSQL opnieuw in te stellen":::
+   :::image type="content" source="./media/howto-create-manage-server-portal/overview-reset-password.png" alt-text="Scherm opname van Azure Portal om de laag basis, Algemeen of geoptimaliseerd voor geheugen te kiezen in Azure Database for PostgreSQL":::
 
 2. Voer een nieuw wachtwoord in en bevestig het wachtwoord. In het tekstvak wordt u gevraagd om de vereisten voor wachtwoord complexiteit.
 
-   :::image type="content" source="./media/howto-create-manage-server-portal/reset-password.png" alt-text="Scherm opname van Azure Portal om uw wacht woord opnieuw in te stellen en op te slaan in Azure Database for PostgreSQL":::
+   :::image type="content" source="./media/howto-create-manage-server-portal/reset-password.png" alt-text="Scherm opname van Azure Portal om de laag basis, Algemeen of geoptimaliseerd voor geheugen te kiezen in Azure Database for PostgreSQL":::
 
 3. Selecteer **OK** om het nieuwe wacht woord op te slaan.
 
@@ -90,11 +90,11 @@ U kunt uw server verwijderen als u deze niet meer nodig hebt.
 
 1. Selecteer uw server in de Azure Portal. Selecteer **verwijderen**in het venster **overzicht** .
 
-   :::image type="content" source="./media/howto-create-manage-server-portal/overview-delete.png" alt-text="Scherm opname van Azure Portal om de server in Azure Database for PostgreSQL te verwijderen":::
+   :::image type="content" source="./media/howto-create-manage-server-portal/overview-delete.png" alt-text="Scherm opname van Azure Portal om de laag basis, Algemeen of geoptimaliseerd voor geheugen te kiezen in Azure Database for PostgreSQL":::
 
 2. Typ de naam van de server in het invoervak om te bevestigen dat dit de server is die u wilt verwijderen.
 
-   :::image type="content" source="./media/howto-create-manage-server-portal/confirm-delete.png" alt-text="Scherm opname van Azure Portal om het verwijderen van de server in Azure Database for PostgreSQL te bevestigen":::
+   :::image type="content" source="./media/howto-create-manage-server-portal/confirm-delete.png" alt-text="Scherm opname van Azure Portal om de laag basis, Algemeen of geoptimaliseerd voor geheugen te kiezen in Azure Database for PostgreSQL":::
 
    > [!NOTE]
    > Het verwijderen van een server is onomkeerbaar.

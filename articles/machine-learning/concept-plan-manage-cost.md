@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 872775df82d609a640346ddef2f77381c2160fcf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 031ec44cec473d9f2b2f05669aa3fc18084985f2
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91276064"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91704725"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>Kosten plannen en beheren voor Azure Machine Learning
 
@@ -69,7 +69,7 @@ Met gegevens die voortdurend worden gewijzigd, moet u snelle en gestroomlijnde m
 
 Azure Machine Learning gebruikers kunnen gebruikmaken van het beheerde Azure Machine Learning Compute-Cluster, ook wel AmlCompute genoemd. AmlCompute ondersteunt diverse GPU-en CPU-opties. De AmlCompute wordt intern gehost namens uw abonnement door Azure Machine Learning. Het biedt dezelfde zakelijke beveiliging, naleving en governance op Azure IaaS-Cloud schaal.
 
-Omdat deze reken groepen zich bevinden in de IaaS-infra structuur van Azure, kunt u uw training implementeren, schalen en beheren met dezelfde beveiligings-en nalevings vereisten als de rest van uw infra structuur.  Deze implementaties worden uitgevoerd in uw abonnement en voldoen aan de regels voor beheer. Meer informatie over [Azure machine learning Compute](how-to-create-attach-compute-sdk.md#amlcompute).
+Omdat deze reken groepen zich bevinden in de IaaS-infra structuur van Azure, kunt u uw training implementeren, schalen en beheren met dezelfde beveiligings-en nalevings vereisten als de rest van uw infra structuur.  Deze implementaties worden uitgevoerd in uw abonnement en voldoen aan de regels voor beheer. Meer informatie over [Azure machine learning Compute](how-to-create-attach-compute-cluster.md).
 
 ## <a name="configure-training-clusters-for-autoscaling"></a>Trainings clusters configureren voor automatisch schalen
 
@@ -127,4 +127,4 @@ Azure Machine Learning Compute ondersteunt gereserveerde instanties inherent. Al
 Meer informatie over:
 * [Resource quota beheren en verhogen](how-to-manage-quotas.md)
 * [Kosten beheren met kosten analyse](../cost-management-billing/costs/quick-acm-cost-analysis.md).
-* Maak Azure Machine Learning Compute met [SDK](how-to-create-attach-compute-sdk.md#amlcompute) of in [Studio](how-to-create-attach-compute-studio.md#amlcompute).
+* Maak Azure Machine Learning Compute met [SDK](how-to-create-attach-compute-cluster.md) of in [Studio](how-to-create-attach-compute-studio.md#amlcompute).

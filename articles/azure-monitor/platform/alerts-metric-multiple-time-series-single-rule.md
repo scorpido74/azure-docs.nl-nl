@@ -4,14 +4,14 @@ description: Waarschuwing op schaal met één waarschuwings regel voor meerdere 
 author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
-ms.date: 08/11/2020
+ms.date: 10/04/2020
 ms.subservice: alerts
-ms.openlocfilehash: f7ca91ca49d9357285e1307c5051ef5685ad24c9
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 81e09e6d9c6a57339f1d6f1eb5ce4f494555fa19
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88186925"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91704477"
 ---
 # <a name="monitor-multiple-time-series-in-a-single-metric-alert-rule"></a>Meerdere tijd reeksen bewaken in één metrische waarschuwings regel
 
@@ -174,6 +174,11 @@ De prijs informatie voor metrische waarschuwings regels is beschikbaar op de [pa
 Bij het maken van een metrische waarschuwings regel is de opgegeven prijs schatting gebaseerd op de geselecteerde onderdelen en het aantal bewaakte time-series, dat wordt bepaald op basis van de regel configuratie en huidige metrische waarden. De maandelijkse kosten zijn echter gebaseerd op de werkelijke evaluaties van de time-series en kunnen daarom afwijken van de oorspronkelijke schatting als een bepaalde periode geen gegevens heeft om te evalueren, of als de waarschuwings regel gebruikmaakt van functies die het dynamisch schalen kunnen maken.
 
 Een waarschuwings regel kan bijvoorbeeld een hoge prijs schatting weer geven als deze gebruikmaakt van de functie voor meerdere dimensies, en een groot aantal combi Naties van dimensie waarden worden geselecteerd, wat resulteert in de bewaking van veel tijd reeksen. Maar de werkelijke kosten voor die waarschuwings regel kunnen lager zijn als niet alle tijd reeksen die het resultaat zijn van de combi Naties van dimensie waarden eigenlijk gegevens hebben om te evalueren.
+
+## <a name="number-of-time-series-monitored-by-a-single-alert-rule"></a>Aantal tijd reeksen dat wordt bewaakt door één waarschuwings regel
+
+Om overtollige kosten te voor komen, kan elke waarschuwings regel standaard tot 5000 time-series bewaken. Als u deze limiet van uw abonnement wilt opheffen, opent u een ondersteunings ticket.
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

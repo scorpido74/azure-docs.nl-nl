@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: d9738d3abfdf30e133ae241c497823be349d25da
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: c5ee162a78ac5e8c3080cd33c89fcee507ecfe92
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040075"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91704851"
 ---
 # <a name="administer-group-policy-in-an-azure-active-directory-domain-services-managed-domain"></a>groepsbeleid beheren in een Azure Active Directory Domain Services beheerd domein
 
@@ -90,7 +90,7 @@ Er zijn twee ingebouwde groepsbeleid objecten (Gpo's) in een beheerd domein: een
 
 1. Het hulp programma Groepsbeleidsbeheer-editor wordt geopend, waarmee u het groeps beleidsobject, zoals *account beleid*, kunt aanpassen:
 
-    ![Groeps beleidsobject aanpassen om instellingen te configureren zoals vereist](./media/active-directory-domain-services-admin-guide/gp-editor.png)
+    ![Scherm afbeelding van de Groepsbeleidsbeheer-editor.](./media/active-directory-domain-services-admin-guide/gp-editor.png)
 
     Wanneer u klaar bent, kiest u **bestand > opslaan** om het beleid op te slaan. Computers vernieuwen groepsbeleid standaard elke 90 minuten en voeren de wijzigingen toe die u hebt aangebracht.
 

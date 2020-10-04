@@ -1,17 +1,17 @@
 ---
 title: Gebruikers maken-Azure Database for PostgreSQL-één server
 description: In dit artikel wordt beschreven hoe u nieuwe gebruikers accounts kunt maken om te communiceren met een Azure Database for PostgreSQL-één-server.
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2019
-ms.openlocfilehash: 1ae627a7ee1a7e2a704cc17cc8ec9ccc9846c109
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 1dbbdde03d1c24882be298d8c81362744debeecf
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829302"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91704936"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---single-server"></a>Gebruikers maken in Azure Database for PostgreSQL-één server
 
@@ -23,7 +23,7 @@ Als u meer wilt weten over het maken en beheren van Azure-abonnements gebruikers
 
 Wanneer u uw Azure Database for PostgreSQL voor het eerst hebt gemaakt, hebt u de gebruikers naam en het wacht woord voor de server beheerder opgegeven. Voor meer informatie kunt u de [Snelstartgids](quickstart-create-server-database-portal.md) volgen om de stapsgewijze benadering te bekijken. Omdat de gebruikers naam van de server beheerder een aangepaste naam is, kunt u de gekozen gebruikers naam voor de server beheerder vinden in de Azure Portal.
 
-De Azure Database for PostgreSQL-server wordt gemaakt met de drie standaard rollen gedefinieerd. U kunt deze rollen zien door de opdracht uit te voeren:`SELECT rolname FROM pg_roles;`
+De Azure Database for PostgreSQL-server wordt gemaakt met de drie standaard rollen gedefinieerd. U kunt deze rollen zien door de opdracht uit te voeren: `SELECT rolname FROM pg_roles;`
 
 - azure_pg_admin
 - azure_superuser

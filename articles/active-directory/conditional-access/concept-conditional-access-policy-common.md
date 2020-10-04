@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbf4d7b9f622ff590eee401544bf62655fd8d096
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 114f26c71ee1aecdb1a0ad3d1c01e558843c0969
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024380"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91705055"
 ---
 # <a name="common-conditional-access-policies"></a>Algemeen beleid voor voorwaardelijke toegang
 
@@ -38,14 +38,14 @@ Meer informatie over accounts voor toegang in nood gevallen en waarom ze belang 
 * [MFA vereisen voor Azure-beheer](howto-conditional-access-policy-azure-management.md)\*
 * [MFA vereisen voor alle gebruikers](howto-conditional-access-policy-all-users-mfa.md)\*
 
-\*Deze vier beleids regels worden samen geconfigureerd, waarbij de functionaliteit is ingeschakeld door de [standaard instellingen voor beveiliging](../fundamentals/concept-fundamentals-security-defaults.md).
+\* Deze vier beleids regels worden samen geconfigureerd, waarbij de functionaliteit is ingeschakeld door de [standaard instellingen voor beveiliging](../fundamentals/concept-fundamentals-security-defaults.md).
 
 ## <a name="additional-policies"></a>Extra beleids regels
 
-* [Aanmelden op risico gebaseerd voorwaardelijke toegang (vereist Azure AD Premium P2)](howto-conditional-access-policy-risk.md)
+* [Aan aanmeldings Risico's gebaseerde voorwaardelijke toegang (vereist Azure AD Premium P2)](howto-conditional-access-policy-risk.md)
 * [Voorwaardelijke toegang op basis van gebruikers risico (vereist Azure AD Premium P2)](howto-conditional-access-policy-risk-user.md)
 * [Vertrouwde locatie vereisen voor MFA-registratie](howto-conditional-access-policy-registration.md)
-* [Toegang op locatie blok keren](howto-conditional-access-policy-location.md)
+* [Toegang per locatie blokkeren](howto-conditional-access-policy-location.md)
 * [Compatibel apparaat vereisen](howto-conditional-access-policy-compliant-device.md)
 * [Toegang blok keren met uitzonde ring van specifieke apps](howto-conditional-access-policy-block-access.md)
 

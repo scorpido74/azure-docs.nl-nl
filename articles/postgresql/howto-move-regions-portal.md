@@ -1,18 +1,18 @@
 ---
 title: Azure-regio's verplaatsen-Azure Portal-Azure Database for PostgreSQL-één server
 description: Verplaats een Azure Database for PostgreSQL-server van de ene Azure-regio naar de andere met behulp van een lees replica en de Azure Portal.
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/29/2020
-ms.openlocfilehash: c7c095aa710d97292afc7d2d8f633058c21fa4d0
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 0eaac8ac65b490e1b8de716d79bd36d2f7a7567c
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91539228"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707656"
 ---
 # <a name="move-an-azure-database-for-azure-database-for-postgresql---single-server-to-another-region-by-using-the-azure-portal"></a>Een Azure-Data Base voor Azure Database for PostgreSQL-één server naar een andere regio verplaatsen met behulp van de Azure Portal
 

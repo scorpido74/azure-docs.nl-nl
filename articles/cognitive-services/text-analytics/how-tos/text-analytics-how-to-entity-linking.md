@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 09/24/2020
 ms.author: aahi
-ms.openlocfilehash: 5f5122b5fa7c20bc0717ef1605e41bb5f2700be2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d6820e890607ff16230ecf48e8318e6d1119a3a2
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91309095"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707503"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Benoemde entiteits herkenning gebruiken in Text Analytics
 
@@ -141,10 +141,11 @@ Uitvoer wordt onmiddellijk geretourneerd. U kunt de resultaten streamen naar een
 
 ### <a name="example-responses"></a>Voorbeeld reacties
 
-Versie 3 biedt afzonderlijke eind punten voor NER en entiteits koppelingen. De antwoorden voor beide bewerkingen vindt u hieronder. 
+Versie 3 biedt afzonderlijke eind punten voor algemene NER, PII en entiteits koppeling. De antwoorden voor beide bewerkingen vindt u hieronder. 
 
 #### <a name="version-30"></a>[Versie 3.0](#tab/version-3)
 
+Voor beeld van een algemeen NER-antwoord:
 ```json
 {
   "documents": [
@@ -198,6 +199,44 @@ Versie 3 biedt afzonderlijke eind punten voor NER en entiteits koppelingen. De a
 ```
 #### <a name="version-31-preview"></a>[Versie 3,1-Preview](#tab/version-3-preview)
 
+Voor beeld van een PII-antwoord:
+```json
+{
+  "documents": [
+    {
+    "redactedText": "You can even pre-order from their online menu at *************************, call ************ or send email to ***************************!",
+    "id": "0",
+    "entities": [
+        {
+        "text": "www.contososteakhouse.com",
+        "category": "URL",
+        "offset": 49,
+        "length": 25,
+        "confidenceScore": 0.8
+        }, 
+        {
+        "text": "312-555-0176",
+        "category": "Phone Number",
+        "offset": 81,
+        "length": 12,
+        "confidenceScore": 0.8
+        }, 
+        {
+        "text": "order@contososteakhouse.com",
+        "category": "Email",
+        "offset": 111,
+        "length": 27,
+        "confidenceScore": 0.8
+        }
+      ],
+    "warnings": []
+    }
+  ],
+  "errors": [],
+  "modelVersion": "2020-07-01"
+}
+```
+Voor beeld van een entiteit koppelings reactie:
 ```json
 {
   "documents": [
@@ -244,7 +283,6 @@ Versie 3 biedt afzonderlijke eind punten voor NER en entiteits koppelingen. De a
   "modelVersion": "2020-02-01"
 }
 ```
-
 ---
 
 

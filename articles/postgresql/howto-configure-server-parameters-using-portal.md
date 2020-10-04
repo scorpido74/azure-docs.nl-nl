@@ -1,17 +1,17 @@
 ---
 title: Server parameters configureren-Azure Portal-Azure Database for PostgreSQL-één server
 description: In dit artikel wordt beschreven hoe u de post gres-para meters in Azure Database for PostgreSQL kunt configureren via de Azure Portal.
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 02/28/2018
-ms.openlocfilehash: a2410328b068be6bc5af358fa72ee20eead4c8ed
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e1b40e3116d56e87a2f397350ef2ba5510e04c0c
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907458"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707690"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-postgresql---single-server-via-the-azure-portal"></a>Server parameters configureren in Azure Database for PostgreSQL-één server via de Azure Portal 
 U kunt configuratie parameters voor een Azure Database for PostgreSQL server weer geven, tonen en bijwerken via de Azure Portal.
@@ -29,19 +29,19 @@ Als u deze hand leiding wilt door lopen, hebt u het volgende nodig:
 :::image type="content" source="./media/howto-configure-server-parameters-in-portal/3-overview-of-parameters.png" alt-text="Overzichts pagina voor para meters":::
 
 4. Selecteer de **vervolg keuzelijst** om de mogelijke waarden voor enumerated-type para meters zoals client_min_messages weer te geven.
-:::image type="content" source="./media/howto-configure-server-parameters-in-portal/4-enum-drop-down.png" alt-text="Vervolg keuzelijst opsommen":::
+:::image type="content" source="./media/howto-configure-server-parameters-in-portal/4-enum-drop-down.png" alt-text="Overzichts pagina voor para meters":::
 
 5. Selecteer of Beweeg de muis aanwijzer over de knop met het **i** (informatie) om het bereik van mogelijke waarden voor numerieke para meters zoals cpu_index_tuple_cost weer te geven.
-:::image type="content" source="./media/howto-configure-server-parameters-in-portal/4-information-button.png" alt-text="informatie knop":::
+:::image type="content" source="./media/howto-configure-server-parameters-in-portal/4-information-button.png" alt-text="Overzichts pagina voor para meters":::
 
 6. Gebruik, indien nodig, het **zoekvak** om te beperken tot een specifieke para meter. De zoek opdracht bevindt zich op de naam en beschrijving van de para meters.
-:::image type="content" source="./media/howto-configure-server-parameters-in-portal/5-search.png" alt-text="Zoekresultaten":::
+:::image type="content" source="./media/howto-configure-server-parameters-in-portal/5-search.png" alt-text="Overzichts pagina voor para meters":::
 
 7. Wijzig de parameter waarden die u wilt aanpassen. Alle wijzigingen die u aanbrengt in een sessie, worden in paars gemarkeerd. Wanneer u de waarden hebt gewijzigd, kunt u **Opslaan**selecteren. Of u kunt uw wijzigingen **negeren** .
-:::image type="content" source="./media/howto-configure-server-parameters-in-portal/6-save-and-discard-buttons.png" alt-text="Wijzigingen opslaan of negeren":::
+:::image type="content" source="./media/howto-configure-server-parameters-in-portal/6-save-and-discard-buttons.png" alt-text="Overzichts pagina voor para meters":::
 
 8. Als u nieuwe waarden voor de para meters hebt opgeslagen, kunt u altijd terugkeren naar de standaard waarden door **alles opnieuw instellen op de standaard**waarde te selecteren.
-:::image type="content" source="./media/howto-configure-server-parameters-in-portal/7-reset-to-default-button.png" alt-text="Alles opnieuw instellen op standaard waarden":::
+:::image type="content" source="./media/howto-configure-server-parameters-in-portal/7-reset-to-default-button.png" alt-text="Overzichts pagina voor para meters":::
 
 ## <a name="next-steps"></a>Volgende stappen
 Meer informatie over:
