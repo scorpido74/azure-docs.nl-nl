@@ -6,21 +6,21 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 07/10/2020
-ms.openlocfilehash: fd741a9401a3936ec02939562e8e85046e829d31
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/16/2020
+ms.openlocfilehash: 4c8d2143d2b6e18de2669a6b45961e601cc394bb
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075930"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707554"
 ---
 # <a name="introduction-to-stream-analytics-windowing-functions"></a>Inleiding tot Stream Analytics-venster functies
 
 In time-streaming scenario's is het uitvoeren van bewerkingen op de gegevens in tijdelijke Vensters een gemeen schappelijk patroon. Stream Analytics heeft systeem eigen ondersteuning voor Windows-functies, waardoor ontwikkel aars complexe stroom verwerkings taken met minimale inspanning kunnen ontwerpen.
 
-Er zijn vier soorten tijdelijke Vensters waaruit u kunt kiezen: [**tumblingvenstertriggers**](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics), [**verspringen**](https://docs.microsoft.com/stream-analytics-query/hopping-window-azure-stream-analytics), [**schuiven**](https://docs.microsoft.com/stream-analytics-query/sliding-window-azure-stream-analytics)en [**sessie**](https://docs.microsoft.com/stream-analytics-query/session-window-azure-stream-analytics) Vensters.  U gebruikt de venster functies in de [**Group by**](https://docs.microsoft.com/stream-analytics-query/group-by-azure-stream-analytics) -component van de query syntaxis in uw stream Analytics-taken. U kunt ook gebeurtenissen met meerdere vensters samen voegen met behulp van de [functie **Windows ()** ](https://docs.microsoft.com/stream-analytics-query/windows-azure-stream-analytics).
+Er zijn vijf soorten tijdelijke Vensters waaruit u kunt kiezen: [**tumblingvenstertriggers**](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics), [**verspringen**](https://docs.microsoft.com/stream-analytics-query/hopping-window-azure-stream-analytics), [**schuiven**](https://docs.microsoft.com/stream-analytics-query/sliding-window-azure-stream-analytics), [**sessie**](https://docs.microsoft.com/stream-analytics-query/session-window-azure-stream-analytics)en [**moment opnamen**](https://docs.microsoft.com/stream-analytics-query/snapshot-window-azure-stream-analytics) .  U gebruikt de venster functies in de [**Group by**](https://docs.microsoft.com/stream-analytics-query/group-by-azure-stream-analytics) -component van de query syntaxis in uw stream Analytics-taken. U kunt ook gebeurtenissen met meerdere vensters samen voegen met behulp van de [functie **Windows ()** ](https://docs.microsoft.com/stream-analytics-query/windows-azure-stream-analytics).
 
-Alle uitvoer resultaten van de [venster](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics) bewerkingen aan het **einde** van het venster. De uitvoer van het venster is één gebeurtenis op basis van de statistische functie die wordt gebruikt. De uitvoer gebeurtenis heeft het tijds tempel van het einde van het venster en alle venster functies worden gedefinieerd met een vaste lengte. 
+Alle uitvoer resultaten van de [venster](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics) bewerkingen aan het **einde** van het venster. Houd er rekening mee dat wanneer u een stream Analytics-taak start, u de *Start tijd van de taak uitvoer* kunt opgeven, waarna het systeem automatisch eerdere gebeurtenissen in de binnenkomende stromen ophaalt om het eerste venster op de opgegeven tijd uit te voeren. Als u bijvoorbeeld met de optie *nu* begint, wordt het onmiddellijk om gegevens te verzenden. De uitvoer van het venster is één gebeurtenis op basis van de statistische functie die wordt gebruikt. De uitvoer gebeurtenis heeft het tijds tempel van het einde van het venster en alle venster functies worden gedefinieerd met een vaste lengte. 
 
 ![Concepten van Stream Analytics-venster functies](media/stream-analytics-window-functions/stream-analytics-window-functions-conceptual.png)
 
@@ -30,7 +30,7 @@ Functies van het tumblingvenstertriggers-venster worden gebruikt om een gegevens
 ![Stream Analytics venster tumblingvenstertriggers](media/stream-analytics-window-functions/stream-analytics-window-functions-tumbling-intro.png)
 
 ## <a name="hopping-window"></a>Venster verspringen
-HoppingWindow-functies worden gebruikt om met een vaste tijdstuur vooruit te gaan in de tijd. HoppingWindows kunnen worden beschouwd als TumblingWindows die wel overlappen, wat betekent dat gebeurtenissen deel kunnen uitmaken van meer dan één resultatenset van een HoppingWindow. Als u een verspringen-venster hetzelfde wilt maken als een Tumblingvenstertriggers-venster, geeft u de grootte van de hop op die hetzelfde is als de venster grootte. 
+HoppingWindow-functies worden gebruikt om met een vaste tijdstuur vooruit te gaan in de tijd. Het kan handig zijn om deze te zien als Tumblingvenstertriggers Vensters die elkaars overlappen en vaker kunnen worden verzonden dan de grootte van het venster. Gebeurtenissen kunnen deel uitmaken van meer dan één verspringen-venster met resultaten. Als u een verspringen-venster hetzelfde wilt maken als een Tumblingvenstertriggers-venster, geeft u de grootte van de hop op die hetzelfde is als de venster grootte. 
 
 ![Stream Analytics venster verspringen](media/stream-analytics-window-functions/stream-analytics-window-functions-hopping-intro.png)
 

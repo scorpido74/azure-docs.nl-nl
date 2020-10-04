@@ -12,12 +12,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 548113a5f775595caf3a798d7b35eddfbc80674e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1742c80fd6914a1c9420f37217df02791e80da9d
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90886091"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710053"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Locatie voor het opslaan en schrijven van bestanden voor Azure Machine Learning experimenten
 
@@ -79,4 +79,4 @@ Als u geen gegevens opslag nodig hebt, schrijft u de bestanden naar de `./output
 
 * Meer informatie over [het verkrijgen van toegang tot gegevens uit uw gegevens opslag](how-to-access-data.md).
 
-* Meer informatie over het maken van Compute-doelen met de [python-SDK](how-to-create-attach-compute-sdk.md) of het gebruik van [Studio](how-to-create-attach-compute-studio.md).
+* Meer informatie over het [maken van Compute-doelen voor model training en-implementatie](how-to-create-attach-compute-studio.md)

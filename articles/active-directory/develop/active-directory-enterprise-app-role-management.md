@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 04/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 85c406fc561424d7b02d39dfd58dc3c8fe34aab2
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 8ec87a8d78f73af48b662c5971dfe1803717f88a
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88116084"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91704545"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Procedure: de rol claim configureren die is uitgegeven in het SAML-token voor zakelijke toepassingen
 
@@ -34,7 +34,7 @@ Als uw toepassing verwacht dat aangepaste rollen worden door gegeven in een SAML
 
 ## <a name="create-roles-for-an-application"></a>Rollen maken voor een toepassing
 
-1. Selecteer in de [Azure Portal](https://portal.azure.com)in het linkerdeel venster het **Azure Active Directory** pictogram.
+1. In de [Azure-portal](https://portal.azure.com), selecteert u in het linkerdeelvenster het pictogram **Azure Active Directory**.
 
     ![Azure Active Directory pictogram][1]
 
@@ -75,7 +75,7 @@ Als uw toepassing verwacht dat aangepaste rollen worden door gegeven in een SAML
 
      `https://graph.microsoft.com/beta/servicePrincipals`
 
-      Als u meerdere mappen gebruikt, volgt u dit patroon:`https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
+      Als u meerdere mappen gebruikt, volgt u dit patroon: `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
 
       ![Graph Explorer in het dialoog venster met de query voor het ophalen van service-principals](./media/active-directory-enterprise-app-role-management/graph-explorer-new1.png)
 
@@ -159,7 +159,7 @@ Als uw toepassing verwacht dat aangepaste rollen worden door gegeven in een SAML
 
     a. Klik op pictogram **bewerken** om **gebruikers kenmerken** te openen & dialoog venster claims.
 
-      ![Knop kenmerk toevoegen](./media/active-directory-enterprise-app-role-management/editattribute.png)
+      ![Scherm opname van het bewerkings pictogram waarmee het dialoog venster gebruikers kenmerken & claims wordt geopend.](./media/active-directory-enterprise-app-role-management/editattribute.png)
 
     b. Voeg in het dialoog venster **gebruikers claims beheren** het SAML-token kenmerk toe door te klikken op **nieuwe claim toevoegen**.
 
@@ -169,7 +169,7 @@ Als uw toepassing verwacht dat aangepaste rollen worden door gegeven in een SAML
 
     c. Typ in het vak **naam** de naam van het kenmerk, indien nodig. In dit voor beeld wordt de **rolnaam** gebruikt als claim naam.
 
-    d. Laat het vak **naam ruimte** leeg.
+    d. Laat het vak **Naamruimte** leeg.
 
     e. Typ de kenmerkwaarde voor die rij in de lijst met **bronkenmerken**.
 
@@ -189,7 +189,7 @@ Voer de volgende stappen uit om een bestaande rol bij te werken:
 
     `https://graph.microsoft.com/beta/servicePrincipals`
 
-    Als u meerdere mappen gebruikt, volgt u dit patroon:`https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
+    Als u meerdere mappen gebruikt, volgt u dit patroon: `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
 
     ![Graph Explorer in het dialoog venster met de query voor het ophalen van service-principals](./media/active-directory-enterprise-app-role-management/graph-explorer-new1.png)
 
@@ -227,7 +227,7 @@ Als u een bestaande functie wilt verwijderen, voert u de volgende stappen uit:
 
     `https://graph.microsoft.com/beta/servicePrincipals`
 
-    Als u meerdere mappen gebruikt, volgt u dit patroon:`https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
+    Als u meerdere mappen gebruikt, volgt u dit patroon: `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
 
     ![Graph Explorer in het dialoog venster met de query voor het ophalen van de lijst met Service-principals](./media/active-directory-enterprise-app-role-management/graph-explorer-new1.png)
 

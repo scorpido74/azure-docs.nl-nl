@@ -1,17 +1,17 @@
 ---
 title: Replica's lezen-Azure Database for PostgreSQL-één server
 description: In dit artikel wordt de functie voor het lezen van replica's in Azure Database for PostgreSQL-één server beschreven.
-author: rachel-msft
-ms.author: raagyema
+author: sr-msft
+ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: d1fa99d0954177e2804039fc71c2ba010b94bd50
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 2d0ee0e4c5cf3f7c2f4b623f0270ecf5eb01fc36
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91530937"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710512"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Replica's lezen in Azure Database for PostgreSQL-één server
 
@@ -80,10 +80,10 @@ psql -h myreplica.postgres.database.azure.com -U myadmin@myreplica -d postgres
 
 Voer bij de prompt het wacht woord voor het gebruikers account in.
 
-## <a name="monitor-replication"></a>Replicatie bewaken
+## <a name="monitor-replication"></a>Replicatie controleren
 Azure Database for PostgreSQL biedt twee metrische gegevens voor het controleren van replicatie. De twee meet waarden zijn de **maximale vertraging voor replica's** en **replica vertraging**. Zie voor meer informatie over het weer geven van deze metrische gegevens het gedeelte **een replica bewaken** in het [artikel Lees-en replica-instructies](howto-read-replicas-portal.md).
 
-De **maximale vertraging** voor de metrische gegevens van replica's toont de vertraging in bytes tussen de primaire en de meest bewaarde replica. Deze metriek is alleen beschikbaar op de primaire server.
+De **maximale vertraging** voor de metrische gegevens van replica's toont de vertraging in bytes tussen de primaire en de meest bewaarde replica. Deze metriek is alleen beschikbaar op de primaire server en is alleen beschikbaar als ten minste één van de Lees replica's is verbonden met de primaire.
 
 De metriek van de **replica vertraging** toont de tijd sinds de laatste geplayte trans actie. Als er geen trans acties plaatsvinden op de primaire server, weerspiegelt de metriek deze tijds periode. Deze metriek is alleen beschikbaar voor replica servers. Replica vertraging wordt berekend op basis van de `pg_stat_wal_receiver` weer gave:
 
@@ -141,6 +141,9 @@ Zodra u hebt vastgesteld dat u een failover naar een replica wilt uitvoeren,
     
 Zodra uw toepassing Lees-en schrijf bewerkingen heeft verwerkt, hebt u de failover voltooid. De uitval tijd van uw toepassings ervaring is afhankelijk van wanneer u een probleem detecteert en de stappen 1 en 2 hierboven uitvoert.
 
+### <a name="disaster-recovery"></a>Herstel na noodgeval
+
+Wanneer er sprake is van een belang rijke nood geval, zoals een zone-niveau of regionale storingen op beschikbaarheids gebied, kunt u herstel na nood gevallen uitvoeren door uw Lees replica te promo veren. U kunt vanuit de gebruikers interface-Portal naar de server voor het lezen van replica's navigeren. Klik vervolgens op het tabblad Replicatie en u kunt de replica stoppen om deze te promo veren tot een onafhankelijke server. U kunt ook de [Azure cli](https://docs.microsoft.com/cli/azure/postgres/server/replica?view=azure-cli-latest#az_postgres_server_replica_stop) gebruiken om de replica-server te stoppen en te promo veren.
 
 ## <a name="considerations"></a>Overwegingen
 

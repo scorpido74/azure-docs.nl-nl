@@ -1,17 +1,17 @@
 ---
 title: Aanbevolen procedures voor query Store in Azure Database for PostgreSQL-één server
 description: In dit artikel worden aanbevolen procedures beschreven voor het query archief in Azure Database for PostgreSQL-één-server.
-author: rachel-msft
-ms.author: raagyema
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 51239f4cf49784dd47470e1272b90508eaf25e6f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd39b7ecd51902f5035b4cd17d59dea964d0c962
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70764221"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91708829"
 ---
 # <a name="best-practices-for-query-store"></a>Aanbevolen procedures voor query Store
 
@@ -22,16 +22,16 @@ In dit artikel vindt u een overzicht van de aanbevolen procedures voor het gebru
 ## <a name="set-the-optimal-query-capture-mode"></a>De optimale query Capture-modus instellen
 Laat query Store de gegevens vastleggen die voor u belang rijk zijn. 
 
-|**pg_qs. query_capture_mode** | **Scenario**|
+|**pg_qs pg_qs.query_capture_mode** | **Scenario**|
 |---|---|
-|_Alles_  |Analyseer uw werk belasting uitgebreid met alle query's en hun uitvoerings frequenties en andere statistieken. Nieuwe query's in uw workload identificeren. Detecteren of ad hoc-query's worden gebruikt voor het identificeren van de mogelijkheden voor de gebruiker of de automatische parameterisering. _Alle_ wordt geleverd met een verhoogde resource verbruiks kosten. |
+|_Hele_  |Analyseer uw werk belasting uitgebreid met alle query's en hun uitvoerings frequenties en andere statistieken. Nieuwe query's in uw workload identificeren. Detecteren of ad hoc-query's worden gebruikt voor het identificeren van de mogelijkheden voor de gebruiker of de automatische parameterisering. _Alle_ wordt geleverd met een verhoogde resource verbruiks kosten. |
 |_Boven_  |Richt u op de belangrijkste query's die door clients worden uitgegeven.
 |_Geen_ |U hebt al een queryset en tijd venster vastgelegd die u wilt onderzoeken en u wilt de afleidingen elimineren die andere query's kunnen introduceren. _Geen_ is geschikt voor het testen en in de Bank markeren van omgevingen. _Geen_ van beide moet worden gebruikt om te zorgen dat u belang rijke nieuwe query's kunt bijhouden en optimaliseren. U kunt geen gegevens meer herstellen op dit moment Windows. |
 
-Query Store bevat ook een Store voor wacht statistieken. Er is een aanvullende query voor de opname modus die wacht statistieken regelt: **pgms_wait_sampling. query_capture_mode** kan worden ingesteld op _geen_ of _alle_. 
+Query Store bevat ook een Store voor wacht statistieken. Er is een aanvullende query voor de opname modus die wacht statistieken regelt: **pgms_wait_sampling. query_capture_mode** kan worden ingesteld op _none_ of _all_. 
 
 > [!NOTE] 
-> **pg_qs. query_capture_mode** vervangt **pgms_wait_sampling. query_capture_mode**. Als pg_qs. query_capture_mode _geen_, de instelling pgms_wait_sampling. query_capture_mode geen effect heeft. 
+> **pg_qs. query_capture_mode** vervangt **pgms_wait_sampling. query_capture_mode**. Als pg_qs. query_capture_mode _geen_is, heeft de instelling pgms_wait_sampling. query_capture_mode geen effect. 
 
 
 ## <a name="keep-the-data-you-need"></a>Behoud de gegevens die u nodig hebt
