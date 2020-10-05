@@ -6,12 +6,12 @@ ms.author: pepogors
 author: peterpogorski
 ms.date: 09/28/2020
 ms.custom: references_regions
-ms.openlocfilehash: 73815e793357dd38244dd429f9056c4c6a0bfff1
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.openlocfilehash: 77d7b3fba62fb9f059df97c4f7fae99db783f3f0
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91410309"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91728995"
 ---
 # <a name="service-fabric-managed-clusters-frequently-asked-questions"></a>Veelgestelde vragen over het Service Fabric van beheerde clusters
 
@@ -41,7 +41,7 @@ De SLA wordt niet gewijzigd ten opzichte van het huidige Service Fabric resource
 
 ### <a name="what-is-the-difference-between-a-basic-and-standard-sku-cluster"></a>Wat is het verschil tussen een basis-en standaard SKU-cluster?
 
-Een Basic SKU-cluster betekent dat de meeste configuraties worden verschaft door de resource provider van Service Fabric. Basis-SKU-clusters zijn bedoeld om te worden gebruikt voor test-en pre-productie omgevingen. Met een standaard SKU-cluster kunnen gebruikers het cluster zo configureren dat ze specifiek aan hun behoeften voldoen. Zie [service Fabric Managed cluster sku's](overview-managed-cluster.md#service-fabric-managed-cluster skus.md) voor meer informatie.
+Een Basic SKU-cluster betekent dat de meeste configuraties worden verschaft door de resource provider van Service Fabric. Basis-SKU-clusters zijn bedoeld om te worden gebruikt voor test-en pre-productie omgevingen. Met een standaard SKU-cluster kunnen gebruikers het cluster zo configureren dat ze specifiek aan hun behoeften voldoen. Zie [service Fabric Managed cluster sku's](https://docs.microsoft.com/azure/service-fabric/overview-managed-cluster#service-fabric-managed-cluster-skus) voor meer informatie.
 
 ## <a name="cluster-deployment-and-management"></a>Cluster implementatie en-beheer
 

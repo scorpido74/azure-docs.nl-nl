@@ -3,12 +3,12 @@ title: Veelgestelde vragen-Azure Event Hubs | Microsoft Docs
 description: In dit artikel vindt u een lijst met veelgestelde vragen over Azure Event Hubs en de antwoorden hiervan.
 ms.topic: article
 ms.date: 09/16/2020
-ms.openlocfilehash: aa108d961fca3819b0747332c363b324c05b7994
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 65b6fd40c66ec055a5b80ccea9d2dd9ba1510d54
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318497"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91729097"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Veelgestelde vragen over Event Hubs
 
@@ -270,6 +270,20 @@ Event Hubs ondersteunt twee typen [Diagnostische logboeken](event-hubs-diagnosti
 Technische ondersteuning voor Event Hubs is beschikbaar via de [pagina micro soft Q&een vraag voor Azure service bus](/answers/topics/azure-service-bus.html). Ondersteuning bij facturering en abonnements beheer is gratis.
 
 Voor meer informatie over onze SLA gaat u naar de pagina [Service Level Agreements](https://azure.microsoft.com/support/legal/sla/) .
+
+## <a name="azure-stack-hub"></a>Azure Stack Hub
+
+### <a name="how-can-i-target-a-specific-version-of-azure-storage-sdk-when-using-azure-blob-storage-as-a-checkpoint-store"></a>Hoe kan ik een specifieke versie van Azure Storage SDK richten bij het gebruik van Azure Blob Storage als controlepunt opslag?
+Als u deze code op Azure Stack hub uitvoert, treden er runtime-fouten op tenzij u een specifieke opslag-API-versie aanwijst. Dat komt doordat de Event Hubs SDK de meest recente beschik bare Azure Storage API gebruikt die beschikbaar is in Azure en niet beschikbaar is op uw Azure Stack hub-platform. Azure Stack hub ondersteunt mogelijk een andere versie van de opslag-BLOB-SDK dan die doorgaans beschikbaar is op Azure. Als u Azure-blog opslag gebruikt als controlepunt opslag, controleert u de [versie van de ondersteunde Azure Storage-API voor uw Azure stack hub-build](/azure-stack/user/azure-stack-acs-differences?#api-version) en richt u deze versie in uw code. 
+
+Als u bijvoorbeeld werkt met Azure Stack hub versie 2005, is de hoogste beschik bare versie van de opslag service versie 2019-02-02. De Event Hubs SDK-client bibliotheek maakt standaard gebruik van de hoogste beschik bare versie op Azure (2019-07-07 op het moment van de release van de SDK). In dit geval moet u, naast de volgende stappen in deze sectie, ook code toevoegen om de API-versie 2019-02-02 van de Storage-service te richten. Zie de volgende voor beelden voor C#, Java, python en Java script/type script voor een voor beeld van het richten op een specifieke opslag-API-versie.  
+
+Zie de volgende voor beelden op GitHub voor een voor beeld van het richten op een specifieke opslag-API-versie van uw code: 
+
+- [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs)
+- [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/EventProcessorWithCustomStorageVersion.java)
+- Python- [synchroon](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob/samples/receive_events_using_checkpoint_store_storage_api_version.py), [asynchroon](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/receive_events_using_checkpoint_store_storage_api_version_async.py)
+- [Java script](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript/receiveEventsWithApiSpecificStorage.js) en [type script](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript/src/receiveEventsWithApiSpecificStorage.ts)
 
 ## <a name="next-steps"></a>Volgende stappen
 

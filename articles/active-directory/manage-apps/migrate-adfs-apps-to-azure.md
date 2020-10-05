@@ -14,19 +14,19 @@ ms.date: 04/01/2020
 ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b8a40449d7a2b17adddd55120ab232a5cd3f459
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 5a4d50bcf2493c67880fd5a27b326705b1923feb
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90600942"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91728978"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>Toepassings verificatie van Active Directory Federation Services naar Azure Active Directory verplaatsen
 
 [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) biedt een universeel identiteits platform dat uw gebruikers, partners en klanten een enkele identiteit biedt voor het openen van toepassingen en samen werken vanaf elk platform en apparaat. Azure AD heeft een [volledige reeks mogelijkheden voor identiteits beheer](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis). Door de verificatie van uw toepassing (app) en autorisatie voor Azure AD in te stellen, kunt u profiteren van de voor delen van deze mogelijkheden. 
 
-> [!NOTE]
-> In dit artikel wordt gekeken naar het verplaatsen van toepassings verificatie van on-premises Active Directory en Active Directory Federation Services naar Azure AD. Raadpleeg het technisch document [toepassings verificatie migreren naar Azure AD](https://aka.ms/migrateapps/whitepaper) voor een overzicht van het plannen van deze verhuizing. In het technisch document wordt uitgelegd hoe u de migratie, het testen en inzichten kunt plannen.
+> [!TIP]
+> Dit artikel is geschreven voor een doel groep van ontwikkel aars. Project managers en beheerders die de overstap naar Azure AD van een toepassing plannen, moeten overwegen onze [migratie van verificatie van toepassingen naar Azure AD](https://aka.ms/migrateapps/whitepaper) White Paper (PDF) te lezen.
 
 ## <a name="introduction"></a>Inleiding
 

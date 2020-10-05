@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/14/2020
 ms.author: cephalin
 ms.openlocfilehash: 88ebda7fcdd3fbdf148c9870ee3190b4824ff0ac
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
-ms.translationtype: MT
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "83121402"
 ---
 ## <a name="clean-up-resources"></a>Resources opschonen
