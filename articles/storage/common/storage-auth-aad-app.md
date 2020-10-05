@@ -10,12 +10,12 @@ ms.date: 09/21/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 78c25afe69565840ca1af013d29dd512550241b6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: df0bc6a07444070a0f14e632e81ad0bb787569c8
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91280224"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714766"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>Een token van Azure AD verkrijgen voor het machtigen van aanvragen van een client toepassing
 
@@ -31,7 +31,7 @@ De voorbeeld toepassing biedt een end-to-end-ervaring die laat zien hoe u een we
 
 ## <a name="assign-a-role-to-an-azure-ad-security-principal"></a>Een rol toewijzen aan een Azure AD-beveiligings-principal
 
-Als u een beveiligingsprincipal van uw Azure Storage-toepassing wilt verifiëren, moet u eerst instellingen voor op rollen gebaseerde toegangs beheer (RBAC) voor die beveiligingsprincipal configureren. Azure Storage definieert ingebouwde rollen die machtigingen voor containers en wacht rijen omvatten. Wanneer de RBAC-rol is toegewezen aan een beveiligingsprincipal, wordt die beveiligingsprincipal toegang verleend tot die bron. Zie [toegangs rechten voor Azure Blob en wachtrij gegevens beheren met RBAC](storage-auth-aad-rbac.md)voor meer informatie.
+Als u een beveiligingsprincipal van uw Azure Storage-toepassing wilt verifiëren, moet u eerst Azure RBAC-instellingen (op rollen gebaseerd toegangs beheer) voor die beveiligingsprincipal configureren. Azure Storage definieert ingebouwde rollen die machtigingen voor containers en wacht rijen omvatten. Wanneer de Azure-rol wordt toegewezen aan een beveiligingsprincipal, wordt die beveiligingsprincipal toegang verleend tot die bron. Zie [toegangs rechten voor Azure Blob en wachtrij gegevens beheren met Azure RBAC](storage-auth-aad-rbac.md)voor meer informatie.
 
 ## <a name="register-your-application-with-an-azure-ad-tenant"></a>Uw toepassing registreren bij een Azure AD-Tenant
 
@@ -46,7 +46,7 @@ De volgende afbeelding toont algemene instellingen voor het registreren van een 
 
 Nadat u uw toepassing hebt geregistreerd, ziet u de toepassings-ID (of client-ID) onder **instellingen**:
 
-:::image type="content" source="media/storage-auth-aad-app/app-registration-client-id.png" alt-text="Scherm opname met de client-ID":::
+:::image type="content" source="media/storage-auth-aad-app/app-registration-client-id.png" alt-text="Scherm afbeelding die laat zien hoe u uw opslag toepassing registreert bij Azure AD":::
 
 Zie [toepassingen integreren met Azure Active Directory](../../active-directory/develop/quickstart-v2-register-an-app.md)voor meer informatie over het registreren van een toepassing met Azure AD.
 
@@ -59,13 +59,13 @@ Verleen vervolgens de machtigingen van uw toepassing om Azure Storage-Api's aan 
 1. In het deel venster **API-machtigingen voor aanvragen** , onder **welk type machtigingen uw toepassing vereist?**, moet u nagaan of het beschik bare machtigings type **gedelegeerde machtigingen**is. Deze optie is standaard voor u geselecteerd.
 1. Schakel onder **machtigingen**het selectie vakje in naast **user_impersonation**en selecteer vervolgens de knop **machtigingen toevoegen** .
 
-    :::image type="content" source="media/storage-auth-aad-app/registered-app-permissions-1.png" alt-text="Scherm opname met machtigingen voor de opslag-API":::
+    :::image type="content" source="media/storage-auth-aad-app/registered-app-permissions-1.png" alt-text="Scherm afbeelding die laat zien hoe u uw opslag toepassing registreert bij Azure AD":::
 
 1. Verleen vervolgens toestemming van de beheerder voor deze machtigingen door te klikken op **toestemming van beheerder geven voor de standaard directory**.
 
 In het deel venster **API-machtigingen** ziet u nu dat uw geregistreerde Azure AD-toepassing toegang heeft tot de Microsoft Graph-en Azure Storage-api's en dat toestemming wordt verleend voor de standaard directory. Er worden automatisch machtigingen verleend aan Microsoft Graph wanneer u uw app voor het eerst registreert bij Azure AD.
 
-:::image type="content" source="media/storage-auth-aad-app/registered-app-permissions-2.png" alt-text="Scherm afbeelding met API-machtigingen voor de geregistreerde app":::
+:::image type="content" source="media/storage-auth-aad-app/registered-app-permissions-2.png" alt-text="Scherm afbeelding die laat zien hoe u uw opslag toepassing registreert bij Azure AD":::
 
 ### <a name="create-a-client-secret"></a>Een clientgeheim maken
 
@@ -87,7 +87,7 @@ Configureer vervolgens impliciete toekennings stroom voor uw toepassing. Volg de
 1. Selecteer de **verificatie** -instelling in de sectie **beheren** .
 1. Schakel in de sectie **impliciete toekenning** het selectie vakje in om id-tokens in te scha kelen, zoals wordt weer gegeven in de volgende afbeelding:
 
-    :::image type="content" source="media/storage-auth-aad-app/enable-implicit-grant-flow.png" alt-text="Scherm afbeelding die laat zien hoe instellingen voor impliciete toekennings stroom worden ingeschakeld":::
+    :::image type="content" source="media/storage-auth-aad-app/enable-implicit-grant-flow.png" alt-text="Scherm afbeelding die laat zien hoe u uw opslag toepassing registreert bij Azure AD":::
 
 ## <a name="client-libraries-for-token-acquisition"></a>Client bibliotheken voor het verkrijgen van tokens
 
@@ -127,7 +127,7 @@ Als u het token wilt aanvragen, hebt u de volgende waarden nodig van de registra
 
 Als u het code voorbeeld wilt uitvoeren, maakt u een opslag account in hetzelfde abonnement als uw Azure Active Directory. Maak vervolgens een container in dat opslag account. Met de voorbeeld code wordt een blok-Blob in deze container gemaakt.
 
-Wijs vervolgens expliciet de rol **Storage BLOB data Inzender** toe aan het gebruikers account waaronder u de voorbeeld code gaat uitvoeren. Zie voor instructies over het toewijzen van deze rol in de Azure Portal [toegang verlenen aan Azure Blob en gegevens wachtrij met RBAC in de Azure Portal](storage-auth-aad-rbac-portal.md).
+Wijs vervolgens expliciet de rol **Storage BLOB data Inzender** toe aan het gebruikers account waaronder u de voorbeeld code gaat uitvoeren. Zie [de Azure Portal gebruiken om een Azure-rol toe te wijzen voor toegang tot Blob-en wachtrij gegevens](storage-auth-aad-rbac-portal.md)voor instructies over het toewijzen van deze functie in de Azure Portal.
 
 > [!NOTE]
 > Wanneer u een Azure Storage-account maakt, worden er niet automatisch machtigingen toegewezen om toegang te krijgen tot gegevens via Azure AD. U moet uzelf expliciet een Azure-rol toewijzen voor Azure Storage. U kunt deze toewijzen op het niveau van uw abonnement, resource groep, opslag account of container of wachtrij.
@@ -291,5 +291,5 @@ https://<storage-account>.blob.core.windows.net/<container>/Blob1.txt
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Microsoft-identiteitsplatform](https://docs.microsoft.com/azure/active-directory/develop/)
-- [Toegangs rechten voor opslag gegevens beheren met RBAC](storage-auth-aad-rbac.md)
+- [Toegangs rechten voor opslag gegevens beheren met Azure RBAC](storage-auth-aad-rbac.md)
 - [Toegang tot blobs en wacht rijen verifiëren met Azure Active Directory en beheerde identiteiten voor Azure-resources](storage-auth-aad-msi.md)

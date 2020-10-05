@@ -6,12 +6,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 07/09/2020
 ms.subservice: ''
-ms.openlocfilehash: c81d9774dccf8c02d2eab7b1ebbb69e6671869e8
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: a4985784a17f2e0350a7b2c7a4f62f574862d50c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423793"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714360"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-automation-preview"></a>Persoonlijke Azure-koppeling gebruiken om netwerken veilig te verbinden met Azure Automation (preview-versie)
 
@@ -41,9 +41,9 @@ Met een persoonlijke koppeling kunt u het volgende doen:
 - U kunt uw privé on-premises netwerk veilig verbinden met Azure Automation met behulp van ExpressRoute en een persoonlijke koppeling.
 - Bewaar al het verkeer binnen het Microsoft Azure backbone-netwerk.
 
-Zie [belang rijke voor delen van een persoonlijke koppeling](../../private-link/private-link-overview.md#key-benefits)voor meer informatie.
+Zie  [belang rijke voor delen van een persoonlijke koppeling](../../private-link/private-link-overview.md#key-benefits)voor meer informatie.
 
-## <a name="how-it-works"></a>Hoe het werkt
+## <a name="how-it-works"></a>Uitleg
 
 Met Azure Automation persoonlijke koppeling worden een of meer privé-eind punten (en dus ook de virtuele netwerken in) verbonden met de resource van uw Automation-account. Deze eind punten zijn machines die gebruikmaken van webhooks om een runbook te starten, machines die als host fungeren voor de Hybrid Runbook Worker Role en DSC-knoop punten.
 
@@ -53,7 +53,7 @@ Als onderdeel van de preview-versie heeft een Automation-account geen toegang to
 
 ### <a name="webhook-scenario"></a>Webhook-scenario
 
-U kunt runbooks starten door een bericht te plaatsen op de webhook-URL. De URL ziet er bijvoorbeeld als volgt uit:`https://<automationAccountId>.webhooks.<region>.azure-automation.net/webhooks?token=gzGMz4SMpqNo8gidqPxAJ3E%3d`
+U kunt runbooks starten door een bericht te plaatsen op de webhook-URL. De URL ziet er bijvoorbeeld als volgt uit: `https://<automationAccountId>.webhooks.<region>.azure-automation.net/webhooks?token=gzGMz4SMpqNo8gidqPxAJ3E%3d`
 
 ### <a name="state-configuration-agentsvc-scenario"></a>Scenario met status configuratie (agentsvc)
 
@@ -99,7 +99,7 @@ In deze sectie maakt u een persoonlijk eind punt voor uw Automation-account.
     | Abonnement| Selecteer uw abonnement. |
     | Resourcetype | Selecteer **micro soft. Automation/automationAccounts**. |
     | Resource |*MyAutomationAccount* selecteren|
-    |Doel-subresource |Selecteer *webhook* of *DSCAndHybridWorker* , afhankelijk van uw scenario.|
+    |Subresource van doel |Selecteer *webhook* of *DSCAndHybridWorker* , afhankelijk van uw scenario.|
     |||
 
 6. Selecteer **Volgende: Configuratie**.
@@ -128,7 +128,7 @@ Selecteer de resource om alle details weer te geven. Hiermee maakt u een nieuw p
 
 Op dezelfde manier wordt een unieke Fully Qualified Domain Name (FQDN) gemaakt voor de status configuratie (agentsvc) en voor de Hybrid Runbook Worker job runtime (jrds). Elk daarvan krijgt een afzonderlijk IP-adres van uw VNet en de **verbindings status** wordt weer gegeven als **goedgekeurd**.
 
-Als de service gebruiker RBAC-machtigingen heeft voor de Automation-resource, kan deze de automatische goedkeurings methode kiezen. In dit geval is er geen actie vereist van de service provider en wordt de verbinding automatisch goedgekeurd wanneer de aanvraag de Automation provider-resource bereikt.
+Als de service gebruiker Azure RBAC-machtigingen heeft voor de Automation-resource, kan deze de automatische goedkeurings methode kiezen. In dit geval is er geen actie vereist van de service provider en wordt de verbinding automatisch goedgekeurd wanneer de aanvraag de Automation provider-resource bereikt.
 
 ## <a name="set-public-network-access-flags"></a>Toegangs vlaggen voor openbaar netwerk instellen
 

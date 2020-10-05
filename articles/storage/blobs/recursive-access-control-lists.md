@@ -9,12 +9,12 @@ ms.date: 09/21/2020
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 88349e90102bf3b0e4dc2868d5f65d476aac51f7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 794e89e75505d3c1c34bf2a15209c3218dfa3582
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91280365"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714092"
 ---
 # <a name="set-access-control-lists-acls-recursively-for-azure-data-lake-storage-gen2"></a>Acl's (toegangs beheer lijsten) recursief instellen voor Azure Data Lake Storage Gen2
 
@@ -138,7 +138,7 @@ Kies vervolgens hoe u wilt dat uw opdrachten autorisatie aanvragen voor het opsl
 
 ### <a name="option-1-obtain-authorization-by-using-azure-active-directory-ad"></a>Optie 1: autorisatie verkrijgen met behulp van Azure Active Directory (AD)
 
-Met deze methode zorgt het systeem ervoor dat uw gebruikers account de juiste RBAC-toewijzingen (op rollen gebaseerd toegangs beheer) en ACL-machtigingen heeft. 
+Met deze methode zorgt het systeem ervoor dat uw gebruikers account beschikt over de juiste toewijzings-en ACL-machtigingen van Azure op rollen gebaseerde toegangs beheer (Azure RBAC). 
 
 ```powershell
 $ctx = New-AzStorageContext -StorageAccountName '<storage-account-name>' -UseConnectedAccount
@@ -153,7 +153,7 @@ In de volgende tabel ziet u alle ondersteunde rollen en de instellingen voor de 
 
 ### <a name="option-2-obtain-authorization-by-using-the-storage-account-key"></a>Optie 2: autorisatie verkrijgen met behulp van de sleutel van het opslag account
 
-Met deze methode controleert het systeem geen RBAC-of ACL-machtigingen.
+Met deze methode controleert het systeem geen Azure RBAC-of ACL-machtigingen.
 
 ```powershell
 $storageAccount = Get-AzStorageAccount -ResourceGroupName "<resource-group-name>" -AccountName "<storage-account-name>"
@@ -174,7 +174,7 @@ Nadat u het pakket hebt geïnstalleerd, voegt u deze met de instructie toe aan d
 using Azure.Identity;
 ```
 
-Haal een client-ID, een client geheim en een Tenant-ID op. Zie voor dit doen [een Token ophalen uit Azure AD voor het machtigen van aanvragen van een client toepassing](../common/storage-auth-aad-app.md). Als onderdeel van dit proces moet u een van de volgende [RBAC-rollen (op rollen gebaseerd toegangs beheer)](../../role-based-access-control/overview.md) toewijzen aan uw beveiligingsprincipal. 
+Haal een client-ID, een client geheim en een Tenant-ID op. Zie voor dit doen [een Token ophalen uit Azure AD voor het machtigen van aanvragen van een client toepassing](../common/storage-auth-aad-app.md). Als onderdeel van dit proces moet u een van de volgende [Azure-rollen op rollen gebaseerd toegangs beheer (Azure RBAC)](../../role-based-access-control/overview.md) toewijzen aan uw beveiligings-principal. 
 
 |Rol|Mogelijkheid van ACL-instelling|
 |--|--|
@@ -229,7 +229,7 @@ Als u de fragmenten in dit artikel wilt gebruiken, moet u een **DataLakeServiceC
 
 U kunt de [Azure Identity client-bibliotheek voor python](https://pypi.org/project/azure-identity/) gebruiken om uw toepassing te verifiëren met Azure AD.
 
-In dit voor beeld wordt een **DataLakeServiceClient** -exemplaar gemaakt met behulp van een client-id, een client geheim en een Tenant-id.  Zie [een Token ophalen uit Azure AD voor het machtigen van aanvragen van een client toepassing](../common/storage-auth-aad-app.md)om deze waarden op te halen. Als onderdeel van dit proces moet u een van de volgende [RBAC-rollen (op rollen gebaseerd toegangs beheer)](../../role-based-access-control/overview.md) toewijzen aan uw beveiligingsprincipal. 
+In dit voor beeld wordt een **DataLakeServiceClient** -exemplaar gemaakt met behulp van een client-id, een client geheim en een Tenant-id.  Zie [een Token ophalen uit Azure AD voor het machtigen van aanvragen van een client toepassing](../common/storage-auth-aad-app.md)om deze waarden op te halen. Als onderdeel van dit proces moet u een van de volgende [Azure-rollen op rollen gebaseerd toegangs beheer (Azure RBAC)](../../role-based-access-control/overview.md) toewijzen aan uw beveiligings-principal. 
 
 |Rol|Mogelijkheid van ACL-instelling|
 |--|--|
@@ -345,7 +345,7 @@ public async void SetACLRecursively(DataLakeServiceClient serviceClient)
 
 ### <a name="python"></a>[Python](#tab/python)
 
-Stel een recursief-ACL in door de methode **DataLakeDirectoryClient. set_access_control_recursive** aan te roepen.
+Stel een recursief-ACL in door de **DataLakeDirectoryClient.set_access_control_recursive** methode aan te roepen.
 
 In dit voor beeld wordt de ACL van een map met de naam ingesteld `my-parent-directory` . Deze vermeldingen geven de machtigingen lezen, schrijven en uitvoeren van de gebruiker die eigenaar is, de groep die eigenaar is, de machtigingen lezen en uitvoeren, en krijgen alle andere geen toegang. De laatste ACL-vermelding in dit voor beeld geeft een specifieke gebruiker met de object-ID ' XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX ' machtigingen voor lezen en uitvoeren.
 
@@ -423,7 +423,7 @@ public async void UpdateACLsRecursively(DataLakeServiceClient serviceClient)
 
 ### <a name="python"></a>[Python](#tab/python)
 
-Werk een ACL recursief bij door de methode **DataLakeDirectoryClient. update_access_control_recursive** aan te roepen. 
+Een ACL recursief bijwerken door het aanroepen van de **DataLakeDirectoryClient.update_access_control_recursive** methode. 
 
 In dit voor beeld wordt een ACL-vermelding met schrijf machtiging bijgewerkt. 
 
@@ -498,7 +498,7 @@ public async void RemoveACLsRecursively(DataLakeServiceClient serviceClient)
 
 ### <a name="python"></a>[Python](#tab/python)
 
-Verwijder ACL-vermeldingen door de methode **DataLakeDirectoryClient. remove_access_control_recursive** aan te roepen. 
+Verwijder ACL-vermeldingen door de **DataLakeDirectoryClient.remove_access_control_recursive** methode aan te roepen. 
 
 In dit voor beeld wordt een ACL-vermelding verwijderd uit de toegangs beheer lijst van de map met de naam `my-parent-directory` . 
 
@@ -650,7 +650,7 @@ Het maximum aantal Acl's dat u kunt Toep assen op een map of bestand is 32 toega
 
 U kunt uw feedback geven of een probleem melden op  [recursiveACLfeedback@microsoft.com](mailto:recursiveACLfeedback@microsoft.com) .
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 - [Toegangsbeheer in Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)
 - [Bekende problemen](data-lake-storage-known-issues.md)

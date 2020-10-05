@@ -11,15 +11,15 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 44fe71f575a32ccc1a687bc87793cb6a8b6508a9
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
-ms.translationtype: HT
+ms.openlocfilehash: 7eaa2fbe6033f801a252f6f2c7afa5eb726bce2f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650631"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318242"
 ---
 # <a name="enable-logging-in-azure-ml-training-runs"></a>Logboekregistratie inschakelen in Azure ML-trainingsuitvoeringen
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 Met de Azure Machine Learning Python-SDK kunt u in realtime informatie vastleggen met behulp van zowel het standaardpakket voor logboekregistratie van Python als de specifieke functionaliteit van de SDK. U kunt logboeken lokaal opslaan en logboeken verzenden naar uw werkruimte in de portal.
 
@@ -37,17 +37,17 @@ Logboeken kunnen u helpen bij het diagnosticeren van fouten en waarschuwingen, o
 
 ## <a name="data-types"></a>Gegevenstypen
 
-U kunt meerdere gegevenstypen vastleggen, waaronder scalaire waarden, lijsten, tabellen, afbeeldingen, directory's en meer. Zie de [referentiepagina voor Run-klassen](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py&preserve-view=true) voor meer informatie en Python-codevoorbeelden voor verschillende gegevenstypen.
+U kunt meerdere gegevenstypen vastleggen, waaronder scalaire waarden, lijsten, tabellen, afbeeldingen, directory's en meer. Zie de [referentiepagina voor Run-klassen](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true) voor meer informatie en Python-codevoorbeelden voor verschillende gegevenstypen.
 
 ## <a name="interactive-logging-session"></a>Interactieve logboekregistratiesessie
 
-Interactieve logboekregistratiesessies worden doorgaans gebruikt in notebookomgevingen. Met de methode [Experiment.start_logging()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#&preserve-view=truestart-logging--args----kwargs-) wordt een interactieve logboekregistratiesessie gestart. Alle metrische gegevens die tijdens de sessie zijn geregistreerd, worden toegevoegd aan het uitvoeringsrecord in het experiment. Met de methode [run.complete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#&preserve-view=truecomplete--set-status-true-) worden de sessies beëindigd en de uitvoering als voltooid gemarkeerd.
+Interactieve logboekregistratiesessies worden doorgaans gebruikt in notebookomgevingen. Met de methode [Experiment.start_logging()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truestart-logging--args----kwargs-) wordt een interactieve logboekregistratiesessie gestart. Alle metrische gegevens die tijdens de sessie zijn geregistreerd, worden toegevoegd aan het uitvoeringsrecord in het experiment. Met de methode [run.complete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truecomplete--set-status-true-) worden de sessies beëindigd en de uitvoering als voltooid gemarkeerd.
 
-## <a name="scriptrunconfig-logs"></a>ScriptRunConfig-logboeken
+## <a name="scriptrun-logs"></a>ScriptRun-logboeken
 
-In deze sectie leert u hoe u logboekregistratiecode kunt toevoegen in ScriptConfig-uitvoeringen. Met de klasse [**ScriptRunConfig**](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true)-kunt u scripts en omgevingen inkapselen voor herhaalbare uitvoeringen. U kunt deze optie ook gebruiken om een visuele Jupyter Notebook-widget weer te geven voor bewakingsdoeleinden.
+In dit gedeelte leert u hoe u logboekcode in uitvoeringen toevoegt die zijn gemaakt toen de ScriptRunConfig werd geconfigureerd. Met de klasse [**ScriptRunConfig**](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true)-kunt u scripts en omgevingen inkapselen voor herhaalbare uitvoeringen. U kunt deze optie ook gebruiken om een visuele Jupyter Notebook-widget weer te geven voor bewakingsdoeleinden.
 
-In dit voorbeeld wordt een parameteropruiming uitgevoerd op alfawaarden en worden de resultaten vastgelegd met de methode [run.log()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#&preserve-view=truelog-name--value--description----).
+In dit voorbeeld wordt een parameteropruiming uitgevoerd op alfawaarden en worden de resultaten vastgelegd met de methode [run.log()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true#&preserve-view=truelog-name--value--description----).
 
 1. Maak een trainingsscript dat de logica voor logboekregistratie bevat, `train.py`.
 
@@ -83,7 +83,7 @@ logging.basicConfig(level=logging.DEBUG)
 
 Met Azure Machine Learning kunnen tijdens de training ook gegevens van andere bronnen worden geregistreerd, zoals geautomatiseerde machine learning-uitvoeringen, of Docker-containers die de taken uitvoeren. Deze logboeken worden niet gedocumenteerd, maar als u problemen ondervindt en contact opneemt met Microsoft-ondersteuning, kunnen ze deze logboeken gebruiken tijdens het oplossen van problemen.
 
-Zie [Hoe kan ik metrische gegevens registreren in de ontwerpfunctie (preview)](how-to-track-designer-experiments.md) voor informatie over het vastleggen van metrische gegevens in de Azure Machine Learning-ontwerpfunctie (preview)
+Raadpleeg [Hoe kan ik metrische gegevens registreren in de ontwerpfunctie](how-to-track-designer-experiments.md) voor informatie over het vastleggen van metrische gegevens in de Azure Machine Learning-ontwerpfunctie
 
 ## <a name="example-notebooks"></a>Voorbeeldnotebooks
 
@@ -97,6 +97,6 @@ In de volgende notebooks worden concepten in dit artikel gedemonstreerd:
 
 Raadpleeg deze artikelen voor meer informatie over het gebruik van Azure Machine Learning:
 
-* Meer informatie over het [vastleggen van metrische gegevens in de Azure Machine Learning-ontwerpfunctie (preview)](how-to-track-designer-experiments.md).
+* Meer informatie over het [vastleggen van metrische gegevens in de Azure Machine Learning-ontwerpfunctie](how-to-track-designer-experiments.md).
 
 * Bekijk een voorbeeld van hoe u het beste model registreert en implementeert in de zelfstudie [Een afbeeldingsclassificatiemodel trainen met Azure Machine Learning](tutorial-train-models-with-aml.md).

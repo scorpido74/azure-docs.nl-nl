@@ -7,16 +7,16 @@ ms.date: 07/24/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: c82858294054b50d6edae42a3d41e9fcb89ca89d
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 5d07257d1e23ee792aa996e31a2c28c17bc23d34
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91577795"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715068"
 ---
-# <a name="azure-iot-model-repository"></a>Azure IoT-model opslagplaats
+# <a name="azure-iot-model-repository"></a>Azure IoT Model Repository (Azure IoT-modelopslagplaats)
 
-Met de opslag plaats Azure IoT model kunnen apparaten bouwen IoT Plug en Play-apparaten beheren en delen. De modellen van het apparaat zijn JSON-bestanden die zijn gedefinieerd met de [Digital Apparaatdubbels Modeling Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md). De modellen die zijn opgeslagen in de model opslagplaats service kunnen met behulp van toegangs beheer of openbaar worden gedeeld met oplossings ontwikkelaars, zonder dat hiervoor een verificatie vereist is om de IoT Plug en Play Cloud-oplossing te integreren en te ontwikkelen.
+Met de Azure IoT-modelopslagplaats kunnen apparaatbouwers IoT Plug en Play-apparaatmodellen beheren en delen. De modellen van het apparaat zijn JSON-bestanden die zijn gedefinieerd met de [Digital Apparaatdubbels Modeling Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md). De modellen die zijn opgeslagen in de model opslagplaats service kunnen met behulp van toegangs beheer of openbaar worden gedeeld met oplossings ontwikkelaars, zonder dat hiervoor een verificatie vereist is om de IoT Plug en Play Cloud-oplossing te integreren en te ontwikkelen.
 
 > [!NOTE]
 > Apparaat-Builders kunnen ervoor kiezen om IoT Plug en Play-apparaten rechtstreeks op een apparaat te implementeren, modules te gebruiken of in een IoT Edge-module.
@@ -48,7 +48,7 @@ var httpClient = new HttpClient();
 httpClient.BaseAddress = new Uri("https://repo.azureiotrepository.com");
 
 var modelId = "dtmi:com:mxchip:model;1";
-var response = await httpClient.GetAsync($"/models/{modelId}?api-version=2020-09-30").ConfigureAwait(false);
+var response = await httpClient.GetAsync($"/models/{modelId}?api-version=2020-05-01-preview").ConfigureAwait(false);
 ```
 
 Als u een openbaar model wilt weer geven met de CLI, raadpleegt u de Azure CLI-opdracht voor het [ophalen van modellen](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-show&preserve-view=true) .
@@ -118,7 +118,7 @@ Als u een bedrijfs-of gedeeld model wilt weer geven met behulp van de REST API, 
 
 ```csharp
 var modelId = "dtmi:com:mxchip:model;1";
-var response = await httpClient.GetAsync($"/models/{modelId}?api-version=2020-09-30").ConfigureAwait(false);
+var response = await httpClient.GetAsync($"/models/{modelId}?api-version=2020-05-01-preview").ConfigureAwait(false);
 ```
 
 Als u een bedrijfs model of een gedeeld model wilt weer geven met behulp van de CLI, raadpleegt u de Azure CLI-opdracht voor het [ophalen van modellen](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-show&preserve-view=true) .
@@ -164,16 +164,16 @@ Als u een model wilt uploaden met behulp van de REST API, raadpleegt u de API [C
 ```csharp
 var httpContent = new StringContent(jsonLdModel, Encoding.UTF8, "application/json");
 var modelId = "dtmi:com:mxchip:model;1";
-var response = await httpClient.PutAsync($"/models/{modelId}?api-version=2020-09-30", httpContent).ConfigureAwait(false);
+var response = await httpClient.PutAsync($"/models/{modelId}?api-version=2020-05-01-preview", httpContent).ConfigureAwait(false);
 ```
 
 Als u een model wilt uploaden met behulp van de CLI, raadpleegt u de Azure CLI-opdracht voor het [maken van een model](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp/model?view=azure-cli-latest#ext-azure-iot-az-iot-pnp-model-create&preserve-view=true) .
 
 ### <a name="publish-a-model"></a>Een model publiceren
 
-Voor het publiceren van een model moeten aan de volgende vereisten worden voldaan:
+Voor het publiceren van een model moet aan de volgende vereisten worden voldaan:
 
-1. Uw organisatie moet lid zijn van de [Microsoft Partner Network](https://docs.microsoft.com/partner-center/) om een model te publiceren. Zie [een partner centrum-account maken](https://docs.microsoft.com/partner-center/mpn-create-a-partner-center-account)voor het maken van een partner centrum-account. Nadat uw account is goedgekeurd, kunt u uw modellen publiceren. Zie de [Veelgestelde vragen over Partner Center](https://support.microsoft.com/help/4340639/partner-center-account-faqs)voor meer informatie.
+1. Uw organisatie moet lid zijn van het [Microsoft Partner Network](https://docs.microsoft.com/partner-center/) om een model te kunnen publiceren. Zie [Create a Partner Center account](https://docs.microsoft.com/partner-center/mpn-create-a-partner-center-account) als u een Partner Center-account wilt maken. Nadat uw account is goedgekeurd, kunt u uw modellen publiceren. Zie de [veelgestelde vragen over Partner Center](https://support.microsoft.com/help/4340639/partner-center-account-faqs) voor meer informatie.
 
 2. De gebruiker moet lid zijn van de *Publisher* -rol van de opslagplaats Tenant.
 

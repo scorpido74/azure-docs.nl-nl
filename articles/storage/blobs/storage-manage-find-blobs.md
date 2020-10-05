@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: hux
 ms.custom: references_regions
-ms.openlocfilehash: 70d0e31809227d5e27f8f2b22a7703d5a8ccca3c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3b6162552e43c9f475bef2ca3097da22ae198011
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91275061"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713694"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-preview"></a>Azure Blob-gegevens beheren en zoeken met Blob-index (preview)
 
@@ -104,7 +104,7 @@ In de onderstaande tabel ziet u alle geldige Opera tors voor FindBlobsByTags:
 |     >=     |  Groter dan of gelijk aan | "Priority" >= ' 5 ' |
 |     <      |  Kleiner dan   | ' Leeftijd ' < ' 32 ' |
 |     <=     |  Kleiner dan of gelijk aan  | ' Bedrijf ' <= ' Contoso ' |
-|    EN     |  Logische en  | ' Positie ' >= ' 010 ' en ' Rank ' < ' 100 ' |
+|    AND     |  Logische en  | ' Positie ' >= ' 010 ' en ' Rank ' < ' 100 ' |
 | @container | Bereik naar een specifieke container | @container = ' videofiles ' en ' status ' = ' gereed ' |
 
 > [!NOTE]
@@ -128,7 +128,7 @@ In de onderstaande tabel ziet u alle geldige Opera tors voor voorwaardelijke bew
 |     >=     |  Groter dan of gelijk aan | "Priority" >= ' 5 ' |
 |     <      |  Kleiner dan   | ' Leeftijd ' < ' 32 ' |
 |     <=     |  Kleiner dan of gelijk aan  | ' Bedrijf ' <= ' Contoso ' |
-|    EN     |  Logische en  | ' Positie ' >= ' 010 ' en ' Rank ' < ' 100 ' |
+|    AND     |  Logische en  | ' Positie ' >= ' 010 ' en ' Rank ' < ' 100 ' |
 |     OF     | Logische of   | "Status" = ' done ' of ' Priority ' >= ' 05 ' |
 
 > [!NOTE]
@@ -196,7 +196,7 @@ De volgende voor beeld-levenscyclus beheer regel is van toepassing op blok-blobs
 
 U kunt toegang tot de BLOB-index toestaan met een van de volgende methoden:
 
-- Door gebruik te maken van op rollen gebaseerd toegangs beheer (RBAC) om machtigingen te verlenen aan een Azure Active Directory (Azure AD)-beveiligingsprincipal. Micro soft raadt u aan Azure AD te gebruiken voor superieure beveiliging en gebruiks gemak. Zie [toegang tot blobs en wacht rijen toestaan met Azure Active Directory](../common/storage-auth-aad.md)voor meer informatie over het gebruik van Azure AD met Blob-bewerkingen.
+- Door Azure RBAC (op rollen gebaseerd toegangs beheer) te gebruiken om machtigingen te verlenen aan een Azure Active Directory (Azure AD)-beveiligingsprincipal. Micro soft raadt u aan Azure AD te gebruiken voor superieure beveiliging en gebruiks gemak. Zie [toegang tot blobs en wacht rijen toestaan met Azure Active Directory](../common/storage-auth-aad.md)voor meer informatie over het gebruik van Azure AD met Blob-bewerkingen.
 - Door gebruik te maken van een Shared Access Signature (SAS) voor het delegeren van toegang tot de BLOB-index. Zie voor meer informatie over gedeelde toegangs handtekeningen [beperkte toegang verlenen tot Azure storage-resources met behulp van Shared Access signatures (SAS)](../common/storage-sas-overview.md).
 - Door de toegangs sleutels voor het account te gebruiken om bewerkingen met gedeelde sleutel te autoriseren. Zie [autoriseren met gedeelde sleutel](/rest/api/storageservices/authorize-with-shared-key)voor meer informatie.
 
@@ -205,7 +205,7 @@ BLOB-index Tags zijn een subresource voor de BLOB-gegevens. Een gebruiker met ma
 ### <a name="role-based-access-control"></a>Op rollen gebaseerd toegangsbeheer
 Aanroepers die gebruikmaken van een [Azure AD-identiteit](../common/storage-auth-aad.md) kunnen de volgende machtigingen krijgen voor het werken met Blob-index Tags.
 
-|   BLOB-bewerkingen  |  RBAC-actie   |
+|   BLOB-bewerkingen  |  Azure RBAC-actie   |
 |--------------------|----------------|
 | Blobs zoeken op labels | Micro soft. Storage/Storage accounts/blobServices/containers/blobs/filter/actie |
 | BLOB-Tags instellen      | Micro soft. Storage/Storage accounts/blobServices/containers/blobs/Tags/schrijven |

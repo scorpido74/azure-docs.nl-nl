@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: best-practice
 ms.date: 07/30/2020
 ms.author: cralvord
-ms.openlocfilehash: d9dea7cd0cc22cc8a1e0aa5c93ece76d689de0e0
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: e3bbe39077cf6d7781f7e11fde044cf272aa83e8
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835439"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714376"
 ---
 # <a name="azure-storage-explorer-security-guide"></a>Azure Storage Explorer-beveiligings handleiding
 
@@ -42,11 +42,11 @@ U wordt aangeraden Azure AD-verificatie waar mogelijk te gebruiken.
 
 In deze sectie worden de twee op Azure AD gebaseerde technologieën beschreven die kunnen worden gebruikt voor het beveiligen van uw opslag resources.
 
-#### <a name="role-based-access-control-rbac"></a>Toegangsbeheer op basis van rollen (RBAC)
+#### <a name="azure-role-based-access-control-azure-rbac"></a>Azure RBAC (op rollen gebaseerd toegangsbeheer van Azure)
 
-[Met Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) beschikt u over een nauw keurig toegangs beheer voor uw Azure-resources. RBAC-rollen en-machtigingen kunnen worden beheerd vanuit de Azure Portal.
+[Met Azure op rollen gebaseerd toegangs beheer (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) beschikt u over een nauw keurig toegangs beheer voor uw Azure-resources. Azure-rollen en-machtigingen kunnen worden beheerd vanuit de Azure Portal.
 
-Storage Explorer ondersteunt RBAC-toegang tot opslag accounts, blobs en wacht rijen. Als u toegang tot bestands shares of tabellen nodig hebt, moet u RBAC-rollen toewijzen die machtigingen verlenen voor het weer geven van de sleutel van het opslag account.
+Storage Explorer biedt ondersteuning voor Azure RBAC-toegang tot opslag accounts, blobs en wacht rijen. Als u toegang tot bestands shares of tabellen nodig hebt, moet u Azure-rollen toewijzen die toestemming geven om de sleutels van een opslag account weer te geven.
 
 #### <a name="access-control-lists-acls"></a>ACL’s (toegangsbeheerlijsten)
 
@@ -77,11 +77,11 @@ Bij het gebruik van SAS in Storage Explorer raden wij de volgende richt lijnen a
 
 ### <a name="storage-account-keys"></a>Opslagaccountsleutels
 
-Met sleutels voor het opslag account wordt onbeperkte toegang tot de services en bronnen in een opslag account verleend. Daarom raden we u aan het gebruik van sleutels te beperken voor toegang tot resources in Storage Explorer. Gebruik de RBAC-functies of SAS om in plaats daarvan toegang te bieden.
+Met sleutels voor het opslag account wordt onbeperkte toegang tot de services en bronnen in een opslag account verleend. Daarom raden we u aan het gebruik van sleutels te beperken voor toegang tot resources in Storage Explorer. Gebruik in plaats daarvan Azure RBAC-functies of SAS om toegang te bieden.
 
-Sommige RBAC-rollen verlenen machtigingen voor het ophalen van sleutels voor opslag accounts. Personen met deze rollen kunnen de machtigingen die worden verleend of geweigerd door RBAC, omzeilen. We raden aan deze machtiging niet toe te kennen, tenzij dit nodig is.
+Sommige Azure-rollen verlenen machtigingen voor het ophalen van sleutels voor het opslag account. Personen met deze rollen kunnen de machtigingen die worden verleend of geweigerd door Azure RBAC, omzeilen. We raden aan deze machtiging niet toe te kennen, tenzij dit nodig is.
 
-Storage Explorer probeert de sleutel van het opslag account, indien beschikbaar, te gebruiken om aanvragen te verifiëren. U kunt deze functie uitschakelen in instellingen (**Services > opslag Accounts > gebruik van sleutels uitschakelen**). Sommige functies bieden geen ondersteuning voor RBAC, zoals werken met klassieke opslag accounts. Dergelijke functies vereisen nog steeds sleutels en worden niet beïnvloed door deze instelling.
+Storage Explorer probeert de sleutel van het opslag account, indien beschikbaar, te gebruiken om aanvragen te verifiëren. U kunt deze functie uitschakelen in instellingen (**Services > opslag Accounts > gebruik van sleutels uitschakelen**). Sommige functies bieden geen ondersteuning voor Azure RBAC, zoals werken met klassieke opslag accounts. Dergelijke functies vereisen nog steeds sleutels en worden niet beïnvloed door deze instelling.
 
 Als u sleutels moet gebruiken voor toegang tot uw opslag resources, raden we de volgende richt lijnen aan:
 

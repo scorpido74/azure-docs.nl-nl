@@ -10,12 +10,12 @@ ms.date: 09/15/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: e6e6c802da212294594f45d0545c6cf07694760b
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 48831a9482087dbeed0952cc30fcbc9c14fbaed0
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707914"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715629"
 ---
 # <a name="configure-object-replication-for-block-blobs"></a>Object replicatie configureren voor blok-blobs
 
@@ -37,7 +37,7 @@ Een opslag account kan fungeren als het bron account voor Maxi maal twee doel ac
 
 Wanneer u object replicatie configureert, maakt u een replicatie beleid voor het doel account via de resource provider van Azure Storage. Nadat het replicatie beleid is gemaakt, wordt door Azure Storage een beleids-ID toegewezen. Vervolgens moet u het replicatie beleid koppelen aan het bron account door de beleids-ID te gebruiken. De beleids-ID voor de bron-en doel accounts moet hetzelfde zijn om de replicatie te kunnen uitvoeren.
 
-Als u een beleid voor object replicatie wilt configureren voor een opslag account, moet u de rol Azure Resource Manager **Inzender** toewijzen, het bereik instellen op het niveau van het opslag account of hoger. Zie voor meer informatie [ingebouwde rollen van Azure](../../role-based-access-control/built-in-roles.md) in de documentatie op basis van op rollen gebaseerde Access Control (RBAC) van Azure.
+Als u een beleid voor object replicatie wilt configureren voor een opslag account, moet u de rol Azure Resource Manager **Inzender** toewijzen, het bereik instellen op het niveau van het opslag account of hoger. Zie voor meer informatie [ingebouwde rollen van Azure](../../role-based-access-control/built-in-roles.md) in de Azure-documentatie voor op rollen gebaseerde toegangs beheer (Azure RBAC).
 
 ### <a name="configure-object-replication-when-you-have-access-to-both-storage-accounts"></a>Object replicatie configureren wanneer u toegang hebt tot beide opslag accounts
 
@@ -45,7 +45,7 @@ Als u toegang hebt tot de bron-en doel opslag accounts, kunt u het object replic
 
 Voordat u object replicatie configureert in de Azure Portal, maakt u de bron-en doel containers in hun respectieve opslag accounts, als deze nog niet bestaan. Schakel ook BLOB-versie beheer in en wijzig de feed voor het bron account en schakel BLOB-versie beheer in op het doel account.
 
-# <a name="azure-portal"></a>[Azure-portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 De Azure Portal maakt automatisch het beleid voor het bron account nadat u dit hebt geconfigureerd voor het doel account.
 
@@ -65,19 +65,19 @@ Voer de volgende stappen uit om een replicatie beleid te maken in de Azure Porta
 
     De volgende afbeelding toont filters die bepalen welke blobs worden gekopieerd als onderdeel van een replicatie regel.
 
-    :::image type="content" source="media/object-replication-configure/configure-replication-copy-prefix.png" alt-text="Scherm afbeelding met filters voor een replicatie regel":::
+    :::image type="content" source="media/object-replication-configure/configure-replication-copy-prefix.png" alt-text="Scherm opname van de replicatie regels in Azure Portal":::
 
 1. Standaard wordt het Kopieer bereik zo ingesteld dat alleen nieuwe objecten worden gekopieerd. Als u alle objecten in de container wilt kopiëren of objecten wilt kopiëren vanaf een aangepaste datum en tijd, selecteert u de koppeling **wijzigen** en configureert u het Kopieer bereik voor het container paar.
 
     In de volgende afbeelding ziet u een aangepast Kopieer bereik waarmee objecten worden gekopieerd vanaf een opgegeven datum en tijd.
 
-    :::image type="content" source="media/object-replication-configure/configure-replication-copy-scope.png" alt-text="Scherm opname van het aangepaste Kopieer bereik voor object replicatie":::
+    :::image type="content" source="media/object-replication-configure/configure-replication-copy-scope.png" alt-text="Scherm opname van de replicatie regels in Azure Portal":::
 
 1. Selecteer **opslaan en Toep assen** om het replicatie beleid te maken en te beginnen met het repliceren van gegevens.
 
 Nadat u object replicatie hebt geconfigureerd, worden in de Azure Portal het replicatie beleid en de regels weer gegeven, zoals u kunt zien in de volgende afbeelding.
 
-:::image type="content" source="media/object-replication-configure/object-replication-policies-portal.png" alt-text="Scherm opname van object replicatie beleid in Azure Portal":::
+:::image type="content" source="media/object-replication-configure/object-replication-policies-portal.png" alt-text="Scherm opname van de replicatie regels in Azure Portal":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -238,7 +238,7 @@ az storage account or-policy show \
 
 Als u geen machtigingen hebt voor het bron-opslag account, kunt u object replicatie configureren op het doel account en een JSON-bestand met de beleids definitie aan een andere gebruiker geven om hetzelfde beleid te maken voor het bron account. Bijvoorbeeld, als het bron account zich in een andere Azure AD-Tenant van het doel account bevindt, kunt u deze methode gebruiken om object replicatie te configureren.
 
-Houd er rekening mee dat u de rol Azure Resource Manager **Inzender** moet zijn toegewezen aan het niveau van het doel-opslag account of hoger om het beleid te kunnen maken. Zie voor meer informatie [ingebouwde rollen van Azure](../../role-based-access-control/built-in-roles.md) in de documentatie op basis van op rollen gebaseerde Access Control (RBAC) van Azure.
+Houd er rekening mee dat u de rol Azure Resource Manager **Inzender** moet zijn toegewezen aan het niveau van het doel-opslag account of hoger om het beleid te kunnen maken. Zie voor meer informatie [ingebouwde rollen van Azure](../../role-based-access-control/built-in-roles.md) in de Azure-documentatie voor op rollen gebaseerde toegangs beheer (Azure RBAC).
 
 De volgende tabel bevat een overzicht van de waarden die moeten worden gebruikt voor de beleids-ID en regel-Id's in het JSON-bestand in elk scenario.
 
@@ -272,7 +272,7 @@ In het volgende voor beeld wordt een replicatie beleid gedefinieerd voor het doe
 }
 ```
 
-# <a name="azure-portal"></a>[Azure-portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 Voer de volgende stappen uit om de object replicatie te configureren voor het doel account met een JSON-bestand in de Azure Portal:
 
@@ -284,7 +284,7 @@ Voer de volgende stappen uit om de object replicatie te configureren voor het do
 1. Selecteer **replicatie regels uploaden**.
 1. Upload het JSON-bestand. In het Azure Portal worden het beleid en de regels weer gegeven die worden gemaakt, zoals wordt weer gegeven in de volgende afbeelding.
 
-    :::image type="content" source="media/object-replication-configure/replication-rules-upload-portal.png" alt-text="Scherm afbeelding die laat zien hoe u een JSON-bestand kunt uploaden om een replicatie beleid te definiëren":::
+    :::image type="content" source="media/object-replication-configure/replication-rules-upload-portal.png" alt-text="Scherm opname van de replicatie regels in Azure Portal":::
 
 1. Selecteer **uploaden** om het replicatie beleid voor het doel account te maken.
 
@@ -293,7 +293,7 @@ U kunt vervolgens een JSON-bestand met de beleids definitie downloaden dat u aan
 1. Navigeer naar de **object replicatie** -instellingen voor het doel account in de Azure Portal.
 1. Selecteer de knop **meer** naast het beleid dat u wilt downloaden en selecteer vervolgens **regels downloaden**, zoals wordt weer gegeven in de volgende afbeelding.
 
-    :::image type="content" source="media/object-replication-configure/replication-rules-download-portal.png" alt-text="Scherm afbeelding die laat zien hoe replicatie regels worden gedownload naar een JSON-bestand":::
+    :::image type="content" source="media/object-replication-configure/replication-rules-download-portal.png" alt-text="Scherm opname van de replicatie regels in Azure Portal":::
 
 1. Sla het JSON-bestand op uw lokale computer op om te delen met een andere gebruiker om het beleid op het bron account te configureren.
 
@@ -353,7 +353,7 @@ az storage account or-policy create \
 
 Als u een replicatie beleid en de bijbehorende regels wilt verwijderen, gebruikt u Azure Portal, Power shell of CLI.
 
-# <a name="azure-portal"></a>[Azure-portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 Voer de volgende stappen uit om een replicatie beleid te verwijderen in de Azure Portal:
 

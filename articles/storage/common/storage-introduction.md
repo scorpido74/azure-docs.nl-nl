@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: b603776ce19bca8d6fefa7c3c85366ebe3b7b01f
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 1f335640eb37f51857fa295298d0a3ca91f2a370
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653797"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714977"
 ---
 # <a name="introduction-to-the-core-azure-storage-services"></a>Inleiding tot de kern Azure Storage services
 
@@ -111,7 +111,7 @@ Azure Storage biedt verschillende soorten opslag accounts. Elk type ondersteunt 
 
 Elke aanvraag voor Azure Storage moet worden geautoriseerd. Azure Storage ondersteunt de volgende autorisatie methoden:
 
-- **Integratie van Azure Active Directory (Azure AD) voor Blob-en wachtrij gegevens.** Azure Storage ondersteunt verificatie en autorisatie met Azure AD voor de BLOB-en Queue-Services via op rollen gebaseerd toegangs beheer (RBAC). Het is raadzaam aanvragen met Azure AD te autoriseren voor superieure beveiliging en gebruiks gemak. Zie [toegang tot Azure-blobs en-wacht rijen toestaan met Azure Active Directory](storage-auth-aad.md)voor meer informatie.
+- **Integratie van Azure Active Directory (Azure AD) voor Blob-en wachtrij gegevens.** Azure Storage ondersteunt verificatie en autorisatie met Azure AD voor de BLOB-en Queue-Services via Azure op rollen gebaseerd toegangs beheer (Azure RBAC). Het is raadzaam aanvragen met Azure AD te autoriseren voor superieure beveiliging en gebruiks gemak. Zie [toegang tot Azure-blobs en-wacht rijen toestaan met Azure Active Directory](storage-auth-aad.md)voor meer informatie.
 - **Azure AD-autorisatie via SMB voor Azure Files.** Azure Files ondersteunt autorisatie op basis van een identiteit via SMB (Server Message Block) via Azure Active Directory Domain Services (Azure AD DS) of on-premises Active Directory Domain Services (preview). De Windows-Vm's die zijn gekoppeld aan een domein, hebben toegang tot Azure-bestands shares met Azure AD-referenties. Zie voor meer informatie [overzicht van Azure files verificatie op basis van identiteiten voor SMB-toegang](../files/storage-files-active-directory-overview.md) en [het plannen van een Azure files-implementatie](../files/storage-files-planning.md#identity).
 - **Autorisatie met gedeelde sleutel.** De Azure Storage Blob-, file-, Queue-en Table-Services ondersteunen autorisatie met gedeelde sleutel. Een client die gebruikmaakt van gedeelde sleutel autorisatie, geeft een header door elke aanvraag die is ondertekend met de toegangs sleutel voor het opslag account. Zie [autoriseren met gedeelde sleutel](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key)voor meer informatie.
 - **Autorisatie met behulp van Shared Access signatures (SAS).** Een Shared Access Signature (SAS) is een teken reeks met een beveiligings token dat kan worden toegevoegd aan de URI voor een opslag resource. Met het beveiligings token worden beperkingen, zoals machtigingen en het toegangs interval ingekapseld. Zie [using Shared Access signatures (SAS) (Engelstalig)](storage-sas-overview.md)voor meer informatie.

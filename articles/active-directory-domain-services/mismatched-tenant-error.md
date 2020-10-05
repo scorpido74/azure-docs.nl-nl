@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 0e21009341857cc6de3cb7aa411445bc10e6827e
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 62768dcc8df9f7dbd6cbb15c434ec9886e2d1d44
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223479"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713006"
 ---
 # <a name="resolve-mismatched-directory-errors-for-existing-azure-active-directory-domain-services-managed-domains"></a>Fouten van niet-overeenkomende mappen oplossen voor bestaande Azure Active Directory Domain Services beheerde domeinen
 
@@ -28,11 +28,11 @@ In dit artikel wordt uitgelegd waarom de fout optreedt en hoe u deze kunt oploss
 
 Er treedt een fout op die niet overeenkomt wanneer een door Azure AD DS beheerd domein en een virtueel netwerk deel uitmaken van twee verschillende Azure AD-tenants. U hebt bijvoorbeeld een beheerd domein met de naam *aaddscontoso.com* dat wordt uitgevoerd in de Azure AD-Tenant van contoso. Het virtuele netwerk van Azure voor het beheerde domein maakt echter deel uit van de fabrikam Azure AD-Tenant.
 
-Azure gebruikt op rollen gebaseerd toegangs beheer (RBAC) om de toegang tot resources te beperken. Wanneer u Azure AD DS in een Azure AD-Tenant inschakelt, worden referentie-hashes gesynchroniseerd met het beheerde domein. Deze bewerking vereist dat u een Tenant beheerder bent voor de Azure AD-adres lijst en dat toegang tot de referenties moet worden beheerd.
+Toegangs beheer op basis van rollen (Azure RBAC) van Azure wordt gebruikt om de toegang tot resources te beperken. Wanneer u Azure AD DS in een Azure AD-Tenant inschakelt, worden referentie-hashes gesynchroniseerd met het beheerde domein. Deze bewerking vereist dat u een Tenant beheerder bent voor de Azure AD-adres lijst en dat toegang tot de referenties moet worden beheerd.
 
 Als u resources wilt implementeren in een virtueel Azure-netwerk en beheer verkeer, moet u over beheerders rechten beschikken voor het virtuele netwerk waarin u het beheerde domein implementeert.
 
-Voor RBAC om consistente en veilige toegang te kunnen krijgen tot alle resources die Azure AD DS gebruikt, moeten het beheerde domein en het virtuele netwerk deel uitmaken van dezelfde Azure AD-Tenant.
+Voor een consistente werking van Azure RBAC en beveiligde toegang tot alle resources die Azure AD DS gebruikt, moeten het beheerde domein en het virtuele netwerk deel uitmaken van dezelfde Azure AD-Tenant.
 
 De volgende regels zijn van toepassing op implementaties:
 

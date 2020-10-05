@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: 834d3bd3e41be0487a3d05f00846bcb58bfe00a8
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: f39efcbfe7f0094e9481049a1678dba8a045888f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90018180"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714230"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Verbinding maken met Azure IoT Central
 
@@ -99,13 +99,13 @@ Een basis-of tussenliggend certificaat toevoegen en verifiëren voor uw registra
 
 1. Upload uw primaire X. 509-certificaat op de **pagina primair certificaat**. Dit is het basis-of tussenliggende certificaat:
 
-    :::image type="content" source="media/concepts-get-connected/upload-primary-certificate.png" alt-text="Scherm afbeelding van primair certificaat":::
+    :::image type="content" source="media/concepts-get-connected/upload-primary-certificate.png" alt-text="Een scherm opname van een X. 509-registratie groep toevoegen":::
 
-1. Gebruik de **verificatie code** om een verificatie code te genereren in het hulp programma dat u gebruikt. Selecteer vervolgens **verifiëren** om het verificatie certificaat te uploaden.
+1. Klik op **verificatie code genereren** om een code te genereren voor het hulp programma dat u gebruikt om het verificatie certificaat te genereren. Selecteer vervolgens **verifiëren** om het verificatie certificaat te uploaden.
 
 1. Wanneer de verificatie is geslaagd, ziet u de volgende bevestiging:
 
-    :::image type="content" source="media/concepts-get-connected/verified-primary-certificate.png" alt-text="Scherm opname van primair certificaat gecontroleerd":::
+    :::image type="content" source="media/concepts-get-connected/verified-primary-certificate.png" alt-text="Een scherm opname van een X. 509-registratie groep toevoegen":::
 
 Verifiëren van eigendom van het certificaat zorgt ervoor dat de persoon die het certificaat uploadt, de persoonlijke sleutel van het certificaat heeft.
 
@@ -147,7 +147,7 @@ De stroom wijkt enigszins af van de vraag of de apparaten SAS-tokens of X. 509-c
 
 1. Kopieer de primaire sleutel van de groep uit de registratie groep voor **SAS-IOT-apparaten** :
 
-    :::image type="content" source="media/concepts-get-connected/group-primary-key.png" alt-text="Primaire sleutel van de registratie groep van SAS-IoT-apparaten groeperen":::
+    :::image type="content" source="media/concepts-get-connected/group-primary-key.png" alt-text="Een scherm opname van een X. 509-registratie groep toevoegen":::
 
 1. Gebruik de `az iot central device compute-device-key` opdracht voor het genereren van de SAS-sleutels van het apparaat. Gebruik de primaire sleutel van de groep uit de vorige stap. De apparaat-Id's moeten kleine letters zijn:
 

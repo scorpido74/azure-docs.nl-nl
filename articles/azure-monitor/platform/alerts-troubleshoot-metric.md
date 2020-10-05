@@ -4,14 +4,14 @@ description: Veelvoorkomende problemen met Azure Monitor metrische waarschuwinge
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 10/04/2020
+ms.date: 10/05/2020
 ms.subservice: alerts
-ms.openlocfilehash: 1280529aa758194dbd02196d71a715310431a73b
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 579729eca8269d75569166a5bda32a979544b164
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91710291"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715326"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Problemen in Azure Monitor metrische waarschuwingen oplossen 
 
@@ -81,8 +81,10 @@ Zie [hier](../insights/monitor-vm-azure.md#guest-operating-system)voor meer info
 
 ## <a name="cant-find-the-metric-to-alert-on"></a>Kan de metrische gegevens niet vinden voor waarschuwing
 
-Als u op zoek bent naar een specifieke metriek, maar er geen metrische gegevens voor de resource worden weer gegeven, [controleert u of het resource type wordt ondersteund voor metrische waarschuwingen](./alerts-metric-near-real-time.md).
-Als er bepaalde metrische gegevens voor de resource worden weer gegeven, maar u geen specifieke metriek kunt vinden, [controleert u of de metrische gegevens beschikbaar](./metrics-supported.md)zijn en, als dit het geval is, raadpleegt u de beschrijving van de metrische gegevens om te zien of deze alleen beschikbaar is in specifieke versies of edities van de resource.
+Als u op zoek bent naar een specifieke metriek, maar deze niet kan zien bij het maken van een waarschuwings regel, controleert u het volgende:
+- Als u geen metrische gegevens voor de resource kunt zien, [controleert u of het resource type wordt ondersteund voor metrische waarschuwingen](./alerts-metric-near-real-time.md).
+- Als er bepaalde metrische gegevens voor de resource worden weer gegeven, maar geen specifieke metriek kunt vinden, [controleert u of de metrische gegevens beschikbaar](./metrics-supported.md)zijn en, als dit het geval is, raadpleegt u de metrische beschrijving om te controleren of deze alleen beschikbaar is in specifieke versies of edities van de resource.
+- Als de metriek niet beschikbaar is voor de resource, kan deze beschikbaar zijn in de resource logboeken en kunnen worden bewaakt met behulp van logboek waarschuwingen. Zie hier voor meer informatie over het [verzamelen en analyseren van resource logboeken van een Azure-resource](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-resource-logs).
 
 ## <a name="cant-find-the-metric-dimension-to-alert-on"></a>Kan de metrische dimensie niet vinden om te waarschuwen
 

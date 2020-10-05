@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 09/04/2020
 ms.author: jushiman
-ms.openlocfilehash: 47f4085ff01526853fab29da2c1bc1a3e8998d23
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8f679626b69bd855e86b94cdde51955edd068e8f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935233"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714904"
 ---
 # <a name="enable-automanage-for-virtual-machines-through-azure-policy"></a>Schakel automanage in voor virtuele machines via Azure Policy
 
@@ -28,7 +28,7 @@ Als u geen Azure-abonnement hebt, [maakt u een account](https://azure.microsoft.
 > Accounts voor gratis proefversies hebben geen toegang tot de virtuele machines die in deze zelfstudie worden gebruikt. U moet upgraden naar een abonnement met betalen per gebruik.
 
 > [!IMPORTANT]
-> De volgende RBAC-machtiging is vereist voor het inschakelen van automanage: rol van **eigenaar** of **Inzender** samen met beheerders rollen voor **gebruikers toegang** .
+> De volgende Azure RBAC-machtiging is nodig om automanage in te scha kelen: rol van **eigenaar** of **Inzender** samen met beheerders rollen van **gebruikers toegang** .
 
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure

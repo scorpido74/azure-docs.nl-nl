@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozguns
 ms.subservice: queues
 ms.custom: contperfq1
-ms.openlocfilehash: 32e78b3b8ccad791bc7b9bb11123dbe901df597f
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 2593f1b7ea4cfabe0243fe6f830d718896e68473
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90088668"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715512"
 ---
 # <a name="choose-how-to-authorize-access-to-queue-data-in-the-azure-portal"></a>Kies hoe u de toegang tot de wachtrij gegevens in de Azure Portal wilt autoriseren
 
@@ -24,11 +24,11 @@ Wanneer u toegang krijgt tot wachtrij gegevens met behulp van de [Azure Portal](
 
 ## <a name="permissions-needed-to-access-queue-data"></a>Machtigingen die nodig zijn voor toegang tot de wachtrij gegevens
 
-Afhankelijk van hoe u de toegang tot wachtrij gegevens in de Azure Portal wilt autoriseren, hebt u specifieke machtigingen nodig. In de meeste gevallen worden deze machtigingen gegeven via op rollen gebaseerd toegangs beheer (RBAC). Zie [Wat is Azure Role-based Access Control (Azure RBAC)?](../../role-based-access-control/overview.md)voor meer informatie over RBAC.
+Afhankelijk van hoe u de toegang tot wachtrij gegevens in de Azure Portal wilt autoriseren, hebt u specifieke machtigingen nodig. In de meeste gevallen worden deze machtigingen gegeven via Azure op rollen gebaseerd toegangs beheer (Azure RBAC). Zie [Wat is Azure op rollen gebaseerd toegangs beheer (Azure RBAC)?](../../role-based-access-control/overview.md)voor meer informatie over Azure RBAC.
 
 ### <a name="use-the-account-access-key"></a>De toegangs sleutel voor het account gebruiken
 
-Als u toegang wilt krijgen tot de wachtrij gegevens met de toegangs sleutel voor het account, moet u een Azure-rol aan u hebben toegewezen die de RBAC-actie **micro soft. Storage/Storage accounts/listkeys ophalen/Action**bevat. Deze Azure-rol is mogelijk een ingebouwde of aangepaste rol. Ingebouwde rollen die **micro soft. Storage/Storage accounts/listkeys ophalen/Action** ondersteunen zijn onder andere:
+Als u toegang wilt hebben tot wachtrij gegevens met de toegangs sleutel voor het account, moet u een Azure-rol aan u hebben toegewezen die de Azure RBAC-actie **micro soft. Storage/Storage accounts/listkeys ophalen/Action**bevat. Deze Azure-rol is mogelijk een ingebouwde of aangepaste rol. Ingebouwde rollen die **micro soft. Storage/Storage accounts/listkeys ophalen/Action** ondersteunen zijn onder andere:
 
 - De rol van Azure Resource Manager [eigenaar](../../role-based-access-control/built-in-roles.md#owner)
 - De rol [inzender](../../role-based-access-control/built-in-roles.md#contributor) Azure Resource Manager
@@ -74,11 +74,11 @@ Wanneer u naar een wachtrij navigeert, geeft de Azure Portal aan of u momenteel 
 
 Als u een verificatie uitvoert met de toegangs sleutel voor het account, ziet u de **toegangs sleutel** die is opgegeven als verificatie methode in de portal:
 
-:::image type="content" source="media/authorize-queue-access-portal/auth-method-access-key.png" alt-text="Scherm opname van de gebruiker die momenteel toegang heeft tot wacht rijen met de account sleutel":::
+:::image type="content" source="media/authorize-queue-access-portal/auth-method-access-key.png" alt-text="Scherm afbeelding die laat zien hoe u navigeert naar wachtrij gegevens in de Azure Portal":::
 
 Als u wilt overschakelen op het gebruik van een Azure AD-account, klikt u op de koppeling die in de afbeelding is gemarkeerd. Als u over de juiste machtigingen beschikt via de Azure-rollen die aan u zijn toegewezen, kunt u door gaan. Als u echter niet over de juiste machtigingen beschikt, ziet u een fout bericht als het volgende:
 
-:::image type="content" source="media/authorize-queue-access-portal/auth-error-azure-ad.png" alt-text="Fout die wordt weer gegeven als het Azure AD-account geen ondersteuning biedt voor toegang":::
+:::image type="content" source="media/authorize-queue-access-portal/auth-error-azure-ad.png" alt-text="Scherm afbeelding die laat zien hoe u navigeert naar wachtrij gegevens in de Azure Portal":::
 
 U ziet dat er geen wacht rijen worden weer gegeven in de lijst als uw Azure AD-account geen machtigingen heeft om ze weer te geven. Klik op de **Schakel optie om toegang te krijgen** tot de sleutel koppeling om de toegangs sleutel opnieuw te gebruiken voor verificatie.
 
@@ -86,7 +86,7 @@ U ziet dat er geen wacht rijen worden weer gegeven in de lijst als uw Azure AD-a
 
 Als u de verificatie uitvoert met uw Azure AD-account, ziet u de **Azure AD-gebruikers account** die is opgegeven als verificatie methode in de portal:
 
-:::image type="content" source="media/authorize-queue-access-portal/auth-method-azure-ad.png" alt-text="Scherm opname van de gebruiker die momenteel toegang heeft tot wacht rijen met een Azure AD-account":::
+:::image type="content" source="media/authorize-queue-access-portal/auth-method-azure-ad.png" alt-text="Scherm afbeelding die laat zien hoe u navigeert naar wachtrij gegevens in de Azure Portal":::
 
 Als u wilt overschakelen op het gebruik van de toegangs sleutel voor het account, klikt u op de koppeling die in de afbeelding is gemarkeerd. Als u toegang hebt tot de account sleutel, kunt u door gaan. Als u echter geen toegang hebt tot de account sleutel, wordt er een fout bericht weer gegeven in de Azure Portal.
 
@@ -95,6 +95,6 @@ Wacht rijen worden niet weer gegeven in de portal als u geen toegang hebt tot de
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Toegang tot Azure-blobs en-wacht rijen verifiëren met Azure Active Directory](../common/storage-auth-aad.md)
-- [Toegang verlenen tot Azure-containers en-wacht rijen met RBAC in het Azure Portal](../common/storage-auth-aad-rbac-portal.md)
-- [Toegang verlenen tot Azure blob en wachtrijgegevens met RBAC met behulp van Azure CLI](../common/storage-auth-aad-rbac-cli.md)
-- [Toegang verlenen tot Azure blob en wachtrijgegevens met RBAC met behulp van PowerShell](../common/storage-auth-aad-rbac-powershell.md)
+- [De Azure Portal gebruiken om een Azure-rol toe te wijzen voor toegang tot Blob-en wachtrij gegevens](../common/storage-auth-aad-rbac-portal.md)
+- [De Azure CLI gebruiken om een Azure-rol toe te wijzen voor toegang tot Blob-en wachtrij gegevens](../common/storage-auth-aad-rbac-cli.md)
+- [De Azure PowerShell-module gebruiken om een Azure-rol toe te wijzen voor toegang tot Blob-en wachtrij gegevens](../common/storage-auth-aad-rbac-powershell.md)

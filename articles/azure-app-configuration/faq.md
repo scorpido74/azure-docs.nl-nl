@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: lcozzens
-ms.openlocfilehash: 10510774409a6b75687086290b32885b30d9131a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ef4633953f7ac03737608124309d94e436913794
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91335378"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715447"
 ---
 # <a name="azure-app-configuration-faq"></a>Veelgestelde vragen over Azure-app configuratie
 
@@ -94,7 +94,7 @@ Hier volgen enkele aandachtspunten voor het kiezen van een laag.
     Voor de Standard-laag archieven worden de eerste 200.000 aanvragen per dag opgenomen in de dagelijkse kosten. Bijkomende aanvragen worden gefactureerd als overschrijding.
 
 - **Service overeenkomst**: de laag Standard heeft een SLA van 99,9% Beschik baarheid. De laag gratis heeft geen SLA.
-- **Beveiligings functies**: beide lagen bevatten basis beveiligings functionaliteit, inclusief versleuteling met door micro soft beheerde sleutels, verificatie via HMAC of Azure Active Directory, ondersteuning voor RBAC en beheerde identiteit. De laag standaard biedt meer geavanceerde beveiligings functies, waaronder ondersteuning voor persoonlijke koppelingen en versleuteling met door de klant beheerde sleutels.
+- **Beveiligings functies**: beide lagen bevatten basis beveiligings functionaliteit, inclusief versleuteling met door micro soft beheerde sleutels, verificatie via HMAC of Azure Active Directory, ondersteuning voor Azure RBAC en beheerde identiteit. De laag standaard biedt meer geavanceerde beveiligings functies, waaronder ondersteuning voor persoonlijke koppelingen en versleuteling met door de klant beheerde sleutels.
 - **Kosten**: voor de Standard-laag worden dagelijks gebruiks kosten in rekening gebracht. Er is ook een overschrijding-vergoeding voor aanvragen die na de dagelijkse toewijzing zijn. Er zijn geen kosten verbonden aan het gebruik van een gratis laag opslag.
 
 ## <a name="can-i-upgrade-a-store-from-the-free-tier-to-the-standard-tier-can-i-downgrade-a-store-from-the-standard-tier-to-the-free-tier"></a>Kan ik een archief van de gratis laag upgraden naar de laag standaard? Kan ik een archief van de Standard-laag naar de gratis laag downgradeen?

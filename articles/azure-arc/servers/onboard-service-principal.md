@@ -3,12 +3,12 @@ title: Hybride machines op schaal aansluiten op Azure
 description: In dit artikel leert u hoe u met behulp van een Service-Principal computers verbindt met Azure met servers met de Arc-functionaliteit.
 ms.date: 09/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5976e2ff9aef5f68d119a5fdf5f7d4d4345287a4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: dc92b1cb96b61caa17f141ca9a78fb10fe59a2a9
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91254938"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713415"
 ---
 # <a name="connect-hybrid-machines-to-azure-at-scale"></a>Hybride machines op schaal aansluiten op Azure
 
@@ -67,7 +67,7 @@ De waarden van de volgende eigenschappen worden gebruikt met para meters die wor
 > Zorg ervoor dat u de Service Principal **ApplicationId** -eigenschap gebruikt, niet de eigenschap **id** .
 >
 
-De rol van de voor bereide **Azure connected-computer** bevat alleen de vereiste machtigingen voor het onboarden van een computer. U kunt de machtiging Service-Principal toewijzen zodat het bereik een resource groep of een abonnement kan bevatten. Zie roltoewijzingen [toevoegen of verwijderen met behulp van Azure RBAC en de Azure Portal](../../role-based-access-control/role-assignments-portal.md) of [roltoewijzingen toevoegen of verwijderen met behulp van Azure RBAC en Azure cli](../../role-based-access-control/role-assignments-cli.md)om roltoewijzing toe te voegen.
+De rol van de voor bereide **Azure connected-computer** bevat alleen de vereiste machtigingen voor het onboarden van een computer. U kunt de machtiging Service-Principal toewijzen zodat het bereik een resource groep of een abonnement kan bevatten. Zie [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de Azure Portal](../../role-based-access-control/role-assignments-portal.md) of Azure- [roltoewijzingen toevoegen of verwijderen met behulp van Azure cli](../../role-based-access-control/role-assignments-cli.md)om roltoewijzing toe te voegen.
 
 ## <a name="install-the-agent-and-connect-to-azure"></a>De agent installeren en verbinding maken met Azure
 
