@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 08/19/2020
 ms.custom: include file
 ms.openlocfilehash: 4bad128e6f76b2d7dd87634a10b35ebbedd269ce
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88639004"
 ---
 1. Selecteer vanuit het menu van Azure Portal of op de **startpagina** de optie **Een resource maken**.
@@ -49,8 +49,8 @@ ms.locfileid: "88639004"
 
 1. Controleer de accountinstellingen en selecteer vervolgens **Maken**. Het duurt een paar minuten om het account te maken. Wacht tot de portal-pagina **Uw implementatie is voltooid** weergeeft. 
 
-    :::image type="content" source="./media/cosmos-db-create-dbaccount/azure-cosmos-db-account-created.png" alt-text="Het deelvenster Meldingen in Azure Portal":::
+    :::image type="content" source="./media/cosmos-db-create-dbaccount/azure-cosmos-db-account-created.png" alt-text="De pagina Nieuw account voor Azure Cosmos DB":::
 
 1. Selecteer **Ga naar resource** om naar de Azure Cosmos DB-accountpagina te gaan. 
 
-    :::image type="content" source="./media/cosmos-db-create-dbaccount/azure-cosmos-db-account-created-2.png" alt-text="De Azure Cosmos DB-accountpagina":::
+    :::image type="content" source="./media/cosmos-db-create-dbaccount/azure-cosmos-db-account-created-2.png" alt-text="De pagina Nieuw account voor Azure Cosmos DB":::
