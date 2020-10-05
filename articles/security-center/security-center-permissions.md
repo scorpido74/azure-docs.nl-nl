@@ -1,6 +1,6 @@
 ---
 title: Machtigingen in Azure Security Center | Microsoft Docs
-description: In dit artikel wordt uitgelegd hoe Azure Security Center toegangs beheer op basis van rollen gebruikt om machtigingen aan gebruikers toe te wijzen en de toegestane acties voor elke rol te identificeren.
+description: In dit artikel wordt uitgelegd hoe Azure Security Center toegangsbeheer op basis van rollen gebruikt om machtigingen aan gebruikers toe te wijzen en de toegestane acties voor elke rol aan te geven.
 services: security-center
 cloud: na
 documentationcenter: na
@@ -11,55 +11,55 @@ ms.service: security-center
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 07/02/2020
 ms.author: memildin
-ms.openlocfilehash: ed73c4781b9fd9926e12910ca1eb2f71d2b99245
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
-ms.translationtype: MT
+ms.openlocfilehash: 2a66873d558495049c97b987dfb69bbf83b4e1d8
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904822"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91439484"
 ---
 # <a name="permissions-in-azure-security-center"></a>Machtigingen in Azure Security Center
 
-Azure Security Center maakt gebruik van [Azure RBAC (op rollen gebaseerd toegangs beheer)](../role-based-access-control/role-assignments-portal.md), dat [ingebouwde rollen](../role-based-access-control/built-in-roles.md) biedt die kunnen worden toegewezen aan gebruikers, groepen en services in Azure.
+Azure Security Center maakt gebruik van [op rollen gebaseerd toegangsbeheer van Azure (Azure RBAC)](../role-based-access-control/role-assignments-portal.md), dat [ingebouwde rollen](../role-based-access-control/built-in-roles.md) biedt die kunnen worden toegewezen aan gebruikers, groepen en services in Azure.
 
-Security Center evalueert de configuratie van uw resources om beveiligings problemen en beveiligings lekken te identificeren. In Security Center ziet u alleen informatie die betrekking heeft op een resource als u de rol van eigenaar, bijdrager of lezer hebt toegewezen aan het abonnement of de resource groep waarvan een resource deel uitmaakt.
+In Azure Security Center wordt de configuratie van uw resources beoordeeld om beveiligingsproblemen en kwetsbaarheden te identificeren. In Security Center ziet u alleen informatie over een resource wanneer aan u de rol van eigenaar, bijdrager of lezer is toegewezen voor het abonnement of de resourcegroep waar een resource bij hoort.
 
 Naast deze rollen zijn er twee specifieke Security Center-rollen:
 
-* **Beveiligings lezer**: een gebruiker die tot deze rol behoort, heeft weergave rechten voor Security Center. De gebruiker kan aanbevelingen, waarschuwingen, een beveiligings beleid en beveiligings status weer geven, maar kan geen wijzigingen aanbrengen.
-* **Beveiligings beheerder**: een gebruiker die deel uitmaakt van deze rol heeft dezelfde rechten als de beveiligings lezer en kan het beveiligings beleid ook bijwerken en waarschuwingen en aanbevelingen negeren.
+* **Beveiligingslezer**: Een gebruiker met deze rol heeft weergaverechten voor Security Center. De gebruiker kan aanbevelingen, waarschuwingen, een beveiligingsbeleid en beveiligingsstatuswaarden weergeven, maar kan geen wijzigingen aanbrengen.
+* **Beveiligingsbeheerder**: Een gebruiker met deze rol heeft dezelfde rechten als de beveiligingslezer en kan het beveiligingsbeleid ook bijwerken en waarschuwingen en aanbevelingen verwijderen.
 
 > [!NOTE]
-> De beveiligings rollen, beveiligings lezer en beveiligings beheerder hebben alleen toegang tot Security Center. De beveiligings rollen hebben geen toegang tot andere service gebieden van Azure, zoals Storage, Web & Mobile of Internet of Things.
+> De beveiligingsrollen Beveiligingslezer en Beveiligingsbeheerder hebben alleen toegang tot Security Center. De beveiligingsrollen hebben geen toegang tot andere servicegebieden van Azure, zoals Storage, Web & Mobile of Internet of Things.
 >
 
 ## <a name="roles-and-allowed-actions"></a>Rollen en toegestane acties
 
-De volgende tabel bevat rollen en toegestane acties in Security Center.
+In de volgende tabel worden rollen en toegestane acties in Security Center vermeld.
 
-|Bewerking|Beveiligings lezer/ <br> Lezer |Beveiligingsbeheerder  |Inzender voor resource groepen/ <br> Eigenaar van resource groep  |Mede werker van abonnement  |Abonnements eigenaar  |
+|Bewerking|Beveiligingslezer/ <br> Lezer |Beveiligingsbeheerder  |Resourcegroepinzender/ <br> Resourcegroepeigenaar  |Abonnementinzender  |Abonnementeigenaar  |
 |:--- |:---:|:---:|:---:|:---:|:---:|
-|Beveiligings beleid bewerken|-|✔|-|-|✔|
-|Initiatieven (waaronder) reglementaire nalevings standaarden toevoegen/toewijzen|-|-|-|-|✔|
-|Azure Defender in-/uitschakelen|-|✔|-|-|✔|
-|Automatische inrichting in-of uitschakelen|-|✔|-|✔|✔|
-|Aanbevelingen voor beveiliging Toep assen op een resource</br> (en gebruik een [snelle oplossing!](security-center-remediate-recommendations.md#quick-fix-remediation))|-|-|✔|✔|✔|
-|Waarschuwingen negeren|-|✔|-|✔|✔|
-|Waarschuwingen en aanbevelingen weer geven|✔|✔|✔|✔|✔|
+|Beveiligingsbeleid bewerken|-|✔|-|-|✔|
+|Initiatieven (waaronder) reglementaire nalevingsstandaarden toevoegen/toewijzen|-|-|-|-|✔|
+|Azure Defender inschakelen/uitschakelen|-|✔|-|-|✔|
+|Automatische inrichting inschakelen/uitschakelen|-|✔|-|✔|✔|
+|Aanbevelingen voor beveiliging toepassen op een resource</br> (en [Snelle oplossing](security-center-remediate-recommendations.md#quick-fix-remediation) gebruiken)|-|-|✔|✔|✔|
+|Waarschuwingen verwijderen|-|✔|-|✔|✔|
+|Meldingen en aanbevelingen weergeven|✔|✔|✔|✔|✔|
 
 > [!NOTE]
-> We raden u aan de rol toe te wijzen die gebruikers minimaal nodig hebben om hun taken uit te voeren. Wijs bijvoorbeeld de rol Lezer toe aan gebruikers die alleen informatie over de beveiligings status van een resource hoeven te bekijken, maar geen actie ondernemen, zoals het Toep assen van aanbevelingen of het bewerken van beleid.
+> We raden u aan de rol toe te wijzen die gebruikers minimaal nodig hebben om hun taken uit te voeren. Wijs bijvoorbeeld gebruikers die alleen informatie hoeven te bekijken over de beveiligingsstatus van resources, maar geen maatregelen hoeven te nemen zoals het toepassen van aanbevelingen of het bewerken van beleid, de rol Lezer toe.
 >
 >
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit artikel wordt uitgelegd hoe Security Center RBAC gebruikt om machtigingen toe te wijzen aan gebruikers en de toegestane acties voor elke rol te identificeren. Nu u bekend bent met de roltoewijzingen die nodig zijn voor het bewaken van de beveiligings status van uw abonnement, het bewerken van beveiligings beleid en het Toep assen van aanbevelingen, leert u het volgende:
+In dit artikel wordt uitgelegd hoe Security Center toegangsbeheer op basis van rollen gebruikt om machtigingen aan gebruikers toe te wijzen en de toegestane acties voor elke rol aan te geven. Nu u bekend bent met de roltoewijzingen die nodig zijn voor het bewaken van de beveiligingsstatus van uw abonnement, het bewerken van beveiligingsbeleid en het toepassen van aanbevelingen, kunt u het volgende gaan leren:
 
 - [Beveiligingsbeleid instellen in Security Center](tutorial-security-policy.md)
-- [Aanbevelingen voor beveiliging in Security Center beheren](security-center-recommendations.md)
-- [De beveiligings status van uw Azure-resources controleren](security-center-monitoring.md)
-- [Beveiligings waarschuwingen beheren en erop reageren in Security Center](security-center-managing-and-responding-alerts.md)
-- [Beveiligings oplossingen van partners bewaken](security-center-partner-solutions.md)
+- [Aanbevelingen voor beveiliging beheren in Security Center](security-center-recommendations.md)
+- [De beveiligingsstatus van uw Azure-resources bewaken](security-center-monitoring.md)
+- [Beveiligingswaarschuwingen beheren en erop reageren in Security Center](security-center-managing-and-responding-alerts.md)
+- [Beveiligingsoplossingen van partners bewaken](security-center-partner-solutions.md)
