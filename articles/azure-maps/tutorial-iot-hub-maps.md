@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Ruimtelijke IoT-analyse implementeren met Microsoft Azure Maps'
-description: Integreer IoT Hub met API's van de Azure Maps-service.
+title: 'Zelfstudie: Ruimtelijke IoT-analyse implementeren | Microsoft Azure Maps'
+description: Zelfstudie over het integreren van IoT Hub met API's van de Microsoft Azure Maps-service
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 09/01/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 25665e75a361fbaa5479e2717d5e6aa9290c3d3a
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 3eb405783b16d1bb7de27f6638dba394457601c8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90056565"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321829"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-by-using-azure-maps"></a>Zelfstudie: Ruimtelijke IoT-analyse implementeren met behulp van Azure Maps
 
@@ -253,6 +253,7 @@ Wanneer de Azure-functie actief is, kunt u telemetriegegevens verzenden naar de 
     dotnet run
     ```
 
+
   Je lokale terminal zou er als volgt uit moeten zien.
 
 :::image type="content" source="./media/tutorial-iot-hub-maps/terminal.png" alt-text="Diagram van systeemoverzicht.":::
@@ -276,8 +277,6 @@ Voor een volledige lijst van Azure Maps REST API's, bekijk:
 
 * [Azure Maps REST API's](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence)
 
-Voor meer informatie over IoT Plug and Play, bekijk:
-
 * [IoT Plug and Play](https://docs.microsoft.com/azure/iot-pnp)
 
 Voor een lijst met apparaten die Azure-gecertificeerd zijn voor IoT ga je naar:
@@ -287,6 +286,7 @@ Voor een lijst met apparaten die Azure-gecertificeerd zijn voor IoT ga je naar:
 ## <a name="next-steps"></a>Volgende stappen
 
 Ga voor meer informatie over het verzenden van apparaat-naar-cloud-telemetrie en omgekeerd naar:
+
 
 > [!div class="nextstepaction"]
 > [Telemetrie verzenden vanaf een apparaat](https://docs.microsoft.com/azure/iot-hub/quickstart-send-telemetry-dotnet)

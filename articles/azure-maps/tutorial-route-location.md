@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Routebeschrijvingen weergeven met behulp van de Microsoft Azure Maps-routeservice en een kaartbesturingselement'
-description: Lees hoe u routebeschrijvingen kunt weergeven met behulp van de Microsoft Azure Maps-routeservice en een kaartbesturingselement.
+title: 'Zelfstudie: Een route naar een locatie zoeken | Microsoft Azure Maps'
+description: Zelfstudie over het vinden van een route naar een nuttige plaats. Ontdek hoe u adrescoördinaten instelt en query's uitvoert op de Azure Maps Route-service voor een routebeschrijving naar de plaats.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 09/01/2020
@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 35a3f6d1e7894eec9baa4ea5432a8e3fec138a21
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: 3cb9bee65ab7fa2c29185c40ecb48fd531192187
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085039"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321710"
 ---
 # <a name="tutorial-how-to-display-route-directions-using-azure-maps-route-service-and-map-control"></a>Zelfstudie: Routebeschrijvingen weergeven met behulp van de Azure Maps-routeservice en een kaartbesturingselement
 
@@ -218,7 +218,7 @@ In deze sectie wordt beschreven hoe u de API voor routebeschrijvingen van Azure 
 
      :::image type="content" source="./media/tutorial-route-location/map-route.png" alt-text="Eenvoudige kaartweergave van kaartbesturingselement":::
 
-    U kunt de volledige broncode voor het voorbeeld [hier](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/route.html) ophalen. Een livevoorbeeld is [hier](https://azuremapscodesamples.azurewebsites.net/?sample=Route%20to%20a%20destination) te vinden.
+U kunt de volledige broncode voor het voorbeeld [hier](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/route.html) ophalen. Een livevoorbeeld is [hier](https://azuremapscodesamples.azurewebsites.net/?sample=Route%20to%20a%20destination) te vinden.
 
 ## <a name="next-steps"></a>Volgende stappen
 
