@@ -10,12 +10,12 @@ ms.date: 08/01/2020
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 7f8e87b22e3d8f6e265789f910863b2790024cbf
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 4041623d1c6ae464afd20e3beff753fb89e0a350
+ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90532406"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91405068"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>Quickstart: Een Java web-app maken in Azure App Service
 
@@ -71,21 +71,24 @@ Bij het implementatieproces naar Azure App Service worden uw Azure-referenties a
 Voer de onderstaande Maven-opdracht uit om de implementatie te configureren. Met deze opdracht kunt u het App Service-besturingssysteem, de Java-versie en de Tomcat-versie instellen.
 
 ```bash
-mvn com.microsoft.azure:azure-webapp-maven-plugin:1.10.0:config
+mvn com.microsoft.azure:azure-webapp-maven-plugin:1.11.0:config
 ```
 
 ::: zone pivot="platform-windows"
 
 # <a name="java-se"></a>[Java SE](#tab/javase)
 
-1. Wanneer u hierom wordt gevraagd, selecteert u **Windows** door `2` in te voeren.
-2. Gebruik de Java-standaardversie, 1.8, door op de ENTER-toets te drukken.
-3. Druk tot slot op de ENTER-toets bij de laatste prompt om uw selecties te bevestigen.
+1. Wanneer u hierom wordt gevraagd bij de optie **Abonnement**, selecteert u het juiste `Subscription` door het getal in te voeren dat aan het begin van de regel wordt weergegeven.
+1. Wanneer u hierom wordt gevraagd bij de optie **Web-app**, accepteert u de standaardoptie `<create>` door op Enter te drukken.
+1. Wanneer u hierom wordt gevraagd bij de optie **Besturingssysteem**, selecteert u **Windows** door `2` in te voeren.
+1. Gebruik de Java-standaardversie, 1.8, door op de ENTER-toets te drukken.
+1. Druk tot slot op de ENTER-toets bij de laatste prompt om uw selecties te bevestigen.
 
     Het samenvattingsoverzicht ziet er ongeveer uit zoals het fragment hieronder.
 
     ```
     Please confirm webapp properties
+    Subscription Id : ********-****-****-****-************
     AppName : spring-boot-1599007390755
     ResourceGroup : spring-boot-1599007390755-rg
     Region : westeurope
@@ -106,7 +109,9 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.10.0:config
 
 # <a name="tomcat"></a>[Tomcat](#tab/tomcat)
 
-1. Wanneer u hierom wordt gevraagd, selecteert u **Windows** door `2` in te voeren.
+1. Wanneer u hierom wordt gevraagd bij de optie **Abonnement**, selecteert u het juiste `Subscription` door het getal in te voeren dat aan het begin van de regel wordt weergegeven.
+1. Wanneer u hierom wordt gevraagd bij de optie **Web-app**, accepteert u de standaardoptie `<create>` door op Enter te drukken.
+1. Wanneer u hierom wordt gevraagd bij de optie **Besturingssysteem**, selecteert u **Windows** door `2` in te voeren.
 1. Gebruik de Java-standaardversie, 1.8, door op de ENTER-toets te drukken.
 1. Gebruik de standaardwebcontainer, Tomcat 8.5, door op de ENTER-toets te drukken.
 1. Druk tot slot op de ENTER-toets bij de laatste prompt om uw selecties te bevestigen.
@@ -115,6 +120,7 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.10.0:config
 
     ```
     Please confirm webapp properties
+    Subscription Id : ********-****-****-****-************
     AppName : helloworld-1599003152123
     ResourceGroup : helloworld-1599003152123-rg
     Region : westeurope
@@ -140,12 +146,15 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.10.0:config
 
 ### <a name="java-se"></a>[Java SE](#tab/javase)
 
-1. Wanneer u hierom wordt gevraagd, selecteert u **Linux-** door op de ENTER-toets te drukken.
-2. Gebruik de Java-standaardversie, 1.8, door op de ENTER-toets te drukken.
-3. Druk tot slot op de ENTER-toets bij de laatste prompt om uw selecties te bevestigen.
+1. Wanneer u hierom wordt gevraagd bij de optie **Abonnement**, selecteert u het juiste `Subscription` door het getal in te voeren dat aan het begin van de regel wordt weergegeven.
+1. Wanneer u hierom wordt gevraagd bij de optie **Web-app**, accepteert u de standaardoptie `<create>` door op ENTER te drukken.
+1. Wanneer u hierom wordt gevraagd bij de optie **Besturingssysteem**, selecteert u **Linux** door op Enter te drukken.
+1. Gebruik de Java-standaardversie, 1.8, door op de ENTER-toets te drukken.
+1. Druk tot slot op de ENTER-toets bij de laatste prompt om uw selecties te bevestigen.
 
     ```
     Please confirm webapp properties
+    Subscription Id : ********-****-****-****-************
     AppName : spring-boot-1599007116351
     ResourceGroup : spring-boot-1599007116351-rg
     Region : westeurope
@@ -165,13 +174,16 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.10.0:config
 
 ### <a name="tomcat"></a>[Tomcat](#tab/tomcat)
 
-1. Wanneer u hierom wordt gevraagd, selecteert u **Linux-** door op de ENTER-toets te drukken.
+1. Wanneer u hierom wordt gevraagd bij de optie **Abonnement**, selecteert u het juiste `Subscription` door het getal in te voeren dat aan het begin van de regel wordt weergegeven.
+1. Wanneer u hierom wordt gevraagd bij de optie **Web-app**, accepteert u de standaardoptie `<create>` door op ENTER te drukken.
+1. Wanneer u hierom wordt gevraagd bij de optie **Besturingssysteem**, selecteert u **Linux** door op Enter te drukken.
 1. Gebruik de Java-standaardversie, 1.8, door op de ENTER-toets te drukken.
 1. Gebruik de standaardwebcontainer, Tomcat 8.5, door op de ENTER-toets te drukken.
 1. Druk tot slot op de ENTER-toets bij de laatste prompt om uw selecties te bevestigen.
 
     ```
     Please confirm webapp properties
+    Subscription Id : ********-****-****-****-************
     AppName : helloworld-1599003744223
     ResourceGroup : helloworld-1599003744223-rg
     Region : westeurope
@@ -198,6 +210,7 @@ U kunt de configuraties voor App Service indien nodig rechtstreeks in uw `pom.xm
 Eigenschap | Vereist | Beschrijving | Versie
 ---|---|---|---
 `<schemaVersion>` | false | Geef de versie van het configuratieschema op. Ondersteunde waarden zijn: `v1` of `v2`. | 1.5.2
+`<subscriptionId>` | false | Geef de abonnements-id op. | 0.1.0+
 `<resourceGroup>` | true | Azure-resourcegroep voor uw web-app. | 0.1.0+
 `<appName>` | true | De naam is van uw web-app. | 0.1.0+
 `<region>` | true | Hiermee geeft u de regio op waar uw web-app wordt gehost. De standaard waarde is **westeurope**. Alle geldige regio's staan in de sectie [Ondersteunde regio's](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme). | 0.1.0+

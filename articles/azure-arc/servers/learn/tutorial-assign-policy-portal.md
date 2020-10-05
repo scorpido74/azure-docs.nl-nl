@@ -2,18 +2,18 @@
 title: 'Zelfstudie: nieuwe beleidstoewijzing met Azure-portal'
 description: In deze zelfstudie gebruikt u de Azure-portal om een Azure Policy-toewijzing te maken om niet-compatibele resources te identificeren.
 ms.topic: tutorial
-ms.date: 08/12/2020
-ms.openlocfilehash: 4ba301b066137dbdb85ccea0a02ffcac88128e6b
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.date: 09/23/2020
+ms.openlocfilehash: fbfe7090db1b4e1a8f802b30fdf749466ea26f1f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213231"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321863"
 ---
 # <a name="tutorial-create-a-policy-assignment-to-identify-non-compliant-resources"></a>Zelfstudie: Een beleidstoewijzing maken om niet-conforme resources te identificeren
 
 De eerste stap in het begrijpen van naleving in Azure is het identificeren van de status van uw resources.
-In deze zelfstudie wordt u stapsgewijs begeleid bij het maken van een beleidstoewijzing om uw Azure-Arc-servers (preview) te identificeren en om Azure Arc-computers te identificeren waarop de Log Analytics-agent niet is geïnstalleerd.
+In deze zelfstudie wordt stapsgewijs beschreven hoe u een beleidstoewijzing maakt om uw Azure-Arc-servers te identificeren en om Azure Arc-computers te identificeren waarop de Log Analytics-agent niet is geïnstalleerd.
 
 Aan het einde van dit proces kunt u computers identificeren waarop de Log Analytics-agent voor Windows of Linux niet is geïnstalleerd. Ze zijn _niet-compatibel_ met de beleidstoewijzing.
 
@@ -31,11 +31,11 @@ In deze zelfstudie maakt u een beleidstoewijzing en wijst u de beleidsdefinitie 
 
 1. Selecteer **Toewijzingen** in het linkerdeelvenster van de Azure Policy-pagina. Een toewijzing is een beleid dat is toegewezen om te worden toegepast binnen een bepaald bereik.
 
-   :::image type="content" source="./media/tutorial-assign-policy-portal/select-assignment.png" alt-text="Toewijzingspagina’s selecteren op de pagina Overzicht van beleid" border="false":::
+   :::image type="content" source="./media/tutorial-assign-policy-portal/select-assignment.png" alt-text="Beleid zoeken in alle services" border="false":::
 
 1. Selecteer **Beleid toewijzen** boven in de pagina **Beleidstoewijzingen**.
 
-   :::image type="content" source="./media/tutorial-assign-policy-portal/select-assign-policy.png" alt-text="Een beleidsdefinitie toewijzen op de pagina Toewijzingen" border="false":::
+   :::image type="content" source="./media/tutorial-assign-policy-portal/select-assign-policy.png" alt-text="Beleid zoeken in alle services" border="false":::
 
 1. Selecteer op de pagina **Beleid toewijzen** het **bereik** door te klikken op het beletselteken en een beheergroep of abonnement te selecteren. U kunt ook een resourcegroep selecteren. Het bereik bepaalt op welke resources of groep resources de beleidstoewijzing wordt afgedwongen. Klik vervolgens op **Selecteren** aan de onderkant van de pagina **Bereik**.
 
@@ -51,9 +51,9 @@ In deze zelfstudie maakt u een beleidstoewijzing en wijst u de beleidsdefinitie 
 
    Zie [Azure Policy-voorbeelden](../../../governance/policy/samples/index.md) voor een gedeeltelijke lijst met beschikbare ingebouwde beleidsregels.
 
-1. Zoek in de lijst met beleidsdefinities naar de definitie _\[Voorbeeld]: Log Analytics-agent moet zijn geïnstalleerd op uw Windows Azure Arc-computers_ als u de agent voor Arc-servers (preview) hebt ingeschakeld op een computer met Windows. Voor een Linux-computer zoekt u de bijbehorende beleidsdefinitie _\[Voorbeeld]: Log Analytics-agent moet zijn geïnstalleerd op uw Linux Azure Arc-computers_. Klik op dit beleid en vervolgens op **Selecteren**.
+1. Zoek in de lijst met beleidsdefinities naar de definitie _\[Voorbeeld]: De Log Analytics-agent moet zijn geïnstalleerd op uw Windows Azure Arc-computers_ als u de agent voor Arc-servers hebt ingeschakeld op een Windows-computer. Voor een Linux-computer zoekt u de bijbehorende beleidsdefinitie _\[Voorbeeld]: Log Analytics-agent moet zijn geïnstalleerd op uw Linux Azure Arc-computers_. Klik op dit beleid en vervolgens op **Selecteren**.
 
-   :::image type="content" source="./media/tutorial-assign-policy-portal/select-available-definition.png" alt-text="De juiste beleidsdefinitie vinden" border="false":::
+   :::image type="content" source="./media/tutorial-assign-policy-portal/select-available-definition.png" alt-text="Beleid zoeken in alle services" border="false":::
 
 1. De **Toewijzingsnaam** wordt automatisch ingevuld met de naam van het beleid dat u hebt geselecteerd, maar u kunt dit wijzigen. Laat voor dit voorbeeld _\[Voorbeeld]: Log Analytics-agent moet zijn geïnstalleerd op uw Windows Azure Arc-computers_ of _\[Voorbeeld]: Log Analytics-agent moet zijn geïnstalleerd op uw Linux Azure Arc-computers_ ingeschakeld. U kunt ook een optionele **Beschrijving** opgeven. De beschrijving bevat details over deze beleidstoewijzing.
    **Toegewezen door** wordt automatisch gevuld op basis van de persoon die is aangemeld. Dit veld is optioneel, dus u kunt aangepaste waarden invoeren.
@@ -68,7 +68,7 @@ U kunt nu niet-compatibele resources identificeren om inzicht te krijgen in de n
 
 Selecteer **Naleving** links op de pagina. Zoek vervolgens de beleidstoewijzing **\[Voorbeeld]: Log Analytics-agent moet zijn geïnstalleerd op uw Windows Azure Arc-computers** of **\[Voorbeeld]: Log Analytics-agent moet zijn geïnstalleerd op uw Linux Azure Arc-computers** die u hebt gemaakt.
 
-:::image type="content" source="./media/tutorial-assign-policy-portal/policy-compliance.png" alt-text="Compatibiliteitsdetails op de pagina Naleving van het beleid" border="false":::
+:::image type="content" source="./media/tutorial-assign-policy-portal/policy-compliance.png" alt-text="Beleid zoeken in alle services" border="false":::
 
 Als er bestaande resources zijn die niet conform deze nieuwe toewijzing zijn, worden deze weergegeven bij **Niet-conforme resources**.
 
@@ -92,12 +92,11 @@ Als u de gemaakte toewijzing wilt verwijderen, volgt u deze stappen:
 
 1. Klik met de rechtermuisknop op de beleidstoewijzing en selecteer **Toewijzing verwijderen**.
 
-   :::image type="content" source="./media/tutorial-assign-policy-portal/delete-assignment.png" alt-text="Een toewijzing verwijderen van de pagina Naleving" border="false":::
+   :::image type="content" source="./media/tutorial-assign-policy-portal/delete-assignment.png" alt-text="Beleid zoeken in alle services" border="false":::
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u een beleidsdefinitie toegewezen aan een bereik en het bijbehorende nalevingsrapport geëvalueerd.
-De beleidsdefinitie controleert of alle resources in het bereik conform zijn en identificeert welke dit niet zijn. Nu bent u klaar om uw servers met Azure Arc (preview) te bewaken met Azure Monitor voor VM's.
+In deze zelfstudie hebt u een beleidsdefinitie toegewezen aan een bereik en het bijbehorende nalevingsrapport geëvalueerd. De beleidsdefinitie controleert of alle resources in het bereik conform zijn en identificeert welke dit niet zijn. U bent nu klaar om uw servers met Azure Arc te controleren met Azure Monitor voor VM's.
 
 Ga verder met de volgende zelfstudie voor meer informatie over het bewaken en weergeven van de prestaties, het uitgevoerde proces en hun afhankelijkheden vanaf uw computer:
 

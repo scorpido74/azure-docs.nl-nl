@@ -2,20 +2,18 @@
 title: bestand opnemen
 description: bestand opnemen
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.date: 05/05/2020
 ms.topic: include
-ms.author: diberry
-ms.openlocfilehash: da9388a3bd5f4d46ec34ed226e3ee23a96b2f494
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: fda9df6c7e9651bbd3b0b70ad9d47f23c0c19d01
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87374727"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91541425"
 ---
 ## <a name="sign-in-to-luis-portal"></a>Aanmelden bij de LUIS-portal
 
@@ -29,7 +27,7 @@ Een nieuwe gebruiker van LUIS moet deze procedure volgen:
 
 1. Vul de details voor de resource in.
 
-    ![Ontwerpresource maken](../media/migrate-authoring-key/choose-authoring-resource-form.png)
+    ![Schermopname van het ontwerpdeelvenster Een nieuwe resource maken.](../media/migrate-authoring-key/choose-authoring-resource-form.png)
 
     Geef bij het **maken van een nieuwe ontwerpresource** de volgende informatie op:
 
@@ -42,8 +40,8 @@ Een nieuwe gebruiker van LUIS moet deze procedure volgen:
 
 1. Er wordt een samenvatting weergegeven van de te maken resource. Selecteer **Next**.
 
-    ![Ontwerpresource maken](../media/sign-in/sign-in-confirm-key-selection.png)
+    ![Schermopname van de welkomstpagina met de optie om een koppeling naar een Azure-account toe te voegen.](../media/sign-in/sign-in-confirm-key-selection.png)
 
 1. Bevestig door **Doorgaan** te selecteren.
 
-    ![Ontwerpresource maken](../media/sign-in/sign-in-confirm-continue.png)
+    ![Schermopname van de welkomstpagina nadat u een koppeling naar een Azure-account hebt toegevoegd.](../media/sign-in/sign-in-confirm-continue.png)

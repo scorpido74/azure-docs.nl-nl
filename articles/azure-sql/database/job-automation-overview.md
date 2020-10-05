@@ -6,17 +6,17 @@ ms.service: sql-db-mi
 ms.subservice: features
 ms.custom: sqldbrb=1
 ms.devlang: ''
-ms.topic: overview
-author: jovanpop-msft
-ms.author: jovanpop
-ms.reviewer: carlr
+ms.topic: conceptual
+author: stevestein
+ms.author: sstein
+ms.reviewer: ''
 ms.date: 03/10/2020
-ms.openlocfilehash: 8c9bdb059008a3d9e33631c3101cb7b459660119
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 6b4b31ab4bc0cb1fe5bd9140870df86db6841ff3
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89436779"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91450348"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Beheertaken automatiseren met behulp van databasetaken
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -249,7 +249,7 @@ In **Voorbeeld 3** ziet u een vergelijkbare doelgroep als in *Voorbeeld 2*, maar
 In **Voorbeeld 4** ziet u een doelgroep die een elastische pool als doel heeft. De pool wordt, vergelijkbaar met in *Voorbeeld 2*, dynamisch geïnventariseerd tijdens het uitvoeren van de taak om de lijst met databases in de pool te bepalen.
 <br><br>
 
-![Voorbeelden van doelgroep](./media/job-automation-overview/targetgroup-examples2.png)
+![Aanvullende voorbeelden van doelgroepen](./media/job-automation-overview/targetgroup-examples2.png)
 
 In **Voorbeeld 5** en **Voorbeeld 6** ziet u geavanceerde scenario's waarin servers, elastische pools en databases kunnen worden gecombineerd met behulp van regels voor opnemen en uitsluiten.<br>
 In **Voorbeeld 7** ziet u dat de shards in een shardkaart ook kunnen worden geëvalueerd tijden het uitvoeren van de taak.
