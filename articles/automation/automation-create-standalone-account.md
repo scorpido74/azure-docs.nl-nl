@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: 40654926b2998b3ba1c4ce1a5607a768f2c32340
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: c78a65c3cc2d913ba0b836947d2184b3a061a648
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987268"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714638"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Een zelfstandig Azure Automation-account maken
 
@@ -22,7 +22,7 @@ Wanneer u een Automation-account maakt in de Azure Portal, wordt het **uitvoeren
 
 * Hiermee maakt u een Service-Principal in Azure Active Directory (Azure AD).
 * Hiermee maakt u een certificaat.
-* Hiermee wijst u het Access Control (RBAC) op basis van rollen toe, waarmee Azure Resource Manager bronnen met behulp van runbooks worden beheerd.
+* Hiermee wordt de rol Inzender toegewezen, waarmee Azure Resource Manager bronnen worden beheerd met runbooks.
 
 Als dit account voor u is gemaakt, kunt u snel runbooks bouwen en implementeren ter ondersteuning van uw automatiserings behoeften.
 
@@ -74,7 +74,7 @@ Voer de volgende stappen uit om een Azure Automation-account te maken in de Azur
    > [!NOTE]
    > Als u ervoor kiest om het uitvoeren als-account niet te maken door **Nee** te selecteren voor het maken van een **uitvoeren als-account voor Azure**, wordt er een bericht weer gegeven in het deel venster Automation-account toevoegen. Hoewel het account wordt gemaakt in de Azure Portal, heeft het account geen overeenkomstige verificatie-id in het klassieke implementatie model abonnement of in de Directory service van het Azure Resource Manager abonnement. Daarom heeft het Automation-account geen toegang tot resources in uw abonnement. Hiermee wordt voor komen dat runbooks die verwijzen naar dit account, in staat zijn om taken te verifiëren en uit te voeren op resources in die implementatie modellen.
    >
-   > :::image type="content" source="media/automation-create-standalone-account/create-account-decline-create-runas-msg.png" alt-text="Scherm opname van prompt met bericht: u hebt ervoor gekozen geen uitvoeren als-account te maken.":::
+   > :::image type="content" source="media/automation-create-standalone-account/create-account-decline-create-runas-msg.png" alt-text="Scherm opname van prompt ' u bent niet gemachtigd om een uitvoeren als-account te maken in azure Active Directory. '":::
    >
    > Wanneer de Service-Principal niet is gemaakt, wordt de rol Inzender niet toegewezen.
    >

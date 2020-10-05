@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: blobs
 ms.custom: contperfq1
-ms.openlocfilehash: 4a9f243ce32dee9948cd2f2410b5c7f1382bf7c8
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: a4c32877ddb260e90fb4121b16a9b318616c2a4d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90088847"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715832"
 ---
 # <a name="choose-how-to-authorize-access-to-blob-data-in-the-azure-portal"></a>Kies hoe u de toegang tot BLOB-gegevens in de Azure Portal wilt autoriseren
 
@@ -26,11 +26,11 @@ U kunt ook opgeven hoe u een afzonderlijke BLOB-upload bewerking in de Azure Por
 
 ## <a name="permissions-needed-to-access-blob-data"></a>Benodigde machtigingen voor toegang tot BLOB-gegevens
 
-Afhankelijk van hoe u de toegang tot BLOB-gegevens in de Azure Portal wilt autoriseren, hebt u specifieke machtigingen nodig. In de meeste gevallen worden deze machtigingen gegeven via op rollen gebaseerd toegangs beheer (RBAC). Zie [Wat is Azure Role-based Access Control (Azure RBAC)?](../../role-based-access-control/overview.md)voor meer informatie over RBAC.
+Afhankelijk van hoe u de toegang tot BLOB-gegevens in de Azure Portal wilt autoriseren, hebt u specifieke machtigingen nodig. In de meeste gevallen worden deze machtigingen gegeven via Azure op rollen gebaseerd toegangs beheer (Azure RBAC). Zie [Wat is Azure op rollen gebaseerd toegangs beheer (Azure RBAC)?](../../role-based-access-control/overview.md)voor meer informatie over Azure RBAC.
 
 ### <a name="use-the-account-access-key"></a>De toegangs sleutel voor het account gebruiken
 
-Als u BLOB-gegevens wilt openen met de toegangs sleutel voor het account, moet u een Azure-rol aan u hebben toegewezen die de RBAC-actie **micro soft. Storage/Storage accounts/listkeys ophalen/Action**bevat. Deze Azure-rol is mogelijk een ingebouwde of aangepaste rol. Ingebouwde rollen die **micro soft. Storage/Storage accounts/listkeys ophalen/Action** ondersteunen zijn onder andere:
+Als u BLOB-gegevens wilt openen met de toegangs sleutel voor het account, moet u een Azure-rol aan u hebben toegewezen die de Azure RBAC-actie **micro soft. Storage/Storage accounts/listkeys ophalen/Action**bevat. Deze Azure-rol is mogelijk een ingebouwde of aangepaste rol. Ingebouwde rollen die **micro soft. Storage/Storage accounts/listkeys ophalen/Action** ondersteunen zijn onder andere:
 
 - De rol van Azure Resource Manager [eigenaar](../../role-based-access-control/built-in-roles.md#owner)
 - De rol [inzender](../../role-based-access-control/built-in-roles.md#contributor) Azure Resource Manager
@@ -75,11 +75,11 @@ Wanneer u naar een container navigeert, geeft de Azure Portal aan of u momenteel
 
 Als u een verificatie uitvoert met de toegangs sleutel voor het account, ziet u de **toegangs sleutel** die is opgegeven als verificatie methode in de portal:
 
-:::image type="content" source="media/authorize-blob-access-portal/auth-method-access-key.png" alt-text="Scherm opname van de gebruiker die momenteel toegang heeft tot containers met de account sleutel":::
+:::image type="content" source="media/authorize-blob-access-portal/auth-method-access-key.png" alt-text="Scherm afbeelding die laat zien hoe u navigeert naar BLOB-gegevens in de Azure Portal":::
 
 Als u wilt overschakelen op het gebruik van een Azure AD-account, klikt u op de koppeling die in de afbeelding is gemarkeerd. Als u over de juiste machtigingen beschikt via de Azure-rollen die aan u zijn toegewezen, kunt u door gaan. Als u echter niet over de juiste machtigingen beschikt, ziet u een fout bericht als het volgende:
 
-:::image type="content" source="media/authorize-blob-access-portal/auth-error-azure-ad.png" alt-text="Fout die wordt weer gegeven als het Azure AD-account geen ondersteuning biedt voor toegang":::
+:::image type="content" source="media/authorize-blob-access-portal/auth-error-azure-ad.png" alt-text="Scherm afbeelding die laat zien hoe u navigeert naar BLOB-gegevens in de Azure Portal":::
 
 U ziet dat er geen blobs worden weer gegeven in de lijst als uw Azure AD-account geen machtigingen heeft om ze weer te geven. Klik op de **Schakel optie om toegang te krijgen** tot de sleutel koppeling om de toegangs sleutel opnieuw te gebruiken voor verificatie.
 
@@ -87,11 +87,11 @@ U ziet dat er geen blobs worden weer gegeven in de lijst als uw Azure AD-account
 
 Als u de verificatie uitvoert met uw Azure AD-account, ziet u de **Azure AD-gebruikers account** die is opgegeven als verificatie methode in de portal:
 
-:::image type="content" source="media/authorize-blob-access-portal/auth-method-azure-ad.png" alt-text="Scherm opname van de gebruiker die momenteel toegang heeft tot containers met een Azure AD-account":::
+:::image type="content" source="media/authorize-blob-access-portal/auth-method-azure-ad.png" alt-text="Scherm afbeelding die laat zien hoe u navigeert naar BLOB-gegevens in de Azure Portal":::
 
 Als u wilt overschakelen op het gebruik van de toegangs sleutel voor het account, klikt u op de koppeling die in de afbeelding is gemarkeerd. Als u toegang hebt tot de account sleutel, kunt u door gaan. Als u echter geen toegang hebt tot de account sleutel, ziet u een fout bericht als het volgende:
 
-:::image type="content" source="media/authorize-blob-access-portal/auth-error-access-key.png" alt-text="De fout die wordt weer gegeven als u geen toegang hebt tot de account sleutel":::
+:::image type="content" source="media/authorize-blob-access-portal/auth-error-access-key.png" alt-text="Scherm afbeelding die laat zien hoe u navigeert naar BLOB-gegevens in de Azure Portal":::
 
 U ziet dat er geen blobs worden weer gegeven in de lijst als u geen toegang hebt tot de account sleutels. Klik op de koppeling **overschakelen naar Azure AD-gebruikers account** om uw Azure ad-account opnieuw te gebruiken voor verificatie.
 
@@ -106,11 +106,11 @@ Voer de volgende stappen uit om op te geven hoe een BLOB-upload bewerking moet w
 1. Vouw de sectie **Geavanceerd** uit om de geavanceerde eigenschappen voor de BLOB weer te geven.
 1. Geef in het veld **type verificatie** aan of u de upload bewerking wilt autoriseren met behulp van uw Azure ad-account of met de toegangs sleutel voor het account, zoals wordt weer gegeven in de volgende afbeelding:
 
-    :::image type="content" source="media/authorize-blob-access-portal/auth-blob-upload.png" alt-text="Scherm afbeelding die laat zien hoe u de autorisatie methode wijzigt bij het uploaden van blobs":::
+    :::image type="content" source="media/authorize-blob-access-portal/auth-blob-upload.png" alt-text="Scherm afbeelding die laat zien hoe u navigeert naar BLOB-gegevens in de Azure Portal":::
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Toegang tot Azure-blobs en-wacht rijen verifiëren met Azure Active Directory](../common/storage-auth-aad.md)
-- [Toegang verlenen tot Azure-containers en-wacht rijen met RBAC in het Azure Portal](../common/storage-auth-aad-rbac-portal.md)
-- [Toegang verlenen tot Azure blob en wachtrijgegevens met RBAC met behulp van Azure CLI](../common/storage-auth-aad-rbac-cli.md)
-- [Toegang verlenen tot Azure blob en wachtrijgegevens met RBAC met behulp van PowerShell](../common/storage-auth-aad-rbac-powershell.md)
+- [De Azure Portal gebruiken om een Azure-rol toe te wijzen voor toegang tot Blob-en wachtrij gegevens](../common/storage-auth-aad-rbac-portal.md)
+- [De Azure CLI gebruiken om een Azure-rol toe te wijzen voor toegang tot Blob-en wachtrij gegevens](../common/storage-auth-aad-rbac-cli.md)
+- [De Azure PowerShell-module gebruiken om een Azure-rol toe te wijzen voor toegang tot Blob-en wachtrij gegevens](../common/storage-auth-aad-rbac-powershell.md)

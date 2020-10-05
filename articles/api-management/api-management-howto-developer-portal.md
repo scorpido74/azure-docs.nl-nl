@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/28/2020
 ms.author: apimpm
-ms.openlocfilehash: 068f15cc06a76412836176dc13237741ea14d135
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 3642b95f5bd6d0207508ca85f1d22ce20b44eae3
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89614061"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715453"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Overzicht van de Azure API Management-ontwikkelaarsportal
 
@@ -172,7 +172,7 @@ U kunt CORS ook hand matig inschakelen.
 
 ### <a name="what-permissions-do-i-need-to-edit-the-developer-portal"></a>Welke machtigingen heb ik nodig om de ontwikkelaars portal te bewerken?
 
-Als u de `Oops. Something went wrong. Please try again later.` fout melding ziet wanneer u de portal in de beheer modus opent, hebt u mogelijk niet de vereiste machtigingen (RBAC).
+Als u de `Oops. Something went wrong. Please try again later.` fout melding ziet wanneer u de portal in de beheer modus opent, hebt u mogelijk geen vereiste machtigingen (Azure RBAC).
 
 De verouderde portals vereist de machtiging `Microsoft.ApiManagement/service/getssotoken/action` bij het service bereik ( `/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>` ) om de beheerder toe te staan om toegang te krijgen tot de portals. De nieuwe portal vereist de machtiging `Microsoft.ApiManagement/service/users/token/action` voor het bereik `/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>/users/1` .
 
@@ -217,7 +217,7 @@ De aanroep fout kan ook worden veroorzaakt door een TLS/SSL-certificaat, dat wor
 | Apple Safari                | Ja<sup>1</sup> |
 | Google Chrome               | Ja<sup>1</sup> |
 | Microsoft Edge              | Ja<sup>1</sup> |
-| Microsoft Internet Explorer | No              |
+| Microsoft Internet Explorer | Nee              |
 | Mozilla Firefox             | Ja<sup>1</sup> |
 
  <small><sup>1</sup> wordt ondersteund in de twee nieuwste productie versies.</small>

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 6358f9d233b3c09dc4ae4f3ecac7c91dea8bba6e
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: f4687add8fdd55c8084a7180a6e0a3bffd9751b1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228270"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715146"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Azure-beveiligings basislijn voor Azure Storage
 
@@ -46,7 +46,7 @@ Opmerking: klassieke opslag accounts bieden geen ondersteuning voor firewalls en
 
 Als u privé-eind punten aan uw opslag account hebt gekoppeld, kunt u geen NSG-regels (netwerk beveiligings groep) voor subnetten configureren. 
 
-- [Azure Storage firewalls en virtuele netwerken configureren](https://docs.microsoft.com/azure/storage/common/storage-network-security)
+- [Azure Storage-firewalls en virtuele netwerken configureren](https://docs.microsoft.com/azure/storage/common/storage-network-security)
 
 - [NSG-stroom logboeken inschakelen](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
 
@@ -380,13 +380,13 @@ U kunt ook Just-in-time/alleen-voldoende toegang inschakelen met behulp van Azur
 
 ### <a name="39-use-azure-active-directory"></a>3,9: Azure Active Directory gebruiken
 
-**Hulp**: gebruik Azure Active Directory (Azure AD) als centrale verificatie-en autorisatie systeem. Azure AD biedt op rollen gebaseerd toegangs beheer (RBAC) voor nauw keurige controle over de toegang van een client tot bronnen in een opslag account.  Gebruik indien mogelijk Azure AD-referenties als een beveiligings best practice, in plaats van de account sleutel te gebruiken, die eenvoudiger kan worden aangetast. Wanneer het ontwerp van uw toepassing gedeelde toegangs handtekeningen vereist voor toegang tot Blobopslag, moet u Azure AD-referenties gebruiken om een gebruikers delegering van Shared Access signatures (SAS) te maken wanneer dat mogelijk is voor een superieure beveiliging.
+**Hulp**: gebruik Azure Active Directory (Azure AD) als centrale verificatie-en autorisatie systeem. Azure biedt op rollen gebaseerd toegangs beheer van Azure (Azure RBAC) voor nauw keurige controle over de toegang van een client tot bronnen in een opslag account.  Gebruik indien mogelijk Azure AD-referenties als een beveiligings best practice, in plaats van de account sleutel te gebruiken, die eenvoudiger kan worden aangetast. Wanneer het ontwerp van uw toepassing gedeelde toegangs handtekeningen vereist voor toegang tot Blobopslag, moet u Azure AD-referenties gebruiken om een gebruikers delegering van Shared Access signatures (SAS) te maken wanneer dat mogelijk is voor een superieure beveiliging.
 
 - [Een Azure AD-exemplaar maken en configureren](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
 
 - [De resource provider van Azure Storage gebruiken om toegang te krijgen tot beheer resources](https://docs.microsoft.com/azure/storage/common/authorization-resource-provider)
 
-- [Toegang tot Azure Blob en wachtrij gegevens configureren met RBAC in Azure Portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)
+- [Toegang tot Azure-Blob en wachtrij gegevens configureren met Azure RBAC in Azure Portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)
 
 - [Toegang tot gegevens in Azure Storage autoriseren](https://docs.microsoft.com/azure/storage/common/storage-auth)
 
@@ -478,7 +478,7 @@ Diagnostische instellingen voor Azure Active Directory gebruikers accounts maken
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: systemen isoleren die gevoelige informatie opslaan of verwerken
 
-**Richt lijnen**: isolatie implementeren met behulp van afzonderlijke abonnementen, beheer groepen en opslag accounts voor afzonderlijke beveiligings domeinen, zoals omgeving, gegevens gevoeligheid.  U kunt uw opslag account beperken om het toegangs niveau te bepalen voor uw opslag accounts die uw toepassingen en bedrijfs omgevingen vereisen, op basis van het type en de subset van netwerken die worden gebruikt. Wanneer netwerk regels zijn geconfigureerd, hebben alleen toepassingen die gegevens aanvragen via de opgegeven set netwerken toegang tot een opslag account. U kunt de toegang tot Azure Storage beheren via Azure AD RBAC. U kunt ook privé-eind punten configureren om de beveiliging te verbeteren als verkeer tussen uw virtuele netwerk en de service gaat over het micro soft backbone-netwerk, waardoor de bloot stelling van het open bare Internet wordt voor komen. 
+**Richt lijnen**: isolatie implementeren met behulp van afzonderlijke abonnementen, beheer groepen en opslag accounts voor afzonderlijke beveiligings domeinen, zoals omgeving, gegevens gevoeligheid.  U kunt uw opslag account beperken om het toegangs niveau te bepalen voor uw opslag accounts die uw toepassingen en bedrijfs omgevingen vereisen, op basis van het type en de subset van netwerken die worden gebruikt. Wanneer netwerk regels zijn geconfigureerd, hebben alleen toepassingen die gegevens aanvragen via de opgegeven set netwerken toegang tot een opslag account. U kunt de toegang tot Azure Storage beheren via Azure RBAC. U kunt ook privé-eind punten configureren om de beveiliging te verbeteren als verkeer tussen uw virtuele netwerk en de service gaat over het micro soft backbone-netwerk, waardoor de bloot stelling van het open bare Internet wordt voor komen. 
 
 - [Aanvullende Azure-abonnementen maken](https://docs.microsoft.com/azure/billing/billing-create-subscription)
 
@@ -486,7 +486,7 @@ Diagnostische instellingen voor Azure Active Directory gebruikers accounts maken
 
 - [Tags maken en gebruiken](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
-- [Azure Storage firewalls en virtuele netwerken configureren](https://docs.microsoft.com/azure/storage/common/storage-network-security)
+- [Azure Storage-firewalls en virtuele netwerken configureren](https://docs.microsoft.com/azure/storage/common/storage-network-security)
 
 - [Service-eind punten Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)
 
@@ -500,9 +500,9 @@ Diagnostische instellingen voor Azure Active Directory gebruikers accounts maken
 
 Daarnaast kunt u het virtuele netwerk service-eindpunt beleid gebruiken om uitgaand virtueel netwerk verkeer te filteren op Azure Storage accounts via service-eind punten en alleen gegevens exfiltration toe te staan op specifieke Azure Storage accounts.
 
-- [Azure Storage firewalls en virtuele netwerken configureren](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
+- [Azure Storage-firewalls en virtuele netwerken configureren](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
 
-- [Beleid voor service-eind punten voor virtuele netwerken voor Azure Storage](https://docs.microsoft.com/azure/private-link/create-private-endpoint-storage-portal)
+- [Service-eindpuntbeleid voor virtueel netwerk voor Azure Storage](https://docs.microsoft.com/azure/private-link/create-private-endpoint-storage-portal)
 
 - [Informatie over beveiliging van klanten in azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
 
@@ -534,13 +534,13 @@ Daarnaast kunt u het virtuele netwerk service-eindpunt beleid gebruiken om uitga
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: Azure RBAC gebruiken om de toegang tot resources te beheren
 
-**Hulp**: met Azure Active Directory (Azure AD) worden de toegangs rechten voor beveiligde bronnen geautoriseerd via op rollen gebaseerd toegangs beheer (RBAC). Azure Storage definieert een set ingebouwde Azure-rollen die algemene sets machtigingen omvatten die worden gebruikt voor toegang tot BLOB-of wachtrij gegevens. 
+**Hulp**: met Azure Active Directory (Azure AD) worden de toegangs rechten voor beveiligde bronnen geautoriseerd via toegangs beheer op basis van rollen (Azure RBAC). Azure Storage definieert een set ingebouwde Azure-rollen die algemene sets machtigingen omvatten die worden gebruikt voor toegang tot BLOB-of wachtrij gegevens. 
 
 - [Azure-rollen toewijzen voor Azure Storage account](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal#assign-azure-roles-using-the-azure-portal)
 
 - [De resource provider van Azure Storage gebruiken om toegang te krijgen tot beheer resources](https://docs.microsoft.com/azure/storage/common/authorization-resource-provider)
 
-- [Toegang tot Azure Blob en wachtrij gegevens configureren met RBAC in Azure Portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)
+- [Toegang tot Azure-Blob en wachtrij gegevens configureren met Azure RBAC in Azure Portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal)
 
 - [Een AAD-exemplaar maken en configureren](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
 

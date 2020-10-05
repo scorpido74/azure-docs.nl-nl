@@ -1,21 +1,21 @@
 ---
 title: Rolmachtigingen en beveiliging in Azure Automation beheren
-description: In dit artikel wordt beschreven hoe u op rollen gebaseerd toegangs beheer (RBAC) kunt gebruiken om toegang te krijgen tot Azure-resources.
+description: In dit artikel wordt beschreven hoe u Azure RBAC (op rollen gebaseerd toegangs beheer) gebruikt, waarmee u toegang kunt krijgen tot Azure-resources.
 keywords: automatisering rbac, rolgebaseerde toegangscontrole, azure rbac
 services: automation
 ms.subservice: shared-capabilities
 ms.date: 07/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 21742d2db6a7fde69568e5fd1e5eda98542faa47
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: efdb195ad41b036f7f470884b3a441de1db7f7f4
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87528665"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91716160"
 ---
 # <a name="manage-role-permissions-and-security"></a>Rolmachtigingen en beveiliging beheren
 
-Met op rollen gebaseerd toegangsbeheer (RBAC) beschikt u over toegangsbeheer voor Azure-resources. Met [RBAC](../role-based-access-control/overview.md)kunt u taken binnen uw team scheiden en alleen de hoeveelheid toegang verlenen aan gebruikers, groepen en toepassingen die ze nodig hebben om hun taken uit te voeren. U kunt op rollen gebaseerde toegang verlenen aan gebruikers met behulp van de Azure Portal, Azure-opdracht regel Programma's of Azure Management-Api's.
+Toegangs beheer op basis van rollen (Azure RBAC) van Azure biedt toegang tot Azure-resources. Met behulp van [Azure RBAC](../role-based-access-control/overview.md)kunt u taken binnen uw team scheiden en alleen de hoeveelheid toegang verlenen aan gebruikers, groepen en toepassingen die ze nodig hebben om hun taken uit te voeren. U kunt op rollen gebaseerde toegang verlenen aan gebruikers met behulp van de Azure Portal, Azure-opdracht regel Programma's of Azure Management-Api's.
 
 ## <a name="roles-in-automation-accounts"></a>Rollen in Automation-accounts
 
@@ -270,11 +270,11 @@ Update beheer bereikt meerdere services voor het leveren van de service. De volg
 |Oplossing     |Inzender van Log Analytics         | Oplossing|
 |Virtuele machine     | Inzender voor virtuele machines        | Virtuele machine        |
 
-## <a name="configure-rbac-for-your-automation-account"></a>RBAC configureren voor uw Automation-account
+## <a name="configure-azure-rbac-for-your-automation-account"></a>Azure RBAC configureren voor uw Automation-account
 
-In de volgende sectie ziet u hoe u RBAC kunt configureren voor uw Automation-account via de [Azure Portal](#configure-rbac-using-the-azure-portal) en [Power shell](#configure-rbac-using-powershell).
+In de volgende sectie ziet u hoe u Azure RBAC kunt configureren voor uw Automation-account via de [Azure Portal](#configure-azure-rbac-using-the-azure-portal) en [Power shell](#configure-azure-rbac-using-powershell).
 
-### <a name="configure-rbac-using-the-azure-portal"></a>RBAC configureren met behulp van de Azure Portal
+### <a name="configure-azure-rbac-using-the-azure-portal"></a>Azure RBAC configureren met behulp van de Azure Portal
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/) en open uw Automation-account via de pagina Automation-accounts.
 2. Klik op **toegangs beheer (IAM)** om de pagina toegangs beheer (IAM) te openen. U kunt deze pagina gebruiken om nieuwe gebruikers, groepen en toepassingen toe te voegen voor het beheren van uw Automation-account en het weer geven van bestaande rollen die kunnen worden geconfigureerd voor het Automation-account.
@@ -315,7 +315,7 @@ U kunt de toegangs machtiging verwijderen voor een gebruiker die het Automation-
 
    ![Gebruikers verwijderen](media/automation-role-based-access-control/automation-08-remove-users.png)
 
-### <a name="configure-rbac-using-powershell"></a>RBAC configureren met Power shell
+### <a name="configure-azure-rbac-using-powershell"></a>Azure RBAC configureren met Power shell
 
 U kunt ook op rollen gebaseerde toegang configureren voor een Automation-account met behulp van de volgende [Azure PowerShell-cmdlets](../role-based-access-control/role-assignments-powershell.md):
 
@@ -398,9 +398,9 @@ Wanneer een gebruiker die is toegewezen aan de rol van Automation-operator in he
 
 ![Geen toegang tot resources](media/automation-role-based-access-control/automation-10-no-access-to-resources.png)
 
-## <a name="configure-rbac-for-runbooks"></a>RBAC configureren voor runbooks
+## <a name="configure-azure-rbac-for-runbooks"></a>Azure RBAC voor runbooks configureren
 
-Met Azure Automation kunt u RBAC toewijzen aan specifieke runbooks. U doet dit door het volgende script uit te voeren om een gebruiker toe te voegen aan een specifiek runbook. Een Automation-account beheerder of een Tenant Administrator kan dit script uitvoeren.
+Met Azure Automation kunt u Azure-rollen toewijzen aan specifieke runbooks. U doet dit door het volgende script uit te voeren om een gebruiker toe te voegen aan een specifiek runbook. Een Automation-account beheerder of een Tenant Administrator kan dit script uitvoeren.
 
 ```azurepowershell-interactive
 $rgName = "<Resource Group Name>" # Resource Group name for the Automation account
@@ -423,7 +423,7 @@ New-AzRoleAssignment -ObjectId $userId -RoleDefinitionName "Automation Runbook O
 
 Zodra het script is uitgevoerd, moet de gebruiker zich aanmelden bij de Azure Portal en **alle resources**selecteren. De gebruiker kan in de lijst het runbook zien waarvoor hij/zij is toegevoegd als een Automation-Runbook-operator.
 
-![Runbook RBAC in de portal](./media/automation-role-based-access-control/runbook-rbac.png)
+![Runbook Azure RBAC in de portal](./media/automation-role-based-access-control/runbook-rbac.png)
 
 ### <a name="user-experience-for-automation-operator-role---runbook"></a>Gebruikers ervaring voor de rol van Automation-operator-Runbook
 
@@ -433,6 +433,6 @@ Wanneer een gebruiker die is toegewezen aan de rol Automation-operator in het Ru
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [RBAC beheren met Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)voor meer informatie over Power shell RBAC.
+* Zie [Azure-roltoewijzingen toevoegen of verwijderen met Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)voor meer informatie over Azure RBAC met behulp van Power shell.
 * Zie [Azure Automation runbook-typen](automation-runbook-types.md)voor meer informatie over de typen runbooks.
 * Als u een runbook wilt starten, raadpleegt u [een Runbook starten in azure Automation](start-runbooks.md).

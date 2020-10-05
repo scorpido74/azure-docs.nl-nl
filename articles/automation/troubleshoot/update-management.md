@@ -5,12 +5,12 @@ services: automation
 ms.date: 09/25/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: 26ce59c1d4ec8e3e2bf2096a4688b7639148410f
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 9f832b45b3aca11fb96a56643f2cce0228adf8ac
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91359236"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713504"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Problemen met Updatebeheer oplossen
 
@@ -226,7 +226,7 @@ Dit zijn mogelijke oorzaken voor dit probleem:
 
 #### <a name="incorrect-access-on-selected-scopes"></a>Onjuiste toegang voor geselecteerde bereiken
 
-De Azure Portal alleen computers weer geven waarvoor u schrijf toegang hebt binnen een bepaald bereik. Zie [zelf studie: een gebruiker toegang verlenen tot Azure-resources met RBAC en de Azure Portal](../../role-based-access-control/quickstart-assign-role-user-portal.md)als u niet over de juiste toegang voor een bereik beschikt.
+De Azure Portal alleen computers weer geven waarvoor u schrijf toegang hebt binnen een bepaald bereik. Zie [zelf studie: een gebruiker toegang verlenen tot Azure-resources met behulp van de Azure Portal](../../role-based-access-control/quickstart-assign-role-user-portal.md)als u niet over de juiste toegang voor een bereik beschikt.
 
 #### <a name="arg-query-doesnt-return-expected-machines"></a>De query ARG retourneert geen verwachte machines
 

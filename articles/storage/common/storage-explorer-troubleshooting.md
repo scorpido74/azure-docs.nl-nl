@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: b57a57f05853b9f8c291dc2ac352db7b1e679260
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: f24fb6c4d83da0d443702afaf673079363a9ffb0
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534852"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714449"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Gids voor probleemoplossing voor Azure Storage Explorer
 
@@ -21,13 +21,13 @@ Microsoft Azure Storage Explorer is een zelfstandige app waarmee u eenvoudig met
 
 In deze hand leiding vindt u een overzicht van oplossingen voor problemen die vaak worden weer gegeven in Storage Explorer.
 
-## <a name="rbac-permissions-issues"></a>Problemen met RBAC-machtigingen
+## <a name="azure-rbac-permissions-issues"></a>Problemen met Azure RBAC-machtigingen
 
-Op rollen gebaseerd toegangs beheer is een zeer gedetailleerd toegangs beheer van Azure-resources [door het combi](https://docs.microsoft.com/azure/role-based-access-control/overview) neren van machtigingen sets in _rollen_. Hier volgen enkele strategieën om RBAC optimaal te laten werken in Storage Explorer.
+Azure [RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview) -toegangs beheer op basis van rollen maakt zeer nauw keuriger toegang tot Azure-resources door sets machtigingen te combi neren in _rollen_. Hier volgen enkele strategieën om optimaal gebruik te maken van Azure RBAC in Storage Explorer.
 
 ### <a name="how-do-i-access-my-resources-in-storage-explorer"></a>Heb ik toegang tot mijn resources in Storage Explorer Hoe kan ik?
 
-Als u problemen ondervindt bij het openen van opslag bronnen via RBAC, hebt u mogelijk niet de juiste rollen toegewezen. In de volgende secties worden de machtigingen beschreven Storage Explorer momenteel vereist voor toegang tot uw opslag resources. Neem contact op met de beheerder van uw Azure-account als u niet zeker weet of u de juiste rollen of machtigingen hebt.
+Als u problemen ondervindt bij het openen van opslag resources via Azure RBAC, hebt u mogelijk niet de juiste rollen toegewezen. In de volgende secties worden de machtigingen beschreven Storage Explorer momenteel vereist voor toegang tot uw opslag resources. Neem contact op met de beheerder van uw Azure-account als u niet zeker weet of u de juiste rollen of machtigingen hebt.
 
 #### <a name="read-listget-storage-accounts-permissions-issue"></a>Probleem met de machtiging ' lezen: lijst/ophalen van opslag account (s) '
 
@@ -63,9 +63,9 @@ Als u toegang wilt krijgen tot BLOB-containers of-wacht rijen, kunt u deze resou
 1. Open het dialoog venster verbinding maken.
 2. Selecteer een resource toevoegen via Azure Active Directory (Azure AD). Klik op Volgende.
 3. Selecteer het gebruikers account en de Tenant die zijn gekoppeld aan de resource waaraan u wilt koppelen. Klik op Volgende.
-4. Selecteer het resource type, voer de URL in voor de resource en voer een unieke weergave naam in voor de verbinding. Klik op Volgende. Klik op Verbinden.
+4. Selecteer het resource type, voer de URL in voor de resource en voer een unieke weergave naam in voor de verbinding. Klik op Volgende. Klik op verbinden.
 
-Voor andere resource typen hebben we momenteel geen oplossing die betrekking heeft op RBAC. Als tijdelijke oplossing kunt u een SAS-URI aanvragen om [aan uw resource te koppelen](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri).
+Voor andere resource typen hebben we momenteel geen oplossing met betrekking tot Azure RBAC. Als tijdelijke oplossing kunt u een SAS-URI aanvragen om [aan uw resource te koppelen](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri).
 
 ### <a name="recommended-azure-built-in-roles"></a>Aanbevolen ingebouwde rollen van Azure
 
@@ -175,9 +175,9 @@ Als u uw abonnementen niet kunt ophalen nadat u zich hebt aangemeld, kunt u de v
 
 Als u een gekoppeld account of opslag resource niet kunt verwijderen via de gebruikers interface, kunt u alle gekoppelde resources hand matig verwijderen door de volgende mappen te verwijderen:
 
-* Windows`%AppData%/StorageExplorer`
-* MacOS`/Users/<your_name>/Library/Application Support/StorageExplorer`
-* Spreek`~/.config/StorageExplorer`
+* Windows `%AppData%/StorageExplorer`
+* MacOS `/Users/<your_name>/Library/Application Support/StorageExplorer`
+* Spreek `~/.config/StorageExplorer`
 
 > [!NOTE]
 > Sluit Storage Explorer voordat u deze mappen verwijdert.
@@ -269,7 +269,7 @@ Nadat u alle verbindingen hebt door lopen, moet u voor alle verbindings namen di
 3. Onder **algemene referenties**zoekt u naar vermeldingen die de `<connection_type_key>/<corrupted_connection_name>` sleutel hebben (bijvoorbeeld `StorageExplorer_CustomConnections_Accounts_v1/account1` ).
 4. Verwijder deze vermeldingen en voeg de verbindingen opnieuw toe.
 
-# <a name="macos"></a>[macOS](#tab/macOS)
+# <a name="macos"></a>[MacOS](#tab/macOS)
 
 1. Open Spotlight (Command + spatie balk) en zoek naar **sleutel hanger toegang**.
 2. Zoek naar vermeldingen die de `<connection_type_key>/<corrupted_connection_name>` sleutel hebben (bijvoorbeeld `StorageExplorer_CustomConnections_Accounts_v1/account1` ).
@@ -355,7 +355,7 @@ Voor Storage Explorer moet .NET Core zijn geïnstalleerd op uw systeem. U wordt 
      sudo apt-get install -y dotnet-runtime-2.1
    ```
 
-# <a name="ubuntu-1604"></a>[Ubuntu 16,04](#tab/1604)
+# <a name="ubuntu-1604"></a>[Ubuntu 16.04](#tab/1604)
 
 1. Down load het bestand Storage Explorer. tar. gz.
 2. Installeer de [.net core runtime](https://docs.microsoft.com/dotnet/core/install/linux):

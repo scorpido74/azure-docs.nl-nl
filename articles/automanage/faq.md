@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: troubleshooting
 ms.date: 09/04/2020
 ms.author: deanwe
-ms.openlocfilehash: 348106c405e6e096f7bfd9a225fc783c4454b1ad
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 003f97c99de7dd4be79e820e822b6071f45ed146
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91449764"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714974"
 ---
 # <a name="frequently-asked-questions-for-azure-automanage-for-vms"></a>Veelgestelde vragen over Azure automanage voor Vm's
 
@@ -35,7 +35,7 @@ Hier volgen de vereisten voor het inschakelen van Azure automanage:
 - Vm's mogen niet worden gekoppeld aan een log Analytics-werk ruimte in een ander abonnement
 - Automanage biedt momenteel geen ondersteuning voor sandbox-abonnementen
 
-**Welke RBAC-machtiging is nodig om automanage in te scha kelen?**
+**Wat is Azure RBAC-machtiging nodig om automanage in te scha kelen?**
 
 Als u automanage op een virtuele machine met een bestaand automanage-account inschakelt, moet u de rol Inzender hebben voor de resource groep waar de virtuele machine zich bevindt.
 

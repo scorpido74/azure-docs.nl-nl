@@ -10,12 +10,12 @@ ms.date: 08/27/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e4a13fb22fd826f82252383587bc4a273c43099f
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 191213511a6b41e3a8419660a40b8d79a5c747f2
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91613506"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714928"
 ---
 # <a name="blob-versioning"></a>BLOB-versie beheer
 
@@ -175,17 +175,17 @@ In het volgende diagram ziet u wat er gebeurt wanneer u een moment opname van ee
 
 U kunt toegang tot BLOB-versies toestaan met een van de volgende benaderingen:
 
-- Door gebruik te maken van op rollen gebaseerd toegangs beheer (RBAC) om machtigingen te verlenen aan een Azure Active Directory (Azure AD)-beveiligingsprincipal. Micro soft raadt u aan Azure AD te gebruiken voor superieure beveiliging en gebruiks gemak. Zie [toegang tot blobs en wacht rijen toestaan met Azure Active Directory](../common/storage-auth-aad.md)voor meer informatie over het gebruik van Azure AD met Blob-bewerkingen.
+- Door Azure RBAC (op rollen gebaseerd toegangs beheer) te gebruiken om machtigingen te verlenen aan een Azure Active Directory (Azure AD)-beveiligingsprincipal. Micro soft raadt u aan Azure AD te gebruiken voor superieure beveiliging en gebruiks gemak. Zie [toegang tot blobs en wacht rijen toestaan met Azure Active Directory](../common/storage-auth-aad.md)voor meer informatie over het gebruik van Azure AD met Blob-bewerkingen.
 - Door gebruik te maken van een Shared Access Signature (SAS) om de toegang tot BLOB-versies te delegeren. Geef de versie-ID voor het ondertekende bron type op `bv` , die een BLOB-versie vertegenwoordigt, om een SAS-token te maken voor bewerkingen op een specifieke versie. Zie voor meer informatie over gedeelde toegangs handtekeningen [beperkte toegang verlenen tot Azure storage-resources met behulp van Shared Access signatures (SAS)](../common/storage-sas-overview.md).
 - Door de toegangs sleutels voor het account te gebruiken om bewerkingen te autoriseren op BLOB-versies met gedeelde sleutel. Zie [autoriseren met gedeelde sleutel](/rest/api/storageservices/authorize-with-shared-key)voor meer informatie.
 
 BLOB-versie beheer is ontworpen om uw gegevens te beschermen tegen onbedoeld of kwaad aardige verwijdering. Voor het verbeteren van de beveiliging zijn speciale machtigingen vereist voor het verwijderen van een BLOB-versie. In de volgende secties worden de machtigingen beschreven die nodig zijn voor het verwijderen van een BLOB-versie.
 
-### <a name="rbac-action-to-delete-a-blob-version"></a>RBAC-actie voor het verwijderen van een BLOB-versie
+### <a name="azure-rbac-action-to-delete-a-blob-version"></a>Azure RBAC-actie voor het verwijderen van een BLOB-versie
 
-In de volgende tabel ziet u welke RBAC-acties ondersteuning bieden bij het verwijderen van een BLOB of een BLOB-versie.
+In de volgende tabel ziet u welke Azure RBAC-acties ondersteuning bieden voor het verwijderen van een BLOB of een BLOB-versie.
 
-| Beschrijving | Blob service bewerking | RBAC-gegevens actie vereist | Ondersteuning voor geïntegreerde RBAC-rollen |
+| Beschrijving | Blob service bewerking | Azure RBAC-gegevens actie vereist | Ondersteuning voor ingebouwde rollen van Azure |
 |----------------------------------------------|------------------------|---------------------------------------------------------------------------------------|-------------------------------|
 | De huidige versie van de BLOB verwijderen | BLOB verwijderen | **Micro soft. Storage/Storage accounts/blobServices/containers/blobs/verwijderen** | Inzender voor Storage Blob-gegevens |
 | Een versie verwijderen | BLOB verwijderen | **Micro soft. Storage/Storage accounts/blobServices/containers/blobs/deleteBlobVersion/Action** | Eigenaar van opslagblobgegevens |
@@ -291,7 +291,7 @@ In de volgende tabel wordt het facturerings gedrag voor een verwijderde BLOB bes
 | Als de functie voor het voorlopig verwijderen van blobs en versie beheer beide zijn ingeschakeld | Alle bestaande versies met volledige inhouds lengte, ongeacht de laag. |
 | Als de functie voor het voorlopig verwijderen van BLOB is ingeschakeld, maar versie beheer is uitgeschakeld | Alle bestaande tijdelijke moment opnamen met een volledige inhouds lengte, ongeacht de laag, worden verwijderd. |
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 - [BLOB-versie beheer inschakelen en beheren](versioning-enable.md)
 - [Een moment opname van een BLOB maken](/rest/api/storageservices/creating-a-snapshot-of-a-blob)

@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: GitOps gebruiken voor een Azure Arc-cluster configuratie (preview-versie)
 keywords: GitOps, Kubernetes, K8s, azure, Arc, Azure Kubernetes service, containers
-ms.openlocfilehash: 142c131f0382eb887d51185db920511ccf4eb735
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: c00ed30c9a7424d083bf076c64cf008e0480bb2b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91541625"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714183"
 ---
 # <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Configuraties implementeren met behulp van GitOps op het Kubernetes-cluster waarvoor Arc is ingeschakeld (preview)
 
@@ -23,7 +23,7 @@ De verbinding tussen uw cluster en een of meer Git-opslag plaatsen wordt bijgeho
 
 De `config-agent` uitvoering in uw cluster is verantwoordelijk voor het volgen van nieuwe of bijgewerkte `sourceControlConfiguration` uitbreidings resources op de Azure-Kubernetes-resource, het implementeren van een stroom operator voor het bekijken van de Git-opslag plaats en het door geven van updates die zijn aangebracht in de `sourceControlConfiguration` . Het is zelfs mogelijk om meerdere `sourceControlConfiguration` bronnen met `namespace` een bereik te maken op hetzelfde Azure Arc-Kubernetes-cluster om multitenancy te bereiken. In dat geval kan elke operator alleen configuraties implementeren naar de betreffende naam ruimte.
 
-De Git-opslag plaats kan alle geldige Kubernetes-resources bevatten, waaronder naam ruimten, ConfigMaps, implementaties, DaemonSets, enzovoort.  Het kan ook helm-grafieken bevatten voor het implementeren van toepassingen. Een gemeen schappelijke reeks scenario's is het definiëren van een basislijn configuratie voor uw organisatie, zoals algemene RBAC-rollen en-bindingen, bewakings-of logboek registratie agenten of cluster-brede Services.
+De Git-opslag plaats kan alle geldige Kubernetes-resources bevatten, waaronder naam ruimten, ConfigMaps, implementaties, DaemonSets, enzovoort.  Het kan ook helm-grafieken bevatten voor het implementeren van toepassingen. Een gemeen schappelijke reeks scenario's is het definiëren van een basislijn configuratie voor uw organisatie, zoals algemene Azure-rollen en-bindingen, bewakings-of logboek registratie agenten of cluster-brede Services.
 
 Hetzelfde patroon kan worden gebruikt om een grotere verzameling clusters te beheren, die kan worden geïmplementeerd in heterogene omgevingen. U hebt bijvoorbeeld één opslag plaats die de basislijn configuratie voor uw organisatie definieert en die in één keer van toepassing is op tien tallen Kubernetes-clusters. Met [Azure Policy kan](use-azure-policy.md) het maken van een `sourceControlConfiguration` met een specifieke set para meters worden geautomatiseerd op alle Kubernetes-resources van Azure-Arc onder een bereik (abonnement of resource groep).
 

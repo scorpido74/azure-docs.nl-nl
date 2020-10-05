@@ -7,12 +7,12 @@ ms.date: 09/30/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: ea818cd14e6052da2bbcf2a4473e95c68cd5e4a9
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: faf7a6e0331e3891c2ece7461685b14e751c0894
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91671309"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713051"
 ---
 # <a name="diagnose-private-links-configuration-issues-on-azure-key-vault"></a>Problemen met de configuratie van particuliere koppelingen diagnosticeren op Azure Key Vault
 
@@ -24,7 +24,7 @@ Als u geen ervaring hebt met deze functie, raadpleegt u [Key Vault integreren me
 
 ### <a name="symptoms-covered-by-this-article"></a>Symptomen die in dit artikel worden behandeld
 
-- Uw DNS-query's retour neren nog steeds een openbaar IP-adres voor de sleutel kluis in plaats van een privé-IP-adres dat u zou verwachten van het gebruik van de functie voor persoonlijke koppelingen.
+- Uw DNS-query's retour neren nog steeds een openbaar IP-adres voor de sleutel kluis in plaats van een privé-IP-adres dat u zou verwachten van het gebruik van de functie persoonlijke koppelingen.
 - Alle aanvragen van een bepaalde client die een privé koppeling gebruiken, mislukken met time-outs of netwerk fouten en het probleem treedt niet op.
 - De sleutel kluis heeft een privé-IP-adres, maar aanvragen ontvangen nog steeds `403` antwoord met de `ForbiddenByFirewall` interne fout code.
 - U gebruikt persoonlijke koppelingen, maar uw sleutel kluis accepteert nog steeds aanvragen van het open bare Internet.
@@ -34,7 +34,7 @@ Als u geen ervaring hebt met deze functie, raadpleegt u [Key Vault integreren me
 ### <a name="symptoms-not-covered-by-this-article"></a>Problemen die niet onder dit artikel vallen
 
 - Er is een probleem met de verbinding. In een bepaalde client ziet u dat sommige aanvragen werken en sommige niet werken. *Tijdelijke problemen worden meestal niet veroorzaakt door een probleem in de configuratie van particuliere koppelingen; ze zijn een teken van netwerk-of client overbelasting.*
-- U gebruikt en Azure-product dat ondersteuning biedt voor BYOK (Bring Your Own Key) of CMK (door de klant beheerde sleutels), en dat product heeft geen toegang tot uw sleutel kluis. *Bekijk de andere product documentatie. Zorg ervoor dat het expliciet ondersteuning biedt voor sleutel kluizen waarvoor de firewall is ingeschakeld. Neem zo nodig contact op met de product ondersteuning voor dat specifieke product.*
+- U gebruikt een Azure-product dat ondersteuning biedt voor BYOK (Bring Your Own Key) of CMK (door de klant beheerde sleutels), en dat product heeft geen toegang tot uw sleutel kluis. *Bekijk de andere product documentatie. Zorg ervoor dat het expliciet ondersteuning biedt voor sleutel kluizen waarvoor de firewall is ingeschakeld. Neem zo nodig contact op met de product ondersteuning voor dat specifieke product.*
 
 ### <a name="how-to-read-this-article"></a>Lees dit artikel
 
@@ -46,7 +46,7 @@ Laten we beginnen.
 
 ### <a name="confirm-that-your-client-runs-at-the-virtual-network"></a>Controleren of de client wordt uitgevoerd in het virtuele netwerk
 
-Deze hand leiding voor probleem oplossing is van toepassing op verbindingen met de sleutel kluis die afkomstig zijn uit toepassings code. Voor beelden zijn toepassingen en scripts die worden uitgevoerd in virtuele machines, Azure Service Fabric-clusters, Azure App Service, Azure Kubernetes service (AKS) en vergelijk bare andere.
+Deze hand leiding is bedoeld om u te helpen bij het oplossen van verbindingen met de sleutel kluis die afkomstig zijn uit toepassings code. Voor beelden zijn toepassingen en scripts die worden uitgevoerd in azure Virtual Machines, Azure Service Fabric-clusters, Azure App Service, Azure Kubernetes service (AKS) en vergelijk bare andere.
 
 Op basis van de definitie van persoonlijke koppelingen moet de toepassing of het script worden uitgevoerd op de computer, het cluster of de omgeving die is verbonden met de Virtual Network waar de [privé-eindpunt resource](../../private-link/private-endpoint-overview.md) is geïmplementeerd. Als de toepassing wordt uitgevoerd op een wille keurig netwerk met Internet verbinding, is deze hand leiding niet van toepassing en kunnen er mogelijk privé koppelingen niet worden gebruikt.
 
@@ -158,11 +158,11 @@ Linux:
 
 U kunt zien dat de naam wordt omgezet in een openbaar IP-adres en dat er geen `privatelink` alias is. De alias wordt later uitgelegd. u hoeft dit nu niet te doen.
 
-Het bovenstaande resultaat wordt verwacht, ongeacht of de computer met de Virtual Network is verbonden of een wille keurige computer met een Internet verbinding is. Dit gebeurt omdat de sleutel kluis geen persoonlijke koppeling heeft met de status goedgekeurd en daarom niet nodig is voor de sleutel kluis om verbindingen met een particuliere verbinding te ondersteunen.
+Het bovenstaande resultaat wordt verwacht, ongeacht of de computer met de Virtual Network is verbonden of een wille keurige computer met een Internet verbinding is. Dit gebeurt omdat de sleutel kluis geen privé-eindpunt verbinding heeft met de status goedgekeurd en daarom niet nodig is voor de sleutel kluis om persoonlijke koppelingen te ondersteunen.
 
 ### <a name="key-vault-with-private-link-resolving-from-arbitrary-internet-machine"></a>Sleutel kluis met het oplossen van een particuliere koppeling van een wille keurige internet computer
 
-Wanneer de sleutel kluis een of meer verbindingen met een privé-eind punt in de goedgekeurde status heeft en u de hostnaam oplost van een wille keurige computer die is verbonden met internet (een computer die **niet** is verbonden met de Virtual Network waar het persoonlijke eind punt zich bevindt), vindt u dit:
+Wanneer de sleutel kluis een of meer verbindingen met een privé-eind punt in de goedgekeurde status heeft en u de hostnaam oplost van een wille keurige computer die is verbonden met internet (een computer die *niet* is verbonden met de Virtual Network waar het persoonlijke eind punt zich bevindt), vindt u dit:
 
 Windows:
 
@@ -253,7 +253,7 @@ De naam omzetting van de sleutel kluis werkt alleen als er een `A` record is met
 De waarde van de `A` record (het IP-adres) moet ook [het privé-IP-adres van de sleutel kluis](#find-the-key-vault-private-ip-address-in-the-virtual-network)zijn. Als u de `A` record vindt, maar deze in het verkeerde IP-adres bevat, moet u het verkeerde IP-adres verwijderen en een nieuw item toevoegen. Het is raadzaam om de gehele `A` record te verwijderen en een nieuwe te voegen.
 
 >[!NOTE]
-> Wanneer u een record verwijdert of wijzigt `A` , kan de computer nog steeds worden omgezet naar het oude IP-adres, omdat de TTL-waarde (time to Live) mogelijk nog niet is verlopen. Het is raadzaam om altijd een TTL-waarde op te geven die niet kleiner is dan 60 seconden (één minuut) en niet groter is dan 600 seconden (10 minuten). Als u een waarde opgeeft die te groot is, zullen uw clients problemen met het herstellen van storingen ondervinden.
+> Wanneer u een record verwijdert of wijzigt `A` , kan de computer nog steeds worden omgezet naar het oude IP-adres, omdat de TTL-waarde (time to Live) mogelijk nog niet is verlopen. Het is raadzaam om altijd een TTL-waarde op te geven die niet kleiner is dan 60 seconden (één minuut) en niet groter is dan 600 seconden (10 minuten). Als u een waarde opgeeft die te groot is, kunnen uw clients te lang duren om te herstellen na storingen.
 
 ### <a name="dns-resolution-for-more-than-one-virtual-network"></a>DNS-omzetting voor meer dan één Virtual Network
 
@@ -261,15 +261,13 @@ Als er meerdere virtuele netwerken zijn en elk een eigen privé-eindpunt resourc
 
 In meer geavanceerde scenario's zijn er meerdere virtuele netwerken waarvoor peering is ingeschakeld. In dit geval heeft slechts één Virtual Network de persoonlijke eindpunt resource nodig, hoewel beide mogelijk moeten worden gekoppeld aan de Privé-DNS zone resource. Dit is een scenario dat niet direct onder dit document valt.
 
-### <a name="fact-the-user-controls-dns-resolution"></a>Fact: de gebruiker beheert de DNS-omzetting
+### <a name="fact-you-have-control-over-dns-resolution"></a>Fact: u hebt controle over de DNS-omzetting
 
-Als u een netwerk Scholar of een nieuws gierig bent, hebt u waarschijnlijk gerealiseerd hoe DNS-omzetting werkt. Zoals in de [vorige sectie](#key-vault-with-private-link-resolving-from-arbitrary-internet-machine)wordt uitgelegd, heeft een sleutel kluis met persoonlijke koppelingen de alias `{vaultname}.privatelink.vaultcore.azure.net` in de *open bare* registratie. De DNS-server die door de Virtual Network wordt gebruikt, controleert elke alias voor een registratie van een *privé* -naam en als er een wordt gevonden, worden de aliassen van de open bare registratie gestopt.
+Zoals beschreven in de [vorige sectie](#key-vault-with-private-link-resolving-from-arbitrary-internet-machine), heeft een sleutel kluis met persoonlijke koppelingen de alias `{vaultname}.privatelink.vaultcore.azure.net` in de *open bare* registratie. Op de DNS-server die door de Virtual Network wordt gebruikt, wordt de open bare registratie gebruikt, maar wordt elke alias voor een *privé* registratie gecontroleerd en als er een wordt gevonden, worden de volgende aliassen voor de registratie gestopt.
 
-Stel bijvoorbeeld dat de Virtual Network is gekoppeld aan een Privé-DNS zone met `privatelink.vaultcore.azure.net` de naam en dat de open bare DNS-registratie voor de sleutel kluis de alias heeft `fabrikam.privatelink.vaultcore.azure.net` . Houd er rekening mee dat het achtervoegsel precies overeenkomt met de Privé-DNS zone naam. Dit betekent dat de oplossing het eerst zoekt voor een `A` record met `fabrikam` de naam in de zone privé-DNS. Als de `A` record wordt gevonden, wordt het bijbehorende IP-adres geretourneerd in de DNS-query. En dat IP-adres is net als het privé-IP-adres van de sleutel kluis.
+Deze logica betekent dat als de Virtual Network is gekoppeld aan een Privé-DNS zone met de naam `privatelink.vaultcore.azure.net` , en de open bare DNS-registratie voor de sleutel kluis de alias heeft `fabrikam.privatelink.vaultcore.azure.net` (Houd er rekening mee dat het achtervoegsel van de sleutel kluis hostnaam precies overeenkomt met de naam van de privé-DNS zone). vervolgens zoekt de DNS-query naar een `A` record met de naam `fabrikam` *in de zone privé-DNS*. Als de `A` record wordt gevonden, wordt het bijbehorende IP-adres geretourneerd in de DNS-query en wordt er geen verdere zoek opdracht uitgevoerd bij de open bare DNS-registratie.
 
-Zoals u kunt zien, is de volledige naam omzetting onder gebruikers beheer.
-
-Er zijn twee redenen voor dit ontwerp:
+Zoals u kunt zien, is de naam omzetting onder uw beheer. De motivering van dit ontwerp zijn:
 
 - Mogelijk hebt u een complex scenario waarbij aangepaste DNS-servers en integratie met on-premises netwerken betrokken zijn. In dat geval moet u bepalen hoe namen worden omgezet naar IP-adressen.
 - Mogelijk moet u toegang hebben tot een sleutel kluis zonder persoonlijke koppelingen. In dat geval moet het omzetten van de hostnaam uit het Virtual Network het open bare IP-adres retour neren. dit gebeurt omdat sleutel kluizen zonder persoonlijke koppelingen geen `privatelink` alias hebben in de naam registratie.

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 70bb96da858c94fbd2c75d56cda4e705f2ffa3ba
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 44dac73f4e51214dbc41e8663dd44550dc9549f4
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986624"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715388"
 ---
 # <a name="security-recommendations-for-queue-storage"></a>Beveiligings aanbevelingen voor wachtrij opslag
 
@@ -29,7 +29,7 @@ Azure Security Center regel matig de beveiligings status van uw Azure-resources 
 
 | Aanbeveling | Opmerkingen | Beveiligingscentrum |
 |-|----|--|
-| Het Azure Resource Manager-implementatie model gebruiken | Maak nieuwe opslag accounts met behulp van het Azure Resource Manager-implementatie model voor belang rijke beveiligings verbeteringen, waaronder superieure toegangs beheer (RBAC) en controle, implementatie en beheer op basis van Resource Manager, toegang tot beheerde identiteiten, toegang tot Azure Key Vault voor geheimen en op Azure AD gebaseerde verificatie en autorisatie voor toegang tot Azure Storage gegevens en bronnen. Als dat mogelijk is, migreert u bestaande opslag accounts die gebruikmaken van het klassieke implementatie model om Azure Resource Manager te gebruiken. Zie [Azure Resource Manager Overview](/azure/azure-resource-manager/resource-group-overview)voor meer informatie over Azure Resource Manager. | - |
+| Het Azure Resource Manager-implementatie model gebruiken | Maak nieuwe opslag accounts met behulp van het Azure Resource Manager-implementatie model voor belang rijke verbeteringen in de beveiliging, waaronder superieure Azure-functies voor op rollen gebaseerd toegangs beheer (Azure RBAC) en controle, implementatie en beheer op basis van een resource manager, toegang tot beheerde identiteiten, toegang tot Azure Key Vault voor geheimen en verificatie en autorisatie op basis van Azure AD voor toegang tot Azure Storage gegevens en bronnen. Als dat mogelijk is, migreert u bestaande opslag accounts die gebruikmaken van het klassieke implementatie model om Azure Resource Manager te gebruiken. Zie [Azure Resource Manager Overview](/azure/azure-resource-manager/resource-group-overview)voor meer informatie over Azure Resource Manager. | - |
 | Geavanceerde beveiliging tegen bedreigingen inschakelen voor al uw opslag accounts | Advanced Threat Protection voor Azure Storage biedt een extra beveiligingslaag waarmee ongebruikelijke en mogelijk schadelijke pogingen voor het openen of exploiteren van opslag accounts worden gedetecteerd. Beveiligings waarschuwingen worden in Azure Security Center geactiveerd wanneer afwijkingen in de activiteit optreden en ook via e-mail worden verzonden naar abonnements beheerders, met details over verdachte activiteiten en aanbevelingen voor het onderzoeken en oplossen van bedreigingen. Zie [Advanced Threat Protection voor Azure Storage](../common/azure-defender-storage-configure.md)voor meer informatie. | [Ja](../../security-center/security-center-sql-service-recommendations.md) |
 | Alleen SAS-tokens (Shared Access Signature) beperken tot HTTPS-verbindingen | HTTPS vereisen wanneer een client een SAS-token gebruikt voor toegang tot de wachtrij gegevens helpt het risico op inbreuk te minimaliseren. Zie [beperkte toegang verlenen tot Azure storage-resources met behulp van Shared Access signatures (SAS)](../common/storage-sas-overview.md)voor meer informatie. | - |
 
@@ -38,7 +38,7 @@ Azure Security Center regel matig de beveiligings status van uw Azure-resources 
 | Aanbeveling | Opmerkingen | Beveiligingscentrum |
 |-|----|--|
 | Azure Active Directory (Azure AD) gebruiken om toegang tot wachtrij gegevens te autoriseren | Azure AD biedt een superieure beveiliging en gebruiks gemak voor de gedeelde sleutel voor het machtigen van aanvragen voor de wachtrij opslag. Zie [toegang tot Azure-blobs en-wacht rijen toestaan met Azure Active Directory](../common/storage-auth-aad.md)voor meer informatie. | - |
-| Houd bij het toewijzen van machtigingen aan een Azure AD-beveiligings-principal via RBAC de belangrijkste bevoegdheid. | Wanneer u een rol aan een gebruiker, groep of toepassing toewijst, moet u die beveiligings-principal alleen de machtigingen verlenen die nodig zijn om hun taken uit te voeren. Het beperken van de toegang tot bronnen voor komt zowel onbedoelde als kwaad aardige misbruik van uw gegevens. | - |
+| Houd bij het toewijzen van machtigingen aan een Azure AD-beveiligings-principal met behulp van Azure RBAC de belangrijkste bevoegdheid. | Wanneer u een rol aan een gebruiker, groep of toepassing toewijst, moet u die beveiligings-principal alleen de machtigingen verlenen die nodig zijn om hun taken uit te voeren. Het beperken van de toegang tot bronnen voor komt zowel onbedoelde als kwaad aardige misbruik van uw gegevens. | - |
 | De toegangs sleutels van uw account beveiligen met Azure Key Vault | Micro soft raadt u aan Azure AD te gebruiken om aanvragen voor Azure Storage te autoriseren. Als u echter gedeelde sleutel autorisatie moet gebruiken, kunt u uw account sleutels beveiligen met Azure Key Vault. U kunt de sleutels uit de sleutel kluis tijdens runtime ophalen in plaats van deze op te slaan in uw toepassing. | - |
 | Uw account sleutels periodiek opnieuw genereren | Als u de account sleutels draait, vermindert u het risico dat uw gegevens worden blootgesteld aan kwaad aardige actors. | - |
 | Houd bij het toewijzen van machtigingen aan een SAS de hoofd van de minimale bevoegdheid | Wanneer u een SAS maakt, geeft u alleen de machtigingen op die de client nodig heeft om zijn functie uit te voeren. Het beperken van de toegang tot bronnen voor komt zowel onbedoelde als kwaad aardige misbruik van uw gegevens. | - |

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 5b1e5c73f3d43ca2627729149256f3e9362d58c2
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: bd50a007b73438a5776cf6ecdb1074dc9980c537
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90984262"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91713710"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>Beveiligings aanbevelingen voor Blob Storage
 
@@ -29,7 +29,7 @@ Azure Security Center regel matig de beveiligings status van uw Azure-resources 
 
 | Aanbeveling | Opmerkingen | Beveiligingscentrum |
 |-|----|--|
-| Het Azure Resource Manager-implementatie model gebruiken | Maak nieuwe opslag accounts met behulp van het Azure Resource Manager-implementatie model voor belang rijke beveiligings verbeteringen, waaronder superieure toegangs beheer (RBAC) en controle, implementatie en beheer op basis van Resource Manager, toegang tot beheerde identiteiten, toegang tot Azure Key Vault voor geheimen en op Azure AD gebaseerde verificatie en autorisatie voor toegang tot Azure Storage gegevens en bronnen. Als dat mogelijk is, migreert u bestaande opslag accounts die gebruikmaken van het klassieke implementatie model om Azure Resource Manager te gebruiken. Zie [Azure Resource Manager Overview](/azure/azure-resource-manager/resource-group-overview)voor meer informatie over Azure Resource Manager. | - |
+| Het Azure Resource Manager-implementatie model gebruiken | Maak nieuwe opslag accounts met behulp van het Azure Resource Manager-implementatie model voor belang rijke verbeteringen in de beveiliging, waaronder superieure Azure-functies voor op rollen gebaseerd toegangs beheer (Azure RBAC) en controle, implementatie en beheer op basis van een resource manager, toegang tot beheerde identiteiten, toegang tot Azure Key Vault voor geheimen en verificatie en autorisatie op basis van Azure AD voor toegang tot Azure Storage gegevens en bronnen. Als dat mogelijk is, migreert u bestaande opslag accounts die gebruikmaken van het klassieke implementatie model om Azure Resource Manager te gebruiken. Zie [Azure Resource Manager Overview](/azure/azure-resource-manager/resource-group-overview)voor meer informatie over Azure Resource Manager. | - |
 | Azure Defender inschakelen voor al uw opslag accounts | Azure Defender voor Azure Storage biedt een extra beveiligingslaag die ongebruikelijke en mogelijk schadelijke pogingen detecteert om toegang te krijgen tot of misbruik te maken van opslag accounts. Beveiligings waarschuwingen worden in Azure Security Center geactiveerd wanneer afwijkingen in de activiteit optreden en ook via e-mail worden verzonden naar abonnements beheerders, met details over verdachte activiteiten en aanbevelingen voor het onderzoeken en oplossen van bedreigingen. Zie [Azure Defender configureren voor Azure Storage](../common/azure-defender-storage-configure.md)voor meer informatie. | [Ja](../../security-center/security-center-sql-service-recommendations.md) |
 | Zacht verwijderen inschakelen voor BLOB-gegevens | Met zacht verwijderen kunt u BLOB-gegevens herstellen nadat deze is verwijderd. Voor meer informatie over zacht verwijderen, Zie [voorlopig verwijderen voor Azure Storage-blobs](storage-blob-soft-delete.md). | - |
 | Bedrijfs kritieke gegevens opslaan in onveranderbare blobs | Configureer juridische bewaringen en bewaar beleidsregels op basis van tijd voor het opslaan van BLOB-gegevens in een WORM (Write Once, Read Many). De opgeslagen immutably van blobs kunnen worden gelezen, maar kunnen niet worden gewijzigd of verwijderd voor de duur van de Bewaar periode. Zie voor meer informatie [bedrijfs kritieke BLOB-gegevens opslaan met onveranderlijke opslag](storage-blob-immutable-storage.md). | - |
@@ -40,7 +40,7 @@ Azure Security Center regel matig de beveiligings status van uw Azure-resources 
 | Aanbeveling | Opmerkingen | Beveiligingscentrum |
 |-|----|--|
 | Azure Active Directory (Azure AD) gebruiken om toegang te verlenen tot BLOB-gegevens | Azure AD biedt een superieure beveiliging en gebruiks gemak over gedeelde sleutel voor het machtigen van aanvragen voor Blob-opslag. Zie [toegang tot Azure-blobs en-wacht rijen toestaan met Azure Active Directory](../common/storage-auth-aad.md)voor meer informatie. | - |
-| Houd bij het toewijzen van machtigingen aan een Azure AD-beveiligings-principal via RBAC de belangrijkste bevoegdheid. | Wanneer u een rol aan een gebruiker, groep of toepassing toewijst, moet u die beveiligings-principal alleen de machtigingen verlenen die nodig zijn om hun taken uit te voeren. Het beperken van de toegang tot bronnen voor komt zowel onbedoelde als kwaad aardige misbruik van uw gegevens. | - |
+| Houd bij het toewijzen van machtigingen aan een Azure AD-beveiligings-principal met behulp van Azure RBAC de belangrijkste bevoegdheid. | Wanneer u een rol aan een gebruiker, groep of toepassing toewijst, moet u die beveiligings-principal alleen de machtigingen verlenen die nodig zijn om hun taken uit te voeren. Het beperken van de toegang tot bronnen voor komt zowel onbedoelde als kwaad aardige misbruik van uw gegevens. | - |
 | Een SAS voor gebruikers overdracht gebruiken om beperkte toegang tot BLOB-gegevens toe te kennen aan clients | Een SAS voor gebruikers overdracht wordt beveiligd met Azure Active Directory (Azure AD)-referenties en ook door de machtigingen die zijn opgegeven voor de SAS. Een SAS voor gebruikers overdracht is vergelijkbaar met een service-SA'S in termen van het bereik en de functie, maar biedt beveiligings voordelen ten opzichte van de service-SA'S. Zie [beperkte toegang verlenen tot Azure storage-resources met behulp van Shared Access signatures (SAS)](../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)voor meer informatie. | - |
 | De toegangs sleutels van uw account beveiligen met Azure Key Vault | Micro soft raadt u aan Azure AD te gebruiken om aanvragen voor Azure Storage te autoriseren. Als u echter gedeelde sleutel autorisatie moet gebruiken, kunt u uw account sleutels beveiligen met Azure Key Vault. U kunt de sleutels uit de sleutel kluis tijdens runtime ophalen in plaats van deze op te slaan in uw toepassing. Zie [Azure Key Vault Overview](../../key-vault/general/overview.md)voor meer informatie over Azure Key Vault. | - |
 | Uw account sleutels periodiek opnieuw genereren | Als u de account sleutels draait, vermindert u het risico dat uw gegevens worden blootgesteld aan kwaad aardige actors. | - |

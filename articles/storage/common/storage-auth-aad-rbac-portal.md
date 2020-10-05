@@ -1,7 +1,7 @@
 ---
 title: De Azure Portal gebruiken om een Azure-rol toe te wijzen voor gegevens toegang
 titleSuffix: Azure Storage
-description: Meer informatie over het gebruik van de Azure Portal om machtigingen toe te wijzen aan een Azure Active Directory-beveiligingsprincipal met op rollen gebaseerd toegangs beheer (RBAC). Azure Storage ondersteunt ingebouwde en aangepaste Azure-functies voor verificatie via Azure AD.
+description: Meer informatie over het gebruik van de Azure Portal om machtigingen toe te wijzen aan een Azure Active Directory beveiligings-principal met behulp van Azure op rollen gebaseerd toegangs beheer (Azure RBAC). Azure Storage ondersteunt ingebouwde en aangepaste Azure-functies voor verificatie via Azure AD.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,12 +10,12 @@ ms.date: 09/23/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 7c463beb7874e0b66e2a45a1675484f19c4fab34
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e2d577261a1cea0bad9aab549b3669f8fdef5751
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91249655"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715855"
 ---
 # <a name="use-the-azure-portal-to-assign-an-azure-role-for-access-to-blob-and-queue-data"></a>De Azure Portal gebruiken om een Azure-rol toe te wijzen voor toegang tot Blob-en wachtrij gegevens
 
@@ -64,11 +64,11 @@ Met de procedure die hier wordt weer gegeven, wordt een rol binnen een container
 1. Klik op de knop roltoewijzing **toevoegen** om een nieuwe rol toe te voegen.
 1. Selecteer in het venster **roltoewijzing toevoegen** de Azure Storage rol die u wilt toewijzen. Zoek vervolgens naar de beveiligingsprincipal waaraan u de rol wilt toewijzen.
 
-    :::image type="content" source="media/storage-auth-aad-rbac-portal/add-rbac-role.png" alt-text="Scherm afbeelding die laat zien hoe een Azure-rol kan worden toegewezen":::
+    :::image type="content" source="media/storage-auth-aad-rbac-portal/add-rbac-role.png" alt-text="Scherm opname van instellingen voor toegangs beheer voor container":::
 
 1. Klik op **Opslaan**. De identiteit waaraan u de rol hebt toegewezen, wordt weer gegeven onder die rol. In de volgende afbeelding ziet u bijvoorbeeld dat de gebruiker die nu heeft toegevoegd, lees machtigingen heeft voor de gegevens in de container *sample-container*.
 
-    :::image type="content" source="media/storage-auth-aad-rbac-portal/container-scoped-role.png" alt-text="Scherm afbeelding met een lijst met gebruikers die zijn toegewezen aan een rol":::
+    :::image type="content" source="media/storage-auth-aad-rbac-portal/container-scoped-role.png" alt-text="Scherm opname van instellingen voor toegangs beheer voor container":::
 
 U kunt vergelijk bare stappen volgen om een rollen bereik toe te wijzen aan het opslag account, de resource groep of het abonnement.
 
@@ -98,9 +98,9 @@ Het toewijzen van de rol **lezer** is alleen nodig voor gebruikers die toegang m
 ## <a name="next-steps"></a>Volgende stappen
 
 - Zie [toegang tot Azure-blobs en-wacht rijen verifiëren met Azure Active Directory](storage-auth-aad.md)voor meer informatie over Azure-rollen voor opslag resources. 
-- Zie [Wat is Azure Role-based Access Control (Azure RBAC)?](../../role-based-access-control/overview.md)voor meer informatie over RBAC.
+- Zie [Wat is Azure-op rollen gebaseerd toegangs beheer (Azure RBAC)?](../../role-based-access-control/overview.md)voor meer informatie over Azure RBAC.
 - Zie de volgende artikelen voor meer informatie over het toewijzen en beheren van Azure-roltoewijzingen met Azure PowerShell, Azure CLI of de REST API:
-    - [Op rollen gebaseerd toegangs beheer (RBAC) beheren met Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)
-    - [Op rollen gebaseerd toegangs beheer (RBAC) beheren met Azure CLI](../../role-based-access-control/role-assignments-cli.md)
-    - [Op rollen gebaseerd toegangs beheer (RBAC) beheren met de REST API](../../role-based-access-control/role-assignments-rest.md)
+    - [Azure-roltoewijzingen toevoegen of verwijderen met de module Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)
+    - [Azure-roltoewijzingen toevoegen of verwijderen met behulp van Azure CLI](../../role-based-access-control/role-assignments-cli.md)
+    - [Azure-roltoewijzingen toevoegen of verwijderen met behulp van de REST API](../../role-based-access-control/role-assignments-rest.md)
 - Zie [Azure AD gebruiken met Azure Storage-toepassingen](storage-auth-aad-app.md)voor meer informatie over het machtigen van toegang tot containers en wacht rijen in uw opslag toepassingen.

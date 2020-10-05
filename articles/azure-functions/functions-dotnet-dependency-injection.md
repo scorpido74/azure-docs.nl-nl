@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.date: 08/15/2020
 ms.author: glenga
 ms.reviewer: jehollan
-ms.openlocfilehash: 7e45537d0a9fbdd738d6a2142b9259a15498e9c9
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.openlocfilehash: f535a27e3afadaf8eefc41c5f1a8ab6c02d24c04
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/07/2020
-ms.locfileid: "89503802"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715943"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Afhankelijkheidsinjectie gebruiken in .NET Azure Functions
 
@@ -92,7 +92,7 @@ namespace MyNamespace
         private readonly HttpClient _client;
         private readonly IMyService _service;
 
-        public MyHttpTrigger(HttpClient httpClient, MyService service)
+        public MyHttpTrigger(HttpClient httpClient, IMyService service)
         {
             this._client = httpClient;
             this._service = service;
@@ -124,7 +124,7 @@ Azure Functions-apps bieden dezelfde levens duur van de service als [ASP.net-afh
 
 Bekijk of down load een voor [beeld van de verschillende levens duur](https://github.com/Azure/azure-functions-dotnet-extensions/tree/main/src/samples/DependencyInjection/Scopes) van de service op github.
 
-## <a name="logging-services"></a>Logboek registratie Services
+## <a name="logging-services"></a>Services voor logboekregistratie
 
 Als u uw eigen registratie provider nodig hebt, moet u een aangepast type registreren als een exemplaar van [`ILoggerProvider`](/dotnet/api/microsoft.extensions.logging.iloggerfactory) , dat beschikbaar is via het [micro soft. Extensions. logges. abstracties](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Abstractions/) NuGet-pakket.
 

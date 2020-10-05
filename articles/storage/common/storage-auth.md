@@ -10,12 +10,12 @@ ms.date: 04/15/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: a56fdf8bc3bfa93c12cce66664e68b223fa97ff2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 806222fc522c548fd58935812d705e12c9b3cee1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029532"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91714419"
 ---
 # <a name="authorizing-access-to-data-in-azure-storage"></a>Toegang tot gegevens in Azure Storage autoriseren
 
@@ -33,11 +33,11 @@ In de volgende tabel worden de opties beschreven die Azure Storage biedt om toeg
 
 Elke autorisatie optie wordt hieronder beschreven:
 
-- **Integratie van Azure Active Directory (Azure AD)** voor blobs en wacht rijen. Azure AD biedt op rollen gebaseerd toegangs beheer (RBAC) voor het beheren van de toegang van een client tot bronnen in een opslag account. Zie [toegang tot Azure-blobs en-wacht rijen toestaan met Azure Active Directory](storage-auth-aad.md)voor meer informatie over Azure AD-integratie voor blobs en wacht rijen.
+- **Integratie van Azure Active Directory (Azure AD)** voor blobs en wacht rijen. Azure biedt op rollen gebaseerd toegangs beheer van Azure (Azure RBAC) voor het beheren van de toegang van een client tot bronnen in een opslag account. Zie [toegang tot Azure-blobs en-wacht rijen toestaan met Azure Active Directory](storage-auth-aad.md)voor meer informatie over Azure AD-integratie voor blobs en wacht rijen.
 
-- **Azure Active Directory Domain Services-verificatie (Azure AD DS)** voor Azure files. Azure Files ondersteunt autorisatie op basis van een identiteit via Server Message Block (SMB) via Azure AD DS. U kunt RBAC gebruiken voor een nauw keurige controle over de toegang van een client tot Azure Files resources in een opslag account. Raadpleeg het [overzicht](../files/storage-files-active-directory-overview.md)voor meer informatie over het Azure files-verificatie met Domain Services.
+- **Azure Active Directory Domain Services-verificatie (Azure AD DS)** voor Azure files. Azure Files ondersteunt autorisatie op basis van een identiteit via Server Message Block (SMB) via Azure AD DS. U kunt Azure RBAC gebruiken voor een nauw keurige controle over de toegang van een client tot Azure Files resources in een opslag account. Raadpleeg het [overzicht](../files/storage-files-active-directory-overview.md)voor meer informatie over het Azure files-verificatie met Domain Services.
 
-- **On-premises Active Directory Domain Services (AD DS, of on-premises AD DS)-verificatie (preview)** voor Azure files. Azure Files ondersteunt autorisatie op basis van een identiteit via SMB via AD DS. Uw AD DS omgeving kan worden gehost op on-premises machines of in azure-Vm's. SMB-toegang tot bestanden wordt ondersteund met behulp van AD DS referenties van computers die lid zijn van een domein, on-premises of in Azure. U kunt een combi natie van RBAC gebruiken voor toegangs beheer op share niveau en NTFS-DACL'S voor het afdwingen van machtigingen op Directory-en bestands niveau. Raadpleeg het [overzicht](../files/storage-files-active-directory-overview.md)voor meer informatie over het Azure files-verificatie met Domain Services.
+- **On-premises Active Directory Domain Services (AD DS, of on-premises AD DS)-verificatie (preview)** voor Azure files. Azure Files ondersteunt autorisatie op basis van een identiteit via SMB via AD DS. Uw AD DS omgeving kan worden gehost op on-premises machines of in azure-Vm's. SMB-toegang tot bestanden wordt ondersteund met behulp van AD DS referenties van computers die lid zijn van een domein, on-premises of in Azure. U kunt een combi natie van Azure RBAC gebruiken voor toegangs beheer op share niveau en NTFS-DACL'S voor het afdwingen van machtigingen op Directory-en bestands niveau. Raadpleeg het [overzicht](../files/storage-files-active-directory-overview.md)voor meer informatie over het Azure files-verificatie met Domain Services.
 
 - **Gedeelde sleutel autorisatie** voor blobs, bestanden, wacht rijen en tabellen. Een client die een gedeelde sleutel gebruikt, geeft een header door elke aanvraag die is ondertekend met de toegangs sleutel voor het opslag account. Zie [autoriseren met gedeelde sleutel](/rest/api/storageservices/authorize-with-shared-key/)voor meer informatie.
 - **Shared Access signatures** voor blobs, bestanden, wacht rijen en tabellen. Shared Access signatures (SAS) bieden beperkte gedelegeerde toegang tot resources in een opslag account. Door beperkingen toe te voegen aan het tijds interval waarvoor de hand tekening geldig is of op machtigingen die door deze worden verleend, biedt het beheer van de toegang flexibiliteit. Zie [using Shared Access signatures (SAS) (Engelstalig)](storage-sas-overview.md)voor meer informatie.

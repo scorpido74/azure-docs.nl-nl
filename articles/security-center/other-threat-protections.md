@@ -1,104 +1,104 @@
 ---
-title: Extra beveiliging tegen bedreigingen in Azure Security Center
-description: Meer informatie over de bedreigings beveiliging die beschikbaar is via Azure Security Center buiten Azure Defender
+title: Extra bedreigingsbeveiliging in Azure Security Center
+description: Meer informatie over de bedreigingsbeveiliging die beschikbaar is via Azure Security Center naast Azure Defender
 services: security-center
 documentationcenter: na
 author: memildin
 manager: rkarlin
 ms.assetid: 33c45447-3181-4b75-aa8e-c517e76cd50d
 ms.service: security-center
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 09/15/2020
 ms.author: memildin
-ms.openlocfilehash: 0f4a849af2be9f02187dc3cda526c9c4727cab1b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
-ms.translationtype: MT
+ms.openlocfilehash: 377c68cd2f0b0c132fc690cb03d7c3c5694bb52e
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935768"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91438910"
 ---
-# <a name="additional-threat-protections-in-azure-security-center"></a>Aanvullende beveiligings Risico's in Azure Security Center
-En de ingebouwde [Azure Defender-beveiligingen](azure-defender.md)bieden Azure Security Center ook de volgende mogelijkheden voor beveiliging tegen bedreigingen.
+# <a name="additional-threat-protections-in-azure-security-center"></a>Extra bedreigingsbeveiliging in Azure Security Center
+Naast de ingebouwde [Azure Defender-beveiligingsmethoden](azure-defender.md) biedt Azure Security Center de volgende mogelijkheden voor bedreigingsbeveiliging.
 
 > [!TIP]
-> Als u de mogelijkheden voor bedreigings beveiliging van Security Center wilt inschakelen, moet u Azure Defender inschakelen op het abonnement dat de toepasselijke werk belastingen bevat.
+> Als u de bedreigingsbeschermingsmogelijkheden van Security Center wilt inschakelen, moet u Azure Defender inschakelen voor het abonnement dat de van toepassing zijnde workloads bevat.
 >
-> U kunt bedreigingen beveiliging inschakelen voor **Azure database for MariaDB/MySQL/PostgreSQL** op het niveau van de resource.
+> U kunt bedreigingsbeveiliging voor **Azure Database for MariaDB/MySQL/PostgreSQL** alleen inschakelen op resourceniveau.
 
 
-## <a name="threat-protection-for-azure-network-layer"></a>Bedreigings beveiliging voor Azure Network Layer <a name="network-layer"></a>
-Security Center Network-laag analyse zijn gebaseerd op voorbeeld [gegevens van IPFIX](https://en.wikipedia.org/wiki/IP_Flow_Information_Export), die pakket headers zijn die worden verzameld door Azure core-routers. Op basis van deze gegevensfeed gebruikt Security Center machine learning modellen om kwaad aardige verkeers activiteiten te identificeren en te markeren. Security Center gebruikt de micro soft Threat Intelligence-data base ook om IP-adressen te verrijken.
+## <a name="threat-protection-for-azure-network-layer"></a>Bedreigingsbeveiliging voor de Azure-netwerklaag <a name="network-layer"></a>
+Analyse van de Security Center-netwerklaag is gebaseerd op voorbeelden van [IPFIX-gegevens](https://en.wikipedia.org/wiki/IP_Flow_Information_Export). Dit zijn pakketheaders die verzameld zijn door Azure-corerouters. Op basis van deze gegevensfeed gebruikt Security Center machinelearning-modellen om schadelijke verkeersactiviteiten te identificeren en markeren. Security Center gebruikt bovendien de Microsoft Threat Intelligence-database om IP-adressen te verrijken.
 
-Sommige netwerk configuraties kunnen Security Center beperken van het genereren van waarschuwingen over verdachte netwerk activiteit. Zorg ervoor dat de volgende handelingen worden Security Center om netwerk waarschuwingen te genereren:
-- De virtuele machine heeft een openbaar IP-adres (of bevindt zich op een load balancer met een openbaar IP-adres).
-- Het netwerk verkeer van de virtuele machine wordt niet geblokkeerd door een externe ID-oplossing.
-- De virtuele machine is toegewezen aan hetzelfde IP-adres voor het hele uur waarin de verdachte communicatie heeft plaatsgevonden. Dit geldt ook voor virtuele machines die zijn gemaakt als onderdeel van een beheerde service (bijvoorbeeld AKS, Databricks).
+Sommige netwerkconfiguraties kunnen voorkomen dat Security Center waarschuwingen over verdachte netwerkactiviteit genereert. Security Center genereert netwerkwaarschuwingen als de volgende voorwaarden van toepassing zijn:
+- Uw virtuele machine heeft een openbaar IP-adres (of bevindt zich op een load balancer met een openbaar IP-adres).
+- Het uitgaande netwerkverkeer van uw virtuele machine wordt niet geblokkeerd door een externe ID-oplossing.
+- Uw virtuele machine is toegewezen aan hetzelfde IP-adres voor het hele uur waarin de verdachte communicatie heeft plaatsgevonden. Dit geldt ook voor virtuele machines die gemaakt zijn als onderdeel van een beheerde service (zoals AKS of Databricks).
 
-Zie de [naslag tabel met waarschuwingen](alerts-reference.md#alerts-azurenetlayer)voor een overzicht van de waarschuwingen van de Azure-netwerklaag.
+Zie de [Referentietabel met waarschuwingen](alerts-reference.md#alerts-azurenetlayer) voor een lijst met waarschuwingen voor de Azure-netwerklaag.
 
 
-## <a name="threat-protection-for-azure-resource-manager-preview"></a>Bedreigings beveiliging voor Azure Resource Manager (preview-versie)<a name ="management-layer"></a>
-De beveiligingslaag van Security Center is gebaseerd op Azure Resource Manager momenteel als preview-versie beschikbaar is.
+## <a name="threat-protection-for-azure-resource-manager-preview"></a>Bedreigingsbeveiliging voor Azure Resource Manager (preview-versie)<a name ="management-layer"></a>
+De beveiligingslaag van Security Center gebaseerd op Azure Resource Manager is momenteel als preview-versie beschikbaar.
 
-Security Center biedt een extra beveiligingslaag door gebruik te maken van Azure Resource Manager-gebeurtenissen. dit wordt beschouwd als het controle vlak voor Azure. Door de Azure Resource Manager-records te analyseren, Security Center een ongebruikelijke of mogelijk schadelijke bewerking in de Azure-abonnements omgeving detecteert.
+Security Center biedt een extra beveiligingslaag door gebruik te maken van Azure Resource Manager-gebeurtenissen. Dit wordt beschouwd als het besturingsvlak voor Azure. Door de Azure Resource Manager-records te analyseren detecteert Security Center ongebruikelijke of mogelijk schadelijke bewerkingen in de Azure-abonnementsomgeving.
 
-Zie de [naslag tabel met waarschuwingen](alerts-reference.md#alerts-azureresourceman)voor een lijst met waarschuwingen voor Azure Resource Manager (preview).
+Zie de [Referentietabel met waarschuwingen](alerts-reference.md#alerts-azureresourceman) voor een lijst met waarschuwingen voor Azure Resource Manager (preview-versie).
 
 
 >[!NOTE]
-> Verschillende van de voor gaande analyses worden mogelijk gemaakt door Microsoft Cloud App Security. Als u van deze analyses wilt profiteren, moet u een Cloud App Security-licentie activeren. Als u een licentie voor Cloud App Security hebt, zijn deze waarschuwingen standaard ingeschakeld. De waarschuwingen uitschakelen:
+> Verschillende van de voorgaande analyses worden mogelijk gemaakt door Microsoft Cloud App Security. Als u van deze analyses wilt profiteren, moet u een Cloud App Security-licentie activeren. Als u al een licentie voor Cloud App Security hebt, zijn deze waarschuwingen standaard ingeschakeld. De waarschuwingen uitschakelen:
 >
 > 1. Selecteer **Prijzen en instellingen** in het hoofdmenu van Security Center.
 > 1. Selecteer het abonnement dat u wilt wijzigen.
-> 1. Selecteer **bedreigingen detectie**.
-> 1. Schakel **Microsoft Cloud app Security toegang tot mijn gegevens toestaan**uit en selecteer **Opslaan**.
+> 1. Selecteer **Detectie van dreigingen**.
+> 1. Schakel **Microsoft Cloud App Security toegang geven tot mijn gegevens** uit en selecteer **Opslaan**.
 
 
 >[!NOTE]
->Security Center klant gegevens met betrekking tot beveiliging worden opgeslagen in dezelfde geografische regio als de resource. Als micro soft Security Center nog niet heeft geïmplementeerd in de geografische regio van de resource, worden de gegevens opgeslagen in de Verenigde Staten. Als Cloud App Security is ingeschakeld, wordt deze informatie opgeslagen in overeenstemming met de geolocatie regels van Cloud App Security. Zie [gegevens opslag voor niet-regionale Services](https://azuredatacentermap.azurewebsites.net/)voor meer informatie.
+>Security Center slaat klantgegevens met betrekking tot beveiliging op in dezelfde geografische regio als de resource. Als Security Center nog niet door Microsoft is geïmplementeerd in de geografische regio van de resource, worden de gegevens opgeslagen in de Verenigde Staten. Als Cloud App Security is ingeschakeld, wordt deze informatie opgeslagen in overeenstemming met de geolocatieregels van Cloud App Security. Zie [Gegevensopslag voor niet-regionale services](https://azuredatacentermap.azurewebsites.net/) voor meer informatie.
 
-1. Stel de werk ruimte in waarop u de agent wilt installeren. Zorg ervoor dat de werk ruimte zich in hetzelfde abonnement bevindt dat u in Security Center gebruikt en dat u lees-en schrijf machtigingen hebt voor de werk ruimte.
+1. Stel de werkruimte in waar u de agent gaat installeren. Zorg ervoor dat de werkruimte tot hetzelfde abonnement behoort dat u in Security Center gebruikt en dat u voor de werkruimte lees- en schrijfmachtigingen hebt.
 
-1. Schakel **Azure Defender**in en selecteer **Opslaan**.
+1. Schakel **Azure Defender** in en selecteer **Opslaan**.
 
 
-## <a name="threat-protection-for-azure-cosmos-db-preview"></a>Bedreigings beveiliging voor Azure Cosmos DB (preview-versie)<a name="cosmos-db"></a>
+## <a name="threat-protection-for-azure-cosmos-db-preview"></a>Bedreigingsbeveiliging voor Azure Cosmos DB (preview-versie)<a name="cosmos-db"></a>
 
-De Azure Cosmos DB waarschuwingen worden gegenereerd door ongebruikelijke en mogelijk schadelijke pogingen om Azure Cosmos DB accounts te openen of misbruik te maken.
+De Azure Cosmos DB-waarschuwingen worden gegenereerd door ongebruikelijke en mogelijk schadelijke pogingen om Azure Cosmos DB-accounts te openen of misbruiken.
 
 Zie voor meer informatie:
 
-* [Advanced Threat Protection voor Azure Cosmos DB (preview-versie)](../cosmos-db/cosmos-db-advanced-threat-protection.md)
-* [De lijst met beveiligings waarschuwingen voor bedreigingen voor Azure Cosmos DB (preview-versie)](alerts-reference.md#alerts-azurecosmos)
+* [Geavanceerde bedreigingsbeveiliging voor Azure Cosmos DB (preview-versie)](../cosmos-db/cosmos-db-advanced-threat-protection.md)
+* [De lijst met waarschuwingen voor beveiligingsbedreigingen voor Azure Cosmos DB (preview-versie)](alerts-reference.md#alerts-azurecosmos)
 
 
 
-## <a name="threat-protection-for-other-microsoft-services"></a>Bedreigings beveiliging voor andere micro soft-Services <a name="alerts-other"></a>
+## <a name="threat-protection-for-other-microsoft-services"></a>Bedreigingsbeveiliging voor andere Microsoft-services <a name="alerts-other"></a>
 
-### <a name="threat-protection-for-azure-waf"></a>Bedreigings beveiliging voor Azure WAF <a name="azure-waf"></a>
+### <a name="threat-protection-for-azure-waf"></a>Bedreigingsbeveiliging voor Azure WAF <a name="azure-waf"></a>
 
 Azure Application Gateway biedt de functie Web Application Firewall (WAF) voor de gecentraliseerde beveiliging van uw webtoepassingen tegen bekende aanvallen en beveiligingsproblemen.
 
-Webtoepassingen zijn in toenemende mate het doel van aanvallen die gebruikmaken van algemeen bekende beveiligingsproblemen. De Application Gateway WAF is gebaseerd op de core Rule set 3,0 of 2.2.9 van het open Web Application Security-project. De WAF wordt automatisch bijgewerkt om te beschermen tegen nieuwe beveiligings problemen. 
+Webtoepassingen zijn in toenemende mate het doel van aanvallen die gebruikmaken van algemeen bekende beveiligingsproblemen. WAF voor Application Gateway is gebaseerd op Core Rule Set (CRS) 3.0 of 2.2.9 van het Open Web Application Security Project. De WAF wordt automatisch bijgewerkt om bescherming te bieden tegen nieuwe beveiligingsproblemen. 
 
-Als u een licentie voor Azure WAF hebt, worden uw WAF-waarschuwingen gestreamd naar Security Center zonder dat er aanvullende configuratie nodig is. Zie voor meer informatie over de waarschuwingen die door WAF worden gegenereerd, [CRS-regel groepen en-regels voor Web Application firewall](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md?tabs=owasp31#crs911-31).
+Als u een licentie voor Azure WAF hebt, worden uw WAF-waarschuwingen gestreamd naar Security Center zonder dat er aanvullende configuratie nodig is. Zie [Web Application Firewall CRS rule groups and rules](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md?tabs=owasp31#crs911-31) (CRS-regelgroepen en -regels voor Web Application Firewall) voor meer informatie over de door WAF gegenereerde waarschuwingen.
 
 
-### <a name="threat-protection-for-azure-ddos-protection"></a>Bedreigings beveiliging voor Azure DDoS Protection <a name="azure-ddos"></a>
+### <a name="threat-protection-for-azure-ddos-protection"></a>Bedreigingsbeveiliging voor Azure DDoS Protection <a name="azure-ddos"></a>
 
-DDoS-aanvallen (Distributed Denial of service) zijn bekend om eenvoudig te worden uitgevoerd. Ze zijn een geweldig beveiligings probleem, met name als u uw toepassingen naar de Cloud verplaatst. 
+Van DDoS-aanvallen (Distributed Denial of service) is het bekend dat ze eenvoudig uit te voeren zijn. Ze zijn een aanzienlijk beveiligingsprobleem geworden, zeker als u uw toepassingen naar de cloud verplaatst. 
 
-Een DDoS-aanval probeert de bronnen van een toepassing te ontnemen, waardoor de toepassing niet beschikbaar is voor legitieme gebruikers. DDoS-aanvallen kunnen worden gericht op elk eind punt dat kan worden bereikt via internet.
+Met een DDoS-aanval wordt geprobeerd de resources van een toepassing uit te putten, waardoor de toepassing niet meer beschikbaar is voor legitieme gebruikers. DDoS-aanvallen kunnen worden gericht op elk eindpunt dat kan worden bereikt via internet.
 
-Schaf een licentie voor Azure DDoS Protection aan en zorg ervoor dat u de aanbevolen procedures voor het ontwerpen van toepassingen gebruikt om DDoS-aanvallen te voor komen. DDoS Protection biedt verschillende service lagen. Zie [Azure DDoS Protection Overview](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview)voor meer informatie.
+U kunt zich tegen DDoS-aanvallen beschermen door een licentie voor Azure DDoS Protection aan te schaffen en ervoor te zorgen dat u de aanbevolen procedures voor het ontwerpen van toepassingen volgt. DDoS Protection biedt verschillende servicelagen. Zie het [Overzicht van Azure DDoS Protection](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview) voor meer informatie.
 
-Zie de [naslag tabel met waarschuwingen](alerts-reference.md#alerts-azureddos)voor een overzicht van de waarschuwingen voor Azure DDoS Protection.
+Zie de [Referentietabel met waarschuwingen](alerts-reference.md#alerts-azureddos) voor een lijst met waarschuwingen voor Azure DDoS Protection.
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Raadpleeg de volgende artikelen voor meer informatie over de beveiligings waarschuwingen van deze functies voor bedreigingen beveiliging:
+Raadpleeg de volgende artikelen voor meer informatie over de beveiligingswaarschuwingen van deze functies voor bedreigingsbeveiliging:
 
-* [Referentie tabel voor alle Azure Security Center waarschuwingen](alerts-reference.md)
+* [Referentietabel voor alle Azure Security Center-waarschuwingen](alerts-reference.md)
 * [Beveiligingswaarschuwingen in Azure Security Center](security-center-alerts-overview.md)
 * [Beveiligingswaarschuwingen beheren en erop reageren in Azure Security Center](security-center-managing-and-responding-alerts.md)
-* [Beveiligings waarschuwingen en aanbevelingen exporteren (preview-versie)](continuous-export.md)
+* [Beveiligingswaarschuwingen en aanbevelingen exporteren (preview-versie)](continuous-export.md)

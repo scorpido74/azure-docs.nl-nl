@@ -7,22 +7,22 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: rogarana
-ms.openlocfilehash: de0f58b54f0cb5ad450949bb1a7b8744f081227d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 50753950556531ed3915292f44668073b88be45b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91320333"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91716015"
 ---
 # <a name="part-three-configure-directory-and-file-level-permissions-over-smb"></a>Deel drie: machtigingen voor mappen en bestands niveau configureren via SMB 
 
 Voordat u aan dit artikel begint, moet u ervoor zorgen dat u het vorige artikel hebt voltooid, [machtigingen op share niveau toewijzen aan een identiteit](storage-files-identity-ad-ds-assign-permissions.md) om ervoor te zorgen dat uw machtigingen op share niveau aanwezig zijn.
 
-Nadat u machtigingen op share niveau hebt toegewezen met RBAC, moet u de juiste Windows-Acl's configureren op basis van de hoofdmap, map of bestands niveau om te profiteren van nauw keurig toegangs beheer. U kunt de RBAC-machtigingen op share niveau beschouwen als de gate keeper op hoog niveau die bepaalt of een gebruiker toegang heeft tot de share. Hoewel de Windows-Acl's op een meer gedetailleerd niveau werken om te bepalen welke bewerkingen de gebruiker kan uitvoeren op het niveau van de map of het bestand. Machtigingen op share niveau en op het niveau van bestanden en mappen worden afgedwongen wanneer een gebruiker toegang probeert te krijgen tot een bestand of map, dus als er een verschil is tussen een van beide, wordt alleen de meest beperkende waarde toegepast. Als een gebruiker bijvoorbeeld lees-en schrijf toegang heeft op bestands niveau, maar alleen op share niveau leest, kan het bestand alleen worden gelezen. Hetzelfde geldt als het is omgekeerd, en een gebruiker had Lees-en schrijf toegang op het niveau van de share, maar alleen lezen op bestands niveau, maar kan het bestand nog steeds lezen.
+Nadat u machtigingen op share niveau hebt toegewezen met Azure RBAC, moet u de juiste Windows-Acl's configureren op basis van de hoofdmap, map of bestands niveau om te profiteren van nauw keurig toegangs beheer. U kunt de machtigingen op share niveau van Azure RBAC beschouwen als de gate keeper die bepaalt of een gebruiker toegang heeft tot de share. Hoewel de Windows-Acl's op een meer gedetailleerd niveau werken om te bepalen welke bewerkingen de gebruiker kan uitvoeren op het niveau van de map of het bestand. Machtigingen op share niveau en op het niveau van bestanden en mappen worden afgedwongen wanneer een gebruiker toegang probeert te krijgen tot een bestand of map, dus als er een verschil is tussen een van beide, wordt alleen de meest beperkende waarde toegepast. Als een gebruiker bijvoorbeeld lees-en schrijf toegang heeft op bestands niveau, maar alleen op share niveau leest, kan het bestand alleen worden gelezen. Hetzelfde geldt als het is omgekeerd, en een gebruiker had Lees-en schrijf toegang op het niveau van de share, maar alleen lezen op bestands niveau, maar kan het bestand nog steeds lezen.
 
-## <a name="rbac-permissions"></a>RBAC-machtigingen
+## <a name="azure-rbac-permissions"></a>Azure RBAC-machtigingen
 
-De volgende tabel bevat de RBAC-machtigingen die zijn gerelateerd aan deze configuratie:
+De volgende tabel bevat de Azure RBAC-machtigingen die zijn gerelateerd aan deze configuratie:
 
 
 | Ingebouwde rol  | NTFS-machtiging  | Resulterende toegang  |

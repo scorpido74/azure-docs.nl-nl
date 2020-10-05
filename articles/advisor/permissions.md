@@ -3,12 +3,12 @@ title: Machtigingen in Azure Advisor
 description: Advisor-machtigingen en hoe ze de mogelijkheid kunnen blok keren om abonnementen te configureren of aanbevelingen uit te stellen of te negeren.
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: 3c7b42372ae6de5c2f519b69aec8a154a2f35a82
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 402a21c47c4cba8f747d5d4601f9c95034c99262
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927382"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91712923"
 ---
 # <a name="permissions-in-azure-advisor"></a>Machtigingen in Azure Advisor
 
@@ -20,15 +20,15 @@ De volgende tabel definieert de rollen en de toegang die ze hebben in Advisor:
 
 | **Role** | **Aanbevelingen bekijken** | **Regels bewerken** | **Abonnements configuratie bewerken** | **Configuratie van de resource groep bewerken**| **Aanbevelingen negeren en uitstellen**|
 |---|:---:|:---:|:---:|:---:|:---:|
-|Abonnements eigenaar|**BxDxH**|**BxDxH**|**BxDxH**|**BxDxH**|**BxDxH**|
-|Mede werker van abonnement|**BxDxH**|**BxDxH**|**BxDxH**|**BxDxH**|**BxDxH**|
-|Abonnements lezer|**BxDxH**|--|--|--|--|
-|Eigenaar van resource groep|**BxDxH**|--|--|**BxDxH**|**BxDxH**|
-|Inzender voor resource groep|**BxDxH**|--|--|**BxDxH**|**BxDxH**|
-|Lezer van resource groep|**BxDxH**|--|--|--|--|
-|Resource-eigenaar|**BxDxH**|--|--|--|**BxDxH**|
-|Resource bijdrager|**BxDxH**|--|--|--|**BxDxH**|
-|Resource Reader|**BxDxH**|--|--|--|--|
+|Abonnements eigenaar|**X**|**X**|**X**|**X**|**X**|
+|Mede werker van abonnement|**X**|**X**|**X**|**X**|**X**|
+|Abonnements lezer|**X**|--|--|--|--|
+|Eigenaar van resource groep|**X**|--|--|**X**|**X**|
+|Inzender voor resource groep|**X**|--|--|**X**|**X**|
+|Lezer van resource groep|**X**|--|--|--|--|
+|Resource-eigenaar|**X**|--|--|--|**X**|
+|Resource bijdrager|**X**|--|--|--|**X**|
+|Resource Reader|**X**|--|--|--|--|
 
 > [!NOTE]
 > Toegang tot de weer gave van aanbevelingen is afhankelijk van uw toegang tot de betrokken resource van de aanbeveling.
@@ -47,7 +47,7 @@ Als er een fout optreedt bij het uitstellen of negeren van een aanbeveling, hebt
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel wordt een overzicht gegeven van de manier waarop Advisor gebruikmaakt van RBAC voor het beheren van gebruikers machtigingen en het oplossen van veelvoorkomende problemen. Zie voor meer informatie over Advisor:
+In dit artikel wordt een overzicht gegeven van de manier waarop Advisor gebruikmaakt van Azure RBAC voor het beheren van gebruikers machtigingen en het oplossen van veelvoorkomende problemen. Zie voor meer informatie over Advisor:
 
 - [Wat is Azure Advisor?](./advisor-overview.md)
 - [Aan de slag met Azure Advisor](./advisor-get-started.md)

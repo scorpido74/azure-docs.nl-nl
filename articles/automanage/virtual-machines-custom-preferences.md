@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 09/04/2020
 ms.author: jushiman
-ms.openlocfilehash: 7a716ed9bca6d34ad4dbcd2566837a839f71153b
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 377677c9e5e81487059241db68baff639a3de033
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91450310"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91715045"
 ---
 # <a name="create-a-custom-preference-in-azure-automanage-for-vms"></a>Een aangepaste voor keur maken in azure automanage voor Vm's
 
@@ -34,7 +34,7 @@ Als u geen Azure-abonnement hebt, [maakt u een account](https://azure.microsoft.
 > Accounts voor gratis proefversies hebben geen toegang tot de virtuele machines die in deze zelfstudie worden gebruikt. U moet upgraden naar een abonnement met betalen per gebruik.
 
 > [!IMPORTANT]
-> De volgende RBAC-machtiging is vereist voor het inschakelen van automanage: rol **Owner** of **Inzender** samen met beheerders rollen voor **gebruikers toegang** .
+> De volgende Azure RBAC-machtiging is vereist voor het inschakelen van automanage: rol **Owner** of **Inzender** samen met beheerders rollen voor **gebruikers toegang** .
 
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
@@ -69,7 +69,7 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com/).
         1. Abonnement
         1. Resourcegroep
         1. Voorkeurs naam
-        1. Region
+        1. Regio
 
     :::image type="content" source="media\virtual-machine-custom-preferences\create-preference.png" alt-text="Bestaande virtuele machine selecteren in de lijst met beschikbare virtuele machines.":::
 
