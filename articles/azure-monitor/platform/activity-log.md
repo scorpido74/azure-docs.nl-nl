@@ -1,5 +1,5 @@
 ---
-title: Azure-activiteiten logboek
+title: Azure-activiteitenlogboek
 description: Bekijk het Azure-activiteiten logboek en verzend het naar Azure Monitor-logboeken, Azure Event Hubs en Azure Storage.
 author: bwren
 services: azure-monitor
@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 089c53c72ae2c4cf6216937e8977b64a7abf80fc
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: ff28bbf57ac77e1bc092d35e9bf493f75040cc9c
+ms.sourcegitcommit: 5b69ba21787c07547edfbfd5254eaf34315cfadd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983212"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91712303"
 ---
-# <a name="azure-activity-log"></a>Azure-activiteiten logboek
+# <a name="azure-activity-log"></a>Azure-activiteitenlogboek
 Het activiteiten logboek is een [platform logboek](platform-logs-overview.md) in azure dat inzicht biedt in gebeurtenissen op abonnements niveau. Dit geldt ook voor gegevens zoals wanneer een resource wordt gewijzigd of wanneer een virtuele machine wordt gestart. U kunt het activiteitenlogboek weergeven in de Azure-portal, of items ophalen met PowerShell en CLI. Voor aanvullende functionaliteit moet u een diagnostische instelling maken om het activiteiten logboek naar [Azure monitor logboeken](data-platform-logs.md)te verzenden naar Azure Event hubs om buiten Azure door te sturen, of om Azure Storage te archiveren. In dit artikel vindt u informatie over het weer geven van het activiteiten logboek en het verzenden ervan naar verschillende bestemmingen.
 
 Zie [Diagnostische instellingen maken om platform logboeken en metrische gegevens naar verschillende bestemmingen te verzenden](diagnostic-settings.md) voor meer informatie over het maken van een diagnostische instelling.
@@ -201,7 +201,7 @@ Als er al een logboek profiel bestaat, moet u eerst het bestaande logboek profie
 
     | Eigenschap | Vereist | Beschrijving |
     | --- | --- | --- |
-    | Name |Yes |De naam van het logboek profiel. |
+    | Naam |Yes |De naam van het logboek profiel. |
     | StorageAccountId |No |De resource-ID van het opslag account waarin het activiteiten logboek moet worden opgeslagen. |
     | Servicebusruleid kunnen |No |Service Bus regel-ID voor de Service Bus naam ruimte waarin u Event hubs wilt maken. Dit is een teken reeks met de volgende indeling: `{service bus resource ID}/authorizationrules/{key name}` . |
     | Locatie |Ja |Een door komma's gescheiden lijst met regio's waarvoor u activiteiten logboek gebeurtenissen wilt verzamelen. |
@@ -226,7 +226,7 @@ Hier volgt een voor beeld van een Power shell-script voor het maken van een logb
    # Build the storage account Id from the settings above
    $storageAccountId = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccountName"
 
-   Add-AzLogProfile -Name $logProfileName -Location $locations -ServiceBusRuleId $serviceBusRuleId
+   Add-AzLogProfile -Name $logProfileName -Location $locations -StorageAccountId  $storageAccountId -ServiceBusRuleId $serviceBusRuleId
    ```
 
 

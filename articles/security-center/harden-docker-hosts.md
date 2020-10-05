@@ -7,12 +7,12 @@ ms.date: 9/12/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 3f59bae9864e533270b0bfea829f64ccf541a8a3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 500fa45db7e0e6bffb587d9d352ee1ab49f14703
+ms.sourcegitcommit: 5b69ba21787c07547edfbfd5254eaf34315cfadd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91301428"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91712269"
 ---
 # <a name="harden-your-docker-hosts"></a>Docker-hosts verharden
 
@@ -29,10 +29,10 @@ Als er beveiligings problemen worden gevonden, worden deze gegroepeerd in één 
 
 |Aspect|Details|
 |----|:----|
-|Release status:|Algemeen beschikbaar (GA)|
-|Koers|[Azure Defender voor servers](defender-for-servers-introduction.md) vereist|
+|Releasestatus:|Algemeen verkrijgbaar (GA)|
+|Prijzen:|[Azure Defender voor servers](defender-for-servers-introduction.md) vereist|
 |Vereiste rollen en machtigingen:|**Lezer** op de werk ruimte waarmee de host verbinding maakt|
-|Clouds|![Yes](./media/icons/yes-icon.png) Commerciële Clouds<br>![No](./media/icons/no-icon.png) National/soeverein (US Gov, China gov, andere gov)|
+|Clouds:|![Ja](./media/icons/yes-icon.png) Commerciële clouds<br>![Ja](./media/icons/yes-icon.png) National/soeverein (US Gov, China gov, andere gov)|
 |||
 
 ## <a name="identify-and-remediate-security-vulnerabilities-in-your-docker-configuration"></a>Beveiligings problemen in uw docker-configuratie identificeren en oplossen
@@ -50,11 +50,11 @@ Als er beveiligings problemen worden gevonden, worden deze gegroepeerd in één 
     > [!TIP]
     > Als u op de pagina Asset Inventory bent begonnen en deze aanbeveling van daaruit hebt bereikt, selec de knop **actie ondernemen** op de pagina aanbeveling.
     >
-    > :::image type="content" source="./media/monitor-container-security/host-security-take-action-button.png" alt-text="Actie knop ondernemen om Log Analytics te starten":::
+    > :::image type="content" source="./media/monitor-container-security/host-security-take-action-button.png" alt-text="Aanbeveling voor het oplossen van beveiligings problemen in container beveiligings configuraties ":::
 
     Log Analytics wordt geopend met een aangepaste bewerking die kan worden uitgevoerd. De aangepaste standaard query bevat een lijst met alle mislukte regels die zijn geëvalueerd, samen met richt lijnen voor het oplossen van de problemen.
 
-    :::image type="content" source="./media/monitor-container-security/docker-host-vulnerabilities-in-query.png" alt-text="Log Analytics pagina met de query alle mislukte CIS-besturings elementen weer geven":::
+    :::image type="content" source="./media/monitor-container-security/docker-host-vulnerabilities-in-query.png" alt-text="Aanbeveling voor het oplossen van beveiligings problemen in container beveiligings configuraties ":::
 
 1. Pas de query parameters zo nodig aan.
 
