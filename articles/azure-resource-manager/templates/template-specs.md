@@ -2,21 +2,21 @@
 title: Overzicht van sjabloon specificaties
 description: Hierin wordt beschreven hoe u sjabloon specificaties maakt en deze deelt met andere gebruikers in uw organisatie.
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 10/02/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 30e7f26a53e81ebdeebe2acaef44dccab1cf4b27
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: b0dfc41bddccc6b5c5c924168044cffc0aa5e2b5
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448818"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91728468"
 ---
 # <a name="azure-resource-manager-template-specs-preview"></a>Azure Resource Manager sjabloon specificaties (preview-versie)
 
-Een sjabloon specificatie is een nieuw resource type voor het opslaan van een Azure Resource Manager sjabloon (ARM-sjabloon) in azure voor latere implementatie. Met dit resource type kunt u ARM-Sjablonen delen met andere gebruikers in uw organisatie. Net als elke andere Azure-resource kunt u Azure RBAC (op rollen gebaseerd toegangs beheer) gebruiken om de sjabloon specificatie te delen.
+Een sjabloon specificatie is een resource type voor het opslaan van een Azure Resource Manager sjabloon (ARM-sjabloon) in azure voor latere implementatie. Met dit resource type kunt u ARM-Sjablonen delen met andere gebruikers in uw organisatie. Net als elke andere Azure-resource kunt u Azure RBAC (op rollen gebaseerd toegangs beheer) gebruiken om de sjabloon specificatie te delen.
 
-**Micro soft. resources/templateSpecs** is het nieuwe bron type voor sjabloon specificaties. Het bestaat uit een hoofd sjabloon en een wille keurig aantal gekoppelde sjablonen. De sjabloon specificaties van Azure worden veilig opgeslagen in resource groepen. Sjabloon specificaties ondersteunen [versie beheer](#versioning).
+**Micro soft. resources/templateSpecs** is het resource type voor sjabloon specificaties. Het bestaat uit een hoofd sjabloon en een wille keurig aantal gekoppelde sjablonen. De sjabloon specificaties van Azure worden veilig opgeslagen in resource groepen. Sjabloon specificaties ondersteunen [versie beheer](#versioning).
 
 Als u de sjabloon specificatie wilt implementeren, gebruikt u standaard Azure-hulpprogram ma's zoals Power shell, Azure CLI, Azure Portal, REST en andere ondersteunde Sdk's en clients. U gebruikt dezelfde opdrachten als voor de sjabloon.
 

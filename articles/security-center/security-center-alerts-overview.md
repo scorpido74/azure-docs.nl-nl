@@ -8,18 +8,18 @@ manager: rkarlin
 ms.assetid: 1b71e8ad-3bd8-4475-b735-79ca9963b823
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 07/14/2020
+ms.date: 10/05/2020
 ms.author: memildin
-ms.openlocfilehash: b2d5731ea9e8f2fb13d234fc9d951e221c0ab3e5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7228368645023ffc7debbc84adb8e3b7c27b1bbb
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905479"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91728434"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Beveiligingswaarschuwingen in Azure Security Center
 
-In Azure Security Center zijn er diverse waarschuwingen voor veel verschillende resource typen. Security Center genereert waarschuwingen voor resources die zijn geïmplementeerd op Azure en ook voor resources die zijn geïmplementeerd op on-premises en hybride Cloud omgevingen.
+In Security Center zijn er diverse waarschuwingen voor veel verschillende resource typen. Security Center genereert waarschuwingen voor resources die zijn geïmplementeerd op Azure en ook voor resources die zijn geïmplementeerd op on-premises en hybride Cloud omgevingen.
 
 Beveiligings waarschuwingen worden geactiveerd door geavanceerde detecties en zijn alleen beschikbaar met Azure Defender. Er is een gratis proefversie beschikbaar. U kunt de pagina **prijzen &-instellingen** bijwerken. Meer informatie over [Security Center prijzen](https://azure.microsoft.com/pricing/details/security-center/).
 
@@ -84,6 +84,14 @@ Azure Security Center voor delen van het uitvoeren van beveiligings onderzoek en
 * **Detectieafstemming**: algoritmen worden uitgevoerd op echte gegevenssets van klanten en beveiligingsonderzoekers werken samen met klanten om de resultaten te valideren. Echte en fout-positieven worden gebruikt voor het verfijnen van machine learning-algoritmen.
 
 Deze gecombineerde inspanningen culminate in nieuwe en verbeterde detecties, die u direct kunt voor delen. u hoeft zich geen actie te ondernemen.
+
+## <a name="export-alerts"></a>Waarschuwingen exporteren
+
+U hebt verschillende mogelijkheden voor het weer geven van uw waarschuwingen buiten Security Center, waaronder:
+
+- **Down load het CSV-rapport** in het dash board waarschuwingen en biedt een eenmalige export naar CSV.
+- Met **continue export** van prijzen & instellingen kunt u stromen van beveiligings waarschuwingen en aanbevelingen configureren voor log Analytics werk ruimten en Event hubs. [Meer informatie over continue export](continuous-export.md)
+- Azure **Sentinel connector** streamt Azure Defender-waarschuwingen van Azure Security Center naar Azure Sentinel. [Meer informatie over het verbinden van Azure Security Center met Sentinel](../sentinel/connect-azure-security-center.md)
 
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -3,16 +3,16 @@ title: Een sjabloon specificatie met gekoppelde sjablonen maken
 description: Meer informatie over het maken van een sjabloon spec met gekoppelde sjablonen.
 ms.topic: conceptual
 ms.date: 08/31/2020
-ms.openlocfilehash: df3403fea47f31481f4b3c6d1292749d69f2f584
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: adcce8194f380b90eb9a29f4da25763e112b9f12
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91369175"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91728536"
 ---
 # <a name="tutorial-create-a-template-spec-with-linked-templates-preview"></a>Zelf studie: een sjabloon specificatie met gekoppelde sjablonen maken (preview)
 
-Meer informatie over het maken van een [sjabloon specificatie](template-specs.md) met een [gekoppelde sjabloon](linked-templates.md#linked-template). U kunt sjabloon specificaties gebruiken om ARM-sjablonen te delen met andere gebruikers in uw organisatie. In dit artikel wordt beschreven hoe u een sjabloon specificatie maakt voor het inpakken van een hoofd sjabloon en gekoppelde sjablonen met de nieuwe `relativePath` eigenschap van de [implementatie resource](/azure/templates/microsoft.resources/deployments).
+Meer informatie over het maken van een [sjabloon specificatie](template-specs.md) met een [gekoppelde sjabloon](linked-templates.md#linked-template). U kunt sjabloon specificaties gebruiken om ARM-sjablonen te delen met andere gebruikers in uw organisatie. In dit artikel wordt beschreven hoe u een sjabloon specificatie maakt voor het inpakken van een hoofd sjabloon en gekoppelde sjablonen met behulp `relativePath` van de eigenschap van de [implementatie bron](/azure/templates/microsoft.resources/deployments).
 
 ## <a name="prerequisites"></a>Vereisten
 

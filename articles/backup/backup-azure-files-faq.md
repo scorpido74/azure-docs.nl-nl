@@ -3,12 +3,12 @@ title: Veelgestelde vragen over het maken van een back-up van Azure-bestanden
 description: In dit artikel vindt u antwoorden op veelgestelde vragen over het beveiligen van uw Azure-bestands shares met de Azure Backup-service.
 ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: c62f8376b220911edd26edbe18955d0103440b81
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 74d8cc9cdb1d9c01c8238f205ae485b61d665cd7
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377417"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91729063"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Vragen over het maken back-ups van Azure-bestanden
 
@@ -75,6 +75,23 @@ Ja. Raadpleeg de [gedetailleerde documentatie voor meer informatie.](backup-azur
 ### <a name="can-i-access-the-snapshots-taken-by-azure-backups-and-mount-them"></a>Kan ik toegang krijgen tot de moment opnamen die zijn gemaakt door Azure backups en deze koppelen?
 
 Alle moment opnamen die door Azure Backup worden gemaakt, zijn toegankelijk via moment opnamen weer geven in de portal, Power shell of CLI. Zie [overzicht van moment opnamen van shares voor Azure files](../storage/files/storage-snapshots-files.md)voor meer informatie over Azure files moment opnamen van shares.
+
+### <a name="what-happens-after-i-move-a-backed-up-file-share-to-a-different-subscription"></a>Wat gebeurt er nadat ik een back-up van een bestands share heb verplaatst naar een ander abonnement?
+
+Zodra een bestands share is verplaatst naar een ander abonnement, wordt deze als een nieuwe bestands share beschouwd door Azure Backup. Hieronder vindt u de aanbevolen stappen:
+ 
+Scenario: Stel dat u een bestands share FS1 hebt in het abonnement S1 en dat deze wordt beveiligd met v1-kluis. Nu wilt u de bestands share verplaatsen naar abonnement S2.
+ 
+1.  Verplaats het gewenste opslag account en de juiste bestands share (FS1) naar een ander abonnement (S2).
+2.  Activeer in v1-kluis de beveiliging stoppen met de bewerking gegevens verwijderen voor FS1.
+3.  Hef de registratie van het opslag account dat als host fungeert voor de FS1 van de V1-kluis.
+4.  Configureer de back-up voor FS1 opnieuw, die nu is verplaatst naar S2, met een kluis (v2) in het abonnement S2. 
+ 
+Houd er rekening mee dat na het opnieuw configureren van de back-up met v2 de moment opnamen die zijn gemaakt met v1, niet meer worden beheerd door Azure Backup. Daarom moet u deze moment opnamen hand matig verwijderen volgens uw vereiste.
+
+### <a name="can-i-move-my-backed-up-file-share-to-a-different-resource-group"></a>Kan ik mijn back-up van de bestands share verplaatsen naar een andere resource groep?
+ 
+Ja, u kunt de back-up van de bestands share verplaatsen naar een andere resource groep. U moet echter de back-up voor de bestands share opnieuw configureren, omdat deze door Azure Backup als een nieuwe bron wordt behandeld. De moment opnamen die zijn gemaakt voordat de resource groep werd verplaatst, worden ook niet meer beheerd door Azure backup. Daarom moet u deze moment opnamen hand matig verwijderen volgens uw vereiste.
 
 ### <a name="what-is-the-maximum-retention-i-can-configure-for-backups"></a>Wat is de maximale Bewaar periode die ik voor back-ups kan configureren?
 

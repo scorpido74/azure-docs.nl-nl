@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 295c4bde64ad21a19d21fd48f2556114b26b202d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: b97b80927739d9a8658213a00b415c0bf321528b
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90943668"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91460557"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>Aan de slag met het hero-voorbeeld van groeps-chat
 
@@ -30,7 +30,7 @@ Het **hero-voorbeeld van groeps-chat** laat zien hoe de webclientbibliotheek van
 In deze quickstart over hero-voorbeelden komt u te weten hoe het voorbeeld werkt voordat u het op uw lokale computer gaat uitvoeren. Vervolgens gaat u het voorbeeld in Azure implementeren met behulp van uw eigen Azure Communication Services-resources.
 
 > [!IMPORTANT]
-> [Het voorbeeld downloaden uit GitHub](https://github.com/Azure/Communication/tree/master/samples)
+> [Het voorbeeld downloaden uit GitHub](https://github.com/Azure/Communication/tree/master/samples/Group%20Chat%20Hero%20Sample/Web/Chat)
 
 ## <a name="overview"></a>Overzicht
 
@@ -42,11 +42,11 @@ Het voorbeeld ziet er als volgt uit:
 
 Wanneer u op de knop 'Chat starten' klikt, wordt er met de webtoepassing een token voor gebruikerstoegang opgehaald bij de toepassing aan de serverzijde. Dit token wordt vervolgens gebruikt om de client-app te verbinden met Azure Communication Services. Zodra het token is opgehaald, wordt u gevraagd om uw weergavenaam en emoji op te geven die tijdens chatsessies waaraan u deelneemt, worden weergeven. 
 
-:::image type="content" source="./media/chat/pre-chat.png" alt-text="Schermopname van het venster van de toepassing vóór de chatsessie.":::
+:::image type="content" source="./media/chat/pre-chat.png" alt-text="Schermopname van de landingspagina van de voorbeeldtoepassing.":::
 
 Zodra u uw weergavenaam en emoji hebt geconfigureerd, kunt u deelnemen aan de chatsessie. Nu ziet u het hoofdcanvas van de chatruimte waarin zich het belangrijkste van een chatsessie afspeelt.
 
-:::image type="content" source="./media/chat/main-app.png" alt-text="Schermopname van het hoofdscherm van de voorbeeldtoepassing.":::
+:::image type="content" source="./media/chat/main-app.png" alt-text="Schermopname van de landingspagina van de voorbeeldtoepassing.":::
 
 Onderdelen van het belangrijkste chatscherm:
 
@@ -61,7 +61,7 @@ Hieronder vindt u meer informatie over de vereisten en stappen voor het instelle
 - Maak een Azure-account met een actief abonnement. Zie [Gratis een account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voor meer informatie.
 - [Node.js (8.11.2 en hoger)](https://nodejs.org/en/download/)
 - [Visual Studio (2017 en hoger)](https://visualstudio.microsoft.com/vs/)
-- [.NET Core 2.2](https://dotnet.microsoft.com/download/dotnet-core/2.2) (vergeet niet de versie te installeren die overeenkomt met uw Visual Studio-instantie, 32-bits of 64-bits)
+- [.NET Core 3.1](https://dotnet.microsoft.com/download/dotnet-core/3.1) (zorg ervoor dat u de versie installeert die overeenkomt met uw Visual Studio-exemplaar, 32-bits of 64-bits)
 - Maak een Azure Communication Services-resource. Zie [Een Azure Communication-resource maken](../quickstarts/create-communication-resource.md) voor meer informatie. Voor deze quickstart moet u de **verbindingsreeks** van uw resource vastleggen.
 
 ## <a name="locally-deploying-the-service--client-app"></a>De service en client-app lokaal implementeren
@@ -72,33 +72,28 @@ Open Visual Studio voor chat.csproj en schakel de foutopsporingsmodus in. Hierme
 
 U kunt het voorbeeld lokaal testen door meerdere browsersessies te openen met de URL van uw chat om een chat met meerdere gebruikers te simuleren.
 
-### <a name="before-running-the-sample-for-the-first-time"></a>Voordat u het voorbeeld voor de eerste keer uitvoert
+## <a name="before-running-the-sample-for-the-first-time"></a>Voordat u het voorbeeld voor de eerste keer uitvoert
 
 1. Open een instantie van PowerShell, Windows Terminal, de opdrachtprompt of een vergelijkbare service en ga naar de map waarnaar u het voorbeeld wilt klonen.
-2. `git clone`
-3. Ga naar de map **Chat/ClientApp** en voer `npm run setup` uit
-   1. Als fout 1 wordt weergegeven, zoekt u hierboven in de uitvoer naar een URL die u moet openen om uw client te autoriseren. (De URL ziet er als volgt uit: `app.vssps.visualstudio.com/oauth2/authorize?clientid=...`) Zodra u de URL in een browser hebt geopend, kopieert u de opdracht uit het browservenster en voert u deze uit.
-   2. Voltooi de vorige stap en voer de opdracht `npm run setup` opnieuw uit.
-4. Haal de `Connection String` op uit Azure Portal. Zie [Een Azure Communications-resource maken](../quickstarts/create-communication-resource.md) voor meer informatie over verbindingsreeksen
-5. Nadat u de `Connection String`hebt opgehaald, voegt u de verbindingsreeks toe aan het bestand **Chat/appsettings.json** dat zich in de map Chat bevindt. Voer in de variabele uw verbindingsreeks in: `ResourceConnectionString`.
+2. `git clone https://github.com/Azure/Communication.git`
+3. Haal de `Connection String` op uit Azure Portal. Zie [Een Azure Communications-resource maken](../quickstarts/create-communication-resource.md) voor meer informatie over verbindingsreeksen
+4. Nadat u de `Connection String`hebt opgehaald, voegt u de verbindingsreeks toe aan het bestand **Chat/appsettings.json** dat zich in de map Chat bevindt. Voer in de variabele uw verbindingsreeks in: `ResourceConnectionString`.
+5. Werk de ENVIRONMENT_URL in `./Chat/ClientApp/src/constants.tsx` bij met de locatie van uw resource. (bijvoorbeeld https://<RESOURCE_NAME>.communication.azure.com)
 
 ### <a name="local-run"></a>Lokaal uitvoeren
 
-1. Ga naar de map Chat
-2. Open oplossing `Chat.csproj` in Visual Studio
-3. Voer project `Chat` uit.*
-
-*De browser wordt geopend op localhost:5000 (waar het knooppunt de client-app implementeert). De app wordt niet ondersteund in Internet Explorer.
+1. Ga naar de map Chat en open de oplossing `Chat.csproj` in Visual Studio
+2. Voer het project uit. De browser wordt geopend op localhost:5000.
 
 #### <a name="troubleshooting"></a>Problemen oplossen
 
 - De oplossing kan niet worden gebouwd; er worden fouten weergegeven tijdens de installatie/bouw van NPM
 
-De C#-oplossing opschonen/herbouwen
+   De C#-oplossing opschonen/herbouwen
 
 ## <a name="publish-the-sample-to-azure"></a>Het voorbeeld naar Azure publiceren
 
-1. Klik met de rechtermuisknop op project `Chat` en selecteer Publiceren.
+1. Klik met de rechtermuisknop op het `Chat`-project en selecteer Publiceren.
 2. Maak een nieuw publicatieprofiel en selecteer uw Azure-abonnement.
 3. Voeg vóór publicatie uw verbindingsreeks toe met `Edit App Service Settings`, vul `ResourceConnectionString` in als de sleutel en geef uw verbindingsreeks (gekopieerd uit appsettings.json) als de waarde op.
 
@@ -108,6 +103,9 @@ Als u een Communication Services-abonnement wilt opschonen en verwijderen, kunt 
 
 ## <a name="next-steps"></a>Volgende stappen
 
+>[!div class="nextstepaction"] 
+>[Het voorbeeld downloaden uit GitHub](https://github.com/Azure/Communication/tree/master/samples/Group%20Chat%20Hero%20Sample/Web/Chat)
+
 Raadpleeg voor meer informatie de volgende artikelen:
 
 - Meer informatie over [chatconcepten](../concepts/chat/concepts.md)
@@ -115,7 +113,7 @@ Raadpleeg voor meer informatie de volgende artikelen:
 
 ## <a name="additional-reading"></a>Meer artikelen
 
-- [Azure Communication (preview-versie)](https://github.com/Azure/communication-preview): voor meer informatie over de web-SDK voor chatten
+- [Azure Communication GitHub](https://github.com/Azure/communication): u vindt meer voorbeelden en informatie op de officiële GitHub-pagina
 - [Redux](https://redux.js.org/): statusbeheer op de client
 - [FluentUI](https://developer.microsoft.com/fluentui#/): door Microsoft ondersteunde bibliotheek voor de gebruikersinterface
 - [React](https://reactjs.org/): bibliotheek voor het ontwikkelen van gebruikersinterfaces

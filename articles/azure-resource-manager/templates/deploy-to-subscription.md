@@ -2,13 +2,13 @@
 title: Resources implementeren voor het abonnement
 description: Hierin wordt beschreven hoe u een resource groep maakt in een Azure Resource Manager sjabloon. Ook wordt uitgelegd hoe u resources kunt implementeren in het bereik van Azure-abonnementen.
 ms.topic: conceptual
-ms.date: 09/24/2020
-ms.openlocfilehash: 29a35715115816d742103bd7556ded19f22b316e
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.date: 10/05/2020
+ms.openlocfilehash: 0673ea5260c7312395acde8a62b5d457657b9793
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91372405"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91729114"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Resource groepen en-resources op abonnements niveau maken
 
@@ -52,7 +52,9 @@ Gebruik voor het maken van nieuwe resource groepen:
 
 Gebruik voor het beheren van uw abonnement:
 
+* [Advisor-configuraties](/azure/templates/microsoft.advisor/configurations)
 * [budgetten](/azure/templates/microsoft.consumption/budgets)
+* [Analyse profiel wijzigen](/azure/templates/microsoft.changeanalysis/profile)
 * [supportPlanTypes](/azure/templates/microsoft.addons/supportproviders/supportplantypes)
 * [Koptags](/azure/templates/microsoft.resources/tags)
 

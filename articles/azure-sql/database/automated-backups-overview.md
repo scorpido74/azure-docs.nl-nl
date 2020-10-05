@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: shkale-msft
 ms.author: shkale
 ms.reviewer: mathoma, stevestein, danil
-ms.date: 09/25/2020
-ms.openlocfilehash: 93370050b503875d670283b720088b0871377c09
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.date: 10/05/2020
+ms.openlocfilehash: 43551ca17180cbb3614c670490a19aeaae6c7701
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91535080"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91728655"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatische back-ups-Azure SQL Database & SQL Managed instance
 
@@ -50,7 +50,7 @@ Voor een SQL Database kan de redundantie van de back-upopslag worden geconfigure
 > Zone-redundante opslag is momenteel alleen beschikbaar in [bepaalde regio's](../../storage/common/storage-redundancy.md#zone-redundant-storage). 
 
 > [!NOTE]
-> Azure SQL Database Configureer bare back-upopslag redundantie is momenteel beschikbaar in open bare preview in de Azure-regio Zuidoost-Azië.  
+> Configureer bare opslag redundantie van back-ups voor Azure SQL Database is momenteel alleen beschikbaar in de open bare preview in de Azure-regio Zuidoost-Azië. Deze functie is nog niet beschikbaar voor de grootschalige-laag. 
 
 ### <a name="backup-usage"></a>Back-upgebruik
 
@@ -439,9 +439,9 @@ Als u gegevens locatie vereisten hebt waarbij u al uw gegevens in één Azure-re
 
 Volgende nieuwe ingebouwde beleids regels worden toegevoegd, die kunnen worden toegewezen op het niveau van het abonnement of de resource groep om het maken van nieuwe data base (s) of exemplaren met geografisch redundante back-upopslag te blok keren. 
 
-[SQL Database moet het gebruik van GRS-back-upredundantie vermijden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb219b9cf-f672-4f96-9ab0-f5a3ac5e1c13)
+[SQL Database moet het gebruik van GRS-back-up-redundantie voorkomen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb219b9cf-f672-4f96-9ab0-f5a3ac5e1c13)
 
-[SQL Managed instances moet vermijden het gebruik van GRS backup-redundantie](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa9934fd7-29f2-4e6d-ab3d-607ea38e9079)
+[Door SQL beheerde instanties moeten het gebruik van GRS-back-up-redundantie voorkomen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa9934fd7-29f2-4e6d-ab3d-607ea38e9079)
 
 [Hier](https://docs.microsoft.com/azure/azure-sql/database/policy-reference)vindt u een volledige lijst met ingebouwde beleids definities voor de SQL database en het beheerde exemplaar.
 

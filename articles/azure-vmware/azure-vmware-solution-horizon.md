@@ -3,12 +3,12 @@ title: Distributie op Azure VMware-oplossing implementeren
 description: Meer informatie over het implementeren van VMware horizon op de Azure VMware-oplossing.
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: 60207b0ed9e1df805ac667752b55f14a693ec25c
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: bda4be049e360670cb7038bfbb3070c2a5f262c4
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91492472"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91729046"
 ---
 # <a name="deploy-horizon-on-azure-vmware-solution"></a>Distributie op Azure VMware-oplossing implementeren 
 
@@ -84,7 +84,7 @@ Elke Azure Private Cloud/SDDC is geschikt voor het afhandelen van 4.000-bureau b
 
 Gezien de maximum limiet voor Azure Private Cloud/SDDC, raden we u aan een implementatie architectuur te gebruiken waarin de horizon-verbindings servers en VMware Unified Access gateways (UAGs) worden uitgevoerd binnen de Azure-Virtual Network. Hierdoor worden alle Azure Private Cloud-SDDC in een blok omgezet. Op die manier maximaliseert u de schaal baarheid van de horizon op de Azure VMware-oplossing.
 
-De verbinding van Azure Virtual Network met Azure private clouds/SDDCs moet worden geconfigureerd met ExpressPath Fast Path. In het volgende diagram ziet u een eenvoudige implementatie van Horizon pod.
+De verbinding van Azure Virtual Network met Azure private clouds/SDDCs moet worden geconfigureerd met ExpressRoute FastPath. In het volgende diagram ziet u een eenvoudige implementatie van Horizon pod.
 
 :::image type="content" source="media/horizon/horizon-pod-deployment-expresspath-fast-path.png" alt-text="De verschillen tussen de periode van de Azure VMware-oplossing en de horizon-Cloud op Azure" border="false":::
 
@@ -92,7 +92,7 @@ De verbinding van Azure Virtual Network met Azure private clouds/SDDCs moet word
 
 In deze sectie wordt de netwerk architectuur op hoog niveau voor het schalen van Horizon taal op Azure VMware-oplossingen beschreven met enkele veelvoorkomende implementatie voorbeelden. De focus is hier specifiek op essentiële netwerk elementen.
 
-### <a name="single-horizon-pd-on-azure-vmware-solution"></a>Eén horizon-pd op Azure VMware-oplossing
+### <a name="single-horizon-pod-on-azure-vmware-solution"></a>Enkelvoudige pod op de Azure VMware-oplossing
 
 :::image type="content" source="media/horizon/single-horizon-pod-azure-vmware-solution.png" alt-text="De verschillen tussen de periode van de Azure VMware-oplossing en de horizon-Cloud op Azure" border="false":::
 

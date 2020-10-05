@@ -4,12 +4,12 @@ description: Hiermee wordt een overzicht gegeven van de ondersteuning voor herst
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: raynew
-ms.openlocfilehash: da7853e1da576f9309045f404a1b3c07d29e6590
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: fb2c048580022f44af30178070a6c2b84ce54df1
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326215"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91728740"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Ondersteuningsmatrix voor herstel na noodgeval van Azure-VM's tussen Azure-regio's
 
@@ -20,7 +20,7 @@ In dit artikel vindt u een overzicht van de ondersteuning en vereisten voor hers
 
 **Implementatie** |  **Ondersteuning**
 --- | ---
-**Azure-portal** | Ondersteund.
+**Azure Portal** | Ondersteund.
 **PowerShell** | Ondersteund. [Meer informatie](azure-to-azure-powershell.md)
 **REST API** | Ondersteund.
 **CLI** | Momenteel niet ondersteund
@@ -121,17 +121,17 @@ Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5,
 --- | --- | --- |
 14,04 LTS | [9,33](https://support.microsoft.com/help/4564347/),[9,34](https://support.microsoft.com/help/4570609), [9,35](https://support.microsoft.com/help/4573888/), [9,36](https://support.microsoft.com/help/4578241/), [9,37](https://support.microsoft.com/help/4582666/)| 3.13.0-24-generic naar 3.13.0-170-generic,<br/>3.16.0-25-generic naar 3.16.0-77-generic,<br/>3.19.0-18-generic naar 3.19.0-80-generic,<br/>4.2.0-18-generic naar 4.2.0-42-generic,<br/>4.4.0-21-generic naar 4.4.0-148-generic,<br/>4.15.0-1023-Azure naar 4.15.0-1045-Azure |
 |||
-16,04 LTS | [9,37](https://support.microsoft.com/help/4582666/) | 4.4.0-21-algemeen naar 4.4.0-189-generic,<br/>4.8.0-34-generic naar 4.8.0-58-generic,<br/>4.10.0-14-generic naar 4.10.0-42-generic,<br/>4.11.0-13-algemeen naar 4.11.0-14-generic,<br/>4.13.0-16-generic naar 4.13.0-45-generic,<br/>4.15.0-13-algemeen naar 4.15.0-115-generic<br/>4.11.0-1009-Azure naar 4.11.0-1016-Azure,<br/>4.13.0-1005-Azure naar 4.13.0-1018-Azure <br/>4.15.0-1012-Azure naar 4.15.0-1093-Azure </br> 4.15.0-117-generic, 4.15.0-1095-Azure tot en met 9,37 Hot Fix patch * *|
+16,04 LTS | [9,37](https://support.microsoft.com/help/4582666/) | 4.4.0-21-algemeen naar 4.4.0-189-generic,<br/>4.8.0-34-generic naar 4.8.0-58-generic,<br/>4.10.0-14-generic naar 4.10.0-42-generic,<br/>4.11.0-13-algemeen naar 4.11.0-14-generic,<br/>4.13.0-16-generic naar 4.13.0-45-generic,<br/>4.15.0-13-algemeen naar 4.15.0-115-generic<br/>4.11.0-1009-Azure naar 4.11.0-1016-Azure,<br/>4.13.0-1005-Azure naar 4.13.0-1018-Azure <br/>4.15.0-1012-Azure naar 4.15.0-1093-Azure </br> 4.4.0-190-generic, 4.15.0-117-algemeen, 4.15.0-118-generic, 4.15.0-1095-Azure, 4.15.0-1096-Azure tot en met 9,37 Hot Fix patch * *|
 16,04 LTS | [9,36](https://support.microsoft.com/help/4578241/)| 4.4.0-21-algemeen naar 4.4.0-187-generic,<br/>4.8.0-34-generic naar 4.8.0-58-generic,<br/>4.10.0-14-generic naar 4.10.0-42-generic,<br/>4.11.0-13-algemeen naar 4.11.0-14-generic,<br/>4.13.0-16-generic naar 4.13.0-45-generic,<br/>4.15.0-13-algemeen naar 4.15.0-112-generic<br/>4.11.0-1009-Azure naar 4.11.0-1016-Azure,<br/>4.13.0-1005-Azure naar 4.13.0-1018-Azure <br/>4.15.0-1012-Azure naar 4.15.0-1092-Azure |
 16,04 LTS | [9,34](https://support.microsoft.com/help/4570609), [9,35](https://support.microsoft.com/help/4573888/) | 4.4.0-21-algemeen naar 4.4.0-184-generic,<br/>4.8.0-34-generic naar 4.8.0-58-generic,<br/>4.10.0-14-generic naar 4.10.0-42-generic,<br/>4.11.0-13-algemeen naar 4.11.0-14-generic,<br/>4.13.0-16-generic naar 4.13.0-45-generic,<br/>4.15.0-13-algemeen naar 4.15.0-106-generic<br/>4.11.0-1009-Azure naar 4.11.0-1016-Azure,<br/>4.13.0-1005-Azure naar 4.13.0-1018-Azure <br/>4.15.0-1012-Azure naar 4.15.0-1089-Azure</br> 4.15.0-107-generic, 4.4.0-195-generic & 4.15.0-1091-Azure tot en met 9,35 Hot Fix patch * * |
 16,04 LTS | [9,33](https://support.microsoft.com/help/4564347/) | 4.4.0-21-algemeen naar 4.4.0-178-generic,<br/>4.8.0-34-generic naar 4.8.0-58-generic,<br/>4.10.0-14-generic naar 4.10.0-42-generic,<br/>4.11.0-13-algemeen naar 4.11.0-14-generic,<br/>4.13.0-16-generic naar 4.13.0-45-generic,<br/>4.15.0-13-algemeen naar 4.15.0-99-algemeen<br/>4.11.0-1009-Azure naar 4.11.0-1016-Azure,<br/>4.13.0-1005-Azure naar 4.13.0-1018-Azure <br/>4.15.0-1012-Azure naar 4.15.0-1082-Azure </br> 4.15.0-101-generic & 4.4.0-179-generic tot en met 9,33 patch voor warme reparatie * *|
 |||
-18,04 LTS | [9,37](https://support.microsoft.com/help/4582666/) | 4.15.0-20-algemeen naar 4.15.0-115-generic </br> 4.18.0-13-algemeen naar 4.18.0-25-algemeen </br> 5.0.0-15-generic naar 5.0.0-60-generic </br> 5.3.0-19-Gene riek tot 5.3.0-66-algemeen </br> 5.4.0-37-generic tot 5.4.0-45-algemeen</br> 4.15.0-1009-Azure naar 4.15.0-1093-Azure </br> 4.18.0-1006-Azure naar 4.18.0-1025-Azure </br> 5.0.0-1012-Azure naar 5.0.0-1036-Azure </br> 5.3.0-1007-Azure naar 5.3.0-1035-Azure </br> 5.4.0-1020-Azure naar 5.4.0-1023-Azure</br> 4.15.0-117-generic, 5.0.0-61-algemeen, 5.3.0-67-generic, 5.4.0-47-generic, 4.15.0-1095-Azure, 5.4.0-1025-Azure tot en met 9,37 Hot Fix patch * *|
+18,04 LTS | [9,37](https://support.microsoft.com/help/4582666/) | 4.15.0-20-algemeen naar 4.15.0-115-generic </br> 4.18.0-13-algemeen naar 4.18.0-25-algemeen </br> 5.0.0-15-generic naar 5.0.0-60-generic </br> 5.3.0-19-Gene riek tot 5.3.0-66-algemeen </br> 5.4.0-37-generic tot 5.4.0-45-algemeen</br> 4.15.0-1009-Azure naar 4.15.0-1093-Azure </br> 4.18.0-1006-Azure naar 4.18.0-1025-Azure </br> 5.0.0-1012-Azure naar 5.0.0-1036-Azure </br> 5.3.0-1007-Azure naar 5.3.0-1035-Azure </br> 5.4.0-1020-Azure naar 5.4.0-1023-Azure</br> 4.15.0-117-algemeen, 4.15.0-118-generic, 5.0.0-61-algemeen, 5.3.0-67-generic, 5.4.0-47-algemeen, 5.4.0-48-generic, 4.15.0-1095-Azure, 4.15.0-1096-Azure, 5.4.0-1025-Azure, 5.4.0-1026-Azure tot en met 9,37 Hot Fix patch * *|
 18,04 LTS | [9,36](https://support.microsoft.com/help/4578241/) | 4.15.0-20-algemeen naar 4.15.0-112-generic </br> 4.18.0-13-algemeen naar 4.18.0-25-algemeen </br> 5.0.0-15-generic naar 5.0.0-58-generic </br> 5.3.0-19-generic naar 5.3.0-65-generic </br> 5.4.0-37-generic naar 5.4.0-42-generic</br> 4.15.0-1009-Azure naar 4.15.0-1092-Azure </br> 4.18.0-1006-Azure naar 4.18.0-1025-Azure </br> 5.0.0-1012-Azure naar 5.0.0-1036-Azure </br> 5.3.0-1007-Azure naar 5.3.0-1032-Azure </br> 5.4.0-1020-Azure naar 5.4.0-1022-Azure </br> 5.0.0-60-generic & 5.3.0-1035-Azure tot en met 9,36 Hot Fix patch * *|
 18,04 LTS | [9,34](https://support.microsoft.com/help/4570609), [9,35](https://support.microsoft.com/help/4573888/) | 4.15.0-20-algemeen naar 4.15.0-108-generic </br> 4.18.0-13-algemeen naar 4.18.0-25-algemeen </br> 5.0.0-15-algemeen naar 5.0.0-52-generic </br> 5.3.0-19-Gene riek tot 5.3.0-61-algemeen </br> 4.15.0-1009-Azure naar 4.15.0-1089-Azure </br> 4.18.0-1006-Azure naar 4.18.0-1025-Azure </br> 5.0.0-1012-Azure naar 5.0.0-1036-Azure </br> 5.3.0-1007-Azure naar 5.3.0-1031-Azure </br> 4.15.0-109-generic, 5.0.0-53-generic, 5.3.0-62-generic, 4.15.0-1091-Azure & 5.3.0-1032-Azure tot en met 9,35 Hot Fix patch * *|
 18,04 LTS | [9,33](https://support.microsoft.com/help/4564347/) | 4.15.0-20-algemeen naar 4.15.0-99-algemeen </br> 4.18.0-13-algemeen naar 4.18.0-25-algemeen </br> 5.0.0-15-generic naar 5.0.0-47-generic </br> 5.3.0-19-generic tot 5.3.0-51-generic </br> 4.15.0-1009-Azure naar 4.15.0-1082-Azure </br> 4.18.0-1006-Azure naar 4.18.0-1025-Azure </br> 5.0.0-1012-Azure naar 5.0.0-1036-Azure </br> 5.3.0-1007-Azure naar 5.3.0-1020-Azure </br> 4.15.0-101-generic, 5.0.0-48-algemeen, 5.3.0-1022-Azure & 5.3.0-53-generic tot en met 9,33 Hot Fix patch * *|
 |||
-20,04 LTS |[9,37](https://support.microsoft.com/help/4582666/) | 5.4.0-26-generic naar 5.4.0-45 </br> -generic 5.4.0-1010-Azure naar 5.4.0-1023-Azure </br> 5.4.0-47-generic, 5.4.0-1025-Azure tot en met 9,37 Hot Fix patch * *
+20,04 LTS |[9,37](https://support.microsoft.com/help/4582666/) | 5.4.0-26-generic naar 5.4.0-45 </br> -generic 5.4.0-1010-Azure naar 5.4.0-1023-Azure </br> 5.4.0-47-generic, 5.4.0-48-generic, 5.4.0-1025-Azure, 5.4.0-1026-Azure tot en met 9,37 Hot Fix patch * *
 20,04 LTS |[9,36](https://support.microsoft.com/help/4578241/) | 5.4.0-26-generic naar 5.4.0-42 </br> -generic 5.4.0-1010-Azure naar 5.4.0-1022-Azure
 
 * * Opmerking: ter ondersteuning van de meest recente Linux-kernels binnen 30 dagen na de release, Azure Site Recovery roll-to-pluggable patch van de nieuwste versie van de Mobility-agent. Deze oplossing wordt uitgegerold tussen twee versies van de primaire versie. Volg de stappen die in [dit artikel](service-updates-how-to.md#azure-vm-disaster-recovery-to-azure)worden beschreven om bij te werken naar de nieuwste versie van Mobility agent (inclusief Hot Fix patch). Deze patch is momenteel geïmplementeerd voor Mobility-agents die worden gebruikt in azure naar Azure DR scenario.
@@ -188,7 +188,7 @@ Azure Gallery-installatie kopieën-derde partij gepubliceerd | Ondersteund | Wor
 Aangepaste installatie kopieën-externe partij gepubliceerd | Ondersteund | Wordt ondersteund als de virtuele machine wordt uitgevoerd op een ondersteund besturings systeem.
 Vm's die zijn gemigreerd met behulp van Site Recovery | Ondersteund | Als een VMware-VM of fysieke machine met Site Recovery is gemigreerd naar Azure, moet u de oudere versie van Mobility service op de computer verwijderen en de computer opnieuw opstarten voordat u deze naar een andere Azure-regio repliceert.
 RBAC-beleid | Niet ondersteund | Beleids regels op basis van op rollen gebaseerd toegangs beheer (RBAC) op Vm's worden niet gerepliceerd naar de failover-VM in de doel regio.
-Uitbreidingen | Niet ondersteund | Uitbrei dingen worden niet gerepliceerd naar de failover-VM in de doel regio. Deze moet hand matig worden geïnstalleerd na een failover.
+Extensies | Niet ondersteund | Uitbrei dingen worden niet gerepliceerd naar de failover-VM in de doel regio. Deze moet hand matig worden geïnstalleerd na een failover.
 Proximity-plaatsings groepen | Ondersteund | Virtuele machines die zich in een proximity-plaatsings groep bevinden, kunnen worden beveiligd met Site Recovery.
 
 
@@ -220,7 +220,7 @@ Gegevens schijf-Standard-opslag account | Ondersteund |
 Gegevens schijf-Premium-opslag account | Ondersteund | Als een virtuele machine schijven heeft verspreid over Premium-en Standard-opslag accounts, kunt u een ander doel opslag account voor elke schijf selecteren om ervoor te zorgen dat u dezelfde opslag configuratie in de doel regio hebt.
 Beheerde schijf-standaard | Ondersteund in azure-regio's waarin Azure Site Recovery wordt ondersteund. |
 Beheerde schijf-Premium | Ondersteund in azure-regio's waarin Azure Site Recovery wordt ondersteund. |
-Standard - SSD | Ondersteund |
+Standard SSD | Ondersteund |
 Redundantie | LRS en GRS worden ondersteund.<br/><br/> ZRS wordt niet ondersteund.
 Coole en warme opslag | Niet ondersteund | VM-schijven worden niet ondersteund in coole en warme opslag
 Opslagruimten | Ondersteund |

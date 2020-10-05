@@ -9,12 +9,12 @@ ms.subservice: spot
 ms.date: 03/25/2020
 ms.reviewer: jagaveer
 ms.custom: jagaveer, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 61f82cf907ef861307a907f6cd2b9b13f043b9a0
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 4c5386e2fad0ebdd30ca8f9a8f4933e8adaf5d6b
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91709040"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91729012"
 ---
 # <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>Azure spot-Vm's voor schaal sets voor virtuele machines 
 
@@ -163,7 +163,7 @@ Als u het exemplaar wilt verwijderen nadat het is verwijderd, wijzigt `evictionP
 
 **V:**  Werkt automatisch schalen met beide verwijderings beleidsregels (toewijzing en verwijdering ongedaan maken)?
 
-**A:** Het is raadzaam dat u het verwijderings beleid instelt dat u wilt verwijderen wanneer u automatisch schalen gebruikt. Dit komt doordat niet-toegewezen instanties worden geteld voor het aantal capaciteit van de schaalset. Wanneer u automatisch schalen gebruikt, bereikt u waarschijnlijk snel het aantal doel instanties als gevolg van de opgeheven, verwijderde exemplaren. Ook kunnen uw schaal bewerkingen worden beïnvloed door spot verwijderingen. Zo kunnen VMSS-instanties onder het aantal ingestelde minuten vallen vanwege meerdere spot verwijderingen tijdens schaal bewerkingen. 
+**A:** Ja, u wordt echter aangeraden het verwijderings beleid in te stellen dat u wilt verwijderen wanneer u automatisch schalen gebruikt. Dit komt doordat niet-toegewezen instanties worden geteld voor het aantal capaciteit van de schaalset. Wanneer u automatisch schalen gebruikt, bereikt u waarschijnlijk snel het aantal doel instanties als gevolg van de opgeheven, verwijderde exemplaren. Ook kunnen uw schaal bewerkingen worden beïnvloed door spot verwijderingen. Zo kunnen VMSS-instanties onder het aantal ingestelde minuten vallen vanwege meerdere spot verwijderingen tijdens schaal bewerkingen. 
 
 **V:** Welke kanalen ondersteunen de ondersteuning van virtuele machines?
 
@@ -173,11 +173,11 @@ Als u het exemplaar wilt verwijderen nadat het is verwijderd, wijzigt `evictionP
 
 | Azure-kanalen               | Beschik baarheid van Azure spot Vm's       |
 |------------------------------|-----------------------------------|
-| Enterprise Agreement         | Yes                               |
-| Betalen naar gebruik                | Yes                               |
+| Enterprise Agreement         | Ja                               |
+| Betalen naar gebruik                | Ja                               |
 | Cloud serviceprovider (CSP) | [Neem contact op met uw partner](/partner-center/azure-plan-get-started) |
 | Voordelen                     | Niet beschikbaar                     |
-| Gesponsorde                    | Yes                               |
+| Gesponsorde                    | Ja                               |
 | Gratis proefversie                   | Niet beschikbaar                     |
 
 

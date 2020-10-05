@@ -11,16 +11,16 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: bfb4d265a42fe1e4473af0f9bde4ebb76f0734a0
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: 3b9acc3f91a91527e96f450d825d06f6b909e15d
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707965"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91729148"
 ---
 # <a name="troubleshoot-problems-signing-in-to-an-application-from-azure-ad-my-apps"></a>Problemen oplossen bij het aanmelden bij een toepassing vanuit Azure AD mijn apps
 
-Mijn apps is een webgebaseerde portal die een gebruiker met een werk-of school account in Azure Active Directory (Azure AD) in staat stelt om Cloud toepassingen te bekijken en te starten waartoe de Azure AD-beheerder hen toegang heeft verleend. 
+Mijn apps is een webgebaseerde portal die een gebruiker met een werk-of school account in Azure Active Directory (Azure AD) in staat stelt om Cloud toepassingen te bekijken en te starten waartoe de Azure AD-beheerder hen toegang heeft verleend. Mijn apps wordt geopend met een webbrowser op [https://myapps.microsoft.com](https://myapps.microsoft.com) .
 
 Voor meer informatie over het gebruik van Azure AD als een id-provider voor een app, Zie [Wat is toepassings beheer in azure AD](what-is-application-management.md). Bekijk de Quick Start- [serie op toepassings beheer](view-applications-portal.md)om snel aan de slag te gaan.
 
