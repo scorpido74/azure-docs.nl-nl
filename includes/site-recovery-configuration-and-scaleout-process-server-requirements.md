@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 07/08/2020
 ms.author: raynew
 ms.custom: include file
-ms.openlocfilehash: 60012f79c3c04a4ff14c4a7f0609b6940d3402c4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e3106b52ede95fe63a8df691a82acdd4937c8cce
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86544244"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91672077"
 ---
 **Vereisten voor configuratie en processerver**
 
@@ -83,4 +83,3 @@ De volgende tabel bevat een overzicht van de capaciteitsvereisten voor de config
 12 vCPU's<br/><br/> 2 sockets * 6 kernen \@ 2,5 GHz | 18 GB | 600 GB | 500 GB - 1 TB | 100 - 150 computers
 16 vCPU's<br/><br/> 2 sockets * 8 kernen \@ 2,5 GHz | 32 GB | 1 TB | 1-2 TB | 150 - 200 computers
 |
-
