@@ -3,12 +3,12 @@ title: Netwerk beveiliging voor Azure Service Bus
 description: In dit artikel worden de functies voor netwerk beveiliging beschreven, zoals service tags, IP-firewall regels, service-eind punten en privé-eind punten.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 731300179ce9a0ff72169cdad5c7c039749b20f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb21c8beb6d48ecab04917525011cc4762c46ff3
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341142"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766399"
 ---
 # <a name="network-security-for-azure-service-bus"></a>Netwerk beveiliging voor Azure Service Bus 
 In dit artikel wordt beschreven hoe u de volgende beveiligings functies gebruikt met Azure Service Bus: 
@@ -16,7 +16,7 @@ In dit artikel wordt beschreven hoe u de volgende beveiligings functies gebruikt
 - Servicetags
 - IP-firewall regels
 - Netwerk service-eind punten
-- Persoonlijke eind punten (preview-versie)
+- Privé-eindpunten
 
 
 ## <a name="service-tags"></a>Servicetags
@@ -24,7 +24,7 @@ Een servicetag vertegenwoordigt een groep IP-adres voorvoegsels van een bepaalde
 
 U kunt service tags gebruiken voor het definiëren van netwerk toegangs beheer voor [netwerk beveiligings groepen](../virtual-network/security-overview.md#security-rules) of [Azure firewall](../firewall/service-tags.md). Gebruik service tags in plaats van specifieke IP-adressen wanneer u beveiligings regels maakt. Door de naam van de service label (bijvoorbeeld **ServiceBus**) op te geven in het juiste *bron* -of *doel* veld van een regel, kunt u het verkeer voor de bijbehorende service toestaan of weigeren.
 
-| Servicetag | Functie | Kunt u inkomend of uitgaand gebruiken? | Kan regionaal worden? | Kunt gebruiken met Azure Firewall? |
+| Servicetag | Doel | Kunt u inkomend of uitgaand gebruiken? | Kan regionaal worden? | Kunt gebruiken met Azure Firewall? |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | **ServiceBus** | Azure Service Bus verkeer dat gebruikmaakt van de Premium-servicelaag. | Uitgaand | Ja | Ja |
 
@@ -81,8 +81,6 @@ Zie [Wat is een Azure Private Link?](../private-link/private-link-overview.md) v
 
 > [!NOTE]
 > Deze functie wordt ondersteund met de **Premium** -laag van Azure service bus. Zie het artikel [service Buss voor Premium en Standard Messa ging](service-bus-premium-messaging.md) voor meer informatie over de Premium-laag.
->
-> Deze functie is momenteel beschikbaar als **Preview-versie**. 
 
 
 Zie [persoonlijke eind punten configureren voor een service bus naam ruimte](private-link-service.md) voor meer informatie

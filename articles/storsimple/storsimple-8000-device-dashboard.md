@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
-ms.openlocfilehash: ed624fd5fb86b95e0b79c1c7ed4de50749ec7046
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93d230656fd7ef34e76a143fb3186d23f8d3afed
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512039"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766239"
 ---
 # <a name="use-the-device-summary-in-storsimple-device-manager-service"></a>Het apparaat samen vatting gebruiken in StorSimple Apparaatbeheer-service
 
@@ -86,7 +86,7 @@ In het gebied essentiële elementen worden enkele belang rijke eigenschappen vas
 
 * In de tegel **capaciteit** wordt de primaire opslag weer gegeven die op het apparaat is ingericht en overgebleven ten opzichte van de totale beschik bare opslag. **Ingericht** heeft betrekking op de hoeveelheid opslag ruimte die is voor bereid en toegewezen voor gebruik. het **resterende gedeelte** verwijst naar de resterende capaciteit die op dit apparaat kan worden ingericht. 
 
-    ![Gebruiks tegel](./media/storsimple-8000-device-dashboard/device-summary8.png)
+    ![Gebruiks tegel 2](./media/storsimple-8000-device-dashboard/device-summary8.png)
 
     Klik op deze tegel om te zien hoe de capaciteit wordt ingericht op gelaagde en lokaal vastgemaakte volumes. De **resterende gelaagde** capaciteit is de beschik bare capaciteit die kan worden ingericht, inclusief de Cloud, terwijl de **resterende lokale** capaciteit het resterende aantal schijven is dat is gekoppeld aan dit apparaat.
 

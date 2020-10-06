@@ -6,38 +6,37 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 07/20/2020
+ms.date: 10/02/2020
 ms.author: alkohli
-ms.openlocfilehash: 71f499e1cdd7ccf22d90b21ce04299798978a828
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 5f1623ef4dde59e816e3afe5a5f5894c49469580
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926600"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767862"
 ---
 # <a name="azure-data-box-system-requirements"></a>Systeem vereisten voor Azure Data Box
 
-In dit artikel worden de belangrijkste systeem vereisten voor uw Microsoft Azure Data Box en voor de clients die verbinding maken met de Data Box beschreven. We raden u aan de informatie zorgvuldig te bekijken voordat u uw Data Box implementeert en vervolgens naar de gewenste gegevens te verwijzen tijdens de implementatie en de volgende bewerking.
+In dit artikel worden de belangrijkste systeem vereisten beschreven voor uw Microsoft Azure Data Box en voor clients die verbinding maken met de Data Box. We raden u aan de informatie zorgvuldig te bekijken voordat u uw Data Box implementeert en raadpleegt u deze indien nodig tijdens de implementatie en de werking.
 
 De systeem vereisten zijn onder andere:
 
-* **Software vereisten voor hosts die verbinding maken met data Box** : beschrijft de ondersteunde platforms, browsers voor de lokale webgebruikersinterface, SMB-clients en eventuele aanvullende vereisten voor hosts die verbinding kunnen maken met de data box.
-* **Netwerk vereisten voor de data Box** : bevat informatie over de netwerk vereisten voor de optimale werking van de data box.
+* **Software vereisten:** Voor hosts die verbinding maken met de Data Box, worden ondersteunde besturings systemen, protocollen voor bestands overdracht, opslag accounts, opslag typen en browsers voor de lokale webgebruikersinterface beschreven.
+* **Netwerk vereisten:** Voor de Data Box worden de netwerk verbindings-en poort vereisten beschreven voor een optimale werking van de Data Box.
 
 
 ## <a name="software-requirements"></a>Softwarevereisten
 
-De software vereisten omvatten de informatie over de ondersteunde besturings systemen, ondersteunde browsers voor de lokale web-UI en SMB-clients.
+De software vereisten zijn onder andere ondersteunde besturings systemen, protocollen voor bestands overdracht, opslag accounts, opslag typen en browsers voor de lokale webgebruikersinterface.
 
 ### <a name="supported-operating-systems-for-clients"></a>Ondersteunde besturingssystemen voor clients
 
 [!INCLUDE [data-box-supported-os-clients](../../includes/data-box-supported-os-clients.md)]
 
 
-### <a name="supported-filesystems-for-linux-clients"></a>Ondersteunde bestands systemen voor Linux-clients
+### <a name="supported-file-transfer-protocols-for-clients"></a>Ondersteunde protocollen voor bestands overdracht voor clients
 
 [!INCLUDE [data-box-supported-file-systems-clients](../../includes/data-box-supported-file-systems-clients.md)]
-
 
 > [!IMPORTANT] 
 > Verbinding met Data Box shares wordt niet ondersteund via REST voor export orders. 
@@ -45,7 +44,6 @@ De software vereisten omvatten de informatie over de ondersteunde besturings sys
 ### <a name="supported-storage-accounts"></a>Ondersteunde opslagaccounts
 
 [!INCLUDE [data-box-supported-storage-accounts](../../includes/data-box-supported-storage-accounts.md)]
-
 
 ### <a name="supported-storage-types"></a>Ondersteunde opslagtypen
 
@@ -61,7 +59,7 @@ Uw datacenter moet een netwerk met hoge snelheid hebben. Het wordt aangeraden da
 
 ### <a name="port-requirements"></a>Poortvereisten
 
-De volgende tabel geeft een lijst van de poorten die in uw firewall moeten worden geopend om SMB-of NFS-verkeer toe te staan. In deze tabel verwijst *naar* of *binnenkomend* naar de richting waarin de inkomende client toegang tot uw apparaat vraagt. *Out* of *uitgaand* verwijst naar de richting waarin uw data Box apparaat gegevens extern verzendt, naast de implementatie: bijvoorbeeld uitgaand naar Internet.
+De volgende tabel geeft een lijst van de poorten die in uw firewall moeten worden geopend om SMB-of NFS-verkeer toe te staan. In deze tabel verwijst *(* *Inkomend*) naar de richting waarin de inkomende client toegang tot uw apparaat vraagt. *Uit* (of *uitgaand*) verwijst naar de richting waarin uw data Box apparaat gegevens extern verzendt, naast de implementatie: bijvoorbeeld uitgaand naar Internet.
 
 [!INCLUDE [data-box-port-requirements](../../includes/data-box-port-requirements.md)]
 

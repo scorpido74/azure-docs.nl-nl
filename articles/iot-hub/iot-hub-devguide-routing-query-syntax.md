@@ -10,12 +10,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: 4ff61687f2fa045b51dfcb69488d1fbd87b65f75
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 9b5463ba789a1bcfb707fb03c70f1a8464cb6b59
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87336494"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767355"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>Querysyntaxis voor het routeren van IoT Hub-berichten
 
@@ -59,8 +59,8 @@ Systeem eigenschappen helpen de inhoud en bron van de berichten te identificeren
 | contentEncoding | tekenreeks | De gebruiker geeft het type code ring van het bericht op. Toegestane waarden zijn UTF-8, UTF-16, UTF-32 als het content type is ingesteld op Application/JSON. |
 | iothub-verbinding-apparaat-id | tekenreeks | Deze waarde wordt ingesteld door IoT Hub en identificeert de ID van het apparaat. Gebruik voor query's `$connectionDeviceId` . |
 | iothub-enqueuedtime | tekenreeks | Deze waarde wordt ingesteld door IoT Hub en vertegenwoordigt de werkelijke tijd van enqueuing van het bericht in UTC. Gebruik voor query's `enqueuedTime` . |
-| DT-dataschema | tekenreeks |  Deze waarde wordt ingesteld door IoT hub op apparaat-naar-Cloud-berichten. Het bevat de apparaat model-ID die is ingesteld in de apparaat-verbinding. Deze functie is beschikbaar als onderdeel van de [open bare preview van IoT Plug en Play](../iot-pnp/overview-iot-plug-and-play.md). Gebruik voor query's `$dt-dataschema` . |
-| DT-onderwerp | tekenreeks | De naam van het onderdeel dat de apparaat-naar-Cloud-berichten verzendt. Deze functie is beschikbaar als onderdeel van de [open bare preview van IoT Plug en Play](../iot-pnp/overview-iot-plug-and-play.md). Gebruik voor query's `$dt-subject` . |
+| DT-dataschema | tekenreeks |  Deze waarde wordt ingesteld door IoT hub op apparaat-naar-Cloud-berichten. Het bevat de apparaat model-ID die is ingesteld in de apparaat-verbinding. Gebruik voor query's `$dt-dataschema` . |
+| DT-onderwerp | tekenreeks | De naam van het onderdeel dat de apparaat-naar-Cloud-berichten verzendt. Gebruik voor query's `$dt-subject` . |
 
 Zoals beschreven in de [IOT hub berichten](iot-hub-devguide-messages-construct.md), zijn er aanvullende systeem eigenschappen in een bericht. Naast de bovenstaande eigenschappen in de vorige tabel kunt u ook een query uitvoeren op **connectionDeviceId**, **connectionModuleId**.
 
@@ -146,7 +146,7 @@ deviceClient.sendEvent(message, (err, res) => {
 ```
 
 > [!NOTE] 
-> Hier ziet u hoe u de code ring van de hoofd tekst in Java script kunt afhandelen. Als u een voor beeld in C# wilt zien, downloadt u de [Azure IOT C#](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)-voor beelden. Pak het master.zip-bestand uit. Het Program.cs-bestand van de Visual Studio Solution *SimulatedDevice*laat zien hoe u berichten kunt coderen en verzenden naar een IOT hub. Dit is hetzelfde voor beeld dat wordt gebruikt voor het testen van de bericht routering, zoals wordt uitgelegd in de [zelf studie over bericht routering](tutorial-routing.md). Onder aan Program.cs is er ook een methode voor het lezen van een van de versleutelde bestanden, het decoderen en het wegschrijven van het bestand als ASCII, zodat u het kunt lezen. 
+> Hier ziet u hoe u de code ring van de hoofd tekst in Java script kunt afhandelen. Als u een voor beeld in C# wilt zien, downloadt u de [Azure IOT C#](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)-voor beelden. Pak het bestand master.zip uit. Het Program.cs-bestand van de Visual Studio Solution *SimulatedDevice*laat zien hoe u berichten kunt coderen en verzenden naar een IOT hub. Dit is hetzelfde voor beeld dat wordt gebruikt voor het testen van de bericht routering, zoals wordt uitgelegd in de [zelf studie over bericht routering](tutorial-routing.md). Onder aan Program.cs is er ook een methode voor het lezen van een van de versleutelde bestanden, het decoderen en het wegschrijven van het bestand als ASCII, zodat u het kunt lezen. 
 
 
 ### <a name="query-expressions"></a>Query-expressies

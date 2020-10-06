@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: duau
-ms.openlocfilehash: e546963a7ca90c7494164af7afefbb4e78b2259b
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 67591e9227ff32e81b973c181da2c1374f0ded47
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91651935"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766662"
 ---
 # <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>Aangepaste waarschuwingen configureren voor het bewaken van aangekondigde routes
 
@@ -52,7 +52,7 @@ Controleer voordat u met de configuratie begint of u aan de volgende criteria he
 
 ## <a name="create-and-configure-accounts"></a><a name="accounts"></a>Accounts maken en configureren
 
-Wanneer u in de Azure Portal een Automation-account maakt, wordt automatisch een [uitvoeren als](../automation/manage-runas-account.md#types-of-run-as-accounts) -account gemaakt. Dit account voert de volgende acties uit:
+Wanneer u in de Azure Portal een Automation-account maakt, wordt automatisch een [uitvoeren als](../automation/automation-security-overview.md#run-as-accounts) -account gemaakt. Dit account voert de volgende acties uit:
 
 * Hiermee maakt u een Azure Active Directory-toepassing (Azure AD) met een zelfondertekend certificaat. Het uitvoeren als-account zelf bevat een certificaat dat elk jaar standaard moet worden vernieuwd.
 

@@ -1,91 +1,94 @@
 ---
 title: De data base oplossen Azure Database for MySQL beschadigd
-description: Meer informatie over het oplossen van beschadigde database problemen voor Azure Database for MySQL
+description: In dit artikel vindt u informatie over het oplossen van beschadigde database problemen in Azure Database for MySQL.
 author: mksuni
 ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 09/21/2020
-ms.openlocfilehash: 815b24d25e674e5460cc50d7eb6871f740994893
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 21e4189e56f704129710da5b1d39613c4e1b1df5
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935936"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766898"
 ---
-# <a name="troubleshoot-database-corruption-on-azure-database-for-mysql"></a>Problemen met de data base oplossen op Azure Database for MySQL
+# <a name="troubleshoot-database-corruption-in-azure-database-for-mysql"></a>Problemen met een beschadigde data base in Azure Database for MySQL oplossen
 [!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
 
-Het gebruik van een Data Base kan uitval tijd voor uw toepassing veroorzaken. het is ook cruciaal om het probleem op tijd op te lossen om gegevens verlies te voor komen. Wanneer de data base is beschadigd, ziet u in de server logboeken deze fout **InnoDB: de database pagina is beschadigd op de schijf of een mislukt**.
+Beschadiging van de data base kan leiden tot uitval tijd voor uw toepassing. Het is ook cruciaal om beschadigings problemen op tijd op te lossen om gegevens verlies te voor komen. Wanneer de data base is beschadigd, wordt deze fout weer gegeven in de server logboeken: `InnoDB: Database page corruption on disk or a failed.`
 
-In deze hand leiding wordt beschreven hoe u kunt oplossen of de data base of tabel is beschadigd. Azure Database for MySQL maakt gebruik van de InnoDB-engine en de IT-functies automatische beschadigings controle en herstel bewerkingen. InnoDB controleert op beschadigde pagina's door controle sommen uit te voeren op elke pagina die wordt gelezen en als er een controlesom verschil wordt gevonden, wordt de MySQL-server automatisch gestopt.
+In dit artikel leert u hoe u problemen met een Data Base of tabel kunt oplossen. Azure Database for MySQL maakt gebruik van de InnoDB-engine. Het bevat automatische beschadigings controles en herstel bewerkingen. InnoDB controleert op beschadigde pagina's door controle sommen uit te voeren op elke pagina die wordt gelezen. Als er een controlesom verschil wordt gevonden, wordt de MySQL-server automatisch gestopt.
 
-Voer een van deze opties hieronder uit om snel problemen met uw Data Base op te lossen.
+Voer de volgende opties uit om snel problemen met uw Data Base op te lossen.
 
 ## <a name="restart-your-mysql-server"></a>De MySQL-server opnieuw opstarten
 
-Normaal gesp roken ziet u dat een Data Base of tabel is beschadigd wanneer uw toepassing toegang heeft tot de tabel ro-data base. Omdat InnoDB een mechanisme voor crash herstel bevat dat de meeste problemen kan oplossen wanneer de server opnieuw wordt opgestart. Daarom moet de server opnieuw worden opgestart om de server te helpen herstellen van een crash waardoor de status van de data base niet is beschadigd.
+Normaal gesp roken ziet u dat er een Data Base of tabel is beschadigd wanneer uw toepassing toegang heeft tot de tabel of Data Base. InnoDB bevat een mechanisme voor crash herstel dat de meeste problemen kan oplossen wanneer de server opnieuw wordt opgestart. Het opnieuw opstarten van de server kan ervoor zorgen dat de server kan worden hersteld na een storing waardoor de status van de data base niet is beschadigd.
 
-##  <a name="resolve-data-corruption-with-dump-and-restore-method"></a>Gegevens beschadiging oplossen met de methode dump en herstel
+## <a name="use-the-dump-and-restore-method"></a>De methode dump en Restore gebruiken
 
-Het is raadzaam om het beschadigings probleem met een **dump-en herstel methode**op te lossen. Dit betekent dat u toegang hebt tot de beschadigde tabel met behulp van het hulp programma **mysqldump** om een logische back-up te maken van de tabel, waardoor de tabel structuur en de gegevens erin worden bewaard en de tabel vervolgens opnieuw wordt geladen in de data base.
+U wordt aangeraden beschadigings problemen op te lossen met behulp van een *dump-en herstel* methode. Deze methode omvat:
+1. De beschadigde tabel wordt geopend.
+1. Het hulp programma mysqldump gebruiken om een logische back-up van de tabel te maken. Met de back-up worden de tabel structuur en de gegevens erin bewaard.
+1. De tabel wordt opnieuw geladen in de data base.
 
-### <a name="backup-your-database-or-tables"></a>Back-up maken van uw data base of tabellen
+### <a name="back-up-your-database-or-tables"></a>Maak een back-up van uw data base of tabellen
 
 > [!Important]
-> - Zorg ervoor dat u een firewall regel hebt geconfigureerd om toegang te krijgen tot de server vanaf uw client computer. Zie [firewall regel configureren op één server](howto-manage-firewall-using-portal.md) en [firewall regel op een flexibele server](flexible-server/how-to-connect-tls-ssl.md).
-> - SSL-optie gebruiken ```--ssl-cert``` voor **MYSQLDUMP** als SSL is ingeschakeld
+> - Zorg ervoor dat u een firewall regel hebt geconfigureerd voor toegang tot de server vanaf uw client computer. Zie [een firewall regel configureren op één server](howto-manage-firewall-using-portal.md) en [een firewall regel configureren op een flexibele server](flexible-server/how-to-connect-tls-ssl.md)voor meer informatie.
+> - Gebruik de SSL-optie `--ssl-cert` voor mysqldump als SSL is ingeschakeld.
 
-Maak een back-upbestand van de opdracht regel met behulp van mysqldump met behulp van deze opdracht
+Maak een back-upbestand op de opdracht regel met behulp van mysqldump. Gebruik deze opdracht:
 
 ```
 $ mysqldump [--ssl-cert=/path/to/pem] -h [host] -u [uname] -p[pass] [dbname] > [backupfile.sql]
 ```
 
-De para meters die u moet opgeven, zijn:
-- [SSL-cert =/Path/to/PEM] Down load het SSL-certificaat op uw client computer en stel het pad in de opdracht in. Gebruik niet dit is SSL is uitgeschakeld.
-- [host] is uw Azure Database for MySQL-server
-- [uname] is de gebruikers naam van de server beheerder
-- [Pass] is het wacht woord voor de gebruiker met beheerders rechten
-- [dbname] is de naam van uw data base
-- [upbestand. SQL] als de bestands naam van de back-up van uw data base
+Parameter beschrijvingen:
+- `[ssl-cert=/path/to/pem]`: Het pad naar het SSL-certificaat. Down load het SSL-certificaat op uw client computer en stel het pad in de opdracht in. Gebruik deze para meter niet als SSL is uitgeschakeld.
+- `[host]`: Uw Azure Database for MySQL-server.
+- `[uname]`: De gebruikers naam van de server beheerder.
+- `[pass]`: Het wacht woord voor de gebruiker met beheerders rechten.
+- `[dbname]`: De naam van uw data base.
+- `[backupfile.sql]`: De bestands naam van de back-up van de data base.
 
 > [!Important]
-> - Voor een enkele server gebruikt u de indeling ```admin-user@servername``` om ```myserveradmin``` de volgende opdrachten te vervangen.
-> - Voor een flexibele server gebruikt u de indeling ```admin-user``` om ```myserveradmin``` de volgende opdrachten te vervangen.
+> - Voor één server gebruikt u de indeling `admin-user@servername` voor vervangen `myserveradmin` in de volgende opdrachten.
+> - Voor een flexibele server gebruikt u de indeling `admin-user` om te vervangen `myserveradmin` in de volgende opdrachten.
 
-Als een specifieke tabel is beschadigd, selecteert u specifieke tabellen in uw data base om een back-up te maken met dit voor beeld
+Als een specifieke tabel is beschadigd, selecteert u specifieke tabellen in de data base om een back-up te maken:
 ```
 $ mysqldump --ssl-cert=</path/to/pem> -h mydemoserver.mysql.database.azure.com -u myserveradmin -p testdb table1 table2 > testdb_tables_backup.sql
 ```
 
-Als u een back-up wilt maken van een of meer data bases, gebruikt u de--database switch en geeft u de database namen op, gescheiden door spaties.
+Als u een back-up wilt maken van een of meer data bases, gebruikt u de `--database` Switch en geeft u de database namen op, gescheiden door spaties:
 
 ```
 $ mysqldump --ssl-cert=</path/to/pem>  -h mydemoserver.mysql.database.azure.com -u myserveradmin -p --databases testdb1 testdb3 testdb5 > testdb135_backup.sql
 ```
 
-###  <a name="restore-your-database-or-tables"></a>Uw data base of tabellen herstellen
+### <a name="restore-your-database-or-tables"></a>Uw data base of tabellen herstellen
 
-In de volgende stappen ziet u hoe TP uw data base of tabellen herstelt. Zodra het back-upbestand is gemaakt, kunt u de tabel of data bases herstellen met het hulp programma ***MySQL** . Voer de opdracht uit zoals hieronder wordt weer gegeven:
+De volgende stappen laten zien hoe u uw data base of tabellen kunt herstellen. Nadat u het back-upbestand hebt gemaakt, kunt u de tabellen of data bases herstellen met behulp van het hulp programma mysql. Voer deze opdracht uit:
 
 ```
 mysql  --ssl-cert=</path/to/pem> -h [hostname] -u [uname] -p[pass] [db_to_restore] < [backupfile.sql]
 ```
-Hier volgt een voor beeld van het terugzetten ```testdb``` van een back-upbestand dat is gemaakt met **mysqldump**. 
+Hier volgt een voor beeld van het terugzetten `testdb` van een back-upbestand dat is gemaakt met mysqldump: 
 
 > [!Important]
-> - Voor een enkele server gebruikt u de indeling ```admin-user@servername``` die u ```myserveradmin``` in de onderstaande opdracht wilt vervangen.
-> - Voor een flexibele server gebruikt u de indeling ```admin-user``` die u ```myserveradmin``` in de onderstaande opdracht wilt vervangen. 
+> - Voor één server gebruikt u de indeling `admin-user@servername` voor vervangen `myserveradmin` in de volgende opdracht.
+> - Voor een flexibele server gebruikt u de indeling ```admin-user``` voor vervangen `myserveradmin` in de volgende opdracht. 
 
 ```
 $ mysql --ssl-cert=</path/to/pem> -h mydemoserver.mysql.database.azure.com -u myserveradmin -p testdb < testdb_backup.sql
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Als de bovenstaande stappen niet helpen om het probleem op te lossen, kunt u altijd de volledige server herstellen.
-- [Een Azure Database for MySQL één server herstellen](howto-restore-server-portal.md)
-- [Een Azure Database for MySQL flexibele server herstellen](flexible-server/how-to-restore-server-portal.md)
+Als de voor gaande stappen het probleem niet verhelpen, kunt u altijd de volledige server herstellen:
+- [Server herstellen in Azure Database for MySQL-één server](howto-restore-server-portal.md)
+- [Server herstellen in Azure Database for MySQL-flexibele server](flexible-server/how-to-restore-server-portal.md)
 
 
 

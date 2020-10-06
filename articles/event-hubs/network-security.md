@@ -3,12 +3,12 @@ title: Netwerk beveiliging voor Azure Event Hubs
 description: In dit artikel wordt beschreven hoe u toegang kunt configureren vanaf privé-eind punten
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: ddb816e872625da06e370a7e130b4dd444de8de7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ae6cbdc8258cde9bb2da961cb452f996f0797cfe
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521850"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767793"
 ---
 # <a name="network-security-for-azure-event-hubs"></a>Netwerk beveiliging voor Azure Event Hubs 
 In dit artikel wordt beschreven hoe u de volgende beveiligings functies gebruikt met Azure Event Hubs: 
@@ -16,7 +16,7 @@ In dit artikel wordt beschreven hoe u de volgende beveiligings functies gebruikt
 - Servicetags
 - IP-firewall regels
 - Netwerk service-eind punten
-- Persoonlijke eind punten (preview-versie)
+- Privé-eindpunten
 
 
 ## <a name="service-tags"></a>Servicetags
@@ -74,9 +74,6 @@ Een persoonlijk eind punt is een netwerk interface waarmee u privé en veilig ku
 
 > [!NOTE]
 > Deze functie wordt alleen ondersteund met de **toegewezen** laag. Zie [overzicht van Event hubs dedicated](event-hubs-dedicated-overview.md)voor meer informatie over de toegewezen laag. 
->
-> Deze functie is momenteel beschikbaar als **Preview-versie**. 
-
 
 Zie voor meer informatie [privé-eind punten configureren voor een event hub](private-link-service.md)
 

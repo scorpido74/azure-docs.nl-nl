@@ -8,20 +8,20 @@ ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-js
-ms.openlocfilehash: dd0d3e462f0b2d8b525e63d65d657a8f056d01a9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0438632a36fe14d35210cb5acb8d3a50d0f038b7
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331859"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767827"
 ---
 # <a name="write-client-app-authentication-code"></a>Verificatie code voor client-app schrijven
 
 Nadat u [een Azure Digital apparaatdubbels-exemplaar en-verificatie hebt ingesteld](how-to-set-up-instance-portal.md), kunt u een client toepassing maken die u gaat gebruiken om te communiceren met het exemplaar. Zodra u een eerste client project hebt ingesteld, wordt in dit artikel **beschreven hoe u code in die client-app schrijft om deze te verifiëren voor** het Azure Digital apparaatdubbels-exemplaar.
 
 Er zijn twee benaderingen van voorbeeld code in dit artikel. U kunt de optie gebruiken die geschikt is voor u, afhankelijk van de taal van uw keuze:
-* De eerste sectie van de voorbeeld code maakt gebruik van de Azure Digital Apparaatdubbels .NET (C#) SDK. De SDK maakt deel uit van de Azure-SDK voor .NET en bevindt zich hier: [*Azure IOT Digital-client bibliotheek voor .net*](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core).
-* Het tweede gedeelte van de voorbeeld code is voor gebruikers die niet gebruikmaken van de .NET-SDK en in plaats daarvan gebruikmaken van autorest-gegenereerde Sdk's in andere talen. Zie [*How to: aangepaste sdk's voor Azure Digital Apparaatdubbels maken met auto rest*](how-to-create-custom-sdks.md)voor meer informatie over deze strategie.
+* De eerste sectie van de voorbeeld code maakt gebruik van de Azure Digital Apparaatdubbels .NET (C#) SDK. De SDK maakt deel uit van de Azure-SDK voor .NET en bevindt zich hier: [*Azure IOT Digital-client bibliotheek voor .net*](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). Er zijn ook ondersteunde Sdk's voor [Java](https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0-beta.1/jar ) en [Java script](https://www.npmjs.com/package/@azure/digital-twins/v/1.0.0-preview.1), die op een vergelijk bare manier kunnen worden gebruikt.
+* Het tweede gedeelte van de voorbeeld code is bedoeld voor gebruikers die geen gebruik maken van een geleverde SDK en in plaats daarvan gebruikmaken van autorest-gegenereerde Sdk's in andere talen. Zie [*How to: aangepaste sdk's voor Azure Digital Apparaatdubbels maken met auto rest*](how-to-create-custom-sdks.md)voor meer informatie over deze strategie.
 
 Meer informatie over de Api's en Sdk's voor Azure Digital Apparaatdubbels vindt u in [*procedures: gebruik de Azure Digital apparaatdubbels-api's en sdk's*](how-to-use-apis-sdks.md).
 
@@ -32,6 +32,8 @@ Voltooi eerst de installatie stappen in [*instructies: een exemplaar en verifica
 Als u wilt door gaan, hebt u een client-app-project nodig waarin u uw code schrijft. Als u nog geen client-app-project hebt ingesteld, maakt u een eenvoudig project in de taal van uw keuze voor gebruik in deze zelf studie.
 
 ## <a name="authentication-and-client-creation-net-c-sdk"></a>Verificatie en client maken: .NET (C#) SDK
+
+In deze sectie ziet u een voor beeld in C# voor het gebruik van de meegeleverde .NET SDK.
 
 Neem eerst de volgende pakketten op in uw project om de .NET SDK en verificatie hulpprogramma's te gebruiken voor deze procedure:
 * `Azure.DigitalTwins.Core`
@@ -100,7 +102,7 @@ Als u verificatie in een functie wilt gebruiken, moet u ook rekening houden met 
 
 ## <a name="authentication-with-an-autorest-generated-sdk"></a>Verificatie met een autorest-gegenereerde SDK
 
-Als u .NET niet gebruikt, kunt u ervoor kiezen om een SDK-bibliotheek te bouwen in een taal van uw keuze, zoals beschreven in [*How to: aangepaste sdk's voor Azure Digital Apparaatdubbels maken met auto rest*](how-to-create-custom-sdks.md).
+Als u niet een van de meegeleverde Sdk's (.NET, Java, java script) gebruikt, kunt u ervoor kiezen om een SDK-bibliotheek te bouwen in een taal van uw keuze, zoals beschreven in [*How to: aangepaste sdk's voor Azure Digital Apparaatdubbels maken met auto rest*](how-to-create-custom-sdks.md).
 
 In deze sectie wordt uitgelegd hoe u in dat geval verifieert.
 

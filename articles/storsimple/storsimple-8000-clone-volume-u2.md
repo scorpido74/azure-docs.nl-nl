@@ -10,12 +10,12 @@ ms.devlang: NA
 ms.topic: how-to
 ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 86a3e2ab15e83f5393315f75f37ad8b41d3489b2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5ebb7f1d9440bc7a8b75afe64403762532213c1d
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496142"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767575"
 ---
 # <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-clone-a-volume"></a>StorSimple Device Manager-service in Azure-portal gebruiken om een volume te klonen
 
@@ -64,11 +64,11 @@ Voer de volgende stappen uit om een kloon van uw volume te maken uit de back-upc
 
       De back-ups die zijn gekoppeld aan het geselecteerde volume of back-upbeleid, moeten worden weer gegeven in de lijst met back-upsets.
    
-      ![Lijst met back-upsets](./media/storsimple-8000-clone-volume-u2/bucatalog.png)
+      ![Lijst met back-upsets 2](./media/storsimple-8000-clone-volume-u2/bucatalog.png)
      
 3. Vouw de back-upset uit om het bijbehorende volume weer te geven en selecteer een volume in een back-upset. Klik met de rechter muisknop en selecteer vervolgens **klonen**in het context menu.
 
-   ![Lijst met back-upsets](./media/storsimple-8000-clone-volume-u2/clonevol3b.png) 
+   ![Lijst met back-upsets 3](./media/storsimple-8000-clone-volume-u2/clonevol3b.png) 
 
 3. Voer de volgende stappen uit op de Blade **klonen** :
    
@@ -84,17 +84,17 @@ Voer de volgende stappen uit om een kloon van uw volume te maken uit de back-upc
           
    3. Geef onder **verbonden hosts**een Access Control record op (ACR) voor de kloon. U kunt een nieuwe ACR toevoegen of uit de bestaande lijst kiezen. De ACR bepaalt welke hosts toegang tot deze kloon hebben.
       
-       ![Lijst met back-upsets](./media/storsimple-8000-clone-volume-u2/clonevol3a.png) 
+       ![Lijst met back-upsets 4](./media/storsimple-8000-clone-volume-u2/clonevol3a.png) 
 
    4. Klik op **klon** om de bewerking te volt ooien.
 
 4. Er wordt een kloon taak gestart en u wordt gewaarschuwd wanneer de kloon is gemaakt. Klik op de taak melding of ga naar de Blade **taken** om de kloon taak te controleren.
 
-    ![Lijst met back-upsets](./media/storsimple-8000-clone-volume-u2/clonevol5.png)
+    ![Lijst met back-upsets 5](./media/storsimple-8000-clone-volume-u2/clonevol5.png)
 
 7. Nadat de kloon taak is voltooid, gaat u naar het apparaat en klikt u vervolgens op **volumes**. In de lijst met volumes ziet u de kloon die zojuist is gemaakt in dezelfde volume container die het bron volume heeft.
 
-    ![Lijst met back-upsets](./media/storsimple-8000-clone-volume-u2/clonevol6.png)
+    ![Lijst met back-upsets 6](./media/storsimple-8000-clone-volume-u2/clonevol6.png)
 
 Een kloon die op deze manier wordt gemaakt, is een tijdelijke kloon. Zie [tijdelijke en permanente klonen](#transient-vs-permanent-clones)voor meer informatie over typen klonen.
 

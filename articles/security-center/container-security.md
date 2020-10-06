@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
 ms.openlocfilehash: 6b57428aeba702dc8cf06ec4ae7984854a94ac7a
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91449168"
 ---
 # <a name="container-security-in-security-center"></a>Containerbeveiliging in Security Center
@@ -48,7 +48,7 @@ In de volgende schermopname ziet u de pagina voor de inventarisatie van activa e
 
 Als u de installatiekopieën in uw op Azure Resource Manager gebaseerde Azure-containerregisters wilt bewaken, schakelt u [Azure Defender voor containerregisters](defender-for-container-registries-introduction.md) in. Security Center scant alle installatiekopieën die in de afgelopen 30 dagen zijn opgehaald, naar uw register zijn gepusht of zijn geïmporteerd. De geïntegreerde scanner wordt verschaft door de toonaangevende leverancier voor het scannen op beveiligingsproblemen, Qualys.
 
-Als er problemen worden gevonden door Qualys of Security Center, ontvangt u een melding in het [Azure Defender-dashboard](azure-defender-dashboard.md). Security Center biedt bij elk beveiligingsprobleem praktische aanbevelingen, maar ook een classificatie van de ernst en richtlijnen voor het oplossen van het probleem. Zie de [naslaglijst met aanbevelingen](recommendations-reference.md#recs-containers) voor meer informatie over de aanbevelingen van Security Center voor containers.
+Als er problemen worden gevonden door Qualys of Security Center, ontvangt u een melding in het [Azure Defender-dashboard](azure-defender-dashboard.md). Security Center biedt bij elk beveiligingsprobleem praktische aanbevelingen, maar ook een classificatie van de ernst en richtlijnen voor het oplossen van het probleem. Zie voor meer informatie over de aanbevelingen van Security Center voor containers de [Verwijzingenlijst met aanbevelingen](recommendations-reference.md#recs-containers).
 
 Security Center filtert en classificeert de resultaten van de scanner. Wanneer een installatiekopie in orde is, wordt deze als zodanig gemarkeerd door Security Center. Security Center genereert alleen aanbevelingen voor de beveiliging ten aanzien van installatiekopieën waarvoor problemen moeten worden opgelost. Als er bij problemen alleen een melding wordt weergegeven, vermindert Security Center het potentieel voor ongewenste informatieve waarschuwingen.
 
