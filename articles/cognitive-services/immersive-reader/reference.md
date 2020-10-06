@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: aa85f1323795098d161e6bfb1b9cf9237b2a5501
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: dbd5724797fdaf44d147d2f29362b1e5092728dd
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330601"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761546"
 ---
 # <a name="immersive-reader-javascript-sdk-reference-v11"></a>Naslag informatie voor de Inge sloten Reader java script SDK (v 1.1)
 
@@ -50,7 +50,7 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 | `content` | [Inhoud](#content) | Een object met de inhoud die in de insluitende lezer moet worden weer gegeven. |
 | `options` | [Opties](#options) | Opties voor het configureren van bepaald gedrag van de insluitende lezer. Optioneel. |
 
-#### <a name="returns"></a>Retouren
+#### <a name="returns"></a>Retourneert
 
 Retourneert een `Promise<LaunchResponse>` , die wordt omgezet wanneer de insluitende lezer wordt geladen. De wordt `Promise` omgezet in een- [`LaunchResponse`](#launchresponse) object.
 
@@ -135,7 +135,7 @@ Opties voor het weer geven van de knoppen voor insluitende lezer.
 | ------- | ---- | ----------- |
 | opties | HTMLDivElement[] | Elementen voor het weer geven van de insluitende lezer in. |
 
-##### `-elements`
+##### `elements`
 ```Parameters
 Type: HTMLDivElement[]
 Required: false
@@ -210,14 +210,14 @@ Bevat de inhoud die in de insluitende lezer moet worden weer gegeven.
 | title | Tekenreeks | Titel tekst die boven aan de insluitende lezer wordt weer gegeven (optioneel) |
 | segmenten | [Segment []](#chunk) | Matrix van segmenten |
 
-##### `-title`
+##### `title`
 ```Parameters
 Type: String
 Required: false
 Default value: "Immersive Reader" 
 ```
 
-##### `-chunks`
+##### `chunks`
 ```Parameters
 Type: Chunk[]
 Required: true
@@ -246,21 +246,21 @@ Eén gegevens segment dat wordt door gegeven aan de inhoud van de insluitende le
 | lang | Tekenreeks | De taal van de tekst is de waarde in de indeling van de taal code van de IETF BCP 47, bijvoorbeeld en, es-ES. De taal wordt automatisch gedetecteerd als deze niet is opgegeven. Zie [Ondersteunde talen](#supported-languages) voor meer informatie. |
 | MIME type | tekenreeks | Onbewerkte tekst, MathML, HTML & micro soft Word DOCX-indelingen worden ondersteund. Zie [ondersteunde MIME-typen](#supported-mime-types) voor meer informatie. |
 
-##### `-content`
+##### `content`
 ```Parameters
 Type: String
 Required: true
 Default value: null 
 ```
 
-##### `-lang`
+##### `lang`
 ```Parameters
 Type: String
 Required: false
 Default value: Automatically detected 
 ```
 
-##### `-mimeType`
+##### `mimeType`
 ```Parameters
 Type: String
 Required: false
@@ -308,14 +308,14 @@ Bevat eigenschappen die bepaald gedrag van de insluitende lezer configureren.
 | Naam | Type | Beschrijving |
 | ---- | ---- |------------ |
 | uiLang | Tekenreeks | Taal van de gebruikers interface, de waarde is in de indeling van de code van het IETF BCP 47-taal label, bijvoorbeeld en, es-ES. De standaard instelling is browser taal als deze niet is opgegeven. |
-| timeout | Getal | De duur (in milliseconden) voordat [launchAsync](#launchasync) mislukt met een time-outfout (de standaard waarde is 15000 MS). Deze time-out is alleen van toepassing op de eerste keer dat de lees pagina wordt gestart, waar succes wordt waargenomen wanneer de lees pagina wordt geopend en het kring veld wordt gestart. De aanpassing van de time-out moet niet nodig zijn. |
-| uiZIndex | Getal | Z-index van het iframe dat wordt gemaakt (de standaard waarde is 1000). |
-| useWebview | Boolean-waarde| Gebruik een webweergave-tag in plaats van een IFRAME voor compatibiliteit met Chrome-apps (de standaard waarde is False). |
+| timeout | Aantal | De duur (in milliseconden) voordat [launchAsync](#launchasync) mislukt met een time-outfout (de standaard waarde is 15000 MS). Deze time-out is alleen van toepassing op de eerste keer dat de lees pagina wordt gestart, waar succes wordt waargenomen wanneer de lees pagina wordt geopend en het kring veld wordt gestart. De aanpassing van de time-out moet niet nodig zijn. |
+| uiZIndex | Aantal | Z-index van het iframe dat wordt gemaakt (de standaard waarde is 1000). |
+| useWebview | Boolean| Gebruik een webweergave-tag in plaats van een IFRAME voor compatibiliteit met Chrome-apps (de standaard waarde is False). |
 | Verlaten | Functie | Wordt uitgevoerd wanneer de insluitende lezer wordt afgesloten. |
-| allowFullscreen | Boolean-waarde | De mogelijkheid om fullscreen te wisselen (standaard waarde is True). |
-| hideExitButton | Boolean-waarde | Hiermee wordt aangegeven of de pijl voor de afsluit knop van de insluitende lezer moet worden verborgen (de standaard waarde is False). Dit moet alleen waar zijn als er een alternatief mechanisme beschikbaar is voor het afsluiten van de insluitende lezer (bijvoorbeeld de pijl van een mobiele werk balk). |
+| allowFullscreen | Boolean | De mogelijkheid om fullscreen te wisselen (standaard waarde is True). |
+| hideExitButton | Boolean | Hiermee wordt aangegeven of de pijl voor de afsluit knop van de insluitende lezer moet worden verborgen (de standaard waarde is False). Dit moet alleen waar zijn als er een alternatief mechanisme beschikbaar is voor het afsluiten van de insluitende lezer (bijvoorbeeld de pijl van een mobiele werk balk). |
 | cookiePolicy | [CookiePolicy](#cookiepolicy-options) | Instelling voor het cookie gebruik van de insluitende lezer (de standaard waarde is *CookiePolicy. Disable*). Het is de verantwoordelijkheid van de hosttoepassing om elke vereiste toestemming van de gebruiker te verkrijgen in overeenstemming met het nalevings beleid van de EU-cookie. Zie [cookie-beleids opties](#cookiepolicy-options). |
-| disableFirstRun | Boolean-waarde | Schakel de eerste sessie uit. |
+| disableFirstRun | Boolean | Schakel de eerste sessie uit. |
 | readAloudOptions | [ReadAloudOptions](#readaloudoptions) | Opties voor het configureren van hardop voor lezen. |
 | translationOptions | [TranslationOptions](#translationoptions) | Opties voor het configureren van de vertaling. |
 | displayOptions | [DisplayOptions](#displayoptions) | Opties voor het configureren van tekst grootte, letter type, enzovoort. |
@@ -323,38 +323,38 @@ Bevat eigenschappen die bepaald gedrag van de insluitende lezer configureren.
 | onPreferencesChanged | Functie | Wordt uitgevoerd wanneer de voor keuren van de gebruiker zijn gewijzigd. Zie [How-to Store User Preferences (Engelstalig)](./how-to-store-user-preferences.md) voor meer informatie. |
 | customDomain | Tekenreeks | Gereserveerd voor intern gebruik. Aangepast domein waarin de insluitende Reader webapp wordt gehost (standaard is null). |
 
-##### `-uiLang`
+##### `uiLang`
 ```Parameters
 Type: String
 Required: false
 Default value: User's browser language 
 ```
 
-##### `-timeout`
+##### `timeout`
 ```Parameters
 Type: Number
 Required: false
 Default value: 15000
 ```
 
-##### `-uiZIndex`
+##### `uiZIndex`
 ```Parameters
 Type: Number
 Required: false
 Default value: 1000
 ```
 
-##### `-onExit`
+##### `onExit`
 ```Parameters
 Type: Function
 Required: false
 Default value: null
 ```
 
-##### `-preferences`
+##### `preferences`
 
 > [!CAUTION]
-> **Belang rijk** Probeer niet programmatisch de waarden te wijzigen van de `-preferences` teken reeks die wordt verzonden naar en van de toepassing voor insluitende lezer. Dit kan leiden tot onverwacht gedrag als gevolg van een gedegradeerde gebruikers ervaring voor uw klanten.
+> **Belang rijk** Probeer niet programmatisch de waarden te wijzigen van de `-preferences` teken reeks die wordt verzonden naar en van de toepassing voor insluitende lezer. Dit kan leiden tot onverwacht gedrag als gevolg van een gedegradeerde gebruikers ervaring voor uw klanten. Hosttoepassingen mogen nooit een aangepaste waarde toewijzen aan of de `-preferences` teken reeks bewerken. `-preferences`Gebruik de optie teken reeks om alleen de exacte waarde te gebruiken die is geretourneerd met de `-onPreferencesChanged` optie terugbellen.
 
 ```Parameters
 Type: String
@@ -362,14 +362,14 @@ Required: false
 Default value: null
 ```
 
-##### `-onPreferencesChanged`
+##### `onPreferencesChanged`
 ```Parameters
 Type: Function
 Required: false
 Default value: null
 ```
 
-##### `-customDomain`
+##### `customDomain`
 ```Parameters
 Type: String
 Required: false
@@ -393,10 +393,10 @@ type ReadAloudOptions = {
 | Naam | Type | Beschrijving |
 | ---- | ---- |------------ |
 | stem | Tekenreeks | Stem, "vrouwelijk" of "mannelijk". Houd er rekening mee dat niet alle talen zowel geslachten ondersteunen. |
-| snelheid | Getal | De afspeel snelheid moet liggen tussen 0,5 en 2,5. |
-| Zorgen | Boolean-waarde | Automatisch hardop lezen starten wanneer de insluitende lezer wordt geladen. |
+| snelheid | Aantal | De afspeel snelheid moet liggen tussen 0,5 en 2,5. |
+| Zorgen | Boolean | Automatisch hardop lezen starten wanneer de insluitende lezer wordt geladen. |
 
-##### `-voice`
+##### `voice`
 ```Parameters
 Type: String
 Required: false
@@ -404,7 +404,7 @@ Default value: "Female" or "Male" (determined by language)
 Values available: "Female", "Male"
 ```
 
-##### `-speed`
+##### `speed`
 ```Parameters
 Type: Number
 Required: false
@@ -432,10 +432,10 @@ type TranslationOptions = {
 | Naam | Type | Beschrijving |
 | ---- | ---- |------------ |
 | language | Tekenreeks | Hiermee stelt u de taal van de vertaling in, de waarde is in de indeling van de taal code van de IETF BCP 47, bijvoorbeeld fr-FR, es-MX, zh-Hans-CN. Vereist om automatische vertaling van woorden of documenten in te scha kelen. |
-| autoEnableDocumentTranslation | Boolean-waarde | Het hele document automatisch vertalen. |
-| autoEnableWordTranslation | Boolean-waarde | Automatische vertaling van woorden inschakelen. |
+| autoEnableDocumentTranslation | Boolean | Het hele document automatisch vertalen. |
+| autoEnableWordTranslation | Boolean | Automatische vertaling van woorden inschakelen. |
 
-##### `-language`
+##### `language`
 ```Parameters
 Type: String
 Required: true
@@ -459,11 +459,11 @@ type DisplayOptions = {
 
 | Naam | Type | Beschrijving |
 | ---- | ---- |------------ |
-| textSize | Getal | Hiermee stelt u de gekozen tekst grootte. |
-| increaseSpacing | Boolean-waarde | Hiermee wordt ingesteld of tekst afstand wordt in-of uitgeschakeld. |
+| textSize | Aantal | Hiermee stelt u de gekozen tekst grootte. |
+| increaseSpacing | Boolean | Hiermee wordt ingesteld of tekst afstand wordt in-of uitgeschakeld. |
 | fontFamily | Tekenreeks | Hiermee stelt u het gekozen letter type (' Calibri ', ' ComicSans ' of ' Sitka '). |
 
-##### `-textSize`
+##### `textSize`
 ```Parameters
 Type: Number
 Required: false
@@ -471,7 +471,7 @@ Default value: 20, 36 or 42 (Determined by screen size)
 Values available: 14, 20, 28, 36, 42, 48, 56, 64, 72, 84, 96
 ```
 
-##### `-fontFamily`
+##### `fontFamily`
 ```Parameters
 Type: String
 Required: false
@@ -493,22 +493,22 @@ enum CookiePolicy { Disable, Enable }
 
 | Instelling | Type | Beschrijving |
 | ------- | ---- | ----------- |
-| textSize | Getal | Hiermee stelt u de gekozen tekst grootte. |
+| textSize | Aantal | Hiermee stelt u de gekozen tekst grootte. |
 | fontFamily | Tekenreeks | Hiermee stelt u het gekozen letter type (' Calibri ', ' ComicSans ' of ' Sitka '). |
-| textSpacing | Getal | Hiermee wordt ingesteld of tekst afstand wordt in-of uitgeschakeld. |
-| formattingEnabled | Boolean-waarde | Hiermee wordt ingesteld of HTML-opmaak wordt in-of uitgeschakeld. |
+| textSpacing | Aantal | Hiermee wordt ingesteld of tekst afstand wordt in-of uitgeschakeld. |
+| formattingEnabled | Boolean | Hiermee wordt ingesteld of HTML-opmaak wordt in-of uitgeschakeld. |
 | ThemeName | Tekenreeks | Hiermee stelt u het gekozen thema (bijvoorbeeld ' licht ', ' donker '...). |
-| syllabificationEnabled | Boolean-waarde | Hiermee wordt ingesteld of syllabification is in-of uitgeschakeld. |
-| nounHighlightingEnabled | Boolean-waarde | Hiermee stelt u in of het markeren van zelfstandig naam woord wordt in-of uitgeschakeld. |
+| syllabificationEnabled | Boolean | Hiermee wordt ingesteld of syllabification is in-of uitgeschakeld. |
+| nounHighlightingEnabled | Boolean | Hiermee stelt u in of het markeren van zelfstandig naam woord wordt in-of uitgeschakeld. |
 | nounHighlightingColor | Tekenreeks | Hiermee stelt u de gekozen kleur voor de uitnaam van de uitwoording. |
-| verbHighlightingEnabled | Boolean-waarde | Hiermee wordt ingesteld of het markeren van woorden wordt in-of uitgeschakeld. |
+| verbHighlightingEnabled | Boolean | Hiermee wordt ingesteld of het markeren van woorden wordt in-of uitgeschakeld. |
 | verbHighlightingColor | Tekenreeks | Hiermee stelt u de markerings kleur van de gekozen term in. |
-| adjectiveHighlightingEnabled | Boolean-waarde | Hiermee wordt ingesteld of het markeren van de samenvoegings functie is in-of uitgeschakeld. |
+| adjectiveHighlightingEnabled | Boolean | Hiermee wordt ingesteld of het markeren van de samenvoegings functie is in-of uitgeschakeld. |
 | adjectiveHighlightingColor | Tekenreeks | Hiermee stelt u de gekozen kleur voor de markering van de bijnaam. |
-| adverbHighlightingEnabled | Boolean-waarde | Hiermee wordt ingesteld of het markeren van de belichtingen moet worden in-of uitgeschakeld. |
+| adverbHighlightingEnabled | Boolean | Hiermee wordt ingesteld of het markeren van de belichtingen moet worden in-of uitgeschakeld. |
 | adverbHighlightingColor | Tekenreeks | Hiermee stelt u de geselecteerde belichtings kleur voor de markering in. |
-| pictureDictionaryEnabled | Boolean-waarde | Hiermee stelt u in of afbeeldings woordenlijst moet worden in-of uitgeschakeld. |
-| posLabelsEnabled | Boolean-waarde | Hiermee wordt ingesteld of het tekst label Super script van elk gemarkeerd deel van de spraak wordt in-of uitgeschakeld.  |
+| pictureDictionaryEnabled | Boolean | Hiermee stelt u in of afbeeldings woordenlijst moet worden in-of uitgeschakeld. |
+| posLabelsEnabled | Boolean | Hiermee wordt ingesteld of het tekst label Super script van elk gemarkeerd deel van de spraak wordt in-of uitgeschakeld.  |
 
 <br>
 

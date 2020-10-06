@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 375191bbe6f45189fba50ea927454c0ec4f64678
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 55269b45159210eec2ec7a6dd8eaea661ff13ebd
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936026"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760303"
 ---
 # <a name="upload-billing-data-to-azure-and-view-it-in-the-azure-portal"></a>Upload facturerings gegevens naar Azure en Bekijk deze in de Azure Portal
 
@@ -30,7 +30,7 @@ In de toekomst zijn er twee modi waarin u uw Azure Arc-gegevens Services kunt ui
 - **Indirect verbonden** : er is geen rechtstreekse verbinding met Azure. Gegevens worden alleen verzonden naar Azure via een export-en upload proces. Alle Azure Arc Data Services-implementaties werken in deze modus vandaag nog in de preview-versie.
 - **Direct verbonden** -in deze modus is er een afhankelijkheid van de Azure Arc enabled Kubernetes-service om een directe verbinding te bieden tussen Azure en het Kubernetes-cluster waarop de Azure-Arc-gegevens services worden uitgevoerd. Hiermee worden meer mogelijkheden ingeschakeld en kunt u ook de Azure Portal en de Azure CLI gebruiken voor het beheren van uw gegevens services van Azure Arc, net zoals u uw gegevens Services beheert in azure PaaS.  Deze connectiviteits modus is nog niet beschikbaar in de preview-versie, maar binnenkort wel.
 
-U vindt meer informatie over het verschil tussen de [connectiviteits modi](/docs/connectivity.md).
+U vindt meer informatie over het verschil tussen de [connectiviteits modi](https://docs.microsoft.com/azure/azure-arc/data/connectivity).
 
 In de indirect verbonden modus worden facturerings gegevens periodiek vanuit de Azure-Arc-gegevens controller naar een beveiligd bestand geëxporteerd en vervolgens geüpload naar Azure en verwerkt.  In de aanstaande, direct verbonden modus worden de facturerings gegevens automatisch ongeveer 1/uur verzonden naar Azure om een nabije real-time weer gave te geven van de kosten van uw services. Het proces voor het exporteren en uploaden van de gegevens in de indirect verbonden modus kan ook worden geautomatiseerd met behulp van scripts of we kunnen een service bouwen die deze voor u zal doen.
 
@@ -40,7 +40,7 @@ Als u facturerings gegevens wilt uploaden naar Azure, moet u eerst het volgende 
 
 1. Maak een Azure Arc-gegevens service als u er nog geen hebt. Maak bijvoorbeeld een van de volgende opties:
    - [Een door Azure SQL beheerd exemplaar maken op Azure Arc](create-sql-managed-instance.md)
-   - [Een Azure-PostgreSQL grootschalige-Server groep maken](create-postgresql-hyperscale-server-group.md)
+   - [Een PostgreSQL Hyperscale-servergroep met Azure Arc maken](create-postgresql-hyperscale-server-group.md)
 1. [Upload resource-inventaris, gebruiks gegevens, metrische gegevens en logboeken naar Azure monitor](upload-metrics-and-logs-to-azure-monitor.md) als u dat nog niet hebt gedaan.
 1. Wacht ten minste 2 uur nadat de gegevens service is gemaakt, zodat het verzamelings proces facturering enkele facturerings gegevens kan verzamelen.
 

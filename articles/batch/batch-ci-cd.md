@@ -5,12 +5,12 @@ author: chrisreddington
 ms.author: chredd
 ms.date: 03/28/2019
 ms.topic: how-to
-ms.openlocfilehash: d125427a3b2e519e909aad9e6f9cf08a963d2d46
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: 2ad148579daa30d62da01aded0a01ace56f3dcbc
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91461526"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760560"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>Gebruik Azure-pijp lijnen om HPC-oplossingen te bouwen en te implementeren
 
@@ -291,7 +291,7 @@ U kunt ook meer te weten komen over [het maken van gekoppelde Azure Resource Man
 
 De infra structuur en software kunnen worden gedefinieerd als code en worden opgenomen in dezelfde opslag plaats.
 
-Voor deze oplossing wordt het ffmpeg gebruikt als het toepassings pakket. Het ffmpeg-pakket kan [hier](https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-3.4-win64-static.zip)worden gedownload.
+Voor deze oplossing wordt het ffmpeg gebruikt als het toepassings pakket. Het ffmpeg-pakket kan [hier](https://www.videohelp.com/software?d=ffmpeg-3.3.4-win64-static.zip)worden gedownload.
 
 ![Voor beeld van Git-opslag structuur](media/batch-ci-cd/git-repository.jpg)
 

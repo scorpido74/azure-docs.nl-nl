@@ -100,6 +100,8 @@
           href: rbac-migration.md
         - name: Toegangsproblemen oplossen
           href: troubleshooting-access-issues.md
+    - name: Logboekregistratie inschakelen
+      href: howto-logging.md
     - name: Ontwikkelen
       items:
         - name: Gids voor Azure Key Vault-ontwikkelaars

@@ -6,14 +6,14 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.date: 07/20/2020
+ms.date: 10/02/2020
 tags: connectors
-ms.openlocfilehash: f3de582ff69dbd57aa4692fd5c3901602569cf9e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b832edca79cbbff39b7d526a21b1fbe95bd7a2ad
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286611"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761121"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>SFTP-bestanden bewaken, maken en beheren met behulp van SSH en Azure Logic Apps
 
@@ -179,7 +179,7 @@ Als u een bestand op uw SFTP-server wilt maken, kunt u de actie SFTP-SSH- **best
 
    -of-
 
-   Voor bestaande Logic apps, onder de laatste stap waar u een actie wilt toevoegen, selecteert u **nieuwe stap**. Voer in het zoekvak in `sftp ssh` als uw filter. Selecteer in de lijst acties de gewenste actie.
+   Voor bestaande Logic apps, onder de laatste stap waar u een actie wilt toevoegen, selecteert u **nieuwe stap**. Voer in het zoekvak `sftp ssh` als uw filter in. Selecteer in de lijst acties de gewenste actie.
 
    Als u een actie tussen stappen wilt toevoegen, plaatst u de muis aanwijzer op de pijl tussen de stappen. Selecteer het plus teken ( **+** ) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
 
@@ -252,6 +252,22 @@ Als u het verplaatsen van het bestand niet kunt voor komen of vertragen, kunt u 
 1. Open in de actie **bestand maken** de lijst **nieuwe para meter toevoegen** , selecteer de eigenschap **alle meta gegevens van het bestand ophalen** en stel de waarde in op **Nee**.
 
 1. Als u later de meta gegevens van dit bestand nodig hebt, kunt u de actie **bestand meta gegevens ophalen** gebruiken.
+
+### <a name="504-error-a-connection-attempt-failed-because-the-connected-party-did-not-properly-respond-after-a-period-of-time-or-established-connection-failed-because-connected-host-has-failed-to-respond-or-request-to-the-sftp-server-has-taken-more-than-000030-seconds"></a>504 fout: ' een verbindings poging is mislukt omdat de verbonden partij niet op de juiste manier heeft gereageerd of een verbinding tot stand is gebracht, omdat de verbinding met de SFTP-server meer dan 00:00:30 seconden heeft plaatsgevonden
+
+Deze fout kan optreden wanneer de logische app geen verbinding kan maken met de SFTP-server. Er kunnen verschillende redenen zijn om het probleem op te lossen met de volgende aspecten. 
+
+1. De time-out van de verbinding is 20 seconden. Zorg ervoor dat de SFTP-server goede prestaties heeft en dat de intermidiate-apparaten, zoals firewall, niet veel overhead toevoegen. 
+
+2. Als er een firewall is betrokken, controleert u of de IP-adressen van de **beheerde connector** white list zijn. U kunt deze IP-adressen voor de regio van de logische app vinden [**hier**] (https://docs.microsoft.com/azure/logic-apps/logic-apps-limits-and-config#multi-tenant-azure---outbound-ip-addresses)
+
+3. Als dit een onregelmatig probleem is, moet u de instelling voor opnieuw proberen testen om te zien of een hoger aantal nieuwe pogingen dan de standaard 4 mogelijk zou zijn.
+
+4. Controleer of de SFTP-server een limiet voor het aantal verbindingen van elk IP-adres heeft. Als dat het geval is, moet u mogelijk het aantal gelijktijdige logische app-exemplaren beperken. 
+
+5. De eigenschap [**' ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval) wordt verhoogd naar een waarde van 1 uur in de SSH-configuratie op uw SFTP-server om de kosten voor de verbindings inrichting te verminderen.
+
+6. U kunt het SFTP-server logboek controleren om te zien of de aanvraag van de logische app de SFTP-server ooit heeft bereikt. Mogelijk neemt u ook netwerk tracering op uw firewall en uw SFTP-server op om verder te gaan met het connectiviteits probleem.
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 

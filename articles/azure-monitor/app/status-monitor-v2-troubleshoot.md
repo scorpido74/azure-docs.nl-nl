@@ -5,18 +5,17 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 07b5ae99b98c6c6bbf4dc903cd1b583eb655a825
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: df8ebd97ed9e34e0fce85a50297c595732057115
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87041395"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761461"
 ---
 # <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Problemen met Application Insights agent oplossen (voorheen Status Monitor v2 genoemd)
 
 Wanneer u controle inschakelt, kunt u problemen ondervinden die het verzamelen van gegevens verhinderen.
 In dit artikel worden alle bekende problemen beschreven en vindt u voor beelden van problemen oplossen.
-Als u een probleem ondervindt dat hier niet wordt vermeld, kunt u contact met ons opnemen op [github](https://github.com/Microsoft/ApplicationInsights-Home/issues).
 
 ## <a name="known-issues"></a>Bekende problemen
 
@@ -72,12 +71,10 @@ Nadat u de opdracht inschakelen hebt uitgevoerd, voert u de volgende stappen uit
 ### <a name="iis-nested-applications"></a>Geneste IIS-toepassingen
 
 Geneste toepassingen in IIS in versie 1,0 worden niet geinstrumenteerd.
-Dit probleem wordt [hier](https://github.com/microsoft/ApplicationInsights-Home/issues/369)bijgehouden.
 
 ### <a name="advanced-sdk-configuration-isnt-available"></a>Geavanceerde SDK-configuratie is niet beschikbaar.
 
 De SDK-configuratie wordt niet weer gegeven aan de eind gebruiker in versie 1,0.
-Dit probleem wordt [hier](https://github.com/microsoft/ApplicationInsights-Home/issues/375)bijgehouden.
 
     
     
@@ -140,7 +137,7 @@ Raadpleeg de [API-naslag informatie](status-monitor-v2-api-reference.md) voor ee
     - **Telefoon**
     - **Samenvoegen**
     - **.NET-symbool verzameling**
-5. Deze **extra providers**instellen:`61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,925fa42b-9ef6-5fa7-10b8-56449d7a2040,f7d60e07-e910-5aca-bdd2-9de45b46c560,7c739bb9-7861-412e-ba50-bf30d95eae36,61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,252e28f4-43f9-5771-197a-e8c7e750a984`
+5. Deze **extra providers**instellen: `61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,925fa42b-9ef6-5fa7-10b8-56449d7a2040,f7d60e07-e910-5aca-bdd2-9de45b46c560,7c739bb9-7861-412e-ba50-bf30d95eae36,61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,252e28f4-43f9-5771-197a-e8c7e750a984`
 
 
 #### <a name="collecting-logs"></a>Logboeken verzamelen
@@ -156,4 +153,3 @@ Raadpleeg de [API-naslag informatie](status-monitor-v2-api-reference.md) voor ee
 ## <a name="next-steps"></a>Volgende stappen
 
 - Raadpleeg de [API-verwijzing](status-monitor-v2-overview.md#powershell-api-reference) voor meer informatie over de para meters die u mogelijk hebt gemist.
-- Als u een probleem ondervindt dat hier niet wordt vermeld, kunt u contact met ons opnemen op [github](https://github.com/Microsoft/ApplicationInsights-Home/issues).

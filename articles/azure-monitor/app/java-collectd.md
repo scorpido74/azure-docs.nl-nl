@@ -3,12 +3,12 @@ title: Prestaties van Java-Web-apps op Linux bewaken-Azure | Microsoft Docs
 description: Uitgebreide bewaking van de toepassings prestaties van uw Java-website met de verzamelde-invoeg toepassing voor Application Insights.
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 648d0e5adc289dfeb83a54c3dcb9ab7d25fc1cc4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: fd061d6dd1f87456b92a61c9a62caaf3ef3189b2
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322598"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761019"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>verzamelde: metrische gegevens voor Linux-prestaties in Application Insights
 
@@ -28,7 +28,7 @@ Neem een kopie van de instrumentatie sleutel, die de resource identificeert.
 Op uw Linux-Server computers:
 
 1. Installeer [verzamelde](https://collectd.org/) -versie 5.4.0 of hoger.
-2. Down load de [Application Insights verzamelde Writer-invoeg toepassing](https://github.com/microsoft/ApplicationInsights-Java/tree/master/collectd/src/main/java/com/microsoft/applicationinsights/collectd/internal). Noteer het versie nummer.
+2. Down load de [Application Insights verzamelde Writer-invoeg toepassing](https://github.com/microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal). Noteer het versie nummer.
 3. Kopieer de invoeg toepassing JAR naar `/usr/share/collectd/java` .
 4. Bewerken `/etc/collectd/collectd.conf` :
    * Zorg ervoor dat [de Java-invoeg toepassing](https://collectd.org/wiki/index.php/Plugin:Java) is ingeschakeld.

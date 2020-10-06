@@ -4,12 +4,12 @@ description: Niet-HTTP-apps van .NET core/. NET bewaken met Azure Monitor Applic
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/11/2020
-ms.openlocfilehash: 2ca5fc2d8f5e9e399fd7dfd3238d0ec16056d537
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 12be39e36c003531b815e137cbd1d360ca7f0fd6
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90007210"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760475"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>Application Insights voor Worker-service toepassingen (niet-HTTP-toepassingen)
 
@@ -44,7 +44,7 @@ Specifieke instructies voor elk type toepassing worden beschreven in de volgende
 
 ## <a name="net-core-30-worker-service-application"></a>.NET Core 3,0 Worker-service toepassing
 
-[Hier](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights) wordt een volledig voor beeld gedeeld
+[Hier](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights) wordt een volledig voor beeld gedeeld
 
 1. Down load en Installeer [.net Core 3,0](https://dotnet.microsoft.com/download/dotnet-core/3.0)
 2. Een nieuw project voor werk nemers maken met behulp van de nieuwe project sjabloon of de opdracht regel van Visual Studio `dotnet new worker`
@@ -136,7 +136,7 @@ Geeft doorgaans `APPINSIGHTS_INSTRUMENTATIONKEY` de instrumentatie sleutel voor 
 
 In [Dit](/aspnet/core/fundamentals/host/hosted-services?tabs=visual-studio&view=aspnetcore-2.2&preserve-view=true) document wordt beschreven hoe u achtergrond taken maakt in ASP.net Core 2.1/2.2-toepassing.
 
-[Hier](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/BackgroundTasksWithHostedService) wordt een volledig voor beeld gedeeld
+[Hier](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/BackgroundTasksWithHostedService) wordt een volledig voor beeld gedeeld
 
 1. Installeer het micro soft. ApplicationInsights. WorkerService ( https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) pakket naar de toepassing.
 2. Voeg toe `services.AddApplicationInsightsTelemetryWorkerService();` aan de `ConfigureServices()` -methode, zoals in dit voor beeld:
@@ -223,7 +223,7 @@ Hier volgt de code voor de `TimedHostedService` locatie waar de logica van de ac
 
 Zoals vermeld in het begin van dit artikel, kan het nieuwe pakket worden gebruikt voor het inschakelen van Application Insights Telemetry van zelfs een gewone console toepassing. Deze pakket doelen [`NetStandard2.0`](/dotnet/standard/net-standard) en kunnen daarom worden gebruikt voor console-apps in .net Core 2,0 of hoger, en .NET Framework 4.7.2 of hoger.
 
-[Hier](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/ConsoleAppWithApplicationInsights) wordt een volledig voor beeld gedeeld
+[Hier](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/ConsoleAppWithApplicationInsights) wordt een volledig voor beeld gedeeld
 
 1. Installeer het micro soft. ApplicationInsights. WorkerService ( https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) pakket naar de toepassing.
 
@@ -532,11 +532,11 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 
 ## <a name="sample-applications"></a>Voorbeeldtoepassingen
 
-[.Net core-console toepassing](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/ConsoleAppWithApplicationInsights) Gebruik dit voor beeld als u een console toepassing gebruikt die is geschreven in .NET core (2,0 of hoger) of .NET Framework (4.7.2 of hoger)
+[.Net core-console toepassing](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/ConsoleAppWithApplicationInsights) Gebruik dit voor beeld als u een console toepassing gebruikt die is geschreven in .NET core (2,0 of hoger) of .NET Framework (4.7.2 of hoger)
 
-[ASP .net core-achtergrond taken met HostedServices](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/BackgroundTasksWithHostedService) Gebruik dit voor beeld als u zich in Asp.Net Core 2.1/2.2 bevindt en u [hier](/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2&preserve-view=true) achtergrond taken als per officiële richt lijn maakt
+[ASP .net core-achtergrond taken met HostedServices](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/BackgroundTasksWithHostedService) Gebruik dit voor beeld als u zich in Asp.Net Core 2.1/2.2 bevindt en u [hier](/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2&preserve-view=true) achtergrond taken als per officiële richt lijn maakt
 
-[.Net Core 3,0-werk service](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights) Gebruik dit voor beeld als u een .NET Core 3,0 Worker-service toepassing hebt als per [officiële richt lijn](/aspnet/core/fundamentals/host/hosted-services?tabs=visual-studio&view=aspnetcore-3.0&preserve-view=true#worker-service-template)
+[.Net Core 3,0-werk service](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights) Gebruik dit voor beeld als u een .NET Core 3,0 Worker-service toepassing hebt als per [officiële richt lijn](/aspnet/core/fundamentals/host/hosted-services?tabs=visual-studio&view=aspnetcore-3.0&preserve-view=true#worker-service-template)
 
 ## <a name="open-source-sdk"></a>Open-Source-SDK
 

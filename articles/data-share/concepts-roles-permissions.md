@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: conceptual
-ms.date: 07/30/2020
-ms.openlocfilehash: 84d1ba6ff343b5f3d1f88d7ae5c618601f416e2c
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.date: 10/02/2020
+ms.openlocfilehash: d63cec0e0697a15efe7f15be5f6f0daaa6d6a372
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513761"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761512"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Rollen en vereisten voor Azure Data Share 
 
@@ -32,14 +32,13 @@ Hieronder volgt een samen vatting van de rollen die zijn toegewezen aan de behee
 
 |**Type gegevens archief**|**Bron gegevensopslag van gegevens provider**|**Gegevens opslag van het doel van de gegevens verbruiker**|
 |---|---|---|
-|Azure Blob Storage| Gegevens lezer van BLOB voor opslag | Inzender voor Storage BLOB-gegevens
+|Azure Blob Storage| Lezer voor opslagblobgegevens | Inzender voor Storage Blob-gegevens
 |Azure Data Lake gen1 | Eigenaar | Niet ondersteund
-|Azure Data Lake Gen2 | Gegevens lezer van BLOB voor opslag | Inzender voor Storage BLOB-gegevens
-|Azure SQL Server | Inzender voor SQL-data base | Inzender voor SQL-data base
+|Azure Data Lake Gen2 | Lezer voor opslagblobgegevens | Inzender voor Storage Blob-gegevens
 |Azure Data Explorer-cluster | Inzender | Inzender
 |
 
-Voor delen op basis van SQL moet een SQL-gebruiker worden gemaakt van een externe provider in Azure SQL Database met dezelfde naam als de Azure-gegevens share bron. Hieronder volgt een samen vatting van de machtiging die is vereist voor de SQL-gebruiker.
+Voor delen op basis van SQL moet een SQL-gebruiker worden gemaakt van een externe provider in Azure SQL Database met dezelfde naam als de Azure-gegevens share bron. Voor het maken van deze gebruiker is Azure Active Directory beheerders machtiging vereist. Hieronder volgt een samen vatting van de machtiging die is vereist voor de SQL-gebruiker.
 
 |**SQL Database type**|**SQL-gebruikers machtiging voor de gegevens provider**|**SQL-gebruikers machtiging voor gegevens verbruiker**|
 |---|---|---|

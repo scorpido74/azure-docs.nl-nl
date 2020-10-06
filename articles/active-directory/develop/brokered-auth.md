@@ -13,12 +13,12 @@ ms.date: 09/17/2020
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman, hahamil, brianmel
-ms.openlocfilehash: 2bb48971e86c2b61742735020469865fa969bee3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5042bfad2cfe06c7c368c6b476aa1b02d67bcc9c
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258404"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760751"
 ---
 # <a name="brokered-authentication-in-android"></a>Brokered-verificatie in Android
 
@@ -95,7 +95,7 @@ keytool -exportcert -alias androiddebugkey -keystore %HOMEPATH%\.android\debug.k
 
 Nadat u een hand tekening-hash hebt gegenereerd met het *hulp programma*, gebruikt u de Azure Portal om de omleidings-URI te genereren:
 
-1. Meld u aan bij de [Azure Portal](https://protal.azure.com) en selecteer uw Android-app in **app-registraties**.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) en selecteer uw Android-app in **app-registraties**.
 1. Selecteer **verificatie**  >  **een platform**  >  **Android**toevoegen.
 1. In het deel venster **uw Android-app configureren** dat wordt geopend, voert u de **hand tekening-hash** in die u eerder hebt gegenereerd en een **pakket naam**.
 1. Selecteer de knop **configureren** .

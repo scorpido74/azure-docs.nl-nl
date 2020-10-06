@@ -6,12 +6,12 @@ author: lgayhardt
 ms.custom: devx-track-java
 ms.author: lagayhar
 ms.date: 11/01/2018
-ms.openlocfilehash: b4042e65fb9f7dbff6566bd497f782c3e6d591cb
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: e6d464b415c956a0a8486f7c0d41c6e6a32b7c03
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707846"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761597"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>Micrometer gebruiken met Azure-toepassing Insights-Java-SDK
 
@@ -24,7 +24,7 @@ Met de micrometer-toepassings bewaking worden metrische gegevens gemeten voor op
 
 ## <a name="using-spring-boot-15x"></a>Lente boot gebruiken 1,5 x
 Voeg de volgende afhankelijkheden toe aan uw pom.xml-of build. gradle-bestand: 
-* [Application Insights lente-boot-starter](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/azure-application-insights-spring-boot-starter) 2.5.0 of hoger
+* [Application Insights lente-boot-starter](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/spring/azure-spring-boot-starter) 2.5.0 of hoger
 * Micrometer Azure Registry 1.1.0 of hoger
 * [Micrometer lente verouderde](https://micrometer.io/docs/ref/spring/1.5) 1.1.0 of hoger (dit backports de AutoConfig-code in het lente-Framework).
 * [ApplicationInsights-resource](./create-new-resource.md)
@@ -57,7 +57,7 @@ Stappen
 
      `azure.application-insights.instrumentation-key=<your-instrumentation-key-here>`
 1. Uw toepassing bouwen en uitvoeren
-2. Hierboven kunt u aan de slag met vooraf geaggregeerde metrische gegevens die automatisch worden verzameld voor Azure Monitor. Raadpleeg het [Leesmij-bestand op github](https://github.com/Microsoft/ApplicationInsights-Java/blob/master/azure-application-insights-spring-boot-starter/README.md)voor meer informatie over het afstemmen van Application Insights Spring boot starter.
+2. Hierboven kunt u aan de slag met vooraf geaggregeerde metrische gegevens die automatisch worden verzameld voor Azure Monitor. Raadpleeg het [Leesmij-bestand op github](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/spring/azure-spring-boot-starter/README.md)voor meer informatie over het afstemmen van Application Insights Spring boot starter.
 
 ## <a name="using-spring-2x"></a>Met lente 2. x
 

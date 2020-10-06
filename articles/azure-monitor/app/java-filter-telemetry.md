@@ -4,12 +4,12 @@ description: Verminder telemetrie-verkeer door de gebeurtenissen die u niet hoef
 ms.topic: conceptual
 ms.date: 3/14/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 825c807d9af542e8776e3b6361b8f6b6dd08f164
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: e450cf0de7dce4f626fd41252bfeed5fba294c70
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372175"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761002"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>Telemetrie filteren in uw Java-Web-app
 
@@ -78,10 +78,7 @@ Voeg in ApplicationInsights.xml een sectie toe, `TelemetryProcessors` zoals in d
 
 ```
 
-
-
-
-[Inspecteer de volledige set ingebouwde processors](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal/processor).
+[Inspecteer de volledige set ingebouwde processors](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal).
 
 ## <a name="built-in-filters"></a>Ingebouwde filters
 
@@ -94,7 +91,7 @@ Voeg in ApplicationInsights.xml een sectie toe, `TelemetryProcessors` zoals in d
            </Processor>
 ```
 
-* `NotNeeded`-Door komma's gescheiden lijst met aangepaste metrische namen.
+* `NotNeeded` -Door komma's gescheiden lijst met aangepaste metrische namen.
 
 
 ### <a name="page-view-telemetry-filter"></a>Telemetrie-filter pagina weergave
@@ -108,9 +105,9 @@ Voeg in ApplicationInsights.xml een sectie toe, `TelemetryProcessors` zoals in d
            </Processor>
 ```
 
-* `DurationThresholdInMS`-De duur verwijst naar de tijd die nodig is om de pagina te laden. Als deze instelling is ingesteld, worden pagina's die sneller zijn geladen dan deze keer niet gerapporteerd.
-* `NotNeededNames`-Door komma's gescheiden lijst met pagina namen.
-* `NotNeededUrls`-Door komma's gescheiden lijst met URL-fragmenten. Hiermee `"home"` filtert u bijvoorbeeld alle pagina's met ' Home ' in de URL.
+* `DurationThresholdInMS` -De duur verwijst naar de tijd die nodig is om de pagina te laden. Als deze instelling is ingesteld, worden pagina's die sneller zijn geladen dan deze keer niet gerapporteerd.
+* `NotNeededNames` -Door komma's gescheiden lijst met pagina namen.
+* `NotNeededUrls` -Door komma's gescheiden lijst met URL-fragmenten. Hiermee `"home"` filtert u bijvoorbeeld alle pagina's met ' Home ' in de URL.
 
 
 ### <a name="request-telemetry-filter"></a>Telemetrie-filter aanvragen
@@ -149,7 +146,7 @@ Telemetrie filteren op specifieke synthetische bronnen:
            </Processor>
 ```
 
-* `NotNeeded`-Door komma's gescheiden lijst met synthetische bron namen.
+* `NotNeeded` -Door komma's gescheiden lijst met synthetische bron namen.
 
 ### <a name="telemetry-event-filter"></a>Telemetrie-gebeurtenis Filter
 
@@ -164,7 +161,7 @@ Filtert aangepaste gebeurtenissen (geregistreerd met behulp van [track Event ()]
 ```
 
 
-* `NotNeededNames`-Door komma's gescheiden lijst met gebeurtenis namen.
+* `NotNeededNames` -Door komma's gescheiden lijst met gebeurtenis namen.
 
 
 ### <a name="trace-telemetry-filter"></a>Telemetrie-filter traceren
@@ -178,7 +175,7 @@ Filtert logboek traceringen (geregistreerd met behulp van [TrackTrace ()](./api-
            </Processor>
 ```
 
-* `FromSeverityLevel`geldige waarden zijn:
+* `FromSeverityLevel` geldige waarden zijn:
   *  ALLE traceringen uit het filter uitschakelen
   *  TRACERen: geen filters. is gelijk aan traceer niveau
   *  INFO-traceer niveau uitfilteren

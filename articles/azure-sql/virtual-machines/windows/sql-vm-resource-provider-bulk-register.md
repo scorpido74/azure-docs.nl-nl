@@ -10,20 +10,24 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 10/21/2019
+ms.date: 09/21/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: cf1fdd3feff76454f0e801d7bd53c63702000014
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b83a44db98907f505c7bf0d8302470cf3031a967
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91271984"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761257"
 ---
 # <a name="register-multiple-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>Meerdere virtuele SQL-machines registreren in azure met de resource provider van de SQL-VM
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 In dit artikel wordt beschreven hoe u uw SQL Server virtuele machines (Vm's) in bulk in azure registreert met de resource provider van de SQL-VM met behulp van de `Register-SqlVMs` Power shell-cmdlet.
+
+In dit artikel leert u SQL Server Vm's in bulk te registreren. U kunt ook [alle SQL Server vm's automatisch](sql-vm-resource-provider-automatic-registration.md) of [afzonderlijke SQL Server vm's](sql-vm-resource-provider-register.md)registreren. 
+
+## <a name="overview"></a>Overzicht
 
 De `Register-SqlVMs` cmdlet kan worden gebruikt voor het registreren van alle virtuele machines in een bepaalde lijst met abonnementen, resource groepen of een lijst met specifieke virtuele machines. De cmdlet registreert de virtuele machines in de modus _licht gewicht_ beheer en genereert vervolgens zowel een [rapport als een logboek bestand](#output-description). 
 

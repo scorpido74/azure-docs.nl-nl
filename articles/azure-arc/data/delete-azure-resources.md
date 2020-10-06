@@ -1,6 +1,6 @@
 ---
-title: Resources uit Azure verwijderen
-description: Resources uit Azure verwijderen
+title: Resources verwijderen uit Azure
+description: Resources verwijderen uit Azure
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
@@ -9,14 +9,14 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: c07a0d8279c8d2f8792f5df3e35d2d630b1a86bd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 46c1df8a175657e20dce984d0c8825ae99170246
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936420"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761648"
 ---
-# <a name="delete-resources-from-azure"></a>Resources uit Azure verwijderen
+# <a name="delete-resources-from-azure"></a>Resources verwijderen uit Azure
 
 > [!NOTE]
 >  De opties voor het verwijderen van resources in dit artikel zijn onomkeerbaar.
@@ -26,7 +26,7 @@ ms.locfileid: "90936420"
 
 In sommige gevallen moet u mogelijk hand matig Azure Arc enabled Data Services-resources in Azure Resource Manager (ARM) verwijderen.  U kunt deze resources verwijderen met een van de volgende opties.
 
-- [Resources uit Azure verwijderen](#delete-resources-from-azure)
+- [Resources verwijderen uit Azure](#delete-resources-from-azure)
   - [Een hele resource groep verwijderen](#delete-an-entire-resource-group)
   - [Specifieke resources in de resource groep verwijderen](#delete-specific-resources-in-the-resource-group)
   - [Resources verwijderen met de Azure CLI](#delete-resources-using-the-azure-cli)
@@ -97,4 +97,4 @@ az resource delete --name <data controller name> --resource-type Microsoft.Azure
 
 ### <a name="delete-a-resource-group-using-the-azure-cli"></a>Een resource groep verwijderen met de Azure CLI
 
-U kunt ook de Azure CLI gebruiken om [een resource groep te verwijderen](/azure-resource-manager/management/delete-resource-group).
+U kunt ook de Azure CLI gebruiken om [een resource groep te verwijderen](/azure/azure-resource-manager/management/delete-resource-group).

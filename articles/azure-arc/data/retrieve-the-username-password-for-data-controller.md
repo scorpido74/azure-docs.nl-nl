@@ -1,6 +1,6 @@
 ---
-title: De gebruikers naam en het wacht woord ophalen om verbinding te maken met de Arc-gegevens controller
-description: De gebruikers naam en het wacht woord ophalen om verbinding te maken met de Arc-gegevens controller
+title: De gebruikersnaam en het wachtwoord ophalen om verbinding te maken met de Arc-gegevenscontroller
+description: De gebruikersnaam en het wachtwoord ophalen om verbinding te maken met de Arc-gegevenscontroller
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
@@ -9,14 +9,14 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 1c33cf21be0b4b1ea39a568d6df9fd90507dd454
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8cabb48e3620f1a17d1bb9b87e1646ce2793143b
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935948"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761699"
 ---
-# <a name="retrieve-the-user-name-and-password-to-connect-to-the-arc-data-controller"></a>De gebruikers naam en het wacht woord ophalen om verbinding te maken met de Arc-gegevens controller
+# <a name="retrieve-the-user-name-and-password-to-connect-to-the-arc-data-controller"></a>De gebruikersnaam en het wachtwoord ophalen om verbinding te maken met de Arc-gegevenscontroller
 
 Mogelijk hebt u een situatie waarin u de gebruikers naam en het wacht woord voor de gegevens controller moet ophalen. Dit zijn de opdrachten die u nodig hebt wanneer u uitvoert. 
 
@@ -61,4 +61,4 @@ Voer de volgende opdracht uit om het wacht woord op te halen:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Andere [scenario's](https://github.com/microsoft/Azure-data-services-on-Azure-Arc/tree/master/scenarios) uitproberen
+Andere [scenario's](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/active-directory-domain-services/scenarios.md) uitproberen

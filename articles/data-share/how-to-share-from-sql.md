@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 08/28/2020
-ms.openlocfilehash: e813921727ee08bf9a76c0a2dbfe15f45fe4db79
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.date: 10/02/2020
+ms.openlocfilehash: 3f243a1a8d4f4b3ee4688ac3942debee5282a9a4
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89490068"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761920"
 ---
 # <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>Gegevens delen en ontvangen van Azure SQL Database en Azure Synapse Analytics
 
@@ -33,13 +33,14 @@ Wanneer gegevens in de tabel worden ontvangen en als de doel tabel nog niet best
 * Als de bron-Azure-gegevensopslag zich in een ander Azure-abonnement bevindt dan de opslag die u gebruikt om een Data Share-resource te maken, registreert u de [resourceprovider Microsoft.DataShare](concepts-roles-permissions.md#resource-provider-registration) in het abonnement waarin de Azure-gegevensopslag zich bevindt. 
 
 ### <a name="prerequisites-for-sql-source"></a>Vereisten voor SQL-bron
+Hieronder ziet u de lijst met vereisten voor het delen van gegevens uit de SQL-bron. U kunt ook de [demo stapsgewijze](https://youtu.be/hIE-TjJD8Dc) voor het configureren van vereisten volgen.
 
-* Een Azure SQL Database of Azure Synapse Analytics (voorheen SQL Data Warehouse) met tabellen en weer gaven die u wilt delen.
+* Azure SQL Database of Azure Synapse Analytics (voorheen SQL Data Warehouse) met tabellen en weergaven die u wilt delen.
 * Machtiging om naar de databases op de SQL-server te schrijven, aanwezig in *Microsoft.Sql/servers/databases/write*. Deze machtiging maakt onderdeel uit van de rol Inzender.
 * Machtiging voor de gegevensshare om toegang te krijgen tot de datawarehouse. U kunt dit doen via de volgende stappen: 
-    1. Stel uzelf in als de Azure Active Directory-beheerder voor de SQL-server.
-    1. Maak verbinding met Azure SQL Database/Data Warehouse met behulp van Azure Active Directory.
-    1. Gebruik Queryeditor (preview) om het volgende script uit te voeren en de beheerde identiteit van de Data Share-resource toe te voegen als een db_datareader. U moet verbinding maken met behulp van Active Directory en niet via SQL Server-verificatie. 
+    1. Ga in Azure Portal naar de SQL-Server en stel uzelf in als de Azure Active Directory-beheerder.
+    1. Maak verbinding met de Azure SQL Database/data warehouse met behulp van de [query-editor](https://docs.microsoft.com/azure/azure-sql/database/connect-query-portal#connect-using-azure-active-directory) of SQL Server Management Studio met Azure Active Directory-verificatie. 
+    1. Voer het volgende script uit om de beheerde identiteit van de gegevens share bron toe te voegen als een db_datareader. U moet verbinding maken met behulp van Active Directory en niet via SQL Server-verificatie. 
     
         ```sql
         create user "<share_acct_name>" from external provider;     
@@ -49,10 +50,11 @@ Wanneer gegevens in de tabel worden ontvangen en als de doel tabel nog niet best
 
 * Een Azure SQL Database-gebruiker met db_datareader-toegang om door de tabellen en/of weergaven die u wilt delen te navigeren en ze te selecteren. 
 
-* Toegang tot de firewall van SQL Server via het IP-adres van de client. U kunt dit doen via de volgende stappen: 
+* SQL Server firewall toegang. U kunt dit doen via de volgende stappen: 
     1. Ga in SQL Server in de Azure-portal naar *Firewalls en virtuele netwerken*
-    1. Klik op de wisselknop **Aan** om toegang tot Azure-services toe te staan.
-    1. Klik op **+ IP-adres van client toevoegen** en klik op **Opslaan**. Het IP-adres van de client kan worden gewijzigd. Dit proces moet mogelijk worden herhaald de volgende keer dat u SQL-gegevens deelt vanuit de Azure-portal. U kunt ook een IP-bereik toevoegen. 
+    1. Klik op **Ja** om *Azure-Services en-bronnen toegang te geven tot deze server*.
+    1. Klik op **+ client-IP toevoegen**. Het IP-adres van de client kan worden gewijzigd. Dit proces moet mogelijk worden herhaald de volgende keer dat u SQL-gegevens deelt vanuit de Azure-portal. U kunt ook een IP-bereik toevoegen.
+    1. Klik op **Opslaan**. 
 
 ### <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
@@ -147,13 +149,13 @@ Als u ervoor kiest om gegevens te ontvangen in Azure Storage, hieronder volgt de
 * Machtiging om roltoewijzing toe te voegen aan het opslagaccount, aanwezig in *Microsoft.Authorization/role assignments/write*. Deze machtiging maakt onderdeel uit van de rol Eigenaar.  
 
 ### <a name="prerequisites-for-sql-target"></a>Vereisten voor SQL-doel
-Als u ervoor kiest om gegevens te ontvangen in Azure SQL Database, wordt in azure Synapse Analytics hieronder de lijst met vereisten weer gegeven.
+Als u ervoor kiest om gegevens te ontvangen in Azure SQL Database, wordt in azure Synapse Analytics hieronder de lijst met vereisten weer gegeven. U kunt ook de [demo stapsgewijze](https://youtu.be/aeGISgK1xro) voor het configureren van vereisten volgen.
 
 * Machtiging om naar databases op de SQL-server te schrijven, aanwezig in *Microsoft.Sql/servers/databases/write*. Deze machtiging maakt onderdeel uit van de rol Inzender. 
-* Machtiging voor de beheerde identiteit van de gegevens share bron om toegang te krijgen tot de Azure SQL Database of Azure Synapse Analytics. U kunt dit doen via de volgende stappen: 
-    1. Stel uzelf in als de Azure Active Directory-beheerder voor de SQL-server.
-    1. Maak verbinding met Azure SQL Database/Data Warehouse met behulp van Azure Active Directory.
-    1. Gebruik Queryeditor (preview) om het volgende script uit te voeren om de beheerde Data Share-identiteit toe te voegen als db_datareader, db_datawriter, db_ddladmin. U moet verbinding maken met behulp van Active Directory en niet via SQL Server-verificatie. 
+* Machtiging voor de beheerde identiteit van de Data Share-resource voor toegang tot Azure SQL Database of Azure Synapse Analytics. U kunt dit doen via de volgende stappen: 
+    1. Ga in Azure Portal naar de SQL-Server en stel uzelf in als de Azure Active Directory-beheerder.
+    1. Maak verbinding met de Azure SQL Database/data warehouse met behulp van de [query-editor](https://docs.microsoft.com/azure/azure-sql/database/connect-query-portal#connect-using-azure-active-directory) of SQL Server Management Studio met Azure Active Directory-verificatie. 
+    1. Voer het volgende script uit om de door de gegevens share beheerde identiteit toe te voegen als een db_datareader, db_datawriter, db_ddladmin. U moet verbinding maken met behulp van Active Directory en niet via SQL Server-verificatie. 
 
         ```sql
         create user "<share_acc_name>" from external provider; 
@@ -163,10 +165,11 @@ Als u ervoor kiest om gegevens te ontvangen in Azure SQL Database, wordt in azur
         ```      
         U ziet dat *<share_acc_name>* de naam is van uw Data Share-resource. Als u nog geen Data Share-resource hebt gemaakt, kunt u later aan deze vereiste voldoen.         
 
-* Toegang tot de firewall van SQL Server via het IP-adres van de client. U kunt dit doen via de volgende stappen: 
+* SQL Server firewall toegang. U kunt dit doen via de volgende stappen: 
     1. Ga in SQL Server in de Azure-portal naar *Firewalls en virtuele netwerken*
-    1. Klik op de wisselknop **Aan** om toegang tot Azure-services toe te staan.
-    1. Klik op **+ IP-adres van client toevoegen** en klik op **Opslaan**. Het IP-adres van de client kan worden gewijzigd. Dit proces moet mogelijk worden herhaald wanneer u de volgende keer gegevens ontvangt in een SQL-doel vanuit de Azure-portal. U kunt ook een IP-bereik toevoegen. 
+    1. Klik op **Ja** om *Azure-Services en-bronnen toegang te geven tot deze server*.
+    1. Klik op **+ client-IP toevoegen**. Het IP-adres van de client kan worden gewijzigd. Dit proces moet mogelijk worden herhaald de volgende keer dat u SQL-gegevens deelt vanuit de Azure-portal. U kunt ook een IP-bereik toevoegen.
+    1. Klik op **Opslaan**. 
 
 ### <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
@@ -231,6 +234,49 @@ Deze stappen zijn alleen van toepassing bij delen op basis van momentopnamen.
 
 ### <a name="view-history"></a>Geschiedenis weergeven
 Deze stap geldt alleen voor delen op basis van momentopnamen. Selecteer het tabblad **Geschiedenis** om de geschiedenis van uw momentopnamen weer te geven. Hier vindt u een geschiedenis van alle momentopnamen die zijn gegenereerd voor de afgelopen dertig dagen. 
+
+## <a name="supported-data-types"></a>Ondersteunde gegevenstypen
+Wanneer u gegevens uit de SQL-bron deelt, wordt de volgende toewijzing gebruikt vanuit SQL Server gegevens typen naar tussenliggende gegevens typen van Azure data share tijdens het momentopname proces. 
+
+| SQL Server gegevens type | Tussentijds gegevens type van Azure-gegevens share |
+|:--- |:--- |
+| bigint |Int64 |
+| binair |Byte [] |
+| bit |Boolean |
+| char |Teken reeks, char [] |
+| datum |DateTime |
+| Datum/tijd |DateTime |
+| datetime2 |DateTime |
+| Date time offset |Date time offset |
+| Decimaal |Decimaal |
+| FILESTREAM-kenmerk (varbinary (max)) |Byte [] |
+| Float |Dubbel |
+| image |Byte [] |
+| int |Int32 |
+| money |Decimaal |
+| nchar |Teken reeks, char [] |
+| ntext |Teken reeks, char [] |
+| numeriek |Decimaal |
+| nvarchar |Teken reeks, char [] |
+| werkelijk |Enkelvoudig |
+| rowversion |Byte [] |
+| smalldatetime |DateTime |
+| smallint |Int16 |
+| smallmoney |Decimaal |
+| sql_variant |Object |
+| tekst |Teken reeks, char [] |
+| tijd |TimeSpan |
+| tijdstempel |Byte [] |
+| tinyint |Int16 |
+| uniqueidentifier |Guid |
+| varbinary |Byte [] |
+| varchar |Teken reeks, char [] |
+| xml |Tekenreeks |
+
+>[!NOTE]
+> 1. Voor gegevens typen die worden toegewezen aan het type van de decimale waarde, wordt de moment opname met de precisie Maxi maal 28 ondersteund. Als u gegevens hebt die een grotere nauw keurigheid dan 28 vereisen, kunt u overwegen om te converteren naar een teken reeks. 
+> 1.  Als u gegevens deelt van Azure SQL database naar Azure Synapse Analytics, worden niet alle gegevens typen ondersteund. Raadpleeg de [tabel gegevens typen in Synapse SQL pool](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-data-types) voor meer informatie. 
+
 
 ## <a name="next-steps"></a>Volgende stappen
 U hebt geleerd hoe u gegevens kunt delen en ontvangen van een opslag account met behulp van de Azure data share-service. Voor meer informatie over het delen van andere gegevens bronnen gaat u verder met [ondersteunde gegevens archieven](supported-data-stores.md).

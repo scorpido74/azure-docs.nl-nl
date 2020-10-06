@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: bbf41cf48f4891814fa0c2baa750783f98d8574b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f447c6028b1750aa96e531a97e7b0861f66a5749
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91344625"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761665"
 ---
 # <a name="create-a-postgresql-hyperscale-server-group-using-kubernetes-tools"></a>Een PostgreSQL grootschalige-Server groep maken met Kubernetes-hulpprogram ma's
 
@@ -34,7 +34,7 @@ Als u een PostgreSQL grootschalige-Server groep wilt maken, moet u een Kubernete
 
 ## <a name="create-a-yaml-file"></a>Een yaml-bestand maken
 
-U kunt het [sjabloon yaml](https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/postgresql.yaml) -bestand gebruiken als uitgangs punt voor het maken van uw eigen aangepaste postgresql grootschalige Server Group yaml-bestand.  Down load dit bestand naar uw lokale computer en open het in een tekst editor.  Het is handig om een tekst editor te gebruiken, zoals [VS code](https://code.visualstudio.com/download) , waarmee syntaxis markeringen en linting voor YAML-bestanden worden ondersteund.
+U kunt het [sjabloon yaml](https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/postsgresql.yaml) -bestand gebruiken als uitgangs punt voor het maken van uw eigen aangepaste postgresql grootschalige Server Group yaml-bestand.  Down load dit bestand naar uw lokale computer en open het in een tekst editor.  Het is handig om een tekst editor te gebruiken, zoals [VS code](https://code.visualstudio.com/download) , waarmee syntaxis markeringen en linting voor YAML-bestanden worden ondersteund.
 
 Dit is een voor beeld van een yaml-bestand:
 

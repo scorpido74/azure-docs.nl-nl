@@ -3,12 +3,12 @@ title: Azure Functions beveiligen
 description: Meer informatie over hoe u de functie code die wordt uitgevoerd in azure beter kunt beveiligen tegen veelvoorkomende aanvallen.
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: e48991788307a47d0e01a7921e0c94d77ddcd5ad
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 470ee517b929b7327df76963e21c88db21d363da
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91294747"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761410"
 ---
 # <a name="securing-azure-functions"></a>Azure Functions beveiligen
 
@@ -24,7 +24,7 @@ In deze sectie vindt u meer over het configureren en uitvoeren van uw functie-ap
 
 ### <a name="security-center"></a>Beveiligingscentrum
 
-Security Center integreert met uw functie-app in de portal. Het biedt gratis een snelle evaluatie van mogelijke beveiligings problemen met betrekking tot configuraties. Functie-apps die in een specifiek abonnement worden uitgevoerd, kunnen ook gebruikmaken van de real-time beveiligings functies van Security Center, voor extra kosten. Zie [uw Azure app service Web-apps en Api's beveiligen](../security-center/security-center-app-services.md)voor meer informatie. 
+Security Center integreert met uw functie-app in de portal. Het biedt gratis een snelle evaluatie van mogelijke beveiligings problemen met betrekking tot configuraties. Functie-apps die in een specifiek abonnement worden uitgevoerd, kunnen ook gebruikmaken van de real-time beveiligings functies van Security Center, voor extra kosten. Zie [uw Azure app service Web-apps en Api's beveiligen](https://docs.microsoft.com/azure/security-center/defender-for-app-service-introduction)voor meer informatie. 
 
 ### <a name="log-and-monitor"></a>Logboeken en bewaking
 
@@ -58,7 +58,7 @@ Het bereik van systeem sleutels wordt bepaald door de uitbrei ding, maar is in h
 
 De volgende tabel vergelijkt het gebruik voor verschillende soorten toegangs sleutels:
 
-| Actie                                        | Bereik                    | Geldige sleutels         |
+| Bewerking                                        | Bereik                    | Geldige sleutels         |
 |-----------------------------------------------|--------------------------|--------------------|
 | Een functie uitvoeren                            | Specifieke functie        | Functie           |
 | Een functie uitvoeren                            | Een functie             | Functie of host   |

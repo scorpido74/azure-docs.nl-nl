@@ -3,12 +3,12 @@ title: Azure-toepassing Insights automatiseren met Power shell | Microsoft Docs
 description: Het maken en beheren van resources, waarschuwingen en beschikbaarheids tests in Power shell automatiseren met behulp van een Azure Resource Manager sjabloon.
 ms.topic: conceptual
 ms.date: 05/02/2020
-ms.openlocfilehash: 53cdf338db5cc4ea359f729297fe57e63853aa5c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b5f3ba12fe8a730ce45e64b896ccc9c32b17b30c
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322479"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760900"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>Application Insights-resources beheren met Power shell
 
@@ -188,8 +188,8 @@ Maak een nieuw. JSON-bestand, zodat het `template1.json` in dit voor beeld kan w
 
 ### <a name="use-the-resource-manager-template-to-create-a-new-application-insights-resource"></a>De Resource Manager-sjabloon gebruiken om een nieuwe Application Insights resource te maken
 
-1. Meld u in Power shell aan bij Azure met`$Connect-AzAccount`
-2. Stel uw context in op een abonnement met`Set-AzContext "<subscription ID>"`
+1. Meld u in Power shell aan bij Azure met `$Connect-AzAccount`
+2. Stel uw context in op een abonnement met `Set-AzContext "<subscription ID>"`
 2. Voer een nieuwe implementatie uit om een nieuwe Application Insights-resource te maken:
    
     ```PS
@@ -199,9 +199,9 @@ Maak een nieuw. JSON-bestand, zodat het `template1.json` in dit voor beeld kan w
 
     ``` 
    
-   * `-ResourceGroupName`is de groep waar u de nieuwe resources wilt maken.
-   * `-TemplateFile`moet vóór de aangepaste para meters plaatsvinden.
-   * `-appName`De naam van de resource die moet worden gemaakt.
+   * `-ResourceGroupName` is de groep waar u de nieuwe resources wilt maken.
+   * `-TemplateFile` moet vóór de aangepaste para meters plaatsvinden.
+   * `-appName` De naam van de resource die moet worden gemaakt.
 
 U kunt andere para meters toevoegen: Hier vindt u de beschrijvingen in het gedeelte para meters van de sjabloon.
 
@@ -451,7 +451,7 @@ Hier volgen enkele voor beelden van de vervangingen die u wilt maken. Er zijn ve
 | `"myWebTest-myAppName"` |`"[variables(testName)]"'` |
 | `"myTestName-myAppName-subsId"` |`"[variables('alertRuleName')]"` |
 | `"myAppName"` |`"[parameters('appName')]"` |
-| `"myappname"`(kleine letter) |`"[toLower(parameters('appName'))]"` |
+| `"myappname"` (kleine letter) |`"[toLower(parameters('appName'))]"` |
 | `"<WebTest Name=\"myWebTest\" ...`<br/>`Url=\"http://fabrikam.com/home\" ...>"` |`[concat('<WebTest Name=\"',` <br/> `parameters('webTestName'),` <br/> `'\" ... Url=\"', parameters('Url'),` <br/> `'\"...>')]"`|
 
 ### <a name="set-dependencies-between-the-resources"></a>Afhankelijkheden instellen tussen de resources
@@ -473,5 +473,5 @@ Andere automatiserings artikelen:
 * [Waarschuwingen instellen](powershell-alerts.md)
 * [Webtests maken](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/)
 * [Diagnostische Azure-gegevens verzenden naar Application Insights](powershell-azure-diagnostics.md)
-* [Release aantekeningen maken](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)
+* [Release aantekeningen maken](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)
 

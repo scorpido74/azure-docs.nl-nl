@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 8651921dafd5727f79e4ab3919e188d4b8612465
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a405a7a32b1f54732589fb14e34ff52db4992028
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936433"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761682"
 ---
 # <a name="create-azure-arc-data-controller-using-the-azure-data-cli-azdata"></a>Een Azure-Arc-gegevens controller maken met behulp van de Azure-gegevens CLI (azdata)
 
@@ -155,7 +155,7 @@ Als u een gegevens controller wilt maken in azure Red Hat open Shift, moet u de 
 > [!NOTE]
 >   Gebruik hier dezelfde naam ruimte en in de `azdata arc dc create` onderstaande opdracht. Voor beeld is `arc` .
 
-Down load eerst de aangepaste beveiligings context constraint (SCC) van [github](https://raw.githubusercontent.com/microsoft/azure_arc/master/data_services/deployment/yaml/arc-data-scc.yaml) en pas deze toe op uw cluster.
+Down load eerst de aangepaste beveiligings context constraint (SCC) van [github](https://github.com/microsoft/azure_arc/tree/master/arc_data_services/deploy/yaml) en pas deze toe op uw cluster.
 
 U kunt de volgende opdracht uitvoeren om de gegevens controller te maken:
 > [!NOTE]

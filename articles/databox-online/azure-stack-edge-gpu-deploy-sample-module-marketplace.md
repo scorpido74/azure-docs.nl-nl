@@ -1,6 +1,6 @@
 ---
 title: De GPU-module implementeren op uw Microsoft Azure Stack Edge Pro-apparaat vanuit Azure Marketplace | Microsoft Docs
-description: Hierin wordt beschreven hoe u reken kracht kunt inschakelen en uw Azure Stack Edge Pro-apparaat kunt instellen met behulp van de lokale gebruikers interface.
+description: Hierin wordt beschreven hoe u een IoT-module met GPU-functionaliteit implementeert op uw Azure Stack Edge Pro GPU-apparaat.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: alkohli
-ms.openlocfilehash: a15e74dd2a1a2737675ef66284f348f33cd753dd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 64d028892298a70e7588863bf9a3f4fc6f4ca609
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899940"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760056"
 ---
 # <a name="deploy-a-gpu-enabled-iot-module-from-azure-marketplace-on-azure-stack-edge-pro-gpu-device"></a>Een IoT-module met GPU-functionaliteit implementeren vanuit Azure Marketplace op Azure Stack Edge Pro GPU-apparaat
 
@@ -55,7 +55,7 @@ Voordat u begint, controleert u of u over het volgende beschikt:
 
 4. Selecteer **door gaan** om de gebruiks voorwaarden en het privacybeleid van de provider te bevestigen. 
 
-    ![Voorbeeld module ophalen](media/azure-stack-edge-gpu-deploy-sample-module-marketplace/terms-of-use-1.png)
+    ![Voorbeeld module ophalen 2](media/azure-stack-edge-gpu-deploy-sample-module-marketplace/terms-of-use-1.png)
 
 5. Kies het abonnement dat u hebt gebruikt voor het implementeren van uw Azure Stack Edge Pro-apparaat.
 
@@ -89,7 +89,7 @@ Voordat u begint, controleert u of u over het volgende beschikt:
 
 13. Controleer of de module is geïmplementeerd in uw IoT Hub in de Azure Portal. Selecteer uw apparaat, selecteer **modules instellen**   en de module moet worden weer gegeven in de sectie **IOT Edge modules**   .
 
-    ![Selecteer Maken](media/azure-stack-edge-gpu-deploy-sample-module-marketplace/running-module-iotres-1.png)
+    ![Selecteer 2 maken](media/azure-stack-edge-gpu-deploy-sample-module-marketplace/running-module-iotres-1.png)
 
 ## <a name="monitor-the-module"></a>De module bewaken  
 

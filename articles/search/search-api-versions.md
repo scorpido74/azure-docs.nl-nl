@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: ca4dccb82ae6a907a2f7e944174b8ecc05a443b6
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 71862bedc009d560adc8131eacc37c0afba25d81
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986891"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761716"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>API-versies in azure Cognitive Search
 
@@ -79,7 +79,7 @@ Een zoek service maken en configureren en API-sleutels beheren.
 | Management 2020-03-13  | Stabiel | Voegt een [persoonlijk eind punt](service-create-private-endpoint.md) toe via een persoonlijke koppeling en [netwerk-IP-regels](service-configure-firewall.md) voor nieuwe services. Zie voor meer informatie deze [Swagger-specificatie](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/stable/2020-08-01). |
 | Management 2019-10-01-Preview | Preview  | Er zijn geen preview-functies geïntroduceerd in deze lijst. Dit voor beeld is functioneel equivalent aan 2020-03-13. Zie voor meer informatie deze [Swagger-specificatie](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/preview/2019-10-01-preview). |
 | Beheer 2015-08-19  | Stabiel | De eerste beschik bare versie van de beheer REST-Api's. Biedt service-inrichting, opschalen en API-sleutel beheer. Zie voor meer informatie deze [Swagger-specificatie](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/stable/2015-08-19). |
-| Beheer 2015-08-19-preview  | Preview | De eerste preview-versie van de beheer REST-Api's. Zie voor meer informatie deze [Swagger-specificatie](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/stable/2015-08-19-preview). |
+| Beheer 2015-08-19-preview  | Preview | De eerste preview-versie van de beheer REST-Api's. Zie voor meer informatie deze [Swagger-specificatie](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/resource-manager/Microsoft.Search/stable/2015-08-19). |
 
 ## <a name="azure-sdk-for-net"></a>Azure-SDK voor .NET
 
@@ -96,7 +96,7 @@ De volgende tabel bevat koppelingen naar recentere SDK-versies.
 
 | SDK-versie | Status | Beschrijving  |
 |-------------|--------|------------------------------|
-| [Java Azure-Search-documenten 11](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-search-documents) | Stabiel | Nieuwe client bibliotheek van de Azure .NET SDK, uitgebracht op 2020 juli. Streeft naar de Search REST API-Version = 2019-05-06. |
+| [Java Azure-Search-documenten 11](https://newreleases.io/project/github/Azure/azure-sdk-for-java/release/azure-search-documents_11.1.0) | Stabiel | Nieuwe client bibliotheek van de Azure .NET SDK, uitgebracht op 2020 juli. Streeft naar de Search REST API-Version = 2019-05-06. |
 | [1.35.0 java-beheer client](/java/api/overview/azure/search/management) | Stabiel | Streeft naar de beheer REST API-Version = 2015-08-19. |
 
 ## <a name="azure-sdk-for-javascript"></a>Azure-SDK voor JavaScript
@@ -110,5 +110,5 @@ De volgende tabel bevat koppelingen naar recentere SDK-versies.
 
 | SDK-versie | Status | Beschrijving  |
 |-------------|--------|------------------------------|
-| [Python Azure-Search-documenten 11,0](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-search-documents) | Stabiel | Nieuwe client bibliotheek van de Azure .NET SDK, uitgebracht op 2020 juli. Streeft naar de Search REST API-Version = 2019-05-06. |
+| [Python Azure-Search-documenten 11,0](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-search-documents/11.0.0/index.html) | Stabiel | Nieuwe client bibliotheek van de Azure .NET SDK, uitgebracht op 2020 juli. Streeft naar de Search REST API-Version = 2019-05-06. |
 | [Python Azure-beheer-Search 1,0](/python/api/overview/azure/search) | Stabiel | Streeft naar de beheer REST API-Version = 2015-08-19. |

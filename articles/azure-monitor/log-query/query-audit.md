@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/03/2020
-ms.openlocfilehash: df937ba7f23f2789d929a043c7239ababb24374f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1c0247c5adfe60dc2436c832cf3d561882ae3a5d
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91285057"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760158"
 ---
 # <a name="audit-queries-in-azure-monitor-logs-preview"></a>Query's controleren in Azure Monitor Logboeken (preview-versie)
 Controle logboeken voor logboek query's bieden telemetrie over logboek query's die in Azure Monitor worden uitgevoerd. Dit omvat informatie zoals wanneer een query werd uitgevoerd, wie deze uitvoert, welk hulp programma is gebruikt, de query tekst en prestatie statistieken die de uitvoering van de query beschrijven.
@@ -68,6 +68,9 @@ Telkens wanneer een query wordt uitgevoerd, wordt een controle record gemaakt. A
 - Prestatie statistieken zijn niet beschikbaar voor query's die afkomstig zijn van de Azure Data Explorer-proxy. Alle andere gegevens voor deze query's worden nog steeds ingevuld.
 - De *h* -hint van teken reeksen die [teken reeks-literals](/azure/data-explorer/kusto/query/scalar-data-types/string#obfuscated-string-literals) vergelijkt, heeft geen invloed op de controle logboeken van de query. De query's worden precies zo vastgelegd als verzonden zonder dat de teken reeks is verborgen. U moet ervoor zorgen dat alleen gebruikers die nalevings rechten hebben om deze gegevens te zien, dit kunnen doen met behulp van de verschillende RBAC-modi die beschikbaar zijn in Log Analytics-werk ruimten.
 - Voor query's die gegevens uit meerdere werk ruimten bevatten, wordt de query alleen vastgelegd in de werk ruimten waartoe de gebruiker toegang heeft.
+
+## <a name="costs"></a>Kosten  
+Er zijn geen kosten verbonden aan de diagnostische Azure-extensie, maar mogelijk worden er kosten in rekening gebracht voor de gegevens die zijn opgenomen. Controleer [Azure monitor prijzen](https://azure.microsoft.com/pricing/details/monitor/) voor de bestemming waar u gegevens verzamelt.
 
 ## <a name="next-steps"></a>Volgende stappen
 

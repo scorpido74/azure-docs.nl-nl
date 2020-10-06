@@ -1,5 +1,5 @@
 ---
-title: Richt lijnen voor grootte
+title: Richtlijnen voor grootte
 description: Plan voor de grootte van een implementatie van Azure Arc enabled Data Services.
 services: azure-arc
 ms.service: azure-arc
@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 7afe00746b133e8376cf32ba874831c7962e85b1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 3bd54d8a23aca7e493cd3c0ddb7f057a6e1f5362
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936788"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761478"
 ---
 # <a name="sizing-guidance"></a>Richt lijnen voor grootte
 
@@ -27,7 +27,7 @@ Bij het plannen van de implementatie van Azure Arc Data Services moet u plannen 
 ## <a name="general-sizing-requirements"></a>Algemene grootte vereisten
 
 > [!NOTE]
-> Als u niet bekend bent met de concepten in dit artikel, kunt u meer lezen over de [Kubernetes resource governance](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) en [Kubernetes size-notatie](https://kubernetes.io/docs/concepts/configuration/.manage-resources-containers/#resource-units-in-kubernetes).
+> Als u niet bekend bent met de concepten in dit artikel, kunt u meer lezen over de [Kubernetes resource governance](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) en [Kubernetes size-notatie](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
 
 Het aantal kernen moet een geheel getal zijn dat groter is dan of gelijk is aan een waarde van 1.
 
