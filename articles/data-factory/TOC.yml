@@ -544,6 +544,8 @@
           href: data-flow-new-branch.md
         - name: Draaitabel
           href: data-flow-pivot.md
+        - name: Positie
+          href: data-flow-rank.md
         - name: Selecteer
           href: data-flow-select.md
         - name: Sink

@@ -263,8 +263,6 @@
       href: release-notes-archive.md
     - name: Azure-roadmapblog
       href: 'https://azure.microsoft.com/updates/?product=security-center'
-    - name: Buitengebruikstelling van functies en API (juli 2019)
-      href: security-center-features-retirement-july2019.md
     - name: Evaluatie van eindpuntbeveiliging en aanbevelingen
       href: security-center-endpoint-protection.md
 - name: Resources
