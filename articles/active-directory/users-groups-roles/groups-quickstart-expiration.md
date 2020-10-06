@@ -14,14 +14,14 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 178f6a2c1a71d088eeb1a3ea6f7e39198d401ff4
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 9fa15a9134fdc49d87baea48490854c1289a662a
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213729"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054395"
 ---
-# <a name="quickstart-set-microsoft-365-groups-to-expire-in-azure-active-directory"></a>Quickstart: Microsoft 365-groepen voor verloop instellen in Azure Active Directory
+# <a name="quickstart-set-microsoft-365-groups-to-expire-in-azure-active-directory"></a>Microsoft 365-groepen voor verloop instellen in Azure Active Directory
 
 In deze quickstart stelt u het verloopbeleid in voor uw Microsoft 365-groepen. Wanneer gebruikers hun eigen groepen kunnen instellen, kunnen niet-gebruikte groepen zich vermenigvuldigen. Eén manier om niet-gebruikte groepen te beheren, is door verloopbeleid voor deze groepen in te stellen om het handmatig verwijderen van groepen te verminderen.
 
@@ -33,7 +33,7 @@ Verloopbeleid maken is eenvoudig:
 - Een verwijderde Microsoft 365-groep kan binnen dertig dagen door een groepseigenaar of een Azure AD-beheerder worden hersteld
 
 > [!NOTE]
-> Voor groepen wordt nu Azure AD Intelligence gebruikt voor automatische verlenging op basis van het feit of ze recent zijn gebruikt. Deze verlengingsbeslissing is gebaseerd op gebruikersactiviteit in groepen in Office 365-services zoals Outlook, SharePoint, Teams, Yammer en andere.
+> Voor groepen wordt nu Azure AD Intelligence gebruikt voor automatische verlenging op basis van het feit of ze recent zijn gebruikt. Deze verlengingsbeslissing is gebaseerd op gebruikersactiviteit in groepen in Microsoft 365-services als Outlook, SharePoint, Teams, Yammer en andere.
 
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 

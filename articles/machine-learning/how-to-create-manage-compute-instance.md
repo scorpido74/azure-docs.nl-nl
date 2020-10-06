@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 1ba3f49c9016d71acf162efb07cd6120b1dcc1ec
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 3b5698c782b691dd8ae91913115db184fc83a2eb
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743553"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91756616"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Een Azure Machine Learning Compute-exemplaar maken en beheren
 
@@ -46,7 +46,7 @@ Reken instanties kunnen taken veilig uitvoeren in een [virtuele netwerk omgeving
 
 Het maken van een reken instantie is een eenmalig proces voor uw werk ruimte. U kunt deze berekening opnieuw gebruiken als een ontwikkel werkstation of als reken doel voor training. Er kunnen meerdere reken instanties aan uw werk ruimte zijn gekoppeld.
 
-De toegewezen kernen per regio per VM-serie quota en het totale regionale quotum, dat van toepassing is op het maken van een reken instantie, worden gecombineerd en gedeeld met Azure Machine Learning trainings berekenings cluster quotum. Wanneer het reken exemplaar wordt gestopt, wordt er geen quotum vrijgegeven om ervoor te zorgen dat u het reken exemplaar opnieuw kunt starten.
+De toegewezen kernen per regio per VM-serie quota en het totale regionale quotum, dat van toepassing is op het maken van een reken instantie, worden gecombineerd en gedeeld met Azure Machine Learning trainings berekenings cluster quotum. Wanneer het reken exemplaar wordt gestopt, wordt er geen quotum vrijgegeven om ervoor te zorgen dat u het reken exemplaar opnieuw kunt starten. Houd er rekening mee dat het niet mogelijk is om de grootte van de virtuele machine van reken instanties te wijzigen nadat deze is gemaakt.
 
 In het volgende voor beeld ziet u hoe u een reken instantie maakt:
 

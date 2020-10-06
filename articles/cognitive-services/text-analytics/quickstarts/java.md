@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Java gebruiken om de Text Analytics REST API aan te roepen'
+title: Java gebruiken om de Text Analytics REST API aan te roepen
 titleSuffix: Azure Cognitive Services
-description: In deze quickstart leert u informatie en codevoorbeelden op te halen om snel aan de slag te gaan met behulp van de Text Analytics-API in Microsoft Cognitive Services in Azure.
+description: In deze quickstart leert u hoe met Java informatie en codevoorbeelden ophaalt om snel aan de slag te gaan met behulp van de Text Analytics-API in Azure Cognitive Services.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.date: 07/06/2020
 ms.author: aahi
 ms.custom: seo-java-july2019, seo-java-august2019, devx-track-java
-ms.openlocfilehash: f8f9d76e5f1584ce54897950d7e35e2b22ba958e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 6c3c613f8733c8f786d121ab33b09afab244b09e
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319776"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90532270"
 ---
-# <a name="quickstart-use-java-to-call-the-azure-text-analytics-cognitive-service"></a>Quickstart: Java gebruiken om de Text Analytics Cognitive Service van Azure aan te roepen
+# <a name="quickstart-use-java-to-call-the-azure-text-analytics-cognitive-service"></a>Java gebruiken om de Text Analytics Cognitive Service van Azure aan te roepen
 <a name="HOLTop"></a>
 
 In dit artikel ziet u hoe u de  [Text Analytics-API's](//go.microsoft.com/fwlink/?LinkID=759711)  met Java kunt gebruiken om [taal te detecteren](#Detect), [sentiment te analyseren](#SentimentAnalysis), [sleuteltermen op te halen](#KeyPhraseExtraction) en [gekoppelde entiteiten te identificeren](#Entities).

@@ -80,6 +80,8 @@
       href: encryption-overview.md
     - name: Dubbele versleuteling
       href: double-encryption.md
+    - name: Wijzigingen in TLS-certificaten
+      href: tls-certificate-changes.md
     - name: Schijfversleuteling
       items:
         - name: Aanbevolen procedures

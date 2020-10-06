@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 3e3b804e2a3c43eb9579d1c6a1195511df528de2
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: d508e2e24ac35171d87cdba9cb79981dfb8764e3
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91629995"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757466"
 ---
 # <a name="upload-usage-data-metrics-and-logs-to-azure-monitor"></a>De gebruiks gegevens, de metrieken en de logboeken uploaden naar Azure Monitor
 
@@ -95,7 +95,7 @@ Volg deze opdrachten voor het maken van de service-principal voor metrische gege
 Als u een Service-Principal wilt maken, voert u deze opdracht uit:
 
 > [!NOTE]
-> Voor het maken van een Service-Principal zijn [bepaalde machtigingen vereist in azure](/active-directory/develop/howto-create-service-principal-portal#required-permissions).
+> Voor het maken van een Service-Principal zijn [bepaalde machtigingen vereist in azure](/azure/active-directory/develop/howto-create-service-principal-portal#permissions-required-for-registering-an-app).
 
 ```console
 az ad sp create-for-rbac --name <a name you choose>

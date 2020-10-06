@@ -4,14 +4,14 @@ description: Maak verbinding met een Azure Block Chain Service-netwerk met behul
 ms.date: 09/12/2019
 ms.topic: quickstart
 ms.reviewer: janders
-ms.openlocfilehash: abb2479b81d4811b311d27fb0be9900f2827e939
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 4a45e02a861ff20a4dc774668a4e008f9b42aeea
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920580"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530434"
 ---
-# <a name="quickstart-use-metamask-to-connect-and-deploy-a-smart-contract"></a>Quickstart: MetaMask gebruiken om verbinding te maken en een slim contract te implementeren
+# <a name="quickstart-use-metamask-to-connect-and-deploy-a-smart-contract"></a>MetaMask gebruiken om verbinding te maken en een slim contract te implementeren
 
 In deze quickstart gebruikt u MetaMask om verbinding te maken met een Azure Blockchain Service-netwerk, en gebruikt u Remix om een slim contract te implementeren. MetaMask is een browseruitbreiding voor het beheren van een Ether-wallet en het uitvoeren van acties voor slimme contracten.
 
@@ -34,7 +34,7 @@ U hebt het Azure Blockchain Service-eindpuntadres nodig om verbinding te maken m
     ![Standaardtransactieknooppunt selecteren](./media/connect-metamask/transaction-nodes.png)
 
 1. Selecteer **Verbindingsreeksen > Toegangssleutels**.
-1. Kopieer het eindpuntadres van **HTTPS (toegangssleutel 1)** .
+1. Kopieer het eindpuntadres van **HTTPS (toegangssleutel 1)**.
 
     ![Verbindingsreeks](./media/connect-metamask/connection-string.png)
 
@@ -89,7 +89,7 @@ Remix is een browserontwikkelingsomgeving voor Solidity. Door MetaMask en Remix 
     In het **eenvoudige contract** wordt een statusvariabele met de naam **balance** (saldo) gedeclareerd. Er worden twee functies gedefinieerd. De functie **add** (optellen) telt een getal op bij **balance**. De functie **get** (ophalen) retourneert de waarde van **balance**.
 1. Selecteer om het contract te compileren eerst het compilervenster van Solidity en selecteer vervolgens **Compile simple.sol**.
 
-    ![Compileren](./media/connect-metamask/compile.png)
+    ![Schermopname met een contract dat wordt gecompileerd.](./media/connect-metamask/compile.png)
 
 1. Selecteer het deelvenster **Deploy & Run** (Implementeren en uitvoeren) en stel vervolgens de **Environment** (Omgeving) in op **Injected Web3** om via MetaMask verbinding te maken met het blockchainlid.
 
@@ -97,7 +97,7 @@ Remix is een browserontwikkelingsomgeving voor Solidity. Door MetaMask en Remix 
 
 1. Selecteer het **simple** contract en vervolgens **Deploy** (Implementeren).
 
-    ![Implementeren](./media/connect-metamask/deploy.png)
+    ![Schermopname van het implementeren en uitvoeren van transacties met een geselecteerd contract, en Deploy geselecteerd.](./media/connect-metamask/deploy.png)
 
 
 1. Een bericht van MetaMask waarschuwt u dat u onvoldoende middelen hebt om de transactie uit te voeren.

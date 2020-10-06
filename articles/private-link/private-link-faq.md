@@ -5,14 +5,14 @@ services: private-link
 author: malopMSFT
 ms.service: private-link
 ms.topic: conceptual
-ms.date: 09/16/2019
+ms.date: 10/05/2019
 ms.author: allensu
-ms.openlocfilehash: f557bb271c88b32a9b53cf9b41b911314427530a
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 91823ff0d324cd30566948fecd86cc441342f14e
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91629944"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757041"
 ---
 # <a name="azure-private-link-frequently-asked-questions-faq"></a>Veelgestelde vragen over persoonlijke koppelingen van Azure
 
@@ -24,14 +24,16 @@ ms.locfileid: "91629944"
 - **[Persoonlijke Azure-koppelings service](private-link-service-overview.md)**: Azure Private Link service is een service die is gemaakt door een service provider. Op dit moment kan een persoonlijke koppelings service worden gekoppeld aan de front-end-IP-configuratie van een Standard Load Balancer. 
 
 ### <a name="how-is-traffic-being-sent-when-using-private-link"></a>Hoe wordt het verkeer verzonden wanneer een persoonlijke koppeling wordt gebruikt?
-Verkeer wordt privé verzonden met micro soft backbone. Er wordt geen verbinding met Internet verzonden.  
+Verkeer wordt privé verzonden met micro soft backbone. Er wordt geen verbinding met Internet verzonden. Persoonlijke Azure-koppeling slaat geen klant gegevens op.
  
 ### <a name="what-is-the-difference-between-a-service-endpoints-and-a-private-endpoints"></a>Wat is het verschil tussen een service-eind punt en een persoonlijk eind punt?
-- Wanneer u privé-eind punten gebruikt, wordt netwerk toegang verleend aan specifieke bronnen achter een bepaalde service die een gedetailleerde segmentatie levert. het verkeer kan ook de service resource van on-premises bereiken zonder gebruik te maken van open bare eind punten.
+- Privé-eind punten verlenen netwerk toegang tot specifieke bronnen achter een bepaalde service die gedetailleerde segmentatie levert. Verkeer kan de service bron van on-premises bereiken zonder gebruik te maken van open bare eind punten.
 - Een service-eind punt blijft een openbaar routeerbaar IP-adres.  Een persoonlijk eind punt is een privé-IP in de adres ruimte van het virtuele netwerk waar het persoonlijke eind punt is geconfigureerd.
 
 ### <a name="what-is-the-relationship-between-private-link-service-and-private-endpoint"></a>Wat is de relatie tussen de service voor persoonlijke koppelingen en het persoonlijke eind punt?
-Persoonlijk eind punt biedt toegang tot de resource typen van een persoonlijke koppeling, met inbegrip van Azure PaaS Services en uw eigen persoonlijke koppelings service. Het is een een-op-veel-relatie. Een service voor persoonlijke koppelingen kan verbindingen van meerdere persoonlijke eind punten ontvangen. Aan de andere kant kan één persoonlijk eind punt alleen verbinding maken met één privé koppelings service.    
+Meerdere bron typen voor persoonlijke koppelingen bieden ondersteuning voor toegang via een persoonlijk eind punt. Resources zijn Azure PaaS Services en uw eigen persoonlijke koppelings service. Het is een een-op-veel-relatie. 
+
+Een persoonlijke koppelings service ontvangt verbindingen van meerdere persoonlijke eind punten. Een persoonlijk eind punt maakt verbinding met één privé koppelings service.    
 
 ## <a name="private-endpoint"></a>Privé-eindpunt 
  
@@ -68,14 +70,14 @@ U kunt de bloot stelling regelen met behulp van de zichtbaarheids configuratie v
 - Met **beperkte** abonnementen die zijn goedgekeurd en met RBAC-toegang, kan de service worden gevonden. 
 - **Alle** -iedereen kan de service vinden. 
  
-### <a name="can-i-create-a-private-link-service-with-basic-load-balancer"></a>Kan ik een persoonlijke koppelings service maken met basis Load Balancer? 
-Nee. Een persoonlijke koppelings service via een basis Load Balancer wordt niet ondersteund.
+### <a name="can-i-create-a-private-link-service-with-basic-load-balancer"></a>Kan ik een persoonlijke koppelings service maken met basis load balancer? 
+Nee. Een persoonlijke koppelings service via een basis load balancer wordt niet ondersteund.
  
 ### <a name="is-a-dedicated-subnet-required-for-private-link-service"></a>Is een toegewezen subnet vereist voor de service voor privé-koppeling? 
 Nee. Voor de service voor persoonlijke koppelingen is geen toegewezen subnet vereist. U kunt elk subnet in uw VNet kiezen waar uw service wordt geïmplementeerd.   
 
-### <a name="i-am-a-service-provider-using-azure-private-link-do-i-need-to-make-sure-all-my-customers-have-unique-ip-space-and-dont-overlap-with-my-ip-space"></a>Ik ben een service provider met behulp van een persoonlijke Azure-koppeling. Moet ik ervoor zorgen dat alle klanten een unieke IP-ruimte hebben en elkaar niet overlappen met mijn IP-ruimte? 
-Nee. Persoonlijke Azure-koppeling biedt deze functionaliteit voor u. Daarom is het niet nodig om niet-overlappende adres ruimte te hebben met de adres ruimte van uw klant. 
+### <a name="im-a-service-provider-using-azure-private-link-do-i-need-to-make-sure-all-my-customers-have-unique-ip-space-and-dont-overlap-with-my-ip-space"></a>Ik ben een service provider die gebruikmaakt van een persoonlijke Azure-koppeling. Moet ik ervoor zorgen dat alle klanten een unieke IP-ruimte hebben en elkaar niet overlappen met mijn IP-ruimte? 
+Nee. Persoonlijke Azure-koppeling biedt deze functionaliteit voor u. U hoeft geen niet-overlappende adres ruimte te hebben met de adres ruimte van uw klant. 
 
 ##  <a name="next-steps"></a>Volgende stappen
 

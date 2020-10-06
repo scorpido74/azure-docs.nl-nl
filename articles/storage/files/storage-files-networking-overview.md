@@ -7,17 +7,17 @@ ms.topic: overview
 ms.date: 02/22/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 804e469a01be042b4c299fd608f11426e7274b72
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 7164c3dd5c98544f3cb2944cb33cfd0e9703e36d
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84464807"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90563332"
 ---
 # <a name="azure-files-networking-considerations"></a>Aandachtspunten voor Azure Files-netwerken 
 U kunt op twee manieren verbinding maken met een Azure-bestandsshare:
 
-- U kunt de share rechtstreeks openen via de SMB- of FileREST-protocollen. Dit toegangspatroon wordt voornamelijk gebruikt om de noodzaak voor on-premises servers zoveel mogelijk te elimineren.
+- Directe toegang tot de share via de protocollen Server Message Block (SMB), NFS (Network File System) (preview) of FileREST. Dit toegangspatroon wordt voornamelijk gebruikt om de noodzaak voor on-premises servers zoveel mogelijk te elimineren.
 - Het maken van een cache van de Azure-bestandsshare op een on-premises server (of op een Azure-VM) met Azure File Sync, en het verkrijgen van toegang tot de gegevens van de bestandsshare vanaf de on-premises server met het protocol van uw keuze (SMB, NFS, FTPS, enzovoort) voor uw use-case. Dit toegangspatroon is handig omdat het een goede combinatie is van on-premises prestaties, de schaal van de cloud en serverloze koppelbare services, zoals Azure Backup.
 
 In dit artikel wordt uitgelegd hoe u netwerken kunt configureren als het in uw use-case nodig is de Azure-bestandsshare rechtstreeks te openen in plaats van met Azure File Sync. Zie [Aandachtspunten voor Azure File Sync-netwerken](storage-sync-files-networking-overview.md) voor meer informatie over netwerkaandachtspunten voor een Azure File Sync-implementatie.
@@ -29,17 +29,17 @@ U wordt aangeraden [Implementatie van Azure Files plannen](storage-files-plannin
 ## <a name="accessing-your-azure-file-shares"></a>Toegang tot uw Azure-bestandsshares
 Wanneer u een Azure-bestandsshare in een opslagaccount implementeert, is uw bestandsshare direct toegankelijk via het openbare eindpunt van het opslagaccount. Dit betekent dat geverifieerde aanvragen, zoals aanvragen die zijn geautoriseerd door de aanmeldingsidentiteit van een gebruiker, veilig kunnen zijn van binnen of buiten Azure. 
 
-In veel klantomgevingen kan een initiële koppeling van de Azure-bestandsshare op uw on-premises werkstation mislukken, zelfs als het wel lukt om Azure-VM's te koppelen. De reden hiervoor is dat veel organisaties en internetproviders (ISP's) de poort blokkeren die door SMB wordt gebruikt voor communicatie: poort 445. Deze werkwijze is afkomstig uit beveiligingsrichtlijnen over verouderde en afgeschafte versies van het SMB-protocol. Hoewel SMB 3.0 een internet-veilig protocol is, zijn oudere versies van SMB, met name SMB 1.0, dat niet. Azure-bestandsshares mogen alleen extern toegankelijk zijn via SMB 3.0 en het FileREST-protocol (dat ook internet-veilig is) via het openbare eindpunt.
+In veel klantomgevingen kan een initiële koppeling van de Azure-bestandsshare op uw on-premises werkstation mislukken, zelfs als het wel lukt om Azure-VM's te koppelen. De reden hiervoor is dat veel organisaties en internetproviders (ISP's) de poort blokkeren die door SMB wordt gebruikt voor communicatie: poort 445. NFS-shares hebben dit probleem niet. Deze werkwijze is afkomstig uit beveiligingsrichtlijnen over verouderde en afgeschafte versies van het SMB-protocol. Hoewel SMB 3.0 een internet-veilig protocol is, zijn oudere versies van SMB, met name SMB 1.0, dat niet. Azure-bestandsshares mogen alleen extern toegankelijk zijn via SMB 3.0 en het FileREST-protocol (dat ook internet-veilig is) via het openbare eindpunt.
 
-De eenvoudigste manier om toegang te krijgen tot uw Azure-bestandsshare vanuit een on-premises netwerk, is poort 445 van uw on-premises netwerk open te zetten. Daarom raadt Microsoft u aan de volgende stappen uit te voeren om SMB 1.0 uit uw omgeving te verwijderen:
+De eenvoudigste manier om toegang te krijgen tot uw Azure SMB-bestandsshare vanuit een on-premises netwerk, is poort 445 van uw on-premises netwerk open te zetten. Daarom raadt Microsoft u aan de volgende stappen uit te voeren om SMB 1.0 uit uw omgeving te verwijderen:
 
 1. Controleer of SMB 1.0 is verwijderd of uitgeschakeld voor de apparaten van uw organisatie. Alle momenteel ondersteunde versies van Windows en Windows Server ondersteunen het verwijderen of uitschakelen van SMB 1.0 en vanaf Windows 10, versie 1709, is SMB 1.0 standaard niet meer in Windows geïnstalleerd. Ga voor meer informatie over het uitschakelen van SMB 1.0 naar onze pagina's voor specifieke besturingssystemen:
     - [Windows/Windows Server beveiligen](storage-how-to-use-files-windows.md#securing-windowswindows-server)
     - [Linux beveiligen](storage-how-to-use-files-linux.md#securing-linux)
-2. Controleer of er geen producten in uw organisatie zijn waarvoor SMB 1.0 vereist is, en verwijder de producten waarvoor SMB 1.0 wel vereist is. We onderhouden een [SMB1 Product Clearinghouse](https://aka.ms/stillneedssmb1), met alle eigen producten en producten van derden waarvan bij Microsoft bekend is dat ze SMB 1.0 vereisen. 
-3. (Optioneel) Gebruik een firewall van derden met het on-premises netwerk van uw organisatie om te voorkomen dat uitgaand verkeer via SMB 1.0 de netwerkgrens uw organisatie overschrijdt.
+1. Controleer of er geen producten in uw organisatie zijn waarvoor SMB 1.0 vereist is, en verwijder de producten waarvoor SMB 1.0 wel vereist is. We onderhouden een [SMB1 Product Clearinghouse](https://aka.ms/stillneedssmb1), met alle eigen producten en producten van derden waarvan bij Microsoft bekend is dat ze SMB 1.0 vereisen. 
+1. (Optioneel) Gebruik een firewall van derden met het on-premises netwerk van uw organisatie om te voorkomen dat uitgaand verkeer via SMB 1.0 de netwerkgrens uw organisatie overschrijdt.
 
-Als uw organisatie vereist dat poort 445 wordt geblokkeerd per beleid of voorschrift, of als uw organisatie vereist dat verkeer naar Azure vereist een deterministisch pad volgt, kunt u Azure VPN Gateway of ExpressRoute gebruiken om verkeer naar uw Azure-bestandsshares te tunnelen.
+Als uw organisatie vereist dat poort 445 wordt geblokkeerd per beleid of voorschrift, of als uw organisatie vereist dat verkeer naar Azure vereist een deterministisch pad volgt, kunt u Azure VPN Gateway of ExpressRoute gebruiken om verkeer naar uw Azure-bestandsshares te tunnelen. Voor NFS-shares is dit niet vereist, omdat hiervoor poort 445 niet nodig is.
 
 > [!Important]  
 > Zelfs als u besluit een alternatieve methode te gebruiken om toegang te krijgen tot uw Azure-bestandsshares, raadt Microsoft aan om SMB 1.0 toch te verwijderen uit uw omgeving.
@@ -47,9 +47,9 @@ Als uw organisatie vereist dat poort 445 wordt geblokkeerd per beleid of voorsch
 ### <a name="tunneling-traffic-over-a-virtual-private-network-or-expressroute"></a>Verkeer tunnelen via een virtueel particulier netwerk of ExpressRoute
 Wanneer u een netwerktunnel tussen uw on-premises netwerk en Azure tot stand brengt, wordt uw on-premises netwerk via peering gekoppeld aan een of meer virtuele netwerken in Azure. Een [virtueel netwerk](../../virtual-network/virtual-networks-overview.md), ook wel VNet genoemd, is te vergelijken met een traditioneel netwerk dat on-premises wordt uitgevoerd. Net zoals een Azure-opslagaccount of een Azure-VM, is een VNet een Azure-resource die in een resourcegroep is geïmplementeerd. 
 
-Azure Files ondersteunt de volgende mechanismen om verkeer te tunnelen tussen uw on-premises werkstations en servers en Azure:
+Azure Files ondersteunt de volgende mechanismen om verkeer te tunnelen tussen uw on-premises werkstations en servers en Azure SMB/NFS-bestandsshares:
 
-- [Azure VPN-gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md): Een VPN-gateway is een speciaal soort virtueel-netwerkgateway die wordt gebruikt om versleuteld verkeer te verzenden tussen een virtueel Azure-netwerk en een andere locatie (zoals een on-premises locatie) via internet. Een Azure-VPN Gateway is een Azure-resource die kan worden geïmplementeerd in een resourcegroep naast een opslagaccount of andere Azure-resources. Voor VPN-gateways zijn twee soorten verbindingen beschikbaar:
+- Een VPN-gateway is een speciaal soort virtueel-netwerkgateway die wordt gebruikt om versleuteld verkeer te verzenden tussen een virtueel Azure-netwerk en een andere locatie (zoals een on-premises locatie) via internet. Een Azure-VPN Gateway is een Azure-resource die kan worden geïmplementeerd in een resourcegroep naast een opslagaccount of andere Azure-resources. Voor VPN-gateways zijn twee soorten verbindingen beschikbaar:
     - [Punt-naar-site-VPN](../../vpn-gateway/point-to-site-about.md)-gatewayverbindingen. Dit zijn VPN-verbindingen tussen Azure en een afzonderlijke client. Deze oplossing is vooral nuttig voor apparaten die geen deel uitmaken van het on-premises netwerk van uw organisatie, zoals telewerkers die hun Azure-bestandsshare willen kunnen koppelen vanuit huis of een café of hotel, terwijl ze onderweg zijn. Als u een punt-naar-site-VPN-verbinding met Azure Files wilt gebruiken, moet er een punt-naar-site-VPN-verbinding worden geconfigureerd voor elke client die verbinding wil maken. Zie [Een punt-naar-site-VPN in Windows configureren voor gebruik met Azure Files](storage-files-configure-p2s-vpn-windows.md) en [Een punt-naar-site-VPN in Linux configureren voor gebruik met Azure Files](storage-files-configure-p2s-vpn-linux.md) om de implementatie van een punt-naar-site-VPN-verbinding te vereenvoudigen.
     - [Site-naar-site-VPN](../../vpn-gateway/design.md#s2smulti). Dit zijn VPN-verbindingen tussen Azure en het netwerk van uw organisatie. Met een site-naar-site-VPN-verbinding kunt u een VPN-verbinding eenmaal configureren, voor een VPN-server of een apparaat dat wordt gehost op het netwerk van uw organisatie, in plaats van dit te doen voor elk clientapparaat dat toegang tot uw Azure-bestandsshare moet hebben. Zie [Een site-naar-site-VPN configureren voor gebruik met Azure Files](storage-files-configure-s2s-vpn.md) voor het vereenvoudigen van de implementatie van een site-naar-site-VPN-verbinding.
 - [ExpressRoute](../../expressroute/expressroute-introduction.md). Hiermee kunt u een gedefinieerde route tussen Azure en uw on-premises netwerk maken die niet via internet loopt. Omdat ExpressRoute een toegewezen pad biedt tussen uw on-premises datacentrum en Azure, is ExpressRoute mogelijk handig wanneer netwerkprestaties van belang zijn. ExpressRoute is ook een goede optie wanneer een deterministisch pad naar uw resources in de cloud vereist is vanwege het beleid of de wettelijke vereisten van uw organisatie.
@@ -139,10 +139,17 @@ Er zijn twee benaderingen voor het beperken van de toegang van een opslagaccount
 - Een of meer privé-eindpunten maken voor het opslagaccount en alle toegang tot het openbare eindpunt beperken. Hierdoor heeft alleen verkeer dat afkomstig is uit de gewenste virtuele netwerken toegang tot de Azure-bestandsshares binnen het opslagaccount.
 - Het openbare eindpunt beperken tot een of meer virtuele netwerken. Hiervoor wordt een voorziening van het virtuele netwerk gebruikt met de naam *service-eindpunten*. Wanneer u het verkeer naar een opslagaccount beperkt via een service-eindpunt, krijgt u nog steeds toegang tot het opslagaccount via het openbare IP-adres.
 
+> [!NOTE]
+> NFS-shares hebben geen toegang tot het openbare eindpunt van een opslagaccount via het openbare IP-adres. Ze hebben alleen toegang tot het openbare eindpunt van een opslagaccount via virtuele netwerken. NFS-shares kunnen ook toegang krijgen tot het opslagaccount via privé-eindpunten.
+
 Zie [Firewalls en virtuele netwerken voor Azure Storage configureren](../common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) voor meer informatie over het configureren van de firewall voor het opslagaccount.
 
 ## <a name="encryption-in-transit"></a>Versleuteling tijdens overdracht
-Standaard is versleuteling in transit ingeschakeld voor alle Azure-opslagaccounts. Dit betekent dat wanneer u een bestandsshare koppelt via SMB of de bestandsshare opent via het FileREST-protocol (bijvoorbeeld via de Azure-portal, PowerShell/CLI of Azure-SDK's), de verbinding alleen wordt toegestaan als deze wordt gemaakt met SMB 3.0+ met versleuteling of HTTPS. Op clients die SMB 3.0 niet ondersteunen of op clients die SMB 3.0 wel ondersteunen maar SMB-versleuteling niet, kan de Azure-bestandsshare niet worden gekoppeld als versleuteling in transit is ingeschakeld. Zie onze gedetailleerde documentatie voor [Windows](storage-how-to-use-files-windows.md), [macOS](storage-how-to-use-files-mac.md) en [Linux-](storage-how-to-use-files-linux.md) voor meer informatie over besturingssystemen waarin SMB 3.0 met versleuteling wordt ondersteund. Alle huidige versies van PowerShell, CLI en SDK's ondersteunen HTTPS.  
+
+> [!IMPORTANT]
+> Deze sectie bevat informatie over versleuteling tijdens overdracht voor SMB-shares. Zie [Beveiliging](storage-files-compare-protocols.md#security) voor meer informatie over versleuteling tijdens overdracht voor NFS-shares.
+
+Standaard is versleuteling in-transit ingeschakeld voor alle Azure-opslagaccounts. Dit betekent dat wanneer u een bestandsshare koppelt via SMB of de bestandsshare opent via het FileREST-protocol (bijvoorbeeld via de Azure-portal, PowerShell/CLI of Azure-SDK's), de verbinding alleen wordt toegestaan als deze wordt gemaakt met SMB 3.0+ met versleuteling of HTTPS. Op clients die SMB 3.0 niet ondersteunen of op clients die SMB 3.0 wel ondersteunen maar SMB-versleuteling niet, kan de Azure-bestandsshare niet worden gekoppeld als versleuteling in transit is ingeschakeld. Zie onze gedetailleerde documentatie voor [Windows](storage-how-to-use-files-windows.md), [macOS](storage-how-to-use-files-mac.md) en [Linux-](storage-how-to-use-files-linux.md) voor meer informatie over besturingssystemen waarin SMB 3.0 met versleuteling wordt ondersteund. Alle huidige versies van PowerShell, CLI en SDK's ondersteunen HTTPS.  
 
 U kunt versleuteling in transit uitschakelen voor een Azure-opslagaccount. Wanneer versleuteling is uitgeschakeld, worden door Azure Files ook SMB 2.1, SMB 3.0 zonder versleuteling en niet-versleutelde FileREST-API-aanroepen via HTTP toegestaan. De belangrijkste reden om versleuteling in transit uit te schakelen, is het ondersteunen van een verouderde toepassing die moet worden uitgevoerd op een ouder besturingssysteem, zoals Windows Server 2008 R2 of een oudere Linux-distributie. In Azure Files worden SMB 2.1-verbindingen alleen toegestaan binnen dezelfde Azure-regio als de Azure-bestandsshare. SMB 2.1-clients buiten de Azure-regio van de Azure-bestandsshare, zoals on-premises clients of clients in een andere Azure-regio, hebben geen toegang tot de bestandsshare.
 

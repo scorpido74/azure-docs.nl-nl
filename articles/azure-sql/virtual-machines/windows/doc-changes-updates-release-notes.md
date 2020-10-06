@@ -1,5 +1,5 @@
 ---
-title: Wijzigingen in de documentatie voor SQL Server op Azure Virtual Machines | Microsoft Docs
+title: Wijzigingen in de documentatie voor SQL Server op Azure Virtual Machines
 description: Meer informatie over de nieuwe functies en verbeteringen voor verschillende versies van SQL Server op Azure Virtual Machines.
 services: virtual-machines-windows
 author: MashaMSFT
@@ -10,18 +10,25 @@ ms.service: virtual-machines-sql
 ms.topic: reference
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 08/20/2020
-ms.openlocfilehash: a596a57b2b4ac914514fcdefe77106c311e53c44
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/21/2020
+ms.openlocfilehash: 6e2665a413b3d43f7e1b294ebfc390c57d995f29
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91272664"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758639"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Wijzigingen in de documentatie voor SQL Server op Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Met Azure kunt u een virtuele machine (VM) implementeren met een installatie kopie van SQL Server ingebouwde. In dit artikel vindt u een overzicht van de wijzigingen in de documentatie die zijn gekoppeld aan nieuwe functies en verbeteringen in de recente releases van [SQL Server op Azure virtual machines](https://azure.microsoft.com/services/virtual-machines/sql-server/). 
+
+## <a name="september-2020"></a>September 2020
+
+| Wijzigingen | Details |
+| --- | --- |
+| **Automatische RP-registratie** | U kunt nu de functie [automatische registratie](sql-vm-resource-provider-automatic-registration.md) inschakelen om automatisch alle SQL Server vm's te registreren die al zijn geïmplementeerd voor uw abonnement, evenals de SQL Server vm's die in de toekomst worden toegevoegd.  | 
+
 
 ## <a name="august-2020"></a>Augustus 2020
 
@@ -71,7 +78,7 @@ Met Azure kunt u een virtuele machine (VM) implementeren met een installatie kop
 | **Registratie van bulk bron provider** | U kunt SQL Server virtuele machines nu [bulksgewijs registreren](sql-vm-resource-provider-bulk-register.md) bij de resource provider. | 
 |**Voor prestaties geoptimaliseerde opslag configuratie** | U kunt nu [uw opslag configuratie volledig aanpassen](storage-configuration.md#new-vms) bij het maken van een nieuwe SQL Server VM. |
 |**Premium-bestands share voor FCI** | U kunt nu een failover-cluster exemplaar maken met behulp van een [Premium-bestands share](failover-cluster-instance-premium-file-share-manually-configure.md) in plaats van de oorspronkelijke methode van [opslagruimten direct](failover-cluster-instance-storage-spaces-direct-manually-configure.md). 
-| **Azure Dedicated Host** | U kunt uw SQL Server-VM uitvoeren op een [toegewezen Azure-host](dedicated-host.md). | 
+| **Voor Azure toegewezen host** | U kunt uw SQL Server-VM uitvoeren op een [toegewezen Azure-host](dedicated-host.md). | 
 | **VM-migratie SQL Server naar een andere regio** | Gebruik Azure Site Recovery om [uw SQL Server-VM van de ene regio naar de andere te migreren](move-sql-vm-different-region.md). |
 |  **Nieuwe SQL IaaS-installatie modi** | Het is nu mogelijk om de SQL Server IaaS-uitbrei ding in de [Lightweight-modus](sql-server-iaas-agent-extension-automate-management.md) te installeren om te voor komen dat de SQL Server-service opnieuw wordt gestart.  |
 | **Aanpassing van SQL Server-editie** | U kunt nu de [eigenschap Edition](change-sql-server-edition.md) voor uw SQL Server virtuele machine wijzigen. |
@@ -83,7 +90,7 @@ Met Azure kunt u een virtuele machine (VM) implementeren met een installatie kop
 | **Ondersteunings ondersteuning voor benoemde instanties** | U kunt nu de [SQL Server IaaS-extensie](sql-server-iaas-agent-extension-automate-management.md#installation) gebruiken met een benoemd exemplaar als het standaard exemplaar op de juiste wijze is verwijderd. | 
 | **Portal verbetering** | De Azure Portal ervaring voor het implementeren van een SQL Server VM is vernieuwd om de bruikbaarheid te verbeteren. Meer informatie vindt u in de korte [Snelstartgids](sql-vm-create-portal-quickstart.md) en uitgebreidere [hand leiding](create-sql-vm-portal.md) voor het implementeren van een SQL Server-VM.|
 | **Portal verbetering** | Het is nu mogelijk om het licentie model voor een SQL Server-VM te wijzigen van betalen per gebruik naar uw eigen licentie met behulp van de [Azure Portal](licensing-model-azure-hybrid-benefit-ahb-change.md#vms-already-registered-with-the-resource-provider).|
-| **Vereenvoudiging van de implementatie van de beschikbaarheids groep naar een SQL Server virtuele machine via de Azure CLI** | Het is nu eenvoudiger dan ooit om een beschikbaarheids groep te implementeren op een SQL Server VM in Azure. U kunt de [Azure cli](/cli/azure/sql/vm?view=azure-cli-2018-03-01-hybrid) gebruiken om de Windows-failovercluster, interne Load Balancer en beschikbaarheids groep-listeners te maken vanaf de opdracht regel. Zie [de Azure CLI gebruiken voor het configureren van een AlwaysOn-beschikbaarheids groep voor SQL Server op een virtuele machine van Azure](availability-group-az-cli-configure.md)voor meer informatie. | 
+| **Vereenvoudiging van de implementatie van de beschikbaarheids groep naar een SQL Server virtuele machine via de Azure CLI** | Het is nu eenvoudiger dan ooit om een beschikbaarheids groep te implementeren op een SQL Server VM in Azure. U kunt de [Azure cli](/cli/azure/sql/vm?view=azure-cli-2018-03-01-hybrid&preserve-view=true) gebruiken om de Windows-failovercluster, interne Load Balancer en beschikbaarheids groep-listeners te maken vanaf de opdracht regel. Zie [de Azure CLI gebruiken voor het configureren van een AlwaysOn-beschikbaarheids groep voor SQL Server op een virtuele machine van Azure](availability-group-az-cli-configure.md)voor meer informatie. | 
 | &nbsp; | &nbsp; |
 
 ## <a name="2018"></a>2018 
@@ -113,4 +120,4 @@ Met Azure kunt u een virtuele machine (VM) implementeren met een installatie kop
 * [Overzicht van SQL Server op een Linux-VM](../linux/sql-server-on-linux-vm-what-is-iaas-overview.md)
 * [SQL Server inrichten op een virtuele Linux-machine](../linux/sql-vm-create-portal-quickstart.md)
 * [Veelgestelde vragen (Linux)](../linux/frequently-asked-questions-faq.md)
-* [Documentatie over SQL Server on Linux](https://docs.microsoft.com/sql/linux/sql-server-linux-overview)
+* [Documentatie voor SQL Server op Linux](https://docs.microsoft.com/sql/linux/sql-server-linux-overview)

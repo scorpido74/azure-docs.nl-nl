@@ -379,7 +379,7 @@
           href: key-vault-parameter.md
     - name: CI/CD
       items:
-        - name: VS-project met pijplijnen
+        - name: ARM-sjablonen met pijplijnen
           href: add-template-to-azure-pipelines.md
         - name: Implementeren - GitHub Actions
           href: deploy-github-actions.md

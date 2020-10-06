@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: d8779a25b7c6036f3b09badab67733fa55acfee7
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 0138715e4c9df8ae05c9a3eade64d539eb7cdeda
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907584"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91756548"
 ---
 # <a name="featurization-in-automated-machine-learning"></a>Parametrisatie in automatische machine learning
 
@@ -47,7 +47,7 @@ Voor experimenten die u configureert met de python-SDK, kunt u de instelling par
 
 De volgende tabel bevat de geaccepteerde instellingen voor `featurization` in de [AutoMLConfig-klasse](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig):
 
-|Parametrisatie-configuratie | Description|
+|Parametrisatie-configuratie | Beschrijving|
 ------------- | ------------- |
 |`"featurization": 'auto'`| Hiermee geeft u op dat, als onderdeel van preverwerking, de [stappen voor gegevens Guardrails en parametrisatie](#featurization) automatisch moeten worden uitgevoerd. Dit is de standaardinstelling.|
 |`"featurization": 'off'`| Hiermee geeft u op dat parametrisatie stappen niet automatisch moeten worden uitgevoerd.|
@@ -62,7 +62,7 @@ De volgende tabel bevat een overzicht van de technieken die automatisch worden t
 > [!NOTE]
 > Als u van plan bent om uw door AutoML gemaakte modellen te exporteren naar een [ONNX-model](concept-onnx.md), worden alleen de parametrisatie-opties aangegeven met een asterisk (*) ondersteund in de ONNX-indeling. Meer informatie over [het converteren van modellen naar ONNX](concept-automated-ml.md#use-with-onnx).
 
-|Parametrisatie- &nbsp; stappen| Description |
+|Parametrisatie- &nbsp; stappen| Beschrijving |
 | ------------- | ------------- |
 |**Hoge kardinaliteit of geen variantie-functies verwijderen*** |Verwijder deze functies uit de trainings-en validatie sets. Is van toepassing op functies waarbij alle waarden ontbreken, met dezelfde waarde in alle rijen of met een hoge kardinaliteit (bijvoorbeeld hashes, Id's of GUID'S).|
 |**Ontbrekende waarden toegerekend*** |Voor numerieke functies toegerekend met het gemiddelde van de waarden in de kolom.<br/><br/>Voor categorische-functies toegerekend met de meest frequente waarde.|
@@ -120,7 +120,7 @@ Geef in uw object op om featurizations aan te passen  `"featurization": Featuri
 
 Ondersteunde aanpassingen zijn onder andere:
 
-|Aanpassing|Definitie|
+|Aanpassen|Definitie|
 |--|--|
 |**Update van het kolom doel**|Overschrijf het automatisch gedetecteerde functie type voor de opgegeven kolom.|
 |**Para meter bijwerken van trans formatie** |De para meters voor de opgegeven transformator bijwerken. *Biedt momenteel* ondersteuning voor toerekening (gemiddelde, meest frequente en gemiddelde) en *HashOneHotEncoder*.|
@@ -316,7 +316,7 @@ Als u BERT wilt aanroepen, moet u  `enable_dnn: True` in uw automl_settings inst
 
 AutoML voert de volgende stappen uit voor BERT. 
 
-1. **Voor verwerking en tokening van alle tekst kolommen**. De transformator ' StringCast ' kan bijvoorbeeld worden gevonden in de parametrisatie-samen vatting van het uiteindelijke model. Een voor beeld van het maken van een samen vatting van het model parametrisatie vindt u in [Dit notitie blok](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb).
+1. **Voor verwerking en tokening van alle tekst kolommen**. De transformator ' StringCast ' kan bijvoorbeeld worden gevonden in de parametrisatie-samen vatting van het uiteindelijke model. Een voor beeld van het maken van een samen vatting van het model parametrisatie vindt u in [Dit notitie blok](https://towardsdatascience.com/automated-text-classification-using-machine-learning-3df4f4f9570b).
 
 2. **Alle tekst kolommen samen voegen tot één tekst kolom**, dus de `StringConcatTransformer` in het laatste model. 
 

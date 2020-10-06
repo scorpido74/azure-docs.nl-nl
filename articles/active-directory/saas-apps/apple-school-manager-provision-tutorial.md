@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2020
 ms.author: Zhchia
-ms.openlocfilehash: 221039ad1dc30e645d98ba6dd7e79c7b81ba3430
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5ce2c866954f46e3a01cabb23033ea2dae77ead6
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91313056"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757449"
 ---
 # <a name="tutorial-configure-apple-school-manager-for-automatic-user-provisioning"></a>Zelf studie: Apple school Manager configureren voor automatische gebruikers inrichting
 
@@ -152,16 +152,16 @@ Nadat u het inrichten hebt geconfigureerd, gebruikt u de volgende resources om u
 
 * [Gebruikersaccountinrichting voor zakelijke apps beheren](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
-* [SCIM-vereisten voor Apple school manager controleren](URL=https://support.apple.com/guide/apple-school-manager/apdd88331cd6)
-* [Hoe een persoons-ID wordt gebruikt in Apple school manager](URL=https://support.apple.com/guide/apple-school-manager/apd69e1e48e9)
-* [SCIM gebruiken om gebruikers te importeren in Apple school manager](URL=https://support.apple.com/guide/apple-school-manager/apd3ec7b95ad)
-* [Conflicten met SCIM-gebruikers accounts oplossen in Apple school manager](URL=https://support.apple.com/guide/apple-school-manager/apd313013d12)
-* [Azure AD-accounts verwijderen die worden weer gegeven in Apple school manager](URL=https://support.apple.com/guide/apple-school-manager/apdaa5798fbe)
-* [SCIM-activiteiten bekijken in Apple school manager](URL=https://support.apple.com/guide/apple-school-manager/apd1bfd8dfde)
-* [Bestaande SCIM-token en-verbindingen beheren in Apple school manager](URL=https://support.apple.com/guide/apple-school-manager/apdc9a823611)
-* [De SCIM-verbinding verbreken in Apple school manager](URL=https://support.apple.com/guide/apple-school-manager/apd609be3a61)
-* [Bestaande SCIM-token en-verbindingen beheren in Apple school manager](URL=https://support.apple.com/guide/apple-school-manager/apdc9a8236e9)
-* [Problemen met de SCIM-verbinding oplossen in Apple school manager](URL=https://support.apple.com/guide/apple-school-manager/apd403a0f3bd)
+* [SCIM-vereisten voor Apple school manager controleren](https://support.apple.com/guide/apple-school-manager/apdd88331cd6)
+* [Hoe een persoons-ID wordt gebruikt in Apple school manager](https://support.apple.com/guide/apple-school-manager/apd69e1e48e9)
+* [SCIM gebruiken om gebruikers te importeren in Apple school manager](https://support.apple.com/guide/apple-school-manager/apd3ec7b95ad)
+* [Conflicten met SCIM-gebruikers accounts oplossen in Apple school manager](https://support.apple.com/guide/apple-school-manager/apd313013d12)
+* [Azure AD-accounts verwijderen die worden weer gegeven in Apple school manager](https://support.apple.com/guide/apple-school-manager/apdaa5798fbe)
+* [SCIM-activiteiten bekijken in Apple school manager](https://support.apple.com/guide/apple-school-manager/apd1bfd8dfde)
+* [Bestaande SCIM-token en-verbindingen beheren in Apple school manager](https://support.apple.com/guide/apple-school-manager/apdc9a823611)
+* [De SCIM-verbinding verbreken in Apple school manager](https://support.apple.com/guide/apple-school-manager/apd609be3a61)
+* [Bestaande SCIM-token en-verbindingen beheren in Apple school manager](https://support.apple.com/guide/apple-school-manager/apdc9a8236e9)
+* [Problemen met de SCIM-verbinding oplossen in Apple school manager](https://support.apple.com/guide/apple-school-manager/apd403a0f3bd)
 
 ## <a name="next-steps"></a>Volgende stappen
 

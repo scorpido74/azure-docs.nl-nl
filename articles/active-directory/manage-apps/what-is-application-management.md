@@ -12,12 +12,12 @@ ms.date: 07/01/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 293aa80336b259a760a835e3ece56d50287f06ed
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: abe222ff783032c5d6d19a42bfb3d8aeffc284a1
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299878"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604118"
 ---
 # <a name="what-is-application-management"></a>Wat is toepassingsbeheer?
 
@@ -49,7 +49,7 @@ Organisaties hebben vaak honderden toepassingen waar gebruikers afhankelijk van 
 
 ## <a name="how-does-azure-ad-work-with-applications"></a>Hoe werkt Azure AD met toepassingen?
 
-Azure AD vereenvoudigt de manier waarop u uw toepassingen beheert door één identiteitssysteem te bieden voor uw cloud- en on-premises apps. U kunt uw SaaS-toepassingen (Software as a Service), on-premises toepassingen en LOB-apps (Line-Of-Business) toevoegen aan Azure AD. Gebruikers melden zich vervolgens eenmalig aan voor veilige en naadloze toegang tot deze toepassingen, samen met Office 365 en andere zakelijke toepassingen van Microsoft. U kunt de administratieve kosten verlagen door het [inrichten van gebruikers te automatiseren](../app-provisioning/user-provisioning.md). U kunt ook meervoudige verificatie en beleid voor voorwaardelijke toegang gebruiken om op een veilige manier toegang te bieden tot toepassingen.
+Azure AD vereenvoudigt de manier waarop u uw toepassingen beheert door één identiteitssysteem te bieden voor uw cloud- en on-premises apps. U kunt uw SaaS-toepassingen (Software as a Service), on-premises toepassingen en LOB-apps (Line-Of-Business) toevoegen aan Azure AD. Gebruikers melden zich vervolgens eenmalig aan voor veilige en naadloze toegang tot deze toepassingen, samen met Microsoft 365 en andere zakelijke toepassingen van Microsoft. U kunt de administratieve kosten verlagen door het [inrichten van gebruikers te automatiseren](../app-provisioning/user-provisioning.md). U kunt ook meervoudige verificatie en beleid voor voorwaardelijke toegang gebruiken om op een veilige manier toegang te bieden tot toepassingen.
 
 ![Diagram waarin de apps worden weer gegeven die zijn gefedereerd via Azure AD](media/what-is-application-management/app-management-overview.png)
 
@@ -59,7 +59,7 @@ Er zijn vier hoofdtypen toepassingen die u kunt toevoegen aan **Bedrijfstoepassi
 
 - **Toepassingen uit galerie van Azure AD**: Azure AD bevat een galerie met duizenden toepassingen die vooraf zijn geïntegreerd voor eenmalige aanmelding met Azure AD. Sommige toepassingen die worden gebruikt in uw organisatie, bevinden zich waarschijnlijk in de galerie. [Lees meer over het plannen van uw app-integratie](plan-an-application-integration.md) of raadpleeg gedetailleerde integratiestappen voor afzonderlijke apps in de [zelfstudies voor SaaS-toepassingen](https://docs.microsoft.com/azure/active-directory/saas-apps/).
 
-- **On-premises toepassingen met Application Proxy**: met Azure AD Application Proxy kunt u uw on-premises web-apps integreren met Azure AD om ondersteuning voor eenmalige aanmelding te bieden. Eindgebruikers hebben vervolgens toegang tot uw on-premises web-apps op dezelfde manier als waarop ze toegang hebben tot Office 365 en andere SaaS-toepassingen, zie [Externe toegang bieden tot on-premises toepassingen via de toepassingsproxy van Azure AD](application-proxy.md).
+- **On-premises toepassingen met Application Proxy**: met Azure AD Application Proxy kunt u uw on-premises web-apps integreren met Azure AD om ondersteuning voor eenmalige aanmelding te bieden. Eindgebruikers hebben vervolgens toegang tot uw on-premises web-apps op dezelfde manier als waarop ze toegang hebben tot Microsoft 365 en andere SaaS-toepassingen, zie [Externe toegang bieden tot on-premises toepassingen via de toepassingsproxy van Azure AD](application-proxy.md).
 
 - **Aangepaste toepassingen**: wanneer u uw eigen LOB-toepassingen bouwt, kunt u deze integreren met Azure AD voor de ondersteuning van eenmalige aanmelding. Door uw toepassing te registreren bij Azure AD, hebt u controle over het verificatiebeleid voor de toepassing. Zie de [richtlijnen voor ontwikkelaars](developer-guidance-for-integrating-applications.md) voor meer informatie.
 
@@ -77,7 +77,7 @@ Het koppelen van eenmalige aanmelding van Azure AD aan beleid voor [voorwaardeli
 
 ## <a name="improve-productivity-with-single-sign-on"></a>Verhoog de productiviteit met eenmalige aanmelding
 
-Eenmalige aanmelding (SSO) voor toepassingen en Office 365 biedt een superieure aanmeldingservaring voor bestaande gebruikers door verschillende aanmeldingen te elimineren. Er wordt een samenhangende gebruikersomgeving gecreëerd zonder afleiding door meerdere aanmeldschermen of de noodzaak om meerdere wachtwoorden te beheren. De bedrijfsgroep kan toegang beheren en goedkeuren via selfservice en dynamisch lidmaatschap. De zorg dat alleen de juiste personen in het bedrijf toegang hebben tot een toepassing verbetert de beveiliging van het identiteitssysteem.
+Eenmalige aanmelding (SSO) voor toepassingen en Microsoft 365 biedt een superieure aanmeldingservaring voor bestaande gebruikers door verschillende aanmeldingen te elimineren. Er wordt een samenhangende gebruikersomgeving gecreëerd zonder afleiding door meerdere aanmeldschermen of de noodzaak om meerdere wachtwoorden te beheren. De bedrijfsgroep kan toegang beheren en goedkeuren via selfservice en dynamisch lidmaatschap. De zorg dat alleen de juiste personen in het bedrijf toegang hebben tot een toepassing verbetert de beveiliging van het identiteitssysteem.
 
 SSO verbetert de beveiliging. *Zonder eenmalige aanmelding* moeten beheerders gebruikersaccounts maken en bijwerken voor elke afzonderlijke toepassing. Dat kost waardevolle tijd. Gebruikers moeten meerdere referenties bijhouden voor toegang tot hun toepassingen. Als gevolg hiervan schrijven gebruikers vaak hun wachtwoorden op of gebruiken andere oplossingen voor wachtwoordbeheer waarmee het beveiligingsrisico stijgt. [Lees meer over eenmalige aanmelding](what-is-single-sign-on.md).
 

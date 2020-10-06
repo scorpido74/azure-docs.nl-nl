@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: b5315b4d2ec8b757f7fa1075a438419679f5e798
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 68fdff9444286a7f304c3a3361ad33a02e87a282
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91317970"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758367"
 ---
 # <a name="security-control-v2-privileged-access"></a>Beveiligings controle v2: Privileged Access
 
@@ -50,7 +50,7 @@ U kunt met behulp van Azure AD Privileged Identity Management (PIM) just-in-time
 
 - [Beheer van beveiligings naleving](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
-- [Beveiligings bewerkingen](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Beveiligingsbewerkingen](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 ## <a name="pa-2-restrict-administrative-access-to-business-critical-systems"></a>PA-2: beheer toegang beperken tot essentiële bedrijfs systemen
 
@@ -126,7 +126,7 @@ Zorg ervoor dat de referenties (zoals wacht woord, certificaat of Smart Card) vo
 
 - [Beheer van beveiligings naleving](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
-- [Beveiligings bewerkingen (SecOps)](//azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Beveiligings bewerkingen (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 ## <a name="pa-5-automate-entitlement-management"></a>PA-5: beheer van rechten automatiseren
 

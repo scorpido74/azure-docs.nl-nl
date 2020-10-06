@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 10/01/2020
+ms.date: 10/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 15581178dc1c00b6905763e8552062869f8378ce
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: eb7d7d6296432146e6e4390b0df62964ffe6f8da
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91704953"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758095"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Azure gebruiken om SAP-werkbelasting scenario's te hosten en uit te voeren
 
@@ -82,6 +82,7 @@ In deze sectie vindt u informatie over het configureren van SSO met de meeste SA
 
 ## <a name="change-log"></a>Wijzigingen logboek
 
+- 10/05/2020: release van [SAP Hana scale-out-HSR met pacemaker op Azure vm's](./sap-hana-high-availability-scale-out-hsr-rhel.md) in de configuratie handleiding voor RHEL
 - 09/30/2020: wijziging in [hoge Beschik baarheid van SAP Hana op virtuele machines van Azure op RHEL](./sap-hana-high-availability-rhel.md), [ha voor SAP Hana scale-up met ANF op RHEL](./sap-hana-high-availability-netapp-files-red-hat.md) en [instellen pacemaker op RHEL in azure](./high-availability-guide-rhel-pacemaker.md) om de instructies voor RHEL 8,1 aan te passen
 - 09/29/2020: beperkingen en aanbevelingen voor het gebruik van PPG duidelijker maken in het artikel [Azure proximity placement groups voor optimale netwerk latentie met SAP-toepassingen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios) 
 - 09/28/2020: het toevoegen van een nieuwe opslag bewerkings handleiding voor SAP HANA met behulp van Azure NetApp Files met het document [NFS v 4.1-volumes op Azure NetApp files voor SAP Hana](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp)

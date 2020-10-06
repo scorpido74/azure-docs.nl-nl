@@ -1,119 +1,115 @@
 - name: Documentatie voor de commerciële marketplace
   href: index.yml
+  items: null
+- name: Over de commerciële marketplace
+  href: overview.md
+- name: Accountbeheer
   items:
-    - name: Updates voor de commerciële marketplace
-      href: marketplace-roadmap.md
-    - name: Overzicht en voordelen van de commerciële marketplace
-      href: marketplace-publishers-guide.md
+    - name: Een nieuw account voor het partnercentrum maken
+      href: partner-center-portal/create-account.md
+    - name: Uw account beheren
+      href: partner-center-portal/manage-account.md
+    - name: Een zakelijk werkaccount zoeken of maken
+      href: partner-center-portal/company-work-accounts.md
+    - name: Accountmigratie van CPP naar Partnercentrum
+      href: partner-center-portal/account-migration-from-cpp-to-pc.md
+- name: Concepten
+  items:
+    - name: Publicatie-opties en -overwegingen
+      href: determine-your-listing-type.md
+    - name: Transacties in de commerciële marketplace
+      href: marketplace-commercial-transaction-capabilities-and-considerations.md
+    - name: Persoonlijke aanbiedingen
+      href: private-offers.md
+    - name: Abonnementen en prijzen
+      href: plans-pricing.md
+    - name: Standaardcontract
+      href: standard-contract.md
+    - name: Vereisten voor Azure Marketplace-vermeldingen
+      href: marketplace-criteria-content-validation.md
+    - name: Leadbeheer
+      href: partner-center-portal/commercial-marketplace-get-customer-leads.md
+    - name: Test drives
       items:
-        - name: 'Een marketplace, twee onlinewinkels'
-          href: comparing-appsource-azure-marketplace.md
-        - name: Publicatie-opties en -overwegingen
-          href: determine-your-listing-type.md
-          items:
-            - name: Leadbeheer
-              href: lead-management-for-cloud-marketplace.md
-            - name: Transacties in de commerciële marketplace
-              href: marketplace-commercial-transaction-capabilities-and-considerations.md
-            - name: Abonnementen en prijzen
-              href: plans-pricing.md
-            - name: Persoonlijke aanbiedingen
-              href: private-offers.md
-            - name: Standaardcontract
-              href: standard-contract.md
-            - name: Gebruikskenmerken van klanten van Azure-partners
-              href: azure-partner-customer-usage-attribution.md
-            - name: Ondersteunde landen en regio's
-              href: sell-from-countries.md
-        - name: Publicatiehandleidingen op type aanbieding
-          href: publisher-guide-by-offer-type.md
-          items:
-            - name: Een SaaS-aanbieding plannen
-              href: plan-saas-offer.md
-            - name: Virtuele machines
-              href: marketplace-virtual-machines.md
-            - name: Oplossingssjablonen voor Azure-apps
-              href: marketplace-solution-templates.md
-            - name: Beheerde toepassingen voor Azure-apps
-              href: marketplace-managed-apps.md
-            - name: Containers
-              href: marketplace-containers.md
-            - name: IoT Edge-modules
-              href: iot-edge-module.md
-            - name: Adviesservices
-              href: consulting-services.md
-            - name: 'Microsoft 365, Dynamics 365 en Power BI'
-              href: appsource-offer-publishing-guide.md
-            - name: Verificatie met Azure AD inschakelen
-              href: enable-appsource-marketplace-using-azure-ad.md
-            - name: Geïntegreerde oplossingen
-              href: integrated-solutions-for-publishers.md
-        - name: Best practices voor marketing
-          href: gtm-marketing-best-practices.md
-          items:
-            - name: Best practices voor aanbiedingsvermeldingen
-              href: gtm-offer-listing-best-practices.md
-            - name: Word uitgelicht
-              href: gtm-how-to-get-featured.md
-            - name: Validatie van Marketplace-inhoud
-              href: marketplace-criteria-content-validation.md
-            - name: Providers van cloudoplossingen
-              href: cloud-solution-providers.md
-            - name: Gids voor onboarding van Connect-programma
-              href: business-applications-isv-program.md
+        - name: Wat is een test drive?
+          href: what-is-test-drive.md
+        - name: Technische configuratie van test drive
+          href: test-drive-technical-configuration.md
+        - name: Test Drive voor Azure Resource Manager
+          href: azure-resource-manager-test-drive.md
+    - name: Gebruikskenmerken van klanten van Azure-partners
+      href: azure-partner-customer-usage-attribution.md
+    - name: Go-To-Market-opties
+      items:
         - name: Kies uw marketplace-voordelen
           href: gtm-your-marketplace-benefits.md
-          items:
-            - name: Voordeel van Azure-verbruikstoezegging
-              href: azure-consumption-commitment-benefit.md
-            - name: Betrokkenheid van partner bij collectieve verkoop
-              href: marketplace-co-sell.md
-            - name: Voorkeursoplossingen
-              href: preferred-solutions.md
-            - name: Geïntegreerde oplossingen
-              href: integrated-solutions.md
-        - name: Support voor de commerciële marketplace
-          href: support-azure-marketplace.md
-          items:
-            - name: Veelgestelde vragen over de commerciële marketplace
-              href: marketplace-faq-publisher-guide.md
-            - name: Geografische beschikbaarheid en valuta's
-              href: marketplace-geo-availability-currencies.md
-- name: Commerciële marketplace in Partner Center
+        - name: Betrokkenheid van partner bij collectieve verkoop
+          href: marketplace-co-sell.md
+        - name: Optie voor collectieve verkoop in Partnercentrum
+          href: partner-center-portal/commercial-marketplace-co-sell.md
+        - name: Doorverkopen via CSP-partners
+          href: cloud-solution-providers.md
+        - name: Gids voor onboarding van Connect-programma
+          href: business-applications-isv-program.md
+        - name: Voordeel van Azure-verbruikstoezegging
+          href: azure-consumption-commitment-benefit.md
+        - name: Voorkeursoplossingen
+          href: preferred-solutions.md
+        - name: Geïntegreerde oplossingen
+          href: integrated-solutions-for-publishers.md
+    - name: Marketplace-beloningen activeren
+      href: partner-center-portal/marketplace-rewards.md
+    - name: Betaald krijgen
+      items:
+        - name: Betaald krijgen
+          href: /partner-center/marketplace-get-paid?context=/azure/marketplace/context/context
+        - name: Stel uw betalingsaccount en belastingformulieren
+          href: /partner-center/set-up-your-payout-account?context=/azure/marketplace/context/context
+        - name: Betalingsdrempels en tijdsbestekken
+          href: /partner-center/payment-thresholds-methods-timeframes?context=/azure/marketplace/context/context
+        - name: Uitbetalingsinstructies
+          href: /partner-center/payout-statement?context=/azure/marketplace/context/context
+        - name: Details van betaalbeleid
+          href: /partner-center/payout-policy-details?context=/azure/marketplace/context/context
+        - name: Belastinginformatie
+          href: /partner-center/tax-details-marketplace?context=/azure/marketplace/context/context
+        - name: Veelgestelde vragen over uitbetalingen
+          href: /partner-center/payout-faq?context=/azure/marketplace/context/context
+- name: Aanbiedingen maken en beheren
   items:
-    - name: Overzicht van de commerciële marketplace
-      href: partner-center-portal/commercial-marketplace-overview.md
-    - name: Veelgestelde vragen over migratie
-      href: cloud-partner-portal-migration-faq.md
-    - name: Accountbeheer
+    - name: Publicatiehandleiding op type aanbieding
+      href: publisher-guide-by-offer-type.md
+    - name: Verificatie met Azure AD inschakelen
+      href: enable-appsource-marketplace-using-azure-ad.md
+    - name: Azure-toepassingsaanbiedingen
       items:
-        - name: Een nieuw account voor het partnercentrum maken
-          href: partner-center-portal/create-account.md
-        - name: Uw account voor het partnercentrum beheren
-          href: partner-center-portal/manage-account.md
-        - name: Een zakelijk werkaccount zoeken of maken
-          href: partner-center-portal/company-work-accounts.md
-        - name: Accountmigratie van CPP naar Partnercentrum
-          href: partner-center-portal/account-migration-from-cpp-to-pc.md
-    - name: Een nieuwe aanbieding maken
+        - name: Een aanbieding voor een oplossingssjabloon plannen
+          href: marketplace-solution-templates.md
+        - name: Een aanbieding voor een beheerde toepassing plannen
+          href: marketplace-managed-apps.md
+        - name: Een Azure-toepassingsaanbieding maken en publiceren
+          href: partner-center-portal/create-new-azure-apps-offer.md
+        - name: Facturering voor Azure-toepassingen naar gebruik
+          href: partner-center-portal/azure-app-metered-billing.md
+        - name: Beoordelingsfeedback verwerken
+          href: partner-center-portal/azure-apps-review-feedback.md
+        - name: API's voor Azure-toepassingen
+          href: partner-center-portal/azure-app-apis.md
+    - name: Azure Container-aanbiedingen
       items:
-        - name: Azure-toepassingsaanbiedingen
-          items:
-            - name: Een Azure-toepassingsaanbieding maken
-              href: partner-center-portal/create-new-azure-apps-offer.md
-            - name: Facturering voor Azure-toepassingen naar gebruik
-              href: partner-center-portal/azure-app-metered-billing.md
-            - name: Beoordelingsfeedback verwerken
-              href: partner-center-portal/azure-apps-review-feedback.md
-            - name: API voor onboarding
-              href: partner-center-portal/azure-app-apis.md
-        - name: Azure Container-aanbiedingen
+        - name: Een Azure Container-aanbieding plannen
+          href: marketplace-containers.md
+        - name: Een Azure Container-aanbieding maken en publiceren
           items:
             - name: Technische assets voorbereiden
               href: partner-center-portal/create-azure-container-technical-assets.md
             - name: Een Azure Container-aanbieding maken
               href: partner-center-portal/create-azure-container-offer.md
-        - name: Virtuele-machineaanbieding
+    - name: Aanbiedingen voor virtuele Azure-machines
+      items:
+        - name: Een aanbieding voor een virtuele machine plannen
+          href: marketplace-virtual-machines.md
+        - name: Een aanbieding voor een virtuele machine maken en publiceren
           items:
             - name: Een Azure Virtual Machine-aanbieding maken
               href: partner-center-portal/azure-vm-create-offer.md
@@ -133,15 +129,23 @@
                       href: partner-center-portal/get-sas-uri.md
                     - name: Veelgestelde vragen over SAS-URI
                       href: partner-center-portal/common-sas-uri-issues.md
-        - name: Adviesservices
+    - name: Adviesservices
+      items:
+        - name: Een aanbieding voor adviesservices plannen
+          href: consulting-services.md
+        - name: Een aanbieding voor adviesservices maken en publiceren
           items:
             - name: Vereisten
               href: partner-center-portal/consulting-service-prerequisites.md
             - name: Een adviesservice-aanbieding maken
               href: partner-center-portal/create-consulting-service-offer.md
-        - name: Dynamics 365-aanbiedingen
+    - name: Dynamics 365-aanbiedingen
+      items:
+        - name: Een Dynamics 365-aanbieding plannen
+          href: appsource-offer-publishing-guide.md
+        - name: Een Dynamics 365-aanbieding maken en publiceren
           items:
-            - name: Een Dynamics 365 for Customer Engagement- en Power Apps-aanbieding maken
+            - name: Een aanbieding voor Dynamics 365 for Customer Engagement en Power Apps maken
               href: partner-center-portal/create-new-customer-engagement-offer.md
             - name: Een Dynamics 365 for Operations-aanbieding maken
               items:
@@ -153,150 +157,123 @@
               href: partner-center-portal/create-new-business-central-offer.md
         - name: Aanbiedingen voor IoT Edge-module
           items:
+            - name: Aanbieding voor IoT Edge-module plannen
+              href: iot-edge-module.md
             - name: Aanbieding voor IoT Edge-module maken
               href: partner-center-portal/azure-iot-edge-module-creation.md
             - name: Technische assets voor IoT Edge-module voorbereiden
               href: partner-center-portal/create-iot-edge-module-asset.md
-        - name: Aanbieding voor beheerde service
+    - name: Aanbieding voor beheerde service
+      items:
+        - name: Een aanbieding voor beheerde service maken
+          href: partner-center-portal/create-new-managed-service-offer.md
+    - name: Power BI-app-aanbiedingen
+      items:
+        - name: Een Power BI-app-aanbieding plannen
+          href: partner-center-portal/create-power-bi-app-overview.md
+        - name: Een Power BI-app-aanbieding maken
+          href: partner-center-portal/create-power-bi-app-offer.md
+    - name: SaaS-aanbiedingen
+      items:
+        - name: Een SaaS-aanbieding plannen
+          href: plan-saas-offer.md
+        - name: Verificatie met Azure AD voor SaaS
           items:
-            - name: Een aanbieding voor beheerde service maken
-              href: partner-center-portal/create-new-managed-service-offer.md
-        - name: Power BI-app-aanbiedingen
+            - name: Overzicht van Azure AD en SaaS
+              href: azure-ad-saas.md
+            - name: Landingspagina voor aanbiedingen met een transactie
+              href: azure-ad-transactable-saas-landing-page.md
+            - name: Landingspagina voor aanbiedingen voor gratis proefversies
+              href: azure-ad-free-or-trial-landing-page.md
+        - name: SaaS-facturering naar gebruik
+          href: partner-center-portal/saas-metered-billing.md
+        - name: Een SaaS-aanbieding maken en publiceren
           items:
-            - name: Overzicht publiceren
-              href: partner-center-portal/create-power-bi-app-overview.md
-            - name: Power BI-app-aanbieding maken
-              href: partner-center-portal/create-power-bi-app-offer.md
-        - name: SaaS-aanbiedingen
-          items:
-            - name: Een SaaS-aanbieding plannen
-              href: plan-saas-offer.md
-            - name: Verificatie met Azure AD voor SaaS
-              items:
-                - name: Overzicht van Azure AD en SaaS
-                  href: azure-ad-saas.md
-                - name: Landingspagina voor aanbiedingen met een transactie
-                  href: azure-ad-transactable-saas-landing-page.md
-                - name: Landingspagina voor aanbiedingen voor gratis proefversies
-                  href: azure-ad-free-or-trial-landing-page.md
-            - name: SaaS-facturering naar gebruik
-              href: partner-center-portal/saas-metered-billing.md
-            - name: Een SaaS-aanbieding maken en publiceren
-              items:
-                - name: Een SaaS-aanbieding maken
-                  href: create-new-saas-offer.md
-                - name: Eigenschappen van SaaS-aanbieding configureren
-                  href: create-new-saas-offer-properties.md
-                - name: Vermelding van SaaS-aanbieding configureren
-                  href: create-new-saas-offer-listing.md
-                - name: Een previewdoelgroep toevoegen
-                  href: create-new-saas-offer-preview.md
-                - name: Technische informatie toevoegen
-                  href: create-new-saas-offer-technical.md
-                - name: Plannen maken
-                  href: create-new-saas-offer-plans.md
-                - name: Een SaaS-aanbieding testen en publiceren
-                  href: test-publish-saas-offer.md
-            - name: Uw SaaS-aanbieding in de handel brengen
-              href: create-new-saas-offer-marketing.md
-            - name: SaaS-uitvoerings-API's
-              href: partner-center-portal/pc-saas-fulfillment-apis.md
-              items:
-                - name: Een SaaS-toepassing registreren
-                  href: partner-center-portal/pc-saas-registration.md
-                - name: SaaS-uitvoerings-API's v2
-                  href: partner-center-portal/pc-saas-fulfillment-api-v2.md
-                - name: SaaS-uitvoerings-API's v1 (afgeschaft)
-                  href: partner-center-portal/pc-saas-fulfillment-api-v1.md
-                - name: SaaS-uitvoerings-API's - Veelgestelde vragen
-                  href: partner-center-portal/saas-fulfillment-apis-faq.md
-        - name: Overzicht van leadbeheer
-          href: partner-center-portal/commercial-marketplace-get-customer-leads.md
-          items:
-            - name: Azure Blob
-              href: partner-center-portal/commercial-marketplace-lead-management-instructions-azure-blob.md
-            - name: Azure Table
-              href: partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table.md
-            - name: Dynamics 365 for Customer Engagement
-              href: partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md
-            - name: HTTPS-eindpunt
-              href: partner-center-portal/commercial-marketplace-lead-management-instructions-https.md
-            - name: Marketo
-              href: partner-center-portal/commercial-marketplace-lead-management-instructions-marketo.md
-            - name: SalesForce
-              href: partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md
-        - name: Service voor Marketplace-meting
-          items:
-            - name: Verificatiestrategieën
-              href: partner-center-portal/marketplace-metering-service-authentication.md
-            - name: Service-API's voor Marketplace-meting
-              href: partner-center-portal/marketplace-metering-service-apis.md
-            - name: Service-API's voor Marketplace-meting - Veelgestelde vragen
-              href: partner-center-portal/marketplace-metering-service-apis-faq.md
-        - name: Test Drive
-          items:
-            - name: Wat is een test drive?
-              href: what-is-test-drive.md
-            - name: Technische configuratie van test drive
-              href: test-drive-technical-configuration.md
-            - name: Test Drive voor Azure Resource Manager
-              href: azure-resource-manager-test-drive.md
-        - name: Optie voor collectieve verkoop
-          href: partner-center-portal/commercial-marketplace-co-sell.md
-          items:
-            - name: Land- en regiocodes
-              href: partner-center-portal/commercial-marketplace-co-sell-countries.md
-            - name: Provinciecodes
-              href: partner-center-portal/commercial-marketplace-co-sell-states.md
-    - name: Beoordelen en publiceren
+            - name: Een SaaS-aanbieding maken
+              href: create-new-saas-offer.md
+            - name: Eigenschappen van SaaS-aanbieding configureren
+              href: create-new-saas-offer-properties.md
+            - name: Vermelding van SaaS-aanbieding configureren
+              href: create-new-saas-offer-listing.md
+            - name: Een previewdoelgroep toevoegen
+              href: create-new-saas-offer-preview.md
+            - name: Technische informatie toevoegen
+              href: create-new-saas-offer-technical.md
+            - name: Plannen maken
+              href: create-new-saas-offer-plans.md
+            - name: Een SaaS-aanbieding testen en publiceren
+              href: test-publish-saas-offer.md
+        - name: Uw SaaS-aanbieding in de handel brengen
+          href: create-new-saas-offer-marketing.md
+    - name: Aanbiedingen beoordelen en publiceren
       href: review-publish-offer.md
     - name: Bestaande aanbiedingen bijwerken
       href: partner-center-portal/update-existing-offer.md
-    - name: Marketplace-beloningen activeren
-      href: partner-center-portal/marketplace-rewards.md
-    - name: Analytische gegevens voor Partnercentrum
+- name: Uw aanbiedingen verkopen en in de handel brengen
+  items:
+    - name: Best practices voor marketing
+      href: gtm-marketing-best-practices.md
+    - name: Best practices voor aanbiedingsvermeldingen
+      href: gtm-offer-listing-best-practices.md
+    - name: Word uitgelicht
+      href: gtm-how-to-get-featured.md
+    - name: Leadbeheer configureren
       items:
-        - name: Analytische gegevens voor de commerciële marketplace
-          href: partner-center-portal/analytics.md
-        - name: Dashboard voor samenvattingen
-          href: partner-center-portal/summary-dashboard.md
-        - name: Dashboard voor orders
-          href: partner-center-portal/orders-dashboard.md
-        - name: Dashboard voor gebruik
-          href: partner-center-portal/usage-dashboard.md
-        - name: Dashboard voor klanten
-          href: partner-center-portal/customer-dashboard.md
-        - name: Dashboard voor Marketplace-inzichten
-          href: partner-center-portal/insights-dashboard.md
-        - name: Dashboard voor downloads
-          href: partner-center-portal/downloads-dashboard.md
-        - name: Dashboard voor classificaties en beoordelingen
-          href: partner-center-portal/ratings-reviews.md
-        - name: Veelgestelde vragen en terminologie
-          href: partner-center-portal/faq-terminology.md
-    - name: Betaald krijgen
-      items:
-        - name: Betaald krijgen
-          href: /partner-center/marketplace-get-paid?context=/azure/marketplace/context/context
-        - name: Stel uw betalingsaccount en belastingformulieren
-          href: /partner-center/set-up-your-payout-account?context=/azure/marketplace/context/context
-        - name: Betalingsdrempels en tijdsbestekken
-          href: /partner-center/payment-thresholds-methods-timeframes?context=/azure/marketplace/context/context
-        - name: Uitbetalingsinstructies
-          href: /partner-center/payout-statement?context=/azure/marketplace/context/context
-        - name: Details van betaalbeleid
-          href: /partner-center/payout-policy-details?context=/azure/marketplace/context/context
-        - name: Belastinginformatie
-          href: /partner-center/tax-details-marketplace?context=/azure/marketplace/context/context
-        - name: Veelgestelde vragen over uitbetalingen
-          href: /partner-center/payout-faq?context=/azure/marketplace/context/context
+        - name: Azure Blob
+          href: partner-center-portal/commercial-marketplace-lead-management-instructions-azure-blob.md
+        - name: Azure Table
+          href: partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table.md
+        - name: Dynamics 365 for Customer Engagement
+          href: partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md
+        - name: HTTPS-eindpunt
+          href: partner-center-portal/commercial-marketplace-lead-management-instructions-https.md
+        - name: Marketo
+          href: partner-center-portal/commercial-marketplace-lead-management-instructions-marketo.md
+        - name: SalesForce
+          href: partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md
+        - name: Veelgestelde vragen over leadbeheer
+          href: lead-management-faq.md
+- name: Gegevens en analyse
+  items:
+    - name: Analyses van de commerciële marketplace
+      href: partner-center-portal/analytics.md
+    - name: Dashboard voor samenvattingen
+      href: partner-center-portal/summary-dashboard.md
+    - name: Dashboard voor orders
+      href: partner-center-portal/orders-dashboard.md
+    - name: Dashboard voor gebruik
+      href: partner-center-portal/usage-dashboard.md
+    - name: Dashboard voor klanten
+      href: partner-center-portal/customer-dashboard.md
+    - name: Dashboard voor Marketplace-inzichten
+      href: partner-center-portal/insights-dashboard.md
+    - name: Dashboard voor downloads
+      href: partner-center-portal/downloads-dashboard.md
+    - name: Dashboard voor classificaties en beoordelingen
+      href: partner-center-portal/ratings-reviews.md
+    - name: Terminologie voor Partner Center-analyses
+      href: partner-center-portal/faq-terminology.md
+- name: Beleidsregels en voorwaarden
+  items:
+    - name: Informatie over het beleid en de voorwaarden
+      href: policies-terms.md
+    - name: Commercial marketplace certification policies (Beleid voor certificering van Commerciële Marketplace)
+      href: /legal/marketplace/certification-policies?context=/azure/marketplace/context/context
+    - name: Beoordelingsbeleid voor commerciële marketplace
+      href: /legal/marketplace/rating-review-policies?context=/azure/marketplace/context/context
+    - name: Azure Marketplace participation policies (Beleid over deelname van Azure Marketplace)
+      href: /legal/marketplace/participation-policy?context=/azure/marketplace/context/context
+    - name: Voorwaarden voor Azure Marketplace
+      href: /legal/marketplace/terms?context=/azure/marketplace/context/context
+- name: Naslaginformatie
+  items:
     - name: Naslaginformatie over de CPP-API
       items:
-        - name: Overzicht
+        - name: Overzicht van CPP-API
           href: cloud-partner-portal-api-overview.md
-        - name: Vereisten
+        - name: API-vereisten
           href: cloud-partner-portal-api-prerequisites.md
-        - name: Overwegingen
+        - name: Overwegingen voor API's
           href: cloud-partner-portal-api-considerations.md
         - name: Gelijktijdigheid beheren
           href: cloud-partner-portal-api-concurrency-control.md
@@ -320,21 +297,44 @@
           href: cloud-partner-portal-api-setting-price.md
         - name: Problemen met verificatiefouten oplossen
           href: cloud-partner-portal-api-troubleshooting-authentication-errors.md
-    - name: Ondersteuningsopties
-      href: partner-center-portal/support.md
-- name: Beleidsregels en voorwaarden voor de commerciële marketplace
-  items:
-    - name: Informatie over het beleid en de voorwaarden
-      href: policies-terms.md
-    - name: Commercial marketplace certification policies (Beleid voor certificering van Commerciële Marketplace)
-      href: /legal/marketplace/certification-policies?context=/azure/marketplace/context/context
-    - name: Beoordelingsbeleid voor commerciële marketplace
-      href: /legal/marketplace/rating-review-policies?context=/azure/marketplace/context/context
-    - name: Azure Marketplace participation policies (Beleid over deelname van Azure Marketplace)
-      href: /legal/marketplace/participation-policy?context=/azure/marketplace/context/context
-    - name: Voorwaarden voor Azure Marketplace
-      href: /legal/marketplace/terms?context=/azure/marketplace/context/context
+    - name: Service voor Marketplace-meting
+      items:
+        - name: Verificatiestrategieën
+          href: partner-center-portal/marketplace-metering-service-authentication.md
+        - name: Service-API's voor Marketplace-meting
+          href: partner-center-portal/marketplace-metering-service-apis.md
+        - name: Service-API's voor Marketplace-meting - Veelgestelde vragen
+          href: partner-center-portal/marketplace-metering-service-apis-faq.md
+    - name: SaaS-uitvoerings-API's
+      items:
+        - name: Overzicht van SaaS-uitvoerings-API
+          href: partner-center-portal/pc-saas-fulfillment-apis.md
+          items:
+            - name: Een SaaS-toepassing registreren
+              href: partner-center-portal/pc-saas-registration.md
+            - name: SaaS-uitvoerings-API's v2
+              href: partner-center-portal/pc-saas-fulfillment-api-v2.md
+            - name: SaaS-uitvoerings-API's v1 (afgeschaft)
+              href: partner-center-portal/pc-saas-fulfillment-api-v1.md
+            - name: SaaS-uitvoerings-API's - Veelgestelde vragen
+              href: partner-center-portal/saas-fulfillment-apis-faq.md
 - name: Resources
   items:
+    - name: Veelgestelde vragen over de commerciële marketplace
+      href: marketplace-faq-publisher-guide.md
+    - name: Veelgestelde vragen over Cloud Partner Portal-migratie
+      href: cloud-partner-portal-migration-faq.md
+    - name: Ondersteuningsopties voor Partner Center
+      href: partner-center-portal/support.md
+    - name: Geografische beschikbaarheid en valuta's
+      href: marketplace-geo-availability-currencies.md
+    - name: Ondersteunde landen en regio's
+      href: sell-from-countries.md
     - name: Ondersteunde HTML-tags
       href: supported-html-tags.md
+    - name: Land- en regiocodes voor collectieve verkoop
+      href: partner-center-portal/commercial-marketplace-co-sell-countries.md
+    - name: Staatcodes voor collectieve verkoop
+      href: partner-center-portal/commercial-marketplace-co-sell-states.md
+    - name: 'Forums, blogs en snelle links'
+      href: marketplace-roadmap.md

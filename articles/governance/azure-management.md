@@ -1,14 +1,14 @@
 ---
 title: Overzicht van Azure Management - Azure Governance
 description: Overzicht van de beheergebieden voor de Azure-toepassingen en -resources met koppelingen naar inhoud in Azure-beheerhulpprogramma's.
-ms.date: 07/06/2020
+ms.date: 09/09/2020
 ms.topic: overview
-ms.openlocfilehash: 81d655db706a7330fc541724d490a4885cc2fe8b
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 0aaa23dd2841802919cfdfcc857a189e072a5c6b
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86041911"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89662136"
 ---
 # <a name="what-are-the-azure-management-areas"></a>Wat zijn de Azure Management-gebieden?
 
@@ -18,7 +18,9 @@ Beheer refereert aan de taken en processen die nodig zijn om uw zakelijke toepas
 
 In het volgende diagram ziet u de verschillende beheergebieden die nodig zijn om een toepassing of resource te onderhouden. Deze verschillende gebieden kunnen worden beschouwd als een levenscyclus. Elk gebied moet tijdens de levensduur van de resource opeenvolgend worden doorlopen. De levenscyclus van de resource begint met de initiële implementatie, vervolgt met de actieve periode en eindigt wanneer de resource buiten gebruik wordt gesteld.
 
-:::image type="content" source="../monitoring/media/management-overview/management-capabilities.png" alt-text="Disciplines van beheer in Azure" border="false":::
+:::image type="complex" source="../monitoring/media/management-overview/management-capabilities.png" alt-text="Diagram van de disciplines van Beheer in Azure." border="false":::
+   Diagram van de elementen Migreren, Beveiligen, Beschermen, Bewaken, Configureren, en Governance op het servicewiel dat ondersteuning biedt voor Beheer en Governance in Azure. Beveiligen heeft Beveiligingsbeheer en Bedreigingsbeveiliging als subitems. Beschermen heeft Back-ups maken en Herstel na noodgeval als subitems. Bewaken heeft App-, infra- en netwerkbewaking, en Logboekanalyse en diagnostische gegevens als subitems. Configureren heeft Configuratie, Updatebeheer, Automation, en Scripting als subitems. En Governance heeft Beleidsbeheer en Kostenbeheer als subitems.
+:::image-end:::
 
 Er is geen enkele Azure-service die volledig aan de vereisten van een bepaald beheergebied voldoet. In plaats daarvan werken verschillende services samen om aan om de benodigde service te bieden. Sommige services, zoals Application Insights, leveren een gerichte bewakingsfunctionaliteit voor webtoepassingen. Andere, zoals Azure Monitor-logboeken, slaan beheergegevens op voor andere services. Met deze functie kunt u verschillende typen gegevens analyseren die door verschillende services zijn verzameld.
 

@@ -2,15 +2,18 @@
 author: areddish
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 08/17/2020
-ms.openlocfilehash: 1bf0ecbc996fe853a6ca1d0ed5a749c798383146
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.date: 09/15/2020
+ms.openlocfilehash: a091222b01669c6b83c599787c61dcd6b62b05d0
+ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88508520"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90604957"
 ---
-In dit artikel wordt uitgelegd hoe u aan de slag gaat met de Custom Vision-clientbibliotheek met Python om een afbeeldingsclassificatiemodel te bouwen. Wanneer u het model hebt gemaakt, kunt u tags toevoegen, afbeeldingen uploaden, het project trainen, de eindpunt-URL voor gepubliceerde voorspellingen ophalen en het eindpunt gebruiken om afbeeldingen programmatisch te testen. Gebruik dit voorbeeld als een sjabloon om uw eigen Python-toepassing te maken. Zie de [handleiding voor browsers](../../getting-started-build-a-classifier.md) als u het ontwikkelproces wilt doorlopen en een classificatiemodel wilt gebruiken _zonder_ code.
+Dit artikel biedt informatie en voorbeeldcode om u op weg te helpen met de Custom Vision-clientbibliotheek met Python een afbeeldingsclassificatiemodel te maken. U maakt een project, voegt tags toe, traint het project en gebruikt de voorspellingseindpunt-URL van het project om het programmatisch te testen. Gebruik dit voorbeeld als een sjabloon om uw eigen beeldherkennings-app te maken.
+
+> [!NOTE]
+> Als u een classificatiemodel wilt bouwen en trainen _zonder_ code te schrijven, raadpleegt u de [handleiding voor browsers](../../getting-started-build-a-classifier.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -20,7 +23,7 @@ In dit artikel wordt uitgelegd hoe u aan de slag gaat met de Custom Vision-clien
 
 ## <a name="install-the-custom-vision-client-library"></a>De Custom Vision-clientbibliotheek installeren
 
-Als u de Custom Vision Service-clientbibliotheek voor Python wilt installeren, voert u de volgende opdracht uit in PowerShell:
+Als u een beeldanalyse-app wilt schrijven met Custom Vision voor Python, hebt u de Custom Vision-clientbibliotheek nodig. Voer de volgende opdracht uit in PowerShell:
 
 ```powershell
 pip install azure-cognitiveservices-vision-customvision
@@ -34,7 +37,7 @@ pip install azure-cognitiveservices-vision-customvision
 
 Maak een nieuw bestand met de naam *sample.py* in uw projectmap.
 
-### <a name="create-the-custom-vision-service-project"></a>Het Custom Vision Service-project maken
+## <a name="create-the-custom-vision-project"></a>Maak het Custom Vision-project
 
 Als u een nieuw Custom Vision Service-project wilt maken, voegt u de volgende code aan uw script toe. Voeg uw abonnementssleutels in de juiste definities in. U kunt ook uw eindpunt-URL ophalen via de pagina Instellingen van de Custom Vision-website.
 
@@ -62,7 +65,7 @@ print ("Creating project...")
 project = trainer.create_project("My New Project")
 ```
 
-### <a name="create-tags-in-the-project"></a>Labels maken in het project
+## <a name="create-tags-in-the-project"></a>Labels maken in het project
 
 Voeg de volgende code toe aan het eind van *sample.py* om classificatielabels voor uw project te maken:
 
@@ -72,7 +75,7 @@ hemlock_tag = trainer.create_tag(project.id, "Hemlock")
 cherry_tag = trainer.create_tag(project.id, "Japanese Cherry")
 ```
 
-### <a name="upload-and-tag-images"></a>Afbeeldingen uploaden en labelen
+## <a name="upload-and-tag-images"></a>Afbeeldingen uploaden en labelen
 
 Als u de voorbeeldafbeeldingen aan het project wilt toevoegen, voegt u de volgende code in nadat u de tag hebt gemaakt. Met deze code wordt elke afbeelding met de bijbehorende tag geüpload. U kunt maximaal 64 afbeeldingen uploaden in één batch.
 
@@ -104,9 +107,9 @@ if not upload_result.is_batch_successful:
     exit(-1)
 ```
 
-### <a name="train-the-classifier-and-publish"></a>De classificatie trainen en publiceren
+## <a name="train-and-publish-the-project"></a>Train en publiceer het project
 
-Met deze code wordt de eerste iteratie van het voorspellingsmodel gemaakt en vervolgens wordt die iteratie gepubliceerd naar het voorspellingseindpunt. De naam die is opgegeven voor de gepubliceerde iteratie, kan worden gebruikt voor het verzenden van voorspellingsaanvragen. Er is pas na publicatie een iteratie beschikbaar in het voorspellingseindpunt.
+Met deze code wordt de eerste iteratie van het voorspellingsmodel gemaakt. Vervolgens wordt deze iteratie gepubliceerd op het voorspellingseindpunt. De naam die is opgegeven voor de gepubliceerde iteratie, kan worden gebruikt voor het verzenden van voorspellingsaanvragen. Er is pas na publicatie een iteratie beschikbaar in het voorspellingseindpunt.
 
 ```Python
 import time
@@ -123,7 +126,7 @@ trainer.publish_iteration(project.id, iteration.id, publish_iteration_name, pred
 print ("Done!")
 ```
 
-### <a name="get-and-use-the-published-iteration-on-the-prediction-endpoint"></a>De gepubliceerde iteratie voor het voorspellingseindpunt ophalen en gebruiken
+## <a name="use-the-prediction-endpoint"></a>Voorspellingseindpunt gebruiken
 
 Als u een afbeelding naar het voorspellingseindpunt wilt verzenden en de voorspelling wilt ophalen, voegt u de volgende code toe aan het einde van het bestand:
 
@@ -166,7 +169,7 @@ Done!
         Japanese Cherry: 0.01%
 ```
 
-U kunt vervolgens controleren of de testafbeelding (in **<base_image_url>/images/Test/** ) juist is getagd. U kunt altijd teruggaan naar de [Custom Vision-website](https://customvision.ai) en de huidige status bekijken van het nieuwe project dat u hebt gemaakt.
+U kunt vervolgens controleren of de testafbeelding (in **<base_image_url>/images/Test/**) juist is getagd. U kunt altijd teruggaan naar de [Custom Vision-website](https://customvision.ai) en de huidige status bekijken van het nieuwe project dat u hebt gemaakt.
 
 [!INCLUDE [clean-ic-project](../../includes/clean-ic-project.md)]
 
@@ -176,3 +179,6 @@ U hebt nu gezien hoe elke stap van het objectdetectieproces in code kan worden u
 
 > [!div class="nextstepaction"]
 > [Een model testen en opnieuw trainen](../../test-your-model.md)
+
+* Wat is Custom Vision?
+* [SDK-naslagdocumentatie](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customvision?view=azure-python)

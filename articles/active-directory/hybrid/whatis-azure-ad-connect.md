@@ -1,6 +1,6 @@
 ---
 title: Wat zijn Azure AD Connect en Connect Health? | Microsoft Docs
-description: Hier worden de hulpprogramma's beschreven die worden gebruikt om uw on-premises omgeving met Azure AD te synchroniseren en bewaken.
+description: Meer informatie over de hulpprogramma's die worden gebruikt om uw on-premises omgeving met Azure AD te synchroniseren en bewaken.
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,12 +11,12 @@ ms.date: 01/08/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02a30aa4d553910c52a7dde89719450baf9037ce
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 338f957d3e881a76b39b0b7c00288ae2ebf2be59
+ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89278833"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90018608"
 ---
 # <a name="what-is-azure-ad-connect"></a>Wat is Azure AD Connect?
 
@@ -35,16 +35,16 @@ Azure AD Connect is het programma van Microsoft dat is ontworpen om te voldoen a
 
 ## <a name="what-is-azure-ad-connect-health"></a>Wat is Azure AD Connect Health?
 
-Azure Active Directory (Azure AD) Connect Health biedt robuuste bewaking van uw on-premises infrastructuur voor identiteiten. Hiermee kunt u een betrouwbare verbinding met Office 365 en Microsoft Online Services onderhouden.  Deze betrouwbaarheid wordt bereikt door bewakingsmogelijkheden voor uw belangrijkste identiteitsonderdelen in te stellen. Bovendien worden daardoor de belangrijkste gegevenspunten over deze onderdelen gemakkelijk toegankelijk.
+Azure Active Directory (Azure AD) Connect Health biedt robuuste bewaking van uw on-premises infrastructuur voor identiteiten. Hiermee kunt u een betrouwbare verbinding met Microsoft 365 en Microsoft Online Services onderhouden.  Deze betrouwbaarheid wordt bereikt door bewakingsmogelijkheden voor uw belangrijkste identiteitsonderdelen in te stellen. Bovendien worden daardoor de belangrijkste gegevenspunten over deze onderdelen gemakkelijk toegankelijk.
 
 Deze informatie vindt u in de [portal voor Azure AD Connect Health](https://aka.ms/aadconnecthealth). Met de portal voor Azure AD Connect Health kunt u waarschuwingen bekijken, de prestaties bewaken, het gebruik analyseren en nog veel meer. Met Azure AD Connect Health ziet u in één oogopslag de status van uw belangrijkste identiteitsonderdelen.
 
 ![Wat is Azure AD Connect Health?](./media/whatis-hybrid-identity-health/aadconnecthealth2.png)
 
 ## <a name="why-use-azure-ad-connect"></a>Waarom Azure AD Connect gebruiken?
-Wanneer u uw on-premises directory's integreert met Azure AD, worden uw gebruikers productiever omdat zij één identiteit hebben voor toegang tot zowel cloud als on-premises resources. Gebruikers en organisaties kunnen profiteren van:
+Wanneer u uw on-premises directory's integreert met Azure AD, worden uw gebruikers productiever omdat zij één identiteit hebben voor toegang tot zowel resources in de cloud als on-premises. Gebruikers en organisaties kunnen profiteren van:
 
-* Gebruikers kunnen één identiteit gebruiken voor toegang tot on-premises toepassingen en cloudservices zoals Office 365.
+* Gebruikers kunnen één identiteit gebruiken voor toegang tot on-premises toepassingen en cloudservices als Microsoft 365.
 * Eén hulpprogramma voor gemakkelijke implementatie voor synchronisatie en aanmelden.
 * Biedt de nieuwste mogelijkheden voor uw scenario's. Azure AD Connect vervangt oudere versies van hulpprogramma's voor identiteitsintegratie zoals DirSync en Azure AD Sync. Zie voor meer informatie [Vergelijking hybride hulpprogramma’s voor identiteitsdirecory-integratie ](plan-hybrid-identity-design-considerations-tools-comparison.md).
 
@@ -60,7 +60,7 @@ Belangrijkste voordelen en best practices:
 |Verbeterde beveiliging|[Trends voor vergrendeling van extranet](how-to-connect-health-adfs.md#usage-analytics-for-ad-fs)</br>[Rapport over mislukte aanmeldingen](how-to-connect-health-adfs-risky-ip.md)</br>[Krachtige privacybeveiliging](reference-connect-health-user-privacy.md)|
 |Waarschuwingen ontvangen voor alle [kritieke problemen met ADFS-systeem](how-to-connect-health-alert-catalog.md#alerts-for-active-directory-federation-services)|Serverconfiguratie en -beschikbaarheid</br>[Prestaties en connectiviteit](how-to-connect-health-adfs.md#performance-monitoring-for-ad-fs)</br>Regelmatig onderhoud|
 |Eenvoudig te implementeren en beheren|[Snelle installatie van agent](how-to-connect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-fs)</br>Agent automatisch upgraden naar meest recente versie</br>Gegevens binnen enkele minuten beschikbaar in de portal|
-Uitgebreide [gebruiksgegevens](how-to-connect-health-adfs.md#usage-analytics-for-ad-fs)|Meest gebruikte toepassingen</br>Netwerklocaties en TCP-verbinding</br>Tokenaanvragen per server|
+[Uitgebreide ](how-to-connect-health-adfs.md#usage-analytics-for-ad-fs)gebruiksgegevens|Meest gebruikte toepassingen</br>Netwerklocaties en TCP-verbinding</br>Tokenaanvragen per server|
 |Goede gebruikerservaring|Dashboardstijl van Azure-portal</br>[Waarschuwingen per mail](how-to-connect-health-adfs.md#alerts-for-ad-fs)|
 
 

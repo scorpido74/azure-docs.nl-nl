@@ -1,5 +1,5 @@
 ---
-title: Include-bestand
+title: bestand opnemen
 description: bestand opnemen
 services: bastion
 author: cherylmc
@@ -9,16 +9,16 @@ ms.date: 03/25/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 40f8f5b234a6aecb1b44e4c565873b3badbd139a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "80334827"
 ---
 | Resource | Limiet |
 | --- | --- |
-| Gelijktijdige RDP-verbindingen |1,25 |
-| Gelijktijdige SSH-verbindingen |50 * * |
+| Gelijktijdige RDP-verbindingen |25* |
+| Gelijktijdige SSH-verbindingen |50** |
 
-* Kan variëren als gevolg van andere on-continue RDP-sessies of andere on-continue SSH-sessies.<br>
-* * Kan variëren als er bestaande RDP-verbindingen of het gebruik van andere on-continue SSH-sessies zijn.
+*Kan variëren als gevolg van andere lopende RDP- of SSH-sessies.<br>
+**Kan variëren als er bestaande RDP-verbindingen zijn of er gebruik plaatsvindt vanuit andere lopende SSH-sessies.

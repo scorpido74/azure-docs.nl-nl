@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 03/12/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: d1c4f62f19a36867ebc85a98b0cd38bbbf8ce757
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 28c494bf2867ec5d2d3ee99ef7ee45f8181cfd90
+ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660679"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89669249"
 ---
 # <a name="what-are-durable-functions"></a>Wat is Durable Functions?
 
@@ -21,10 +21,10 @@ ms.locfileid: "88660679"
 
 Durable Functions ondersteunt momenteel de volgende talen:
 
-* **C#** : zowel [vooraf gecompileerde klassebibliotheken](../functions-dotnet-class-library.md) als [C#-script](../functions-reference-csharp.md).
+* **C#**: zowel [vooraf gecompileerde klassebibliotheken](../functions-dotnet-class-library.md) als [C#-script](../functions-reference-csharp.md).
 * **JavaScript**: alleen ondersteund voor versie 2.x van de Azure Functions-runtime. Versie 1.7.0 of hoger van de Durable Functions-extensie vereist. 
-* **Python**: versie 1.8.5 of hoger van de Durable Functions-extensie vereist. 
-* **F#** : vooraf gecompileerde klassebibliotheken en F#-script. F#-script wordt alleen ondersteund voor versie 1.x van de Azure Functions-runtime.
+* **Python**: versie 1.8.5 of hoger van de Durable Functions-extensie vereist. Ondersteuning voor Durable Functions is momenteel beschikbaar als openbare preview.
+* **F#**: vooraf gecompileerde klassebibliotheken en F#-script. F#-script wordt alleen ondersteund voor versie 1.x van de Azure Functions-runtime.
 * **PowerShell**: ondersteuning voor Durable Functions is momenteel beschikbaar als openbare preview. Wordt alleen ondersteund voor versie 3.x van de Azure Functions-runtime en PowerShell 7. Versie 2.2.2 of hoger van de Durable Functions-extensie vereist. Alleen de volgende patronen worden momenteel ondersteund: [Functiekoppeling](#chaining), [uit-/inwaaieren](#fan-in-out) [asynchrone HTTP-API's](#async-http).
 
 Durable Functions heeft als doel alle [Azure Functions-talen](../supported-languages.md) te ondersteunen. Zie [Durable Functions issues list](https://github.com/Azure/azure-functions-durable-extension/issues) voor de laatste voortgangsstatus van de ondersteuning voor meer talen.
@@ -659,7 +659,8 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> Dynamisch gegenereerde proxy's zijn ook beschikbaar in .NET om entiteiten op typebeveiligde wijze te signaleren. Naast signaleren kunnen clients de status van een entiteitsfunctie ook opvragen met [typebeveiligde methodes](durable-functions-bindings.md#entity-client-usage) op de indelingsclientbinding.
+> Dynamisch gegenereerde proxy's zijn ook beschikbaar in .NET om entiteiten op typebeveiligde wijze te signaleren.
+ Naast signaleren kunnen clients de status van een entiteitsfunctie ook opvragen met [typebeveiligde methodes](durable-functions-bindings.md#entity-client-usage) op de indelingsclientbinding.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 

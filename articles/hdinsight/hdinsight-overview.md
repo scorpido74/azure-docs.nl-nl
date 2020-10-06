@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: contperfq1
 ms.date: 08/21/2020
-ms.openlocfilehash: 676d287969933d4815260f040b164753ec5803e1
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: f66eaaa3be0b300f6a0aa68bd43a2c336f4b4d23
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88754868"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90526626"
 ---
 # <a name="what-is-azure-hdinsight"></a>Wat is Azure HDInsight?
 
@@ -36,7 +36,7 @@ In deze sectie worden de mogelijkheden van Azure HDInsight toegelicht.
 |Mogelijkheid  |Beschrijving  |
 |---------|---------|
 |Cloudeigen     |     Met Azure HDInsight kunt u geoptimaliseerde clusters maken voor [Hadoop](./hadoop/apache-hadoop-linux-tutorial-get-started.md), [Apache Spark](./spark/apache-spark-jupyter-spark-sql.md), [interactieve query’s (LLAP)](./interactive-query/apache-interactive-query-get-started.md), [Kafka](./kafka/apache-kafka-get-started.md), [ Storm](./storm/apache-storm-tutorial-get-started-linux.md), [HBase](./hbase/apache-hbase-tutorial-get-started-linux.md) en [ML Services](./r-server/r-server-overview.md) in Azure. HDInsight Biedt tevens een end-to-end SLA voor al uw productieworkloads.  |
-|Voordelig en schaalbaar     | Met HDInsight kunt u [workloads](./hdinsight-administer-use-portal-linux.md#scale-clusters)  vergroten/verkleinen. U kunt de kosten verlagen door [clusters op aanvraag te maken](./hdinsight-hadoop-create-linux-clusters-adf.md) en uitsluitend te betalen voor wat u gebruikt. U kunt ook gegevenspijplijnen maken om uw taken operationeel maken. Rekenwerk en opslag zijn niet langer gekoppeld, voor betere prestaties en flexibiliteit. |
+|Voordelig en schaalbaar     | Met HDInsight kunt u [workloads](./hdinsight-administer-use-portal-linux.md#scale-clusters)  vergroten/verkleinen.U kunt de kosten verlagen door [clusters op aanvraag te maken](./hdinsight-hadoop-create-linux-clusters-adf.md) en uitsluitend te betalen voor wat u gebruikt. U kunt ook gegevenspijplijnen maken om uw taken operationeel maken. Rekenwerk en opslag zijn niet langer gekoppeld, voor betere prestaties en flexibiliteit. |
 |Beveiligd en compatibel    | Met HDInsight kunt u uw zakelijke gegevensassets beschermen met [Azure Virtual Network](./hdinsight-plan-virtual-network-deployment.md), [versleuteling](./hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md) en integratie met [Azure Active Directory](./domain-joined/hdinsight-security-overview.md). HDInsight voldoet aan de meeste populaire [nalevingsstandaarden](https://azure.microsoft.com/overview/trusted-cloud) van de industrie en de overheid.        |
 |Bewaking    | Azure HDInsight kan worden geïntegreerd met [Azure Monitor-logboeken](./hdinsight-hadoop-oms-log-analytics-tutorial.md) en biedt zo één enkele interface waarmee u al uw clusters kunt bewaken.        |
 |Wereldwijde beschikbaarheid | HDInsight is wereldwijd beschikbaar in meer  [regio's](https://azure.microsoft.com/regions/services/)  dan welk ander aanbod voor big-data-analyses ook. Azure HDInsight is ook beschikbaar in Azure Government, China en Duitsland, waarmee u kunt voldoen aan de behoeften van uw bedrijf in belangrijke soevereine gebieden. |  
@@ -55,25 +55,25 @@ Extraheren, transformeren en laden (ETL) is een proces waarbij ongestructureerde
 
 Met HDInsight kunt u interactieve query's op petabyte-schaal uitvoeren voor gestructureerde of ongestructureerde gegevens in elke indeling. U kunt ook modellen bouwen die hen verbinden met BI-hulpprogramma’s. Lees dit [verhaal van een klant](https://customers.microsoft.com/story/milliman) voor meer informatie.
 
-![HDInsight-architectuur: Datawarehousing](./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-data-warehouse.png "Architectuur HDInsight-datawarehousing")
+HDInsight-architectuur: datawarehousing
 
 ### <a name="internet-of-things-iot"></a>Internet der dingen (IoT)
 
 U kunt HDInsight gebruiken voor het verwerken van streaminggegevens die in realtime worden ontvangen vanaf verschillende soorten apparaten. Voor meer informatie leest u [deze Azure-blogpost](https://azure.microsoft.com/blog/announcing-public-preview-of-apache-kafka-on-hdinsight-with-azure-managed-disks/) waarin de openbare preview van Apache Kafka in HDInsight met Azure Managed Disks wordt aangekondigd.
 
-![HDInsight-architectuur: Internet of Things](./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-iot.png "IoT-architectuur HDInsight")
+HDInsight-architectuur: Internet of Things
 
 ### <a name="data-science"></a>Data Science
 
 Met HDInsight kunt u toepassingen ontwikkelen die belangrijke inzichten uit gegevens halen. U kunt hierbij ook Azure Machine Learning gebruiken om toekomstige ontwikkelingen voor uw bedrijf te voorspellen. Lees dit [verhaal van een klant](https://customers.microsoft.com/story/pros) voor meer informatie.
 
-![HDInsight-architectuur: Data Science](./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-data-science.png "Architectuur data science HDInsight")
+HDInsight-architectuur: data science
 
 ### <a name="hybrid"></a>Hybride
 
 Met HDInsight kunt u uw bestaande on-premises big data-infrastructuur uitbreiden naar Azure om gebruik te maken van de mogelijkheden voor geavanceerde analyses van de cloud.
 
-![HDInsight-architectuur: Hybride](./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-hybrid.png "Hybride architectuur HDInsight")
+HDInsight-architectuur: hybride
 
 ## <a name="cluster-types-in-hdinsight"></a>Clustertypen in HDInsight
 
@@ -129,9 +129,19 @@ Voor het ophalen, analyseren en rapporteren van met HDInsight geïntegreerde geg
 
 * [Excel koppelen aan Apache Hadoop met behulp van het Hive ODBC-stuurprogramma van Microsoft](./hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md) (vereist Windows)
 
+
+## <a name="in-region-data-residency"></a>Gegevenslocatie in uw regio 
+
+Spark, Hadoop, LLAP, Storm en MLService slaan geen klantgegevens op, zodat deze services automatisch voldoen aan de vereisten voor gegevenslocatie in uw regio, inclusief de vereisten die zijn opgegeven in het [Vertrouwenscentrum](https://azuredatacentermap.azurewebsites.net/). 
+
+Kafka en HBase slaan wel klantgegevens op. Deze gegevens worden automatisch opgeslagen door Kafka en HBase in één regio, zodat deze service voldoet aan de vereisten voor gegevenslocatie van uw regio, inclusief de vereisten die zijn opgegeven in het [Vertrouwenscentrum](https://azuredatacentermap.azurewebsites.net/). 
+
+
+Voor het ophalen, analyseren en rapporteren van met HDInsight geïntegreerde gegevens kunt u gebruikmaken van gangbare hulpprogramma's voor Business Intelligence (BI). Hiervoor is de invoegtoepassing Power Query of het ODBC-stuurprogramma Microsoft Hive vereist.
+
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Apache Hadoop-cluster maken in HDInsight](./hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md)
-* [Een Apache Spark-cluster maken - portal](./spark/apache-spark-jupyter-spark-sql-use-portal.md)
+* Een Apache Spark-cluster maken - portal
 * [Een virtueel netwerk plannen voor Azure HDInsight](hdinsight-plan-virtual-network-deployment.md)
 * [Enterprise-beveiliging in Azure HDInsight](./domain-joined/hdinsight-security-overview.md)

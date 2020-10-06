@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2019
-ms.openlocfilehash: 21d980bcaa73af6367908b2f24c0c856d6a6c8ad
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 005068c8e81adb9a79a4e6dc7e86a9bfb39902a1
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505819"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90088626"
 ---
 # <a name="azure-monitor-overview"></a>Overzicht van Azure Monitor
 
@@ -42,22 +42,22 @@ Alle gegevens die worden verzameld door Azure Monitor, kunnen worden onderverdee
 
 Voor veel Azure-resources worden de gegevens die door Azure Monitor zijn verzameld, rechts op de pagina Overzicht in Azure Portal weergegeven. Als u bijvoorbeeld naar een virtuele machine kijkt, ziet u diverse diagrammen met metrische gegevens over prestaties. Klik op een van de grafieken om de gegevens in [Metrics Explorer](platform/metrics-charts.md) in Azure Portal weer te geven, zodat u de waarden van meerdere metrische gegevens in de loop van de tijd op de grafiek kunt plaatsen.  U kunt de grafieken interactief weergeven of deze vastmaken aan een dashboard om ze te bekijken met andere visualisaties.
 
-![Metrische gegevens](media/overview/metrics.png)
+![Diagram met metrische gegevens die naar Metrics Explorer stromen om in visualisaties te worden gebruikt.](media/overview/metrics.png)
 
 De logboekgegevens die door Azure Monitor zijn verzameld, kunnen worden geanalyseerd met [query's](log-query/log-query-overview.md) om snel verzamelde gegevens op te halen, samen te voegen en te analyseren.  U kunt query's maken en testen door [Log Analytics](./log-query/log-query-overview.md) in Azure Portal te gebruiken. Vervolgens kunt u de gegevens onmiddellijk analyseren met verschillende hulpprogramma's, maar u kunt de query's ook opslaan om deze te gebruiken met [visualisaties](visualizations.md) of [waarschuwingsregels](platform/alerts-overview.md).
 
 Azure Monitor gebruikt een versie van de [Kusto-querytaal](/azure/kusto/query/) (KQL) die door Azure Data Explorer wordt gebruikt en die geschikt is voor eenvoudige logboekquery's maar die ook geavanceerde functies bevat, zoals aggregaties, joins en slimme analyse. Via [diverse lessen](log-query/get-started-queries.md) kunt u de querytaal snel leren.  Er worden specifieke richtlijnen gegeven voor gebruikers die al bekend zijn met [SQL](log-query/sql-cheatsheet.md) en [Splunk](log-query/splunk-cheatsheet.md).
 
-![Logboeken](media/overview/logs.png)
+![Diagram met logboekgegevens die naar Log Analytics stromen voor analyse.](media/overview/logs.png)
 
 ## <a name="what-data-does-azure-monitor-collect"></a>Welke gegevens worden door Azure Monitor verzameld?
 
 Met Azure Monitor kunt u gegevens verzamelen van verschillende bronnen. De controlegegevens voor uw toepassingen kunnen als het ware worden onderverdeeld in lagen, variërend van uw toepassing, een besturingssysteem en de services waarvan het systeem afhankelijk is, tot en met het platform zelf. Azure Monitor verzamelt gegevens uit elk van de volgende lagen:
 
-- **Controlegegevens van de toepassing** : Gegevens over de prestaties en functionaliteit van de code die u hebt geschreven, ongeacht het platform.
+- Gegevens over de prestaties en functionaliteit van de code die u hebt geschreven, ongeacht het platform.
 - **Controlegegevens van het gastbesturingssysteem**: Gegevens over het besturingssysteem waarop uw toepassing wordt uitgevoerd. Dit kan worden uitgevoerd in Azure, een andere cloud of on-premises. 
 - **Bewakingsgegevens van Azure-resources**: Gegevens over de werking van een Azure-resource.
-- **Bewakingsgegevens van Azure-abonnementen**: Gegevens over de werking en het beheer van een Azure-abonnement en gegevens over de status en werking van Azure zelf. 
+- Gegevens over de werking en het beheer van een Azure-abonnement en gegevens over de status en werking van Azure zelf. 
 - **Bewakingsgegevens van Azure-tenants**: Gegevens over de werking van Azure-services op tenantniveau, zoals Azure Active Directory.
 
 Zodra u een Azure-abonnement maakt en resources zoals virtuele machines en web-apps toevoegt, begint Azure Monitor met het verzamelen van gegevens.  [Activiteitenlogboeken](platform/platform-logs-overview.md) registreren wanneer resources worden gemaakt of gewijzigd. [Metrische gegevens](platform/data-platform.md) vertellen u hoe de resource presteert en welke resources worden gebruikt. 
@@ -103,12 +103,12 @@ Naast de mogelijkheid om controlegegevens interactief te analyseren, moet een ef
 
 Waarschuwingsregels in Azure Monitor gebruiken [actiegroepen](platform/action-groups.md) Deze actiegroepen bevatten unieke sets ontvangers en acties die kunnen worden gedeeld met meerdere regels. Op basis van uw vereisten kunnen actiegroepen bijvoorbeeld acties uitvoeren met behulp van webhooks, zodat waarschuwingen externe acties starten of worden geïntegreerd met uw ITSM-hulpprogramma's.
 
-![Waarschuwingen](media/overview/alerts.png)
+![Schermopname met waarschuwingen in Azure Monitor met ernst van de waarschuwing, totaal aantal waarschuwingen en overige informatie.](media/overview/alerts.png)
 
 ### <a name="autoscale"></a>Automatisch schalen
 Met automatisch schalen kunt u de juiste hoeveelheid resources uitvoeren om de belasting van uw toepassing te verwerken. U kunt regels maken die gebruikmaken van metrische gegevens die worden verzameld door Azure Monitor om te bepalen wanneer resources automatisch moeten worden toegevoegd om een toename in de belasting te verwerken, en ook om geld te besparen door resources te verwijderen die niet-actief zijn. U geeft een minimum en maximum aantal instanties en de logica voor het vergroten of verkleinen van het aantal resources op.
 
-![Automatisch schalen](media/overview/autoscale.png)
+![Diagram met automatische schaalaanpassing, waarbij verschillende servers op een regel gelabeld voor processortijd > 80% en twee servers die als minimum zijn gemarkeerd, drie servers als huidige capaciteit en vijf als maximum.](media/overview/autoscale.png)
 
 ## <a name="visualizing-monitoring-data"></a>Bewakingsgegevens visualiseren
 [Visualisaties](visualizations.md) zoals grafieken en tabellen zijn effectief hulpmiddelen voor het samenvatten van bewakingsgegevens en om deze te presenteren aan verschillende doelgroepen. Azure Monitor beschikt over eigen functies voor het visualiseren van bewakingsgegevens en maakt gebruik van andere Azure-services om de gegevens naar verschillende doelgroepen te publiceren.
@@ -116,12 +116,12 @@ Met automatisch schalen kunt u de juiste hoeveelheid resources uitvoeren om de b
 ### <a name="dashboards"></a>Dashboards
 Met [Azure-dashboards](../azure-portal/azure-portal-dashboards.md) kunt u verschillende soorten gegevens, waaronder metrische gegevens en logboeken, in één paneel in [Azure Portal](https://portal.azure.com) combineren. U kunt het dashboard eventueel delen met andere Azure-gebruikers. Naast logboekquery's en grafieken met metrische gegevens kunnen er ook elementen uit Azure Monitor worden toegevoegd aan een Azure-dashboard. U kunt bijvoorbeeld een dashboard maken met een combinatie van verschillende tegels. Bijvoorbeeld tegels waarop een grafiek met metrische gegevens, een tabel met activiteitenlogboeken, een gebruiksdiagram van Application Insights en de uitvoer van een logboekquery worden weergegeven.
 
-![Dashboard](media/overview/dashboard.png)
+![Schermopname met een Azure-Dashboard, met daarop de tegels Toepassing en Beveiliging, en overige aanpasbare informatie.](media/overview/dashboard.png)
 
 ### <a name="views"></a>Weergaven
 [Weergaven](./platform/view-designer.md) vormen een visuele presentatie van logboekgegevens in Azure Monitor.  Elke weergave bevat één tegel die inzoomt op een combinatie van visualisaties, zoals staaf- en lijndiagrammen, aangevuld met lijsten waarin kritieke gegevens worden samengevat.  Bewakingsoplossingen bevatten weergaven waarin gegevens voor een bepaalde toepassing worden samengevat. U kunt uw eigen weergaven maken om de resultaten van een logboekquery weer te geven. Net als andere elementen in Azure Monitor kunnen weergaven worden toegevoegd aan Azure-dashboards.
 
-![Weergave](media/overview/view.png)
+![Schermopname met een tegel voor Containerbewakingsoplossing en de gedetailleerde weergave die wordt geopend als u de tegel selecteert.](media/overview/view.png)
 
 ### <a name="power-bi"></a>Power BI
 [Power BI](https://powerbi.microsoft.com) is een Business Analytics-service die interactieve visualisaties voor verschillende gegevensbronnen levert en vormt een effectieve manier om gegevens beschikbaar te maken voor anderen binnen en buiten uw organisatie. U kunt Power BI zodanig configureren dat er [automatisch logboekgegevens vanuit Azure Monitor worden geïmporteerd](./platform/powerbi.md) om te profiteren van deze extra visualisaties.

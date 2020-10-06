@@ -7,20 +7,20 @@ ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 07/23/2020
-ms.openlocfilehash: 980e3e036257bbf5aa9743025bbfb55065176a39
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: c40bec80d9f61cf46221cbfe7dde80f3a7b46f6f
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133296"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89658304"
 ---
-# <a name="quickstart-create-your-first-automated-integration-workflow-by-using-azure-logic-apps---azure-portal"></a>Quickstart: Uw eerste geautomatiseerde integratiewerkstroom maken met Azure Logic Apps - Azure-portal
+# <a name="quickstart-create-your-first-automated-integration-workflow-by-using-azure-logic-apps---azure-portal"></a>Uw eerste geautomatiseerde integratiewerkstroom maken met Azure Logic Apps - Azure-portal
 
 In deze quickstart worden de basisconcepten geïntroduceerd voor het maken van uw eerste werkstroom met behulp van [Azure Logic Apps](logic-apps-overview.md), zoals het maken van een lege logische app, het toevoegen van een trigger en een actie, en het testen van uw logische app. In deze quickstart maakt u een logische app waarmee de RSS-feed van een website regelmatig wordt gecontroleerd op nieuwe items. Als er nieuwe items bestaan, stuurt de logische app een e-mail voor elk item. Wanneer u bent klaar, ziet uw logische app eruit als deze werkstroom op hoog niveau:
 
 ![Conceptuele afbeelding met algemeen voorbeeld van een werkstroom een voor logische app.](./media/quickstart-create-first-logic-app-workflow/quickstart-workflow-overview.png)
 
-Voor dit scenario hebt u een Azure-abonnement of [een gratis Azure-account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) nodig, en een e-mailaccount van een service die wordt ondersteund door Azure Logic Apps, zoals Office 365 Outlook, Outlook.com of Gmail. [Bekijk hier de lijst met connectors](/connectors/) voor andere ondersteunde e-mailservices. In dit voorbeeld maakt de logische app gebruik van een Office 365 Outlook-account. Als u een andere e-mailservice gebruikt, zijn de algemene stappen hetzelfde, maar kan uw gebruikersinterface enigszins verschillen.
+Voor dit scenario hebt u een Azure-abonnement of [een gratis Azure-account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) nodig, en een e-mailaccount van een service die wordt ondersteund door Azure Logic Apps, zoals Office 365 Outlook, Outlook.com of Gmail. [Bekijk hier de lijst met connectors](/connectors/) voor andere ondersteunde e-mailservices. In dit voorbeeld maakt de logische app gebruik van een werk- of schoolaccount. Als u een andere e-mailservice gebruikt, zijn de algemene stappen hetzelfde, maar kan uw gebruikersinterface enigszins verschillen.
 
 > [!IMPORTANT]
 > Als u de Gmail-connector wilt gebruiken, kunnen alleen bedrijfsaccounts van G Suite deze connector zonder beperking in logische apps gebruiken. Als u een Gmail-consumentenaccount hebt, kunt u deze connector alleen gebruiken met specifieke door Google goedgekeurde services, of u kunt [een Google-client-app maken voor verificatie bij uw Gmail-connector](/connectors/gmail/#authentication-and-bring-your-own-application). Zie [Beleid voor gegevensbeveiliging en privacybeleid voor Google-connectors in Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md) voor meer informatie.
@@ -46,7 +46,7 @@ Voor dit scenario hebt u een Azure-abonnement of [een gratis Azure-account](http
    | **Naam** | <*naam-van-logische-app*> | De naam van uw logische app. Deze moet uniek zijn binnen alle regio's en mag alleen letters, cijfers, afbreekstreepjes (`-`), onderstrepingstekens (`_`), haakjes (`(`, `)`) en punten (`.`) bevatten. In dit voorbeeld wordt 'My-First-Logic-App' gebruikt. |
    | **Abonnement** | <*Azure-subscription-name*> | De naam van uw Azure-abonnement |
    | **Resourcegroep** | <*Naam-van-Azure-resourcegroep*> | De naam voor de [Azure-resourcegroep](../azure-resource-manager/management/overview.md). Deze moet uniek zijn binnen alle regio's en wordt gebruikt om gerelateerde resources te ordenen. In dit voor beeld wordt 'My-First-LA-RG' gebruikt. |
-   | **Locatie** | <*Azure-regio*> | De regio waarin informatie over uw logische app moet worden opgeslagen. In dit voorbeeld wordt 'US - west' gebruikt. |
+   | **location**: | <*Azure-regio*> | De regio waarin informatie over uw logische app moet worden opgeslagen. In dit voorbeeld wordt 'US - west' gebruikt. |
    | **Log Analytics** | Uit | Behoud de instelling **Uit** voor het vastleggen van diagnostische gegevens. |
    ||||
 
@@ -148,7 +148,7 @@ Voeg nu een [actie](../logic-apps/logic-apps-overview.md#logic-app-concepts) toe
 
       ![Schermopname van Logic Apps Designer met de actie 'Een e-mail verzenden' en een voorbeeld van een e-mailonderwerp met opgenomen eigenschap 'Feedtitel'.](./media/quickstart-create-first-logic-app-workflow/send-email-feed-title.png)
 
-      Als een 'For each'-lus in de ontwerpfunctie wordt weergegeven, hebt u een token voor een matrix geselecteerd, bijvoorbeeld het token **categories-Item**. Voor dit type tokens voegt de ontwerpfunctie automatisch deze lus toe rond de actie die verwijst naar dat token. Op die manier wordt dezelfde actie uitgevoerd voor elk matrixitem. Selecteer het **beletselteken** ( **...** ) op de titelbalk van de lus en kies vervolgens **Verwijderen** om de lus te verwijderen.
+      Als een 'For each'-lus in de ontwerpfunctie wordt weergegeven, hebt u een token voor een matrix geselecteerd, bijvoorbeeld het token **categories-Item**. Voor dit type tokens voegt de ontwerpfunctie automatisch deze lus toe rond de actie die verwijst naar dat token. Op die manier wordt dezelfde actie uitgevoerd voor elk matrixitem. Selecteer het **beletselteken** (**...**) op de titelbalk van de lus en kies vervolgens **Verwijderen** om de lus te verwijderen.
 
    1. In het vak voor de **hoofdtekst** voert u deze tekst in en selecteert u deze tokens voor de inhoud van het e-mailbericht. Als u lege regels wilt toevoegen in een invoervak, drukt u op Shift + Enter.
 

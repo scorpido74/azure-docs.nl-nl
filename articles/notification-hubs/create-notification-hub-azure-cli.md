@@ -14,14 +14,14 @@ ms.author: dbradish
 ms.reviewer: thsomasu
 ms.lastreviewed: 03/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f1829b6d8ab7b2cab0734ffd3cbab295e6c39678
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 5361931328ed107c7cc130b633a40b1582828aa1
+ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87761090"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90024116"
 ---
-# <a name="quickstart-create-an-azure-notification-hub-using-the-azure-cli"></a>Quickstart: Een Azure notification hub maken met behulp van de Azure-CLI
+# <a name="quickstart-create-an-azure-notification-hub-using-the-azure-cli"></a>Een Azure notification hub maken met behulp van de Azure-CLI
 
 Azure Notification Hubs biedt een eenvoudig te gebruiken en uitgeschaalde push-engine waarmee u vanuit elke back-end (cloud of on-premises) meldingen kunt verzenden naar ieder platform (iOS, Android, Windows, Kindle, Baidu, enzovoort). Zie voor meer informatie over de service [Wat is Azure Notification Hubs?](notification-hubs-push-notification-overview.md).
 
@@ -29,37 +29,30 @@ In deze quickstart maakt u een notification hub met behulp van de Azure-CLI. De 
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Voor Notification Hubs is versie 2.0.67 of hoger van de Azure-CLI vereist. Voer `az --version` uit om de versie en afhankelijke bibliotheken te vinden die zijn geïnstalleerd. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u CLI wilt installeren of upgraden.
+> [!IMPORTANT]
+> Voor Notification Hubs is versie 2.0.67 of hoger van de Azure-CLI vereist. Voer `az --version` uit om de versie en afhankelijke bibliotheken te vinden die zijn geïnstalleerd. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u CLI wilt installeren of upgraden.
 
-## <a name="prepare-your-environment"></a>Uw omgeving voorbereiden
+## <a name="install-the-azure-cli-extension"></a>De Azure CLI-extensie installeren
 
-1. Meld u aan met behulp van de opdracht [az login](/cli/azure/reference-index#az-login) als u een lokale installatie van de CLI gebruikt.
+Wanneer u met extensieverwijzingen voor de Azure-CLI werkt, moet u eerst de extensie installeren. Met Azure CLI-extensies hebt u toegang tot experimentele opdrachten en opdrachten in een evaluatieversie die niet zijn verzonden als onderdeel van de kern-CLI. Zie [Extensies gebruiken met Azure CLI](/cli/azure/azure-cli-extensions-overview) voor meer informatie over extensies, waaronder het bijwerken en verwijderen ervan.
 
-    ```azurecli
-    az login
-    ```
+Installeer de Azure CLI -extensie voor Notification Hubs.
 
-    Volg de weergegeven stappen in uw terminal om het verificatieproces te voltooien.
+```azurecli
+az extension add --name notification-hub
+```
 
-2. Wanneer u met extensieverwijzingen voor de Azure-CLI werkt, moet u eerst de extensie installeren. Azure CLI-extensies geven u toegang tot experimentele opdrachten en opdrachten in een evaluatieversie die nog niet zijn verzonden als onderdeel van de kern-CLI. Zie [Extensies gebruiken met Azure CLI](/cli/azure/azure-cli-extensions-overview) voor meer informatie over extensies, waaronder het bijwerken en verwijderen ervan.
+## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-   Installeer de [extensie voor Notification Hubs](/cli/azure/ext/notification-hub/notification-hub) door de volgende opdracht uit te voeren:
+Azure Notification Hubs moeten, zoals alle Azure-resources, worden geïmplementeerd in een resourcegroep.  Met resourcegroepen kunt u gerelateerde Azure-resources organiseren en beheren.  Zie [Wat is Azure Resource Manager?](/azure/azure-resource-manager/management/overview) voor meer informatie over resourcegroepen.
 
-    ```azurecli
-    az extension add --name notification-hub
-   ```
+Maak voor deze quickstart een resourcegroep met de naam **spnhubrg** op de locatie **eastus** met behulp van de volgende [az group create](/cli/azure/group#az-group-create)-opdracht.
 
-3. Maak een resourcegroep.
-
-   Azure Notification Hubs moeten, zoals alle Azure-resources, worden geïmplementeerd in een resourcegroep. Met resourcegroepen kunt u gerelateerde Azure-resources organiseren en beheren.
-
-   Maak voor deze quickstart een resourcegroep met de naam _spnhubrg_ op de locatie _eastus_ met behulp van de volgende [az group create](/cli/azure/group#az-group-create)-opdracht:
-
-   ```azurecli
-   az group create --name spnhubrg --location eastus
-   ```
+```azurecli
+az group create --name spnhubrg --location eastus
+```
 
 ## <a name="create-a-notification-hubs-namespace"></a>Een Notification Hubs-naamruimte maken
 
@@ -109,7 +102,7 @@ Voor Notification Hubs is versie 2.0.67 of hoger van de Azure-CLI vereist. Voer 
 
 2. Haal een lijst met naamruimten op.
 
-   Gebruik de opdracht [az notification-hub namespace list](/cli/azure/ext/notification-hub/notification-hub/namespace?view=azure-cli-latest#ext-notification-hub-az-notification-hub-namespace-list) om de details van uw nieuwe naamruimte te bekijken. De parameter `--resource-group` is optioneel als u alle naamruimten voor een abonnement wilt zien.
+   Gebruik de opdracht [az notification-hub namespace list](/cli/azure/ext/notification-hub/notification-hub/namespace#ext-notification-hub-az-notification-hub-namespace-list) om de details van uw nieuwe naamruimte te bekijken. De parameter `--resource-group` is optioneel als u alle naamruimten voor een abonnement wilt zien.
 
    ```azurecli
    az notification-hub namespace list --resource-group spnhubrg
@@ -135,7 +128,7 @@ Voor Notification Hubs is versie 2.0.67 of hoger van de Azure-CLI vereist. Voer 
 
 3. Haal een lijst met notification hubs op.
 
-   Met elke uitgevoerde opdracht retourneert de Azure-CLI een bericht of deze is geslaagd, maar het is geruststellend een lijst met notification hubs te kunnen ophalen. De opdracht [az notification-hub list](/cli/azure/ext/notification-hub/notification-hub?view=azure-cli-latest#ext-notification-hub-az-notification-hub-list) is ontworpen voor dit doeleinde.
+   Met elke uitgevoerde opdracht retourneert de Azure-CLI een bericht of deze is geslaagd, maar het is geruststellend een lijst met notification hubs te kunnen ophalen. De opdracht [az notification-hub list](/cli/azure/ext/notification-hub/notification-hub#ext-notification-hub-az-notification-hub-list) is ontworpen voor dit doeleinde.
 
    ```azurecli
    az notification-hub list --resource-group spnhubrg --namespace-name spnhubns --output table

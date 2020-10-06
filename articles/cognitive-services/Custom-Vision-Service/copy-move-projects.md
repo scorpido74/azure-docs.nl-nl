@@ -9,18 +9,18 @@ ms.subservice: custom-vision
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: pafarley
-ms.openlocfilehash: 5285dfb23476662a13162788b2ec497b4fe49228
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 78ae0fc94e74755b481f80724ca26b34da99122c
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90532634"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758571"
 ---
 # <a name="copy-and-move-your-custom-vision-projects"></a>Uw Custom Vision projecten kopiëren en verplaatsen
 
 Nadat u een Custom Vision project hebt gemaakt en getraind, kunt u uw project naar een andere resource kopiëren. U kunt bijvoorbeeld een project verplaatsen van een ontwikkeling naar een productie omgeving of een back-up maken van een project naar een account in een andere Azure-regio voor betere gegevens beveiliging.
 
-Met de **[ExportProject](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc6548b571998fddeb3])** -en **[ImportProject](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc7548b571998fddee3)** -api's wordt dit scenario ingeschakeld, zodat u projecten kunt kopiëren van een Custom Vision account naar anderen. Deze hand leiding laat zien hoe u deze REST-Api's met krul kunt gebruiken. U kunt ook een HTTP-aanvraag service zoals postman gebruiken om de aanvragen uit te geven.
+Met de **[ExportProject](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc6548b571998fddeb3)** -en **[ImportProject](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc7548b571998fddee3)** -api's wordt dit scenario ingeschakeld, zodat u projecten kunt kopiëren van een Custom Vision account naar anderen. Deze hand leiding laat zien hoe u deze REST-Api's met krul kunt gebruiken. U kunt ook een HTTP-aanvraag service zoals postman gebruiken om de aanvragen uit te geven.
 
 ## <a name="business-scenarios"></a>Bedrijfs scenario's
 

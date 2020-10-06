@@ -5,39 +5,41 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 07/08/2020
+ms.date: 09/30/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 509568b143c9fbbf236139ca83cb55b0ef39beb0
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
-ms.translationtype: MT
+ms.openlocfilehash: 8c908b7f72e5581122427a7d711ae9cf61d2d90f
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145935"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91665591"
 ---
-In de volgende tabel worden de standaard limieten beschreven voor v1-, v2-, Blob-opslag en blok-Blob-opslag accounts voor Azure. De *ingangs* limiet verwijst naar alle gegevens die worden verzonden naar een opslag account. De *limiet voor* uitgaand verkeer verwijst naar alle gegevens die worden ontvangen van een opslag account.
+In de volgende tabel staan de standaardlimieten voor Azure algemeen v1, v2, Blob Storage en blok-blob-opslagaccounts. De limiet voor *inkomend verkeer* verwijst naar alle gegevens die naar een opslagaccount worden verzonden. De limiet voor *uitgaand verkeer* verwijst naar alle gegevens die vanaf een opslagaccount worden ontvangen.
+
+> [!NOTE]
+> U kunt hogere limieten voor capaciteit en binnenkomend verkeer aanvragen. Neem contact op met [Ondersteuning voor Azure](https://azure.microsoft.com/support/faq/) om een verhoging aan te vragen.
 
 | Resource | Limiet |
 | --- | --- |
-| Aantal opslag accounts per regio per abonnement, inclusief Standard-en Premium Storage-accounts.| 250 |
-| Maximale capaciteit van opslag account | 5 PiB <sup>1</sup>|
-| Maximum aantal BLOB-containers, blobs, bestands shares, tabellen, wacht rijen, entiteiten of berichten per opslag account | Geen limiet |
-| Maximum<sup>aantal aanvragen per opslag</sup> account | aantal aanvragen per seconde voor 20.000 |
-| Maximum aantal binnenkomend<sup>1</sup> per opslag account (VS, Europa Regio's) | 10 Gbps |
-| Maximum aantal ingangen<sup>1</sup> per opslag account (andere REGIO'S dan VS en Europa) | 5 Gbps als RA-GRS/GRS is ingeschakeld, 10 Gbps voor LRS/ZRS<sup>2</sup> |
-| Maximale uitgaand verkeer voor de v2-en Blob Storage-accounts voor algemeen gebruik (alle regio's) | 50 Gbps |
-| Maximum aantal uitgangen voor v1-opslag accounts voor algemeen gebruik (regio's in de VS) | 20 Gbps als RA-GRS/GRS is ingeschakeld, 30 Gbps voor LRS/ZRS<sup>2</sup> |
-| Maximum aantal uitgangen voor v1-opslag accounts voor algemeen gebruik (niet-Amerikaanse regio's) | 10 Gbps als RA-GRS/GRS is ingeschakeld, 15 Gbps voor LRS/ZRS<sup>2</sup> |
-| Maximum aantal regels voor virtuele netwerken per opslag account | 200 |
-| Maximum aantal IP-adres regels per opslag account | 200 |
+| Het aantal opslagaccounts per regio per abonnement, inclusief Standard- en Premium-opslagaccounts.| 250 |
+| Maximale capaciteit van opslagaccount | 5 PiB <sup>1</sup>|
+| Maximum aantal blobcontainers, blobs, bestandsshares, tabellen, wachtrijen, entiteiten of berichten per opslagaccount | Geen limiet |
+| Maximum aantal aanvragen<sup>1</sup> per opslagaccount | 20.000 aanvragen per seconde |
+| Maximale hoeveelheid inkomend verkeer<sup>1</sup> per opslagaccount (regio's Verenigde Staten en Europa) | 10 Gbps |
+| Maximale hoeveelheid inkomend verkeer<sup>1</sup> per opslagaccount (overige regio's) | 5 Gbps als RA-GRS/GRS is ingeschakeld, 10 Gbps voor LRS/ZRS<sup>2</sup> |
+| Maximale hoeveelheid uitgaand verkeer voor algemeen v2- en Blob Storage-accounts (alle regio's) | 50 Gbps |
+| Maximale hoeveelheid uitgaand verkeer voor algemeen v1-accounts (VS-regio's) | 20 Gbps als RA-GRS/GRS is ingeschakeld, 30 Gbps voor LRS/ZRS<sup>2</sup> |
+| Maximale hoeveelheid uitgaand verkeer voor algemeen v1-accounts (niet-VS-regio's) | 10 Gbps als RA-GRS/GRS is ingeschakeld, 15 Gbps voor LRS/ZRS<sup>2</sup> |
+| Maximum aantal virtuele-netwerkregels per opslagaccount | 200 |
+| Maximum aantal IP-adresregels per opslagaccount | 200 |
 
-<sup>1</sup> Azure Storage standaard accounts ondersteunen hogere capaciteits limieten en hogere limieten voor inkomend verkeer per aanvraag. Neem contact op met de [ondersteuning van Azure](https://azure.microsoft.com/support/faq/)om een verhoging van de account limieten aan te vragen.
+<sup>1</sup> Azure Storage-standaardaccounts ondersteunen hogere capaciteitslimieten en hogere limieten voor inkomend verkeer op aanvraag. Neem contact op met de [Azure-ondersteuning](https://azure.microsoft.com/support/faq/) om een hogere accountlimiet aan te vragen.
 
-<sup>2</sup> als voor uw opslag account lees toegang is ingeschakeld met geo-redundante opslag (RA-GRS) of geo-zone-redundante opslag (RA-GZRS), zijn de uitgangs doelen voor de secundaire locatie identiek aan die van de primaire locatie. Zie [Azure storage-replicatie](../articles/storage/common/storage-redundancy.md)voor meer informatie.
+<sup>2</sup> Als voor uw opslagaccount leestoegang is ingeschakeld met geografisch redundante opslag (RA-GRS) of geo-zone-redundante opslag (RA-GZRS), zijn de doelen voor uitgaand verkeer voor de secundaire locatie identiek aan die van de primaire locatie. Zie [Azure Storage-replicatie](../articles/storage/common/storage-redundancy.md) voor meer informatie.
 
 > [!NOTE]
-> Micro soft raadt u aan om voor de meeste scenario's een v2-opslag account voor algemeen gebruik te gebruiken. U kunt eenvoudig een algemene versie van v1 of een Azure Blob Storage-account bijwerken naar een v2-account voor algemeen gebruik zonder uitval tijd en hoeft u geen gegevens te kopiëren. Zie [een upgrade uitvoeren naar een v2-opslag account voor algemeen gebruik](../articles/storage/common/storage-account-upgrade.md)voor meer informatie.
+> Microsoft raadt aan voor de meeste scenario's een algemeen v2-opslagaccount te gebruiken. U kunt een algemeen v1 of een Azure Blob Storage-account eenvoudig bijwerken naar een algemeen v2-account zonder dat u last hebt van uitval en zonder gegevens te hoeven kopiëren. Zie [Upgraden naar een algemeen v2-opslagaccount](../articles/storage/common/storage-account-upgrade.md) voor meer informatie.
 
-Als de behoeften van uw toepassing de schaalbaarheids doelen van één opslag account overschrijden, kunt u uw toepassing bouwen voor het gebruik van meerdere opslag accounts. U kunt vervolgens de gegevens objecten in die opslag accounts partitioneren. Zie [Azure Storage prijzen](https://azure.microsoft.com/pricing/details/storage/)voor meer informatie over de prijzen van volumes.
+Alle opslagaccounts worden uitgevoerd op een platte netwerktopologie, ongeacht wanneer ze zijn gemaakt. Voor meer informatie over de platte Azure Storage-netwerkarchitectuur en schaalbaarheid raadpleegt u [Microsoft Azure Storage: A Highly Available Cloud Storage Service with Strong Consistency](https://docs.microsoft.com/archive/blogs/hanuk/windows-azures-flat-network-storage-to-enable-higher-scalability-targets) (Microsoft Azure Storage: een maximaal beschikbare cloudopslagservice met grote consistentie). 
 
-Alle opslag accounts worden uitgevoerd op een vlakke netwerk topologie, ongeacht wanneer deze zijn gemaakt. Zie [Microsoft Azure Storage: een Maxi maal beschik bare Cloud opslag service met sterke consistentie](https://docs.microsoft.com/archive/blogs/hanuk/windows-azures-flat-network-storage-to-enable-higher-scalability-targets)voor meer informatie over de Azure Storage platte netwerk architectuur en de schaal baarheid. 

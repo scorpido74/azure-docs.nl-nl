@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: a5f11a6054358584a8511cb967860c89f6491beb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a72552d8654a45d1ff4c1890c8086d43d7bd801d
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936158"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91756531"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql-flexible-server-preview"></a>Back-up en herstel in Azure Database for MySQL flexibele server (preview-versie)
 
@@ -24,7 +24,7 @@ Azure Database for MySQL flexibele server maakt automatisch server back-ups en s
 
 Flexibele server maakt momentopname back-ups van de gegevens bestanden en slaat ze op in een lokale redundante opslag. De-server voert ook back-ups van transactie Logboeken uit en slaat deze ook op in lokale redundante opslag. Met deze back-ups kunt u een server herstellen naar elk gewenst moment binnen de geconfigureerde back-upperiode. De standaardretentieperiode voor back-ups is zeven dagen. U kunt de back-up van de data base optioneel configureren van 1 tot 35 dagen. Alle back-ups worden versleuteld met AES 256-bits versleuteling voor de gegevens die in rust zijn opgeslagen.
 
-Deze back-upbestanden kunnen niet worden geëxporteerd. De back-ups kunnen alleen worden gebruikt voor herstel bewerkingen op een flexibele server. U kunt [mysqldump](https://docs.microsoft.com/azure/MySQL/howto-migrate-using-dump-and-restore)ook gebruiken   vanuit een mysql-client om een Data Base te kopiëren.
+Deze back-upbestanden kunnen niet worden geëxporteerd. De back-ups kunnen alleen worden gebruikt voor herstel bewerkingen op een flexibele server. U kunt [mysqldump](https://docs.microsoft.com/azure/postgresql/howto-migrate-using-dump-and-restore)ook gebruiken   vanuit een mysql-client om een Data Base te kopiëren.
 
 ## <a name="backup-frequency"></a>Back-upfrequentie
 

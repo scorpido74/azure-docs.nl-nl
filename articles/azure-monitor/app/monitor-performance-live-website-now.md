@@ -4,12 +4,12 @@ description: Bewaak de prestaties van een website zonder de website opnieuw te i
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 603cbde20ae6e8d19e4ad3ae290bbfc925483595
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 6c27c78bf8e3f3b8af342a14a38c9be3821d781a
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923820"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758660"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Web-apps tijdens runtime instrumenteren met Application Insights zonder code koppelen
 
@@ -130,7 +130,7 @@ Update van uw web.config herstellen:
 </dependentAssembly>
 ```
 
-Dit probleem wordt [hier](https://github.com/Microsoft/ApplicationInsights-Home/issues/301)bijgehouden.
+Dit probleem wordt [hier](https://github.com/MohanGsk/ApplicationInsights-Home)bijgehouden.
 
 
 ### <a name="application-diagnostic-messages"></a>Diagnostische berichten over toepassingen

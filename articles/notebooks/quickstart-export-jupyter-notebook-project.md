@@ -3,14 +3,14 @@ title: Een Jupyter Notebook-project exporteren vanuit de Azure Notebooks Preview
 description: Exporteer snel een Jupyter Notebook-project.
 ms.topic: quickstart
 ms.date: 06/29/2020
-ms.openlocfilehash: a2e76f2c1956df4d0de59cfb429dc1c9dce85a62
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 3153247b9d15167ab437d6c46142bbd41f8e4b23
+ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892096"
+ms.lasthandoff: 09/11/2020
+ms.locfileid: "90030443"
 ---
-# <a name="quickstart-export-a-jupyter-notebook-project-in-azure-notebooks-preview"></a>Quickstart: Een Jupyter Notebook-project exporteren in Azure Notebooks Preview
+# <a name="quickstart-export-a-jupyter-notebook-project-in-azure-notebooks-preview"></a>Een Jupyter Notebook-project exporteren in Azure Notebooks Preview
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
@@ -34,7 +34,7 @@ Een bestaand Azure Notebooks-project.
 
 Nadat u uw projectbestanden hebt gedownload, kunt u deze gebruiken met andere Jupyter Notebook-oplossingen. Enkele van de opties die in de onderstaande secties worden beschreven, zijn: 
 - [Visual Studio Code](#use-notebooks-in-visual-studio-code)
-- [Visual Studio Codespaces](#use-notebooks-in-visual-studio-codespaces)
+- [GitHub Codespaces](#use-notebooks-in-github-codespaces)
 - [Azure Machine Learning](#use-notebooks-with-azure-machine-learning)
 - [Azure Lab Services](#use-azure-lab-services)
 - [GitHub](#use-github)
@@ -58,14 +58,13 @@ Nadat u uw projectbestanden hebt [gedownload](#export-an-azure-notebooks-project
 
 U kunt ook het [Azure Notebooks-omgevingsscript](#create-an-environment-for-notebooks) met Visual Studio Code gebruiken om een omgeving te maken die overeenkomt met de Azure Notebooks Preview.
 
-## <a name="use-notebooks-in-visual-studio-codespaces"></a>Notebooks gebruiken in Visual Studio Codespaces
+## <a name="use-notebooks-in-github-codespaces"></a>Notebooks gebruiken in GitHub Codespaces
 
-Visual Studio Codespaces biedt in de cloud gehoste omgevingen waar u uw notebooks kunt bewerken met behulp van Visual Studio Code of uw webbrowser. Het biedt dezelfde geweldige Jupyter-ervaring als VS Code, maar zonder dat u iets hoeft te installeren op uw apparaat. Als u geen lokale omgeving wilt instellen en de voorkeur geeft aan een oplossing die door de cloud wordt ondersteund, is het maken van een codespace een uitstekende optie. Aan de slag:
-
+GitHub Codespaces biedt in de cloud gehoste omgevingen waar u uw notebooks kunt bewerken met behulp van Visual Studio Code of in uw webbrowser. Het biedt dezelfde geweldige Jupyter-ervaring als VS Code, maar zonder dat u iets hoeft te installeren op uw apparaat. Als u geen lokale omgeving wilt instellen en de voorkeur geeft aan een oplossing die door de cloud wordt ondersteund, is het maken van een codespace een uitstekende optie. Aan de slag:
 1. [Download](#export-an-azure-notebooks-project) uw projectbestanden.
-1. [Maak een GitHub-opslagplaats](https://help.github.com/github/getting-started-with-github/create-a-repo) om uw notebooks op te slaan. 
+1. [Maak een GitHub-opslagplaats](https://help.github.com/github/getting-started-with-github/create-a-repo) om uw notebooks op te slaan.   
 1. [Voeg uw bestanden toe ](https://help.github.com/github/managing-files-in-a-repository/adding-a-file-to-a-repository) aan de opslagplaats.
-1. Stel Visual Studio Codespaces in de [browser](https://docs.microsoft.com/visualstudio/online/how-to/browser), [Visual Studio](https://docs.microsoft.com/visualstudio/online/how-to/vside) of [Visual Studio Code](https://docs.microsoft.com/visualstudio/online/how-to/vscode) in.
+1. [Toegang aanvragen tot de preview van GitHub Codespaces](https://github.com/features/codespaces)
 
 ## <a name="use-notebooks-with-azure-machine-learning"></a>Notebooks gebruiken met Azure Machine Learning
 
@@ -93,7 +92,7 @@ Met [Azure Lab Services](https://azure.microsoft.com/services/lab-services/) kun
 
 ## <a name="use-github"></a>GitHub gebruiken
 
-GitHub biedt een gratis, met broncodebeheer gemaakte manier om notebooks (en andere bestanden) op te slaan, uw notebooks te delen met anderen en samen te werken. Als u op zoek bent naar een manier om uw projecten te delen en samen te werken met anderen, is GitHub een fantastische optie. GitHub kan worden gecombineerd met [Visual Studio Codespaces](#use-notebooks-in-visual-studio-codespaces) voor een fantastische ontwikkelervaring. Aan de slag met GitHub
+GitHub biedt een gratis, met broncodebeheer gemaakte manier om notebooks (en andere bestanden) op te slaan, uw notebooks te delen met anderen en samen te werken. Als u op zoek bent naar een manier om uw projecten te delen en samen te werken met anderen, is GitHub een fantastische optie. GitHub kan worden gecombineerd met [GitHub Codespaces](#use-notebooks-in-github-codespaces) voor een fantastische ontwikkelervaring. Aan de slag met GitHub
 
 1. [Download](#export-an-azure-notebooks-project) uw projectbestanden.
 1. [Maak een GitHub-opslagplaats](https://help.github.com/github/getting-started-with-github/create-a-repo) om uw notebooks op te slaan. 
@@ -103,6 +102,6 @@ GitHub biedt een gratis, met broncodebeheer gemaakte manier om notebooks (en and
 
 - [Meer informatie over Python in Visual Studio Code](https://code.visualstudio.com/docs/python/python-tutorial)
 - [Meer informatie over Azure Machine Learning en Jupyter Notebooks](../machine-learning/how-to-run-jupyter-notebooks.md)
-- [Meer informatie over Visual Studio Codespaces](https://visualstudio.microsoft.com/services/visual-studio-codespaces/)
+- [Meer informatie over GitHub Codespaces](https://github.com/features/codespaces)
 - [Meer informatie over Azure Lab Services](https://azure.microsoft.com/services/lab-services/)
 - [Meer informatie over GitHub](https://help.github.com/github/getting-started-with-github/)

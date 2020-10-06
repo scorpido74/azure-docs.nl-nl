@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5b54af39401ba8c3fede4c9ad80ec8edc963b1d
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: de0212739f5cd24cec9ab58bdaf4d2b272f31200
+ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213684"
+ms.lasthandoff: 09/13/2020
+ms.locfileid: "90054361"
 ---
 # <a name="quickstart-naming-policy-for-groups-in-azure-active-directory"></a>Snelstart: naambeleid voor groepen in Azure Active Directory
 
@@ -68,6 +68,6 @@ Dat is alles. U hebt het naambeleid ingesteld en uw aangepaste, geblokkeerde woo
 
 In deze quickstart hebt u geleerd hoe u het naamgevingsbeleid kunt instellen voor uw Azure AD-organisatie via Azure Portal.
 
-Ga door naar het volgende artikel voor meer informatie, waaronder de PowerShell cmdlets voor het naamgevingsbeleid, technische beperkingen, het toevoegen van een lijst met aangepaste geblokkeerde woorden en eindgebruikerservaringen in Office 365-apps.
+Ga door naar het volgende artikel voor meer informatie, waaronder de PowerShell cmdlets voor het naamgevingsbeleid, technische beperkingen, het toevoegen van een lijst met aangepaste geblokkeerde woorden en eindgebruikerservaringen in Microsoft 365-apps.
 > [!div class="nextstepaction"]
 > [Naamgevingsbeleid voor PowerShell](groups-naming-policy.md)

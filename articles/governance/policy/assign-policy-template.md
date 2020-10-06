@@ -1,17 +1,17 @@
 ---
-title: 'Quickstart: Nieuwe beleidstoewijzing met sjablonen'
+title: Nieuwe beleidstoewijzing met sjablonen
 description: In deze quickstart gebruikt u een Azure Resource Manager-sjabloon (ARM-sjabloon) om een beleidstoewijzing te maken om niet-compatibele resources te identificeren.
 ms.date: 08/17/2020
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: 2f012f9cc8f986f8f887096098961e44c4b7dffb
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: c32f833520a811d47129196ae4d67c92bad7e21f
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88689844"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651419"
 ---
-# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-an-arm-template"></a>Quickstart: Een beleidstoewijzing maken met behulp van een ARM-sjabloon om niet-compatibele resources te identificeren
+# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-an-arm-template"></a>Een beleidstoewijzing maken met behulp van een ARM-sjabloon om niet-compatibele resources te identificeren
 
 De eerste stap in het begrijpen van naleving in Azure is het identificeren van de status van uw resources.
 In deze quickstart gaat u een Azure Resource Manager-sjabloon (ARM-sjabloon) gebruiken om een beleidstoewijzing te maken voor het identificeren van virtuele machines die geen beheerde schijven gebruiken. Als u dit proces helemaal hebt doorlopen, kunt u virtuele machines identificeren die geen beheerde schijven gebruiken. Ze zijn _niet-compatibel_ met de beleidstoewijzing.
@@ -20,7 +20,7 @@ In deze quickstart gaat u een Azure Resource Manager-sjabloon (ARM-sjabloon) geb
 
 Als uw omgeving voldoet aan de vereisten en u benkend bent met het gebruik van ARM-sjablonen, selecteert u de knop **Implementeren naar Azure**. De sjabloon wordt in Azure Portal geopend.
 
-:::image type="content" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="De ARM-sjabloon voor het toewijzen van Azure Policy aan Azure implementeren" border="false" link="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json":::
+:::image type="content" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="Knop om ARM-sjabloon te implementeren voor het toewijzen van Azure Policy aan Azure." border="false" link="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json":::
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -45,7 +45,7 @@ De resource die is gedefinieerd in de sjabloon:
 
 1. Selecteer de volgende afbeelding om u aan te melden bij de Azure-portal en open de sjabloon:
 
-   :::image type="content" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="De ARM-sjabloon voor het toewijzen van Azure Policy aan Azure implementeren" border="false" link="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json":::
+   :::image type="content" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="Knop om ARM-sjabloon te implementeren voor het toewijzen van Azure Policy aan Azure." border="false" link="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json":::
 
 1. Typ of selecteer de volgende waarden:
 
@@ -55,7 +55,7 @@ De resource die is gedefinieerd in de sjabloon:
    | Resourcegroep | Selecteer **Nieuwe maken**, geef een naam op en selecteer vervolgens **OK**. In de schermopname is de naam van de resource groep _mypolicyquickstart\<Date in MMDD\>rg_. |
    | Locatie | Selecteer een regio. Bijvoorbeeld **VS - centraal**. |
    | Naam voor beleidstoewijzing | Geef een naam op voor de beleidstoewijzing. U kunt de weergave voor de beleidsdefinitie gebruiken, als u wilt. Bijvoorbeeld _Controleer virtuele machines die niet gebruikmaken van beheerde schijven_. |
-   | Rg-naam | Geef een naam op voor de resourcegroep waaraan u het beleid wilt toewijzen. In deze quickstart gebruikt u de standaardwaarde **[resourceGroup ().name]** . **[resourceGroup()](../../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)** is een sjabloonfunctie waarmee de resourcegroep wordt opgehaald. |
+   | Rg-naam | Geef een naam op voor de resourcegroep waaraan u het beleid wilt toewijzen. In deze quickstart gebruikt u de standaardwaarde **[resourceGroup ().name]**. **[resourceGroup()](../../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)** is een sjabloonfunctie waarmee de resourcegroep wordt opgehaald. |
    | Beleidsdefinitie-id | Geef **/providers/Microsoft.Authorization/policyDefinitions/0a914e76-4921-4c19-b460-a2d36003525a** op. |
    | Ik ga akkoord met de bovenstaande voorwaarden | (Selecteren) |
 
@@ -72,7 +72,7 @@ Een aantal aanvullende bronnen:
 
 Selecteer **Naleving** links op de pagina. Zoek dan de beleidstoewijzing _Virtuele machines zonder beheerde schijven controleren_ die u hebt gemaakt.
 
-:::image type="content" source="./media/assign-policy-template/policy-compliance.png" alt-text="Overzichtspagina van Policy-naleving" border="false":::
+:::image type="content" source="./media/assign-policy-template/policy-compliance.png" alt-text="Knop om ARM-sjabloon te implementeren voor het toewijzen van Azure Policy aan Azure." border="false":::
 
 Als er bestaande resources zijn die niet conform deze nieuwe toewijzing zijn, worden deze weergegeven bij **Niet-conforme resources**.
 
@@ -86,7 +86,7 @@ Als u de gemaakte toewijzing wilt verwijderen, volgt u deze stappen:
 
 1. Klik met de rechtermuisknop op de beleidstoewijzing _Controleer virtuele machines die niet gebruikmaken van beheerde schijven_ en selecteer **Toewijzing verwijderen**.
 
-   :::image type="content" source="./media/assign-policy-template/delete-assignment.png" alt-text="Een toewijzing verwijderen van de overzichtspagina voor naleving" border="false":::
+   :::image type="content" source="./media/assign-policy-template/delete-assignment.png" alt-text="Knop om ARM-sjabloon te implementeren voor het toewijzen van Azure Policy aan Azure." border="false":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

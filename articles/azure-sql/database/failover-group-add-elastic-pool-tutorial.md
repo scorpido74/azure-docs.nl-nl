@@ -1,78 +1,78 @@
 ---
-title: 'Zelf studie: een elastische pool toevoegen aan een failovergroep'
-description: Voeg een Azure SQL Database elastische pool toe aan een failovergroep met behulp van de Azure Portal, Power shell of Azure CLI.
+title: 'Zelfstudie: Een elastische pool aan een failovergroep toevoegen'
+description: Voeg een elastische Azure SQL Database-pool toe aan een failovergroep met behulp van de Azure-portal, PowerShell of Azure CLI.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
 ms.custom: seo-lt-2019 sqldbrb=1
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 08/27/2019
-ms.openlocfilehash: 0c4a3c97649f168d339f5209cc10a46f56e97381
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
-ms.translationtype: MT
+ms.openlocfilehash: a9f5bac475fd019b294f79abf0acdfaff198f52b
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91335174"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442752"
 ---
-# <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>Zelf studie: een Azure SQL Database elastische pool toevoegen aan een failovergroep
+# <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>Zelfstudie: Een elastische pool van Azure SQL Database toevoegen aan een failovergroep
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Configureer een failovergroep voor een Azure SQL Database elastische pool en testfailover met behulp van de Azure Portal.  In deze zelfstudie leert u het volgende:
+Configureer een failovergroep voor een elastische Azure SQL Database-pool en test de failover met behulp van de Azure-portal.  In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
 >
-> - Maak een afzonderlijke data base.
-> - Voeg de data base toe aan een elastische pool.
-> - Maak een [failovergroep](auto-failover-group-overview.md) voor twee elastische Pools tussen twee servers.
-> - Testfailover.
+> - Maak een individuele database.
+> - Voeg de database aan een elastische pool toe.
+> - Maak een [failovergroep](auto-failover-group-overview.md) voor twee elastische pools tussen twee servers.
+> - Test de failover.
 
 ## <a name="prerequisites"></a>Vereisten
 
 Het volgende moet zijn geïnstalleerd om deze zelfstudie te voltooien:
 
-- Een Azure-abonnement. [Maak een gratis account](https://azure.microsoft.com/free/) als u er nog geen hebt.
+- Een Azure-abonnement. [Maak een gratis account aan](https://azure.microsoft.com/free/) als u er nog geen hebt.
 
-## <a name="1---create-a-single-database"></a>1-een enkele data base maken
+## <a name="1---create-a-single-database"></a>1 - Maak een individuele database
 
 [!INCLUDE [sql-database-create-single-database](../includes/sql-database-create-single-database.md)]
 
-## <a name="2---add-the-database-to-an-elastic-pool"></a>2: de data base toevoegen aan een elastische pool
+## <a name="2---add-the-database-to-an-elastic-pool"></a>2 - Voeg de database aan een elastische pool toe
 
-In deze stap maakt u een elastische pool en voegt u er uw data base aan toe.
+In deze stap maakt u een elastische pool en voegt u er uw database aan toe.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Maak uw elastische pool met behulp van de Azure Portal.
+Maak uw elastische pool met behulp van de Azure-portal.
 
-1. Selecteer **Azure SQL** in het menu aan de linkerzijde van de Azure Portal. Als **Azure SQL** niet voor komt in de lijst, selecteert u **alle services**en typt u ' Azure SQL ' in het zoekvak. Beschrijving Selecteer de ster naast **Azure SQL** om deze te favoriet en voeg deze toe als een item in de linkernavigatiebalk.
-1. Selecteer **+ toevoegen** om de **optie pagina SQL-implementatie selecteren** te openen. U kunt aanvullende informatie over de verschillende data bases weer geven door details weer geven te selecteren op de tegel data bases.
-1. Selecteer **elastische groep** in de vervolg keuzelijst **resource type** in de tegel **SQL-data bases** . Selecteer **maken** om uw elastische pool te maken.
+1. Selecteer **Azure SQL** in het menu aan de linkerzijde van de Azure Portal. Als **Azure SQL** niet in de lijst staat, selecteert u **Alle services** en typt u 'Azure SQL' in het zoekvak. (Optioneel) Selecteer de ster naast **Azure SQL** om deze te favoriseren en voeg deze als item in de linkernavigatiebalk toe.
+1. Selecteer **+ Toevoegen** om de pagina **SQL-implementatieoptie selecteren** te openen. U kunt meer informatie over de verschillende databases bekijken door Details weergeven te selecteren in de tegel Databases.
+1. Selecteer **Elastische pool** uit de vervolgkeuzelijst **Resourcetype** in de tegel **SQL-databases**. Selecteer **Maken** om uw elastische pool te maken.
 
     ![Elastische pool selecteren](./media/failover-group-add-elastic-pool-tutorial/select-azure-sql-elastic-pool.png)
 
 1. Configureer uw elastische pool met de volgende waarden:
-   - **Naam**: Geef een unieke naam op voor de elastische pool, zoals `myElasticPool` .
-   - **Abonnement**: Selecteer uw abonnement in de vervolg keuzelijst.
-   - **ResourceGroup**: Selecteer `myResourceGroup` een optie in de vervolg keuzelijst, de resource groep die u in sectie 1 hebt gemaakt.
-   - **Server**: Selecteer de server die u hebt gemaakt in sectie 1 in de vervolg keuzelijst.  
+   - **Naam**: Geef een unieke naam op voor uw elastische pool, zoals `myElasticPool`.
+   - **Abonnement**: Selecteer uw abonnement in de vervolgkeuzelijst.
+   - **ResourceGroup**: Selecteer in de vervolgkeuzelijst `myResourceGroup`, de resourcegroep die u in gedeelte 1 hebt gemaakt.
+   - **Server**: Selecteer in de vervolgkeuzelijst de server die u in gedeelte 1 hebt gemaakt.  
 
        ![Nieuwe server voor elastische pool maken](./media/failover-group-add-elastic-pool-tutorial/use-existing-server-for-elastic-pool.png)
 
-   - **Compute + Storage**: Selecteer **elastische pool configureren** om uw reken-, opslag-en toevoegen van uw data base te configureren voor uw elastische pool. Accepteer op het tabblad **pool instellingen** de standaard waarde van GEN5, met 2 vCores en 32 GB.
+   - **Compute en opslag**: Selecteer **Elastische pool configureren** om uw compute en opslag te configureren en om uw individuele database aan uw elastische pool toe te voegen. In het tabblad **Poolinstellingen** laat u de standaardwaarde Gen5 staan en kiest u voor 2 vCores en 32 GB.
 
-1. Selecteer op de pagina **configureren** het tabblad **data bases** en kies vervolgens **Data Base toevoegen**. Kies de data base die u hebt gemaakt in sectie 1 en selecteer vervolgens **Toep assen** om deze toe te voegen aan uw elastische pool. Selecteer opnieuw **Toep assen** om de instellingen voor de elastische groep toe te passen en sluit de pagina **configureren** .
+1. Op de pagina **Configureren** selecteert u het tabblad **Databases** en kiest u vervolgens **Database toevoegen**. Kies de database die u in gedeelte 1 hebt gemaakt en selecteer vervolgens **Toepassen** om deze aan uw elastische pool toe te voegen. Selecteer opnieuw **Toepassen** om de instellingen voor de elastische pool toe te passen en sluit de pagina **Configureren**.
 
-    ![Data base toevoegen aan elastische pool](./media/failover-group-add-elastic-pool-tutorial/add-database-to-elastic-pool.png)
+    ![Database aan elastische pool toevoegen](./media/failover-group-add-elastic-pool-tutorial/add-database-to-elastic-pool.png)
 
-1. Selecteer **controleren + maken** om de instellingen voor de elastische groep te controleren en selecteer vervolgens **maken** om uw elastische pool te maken.
+1. Selecteer **Controleren + maken** om uw instellingen voor de elastische groep te controleren en selecteer vervolgens **Maken** om uw elastische pool te maken.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Maak uw elastische Pools en secundaire server met behulp van Power shell.
+Maak uw elastische pools en secundaire server met behulp van PowerShell.
 
    ```powershell-interactive
    # Set variables for your server and database
@@ -116,55 +116,55 @@ Maak uw elastische Pools en secundaire server met behulp van Power shell.
    $addDatabase
    ```
 
-In dit gedeelte van de zelf studie worden de volgende Power shell-cmdlets gebruikt:
+In dit gedeelte van de zelfstudie worden de volgende PowerShell-cmdlets gebruikt:
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [New-AzSqlElasticPool](/powershell/module/az.sql/new-azsqlelasticpool) | Hiermee maakt u een pool voor elastische Data Base voor een Azure SQL Database.|
+| [New-AzSqlElasticPool](/powershell/module/az.sql/new-azsqlelasticpool) | Hiermee maakt u een elastische pool voor een Azure SQL Database.|
 | [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) | Hiermee worden eigenschappen ingesteld voor een database of plaatst een bestaande database in een elastische pool. |
 
 ---
 
-## <a name="3---create-the-failover-group"></a>3-de groep failover maken
+## <a name="3---create-the-failover-group"></a>3 - Maak de failovergroep
 
-In deze stap maakt u een [failovergroep](auto-failover-group-overview.md) tussen een bestaande server en een nieuwe server in een andere regio. Voeg vervolgens de elastische pool toe aan de failovergroep.
+In deze stap maakt u een [failovergroep](auto-failover-group-overview.md) tussen een bestaande server en een nieuwe server in een andere regio. Voeg vervolgens de elastische pool aan de failovergroep toe.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Maak uw failover-groep met behulp van de Azure Portal.
+Maak uw failovergroep met behulp van de Azure-portal.
 
-1. Selecteer **Azure SQL** in het linkermenu van de [Azure Portal](https://portal.azure.com). Als **Azure SQL** niet in de lijst staat, selecteert u **Alle services** en typt u Azure SQL in het zoekvak. Beschrijving Selecteer de ster naast **Azure SQL** om deze te favoriet en voeg deze toe als een item in de linkernavigatiebalk.
-1. Selecteer de elastische pool die u in de vorige sectie hebt gemaakt, zoals `myElasticPool` .
-1. Selecteer in het deel venster **overzicht** de naam van de server onder **Server naam** om de instellingen voor de server te openen.
+1. Selecteer **Azure SQL** in het menu aan de linkerzijde van de [Azure-portal](https://portal.azure.com). Als **Azure SQL** niet in de lijst staat, selecteert u **Alle services** en typt u Azure SQL in het zoekvak. (Optioneel) Selecteer de ster naast **Azure SQL** om deze te favoriseren en voeg deze als item in de linkernavigatiebalk toe.
+1. Selecteer de elastische pool die u in het vorige gedeelte hebt gemaakt, zoals `myElasticPool`.
+1. Selecteer in het deelvenster **Overzicht** de naam van de server onder **Servernaam** om de instellingen voor de server te openen.
   
     ![Server openen voor elastische pool](./media/failover-group-add-elastic-pool-tutorial/server-for-elastic-pool.png)
 
-1. Selecteer **failover-groepen** in het deel venster **instellingen** en selecteer vervolgens **groep toevoegen** om een nieuwe failovergroep te maken.
+1. Selecteer **Failovergroepen** onder het deelvenster **Instellingen** en selecteer vervolgens **Groep toevoegen** om een nieuwe failovergroep te maken.
 
-    ![Nieuwe failovergroep toevoegen](./media/failover-group-add-elastic-pool-tutorial/elastic-pool-failover-group.png)
+    ![Nieuwe failovergroep maken](./media/failover-group-add-elastic-pool-tutorial/elastic-pool-failover-group.png)
 
-1. Voer op de pagina **failover-groep** de volgende waarden in of Selecteer deze en selecteer vervolgens **maken**:
-    - **Naam van failovergroep**: Typ een unieke naam voor de failovergroep, zoals `failovergrouptutorial` .
-    - **Secundaire server**: Selecteer de optie voor het configureren van de *vereiste instellingen* en kies vervolgens **een nieuwe server maken**. U kunt ook een al bestaande server kiezen als de secundaire server. Nadat u de volgende waarden voor de nieuwe secundaire server hebt ingevoerd, selecteert u **selecteren**.
-        - **Server naam**: Typ een unieke naam voor de secundaire server, bijvoorbeeld `mysqlsecondary` .
-        - **Aanmelding van de server beheerder**: type `azureuser`
-        - **Wacht woord**: Typ een complex wacht woord dat voldoet aan de wachtwoord vereisten.
-        - **Locatie**: Kies een locatie in de vervolg keuzelijst, zoals `East US` . Deze locatie mag niet dezelfde locatie zijn als de primaire server.
+1. Op de pagina **Failovergroep** moet u de volgende waarden invoeren of selecteren en vervolgens **Maken** selecteren:
+    - **Naam van failovergroep**: Typ een unieke naam voor de failovergroep, zoals `failovergrouptutorial`.
+    - **Secundaire server**: Selecteer de optie *Vereiste instellingen configureren* en kies vervolgens **Een nieuwe server maken**. U kunt ook een reeds bestaande server als secundaire server kiezen. Nadat u de volgende waarden voor de nieuwe secundaire server hebt ingevoerd, selecteert u **Selecteren**.
+        - **Servernaam**: Typ een unieke naam voor de secundaire server, zoals `mysqlsecondary`.
+        - **Aanmeldgegevens van serverbeheerder**: Type `azureuser`
+        - **Wachtwoord**: Typ een complex wachtwoord dat voldoet aan de wachtwoordvereisten.
+        - **Locatie**: Kies een locatie uit de vervolgkeuzelijst, zoals `East US`. Deze locatie moet anders zijn dan de locatie van de primaire server.
 
        > [!NOTE]
-       > De aanmeldings-en Firewall instellingen van de server moeten overeenkomen met die van de primaire server.
+       > De aanmeldings- en firewallinstellingen van de server moeten overeenkomen met die van de primaire server.
 
        ![Een secundaire server maken voor de failovergroep](./media/failover-group-add-elastic-pool-tutorial/create-secondary-failover-server.png)
 
-1. Selecteer **data bases in de groep** en selecteer vervolgens de elastische pool die u hebt gemaakt in sectie 2. Er wordt een waarschuwing weer gegeven waarin u wordt gevraagd om een elastische pool te maken op de secundaire server. Selecteer de waarschuwing en selecteer **OK** om de elastische pool te maken op de secundaire server. 
+1. Selecteer **Databases in de groep** en selecteer vervolgens de elastische pool die u in gedeelte 2 hebt gemaakt. Er wordt een waarschuwing weergegeven waarin u wordt gevraagd om een elastische pool te maken op de secundaire server. Selecteer de waarschuwing en selecteer vervolgens **OK** om de elastische pool te maken op de secundaire server. 
 
-   ![Elastische pool toevoegen aan failovergroep](./media/failover-group-add-elastic-pool-tutorial/add-elastic-pool-to-failover-group.png)
+   ![Elastische pool aan failovergroep toevoegen](./media/failover-group-add-elastic-pool-tutorial/add-elastic-pool-to-failover-group.png)
 
-1. Selecteer **selecteren** om de instellingen voor de elastische groep toe te passen op de failovergroep en selecteer vervolgens **maken** om uw failovergroep te maken. Door de elastische pool toe te voegen aan de groep failover, wordt het proces voor geo-replicatie automatisch gestart.
+1. Kies **Selecteren** om uw instellingen voor de elastische groep op de failovergroep toe te passen en selecteer vervolgens **Maken** om uw failovergroep te maken. Door de elastische pool aan de failovergroep toe te voegen, wordt het proces voor geo-replicatie automatisch gestart.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Maak uw failover-groep met behulp van Power shell.
+Maak uw failovergroep met behulp van PowerShell.
 
    ```powershell-interactive
    # Set variables for your server and database
@@ -233,49 +233,49 @@ Maak uw failover-groep met behulp van Power shell.
    $failoverGroup
    ```
 
-In dit gedeelte van de zelf studie worden de volgende Power shell-cmdlets gebruikt:
+In dit gedeelte van de zelfstudie worden de volgende PowerShell-cmdlets gebruikt:
 
 | Opdracht | Opmerkingen |
 |---|---|
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Hiermee maakt u een server die als host fungeert voor databases en elastische pools. |
-| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Hiermee maakt u een firewall regel voor een-server. |
+| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Hiermee maakt u een firewallregel voor een server. |
 | [New-AzSqlElasticPool](/powershell/module/az.sql/new-azsqlelasticpool) | Hiermee maakt u een elastische pool voor een Azure SQL Database.|
 | [New-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) | Hiermee maakt u een nieuwe failovergroep. |
-| [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup) | Hiermee voegt u een of meer Azure SQL-data bases toe aan een failovergroep. |
-| [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Hiermee worden Azure SQL Database failover-groepen opgehaald of weer gegeven. |
+| [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup) | Hiermee voegt u een of meer Azure SQL-databases toe aan een failovergroep. |
+| [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Hiermee worden Azure SQL Database-failovergroepen opgehaald of weergegeven. |
 
 ---
 
-## <a name="4---test-failover"></a>4-failover testen
+## <a name="4---test-failover"></a>4 - Test de failover
 
-In deze stap wordt uw failover-groep overschreven naar de secundaire server en wordt er een failback uitgevoerd met behulp van de Azure Portal.
+In deze stap voert u een failover van uw failovergroep naar de secundaire server uit en voert u vervolgens een failback uit met behulp van de Azure-portal.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Test de failover van de failovergroep met behulp van de Azure Portal.
+Test de failover van uw failovergroep met behulp van de Azure-portal.
 
-1. Selecteer **Azure SQL** in het linkermenu van de [Azure Portal](https://portal.azure.com). Als **Azure SQL** niet in de lijst staat, selecteert u **Alle services** en typt u Azure SQL in het zoekvak. Beschrijving Selecteer de ster naast **Azure SQL** om deze te favoriet en voeg deze toe als een item in de linkernavigatiebalk.
-1. Selecteer de elastische pool die u in de vorige sectie hebt gemaakt, zoals `myElasticPool` .
-1. Selecteer de naam van de server onder **Server naam** om de instellingen voor de server te openen.
+1. Selecteer **Azure SQL** in het menu aan de linkerzijde van de [Azure-portal](https://portal.azure.com). Als **Azure SQL** niet in de lijst staat, selecteert u **Alle services** en typt u Azure SQL in het zoekvak. (Optioneel) Selecteer de ster naast **Azure SQL** om deze te favoriseren en voeg deze als item in de linkernavigatiebalk toe.
+1. Selecteer de elastische pool die u in het vorige gedeelte hebt gemaakt, zoals `myElasticPool`.
+1. Selecteer de naam van de server onder **Servernaam** om de instellingen voor de server te openen.
 
     ![Server openen voor elastische pool](./media/failover-group-add-elastic-pool-tutorial/server-for-elastic-pool.png)
 
-1. Selecteer **failover-groepen** in het deel venster **instellingen** en kies vervolgens de failovergroep die u hebt gemaakt in sectie 2.
+1. Selecteer **Failovergroepen** onder het deelvenster **Instellingen** en kies vervolgens de failovergroep die u in gedeelte 2 hebt gemaakt.
   
-   ![De groep failover selecteren in de portal](./media/failover-group-add-elastic-pool-tutorial/select-failover-group.png)
+   ![De failovergroep in de portal selecteren](./media/failover-group-add-elastic-pool-tutorial/select-failover-group.png)
 
-1. Controleer welke server primair is en welke server secundair is.
-1. Selecteer **failover** in het taak venster voor het uitvoeren van een failover van uw groep met elastische groepen.
-1. Selecteer **Ja** in de waarschuwing waarmee u wordt gewaarschuwd dat TDS-sessies worden losgekoppeld.
+1. Controleer welke server primair en welke server secundair is.
+1. Selecteer in het taakvenster **Failover** om een failover van uw failovergroep met elastische groepen uit te voeren.
+1. Selecteer **Ja** in de waarschuwing die u laat weten dat TDS-sessies worden losgekoppeld.
 
-   ![Failover uitvoeren voor de failovergroep met uw data base](./media/failover-group-add-elastic-pool-tutorial/failover-sql-db.png)
+   ![Failover uitvoeren van de failovergroep met uw database](./media/failover-group-add-elastic-pool-tutorial/failover-sql-db.png)
 
-1. Controleer welke server primair is, welke server secundair is. Als de failover is geslaagd, moeten de twee servers wisselende rollen hebben.
-1. Selecteer **failover** opnieuw om de failback-groep weer in te stellen op de oorspronkelijke instellingen.
+1. Controleer welke server primair en welke server secundair is. Als de failover is geslaagd, moeten de twee servers van rol zijn gewisseld.
+1. Selecteer opnieuw **Failover** om de failovergroep te herstellen naar de oorspronkelijke instellingen.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Test de failover van de failovergroep met behulp van Power shell.
+Test de failover van uw failovergroep met behulp van PowerShell.
 
    ```powershell-interactive
    # Set variables for your server and database
@@ -307,7 +307,7 @@ Test de failover van de failovergroep met behulp van Power shell.
    Write-host "Failover group failed over to" $drServerName
    ```
 
-Voer een failover uit naar de secundaire server en failback uit met behulp van de Power shell.
+Voer een failover van uw failovergroep naar de secundaire server uit en voer vervolgens een failback uit met PowerShell.
 
    ```powershell-interactive
    # Set variables for your server and database
@@ -339,28 +339,28 @@ Voer een failover uit naar de secundaire server en failback uit met behulp van d
    Write-host "Failover group failed over to" $serverName
    ```
 
-In dit gedeelte van de zelf studie worden de volgende Power shell-cmdlets gebruikt:
+In dit gedeelte van de zelfstudie worden de volgende PowerShell-cmdlets gebruikt:
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Hiermee worden Azure SQL Database failover-groepen opgehaald of weer gegeven. |
-| [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| Hiermee wordt een failover uitgevoerd van een Azure SQL Database failovergroep. |
+| [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Hiermee worden Azure SQL Database-failovergroepen opgehaald of weergegeven. |
+| [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| Hiermee wordt een failover uitgevoerd van een Azure SQL Database-failovergroep. |
 
 ---
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Resources opschonen door de resource groep te verwijderen.
+Schoon resources op door de resourcegroep te verwijderen.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. Navigeer in [Azure Portal](https://portal.azure.com) naar uw resourcegroep.
-1. Selecteer  **resource groep verwijderen** om alle resources in de groep en de resource groep zelf te verwijderen.
-1. Typ de naam van de resource groep, `myResourceGroup` in het tekstvak en selecteer vervolgens **verwijderen** om de resource groep te verwijderen.
+1. Selecteer **Resourcegroep verwijderen** om alle resources uit de groep en de resourcegroep zelf te verwijderen.
+1. Typ de naam van de resourcegroep, `myResourceGroup`, in het tekstvak en selecteer vervolgens **Verwijderen** om de resourcegroep te verwijderen.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Ruim uw resources op met behulp van Power shell.
+Schoon uw resources op met PowerShell.
 
    ```powershell-interactive
    # Set variables for your server and database
@@ -372,7 +372,7 @@ Ruim uw resources op met behulp van Power shell.
    Write-host "Resource group removed =" $resourceGroupName
    ```
 
-In dit gedeelte van de zelf studie wordt gebruikgemaakt van de volgende Power shell-cmdlet:
+In dit gedeelte van de zelfstudie wordt gebruikgemaakt van de volgende PowerShell-cmdlet:
 
 | Opdracht | Opmerkingen |
 |---|---|
@@ -381,7 +381,7 @@ In dit gedeelte van de zelf studie wordt gebruikgemaakt van de volgende Power sh
 ---
 
 > [!IMPORTANT]
-> Als u de resource groep wilt blijven gebruiken, maar de secundaire Data Base wilt verwijderen, verwijdert u deze uit de failovergroep voordat u deze verwijdert. Het verwijderen van een secundaire Data Base voordat deze wordt verwijderd uit de failovergroep kan onvoorspelbaar gedrag veroorzaken.
+> Als u de resourcegroep wilt behouden, maar de secundaire database wilt wissen, dan moet u deze uit de failovergroep verwijderen voordat u deze wist. Het wissen van een secundaire database voordat deze uit de failovergroep is verwijderd, kan onvoorspelbaar gedrag veroorzaken.
 
 ## <a name="full-script"></a>Volledige script
 
@@ -395,35 +395,35 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Hiermee maakt u een resourcegroep waarin alle resources worden opgeslagen. |
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Hiermee maakt u een server die als host fungeert voor databases en elastische pools. |
-| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Hiermee maakt u een firewall regel voor een-server. |
+| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Hiermee maakt u een firewallregel voor een server. |
 | [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Hiermee maakt u een database. |
-| [New-AzSqlElasticPool](/powershell/module/az.sql/new-azsqlelasticpool) | Hiermee maakt u een pool voor elastische Data Base voor een Azure SQL Database.|
+| [New-AzSqlElasticPool](/powershell/module/az.sql/new-azsqlelasticpool) | Hiermee maakt u een elastische pool voor een Azure SQL Database.|
 | [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) | Hiermee worden eigenschappen ingesteld voor een database of plaatst een bestaande database in een elastische pool. |
 | [New-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) | Hiermee maakt u een nieuwe failovergroep. |
-| [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) | Hiermee haalt u een of meer data bases op in SQL Database. |
-| [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup) | Hiermee voegt u een of meer Azure SQL-data bases toe aan een failovergroep. |
-| [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Hiermee worden Azure SQL Database failover-groepen opgehaald of weer gegeven. |
-| [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| Hiermee wordt een failover uitgevoerd van een Azure SQL Database failovergroep. |
+| [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) | Hiermee haalt u een of meer databases op in SQL Database. |
+| [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup) | Hiermee voegt u een of meer Azure SQL-databases toe aan een failovergroep. |
+| [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Hiermee worden Azure SQL Database-failovergroepen opgehaald of weergegeven. |
+| [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| Hiermee wordt een failover uitgevoerd van een Azure SQL Database-failovergroep. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep |
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Er zijn geen scripts beschikbaar voor de Azure Portal.
+Er zijn geen scripts beschikbaar voor de Azure-portal.
 
 ---
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u een Azure SQL Database elastische pool toegevoegd aan een failovergroep en een test failover. U hebt geleerd hoe u:
+In deze zelfstudie hebt u een elastische Azure SQL Database-pool aan een failovergroep toegevoegd en de failover getest. U hebt geleerd hoe u:
 
 > [!div class="checklist"]
 >
-> - Maak een afzonderlijke data base.
-> - Voeg de data base toe aan een elastische pool.
-> - Maak een [failovergroep](auto-failover-group-overview.md) voor twee elastische Pools tussen twee servers.
-> - Testfailover.
+> - Maak een individuele database.
+> - Voeg de database aan een elastische pool toe.
+> - Maak een [failovergroep](auto-failover-group-overview.md) voor twee elastische pools tussen twee servers.
+> - Test de failover.
 
-Ga verder met de volgende zelf studie over het migreren met behulp van DMS.
+Ga verder met de volgende zelfstudie over migreren met behulp van DMS.
 
 > [!div class="nextstepaction"]
-> [Zelf studie: SQL Server migreren naar een gegroepeerde Data Base met behulp van DMS](../../dms/tutorial-sql-server-to-azure-sql.md?toc=/azure/sql-database/toc.json)
+> [Zelfstudie: SQL Server naar een pooldatabase migreren met behulp van DMS](../../dms/tutorial-sql-server-to-azure-sql.md?toc=/azure/sql-database/toc.json)

@@ -1,33 +1,28 @@
 ---
-title: Een Azure API Management-exemplaar maken | Microsoft Docs
-description: Volg de stappen in deze zelfstudie om een nieuw Azure API Management-exemplaar te maken.
-services: api-management
-documentationcenter: ''
+title: 'Quickstart: een Azure API Management-exemplaar maken'
+description: Maak een nieuw exemplaar van de Azure API Management-service in Azure Portal.
 author: vladvino
-manager: cflower
-editor: ''
 ms.service: api-management
-ms.workload: integration
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 11/28/2017
+ms.date: 09/08/2020
 ms.author: apimpm
-ms.openlocfilehash: 6c71b88f43570a65edb5d0bea24f623c861f8111
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 66d0874536b358b720b43780d6ecce879ac866ee
+ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206293"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90708203"
 ---
-# <a name="create-a-new-azure-api-management-service-instance"></a>Een nieuw exemplaar van de API Management-service maken
+# <a name="quickstart-create-a-new-azure-api-management-service-instance-by-using-the-azure-portal"></a>Quickstart: Een nieuw exemplaar van het API Management-service-exemplaar maken in Azure Portal
 
-APIM (API Management) helpt organisaties bij het publiceren van API's naar externe en interne ontwikkelaars, en naar partnerontwikkelaars om alle mogelijkheden van hun gegevens en services te ontsluiten. API Management beschikt over de competenties die belangrijk zijn voor een geslaagd API-programma via ontwikkelaarsbetrokkenheid, zakelijke inzichten, analytische gegevens, beveiliging en bescherming. Met APIM kunt u moderne API-gateways maken en beheren voor bestaande back-endservices die op elke willekeurige locatie worden gehost. Bekijk het [Overzicht](api-management-key-concepts.md) voor meer informatie.
+APIM (API Management) helpt organisaties bij het publiceren van API's naar externe en interne ontwikkelaars, en naar partnerontwikkelaars om alle mogelijkheden van hun gegevens en services te ontsluiten. API Management beschikt over de competenties die belangrijk zijn voor een geslaagd API-programma via ontwikkelaarsbetrokkenheid, zakelijke inzichten, analytische gegevens, beveiliging en bescherming. Met APIM kunt u moderne API-gateways maken en beheren voor bestaande back-endservices die op elke willekeurige locatie worden gehost. Zie het [overzicht](api-management-key-concepts.md) voor meer informatie.
 
 In deze quickstart worden de stappen beschreven voor het maken van een nieuw API Management-exemplaar met behulp van Azure Portal.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-![API Management-exemplaar](./media/get-started-create-service-instance/get-started-create-service-instance-created.png)
+API Management-exemplaar
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -37,32 +32,39 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Selecteer **Een resource maken** in het menu van de Azure-portal. U kunt ook **Een resource maken** selecteren op de **Start**pagina van Azure. 
    
-   ![Selecteer Een resource maken](./media/get-started-create-service-instance/00-CreateResource-01.png)
-   
-1. Selecteer **Integratie** in het scherm **Nieuw** en selecteer vervolgens **API Management**.
-   
-   ![Nieuw Azure API Management-exemplaar maken](./media/get-started-create-service-instance/00-CreateResource-02.png)
-   
-1. Voer in het scherm **API Management-service** de instellingen in.
-   
-   ![nieuw exemplaar](./media/get-started-create-service-instance/get-started-create-service-instance-create-new.png)
-   
-   | Instelling                 | Voorgestelde waarde                               | Beschrijving                                                                                                                                                                                                                                                                                                                         |
-|-------------------------|-----------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Naam**                | Een unieke naam voor de API Management-service | De naam kan later niet meer worden gewijzigd. De servicenaam wordt gebruikt om een standaarddomeinnaam te genereren in de notatie: *{name}.azure-api.net.* Zie [Een aangepast domein configureren](configure-custom-domain.md) als u een aangepaste domeinnaam wilt gebruiken. <br/> De servicenaam wordt gebruikt om naar de service en de bijbehorende Azure-resource te verwijzen. |
-| **Abonnement**        | Uw abonnement                             | Het abonnement waarin dit nieuwe service-exemplaar wordt gemaakt. U kunt het abonnement selecteren in een van de verschillende Azure-abonnementen waartoe u toegang hebt.                                                                                                                                                            |
-| **Resourcegroep**      | *apimResourceGroup*                           | U kunt een nieuwe of bestaande resource selecteren. Een resourcegroep is een verzameling resources met dezelfde levenscyclus, dezelfde machtigingen en hetzelfde beleid. Klik [hier](../azure-resource-manager/management/overview.md#resource-groups) voor meer informatie.                                                                                                  |
-| **Locatie**            | *VS - west*                                    | Selecteer de geografische regio bij u in de buurt. Alleen de beschikbare regio’s voor de API Management-service worden weergegeven in de vervolgkeuzelijst.                                                                                                                                                                                                          |
-| **Naam van de organisatie**   | De naam van uw organisatie                 | Deze naam wordt op een aantal plekken gebruikt, onder andere in de titel van de ontwikkelaarsportal en als afzender bij e-mailmeldingen.                                                                                                                                                                                                             |
-| **E-mailadres van de beheerder** | *admin\@org.com*                               | Vast e-mailadres waarnaar alle meldingen afkomstig van **API Management** worden verzonden.                                                                                                                                                                                                                                              |
-| **Prijscategorie**        | *Developer*                                   | Vaste **Developer**-laag om de service te evalueren. Deze laag is niet bedoeld voor productie. Zie [bijwerken en schalen](upgrade-and-scale.md) voor meer informatie over het schalen van API Management-lagen.                                                                                                                                    |
+   Selecteer :::image type="content" source="media/get-started-create-service-instance/00-CreateResource-01.png" alt-text="Een resource maken":::
 
-3. Kies **Maken**.
+   
+1. Selecteer op de pagina **Nieuw** de opties **Integratie** > **API Management**.
+
+   Nieuw Azure API Management-exemplaar maken
+   
+1. Voer op de pagina **API Management-service** de instellingen in.
+
+   :::image type="content" source="media/get-started-create-service-instance/get-started-create-service-instance-create-new.png" alt-text="Een resource maken":::
+   
+   | Instelling                 | Beschrijving   |                                                                     
+   |-------------------------|-----------------------------------------------|
+   | **Naam.**                | Een unieke naam voor de API Management-service. De naam kan later niet meer worden gewijzigd. De servicenaam verwijst naar de service en de bijbehorende Azure-resource. <br/> De servicenaam wordt gebruikt om een standaarddomeinnaam te genereren: *\<name\>.azure-api.net.* Zie [Een aangepast domein configureren](configure-custom-domain.md) als u een aangepaste domeinnaam wilt gebruiken. |
+   | **Abonnement**          | Het abonnement waarin dit nieuwe service-exemplaar wordt gemaakt.   |
+   | **Resourcegroep**      |  Selecteer een nieuwe of bestaande resourcegroep. Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. |
+   | **location**:          | Selecteer uit de beschikbare API Management Service-locaties een geografische regio bij u in de buurt. | 
+   | **Naam van de organisatie**   | De naam van uw organisatie. Deze naam wordt op een aantal plekken gebruikt, onder andere in de titel van de ontwikkelaarsportal en als afzender bij e-mailmeldingen. |                                                         
+   | **E-mailadres van de beheerder** | Het e-mailadres waarnaar alle meldingen afkomstig van **API Management** worden verzonden.   |  
+   | **Prijscategorie**        | Selecteer **Developer**-laag om de service te evalueren. Deze laag is niet bedoeld voor productie. Zie [bijwerken en schalen](upgrade-and-scale.md) voor meer informatie over het schalen van API Management-lagen. |
+
+3. Selecteer **Maken**.
 
     > [!TIP]
-    > Het duurt meestal tussen de 20 en 30 minuten om een API Management-service te maken. Als u **Vastmaken aan dashboard** selecteert, kunt u een nieuwe service gemakkelijker terugvinden.
+    > Het kan tussen de dertig en veertig minuten duren om een API Management-service in deze laag te maken en activeren. Als u **Vastmaken aan dashboard** selecteert, kunt u een nieuwe service gemakkelijker terugvinden.
 
 [!INCLUDE [api-management-navigate-to-instance](../../includes/api-management-navigate-to-instance.md)]
+
+Controleer de eigenschappen van uw service op de pagina **Overzicht**.
+
+   API Management-exemplaar
+
+Als het API Management-service-exemplaar online is, kunt u het gebruiken. Begin met de zelfstudie om [Uw eerste API importeren en publiceren](import-and-publish.md).
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -70,17 +72,17 @@ Wanneer de resourcegroep niet meer nodig is, kunt u deze stappen volgen om de re
 
 1. Zoek en selecteer **Resourcegroepen** in de Azure-portal. U kunt ook **Resourcegroepen** selecteren op de **Start**pagina. 
 
-   ![Resourcegroepnavigatie](./media/get-started-create-service-instance/00-DeleteResource-01.png)
+   :::image type="content" source="media/get-started-create-service-instance/00-DeleteResource-01.png" alt-text="Een resource maken":::
 
 1. Selecteer uw resourcegroep op de pagina **Resourcegroepen**.
 
-   ![Resourcegroepnavigatie](./media/get-started-create-service-instance/00-DeleteResource-02.png)
+   Selecteer :::image type="content" source="media/get-started-create-service-instance/00-DeleteResource-02.png" alt-text="Een resource maken":::.
 
 1. Selecteer **Resourcegroep verwijderen** op de pagina van de resourcegroep. 
    
 1. Typ de naam van uw resourcegroep en selecteer **Verwijderen**.
 
-   ![Resourcegroep verwijderen](./media/get-started-create-service-instance/00-DeleteResource-03.png)
+   Resourcegroep verwijderen
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -9,20 +9,20 @@ ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
 ms.custom: mvc
-ms.openlocfilehash: 7c8254609b8db9c2796d431485507de7083509aa
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 0fe9d59e97ebbc9aba17fea14aed43756300d56e
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85569414"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90528586"
 ---
-# <a name="quickstart-provision-a-python-device-with-symmetric-keys"></a>Quickstart: Een Python-apparaat inrichten met symmetrische sleutels
+# <a name="quickstart-provision-a-python-device-with-symmetric-keys"></a>Een Python-apparaat inrichten met symmetrische sleutels
 
 In deze quickstart leert u hoe u een Windows-ontwikkelcomputer kunt inrichten als een apparaat op een IoT-hub met Python. Dit apparaat maakt gebruik van een symmetrische sleutel voor verificatie met een Device Provisioning Service-exemplaar om te kunnen worden toegewezen aan een IoT-hub. Het geverifieerde apparaat wordt herkend door DPS op basis van een afzonderlijke inschrijving en toegewezen aan een IoT-hub. Voorbeeldcode van de [Azure IoT Python SDK](https://github.com/Azure/azure-iot-sdk-python) wordt gebruikt om het apparaat in te richten. 
 
 Hoewel dit artikel laat zien hoe u een inrichting maakt met een afzonderlijke inschrijving, kunt u dezelfde procedures ook gebruiken voor inschrijvingsgroepen. Er zijn enkele verschillen bij het gebruik van inschrijvingsgroepen. U moet bijvoorbeeld een afgeleide apparaatsleutel gebruiken met een unieke registratie-ID voor het apparaat. Hoewel inschrijvingsgroepen met symmetrische sleutel niet tot oudere apparaten beperkt zijn, biedt [Oudere apparaten inrichten door middel van attestation met een symmetrische sleutel](how-to-legacy-device-symm-key.md) een voorbeeld van een inschrijvingsgroep. Zie [Groepsinschrijvingen voor attestation met behulp van een symmetrische sleutel](concepts-symmetric-key-attestation.md#group-enrollments) voor meer informatie.
 
-Als u niet bekend bent met het proces van automatische inrichting, bekijk dan de [Concepten voor automatische inrichting](concepts-auto-provisioning.md). 
+Raadpleeg het overzicht [Inrichten](about-iot-dps.md#provisioning-process) als u niet bekend bent met het proces van automatisch inrichten. 
 
 Controleer ook of u de stappen in [IoT Hub Device Provisioning Service instellen met Azure Portal](./quick-setup-auto-provision.md) hebt voltooid voordat u verdergaat met deze snelstart. Voor deze snelstartgids wordt aangenomen dat u al een Device Provisioning Service-exemplaar hebt gemaakt.
 
@@ -69,13 +69,13 @@ Dit artikel is gericht op een Windows-gebaseerd werkstation. U kunt de procedure
 
 3. Voer in het deelvenster **Inschrijving toevoegen** de volgende informatie in en druk op de knop **Opslaan**.
 
-   - **Mechanisme**: selecteer **Symmetrische sleutel** als *mechanisme* voor identiteitscontrole.
+   - **Mechanisme:** selecteer **Symmetrische sleutel** als *mechanisme* voor identiteitscontrole.
 
-   - **Sleutels automatisch genereren**: schakel dit selectievakje in.
+   - **Automatisch sleutels genereren**: schakel dit selectievakje in.
 
-   - **Registratie-id**: voer een registratie-id in voor het identificeren van de inschrijving. Gebruik alleen kleine alfanumerieke tekens en streepjes ('-'). Bijvoorbeeld **symm-key-python-device-008**.
+   - **Registratie-ID**: voer een registratie-ID voor het identificeren van de inschrijving. Gebruik alleen kleine alfanumerieke tekens en streepjes ('-'). Bijvoorbeeld **symm-key-python-device-008**.
 
-   - **Apparaat-id voor IoT Hub:** voer een apparaat-id in. Bijvoorbeeld **python-device-008**.
+   - **IoT Hub apparaat-ID:** voer een apparaat-ID in. Bijvoorbeeld **python-device-008**.
 
      ![Afzonderlijke inschrijving toevoegen voor attestation met symmetrische sleutel in de portal](./media/quick-create-device-symm-key-python/create-individual-enrollment-python.png)
 

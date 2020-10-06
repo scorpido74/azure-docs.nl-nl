@@ -9,20 +9,20 @@ ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 8acc8b1e32304705b4221fe5570f7445720eafed
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: fa1354c471cf23d85b3c2b0b563ed0463f5e19b2
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87307910"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90528415"
 ---
-# <a name="quickstart-provision-a-simulated-device-to-iot-hub-with-symmetric-keys"></a>Quickstart: Een gesimuleerd apparaat inrichten in IoT Hub met symmetrische sleutels
+# <a name="quickstart-provision-a-simulated-device-to-iot-hub-with-symmetric-keys"></a>Een gesimuleerd apparaat inrichten in IoT Hub met symmetrische sleutels
 
 In deze snelstartgids leert u hoe u een apparaatsimulator kunt maken en uitvoeren op een Windows-ontwikkelcomputer. U configureert dit gesimuleerde apparaat om een symmetrische sleutel te gebruiken voor een verificatie met een DPS-exemplaar (Device Provisioning Service) en voor toewijzing aan een IoT-hub. Er wordt voorbeeldcode van de [Microsoft Azure IoT SDK's voor Java](https://github.com/Azure/azure-iot-sdk-java) gebruikt voor het simuleren van een opstartprocedure voor het apparaat die de inrichting initieert. Het apparaat wordt herkend op basis van een afzonderlijke inschrijving met een exemplaar van DPS en wordt toegewezen aan een IoT-hub.
 
 Hoewel dit artikel laat zien hoe u een inrichting maakt met een afzonderlijke inschrijving, kunt u dezelfde procedures ook gebruiken voor inschrijvingsgroepen. Er zijn enkele verschillen bij het gebruik van inschrijvingsgroepen. U moet bijvoorbeeld een afgeleide apparaatsleutel gebruiken met een unieke registratie-ID voor het apparaat. Hoewel inschrijvingsgroepen met symmetrische sleutel niet tot oudere apparaten beperkt zijn, biedt [Oudere apparaten inrichten door middel van attestation met een symmetrische sleutel](how-to-legacy-device-symm-key.md) een voorbeeld van een inschrijvingsgroep. Zie [Groepsinschrijvingen voor attestation met behulp van een symmetrische sleutel](concepts-symmetric-key-attestation.md#group-enrollments) voor meer informatie.
 
-Als u niet bekend bent met het proces van automatische inrichting, bekijk dan de [Concepten voor automatische inrichting](concepts-auto-provisioning.md). 
+Raadpleeg het overzicht [Inrichten](about-iot-dps.md#provisioning-process) als u niet bekend bent met het proces van automatisch inrichten. 
 
 Controleer ook of u de stappen in [IoT Hub Device Provisioning Service instellen met Azure Portal](./quick-setup-auto-provision.md) hebt voltooid voordat u verdergaat met deze snelstart. Voor deze snelstartgids wordt aangenomen dat u al een Device Provisioning Service-exemplaar hebt gemaakt.
 
@@ -66,13 +66,13 @@ Dit artikel is gericht op een Windows-gebaseerd werkstation. U kunt de procedure
 
 3. Voer in het deelvenster **Inschrijving toevoegen** de volgende informatie in en druk op de knop **Opslaan**.
 
-   - **Mechanisme**: selecteer **Symmetrische sleutel** als *mechanisme* voor identiteitscontrole.
+   - **Mechanisme:** selecteer **Symmetrische sleutel** als *mechanisme* voor identiteitscontrole.
 
-   - **Sleutels automatisch genereren**: schakel dit selectievakje in.
+   - **Automatisch sleutels genereren**: schakel dit selectievakje in.
 
-   - **Registratie-id**: voer een registratie-id in voor het identificeren van de inschrijving. Gebruik alleen kleine alfanumerieke tekens en streepjes ('-'). Bijvoorbeeld **symm-key-java-device-007**.
+   - **Registratie-ID**: voer een registratie-ID voor het identificeren van de inschrijving. Gebruik alleen kleine alfanumerieke tekens en streepjes ('-'). Bijvoorbeeld **symm-key-java-device-007**.
 
-   - **Apparaat-id voor IoT Hub:** voer een apparaat-id in. Bijvoorbeeld **java-device-007**.
+   - **IoT Hub apparaat-ID:** voer een apparaat-ID in. Bijvoorbeeld **java-device-007**.
 
      ![Afzonderlijke inschrijving toevoegen voor attestation met symmetrische sleutel in de portal](./media/quick-create-simulated-device-symm-key-java/create-individual-enrollment-java.png)
 

@@ -79,6 +79,8 @@
       href: table-storage-design-modeling.md
     - name: Tabelontwerppatronen
       href: table-storage-design-patterns.md
+    - name: Tabelopslag bewaken
+      href: monitor-table-storage.md
 - name: Uitleg
   items:
     - name: Create a storage account
@@ -172,6 +174,8 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
 - name: Naslaginformatie
   items:
+    - name: Referentie voor Azure-tabelopslag bewaken
+      href: monitor-table-storage-reference.md
     - name: Schaalbaarheids- en prestatiedoelen
       items:
         - name: Table Storage

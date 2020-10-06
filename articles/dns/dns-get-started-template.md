@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Een Azure DNS-zone en -record aanmaken - Azure Resource Manager-sjabloon (ARM)'
+title: Een Azure DNS-zone en -record aanmaken - Azure Resource Manager-sjabloon (ARM)
 titleSuffix: Azure DNS
 description: Informatie over het maken van een DNS-zone en -record in Azure DNS. Dit is een stapsgewijze snelstartgids voor het maken en beheren van uw eerste DNS-zone en -record met behulp van Azure Resource Manager-sjabloon (ARM).
 services: dns
@@ -8,14 +8,14 @@ ms.service: dns
 ms.topic: quickstart
 ms.date: 09/8/2020
 ms.author: duau
-ms.openlocfilehash: 4fd87cb17fc222f5014585e8f1e87e3f58a58574
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: 8e53e8ad26ddac1006a28fea2ddee9990533e8c9
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89596392"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89647895"
 ---
-# <a name="quickstart-create-an-azure-dns-zone-and-record-using-an-arm-template"></a>Quickstart: Een Azure DNS-zone en -record maken met behulp van een ARM-sjabloon
+# <a name="quickstart-create-an-azure-dns-zone-and-record-using-an-arm-template"></a>Een Azure DNS-zone en -record maken met behulp van een ARM-sjabloon
 
 In deze quickstart wordt beschreven hoe u een Azure Resource Manager-sjabloon (ARM) gebruikt om een Azure DNS-zone met een A-record erin te maken.
 
@@ -87,11 +87,11 @@ Azure PowerShell wordt gebruikt om de sjabloon te implementeren. Naast Azure Pow
 
 1. De resourcegroep moet de volgende resources bevatten die hier worden weergegeven:
 
-    :::image type="content" source="./media/dns-getstarted-template/resource-group-dns-zone.png" alt-text="Resourcegroep voor de implementatie van DNS-zones":::
+    :::image type="content" source="./media/dns-getstarted-template/resource-group-dns-zone.png" alt-text="Uitvoer van Azure DNS-zone Resource Manager-sjabloon PowerShell-implementatie":::
 
-1. Selecteer de DNS-zone met het achtervoegsel **<span>azurequickstart.</span>org** om te controleren of de zone correct is aangemaakt met een **A**-record die verwijst naar de waarde van **1.2.3.4** en **1.2.3.5-** .
+1. Selecteer de DNS-zone met het achtervoegsel **<span>azurequickstart.</span>org** om te controleren of de zone correct is aangemaakt met een **A**-record die verwijst naar de waarde van **1.2.3.4** en **1.2.3.5-**.
 
-    :::image type="content" source="./media/dns-getstarted-template/dns-zone-overview.png" alt-text="Implementatie van DNS-zone":::
+    :::image type="content" source="./media/dns-getstarted-template/dns-zone-overview.png" alt-text="Uitvoer van Azure DNS-zone Resource Manager-sjabloon PowerShell-implementatie":::
 
 1. Kopieer een van de naamservernamen uit de vorige stap.
 
@@ -109,13 +109,13 @@ Azure PowerShell wordt gebruikt om de sjabloon te implementeren. Naast Azure Pow
 
    Er verschijnt een scherm dat er ongeveer als volgt uitziet:
 
-    :::image type="content" source="./media/dns-getstarted-template/dns-zone-validation.png" alt-text="DNS-zone nslookup":::
+    :::image type="content" source="./media/dns-getstarted-template/dns-zone-validation.png" alt-text="Uitvoer van Azure DNS-zone Resource Manager-sjabloon PowerShell-implementatie":::
 
 De hostnaam **www<span>.2lwynbseszpam.azurequickstart.</span>org** wordt omgezet in **1.2.3.4** en **1.2.3.5**, net zoals u dat hebt geconfigureerd. Met dit resultaat wordt gecontroleerd of de naamomzetting juist werkt.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u de resources die u met het ExpressRoute-circuit hebt gemaakt niet meer nodig hebt, verwijdert u de resourcegroep. Hiermee verwijdert u het ExpressRoute-circuit en alle gerelateerde resources.
+Wanneer u de resources die u met de DNS-zone hebt gemaakt, niet meer nodig hebt, verwijdert u de resourcegroep. Hiermee verwijdert u de DNS-zone en alle gerelateerde resources.
 
 Als u de resourcegroep wilt verwijderen, roept u de cmdlet `Remove-AzResourceGroup` aan:
 

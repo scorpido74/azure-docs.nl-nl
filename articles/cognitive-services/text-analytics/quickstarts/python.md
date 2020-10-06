@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Python gebruiken om de Text Analytics-API aan te roepen'
+title: 'Snelstart: Python gebruiken om de Text Analytics-API aan te roepen'
 titleSuffix: Azure Cognitive Services
-description: In deze quickstart leert u hoe u informatie en codevoorbeelden ophaalt om snel aan de slag te gaan met behulp van de Text Analytics-API in Microsoft Cognitive Services in Azure.
+description: In deze quickstart leert u hoe u met Python informatie en codevoorbeelden ophaalt om snel aan de slag te gaan met behulp van de Text Analytics-API in Azure Cognitive Services.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.date: 07/20/2020
 ms.author: aahi
 ms.custom: devx-track-python
-ms.openlocfilehash: 34d1b62ed97b966c000ff81e8f7676c30338b6a1
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 0ef870b6b2d3b88b13c16c8c2acbfcee7ed551c1
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876764"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90527238"
 ---
-# <a name="quickstart-using-the-python-rest-api-to-call-the-text-analytics-cognitive-service"></a>Quickstart: De Python REST API gebruiken om de Text Analytics Cognitive Service aan te roepen 
+# <a name="quickstart-using-the-python-rest-api-to-call-the-text-analytics-cognitive-service"></a>De Python REST API gebruiken om de Text Analytics Cognitive Service aan te roepen 
 <a name="HOLTop"></a>
 
 Gebruik deze quickstart om taal te analyseren met de Text Analytics REST API en Python. In dit artikel ziet u hoe u [taal detecteert](#Detect), [gevoel analyseert](#SentimentAnalysis), [sleuteltermen ophaalt](#KeyPhraseExtraction) en [gekoppelde identiteiten identificeert](#Entities).

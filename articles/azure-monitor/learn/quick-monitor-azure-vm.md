@@ -7,14 +7,14 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 03/10/2020
-ms.openlocfilehash: 40c7b9e5a8b7c38c9468d54e69ca7a73c5f2d46b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 11475de159cf3d59923d6f2129aa46ddf0ef8f2c
+ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516393"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90084427"
 ---
-# <a name="quickstart-monitor-an-azure-virtual-machine-with-azure-monitor"></a>Quickstart: Een virtuele Azure-machine bewaken met Azure Monitor
+# <a name="quickstart-monitor-an-azure-virtual-machine-with-azure-monitor"></a>Een virtuele Azure-machine bewaken met Azure Monitor
 [Azure Monitor](../overview.md) begint met het verzamelen van gegevens van virtuele Azure-machines op het moment dat ze worden gemaakt. In deze quickstart krijgt u een beknopt overzicht van de gegevens die automatisch worden verzameld voor een Azure-VM, en ziet u hoe u deze kunt weergeven in de Azure-portal. Vervolgens schakelt u [Azure Monitor voor VM's](../insights/vminsights-overview.md) in voor de VM. Hierdoor worden agents op de VM in staat gesteld gegevens van het gastbesturingssysteem te verzamelen en te analyseren, waaronder processen en de bijbehorende afhankelijkheden.
 
 In deze Quick Start wordt ervan uitgegaan dat u een bestaande Azure-VM hebt. Als dit niet het geval is, kunt u een [Windows-VM](../../virtual-machines/windows/quick-create-portal.md) of [Linux-VM](../../virtual-machines/linux/quick-create-cli.md) maken door de stappen te volgen in de VM-quickstarts.
@@ -65,7 +65,7 @@ Wanneer u een nieuwe Log Analytics-werkruimte maakt, moet deze worden geconfigur
 
 2. Selecteer **Gegevens** en selecteer vervolgens **Windows-gebeurtenislogboeken**.
 
-3. Voeg een gebeurtenislogboek toe door de naam van het logboek te typen.  Typ **System** en selecteer vervolgens het plusteken **+** .
+3. Voeg een gebeurtenislogboek toe door de naam van het logboek te typen.  Typ **System** en selecteer vervolgens het plusteken **+**.
 
 4. Schakel in de tabel de ernstcategorieën **Fout** en **Waarschuwing** in.
 
@@ -75,7 +75,7 @@ Wanneer u een nieuwe Log Analytics-werkruimte maakt, moet deze worden geconfigur
 
 1. Selecteer **Syslog**.  
 
-2. Voeg een gebeurtenislogboek toe door de naam van het logboek te typen.  Typ **Syslog** en selecteer vervolgens het plusteken **+** .  
+2. Voeg een gebeurtenislogboek toe door de naam van het logboek te typen.  Typ **Syslog** en selecteer vervolgens het plusteken **+**.  
 
 3. Schakel in de tabel de ernstcategorieën **Info**, **Kennisgeving** en **Fouten opsporen** uit. 
 
@@ -85,15 +85,15 @@ Wanneer u een nieuwe Log Analytics-werkruimte maakt, moet deze worden geconfigur
 
 7. Klik op de virtuele machine, en selecteer vervolgens het tabblad **Prestaties** onder de tegel **Insights** in het menu **Bewaking**. U ziet nu een groep geselecteerde prestatiemeters die zijn verzameld uit het gastbesturingssysteem van de VM. Schuif omlaag om meer meters te bekijken, en beweeg de muis over een grafiek om het gemiddelde en de percentielen te zien op verschillende tijdstippen.
 
-    ![Prestaties](media/quick-monitor-azure-vm/performance.png)
+    ![Schermopname met het deelvenster Prestaties.](media/quick-monitor-azure-vm/performance.png)
 
 9. Selecteer **Kaart** om de kaartfunctie te openen. Hiermee worden de processen weergegeven die worden uitgevoerd op de virtuele machine, en de bijbehorende afhankelijkheden. Selecteer **Eigenschappen** om het eigenschappendeelvenster te openen als dit nog niet is geopend.
 
-    ![Kaart](media/quick-monitor-azure-vm/map.png)
+    ![Schermopname met het deelvenster Kaart.](media/quick-monitor-azure-vm/map.png)
 
 11. Vouw de processen voor uw virtuele machine uit. Selecteer een van de processen om de details te bekijken en de bijbehorende afhankelijkheden te markeren.
 
-    ![Processen](media/quick-monitor-azure-vm/processes.png)
+    ![Schermopname met het deelvenster Kaart met de uitgevouwen processen voor een virtuele machine.](media/quick-monitor-azure-vm/processes.png)
 
 12. Selecteer de virtuele machine opnieuw, en selecteer vervolgens **Gebeurtenissen vastleggen in logboek**. 
 

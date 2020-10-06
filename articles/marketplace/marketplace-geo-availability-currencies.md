@@ -7,12 +7,12 @@ ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 07/29/2020
-ms.openlocfilehash: cc697cd78e929b62f951014f760d644552fa082c
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 59c5473e88e0c4a8108f651e9543ec90c08290ab
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651003"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759076"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>Geografische Beschik baarheid en valuta ondersteuning voor commerciële Marketplace
 
@@ -47,7 +47,7 @@ Commerciële Marketplace-aanbiedingen kunnen worden aangeschaft in 141-geografi 
 | Bulgarije                            | BG        | EUR          |
 | Cabo Verde                          | CV        | USD          |
 | Kameroen                            | CM        | USD          |
-| Canada                              | CA (consistentie en beschikbaarheid)        | CAD          |
+| Canada                              | CA        | CAD          |
 | Kaaimaneilanden                      | KY        | USD          |
 | Chili                               | CL        | USD          |
 | China\**                            | CN        | N.v.t.          |
@@ -166,7 +166,7 @@ Commerciële Marketplace-aanbiedingen kunnen worden aangeschaft in 141-geografi 
 | Zimbabwe                            | ZW        | USD          |
 |   |   |   |
 
-\* Voor klanten in Brazilië gebruikt de commcercial Marketplace via Cloud Solution Providers (CSP) USD.
+\* Voor klanten in Brazilië maakt de commerciële Marketplace via Cloud Solution Providers (CSP) gebruik van USD.
 
 \** Alleen vrije en BYOL VM-installatie kopieën.
 
@@ -181,7 +181,7 @@ Als u de prijs wilt aanpassen voordat u publiceert, exporteert u het werk blad p
 
 De prijs van een aanbieding wordt altijd weer gegeven aan klanten in hun lokale valuta. De prijs die u in Partner Center selecteert, wordt omgezet in de lokale valuta van klanten, op basis van de wissel koers op het moment dat u de prijs hebt opgeslagen in het partner centrum. De prijs die wordt weer gegeven voor klanten in de online winkels, wordt niet gewijzigd, tenzij u uw aanbieding opnieuw publiceert.
 
-Micro soft ontvangt betalingen van klanten in hun lokale valuta en betaalt u in uw lokale valuta. Micro soft converteert de lokale valuta van de klant naar uw lokale valuta met de wissel koers van de aankoop datum.
+Micro soft ontvangt betalingen van klanten in hun lokale valuta en betaalt u in de valuta die u hebt geselecteerd in het partner centrum. Micro soft converteert de lokale valuta van de klant met de wissel koers van de dag van de aankoop.
 
 > [!NOTE]
 > Micro soft converteert prijzen voor aanbiedingen met behulp van de wissel koersen van micro soft.

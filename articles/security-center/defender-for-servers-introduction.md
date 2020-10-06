@@ -1,100 +1,100 @@
 ---
-title: 'Azure Defender voor servers: de voor delen en functies'
-description: Meer informatie over de voor delen en functies van Azure Defender voor servers.
+title: 'Azure Defender voor servers: de voordelen en functies'
+description: Meer informatie over de voordelen en functies van Azure Defender voor servers.
 author: memildin
 ms.author: memildin
 ms.date: 9/23/2020
-ms.topic: conceptual
+ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 5e4244c0526dbac3bb8e9b2d3856eb01e1b2a2b7
-ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
-ms.translationtype: MT
+ms.openlocfilehash: 8757399329f3a9bd9f4d7b914b12b2a0f7e85603
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91403487"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91448286"
 ---
 # <a name="introduction-to-azure-defender-for-servers"></a>Inleiding tot Azure Defender voor servers
 
-Azure Defender voor servers voegt bedreigingen voor detectie en geavanceerde beveiliging toe voor uw Windows-en Linux-computers.
+Azure Defender voor servers voegt bedreigingsdetectie en geavanceerde beveiliging toe voor uw Windows- en Linux-machines.
 
-Voor Windows integreert Azure Defender met Azure-Services om uw op Windows gebaseerde computers te controleren en te beveiligen. Security Center toont de waarschuwingen en suggesties voor herstel van al deze services in een gemakkelijk te gebruiken indeling.
+Voor Windows wordt Azure Defender geïntegreerd met Azure-Services om uw op Windows gebaseerde computers te controleren en te beveiligen. Security Center toont de waarschuwingen en suggesties voor herstel van al deze services in een gemakkelijk te gebruiken indeling.
 
-Voor Linux verzamelt Azure Defender controle records van Linux-machines met behulp van **gecontroleerde**, een van de meest voorkomende Linux-controle raamwerken. de levens duur van de mainline-kernel wordt gecontroleerd. 
+Voor Linux verzamelt Azure Defender controlerecords van Linux-machines met behulp van **auditd**, een van de meest voorkomende Linux-controleframeworks. auditd maakt deel uit van de mainline-kernel. 
 
 
-## <a name="what-are-the-benefits-of-azure-defender-for-servers"></a>Wat zijn de voor delen van Azure Defender voor servers?
+## <a name="what-are-the-benefits-of-azure-defender-for-servers"></a>Wat zijn de voordelen van Azure Defender voor servers?
 
-De detectie-en beveiligings mogelijkheden van dreigingen van Azure Defender voor servers zijn onder andere:
+De bedreigingsdetectie- en beveiligingsmogelijkheden van Azure Defender voor servers zijn onder andere:
 
-- **Scan voor evaluatie van beveiligings problemen voor vm's** -de beveiligings scanner die is opgenomen in azure Security Center, wordt aangedreven door Qualys. 
+- **Scannen voor evaluatie van beveiligingsproblemen voor VM's**: de beveiligingsprobleemscanner van Azure Security Center werkt op basis van Qualys. 
 
-    Qualys ' scanner is een van de toonaangevende hulp middelen voor het real-time identificeren van beveiligings problemen in uw Azure-Virtual Machines. U hebt geen Qualys-licentie nodig of zelfs een Qualys-account: alles wordt naadloos verwerkt binnen Security Center. [Meer informatie](deploy-vulnerability-assessment-vm.md).
+    De scanner van Qualys is een van de toonaangevende hulpprogramma's voor het in realtime identificeren van beveiligings problemen in uw Azure Virtual Machines. U hebt geen Qualys-licentie of Qualys-account nodig. De scans worden naadloos uitgevoerd in Security Center. [Meer informatie](deploy-vulnerability-assessment-vm.md).
 
-- Just **-in-time-VM-toegang** : Threat actors bewaart actief toegankelijke computers met open-beheer poorten, zoals RDP of SSH. Al uw virtuele machines zijn potentiële doelen voor een aanval. Wanneer een virtuele machine is aangetast, wordt deze als toegangs punt gebruikt om verdere resources in uw omgeving aan te vallen.
+- **Just-in-time-VM-toegang (JIT)** : makers van bedreigingen jagen actief op toegankelijke machines met open beheerpoorten, zoals RDP of SSH. Al uw virtuele machines zijn potentiële doelen voor een aanval. Wanneer het lukt een VM aan te tasten, wordt deze gebruikt als ingangspunt om verdere resources in uw omgeving aan te vallen.
 
-    Wanneer u Azure Defender voor servers inschakelt, kunt u just-in-time-VM-toegang gebruiken om het inkomende verkeer naar uw Vm's te vergren delen, waardoor de bloot stelling aan aanvallen wordt verkleind. [Meer informatie](just-in-time-explained.md).
+    Wanneer u Azure Defender voor servers inschakelt, kunt u just-in-time-VM-toegang gebruiken om binnenkomend verkeer naar uw Azure-VM's te blokkeren, zodat u minder kwetsbaar bent voor aanvallen maar tegelijkertijd eenvoudig verbinding met VM's kunt maken wanneer dat nodig is. [Meer informatie](just-in-time-explained.md).
 
-- Met **FIM (File Integrity Monitoring)** (FIM) (File Integrity Monitoring), ook wel bekend als wijzigings controle, worden bestanden en registers van het besturings systeem, toepassings software en anderen gecontroleerd op wijzigingen die mogelijk duiden op een aanval. Een vergelijkings methode wordt gebruikt om te bepalen of de huidige status van het bestand afwijkt van de laatste scan van het bestand. U kunt deze vergelijking gebruiken om te bepalen of er geldige of verdachte wijzigingen zijn aangebracht in uw bestanden.
+- **FIM (File Integrity Monitoring)** : met bestandsintegriteitscontole (FIM), ook wel bekend als wijzigingscontrole, worden bestanden en registers van het besturingssysteem, toepassingssoftware en andere gecontroleerd op wijzigingen die mogelijk duiden op een aanval. Er wordt een vergelijkingsmethode gebruikt om te bepalen of de huidige toestand van het bestand anders is dan bij de laatste scan van het bestand. U kunt deze vergelijking gebruiken om te bepalen of er geldige of verdachte wijzigingen zijn aangebracht in uw bestanden.
 
     Wanneer u Azure Defender voor servers inschakelt, kunt u FIM gebruiken om de integriteit van Windows-bestanden, uw Windows-registers en Linux-bestanden te valideren. [Meer informatie](security-center-file-integrity-monitoring.md).
 
-- Besturings elementen voor adaptieve **toepassings controles (AAC)** zijn een intelligente en geautomatiseerde oplossing voor het definiëren van toestaan van lijsten met bekende veilige toepassingen voor uw machines.
+- **Adaptive Application Controls (AAC)** : adaptieve toepassingsregelaars zijn een intelligente, automatische oplossing voor het definiëren van lijsten met toegestane toepassingen die bewezen veilig zijn voor uw machines.
 
-    Wanneer u besturings elementen voor adaptieve toepassingen hebt ingeschakeld en geconfigureerd, ontvangt u beveiligings waarschuwingen als een andere toepassing dan de toepassingen die u hebt gedefinieerd als veilig worden uitgevoerd. [Meer informatie](security-center-adaptive-application.md).
+    Wanneer u adaptieve toepassingsregelaars hebt ingeschakeld en geconfigureerd, krijgt u beveiligingswaarschuwingen als er andere toepassingen worden uitgevoerd dan degene die u als veilig hebt gedefinieerd. [Meer informatie](security-center-adaptive-application.md).
 
-- **Adaptieve netwerk beveiliging (ANH)** : het Toep assen van netwerk beveiligings groepen (NSG) voor het filteren van verkeer naar en van resources, verbetert uw netwerk beveiliging postuur. Er kunnen echter wel enkele gevallen zijn waarin het daad werkelijke verkeer dat via de NSG stroomt, een subset is van de gedefinieerde NSG-regels. In dergelijke gevallen kunt u de beveiligings postuur verder verbeteren door de NSG-regels te verfijnen op basis van de werkelijke verkeers patronen.
+- **Adaptive Network Hardening (ANH)** : het toepassen van netwerkbeveiligingsgroepen (NSG) om het verkeer van en naar resources te filteren, verbetert uw netwerkbeveiligingspostuur. Maar er kunnen toch nog enkele gevallen zijn waarin het werkelijke verkeer dat via de NSG stroomt een subset is van de gedefinieerde NSG-regels. In dergelijke gevallen kunt u het beveiligingspostuur verder verbeteren door de NSG-regels te versterken op basis van de werkelijke verkeerspatronen.
 
-    Adaptieve netwerk beveiliging biedt aanbevelingen voor verdere beveiliging van de NSG-regels. Er wordt gebruikgemaakt van een machine learning algoritme dat betrekking heeft op het werkelijke verkeer, bekende vertrouwde configuratie, bedreigings informatie en andere indica toren van inbreuk, en geeft aanbevelingen om alleen verkeer van specifieke IP-poort-Tuples toe te staan. [Meer informatie](security-center-adaptive-network-hardening.md).
+    Adaptieve netwerkbeveiliging biedt aanbevelingen voor verdere versterking van de NSG-regels. Het maakt gebruik van een machine learning-algoritme dat rekening houdt met werkelijk verkeer, bekende vertrouwde configuratie, bedreigingsinformatie en andere aanwijzingen voor aantasting, en geeft vervolgens aanbevelingen om alleen verkeer van bepaalde IP-/poort-tuples toe te staan. [Meer informatie](security-center-adaptive-network-hardening.md).
 
-- **Integratie met micro soft Defender Advanced Threat Protection (ATP) (alleen Windows)** : Azure Defender integreert met micro soft Defender Advanced Threat Protection (ATP). Samen bieden ze uitgebreide functionaliteit voor eindpunt detectie en-antwoorden (EDR). [Meer informatie](security-center-wdatp.md).
+- **Integratie met Microsoft Defender Advanced Threat Protection (ATP) (alleen Windows)** : Azure Defender wordt geïntegreerd met Microsoft Defender Advanced Threat Protection (ATP). Samen bieden ze uitgebreide mogelijkheden voor eindpuntdetectie en -reactie (EDR). [Meer informatie](security-center-wdatp.md).
 
     > [!IMPORTANT]
-    > De micro soft Defender ATP-sensor wordt automatisch ingeschakeld op Windows-servers die gebruikmaken van Security Center.
+    > De Microsoft Defender ATP-sensor wordt automatisch ingeschakeld voor Windows-servers die gebruikmaken van Security Center.
 
-    Wanneer micro soft Defender ATP een bedreiging detecteert, wordt er een waarschuwing gegenereerd. De waarschuwing wordt weer gegeven in Security Center. Vanuit Security Center kunt u ook naar de micro soft Defender ATP-console draaien en een gedetailleerd onderzoek uitvoeren om het bereik van de aanval te ontdekken. Zie voor meer informatie over micro soft Defender ATP [servers onboarding voor de micro soft Defender ATP-service](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints).
+    Wanneer Microsoft Defender ATP een bedreiging detecteert, wordt er een waarschuwing getriggerd. De waarschuwing wordt weergegeven in Security Center. Vanuit Security Center kunt u ook naar de Microsoft Defender ATP-console draaien en een gedetailleerd onderzoek uitvoeren om het bereik van de aanval te ontdekken. Voor meer informatie over Microsoft Defender ATP raadpleegt u [Servers onboarden voor de Microsoft Defender ATP-service](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints).
 
-- Met de **beveiliging van docker host** -Azure Security Center worden niet-beheerde containers aangeduid die worden gehost op IaaS Linux-vm's of andere Linux-machines waarop docker-containers worden uitgevoerd. Security Center doorlopend de configuraties van deze containers evalueren. Vervolgens worden ze vergeleken met de CIS-Referentie (Center for Internet Security). Security Center bevat de volledige regelset van de CIS docker-Bench Mark en waarschuwt u als uw containers niet voldoen aan een van de besturings elementen. [Meer informatie](harden-docker-hosts.md).
+- **Beveiliging van Docker-host**: Azure Security Center identificeert niet-beheerde containers die worden gehost op IaaS Linux-VM's of andere Linux-machines waarop Docker-containers worden uitgevoerd. Security Center evalueert doorlopend de configuraties van deze containers. Vervolgens worden ze vergeleken met de Docker-benchmark van het CIS (Center for Internet Security). Security Center bevat de volledige regelset van de CIS Docker-benchmark en waarschuwt u als uw containers niet voldoen aan een van de controles. [Meer informatie](harden-docker-hosts.md).
 
-- **Detectie van bestanden zonder een aanval (alleen Windows)** : aanvallen zonder bestanden voeren schadelijke nettoladingen in het geheugen in om detectie door op schijf gebaseerde scan technieken te voor komen. De nettolading van de aanvaller bevindt zich vervolgens in het geheugen van verdachte processen en voert een breed scala aan schadelijke activiteiten uit.
+- **Detectie van bestandsloze aanvallen (alleen Windows)** : aanvallen zonder bestanden injecteren schadelijke payloads in het geheugen, om detectie door schijfscantechnieken te voorkomen. De payload van de aanvaller blijft vervolgens achter in het geheugen met aangetaste processen en kan allerlei schadelijke activiteiten uitvoeren.
 
-  Met de aanvals detectie op basis van een bestand, identificeren forensische-technieken met geautomatiseerd geheugen aanvals Toolkit, technieken en gedragingen. Met deze oplossing wordt uw machine periodiek gescand tijdens runtime en worden inzichten direct opgehaald uit het geheugen van processen. Specifieke inzichten bevatten de identificatie van: 
+  Met detectie van bestandsloze aanvallen detecteren geautomatiseerde forensische technieken de toolkits, technieken en gedragingen van bestandsloze aanvallen. Deze oplossing scant uw machine periodiek tijdens runtime, en extraheert inzichten rechtstreeks uit het geheugen van processen. Specifieke inzichten zijn de identificatie van: 
 
-  - Bekende tool kits en crypto analyse-software 
+  - Bekende toolkits en software voor crypto-mining 
 
-  - Shell code, een klein stukje code dat doorgaans wordt gebruikt als de payload bij de exploitatie van een software beveiligings probleem.
+  - Shellcode, een klein blokje code dat meestal wordt gebruikt als de payload bij het misbruiken van een beveiligingsprobleem in software.
 
-  - Geïnjecteerd schadelijk uitvoerbaar bestand in het proces geheugen
+  - Schadelijk uitvoerbaar bestand dat wordt geïnjecteerd in het procesgeheugen
 
-  Detectie van een aanval met een bestand genereert gedetailleerde beveiligings waarschuwingen met de beschrijvingen met aanvullende proces meta gegevens, zoals netwerk activiteit. Dit versnelt de reactie tijd van de waarschuwing sorteren, correlatie en downstream. Deze benadering vormt een aanvulling op op gebeurtenissen gebaseerde EDR-oplossingen en biedt meer detectie dekking.
+  Bestandsloze-aanvaldetectie genereert gedetailleerde beveiligingswaarschuwingen met beschrijvingen en aanvullende metagegevens over processen, zoals netwerkactiviteit. Dit versnelt de triage van waarschuwingen, correlatie en stroomafwaartse reactietijd. Deze benadering is een aanvulling voor op gebeurtenissen gebaseerde EDR-oplossingen en biedt meer detectiedekking.
 
-  Zie de [naslag tabel met waarschuwingen](alerts-reference.md#alerts-windows)voor meer informatie over de waarschuwingen voor detectie van aanvals bestanden.
+  Zie de [Referentietabel van waarschuwingen](alerts-reference.md#alerts-windows) voor meer informatie over de waarschuwingen van bestandsloze-aanvaldetectie.
 
-- Door **Linux gecontroleerde waarschuwingen en integratie van log Analytics agent (alleen Linux)** : het gecontroleerde systeem bestaat uit een subsysteem op kernelniveau, dat verantwoordelijk is voor het bewaken van systeem aanroepen. Ze worden gefilterd op basis van een opgegeven regelset en er worden berichten naar een socket geschreven. Security Center integreert de functionaliteit van het gecontroleerde pakket binnen de Log Analytics-agent. Met deze integratie kunnen gecontroleerde gebeurtenissen in alle ondersteunde Linux-distributies worden verzameld, zonder dat hiervoor vereisten gelden.
+- **Integratie van Linux-auditd-waarschuwingen en Log Analytics-agent (alleen Linux)** : het auditd-systeem bestaat uit een subsysteem op kernelniveau, dat verantwoordelijk is voor het bewaken van systeemaanroepen. Het filtert ze met een opgegeven regelset en schrijft berichten voor ze naar een socket. Security Center integreert de functionaliteit van het auditd-pakket in de Log Analytics-agent. Met deze integratie kunnen auditd-gebeurtenissen in alle ondersteunde Linux-distributies worden verzameld, zonder dat hiervoor vereisten gelden.
 
-    gecontroleerde records worden verzameld, verrijkt en geaggregeerd in gebeurtenissen met behulp van de Log Analytics agent voor Linux agent. Security Center doorlopend nieuwe analyses toevoegen die gebruikmaken van Linux-signalen om schadelijk gedrag op Cloud-en on-premises Linux-machines te detecteren. Net als bij Windows-mogelijkheden, deze analyse bevinden zich in verdachte processen, dubious-aanmeldings pogingen, laden van de kernel-module en andere activiteiten. Deze activiteiten kunnen erop wijzen dat een machine een aanval ondervindt of is geschonden.  
+    auditd-records worden verzameld, verrijkt en geaggregeerd in gebeurtenissen met behulp van de Log Analytics-agent voor Linux-agent. Security Center voegt doorlopend nieuwe analyses toe die gebruikmaken van Linux-signalen om schadelijk gedrag in Linux-machines in de cloud en on-premises te detecteren. Net als bij Windows-mogelijkheden kijken deze analyses naar verdachte processen, dubieuze aanmeldingspogingen, laden van kernel-modules en andere activiteiten. Deze activiteiten kunnen erop wijzen dat een machine wordt aangevallen of al is aangetast.  
 
-    Zie de [naslag tabel met waarschuwingen](alerts-reference.md#alerts-linux)voor een lijst met de Linux-waarschuwingen.
+    Zie de [Referentietabel met waarschuwingen](alerts-reference.md#alerts-linux) voor een lijst met Linux-waarschuwingen.
 
 
 ## <a name="simulating-alerts"></a>Waarschuwingen simuleren
 
 U kunt waarschuwingen simuleren door een van de volgende playbooks te downloaden:
 
-- Voor Windows: [Azure Security Center Playbook: beveiligings waarschuwingen](https://github.com/Azure/Azure-Security-Center/blob/master/Simulations/Azure%20Security%20Center%20Security%20Alerts%20Playbook_v2.pdf)
+- Voor Windows: [Playbook voor Azure Security Center: Beveiligingswaarschuwingen](https://github.com/Azure/Azure-Security-Center/blob/master/Simulations/Azure%20Security%20Center%20Security%20Alerts%20Playbook_v2.pdf)
 
-- Voor Linux: [Azure Security Center Playbook: Linux-detecties](https://github.com/Azure/Azure-Security-Center/blob/master/Simulations/Azure%20Security%20Center%20Linux%20Detections_v2.pdf).
+- Voor Linux: [Playbook voor Azure Security Center: Linux-detecties](https://github.com/Azure/Azure-Security-Center/blob/master/Simulations/Azure%20Security%20Center%20Linux%20Detections_v2.pdf).
 
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd over Azure Defender voor servers. 
+In dit artikel bent u meer te weten gekomen over Azure Defender voor servers. 
 
-Raadpleeg de volgende artikelen voor gerelateerde materialen: 
+Raadpleeg de volgende artikelen voor gerelateerd materiaal: 
 
-- Of een waarschuwing wordt gegenereerd door Security Center, of door Security Center van een ander beveiligings product is ontvangen, kunt u het exporteren. Als u uw waarschuwingen wilt exporteren naar Azure Sentinel, eventuele SIEM van derden of een ander extern hulp programma, volgt u de instructies in [waarschuwingen exporteren naar een Siem](continuous-export.md).
+- Een waarschuwing kunt u altijd exporteren, ongeacht of deze door Security Center is gegenereerd of door Security Center is ontvangen vanuit een ander beveiligingsproduct. Als u uw waarschuwingen wilt exporteren naar Azure Sentinel, een extern SIEM of een ander extern hulpprogramma, volgt u de instructies in [Waarschuwingen naar een SIEM exporteren](continuous-export.md).
 
 - > [!div class="nextstepaction"]
     > [Azure Defender inschakelen](security-center-pricing.md)

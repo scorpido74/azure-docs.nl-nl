@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/07/2020
+ms.date: 10/05/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 16179ae730e81ff1ff7c107e3af70b5ce24e8813
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 6ebb81e6f5adce1dbc301ac905fed5af1ee6a825
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001941"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758302"
 ---
 # <a name="create-a-service-sas-for-a-container-or-blob-with-net"></a>Een service-SAS maken voor een container of BLOB met .NET
 
@@ -30,7 +30,7 @@ In het volgende code voorbeeld wordt een SAS voor een container gemaakt. Als de 
 
 ### <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
-Maak een nieuwe [BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder). Roep vervolgens de [ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) aan om de SAS-token teken reeks op te halen. 
+Een service-SAS is ondertekend met de toegangs sleutel voor het account. Gebruik de [StorageSharedKeyCredential](/dotnet/api/azure.storage.storagesharedkeycredential) -klasse om de referentie te maken die wordt gebruikt om de sa's te ondertekenen. Maak vervolgens een nieuw [BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder) -object en roep de [ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) aan om de SAS-token teken reeks op te halen.
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_GetContainerSasUri":::
 
@@ -86,7 +86,7 @@ In het volgende code voorbeeld wordt een SAS gemaakt op een blob. Als de naam va
 
 ### <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
-Maak een nieuwe [BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder). Roep vervolgens de [ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) aan om de SAS-token teken reeks op te halen. 
+Een service-SAS is ondertekend met de toegangs sleutel voor het account. Gebruik de [StorageSharedKeyCredential](/dotnet/api/azure.storage.storagesharedkeycredential) -klasse om de referentie te maken die wordt gebruikt om de sa's te ondertekenen. Maak vervolgens een nieuw [BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder) -object en roep de [ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) aan om de SAS-token teken reeks op te halen.
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_GetBlobSasUri":::
 
@@ -136,6 +136,7 @@ private static string GetBlobSasUri(CloudBlobContainer container, string blobNam
     return blob.Uri + sasBlobToken;
 }
 ```
+
 ---
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]

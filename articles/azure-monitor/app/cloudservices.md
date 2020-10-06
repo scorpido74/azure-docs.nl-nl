@@ -4,12 +4,12 @@ description: Controleer uw web- en werkrollen op een effectieve manier met Appli
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 09/05/2018
-ms.openlocfilehash: 1662b45d8243217357d1e69124832c499d587812
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 676d3543cbcbf86feb67cad4bd2b9709c2b81437
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89437323"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759370"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights voor Azure Cloud Services
 [Application Insights][start] kunt [Azure Cloud service-apps](https://azure.microsoft.com/services/cloud-services/) bewaken voor Beschik baarheid, prestaties, fouten en gebruik door gegevens van Application Insights sdk's te combi neren met [Azure Diagnostics](../platform/diagnostics-extension-overview.md) gegevens uit uw Cloud Services. Op basis van de feedback die u krijgt over de prestaties en de effectiviteit van uw app tijdens het gebruik, kunt u weldoordachte beslissingen nemen over de richting van het ontwerp in elke fase van de ontwikkelingslevenscyclus.
@@ -42,7 +42,7 @@ In de volgende secties worden de volgende aanvullende opties besproken:
 * U kunt aangepaste telemetrie uit uw app toevoegen.
 
 ## <a name="sample-app-instrumented-with-application-insights"></a>Voor beeld-app beinstrumenten met Application Insights
-In deze voor [beeld-app](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService)wordt Application Insights toegevoegd aan een Cloud service met twee werk rollen die worden gehost in Azure. 
+In deze voor [beeld-app](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/AzureEmailService)wordt Application Insights toegevoegd aan een Cloud service met twee werk rollen die worden gehost in Azure. 
 
 In de volgende sectie leert u hoe u uw eigen Cloud service project op dezelfde manier kunt aanpassen.
 
@@ -93,7 +93,7 @@ Als u hebt besloten om een afzonderlijke Application Insights-resource voor elke
 
 ![Application Insights configureren](./media/cloudservices/configure-azure-diagnostics.png)
 
-Dit heeft gevolgen voor het invoegen van uw Application Insights instrumentatie sleutels in de bestanden met de naam *ServiceConfiguration. \* . cscfg*. Hier volgt de [voorbeeld code](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg).
+Dit heeft gevolgen voor het invoegen van uw Application Insights instrumentatie sleutels in de bestanden met de naam *ServiceConfiguration. \* . cscfg*. Hier volgt de [voorbeeld code](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg).
 
 Als u het niveau van diagnostische gegevens wilt variëren dat naar Application Insights wordt verzonden, kunt u dit doen [door de *cscfg* -bestanden rechtstreeks te bewerken](../platform/diagnostics-extension-to-application-insights.md).
 
@@ -123,9 +123,9 @@ Gebruik Visual Studio om de Application Insights-SDK voor elk cloudtoepassingspr
    
     b. Herhaal stap a voor elke rol in uw app. Zie de voorbeelden:
    
-    * [Webrol](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Global.asax.cs#L27)
-    * [Werkrol](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L232)
-    * [Voor webpagina's](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Views/Shared/_Layout.cshtml#L13) 
+    * [Webrol](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Global.asax.cs#L27)
+    * [Werkrol](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L232)
+    * [Voor webpagina's](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Views/Shared/_Layout.cshtml#L13) 
 
 1. Stel in dat het *ApplicationInsights.config* bestand altijd naar de uitvoermap moet worden gekopieerd.
 
@@ -150,7 +150,7 @@ Deze stap is alleen nodig als u volledige SQL-query's wilt vastleggen op .NET Fr
     </Startup>
     ```
     
-2. Down load [InstallAgent.bat](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.bat) en [InstallAgent.ps1](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.ps1)en plaats ze in de `AppInsightsAgent` map van elk Role-project. Zorg ervoor dat u ze naar de uitvoermap kopieert via de bestands eigenschappen van Visual Studio of door scripts te bouwen.
+2. Down load [InstallAgent.bat](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.bat) en [InstallAgent.ps1](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.ps1)en plaats ze in de `AppInsightsAgent` map van elk Role-project. Zorg ervoor dat u ze naar de uitvoermap kopieert via de bestands eigenschappen van Visual Studio of door scripts te bouwen.
 
 3. Voeg op alle werk rollen omgevings variabelen toe: 
 
@@ -199,26 +199,26 @@ Als u wilt zoeken in de verschillende traceer logboeken die worden verzonden doo
 In de volgende secties wordt beschreven hoe u extra telemetrie kunt verkrijgen op basis van verschillende aspecten van uw app.
 
 ## <a name="track-requests-from-worker-roles"></a>Aanvragen van werk rollen bijhouden
-In webrollen worden door de aanvraagmodule automatisch gegevens over HTTP-aanvragen verzameld. Zie voor voor beelden van hoe u het standaard gedrag van de verzameling kunt negeren het voor [beeld MVCWebRole](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/MvcWebRole). 
+In webrollen worden door de aanvraagmodule automatisch gegevens over HTTP-aanvragen verzameld. Zie voor voor beelden van hoe u het standaard gedrag van de verzameling kunt negeren het voor [beeld MVCWebRole](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/MvcWebRole). 
 
 U kunt de prestaties van aanroepen voor werkrollen vastleggen door ze op dezelfde manier bij te houden als HTTP-aanvragen. In Application Insights wordt met het telemetrietype Request een werkeenheid op een benoemde server gemeten die kan worden getimed en als onafhankelijk item kan slagen of mislukken. Hoewel HTTP-aanvragen automatisch worden vastgelegd door de SDK, kunt u uw eigen code invoegen om aanvragen voor werk rollen bij te houden.
 
 Zie de twee voor beelden van werk rollen die zijn geinstrumenteerd om aanvragen te rapporteren: 
-* [WorkerRoleA](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleA)
-* [WorkerRoleB](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleB)
+* [WorkerRoleA](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleA)
+* [WorkerRoleB](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleB)
 
 ## <a name="exceptions"></a>Uitzonderingen
 Zie [uitzonde ringen voor bewaking in Application Insights](./asp-net-exceptions.md)voor meer informatie over het verzamelen van niet-verwerkte uitzonde ringen van verschillende typen web-apps.
 
 De voorbeeldwebrol heeft MVC5- en Web API 2-controllers. De onverwerkte uitzonderingen van de twee werkrollen worden vastgelegd met de volgende handlers:
 
-* [AiHandleErrorAttribute](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Telemetry/AiHandleErrorAttribute.cs) ingesteld voor MVC5-controllers [, zoals wordt weer gegeven in dit voor beeld](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/App_Start/FilterConfig.cs#L12) 
-* [AiWebApiExceptionLogger](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Telemetry/AiWebApiExceptionLogger.cs) ingesteld voor web API 2-controllers [, zoals wordt weer gegeven in dit voor beeld](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/App_Start/WebApiConfig.cs#L25) 
+* [AiHandleErrorAttribute](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Telemetry/AiHandleErrorAttribute.cs) ingesteld voor MVC5-controllers [, zoals wordt weer gegeven in dit voor beeld](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/App_Start/FilterConfig.cs#L12) 
+* [AiWebApiExceptionLogger](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Telemetry/AiWebApiExceptionLogger.cs) ingesteld voor web API 2-controllers [, zoals wordt weer gegeven in dit voor beeld](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/App_Start/WebApiConfig.cs#L25) 
 
 Voor werk rollen kunt u uitzonde ringen op twee manieren bijhouden:
 
 * Gebruik TrackException (ex).
-* Als u het NuGet-pakket van de Application Insights Trace listener hebt toegevoegd, kunt u System. Diagnostics. trace gebruiken om uitzonde ringen op te sporen [zoals in dit voor beeld wordt weer gegeven](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L107).
+* Als u het NuGet-pakket van de Application Insights Trace listener hebt toegevoegd, kunt u System. Diagnostics. trace gebruiken om uitzonde ringen op te sporen [zoals in dit voor beeld wordt weer gegeven](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L107).
 
 ## <a name="performance-counters"></a>Prestatiemeteritems
 Voor de volgende prestatiemeteritems worden gegevens verzameld:
@@ -236,7 +236,7 @@ Voor webrollen worden ook gegevens verzameld voor de volgende prestatiemeteritem
 * \ASP.NET Applications(??APP_W3SVC_PROC??)\Request Execution Time
 * \ASP.NET Applications(??APP_W3SVC_PROC??)\Requests In Application Queue
 
-U kunt aanvullende aangepaste of andere Windows-prestatie meter items opgeven door *ApplicationInsights.config* te bewerken [, zoals in dit voor beeld wordt weer gegeven](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/ApplicationInsights.config#L14).
+U kunt aanvullende aangepaste of andere Windows-prestatie meter items opgeven door *ApplicationInsights.config* te bewerken [, zoals in dit voor beeld wordt weer gegeven](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/ApplicationInsights.config#L14).
 
   ![Prestatiemeteritems](./media/cloudservices/002-servers.png)
 
@@ -247,9 +247,9 @@ Als u deze weer gave voor werk rollen wilt behaalt, kunt u een aangepaste teleme
 
 U doet dit als volgt:
 
-* Stel de correlationId in een call context in [, zoals wordt weer gegeven in dit voor beeld](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L36). In dit geval gebruiken we de aanvraag-ID als de correlationId.
-* Voeg een aangepaste TelemetryInitializer-implementatie toe om de Operation.Id in te stellen op de correlationId die eerder is ingesteld. Zie [ItemCorrelationTelemetryInitializer](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/Telemetry/ItemCorrelationTelemetryInitializer.cs#L13)voor een voor beeld.
-* Voeg de aangepaste telemetrie-initializer toe. U kunt dit doen in het *ApplicationInsights.config* bestand of in code [zoals in dit voor beeld wordt weer gegeven](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L233).
+* Stel de correlationId in een call context in [, zoals wordt weer gegeven in dit voor beeld](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L36). In dit geval gebruiken we de aanvraag-ID als de correlationId.
+* Voeg een aangepaste TelemetryInitializer-implementatie toe om de Operation.Id in te stellen op de correlationId die eerder is ingesteld. Zie [ItemCorrelationTelemetryInitializer](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/Telemetry/ItemCorrelationTelemetryInitializer.cs#L13)voor een voor beeld.
+* Voeg de aangepaste telemetrie-initializer toe. U kunt dit doen in het *ApplicationInsights.config* bestand of in code [zoals in dit voor beeld wordt weer gegeven](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L233).
 
 ## <a name="client-telemetry"></a>Telemetrie op de client
 Zie [de Java script-SDK toevoegen aan uw][client]webpagina's voor meer informatie over het maken van een telemetrie in de Cloud, zoals het aantal pagina weergave, pagina laad tijden of script uitzonderingen, en om aangepaste telemetrie in uw pagina scripts te schrijven.
@@ -265,7 +265,7 @@ Als uw systeem gebruikmaakt van andere Azure-Services, zoals Stream Analytics, k
 Als u een mobiele client-app hebt, gebruikt u [App Center](../learn/mobile-center-quickstart.md). Maak query’s in [Analytics](../log-query/log-query-overview.md) om de aantallen gebeurtenissen weer te geven en aan het dashboard vast te maken.
 
 ## <a name="example"></a>Voorbeeld
-In [het voorbeeld](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService) wordt een service gecontroleerd die een webrol en twee werkrollen heeft.
+In [het voorbeeld](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/AzureEmailService) wordt een service gecontroleerd die een webrol en twee werkrollen heeft.
 
 ## <a name="exception-method-not-found-on-running-in-azure-cloud-services"></a>Uitzonde ring: de methode is niet gevonden bij het uitvoeren in azure Cloud Services
 Hebt u uw app ontwikkeld voor .NET 4.6? .NET 4,6 wordt niet automatisch ondersteund in azure Cloud Services-rollen. [Installeer .net 4,6 op elke rol](../../cloud-services/cloud-services-dotnet-install-dotnet.md) voordat u uw app uitvoert.

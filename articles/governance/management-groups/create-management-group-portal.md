@@ -1,14 +1,14 @@
 ---
-title: 'Quickstart: Een beheergroep maken met de portal'
+title: Een beheergroep maken met de portal
 description: In deze quickstart gebruikt u de Azure-portal om een beheergroep te maken om uw resources in een resource-hiërarchie in te delen.
 ms.date: 08/31/2020
 ms.topic: quickstart
-ms.openlocfilehash: 28b530e1da6b75dcc20e4a5dfebc494a959040b3
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: c8cb7b8bd3ad33d1f315670bfbb1782972e6e97f
+ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89236878"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89661735"
 ---
 # <a name="quickstart-create-a-management-group"></a>Quickstart: Een beheergroep maken
 
@@ -32,14 +32,14 @@ Het kan tot vijftien minuten duren voordat de eerste beheergroep die in de map i
 
 1. Selecteer **+ Beheergroep toevoegen**.
 
-   :::image type="content" source="./media/main.png" alt-text="Pagina voor het werken met beheergroepen" border="false":::
+   :::image type="content" source="./media/main.png" alt-text="Schermopname van de pagina Beheergroepen, met onderliggende beheergroepen en abonnementen." border="false":::
 
 1. Houd **Nieuwe maken** ingedrukt en vul het veld Beheergroep-ID in.
 
    - De **beheergroep-ID** is de unieke ID van de map die wordt gebruikt voor het verzenden van opdrachten in deze beheergroep. Deze ID kan niet worden bewerkt nadat deze is gemaakt, omdat deze in het Azure-systeem wordt gebruikt om deze groep te identificeren. De [hoofdbeheergroep](./overview.md#root-management-group-for-each-directory) wordt automatisch gemaakt met een ID die de Azure Active Directory-ID is. Wijs voor alle andere beheergroepen een unieke ID toe.
    - Het veld Weergavenaam is de naam die wordt weergegeven in de Azure-portal. Een afzonderlijke weergavenaam is een optioneel veld bij het maken van de beheergroep en kan op elk gewenst moment worden gewijzigd.
 
-   :::image type="content" source="./media/create_context_menu.png" alt-text="Deelvenster Opties voor het maken van een nieuwe beheergroep":::
+   :::image type="content" source="./media/create_context_menu.png" alt-text="Schermopname van de pagina Beheergroepen, met onderliggende beheergroepen en abonnementen.":::
 
 1. Selecteer **Opslaan**.
 

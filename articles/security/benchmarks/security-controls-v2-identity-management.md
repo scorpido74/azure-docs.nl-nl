@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 8a29dbbf365304240283fe4fd5899b58e3bc227c
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: e7447d03fc231d8d96b71c7d944a380c10add0d0
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91741404"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757933"
 ---
 # <a name="security-control-v2-identity-management"></a>Beveiligings controle v2: identiteits beheer
 
@@ -169,7 +169,7 @@ Azure Advanced Threat Protection (ATP) is een beveiligings oplossing die on-prem
 
 - [Identiteits-en toegangs activiteiten van gebruikers controleren in Azure Security Center](../../security-center/security-center-identity-access.md)
 
-- [Waarschuwingen in de module Threat Intelligence-beveiliging van Azure Security Center](//azure/security-center/alerts-reference)
+- [Waarschuwingen in de module Threat Intelligence-beveiliging van Azure Security Center](/azure/security-center/alerts-reference)
 
 - [Azure-activiteiten logboeken integreren in Azure Monitor](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 

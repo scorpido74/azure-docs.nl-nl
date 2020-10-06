@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9d36cee1ebf9f58991db6fd40fd6aa9422546b61
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 6f4dd0836ba04d0e07ada8aced964317498b1f22
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91710750"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757592"
 ---
 # <a name="query-azure-cosmos-db-data-using-sql-serverless-in-azure-synapse-link-preview"></a>Query's uitvoeren op Azure Cosmos DB gegevens met behulp van SQL serverloze koppeling in azure Synapse (preview)
 
@@ -23,7 +23,7 @@ Met Synapse SQL serverloze (voorheen SQL on-demand) kunt u gegevens in uw Azure 
 > [!NOTE]
 > Ondersteuning voor het uitvoeren van query's in een Azure Cosmos DB analytische archief met SQL serverloze bevindt zich momenteel in de test preview. 
 
-Voor het uitvoeren van query's in Azure Cosmos DB wordt de volledige [selectie](/sql/t-sql/queries/select-transact-sql.md?view=sql-server-ver15&preserve-view=true) Surface Area ondersteund via de [OpenRowSet](develop-openrowset.md) -functie, inclusief het meren deel van [SQL-functies en-Opera tors](overview-features.md). U kunt ook resultaten van de query opslaan die gegevens uit Azure Cosmos DB leest, samen met gegevens in Azure Blob Storage of Azure Data Lake Storage met de [optie externe tabel maken als selecteren](develop-tables-cetas.md#cetas-in-sql-on-demand). U kunt momenteel geen SQL serverloze query resultaten opslaan in Azure Cosmos DB met behulp van [CETAS](develop-tables-cetas.md#cetas-in-sql-on-demand).
+Voor het uitvoeren van query's in Azure Cosmos DB wordt de volledige [selectie](/sql/t-sql/queries/select-transact-sql?view=sql-server-ver15) Surface Area ondersteund via de [OpenRowSet](develop-openrowset.md) -functie, inclusief het meren deel van [SQL-functies en-Opera tors](overview-features.md). U kunt ook resultaten van de query opslaan die gegevens uit Azure Cosmos DB leest, samen met gegevens in Azure Blob Storage of Azure Data Lake Storage met de [optie externe tabel maken als selecteren](develop-tables-cetas.md#cetas-in-sql-on-demand). U kunt momenteel geen SQL serverloze query resultaten opslaan in Azure Cosmos DB met behulp van [CETAS](develop-tables-cetas.md#cetas-in-sql-on-demand).
 
 In dit artikel leert u hoe u een query schrijft met behulp van SQL Server zonder dat er gegevens worden opgevraagd van Azure Cosmos DB containers die Synapse-koppeling zijn ingeschakeld. In deze zelf studie vindt u meer informatie over [het](./tutorial-data-analyst.md) bouwen van SQL serverloze weer gaven via Azure Cosmos DB containers en het verbinden ervan met Power bi modellen. 
 

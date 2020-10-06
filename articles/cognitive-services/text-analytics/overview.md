@@ -1,47 +1,53 @@
 ---
-title: Wat is Text Analytics-API? - Mogelijkheden -
+title: Tekstanalyse met de Text Analytics-API voor Azure Cognitive Services
 titleSuffix: Azure Cognitive Services
-description: Gebruik de Text Analytics-API in Azure Cognitive Services voor sentimentanalyse, sleuteltermextractie, taaldetectie en entiteitsherkenning.
+description: Meer informatie over tekstanalyse met de Text Analytics-API. Gebruik het voor sentimentanalyse, taaldetectie en andere vormen van natuurlijke taalverwerking.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 08/27/2020
+ms.date: 09/09/2020
 ms.author: aahi
-ms.openlocfilehash: a3c538f3a9e7a2d8d71fff38fb927dbcdf725732
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+keywords: tekstanalyse, sentimentanalyse, tekst analytics
+ms.custom: cog-serv-seo-aug-2020
+ms.openlocfilehash: 544de4adb1891c3d558a524466a076daefb42aa4
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89000954"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89647464"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Wat is Text Analytics-API?
 
-De Text Analytics-API is een op de cloud gebaseerde service die geavanceerde verwerking van natuurlijke taal biedt voor onbewerkte tekst. De service bevat vier hoofdfuncties: sentimentanalyse, sleuteltermextractie, taaldetectie en herkenning van benoemde entiteiten.
+De Text Analytics-API is een op de cloud gebaseerde service die NLP-functies (natuurlijke taalverwerking) biedt voor tekstanalyse, waaronder: sentimentanalyse, meninganalyse, sleuteltermextractie, taaldetectie en herkenning van benoemde entiteiten.
 
-De API maakt deel uit van [Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/), een verzameling van machine learning- en AI-algoritmen in de cloud, die kunnen worden gebruikt in uw ontwikkelprojecten.
+De API maakt deel uit van [Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/), een verzameling van machine learning- en AI-algoritmen in de cloud, die kunnen worden gebruikt in uw ontwikkelprojecten. U kunt deze functies gebruiken met de [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/) of met de [clientbibliotheek](quickstarts/text-analytics-sdk.md).
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Understanding-Text-using-Cognitive-Services/player]
 
-Tekstanalyse kan verschillende dingen betekenen, maar in Cognitive Services biedt de Text Analytics-API vier soorten analyse, zoals hierna wordt beschreven. U kunt deze functies gebruiken met de [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/) of met de [clientbibliotheek](quickstarts/text-analytics-sdk.md).
-
 ## <a name="sentiment-analysis"></a>Sentimentanalyse
-Gebruik [sentimentanalyse](how-tos/text-analytics-how-to-sentiment-analysis.md) om erachter te komen wat klanten van uw merk of onderwerp vinden door onbewerkte tekst te analyseren op aanwijzingen over positieve of negatieve indrukken. Deze API retourneert een gevoelsscore tussen 0 en 1 voor elk document, waarbij 1 het meest positief is.<br /> De analysemodellen zijn vooraf getraind met behulp van een uitgebreide hoofdtekst en natuurlijke-taaltechnologieën van Microsoft. Voor [geselecteerde talen](text-analytics-supported-languages.md) kan de API elke onbewerkte tekst die u opgeeft analyseren en beoordelen en de resultaten direct doorgeven aan de aanroepende toepassing.
+
+Gebruik [sentimentanalyse](how-tos/text-analytics-how-to-sentiment-analysis.md) en kom erachter wat klanten van uw merk of onderwerp vinden door de tekst te analyseren op aanwijzingen over positieve of negatieve indrukken. Deze API-functie retourneert een gevoelsscore tussen 0 en 1 voor elk document, waarbij 1 het meest positief is.
+
+Vanaf v.3.1-preview is meninganalyse een functie van Sentimentanalyse. Deze functie wordt ook wel op aspecten gebaseerde sentimentanalyse in natuurlijke taalverwerking (NLP) en biedt gedetailleerde informatie over de meningen over bepaalde aspecten (zoals de kenmerken van producten of diensten) in de tekst.
 
 ## <a name="key-phrase-extraction"></a>Sleuteltermextractie
-U kunt automatisch [sleuteltermen extraheren](how-tos/text-analytics-how-to-keyword-extraction.md) om snel de hoofdpunten te identificeren. Bijvoorbeeld, voor de invoertekst 'het eten was heerlijk en de bediening fantastisch' retourneert de API de belangrijkste gespreksonderwerpen: 'eten' en 'bediening fantastisch'.
+
+Gebruik [sleuteltermextractie](how-tos/text-analytics-how-to-keyword-extraction.md) om snel de belangrijkste concepten in de tekst te identificeren. Bijvoorbeeld, voor de tekst 'het eten was heerlijk en de bediening fantastisch' retourneert de sleuteltermextractie de belangrijkste gespreksonderwerpen: 'eten' en 'bediening fantastisch'.
 
 ## <a name="language-detection"></a>Taaldetectie
-U kunt [detecteren in welke taal de ingevoerde tekst is geschreven](how-tos/text-analytics-how-to-language-detection.md) en één taalcode rapporteren voor elk document dat is ingediend bij de aanvraag in veel verschillende talen, varianten, dialecten en enkele regionale/culturele talen. De taalcode is gekoppeld aan een score die de sterkte van de score aangeeft.
 
-## <a name="named-entity-recognition"></a>Herkenning van benoemde entiteiten
-U kunt [entiteiten identificeren en categoriseren](how-tos/text-analytics-how-to-entity-linking.md) in uw tekst als mensen, plaatsen, organisaties, datum/tijd, hoeveelheden, percentages, valuta's en meer. Bekende entiteiten worden ook herkend en gekoppeld aan meer informatie op het web.
+Taaldetectie kan [detecteren in welke taal de ingevoerde tekst is geschreven](how-tos/text-analytics-how-to-language-detection.md) en één taalcode rapporteren voor elk document dat is ingediend bij de aanvraag in veel verschillende talen, varianten, dialecten en enkele regionale/culturele talen. De taalcode wordt gekoppeld aan een betrouwbaarheidsscore.
+
+## <a name="named-entity-recognition"></a>Herkenning van tekeneenheden
+
+Herkenning van benoemde entiteiten (NER) kan entiteiten in uw tekst [identificeren en categoriseren](how-tos/text-analytics-how-to-entity-linking.md) als mensen, plaatsen, organisaties of hoeveelheden. Bekende entiteiten worden ook herkend en gekoppeld aan informatie op het web.
 
 ## <a name="use-containers"></a>Containers gebruiken
 
-[Gebruik de Text Analytics-containers](how-tos/text-analytics-how-to-install-containers.md) om sleuteltermen te extraheren, taal te detecteren, en sentiment lokaal te analyseren, door gestandaardiseerde Docker-containers dichter bij uw gegevens te installeren.
+[Gebruik de Text Analytics-containers](how-tos/text-analytics-how-to-install-containers.md) als een on-premises oplossing voor tekstanalyse en het gebruik van de API. Met deze Docker-containers kunt u sleuteltermen extraheren, taal detecteren en sentiment analyseren in uw gegevens.
 
 ## <a name="typical-workflow"></a>Standaardwerkstroom
 

@@ -1,16 +1,16 @@
 ---
-title: 'Quickstart: Nieuwe beleidstoewijzing met portal'
+title: Nieuwe beleidstoewijzing met portal
 description: In deze quickstart gebruikt u Azure Portal om een Azure Policy-toewijzing te maken om niet-compatibele resources te identificeren.
 ms.date: 08/17/2020
 ms.topic: quickstart
-ms.openlocfilehash: eb3f97ab2f8da3ff2809cb969c8442779e173983
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 956ec05b5a7fac862eeea86cf96a2db37f1c0536
+ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548376"
+ms.lasthandoff: 09/10/2020
+ms.locfileid: "89651978"
 ---
-# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources"></a>Quickstart: Een beleidstoewijzing maken om niet-conforme resources te identificeren
+# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources"></a>Een beleidstoewijzing maken om niet-conforme resources te identificeren.
 
 De eerste stap in het begrijpen van naleving in Azure is het identificeren van de status van uw resources.
 In deze quickstart gaat u een beleidstoewijzing maken voor het identificeren van virtuele machines die geen beheerde schijven gebruiken.
@@ -27,15 +27,15 @@ In deze snelstart maakt u een beleidstoewijzing en wijst u de beleidsdefinitie _
 
 1. Start de Azure Policy-service in Azure Portal door **Alle services** te selecteren en dan **Beleid** te zoeken en te selecteren.
 
-   :::image type="content" source="./media/assign-policy-portal/search-policy.png" alt-text="Beleid zoeken in alle services" border="false":::
+   :::image type="content" source="./media/assign-policy-portal/search-policy.png" alt-text="Schermopname van het zoeken naar Beleid in Alle services." border="false":::
 
 1. Selecteer **Toewijzingen** in het linkerdeelvenster van de Azure Policy-pagina. Een toewijzing is een beleid dat is toegewezen om te worden toegepast binnen een bepaald bereik.
 
-   :::image type="content" source="./media/assign-policy-portal/select-assignments.png" alt-text="Toewijzingspagina’s selecteren op de pagina Overzicht van beleid" border="false":::
+   :::image type="content" source="./media/assign-policy-portal/select-assignments.png" alt-text="Schermopname van het zoeken naar Beleid in Alle services." border="false":::
 
 1. Selecteer **Beleid toewijzen** boven in de pagina **Beleidstoewijzingen**.
 
-   :::image type="content" source="./media/assign-policy-portal/select-assign-policy.png" alt-text="Een beleidsdefinitie toewijzen op de pagina Toewijzingen" border="false":::
+   :::image type="content" source="./media/assign-policy-portal/select-assign-policy.png" alt-text="Schermopname van het zoeken naar Beleid in Alle services." border="false":::
 
 1. Stel op de pagina **Beleid toewijzen** het **bereik** in door het beletselteken te selecteren en een beheergroep of abonnement te selecteren. U kunt ook een resourcegroep selecteren. Het bereik bepaalt op welke resources of groep resources de beleidstoewijzing wordt afgedwongen. Gebruik vervolgens de knop **Selecteren** onderaan de pagina **Bereik**.
 
@@ -53,7 +53,7 @@ In deze snelstart maakt u een beleidstoewijzing en wijst u de beleidsdefinitie _
 
 1. Doorzoek uw beleidsdefinities en zoek de definitie _Controleren van virtuele machines die geen beheerde schijven gebruiken_. Selecteer dat beleid en gebruik vervolgens de knop **Selecteren**.
 
-   :::image type="content" source="./media/assign-policy-portal/select-available-definition.png" alt-text="De juiste beleidsdefinitie vinden" border="false":::
+   :::image type="content" source="./media/assign-policy-portal/select-available-definition.png" alt-text="Schermopname van het zoeken naar Beleid in Alle services." border="false":::
 
 1. De **Toewijzingsnaam** wordt automatisch ingevuld met de naam van het beleid dat u hebt geselecteerd, maar u kunt dit wijzigen. In dit geval gebruiken we _Controleren van virtuele machines die geen beheerde schijven gebruiken_. U kunt ook een optionele **Beschrijving** opgeven. De beschrijving bevat details over deze beleidstoewijzing.
    **Toegewezen door** wordt automatisch gevuld op basis van de persoon die is aangemeld. Dit veld is optioneel, dus u kunt aangepaste waarden invoeren.
@@ -68,7 +68,7 @@ U kunt nu niet-compatibele resources identificeren om inzicht te krijgen in de n
 
 Selecteer **Naleving** links op de pagina. Zoek dan de beleidstoewijzing _Virtuele machines zonder beheerde schijven controleren_ die u hebt gemaakt.
 
-:::image type="content" source="./media/assign-policy-portal/policy-compliance.png" alt-text="Compatibiliteitsdetails op de pagina Naleving van het beleid" border="false":::
+:::image type="content" source="./media/assign-policy-portal/policy-compliance.png" alt-text="Schermopname van het zoeken naar Beleid in Alle services." border="false":::
 
 Als er bestaande resources zijn die niet conform deze nieuwe toewijzing zijn, worden deze weergegeven bij **Niet-conforme resources**.
 
@@ -76,10 +76,10 @@ Als een voorwaarde wordt geëvalueerd ten opzichte van uw bestaande resources en
 
 | **Resourcestatus** | **Effect** | **Beleidsevaluatie** | **Nalevingsstatus** |
 | --- | --- | --- | --- |
-| Bestaat | Weigeren, Controleren, Toevoegen\*, DeployIfNotExist\*, AuditIfNotExist\* | Waar | Niet-compatibel |
-| Bestaat | Weigeren, Controleren, Toevoegen\*, DeployIfNotExist\*, AuditIfNotExist\* | Niet waar | Compliant |
-| Nieuw | Controleren, AuditIfNotExist\* | Waar | Niet-compatibel |
-| Nieuw | Controleren, AuditIfNotExist\* | Niet waar | Compliant |
+| Bestaat | Weigeren, Controleren, Toevoegen\*, DeployIfNotExist\*, AuditIfNotExist\* | True | Niet-compatibel |
+| Bestaat | Weigeren, Controleren, Toevoegen\*, DeployIfNotExist\*, AuditIfNotExist\* | False | Compatibel |
+| Nieuw | Controleren, AuditIfNotExist\* | True | Niet-compatibel |
+| Nieuw | Controleren, AuditIfNotExist\* | False | Compatibel |
 
 \*Voor de acties Toevoegen, DeployIfNotExist en AuditIfNotExist moet de IF-instructie TRUE zijn.
 De acties vereisen ook dat de bestaansvoorwaarde FALSE is om niet-compatibel te zijn. Indien TRUE, activeert de IF-voorwaarde de evaluatie van de bestaansvoorwaarde voor de gerelateerde resources.
@@ -92,7 +92,7 @@ Als u de gemaakte toewijzing wilt verwijderen, volgt u deze stappen:
 
 1. Klik met de rechtermuisknop op de beleidstoewijzing _Controleer virtuele machines die niet gebruikmaken van beheerde schijven_ en selecteer **Toewijzing verwijderen**.
 
-   :::image type="content" source="./media/assign-policy-portal/delete-assignment.png" alt-text="Een toewijzing verwijderen van de pagina Naleving" border="false":::
+   :::image type="content" source="./media/assign-policy-portal/delete-assignment.png" alt-text="Schermopname van het zoeken naar Beleid in Alle services." border="false":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

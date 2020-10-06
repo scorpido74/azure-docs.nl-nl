@@ -1,59 +1,59 @@
 ---
-title: 'Azure Defender voor Key Vault: de voor delen en functies'
-description: Meer informatie over de voor delen en functies van Azure Defender voor Key Vault.
+title: Azure Defender voor Key Vault - de voordelen en functies
+description: Meer informatie over de voordelen en functies van Azure Defender voor Key Vault.
 author: memildin
 ms.author: memildin
 ms.date: 9/22/2020
-ms.topic: conceptual
+ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 78a522922f8580003e2d2ff588cbf10dbf5fff9d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
-ms.translationtype: MT
+ms.openlocfilehash: 6649a8d470a75922aac423bf0b411163bdd79f71
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91301768"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91449088"
 ---
 # <a name="introduction-to-azure-defender-for-key-vault"></a>Inleiding tot Azure Defender voor Key Vault
 
-Azure Key Vault is een Cloud service die versleutelings sleutels en geheimen beveiligt, zoals certificaten, verbindings reeksen en wacht woorden. 
+Azure Key Vault is een cloudservice die versleutelingssleutels en geheimen, zoals certificaten, verbindingsreeksen en wachtwoorden, beveiligt. 
 
-Schakel **Azure Defender voor Key Vault** in voor de Azure-systeem eigen, geavanceerde bedreigings beveiliging voor Azure Key Vault en bied een extra beveiligingslaag. 
+Schakel **Azure Defender voor Key Vault** in voor geavanceerde Azure-beveiliging tegen Azure Key Vault-bedreigingen, zodat u een extra laag beveiligingsinformatie kunt leveren. 
 
 ## <a name="availability"></a>Beschikbaarheid
 
 |Aspect|Details|
 |----|:----|
-|Release status:|Algemeen beschikbaar (GA)|
-|Koers|**Azure Defender voor Key Vault** wordt gefactureerd zoals weer gegeven op [de pagina met prijzen](security-center-pricing.md)|
-|Clouds|![Yes](./media/icons/yes-icon.png) Commerciële Clouds<br>![No](./media/icons/no-icon.png) National/soeverein (US Gov, China gov, andere gov)|
+|Releasestatus:|Algemeen verkrijgbaar (GA)|
+|Prijzen:|Voor **Azure Defender voor Key Vault** gelden de prijzen op de [pagina Prijzen](security-center-pricing.md)|
+|Clouds:|![Ja](./media/icons/yes-icon.png) Commerciële clouds<br>![Nee](./media/icons/no-icon.png) Nationaal/onafhankelijk (overheid van de VS, China, andere overheden)|
 |||
 
-## <a name="what-are-the-benefits-of-azure-defender-for-key-vault"></a>Wat zijn de voor delen van Azure Defender voor Key Vault?
+## <a name="what-are-the-benefits-of-azure-defender-for-key-vault"></a>Wat zijn de voordelen van Azure Defender voor Key Vault?
 
-Azure Defender detecteert ongebruikelijke en mogelijk schadelijke pogingen om Key Vault accounts te openen of misbruik te maken. Deze beveiligingslaag biedt u de mogelijkheid bedreigingen te verhelpen zonder een beveiligings expert en zonder de nood zaak om beveiligings bewakings systemen van derden te beheren.  
+Met Azure Defender worden ongebruikelijke en mogelijk schadelijke pogingen om Key Vault-accounts te openen of misbruiken, gedetecteerd. Deze beschermingslaag stelt u in staat om bedreigingen te verhelpen zonder dat u een beveiligingsexpert hoeft te zijn en zonder dat u externe beveiligingsbewakingssystemen hoeft te beheren.  
 
-Als er afwijkende activiteiten optreden, worden in azure Defender waarschuwingen weer gegeven en worden ze optioneel verzonden via e-mail naar de relevante leden van uw organisatie. Deze waarschuwingen omvatten de details van de verdachte activiteit en aanbevelingen voor het onderzoeken en oplossen van bedreigingen. 
+Als er afwijkende activiteiten optreden, toont Azure Defender waarschuwingen en mailt Azure Defender deze waarschuwingen optioneel naar de relevante leden van uw organisatie. Deze waarschuwingen bevatten de details over het verdachte incident evenals aanbevelingen voor het onderzoeken en oplossen van bedreigingen. 
 
-## <a name="azure-defender-for-key-vault-alerts"></a>Waarschuwingen voor Azure Defender voor Key Vault
-Wanneer u een waarschuwing ontvangt van Azure Defender voor Key Vault, raden we u aan de waarschuwing te onderzoeken en erop te reageren zoals beschreven in [reageren op Azure Defender voor Key Vault](defender-for-key-vault-usage.md). Azure Defender voor Key Vault beveiligt toepassingen en referenties, zelfs als u bekend bent met de toepassing of gebruiker die de waarschuwing heeft geactiveerd, is het belang rijk om de situatie rondom elke waarschuwing te controleren.
+## <a name="azure-defender-for-key-vault-alerts"></a>Azure Defender voor Key Vault-waarschuwingen
+Wanneer u een waarschuwing ontvangt van Azure Defender voor Key Vault, raden we u aan de waarschuwing te onderzoeken en erop te reageren, zoals wordt beschreven in [Reageren op Azure Defender voor Key Vault](defender-for-key-vault-usage.md). Azure Defender voor Key Vault beveiligt toepassingen en referenties, dus zelfs als u vertrouwd bent met de toepassing of gebruiker die de waarschuwing heeft geactiveerd, is het belangrijk dat u de situatie rondom elke waarschuwing controleert.
 
-De waarschuwingen worden weer gegeven op de pagina **beveiliging** van Key Vault, het dash board van Azure Defender en de pagina waarschuwingen van Security Center.
+De waarschuwingen worden weergegeven op de pagina **Beveiliging** van Key Vault, op het dashboard van Azure Defender en op de waarschuwingspagina van Security Center.
 
-:::image type="content" source="./media/defender-for-key-vault-intro/key-vault-security-page.png" alt-text="Beveiligings pagina van Azure Key Vault":::
+:::image type="content" source="./media/defender-for-key-vault-intro/key-vault-security-page.png" alt-text="Beveiligingspagina van Azure Key Vault":::
 
 
 > [!TIP]
-> U kunt Azure Defender for Key Vault-waarschuwingen simuleren door de instructies te volgen in het [valideren van Azure Key Vault detectie van bedreigingen in azure Security Center](https://techcommunity.microsoft.com/t5/azure-security-center/validating-azure-key-vault-threat-detection-in-azure-security/ba-p/1220336).
+> U kunt Azure Defender voor Key Vault-waarschuwingen simuleren door de instructies te volgen in [Validating Azure Key Vault threat detection in Azure Security Center](https://techcommunity.microsoft.com/t5/azure-security-center/validating-azure-key-vault-threat-detection-in-azure-security/ba-p/1220336) (Azure Key Vault-bedreigingsdetectie valideren in Azure Security Center).
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd over Azure Defender voor Key Vault.
+In dit artikel bent u meer te weten gekomen over Azure Defender voor Key Vault.
 
-Raadpleeg de volgende artikelen voor gerelateerde materialen: 
+Raadpleeg de volgende artikelen voor gerelateerd materiaal: 
 
-- [Beveiligings waarschuwingen Key Vault](alerts-reference.md#alerts-azurekv): de sectie Key Vault van de verwijzings tabel voor alle Azure Security Center waarschuwingen
-- [Waarschuwingen exporteren naar een SIEM](continuous-export.md)
+- [Key Vault-beveiligingswaarschuwingen](alerts-reference.md#alerts-azurekv)--Het Key Vault-gedeelte van de referentietabel voor alle Azure Security Center-waarschuwingen
+- [Waarschuwingen naar een SIEM exporteren](continuous-export.md)
 - [Waarschuwingen van Azure Defender onderdrukken](alerts-suppression-rules.md)

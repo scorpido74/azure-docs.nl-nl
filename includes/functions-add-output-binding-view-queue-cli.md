@@ -4,21 +4,21 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: glenga
-ms.openlocfilehash: 44823ce888e97b308f29403612f598c0eb585ae5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 894a89126d1ee3ed909134f3e0dd914166568654
+ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80673380"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90606149"
 ---
-U kunt de wachtrij weer geven in de [Azure Portal](../articles/storage/queues/storage-quickstart-queues-portal.md) of in de [Microsoft Azure Storage Explorer](https://storageexplorer.com/). U kunt de wachtrij ook weer geven in de Azure CLI, zoals wordt beschreven in de volgende stappen:
+U kunt de wachtrij bekijken in de [Azure Portal](../articles/storage/queues/storage-quickstart-queues-portal.md) of in de [Microsoft Azure Storage Explorer](https://storageexplorer.com/). U kunt de wachtrij ook bekijken in de Azure CLI, zoals wordt beschreven in de volgende stappen:
 
-1. Open het bestand *Local. setting. json* van het functie project en kopieer de Connection String waarde. Voer in een Terminal-of opdracht venster de volgende opdracht uit om een omgevings variabele `AZURE_STORAGE_CONNECTION_STRING`met de naam te maken, waarbij u `<MY_CONNECTION_STRING>`uw specifieke Connection String plakt in plaats van. (Deze omgevings variabele houdt in dat u de connection string niet hoeft op te geven bij elke `--connection-string` volgende opdracht met behulp van het argument.)
+1. Open het bestand *local.setting.json* van het functieproject en kopieer de verbindingsreekswaarde. Voer in een terminal- of opdrachtvenster de volgende opdracht uit om een omgevingsvariabele met de naam `AZURE_STORAGE_CONNECTION_STRING` te maken en uw specifieke verbindingsreeks in plaats van `<MY_CONNECTION_STRING>` te plakken. (Deze omgevingsvariabele zorgt ervoor dat u de verbindingsreeks niet hoeft op te geven bij elke volgende opdracht met het argument `--connection-string`.)
 
     # <a name="bash"></a>[bash](#tab/bash)
     
     ```bash
-    AZURE_STORAGE_CONNECTION_STRING="<MY_CONNECTION_STRING>"
+    export AZURE_STORAGE_CONNECTION_STRING="<MY_CONNECTION_STRING>"
     ```
     
     # <a name="powershell"></a>[PowerShell](#tab/powershell)
@@ -35,13 +35,13 @@ U kunt de wachtrij weer geven in de [Azure Portal](../articles/storage/queues/st
     
     ---
     
-1. Beschrijving Gebruik de [`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list) opdracht om de opslag wachtrijen in uw account weer te geven. De uitvoer van deze opdracht moet een wachtrij bevatten met `outqueue`de naam, die is gemaakt toen de functie het eerste bericht aan die wachtrij heeft geschreven.
+1. (Optioneel) Gebruik de opdracht [`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list) om de opslagwachtrijen in uw account te bekijken. De uitvoer van deze opdracht moet een wachtrij bevatten met de naam `outqueue`, die is gemaakt toen de functie het eerste bericht naar die wachtrij heeft geschreven.
     
     ```azurecli
     az storage queue list --output tsv
     ```
 
-1. Gebruik de [`az storage message get`](/cli/azure/storage/message#az-storage-message-get) opdracht om het bericht uit deze wachtrij te lezen. dit moet de voor naam zijn die u hebt gebruikt bij het eerder testen van de functie. Met de opdracht leest en verwijdert u het eerste bericht uit de wachtrij. 
+1. Gebruik de opdracht [`az storage message get`](/cli/azure/storage/message#az-storage-message-get) om het bericht uit deze wachtrij te lezen. Dit moet de voornaam zijn die u eerder hebt gebruikt bij het testen van de functie. Met deze opdracht leest en verwijdert u het eerste bericht in de wachtrij. 
 
     # <a name="bash"></a>[bash](#tab/bash)
     
@@ -61,8 +61,8 @@ U kunt de wachtrij weer geven in de [Azure Portal](../articles/storage/queues/st
     az storage message get --queue-name outqueue -o tsv --query [].{Message:content} > %TEMP%out.b64 && certutil -decode -f %TEMP%out.b64 %TEMP%out.txt > NUL && type %TEMP%out.txt && del %TEMP%out.b64 %TEMP%out.txt /q
     ```
 
-    Dit script maakt gebruik van Certutil voor het decoderen van de met base64 gecodeerde berichten verzameling vanuit een lokaal tijdelijk bestand. Als er geen uitvoer is, Verwijder `> NUL` dan uit het script om het onderdrukken van Certutil-uitvoer te stoppen, als er een fout is opgetreden. 
+    Dit script maakt gebruik van certutil voor het decoderen van de met base64 gecodeerde berichtenverzameling uit een lokaal tijdelijk bestand. Als er geen uitvoer is, probeert u `> NUL` uit het script te verwijderen om het onderdrukken van certutil-uitvoer te stoppen voor het geval dat er een fout is opgetreden. 
     
     ---
     
-    Omdat de bericht tekst base64- [gecodeerd](../articles/azure-functions/functions-bindings-storage-queue-trigger.md#encoding)is opgeslagen, moet het bericht worden gedecodeerd voordat het wordt weer gegeven. Nadat u het `az storage message get`script hebt uitgevoerd, wordt het bericht uit de wachtrij verwijderd. Als er slechts één bericht in wordt `outqueue`weer gegeven, haalt u een bericht niet op wanneer u deze opdracht een tweede keer uitvoert en wordt in plaats daarvan een fout opgetreden.
+    Omdat de berichttekst [base64-gecodeerd](../articles/azure-functions/functions-bindings-storage-queue-trigger.md#encoding) is opgeslagen, moet het bericht worden gedecodeerd voordat het kan worden weergegeven. Nadat u `az storage message get` hebt uitgevoerd, wordt het bericht uit de wachtrij verwijderd. Als er slechts één bericht in `outqueue` was, wordt er geen bericht weergegeven wanneer u deze opdracht een tweede keer uitvoert en wordt in plaats daarvan een foutmelding weergegeven.

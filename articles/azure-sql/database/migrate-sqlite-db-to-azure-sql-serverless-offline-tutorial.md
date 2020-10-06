@@ -1,87 +1,87 @@
 ---
-title: 'Zelf studie: uw SQLite-data base migreren naar Azure SQL Database serverloos'
-description: Meer informatie over het uitvoeren van een offline migratie vanuit SQLite naar Azure SQL Database serverloos met behulp van Azure Data Factory.
+title: 'Zelfstudie: Een SQLite-database migreren naar een serverloze Azure SQL-database'
+description: Meer informatie over het uitvoeren van een offline migratie vanuit SQLite naar een serverloze Azure SQL-database met behulp van Azure Data Factory.
 services: sql-database
 author: joplum
 ms.author: joplum
 ms.service: sql-database
 ms.workload: data-services
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/08/2020
 ms.custom: sqldbrb=1
-ms.openlocfilehash: 551276895de0ba659349c20205fa21d3d2c6b43e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 6e60403344a0341b4aee74a001287c09ba67e114
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669563"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448901"
 ---
-# <a name="how-to-migrate-your-sqlite-database-to-azure-sql-database-serverless"></a>Uw SQLite-data base naar Azure SQL Database Server migreren
+# <a name="how-to-migrate-your-sqlite-database-to-azure-sql-database-serverless"></a>Een SQLite-database migreren naar een serverloze Azure SQL-database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Voor veel mensen biedt SQLite hun eerste ervaring met data bases en SQL-programmering. Het is opgenomen in veel besturings systemen en populaire toepassingen maakt SQLite één de meest uitgebreide en gebruikte data base-engines in de wereld. En omdat het waarschijnlijk de eerste data base-engine is die veel mensen gebruiken, kan deze vaak worden beëindigd als een centraal deel van projecten of toepassingen. In dergelijke gevallen, wanneer het project of de toepassing de eerste SQLite-implementatie uitbreidt, moeten ontwikkel aars hun gegevens mogelijk migreren naar een betrouw bare, gecentraliseerde gegevens opslag.
+Voor veel mensen vormt SQLite hun eerste ervaring met databases en SQL-programmering. Omdat het is opgenomen in veel besturingssystemen en populaire toepassingen is SQLite een van de meest geïmplementeerde en gebruikte database-engines ter wereld. En omdat het vaak de eerste database-engine is die veel mensen gebruiken, vormt het vaak een centraal onderdeel van projecten of toepassingen. In dergelijke gevallen, wanneer het project of de toepassing uit die eerste SQLite-implementatie groeit, moeten ontwikkelaars hun gegevens misschien migreren naar een betrouwbare, gecentraliseerde gegevensopslag.
 
-Azure SQL Database Serverloos is een compute-laag voor afzonderlijke data bases waarmee de berekening automatisch wordt geschaald op basis van de werkbelasting vraag en facturen voor de hoeveelheid reken kracht die per seconde wordt gebruikt. De compute-laag zonder server onderbreekt ook automatisch data bases tijdens inactieve Peri Oden wanneer alleen opslag wordt gefactureerd en automatisch data bases hervat wanneer de activiteit wordt geretourneerd.
+Een serverloze Azure SQL-database is een compute-laag voor afzonderlijke databases waarmee de compute-resources automatisch worden geschaald op basis van de eisen van de workload en er wordt gefactureerd op basis van de hoeveelheid rekenkracht die per seconde wordt gebruikt. De serverloze compute-laag pauzeert databases ook automatisch tijdens inactieve perioden, zodat er alleen opslag wordt gefactureerd, en hervat databases automatisch wanneer er weer activiteit plaatsvindt.
 
-Als u de onderstaande stappen hebt gevolgd, wordt uw Data Base naar Azure SQL Database Serverloos gemigreerd, zodat u uw data base beschikbaar kunt stellen aan andere gebruikers of toepassingen in de Cloud en alleen betaalt voor wat u gebruikt, met minimale wijzigingen in de toepassings code.
+Als u de onderstaande stappen volgt, wordt uw database naar een serverloze Azure SQL-database gemigreerd, zodat u uw database beschikbaar kunt stellen aan andere gebruikers of toepassingen in de cloud en alleen betaalt voor wat u gebruikt, met minimale wijzigingen in de toepassingscode.
 
 ## <a name="prerequisites"></a>Vereisten
 
 - Een Azure-abonnement
-- SQLite2 of SQLite3-data base die u wilt migreren
+- Een SQLite2- of SQLite3-database die u wilt migreren
 - Een Windows-omgeving
-  - Als u geen lokale Windows-omgeving hebt, kunt u een virtuele Windows-machine in azure gebruiken voor de migratie. Verplaats en maak uw SQLite-database bestand beschikbaar op de VM met behulp van Azure Files en Storage Explorer.
+  - Als u geen lokale Windows-omgeving hebt, kunt u een virtuele Windows-machine in Azure gebruiken voor de migratie. Verplaats en maak uw SQLite-databasebestand beschikbaar op de VM met behulp van Azure Files en Storage Explorer.
 
 ## <a name="steps"></a>Stappen
 
-1. Richt een nieuwe Azure SQL Database in op de Serverloze Compute-laag.
+1. Richt een nieuwe Azure SQL-database in op de serverloze compute-laag.
 
-    ![Scherm afbeelding van de Azure Portal waarin het voorzienings voorbeeld voor Azure SQL Database Serverloos wordt weer gegeven](./media/migrate-sqlite-db-to-azure-sql-serverless-offline-tutorial/provision-serverless.png)
+    ![Schermopname van de Azure-portal waarin u een voorbeeld ziet van een serverloze Azure SQL-database](./media/migrate-sqlite-db-to-azure-sql-serverless-offline-tutorial/provision-serverless.png)
 
-2. Zorg ervoor dat uw SQLite-database bestand beschikbaar is in uw Windows-omgeving. Installeer een SQLite ODBC-stuur programma als u er nog geen hebt (er zijn veel beschikbaar in open source), bijvoorbeeld http://www.ch-werner.de/sqliteodbc/) .
+2. Zorg ervoor dat uw SQLite-databasebestand beschikbaar is in uw Windows-omgeving. Installeer een SQLite ODBC-stuurprogramma als u er nog geen hebt (er zijn er veel open source beschikbaar, zoals http://www.ch-werner.de/sqliteodbc/).
 
-3. Maak een systeem-DSN voor de data base. Zorg ervoor dat u de toepassing voor gegevens bron beheer gebruikt die overeenkomt met uw systeem architectuur (32-bits VS 64-bits). U kunt zien welke versie u gebruikt in de systeem instellingen.
+3. Maak een systeem-DSN voor de database. Zorg ervoor dat u versie van de toepassing Data Source Administrator gebruikt die overeenkomt met uw systeemarchitectuur (32-bits of 64-bits). U kunt zien welke versie u gebruikt in de systeeminstellingen.
 
-    - Open ODBC-gegevens bron beheer in uw omgeving.
-    - Klik op het tabblad systeem-DSN en klik op toevoegen.
-    - Selecteer de SQLite ODBC-connector die u hebt geïnstalleerd en geef de verbinding een beschrijvende naam, bijvoorbeeld sqlitemigrationsource
-    - De database naam instellen op het db-bestand
+    - Open ODBC Data Source Administrator in uw omgeving.
+    - Klik op het tabblad voor systeem-DSN en klik op 'Add' (Toevoegen)
+    - Selecteer de SQLite ODBC-connector die u hebt geïnstalleerd en geef de verbinding een beschrijvende naam, zoals sqlitemigrationsource
+    - Stel als databasenaam het .db-bestand in
     - Opslaan en afsluiten
 
-4. Down load en installeer de zelf-hostende Integration runtime. De eenvoudigste manier om dit te doen is de optie voor snelle installatie, zoals beschreven in de documentatie. Als u kiest voor een hand matige installatie, moet u de toepassing voorzien van een verificatie sleutel die zich in uw Data Factory-exemplaar kan bevinden door:
+4. Download en installeer de zelf-hostende integratieruntime. De eenvoudigste manier om dit te doen is met de optie voor snelle installatie, zoals beschreven in de documentatie. Als u kiest voor een handmatige installatie, moet u een verificatiesleutel voor de toepassing opgeven, die u in uw Data Factory-exemplaar kunt vinden:
 
-    - Opstarten van ADF (ontwerpen en controleren vanuit de service in de Azure Portal)
-    - Klik op het tabblad ' Auteur ' (blauw potlood) aan de linkerkant
-    - Klik op verbindingen (linksonder) en vervolgens op Integration Runtimes
-    - Voeg nieuwe zelf-Hostende Integration Runtime toe, geef een naam op en selecteer *optie 2*.
+    - Start ADF (Ontwerpen en bewaken vanuit de service in de Azure-portal)
+    - Klik aan de linkerkant op het tabblad 'Ontwerpen' (blauw potlood)
+    - Klik op 'Verbindingen' (linksonder) en vervolgens op Integratieruntime
+    - Voeg een nieuwe zelf-hostende integratieruntime toe, geef deze een naam en selecteer *optie 2*.
 
-5. Maak een nieuwe gekoppelde service voor de bron-SQLite-data base in uw Data Factory.
+5. Maak een nieuwe gekoppelde service voor de SQLite-brondatabase in uw Data Factory.
 
-    ![Scherm opname van lege gekoppelde services-Blade in Azure Data Factory](./media/migrate-sqlite-db-to-azure-sql-serverless-offline-tutorial/linked-services-create.png)
+    ![Schermopname van een lege blade voor gekoppelde services in Azure Data Factory](./media/migrate-sqlite-db-to-azure-sql-serverless-offline-tutorial/linked-services-create.png)
 
-6. Klik in **verbindingen**onder **gekoppelde service**op **Nieuw**.
+6. Klik bij **Verbindingen**, onder **Gekoppelde service**, op **Nieuw**.
 
-7. Zoek en selecteer de ODBC-Connector
+7. Zoek en selecteer de connector 'ODBC'
 
-   ![Scherm opname van het logo van de ODBC-connector op de Blade gekoppelde services in Azure Data Factory](./media/migrate-sqlite-db-to-azure-sql-serverless-offline-tutorial/linked-services-odbc.png)
+   ![Schermopname met het logo van de ODBC-connector in de blade voor gekoppelde services in Azure Data Factory](./media/migrate-sqlite-db-to-azure-sql-serverless-offline-tutorial/linked-services-odbc.png)
 
-8. Geef de gekoppelde service een duidelijke naam, bijvoorbeeld "sqlite_odbc". Selecteer de Integration runtime in de vervolg keuzelijst verbinding maken via Integration runtime. Voer het volgende in het connection string in en vervang de eerste catalogus variabele door het bestandspad voor het. db-bestand en de DSN met de naam van de systeem-DSN-verbinding:
+8. Geef de gekoppelde service een duidelijke naam, zoals 'sqlite_odbc'. Selecteer de integratieruntime in de vervolgkeuzelijst 'Verbinding maken via integratieruntime'. Voer het volgende in voor de verbindingsreeks en vervang de eerste catalogusvariabele door het bestandspad voor het .db-bestand en de DSN met de naam van de systeem-DSN-verbinding:
 
    ```
    Connection string: Provider=MSDASQL.1;Persist Security Info=False;Mode=ReadWrite;Initial Catalog=C:\sqlitemigrationsource.db;DSN=sqlitemigrationsource
     ```
 
-9. Het verificatie type instellen op anoniem
+9. Stel het verificatietype in op anoniem
 
 10. De verbinding testen
 
-    ![Scherm opname met een geslaagde verbinding in Azure Data Factory](./media/migrate-sqlite-db-to-azure-sql-serverless-offline-tutorial/linked-services-test-successful.png)
+    ![Schermopname met een geslaagde verbinding in Azure Data Factory](./media/migrate-sqlite-db-to-azure-sql-serverless-offline-tutorial/linked-services-test-successful.png)
 
-11. Maak een andere gekoppelde service voor uw Serverloze SQL-doel. Selecteer de data base met behulp van de wizard gekoppelde service en geef de referenties voor de SQL-verificatie op.
+11. Maak nog een gekoppelde service voor uw serverloze SQL-doel. Selecteer de database met behulp van de wizard voor gekoppelde service en geef de referenties voor de SQL-verificatie op.
 
-    ![Scherm opname met Azure SQL Database geselecteerd in Azure Data Factory](./media/migrate-sqlite-db-to-azure-sql-serverless-offline-tutorial/linked-services-create-target.png)
+    ![Schermopname met Azure SQL Database geselecteerd in Azure Data Factory](./media/migrate-sqlite-db-to-azure-sql-serverless-offline-tutorial/linked-services-create-target.png)
 
-12. Pak de CREATE TABLE-instructies uit in de SQLite-data base. U kunt dit doen door het onderstaande python-script uit te voeren in uw database bestand.
+12. Haal de CREATE TABLE-instructies op uit uw SQLite-database. U kunt dit doen door het onderstaande python-script uit te voeren voor uw databasebestand.
 
     ```
     #!/usr/bin/python
@@ -98,15 +98,15 @@ Als u de onderstaande stappen hebt gevolgd, wordt uw Data Base naar Azure SQL Da
     c.close()
     ```
 
-13. Maak de landings tabellen in uw Serverloze SQL-doel omgeving door de CREATE TABLE-instructies te kopiëren uit het bestand CreateTables. SQL en de SQL-instructies uit te voeren in de query-editor in het Azure Portal.
+13. Maak de doeltabellen in uw serverloze SQL-doelomgeving door de CREATE TABLE-instructies te kopiëren uit het bestand CreateTables.sql en de SQL-instructies uit te voeren in de query-editor in de Azure-portal.
 
-14. Ga terug naar het Start scherm van uw Data Factory en klik op Gegevens kopiëren om de wizard voor het maken van de taak uit te voeren.
+14. Ga terug naar het startscherm van uw Data Factory en klik op 'Gegevens kopiëren' om de wizard voor het maken van de taak uit te voeren.
 
-    ![Scherm opname van het logo van de Gegevens kopiëren wizard in Azure Data Factory](./media/migrate-sqlite-db-to-azure-sql-serverless-offline-tutorial/copy-data.png)
+    ![Schermopname van het logo van de wizard 'Gegevens kopiëren' in Azure Data Factory](./media/migrate-sqlite-db-to-azure-sql-serverless-offline-tutorial/copy-data.png)
 
-15. Selecteer alle tabellen uit de bron-SQLite-data base met behulp van de selectie vakjes en wijs deze toe aan de doel tabellen in Azure SQL. Zodra de taak is uitgevoerd, hebt u uw gegevens van SQLite naar Azure SQL gemigreerd.
+15. Selecteer alle tabellen uit de SQLite-brondatabase met behulp van de selectievakjes en wijs deze toe aan de doeltabellen in Azure SQL. Zodra de taak is uitgevoerd, hebt u uw gegevens van SQLite naar Azure SQL gemigreerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [Quick Start: een enkele data base maken in Azure SQL database met behulp van de Azure Portal](single-database-create-quickstart.md)om aan de slag te gaan.
-- Zie [resource limieten voor serverloze Compute-lagen](../../sql-database/sql-database-vcore-resource-limits-single-databases.md#general-purpose---serverless-compute---gen5)voor resource limieten.
+- Als u aan de slag wilt gaan, raadpleegt u [Quickstart: Een individuele database maken in Azure SQL Database met de Azure-portal](single-database-create-quickstart.md).
+- Zie voor resourcelimieten [Resourcelimieten voor serverloze compute-lagen](../../sql-database/sql-database-vcore-resource-limits-single-databases.md#general-purpose---serverless-compute---gen5).

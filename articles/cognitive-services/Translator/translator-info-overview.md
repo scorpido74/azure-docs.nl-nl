@@ -1,5 +1,5 @@
 ---
-title: Wat is Translator? - Translator
+title: Microsoft Translator-service
 titlesuffix: Azure Cognitive Services
 description: Integreer Translator in uw toepassingen, websites, hulpprogramma's en andere oplossingen om gebruikerservaringen in meerdere talen te bieden.
 services: cognitive-services
@@ -8,29 +8,30 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: overview
-ms.date: 05/26/2020
+ms.date: 09/11/2020
 ms.author: swmachan
-ms.custom: seodec18
-ms.openlocfilehash: 206e1bc86404fa41b84647c50482dbe63301c0af
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.custom: cog-serv-seo-aug-2020
+keywords: translator, tekstvertaling, machine translation, vertaalservice
+ms.openlocfilehash: 32ae7f75c1b953e8af7dfef83c1971c2f78b0b62
+ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89425956"
+ms.lasthandoff: 09/15/2020
+ms.locfileid: "90530332"
 ---
-# <a name="what-is-translator"></a>Wat is Translator?
+# <a name="what-is-the-translator-service"></a>Wat is de Translator-service?
 
-Azure Cognitive Services Translator is een cloudservice voor automatische vertaling en maakt deel uit van de [Azure Cognitive Services](https://docs.microsoft.com/azure/?pivot=products&panel=ai)-familie van cognitieve API's voor het bouwen van intelligente apps. Translator is eenvoudig in uw toepassingen, websites, hulpprogramma's en oplossingen te integreren. U kunt hiermee meertalige gebruikerservaringen in [meer dan 70 talen](languages.md) toevoegen en u kunt het gebruiken op elk hardwareplatform onder elk willekeurig besturingssysteem voor vertalingen van tekst naar tekst.
+Translator is een cloudservice voor automatische vertaling en maakt deel uit van de [Azure Cognitive Services](https://docs.microsoft.com/azure/?pivot=products&panel=ai)-familie van cognitieve API's voor het bouwen van intelligente apps. Translator is eenvoudig in uw toepassingen, websites, hulpprogramma's en oplossingen te integreren. U kunt hiermee meertalige gebruikerservaringen in [meer dan zeventig talen](languages.md) toevoegen en u kunt het gebruiken op elk hardwareplatform onder elk willekeurig besturingssysteem voor vertalingen van tekst.
 
 ## <a name="about-microsoft-translator"></a>Over Microsoft Translator
 
-Azure Cognitive Services Translator is een cloudservice voor machinevertaling. Translator stuurt een aantal Microsoft-producten en -services aan en wordt door duizenden bedrijven over de hele wereld gebruikt in hun toepassingen en werkstromen, zodat hun inhoud beschikbaar wordt gemaakt voor een wereldwijd publiek.
+Translator stuurt een aantal Microsoft-producten en -services aan en wordt door duizenden bedrijven over de hele wereld gebruikt in hun toepassingen en werkstromen, zodat hun inhoud beschikbaar wordt gemaakt voor een wereldwijd publiek.
 
-Spraakomzetting, mogelijk gemaakt door Translator, is ook beschikbaar via de [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/). In spraakomzetting worden functionaliteit van de Translator Speech-API en de Custom Speech Service gecombineerd tot een geïntegreerde en volledig aan te passen service. 
+Spraakomzetting, mogelijk gemaakt door Translator, is ook beschikbaar via [Azure Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/). In spraakomzetting worden functionaliteit van de Translator Speech-API en de Custom Speech Service gecombineerd tot een geïntegreerde en volledig aan te passen service. 
 
 ## <a name="language-support"></a>Taalondersteuning
 
-Microsoft Translator biedt meertalige ondersteuning voor vertalingen, transliteraties, taaldetectie en woordenboeken. Zie [taalondersteuning](language-support.md) voor een volledige lijst of open de lijst programmatisch met de [REST API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages).  
+Translator biedt meertalige ondersteuning voor tekstvertalingen, transliteraties, taaldetectie en woordenlijsten. Zie [taalondersteuning](language-support.md) voor een volledige lijst of open de lijst programmatisch met de [REST API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages).  
 
 ## <a name="microsoft-translator-neural-machine-translation"></a>Neurale machinevertalingen van Microsoft Translator
 
@@ -40,18 +41,19 @@ NMT biedt betere vertalingen dan SMT, niet alleen op basis van de kwaliteitsscor
 
 NMT-modellen vormen de kern van de API en zijn niet zichtbaar voor eindgebruikers. Het enige merkbare verschil is de verbeterde vertaalkwaliteit, met name voor talen zoals Chinees, Japans en Arabisch.
 
-Meer informatie over [de werking van NMT](https://www.microsoft.com/en-us/translator/mt.aspx#nnt)
+Meer informatie over [de werking van NMT](https://www.microsoft.com/en-us/translator/mt.aspx#nnt).
 
-## <a name="language-customization"></a>Taal aanpassen
+## <a name="improve-translations-with-custom-translator"></a>Vertalingen verbeteren met Custom Translator
 
 Custom Translator is een uitbreiding op de Translator-service en kan samen met Translator worden gebruikt om het neurale vertaalsysteem aan te passen en de vertalingen te verbeteren voor uw specifieke terminologie en stijl.
 
 Met Custom Translator kunt u vertaalsystemen maken waarin de terminologie wordt verwerkt die wordt gebruikt in uw bedrijf of sector. U kunt uw aangepaste vertaalsysteem vervolgens eenvoudig integreren in uw bestaande toepassingen, werkstromen en websites voor meerdere typen apparaten via de gewone Translator, met behulp van de categorieparameter.
 
-Meer informatie over [taalaanpassing](customization.md)
+Meer informatie over [Custom Translator](customization.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Registreer](translator-text-how-to-signup.md) u voor een toegangssleutel.
+- Gebruik de [Quickstart](quickstart-translator.md) om snel de Translator-service aan te roepen.
 - [API-naslag](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference) bevat de technische documentatie voor de API's.
 - [Prijsdetails](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)

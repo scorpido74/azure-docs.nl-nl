@@ -4,12 +4,12 @@ description: Ziet u geen gegevens in Azure-toepassing Insights? Probeer het hier
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/21/2020
-ms.openlocfilehash: 7cf3371dc60f97b8bba61012e87b7b4bd4899aa6
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 2bf9b50c9b378d8624c311af5935b8cd0a28a31a
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936466"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757976"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>Problemen met geen gegevens Application Insights voor .NET/.NET core oplossen
 
@@ -85,7 +85,7 @@ Holpen
 
 * Zorg ervoor dat uw versie van Visual Studio 2013 update 3 of hoger is.
 * Selecteer **extra**, **uitbrei dingen en updates** en controleer of **Developer Analytics-hulpprogram ma's** zijn geïnstalleerd en ingeschakeld. Als dit het geval is, klikt u op **updates** om te zien of er een update beschikbaar is.
-* Klik met de rechter muisknop op uw project in Solution Explorer. Als u de opdracht **Application Insights > Application Insights configureren**ziet, gebruikt u deze om uw project te koppelen aan de resource in de Application Insights-service.
+* Klik met de rechtermuisknop op uw project in Solution Explorer. Als u de opdracht **Application Insights > Application Insights configureren**ziet, gebruikt u deze om uw project te koppelen aan de resource in de Application Insights-service.
 
 Anders wordt het project type niet rechtstreeks ondersteund door de Developer Analytics-hulpprogram ma's. Als u uw telemetrie wilt zien, meldt u zich aan bij de [Azure Portal](https://portal.azure.com), kiest u Application Insights op de linkernavigatiebalk en selecteert u uw toepassing.
 
@@ -246,7 +246,7 @@ U kunt deze para meters naar behoefte wijzigen:
 
 Meer informatie
 - [Prestatie traceringen vastleggen met PerfView](https://github.com/dotnet/roslyn/wiki/Recording-performance-traces-with-PerfView).
-- [Application Insights gebeurtenis bronnen](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/ETW)
+- [Application Insights gebeurtenis bronnen](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/ETW)
 
 ## <a name="collect-logs-with-dotnet-trace"></a>Logboeken verzamelen met DotNet-Trace
 

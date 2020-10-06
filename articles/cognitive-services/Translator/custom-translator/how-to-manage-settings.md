@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 488ca52abdd5f8d6cfd1f92a5f91861a17a77d19
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 184073ef3ee1b6a67c844754f7da81f88bbbdf62
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510472"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757024"
 ---
 # <a name="how-to-manage-settings"></a>Instellingen beheren
 
@@ -51,6 +51,8 @@ Als u geen abonnement hebt, volgt u de onderstaande stappen:
 
     ![Dialoog venster nieuwe werk ruimte maken](media/how-to/create-new-workspace-dialog.png)
 
+>[!Note]
+>Aangepaste Translator biedt geen ondersteuning voor het maken van een werk ruimte voor Translator Text-API resource (ook Azure-abonnements sleutel) die is gemaakt in het [ingeschakelde VNET](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet).
 
 ### <a name="modify-existing-key"></a>Bestaande sleutel wijzigen
 
@@ -61,7 +63,7 @@ Als u geen abonnement hebt, volgt u de onderstaande stappen:
 
 3. Voer in het dialoog venster de sleutel voor uw Vertaal abonnement in en klik vervolgens op de knop Opslaan.
 
-    ![Abonnements sleutel toevoegen](media/how-to/how-to-add-subscription-key-dialog.png)
+    ![Het dialoog venster abonnements sleutel toevoegen](media/how-to/how-to-add-subscription-key-dialog.png)
 
 ## <a name="manage-your-workspace"></a>Uw werkruimte beheren
 
