@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 25f74fb78979313acc068320d842d09a982d8d16
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8ccc9725ffe5304942b740d460a67129f9c1c5d8
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339141"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743842"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-data-box-gateway"></a>De Azure Portal gebruiken om bandbreedteschema's te beheren in uw Azure Data Box Gateway  
 
@@ -40,13 +40,13 @@ Voer in Azure Portal de volgende stappen uit om een gebruiker toe te voegen.
 
 3. Doe het volgende in **Schema toevoegen**: 
 
-   1. Geef de **Eerste dag**, **Laatste dag**, **Begintijd** en **Eindtijd** van de planning op. 
+   1. Geef de **begin dag**, de **eind datum**, de **begin tijd**en de **eind tijd** van de planning op. 
    2. Als dit schema de hele dag wordt uitgevoerd, kunt u de optie **Hele dag** inschakelen. 
-   3. **Bandbreedtesnelheid** is de bandbreedte in Megabits per seconde (Mbps) die door uw apparaat wordt gebruikt bij bewerkingen die betrekking hebben op de cloud (uploaden en downloaden). Geef voor dit veld een waarde op tussen 1 en 1000. 
+   3. **Bandbreedte frequentie** is de band breedte in megabits per seconde (Mbps) die wordt gebruikt door uw apparaat in bewerkingen met betrekking tot de Cloud (zowel uploads als down Loads). Geef voor dit veld een waarde op tussen 1 en 1000. 
    4. Schakel **Onbeperkte** bandbreedte in als u de datumupload en -download niet wilt regelen. 
    5. Klik op **Add**.
 
-      ![Klikken op Gebruiker toevoegen](media/data-box-gateway-manage-bandwidth-schedules/add-schedule-2.png)
+      ![Klik op gebruiker toevoegen 2](media/data-box-gateway-manage-bandwidth-schedules/add-schedule-2.png)
 
 3. Er wordt een schema gemaakt met de opgegeven parameters. Dit schema wordt vervolgens weergegeven in de lijst van bandbreedteschema's in de portal.
 
@@ -61,11 +61,11 @@ Voer de volgende stappen uit als u een bandbreedteschema wilt bewerken.
 
 3. Breng de gewenste wijzigingen aan en sla de wijzigingen op.
 
-    ![Gebruiker wijzigen](media/data-box-gateway-manage-bandwidth-schedules/modify-schedule-2.png)
+    ![Gebruiker wijzigen 2](media/data-box-gateway-manage-bandwidth-schedules/modify-schedule-2.png)
 
 4. Wanneer het schema is gewijzigd, wordt de lijst met schema's bijgewerkt met het gewijzigde schema.
 
-    ![Gebruiker wijzigen](media/data-box-gateway-manage-bandwidth-schedules/modify-schedule-3.png)
+    ![Gebruiker 3 wijzigen](media/data-box-gateway-manage-bandwidth-schedules/modify-schedule-3.png)
 
 
 ## <a name="delete-a-schedule"></a>Een schema verwijderen

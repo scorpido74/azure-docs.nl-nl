@@ -4,14 +4,14 @@ description: Meer informatie over het controleren van de besturings vlak bewerki
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 06/25/2020
+ms.date: 10/05/2020
 ms.author: sngun
-ms.openlocfilehash: 691c6ec0559eceb60d57bf04819701edebbffd83
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 08cc3b08611947ac32973b2dfb01060140dc0798
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462442"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743893"
 ---
 # <a name="how-to-audit-azure-cosmos-db-control-plane-operations"></a>Bewerkingen van Azure Cosmos DB Control-vlak controleren
 
@@ -69,17 +69,17 @@ Nadat u logboek registratie hebt ingeschakeld, gebruikt u de volgende stappen om
 
 De volgende scherm afbeeldingen vastleggen Logboeken wanneer een consistentie niveau wordt gewijzigd voor een Azure Cosmos-account:
 
-:::image type="content" source="./media/audit-control-plane-logs/add-ip-filter-logs.png" alt-text="Besturings vlak Logboeken wanneer een VNet wordt toegevoegd":::
+:::image type="content" source="./media/audit-control-plane-logs/add-ip-filter-logs.png" alt-text="Registratie van aanvragen voor beheer vlak inschakelen":::
 
 De volgende scherm afbeeldingen vastleggen Logboeken wanneer de spatie of een tabel van een Cassandra-account wordt gemaakt en wanneer de door Voer wordt bijgewerkt. De besturings vlak logboeken voor het maken en bijwerken van bewerkingen in de data base en de container worden afzonderlijk geregistreerd, zoals wordt weer gegeven in de volgende scherm afbeelding:
 
-:::image type="content" source="./media/audit-control-plane-logs/throughput-update-logs.png" alt-text="Besturings vlak Logboeken wanneer de door Voer wordt bijgewerkt":::
+:::image type="content" source="./media/audit-control-plane-logs/throughput-update-logs.png" alt-text="Registratie van aanvragen voor beheer vlak inschakelen":::
 
 ## <a name="identify-the-identity-associated-to-a-specific-operation"></a>De identiteit identificeren die aan een specifieke bewerking is gekoppeld
 
 Als u meer fouten wilt opsporen, kunt u een specifieke bewerking in het **activiteiten logboek** identificeren met behulp van de activiteits-id of door de tijds tempel van de bewerking. Tijds tempel wordt gebruikt voor sommige Resource Manager-clients waarbij de activiteits-ID niet expliciet is door gegeven. Het activiteiten logboek bevat details over de identiteit waarmee de bewerking is gestart. De volgende scherm afbeelding laat zien hoe u de activiteit-ID gebruikt en de bewerkingen vindt die hieraan zijn gekoppeld in het activiteiten logboek:
 
-:::image type="content" source="./media/audit-control-plane-logs/find-operations-with-activity-id.png" alt-text="De activiteit-ID gebruiken en de bewerkingen vinden":::
+:::image type="content" source="./media/audit-control-plane-logs/find-operations-with-activity-id.png" alt-text="Registratie van aanvragen voor beheer vlak inschakelen":::
 
 ## <a name="control-plane-operations-for-azure-cosmos-account"></a>Bewerkingen voor het beheer vlak voor Azure Cosmos-account
 
@@ -209,6 +209,21 @@ AzureActivity
 | summarize by Caller, HTTPRequest, activityId_g)
 on activityId_g
 | project Caller, activityId_g
+```
+
+Query voor het ophalen van index-of TTL-updates. U kunt de uitvoer van deze query vervolgens vergelijken met een eerdere update om de wijziging in de index of TTL te bekijken.
+
+```Kusto
+AzureDiagnostics
+| where Category =="ControlPlaneRequests"
+| where  OperationName == "SqlContainersUpdate"
+| project resourceDetails_s
+```
+
+**uitvoer**
+
+```json
+{id:skewed,indexingPolicy:{automatic:true,indexingMode:consistent,includedPaths:[{path:/*,indexes:[]}],excludedPaths:[{path:/_etag/?}],compositeIndexes:[],spatialIndexes:[]},partitionKey:{paths:[/pk],kind:Hash},defaultTtl:1000000,uniqueKeyPolicy:{uniqueKeys:[]},conflictResolutionPolicy:{mode:LastWriterWins,conflictResolutionPath:/_ts,conflictResolutionProcedure:}
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

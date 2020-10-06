@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 10/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 1a1ce22cd700368d630d70912ea266d16fd772bf
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: bab81809f42c9afa3d2c701398fa5ff8ffc2800d
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87925206"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91744165"
 ---
 # <a name="cabling-options-for-your-azure-data-box"></a>Bekabelingsopties voor uw Azure Data Box
 
@@ -105,7 +105,7 @@ Voer de volgende stappen uit om uw apparaat te bekabelen.
    - **IP-adres**: 192.168.100.5
    - **Subnet**: 255.255.255.0.
 
-     ![Installatie met twee poorten met een switch](media/data-box-cable-options/cabling-with-switch-static-ip.png)
+     ![Twee poort instellingen met een switch 2](media/data-box-cable-options/cabling-with-switch-static-ip.png)
 
 3. Open de lokale webgebruikersinterface van het apparaat op 192.168.100.10. Meld u aan en ontgrendel de Data Box met behulp van het wachtwoord voor ontgrendelen op de Azure-portal.
 4. Wijs statische IP-adressen toe aan de gegevenspoorten die u hebt geconfigureerd.
@@ -125,7 +125,7 @@ Voer de volgende stappen uit om uw apparaat te bekabelen.
 
 1. Gebruik een RJ45- of SFP +-kabel via een switch (waar de DHCP-server toegankelijk is) naar de server.
 
-    ![Installatie met twee poorten met een switch](media/data-box-cable-options/cabling-dhcp-data-only.png)
+    ![Twee poort instellingen met een switch 3](media/data-box-cable-options/cabling-dhcp-data-only.png)
 2. Gebruik de DHCP-server of DNS-server voor het identificeren van het IP-adres.
 3. Open vanaf een server op hetzelfde netwerk de lokale webgebruikersinterface van het apparaat met behulp van het IP-adres dat door de DHCP-server is toegewezen. Meld u aan en ontgrendel de Data Box met behulp van het wachtwoord voor ontgrendelen op de Azure-portal.
 

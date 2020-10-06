@@ -10,12 +10,12 @@ author: jpe316
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 28401b5900640ed7228d7c7caad0cebbabf00a65
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: f0c923bcb7df930ed4b1380d487ededc6c160844
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91532717"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743740"
 ---
 # <a name="train-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Scikit trainen-modellen op schaal leren met Azure Machine Learning
 
@@ -66,9 +66,17 @@ Opmerkingen:
 
 Als u de Azure ML- [omgeving](concept-environments.md) wilt definiëren waarin de afhankelijkheden van uw trainings script worden ingekapseld, kunt u een aangepaste omgeving of gebruik en Azure ml-omgeving definiëren.
 
+#### <a name="use-a-curated-environment"></a>Een gecuratore omgeving gebruiken
+Azure ML biedt eventueel vooraf ontwikkelde, gegroepeerde omgevingen als u uw eigen omgeving niet wilt definiëren. Zie [hier](resource-curated-environments.md)voor meer informatie.
+Als u een gewerkte omgeving wilt gebruiken, kunt u in plaats daarvan de volgende opdracht uitvoeren:
+
+```python
+sklearn_env = Environment.get(workspace=ws, name='AzureML-Tutorial')
+```
+
 #### <a name="create-a-custom-environment"></a>Een aangepaste omgeving maken
 
-Als u uw eigen aangepaste omgeving wilt maken, definieert u de Conda-afhankelijkheden in een YAML-bestand. in dit voor beeld heeft het bestand de naam `conda_dependencies.yml` .
+U kunt ook uw eigen aangepaste omgeving maken. Definieer uw Conda-afhankelijkheden in een YAML-bestand. in dit voor beeld heeft het bestand de naam `conda_dependencies.yml` .
 
 ```yaml
 dependencies:
@@ -87,14 +95,6 @@ sklearn_env = Environment.from_conda_specification(name='sklearn-env', file_path
 ```
 
 Zie [software omgevingen maken en gebruiken in azure machine learning](how-to-use-environments.md)voor meer informatie over het maken van en het gebruik van omgevingen.
-
-#### <a name="use-a-curated-environment"></a>Een gecuratore omgeving gebruiken
-Azure ML biedt eventueel vooraf ontwikkelde, gegroepeerde omgevingen als u geen eigen installatie kopie wilt maken. Zie [hier](resource-curated-environments.md)voor meer informatie.
-Als u een gewerkte omgeving wilt gebruiken, kunt u in plaats daarvan de volgende opdracht uitvoeren:
-
-```python
-sklearn_env = Environment.get(workspace=ws, name='AzureML-Tutorial')
-```
 
 ## <a name="configure-and-submit-your-training-run"></a>Uw trainings uitvoering configureren en verzenden
 

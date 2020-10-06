@@ -2,13 +2,13 @@
 title: Persoonlijke koppeling instellen
 description: Stel een persoonlijk eind punt in op een container register en Schakel toegang in via een persoonlijke koppeling in een lokaal virtueel netwerk. Toegang voor persoonlijke koppelingen is een functie van de laag Premium-Service.
 ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: da07d35ad944db8e9b8a7bac0602fff23cd222d8
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.date: 10/01/2020
+ms.openlocfilehash: 793003edea853922f78b36f0dc1a6e35205cdadb
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89488742"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743638"
 ---
 # <a name="connect-privately-to-an-azure-container-registry-using-azure-private-link"></a>Persoonlijke verbinding maken met een Azure container Registry met behulp van een persoonlijke Azure-koppeling
 
@@ -79,7 +79,7 @@ az network vnet subnet update \
 
 ### <a name="configure-the-private-dns-zone"></a>De privé-DNS-zone configureren
 
-Maak een privé-DNS-zone voor het persoonlijke Azure-container register domein. In latere stappen maakt u DNS-records voor uw register domein in deze DNS-zone.
+Maak een [privé-DNS-zone](../dns/private-dns-privatednszone.md) voor het persoonlijke Azure-container register domein. In latere stappen maakt u DNS-records voor uw register domein in deze DNS-zone.
 
 Als u een privé zone wilt gebruiken om de standaard DNS-omzetting voor uw Azure container Registry te overschrijven, moet de zone de naam **privatelink.azurecr.io**. Voer de volgende [AZ Network private-DNS zone Create][az-network-private-dns-zone-create] opdracht uit om de privé zone te maken:
 
@@ -247,11 +247,11 @@ Stel een persoonlijke koppeling in wanneer u een REGI ster maakt of Voeg een per
 
     | Instelling | Waarde |
     | ------- | ----- |
-    |Verbindingsmethode  | Selecteer **verbinding maken met een Azure-resource in mijn Directory**.|
+    |Verbindingsmethode  | Selecteer **Verbinding maken met een Azure-resource in mijn directory**.|
     | Abonnement| Selecteer uw abonnement. |
     | Resourcetype | Selecteer **micro soft. ContainerRegistry/registers**. |
     | Resource |De naam van het REGI ster selecteren|
-    |Doel-subresource |**REGI ster** selecteren|
+    |Subresource van doel |**REGI ster** selecteren|
     |||
 7. Selecteer **Volgende: Configuratie**.
 8. Voer de volgende gegevens in of Selecteer deze:
@@ -306,28 +306,46 @@ U moet controleren of de resources binnen het subnet van het particuliere eind p
 
 Als u de verbinding met de persoonlijke koppeling wilt valideren, moet u SSH naar de virtuele machine die u in het virtuele netwerk hebt ingesteld.
 
-Voer de `nslookup` opdracht uit om het IP-adres van het REGI ster via de persoonlijke koppeling op te lossen:
+Voer een hulp programma uit, zoals `nslookup` of `dig` om het IP-adres van het REGI ster via de persoonlijke koppeling op te zoeken. Bijvoorbeeld:
 
 ```bash
-nslookup $REGISTRY_NAME.azurecr.io
+dig $REGISTRY_NAME.azurecr.io
 ```
 
 Voorbeeld uitvoer toont het IP-adres van het REGI ster in de adres ruimte van het subnet:
 
 ```console
 [...]
-myregistry.azurecr.io       canonical name = myregistry.privatelink.azurecr.io.
-Name:   myregistry.privatelink.azurecr.io
-Address: 10.0.0.6
+; <<>> DiG 9.11.3-1ubuntu1.13-Ubuntu <<>> myregistry.azurecr.io
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 52155
+;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 65494
+;; QUESTION SECTION:
+;myregistry.azurecr.io.         IN      A
+
+;; ANSWER SECTION:
+myregistry.azurecr.io.  1783    IN      CNAME   myregistry.privatelink.azurecr.io.
+myregistry.privatelink.azurecr.io. 10 IN A      10.0.0.7
+
+[...]
 ```
 
-Vergelijk dit resultaat met het open bare IP-adres in `nslookup` uitvoer voor hetzelfde REGI ster via een openbaar eind punt:
+Vergelijk dit resultaat met het open bare IP-adres in `dig` uitvoer voor hetzelfde REGI ster via een openbaar eind punt:
 
 ```console
 [...]
-Non-authoritative answer:
-Name:   myregistry.westeurope.cloudapp.azure.com
-Address: 40.78.103.41
+;; ANSWER SECTION:
+myregistry.azurecr.io.  2881    IN  CNAME   myregistry.privatelink.azurecr.io.
+myregistry.privatelink.azurecr.io. 2881 IN CNAME xxxx.xx.azcr.io.
+xxxx.xx.azcr.io.    300 IN  CNAME   xxxx-xxx-reg.trafficmanager.net.
+xxxx-xxx-reg.trafficmanager.net. 300 IN CNAME   xxxx.westeurope.cloudapp.azure.com.
+xxxx.westeurope.cloudapp.azure.com. 10  IN A 20.45.122.144
+
+[...]
 ```
 
 ### <a name="registry-operations-over-private-link"></a>Register bewerkingen via een persoonlijke koppeling
@@ -361,9 +379,15 @@ Wanneer u een verbinding met een privé-eind punt instelt met behulp van de stap
 
 ## <a name="add-zone-records-for-replicas"></a>Zone records voor replica's toevoegen
 
-Als u in dit artikel een verbinding met een persoonlijk eind punt toevoegt aan een REGI ster, worden er DNS-records in de `privatelink.azurecr.io` zone gemaakt voor het REGI ster en de bijbehorende gegevens eindpunten in de regio's waarnaar het REGI ster wordt [gerepliceerd](container-registry-geo-replication.md). 
+Als u in dit artikel een verbinding met een privé-eind punt aan een REGI ster toevoegt, maakt u DNS-records in de `privatelink.azurecr.io` zone voor het REGI ster en de bijbehorende gegevens eindpunten in de regio's waarnaar het REGI ster wordt [gerepliceerd](container-registry-geo-replication.md). 
 
 Als u later een nieuwe replica toevoegt, moet u hand matig een nieuwe zone record toevoegen voor het eind punt van de gegevens in die regio. Als u bijvoorbeeld een replica van *myregistry* op de locatie *northeurope* maakt, voegt u een zone record toe voor `myregistry.northeurope.data.azurecr.io` . Zie [DNS-records maken in de privé zone](#create-dns-records-in-the-private-zone) in dit artikel voor instructies.
+
+## <a name="dns-configuration-options"></a>Opties voor DNS-configuratie
+
+Het persoonlijke eind punt in dit voor beeld is geïntegreerd met een privé-DNS-zone die is gekoppeld aan een basis-virtueel netwerk. Deze instelling maakt gebruik van de door Azure verschafte DNS-service om de open bare FQDN van het REGI ster te herstellen naar het privé-IP-adres in het virtuele netwerk. 
+
+Persoonlijke koppeling ondersteunt extra DNS-configuratie scenario's die gebruikmaken van de privé zone, met inbegrip van aangepaste DNS-oplossingen. U hebt bijvoorbeeld een aangepaste DNS-oplossing die is geïmplementeerd in het virtuele netwerk, of on-premises in een netwerk waarmee u verbinding maakt met het virtuele netwerk met behulp van een VPN-gateway. Als u in deze scenario's de open bare FQDN van het REGI ster wilt omzetten naar het privé-IP-adres, moet u een doorstuur server voor de Azure DNS-service configureren (168.63.129.16). De exacte configuratie opties en stappen zijn afhankelijk van uw bestaande netwerken en DNS. Zie voor beelden [Azure private endpoint DNS-configuratie](../private-link/private-endpoint-dns.md).
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

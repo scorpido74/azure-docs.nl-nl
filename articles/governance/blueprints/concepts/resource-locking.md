@@ -1,14 +1,14 @@
 ---
 title: Bron vergrendeling begrijpen
 description: Meer informatie over de vergrendelings opties in azure blauw drukken om resources te beveiligen wanneer u een blauw druk toewijst.
-ms.date: 08/27/2020
+ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 30d5528b4613dc04d1e825d10e11b7eeadc57698
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 8ac5c918a3c370b9d8e88800e05f83e585550e3c
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91534859"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91744012"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Meer informatie over het vergren delen van resources in azure-blauw drukken
 
@@ -109,8 +109,8 @@ De [Eigenschappen](../../../role-based-access-control/deny-assignments.md#deny-a
 
 |Modus |Machtigingen. acties |Machtigingen. intact |Principals [i]. Voert |ExcludePrincipals [i]. Id | DoNotApplyToChildScopes |
 |-|-|-|-|-|-|
-|Alleen-lezen |**\*** |**\*/read** |SystemDefined (iedereen) |blauw druk toewijzen en door de gebruiker gedefinieerd in **excludedPrincipals** |Resource groep- _True_; Resource- _False_ |
-|Niet verwijderen |**\*/Delete** | |SystemDefined (iedereen) |blauw druk toewijzen en door de gebruiker gedefinieerd in **excludedPrincipals** |Resource groep- _True_; Resource- _False_ |
+|Alleen-lezen |**\*** |**\*/read**<br />**Micro soft. autorisatie/vergren delen/verwijderen**<br />**Micro soft. Network/virtualNetwork/subnetten/toevoegen/actie** |SystemDefined (iedereen) |blauw druk toewijzen en door de gebruiker gedefinieerd in **excludedPrincipals** |Resource groep- _True_; Resource- _False_ |
+|Niet verwijderen |**\*/Delete** | **Micro soft. autorisatie/vergren delen/verwijderen**<br />**Micro soft. Network/virtualNetwork/subnetten/toevoegen/actie** |SystemDefined (iedereen) |blauw druk toewijzen en door de gebruiker gedefinieerd in **excludedPrincipals** |Resource groep- _True_; Resource- _False_ |
 
 > [!IMPORTANT]
 > Met Azure Resource Manager worden de gegevens van de roltoewijzing Maxi maal 30 minuten in de cache opgeslagen. Als gevolg hiervan is het weigeren van de toewijzingen voor het weigeren van een actie op blauw drukken-resources mogelijk niet onmiddellijk volledig van kracht. Tijdens deze periode is het mogelijk om een resource te verwijderen die is bedoeld om te worden beveiligd door de vergren delingen van blauw drukken.

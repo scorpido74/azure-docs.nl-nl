@@ -7,12 +7,12 @@ ms.date: 09/30/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: faf7a6e0331e3891c2ece7461685b14e751c0894
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 52ac5b89a0c7173b9b2585f84b5f34361b4b136c
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/05/2020
-ms.locfileid: "91713051"
+ms.locfileid: "91744216"
 ---
 # <a name="diagnose-private-links-configuration-issues-on-azure-key-vault"></a>Problemen met de configuratie van particuliere koppelingen diagnosticeren op Azure Key Vault
 
@@ -22,7 +22,7 @@ Dit artikel helpt gebruikers bij het vaststellen en oplossen van problemen met b
 
 Als u geen ervaring hebt met deze functie, raadpleegt u [Key Vault integreren met Azure private link](private-link-service.md).
 
-### <a name="symptoms-covered-by-this-article"></a>Symptomen die in dit artikel worden behandeld
+### <a name="problems-covered-by-this-article"></a>Problemen die in dit artikel worden behandeld
 
 - Uw DNS-query's retour neren nog steeds een openbaar IP-adres voor de sleutel kluis in plaats van een privé-IP-adres dat u zou verwachten van het gebruik van de functie persoonlijke koppelingen.
 - Alle aanvragen van een bepaalde client die een privé koppeling gebruiken, mislukken met time-outs of netwerk fouten en het probleem treedt niet op.
@@ -31,7 +31,7 @@ Als u geen ervaring hebt met deze functie, raadpleegt u [Key Vault integreren me
 - Uw sleutel kluis heeft twee privé-eind punten. Aanvragen met één werken prima, maar aanvragen die gebruikmaken van de andere, mislukken.
 - U hebt een ander abonnement, een sleutel kluis of een virtueel netwerk dat persoonlijke koppelingen gebruikt. U wilt een nieuwe, vergelijk bare implementatie maken, maar u kunt geen persoonlijke koppelingen verkrijgen om daar te werken.
 
-### <a name="symptoms-not-covered-by-this-article"></a>Problemen die niet onder dit artikel vallen
+### <a name="problems-not-covered-by-this-article"></a>Problemen die niet onder dit artikel vallen
 
 - Er is een probleem met de verbinding. In een bepaalde client ziet u dat sommige aanvragen werken en sommige niet werken. *Tijdelijke problemen worden meestal niet veroorzaakt door een probleem in de configuratie van particuliere koppelingen; ze zijn een teken van netwerk-of client overbelasting.*
 - U gebruikt een Azure-product dat ondersteuning biedt voor BYOK (Bring Your Own Key) of CMK (door de klant beheerde sleutels), en dat product heeft geen toegang tot uw sleutel kluis. *Bekijk de andere product documentatie. Zorg ervoor dat het expliciet ondersteuning biedt voor sleutel kluizen waarvoor de firewall is ingeschakeld. Neem zo nodig contact op met de product ondersteuning voor dat specifieke product.*
@@ -188,7 +188,7 @@ Het belangrijkste verschil van het vorige scenario is dat er een nieuwe alias me
 
 Dit betekent niet dat aanvragen die worden uitgevoerd vanaf computers *buiten* de Virtual Network (zoals de versie die u zojuist hebt gebruikt) persoonlijke koppelingen gebruiken. U kunt zien dat de hostnaam nog steeds wordt omgezet in een openbaar IP-adres. Alleen computers *die zijn verbonden met de Virtual Network* kunnen persoonlijke koppelingen gebruiken. Meer informatie vindt u hier.
 
-Als u de alias niet ziet `privatelink` , betekent dit dat de sleutel kluis nul verbindingen met een privé-eind punt heeft `Approved` . Ga door met het lezen van dit artikel.
+Als u de alias niet ziet `privatelink` , betekent dit dat de sleutel kluis nul verbindingen met een privé-eind punt heeft `Approved` . Ga terug naar [deze sectie](#2-confirm-that-the-connection-is-approved-and-succeeded) voordat u het opnieuw probeert.
 
 ### <a name="key-vault-with-private-link-resolving-from-virtual-network"></a>Sleutel kluis met het oplossen van een persoonlijke koppeling van Virtual Network
 
@@ -210,7 +210,7 @@ Linux:
     fabrikam.vault.azure.net is an alias for fabrikam.privatelink.vaultcore.azure.net.
     fabrikam.privatelink.vaultcore.azure.net has address 10.1.2.3
 
-Er zijn twee belang rijke verschillen. Eerst wordt de naam omgezet in een privé-IP-adres. Dit moet het IP-adres zijn dat we hebben gevonden in de [bijbehorende sectie](#find-the-key-vault-private-ip-address-in-the-virtual-network) van dit artikel. Ten tweede zijn er geen andere aliassen aanwezig `privatelink` . Dit gebeurt omdat de DNS-servers van Virtual Network de keten van aliassen *onderscheppen* en het privé-IP-adres rechtstreeks vanuit de naam retour neren `fabrikam.privatelink.vaultcore.azure.net` . Deze vermelding is eigenlijk een `A` record in een privé-DNS zone. Meer informatie vindt u hier.
+Er zijn twee belang rijke verschillen. Eerst wordt de naam omgezet in een privé-IP-adres. Dit moet het IP-adres zijn dat we hebben gevonden in de [bijbehorende sectie](#find-the-key-vault-private-ip-address-in-the-virtual-network) van dit artikel. Ten tweede zijn er geen andere aliassen aanwezig `privatelink` . Dit gebeurt omdat de DNS-servers van Virtual Network de keten van aliassen *onderschept* en het privé-IP-adres rechtstreeks vanuit de naam retour neren `fabrikam.privatelink.vaultcore.azure.net` . Deze vermelding is eigenlijk een `A` record in een privé-DNS zone. Meer informatie vindt u hier.
 
 >[!NOTE]
 > Het bovenstaande resultaat wordt alleen uitgevoerd op een virtuele machine die is verbonden met de Virtual Network waar het persoonlijke eind punt is gemaakt. Als u geen VM hebt geïmplementeerd in de Virtual Network die het persoonlijke eind punt bevat, implementeert u er een en maakt u er extern verbinding mee en voert u de `nslookup` opdracht (Windows) of de `host` opdracht (Linux) uit.

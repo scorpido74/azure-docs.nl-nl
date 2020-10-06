@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 10/23/2017
 ms.author: alkohli
-ms.openlocfilehash: dff1d8f48b275fa7e45dab93b5ce45962499b450
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 8b74e23147e4dcc6f786c1c08b8a03bd07dd0b9a
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563876"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91744029"
 ---
 # <a name="use-azure-automation-runbooks-to-manage-storsimple-devices"></a>Azure Automation runbooks gebruiken voor het beheren van StorSimple-apparaten
 
@@ -85,7 +85,7 @@ Voer de volgende stappen uit om een Automation-module te maken voor het StorSimp
 
 6. Controleer of een zip-bestand van de Automation-module is gemaakt in `C:\scripts\StorSimpleSDKTools` .
 
-    ![Scherm afbeelding toont de map StorSimpleSDKTools met het zip-bestand van de Automation-module.](./media/storsimple-8000-automation-azurerm-runbook/verify-automation-module.png)
+    ![Scherm opname toont de map StorSimpleSDKTools met het zip-bestand van de Automation-module](./media/storsimple-8000-automation-azurerm-runbook/verify-automation-module.png)
 
 7. De volgende uitvoer wordt weer gegeven wanneer de Automation-module wordt gemaakt via de Windows Power shell.
 
@@ -184,7 +184,7 @@ Voer de volgende stappen uit om een Automation-module te maken voor het StorSimp
    5. Zorg ervoor dat de optie standaard **uitvoeren als-account maken** is geselecteerd.
    6. Controleer eventueel **vastmaken aan dash board**. Klik op **Create**.
 
-       ![Scherm afbeelding toont het deel venster Automation-account toevoegen met waarden voor abonnement, een uitvoeren als-account voor Azure maken en maken.](./media/storsimple-8000-automation-azurerm-runbook/create-automation-account.png)
+       ![Scherm afbeelding toont het deel venster Automation-account toevoegen met waarden voor abonnement, een uitvoeren als-account voor Azure maken en 2 maken](./media/storsimple-8000-automation-azurerm-runbook/create-automation-account.png)
 
       Nadat het Automation-account is gemaakt, wordt u hiervan op de hoogte gebracht. Ga naar [een uitvoeren als-account maken](https://docs.microsoft.com/azure/automation/automation-create-runas-account)voor meer informatie over het maken van een Automation-account.
 
@@ -196,7 +196,7 @@ Voer de volgende stappen uit om een Automation-module te maken voor het StorSimp
 
 5. Blader op de Blade **module toevoegen** naar de locatie van de gezipte module en selecteer en open de module. Klik op **OK**.
 
-    ![Scherm afbeelding toont het deel venster module toevoegen met een waarde voor het uploaden van bestanden en OK.](./media/storsimple-8000-automation-azurerm-runbook/add-module.png)
+    ![Scherm afbeelding toont het deel venster module toevoegen met een waarde voor het uploaden van bestanden en OK](./media/storsimple-8000-automation-azurerm-runbook/add-module.png)
 
 6. Ga naar **proces automatisering > Runbooks en klik op + een Runbook toevoegen**. Klik op **een bestaand Runbook importeren**op de Blade **runbook toevoegen** . Ga naar het Windows Power shell-script bestand voor het **Runbook-bestand**. Het type runbook wordt automatisch geselecteerd. Geef een naam en een optionele beschrijving voor het runbook op. Klik op **Create**.
 
@@ -208,11 +208,11 @@ Voer de volgende stappen uit om een Automation-module te maken voor het StorSimp
 
 8. Bewerk het runbook en klik op **test venster**. Geef de para meters op, zoals de naam van de StorSimple-Apparaatbeheer service, de naam van het StorSimple-apparaat en het-abonnement. **Start** de test. Het rapport wordt gegenereerd wanneer de uitvoering is voltooid. Ga voor meer informatie naar [How to test a runbook](../automation/automation-first-runbook-textual-powershell.md#step-3---test-the-runbook).
 
-    ![Scherm afbeelding toont de test pan waar u parameter waarden canenter en een test starten.](./media/storsimple-8000-automation-azurerm-runbook/test-runbook.png)
+    ![Scherm afbeelding toont de test pan waar u parameter waarden canenter en een test start](./media/storsimple-8000-automation-azurerm-runbook/test-runbook.png)
 
 9. Controleer de uitvoer van het runbook in het test venster. Als u tevreden bent, sluit u het deel venster. Klik op **publiceren** en wanneer u wordt gevraagd om bevestiging, bevestig het runbook en publiceer het.
 
-    ![Scherm afbeelding toont het deel venster Power shell-Runbook bewerken, waarin u wordt gevraagd om door te gaan met het publiceren van het Runbook.](./media/storsimple-8000-automation-azurerm-runbook/publish-runbook.png)
+    ![Scherm afbeelding toont het deel venster Power shell-Runbook bewerken waarin wordt gevraagd of u wilt door gaan met het publiceren van het Runbook](./media/storsimple-8000-automation-azurerm-runbook/publish-runbook.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

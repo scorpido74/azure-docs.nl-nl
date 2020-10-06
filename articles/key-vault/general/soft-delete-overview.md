@@ -6,14 +6,13 @@ ms.subservice: general
 ms.topic: conceptual
 author: msmbaldwin
 ms.author: mbaldwin
-manager: rkarlin
-ms.date: 03/19/2019
-ms.openlocfilehash: 1affa396407ba9804261c799b559e40928b9b1fa
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.date: 09/30/2020
+ms.openlocfilehash: c8ae10fa059bb9cfd32b95f9bc6d21f30ad9f880
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87388385"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91744199"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault: overzicht van voorlopig verwijderen
 
@@ -28,7 +27,7 @@ Met de functie voor het tijdelijk verwijderen van Key Vault kunt u de verwijderd
 
 ## <a name="supporting-interfaces"></a>Ondersteunende interfaces
 
-De functie voor voorlopig verwijderen is in eerste instantie beschikbaar via de [rest](/rest/api/keyvault/)-, [cli](soft-delete-cli.md)-, [Power shell](soft-delete-powershell.md)-en [.net/C#](/dotnet/api/microsoft.azure.keyvault?view=azure-dotnet) -interfaces, evenals [arm-sjablonen](https://docs.microsoft.com/azure/templates/microsoft.keyvault/2019-09-01/vaults).
+De functie voor voorlopig verwijderen is beschikbaar via de [rest API](/rest/api/keyvault/), de [Azure cli](soft-delete-cli.md), [Azure PowerShell](soft-delete-powershell.md)en [.net/C#](/dotnet/api/microsoft.azure.keyvault?view=azure-dotnet) -interfaces, evenals arm- [sjablonen](/azure/templates/microsoft.keyvault/2019-09-01/vaults).
 
 ## <a name="scenarios"></a>Scenario's
 
@@ -48,13 +47,13 @@ De standaard retentie periode is 90 dagen, maar tijdens het maken van de sleutel
 
 U kunt de naam van een sleutel kluis die zacht is verwijderd, niet opnieuw gebruiken totdat de Bewaar periode is verstreken.
 
-### <a name="purge-protection"></a>Beveiliging opschonen 
+### <a name="purge-protection"></a>Beveiliging opschonen
 
 Het opschonen van de beveiliging is een optioneel Key Vault gedrag en is **standaard niet ingeschakeld**. Het opschonen van de beveiliging kan alleen worden ingeschakeld wanneer het voorlopig verwijderen is ingeschakeld.  Deze kan worden ingeschakeld via [cli](soft-delete-cli.md#enabling-purge-protection) of [Power shell](soft-delete-powershell.md#enabling-purge-protection).
 
-Wanneer het leegmaken van de beveiliging is ingeschakeld, kan een kluis of een object in de verwijderde status pas worden verwijderd nadat de Bewaar periode is verstreken. Voorlopig verwijderde kluizen en objecten kunnen nog steeds worden hersteld, zodat het Bewaar beleid wordt gevolgd. 
+Wanneer het leegmaken van de beveiliging is ingeschakeld, kan een kluis of een object in de verwijderde status pas worden verwijderd nadat de Bewaar periode is verstreken. Voorlopig verwijderde kluizen en objecten kunnen nog steeds worden hersteld, zodat het Bewaar beleid wordt gevolgd.
 
-De standaard retentie periode is 90 dagen, maar het is mogelijk om het interval voor het Bewaar beleid in te stellen op een waarde van 7 tot 90 dagen via de Azure Portal. Zodra het interval voor het Bewaar beleid is ingesteld en opgeslagen, kan het niet meer worden gewijzigd voor die kluis. 
+De standaard retentie periode is 90 dagen, maar het is mogelijk om het interval voor het Bewaar beleid in te stellen op een waarde van 7 tot 90 dagen via de Azure Portal. Zodra het interval voor het Bewaar beleid is ingesteld en opgeslagen, kan het niet meer worden gewijzigd voor die kluis.
 
 ### <a name="permitted-purge"></a>Toegestaan opschonen
 
@@ -63,6 +62,8 @@ Permanent verwijderen, opschonen, een sleutel kluis is mogelijk via een POST-bew
 Uitzonde ringen zijn:
 - Wanneer het Azure-abonnement is gemarkeerd als niet- *verwijderd*. In dit geval kan de service de daad werkelijke verwijdering vervolgens uitvoeren, en dit als een gepland proces. 
 - Wanneer de `--enable-purge-protection flag` is ingeschakeld op de kluis zelf. In dit geval wacht Key Vault 90 dagen vanaf het moment dat het oorspronkelijke geheime object werd gemarkeerd voor verwijdering, zodat het object definitief kan worden verwijderd.
+
+Zie [How to use key Vault soft-delete with cli](soft-delete-cli.md#purging-a-key-vault) (Engelstalig) voor meer informatie over het gebruik van een sleutel kluis of [het gebruiken van Key Vault soft-delete met Power shell: een sleutel kluis opschonen](soft-delete-powershell.md#purging-a-key-vault).
 
 ### <a name="key-vault-recovery"></a>Herstel van sleutel kluis
 
@@ -79,10 +80,10 @@ Tegelijkertijd plant Key Vault de verwijdering van de onderliggende gegevens die
 Zacht verwijderde resources worden gedurende een bepaalde periode (90 dagen) bewaard. Het volgende is van toepassing tijdens het Bewaar interval voor voorlopig verwijderen:
 
 - U kunt alle sleutel kluizen en sleutel kluis objecten in de verzachtte verwijderings status van uw abonnement vermelden, evenals de toegang voor het verwijderen en herstellen van de gegevens.
-    - Alleen gebruikers met speciale machtigingen kunnen verwijderde kluizen weer geven. We raden aan dat onze gebruikers een aangepaste rol maken met deze speciale machtigingen voor het afhandelen van verwijderde kluizen.
-- Een sleutel kluis met dezelfde naam kan niet op dezelfde locatie worden gemaakt. een sleutel kluis object kan niet worden gemaakt in een bepaalde kluis als deze sleutel kluis een object met dezelfde naam en een verwijderde status bevat 
+  - Alleen gebruikers met speciale machtigingen kunnen verwijderde kluizen weer geven. We raden aan dat onze gebruikers een aangepaste rol maken met deze speciale machtigingen voor het afhandelen van verwijderde kluizen.
+- Een sleutel kluis met dezelfde naam kan niet op dezelfde locatie worden gemaakt. een sleutel kluis object kan niet worden gemaakt in een bepaalde kluis als deze sleutel kluis een object met dezelfde naam en een verwijderde status bevat.
 - Alleen een specifiek bevoegde gebruiker kan een sleutel kluis of een sleutel kluis object herstellen door een herstel opdracht uit te geven voor de bijbehorende proxy resource.
-    - De gebruiker, het lid van de aangepaste rol, met de bevoegdheid om een sleutel kluis te maken onder de resource groep kan de kluis herstellen.
+  - De gebruiker, het lid van de aangepaste rol, met de bevoegdheid om een sleutel kluis te maken onder de resource groep kan de kluis herstellen.
 - Alleen een specifiek bevoegde gebruiker kan een sleutel kluis of een sleutel kluis object verwijderen door een verwijder opdracht uit te geven voor de bijbehorende proxy resource.
 
 Tenzij een sleutel kluis of sleutel kluis object wordt hersteld, wordt aan het einde van de Bewaar termijn de service een schone verwijdering van de tijdelijke, verwijderde sleutel kluis of het sleutel kluis-object en de bijbehorende inhoud uitgevoerd. Het verwijderen van resources kan niet opnieuw worden gepland.
@@ -100,4 +101,3 @@ De volgende twee hand leidingen bieden de primaire gebruiks scenario's voor het 
 
 - [De Key Vault-functie voor voorlopig verwijderen gebruiken met PowerShell](soft-delete-powershell.md) 
 - [De Key Vault-functie voor voorlopig verwijderen gebruiken met CLI](soft-delete-cli.md)
-

@@ -3,17 +3,17 @@ title: De beschik baarheid van Azure Cosmos-Sdk's in multiregionale omgevingen v
 description: Meer informatie over de beschik baarheid van Azure Cosmos SDK als u in meerdere regionale omgevingen werkt.
 author: ealsur
 ms.service: cosmos-db
-ms.date: 09/24/2020
+ms.date: 10/05/2020
 ms.author: maquaran
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 8dd7ced2dfcfd3c555555d6f0a197623bd8726f2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 400795d20b6e7ad919f5cbbfa6078987bb65297e
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330431"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743961"
 ---
 # <a name="diagnose-and-troubleshoot-the-availability-of-azure-cosmos-sdks-in-multiregional-environments"></a>De beschik baarheid van Azure Cosmos-Sdk's in multiregionale omgevingen vaststellen en oplossen
 
@@ -24,7 +24,7 @@ Alle Azure Cosmos Sdk's bieden u een optie om de regionale voor keur aan te pass
 * De eigenschap [Connection Policy. PreferredLocations](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.preferredlocations) in de .NET v2-SDK.
 * De eigenschappen [CosmosClientOptions. ApplicationRegion](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.applicationregion) of [CosmosClientOptions. ApplicationPreferredRegions](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.applicationpreferredregions) in de .net v3-SDK.
 * De methode [CosmosClientBuilder. preferredRegions](/java/api/com.azure.cosmos.cosmosclientbuilder.preferredregions) in Java v4 SDK.
-* De para meter [CosmosClient. preferred_locations](/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient) in de node-SDK.
+* De [CosmosClient.preferred_locations](/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient) -para meter in de PYTHON-SDK.
 * De [CosmosClientOptions. Connection Policy. preferredLocations](/javascript/api/@azure/cosmos/connectionpolicy#preferredlocations) -para meter in de JS-SDK.
 
 Wanneer u de regionale voor keur instelt, zal de client verbinding maken met een regio zoals vermeld in de volgende tabel:
@@ -49,6 +49,8 @@ Wanneer een van de volgende scenario's optreedt, worden logboeken door de client
 * De eigenschap *RequestDiagnosticsString* op antwoorden in de .NET v2-SDK.
 * De *Diagnostische* eigenschap voor antwoorden en uitzonde ringen in de .net v3 SDK.
 * De methode *getDiagnostics ()* voor antwoorden en uitzonde ringen in Java v4 SDK.
+
+Bij het bepalen van de volgende regio in de volg orde van voor keur, gebruikt de SDK-client de lijst met account regio's, waarbij de prioriteit van de gewenste regio's (indien van toepassing) kan worden bepaald.
 
 Zie de [sla's voor Beschik baarheid](high-availability.md#slas-for-availability)voor uitgebreide informatie over sla-garanties tijdens deze gebeurtenissen.
 

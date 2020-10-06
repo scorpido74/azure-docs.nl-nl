@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: how-to
 ms.date: 05/24/2019
 ms.author: alkohli
-ms.openlocfilehash: d4622ae1fa87a47915094b7ab90390c753b82dbb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d0c45626016049424c8028eea7ffbd7f281e9012
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84609111"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91744148"
 ---
 # <a name="open-a-support-ticket-for-azure-data-box"></a>Open een ondersteunings ticket voor Azure Data Box
 
@@ -76,7 +76,7 @@ Nadat u een ondersteuningsticket hebt gemaakt, kunt u de voortgang van het ticke
 
 2. In **Help en ondersteuning**wordt een lijst in tabel vorm met **recente ondersteunings aanvragen** weer gegeven.
 
-    ![Ondersteunings aanvragen beheren](./media/data-box-disk-contact-microsoft-support/data-box-disk-manage-support-ticket2.png)
+    ![Ondersteunings aanvragen beheren 2](./media/data-box-disk-contact-microsoft-support/data-box-disk-manage-support-ticket2.png)
 
 3. Selecteer en klik op een ondersteunings aanvraag. U kunt de status en de Details voor deze aanvraag bekijken. Klik op **+ Nieuw bericht** als u deze aanvraag wilt opvolgen.
 

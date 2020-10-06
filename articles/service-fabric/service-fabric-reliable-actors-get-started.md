@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3727c41c991b83bc3869279cbb0535a6185ff04d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f775608c6c349c93a43ef4aef26ad50707cd39b7
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89015727"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743757"
 ---
 # <a name="getting-started-with-reliable-actors"></a>Aan de slag met Reliable Actors
 > [!div class="op_single_selector"]
@@ -108,7 +108,7 @@ Maak een eenvoudige console toepassing om de actor-service aan te roepen.
 
     Het NuGet-pakket en alle bijbehorende afhankelijkheden worden geïnstalleerd in het ActorClient-project.
 
-5. Het client project vereist ook een verwijzing naar het interfaces-project.  Klik in het project ActorClient met de rechter muisknop op **afhankelijkheden** en klik vervolgens op **verwijzing toevoegen...**.  Selecteer **projecten > oplossing** (als deze nog niet is geselecteerd) en tik vervolgens op het selectie vakje naast **HelloWorld. interfaces**.  Klik op **OK**.
+5. Het client project vereist ook een verwijzing naar het interfaces-project.  Klik in het project ActorClient met de rechter muisknop op **afhankelijkheden** en klik vervolgens op **project verwijzing toevoegen...**.  Selecteer **projecten > oplossing** (als deze nog niet is geselecteerd) en tik vervolgens op het selectie vakje naast **HelloWorld. interfaces**.  Klik op **OK**.
     
     ![Dialoog venster referentie toevoegen][7]
 

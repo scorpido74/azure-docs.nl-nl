@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: albecker1
 ms.author: albecker
 ms.date: 03/12/2020
-ms.openlocfilehash: f2b960c2198800e04da77ad6b5be78d7b4762354
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 623d9385b9ae6b13c8964f655fb973fe67a0918a
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79299801"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743706"
 ---
 # <a name="disk-metrics-deprecation-in-the-azure-portal"></a>Afschaffing van metrische schijf gegevens in de Azure Portal
 
@@ -44,38 +44,38 @@ Werk uw metrische waarschuwingen bij om nieuwe metrische gegevens te gebruiken.
 1. Zoek in het Azure Portal naar **waarschuwingen**. Kies vervolgens in de sectie **Services** **waarschuwingen**.
 
    > [!div class="mx-imgBorder"]
-   > ![Beschrijving van afbeelding](./media/portal-disk-metrics-deprecation/alert-service-azure-portal.png)
+   > ![Waarschuwings service](./media/portal-disk-metrics-deprecation/alert-service-azure-portal.png)
 
 2. Kies op de pagina **waarschuwingen** de knop **waarschuwings regels beheren** . 
 
    > [!div class="mx-imgBorder"]
-   > ![Beschrijving van afbeelding](./media/portal-disk-metrics-deprecation/manage-alert-rules-button.png)
+   > ![Waarschuwingsregels beheren](./media/portal-disk-metrics-deprecation/manage-alert-rules-button.png)
 
 3. Schakel in de vervolg keuzelijst **resource groep** het selectie vakje **virtual machines** in en selecteer in de vervolg keuzelijst **type signaal** het selectie vakje **metrische gegevens** . 
 
    > [!div class="mx-imgBorder"]
-   > ![Beschrijving van afbeelding](./media/portal-disk-metrics-deprecation/filter-alerts.png)
+   > ![Waarschuwingen filteren](./media/portal-disk-metrics-deprecation/filter-alerts.png)
 
 4. In de lijst met metrische gegevens identificeert u de voor waarden die betrekking hebben op schijven. Klik op de naam van de regel. 
 
    De naam wordt weer gegeven als een Hyper link in de kolom **naam** van de tabel.
 
    > [!div class="mx-imgBorder"]
-   > ![Beschrijving van afbeelding](./media/portal-disk-metrics-deprecation/find-disk-conditions.png)
+   > ![Schijf voorwaarden zoeken](./media/portal-disk-metrics-deprecation/find-disk-conditions.png)
 
 5. Klik in de sectie **voor waarden** van de pagina **regels beheren** op de voor waarde van de waarschuwing. 
 
    De voor waarde wordt weer gegeven als een Hyper link.  
 
    > [!div class="mx-imgBorder"]
-   > ![Beschrijving van afbeelding](./media/portal-disk-metrics-deprecation/adjust-condition.png)
+   > ![Voor waarden aanpassen](./media/portal-disk-metrics-deprecation/adjust-condition.png)
 
    De pagina **signaal logica configureren** wordt weer gegeven en de instellingen van de voor waarde worden weer gegeven in de sectie **waarschuwings logica** van die pagina.
 
 6. Maak een record van deze instellingen, omdat deze verdwijnen wanneer u de afgeschafte metriek verwijdert.
 
    > [!div class="mx-imgBorder"]
-   > ![Beschrijving van afbeelding](./media/portal-disk-metrics-deprecation/condition-rules.png)
+   > ![Regels voor voor waarden](./media/portal-disk-metrics-deprecation/condition-rules.png)
 
    > [!TIP] 
    > U kunt deze instellingen vastleggen in een scherm opname of in een tekst bestand. 
@@ -83,7 +83,7 @@ Werk uw metrische waarschuwingen bij om nieuwe metrische gegevens te gebruiken.
 7. Klik op de koppeling **terug naar signaal selectie** .
 
    > [!div class="mx-imgBorder"]
-   > ![Beschrijving van afbeelding](./media/portal-disk-metrics-deprecation/back-to-signal-selection.png)
+   > ![Terug naar signaal selectie](./media/portal-disk-metrics-deprecation/back-to-signal-selection.png)
 
 8. Kies op de pagina **signaal logica configureren** de juiste vervangings metriek (nieuwe metrische gegevens). Gebruik de [tabel](#update-metrics) die eerder in dit artikel wordt weer gegeven om de naam van de nieuwe metrische gegevens te identificeren.
 
@@ -91,17 +91,17 @@ Werk uw metrische waarschuwingen bij om nieuwe metrische gegevens te gebruiken.
    > Begin met typen in de zoek balk om de lijst met metrische namen te beperken. 
 
    > [!div class="mx-imgBorder"]
-   > ![Beschrijving van afbeelding](./media/portal-disk-metrics-deprecation/choose-new-metric.png)
+   > ![Nieuwe metrische gegevens kiezen](./media/portal-disk-metrics-deprecation/choose-new-metric.png)
 
 9. Klik op de knop **gereed** . 
 
    > [!div class="mx-imgBorder"]
-   > ![Beschrijving van afbeelding](./media/portal-disk-metrics-deprecation/set-new-metric.png)
+   > ![Nieuwe metriek instellen](./media/portal-disk-metrics-deprecation/set-new-metric.png)
 
 10. Sla uw wijzigingen op door de knop **Opslaan** te kiezen. 
 
     > [!div class="mx-imgBorder"]
-    > ![Beschrijving van afbeelding](./media/portal-disk-metrics-deprecation/save-new-metric.png)
+    > ![Nieuwe metrische gegevens opslaan](./media/portal-disk-metrics-deprecation/save-new-metric.png)
 
 
 

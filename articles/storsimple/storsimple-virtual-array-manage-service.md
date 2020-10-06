@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 2ff987448e3900c2a533789b2f38fd3ced71ce72
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 29ea9300b2f86f442d95c96d4a5df3364628d866
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84698934"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91744131"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-virtual-array"></a>De StorSimple Apparaatbeheer-service voor de virtuele StorSimple-matrix implementeren
 
@@ -109,7 +109,7 @@ Voer de volgende stappen uit om een service registratie sleutel opnieuw te gener
 #### <a name="to-regenerate-the-service-registration-key"></a>De service registratie sleutel opnieuw genereren
 1. Ga op de Blade **StorSimple Apparaatbeheer** naar **beheer &gt; ** **sleutels**.
    
-   ![De blade Sleutels](./media/storsimple-virtual-array-manage-service/getregkey2.png)
+   ![Blade sleutels opnieuw](./media/storsimple-virtual-array-manage-service/getregkey2.png)
 2. Klik op de Blade **sleutels** op **opnieuw genereren**.
    
    ![Klik op opnieuw genereren](./media/storsimple-virtual-array-manage-service/getregkey5.png)
@@ -118,7 +118,7 @@ Voer de volgende stappen uit om een service registratie sleutel opnieuw te gener
    ![Sleutel opnieuw genereren bevestigen](./media/storsimple-virtual-array-manage-service/getregkey3.png)
 4. Er wordt een nieuwe service registratie sleutel weer gegeven.
    
-    ![Sleutel opnieuw genereren bevestigen](./media/storsimple-virtual-array-manage-service/getregkey4.png)
+    ![Extra sleutel voor opnieuw genereren bevestigen](./media/storsimple-virtual-array-manage-service/getregkey4.png)
    
    Kopieer deze sleutel en sla deze op voor het registreren van nieuwe apparaten bij deze service.
 
