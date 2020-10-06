@@ -6,14 +6,14 @@ ms.author: marobert
 ms.date: 07/24/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: c67440453e5ca8395464369d75bfac418a564764
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: bb0af58c9abc4fad701b1d0927f4c13e1fdcca49
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90944799"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377379"
 ---
-In deze snelstart leert u hoe u een oproep start met behulp van de Azure Communication Services-clientbibliotheek voor iOS.
+In deze quickstart leert u hoe u een oproep start met behulp van de clientbibliotheek voor oproepen van Azure Communication Services voor iOS.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -28,26 +28,26 @@ Voor het voltooien van deze zelfstudie moet aan de volgende vereisten worden vol
 
 ### <a name="creating-the-xcode-project"></a>Het Xcode-project maken
 
-Maak in Xcode een nieuw iOS-project en selecteer de sjabloon **Single View-app** (Toepassing met één weergave). In deze zelfstudie wordt gebruik gemaakt van het[SwiftUI Framework](https://developer.apple.com/xcode/swiftui/). U moet dus de **taal** instellen naar **Swift** en de **Gebruikersinterface** naar **SwiftUI**. Tijdens deze snelstart gaat u geen moduletests of UI-tests maken. Voel u vrij om **Moduletest opnemen** en ook **UI-tests opnemen**uit te schakelen.
+Maak in Xcode een nieuw iOS-project en selecteer de sjabloon **Single View-app** (Toepassing met één weergave). In deze zelfstudie wordt gebruikgemaakt van het [SwiftUI-framework](https://developer.apple.com/xcode/swiftui/). U moet dus de **taal** instellen op **Swift** en de **gebruikersinterface** op **SwiftUI**. Tijdens deze quickstart maakt u geen tests. U kunt **Tests opnemen** uitschakelen.
 
-:::image type="content" source="../media/ios/xcode-new-ios-project.png" alt-text="Schermafbeelding dat het nieuw aangemaakte venster Nieuw Project in Xcode aantoont.":::
+:::image type="content" source="../media/ios/xcode-new-ios-project.png" alt-text="Schermafbeelding met het venster Nieuw project in Xcode.":::
 
 ### <a name="install-the-package"></a>Het pakket installeren
 
 Voeg de Azure Communication Services-clientbibliotheek en de bijbehorende afhankelijkheden (AzureCore.framework en AzureCommunication.framework) toe aan uw project.
 
 > [!NOTE]
-> Met de release van AzureCommunicationCalling SDK vindt u een bash-script `BuildAzurePackages.sh`. Het script wanneer u `sh ./BuildAzurePackages.sh` uitvoert, geeft u het pad naar de gegenereerde Framework-pakketten die in de volgende stap moeten worden geïmporteerd in de voorbeeld-app. Houd er rekening mee dat u, voordat u het script uitvoert, Xcode-opdrachtregel Hulpprogramma's moet instellen als u dit nog niet hebt gedaan: Start Xcode, Selecteer Voorkeuren-> Locaties. Kies uw Xcode-versie voor de opdrachtregel Hulpprogramma's.
+> Met de release van AzureCommunicationCalling SDK vindt u een bash-script `BuildAzurePackages.sh`. Het script wanneer u `sh ./BuildAzurePackages.sh` uitvoert, geeft u het pad naar de gegenereerde Framework-pakketten die in de volgende stap moeten worden geïmporteerd in de voorbeeld-app. Houd er rekening mee dat u, voordat u het script uitvoert, Xcode-opdrachtregel Hulpprogramma's moet instellen als u dit nog niet hebt gedaan: Start Xcode, Selecteer Voorkeuren-> Locaties. Kies uw Xcode-versie voor de opdrachtregel Hulpprogramma's. **Het BuildAzurePackages.sh-script werkt alleen met Xcode 11.5 en hoger**
 
-1. Download de Azure Communication Services-clientbibliotheek voor iOS.
+1. [Download](https://github.com/Azure/Communication/releases) de clientbibliotheek voor oproepen van Azure Communication Services voor iOS.
 2. Klik in Xcode op het projectbestand en selecteer het build-doel om de projectinstellingen-editor te openen.
 3. Scrol op het tabblad **Algemeen** naar de secties **Frameworks, Bibliotheken en Ingesloten inhoud** en klik op het pictogram **"+"** .
-4. Kies linksonder in het dialoogvenster **Bestanden toevoegen**, navigeer naar de map **AzureCommunicationCalling.framework** van het pakket met de niet-gecomprimeerde clientbibliotheek.
+4. Kies **Bestanden toevoegen** in de vervolgkeuzelijst linksonder in het dialoogvenster en navigeer naar de map **AzureCommunicationCalling.framework** van het uitgepakte clientbibliotheekpakket.
     1. Herhaal de laatste stap voor het toevoegen van **AzureCore.framework** en **AzureCommunication.framework**.
 5. Open het tabblad **Build-instellingen** van de projectinstellingeneditor en blader naar de secties **Zoekpaden**. Voeg een nieuwe vermelding **Zoekpaden framework** toe voor de map die het **AzureCommunicationCalling.framework** bevat.
     1. Voeg nog een vermelding Zoekpaden framework toe aan de map die de afhankelijkheden bevat.
 
-:::image type="content" source="../media/ios/xcode-framework-search-paths.png" alt-text="Schermopname van het bijwerken van de Zoekpaden framework in XCode.":::
+:::image type="content" source="../media/ios/xcode-framework-search-paths.png" alt-text="Schermafbeelding met het venster Nieuw project in Xcode.":::
 
 ### <a name="request-access-to-the-microphone"></a>Toegang tot de microfoon aanvragen
 
@@ -114,14 +114,14 @@ struct ContentView: View {
 
 ## <a name="object-model"></a>Objectmodel
 
-De volgende klassen en interfaces verwerken enkele van de belangrijkste functies van de Azure Communication Services-clientbibliotheek voor oproepen:
+De volgende klassen en interfaces verwerken enkele van de belangrijkste functies van de Azure Communication Services-clientbibliotheek voor aanroepen:
 
 | Naam                                  | Beschrijving                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
 | ACSCallClient | De CallClient is het belangrijkste ingangspunt voor de clientbibliotheek voor oproepen.|
 | ACSCallAgent | De CallAgent wordt gebruikt om oproepen te starten en te beheren. |
-| CommunicationUserCredential | De CommunicationUserCredential wordt gebruikt als de tokenreferentie voor het instantiëren van de CallAgent.| 
-| CommunicationIndentifier | De CommunicationIndentifier wordt gebruikt om de identiteit van de gebruiker te vertegenwoordigen. Dit kan een van de volgende zijn: CommunicationUser/PhoneNumber/CallingApplication. |
+| CommunicationUserCredential | De CommunicationUserCredential wordt als de tokenreferentie gebruikt om de CallAgent te instantiëren.| 
+| CommunicationIdentifier | CommunicationIdentifier wordt gebruikt om de identiteit van de gebruiker aan te duiden. Dit kan een van de volgende zijn: CommunicationUser/PhoneNumber/CallingApplication. |
 
 ## <a name="authenticate-the-client"></a>De client verifiëren
 
@@ -190,15 +190,15 @@ func endCall()
 
 ## <a name="run-the-code"></a>De code uitvoeren
 
-U kunt uw app bouwen en uitvoeren op een iOS-simulator door **Product** > **Uitvoeren** te selecteren of door de sneltoets (&#8984;-R) te gebruiken.
+U kunt uw app maken en uitvoeren op een iOS-simulator door **Product** > **Uitvoeren** te selecteren of door de sneltoets (&#8984;-R) te gebruiken.
 
-:::image type="content" source="../media/ios/quick-start-make-call.png" alt-text="Laatste look en feel van de snelstart-app":::
+:::image type="content" source="../media/ios/quick-start-make-call.png" alt-text="Schermafbeelding met het venster Nieuw project in Xcode.":::
 
 U kunt een uitgaande VOIP-oproep maken door een gebruikers-ID op te geven in het tekstveld en te tikken op de knop **Oproep starten**. Door `8:echo123` te bellen, wordt u verbonden met een echo-bot. Dit is handig om aan de slag te gaan en te controleren of uw audio-apparaten werken. 
 
 > [!NOTE]
 > De eerste keer dat u een oproep doet, wordt u gevraagd om toegang tot de microfoon. In een productietoepassing moet u de `AVAudioSession`API[ gebruiken om de machtigingsstatus](https://developer.apple.com/documentation/uikit/protecting_the_user_s_privacy/requesting_access_to_protected_resources) te controleren en het gedrag van uw toepassing bij te werken wanneer geen toestemming wordt verleend.
 
-## <a name="sample"></a>Voorbeeld
+## <a name="sample-code"></a>Voorbeeldcode
 
-U kunt de voorbeeld-app downloaden uit [GitHub](https://github.com/Azure/Communication/tree/master/samples/AzureCommunicationCalling/iOS/Swift).
+U kunt de voorbeeld-app downloaden uit [GitHub](https://github.com/Azure/Communication/tree/master/samples/Add%20Voice%20Calling/iOS/Swift).

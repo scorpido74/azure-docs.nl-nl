@@ -1,95 +1,95 @@
 ---
-title: Beveiliging van de container in Azure Security Center | Microsoft Docs
-description: Meer informatie over de beveiligings functies van de container van Azure Security Center.
+title: Containerbeveiliging in Azure Security Center | Microsoft Docs
+description: Meer informatie over beveiligingsfuncties voor containers van Azure Security Center.
 services: security-center
 documentationcenter: na
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 3edd7ddf79f8400462b52f964b7677840a7e86df
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
-ms.translationtype: MT
+ms.openlocfilehash: 6b57428aeba702dc8cf06ec4ae7984854a94ac7a
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91301955"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449168"
 ---
-# <a name="container-security-in-security-center"></a>Beveiliging van de container in Security Center
+# <a name="container-security-in-security-center"></a>Containerbeveiliging in Security Center
 
-Azure Security Center is de Azure-systeem eigen oplossing voor het beveiligen van uw containers.
+Azure Security Center is de eigen oplossing van Azure voor het beveiligen van uw containers.
 
-Security Center kunt de volgende container resource typen beveiligen:
+Security Center kan de volgende containerresourcetypen beveiligen:
 
 | Resourcetype | Beveiligingen die worden aangeboden door Security Center |
 |:--------------------:|-----------|
-| ![Kubernetes-service](./media/security-center-virtual-machine-recommendations/icon-kubernetes-service-rec.png)<br>**Clusters van Azure Kubernetes service (AKS)** | -Doorlopende evaluatie van de configuraties van uw AKS-clusters om inzicht te krijgen in onjuiste configuraties en richt lijnen om eventuele gedetecteerde problemen op te lossen.<br>Meer [informatie over omgevings beveiliging via beveiligings aanbevelingen](#environment-hardening).<br><br>-Bedreigings beveiliging voor AKS-clusters en Linux-knoop punten. Waarschuwingen voor verdachte activiteiten worden gegeven door de optionele  [Azure Defender voor Kubernetes](defender-for-kubernetes-introduction.md).<br>Meer [informatie over runtime-beveiliging voor AKS-knoop punten en-clusters](#run-time-protection-for-aks-nodes-and-clusters).|
-| ![Container host](./media/security-center-virtual-machine-recommendations/icon-container-host-rec.png)<br>**Container-hosts**<br>(Vm's met docker) | -Doorlopende evaluatie van uw docker-configuraties om inzicht te krijgen in onjuiste configuraties en richt lijnen om te helpen bij het oplossen van gedetecteerde problemen met de optionele  [Azure Defender voor servers](defender-for-servers-introduction.md).<br>Meer [informatie over omgevings beveiliging via beveiligings aanbevelingen](#environment-hardening).|
-| ![Container register](./media/security-center-virtual-machine-recommendations/icon-container-registry-rec.png)<br>**Azure Container Registry (ACR) registers** | -Evaluatie-en beheer hulpprogramma's voor de installatie kopieën in uw op Azure Resource Manager gebaseerde ACR-registers met de optionele [Azure Defender voor container registers](defender-for-container-registries-introduction.md).<br>Meer [informatie over het scannen van uw container installatie kopieën voor beveiligings problemen](#vulnerability-management---scanning-container-images). |
+| ![Kubernetes-service](./media/security-center-virtual-machine-recommendations/icon-kubernetes-service-rec.png)<br>**Azure Kubernetes Service-clusters (AKS)** | - Doorlopende evaluatie van de configuraties van uw AKS-clusters om inzicht te krijgen in onjuiste configuraties, en richtlijnen om eventuele gedetecteerde problemen op te lossen.<br>[Meer informatie over omgevingsbeveiliging via beveiligingsaanbevelingen](#environment-hardening).<br><br>- Beveiliging van AKS-clusters en Linux-knooppunten tegen bedreigingen. Met de optionele oplossing [Azure Defender for Kubernetes](defender-for-kubernetes-introduction.md) wordt voorzien in waarschuwingen voor verdachte activiteiten.<br>[Meer informatie over runtime-beveiliging voor AKS-knooppunten en -clusters](#run-time-protection-for-aks-nodes-and-clusters).|
+| ![Containerhost](./media/security-center-virtual-machine-recommendations/icon-container-host-rec.png)<br>**Containerhosts**<br>(VM's met Docker) | - Doorlopende evaluatie van uw Docker-configuraties van uw AKS-clusters om inzicht te krijgen in onjuiste configuraties, en richtlijnen om eventuele gedetecteerde problemen op te lossen met de optionele [Azure Defender voor servers](defender-for-servers-introduction.md).<br>[Meer informatie over omgevingsbeveiliging via beveiligingsaanbevelingen](#environment-hardening).|
+| ![Containerregister](./media/security-center-virtual-machine-recommendations/icon-container-registry-rec.png)<br>**ACR-registers (ACR: Azure Container Registry)** | - Hulpprogramma's voor de evaluatie en het beheer van beveiligingsproblemen voor de installatiekopieën in uw op Azure Resource Manager gebaseerde ACR-registers met de optionele [Azure Defender voor containerregisters](defender-for-container-registries-introduction.md).<br>[Meer informatie over het scannen van installatiekopieën van uw containers op beveiligingsproblemen](#vulnerability-management---scanning-container-images). |
 |||
 
-In dit artikel wordt beschreven hoe u Security Center kunt gebruiken, samen met de optionele Azure Defender-plannen voor container registers, servers en Kubernetes, om de beveiliging van uw containers en hun apps te verbeteren, bewaken en onderhouden.
+In dit artikel wordt beschreven hoe u Security Center kunt gebruiken, samen met de optionele Azure Defender-plannen voor containerregisters, servers en Kubernetes, om de beveiliging van uw containers en de bijbehorende apps te verbeteren, bewaken en onderhouden.
 
-U leert hoe Security Center helpt bij het werken met deze kern aspecten van container beveiliging:
+U leert hoe u met behulp van Security Center kunt werken met de volgende kernaspecten van containerbeveiliging:
 
-- [Beveiligings beheer-container installatie kopieën scannen](#vulnerability-management---scanning-container-images)
-- [Omgevings beveiliging](#environment-hardening)
-- [Runtime-beveiliging voor AKS-knoop punten en-clusters](#run-time-protection-for-aks-nodes-and-clusters)
+- [Beheer van beveiligingsproblemen - containerinstallatiekopieën scannen](#vulnerability-management---scanning-container-images)
+- [Omgevingsbeveiliging](#environment-hardening)
+- [Runtime-beveiliging voor AKS-knooppunten en -clusters](#run-time-protection-for-aks-nodes-and-clusters)
 
-In de volgende scherm afbeelding ziet u de pagina inventarisatie van activa en de verschillende container bron typen die worden beveiligd door Security Center.
+In de volgende schermopname ziet u de pagina voor de inventarisatie van activa en de verschillende containerresourcetypen die door Security Center worden beveiligd.
 
-:::image type="content" source="./media/container-security/container-security-tab.png" alt-text="Container-gerelateerde resources op de pagina Asset Inventory van Security Center" lightbox="./media/container-security/container-security-tab.png":::
+:::image type="content" source="./media/container-security/container-security-tab.png" alt-text="Container-gerelateerde resources op de pagina voor de inventarisatie van activa van Security Center" lightbox="./media/container-security/container-security-tab.png":::
 
-## <a name="vulnerability-management---scanning-container-images"></a>Beveiligings beheer-container installatie kopieën scannen
+## <a name="vulnerability-management---scanning-container-images"></a>Beheer van beveiligingsproblemen - containerinstallatiekopieën scannen
 
-Als u de installatie kopieën in uw op Azure Resource Manager gebaseerde Azure-container registers wilt bewaken, schakelt u [Azure Defender in voor container registers](defender-for-container-registries-introduction.md). Security Center scant alle installatie kopieën die in de afgelopen 30 dagen zijn getrokken, naar uw REGI ster gepusht of geïmporteerd. De geïntegreerde scanner wordt verschaft door de toonaangevende beveiligings problemen voor het scannen van leveranciers, Qualys.
+Als u de installatiekopieën in uw op Azure Resource Manager gebaseerde Azure-containerregisters wilt bewaken, schakelt u [Azure Defender voor containerregisters](defender-for-container-registries-introduction.md) in. Security Center scant alle installatiekopieën die in de afgelopen 30 dagen zijn opgehaald, naar uw register zijn gepusht of zijn geïmporteerd. De geïntegreerde scanner wordt verschaft door de toonaangevende leverancier voor het scannen op beveiligingsproblemen, Qualys.
 
-Als er problemen worden gevonden, wordt er een melding weer gegeven in het [Azure Defender-dash board](azure-defender-dashboard.md)van Qualys of Security Center. Security Center voorziet in elk beveiligings probleem met actie-aanbevelingen, samen met een Ernst classificatie en richt lijnen voor het oplossen van het probleem. Zie de [naslag lijst met aanbevelingen](recommendations-reference.md#recs-containers)voor meer informatie over de aanbevelingen van Security Center voor containers.
+Als er problemen worden gevonden door Qualys of Security Center, ontvangt u een melding in het [Azure Defender-dashboard](azure-defender-dashboard.md). Security Center biedt bij elk beveiligingsprobleem praktische aanbevelingen, maar ook een classificatie van de ernst en richtlijnen voor het oplossen van het probleem. Zie de [naslaglijst met aanbevelingen](recommendations-reference.md#recs-containers) voor meer informatie over de aanbevelingen van Security Center voor containers.
 
-Security Center filters en classificeert de resultaten van de scanner. Wanneer een afbeelding in orde is, wordt deze als zodanig gemarkeerd door Security Center. Security Center genereert alleen beveiligings aanbevelingen voor installatie kopieën waarvoor problemen moeten worden opgelost. Als er alleen een melding wordt weer geven als er problemen zijn, vermindert Security Center het potentieel voor ongewenste informatieve waarschuwingen.
+Security Center filtert en classificeert de resultaten van de scanner. Wanneer een installatiekopie in orde is, wordt deze als zodanig gemarkeerd door Security Center. Security Center genereert alleen aanbevelingen voor de beveiliging ten aanzien van installatiekopieën waarvoor problemen moeten worden opgelost. Als er bij problemen alleen een melding wordt weergegeven, vermindert Security Center het potentieel voor ongewenste informatieve waarschuwingen.
 
-## <a name="environment-hardening"></a>Omgevings beveiliging
+## <a name="environment-hardening"></a>Omgevingsbeveiliging
 
-### <a name="continuous-monitoring-of-your-docker-configuration"></a>Doorlopende bewaking van uw docker-configuratie
+### <a name="continuous-monitoring-of-your-docker-configuration"></a>Doorlopende bewaking van uw Docker-configuratie
 
-Azure Security Center identificeert niet-beheerde containers die worden gehost op IaaS Linux-Vm's of andere Linux-machines waarop docker-containers worden uitgevoerd. Security Center doorlopend de configuraties van deze containers evalueren. Vervolgens worden ze vergeleken met de [CIS-Referentie (Center for Internet Security)](https://www.cisecurity.org/benchmark/docker/).
+Azure Security Center identificeert niet-beheerde containers die worden gehost op IaaS Linux-VM's of andere Linux-machines waarop Docker-containers worden uitgevoerd. Security Center evalueert doorlopend de configuraties van deze containers. Vervolgens worden ze vergeleken met de [Docker-benchmark van het CIS (Center for Internet Security)](https://www.cisecurity.org/benchmark/docker/).
 
-Security Center bevat de volledige regelset van de CIS docker-Bench Mark en waarschuwt u als uw containers niet voldoen aan een van de besturings elementen. Als er onjuiste configuraties worden gevonden, worden in Security Center beveiligings aanbevelingen gegenereerd. Op de **pagina aanbevelingen** van Security Center kunt u aanbevelingen bekijken en problemen oplossen. De CIS-benchmark controles worden niet uitgevoerd op door AKS beheerde instanties of door Databricks beheerde Vm's.
+Security Center bevat de volledige regelset van de CIS Docker-benchmark en waarschuwt u als uw containers niet voldoen aan een van de controles. Als er onjuiste configuraties worden gevonden, worden in Security Center aanbevelingen voor de beveiliging gegenereerd. U kunt de aanbevelingen bekijken en problemen herstellen met behulp van de **pagina met aanbevelingen van Security Center**. De CIS-benchmarkcontroles worden niet uitgevoerd op door AKS beheerde instanties of door Databricks beheerde VM's.
 
-Zie de [sectie container](recommendations-reference.md#recs-containers) in de naslag tabel met aanbevelingen voor meer informatie over de relevante Security Center aanbevelingen die voor deze functie kunnen worden weer gegeven.
+Zie de sectie [Container](recommendations-reference.md#recs-containers) van de naslagtabel met aanbevelingen voor meer informatie over de relevante Security Center aanbevelingen die voor deze functie kunnen worden weergegeven.
 
-Wanneer u de beveiligings problemen van een virtuele machine wilt verkennen, bevat Security Center extra informatie over de containers op de computer. Deze informatie omvat de docker-versie en het aantal installatie kopieën die op de host worden uitgevoerd. 
+Security Center biedt extra informatie over de containers op een virtuele machine wanneer u de beveiligingsproblemen van een machine wilt verkennen. Deze informatie omvat de Docker-versie en het aantal installatiekopieën dat op de host wordt uitgevoerd. 
 
-Als u niet-beheerde containers wilt bewaken die worden gehost op IaaS Linux Vm's, schakelt u de optionele [Azure Defender voor servers](defender-for-servers-introduction.md)in.
+Als u niet-beheerde containers wilt bewaken die worden gehost op IaaS Linux VM's, schakelt u de optionele [Azure Defender voor servers](defender-for-servers-introduction.md) in.
 
 
 ### <a name="continuous-monitoring-of-your-kubernetes-clusters"></a>Continue bewaking van uw Kubernetes-clusters
-Security Center werkt samen met Azure Kubernetes service (AKS), de beheerde container service van micro soft voor het ontwikkelen, implementeren en beheren van toepassingen in containers.
+Security Center werkt samen met Azure Kubernetes service (AKS), de beheerde containerindelingsservice van Microsoft voor het ontwikkelen, implementeren en beheren van toepassingen in containers.
 
-AKS biedt beveiligings controles en zicht baarheid in de beveiligings-postuur van uw clusters. Security Center gebruikt deze functies voor het volgende:
-* De configuratie van uw AKS-clusters continu controleren
-* Beveiligings aanbevelingen die zijn afgestemd op de industrie normen genereren
+AKS biedt beveiligingsmaatregelen voor en inzicht in het beveiligingspostuur van uw clusters. Security Center gebruikt deze functies voor het volgende:
+* De configuratie van uw AKS-clusters continu bewaken
+* Aanbevelingen voor de beveiliging genereren conform de industrienormen
 
-Zie de [sectie container](recommendations-reference.md#recs-containers) in de naslag tabel met aanbevelingen voor meer informatie over de relevante Security Center aanbevelingen die voor deze functie kunnen worden weer gegeven.
+Zie de sectie [Container](recommendations-reference.md#recs-containers) van de naslagtabel met aanbevelingen voor meer informatie over de relevante Security Center aanbevelingen die voor deze functie kunnen worden weergegeven.
 
-###  <a name="workload-protection-best-practices-using-kubernetes-admission-control"></a>Aanbevolen procedures voor werk belasting beveiliging met behulp van Kubernetes Admission Control
+###  <a name="workload-protection-best-practices-using-kubernetes-admission-control"></a>Aanbevolen procedures voor workloadbeveiliging met behulp van Kubernetes Admission Control
 
-Installeer de  **Azure Policy-invoeg toepassing voor Kubernetes** om een bundel te krijgen van de aanbevelingen voor het beveiligen van de workloads van uw Kubernetes-containers.
+Installeer de **Azure Policy-invoegtoepassing voor Kubernetes** om aanbevelingen te krijgen voor het beveiligen van de workloads van uw Kubernetes-containers.
 
-Zoals beschreven in [dit Azure Policy voor de pagina Kubernetes](../governance/policy/concepts/policy-for-kubernetes.md), breidt de invoeg toepassing de open-source [gate keeper v3](https://github.com/open-policy-agent/gatekeeper)   Admission controller-Webhook uit voor [Open Policy Agent](https://www.openpolicyagent.org/). Kubernetes Admission controllers zijn invoeg toepassingen die afdwingen hoe uw clusters worden gebruikt. De invoeg toepassing registreert zich als een webhook voor Kubernetes Admission Control en maakt het mogelijk om op schaal afdwingingen en beveiligingen op uw clusters op een gecentraliseerde, consistente manier toe te passen. 
+Zoals beschreven in deze pagina [Azure Policy for Kubernetes](../governance/policy/concepts/policy-for-kubernetes.md), vormt de invoegtoepassing een uitbreiding op de open-source webhook voor de [Gatekeeper v3](https://github.com/open-policy-agent/gatekeeper) -toegangscontroller voor  [Open Policy Agent](https://www.openpolicyagent.org/). Toegangscontrollers van Kubernetes zijn invoegtoepassingen die de gebruikswijze van uw clusters afdwingen. De invoegtoepassing wordt geregistreerd als een webhook voor Kubernetes-toegangsbeheer en maakt het mogelijk om op een gecentraliseerde, consistente manier afdwinging en beveiliging op uw clusters op schaal toe te passen. 
 
-Wanneer u de invoeg toepassing op uw AKS-cluster hebt geïnstalleerd, wordt elke aanvraag van de Kubernetes-API-server gecontroleerd op basis van de vooraf gedefinieerde set aanbevolen procedures voordat deze in het cluster wordt bewaard. U kunt vervolgens configureren om de best practices af te **dwingen** en ze te verplichten voor toekomstige workloads. 
+Wanneer u de invoegtoepassing op uw AKS-cluster hebt geïnstalleerd, wordt elke aanvraag voor de Kubernetes API-server gecontroleerd op basis van de vooraf gedefinieerde set aanbevolen procedures voordat deze naar het cluster gaat. Vervolgens kunt u instellingen configureren om de aanbevolen procedures **af te dwingen** en ze te verplichten voor toekomstige workloads. 
 
-U kunt er bijvoorbeeld voor zorgen dat geprivilegieerde containers niet moeten worden gemaakt, en toekomstige aanvragen worden geblokkeerd.
+U kunt er bijvoorbeeld voor zorgen dat containers met machtigingen niet moeten worden gemaakt, en toekomstige aanvragen hiervoor worden dan geblokkeerd.
 
-Meer informatie over [het beveiligen van uw Kubernetes-workloads](kubernetes-workload-protections.md).
+Meer informatie vindt u in [Uw Kubernetes-workloads beveiligen](kubernetes-workload-protections.md).
 
 
-## <a name="run-time-protection-for-aks-nodes-and-clusters"></a>Runtime-beveiliging voor AKS-knoop punten en-clusters
+## <a name="run-time-protection-for-aks-nodes-and-clusters"></a>Runtime-beveiliging voor AKS-knooppunten en -clusters
 
 [!INCLUDE [AKS in ASC threat protection](../../includes/security-center-azure-kubernetes-threat-protection.md)]
 
@@ -97,7 +97,7 @@ Meer informatie over [het beveiligen van uw Kubernetes-workloads](kubernetes-wor
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit overzicht hebt u geleerd over de kern elementen van de container beveiliging in Azure Security Center. Zie voor verwante materiaal:
+In dit overzicht hebt u informatie gekregen over de kernelementen van containerbeveiliging in Azure Security Center. Zie voor gerelateerd materiaal:
 
-- [Inleiding tot Azure Defender voor Kubernetes](defender-for-kubernetes-introduction.md)
-- [Inleiding tot Azure Defender voor container registers](defender-for-container-registries-introduction.md)
+- [Inleiding tot Azure Defender for Kubernetes](defender-for-kubernetes-introduction.md)
+- [Inleiding tot Azure Defender voor containerregisters](defender-for-container-registries-introduction.md)
