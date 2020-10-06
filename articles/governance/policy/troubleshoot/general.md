@@ -1,14 +1,14 @@
 ---
 title: Veelvoorkomende fouten oplossen
 description: Meer informatie over het oplossen van problemen met het maken van beleids definities, de verschillende SDK en de invoeg toepassing voor Kubernetes.
-ms.date: 08/17/2020
+ms.date: 10/05/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: d4ede1703df922196c89a4c1ca4f37cbc95a6297
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6026dc75187c8a70203a2484380eed70d519599d
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545536"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743434"
 ---
 # <a name="troubleshoot-errors-using-azure-policy"></a>Fouten oplossen met behulp van Azure Policy
 
@@ -52,7 +52,7 @@ De toewijzing van een nieuw beleid of initiatief duurt ongeveer 30 minuten. Nieu
 
 Wacht eerst de juiste hoeveelheid tijd om een evaluatie uit te voeren en de resultaten van naleving beschikbaar te stellen in Azure Portal of SDK. Zie [evaluatie scan op aanvraag](../how-to/get-compliance-data.md#on-demand-evaluation-scan)om een nieuwe evaluatie scan te starten met Azure PowerShell of rest API.
 
-### <a name="scenario-evaluation-not-as-expected"></a>Scenario: evaluatie niet zoals verwacht
+### <a name="scenario-compliance-not-as-expected"></a>Scenario: naleving niet zoals verwacht
 
 #### <a name="issue"></a>Probleem
 
@@ -64,10 +64,21 @@ De resource bevindt zich niet in het juiste bereik voor de beleids toewijzing of
 
 #### <a name="resolution"></a>Oplossing
 
-- Voor een niet-compatibele resource waarvan wordt verwacht dat deze compatibel was, moet u beginnen door de [redenen voor niet-naleving te bepalen](../how-to/determine-non-compliance.md). De vergelijking van de definitie voor de waarde van de geëvalueerde eigenschap geeft aan waarom een resource niet aan het beleid voldoet.
-- Voor een compatibele resource waarvan wordt verwacht dat deze niet compatibel is, leest u de beleids definitie voorwaarde op voor waarde en evalueert u de eigenschappen van de resources. Controleer of logische Opera tors de juiste voor waarden groeperen en of de voor waarden niet worden teruggedraaid.
+Volg deze stappen om de beleids definitie op te lossen:
 
-Als naleving voor een beleids toewijzing `0/0` bronnen bevat, zijn er geen resources vastgesteld die van toepassing zijn binnen het toewijzings bereik. Controleer de beleids definitie en het toewijzings bereik.
+1. Wacht eerst de juiste hoeveelheid tijd om een evaluatie uit te voeren en de resultaten van naleving beschikbaar te stellen in Azure Portal of SDK. Zie [evaluatie scan op aanvraag](../how-to/get-compliance-data.md#on-demand-evaluation-scan)om een nieuwe evaluatie scan te starten met Azure PowerShell of rest API.
+1. Controleer of de toewijzings parameters en het toewijzings bereik correct zijn ingesteld.
+1. Controleer de [beleids definitie modus](../concepts/definition-structure.md#mode):
+   - Modus all voor alle resource typen.
+   - Modus ' geïndexeerd ' als de beleids definitie controleert op Tags of locatie.
+1. Controleer of het bereik van de resource niet wordt [uitgesloten](../concepts/assignment-structure.md#excluded-scopes) of [uitgezonderd](../concepts/exemption-structure.md).
+1. Als naleving voor een beleids toewijzing `0/0` bronnen bevat, zijn er geen resources vastgesteld die van toepassing zijn binnen het toewijzings bereik. Controleer de beleids definitie en het toewijzings bereik.
+1. Voor een niet-compatibele resource die wordt verwacht te voldoen, controleert u de [redenen voor niet-naleving](../how-to/determine-non-compliance.md). De vergelijking van de definitie voor de waarde van de geëvalueerde eigenschap geeft aan waarom een resource niet aan het beleid voldoet.
+   - Als de **doel waarde** onjuist is, wijzigt u de beleids definitie.
+   - Als de **huidige waarde** onjuist is, valideert u de resource-Payload tot en met `resources.azure.com` .
+1. Controle [problemen oplossen: afdwingen niet zoals verwacht](#scenario-enforcement-not-as-expected) voor andere veelvoorkomende problemen en oplossingen.
+
+Als u nog steeds een probleem met uw gedupliceerde en aangepaste ingebouwde beleids definitie of aangepaste definitie hebt, maakt u een ondersteunings ticket onder het **ontwerpen van een beleid** om het probleem correct te routeren.
 
 ### <a name="scenario-enforcement-not-as-expected"></a>Scenario: afdwinging is niet zoals verwacht
 
@@ -81,7 +92,18 @@ De beleids toewijzing is geconfigureerd voor [enforcementMode](../concepts/assig
 
 #### <a name="resolution"></a>Oplossing
 
-Werk **enforcementMode** bij naar _ingeschakeld_. Met deze wijziging kan Azure Policy op de resources in deze beleids toewijzing reageren en items naar het activiteiten logboek verzenden. Als **enforcementMode** al is ingeschakeld, raadpleegt u de [evaluatie versie niet zoals verwacht](#scenario-evaluation-not-as-expected) voor de cursussen van de actie.
+Voer de volgende stappen uit om het afdwingen van uw beleids toewijzing op te lossen:
+
+1. Wacht eerst de juiste hoeveelheid tijd om een evaluatie uit te voeren en de resultaten van naleving beschikbaar te stellen in Azure Portal of SDK. Zie [evaluatie scan op aanvraag](../how-to/get-compliance-data.md#on-demand-evaluation-scan)om een nieuwe evaluatie scan te starten met Azure PowerShell of rest API.
+1. Controleer of de toewijzings parameters en het toewijzings bereik correct zijn ingesteld en of **enforcementMode** is _ingeschakeld_. 
+1. Controleer de [beleids definitie modus](../concepts/definition-structure.md#mode):
+   - Modus all voor alle resource typen.
+   - Modus ' geïndexeerd ' als de beleids definitie controleert op Tags of locatie.
+1. Controleer of het bereik van de resource niet wordt [uitgesloten](../concepts/assignment-structure.md#excluded-scopes) of [uitgezonderd](../concepts/exemption-structure.md).
+1. Controleer of de resource lading overeenkomt met de beleids logica. U kunt dit doen door [een har-tracering](../../../azure-portal/capture-browser-trace.md) vast te leggen of door de eigenschappen van de arm-sjabloon te controleren.
+1. Controle [problemen oplossen: naleving niet zoals verwacht](#scenario-compliance-not-as-expected) voor andere veelvoorkomende problemen en oplossingen.
+
+Als u nog steeds een probleem met uw gedupliceerde en aangepaste ingebouwde beleids definitie of aangepaste definitie hebt, maakt u een ondersteunings ticket onder het **ontwerpen van een beleid** om het probleem correct te routeren.
 
 ### <a name="scenario-denied-by-azure-policy"></a>Scenario: geweigerd door Azure Policy
 

@@ -3,19 +3,18 @@ title: Azure Key Vault-beveiliging
 description: Toegangs machtigingen voor Azure Key Vault, sleutels en geheimen beheren. Behandelt het verificatie-en autorisatie model voor Key Vault en hoe u uw sleutel kluis kunt beveiligen.
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.date: 04/18/2019
+ms.date: 09/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b6163ca0cb02670024fe95459f31ac81c4da756c
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: c3dd4e5138741a3c035507358830f3572cf92751
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91596355"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91739687"
 ---
 # <a name="azure-key-vault-security"></a>Azure Key Vault-beveiliging
 
@@ -76,29 +75,16 @@ Nadat de firewall regels van kracht zijn, kunnen gebruikers alleen gegevens van 
 
 Raadpleeg voor meer informatie over Azure Key Vault netwerk adres [service-eind punten voor virtuele netwerken voor Azure Key Vault](overview-vnet-service-endpoints.md))
 
-### <a name="tls-and-https"></a>TLS en HTTPS
+## <a name="tls-and-https"></a>TLS en HTTPS
 
 *   De front-end van Key Vault (Data-vlak) is een multi tenant-server. Dit betekent dat sleutel kluizen van verschillende klanten hetzelfde open bare IP-adres kunnen delen. Om isolatie te kunnen garanderen, wordt elke HTTP-aanvraag geverifieerd en onafhankelijk van andere aanvragen geautoriseerd.
 *   U kunt oudere versies van TLS identificeren om beveiligings problemen te melden, maar omdat het open bare IP-adres wordt gedeeld, is het niet mogelijk om oude versies van TLS uit te scha kelen voor afzonderlijke sleutel kluizen op het niveau van het Trans Port.
 *   Met het HTTPS-protocol kan de client deel nemen aan TLS-onderhandeling. **Clients kunnen de meest recente versie van TLS afdwingen**en wanneer een client dit doet, wordt de bijbehorende beveiliging op het niveau van de volledige verbinding gebruikt. Het feit dat Key Vault nog steeds oudere versies van TLS ondersteunt, heeft geen invloed op de beveiliging van verbindingen met nieuwere TLS-versies.
 *   Ondanks bekende beveiligings problemen in het TLS-protocol is er geen bekende aanval waarmee een kwaadwillende agent informatie kan ophalen uit uw sleutel kluis wanneer de aanvaller een verbinding initieert met een TLS-versie met beveiligings problemen. De aanvaller moet zich nog steeds zelf verifiëren en autoriseren, en zolang legitieme clients altijd verbinding maken met recente TLS-versies, is er geen manier waarop referenties kunnen worden gelekt van beveiligings problemen in oude TLS-versies.
 
+## <a name="logging-and-monitoring"></a>Logboekregistratie en bewaking
 
-## <a name="monitoring"></a>Bewaking
-
-Met Key Vault logboek registratie wordt informatie opgeslagen over de activiteiten die zijn uitgevoerd op uw kluis. Key Vault logboeken:
-
-- Alle geverifieerde REST API aanvragen, met inbegrip van mislukte aanvragen
-  - Bewerkingen op de sleutel kluis zelf. Tot deze bewerkingen behoren het maken, verwijderen, instellen van toegangs beleid en het bijwerken van sleutel kluis kenmerken, zoals Tags.
-  - Bewerkingen van sleutels en geheimen in de sleutelkluis, waaronder:
-    - Het maken, wijzigen of verwijderen van die sleutels of geheimen.
-    - Het ondertekenen, verifiëren, versleutelen, ontsleutelen, verpakken en uitpakken van sleutels, het ophalen van geheimen en het vermelden van sleutels en geheimen (en hun versies).
-- Niet-geverifieerde aanvragen die in een 401-respons resulteren. Voorbeelden daarvan zijn aanvragen die geen Bearer-token hebben, die ongeldig of verlopen zijn, of die een ongeldig token hebben.
-
-Logboek informatie kan worden geopend binnen 10 minuten na de sleutel kluis bewerking. Het is aan u om uw logboeken in uw opslag account te beheren.
-
-- Gebruik standaardmethoden van Azure voor toegangsbeheer om uw logboeken te beveiligen door het aantal gebruikers te beperken dat toegang heeft tot de logboeken.
-- Verwijder de logboeken die u niet meer in uw opslagaccount wilt bewaren.
+Met Key Vault logboek registratie wordt informatie opgeslagen over de activiteiten die zijn uitgevoerd op uw kluis. Zie [Key Vault logboek registratie](logging.md)voor meer informatie.
 
 Raadpleeg de [Azure Storage-beveiligings handleiding](../../storage/blobs/security-recommendations.md) voor aanbevelingen voor het veilig beheren van opslag accounts.
 
@@ -106,4 +92,3 @@ Raadpleeg de [Azure Storage-beveiligings handleiding](../../storage/blobs/securi
 
 - [Virtuele netwerk service-eind punten voor Azure Key Vault](overview-vnet-service-endpoints.md)
 - [RBAC: ingebouwde rollen](../../role-based-access-control/built-in-roles.md)
-

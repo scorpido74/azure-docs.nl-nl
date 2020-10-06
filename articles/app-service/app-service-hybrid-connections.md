@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/08/2020
 ms.author: ccompy
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: 8c8b71e4be11a886da3e0889add0a3cdc19a56c3
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 1cb86f77a6ffcbb0fb45b3a57b57de531822f2b0
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962414"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742601"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Hybride verbindingen in Azure App Service
 
@@ -20,7 +20,7 @@ Hybride verbindingen is zowel een service in azure als een functie in Azure App 
 
 In App Service kan Hybride verbindingen worden gebruikt om toegang te krijgen tot toepassings bronnen in elk netwerk waarmee uitgaande oproepen naar Azure via poort 443 kunnen worden gemaakt. Hybride verbindingen biedt toegang vanuit uw app tot een TCP-eind punt en biedt geen nieuwe manier om toegang te krijgen tot uw app. De hybride verbinding wordt gebruikt in App Service en is afgestemd op één combi natie van TCP-host en poort. Hiermee kunnen uw apps toegang krijgen tot bronnen in elk besturings systeem, op voor waarde dat het een TCP-eind punt is. Met de functie Hybride verbindingen weet u niet of u weet wat het toepassings protocol is of wat u opent. Het biedt gewoon toegang tot het netwerk.  
 
-## <a name="how-it-works"></a>Hoe het werkt ##
+## <a name="how-it-works"></a>Uitleg ##
 Hybride verbindingen moet een relay-agent worden geïmplementeerd, waar deze zowel het gewenste eind punt als aan Azure kan bereiken. De relay-agent, Hybrid Connection Manager (HCM), belt naar Azure Relay via poort 443. Vanuit de Web-App-site maakt de App Service-infra structuur ook verbinding met Azure Relay namens de toepassing. Via de gekoppelde verbindingen kan uw app toegang krijgen tot het gewenste eind punt. De verbinding maakt gebruik van TLS 1,2 voor beveiliging en SAS-sleutels (Shared Access Signature) voor verificatie en autorisatie.    
 
 ![Diagram van de stroom op hoog niveau van hybride verbinding][1]
@@ -42,7 +42,7 @@ Er zijn een aantal voor delen ten opzichte van de Hybride verbindingen mogelijkh
 - Normaal gesp roken is geen firewall-gaten vereist. De verbindingen zijn alle uitgaande via standaard webpoorten.
 - Omdat de functie netwerk niveau is, wordt deze neutraal in de taal die wordt gebruikt door uw app en de technologie die door het eind punt wordt gebruikt.
 - Het kan worden gebruikt om toegang te bieden in meerdere netwerken vanuit één app. 
-- Het wordt ondersteund in GA voor Windows-apps en is beschikbaar als preview-versie voor Linux-apps.
+- Het wordt ondersteund in GA voor Windows systeem eigen apps en is een preview-versie voor Linux-apps. Het wordt niet ondersteund voor Windows-container-apps.
 
 ### <a name="things-you-cannot-do-with-hybrid-connections"></a>Wat u niet kunt doen met Hybride verbindingen ###
 

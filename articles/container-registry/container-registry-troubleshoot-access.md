@@ -3,12 +3,12 @@ title: Problemen met het netwerk oplossen met het REGI ster
 description: Symptomen, oorzaken en oplossingen voor veelvoorkomende problemen bij het openen van een Azure container registry in een virtueel netwerk of achter een firewall
 ms.topic: article
 ms.date: 10/01/2020
-ms.openlocfilehash: c2ae8609dbd28a1a39a634e3c065030552aefb06
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: f84b11418344bfeaf790377c1d8644fbc7d7d636
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91630947"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743366"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>Problemen met het netwerk oplossen met het REGI ster
 
@@ -90,6 +90,8 @@ Als een service-eind punt naar het REGI ster is geconfigureerd, controleert u of
 Als u de toegang tot het REGI ster wilt beperken met behulp van een virtueel netwerk in een ander Azure-abonnement, moet u ervoor zorgen dat u de `Microsoft.ContainerRegistry` resource provider in dat abonnement registreert. [Registreer de resource provider](../azure-resource-manager/management/resource-providers-and-types.md) voor Azure container Registry met behulp van de Azure Portal, Azure CLI of andere Azure-hulpprogram ma's.
 
 Als Azure Firewall of een vergelijk bare oplossing in het netwerk is geconfigureerd, controleert u of het uitgaande verkeer van andere resources, zoals een AKS-cluster, is ingeschakeld om de register eindpunten te bereiken.
+
+Als er een persoonlijk eind punt is geconfigureerd, controleert u of de open bare FQDN van het REGI ster, zoals *myregistry.azurecr.io* , wordt omgezet naar het privé-IP-adres van het REGI ster. Gebruik een netwerk hulpprogramma, zoals `dig` of `nslookup` voor DNS-Zoek opdrachten.
 
 Gerelateerde koppelingen:
 

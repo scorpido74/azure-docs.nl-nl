@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 718a01abacf6f2c3cbc9523cc644aca02dc5ff49
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 55df425367cc8295ef6a3899e2edb47669fe57b7
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321188"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741173"
 ---
 # <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>Een onlangs verwijderde gebruiker herstellen of verwijderen met Azure Active Directory
 Nadat u een gebruiker hebt verwijderd, blijft het account gedurende 30 dagen in een suspend-status. Tijdens deze periode van 30 dagen kan het gebruikers account worden hersteld, samen met alle eigenschappen. Nadat het venster van 30 dagen is verstreken, wordt de gebruiker automatisch en permanent verwijderd.
@@ -77,7 +77,7 @@ U kunt een gebruiker permanent verwijderen uit uw organisatie zonder de 30 dagen
 
 2. Selecteer **permanent verwijderen**.
 
-    ![Gebruikers-pagina verwijderde gebruikers, met de optie gebruiker herstellen gemarkeerd](media/active-directory-users-restore/users-deleted-users-permanent-delete-user.png)
+    ![Gebruikers-pagina verwijderde gebruikers, met de optie gebruiker verwijderen gemarkeerd](media/active-directory-users-restore/users-deleted-users-permanent-delete-user.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 Nadat u uw gebruikers hebt hersteld of verwijderd, kunt u de volgende basis processen uitvoeren:

@@ -16,12 +16,12 @@ ms.date: 07/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99ebac32193f764059bea2a30b6ddbce879938a6
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 1a602405065a41cb26b2ae5303d12c45ed21616f
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89275920"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741190"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Problemen met Pass Through-verificatie in Azure Active Directory oplossen
 
@@ -96,6 +96,7 @@ Navigeer naar **Azure Active Directory**  ->  **-aanmeldingen** in het [Azure Ac
 | 80007 | Verificatieagent kan geen verbinding maken met Active Directory. | Controleer of uw Active Directory bereikbaar is vanaf de verificatie agent.
 | 80010 | Verificatieagent kan wachtwoord niet ontsleutelen. | Als het probleem zich voortdurend reproduceert, installeert en registreert u een nieuwe verificatie agent. En verwijder de huidige versie. 
 | 80011 | Verificatieagent kan ontsleutelingssleutel hier ophalen. | Als het probleem zich voortdurend reproduceert, installeert en registreert u een nieuwe verificatie agent. En verwijder de huidige versie.
+| 80014 | Validatie aanvraag heeft gereageerd na overschrijding van de maximale verstreken tijd. | Time-out van verificatie agent. Open een ondersteunings ticket met de fout code, de correlatie-ID en de tijds tempel om meer informatie te krijgen over deze fout
 
 >[!IMPORTANT]
 >Pass-Through-verificatie agenten verifiëren Azure AD-gebruikers door hun gebruikers namen en wacht woorden te valideren op Active Directory door de [Win32 LogonUser-API](/windows/win32/api/winbase/nf-winbase-logonusera)aan te roepen. Als u dus de instelling aanmelden op in Active Directory hebt ingesteld om de toegang tot het werk station te beperken, moet u servers die fungeren als host voor Pass-Through-verificatie agenten ook toevoegen aan de lijst met servers waarop zich moet aanmelden. Als u dit niet doet, worden uw gebruikers geblokkeerd om zich aan te melden bij Azure AD.

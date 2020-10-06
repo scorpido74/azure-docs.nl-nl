@@ -4,12 +4,12 @@ description: Meer informatie over het schalen van uw resource web-app, Cloud ser
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: f784ce9eb4c465c83bea28e05e7f423e0b55c947
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b8d16b4e112c9aebe86c60dc01d380d591fc7624
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91294246"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743519"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Aan de slag met automatisch schalen in azure
 In dit artikel wordt beschreven hoe u uw instellingen voor automatisch schalen instelt voor uw resource in de Microsoft Azure-portal.
@@ -59,7 +59,7 @@ We gaan nu een eenvoudige stapsgewijze procedure volgen om uw eerste instelling 
    ![Schalen op basis van CPU][8]
 1. Klik op **Opslaan**.
 
-Gefeliciteerd. U hebt nu uw eerste schaal instelling gemaakt om uw web-app automatisch te schalen op basis van het CPU-gebruik.
+Gefeliciteerd U hebt nu uw eerste schaal instelling gemaakt om uw web-app automatisch te schalen op basis van het CPU-gebruik.
 
 > [!NOTE]
 > Dezelfde stappen zijn van toepassing om aan de slag te gaan met een virtuele-machine schaalset of een Cloud service-rol.
@@ -116,6 +116,8 @@ U kunt altijd terugkeren naar automatisch schalen door op **automatisch schalen 
 ## <a name="route-traffic-to-healthy-instances-app-service"></a>Verkeer routeren naar gezonde instanties (App Service)
 
 Wanneer u naar meerdere exemplaren hebt geschaald, kunt App Service status controles uitvoeren op uw instanties om verkeer alleen naar de gezonde instanties te routeren. Hiertoe opent u de portal op uw App Service en selecteert u vervolgens **status controleren** onder **bewaking**. Selecteer **inschakelen** en geef een geldig URL-pad op voor uw toepassing, zoals `/health` of `/api/health` . Klik op **Opslaan**.
+
+Als u de functie wilt inschakelen met ARM-sjablonen, stelt `healthcheckpath` u de eigenschap van de `Microsoft.Web/sites` resource in op het Health Check-pad op uw site, bijvoorbeeld: `"/api/health/"` . Als u de functie wilt uitschakelen, stelt u de eigenschap weer in op de lege teken reeks, `""` .
 
 ### <a name="health-check-path"></a>Pad voor status controle
 

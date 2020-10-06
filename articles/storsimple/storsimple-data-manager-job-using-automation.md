@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 2562e7463ba0a79cf77d21f3bb619f13283c989d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f13e402344111dea28514ed7b0d381b46ff73064
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514934"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743604"
 ---
 # <a name="use-azure-automation-to-trigger-a-job"></a>Azure Automation gebruiken om een taak te activeren
 
@@ -28,7 +28,7 @@ Voordat u begint, moet u ervoor zorgen dat:
 
 *   Azure PowerShell geïnstalleerd op de client computer. [Down load Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps).
 *   Een correct geconfigureerde taak definitie in een StorSimple Data Manager-service binnen een resource groep.
-*   Down load [`DataTransformationApp.zip`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/raw/master/Azure%20Automation%20For%20Data%20Manager/DataTransformationApp.zip) het bestand uit de GitHub-opslag plaats. 
+*   Down load  [`DataTransformationApp.zip`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/raw/master/Azure%20Automation%20For%20Data%20Manager/DataTransformationApp.zip) het bestand uit de GitHub-opslag plaats. 
 *   Down load [`Trigger-DataTransformation-Job.ps1`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Azure%20Automation%20For%20Data%20Manager/Trigger-DataTransformation-Job.ps1) script uit de GitHub-opslag plaats.
 
 ## <a name="step-by-step-procedure"></a>Stapsgewijze procedure
@@ -41,7 +41,7 @@ Voordat u begint, moet u ervoor zorgen dat:
 
 2. Klik op **+ toevoegen**om een nieuw Automation-account toe te voegen.
 
-    ![Run as Automation-account maken](./media/storsimple-data-manager-job-using-automation/add-automation-account1.png)
+    ![Run as Automation-account 2 maken](./media/storsimple-data-manager-job-using-automation/add-automation-account1.png)
 
 3. In het **onderdeel Automation toevoegen**:
 
@@ -52,7 +52,7 @@ Voordat u begint, moet u ervoor zorgen dat:
    5. Zorg ervoor dat de optie standaard **uitvoeren als-account maken** is geselecteerd.
    6. Als u een koppeling voor snelle toegang wilt krijgen op het dash board, controleert **u het vastmaken aan dash board**. Klik op **Create**.
 
-      ![Run as Automation-account maken](./media/storsimple-data-manager-job-using-automation/create-automation-run-as-account.png)
+      ![Run as Automation-account 3 maken](./media/storsimple-data-manager-job-using-automation/create-automation-run-as-account.png)
     
       Nadat het Automation-account is gemaakt, wordt u hiervan op de hoogte gebracht.
     

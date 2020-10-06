@@ -10,12 +10,12 @@ author: mx-iao
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 618889f40816ec8ccc64487778bf1f6fbdd3b886
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 21a0672db5a7038fbcdeb01e4cf07bcd760cf7ef
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91536542"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742992"
 ---
 # <a name="train-tensorflow-models-at-scale-with-azure-machine-learning"></a>Tensor flow-modellen op schaal trainen met Azure Machine Learning
 
@@ -127,45 +127,10 @@ Zie voor meer informatie over Compute-doelen het artikel [Wat is een reken doel]
 
 ### <a name="define-your-environment"></a>Uw omgeving definiëren
 
-Als u de Azure ML- [omgeving](concept-environments.md) wilt definiëren waarin de afhankelijkheden van uw trainings script worden ingekapseld, kunt u een aangepaste omgeving of gebruik en Azure ml-omgeving definiëren.
-
-#### <a name="create-a-custom-environment"></a>Een aangepaste omgeving maken
-
-Definieer de Azure ML-omgeving waarin de afhankelijkheden van uw trainings script worden ingekapseld.
-
-Definieer eerst uw Conda-afhankelijkheden in een YAML-bestand. in dit voor beeld heeft het bestand de naam `conda_dependencies.yml` .
-
-```yaml
-channels:
-- conda-forge
-dependencies:
-- python=3.6.2
-- pip:
-  - azureml-defaults
-  - tensorflow-gpu==2.2.0
-```
-
-Een Azure ML-omgeving maken op basis van deze Conda Environment-specificatie. De omgeving wordt tijdens runtime ingepakt in een docker-container.
-
-Als er geen basis installatie kopie is opgegeven, wordt door Azure ML standaard een CPU-installatie kopie gebruikt `azureml.core.runconfig.DEFAULT_CPU_IMAGE` als basis installatie kopie. Omdat in dit voor beeld training wordt uitgevoerd op een GPU-cluster, moet u een GPU-basis installatie kopie opgeven met de benodigde GPU-Stuur Programma's en-afhankelijkheden. Azure ML onderhoudt een set basis installatie kopieën die zijn gepubliceerd op micro soft Container Registry (MCR) die u kunt gebruiken. Zie de [Azure/AzureML-containers](https://github.com/Azure/AzureML-Containers) github opslag plaats voor meer informatie.
-
-```python
-from azureml.core import Environment
-
-tf_env = Environment.from_conda_specification(name='tensorflow-2.2-gpu', file_path='./conda_dependencies.yml')
-
-# Specify a GPU base image
-tf_env.docker.enabled = True
-tf_env.docker.base_image = 'mcr.microsoft.com/azureml/openmpi3.1.2-cuda10.1-cudnn7-ubuntu18.04'
-```
-
-> [!TIP]
-> U kunt desgewenst al uw afhankelijkheden rechtstreeks vastleggen in een aangepaste docker-installatie kopie of Dockerfile, en uw omgeving maken op basis hiervan. Zie voor meer informatie [trainen met aangepaste installatie kopie](how-to-train-with-custom-image.md).
-
-Zie [software omgevingen maken en gebruiken in azure machine learning](how-to-use-environments.md)voor meer informatie over het maken van en het gebruik van omgevingen.
+Als u de Azure ML- [omgeving](concept-environments.md) wilt definiëren waarin de afhankelijkheden van uw trainings script zijn opgenomen, kunt u een aangepaste omgeving definiëren of een Azure ml-gewerkte omgeving gebruiken.
 
 #### <a name="use-a-curated-environment"></a>Een gecuratore omgeving gebruiken
-Azure ML biedt eventueel vooraf ontwikkelde, gegroepeerde omgevingen als u geen eigen installatie kopie wilt maken. Azure ML heeft verschillende CPU-en GPU-gecuratore omgevingen voor tensor flow die overeenkomen met de verschillende versies van tensor flow. Zie [hier](resource-curated-environments.md)voor meer informatie.
+Azure ML biedt vooraf ontwikkelde, geconstrueerde omgevingen als u uw eigen omgeving niet wilt definiëren. Azure ML heeft verschillende CPU-en GPU-gecuratore omgevingen voor tensor flow die overeenkomen met de verschillende versies van tensor flow. Zie [hier](resource-curated-environments.md)voor meer informatie.
 
 Als u een gewerkte omgeving wilt gebruiken, kunt u in plaats daarvan de volgende opdracht uitvoeren:
 
@@ -188,6 +153,41 @@ Als u in plaats daarvan het object met de gemodificeerde omgeving rechtstreeks h
 ```python
 tf_env = tf_env.clone(new_name='tensorflow-2.2-gpu')
 ```
+
+#### <a name="create-a-custom-environment"></a>Een aangepaste omgeving maken
+
+U kunt ook uw eigen Azure ML-omgeving maken waarin de afhankelijkheden van uw trainings script worden ingekapseld.
+
+Definieer eerst uw Conda-afhankelijkheden in een YAML-bestand. in dit voor beeld heeft het bestand de naam `conda_dependencies.yml` .
+
+```yaml
+channels:
+- conda-forge
+dependencies:
+- python=3.6.2
+- pip:
+  - azureml-defaults
+  - tensorflow-gpu==2.2.0
+```
+
+Een Azure ML-omgeving maken op basis van deze Conda Environment-specificatie. De omgeving wordt tijdens runtime ingepakt in een docker-container.
+
+Als er geen basis installatie kopie is opgegeven, wordt door Azure ML standaard een CPU-installatie kopie gebruikt `azureml.core.environment.DEFAULT_CPU_IMAGE` als basis installatie kopie. Omdat in dit voor beeld training wordt uitgevoerd op een GPU-cluster, moet u een GPU-basis installatie kopie opgeven met de benodigde GPU-Stuur Programma's en-afhankelijkheden. Azure ML onderhoudt een set basis installatie kopieën die zijn gepubliceerd op micro soft Container Registry (MCR) die u kunt gebruiken. Zie de [Azure/AzureML-containers](https://github.com/Azure/AzureML-Containers) github opslag plaats voor meer informatie.
+
+```python
+from azureml.core import Environment
+
+tf_env = Environment.from_conda_specification(name='tensorflow-2.2-gpu', file_path='./conda_dependencies.yml')
+
+# Specify a GPU base image
+tf_env.docker.enabled = True
+tf_env.docker.base_image = 'mcr.microsoft.com/azureml/openmpi3.1.2-cuda10.1-cudnn7-ubuntu18.04'
+```
+
+> [!TIP]
+> U kunt desgewenst al uw afhankelijkheden rechtstreeks vastleggen in een aangepaste docker-installatie kopie of Dockerfile, en uw omgeving maken op basis hiervan. Zie voor meer informatie [trainen met aangepaste installatie kopie](how-to-train-with-custom-image.md).
+
+Zie [software omgevingen maken en gebruiken in azure machine learning](how-to-use-environments.md)voor meer informatie over het maken van en het gebruik van omgevingen.
 
 ## <a name="configure-and-submit-your-training-run"></a>Uw trainings uitvoering configureren en verzenden
 

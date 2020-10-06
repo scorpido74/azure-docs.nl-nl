@@ -8,13 +8,13 @@ ms.author: heidist
 tags: Lucene query analyzer syntax
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 8e8c32f5596e469de5402a1f712d234a806a69e4
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.date: 10/05/2020
+ms.openlocfilehash: 3d2172f76faecfc8347d7e0ca13fb506817f25de
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297991"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740697"
 ---
 # <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-cognitive-search"></a>Gebruik de ' volledige ' lucene-Zoek syntaxis (geavanceerde query's in azure Cognitive Search)
 
@@ -40,13 +40,13 @@ Wat u nodig hebt, is postman of een gelijkwaardig hulp programma voor het uitgev
 
 Nadat u de aanvraag header hebt opgegeven, kunt u deze opnieuw gebruiken voor alle query's in dit artikel, zodat alleen de teken reeks **Search =** wordt uitgewisseld. 
 
-  ![Para meters ingesteld op de aanvraag header van postman](media/search-query-lucene-examples/postman-header.png)
+  :::image type="content" source="media/search-query-lucene-examples/postman-header.png" alt-text="Para meters ingesteld op de aanvraag header van postman" border="false":::
 
 ### <a name="set-the-request-url"></a>De aanvraag-URL instellen
 
 Request is een GET-opdracht die wordt gekoppeld aan een URL met het Azure Cognitive Search-eind punt en de zoek teken reeks.
 
-  ![OPHALEN van header van Postman-aanvraag](media/search-query-lucene-examples/postman-basic-url-request-elements.png)
+  :::image type="content" source="media/search-query-lucene-examples/postman-basic-url-request-elements.png" alt-text="Para meters ingesteld op de aanvraag header van postman" border="false":::
 
 URL-samen stelling heeft de volgende elementen:
 
@@ -137,7 +137,7 @@ $select=business_title, posting_type&search=business_title:(senior NOT junior) A
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&$select=business_title&search=business_title:(senior NOT junior)
 ```
 
-  ![Zoek expressie voor voorbeeld reacties van postman](media/search-query-lucene-examples/intrafieldfilter.png)
+  :::image type="content" source="media/search-query-lucene-examples/intrafieldfilter.png" alt-text="Para meters ingesteld op de aanvraag header van postman" border="false":::
 
 U kunt een zoek bewerking in een veld definiëren met de syntaxis **FieldName: searchExpression** , waarbij de zoek expressie één woord of een woord groep of een complexere expressie tussen haakjes kan zijn, optioneel met Booleaanse Opera tors. Enkele voor beelden zijn:
 
@@ -199,7 +199,7 @@ In deze query, voor taken met de term ' senior analist ', waarbij deze wordt ges
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:%22senior%20analyst%22~1
 ```
-  ![Proximity-query](media/search-query-lucene-examples/proximity-before.png)
+  :::image type="content" source="media/search-query-lucene-examples/proximity-before.png" alt-text="Para meters ingesteld op de aanvraag header van postman" border="false":::
 
 Probeer het opnieuw met het verwijderen van de woorden tussen de term ' Senior Analyst '. U ziet dat er 8 documenten voor deze query worden geretourneerd, in tegens telling tot 10 voor de vorige query.
 
@@ -217,7 +217,7 @@ In deze ' before '-query kunt u zoeken naar taken met de term *computer analist*
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:computer%20analyst
 ```
-  ![Duur verhogen vóór](media/search-query-lucene-examples/termboostingbefore.png)
+  :::image type="content" source="media/search-query-lucene-examples/termboostingbefore.png" alt-text="Para meters ingesteld op de aanvraag header van postman" border="false":::
 
 In de query ' na ' herhaalt u de zoek opdracht. deze tijd verhoogt de resultaten met de term *analist* over de term *computer* als beide woorden niet bestaan. 
 
@@ -226,7 +226,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 ```
 Een meer menselijke Lees bare versie van de bovenstaande query is `search=business_title:computer analyst^2` . Voor een bewaarde query `^2` wordt gecodeerd als `%5E2` , wat moeilijker te zien is.
 
-  ![Duur verhogen na](media/search-query-lucene-examples/termboostingafter.png)
+  :::image type="content" source="media/search-query-lucene-examples/termboostingafter.png" alt-text="Para meters ingesteld op de aanvraag header van postman" border="false":::
 
 De term Boosting verschilt van Score profielen in die score profielen om bepaalde velden te stimuleren, in plaats van specifieke voor waarden. In het volgende voor beeld worden de verschillen toegelicht.
 
@@ -253,7 +253,7 @@ In deze query zoekt u naar taken met de term senior of Junior: `search=business_
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:/(Sen|Jun)ior/
 ```
 
-  ![Regex-query](media/search-query-lucene-examples/regex.png)
+  :::image type="content" source="media/search-query-lucene-examples/regex.png" alt-text="Para meters ingesteld op de aanvraag header van postman" border="false":::
 
 > [!Note]
 > Regex-query's worden niet [geanalyseerd](./search-lucene-query-architecture.md#stage-2-lexical-analysis). De enige trans formatie die wordt uitgevoerd bij onvolledige query termen is lowercasing.
@@ -275,7 +275,7 @@ In deze query zoekt u naar taken die het voor voegsel ' PROG ' bevatten. Dit zij
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:prog*
 ```
-  ![Joker teken query](media/search-query-lucene-examples/wildcard.png)
+  :::image type="content" source="media/search-query-lucene-examples/wildcard.png" alt-text="Para meters ingesteld op de aanvraag header van postman" border="false":::
 
 > [!Note]
 > Query's met Joker tekens worden niet [geanalyseerd](./search-lucene-query-architecture.md#stage-2-lexical-analysis). De enige trans formatie die wordt uitgevoerd bij onvolledige query termen is lowercasing.

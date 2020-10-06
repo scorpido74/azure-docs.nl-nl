@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2016
 ms.author: alkohli
-ms.openlocfilehash: dd82f7dd821991bbcf57cc7d8105575e0baa4d12
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b6cc89cb082cd0ed32abd88e3a6683c60a27ba90
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87070695"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742176"
 ---
 # <a name="clone-from-a-backup-of-your-storsimple-virtual-array"></a>Klonen vanuit een back-up van uw virtuele StorSimple-matrix
 
@@ -44,7 +44,7 @@ In dit artikel wordt stapsgewijs beschreven hoe u een back-upset van uw shares o
    
    c.    Klik op **OK**.
    
-   ![Een back-up klonen](./media/storsimple-virtual-array-clone/cloneshare3.png)
+   ![Back-up maken 2 klonen](./media/storsimple-virtual-array-clone/cloneshare3.png)
 3. Klik in de Blade **klon** op **doel instellingen** en ga vervolgens als volgt te werk:
    
    a.    Geef een naam op voor de share. De share naam moet 3-127 tekens bevatten.
@@ -59,13 +59,13 @@ In dit artikel wordt stapsgewijs beschreven hoe u een back-upset van uw shares o
    
    f.    Klik op **OK**.
    
-   ![Een back-up klonen](./media/storsimple-virtual-array-clone/cloneshare6.png)
+   ![Een back-up klonen 3](./media/storsimple-virtual-array-clone/cloneshare6.png)
 
 4. Klik op **klonen** om een kloon taak te starten. Nadat de taak is voltooid, wordt de kloon bewerking gestart en wordt u hiervan op de hoogte gebracht. Als u de voortgang van de kloon wilt controleren, gaat u naar de Blade **taken** en klikt u op de taak om de taak details weer te geven.
 5. Nadat de kloon is gemaakt, gaat u terug naar de Blade **shares** op het apparaat.
 6. U kunt nu de nieuwe gekloonde share weer geven in de lijst met shares op uw apparaat. Een gelaagde share wordt gekloond als gelaagd en een lokaal vastgemaakte share als een lokaal vastgemaakte share.
    
-   ![Een back-up klonen](./media/storsimple-virtual-array-clone/cloneshare10.png)
+   ![Een back-up kopiëren 4](./media/storsimple-virtual-array-clone/cloneshare10.png)
 
 ## <a name="clone-volumes-from-a-backup-set"></a>Volumes van een back-upset klonen
 
@@ -84,7 +84,7 @@ Als u vanuit een back-up wilt klonen, moet u in het Azure Portal stappen uitvoer
    
    c.    Klik op **OK**.
    
-   ![Een back-up klonen](./media/storsimple-virtual-array-clone/clonevolume3.png)
+   ![Een volume 2 klonen](./media/storsimple-virtual-array-clone/clonevolume3.png)
 3. Klik in de Blade **klon** op instellingen van het **doel volume** en ga vervolgens als volgt te werk:
    
    a. De naam van het apparaat wordt automatisch ingevuld.
@@ -95,16 +95,16 @@ Als u vanuit een back-up wilt klonen, moet u in het Azure Portal stappen uitvoer
    
    d. Klik voor de **verbonden hosts**op **selecteren**.
    
-   ![Een back-up klonen](./media/storsimple-virtual-array-clone/clonevolume4.png)
+   ![Een volume klonen 3](./media/storsimple-virtual-array-clone/clonevolume4.png)
 4. Selecteer op de Blade **verbonden hosts** een bestaande ACR of Voeg een nieuwe ACR toe. Als u een nieuwe ACR wilt toevoegen, moet u een ACR-naam en de IQN van de host opgeven. Klik op **Selecteren**.
    
-   ![Een back-up klonen](./media/storsimple-virtual-array-clone/clonevolume5.png)
+   ![Een volume kopiëren 4](./media/storsimple-virtual-array-clone/clonevolume5.png)
 5. Klik op **klon** om een kloon taak te starten.
    
-   ![Een back-up klonen](./media/storsimple-virtual-array-clone/clonevolume6.png)  
+   ![Een volume klonen](./media/storsimple-virtual-array-clone/clonevolume6.png)  
 6. Nadat de kloon taak is gemaakt, wordt het klonen gestart. Zodra de kloon is gemaakt, wordt deze weer gegeven op de Blade volumes op het apparaat. Houd er rekening mee dat een gelaagd volume wordt gekloond als gelaagd en dat een lokaal vastgemaakt volume wordt gekloond als lokaal vastgemaakt volume.
    
-   ![Een back-up klonen](./media/storsimple-virtual-array-clone/clonevolume8.png)
+   ![Een volume klonen 6](./media/storsimple-virtual-array-clone/clonevolume8.png)
 7. Zodra het volume online wordt weer gegeven op de lijst met volumes, is het volume beschikbaar voor gebruik. Vernieuw de lijst met doelen in het venster Eigenschappen van iSCSI-initiator op de iSCSI-initiator. Een nieuw doel met de naam van het gekloonde volume moet als ' inactief ' worden weer gegeven onder de kolom Status.
 8. Selecteer het doel en klik op **verbinden**. Nadat de initiator is verbonden met het doel, wordt de status gewijzigd in **verbonden**.
 9. In het venster **schijf beheer** worden de gekoppelde volumes weer gegeven zoals in de volgende afbeelding. Klik met de rechtermuisknop op het gedetecteerde volume (klik op de naam van de schijf) en klik vervolgens op **Online**.

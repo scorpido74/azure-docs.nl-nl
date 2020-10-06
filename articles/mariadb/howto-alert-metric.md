@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 5687255057fdd5e73478626721c789c98b2ea366
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 6ed890fca9dddcbc7f04914a6f920d530d18ed0f
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120072"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742839"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mariadb"></a>Gebruik de Azure Portal om waarschuwingen in te stellen voor Azure Database for MariaDB
 
@@ -25,11 +25,11 @@ U kunt een waarschuwing configureren om de volgende acties uit te voeren wanneer
 * Een webhook aanroepen
 
 U kunt informatie over waarschuwings regels configureren en ophalen met behulp van:
-* [Azure-portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
+* [Azure Portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
 * [Azure-CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
 * [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/metricalerts)
 
-## <a name="create-an-alert-rule-on-a-metric"></a>Een waarschuwings regel maken voor een metrieke waarde
+## <a name="create-an-alert-rule-on-a-metric"></a>Een waarschuwingsregel maken op een metrische waarde
 1. Selecteer in de [Azure Portal](https://portal.azure.com/)de Azure database for MariaDB server die u wilt bewaken.
 
 2. Selecteer in de sectie **bewaking** van de zijbalk **waarschuwingen** zoals wordt weer gegeven:
@@ -52,7 +52,7 @@ U kunt informatie over waarschuwings regels configureren en ophalen met behulp v
    
    Selecteer **gereed** wanneer u klaar bent.
 
-   ![Metrische waarde selecteren](./media/howto-alert-metric/7-set-threshold-time.png)
+   ![Selecteer metrische waarde 2](./media/howto-alert-metric/7-set-threshold-time.png)
 
 8. Selecteer in de sectie **actie groepen** de optie **nieuwe maken** om een nieuwe groep te maken voor het ontvangen van meldingen over de waarschuwing.
 
@@ -70,7 +70,7 @@ U kunt informatie over waarschuwings regels configureren en ophalen met behulp v
 
 11. Geef een naam, beschrijving en ernst voor de waarschuwings regel op.
 
-    ![Actiegroep](./media/howto-alert-metric/11-name-description-severity.png) 
+    ![Actie groep 2](./media/howto-alert-metric/11-name-description-severity.png) 
 
 12. Selecteer **waarschuwings regel maken** om de waarschuwing te maken.
 

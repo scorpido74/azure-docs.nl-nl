@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/10/2020
-ms.openlocfilehash: 8f3c85bb6dab906528c3c442cbdd1b762d8145e0
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 6b097aa0adb39e1576e8771bbae8707348351a82
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91533125"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740119"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-portal"></a>Lees replica's maken en beheren in Azure Database for MySQL met behulp van de Azure Portal
 
@@ -31,7 +31,7 @@ In dit artikel leert u hoe u in de Azure Database for MySQL-service Lees replica
 
 Een lees replica-server kan worden gemaakt met behulp van de volgende stappen:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 2. Selecteer de bestaande Azure Database for MySQL-server die u wilt gebruiken als een Master. Met deze actie wordt de pagina **overzicht** geopend.
 
@@ -121,7 +121,7 @@ Gebruik de volgende stappen om een bron server te verwijderen uit de Azure Porta
 
    :::image type="content" source="./media/howto-read-replica-portal/delete-master-confirm.png" alt-text="Azure Database for MySQL-replicatie":::
 
-## <a name="monitor-replication"></a>Replicatie bewaken
+## <a name="monitor-replication"></a>Replicatie controleren
 
 1. Selecteer in de [Azure Portal](https://portal.azure.com/)de replica Azure database for mysql server die u wilt bewaken.
 

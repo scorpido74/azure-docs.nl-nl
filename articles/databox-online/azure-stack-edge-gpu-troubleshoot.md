@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 08/19/2020
 ms.author: alkohli
-ms.openlocfilehash: 9deb10336d959a3f706cfc0ba970c3b83d5cd0a4
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 026f476b888380b6f262a6a52c064c939e27e931
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90891551"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743196"
 ---
 # <a name="troubleshoot-issues-on-your-azure-stack-edge-pro-gpu-device"></a>Problemen met uw Azure Stack Edge Pro GPU-apparaat oplossen 
 
@@ -51,7 +51,7 @@ Voer de volgende stappen uit om een ondersteuningspakket te verzamelen.
  
 2. Nadat het ondersteunings pakket is gemaakt, selecteert u **ondersteunings pakket downloaden**. Er wordt een gecomprimeerd pakket gedownload naar het pad dat u hebt gekozen. U kunt het pakket uitpakken en de systeemlogboekbestanden bekijken.
 
-    ![Gebruiker toevoegen selecteren](media/azure-stack-edge-gpu-troubleshoot/collect-logs-2.png)
+    ![Selecteer gebruiker 2 toevoegen](media/azure-stack-edge-gpu-troubleshoot/collect-logs-2.png)
 
 ## <a name="gather-advanced-security-logs"></a>Geavanceerde beveiligings logboeken verzamelen
 

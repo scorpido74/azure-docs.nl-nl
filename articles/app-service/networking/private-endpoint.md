@@ -9,19 +9,19 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 16ce03ad8d6af1908a9ea4d3b7759bb5eb3c1139
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 9f593bd5e1d4970b43b25c434abfa87177b72066
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961547"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743009"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>Privé-eind punten gebruiken voor Azure-web-app (preview-versie)
 
 > [!Note]
 > Met de preview-versie van het vernieuwen hebben we de functie gegevens exfiltration Protection uitgebracht.
 >
-> Het voor beeld is beschikbaar in alle open bare regio's voor PremiumV2 Windows-en Linux Web Apps-en elastische Premium-functies. 
+> De preview is beschikbaar in alle open bare regio's voor PremiumV2 en PremiumV3 Windows-en Linux-apps en elastische Premium-functies. 
 
 U kunt een privé-eind punt voor uw Azure-web-app gebruiken om clients die zich in uw particuliere netwerk bevinden, veilig toegang te geven tot de app via een persoonlijke koppeling. Het persoonlijke eind punt gebruikt een IP-adres uit uw Azure VNet-adres ruimte. Netwerk verkeer tussen een client op uw particuliere netwerk en de web-app passeren over het VNet en een persoonlijke koppeling in het micro soft-backbone-netwerk, waardoor de bloot stelling van het open bare Internet wordt voor komen.
 

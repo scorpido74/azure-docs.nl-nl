@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: a57ea081bf6fef8c0778af2a6254b3f61564027e
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 1ba3f49c9016d71acf162efb07cd6120b1dcc1ec
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91711294"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743553"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Een Azure Machine Learning Compute-exemplaar maken en beheren
 
@@ -108,7 +108,7 @@ U kunt ook een reken instantie met een [Azure Resource Manager sjabloon](https:/
 ### <a name="create-on-behalf-of-preview"></a>Maken namens (preview-versie)
 
 Als beheerder kunt u een compute-instantie maken namens een gegevens wetenschapper en de instantie hieraan toewijzen met:
-* [Azure Resource Manager sjabloon](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/preview/2020-09-01-preview/examples/createComputeInstance.json).  Zie [identiteits object-Id's zoeken voor verificatie configuratie](../healthcare-apis/find-identity-object-ids.md)voor meer informatie over het vinden van de TenantID en ObjectID die nodig zijn in deze sjabloon.  U kunt deze waarden ook vinden in de Azure Active Directory Portal.
+* [Azure Resource Manager sjabloon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance).  Zie [identiteits object-Id's zoeken voor verificatie configuratie](../healthcare-apis/find-identity-object-ids.md)voor meer informatie over het vinden van de TenantID en ObjectID die nodig zijn in deze sjabloon.  U kunt deze waarden ook vinden in de Azure Active Directory Portal.
 * REST-API
 
 De gegevens wetenschapper u het Compute-exemplaar maakt voor de behoeften van [Azure op rollen gebaseerde toegangs beheer (RBAC)-](../role-based-access-control/overview.md) machtigingen: 

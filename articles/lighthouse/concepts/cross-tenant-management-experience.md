@@ -1,14 +1,14 @@
 ---
 title: Beheerervaring in meerdere tenants
 description: Azure delegated Resource Management maakt een cross-Tenant beheer mogelijk.
-ms.date: 09/22/2020
+ms.date: 09/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 70356fd3856e517ca8fb3414a4ae2a8ccf28326e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 60eab197e38c7b6ef3b7f2d9442a0b7583f66d09
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91336629"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91739728"
 ---
 # <a name="cross-tenant-management-experiences"></a>Beheerervaring in meerdere tenants
 
@@ -120,6 +120,7 @@ De meeste taken en services kunnen worden uitgevoerd op gedelegeerde resources i
   - Configuratie van beveiligings groep met adaptieve netwerk beveiliging
   - Zorg ervoor dat servers alleen de toepassingen en processen uitvoeren die ze moeten hebben met adaptieve toepassings besturings elementen
   - Wijzigingen in belang rijke bestanden en register vermeldingen bewaken met FIM (File Integrity Monitoring)
+- Houd er rekening mee dat het hele abonnement moet worden gedelegeerd naar de beheer Tenant. Azure Security Center scenario's worden niet ondersteund met gedelegeerde resource groepen
 
 [Azure-Sentinel](../../sentinel/multiple-tenants-service-providers.md):
 

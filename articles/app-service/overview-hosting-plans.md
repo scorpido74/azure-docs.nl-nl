@@ -4,14 +4,14 @@ description: Meer informatie over de werking van App Service plannen in Azure Ap
 keywords: app service, Azure app service, schaal, schaalbaar, schaal baarheid, app service-plan, kosten van app service
 ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
-ms.date: 08/12/2020
+ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: f30221de81b6bef199c0a25e770558c4db8c4006
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 4c3003a5cbb55464f3a089c3045ac28f3786cb6b
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958509"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742970"
 ---
 # <a name="azure-app-service-plan-overview"></a>Overzicht van Azure App Service-plan
 
@@ -22,32 +22,32 @@ Wanneer u in een bepaalde regio een App Service plan maakt (bijvoorbeeld Europa-
 - Regio (VS - west, VS - oost, enzovoort)
 - Aantal VM-exemplaren
 - Grootte van VM-exemplaren (klein, normaal of groot)
-- Prijs categorie (gratis, gedeeld, Basic, Standard, Premium, PremiumV2, geïsoleerd)
+- Prijs categorie (gratis, gedeeld, Basic, Standard, Premium, PremiumV2, PremiumV3, geïsoleerd)
 
 De _prijs categorie_ van een app service plan bepaalt welke app service functies u krijgt en hoeveel u betaalt voor het abonnement. Er zijn verschillende prijscategorieën:
 
 - **Gedeelde Compute** **: de** twee basis **lagen, een**app, worden op dezelfde Azure-VM uitgevoerd als andere app service apps, inclusief apps van andere klanten. Hierbij worden CPU-quota toegewezen aan elke app die op de gedeelde resources wordt uitgevoerd en kunnen de resources niet worden opgeschaald.
-- **Toegewezen reken kracht**: de lagen **Basic**, **Standard**, **Premium**en **PremiumV2** voeren apps uit op specifieke Azure-vm's. Alleen apps in hetzelfde App Service-plan maken gedeeld gebruik van dezelfde rekenresources. Hoe hoger het niveau, hoe meer VM-exemplaren u kunt gebruiken voor uitschalen.
+- **Toegewezen reken kracht**: de lagen **Basic**, **Standard**, **Premium**, **PremiumV2**en **PremiumV3** voeren apps uit op toegewezen Azure-vm's. Alleen apps in hetzelfde App Service-plan maken gedeeld gebruik van dezelfde rekenresources. Hoe hoger het niveau, hoe meer VM-exemplaren u kunt gebruiken voor uitschalen.
 - **Geïsoleerd**: deze laag voert specifieke virtuele Azure-machines uit op specifieke Azure Virtual Networks. Het biedt netwerk isolatie boven op reken isolatie voor uw apps. Dit niveau biedt de meeste mogelijkheden voor uitschalen.
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
 Elke laag biedt ook een specifieke subset van App Service-functies. Deze functies omvatten aangepaste domeinen en TLS/SSL-certificaten, automatisch schalen, implementatie sleuven, back-ups, Traffic Manager-integratie en meer. Hoe hoger de laag, hoe meer functies beschikbaar zijn. Zie [app service plan Details](https://azure.microsoft.com/pricing/details/app-service/plans/)als u wilt weten welke functies worden ondersteund in elke prijs categorie.
 
-<a name="new-pricing-tier-premiumv2"></a>
+<a name="new-pricing-tier-premiumv3"></a>
 
 > [!NOTE]
-> De nieuwe prijs categorie **PremiumV2** voorziet in [dv2-serie vm's](../virtual-machines/dv2-dsv2-series.md) met snellere processors, SSD-opslag en dubbele geheugen-naar-core-verhouding ten opzichte van de **Standard** -laag. **PremiumV2** biedt ook ondersteuning voor een hogere schaal via een verhoogd aantal instanties, terwijl alle geavanceerde mogelijkheden van het Standard-abonnement nog steeds beschikbaar zijn. Alle beschik bare functies in de bestaande **Premium** -laag zijn opgenomen in **PremiumV2**.
+> De nieuwe **PremiumV3** -prijs categorie garandeert [Dv3-serie vm's](../virtual-machines/dv3-dsv3-series.md) met snellere processors, SSD-opslag en vierdubbele geheugen-naar-core-verhouding ten opzichte van de **Standard** -laag. **PremiumV3** biedt ook ondersteuning voor een hogere schaal via een verhoogd aantal instanties en biedt nog steeds alle geavanceerde mogelijkheden die in de laag **standaard** worden gevonden. Alle beschik bare functies in de bestaande **PremiumV2** -laag zijn opgenomen in **PremiumV3**.
 >
 > Net als bij andere toegewezen lagen zijn er drie VM-grootten beschikbaar voor deze laag:
 >
-> - Klein (één CPU-kern, 3,5 GiB geheugen) 
-> - Gemiddeld (twee CPU-kernen, 7 GiB geheugen) 
-> - Groot (vier CPU-kernen, 14 GiB geheugen)  
+> - Klein (2 CPU-core, 8 GiB geheugen) 
+> - Gemiddeld (4 CPU-kernen, 16 GiB geheugen) 
+> - Groot (8 CPU-kernen, 32 GiB geheugen)  
 >
-> Zie [app service prijzen](https://azure.microsoft.com/pricing/details/app-service/)voor **PremiumV2e** prijs informatie.
+> Zie [app service prijzen](https://azure.microsoft.com/pricing/details/app-service/)voor **PremiumV3e** prijs informatie.
 >
-> Zie [PremiumV2 laag configureren voor app service](app-service-configure-premium-tier.md)om aan de slag te gaan met de nieuwe prijs categorie **PremiumV2** .
+> Zie [PremiumV3 laag configureren voor app service](app-service-configure-premium-tier.md)om aan de slag te gaan met de nieuwe prijs categorie **PremiumV3** .
 
 ## <a name="how-does-my-app-run-and-scale"></a>Hoe wordt mijn app uitgevoerd en geschaald?
 
@@ -68,7 +68,7 @@ In deze sectie wordt beschreven hoe App Service-apps worden gefactureerd. Zie [a
 Met uitzonde ring van de **gratis** laag wordt een app service plan een kosten voor de reken resources die worden gebruikt.
 
 - In de **gedeelde** laag ontvangt elke app een QUOTUM van CPU-minuten, zodat _elke app_ in rekening wordt gebracht voor het CPU-quotum.
-- In de toegewezen reken lagen (**Basic**, **Standard**, **Premium**, **PremiumV2**) definieert het app service plan het aantal VM-exemplaren waarmee de apps worden geschaald, zodat _elk VM-exemplaar_ in het app service plan wordt gefactureerd. Deze VM-exemplaren worden op dezelfde manier in rekening gebracht, ongeacht het aantal apps dat erop wordt uitgevoerd. Zie [een app service plan opschonen](app-service-plan-manage.md#delete)om onverwachte kosten te voor komen.
+- In de toegewezen reken lagen (**Basic**, **Standard**, **Premium**, **PremiumV2**, **PREMIUMV3**), het app service plan wordt het aantal VM-exemplaren gedefinieerd waarmee de apps worden geschaald, zodat _elk VM-exemplaar_ in het app service plan wordt gefactureerd. Deze VM-exemplaren worden op dezelfde manier in rekening gebracht, ongeacht het aantal apps dat erop wordt uitgevoerd. Zie [een app service plan opschonen](app-service-plan-manage.md#delete)om onverwachte kosten te voor komen.
 - In de **geïsoleerde** laag definieert het app service Environment het aantal geïsoleerde werk rollen waarop uw apps worden uitgevoerd, en _elke werk nemer_ wordt in rekening gebracht. Daarnaast is er een vast stempel tarief voor het uitvoeren van de App Service Environment zelf.
 
 Er worden geen kosten in rekening gebracht voor het gebruik van de App Service functies die voor u beschikbaar zijn (aangepaste domeinen, TLS/SSL-certificaten, implementatie sleuven, back-ups, enzovoort). De uitzonde ringen zijn:
@@ -80,7 +80,7 @@ Er worden geen kosten in rekening gebracht voor het gebruik van de App Service f
 > [!NOTE]
 > Als u App Service integreert met een andere Azure-service, moet u mogelijk rekening houden met de kosten van deze andere services. Als u bijvoorbeeld Azure Traffic Manager gebruikt om uw app geografisch te schalen, worden er door Azure Traffic Manager ook kosten in rekening gebracht op basis van uw gebruik. Zie [prijs calculator](https://azure.microsoft.com/pricing/calculator/)voor informatie over het schatten van de kosten voor meerdere services in Azure. 
 
-Wilt u uw clouduitgaven optimaliseren en geld besparen?
+Wilt u optimaliseren en op uw cloudverbruik besparen?
 
 [!INCLUDE [cost-management-horizontal](../../includes/cost-management-horizontal.md)]
 

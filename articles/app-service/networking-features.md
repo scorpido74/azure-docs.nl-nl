@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 03/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: d2b74af723e3ba8b1d71e9f481bf96d009540a52
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: af4c333fb539ad533756c538cb3ecde1d9a91413
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962091"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743043"
 ---
 # <a name="app-service-networking-features"></a>App Service-netwerk functies
 
 Toepassingen in de Azure App Service kunnen op verschillende manieren worden geïmplementeerd. App Service gehoste apps zijn standaard rechtstreeks toegankelijk voor Internet en kunnen alleen Internet gehoste eind punten bereiken. Veel klant toepassingen moeten echter het inkomende en uitgaande netwerk verkeer beheren. Er zijn verschillende functies die beschikbaar zijn in de App Service om aan deze behoeften te voldoen. De uitdaging is te weten welke functie moet worden gebruikt om een bepaald probleem op te lossen. Dit document is bedoeld om klanten te helpen bepalen welke functie moet worden gebruikt op basis van enkele voor beelden van gebruiks voorbeelden.
 
-Er zijn twee primaire implementatie typen voor de Azure App Service. Er is een open bare multi tenant-service, die als host fungeert voor App Service plannen in de gratis, gedeelde, Basic, Standard, Premium en Premiumv2 prijzen-Sku's. Vervolgens is er één Tenant App Service Environment (ASE), die als host fungeert voor geïsoleerde SKU App Service plannen rechtstreeks in uw Azure-Virtual Network (VNet). De functies die u gebruikt, zijn afhankelijk van of u zich in de multi tenant-service of in een ASE bevindt. 
+Er zijn twee primaire implementatie typen voor de Azure App Service. Er is een open bare multi tenant-service, die als host fungeert voor App Service plannen in de gratis, gedeelde, Basic-, Standard-, Premium-, PremiumV2-en PremiumV3-prijzen-Sku's. Vervolgens is er één Tenant App Service Environment (ASE), die als host fungeert voor geïsoleerde SKU App Service plannen rechtstreeks in uw Azure-Virtual Network (VNet). De functies die u gebruikt, zijn afhankelijk van of u zich in de multi tenant-service of in een ASE bevindt. 
 
 ## <a name="multi-tenant-app-service-networking-features"></a>Multi tenant-App Service-netwerk functies 
 
@@ -62,7 +62,7 @@ In de volgende uitgaande use-cases wordt uitgelegd hoe u App Service-netwerk fun
 
 ### <a name="default-networking-behavior"></a>Standaard netwerk gedrag
 
-De Azure App Service schaal eenheden ondersteunen veel klanten in elke implementatie. Met de gratis en gedeelde SKU worden de workloads van de klant gehost op werk nemers met meerdere tenants. De basis en hierboven plannen voor de werk belasting van hosters die uitsluitend zijn toegewezen aan één App Service plan (ASP). Als u een Standard-App Service plan had, worden alle apps in dat plan uitgevoerd op dezelfde werk nemer. Als u de werk nemer uitbreidt, worden alle apps in die ASP gerepliceerd op een nieuwe werk nemer voor elk exemplaar in uw ASP. De werk nemers die worden gebruikt voor Premiumv2 verschillen van de werk nemers die worden gebruikt voor de andere plannen. Elke App Service-implementatie heeft één IP-adres dat wordt gebruikt voor al het inkomende verkeer naar de apps in die App Service-implementatie. Er zijn echter ook geen vier tot 11 adressen die worden gebruikt voor het maken van uitgaande oproepen. Deze adressen worden gedeeld door alle apps in die App Service implementatie. De uitgaande adressen verschillen op basis van de verschillende typen werk nemers. Dit betekent dat de adressen die worden gebruikt door de ASPs gratis, gedeeld, basis, standaard en Premium anders zijn dan de adressen die worden gebruikt voor uitgaande oproepen van de Premiumv2-ASPs. Als u de eigenschappen voor uw app bekijkt, ziet u de inkomende en uitgaande adressen die worden gebruikt door uw app. Als u een afhankelijkheid met een IP-ACL wilt vergren delen, gebruikt u de possibleOutboundAddresses. 
+De Azure App Service schaal eenheden ondersteunen veel klanten in elke implementatie. Met de gratis en gedeelde SKU worden de workloads van de klant gehost op werk nemers met meerdere tenants. De basis en hierboven plannen voor de werk belasting van hosters die uitsluitend zijn toegewezen aan één App Service plan (ASP). Als u een Standard-App Service plan had, worden alle apps in dat plan uitgevoerd op dezelfde werk nemer. Als u de werk nemer uitbreidt, worden alle apps in die ASP gerepliceerd op een nieuwe werk nemer voor elk exemplaar in uw ASP. De werk nemers die worden gebruikt voor PremiumV2 en PremiumV3 verschillen van de werk nemers die worden gebruikt voor de andere plannen. Elke App Service-implementatie heeft één IP-adres dat wordt gebruikt voor al het inkomende verkeer naar de apps in die App Service-implementatie. Er zijn echter ook geen vier tot 11 adressen die worden gebruikt voor het maken van uitgaande oproepen. Deze adressen worden gedeeld door alle apps in die App Service implementatie. De uitgaande adressen verschillen op basis van de verschillende typen werk nemers. Dit betekent dat de adressen die worden gebruikt door de ASPs gratis, gedeeld, basis, standaard en Premium anders zijn dan de adressen die worden gebruikt voor uitgaande oproepen van de PremiumV2 en PremiumV3 ASPs. Als u de eigenschappen voor uw app bekijkt, ziet u de inkomende en uitgaande adressen die worden gebruikt door uw app. Als u een afhankelijkheid met een IP-ACL wilt vergren delen, gebruikt u de possibleOutboundAddresses. 
 
 ![App-eigenschappen](media/networking-features/app-properties.png)
 

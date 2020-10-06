@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 4560ca2b07826e2a071f515f147dfab8cbec3624
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 81799e6ec366c7429fdb29b85b4ff65d353a8fba
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84704587"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742414"
 ---
 # <a name="deploy-storsimple-virtual-array--set-up-as-an-iscsi-server-via-azure-portal"></a>StorSimple Virtual array implementeren: ingesteld als een iSCSI-server via Azure Portal
 
@@ -121,11 +121,11 @@ Gebruik de volgende stapsgewijze instructies voor het instellen en configureren 
    3. Klik op **Registreren**. Hiermee wordt het apparaat opnieuw opgestart. Mogelijk moet u 2-3 minuten wachten voordat het apparaat is geregistreerd. Nadat het apparaat opnieuw is opgestart, wordt u naar de aanmeldings pagina geleid.
       
       ![Apparaat registreren](./media/storsimple-virtual-array-deploy3-iscsi-setup/image11.png)
-10. Ga terug naar de Azure-portal.
+10. Ga terug naar Azure Portal.
 11. Navigeer naar de Blade **apparaten** van uw service. Als u veel resources hebt, klikt u op **alle resources**, klikt u op de naam van de service (Zoek indien nodig ernaar) en klikt u vervolgens op **apparaten**.
 12. Controleer op de Blade **apparaten** of het apparaat is verbonden met de service door de status op te zoeken. Het apparaat moet de status **Gereed voor configuratie** hebben.
     
-    ![Apparaat registreren](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis1m.png)
+    ![Apparaat implementeren](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis1m.png)
 
 ## <a name="step-2-configure-the-device-as-iscsi-server"></a>Stap 2: het apparaat configureren als iSCSI-server
 
@@ -138,7 +138,7 @@ Voer de volgende stappen uit in de Azure Portal om de vereiste apparaatinstellin
     ![Apparaat configureren als iSCSI-server](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis1m.png) 
 2. Klik op het apparaat. er wordt een banner bericht weer gegeven dat aangeeft dat het apparaat gereed is voor installatie.
    
-    ![Apparaat configureren als iSCSI-server](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis2m.png)  
+    ![Apparaat configureren als iSCSI-Server 2](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis2m.png)  
 3. Klik op **configureren** op de opdracht balk van het apparaat. Hiermee opent u de Blade **configureren** . Ga als volgt te werk op de Blade **configureren** :
    
    * De iSCSI-server naam wordt automatisch ingevuld.
@@ -146,13 +146,13 @@ Voer de volgende stappen uit in de Azure Portal om de vereiste apparaatinstellin
    * Geef een versleutelings sleutel van 32 tekens op en neem deze op in een app voor sleutel beheer, zodat u deze later kunt raadplegen.
    * Selecteer een opslag account dat u wilt gebruiken met uw apparaat. In dit abonnement kunt u een bestaand opslag account selecteren, of u kunt op **toevoegen** klikken om een account uit een ander abonnement te kiezen.
      
-     ![Apparaat configureren als iSCSI-server](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis4m.png)
+     ![Apparaat configureren als iSCSI-Server 3](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis4m.png)
 4. Klik op **configureren** om het instellen van de iSCSI-server te volt ooien.
    
-    ![Apparaat configureren als iSCSI-server](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis5m.png) 
+    ![Apparaat configureren als iSCSI-Server 4](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis5m.png) 
 5. U wordt gewaarschuwd dat het maken van de iSCSI-server wordt uitgevoerd. Nadat de iSCSI-server is gemaakt, wordt de Blade **apparaten** bijgewerkt en is de bijbehorende Apparaatstatus **online**.
    
-    ![Apparaat configureren als iSCSI-server](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis9m.png)
+    ![Apparaat configureren als iSCSI-Server 5](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis9m.png)
 
 ## <a name="step-3-add-a-volume"></a>Stap 3: een volume toevoegen
 
@@ -169,17 +169,17 @@ Voer de volgende stappen uit in de Azure Portal om de vereiste apparaatinstellin
      
      Een gelaagd volume aan de andere kant is dun ingericht. Wanneer u een gelaagd volume maakt, wordt ongeveer 10% van de ruimte ingericht op de lokale laag en wordt 90% van de ruimte ingericht in de Cloud. Als u bijvoorbeeld een volume van 1 TB hebt ingericht, bevindt 100 GB zich in de lokale ruimte en wordt 900 GB in de Cloud gebruikt wanneer de gegevens lagen. Dit betekent dat als u alle lokale ruimte op het apparaat uitvoert, u geen gelaagde share kunt inrichten (omdat de 10% niet beschikbaar is).
      
-     ![Een volume toevoegen](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis12.png)
+     ![Een volume 2 toevoegen](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis12.png)
    * Klik op **verbonden hosts**, selecteer een Access Control record (ACR) dat overeenkomt met de iSCSI-initiator die u wilt verbinden met dit volume en klik vervolgens op **selecteren**. <br><br> 
 3. Als u een nieuwe verbonden host wilt toevoegen, klikt u op **Nieuw toevoegen**, voert u een naam in voor de host en de iSCSI QUALIFIED name (IQN), en klikt u vervolgens op **toevoegen**. Als u de IQN niet hebt, gaat u naar [bijlage A: de IQN van een Windows Server-host ophalen](#appendix-a-get-the-iqn-of-a-windows-server-host).
    
-      ![Een volume toevoegen](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis15m.png)
+      ![Een volume toevoegen 3](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis15m.png)
 4. Klik op **OK**wanneer u klaar bent met het configureren van het volume. Er wordt een volume gemaakt met de opgegeven instellingen en er wordt een melding weer gegeven. Bewaking en back-up worden standaard ingeschakeld voor het volume.
    
-     ![Een volume toevoegen](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis18m.png)
+     ![Een volume toevoegen 4](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis18m.png)
 5. Ga naar de Blade **volumes** om te controleren of het volume is gemaakt. Het volume wordt weer gegeven.
    
-   ![Een volume toevoegen](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis20m.png)
+   ![Een volume toevoegen 5](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis20m.png)
 
 ## <a name="step-4-mount-initialize-and-format-a-volume"></a>Stap 4: een volume koppelen, initialiseren en Format teren
 
@@ -193,7 +193,7 @@ Voer de volgende stappen uit om uw StorSimple-volumes te koppelen, initialiseren
     ![Portal ontdekken](./media/storsimple-virtual-array-deploy3-iscsi-setup/image22.png)
 3. Geef in het dialoogvenster **Doelportaal detecteren** het IP-adres op van de netwerkinterface met iSCSI-functionaliteit en klik vervolgens op **OK**.
    
-    ![IP-adres](./media/storsimple-virtual-array-deploy3-iscsi-setup/image23.png)
+    ![Het IP-adres](./media/storsimple-virtual-array-deploy3-iscsi-setup/image23.png)
 4. Ga in het venster **Eigenschappen iSCSI-initiator** op het tabblad **Doelen** naar **Gedetecteerde doelen**. (Elk volume zal een gedetecteerd doel zijn.) De apparaatstatus moet worden weer gegeven als **inactief**.
    
     ![gedetecteerde doelen](./media/storsimple-virtual-array-deploy3-iscsi-setup/image24.png)

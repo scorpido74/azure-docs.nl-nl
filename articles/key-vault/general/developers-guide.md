@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 23c64f956821dd2a204a15c37bf0fcdde4d09ba8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 662c23a29e383800a4591c900e02133c16fa2090
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/05/2020
-ms.locfileid: "91716126"
+ms.locfileid: "91743315"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Gids voor Azure Key Vault-ontwikkelaars
 
@@ -51,11 +51,10 @@ Zie [Key Vault-beheer vlak](https://docs.microsoft.com/azure/key-vault/general/s
 
 Key Vault maakt gebruik van Azure AD-verificatie waarvoor Azure AD security principal toegang moet verlenen. Een beveiligings-principal voor Azure AD kan een gebruiker, een service-principal van de toepassing, een [beheerde identiteit voor Azure-resources](../../active-directory/managed-identities-azure-resources/overview.md)of een groep van elk type beveiligings-principals zijn.
 
-Voor beveiligde toepassingen kunt u het beste beheerde identiteit gebruiken voor toepassingen die zijn geïmplementeerd in Azure. Als Azure-Services, die geen beheerde identiteit of toepassingen ondersteunen die on-premises worden geïmplementeerd, een [Service-Principal met een certificaat](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) een mogelijk alternatief is. Het certificaat moet worden opgeslagen in Key Vault en vaak worden gedraaid. 
+### <a name="authentication-best-practices"></a>Aanbevolen procedures voor verificatie
+Het is raadzaam beheerde identiteit te gebruiken voor toepassingen die zijn geïmplementeerd in Azure. Als u Azure-Services gebruikt die geen beheerde identiteit ondersteunen of als toepassingen op locatie worden geïmplementeerd, is de [Service-Principal met een certificaat](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) een mogelijk alternatief. In dat scenario moet het certificaat worden opgeslagen in Key Vault en vaak worden gedraaid. Service-principals met geheim kunnen worden gebruikt voor ontwikkel-en test omgevingen, en lokaal of in Cloud Shell het gebruik van User Principal wordt aanbevolen.
 
-Service-principals met geheim kunnen worden gebruikt voor ontwikkel-en test omgevingen, en lokaal of in Cloud Shell User Principal wordt aanbevolen.
-
-Voor het ontwikkelen van toepassingen kunt u Azure Identity SDK gebruiken voor verschillende omgevingen en platformen zonder dat u code hoeft te wijzigen. Azure-identiteit is geïntegreerd met Azure CLI, Visual Studio, Visual Studio code en anderen. 
+De bovenstaande verificaties scenario's worden ondersteund door de Azure Identity client-bibliotheek en geïntegreerd met Key Vault Sdk's. Azure Identity Library kan worden gebruikt in verschillende omgevingen en platformen zonder uw code te wijzigen. Met Azure-identiteit wordt ook automatisch een verificatie token opgehaald van aangemeld bij Azure-gebruiker met Azure CLI, Visual Studio, Visual Studio code en anderen. 
 
 Zie voor meer informatie: 
 

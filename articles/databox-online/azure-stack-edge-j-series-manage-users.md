@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 5f7e8c09a09084b28278667cdeaf94f7e38908cd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 66967c1fa8f6ca42459559caf46bffb0e5afe925
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904503"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743587"
 ---
 # <a name="use-the-azure-portal-to-manage-users-on-your-azure-stack-edge-pro"></a>Gebruik de Azure Portal om gebruikers te beheren op uw Azure Stack Edge Pro
 
@@ -74,7 +74,7 @@ Voer in Azure Portal de volgende stappen uit om een gebruiker te verwijderen.
 
 2. Selecteer een gebruiker in de lijst met gebruikers en selecteer vervolgens **verwijderen**. Bevestig de verwijdering als u daarom wordt gevraagd.
 
-    ![Selecteer de gebruiker die u wilt verwijderen](media/azure-stack-edge-j-series-manage-users/delete-user-2.png)
+    ![Selecteer de gebruiker die u wilt verwijderen 2](media/azure-stack-edge-j-series-manage-users/delete-user-2.png)
 
 De lijst met gebruikers wordt bijgewerkt en de verwijderde gebruiker wordt niet meer weergegeven.
 

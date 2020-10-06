@@ -1,19 +1,19 @@
 ---
-title: Verbinding maken met en beheren van Microsoft Azure Stack Edge Pro-apparaat via de Windows Power shell-interface | Microsoft Docs
-description: Hierin wordt beschreven hoe u verbinding maakt met en vervolgens Azure Stack Edge Pro beheert via de Windows Power shell-interface.
+title: Verbinding maken met en beheren van Microsoft Azure Stack Edge Pro GPU-apparaat via de Windows Power shell-interface | Microsoft Docs
+description: Hierin wordt beschreven hoe u verbinding maakt met en vervolgens Azure Stack Edge Pro GPU beheert via de Windows Power shell-interface.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 09/10/2020
+ms.date: 10/05/2020
 ms.author: alkohli
-ms.openlocfilehash: b0c2b547391efd37fc667b84548d99f1e7385cfb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 3a61bd16d127afadc2dc4d968b3492f3c8491d29
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903510"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743212"
 ---
 # <a name="manage-an-azure-stack-edge-pro-gpu-device-via-windows-powershell"></a>Een Azure Stack Edge Pro GPU-apparaat beheren via Windows Power shell
 
@@ -127,7 +127,7 @@ Kubernetes op uw Azure Stack edge-apparaat gebruikt standaard subnetten 172.27.0
 
 U wilt deze configuratie uitvoeren voordat u Compute configureert vanaf de Azure Portal, terwijl het Kubernetes-cluster in deze stap wordt gemaakt.
 
-1. Maak verbinding met de Power shell-interface van het apparaat.
+1. [Maak verbinding met de Power shell-interface van het apparaat](#connect-to-the-powershell-interface).
 1. Voer de volgende handelingen uit vanuit de Power shell-interface van het apparaat:
 
     `Set-HcsKubeClusterNetworkInfo -PodSubnet <subnet details> -ServiceSubnet <subnet details>`
@@ -212,7 +212,7 @@ Commands:
 
 De volgende tabel bevat een korte beschrijving van de opdrachten die beschikbaar zijn voor `iotedge` :
 
-|command  |Description |
+|command  |Beschrijving |
 |---------|---------|
 |`list`     | Modules in lijst weergeven         |
 |`logs`     | De logboeken van een module ophalen        |
@@ -425,7 +425,56 @@ DEBUG 2020-05-14T20:42:14Z: loop process - 0 events, 0.000s
 [10.100.10.10]: PS>
 ```
 
+## <a name="connect-to-bmc"></a>Verbinding maken met BMC
 
+Base Board management controller (BMC) wordt gebruikt om uw apparaat op afstand te controleren en te beheren. In deze sectie worden de cmdlets beschreven die kunnen worden gebruikt voor het beheren van BMC-configuratie. Voordat u een van deze cmdlets uitvoert, [maakt u verbinding met de Power shell-interface van het apparaat](#connect-to-the-powershell-interface).
+
+- `Get-HcsNetBmcInterface`: Gebruik deze cmdlet om de eigenschappen van de netwerk configuratie van de BMC op te halen, bijvoorbeeld,,, `IPv4Address` `IPv4Gateway` `IPv4SubnetMask` `DhcpEnabled` : 
+
+- `Set-HcsNetBmcInterface`: U kunt deze cmdlet op de volgende twee manieren gebruiken.
+
+    - Gebruik de cmdlet om de DHCP-configuratie voor BMC in of uit te scha kelen met behulp van de juiste waarde voor de `UseDhcp` para meter. 
+
+        ```powershell
+        Set-HcsNetBmcInterface -UseDhcp $true
+        ```
+
+        Hier volgt een voorbeeld van uitvoer: 
+
+        ```powershell
+        [10.100.10.10]: PS>Set-HcsNetBmcInterface -UseDhcp $true
+        [10.100.10.10]: PS>Get-HcsNetBmcInterface
+        IPv4Address IPv4Gateway IPv4SubnetMask DhcpEnabled
+        ----------- ----------- -------------- -----------
+        10.128.54.8 10.128.52.1 255.255.252.0         True
+        [10.100.10.10]: PS>
+        ```
+
+    - Gebruik deze cmdlet om de statische configuratie voor de BMC te configureren. U kunt de waarden opgeven voor `IPv4Address` , `IPv4Gateway` , en `IPv4SubnetMask` . 
+    
+        ```powershell
+        Set-HcsNetBmcInterface -IPv4Address "<IPv4 address of the device>" -IPv4Gateway "<IPv4 address of the gateway>" -IPv4SubnetMask "<IPv4 address for the subnet mask>"
+        ```        
+        
+        Hier volgt een voorbeeld van uitvoer: 
+
+        ```powershell
+        [10.100.10.10]: PS>Set-HcsNetBmcInterface -IPv4Address 10.128.53.186 -IPv4Gateway 10.128.52.1 -IPv4SubnetMask 255.255.252.0
+        [10.100.10.10]: PS>Get-HcsNetBmcInterface
+        IPv4Address   IPv4Gateway IPv4SubnetMask DhcpEnabled
+        -----------   ----------- -------------- -----------
+        10.128.53.186 10.128.52.1 255.255.252.0        False
+        [10.100.10.10]: PS>
+        ```    
+
+- `Set-HcsBmcPassword`: Gebruik deze cmdlet om het BMC-wacht woord voor te wijzigen `EdgeUser` . 
+
+    Hier volgt een voorbeeld van uitvoer: 
+
+    ```powershell
+    [10.100.10.10]: PS> Set-HcsBmcPassword -NewPassword "Password1"
+    [10.100.10.10]: PS>
+    ```
 
 ## <a name="exit-the-remote-session"></a>De externe sessie afsluiten
 

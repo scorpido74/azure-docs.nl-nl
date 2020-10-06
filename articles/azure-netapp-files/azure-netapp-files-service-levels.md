@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/22/2019
+ms.date: 10/05/2020
 ms.author: b-juche
-ms.openlocfilehash: 818b3b59b1113875b6486ffe64bc8d2d30d613d3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b5c576211fe7bb202e7a27bee5ee3bfd90d74cf9
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325454"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743094"
 ---
 # <a name="service-levels-for-azure-netapp-files"></a>Serviceniveau's voor Azure NetApp Files
 Service niveaus zijn een kenmerk van een capaciteits groep. Service niveaus worden gedefinieerd en onderscheiden van de toegestane maximale door Voer voor een volume in de capaciteits pool op basis van het quotum dat is toegewezen aan het volume.
@@ -66,7 +66,7 @@ Voor een SAP HANA systeem kan deze capaciteits groep worden gebruikt om de volge
 * SAP HANA gegevens volume: grootte 4 TB met Maxi maal 704 MiB/s
 * SAP HANA logboek volume: grootte 0,5 TB met Maxi maal 256 MiB/s
 * SAP HANA gedeeld volume: grootte 1 TB met Maxi maal 64 MiB/s
-* SAP HANA-back-upvolume: grootte 4,5 TB met Maxi maal 256 MiB/s
+* SAP HANA-back-upvolume: grootte 6,5 TB met Maxi maal 256 MiB/s
 
 In het onderstaande diagram ziet u de scenario's voor de SAP HANA volumes:
 

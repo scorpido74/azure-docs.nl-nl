@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 41cb02e77fa77c5a7452c5e3e0d2080ee3d472d5
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 5c49a46dfcd97f5feb43b0b910476ef3ad6f402a
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88183221"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742244"
 ---
 # <a name="back-up-shares-or-volumes-on-your-storsimple-virtual-array"></a>Maak een back-up van shares of volumes op uw virtuele StorSimple-matrix
 
@@ -76,13 +76,13 @@ Naast geplande back-ups kunt u op elk gewenst moment een hand matige back-up (op
    
     Er wordt een back-up op aanvraag gestart en u ziet dat er een back-uptaak is gestart.
    
-    ![back-up starten](./media/storsimple-virtual-array-backup/takebackup3m.png) 
+    ![back-up starten 2](./media/storsimple-virtual-array-backup/takebackup3m.png) 
    
     Zodra de taak is voltooid, wordt u opnieuw op de hoogte gebracht. Het back-upproces wordt vervolgens gestart.
    
     ![back-uptaak gemaakt](./media/storsimple-virtual-array-backup/takebackup4m.png)
 
-3. Als u de voortgang van de back-ups wilt bijhouden en de taak details wilt bekijken, klikt u op de melding. Hiermee gaat u naar **taak Details**.
+3. Als u de voortgang van de back-ups wilt bijhouden en de taak details wilt bekijken, klikt u op de melding. Hiermee gaat u naar  **taak Details**.
    
      ![Details van back-uptaak](./media/storsimple-virtual-array-backup/takebackup5m.png)
 

@@ -1,15 +1,15 @@
 ---
 title: Ondersteunde Azure Resource Manager resource typen
 description: Geef een lijst op met de Azure Resource Manager resource typen die worden ondersteund door de Azure-resource grafiek en de wijzigings geschiedenis.
-ms.date: 09/15/2020
+ms.date: 09/30/2020
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: a52378422c6ee740f30f155cdfb0839a3f281abe
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 385ee96fa821b8d90ff529fecb52dbec9803dea2
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90600599"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740000"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Naslag informatie over de tabel en het resource type van Azure resource Graph
 
@@ -119,6 +119,7 @@ De resource grafiek van Azure biedt ondersteuning voor de volgende **resource ty
 - micro soft. CDN/profielen
 - micro soft. CDN/profielen/eind punten
 - micro soft. certificateregistration/certificateorders
+- micro soft. chaos/chaosexperiments
 - micro soft. classiccompute/domainname
 - micro soft. classiccompute/informatie
 - micro soft. classicnetwork/networksecuritygroups
@@ -400,6 +401,8 @@ De resource grafiek van Azure biedt ondersteuning voor de volgende **resource ty
 - micro soft. operationalinsights/werk ruimten
 - micro soft. operationsmanagement/oplossingen
 - micro soft. operationsmanagement/views
+- micro soft. Orbital/contactprofiles
+- micro soft. Orbital/ruimte vaartuigen
 - micro soft. peering/peering
 - micro soft. peering/peeringservices
 - micro soft. Portal/Dash boards
@@ -420,6 +423,10 @@ De resource grafiek van Azure biedt ondersteuning voor de volgende **resource ty
 - micro soft. resources/templatespecs/versies
 - micro soft. SaaS/toepassingen
 - micro soft. scheduler/jobcollections
+- micro soft. scvmm/Clouds
+- micro soft. scvmm/informatie
+- micro soft. scvmm/virtualmachinetemplates
+- micro soft. scvmm/virtualnetworks
 - micro soft. scvmm/vmmservers
 - micro soft. Search/searchservices
 - micro soft. Security/automaters
@@ -436,6 +443,7 @@ De resource grafiek van Azure biedt ondersteuning voor de volgende **resource ty
 - micro soft. servicefabricmesh/volumes
 - micro soft. serviceshub/connectors
 - micro soft. signalrservice/Signa lering
+- micro soft. enkelvoud/accounts
 - micro soft. Solutions/appliancedefinitions
 - micro soft. Solutions/toestellen
 - micro soft. Solutions/applicationdefinitions
@@ -531,6 +539,7 @@ De resource grafiek van Azure biedt ondersteuning voor de volgende **resource ty
 - wandisco. Fusion/fusiongroups/onpremzones
 - wandisco. Fusion/fusiongroups/replicationrules
 - wandisco. Fusion/Migrator
+- wandisco. Fusion/Migrator/livedatamigrations
 - wandisco. Fusion/Migrator/doelen
 
 ## <a name="securityresources"></a>securityresources

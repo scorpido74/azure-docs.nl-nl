@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/05/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 433d519cc71b8bb218569679c94142658f3c9416
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 141649f7620063b58134caaa878162f3a7e767e7
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91255235"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91739903"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Een app integreren met een virtueel Azure-netwerk
 
@@ -144,7 +144,7 @@ De regionale VNet-integratie functie heeft geen extra kosten voor gebruik buiten
 
 Drie kosten zijn gerelateerd aan het gebruik van de gateway vereiste VNet-integratie functie:
 
-* **Kosten categorie prijzen app service plannen**: uw apps moeten een Standard-, Premium-of PremiumV2 app service-abonnement hebben. Zie voor meer informatie over deze kosten [app service prijzen][ASPricing].
+* **Kosten categorie prijzen app service plannen**: uw apps moeten een Standard-, Premium-, PremiumV2-of app service PremiumV3-abonnement hebben. Zie voor meer informatie over deze kosten [app service prijzen][ASPricing].
 * **Kosten voor gegevens overdracht**: er zijn kosten verbonden aan het afrekenen van gegevens, zelfs als het VNet zich in hetzelfde Data Center bevindt. Deze kosten worden beschreven in [gegevensoverdracht prijs informatie][DataPricing].
 * **Kosten voor VPN-gateway**: er zijn kosten verbonden aan de virtuele netwerk gateway die is vereist voor het punt-naar-site-VPN. Zie [prijzen van VPN gateway][VNETPricing]voor meer informatie.
 

@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 05/27/2020
+ms.date: 10/05/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 990d8ef275982b6d70c51819e47b33f543345023
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: bc6e72a5e5ab9f95ec88b1e8ed711f00b8051208
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91531272"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741714"
 ---
 # <a name="password-policies-and-account-restrictions-in-azure-active-directory"></a>Wachtwoord beleid en account beperkingen in Azure Active Directory
 
@@ -41,11 +41,13 @@ De volgende tabel bevat een overzicht van de beleids regels voor de gebruikers n
 
 ## <a name="azure-ad-password-policies"></a><a name="password-policies-that-only-apply-to-cloud-user-accounts"></a>Azure AD-wachtwoord beleid
 
-Een wachtwoord beleid wordt toegepast op alle gebruikers accounts die rechtstreeks in azure AD worden gemaakt en beheerd. Dit wachtwoord beleid kan niet worden gewijzigd, maar u kunt [aangepaste verboden wacht woorden configureren voor Azure AD-wachtwoord beveiliging](tutorial-configure-custom-password-protection.md).
+Een wachtwoord beleid wordt toegepast op alle gebruikers accounts die rechtstreeks in azure AD worden gemaakt en beheerd. Sommige van deze wachtwoord beleids instellingen kunnen niet worden gewijzigd, maar u kunt [aangepaste verboden wacht woorden configureren voor Azure AD-wachtwoord beveiliging](tutorial-configure-custom-password-protection.md) of account vergrendelings parameters.
 
-Het wachtwoord beleid is niet van toepassing op gebruikers accounts die zijn gesynchroniseerd vanuit een on-premises AD DS omgeving met behulp van Azure AD Connect, tenzij u EnforceCloudPasswordPolicyForPasswordSyncedUsers inschakelt.
+Standaard wordt een account vergrendeld na 10 mislukte aanmeldings pogingen met het verkeerde wacht woord. De gebruiker is één minuut geblokkeerd. Bij verdere onjuiste aanmeldings pogingen wordt de gebruiker vergrendeld om de duur van de tijd te verg Roten. [Slimme vergren deling](howto-password-smart-lockout.md) houdt de laatste drie ongeldige hashes met een onjuist wacht woord bij om te voor komen dat de vergrendelings teller voor hetzelfde wacht woord wordt verhoogd. Als iemand hetzelfde onjuiste wacht woord meermaals invoert, wordt het account niet vergrendeld. U kunt de drempel en duur voor de slimme vergren deling definiëren.
 
-De volgende opties voor wachtwoord beleid zijn gedefinieerd:
+Het Azure AD-wachtwoord beleid is niet van toepassing op gebruikers accounts die zijn gesynchroniseerd vanuit een on-premises AD DS omgeving met behulp van Azure AD Connect, tenzij u *EnforceCloudPasswordPolicyForPasswordSyncedUsers*inschakelt.
+
+De volgende opties voor het Azure AD-wachtwoord beleid zijn gedefinieerd. Tenzij anders vermeld, kunt u deze instellingen niet wijzigen:
 
 | Eigenschap | Vereisten |
 | --- | --- |
@@ -57,7 +59,6 @@ De volgende opties voor wachtwoord beleid zijn gedefinieerd:
 | Wacht woord verlopen (wacht woorden nooit verlopen) |<ul><li>Standaard waarde: **False** (geeft aan dat het wacht woord een verval datum heeft).</li><li>De waarde kan worden geconfigureerd voor afzonderlijke gebruikers accounts met behulp van de- `Set-MsolUser` cmdlet.</li></ul> |
 | Geschiedenis van wachtwoord wijzigingen | Het laatste wacht woord *kan niet* opnieuw worden gebruikt wanneer de gebruiker een wacht woord wijzigt. |
 | Geschiedenis van wacht woord opnieuw instellen | Het laatste wacht woord *kan* opnieuw worden gebruikt wanneer de gebruiker een verg eten wacht woord opnieuw instelt. |
-| Account vergrendeling | Na 10 mislukte aanmeldings pogingen met het verkeerde wacht woord, wordt de gebruiker één minuut geblokkeerd. Bij verdere onjuiste aanmeldings pogingen wordt de gebruiker vergrendeld om de duur van de tijd te verg Roten. [Slimme vergren deling](howto-password-smart-lockout.md) houdt de laatste drie ongeldige hashes met een onjuist wacht woord bij om te voor komen dat de vergrendelings teller voor hetzelfde wacht woord wordt verhoogd. Als iemand hetzelfde onjuiste wacht woord meermaals invoert, wordt het account niet vergrendeld. |
 
 ## <a name="administrator-reset-policy-differences"></a>Administrator reset policy differences (Verschillen herstelbeleid beheerder)
 

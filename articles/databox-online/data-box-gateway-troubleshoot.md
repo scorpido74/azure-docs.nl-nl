@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: troubleshooting
 ms.date: 03/20/2019
 ms.author: alkohli
-ms.openlocfilehash: e49cc400fd8af3d284a223363f3384063d862981
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: e5280805090a83245e287c0b15a1735ee41e934e
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927178"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741802"
 ---
 # <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>Problemen met uw Azure Data Box Gateway oplossen
 
@@ -30,13 +30,13 @@ In dit artikel leert u het volgende:
 
 U kunt de diagnostische tests uitvoeren om apparaatfouten vast te stellen en op te lossen. Voer de volgende stappen uit in de lokale webinterface van uw apparaat om diagnostische tests uit te voeren.
 
-1. Ga in de lokale webinterface naar **Probleemoplossing > Diagnostische tests**. Selecteer de test die u wilt uitvoeren en klik op **Test uitvoeren**. Hiermee voert u de tests uit om mogelijke problemen met uw netwerk-, apparaat-, webproxy-, tijd- of cloudinstellingen vast te stellen. U ontvangt een melding dat er tests op het apparaat worden uitgevoerd.
+1. Ga in de lokale webinterface naar **Probleemoplossing > Diagnostische tests**. Selecteer de test die u wilt uitvoeren en klik op **test uitvoeren**. Hiermee voert u de tests uit om mogelijke problemen met uw netwerk-, apparaat-, webproxy-, tijd- of cloudinstellingen vast te stellen. U ontvangt een melding dat er tests op het apparaat worden uitgevoerd.
 
     ![Klikken op Gebruiker toevoegen](media/data-box-gateway-troubleshoot/run-diag-1.png)
  
 2. Wanneer de tests zijn voltooid, worden de resultaten weergegeven. Als een test mislukt, wordt er een URL voor de aanbevolen actie weergegeven. U kunt op de URL klikken om de aanbevolen actie weer te geven. 
  
-    ![Klikken op Gebruiker toevoegen](media/data-box-gateway-troubleshoot/run-diag-2.png)
+    ![Klik op gebruiker toevoegen 2](media/data-box-gateway-troubleshoot/run-diag-2.png)
 
 
 ## <a name="collect-support-package"></a>Ondersteuningspakket verzamelen
@@ -47,11 +47,11 @@ Voer de volgende stappen uit om een ondersteuningspakket te verzamelen.
 
 1. Ga in de lokale webinterface naar **Probleemoplossing > Ondersteuning**. Klik op **Ondersteuningspakket maken**. Het systeem begint met het verzamelen van het ondersteuningspakket. Het verzamelen van het pakket kan enkele minuten duren.
 
-    ![Klikken op Gebruiker toevoegen](media/data-box-gateway-troubleshoot/collect-logs-1.png)
+    ![Klik op gebruiker toevoegen 3](media/data-box-gateway-troubleshoot/collect-logs-1.png)
  
 2. Wanneer het ondersteuningspakket is gemaakt, klikt u op **Ondersteuningspakket downloaden**. Er wordt een gecomprimeerd pakket gedownload naar het pad dat u hebt gekozen. U kunt het pakket uitpakken.
 
-    ![Klikken op Gebruiker toevoegen](media/data-box-gateway-troubleshoot/collect-logs-2.png)
+    ![Klik op gebruiker toevoegen 4](media/data-box-gateway-troubleshoot/collect-logs-2.png)
 
 ## <a name="use-logs-to-troubleshoot"></a>Logboeken gebruiken om problemen op te lossen
 
@@ -59,7 +59,7 @@ Eventuele fouten die zich hebben voorgedaan tijdens de upload- en vernieuwingspr
 
 1. Om de foutbestanden te bekijken, gaat u naar uw share en klikt u op de share om de inhoud weer te geven. 
 
-      ![Klikken op Gebruiker toevoegen](media/data-box-gateway-troubleshoot/troubleshoot-logs-1.png)
+      ![Klik op gebruiker toevoegen 5](media/data-box-gateway-troubleshoot/troubleshoot-logs-1.png)
 
 2. Klik op de _map Microsoft Data Box Gateway_. Deze map heeft twee submappen:
 

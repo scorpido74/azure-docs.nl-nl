@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 3c469d7274bb90e194478af2464cb352efe7490c
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.date: 10/05/2020
+ms.openlocfilehash: e2c6f627c69316b8f146d3ac82b8d29801ec3902
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89294863"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740680"
 ---
 # <a name="create-a-simple-query-in-azure-cognitive-search"></a>Een eenvoudige query maken in azure Cognitive Search
 
@@ -37,13 +37,13 @@ Wat u nodig hebt, is postman of een gelijkwaardig hulp programma voor het uitgev
 
 Nadat u de aanvraag header hebt opgegeven, kunt u deze opnieuw gebruiken voor alle query's in dit artikel, zodat alleen de teken reeks **Search =** wordt uitgewisseld. 
 
-  ![Para meters ingesteld op de aanvraag header van postman](media/search-query-lucene-examples/postman-header.png)
+  :::image type="content" source="media/search-query-lucene-examples/postman-header.png" alt-text="Para meters ingesteld op de aanvraag header van postman" border="false":::
 
 ### <a name="set-the-request-url"></a>De aanvraag-URL instellen
 
 Request is een GET-opdracht die wordt gekoppeld aan een URL met het Azure Cognitive Search-eind punt en de zoek teken reeks.
 
-  ![OPHALEN van header van Postman-aanvraag](media/search-query-lucene-examples/postman-basic-url-request-elements.png)
+  :::image type="content" source="media/search-query-lucene-examples/postman-basic-url-request-elements.png" alt-text="Para meters ingesteld op de aanvraag header van postman" border="false":::
 
 URL-samen stelling heeft de volgende elementen:
 
@@ -97,7 +97,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 
 Antwoord voor deze query moet er ongeveer uitzien als in de volgende scherm afbeelding.
 
-  ![Postman-voorbeeld antwoord](media/search-query-lucene-examples/postman-sample-results.png)
+  :::image type="content" source="media/search-query-lucene-examples/postman-sample-results.png" alt-text="Para meters ingesteld op de aanvraag header van postman" border="false":::
 
 Mogelijk hebt u de zoek Score in het antwoord gezien. Een uniforme Score van 1 treedt op als er geen positie is, omdat de zoek opdracht niet in volledige tekst is gezocht, of omdat er geen criteria zijn toegepast. Voor Null-Zoek opdrachten zonder criteria worden rijen in een wille keurige volg orde weer gegeven. Wanneer u werkelijke criteria opneemt, ziet u dat zoek scores worden weer geven in betekenis volle waarden.
 
@@ -133,7 +133,7 @@ POST /indexes/nycjobs/docs/search?api-version=2020-06-30
 
 Samen gebruikt, wordt het filter eerst op de volledige index toegepast, waarna de zoek opdracht wordt uitgevoerd op de resultaten van het filter. Filters zijn dus nuttig om de resultaten van de zoekopdracht te verbeteren, doordat het aantal documenten dat moet worden doorzocht, wordt verminderd.
 
-  ![Query-antwoord filteren](media/search-query-simple-examples/filtered-query.png)
+  :::image type="content" source="media/search-query-simple-examples/filtered-query.png" alt-text="Para meters ingesteld op de aanvraag header van postman" border="false":::
 
 Als u dit in postman wilt proberen met behulp van GET, kunt u deze teken reeks plakken:
 
@@ -167,7 +167,7 @@ POST /indexes/nycjobs/docs/search?api-version=2020-06-30
       "count": "true"
     }
 ```
-  ![Bereik filter voor numerieke bereiken](media/search-query-simple-examples/rangefilternumeric.png)
+  :::image type="content" source="media/search-query-simple-examples/rangefilternumeric.png" alt-text="Para meters ingesteld op de aanvraag header van postman" border="false":::
 
 
 ```http
@@ -181,7 +181,7 @@ POST /indexes/nycjobs/docs/search?api-version=2020-06-30
     }
 ```
 
-  ![Bereik filter voor tekstbereiken](media/search-query-simple-examples/rangefiltertext.png)
+  :::image type="content" source="media/search-query-simple-examples/rangefiltertext.png" alt-text="Para meters ingesteld op de aanvraag header van postman" border="false":::
 
 U kunt dit ook uitproberen in postman met GET:
 
@@ -251,14 +251,14 @@ Met behulp van de standaard Search mode (alle) worden de 2800-documenten geretou
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&searchMode=any&search="fire department"  -"Metrotech Center"
 ```
 
-  ![Zoek modus any](media/search-query-simple-examples/searchmodeany.png)
+  :::image type="content" source="media/search-query-simple-examples/searchmodeany.png" alt-text="Para meters ingesteld op de aanvraag header van postman" border="false":::
 
 Search mode wijzigen om `all` een cumulatief effect op criteria af te dwingen en een kleinere set resultaten te retour neren-21 documenten-die bestaan uit documenten met de volledige zin "brand Department", min die taken op het Metrotech Center-adres.
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&searchMode=all&search="fire department"  -"Metrotech Center"
 ```
-  ![Zoek modus Alles](media/search-query-simple-examples/searchmodeall.png)
+  :::image type="content" source="media/search-query-simple-examples/searchmodeall.png" alt-text="Para meters ingesteld op de aanvraag header van postman" border="false":::
 
 ## <a name="example-8-structuring-results"></a>Voor beeld 8: resultaten structureren
 

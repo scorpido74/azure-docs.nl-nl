@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 10/05/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a9d508afac64e448ca220a36b2be983da85d96b0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 9360fc000e01e1c52561cbaa3e2f2968e67e2fa2
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89002620"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740867"
 ---
 # <a name="how-to-build-a-facet-filter-in-azure-cognitive-search"></a>Een facet filter maken in azure Cognitive Search 
 
@@ -29,7 +29,8 @@ Facet navigatie wordt gebruikt voor zelfgestuurde filters op query resultaten in
 
 Facetten zijn dynamisch en worden geretourneerd op een query. Zoek reacties nemen de facet categorieën mee die worden gebruikt om de resultaten te navigeren. Als u niet bekend bent met facetten, is het volgende voor beeld een illustratie van een facet navigatie structuur.
 
-  ![Een afbeelding met een zoek venster met gefilterde Zoek resultaten, gegroepeerd op zakelijke titel. Een pijl geeft aan dat de resultaten facetten zijn die worden weer gegeven in een facet navigatie structuur.](./media/search-filters-facets/facet-nav.png)
+:::image type="complex" source="media/search-filters-facets/facet-nav.png" alt-text="gefilterde Zoek resultaten":::
+"Een afbeelding met een zoek venster met gefilterde Zoek resultaten, gegroepeerd op zakelijke titel. Een pijl geeft aan dat de resultaten facetten zijn die worden weer gegeven in een facet navigatie structuur. :::image-end:::
 
 Nieuw in facet navigatie en wilt u meer details? Zie [facet navigatie implementeren in Azure Cognitive Search](search-faceted-navigation.md).
 
@@ -122,7 +123,7 @@ Een van de uitdagingen met facet navigatie in azure Cognitive Search is dat face
 
 Hoewel dit een veelvoorkomende use-case is, is het niet duidelijk dat de facet navigatie structuur momenteel out-of-the-box bevat. Ontwikkel aars die statische facetten willen, kunnen de beperking meestal omzeilen door twee gefilterde query's uit te geven: één scoped to the results, de andere die wordt gebruikt voor het maken van een statische lijst met facetten voor navigatie doeleinden.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 + [Filters in azure Cognitive Search](search-filters.md)
 + [Index REST API maken](/rest/api/searchservice/create-index)

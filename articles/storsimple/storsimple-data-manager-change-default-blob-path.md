@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 0a7dab1129eb88d7e58bab8a827d745596bc218d
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 6af095c7abdb9aa61e57d543ff2ab2f9192dadc8
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88183714"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743570"
 ---
 # <a name="change-a-blob-path-from-the-default-path"></a>Het standaardpad van een blob wijzigen
 
@@ -69,7 +69,7 @@ Voer de volgende stappen uit om een Azure-functie te maken:
      
 10. Voer in het functie venster het bestand _. CSX_ uit.
 
-    ![Een nieuwe C#-functie maken](./media/storsimple-data-manager-change-default-blob-path/new-function-run-csx.png)
+    ![Een nieuwe C#-functie 2 maken](./media/storsimple-data-manager-change-default-blob-path/new-function-run-csx.png)
     
     Voer de volgende stappen uit.
 
@@ -191,7 +191,7 @@ Voer de volgende stappen uit om een Azure-functie te maken:
 
     2. Klik op **+ Toevoegen**.
         
-        ![De koppeling bestanden weer geven](./media/storsimple-data-manager-change-default-blob-path/new-function-add-file.png)
+        ![Nieuwe functie toevoegen bestand toevoegen](./media/storsimple-data-manager-change-default-blob-path/new-function-add-file.png)
     
     3. Typ **project.jsop**en druk op **Enter**. Plak de volgende code in de **project.jsin** het bestand:
 
@@ -211,7 +211,7 @@ Voer de volgende stappen uit om een Azure-functie te maken:
     
     4. Klik op **Opslaan**.
 
-        ![De koppeling bestanden weer geven](./media/storsimple-data-manager-change-default-blob-path/new-function-project-json.png)
+        ![Nieuwe functie project JSON](./media/storsimple-data-manager-change-default-blob-path/new-function-project-json.png)
 
 U hebt een Azure-functie gemaakt. Deze functie wordt geactiveerd wanneer een nieuwe BLOB wordt gegenereerd door de taak voor gegevens transformatie.
 

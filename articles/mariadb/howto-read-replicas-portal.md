@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/10/2020
-ms.openlocfilehash: 41e99d11199ae0f2a411b6e2c0b93ea8efcebca2
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 5faed87995d1c49ab635f39264354a791f729b57
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91542526"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742856"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-portal"></a>Lees replica's maken en beheren in Azure Database for MariaDB met behulp van de Azure Portal
 
@@ -31,7 +31,7 @@ In dit artikel leert u hoe u in de Azure Database for MariaDB-service Lees repli
 
 Een lees replica-server kan worden gemaakt met behulp van de volgende stappen:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 2. Selecteer de bestaande Azure Database for MariaDB-server die u wilt gebruiken als een Master. Met deze actie wordt de pagina **overzicht** geopend.
 
@@ -116,9 +116,9 @@ Gebruik de volgende stappen om een bron server te verwijderen uit de Azure Porta
 
 3. Typ de naam van de bron server en klik op **verwijderen** om de verwijdering van de bron server te bevestigen.  
 
-   ![Azure Database for MariaDB-Master verwijderen](./media/howto-read-replica-portal/delete-master-confirm.png)
+   ![Azure Database for MariaDB-Master verwijderen bevestigen](./media/howto-read-replica-portal/delete-master-confirm.png)
 
-## <a name="monitor-replication"></a>Replicatie bewaken
+## <a name="monitor-replication"></a>Replicatie controleren
 
 1. Selecteer in de [Azure Portal](https://portal.azure.com/)de replica Azure database for MariaDB server die u wilt bewaken.
 
@@ -134,7 +134,7 @@ Gebruik de volgende stappen om een bron server te verwijderen uit de Azure Porta
 
 5. De replicatie vertraging voor het geselecteerde tijds bereik weer geven. In de onderstaande afbeelding wordt de laatste 30 minuten voor een grote werk belasting weer gegeven.
 
-   ![Tijds bereik selecteren](./media/howto-read-replica-portal/monitor-replication-lag-time-range-thirty-mins.png)
+   ![Selecteer een tijds bereik van 30 minuten](./media/howto-read-replica-portal/monitor-replication-lag-time-range-thirty-mins.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

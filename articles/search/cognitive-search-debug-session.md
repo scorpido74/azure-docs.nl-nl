@@ -7,13 +7,13 @@ author: tchristiani
 ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: b428ff4a9a4f4b9110e88dba57cfad20f2221cf1
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 10/05/2020
+ms.openlocfilehash: 941d7f54bcb44653280abe264ff1cffbeae33679
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936160"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743179"
 ---
 # <a name="debug-sessions-in-azure-cognitive-search"></a>Sessies voor fout opsporing in azure Cognitive Search
 
@@ -35,8 +35,7 @@ Als de verrijkings pijplijn geen fouten bevat, kan een foutopsporingssessie word
 
 Als u een foutopsporingssessie wilt starten, moet u een bestaande AI-verrijkings pijplijn hebben, waaronder; een gegevens bron, een vaardig heden, een indexer en een index. Als u een foutopsporingssessie wilt configureren, moet u de sessie een naam geven en een opslag account voor algemeen gebruik opgeven dat wordt gebruikt om de vaardigheids uitvoeringen in de cache op te slaan tijdens de uitvoering van de Indexeer functie. U moet ook de Indexeer functie selecteren die wordt uitgevoerd. De Indexeer functie heeft verwijzingen die zijn opgeslagen in de gegevens bron, de vaardig heden en de index. De foutopsporingssessie wordt standaard ingesteld op het eerste document in de gegevens bron of u kunt een document opgeven in de gegevens bron om door te gaan.
 
-> [!div class="mx-imgBorder"]
-> ![Een foutopsporingssessie maken](media/cognitive-search-debug/debug-session-new.png)
+> :::image type="content" source="media/cognitive-search-debug/debug-session-new.png" alt-text="Een foutopsporingssessie maken":::
 
 ## <a name="debug-session-features"></a>Probleemoplossings sessie functies
 
@@ -52,8 +51,7 @@ De weer gave **vaardigheids grafiek** biedt een hiërarchische, visuele represen
 
 Als u een vaardigheid in de grafiek selecteert, worden de bijbehorende vaardig heden gemarkeerd, de knoop punten die de invoer hebben en de knoop punten die de uitvoer ervan accepteren. Elk vaardigheids knooppunt geeft het type, de fouten of waarschuwingen en het aantal uitvoeringen weer. In de **vaardigheids grafiek** selecteert u welke vaardigheid u wilt opsporen of uitbreiden. Wanneer u een vaardigheid selecteert, worden de bijbehorende gegevens weer gegeven in het deel venster vaardigheids Details rechts van de grafiek.
 
-> [!div class="mx-imgBorder"]
-> ![Vaardigheids grafiek](media/cognitive-search-debug/skills-graph.png)
+> :::image type="content" source="media/cognitive-search-debug/skills-graph.png" alt-text="Een foutopsporingssessie maken":::
 
 ## <a name="skill-details"></a>Details van vaardigheid
 
@@ -75,8 +73,7 @@ Wanneer u een aangepaste vaardigheid bouwt of een fout opspoort met een aangepas
 
 In het deel venster **verrijkte gegevens structuur** worden de verrijkingen van het document via de vaardig heden weer gegeven, met een gedetailleerde beschrijving van de context voor elke verrijking en de oorspronkelijke vaardigheid. De **expressie-evaluator** kan ook worden gebruikt om de inhoud van elke verrijking weer te geven.
 
-> [!div class="mx-imgBorder"]
-> ![Verrijkte gegevensstructuur](media/cognitive-search-debug/enriched-data-structure-display.png)
+> :::image type="content" source="media/cognitive-search-debug/enriched-data-structure-display.png" alt-text="Een foutopsporingssessie maken":::
 
 ## <a name="expression-evaluator"></a>Expressie-Evaluator
 
