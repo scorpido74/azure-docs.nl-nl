@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/05/2020
+ms.date: 10/06/2020
 ms.author: b-juche
-ms.openlocfilehash: b5c576211fe7bb202e7a27bee5ee3bfd90d74cf9
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 1c64bd10b34b61797cb3bf3de0cd7d2aa819e795
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743094"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777124"
 ---
 # <a name="service-levels-for-azure-netapp-files"></a>Serviceniveau's voor Azure NetApp Files
 Service niveaus zijn een kenmerk van een capaciteits groep. Service niveaus worden gedefinieerd en onderscheiden van de toegestane maximale door Voer voor een volume in de capaciteits pool op basis van het quotum dat is toegewezen aan het volume.
@@ -59,14 +59,14 @@ In het onderstaande diagram ziet u de voor beelden van de doorvoer limiet van vo
 
 ### <a name="throughput-limit-examples-of-volumes-in-a-manual-qos-capacity-pool"></a>Voor beelden van doorvoer limieten van volumes in een hand matige QoS-capaciteits groep 
 
-Als u een hand matige QoS-capaciteits groep gebruikt, kunt u de capaciteit en door Voer voor een volume onafhankelijk toewijzen. Wanneer u een volume in een hand matige QoS-capaciteits groep maakt, kunt u de waarde voor de door Voer (MiB/S) opgeven. De totale door Voer die is toegewezen aan volumes in een hand matige QoS-capaciteits pool is afhankelijk van de grootte van de pool en het service niveau. Het wordt beperkt door (grootte van de capaciteits pool in TiB x door Voer/TiB van de service niveau). Een groep van 10 TiB met het ultra service-niveau heeft bijvoorbeeld een totale doorvoer capaciteit van 1280 MiB/s (10 TiB x 128 MiB/s/TiB) die beschikbaar is voor de volumes.
+Als u een hand matige QoS-capaciteits groep gebruikt, kunt u de capaciteit en door Voer voor een volume onafhankelijk toewijzen. Wanneer u een volume in een hand matige QoS-capaciteits groep maakt, kunt u de waarde voor de door Voer (MiB/S) opgeven. De totale door Voer die is toegewezen aan volumes in een hand matige QoS-capaciteits pool is afhankelijk van de grootte van de pool en het service niveau. Het wordt beperkt door (grootte van de capaciteits pool in TiB x door Voer/TiB van de service niveau). Zo heeft een groep van 10 TiB met het ultra service-niveau een totale doorvoer capaciteit van 1280 MiB/s (10 TiB x 128 MiB/s/TiB) die beschikbaar zijn voor de volumes.
 
 Voor een SAP HANA systeem kan deze capaciteits groep worden gebruikt om de volgende volumes te maken. Elk volume biedt de afzonderlijke grootte en door Voer om te voldoen aan uw toepassings vereisten:
 
-* SAP HANA gegevens volume: grootte 4 TB met Maxi maal 704 MiB/s
-* SAP HANA logboek volume: grootte 0,5 TB met Maxi maal 256 MiB/s
-* SAP HANA gedeeld volume: grootte 1 TB met Maxi maal 64 MiB/s
-* SAP HANA-back-upvolume: grootte 6,5 TB met Maxi maal 256 MiB/s
+* SAP HANA gegevens volume: grootte 4 TiB met Maxi maal 704 MiB/s
+* SAP HANA logboek volume: grootte 0,5 TiB met Maxi maal 256 MiB/s
+* SAP HANA gedeeld volume: grootte 1 TiB met Maxi maal 64 MiB/s
+* SAP HANA-back-upvolume: grootte 4,5 TiB met Maxi maal 256 MiB/s
 
 In het onderstaande diagram ziet u de scenario's voor de SAP HANA volumes:
 

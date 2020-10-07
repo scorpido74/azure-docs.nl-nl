@@ -1,14 +1,16 @@
 ---
 title: Standaard antwoord ophalen-QnA Maker
 description: Het standaard antwoord wordt geretourneerd wanneer er geen overeenkomst is met de vraag. Mogelijk wilt u het standaard antwoord wijzigen van het standaard antwoord standaard.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: how-to
 ms.date: 07/13/2020
-ms.openlocfilehash: d37e63d84be58e6ccd2f1e23a1344961d39ffa01
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 14954f89fcdcbbc1ef4b8654582a3274f4bb0923
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054178"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776813"
 ---
 # <a name="change-default-answer-for-a-qna-maker-resource"></a>Standaard antwoord voor een QnA Maker resource wijzigen
 
@@ -21,7 +23,7 @@ Er zijn twee typen standaard antwoorden in uw Knowledge Base. Het is belang rijk
 
 |Type vraag|Beschrijving van antwoord|
 |--|--|
-|KB-antwoord wanneer er geen antwoord wordt bepaald|`No good match found in KB.`-Wanneer de [GenerateAnswer-API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer) geen overeenkomend antwoord op de vraag vindt, `DefaultAnswer` wordt de instelling van de app service geretourneerd. Alle kennis grondslagen in dezelfde QnA Maker resource delen dezelfde standaard antwoord tekst.<br>U kunt de instelling in het Azure Portal beheren via de app service, of met de REST-Api's voor het [ophalen](https://docs.microsoft.com/rest/api/appservice/webapps/listapplicationsettings) of [bijwerken](https://docs.microsoft.com/rest/api/appservice/webapps/updateapplicationsettings) van de instelling.|
+|KB-antwoord wanneer er geen antwoord wordt bepaald|`No good match found in KB.` -Wanneer de [GenerateAnswer-API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer) geen overeenkomend antwoord op de vraag vindt, `DefaultAnswer` wordt de instelling van de app service geretourneerd. Alle kennis grondslagen in dezelfde QnA Maker resource delen dezelfde standaard antwoord tekst.<br>U kunt de instelling in het Azure Portal beheren via de app service, of met de REST-Api's voor het [ophalen](https://docs.microsoft.com/rest/api/appservice/webapps/listapplicationsettings) of [bijwerken](https://docs.microsoft.com/rest/api/appservice/webapps/updateapplicationsettings) van de instelling.|
 |Instructie tekst voor opvolging van prompt|Wanneer u een opvolgings prompt in een conversatie stroom gebruikt, hebt u mogelijk geen antwoord nodig in het QnA-paar omdat u wilt dat de gebruiker uit de opvolgings prompts wordt geklikt. In dit geval stelt u specifieke tekst in door de standaard antwoord tekst in te stellen, die wordt geretourneerd met elke voor spelling voor opvolgings prompts. De tekst moet als instructie tekst worden weer gegeven voor de selectie van opvolgings prompts. Een voor beeld van deze standaard antwoord tekst is `Please select from the following choices` . Deze configuratie wordt uitgelegd in de volgende secties van dit document. Kan ook worden ingesteld als onderdeel van de Knowledge Base-definitie van `defaultAnswerUsedForExtraction` met behulp van [rest API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create).|
 
 ### <a name="client-application-integration"></a>Integratie van client toepassingen

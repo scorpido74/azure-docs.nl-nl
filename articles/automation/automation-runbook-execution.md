@@ -1,16 +1,16 @@
 ---
 title: Uitvoering van runbooks in Azure Automation
-description: Dit artikel geeft een overzicht van de verwerking van runbooks in Azure Automation.
+description: Dit artikel bevat een overzicht van de verwerking van runbooks in Azure Automation.
 services: automation
 ms.subservice: process-automation
-ms.date: 09/22/2020
+ms.date: 10/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: b5dd445ec4dd9014f107c0a349deed6cde47f968
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 883cf48fd38d79544d08a68f2c18fc2d2efb4706
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325824"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776286"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Uitvoering van runbooks in Azure Automation
 
@@ -89,7 +89,7 @@ Azure Automation maakt gebruik van [Azure monitor](../azure-monitor/overview.md)
 
 ### <a name="log-analytics-agent-for-windows"></a>Log Analytics-agent voor Windows
 
-De [log Analytics-agent voor Windows](../azure-monitor/platform/agent-windows.md) werkt met Azure monitor voor het beheren van Windows-vm's en fysieke computers. De machines kunnen worden uitgevoerd in azure of in een niet-Azure-omgeving, zoals een lokaal Data Center. U moet de agent configureren om te rapporteren aan een of meer Log Analytics-werk ruimten.
+De [log Analytics-agent voor Windows](../azure-monitor/platform/agent-windows.md) werkt met Azure monitor voor het beheren van Windows-vm's en fysieke computers. De machines kunnen worden uitgevoerd in azure of in een niet-Azure-omgeving, zoals een lokaal Data Center.
 
 >[!NOTE]
 >De Log Analytics-agent voor Windows was voorheen bekend als micro soft Monitoring Agent (MMA).
@@ -100,9 +100,11 @@ De [log Analytics-agent voor Linux](../azure-monitor/platform/agent-linux.md) we
 
 Het **nxautomation** -account met de bijbehorende sudo-machtigingen moet aanwezig zijn tijdens de [installatie van een Linux Hybrid Runbook worker](automation-linux-hrw-install.md). Als u de werk nemer probeert te installeren en het account niet aanwezig is of niet de juiste machtigingen heeft, mislukt de installatie.
 
+U moet de machtigingen van de `sudoers.d` map of het eigendom niet wijzigen. De sudo-machtiging is vereist voor het **nxautomation** -account en de machtigingen moeten niet worden verwijderd. Als u dit beperkt tot bepaalde mappen of opdrachten, kan dit leiden tot een belang rijke wijziging.
+
 De logboeken die beschikbaar zijn voor de Log Analytics-agent en het **nxautomation** -account zijn:
 
-* /var/opt/Microsoft/omsagent/log/omsagent.log-Log Analytics Agent-logboek 
+* /var/opt/Microsoft/omsagent/log/omsagent.log-Log Analytics Agent-logboek
 * /var/opt/Microsoft/omsagent/run/automationworker/Worker.log-Automation-werk logboek
 
 >[!NOTE]
@@ -226,7 +228,7 @@ Externe services, bijvoorbeeld Azure DevOps Services en GitHub, kunnen een runbo
 
 Voor het delen van resources tussen alle runbooks in de Cloud maakt Azure gebruik van een concept met de naam fair share. Met een eerlijke share wordt met Azure tijdelijk een taak verwijderd die langer dan drie uur is uitgevoerd. Taken voor [Power shell-runbooks](automation-runbook-types.md#powershell-runbooks) en [python-runbooks](automation-runbook-types.md#python-runbooks) worden gestopt en niet opnieuw gestart en de taak status wordt gestopt.
 
-Voor langlopende Azure Automation taken is het raadzaam om een Hybrid Runbook Worker te gebruiken. Hybrid Runbook Workers worden niet beperkt door een billijke share en hebben geen beperking voor de manier waarop een Runbook kan worden uitgevoerd. De overige taak [limieten](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits) zijn van toepassing op zowel Azure-sandboxes als Hybrid Runbook Workers. Hoewel Hybrid Runbook Workers niet worden beperkt door de limiet van 3 uur, billijke delen, moet u runbooks ontwikkelen die worden uitgevoerd op de werk nemers die het opnieuw opstarten van onverwachte problemen met de lokale infra structuur ondersteunen.
+Voor langlopende Azure Automation taken is het raadzaam om een Hybrid Runbook Worker te gebruiken. Hybrid Runbook Workers worden niet beperkt door een billijke share en hebben geen beperking voor de manier waarop een Runbook kan worden uitgevoerd. De overige taak [limieten](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits) zijn van toepassing op zowel Azure-sandboxes als Hybrid Runbook Workers. Hoewel Hybrid Runbook Workers niet beperkt zijn tot de drie uur billijke share limiet, moet u runbooks ontwikkelen die worden uitgevoerd op de werk nemers die het opnieuw opstarten van onverwachte problemen met de lokale infra structuur ondersteunen.
 
 Een andere optie is om een runbook te optimaliseren door onderliggende runbooks te gebruiken. Uw runbook kan bijvoorbeeld een lus door lopen op verschillende resources, bijvoorbeeld met een database bewerking in verschillende data bases. U kunt deze functie verplaatsen naar een [onderliggend runbook](automation-child-runbooks.md) en het runbook aanroepen met [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook). Onderliggende runbooks worden parallel uitgevoerd in afzonderlijke processen.
 

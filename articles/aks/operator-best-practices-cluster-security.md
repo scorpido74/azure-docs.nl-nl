@@ -5,12 +5,12 @@ description: Meer informatie over de aanbevolen procedures voor cluster operator
 services: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: c2734aa8e4ebf0bdb693a49c3ba785dd134e8c83
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 5f249a7e6e7fac13301f0d2717336651b171b422
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003049"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776303"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor de beveiliging en upgrades van het cluster in azure Kubernetes service (AKS)
 
@@ -177,7 +177,7 @@ Zie [Seccomp-beveiligings profielen voor docker][seccomp]voor meer informatie ov
 
 Met Kubernetes worden nieuwe functies in een sneller tempo vrijgegeven dan traditionele infrastructuur platforms. Kubernetes-updates bevatten nieuwe functies en oplossingen voor fouten en beveiliging. Nieuwe functies passeren meestal een *alpha* en vervolgens de *bèta* status voordat ze *stabiel* worden en zijn algemeen beschikbaar en worden aanbevolen voor productie gebruik. In deze release cyclus moet u Kubernetes bijwerken zonder dat er regel matig wijzigingen optreden of uw implementaties en sjablonen worden aangepast.
 
-AKS ondersteunt vier secundaire versies van Kubernetes. Dit betekent dat als er een nieuwe secundaire patch versie wordt geïntroduceerd, de oudste secundaire versie-en patch releases buiten gebruik worden gesteld. Kleine updates voor Kubernetes gebeuren periodiek. Zorg ervoor dat u een beheer proces hebt om naar behoefte te controleren en bij te werken, zodat u niet meer ondersteuning hebt. Zie [ondersteunde Kubernetes-versies AKS][aks-supported-versions] voor meer informatie.
+AKS ondersteunt drie secundaire versies van Kubernetes. Dit betekent dat als er een nieuwe secundaire patch versie wordt geïntroduceerd, de oudste secundaire versie-en patch releases buiten gebruik worden gesteld. Kleine updates voor Kubernetes gebeuren periodiek. Zorg ervoor dat u een beheer proces hebt om naar behoefte te controleren en bij te werken, zodat u niet meer ondersteuning hebt. Zie [ondersteunde Kubernetes-versies AKS][aks-supported-versions]voor meer informatie.
 
 Als u de beschik bare versies voor uw cluster wilt controleren, gebruikt u de opdracht [AZ AKS Get-upgrades][az-aks-get-upgrades] , zoals wordt weer gegeven in het volgende voor beeld:
 
@@ -186,6 +186,8 @@ az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster
 ```
 
 U kunt vervolgens een upgrade uitvoeren van uw AKS-cluster met behulp van de opdracht [AZ AKS upgrade][az-aks-upgrade] . Het upgrade proces is veilig cordons en verbergt één knoop punt tegelijk, plant de peuling op de resterende knoop punten en implementeert vervolgens een nieuw knoop punt waarop de meest recente versies van het besturings systeem en de Kubernetes worden uitgevoerd.
+
+Het wordt ten zeerste aanbevolen om nieuwe secundaire versies te testen in een test omgeving voor ontwikkel aars, zodat u kunt controleren of uw workload in orde is voor een goede werking met de nieuwe Kubernetes-versie. Kubernetes kan Api's afleiden, zoals in versie 1,16, die kunnen worden vertrouwd door uw workloads. Wanneer u nieuwe versies in productie neemt, overweeg dan om [meerdere knooppunt groepen te gebruiken in afzonderlijke versies](use-multiple-node-pools.md) en afzonderlijke Pools een voor een te upgraden om de update in een cluster progressief uit te rollen. Als er meerdere clusters worden uitgevoerd, moet u één cluster tegelijk upgraden naar progressief controleren op impact of wijzigingen.
 
 ```azurecli-interactive
 az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version KUBERNETES_VERSION

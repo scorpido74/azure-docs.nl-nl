@@ -9,12 +9,12 @@ ms.reviewer: dineshm
 ms.date: 09/11/2020
 ms.subservice: blobs
 ms.custom: devx-track-javascript, github-actions-azure
-ms.openlocfilehash: 9b616f8df0a8b64969fac1d18544e6d316120e50
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 919fa0d7b6dff0361e4439b442bcfe9648ed8677
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/06/2020
-ms.locfileid: "91771041"
+ms.locfileid: "91776388"
 ---
 # <a name="set-up-a-github-actions-workflow-to-deploy-your-static-website-in-azure-storage"></a>Stel een GitHub actions-werk stroom in om uw statische website te implementeren in Azure Storage
 
@@ -83,7 +83,7 @@ In het bovenstaande voor beeld vervangt u de tijdelijke aanduidingen door de abo
 
 1. Verwijder alles na de `on:` sectie van uw werk stroom bestand. Uw resterende werk stroom kan er bijvoorbeeld als volgt uitzien. 
 
-    ```yml
+    ```yaml
     name: CI
 
     on:
@@ -95,7 +95,7 @@ In het bovenstaande voor beeld vervangt u de tijdelijke aanduidingen door de abo
 
 1. Wijzig de naam van uw werk stroom `Blob storage website CI` en voeg de acties voor uitchecken en aanmelden toe. Met deze acties wordt uw site code uitgecheckt en geverifieerd met Azure met behulp van het `AZURE_CREDENTIALS` github-geheim dat u eerder hebt gemaakt. 
 
-    ```yml
+    ```yaml
     name: Blob storage website CI
 
     on:
@@ -181,7 +181,7 @@ In het bovenstaande voor beeld vervangt u de tijdelijke aanduidingen door de abo
 
 1. Verwijder alles na de `on:` sectie van uw werk stroom bestand. Uw resterende werk stroom kan er bijvoorbeeld als volgt uitzien. 
 
-    ```yml
+    ```yaml
     name: CI
 
     on:
@@ -193,7 +193,7 @@ In het bovenstaande voor beeld vervangt u de tijdelijke aanduidingen door de abo
 
 1. Wijzig de naam van uw werk stroom `Blob storage website CI` en voeg de acties voor uitchecken en aanmelden toe. Met deze acties wordt uw site code uitgecheckt en geverifieerd met Azure met behulp van het `AZURE_CREDENTIALS` github-geheim dat u eerder hebt gemaakt. 
 
-    ```yml
+    ```yaml
     name: Blob storage website CI
 
     on:

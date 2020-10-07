@@ -1,16 +1,18 @@
 ---
 title: 'Quickstart: Antwoord uit knowledge base ophalen - REST, Java - QnA Maker'
 description: Deze Java REST-quickstart begeleidt u bij het programmatisch ophalen van een antwoord uit een knowledge base.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27, devx-track-java
 ms.topic: how-to
-ms.openlocfilehash: 4d42bcf3a30b95f82ec34094afc4b6cb0842906f
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: ff40bcb58c1bdca39360a236e46a70ce5cf1b158
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267221"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777603"
 ---
 # <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-java"></a>Quick Start: antwoorden vinden op een vraag van een Knowledge Base met Java
 

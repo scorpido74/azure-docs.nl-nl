@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: cc9c7dda86d39d31b8c9a6329ac29970888f12d1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d7ff32b33a8eab5c6729d84d38fec2e5b2c87449
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904474"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777204"
 ---
-# <a name="use-the-azure-portal-to-manage-shares-on-your-azure-stack-edge-pro"></a>Gebruik de Azure Portal om shares te beheren op uw Azure Stack Edge Pro
+# <a name="use-the-azure-portal-to-manage-shares-on-azure-stack-edge-pro"></a>De Azure Portal gebruiken om shares te beheren op Azure Stack Edge Pro
 
 In dit artikel wordt beschreven hoe u shares kunt beheren op uw Azure Stack Edge Pro. U kunt de Azure Stack Edge Pro beheren via de Azure Portal of via de lokale web-UI. Gebruik de Azure Portal om shares toe te voegen, te verwijderen, te vernieuwen of de opslag sleutel te synchroniseren voor opslag accounts die zijn gekoppeld aan de shares.
 
@@ -74,7 +74,7 @@ Voer in de Azure Portal de volgende stappen uit om een share te maken.
 
 1. Ga in het Azure Portal naar de resource Azure Stack Edge en ga vervolgens naar **Gateway > shares**. Selecteer **+ share toevoegen** op de opdracht balk.
 
-   ![Selecteer share toevoegen](media/azure-stack-edge-manage-shares/add-local-share-1.png)
+   ![Selecteer share 2 toevoegen](media/azure-stack-edge-manage-shares/add-local-share-1.png)
 
 2. Geef in **Share toevoegen** de instellingen voor de share op. Geef een unieke naam voor de share op.
     
@@ -106,7 +106,7 @@ Als u een share hebt gemaakt voordat u Compute hebt geconfigureerd op uw Azure S
 
 1. Ga in het Azure Portal naar de resource Azure Stack Edge en ga vervolgens naar **Gateway > shares**. Selecteer in de lijst met shares de share die u wilt koppelen. In de kolom **gebruikt voor berekening** wordt de status **uitgeschakeld** weer gegeven voor de geselecteerde share.
 
-   ![Share selecteren](media/azure-stack-edge-manage-shares/select-share-mount.png)
+   ![Share 3 selecteren](media/azure-stack-edge-manage-shares/select-share-mount.png)
 
 2. Selecteer **koppelen**.
 
@@ -130,7 +130,7 @@ Voer de volgende stappen uit in de Azure Portal om een share te ontkoppelen.
 
 1. Ga in het Azure Portal naar de resource Azure Stack Edge en ga vervolgens naar **Gateway > shares**.
 
-   ![Share selecteren](media/azure-stack-edge-manage-shares/select-share-unmount.png)
+   ![Share 4 selecteren](media/azure-stack-edge-manage-shares/select-share-unmount.png)
 
 2. Selecteer in de lijst met shares de share die u wilt ontkoppelen. U wilt er zeker van zijn dat de share die u ontkoppelt, niet wordt gebruikt door modules. Als de share wordt gebruikt door een module, worden er problemen met de bijbehorende module weer geven. Selecteer **ontkoppelen**.
 
@@ -150,7 +150,7 @@ Voer in de Azure Portal de volgende stappen uit om een share te verwijderen.
 
 1. Klik in de lijst met shares op de share die u wilt verwijderen.
 
-   ![Share selecteren](media/azure-stack-edge-manage-shares/delete-share-1.png)
+   ![Share 5 selecteren](media/azure-stack-edge-manage-shares/delete-share-1.png)
 
 2. Klik op **Verwijderen**.
 
@@ -175,7 +175,7 @@ Voer in de Azure Portal de volgende stappen uit om een share te vernieuwen.
 
 1. Ga in de Azure Portal naar **Shares**. Klik op de share die u wilt vernieuwen.
 
-   ![Share selecteren](media/azure-stack-edge-manage-shares/refresh-share-1.png)
+   ![Selecteer share 6](media/azure-stack-edge-manage-shares/refresh-share-1.png)
 
 2. Klik op **Vernieuwen**.
 

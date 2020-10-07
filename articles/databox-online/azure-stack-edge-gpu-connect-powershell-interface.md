@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: alkohli
-ms.openlocfilehash: 59b2307bb2e1f4effce9f68530be86e9ca625c9c
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: e0b02f8d6a46c26b8927b4bac4d2089d3b57c295
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/06/2020
-ms.locfileid: "91766292"
+ms.locfileid: "91777771"
 ---
 # <a name="manage-an-azure-stack-edge-pro-gpu-device-via-windows-powershell"></a>Een Azure Stack Edge Pro GPU-apparaat beheren via Windows Power shell
 
@@ -429,7 +429,7 @@ DEBUG 2020-05-14T20:42:14Z: loop process - 0 events, 0.000s
 
 Base Board management controller (BMC) wordt gebruikt om uw apparaat op afstand te controleren en te beheren. In deze sectie worden de cmdlets beschreven die kunnen worden gebruikt voor het beheren van BMC-configuratie. Voordat u een van deze cmdlets uitvoert, [maakt u verbinding met de Power shell-interface van het apparaat](#connect-to-the-powershell-interface).
 
-- `Get-HcsNetBmcInterface`: Gebruik deze cmdlet om de eigenschappen van de netwerk configuratie van de BMC op te halen, bijvoorbeeld,,, `IPv4Address` `IPv4Gateway` `IPv4SubnetMask` `DhcpEnabled` : 
+- `Get-HcsNetBmcInterface`: Gebruik deze cmdlet om de eigenschappen van de netwerk configuratie van de BMC op te halen, bijvoorbeeld,,, `IPv4Address` `IPv4Gateway` `IPv4SubnetMask` , `DhcpEnabled` . 
     
     Hier volgt een voorbeeld van uitvoer:
     
@@ -476,7 +476,7 @@ Base Board management controller (BMC) wordt gebruikt om uw apparaat op afstand 
         [10.100.10.10]: PS>
         ```    
 
-- `Set-HcsBmcPassword`: Gebruik deze cmdlet om het BMC-wacht woord voor te wijzigen `EdgeUser` . 
+- `Set-HcsBmcPassword`: Gebruik deze cmdlet om het BMC-wacht woord voor te wijzigen `EdgeUser` . De gebruikers naam- `EdgeUser` -is hoofdletter gevoelig.
 
     Hier volgt een voorbeeld van uitvoer: 
 

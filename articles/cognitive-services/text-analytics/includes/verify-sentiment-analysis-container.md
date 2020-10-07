@@ -6,20 +6,21 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: text-analytics
 ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: c9b5411c044bb45d284cac0d30705c2b3d40ccd0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d0a5e09f1d697c2f5f842edfb06be4b13229d095
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80876405"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779671"
 ---
 ### <a name="verify-the-sentiment-analysis-container-instance"></a>De Sentimentanalyse container instantie controleren
 
 1. Selecteer het tabblad **overzicht** en kopieer het IP-adres.
-1. Open een nieuw browser tabblad en voer het IP-adres in. Voer `http://<IP-address>:5000 (http://55.55.55.55:5000`bijvoorbeeld in). De start pagina van de container wordt weer gegeven, waarin u kunt zien dat de container wordt uitgevoerd.
+1. Open een nieuw browser tabblad en voer het IP-adres in. Voer bijvoorbeeld in `http://<IP-address>:5000 (http://55.55.55.55:5000` ). De start pagina van de container wordt weer gegeven, waarin u kunt zien dat de container wordt uitgevoerd.
 
     ![De start pagina van de container weer geven om te controleren of deze wordt uitgevoerd](../media/how-tos/container-instance/swagger-docs-on-container.png)
 
@@ -63,7 +64,7 @@ ms.locfileid: "80876405"
     }
     ```
 
-1. Stel **showStats** in `true`op.
+1. Stel **showStats** in op `true` .
 
 1. Selecteer **uitvoeren** om de sentiment van de tekst te bepalen.
 
@@ -93,4 +94,4 @@ ms.locfileid: "80876405"
     }
     ```
 
-We kunnen nu het document `id` van de JSON-gegevens van de reactie Payload koppelen aan het oorspronkelijke document `id`met de aanvraag lading. De Score van meer dan `0.98` geeft aan dat er een zeer positieve sentiment is.
+We kunnen nu het document `id` van de JSON-gegevens van de reactie Payload koppelen aan het oorspronkelijke document met de aanvraag lading `id` . De Score van meer dan `0.98` geeft aan dat er een zeer positieve sentiment is.

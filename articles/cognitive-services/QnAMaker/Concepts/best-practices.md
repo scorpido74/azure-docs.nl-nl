@@ -1,14 +1,16 @@
 ---
 title: Aanbevolen procedures-QnA Maker
 description: Gebruik deze aanbevolen procedures om uw Knowledge Base te verbeteren en betere resultaten te bieden aan de eind gebruikers van uw toepassing/chat-bot.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 02/15/2020
-ms.openlocfilehash: 9a6f7f7d6edc4544942476050a1ed3c2011af7fb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 15cb1391cb6482401c2a091a4d5c0e9d819ba52d
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80053134"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777017"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Aanbevolen procedures voor een QnA Maker Knowledge Base
 
@@ -35,11 +37,11 @@ Voeg zoveel alternatieve vragen toe als u nodig hebt, maar behoud de aanpassinge
 
 ### <a name="add-relevant-alternative-questions"></a>Relevante alternatieve vragen toevoegen
 
-Uw gebruiker kan vragen invoeren met een spreek stijl of een zoek opdracht `How do I add a toner cartridge to my printer?` op tref woorden, zoals `toner cartridge`. De Knowledge Base moet beide stijlen van vragen hebben om het beste antwoord correct te kunnen retour neren. Als u niet zeker weet welke tref woorden een klant invoert, gebruikt u Application Insights gegevens voor het analyseren van query's.
+Uw gebruiker kan vragen invoeren met een spreek stijl `How do I add a toner cartridge to my printer?` of een zoek opdracht op tref woorden, zoals `toner cartridge` . De Knowledge Base moet beide stijlen van vragen hebben om het beste antwoord correct te kunnen retour neren. Als u niet zeker weet welke tref woorden een klant invoert, gebruikt u Application Insights gegevens voor het analyseren van query's.
 
 ### <a name="good-answers"></a>Goede antwoorden
 
-De beste antwoorden zijn eenvoudige antwoorden, maar niet te eenvoudig. Gebruik geen antwoorden zoals `yes` en. `no` Als uw antwoord moet worden gekoppeld aan andere bronnen of als u een uitgebreide ervaring met media en koppelingen wilt bieden, gebruikt u [labels voor meta gegevens](../how-to/edit-knowledge-base.md#add-metadata) om onderscheid te maken tussen antwoorden. `strictFilters` vervolgens verzendt u [de query](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) met de tags voor meta gegevens in de eigenschap om de juiste antwoord versie te verkrijgen.
+De beste antwoorden zijn eenvoudige antwoorden, maar niet te eenvoudig. Gebruik geen antwoorden zoals `yes` en `no` . Als uw antwoord moet worden gekoppeld aan andere bronnen of als u een uitgebreide ervaring met media en koppelingen wilt bieden, gebruikt u [labels voor meta gegevens](../how-to/edit-knowledge-base.md#add-metadata) om onderscheid te maken tussen antwoorden. vervolgens [verzendt u de query](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) met de tags voor meta gegevens in de `strictFilters` eigenschap om de juiste antwoord versie te verkrijgen.
 
 |Antwoord|Follup vragen|
 |--|--|
@@ -77,7 +79,7 @@ We raden u aan om de volgende Chit-Chat QnAs specifieker te maken:
 
 ### <a name="adding-custom-chit-chat-with-a-metadata-tag"></a>Aangepaste Chit-Chat toevoegen met een meta gegevens code
 
-Als u uw eigen Chit-Chat QnA-paren toevoegt, moet u ervoor zorgen dat u meta gegevens toevoegt zodat deze antwoorden worden geretourneerd. De naam/waarde-paar van `editorial:chitchat`de meta gegevens is.
+Als u uw eigen Chit-Chat QnA-paren toevoegt, moet u ervoor zorgen dat u meta gegevens toevoegt zodat deze antwoorden worden geretourneerd. De naam/waarde-paar van de meta gegevens is `editorial:chitchat` .
 
 ## <a name="searching-for-answers"></a>Antwoorden zoeken
 
@@ -85,7 +87,7 @@ GenerateAnswer-API maakt gebruik van beide vragen en het antwoord op zoek naar d
 
 ### <a name="searching-questions-only-when-answer-is-not-relevant"></a>Vragen alleen zoeken wanneer antwoord niet relevant is
 
-Gebruik de [`RankerType=QuestionOnly`](#choosing-ranker-type) als u geen antwoorden wilt zoeken.
+Gebruik de [`RankerType=QuestionOnly`](#choosing-ranker-type) Als u geen antwoorden wilt zoeken.
 
 Een voor beeld hiervan is wanneer de Knowledge Base een catalogus van acroniemen is als vragen met hun volledige formulier als antwoord. De waarde van het antwoord kan niet helpen bij het zoeken naar het juiste antwoord.
 
@@ -102,7 +104,7 @@ QnA Maker zoekt standaard naar vragen en antwoorden. Als u alleen vragen wilt do
 ### <a name="add-alternate-questions"></a>Alternatieve vragen toevoegen
 [Alternatieve vragen](../How-To/edit-knowledge-base.md) verbeteren de kans op een overeenkomst met een gebruikers query. Alternatieve vragen zijn handig wanneer er meerdere manieren zijn waarop dezelfde vraag kan worden gesteld. Dit kan wijzigingen bevatten in de sentence-structuur en de woord stijl.
 
-|Oorspronkelijke query|Alternatieve query's|Wijzigen|
+|Oorspronkelijke query|Alternatieve query's|Wijziging|
 |--|--|--|
 |Is parkeer plaatsen beschikbaar?|Hebt u een auto Park?|Sentence-structuur|
  |Hallo|Yo<br>Dat is alles.|woord stijl of slang|
@@ -130,7 +132,7 @@ U kunt bijvoorbeeld twee afzonderlijke QnAs hebben met de volgende vragen:
 |waar bevindt zich de parkeer *locatie*|
 |waar is de ATM- *locatie*|
 
-Omdat deze twee QnAs worden aangeduid met zeer vergelijk bare woorden, kan deze soort gelijke scores worden veroorzaakt door veel gebruikers query's die zijn aangeduid als *' waar is de `<x>` locatie '*. Probeer in plaats daarvan duidelijk te onderscheiden van query's zoals *' waar is de parkeer partij '* en *' waar is de ATM '*, door woorden als ' locatie ' te vermijden, zodat u veel vragen in uw KB kunt vinden.
+Omdat deze twee QnAs worden aangeduid met zeer vergelijk bare woorden, kan deze soort gelijke scores worden veroorzaakt door veel gebruikers query's die zijn aangeduid als  *' waar is de `<x>` locatie '*. Probeer in plaats daarvan duidelijk te onderscheiden van query's zoals  *' waar is de parkeer partij '* en *' waar is de ATM '*, door woorden als ' locatie ' te vermijden, zodat u veel vragen in uw KB kunt vinden.
 
 ## <a name="collaborate"></a>Samenwerken
 Met QnA Maker kunnen gebruikers [samen werken](../How-to/collaborate-knowledge-base.md) aan een Knowledge Base. Gebruikers moeten toegang hebben tot de resource groep Azure QnA Maker om toegang te krijgen tot de kennis bases. Sommige organisaties willen het bewerken en onderhouden van de Knowledge Base mogelijk maken en nog steeds toegang tot hun Azure-resources kunnen beveiligen. Dit model voor redacteur-goed keuring wordt uitgevoerd door twee identieke [QnA Maker Services](../How-to/set-up-qnamaker-service-azure.md) in verschillende abonnementen in te stellen en er een te selecteren voor de bewerking voor het bewerken van de test cyclus. Zodra het testen is voltooid, wordt de inhoud van de Knowledge Base met een [import-export](../Tutorials/migrate-knowledge-base.md) proces overgebracht naar de QnA Maker-service van de goed keurder die de Knowledge Base uiteindelijk gaat publiceren en het eind punt bijwerkt.
@@ -144,4 +146,4 @@ Met het [actieve leer proces](../How-to/use-active-learning.md) wordt geadviseer
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een knowledge base bewerken](../How-to/edit-knowledge-base.md)
+> [Een Knowledge Base bewerken](../How-to/edit-knowledge-base.md)

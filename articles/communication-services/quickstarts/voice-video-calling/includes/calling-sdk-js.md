@@ -4,17 +4,17 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 5542ca2f50152e7588f32e9ac8717f691fdb4d63
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: eaa7efe761490a639acabd9fd6d91378e1259a67
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91377535"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779180"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
 - Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 
-- Een geïmplementeerde Communication Services-resource. [Een Communication Services-resource maken](../../create-communication-resource.md).
+- Een gebruikte Communication Services-resource. [Een Communication Services maken](../../create-communication-resource.md).
 - A `User Access Token` om de aanroep-client in te scha kelen. Voor meer informatie over [het verkrijgen van een `User Access Token` ](../../access-tokens.md)
 - Optioneel: Voltooi de Snelstartgids om aan de [slag te gaan met het toevoegen van een oproep aan uw toepassing](../getting-started-with-calling.md)
 
@@ -37,7 +37,7 @@ De volgende klassen en interfaces verwerken enkele van de belangrijkste functies
 
 | Naam                             | Beschrijving                                                                                                                                 |
 | ---------------------------------| ------------------------------------------------------------------------------------------------------------------------------------------- |
-| CallClient                       | De CallClient is het belangrijkste invoerpunt voor de clientbibliotheek voor aanroepen.                                                                       |
+| CallClient                       | De CallClient is het belangrijkste ingangspunt voor de clientbibliotheek voor oproepen.                                                                       |
 | CallAgent                        | De CallAgent wordt gebruikt om oproepen te starten en te beheren.                                                                                            |
 | AzureCommunicationUserCredential | De klasse AzureCommunicationUserCredential implementeert de CommunicationUserCredential-interface die wordt gebruikt om de CallAgent te instantiëren. |
 
@@ -72,9 +72,9 @@ const oneToOneCall = callAgent.call([CommunicationUser]);
 ```
 
 ### <a name="place-a-1n-call-with-users-and-pstn"></a>Een aanroep van 1: n met gebruikers en PSTN plaatsen
-> [!WARNING]
-> PSTN-aanroep bevindt zich momenteel in een persoonlijke preview. Voor toegang, van [toepassing op early adopter programma](https://aka.ms/ACS-EarlyAdopter).
+
 Als u een aanroepen van 1: n wilt plaatsen voor een gebruiker en een PSTN-nummer, moet u een CommunicationUser en een telefoon nummer opgeven voor beide callees.
+
 Uw communicatie service-resource moet worden geconfigureerd om PSTN-aanroepen mogelijk te maken.
 ```js
 

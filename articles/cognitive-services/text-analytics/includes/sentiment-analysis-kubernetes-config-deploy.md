@@ -6,15 +6,16 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: text-analytics
 ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: b43299974034f55b57b86191b3556c3d5c2ee83b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ca8d4d725ff25687d1005ddab1964316a147c730
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80877812"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779732"
 ---
 ### <a name="deploy-the-sentiment-analysis-container-to-an-aks-cluster"></a>De Sentimentanalyse-container implementeren in een AKS-cluster
 
@@ -37,7 +38,7 @@ ms.locfileid: "80877812"
     ```
 
     > [!WARNING]
-    > Als er meerdere abonnementen voor u beschikbaar zijn in uw Azure-account en `az aks get-credentials` de opdracht wordt geretourneerd met een fout, is een veelvoorkomend probleem dat u het verkeerde abonnement gebruikt. Stel de context van uw Azure CLI-sessie in op het gebruik van hetzelfde abonnement dat u hebt gemaakt voor de resources en probeer het opnieuw.
+    > Als er meerdere abonnementen voor u beschikbaar zijn in uw Azure-account en de `az aks get-credentials` opdracht wordt geretourneerd met een fout, is een veelvoorkomend probleem dat u het verkeerde abonnement gebruikt. Stel de context van uw Azure CLI-sessie in op het gebruik van hetzelfde abonnement dat u hebt gemaakt voor de resources en probeer het opnieuw.
     > ```azurecli
     >  az account set -s subscription-id
     > ```
@@ -48,7 +49,7 @@ ms.locfileid: "80877812"
     code .
     ```
 
-1. Maak in de tekst editor een nieuw bestand met de naam *sentiment. yaml*en plak de volgende YAML hierin. Vervang `billing/value` en `apikey/value` door uw eigen gegevens.
+1. Maak in de tekst editor een nieuw bestand met de naam *sentiment. yaml*en plak de volgende YAML hierin. Vervang `billing/value` en door `apikey/value` uw eigen gegevens.
 
     ```yaml
     apiVersion: apps/v1beta1
@@ -95,7 +96,7 @@ ms.locfileid: "80877812"
     ```
 
 1. Sla het bestand op en sluit de tekst editor.
-1. Voer de opdracht `apply` Kubernetes uit met het bestand *sentiment. yaml* als doel:
+1. Voer de opdracht Kubernetes uit `apply` met het bestand *sentiment. yaml* als doel:
 
     ```console
     kubectl apply -f sentiment.yaml

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/16/2020
 ms.author: rogardle
-ms.openlocfilehash: 7f5f3f4edccc6d23b8041051028273559bcffecd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5bb26a21317401ddbd0d9b8f8a9a501c78153842
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325926"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776575"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>Een directe interverbinding tussen Azure en Oracle Cloud Infrastructure instellen  
 
@@ -96,7 +96,7 @@ Als u agents op beide Clouds installeert, kunt u gebruikmaken van Azure [Netwerk
 
 Als u de Interconnect wilt verwijderen, moeten de volgende stappen worden gevolgd in de opgegeven volg orde. Als u dit niet doet, wordt het ExpressRoute-circuit ' failed state ' geretourneerd.
 
-1. Verwijder de ExpressRoute-verbinding. Als u de verbinding wilt verwijderen, klikt u op het pictogram **verwijderen** op de pagina voor uw verbinding. Zie de [ExpressRoute-documentatie](../../../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md#delete-a-connection-to-unlink-a-vnet)voor meer informatie.
+1. Verwijder de ExpressRoute-verbinding. Als u de verbinding wilt verwijderen, klikt u op het pictogram **verwijderen** op de pagina voor uw verbinding. Zie de [ExpressRoute-documentatie](../../../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md#clean-up-resources)voor meer informatie.
 1. Verwijder de Oracle-FastConnect uit de Oracle-Cloud console.
 1. Zodra het Oracle FastConnect-circuit is verwijderd, kunt u het Azure ExpressRoute-circuit verwijderen.
 

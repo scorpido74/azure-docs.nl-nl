@@ -1,14 +1,16 @@
 ---
 title: NLP gebruiken met LUIS voor chat bots
 description: Meer informatie over het gebruik van Language Understanding en het gebruik van QnA Maker en inzicht in de manier waarop ze elkaar in de compliment hebben.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/16/2020
-ms.openlocfilehash: 78591fa3d74b10c71c4c50ea2662c3f2ad3c5ace
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b674fcb60ed2b4116b641ed14ff6d51ebfda3816
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328663"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777338"
 ---
 # <a name="use-cognitive-services-with-natural-language-processing-nlp-to-enrich-bot-conversations"></a>Cognitive Services met natuurlijke taal verwerking (NLP) gebruiken voor het verrijken bot-conversaties
 

@@ -1,14 +1,16 @@
 ---
 title: Knowledge bases beheren-QnA Maker
 description: Met QnA Maker kunt u uw kennis slagen beheren door toegang te bieden tot de instellingen en inhoud van de kennis basis.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: 08736ce61e6768cfd9ac3d3ded7092a4ab93fca9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 890b555703f922168a820a0535296b9f55218752
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551775"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777734"
 ---
 # <a name="create-knowledge-base-and-manage-settings"></a>Knowledge Base maken en instellingen beheren
 
@@ -18,40 +20,40 @@ Met QnA Maker kunt u uw kennis grondslagen beheren door toegang te bieden tot de
 
 > [!div class="checklist"]
 > * Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/cognitive-services/) voordat u begint.
-> * Een [QnA Maker resource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) die in de Azure Portal is gemaakt. Onthoud de Azure Active Directory-ID, het abonnement en de naam van de QnA-resource die u hebt geselecteerd tijdens het maken van de resource.
+> * Een [QnA Maker resource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) die in de Azure Portal is gemaakt. Onthoud uw Azure Active Directory-id, het abonnement en de naam van de QnA-resource die u hebt geselecteerd tijdens het maken van de resource.
 
 ## <a name="create-a-knowledge-base"></a>Een kennisdatabase maken
 
-1. Meld u aan bij de [QnAMaker.ai](https://QnAMaker.ai) -Portal met uw Azure-referenties.
+1. Meld u bij de [QnAMaker.ai](https://QnAMaker.ai)-portal met uw Azure-referenties.
 
-1. Selecteer in de portal QnA Maker **een Knowledge Base maken**.
+1. Selecteer **Een knowledge base maken** in de QnA Maker-portal.
 
-1. Sla **stap 1** over op de pagina **maken** als u uw QnA Maker-resource al hebt.
+1. Sla op de pagina **Maken** **Stap 1** over als u uw QnA Maker-resource al hebt.
 
-    Als u de resource nog niet hebt gemaakt, selecteert u **een QnA-service maken**. U wordt omgeleid naar de [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) om een QnA Maker-service in te stellen in uw abonnement. Onthoud de Azure Active Directory-ID, het abonnement en de naam van de QnA-resource die u hebt geselecteerd tijdens het maken van de resource.
+    Selecteer **Een QnA-service maken** als u de resource nog niet hebt gemaakt. U wordt omgeleid naar de [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) om een QnA Maker-service in te stellen in uw abonnement. Onthoud uw Azure Active Directory-id, het abonnement en de naam van de QnA-resource die u hebt geselecteerd tijdens het maken van de resource.
 
-    Wanneer u klaar bent met het maken van de resource in de Azure Portal, keert u terug naar de QnA Maker Portal, vernieuwt u de browser pagina en gaat u verder met **stap 2**.
+    Ga terug naar de QnA Maker-portal, vernieuw de browserpagina en ga door naar **Stap 2** als u klaar bent met het maken van de resource in Azure Portal.
 
-1. Selecteer in **stap 3**uw Active Directory, abonnement, service (resource) en de taal voor alle Knowledge bases die in de service zijn gemaakt.
+1. Selecteer in **Stap 3** uw Active Directory, abonnement en service (resource), en de taal voor alle knowledge bases die in de service worden gemaakt.
 
-   ![Scherm opname van het selecteren van een QnA Maker service Knowledge Base](../media/qnamaker-quickstart-kb/qnaservice-selection.png)
+   ![Schermopname van het selecteren van een knowledge base in de QnA Maker-service](../media/qnamaker-quickstart-kb/qnaservice-selection.png)
 
 1. In **stap 3**moet u de naam van uw kennis database noemen `My Sample QnA KB` .
 
-1. Configureer in **stap 4**de instellingen met de volgende tabel:
+1. Configureer in **Stap 4** de instellingen met de volgende tabel:
 
     |Instelling|Waarde|
     |--|--|
-    |**Schakel het ophalen van meerdere schakelingen uit vanuit Url's, PDF-of DOCX-bestanden.**|Ingeschakeld|
-    |**Standaard antwoord tekst**| `Quickstart - default answer not found.`|
+    |**Schakel uitpakken van meerdere paden in vanuit URL's, .pdf- of .docx-bestanden.**|Ingeschakeld|
+    |**Standaardantwoordtekst**| `Quickstart - default answer not found.`|
     |**+ URL toevoegen**|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting`|
-    |**Chit-chat**|**Professionele** selecteren|
+    |**Chit-chat**|**Professional** selecteren|
 
-1. Selecteer in **stap 5** **de optie uw KB maken**.
+1. Selecteer in **stap 5**, **Uw KB maken**.
 
-    Het uitpakken van het proces duurt een paar minuten om het document te lezen en vragen en antwoorden te identificeren.
+    Tijdens het extractieproces, dat enige tijd duurt, wordt het document gelezen en worden de vragen en antwoorden geïdentificeerd.
 
-    Nadat QnA Maker de Knowledge Base hebt gemaakt, wordt de pagina **Knowledge Base** geopend. U kunt de inhoud van de Knowledge Base op deze pagina bewerken.
+    Nadat QnA Maker de knowledge base heeft gemaakt, wordt de pagina **Knowledge Base** geopend. U kunt de inhoud van de knowledge base op deze pagina bewerken.
 
 ## <a name="edit-knowledge-base"></a>Knowledge base bewerken
 

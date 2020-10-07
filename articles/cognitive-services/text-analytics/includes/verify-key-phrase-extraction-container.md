@@ -6,20 +6,21 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: text-analytics
 ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 5c177517ec18d7526b1cc09da74e35cb5434766d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5dca4828a5c1127133461ddf9fc06099fc176b68
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80876406"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779583"
 ---
 ### <a name="verify-the-key-phrase-extraction-container-instance"></a>De Sleuteltermextractie container instantie controleren
 
 1. Selecteer het tabblad **overzicht** en kopieer het IP-adres.
-1. Open een nieuw browser tabblad en voer het IP-adres in. Voer `http://<IP-address>:5000 (http://55.55.55.55:5000`bijvoorbeeld in). De start pagina van de container wordt weer gegeven, waarin u kunt zien dat de container wordt uitgevoerd.
+1. Open een nieuw browser tabblad en voer het IP-adres in. Voer bijvoorbeeld in `http://<IP-address>:5000 (http://55.55.55.55:5000` ). De start pagina van de container wordt weer gegeven, waarin u kunt zien dat de container wordt uitgevoerd.
 
     ![De start pagina van de container weer geven om te controleren of deze wordt uitgevoerd](../media/how-tos/container-instance/swagger-docs-on-container.png)
 
@@ -64,7 +65,7 @@ ms.locfileid: "80876406"
     }
     ```
 
-1. Stel **showStats** in `true`op.
+1. Stel **showStats** in op `true` .
 
 1. Selecteer **uitvoeren** om de sentiment van de tekst te bepalen.
 
@@ -100,4 +101,4 @@ ms.locfileid: "80876406"
     }
     ```
 
-We kunnen nu het document `id` van de JSON-gegevens van de reactie Payload koppelen aan het oorspronkelijke document `id`met de aanvraag lading. Het resulterende document heeft een `keyPhrases` matrix die de lijst met sleutel zinnen bevat die zijn geëxtraheerd uit het bijbehorende invoer document. Daarnaast zijn er verschillende statistieken, zoals `characterCount` en `transactionCount` voor elk van de resulterende documenten.
+We kunnen nu het document `id` van de JSON-gegevens van de reactie Payload koppelen aan het oorspronkelijke document met de aanvraag lading `id` . Het resulterende document heeft een `keyPhrases` matrix die de lijst met sleutel zinnen bevat die zijn geëxtraheerd uit het bijbehorende invoer document. Daarnaast zijn er verschillende statistieken, zoals `characterCount` en `transactionCount` voor elk van de resulterende documenten.

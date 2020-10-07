@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 64163011506380eec87457a2d8a2f699ec56dc68
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 07d108306fdca9bfe8f793b61660550e43151d71
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91249634"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777820"
 ---
 # <a name="deactivate-and-delete-a-storsimple-device"></a>Een StorSimple-apparaat deactiveren en verwijderen
 
@@ -63,16 +63,16 @@ Voer de volgende stappen uit als u wilt dat het apparaat volledig wordt verwijde
         ![StorSimple-apparaat deactiveren](./media/storsimple-8000-deactivate-and-delete-device/deactivate1.png)
    2. Typ op de Blade **deactiveren** de naam van het apparaat om te bevestigen en klik vervolgens op **deactiveren**. Het deactiveren proces wordt gestart en duurt enkele minuten.
 
-        ![StorSimple-apparaat deactiveren](./media/storsimple-8000-deactivate-and-delete-device/deactivate2.png)
+        ![StorSimple-apparaat 2 deactiveren](./media/storsimple-8000-deactivate-and-delete-device/deactivate2.png)
 
 3. Na het deactiveren kunt u het apparaat volledig verwijderen. Als u een apparaat verwijdert, wordt dit verwijderd uit de lijst met apparaten die zijn verbonden met de service. De service kan het verwijderde apparaat vervolgens niet meer beheren. Gebruik de volgende stappen om het apparaat te verwijderen:
    
    1. Ga naar de StorSimple-apparaatbeheerservice en klik op **Apparaten**. Selecteer op de Blade **apparaten** het gedeactiveerde apparaat dat u wilt verwijderen, klik met de rechter muisknop en klik vervolgens op **verwijderen**.
 
-        ![StorSimple-apparaat deactiveren](./media/storsimple-8000-deactivate-and-delete-device/deactivate5.png)
+        ![StorSimple-apparaat 3 deactiveren](./media/storsimple-8000-deactivate-and-delete-device/deactivate5.png)
    2. Typ op de Blade **verwijderen** de naam van het apparaat dat u wilt bevestigen en klik vervolgens op **verwijderen**. Het duurt enkele minuten om het verwijderen te volt ooien.
 
-        ![StorSimple-apparaat deactiveren](./media/storsimple-8000-deactivate-and-delete-device/deactivate6.png)
+        ![StorSimple-apparaat 4 deactiveren](./media/storsimple-8000-deactivate-and-delete-device/deactivate6.png)
    3. Zodra het verwijderen is voltooid, wordt u hiervan op de hoogte gebracht. De lijst met apparaten wordt ook bijgewerkt om de verwijdering weer te geven.
 
 ## <a name="deactivate-and-retain-data"></a>Gegevens deactiveren en bewaren
@@ -85,19 +85,19 @@ Als u geïnteresseerd bent in het verwijderen van het apparaat, maar de gegevens
    
    1. Ga naar de StorSimple-apparaatbeheerservice en klik op **Apparaten**. Selecteer op de Blade **apparaten** het apparaat dat u wilt deactiveren, klik met de rechter muisknop en klik vervolgens op **deactiveren**.
 
-         ![StorSimple-apparaat deactiveren](./media/storsimple-8000-deactivate-and-delete-device/deactivate1.png)
+         ![StorSimple-apparaat 5 deactiveren](./media/storsimple-8000-deactivate-and-delete-device/deactivate1.png)
    2. Typ op de Blade **deactiveren** de naam van het apparaat om te bevestigen en klik vervolgens op **deactiveren**. Het deactiveren proces wordt gestart en duurt enkele minuten.
 
-         ![StorSimple-apparaat deactiveren](./media/storsimple-8000-deactivate-and-delete-device/deactivate2.png)
+         ![StorSimple-apparaat 6 deactiveren](./media/storsimple-8000-deactivate-and-delete-device/deactivate2.png)
 2. U kunt nu een failover uitvoeren voor de volume containers en de bijbehorende moment opnamen. Voor procedures gaat u naar [failover en nood herstel voor uw StorSimple-apparaat](storsimple-8000-device-failover-disaster-recovery.md).
 3. Na het deactiveren en de failover kunt u het apparaat volledig verwijderen. Als u een apparaat verwijdert, wordt dit verwijderd uit de lijst met apparaten die zijn verbonden met de service. De service kan het verwijderde apparaat vervolgens niet meer beheren. Voer de volgende stappen uit om het apparaat te verwijderen:
    
    1. Ga naar de StorSimple-apparaatbeheerservice en klik op **Apparaten**. Selecteer op de Blade **apparaten** het gedeactiveerde apparaat dat u wilt verwijderen, klik met de rechter muisknop en klik vervolgens op **verwijderen**.
 
-       ![StorSimple-apparaat deactiveren](./media/storsimple-8000-deactivate-and-delete-device/deactivate5.png)
+       ![StorSimple-apparaat 7 deactiveren](./media/storsimple-8000-deactivate-and-delete-device/deactivate5.png)
    2. Typ op de Blade **verwijderen** de naam van het apparaat dat u wilt bevestigen en klik vervolgens op **verwijderen**. Het duurt enkele minuten om het verwijderen te volt ooien.
 
-       ![StorSimple-apparaat deactiveren](./media/storsimple-8000-deactivate-and-delete-device/deactivate6.png)
+       ![StorSimple-apparaat 8 deactiveren](./media/storsimple-8000-deactivate-and-delete-device/deactivate6.png)
    3. Zodra het verwijderen is voltooid, wordt u hiervan op de hoogte gebracht. De lijst met apparaten wordt ook bijgewerkt om de verwijdering weer te geven.
 
 ## <a name="deactivate-and-delete-a-cloud-appliance"></a>Een cloudapparaat deactiveren en verwijderen

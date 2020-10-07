@@ -1,14 +1,16 @@
 ---
 title: Levens cyclus van Knowledge Base-QnA Maker
 description: QnA Maker leert het beste in een iteratieve cyclus van model wijzigingen, utterance-voor beelden, publiceren en verzamelen van gegevens uit eindpunt query's.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: 7bbf729fa80e4b41a85b8dfd1080decea1bae108
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: e52e7151bc30a19bd6f6041d52effdd799a87c99
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612280"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776966"
 ---
 # <a name="knowledge-base-lifecycle-in-qna-maker"></a>Levens cyclus van de Knowledge Base in QnA Maker
 QnA Maker leert het beste in een iteratieve cyclus van model wijzigingen, utterance-voor beelden, publiceren en verzamelen van gegevens uit eindpunt query's.

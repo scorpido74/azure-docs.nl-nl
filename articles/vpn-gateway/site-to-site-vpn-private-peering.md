@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/08/2020
+ms.date: 10/06/2020
 ms.author: cherylmc
-ms.openlocfilehash: effbe8e771922ea07ad908dd4871f8dcdb7c1d19
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 016741606bad5536985a38b0e0664b39006e1df5
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935972"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776558"
 ---
 # <a name="configure-a-site-to-site-vpn-connection-over-expressroute-private-peering-preview"></a>Een site-naar-site-VPN-verbinding configureren via ExpressRoute private peering (preview-versie)
 
@@ -72,16 +72,18 @@ In beide voor beelden verzendt Azure verkeer naar 10.0.1.0/24 via de VPN-verbind
 
 ## <a name="portal-steps"></a><a name="portal"></a>Portal stappen
 
-1. Configureer een site-naar-site-verbinding. Zie het artikel [site-naar-site-configuratie](vpn-gateway-howto-site-to-site-resource-manager-portal.md) voor een overzicht van de stappen. Zorg ervoor dat u een zone-redundante gateway-SKU kiest voor de gateway. Voor een zone-redundante Sku's is AZ aan het einde van de SKU. Bijvoorbeeld VpnGw1AZ.
+1. Configureer een site-naar-site-verbinding. Zie het artikel [site-naar-site-configuratie](vpn-gateway-howto-site-to-site-resource-manager-portal.md) voor een overzicht van de stappen. Zorg ervoor dat u een zone-redundante gateway-SKU kiest voor de gateway. 
 
-   :::image type="content" source="media/site-to-site-vpn-private-peering/gateway.png" alt-text="Privé-IP-adressen van Gateway":::
+   Voor een zone-redundante Sku's is AZ aan het einde van de SKU. Bijvoorbeeld **VpnGw1AZ**. Zone-redundante gateways zijn alleen beschikbaar in regio's waar de beschikbaarheids zone service beschikbaar is. Zie [regio's die beschikbaarheids zones ondersteunen](../availability-zones/az-region.md)voor meer informatie over de regio's waarin we beschikbaarheids zones ondersteunen.
+
+   :::image type="content" source="media/site-to-site-vpn-private-peering/gateway.png" alt-text="Afbeelding 1":::
 1. Privé-IP-adressen inschakelen op de gateway. Selecteer **configuratie**en stel de **persoonlijke Ip's** van de gateway in op **ingeschakeld**. Selecteer **Opslaan** om uw wijzigingen op te slaan.
 1. Selecteer op de pagina **overzicht** de optie **meer weer** geven om het privé-IP-adres te bekijken. Noteer deze informatie om later in de configuratie stappen te gebruiken.
 
-   :::image type="content" source="media/site-to-site-vpn-private-peering/gateway-overview.png" alt-text="Overzichtspagina" lightbox="media/site-to-site-vpn-private-peering/gateway-overview.png":::
+   :::image type="content" source="media/site-to-site-vpn-private-peering/gateway-overview.png" alt-text="Afbeelding 1" lightbox="media/site-to-site-vpn-private-peering/gateway-overview.png":::
 1. Selecteer **configuratie**om het **privé-Azure-IP-adres gebruiken** in te scha kelen voor de verbinding. Stel het **privé-IP-adres van Azure gebruiken** in op **ingeschakeld**en selecteer vervolgens **Opslaan**.
 
-   :::image type="content" source="media/site-to-site-vpn-private-peering/connection.png" alt-text="Privé-IP-adressen van Gateway-ingeschakeld":::
+   :::image type="content" source="media/site-to-site-vpn-private-peering/connection.png" alt-text="Afbeelding 1":::
 1. Vanuit uw firewall pingt u het privé-IP-adres dat u in stap 3 hebt genoteerd. Het privé-IP-adres moet bereikbaar zijn via de ExpressRoute-persoonlijke peering.
 1. Gebruik dit persoonlijke IP-adres als het externe IP-adres van uw on-premises firewall om de site-naar-site-tunnel te maken via de ExpressRoute-persoonlijke peering.
 

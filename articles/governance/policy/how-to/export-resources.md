@@ -1,17 +1,17 @@
 ---
-title: Azure Policy-resources exporteren
+title: Azure Policy-beleid exporteren
 description: Meer informatie over het exporteren van Azure Policy-resources naar GitHub, zoals beleids definities en beleids toewijzingen.
 ms.date: 09/30/2020
 ms.topic: how-to
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 17f0322390cd2cd89ba182a9e3c7c95843cc135e
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: 691e0a026c5f4f1a0a68c744ee81b1da8da9e70b
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91604328"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777085"
 ---
-# <a name="export-azure-policy-resources"></a>Azure Policy-resources exporteren
+# <a name="export-azure-policy-resources"></a>Azure Policy-beleid exporteren
 
 Dit artikel bevat informatie over het exporteren van uw bestaande Azure Policy-resources. Het exporteren van uw resources is nuttig en aanbevolen voor back-ups, maar is ook een belang rijke stap in uw reis met Cloud governance en het behandelen van uw [beleid als code](../concepts/policy-as-code.md). Azure Policy resources kunnen worden geëxporteerd via [Azure Portal](#export-with-azure-portal), [Azure cli](#export-with-azure-cli), [Azure PowerShell](#export-with-azure-powershell)en elk van de ondersteunde sdk's.
 
@@ -84,7 +84,7 @@ Azure Policy definities, initiatieven en toewijzingen kunnen worden geëxporteer
 Hier volgt een voor beeld van het ophalen van de JSON voor een beleids definitie met de **naam** _VirtualMachineStorage_:
 
 ```azurepowershell-interactive
-Get-AzPolicyDefinition --Name 'VirtualMachineStorage'
+Get-AzPolicyDefinition -Name 'VirtualMachineStorage'
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

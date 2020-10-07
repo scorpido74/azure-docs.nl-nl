@@ -3,14 +3,14 @@ title: Een Linux-Hybrid Runbook Worker implementeren in Azure Automation
 description: In dit artikel wordt uitgelegd hoe u een Azure Automation Hybrid Runbook Worker installeert voor het uitvoeren van runbooks op Linux-computers in uw lokale Data Center of cloud omgeving.
 services: automation
 ms.subservice: process-automation
-ms.date: 09/15/2020
+ms.date: 10/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: fb975305e18315fa8d0a39e4fe0ab6902c98b7e7
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 8295b6bba9703c276bf60a0360ded6f0e195369e
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987224"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776269"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Een Linux-Hybrid Runbook Worker implementeren
 
@@ -45,6 +45,10 @@ Voer de volgende Power shell-cmdlet uit om de functie Wijzigingen bijhouden en i
 ### <a name="log-analytics-agent"></a>Log Analytics-agent
 
 De Hybrid Runbook Worker-rol vereist de [log Analytics-agent](../azure-monitor/platform/log-analytics-agent.md) voor het ondersteunde Linux-besturings systeem.
+
+>[!NOTE]
+>Nadat u de Log Analytics-agent voor Linux hebt geïnstalleerd, moet u de machtigingen van de `sudoers.d` map of het eigendom niet wijzigen. De sudo-machtiging is vereist voor het **nxautomation** -account. Dit is de gebruikers context waarin de Hybrid Runbook worker wordt uitgevoerd. De machtigingen mogen niet worden verwijderd. Als u dit beperkt tot bepaalde mappen of opdrachten, kan dit leiden tot een belang rijke wijziging.
+>
 
 ### <a name="supported-linux-operating-systems"></a>Ondersteunde Linux-besturingssystemen
 
@@ -88,11 +92,11 @@ Hybrid Runbook Workers van Linux ondersteunen een beperkt aantal typen Runbook i
 
 |Type Runbook | Ondersteund |
 |-------------|-----------|
-|Python 2 |Yes |
+|Python 2 |Ja |
 |PowerShell |Ja<sup>1</sup> |
-|PowerShell-werkstroom |No |
-|Grafisch |No |
-|Grafische power shell-werk stroom |No |
+|PowerShell-werkstroom |Nee |
+|Grafisch |Nee |
+|Grafische power shell-werk stroom |Nee |
 
 <sup>1</sup> Power shell-runbooks vereisen dat Power shell core wordt geïnstalleerd op de Linux-machine. Zie [Power shell core in Linux installeren](/powershell/scripting/install/installing-powershell-core-on-linux) voor meer informatie over het installeren ervan.
 

@@ -1,14 +1,16 @@
 ---
 title: Suggesties voor actieve trainingen-QnA Maker
 description: Met de suggesties voor actieve trainingen kunt u de kwaliteit van uw Knowledge Base verbeteren door alternatieve vragen te stellen op basis van de gebruikers inzendingen, naar uw vraag en antwoord paar.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/19/2020
-ms.openlocfilehash: edbe06b12fbb97473b28ccca968fd3e7d8366152
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e8cdb1d471ceef2aef790c426424b9224faac5ec
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80804210"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777034"
 ---
 # <a name="active-learning-suggestions"></a>Suggesties voor actieve trainingen
 

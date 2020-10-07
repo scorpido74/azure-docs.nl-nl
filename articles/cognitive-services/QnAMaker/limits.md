@@ -1,14 +1,16 @@
 ---
 title: Limieten en grenzen-QnA Maker
 description: QnA Maker heeft meta limieten voor delen van de Knowledge Base en de service. Het is belang rijk dat u uw Knowledge Base binnen deze grenzen houdt om te testen en te publiceren.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 02/14/2020
-ms.openlocfilehash: cce95574c8ffc245818b61e9843c5f7984de972f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 773c9caa2fb25b3abe4fb451bc59598c485a6110
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524434"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776252"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>Limieten en grenzen voor de Knowledge Base QnA Maker
 
@@ -32,8 +34,8 @@ Bestands namen mogen niet de volgende tekens bevatten:
 
 |Geen teken gebruiken|
 |--|
-|Enkele aanhalings tekens`'`|
-|Dubbele aanhalings tekens`"`|
+|Enkele aanhalings tekens `'`|
+|Dubbele aanhalings tekens `"`|
 
 ### <a name="maximum-file-size"></a>Maximale bestandsgrootte
 
@@ -71,8 +73,8 @@ De lengte en de acceptabele tekens voor de naam en waarde van de meta gegevens w
 
 |Item|Toegestane tekens|Overeenkomst met regex-patroon|Maximum aantal tekens|
 |--|--|--|--|
-|Naam (sleutel)|Hulp<br>alfanumeriek (letters en cijfers)<br>`_`weigeren<br> Mag geen spaties bevatten.|`^[a-zA-Z0-9_]+$`|100|
-|Waarde|Maakt alles mogelijk behalve<br>`:`punt<br>`|`(verticale pijp)<br>Er is slechts één waarde toegestaan.|`^[^:|]+$`|500|
+|Naam (sleutel)|Hulp<br>alfanumeriek (letters en cijfers)<br>`_` weigeren<br> Mag geen spaties bevatten.|`^[a-zA-Z0-9_]+$`|100|
+|Waarde|Maakt alles mogelijk behalve<br>`:` punt<br>`|` (verticale pijp)<br>Er is slechts één waarde toegestaan.|`^[^:|]+$`|500|
 |||||
 
 ## <a name="knowledge-base-content-limits"></a>Limieten voor Knowledge Base-inhoud
@@ -81,8 +83,8 @@ Algemene limieten voor de inhoud van de Knowledge Base:
 * Lengte van de vraag tekst: 1.000
 * Lengte van de tekst van de meta gegevens sleutel: 100
 * Lengte van tekst van meta gegevens waarde: 500
-* Ondersteunde tekens voor de naam van de meta gegevens: alfabetten, cijfers en`_`
-* Ondersteunde tekens voor de meta gegevens waarde: alle behalve `:` en`|`
+* Ondersteunde tekens voor de naam van de meta gegevens: alfabetten, cijfers en `_`
+* Ondersteunde tekens voor de meta gegevens waarde: alle behalve `:` en `|`
 * Lengte van bestands naam: 200
 * Ondersteunde bestands indelingen: '. TSV ', '. PDF ', '. txt ', '. docx ', '. xlsx '.
 * Maximum aantal alternatieve vragen: 300

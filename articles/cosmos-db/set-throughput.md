@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 00ed8f6ff9839c227f3d8a929a071834c5559226
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 81a31448a588849a410b37868cf579fbb0a9ceb6
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605732"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777784"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Inleiding tot ingerichte door Voer in Azure Cosmos DB
 
@@ -40,7 +40,7 @@ We raden u aan om door voer te configureren bij de container granulatie wanneer 
 
 In de volgende afbeelding ziet u hoe een fysieke partitie als host fungeert voor een of meer logische partities van een container:
 
-:::image type="content" source="./media/set-throughput/resource-partition.png" alt-text="Fysieke partitie" border="false":::
+:::image type="content" source="./media/set-throughput/resource-partition.png" alt-text="Fysieke partitie die als host fungeert voor een of meer logische partities van een container" border="false":::
 
 ## <a name="set-throughput-on-a-database"></a>Door Voer instellen voor een Data Base
 
@@ -75,7 +75,7 @@ Als uw Azure Cosmos DB-account al een Data Base met gedeelde door Voer bevat met
 
 Als uw workloads het verwijderen en opnieuw maken van alle verzamelingen in een Data Base vereisen, is het raadzaam om de lege data base weg te halen en opnieuw een nieuwe Data Base te maken voordat u de verzameling maakt. In de volgende afbeelding ziet u hoe een fysieke partitie een of meer logische partities kan hosten die deel uitmaken van verschillende containers in een Data Base:
 
-:::image type="content" source="./media/set-throughput/resource-partition2.png" alt-text="Fysieke partitie" border="false":::
+:::image type="content" source="./media/set-throughput/resource-partition2.png" alt-text="Fysieke partitie die als host fungeert voor een of meer logische partities van een container" border="false":::
 
 ## <a name="set-throughput-on-a-database-and-a-container"></a>Door Voer instellen voor een Data Base en een container
 
@@ -84,7 +84,7 @@ U kunt de twee modellen combi neren. De door Voer voor de data base en de contai
 * U kunt een Azure Cosmos-data base met de naam *Z* maken met de standaard (hand matig) ingerichte door Voer van *"K"* RUs. 
 * Maak vervolgens vijf containers met de naam *A*, *B*, *C*, *D*en *E* in de-data base. Zorg ervoor dat u bij het maken van container B een **specifieke door Voer inrichten voor deze container** optie inschakelt en expliciet *' P '* RUs van ingerichte door Voer voor deze container configureert. Houd er rekening mee dat u een gedeelde en toegewezen door Voer alleen kunt configureren bij het maken van de data base en container. 
 
-   :::image type="content" source="./media/set-throughput/coll-level-throughput.png" alt-text="De door Voer op container niveau instellen":::
+   :::image type="content" source="./media/set-throughput/coll-level-throughput.png" alt-text="Fysieke partitie die als host fungeert voor een of meer logische partities van een container":::
 
 * De *"K"* RUs-door Voer wordt gedeeld in de vier containers *A*, *C*, *D*en *E*. De exacte hoeveelheid door Voer die beschikbaar is voor *A*, *C*, *D*of *E* , varieert. Er zijn geen service overeenkomsten voor de door Voer van elke afzonderlijke container.
 * De container met de naam *B* is gegarandeerd dat de *"P"* RUs-door Voer altijd wordt opgehaald. Er wordt een back-up gemaakt van service overeenkomsten.
@@ -105,11 +105,11 @@ Als u de [minimale ingerichte door Voer](concepts-limits.md#storage-and-database
 
 De werkelijke minimale RU/s kan variëren, afhankelijk van de configuratie van uw account. U kunt [Azure monitor metrische gegevens](monitor-cosmos-db.md#view-operation-level-metrics-for-azure-cosmos-db) gebruiken om de geschiedenis van ingerichte door Voer (ru/s) en opslag voor een bron weer te geven.
 
-U kunt de minimale door Voer van een container of een Data Base via een programma ophalen met behulp van de Sdk's of de waarde in de Azure Portal weer geven. Wanneer u de .NET SDK gebruikt, kunt u met de methode [DocumentClient. ReplaceOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.replaceofferasync?view=azure-dotnet) de ingerichte doorvoer waarde schalen. Wanneer u de Java-SDK gebruikt, kunt u met de methode [RequestOptions. setOfferThroughput](sql-api-java-sdk-samples.md) de ingerichte doorvoer waarde schalen. 
+U kunt de minimale door Voer van een container of een Data Base via een programma ophalen met behulp van de Sdk's of de waarde in de Azure Portal weer geven. Bij gebruik van de .NET SDK, de [container. ](/dotnet/api/microsoft.azure.cosmos.container.replacethroughputasync?view=azure-dotnet&preserve-view=true) Met de methode ReplaceThroughputAsync kunt u de ingerichte doorvoer waarde schalen. Wanneer u de Java-SDK gebruikt, kunt u met de methode [CosmosContainer. replaceProvisionedThroughput](sql-api-java-sdk-samples.md) de ingerichte doorvoer waarde schalen.
 
-Wanneer u de .NET SDK gebruikt, kunt u met de methode [DocumentClient. ReadOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.readofferasync?view=azure-dotnet) de minimale door Voer van een container of een Data Base ophalen. 
+Bij gebruik van de .NET-SDK kunt u met de [container. ReadThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.readthroughputasync?view=azure-dotnet&preserve-view=true) -methode de minimale door Voer van een container of een Data Base ophalen. 
 
-U kunt de ingerichte door Voer van een container of een Data Base op elk gewenst moment schalen. Wanneer er een schaal bewerking wordt uitgevoerd om de door voer te verg Roten, kan het langer duren vanwege de systeem taken om de vereiste resources in te richten. U kunt de status van de schaal bewerking controleren in Azure Portal of programmatisch met behulp van de Sdk's. Wanneer u de .NET SDK gebruikt, kunt u de status van de schaal bewerking ophalen met behulp van de- `DocumentClient.ReadOfferAsync` methode.
+U kunt de ingerichte door Voer van een container of een Data Base op elk gewenst moment schalen. Wanneer er een schaal bewerking wordt uitgevoerd om de door voer te verg Roten, kan het langer duren vanwege de systeem taken om de vereiste resources in te richten. U kunt de status van de schaal bewerking controleren in Azure Portal of programmatisch met behulp van de Sdk's. Wanneer u de .NET SDK gebruikt, kunt u de status van de schaal bewerking ophalen met behulp van de- `Container.ReadThroughputAsync` methode.
 
 ## <a name="comparison-of-models"></a>Vergelijking van modellen
 In deze tabel ziet u een vergelijking tussen het inrichten van de standaard doorvoer (hand matig) voor een Data Base versus een container. 
@@ -120,7 +120,7 @@ In deze tabel ziet u een vergelijking tussen het inrichten van de standaard door
 |Mini maal RU/s per container|100|400|--|Automatisch schalen tussen 400-4000 RU/s|
 |Maximum RUs|Onbeperkt, op de data base.|Onbeperkt, op de container.|Onbeperkt, op de data base.|Onbeperkt, op de container.
 |RUs toegewezen of beschikbaar voor een specifieke container|Geen garanties. RUs toegewezen aan een bepaalde container is afhankelijk van de eigenschappen. Eigenschappen kunnen de keuze zijn van partitie sleutels van containers die de door Voer, de distributie van de werk belasting en het aantal containers delen. |Alle RUs-instellingen die in de container zijn geconfigureerd, worden uitsluitend gereserveerd voor de container.|Geen garanties. RUs toegewezen aan een bepaalde container is afhankelijk van de eigenschappen. Eigenschappen kunnen de keuze zijn van partitie sleutels van containers die de door Voer, de distributie van de werk belasting en het aantal containers delen. |Alle RUs-instellingen die in de container zijn geconfigureerd, worden uitsluitend gereserveerd voor de container.|
-|Maximale opslag voor een container|Limited.|Onbeperkt|Onbeperkt|Onbeperkt|
+|Maximale opslag voor een container|Onbeperkt.|Onbeperkt|Onbeperkt|Onbeperkt|
 |Maximale door Voer per logische partitie van een container|10.000 RU/s|10.000 RU/s|10.000 RU/s|10.000 RU/s|
 |Maximale opslag (data + index) per logische partitie van een container|20 GB|20 GB|20 GB|20 GB|
 

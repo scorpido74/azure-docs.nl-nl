@@ -1,14 +1,16 @@
 ---
 title: Samen werken op Knowledge Base-QnA Maker
 description: Met QnA Maker kunnen meerdere personen samen werken aan een Knowledge Base. Deze functie wordt meegeleverd met het toegangs beheer op basis van rollen (Azure RBAC) van Azure.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 0d59ca83e6067c083e4bfebdb7afaaf6669dda8a
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 8adc02d4b397c2b0bdaf5d3998cfbe229c896d41
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926844"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776847"
 ---
 # <a name="collaboration-with-authors-and-editors"></a>Samen werking met auteurs en editors
 
@@ -62,7 +64,7 @@ Wanneer de persoon met wie u uw QnA Maker-service hebt gedeeld, zich aanmeldt in
 
 Wanneer ze een kennis database selecteren, is hun huidige rol op die QnA Maker resource zichtbaar naast de naam van de Knowledge Base.
 
-:::image type="content" source="../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-knowledge-base-role-name.png" alt-text="Scherm opname van de kennis database in de bewerkings modus met de rolnaam tussen haakjes naast de naam van de Knowledge Base in de linkerbovenhoek van de webpagina.":::
+:::image type="content" source="../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-knowledge-base-role-name.png" alt-text="QnA Maker IAM-rol toevoegen.":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

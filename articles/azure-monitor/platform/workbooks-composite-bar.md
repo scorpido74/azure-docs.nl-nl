@@ -8,12 +8,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 9/04/2020
 ms.author: lagayhar
-ms.openlocfilehash: 76c52d47c7fd7e271f3e74439ee8502117eb83a7
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 80846ecb1ad48d9f8ba49f0025772b4e131c23e2
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89664307"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776354"
 ---
 # <a name="composite-bar-renderer"></a>Renderer voor samengestelde balk
 
@@ -46,7 +46,7 @@ De renderer voor samengestelde balken wordt ondersteund voor rasters, tegels en 
 7. Selecteer ' totaal ' in de *kolommen* en kies ' samengestelde balk ' voor de *kolom weergave*.
 8. Stel de volgende instellingen in op de *samengestelde balk instellingen*.
 
-| Kolom naam | Color        |
+| Kolom naam | Kleur        |
 |-------------|--------------|
 | online      | Green        |
 | hersteld  | Geel       |
@@ -124,17 +124,17 @@ Voor raster visualisaties werkt de sorteer volgorde van de rijen voor de kolom m
 3. Wijzig de visualisatie in *tegels*.
 4. Voer de query uit.
 5. Selecteer **tegel instellingen**.
-6. Selecteer *links* in titel velden.
+6. Selecteer *links* in de velden naast elkaar.
 7. Voer de onderstaande instellingen onder *veld instellingen*in.
     1. Kolom: Server gebruiken.
     2. Kolom weergave: tekst.
-8. Selecteer *onder* titel velden onder.
+8. Selecteer *onderaan* in tegel velden.
 9. Voer de onderstaande instellingen onder *veld instellingen*in.
     1. Gebruik kolom: "totaal".
     2. Kolom weergave: "samengestelde balk".
     3. Geef de volgende instellingen op onder instellingen voor de samengestelde balk.
 
-    | Kolom naam | Color        |
+    | Kolom naam | Kleur        |
     |-------------|--------------|
     | online      | Green        |
     | hersteld  | Geel       |
@@ -143,9 +143,9 @@ Voor raster visualisaties werkt de sorteer volgorde van de rijen voor de kolom m
     4. Label toevoegen: `["online"] of ["total"] are healthy` .
 10. Selecteer **Toepassen**.
 
-Samengestelde balk instellingen voor titels:
+Samengestelde balk instellingen voor tegels:
 
-![Scherm afbeelding van de instellingen voor de samengestelde balk met instellingen die hierboven worden beschreven.](./media/workbooks-composite-bar/tiles-settings.png)
+![Scherm afbeelding van de tegel instellingen voor samengestelde balken met instellingen die hierboven worden beschreven.](./media/workbooks-composite-bar/tiles-settings.png)
 
 De samengestelde balk weergave voor tegels met de bovenstaande instellingen ziet er als volgt uit:
 
@@ -157,7 +157,7 @@ Volg de onderstaande instructies om een samengestelde balk renderer te maken voo
 
 1. Selecteer **toevoegen** en *query toevoegen*.
 2. Wijzig de gegevens bron in JSON Voer de gegevens uit het [vorige voor beeld](#adding-composite-bar-renderer)in.
-3. Wijzig de visualisatie in *tegels*.
+3. Wijzig de visualisatie in *grafieken*.
 4. Voer de query uit.
 5. Selecteer de instellingen voor de **grafiek**.
 6. Selecteer *Inhoud centreren* in instellingen voor knooppunt indeling.
@@ -166,7 +166,7 @@ Volg de onderstaande instructies om een samengestelde balk renderer te maken voo
     2. Kolom weergave: "samengestelde balk".
     3. Voer de volgende instellingen onder *instellingen van de samengestelde balk*in.
 
-    |Kolom naam  |     Color    |
+    |Kolom naam  |     Kleur    |
     |-------------|--------------|
     | online      | Green        |
     | hersteld  | Geel       |

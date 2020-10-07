@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: fb6813875858ab6cc438df5abb78a75391adfeac
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6628d693a8df3614097e23785ac234a451565ca3
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91280654"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777102"
 ---
 # <a name="overview-of-the-azure-security-benchmark-v2"></a>Overzicht van de Azure Security Bench Mark (v2)
 
@@ -30,19 +30,17 @@ De volgende besturings elementen zijn opgenomen in de Azure Security-Bench Mark:
 
 | Beheer domeinen ASB | Beschrijving 
 |--|--|
-| [Netwerk beveiliging (NS)](security-controls-v2-network-security.md) | Netwerk beveiliging heeft betrekking op besturings elementen voor het beveiligen en beveiligen van Azure-netwerken, waaronder het beveiligen van virtuele netwerken, het tot stand brengen van particuliere verbindingen, het voor komen en beperken van externe aanvallen en het beveiligen van DNS. |
-| [Identiteits beheer (IM)](security-controls-v2-identity-management.md) | Identiteits beheer heeft betrekking op besturings elementen voor het instellen van een beveiligde identiteits-en toegangs beheer met behulp van Azure Active Directory, waaronder het gebruik van eenmalige aanmelding, sterke verificaties, beheerde identiteiten (en service principes) voor toepassingen, voorwaardelijke toegang en het controleren van afwijkingen van accounts. |
-| [Privileged Access (PA)](security-controls-v2-privileged-access.md) | Uitgebreide toegang heeft betrekking op besturings elementen voor het beveiligen van bevoegde toegang tot uw Azure-Tenant en-resources, waaronder een reeks besturings elementen voor het beveiligen van uw beheer model, beheerders accounts en geprivilegieerde toegang tegen opzettelijke en onbedoelde Risico's. |
-| [Gegevens bescherming (DP)](security-controls-v2-data-protection.md) | Gegevens bescherming is van toepassing op de controle van gegevens beveiliging op rest, onderweg en via geautoriseerde toegangs mechanismen, waaronder het detecteren, classificeren, beveiligen en bewaken van gevoelige gegevens assets met behulp van toegangs beheer, versleuteling en logboek registratie in Azure. |
-| [Asset Management (AM)](security-controls-v2-asset-management.md) | Asset Management bestrijkt de controles om inzicht te krijgen in de beveiliging en het beheer van Azure-resources, waaronder aanbevelingen over machtigingen voor beveiligings personeel, de beveiliging van de inventaris en het beheren van goed keuringen voor services en resources (inventaris, tracering en juistheid). |
-| [Logboek registratie en detectie van bedreigingen (LT)](security-controls-v2-logging-threat-detection.md) | Logboek registratie en detectie van bedreigingen omvatten besturings elementen voor het detecteren van bedreigingen op Azure en het inschakelen, verzamelen en opslaan van audit logboeken voor Azure-Services, waaronder het inschakelen van detectie-, onderzoek-en herstel processen met besturings elementen voor het genereren van waarschuwingen van hoge kwaliteit met systeem eigen bedreigingen detectie in Azure-Services. Het omvat ook het verzamelen van logboeken met Azure Monitor, het centraliseren van beveiligings analyse met Azure Sentinel, tijd synchronisatie en logboek registratie. |
-| [Reactie op incidenten (IR)](security-controls-v2-incident-response.md) | Reactie op incidenten betreft controles in de levens cyclus van incidenten: voor bereiding, detectie en analyse, insluiting en activiteiten na incidenten, inclusief het gebruik van Azure-Services, zoals Azure Security Center en Sentinel, om het respons proces van het incident te automatiseren. |
-| [Postuur en beveiligings beheer (HW)](security-controls-v2-posture-vulnerability-management.md) | Postuur en beveiligings beheer richt zich op besturings elementen voor het beoordelen en verbeteren van de postuur van Azure, waaronder het scannen van beveiligings problemen, het testen van indringing en herstel, alsmede het bijhouden van de beveiligings configuratie, rapportage en correctie in azure-resources. |
-| [Endpoint Security (ES)](security-controls-v2-endpoint-security.md) | Endpoint Security heeft betrekking op besturings elementen in eindpunt detectie en-antwoord, met inbegrip van het gebruik van eindpunt detectie en-antwoorden (EDR) en anti-malware-service voor eind punten in azure-omgevingen. |
-| [Back-up en herstel (BR)](security-controls-v2-backup-recovery.md) | Back-up en herstel bestrijkt de controles om ervoor te zorgen dat de gegevens en configuratie back-ups in de verschillende service lagen worden uitgevoerd, gevalideerd en beveiligd. |
-| [Governance en strategie (GS)](security-controls-v2-governance-strategy.md) | Governance en strategie biedt richt lijnen voor het garanderen van een samenhangende beveiligings strategie en een gedocumenteerde governance aanpak om beveiligings verzekeringen te hand haven, inclusief het instellen van rollen en verantwoordelijkheden voor de verschillende Cloud beveiligings functies, uniforme technische strategie en ondersteunings beleid en-standaarden. |
-
-U kunt de Azure Security-Bench Mark ook downloaden in een [Spreadsheet indeling](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Security%20Benchmark).
+| [Netwerk &nbsp; beveiliging &nbsp; (NS)](security-controls-v2-network-security.md) | Netwerk beveiliging heeft betrekking op besturings elementen voor het beveiligen en beveiligen van Azure-netwerken, waaronder het beveiligen van virtuele netwerken, het tot stand brengen van particuliere verbindingen, het voor komen en beperken van externe aanvallen en het beveiligen van DNS. |
+| [Identiteits &nbsp; beheer &nbsp; (IM)](security-controls-v2-identity-management.md) | Identiteits beheer heeft betrekking op besturings elementen voor het instellen van een beveiligde identiteits-en toegangs beheer met behulp van Azure Active Directory, waaronder het gebruik van eenmalige aanmelding, sterke verificaties, beheerde identiteiten (en service principes) voor toepassingen, voorwaardelijke toegang en het controleren van afwijkingen van accounts. |
+| [Privileged &nbsp; Access &nbsp; (PA)](security-controls-v2-privileged-access.md) | Uitgebreide toegang heeft betrekking op besturings elementen voor het beveiligen van bevoegde toegang tot uw Azure-Tenant en-resources, waaronder een reeks besturings elementen voor het beveiligen van uw beheer model, beheerders accounts en geprivilegieerde toegang tegen opzettelijke en onbedoelde Risico's. |
+| [Gegevens &nbsp; bescherming &nbsp; (DP)](security-controls-v2-data-protection.md) | Gegevens bescherming is van toepassing op de controle van gegevens beveiliging op rest, onderweg en via geautoriseerde toegangs mechanismen, waaronder het detecteren, classificeren, beveiligen en bewaken van gevoelige gegevens assets met behulp van toegangs beheer, versleuteling en logboek registratie in Azure. |
+| [Asset &nbsp; Management &nbsp; (am)](security-controls-v2-asset-management.md) | Asset Management bestrijkt de controles om inzicht te krijgen in de beveiliging en het beheer van Azure-resources, waaronder aanbevelingen over machtigingen voor beveiligings personeel, de beveiliging van de inventaris en het beheren van goed keuringen voor services en resources (inventaris, tracering en juistheid). |
+| [Logboek registratie &nbsp; en &nbsp; detectie van bedreigingen &nbsp; (lt)](security-controls-v2-logging-threat-detection.md) | Logboek registratie en detectie van bedreigingen omvatten besturings elementen voor het detecteren van bedreigingen op Azure en het inschakelen, verzamelen en opslaan van audit logboeken voor Azure-Services, waaronder het inschakelen van detectie-, onderzoek-en herstel processen met besturings elementen voor het genereren van waarschuwingen van hoge kwaliteit met systeem eigen bedreigingen detectie in Azure-Services. Het omvat ook het verzamelen van logboeken met Azure Monitor, het centraliseren van beveiligings analyse met Azure Sentinel, tijd synchronisatie en logboek registratie. |
+| [Reactie op incidenten &nbsp; &nbsp; (IR)](security-controls-v2-incident-response.md) | Reactie op incidenten betreft controles in de levens cyclus van incidenten: voor bereiding, detectie en analyse, insluiting en activiteiten na incidenten, inclusief het gebruik van Azure-Services, zoals Azure Security Center en Sentinel, om het respons proces van het incident te automatiseren. |
+| [Postuur &nbsp; en &nbsp; beveiligings &nbsp; beheer &nbsp; (HW)](security-controls-v2-posture-vulnerability-management.md) | Postuur en beveiligings beheer richt zich op besturings elementen voor het beoordelen en verbeteren van de postuur van Azure, waaronder het scannen van beveiligings problemen, het testen van indringing en herstel, alsmede het bijhouden van de beveiligings configuratie, rapportage en correctie in azure-resources. |
+| [Endpoint &nbsp; Security &nbsp; (ES)](security-controls-v2-endpoint-security.md) | Endpoint Security heeft betrekking op besturings elementen in eindpunt detectie en-antwoord, met inbegrip van het gebruik van eindpunt detectie en-antwoorden (EDR) en anti-malware-service voor eind punten in azure-omgevingen. |
+| [Back-up &nbsp; en &nbsp; herstel &nbsp; (BR)](security-controls-v2-backup-recovery.md) | Back-up en herstel bestrijkt de controles om ervoor te zorgen dat de gegevens en configuratie back-ups in de verschillende service lagen worden uitgevoerd, gevalideerd en beveiligd. |
+| [Governance &nbsp; en &nbsp; strategie &nbsp; (GS)](security-controls-v2-governance-strategy.md) | Governance en strategie biedt richt lijnen voor het garanderen van een samenhangende beveiligings strategie en een gedocumenteerde governance aanpak om beveiligings verzekeringen te hand haven, inclusief het instellen van rollen en verantwoordelijkheden voor de verschillende Cloud beveiligings functies, uniforme technische strategie en ondersteunings beleid en-standaarden. |
 
 ## <a name="azure-security-benchmark-recommendations"></a>Aanbevelingen voor Azure Security Bench Mark
 
@@ -60,7 +58,11 @@ Elke aanbeveling bevat de volgende informatie:
 
 We stellen uw gedetailleerde feedback en actieve deelname aan de benchmark inspanningen van Azure Security toe. Als u de directe invoer van het Azure Security Bench Mark-team wilt opgeven, vult u het formulier in op https://aka.ms/AzSecBenchmark
 
+## <a name="download"></a>Downloaden
 
+U kunt de Azure Security-Bench Mark in een [Spreadsheet indeling](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Security%20Benchmark)downloaden.
+
+## <a name="next-steps"></a>Volgende stappen 
 - Zie het eerste beveiligings beheer: [netwerk beveiliging](security-control-network-security.md)
 - Lees de [Inleiding voor Azure Security Bench Mark](introduction.md)
-- Down load het [Excel-werk blad Azure Security Bench Mark v2](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Security%20Benchmark)
+- Meer informatie over de [basis beginselen van Azure-beveiliging](../fundamentals/index.yml)

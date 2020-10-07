@@ -6,20 +6,21 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: text-analytics
 ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: dc52586550f89ddae147d79458584331ed984eea
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 543a4d85982adadc86435819679351c8ffaa9814
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80876408"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779771"
 ---
 ### <a name="verify-the-language-detection-container-instance"></a>De Taaldetectie container instantie controleren
 
 1. Selecteer het tabblad **overzicht** en kopieer het IP-adres.
-1. Open een nieuw browser tabblad en voer het IP-adres in. Voer `http://<IP-address>:5000 (http://55.55.55.55:5000`bijvoorbeeld in). De start pagina van de container wordt weer gegeven, waarin u kunt zien dat de container wordt uitgevoerd.
+1. Open een nieuw browser tabblad en voer het IP-adres in. Voer bijvoorbeeld in `http://<IP-address>:5000 (http://55.55.55.55:5000` ). De start pagina van de container wordt weer gegeven, waarin u kunt zien dat de container wordt uitgevoerd.
 
     ![De start pagina van de container weer geven om te controleren of deze wordt uitgevoerd](../media/how-tos/container-instance/swagger-docs-on-container.png)
 
@@ -49,7 +50,7 @@ ms.locfileid: "80876408"
     }
     ```
 
-1. Stel **showStats** in `true`op.
+1. Stel **showStats** in op `true` .
 
 1. Selecteer **uitvoeren** om de sentiment van de tekst te bepalen.
 
@@ -127,4 +128,4 @@ ms.locfileid: "80876408"
     }
     ```
 
-We kunnen nu de documenten van de gegevens van de nettolading van de reactie aan de oorspronkelijke aanvraag Payload-documenten correleren `id`met hun overeenkomstige. Elk document wordt onafhankelijk behandeld met verschillende statistieken, zoals `characterCount` en `transactionCount`. Daarnaast heeft elk het resulterende document de `detectedLanguages` matrix met de `name`, `iso6391Name`en `score` voor elke gedetecteerde taal. Wanneer er meerdere talen worden gedetecteerd, `score` wordt de gebruikt om de meest waarschijnlijke taal te bepalen.
+We kunnen nu de documenten van de gegevens van de nettolading van de reactie aan de oorspronkelijke aanvraag Payload-documenten correleren met hun overeenkomstige `id` . Elk document wordt onafhankelijk behandeld met verschillende statistieken, zoals `characterCount` en `transactionCount` . Daarnaast heeft elk het resulterende document de `detectedLanguages` matrix met de `name` , `iso6391Name` en `score` voor elke gedetecteerde taal. Wanneer er meerdere talen worden gedetecteerd, `score` wordt de gebruikt om de meest waarschijnlijke taal te bepalen.

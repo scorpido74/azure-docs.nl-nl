@@ -5,15 +5,16 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: text-analytics
 ms.topic: include
 ms.date: 07/16/2020
 ms.author: aahi
-ms.openlocfilehash: 74586222bbd92b2d6182b34b4667cda0bc599b93
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: eedfe4f24797a9b564479b2f8d3f4d04b0751272
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91709306"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779200"
 ---
 > [!NOTE]
 > Gebruik de `domain=phi` para meter en model versie of hoger om de beschermde status informatie te detecteren (Phi) `2020-04-01` .
@@ -22,7 +23,7 @@ ms.locfileid: "91709306"
  
 De volgende entiteits categorieën worden geretourneerd wanneer u aanvragen naar het `/v3.1-preview.2/entities/recognition/pii` eind punt verzendt.
 
-| Categorie   | Subcategorie | Beschrijving                          | Model versie starten | Notities |
+| Categorie   | Subcategorie | Beschrijving                          | Model versie starten | Opmerkingen |
 |------------|-------------|--------------------------------------|------------------------|---|
 | Persoon     | N.v.t.         | Namen van personen.  | `2019-10-01`  | Ook geretourneerd met `domain=phi` . |
 | PersonType | N.v.t.         | Taak typen of-rollen die door een persoon worden beheerd. | `2020-02-01` | |
@@ -33,7 +34,7 @@ De volgende entiteits categorieën worden geretourneerd wanneer u aanvragen naar
 | Organisatie | Sporten | Sport organisaties. | `2020-04-01` |  |
 | Adres | N.v.t. | Volledige mailing adressen.  | `2020-04-01` | Ook geretourneerd met `domain=phi` . |
 | EU GPS-coördinaten | N.v.t. | GPS-coördinaten voor locaties binnen de Europese Unie.  | `2019-10-01` |  |
-| E-mail | N.v.t. | E-mail adressen. | `2019-10-01` | Ook geretourneerd met `domain=phi` .   |
+| Email | N.v.t. | E-mail adressen. | `2019-10-01` | Ook geretourneerd met `domain=phi` .   |
 | URL | N.v.t. | Url's naar websites. | `2019-10-01` | Ook geretourneerd met `domain=phi` . |
 | IP | N.v.t. | IP-adressen van het netwerk. | `2019-10-01` | Ook geretourneerd met `domain=phi` . |
 | DateTime | N.v.t. | Datums en tijden van de dag. | `2019-10-01` |  | 

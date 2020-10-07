@@ -1,21 +1,23 @@
 ---
 title: Knowledge bases migreren-QnA Maker
 description: Voor het migreren van een Knowledge Base moet u vanuit één kennis database exporteren en vervolgens importeren in een andere.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: how-to
 ms.date: 03/25/2020
-ms.openlocfilehash: 4148431ebb4de288ac517c7c006a925e36c5f460
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 9ba5f1d3d240867a8f6da52b9666c500c5b6446e
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542918"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777380"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>Een Knowledge Base migreren met behulp van exporteren/importeren
 
 Migratie is het proces van het maken van een nieuwe Knowledge Base op basis van een bestaande Knowledge Base. Dit kan verschillende oorzaken hebben:
 
 * back-up-en herstel proces
-* CI/CD-pijp lijn
+* CI/CD-pijplijn
 * regio's verplaatsen
 
 Voor het migreren van een Knowledge Base moet u vanuit een bestaande Knowledge Base exporteren en vervolgens importeren in een andere.

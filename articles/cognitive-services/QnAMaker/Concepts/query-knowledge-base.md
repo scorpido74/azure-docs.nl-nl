@@ -1,14 +1,16 @@
 ---
 title: Query's uitvoeren op de Knowledge Base-QnA Maker
 description: Een Knowledge Base moet worden gepubliceerd. Zodra de Knowledge Base is gepubliceerd, wordt deze in de runtime-Voorspellings eindpunt opgevraagd met behulp van de generateAnswer-API.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: cb777aa16fada50811cce1bbf49f28662c62b49b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e903714aab35de40c1179045505e1520c65b3ebc
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79220719"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776915"
 ---
 # <a name="query-the-knowledge-base-for-answers"></a>De Knowledge Base doorzoeken op antwoorden
 
@@ -29,7 +31,7 @@ Het proces wordt uitgelegd in de volgende tabel.
 |1|De client toepassing verzendt de query van de gebruiker naar de [GenerateAnswer-API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage).|
 |2|QnA Maker de gebruikers query met taal detectie, spellingen en woord afbreekers verwerkt.|
 |3|Deze voor verwerking wordt gebruikt om de query van de gebruiker voor de beste Zoek resultaten te wijzigen.|
-|4|Deze gewijzigde query wordt verzonden naar een Azure Cognitive Search-index, die het `top` aantal resultaten ontvangt. Als het juiste antwoord niet in deze resultaten voor komt, verhoogt u `top` de waarde enigszins. Over het algemeen is de waarde 10 `top` voor works in 90% van de query's.|
+|4|Deze gewijzigde query wordt verzonden naar een Azure Cognitive Search-index, die het `top` aantal resultaten ontvangt. Als het juiste antwoord niet in deze resultaten voor komt, verhoogt u de waarde `top` enigszins. Over het algemeen is de waarde 10 voor `top` Works in 90% van de query's.|
 |5|QnA Maker maakt gebruik van syntactische en semantische parametrisatie om de gelijkenis tussen de gebruikers query en de opgehaalde QnA-resultaten te bepalen.|
 |6|Het door de machine geleerde rangorde model maakt gebruik van de verschillende functies uit stap 5 om de betrouwbaarheids scores en de nieuwe volg orde van de rang schikking te bepalen.|
 |7|De nieuwe resultaten worden weer gegeven in de rang orde van de client toepassing.|
@@ -42,7 +44,7 @@ Wanneer u uw Knowledge Base publiceert, maakt de service een op REST gebaseerd H
 
 ### <a name="the-user-query-request-to-generate-an-answer"></a>De aanvraag van de gebruikers query voor het genereren van een antwoord
 
-Een gebruikers query is de vraag of de eind gebruiker de Knowledge Base vraagt, bijvoorbeeld `How do I add a collaborator to my app?`. De query is vaak in een natuurlijke taal of enkele tref woorden die de vraag vertegenwoordigen, zoals `help with collaborators`. De query wordt naar uw Knowledge Base verzonden vanuit een HTTP-aanvraag in uw client toepassing.
+Een gebruikers query is de vraag of de eind gebruiker de Knowledge Base vraagt, bijvoorbeeld `How do I add a collaborator to my app?` . De query is vaak in een natuurlijke taal of enkele tref woorden die de vraag vertegenwoordigen, zoals `help with collaborators` . De query wordt naar uw Knowledge Base verzonden vanuit een HTTP-aanvraag in uw client toepassing.
 
 ```json
 {
@@ -65,7 +67,7 @@ Gebruik [gespreks context](../how-to/metadata-generateanswer-usage.md#use-questi
 
 ### <a name="the-response-from-a-call-to-generate-an-answer"></a>Het antwoord van een aanroep om een antwoord te genereren
 
-Het HTTP-antwoord is het antwoord dat is opgehaald uit de Knowledge Base, op basis van de beste overeenkomst voor een bepaalde gebruikers query. Het antwoord bevat het antwoord en de Voorspellings Score. Als u wordt gevraagd om meer dan één bovenste antwoord met `top` de eigenschap, krijgt u meer dan een bovenste antwoord, elk met een score.
+Het HTTP-antwoord is het antwoord dat is opgehaald uit de Knowledge Base, op basis van de beste overeenkomst voor een bepaalde gebruikers query. Het antwoord bevat het antwoord en de Voorspellings Score. Als u wordt gevraagd om meer dan één bovenste antwoord met de `top` eigenschap, krijgt u meer dan een bovenste antwoord, elk met een score.
 
 ```json
 {

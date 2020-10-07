@@ -1,14 +1,16 @@
 ---
 title: Gesprekken met meerdere schakelingen-QnA Maker
 description: Gebruik prompts en context om de meerdere beurten, ook wel multi-turn genoemd, te beheren voor uw bot van de ene vraag naar de andere. Multi-turn is de mogelijkheid om een back-en-neer-conversatie te hebben waarbij de context van de vorige vraag de volgende vraag en het antwoord beïnvloedt.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: eff2eccac55bc05784636ecd9d2dfb784f86c4ef
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 57e878f11f5857f4c5b629a8069f64de259e8e7a
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322832"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777796"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Opvolgprompts gebruiken om meerdere beurten in een gesprek te maken
 
@@ -92,7 +94,7 @@ Selecteer **weergave opties**en selecteer vervolgens **context weer geven**. In 
 
 De context voor meerdere scha kelen wordt weer gegeven in de eerste kolom.
 
-:::image type="content" source="../media/conversational-context/surface-manual-pdf-follow-up-prompt.png" alt-text="Scherm afbeelding toont de context sectie gemarkeerd." lightbox="../media/conversational-context/surface-manual-pdf-follow-up-prompt.png":::
+:::image type="content" source="../media/conversational-context/surface-manual-pdf-follow-up-prompt.png" alt-text="Scherm afbeelding toont een voor beeld van de structuur in een gebruikers handleiding." lightbox="../media/conversational-context/surface-manual-pdf-follow-up-prompt.png":::
 
 In de voor gaande afbeelding geeft **#1** vetgedrukte tekst in de kolom op die de huidige vraag aangeeft. De bovenliggende vraag is het bovenste item in de rij. Eventuele vragen hieronder zijn de gekoppelde vraag-en-antwoord paren. Deze items kunnen worden geselecteerd, zodat u direct naar de andere context items kunt gaan.
 
@@ -167,7 +169,7 @@ Wanneer u een nieuw vraag-en-antwoord paar toevoegt aan de Knowledge Base, moet 
 
     De bovenliggende vraag geeft een nieuwe vraag weer als een van de opties.
 
-    :::image type="content" source="../media/conversational-context/child-prompt-created.png" alt-text="Scherm afbeelding toont de context kolom, voor beide vragen, geeft aan dat er een follow-up-prompt relatie is." lightbox="../media/conversational-context/child-prompt-created.png":::
+    :::image type="content" source="../media/conversational-context/child-prompt-created.png" alt-text="Scherm afbeelding toont een voor beeld van de structuur in een gebruikers handleiding." lightbox="../media/conversational-context/child-prompt-created.png":::
 
 1. Nadat u de opvolgings prompt hebt toegevoegd, selecteert u **opslaan en trainen** in de bovenste navigatie balk.
 

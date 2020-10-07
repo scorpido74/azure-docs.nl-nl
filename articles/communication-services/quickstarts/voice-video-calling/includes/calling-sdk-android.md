@@ -4,17 +4,17 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: aec9d2049a69aebc7102a70274e5fb2a3ef865a8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: bed2a4ccbe87aef9afa395ed789da393e885cc89
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91377104"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779239"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
 - Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 
-- Een geïmplementeerde Communication Services-resource. [Een Communication Services-resource maken](../../create-communication-resource.md).
+- Een gebruikte Communication Services-resource. [Een Communication Services maken](../../create-communication-resource.md).
 - A `User Access Token` om de aanroep-client in te scha kelen. Voor meer informatie over [het verkrijgen van een `User Access Token` ](../../access-tokens.md)
 - Optioneel: Voltooi de Snelstartgids om aan de [slag te gaan met het toevoegen van een oproep aan uw toepassing](../getting-started-with-calling.md)
 
@@ -48,7 +48,7 @@ Voeg vervolgens in het module niveau build. gradle de volgende regels toe aan de
 ```groovy
 dependencies {
     ...
-    implementation 'com.azure.android:azure-communication-calling:1.0.0-beta.1'
+    implementation 'com.azure.android:azure-communication-calling:1.0.0-beta.2'
     ...
 }
 
@@ -60,8 +60,8 @@ De volgende klassen en interfaces verwerken enkele van de belangrijkste functies
 
 | Naam                                  | Beschrijving                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
-| CallClient| De CallClient is het belangrijkste invoerpunt voor de clientbibliotheek voor aanroepen.|
-| CallAgent | De CallAgent wordt gebruikt om aanroepen te starten en te beheren. |
+| CallClient| De CallClient is het belangrijkste ingangspunt voor de clientbibliotheek voor oproepen.|
+| CallAgent | De CallAgent wordt gebruikt om oproepen te starten en te beheren. |
 | CommunicationUserCredential | De CommunicationUserCredential wordt als de tokenreferentie gebruikt om de CallAgent te instantiëren.|
 
 ## <a name="initialize-the-callclient-create-a-callagent-and-access-the-devicemanager"></a>Initialiseer de CallClient, maak een CallAgent en open de DeviceManager
@@ -84,7 +84,7 @@ DeviceManage deviceManager = await callClient.getDeviceManager().get();
 Als u een gesprek wilt maken en starten, moet u de-methode aanroepen `CallAgent.call()` en het van de genodigden opgeven `Identifier` .
 Als u lid wilt worden van een groeps oproep, moet u de methode aanroepen `CallAgent.join()` en de groupid opgeven. Groeps-Id's moeten de GUID-of UUID-indeling hebben.
 
-Aanroepen maken en starten is synchroon. Met het gesprek exemplaar kunt u zich abonneren op alle gebeurtenissen in de aanroep.
+Het maken van aanroepen en starten synchroon zijn. Met het gesprek exemplaar kunt u zich abonneren op alle gebeurtenissen in de aanroep.
 
 ### <a name="place-a-11-call-to-a-user"></a>Een 1:1-aanroep naar een gebruiker plaatsen
 Als u een aanroep naar een andere communicatie Services-gebruiker wilt plaatsen, roept u de- `call` methode aan `callAgent` en geeft u een object met de `communicationUserId` sleutel door.
@@ -109,7 +109,7 @@ Context appContext = this.getApplicationContext();
 Call groupCall = callAgent.call(participants, startCallOptions);
 ```
 
-### <a name="place-a-11-call-with-with-video-camera"></a>Een 1:1-oproep met met de video camera plaatsen
+### <a name="place-a-11-call-with-video-camera"></a>Een 1:1-oproep met video camera plaatsen
 > [!WARNING]
 > Momenteel wordt slechts één uitgaande lokale video stroom ondersteund om een gesprek met video te plaatsen die u nodig hebt om lokale camera's op te sommen met behulp van de `deviceManager` `getCameraList` API.
 Wanneer u een gewenste camera hebt geselecteerd, gebruikt u deze om een instantie te maken `LocalVideoStream` en door `videoOptions` te geven als een item in de `localVideoStream` matrix naar een `call` methode.
@@ -136,17 +136,17 @@ JoinCallOptions joinCallOptions = new JoinCallOptions();
 call = callAgent.join(context, groupCallContext, joinCallOptions);
 ```
 
-## <a name="push-notification"></a>Push melding
+## <a name="push-notifications"></a>Pushmeldingen
 
 ### <a name="overview"></a>Overzicht
-Mobiele push meldingen zijn de pop-upmelding die u op een mobiel apparaat ontvangt. Voor aanroepen worden we geadviseerd op VoIP (Voice-over Internet Protocol) Push meldingen. We bieden u de mogelijkheid om u te registreren voor push meldingen, om Push meldingen te verwerken en om de registratie van push berichten ongedaan te maken.
+Mobiele push meldingen zijn de pop-upmeldingen die u op mobiele apparaten ziet. We richten zich op de push meldingen van VoIP (Voice-over Internet Protocol). U kunt registreren voor push meldingen, Push meldingen verwerken en vervolgens de registratie van push meldingen ongedaan maken.
 
-### <a name="prerequisite"></a>Vereiste
+### <a name="prerequisites"></a>Vereisten
 
-In deze zelf studie wordt ervan uitgegaan dat u een Firebase-account hebt ingesteld met behulp van Cloud Messa ging (FCM) en dat uw Firebase Cloud Messa ging is verbonden met een exemplaar van de Azure notification hub (ANH). Zie [verbinding maken tussen Firebase en Azure](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started) voor meer informatie.
-Daarnaast wordt door de zelf studie aangenomen dat u Android Studio versie 3,6 of hoger gebruikt om uw toepassing te bouwen.
+U kunt deze sectie volt ooien door een Firebase-account te maken en Cloud Messa ging (FCM) in te scha kelen. Zorg ervoor dat Firebase Cloud Messa ging is verbonden met een Azure notification hub-exemplaar (ANH). Zie [verbinding maken tussen Firebase en Azure](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started) voor instructies.
+In deze sectie wordt ook ervan uitgegaan dat u Android Studio versie 3,6 of hoger gebruikt om uw toepassing te bouwen.
 
-Er is een set machtigingen vereist voor de Android-toepassing, zodat er meldingen kunnen worden ontvangen van FCM. Voeg in uw AndroidManifest.xml-bestand de volgende set machtigingen toe na het *<-manifest... >* of onder het *</application>* label
+Er is een set machtigingen vereist voor de Android-toepassing om meldings berichten te kunnen ontvangen van Firebase Cloud Messa ging. Voeg in uw `AndroidManifest.xml` bestand de volgende machtigingen toe na het * manifest<... >* of onder het *</application>* label
 
 ```XML
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -154,39 +154,41 @@ Er is een set machtigingen vereist voor de Android-toepassing, zodat er meldinge
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 ```
 
-### <a name="register-for-push-notification"></a>Registreren voor push melding
+### <a name="register-for-push-notifications"></a>Registreren voor push meldingen
 
-- Als u zich wilt registreren voor push meldingen, moet de toepassing registerPushNotification () aanroepen voor een *CallAgent* -exemplaar met een apparaat registratie token.
+Als u zich wilt registreren voor push meldingen, moet de toepassing `registerPushNotification()` een *CallAgent* -exemplaar aanroepen met een apparaat registratie token.
 
-- Het apparaatregistratie-Token ophalen
-1. Zorg ervoor dat u de Firebase-client bibliotheek toevoegt aan het bestand *Build. gradle* van uw toepassings module door de volgende regels toe te voegen in het gedeelte *afhankelijkheden* als dit nog niet is gebeurd:
+Om het token voor apparaatregistratie te verkrijgen, voegt u de Firebase-client bibliotheek toe aan het bestand *Build. gradle* van uw toepassings module door de volgende regels toe te voegen in de `dependencies` sectie als deze nog niet bestaat:
+
 ```
     // Add the client library for Firebase Cloud Messaging
     implementation 'com.google.firebase:firebase-core:16.0.8'
     implementation 'com.google.firebase:firebase-messaging:20.2.4'
 ```
 
-2. In het bestand *Build. gradle* van het project niveau, voegt u het volgende toe in de sectie *dependencies* als dit nog niet is gebeurd
+Voeg in het bestand *Build. gradle* van het project het volgende toe in de `dependencies` sectie als dit nog niet is gebeurd:
+
 ```
     classpath 'com.google.gms:google-services:4.3.3'
 ```
 
-3. Voeg de volgende invoeg toepassing toe aan het begin van het bestand als dit nog niet is gebeurd
+Voeg de volgende invoeg toepassing toe aan het begin van het bestand als dit nog niet is gebeurd:
+
 ```
 apply plugin: 'com.google.gms.google-services'
 ```
 
-4. Selecteer *Nu synchroniseren* in de werk balk
+Selecteer *Nu synchroniseren* in de werk balk. Voeg het volgende code fragment toe om het token voor apparaatregistratie op te halen dat door de Firebase Cloud Messa ging-client bibliotheek voor het exemplaar van de client toepassing wordt gegenereerd, en voeg de onderstaande import toe aan de koptekst van de hoofd activiteit voor het exemplaar. Ze zijn vereist voor het fragment om het token op te halen:
 
-5. Voeg het volgende code fragment toe om het apparaat-registratie token op te halen dat door de FCM-client bibliotheek voor het client toepassings exemplaar wordt gegenereerd 
-- Voeg deze import bewerking toe in de koptekst van de hoofd activiteit voor het exemplaar. Ze zijn vereist voor het fragment om het token op te halen
 ```
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 ```
-- Voeg dit fragment toe om het token op te halen
+
+Voeg dit fragment toe om het token op te halen:
+
 ```
         FirebaseInstanceId.getInstance().getInstanceId()
                 .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
@@ -204,7 +206,7 @@ import com.google.firebase.iid.InstanceIdResult;
                     }
                 });
 ```
-6. Registreer het token voor apparaatregistratie met de aanroepende Services-client bibliotheek voor inkomende oproepen push meldingen
+Registreer het token voor apparaatregistratie met de aanroepende Services-client bibliotheek voor push meldingen voor inkomende oproepen:
 
 ```java
 String deviceRegistrationToken = "some_token";
@@ -218,10 +220,9 @@ catch(Exception e) {
 
 ### <a name="push-notification-handling"></a>Afhandeling van push meldingen
 
-- Als u push meldingen voor binnenkomende oproepen wilt ontvangen, roept u *handlePushNotification ()* aan voor een *CallAgent* -exemplaar met een payload.
+Als u push meldingen voor inkomende oproepen wilt ontvangen, roept u *handlePushNotification ()* aan voor een *CallAgent* -exemplaar met een payload.
 
-1. Als u de payload van FCM wilt ophalen, kunt u de volgende stappen uitvoeren:
-- Maak een nieuwe service (bestand > nieuwe > service >-service) die de klasse *FirebaseMessagingService* Firebase-client bibliotheek uitbreidt en zorg ervoor dat u de *onMessageReceived* -methode overschrijft. Deze methode is de gebeurtenis-handler die wordt aangeroepen wanneer FCM de push melding naar de toepassing levert.
+Als u de payload van Firebase Cloud Messa ging wilt verkrijgen, begint u met het maken van een nieuwe service (bestand > nieuwe > service >-service) die de klasse *FirebaseMessagingService* Firebase-client bibliotheek uitbreidt en de methode overschrijft `onMessageReceived` . Deze methode is de gebeurtenis-handler die wordt aangeroepen wanneer Firebase Cloud Messa ging de push melding naar de toepassing levert.
 
 ```java
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
@@ -239,7 +240,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     }
 }
 ```
-- Voeg ook de volgende service definitie toe aan het AndroidManifest.xml-bestand in de- <application> tag.
+Voeg de volgende service definitie toe aan het `AndroidManifest.xml` bestand in de- <application> Tag:
 
 ```
         <service
@@ -251,7 +252,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         </service>
 ```
 
-- Zodra de payload is opgehaald, kan deze worden door gegeven aan de *communicatie Services* -client bibliotheek die moet worden verwerkt door de methode *handlePushNotification* aan te roepen voor een *CallAgent* -exemplaar.
+Zodra de payload is opgehaald, kan deze worden door gegeven aan de communicatie Services-client bibliotheek om te worden verwerkt door de `handlePushNotification` methode aan te roepen voor een `CallAgent` exemplaar.
 
 ```java
 java.util.Map<String, String> pushNotificationMessageDataFromFCM = remoteMessage.getData();
@@ -262,11 +263,12 @@ catch(Exception e) {
     System.out.println("Something went wrong while handling the Incoming Calls Push Notifications.");
 }
 ```
+
 Wanneer de verwerking van het push meldings bericht is geslaagd en de handlers voor alle gebeurtenissen correct zijn geregistreerd, wordt de toepassing geringt.
 
-### <a name="unregister-push-notification"></a>Registratie van push melding opheffen
+### <a name="unregister-push-notifications"></a>Registratie van push meldingen ongedaan maken
 
-- Toepassingen kunnen de registratie van push meldingen op elk gewenst moment ongedaan maken. Roep de `unregisterPushNotification()` methode op callAgent aan om de registratie ongedaan te maken.
+Toepassingen kunnen de registratie van push meldingen op elk gewenst moment ongedaan maken. Roep de `unregisterPushNotification()` methode op callAgent aan om de registratie ongedaan te maken.
 
 ```java
 try {
@@ -281,25 +283,31 @@ catch(Exception e) {
 U hebt toegang tot de oproep eigenschappen en kunt verschillende bewerkingen uitvoeren tijdens een aanroep om instellingen te beheren die betrekking hebben op video en audio.
 
 ### <a name="call-properties"></a>Eigenschappen van oproep
-* Haal de unieke ID op voor deze aanroep.
+
+De unieke ID voor deze aanroep ophalen:
+
 ```java
 String callId = call.getCallId();
 ```
 
-* Voor meer informatie over andere deel nemers in de verzameling aanroep inspectie `remoteParticipant` op het `call` exemplaar:
+Voor meer informatie over andere deel nemers in de verzameling aanroep inspectie `remoteParticipant` op het `call` exemplaar:
+
 ```java
 List<RemoteParticipant> remoteParticipants = call.getRemoteParticipants();
 ```
 
-* De identiteit van de aanroeper als de aanroep inkomend is.
+De identiteit van de aanroeper als de aanroep inkomend is:
+
 ```java
 CommunicationIdentifier callerId = call.getCallerId();
 ```
 
-* De status van de aanroep ophalen.
+De status van de aanroep ophalen: 
+
 ```java
 CallState callState = call.getState();
 ```
+
 Er wordt een teken reeks geretourneerd die de huidige status van een aanroep vertegenwoordigt:
 * Geen '-initiële gespreks status
 * ' Binnenkomend ': geeft aan dat de aanroep inkomend moet worden geaccepteerd of geweigerd
@@ -312,39 +320,45 @@ Er wordt een teken reeks geretourneerd die de huidige status van een aanroep ver
 * ' Verbinding verbroken '-laatste gespreks status
 
 
-* Inspecteer de eigenschap om te zien waarom een aanroep is beëindigd `callEndReason` .
-Het bevat code/subcode (TODO-koppeling naar documentatie)
+Inspecteer de eigenschap om te zien waarom een aanroep is beëindigd `callEndReason` . Het bevat code/subcode: 
+
 ```java
 CallEndReason callEndReason = call.getCallEndReason();
 int code = callEndReason.getCode();
 int subCode = callEndReason.getSubCode();
 ```
 
-* Als u wilt zien of de huidige aanroep een binnenkomende oproep is, controleert u de `isIncoming` eigenschap:
+Als u wilt zien of de huidige aanroep een binnenkomende oproep is, controleert u de `isIncoming` eigenschap:
+
 ```java
 boolean isIncoming = call.getIsIncoming();
 ```
 
-*  Als u wilt zien of de huidige microfoon is gedempt, inspecteert u de `muted` eigenschap:
+Als u wilt zien of de huidige microfoon is gedempt, inspecteert u de `muted` eigenschap:
+
 ```java
 boolean muted = call.getIsMicrophoneMuted();
 ```
 
-* Als u actieve video stromen wilt controleren, controleert u de `localVideoStreams` verzameling:
+Als u actieve video stromen wilt controleren, controleert u de `localVideoStreams` verzameling:
+
 ```java
 List<LocalVideoStream> localVideoStreams = call.getLocalVideoStreams();
 ```
 
 ### <a name="mute-and-unmute"></a>Dempen en dempen opheffen
+
 U kunt de `mute` en asynchrone api's gebruiken om het lokale eind punt te dempen of te dempen `unmute` :
+
 ```java
 call.mute().get();
 call.unmute().get();
 ```
 
 ### <a name="start-and-stop-sending-local-video"></a>Verzenden van lokale video starten en stoppen
-Als u een video wilt starten, moet u camera's opsommen met behulp `getCameraList` van de API voor het `deviceManager` object.
-Maak vervolgens een nieuw exemplaar van `LocalVideoStream` het door geven van de gewenste camera en geef deze door `startVideo` als argument in de API.
+
+Als u een video wilt starten, moet u camera's opsommen met behulp `getCameraList` van de API voor het `deviceManager` object. Maak vervolgens een nieuw exemplaar van `LocalVideoStream` het door geven van de gewenste camera en geef deze door `startVideo` als een argument in de API:
+
 ```java
 VideoDeviceInfo desiredCamera = <get-video-device>;
 Context appContext = this.getApplicationContext();
@@ -355,11 +369,13 @@ startVideoFuture.get();
 ```
 
 Zodra u de video hebt verzonden, `LocalVideoStream` wordt een exemplaar toegevoegd aan de `localVideoStreams` verzameling op het aanroep exemplaar.
+
 ```java
 currentVideoStream == call.getLocalVideoStreams().get(0);
 ```
 
 Als u lokale video wilt stoppen, geeft u het `localVideoStream` exemplaar dat beschikbaar is in de `localVideoStreams` verzameling door.
+
 ```java
 call.stopVideo(localVideoStream).get();
 ```
@@ -383,7 +399,7 @@ List<RemoteParticipant> remoteParticipants = call.getRemoteParticipants(); // [r
 Aan alle gegeven externe deel nemers is een set eigenschappen en verzamelingen gekoppeld:
 
 * De id voor deze externe deel nemer ophalen.
-De identiteit is een van de typen ' identifier '
+Identiteit is een van de typen ' identifier '
 ```java
 CommunicationIdentifier participantIdentity = remoteParticipant.getIdentifier();
 ```
@@ -452,7 +468,9 @@ MediaStreamType streamType = remoteParticipantStream.getType(); // of type Media
 ```
  
 Als u een `RemoteVideoStream` van een externe deel nemer wilt renderen, moet u zich abonneren op een `OnVideoStreamsUpdated` gebeurtenis.
-De wijziging van `isAvailable` eigenschap in waar geeft aan dat de externe deel nemer momenteel een stroom verzendt zodra dat gebeurt, een nieuw exemplaar van een maakt `Renderer` , vervolgens een nieuwe `RendererView` met asynchrone API maakt `createView` en `view.target` overal in de gebruikers interface van uw toepassing is gekoppeld.
+
+In het geval geeft de eigenschap wijzigen `isAvailable` in waar aan dat de deel nemer momenteel een stroom verzendt. Als dit het geval is, maakt u een nieuw exemplaar van a en `Renderer` vervolgens maakt u een nieuwe sessie `RendererView` met asynchrone `createView` API en koppelt u deze `view.target` overal in de gebruikers interface van uw toepassing.
+
 Wanneer de beschik baarheid van een externe stroom verandert, kunt u ervoor kiezen om de volledige renderer te vernietigen, een specifieke `RendererView` of te blijven gebruiken, maar dit resulteert in het weer geven van een leeg video frame.
 
 ```java

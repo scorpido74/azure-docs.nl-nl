@@ -1,14 +1,16 @@
 ---
 title: Problemen oplossen-QnA Maker
 description: De lijst met alle meest gestelde vragen met betrekking tot de QnA Maker-service helpt u de service sneller en met betere resultaten te gebruiken.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: troubleshooting
 ms.date: 03/25/2020
-ms.openlocfilehash: 50823e29eb5c276c00a1c8f0e3227ec67999a703
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 06747e2d053171749bfc5c9c394dab3d48674d67
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502576"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776235"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>Problemen oplossen voor QnA Maker
 
@@ -19,7 +21,7 @@ De lijst met alle meest gestelde vragen met betrekking tot de QnA Maker-service 
 ## <a name="manage-predictions"></a>Voor spellingen beheren
 
 <details>
-<summary><b>Hoe kan ik de prestaties van de door Voer voor query voorspellingen verbeteren?</b></summary>
+<summary><b>Hoe kan ik de doorvoerprestaties voor queryvoorspellingen verbeteren?</b></summary>
 
 **Antwoord**: problemen met doorvoer prestaties geven aan dat u de schaal van uw app service en uw Cognitive Search moet opschalen. Overweeg een replica toe te voegen aan uw Cognitive Search om de prestaties te verbeteren.
 

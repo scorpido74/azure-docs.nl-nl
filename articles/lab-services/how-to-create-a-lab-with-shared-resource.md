@@ -5,12 +5,12 @@ author: emaher
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: 9cb5698f95aa220208fb02a35a52ff5363a173ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d6610a2f69b6da34972510a5619c6d16a605289
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85443363"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776439"
 ---
 # <a name="how-to-create-a-lab-with-a-shared-resource-in-azure-lab-services"></a>Een lab maken met een gedeelde bron in Azure Lab Services
 
@@ -31,6 +31,20 @@ De gedeelde resource kan worden uitgevoerd op een virtuele machine of in een doo
 Het diagram toont ook een netwerk beveiligings groep (NSG) die kan worden gebruikt om verkeer te beperken dat afkomstig is van de student-VM.  U kunt bijvoorbeeld een beveiligings regel schrijven die toeneemt dat verkeer van de IP-adressen van de student-VM alleen toegang heeft tot één gedeelde bron en niets anders.  Zie [netwerk beveiligings groep beheren](../virtual-network/manage-network-security-group.md#work-with-security-rules)voor meer informatie over het instellen van beveiligings regels. Als u de toegang tot een gedeelde bron wilt beperken tot een specifiek Lab, haalt u het IP-adres voor het lab op uit de [Lab-instellingen van het lab-account](manage-labs.md#view-labs-in-a-lab-account) en stelt u een regel voor binnenkomende verbindingen in om alleen toegang vanaf dat IP-adres toe te staan.  Vergeet niet om poorten 49152 tot 65535 voor dat IP-adres toe te staan.  U kunt desgewenst het privé-IP-adres van de Vm's van de student vinden met behulp van de [pagina groep van virtuele machines](how-to-set-virtual-machine-passwords.md).
 
 Als uw gedeelde resource een Azure virtual machine is die de benodigde software uitvoert, moet u mogelijk de standaard firewall regels voor de virtuele machine wijzigen.
+
+### <a name="tips-for-shared-resources---license-server"></a>Tips voor gedeelde bronnen-licentie server
+Een van de meest voorkomende gedeelde bronnen is een licentie server. Hier volgen enkele tips voor een geslaagde instelling.
+#### <a name="server-region"></a>Server regio
+De licentie server moet zijn verbonden met het virtuele netwerk dat is gekoppeld aan het lab, dus de licentie server moet zich in dezelfde regio bevinden als het lab-account.
+
+#### <a name="static-private-ip-and-mac-address"></a>Statisch particulier IP-en MAC-adres
+Virtuele machines hebben standaard een dynamisch privé-IP-adres [voordat u een software instelt voor het instellen van de privé-IP in statisch](https://docs.microsoft.com/azure/virtual-network/virtual-networks-static-private-ip-arm-pportal). Hiermee stelt u het privé-IP en het MAC-adres in op statisch.  
+
+#### <a name="control-access"></a>Toegang beheren
+Het beheren van de toegang tot de licentie server is essentieel.  Wanneer de virtuele machine eenmaal is ingesteld, is de toegang nog steeds nodig voor onderhoud, probleem oplossing en bijwerken.  Hier volgen enkele verschillende manieren om dit te doen.
+- [JIT-toegang (just-in-time) instellen in Azure Security Center.](https://docs.microsoft.com/azure/security-center/security-center-just-in-time?tabs=jit-config-asc%2Cjit-request-asc)
+- [Instellen van een netwerk beveiligings groep om de toegang te beperken.](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview)
+- [Setup Bastion om beveiligde toegang tot de licentie server toe te staan.](https://azure.microsoft.com/services/azure-bastion/)
 
 ## <a name="lab-account"></a>Lab-account
 
