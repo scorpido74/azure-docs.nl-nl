@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 08/04/2020
 ms.custom: seodec18, mvc
 ms.openlocfilehash: ace1030923ea226376369941badafafa662d25ce
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88031780"
 ---
 # <a name="quickstart-create-an-azure-container-registry-using-the-azure-portal"></a>Quickstart: Een Azure-containerregister maken met de Azure-portal
@@ -31,7 +31,7 @@ Selecteer **Een resource maken** > **Containers** > **Container Registry**.
 
 Voer op het tabblad **Basisbeginselen** de waarden in voor **Resourcegroep** en **Registernaam**. De registernaam moet uniek zijn binnen Azure en mag 5 tot 50 alfanumerieke tekens bevatten. Maak voor deze snelstart een nieuwe resourcegroep met de naam `myResourceGroup` in locatie `West US`. Kies voor **SKU** de optie Basic.
 
-:::image type="content" source="media/container-registry-get-started-portal/qs-portal-03.png" alt-text="Containerregister maken in de portal":::
+:::image type="content" source="media/container-registry-get-started-portal/qs-portal-03.png" alt-text="Navigeren naar containerregister in portal":::
 
 Accepteer de standaardwaarden voor de overige instellingen. Selecteer vervolgens **Controleren en maken**. Nadat u de instellingen hebt bekeken, selecteert u **Maken**.
 
@@ -39,7 +39,7 @@ In deze quickstart maakt u een *Basic*-register. Dit is een voor kosten geoptima
 
 Als het bericht **Implementatie voltooid** wordt weergegeven, selecteert u het containerregister in de portal. 
 
-:::image type="content" source="media/container-registry-get-started-portal/qs-portal-05.png" alt-text="Overzicht van containerregisters in de portal":::
+:::image type="content" source="media/container-registry-get-started-portal/qs-portal-05.png" alt-text="Navigeren naar containerregister in portal":::
 
 Noteer de registernaam en de waarde van de **aanmeldingsserver**. U gebruikt deze waarden in de volgende stappen wanneer u installatiekopieën pusht en pullt met Docker.
 
@@ -65,7 +65,7 @@ De opdracht retourneert `Login Succeeded` nadat deze is voltooid.
 
 Als u de installatiekopieën in uw register wilt weergeven, gaat u naar het register in de portal en selecteert u **Opslagplaatsen**. Selecteer vervolgens de opslagplaats **hello-world** die u met `docker push` hebt gemaakt.
 
-:::image type="content" source="media/container-registry-get-started-portal/qs-portal-09.png" alt-text="Lijst met containerinstallatiekopieën maken in de portal":::
+:::image type="content" source="media/container-registry-get-started-portal/qs-portal-09.png" alt-text="Navigeren naar containerregister in portal":::
 
 Wanneer u de opslagplaats **hello-world** selecteert, ziet u de met `v1` getagde installatiekopie bij **Tags**.
 
@@ -75,7 +75,7 @@ Wanneer u de opslagplaats **hello-world** selecteert, ziet u de met `v1` getagde
 
 Als u uw resources wilt opschonen, navigeert u naar de resourcegroep **myResourceGroup** in de portal. Wanneer de resourcegroep is geladen, klikt u op **Resourcegroep verwijderen** om de resourcegroep, het containerregister en alle daarin opgeslagen containerinstallatiekopieën te verwijderen.
 
-:::image type="content" source="media/container-registry-get-started-portal/qs-portal-08.png" alt-text="Een resourcegroep verwijderen in de portal":::
+:::image type="content" source="media/container-registry-get-started-portal/qs-portal-08.png" alt-text="Navigeren naar containerregister in portal":::
 
 
 ## <a name="next-steps"></a>Volgende stappen

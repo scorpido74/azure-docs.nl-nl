@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.service: azure-functions
 ms.custom: subject-armqs
 ms.openlocfilehash: 362ff5cd59982c1d848ed59af8381090344f5c5e
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88642262"
 ---
 # <a name="quickstart-create-and-deploy-azure-functions-resources-from-an-arm-template"></a>Quickstart: Azure Functions-resources maken en implementeren vanuit een ARM-sjabloon
@@ -117,7 +117,7 @@ Kopieer in de uitvoer de URL van de HTTP-trigger. U kunt dit gebruiken om de fun
 
 1. Nadat de publicatie is voltooid, kopieert u de **Site-URL**.
 
-    :::image type="content" source="media/functions-create-first-function-arm/publish-summary-site-url.png" alt-text="De site-URL kopiëren vanuit het publicatieoverzicht":::
+    :::image type="content" source="media/functions-create-first-function-arm/publish-summary-site-url.png" alt-text="Een bestaand publicatiedoel kiezen":::
 
 1. Voeg het pad `/api/<FUNCTION_NAME>?name=Functions` toe, waarbij `<FUNCTION_NAME>` de naam van uw functie is. De URL die uw HTTP-triggerfunctie aanroept, heeft de volgende indeling:
 

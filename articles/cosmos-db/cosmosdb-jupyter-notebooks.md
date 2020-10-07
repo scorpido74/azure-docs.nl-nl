@@ -7,10 +7,10 @@ ms.date: 05/19/2020
 author: deborahc
 ms.author: dech
 ms.openlocfilehash: 0299ab1e76e742adb8d2653b8b5d6923aff2f11f
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88588152"
 ---
 # <a name="built-in-jupyter-notebooks-support-in-azure-cosmos-db-preview"></a>Ingebouwde ondersteuning voor Jupyter Notebooks in Azure Cosmos DB (preview)
@@ -23,7 +23,7 @@ Ingebouwde Jupyter Notebooks van Azure Cosmos DB worden direct in Azure Portal e
 
 Azure Cosmos DB ondersteunt zowel C# -als Python-notebooks voor alle API's, waaronder Core (SQL), Cassandra, Gremlin, Table en API voor MongoDB. De notebook bevat ingebouwde opdrachten en functies waarmee u eenvoudig Azure Cosmos DB-resources maakt, gegevens kunt uploaden en uw gegevens in Azure Cosmos DB kunt opvragen en visualiseren. 
 
-:::image type="content" source="./media/cosmosdb-jupyter-notebooks/jupyter-notebooks-portal.png" alt-text="Ondersteuning voor Jupyter Notebooks in Azure Cosmos DB":::
+:::image type="content" source="./media/cosmosdb-jupyter-notebooks/jupyter-notebooks-portal.png" alt-text="Visualisaties van Jupyter Notebooks in Azure Cosmos DB":::
 
 ## <a name="benefits-of-jupyter-notebooks"></a>Voordelen van Jupyter Notebooks
 

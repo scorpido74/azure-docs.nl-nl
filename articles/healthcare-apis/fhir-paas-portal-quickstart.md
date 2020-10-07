@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 03/15/2020
 ms.author: matjazl
 ms.openlocfilehash: 8c0448d31cd89e2ca969b81361b30bac3f9610e9
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87851933"
 ---
 # <a name="quickstart-deploy-azure-api-for-fhir-using-azure-portal"></a>Quickstart: De Azure-API voor FHIR implementeren met de Azure-portal
@@ -37,13 +37,13 @@ U kunt de Azure-API voor FHIR vinden door ‘FHIR’ in het zoekvak te typen:
 
 Selecteer **Maken** om een nieuw ‘Azure-API voor FHIR’-account te maken:
 
-:::image type="content" source="media/quickstart-paas-portal/portal-create-healthcare-apis.png" alt-text="Maak een ‘Azure-API voor FHIR’-account":::
+:::image type="content" source="media/quickstart-paas-portal/portal-create-healthcare-apis.png" alt-text="Zoek naar Healthcare API’s":::
 
 ## <a name="enter-account-details"></a>Voer accountgegevens in
 
 Selecteer een bestaande resourcegroep of maak een nieuwe, kies een naam voor het account en klik tot slot op **Controleren en maken**:
 
-:::image type="content" source="media/quickstart-paas-portal/portal-new-healthcareapi-details.png" alt-text="Nieuwe Healthcare API-gegevens":::
+:::image type="content" source="media/quickstart-paas-portal/portal-new-healthcareapi-details.png" alt-text="Zoek naar Healthcare API’s":::
 
 Bevestig de aanmaak en wacht tot de FHIR-API is geïmplementeerd.
 
@@ -51,7 +51,7 @@ Bevestig de aanmaak en wacht tot de FHIR-API is geïmplementeerd.
 
 U kunt klikken op **Volgende: Aanvullende instellingen** om de verificatie-instellingen weer te geven. De standaardconfiguratie voor de Azure API voor FHIR is om [Azure RBAC te gebruiken voor het toewijzen van gegevensvlakrollen](configure-azure-rbac.md). In deze modus wordt de Autoriteit voor de FHIR-service ingesteld op de Azure Active Directory-tenant van het abonnement:
 
-:::image type="content" source="media/rbac/confirm-azure-rbac-mode-create.png" alt-text="Instellingen Standaardverificatie":::
+:::image type="content" source="media/rbac/confirm-azure-rbac-mode-create.png" alt-text="Zoek naar Healthcare API’s":::
 
 Het invoerveld voor toegestane object-id's wordt grijs weergegeven, aangezien we in dit geval Azure RBAC gebruiken voor het configureren van roltoewijzingen.
 

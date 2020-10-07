@@ -4,10 +4,10 @@ description: In deze quickstart volgt u de stappen om uw eerste query vanuit de 
 ms.date: 08/10/2020
 ms.topic: quickstart
 ms.openlocfilehash: 4d68366005ad6379669d29fb8264f78d1b8f4972
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88056377"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Quickstart: Uw eerste Resource Graph-query uitvoeren met Azure Resource Graph Explorer
@@ -94,7 +94,7 @@ Als u voorbeelden van Resource Graph-query's wilt bekijken of als u wilt weten h
 
 - [Resource Graph Explorer-voorbeelddashboard 2](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-2/resourcegraphexplorer-sample-2.json)
 
-  :::image type="content" source="./media/arge-sample2-small.png" alt-text="Voorbeeldafbeelding van voorbeelddashboard 2" lightbox="./media/arge-sample2-large.png":::
+  :::image type="content" source="./media/arge-sample2-small.png" alt-text="Voorbeeldafbeelding van voorbeelddashboard 1" lightbox="./media/arge-sample2-large.png":::
 
 > [!NOTE]
 > De aantallen en grafieken in de bovenstaande schermafbeeldingen van de voorbeelddashboards kunnen per Azure-omgeving verschillen.

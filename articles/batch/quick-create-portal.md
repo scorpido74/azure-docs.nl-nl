@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 08/17/2020
 ms.custom: mvc
 ms.openlocfilehash: cf65a681764a848f8132ec44b8ba313ef1a83235
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88511368"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Snelstartgids: Uw eerste Batch-taak uitvoeren in Azure Portal
@@ -97,7 +97,7 @@ Herhaal de bovenstaande stappen om een tweede taak te maken. Voer een andere **T
 
 De voorbeeldtaken die u hebt gemaakt, worden in een paar minuten voltooid. Als u de uitvoer van een voltooide taak wilt weergeven, selecteert u **Bestanden op knooppunt**. Selecteer het bestand `stdout.txt` om de standaarduitvoer van de taak weer te geven. De inhoud ziet er ongeveer als volgt uit:
 
-:::image type="content" source="media/quick-create-portal/task-output.png" alt-text="Schermopname van de uitvoer van een voltooide taak.":::
+:::image type="content" source="media/quick-create-portal/task-output.png" alt-text="Schermopname van de Batch-service in Azure Marketplace.":::
 
 De inhoud geeft de variabelen voor de Azure Batch-omgeving weer die zijn ingesteld op het knooppunt. Wanneer u uw eigen Batch-taken en taken maakt, kunt u naar deze omgevingsvariabelen verwijzen in opdrachtregels voor taken, en in de apps en scripts die met de opdrachtregels worden uitgevoerd.
 

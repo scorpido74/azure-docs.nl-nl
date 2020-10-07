@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.service: azure-spatial-anchors
 ms.custom: has-adal-ref
 ms.openlocfilehash: 2df66979d1e8f400f2630f5e531cd201244fdc6d
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87809983"
 ---
 # <a name="quickstart-create-an-ios-app-with-azure-spatial-anchors-in-either-swift-or-objective-c"></a>Quickstart: een iOS-app maken met Azure Spatial Anchors, in Swift of Objective-C
@@ -91,7 +91,7 @@ open ./SampleObjC.xcworkspace
 
 ## <a name="configure-account-identifier-and-key"></a>Account-id en -sleutel configureren
 
-De volgende stap is om de app te configureren voor gebruik van uw account-id en accountsleutel. U hebt ze naar een teksteditor gekopieerd bij het [instellen van de Spatial Anchors-resource](#create-a-spatial-anchors-resource).
+De volgende stap is om de app te configureren om uw account-id en accountsleutel te gebruiken. U hebt ze naar een teksteditor gekopieerd bij het [instellen van de Spatial Anchors-resource](#create-a-spatial-anchors-resource).
 
 # <a name="swift"></a>[Swift](#tab/openproject-swift)
 
