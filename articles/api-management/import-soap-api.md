@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: 583179c4678b43bef25174835ec2701d571b37b6
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 3ceaa357150fe0c4d26eeedc6821761d2eb00106
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905647"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357961"
 ---
 # <a name="import-soap-api"></a>SOAP API importeren
 
@@ -45,7 +45,7 @@ Voltooi de volgende quickstart: [Een Azure API Management-exemplaar maken](get-s
 3. Geef in de **WSDL-specificatie** de URL op waar de SOAP API is opgeslagen.
 4. Het **SOAP pass-through**-keuzerondje is standaard geselecteerd. Met deze selectie zal de API worden weergegeven als SOAP. De consument moet SOAP-regels gebruiken. Als u van de API een REST API wilt maken, volg dan de stappen in [Import a SOAP API and convert it to REST](restify-soap-api.md) (Een SOAP API importeren en converteren naar REST).
 
-    ![Pass-through](./media/import-soap-api/pass-through.png)
+    ![Schermopname toont het dialoogvenster Maken op basis van een W S D L waarin u een W S D L-specificatie kunt invoeren.](./media/import-soap-api/pass-through.png)
 5. Druk op tab.
 
     De volgende velden worden gevuld met de gegevens van de SOAP API: Weergavenaam, Naam, Beschrijving.

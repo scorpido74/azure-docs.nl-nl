@@ -4,17 +4,19 @@ ms.service: spatial-anchors
 ms.topic: include
 ms.date: 8/27/2020
 ms.author: rgarcia
-ms.openlocfilehash: 8e3f58a5a88495263396c4e915a6363ad065c202
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: efd5ff494620d4fab3fb904d9bcf054b57a3290b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89570254"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358756"
 ---
 ## <a name="android"></a>[Android](#tab/Android)
 
 Het Java-voorbeeld voor Android biedt ondersteuning voor het delen van gegevens op meerdere apparaten.
 Open het bestand `SharedActivity.java` in de map met voorbeelden in Android Studio. Voer de URL in die u in de vorige stap hebt verkregen (via uw implementatie van de ASP.NET web-app in Azure) als de waarde voor `SharingAnchorsServiceUrl` in het `SharedActivity.java`-bestand. Vervang de `index.html` in de URL door `api/anchors`. Dit ziet er als volgt uit: `https://<app_name>.azurewebsites.net/api/anchors`.
+
+[!INCLUDE [Run shared sample](spatial-anchors-deploy-sample.md)]
 
 [!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 
@@ -23,12 +25,16 @@ Open het bestand `SharedActivity.java` in de map met voorbeelden in Android Stud
 Het Objective-C-voorbeeld voor iOS biedt ondersteuning voor het delen van gegevens op meerdere apparaten.
 Open het bestand `SharedDemoViewController.m` in de map met voorbeelden. Voer de URL in die u in de vorige stap hebt verkregen (via uw implementatie van de ASP.NET web-app in Azure) als de waarde voor `SharingAnchorsServiceUrl` in het `SharedDemoViewController.m`-bestand. Vervang de `index.html` in de URL door `api/anchors`. Dit ziet er als volgt uit: `https://<app_name>.azurewebsites.net/api/anchors`.
 
+Implementeer de app op uw apparaat. Nadat de app is gestart, kiest u de optie **Tik om de gedeelde demo te starten**. Volg de instructies in de app. U kunt **Tik selecteren om het ankernummer te vinden** of **Tik om een anker te maken en op te slaan in de service**.
+
 [!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 
 ## <a name="xamarin"></a>[Xamarin](#tab/Xamarin)
 
 De Xamarin-voorbeelden voor zowel Android als iOS bieden ondersteuning voor het delen van gegevens op meerdere apparaten.
 Open het bestand `AccountDetails.cs` in de map met voorbeelden. Voer de URL in die u in de vorige stap hebt verkregen (via uw implementatie van de ASP.NET web-app in Azure) als de waarde voor `AnchorSharingServiceUrl` in het `AccountDetails.cs`-bestand. Vervang de `index.html` in de URL door `api/anchors`. Dit ziet er als volgt uit: `https://<app_name>.azurewebsites.net/api/anchors`.
+
+[!INCLUDE [Run shared sample](spatial-anchors-deploy-sample.md)]
 
 [!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 

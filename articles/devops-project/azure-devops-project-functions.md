@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 79e2726e26ff7883d5022e57fff8fa8961af2c98
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 3277fefb5615fd492b2859b741ef8e6f991eaf23
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163676"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355471"
 ---
 # <a name="deploy-to-azure-functions-with-devops-starter"></a>Implementeren naar Azure Functions met DevOps Starter
 
@@ -95,7 +95,7 @@ DevOps Starter configureert automatisch een Azure-CI/CD-pijplijn in uw Azure Dev
 
 1. Klik op de hyperlink onder **Build**. Op een tabblad in de browser wordt de build-pijplijn voor het nieuwe project weergegeven.
 
-    ![Ontwikkelen](_img/azure-devops-project-functions/build.png)
+    ![Schermopname van het DevOps Starter-dashboard in de Azure-portal met een pijl die naar een koppeling verwijst onder Build in de CI-/CD-pijplijn.](_img/azure-devops-project-functions/build.png)
 
 1. Selecteer **Bewerken**. In dit deelvenster kunt u de verschillende taken voor uw build-pijplijn onderzoeken. De build voert verschillende taken uit, zoals het ophalen van broncodes uit de Git-opslagplaats, het bouwen van de toepassing, het uitvoeren van eenheidstesten en het publiceren van uitvoer die wordt gebruikt voor implementaties.
 

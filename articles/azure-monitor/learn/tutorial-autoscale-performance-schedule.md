@@ -8,12 +8,12 @@ ms.date: 12/11/2017
 ms.author: ancav
 ms.custom: mvc
 ms.subservice: autoscale
-ms.openlocfilehash: 8a55ab9b6b87a379fbdebcead4467ec47507d67a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8853a153450a07105ed4bac13de0da6cea95ce2a
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327511"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356346"
 ---
 # <a name="create-an-autoscale-setting-for--azure-resources-based-on-performance-data-or-a-schedule"></a>Een instelling maken voor automatisch schalen van Azure-resources op basis van prestatiegegevens of een planning
 
@@ -46,7 +46,7 @@ Binnen een paar minuten moeten uw resources zijn ingericht. Gebruik de Web-App e
 1. Selecteer de optie **Controleren** in het navigatiedeelvenster aan de linkerkant. Selecteer het tabblad **Automatisch schalen** zodra de pagina wordt geladen.
 2. Hier wordt een lijst weergegeven met de resources in uw abonnement die automatisch schalen ondersteunen. Zoek het App Service-Plan dat eerder in de zelfstudie is gemaakt en klik erop.
 
-    ![Navigeer naar de instellingen voor Automatisch schalen](./media/tutorial-autoscale-performance-schedule/monitor-blade-autoscale.png)
+    ![Schermopname toont de Azure Portal met Monitor en vervolgens Automatisch schalen geselecteerd.](./media/tutorial-autoscale-performance-schedule/monitor-blade-autoscale.png)
 
 3. In de instelling voor automatisch schalen klikt u op de knop **Automatisch schalen inschakelen**.
 
@@ -59,7 +59,7 @@ De volgende stappen helpen u met het invullen van het scherm Automatisch schalen
 2. In het standaardprofiel zorgt u ervoor dat de **Schaalmodus** is ingesteld op 'Schalen naar een specifiek aantal instanties'.
 3. Stel het aantal instanties in op **1**. Deze instelling zorgt ervoor dat, wanneer er geen ander profiel actief is, of in feite in het standaardprofiel is geselecteerd, het aantal instanties op 1 wordt gezet.
 
-   ![Navigeer naar de instellingen voor Automatisch schalen](./media/tutorial-autoscale-performance-schedule/autoscale-setting-profile.png)
+   ![Schermopname toont de instellingspagina voor Automatisch schalen met een naam die is ingevoerd voor de instelling.](./media/tutorial-autoscale-performance-schedule/autoscale-setting-profile.png)
 
 
 ## <a name="create-recurrence-profile"></a>Terugkeerpatroonprofiel maken

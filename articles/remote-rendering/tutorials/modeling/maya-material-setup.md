@@ -5,12 +5,12 @@ author: FlorianBorn71
 ms.author: flborn
 ms.date: 06/16/2020
 ms.topic: tutorial
-ms.openlocfilehash: 43c11575be084354e4c9287b44b5847d4d086aff
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 56aa0d91372ac2d21a20f28b1044f0811c716b0c
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90084393"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358029"
 ---
 # <a name="tutorial-set-up-physically-based-rendering-materials-in-maya"></a>Zelfstudie: Fysiek gebaseerde rendering instellen in Maya
 
@@ -79,7 +79,7 @@ In Maya is het instantiëringsproces eenvoudig.
 1. Selecteer in het dialoogvenster **Duplicate Special Options**, voor **Geometry type**, de optie **Instance**. 
 1. Selecteer **Duplicate Special**.
 
-   ![Instantiëren](media/instancing.jpg)
+   ![Schermafbeelding met een Maya-venster en het dialoogvenster Speciale opties dupliceren met Dupliceren speciaal geselecteerd.](media/instancing.jpg)
 
 Hiermee wordt een instantie van het object gemaakt. U kunt het onafhankelijk van het bovenliggende item en van andere instanties van dat bovenliggende item verplaatsen, draaien of schalen. 
 

@@ -11,12 +11,12 @@ ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
 ms.date: 02/07/2020
-ms.openlocfilehash: 5c05db4d6e0c98935fc13325b5656f8023c6228e
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: bbecfac4bfd3d5ce1510cb671b93df5f4982cbc4
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91443343"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803854"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs-preview"></a>Transact-SQL (T-SQL) gebruiken om Elastic Database taken te maken en te beheren (preview-versie)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -1023,13 +1023,13 @@ Hiermee voegt u een Data Base of een groep data bases toe aan een doel groep.
 De naam van de doel groep waaraan het lid wordt toegevoegd. target_group_name is nvarchar (128), zonder standaard waarde.
 
 [ ** \@ membership_type =** ] membership_type  
-Hiermee geeft u op of het lid van de doel groep wordt opgenomen of uitgesloten. target_group_name is nvarchar (128), waarbij de standaard waarde ' include ' is. Geldige waarden voor target_group_name zijn ' include ' of ' exclude '.
+Hiermee geeft u op of het lid van de doel groep wordt opgenomen of uitgesloten. target_group_name is nvarchar (128), waarbij de standaard waarde ' include ' is. Geldige waarden voor membership_type zijn ' include ' of ' exclude '.
 
 [ ** \@ target_type =** ] target_type  
 Het type doel database of verzameling data bases, inclusief alle data bases op een server, alle data bases in een elastische pool, alle data bases in een Shard-kaart of een afzonderlijke data base. target_type is nvarchar (128), zonder standaard waarde. Geldige waarden voor target_type zijn ' SqlServer ', ' SqlElasticPool ', ' SqlDatabase ' of ' SqlShardMap '.
 
 [ ** \@ refresh_credential_name =** ] refresh_credential_name  
-De naam van de server. refresh_credential_name is nvarchar (128), zonder standaard waarde.
+De naam van de data base-Scope referentie. refresh_credential_name is nvarchar (128), zonder standaard waarde.
 
 [ ** \@ server_name =** ] server_name  
 De naam van de server die moet worden toegevoegd aan de opgegeven doel groep. server_name moet worden opgegeven als target_type SqlServer is. server_name is nvarchar (128), zonder standaard waarde.
@@ -1041,7 +1041,7 @@ De naam van de data base die moet worden toegevoegd aan de opgegeven doel groep.
 De naam van de elastische pool die moet worden toegevoegd aan de opgegeven doel groep. elastic_pool_name moet worden opgegeven als target_type is ingesteld op SqlElasticPool. elastic_pool_name is nvarchar (128), zonder standaard waarde.
 
 [ ** \@ shard_map_name =** ] shard_map_name  
-De naam van de Shard-toewijzings groep die moet worden toegevoegd aan de opgegeven doel groep. elastic_pool_name moet worden opgegeven als target_type is ingesteld op SqlSqlShardMap. shard_map_name is nvarchar (128), zonder standaard waarde.
+De naam van de Shard-toewijzings groep die moet worden toegevoegd aan de opgegeven doel groep. elastic_pool_name moet worden opgegeven als target_type is ingesteld op SqlShardMap. shard_map_name is nvarchar (128), zonder standaard waarde.
 
 [ ** \@ target_id =** ] target_group_id uitvoer  
 Het doel-id-nummer dat is toegewezen aan het lid van de doel groep als dit is gemaakt, wordt toegevoegd aan de doel groep. target_id is een uitvoer variabele van het type UniqueIdentifier, met de standaard waarde NULL.

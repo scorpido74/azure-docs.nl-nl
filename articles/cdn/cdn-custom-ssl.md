@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 10/1/2019
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 5cf1181c41af1edc752205f4477f18b78680f484
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 66e0ac622479d38d2e2a3cbf499bb7900251571d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "81253999"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91359388"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Zelfstudie: HTTPS op een aangepast Azure CDN-domein configureren
 
@@ -80,7 +80,7 @@ Volg deze stappen om HTTPS in te schakelen in een aangepast domein:
 
 4. Selecteer in de lijst met aangepaste domeinen het aangepaste domein waarvoor u HTTPS wilt inschakelen.
 
-    ![Lijst met aangepaste domeinen](./media/cdn-custom-ssl/cdn-custom-domain.png)
+    ![Schermopname toont de pagina Aangepast domein met de optie voor het Gebruik van mijn eigen certificaat.](./media/cdn-custom-ssl/cdn-custom-domain.png)
 
     De pagina **Aangepast domein** wordt weergegeven.
 

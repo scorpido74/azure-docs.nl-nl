@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: jonfan, deli, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 10/25/2019
-ms.openlocfilehash: a2239d5ee70e90b9ee7c07b4dca78a45d2ce7ef9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.date: 09/25/2020
+ms.openlocfilehash: fa103c39b540c41536e4f231692b4602afe01a3e
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131477"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361208"
 ---
 # <a name="quickstart-create-and-manage-logic-app-workflow-definitions-by-using-visual-studio-code"></a>Quickstart: Werkstroomdefinities voor logische apps maken en beheren met Visual Studio Code
 
@@ -130,7 +130,7 @@ Zorg ervoor dat u deze items hebt voordat u begint:
    Hier ziet u bijvoorbeeld een voorbeeld van een werkstroomdefinitie van een logische app. Deze begint met een RSS-trigger en een Office 365 Outlook-actie. Doorgaans worden JSON-elementen alfabetisch weergegeven in elke sectie. In dit voorbeeld ziet u echter dat deze elementen grofweg in de volgorde staan van de stappen van de logische app in het ontwerpprogramma.
 
    > [!IMPORTANT]
-   > Als u de logische app-definitie uit dit voorbeeld wilt hergebruiken, hebt u een Office 365-organisatieaccount nodig, zoals @fabrikam.com. Vergeet niet het fictieve e-mailadres te vervangen door uw eigen e-mailadres. Als u een ander e-mailprogramma wilt gebruiken, zoals Outlook.com of Gmail, vervangt u de `Send_an_email_action`-actie door een vergelijkbare actie uit een [e-mailprogramma dat wordt ondersteund door Azure Logic Apps](../connectors/apis-list.md).
+   > Als u de logische app-definitie uit dit voorbeeld wilt hergebruiken, hebt u een organisatieaccount nodig, zoals @fabrikam.com. Vergeet niet het fictieve e-mailadres te vervangen door uw eigen e-mailadres. Als u een ander e-mailprogramma wilt gebruiken, zoals Outlook.com of Gmail, vervangt u de `Send_an_email_action`-actie door een vergelijkbare actie uit een [e-mailprogramma dat wordt ondersteund door Azure Logic Apps](../connectors/apis-list.md).
    >
    > Als u de Gmail-connector wilt gebruiken, kunnen alleen bedrijfsaccounts van G Suite deze connector zonder beperking in logische apps gebruiken. 
    > Als u een Gmail-consumentenaccount hebt, kunt u deze connector alleen gebruiken met specifieke door Google goedgekeurde services, of u kunt [een Google-client-app maken voor verificatie bij uw Gmail-connector](/connectors/gmail/#authentication-and-bring-your-own-application). 
@@ -307,4 +307,4 @@ In Visual Studio Code kunt u de eerdere versies voor uw logische app openen en c
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Logische apps maken met Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
+> [Stateful of staatloze werkstromen maken in Visual Studio Code (Preview)](../logic-apps/create-stateful-stateless-workflows-visual-studio-code.md)

@@ -4,12 +4,12 @@ description: Bewaak ASP.NET Core webtoepassingen voor Beschik baarheid, prestati
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 04/30/2020
-ms.openlocfilehash: ac742aae88b3e3c62ffca857dcb690fa71434482
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: eae6117f82f3bb138edb6cea23a2c052e19fb0cf
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90006756"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803588"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights voor ASP.NET Core toepassingen
 
@@ -25,7 +25,7 @@ Met de [Application INSIGHTS SDK voor ASP.net core](https://nuget.org/packages/M
 * **Implementatie methode**: Framework-afhankelijk of zelfstandig.
 * **Webserver**: IIS (Internet Information Server) of Kestrel.
 * **Hosting platform**: de web apps functie van Azure app service, Azure VM, docker, Azure Kubernetes service (AKS), enzovoort.
-* **.Net core runtime-versie**: 1. xx, 2. xx of 3. xx
+* **.Net core-versie**: alle officieel [ondersteunde](https://dotnet.microsoft.com/download/dotnet-core) .net Core-versies.
 * **IDE**: Visual Studio, VS code of opdracht regel.
 
 > [!NOTE]
@@ -122,7 +122,7 @@ Gebruik de [hand matige richt lijnen](#enable-application-insights-server-side-t
 ### <a name="user-secrets-and-other-configuration-providers"></a>Gebruikers geheimen en andere configuratie providers
 
 Als u de instrumentatie sleutel in ASP.NET Core gebruikers geheimen wilt opslaan of van een andere configuratie provider wilt ophalen, kunt u de overbelasting met een `Microsoft.Extensions.Configuration.IConfiguration` para meter gebruiken. Bijvoorbeeld `services.AddApplicationInsightsTelemetry(Configuration);`.
-Vanaf micro soft. ApplicationInsights. AspNetCore versie [2.15.0-beta3](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) `services.AddApplicationInsightsTelemetry()` wordt de instrumentatie sleutel van `Microsoft.Extensions.Configuration.IConfiguration` van de toepassing automatisch gelezen. Het is niet nodig om het te expliciet opgeven `IConfiguration` .
+Vanaf micro soft. ApplicationInsights. AspNetCore versie [2.15.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore), `services.AddApplicationInsightsTelemetry()` wordt de instrumentatie sleutel van `Microsoft.Extensions.Configuration.IConfiguration` van de toepassing automatisch gelezen. Het is niet nodig om het te expliciet opgeven `IConfiguration` .
 
 ## <a name="run-your-application"></a>Uw toepassing uitvoeren
 
@@ -151,7 +151,7 @@ De ondersteuning voor [prestatie meter items](./web-monitor-performance.md) in A
 
 ### <a name="eventcounter"></a>Event Counter
 
-`EventCounterCollectionModule` is standaard ingeschakeld en er wordt een standaardset tellers van .NET Core 3. X-apps verzameld. De [Event Counter](eventcounters.md) zelf studie bevat de standaardset met verzamelde items. Het bevat ook instructies voor het aanpassen van de lijst.
+`EventCounterCollectionModule` is standaard ingeschakeld. De [Event Counter](eventcounters.md) -zelf studie bevat instructies voor het configureren van de lijst met prestatie meter items die moeten worden verzameld.
 
 ## <a name="enable-client-side-telemetry-for-web-applications"></a>Telemetrie aan de client zijde inschakelen voor webtoepassingen
 
@@ -226,9 +226,9 @@ Volledige lijst met instellingen in `ApplicationInsightsServiceOptions`
 
 Zie de [Configureer bare instellingen in `ApplicationInsightsServiceOptions` ](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/NETCORE/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs) voor de meest recente lijst.
 
-### <a name="configuration-recommendation-for-microsoftapplicationinsightsaspnetcore-sdk-2150-beta3--above"></a>Aanbevolen configuratie voor micro soft. ApplicationInsights. AspNetCore SDK 2.15.0-beta3 & hierboven
+### <a name="configuration-recommendation-for-microsoftapplicationinsightsaspnetcore-sdk-2150--above"></a>Aanbevolen configuratie voor micro soft. ApplicationInsights. AspNetCore SDK 2.15.0 & hierboven
 
-Vanaf micro soft. ApplicationInsights. AspNetCore SDK [-versie 2.15.0-beta3](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.15.0-beta3) is de aanbeveling om elke instelling te configureren die beschikbaar is in `ApplicationInsightsServiceOptions` , waaronder instrumentationkey met toepassings `IConfiguration` exemplaar. De instellingen moeten worden weer gegeven onder de sectie ' ApplicationInsights ', zoals in het onderstaande voor beeld. De volgende sectie van appsettings.jsop de configuratie sleutel configures en schakelt ook verzameling van aanpas bare steek proeven en prestatie meter items uit.
+Vanaf micro soft. ApplicationInsights. AspNetCore SDK-versie [2.15.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.15.0) de aanbeveling is om elke instelling te configureren die beschikbaar is in `ApplicationInsightsServiceOptions` , inclusief instrumentationkey met behulp van toepassings `IConfiguration` exemplaren. De instellingen moeten worden weer gegeven onder de sectie ' ApplicationInsights ', zoals in het onderstaande voor beeld. De volgende sectie van appsettings.jsop de configuratie sleutel configures en schakelt ook verzameling van aanpas bare steek proeven en prestatie meter items uit.
 
 ```json
 {
@@ -240,11 +240,11 @@ Vanaf micro soft. ApplicationInsights. AspNetCore SDK [-versie 2.15.0-beta3](htt
 }
 ```
 
-Als `services.AddApplicationInsightsTelemetry(aiOptions)` wordt gebruikt, overschrijft dit de instellingen van `Microsoft.Extensions.Configuration.IConfiguration` .
+Als `services.AddApplicationInsightsTelemetry(aiOptions)` wordt gebruikt, overschrijft het de instellingen van `Microsoft.Extensions.Configuration.IConfiguration` .
 
 ### <a name="sampling"></a>Steekproeven
 
-De Application Insights SDK voor ASP.NET Core ondersteunt zowel vaste als adaptieve steek proeven. Adaptieve steek proeven zijn standaard ingeschakeld. 
+De Application Insights SDK voor ASP.NET Core ondersteunt zowel vaste als adaptieve steek proeven. Adaptieve steek proeven zijn standaard ingeschakeld.
 
 Zie [adaptieve steek proeven voor ASP.net core toepassingen configureren](./sampling.md#configuring-adaptive-sampling-for-aspnet-core-applications)voor meer informatie.
 
@@ -335,7 +335,6 @@ public void ConfigureServices(IServiceCollection services)
     services.ConfigureTelemetryModule<EventCounterCollectionModule>(
             (module, o) =>
             {
-                module.Counters.Clear();
                 module.Counters.Add(new EventCounterCollectionRequest("System.Runtime", "gen-0-size"));
             }
         );
@@ -447,16 +446,12 @@ Als de SDK tijdens het bouwen is geïnstalleerd, zoals wordt weer gegeven in dit
 
 Nee. [Status monitor](./monitor-performance-live-website-now.md) en [status monitor v2](./status-monitor-v2-overview.md) ondersteunen momenteel alleen ASP.net 4. x.
 
-### <a name="is-application-insights-automatically-enabled-for-my-aspnet-core-20-application"></a>Is Application Insights automatisch ingeschakeld voor mijn ASP.NET Core 2,0-toepassing?
-
-De `Microsoft.AspNetCore.All` 2,0 metapackage bevatte de Application INSIGHTS SDK (versie 2.1.0). Als u de toepassing uitvoert onder Visual Studio Debugger, maakt Visual Studio Application Insights en wordt telemetrie lokaal in de IDE zelf weer gegeven. Er is geen telemetrie naar de Application Insights-service verzonden, tenzij er een instrumentatie sleutel is opgegeven. U wordt aangeraden de instructies in dit artikel te volgen om Application Insights in te scha kelen, zelfs voor 2,0-apps.
-
 ### <a name="if-i-run-my-application-in-linux-are-all-features-supported"></a>Als ik mijn toepassing in Linux uitvoer, worden alle functies ondersteund?
 
 Ja. De functie ondersteuning voor de SDK is op alle platforms hetzelfde, met de volgende uitzonde ringen:
 
 * De SDK verzamelt [gebeurtenis tellers](./eventcounters.md) voor Linux omdat [prestatie meter items](./performance-counters.md) alleen worden ondersteund in Windows. De meeste meet waarden zijn hetzelfde.
-* Hoewel `ServerTelemetryChannel` de toepassing standaard is ingeschakeld in Linux of MacOS, maakt het kanaal niet automatisch een lokale opslagmap om telemetrie tijdelijk te blijven als er netwerk problemen zijn. Vanwege deze beperking gaat telemetrie verloren als er tijdelijke problemen zijn met het netwerk of de server. U kunt dit probleem omzeilen door een lokale map voor het kanaal te configureren:
+* Hoewel `ServerTelemetryChannel` de toepassing standaard is ingeschakeld in Linux of macOS, maakt het kanaal niet automatisch een lokale opslagmap om telemetrie tijdelijk te blijven als er netwerk problemen zijn. Vanwege deze beperking gaat telemetrie verloren als er tijdelijke problemen zijn met het netwerk of de server. U kunt dit probleem omzeilen door een lokale map voor het kanaal te configureren:
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;
@@ -473,6 +468,8 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
         services.AddApplicationInsightsTelemetry();
     }
 ```
+
+Deze beperking is niet van toepassing op [2.15.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.15.0) en nieuwere versies.
 
 ### <a name="is-this-sdk-supported-for-the-new-net-core-3x-worker-service-template-applications"></a>Wordt deze SDK ondersteund voor de nieuwe .NET Core 3. X Worker-service sjabloon toepassingen?
 

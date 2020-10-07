@@ -1,20 +1,20 @@
 ---
-title: 'Certificering van virtuele machines: problemen en oplossingen'
-description: In dit artikel worden veelvoorkomende fout berichten voor VM-installatie kopieën uitgelegd. Daarnaast worden verwante oplossingen besproken
+title: Veelvoorkomende problemen bij het certificeren van installatie kopieën van virtuele machines voor Azure Marketplace
+description: In dit artikel worden veelvoorkomende fout berichten en problemen beschreven bij het testen en certificeren van VM-installatie kopieën voor Azure Marketplace. Ook worden verwante oplossingen besproken.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 06/16/2020
-ms.openlocfilehash: 6d7f9ccd1c87b6105988a1f5d23700cb58693062
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d724ef463d7c7ad237b5fd023e9c15f50de96f04
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91296447"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803463"
 ---
-# <a name="issues-and-solutions-during-virtual-machine-certification"></a>Problemen en oplossingen tijdens de certificering van virtuele machines 
+# <a name="common-issues-when-certifying-virtual-machine-images-for-azure-marketplace"></a>Veelvoorkomende problemen bij het certificeren van installatie kopieën van virtuele machines voor Azure Marketplace
 
 Wanneer u de installatie kopie van de virtuele machine (VM) publiceert naar Azure Marketplace, valideert het Azure-team deze om te zorgen voor de opstart baarheid, beveiliging en Azure-compatibiliteit. Als een van de tests van hoge kwaliteit mislukt, mislukt de publicatie en wordt er een fout bericht weer gegeven waarin het probleem wordt beschreven.
 
@@ -166,7 +166,7 @@ Als Vm's toegang bieden tot het onderliggende besturings systeem, moet u ervoor 
 
 |VHD-grootte|Werkelijke grootte|Oplossing|
 |---|---|---|
-|>500 tebibytes (TiB)|N.v.t.|Neem contact op met het ondersteunings team voor een uitzonderings goedkeuring.|
+|>500 tebibytes (TiB)|n.v.t.|Neem contact op met het ondersteunings team voor een uitzonderings goedkeuring.|
 |250-500 TiB|>200 gibibytes (GiB) verschilt van de grootte van de BLOB|Neem contact op met het ondersteunings team voor een uitzonderings goedkeuring.|
 
 > [!NOTE]
@@ -217,7 +217,7 @@ Als uw installatie kopie niet is geïnstalleerd met een van de volgende kernel-v
 ||7.2|3.10.0-327.79.2|
 ||7.3|3.10.0-514.66.2|
 ||7.4|3.10.0-693.50.3|
-||7,5|3.10.0-862.34.2|
+||7.5|3.10.0-862.34.2|
 ||7.6|3.10.0-957.21.3|
 ||7,7|3.10.0-1062.1.1|
 ||8.0|4.18.0-80.4.2|
@@ -332,7 +332,7 @@ Stap 1. Implementeer de virtuele machine en klik op de optie opdracht uitvoeren 
 
 Stap 2. Selecteer eerste optie ' RunShellScript ' en voer de onderstaande opdracht uit.
 
-Opdracht: "kat/dev/null > ~/. bash_history && geschiedenis-c" ![ bash-geschiedenis opdracht op Azure Portal](./media/vm-certification-issues-solutions-4.png)
+Opdracht: "kat/dev/null > ~/.bash_history && geschiedenis-c" ![ bash-geschiedenis opdracht op Azure Portal](./media/vm-certification-issues-solutions-4.png)
 
 Stap 3. Nadat de opdracht is uitgevoerd, start u de VM opnieuw op.
 

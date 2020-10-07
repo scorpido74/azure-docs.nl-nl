@@ -1,6 +1,6 @@
 ---
 title: Quickstart voor de serverloze Azure SignalR Service - Python
-description: Een quickstart waarin u leert hoe u de service Azure SignalR en Azure Functions gebruikt om een chatruimte te maken.
+description: Een quickstart waarin u leert hoe u de service Azure SignalR en Azure Functions gebruikt om een chatruimte te maken met behulp van Python.
 author: anthonychu
 ms.service: signalr
 ms.devlang: python
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 12/14/2019
 ms.author: antchu
 ms.custom: devx-track-python
-ms.openlocfilehash: d7d893d3de5541bf1108a9182dfee6ad995e061b
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 24985a006390977c89c4eedc23084a9856272eba
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050604"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355636"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-python"></a>Quickstart: Een chatruimte maken met Azure Functions en SignalR Service met behulp van Python
 
@@ -57,7 +57,7 @@ Meld u met uw Azure-account aan bij Azure Portal op <https://portal.azure.com/>.
 
 1. Selecteer en kopieer de primaire verbindingsreeks.
 
-    ![De service SignalR maken](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-keys.png)
+    ![Selecteer en kopieer de primaire verbindingsreeks.](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-keys.png)
 
 1. Open in de code-editor de map *src/chat/python* in de gekloonde opslagplaats.
 

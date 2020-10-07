@@ -4,16 +4,16 @@ description: Bewaak systeem-en aangepaste .NET/.NET core-EventCounters in Applic
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f8ae36545eecbbad2a6695ca979fb7da8380e8cc
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: a9af36f3c81ee52b41a8eed875c1a286b95bf838
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89657011"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803640"
 ---
 # <a name="eventcounters-introduction"></a>EventCounters-Inleiding
 
-`EventCounter` is .NET/.NET core-mechanisme voor het publiceren en gebruiken van tellers of statistieken. [Dit](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.Tracing/documentation/EventCounterTutorial.md) document bevat een overzicht van `EventCounters` en voor beelden voor het publiceren en gebruiken van deze. EventCounters worden ondersteund in alle OS-platformen-Windows, Linux en macOS. Het kan worden beschouwd als een platform dat gelijkwaardig is aan de [Performance Counters](/dotnet/api/system.diagnostics.performancecounter) die alleen wordt ondersteund in Windows-systemen.
+[`EventCounter`](/dotnet/core/diagnostics/event-counters) is .NET/.NET core-mechanisme voor het publiceren en gebruiken van tellers of statistieken. EventCounters worden ondersteund in alle OS-platformen-Windows, Linux en macOS. Het kan worden beschouwd als een platform dat gelijkwaardig is aan de [Performance Counters](/dotnet/api/system.diagnostics.performancecounter) die alleen wordt ondersteund in Windows-systemen.
 
 Hoewel gebruikers aangepaste kunnen publiceren `EventCounters` om aan hun behoeften te voldoen, publiceert .net Core 3,0 en hogere runtime standaard een set van deze prestatie meter items. In dit document worden de stappen beschreven die nodig zijn voor het verzamelen en weer geven (door het `EventCounters` systeem gedefinieerde of door de gebruiker gedefinieerde definitie) in azure-toepassing Insights.
 
@@ -23,32 +23,9 @@ Application Insights ondersteunt `EventCounters` het verzamelen met de `EventCou
 
 ## <a name="default-counters-collected"></a>Verzamelde standaard items
 
-Voor apps die worden uitgevoerd in .NET Core 3,0 of hoger, worden de volgende prestatie meter items automatisch verzameld door de SDK. De naam van de prestatie meter items heeft de indeling ' Category | Teller ".
+Vanaf de 2.15.0-versie van de [ASPNETCORE SDK](asp-net-core.md) -of [WorkerService-SDK](worker-service.md)worden standaard geen tellers verzameld. De module zelf is ingeschakeld, zodat gebruikers eenvoudigweg de gewenste items kunnen toevoegen om ze te verzamelen.
 
-|Categorie | Prestatiemeteritem|
-|---------------|-------|
-|`System.Runtime` | `cpu-usage` |
-|`System.Runtime` | `working-set` |
-|`System.Runtime` | `gc-heap-size` |
-|`System.Runtime` | `gen-0-gc-count` |
-|`System.Runtime` | `gen-1-gc-count` |
-|`System.Runtime` | `gen-2-gc-count` |
-|`System.Runtime` | `time-in-gc` |
-|`System.Runtime` | `gen-0-size` |
-|`System.Runtime` | `gen-1-size` |
-|`System.Runtime` | `gen-2-size` |
-|`System.Runtime` | `loh-size` |
-|`System.Runtime` | `alloc-rate` |
-|`System.Runtime` | `assembly-count` |
-|`System.Runtime` | `exception-count` |
-|`System.Runtime` | `threadpool-thread-count` |
-|`System.Runtime` | `monitor-lock-contention-count` |
-|`System.Runtime` | `threadpool-queue-length` |
-|`System.Runtime` | `threadpool-completed-items-count` |
-|`System.Runtime` | `active-timer-count` |
-
-> [!NOTE]
-> Vanaf de 2.15.0-beta3-versie van de [ASPNETCORE SDK](asp-net-core.md) of [WorkerService SDK](worker-service.md)worden standaard geen tellers verzameld. De module zelf is ingeschakeld, zodat gebruikers eenvoudigweg de gewenste items kunnen toevoegen om ze te verzamelen.
+Zie het document [beschik bare tellers](/dotnet/core/diagnostics/event-counters#available-counters) voor een lijst met bekende items die door de .NET-runtime worden gepubliceerd.
 
 ## <a name="customizing-counters-to-be-collected"></a>Te verzamelen items aanpassen
 
@@ -67,7 +44,7 @@ In het volgende voor beeld ziet u hoe u tellers kunt toevoegen/verwijderen. Deze
         services.ConfigureTelemetryModule<EventCounterCollectionModule>(
             (module, o) =>
             {
-                // This removes all default counters.
+                // This removes all default counters, if any.
                 module.Counters.Clear();
 
                 // This adds a user defined counter "MyCounter" from EventSource named "MyEventSource"

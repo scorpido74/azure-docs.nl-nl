@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: f82ea8361cef76b2030e5b257b3d3351968d8050
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e8de33e7417ab6421792d341474c320a5f63423b
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322186"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803820"
 ---
 # <a name="troubleshoot"></a>Problemen oplossen
 
@@ -88,7 +88,7 @@ De video kwaliteit kan worden aangetast door netwerk kwaliteit of de ontbrekende
 
 ## <a name="video-recorded-with-mrc-does-not-reflect-the-quality-of-the-live-experience"></a>Video die is opgenomen in MRC weerspiegelt niet de kwaliteit van de Live-ervaring
 
-Een video kan worden vastgelegd op Hololens via [Mixed Reality Capture (MRC)](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers). De resulterende video heeft echter een slechterere kwaliteit dan de Live-ervaring om twee redenen:
+Een video kan worden vastgelegd op HoloLens via [Mixed Reality Capture (MRC)](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers). De resulterende video heeft echter een slechterere kwaliteit dan de Live-ervaring om twee redenen:
 * De video weergave snelheid wordt beperkt tot 30 Hz, in tegens telling tot 60 Hz.
 * De video-installatie kopieën worden niet door de verwerkings stap voor het [vertraagd](../overview/features/late-stage-reprojection.md) verwerken van taken uitgevoerd, dus de video lijkt choppier te zijn.
 
@@ -185,7 +185,7 @@ De `AudioPluginMsHRTF.dll` for-Arm64 is toegevoegd aan het *Windows Mixed Realit
 
 ### <a name="library-not-found-error-for-uwp-application-or-dll"></a>Fout ' bibliotheek niet gevonden ' voor UWP-toepassing of-dll
 
-In het C++ Nuget-pakket bevindt zich een bestands `microsoft.azure.remoterendering.Cpp.targets` bestand dat definieert welke binaire waarde moet worden gebruikt. Voor `UWP` het identificeren van de voor waarden in het bestand controleren op `ApplicationType == 'Windows Store'` . Daarom moet worden gegarandeerd dat dit type is ingesteld in het project. Dit moet het geval zijn bij het maken van een UWP-toepassing of-dll via de project wizard van Visual Studio.
+In het C++ NuGet-pakket bevindt zich een bestands `microsoft.azure.remoterendering.Cpp.targets` bestand dat definieert welke binaire waarde moet worden gebruikt. Voor `UWP` het identificeren van de voor waarden in het bestand controleren op `ApplicationType == 'Windows Store'` . Daarom moet worden gegarandeerd dat dit type is ingesteld in het project. Dit moet het geval zijn bij het maken van een UWP-toepassing of-dll via de project wizard van Visual Studio.
 
 ## <a name="unstable-holograms"></a>Onstabiele hologrammen
 
@@ -193,7 +193,7 @@ In het geval dat gerenderde objecten samen met de hoofd bewegingen worden verpla
 
 Een andere reden voor onstabiele hologrammen (Wobbling, krom trekken, jitteren of springende Holograms) kan een slechte netwerk verbinding zijn, met name onvoldoende netwerk bandbreedte of te hoge latentie. Een goede indicator voor de kwaliteit van uw netwerk verbinding is de waarde voor [prestatie statistieken](../overview/features/performance-queries.md) `ARRServiceStats.VideoFramesReused` . Hergebruikte frames geven situaties aan waarbij een oud video frame moet worden hergebruikt aan de client zijde omdat er geen nieuw video frame beschikbaar was, bijvoorbeeld vanwege pakket verlies of vanwege afwijkingen in de netwerk latentie. Als `ARRServiceStats.VideoFramesReused` het regel matig groter is dan nul, duidt dit op een netwerk probleem.
 
-U kunt ook een andere waarde zoeken in `ARRServiceStats.LatencyPoseToReceiveAvg` . Deze moet consistent zijn onder 100 MS. Als u hogere waarden ziet, betekent dit dat u verbonden bent met een Data Center dat te ver weg is.
+U kunt ook een andere waarde zoeken in `ARRServiceStats.LatencyPoseToReceiveAvg` . Deze moet consistent zijn onder 100 MS. Als u hogere waarden ziet, kan dit erop wijzen dat u verbonden bent met een Data Center dat te ver weg is.
 
 Zie de [richt lijnen voor netwerk connectiviteit](../reference/network-requirements.md#guidelines-for-network-connectivity)voor een lijst met mogelijke oplossingen.
 
@@ -245,7 +245,9 @@ Coplanar-Opper vlakken kunnen een aantal verschillende oorzaken hebben:
 
 * Opper vlakken zijn purposefully ontworpen om te raken, zoals Decals of tekst op wanden.
 
+## <a name="graphics-artifacts-using-multi-pass-stereo-rendering-in-native-c-apps"></a>Grafische artefacten die gebruikmaken van stereo rendering met meerdere slagen in systeem eigen C++-apps
 
+In sommige gevallen worden aangepaste systeem eigen C++-apps die gebruikmaken van een stereo rendering-modus met meerdere slagen voor lokale inhoud (weer gave naar links en rechts in afzonderlijke fasen) na het aanroepen van [**BlitRemoteFrame**](../concepts/graphics-bindings.md#render-remote-image) , een stuurprogrammafout kunnen activeren. De fout resulteert in niet-deterministische raster storingen, waardoor afzonderlijke drie hoeken of delen van drie hoeken van de lokale inhoud wille keurig verdwijnen. Uit prestatie overwegingen verdient het de voor keur om lokale inhoud te renderen met een moderne stereo weergave techniek met één stap, bijvoorbeeld met behulp van **SV_RenderTargetArrayIndex**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

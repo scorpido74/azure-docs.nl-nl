@@ -10,12 +10,12 @@ manager: anandsub
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/04/2018
-ms.openlocfilehash: 18f72ff32b29ff5832c363601ed63280339079df
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 52fba5064d656158a53ba71fec194cfa4f360df5
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083063"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360290"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory-using-the-azure-portal"></a>Gegevens in een virtueel Azure-netwerk transformeren met behulp van Hive-activiteit in Azure Data Factory met Azure Portal
 
@@ -233,7 +233,7 @@ Houd rekening met de volgende punten:
         ![Scriptargumenten](./media/tutorial-transform-data-using-hive-in-vnet-portal/script-arguments.png)
 1. Als u artefacten naar Data Factory wilt publiceren, klikt u op **Publish**.
 
-    ![Publiceren](./media/tutorial-transform-data-using-hive-in-vnet-portal/publish.png)
+    ![Schermopname toont de optie om naar een Data Factory te publiceren.](./media/tutorial-transform-data-using-hive-in-vnet-portal/publish.png)
 
 ## <a name="trigger-a-pipeline-run"></a>Een pijplijnuitvoering activeren
 

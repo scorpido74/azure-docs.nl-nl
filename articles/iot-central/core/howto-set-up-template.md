@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - contperfq1
 - device-developer
-ms.openlocfilehash: aa70c9e5d67c759afe905e9e110d6bcd18555a8c
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: d6dd1bbf853a13948f55db4ae694b28cb7549c9b
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90019237"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803786"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>Een nieuw IoT-apparaattype definiëren in uw Azure IoT Central-toepassing
 
@@ -155,7 +155,7 @@ De volgende tabel bevat de configuratie-instellingen voor een eigenschaps mogeli
 | Opmerking | Eventuele opmerkingen over de eigenschaps mogelijkheid. |
 | Beschrijving | Een beschrijving van de eigenschaps mogelijkheid. |
 
-### <a name="commands"></a>Opdracht
+### <a name="commands"></a>Opdrachten
 
 U kunt de opdrachten van een apparaat aanroepen vanuit IoT Central. Opdrachten geven optioneel para meters door aan het apparaat en ontvangen een reactie van het apparaat. U kunt bijvoorbeeld een opdracht aanroepen om een apparaat binnen tien seconden opnieuw op te starten.
 
@@ -171,6 +171,21 @@ De volgende tabel bevat de configuratie-instellingen voor een opdracht mogelijkh
 | Beschrijving | Een beschrijving van de opdracht mogelijkheid. |
 | Aanvraag | Indien ingeschakeld, een definitie van de aanvraag parameter, met inbegrip van: naam, weergave naam, schema, eenheid en weer gave-eenheid. |
 | Antwoord | Als deze optie is ingeschakeld, wordt een definitie van het opdracht antwoord gegeven, waaronder: naam, weergave naam, schema, eenheid en weer gave-eenheid. |
+
+#### <a name="offline-commands"></a>Offline opdrachten
+
+U kunt wachtrij opdrachten kiezen als een apparaat momenteel offline is door de optie **wachtrij als offline** in te scha kelen voor een opdracht in de sjabloon voor het apparaat.
+
+Met deze optie worden IoT Hub Cloud-naar-apparaat-berichten gebruikt om meldingen naar apparaten te verzenden. Zie het artikel IoT Hub [Cloud-naar-apparaat-berichten verzenden](../../iot-hub/iot-hub-devguide-messages-c2d.md)voor meer informatie.
+
+Cloud-naar-apparaat-berichten:
+
+- U kunt in één richting meldingen verzenden naar het apparaat vanuit uw oplossing.
+- Bezorgt ten minste één keer per bericht levering. IoT Hub blijven Cloud-naar-apparaat-berichten in wacht rijen per apparaat behouden, zodat er toleranties worden gegarandeerd tegen connectiviteit en storingen in het apparaat.
+- Stel in dat het apparaat een bericht-handler moet implementeren om het Cloud-naar-apparaat-bericht te verwerken.
+
+> [!NOTE]
+> Deze optie is alleen beschikbaar in de gebruikers interface van IoT Central web. Deze instelling is niet opgenomen als u een model of interface uit de sjabloon voor het apparaat exporteert.
 
 ## <a name="manage-an-interface"></a>Een interface beheren
 

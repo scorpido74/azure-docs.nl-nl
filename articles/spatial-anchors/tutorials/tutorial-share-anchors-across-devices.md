@@ -8,18 +8,18 @@ ms.author: rgarcia
 ms.date: 07/31/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 12a15a2d0cd45207b4adefc7315e48c6d642c0f7
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 8b6c3608165ed592cc2f0daf475226c9d35de012
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810162"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358758"
 ---
 # <a name="tutorial-share-azure-spatial-anchors-across-sessions-and-devices"></a>Zelfstudie: Azure Spatial Anchors delen in sessies en apparaten
 
 In deze zelfstudie leert u hoe u [Azure Spatial Anchors](../overview.md) gebruikt om tijdens één sessie ankers te maken en deze vervolgens op hetzelfde apparaat of op een ander apparaat terug te vinden. Deze zelfde ankers kunnen ook worden teruggevonden door meerdere apparaten op dezelfde plaats op hetzelfde moment.
 
-![Persistentie](./media/persistence.gif)
+![Animatie toont Azure Spatial Anchors die zijn gemaakt met een mobiel apparaat en die gedurende de loop der dagen worden gebruikt met een ander apparaat.](./media/persistence.gif)
 
 Azure Spatial Anchors is een platformoverstijgende ontwikkelaarsservice waarmee u mixed reality-ervaringen kunt maken met behulp van objecten die hun locatie in de loop van de tijd op meerdere apparaten behouden. Wanneer u klaar bent, hebt u een app die kan worden geïmplementeerd op twee of meer apparaten. Azure Spatial Anchors dat door één exemplaar is gemaakt, kan worden gedeeld met andere.
 

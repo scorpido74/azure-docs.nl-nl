@@ -1,7 +1,7 @@
 ---
-title: "Zelfstudie: Python-script 'Hallo wereld' uitvoeren"
+title: 'Zelfstudie: Een "Hallo wereld" uitvoeren Python-script'
 titleSuffix: Azure Machine Learning
-description: In deel 2 van de aan de slag-reeks van Azure ML ziet u hoe u een alledaags python-script van 'hallo wereld' naar de cloud verzendt.
+description: In deel 2 van de aan de slag-reeks van Azure Machine Learning ziet u hoe u een alledaags Python-script voor 'Hallo wereld' verzendt naar de cloud.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,35 +11,34 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 98f4c30d03763e070b1bdc32a5e6e099556916ab
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 980347c658c65a0c08dfc50c08f50741fb9a00fd
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90929335"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372541"
 ---
-# <a name="tutorial-run-hello-world-python-script-part-2-of-4"></a>Zelfstudie: Python-script 'Hallo wereld' uitvoeren (deel 2 van 4)
+# <a name="tutorial-run-a-hello-world-python-script-part-2-of-4"></a>Zelfstudie: Een Python-script voor 'Hallo wereld' uitvoeren (deel 2 van 4)
 
-In deze zelfstudie leert u hoe u de Azure Machine Learning Python-SDK kunt gebruiken om een Python-script 'Hallo wereld' te verzenden en uit te voeren.
+In deze zelfstudie leert u hoe u de Azure Machine Learning SDK voor Python kunt gebruiken om met een Python-script een 'Hallo wereld' te verzenden en uit te voeren.
 
-Deze zelfstudie is **deel twee van een vierdelige zelfstudiereeks** waarin u de grondbeginselen van Azure Machine Learning kunt zien en machine learning-taken op basis van taken in Azure uitvoert. Deze zelfstudie borduurt verder op het werk dat u hebt voltooid in [Zelfstudie deel 1: uw lokale machine instellen voor Azure Machine Learning](
-tutorial-1st-experiment-sdk-setup-local.md).
+Deze zelfstudie is *deel 2 van een vierdelige zelfstudiereeks* waarin u de grondbeginselen van Azure Machine Learning kunt zien en machine learning-taken op basis van taken uitvoert in Azure. Deze zelfstudie borduurt voort op het werk dat u hebt voltooid in [Deel 1: Uw lokale machine instellen voor de Azure Machine Learning](tutorial-1st-experiment-sdk-setup-local.md)
 
-In deze zelfstudie gaat u:
+In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Een Python-script 'Hallo wereld' lokaal maken en uitvoeren
-> * Een Python-besturingsscript maken om 'Hallo wereld' te verzenden naar Azure Machine Learning
+> * Een lokaal 'Hallo wereld'-script maken en uitvoeren.
+> * Een Python-besturingsscript maken om 'Hallo wereld' te verzenden naar Azure Machine Learning.
 > * Inzicht krijgen in de Azure Machine Learning-concepten in het besturingsscript
-> * 'Hallo wereld' verzenden en uitvoeren
-> * De code-uitvoer weergeven in de cloud
+> * Het 'Hallo wereld'-script verzenden en uitvoeren.
+> * De code-uitvoer weergeven in de cloud.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Doorloop [Deel 1 van de installatiezelfstudie voor lokale machines](tutorial-1st-experiment-sdk-setup-local.md) als u nog geen Azure Machine Learning-werkruimte hebt.
+- Voltooien van [Deel 1](tutorial-1st-experiment-sdk-setup-local.md) als u nog geen Azure Machine Learning-werkruimte hebt.
 - Introductiekennis van de Python-taal en machine learning-werkstromen.
-- Lokale ontwikkelomgeving. Dit omvat, maar is niet beperkt tot Visual Studio-code, Jupyter of PyCharm.
-- Python (versie 3.5-3.7).
+- Lokale ontwikkelomgeving, zoals Visual Studio Code, Jupyter of PyCharm.
+- Python (versie 3.5 tot 3.7).
 
 ## <a name="create-and-run-a-python-script-locally"></a>Een Python-script lokaal maken en uitvoeren
 
@@ -64,7 +63,7 @@ tutorial
 
 ### <a name="test-your-script-locally"></a>Uw script lokaal testen
 
-U kunt uw code lokaal uitvoeren, met het voordeel van interactieve foutopsporing van code, met behulp van uw favoriete IDE of via een terminal:
+U kunt uw code lokaal uitvoeren met behulp van uw favoriete IDE of een terminal. Code lokaal uitvoeren biedt het voordeel van interactieve foutopsporing.
 
 ```bash
 cd <path/to/tutorial>
@@ -73,9 +72,9 @@ python ./src/hello.py
 
 ## <a name="create-a-control-script"></a>Een besturingsscript maken
 
-Met een *besturingsscript* kunt u uw `hello.py`-script uitvoeren in de cloud.  Met het besturingsscript kunt u bepalen hoe en waar uw machine learning-code wordt uitgevoerd.  
+Met een *besturingsscript* kunt u uw `hello.py`-script uitvoeren in de cloud. Met het besturingsscript kunt u bepalen hoe en waar uw machine learning-code wordt uitgevoerd.  
 
-Maak in uw zelfstudiemap een nieuw python-bestand met de naam `03-run-hello.py` en kopieer en plak de onderstaande code in dat bestand:
+Maak in uw zelfstudiemap een nieuw Python-bestand met de naam `03-run-hello.py` en kopieer/plak de volgende code in dat bestand:
 
 ```python
 # tutorial/03-run-hello.py
@@ -116,7 +115,7 @@ Hier volgt een beschrijving van hoe het besturingsscript werkt:
       `config = ScriptRunConfig( ... )` 
    :::column-end:::
    :::column span="2":::
-      Met [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) wordt uw `hello.py`-code ingepakt en doorgegeven aan uw werkruimte. Zoals de naam suggereert, kunt u deze klasse gebruiken om te _configureren_ hoe u wilt dat uw _script_ wordt _uitgevoerd_ in Azure Machine Learning. Specificeert ook op welk rekendoel het script wordt uitgevoerd.  In deze code is het doel het rekencluster dat u hebt gemaakt in de [installatiezelfstudie](tutorial-1st-experiment-sdk-setup-local.md).
+      Met [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) wordt uw `hello.py`-code ingepakt en doorgegeven aan uw werkruimte. Zoals de naam suggereert, kunt u deze klasse gebruiken om te _configureren_ hoe u wilt dat uw _script_ wordt _uitgevoerd_ in Azure Machine Learning. Het specificeert ook op welk rekendoel het script wordt uitgevoerd. In deze code is het doel het rekencluster dat u hebt gemaakt in de [installatiezelfstudie](tutorial-1st-experiment-sdk-setup-local.md).
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -124,7 +123,7 @@ Hier volgt een beschrijving van hoe het besturingsscript werkt:
       `run = experiment.submit(config)`
    :::column-end:::
    :::column span="2":::
-       Hiermee wordt het script verzonden. Deze inzending wordt een [Uitvoering](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py&preserve-view=true) genoemd.  Een uitvoering bevat één uitvoering van uw code. Gebruik een uitvoering om de voortgang van het script te bewaken, de uitvoer vast te leggen, de resultaten te analyseren, metrische gegevens te visualiseren en meer.
+       Hiermee wordt het script verzonden. Deze inzending wordt een [uitvoering](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true) genoemd. Een uitvoering bevat één uitvoering van uw code. Gebruik een uitvoering om de voortgang van het script te bewaken, de uitvoer vast te leggen, de resultaten te analyseren, metrische gegevens te visualiseren en meer.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -132,7 +131,7 @@ Hier volgt een beschrijving van hoe het besturingsscript werkt:
       `aml_url = run.get_portal_url()` 
    :::column-end:::
    :::column span="2":::
-        Het `run`-object biedt een ingang voor de uitvoering van uw code. Bewaak de voortgang vanuit de Azure Machine Learning Studio met de URL die wordt afgedrukt vanuit het python-script.  
+        Het `run`-object biedt een ingang voor de uitvoering van uw code. Bewaak de voortgang vanuit de Azure Machine Learning Studio met de URL die wordt afgedrukt vanuit het Python-script.  
    :::column-end:::
 :::row-end:::
 
@@ -144,11 +143,11 @@ Voer uw besturingsscript uit, dat op zijn beurt `hello.py` uitvoert op het reken
 python 03-run-hello.py
 ```
 
-## <a name="monitor-your-code-in-the-cloud-using-studio"></a>Uw code in de cloud bewaken met studio
+## <a name="monitor-your-code-in-the-cloud-by-using-the-studio"></a>Uw code in de cloud bewaken met de studio
 
-De uitvoer bevat een link naar de Azure Machine Learning-studio die er ongeveer als volgt uitziet: `https://ml.azure.com/experiments/hello-world/runs/<run-id>?wsid=/subscriptions/<subscription-id>/resourcegroups/<resource-group>/workspaces/<workspace-name>`.
+De uitvoer bevat een link naar de studio die er ongeveer als volgt uitziet: `https://ml.azure.com/experiments/hello-world/runs/<run-id>?wsid=/subscriptions/<subscription-id>/resourcegroups/<resource-group>/workspaces/<workspace-name>`.
 
-Volg de link en navigeer naar het tabblad **Uitvoer en logboeken**. Hier ziet u een bestand `70_driver_log.txt`, als volgt:
+Volg de link en navigeer naar het tabblad **Uitvoer en logboeken**. Hier ziet u een bestand `70_driver_log.txt`, dat er als volgt uitziet:
 
 ```txt
  1: [2020-08-04T22:15:44.407305] Entering context manager injector.
@@ -186,4 +185,4 @@ In de volgende zelfstudie maakt u gebruik van de opgedane kennis en voert u iets
 > [Zelfstudie: een model trainen](tutorial-1st-experiment-sdk-train.md)
 
 >[!NOTE] 
-> Als u de reeks zelfstudies hier wilt voltooien en niet door wilt gaan met de volgende stap, moet u [uw resources opschonen](tutorial-1st-experiment-bring-data.md#clean-up-resources)
+> Als u de reeks zelfstudies nu wilt voltooien en niet wilt doorgaan met de volgende stap, moet u [uw resources opschonen](tutorial-1st-experiment-bring-data.md#clean-up-resources)

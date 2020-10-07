@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: quickstart
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: sstein, carlrab, bonova
+ms.reviewer: sstein, bonova
 ms.date: 12/14/2018
-ms.openlocfilehash: 0d10105648f434eb1d02a821e972e789bd39d66f
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 18f717ca05e93c9a8f06ac8868e9a6e5ff80eadb
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84708440"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355530"
 ---
 # <a name="quickstart-restore-a-database-to-azure-sql-managed-instance-with-ssms"></a>Quickstart: Een database terugzetten in Azure SQL Managed Instance met SQL Server Management Studio
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -76,7 +76,7 @@ Volg in SQL Server Management Studio deze stappen om de Wide World Importers-dat
      'https://mitutorials.blob.core.windows.net/databases/WideWorldImporters-Standard.bak'
    ```
 
-    ![De pagina Restore](./media/restore-sample-database-quickstart/restore.png)
+    ![Schermafbeelding met het script dat wordt uitgevoerd in Objectverkenner en het bericht dat de bewerking is voltooid.](./media/restore-sample-database-quickstart/restore.png)
 
 6. Voer het volgende script uit om de status van het terugzetten te volgen.
 

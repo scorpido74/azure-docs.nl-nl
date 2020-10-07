@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: d763511032ebff9116702b1f649751a4b7b52afd
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 56f7224d93293a0a26d09692996d2c4a4ace344b
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518993"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803735"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Een Azure Service Fabric-cluster implementeren via Beschikbaarheidszones
 Beschikbaarheidszones in Azure is een aanbieding met hoge Beschik baarheid die uw toepassingen en gegevens beveiligt tegen Data Center-fouten. Een beschikbaarheids zone is een unieke fysieke locatie die is voorzien van onafhankelijke voeding, koeling en netwerken binnen een Azure-regio.
@@ -150,7 +150,7 @@ Als u een zone wilt inschakelen, moet u op een schaalset voor virtuele machines 
 
 * De eerste waarde is de eigenschap **zones** , waarmee wordt opgegeven in welke beschikbaarheids zone de schaalset voor virtuele machines wordt geïmplementeerd.
 * De tweede waarde is de eigenschap ' singlePlacementGroup ', die moet worden ingesteld op True.
-* De derde waarde is de eigenschap ' faultDomainOverride ' in de Service Fabric extensie voor de virtuele-machine schaalset. De waarde voor deze eigenschap moet de regio en zone bevatten waarin deze schaalset voor virtuele machines wordt geplaatst. Voor beeld: "faultDomainOverride": "oostus/Az1" alle resources voor de schaalset van virtuele machines moeten in dezelfde regio worden geplaatst, omdat Azure Service Fabric clusters geen ondersteuning bieden voor meerdere regio's.
+* De derde waarde is de eigenschap ' faultDomainOverride ' in de Service Fabric extensie voor de virtuele-machine schaalset. De waarde voor deze eigenschap moet alleen de zone bevatten waarin deze schaalset voor de virtuele machine wordt geplaatst. Voor beeld: ' faultDomainOverride ': ' Az1 ' alle resources voor de schaalset van virtuele machines moeten in dezelfde regio worden geplaatst, omdat Azure Service Fabric-clusters geen ondersteuning bieden voor meerdere regio's.
 
 ```json
 {
@@ -183,7 +183,7 @@ Als u een zone wilt inschakelen, moet u op een schaalset voor virtuele machines 
             "systemLogUploadSettings": {
                 "Enabled": true
             },
-            "faultDomainOverride": "eastus/az1"
+            "faultDomainOverride": "az1"
         },
         "typeHandlerVersion": "1.0"
     }

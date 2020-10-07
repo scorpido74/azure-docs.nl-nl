@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 4fc5c44ab0fcee5cbf1faa2338f65fe12d779f37
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 67d6fb1f3cc359288ed942d915e186542a62b0fc
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85511792"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803939"
 ---
 # <a name="fail-over-to-a-storsimple-8000-series-physical-device"></a>Failover naar een fysiek StorSimple-apparaat in de 8000-serie
 
@@ -75,7 +75,7 @@ Voer de volgende stappen uit om uw apparaat terug te zetten naar een fysiek doel
    
    1. Selecteer het apparaat dat is gebruikt als doel apparaat voor het failoverproces.
 
-       ![Apparaat selecteren](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev14.png)
+       ![Apparaat 2 selecteren](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev14.png)
 
    2. Ga naar de Blade **volume containers** . Alle volume containers, samen met de volumes van het oude apparaat, moeten worden weer gegeven.
 

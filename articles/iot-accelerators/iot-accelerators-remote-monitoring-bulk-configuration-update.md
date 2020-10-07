@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: philmea
-ms.openlocfilehash: eaca93ac8a4e8c660be9618aefb27921a4e0a2eb
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 8309b625a590131c5f521335e180967ab2c2667c
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "77565575"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91363151"
 ---
 # <a name="tutorial-manage-your-connected-devices-in-bulk"></a>Zelfstudie: Uw verbonden apparaten bulksgewijs beheren
 
@@ -147,7 +147,7 @@ Gebruik het Azure storage-account om het nieuwe firmwarebestand te hosten in de 
 
 1. Wanneer het uploaden is voltooid, wordt het IoT DevKit-apparaat opnieuw opgestart. Wanneer het apparaat opnieuw is opgestart, wordt in het scherm van IoT DevKit **FW-versie: 1.0.0** weergegeven en ziet u dat er op nieuwe firmware wordt gecontroleerd:
 
-    ![ota-1](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-1.jpg)
+    ![Foto van het I o T DevKit-apparaat met een scherm waarop de firmwareversie wordt weergegeven en wordt gecontroleerd op nieuwe firmware.](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-1.jpg)
 
 ## <a name="create-a-device-configuration"></a>Een apparaatconfiguratie maken
 
@@ -248,23 +248,23 @@ In deze sectie gaat u een implementatie maken en uitvoeren die de apparaatconfig
 
 Na enkele minuten ontvangt de IoT DevKit de informatie van de nieuwe firmware en wordt het downloaden ervan naar het apparaat gestart:
 
-![ota-2](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-2.jpg)
+![Foto van het I o T DevKit-apparaat met een scherm waarop de nieuwe firmwareversie wordt weergegeven die wordt gedownload.](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-2.jpg)
 
 Afhankelijk van de snelheid van uw netwerk kan het downloaden enkele minuten duren. Wanneer de firmware is gedownload, worden de bestandsgrootte en CRC-waarde op het apparaat gecontroleerd. In het scherm op de MXChip wordt **passed** weergegeven als de controle is geslaagd.
 
-![ota-3](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-3.jpg)
+![Foto van het I o T DevKit-apparaat met een scherm waarop de firmwareversie wordt weergegeven en wordt aangegeven dat de verificatie is geslaagd.](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-3.jpg)
 
 Als de controle is geslaagd, wordt het apparaat opnieuw opgestart. U ziet een aftelling van **5** naar **0** voordat het apparaat opnieuw wordt opgestart.
 
-![ota-4](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-4.jpg)
+![Foto van het I o T DevKit-apparaat dat wordt voorbereid op opnieuw opstarten.](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-4.jpg)
 
 Wanneer het apparaat opnieuw is opgestart, wordt er een upgrade van de IoT DevKit bootloader uitgevoerd naar de nieuwe versie. De upgrade kan enkele seconden duren. In deze fase is het RGB-lampje van het apparaat rood en is het scherm leeg.
 
-![ota-5](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-5.jpg)
+![Foto van het I o T DevKit-apparaat waarop de upgrade wordt uitgevoerd. Er is geen scherm, maar wel een RGB-lampje dat rood brandt.](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-5.jpg)
 
 Wanneer het apparaat opnieuw is opgestart, werkt het IoT DevKit-apparaat met versie 1.0.1 van de firmware.
 
-![ota-6](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-6.jpg)
+![Foto van het I o T DevKit-apparaat met een scherm waarop de nieuwe firmwareversie wordt weergegeven.](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-6.jpg)
 
 Klik op de pagina **Implementaties** op een implementatie om de status van uw apparaten te zien wanneer ze worden bijgewerkt. U kunt de status van elk apparaat in de apparaatgroep en de door u opgegeven aangepaste metrische gegevens bekijken.
 

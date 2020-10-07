@@ -1,5 +1,5 @@
 ---
-title: Technische assets van virtuele Azure-machines maken
+title: Technische activa maken voor een Azure Marketplace-aanbieding voor virtuele machines
 description: Meer informatie over het maken en configureren van technische assets voor een virtuele machine (VM)-aanbieding voor Azure Marketplace.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -7,22 +7,22 @@ ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 08/14/2020
-ms.openlocfilehash: 07c8de2a9d94b51f7183829466bd68d56e19efba
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: a83532e2dd6fc8e83206a3b4a055170b40d131fd
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646801"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803514"
 ---
-# <a name="create-azure-virtual-machine-technical-assets"></a>Technische assets van virtuele Azure-machines maken
+# <a name="create-technical-assets-for-an-azure-marketplace-virtual-machine-offer"></a>Technische activa maken voor een Azure Marketplace-aanbieding voor virtuele machines
 
 Bij het publiceren van uw VM-installatie kopieën naar Azure Marketplace, valideert het Azure-team de VM-installatie kopie om te zorgen voor de opstart baarheid, beveiliging en Azure-compatibiliteit. Als een van de tests van hoge kwaliteit mislukt, mislukt de publicatie met een bericht met daarin de fout en mogelijke [rectificaties tappen](https://docs.microsoft.com/azure/marketplace/partner-center-portal/vm-certification-issues-solutions).
 
 In dit artikel wordt beschreven hoe u technische assets kunt maken en configureren voor een virtuele machine (VM)-aanbieding voor Azure Marketplace. Een VM bevat twee onderdelen: de virtuele harde schijf (VHD) van het besturings systeem en de optionele Vhd's met gekoppelde gegevens schijven:
 
-1. **VHD van het besturings systeem** : bevat het besturings systeem en de oplossing die met uw aanbieding wordt geïmplementeerd. Het proces van het voorbereiden van de VHD verschilt, afhankelijk van het feit of het een op Linux gebaseerde, op Windows gebaseerde of een op een maatwerk gebaseerde VM is.
+- **VHD van het besturings systeem**: bevat het besturings systeem en de oplossing die met uw aanbieding wordt geïmplementeerd. Het proces van het voorbereiden van de VHD verschilt, afhankelijk van het feit of het een op Linux gebaseerde, op Windows gebaseerde of een op een maatwerk gebaseerde VM is.
 
-2. **Vhd's met gegevens schijf** : toegewezen, permanente opslag voor een virtuele machine. Gebruik niet de VHD met het besturings systeem (bijvoorbeeld station C:) om permanente gegevens op te slaan.
+- **Vhd's met gegevens schijf**: toegewezen, permanente opslag voor een virtuele machine. Gebruik niet de VHD met het besturings systeem (bijvoorbeeld station C:) om permanente gegevens op te slaan.
 
 Een VM-installatie kopie bevat één besturingssysteem schijf en Maxi maal 16 gegevens schijven. Gebruik één VHD per gegevens schijf, zelfs als de schijf leeg is.
 
@@ -51,7 +51,7 @@ Overweeg het gebruik van een van de volgende script omgevingen om Vm's en Vhd's 
 
 Daarnaast kunt u de volgende hulpprogram ma's toevoegen aan uw ontwikkel omgeving:
 
-- [Azure-opslagverkenner](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
+- [Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
 - [Visual Studio Code](https://code.visualstudio.com/)
 
 ## <a name="create-a-vm-image-using-an-approved-base"></a>Een VM-installatie kopie maken met behulp van een goedgekeurde basis
@@ -98,17 +98,17 @@ Volg deze stappen om de installatie kopie van de basis-VM te maken op de [Azure 
 4. Selecteer **+ toevoegen** om de **ervaring een virtuele machine maken**te openen.
 5. Selecteer de installatie kopie in de vervolg keuzelijst of selecteer **Bladeren in alle open bare en persoonlijke installatie kopieën** om te zoeken of bladeren in alle beschik bare installatie kopieën van virtuele machines. Voorbeeld:
 
-    :::image type="content" source="media/vm/create-resource-group-example.png" alt-text="Toont een voor beeld van een VM-installatie kopie.":::
+    :::image type="content" source="media/vm/create-resource-group-example.png" alt-text="Toont het begin van het maken van een resource groep.":::
 
 6. Selecteer de grootte van de virtuele machine die u wilt implementeren met behulp van de volgende aanbevelingen:
     1. Als u van plan bent om de VHD on-premises te ontwikkelen, is de grootte niet van belang. Overweeg het gebruik van een van de kleinere Vm's.
     2. Als u van plan bent de installatie kopie in azure te ontwikkelen, kunt u een van de aanbevolen VM-grootten voor de geselecteerde installatie kopie gebruiken.
 
-    :::image type="content" source="media/vm/create-virtual-machine.png" alt-text="De selectie van de VM-grootte weer geven.":::
+    :::image type="content" source="media/vm/create-virtual-machine.png" alt-text="Toont het begin van het maken van een resource groep.":::
 
 7. Vouw in de sectie **schijven** het gedeelte **Geavanceerd** uit en stel de optie **Managed disks gebruiken** in op **Nee**.
 
-    :::image type="content" source="media/vm/use-managed-disks.png" alt-text="Hiermee wordt de optie voor het gebruik van beheerde schijven weer gegeven.":::
+    :::image type="content" source="media/vm/use-managed-disks.png" alt-text="Toont het begin van het maken van een resource groep.":::
 
 8. Geef de overige vereiste gegevens op om de virtuele machine te maken.
 9. Selecteer **beoordeling + maken** om uw keuzes te controleren. Als u het bericht **Validatie geslaagd** ziet, selecteert u **Maken**.
@@ -129,7 +129,7 @@ Maak een Gen2-VM (Generation 2) in Azure Portal.
 8. Selecteer een aanbevolen grootte voor de VM en grootte van de [ondersteunde generatie](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2#generation-2-vm-sizes) .
 9. Ga door met de stroom voor het maken van een virtuele machine in [Azure Portal](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal) .
 
-    :::image type="content" source="media/vm/vm-generation.png" alt-text="Hiermee wordt de optie voor het genereren van virtuele machines geselecteerd.":::
+    :::image type="content" source="media/vm/vm-generation.png" alt-text="Toont het begin van het maken van een resource groep.":::
 
 ## <a name="connect-to-your-azure-vm"></a>Verbinding maken met uw Azure VM
 
@@ -157,7 +157,7 @@ Als u verbinding wilt maken met een VM op basis van Linux, hebt u een SSH-client
 7. Open de PuTTy-toepassing.
 8. Voer in het dialoog venster PuTTy-configuratie het IP-adres of de DNS-naam van uw virtuele machine in.
 
-    :::image type="content" source="media/vm/putty-configuration.png" alt-text="Illustreert de PuTTy-Terminal instellingen en markeert de velden hostnaam en poort.":::
+    :::image type="content" source="media/vm/putty-configuration.png" alt-text="Toont het begin van het maken van een resource groep.":::
 
 9. Selecteer **openen** om een putty-Terminal te openen.
 10. Wanneer u hierom wordt gevraagd, voert u de account naam en het wacht woord in van uw Linux-VM-account.
@@ -179,7 +179,7 @@ Als Vm's toegang bieden tot het onderliggende besturings systeem, moet u ervoor 
 
 | VHD-grootte | Werkelijke grootte | Oplossing |
 | --- | --- | --- |
-| >500 TB | N.v.t. | Neem contact op met het ondersteunings team voor een uitzonderings goedkeuring. |
+| >500 TB | n.v.t. | Neem contact op met het ondersteunings team voor een uitzonderings goedkeuring. |
 | 250-500 TB | >200 GB wijkt af van de grootte van de BLOB | Neem contact op met het ondersteunings team voor een uitzonderings goedkeuring. |
 
 ### <a name="install-the-most-current-updates"></a>De meest recente updates installeren

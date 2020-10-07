@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 41713554273ed5d6548a35d0ac956d8ff5c74191
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2e3b2ee35352c2af4ae8196ba7c9699da761f83e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542518"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372490"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springer-link"></a>Zelfstudie: Azure Active Directory-integratie met Springer Link
 
@@ -39,7 +39,7 @@ U hebt het volgende nodig om Azure Active Directory-integratie met Springer Link
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
+In deze zelfstudie gaat u eenmalige aanmelding van Azure AD configureren en testen.
 
 * Springer Link ondersteunt door **SP** en **IDP** geïnitieerde eenmalige aanmelding
 
@@ -68,7 +68,6 @@ Om de integratie van Springer Link te configureren in Azure AD, moet u Springer 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding met Springer Link configureren en testen met behulp van een testgebruiker met de naam **Britta Simon**.
-Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure AD-gebruiker en de daaraan gerelateerde gebruiker in Springer Link tot stand is gebracht.
 
 Als u Azure AD-eenmalige aanmelding met Springer Link wilt configureren en testen, moet u de volgende stappen uitvoeren:
 
@@ -76,8 +75,7 @@ Als u Azure AD-eenmalige aanmelding met Springer Link wilt configureren en teste
 2. **[Eenmalige aanmelding voor Springer Link configureren](#configure-springer-link-single-sign-on)** : als u de instellingen voor eenmalige aanmelding aan de toepassingszijde wilt configureren.
 3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
 4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Testgebruiker voor Springer Link maken](#create-springer-link-test-user)** : als u een tegenhanger van Britta Simon in Springer Link wilt hebben die is gekoppeld aan de Azure Active Directory-weergave van de gebruiker.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
+5. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
@@ -120,21 +118,11 @@ Voer de volgende stappen uit om Azure AD-eenmalige aanmelding te configureren vo
 
 6. Op de pagina **Eenmalige aanmelding met SAML instellen** klikt u in de sectie **SAML-handtekeningcertificaat** op het pictogram Kopiëren om de **URL voor federatieve metagegevens van de app** te kopiëren en slaat u deze op uw computer op.
 
-    ![De link om het certificaat te downloaden](common/metadataxml.png)
-
-7. In de sectie **Springer Link instellen** kopieert u de juiste URL('s) op basis van uw behoeften.
-
-    ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
-
-    a. Aanmeldings-URL
-
-    b. Azure AD-id
-
-    c. Afmeldings-URL
+    ![De koppeling voor het downloaden van metagegevens](common/copy_metadataurl.png)
 
 ### <a name="configure-springer-link-single-sign-on"></a>Eenmalige aanmelding voor Springer Link configureren
 
-Als u eenmalige aanmelding aan de zijde van **Springer Link** wilt configureren, moet u de gekopieerde **app-URL voor federatieve metagegevens** en de correcte uit Azure Portal gekopieerde URL's verzenden naar het [ondersteuningsteam van Springer Link](mailto:identity@springernature.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding aan de zijde van **Springer Link** wilt configureren, moet u de gekopieerde **app-URL voor federatieve metagegevens** verzenden naar het [ondersteuningsteam van Springer Link](mailto:onlineservice@springernature.com). Het ondersteuningsteam van Springer Link gebruikt deze URL om de SAML-verbinding voor eenmalige aanmelding aan beide zijden in te stellen.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
@@ -186,10 +174,6 @@ In deze sectie geeft u Britta Simon toestemming om eenmalige aanmelding van Azur
 6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
-
-### <a name="create-springer-link-test-user"></a>Testgebruiker voor Springer Link maken
-
-In deze sectie maakt u een gebruiker met de naam Britta Simon in Springer Link. Neem contact op met het  [ondersteuningsteam van Springer link](mailto:identity@springernature.com) om de gebruikers toe te voegen in het Springer Link-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 

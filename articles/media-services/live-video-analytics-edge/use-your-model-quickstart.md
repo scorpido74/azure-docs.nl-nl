@@ -1,15 +1,15 @@
 ---
 title: Livevideo analyseren met uw eigen HTTP-model - Azure
-description: In deze quickstart gebruikt u computer vision om de livevideofeed van een (gesimuleerde) IP-camera te analyseren.
+description: In deze snelstart gebruikt u computer vision om de live videofeed van een (gesimuleerde) IP-camera te analyseren door uw eigen HTTP-model te gebruiken.
 ms.topic: quickstart
 ms.date: 04/27/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: 5fd7f1a7db323e3aa7971c1ced6fc588d6e60e37
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 07661fb1e9496aacff6f108a840e0c357f068d41
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684178"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336459"
 ---
 # <a name="quickstart-analyze-live-video-by-using-your-own-http-model"></a>Quickstart: Livevideo analyseren met uw eigen HTTP-model
 

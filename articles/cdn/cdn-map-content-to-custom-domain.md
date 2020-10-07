@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 06/11/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 4ca601a3f149d8287137265665379d407d10b988
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 08bbe1000d457cc4f4d6b655051ec640d4dcecf4
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192688"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362092"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>Zelfstudie: Een aangepast domein toevoegen aan uw Azure CDN-eindpunt
 Deze zelfstudie laat zien hoe u een aangepast domein toevoegt aan een Azure CDN-eindpunt (Content Delivery Network). Wanneer u een CDN-eindpunt gebruikt voor het leveren van inhoud, is een aangepast domein nodig als u wilt dat uw eigen domeinnaam zichtbaar is in de URL van uw CDN. Een zichtbare domeinnaam kan handig zijn voor uw klanten en nuttig zijn voor branding-doelen. 
@@ -90,7 +90,7 @@ Bijvoorbeeld: de procedure voor de registrar van een GoDaddy-domein is als volgt
 
 5. Vul de volgende velden van het CNAME-item in:
 
-    ![CNAME-vermelding](./media/cdn-map-content-to-custom-domain/cdn-cdnverify-cname-entry.png)
+    ![De schermopname toont de C NAME-vermelding met de waarden voor Type, Host, Verwijst naar en T T L voor een tijdelijk cdnverify-subdomein.](./media/cdn-map-content-to-custom-domain/cdn-cdnverify-cname-entry.png)
 
     - Type: Laat *CNAME* geselecteerd.
 
@@ -104,7 +104,7 @@ Bijvoorbeeld: de procedure voor de registrar van een GoDaddy-domein is als volgt
  
     De CNAME-vermelding wordt toegevoegd aan de tabel DNS-records.
 
-    ![Tabel DNS-records](./media/cdn-map-content-to-custom-domain/cdn-cdnverify-dns-table.png)
+    ![De schermopname laat zien dat de C NAME-vermelding is toegevoegd aan de tabel met D N S-records voor een tijdelijk cdnverify-subdomein.](./media/cdn-map-content-to-custom-domain/cdn-cdnverify-dns-table.png)
 
 
 ## <a name="associate-the-custom-domain-with-your-cdn-endpoint"></a>Het aangepaste domein koppelen aan uw CDN-eindpunt
@@ -188,7 +188,7 @@ Bijvoorbeeld: de procedure voor de registrar van een GoDaddy-domein is als volgt
 
 5. Vul de volgende velden van de CNAME-vermelding in:
 
-    ![CNAME-vermelding](./media/cdn-map-content-to-custom-domain/cdn-cname-entry.png)
+    ![De schermopname toont de C NAME-vermelding met de waarden voor Type, Host, Verwijst naar en T T L voor een permanent aangepast domein.](./media/cdn-map-content-to-custom-domain/cdn-cname-entry.png)
 
     - Type: Laat *CNAME* geselecteerd.
 
@@ -202,7 +202,7 @@ Bijvoorbeeld: de procedure voor de registrar van een GoDaddy-domein is als volgt
  
     De CNAME-vermelding wordt toegevoegd aan de tabel DNS-records.
 
-    ![Tabel DNS-records](./media/cdn-map-content-to-custom-domain/cdn-dns-table.png)
+    ![De schermopname laat zien dat de C NAME-vermelding is toegevoegd aan de tabel met D N S-records voor een permanent aangepast domein.](./media/cdn-map-content-to-custom-domain/cdn-dns-table.png)
 
 7. Als u een cdnverify CNAME-record hebt, selecteer dan het potloodpictogram ernaast en daarna het prullenbak-pictogram.
 

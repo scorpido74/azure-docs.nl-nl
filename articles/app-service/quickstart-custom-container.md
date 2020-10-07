@@ -7,12 +7,12 @@ ms.date: 08/28/2019
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 33eaf6274f2da09ab98a21e6028b0103df817744
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 4c95e345255b28ba43e474087cdb80fcab493394
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961360"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91356414"
 ---
 # <a name="run-a-custom-container-in-azure"></a>Een aangepaste container uitvoeren in Azure
 
@@ -57,7 +57,7 @@ Maak een ASP.NET-web-app door de volgende stappen uit te voeren:
 
 1. Als het bestand _Dockerfile_ niet automatisch wordt geopend, opent u het vanuit **Solution Explorer**.
 
-1. U hebt een [ondersteunde bovenliggende installatiekopie](#use-a-different-parent-image) nodig. Wijzig de bovenliggende installatiekopie door de regel `FROM` ​​te vervangen door de volgende code en het bestand op te slaan:
+1. U hebt een [ondersteunde bovenliggende installatiekopie](configure-custom-container.md#supported-parent-images) nodig. Wijzig de bovenliggende installatiekopie door de regel `FROM` ​​te vervangen door de volgende code en het bestand op te slaan:
 
    ```dockerfile
    FROM mcr.microsoft.com/dotnet/framework/aspnet:4.7.2-windowsservercore-ltsc2019
@@ -169,22 +169,16 @@ De gestreamde logboeken zien er ongeveer als volgt uit:
 
 ![Bijgewerkte web-app in Azure](./media/quickstart-custom-container/azure-web-app-updated.png)
 
-## <a name="use-a-different-parent-image"></a>Een andere bovenliggende installatiekopie gebruiken
-
-U mag ook een andere aangepaste Docker-installatiekopie gebruiken om de app uit te voeren. Kies echter wel de juiste [bovenliggende installatiekopie (basisinstallatiekopie)](https://docs.docker.com/develop/develop-images/baseimages/) voor het gewenste framework:
-
-- Als u .NET Framework-apps wilt implementeren, gebruikt u een bovenliggende installatiekopie op basis van de release Windows Server Core 2019 [LTSC (Long-Term Servicing Channel)](/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc). 
-- Als u .NET Core-apps wilt implementeren, gebruikt u een bovenliggende installatiekopie op basis van de release Windows Server Nano 1809 [SAC (Semi-Annual Servicing Channel)](/windows-server/get-started-19/servicing-channels-19#semi-annual-channel). 
-
-Het duurt enige tijd om een bovenliggende installatiekopie te downloaden tijdens het opstarten van de app. U kunt deze opstarttijd echter verminderen door een van de volgende bovenliggende installatiekopieën te gebruiken die al in cache zijn opgeslagen in Azure App Service:
-
-- [mcr.microsoft.com/dotnet/framework/aspnet](https://hub.docker.com/_/microsoft-dotnet-framework-aspnet/):4.7.2-windowsservercore-ltsc2019
-- [mcr.microsoft.com/windows/nanoserver](https://hub.docker.com/_/microsoft-windows-nanoserver/):1809 - deze installatiekopie is de basiscontainer die wordt gebruikt in verschillende Microsoft [ASP.NET Core](https://hub.docker.com/_/microsoft-dotnet-core-aspnet/) Microsoft Windows Nano Server-installatiekopieën.
-
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
 > [Migreren naar Windows-container in Azure](tutorial-custom-container.md)
+
+U kunt ook andere resources bekijken:
+
+> [!div class="nextstepaction"]
+> [Een aangepaste container configureren](configure-custom-container.md)
+
 ::: zone-end  
 
 ::: zone pivot="container-linux"
@@ -225,7 +219,7 @@ docker --version
 
 Controleer tot slot of uw Azure Container Registry is verbonden. Hiertoe selecteert u het Docker-logo in de balk Activiteit en gaat u vervolgens naar **REGISTERS**.
 
-![Registers](./media/quickstart-docker/registries.png)
+![Schermopname van de waarde Registers, met Azure uitgevouwen en een bestand met de bestandsextensie punt i o.](./media/quickstart-docker/registries.png)
 
 ## <a name="deploy-the-image-to-azure-app-service"></a>De installatiekopie implementeren naar Azure App Service
 
@@ -260,5 +254,10 @@ Bekijk hierna de andere Azure-extensies.
 * [Azure Resource Manager-hulpprogramma’s](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
 
 U kunt ze ook allemaal downloaden door het extensiepakket [Azure Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) te installeren.
+
+Bekijk andere resources:
+
+> [!div class="nextstepaction"]
+> [Een aangepaste container configureren](configure-custom-container.md)
 
 ::: zone-end

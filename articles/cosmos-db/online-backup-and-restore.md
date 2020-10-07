@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/24/2020
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 310fee91ed98409e5a724d1be8de7bc9ccb5601b
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 0db34a615c9d92401e760c702feb0dbbf13ce01d
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91570920"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803871"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Herstel van online back-ups en gegevens op aanvraag in Azure Cosmos DB
 
@@ -88,6 +88,13 @@ Wanneer u per ongeluk een Azure Cosmos-data base verwijdert, kunnen we de gehele
 Wanneer u per ongeluk een of meer items in een container verwijdert of wijzigt (het geval van gegevens beschadiging), moet u de tijd opgeven waarop u wilt herstellen. Tijd is belang rijk als er gegevens beschadigd zijn. Omdat de container Live is, wordt de back-up nog steeds uitgevoerd, dus als u na de Bewaar periode blijft (de standaard instelling is acht uur), worden de back-ups overschreven. **Als u wilt voor komen dat de back-up wordt overschreven, verhoogt u de retentie van de back-up voor uw account tot ten minste zeven dagen. Het is het beste om uw Bewaar periode binnen 8 uur na de beschadiging van de gegevens te verg Roten.**
 
 Als u uw gegevens per ongeluk hebt verwijderd of beschadigd, neemt u binnen 8 uur contact op met [Azure-ondersteuning](https://azure.microsoft.com/support/options/) , zodat het Azure Cosmos DB team u kan helpen bij het herstellen van de gegevens van de back-ups. Op deze manier kan het ondersteunings team van Azure Cosmos DB voldoende tijd hebben om uw account te herstellen.
+
+> [!NOTE]
+> Nadat u de gegevens hebt hersteld, worden niet alle bron functies of-instellingen overgedragen naar het herstelde account. De volgende instellingen worden niet overgedragen naar het nieuwe account:
+
+> * VNET-toegangs beheer lijsten
+> * Opgeslagen procedures, triggers en door de gebruiker gedefinieerde functies
+> * Instellingen voor meerdere regio's  
 
 Als u de door Voer inricht op database niveau, gebeurt het back-up-en herstel proces in dit geval op het hele database niveau en niet op het niveau van de afzonderlijke containers. In dergelijke gevallen kunt u geen subset van containers selecteren die u wilt herstellen.
 

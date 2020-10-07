@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 3/11/2019
 ms.author: rohink
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a15209351f95e44c7cf10993513e03ba35b53d27
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a08a3bb8e01d827b806dae269b65569cb415404d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494346"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91358590"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-cli"></a>Quickstart: Een Azure DNS-zone en -record maken met behulp van Azure CLI
 
@@ -92,7 +92,7 @@ Nu u een testzone hebt met daarin een DNS-record, kunt u de naamomzetting testen
 
    Er verschijnt een scherm dat er ongeveer als volgt uitziet:
 
-   ![nslookup](media/dns-getstarted-portal/nslookup.PNG)
+   ![In de schermafbeelding ziet u een opdrachtpromptvenster met een n s opzoek-opdracht en waarden voor Server, Adres, Naam en Adres.](media/dns-getstarted-portal/nslookup.PNG)
 
 De hostnaam **www\.contoso.xyz** wordt overeenkomstig uw configuratie omgezet in **10.10.10.10**. Met dit resultaat wordt gecontroleerd of de naamomzetting juist werkt.
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/24/2020
-ms.openlocfilehash: 2559c4f54aa19df248ddf756e376809dea516997
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5f076f477c36f96d1807ce7071720225a6df8e03
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330949"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803803"
 ---
 # <a name="azure-monitor-for-networks-preview"></a>Azure Monitor voor netwerken (preview-versie)
 Azure Monitor voor netwerk biedt een uitgebreid overzicht van de [status](https://docs.microsoft.com/azure/service-health/resource-health-checks-resource-types) en [metrische gegevens](../platform/metrics-supported.md) voor alle geïmplementeerde netwerk bronnen zonder enige configuratie.  Het biedt ook toegang tot alle mogelijkheden voor netwerk bewaking, zoals [verbindings monitor](../../network-watcher/connection-monitor-preview.md), [flow logboek registratie voor netwerk beveiligings groepen (nsg's)](../../network-watcher/network-watcher-nsg-flow-logging-overview.md), [Traffic Analytics](../../network-watcher/traffic-analytics.md)en andere [Diagnostische](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics) functies voor het netwerk.
@@ -108,6 +108,43 @@ Diagnostische Toolkit biedt toegang tot alle diagnostische functies die beschikb
 
 ![Het tabblad Diagnostische Toolkit](media/network-insights-overview/azure-monitor-for-networks-diagnostic-toolkit.png)
 
+## <a name="troubleshooting"></a>Problemen oplossen 
+
+Raadpleeg voor algemene richt lijnen voor probleem oplossing het [artikel specifieke informatie over probleem](troubleshoot-workbooks.md)oplossing op basis van een werkmap.
+
+Deze sectie helpt u bij het diagnosticeren en oplossen van problemen met enkele veelvoorkomende problemen die kunnen optreden bij het gebruik van Azure Monitor voor netwerken. Gebruik de onderstaande lijst om de informatie te vinden die relevant is voor uw specifieke probleem.
+
+### <a name="resolving-performance-issues-or-failures"></a>Prestatie problemen of fouten oplossen
+
+Raadpleeg de documentatie over het oplossen van problemen met een probleem met Azure Monitor voor netwerken voor meer informatie Hieronder vindt u een overzicht van problemen met de meest gebruikte services.
+* Virtual Network (VNET)
+* Application Gateway
+* VPN Gateway
+* ExpressRoute 
+* Load Balancer 
+
+### <a name="why-dont-i-see-the-resources-from-all-the-subscriptions-i-have-selected"></a>Waarom kan ik de resources niet zien van alle abonnementen die ik heb geselecteerd
+
+Netwerk inzichten kan alleen resources van 5 abonnementen tegelijk weer geven. 
+
+### <a name="i-want-to-make-changes-or-add-additional-visualizations-to-network-insights-how-do-i-do-so"></a>Ik wil wijzigingen aanbrengen of extra visualisaties toevoegen aan netwerk inzichten, hoe doe ik dit
+
+Als u wijzigingen wilt aanbrengen, selecteert u de modus ' bewerken ' om de werkmap te wijzigen. vervolgens kunt u uw werk opslaan als een nieuwe werkmap die is gekoppeld aan een aangewezen abonnement en resource groep.
+
+### <a name="what-is-the-time-grain-once-we-pin-any-part-of-the-workbooks"></a>Wat is de tijd korrel zodra een deel van de werkmappen is vastgemaakt
+
+We gebruiken de ' automatische ' tijd korrels, dus afhankelijk van het geselecteerde tijds bereik.
+
+### <a name="what-is-the-time-range-when-any-part-of-the-workbook-is-pinned"></a>Wat is het tijds bereik wanneer een deel van de werkmap is vastgemaakt
+
+Het tijds bereik is afhankelijk van de instellingen van het dash board.
+
+### <a name="what-if-i-want-to-see-other-data-or-make-my-own-visualizations-how-can-i-make-changes-to-the-network-insights"></a>Wat moet ik doen als ik andere gegevens wil zien of mijn eigen visualisaties wil maken? Hoe kan ik wijzigingen aanbrengen in de netwerk inzichten
+
+U kunt de werkmap die u ziet in een deel venster en gedetailleerde metrische weer gave bewerken met behulp van de bewerkings modus en vervolgens uw werk opslaan als een nieuwe werkmap die al uw nieuwe wijzigingen krijgt.
+
+
 ## <a name="next-steps"></a>Volgende stappen
 
 - Meer informatie over netwerk bewaking bij [Wat is Azure Network Watcher?](../../network-watcher/network-watcher-monitoring-overview.md).
+- Meer informatie over de scenario's werkmappen zijn ontworpen voor ondersteuning, het ontwerpen van nieuwe en het aanpassen van bestaande rapporten en meer door [interactieve rapporten maken met Azure monitor werkmappen](../platform/workbooks-overview.md)te controleren.
