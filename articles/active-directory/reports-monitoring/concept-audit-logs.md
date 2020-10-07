@@ -17,12 +17,12 @@ ms.date: 09/17/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23cfc2ea17e1801ec4caeea9e8933cfdc72e33d4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 994fe6c5005eeeab1399091dca5f72024fdd7262
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331247"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812587"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Controleactiviteitenrapporten in Azure Active Directory Portal 
 
@@ -35,6 +35,7 @@ De rapportage architectuur bestaat uit de volgende onderdelen:
 - **Activiteit** 
     - **Aanmeldingen** : het [rapport met aanmeldingen](concept-sign-ins.md) bevat informatie over het gebruik van beheerde toepassingen en aanmeldings activiteiten voor gebruikers.
     - **Auditlogboeken**: traceerbaarheid via logboeken voor alle door diverse functies binnen Azure AD uitgevoerde wijzigingen. Voor beelden van audit logboeken zijn wijzigingen die zijn aangebracht in resources binnen Azure AD, zoals het toevoegen of verwijderen van gebruikers, apps, groepen, rollen en beleid.
+    - **Inrichtings logboeken**  -  Met [inrichtings logboeken](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) kunnen klanten activiteiten controleren door de inrichtings service, zoals het maken van een groep in ServiceNow of een gebruiker die is geïmporteerd uit workday. 
 - **Beveiliging** 
     - **Risk ante aanmeldingen** : een [Risk ante aanmelding](../identity-protection/overview-identity-protection.md) is een indicator voor een aanmeldings poging die mogelijk is uitgevoerd door iemand die geen rechtmatige eigenaar van een gebruikers account is. 
     - **Gebruikers die zijn gemarkeerd voor risico** : een [Risk ante gebruiker](../identity-protection/overview-identity-protection.md) is een indicator voor een gebruikers account dat mogelijk is aangetast.
@@ -91,7 +92,7 @@ U kunt de controle gegevens filteren op de volgende velden:
 
 Met het **service** filter kunt u een keuze uit een vervolg keuzelijst van de volgende services selecteren:
 
-- Alles
+- Alle
 - AAD-beheer UX
 - Toegangsbeoordelingen
 - Account inrichten
@@ -113,7 +114,7 @@ Met het **service** filter kunt u een keuze uit een vervolg keuzelijst van de vo
 
 Met het filter **categorie** kunt u een van de volgende filters selecteren:
 
-- Alles
+- Alle
 - AdministrativeUnit
 - ApplicationManagement
 - Verificatie
@@ -127,7 +128,7 @@ Met het filter **categorie** kunt u een van de volgende filters selecteren:
 - KerberosDomain
 - Beheer van handelingen
 - Label
-- Anders
+- Overige
 - PermissionGrantPolicy
 - Beleid
 - ResourceManagement
@@ -140,7 +141,7 @@ U kunt de lijst met alle controle activiteiten ophalen met behulp van de Graph A
 
 Met het filter **status** kunt u filteren op basis van de status van een audit bewerking. De status kan een van de volgende zijn:
 
-- Alles
+- Alle
 - Geslaagd
 - Fout
 

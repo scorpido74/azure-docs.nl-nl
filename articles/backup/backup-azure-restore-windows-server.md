@@ -3,16 +3,16 @@ title: Bestanden herstellen naar Windows Server met behulp van de MARS-agent
 description: In dit artikel vindt u informatie over het herstellen van gegevens die zijn opgeslagen in azure naar een Windows-Server of Windows-computer met de Microsoft Azure Recovery Services-agent (MARS).
 ms.topic: conceptual
 ms.date: 09/07/2018
-ms.openlocfilehash: 0d2f9e8197ac397bf61e4cb293e354a10ba0e1da
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 79a4d32d6dbca5ca5be5d46c6b44a07ef42de061
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89178554"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91813250"
 ---
 # <a name="restore-files-to-windows-server-using-the-mars-agent"></a>Bestanden herstellen naar Windows Server met behulp van de MARS-agent
 
-In dit artikel wordt uitgelegd hoe u gegevens terugzet vanuit een back-upkluis. Als u gegevens wilt herstellen, gebruikt u de wizard gegevens herstellen in de MARS-agent (Microsoft Azure Recovery Services). U kunt het volgende doen:
+In dit artikel wordt uitgelegd hoe u gegevens terugzet vanuit een back-upkluis. Als u gegevens wilt herstellen, gebruikt u de wizard gegevens herstellen in de MARS-agent (Microsoft Azure Recovery Services). U kunt:
 
 * Gegevens herstellen op dezelfde computer waarvan de back-ups zijn gemaakt.
 * Gegevens herstellen naar een alternatieve machine
@@ -107,7 +107,7 @@ Deze stappen omvatten de volgende terminologie:
 
 5. Geef het kluis referentie bestand op dat overeenkomt met de voor beeld-kluis en selecteer **volgende**.
 
-    Als het kluis referentie bestand ongeldig is (of is verlopen), downloadt u een nieuw kluis referentie bestand van de voor beeld-kluis in de Azure Portal. Nadat u een geldige kluis referentie hebt verstrekt, wordt de naam van de bijbehorende back-upkluis weer gegeven.
+    Als het kluis referentie bestand ongeldig is (of is verlopen), [downloadt u een nieuw kluis referentie bestand van de voor beeld-kluis](backup-azure-file-folder-backup-faq.md#where-can-i-download-the-vault-credentials-file) in de Azure Portal. Nadat u een geldige kluis referentie hebt verstrekt, wordt de naam van de bijbehorende back-upkluis weer gegeven.
 
 6. Selecteer op de pagina **back-upserver selecteren** de bron machine uit de lijst met weer gegeven computers en geef de wachtwoordzin op. Selecteer vervolgens **Volgende**.
 

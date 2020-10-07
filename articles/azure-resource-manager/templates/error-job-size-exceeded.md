@@ -2,13 +2,13 @@
 title: Fout door taak grootte overschreden
 description: Hierin wordt beschreven hoe u fouten oplost wanneer de taak grootte of sjabloon te groot is.
 ms.topic: troubleshooting
-ms.date: 09/25/2020
-ms.openlocfilehash: 06645561964d9634d93061b3be4d100a578cc7e7
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.date: 10/07/2020
+ms.openlocfilehash: 5f0df102611dba8ce49da948b14110fff32dc2a9
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91373114"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812893"
 ---
 # <a name="resolve-errors-for-job-size-exceeded"></a>Fouten oplossen voor de taak grootte is overschreden
 
@@ -38,6 +38,10 @@ Uw eerste optie is om de sjabloon te vereenvoudigen. Deze optie werkt als uw sja
 
 U kunt andere resources instellen als afhankelijk van de gekoppelde sjabloon en [waarden ophalen uit de uitvoer van de gekoppelde sjabloon](linked-templates.md#get-values-from-linked-template).
 
-## <a name="solution-2---use-serial-copy"></a>Oplossing 2: een seriële kopie gebruiken
+## <a name="solution-2---reduce-name-size"></a>Oplossing 2: de naam grootte verlagen
+
+Probeer de lengte van de namen die u gebruikt voor [para meters](template-parameters.md), [variabelen](template-variables.md)en [uitvoer](template-outputs.md)in te korten. Wanneer deze waarden worden herhaald via Kopieer lussen, wordt een grote naam meermaals vermenigvuldigd. De uiteindelijke grootte van de sjabloon is onnodig groot.
+
+## <a name="solution-3---use-serial-copy"></a>Oplossing 3: een seriële kopie gebruiken
 
 De tweede optie is om uw kopie-lus te wijzigen van [parallel naar seriële verwerking](copy-resources.md#serial-or-parallel). Gebruik deze optie alleen als u vermoedt dat de fout afkomstig is van het implementeren van een groot aantal resources via een kopie. Met deze wijziging kan uw implementatie tijd aanzienlijk toenemen omdat de resources niet parallel worden geïmplementeerd.

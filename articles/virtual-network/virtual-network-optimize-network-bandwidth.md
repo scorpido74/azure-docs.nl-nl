@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/15/2017
+ms.date: 10/06/2020
 ms.author: steveesp
-ms.openlocfilehash: 7b693d10b4e1925e9c07111982a616b56b77e5b6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 20403b8c45120a53ea38fbbed60c8f96fd9d55e7
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87265140"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812842"
 ---
 # <a name="optimize-network-throughput-for-azure-virtual-machines"></a>Netwerk doorvoer optimaliseren voor virtuele Azure-machines
 
@@ -56,12 +56,12 @@ RSS is standaard altijd ingeschakeld in een Azure Linux-VM. Linux-kernels die si
 
 ### <a name="ubuntu-for-new-deployments"></a>Ubuntu voor nieuwe implementaties
 
-De Ubuntu Azure-kernel biedt de beste netwerk prestaties op Azure en is sinds 21 september 2017 de standaard kernel geweest. Als u deze kernel wilt ontvangen, moet u eerst de meest recente ondersteunde versie van 16,04-LTS als volgt installeren:
+De Ubuntu Azure-kernel is het meest geoptimaliseerd voor netwerk prestaties op Azure. Als u de meest recente optimalisaties wilt downloaden, moet u eerst de nieuwste ondersteunde versie van 18,04-LTS als volgt installeren:
 
 ```json
 "Publisher": "Canonical",
 "Offer": "UbuntuServer",
-"Sku": "16.04-LTS",
+"Sku": "18.04-LTS",
 "Version": "latest"
 ```
 
@@ -89,7 +89,7 @@ apt-get -y dist-upgrade
 
 #### <a name="ubuntu-azure-kernel-upgrade-for-existing-vms"></a>Upgrade van Azure kernel Ubuntu voor bestaande Vm's
 
-Belang rijke doorvoer prestaties kunnen worden bereikt door te upgraden naar de Azure Linux-kernel. Controleer of u deze kernel hebt door de versie van uw kernel te controleren.
+Belang rijke doorvoer prestaties kunnen worden bereikt door te upgraden naar de Azure Linux-kernel. Controleer of u deze kernel hebt door de versie van uw kernel te controleren. Deze moet gelijk zijn aan of hoger zijn dan het voor beeld.
 
 ```bash
 #Azure kernel name ends with "-azure"
@@ -117,7 +117,7 @@ Als u de nieuwste optimalisaties wilt ophalen, kunt u het beste een virtuele mac
 ```json
 "Publisher": "OpenLogic",
 "Offer": "CentOS",
-"Sku": "7.4",
+"Sku": "7.7",
 "Version": "latest"
 ```
 
@@ -152,6 +152,7 @@ sudo ./install.sh #or upgrade.sh if prior LIS was previously installed
 Meer informatie over Linux Integration Services versie 4,2 voor Hyper-V door de [Download pagina](https://www.microsoft.com/download/details.aspx?id=55106)weer te geven.
 
 ## <a name="next-steps"></a>Volgende stappen
+* Vm's op elkaar implementeren voor lage latentie met proximity- [plaatsings groep](../virtual-machines/windows/co-location.md)
 * Bekijk het geoptimaliseerde resultaat met [band breedte/door Voer Azure VM](virtual-network-bandwidth-testing.md) voor uw scenario.
 * Meer informatie over hoe [band breedte wordt toegewezen aan virtuele machines](virtual-machine-network-throughput.md)
 * Meer informatie met behulp van veelgestelde [vragen over Azure Virtual Network](virtual-networks-faq.md)

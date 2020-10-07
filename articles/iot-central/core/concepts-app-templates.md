@@ -7,12 +7,12 @@ ms.date: 10/25/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 0cf343ccd89ac5b00740d8c559538a0f97ec7905
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: dae2461336316defb6f2cfc63b775c67cf2196d0
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716568"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91813063"
 ---
 # <a name="what-are-application-templates"></a>Wat zijn toepassingssjablonen?
 
@@ -20,7 +20,7 @@ Toepassings sjablonen in azure IoT Central zijn een hulp programma waarmee oplos
 
 Toepassings sjablonen bestaan uit:
 
-- Voor beeld-operator dashboards
+- Voorbeelden van operatordashboards
 - Voorbeeld sjablonen voor apparaten
 - Gesimuleerde apparaten die real-time gegevens produceren
 - Vooraf geconfigureerde regels en taken
@@ -30,12 +30,7 @@ U kiest de toepassings sjabloon wanneer u uw toepassing maakt. U kunt de sjabloo
 
 ## <a name="custom-templates"></a>Aangepaste sjablonen
 
-Als u een volledig nieuwe toepassing wilt maken, kiest u een van de twee aangepaste toepassings sjablonen:
-
-- Aangepaste toepassing
-- Aangepaste toepassing (verouderd)
-
-Kies de sjabloon voor **aangepaste toepassingen** , tenzij u een specifieke reden hebt om de oude sjabloon te gebruiken.
+Als u een volledig nieuwe toepassing wilt maken, kiest u een van de sjabloon voor **aangepaste toepassingen** .
 
 ## <a name="industry-focused-templates"></a>Sjablonen voor branche gerichte
 

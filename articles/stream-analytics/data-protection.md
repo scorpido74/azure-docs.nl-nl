@@ -5,17 +5,37 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 03/05/2020
-ms.openlocfilehash: 637ac97d1e054599ec297344ff0c5fff600c8487
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 09/23/2020
+ms.openlocfilehash: fa37c251e61b1f920edc55ead38f745439f2de92
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045345"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812859"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Gegevens beveiliging in Azure Stream Analytics 
 
 Azure Stream Analytics is een volledig beheerd platform-as-a-service waarmee u realtime analyse pijplijnen kunt maken. Alle zware hijsing, zoals het inrichten van clusters, het schalen van knoop punten voor uw gebruik en het beheer van interne controle punten, wordt beheerd achter de schermen.
+
+## <a name="private-data-assets-that-are-stored"></a>Privé gegevens assets die zijn opgeslagen
+
+Azure Stream Analytics blijven de volgende meta gegevens en gegevens behouden om uit te voeren: 
+
+* Query definitie en de bijbehorende configuratie  
+
+* Door de gebruiker gedefinieerde functies of aggregaties  
+
+* Controle punten die nodig zijn voor de Stream Analytics runtime
+
+* Moment opnamen van referentie gegevens 
+
+* Verbindings Details van de resources die door uw Stream Analytics-taak worden gebruikt
+
+U kunt meer te weten komen over de [nalevings aanbiedingen van micro soft](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)om u te helpen te voldoen aan uw nalevings verplichtingen in een gereguleerde branche of omgeving. 
+
+## <a name="in-region-data-residency"></a>Gegevens locatie in de regio
+Azure Stream Analytics klant gegevens en andere meta gegevens die hierboven worden beschreven, worden opgeslagen. Klant gegevens worden standaard opgeslagen door Azure Stream Analytics in één regio, zodat deze service automatisch voldoet aan de vereisten van de regio gegevens locatie, inclusief die in het [vertrouwens centrum](https://azuredatacentermap.azurewebsites.net/).
+Daarnaast kunt u ervoor kiezen om alle gegevensassets (klant gegevens en andere meta gegevens) op te slaan die betrekking hebben op uw stream Analytics-taak in één regio door ze te versleutelen in een opslag account van uw keuze.
 
 ## <a name="encrypt-your-data"></a>Uw gegevens versleutelen
 
@@ -28,13 +48,20 @@ Deze instelling moet worden geconfigureerd op het moment dat de taak wordt gemaa
 Het is niet mogelijk om sleutels voor uw opslag account bij te werken of te roteren met behulp van de Stream Analytics Portal. U kunt de sleutels bijwerken met behulp van de REST-Api's.
 
 
-## <a name="configure-storage-account-for-private-data"></a>Opslag account voor privé gegevens configureren 
+### <a name="configure-storage-account-for-private-data"></a>Opslag account voor privé gegevens configureren 
+
+
+Versleutel uw opslag account om al uw gegevens te beveiligen en de locatie van uw privé gegevens expliciet te kiezen. 
+
+U kunt meer te weten komen over de [nalevings aanbiedingen van micro soft](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)om u te helpen te voldoen aan uw nalevings verplichtingen in een gereguleerde branche of omgeving. 
+
+
 
 Gebruik de volgende stappen om uw opslag account te configureren voor privé gegevensassets. Deze configuratie wordt uitgevoerd vanuit uw Stream Analytics-taak, niet vanuit uw opslag account.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
-1. Selecteer in de linkerbovenhoek van de Azure Portal **een resource maken** . 
+1. Selecteer in de linkerbovenhoek van Azure Portal **Een resource maken**. 
 
 1. Selecteer **analyse**   >  **Stream Analytics taak**   in de lijst met resultaten. 
 
@@ -46,24 +73,10 @@ Gebruik de volgende stappen om uw opslag account te configureren voor privé geg
 
    ![Instellingen voor het opslag account voor privé gegevens](./media/data-protection/storage-account-create.png)
 
-## <a name="private-data-assets-that-are-stored"></a>Privé gegevens assets die zijn opgeslagen
 
-Persoonlijke gegevens die door Stream Analytics moeten worden bewaard, worden opgeslagen in uw opslag account. Voor beelden van persoonlijke gegevens assets zijn: 
 
-* Query's die u hebt gemaakt en de bijbehorende configuraties  
-
-* Door de gebruiker gedefinieerde functies 
-
-* Controle punten die nodig zijn voor de Stream Analytics runtime
-
-* Moment opnamen van referentie gegevens 
-
-De verbindings Details van uw resources, die worden gebruikt door uw Stream Analytics-taak, worden ook opgeslagen. Versleutel uw opslag account om al uw gegevens te beveiligen. 
-
-U kunt meer te weten komen over de [nalevings aanbiedingen van micro soft](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)om u te helpen te voldoen aan uw nalevings verplichtingen in een gereguleerde branche of omgeving. 
-
-## <a name="known-issues"></a>Bekende problemen
-Er is een bekend probleem waarbij een taak die door de klant beheerde sleutel wordt gebruikt, wordt uitgevoerd bij het gebruik van beheerde identiteit om te verifiëren bij invoer of uitvoer. Er wordt een oplossing voor dit probleem gewerkt en deze wordt in de nabije toekomst beschikbaar. 
+### <a name="known-issues"></a>Bekende problemen
+Op dit moment is er sprake van een bekende beperking waarbij een taak die door de klant beheerde sleutel wordt gebruikt, wordt uitgevoerd bij het gebruik van beheerde identiteit om te verifiëren bij invoer of uitvoer.
 
 ## <a name="next-steps"></a>Volgende stappen
 

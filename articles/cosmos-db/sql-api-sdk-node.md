@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-js
-ms.openlocfilehash: 8334f8bbbdb6cad210839fc724c46834f559bf91
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 106f446c56377c1211d04e388608cd31e2aeef23
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91324364"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91804211"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Node.js SDK voor SQL API: release opmerkingen en bronnen
 > [!div class="op_single_selector"]
@@ -39,7 +39,7 @@ ms.locfileid: "91324364"
 |Resource  |Koppeling  |
 |---------|---------|
 |SDK downloaden  |   [NPM](https://www.npmjs.com/package/@azure/cosmos) 
-|API-documentatie  |  [Naslag documentatie voor Java script SDK](https://docs.microsoft.com/javascript/api/%40azure/cosmos/?view=azure-node-latest)
+|API-documentatie  |  [Naslag documentatie voor Java script SDK](https://docs.microsoft.com/javascript/api/%40azure/cosmos/?view=azure-node-latest&preserve-view=true)
 |SDK-installatie-instructies  |  [Installatie-instructies](https://github.com/Azure/azure-sdk-for-js)
 |Bijdragen aan SDK | [GitHub](https://github.com/Azure/azure-cosmos-js/tree/master)
 | Voorbeelden | [ Voor beelden vanNode.js code](sql-api-nodejs-samples.md)

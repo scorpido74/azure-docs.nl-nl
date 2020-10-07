@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 24d50635efb4d7fe18db9836311cf0a85dfcc734
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 39cd25c2c84e92a0b06bc2ee6c6229ecb2d296d5
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88118617"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812536"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Referenties voor het micro soft Identity platform en het OAuth 2,0 Resource owner-wacht woord
 
@@ -64,11 +64,11 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &grant_type=password
 ```
 
-| Parameter | Voorwaarde | Beschrijving |
+| Parameter | Conditie | Beschrijving |
 | --- | --- | --- |
 | `tenant` | Vereist | De Directory-Tenant waarvan u de gebruiker wilt registreren. Dit kan een GUID of beschrijvende naam zijn. Deze para meter kan niet worden ingesteld op `common` of `consumers` , maar kan worden ingesteld op `organizations` . |
 | `client_id` | Vereist | De ID van de toepassing (client) die de [Azure Portal-app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) pagina die aan uw app is toegewezen. |
-| `grant_type` | Vereist | Moet worden ingesteld op `password` . |
+| `grant_type` | Vereist | Moet worden ingesteld op `password`. |
 | `username` | Vereist | Het e-mailadres van de gebruiker. |
 | `password` | Vereist | Het wacht woord van de gebruiker. |
 | `scope` | Aanbevolen | Een door spaties gescheiden lijst met [bereiken](v2-permissions-and-consent.md)of machtigingen die voor de app zijn vereist. In een interactieve stroom moet de beheerder of de gebruiker vóór de tijd toestemming geven aan deze bereiken. |
@@ -112,5 +112,4 @@ Als de gebruiker geen juiste gebruikers naam of wacht woord heeft opgegeven, of 
 
 ## <a name="learn-more"></a>Meer informatie
 
-* Probeer ROPC voor uzelf uit met behulp van de [voorbeeld console toepassing](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2).
-* Lees over de [beperkingen van micro soft Identity-platform](../azuread-dev/azure-ad-endpoint-comparison.md)om te bepalen of u het v 2.0-eind punt moet gebruiken.
+Voor een voor beeld van het gebruik van ROPC raadpleegt u het [.net Core-Console toepassings](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2) code voorbeeld op github.

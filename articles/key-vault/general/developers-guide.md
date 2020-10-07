@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 662c23a29e383800a4591c900e02133c16fa2090
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: a04435b1e2feb537231bb80d2777b9ea2599c241
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743315"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812400"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Gids voor Azure Key Vault-ontwikkelaars
 
@@ -61,6 +61,11 @@ Zie voor meer informatie:
 | .NET | Python | Java | Javascript |
 |--|--|--|--|
 |[Azure Identity SDK .NET](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme)|[Azure Identity SDK python](https://docs.microsoft.com/python/api/overview/azure/identity-readme)|[Azure Identity SDK java](https://docs.microsoft.com/java/api/overview/azure/identity-readme)|[Azure Identity SDK java script](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme)|     
+
+Verifiëren bij Key Vault in toepassingen:
+- [Verifiëren bij Key Vault in de toepassing die in de virtuele machine wordt gehost in .NET](https://docs.microsoft.com/azure/key-vault/general/tutorial-net-virtual-machine)
+- [Verifiëren bij Key Vault in de toepassing die in de virtuele machine wordt gehost in python](https://docs.microsoft.com/azure/key-vault/general/tutorial-python-virtual-machine)
+- [Verifiëren bij Key Vault met App Service](https://docs.microsoft.com/azure/key-vault/general/tutorial-net-create-vault-azure-web-app)
 
 ## <a name="manage-keys-certificates-and-secrets"></a>Sleutels, certificaten en geheimen beheren
 
@@ -112,9 +117,13 @@ De volgende artikelen en scenario's bevatten toepassingsspecifieke richt lijnen 
 
 Deze artikelen zijn over andere scenario's en services die gebruikmaken van of worden geïntegreerd met Key Vault.
 
-- [Versleuteling bij REST met Key Vault](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
-
+- [Versleuteling op rest](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest) maakt het mogelijk om gegevens te coderen (versleuteling) wanneer deze persistent worden gemaakt. Gegevens versleutelings sleutels worden vaak versleuteld met een sleutel versleutelings sleutel in Azure Key Vault om de toegang verder te beperken.
 - Met [Azure Information Protection](/azure/information-protection/plan-implement-tenant-key) kunt u uw eigen Tenant sleutel beheren. In plaats van micro soft uw Tenant sleutel te laten beheren (standaard), kunt u bijvoorbeeld uw eigen Tenant sleutel beheren om te voldoen aan specifieke regels die van toepassing zijn op uw organisatie. Uw eigen tenantsleutel beheren wordt ook wel aangeduid als BYOK (Bring Your Own Key).
+- Met [Azure Private Link service](private-link-service.md) kunt u toegang krijgen tot Azure-Services (bijvoorbeeld Azure Key Vault, Azure Storage en Azure Cosmos DB) en Azure hostende klanten/partner services via een persoonlijk eind punt in uw virtuele netwerk.
+- Key Vault integratie met [Event grid](https://docs.microsoft.com/azure/event-grid/event-schema-key-vault)  kunnen gebruikers een melding ontvangen wanneer de status van een geheim dat is opgeslagen in de sleutel kluis is gewijzigd. U kunt een nieuwe versie van geheimen distribueren naar toepassingen of draaien in de buurt van verlopen geheimen om storingen te voor komen.
+- U kunt uw [Azure Devops](https://docs.microsoft.com/azure/devops/pipelines/release/azure-key-vault) -geheimen beveiligen tegen ongewenste toegang in Key Vault.
+- [Geheim dat is opgeslagen in Key Vault in DataBricks gebruiken om verbinding te maken met Azure Storage](https://docs.microsoft.com/azure/key-vault/general/integrate-databricks-blob-storage)
+- De Azure Key Vault-provider configureren en uitvoeren voor het [stuur programma voor geheimen Store CSI](https://docs.microsoft.com/azure/key-vault/general/key-vault-integrate-kubernetes) op Kubernetes
 
 ## <a name="key-vault-overviews-and-concepts"></a>Key Vault overzichten en concepten
 

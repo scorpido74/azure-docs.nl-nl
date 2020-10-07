@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/21/2017
+ms.date: 10/06/2020
 ms.author: steveesp
-ms.openlocfilehash: e5aa2c1c51fccddc3fb62d7ebdbadee19a2b093e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 0b009b7c44084e76194c1447fefdb2ff59f8086a
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87265174"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812281"
 ---
 # <a name="bandwidththroughput-testing-ntttcp"></a>Bandbreedte/doorvoer testen (NTTTCP)
 
@@ -26,7 +26,7 @@ Bij het testen van de prestaties van netwerk doorvoer in azure, kunt u het beste
 Kopieer het hulp programma naar twee virtuele Azure-machines met dezelfde grootte. Eén VM fungeert als afzender en de andere als ontvanger.
 
 #### <a name="deploying-vms-for-testing"></a>Vm's implementeren voor testen
-Voor de doel einden van deze test moeten de twee virtuele machines zich in dezelfde Cloud service of in dezelfde Beschikbaarheidsset bevinden, zodat we hun interne Ip's kunnen gebruiken en de load balancers van de test uitsluiten. Het is mogelijk om met het VIP te testen, maar dit type tests valt buiten het bereik van dit document.
+Voor de doel einden van deze test moeten de twee virtuele machines zich in dezelfde [nabijste plaatsings groep](../virtual-machines/windows/co-location.md) bevinden of op dezelfde beschikbaarheidsset zodat we hun interne ip's kunnen gebruiken en de load balancers van de test uitsluiten. Het is mogelijk om met het VIP te testen, maar dit type tests valt buiten het bereik van dit document.
 
 Noteer het IP-adres van de ontvanger. We bellen het IP-adres "a. b. c. r"
 
@@ -52,7 +52,7 @@ Sender para meters: ntttcp-s 10.27.33.7-t 10-n 1-P 1
 
 #### <a name="get-ntttcp-onto-the-vms"></a>NTTTCP op de virtuele machines ophalen.
 
-De nieuwste versie downloaden:<https://gallery.technet.microsoft.com/NTttcp-Version-528-Now-f8b12769>
+De nieuwste versie downloaden: <https://gallery.technet.microsoft.com/NTttcp-Version-528-Now-f8b12769>
 
 Of zoek deze indien verplaatst: <https://www.bing.com/search?q=ntttcp+download> \< --moet eerst worden bereikt
 
@@ -89,7 +89,7 @@ Wacht op de resultaten.
 
 ## <a name="testing-vms-running-linux"></a>Vm's met LINUX testen:
 
-Gebruik nttcp-for-Linux. Deze is beschikbaar via<https://github.com/Microsoft/ntttcp-for-linux>
+Gebruik nttcp-for-Linux. Deze is beschikbaar via <https://github.com/Microsoft/ntttcp-for-linux>
 
 Voer op de virtuele Linux-machines (zowel de afzender als de ontvanger) deze opdrachten uit om ntttcp-for-Linux op uw virtuele machines voor te bereiden:
 

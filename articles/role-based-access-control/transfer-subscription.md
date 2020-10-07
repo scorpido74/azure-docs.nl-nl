@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 10/06/2020
 ms.author: rolyon
-ms.openlocfilehash: fd8192b48f6923a8fe68abf674d6100c8b8e5a00
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: e5b0eb5fc9014a4f8df0f0cc363b5dddb45674af
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761869"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91804177"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Een Azure-abonnement overdragen naar een andere Azure AD-adres lijst
 
@@ -74,7 +74,7 @@ Verschillende Azure-resources hebben een afhankelijkheid van een abonnement of e
 | Azure Data Lake Storage Gen1 | Ja | Ja |  | U moet alle Acl's opnieuw maken. |
 | Azure Files | Ja | Ja |  | U moet alle Acl's opnieuw maken. |
 | Azure File Sync | Ja | Ja |  |  |
-| Azure Managed Disks | Ja | N.v.t. |  |  |
+| Azure Managed Disks | Ja | Ja |  |  Als u schijf versleutelings sets gebruikt om Managed Disks te versleutelen met door de klant beheerde sleutels, moet u de door het systeem toegewezen identiteiten die zijn gekoppeld aan de schijf versleutelings sets, uitschakelen en opnieuw inschakelen. En u moet de roltoewijzingen opnieuw maken, dus ken de vereiste machtigingen voor de schijf versleutelings sets in de sleutel kluizen opnieuw. |
 | Azure container Services voor Kubernetes | Ja | Ja |  |  |
 | Azure Active Directory Domain Services | Ja | Nee |  |  |
 | App-registraties | Ja | Ja |  |  |

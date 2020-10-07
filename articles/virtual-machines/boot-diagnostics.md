@@ -7,12 +7,12 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
 ms.date: 08/04/2020
-ms.openlocfilehash: b51b44f3a3d0889836bb41e0bf2fa37234338cf4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a8879bed4160c7cd1bd74cb196ce271964e384f7
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287080"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91813233"
 ---
 # <a name="azure-boot-diagnostics"></a>Diagnostische gegevens over Azure-opstarten
 
@@ -25,12 +25,14 @@ Een alternatieve ervaring voor het opstarten van diagnostische gegevens is het g
 
 > [!IMPORTANT]
 > Azure-klanten betalen niet voor de opslag kosten die zijn gekoppeld aan diagnostische gegevens over opstarten met behulp van een beheerd opslag account tot en met 2020 oktober.
+>
+> De gegevens-blobs van de opstart diagnose (met inbegrip van Logboeken en moment opnamen) worden opgeslagen in een beheerd opslag account. Klanten worden alleen in rekening gebracht op gebruikte GiBs door de blobs, niet op de ingerichte grootte van de schijf. De momentopname meters worden gebruikt voor de facturering van het beheerde opslag account. Omdat de beheerde accounts worden gemaakt op standaard-LRS of standaard-ZRS, worden klanten op $0,05/GB per maand gefactureerd voor de grootte van de blobs van de diagnostische gegevens. Zie [prijzen van Managed disks](https://azure.microsoft.com/pricing/details/managed-disks/)voor meer informatie over deze prijzen. Klanten krijgen deze kosten te zien die zijn gekoppeld aan hun VM-resource-URI. 
 
 ## <a name="boot-diagnostics-view"></a>Weer gave diagnostische gegevens over opstarten
 De optie diagnostische gegevens over opstarten bevindt zich op de Blade van de virtuele machine onder het gedeelte *ondersteuning en probleem oplossing* in de Azure Portal. Als u Diagnostische gegevens over opstarten selecteert, wordt een scherm opname en seriële logboek informatie weer gegeven. Het seriële logboek bevat kernel-berichten en de scherm opname is een moment opname van de huidige status van uw virtuele machines. Op basis van als op de virtuele machine Windows of Linux wordt uitgevoerd, wordt bepaald hoe de verwachte scherm afbeelding eruitziet. Voor Windows krijgen gebruikers een bureaublad achtergrond en voor Linux te zien, zien gebruikers een aanmeldings prompt.
 
 :::image type="content" source="./media/boot-diagnostics/boot-diagnostics-linux.png" alt-text="Scherm afbeelding van diagnostische gegevens over Linux-opstarten":::
-:::image type="content" source="./media/boot-diagnostics/boot-diagnostics-windows.png" alt-text="Scherm opname van Windows diagnostische gegevens over opstarten":::
+:::image type="content" source="./media/boot-diagnostics/boot-diagnostics-windows.png" alt-text="Scherm afbeelding van diagnostische gegevens over Linux-opstarten":::
 
 
 ## <a name="limitations"></a>Beperkingen

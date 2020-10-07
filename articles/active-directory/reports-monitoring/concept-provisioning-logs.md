@@ -1,6 +1,6 @@
 ---
 title: Inrichtings Logboeken in de Azure Active Directory-Portal (preview) | Microsoft Docs
-description: Inleiding tot het inrichtings activiteiten rapporten in de Azure Active Directory Portal
+description: Inleiding tot het inrichten van logboek rapporten in de Azure Active Directory Portal
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 09/02/2020
+ms.date: 10/07/2020
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8aa31c6e196f916b4c7633da0c54a30ab9d7b548
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 6109f35c42d4b4a44430eeb99ec115f4cdc1a619
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91361276"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812553"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Rapporten inrichten in de Azure Active Directory Portal (preview)
 
@@ -42,6 +42,7 @@ In dit onderwerp vindt u een overzicht van het inrichtings rapport.
 ## <a name="prerequisites"></a>Vereisten
 
 ### <a name="who-can-access-the-data"></a>Wie hebben er toegang tot de gegevens?
+* Toepassings eigenaren
 * Gebruikers in de rollen beveiligings beheerder, beveiligings lezer, rapport lezer, toepassings beheerder en Cloud toepassings beheerder
 * Globale beheerders
 
@@ -85,7 +86,7 @@ Hiermee kunt u extra velden weergeven of velden verwijderen die al worden weerge
 
 Selecteer een item in de lijst weergave voor meer gedetailleerde informatie.
 
-![Gedetailleerde informatie](./media/concept-provisioning-logs/steps.png "Filter")
+![Gedetailleerde informatie](./media/concept-provisioning-logs/steps.png "Filteren")
 
 
 ## <a name="filter-provisioning-activities"></a>Inrichtings activiteiten filteren
@@ -96,10 +97,10 @@ In de standaard weergave kunt u de volgende filters selecteren:
 - Identiteit
 - Date
 - Status
-- Actie
+- Bewerking
 
 
-![Filters toevoegen](./media/concept-provisioning-logs/default-filter.png "Filter")
+![Filters toevoegen](./media/concept-provisioning-logs/default-filter.png "Filteren")
 
 Met het **identiteits** filter kunt u de naam of de identiteit opgeven die u bevalt. Deze identiteit kan een gebruiker, een groep, een rol of een ander object zijn. U kunt zoeken op de naam of ID van het object. De ID is afhankelijk van het scenario. Wanneer u bijvoorbeeld een object inricht vanuit Azure AD naar Sales Force, is de bron-ID de object-ID van de gebruiker in azure AD terwijl de TargetID de ID van de gebruiker in Sales Force is. Bij het inrichten van workday naar Active Directory, is de bron-ID de werk nemer-ID van de werkdag. Houd er rekening mee dat de naam van de gebruiker mogelijk niet altijd aanwezig is in de identiteits kolom. Er wordt altijd één ID weer. 
 
@@ -118,7 +119,7 @@ Wanneer u een aangepast tijds bestek selecteert, kunt u een begin-en eind datum 
 
 Met het **status** filter kunt u het volgende selecteren:
 
-- Alles
+- Alle
 - Geslaagd
 - Fout
 - Overgeslagen
@@ -131,7 +132,7 @@ Met het **actie** filter kunt u het volgende filteren:
 - Bijwerken
 - Verwijderen
 - Uitschakelen
-- Anders
+- Overige
 
 Daarnaast kunt u aan de filters van de standaard weergave ook de volgende filters instellen:
 
@@ -190,7 +191,7 @@ Het tabblad **stappen** bevat een overzicht van de stappen voor het inrichten va
 
 
 
-![Scherm afbeelding toont het tabblad stappen, waarin de inrichtings stappen worden weer gegeven.](./media/concept-provisioning-logs/steps.png "Filter")
+![Scherm afbeelding toont het tabblad stappen, waarin de inrichtings stappen worden weer gegeven.](./media/concept-provisioning-logs/steps.png "Filteren")
 
 
 ### <a name="troubleshoot-and-recommendations"></a>Problemen oplossen en aanbevelingen
@@ -210,13 +211,11 @@ Op het tabblad **samen vatting** vindt u een overzicht van wat er is gebeurd en 
 
 ## <a name="what-you-should-know"></a>Wat u moet weten
 
-- In de Azure Portal worden de gemelde inrichtings gegevens 30 dagen opgeslagen als u een Premium-editie en 7 dagen hebt als u een gratis editie hebt.
+- In de Azure Portal worden de gemelde inrichtings gegevens 30 dagen opgeslagen als u een Premium-editie en 7 dagen hebt als u een gratis editie hebt. De inrichtings logboeken kunnen worden gepubliceerd naar log Analytics voor retentie na 30 dagen. 
 
 - U kunt het kenmerk ID wijzigen als unieke id gebruiken. Dit is bijvoorbeeld handig bij interactie met product ondersteuning.
 
 - Er is momenteel geen optie om inrichtings gegevens te downloaden als een CSV-bestand, maar u kunt de gegevens exporteren met behulp van [Microsoft Graph](https://docs.microsoft.com/graph/api/provisioningobjectsummary-list?view=graph-rest-beta&tabs=http).
-
-- Er is momenteel geen ondersteuning voor log Analytics.
 
 - Er worden mogelijk overgeslagen gebeurtenissen weer geven voor gebruikers die zich niet in het bereik bevinden. Dit wordt verwacht, vooral wanneer het synchronisatie bereik is ingesteld op alle gebruikers en groepen. Onze service evalueert alle objecten in de Tenant, zelfs degene die buiten het bereik vallen. 
 
@@ -252,3 +251,4 @@ Gebruik de onderstaande tabel voor meer informatie over het oplossen van fouten 
 
 * [De status van het inrichten van gebruikers controleren](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)
 * [Probleem bij het configureren van de gebruikers inrichting voor een Azure AD Gallery-toepassing](../app-provisioning/application-provisioning-config-problem.md)
+* [Graph-API voor het inrichtings logboek](https://docs.microsoft.com/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta)
