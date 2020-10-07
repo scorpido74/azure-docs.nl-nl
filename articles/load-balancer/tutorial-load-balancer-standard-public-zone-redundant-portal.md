@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: d9f16b612b508a6237c748bd135ff32618015b0b
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 4deab6fcadda36ad729096ff2f38e40ce81c7ae9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057004"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446102"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Zelfstudie: Met behulp van Azure Portal taakverdeling uitvoeren van virtuele machines over beschikbaarheidszones met een standaard Load Balancer
 
@@ -93,7 +93,7 @@ Maak een netwerkbeveiligingsgroep om binnenkomende verbindingen met uw virtuele 
     - *myNetworkSecurityGroup* als naam van de netwerkbeveiligingsgroep.
     - *myResourceGroupLBAZ* als naam van de bestaande resourcegroep.
    
-![Een virtueel netwerk maken](./media/load-balancer-standard-public-availability-zones-portal/create-nsg.png)
+![Schermopname toont het deelvenster Netwerkbeveiligingsgroep maken.](./media/load-balancer-standard-public-availability-zones-portal/create-nsg.png)
 
 ### <a name="create-network-security-group-rules"></a>Regels voor netwerkbeveiligingsgroepen
 
@@ -112,7 +112,7 @@ In deze sectie maakt u netwerkbeveiligingsgroepsregels om inkomende verbindingen
     - *Allow HTTP* als beschrijving van de taakverdelingsregel.
 4. Klik op **OK**.
  
-   ![Een virtueel netwerk maken](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
+   ![Schermopname toont het deelvenster Inkomende beveiligingsregel toevoegen.](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
 5. Herhaal stap 2 t/m 4 om nog een regel te maken (*myRDPRule*) om een binnenkomende RDP-verbinding toe te staan via poort 3389 met de volgende waarden:
     - *Service Tag* bij **Bron**.
     - *Internet* bij **Bronservicetag**

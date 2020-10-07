@@ -4,12 +4,12 @@ description: Meer informatie over het detecteren van on-premises virtuele Hyper-
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: eb17ba9fc1b68f09f60e857cd20a3f0885bfdb05
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: e62effc31ab5dbc687e0509617b89561c5f2a3b6
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90603948"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442327"
 ---
 # <a name="tutorial-discover-hyper-v-vms-with-server-assessment"></a>Zelfstudie: Virtuele Hyper-V-machines detecteren met Azure Migrate-serverevaluatie
 
@@ -39,7 +39,7 @@ Controleer of deze vereisten aanwezig zijn voordat u met deze zelfstudie begint.
 **Vereiste** | **Details**
 --- | ---
 **Hyper-V-host** | Hyper-V-hosts waarop virtuele machine zich bevinden kunnen zelfstandig zijn of deel uitmaken van een cluster.<br/><br/> Op deze host moet Windows Server 2019 R2, Windows Server 2016 of Windows Server 2012 R2 worden uitgevoerd.<br/><br/> Controleer of binnenkomende verbindingen zijn toegestaan op WinRM-poort 5985 (HTTP), zodat het apparaat verbinding kan maken om metagegevens en prestatiegegevens van de virtuele machine te verzamelen tijdens een Common Information Model-sessie (CIM).
-**Implementatie van het apparaat** | vCenter Server heeft resources nodig om een virtuele machine toe te wijzen voor het apparaat:<br/><br/> - Windows Server 2016<br/><br/> \- 32 GB aan RAM-geheugen<br/><br/> - Acht vCPU’s<br/><br/> - Ongeveer 80 GB aan schijfruimte.<br/><br/> - Een externe virtuele switch.<br/><br/> - Internettoegang voor de virtuele machine, rechtstreeks of via een proxy.
+**Implementatie van het apparaat** | Hyper-V-host heeft resources nodig om een virtuele machine toe te wijzen voor het apparaat:<br/><br/> - Windows Server 2016<br/><br/> \- 16 GB aan RAM-geheugen<br/><br/> - Acht vCPU’s<br/><br/> - Ongeveer 80 GB aan schijfruimte.<br/><br/> - Een externe virtuele switch.<br/><br/> - Internettoegang voor de virtuele machine, rechtstreeks of via een proxy.
 **VM's** | Op virtuele machines kan elk Windows- of Linux-besturingssysteem worden uitgevoerd. 
 
 Voordat u begint, kunt u [de gegevens controleren](migrate-appliance.md#collected-data---hyper-v) die door het apparaat worden verzameld tijdens de detectie.
@@ -72,6 +72,8 @@ Als u net pas een gratis Azure-account hebt gemaakt, bent u de eigenaar van uw a
 8. Controleer onder **Gebruikersinstellingen** of Azure AD-gebruikers toepassingen kunnen registreren (standaard ingesteld op **Ja**).
 
     ![Verifiëren onder Gebruikersinstellingen of gebruikers Active Directory-apps kunnen registreren](./media/tutorial-discover-hyper-v/register-apps.png)
+
+9. Als alternatief kan een tenant/globale beheerder de rol van **toepassingsontwikkelaar** toewijzen aan het account om de registratie van AAD-apps mogelijk te maken. [Meer informatie](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
 
 ## <a name="prepare-hyper-v-hosts"></a>Hyper-V-hosts voorbereiden
 
@@ -135,7 +137,7 @@ Controleer of het zip-bestand veilig is voordat u het implementeert.
 
 2. Gebruik de volgende PowerShell-opdracht om de hash voor het zip-bestand te genereren
     - ```C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm]```
-    - Gebruiksvoorbeeld: ```C:\>Get-FileHash -Path ./AzureMigrateAppliance_v1.19.06.27.zip -Algorithm SHA256```
+    - Gebruiksvoorbeeld: ```C:\>Get-FileHash -Path ./AzureMigrateAppliance_v3.20.09.25.zip -Algorithm SHA256```
 
 3.  Controleer de meest recente versie van het apparaat en de hashwaarden:
 
@@ -143,13 +145,13 @@ Controleer of het zip-bestand veilig is voordat u het implementeert.
 
         **Scenario** | **Downloaden** | **SHA256**
         --- | --- | ---
-        Hyper-V (10.4 GB) | [Nieuwste versie](https://go.microsoft.com/fwlink/?linkid=2140422) |  79c151588de049cc102f61b910d6136e02324dc8d8a14f47772da351b46d9127
+        Hyper-V (8,91 GB) | [Nieuwste versie](https://go.microsoft.com/fwlink/?linkid=2140422) |  40aa037987771794428b1c6ebee2614b092e6d69ac56d48a2bbc75eeef86c99a
 
     - Voor Azure Government:
 
         **Scenario*** | **Downloaden** | **SHA256**
         --- | --- | ---
-        Hyper-V (85 MB) | [Nieuwste versie](https://go.microsoft.com/fwlink/?linkid=2140424) |  0769c5f8df1e8c1ce4f685296f9ee18e1ca63e4a111d9aa4e6982e069df430d7
+        Hyper-V (85,8 MB) | [Nieuwste versie](https://go.microsoft.com/fwlink/?linkid=2140424) |  cfed44bb52c9ab3024a628dc7a5d0df8c624f156ec1ecc3507116bae330b257f
 
 ### <a name="create-the-appliance-vm"></a>Het VM-apparaat maken
 
@@ -214,7 +216,7 @@ Als u VHD's uitvoert op SMB's, moet u de delegatie van referenties van het appar
 1. Voer deze opdracht uit op de apparaat-VM. HyperVHost1/HyperVHost2 zijn voorbeelden van hostnamen.
 
     ```
-    Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com HyperVHost2.contoso.com -Force
+    Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com, HyperVHost2.contoso.com, HyperVHost1, HyperVHost2 -Force
     ```
 
 2. U kunt dit ook doen in de editor voor Lokaal groepsbeleid op het apparaat:

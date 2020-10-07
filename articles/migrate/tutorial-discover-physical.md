@@ -4,12 +4,12 @@ description: Meer informatie over het detecteren van on-premises fysieke servers
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: 0436ce3a02b6e271a62fe827d1a2d9a8b77dbfbe
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 00fb4073bc8a7b1375f92202b5a6bd0a59a23816
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90600735"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442288"
 ---
 # <a name="tutorial-discover-physical-servers-with-server-assessment"></a>Zelfstudie: Fysieke servers detecteren met Serverevaluatie
 
@@ -37,7 +37,7 @@ Controleer of deze vereisten aanwezig zijn voordat u met deze zelfstudie begint.
 
 **Vereiste** | **Details**
 --- | ---
-**Apparaat** | U hebt een machine nodig waarop het Azure Migrate-apparaat kan worden uitgevoerd. De machine moet aan de volgende voorwaarden voldoen:<br/><br/> -Windows Server 2016 is geïnstalleerd. Het apparaat wordt niet ondersteund op een machine met Windows Server 2019.<br/><br/> -16 GB RAM, 8 vCPU's, ongeveer 80 GB opslagruimte en een externe virtuele switch.<br/><br/> -Een statisch of dynamisch IP-adres met internettoegang, hetzij rechtstreeks of via een proxy.
+**Apparaat** | U hebt een machine nodig waarop het Azure Migrate-apparaat kan worden uitgevoerd. De machine moet aan de volgende voorwaarden voldoen:<br/><br/> - Windows Server 2016 is geïnstalleerd. _(Momenteel wordt de implementatie van apparaten alleen ondersteund voor Windows Server 2016.)_<br/><br/> - Ongeveer 16 GB RAM, 8 vCPU's en 80 GB schijfruimte.<br/><br/> - Een statisch of dynamisch IP-adres met internettoegang, hetzij rechtstreeks of via een proxy.
 **Windows-servers** | Sta binnenkomende verbindingen op WinRM-poort 5985 (HTTP) toe, zodat het apparaat metagegevens over de configuratie en prestaties kan ophalen.
 **Linux-servers** | Sta binnenkomende verbindingen op poort 22 (TCP) toe.
 
@@ -69,7 +69,7 @@ Als u net pas een gratis Azure-account hebt gemaakt, bent u de eigenaar van uw a
 
     ![Verifiëren onder Gebruikersinstellingen of gebruikers Active Directory-apps kunnen registreren](./media/tutorial-discover-physical/register-apps.png)
 
-
+9. Als alternatief kan een tenant/globale beheerder de rol van **toepassingsontwikkelaar** toewijzen aan het account om de registratie van AAD-apps mogelijk te maken. [Meer informatie](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
 
 ## <a name="prepare-physical-servers"></a>Fysieke servers voorbereiden
 
@@ -97,7 +97,7 @@ Stel als volgt een nieuw Azure Migrate-project in.
 7. Selecteer **Maken**.
 8. Wacht een paar minuten tot het Azure Migrate-project is geïmplementeerd.
 
-Het **Azure Migrate: serverevaluatie**-hulpprogramma wordt standaard toegevoegd aan het nieuwe project.
+Het hulpprogramma **Azure Migrate: Serverevaluatie** wordt standaard toegevoegd aan het nieuwe project.
 
 ![Pagina waarop wordt weergegeven dat het hulpprogramma Serverevaluatie standaard wordt toegevoegd](./media/tutorial-discover-physical/added-tool.png)
 
@@ -139,13 +139,13 @@ Controleer of het zip-bestand veilig is voordat u het implementeert.
 
         **Scenario** | **Downloaden*** | **Hash-waarde**
         --- | --- | ---
-        Fysiek (85 MB) | [Nieuwste versie](https://go.microsoft.com/fwlink/?linkid=2140334) | 207157bab39303dca1c2b93562d6f1deaa05aa7c992f480138e17977641163fb
+        Fysiek (85,8 MB) | [Nieuwste versie](https://go.microsoft.com/fwlink/?linkid=2140334) | ce5e6f0507936def8020eb7b3109173dad60fc51dd39c3bd23099bc9baaabe29
 
     - Voor Azure Government:
 
         **Scenario** | **Downloaden*** | **Hash-waarde**
         --- | --- | ---
-        Fysiek (85 MB) | [Nieuwste versie](https://go.microsoft.com/fwlink/?linkid=2140338) | ca67e8dbe21d113ca93bfe94c1003ab7faba50472cb03972d642be8a466f78ce
+        Fysiek (85,8 MB) | [Nieuwste versie](https://go.microsoft.com/fwlink/?linkid=2140338) | ae132ebc574caf231bf41886891040ffa7abbe150c8b50436818b69e58622276
  
 
 ### <a name="run-the-azure-migrate-installer-script"></a>Het Azure Migrate-installatiescript uitvoeren

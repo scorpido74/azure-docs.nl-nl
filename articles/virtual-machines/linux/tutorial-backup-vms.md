@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1865d307e7b79e7e40b0e98f2dcfa2535b0313fd
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 08e6491e1d8d94e8e6e9112e5a19682018103325
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551704"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400346"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>Zelfstudie: Back-ups maken en bestanden herstellen voor virtuele Linux-machines in Azure
 
@@ -70,7 +70,7 @@ In dit voorbeeld laten we zien hoe u de standaard-nginx-webpagina herstelt /var/
  
 1. Open een browser op de lokale computer, en typ het openbare IP-adres van de VM om de standaard-nginx-webpagina te zien.
 
-    ![Standaard-nginx-webpagina](./media/tutorial-backup-vms/nginx-working.png)
+    ![Schermopname met de standaard nginx-webpagina.](./media/tutorial-backup-vms/nginx-working.png)
 
 1. SSH in uw VM.
 
@@ -86,7 +86,7 @@ In dit voorbeeld laten we zien hoe u de standaard-nginx-webpagina herstelt /var/
     
 4. Vernieuw de browser op de lokale computer met Ctrl+F5 om te kijken of de standaard-nginx-pagina weg is.
 
-    ![Standaard-nginx-webpagina](./media/tutorial-backup-vms/nginx-broken.png)
+    ![Schermopname waarin de standaard nginx-webpagina verdwenen is.](./media/tutorial-backup-vms/nginx-broken.png)
     
 1. Meld u op de lokale computer aan bij [Azure Portal](https://portal.azure.com/).
 6. Selecteer **Virtuele machines** in het menu aan de linkerkant. 

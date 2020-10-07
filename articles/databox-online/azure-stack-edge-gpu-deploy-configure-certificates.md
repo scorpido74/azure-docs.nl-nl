@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure certificates for Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 5be484c613c4a18e86df7b5a83f95ca75aec6077
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7854aff0b4194efae7c4df653dee18e2676fdd41
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903396"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446318"
 ---
 # <a name="tutorial-configure-certificates-for-your-azure-stack-edge-pro-with-gpu"></a>Zelfstudie: Certificaten voor uw Azure Stack Edge Pro met GPU configureren
 
@@ -51,11 +51,11 @@ Zorg dat aan deze voorwaarden is voldaan voordat u uw Azure Stack Edge Pro-appar
 
     - Als u de apparaatnaam of het DNS-domein hebt gewijzigd, ziet u dat de status van certificaten wordt weergegeven als **Niet geldig**. 
 
-        ![Pagina Certificaten van lokale webinterface](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-1.png)    
+        ![Pagina 2 Certificaten van lokale webinterface](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-1.png)    
 
         Selecteer een certificaat om de details van de status weer te geven.
 
-        ![Pagina Certificaten van lokale webinterface](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-1a.png)  
+        ![Pagina 3 Certificaten van lokale webinterface](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-1a.png)  
 
         Dit komt doordat de certificaten niet overeenkomen met de bijgewerkte apparaatnaam en het DNS-domein (die worden gebruikt bij onderwerpnaam en alternatief onderwerp). Kies een van de volgende opties om uw apparaat te activeren: 
     
@@ -108,11 +108,11 @@ Gebruik de volgende stappen om de Azure Stack Edge Pro-apparaatcertificaten opni
 
 4. Selecteer de downloadkoppeling voor een certificaat en sla het certificaat op wanneer dit wordt gevraagd. 
 
-    ![Genereer en download certificaat 6](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-7.png)
+    ![Genereer en download certificaat 8](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-7.png)
 
 5. Herhaal dit proces voor alle certificaten die u wilt downloaden. 
     
-    ![Genereer en download certificaat 7](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-8.png)
+    ![Genereer en download certificaat 9](./media/azure-stack-edge-gpu-deploy-configure-certificates/generate-certificate-8.png)
 
     De door het apparaat gegenereerde certificaten worden opgeslagen als DER-certificaten met de volgende naamindeling: 
 
@@ -135,31 +135,31 @@ Volg deze stappen om uw eigen certificaten met inbegrip van de ondertekeningsket
 
 1. Als u een certificaat wilt uploaden, selecteert u op de pagina **Certificaat** de optie **+ Certificaat toevoegen**.
 
-    ![Pagina Certificaten van lokale webinterface](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-1.png)
+    ![Pagina 4 Certificaten van lokale webinterface](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-1.png)
 
 2. Upload eerst de ondertekeningsketen en selecteer **Valideren en toevoegen**.
 
-    ![Pagina Certificaten van lokale webinterface](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-2.png)
+    ![Pagina 5 Certificaten van lokale webinterface](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-2.png)
 
 3. U kunt nu andere certificaten uploaden. U kunt bijvoorbeeld de Azure Resource Manager- en Blob Storage-eindpuntcertificaten uploaden.
 
-    ![Pagina Certificaten van lokale webinterface](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-3.png)
+    ![Pagina 6 Certificaten van lokale webinterface](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-3.png)
 
     U kunt ook het lokale webinterfacecertificaat uploaden. Nadat u dit certificaat hebt geüpload, wordt u gevraagd om uw browser te starten en de cache te wissen. Vervolgens moet u verbinding maken met de lokale webinterface van het apparaat.  
 
-    ![Pagina Certificaten van lokale webinterface](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-5.png)
+    ![Pagina 7 Certificaten van lokale webinterface](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-5.png)
 
     U kunt ook het knooppuntcertificaat uploaden.
 
-    ![Pagina Certificaten van lokale webinterface](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-4.png)
+    ![Pagina 8 Certificaten van lokale webinterface](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-4.png)
 
     U kunt op elk gewenst moment een certificaat selecteren en de details weergeven om ervoor te zorgen dat deze overeenkomen met het certificaat dat u hebt geüpload.
 
-    ![Pagina Certificaten van lokale webinterface](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-6.png)
+    ![Pagina 9 Certificaten van lokale webinterface](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-6.png)
 
     De certificaatpagina zou moeten worden bijgewerkt en de zojuist toegevoegde certificaten weergeven.
 
-    ![Pagina Certificaten van lokale webinterface](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-7.png)  
+    ![Pagina 10 Certificaten van lokale webinterface](./media/azure-stack-edge-gpu-deploy-configure-certificates/add-certificate-7.png)  
 
     > [!NOTE]
     > Met uitzondering van de openbare Azure-cloud moeten ondertekeningsketencertificaten worden ingesteld voordat alle cloudconfiguraties worden geactiveerd (Azure Government of Azure Stack).

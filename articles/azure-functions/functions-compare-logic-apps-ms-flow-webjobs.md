@@ -4,12 +4,12 @@ description: 'Vergelijk Microsoft cloud-services die zijn geoptimaliseerd voor i
 ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
-ms.openlocfilehash: 2e0d8f356ec8da900b4a38399ba94434c3b1b93d
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 2c17b311811fd2cba46db379fcc766c04dd9d56d
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809966"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403072"
 ---
 # <a name="choose-the-right-integration-and-automation-services-in-azure"></a>Kies de juiste integratie- en automatiseringsservices in Azure
 
@@ -41,7 +41,7 @@ Raadpleeg de volgende tabel om te bepalen of Power Automate of Logic Apps het me
 | **Ontwerpomgeving** |In browser en mobiele app, alleen UI |In browser en [Visual Studio](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), [codeweergave](../logic-apps/logic-apps-author-definitions.md) beschikbaar |
 | **Application lifecycle management (ALM)** |Ontwerpen en testen in niet-productieomgevingen, niveau verhogen naar productie wanneer u klaar bent |Azure DevOps: broncodebeheer, testen, ondersteuning, automatisering en beheersbaarheid in [Azure Resource Manager](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md) |
 | **Beheerervaring** |Beleidsregels voor Power Automate-omgevingen en preventie van gegevensverlies beheren, licenties bijhouden: [Beheercentrum](https://admin.flow.microsoft.com) |Resourcegroepen, verbindingen, toegangsbeheer en logboekregistratie beheren: [Azure-portal](https://portal.azure.com) |
-| **Beveiliging** |Office 365-beveiliging en auditlogboeken voor naleving, preventie van gegevensverlies, [inactieve versleuteling](https://wikipedia.org/wiki/Data_at_rest#Encryption) voor gevoelige gegevens |Beveiligingscontrole van Azure: [Azure-beveiliging](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity), [Azure Security Center](https://azure.microsoft.com/services/security-center/), [auditlogboeken](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/) |
+| **Beveiliging** |Microsoft 365-logboeken voor beveiligingscontrole, preventie van gegevensverlies, [inactieve versleuteling](https://wikipedia.org/wiki/Data_at_rest#Encryption) voor gevoelige gegevens |Beveiligingscontrole van Azure: [Azure-beveiliging](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity), [Azure Security Center](https://azure.microsoft.com/services/security-center/), [auditlogboeken](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/) |
 
 ## <a name="compare-azure-functions-and-azure-logic-apps"></a>Azure Functions en Azure Logic Apps vergelijken
 

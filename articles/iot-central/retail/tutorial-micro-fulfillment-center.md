@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 01/09/2020
-ms.openlocfilehash: 880d8ee0e6e2b3984f6bea4b994642724085d512
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 28afa98313ef1c9577e90ed161a1d20cbf5faf75
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90980546"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91440203"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-micro-fulfillment-center-application-template"></a>Zelfstudie: Een toepassingssjabloon voor een micro-fulfillmentcentrum implementeren en doorlopen
 
@@ -27,7 +27,7 @@ In deze sectie maakt u een nieuwe Azure IoT Central-toepassing op basis van een 
 Een nieuwe Azure IoT Central-toepassing maken:
 
 1. Ga naar de website [Azure IoT Central-toepassingsbeheer](https://aka.ms/iotcentral).
-1. Als u een Azure-abonnement hebt, meldt u zich aan met de referenties die u gebruikt om toegang te krijgen tot dat abonnement. Of meld u aan met behulp van een Microsoft-account.
+1. Meld u aan met de referenties die u gebruikt om toegang te krijgen tot uw Azure-abonnement. Of meld u aan met behulp van een Microsoft-account.
 
    ![Schermopname van het dialoogvenster voor aanmelding bij Microsoft](./media/tutorial-in-store-analytics-create-app/sign-in.png)
 
@@ -62,11 +62,11 @@ Vanuit het dashboard kunt u het volgende doen:
    * Bekijk de plattegrond en de locatie van de geautomatiseerde orderpickers binnen het fulfillmentcentrum.
    * Activeer opdrachten, zoals het opnieuw instellen van het besturingssysteem, het bijwerken van de firmware van de provider en het opnieuw configureren van het netwerk.
 
-     ![Schermopname van de bovenste helft van het micro-fulfillmentcentrum-dashboard van Northwind Traders](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard1.png)
+     ![Schermopname van de bovenste helft van het micro-fulfillmentcentrum-dashboard van Northwind Traders.](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard1.png)
    * Bekijk een voorbeeld van het dashboard dat een operator kan gebruiken om voorwaarden binnen het fulfillmentcentrum te bewaken. 
    * Controleer de status van de nettoladingen die worden uitgevoerd op het gatewayapparaat binnen het fulfillmentcentrum.    
 
-     ![Schermopname van de onderste helft van het micro-fulfillmentcentrum-dashboard van Northwind Traders](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard2.png)
+     ![Schermopname van de onderste helft van het micro-fulfillmentcentrum-dashboard van Northwind Traders.](./media/tutorial-micro-fulfillment-center-app/mfc-dashboard2.png)
 
 ## <a name="device-template"></a>Apparaatsjabloon
 Als u op het tabblad Apparaatsjablonen klikt, ziet u dat er twee verschillende typen apparaten zijn die deel uitmaken van de sjabloon: 

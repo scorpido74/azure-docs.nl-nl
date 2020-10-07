@@ -2,35 +2,35 @@
 title: Uw eerste functie maken in Azure met behulp van Visual Studio Code
 description: Maak een eenvoudige HTTP-geactiveerde functie en publiceer deze op Azure met behulp van de Azure Functions-extensie in Visual Studio Code.
 ms.topic: quickstart
-ms.date: 01/10/2020
+ms.date: 09/28/2020
 ms.custom: devx-track-csharp, mvc, devcenter, seo, devx-track-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: db5b28ae0bffa16b17cb63471b8d5ba6b5ac94ed
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: a8fefee3903a9ff5ce9bdd05a0fd5bcf07bc5429
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146569"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91408538"
 ---
 # <a name="quickstart-create-a-function-in-azure-using-visual-studio-code"></a>Quickstart: Een functie maken in Azure met behulp van Visual Studio Code
 
-::: zone pivot="programming-language-csharp"  
-In dit artikel gebruikt u Visual Studio Code om een op een C#-klassenbibliotheek gebaseerde functie te maken die reageert op HTTP-aanvragen. Nadat u de code lokaal hebt getest, implementeert u deze in de serverloze omgeving van Azure Functions. 
-::: zone-end  
+::: zone pivot="programming-language-csharp"
+In dit artikel gebruikt u Visual Studio Code om een op een C#-klassenbibliotheek gebaseerde functie te maken die reageert op HTTP-aanvragen. Nadat u de code lokaal hebt getest, implementeert u deze in de serverloze omgeving van Azure Functions.
+::: zone-end
 ::: zone pivot="programming-language-javascript"
-In dit artikel gebruikt u Visual Studio Code om een JavaScript-functie te maken die reageert op HTTP-aanvragen. Nadat u de code lokaal hebt getest, implementeert u deze in de serverloze omgeving van Azure Functions. 
+In dit artikel gebruikt u Visual Studio Code om een JavaScript-functie te maken die reageert op HTTP-aanvragen. Nadat u de code lokaal hebt getest, implementeert u deze in de serverloze omgeving van Azure Functions.
 ::: zone-end
 ::: zone pivot="programming-language-typescript"
-In dit artikel gebruikt u Visual Studio Code om een TypeScript-functie te maken die reageert op HTTP-aanvragen. Nadat u de code lokaal hebt getest, implementeert u deze in de serverloze omgeving van Azure Functions. 
-::: zone-end   
+In dit artikel gebruikt u Visual Studio Code om een TypeScript-functie te maken die reageert op HTTP-aanvragen. Nadat u de code lokaal hebt getest, implementeert u deze in de serverloze omgeving van Azure Functions.
+::: zone-end 
 ::: zone pivot="programming-language-powershell"
-In dit artikel gebruikt u Visual Studio Code om een PowerShell-functie te maken die reageert op HTTP-aanvragen. Nadat u de code lokaal hebt getest, implementeert u deze in de serverloze omgeving van Azure Functions. 
-::: zone-end  
-::: zone pivot="programming-language-python" 
-In dit artikel gebruikt u Visual Studio Code om een Python-functie te maken die reageert op HTTP-aanvragen. Nadat u de code lokaal hebt getest, implementeert u deze in de serverloze omgeving van Azure Functions. 
-::: zone-end  
-::: zone pivot="programming-language-java" 
-In dit artikel gebruikt u Visual Studio Code om een Java-functie te maken die reageert op HTTP-aanvragen. Nadat u de code lokaal hebt getest, implementeert u deze in de serverloze omgeving van Azure Functions. 
+In dit artikel gebruikt u Visual Studio Code om een PowerShell-functie te maken die reageert op HTTP-aanvragen. Nadat u de code lokaal hebt getest, implementeert u deze in de serverloze omgeving van Azure Functions.
+::: zone-end
+::: zone pivot="programming-language-python"
+In dit artikel gebruikt u Visual Studio Code om een Python-functie te maken die reageert op HTTP-aanvragen. Nadat u de code lokaal hebt getest, implementeert u deze in de serverloze omgeving van Azure Functions.
+::: zone-end
+::: zone pivot="programming-language-java"
+In dit artikel gebruikt u Visual Studio Code om een Java-functie te maken die reageert op HTTP-aanvragen. Nadat u de code lokaal hebt getest, implementeert u deze in de serverloze omgeving van Azure Functions.
 ::: zone-end
 
 Voor het voltooien van deze quickstart worden kosten van een paar dollarcent of minder in rekening gebracht bij uw Azure-account. 
@@ -38,54 +38,54 @@ Voor het voltooien van deze quickstart worden kosten van een paar dollarcent of 
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"
 Er is ook een [op een CLI gebaseerde versie](functions-create-first-azure-function-azure-cli.md) van dit artikel.
 ::: zone-end
-::: zone pivot="programming-language-java"  
+::: zone pivot="programming-language-java"
 > [!NOTE]
 > Als u liever niet ontwikkelt met Visual Studio Code, raadpleegt u onze vergelijkbare zelfstudies voor Java-ontwikkelaars met [Maven](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java), [Gradle](./functions-create-first-java-gradle.md) en[ IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions).
-::: zone-end  
+::: zone-end
 
 ## <a name="configure-your-environment"></a>Uw omgeving configureren
 
 Voordat u aan de slag kunt gaan, moet u beschikken over de volgende vereisten:
 
-+ Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
+- Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 
-::: zone pivot="programming-language-csharp,programming-language-powershell,programming-language-python"  
-+ [Node.js](https://nodejs.org/), vereist door Windows voor NPM. Alleen [Active LTS en Maintenance LTS-versies](https://nodejs.org/about/releases/). Gebruik de opdracht `node --version` om uw versie te controleren.
-    Niet vereist voor lokale ontwikkeling in macOS en Linux.   
-::: zone-end   
-::: zone pivot="programming-language-javascript,programming-language-typescript"  
-+ [Node.js](https://nodejs.org/), Active LTS en Maintenance LTS-versies (10.14.1 aanbevolen). Gebruik de opdracht `node --version` om uw versie te controleren.  
-::: zone-end  
+::: zone pivot="programming-language-csharp,programming-language-powershell,programming-language-python"
+- [Node.js](https://nodejs.org/), vereist door Windows voor NPM. Alleen [Active LTS en Maintenance LTS-versies](https://nodejs.org/about/releases/). Gebruik de opdracht `node --version` om uw versie te controleren.
+    Niet vereist voor lokale ontwikkeling in macOS en Linux. 
+::: zone-end 
+::: zone pivot="programming-language-javascript,programming-language-typescript"
+- [Node.js](https://nodejs.org/), Active LTS, en Maintenance LTS-versies (10.14.1 aanbevolen). Gebruik de opdracht `node --version` om uw versie te controleren.
+::: zone-end
 ::: zone pivot="programming-language-python"
-+ [Python 3.8](https://www.python.org/downloads/release/python-381/), [Python 3.7](https://www.python.org/downloads/release/python-375/), [Python 3.6](https://www.python.org/downloads/release/python-368/) worden ondersteund door Azure Functions (x64).
-::: zone-end   
+- [Python 3.8](https://www.python.org/downloads/release/python-381/), [Python 3.7](https://www.python.org/downloads/release/python-375/), [Python 3.6](https://www.python.org/downloads/release/python-368/) worden ondersteund door Azure Functions (x64).
+::: zone-end 
 ::: zone pivot="programming-language-powershell"
-+ [PowerShell 7](/powershell/scripting/install/installing-powershell-core-on-windows)
+- [PowerShell 7](/powershell/scripting/install/installing-powershell-core-on-windows)
 
-+ Zowel [.NET Core 3.1](https://www.microsoft.com/net/download) als [.NET Core 2.1](https://dotnet.microsoft.com/download/dotnet-core/2.2)  
-::: zone-end  
-::: zone pivot="programming-language-java"  
-+ [Java Developer Kit](https://aka.ms/azure-jdks), versie 8.
+- Zowel [.NET Core 3.1](https://www.microsoft.com/net/download) als [.NET Core 2.1](https://dotnet.microsoft.com/download/dotnet-core/2.2)
+::: zone-end
+::: zone pivot="programming-language-java"
+- [Java Developer Kit](https://aka.ms/azure-jdks), versie 8.
 
-+ [Apache Maven](https://maven.apache.org), versie 3.0 of hoger.
-::: zone-end  
-+ [Visual Studio Code](https://code.visualstudio.com/) op een van de [ondersteunde platforms](https://code.visualstudio.com/docs/supporting/requirements#_platforms).    
-::: zone pivot="programming-language-csharp"  
-+ De [C#-extensie](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) voor Visual Studio Code.  
-::: zone-end  
-::: zone pivot="programming-language-python"  
-+ De [Python-extensie](https://marketplace.visualstudio.com/items?itemName=ms-python.python) voor Visual Studio Code.  
-::: zone-end  
-::: zone pivot="programming-language-powershell"  
-+ De [PowerShell-extensie voor Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell).  
-::: zone-end  
-::: zone pivot="programming-language-java"   
-+ Het [Java-uitbreidingspakket](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)  
-::: zone-end  
+- [Apache Maven](https://maven.apache.org), versie 3.0 of hoger.
+::: zone-end
+- [Visual Studio Code](https://code.visualstudio.com/) op een van de [ondersteunde platforms](https://code.visualstudio.com/docs/supporting/requirements#_platforms).  
+::: zone pivot="programming-language-csharp"
+- De [C#-extensie](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) voor Visual Studio Code.
+::: zone-end
+::: zone pivot="programming-language-python"
+- De [Python-extensie](https://marketplace.visualstudio.com/items?itemName=ms-python.python) voor Visual Studio Code.
+::: zone-end
+::: zone pivot="programming-language-powershell"
+- De [PowerShell-extensie voor Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell).
+::: zone-end
+::: zone pivot="programming-language-java"
+- Het [Java-uitbreidingspakket](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)
+::: zone-end
 
-+ De [Azure Functions-extensie](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) voor Visual Studio Code. 
+- De [Azure Functions-extensie](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) voor Visual Studio Code.
 
-## <a name="create-your-local-project"></a><a name="create-an-azure-functions-project"></a>Uw lokale project maken 
+## <a name="create-your-local-project"></a><a name="create-an-azure-functions-project"></a>Uw lokale project maken
 
 In deze sectie gebruikt u Visual Studio Code om een lokaal Azure Functions-project te maken in de taal van uw keuze. Verderop in dit artikel publiceert u de functiecode in Azure. 
 
@@ -101,50 +101,50 @@ In deze sectie gebruikt u Visual Studio Code om een lokaal Azure Functions-proje
 1. Geef de volgende informatie op bij de prompts:
 
     ::: zone pivot="programming-language-csharp"
-    + **Selecteer een taal voor uw functieproject**: Kies `C#`.
+    - **Selecteer een taal voor uw functieproject**: Kies `C#`.
     ::: zone-end
     ::: zone pivot="programming-language-javascript"
-    + **Selecteer een taal voor uw functieproject**: Kies `JavaScript`.
+    - **Selecteer een taal voor uw functieproject**: Kies `JavaScript`.
     ::: zone-end
     ::: zone pivot="programming-language-typescript"
-    + **Selecteer een taal voor uw functieproject**: Kies `TypeScript`.
+    - **Selecteer een taal voor uw functieproject**: Kies `TypeScript`.
     ::: zone-end
     ::: zone pivot="programming-language-powershell"
-    + **Selecteer een taal voor uw functieproject**: Kies `PowerShell`.
+    - **Selecteer een taal voor uw functieproject**: Kies `PowerShell`.
     ::: zone-end
     ::: zone pivot="programming-language-python"
-    + **Selecteer een taal voor uw functieproject**: Kies `Python`.
+    - **Selecteer een taal voor uw functieproject**: Kies `Python`.
 
-    + **Selecteer een Python-alias voor het maken van een virtuele omgeving**: Kies de locatie van de Python-interpreter. Als de locatie niet wordt weergegeven, typt u het volledige pad naar uw binaire Python-bestand.  
+    - **Selecteer een Python-alias voor het maken van een virtuele omgeving**: Kies de locatie van de Python-interpreter. Als de locatie niet wordt weergegeven, typt u het volledige pad naar uw binaire Python-bestand.
     ::: zone-end
 
-    ::: zone pivot="programming-language-java"  
-    + **Selecteer een taal voor uw functieproject**: Kies `Java`.
+    ::: zone pivot="programming-language-java"
+    - **Selecteer een taal voor uw functieproject**: Kies `Java`.
 
-    + **Een versie van Java selecteren**: Kies `Java 8` of `Java 11 (preview)`, waarmee uw functies in Azure worden uitgevoerd. Kies een Java-versie die u lokaal hebt geverifieerd.
+    - **Een versie van Java selecteren**: Kies `Java 8` of `Java 11 (preview)`, waarmee uw functies in Azure worden uitgevoerd. Kies een Java-versie die u lokaal hebt geverifieerd.
 
-    + **Geef een groeps-id op**: Kies `com.function`.
+    - **Geef een groeps-id op**: Kies `com.function`.
 
-    + **Geef een artefact-id op**: Kies `myFunction`.
+    - **Geef een artefact-id op**: Kies `myFunction`.
 
-    + **Geef een versie op**: Kies `1.0-SNAPSHOT`.
+    - **Geef een versie op**: Kies `1.0-SNAPSHOT`.
 
-    + **Geef een pakketnaam op**: Kies `com.function`.
+    - **Geef een pakketnaam op**: Kies `com.function`.
 
-    + **Geef een app-naam op**: Kies `myFunction-12345`.
-    ::: zone-end  
+    - **Geef een app-naam op**: Kies `myFunction-12345`.
+    ::: zone-end
     ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"
-    + **Selecteer een sjabloon voor de eerste functie van uw project**: Kies `HTTP trigger`.
-    
-    + **Geef een functienaam op**: Typ `HttpExample`.
-    ::: zone-end  
+    - **Selecteer een sjabloon voor de eerste functie van uw project**: Kies `HTTP trigger`.
+  
+    - **Geef een functienaam op**: Typ `HttpExample`.
+    ::: zone-end
     ::: zone pivot="programming-language-csharp"
-    + **Geef een naamruimte op**: Typ `My.Functions`. 
-    ::: zone-end  
+    - **Geef een naamruimte op**: Typ `My.Functions`.
+    ::: zone-end
     ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"
-    + **Autorisatieniveau**: Kies `Anonymous`, waarmee iedereen uw functie-eindpunt kan aanroepen. Zie [Autorisatiesleutels](functions-bindings-http-webhook-trigger.md#authorization-keys) voor meer informatie over autorisatieniveau.
-    ::: zone-end  
-    + **Selecteer hoe u uw project wilt openen**: Kies `Add to workspace`.
+    - **Autorisatieniveau**: Kies `Anonymous`, waarmee iedereen uw functie-eindpunt kan aanroepen. Zie [Autorisatiesleutels](functions-bindings-http-webhook-trigger.md#authorization-keys) voor meer informatie over autorisatieniveau.
+    ::: zone-end
+    - **Selecteer hoe u uw project wilt openen**: Kies `Add to workspace`.
 
 1. Met behulp van deze informatie wordt met Visual Studio Code een Azure Functions-project gegenereerd met een HTTP-trigger. U kunt de lokale projectbestanden weergeven in de Explorer. Zie [Gegenereerde projectbestanden](functions-develop-vs-code.md#generated-project-files) voor meer informatie over bestanden die worden gemaakt. 
 
@@ -160,7 +160,7 @@ In deze sectie gebruikt u Visual Studio Code om een lokaal Azure Functions-proje
 
 ::: zone-end
 
-Nadat u hebt gecontroleerd of de functie correct wordt uitgevoerd op uw lokale computer, is het tijd om het project te publiceren in Azure met behulp van Visual Studio Code. 
+Nadat u hebt gecontroleerd of de functie correct wordt uitgevoerd op uw lokale computer, is het tijd om het project te publiceren in Azure met behulp van Visual Studio Code.
 
 [!INCLUDE [functions-sign-in-vs-code](../../includes/functions-sign-in-vs-code.md)]
 
@@ -168,7 +168,7 @@ Nadat u hebt gecontroleerd of de functie correct wordt uitgevoerd op uw lokale c
 
 ## <a name="run-the-function-in-azure"></a>De functie in Azure uitvoeren
 
-1. Ga terug naar **Azure: Functions** en vouw in de zijbalk de nieuwe functie-app uit onder uw abonnement. Vouw **Functies** uit, klik met de rechtermuisknop (Windows) of CTRL + klik (macOS) op **HttpExample** en kies vervolgens **Functie-URL kopiëren**.
+1. Ga terug naar **Azure: Functions** en vouw in de zijbalk de nieuwe functie-app uit onder uw abonnement. Vouw **Functies** uit, klik met de rechtermuisknop (Windows) of <kbd>Ctrl -</kbd> klik (macOS) op **HttpExample** en kies vervolgens **Functie-URL kopiëren**.
 
     ![De functie-URL kopiëren voor de nieuwe HTTP-trigger](./media/functions-create-first-function-vs-code/function-copy-endpoint-url.png)
 
@@ -177,7 +177,7 @@ Nadat u hebt gecontroleerd of de functie correct wordt uitgevoerd op uw lokale c
     ```http
     http://<functionappname>.azurewebsites.net/api/httpexample?name=Functions
     ```
-        
+
     U ziet in het volgende voorbeeld het antwoord op de externe GET-aanvraag dat door de functie wordt geretourneerd, weergegeven in de browser: 
 
     ![Het antwoord van de functie in de browser](./media/functions-create-first-function-vs-code/functions-test-remote-browser.png)

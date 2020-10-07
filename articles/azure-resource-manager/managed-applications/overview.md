@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: overview
 ms.date: 07/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: 9bb3f0d57f7d47e4cb754305627c52003273ca09
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: eb93321e0eb1b3d2dc7963f03715b1aedb4cfdcb
+ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377009"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91403684"
 ---
 # <a name="azure-managed-applications-overview"></a>Overzicht van Azure Managed Applications
 
@@ -77,7 +77,7 @@ Wanneer de gebruiker de beheerde toepassing verwijdert, wordt ook de beheerde re
 
 ## <a name="azure-policy"></a>Azure Policy
 
-U kunt een [Azure Policy](../../governance/policy/overview.md) toepassen om uw beheerde toepassing te controleren. U past beleidsdefinities toe om te verzekeren dat geïmplementeerde exemplaren van uw beheerde toepassing aan gegevens- en beveiligingsvereisten voldoen. Als uw toepassing met gevoelige gegevens werkt, zorg er dan voor dat u hebt geëvalueerd hoe die moeten worden beschermd. Als uw toepassing bijvoorbeeld met gegevens uit Office 365 werkt, past u een beleidsdefinitie toe om te verzekeren dat gegevensversleuteling is ingeschakeld.
+U kunt een [Azure Policy](../../governance/policy/overview.md) toepassen om uw beheerde toepassing te controleren. U past beleidsdefinities toe om te verzekeren dat geïmplementeerde exemplaren van uw beheerde toepassing aan gegevens- en beveiligingsvereisten voldoen. Als uw toepassing met gevoelige gegevens werkt, zorg er dan voor dat u hebt geëvalueerd hoe die moeten worden beschermd. Als uw toepassing bijvoorbeeld met gegevens uit Microsoft 365 werkt, past u een beleidsdefinitie toe om te verzekeren dat gegevensversleuteling is ingeschakeld.
 
 ## <a name="next-steps"></a>Volgende stappen
 

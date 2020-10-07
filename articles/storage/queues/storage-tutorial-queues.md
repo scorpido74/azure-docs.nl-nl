@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: tutorial
 ms.reviewer: dineshm
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7474cfbd0182797bd62e97979e83e2aeb5244cbc
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 23684dbbc5cb8c2d5fc4880ae8fe1999450928e0
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89008791"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91400567"
 ---
 # <a name="tutorial-work-with-azure-storage-queues-in-net"></a>Zelfstudie: Werken met Azure Storage-wachtrijen in .NET
 
@@ -227,6 +227,8 @@ Maak een nieuwe methode om een bericht uit de wachtrij op te halen. Zodra het be
    # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
    Met deze methode wordt een bericht uit de wachtrij ontvangen door het aanroepen van [ReceiveMessagesAsync](/dotnet/api/azure.storage.queues.queueclient.receivemessagesasync), waarbij 1 in de eerste parameter wordt doorgegeven om alleen het volgende bericht in de wachtrij op te halen. Nadat het bericht is ontvangen, verwijdert u het uit de wachtrij door het aanroepen van [DeleteMessageAsync](/dotnet/api/azure.storage.queues.queueclient.deletemessageasync).
+
+   Wanneer een bericht wordt verzonden naar de wachtrij met een SDK-versie van vóór V12, wordt het automatisch met base64 gecodeerd. Vanaf V12 is deze functionaliteit verwijderd. Wanneer u een bericht ophaalt met behulp van SDK v12, wordt het niet automatisch met base64 gedecodeerd. U moet de inhoud zelf expliciet decoderen met [base64](/dotnet/api/system.convert.frombase64string).
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Initial.cs" id="snippet_InitialRetrieveMessage":::
 

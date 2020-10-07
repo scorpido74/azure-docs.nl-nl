@@ -1,18 +1,18 @@
 ---
 title: Inleiding tot de Gremlin-API van Azure Cosmos DB
 description: Leer hoe u Azure Cosmos DB kunt gebruiken om zeer grote grafieken met een lage latentie op te slaan, te doorzoeken en erin te bladeren, met behulp van de querytaal voor Gremlin-grafieken van Apache TinkerPop.
-author: LuisBosquez
+author: jasonwhowell
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 07/10/2020
-ms.author: lbosq
-ms.openlocfilehash: 3dc534d1cbb195cd93ede091503222b297b17059
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.author: jasonh
+ms.openlocfilehash: 67a2c9537851343e8e5dad4a3654b31082e83d11
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86523737"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409609"
 ---
 # <a name="introduction-to-gremlin-api-in-azure-cosmos-db"></a>Inleiding tot de Gremlin-API in Azure Cosmos DB
 
@@ -106,7 +106,7 @@ Graafdatabases worden vaak opgenomen in de NoSQL- of niet-relationele databaseca
 
 Laten we een voorbeeldgrafiek gebruiken om te zien hoe query’s kunnen worden uitgedrukt in Gremlin. In de volgende afbeelding ziet u een zakelijke toepassing waarmee gegevens over gebruikers, interesses en apparaten worden beheerd, in de vorm van een grafiek.  
 
-:::image type="content" source="./media/gremlin-support/sample-graph.png" alt-text="Voorbeelddatabase met personen, apparaten en interesses" border="false"::: 
+:::image type="content" source="./media/gremlin-support/sample-graph.png" alt-text="Azure Cosmos DB-grafiekarchitectuur" border="false"::: 
 
 Deze grafiek heeft de volgende types van *hoekpunten* (in Gremlin ook wel 'labels' genoemd):
 
@@ -124,7 +124,7 @@ We laten de relaties tussen deze entiteiten zien via de volgende *rand*-types:
 * **Gebruikt**: Geeft aan welk apparaat een persoon gebruikt. Robin gebruikt bijvoorbeeld een Motorola-telefoon met serienummer 77
 * **In**: Om de locatie van waaruit de apparaten worden geopend weer te geven
 
-De Gremlin-console is een interactieve terminal aangeboden door de Apache TinkerPop en deze terminal dient gebruikt te worden om de grafiekgegevens te bewerken. Meer informatie vindt u in het quickstartdocument over [hoe u de Gremlin-console kunt gebruiken](create-graph-gremlin-console.md). U kunt deze bewerkingen ook uitvoeren met behulp van Gremlin-stuurprogramma’s op een platform naar keuze (Java, Node.js, Python of NET). In de volgende voorbeelden ziet u hoe u query's kunt uitvoeren op deze grafiekgegevens met behulp van de Gremlin-console.
+De Gremlin-console is een interactieve terminal die wordt aangeboden door de Apache TinkerPop. Via deze terminal kunt u werken met de grafiekgegevens. Meer informatie vindt u in het quickstartdocument over [hoe u de Gremlin-console kunt gebruiken](create-graph-gremlin-console.md). U kunt deze bewerkingen ook uitvoeren met behulp van Gremlin-stuurprogramma’s op een platform naar keuze (Java, Node.js, Python of NET). In de volgende voorbeelden ziet u hoe u query's kunt uitvoeren op deze grafiekgegevens met behulp van de Gremlin-console.
 
 Eerst kijken we naar CRUD. Met de volgende Gremlin-instructie wordt het hoekpunt Thomas ingevoegd in de grafiek:
 

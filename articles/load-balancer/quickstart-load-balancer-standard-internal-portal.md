@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: e8d11c2122a21b67620987ad9ef74efc99eeb98b
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: beafff2276d0b6dc525b586fa2d5943675012981
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654494"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446118"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Quickstart: Een interne load balancer maken met Azure Portal om taken te verdelen over VM's
 
@@ -42,8 +42,6 @@ Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azur
 >Voor productieworkloads wordt de load balancer uit de Standard SKU aanbevolen.  Zie **[Azure Load Balancer-SKU's](skus.md)** voor meer informatie over SKU's.
 
 In deze sectie maakt u een load balancer die taken van virtuele machines verdeelt. 
-
-U kunt een openbare load balancer of een interne load balancer maken. 
 
 Wanneer u een interne load balancer maakt, wordt een virtueel netwerk geconfigureerd als netwerk voor de load balancer. 
 
@@ -125,7 +123,7 @@ In deze sectie gaat u een virtueel netwerk en een subnet maken.
 
 4. Selecteer in het deelvenster **Beoordelen en maken** de optie **Maken**.   
     
-    :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/create-standard-internal-load-balancer.png" alt-text="Een interne load balancer van het type Standard maken" border="true":::
+    :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/create-standard-internal-load-balancer.png" alt-text="Een interne load balancer van het type Standard maken." border="true":::
  
 ## <a name="create-load-balancer-resources"></a>Resources voor load balancer maken
 
@@ -202,7 +200,7 @@ In deze sectie maakt u een load balancer-regel:
 4. Laat de overige standaardwaarden staan en selecteer **OK**.
 
 >[!NOTE]
->De virtuele machines in de back-end-pool hebben geen uitgaande internetverbinding met deze configuratie. </br> Raadpleeg voor meer informatie over het bieden van uitgaande connectiviteit: </br> **[Uitgaande verbindingen in Azure](load-balancer-outbound-connections.md)**</br> Opties voor het bieden van connectiviteit: </br> **[Load balancer-configuratie voor alleen uitgaand verkeer](egress-only.md)** </br> **[Wat is Azure Virtual Network NAT?](https://docs.microsoft.com/azure/virtual-network/nat-overview)**
+>De virtuele machines in de back-end-pool hebben geen uitgaande internetverbinding met deze configuratie. </br> Voor meer informatie over het bieden van uitgaande connectiviteit raadpleegt u: </br> **[Uitgaande verbindingen in Azure](load-balancer-outbound-connections.md)**</br> Opties voor het bieden van connectiviteit: </br> **[Load balancer-configuratie voor alleen uitgaand verkeer](egress-only.md)** </br> **[Wat is Azure Virtual Network NAT?](https://docs.microsoft.com/azure/virtual-network/nat-overview)**
 
 ## <a name="create-backend-servers"></a>Back-endservers maken
 
@@ -213,7 +211,7 @@ In deze sectie doet u het volgende:
 
 ### <a name="create-virtual-machines"></a>Virtuele machines maken
 
-In deze sectie maakt u twee VM's (**myVM1** en **myVM2**) met een standaard openbaar IP-adres in twee zones (**Zone 1** en **Zone 2**). 
+In deze sectie maakt u twee VM's (**myVM1** en **myVM2**).
 
 Deze VM's worden toegevoegd aan de back-endpool van de load balancer die eerder is gemaakt.
 
@@ -248,7 +246,7 @@ Deze VM's worden toegevoegd aan de back-endpool van de load balancer die eerder 
     | **Netwerkinterface** |  |
     | Virtueel netwerk | **myVNet** |
     | Subnet | **myBackendSubnet** |
-    | Openbare IP | Accepteer de standaardwaarde **myVM-ip**. </br> Het IP-adres wordt automatisch een IP-adres met standaard-SKU in Zone 1. |
+    | Openbare IP | Selecteer **Geen** |
     | NIC-netwerkbeveiligingsgroep | Selecteer **Geavanceerd**|
     | Netwerkbeveiligingsgroep configureren | Selecteer **Nieuw maken**. </br> Voer in **Netwerkbeveiligingsgroep maken** bij **Naam** **myNSG** in. </br> Selecteer **OK** |
     | **Taakverdeling**  |
@@ -257,21 +255,12 @@ Deze VM's worden toegevoegd aan de back-endpool van de load balancer die eerder 
     | Opties voor taakverdeling | Selecteer **Azure-taakverdeling** |
     | Een load balancer selecteren | Selecteer **myLoadBalancer**  |
     | Een back-endpool selecteren | Selecteer **myBackendPool** |
-
-5. Selecteer het tabblad **Beheer** of selecteer **Volgende** > **Beheer**.
-
-6. Op het tabblad **Beheer** voert u het volgende in of selecteert u het volgende:
-    
-    | Instelling | Waarde |
-    |-|-|
-    | **Controle** |  |
-    | Diagnostische gegevens over opstarten | Selecteer **Uit** |
    
-7. Selecteer **Controleren + maken**. 
+5. Selecteer **Controleren + maken**. 
   
-8. Controleer de instellingen en selecteer vervolgens **Maken**.
+6. Controleer de instellingen en selecteer vervolgens **Maken**.
 
-9. Volg stappen 1 tot en met 8 om een extra VM te maken met de volgende waarden en alle andere instellingen hetzelfde als **myVM1**:
+7. Volg stappen 1 tot en met 8 om een extra VM te maken met de volgende waarden en alle andere instellingen hetzelfde als **myVM1**:
 
     | Instelling | VM 2|
     | ------- | ----- |
@@ -286,8 +275,6 @@ Deze VM's worden toegevoegd aan de back-endpool van de load balancer die eerder 
 >Voor productieworkloads wordt de load balancer uit de Standard SKU aanbevolen.  Zie **[Azure Load Balancer-SKU's](skus.md)** voor meer informatie over SKU's.
 
 In deze sectie maakt u een load balancer die taken van virtuele machines verdeelt. 
-
-U kunt een openbare load balancer of een interne load balancer maken. 
 
 Wanneer u een interne load balancer maakt, wordt een virtueel netwerk geconfigureerd als netwerk voor de load balancer. 
 
@@ -368,7 +355,7 @@ In deze sectie gaat u een virtueel netwerk en een subnet maken.
 
 4. Selecteer in het deelvenster **Beoordelen en maken** de optie **Maken**.   
 
-    :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/create-basic-internal-load-balancer.png" alt-text="Een interne load balancer van het type Standard maken" border="true":::
+    :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/create-basic-internal-load-balancer.png" alt-text="Een interne load balancer van het type Standard maken." border="true":::
 
 ## <a name="create-load-balancer-resources"></a>Resources voor load balancer maken
 
@@ -461,9 +448,7 @@ In deze sectie doet u het volgende:
 
 ### <a name="create-virtual-machines"></a>Virtuele machines maken
 
-SKU's voor openbare IP-adressen en SKU's voor load balancers moeten overeenkomen. Gebruik voor Basic load balancer VM's met Basic IP-adressen in de back-endpool. 
-
-In deze sectie maakt u twee VM's(**myVM1** en **myVM2**) met een basic openbaar IP-adres.  
+In deze sectie maakt u twee VM's (**myVM1** en **myVM2**).
 
 De twee VM's worden toegevoegd aan een beschikbaarheidsset met de naam **myAvailabilitySet**.
 
@@ -505,21 +490,12 @@ Deze VM's worden toegevoegd aan de back-endpool van de load balancer die eerder 
     | Netwerkbeveiligingsgroep configureren | Selecteer **Nieuw maken**. </br> Voer in **Netwerkbeveiligingsgroep maken** bij **Naam** **myNSG** in. </br> Selecteer **OK** |
     | **Taakverdeling**  |
     | Wilt u deze virtuele machine achter een bestaande taakverdelingsoplossing plaatsen? | Selecteer **Nee** |
- 
-5. Selecteer het tabblad **Beheer** of selecteer **Volgende** > **Beheer**.
 
-6. Op het tabblad **Beheer** voert u het volgende in of selecteert u het volgende:
-    
-    | Instelling | Waarde |
-    |-|-|
-    | **Controle** |  |
-    | Diagnostische gegevens over opstarten | Selecteer **Uit** |
-
-7. Selecteer **Controleren + maken**. 
+5. Selecteer **Controleren + maken**. 
   
-8. Controleer de instellingen en selecteer vervolgens **Maken**.
+6. Controleer de instellingen en selecteer vervolgens **Maken**.
 
-9. Volg stappen 1 tot en met 8 om een extra VM te maken met de volgende waarden en alle andere instellingen hetzelfde als **myVM1**:
+7. Volg stappen 1 tot en met 8 om een extra VM te maken met de volgende waarden en alle andere instellingen hetzelfde als **myVM1**:
 
     | Instelling | VM 2 |
     | ------- | ----- |
@@ -583,19 +559,10 @@ In deze sectie maakt u een VM met de naam **myTestVM**.  Deze VM wordt gebruikt 
     | Openbare IP | Selecteer **Geen**. |
     | NIC-netwerkbeveiligingsgroep | Selecteer **Geavanceerd**|
     | Netwerkbeveiligingsgroep configureren | Selecteer **MyNSG** die u in de vorige stap hebt gemaakt.|
-    
-5. Selecteer het tabblad **Beheer** of selecteer **Volgende** > **Beheer**.
-
-6. Op het tabblad **Beheer** voert u het volgende in of selecteert u het volgende:
-    
-    | Instelling | Waarde |
-    |-|-|
-    | **Controle** |  |
-    | Diagnostische gegevens over opstarten | Selecteer **Uit** |
-   
-7. Selecteer **Controleren + maken**. 
+       
+5. Selecteer **Controleren + maken**. 
   
-8. Controleer de instellingen en selecteer vervolgens **Maken**.
+6. Controleer de instellingen en selecteer vervolgens **Maken**.
 
 ## <a name="install-iis"></a>IIS installeren
 
@@ -647,9 +614,9 @@ In deze sectie maakt u een VM met de naam **myTestVM**.  Deze VM wordt gebruikt 
 
 8. Voer het IP-adres uit de vorige stap in in de adresbalk van de browser. De standaardpagina van IIS-webserver wordt weergegeven in de browser.
 
-    :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/load-balancer-test.png" alt-text="Een interne load balancer van het type Standard maken" border="true":::
+    :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/load-balancer-test.png" alt-text="Een interne load balancer van het type Standard maken." border="true":::
    
-U kunt de standaardpagina van de IIS-webserver van elke virtuele machine aanpassen en vervolgens uw webbrowser geforceerd vernieuwen vanaf de clientcomputer om te zien hoe de load balancer verkeer verdeelt over alle drie de virtuele machines.
+U kunt de standaardpagina van de IIS-webserver van elke virtuele machine aanpassen en vervolgens uw webbrowser geforceerd vernieuwen vanaf de clientcomputer om te zien hoe de load balancer verkeer verdeelt over beide virtuele machines.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -665,5 +632,3 @@ In deze snelstart, gaat u het volgende doen:
 
 Zie [Wat is Azure Load Balancer?](load-balancer-overview.md) en de [veelgestelde vragen over Load Balancer](load-balancer-faqs.md) voor meer informatie over Azure Load Balancer.
 
-* Meer informatie over [Load Balancer en beschikbaarheidszones](load-balancer-standard-availability-zones.md).
-* Meer informatie over [Azure Bastion](https://docs.microsoft.com/azure/bastion/bastion-overview).

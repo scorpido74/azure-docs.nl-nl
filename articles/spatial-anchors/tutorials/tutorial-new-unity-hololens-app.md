@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 08/17/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 365fe8c330cadcc01fcd24de28b663cd80b55117
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: 8c9e6462beb48e3326de3c2348b73053f717e032
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89535872"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441265"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-hololens-unity-app-using-azure-spatial-anchors"></a>Zelfstudie: Stapsgewijze instructies voor het maken van een nieuwe HoloLens Unity-app met behulp van Azure Spatial Anchors
 
@@ -204,11 +204,11 @@ Voordat u verder gaat, moet u een Azure Spatial Anchors-account maken om de acco
 
 Wanneer u een account-id, sleutel en domein hebt voor uw Azure Spatial Anchors-account, plakt u de `Account Id` in `SpatialAnchorsAccountId`, de `Account Key` in `SpatialAnchorsAccountKey` en de `Account Domain` in `SpatialAnchorsAccountDomain`.
 
-Ten slotte gaan we alles aan elkaar koppelen. Voeg de volgende code toe aan de methode `SpawnNewAnchoredObject()`. Hiermee wordt de `CreateAnchorAsync()`-methode aangeroepen zodra uw bol is gemaakt. Zodra de methode is geretourneerd, wordt met de onderstaande code nog eenmaal uw bol bijgewerkt, waardoor de kleur wordt gewijzigd in blauw.
+Ten slotte gaan we alles aan elkaar koppelen. Voeg de volgende code toe aan de methode `CreateAndSaveSphere()`. Hiermee wordt de `CreateAnchorAsync()`-methode aangeroepen zodra uw bol is gemaakt. Zodra de methode is geretourneerd, wordt met de onderstaande code nog eenmaal uw bol bijgewerkt, waardoor de kleur wordt gewijzigd in blauw.
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=320-397&highlight=26-77)]
 
-Voer uw app nog een keer uit vanuit **Visual Studio**. Beweeg uw hoofd en tik vervolgens in de lucht om uw bol te plaatsen. Zodra er voldoende frames zijn, verandert de bol in geel en wordt het uploaden naar de cloud gestart. Zodra het uploaden is voltooid, wordt de bol blauw. U kunt eventueel ook het uitvoervenster in **Visual Studio** gebruiken om de logboekberichten te controleren die uw app verzendt. U kunt `RecommendedForCreateProgress` bekijken en zodra het uploaden is voltooid, kunt u de anker-id zien die door de cloud is geretourneerd.
+Voer uw app nog een keer uit vanuit **Visual Studio**. Beweeg uw hoofd en tik vervolgens in de lucht om uw bol te plaatsen. Zodra er voldoende frames zijn, verandert de bol in geel en wordt het uploaden naar de cloud gestart. Zodra het uploaden is voltooid, wordt de bol blauw. U kunt desgewenst ook het [Uitvoervenster](https://docs.microsoft.com/visualstudio/ide/reference/output-window) gebruiken tijdens de foutopsporing in **Visual Studio** om de logboekberichten te controleren die uw app verzendt. Zorg ervoor dat u de `Debug`-configuratie van uw app vanuit Visual Studio implementeert, zodat u de logboekberichten kunt bekijken. U kunt `RecommendedForCreateProgress` bekijken en zodra het uploaden is voltooid, kunt u de anker-id zien die door de cloud is geretourneerd.
 
 > [!NOTE]
 > Als u de melding 'DllNotFoundException: Kan DLL 'AzureSpatialAnchors' niet laden: De opgegeven module is niet gevonden." ontvangt, moet u uw oplossing opnieuw **Opschonen** en **Bouwen**.

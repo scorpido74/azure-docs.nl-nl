@@ -1,33 +1,33 @@
 ---
-title: 'Zelf studie: een Data Base toevoegen aan een failovergroep'
-description: Voeg een data base in Azure SQL Database toe aan een groep met herfailovers met behulp van de Azure Portal, Power shell of de Azure CLI.
+title: 'Zelfstudie: Een database aan een groep voor failover toevoegen'
+description: Voeg een database in Azure SQL Database toe aan een groep voor automatische failover met behulp van de Azure-portal, PowerShell of de Azure CLI.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
 ms.custom: sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 06/19/2019
-ms.openlocfilehash: 23b78acb226b0d4de637dc653e6edb3bb4177219
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
-ms.translationtype: MT
+ms.openlocfilehash: 5fca46e7bf80504632e0894deefa1805a080b3b9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91263586"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91442724"
 ---
-# <a name="tutorial-add-an-azure-sql-database-to-an-autofailover-group"></a>Zelf studie: een Azure SQL Database toevoegen aan een groep van een failover
+# <a name="tutorial-add-an-azure-sql-database-to-an-autofailover-group"></a>Zelfstudie: Een Azure SQL Database toevoegen aan een groep voor automatische failover
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Een [failover-groep](auto-failover-group-overview.md) is een declaratieve abstractie laag waarmee u meerdere geo-gerepliceerde data bases kunt groeperen. Meer informatie over het configureren van een failovergroep voor een Azure SQL Database en testfailover met behulp van de Azure Portal, Power shell of de Azure CLI.  In deze zelfstudie leert u het volgende:
+Een [failovergroep](auto-failover-group-overview.md) is een declaratieve abstractielaag waarmee u meerdere geo-gerepliceerde databases kunt groeperen. Leer een failovergroep configureren voor een Azure SQL Database en test de failover met behulp van de Azure-portal, PowerShell of de Azure CLI.  In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
 >
 > - Een database maken in Azure SQL Database
-> - Maak een failovergroep voor de data base tussen twee servers.
-> - Testfailover.
+> - Een failovergroep voor de database tussen twee servers maken.
+> - Failover testen.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -39,66 +39,66 @@ Het volgende moet zijn geïnstalleerd om deze zelfstudie te voltooien:
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Zorg ervoor dat u over de volgende items beschikt om de zelf studie te volt ooien:
+Zorg dat u over het volgende beschikt als u de zelfstudie wilt uitvoeren:
 
 - Een Azure-abonnement. [Maak een gratis account](https://azure.microsoft.com/free/) als u er nog geen hebt.
 - [Azure PowerShell](/powershell/azure/)
 
 # <a name="the-azure-cli"></a>[De Azure CLI](#tab/azure-cli)
 
-Zorg ervoor dat u over de volgende items beschikt om de zelf studie te volt ooien:
+Zorg dat u over het volgende beschikt als u de zelfstudie wilt uitvoeren:
 
 - Een Azure-abonnement. [Maak een gratis account](https://azure.microsoft.com/free/) als u er nog geen hebt.
-- De nieuwste versie van [de Azure cli](/cli/azure/install-azure-cli?view=azure-cli-latest).
+- De nieuwste versie van [de Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ---
 
-## <a name="1---create-a-database"></a>1: een Data Base maken
+## <a name="1---create-a-database"></a>1 - Een database maken
 
 [!INCLUDE [sql-database-create-single-database](../includes/sql-database-create-single-database.md)]
 
-## <a name="2---create-the-failover-group"></a>2-de groep failover maken
+## <a name="2---create-the-failover-group"></a>2 - De failovergroep maken
 
-In deze stap maakt u een [failovergroep](auto-failover-group-overview.md) tussen een bestaande server en een nieuwe server in een andere regio. Voeg vervolgens de voorbeeld database toe aan de failovergroep.
+In deze stap maakt u een [failovergroep](auto-failover-group-overview.md) tussen een bestaande server en een nieuwe server in een andere regio. Vervolgens voegt u de voorbeelddatabase toe aan de failovergroep.
 
 # <a name="the-portal"></a>[De portal](#tab/azure-portal)
 
-Maak uw failovergroep en voeg uw data base toe met behulp van de Azure Portal.
+Maak uw failovergroep en voeg uw database toe met behulp van de Azure-portal.
 
-1. Selecteer **Azure SQL** in het linkermenu van de [Azure Portal](https://portal.azure.com). Als **Azure SQL** niet voor komt in de lijst, selecteert u **alle services**en typt u vervolgens Azure SQL in het zoekvak. Beschrijving Selecteer de ster naast **Azure SQL** om deze te favoriet en voeg deze toe als een item in de linkernavigatiebalk.
-1. Selecteer de data base die is gemaakt in sectie 1, zoals `mySampleDatabase` .
-1. Failover-groepen kunnen op server niveau worden geconfigureerd. Selecteer de naam van de server onder **Server naam** om de instellingen voor de server te openen.
+1. Selecteer **Azure SQL** in het menu aan de linkerkant van de [Azure-portal](https://portal.azure.com). Als **Azure SQL** niet in de lijst staat, selecteert u **Alle services** en typt u Azure SQL in het zoekvak. (Optioneel) Selecteer de ster naast **Azure SQL** om deze favoriet te maken en toe te voegen als item in de linkernavigatiebalk.
+1. Selecteer de database die is gemaakt in sectie 1, zoals `mySampleDatabase`.
+1. Failovergroepen kunnen op serverniveau worden geconfigureerd. Selecteer de naam van de server onder **Servernaam** om de instellingen voor de server te openen.
 
-   ![Server voor Data Base openen](./media/failover-group-add-single-database-tutorial/open-sql-db-server.png)
+   ![Server voor database openen](./media/failover-group-add-single-database-tutorial/open-sql-db-server.png)
 
-1. Selecteer **failover-groepen** in het deel venster **instellingen** en selecteer vervolgens **groep toevoegen** om een nieuwe failovergroep te maken.
+1. Selecteer **Failovergroepen** onder het deelvenster **Instellingen** en selecteer vervolgens **Groep toevoegen** om een nieuwe failovergroep te maken.
 
    ![Nieuwe failovergroep toevoegen](./media/failover-group-add-single-database-tutorial/sqldb-add-new-failover-group.png)
 
-1. Voer op de pagina **failover-groep** de volgende waarden in of Selecteer deze en selecteer vervolgens **maken**:
+1. Voer op de pagina **Failovergroep maken** de volgende waarden in en selecteer **Maken**:
 
-   - **Naam van failovergroep**: Typ een unieke naam voor de failovergroep, zoals `failovergrouptutorial` .
-   - **Secundaire server**: Selecteer de optie voor het configureren van de *vereiste instellingen* en kies vervolgens **een nieuwe server maken**. U kunt ook een al bestaande server kiezen als de secundaire server. Nadat u de volgende waarden hebt ingevoerd, selecteert u **selecteren**.
-      - **Server naam**: Typ een unieke naam voor de secundaire server, bijvoorbeeld `mysqlsecondary` .
-      - **Aanmelding van de server beheerder**: type `azureuser`
-      - **Wacht woord**: Typ een complex wacht woord dat voldoet aan de wachtwoord vereisten.
-      - **Locatie**: Kies een locatie in de vervolg keuzelijst, zoals `East US` . Deze locatie mag niet dezelfde locatie zijn als de primaire server.
+   - **Naam van failovergroep**: Typ een unieke naam voor de failovergroep, zoals `failovergrouptutorial`.
+   - **Secundaire server**: Selecteer de optie *Vereiste instellingen configureren* en kies vervolgens **Een nieuwe server maken**. U kunt ook een al bestaande server kiezen als secundaire server. Nadat u de volgende waarden hebt ingevoerd, selecteert u **Selecteren**.
+      - **Servernaam**: Typ een unieke naam voor de secundaire server, zoals `mysqlsecondary`.
+      - **Aanmeldgegevens van serverbeheerder**: Type `azureuser`
+      - **Wachtwoord**: Typ een complex wachtwoord dat voldoet aan de wachtwoordvereisten.
+      - **Locatie**: Kies een locatie in de vervolgkeuzelijst, zoals `East US`. Deze locatie mag niet dezelfde locatie zijn als die van uw primaire server.
 
      > [!NOTE]
-     > De aanmeldings-en Firewall instellingen van de server moeten overeenkomen met die van de primaire server.
+     > De aanmeldings- en firewall-instellingen van de server moeten overeenkomen met die van de primaire server.
 
      ![Een secundaire server maken voor de failovergroep](./media/failover-group-add-single-database-tutorial/create-secondary-failover-server.png)
 
-   - **Data bases in de groep**: wanneer een secundaire server is geselecteerd, wordt deze optie ontgrendeld. Selecteer deze optie om **data bases te selecteren die u wilt toevoegen** en kies vervolgens de data base die u hebt gemaakt in sectie 1. Als u de data base aan de groep failover toevoegt, wordt het proces voor geo-replicatie automatisch gestart.
+   - **Databases in de groep**: Wanneer een secundaire server is geselecteerd, wordt deze optie ontgrendeld. Selecteer deze optie om **Toe te voegen databases te selecteren** en kies de database die u in sectie 1 hebt gemaakt. Door de database aan de failovergroep toe te voegen, wordt het proces voor geo-replicatie automatisch gestart.
 
-   ![SQL Database toevoegen aan failovergroep](./media/failover-group-add-single-database-tutorial/add-sqldb-to-failover-group.png)
+   ![SQL Database aan failovergroep toevoegen](./media/failover-group-add-single-database-tutorial/add-sqldb-to-failover-group.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Maak uw failovergroep en voeg uw data base aan de groep toe met behulp van Power shell.
+Maak uw failovergroep en voeg uw database toe met behulp van de PowerShell.
 
    > [!NOTE]
-   > De aanmeldings-en Firewall instellingen van de server moeten overeenkomen met die van de primaire server.
+   > De aanmeldings- en firewall-instellingen van de server moeten overeenkomen met die van de primaire server.
 
    ```powershell-interactive
    # $subscriptionId = '<SubscriptionID>'
@@ -161,23 +161,23 @@ Maak uw failovergroep en voeg uw data base aan de groep toe met behulp van Power
    Write-host "Successfully added the database to the failover group..."
    ```
 
-In dit gedeelte van de zelf studie worden de volgende Power shell-cmdlets gebruikt:
+In dit gedeelte van de zelfstudie worden de volgende PowerShell-cmdlets gebruikt:
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Hiermee maakt u een server in Azure SQL Database die als host fungeert voor afzonderlijke data bases en elastische Pools. |
-| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Hiermee maakt u een firewall regel voor een server in Azure SQL Database. |
-| [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Hiermee maakt u een nieuwe afzonderlijke data base in Azure SQL Database. |
-| [New-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) | Hiermee maakt u een nieuwe failover-groep in Azure SQL Database. |
-| [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) | Hiermee haalt u een of meer data bases op in Azure SQL Database. |
-| [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup) | Hiermee voegt u een of meer data bases toe aan een failovergroep in Azure SQL Database. |
+| [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Hiermee maakt u een server in Azure SQL Database die individuele databases en elastische pools host. |
+| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Hiermee maakt u een firewallregel voor een server in Azure SQL Database. |
+| [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Hiermee maakt u één database in Azure SQL Database. |
+| [New-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) | Hiermee maakt u een nieuwe failovergroep in Azure SQL Database. |
+| [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) | Hiermee haalt u een of meer databases op in Azure SQL Database. |
+| [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup) | Hiermee voegt u een of meer databases toe aan een failovergroep in Azure SQL Database. |
 
 # <a name="the-azure-cli"></a>[De Azure CLI](#tab/azure-cli)
 
-Maak uw failovergroep en voeg uw data base toe met behulp van de Azure CLI.
+Maak uw failovergroep en voeg uw database toe met behulp van de Azure CLI.
 
    > [!NOTE]
-   > De aanmeldings-en Firewall instellingen van de server moeten overeenkomen met die van de primaire server.
+   > De aanmeldings- en firewall-instellingen van de server moeten overeenkomen met die van de primaire server.
 
    ```azurecli-interactive
    #!/bin/bash
@@ -193,46 +193,46 @@ Maak uw failovergroep en voeg uw data base toe met behulp van de Azure CLI.
    az sql failover-group create --name $failoverGroup --partner-server $failoverServer --resource-group $resourceGroup --server $server --add-db $database --failover-policy Automatic
    ```
 
-In dit gedeelte van de zelf studie worden de volgende Azure CLI-cmdlets gebruikt:
+In dit gedeelte van de zelfstudie worden de volgende Azure CLI-cmdlets gebruikt:
 
 | Opdracht | Opmerkingen |
 |---|---|
 | [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Hiermee maakt u een server die als host fungeert voor databases en elastische pools. |
-| [az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule) | Hiermee maakt u de firewall regels van een server. |
-| [AZ SQL failover-Group Create](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-create) | Hiermee maakt u een failovergroep. |
+| [az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule) | Hiermee maakt u de firewallregels van een server. |
+| [az sql failover-group create](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-create) | Hiermee maakt u een failovergroep. |
 
 ---
 
-## <a name="3---test-failover"></a>3-testfailover
+## <a name="3---test-failover"></a>3 - Failover testen
 
-In deze stap wordt uw failover-groep naar de secundaire server gefailovert en wordt er een failback uitgevoerd met behulp van de Azure Portal.
+In deze stap voert u een failover van uw failovergroep naar de secundaire server uit en voert u vervolgens een failback uit met behulp van de Azure-portal.
 
 # <a name="the-portal"></a>[De portal](#tab/azure-portal)
 
-Testfailover met behulp van de Azure Portal.
+Test failover met behulp van de Azure-portal.
 
-1. Selecteer **Azure SQL** in het linkermenu van de [Azure Portal](https://portal.azure.com). Als **Azure SQL** niet voor komt in de lijst, selecteert u **alle services**en typt u vervolgens Azure SQL in het zoekvak. Beschrijving Selecteer de ster naast **Azure SQL** om deze te favoriet en voeg deze toe als een item in de linkernavigatiebalk.
-1. Selecteer de data base die is gemaakt in de sectie 2, zoals `mySampleDatbase` .
-1. Selecteer de naam van de server onder **Server naam** om de instellingen voor de server te openen.
+1. Selecteer **Azure SQL** in het menu aan de linkerkant van de [Azure-portal](https://portal.azure.com). Als **Azure SQL** niet in de lijst staat, selecteert u **Alle services** en typt u Azure SQL in het zoekvak. (Optioneel) Selecteer de ster naast **Azure SQL** om deze favoriet te maken en toe te voegen als item in de linkernavigatiebalk.
+1. Selecteer de database die is gemaakt in sectie 2, zoals `mySampleDatbase`.
+1. Selecteer de naam van de server onder **Servernaam** om de instellingen voor de server te openen.
 
-   ![Server voor Data Base openen](./media/failover-group-add-single-database-tutorial/open-sql-db-server.png)
+   ![Server voor database openen](./media/failover-group-add-single-database-tutorial/open-sql-db-server.png)
 
-1. Selecteer **failover-groepen** in het deel venster **instellingen** en kies vervolgens de failovergroep die u hebt gemaakt in sectie 2.
+1. Selecteer **Failovergroepen** onder het deelvenster **Instellingen** en kies vervolgens de failovergroep die u in sectie 2 hebt gemaakt.
   
-   ![De groep failover selecteren in de portal](./media/failover-group-add-single-database-tutorial/select-failover-group.png)
+   ![De failovergroep in de portal selecteren](./media/failover-group-add-single-database-tutorial/select-failover-group.png)
 
-1. Controleer welke server primair is en welke server secundair is.
-1. Selecteer **failover** in het taak venster voor het uitvoeren van een failover voor uw failovercluster-groep met uw voorbeeld database.
-1. Selecteer **Ja** in de waarschuwing waarmee u wordt gewaarschuwd dat TDS-sessies worden losgekoppeld.
+1. Controleer welke server primair en welke server secundair is.
+1. Selecteer in het taakvenster **Failover** om een failover van de failovergroep met uw voorbeelddatabase uit te voeren.
+1. Selecteer **Ja** bij de waarschuwing die u laat weten dat TDS-sessies worden losgekoppeld.
 
-   ![Failover uitvoeren voor de failovergroep met uw data base](./media/failover-group-add-single-database-tutorial/failover-sql-db.png)
+   ![Failover uitvoeren van de failovergroep met uw database](./media/failover-group-add-single-database-tutorial/failover-sql-db.png)
 
-1. Controleer welke server nu primair is en welke server secundair is. Als de failover is geslaagd, moeten de twee servers wisselende rollen hebben.
-1. Selecteer **failover** opnieuw om de oorspronkelijke rollen van de servers te herstellen.
+1. Controleer welke server nu primair en welke server secundair is. Als de failover is geslaagd, moeten de twee servers van rol zijn gewisseld.
+1. Selecteer opnieuw **Failover** om de oorspronkelijke rollen van de servers te herstellen.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Testfailover met behulp van Power shell.
+Test failover met behulp van PowerShell.
 
 Controleer de rol van de secundaire replica:
 
@@ -267,7 +267,7 @@ Failover naar de secundaire server:
    Write-host "Failed failover group successfully to" $drServerName
    ```
 
-Herstel de failovergroep terug naar de primaire server:
+Herstel de failovergroep weer naar de primaire server:
 
    ```powershell-interactive
    # Set variables
@@ -284,18 +284,18 @@ Herstel de failovergroep terug naar de primaire server:
    Write-host "Failed failover group successfully back to" $serverName
    ```
 
-In dit gedeelte van de zelf studie worden de volgende Power shell-cmdlets gebruikt:
+In dit gedeelte van de zelfstudie worden de volgende PowerShell-cmdlets gebruikt:
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Hiermee worden Azure SQL Database failover-groepen opgehaald of weer gegeven. |
-| [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| Hiermee wordt een failover uitgevoerd van een Azure SQL Database failovergroep. |
+| [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Hiermee worden Azure SQL Database-failovergroepen opgehaald of weergegeven. |
+| [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| Hiermee wordt een failover uitgevoerd van een Azure SQL Database-failovergroep. |
 
 # <a name="the-azure-cli"></a>[De Azure CLI](#tab/azure-cli)
 
-Testfailover met behulp van de Azure CLI.
+Test failover met behulp van de Azure CLI.
 
-Controleer of de server de secundaire is:
+Controleer welke server de secundaire is:
 
    ```azurecli-interactive
    echo "Verifying which server is in the secondary role..."
@@ -310,7 +310,7 @@ Failover naar de secundaire server:
    echo "Successfully failed failover group over to" $failoverServer
    ```
 
-Herstel de failovergroep terug naar de primaire server:
+Herstel de failovergroep weer naar de primaire server:
 
    ```azurecli-interactive
    echo "Failing over group back to the primary server..."
@@ -318,30 +318,30 @@ Herstel de failovergroep terug naar de primaire server:
    echo "Successfully failed failover group back to" $server
    ```
 
-In dit gedeelte van de zelf studie worden de volgende Azure CLI-cmdlets gebruikt:
+In dit gedeelte van de zelfstudie worden de volgende Azure CLI-cmdlets gebruikt:
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [AZ SQL failover-Group List](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-list) | Geeft een lijst van de failover-groepen op een server. |
-| [AZ SQL failover-groeps Set-Primary](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-set-primary) | Stel de primaire groep van de failovergroep in door het uitvoeren van een failover voor alle data bases van de huidige primaire server. |
+| [az sql failover-group list](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-list) | Geeft een lijst van de failovergroepen op een server. |
+| [az sql failover-group set-primary](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-set-primary) | Stel de primaire server van de failovergroep in door het uitvoeren van een failover voor alle databases van de huidige primaire server. |
 
 ---
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Resources opschonen door de resource groep te verwijderen.
+Schoon resources op door de resourcegroep te verwijderen.
 
 # <a name="the-portal"></a>[De portal](#tab/azure-portal)
 
-Verwijder de resource groep met behulp van de Azure Portal.
+Verwijder de resourcegroep met behulp van de Azure-portal.
 
 1. Navigeer in [Azure Portal](https://portal.azure.com) naar uw resourcegroep.
-1. Selecteer  **resource groep verwijderen** om alle resources in de groep en de resource groep zelf te verwijderen.
-1. Typ de naam van de resource groep, `myResourceGroup` in het tekstvak en selecteer vervolgens **verwijderen** om de resource groep te verwijderen.  
+1. Selecteer **Resourcegroep verwijderen** om alle resources uit de groep en de resourcegroep zelf te verwijderen.
+1. Typ de naam van de resourcegroep, `myResourceGroup`, in het tekstvak en selecteer vervolgens **Verwijderen** om de resourcegroep te verwijderen.  
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Verwijder de resource groep met behulp van Power shell.
+Verwijder de resourcegroep met behulp van PowerShell.
 
    ```powershell-interactive
    # Set variables
@@ -353,7 +353,7 @@ Verwijder de resource groep met behulp van Power shell.
    Write-host "Resource group removed =" $resourceGroupName
    ```
 
-In dit gedeelte van de zelf studie worden de volgende Power shell-cmdlets gebruikt:
+In dit gedeelte van de zelfstudie worden de volgende PowerShell-cmdlets gebruikt:
 
 | Opdracht | Opmerkingen |
 |---|---|
@@ -361,7 +361,7 @@ In dit gedeelte van de zelf studie worden de volgende Power shell-cmdlets gebrui
 
 # <a name="the-azure-cli"></a>[De Azure CLI](#tab/azure-cli)
 
-Verwijder de resource groep met behulp van de Azure CLI.
+Verwijder de resourcegroep met behulp van de Azure CLI.
 
    ```azurecli-interactive
    echo "Cleaning up resources by removing the resource group..."
@@ -369,7 +369,7 @@ Verwijder de resource groep met behulp van de Azure CLI.
    echo "Successfully removed resource group" $resourceGroup
    ```
 
-In dit gedeelte van de zelf studie worden de volgende Azure CLI-cmdlets gebruikt:
+In dit gedeelte van de zelfstudie worden de volgende Azure CLI-cmdlets gebruikt:
 
 | Opdracht | Opmerkingen |
 |---|---|
@@ -378,7 +378,7 @@ In dit gedeelte van de zelf studie worden de volgende Azure CLI-cmdlets gebruikt
 ---
 
 > [!IMPORTANT]
-> Als u de resource groep wilt blijven gebruiken, maar de secundaire Data Base wilt verwijderen, verwijdert u deze uit de failovergroep voordat u deze verwijdert. Het verwijderen van een secundaire Data Base voordat deze wordt verwijderd uit de failovergroep kan onvoorspelbaar gedrag veroorzaken.
+> Als u de resourcegroep wilt behouden, maar de secundaire database wilt wissen, dan moet u deze uit de failovergroep verwijderen voordat u deze wist. Het wissen van een secundaire database voordat deze uit de failovergroep is verwijderd, kan onvoorspelbaar gedrag veroorzaken.
 
 ## <a name="full-scripts"></a>Volledige scripts
 
@@ -391,17 +391,17 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 | Opdracht | Opmerkingen |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Hiermee maakt u een resourcegroep waarin alle resources worden opgeslagen. |
-| [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Hiermee maakt u een server die als host fungeert voor afzonderlijke data bases en elastische Pools in Azure SQL Database. |
-| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Hiermee maakt u een firewall regel voor een server in Azure SQL Database. |
-| [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Hiermee maakt u een nieuwe data base in Azure SQL Database. |
-| [New-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) | Hiermee maakt u een nieuwe failover-groep in Azure SQL Database. |
-| [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) | Hiermee haalt u een of meer data bases op in Azure SQL Database. |
-| [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup) | Hiermee voegt u een of meer data bases toe aan een failovergroep in Azure SQL Database. |
-| [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Hiermee worden failover-groepen in Azure SQL Database opgehaald of weer gegeven. |
-| [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| Hiermee wordt een failover uitgevoerd van een failovergroep in Azure SQL Database. |
-| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resource groep in Azure SQL Database.|
+| [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Hiermee maakt u een server waar individuele databases en elastische pools worden gehost in Azure SQL Database. |
+| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Hiermee maakt u een firewallregel voor een server in Azure SQL Database. |
+| [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Hiermee maakt u een nieuwe database in Azure SQL Database. |
+| [New-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) | Hiermee maakt u een nieuwe failovergroep in Azure SQL Database. |
+| [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) | Hiermee haalt u een of meer databases op in Azure SQL Database. |
+| [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup) | Hiermee voegt u een of meer databases toe aan een failovergroep in Azure SQL Database. |
+| [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Hiermee worden failovergroepen in Azure SQL Database opgehaald of weergegeven. |
+| [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| Hiermee wordt een failover van een failovergroep in Azure SQL Database uitgevoerd. |
+| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Hiermee wordt een resourcegroep in Azure SQL Database verwijderd.|
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 [!code-azurecli-interactive[main](../../../cli_scripts/sql-database/failover-groups/add-single-db-to-failover-group-az-cli.sh "Add database to a failover group")]
 
@@ -411,33 +411,33 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 |---|---|
 | [az account set](/cli/azure/account?view=azure-cli-latest#az-account-set) | Hiermee stelt u een abonnement in als het huidige actieve abonnement. |
 | [az group create](/cli/azure/group#az-group-create) | Hiermee maakt u een resourcegroep waarin alle resources worden opgeslagen. |
-| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Hiermee maakt u een server die als host fungeert voor afzonderlijke data bases en elastische Pools in Azure SQL Database. |
-| [az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule) | Hiermee maakt u de IP-firewall regels op server niveau in Azure SQL Database. |
-| [az sql db create](/cli/azure/sql/db?view=azure-cli-latest) | Hiermee maakt u een data base in Azure SQL Database. |
-| [AZ SQL failover-Group Create](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-create) | Hiermee maakt u een failover-groep in Azure SQL Database. |
-| [AZ SQL failover-Group List](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-list) | Geeft een lijst van de failover-groepen op een server in Azure SQL Database. |
-| [AZ SQL failover-groeps Set-Primary](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-set-primary) | Stel de primaire groep van de failovergroep in door het uitvoeren van een failover voor alle data bases van de huidige primaire server. |
+| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Hiermee maakt u een server waar individuele databases en elastische pools worden gehost in Azure SQL Database. |
+| [az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule) | Hiermee worden de IP-firewallregels op serverniveau in Azure SQL Database gemaakt. |
+| [az sql db create](/cli/azure/sql/db?view=azure-cli-latest) | Hiermee maakt u een database in Azure SQL Database. |
+| [az sql failover-group create](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-create) | Hiermee maakt u een failovergroep in Azure SQL Database. |
+| [az sql failover-group list](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-list) | Hiermee worden de failovergroepen op een server in Azure SQL Database weergegeven. |
+| [az sql failover-group set-primary](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-set-primary) | Stel de primaire server van de failovergroep in door het uitvoeren van een failover voor alle databases van de huidige primaire server. |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 
 # <a name="the-portal"></a>[De portal](#tab/azure-portal)
 
-Er zijn geen scripts beschikbaar voor de Azure Portal.
+Er zijn geen scripts beschikbaar voor de Azure-portal.
 
 ---
 
-U vindt hier ook andere Azure SQL Database scripts: [Azure PowerShell](powershell-script-content-guide.md) en [Azure cli](az-cli-script-samples-content-guide.md).
+U kunt hier andere Azure SQL Database-scripts vinden: [Azure PowerShell](powershell-script-content-guide.md) en [Azure CLI](az-cli-script-samples-content-guide.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u een data base in Azure SQL Database aan een failovergroep toegevoegd en is de failover getest. U hebt geleerd hoe u:
+In deze zelfstudie hebt u een database in Azure SQL Database aan een failovergroep toegevoegd en de failover getest. U hebt geleerd hoe u:
 
 > [!div class="checklist"]
 >
 > - Een database maken in Azure SQL Database
-> - Maak een failovergroep voor de data base tussen twee servers.
-> - Testfailover.
+> - Een failovergroep voor de database tussen twee servers maken.
+> - Failover testen.
 
-Ga verder met de volgende zelf studie over het toevoegen van een elastische pool aan een failovergroep.
+Ga verder met de volgende zelfstudie over het toevoegen van een elastische pool aan een failovergroep.
 
 > [!div class="nextstepaction"]
-> [Zelf studie: een Azure SQL Database elastische pool toevoegen aan een failovergroep](failover-group-add-elastic-pool-tutorial.md)
+> [Zelfstudie: Een elastische pool van Azure SQL Database toevoegen aan een failovergroep](failover-group-add-elastic-pool-tutorial.md)
