@@ -3,12 +3,12 @@ title: ExpressRoute verbinden met de gateway voor het virtuele netwerk
 description: Stappen om ExpressRoute te verbinden met de gateway voor het virtuele netwerk.
 ms.topic: include
 ms.date: 09/28/2020
-ms.openlocfilehash: 241919e3a69b8d1c3c24e6c894bcbf20aea62d5f
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 214ef9c01193b238c8e456ef2809f7a2edbdb6c7
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 09/30/2020
-ms.locfileid: "91578343"
+ms.locfileid: "91598171"
 ---
 <!-- Used in deploy-azure-vmware-solution.md and tutorial-configure-networking.md -->
 
@@ -16,7 +16,7 @@ ms.locfileid: "91578343"
 
 1. Kopieer de autorisatiesleutel. Als er geen autorisatiesleutel is, moet u er een maken door **+ Een autorisatiesleutel aanvragen** te selecteren.
 
-   :::image type="content" source="../media/expressroute-global-reach/start-request-auth-key.png" alt-text="Kopieer de autorisatiesleutel. Als er geen autorisatiesleutel is, moet u er een maken door + Een autorisatiesleutel aanvragen" border="true"::: te selecteren.
+   :::image type="content" source="../media/expressroute-global-reach/start-request-auth-key.png" alt-text="Kopieer de autorisatiesleutel. Als er geen autorisatiesleutel is, moet u er een maken door + Een autorisatiesleutel aanvragen" border="true" lightbox="../media/expressroute-global-reach/start-request-auth-key.png"::: te selecteren.
 
 1. Ga naar de gateway voor het virtuele netwerk die u in de vorige stap hebt gemaakt en selecteer onder **Instellingen** de optie **Verbindingen**. Selecteer op de pagina **Verbindingen** de optie **+ Toevoegen**.
 
@@ -31,6 +31,6 @@ ms.locfileid: "91578343"
    | **Autorisatiesleutel**  | Kopieer en plak de autorisatiesleutel vanuit het tabblad ExpressRoute voor de resourcegroep. |
    | **URI van peercircuit**  | Kopieer en plak de ExpressRoute-id vanuit het tabblad ExpressRoute voor uw resourcegroep.  |
 
-   :::image type="content" source="../media/expressroute-global-reach/open-cloud-shell.png" alt-text="Kopieer de autorisatiesleutel. Als er geen autorisatiesleutel is, moet u er een maken door + Een autorisatiesleutel aanvragen" border="true":::
+   :::image type="content" source="../media/expressroute-global-reach/open-cloud-shell.png" alt-text="Kopieer de autorisatiesleutel. Als er geen autorisatiesleutel is, moet u er een maken door + Een autorisatiesleutel aanvragen" border="true" lightbox="../media/expressroute-global-reach/open-cloud-shell.png":::
 
 De verbinding tussen het ExpressRoute-circuit en uw virtuele netwerk wordt gemaakt.
