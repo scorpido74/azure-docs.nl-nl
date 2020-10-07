@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 198b87d0a458108ce76934217c651d613ab5d75e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 18b34ff466f3935cb5cd18d46e6d26e36e756a9b
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512072"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91774457"
 ---
 # <a name="fail-over-to-your-storsimple-cloud-appliance"></a>Failover naar uw StorSimple Cloud Appliance
 
@@ -46,15 +46,15 @@ Voer de volgende stappen uit om het apparaat terug te zetten naar een doel StorS
     ![Apparaat selecteren](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev1.png)
 3. Selecteer en klik op uw bron apparaat. Het bron apparaat heeft de volume containers waarvoor u een failover wilt uitvoeren. Ga naar **instellingen > volume containers**.
 
-    ![Apparaat selecteren](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev2.png)
+    ![Apparaat 2 selecteren](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev2.png)
     
 4. Selecteer een volume container waarvoor u een failover wilt uitvoeren naar een ander apparaat. Klik op de volume container om de lijst met volumes in deze container weer te geven. Selecteer een volume, klik met de rechter muisknop en klik op **offline nemen** om het volume offline te halen.
 
-    ![Apparaat selecteren](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev5.png)
+    ![Apparaat selecteren 3](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev5.png)
 
 5. Herhaal dit proces voor alle volumes in de volume container.
 
-     ![Apparaat selecteren](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev7.png)
+     ![Apparaat selecteren 4](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev7.png)
 
 6. Herhaal de vorige stap voor alle volume containers waarvoor u een failover wilt uitvoeren naar een ander apparaat.
 
@@ -81,7 +81,7 @@ Voer de volgende stappen uit om het apparaat terug te zetten naar een doel StorS
 
     1. Selecteer het apparaat dat is gebruikt als doel voor de failover.
 
-       ![Apparaat selecteren](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev14.png)
+       ![Apparaat selecteren 5](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev14.png)
 
     2. Klik op **volume containers**. Alle volume containers, samen met de volumes van het oude apparaat, moeten worden weer gegeven.
 

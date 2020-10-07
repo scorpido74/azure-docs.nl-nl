@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 10/06/2020
 ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9bcc356835fcfc080bd381043552d6e8868cc7f
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: c16008ac4a328f93669179ccca783efb9ef092a5
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91446628"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91773502"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Wat is er nieuw in Azure Active Directory?
 
@@ -57,6 +57,22 @@ U kunt nu het maken, bijwerken en verwijderen van gebruikers accounts automatise
 - [Webroot-beveiligings bewustmaking](../saas-apps/webroot-security-awareness-training-provisioning-tutorial.md)
 
 Voor meer informatie over hoe u uw organisatie beter kunt beveiligen met behulp van automatische toewijzing van gebruikers accounts, raadpleegt [u de gebruikers inrichting voor SaaS-toepassingen automatiseren met Azure AD](../app-provisioning/user-provisioning.md).
+ 
+---
+### <a name="cloud-provisioning-public-preview-refresh"></a>De open bare preview-versie van Cloud inrichting vernieuwen
+
+**Type:** Nieuwe functie  
+**Service categorie:** Azure AD Cloud voor het inrichten van **producten:** Identity Lifecycle Management
+ 
+Azure AD Connect Cloud Provisioning open bare preview-functies vernieuwt twee belang rijke verbeteringen die zijn ontwikkeld door feedback van klanten: 
+
+- Ervaring met kenmerk toewijzing via Azure Portal
+
+    Met deze functie kunnen IT-beheerders gebruikers-, groeps-of contact kenmerken van AD toewijzen aan Azure AD met behulp van de verschillende toewijzings typen die vandaag beschikbaar zijn. Kenmerk toewijzing is een functie die wordt gebruikt voor het standaardiseren van de waarden van de kenmerken van Active Directory naar Azure Active Directory. Eén kan bepalen of de kenmerk waarde direct moet worden toegewezen aan de naam van AD naar Azure AD of dat expressies moeten worden gebruikt om de kenmerk waarden bij het inrichten van gebruikers te transformeren. [Meer informatie](../cloud-provisioning/how-to-attribute-mapping.md)
+
+- Inrichting op aanvraag of gebruikers ervaring testen
+
+    Wanneer u uw configuratie hebt ingesteld, wilt u wellicht testen of de gebruikers transformatie werkt zoals verwacht voordat u deze toepast op alle gebruikers binnen het bereik. Met inrichting op aanvraag kunnen IT-beheerders de DN (Distinguished Name) van een AD-gebruiker invoeren en zien of ze worden gesynchroniseerd zoals verwacht. Inrichting op aanvraag biedt een uitstekende manier om ervoor te zorgen dat de kenmerk toewijzingen die u eerder hebt uitgevoerd zoals verwacht. [Meer informatie](../cloud-provisioning/how-to-on-demand-provision.md)
  
 ---
 
@@ -106,7 +122,7 @@ De evaluatie van voortdurende toegang (CAE) is nu beschikbaar in de open bare Pr
 
 ---
 
-### <a name="ask-users-requesting-an-access-package-additional-questions-to-improve-approval-decisions"></a>Gebruikers vragen om een toegangs pakket aanvullende vragen om goedkeurings beslissingen te verbeteren
+### <a name="public-preview-ask-users-requesting-an-access-package-additional-questions-to-improve-approval-decisions"></a>Open bare Preview: vraag gebruikers om een toegangs pakket aanvullende vragen om goedkeurings beslissingen te verbeteren
 
 **Type:** Nieuwe functie  
 **Service categorie:** Beheer van gebruikers toegang  

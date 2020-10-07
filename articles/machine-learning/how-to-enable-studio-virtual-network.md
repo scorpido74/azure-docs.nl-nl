@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 07/16/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 58395463c494a95a8842cddbe4d51544ce03d212
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4b6f2db8a8245db7dddbabc3a31a0de0d8963b84
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91713365"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776082"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Azure Machine Learning Studio gebruiken in een virtueel Azure-netwerk
 
@@ -24,14 +24,15 @@ In dit artikel leert u hoe u Azure Machine Learning Studio kunt gebruiken in een
 
 > [!div class="checklist"]
 > - Toegang tot de Studio vanaf een resource binnen een virtueel netwerk.
+> - Configureer persoonlijke eind punten voor opslag accounts.
 > - De Studio toegang geven tot gegevens die zijn opgeslagen in een virtueel netwerk.
-> - Begrijpen hoe opslag beveiliging wordt beïnvloed door de Studio.
+> - Krijg inzicht in de manier waarop de Studio opslag beveiliging beïnvloedt.
 
 Dit artikel is deel vijf uit een serie van vijf delen die u begeleidt bij het beveiligen van een Azure Machine Learning werk stroom. We raden u ten zeerste aan om in [deel één het overzicht van VNet](how-to-network-security-overview.md) te lezen om eerst inzicht te krijgen in de algehele architectuur. 
 
 Zie de andere artikelen in deze serie:
 
-[1. VNet-overzicht](how-to-network-security-overview.md)  >  [2. Beveilig de werk ruimte](how-to-secure-workspace-vnet.md)  >  [3. De trainings omgeving](how-to-secure-training-vnet.md)  >  [4 beveiligen. Beveilig de vergoedings omgeving](how-to-secure-inferencing-vnet.md)  >  [5. De functionaliteit van Studio inschakelen](how-to-enable-studio-virtual-network.md)
+[1. VNet-overzicht](how-to-network-security-overview.md)  >  [2. Beveilig de werk ruimte](how-to-secure-workspace-vnet.md)  >  [3. De trainings omgeving](how-to-secure-training-vnet.md)  >  [4 beveiligen. Beveilig de vergoedings omgeving](how-to-secure-inferencing-vnet.md)  >  **5. De functionaliteit van Studio inschakelen**
 
 
 > [!IMPORTANT]
@@ -46,7 +47,7 @@ Zie de andere artikelen in deze serie:
 
 + Een bestaande [Azure machine learning-werk ruimte waarvoor een persoonlijke koppeling is ingeschakeld](how-to-secure-workspace-vnet.md#secure-the-workspace-with-private-endpoint).
 
-+ [Het virtuele netwerk is toegevoegd](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts)met een bestaand Azure Storage-account.
++ [Het virtuele netwerk is toegevoegd](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints)met een bestaand Azure Storage-account.
 
 ## <a name="access-the-studio-from-a-resource-inside-the-vnet"></a>Toegang tot de Studio vanaf een resource binnen het VNet
 
@@ -56,7 +57,7 @@ Als u bijvoorbeeld netwerk beveiligings groepen (NSG) gebruikt om uitgaand verke
 
 ## <a name="access-data-using-the-studio"></a>Toegang tot gegevens met behulp van Studio
 
-Nadat u [een Azure Storage-account aan uw virtuele netwerk hebt toegevoegd](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts), moet u uw opslag account configureren voor het gebruik van [beheerde identiteit](../active-directory/managed-identities-azure-resources/overview.md) om de toegang tot uw gegevens te verlenen aan de Studio. De Studio ondersteunt opslag accounts die zijn geconfigureerd voor het gebruik van service-eind punten of privé-eind punten. Opslag accounts gebruiken standaard service-eind punten. Zie [privé-eind punten voor Azure Storage gebruiken](../storage/common/storage-private-endpoints.md) om persoonlijke eind punten voor opslag in te scha kelen
+Nadat u een Azure Storage-account aan uw virtuele netwerk hebt toegevoegd met een [service-eind punt](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints) of een [persoonlijk eind punt](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints), moet u uw opslag account configureren voor het gebruik van [beheerde identiteit](../active-directory/managed-identities-azure-resources/overview.md) om de toegang tot uw gegevens te verlenen aan de Studio.
 
 Als u de beheerde identiteit niet inschakelt, wordt deze fout ook weer gegeven, `Error: Unable to profile this dataset. This might be because your data is stored behind a virtual network or your data does not support profile.` worden de volgende bewerkingen uitgeschakeld:
 
@@ -64,6 +65,9 @@ Als u de beheerde identiteit niet inschakelt, wordt deze fout ook weer gegeven, 
 * Gegevens visualiseren in de ontwerp functie.
 * Een AutoML-experiment verzenden.
 * Een label project starten.
+
+> [!NOTE]
+> [Ml van ondersteunde gegevens etikettering](how-to-create-labeling-projects.md#use-ml-assisted-labeling) biedt geen ondersteuning voor standaard opslag accounts die zijn beveiligd achter een virtueel netwerk. U moet een niet-standaard opslag account gebruiken voor de etiket tering van ondersteunde gegevens. Het niet-standaard opslag account kan worden beveiligd achter het virtuele netwerk. 
 
 De Studio ondersteunt het lezen van gegevens uit de volgende gegevensopslag typen in een virtueel netwerk:
 

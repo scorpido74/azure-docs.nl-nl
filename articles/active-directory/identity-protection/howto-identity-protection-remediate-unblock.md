@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: how-to
-ms.date: 06/05/2020
+ms.date: 10/06/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06335798addadcd8591625e25ed2eafe8469ae48
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c297e1a4f6443e584f04914712314d33df23b119
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84463957"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776099"
 ---
 # <a name="remediate-risks-and-unblock-users"></a>Risico's herstellen en gebruikers deblokkeren
 
@@ -88,6 +88,10 @@ Beheerders hebben de volgende opties voor het deblokkeren van een account op bas
 1. **Aanmelden vanaf een bekende locatie of apparaat** : een veelvoorkomende reden voor geblokkeerde verdachte aanmeldingen is aanmeldings pogingen vanaf onbekende locaties of apparaten. Uw gebruikers kunnen snel bepalen of deze reden de blokkerings reden is door u te proberen zich aan te melden vanaf een vertrouwde locatie of apparaat.
 1. **De gebruiker uitsluiten van het beleid** : als u denkt dat de huidige configuratie van uw aanmeldings beleid problemen veroorzaakt voor specifieke gebruikers, kunt u de gebruikers ervan uitsluiten. Zie voor meer informatie de sectie uitsluitingen in het artikel [procedure: risico beleid configureren en inschakelen](howto-identity-protection-configure-risk-policies.md#exclusions).
 1. **Beleid uitschakelen** : als u denkt dat uw beleids configuratie problemen veroorzaakt voor al uw gebruikers, kunt u het beleid uitschakelen. Zie voor meer informatie het artikel [procedure: risico beleid configureren en inschakelen](howto-identity-protection-configure-risk-policies.md).
+
+## <a name="powershell-preview"></a>Power shell-preview
+
+Met de Microsoft Graph Power shell SDK preview-module kunnen organisaties Risico's beheren met Power shell. De preview-modules en voorbeeld code vindt u in de [Azure AD github opslag plaats](https://github.com/AzureAD/IdentityProtectionTools).
 
 ## <a name="next-steps"></a>Volgende stappen
 

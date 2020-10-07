@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a Network Virtual Appliance (NVA) in my Virtual WAN hub.
-ms.openlocfilehash: 83267b1bebd501871277ea3e40b7fa9ba38f33cd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 014339b02167a1bb4cba11cc10c9740b8fa53f2c
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91313753"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91773243"
 ---
 # <a name="how-to-create-a-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Een virtueel netwerk apparaat maken in een virtuele WAN-hub van Azure (preview)
 
@@ -21,7 +21,7 @@ In deze zelf studie ziet u hoe u met behulp van virtueel WAN verbinding maakt me
 
 Met de stappen in dit artikel kunt u een virtueel **Barracuda CLOUDGEN WAN** -netwerk maken in de virtuele WAN-hub. U kunt deze oefening alleen uitvoeren als u een Barracuda-Cloud apparaat (CPE) en een licentie voor het Barracuda CloudGen WAN-toestel hebt dat u in de hub implementeert voordat u begint.
 
-Voor implementatie documentatie van **Cisco SD-WAN** in azure Virtual WAN, stuurt u een E-mail naar Cisco op het volgende e-mail adres: vwan_public_preview@cisco.com .
+Voor implementatie documentatie van **Cisco SD-WAN** in azure Virtual WAN, stuurt u een E-mail naar Cisco op het volgende e-mail adres: vwan_public_preview@external.cisco.com
 
 
 ## <a name="before-you-begin"></a>Voordat u begint
@@ -66,14 +66,14 @@ In deze stap maakt u een virtueel netwerk apparaat in de hub. De procedure voor 
 
 1. Zoek de virtuele WAN-hub die u in de vorige stap hebt gemaakt en open deze.
 
-   :::image type="content" source="./media/how-to-nva-hub/nva-hub.png" alt-text="Virtuele hub":::
+   :::image type="content" source="./media/how-to-nva-hub/nva-hub.png" alt-text="Basisinstellingen":::
 1. Zoek de tegel virtuele netwerk apparaten en selecteer de koppeling **maken** .
 1. Selecteer op de Blade **virtueel netwerk apparaat** de optie **Barracuda CloudGen WAN**en selecteer vervolgens de knop **maken** .
 
-   :::image type="content" source="./media/how-to-nva-hub/select-nva.png" alt-text="NVA selecteren":::
+   :::image type="content" source="./media/how-to-nva-hub/select-nva.png" alt-text="Basisinstellingen":::
 1. Hiermee gaat u naar de Azure Marketplace-aanbieding voor de Barracuda CloudGen WAN-gateway. Lees de voor waarden en selecteer vervolgens de knop **maken** wanneer u klaar bent.
 
-   :::image type="content" source="./media/how-to-nva-hub/barracuda-create-basics.png" alt-text="Basis beginselen van Barracuda NVA":::
+   :::image type="content" source="./media/how-to-nva-hub/barracuda-create-basics.png" alt-text="Basisinstellingen":::
 1. Op de pagina **basis beginselen** moet u de volgende informatie opgeven:
 
    * **Abonnement** : Kies het abonnement dat u hebt gebruikt voor het implementeren van de virtuele WAN en hub.
@@ -83,7 +83,7 @@ In deze stap maakt u een virtueel netwerk apparaat in de hub. De procedure voor 
    * **Beheerde resource groep** : dit is de naam van de beheerde resource groep waarin Barracuda resources implementeert die door hen worden beheerd. De naam moet vooraf zijn ingevuld.
 1. Selecteer de knop **volgende: CLOUDGEN WAN-gateway** .
 
-   :::image type="content" source="./media/how-to-nva-hub/barracuda-cloudgen-wan.png" alt-text="CloudGen WAN-gateway":::
+   :::image type="content" source="./media/how-to-nva-hub/barracuda-cloudgen-wan.png" alt-text="Basisinstellingen":::
 1. Geef hier de volgende informatie op:
 
    * **Virtuele WAN-hub** : de virtuele WAN-hub waarop u deze NVA wilt implementeren.

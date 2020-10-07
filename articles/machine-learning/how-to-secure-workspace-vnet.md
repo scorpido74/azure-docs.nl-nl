@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
-ms.date: 07/07/2020
+ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: be476af3696e0753c8e36cfc34a024f8b585c605
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 5d34fe403e0af4bc871ba176d0fa755650c26292
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91708313"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776036"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>Een Azure Machine Learning-werk ruimte beveiligen met virtuele netwerken
 
@@ -57,10 +57,9 @@ Met de persoonlijke Azure-koppeling kunt u verbinding maken met uw werk ruimte m
 
 Zie [persoonlijke koppeling configureren](how-to-configure-private-link.md)voor meer informatie over het instellen van een persoonlijke koppelings werkruimte.
 
+## <a name="secure-azure-storage-accounts-with-service-endpoints"></a>Azure Storage-accounts beveiligen met Service-eind punten
 
-## <a name="secure-azure-storage-accounts"></a>Azure Storage-accounts beveiligen
-
-In deze sectie leert u hoe u een Azure-opslag account kunt beveiligen met behulp van service-eind punten. U kunt echter ook persoonlijke eind punten gebruiken om Azure-opslag te beveiligen. Zie [privé-eind punten voor Azure Storage gebruiken](../storage/common/storage-private-endpoints.md)voor meer informatie.
+Azure Machine Learning ondersteunt opslag accounts die zijn geconfigureerd voor het gebruik van service-eind punten of privé-eind punten. In deze sectie leert u hoe u een Azure-opslag account kunt beveiligen met behulp van service-eind punten. Zie de volgende sectie voor privé-eind punten.
 
 > [!IMPORTANT]
 > U kunt het _standaard opslag account_ voor Azure machine learning of _niet-standaard opslag accounts_ in een virtueel netwerk plaatsen.
@@ -95,11 +94,23 @@ Als u een Azure-opslag account wilt gebruiken voor de werk ruimte in een virtuee
 
    [![Het deel venster firewalls en virtuele netwerken in de Azure Portal](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png)](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png#lightbox)
 
+## <a name="secure-azure-storage-accounts-with-private-endpoints"></a>Azure Storage-accounts beveiligen met privé-eind punten
+
+Azure Machine Learning ondersteunt opslag accounts die zijn geconfigureerd voor het gebruik van service-eind punten of privé-eind punten. Als het opslag account gebruikmaakt van privé-eind punten, moet u twee persoonlijke eind punten configureren voor uw standaard-opslag account:
+1. Een persoonlijk eind punt met een subresource voor een **BLOB** -doel.
+1. Een persoonlijk eind punt met een **Bestands** doel-sub-resource (file share).
+
+![Scherm opname van pagina met persoonlijke eindpunt configuratie met Blob en bestands opties](./media/how-to-enable-studio-virtual-network/configure-storage-private-endpoint.png)
+
+Als u een persoonlijk eind punt wilt configureren voor een opslag account dat **niet** de standaard opslag is, selecteert u het **doel-subbron** type dat overeenkomt met het opslag account dat u wilt toevoegen.
+
+Zie [privé-eind punten voor Azure Storage gebruiken](../storage/common/storage-private-endpoints.md) voor meer informatie
+
 ## <a name="secure-datastores-and-datasets"></a>Beveiligde gegevens opslag en gegevens sets
 
-In deze sectie leert u hoe u Data Store en het gebruik van gegevensset kunt gebruiken voor de SDK-ervaring in een virtueel netwerk. Zie [Azure machine learning Studio gebruiken in een virtueel netwerk](how-to-enable-studio-virtual-network.md)voor meer informatie over de Studio-ervaring.
+In deze sectie leert u hoe u gegevens opslag en gegevens sets kunt gebruiken in de SDK-ervaring met een virtueel netwerk. Zie [Azure machine learning Studio gebruiken in een virtueel netwerk](how-to-enable-studio-virtual-network.md)voor meer informatie over de Studio-ervaring.
 
-Voor toegang tot de gegevens met behulp van SDK moet u de verificatie methode gebruiken die vereist is voor de afzonderlijke service waarin de gegevens zijn opgeslagen. Als u bijvoorbeeld een gegevens opslag voor toegang tot Azure Data Lake Store Gen2 registreert, moet u nog steeds een Service-Principal gebruiken zoals beschreven in [verbinding maken met Azure Storage-services](how-to-access-data.md#azure-data-lake-storage-generation-2).
+Voor toegang tot gegevens met behulp van de SDK moet u de verificatie methode gebruiken die vereist is voor de afzonderlijke service waarin de gegevens zijn opgeslagen. Als u bijvoorbeeld een gegevens opslag voor toegang tot Azure Data Lake Store Gen2 registreert, moet u nog steeds een Service-Principal gebruiken zoals beschreven in [verbinding maken met Azure Storage-services](how-to-access-data.md#azure-data-lake-storage-generation-2).
 
 ### <a name="disable-data-validation"></a>Gegevens validatie uitschakelen
 

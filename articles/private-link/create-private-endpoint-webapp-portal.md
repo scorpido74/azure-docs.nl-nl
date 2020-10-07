@@ -1,28 +1,28 @@
 ---
-title: Privé verbinden met een web-app met behulp van een persoonlijk Azure-eind punt (preview-versie)
-description: In dit artikel wordt uitgelegd hoe u een persoonlijke verbinding maakt met een web-app met behulp van Azure private endpoint (preview).
+title: Privé verbinden met een web-app met behulp van een persoonlijk Azure-eind punt
+description: In dit artikel wordt uitgelegd hoe u een persoonlijke verbinding maakt met een web-app met behulp van een persoonlijk Azure-eind punt.
 author: ericgre
 ms.assetid: b8c5c7f8-5e90-440e-bc50-38c990ca9f14
 ms.topic: how-to
-ms.date: 09/08/2020
+ms.date: 10/07/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: ccbcdbe9204120e1cf181136f566556ec30be871
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 3e0f05240aba9b5c92689315e409aaabe793b3f4
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90054531"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91772835"
 ---
-# <a name="connect-privately-to-a-web-app-by-using-azure-private-endpoint-preview"></a>Privé verbinden met een web-app met behulp van een persoonlijk Azure-eind punt (preview-versie)
+# <a name="connect-privately-to-a-web-app-by-using-azure-private-endpoint"></a>Privé verbinden met een web-app met behulp van een persoonlijk Azure-eind punt
 
-Persoonlijk Azure-eind punt (preview) is de fundamentele bouw steen voor persoonlijke Azure-koppelingen. Door een persoonlijk eind punt te gebruiken, kunt u een persoonlijke verbinding maken met uw web-app. In dit artikel leert u hoe u een web-app implementeert met behulp van een persoonlijk eind punt en vervolgens verbinding maakt met de web-app vanaf een virtuele machine (VM).
+Persoonlijk Azure-eind punt is de fundamentele bouw steen voor persoonlijke Azure-koppelingen. Door een persoonlijk eind punt te gebruiken, kunt u een persoonlijke verbinding maken met uw web-app. In dit artikel leert u hoe u een web-app implementeert met behulp van een persoonlijk eind punt en vervolgens verbinding maakt met de web-app vanaf een virtuele machine (VM).
 
 Zie [Private-eind punten gebruiken voor een Azure-web-app][privateendpointwebapp]voor meer informatie.
 
 > [!Note]
-> Persoonlijk eind punt (preview) is beschikbaar in open bare regio's voor PremiumV2 Windows Web apps, Linux-web-apps en het Premium-abonnement van Azure Functions (ook wel het elastische Premium-abonnement genoemd). 
+> Persoonlijk eind punt is beschikbaar in open bare regio's voor PremiumV2, PremiumV3 Windows Web apps, Linux-web-apps en het Premium-abonnement van Azure Functions (ook wel het elastische Premium-abonnement genoemd). 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
@@ -86,7 +86,7 @@ Ga als volgt te werk om de virtuele machine te maken:
 In deze sectie maakt u een persoonlijke web-app die gebruikmaakt van een persoonlijk eind punt.
 
 > [!Note]
-> De functie privé-eind punt is alleen beschikbaar voor de PremiumV2-laag.
+> De functie privé-eind punt is alleen beschikbaar voor de PremiumV2-en PremiumV3-laag.
 
 ### <a name="create-the-web-app"></a>De web-app maken
 
@@ -103,20 +103,20 @@ In deze sectie maakt u een persoonlijke web-app die gebruikmaakt van een persoon
 
 ### <a name="create-the-private-endpoint"></a>Het persoonlijke eind punt maken
 
-1. Selecteer in de eigenschappen van de web-app onder **instellingen**de optie **netwerken**en selecteer vervolgens onder **Private endpoint Connections (preview)** **uw particuliere endpoint-verbindingen configureren**.
+1. Selecteer in Web App-eigenschappen onder **instellingen**de optie **netwerken**en selecteer vervolgens onder * * verbindingen met privé-eind punten * * **de optie uw particuliere endpoint-verbindingen configureren**.
 
    > [!div class="mx-imgBorder"]
    > ![Scherm opname van de koppeling ' uw persoonlijke eindpunt verbindingen configureren ' in het deel venster Web-app-netwerk.][7]
 
-1. Selecteer in de wizard **verbindingen met privé-eind punten (preview)** de optie **toevoegen**.
+1. Selecteer in de wizard **verbindingen met privé-eind punten** de optie **toevoegen**.
 
    > [!div class="mx-imgBorder"]
-   > ![Scherm afbeelding van de knop toevoegen in de wizard Persoonlijke eind punt verbindingen (preview).][8]
+   > ![Scherm afbeelding van de knop toevoegen in de wizard verbindingen met het persoonlijke eind punt.][8]
 
 1. Selecteer de juiste gegevens in de vervolg keuzelijst **abonnement**, het **virtuele netwerk**en het **subnet** en selecteer vervolgens **OK**.
 
    > [!div class="mx-imgBorder"]
-   > ![Scherm opname van het deel venster ' persoonlijk eind punt toevoegen (preview) '.][9]
+   > ![Scherm opname van het deel venster "persoonlijk eind punt toevoegen".][9]
 
 1. De voortgang van het maken van een persoonlijk eind punt bewaken.
 
@@ -180,9 +180,6 @@ In deze sectie maakt u een persoonlijke verbinding met de web-app met behulp van
    > [!div class="mx-imgBorder"]
    > ![Scherm opname van de fout pagina ' fout 403-verboden '.][17]
 
-   > [!Important]
-   > Omdat deze functie in preview is, moet u de Domain Name Service-vermelding (DNS) hand matig beheren.
-
    Voor de DNS voert u een van de volgende handelingen uit:
  
    - Gebruik de Azure DNS private zone service.  
@@ -223,7 +220,7 @@ Wanneer u klaar bent met het persoonlijke eind punt, de web-app en de virtuele m
 
 In dit artikel hebt u een VM gemaakt in een virtueel netwerk, een web-app en een persoonlijk eind punt. U hebt verbinding gemaakt met een virtuele machine via internet en de web-app wordt veilig gecommuniceerd met behulp van een persoonlijke koppeling. 
 
-Zie [Wat is Azure private endpoint?][privateendpoint]voor meer informatie over privé-eind punten (preview).
+Zie [Wat is Azure private endpoint?][privateendpoint]voor meer informatie over privé-eind punten.
 
 <!--Image references-->
 [1]: ./media/create-private-endpoint-webapp-portal/createnetwork.png

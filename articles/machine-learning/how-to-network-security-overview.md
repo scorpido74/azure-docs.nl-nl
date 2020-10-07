@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
-ms.date: 09/30/2020
+ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperfq1
-ms.openlocfilehash: d4690062dead8186022cc53ca47dbc7e17a9376f
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 7bc56f6296bf41933348fad9ea4aeb640b9afbf0
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91631185"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776014"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Overzicht van virtuele netwerk isolatie en privacy
 
@@ -70,7 +70,7 @@ Gebruik de volgende stappen om uw werk ruimte en de bijbehorende resources te be
 
 1. Maak een [persoonlijke werk ruimte voor koppelen](how-to-secure-workspace-vnet.md#secure-the-workspace-with-private-endpoint) om communicatie tussen uw VNet en de werk ruimte mogelijk te maken.
 1. Voeg Azure Key Vault toe aan het virtuele netwerk met een [service-eind punt](../key-vault/general/overview-vnet-service-endpoints.md) of een [persoonlijk eind punt](../key-vault/general/private-link-service.md). Stel Key Vault in op [' vertrouwde micro soft-services mogen deze firewall overs Laan '](how-to-secure-workspace-vnet.md#secure-azure-key-vault).
-1. Een Azure Storage-account toevoegen aan het virtuele netwerk met een [service-eind punt](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts) of een [persoonlijk eind punt](../storage/common/storage-private-endpoints.md)
+1. Voeg uw Azure Storage-account toe aan het virtuele netwerk met een [service-eind](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints) punt of een [persoonlijk eind punt](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints).
 1. [Configureer Azure container Registry voor het gebruik van een persoonlijk eind punt](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr) en [Schakel subnet delegering in azure container instances in](how-to-secure-inferencing-vnet.md#enable-azure-container-instances-aci).
 
 ![Architectuur diagram dat laat zien hoe de werk ruimte en gekoppelde resources met elkaar communiceren via service-eind punten of particuliere eind punten binnen een VNet](./media/how-to-network-security-overview/secure-workspace-resources.png)
@@ -141,17 +141,17 @@ In het volgende netwerk diagram ziet u een beveiligde Azure Machine Learning-wer
 
 [De werk ruimte beveiligen](#secure-the-workspace-and-associated-resources)  >  [De trainings omgeving beveiligen](#secure-the-training-environment)  >  [De omgeving](#secure-the-inferencing-environment)  >  voor het afwijzen beveiligen De **functionaliteit**  >  van Studio inschakelen [Firewall instellingen configureren](#configure-firewall-settings)
 
-Hoewel de Studio toegang kan krijgen tot gegevens in een opslag account dat is geconfigureerd met een service-eind punt, zijn sommige functies standaard uitgeschakeld:
+Als uw opslag zich in een VNet bevindt, moet u eerst aanvullende configuratie stappen uitvoeren om de volledige functionaliteit in [Studio](overview-what-is-machine-learning-studio.md)in te scha kelen. De volgende functie is standaard uitgeschakeld:
 
 * Bekijk de gegevens in de Studio.
 * Gegevens visualiseren in de ontwerp functie.
 * Een AutoML-experiment verzenden.
 * Een label project starten.
 
-Zie [Azure machine learning Studio gebruiken in een virtueel netwerk](how-to-enable-studio-virtual-network.md#access-data-using-the-studio)als u de volledige functionaliteit wilt inschakelen wanneer u een service-eind punt gebruikt. De Studio ondersteunt zowel service-eind punten als persoonlijke eind punten voor opslag accounts.
+Als u de volledige studio-functionaliteit wilt inschakelen binnen een VNet, raadpleegt [u Azure machine learning Studio gebruiken in een virtueel netwerk](how-to-enable-studio-virtual-network.md#access-data-using-the-studio). De Studio ondersteunt opslag accounts met behulp van service-eind punten of privé-eind punten.
 
 ### <a name="limitations"></a>Beperkingen
-- De studio heeft geen toegang tot gegevens in opslag accounts die zijn geconfigureerd voor het gebruik van privé-eind punten. Voor volledige functionaliteit moet u service-eind punten voor opslag gebruiken en beheerde identiteit gebruiken.
+- Bijkomend [gegevens labeling](how-to-create-labeling-projects.md#use-ml-assisted-labeling) biedt geen ondersteuning voor standaard opslag accounts die zijn beveiligd achter een virtueel netwerk. U moet een niet-standaard opslag account gebruiken voor het labelen van ML-gesteunde gegevens. Houd er rekening mee dat het niet-standaard opslag account kan worden beveiligd achter het virtuele netwerk. 
 
 ## <a name="configure-firewall-settings"></a>Firewallinstellingen configureren
 

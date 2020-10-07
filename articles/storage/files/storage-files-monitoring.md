@@ -10,12 +10,12 @@ ms.date: 10/02/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: e0c5e6041da933b4a42bc438900f8c4c91cc6dbc
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 4b2f819edd875130c57d487536691b4588dcc71f
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91711365"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91772665"
 ---
 # <a name="monitoring-azure-files"></a>Bewakings Azure Files
 
@@ -71,6 +71,8 @@ U moet ook een van de volgende categorieën bewerkingen opgeven waarvoor u logbo
 | StorageRead | Lees bewerkingen voor objecten. |
 | StorageWrite | Schrijf bewerkingen op objecten. |
 | StorageDelete | Bewerkingen op objecten verwijderen. |
+
+Als u de lijst met SMB-en REST-bewerkingen wilt ophalen die worden vastgelegd, raadpleegt u [geregistreerde bewerkingen voor opslag en status berichten](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) en [naslag informatie over Azure files bewakings gegevens](storage-files-monitoring-reference.md).
 
 ## <a name="analyzing-metrics"></a>Metrische gegevens analyseren
 
@@ -276,7 +278,7 @@ In het volgende voor beeld ziet u hoe u metrische gegevens kunt lezen over de me
 
 U kunt bron Logboeken openen als een BLOB in een opslag account, als gebeurtenis gegevens of via logboek analyse query's.
 
-Zie [Azure Azure files monitoring data Reference](storage-files-monitoring-reference.md)(Engelstalig) voor een gedetailleerde Naslag informatie over de velden die in deze logboeken worden weer gegeven.
+Als u de lijst met SMB-en REST-bewerkingen wilt ophalen die worden vastgelegd, raadpleegt u [geregistreerde bewerkingen voor opslag en status berichten](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) en [naslag informatie over Azure files bewakings gegevens](storage-files-monitoring-reference.md).
 
 > [!NOTE]
 > Azure Storage-Logboeken in Azure Monitor bevinden zich in de open bare preview en is beschikbaar voor preview-tests in alle open bare Cloud regio's. Zie [Deze pagina](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u)als u zich wilt inschrijven voor de preview-versie. Met deze preview-versie kunt u logboeken maken voor blobs (waaronder Azure Data Lake Storage Gen2), bestanden, wacht rijen, tabellen, Premium Storage-accounts in versie 1 voor algemeen gebruik en voor algemeen gebruik v2-opslag accounts. Klassieke opslag accounts worden niet ondersteund.
@@ -292,7 +294,7 @@ Logboek vermeldingen worden alleen gemaakt als er aanvragen worden gedaan voor h
 - Aanvragen die gebruikmaken van een Shared Access Signature (SAS) of OAuth, met inbegrip van mislukte en geslaagde aanvragen
 - Aanvragen voor Analytics-gegevens (klassieke logboek gegevens in de **$logs** container en metrische gegevens van klassen in de **$metric** tabellen)
 
-Aanvragen die worden gedaan door de Azure Files-service zelf, zoals het maken of verwijderen van een logboek, worden niet geregistreerd. Zie voor een volledige lijst met geregistreerde gegevens opslag logboeken [en status berichten](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) en [opslag logboek indeling](storage-files-monitoring-reference.md).
+Aanvragen die worden gedaan door de Azure Files-service zelf, zoals het maken of verwijderen van een logboek, worden niet geregistreerd. Zie voor een volledige lijst met SMB-en REST-aanvragen die zijn geregistreerd, [opslag logboek bewerkingen en status berichten](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) en [referentie gegevens voor Azure files bewaking](storage-files-monitoring-reference.md).
 
 ### <a name="log-anonymous-requests"></a>Anonieme aanvragen registreren
 
@@ -303,7 +305,7 @@ Aanvragen die worden gedaan door de Azure Files-service zelf, zoals het maken of
 - Time-outfouten voor zowel de client als de server
 - Kan geen aanvragen ophalen met de fout code 304 (niet gewijzigd)
 
-Alle andere mislukte anonieme aanvragen worden niet geregistreerd. Zie voor een volledige lijst met geregistreerde gegevens opslag logboeken [en status berichten](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) en [opslag logboek indeling](storage-files-monitoring-reference.md).
+Alle andere mislukte anonieme aanvragen worden niet geregistreerd. Zie voor een volledige lijst met SMB-en REST-aanvragen die zijn geregistreerd, [opslag logboek bewerkingen en status berichten](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) en [referentie gegevens voor Azure files bewaking](storage-files-monitoring-reference.md).
 
 ### <a name="accessing-logs-in-a-storage-account"></a>Logboeken openen in een opslag account
 
@@ -484,7 +486,7 @@ De volgende tabel bevat enkele voor beelden van scenario's om te controleren en 
 - [Naslag informatie over Azure Files bewakings gegevens](storage-files-monitoring.md)
 - [Azure-resources bewaken met Azure Monitor](../../azure-monitor/insights/monitor-azure-resource.md)
 - [Migratie van Azure Storage metrieken](../common/storage-metrics-migration.md)
-- [Een Azure Files-implementatie plannen](https://docs.microsoft.com/azure/storage/files/storage-files-planning)
+- [Implementatie van Azure Files plannen](https://docs.microsoft.com/azure/storage/files/storage-files-planning)
 - [Azure Files implementeren](https://docs.microsoft.com/azure/storage/files/storage-files-deployment-guide)
 - [Problemen met Azure Files in Windows oplossen](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems)
 - [Problemen met Azure Files in Linux oplossen](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-linux-file-connection-problems)

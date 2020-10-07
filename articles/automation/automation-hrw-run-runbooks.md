@@ -3,14 +3,14 @@ title: Azure Automation runbooks uitvoeren op een Hybrid Runbook Worker
 description: In dit artikel wordt beschreven hoe u runbooks uitvoert op machines in uw lokale Data Center of een andere Cloud provider met de Hybrid Runbook Worker.
 services: automation
 ms.subservice: process-automation
-ms.date: 09/22/2020
+ms.date: 10/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: ab3daedcb2222f8d639522d1afa6d4e9acbe1626
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2f1c703f2bd2e90e15c566b7e04e8a878c16f6de
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323342"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91772818"
 ---
 # <a name="run-runbooks-on-a-hybrid-runbook-worker"></a>Runbooks uitvoeren op een Hybrid Runbook Worker
 
@@ -24,7 +24,7 @@ Azure Automation verwerkt taken op Hybrid Runbook Workers anders dan taken die w
 
 Taken voor Hybrid Runbook Workers worden uitgevoerd onder het lokale **systeem** account in Windows of het **nxautomation** -account in Linux. Controleer voor Linux of het **nxautomation** -account toegang heeft tot de locatie waar de runbook-modules zijn opgeslagen. Wanneer u de cmdlet [install-module](/powershell/module/powershellget/install-module) gebruikt, moet u ALLUSERS opgeven voor de `Scope` para meter om er zeker van te zijn dat het **nxautomation** -account toegang heeft. Zie voor meer informatie over Power shell op Linux [bekende problemen voor Power shell op niet-Windows-platforms](/powershell/scripting/whats-new/known-issues-ps6#known-issues-for-powershell-on-non-windows-platforms).
 
-## <a name="set-up-runbook-permissions"></a>Runbook-machtigingen instellen
+## <a name="configure-runbook-permissions"></a>Runbook-machtigingen configureren
 
 Definieer de machtigingen voor uw runbook om op de volgende manieren te worden uitgevoerd op de Hybrid Runbook Worker:
 
@@ -32,7 +32,7 @@ Definieer de machtigingen voor uw runbook om op de volgende manieren te worden u
 * Configureer verificatie met behulp [van beheerde identiteiten voor Azure-resources](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager).
 * Geef een uitvoeren als-account op om een gebruikers context te bieden voor alle runbooks.
 
-## <a name="use-runbook-authentication-to-local-resources"></a>Runbook-verificatie gebruiken voor lokale bronnen
+### <a name="use-runbook-authentication-to-local-resources"></a>Runbook-verificatie gebruiken voor lokale bronnen
 
 Als u een runbook voorbereidt dat een eigen verificatie voor bronnen biedt, gebruikt u [referentie](./shared-resources/credentials.md) -en [certificaat](./shared-resources/certificates.md) assets in uw runbook. Er zijn verschillende cmdlets waarmee u referenties kunt opgeven, zodat het runbook kan worden geverifieerd bij verschillende bronnen. In het volgende voor beeld ziet u een deel van een runbook waarmee een computer opnieuw wordt opgestart. De referenties worden opgehaald uit een referentie-element en de naam van de computer van een variabele Asset en gebruiken deze waarden vervolgens met de `Restart-Computer` cmdlet.
 
@@ -45,7 +45,7 @@ Restart-Computer -ComputerName $Computer -Credential $Cred
 
 U kunt ook een [InlineScript](automation-powershell-workflow.md#use-inlinescript) -activiteit gebruiken. `InlineScript` Hiermee kunt u code blokken op een andere computer met referenties uitvoeren.
 
-## <a name="use-runbook-authentication-with-managed-identities"></a><a name="runbook-auth-managed-identities"></a>Runbook-verificatie gebruiken met beheerde identiteiten
+### <a name="use-runbook-authentication-with-managed-identities"></a><a name="runbook-auth-managed-identities"></a>Runbook-verificatie gebruiken met beheerde identiteiten
 
 Hybrid Runbook Workers op virtuele machines van Azure kunnen beheerde identiteiten gebruiken om te verifiëren bij Azure-resources. Het gebruik van beheerde identiteiten voor Azure-resources in plaats van run as-accounts biedt voor delen, omdat u niet hoeft te doen:
 
@@ -72,7 +72,7 @@ Volg de volgende stappen om een beheerde identiteit voor Azure-resources te gebr
     > [!NOTE]
     > `Connect-AzAccount -Identity` werkt voor een Hybrid Runbook Worker met behulp van een door het systeem toegewezen identiteit en één door de gebruiker toegewezen identiteit. Als u meerdere door de gebruiker toegewezen identiteiten gebruikt op de Hybrid Runbook Worker, moet uw Runbook de `AccountId` para meter opgeven `Connect-AzAccount` om een specifieke door de gebruiker toegewezen identiteit te selecteren.
 
-## <a name="use-runbook-authentication-with-run-as-account"></a>Runbook-verificatie gebruiken met het run as-account
+### <a name="use-runbook-authentication-with-run-as-account"></a>Runbook-verificatie gebruiken met het run as-account
 
 In plaats van uw runbook zelf verificatie te bieden voor lokale resources, kunt u een uitvoeren als-account opgeven voor een Hybrid Runbook Worker groep. Als u een uitvoeren als-account wilt opgeven, moet u een [referentie-element](./shared-resources/credentials.md) definiëren dat toegang heeft tot lokale bronnen. Deze resources omvatten certificaat archieven en alle runbooks worden onder deze referenties uitgevoerd op een Hybrid Runbook Worker in de groep.
 
@@ -182,7 +182,7 @@ De voor bereiding van het uitvoeren als-account volt ooien:
 
 ## <a name="work-with-signed-runbooks-on-a-windows-hybrid-runbook-worker"></a>Werken met ondertekende runbooks op een Windows-Hybrid Runbook Worker
 
-U kunt een Windows-Hybrid Runbook Worker zodanig configureren dat alleen ondertekende runbooks worden uitgevoerd. 
+U kunt een Windows-Hybrid Runbook Worker zodanig configureren dat alleen ondertekende runbooks worden uitgevoerd.
 
 > [!IMPORTANT]
 > Zodra u een Hybrid Runbook Worker hebt geconfigureerd voor het uitvoeren van alleen ondertekende runbooks, kan niet-ondertekende runbooks niet worden uitgevoerd op de werk nemer.
@@ -194,14 +194,13 @@ In het volgende voor beeld wordt een zelfondertekend certificaat gemaakt dat kan
 ```powershell
 # Create a self-signed certificate that can be used for code signing
 $SigningCert = New-SelfSignedCertificate -CertStoreLocation cert:\LocalMachine\my `
-                                        -Subject "CN=contoso.com" `
-                                        -KeyAlgorithm RSA `
-                                        -KeyLength 2048 `
-                                        -Provider "Microsoft Enhanced RSA and AES Cryptographic Provider" `
-                                        -KeyExportPolicy Exportable `
-                                        -KeyUsage DigitalSignature `
-                                        -Type CodeSigningCert
-
+    -Subject "CN=contoso.com" `
+    -KeyAlgorithm RSA `
+    -KeyLength 2048 `
+    -Provider "Microsoft Enhanced RSA and AES Cryptographic Provider" `
+    -KeyExportPolicy Exportable `
+    -KeyUsage DigitalSignature `
+    -Type CodeSigningCert
 
 # Export the certificate so that it can be imported to the hybrid workers
 Export-Certificate -Cert $SigningCert -FilePath .\hybridworkersigningcertificate.cer
@@ -247,6 +246,13 @@ Om te kunnen werken met ondertekende runbooks, moet een Linux-Hybrid Runbook Wor
 > [!IMPORTANT]
 > Zodra u een Hybrid Runbook Worker hebt geconfigureerd voor het uitvoeren van alleen ondertekende runbooks, kan niet-ondertekende runbooks niet worden uitgevoerd op de werk nemer.
 
+U voert de volgende stappen uit om deze configuratie te volt ooien:
+
+* Een GPG-sleutel hanger en-sleutel paar maken
+* De sleutel hanger beschikbaar maken voor de Hybrid Runbook Worker
+* Controleren of de handtekening validatie is ingeschakeld
+* Een runbook ondertekenen
+
 ### <a name="create-a-gpg-keyring-and-keypair"></a>Een GPG-sleutel hanger en-sleutel paar maken
 
 Als u de GPG sleutel hanger en het sleutel paar wilt maken, gebruikt u het [account Hybrid Runbook worker nxautomation](automation-runbook-execution.md#log-analytics-agent-for-linux).
@@ -271,10 +277,10 @@ Als u de GPG sleutel hanger en het sleutel paar wilt maken, gebruikt u het [acco
 
 ### <a name="make-the-keyring-available-to-the-hybrid-runbook-worker"></a>De sleutel hanger beschikbaar maken voor de Hybrid Runbook Worker
 
-Zodra de sleutel hanger is gemaakt, kunt u deze beschikbaar maken voor de Hybrid Runbook Worker. Wijzig het instellingen bestand **/var/opt/Microsoft/omsagent/State/automationworker/DIY/Worker.conf** , zodat de volgende voorbeeld code wordt vermeld in de sectie bestand `[worker-optional]` .
+Zodra de sleutel hanger is gemaakt, kunt u deze beschikbaar maken voor de Hybrid Runbook Worker. Wijzig het instellingen bestand **Home/nxautomation/State/Worker. conf** zodat de volgende voorbeeld code wordt vermeld in de sectie file `[worker-optional]` .
 
 ```bash
-gpg_public_keyring_path = /var/opt/microsoft/omsagent/run/.gnupg/pubring.kbx
+gpg_public_keyring_path = /home/nxautomation/run/.gnupg/pubring.kbx
 ```
 
 ### <a name="verify-that-signature-validation-is-on"></a>Controleren of de handtekening validatie is ingeschakeld

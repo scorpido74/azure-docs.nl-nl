@@ -1,5 +1,5 @@
 ---
-title: Regio's en Beschikbaarheidszones in azure
+title: Regio's en beschikbaarheidszones in Azure
 description: Meer informatie over regio's en Beschikbaarheidszones in azure om te voldoen aan uw technische en wettelijke vereisten.
 author: cynthn
 ms.service: azure
@@ -7,14 +7,14 @@ ms.topic: article
 ms.date: 08/27/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: b9a400862280cbbc219e87695e363c0ec2e75ee6
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 9a9cdef27276aa589a4aadd853185b0e3fb4be61
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018668"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91773736"
 ---
-# <a name="regions-and-availability-zones-in-azure"></a>Regio's en Beschikbaarheidszones in azure
+# <a name="regions-and-availability-zones-in-azure"></a>Regio's en beschikbaarheidszones in Azure
 
 Microsoft Azure Services zijn wereld wijd beschikbaar om uw Cloud bewerkingen op een optimaal niveau te stimuleren. U kunt de beste regio voor uw behoeften kiezen op basis van technische en reglementaire overwegingen: service mogelijkheden, gegevens locatie, nalevings vereisten en latentie.
 
@@ -111,9 +111,9 @@ Zoals eerder vermeld, classificeert Azure Services in drie categorieën: basis, 
 > | Load balancer | Azure Firewall Manager | Cognitive Services: Speaker Recognition |
 > | Service Bus | Azure Functions | Data Box Heavy |
 > | Service Fabric | Azure HPC Cache | Data Catalog |
-> | Virtuele-machineschaalsets | Azure IoT Hub | Data Factory: Data Factory v1 |
+> | Virtual Machine Scale Sets | Azure IoT Hub | Data Factory: Data Factory v1 |
 > | Virtual Machines | Azure Kubernetes Service (AKS) | Data Lake Analytics |
-> | Virtual Machines: Av2-serie | Azure Machine Learning | Machine Learning Studio |
+> | Virtual Machines: Av2-serie | Azure Machine Learning | Azure Machine Learning Studio (klassiek)|
 > | Virtual Machines: BS-serie | Azure Private Link | Microsoft Genomics |
 > | Virtual Machines: DSv2-serie | Azure Red Hat OpenShift | Remote Rendering |
 > | Virtual Machines: DSv3-serie | Azure SignalR-service | Spatial Anchors |
@@ -185,4 +185,4 @@ Er zijn geen extra kosten verbonden aan het implementeren van virtuele machines 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Regio's die ondersteuning bieden voor Beschikbaarheidszones in azure](az-region.md)
-- [Snelstartsjablonen](https://aka.ms/azqs)
+- [Quick Start-sjablonen](https://aka.ms/azqs)

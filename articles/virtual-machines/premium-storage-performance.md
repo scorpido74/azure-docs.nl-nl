@@ -4,15 +4,15 @@ description: Ontwerp krachtige toepassingen met Azure Premium SSD Managed disks.
 author: roygara
 ms.service: virtual-machines
 ms.topic: conceptual
-ms.date: 06/27/2017
+ms.date: 10/05/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 48157c8d9285c48d49e76f39602075a2a8ac9682
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: f89358f4ca34c39527d7e65307ada042ba3df7e0
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650708"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776150"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium-opslag: ontwerpen voor hoge prestaties
 
@@ -148,11 +148,11 @@ Zie [grootten voor virtuele machines in azure](sizes.md)voor meer informatie ove
 
 | | **IOPS** | **Doorvoer** | **Latentie** |
 | --- | --- | --- | --- |
-| **Voorbeeldscenario** |De OLTP-toepassing voor ondernemingen vereist zeer hoge trans acties per seconde. |Bedrijfs gegevens magazijn toepassing verwerkt grote hoeveel heden gegevens. |Bijna realtime toepassingen die directe reacties op aanvragen van gebruikers vereisen, zoals online gaming. |
+| **Voorbeeld scenario** |De OLTP-toepassing voor ondernemingen vereist zeer hoge trans acties per seconde. |Bedrijfs gegevens magazijn toepassing verwerkt grote hoeveel heden gegevens. |Bijna realtime toepassingen die directe reacties op aanvragen van gebruikers vereisen, zoals online gaming. |
 | **Prestatie factoren** | &nbsp; | &nbsp; | &nbsp; |
 | **I/o-grootte** |Bij een kleinere IO-grootte wordt een hogere IOPS als resultaat verkregen. |Grotere IO-grootte om een hogere door voer te leveren. | &nbsp;|
 | **VM-grootte** |Gebruik een VM-grootte die IOPS groter is dan de vereiste van uw toepassing. |Gebruik een VM-grootte met een doorvoer limiet van meer dan uw toepassings vereiste. |Gebruik een VM-grootte die groter is dan de vereiste schaal limieten. |
-| **Schijfgrootte** |Gebruik een schijf grootte met IOPS die groter is dan de vereiste van uw toepassing. |Gebruik een schijf grootte met een doorvoer limiet van meer dan uw toepassings vereiste. |Gebruik een schijf grootte die hoger is dan de vereiste voor uw toepassing. |
+| **Schijf grootte** |Gebruik een schijf grootte met IOPS die groter is dan de vereiste van uw toepassing. |Gebruik een schijf grootte met een doorvoer limiet van meer dan uw toepassings vereiste. |Gebruik een schijf grootte die hoger is dan de vereiste voor uw toepassing. |
 | **Schaal limieten voor VM'S en schijven** |De limiet voor IOPS van de gekozen VM-grootte moet groter zijn dan het totale aantal IOPS dat wordt aangestuurd door de opslag schijven die eraan zijn gekoppeld. |De doorvoer limiet van de gekozen VM-grootte moet groter zijn dan de totale door Voer die wordt aangestuurd door de Premium-opslag schijven die eraan zijn gekoppeld. |De schaal limieten van de gekozen VM-grootte moeten groter zijn dan de totale schaal limieten van gekoppelde Premium Storage-schijven. |
 | **Schijf cache** |Schakel alleen-lezen cache op Premium-opslag schijven in met zware bewerkingen om meer Lees-IOPS te krijgen. | &nbsp; |Schakel alleen-lezen cache op Premium-opslag schijven met kant-en-klare bewerkingen uit om zeer weinig lees latentie te verkrijgen. |
 | **Schijf striping** |Gebruik meerdere schijven en strip deze samen om een gecombineerde hogere IOPS en doorvoer limiet te verkrijgen. De gecombineerde limiet per VM moet hoger zijn dan de gecombineerde limieten van gekoppelde Premium-schijven. | &nbsp; | &nbsp; |
@@ -183,10 +183,10 @@ Hier volgt een voor beeld van hoe u de IOPS en de door Voer/band breedte kunt be
 
 | Toepassings vereiste | I/O-grootte | IOPS | Door Voer/band breedte |
 | --- | --- | --- | --- |
-| Max. IOPS |8 kB |5\.000 |40 MB per seconde |
+| Max. IOPS |8 kB |5.000 |40 MB per seconde |
 | Maximale door Voer |1024 KB |200 |200 MB per seconde |
 | Maximale door Voer + hoge IOPS |64 kB |3.200 |200 MB per seconde |
-| Maximale IOPS + hoge door Voer |32 kB |5\.000 |160 MB per seconde |
+| Maximale IOPS + hoge door Voer |32 kB |5.000 |160 MB per seconde |
 
 Als u IOPS en band breedte wilt ophalen die hoger is dan de maximum waarde van één Premium-opslag schijf, gebruikt u meerdere Premium-schijven die met elkaar zijn gesegmenteerd. U kunt bijvoorbeeld twee P30-schijven opstrepen om een gecombineerde IOPS van 10.000 IOPS te verkrijgen of een gecombineerde door Voer van 400 MB per seconde. Zoals uitgelegd in de volgende sectie, moet u een VM-grootte gebruiken die ondersteuning biedt voor de gecombineerde schijf-IOPS en-door voer.
 
@@ -305,45 +305,11 @@ Als voor beeld kunt u deze richt lijnen Toep assen op SQL Server die worden uitg
 
 ## <a name="optimize-performance-on-linux-vms"></a>Prestaties op Linux Vm's optimaliseren
 
-Voor alle Premium-Ssd's of Ultra disks met cache is ingesteld op **ReadOnly** of **geen**, moet u ' obstakels ' uitschakelen wanneer u het bestands systeem koppelt. U hebt geen obstakels nodig in dit scenario omdat de schrijf bewerkingen naar Premium Storage-schijven duurzaam zijn voor deze cache-instellingen. Wanneer de schrijf aanvraag is voltooid, zijn de gegevens naar het permanente archief geschreven. Gebruik een van de volgende methoden om belemmeringen uit te scha kelen. Kies de naam van het bestands systeem:
-  
-* Voor **reiserFS**kunt u de optie koppelen gebruiken om belemmeringen uit te scha kelen  `barrier=none` . (Als u belemmeringen wilt inschakelen, gebruikt u `barrier=flush` .)
-* Gebruik de optie voor het koppelen van **ext3/ext4**om belemmeringen uit te scha kelen `barrier=0` . (Als u belemmeringen wilt inschakelen, gebruikt u `barrier=1` .)
-* Voor **xfs**kunt u de optie koppelen gebruiken om belemmeringen uit te scha kelen `nobarrier` . (Als u belemmeringen wilt inschakelen, gebruikt u `barrier` .)
-* Voor Premium Storage-schijven waarbij cache is ingesteld op **readwrite**, schakelt u belemmeringen voor schrijf duurzaamheid in.
-* Als u wilt dat volume namen behouden blijven nadat u de virtuele machine opnieuw hebt opgestart, moet u bestand/etc/fstab bijwerken met de UUID-verwijzingen (Universally Unique Identifier) naar de schijven. Zie [een beheerde schijf toevoegen aan een virtuele Linux-machine](./linux/add-disk.md)voor meer informatie.
+Voor alle Premium-Ssd's of Ultra disks kunt u ' obstakels ' voor bestands systemen op de schijf uitschakelen om de prestaties te verbeteren wanneer het bekend is dat er geen caches zijn die gegevens kunnen verliezen.  Als de cache van Azure disk is ingesteld op ReadOnly of geen, kunt u belemmeringen uitschakelen.  Maar als caching is ingesteld op ReadWrite, moeten belemmeringen ingeschakeld blijven om de schrijf duurzaamheid te garanderen.  Obstakels zijn doorgaans standaard ingeschakeld, maar u kunt belemmeringen uitschakelen met een van de volgende methoden, afhankelijk van het bestands systeem type:
 
-De volgende Linux-distributies zijn gevalideerd voor Premium-Ssd's. Voor betere prestaties en stabiliteit met Premium Ssd's wordt u aangeraden uw Vm's te upgraden naar een van deze versies of nieuwer. 
-
-Voor sommige versies is de meest recente LIS (Linux Integration Services), v 4.0, voor Azure vereist. Als u een distributie wilt downloaden en installeren, volgt u de koppeling die wordt weer gegeven in de volgende tabel. We voegen afbeeldingen toe aan de lijst wanneer de validatie is voltooid. In onze validaties ziet u dat de prestaties voor elke installatie kopie verschillen. De prestaties zijn afhankelijk van de kenmerken van de werk belasting en de instellingen van uw installatie kopie. Verschillende installatie kopieën zijn afgestemd op verschillende soorten workloads.
-
-| Distributie | Versie | Ondersteunde kernel | Details |
-| --- | --- | --- | --- |
-| Ubuntu | 12,04 of hoger| 3.2.0-75.110 + | &nbsp; |
-| Ubuntu | 14,04 of hoger| 3.13.0-44.73 +  | &nbsp; |
-| Debian | 7. x, 8. x of hoger| 3.16.7-ckt4-1 + | &nbsp; |
-| SUSE | SLES 12 of hoger| 3.12.36-38.1 + | &nbsp; |
-| SUSE | SLES 11 SP4 of nieuwer| 3.0.101-0.63.1 + | &nbsp; |
-| CoreOS | 584.0.0 + of hoger| 3.18.4 + | &nbsp; |
-| CentOS | 6,5, 6,6, 6,7, 7,0 of nieuwer| &nbsp; | [LIS4 vereist](https://www.microsoft.com/download/details.aspx?id=55106) <br> *Zie de opmerking in het volgende gedeelte* |
-| CentOS | 7.1 + of hoger| 3.10.0-229.1.2. EL7 + | [LIS4 aanbevolen](https://www.microsoft.com/download/details.aspx?id=55106) <br> *Zie de opmerking in het volgende gedeelte* |
-| Red Hat Enterprise Linux (RHEL) | 6,8 +, 7,2 + of hoger | &nbsp; | &nbsp; |
-| Oracle | 6.0 +, 7.2 + of nieuwer | &nbsp; | UEK4 of RHCK |
-| Oracle | 7.0-7.1 of hoger | &nbsp; | UEK4 of RHCK w/[LIS4](https://www.microsoft.com/download/details.aspx?id=55106) |
-| Oracle | 6.4-6,7 of hoger | &nbsp; | UEK4 of RHCK w/[LIS4](https://www.microsoft.com/download/details.aspx?id=55106) |
-
-### <a name="lis-drivers-for-openlogic-centos"></a>LIS-Stuur Programma's voor open Logic CentOS
-
-Als u open Logic CentOS Vm's uitvoert, voert u de volgende opdracht uit om de meest recente Stuur Programma's te installeren:
-
-```
-sudo yum remove hypervkvpd  ## (Might return an error if not installed. That's OK.)
-sudo yum install microsoft-hyper-v
-sudo reboot
-```
-
-In sommige gevallen wordt de kernel ook met de bovenstaande opdracht bijgewerkt. Als een kernel-update is vereist, moet u mogelijk de bovenstaande opdrachten opnieuw uitvoeren nadat u het systeem opnieuw hebt opgestart om het micro soft-hyper-v-pakket volledig te installeren.
-
+* Gebruik voor **reiserFS**de optie blok keren = geen koppeling om belemmeringen uit te scha kelen.  Als u belemmeringen expliciet wilt inschakelen, gebruikt u ring = flush.
+* Voor **ext3/ext4**gebruikt u de optie blok keren = 0 om belemmeringen uit te scha kelen.  Als u belemmeringen expliciet wilt inschakelen, gebruikt u blok = 1.
+* Gebruik voor **xfs**de optie voor het koppelen van de ring om belemmeringen uit te scha kelen.  Gebruik een barrière om belemmeringen expliciet in te scha kelen.  Houd er rekening mee dat in latere versies van Linux-kernel het ontwerp van XFS-bestands systeem altijd zorgt voor duurzaamheid en het uitschakelen van belemmeringen geen effect heeft.  
 
 ## <a name="disk-striping"></a>Schijf striping
 

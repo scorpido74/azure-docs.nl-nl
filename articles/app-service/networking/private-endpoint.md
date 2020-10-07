@@ -4,24 +4,19 @@ description: Privé verbinden met een web-app met behulp van een persoonlijk Azu
 author: ericgre
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
-ms.date: 08/12/2020
+ms.date: 10/07/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 9f593bd5e1d4970b43b25c434abfa87177b72066
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: c6a55958102c89c78fe2cd797bb59cf72f9ec505
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743009"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91773141"
 ---
-# <a name="using-private-endpoints-for-azure-web-app-preview"></a>Privé-eind punten gebruiken voor Azure-web-app (preview-versie)
-
-> [!Note]
-> Met de preview-versie van het vernieuwen hebben we de functie gegevens exfiltration Protection uitgebracht.
->
-> De preview is beschikbaar in alle open bare regio's voor PremiumV2 en PremiumV3 Windows-en Linux-apps en elastische Premium-functies. 
+# <a name="using-private-endpoints-for-azure-web-app"></a>Privé-eind punten gebruiken voor Azure-web-app
 
 U kunt een privé-eind punt voor uw Azure-web-app gebruiken om clients die zich in uw particuliere netwerk bevinden, veilig toegang te geven tot de app via een persoonlijke koppeling. Het persoonlijke eind punt gebruikt een IP-adres uit uw Azure VNet-adres ruimte. Netwerk verkeer tussen een client op uw particuliere netwerk en de web-app passeren over het VNet en een persoonlijke koppeling in het micro soft-backbone-netwerk, waardoor de bloot stelling van het open bare Internet wordt voor komen.
 
@@ -99,7 +94,7 @@ De naam omzetting is bijvoorbeeld:
 Na deze DNS-configuratie kunt u uw web-app privé bereiken met de standaard naam mywebappname.azurewebsites.net.
 
 
-Als u een aangepaste DNS-naam moet gebruiken, moet u de aangepaste naam toevoegen in uw web-app. Tijdens de preview moet de aangepaste naam worden gevalideerd, zoals een aangepaste naam, met behulp van een open bare DNS-omzetting. Zie [Custom DNS Validation][dnsvalidation](Engelstalig) voor meer informatie.
+Als u een aangepaste DNS-naam moet gebruiken, moet u de aangepaste naam toevoegen in uw web-app. De aangepaste naam moet worden gevalideerd, zoals een aangepaste naam, met behulp van een open bare DNS-omzetting. Zie [Custom DNS Validation][dnsvalidation](Engelstalig) voor meer informatie.
 
 Voor de kudu-console, of kudu REST API (implementatie met Azure DevOps self-hosted agenten), moet u twee records maken in uw Azure DNS persoonlijke zone of uw aangepaste DNS-server. 
 
@@ -118,7 +113,9 @@ Zie [prijzen van Azure Private Link][pricing] voor meer informatie over prijzen.
 
 Wanneer u de functie Azure gebruikt in een elastisch Premium-abonnement met een privé-eind punt, moet u directe toegang tot het netwerk hebben of u een HTTP 403-fout ontvangen om de functies in azure Web Portal uit te voeren of uit te voeren. Met andere woorden, uw browser moet het persoonlijke eind punt kunnen bereiken om de functie uit te voeren vanuit de Azure-webportal. 
 
-Tijdens de preview-periode wordt alleen de productie sleuf weer gegeven achter het persoonlijke eind punt, moeten andere sleuven worden bereikt via een openbaar eind punt.
+U kunt Maxi maal 100 persoonlijk eind punt verbinden met een bepaalde web-app.
+
+Privé-eind punt is beschikbaar voor PremiumV2, PremiumV3, Windows-en Linux-web-app, container of niet, en het Premium-abonnement van Azure Functions (ook wel het elastische Premium-abonnement genoemd). 
 
 De functie voor persoonlijke koppelingen en het persoonlijke eind punt worden regel matig verbeterd. Raadpleeg [dit artikel][pllimitations] voor actuele informatie over beperkingen.
 

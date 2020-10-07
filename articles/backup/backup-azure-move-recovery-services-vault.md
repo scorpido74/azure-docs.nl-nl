@@ -4,12 +4,12 @@ description: Instructies voor het verplaatsen van een Recovery Services kluis ov
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: 69021131f12b57aedcd531997029858b0722933f
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 19b1c930ffc0e4b519c25f421662547a4d8dcde6
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181507"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91773362"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Een Recovery Services kluis verplaatsen over Azure-abonnementen en-resource groepen
 
@@ -52,7 +52,7 @@ Frankrijk-centraal, Frankrijk-zuid, Duitsland-noordoost, Duitsland-centraal, US 
 
 Een Recovery Services kluis en de bijbehorende resources verplaatsen naar een andere resource groep:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Open de lijst met **Recovery Services kluizen** en selecteer de kluis die u wilt verplaatsen. Wanneer het kluis dashboard wordt geopend, wordt het weer gegeven zoals in de volgende afbeelding.
 
    ![Recovery Services kluis openen](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
@@ -81,7 +81,7 @@ Een Recovery Services kluis en de bijbehorende resources verplaatsen naar een an
 
 U kunt een Recovery Services kluis en de bijbehorende resources naar een ander abonnement verplaatsen
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Open de lijst met Recovery Services kluizen en selecteer de kluis die u wilt verplaatsen. Wanneer het kluis dashboard wordt geopend, wordt het weer gegeven zoals in de volgende afbeelding.
 
     ![Recovery Services kluis openen](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
@@ -142,6 +142,50 @@ Als u wilt overstappen op een nieuw abonnement, geeft u de `--destination-subscr
 
 1. De toegangs controle voor de resource groepen instellen/controleren.  
 2. De functie voor het rapporteren en controleren van back-ups moet opnieuw worden geconfigureerd voor de kluis nadat de verplaatsing is voltooid. De vorige configuratie gaat verloren tijdens de verplaatsings bewerking.
+
+## <a name="move-an-azure-virtual-machine-to-a-different-recovery-service-vault"></a>Verplaats een virtuele machine van Azure naar een andere Recovery service-kluis. 
+
+Als u een virtuele machine van Azure wilt verplaatsen waarvoor Azure Backup is ingeschakeld, hebt u twee opties. Ze zijn afhankelijk van uw bedrijfs vereisten:
+
+- [U hoeft geen eerdere back-upgegevens te bewaren](#dont-need-to-preserve-previous-backed-up-data)
+- [Moet eerdere back-upgegevens behouden](#must-preserve-previous-backed-up-data)
+
+### <a name="dont-need-to-preserve-previous-backed-up-data"></a>U hoeft geen eerdere back-upgegevens te bewaren
+
+Ter bescherming van workloads in een nieuwe kluis moeten de huidige beveiliging en gegevens worden verwijderd in de oude kluis en moet de back-up opnieuw worden geconfigureerd.
+
+>[!WARNING]
+>De volgende bewerking is destructief en kan niet ongedaan worden gemaakt. Alle back-upgegevens en back-upitems die aan de beveiligde server zijn gekoppeld, worden definitief verwijderd. Ga zorgvuldig te werk.
+
+**Huidige beveiliging op de oude kluis stoppen en verwijderen:**
+
+1. Schakel de optie voorlopig verwijderen uit in de kluis eigenschappen. Volg [deze stappen](backup-azure-security-feature-cloud.md#disabling-soft-delete-using-azure-portal) om het uitvoeren van de tijdelijke verwijdering uit te scha kelen.
+
+2. Stop de beveiliging en verwijder back-ups van de huidige kluis. Selecteer in het menu van het kluis dashboard **Back-upitems**. Items die hier worden weer gegeven en die moeten worden verplaatst naar de nieuwe kluis, moeten samen met hun back-upgegevens worden verwijderd. Zie [beveiligde items verwijderen in de Cloud](backup-azure-delete-vault.md#delete-protected-items-in-the-cloud) en [beveiligde items on-premises verwijderen](backup-azure-delete-vault.md#delete-protected-items-on-premises).
+
+3. Als u van plan bent om AFS (Azure-bestands shares), SQL-servers of SAP HANA servers te verplaatsen, moet u de registratie ervan opheffen. Selecteer in het menu van het kluis dashboard **back-upinfrastructuur**. Zie [de registratie van de SQL-Server](manage-monitor-sql-database-backup.md#unregister-a-sql-server-instance)ongedaan maken, de [registratie van een opslag account voor Azure-bestands shares ongedaan](manage-afs-backup.md#unregister-a-storage-account)maken en [de registratie van een SAP Hana exemplaar opheffen](sap-hana-db-manage.md#unregister-an-sap-hana-instance).
+
+4. Zodra ze zijn verwijderd uit de oude kluis, gaat u door met het configureren van de back-ups voor uw werk belasting in de nieuwe kluis.
+
+### <a name="must-preserve-previous-backed-up-data"></a>Moet eerdere back-upgegevens behouden
+
+Als u de huidige beveiligde gegevens in de oude kluis wilt behouden en de beveiliging in een nieuwe kluis wilt voortzetten, zijn er beperkte opties voor sommige werk belastingen:
+
+- Voor MARS kunt u de [beveiliging stoppen met het bewaren van gegevens](backup-azure-manage-mars.md#stop-protecting-files-and-folder-backup) en de agent registreren in de nieuwe kluis.
+
+  - Azure Backup service blijft alle bestaande herstel punten van de oude kluis behouden.
+  - U moet betalen om de herstel punten in de oude kluis te blijven gebruiken.
+  - U kunt de back-upgegevens alleen herstellen voor niet-verlopen herstel punten in de oude kluis.
+  - Er moet een nieuwe eerste replica van de gegevens worden gemaakt op de nieuwe kluis.
+
+- Voor een Azure-VM kunt u de [beveiliging stoppen met het bewaren van gegevens](backup-azure-manage-vms.md#stop-protecting-a-vm) voor de virtuele machine in de oude kluis, de VM verplaatsen naar een andere resource groep en de virtuele machine vervolgens beveiligen in de nieuwe kluis. Zie de [richt lijnen en beperkingen](https://docs.microsoft.com/azure/azure-resource-manager/management/move-limitations/virtual-machines-move-limitations) voor het verplaatsen van een virtuele machine naar een andere resource groep.
+
+  Een virtuele machine kan in slechts één kluis tegelijk worden beveiligd. De virtuele machine in de nieuwe resource groep kan echter worden beveiligd op de nieuwe kluis, aangezien deze wordt beschouwd als een andere virtuele machine.
+
+  - Azure Backup-Service behoudt de herstel punten waarvan een back-up is gemaakt op de oude kluis.
+  - U moet betalen om de herstel punten in de oude kluis te blijven (Zie [Azure backup prijzen](azure-backup-pricing.md) voor meer informatie).
+  - U kunt de virtuele machine, indien nodig, herstellen vanuit de oude kluis.
+  - De eerste back-up op de nieuwe kluis van de virtuele machine in de nieuwe resource is een eerste replica.
 
 ## <a name="next-steps"></a>Volgende stappen
 

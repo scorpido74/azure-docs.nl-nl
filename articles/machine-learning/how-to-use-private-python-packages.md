@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2020
-ms.openlocfilehash: 1afa9173c2ca3704bf4408c271e3cf950ef79077
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 58bb08cad111e0744f7831783169901cd76caef4
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91302213"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91772631"
 ---
 # <a name="use-private-python-packages-with-azure-machine-learning"></a>Gebruik persoonlijke Python-pakketten met Azure Machine Learning
 
@@ -58,7 +58,7 @@ Deze benadering maakt gebruik van een persoonlijk toegangs token voor verificati
 
  1. [Maak een persoonlijk toegangs token (Pat)](https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&preserve-view=true&tabs=preview-page#create-a-pat) voor uw Azure DevOps-exemplaar. Stel het bereik van het token in op __verpakt > lezen__. 
 
- 2. Voeg de URL van Azure DevOps en PAT als werkruimte eigenschappen toe met behulp van de [werk ruimte. set_connection](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true#&preserve-view=trueset-connection-name--category--target--authtype--value-) methode.
+ 2. Voeg de URL van Azure DevOps en PAT als werkruimte eigenschappen toe met behulp van de [Workspace.set_connection](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true#&preserve-view=trueset-connection-name--category--target--authtype--value-) methode.
 
      ```python
     from azureml.core import Workspace
@@ -91,7 +91,7 @@ De omgeving is nu klaar om te worden gebruikt in trainings runs of implementatie
 
 U kunt pakketten gebruiken van een Azure-opslag account in de firewall van uw organisatie. Het opslag account kan een serie pakketten of een interne mirror van openbaar beschik bare pakketten bevatten.
 
-Zie [een Azure machine learning-werk ruimte en gekoppelde resources beveiligen](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts)voor informatie over het instellen van dergelijke persoonlijke opslag. U moet ook [de Azure container Registry (ACR) achter het VNet plaatsen](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr).
+Zie [een Azure machine learning-werk ruimte en gekoppelde resources beveiligen](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints)voor informatie over het instellen van dergelijke persoonlijke opslag. U moet ook [de Azure container Registry (ACR) achter het VNet plaatsen](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr).
 
 > [!IMPORTANT]
 > U moet deze stap volt ooien om modellen te kunnen trainen of implementeren met behulp van de opslag plaats van een persoonlijk pakket.

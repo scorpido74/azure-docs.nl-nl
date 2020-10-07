@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: how-to
-ms.date: 07/14/2020
+ms.date: 10/06/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86d88f841f76b367e83f0ae6b81e604e1b7f3e4b
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: e16f33cb8aa7c6ceeb1398dd23ccba31b5f936b1
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950116"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776133"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Aan de slag met Azure Active Directory Identity Protection en Microsoft Graph
 
@@ -39,7 +39,7 @@ Er zijn vier stappen voor het verkrijgen van toegang tot identiteits beveiliging
 
 ### <a name="retrieve-your-domain-name"></a>Domein naam ophalen 
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).  
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).  
 1. Blader naar **Azure Active Directory**  >  **aangepaste domein namen**. 
 1. Noteer het `.onmicrosoft.com` domein, u hebt deze informatie nodig in een latere stap.
 
@@ -104,6 +104,8 @@ Deze header verzenden als een aanvraag naar de volgende API-URL: `https://graph.
 Het antwoord, indien geslaagd, is een verzameling identiteits risico detecties en gekoppelde gegevens in de OData-JSON-indeling, die kan worden geparseerd en verwerkt zoals u dat wilt.
 
 ### <a name="sample"></a>Voorbeeld
+
+In dit voor beeld ziet u het gebruik van een gedeeld geheim dat moet worden geverifieerd. In een productie omgeving wordt het opslaan van geheimen in code in het algemeen afgekeurd. Organisaties kunnen gebruik maken van beheerde identiteiten voor Azure-resources om deze referenties te beveiligen. Zie het artikel [Wat zijn beheerde identiteiten voor Azure-resources](../managed-identities-azure-resources/overview.md)voor meer informatie over beheerde identiteiten.
 
 Hier volgt een voorbeeld code voor het verifiëren en aanroepen van de API met behulp van Power shell.  
 Voeg gewoon uw client-ID, de geheime sleutel en het Tenant domein toe.
