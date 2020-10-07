@@ -3,15 +3,15 @@ title: 'Quickstart: Een C# ASP.NET Core-app maken'
 description: Leer hoe u web-apps uitvoert in Azure App Service door uw eerste ASP.NET Core-app te implementeren.
 ms.assetid: b1e6bd58-48d1-4007-9d6c-53fd6db061e3
 ms.topic: quickstart
-ms.date: 08/01/2020
-ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18
+ms.date: 09/24/2020
+ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18, contperfq1
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 95f877c9030d51e68b97a21875ff3ff05b383457
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: aa8eb945ba77e1a4ac5215acf3bdbc12cac0c4c9
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90973765"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91661122"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>Quickstart: Een ASP.NET Core-web-app maken in Azure
 
@@ -175,6 +175,8 @@ Dit zijn de vereisten voor het voltooien van deze snelstart:
 * <a href="https://git-scm.com/" target="_blank">Git installeren</a>
 * <a href="https://dotnet.microsoft.com/download/dotnet-core/3.1" target="_blank">De nieuwste versie van .NET Core 3.1 SDK installeren</a>
 
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/DotNetAppServiceLinuxQuickStart)
+
 ## <a name="create-the-app-locally"></a>De app lokaal maken
 
 Maak in een terminalvenster op uw computer een map met de naam `hellodotnetcore` en wijzig de huidige map in die map.
@@ -214,13 +216,23 @@ git add .
 git commit -m "first commit"
 ```
 
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/DotNetAppServiceLinuxQuickStart)
+
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/DotNetAppServiceLinuxQuickStart)
 
 [!INCLUDE [Configure deployment user](../../includes/configure-deployment-user.md)]
 
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/DotNetAppServiceLinuxQuickStart)
+
 [!INCLUDE [Create resource group](../../includes/app-service-web-create-resource-group-linux.md)]
 
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/DotNetAppServiceLinuxQuickStart)
+
 [!INCLUDE [Create app service plan](../../includes/app-service-web-create-app-service-plan-linux.md)]
+
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/DotNetAppServiceLinuxQuickStart)
 
 ## <a name="create-a-web-app"></a>Een webtoepassing maken
 
@@ -265,6 +277,8 @@ To https://&lt;app-name&gt;.scm.azurewebsites.net:443/&lt;app-name&gt;.git
    d87e6ca..d6b5447  master -> master
 </pre>
 
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/DotNetAppServiceLinuxQuickStart)
+
 ## <a name="browse-to-the-app"></a>Bladeren naar de app
 
 Blader naar de geïmplementeerde toepassing via uw webbrowser.
@@ -278,6 +292,8 @@ De .NET Core-voorbeeldcode wordt uitgevoerd in App Service op Linux met een inge
 ![Voorbeeld-app die wordt uitgevoerd in Azure](media/quickstart-dotnetcore/dotnet-browse-azure.png)
 
 **Gefeliciteerd!** U hebt uw eerste .NET Core-app geïmplementeerd in Azure App Service on Linux.
+
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/DotNetAppServiceLinuxQuickStart)
 
 ## <a name="update-and-redeploy-the-code"></a>De code bijwerken en opnieuw implementeren
 
@@ -298,6 +314,8 @@ Als de implementatie is voltooid, gaat u terug naar het browservenster dat is ge
 
 ![Bijgewerkte voorbeeld-app die wordt uitgevoerd in Azure](media/quickstart-dotnetcore/dotnet-browse-azure-updated.png)
 
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/DotNetAppServiceLinuxQuickStart)
+
 ## <a name="manage-your-new-azure-app"></a>Uw nieuwe Azure-app beheren
 
 Ga naar <a href="https://portal.azure.com" target="_blank">Azure Portal</a> om de app te beheren die u hebt gemaakt.
@@ -313,6 +331,8 @@ De pagina Overzicht van uw app wordt weergegeven. Hier kunt u algemene beheertak
 Het linkermenu bevat een aantal pagina's voor het configureren van uw app. 
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
+
+[Ondervindt u problemen? Laat het ons weten.](https://aka.ms/DotNetAppServiceLinuxQuickStart)
 
 ## <a name="next-steps"></a>Volgende stappen
 

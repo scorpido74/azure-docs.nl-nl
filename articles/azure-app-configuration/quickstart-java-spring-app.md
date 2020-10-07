@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 04/18/2020
 ms.custom: devx-track-java
 ms.author: lcozzens
-ms.openlocfilehash: 10b38d5c5802ec4f6bc33b15b3ddef12e8256a78
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: e3bc26b8f4d66c95f6f777af06d71172a4b882b9
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586450"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767636"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>Quickstart: Een Java Spring-app maken met Azure App Configuration
 
@@ -32,7 +32,7 @@ In deze quickstart neemt u Azure App Configuration op in een Java Spring-console
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Selecteer **Configuratieverkenner** >  **+ Maken** > **Sleutel-waarde** om de volgende sleutel-waardeparen toe te voegen:
+7. Selecteer **Configuratieverkenner** >  **+ Maken** > **Sleutel-waarde** om de volgende sleutel-waardeparen toe te voegen:
 
     | Sleutel | Waarde |
     |---|---|
@@ -40,7 +40,7 @@ In deze quickstart neemt u Azure App Configuration op in een Java Spring-console
 
     Laat **Label** en **Inhoudstype** nog even leeg.
 
-7. Selecteer **Toepassen**.
+8. Selecteer **Toepassen**.
 
 ## <a name="create-a-spring-boot-app"></a>Een Spring Boot-app maken
 

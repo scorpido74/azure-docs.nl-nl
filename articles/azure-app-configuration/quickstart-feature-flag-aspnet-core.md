@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 09/28/2020
 ms.author: lcozzens
-ms.openlocfilehash: 4643e18088fe32f6b02f684b7a71307798b12c12
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 7d146004fb4fa120e08b4d67c1d68d51cc6f3c8f
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91441551"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767720"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Quickstart: functievlaggen toevoegen aan een ASP.NET Core-app
 
@@ -29,7 +29,7 @@ De functiebeheerbibliotheken van .NET Core breiden het framework uit met uitgebr
 
 [!INCLUDE[Azure App Configuration resource creation steps](../../includes/azure-app-configuration-create.md)]
 
-7. Selecteer **Bewerkingen** > **Functiebeheerder** > **Toevoegen** om een functievlag met de naam *Beta* toe te voegen.
+8. Selecteer **Bewerkingen** > **Functiebeheerder** > **Toevoegen** om een functievlag met de naam *Beta* toe te voegen.
 
     > [!div class="mx-imgBorder"]
     > ![Functievlag met de naam Beta inschakelen](media/add-beta-feature-flag.png)

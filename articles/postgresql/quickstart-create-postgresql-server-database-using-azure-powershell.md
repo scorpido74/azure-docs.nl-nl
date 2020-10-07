@@ -1,19 +1,19 @@
 ---
 title: 'Quickstart: Een server maken - Azure PowerShell - Azure Database for PostgreSQL - één server'
 description: Quicstart-gids voor het maken van een Azure Database for PostgreSQL - één server met behulp van Azure PowerShell.
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.devlang: azurepowershell
 ms.topic: quickstart
 ms.date: 06/08/2020
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 082adc0753cb8e41bc61f5703445e6b8507202b5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7f04c4c52b2c1e2b347699168b3255d2f809278b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902685"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91705293"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql---single-server-using-powershell"></a>Quickstart: Een Azure Database for PostgreSQL - één server maken met behulp van PowerShell
 
@@ -169,7 +169,7 @@ pgAdmin is een open-source hulpprogramma voor PostgreSQL. U kunt pgAdmin install
 
 1. In het dialoogvenster **Create - Server** gaat u naar het tabblad **Connection** en vult u de tabel met instellingen in.
 
-   :::image type="content" source="./media/quickstart-create-postgresql-server-database-using-azure-powershell/10-pgadmin-create-server.png" alt-text="Het tabblad Connection":::
+   :::image type="content" source="./media/quickstart-create-postgresql-server-database-using-azure-powershell/10-pgadmin-create-server.png" alt-text="Het tabblad General":::
 
     Parameter pgAdmin |Waarde|Beschrijving
     ---|---|---
@@ -193,7 +193,7 @@ pgAdmin is een open-source hulpprogramma voor PostgreSQL. U kunt pgAdmin install
 
 1. Selecteer bij **Owner** de eigenaar voor de database uit de keuzelijst. Kies de aanmeldingsnaam van de serverbeheerder, zoals **my admin** uit het voorbeeld.
 
-   :::image type="content" source="./media/quickstart-create-postgresql-server-database-using-azure-powershell/11-pgadmin-database.png" alt-text="Een database maken in pgAdmin":::
+   :::image type="content" source="./media/quickstart-create-postgresql-server-database-using-azure-powershell/11-pgadmin-database.png" alt-text="Het tabblad General":::
 
 1. Klik op **Save** om een nieuwe, lege database te maken.
 

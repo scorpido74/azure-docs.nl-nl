@@ -8,22 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 05/27/2020
+ms.date: 10/05/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-js
-ms.openlocfilehash: c3f0b7c262fc774e43f2f63ebf09a1a08beea686
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4100bf38b61d1b6eb7c3dfad3f1434a885c7d2ae
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91262668"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760849"
 ---
 # <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-javascript"></a>Quickstart: Gedrukte en handgeschreven tekst extraheren met behulp van de Computer Vision REST API en JavaScript
 
 In deze snelstart extraheert u gedrukte en handgeschreven tekst uit een afbeelding met behulp van de Computer Vision REST API. Met de methoden [Read](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) en [Get Read Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) kunt u tekst in een afbeelding detecteren en de herkende tekens naar een machinaal leesbare tekenstroom extraheren. 
 
-> [!IMPORTANT]
-> De methode [Read](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) wordt asynchroon uitgevoerd. Deze methode retourneert geen gegevens in de hoofdtekst van een geslaagd antwoord. In plaats daarvan retourneert de methode Batch Read een URI in de waarde van het antwoordheader-veld `Operation-Location`. Deze URI vertegenwoordigt de [Get Read Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750)-API en u kunt deze URI aanroepen om de status te controleren en de resultaten van de aanroep van de Read-methode te retourneren.
+De methode [Read](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) wordt asynchroon uitgevoerd. Deze methode retourneert geen gegevens in de hoofdtekst van een geslaagd antwoord. In plaats daarvan retourneert de methode Batch Read een URI in de waarde van het antwoordheader-veld `Operation-Location`. Deze URI vertegenwoordigt de [Get Read Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750)-API en u kunt deze URI aanroepen om de status te controleren en de resultaten van de aanroep van de Read-methode te retourneren.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -32,8 +31,8 @@ In deze snelstart extraheert u gedrukte en handgeschreven tekst uit een afbeeldi
     * U hebt de sleutel en het eindpunt nodig van de resource die u maakt, om de toepassing te verbinden met de Computer Vision-service. Later in de quickstart plakt u uw sleutel en eindpunt in de onderstaande code.
     * U kunt de gratis prijscategorie (`F0`) gebruiken om de service uit te proberen, en later upgraden naar een betaalde laag voor productie.
 
-## <a name="create-and-run-the-sample"></a>Het voorbeeld maken en uitvoeren
 
+## <a name="create-and-run-the-sample"></a>Het voorbeeld maken en uitvoeren
 
 U kunt het voorbeeld maken en uitvoeren aan de hand van de volgende stappen:
 

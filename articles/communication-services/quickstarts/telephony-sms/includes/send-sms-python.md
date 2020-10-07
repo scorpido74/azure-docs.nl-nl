@@ -10,12 +10,12 @@ ms.date: 09/03/2020
 ms.topic: include
 ms.custom: include file
 ms.author: dadoolab
-ms.openlocfilehash: 3fe27bf31385e0310211b5e1b0b7bbfa636eb19b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 9265caa3054cde6af311e655db2b2496524e8d24
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90944855"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757123"
 ---
 Ga aan de slag met Azure Communication Services door de sms-clientbibliotheek voor Python van Communications Services te gebruiken om sms-berichten te verzenden.
 
@@ -107,7 +107,7 @@ sms_response = sms_client.send(
 
 ```
 
-U moet `<leased-phone-number>` vervangen door een telefoonnummer met sms-functionaliteit dat is gekoppeld aan uw communicatieservice en `<to-phone-number>` met het telefoonnummer waarnaar u een bericht wilt verzenden. Alle parameters voor telefoonnummers moeten voldoen aan de [E.164-standaard](../../../concepts/telephony-sms/plan-solution.md#optional-reading-international-public-telecommunication-numbering-plan-e164).
+U moet `<leased-phone-number>` vervangen door een telefoonnummer met sms-functionaliteit dat is gekoppeld aan uw communicatieservice en `<to-phone-number>` met het telefoonnummer waarnaar u een bericht wilt verzenden. 
 
 De parameter `send_sms_options` is een optionele parameter die u kunt gebruiken voor het configureren van leveringsrapporten. Dit is handig voor scenario's waarin u gebeurtenissen wilt verzenden wanneer sms-berichten worden bezorgd. Raadpleeg de quickstart [Sms-gebeurtenissen verwerken](../handle-sms-events.md) voor het configureren van leveringsrapporten voor uw sms-berichten.
 

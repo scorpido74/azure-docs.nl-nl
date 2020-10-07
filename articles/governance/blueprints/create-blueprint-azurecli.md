@@ -3,12 +3,12 @@ title: 'Quickstart: Een blauwdruk maken met de Azure CLI'
 description: In deze quickstart gebruikt u Azure Blueprints om artefacten te maken, te definiëren en te implementeren met de Azure CLI.
 ms.date: 06/02/2020
 ms.topic: quickstart
-ms.openlocfilehash: c64723befbe3cb8d811179e7062df18606749783
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 3dfb74469bc186c25b918bfe87c7ce6f1930f2e1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89051539"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91667704"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-azure-cli"></a>Quickstart: Een Azure Blueprint definiëren en toewijzen met Azure CLI
 
@@ -23,7 +23,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 ## <a name="add-the-blueprint-extension"></a>De Blueprint-extensie toevoegen
 
 De extensie moet worden toegevoegd om Azure CLI in te schakelen voor het beheren van blauwdrukdefinities en -toewijzingen.
-Deze extensie werkt overal waar Azure CLI kan worden gebruikt, met inbegrip van [bash in Windows 10](/windows/wsl/install-win10), [Cloud Shell](https://shell.azure.com) (zowel zelfstandige als in de portal), de [Azure CLI Docker-installatiekopie](https://hub.docker.com/r/microsoft/azure-cli/), of lokaal geïnstalleerd.
+Deze extensie werkt overal waar Azure CLI kan worden gebruikt, met inbegrip van [bash in Windows 10](/windows/wsl/install-win10), [Cloud Shell](https://shell.azure.com) (zowel zelfstandige als in de portal), de [Azure CLI Docker-installatiekopie](https://hub.docker.com/_/microsoft-azure-cli), of lokaal geïnstalleerd.
 
 1. Controleer of de meest recente versie van Azure CLI is geïnstalleerd (minimaal **2.0.76**). Als deze nog niet is geïnstalleerd, volgt u [deze instructies](/cli/azure/install-azure-cli-windows) op.
 

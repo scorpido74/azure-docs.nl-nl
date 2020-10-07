@@ -9,13 +9,13 @@ manager: diviso
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 07/07/2020
-ms.openlocfilehash: 135fbe914a1bf99f1cc32bd9291658f60282aa0e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 10/02/2020
+ms.openlocfilehash: 9cd1a6059360c948229a1da00780cd6cb40b7f35
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87101006"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91666531"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-gen2-demo-environment"></a>Quickstart: De demo-omgeving van Azure Time Series Insights Gen2 verkennen
 
@@ -100,7 +100,7 @@ Door Azure Time Series Insights Gen2 en sensortelemetrie te gebruiken, hebben we
 
       [![Breid de tijdsduur uit naar 60 dagen](media/v2-update-quickstart/quick-start-expand-interval-range.png)](media/v2-update-quickstart/quick-start-expand-interval-range.png#lightbox)
 
-1. U kunt andere gegevenspunten van sensoren toevoegen voor meer context. Hoe meer sensoren er worden weergegeven, hoe beter we het probleem begrijpen. We verwijderen een markering om de werkelijke waarden weer te geven. 
+1. U kunt andere gegevenspunten van sensoren toevoegen voor meer context. Hoe meer sensoren er worden weergegeven, hoe beter we het probleem begrijpen. We verwijderen een markering om de werkelijke waarden weer te geven.
 
     1. Selecteer **Generator Systeem**en selecteer vervolgens drie sensoren: **GridVoltagePhase1**, **GridVoltagePhase2** en **GridVoltagePhase3** toe.
     1. Verwijder een markering van het laatste gegevenspunt in het zichtbare gedeelte.

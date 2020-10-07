@@ -3,24 +3,21 @@ title: 'Quickstart: Een geheim in Key Vault instellen en daaruit ophalen met Pow
 description: In deze quickstart leert u hoe u met behulp van Azure PowerShell geheimen kunt maken, ophalen en verwijderen in een Azure-sleutelkluis.
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 11/08/2019
+ms.date: 09/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 9e3f5e37462b30b0201be5350dedc103a49bb39a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6ef7b17efc1f18009edffbacb2578f94fcf40b1c
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87039290"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743026"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-powershell"></a>Quickstart: Een geheim uit Azure Key Vault instellen en ophalen met PowerShell
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Azure Key Vault is een cloudservice die werkt als een beveiligd geheimenarchief. U kunt veilig sleutels, wachtwoorden, certificaten en andere geheime informatie opslaan. U kunt het [Overzicht](../general/overview.md) raadplegen voor meer informatie over Key Vault. In deze snelstart gebruikt u PowerShell om een sleutelkluis te maken. Vervolgens slaat u een geheim op in de zojuist gemaakte kluis.
 
@@ -36,7 +33,7 @@ Login-AzAccount
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-Maak een Azure-resourcegroep met behulp van de opdracht [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. 
+Maak een Azure-resourcegroep met behulp van de opdracht [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd.
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name ContosoResourceGroup -Location EastUS

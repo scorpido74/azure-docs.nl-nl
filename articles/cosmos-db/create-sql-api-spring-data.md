@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 09/22/2020
+ms.date: 10/06/2020
 ms.author: anfeldma
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: f9d82c78ec0f5cd1b86d3fa885f89a25ec6e3672
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0ccab295d39e463d4b6d1e764862678469fba751
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91347993"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776405"
 ---
 # <a name="quickstart-build-a-spring-data-azure-cosmos-db-v3-app-to-manage-azure-cosmos-db-sql-api-data"></a>Quickstart: EenSpring Data Azure Cosmos DB v3-app maken voor het beheren van API-gegevens van Azure Cosmos DB SQL
 
@@ -86,7 +86,7 @@ Nu gaan we werken met code. We gaan nu een SQL API-app klonen vanaf GitHub, de v
 Voer de volgende opdracht uit om de voorbeeldopslagplaats te klonen. Deze opdracht maakt een kopie van de voorbeeld-app op uw computer.
 
 ```bash
-git clone https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-spring-data-cosmos
+git clone https://github.com/Azure-Samples/azure-spring-data-cosmos-java-sql-api-getting-started.git
 ```
 
 ## <a name="review-the-code"></a>De code bekijken

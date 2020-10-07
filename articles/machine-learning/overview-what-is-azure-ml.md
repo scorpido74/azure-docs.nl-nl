@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: f8be403a9aa095a24ec4802aad0364b535ed7c5a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e214607b82a44fb1b6859a3c73d58907fbb279d9
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902898"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91710733"
 ---
 # <a name="what-is-azure-machine-learning"></a>Wat is Azure Machine Learning?
 
@@ -63,7 +63,7 @@ U kunt zelfs [MLflow gebruiken om metrische gegevens bij te houden en modellen t
 
 Begin met het trainen van modellen op uw lokale machine met behulp van de <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Python-SDK</a> of <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">R-SDK</a> van Azure Machine Learning. Vervolgens kunt u uitschalen naar de cloud. 
 
-Dankzij de vele beschikbare [rekendoelen](how-to-create-attach-compute-sdk.md) zoals Azure Machine Learning Compute en [Azure Databricks](/azure/azure-databricks/what-is-azure-databricks), en [geavanceerde afstemmingsservices van hyperparameters](how-to-tune-hyperparameters.md), kunt u sneller betere modellen bouwen, met de kracht van de cloud.
+Dankzij de vele beschikbare [rekendoelen](how-to-create-attach-compute-studio.md) zoals Azure Machine Learning Compute en [Azure Databricks](/azure/azure-databricks/what-is-azure-databricks), en [geavanceerde afstemmingsservices van hyperparameters](how-to-tune-hyperparameters.md), kunt u sneller betere modellen bouwen, met de kracht van de cloud.
 
 U kunt de SDK ook gebruiken voor het [automatiseren van het trainen en afstemmen van modellen](tutorial-auto-train-models.md).
 

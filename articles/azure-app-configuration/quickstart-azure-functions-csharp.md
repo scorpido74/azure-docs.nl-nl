@@ -8,12 +8,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 09/28/2020
 ms.author: lcozzens
-ms.openlocfilehash: 7d4fe0f54ecd11c197f258d190e9eaef14bf2bb7
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: b62bf900e3e7859437b10b7b45801ee0dc575282
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91459920"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767767"
 ---
 # <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>Quickstart: Een Azure Functions-app maken met Azure App Configuration
 
@@ -29,7 +29,7 @@ In deze quickstart neemt u de service Azure App Configuration op in een Azure Fu
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Selecteer **Configuratieverkenner** >  **+ Maken** > **Sleutel-waarde** om de volgende sleutel-waardeparen toe te voegen:
+7. Selecteer **Configuratieverkenner** >  **+ Maken** > **Sleutel-waarde** om de volgende sleutel-waardeparen toe te voegen:
 
     | Sleutel | Waarde |
     |---|---|
@@ -37,7 +37,7 @@ In deze quickstart neemt u de service Azure App Configuration op in een Azure Fu
 
     Laat **Label** en **Inhoudstype** nog even leeg.
 
-7. Selecteer **Toepassen**.
+8. Selecteer **Toepassen**.
 
 ## <a name="create-a-functions-app"></a>Een Functions-app maken
 

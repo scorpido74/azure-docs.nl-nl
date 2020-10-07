@@ -4,21 +4,21 @@ description: Ontdek hoe u de beveiligingsmodule voor Azure RTOS-service opneemt 
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: rkarlin
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/06/2020
-ms.author: mlottner
-ms.openlocfilehash: 6f438bd7dd0b3e45fd292947a3b08db80401b825
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 09/24/2020
+ms.author: rkarlin
+ms.openlocfilehash: 38e78b80fd14aec7557b563b2b33faf7d51bd114
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90943796"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759729"
 ---
 # <a name="quickstart-security-module-for-azure-rtos-preview"></a>Quickstart: Beveiligingsmodule voor Azure RTOS (preview)
 
@@ -35,7 +35,7 @@ In dit artikel worden de vereisten beschreven waaraan u moet voldoen voordat u a
 - NXP i.MX RT1060 EVK
 - Microchip SAM E54 Xplained Pro EVK
 
-U moet een van de ZIP-bestanden voor de specifieke kaart en het hulpmiddel (IAR, IDE voor semi's of pc) van uw keuze uit de [GitHub-resource voor de beveiligingsmodule voor Azure RTOS](hhtps://github.com/azure-rtos/azure-iot-preview/releases) downloaden, compileren en uitvoeren.
+U moet een van de ZIP-bestanden voor de specifieke kaart en het hulpmiddel (IAR, IDE voor semi's of pc) van uw keuze uit de [GitHub-resource voor de beveiligingsmodule voor Azure RTOS](https://github.com/azure-rtos/azure-iot-preview/releases) downloaden, compileren en uitvoeren.
 
 ### <a name="azure-resources"></a>Azure-resources
 
@@ -63,10 +63,10 @@ Log Analytics-opname in Azure IoT Hub is standaard uitgeschakeld in de Azure Def
 1. Selecteer **Gegevensverzameling**. 
 1. Zet in de optie **Werkruimteconfiguratie** de wisselknop op **Aan**. 
 1. Maak een nieuwe Log Analytics-werkruimte of koppel een bestaande werkruimte. Zorg ervoor dat de optie **Toegang tot onbewerkte beveiligingsgegevens** is geselecteerd. 
- :::image type="content" source="media/quickstart/azure-rtos-data-collection-on.png" alt-text="Azure RTOS-configuratie met de opties voor gegevensverzameling en onbewerkte beveiligingsgegevens die beide zijn geselecteerd":::
+ :::image type="content" source="media/quickstart/azure-rtos-data-collection-on.png" alt-text="Toegang tot de optie voor het verzamelen van gegevens voor Azure RTOS":::
 1. Selecteer **Opslaan**
 1. Ga terug naar de lijst met Azure-resources en controleer of de door u gemaakte of gekoppelde Log Analytics-werkruimte is ingeschakeld voor de Azure IoT-hub.
-    :::image type="content" source="media/quickstart/verify-azure-resource-list.png" alt-text="Controleer in de lijst met Azure-resources of de juiste Log Analytics-werkruimte is toegevoegd voor een Azure IoT-hub"::: 
+    :::image type="content" source="media/quickstart/verify-azure-resource-list.png" alt-text="Toegang tot de optie voor het verzamelen van gegevens voor Azure RTOS"::: 
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -5,28 +5,37 @@ services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: include
-ms.date: 05/18/2020
+ms.date: 10/18/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 7e7a0424e4454639211c6494aab0700e75269361
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: e084256d9c2043d4382ca180ef3178175b301367
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83721450"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91745528"
 ---
-De volgende limieten gelden voor Azure Event Grid systeem onderwerpen en aangepaste onderwerpen, *niet* voor gebeurtenis domeinen.
+De volgende limieten zijn van toepassing op **Azure Event Grid-onderwerpen** (systeem, aangepast en partneronderwerpen). 
 
 | Resource | Limiet |
 | --- | --- |
 | Aangepaste onderwerpen per Azure-abonnement | 100 |
-| Gebeurtenis abonnementen per onderwerp | 500 |
-| Publicatie frequentie voor een aangepast onderwerp (ingangs) | 5.000 gebeurtenissen per seconde per onderwerp |
-| Grootte van gebeurtenis | 1 MB. Bewerkingen worden in rekening gebracht in stappen van 64 KB. Dit betekent dat gebeurtenissen van meer dan 64 KB bewerkingen in rekening brengen, alsof ze meerdere gebeurtenissen waren. Bijvoorbeeld, een gebeurtenis die 130 KB zou moeten doen, alsof het drie afzonderlijke gebeurtenissen waren.  |
-| Onderwerpen per gebeurtenis domein | 100.000 |
-| Gebeurtenis abonnementen per onderwerp binnen een domein | 500 |
-| Gebeurtenis abonnementen voor domein bereik | 50 |
-| Publicatie frequentie voor een gebeurtenis domein (ingangs punt) | 5.000 gebeurtenissen per seconde |
-| Gebeurtenis domeinen per Azure-abonnement | 100 |
-| Verbindingen van privé-eind punten per onderwerp of domein | 64 | 
-| IP-firewall regels per onderwerp of domein | 16 | 
+| Gebeurtenisabonnementen per onderwerp | 500 |
+| Publicatieratio voor een aangepast of partneronderwerp (opname) | 5000 gebeurtenissen/seconde of 1 mb/seconde (welke eerst komt)<br/>Niet van toepassing op systeemonderwerpen. |
+| Gebeurtenisgrootte | 1 MB  |
+| Privé-eindpuntverbindingen per onderwerp  | 64 | 
+| IP-firewallregels per onderwerp | 16 | 
+
+De volgende limieten zijn van toepassingen op **Azure Event Grid-domeinen**. 
+
+| Resource | Limiet |
+| --- | --- |
+| Onderwerpen per gebeurtenisdomein | 100.000 |
+| Gebeurtenisabonnementen per onderwerp met een domein | 500 |
+| Domeinbereik gebeurtenisabonnementen | 50 |
+| Publicatiefrequentie voor een gebeurtenisdomein (opname) | 5000 gebeurtenissen/seconde of 1 mb/seconde (welke eerst komt) |
+| Gebeurtenisdomeinen per Azure-abonnement | 100 |
+| Privé-eindpuntverbindingen per domein | 64 | 
+| IP-firewallregels per domein | 16 | 
+
+

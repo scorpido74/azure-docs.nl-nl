@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: cd618cf5f2f82b9c87981e961ed401f3409ec9d4
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 0f43b667b94e39548d81e6c6258d987f47074cb1
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91580777"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761325"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-java"></a>Quickstart: Werken met een IoT Plug en Play-apparaat dat is verbonden met uw oplossing (Java)
 
@@ -71,12 +71,12 @@ Het apparaat is nu klaar om opdrachten en updates van eigenschappen te ontvangen
 In [Quickstarts en zelfstudies voor het instellen van uw omgeving voor IoT Plug en Play](set-up-environment.md) hebt u twee omgevingsvariabelen gemaakt om het voorbeeld zo te configureren dat verbinding wordt gemaakt met uw IoT-hub en apparaat:
 
 * **IOTHUB_CONNECTION_STRING**: de verbindingsreeks voor de IoT-hub die u eerder hebt genoteerd.
-* **DEVICE_ID**: `"my-pnp-device"`.
+* **IOTHUB_DEVICE_ID**: `"my-pnp-device"`.
 
 In deze quickstart gebruikt u een IoT-voorbeeldoplossing geschreven in Java om te communiceren met het voorbeeldapparaat dat u zojuist hebt ingesteld.
 
 > [!NOTE]
-> In dit voorbeeld wordt gebruikgemaakt van de naamruimte **com.microsoft.azure.sdk.iot.service.*;** van de **IoT Hub-serviceclient**. Zie de [handleiding voor ontwikkelaars](concepts-developer-guide-device-csharp.md) voor meer informatie over hoe u de model-id kunt ophalen.
+> In dit voorbeeld wordt gebruikgemaakt van de naamruimte **com.microsoft.azure.sdk.iot.service.*;** van de **IoT Hub-serviceclient**. Zie de [handleiding voor ontwikkelaars](concepts-developer-guide-service.md) voor meer informatie over hoe u de model-id kunt ophalen.
 
 1. Open een ander terminalvenster om als **serviceterminal** te gebruiken.
 

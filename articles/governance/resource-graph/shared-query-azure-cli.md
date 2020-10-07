@@ -3,12 +3,12 @@ title: 'Quickstart: Een gedeelde query maken met Azure CLI'
 description: In deze quickstart volgt u de stappen om de Resource Graph-extensie voor Azure CLI in te schakelen en een gedeelde query te maken.
 ms.date: 06/29/2020
 ms.topic: quickstart
-ms.openlocfilehash: c5f7e6fbe1b462c1f9b6e8ad46c598398e1aca02
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: c888cee5899c45747db1775ffdfbc0d0c78e00c7
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050944"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91667517"
 ---
 # <a name="quickstart-create-a-resource-graph-shared-query-using-azure-cli"></a>Quickstart: Een gedeelde Resource Graph-query maken met Azure CLI
 
@@ -24,7 +24,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 
 ## <a name="add-the-resource-graph-extension"></a>De Resource Graph-extensie toevoegen
 
-De extensie moet worden toegevoegd opdat Azure CLI kan werken met Azure Resource Graph. Deze extensie werkt overal waar Azure CLI kan worden gebruikt, met inbegrip van [bash in Windows 10](/windows/wsl/install-win10), [Cloud Shell](https://shell.azure.com) (zowel zelfstandige als in de portal), de [Azure CLI Docker-installatiekopie](https://hub.docker.com/r/microsoft/azure-cli/), of lokaal geïnstalleerd.
+De extensie moet worden toegevoegd opdat Azure CLI kan werken met Azure Resource Graph. Deze extensie werkt overal waar Azure CLI kan worden gebruikt, met inbegrip van [bash in Windows 10](/windows/wsl/install-win10), [Cloud Shell](https://shell.azure.com) (zowel zelfstandige als in de portal), de [Azure CLI Docker-installatiekopie](https://hub.docker.com/_/microsoft-azure-cli), of lokaal geïnstalleerd.
 
 1. Controleer of de meest recente versie van Azure CLI is geïnstalleerd (minimaal **2.8.0**). Als deze nog niet is geïnstalleerd, volgt u [deze instructies](/cli/azure/install-azure-cli-windows) op.
 

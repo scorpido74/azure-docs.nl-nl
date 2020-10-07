@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: f622042c9a2e8cc5bc11c8dc909d02afe38e5c78
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: b03bedd9abbe59ed3bc1b0ec1439aa27af57e6da
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90908362"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758894"
 ---
 # <a name="what-is-azure-spring-cloud"></a>Wat is Azure Spring Cloud?
 
@@ -32,7 +32,7 @@ In deze inleiding worden de volgende mogelijkheden van Azure Spring Cloud beschr
 
 ## <a name="spring-cloud-config-server"></a>Spring Cloud-configuratieserver
 
-Azure Spring Cloud-configuratieserver biedt ondersteuning voor een geëxternaliseerde configuratie in een gedistribueerd systeem aan server- en clientzijde.  De Azure Spring Cloud-configuratieserver is een centrale locatie voor het beheren van toepassingseigenschappen in alle omgevingen. Raadpleeg de [Spring Cloud Config Server-referentie](https://spring.io/projects/spring-cloud-config.md) voor meer informatie. 
+Azure Spring Cloud-configuratieserver biedt ondersteuning voor een geëxternaliseerde configuratie in een gedistribueerd systeem aan server- en clientzijde.  De Azure Spring Cloud-configuratieserver is een centrale locatie voor het beheren van toepassingseigenschappen in alle omgevingen. Raadpleeg de [Spring Cloud Config Server-referentie](https://spring.io/projects/spring-cloud-config) voor meer informatie. 
 
 ## <a name="bluegreen-deployments"></a>Blauwe of groene implementaties
 

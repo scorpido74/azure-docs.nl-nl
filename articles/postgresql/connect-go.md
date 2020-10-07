@@ -1,19 +1,19 @@
 ---
 title: 'Quickstart: Verbinding maken met Go - Azure Database for PostgreSQL - één server'
 description: Deze quickstart bevat een voorbeeld van de programmeertaal Go dat u kunt gebruiken om verbinding te maken en gegevens op te vragen uit Azure Database for PostgreSQL - één server.
-author: rachel-msft
-ms.author: raagyema
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.custom: mvc
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: 21ae18b239eaa5f9e894d76bc143161b2d536638
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 26bbbff1dd826a41369fea9700139adbcb743d0d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902022"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91710427"
 ---
 # <a name="quickstart-use-go-language-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Quickstart: De programmeertaal Go gebruiken om verbinding te maken en gegevens op te vragen in Azure Database for PostgreSQL - één server
 

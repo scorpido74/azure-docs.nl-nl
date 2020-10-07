@@ -301,8 +301,6 @@
               href: platform/move-workspace.md
             - name: Ontwerp voor serviceproviders
               href: platform/service-providers.md
-            - name: Toegang beheren
-              href: platform/manage-access.md
             - name: Toegewezen clusters
               href: log-query/logs-dedicated-clusters.md
     - name: Metrics-explorer
@@ -751,8 +749,6 @@
             - name: Beschikbaarheidswaarschuwingen
               displayname: 'alerts, global, alerting'
               href: app/availability-alerts.md
-            - name: Prestaties testen
-              href: app/performance-testing.md
             - name: Problemen oplossen
               displayname: 'availability, troubleshoot, troubleshoot availability'
               href: app/troubleshoot-availability.md
@@ -976,6 +972,8 @@
           href: insights/vminsights-maps.md
         - name: Prestaties bewaken
           href: insights/vminsights-performance.md
+        - name: Wijzigingen bewaken
+          href: insights/vminsights-change-analysis.md
         - name: Gegevens analyseren met logboekquery's
           href: insights/vminsights-log-search.md
         - name: Gegevens visualiseren met werkmappen
@@ -1324,6 +1322,8 @@
       href: samples/policy-reference.md
     - name: Buitengebruikstelling van functies en API
       items:
+        - name: OperationalInsights-API
+          href: platform/operationalinsights-api-retirement.md
         - name: API voor klassieke automatische schaalaanpassing en metrische gegevens
           href: ./platform/classic-api-retirement-metrics-autoscale.md
         - name: Klassieke waarschuwingen en bewaking

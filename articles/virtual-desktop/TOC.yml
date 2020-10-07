@@ -34,6 +34,8 @@
           href: connect-macos.md
         - name: Verbinding maken met de iOS-client
           href: connect-ios.md
+        - name: Verbinding maken met de Microsoft Store-client
+          href: connect-microsoft-store.md
     - name: De PowerShell-module installeren
       href: powershell-module.md
     - name: Een hostpool en sessiehosts maken

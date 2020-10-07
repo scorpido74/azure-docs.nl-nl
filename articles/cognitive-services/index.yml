@@ -12,12 +12,12 @@ metadata:
   manager: nitinme
   ms.custom: custom-portals-hub
   ms.date: 08/28/2020
-  ms.openlocfilehash: 1500ac7ac362048751be3f91e6c52d4fe446bdc2
-  ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+  ms.openlocfilehash: 36e5543f09971d8456e79a59fc2e5457171f710b
+  ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 09/22/2020
-  ms.locfileid: "90906968"
+  ms.lasthandoff: 10/05/2020
+  ms.locfileid: "91743995"
 highlightedContent:
   items:
   - title: Wat is Cognitive Services?
@@ -38,9 +38,9 @@ highlightedContent:
   - title: Gebruiken in containers
     itemType: concept
     url: ./cognitive-services-container-support.md
-  - title: Virtuele netwerken
-    itemType: architecture
-    url: cognitive-services-virtual-networks.md
+  - title: Gebruiken in databases
+    itemType: concept
+    url: ./big-data/cognitive-services-for-big-data.md
   - title: Beveiliging
     itemType: concept
     url: cognitive-services-security.md
@@ -136,6 +136,18 @@ conceptualContent:
     - url: ./containers/container-faq.md
       itemType: reference
       text: Veelgestelde vragen over Cognitive Services-containers
+  - title: Cognitive Services voor Big Data
+    summary: De Cognitive Services voor Big Date biedt ontwikkelaars de mogelijkheid om cognitieve services te gebruiken binnen databases op intelligente algoritmen toe te passen op grote gegevenssets
+    links:
+    - url: ./big-data/cognitive-services-for-big-data.md
+      itemType: overview
+      text: Cognitive Services voor Big Data
+    - url: ./big-data/getting-started.md
+      itemType: get-started
+      text: Cognitive Services gebruiken binnen Azure Databricks en Synapse Analytics
+    - url: ./big-data/samples-python.md
+      itemType: reference
+      text: Python-voorbeelden
 additionalContent:
   sections:
   - title: Aanvullende resources
@@ -160,12 +172,14 @@ additionalContent:
         url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices
       - text: Java
         url: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client?view=azure-java-stable
-      - text: JavaScript
+      - text: Javascript
         url: https://docs.microsoft.com/javascript/api/overview/azure/cognitive-services?view=azure-node-latest
       - text: Python
         url: https://docs.microsoft.com/python/api/overview/azure/cognitive-services?view=azure-python
       - text: R
         url: https://github.com/Azure/AzureCognitive
+      - text: Apache Spark en Databases
+        url: ./big-data/cognitive-services-for-big-data.md
       - text: Cognitive Services-beheer van REST API
         url: https://docs.microsoft.com/rest/api/cognitiveservices/
     - title: Hulpprogramma's

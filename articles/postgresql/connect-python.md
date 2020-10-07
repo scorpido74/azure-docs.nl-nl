@@ -1,19 +1,19 @@
 ---
 title: 'Quickstart: Verbinding maken met Python - Azure Database for PostgreSQL - individuele server'
 description: Deze quickstart bevat een voorbeeld van Python-code dat u kunt gebruiken om verbinding te maken met en gegevens op te vragen uit een Azure Database for PostgreSQL - individuele server.
-author: rachel-msft
-ms.author: raagyema
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.custom: mvc, devcenter, devx-track-python
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/07/2019
-ms.openlocfilehash: 9fb0c02bcf040b1d27831e72d31ff07a7c38ad0a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6452934828c4e74563daf001271b3ce018ab58e3
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90901813"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91707894"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Quickstart: Python gebruiken om verbinding te maken en gegevens op te vragen in Azure Database for PostgreSQL - individuele server
 
@@ -105,7 +105,7 @@ conn.close()
 
 Wanneer de code wordt uitgevoerd, wordt de volgende uitvoer gegenereerd:
 
-:::image type="content" source="media/connect-python/2-example-python-output.png" alt-text="Opdrachtregeluitvoer":::
+:::image type="content" source="media/connect-python/2-example-python-output.png" alt-text="Servernaam Azure Database for PostgreSQL":::
 
 ## <a name="read-data"></a>Gegevens lezen
 In het volgende codevoorbeeld wordt verbinding gemaakt met uw Azure Database for PostgreSQL-database en wordt [cursor.execute](http://initd.org/psycopg/docs/cursor.html#execute) gebruikt met de SQL-instructie **SELECT** om gegevens te lezen. Deze functie accepteert een query en retourneert een resultatenset die met behulp van [cursor.fetchall()](http://initd.org/psycopg/docs/cursor.html#cursor.fetchall) kan worden herhaald. 

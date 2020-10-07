@@ -4,14 +4,14 @@ ms.service: app-service
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: jroth
-ms.openlocfilehash: 1811590dcf9077a503f89a900f661c52aa442c96
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 557e20dcafabb2db0bc66c9dfda4977aca50de50
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87425079"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91745582"
 ---
-| Resource | Gratis | Gedeeld | Basic | Standard | Premium (v2) | Geïsoleerd </th> |
+| Resource | Gratis | Gedeeld | Basic | Standard | Premium (v3) | Geïsoleerd </th> |
 | --- | --- | --- | --- | --- | --- | --- |
 | [Web-, mobiele of API-apps](https://azure.microsoft.com/services/app-service/) per [Azure App Service-abonnement](../articles/app-service/overview-hosting-plans.md)<sup>1</sup> |10 |100 |Onbeperkt<sup>2</sup> |Onbeperkt<sup>2</sup> |Onbeperkt<sup>2</sup> |Onbeperkt<sup>2</sup>|
 | [App Service-plan](../articles/app-service/overview-hosting-plans.md) |10 per regio |10 per resourcegroep |100 per resourcegroep |100 per resourcegroep |100 per resourcegroep |100 per resourcegroep|
@@ -52,7 +52,7 @@ ms.locfileid: "87425079"
 <sup>5</sup>De opslaglimiet is de totale inhoudsgrootte voor alle apps in hetzelfde App Service-abonnement. De totale inhoudsgrootte van alle apps in alle App Service-abonnementen in één resourcegroep en regio mag niet meer dan 500 GB bedragen.  
 <sup>6</sup>Deze resources worden beperkt door fysieke resources op de toegewezen exemplaren (de grootte van het exemplaar en het aantal exemplaren).  
 <sup>7</sup>Als u een app in de basislaag naar twee exemplaren wilt schalen, hebt u 350 gelijktijdige verbindingen voor elk van de twee exemplaren. Voor de standaardlaag en hoger zijn er geen theoretische limieten voor het aantal websockets, maar het aantal websockets kan door andere factoren worden beperkt. Bijvoorbeeld maximaal aantal toegestane gelijktijdige aanvragen (gedefinieerd door `maxConcurrentRequestsPerCpu`): 7500 per kleine VM, 15.000 per gemiddelde VM (7500 x 2 kernen) en 75.000 per grote VM (18.750 x 4 kernen).  
-<sup>8</sup>Het maximum aantal IP-verbindingen geldt per exemplaar en is afhankelijk van de grootte van het exemplaar: 1920 per B1/S1/P1V2-exemplaar, 3968 per B2/S2/P2V2-exemplaar, 8064 per B3/S3/P3V2-exemplaar.  
+<sup>8</sup>Het maximum aantal IP-verbindingen geldt per exemplaar en is afhankelijk van de grootte van het exemplaar: 1,920 per B1/S1/P1V3 instance, 3,968 per B2/S2/P2V3 instance, 8,064 per B3/S3/P3V3 instance.  
 <sup>9</sup>De quotumlimiet per abonnement van het App Service-certificaat kan worden verhoogd via een ondersteuningsaanvraag tot een maximumlimiet van 200.  
 <sup>10</sup>App Service-geïsoleerde SKU's kunnen intern worden verdeeld (ILB) met Azure Load Balancer, dus er is geen openbare verbinding via internet. Als gevolg hiervan moeten sommige functies van een ILB-geïsoleerde App Service worden gebruikt vanaf machines met rechtstreekse toegang tot het ILB-netwerkeindpunt.  
 <sup>11</sup>Voer aangepaste uitvoerbare bestanden en/of scripts op aanvraag, op basis van een schema of continu als een achtergrondtaak binnen uw App Service-exemplaar uit. AlwaysOn is vereist voor de continue uitvoering van webjobs. Er is geen vooraf gedefinieerde limiet voor het aantal webjobs dat kan worden uitgevoerd in een App Service-exemplaar. Er zijn praktische limieten die afhankelijk zijn van wat de toepassingscode probeert te doen.

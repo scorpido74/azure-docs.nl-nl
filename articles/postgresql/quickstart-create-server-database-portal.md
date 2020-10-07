@@ -1,18 +1,18 @@
 ---
 title: 'Quickstart: Server maken - Azure-portal - Azure Database for PostgreSQL - enkele server'
 description: In deze quickstart gaat u een Azure Database for PostgreSQL-server maken en beheren met behulp van de Azure-portal.
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/27/2020
-ms.openlocfilehash: 0c390c64db8c5833f5bc5bf2be3367cb63127a0f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6e43d00722dd86934c8f95e06a3b8b590b263d61
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902647"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91705157"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-by-using-the-azure-portal"></a>Quickstart: Een Azure Database for PostgreSQL-server maken met behulp van de Azure-portal
 
@@ -39,12 +39,12 @@ Ga als volgt te werk om een Azure Database for PostgreSQL-server te maken:
 3. Selecteer de implementatieoptie **Enkele server**.
 
    > [!div class="mx-imgBorder"]
-   > :::image type="content" source="./media/quickstart-create-database-portal/select-deployment-option.png" alt-text="Schermopname waarin de optie voor enkele server implementeren voor Azure Database for PostgreSQL is geselecteerd":::
+   > :::image type="content" source="./media/quickstart-create-database-portal/select-deployment-option.png" alt-text="Schermopname waarin Azure Database for PostgreSQL in het menu wordt weergegeven.":::
 
 4. Vul het formulier **Basisbeginselen** in met de volgende gegevens.
 
    > [!div class="mx-imgBorder"]
-   > :::image type="content" source="./media/quickstart-create-database-portal/create-basics.png" alt-text="Schermopname waarin het tabblad Basisbeginselen voor het maken van een enkele server wordt weergegeven.":::
+   > :::image type="content" source="./media/quickstart-create-database-portal/create-basics.png" alt-text="Schermopname waarin Azure Database for PostgreSQL in het menu wordt weergegeven.":::
 
    Instelling|Voorgestelde waarde|Beschrijving
    ---|---|---
@@ -71,7 +71,7 @@ Er wordt een lege database, **postgres**, gemaakt. Er is ook een database **azur
 De server die u maakt, is standaard niet openbaar toegankelijk. U moet toegang tot uw IP-adres verlenen. Ga in de Azure-portal naar uw serverresource en selecteer **Verbindingsbeveiliging** in het linkermenu van uw serverresource. Zie [Resources openen](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resources-portal#open-resources) als u niet weet hoe u uw resource moet vinden.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/quickstart-create-database-portal/add-current-ip-firewall.png" alt-text="Schermopname waarin firewallregels voor verbindingsbeveiliging worden weergegeven.":::
+> :::image type="content" source="./media/quickstart-create-database-portal/add-current-ip-firewall.png" alt-text="Schermopname waarin Azure Database for PostgreSQL in het menu wordt weergegeven.":::
   
 Selecteer **Huidig IP-adres van client toevoegen** en selecteer vervolgens **Opslaan**. U kunt meer IP-adressen toevoegen of een IP-bereik opgeven om verbinding met uw server te maken vanaf die IP-adressen. Zie [Firewallregels in Azure Database for PostgreSQL](./concepts-firewall-rules.md) voor meer informatie.
    
@@ -90,7 +90,7 @@ U kunt [psql](http://postgresguide.com/utilities/psql.html) of [pgAdmin](https:/
    > Als u Cloud Shell voor de eerste keer opent, wordt er een prompt weergegeven om een resourcegroep en opslagaccount te maken. Dit is een eenmalige stap en ze worden voor alle volgende sessies automatisch toegevoegd. 
 
    > [!div class="mx-imgBorder"]
-   > :::image type="content" source="media/quickstart-create-database-portal/use-in-cloud-shell.png" alt-text="Schermopname waarin servergegevens en het pictogram voor het openen van Azure Cloud Shell worden weergegeven.":::
+   > :::image type="content" source="media/quickstart-create-database-portal/use-in-cloud-shell.png" alt-text="Schermopname waarin Azure Database for PostgreSQL in het menu wordt weergegeven.":::
 
 3. Voer de volgende opdracht uit in de Azure Cloud Shell-terminal. Vervang de waarden door uw servernaam en aanmeldings-id voor de gebruiker met beheerdersrechten. Gebruik de lege database **postgres** met een gebruiker met beheerdersrechten in deze indeling: `<admin-username>@<servername>`.
 
@@ -143,7 +143,7 @@ Zo verwijdert u de resourcegroep:
 Om de server te verwijderen, selecteert u de knop **Verwijderen** op de pagina **Overzicht** van uw server:
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="media/quickstart-create-database-portal/12-delete.png" alt-text="Schermopname waarin de knop voor het verwijderen van een server wordt weergegeven.":::
+> :::image type="content" source="media/quickstart-create-database-portal/12-delete.png" alt-text="Schermopname waarin Azure Database for PostgreSQL in het menu wordt weergegeven.":::
 
 ## <a name="next-steps"></a>Volgende stappen
 > [!div class="nextstepaction"]

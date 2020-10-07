@@ -10,22 +10,22 @@ ms.date: 09/21/2020
 ms.custom: devx-track-java
 ms.author: aahi
 ms.reviewer: tasharm, assafi, sumeh
-ms.openlocfilehash: 61240b6238b4653ff45985a8403534570cbf0773
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 2788b22d2b262cfef4b214d75813a203067462cb
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91401090"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779245"
 ---
 <a name="HOLTop"></a>
 
 # <a name="version-31-preview"></a>[Preview van versie 3.1](#tab/version-3-1)
 
-[Referentiedocumentatie](https://aka.ms/azsdk-java-textanalytics-ref-docs) | [Broncode bibliotheek](https://github.com/Azure/azure-sdk-for-java/blob/azure-ai-textanalytics_5.1.0-beta.1/sdk/textanalytics/azure-ai-textanalytics) | [Pakket](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.1.0-beta.1) | [Voorbeelden](https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.1.0-beta.1/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
+[Referentiedocumentatie](https://docs.microsoft.com/java/api/overview/azure/ai-textanalytics-readme?view=azure-java-stable) | [Broncode bibliotheek](https://github.com/Azure/azure-sdk-for-java/blob/azure-ai-textanalytics_5.1.0-beta.1/sdk/textanalytics/azure-ai-textanalytics) | [Pakket](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.1.0-beta.1) | [Voorbeelden](https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.1.0-beta.1/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
 
 # <a name="version-30"></a>[Versie 3.0](#tab/version-3)
 
-[Referentiedocumentatie](https://aka.ms/azsdk-java-textanalytics-ref-docs) | [Broncode bibliotheek](https://github.com/Azure/azure-sdk-for-java/blob/azure-ai-textanalytics_5.0.0/sdk/textanalytics/azure-ai-textanalytics) | [Pakket](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.0.0) | [Voorbeelden](https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.0.0/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
+[Referentiedocumentatie](https://docs.microsoft.com/java/api/overview/azure/ai-textanalytics-readme?view=azure-java-stable) | [Broncode bibliotheek](https://github.com/Azure/azure-sdk-for-java/blob/azure-ai-textanalytics_5.0.0/sdk/textanalytics/azure-ai-textanalytics) | [Pakket](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.0.0) | [Voorbeelden](https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.0.0/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
 
 # <a name="version-21"></a>[Versie 2.1](#tab/version-2)
 
@@ -173,7 +173,7 @@ In de `main()`-methode van uw programma roept u de verificatiemethode op om de c
 
 ## <a name="sentiment-analysis"></a>Sentimentanalyse
 
-# <a name="version-31-preview"></a>[Preview van versie 3.1](#tab/version-3-1)
+# <a name="version-31-preview"></a>[Versie 3.1: preview](#tab/version-3-1)
 
 > [!NOTE]
 > In versie `3.1`:
@@ -343,7 +343,7 @@ Detected primary language: French, ISO 6391 name: fr, score: 1.00.
 
 ## <a name="named-entity-recognition-ner"></a>Herkenning van benoemde entiteiten (NER)
 
-# <a name="version-31-preview"></a>[Preview van versie 3.1](#tab/version-3-1)
+# <a name="version-31-preview"></a>[Versie 3.1: preview](#tab/version-3-1)
 
 > [!NOTE]
 > In versie `3.1`:

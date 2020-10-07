@@ -10,11 +10,9 @@
   items:
     - name: Met de QnA Maker-portal
       items:
-        - name: 1. Een knowledge base maken
+        - name: Een knowledge base maken
           href: Quickstarts/create-publish-knowledge-base.md
-        - name: 2. Vragen toevoegen met metagegevens
-          href: Quickstarts/add-question-metadata-portal.md
-        - name: 3. Antwoord ophalen met behulp van Postman of cURL
+        - name: Een query uitvoeren op een Knowledge Base
           href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
     - name: REST gebruiken
       href: Quickstarts/quickstart-rest-curl.md
@@ -32,10 +30,8 @@
   items:
     - name: Uw kennisdatabase plannen
       href: Concepts/plan.md
-    - name: Azure-resources
+    - name: QnA Maker-resources plannen
       href: Concepts/azure-resources.md
-    - name: Samenwerken met anderen
-      href: Concepts/role-based-access-control.md
     - name: Een kennisdatabase ontwerpen
       items:
         - name: Voor talen
@@ -48,22 +44,12 @@
           href: Concepts/knowledge-base.md
         - name: Geïmporteerde inhoudstypen
           href: Concepts/content-types.md
-        - name: Vraag-en-antwoord-paren
-          href: Concepts/question-answer-set.md
-    - name: Levenscyclus van Knowledge base
-      items:
-        - name: Levenscyclus van ontwikkeling
-          href: Concepts/development-lifecycle-knowledge-base.md
-          displayName: 'version control, test, index, publish, monitor usage, create'
-        - name: Verbeteren met suggesties voor actief leren
-          href: Concepts/active-learning-suggestions.md
-    - name: Knowledge base bewerken
-      items:
-        - name: Antwoord ophalen
-          displayName: 'DefaultAnswer, Default answer'
-          href: Concepts/query-knowledge-base.md
-        - name: Betrouwbaarheidsscore
-          href: Concepts/confidence-score.md
+    - name: Rangschikkingsproces
+      displayName: 'DefaultAnswer, Default answer'
+      href: Concepts/query-knowledge-base.md
+    - name: Levenscyclus van ontwikkeling
+      href: Concepts/development-lifecycle-knowledge-base.md
+      displayName: 'version control, test, index, publish, monitor usage, create'
     - name: Aanbevolen procedures
       href: Concepts/best-practices.md
       displayName: 'tag, rank, score, threshold, question, alternate, filter, synonym, answer, active learning, collaborate, alteration, metadata, bot, personality, extraction, chit-chat'
@@ -93,7 +79,7 @@
         - name: Migreren naar een nieuwe knowledge base
           href: Tutorials/migrate-knowledge-base.md
           displayName: 'metadata, pair'
-        - name: Knowledge Base testen
+        - name: Testen
           href: How-To/test-knowledge-base.md
     - name: QnA-paren beheren
       items:
@@ -105,50 +91,11 @@
         - name: Voorgestelde alternatieve vragen ophalen
           href: How-to/improve-knowledge-base.md
           displayName: 'active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting, accept, reject, filter by suggestion, filter active learning, clusterHead, totalAutoSuggestedCount, totalUserSuggestedCount, autoSuggestedCount, userSuggestedCount'
-        - name: Beveiligde SharePoint-bestanden toevoegen
-          href: How-To/add-sharepoint-datasources.md
-          displayName: 'Sharepoint, secure, AAD, azure directory, admin, permission, authorization, file, authentication'
     - name: Knowledge base bewerken
       href: How-To/metadata-generateanswer-usage.md
       displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'
     - name: Analyse en telemetrie
       href: How-To/get-analytics-knowledge-base.md
-    - name: REST API's gebruiken
-      items:
-        - name: Een knowledge base maken
-          items:
-            - name: C#
-              href: Quickstarts/create-new-kb-csharp.md
-            - name: Aan de slag
-              href: Quickstarts/create-new-kb-go.md
-            - name: Java
-              href: Quickstarts/create-new-kb-java.md
-            - name: Python
-              href: Quickstarts/create-new-kb-python.md
-        - name: Een kennisdatabase publiceren
-          items:
-            - name: C#
-              href: Quickstarts/publish-kb-csharp.md
-            - name: Aan de slag
-              href: Quickstarts/publish-kb-go.md
-            - name: Java
-              href: Quickstarts/publish-kb-java.md
-            - name: Node.js
-              href: Quickstarts/publish-kb-nodejs.md#publish-a-knowledge-base
-            - name: Python
-              href: Quickstarts/publish-kb-python.md
-        - name: Antwoord ophalen
-          items:
-            - name: C#
-              href: Quickstarts/get-answer-from-knowledge-base-csharp.md
-            - name: Aan de slag
-              href: Quickstarts/get-answer-from-knowledge-base-go.md
-            - name: Java
-              href: Quickstarts/get-answer-from-knowledge-base-java.md
-            - name: Node.js
-              href: Quickstarts/get-answer-from-knowledge-base-nodejs.md
-            - name: Python
-              href: Quickstarts/get-answer-from-knowledge-base-python.md
 - name: Naslaginformatie
   items:
     - name: Taalondersteuning
@@ -156,9 +103,18 @@
     - name: Limieten
       href: limits.md
     - name: Toegangsbeheer op basis van rollen (RBAC)
-      href: reference-role-based-access-control.md
+      href: Concepts/role-based-access-control.md
+    - name: Actief leren
+      href: Concepts/active-learning-suggestions.md
+    - name: Betrouwbaarheidsscore
+      href: Concepts/confidence-score.md
     - name: Problemen oplossen
       href: troubleshooting.md
+    - name: Vraag-en-antwoord-paren
+      href: Concepts/question-answer-set.md
+    - name: Beveiligde SharePoint-bestanden toevoegen
+      href: How-To/add-sharepoint-datasources.md
+      displayName: 'Sharepoint, secure, AAD, azure directory, admin, permission, authorization, file, authentication'
     - name: Serviceconfiguratie
       href: reference-app-service.md
     - name: Content- en gegevensformaten
@@ -173,6 +129,8 @@
       href: reference-markdown-format.md
     - name: Indeling voor batchgewijs testen
       href: reference-tsv-format-batch-testing.md
+    - name: Versleuteling
+      href: qna-maker-encryption-of-data-at-rest.md
     - name: Naslaginformatie over REST-API
       items:
         - name: API's ontwerpen
@@ -181,10 +139,6 @@
           href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer'
         - name: API trainen
           href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train'
-    - name: Voorbeelden
-      items:
-        - name: QnA Maker-helpbot
-          href: 'https://aka.ms/qnamakerhelpbotsample'
     - name: SDK's
       items:
         - name: C#
@@ -231,8 +185,6 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: Naleving
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: Versleuteling
-      href: qna-maker-encryption-of-data-at-rest.md
     - name: Azure-roadmap
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Prijzen en beperkingen

@@ -8,12 +8,12 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 09/16/2020
-ms.openlocfilehash: 0a28bd0d4101fc9d49413adaaccc0a6d38ec64ed
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 460c37107ac2dbd8bc3377d3716e708331db9904
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91307718"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740921"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Quickstart: Een Azure Cognitive Search-index maken in de Azure-portal
 
@@ -35,7 +35,7 @@ Veel klanten beginnen met de gratis service. Deze versie is beperkt tot drie ind
 
 Op secties in het servicedashboard wordt weergegeven hoeveel indexen, indexeerfuncties en gegevensbronnen u al hebt. 
 
-![Lijsten met indexen, indexeerfuncties en gegevensbronnen](media/search-get-started-portal/tiles-indexers-datasources.png)
+:::image type="content" source="media/search-get-started-portal/tiles-indexers-datasources.png" alt-text="Lijsten met indexen, indexeerfuncties en gegevensbronnen":::
 
 ## <a name="create-an-index-and-load-data"></a><a name="create-index"></a> Een index maken en gegevens laden
 
@@ -49,11 +49,11 @@ Voor deze zelfstudie gebruiken we een ingebouwde gegevensset die met behulp van 
 
 1. [Vind uw zoekservice](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) en klik op de overzichtspagina op **Gegevens importeren** in de opdrachtbalk om een zoekindex te maken en te vullen.
 
-   ![Opdracht Gegevens importeren](media/search-get-started-portal/import-data-cmd.png)
+   :::image type="content" source="media/search-get-started-portal/import-data-cmd.png" alt-text="Lijsten met indexen, indexeerfuncties en gegevensbronnen":::
 
 1. Klik in de wizard op **Verbinding maken met uw gegevens** > **Voorbeelden** > **hotels-sample**. Deze gegevensbron is ingebouwd. Als u uw eigen gegevensbron zou maken, zou u een naam, het type en de verbindingsgegevens moeten opgeven. Zodra de gegevensbron is gemaakt, wordt deze een bestaande gegevensbron genoemd die opnieuw kan worden gebruikt voor andere bewerkingen.
 
-   ![Voorbeeldgegevensset selecteren](media/search-get-started-portal/import-datasource-sample.png)
+   :::image type="content" source="media/search-get-started-portal/import-datasource-sample.png" alt-text="Lijsten met indexen, indexeerfuncties en gegevensbronnen":::
 
 1. Ga door naar de volgende pagina.
 
@@ -63,7 +63,7 @@ De wizard ondersteunt het maken van een [pijplijn voor AI-verrijking](cognitive-
 
 Deze stap slaan we nu even over en we gaan naar **Doelindex aanpassen**.
 
-   ![Stap voor cognitieve vaardigheden overslaan](media/search-get-started-portal/skip-cog-skill-step.png)
+   :::image type="content" source="media/search-get-started-portal/skip-cog-skill-step.png" alt-text="Lijsten met indexen, indexeerfuncties en gegevensbronnen":::
 
 > [!TIP]
 > U kunt een voorbeeld van een AI-indexering doorlopen in een [Snelstartgids](cognitive-search-quickstart-blob.md) of [zelfstudie](cognitive-search-tutorial-blob.md).
@@ -87,7 +87,7 @@ Standaard wordt met de wizard de gegevensbron gescand op unieke id's als basis v
 
    Als u de wizard opnieuw uitvoert met behulp van een bestaande gegevensbron met hotels, kan de index niet worden geconfigureerd met standaardkenmerken. Voor toekomstige importbewerkingen moet u de kenmerken handmatig selecteren. 
 
-   ![Gegenereerde hotelindex](media/search-get-started-portal/hotelsindex.png)
+   :::image type="content" source="media/search-get-started-portal/hotelsindex.png" alt-text="Lijsten met indexen, indexeerfuncties en gegevensbronnen":::
 
 2. Ga door naar de volgende pagina.
 
@@ -100,7 +100,7 @@ Dit object definieert een uitvoerbaar proces. U kunt een terugkerend schema inst
 
 Klik op **Verzenden** om de indexeerfunctie te maken en tegelijkertijd uit te voeren.
 
-  ![indexeerfunctie voor hotels](media/search-get-started-portal/hotels-indexer.png)
+  :::image type="content" source="media/search-get-started-portal/hotels-indexer.png" alt-text="Lijsten met indexen, indexeerfuncties en gegevensbronnen":::
 
 ## <a name="monitor-progress"></a>Voortgang controleren
 
@@ -108,7 +108,7 @@ De wizard leidt u naar de lijst met indexeerfuncties waar u de voortgang kunt co
 
 Het kan een paar minuten duren voordat in de portal de pagina is bijgewerkt, maar u zou de zojuist gemaakte indexeerfunctie in de lijst moeten zien met de status die aangeeft dat deze wordt uitgevoerd of is geslaagd en met het aantal geïndexeerde documenten.
 
-   ![Voortgangsbericht voor de indexeerfunctie](media/search-get-started-portal/indexers-inprogress.png)
+   :::image type="content" source="media/search-get-started-portal/indexers-inprogress.png" alt-text="Lijsten met indexen, indexeerfuncties en gegevensbronnen":::
 
 ## <a name="view-the-index"></a>De index bekijken
 
@@ -116,13 +116,13 @@ De belangrijkste servicepagina bevat koppelingen naar de resources die in uw Azu
 
 Wacht tot de portalpagina is vernieuwd. Na enkele minuten ziet u de index met het aantal documenten en de opslaggrootte.
 
-   ![Lijst met indexen op het servicedashboard](media/search-get-started-portal/indexes-list.png)
+   :::image type="content" source="media/search-get-started-portal/indexes-list.png" alt-text="Lijsten met indexen, indexeerfuncties en gegevensbronnen":::
 
 In deze lijst kunt u op de index *hotels-sample* klikken die u zojuist hebt gemaakt, het indexschema bekijken. en eventueel nieuwe velden toevoegen. 
 
 Op het tabblad **Velden** wordt het indexschema getoond. Scroll naar de onderkant van de lijst om een nieuw veld in te voeren. In de meeste gevallen kunt u geen bestaande velden wijzigen. Bestaande velden hebben een fysieke weergave in Azure Cognitive Search en kunnen daarom niet worden gewijzigd, zelfs niet in code. Als u een bestaand veld fundamenteel wilt wijzigen, maakt u een nieuwe index en verwijdert u het oorspronkelijke veld.
 
-   ![voorbeeld van indexdefinitie](media/search-get-started-portal/sample-index-def.png)
+   :::image type="content" source="media/search-get-started-portal/sample-index-def.png" alt-text="Lijsten met indexen, indexeerfuncties en gegevensbronnen":::
 
 Andere constructies, zoals scoreprofielen en CORS-opties, kunnen op elk gewenst moment worden toegevoegd.
 
@@ -140,15 +140,15 @@ U zou nu een zoekindex moeten hebben die klaar is om query’s uit te voeren met
 
 1. Klik op **Search explorer** in de opdrachtbalk.
 
-   ![Opdracht Search Explorer](media/search-get-started-portal/search-explorer-cmd.png)
+   :::image type="content" source="media/search-get-started-portal/search-explorer-cmd.png" alt-text="Lijsten met indexen, indexeerfuncties en gegevensbronnen":::
 
 2. Kies in de vervolgkeuzelijst **Index** de *voorbeeldindex met hotels*. Klik op de vervolgkeuzelijst voor de **API-versie** om de REST-API's te zien die beschikbaar zijn. Gebruik voor onderstaande query's de algemeen beschikbare versie (2020-06-30).
 
-   ![Index- en API-opdrachten](media/search-get-started-portal/search-explorer-changeindex.png)
+   :::image type="content" source="media/search-get-started-portal/search-explorer-changeindex.png" alt-text="Lijsten met indexen, indexeerfuncties en gegevensbronnen":::
 
 3. Plak in de zoekbalk de onderstaande querytekenreeksen en klik op **Zoeken**.
 
-   ![Querytekenreeks en knop Zoeken](media/search-get-started-portal/search-explorer-query-string-example.png)
+   :::image type="content" source="media/search-get-started-portal/search-explorer-query-string-example.png" alt-text="Lijsten met indexen, indexeerfuncties en gegevensbronnen":::
 
 ## <a name="example-queries"></a>Voorbeelden van query's
 

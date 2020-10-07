@@ -7,13 +7,13 @@ author: tchristiani
 ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 09/16/2020
-ms.openlocfilehash: 246cdb458b4529c60f61c3ddcb26280c1e3223af
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 10/05/2020
+ms.openlocfilehash: 713199dc6b1eb1330b49c320022af137d0d1402e
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91268363"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741003"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Quickstart: Een Azure Cognitive Search-service maken in de portal
 
@@ -47,7 +47,7 @@ U kunt ook [voordelen voor MSDN-abonnees activeren](https://azure.microsoft.com/
 
 1. Gebruik de zoekbalk om te zoeken naar 'Azure Cognitive Search' of ga naar de resource via **Web** > **Azure Cognitive Search**.
 
-![Een resource maken in de portal](./media/search-create-service-portal/find-search3.png "Een resource maken in de portal")
+:::image type="content" source="media/search-create-service-portal/find-search3.png" alt-text="Een resource maken in de portal" border="false":::
 
 ## <a name="choose-a-subscription"></a>Kies een abonnement
 
@@ -59,11 +59,11 @@ Een resourcegroep is een container met gerelateerde resources voor uw Azure-oplo
 
 Als u resources niet in één groep combineert of als bestaande resourcegroepen resources bevatten die worden gebruikt in oplossingen waartussen geen verband bestaat, maakt u een nieuwe resourcegroep voor uw Azure Cognitive Search-resource. 
 
-![Een nieuwe resourcegroep maken](./media/search-create-service-portal/new-resource-group.png "Een nieuwe resourcegroep maken")
+:::image type="content" source="media/search-create-service-portal/new-resource-group.png" alt-text="Een resource maken in de portal" border="false":::
 
 U kunt in de loop van de tijd huidige en geschatte ‘all-up’ kosten bijhouden of kosten voor afzonderlijke resources bekijken. De volgende schermopname toont het soort kostengegevens dat u kunt verwachten te zien wanneer u meerdere resources in één groep combineert.
 
-![Kosten beheren op het niveau van de resourcegroep](./media/search-create-service-portal/resource-group-cost-management.png "Kosten beheren op het niveau van de resourcegroep")
+:::image type="content" source="media/search-create-service-portal/resource-group-cost-management.png" alt-text="Een resource maken in de portal" border="false":::
 
 > [!TIP]
 > Resourcegroepen vereenvoudigen opschoning, omdat met de verwijdering van een groep ook alle services daarin worden verwijderd. Bij prototypeprojecten die gebruikmaken van meerdere services, wordt het opschonen na afloop van het project gemakkelijker als die services zich allemaal in dezelfde resourcegroep bevinden.
@@ -114,11 +114,11 @@ Vergeet niet dat een prijscategorie niet kan worden gewijzigd nadat de service i
 
 Nadat u de benodigde invoer hebt opgegeven, kunt u de service gaan maken. 
 
-![De service controleren en maken](./media/search-create-service-portal/new-service3.png "De service controleren en maken")
+:::image type="content" source="media/search-create-service-portal/new-service3.png" alt-text="Een resource maken in de portal" border="false":::
 
 Uw service wordt binnen slechts enkele minuten geïmplementeerd. U kunt de voortgang controleren via Azure-meldingen. Overweeg de service aan uw dashboard vast te maken voor gemakkelijke toegang in de toekomst.
 
-![De service bewaken en vastmaken](./media/search-create-service-portal/monitor-notifications.png "De service bewaken en vastmaken")
+:::image type="content" source="media/search-create-service-portal/monitor-notifications.png" alt-text="Een resource maken in de portal" border="false":::
 
 ## <a name="get-a-key-and-url-endpoint"></a>Een sleutel en het URL-eindpunt ophalen
 
@@ -128,7 +128,7 @@ Tenzij u de portal gebruikt, moet u voor programmatische toegang tot uw nieuwe s
 
 2. Kopieer op de pagina **Sleutels** een van de beheersleutels (deze zijn equivalent). API-beheersleutels voor beheerders zijn vereist voor het maken, bijwerken en verwijderen van objecten in uw service. Querysleutels bieden daarentegen alleen leestoegang tot indexinhoud.
 
-   ![Pagina Overzicht van de service met URL-eindpunt](./media/search-create-service-portal/get-url-key.png "URL-eindpunt en andere servicedetails")
+   :::image type="content" source="media/search-create-service-portal/get-url-key.png" alt-text="Een resource maken in de portal" border="false":::
 
 Een eindpunt en sleutel zijn niet nodig voor op de portal gebaseerde taken. De portal is al gekoppeld aan uw Azure Cognitive Search-resource met beheerdersrechten. Voor een portaloverzicht begint u met [Quickstart: Een Azure Cognitive Search-index maken in de portal](search-get-started-portal.md).
 
@@ -149,7 +149,7 @@ Als u resources toevoegt, wordt uw maandfactuur hoger. Met de [prijscalculator](
 2. Selecteer in het navigatiedeelvenster aan de linkerkant **Instellingen** > **Schalen**.
 3. Gebruik de schuifbalk om resources van een bepaald type toe te voegen.
 
-![Capaciteit toevoegen](./media/search-create-service-portal/settings-scale.png "Capaciteit toevoegen via replica's en partities")
+:::image type="content" source="media/search-create-service-portal/settings-scale.png" alt-text="Een resource maken in de portal" border="false":::
 
 > [!Note]
 > Hoe hoger de categorie, hoe hoger de opslag per partitie en de snelheid. Zie [Capaciteit en limieten](search-limits-quotas-capacity.md) voor meer informatie.

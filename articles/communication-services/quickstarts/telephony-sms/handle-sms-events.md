@@ -6,19 +6,19 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2020
+ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 02a0a5dd5cfe3a1ecaa264f1e81c848a8da6c58d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 072e885ec1c618229141dea477cd598d8db34ce7
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90944678"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91756743"
 ---
 # <a name="quickstart-handle-sms-events"></a>Quickstart: SMS-gebeurtenissen verwerken
 
-[!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 Aan de slag met Azure Communication Services met Azure Event Grid om SMS-gebeurtenissen van Communication Services te verwerken. 
 
@@ -65,11 +65,11 @@ U kunt zich op specifieke gebeurtenissen abonneren om Event Grid te laten weten 
 
 Bekijk de volledige lijst [door Azure Communication Services ondersteunde gebeurtenissen](../../concepts/event-handling.md).
 
-:::image type="content" source="./media/handle-sms-events/select-events-create-eventsub.png" alt-text="Schermafbeelding met het ontvangen SMS-bericht en SMS-rapport met ontvangen gebeurtenistypen.":::
+:::image type="content" source="./media/handle-sms-events/select-events-create-eventsub.png" alt-text="Schermopname met de selectie van het gebeurtenisabonnement binnen de gebeurtenispagina van een resource.":::
 
 Selecteer **Webhook** voor het **Eindpunttype**. 
 
-:::image type="content" source="./media/handle-sms-events/select-events-create-linkwebhook.png" alt-text="Schermopname met het veld Eindpunttype dat wordt ingesteld op Webhook.":::
+:::image type="content" source="./media/handle-sms-events/select-events-create-linkwebhook.png" alt-text="Schermopname met de selectie van het gebeurtenisabonnement binnen de gebeurtenispagina van een resource.":::
 
 Klik voor **Eindpunt** op **Een eindpunt selecteren** en voer de URL van uw web-app in.
 
@@ -77,7 +77,7 @@ In dit geval gebruiken we de URL van het [Azure Event Grid Viewer-voorbeeld](htt
 
 Selecteer vervolgens **Selectie bevestigen**.
 
-:::image type="content" source="./media/handle-sms-events/select-events-create-selectwebhook-epadd.png" alt-text="Schermopname van de bevestiging van een Webhook-eindpunt.":::
+:::image type="content" source="./media/handle-sms-events/select-events-create-selectwebhook-epadd.png" alt-text="Schermopname met de selectie van het gebeurtenisabonnement binnen de gebeurtenispagina van een resource.":::
 
 ## <a name="viewing-sms-events"></a>SMS-gebeurtenissen weergeven
 
@@ -94,9 +94,9 @@ Bekijk de volledige lijst [door Azure Communication Services ondersteunde gebeur
 
 Nadat u een van de bovenstaande acties hebt voltooid, ziet u dat `SMS Received`- en `SMS Delivery Report Received`-gebeurtenissen naar uw eindpunt worden gestuurd. Deze gebeurtenissen worden weergegeven in het [Azure Event Grid Viewer-voorbeeld](https://docs.microsoft.com/samples/azure-samples/azure-event-grid-viewer/azure-event-grid-viewer/) dat we in het begin hebben ingesteld. U kunt op het oogpictogram naast de gebeurtenis klikken om de hele payload te bekijken. De gebeurtenis ziet er als volgt uit:
 
-:::image type="content" source="./media/handle-sms-events/sms-received.png" alt-text="Schermopname van het Event Grid Schema voor een ontvangen SMS-gebeurtenis.":::
+:::image type="content" source="./media/handle-sms-events/sms-received.png" alt-text="Schermopname met de selectie van het gebeurtenisabonnement binnen de gebeurtenispagina van een resource.":::
 
-:::image type="content" source="./media/handle-sms-events/SMS-Delivery-Report-Received.png" alt-text="Schermopname van het Event Grid Schema voor een gerapporteerde SMS-gebeurtenis.":::
+:::image type="content" source="./media/handle-sms-events/sms-delivery-report-received.png" alt-text="Schermopname met de selectie van het gebeurtenisabonnement binnen de gebeurtenispagina van een resource.":::
 
 Meer informatie over de [gebeurtenisschema's en andere gebeurtenisconcepten](../../concepts/event-handling.md)
 

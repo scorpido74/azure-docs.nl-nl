@@ -10,12 +10,12 @@ ms.date: 07/28/2020
 ms.topic: include
 ms.custom: include file
 ms.author: dademath
-ms.openlocfilehash: 7fc1225a37353e43f5fb17f3394df167fb795bf7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c044e9dc7b8ee622b157a93726e7700e62ba2dfa
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91303306"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779134"
 ---
 Ga aan de slag met Azure Communication Services door de clientbibliotheek voor C#-sms van Communications Services te gebruiken om sms-berichten te verzenden.
 
@@ -59,7 +59,7 @@ dotnet build
 Blijf in de toepassingsmap en installeer met de opdracht `dotnet add package` de Azure Communications Services sms-clientbibliotheek voor het .NET-pakket.
 
 ```console
-dotnet add package Azure.Communication.Sms --version 1.0.0-beta.1
+dotnet add package Azure.Communication.Sms --version 1.0.0-beta.2
 ```
 
 Voeg een `using`-instructie toe aan het begin van **Program.cs** om de naamruimte `Azure.Communication` op te nemen.
@@ -106,7 +106,7 @@ smsClient.Send(
 );
 ```
 
-U moet `<leased-phone-number>` vervangen door een telefoonnummer met sms-functionaliteit dat is gekoppeld aan uw Communication Services-resources en `<to-phone-number>` met het telefoonnummer waarnaar u een bericht wilt verzenden. Alle parameters voor telefoonnummers moeten voldoen aan de [E.164-standaard](../../../concepts/telephony-sms/plan-solution.md#optional-reading-international-public-telecommunication-numbering-plan-e164).
+U moet `<leased-phone-number>` vervangen door een telefoonnummer met sms-functionaliteit dat is gekoppeld aan uw Communication Services-resources en `<to-phone-number>` met het telefoonnummer waarnaar u een bericht wilt verzenden.
 
 De parameter `EnableDeliveryReport` is een optionele parameter die u kunt gebruiken voor het configureren van leveringsrapporten. Dit is handig voor scenario's waarin u gebeurtenissen wilt verzenden wanneer sms-berichten worden bezorgd. Raadpleeg de quickstart [Sms-gebeurtenissen verwerken](../handle-sms-events.md) voor het configureren van leveringsrapporten voor uw sms-berichten.
 

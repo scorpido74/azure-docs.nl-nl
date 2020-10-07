@@ -10,12 +10,12 @@ ms.date: 07/28/2020
 ms.topic: include
 ms.custom: include file
 ms.author: dademath
-ms.openlocfilehash: cdd4988f9a23904c0771852c4539aa9bce2ee683
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ad8266d936c272ee2f6bad254738622c3f81bf03
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90944839"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757124"
 ---
 Ga aan de slag met Azure Communication Services door de sms-clientbibliotheek in JavaScript van Communications Services te gebruiken om sms-berichten te verzenden.
 
@@ -97,16 +97,20 @@ const smsClient = new SmsClient(connectionString);
 Een sms-bericht verzenden door de `send`-methode aan te roepen. Voeg deze code toe aan het einde van **send-sms.js**:
 
 ```javascript
-await smsClient.send({
-  from: "<leased-phone-number>",
-  to: ["<to-phone-number>"],
-  message: "Hello World 👋🏻 via Sms"
-}, {
-  enableDeliveryReport: true //Optional parameter
-});
+async function main() {
+  await smsClient.send({
+    from: "<leased-phone-number>",
+    to: ["<to-phone-number>"],
+    message: "Hello World 👋🏻 via Sms"
+  }, {
+    enableDeliveryReport: true //Optional parameter
+  });
+}
+
+main();
 ```
 
-U moet `<leased-phone-number>` vervangen door een telefoonnummer met sms-functionaliteit dat is gekoppeld aan uw Communication Services-resources en `<to-phone-number>` met het telefoonnummer waarnaar u een bericht wilt verzenden. Alle parameters voor telefoonnummers moeten voldoen aan de [E.164-standaard](../../../concepts/telephony-sms/plan-solution.md#optional-reading-international-public-telecommunication-numbering-plan-e164).
+U moet `<leased-phone-number>` vervangen door een telefoonnummer met sms-functionaliteit dat is gekoppeld aan uw Communication Services-resources en `<to-phone-number>` met het telefoonnummer waarnaar u een bericht wilt verzenden.
 
 De parameter `enableDeliveryReport` is een optionele parameter die u kunt gebruiken voor het configureren van leveringsrapporten. Dit is handig voor scenario's waarin u gebeurtenissen wilt verzenden wanneer sms-berichten worden bezorgd. Raadpleeg de quickstart [Sms-gebeurtenissen verwerken](../handle-sms-events.md) voor het configureren van leveringsrapporten voor uw sms-berichten.
 

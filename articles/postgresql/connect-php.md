@@ -1,19 +1,19 @@
 ---
 title: 'Quickstart: Verbinding maken met PHP - Azure Database for PostgreSQL - één server'
 description: Deze quickstart bevat een voorbeeld van PHP-code die u kunt gebruiken om verbinding te maken en gegevens op te vragen uit Azure Database for PostgreSQL - één server.
-author: rachel-msft
-ms.author: raagyema
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.custom: mvc
 ms.devlang: php
 ms.topic: quickstart
 ms.date: 2/28/2018
-ms.openlocfilehash: 8443742fb883a63ec869157de7bf436d8f6f5ad6
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 45fa455d00a757e6df87d2a93982f33fe4e64bef
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90901889"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91710359"
 ---
 # <a name="quickstart-use-php-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Quickstart: PHP gebruiken om verbinding te maken en gegevens op te vragen in Azure Database for PostgreSQL - één server
 

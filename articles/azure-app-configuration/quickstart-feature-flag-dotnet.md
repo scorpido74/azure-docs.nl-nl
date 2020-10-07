@@ -15,12 +15,12 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 10/21/2019
 ms.author: lcozzens
-ms.openlocfilehash: 17817a5730678ae708c92c99093e7b859e05f8fe
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 145015b7645cf7923f15ecd7c0378ff6cb96dd7e
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983853"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767697"
 ---
 # <a name="quickstart-add-feature-flags-to-a-net-framework-app"></a>Quickstart: Functievlaggen toevoegen aan een .NET Framework-app
 
@@ -38,7 +38,7 @@ De .NET Feature Management-bibliotheken breiden het framework uit met ondersteun
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Selecteer **Functiebeheer** >  **+ Toevoegen** om een functievlag met de naam `Beta` toe te voegen.
+7. Selecteer **Functiebeheer** >  **+ Toevoegen** om een functievlag met de naam `Beta` toe te voegen.
 
     > [!div class="mx-imgBorder"]
     > ![Functievlag met de naam Beta inschakelen](media/add-beta-feature-flag.png)

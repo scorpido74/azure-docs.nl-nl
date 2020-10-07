@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.date: 09/28/2020
 ms.author: lcozzens
-ms.openlocfilehash: 83da47ce27d452fd77fab3905c9ce48944c42ffb
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: f133572b0c3163f5c5fe0a5c2e48ce5e6d53adcc
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91575058"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767745"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>Quickstart: Een .NET Core-app maken met App Configuration
 
@@ -28,7 +28,7 @@ In deze quickstart neemt u Azure App Configuration op in een .NET Core-console-a
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Selecteer **Configuratieverkenner** > **Maken** > **Sleutel-waarde** om de volgende sleutel-waardeparen toe te voegen:
+7. Selecteer **Configuratieverkenner** > **Maken** > **Sleutel-waarde** om de volgende sleutel-waardeparen toe te voegen:
 
     | Sleutel | Waarde |
     |---|---|
@@ -36,7 +36,7 @@ In deze quickstart neemt u Azure App Configuration op in een .NET Core-console-a
 
     Laat **Label** en **Inhoudstype** nog even leeg.
 
-7. Selecteer **Toepassen**.
+8. Selecteer **Toepassen**.
 
 ## <a name="create-a-net-core-console-app"></a>Een .NET Core-console-app maken
 

@@ -4,12 +4,12 @@ description: In dit artikel wordt een overzicht gegeven van de ondersteuning voo
 ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 6d478e264f38bb8a097c87e37479ca64b3d5e52d
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: a0cc54f6ada1a5900e817c8e22fc192cd73f6550
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91568366"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91653567"
 ---
 # <a name="azure-schema-registry-in-event-hubs-preview"></a>Azure Schema Registry in Event Hubs (preview)
 In veel scenario's voor het streamen van gebeurtenissen en voor het verzenden van berichten bevat de gebeurtenis of het bericht een nettolading d die gestructureerde gegevens bevat die worden geserialiseerd of gedeserialiseerd met behulp van een indeling die is gebaseerd op een schema, zoals Apache Avro. Zowel afzenders als ontvangers willen mogelijk de integriteit van de gegevens valideren met een schemadocument, zoals bij het JSON-schema. Voor indelingen die zijn gebaseerd op een schema is het een vereiste dat het schema voor de gebruiker van berichten beschikbaar wordt gemaakt zodat deze de gegevens kan deserialiseren. 
@@ -19,7 +19,6 @@ Het **Azure-schemaregister** is een functie van Event Hubs die een centrale opsl
 > [!NOTE]
 > - De **schemaregister**functie is momenteel beschikbaar in een **preview-versie** en wordt niet aanbevolen voor productieworkloads.
 > - De functie is alleen beschikbaar in de lagen **Standard** en **Dedicated**, maar niet in de laag **Basic**.
-> - Deze preview-versie is momenteel alleen beschikbaar in de regio **VS - west-centraal**. 
 
 Met serialisatieframeworks die zijn gebaseerd op een schema, zoals Apache AVRO, kan het externaliseren van serialisatiemetagegevens in gedeelde schema's ook helpen bij het aanzienlijk reduceren van de overhead per bericht van typegegevens en veldnamen die zijn opgenomen in elke gegevensset, zoals het geval is met indelingen met tags zoals JSON. Als u schema's opslaat naast de gebeurtenissen en in de infrastructuur voor gebeurtenissen, zorgt u ervoor dat de metagegevens die nodig zijn voor serialisatie/deserialisatie altijd binnen bereik zijn en de schema's niet verkeerd kunnen worden geplaatst. 
 

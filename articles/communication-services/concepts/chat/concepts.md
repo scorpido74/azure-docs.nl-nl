@@ -6,15 +6,15 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/10/2020
+ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 1dd3781b18f82a96f388b0e619ce62b45752a870
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f33d7efd1c136619767c3eadd93740442ae7239a
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91292469"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91762039"
 ---
 # <a name="chat-concepts"></a>Chatconcepten
 
@@ -128,7 +128,7 @@ U kunt [Azure Cognitive-API’s](https://docs.microsoft.com/azure/cognitive-serv
 
 Een manier om dit te doen, is door uw vertrouwde service te laten fungeren als een lid van een chatgesprek. Stel dat u vertalingen wilt inschakelen. Deze service is verantwoordelijk voor het luisteren naar de berichten die worden uitgewisseld door andere leden [1], het aanroepen van Cognitive-API's om de inhoud naar de gewenste taal te vertalen [2,3] en het verzenden van het vertaalde resultaat als bericht in het chatgesprek [4]. 
 
-Op deze manier bevat de berichtgeschiedenis zowel de oorspronkelijke als de vertaalde berichten. In de clienttoepassing kunt u logica toevoegen om het oorspronkelijke of vertaalde bericht weer te geven. Raadpleeg [deze quickstart](https://docs.microsoft.com/azure/cognitive-services/translator/quickstart-translate) om te begrijpen hoe Cognitive-API’s kunnen worden gebruikt om tekst te vertalen naar verschillende talen. 
+Op deze manier bevat de berichtgeschiedenis zowel de oorspronkelijke als de vertaalde berichten. In de clienttoepassing kunt u logica toevoegen om het oorspronkelijke of vertaalde bericht weer te geven. Raadpleeg [deze quickstart](https://docs.microsoft.com/azure/cognitive-services/translator/quickstart-translator) om te begrijpen hoe Cognitive-API’s kunnen worden gebruikt om tekst te vertalen naar verschillende talen. 
 
 :::image type="content" source="../media/chat/cognitive-services.png" alt-text="Diagram van de chatarchitectuur in Communication Services.":::
 

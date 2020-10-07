@@ -1,19 +1,19 @@
 ---
 title: 'Quickstart: Verbinding maken met Ruby - Azure Database for PostgreSQL - één server'
 description: Deze quickstart bevat een voorbeeld van Ruby-code die u kunt gebruiken om verbinding te maken en gegevens op te vragen uit Azure Database for PostgreSQL - één server.
-author: rachel-msft
-ms.author: raagyema
+author: mksuni
+ms.author: sumuth
 ms.service: postgresql
 ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: e33e80a7363ac27bd7e0983a1ff3b65ee85b86b2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4afe6f175095d146c7feed04d469d78203179e0f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90882390"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91707877"
 ---
 # <a name="quickstart-use-ruby-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Quickstart: Ruby gebruiken om verbinding te maken en gegevens op te vragen in Azure Database for PostgreSQL - één server
 

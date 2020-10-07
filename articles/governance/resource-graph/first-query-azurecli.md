@@ -4,12 +4,12 @@ description: In deze quickstart volgt u de stappen om de Resource Graph-extensie
 ms.date: 08/10/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7d55aaae30176b3f0246dd254496465fb89b0e99
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: 2abec0e4143dfa4a2d5b7146b9c09a2b33777a9e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050991"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91667891"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>Quickstart: Uw eerste Resource Graph-query uitvoeren met Azure CLI
 
@@ -25,7 +25,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 
 ## <a name="add-the-resource-graph-extension"></a>De Resource Graph-extensie toevoegen
 
-De extensie moet worden toegevoegd opdat Azure CLI query's kan uitvoeren voor Azure Resource Graph. Deze extensie werkt overal waar Azure CLI kan worden gebruikt, met inbegrip van [bash in Windows 10](/windows/wsl/install-win10), [Cloud Shell](https://shell.azure.com) (zowel zelfstandige als in de portal), de [Azure CLI Docker-installatiekopie](https://hub.docker.com/r/microsoft/azure-cli/), of lokaal geïnstalleerd.
+De extensie moet worden toegevoegd opdat Azure CLI query's kan uitvoeren voor Azure Resource Graph. Deze extensie werkt overal waar Azure CLI kan worden gebruikt, met inbegrip van [bash in Windows 10](/windows/wsl/install-win10), [Cloud Shell](https://shell.azure.com) (zowel zelfstandige als in de portal), de [Azure CLI Docker-installatiekopie](https://hub.docker.com/_/microsoft-azure-cli), of lokaal geïnstalleerd.
 
 1. Controleer of de meest recente versie van Azure CLI is geïnstalleerd (minimaal **2.0.76**). Als deze nog niet is geïnstalleerd, volgt u [deze instructies](/cli/azure/install-azure-cli-windows) op.
 

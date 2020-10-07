@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 04/18/2020
 ms.author: lcozzens
 ms.custom: devx-track-java
-ms.openlocfilehash: 337baae97d426fe05ac59290a882865038f60c02
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 220d446990a9c362c30b3352e247af2b76d3d128
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019739"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767677"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Quickstart: Functievlaggen toevoegen aan een Spring Boot-app
 
@@ -30,7 +30,7 @@ De Spring Boot-functiebeheerbibliotheken breiden het framework uit met uitgebrei
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Selecteer **Functiebeheer** >  **+ Toevoegen** om een functievlag met de naam `Beta` toe te voegen.
+7. Selecteer **Functiebeheer** >  **+ Toevoegen** om een functievlag met de naam `Beta` toe te voegen.
 
     > [!div class="mx-imgBorder"]
     > ![Functievlag met de naam Beta inschakelen](media/add-beta-feature-flag.png)

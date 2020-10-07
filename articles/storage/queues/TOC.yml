@@ -98,24 +98,20 @@
       href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Controleren en problemen oplossen
       items:
-        - name: Zelfstudie voor problemen oplossen
-          href: ../common/storage-e2e-troubleshooting.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-        - name: 'Controleren, problemen vaststellen en problemen oplossen'
-          href: ../common/storage-monitoring-diagnosing-troubleshooting.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-        - name: Bewaken in Azure Portal
-          href: ../common/storage-monitor-storage-account.md??toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-        - name: Metrische gegevens en logboekregistratie
+        - name: Queue Storage bewaken
+          href: monitor-queue-storage.md
+        - name: Transitie van klassieke metrische gegevens
+          href: ../common/storage-metrics-migration.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+        - name: Bewaking (klassiek)
           items:
-            - name: Metrische gegevens in Azure Monitor
-              href: ../common/storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-            - name: Migreren naar nieuwe metrische gegevens
-              href: ../common/storage-metrics-migration.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-            - name: Opslaganalyse
+            - name: Storage Analytics
               href: ../common/storage-analytics.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-            - name: Metrische gegevens voor opslaganalyse (klassiek)
+            - name: Metrische gegevens
               href: ../common/storage-analytics-metrics.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-            - name: Logboeken voor opslaganalyse
+            - name: Logboeken
               href: ../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+            - name: 'Controleren, problemen vaststellen en problemen oplossen'
+              href: ../common/storage-monitoring-diagnosing-troubleshooting.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
 - name: Procedures
   items:
     - name: Opslagaccounts maken en beheren
@@ -137,7 +133,7 @@
                   href: authorize-active-directory-powershell.md
                 - name: Azure CLI
                   href: ../common/authorize-data-operations-cli.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-            - name: Toegangsrechten beheren met RBAC
+            - name: Toegangsrechten beheren met Azure RBAC
               items:
                 - name: Portal
                   href: ../common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
@@ -237,6 +233,10 @@
           href: storage-powershell-how-to-use-queues.md
         - name: 'PowerShell voor Chinese, Duitse en overheids-clouds'
           href: ../common/storage-powershell-independent-clouds.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+        - name: Bewaking (klassiek)
+          items:
+            - name: Bewaking in de Azure-portal (klassiek)
+              href: ../common/storage-monitor-storage-account.md??toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Problemen oplossen
       items:
         - name: Latentieproblemen
@@ -245,6 +245,8 @@
   items:
     - name: Azure Queue Storage-verwijzing
       href: ../queues/reference.md
+    - name: Referentie voor Azure Queue Storage bewaken
+      href: monitor-queue-storage-reference.md
     - name: Resource Manager-sjabloon
       displayName: ARM
       href: /azure/templates/microsoft.storage/allversions
