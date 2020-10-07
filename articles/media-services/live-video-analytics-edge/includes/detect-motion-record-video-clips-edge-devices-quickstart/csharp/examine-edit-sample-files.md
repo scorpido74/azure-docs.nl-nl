@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: bc24d6670cbf0c2ac72c9a1d100467b8724779b3
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88682146"
 ---
 Als een van de vereisten voor deze quickstart hebt u de voorbeeldcode naar een map gedownload. Volg deze stappen om de voorbeeldcode te bekijken e te bewerken.

@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
 ms.openlocfilehash: ab861b3ed265da9060e2367bdfdeeeee7047c584
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88815858"
 ---
 # <a name="use-the-azure-portal-to-restrict-importexport-access-for-managed-disks-with-private-links"></a>Azure Portal gebruiken om de toegang voor importeren/exporteren voor beheerde schijven te beperken met Private Link
@@ -52,7 +52,7 @@ U moet het virtuele netwerk van de VM noteren waaraan uw schijven zijn gekoppeld
 
 Wanneer uw resource is gemaakt, gaat u hier rechtstreeks naartoe.
 
-:::image type="content" source="media/disks-enable-private-links-for-import-export-portal/screenshot-resource-button.png" alt-text="Schermopname van de knop Ga naar resource in de portal":::
+:::image type="content" source="media/disks-enable-private-links-for-import-export-portal/screenshot-resource-button.png" alt-text="Schermopname van de blade voor het maken van de schijftoegang. Vul de gewenste naam in, selecteer een regio, selecteer een resourcegroep en ga door":::
 
 ## <a name="create-a-private-endpoint"></a>Een privé-eindpunt maken
 
@@ -61,13 +61,13 @@ Nu u een resource hebt om toegang te krijgen tot de schijf, kunt u deze gebruike
 1. Selecteer **verbindingen met een privé-eindpunt** vanuit uw resource voor schijftoegang.
 1. Selecteer **+ Privé-eindpunt**.
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-main-private-blade.png" alt-text="Schermopname van de blade overzicht voor uw resource voor schijftoegang. Privé-eindpuntverbindingen zijn gemarkeerd.":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-main-private-blade.png" alt-text="Schermopname van de blade voor het maken van de schijftoegang. Vul de gewenste naam in, selecteer een regio, selecteer een resourcegroep en ga door":::
 
 1. Een resourcegroep selecteren
 1. Vul de naam in en selecteer de regio waarin uw resource voor schijftoegang is gemaakt.
 1. Selecteer **Volgende: Resource >**
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-first-blade.png" alt-text="Schermopname van de werkstroom voor het maken van een privé-eindpunt, de eerste blade. Als u de juiste regio niet selecteert, kunt u later problemen ondervinden in.":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-first-blade.png" alt-text="Schermopname van de blade voor het maken van de schijftoegang. Vul de gewenste naam in, selecteer een regio, selecteer een resourcegroep en ga door":::
 
 1. Schakel op de blade **Resource** **Verbinding maken met een Azure-resource in mijn directory** in.
 1. Voor **Resourcetype** selecteert u **Microsoft.Compute/diskAccesses**
@@ -75,7 +75,7 @@ Nu u een resource hebt om toegang te krijgen tot de schijf, kunt u deze gebruike
 1. Behoud de **Doel-subresource** als **schijven**
 1. Selecteer **Volgende : Configuratie >** .
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-second-blade.png" alt-text="Schermopname van de werkstroom voor het maken van een privé-eindpunt, de tweede blade. Met alle gemarkeerde waarden (resourcetype, resource, subresource van doel)":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-second-blade.png" alt-text="Schermopname van de blade voor het maken van de schijftoegang. Vul de gewenste naam in, selecteer een regio, selecteer een resourcegroep en ga door":::
 
 1. Selecteer het virtuele netwerk waartoe u de schijfexport wilt beperken. Andere virtuele netwerken kunnen uw schijf niet exporteren.
 
@@ -85,7 +85,7 @@ Nu u een resource hebt om toegang te krijgen tot de schijf, kunt u deze gebruike
 1. Selecteer het gewenste subnet
 1. Selecteer **Controleren + maken**.
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-third-blade.png" alt-text="Schermopname van de werkstroom voor het maken van een privé-eindpunt, de derde blade. Virtueel netwerk en subnet benadrukt.":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-third-blade.png" alt-text="Schermopname van de blade voor het maken van de schijftoegang. Vul de gewenste naam in, selecteer een regio, selecteer een resourcegroep en ga door":::
 
 ## <a name="enable-private-endpoint-on-your-disk"></a>Privé-eindpunt op de schijf inschakelen
 
@@ -94,7 +94,7 @@ Nu u een resource hebt om toegang te krijgen tot de schijf, kunt u deze gebruike
 1. Selecteer **Privé-eindpunt (via schijftoegang)** en selecteer de schijftoegang die u eerder hebt gemaakt.
 1. Selecteer **Opslaan**.
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-managed-disk-networking-blade.png" alt-text="Schermopname van de blade netwerken van beheerde schijf. De selectie van het privé-eindpunt en de geselecteerde schijftoegang markeren. Als u dit opslaat, configureert u de schijf voor deze toegang.":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-managed-disk-networking-blade.png" alt-text="Schermopname van de blade voor het maken van de schijftoegang. Vul de gewenste naam in, selecteer een regio, selecteer een resourcegroep en ga door":::
 
 U hebt nu de configuratie van persoonlijke koppelingen voltooid die u kunt gebruiken bij het importeren/exporteren van uw beheerde schijf.
 

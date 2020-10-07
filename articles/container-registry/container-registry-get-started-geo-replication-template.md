@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.author: danlep
 ms.date: 05/26/2020
 ms.openlocfilehash: 2cfce37ff63a8321f40843ced2a7b786bcfc013e
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88649598"
 ---
 # <a name="quickstart-create-a-geo-replicated-container-registry-by-using-an-arm-template"></a>Quickstart: Meer informatie over het maken van een geo-gerepliceerd Azure Container Registry met behulp van een ARM-sjabloon
@@ -62,7 +62,7 @@ Meer voorbeelden van Azure Container Registry-exemplaren vindt u in de [galerie 
 
  3. Als u akkoord gaat met de voorwaarden, selecteert u **Kopen**. Nadat het register is gemaakt, krijgt u een melding:
 
-     :::image type="content" source="media/container-registry-get-started-geo-replication-template/deployment-notification.png" alt-text="Melding in de portal":::
+     :::image type="content" source="media/container-registry-get-started-geo-replication-template/deployment-notification.png" alt-text="Sjablooneigenschappen":::
 
  Voor het implementeren van de sjabloon wordt de Azure-portal gebruikt. Naast de Azure-portal kunt u de Azure PowerShell, Azure CLI en REST API gebruiken. Zie [Sjablonen implementeren](../azure-resource-manager/templates/deploy-cli.md) voor meer informatie over andere implementatiemethoden.
 
@@ -74,11 +74,11 @@ Gebruik de Azure-portal of een hulpprogramma zoals de Azure CLI om de eigenschap
 
 1. Op de pagina **Overzicht** noteert u de **aanmeldingsserver** van het register. Gebruik deze URI wanneer u Docker gebruikt om installatiekopieën te taggen en te pushen naar het register. Zie [Uw eerste installatiekopie pushen met de Docker-CLI](container-registry-get-started-docker-cli.md) voor meer informatie.
 
-    :::image type="content" source="media/container-registry-get-started-geo-replication-template/registry-overview.png" alt-text="Overzicht van register":::
+    :::image type="content" source="media/container-registry-get-started-geo-replication-template/registry-overview.png" alt-text="Sjablooneigenschappen":::
 
 1. Controleer op de pagina **Replicaties** de locaties van de startreplica en de replica die u via de sjabloon hebt toegevoegd. Voeg desgewenst meer replica's toe op deze pagina.
 
-    :::image type="content" source="media/container-registry-get-started-geo-replication-template/registry-replications.png" alt-text="Registerreplicaties":::
+    :::image type="content" source="media/container-registry-get-started-geo-replication-template/registry-replications.png" alt-text="Sjablooneigenschappen":::
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

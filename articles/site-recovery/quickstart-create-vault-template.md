@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 04/29/2020
 ms.openlocfilehash: 62bfe71c397367282c696eecdf55ab9c900c69a1
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88684113"
 ---
 # <a name="quickstart-create-a-recovery-services-vault-using-an-arm-template"></a>Quickstart: Een Recovery Services-kluis maken met behulp van een ARM-sjabloon
@@ -63,7 +63,7 @@ Als u de sjabloon wilt implementeren, zijn de **Abonnement**, **Resourcegroep** 
 
 1. Als u de implementatie van de kluis wilt starten, selecteert u de knop **Kopen**. Na een geslaagde implementatie wordt er een melding weergegeven.
 
-   :::image type="content" source="media/quickstart-create-vault-template/deployment-success.png" alt-text="De kluisimplementatie is voltooid.":::
+   :::image type="content" source="media/quickstart-create-vault-template/deployment-success.png" alt-text="Sjabloon voor het maken van een Recovery Services-kluis.":::
 
 ## <a name="validate-the-deployment"></a>De implementatie valideren
 

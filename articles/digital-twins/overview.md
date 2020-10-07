@@ -8,10 +8,10 @@ ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
 ms.openlocfilehash: ea08843dc73ed7603181eee1cf36495fda82b8d4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89003844"
 ---
 # <a name="what-is-azure-digital-twins"></a>Wat is Azure Digital Twins?
@@ -88,7 +88,7 @@ Een volledige oplossing met Azure Digital Twins kan de volgende onderdelen bevat
 
 In de volgende grafiek ziet u waar Azure Digital Twins zich bevindt in de context van een grotere Azure IoT-oplossing.
 
-:::image type="content" source="media/overview/solution-context.png" alt-text="Diagram met de invoerbronnen, uitvoerservices en communicatie in twee richtingen met zowel client-apps als externe rekenresources." border="false" lightbox="media/overview/solution-context.png":::
+:::image type="content" source="media/overview/solution-context.png" alt-text="Schermopname van de voorbeeldtoepassing Azure Digital Twins-verkenner, waarop een grafiek van knooppunten die voor digital twins staan wordt weergegeven" border="false" lightbox="media/overview/solution-context.png":::
 
 ## <a name="service-limits-in-public-preview"></a>Servicebeperkingen van de openbare preview
 
