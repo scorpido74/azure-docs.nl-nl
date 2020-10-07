@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurecli
 ms.date: 04/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: f6a3a16fe7fd6b0036b36520262e85a9066a4e63
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: af5efd7c9b3c486e608c39c230700b52dd17a260
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497851"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371623"
 ---
 # <a name="quickstart-create-and-publish-a-managed-application-definition"></a>Quickstart: De definitie van een beheerde toepassing maken en publiceren
 
@@ -215,7 +215,7 @@ groupid=$(az ad group show --group mygroup --query objectId --output tsv)
 
 ### <a name="get-the-role-definition-id"></a>De roldefinitie-id opvragen
 
-Vervolgens hebt u de roldefinitie-id nodig van de ingebouwde RBAC-rol waarmee u toegang wilt verlenen aan de gebruiker, gebruikersgroep of toepassing. Meestal gebruikt u de rol van eigenaar, inzender of lezer. In de volgende opdracht ziet u hoe u de roldefinitie-id ophaalt voor de rol van eigenaar:
+Vervolgens hebt u de roldefinitie-id nodig van de ingebouwde Azure-rol waarmee u toegang wilt verlenen aan de gebruiker, gebruikersgroep of toepassing. Meestal gebruikt u de rol van eigenaar, inzender of lezer. In de volgende opdracht ziet u hoe u de roldefinitie-id ophaalt voor de rol van eigenaar:
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -401,7 +401,7 @@ U kunt controleren dat de definitiebestanden van de toepassing zijn opgeslagen i
 
 ## <a name="make-sure-users-can-see-your-definition"></a>Ervoor zorgen dat gebruikers de definitie kunnen zien
 
-U hebt toegang tot de definitie van de beheerde toepassing, maar u wilt controleren of andere gebruikers in uw organisatie hiertoe toegang hebben. Verleen hun minimaal de rol van Lezer voor de definitie. Mogelijk hebben ze dit toegangsniveau overgenomen van het abonnement of de resourcegroep. Als u wilt controleren wie toegang heeft tot de definitie en gebruikers of groepen wilt toevoegen, raadpleegt u [Op rollen gebaseerd toegangsbeheer gebruiken om de toegang tot de resources van uw Azure-abonnement te beheren](../../role-based-access-control/role-assignments-portal.md).
+U hebt toegang tot de definitie van de beheerde toepassing, maar u wilt controleren of andere gebruikers in uw organisatie hiertoe toegang hebben. Verleen hun minimaal de rol van Lezer voor de definitie. Mogelijk hebben ze dit toegangsniveau overgenomen van het abonnement of de resourcegroep. Zie [Azure-roltoewijzingen toevoegen of verwijderen met behulp van het Azure-portaal](../../role-based-access-control/role-assignments-portal.md) om te controleren wie toegang heeft tot het definiëren en toevoegen van gebruikers of groepen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

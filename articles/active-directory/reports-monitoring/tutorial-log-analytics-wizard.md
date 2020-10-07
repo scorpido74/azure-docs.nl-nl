@@ -11,12 +11,12 @@ author: MarkusVi
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93caf52d8b4a11f9843ad5f18ebf968d1d0730cd
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 643010ef1f6e941a57673a711e1871aafd1e341d
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89226204"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91361905"
 ---
 # <a name="tutorial-configure-the-log-analytics-wizard"></a>Zelfstudie: De wizard Log Analytics configureren
 
@@ -72,7 +72,7 @@ Het configureren van een Log Analytics-werkruimte bestaat uit twee hoofdstappen:
 
 3. Klik op de pagina van Log Analytics-werkruimten op **Toevoegen**.
 
-    ![Toevoegen](./media/tutorial-log-analytics-wizard/add.png)
+    ![Schermafbeelding met de knop Toevoegen op de pagina met logboekanalyses.](./media/tutorial-log-analytics-wizard/add.png)
 
 4.  Voer op de pagina **Log Analytics-werkruimte maken** de volgende stappen uit:
 
@@ -305,7 +305,7 @@ In deze procedure wordt uitgelegd hoe u een nieuwe werkmap maakt met de quicksta
 
 3. Klik in de sectie **Bewaking** op **Werkmappen**.
 
-    ![Werkmappen](./media/tutorial-log-analytics-wizard/workbooks.png)
+    ![Schermafbeelding met Bewaking in het Azure-portaalmenu waarop Werkmappen geselecteerd is.](./media/tutorial-log-analytics-wizard/workbooks.png)
 
 4. Klik in de sectie **Quickstart** op **Leeg**.
 
@@ -357,7 +357,7 @@ In deze procedure wordt uitgelegd hoe u een query kunt toevoegen aan een bestaan
 
 3. Klik in de sectie **Bewaking** op **Werkmappen**.
 
-    ![Werkmappen](./media/tutorial-log-analytics-wizard/workbooks.png)
+    ![Schermafbeelding met Bewaking in het menu waarop Werkmappen geselecteerd is.](./media/tutorial-log-analytics-wizard/workbooks.png)
 
 4. Klik in de sectie **voorwaardelijke toegang** op **Voorwaardelijke toegang in Insights en Reporting**.
 

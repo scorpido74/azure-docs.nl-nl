@@ -1,6 +1,6 @@
 ---
 title: 'Azure CLI: Een beheerd exemplaar aan failover-groep toevoegen'
-description: Voorbeeldscript van Azure CLI om een Azure SQL Managed Instance te maken, deze toe te voegen aan een failover-groep en failover te testen.
+description: Leer twee beheerd exemplaren maken, ze toevoegen aan een failovergroep en vervolgens de failover testen.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: b29fcd33c8181ba61f57d7105d08e7e4956d80bc
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: afefc556bcac096d67051f3014c31e449dbbca32
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497253"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323563"
 ---
 # <a name="use-cli-to-create-an-azure-sql-managed-instance-to-a-failover-group"></a>CLI gebruiken om een Azure SQL Managed Instance te maken in een failover-groep
 

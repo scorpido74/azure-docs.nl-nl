@@ -7,14 +7,14 @@ ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
 ms.localizationpriority: high
-ms.date: 09/04/2019
+ms.date: 09/17/2019
 ms.author: alkohli
-ms.openlocfilehash: 3f89d713003f1f4265a7ab7c467454af750fab48
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: abe09cf10e241ec95ceed767e7038cde07667fc9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84707800"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322730"
 ---
 ::: zone target="docs"
 
@@ -68,7 +68,12 @@ Controleer of uw gegevens zich in de opslagaccount(s) bevinden voordat u deze ui
 
       ![Resourcegroep voor beheerde schijven](media/data-box-disk-deploy-picked-up/resource-group-attached-managed-disk.png)
 
-  - Als u een VHDX of een dynamische/differentiërende VHD hebt gekopieerd, wordt de VHDX/VHD als een blok-blob naar het faseringsopslagaccount geüpload. Ga naar uw **Faseringsopslagaccount > Blobs** en selecteer de juiste container: StandardSSD, StandardHDD of PremiumSSD. De VHDX's/VHD's moeten als blok-blobs in uw faseringsopslagaccount worden weergegeven.
+    > [!NOTE]
+    > Als een pagina-blob niet naar een beheerde schijf is geconverteerd tijdens het kopiëren van gegevens, blijft deze in het opslagaccount en worden er kosten in rekening gebracht voor opslag.
+
+  -  Als u een VHDX of een dynamische/differentiërende VHD hebt gekopieerd, wordt de VHDX/VHD als een blok-blob naar het faseringsopslagaccount geüpload. Ga naar uw **Faseringsopslagaccount > Blobs** en selecteer de juiste container: StandardSSD, StandardHDD of PremiumSSD. De VHDX's/VHD's moeten als blok-blobs in uw faseringsopslagaccount worden weergegeven.
+  
+
   
 ::: zone-end
 

@@ -4,18 +4,24 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/11/2020
 ms.author: trbye
-ms.openlocfilehash: 13ab7fc5b4461559fc54b5643d22ca309c752a37
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 92fb6bb470c6ab9c1a8f1f0542c26a8fef07e6b3
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89564970"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377344"
 ---
+Een van de belangrijkste functies van de Speech-service is de mogelijkheid om menselijke spraak te herkennen en te transcriberen (ook wel spraak-naar-tekst genoemd). In deze quickstart leert u meer over het gebruik van de Speech-SDK in uw apps en producten om spraak-naar-tekst-conversie van hoge kwaliteit uit te voeren.
+
+## <a name="skip-to-samples-on-github"></a>Naar voorbeelden op GitHub
+
+Raadpleeg de [Python-quickstartvoorbeelden](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/python) op GitHub als u direct naar voorbeeldcode wilt gaan.
+
 ## <a name="prerequisites"></a>Vereisten
 
 In dit artikel wordt ervan uitgegaan dat:
 
-* U een Azure-account en een abonnement op de Speech-service hebt. Als u geen account en abonnement hebt, [kunt u de Speech-service gratis uitproberen](../../../get-started.md).
+* U een Azure-account en een abonnement op de Speech-service hebt. Als u geen account en abonnement hebt, [kunt u de Speech-service gratis uitproberen](../../../overview.md#try-the-speech-service-for-free).
 
 ## <a name="install-and-import-the-speech-sdk"></a>De Speech-SDK installeren en importeren
 

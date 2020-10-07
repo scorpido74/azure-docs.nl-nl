@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
-ms.openlocfilehash: 0818ab782710e6a102d2034790ff8d997cd54f8e
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 2946590cbb4c5e8f495a1f6ee4aac65929cd4d0e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808436"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91305727"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-azure-ad-tenant"></a>Quickstart: Een toepassing toevoegen aan uw Azure Active Directory-tenant (Azure AD)
 
@@ -47,13 +47,24 @@ Om een toepassing toevoegen aan uw Azure Active Directory-tenant:
 3. Selecteer in het deelvenster **Ondernemingstoepassingen** de optie **Nieuwe toepassing**. 
     ![Selecteer Nieuwe toepassing om een galerietoepassing toe te voegen aan uw tenant](media/add-application-portal/new-application.png)
 4. Schakel over naar de nieuwe preview-ervaring voor de galerie: Selecteer in de banner bovenaan de **pagina Een toepassing toevoegen** de koppeling **Klik hier om de nieuwe en verbeterde app-galerie te proberen**.
-5. Het deelvenster **Bladeren door de Azure AD-galerie (preview)** wordt geopend met tegels voor cloudplatformen, on-premises toepassingen en uitgelichte toepassingen. Toepassingen in de sectie **Aanbevolen toepassingen** hebben pictogrammen die aangeven of federatieve eenmalige aanmelding (SSO) en inrichting worden ondersteund.
+5. Het deelvenster **Bladeren door de Azure AD-galerie (preview)** wordt geopend met tegels voor cloudplatformen, on-premises toepassingen en uitgelichte toepassingen. Toepassingen in de sectie **Aanbevolen toepassingen** hebben pictogrammen die aangeven of federatieve eenmalige aanmelding (SSO) en inrichting worden ondersteund. 
     ![Een app zoeken op naam of categorie](media/add-application-portal/browse-gallery.png)
-6. U kunt door de galerie bladeren naar de toepassing die u wilt toevoegen, of de toepassing zoeken door de naam ervan in het zoekvak in te voeren. Selecteer vervolgens de toepassing in de resultaten. U kunt in het formulier de naam van de toepassing bewerken zodat deze overeenkomt met de behoeften in uw organisatie. In dit voorbeeld hebben we GitHub geselecteerd en de naam gewijzigd in **GitHub-test**.
-    ![Geeft weer hoe u een toepassing kunt toevoegen vanuit de galerie](media/add-application-portal/create-application.png)
-    >[!TIP]
-    >Als de toepassing die u zoekt niet in de galerie staat, klikt u op de koppeling **Uw eigen toepassing maken**. Kies vervolgens onder **Wat wilt u met uw toepassing doen?** op **Een toepassing integreren die niet aanwezig is in de galerie**. Microsoft heeft al met veel ontwikkelaars van toepassingen samengewerkt om ze voor te configureren voor Azure AD. Dit zijn de apps die in de galerie worden weergegeven. Maar als de app die u wilt toevoegen niet wordt weergegeven, dan kunt u een nieuwe, algemene app maken en deze vervolgens zelf configureren of de richtlijnen van de ontwikkelaar volgen om dat te doen.
-7. Selecteer **Maken**. Er wordt nu een pagina Aan de slag weergegeven met de opties voor het configureren van de toepassing voor uw organisatie.
+6. U kunt door de galerie bladeren naar de toepassing die u wilt toevoegen, of de toepassing zoeken door de naam ervan in het zoekvak in te voeren. Selecteer vervolgens de toepassing in de resultaten. 
+7. De volgende stap is afhankelijk van de manier waarop de ontwikkelaar van de toepassing eenmalige aanmelding (SSO) heeft geïmplementeerd. Eenmalige aanmelding kan op vier manieren door app-ontwikkelaars worden geïmplementeerd. De vier manieren zijn SAML, OpenID Connect, Password en Linked. Wanneer u een app toevoegt, kunt u ervoor kiezen om alleen apps te filteren en weer te geven die gebruikmaken van een bepaalde SSO-implementatie, zoals te zien op de schermopname. Een populaire standaard voor het implementeren van SSO heet bijvoorbeeld Security Assertion Markup Language (SAML). Een andere standaard die populair is, heet OpenID Connect (OIDC). De manier waarop u SSO met deze standaarden configureert, is afhankelijk van het type SSO dat wordt geïmplementeerd door de app die u toevoegt.
+
+    :::image type="content" source="media/add-application-portal/sso-types.png" alt-text="Schermafbeelding met de selector voor SSO-types." lightbox="media/add-application-portal/sso-types.png":::
+
+    - Als de ontwikkelaar van de app de **OIDC-norm** voor SSO heeft gebruikt, selecteert u **Registreren**. Er wordt een installatiepagina weer gegeven. Ga vervolgens naar de snelstartgids voor het instellen van eenmalige aanmelding volgens OIDC.
+    :::image type="content" source="media/add-application-portal/sign-up-oidc-sso.png" alt-text="Schermafbeelding met de selector voor SSO-types.":::
+
+    - Als de ontwikkelaar van de app de **SAML-norm** voor SSO heeft gebruikt, selecteert u **Aanmaken**. Er wordt nu een pagina Aan de slag weergegeven met de opties voor het configureren van de toepassing voor uw organisatie. U kunt in het formulier de naam van de toepassing bewerken zodat deze overeenkomt met de behoeften in uw organisatie. Ga vervolgens naar de snelstartgids voor het instellen van eenmalige aanmelding volgens SAML.
+    :::image type="content" source="media/add-application-portal/create-application.png" alt-text="Schermafbeelding met de selector voor SSO-types.":::
+
+
+> [!IMPORTANT]
+> Er zijn enkele belangrijke verschillen tussen op SAML en op OIDC gebaseerde SSO-implementaties. Met op SAML gebaseerde apps kunt u meerdere exemplaren van dezelfde app toevoegen. Bijvoorbeeld: GitHub1, GitHub2, enzovoort. Voor op OIDC gebaseerde apps kunt u slechts één exemplaar van een app toevoegen. Als u al een OIDC-app hebt toegevoegd en probeert dezelfde app opnieuw toe te voegen en twee keer toestemming te geven, wordt deze niet opnieuw toegevoegd aan de tenant.
+
+Als de toepassing die u zoekt niet in de galerie staat, selecteert u de koppeling **Uw eigen toepassing maken**. Kies vervolgens onder **Wat wilt u met uw toepassing doen?** op **Een toepassing integreren die niet aanwezig is in de galerie**. Microsoft heeft al met veel ontwikkelaars van toepassingen samengewerkt om ze voor te configureren voor Azure AD. De vooraf geconfigureerde apps worden weergegeven in de galerie. Maar als de app die u wilt toevoegen niet wordt weergegeven, dan kunt u een nieuwe, algemene app maken en deze vervolgens zelf configureren of de richtlijnen van de ontwikkelaar volgen om dat te doen.
 
 U hebt een toepassing toegevoegd. In de volgende quickstart ziet u hoe u het logo kunt wijzigen en andere eigenschappen van de toepassing kunt bewerken.
 

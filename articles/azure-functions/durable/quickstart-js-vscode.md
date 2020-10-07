@@ -1,17 +1,17 @@
 ---
 title: Uw eerste duurzame functie in Azure maken met behulp van JavaScript
-description: Maak en publiceer een duurzame Azure-functie met behulp van Visual Studio Code.
+description: Maak en publiceer een duurzame Azure-functie in JavaScript met behulp van Visual Studio Code.
 author: anthonychu
 ms.topic: quickstart
 ms.date: 05/07/2020
 ms.reviewer: azfuncdf, antchu
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 7614cec43fd9b2f294a04ed266cb0614f6cde872
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-js
+ms.openlocfilehash: f8ffa90ba0f1ac32d4691165fabf3d8eb9fb7605
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291839"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335446"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>Uw eerste duurzame functie maken in JavaScript
 

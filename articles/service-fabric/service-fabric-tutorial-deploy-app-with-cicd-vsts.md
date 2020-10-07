@@ -4,12 +4,12 @@ description: In deze zelfstudie leert u hoe u een continue integratie en impleme
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 302ad1dcfaa93564d70fab739726787ef09c79df
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: a26cfaca466e01b154c65b27895f3004f6320e5d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563927"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326334"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>Zelfstudie: Een toepassing met CI/CD implementeren in een Service Fabric-cluster
 
@@ -65,11 +65,11 @@ Maak een nieuwe Git-opslagplaats voor uw project door op de statusbalk in de lin
 
 Ga naar de **Push**-weergave in **Team Explorer** en selecteer onder **Push to Azure DevOps** de knop **Publish Git Repo**.
 
-![Git-opslagplaats pushen][push-git-repo]
+![Schermafbeelding van het venster Team Explorer -synchronisatie in Visual Studio. De knop Publiceren naar Git-opslagplaats wordt gemarkeerd onder pushen naar Azure DevOps.][push-git-repo]
 
 Controleer uw e-mail en selecteer uw account in de vervolgkeuzelijst **Azure DevOps Domain**. Voer de naam van de opslagplaats in en selecteer **Publish repository**.
 
-![Git-opslagplaats pushen][publish-code]
+![Schermafbeelding van de instellingen voor Pushen naar Azure DevOps waarop de knoppen E-mail, Account, Opslagplaats en Opslagplaats publiceren gemarkeerd zijn.][publish-code]
 
 Als u de opslagplaats pusht, wordt er een nieuw project voor uw account gemaakt met dezelfde naam als de lokale opslagplaats. Als u de opslagplaats in een bestaand project wilt maken, klikt u naast de naam van de **opslagplaats** op **Advanced** en selecteert u een project. U kunt uw code op het web weergeven door **See it on the web** te selecteren.
 
@@ -155,7 +155,7 @@ Als u de voortgang van de build wilt controleren, schakelt u over naar het tabbl
 
 Controleer of de implementatie is gelukt en de toepassing in het cluster wordt uitgevoerd.  Open een webbrowser en ga naar `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/`.  Noteer de versie van de toepassing (in dit voorbeeld 1.0.0.20170815.3).
 
-![Service Fabric Explorer][sfx1]
+![Schermafbeelding van de Stem-app in Service Fabric Explorer in een browservenster. De App-versie "1.0.0.20170815.3" is gemarkeerd.][sfx1]
 
 ## <a name="update-the-application"></a>De toepassing bijwerken
 
@@ -163,11 +163,11 @@ Breng in de toepassing wijzigingen aan de code aan.  Sla de wijzigingen op en vo
 
 Zodra de upgrade van de toepassing wordt uitgevoerd, kunt u de voortgang ervan volgen in Service Fabric Explorer:
 
-![Service Fabric Explorer][sfx2]
+![Schermafbeelding van de Stem-app in Service Fabric Explorer. Het statusbericht "Upgraden" en een bericht "Upgrade wordt uitgevoerd" zijn gemarkeerd.][sfx2]
 
 Het kan enkele minuten duren voordat de toepassing is bijgewerkt. Als het bijwerken is voltooid, wordt de volgende versie door de toepassing uitgevoerd.  In dit voorbeeld 1.0.0.20170815.4.
 
-![Service Fabric Explorer][sfx3]
+![Schermafbeelding van de Stem-app in Service Fabric Explorer in een browservenster. De bijgewerkte app-versie "1.0.0.20170815.4" is gemarkeerd.][sfx3]
 
 ## <a name="next-steps"></a>Volgende stappen
 

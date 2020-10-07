@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: 5024b1091e84c0d1583ce3e455f29e0d9b9c2fc4
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 414271c269e72b942195d541a6192911e1ea0217
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543262"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91566445"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template"></a>Zelfstudie: Uw eerste Azure-data factory maken met behulp van een Azure Resource Manager-sjabloon
 > [!div class="op_single_selector"]
@@ -343,7 +343,7 @@ Maak een JSON-bestand met de naam **ADFTutorialARM-Parameters.json** dat paramet
    ![Diagramweergave](./media/data-factory-build-your-first-pipeline-using-arm/DiagramView.png) 
 5. Dubbelklik in de diagramweergave op de gegevensset **AzureBlobOutput**. U ziet het segment dat momenteel wordt verwerkt.
    
-    ![Gegevensset](./media/data-factory-build-your-first-pipeline-using-arm/AzureBlobOutput.png)
+    ![Schermafbeelding van de AzureBlobOutput-gegevensset.](./media/data-factory-build-your-first-pipeline-using-arm/AzureBlobOutput.png)
 6. Als het verwerken is voltooid, ziet u dat het segment de status **Gereed** heeft. Het maken van een on-demand HDInsight-cluster duurt normaal gesproken enige tijd (ongeveer 20 minuten). Daarom kunt u ervan uitgaan dat het **ongeveer 30 minuten** duurt voordat het segment in de pijplijn is verwerkt.
    
     ![Gegevensset](./media/data-factory-build-your-first-pipeline-using-arm/SliceReady.png)    

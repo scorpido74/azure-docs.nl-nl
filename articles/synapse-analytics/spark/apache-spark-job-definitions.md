@@ -8,12 +8,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 04/15/2020
-ms.openlocfilehash: 787e9efa8ef11a83b63719cad51f9b26e055620d
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 143713649afd7f9e42f517713b6b2365ee1605a3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90562072"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260271"
 ---
 # <a name="tutorial-create-apache-spark-job-definition-in-synapse-studio"></a>Zelfstudie: Apache Spark-taakdefinitie maken in Synapse Studio
 
@@ -47,11 +47,11 @@ In deze sectie maakt u een Apache Spark-taakdefinitie voor PySpark (Python).
 
      ![voorbeeldbestanden](./media/apache-spark-job-definitions/sample-files.png)
 
-3. Klik op  **Gegevens** -> **Gekoppeld** -> **Azure Data Lake Storage Gen2** en upload  **wordcount.py**  en  **shakespeare.txt** naar uw ADLS Gen2-bestandssysteem. 
+3. Selecteer  **Gegevens** -> **Gekoppeld** -> **Azure Data Lake Storage Gen2** en upload  **wordcount.py**  en  **shakespeare.txt** naar uw ADLS Gen2-bestandssysteem. 
 
      ![python-bestand uploaden](./media/apache-spark-job-definitions/upload-python-file.png)
 
-4. Klik op de hub **Ontwikkelen**, klik op het pictogram ‘+’ en selecteer **Spark-taakdefinitie** om een nieuwe Spark-taakdefinitie te maken. 
+4. Selecteer de hub **Ontwikkelen**, selecteer het pictogram ‘+’ en selecteer **Spark-taakdefinitie** om een nieuwe Spark-taakdefinitie te maken. 
 
      ![nieuwe definitie maken voor python](./media/apache-spark-job-definitions/create-new-definition.png)
 
@@ -75,7 +75,7 @@ In deze sectie maakt u een Apache Spark-taakdefinitie voor PySpark (Python).
 
      ![De waarde van de Apache Spark-taakdefinitie voor Python instellen](./media/apache-spark-job-definitions/create-py-definition.png)
 
-7. Klik op **Publiceren** om de Apache Spark-taakdefinitie op te slaan.
+7. Selecteer **Publiceren** om de Apache Spark-taakdefinitie op te slaan.
 
      ![py-definitie publiceren](./media/apache-spark-job-definitions/publish-py-definition.png)
 
@@ -89,11 +89,11 @@ In deze sectie maakt u een Apache Spark-taakdefinitie voor Apache Spark (Scala).
  
      ![voorbeeldbestanden voor scala](./media/apache-spark-job-definitions/sample-files-scala.png)
 
- 3. Klik op  **Gegevens** -> **Gekoppeld** -> **Azure Data Lake Storage Gen2** en upload  **wordcount.jar**  en  **shakespeare.txt** naar uw ADLS Gen2-bestandssysteem.
+ 3. Selecteer  **Gegevens** -> **Gekoppeld** -> **Azure Data Lake Storage Gen2** en upload  **wordcount.jar**  en  **shakespeare.txt** naar uw ADLS Gen2-bestandssysteem.
  
      ![scala-structuur voorbereiden](./media/apache-spark-job-definitions/prepare-scala-structure.png)
 
- 4. Klik op de hub **Ontwikkelen**, klik op het pictogram ‘+’ en selecteer **Spark-taakdefinitie** om een nieuwe Spark-taakdefinitie te maken. (De voorbeeldafbeelding is hetzelfde als stap 4 van **Een Apache Spark-taakdefinitie (Python) maken voor PySpark**.)
+ 4. Selecteer de hub **Ontwikkelen**, selecteer het pictogram ‘+’ en selecteer **Spark-taakdefinitie** om een nieuwe Spark-taakdefinitie te maken. (De voorbeeldafbeelding is hetzelfde als stap 4 van **Een Apache Spark-taakdefinitie (Python) maken voor PySpark**.)
 
  5. Selecteer **Spark(Scala)** in de vervolgkeuzelijst Taal in het hoofdvenster van de Apache Spark-taakdefinitie.
 
@@ -116,7 +116,7 @@ In deze sectie maakt u een Apache Spark-taakdefinitie voor Apache Spark (Scala).
 
      ![De waarde van de Apache Spark-taakdefinitie voor scala instellen](./media/apache-spark-job-definitions/create-scala-definition.png)
 
- 7. Klik op **Publiceren** om de Apache Spark-taakdefinitie op te slaan.
+ 7. Selecteer **Publiceren** om de Apache Spark-taakdefinitie op te slaan.
 
       ![scala-definitie publiceren](./media/apache-spark-job-definitions/publish-scala-definition.png)
 
@@ -129,11 +129,11 @@ In deze sectie maakt u een Apache Spark-taakdefinitie voor .NET Spark(C#/F#).
 
      ![voorbeeld van dotnet](./media/apache-spark-job-definitions/sample-dotnet.png)
 
- 3. Klik op  **Gegevens** -> **Gekoppeld** -> **Azure Data Lake Storage Gen2** en upload  **wordcount.zip**  en  **shakespeare.txt** naar uw ADLS Gen2-bestandssysteem.
+ 3. Selecteer  **Gegevens** -> **Gekoppeld** -> **Azure Data Lake Storage Gen2** en upload  **wordcount.zip**  en  **shakespeare.txt** naar uw ADLS Gen2-bestandssysteem.
  
      ![dotnet-structuur voorbereiden](./media/apache-spark-job-definitions/prepare-dotnet-structure.png)
 
- 4. Klik op de hub **Ontwikkelen**, klik op het pictogram ‘+’ en selecteer **Spark-taakdefinitie** om een nieuwe Spark-taakdefinitie te maken. (De voorbeeldafbeelding is hetzelfde als stap 4 van **Een Apache Spark-taakdefinitie (Python) maken voor PySpark**.)
+ 4. Selecteer de hub **Ontwikkelen**, selecteer het pictogram ‘+’ en selecteer **Spark-taakdefinitie** om een nieuwe Spark-taakdefinitie te maken. (De voorbeeldafbeelding is hetzelfde als stap 4 van **Een Apache Spark-taakdefinitie (Python) maken voor PySpark**.)
 
  5. Selecteer **.NET Spark(C#/F#)** in de vervolgkeuzelijst Taal in het hoofdvenster van de Apache Spark-taakdefinitie.
 
@@ -156,7 +156,7 @@ In deze sectie maakt u een Apache Spark-taakdefinitie voor .NET Spark(C#/F#).
 
      ![De waarde van de Apache Spark-taakdefinitie voor dotnet instellen](./media/apache-spark-job-definitions/create-dotnet-definition.png)
 
- 7. Klik op **Publiceren** om de Apache Spark-taakdefinitie op te slaan.
+ 7. Selecteer **Publiceren** om de Apache Spark-taakdefinitie op te slaan.
 
       ![dotnet-definitie publiceren](./media/apache-spark-job-definitions/publish-dotnet-definition.png)
 
@@ -165,29 +165,29 @@ In deze sectie maakt u een Apache Spark-taakdefinitie voor .NET Spark(C#/F#).
 Nadat u een Apache Spark-taakdefinitie hebt gemaakt, kunt u deze verzenden naar een Apache Spark-pool. Zorg ervoor dat u de **gegevenseigenaar van de opslag-blob** bent van het ADLS Gen2-bestandssysteem waarmee u wilt werken. Als dat niet het geval is, moet u de machtiging handmatig toevoegen.
 
 ### <a name="scenario-1-submit-apache-spark-job-definition"></a>Scenario 1: Apache Spark-taakdefinitie indienen
- 1. Open een Apache Spark-taakdefinitievenster door erop te klikken.
+ 1. Open een Apache Spark-taakdefinitievenster door deze te selecteren.
 
       ![Spark-taakdefinitie openen om te verzenden ](./media/apache-spark-job-definitions/open-spark-definition.png)
 
- 2. Klik op de knop **Verzenden** om uw project te verzenden naar de geselecteerde Apache Spark-pool. U kunt klikken op het tabblad **URL voor Spark-bewaking** om de LogQuery van de Apache Spark-toepassing weer te geven.
+ 2. Selecteer de knop **Verzenden** om uw project te verzenden naar de geselecteerde Apache Spark-pool. U kunt het tabblad **URL voor Spark-bewaking** selecteren om de LogQuery van de Apache Spark-toepassing weer te geven.
 
-    ![Klik op de knop verzenden om een Spark-taakdefinitie te verzenden](./media/apache-spark-job-definitions/submit-spark-definition.png)
+    ![Selecteer de knop verzenden om een Spark-taakdefinitie te verzenden](./media/apache-spark-job-definitions/submit-spark-definition.png)
 
     ![Het dialoogvenster voor de verzending van Spark](./media/apache-spark-job-definitions/submit-definition-result.png)
 
 ### <a name="scenario-2-view-apache-spark-job-running-progress"></a>Scenario 2: Voortgang van Apache Spark-taak weergeven
 
- 1. Klik op **Bewaken** en selecteer vervolgens de optie **Apache Spark-toepassingen**. U kunt de verzonden Apache Spark-toepassing vinden.
+ 1. Selecteer **Bewaken** en selecteer vervolgens de optie **Apache Spark-toepassingen**. U kunt de verzonden Apache Spark-toepassing vinden.
 
      ![Spark-toepassing weergeven](./media/apache-spark-job-definitions/view-spark-application.png)
 
- 2. Klik vervolgens op een Apache Spark-toepassing; het venster **SparkJobDefinition**-taak wordt weergegeven. U kunt de voortgang van de taakuitvoering van daaruit bekijken.
+ 2. Selecteer vervolgens een Apache Spark-toepassing; het venster **SparkJobDefinition**-taak wordt weergegeven. U kunt de voortgang van de taakuitvoering van daaruit bekijken.
      
      ![Spark-toepassing LogQuery weergeven](./media/apache-spark-job-definitions/view-job-log-query.png)
 
 ### <a name="scenario-3-check-output-file"></a>Scenario 3: Uitvoerbestand controleren
 
- 1. Klik op **Gegevens** -> **Gekoppeld** -> **Azure Data Lake Storage Gen2** (hozhaobdbj), open de map **Resultaat** die u eerder hebt gemaakt, ga naar de map met resultaten en controleer of de uitvoer is gegenereerd.
+ 1. Selecteer **Gegevens** -> **Gekoppeld** -> **Azure Data Lake Storage Gen2** (hozhaobdbj), open de map **Resultaat** die u eerder hebt gemaakt, ga naar de map met resultaten en controleer of de uitvoer is gegenereerd.
 
      ![Uitvoerbestand weergeven](./media/apache-spark-job-definitions/view-output-file.png)
 
@@ -197,7 +197,7 @@ In deze sectie voegt u een Apache Spark-taakdefinitie toe aan de pijplijn.
 
  1. Open een bestaande Apache Spark-taakdefinitie.
 
- 2. Klik op het pictogram in de rechterbovenhoek van de Apache Spark-taakdefinitie, kies **Bestaande pijplijn** of **Nieuwe pijplijn**. U kunt de pijplijnpagina raadplegen voor meer informatie.
+ 2. Selecteer het pictogram in de rechterbovenhoek van de Apache Spark-taakdefinitie, kies **Bestaande pijplijn** of **Nieuwe pijplijn**. U kunt de pijplijnpagina raadplegen voor meer informatie.
 
      ![toevoegen aan pipeline1](./media/apache-spark-job-definitions/add-to-pipeline01.png)
 
@@ -205,5 +205,5 @@ In deze sectie voegt u een Apache Spark-taakdefinitie toe aan de pijplijn.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie ziet u hoe u Azure Synapse Studio kunt gebruiken om Apache Spark-taakdefinities te maken en deze vervolgens naar een Apache Spark-pool te verzenden. Vervolgens kunt u de Azure Synapse Studio gebruiken om Power BI-gegevenssets te maken en Power BI-gegevens te beheren.
+Vervolgens kunt u de Azure Synapse Studio gebruiken om Power BI-gegevenssets te maken en Power BI-gegevens te beheren. Ga naar het artikel [Een Power BI-werkruimte koppelen aan een Synapse-werkruimte](../quickstart-power-bi.md) voor meer informatie. 
 

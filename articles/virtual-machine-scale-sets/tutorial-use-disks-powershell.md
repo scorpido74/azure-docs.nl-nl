@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurepowershell
-ms.openlocfilehash: 0334b13fa73eb2fd648184f44bf0856c0d2a9ed9
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: bcd06ce879282ab9897d7e22006bac19a5c22b8e
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89076783"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91565085"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-azure-powershell"></a>Zelfstudie: Schijven met virtuele-machineschaalset maken en gebruiken met Azure PowerShell
 
@@ -87,6 +87,8 @@ In de bovenstaande tabel wordt het max. IOP's per schijf aangegeven, maar er kan
 
 ## <a name="create-and-attach-disks"></a>Schijven maken en koppelen
 U kunt schijven maken en koppelen wanneer u een schaalset maakt, maar ook voor een bestaande schaalset.
+
+Vanaf API-versie `2019-07-01` kunt u de grootte van de besturingssysteemschijf instellen in een schaalset voor virtuele machines met de eigenschap [ storageProfile.osDisk.diskSizeGb](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosdisk). Na het inrichten moet u de schijf wellicht uitbreiden of partitioneren om gebruik te maken van de volledige ruimte. Meer informatie over [de schijf uitbreiden vindt u hier](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk#expand-the-volume-within-the-os).
 
 ### <a name="attach-disks-at-scale-set-creation"></a>Schijven koppelen bij het maken van een schaalset
 Maak een virtuele-machineschaalset met behulp van [New-AzVmss](/powershell/module/az.compute/new-azvmss). Geef desgevraagd een gebruikersnaam en wachtwoord op voor de VM-exemplaren. Om het verkeer te distribueren naar de verschillende VM-exemplaren, wordt er ook een load balancer gemaakt. De load balancer bevat regels voor het distribueren van verkeer op TCP-poort 80, en voor het toestaan van verkeer van Extern bureaublad op TCP-poort 3389 en externe toegang via PowerShell op TCP-poort 5985.

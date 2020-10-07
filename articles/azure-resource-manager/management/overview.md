@@ -4,12 +4,12 @@ description: Hierin wordt beschreven hoe u Azure Resource Manager kunt gebruiken
 ms.topic: overview
 ms.date: 09/01/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 2dc33093df0d9bc0bd75410bac8d200fe6555257
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: f78b6015846253d79020752522c10af96839a854
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89293945"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372269"
 ---
 # <a name="what-is-azure-resource-manager"></a>Wat is Azure Resource Manager?
 
@@ -49,7 +49,7 @@ Met Resource Manager kunt u het volgende doen:
 
 * De afhankelijkheden tussen resources zo definiëren dat deze in de juiste volgorde worden geïmplementeerd.
 
-* Toegangsbeheer toepassen op alle services omdat op rollen gebaseerd toegangsbeheer (RBAC) is geïntegreerd in het beheerplatform.
+* Toegangsbeheer toepassen op alle services omdat op rollen gebaseerde toegangscontrole van Azure (Azure RBAC) is geïntegreerd in het beheerplatform.Toegangsbeheer toepassen op alle services omdat op rollen gebaseerd toegangsbeheer (RBAC) is geïntegreerd in het beheerplatform.
 
 * Tags toepassen op de resources om alle resources in uw abonnement op een logische manier te organiseren.
 
@@ -83,7 +83,7 @@ Er zijn een aantal belangrijke factoren waarmee u rekening moet houden bij het d
 
    Als de regio van de resourcegroep tijdelijk niet beschikbaar is, kunt u resources in de resourcegroep niet bijwerken, omdat de metagegevens niet beschikbaar zijn. De resources in andere regio's werken nog steeds zoals verwacht, maar u kunt ze niet bijwerken. Zie [Betrouwbare Azure-toepassingen ontwerpen](/azure/architecture/checklist/resiliency-per-service) voor meer informatie over het bouwen van betrouwbare toepassingen.
 
-* Een resourcegroep kan worden gebruikt voor het bepalen van de mate van toegangsbeheer voor beheertaken. Als u een resourcegroep wilt beheren, kunt u [Azure-beleidsregels](../../governance/policy/overview.md), [RBAC-rollen](../../role-based-access-control/role-assignments-portal.md)of [resourcevergrendelingen](lock-resources.md) toewijzen.
+* Een resourcegroep kan worden gebruikt voor het bepalen van de mate van toegangsbeheer voor beheertaken. Als u een resourcegroep wilt beheren, kunt u [Azure-beleidsregels](../../governance/policy/overview.md), [Azure-rollen](../../role-based-access-control/role-assignments-portal.md)of [resourcevergrendelingen](lock-resources.md) toewijzen.
 
 * U kunt [tags toepassen](tag-resources.md) op een resourcegroep. De resources in de resourcegroep nemen deze tags niet over.
 

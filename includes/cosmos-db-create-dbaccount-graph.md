@@ -8,38 +8,41 @@ ms.topic: include
 ms.date: 01/27/2020
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: a6cfafd41d1632d99b7ca03bce2316ec679d7579
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 1f36f2f26b65fc6078b99a43b6f0bae9a8a8e9f5
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77061788"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91578377"
 ---
 1. Meld u in een nieuw browservenster aan bij [Azure Portal](https://portal.azure.com/).
 
-2. Selecteer in het menu links de optie **een resource maken**.
+2. Selecteer **Een resource maken** in het menu aan de linkerkant.
    
-   ![Een resource maken in de Azure Portal](./media/cosmos-db-create-dbaccount-graph/create-nosql-db-databases-json-tutorial-0.png)
+   ![Een resource maken in Azure Portal](./media/cosmos-db-create-dbaccount-graph/create-nosql-db-databases-json-tutorial-0.png)
    
-3. Selecteer op de pagina **Nieuw** de optie **data bases** > **Azure Cosmos DB**.
+3. Selecteer op de pagina **Nieuw** **Databases** > **Azure Cosmos DB**.
    
-   ![Het deelvenster Databases in Azure Portal](./media/cosmos-db-create-dbaccount-graph/create-nosql-db-databases-json-tutorial-1.png)
+   ![Het deelvenster Databases in de Azure-portal](./media/cosmos-db-create-dbaccount-graph/create-nosql-db-databases-json-tutorial-1.png)
    
-3. Voer op de pagina **Azure Cosmos DB account maken** de instellingen voor het nieuwe Azure Cosmos DB-account in. 
+   > [!TIP]
+   > Als u Azure Cosmos DB niet in de lijst ziet, typt u het in het zoekvak bovenaan de pagina en drukt u op de _Enter_-toets. 
+
+3. Voer op de pagina **Azure Cosmos DB-account maken** de instellingen in voor het nieuwe Azure Cosmos DB-account. 
  
     Instelling|Waarde|Beschrijving
     ---|---|---
     Abonnement|Uw abonnement|Selecteer het Azure-abonnement dat u voor dit Azure Cosmos DB-account wilt gebruiken. 
-    Resourcegroep|Nieuwe maken<br><br>Voer dezelfde naam in als de account naam|Selecteer **Nieuw maken**. Voer vervolgens een nieuwe naam voor de resource groep voor uw account in. Gebruik de naam van uw Azure Cosmos DB-account voor eenvoud. 
-    Accountnaam|Voer een unieke naam in|Voer een unieke naam in om uw Azure Cosmos DB-account te identificeren. Uw account-URI wordt *Gremlin.Azure.com* toegevoegd aan uw unieke account naam.<br><br>De account naam mag alleen kleine letters, cijfers en afbreek streepjes (-) gebruiken en moet tussen de 3 en 31 tekens lang zijn.
-    API|Gremlin (Graph)|De API bepaalt het type te maken account. Azure Cosmos DB biedt vijf Api's: core (SQL) voor document databases, Gremlin voor Graph-data bases, MongoDB voor document databases, Azure Table en Cassandra. U moet voor elke API een afzonderlijk account maken. <br><br>Selecteer **Gremlin (Graph)**, omdat u in deze Snelstartgids een tabel maakt die werkt met de GREMLIN-API. <br><br>Meer [informatie over de Gremlin-API](../articles/cosmos-db/graph-introduction.md).|
+    Resourcegroep|Nieuwe maken<br><br>Voer vervolgens dezelfde naam in als de Accountnaam|Selecteer **Nieuw maken**. Voer daarna een nieuwe resourcegroepnaam in voor het account. Gebruik dezelfde naam als uw Azure Cosmos DB-accountnaam om het uzelf gemakkelijk te maken. 
+    Accountnaam|Voer een unieke naam in|Voer een unieke naam in om uw Azure Cosmos DB-account te identificeren. Uw account-URI wordt *gremlin.azure.com* toegevoegd aan uw unieke accountnaam.<br><br>De accountnaam moet tussen de 3 en 31 tekens lang zijn en mag alleen kleine letters, cijfers en afbreekstreepjes bevatten.
+    API|Gremlin (grafiek)|De API bepaalt het type te maken account. Azure Cosmos DB heeft vijf API's: Core(SQL) voor documentdatabases, Gremlin voor grafiekdatabases, MongoDB voor documentdatabases, Azure Table en Cassandra. U moet voor elke API een afzonderlijk account maken. <br><br>Selecteer **Gremlin (grafiek)** , omdat u in deze snelstartgids een tabel maakt die geschikt is voor de Gremlin-API. <br><br>[Meer informatie over de Gremlin API](../articles/cosmos-db/graph-introduction.md).|
     Locatie|Selecteer de regio het dichtst in de buurt van uw gebruikers|Selecteer een geografische locatie waar u het Azure Cosmos DB-account wilt hosten. Gebruik de locatie die zich het dichtst bij uw gebruikers bevindt, zodat ze de snelst mogelijke toegang tot de gegevens hebben.
 
     Selecteer **Beoordelen en maken**. U kunt de secties **Netwerk** en **Tags** overslaan. 
 
     ![De pagina Nieuw account voor Azure Cosmos DB](./media/cosmos-db-create-dbaccount-graph/azure-cosmos-db-create-new-account.png)
 
-4. Het duurt enkele minuten om het account te maken. Wacht tot de Portal de **Gefeliciteerd weergeeft. Uw Azure Cosmos DB-account is gemaakt** .
+4. Het duurt enkele minuten om het account te maken. Wacht tot de portal de pagina **Gefeliciteerd! Uw Azure Cosmos DB-account is gemaakt** weergeeft.
    
-   ![Pagina Azure Cosmos DB-account gemaakt](./media/cosmos-db-create-dbaccount-graph/azure-cosmos-db-graph-created.png)
+   ![Pagina Azure Cosmos DB-account aangemaakt](./media/cosmos-db-create-dbaccount-graph/azure-cosmos-db-graph-created.png)
 

@@ -1,7 +1,7 @@
 ---
 title: 'Quickstart: cURL en REST gebruiken om intentie te bepalen - LUIS'
 titleSuffix: Azure Cognitive Services
-description: In deze snelstartgids voor REST API gebruikt u een beschikbare openbare LUIS-app om de intentie van een gebruiker te bepalen aan de hand van beschrijvende tekst.
+description: In deze snelstartgids voor REST API gebruikt u cURL en REST om de intentie van een gebruiker te bepalen aan de hand van beschrijvende tekst.
 services: cognitive-services
 author: nitinme
 manager: diberry
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 06/19/2020
 ms.author: nitinme
-ms.openlocfilehash: 8ab76bcdfc62ed0af52e6c99ef6c7b14ebeef25f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7a8cbfa307f14a6660dcace3315384bc523ad888
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497859"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316253"
 ---
 # <a name="quickstart-use-curl-and-rest-to-get-intent"></a>Quickstart: cURL en REST gebruiken om intent op te halen
 

@@ -1,6 +1,6 @@
 ---
-title: Een gesimuleerd X. 509-apparaat inrichten voor Azure IoT Hub met C
-description: In deze snelstart wordt gebruikgemaakt van afzonderlijke inschrijvingen. In deze Quick Start maakt en richt u een gesimuleerd X. 509-apparaat met de SDK voor C-apparaten voor Azure IoT Hub Device Provisioning Service (DPS).
+title: Snelstart - Een gesimuleerd X.509-apparaat inrichten voor Azure IoT Hub met behulp van C
+description: In deze snelstart wordt gebruikgemaakt van afzonderlijke inschrijvingen. In deze quickstart maakt u een gesimuleerd X.509-apparaat met de IoT C SDK voor Azure IoT Hub Device Provisioning Service (DPS) en richt u het apparaat in.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/26/2020
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 882d62c088fa51153ca496231beccd4bfd5af0cb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 42636695113dd824797d1a837e21ab2901d87738
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82190351"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323860"
 ---
 # <a name="quickstart-provision-an-x509-simulated-device-using-the-azure-iot-c-sdk"></a>Snelstart: Een gesimuleerd X.509-apparaat inrichten met de Azure IoT C SDK
 
@@ -21,12 +21,12 @@ ms.locfileid: "82190351"
 
 In deze snelstart leert u hoe u een X.509-apparaatsimulator op een Windows-ontwikkelcomputer kunt maken en uitvoeren. U configureert dit gesimuleerde apparaat voor toewijzing aan een IoT-hub met behulp van een inschrijving bij een Device Provisioning Service-exemplaar. Er wordt voorbeeldcode van de [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) gebruikt voor het simuleren van een opstartvolgorde voor het apparaat. Het apparaat wordt herkend op basis van de inschrijving bij de inschrijvingsservice en wordt toegewezen aan de IoT-hub.
 
-Als u niet bekend bent met het proces van automatische inrichting, raadpleegt u de concepten voor het [automatisch inrichten](concepts-auto-provisioning.md). Controleer ook of u de stappen in [IoT Hub Device Provisioning Service instellen met Azure Portal](quick-setup-auto-provision.md) hebt voltooid voordat u verdergaat met deze snelstart. 
+Raadpleeg [Concepten voor automatische inrichting](about-iot-dps.md#provisioning-process) als u niet bekend bent met het proces van automatisch inrichten. Controleer ook of u de stappen in [IoT Hub Device Provisioning Service instellen met Azure Portal](quick-setup-auto-provision.md) hebt voltooid voordat u verdergaat met deze snelstart. 
 
 Azure IoT Device Provisioning Service ondersteunt twee typen inschrijvingen:
 
-* [Registratiegroepen](concepts-service.md#enrollment-group): wordt gebruikt om meerdere gerelateerde apparaten in te schrijven.
-* [Afzonderlijke inschrijvingen](concepts-service.md#individual-enrollment): wordt gebruikt om een enkel apparaat in te schrijven.
+* [Inschrijvingsgroepen](concepts-service.md#enrollment-group): Wordt gebruikt om meerdere gerelateerde apparaten in te schrijven.
+* [Afzonderlijke inschrijvingen](concepts-service.md#individual-enrollment): Wordt gebruikt om één apparaat in te schrijven.
 
 In dit artikel worden afzonderlijke inschrijvingen gedemonstreerd.
 
@@ -34,23 +34,23 @@ In dit artikel worden afzonderlijke inschrijvingen gedemonstreerd.
 
 ## <a name="prerequisites"></a>Vereisten
 
-De volgende vereisten gelden voor een Windows-ontwikkel omgeving. Voor Linux of macOS raadpleegt u de desbetreffende sectie in [uw ontwikkel omgeving voorbereiden](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) in de SDK-documentatie.
+De volgende vereisten gelden voor een ontwikkelomgeving in Windows. Voor Linux of macOS raadpleegt u het desbetreffende gedeelte in [Uw ontwikkelomgeving voorbereiden](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) in de SDK-documentatie.
 
-* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 met de workload [' Desktop Development with C++ '](https://docs.microsoft.com/cpp/?view=vs-2019#pivot=workloads) ingeschakeld. Visual Studio 2015 en Visual Studio 2017 worden ook ondersteund.
+* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 met de workload [Desktopontwikkeling met C++](https://docs.microsoft.com/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) ingeschakeld. Visual Studio 2015 en Visual Studio 2017 worden ook ondersteund.
 
 * Meest recente versie van [Git](https://git-scm.com/download/) geïnstalleerd.
 
 ## <a name="prepare-a-development-environment-for-the-azure-iot-c-sdk"></a>Een ontwikkelomgeving voorbereiden voor de Azure IoT C SDK
 
-In deze sectie gaat u een ontwikkel omgeving voorbereiden die wordt gebruikt voor het bouwen van de [Azure IOT C-SDK](https://github.com/Azure/azure-iot-sdk-c), die de voorbeeld code voor de X. 509-opstart sequentie bevat.
+In deze sectie bereidt u een ontwikkelomgeving voor die wordt gebruikt om de [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) te bouwen die de voorbeeldcode voor de x.509-opstartvolgorde bevat.
 
-1. Down load het [cmake build-systeem](https://cmake.org/download/).
+1. Download het [CMake-buildsysteem](https://cmake.org/download/).
 
     Het is belangrijk dat de vereisten voor Visual Studio met (Visual Studio en de workload Desktopontwikkeling met C++) op uw computer zijn geïnstalleerd **voordat** de `CMake`-installatie wordt gestart. Zodra aan de vereisten is voldaan en de download is geverifieerd, installeert u het CMake-bouwsysteem.
 
-2. Zoek de code naam voor de [nieuwste versie](https://github.com/Azure/azure-iot-sdk-c/releases/latest) van de SDK.
+2. Zoek de tagnaam voor de [nieuwste versie](https://github.com/Azure/azure-iot-sdk-c/releases/latest) van de SDK.
 
-3. Open een opdrachtprompt of Git Bash-shell. Voer de volgende opdrachten uit om de nieuwste versie van de [Azure IOT C SDK](https://github.com/Azure/azure-iot-sdk-c) github-opslag plaats te klonen. Gebruik het label dat u in de vorige stap hebt gevonden als waarde voor `-b` de para meter:
+3. Open een opdrachtprompt of Git Bash-shell. Voer de volgende opdrachten uit om de nieuwste release van de GitHub-opslagplaats van de [Azure IoT C-SDK](https://github.com/Azure/azure-iot-sdk-c) te klonen. Gebruik de tag die u in de vorige stap hebt gevonden als waarde voor de parameter `-b`:
 
     ```cmd/sh
     git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
@@ -60,14 +60,14 @@ In deze sectie gaat u een ontwikkel omgeving voorbereiden die wordt gebruikt voo
 
     Deze bewerking kan enkele minuten in beslag nemen.
 
-4. Maak de submap `cmake` in de hoofdmap van de Git-opslagplaats en navigeer naar die map. Voer de volgende opdrachten uit vanuit `azure-iot-sdk-c` de map:
+4. Maak de submap `cmake` in de hoofdmap van de Git-opslagplaats en navigeer naar die map. Voer de volgende opdrachten uit vanuit de map `azure-iot-sdk-c`:
 
     ```cmd/sh
     mkdir cmake
     cd cmake
     ```
 
-5. De voorbeeldcode gebruikt een X.509-certificaat voor attestation via x.509-verificatie. Voer de volgende opdracht uit om een versie van de SDK te bouwen die specifiek is voor uw ontwikkel platform en die de client voor het inrichten van apparaten bevat. Er wordt een Visual Studio-oplossing voor het gesimuleerde apparaat `cmake` in de Directory gegenereerd.
+5. De voorbeeldcode gebruikt een X.509-certificaat voor attestation via x.509-verificatie. Voer de volgende opdracht uit om een versie van de SDK te bouwen die specifiek is voor uw platform voor ontwikkeling dat de client voor apparaatinrichting bevat. Er wordt een Visual Studio-oplossing voor het gesimuleerde apparaat gegenereerd in de map `cmake`.
 
     ```cmd
     cmake -Duse_prov_client:BOOL=ON ..
@@ -75,7 +75,7 @@ In deze sectie gaat u een ontwikkel omgeving voorbereiden die wordt gebruikt voo
 
     Als `cmake` uw C++-compiler niet kan vinden, kunnen er fouten in de build optreden tijdens het uitvoeren van de bovenstaande opdracht. Als dit gebeurt, voert u deze opdracht uit bij de [Visual Studio-opdrachtprompt](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs).
 
-    Zodra de build is gelukt, zien de laatste enkele uitvoer regels er ongeveer uit zoals in de volgende uitvoer:
+    Zodra het bouwen is voltooid, zijn de laatste paar uitvoerregels vergelijkbaar met de volgende uitvoer:
 
     ```cmd/sh
     $ cmake -Duse_prov_client:BOOL=ON ..
@@ -101,11 +101,11 @@ U gaat voorbeeldcode van de Azure IoT C-SDK gebruiken om het certificaat te make
 
 1. Open Visual Studio en open het nieuwe oplossingbestand met de naam `azure_iot_sdks.sln`. Dit oplossingsbestand bevindt zich in de map `cmake` die u eerder hebt gemaakt in de hoofdmap van de azure-iot-sdk-c git-opslagplaats.
 
-2. Selecteer in het menu Visual Studio **Build** > **Build Solution** om alle projecten in de oplossing te bouwen.
+2. Selecteer in het menu van Visual Studio, **Build** > **Build Solution** om alle projecten in de oplossing te bouwen.
 
 3. Navigeer in het deelvenster *Solution Explorer* van Visual Studio naar de map **Provision\_Tools**. Klik met de rechtermuisknop op het**dice\_device\_enrollment**-project en selecteer **Set as Startup Project**.
 
-4. Selecteer in het menu Visual Studio de optie **fout opsporing** > **starten zonder fout opsporing** om de oplossing uit te voeren. Voer in het uitvoervenster **i** in voor individuele registratie wanneer hierom wordt gevraagd.
+4. Selecteer in het menu van Visual Studio de optie **Debug** > **Start without debugging** om de oplossing uit te voeren. Voer in het uitvoervenster **i** in voor individuele registratie wanneer hierom wordt gevraagd.
 
     In het uitvoervenster wordt een lokaal gegenereerd zelfondertekend X.509-certificaat weergegeven voor uw gesimuleerde apparaat. Kopieer de uitvoer naar Klembord vanaf **-----BEGIN CERTIFICATE-----** tot en met de eerste **-----END CERTIFICATE-----**, en zorg ervoor dat deze beide regels ook zijn opgenomen. U hebt alleen het eerste certificaat uit het uitvoervenster nodig.
 
@@ -113,17 +113,17 @@ U gaat voorbeeldcode van de Azure IoT C-SDK gebruiken om het certificaat te make
 
 ## <a name="create-a-device-enrollment-entry-in-the-portal"></a>Een vermelding voor apparaatregistratie maken in de portal
 
-1. Meld u aan bij de Azure Portal, selecteer de knop **alle resources** in het linkermenu en open uw Device Provisioning-Service.
+1. Meld u aan bij Azure Portal, selecteer in het linkermenu de knop **Alle resources** en open Device Provisioning Service.
 
-2. Selecteer het tabblad **inschrijvingen beheren** en selecteer vervolgens de knop **afzonderlijke registratie toevoegen** bovenaan.
+2. Selecteer het tabblad **Inschrijvingen beheren** en klik vervolgens op de knop **Afzonderlijke inschrijvingen toevoegen** bovenaan.
 
-3. Voer in het deel venster **registratie toevoegen** de volgende informatie in en klik vervolgens op de knop **Opslaan** .
+3. Voer in het deelvenster **Inschrijving toevoegen** de volgende informatie in en druk vervolgens op de knop **Opslaan**.
 
     * **Mechanisme:** selecteer **X.509** als *mechanisme* voor identiteitscontrole.
-    * **Primair certificaat. pem-of CER-bestand:** Kies **een bestand selecteren** om het certificaat bestand, X509testcert. pem, te selecteren dat u eerder hebt gemaakt.
+    * **Pem- of cer-bestand voor primair certificaat:** Klik op **Een bestand selecteren** om het certificaatbestand X509testcert.pem te selecteren dat u eerder hebt gemaakt.
     * **IoT Hub-apparaat-id:** voer **test-docs-cert-device** in als id voor het apparaat.
 
-      [![Afzonderlijke inschrijving voor X. 509-Attestation toevoegen in de portal](./media/quick-create-simulated-device-x509/device-enrollment.png)](./media/quick-create-simulated-device-x509/device-enrollment.png#lightbox)
+      [![Afzonderlijke inschrijving voor X.509-attestation toevoegen in de portal](./media/quick-create-simulated-device-x509/device-enrollment.png)](./media/quick-create-simulated-device-x509/device-enrollment.png#lightbox)
 
       Als het apparaat is ingeschreven, wordt uw X.509-apparaat weergegeven als **riot-device-cert** onder de kolom *Registratie-id* op het tabblad *Afzonderlijke registraties*. 
 
@@ -131,7 +131,7 @@ U gaat voorbeeldcode van de Azure IoT C-SDK gebruiken om het certificaat te make
 
 In deze sectie werkt u de voorbeeldcode voor het verzenden van de opstartvolgorde van het apparaat naar uw Device Provisioning Service-exemplaar bij. Deze opstartvolgorde zorgt ervoor dat het apparaat kan worden herkend en toegewezen aan een IoT-hub die is gekoppeld aan het Device Provisioning Service-exemplaar.
 
-1. Selecteer in de Azure Portal het tabblad **overzicht** voor de Device Provisioning Service en noteer de waarde van het **_id-bereik_** .
+1. Selecteer in Azure Portal het tabblad **Overzicht** voor uw Device Provisioning-service en noteer de waarde van het **_Id-bereik_**.
 
     ![Device Provisioning Service-eindpuntgegevens uit de portalblade extraheren](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 
@@ -153,7 +153,7 @@ In deze sectie werkt u de voorbeeldcode voor het verzenden van de opstartvolgord
 
 5. Klik met de rechtermuisknop op het **prov\_dev\_client\_sample**-project en selecteer **Set as Startup Project**.
 
-6. Selecteer in het menu Visual Studio de optie **fout opsporing** > **starten zonder fout opsporing** om de oplossing uit te voeren. In de prompt om het project opnieuw op te bouwen, selecteert u **Ja** om het project opnieuw samen te stellen voordat u het uitvoert.
+6. Selecteer in het menu van Visual Studio de optie **Debug** > **Start without debugging** om de oplossing uit te voeren. Klik in de prompt om het project opnieuw te bouwen op **Yes** om het project opnieuw te bouwen voordat het wordt uitgevoerd.
 
     De volgende uitvoer is een voorbeeld van de voorbeeldcode van de Provisioning Device-client die met succes opstart en verbinding maakt met het Provisioning Service-exemplaar om IoT hub-informatie op te halen en zich te registreren:
 
@@ -170,21 +170,21 @@ In deze sectie werkt u de voorbeeldcode voor het verzenden van de opstartvolgord
     test-docs-hub.azure-devices.net, deviceId: test-docs-cert-device
     ```
 
-7. Navigeer in de portal naar de IoT-hub die is gekoppeld aan uw inrichtings service en selecteer het tabblad **IOT-apparaten** . Wanneer het inrichten van het gesimuleerde X. 509-apparaat naar de hub is geslaagd, wordt de apparaat-ID weer gegeven op de Blade **IOT-apparaten** , met de *status* **ingeschakeld**. Mogelijk moet u bovenaan op de knop **vernieuwen** klikken. 
+7. Navigeer in de portal naar de IoT-hub die is gekoppeld aan uw Provisioning-service en selecteer het tabblad **IoT-apparaten**. Wanneer het inrichten van het gesimuleerde X.509-apparaat voor de hub is voltooid, wordt de apparaat-id weergegeven op de blade **IoT-apparaten** met de *STATUS* **ingeschakeld**. Mogelijk moet u bovenaan op de knop **Vernieuwen** drukken. 
 
     ![Apparaat wordt geregistreerd voor de IoT-hub](./media/quick-create-simulated-device-x509/hub-registration.png) 
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u van plan bent om verder te gaan met het voor beeld van de apparaatclient, moet u de resources die u in deze Quick Start hebt gemaakt, niet opschonen. Als u niet wilt door gaan, gebruikt u de volgende stappen om alle resources te verwijderen die door deze Quick start zijn gemaakt.
+Als u wilt blijven doorwerken met het voorbeeld van de apparaatclient en deze beter wilt leren kennen, wis de resources die in deze quickstart zijn gemaakt dan niet. Als u niet wilt doorgaan, gebruikt u de volgende stappen om alle resources te verwijderen die via deze quickstart zijn gemaakt.
 
 1. Sluit het uitvoervenster van het voorbeeld van de apparaatclient op de computer.
-1. Selecteer in het menu aan de linkerkant in het Azure Portal **alle resources** en selecteer vervolgens uw Device Provisioning Service. Open **inschrijvingen beheren** voor uw service en selecteer vervolgens het tabblad **afzonderlijke inschrijvingen** . Schakel het selectie vakje in naast de *registratie-id* van het apparaat dat u in deze Quick Start hebt Inge schreven en klik boven aan het deel venster op de knop **verwijderen** . 
-1. Selecteer in het menu aan de linkerkant in het Azure Portal **alle resources** en selecteer vervolgens uw IOT-hub. Open **IOT-apparaten** voor uw hub, schakel het selectie vakje in naast de *apparaat-id* van het apparaat dat u in deze Quick Start hebt geregistreerd en druk op de knop **verwijderen** boven aan het deel venster.
+1. Selecteer in het linkermenu in Azure Portal **Alle resources** en selecteer uw Device Provisioning Service. Open het tabblad **Inschrijvingen beheren** voor uw service en klik vervolgens op het tabblad **Afzonderlijke inschrijvingen**. Schakel het selectievakje naast de *Registratie-id* in van het apparaat dat u hebt ingeschreven in deze quickstart. Druk vervolgens op de knop **Verwijderen** bovenaan het deelvenster. 
+1. Selecteer in het linkermenu in Azure Portal **Alle resources** en selecteer vervolgens uw IoT-hub. Open **IoT-apparaten** voor uw hub, schakel het selectievakje *DEVICE ID* in van het apparaat dat u hebt geregistreerd in deze quickstart en druk vervolgens bovenaan op de knop **Verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u een gesimuleerd X. 509-apparaat op uw Windows-computer gemaakt en het ingericht voor uw IoT-hub met behulp van de Azure-IoT Hub Device Provisioning Service op de portal. Als u wilt weten hoe u uw X. 509-apparaat programmatisch kunt registreren, gaat u verder met de Quick start voor programmatische registratie van X. 509-apparaten. 
+In deze quickstart hebt u een gesimuleerd X.509-apparaat op uw Windows-computer gemaakt en het ingericht voor uw IoT-hub met de Azure IoT Hub Device Provisioning Service in de portal. Als u wilt weten hoe u uw X.509-apparaat programmatisch kunt registreren, gaat u verder met de quickstart voor programmatische registratie van een X.509-apparaat. 
 
 > [!div class="nextstepaction"]
-> [Azure Quick start-X. 509-apparaten inschrijven bij Azure IoT Hub Device Provisioning Service](quick-enroll-device-x509-java.md)
+> [Azure-quickstart: X.509-apparaat inschrijven bij Azure IoT Hub Device Provisioning Service](quick-enroll-device-x509-java.md)

@@ -1,6 +1,6 @@
 ---
 title: 'Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met F5 | Microsoft Docs'
-description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en F5.
+description: In dit artikel leert u hoe u F5 kunt integreren met Azure Active Directory (Azure AD).
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 2e0e727e73fa1eff21a4b2e481738be49306676a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: cbcbcb6a649969c5348c3ad445ff43f10372faeb
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542975"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306171"
 ---
 # <a name="tutorial-azure-active-directory-ad-single-sign-on-sso-integration-with-f5"></a>Zelfstudie: Integratie van eenmalige aanmelding via Azure Active Directory (AD) met F5
 
@@ -39,8 +39,9 @@ U hebt het volgende nodig om aan de slag te gaan:
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* F5 ondersteunt door **SP en IDP** geïnitieerde eenmalige aanmelding
-* Eenmalige aanmelding bij F5 kan op drie verschillende manieren worden geconfigureerd.
+F5 ondersteunt door **SP en IDP** geïnitieerde eenmalige aanmelding.
+
+Eenmalige aanmelding bij F5 kan op drie verschillende manieren worden geconfigureerd:
 
 - [Eenmalige aanmelding bij F5 configureren voor geavanceerde Kerberos-toepassing](#configure-f5-single-sign-on-for-advanced-kerberos-application)
 

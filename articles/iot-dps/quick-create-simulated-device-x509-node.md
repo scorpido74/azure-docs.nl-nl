@@ -1,5 +1,5 @@
 ---
-title: Een gesimuleerd X.509-apparaat met Node.js inrichten voor Azure IoT Hub
+title: 'Quickstart: een gesimuleerd X.509-apparaat inrichten voor Azure IoT Hub met Node.js'
 description: Een gesimuleerd X.509-apparaat maken en inrichten voor Azure IoT Hub Device Provisioning Service (DPS) met de SDK voor Node.js. Voor deze quickstart worden afzonderlijke inschrijvingen gebruikt.
 author: wesmc7777
 ms.author: wesmc
@@ -8,13 +8,13 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: nodejs
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 844a174e8cd3208e071db165a31d6c82dd1af3b1
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: f4d2a5e10db77e9ec9d06e3bcc73552bda280152
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422110"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323937"
 ---
 # <a name="quickstart-create-and-provision-an-x509-simulated-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>Quickstart: Een gesimuleerd X.509-apparaat met de SDK met Node.js maken en inrichten voor Azure IoT Hub Device Provisioning Service
 
@@ -24,7 +24,7 @@ In deze quickstart maakt u een gesimuleerd X.509-apparaat op uw Windows-computer
 
 ## <a name="prerequisites"></a>Vereisten
 
-- U hebt [Concepten voor automatische inrichting](concepts-auto-provisioning.md) bestudeerd.
+- Vertrouwd zijn met het [inrichten](about-iot-dps.md#provisioning-process) van concepten.
 - U hebt [IoT Hub Device Provisioning Service instellen met Azure Portal](./quick-setup-auto-provision.md) voltooid.
 - Een Azure-account met een actief abonnement. [Maak er gratis een](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - [Node.js v4.0+](https://nodejs.org).

@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: mikhegn
 ms.custom: mvc
-ms.openlocfilehash: 4cd21669b30b8ec83d6a0538c90d4cec5cafe32a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: e35b655dc8b735214de891884fe40fb951dd16cd
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244987"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91441279"
 ---
 # <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>Zelfstudie: Een Service Fabric-toepassing implementeren naar een cluster in Azure
 
@@ -78,19 +78,19 @@ Selecteer in **Verbindingseindpunt** de optie **Nieuw cluster maken**.  Als u in
 
 Voer op het tabblad **Cluster** de **Clusternaam** (bijvoorbeeld 'mytestcluster') in, selecteer uw abonnement, selecteer een regio voor het cluster (zoals US - zuid-centraal), voer het aantal clusterknooppunten in (we raden drie knooppunten voor een testcluster aan) en voer een resourcegroep (zoals 'mytestclustergroup') in. Klik op **Volgende**.
 
-![Een cluster maken](./media/service-fabric-tutorial-deploy-app-to-party-cluster/create-cluster.png)
+![Schermafbeelding met het tabblad Cluster van het dialoogvenster Service Fabric-cluster maken.](./media/service-fabric-tutorial-deploy-app-to-party-cluster/create-cluster.png)
 
 Voer op het tabblad **Certificaat** het wachtwoord en het uitvoerpad voor het clustercertificaat in. Er wordt een zelfondertekend certificaat als een PFX-bestand gemaakt en opgeslagen in het opgegeven uitvoerpad.  Het certificaat wordt gebruikt voor de beveiliging van zowel knooppunt-naar-knooppunt als client-naar-knooppunt.  Een zelfondertekend certificaat moet niet worden gebruikt voor productieclusters.  Dit certificaat wordt gebruikt door Visual Studio voor verificatie bij het cluster en de implementatie van toepassingen. Selecteer **Certificaat importeren** om de PFX in het certificaatarchief CurrentUser\My van uw computer te installeren.  Klik op **Volgende**.
 
-![Een cluster maken](./media/service-fabric-tutorial-deploy-app-to-party-cluster/certificate.png)
+![Schermafbeelding met het tabblad Certificaat van het dialoogvenster Service Fabric-cluster maken.](./media/service-fabric-tutorial-deploy-app-to-party-cluster/certificate.png)
 
 Voer op het tabblad **VM-details** de **Gebruikersnaam** en het **Wachtwoord** in voor het clusterbeheeraccount.  Selecteer de **VM-installatiekopie** voor de clusterknooppunten en de **Grootte van virtuele machine** voor elk clusterknooppunt.  Klik op het tabblad **Geavanceerd**.
 
-![Een cluster maken](./media/service-fabric-tutorial-deploy-app-to-party-cluster/vm-detail.png)
+![Schermafbeelding met het tabblad Details VM van het dialoogvenster Service Fabric-cluster maken.](./media/service-fabric-tutorial-deploy-app-to-party-cluster/vm-detail.png)
 
 Voer in **Poorten** het VotingWeb-service-eindpunt van de vorige stap (bijvoorbeeld 8080) in.  Wanneer het cluster is gemaakt, worden deze poorten geopend in de Azure load balancer voor het doorsturen van verkeer naar het cluster.  Klik op **Maken** om het cluster te maken. Dit duurt enkele minuten.
 
-![Een cluster maken](./media/service-fabric-tutorial-deploy-app-to-party-cluster/advanced.png)
+![Schermafbeelding met het tabblad Geavanceerd van het dialoogvenster Service Fabric-cluster maken.](./media/service-fabric-tutorial-deploy-app-to-party-cluster/advanced.png)
 
 ## <a name="publish-the-application-to-the-cluster"></a>De toepassing publiceren in het cluster
 

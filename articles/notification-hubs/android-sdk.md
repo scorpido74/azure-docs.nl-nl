@@ -1,6 +1,6 @@
 ---
 title: Pushmeldingen naar Android sturen met Azure Notification Hubs en Firebase SDK versie 1.0.0-preview1
-description: In deze zelfstudie leert u hoe u met Azure Notification Hubs en Google Firebase Cloud Messaging pushmeldingen verzendt naar Android-apparaten.
+description: In deze zelfstudie leert u hoe u met Azure Notification Hubs en Google Firebase Cloud Messaging pushmeldingen verzendt naar Android-apparaten (versie 1.0.0-preview1).
 author: sethmanheim
 ms.author: sethm
 ms.date: 5/28/2020
@@ -9,12 +9,12 @@ ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 05/27/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ae1d2dfaf7d83d3b2323812f637bddd91b9a2ea2
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 63841bd603373d0fb325bcf82511ce3fb07b4136
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018226"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315183"
 ---
 # <a name="tutorial-send-push-notifications-to-android-devices-using-firebase-sdk-version-100-preview1"></a>Zelfstudie: Pushmeldingen verzenden naar Android-apparaten met Firebase SDK versie 1.0.0-preview1
 
@@ -62,23 +62,23 @@ De eerste stap is een project in Android Studio te maken:
 
 2. Nadat u uw project hebt gemaakt, selecteert u  **Firebase toevoegen aan uw Android-app**.
 
-   :::image type="content" source="media/android-sdk/get-started.png" alt-text="Firebase toevoegen":::
+   :::image type="content" source="media/android-sdk/get-started.png" alt-text="Project configureren":::
 
 3. Doe het volgende op de pagina  **Firebase toevoegen aan uw Android-app** :
 
    1. Voor  **Android-pakketnaam** kopieert u de waarde van de **applicationId**  in het bestand **build.gradle** van uw toepassing. In dit voorbeeld is dit het  `com.fabrikam.fcmtutorial1app`.
 
-      :::image type="content" source="media/android-sdk/specify-package-name-fcm-settings.png" alt-text="Pakketnaam opgeven":::
+      :::image type="content" source="media/android-sdk/specify-package-name-fcm-settings.png" alt-text="Project configureren":::
 
    2. Selecteer  **App registreren**.
 
 4. Selecteer  **google-services.json downloaden**, sla het bestand op in de map  **app**  van uw project, en selecteer  **Volgende**.
 
-   :::image type="content" source="media/android-sdk/download-google-service-button.png" alt-text="Google-service downloaden":::
+   :::image type="content" source="media/android-sdk/download-google-service-button.png" alt-text="Project configureren":::
 
 5. Selecteer in de Firebase-console het tandwiel van uw project. Selecteer vervolgens  **Projectinstellingen**.
 
-   :::image type="content" source="media/android-sdk/notification-hubs-firebase-console-project-settings.png" alt-text="Projectinstellingen":::
+   :::image type="content" source="media/android-sdk/notification-hubs-firebase-console-project-settings.png" alt-text="Project configureren":::
 
 6. Als u het bestand **google-services.json** niet hebt gedownload in de map  **app**  van uw Android Studio-project, kunt u dat op deze pagina doen.
 
@@ -94,7 +94,7 @@ De eerste stap is een project in Android Studio te maken:
 
 3. Selecteer op de pagina  **Notification Hubs**  de optie  **Toevoegen**  op de werkbalk.
 
-   :::image type="content" source="media/android-sdk/add-hub.png" alt-text="Hub toevoegen":::
+   :::image type="content" source="media/android-sdk/add-hub.png" alt-text="Project configureren":::
 
 4. Doe het volgende op de pagina  **Notification Hubs** :
 
@@ -108,15 +108,15 @@ De eerste stap is een project in Android Studio te maken:
 
    5. Selecteer  **Maken**.
 
-      :::image type="content" source="media/android-sdk/create-hub.png" alt-text="Hub maken":::
+      :::image type="content" source="media/android-sdk/create-hub.png" alt-text="Project configureren":::
 
 5. Selecteer  **Meldingen**  (het pictogram van een bel) en selecteer vervolgens  **Ga naar resource**. U kunt ook de lijst op de pagina  **Notification Hubs**  vernieuwen en uw hub selecteren.
 
-   :::image type="content" source="media/android-sdk/notification-hubs.png" alt-text="Hub selecteren":::
+   :::image type="content" source="media/android-sdk/notification-hubs.png" alt-text="Project configureren":::
 
 6. Selecteer  **Toegangsbeleid**  in de lijst. Merk op dat er twee verbindingsreeksen beschikbaar zijn. Later moet u er pushmeldingen mee afhandelen.
 
-   :::image type="content" source="media/android-sdk/access-policies.png" alt-text="Toegangsbeleid":::
+   :::image type="content" source="media/android-sdk/access-policies.png" alt-text="Project configureren":::
 
    > [!IMPORTANT]
    > Gebruik niet het beleid  **DefaultFullSharedAccessSignature**  in uw toepassing. Dit beleid dient alleen in de back-end van de app te worden gebruikt.
@@ -129,7 +129,7 @@ De eerste stap is een project in Android Studio te maken:
 
 3. Selecteer  **Opslaan** op de werkbalk.
 
-   :::image type="content" source="media/android-sdk/fcm-server-key.png" alt-text="Serversleutel":::
+   :::image type="content" source="media/android-sdk/fcm-server-key.png" alt-text="Project configureren":::
 
 4. De Azure-portal geeft een bericht weer dat de hub is bijgewerkt. De knop  **Opslaan**  is uitgeschakeld.
 
@@ -143,15 +143,15 @@ Uw Notification Hub is nu geconfigureerd om te werken met Firebase Cloud Messagi
 
 2. Selecteer de doelversie van de Android SDK die wordt gebruikt in het project. Selecteer vervolgens  **Pakketdetails weergeven**.
 
-   :::image type="content" source="media/android-sdk/notification-hubs-android-studio-sdk-manager.png" alt-text="SDK Manager":::
+   :::image type="content" source="media/android-sdk/notification-hubs-android-studio-sdk-manager.png" alt-text="Project configureren":::
 
 3. Selecteer  **Google API’s** als dit nog niet is geïnstalleerd.
 
-   :::image type="content" source="media/android-sdk/google-apis-selected.png" alt-text="API's":::
+   :::image type="content" source="media/android-sdk/google-apis-selected.png" alt-text="Project configureren":::
 
 4. Ga naar het tabblad  **SDK-hulpprogramma’s** . Als u Google Play Services nog niet hebt geïnstalleerd, selecteert u  **Google Play Services**  zoals wordt weergegeven in de onderstaande afbeelding. Selecteer vervolgens  **Toepassen**  om het te installeren. Noteer het SDK-pad om het in een later stadium te kunnen gebruiken.
 
-   :::image type="content" source="media/android-sdk/google-play-services-selected.png" alt-text="Play Services":::
+   :::image type="content" source="media/android-sdk/google-play-services-selected.png" alt-text="Project configureren":::
 
 5. Klik op  **OK** zodra het dialoogvenster  **Wijziging bevestigen**  wordt weergegeven. De vereiste onderdelen worden geïnstalleerd met behulp van het installatieprogramma voor onderdelen. Selecteer  **Voltooien**  zodra de onderdelen zijn geïnstalleerd.
 
@@ -237,11 +237,11 @@ Uw Notification Hub is nu geconfigureerd om te werken met Firebase Cloud Messagi
 
 4. Zorg ervoor dat u een virtueel apparaat hebt voor het uitvoeren van de app. Als u er geen hebt, voegt u er als volgt een toe:
 
-   1. :::image type="content" source="media/android-sdk/open-device-manager.png" alt-text="Apparaatbeheer":::
-   2. :::image type="content" source="media/android-sdk/your-virtual-devices.png" alt-text="Virtuele apparaten":::
+   1. :::image type="content" source="media/android-sdk/open-device-manager.png" alt-text="Project configureren":::
+   2. :::image type="content" source="media/android-sdk/your-virtual-devices.png" alt-text="Project configureren":::
    3. Voer de app uit op uw geselecteerde apparaat en verifieer dat deze correct is geregistreerd in de hub.
 
-      :::image type="content" source="media/android-sdk/device-registration.png" alt-text="Apparaatregistratie":::
+      :::image type="content" source="media/android-sdk/device-registration.png" alt-text="Project configureren":::
 
       > [!NOTE]
       > De registratie kan mislukken bij de eerste keer starten totdat de methode `onTokenRefresh()` van de exemplaar-id-service wordt aangeroepen. Een vernieuwing moet een succesvolle registratie met de Notification Hub tot stand brengen.
@@ -258,7 +258,7 @@ U kunt als volgt pushmeldingen naar uw Notification Hub verzenden vanuit de  [A
 
 4. Bekijk het resultaat van de bewerking in de lijst onderaan de portalpagina.
 
-   :::image type="content" source="media/android-sdk/notification-hubs-test-send.png" alt-text="Testmelding verzenden":::
+   :::image type="content" source="media/android-sdk/notification-hubs-test-send.png" alt-text="Project configureren":::
 
 5. U ziet de melding op uw apparaat.
 

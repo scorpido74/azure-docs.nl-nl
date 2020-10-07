@@ -3,12 +3,12 @@ title: 'Quickstart: Aangepaste gebeurtenissen verzenden naar een Azure-functie -
 description: 'Quickstart: Gebruik Azure Event Grid en Azure CLI of de portal om een onderwerp te publiceren en u te abonneren op deze gebeurtenis. Er wordt een Azure-functie gebruikt voor het eindpunt.'
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: 26ddfd1aeb61d3786edcdfca1acf5e293e4145ae
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: aea52bcaa94d6f288e86e44e1a0f294796d8e4a3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115091"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324387"
 ---
 # <a name="quickstart-route-custom-events-to-an-azure-function-with-event-grid"></a>Quickstart: Aangepaste gebeurtenissen routeren naar een Azure-functie met Event Grid
 
@@ -17,14 +17,17 @@ Azure Event Grid is een gebeurtenisservice voor de cloud. Azure Functions is een
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-azure-function"></a>Een Azure-functie maken
+Voordat u zich abonneert op het aangepaste onderwerp, gaan we een functie maken om de gebeurtenissen te verwerken. 
 
-Voordat u zich abonneert op het aangepaste onderwerp, gaan we een functie maken om de gebeurtenissen te verwerken. Klik in Azure Portal op Een resource maken, typ functie, kies Functie-app en klik vervolgens op Maken. Selecteer Nieuwe maken onder resourcegroep en geef deze een naam. U gebruikt deze voor de rest van de zelfstudie. Geef de functie-app een naam, laat de wisselknop Publiceren op Code staan, selecteer een willekeurige runtime en regio en klik vervolgens op Maken.
+1. Maak een functie-app maken met behulp van instructies in [Een functie-app maken](../azure-functions/functions-create-first-azure-function.md#create-a-function-app).
+2. Maak een functie met behulp van de **Event Grid Trigger**. Selecteer Als dit de eerste keer is dat u deze trigger gebruikt, moet u mogelijk op Installeren klikken om de extensie te installeren.
+    1. Selecteer op de pagina **Functie-app** **Functies** in het linkermenu, zoek **Event Grid** bij sjablonen en selecteer vervolgens **Azure Event Grid-trigger**. 
 
-Als uw functie-app klaar is, gaat u ernaartoe en klikt u op + Nieuwe functie. Selecteer In de portal voor de ontwikkelomgeving en klik op Doorgaan. Kies onder Een functie maken de optie Meer sjablonen om meer sjablonen weer te geven en zoek vervolgens naar Azure Event Grid-trigger en selecteer die optie. Als dit de eerste keer is dat u deze trigger gebruikt, moet u mogelijk op Installeren klikken om de extensie te installeren.
+        :::image type="content" source="./media/custom-event-to-function/function-event-grid-trigger.png" alt-text="Event Grid-trigger selecteren":::
+3. Voer op de pagina **Nieuwe functie** een naam in voor de functie en selecteer **Functie maken**.
 
-![De functie Event Grid-trigger](./media/custom-event-to-function/grid-trigger.png)
-
-Nadat u de extensie hebt geïnstalleerd, klikt u op Doorgaan, geeft u uw functie een naam en klikt u vervolgens op Maken.
+    :::image type="content" source="./media/custom-event-to-function/new-function-page.png" alt-text="Event Grid-trigger selecteren":::
+4. Gebruik de pagina **Code + Test** om de bestaande code voor de functie te bekijken en bij te werken. 
 
 [!INCLUDE [event-grid-register-provider-portal.md](../../includes/event-grid-register-provider-portal.md)]
 
@@ -81,8 +84,12 @@ U abonneert u op een Event Grid-onderwerp om Event Grid te laten weten welke geb
     5. Selecteer voor het eindpunt het Azure-abonnement en de resourcegroep waarin uw functie-app zich bevindt en selecteer vervolgens de functie-app en de functie die u eerder hebt gemaakt. Selecteer **Confirm Selection** (Selectie bevestigen).
 
        ![Eindpunt-URL opgeven](./media/custom-event-to-function/provide-endpoint.png)
-
-    6. Selecteer **Maken** als u terug bent op de pagina **Gebeurtenisabonnement maken**.
+    6. Deze stap is optioneel, maar wordt aanbevolen voor productiescenario's. Ga op de pagina **Gebeurtenisabonnement maken** naar het tabblad **Geavanceerde functies** en stel waarden in voor **Maximum aantal gebeurtenissen per batch** en **Gewenste batchgrootte in kilobytes**. 
+    
+        Batchverwerking biedt u een hoge doorvoer. Voor **Maximum aantal gebeurtenissen per batch** stelt u het maximum aantal gebeurtenissen in dat een abonnement aan een batch toevoegt. Gewenste batchgrootte wordt de bovengrens van de batchgrootte in kilobytes, maar kan worden overschreden als een enkele gebeurtenis groter is dan deze drempelwaarde.
+    
+        :::image type="content" source="./media/custom-event-to-function/enable-batching.png" alt-text="Event Grid-trigger selecteren":::
+    6. Selecteer **Maken** op de pagina **Gebeurtenisabonnement maken**.
 
 ## <a name="send-an-event-to-your-topic"></a>Een gebeurtenis verzenden naar het onderwerp
 

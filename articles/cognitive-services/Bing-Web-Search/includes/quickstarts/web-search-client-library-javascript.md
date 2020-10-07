@@ -8,13 +8,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 0a505e5fb11e776a90c8e198b2568e2ac0bd1854
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: 20eaf6e6a9f0eee15e6ad6a5bd8f23bf8531545c
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406368"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376602"
 ---
 Met de Bing Web Search-clientbibliotheek kunt u Bing Web Search eenvoudig integreren in uw Node.js-toepassing. In deze snelstartgids leert u hoe u een instantie maakt voor een client, een aanvraag verzendt en het antwoord weergeeft.
 
@@ -49,8 +49,8 @@ U moet eerst de ontwikkelomgeving voor het Node.js-project opzetten.
 1. Nu gaan we enkele Azure-modules installeren en toevoegen aan de `package.json`:
 
     ```console
-    npm install --save azure-cognitiveservices-websearch
-    npm install --save ms-rest-azure
+    npm install --save @azure/cognitiveservices-websearch
+    npm install --save @azure/ms-rest-azure-js
     ```
 
 ## <a name="create-a-project-and-declare-required-modules"></a>Een project maken en de vereiste modules declareren
@@ -60,13 +60,13 @@ Maak in dezelfde map als uw `package.json` een nieuw Node.js-project met behulp 
 Vervolgens kopieert u deze code naar uw project. Hiermee worden de modules geladen die in de vorige sectie zijn geïnstalleerd.
 
 ```javascript
-const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
-const WebSearchAPIClient = require('azure-cognitiveservices-websearch');
+const CognitiveServicesCredentials = require('@azure/ms-rest-azure-js').CognitiveServicesCredentials;
+const WebSearchAPIClient = require('@azure/cognitiveservices-websearch');
 ```
 
 ## <a name="instantiate-the-client"></a>Een instantie maken voor de client
 
-Met deze code wordt een instantie gemaakt voor een client en wordt gebruikgemaakt van de module `azure-cognitiveservices-websearch`. Zorg ervoor dat u een geldige abonnementssleutel voor uw Azure-account invoert voordat u verdergaat.
+Met deze code wordt een instantie gemaakt voor een client en wordt gebruikgemaakt van de module `@azure/cognitiveservices-websearch`. Zorg ervoor dat u een geldige abonnementssleutel voor uw Azure-account invoert voordat u verdergaat.
 
 ```javascript
 let credentials = new CognitiveServicesCredentials('YOUR-ACCESS-KEY');

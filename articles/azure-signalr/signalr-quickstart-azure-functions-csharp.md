@@ -1,19 +1,19 @@
 ---
 title: Quickstart voor de serverloze Azure SignalR Service - C#
-description: Een quickstart waarin u leert hoe u de service Azure SignalR en Azure Functions gebruikt om een chatruimte te maken.
+description: Een quickstart waarin u leert hoe u de service Azure SignalR en Azure Functions gebruikt om een chatruimte te maken met behulp van C#.
 author: sffamily
 ms.service: signalr
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.date: 03/04/2019
+ms.date: 09/25/2020
 ms.author: zhshang
-ms.openlocfilehash: 54a4c9374c064073620f2679e7c7511e30c45de6
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: be26fdafe0a8a52669fe41fd5514c808f10df745
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050638"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369124"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-c"></a>Quickstart: Een chatruimte maken met Azure Functions en SignalR Service met behulp van C\#
 
@@ -21,11 +21,11 @@ Met de service Azure SignalR kunt u eenvoudig realtimefunctionaliteit toevoegen 
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u Visual Studio 2019 nog niet hebt geïnstalleerd, kunt u het downloaden en de **gratis** [Community Edition van Visual Studio 2019](https://www.visualstudio.com/downloads/) gebruiken. Zorg ervoor dat u **Azure-ontwikkeling** inschakelt tijdens de installatie van Visual Studio.
+Als u Visual Studio 2019 nog niet hebt geïnstalleerd, kunt u het downloaden en de **gratis** [Community Edition van Visual Studio 2019](https://www.visualstudio.com/downloads) gebruiken. Zorg ervoor dat u **Azure-ontwikkeling** inschakelt tijdens de installatie van Visual Studio.
 
 U kunt deze zelfstudie ook uitvoeren op de opdrachtregel (macOS, Windows of Linux) met behulp van de [Azure Functions Core Tools (v2)](https://github.com/Azure/azure-functions-core-tools#installing), de [.NET Core SDK](https://dotnet.microsoft.com/download) en uw favoriete code-editor.
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+Als u geen Azure-abonnement hebt, [kunt u er gratis een maken](https://azure.microsoft.com/free/dotnet) voordat u begint.
 
 [Ondervindt u problemen? Laat het ons weten.](https://aka.ms/asrs/qscsharp)
 
@@ -55,13 +55,13 @@ Meld u met uw Azure-account aan bij Azure Portal op <https://portal.azure.com/>.
 
 1. Selecteer en kopieer de primaire verbindingsreeks.
 
-1. Terug in Visual Studio wijzigt u in Solution Explorer de naam van *local.settings.sample.json* in *local.settings.json*.
+1. Terug in Visual Studio wijzigt u in **Solution Explorer** de naam van *local.settings.sample.json* in *local.settings.json*.
 
-1. Plak in **local.settings.json** de verbindingsreeks in de waarde van de instelling **AzureSignalRConnectionString**. Sla het bestand op.
+1. Plak in *local.settings.json* de verbindingsreeks in de waarde van de instelling **AzureSignalRConnectionString**. Sla het bestand op.
 
-1. Open **Functions.cs**. Deze functie-app bevat twee met HTTP geactiveerde functies:
+1. Open *Functions.cs*. Deze functie-app bevat twee met HTTP geactiveerde functies:
 
-    - **GetSignalRInfo**: gebruikt de invoergegevensbinding *SignalRConnectionInfo* om geldige verbindingsgegevens te genereren en te retourneren.
+    - **GetSignalRInfo**: gebruikt de invoergegevensbinding `SignalRConnectionInfo` om geldige verbindingsgegevens te genereren en te retourneren.
     - **SendMessage**: ontvangt een chatbericht in de aanvraagbody en gebruikt de uitvoergegevensbinding *SignalR* om het bericht uit te zenden naar alle verbonden clienttoepassingen.
 
 1. Gebruik een van de volgende opties om de Azure Functie-app lokaal te starten.

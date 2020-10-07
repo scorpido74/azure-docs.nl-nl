@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 03/10/2020
-ms.openlocfilehash: 21376eb40fb40abe67f7e03d15aabd7d89ea62f8
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 40f8c36b197b0c68b9f04a02dc7731877b27ddd2
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "80082312"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541659"
 ---
 # <a name="tutorial-configure-apache-ambari-email-notifications-in-azure-hdinsight"></a>Zelfstudie: E-mailmeldingen voor Apache Ambari configureren in Azure HDInsight
 
@@ -54,7 +54,7 @@ In deze zelfstudie leert u het volgende:
 
 1. Selecteer in het venster **Waarschuwingsmeldingen beheren** het pictogram **+** .
 
-    ![Ambari waarschuwingsmelding maken](./media/apache-ambari-email/azure-portal-create-notification.png)
+    ![Schermafbeelding van het dialoogvenster Waarschuwingsmeldingen beheren.](./media/apache-ambari-email/azure-portal-create-notification.png)
 
 1. Geef in het dialoogvenster **Waarschuwingsmelding maken** de volgende informatie op:
 
@@ -75,7 +75,7 @@ In deze zelfstudie leert u het volgende:
     |Wachtwoord bevestigen|Voer het wachtwoord opnieuw in.|
     |TLS starten|Schakel dit selectievakje in|
 
-    ![Ambari waarschuwingsmelding maken](./media/apache-ambari-email/ambari-create-alert-notification.png)
+    ![Schermafbeelding van het dialoogvenster Waarschuwingsmeldingen maken.](./media/apache-ambari-email/ambari-create-alert-notification.png)
 
     Selecteer **Opslaan**. U gaat terug naar het venster **Waarschuwingsmeldingen beheren**.
 

@@ -3,12 +3,12 @@ title: Opzetten van een leslokaallab met Azure Lab Services | Microsoft Docs
 description: In deze zelfstudie gebruikt u Azure Lab Services om een leslokaallab in te stellen met virtuele machines die worden gebruikt door studenten in uw les.
 ms.topic: tutorial
 ms.date: 06/26/2020
-ms.openlocfilehash: bc1b23b92c6af902797a9be354fe6514b4e225af
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 1155646d31ddb8a0a3abce025acde5c4cb645f54
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85445131"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336731"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Zelfstudie: Een leslokaallab instellen 
 In deze zelfstudie stelt u een leslokaallab in met virtuele machines die worden gebruikt door studenten in het leslokaal.  
@@ -37,7 +37,7 @@ In deze stap maakt u een lab voor uw klas in Azure.
 2. Selecteer **Aanmelden** en voer uw referenties in. Azure Lab Services ondersteunt organisatieaccounts en Microsoft-accounts. 
 3. Selecteer **Nieuw lab**. 
     
-    ![Een leslokaallab maken](./media/tutorial-setup-classroom-lab/new-lab-button.png)
+    ![Schermopname waarin "Azure Lab Services" wordt weergegeven, waarbij de knop "Nieuw lab" geselecteerd is.](./media/tutorial-setup-classroom-lab/new-lab-button.png)
 4. Voer in het venster **Nieuw lab** de volgende acties uit: 
     1. Geef een **naam** voor uw lab op en selecteer **Volgende**.  
 
@@ -90,7 +90,7 @@ Maak een geplande gebeurtenis voor het lab, zodat VM's in het lab op opgegeven m
 
 1. Ga naar de pagina **Planningen** en selecteer **Geplande gebeurtenis toevoegen** in de werkbalk. 
 
-    ![Knop Planning toevoegen op de pagina Planningen](./media/how-to-create-schedules/add-schedule-button.png)
+    ![Schermafbeelding met de knop "Geplande gebeurtenis toevoegen" op de pagina "Planningen".](./media/how-to-create-schedules/add-schedule-button.png)
 2. Voer de volgende stappen uit op de pagina **Geplande gebeurtenis toevoegen**:
     1. Controleer of **Standaard** is geselecteerd voor het **Gebeurtenistype**.  
     2. Selecteer de **begindatum** voor de klas. 

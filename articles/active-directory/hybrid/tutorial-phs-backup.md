@@ -12,12 +12,12 @@ ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9cd70d534cebf35938285208dc76bd4a6d94533
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 3d9f59906c566d80344891c0796a85b0a4972e68
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279003"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91313090"
 ---
 # <a name="tutorial--setting-up-phs-as-backup-for-ad-fs-in-azure-ad-connect"></a>Zelfstudie:  WHS instellen als back-up voor AD FS in Azure AD Connect
 
@@ -74,7 +74,7 @@ We laten u nu zien hoe u overschakelt naar wachtwoord-hashsynchronisatie. Voorda
 
 1. Blader naar [https://myapps.microsoft.com](https://myapps.microsoft.com)
 2. Meld u aan met een gebruikersaccount dat is gemaakt in onze nieuwe tenant.  U moet zich aanmelden met de volgende indeling: (user@domain.onmicrosoft.com). Gebruik hetzelfde wachtwoord dat de gebruiker gebruikt om zich on-premises aan te melden.</br>
-   ![Verifiëren](media/tutorial-password-hash-sync/verify1.png)</br>
+   ![Schermafbeelding met een bericht 'Geslaagd' bij het testen van de aanmelding. ](media/tutorial-password-hash-sync/verify1.png)</br>
 
 ## <a name="switch-back-to-federation"></a>Terug naar federatie
 Nu wordt getoond hoe u terugkeert naar federatie.  U kunt dit als volgt doen:
@@ -91,7 +91,7 @@ Nu wordt getoond hoe u terugkeert naar federatie.  U kunt dit als volgt doen:
 10. Zodra de configuratie is voltooid, klikt u op **Volgende**.
 ![Configureren](media/tutorial-phs-backup/backup4.png)</br>
 11. Klik op het scherm **Federatieve connectiviteit verifiëren** op **Controleren**.  Mogelijk moet u DNS-records configureren (A- en AAAA-records toevoegen) om dit te voltooien.
-![Verifiëren](media/tutorial-phs-backup/backup5.png)</br>
+![Schermopname van het scherm Federatieve connectiviteit controleren en de knop Verifiëren.](media/tutorial-phs-backup/backup5.png)</br>
 12. Klik op **Afsluiten**.
 
 ## <a name="reset-the-ad-fs-and-azure-trust"></a>De AD FS- en Azure-vertrouwensrelatie opnieuw instellen
@@ -106,7 +106,7 @@ Nu moet de vertrouwensrelatie tussen AD FS en Azure opnieuw worden ingesteld.
 6.  Voer op het scherm **Verbinding maken met AD FS** de gebruikersnaam en het wachtwoord voor contoso\Administrator in en klik op **Volgende**.
 7.  Klik op het scherm **Certificaten** op **Volgende**.
 
-## <a name="test-signing-in-with-one-of-our-users"></a>Aanmelden testen met een van onze gebruikers
+## <a name="test-signing-in-with-a-user"></a>Aanmelden met een gebruiker testen
 
 1.  Blader naar [https://myapps.microsoft.com](https://myapps.microsoft.com)
 2. Meld u aan met een gebruikersaccount dat is gemaakt in onze nieuwe tenant.  U moet zich aanmelden met de volgende indeling: (user@domain.onmicrosoft.com). Gebruik het wachtwoord waarmee de gebruiker zich on-premises aanmeldt.

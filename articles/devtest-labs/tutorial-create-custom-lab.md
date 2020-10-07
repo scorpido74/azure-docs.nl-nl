@@ -3,12 +3,12 @@ title: Een lab met Azure DevTest Labs maken | Microsoft Docs
 description: In deze zelfstudie maakt u een lab in Azure DevTest Labs met behulp van de Microsoft Azure-portal. Een lab-administrator stelt een lab op, maakt virtuele machines in het lab en configureert beleidsregels.
 ms.topic: tutorial
 ms.date: 06/26/2020
-ms.openlocfilehash: 9d016b38beb2f338a97ac862a060dc5ec3a77780
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 4b59edd4ab1204d6683cf95a02070d10b1abe061
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85476560"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324277"
 ---
 # <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs"></a>Zelfstudie: Een lab maken met Azure DevTest Labs
 In deze zelfstudie maakt u een lab met Azure Portal. Een labbeheerder stelt in een organisatie een lab op, maakt virtuele machines in het lab en configureert beleidsregels. Labgebruikers (bijvoorbeeld ontwikkelaars en testers) claimen virtuele machines in het lab, maken hier verbinding mee en gebruiken deze. 
@@ -56,7 +56,7 @@ In de volgende stappen ziet u hoe u Azure Portal kunt gebruiken om een lab te ma
     2. Voer bij **Gebruikersnaam** een naam in voor de gebruiker die toegang heeft tot de virtuele machine. 
     3. Voer bij **Wachtwoord** het wachtwoord voor de gebruiker in. 
 
-        ![Een basis kiezen](./media/tutorial-create-custom-lab/new-virtual-machine.png)
+        ![Schermafbeelding van de basisinstellingen voor de pagina "Lab-resource maken".](./media/tutorial-create-custom-lab/new-virtual-machine.png)
 1. Selecteer het tabblad **Geavanceerde instellingen**.
     1. Selecteer bij **Instellen dat deze machine kan worden geclaimd** **Ja**.
     2. Controleer of het **aantal exemplaren** is ingesteld op **1**. Als u deze instelt op **2**, worden 2 virtuele machines gemaakt met de namen: `<base image name>00' and <base image name>01`. Bijvoorbeeld: `win10vm00` en `win10vm01`.     

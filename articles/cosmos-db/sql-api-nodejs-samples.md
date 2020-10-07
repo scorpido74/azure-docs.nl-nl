@@ -7,13 +7,13 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 08/23/2019
 ms.author: dech
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 2c0e2b7a63f02559f95b647bc1b4ef46b8a157cd
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: e6e28de27e6142b713c2f00ef982d30d04816b86
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421821"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326691"
 ---
 # <a name="nodejs-examples-to-manage-data-in-azure-cosmos-db"></a>Node.js-voorbeelden voor het beheren van gegevens in Azure Cosmos DB
 
@@ -21,6 +21,7 @@ ms.locfileid: "87421821"
 > * [.NET V2 SDK-voorbeelden](sql-api-dotnet-samples.md)
 > * [.NET V3 SDK-voorbeelden](sql-api-dotnet-v3sdk-samples.md)
 > * [Java V4 SDK-voorbeelden](sql-api-java-sdk-samples.md)
+> * [Spring Data V3 SDK-voorbeelden](sql-api-spring-data-sdk-samples.md)
 > * [Node.js-voorbeelden](sql-api-nodejs-samples.md)
 > * [Python-voorbeelden](sql-api-python-samples.md)
 > * [Galerie met codevoorbeelden voor Azure](https://azure.microsoft.com/resources/samples/?sort=0&service=cosmos-db)

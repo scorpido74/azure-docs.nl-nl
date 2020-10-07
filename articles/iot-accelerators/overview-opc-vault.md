@@ -1,6 +1,6 @@
 ---
-title: Wat is OPC kluis-Azure | Microsoft Docs
-description: Dit artikel bevat een overzicht van de OPC-kluis. Het kan de levens duur van de certificaten voor OPC UA-toepassingen in de Cloud configureren, registreren en beheren.
+title: Wat is OPC Vault - Azure | Microsoft Docs
+description: In dit artikel vindt u een overzicht van OPC Vault. Het kan de levensduur van de certificaten voor OPC UA-toepassingen in de cloud configureren, registreren en beheren.
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
@@ -8,32 +8,34 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 66a322d4f60d9553a68207136ae609c1f9b50dbc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 715ed204e28d6260c28fa099b40fc78aa12de44d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73826205"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281538"
 ---
-# <a name="what-is-opc-vault"></a>Wat is OPC kluis?
+# <a name="what-is-opc-vault"></a>Wat is OPC Vault?
 
-OPC-kluis is een micro service die de levens cyclus van de certificaten voor OPC UA-server en client toepassingen in de cloud kan configureren, registreren en beheren. In dit artikel worden de eenvoudige gebruiks voorbeelden van de OPC-kluis beschreven.
+> [!IMPORTANT]
+> Zie [Azure Industrial IoT](https://azure.github.io/Industrial-IoT/) voor de meest recente inhoud terwijl we dit artikel bijwerken.
+
+OPC Vault is een microservice die de levenscyclus van certificaten voor OPC UA-server en clienttoepassingen in de cloud kan configureren, registreren en beheren. In dit artikel worden de eenvoudige gebruiksvoorbeelden van OPC Vault beschreven.
 
 ## <a name="certificate-management"></a>Certificaatbeheer
 
-Zo moet een productie bedrijf de OPC UA-server machine verbinden met de nieuwe client toepassing. Wanneer de fabrikant de eerste toegang tot de Server computer maakt, wordt er onmiddellijk een fout bericht weer gegeven op de OPC UA-server toepassing om aan te geven dat de client toepassing niet beveiligd is. Dit mechanisme is gebaseerd op de OPC UA-server machine om te voor komen dat onbevoegde toegang tot toepassingen wordt gekraakt, waardoor vicieuze niet op de werk vloer kan worden gehackt.
+Bijvoorbeeld een productiebedrijf dat zijn OPC UA-servermachine moet verbinden met een nieuwe clienttoepassingen. Wanneer de fabrikant de eerste keer de servermachine probeert te openen, wordt een foutmelding weergegeven op de OPC UA-servertoepassing om aan te geven dat de clienttoepassing niet veilig is. Dit mechanisme is gebaseerd op de OPC UA-servermachine om te voorkomen dat onbevoegde toepassingen toegang krijgen, om te voorkomen dat de winkel gehackt wordt.
 
-## <a name="application-security-management"></a>Beheer van toepassings beveiliging
-Een beveiligings Professional gebruikt OPC-kluis micro service om de OPC UA-server eenvoudig in te scha kelen voor communicatie met elke client toepassing, omdat OPC-kluis beschikt over alle functies voor certificaat register, opslag en levenscyclus beheer. De OPC UA-server is nu veilig verbonden en kan communiceren met de zojuist opgebouwde client toepassing
+## <a name="application-security-management"></a>Beveiligingsbeheer van de toepassing
+Een beveiligingsprofessional gebruikt de OPC Vault-microservice om de OPC UA-server eenvoudig in staat te stellen om te communiceren met de clienttoepassing, aangezien OPC Vault alle functies heeft voor registratie, opslag en levenscyclusbeheer van certificaten. De OPC UA-server is nu veilig verbonden en kan communiceren met de zopas gecreëerde clienttoepassing
 
-## <a name="the-complete-opc-vault-architecture"></a>De volledige OPC-kluis architectuur
-In het volgende diagram ziet u de volledige OPC-kluis architectuur.
+## <a name="the-complete-opc-vault-architecture"></a>De volledige OPC Vault-architectuur
+In het volgende diagram ziet u de volledige OPC Vault-architectuur.
 
-![OPC-kluis architectuur](media/overview-opc-vault-architecture/opc-vault.png)
+![OPC Vault-architectuur](media/overview-opc-vault-architecture/opc-vault.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u hebt geleerd over OPC-kluis en het gebruik ervan, is dit de voorgestelde volgende stap:
+Nu u over OPC Vault en het gebruik ervan hebt geleerd, is dit de voorgestelde volgende stap:
 
-> [!div class="nextstepaction"]
-> [OPC-kluis architectuur](overview-opc-vault-architecture.md)
+[OPC Vault-architectuur](overview-opc-vault-architecture.md)

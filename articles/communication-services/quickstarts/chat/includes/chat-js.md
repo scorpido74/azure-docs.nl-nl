@@ -10,12 +10,12 @@ ms.date: 9/1/2020
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: a50f09dd52ccf4d35fd3803967898a4a25e3299f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d0754ea2d7e8f8f59ec475be8e27fcffd058c11f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90943841"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376889"
 ---
 ## <a name="prerequisites"></a>Vereisten
 Voordat u aan de slag gaat, moet u het volgende doen:
@@ -91,6 +91,8 @@ Maak een bestand in de hoofdmap van uw project met de naam **client.js** om de t
 
 Als u een chat-client in uw web-app wilt maken, gebruikt u het Communication Services-eindpunt en het toegangstoken dat is gegenereerd als onderdeel van de vereiste stappen. Met toegangstokens voor gebruikers kunt u clienttoepassingen maken die zich rechtstreeks verifiëren bij Azure Communication Services. Zodra u deze tokens op uw server hebt gegenereerd, geeft u ze terug op een clientapparaat. U moet de klasse `AzureCommunicationUserCredential` uit de `Common client library` gebruiken om het token aan uw chat-client door te geven.
 
+Maak een bestand **client.js** in de hoofdmap van uw project. We zullen dit bestand gebruiken om chat-functionaliteit toe te voegen met behulp van de Azure Communication chat-clientbibliotheek voor JavaScript.
+
 ```JavaScript
 
 import { ChatClient } from '@azure/communication-chat';
@@ -125,7 +127,7 @@ De volgende klassen en interfaces verwerken enkele van de belangrijkste functies
 
 | Naam                                   | Beschrijving                                                                                                                                                                           |
 | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ChatClient | Deze klasse is vereist voor de chat-functionaliteit. U instantieert deze klasse met uw abonnementsgegevens en gebruikt deze om threads te maken, op te halen en te verwijderen. |
+| ChatClient | Deze klasse is vereist voor de chat-functionaliteit. U instantieert deze klasse met uw abonnementsgegevens en gebruikt deze om threads te maken, krijgen en verzenden. |
 | ChatThreadClient | Deze klasse is vereist voor de functionaliteit van de chat-thread. U verkrijgt een instantie via de ChatClient en gebruikt deze om berichten te verzenden, te ontvangen, bij te werken of te verwijderen, gebruikers toe te voegen, te verwijderen of op te halen, getypte meldingen te verzenden, bevestigingen te lezen en u op chatgebeurtenissen te abonneren. |
 
 
@@ -264,7 +266,7 @@ Vernieuw uw tabblad, waarna u in de console een lijst met berichten zou moeten z
 
 
 `listMessages` retourneert de meest recente versie van het bericht, inclusief eventuele bewerkingen of verwijderingen die zijn opgetreden in het bericht met `updateMessage` en `deleteMessage`.
-Voor verwijderde berichten retourneert `chatMessage.deletedOn` een datum/tijd-waarde die aangeeft wanneer het bericht is verwijderd. Voor bewerkte berichten retourneert `chatMessage.editedOn` een datum/tijd die aangeeft wanneer het bericht is bewerkt. De oorspronkelijke tijd van het maken van het bericht kan worden geopend met `chatMessage.createdOn`, wat kan worden gebruikt voor het ordenen van de berichten.
+Voor verwijderde berichten retourneert `chatMessage.deletedOn` een datum/tijd-waarde die aangeeft wanneer het bericht verwijderd werd. Voor bewerkte berichten retourneert `chatMessage.editedOn` een datum/tijd die aangeeft wanneer het bericht is bewerkt. Het oorspronkelijke tijdstip waarop het bericht is gemaakt, kan worden geraadpleegd met `chatMessage.createdOn` en kan worden gebruikt om de berichten te ordenen.
 
 `listMessages` retourneert verschillende typen berichten die kunnen worden geïdentificeerd door `chatMessage.type`. Deze typen zijn:
 
@@ -274,9 +276,9 @@ Voor verwijderde berichten retourneert `chatMessage.deletedOn` een datum/tijd-wa
 
 - `ThreadActivity/AddMember`: Systeembericht dat aangeeft dat een of meer leden zijn toegevoegd aan de chat-thread.
 
-- `ThreadActivity/RemoveMember`: Systeembericht dat aangeeft dat een lid is verwijderd uit de chat-thread.
+- `ThreadActivity/RemoveMember`: Een systeembericht dat aangeeft dat een lid is verwijderd uit de chat-thread.
 
-Zie [Berichttypen](../../../concepts/chat/concepts.md#message-types) voor meer informatie.
+Zie [Berichttypen](../../../concepts/chat/concepts.md#message-types)voor meer informatie.
 
 ## <a name="add-a-user-as-member-to-the-chat-thread"></a>Een gebruiker toevoegen als lid van de chat-thread
 
@@ -285,7 +287,7 @@ Zodra u een chat-thread hebt gemaakt, kunt u gebruikers toevoegen en verwijderen
 `addMembersRequest` beschrijft het aanvraagobject waarin `members` de leden weergeeft die moeten worden toegevoegd aan de chat-thread;
 - `user`, vereist, is de communicatiegebruiker die moet worden toegevoegd aan de chat-thread.
 - `displayName`, optioneel, is de weergavenaam voor het thread-lid.
-- `shareHistoryTime`, optioneel, is de tijd vanaf wanneer de chat-geschiedenis wordt gedeeld met het lid. Als u de geschiedenis wilt delen sinds het begin van de chat-thread, stelt u deze eigenschap in op een willekeurige datum die gelijk is aan of kleiner is dan de aanmaaktijd van de thread. Als u geen geschiedenis wilt delen voordat het lid is toegevoegd, stel de eigenschap dan op de huidige datum in. Als u een deel van de geschiedenis wilt delen, stelt u de eigenschap in op de gewenste datum.
+- `shareHistoryTime`, optioneel, is de tijd van waaruit de chat-geschiedenis wordt gedeeld met het lid. Als u de geschiedenis wilt delen sinds het begin van de chat-thread, stelt u deze eigenschap in op een willekeurige datum die gelijk is aan of kleiner is dan de aanmaaktijd van de thread. Als u geen geschiedenis wilt delen voordat het lid is toegevoegd, stel de eigenschap dan op de huidige datum in. Als u een deel van de geschiedenis wilt delen, stelt u de eigenschap in op de gewenste datum.
 
 ```JavaScript
 

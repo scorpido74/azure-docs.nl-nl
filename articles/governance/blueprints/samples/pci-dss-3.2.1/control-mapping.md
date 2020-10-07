@@ -1,14 +1,14 @@
 ---
 title: Beheeropties van het blauwdrukvoorbeeld voor PCI-DSS v3.2.1
-description: Beheer de toewijzing van het blauwdrukvoorbeeld voor de Payment Card Industry Data Security Standard v3.2.1 aan Azure Policy en RBAC.
+description: Beheer de toewijzing van het blauwdrukvoorbeeld voor de Payment Card Industry Data Security Standard v3.2.1 aan Azure Policy en Azure RBAC.
 ms.date: 08/19/2020
 ms.topic: sample
-ms.openlocfilehash: e6133c4a847a6df8aa6a27bbca63e0fc2d047783
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 3d7bdd62dcc5b65b0978444e74013d289f03ed6a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649224"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541642"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>Toewijzing van het blauwdrukvoorbeeld voor PCI-DSS v3.2.1 beheren
 
@@ -63,7 +63,7 @@ Als er slechts één eigenaar van een Azure-abonnement is, is er geen administra
 
 ## <a name="32-721-831a-and-831b-management-of-privileged-access-rights"></a>3.2, 7.2.1, 8.3.1.a en 8.3.1.b Beheer van bevoegde toegangsrechten
 
-Met deze blauwdruk kunt u rechten voor bevoegde toegang beperken en beheren door [Azure Policy](../../../policy/overview.md)-definities toe te wijzen voor de controle van externe accounts met eigenaars-, schrijf en/of leesrechten en werknemersaccounts met eigenaars- en/of schrijfrechten waarvoor geen meervoudige verificatie is ingeschakeld. In Azure wordt op rollen gebaseerd toegangsbeheer (RBAC) geïmplementeerd om te beheren wie toegang heeft tot Azure-resources. Wanneer u weet waar aangepaste RBAC-regels zijn geïmplementeerd, kan dit u helpen om te controleren of deze nodig zijn en of deze correct zijn geïmplementeerd, omdat aangepaste RBAC-regels foutgevoelig zijn. Met deze blauwdruk wordt ook [Azure Policy](../../../policy/overview.md)-definities toegewezen om het gebruik van Azure Active Directory-verificatie voor SQL-servers en te controleren. Met behulp van Azure Active Directory-verificatie maakt vereenvoudigd beheer van machtigingen en gecentraliseerd identiteitsbeheer van databasegebruikers en andere Microsoft-services mogelijk.  
+Met deze blauwdruk kunt u rechten voor bevoegde toegang beperken en beheren door [Azure Policy](../../../policy/overview.md)-definities toe te wijzen voor de controle van externe accounts met eigenaars-, schrijf en/of leesrechten en werknemersaccounts met eigenaars- en/of schrijfrechten waarvoor geen meervoudige verificatie is ingeschakeld. In Azure wordt op rollen gebaseerd toegangsbeheer van Azure (Azure RBAC) geïmplementeerd om te beheren wie toegang heeft tot Azure-resources. Wanneer u weet waar aangepaste Azure RBAC-regels zijn geïmplementeerd, kan dit u helpen om te controleren of deze nodig zijn en of deze correct zijn geïmplementeerd, omdat aangepaste Azure RBAC-regels foutgevoelig zijn. Met deze blauwdruk wordt ook [Azure Policy](../../../policy/overview.md)-definities toegewezen om het gebruik van Azure Active Directory-verificatie voor SQL-servers en te controleren. Met behulp van Azure Active Directory-verificatie maakt vereenvoudigd beheer van machtigingen en gecentraliseerd identiteitsbeheer van databasegebruikers en andere Microsoft-services mogelijk.  
 cloudservices moet worden gebruikt.
  
 - Externe accounts met eigenaarsmachtigingen moeten worden verwijderd uit uw abonnement
@@ -77,7 +77,7 @@ cloudservices moet worden gebruikt.
 
 ## <a name="812-and-815-least-privilege-and-review-of-user-access-rights"></a>8.1.2 en 8.1.5 Least Privilege en controle van gebruikerstoegangsrechten
 
-In Azure wordt op rollen gebaseerde toegangsbeheer (RBAC) geïmplementeerd, waarmee u de toegang tot resources in Azure kunt beheren. Met behulp van de Azure-portal kunt u controleren wie toegang heeft tot Azure-resources en wat hun machtigingen zijn. Met deze blauwdruk worden [Azure Policy](../../../policy/overview.md)-definities toegewezen voor het controleren van accounts die prioriteit moeten krijgen om te worden beoordeeld, waaronder afgeschreven accounts en externe accounts met verhoogde rechten.
+Op rollen gebaseerd toegangsbeheer van Azure (Azure RBAC) helpt u te beheren wie toegang heeft tot Azure-resources. Met behulp van de Azure-portal kunt u controleren wie toegang heeft tot Azure-resources en wat hun machtigingen zijn. Met deze blauwdruk worden [Azure Policy](../../../policy/overview.md)-definities toegewezen voor het controleren van accounts die prioriteit moeten krijgen om te worden beoordeeld, waaronder afgeschreven accounts en externe accounts met verhoogde rechten.
 
 - Afgeschafte accounts moeten worden verwijderd uit uw abonnement
 - Afgeschafte accounts met eigenaarsmachtigingen moeten worden verwijderd uit uw abonnement
@@ -87,7 +87,7 @@ In Azure wordt op rollen gebaseerde toegangsbeheer (RBAC) geïmplementeerd, waar
 
 ## <a name="813-removal-or-adjustment-of-access-rights"></a>8.1.3 Verwijdering of aanpassing van toegangsrechten
 
-In Azure wordt op rollen gebaseerde toegangsbeheer (RBAC) geïmplementeerd, waarmee u de toegang tot resources in Azure kunt beheren. Met behulp van Azure Active Directory en RBAC kunt u gebruikersrollen bijwerken om wijzigingen in de organisatie weer te geven. Zo nodig kunnen accounts voor aanmelding worden geblokkeerd (of verwijderd), waardoor de toegangsrechten tot Azure-resources onmiddellijk worden verwijderd. Deze blauwdruk wijst [Azure Policy](../../../policy/overview.md)-definities toe voor het controleren van afgeschreven accounts die voor verwijdering moeten worden aangemerkt.
+Op rollen gebaseerd toegangsbeheer van Azure (Azure RBAC) helpt u te beheren wie toegang heeft tot Azure-resources. Met behulp van Azure Active Directory en Azure RBAC kunt u gebruikersrollen bijwerken om wijzigingen in de organisatie weer te geven. Zo nodig kunnen accounts voor aanmelding worden geblokkeerd (of verwijderd), waardoor de toegangsrechten tot Azure-resources onmiddellijk worden verwijderd. Deze blauwdruk wijst [Azure Policy](../../../policy/overview.md)-definities toe voor het controleren van afgeschreven accounts die voor verwijdering moeten worden aangemerkt.
 
 - Afgeschafte accounts moeten worden verwijderd uit uw abonnement
 - Afgeschafte accounts met eigenaarsmachtigingen moeten worden verwijderd uit uw abonnement

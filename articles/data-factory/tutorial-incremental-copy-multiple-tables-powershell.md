@@ -1,6 +1,6 @@
 ---
 title: Meerdere tabellen incrementeel kopiëren met behulp van PowerShell
-description: In deze zelfstudie maakt u een Azure Data Factory-pijplijn waarmee wijzigingsgegevens incrementeel uit meerdere tabellen van een SQL Server-database worden gekopieerd naar een database in Azure SQL Database.
+description: In deze zelfstudie maakt u een Azure Data Factory met een pijplijn waarmee wijzigingsgegevens uit meerdere tabellen van een SQL Server-database naar Azure SQL Database worden gekopieerd.
 services: data-factory
 ms.author: yexu
 author: dearandyxu
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: e7846ae0f52dfee4260838302d55213d2791eb07
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: d32c4da4604307bca406f7f5d5e5a94b69efe7ac
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85250958"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541812"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-azure-sql-database-using-powershell"></a>Incrementeel gegevens uit meerdere tabellen in SQL Server naar Azure SQL Database kopiëren met behulp van PowerShell
 
@@ -821,11 +821,11 @@ In deze pijplijn wordt een lijst met tabelnamen gebruikt als parameter. De **For
 4. Ga naar de pagina **Data Factory** en selecteer **Maken en controleren** om de Azure Data Factory-gebruikersinterface te openen op een afzonderlijk tabblad.
 
 5. Selecteer op de pagina **Aan de slag** de optie **Controleren** aan de linkerkant. 
-![Pijplijnuitvoeringen](media/doc-common-process/get-started-page-monitor-button.png)    
+![Schermafbeelding toont de pagina Aan de slag voor Azure Data Factory.](media/doc-common-process/get-started-page-monitor-button.png)    
 
 6. U kunt alle pijplijnactiviteiten en hun status zien. Let erop dat in het volgende voorbeeld de status van de pijplijnactiviteit **Geslaagd** is. U kunt parameters controleren die zijn doorgegeven aan de pijplijn door de koppeling in de kolom **Parameters** te selecteren. Als er een fout is opgetreden, ziet u een koppeling in de kolom **Fout**.
 
-    ![Pijplijnuitvoeringen](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-pipeline-runs-4.png)    
+    ![Schermopname van pijplijnuitvoeringen voor een data factory, inclusief uw pijplijn.](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-pipeline-runs-4.png)    
 7. Wanneer u de koppeling in de kolom **Acties** selecteert, ziet u alle uitvoeringen van activiteiten voor de pijplijn. 
 
 8. Als u wilt terugkeren naar de weergave**Pijplijnuitvoeringen**, selecteert u **Alle pijplijnuitvoeringen** bovenaan. 

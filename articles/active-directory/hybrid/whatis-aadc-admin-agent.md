@@ -11,12 +11,12 @@ ms.date: 09/04/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43b69deb242fd1ad80d9cdc4667070d2dbfefcd5
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: da4e1cfc68dff4ad2bc0552c6d35fe1230779306
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255605"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91312954"
 ---
 # <a name="what-is-the-azure-ad-connect-admin-agent"></a>Wat is de Azure AD Connect-beheerderagent? 
 De Azure AD Connect-beheerderagent is een nieuw onderdeel van Azure Active Directory Connect dat kan worden geïnstalleerd op een Azure Active Directory Connect-server. Het wordt gebruikt om specifieke gegevens te verzamelen uit uw Active Directory-omgeving waarmee een Microsoft-ondersteuningstechnicus problemen kan oplossen wanneer u een ondersteuningscase opent. 
@@ -46,7 +46,7 @@ Voer uw globale beheerdersreferenties voor Azure AD in wanneer daarom gevraagd w
 
 Nadat de agent is geïnstalleerd, ziet u de volgende twee nieuwe programma's in de lijst 'Programma's toevoegen/verwijderen' in het configuratiescherm van uw server: 
 
-![beheerderagent](media/whatis-aadc-admin-agent/adminagent1.png)
+![Schermopname van de lijst met Programma's toevoegen/verwijderen met de nieuwe programma's die u hebt toegevoegd.](media/whatis-aadc-admin-agent/adminagent1.png)
 
 ## <a name="what-data-in-my-sync-service-is-shown-to-the-microsoft-service-engineer"></a>Welke gegevens in mijn Synchronisatieservice worden getoond aan de Microsoft-servicetechnicus? 
 Wanneer u een ondersteuningscase opent, kan de Microsoft-ondersteuningstechnicus de relevante gegevens in Active Directory, de Active Directory Connector-ruimte op de Azure Active Directory Connect-server, de Azure Active Directory Connector-ruimte op de Azure Active Directory Connect-server en de Metaverse op de Azure Active Directory Connect-server zien voor een bepaalde gebruiker. 
@@ -69,7 +69,7 @@ Als u de agent hebt geïnstalleerd en u niet wilt dat de servicetechnicus van Mi
 3. Sla het configuratiebestand op.
 4. Start de service voor de Azure AD Connect-beheerdersagent opnieuw op zoals hieronder wordt weergegeven
 
-![beheerderagent](media/whatis-aadc-admin-agent/adminagent2.png)
+![Schermafbeelding die laat zien waar de Azure AD Administrator Agent-service opnieuw kan worden gestart.](media/whatis-aadc-admin-agent/adminagent2.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 Lees meer over het [integreren van uw on-premises identiteiten met Azure Active Directory](whatis-hybrid-identity.md).

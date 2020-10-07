@@ -8,24 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: overview
-ms.date: 08/05/2020
+ms.date: 09/15/2020
 ms.author: pafarley
-ms.openlocfilehash: 82dc81c540115f08e57f87e63184e1e895c5e4fe
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.custom: cog-serv-seo-aug-2020
+keywords: content moderator, azure content moderator, online moderator, software voor het filteren van inhoud, service voor het modereren van content
+ms.openlocfilehash: d502f41a79500b80e1891219b54bde30eb3cd8ca
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87834538"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91309651"
 ---
 # <a name="what-is-azure-content-moderator"></a>Wat is Azure Content Moderator?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Azure Content Moderator is een cognitieve service waarmee tekst, afbeeldingen en video-inhoud van materiaal wordt gecontroleerd op mogelijk aanstootgevende, riskante of anderszins ongewenst inhoud. Wanneer dit materiaal wordt gevonden, past de service de relevante labels (vlaggen) op de inhoud toe. Uw app kan gelabelde inhoud vervolgens afhandelen om te voldoen aan de regelgeving of om een beoogde omgeving voor gebruikers te beheren. Zie de sectie [Beheer-API's](#moderation-apis) voor meer informatie over wat de verschillende inhoudsvlaggen betekenen.
+Azure Content Moderator is een AI-service waarmee u inhoud kunt afhandelen die mogelijk aanstootgevend, riskant of anderszins ongewenst is. Het bevat de op AI gebaseerde service om content te modereren waarmee tekst, afbeeldingen en video's worden gescand en automatisch content gemarkeerd wordt, evenals de Controletool, een online moderatoromgeving voor een team van mensen die inhoud beoordelen.
+
+U kunt software toevoegen voor het filteren van inhoud aan uw app om te voldoen aan de regelgeving of om de beoogde omgeving voor gebruikers te behouden.
 
 ## <a name="where-its-used"></a>Waar het wordt gebruikt
 
-Hieronder vindt u enkele scenario's waarin een softwareontwikkelaar of -team Content Moderator kan gebruiken:
+Hieronder vindt u enkele scenario's waarin een softwareontwikkelaar of -team een service nodig hebben om toezicht te houden op content:
 
 - Onlinemarktplaatsen die toezicht willen houden op productcatalogi en andere door gebruikers gegenereerde inhoud.
 - Gamingbedrijven die toezicht willen houden op door gebruikers gegenereerde gameartefacten en chatruimten.
@@ -33,7 +37,7 @@ Hieronder vindt u enkele scenario's waarin een softwareontwikkelaar of -team Con
 - Grote mediabedrijven die gecentraliseerd toezicht implementeren voor hun inhoud.
 - Leveranciers van oplossingen voor lager en voortgezet onderwijs die willen filteren op inhoud die ongepast is voor leerlingen en docenten.
 
-> [!NOTE]
+> [!IMPORTANT]
 > U kunt Content Moderator niet gebruiken om illegale afbeeldingen van kindermisbruik te detecteren. Gekwalificeerde organisaties kunnen echter het scherm [PhotoDNA Cloud Service](https://www.microsoft.com/photodna "Microsoft PhotoDNA Cloud Service") gebruiken voor dit type inhoud.
 
 ## <a name="what-it-includes"></a>Samenstelling van Content Moderator
@@ -77,4 +81,4 @@ Zoals geldt voor alle services van Cognitive Services, dienen ontwikkelaars die 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga aan de slag met de Content Moderator-service door de instructies in [Content Moderator op het web proberen](quick-start.md) te volgen.
+Om aan de slag te gaan met Content Moderator in het webportaal, gaat u naar [Content Moderator op het web uitproberen](quick-start.md). U kunt ook een [snelstartgids voor de clientbibliotheek](client-libraries.md) doorlopen om het basisscenario met code te implementeren.

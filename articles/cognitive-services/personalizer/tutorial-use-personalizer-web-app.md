@@ -4,12 +4,12 @@ description: Een C# .NET-web-app aanpassen met een Personalizer-lus om de juiste
 ms.topic: tutorial
 ms.date: 06/10/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e9ce4c433a038008b1ffd75dc6c4b2f9d0b57fde
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 59881a749676f4f5408c1ffc87b3bcf75c512e1e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935616"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91316219"
 ---
 # <a name="tutorial-add-personalizer-to-a-net-web-app"></a>Zelfstudie: Personalizer toevoegen aan een .NET-web-app
 
@@ -254,7 +254,7 @@ Bouw en voer HttpRequestFeaturesExample uit met een van de volgende methoden:
 U kunt via een webbrowser een Rank-aanvraag en een Reward-aanvraag verzenden en de antwoorden zien, evenals de HTTP-aanvraagfuncties die zijn geëxtraheerd uit uw omgeving.
 
 > [!div class="mx-imgBorder"]
-> ![Bouw en voer het project HTTPRequestFeaturesExample uit. Er wordt een browservenster geopend waarin de toepassing met één pagina wordt weergegeven.](./media/tutorial-web-app/web-app-single-page.png)
+> ![Schermafbeelding van de functie HTTP-aanvraag in een webbrowser.](./media/tutorial-web-app/web-app-single-page.png)
 
 ## <a name="demonstrate-the-personalizer-loop"></a>De Personalizer-lus tonen
 
@@ -267,7 +267,7 @@ U kunt via een webbrowser een Rank-aanvraag en een Reward-aanvraag verzenden en 
 1. Stel de beloningswaarde in en selecteer de knop **Send Reward Request**. Als u de beloningswaarde niet wijzigt, verzendt de clienttoepassing altijd de waarde `1` naar Personalizer.
 
     > [!div class="mx-imgBorder"]
-    > ![Bouw en voer het project HTTPRequestFeaturesExample uit. Er wordt een browservenster geopend waarin de toepassing met één pagina wordt weergegeven.](./media/tutorial-web-app/reward-score-api-call.png)
+    > ![Schermafbeelding van de sectie Beloningsaanvraag.](./media/tutorial-web-app/reward-score-api-call.png)
 
     Voor uw eigen toepassing is het mogelijk dat er een beloningsscore wordt gegenereerd na het verzamelen van informatie van het gedrag van de gebruiker op de client, samen met de bedrijfslogica op de server.
 

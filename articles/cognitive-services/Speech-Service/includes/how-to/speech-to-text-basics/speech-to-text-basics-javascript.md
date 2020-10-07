@@ -4,17 +4,23 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/15/2020
 ms.author: trbye
-ms.custom: devx-track-javascript
-ms.openlocfilehash: fced9206bfd7d33ab4d9e911f92f12ec4b2aa99c
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.custom: devx-track-js
+ms.openlocfilehash: 8681d76616a0e1071a33e0989a784362fdb41bb2
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89564968"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91376745"
 ---
+Een van de belangrijkste functies van de Speech-service is de mogelijkheid om menselijke spraak te herkennen en te transcriberen (ook wel spraak-naar-tekst genoemd). In deze quickstart leert u meer over het gebruik van de Speech-SDK in uw apps en producten om spraak-naar-tekst-conversie van hoge kwaliteit uit te voeren.
+
+## <a name="skip-to-samples-on-github"></a>Naar voorbeelden op GitHub
+
+Raadpleeg de [JavaScript-quickstartvoorbeelden](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node) op GitHub als u direct naar voorbeeldcode wilt gaan.
+
 ## <a name="prerequisites"></a>Vereisten
 
-In dit artikel wordt ervan uitgegaan dat u een Azure-account en een abonnement op de Speech-service hebt. Als u geen account en abonnement hebt, [kunt u de Speech-service gratis uitproberen](../../../get-started.md).
+In dit artikel wordt ervan uitgegaan dat u een Azure-account en een abonnement op de Speech-service hebt. Als u geen account en abonnement hebt, [kunt u de Speech-service gratis uitproberen](../../../overview.md#try-the-speech-service-for-free).
 
 ## <a name="install-the-speech-sdk"></a>De Speech-SDK installeren
 

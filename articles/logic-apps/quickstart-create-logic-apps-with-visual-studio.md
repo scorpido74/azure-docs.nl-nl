@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 08/07/2020
-ms.openlocfilehash: cc38210690c88fec826dc727775d01884dedd997
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: cdc4dfe23cce7c2f58e4c9b44f2cea46e2337e00
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008879"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322441"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Quickstart: Geautomatiseerde taken, processen en werkstromen maken met Azure Logic Apps - Visual Studio
 
@@ -22,7 +22,7 @@ Als u niet vertrouwd bent met Azure Logic Apps en u alleen de basisconcepten wil
 
 In deze quickstart maakt u met Visual Studio dezelfde logische app als in de quickstart voor de Azure-portal. Deze logische app bewaakt de RSS-feed van een website en verzendt een e-mail voor elk nieuw item in die feed. Uw uiteindelijke logische app ziet eruit als deze algemene werkstroom:
 
-![Voltooide logische app](./media/quickstart-create-logic-apps-with-visual-studio/high-level-workflow-overview.png)
+![Schermafbeelding van de algemene werkstroom van een voltooide logische app.](./media/quickstart-create-logic-apps-with-visual-studio/high-level-workflow-overview.png)
 
 <a name="prerequisites"></a>
 
@@ -55,7 +55,7 @@ In deze quickstart maakt u met Visual Studio dezelfde logische app als in de qui
 
   De ontwerpfunctie vereist een internetverbinding om resources te maken in Azure en eigenschappen en gegevens van connectors in uw logische app te lezen.
 
-* Een e-mailaccount dat door Logic Apps wordt ondersteund, bijvoorbeeld Office 365 Outlook, Outlook.com of Gmail. Voor andere providers kunt u [hier](/connectors/) de lijst met connectors bekijken. In dit voorbeeld wordt gebruikgemaakt van Outlook van Office 365. Als u een ander e-mailaccount gebruikt, zijn de algemene stappen hetzelfde, maar ziet de gebruikersinterface er misschien iets anders uit.
+* Een e-mailaccount dat door Logic Apps wordt ondersteund, bijvoorbeeld Outlook voor Microsoft 365, Outlook.com of Gmail. Voor andere providers kunt u [hier](/connectors/) de lijst met connectors bekijken. In dit voorbeeld wordt gebruikgemaakt van Outlook van Office 365. Als u een ander e-mailaccount gebruikt, zijn de algemene stappen hetzelfde, maar ziet de gebruikersinterface er misschien iets anders uit.
 
   > [!IMPORTANT]
   > Als u de Gmail-connector wilt gebruiken, kunnen alleen bedrijfsaccounts van G Suite deze connector zonder beperking in logische apps gebruiken. Als u een Gmail-consumentenaccount hebt, kunt u deze connector alleen gebruiken met specifieke door Google goedgekeurde services, of u kunt [een Google-client-app maken voor verificatie bij uw Gmail-connector](/connectors/gmail/#authentication-and-bring-your-own-application). Zie [Beleid voor gegevensbeveiliging en privacybeleid voor Google-connectors in Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md) voor meer informatie.

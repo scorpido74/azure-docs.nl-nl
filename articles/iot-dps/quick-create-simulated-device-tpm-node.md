@@ -11,13 +11,13 @@ ms.custom:
 - mvc
 - amqp
 - mqtt
-- devx-track-javascript
-ms.openlocfilehash: 58adb3e8216fdda1f276760b103e02bf7de6e12e
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+- devx-track-js
+ms.openlocfilehash: f8b7e55d95c08a31a20503e329e64b9e65e3b723
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422127"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323920"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>Quickstart: Een gesimuleerd TPM-apparaat maken en inrichten voor IoT Hub Device Provisioning Service met de apparaat-SDK voor Node.js
 
@@ -27,7 +27,7 @@ In deze quickstart maakt u een gesimuleerd IoT-apparaat op uw Windows-computer. 
 
 ## <a name="prerequisites"></a>Vereisten
 
-- U hebt [Concepten voor automatische inrichting](concepts-auto-provisioning.md) bestudeerd.
+- Vertrouwd zijn met het [inrichten](about-iot-dps.md#provisioning-process) van concepten.
 - U hebt [IoT Hub Device Provisioning Service instellen met Azure Portal](./quick-setup-auto-provision.md) voltooid.
 - Een Azure-account met een actief abonnement. [Maak er gratis een](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - [Node.js v4.0+](https://nodejs.org).

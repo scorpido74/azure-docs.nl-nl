@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 09/03/2020
 ms.author: cshoe
-ms.openlocfilehash: 66335548381a6f7e3ebf93c97eb212255639644c
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: b009b34be69e48ae6205cd9ab88d1583ca9c6561
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604084"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280556"
 ---
 # <a name="quickstart-building-your-first-static-web-app-in-the-azure-portal"></a>Quickstart: Uw eerste statische web-app bouwen in de Azure Portal
 
@@ -39,7 +39,7 @@ Nu de opslagplaats is gemaakt, kunt u een statische web-app maken in de Azure-po
 
 Op het tabblad _Basisbeginselen_ kunt u de nieuwe app configureren en aan een GitHub-opslagplaats koppelen.
 
-:::image type="content" source="media/getting-started-portal/basics-tab.png" alt-text="Tabblad Basisbeginselen":::
+:::image type="content" source="media/getting-started-portal/basics-tab.png" alt-text="Basissectie":::
 
 1. Selecteer uw _Azure-abonnement_
 1. Een nieuwe _Resourcegroep_ selecteren of maken
@@ -51,7 +51,7 @@ Op het tabblad _Basisbeginselen_ kunt u de nieuwe app configureren en aan een Gi
 
 Nadat u zich hebt aangemeld bij GitHub, voert u de gegevens van de opslagplaats in.
 
-:::image type="content" source="media/getting-started-portal/repository-details.png" alt-text="Gegevens van opslagplaats":::
+:::image type="content" source="media/getting-started-portal/repository-details.png" alt-text="Basissectie":::
 
 1. Kies de gewenste _organisatie_
 1. Selecteer **mijn-eerste-statische-web-app** in de vervolgkeuzelijst _Opslagplaats_
@@ -94,18 +94,18 @@ Nadat u zich hebt aangemeld bij GitHub, voert u de gegevens van de opslagplaats 
 
 1. Selecteer **Controleren + maken**.
 
-    :::image type="content" source="media/getting-started-portal/review-create.png" alt-text="Knop Beoordelen en maken":::
+    :::image type="content" source="media/getting-started-portal/review-create.png" alt-text="Basissectie":::
 
     > [!NOTE]
     > U kunt het [werkstroombestand](github-actions-workflow.md) bewerken als u deze waarden wilt wijzigen nadat u de app hebt gemaakt.
 
 1. Selecteer **Maken**.
 
-    :::image type="content" source="media/getting-started-portal/create-button.png" alt-text="De knop Maken":::
+    :::image type="content" source="media/getting-started-portal/create-button.png" alt-text="Basissectie":::
 
 1. Selecteer **Ga naar resource**.
 
-    :::image type="content" source="media/getting-started-portal/resource-button.png" alt-text="De knop Naar de resource gaan":::
+    :::image type="content" source="media/getting-started-portal/resource-button.png" alt-text="Basissectie":::
 
 [!INCLUDE [view website](../../includes/static-web-apps-get-started-view-website.md)]
 

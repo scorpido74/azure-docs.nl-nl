@@ -2,20 +2,20 @@
 title: 'Zelfstudie: sjabloon maken en implementeren'
 description: Uw eerste Azure Resource Manager-sjabloon maken. In deze zelfstudie krijgt u meer informatie over de syntaxis van sjabloonbestanden en het implementeren van een opslagaccount.
 author: mumian
-ms.date: 06/10/2020
+ms.date: 09/28/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 124df19287062a7fc8a6b9cf8b9d32eb3863b581
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.openlocfilehash: 6eb2cf792eb5a458bff8508bc21e1e0690e2e1f3
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90069234"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409213"
 ---
 # <a name="tutorial-create-and-deploy-your-first-arm-template"></a>Zelfstudie: Uw eerste ARM-sjabloon maken en implementeren
 
-Deze zelfstudie is een introductie toe Azure Resource Manager-sjablonen (ARM). U ziet hoe u een basissjabloon maakt en deze implementeert in Azure. U krijgt informatie over de structuur van de sjabloon en de hulpprogramma’s die u nodig hebt om met sjablonen te werken. Het voltooien van deze zelfstudie kost ongeveer **12 minuten**, maar de daadwerkelijke tijd is afhankelijk van hoeveel hulpprogramma’s u moet installeren.
+Deze zelfstudie is een introductie tot Azure Resource Manager-sjablonen (ARM-sjablonen). U ziet hoe u een basissjabloon maakt en deze implementeert in Azure. U krijgt informatie over de structuur van de sjabloon en de hulpprogramma’s die u nodig hebt om met sjablonen te werken. Het voltooien van deze zelfstudie kost ongeveer **12 minuten**, maar de daadwerkelijke tijd is afhankelijk van hoeveel hulpprogramma’s u moet installeren.
 
 Deze zelfstudie is de eerste van een reeks. Naarmate u vordert in de reeks, past u de basissjabloon stap voor stap aan totdat alle kernonderdelen van een ARM-sjabloon zijn behandeld. Deze elementen zijn de bouwstenen voor veel complexere sjablonen. We hopen dat u aan het einde van de reeks in staat bent uw eigen sjablonen te maken en klaar bent om uw implementaties te automatiseren met sjablonen.
 
@@ -25,7 +25,7 @@ Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.
 
 ## <a name="get-tools"></a>Hulpprogramma's installeren
 
-Laten we er allereerst voor zorgen dat u de nodige hulpprogramma's hebt om sjablonen te maken en implementeren.
+Laten we er allereerst voor zorgen dat u de nodige hulpprogramma's hebt om sjablonen te maken en implementeren. Installeer deze tools op uw lokale machine.
 
 ### <a name="editor"></a>Editor
 

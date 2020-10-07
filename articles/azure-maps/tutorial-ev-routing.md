@@ -1,6 +1,6 @@
 ---
 title: 'Zelfstudie: Elektrische voertuigen routeren met behulp van Azure Notebooks (Python) | Microsoft Azure Maps'
-description: Elektrische voertuigen routeren met behulp van routerings-API's van Microsoft Azure Maps en Azure Notebooks.
+description: Zelfstudie over hoe u elektrische voertuigen kunt routeren met behulp van routerings-API's van Microsoft Azure Maps en Azure Notebooks
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 506429f51ac442b73adea98058a833f52a728c72
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 28fcdc992f98ff380467718314148984559a7fee
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88639746"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335225"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Zelfstudie: Elektrische voertuigen routeren met behulp van Azure Notebooks (Python)
 
@@ -387,8 +387,6 @@ display(Image(staticMapImage))
 
 ![Een kaart waarop de route wordt weergegeven](./media/tutorial-ev-routing/route.png)
 
-## <a name="next-steps"></a>Volgende stappen
-
 In deze zelfstudie hebt u geleerd hoe u rechtstreeks REST API's van Azure Maps aanroept en Azure Maps-gegevens visualiseert met behulp van Python.
 
 Als u meer wilt weten over de API's van Azure Maps die in deze zelfstudie worden gebruikt, raadpleegt u:
@@ -399,7 +397,11 @@ Als u meer wilt weten over de API's van Azure Maps die in deze zelfstudie worden
 * [Weergeven - Kaartafbeelding ophalen](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
 * [Post-routematrix](https://docs.microsoft.com/rest/api/maps/route/postroutematrix)
 * [Routebeschrijving ophalen](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)
+* [Azure Maps REST API's](https://docs.microsoft.com/azure/azure-maps/consumption-model)
 
-Zie [REST API's van Azure Maps](https://docs.microsoft.com/azure/azure-maps/consumption-model) voor een volledige lijst met REST API's van Azure Maps.
+## <a name="next-steps"></a>Volgende stappen
 
-Zie [Azure Notebooks](https://docs.microsoft.com/azure/notebooks) voor meer informatie over Azure Notebooks.
+Voor meer informatie over Azure Notebooks, zie
+
+> [!div class="nextstepaction"]
+> [Azure Notebooks](https://docs.microsoft.com/azure/notebooks)

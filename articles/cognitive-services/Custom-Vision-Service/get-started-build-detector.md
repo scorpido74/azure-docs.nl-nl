@@ -1,25 +1,27 @@
 ---
-title: 'Quickstart: objectdetector bouwen: Custom Vision-service'
+title: 'Quickstart: Een objectdetector bouwen met de Custom Vision-website'
 titleSuffix: Azure Cognitive Services
-description: In deze quickstart leert u hoe u met de Custom Vision-website een classificatiemodel voor afbeeldingen kunt maken.
+description: In deze quickstart leert u hoe u met de Custom Vision-website een detectormodel voor objecten kunt maken, trainen en testen.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 08/05/2020
+ms.date: 09/30/2020
 ms.author: pafarley
-ms.openlocfilehash: 57fb91e9ead98f6c52fd3f659f4aa12692816297
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.custom: cog-serv-seo-aug-2020
+keywords: afbeeldingsherkenning, app voor afbeeldingsherkenning, Custom Vision
+ms.openlocfilehash: ab747ad5e7b9362e9c587741198a0191c032b124
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549544"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91596885"
 ---
-# <a name="quickstart-how-to-build-an-object-detector-with-custom-vision"></a>Quickstart: Een objectdetector bouwen met Custom Vision
+# <a name="quickstart-build-an-object-detector-with-the-custom-vision-website"></a>Quickstart: Een objectdetector bouwen met de Custom Vision-website
 
-In deze quickstart leert u hoe u een objectdetector kunt bouwen via de Custom Vision-website. Wanneer u een detector model gaat bouwen, kunt u de Custom Vision-service gebruiken voor objectdetectie.
+In deze quickstart leert u hoe u met de Custom Vision-website een detectormodel voor objecten kunt maken. Wanneer u een model bouwt, kunt u het testen met nieuwe afbeeldingen en het ten slotte integreren in uw eigen app voor het herkennen van afbeeldingen.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/cognitive-services/) aan voordat u begint.
 
@@ -27,7 +29,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 - Een reeks afbeeldingen waarmee u het detectormodel kunt trainen. U kunt de reeks [voorbeeldafbeeldingen](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/vision/images) op GitHub gebruiken. U kunt ook uw eigen afbeeldingen kiezen met behulp van de onderstaande tips.
 
-## <a name="create-custom-vision-resources-in-the-azure-portal"></a>Custom Vision-resources maken in Azure Portal
+## <a name="create-custom-vision-resources"></a>Custom Vision-resources maken
 
 [!INCLUDE [create-resources](includes/create-resources.md)]
 
@@ -45,7 +47,7 @@ Ga in de webbrowser naar de [Custom Vision-webpagina](https://customvision.ai) e
 1. Voer een naam en een beschrijving voor het project in. Selecteer vervolgens een resourcegroep. Als uw aangemelde account aan een Azure-account is gekoppeld, worden in de vervolgkeuzelijst Resourcegroep al uw Azure-resourcegroepen weergegeven die een Custom Vision-serviceresource bevatten. 
 
    > [!NOTE]
-   > Als er geen resourcegroep beschikbaar is, controleert u of u bent aangemeld bij [customvision.ai](https://customvision.ai) met hetzelfde account dat u hebt gebruikt om u aan te melden bij [Azure Portal](https://portal.azure.com/). Controleer ook of u dezelfde 'map' hebt geselecteerd in de Custom Vision-portal als de map in Azure Portal waar zich uw Custom Vision-resources bevinden. Op beide sites kunt u uw map selecteren in het vervolgkeuzeaccountmenu in de rechterbovenhoek van het scherm. 
+   > Als er geen resourcegroep beschikbaar is, controleert u of u bent aangemeld bij [customvision.ai](https://customvision.ai) met hetzelfde account dat u hebt gebruikt om u aan te melden bij [Azure Portal](https://portal.azure.com/). Controleer ook of u dezelfde 'map' hebt geselecteerd in de Custom Vision-website als de map in Azure Portal waar zich uw Custom Vision-resources bevinden. Op beide sites kunt u uw map selecteren in het vervolgkeuzeaccountmenu in de rechterbovenhoek van het scherm. 
 
 1. Selecteer __Objectdetectie__ onder __Projecttypen__.
 
@@ -118,3 +120,4 @@ In deze quicktart hebt u geleerd hoe u een objectdetectiemodel maakt en traint m
 > [!div class="nextstepaction"]
 > [Een model testen en opnieuw trainen](test-your-model.md)
 
+* [Wat is Custom Vision?](./overview.md)

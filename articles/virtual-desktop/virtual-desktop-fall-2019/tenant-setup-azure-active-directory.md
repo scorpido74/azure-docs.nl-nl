@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e2858daaa834552da5a85063fd9973d2c35209d7
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: f41584194f8f5e8afde630405116b8b169cb5656
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005615"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542033"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-classic"></a>Zelfstudie: Een tenant maken in Windows Virtual Desktop (klassiek)
 
@@ -126,7 +126,7 @@ Ga als volgt te werk om uw Azure-abonnements-id op te zoeken:
 1. Zoek en selecteer **Abonnementen** in dezelfde sessie van [Azure-portal](https://portal.azure.com).
 
    > [!div class="mx-imgBorder"]
-   > ![Een schermopname van de zoekresultaten voor 'Azure Active Directory' in Azure Portal. Het zoekresultaat onder 'Services' wordt gemarkeerd.](../media/tenant-search-subscription.png)
+   > ![Een schermopname van de zoekresultaten voor 'Azure Active Directory' in Azure Portal. Het zoekresultaat voor "Services" is gemarkeerd.](../media/tenant-search-subscription.png)
 
 2. Selecteer het Azure-abonnement dat u wilt gebruiken om servicemeldingen voor Windows Virtual Desktop te ontvangen.
 3. Zoek naar **Abonnement-id** en beweeg de muisaanwijzer over de waarde totdat er een klembordpictogram wordt weergegeven. Selecteer het klembordpictogram en plak het op een handige locatie, zodat u het later kunt gebruiken als de waarde voor **AzureSubscriptionId**.

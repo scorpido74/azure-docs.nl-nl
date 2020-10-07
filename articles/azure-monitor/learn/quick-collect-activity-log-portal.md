@@ -6,12 +6,12 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
-ms.openlocfilehash: 6f13a465aa43f0c45fa99d2ea396a5ca92d75d66
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.openlocfilehash: 47cf0a1f1d40b9e8358d6bdb4a3ea6a501b67da2
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85446251"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439219"
 ---
 # <a name="send-azure-activity-log-to-log-analytics-workspace-using-azure-portal"></a>Azure-activiteitenlogboek verzenden naar Log Analytics-werkruimte met behulp van een Azure-portal
 Het activiteitenlogboek is een platformlogboek in Azure dat inzicht biedt in gebeurtenissen op abonnementsniveau. Dit geldt ook voor gegevens zoals wanneer een resource wordt gewijzigd of wanneer een virtuele machine wordt gestart. U kunt het activiteitenlogboek weergeven in de Azure-portal, of items ophalen met PowerShell en CLI. Deze Quick Start laat zien hoe u de Azure-portal kunt gebruiken voor het maken van een Log Analytics-werkruimte en een diagnostische instelling om het activiteitenlogboek te verzenden naar Azure Monitor-logboeken waar u het kunt analyseren met behulp van [logboekquery's](../log-query/log-query-overview.md) en om andere functies, zoals [logboekwaarschuwingen](../platform/alerts-log-query.md) en [werkmappen](../platform/workbooks-overview.md), in te schakelen. 
@@ -24,7 +24,7 @@ Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azur
 ## <a name="create-a-log-analytics-workspace"></a>Een Log Analytics-werkruimte maken
 Zoek en selecteer vervolgens **Log Analytics-werkruimten** in de Azure-portal. 
 
-![Azure Portal](media/quick-create-workspace/azure-portal-01.png)
+![Schermafbeelding van het Azure-portaal met 'log analytics-werkruimten' in het zoekvak en Log Analytics-werkruimten gemarkeerd onder Services.](media/quick-create-workspace/azure-portal-01.png)
   
 Klik op **Toevoegen** en geef vervolgens waarden op voor de **Resourcegroep**, de **Naam** van de werkruimte en **Locatie**. De naam van de werkruimte moet uniek zijn voor elk Azure-abonnement.
 
@@ -36,7 +36,7 @@ Klik op **Beoordelen en maken** om de instellingen te controleren en klik vervol
 ## <a name="create-diagnostic-setting"></a>Diagnostische instelling maken
 Zoek in de Azure-portal naar **Monitor** en selecteer dit. 
 
-![Azure Portal](media/quick-collect-activity-log/azure-portal-monitor.png)
+![Schermafbeelding van het Azure-portaal met 'monitor ' in het zoekvak en Monitor gemarkeerd onder Services.](media/quick-collect-activity-log/azure-portal-monitor.png)
 
 Selecteer **Activiteitenlogboek**. U ziet recente gebeurtenissen voor het huidige abonnement. Klik op **Diagnostische instellingen** om de diagnostische instellingen voor het abonnement weer te geven.
 

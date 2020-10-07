@@ -1,14 +1,14 @@
 ---
 title: Overzicht van Azure Arc
 description: Lees meer over wat Azure Arc is en hoe het klanten helpt om het beheer en de governance van hun hybride resources met andere Azure-services en -functies mogelijk te maken.
-ms.date: 08/25/2020
+ms.date: 09/23/2020
 ms.topic: overview
-ms.openlocfilehash: 46bd2089dbc2794d0fb98ceb9a5e97011e36d6ea
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: e6dc052655bffae949399f77a26d7b76c5b0d13c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89052025"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335395"
 ---
 # <a name="azure-arc-overview"></a>Overzicht van Azure Arc
 
@@ -34,7 +34,7 @@ Belangrijke functies van Azure Arc zijn:
 
 * [Azure VM-extensies](./servers/manage-vm-extensions.md) configureren om Azure Management Services te gebruiken om uw servers te controleren, te beveiligen en bij te werken.
 
-* Kubernetes-clusters op schaal beheren. 
+* Kubernetes-clusters op schaal beheren.
 
 * Configuratie op basis van GitOps gebruiken als codebeheer om toepassingen en configuratie in een of meer clusters rechtstreeks vanuit broncodebeheer, zoals GitHub, te implementeren.
 
@@ -50,7 +50,17 @@ Hieronder vindt u de prijsinformatie voor de functies die momenteel beschikbaar 
 
 ### <a name="arc-enabled-servers"></a>Servers met ingeschakelde Arc
 
-In de huidige preview-fase wordt Azure Arc-serverfunctionaliteit aangeboden zonder extra kosten.
+De functionaliteit van het beheerpaneel van Azure Arc wordt gratis aangeboden.Dit omvat:
+
+* Resource-organisatie via Azure-beheergroepen en -tags.
+
+* Zoeken en indexeren via Azure Resource Graph.
+
+* Toegang en beveiliging via RBAC en abonnementen.
+
+* Omgevingen en automatisering via sjablonen en uitbreidingen.
+
+* Updatebeheer
 
 Elke Azure-service die wordt gebruikt op servers met Arc-functionaliteit, bijvoorbeeld Azure Security Center of Azure Monitor, wordt in rekening gebracht volgens de prijzen voor die service. Zie de pagina [Azure-prijzen](https://azure.microsoft.com/pricing/) voor meer informatie.
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019, devx-track-azurepowershell
 ms.date: 01/22/2018
-ms.openlocfilehash: 6fab092b0467228fd4fcdbcf95f99fd0981fb1e4
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 3bd18f697c25f7e81f227e7e1456ba0b3d2150c6
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89079216"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541744"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information-using-powershell"></a>Incrementeel gegevens kopiëren van Azure SQL Database naar Azure Blob Storage met behulp van technologie voor bijhouden van wijzigingen met behulp van PowerShell
 
@@ -453,10 +453,10 @@ Invoke-AzDataFactoryV2Pipeline -PipelineName "FullCopyPipeline" -ResourceGroup $
     ![De tegel Bewaking en beheer](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-monitor-manage-tile-3.png)    
 5. De applicatie **Data Integration** wordt gestart op een afzonderlijke tabblad. U kunt alle **pipeline-activiteiten** en hun status zien. Let erop dat in het volgende voorbeeld de status van de pijplijnactiviteit **Geslaagd** is. U kunt parameters controleren die zijn doorgegeven aan de pijplijn door te klikken op de kolom **Parameters**. Als er een fout is, ziet u een koppeling in de **fout**-kolom. Klik op de koppeling in de kolom **Acties**.
 
-    ![Pijplijnuitvoeringen](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-pipeline-runs-4.png)    
+    ![Schermopname van pijplijnuitvoeringen voor een data factory.](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-pipeline-runs-4.png)    
 6. Wanneer u klikt op de koppeling in de kolom **acties** ziet u de volgende pagina met alle **activiteiten bij uitvoering** voor de pijplijn.
 
-    ![Uitvoering van activiteiten](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-activity-runs-5.png)
+    ![Schermopname van activiteitsuitvoeringen voor een data factory met de koppeling Pijplijnen gemarkeerd.](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-activity-runs-5.png)
 7. Overschakelen naar de weergave **Pipeline-activiteiten** kan door te klikken op **Pijplijnen** zoals weergegeven in de afbeelding.
 
 
@@ -632,10 +632,10 @@ Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -Resource
 ### <a name="monitor-the-incremental-copy-pipeline"></a>De pijplijn incrementele kopie bewaken
 1. Ververs in de **Data Integration Application** de weergave **pijplijn-runs**. Controleer of u de IncrementalCopyPipeline in de lijst ziet. Klik op de koppeling in de kolom **Acties**.  
 
-    ![Pijplijnuitvoeringen](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-pipeline-runs-6.png)    
+    ![Schermopname van pijplijnuitvoeringen voor een data factory, inclusief uw pijplijn.](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-pipeline-runs-6.png)    
 2. Wanneer u klikt op de koppeling in de kolom **acties** ziet u de volgende pagina met alle **activiteiten bij uitvoering** voor de pijplijn.
 
-    ![Uitvoering van activiteiten](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-activity-runs-7.png)
+    ![Schermopname van pijplijnuitvoeringen voor een data factory waarin meerdere uitvoeringen zijn gemarkeerd als geslaagd.](media/tutorial-incremental-copy-change-tracking-feature-powershell/monitor-activity-runs-7.png)
 3. Overschakelen naar de weergave **Pipeline-activiteiten** kan door te klikken op **Pijplijnen** zoals weergegeven in de afbeelding.
 
 ### <a name="review-the-results"></a>De resultaten bekijken

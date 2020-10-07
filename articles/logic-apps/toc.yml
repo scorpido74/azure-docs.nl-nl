@@ -70,7 +70,7 @@
         - name: Stateful of staatloze werkstromen maken in Visual Studio Code
           href: create-stateful-stateless-workflows-visual-studio-code.md
         - name: Logische apps aanroepen vanuit Power Automate en Power Apps
-          href: call-logic-apps-from-power-automate-power-apps.md
+          href: call-from-power-automate-power-apps.md
         - name: Werkstroomuitvoering beheren
           items:
             - name: Voorwaardelijke instructies

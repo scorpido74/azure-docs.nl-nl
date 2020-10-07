@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/14/2020
-ms.openlocfilehash: ca330357e88ff6f4824c74a6048769638542cc29
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d6c447deedbdcc4f2439fc069f368db88b3560b9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88556080"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91278019"
 ---
 # <a name="tutorial-assign-directory-readers-role-to-an-azure-ad-group-and-manage-role-assignments"></a>Zelfstudie: De rol van Directory Readers toewijzen aan een Azure AD-groep en roltoewijzingen beheren
 
@@ -55,7 +55,7 @@ Zie [De rol Directory Readers in Azure Active Directory voor Azure SQL](authenti
 
 Ga terug naar het deelvenster **Groepen** in de Azure-portal en zoek naar uw groepsnaam om de groep die is gemaakt te controleren en te beheren. Extra eigenaren en leden kunnen worden toegevoegd onder het menu **Eigenaren** en **Leden** van de instelling **Beheren** nadat de groep is geselecteerd. U kunt ook de **Toegewezen rollen** bekijken voor de groep.
 
-:::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-group-created.png" alt-text="azure-ad-group-created":::
+:::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-group-created.png" alt-text="aad-new-group":::
 
 ### <a name="add-azure-sql-managed-identity-to-the-group"></a>Azure SQL-beheerde identiteit aan de groep toevoegen
 
@@ -68,17 +68,17 @@ Voor de volgende stappen is de gebruiker met de machtiging Globale beheerder of 
 
 1. Zoek de naam van de resource van uw **SQL-beheerd exemplaar** in de Azure-portal.
 
-   :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-managed-instance.png" alt-text="azure-ad-managed-instance":::
+   :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-managed-instance.png" alt-text="aad-new-group":::
 
    Tijdens het maken van uw SQL Managed Instance werd er voor uw exemplaar een Azure-identiteit gemaakt. De gemaakte identiteit heeft dezelfde naam als het voorvoegsel van de naam van uw SQL Managed Instance. U kunt de service-principal vinden voor uw SQL Managed Instance-identiteit die is gemaakt als een Azure AD-toepassing door de volgende stappen uit te voeren:
 
     - Ga naar de **Azure Active Directory**-resource. Selecteer **Enterprise-toepassingen** onder de instelling **Beheren**. De **Object-ID** is de identiteit van het exemplaar.
     
-    :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-managed-instance-service-principal.png" alt-text="azure-ad-managed-instance-service-principal":::
+    :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-managed-instance-service-principal.png" alt-text="aad-new-group":::
 
 1. Ga naar de **Azure Active Directory**-resource. Ga onder **Beheerd** naar **Groepen**. Selecteer de groep die u hebt gemaakt. Selecteer **Leden** onder de instelling **Beheerd** van uw groep. Selecteer **Leden toevoegen** en voeg uw SQL Managed Instance-service-principal toe als lid van de groep door te zoeken naar de naam die hierboven is gevonden.
 
-   :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-add-managed-instance-service-principal.png" alt-text="azure-ad-add-managed-instance-service-principal":::
+   :::image type="content" source="media/authentication-aad-directory-readers-role/azure-ad-add-managed-instance-service-principal.png" alt-text="aad-new-group":::
 
 > [!NOTE]
 > Het kan een paar minuten duren om de machtigingen van de service-principal door te geven door het Azure-systeem en toegang te verlenen aan Azure AD Graph API. U moet mogelijk een aantal minuten wachten voordat u een Azure AD-beheerder kunt inrichten voor SQL Managed Instance.

@@ -8,24 +8,23 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/12/2020
 ms.author: aahi
-ms.custom: devx-track-javascript
-ms.openlocfilehash: cc96233ea6e2d02f3c3a2036466e3934aa234f5b
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js
+ms.openlocfilehash: 3760213c7f469dfe89599c0f01afe98168efde2d
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407967"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377047"
 ---
 Gebruik deze quickstart om aan de slag te gaan met de Bing News Search-clientbibliotheek voor Java om nieuws te zoeken. Hoewel Bing News Search een REST API heeft die compatibel is met de meeste programmeertalen, biedt de clientbibliotheek een eenvoudige manier om de service in uw toepassingen te integreren. De broncode voor dit voorbeeld is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/newsSearch.js).
 
 ## <a name="prerequisites"></a>Vereisten
 
-* [Node.js](https://nodejs.org/en/)
-
-Stel een consoletoepassing in met de Bing News Search-clientbibliotheek:
-1. Voer `npm install ms-rest-azure` uit in uw ontwikkelomgeving.
-2. Voer `npm install azure-cognitiveservices-newssearch` uit in uw ontwikkelomgeving.
-
+* Nieuwste versie van [Node.js](https://nodejs.org/en/download/).
+* De [Bing News Search-SDK voor JavaScript](https://www.npmjs.com/package/@azure/cognitiveservices-newssearch)
+     *  Voer `npm install @azure/cognitiveservices-newssearch` uit om deze te installeren
+* De klasse `CognitiveServicesCredentials` van het pakket `@azure/ms-rest-azure-js` om de client te verifiëren.
+     * Voer `npm install @azure/ms-rest-azure-js` uit om deze te installeren
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](~/includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
@@ -34,7 +33,7 @@ Stel een consoletoepassing in met de Bing News Search-clientbibliotheek:
 1. Maak een instantie van de `CognitiveServicesCredentials`. Maak variabelen voor uw abonnementssleutel en zoekterm.
 
     ```javascript
-    const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
+    const CognitiveServicesCredentials = require('@azure/ms-rest-azure-js').CognitiveServicesCredentials;
     let credentials = new CognitiveServicesCredentials('YOUR-ACCESS-KEY');
     let search_term = 'Winter Olympics'
     ```
@@ -42,7 +41,7 @@ Stel een consoletoepassing in met de Bing News Search-clientbibliotheek:
 2. Maak een instantie van de client:
     
     ```javascript
-    const NewsSearchAPIClient = require('azure-cognitiveservices-newssearch');
+    const NewsSearchAPIClient = require('@azure/cognitiveservices-newssearch');
     let client = new NewsSearchAPIClient(credentials);
     ```
 

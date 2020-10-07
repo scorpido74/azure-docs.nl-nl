@@ -1,5 +1,5 @@
 ---
-title: Voer in de Azure Portal een query voor de SQL Database uit met de Query-editor
+title: Voer in de Azure Portal (preview) een query voor de SQL Database uit met de Query-editor
 description: Meer informatie over het gebruik van de Query-editor om Transact-SQL-query's (T-SQL) uit te voeren op een database in Azure SQL Database.
 titleSuffix: Azure SQL Database
 keywords: verbinding maken met sql database, azure portal, portal, query-editor
@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: quickstart
 author: Ninarn
 ms.author: ninarn
-ms.reviewer: carlrab
+ms.reviewer: sstein
 ms.date: 05/29/2020
-ms.openlocfilehash: ec43ad0c83ea56af935b326a2b13aa3b3dc4fa13
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 4eb02c65a8ce486ea152863d8b6c6d0600280893
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441769"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409580"
 ---
-# <a name="quickstart-use-the-azure-portals-query-editor-to-query-an-azure-sql-database"></a>Quickstart: De Query-editor van de Azure Portal gebruiken om een query uit te voeren op Azure SQL Database
+# <a name="quickstart-use-the-azure-portals-query-editor-preview-to-query-an-azure-sql-database"></a>Quickstart: De Query-editor (preview) van de Azure Portal gebruiken om een query uit te voeren op Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 De Query-editor is een hulpprogramma in de Azure-portal voor het uitvoeren van SQL-query's op uw database in Azure SQL Database of uw datawarehouse in Azure Synapse Analytics. 

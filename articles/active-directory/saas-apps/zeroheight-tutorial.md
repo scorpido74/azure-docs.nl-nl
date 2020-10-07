@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
-ms.openlocfilehash: 31055a3245eb13ec53c922a03db47612b6edacd8
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: bcfd9e1b132ef47c83d028acf5e2bcb3fc637ef5
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90057058"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369363"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zeroheight"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met zeroheight
 
@@ -76,14 +76,14 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
 1. In de sectie **Standaard-SAML-configuratie** voert u de waarden in voor de volgende velden:
 
-    a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<SUBDOMAIN>.zeroheight.com/sso`
+    a. In het tekstvak **Aanmeldings-URL** typt u de URL: `https://zeroheight.com/sso`
 
     b. In het tekstvak **Id (Entiteits-id)** typt u een URL met de volgende notatie: `zeroheight:<CUSTOM_ID>`
 
-    c. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://<SUBDOMAIN>.zeroheight.com/sso/acs/<CUSTOM_ID>`
+    c. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://zeroheight.com/sso/acs/<CUSTOM_ID>`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL, antwoord-URL en id. Neem contact op met het [ondersteuningsteam van zeroheight](mailto:support@zeroheight.com) om de waarde te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke id en antwoord-URL. Neem contact op met het [ondersteuningsteam van zeroheight](mailto:support@zeroheight.com) om de waarde te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 1. In de toepassing zeroheight worden de SAML-asserties in een specifieke indeling verwacht. Hiervoor moet u aangepaste kenmerktoewijzingen toevoegen aan de configuratie van uw SAML-tokenkenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
 

@@ -1,20 +1,20 @@
 ---
-title: Een TPM-apparaat inschrijven bij Azure Device Provisioning Service met C#
+title: Snelstart - TPM-apparaten inschrijven bij Azure Device Provisioning Service met behulp van C#
 description: 'Quickstart: een TPM-apparaat inschrijven bij Azure IoT Hub Device Provisioning Service (DPS) met de service-SDK voor C#. In deze snelstart wordt gebruikgemaakt van afzonderlijke inschrijvingen.'
 author: wesmc7777
 ms.author: wesmc
-ms.date: 11/08/2019
+ms.date: 09/28/2020
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 6176ff91029817e6891f0ee1e043cc3a827c2d6c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 872d1f43f1e9dc180e41a2bf625ca18b74522b40
+ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88999050"
+ms.lasthandoff: 09/28/2020
+ms.locfileid: "91409507"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-c-service-sdk"></a>Quickstart: TPM-apparaat inschrijven bij IoT Hub Device Provisioning Service met behulp van de C# service-SDK
 
@@ -128,12 +128,15 @@ In deze sectie wordt beschreven hoe u een .NET Core-console-app maakt, waarmee e
    }
    ```
 
-1. Vervang tot slot de hoofdtekst van de methode `Main` door de volgende regels:
+1. Vervang tot slot de `Main`-methode door de volgende regels:
 
    ```csharp
-   RunSample().GetAwaiter().GetResult();
-   Console.WriteLine("\nHit <Enter> to exit ...");
-   Console.ReadLine();
+    static async Task Main(string[] args)
+    {
+        await RunSample();
+        Console.WriteLine("\nHit <Enter> to exit ...");
+        Console.ReadLine();
+    }
    ```
 
 1. Bouw de oplossing.
