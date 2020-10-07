@@ -10,15 +10,15 @@ ms.date: 10/10/2019
 ms.subservice: tables
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 9d3f7d5f496634f10b48e7509c21cd634fd92d3c
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89458329"
 ---
 # <a name="performance-and-scalability-checklist-for-table-storage"></a>Controlelijst voor prestaties en schaalbaarheid van Table-opslag
 
-Microsoft heeft een aantal bewezen procedures ontwikkeld voor het ontwikkelen van hoogwaardige toepassingen met Table-opslag. Deze controlelijst vermeldt de belangrijkste procedures die ontwikkelaars kunnen volgen om de prestaties te optimaliseren. Houd bij het ontwerpen van uw toepassing en tijdens het gehele proces deze procedures in acht.
+Microsoft heeft een aantal bewezen procedures ontwikkeld voor het ontwikkelen van hoogwaardige toepassingen met Table-opslag. Deze controlelijst vermeldt de belangrijkste procedures die ontwikkelaars kunnen volgen om de prestaties te optimaliseren. Neem bij het ontwerpen van uw toepassing en tijdens het gehele proces deze procedures in acht.
 
 Azure Storage bevat schaalbaarheids- en prestatiedoelen voor capaciteit, transactiesnelheid en bandbreedte. Zie [Schaalbaarheids- en prestatiedoelen voor standaardopslagaccounts](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json) en [Schaalbaarheids- en prestatiedoelen voor Table-opslag](scalability-targets.md) voor meer informatie over schaalbaarheidsdoelen van Azure Storage.
 
@@ -66,13 +66,13 @@ Zie [Schaalbaarheids- en prestatiedoelen voor de Table service](scalability-targ
 
 ### <a name="maximum-number-of-storage-accounts"></a>Maximum aantal opslagaccounts
 
-Als u het maximumaantal opslagaccounts nadert dat is toegestaan voor een bepaalde combinatie van abonnement/regio, maakt u dan gebruik van meerdere opslagaccounts om in een shard op te slaan, waarmee de hoeveelheid inkomend/uitgaand verkeer, het aantal I/O-bewerkingen per seconde (IOPS) of de capaciteit wordt verhoogd? In dit scenario raadt Microsoft u aan gebruik te maken van verhoogde limieten voor opslagaccounts om zo mogelijk het aantal opslagaccounts te beperken dat vereist is voor uw workload. Neem contact op met [Ondersteuning voor Azure](https://azure.microsoft.com/support/options/) om verhoogde limieten voor uw opslagaccount aan te vragen. Zie [Grotere opslagaccounts met een hogere schaal](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/) voor meer informatie.
+Als u het maximumaantal opslagaccounts nadert dat is toegestaan voor een bepaalde combinatie van abonnement/regio, maakt u dan gebruik van meerdere opslagaccounts om in een shard op te slaan, waarmee de hoeveelheid inkomend/uitgaand verkeer, het aantal I/O-bewerkingen per seconde (IOPS) of de capaciteit wordt verhoogd? In dit scenario raadt Microsoft u aan gebruik te maken van verhoogde limieten voor opslagaccounts om zo mogelijk het aantal opslagaccounts te beperken dat is vereist voor uw workload. Neem contact op met [Ondersteuning voor Azure](https://azure.microsoft.com/support/options/) om verhoogde limieten voor uw opslagaccount aan te vragen. Zie [Grotere opslagaccounts met een hogere schaal](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/) voor meer informatie.
 
 ### <a name="capacity-and-transaction-targets"></a>Capaciteits- en transactiedoelen
 
 Als uw toepassing de schaalbaarheidsdoelen voor één opslagaccount nadert, kunt u een van de volgende benaderingen overwegen:  
 
-- Bekijk de workload die ervoor zorgt dat uw toepassing het schaalbaarheidsdoel benadert of overschrijdt. Kunt u het op een verschillende manier ontwerpen waardoor u minder bandbreedte of capaciteit of minder transacties gebruikt?
+- Bekijk de workload die ervoor zorgt dat uw toepassing het schaalbaarheidsdoel benadert of overschrijdt. Kunt u het op een andere manier ontwerpen waardoor u minder bandbreedte of capaciteit of minder transacties gebruikt?
 - Als uw toepassing een van de schaalbaarheidsdoelen moet overschrijden, maakt u meerdere opslagaccounts en partitioneert u uw toepassingsgegevens over deze meerdere opslagaccounts. Als u dit patroon gebruikt, moet u ervoor zorgen dat u uw toepassing zo ontwerpt, dat u in de toekomst meer opslagaccounts kunt toevoegen voor de taakverdeling. Opslagaccounts zelf hebben geen andere kosten dan uw gebruik in termen van opgeslagen gegevens, gemaakte transacties of overgedragen gegevens.
 - Als uw toepassing de bandbreedtedoelen nadert, kunt u de gegevens aan de clientzijde comprimeren om de bandbreedte te verminderen die nodig is om de gegevens naar Azure Storage te verzenden.
     Hoewel met het comprimeren van gegevens bandbreedte kan worden bespaard en de netwerkprestaties worden verbeterd, kan dit ook negatieve gevolgen voor de prestaties hebben. Evalueer de invloed op de prestaties van de extra verwerkingsvereisten voor de compressie en decompressie van gegevens aan de clientzijde. Houd er rekening mee dat het door het opslaan van gecomprimeerde gegevens lastiger wordt om problemen op te lossen, aangezien het lastiger kan zijn om de gegevens te bekijken met behulp van standaardhulpprogramma's.
@@ -100,7 +100,7 @@ De bandbreedte en de kwaliteit van de netwerkkoppeling spelen een belangrijke ro
 
 #### <a name="throughput"></a>Doorvoer
 
-Voor bandbreedte is het probleem vaak de mogelijkheden van de client. Grotere Azure-instanties hebben NIC's met een grotere capaciteit. U moet dus overwegen een grotere instantie of meer VM's te gebruiken als u hogere netwerklimieten voor één computer nodig hebt. Als u Azure Storage opent vanuit een on-premises toepassing, geldt dezelfde regel: zorg ervoor dat u inzicht krijgt in de netwerkmogelijkheden van het clientapparaat en de netwerkverbinding met de Azure Storage-locatie en verbeter deze, indien nodig. U kunt ook uw toepassing zo ontwerpen dat deze binnen deze mogelijkheden kan werken.
+Voor bandbreedte is het probleem vaak de mogelijkheden van de client. Grotere Azure-exemplaren hebben NIC's met een grotere capaciteit. U moet dus overwegen een grotere exemplaar of meer VM's te gebruiken als u hogere netwerklimieten voor één computer nodig hebt. Als u Azure Storage opent vanuit een on-premises toepassing, geldt dezelfde regel: zorg ervoor dat u inzicht krijgt in de netwerkmogelijkheden van het clientapparaat en de netwerkverbinding met de Azure Storage-locatie en verbeter deze, indien nodig. U kunt ook uw toepassing zo ontwerpen dat deze binnen deze mogelijkheden kan werken.
 
 #### <a name="link-quality"></a>Kwaliteit van de koppeling
 

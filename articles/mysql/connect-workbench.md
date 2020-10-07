@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 5/26/2020
 ms.openlocfilehash: 5ec6aab8aaa63b848131d44f78867100f154d251
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90896321"
 ---
 # <a name="quickstart-use-mysql-workbench-to-connect-and-query-data-in-azure-database-for-mysql"></a>Quickstart: MySQL Workbench gebruiken om verbinding te maken en gegevens op te vragen in Azure Database for MySQL
@@ -49,7 +49,7 @@ Verbinding maken met Azure MySQL Server met behulp van het GUI-hulpprogramma MyS
 
 2.    Voer in het dialoogvenster **Nieuwe verbinding instellen** de volgende gegevens in op het tabblad **Parameters**:
 
-:::image type="content" source="./media/connect-workbench/2-setup-new-connection.png" alt-text="nieuwe verbinding instellen":::
+:::image type="content" source="./media/connect-workbench/2-setup-new-connection.png" alt-text="Naam van Azure Database voor MySQL-server":::
 
 | **Instelling** | **Voorgestelde waarde** | **Beschrijving van veld** |
 |---|---|---|
@@ -103,7 +103,7 @@ Verbinding maken met Azure MySQL Server met behulp van het GUI-hulpprogramma MyS
 
     In de schermopname wordt een voorbeeld getoond van SQL-code in SQL Workbench, alsmede de uitvoer nadat de code is uitgevoerd.
     
-    :::image type="content" source="media/connect-workbench/3-workbench-sql-tab.png" alt-text="Tabblad MySQL Workbench voor het uitvoeren van SQL-code":::
+    :::image type="content" source="media/connect-workbench/3-workbench-sql-tab.png" alt-text="Naam van Azure Database voor MySQL-server":::
 
 2. Als u de SQL-code wilt uitvoeren, klikt u op het bliksemstraalpictogram in de werkbalk van het tabblad **SQL File**.
 3. Let op de drie tabbladen met resultaten in de sectie **Result Grid** in het midden van de pagina. 

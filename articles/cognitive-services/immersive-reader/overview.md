@@ -13,10 +13,10 @@ ms.author: metan
 ms.custom: cog-serv-seo-aug-2020
 keywords: lezers, personen die een taal willen leren, afbeeldingen weergeven, lezen verbeteren, inhoud lezen, vertalen
 ms.openlocfilehash: a537845c0256316f9c47317a8805fa989a624f60
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90985743"
 ---
 # <a name="what-is-immersive-reader"></a>Wat is Insluitende lezer?

@@ -4,10 +4,10 @@ description: "Quickstart: Dit artikel bevat informatie over het streamen naar Az
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.openlocfilehash: 612a7515c14b77569b34c91d9b43413353b4d0e8
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90061543"
 ---
 # <a name="quickstart-data-streaming-with-event-hubs-using-the-kafka-protocol"></a>Quickstart: Streamen naar Event Hubs met behulp van API's en het Kafka-protocol
@@ -28,7 +28,7 @@ Zorg ervoor dat u aan de volgende vereisten voldoet om deze snelstart uit te voe
 
 
 ## <a name="create-an-event-hubs-namespace"></a>Een Event Hubs-naamruimte maken
-Wanneer u een Event Hubs-naamruimte van het type **Standaard** maakt, wordt het Kafka-eindpunt voor de naamruimte automatisch ingeschakeld. U kunt gebeurtenissen vanaf uw toepassingen, waarbij gebruikgemaakt wordt van het Kafka-protocol, naar Event Hubs van het type Standaard streamen. Volg de stapsgewijze instructies in [Een Event Hub maken met behulp van de Azure-portal](event-hubs-create.md) om een Event Hubs-naamruimte van het type **Standaard** te maken. 
+Wanneer u een Event Hubs-naamruimte van het type **Standaard** maakt, wordt het Kafka-eindpunt voor de naamruimte automatisch ingeschakeld. U kunt gebeurtenissen vanaf uw toepassingen, waarbij gebruikgemaakt wordt van het Kafka-protocol, naar Event Hubs van het type Standaard streamen. Volg de stapsgewijze instructies in [Een Event Hub maken met behulp van Azure Portal](event-hubs-create.md) om een Event Hubs-naamruimte van het type **Standaard** te maken. 
 
 > [!NOTE]
 > Voor Kafka zijn alleen Event Hubs van het type **Standaard** en **Toegewezen** beschikbaar. Het type **Basis** biedt geen ondersteuning voor Kafka op Event Hubs.

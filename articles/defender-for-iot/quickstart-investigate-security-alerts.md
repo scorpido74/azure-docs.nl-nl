@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 07/30/2020
 ms.author: mlottner
 ms.openlocfilehash: 172ae82288c2cb948839b69955b9491715eb4690
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90943613"
 ---
 # <a name="quickstart-investigate-security-alerts"></a>Quickstart: Beveiligingswaarschuwingen onderzoeken
@@ -44,12 +44,12 @@ Bij het openen van elke geaggregeerde waarschuwing worden de gedetailleerde besc
 
 1. Selecteer en open een beveiligingswaarschuwing uit de lijst met **IoT Hub** > **beveiligings** >  **waarschuwingen**. 
 1. Bekijk de **beschrijving** van de waarschuwing, de **ernst**, de **bron van de detectie**, en de **apparaatgegevens** van alle apparaten die deze waarschuwing hebben uitgegeven tijdens de aggregatieperiode.
-:::image type="content" source="media/quickstart/drill-down-iot-alert-details.png" alt-text="Inzoomen en de details van elk apparaat in een geaggregeerde waarschuwing controleren "::: 
+:::image type="content" source="media/quickstart/drill-down-iot-alert-details.png" alt-text="Nieuwe IoT-beveiligingswaarschuwingen onderzoeken met behulp van de markering van nieuwe waarschuwingen"::: 
 1. Nadat u de details van de waarschuwing hebt bekeken, gebruikt u de instructies uit de **stap handmatig herstel** om het probleem dat de waarschuwing heeft veroorzaakt, te herstellen en/of op te lossen. 
-:::image type="content" source="media/quickstart/iot-alert-manual-remediation-steps.png" alt-text="Voer de handmatige herstelstappen uit om de beveiligingswaarschuwingen van uw apparaat op te lossen of te verhelpen":::
+:::image type="content" source="media/quickstart/iot-alert-manual-remediation-steps.png" alt-text="Nieuwe IoT-beveiligingswaarschuwingen onderzoeken met behulp van de markering van nieuwe waarschuwingen":::
 
 1. Als verder onderzoek is vereist, **onderzoek dan de waarschuwingen in Log Analytics** met behulp van de link. 
-:::image type="content" source="media/quickstart/investigate-iot-alert-log-analytics.png" alt-text="Als u een waarschuwing verder wilt onderzoeken, gebruikt u de log analytics-link op het scherm":::
+:::image type="content" source="media/quickstart/investigate-iot-alert-log-analytics.png" alt-text="Nieuwe IoT-beveiligingswaarschuwingen onderzoeken met behulp van de markering van nieuwe waarschuwingen":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

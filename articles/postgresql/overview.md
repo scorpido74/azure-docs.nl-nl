@@ -8,10 +8,10 @@ ms.service: postgresql
 ms.topic: overview
 ms.date: 09/21/2020
 ms.openlocfilehash: 5945f50ada9af6a8d117d3d773ebeae48d5f4085
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90903758"
 ---
 # <a name="what-is-azure-database-for-postgresql"></a>Wat is Azure Database for PostgreSQL?
@@ -36,7 +36,7 @@ Deze mogelijkheden vereisen nauwelijks beheer, en worden alle zonder extra koste
 Azure Database for PostgreSQL op basis van de PostgreSQL Community Edition is beschikbaar in drie implementatiemodi:
 
 - Single Server
-- Flexible Server (preview)
+- Flexible Server (Preview)
 - Hyperscale (Citus)
 
 ### <a name="azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - één server

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
 ms.openlocfilehash: 11b9c553573d9e6188ba634b4cb966d6a9b850b4
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90944774"
 ---
 ## <a name="prerequisites"></a>Vereisten
@@ -23,11 +23,11 @@ Als u een Azure SignalR Service-resource wilt maken, meldt u zich eerst aan bij 
 
 Voer **Communicatie** in **Zoek in de Marketplace** invoer of in de zoekbalk bovenaan de portal.
 
-:::image type="content" source="../media/create-a-communication-resource/searchbar-communication-portal.png" alt-text="Schermopname van een zoekopdracht naar Communication Services in de zoekbalk.":::
+:::image type="content" source="../media/create-a-communication-resource/searchbar-communication-portal.png" alt-text="Schermopname van de knop een resource maken in de Azure-portal.":::
 
 Selecteer **Communication Services** in de resultaten en selecteer vervolgens **Toevoegen**.
 
-:::image type="content" source="../media/create-a-communication-resource/add-communication-portal.png" alt-text="Schermopname van het Azure-deelvenster, waarbij u de knop toevoegen markeert.":::
+:::image type="content" source="../media/create-a-communication-resource/add-communication-portal.png" alt-text="Schermopname van de knop een resource maken in de Azure-portal.":::
 
 U kunt nu uw Communication Services-resource configureren. Op de eerste pagina van het proces maken, wordt u gevraagd het volgende op te geven:
 

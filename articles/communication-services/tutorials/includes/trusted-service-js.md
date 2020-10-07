@@ -9,10 +9,10 @@ ms.date: 07/28/2020
 ms.topic: include
 ms.service: azure-communication-services
 ms.openlocfilehash: d4ef8baa123f805d380b14fa24abff65903cb41d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90943656"
 ---
 ## <a name="prerequisites"></a>Vereisten
@@ -132,7 +132,7 @@ Test de Azure-functie lokaal met behulp van `F5`. Hiermee initialiseert u de Azu
 
 Open de URL in uw browser en controleer of er een antwoordtekst wordt weergeven met de gebruikers-id, het token en de vervaltijd van het token voor Communication.
 
-:::image type="content" source="../media/trusted-service-sample-response.png" alt-text="Schermopname met een voorbeeldantwoord voor de gemaakte Azure-functie.":::
+:::image type="content" source="../media/trusted-service-sample-response.png" alt-text="Diagram voor architectuur van een vertrouwde service":::
 
 ## <a name="deploy-the-function-to-azure"></a>De functie implementeren in Azure
 

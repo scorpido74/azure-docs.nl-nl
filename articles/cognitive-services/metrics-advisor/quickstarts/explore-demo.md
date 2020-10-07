@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 09/14/2020
 ms.author: aahi
 ms.openlocfilehash: fbc73e20b8cc2baa1cc5c5a5b2f674fb1b2dde84
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90944622"
 ---
 # <a name="quickstart-explore-the-metrics-advisor-demo-with-example-data"></a>Quickstart: De demo van Metrics Advisor met voorbeeldgegevens verkennen
@@ -44,14 +44,14 @@ Klik op de gegevensfeed *Sample - Cost/Revenue - City/Category* (Sample - Kosten
 * Logboeken van wanneer de gegevensfeed is bijgewerkt.   
 * Gegevens en instellingen voor gegevensfeed.
 
-:::image type="content" source="../media/data-feed-view.png" alt-text="Weergave van gegevensfeed" lightbox="../media/data-feed-view.png":::
+:::image type="content" source="../media/data-feed-view.png" alt-text="Lijst met voorbeeldgegevens" lightbox="../media/data-feed-view.png":::
 
 
 ## <a name="view-time-series-visualizations-and-configurations"></a>Visualisaties en configuraties van tijdreeksen weergeven
 
 Klik in de metriek *cost* in de gegevensfeed *Sample - Cost/Revenue - City/Category*. U ziet de gekoppelde tijdreeks, gesegmenteerd in dimensies, met visualisaties op basis van de historische metrische gegevens. De blauwe band rond de metrische gegevens is het verwachte waardebereik van de Machine Learning-modellen van Metrics Advisor. Punten die buiten deze band vallen, worden gemarkeerd als rode puntjes. Dit zijn gedetecteerde anomalieën. 
 
-:::image type="content" source="../media/series-visualization.png" alt-text="Visualisatie van reeks" lightbox="../media/series-visualization.png":::
+:::image type="content" source="../media/series-visualization.png" alt-text="Lijst met voorbeeldgegevens" lightbox="../media/series-visualization.png":::
 
 De anomaliedetectie kan worden geconfigureerd door de **configuraties voor detectie** aan de linkerkant van de detailpagina voor de metrische gegevens af te stemmen. Er zijn meerdere anomaliedetectiemethoden beschikbaar en u kunt deze combineren. U kunt ook verschillende gevoeligheden, detectierichtingen en andere configuraties proberen. Met de koppeling **Geavanceerde configuratie** onder aan de **configuraties voor detectie** kunt u complexere en aangepaste detectie-instellingen maken, die kunnen worden gebruikt voor groepen of afzonderlijke reeksen. 
 
@@ -59,7 +59,7 @@ U kunt anomaliedetectie ook afstemmen door het detectiealgoritme te voorzien van
 
 Onder aan het venster **Feedback toevoegen** ziet u de koppeling **Naar incidenthub**. Hiermee wordt u naar de pagina voor analyse van het incident geleid en kunt u de hoofdoorzaak van het incident analyseren.  
 
-:::image type="content" source="../media/incident-link.png" alt-text="Koppeling naar incident" lightbox="../media/incident-link.png":::
+:::image type="content" source="../media/incident-link.png" alt-text="Lijst met voorbeeldgegevens" lightbox="../media/incident-link.png":::
 
 ## <a name="explore-anomaly-detection-results-and-perform-root-cause-analysis"></a>Resultaten van anomaliedetectie verkennen en hoofdoorzaakanalyse uitvoeren
 
@@ -67,7 +67,7 @@ Wanneer u op de koppeling **Naar incidenthub** van een anomalie klikt, wordt een
 
 De sectie **Diagnostische gegevens** bevat een structuur van het incident en verschillende tabbladen voor het diagnosticeren van het incident.
 
-:::image type="content" source="../media/incident-diagnostic.png" alt-text="Diagnose van het incident" lightbox="../media/incident-diagnostic.png":::
+:::image type="content" source="../media/incident-diagnostic.png" alt-text="Lijst met voorbeeldgegevens" lightbox="../media/incident-diagnostic.png":::
 
 Door de hoofdoorzaak van het incident te achterhalen, kunt u actie ondernemen en het probleem verhelpen voordat de situatie slechter wordt. U kunt ook meer inzichten verkennen door op de andere beschikbare diagnostische functies te klikken. 
 

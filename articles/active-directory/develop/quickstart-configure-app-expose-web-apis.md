@@ -14,10 +14,10 @@ ms.author: marsma
 ms.custom: aaddev, contperfq1
 ms.reviewer: aragra, lenalepa, sureshja
 ms.openlocfilehash: 72d66bd4c738ed60bbaefc123daae90ecc0db163
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89442131"
 ---
 # <a name="quickstart-configure-an-application-to-expose-a-web-api"></a>Quickstart: Een toepassing configureren om een web-API beschikbaar te maken
@@ -95,7 +95,7 @@ Als u het `Employees.Write.All`-voorbeeldbereik wilt toevoegen, volgt u de stapp
 
 Als u beide voorbeelden uit de vorige secties hebt toegevoegd, worden deze weergegeven in het deelvenster **Een API weergeven** van de app-registratie van uw web-API, zoals in deze afbeelding:
 
-:::image type="content" source="media/quickstart-configure-app-expose-web-apis/portal-03-scopes-list.png" alt-text="Schermopname van het deelvenster Een API weergeven, waarin twee bereiken worden weergegeven.":::
+:::image type="content" source="media/quickstart-configure-app-expose-web-apis/portal-03-scopes-list.png" alt-text="Het deelvenster Een API weergeven van een app-registratie in de Azure-portal":::
 
 Zoals in de afbeelding wordt weergegeven, is de volledige tekenreeks van een bereik een samenvoeging van de **URI voor de app-ID** van uw web-API en de **Bereiknaam** van het bereik.
 
