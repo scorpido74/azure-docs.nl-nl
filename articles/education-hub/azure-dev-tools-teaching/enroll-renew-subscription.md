@@ -8,10 +8,10 @@ ms.service: azure-education
 ms.subservice: education-hub
 ms.date: 06/30/2020
 ms.openlocfilehash: edb0de9f235565d09c81ce4466de59698a321f56
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87100770"
 ---
 # <a name="enroll-or-renew-an-azure-dev-tools-for-teaching-subscription"></a>Abonnement van Azure Dev Tools for Teaching registreren of inschrijven
@@ -33,19 +33,19 @@ In dit artikel wordt het proces beschreven voor het inschrijven in Azure Dev Too
 
 1. Geef de **gegevens van uw instelling** op als u zich de eerste keer registreert. Als u gaat verlengen, worden deze gegevens automatisch ingevuld.
 
-    :::image type="content" source="media/enroll-renew-subscription/application-institution-information.png" alt-text="Voer gegevens van de instelling in." border="false":::
+    :::image type="content" source="media/enroll-renew-subscription/application-institution-information.png" alt-text="Foutbericht bij aanmelden." border="false":::
     
 1. Voer de **factureringsgegevens** in. Als uw instelling een volumelicentieovereenkomst heeft, kunt u het nummer van de volumelicentieovereenkomst invoeren. Als u zich aanmeldt voor een nieuw abonnement en op een andere manier betaalt dan met creditcard, kan er vertraging optreden bij het verkrijgen van toegang tot uw abonnement tijdens de betalingsprocessen. U krijgt e-mails waarin de voortgang van de betaling wordt aangegeven.
 
-    :::image type="content" source="media/enroll-renew-subscription/application-billing-information.png" alt-text="Voer de factureringsgegevens in." border="false":::
+    :::image type="content" source="media/enroll-renew-subscription/application-billing-information.png" alt-text="Foutbericht bij aanmelden." border="false":::
     
 1. Selecteer het **abonnement** en bevestig de **abonnementsbeheerder** voor het abonnement. Via hn het e-maildomein van de abonnementsbeheerder kunnen studenten in hetzelfde domein eenvoudig toegang krijgen om de verschillende softwarevoordelen te downloaden.
 
-    :::image type="content" source="media/enroll-renew-subscription/application-select-subscription-plan.png" alt-text="Selecteer een abonnement." border="false":::
+    :::image type="content" source="media/enroll-renew-subscription/application-select-subscription-plan.png" alt-text="Foutbericht bij aanmelden." border="false":::
     
 1. Controleer alle aankoopgegevens en klik op **Bestelling plaatsen**. Er worden bevestigingsmails naar uw Postvak IN verzonden, met updates over de betalingsstatus en eventuele mogelijke vervolgstappen.
 
-    :::image type="content" source="media/enroll-renew-subscription/application-confirm-place-order.png" alt-text="Bevestig uw bestelling." border="false":::
+    :::image type="content" source="media/enroll-renew-subscription/application-confirm-place-order.png" alt-text="Foutbericht bij aanmelden." border="false":::
 
 ## <a name="renew-an-existing-subscription"></a>Een bestaand abonnement verlengen
 

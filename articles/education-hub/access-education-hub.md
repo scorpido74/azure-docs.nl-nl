@@ -8,10 +8,10 @@ ms.service: azure-education
 ms.subservice: education-hub
 ms.date: 06/30/2020
 ms.openlocfilehash: 995956e23e211d2182159f6e61abbbf184983ab0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87100990"
 ---
 # <a name="accessing-the-azure-education-hub"></a>Toegang tot de Azure Education Hub
@@ -32,7 +32,7 @@ Als u toegang wilt krijgen tot de Azure Education Hub, hebt u al een e-mailmeldi
    > [!IMPORTANT]
    > Bevestig dat u zich aanmeldt met een organisatie-/werkaccount (zoals het @domain.edu van uw instelling). Als dat inderdaad het geval is, selecteert u deze optie aan de linkerkant van het venster. U wordt dan naar een ander aanmeldingsscherm geleid.
 
-    :::image type="content" source="media/access-education-hub/sign-in.png" alt-text="Dialoogvenster voor organisatie-aanmelding." border="false":::
+    :::image type="content" source="media/access-education-hub/sign-in.png" alt-text="Open een privébrowservenster." border="false":::
 
 1. Nadat u bent aangemeld, wordt u naar de Azure-portal geleid. Om de Education Hub te vinden, gaat u naar het menu **Alle services** en zoekt u naar **Education**.
    De eerste keer dat u zich aanmeldt, wordt de pagina Aan de slag weergegeven.
