@@ -1,6 +1,6 @@
 ---
 title: 'Zelfstudie: Sensorgegevens samenvoegen met weervoorspellingsgegevens met behulp van Azure Notebooks (Python) | Microsoft Azure Maps'
-description: In deze zelfstudie wordt uitgelegd hoe u met behulp van Azure Notebooks (Python) sensorgegevens samenvoegt met weervoorspellingsgegevens van Microsoft Azure Maps.
+description: Zelfstudie over hoe u met behulp van Azure Notebooks (Python) sensorgegevens samenvoegt met weervoorspellingsgegevens van Microsoft Azure Maps.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 01/29/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 4ec51bc84041008c0b843a8549e299747c3134a3
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 717cb600f1bdae228f45409cb271ab04d1d51a19
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87851642"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91310098"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>Zelfstudie: Sensorgegevens samenvoegen met weervoorspellingsgegevens met behulp van Azure Notebooks (Python)
 
@@ -182,9 +182,6 @@ In de onderstaande grafieken worden de voorspellingsgegevens gevisualiseerd. Zie
 
 ![Plot van windsnelheid](./media/weather-service-tutorial/speed-date-plot.png) ![Plot van windrichting](./media/weather-service-tutorial/direction-date-plot.png)</center>
 
-
-## <a name="next-steps"></a>Volgende stappen
-
 In deze zelfstudie hebt u geleerd hoe u Azure Maps REST API's aanroept om weervoorspellingsgegevens op te halen. U hebt ook geleerd hoe u de gegevens kunt visualiseren in grafieken.
 
 Zie [Elektrische voertuigen routeren met Azure Notebooks](https://docs.microsoft.com/azure/azure-maps/tutorial-ev-routing) voor meer informatie over het aanroepen van Azure Maps REST API's in Azure Notebooks.
@@ -196,4 +193,9 @@ Als u meer wilt weten over de Azure Maps API's die in deze zelfstudie worden geb
 
 Zie [Azure Maps REST API's](https://docs.microsoft.com/azure/azure-maps/consumption-model) voor een volledige lijst met Azure Maps REST API's.
 
-Zie [Azure Notebooks](https://docs.microsoft.com/azure/notebooks) voor meer informatie over Azure Notebooks.
+## <a name="next-steps"></a>Volgende stappen
+
+Voor meer informatie over Azure Notebooks, zie
+
+> [!div class="nextstepaction"]
+> [Azure Notebooks](https://docs.microsoft.com/azure/notebooks)

@@ -1,6 +1,6 @@
 ---
 title: 'Zelfstudie: Azure Key Vault gebruiken met een virtuele machine in .NET | Microsoft Docs'
-description: In deze zelfstudie gaat u een ASP.NET Core-toepassing configureren voor het lezen van een geheim in uw sleutelkluis.
+description: In deze zelfstudie configureert u een virtuele machine en een ASP.NET-kerntoepassing om een geheim uit uw sleutelkluis te lezen.
 services: key-vault
 author: msmbaldwin
 ms.service: key-vault
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: mbaldwin
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: b4f832750f7a94a6a60cbb1d3ba630925dd4fff2
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e1abc26296b1e3bd16bebf95d3489a4e95595e1a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021728"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91336714"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-net"></a>Zelfstudie: Azure Key Vault gebruiken met een virtuele machine in .NET
 

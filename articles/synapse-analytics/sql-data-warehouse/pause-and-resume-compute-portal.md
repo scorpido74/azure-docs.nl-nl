@@ -1,5 +1,5 @@
 ---
-title: Berekening onderbreken en hervatten in Synapse SQL-pool via de Azure Portal
+title: 'Quickstart: Berekening onderbreken en hervatten in Synapse SQL-pool via de Azure Portal'
 description: Gebruik de Azure Portal om de berekening voor de SQL-groep te onderbreken om kosten te besparen. Hervat de rekenbewerking wanneer u klaar bent om het datawarehouse te gebruiken.
 services: synapse-analytics
 author: kevinvngo
@@ -11,12 +11,12 @@ ms.date: 04/18/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 25f12d038b2a83688c12d95adefef3d4fb39be43
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: bf9d8234be754bd6ed325713f3c9ad27bd283b79
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85214465"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91567635"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-synapse-sql-pool-via-the-azure-portal"></a>Quickstart: Berekening onderbreken en hervatten in Synapse SQL-pool via de Azure Portal
 
@@ -49,7 +49,7 @@ Volg deze stappen om een SQL-pool te onderbreken:
 5. Er wordt een bevestigingsvraag weergegeven waarin u wordt gevraagd of u wilt doorgaan. Klik op **Ja**.
 6. Wacht even en u ziet dat de **Status** verandert in **Wordt onderbroken**.
 
-    ![Wordt onderbroken](./media/pause-and-resume-compute-portal/pausing.png)
+    ![Schermafbeelding met het Azure-portaal voor een voorbeeld van een datawarehouse met de Statuswaarde Pauzeren.](./media/pause-and-resume-compute-portal/pausing.png)
 
 7. Wanneer de onderbreking is voltooid, verandert de status in **Onderbroken** en verandert de optieknop in **Hervatten**.
 8. De rekenresources voor de SQL-pool zijn nu offline. Er worden geen kosten in rekening gebracht voor de rekenkracht totdat u de service hervat.
@@ -71,7 +71,7 @@ Volg deze stappen om een SQL-pool te hervatten.
 5. Er wordt een bevestigingsvraag weergegeven waarin u wordt gevraagd of u wilt starten. Klik op **Ja**.
 6. U ziet dat de **Status** **Hervatten** weergeeft.
 
-    ![Hervatten](./media/pause-and-resume-compute-portal/resuming.png)
+    ![Schermafbeelding met het Azure-portaal voor een voorbeeld van een datawarehouse waarop de Startknop geselecteerd is en de Statuswaarde Hervatten is.](./media/pause-and-resume-compute-portal/resuming.png)
 
 7. Wanneer de SQL-pool weer online is, is de status **Online** en verandert de keuzeknop in **Onderbreken**.
 8. De rekenresources voor de SQL-pool zijn nu online en u kunt de service gebruiken. De kosten voor de rekenkracht zijn hervat.

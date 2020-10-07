@@ -3,17 +3,17 @@ title: 'Quickstart: Azure Blob-opslagbibliotheek V12 - JavaScript'
 description: In deze quickstart leert u hoe u de Azure Blob Storage-clientbibliotheek versie 12 voor JavaScript gebruikt om een container en een blob in Blob-opslag (object) te maken. Hierna leert u hoe u de blob naar uw lokale computer downloadt en hoe u alle blobs in een container kunt weergeven.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 07/24/2020
+ms.date: 09/17/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.custom: devx-track-javascript
-ms.openlocfilehash: c4343012c7d0abb7c8b8a22da687dc5ac668dc19
-ms.sourcegitcommit: 7f62a228b1eeab399d5a300ddb5305f09b80ee14
+ms.custom: devx-track-js
+ms.openlocfilehash: 54bf6265a5b440e5c450d21b192acc2f7024f938
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89514376"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91307531"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v12-sdk-in-nodejs"></a>Quickstart: Blobs beheren met JavaScript v12 SDK in Node.js
 
@@ -312,7 +312,8 @@ In deze quickstart hebt u geleerd hoe u blobs kunt uploaden, kunt downloaden en 
 Voor zelfstudies, voorbeelden, quickstarts en andere documentatie gaat u naar:
 
 > [!div class="nextstepaction"]
-> [Documentatie over Azure voor JavaScript](/azure/developer/javascript/)
+> [Azure voor Java script-ontwikkelaarscentrum](/azure/developer/javascript/)
 
-* Zie de [Azure Blob-opslag-clientbibliotheek voor JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob)voor meer informatie.
+* Voor meer informatie over het implementeren van een webapp die Azure Blob-opslag gebruikt, zie [Zelfstudie: Afbeeldingsgegevens uploaden in de cloud met Azure Storage](/azure/storage/blobs/storage-upload-process-images?tabs=javascript&preserve-view=true)
 * Als u voorbeeld-apps voor blob-opslag wilt zien, gaat u verder met [Voorbeelden van Azure Blob-opslag-clientbibliotheek v12 JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples).
+* Zie de [Azure Blob-opslag-clientbibliotheek voor JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob)voor meer informatie.

@@ -8,12 +8,12 @@ ms.topic: tutorial
 author: KishorIoT
 ms.author: nandab
 ms.date: 07/31/2020
-ms.openlocfilehash: b98406984f2c9f2adfca030369a6ea3d47a786f3
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: c7ddff70d24fe87380c4bf1439811042418ac76a
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762774"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91369566"
 ---
 # <a name="tutorial-create-a-video-analytics---object-and-motion-detection-application-in-azure-iot-central"></a>Zelfstudie: Een toepassing ‘Videoanalyse: object- en bewegingsdetectie’ maken in Azure IoT Central
 
@@ -111,7 +111,7 @@ Een nieuwe toepassing voor videoanalyse maken:
 
 1. Selecteer **Maken**.
 
-    :::image type="content" source="./media/tutorial-video-analytics-create-app/new-application.png" alt-text="Pagina Toepassing maken van Azure IoT Central":::
+    :::image type="content" source="./media/tutorial-video-analytics-create-app/new-application.png" alt-text="AAD-app configureren voor AMS":::
 
 ### <a name="retrieve-the-configuration-data"></a>De configuratiegegevens ophalen
 
@@ -119,11 +119,11 @@ Later in deze zelfstudie, wanneer u de IoT Edge-gateway configureert, hebt u enk
 
 Selecteer in de sectie **Beheer** de optie **Uw toepassing** en noteer de **Toepassings-URL** en de **Toepassings-id** in het bestand *scratchpad.txt*:
 
-:::image type="content" source="./media/tutorial-video-analytics-create-app/administration.png" alt-text="Beheer":::
+:::image type="content" source="./media/tutorial-video-analytics-create-app/administration.png" alt-text="AAD-app configureren voor AMS":::
 
 Selecteer **API-tokens** en genereer een nieuw token genaamd **LVAEdgeToken** voor de rol **Operator**:
 
-:::image type="content" source="./media/tutorial-video-analytics-create-app/token.png" alt-text="Token genereren":::
+:::image type="content" source="./media/tutorial-video-analytics-create-app/token.png" alt-text="AAD-app configureren voor AMS":::
 
 Noteer het token in het bestand *scratchpad.txt* voor later. Nadat het dialoogvenster is gesloten, kunt u het token niet meer bekijken.
 
@@ -221,7 +221,7 @@ Het implementatiemanifest importeren en de **LVA Edge Gateway**-apparaatsjabloon
 
     Blader nog niet naar het implementatiemanifest. Als u dat doet, verwacht de implementatiewizard een interface voor elke module, maar u hoeft alleen de interface voor de **LvaEdgeGatewayModule** beschikbaar te stellen. U uploadt het manifest in een latere stap.
 
-    :::image type="content" source="./media/tutorial-video-analytics-create-app/upload-deployment-manifest.png" alt-text="Implementatiemanifest niet uploaden":::
+    :::image type="content" source="./media/tutorial-video-analytics-create-app/upload-deployment-manifest.png" alt-text="AAD-app configureren voor AMS":::
 
     Selecteer **Volgende: Review**.
 
@@ -237,7 +237,7 @@ De apparaatsjabloon **LVA Edge Gateway** bevat nu de **LVA Edge Gateway-module**
 
 Selecteer op de pagina **LVA Edge Gateway** de optie **+ Manifest vervangen**.
 
-:::image type="content" source="./media/tutorial-video-analytics-create-app/replace-manifest.png" alt-text="Manifest vervangen":::
+:::image type="content" source="./media/tutorial-video-analytics-create-app/replace-manifest.png" alt-text="AAD-app configureren voor AMS":::
 
 Navigeer naar de map *lva-configuration* en selecteer het manifestbestand *deployment.amd64.json* dat u eerder hebt bewerkt. Selecteer **Uploaden**. Wanneer de validatie is voltooid, selecteert u **Vervangen**.
 
@@ -252,7 +252,7 @@ Selecteer in de apparaatsjabloon **LVA Edge Gateway** onder **Modules/LVA Edge G
 
 Selecteer vervolgens **Opslaan**.
 
-:::image type="content" source="media/tutorial-video-analytics-create-app/relationships.png" alt-text="Relaties toevoegen":::
+:::image type="content" source="media/tutorial-video-analytics-create-app/relationships.png" alt-text="AAD-app configureren voor AMS":::
 
 ### <a name="add-views"></a>Weergaven toevoegen
 
@@ -274,7 +274,7 @@ Een weergave toevoegen aan de sjabloon voor het apparaat:
     * Een 1x1 tegel Laatst bekende waarde met de telemetrie **Systeem-heartbeat**.
     * Een 1x1 tegel Laatst bekende waarde met de telemetrie **Verbonden camera’s**.
 
-    :::image type="content" source="media/tutorial-video-analytics-create-app/gateway-dashboard.png" alt-text="Dashboard":::
+    :::image type="content" source="media/tutorial-video-analytics-create-app/gateway-dashboard.png" alt-text="AAD-app configureren voor AMS":::
 
 1. Selecteer **Opslaan**.
 

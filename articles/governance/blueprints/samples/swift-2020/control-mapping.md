@@ -3,12 +3,12 @@ title: Besturingselementen van het blauwdrukvoorbeeld SWIFT CSP-CSCF v2020
 description: Beheer de toewijzing van het blauwdrukvoorbeeld SWIFT CSP-CSCF v2020. Elke beheeroptie wordt toegewezen aan een of meer Azure-beleidsregels die helpt bij de evaluatie.
 ms.date: 08/18/2020
 ms.topic: sample
-ms.openlocfilehash: 06a334ff05db1cfc7ad1fb09e370963486ee1515
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 868971b0523e077f0f76c0340a87df550448913a
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297414"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540809"
 ---
 # <a name="control-mapping-of-the-swift-csp-cscf-v2020-blueprint-sample"></a>Beheer de toewijzing van het blauwdrukvoorbeeld SWIFT CSP-CSCF v2020
 
@@ -31,7 +31,7 @@ Deze blauwdruk helpt u bij het controleren van accounts die mogelijk niet voldoe
 
 ## <a name="26-51-64-and-65a-account-management--role-based-schemes"></a>2.6, 5.1, 6.4 en 6.5A Account Management | Op rollen gebaseerde planningen
 
-In Azure wordt [op rollen gebaseerde toegangsbeheer](../../../../role-based-access-control/overview.md) (RBAC) geïmplementeerd, waarmee u de toegang tot resources in Azure kunt beheren. Met behulp van de Azure-portal kunt u controleren wie toegang heeft tot Azure-resources en wat hun machtigingen zijn. Met deze blauwdruk wordt ook [Azure Policy](../../../policy/overview.md)-definities toegewezen om het gebruik van Azure Active Directory-verificatie voor SQL-servers en-Service Fabric te controleren. Met behulp van Azure Active Directory-verificatie maakt vereenvoudigd beheer van machtigingen en gecentraliseerd identiteitsbeheer van databasegebruikers en andere Microsoft-services mogelijk. Daarnaast wordt met deze blauwdruk een Azure Policy-definitie toegewezen om het gebruik van aangepaste RBAC-regels te controleren. Wanneer u weet waar aangepaste RBAC-regels zijn geïmplementeerd, kan dit u helpen om te controleren of deze nodig zijn en of deze correct zijn geïmplementeerd, omdat aangepaste RBAC-regels foutgevoelig zijn.
+[Op rollen gebaseerd toegangsbeheer van Azure](../../../../role-based-access-control/overview.md) (Azure RBAC) helpt u te beheren wie toegang heeft tot Azure-resources. Met behulp van de Azure-portal kunt u controleren wie toegang heeft tot Azure-resources en wat hun machtigingen zijn. Met deze blauwdruk wordt ook [Azure Policy](../../../policy/overview.md)-definities toegewezen om het gebruik van Azure Active Directory-verificatie voor SQL-servers en-Service Fabric te controleren. Met behulp van Azure Active Directory-verificatie maakt vereenvoudigd beheer van machtigingen en gecentraliseerd identiteitsbeheer van databasegebruikers en andere Microsoft-services mogelijk. Daarnaast wordt met deze blauwdruk een Azure Policy-definitie toegewezen om het gebruik van aangepaste Azure RBAC-regels te controleren. Wanneer u weet waar aangepaste Azure RBAC-regels zijn geïmplementeerd, kan dit u helpen om te controleren of deze nodig zijn en of deze correct zijn geïmplementeerd, omdat aangepaste Azure RBAC-regels foutgevoelig zijn.
 
 - Een Azure Active Directory-beheerder moet worden ingericht voor SQL-servers
 - VM's controleren die niet gebruikmaken van beheerde schijven
@@ -54,7 +54,7 @@ Als er slechts één eigenaar van een Azure-abonnement is, is er geen administra
 
 ## <a name="13-51-and-64-least-privilege--review-of-user-privileges"></a>1.3, 5.1 en 6.4 Least Privilege| Controle van gebruikersbevoegdheden
 
-In Azure wordt [op rollen gebaseerde toegangsbeheer](../../../../role-based-access-control/overview.md) (RBAC) geïmplementeerd, waarmee u de toegang tot resources in Azure kunt beheren. Met behulp van de Azure-portal kunt u controleren wie toegang heeft tot Azure-resources en wat hun machtigingen zijn. Met deze blauwdruk wordt [Azure Policy](../../../policy/overview.md)-definities toegewezen om accounts te controleren die prioriteit moeten krijgen voor controles. Door deze accountindicatoren te controleren, kunt u ervoor zorgen dat de beheeropties voor minimale bevoegdheden worden geïmplementeerd.
+[Op rollen gebaseerd toegangsbeheer van Azure](../../../../role-based-access-control/overview.md) (Azure RBAC) helpt u te beheren wie toegang heeft tot Azure-resources. Met behulp van de Azure-portal kunt u controleren wie toegang heeft tot Azure-resources en wat hun machtigingen zijn. Met deze blauwdruk wordt [Azure Policy](../../../policy/overview.md)-definities toegewezen om accounts te controleren die prioriteit moeten krijgen voor controles. Door deze accountindicatoren te controleren, kunt u ervoor zorgen dat de beheeropties voor minimale bevoegdheden worden geïmplementeerd.
 
 - Er moeten maximaal drie eigenaren worden aangewezen voor uw abonnement
 - Controleresultaten weergeven van Windows-VM's die niet zijn verbonden met het opgegeven domein

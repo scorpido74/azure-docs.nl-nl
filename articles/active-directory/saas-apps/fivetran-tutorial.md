@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/01/2020
 ms.author: jeedes
-ms.openlocfilehash: 9cf8a76f74e6dda6ade98ea348f5401eab15c53e
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.openlocfilehash: 9d6951456593c57f9def80990e582a5ff54cc5d9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2020
-ms.locfileid: "89500493"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91312592"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fivetran"></a>Zelfstudie: Integratie van Azure Active Directory met Fivetran
 
@@ -31,7 +31,7 @@ In deze zelfstudie leert u hoe u Fivetran kunt integreren met Azure Active Direc
 U hebt het volgende nodig om aan de slag te gaan:
 
 * Een Azure AD-abonnement Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis account](https://azure.microsoft.com/free/).
-* Een abonnement op Fivetran waarvoor eenmalige aanmelding is ingeschakeld.
+* Een Fivetran-account.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
@@ -96,7 +96,7 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
     ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
-1. In de sectie **Fivetran instellen** kopieert u de juiste URL('s) op basis van uw behoeften.
+1. Kopieer de waarden voor **Aanmeldings-URL** en **Azure AD-id** in de sectie **Fivetran instellen**.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -126,7 +126,22 @@ In deze sectie geeft u B. Simon toestemming om eenmalige aanmelding van Azure te
 
 ## <a name="configure-fivetran-sso"></a>Eenmalige aanmelding met Fivetran configureren
 
-Als u eenmalige aanmelding aan de zijde van **Fivetran** wilt configureren, moet u het gedownloade **Certificaat (Base64)** en de juiste uit Azure Portal gekopieerde URL's verzenden naar het [ondersteuningsteam van Fivetran](mailto:support@fivetran.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+In deze sectie configureert u eenmalige aanmelding bij **Fivetran**.
+
+1. Meld u in een ander browservenster aan bij uw Fivetran-account als eigenaar van het account.
+1. Selecteer de pijl in de linkerbovenhoek van het venster en selecteer vervolgens **Account beheren** in de vervolgkeuzelijst.
+
+   ![Schermafbeelding waarop de menu-optie Account beheren is geselecteerd.](media/fivetran-tutorial/fivetran-1.png)
+
+1. Ga naar de sectie **SAML-configuratie** van de pagina **instellingen**.
+
+   ![Schermopname van het venster SAML-configuratie waarin de configuratie-opties zijn gemarkeerd.](media/fivetran-tutorial/fivetran-2.png)
+
+   1. Selecteer bij**SAML-verificatie inschakelen** **AAN**.
+   1. Plak in **Aanmeldings-URL** de waarde van de **Aanmeldings-URL** die u hebt gekopieerd vanuit het Azure-portaal.
+   1. Plak in **Issuer** de waarde van de **Microsoft Azure Active Directory-id** die u hebt gekopieerd vanuit het Microsoft Azure-portaal.
+   1. Open het gedownloade certificaatbestand in een tekstverwerker, kopieer het certificaat naar uw klembord en plak dit in het tekstvak **Openbaar certificaat**.
+   1. Selecteer **CONFIGURATIE OPSLAAN**.
 
 ### <a name="create-fivetran-test-user"></a>Testgebruiker voor Fivetran maken
 

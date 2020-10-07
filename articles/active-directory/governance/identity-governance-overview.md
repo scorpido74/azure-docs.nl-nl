@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c100c1b65b2af1201dfc3b52a6d90b2ed26d454
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 2ecbebfc75cb8c77ebb99ad04b1f9e33b3c4ef64
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89460811"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306460"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Wat is Azure AD Identity Governance?
 
@@ -46,7 +46,7 @@ Met Identity Governance kunnen organisaties een balans vinden tussen *productivi
 
 ![Identiteitslevenscyclus](./media/identity-governance-overview/identity-lifecycle.png)
 
-Voor veel organisaties is de identiteitslevenscyclus voor werknemers gekoppeld aan de positie van die gebruikers in een HCM-systeem (Human Capital Management).  Azure AD Premium onderhoudt automatisch gebruikersidentiteiten voor personen die in Workday zijn opgenomen in zowel Active Directory als Azure Active Directory, zoals wordt beschreven in de [zelfstudie over binnenkomende inrichting van Workday](../saas-apps/workday-inbound-tutorial.md).  Azure AD Premium omvat ook [Microsoft Identity Manager](/microsoft-identity-manager/), waarmee u records kunt importeren uit on-premises HCM-systemen zoals SAP, Oracle eBusiness en Oracle PeopleSoft.
+Voor veel organisaties is de identiteitslevenscyclus voor werknemers gekoppeld aan de positie van die gebruikers in een HCM-systeem (Human Capital Management).  Azure AD Premium onderhoudt automatisch gebruikersidentiteiten voor personen die in Workday en SuccessFactors zijn opgenomen in zowel Active Directory als Azure Active Directory, zoals wordt beschreven in de [planningsgids voor HR-cloudtoepassing naar Azure Active Directory-gebruikersinrichting](../app-provisioning/plan-cloud-hr-provision.md)  Azure AD Premium omvat ook [Microsoft Identity Manager](/microsoft-identity-manager/), waarmee u records kunt importeren uit on-premises HCM-systemen zoals SAP HCM, Oracle eBusiness en Oracle PeopleSoft.
 
 In toenemende mate moet worden samengewerkt met mensen buiten uw organisatie. [Azure AD B2B](/azure/active-directory/b2b/)-samenwerking stelt u in staat om de toepassingen en services van uw organisatie veilig te delen met gastgebruikers en externe partners van andere organisaties, zonder dat u de controle verliest over uw eigen bedrijfsgegevens.  Met [Azure AD-rechtenbeheer](entitlement-management-overview.md) kunt u selecteren welke gebruikers van een organisatie toegang mogen aanvragen en kunnen worden toegevoegd als B2B-gasten aan de directory van uw organisatie en kunt u ervoor zorgen dat deze gasten worden verwijderd wanneer ze geen toegang meer nodig hebben.
 
@@ -69,6 +69,24 @@ In het verleden werd bevoegde toegang door andere leveranciers als een aparte mo
 ![Levenscyclus voor bevoegde toegang](./media/identity-governance-overview/privileged-access-lifecycle.png)
 
 [Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) biedt aanvullende beheeropties die zijn afgestemd op het beveiligen van de toegangsrechten voor resources, in Azure AD, Azure en andere online services van Microsoft.  De JIT-toegang (Just-In-Time) en waarschuwingsfuncties die naast meervoudige verificatie en voorwaardelijke toegang voor het wijzigen van rollen worden geboden door Azure AD PIM, bieden een uitgebreide verzameling beheeropties waarmee u de resources van uw bedrijf (AD Directory-, Microsoft 365- en Azure-resourcerollen) kunt beveiligen. Net als bij andere vormen van toegang kunnen organisaties gebruikmaken van toegangsbeoordelingen om het opnieuw certificeren van herhaaldelijke toegang te configureren voor alle gebruikers in beheerdersrollen.
+
+## <a name="governance-capabilities-in-other-azure-ad-features"></a>Beheermogelijkheden in andere Azure AD-functies
+
+Naast de functies die hierboven worden vermeld, zijn extra Azure AD-functies die vaak worden gebruikt om identiteitsbeheerscenario's te bieden:
+
+| Mogelijkheid | Scenario |Functie
+| ------- | --------------------- |-----|
+|Identiteitslevencyclus (werknemers)|Beheerders kunnen het inrichten van gebruikersaccounts inschakelen vanuit Workday of SuccessFactors HR, in de cloud of on premises.|[Cloud-HR naar Azure AD-gebruikersinrichting](../app-provisioning/plan-cloud-hr-provision.md)|
+|Identiteitslevenscyclus (gasten)|Beheerders kunnen selfservice voor gastgebruikers van een andere Azure AD-tenant, directe federatie, eenmalige wachtwoordcode (OTP) of Google-accounts inschakelen.  Gastgebruikers worden automatisch ingericht, het ongedaan maken van de inrichting valt onder het levenscyclusbeleid.|[Rechtenbeheer](entitlement-management-overview.md) met behulp van [B2B](../external-identities/what-is-b2b.md)|
+|Rechtenbeheer|Resource-eigenaren kunnen toegangspakketten maken met apps, Teams, Azure AD, Microsoft 365-groepen en SharePoint Online-sites.|[Rechtenbeheer](entitlement-management-overview.md)|
+|Toegangsaanvragen|Eindgebruikers kunnen lidmaatschap voor een groep of toegang tot toepassingen aanvragen. Eindgebruikers, met inbegrip van gasten van andere organisaties, kunnen toegang tot pakketten vragen.|[Rechtenbeheer](entitlement-management-overview.md)|
+|Werkstroom|Resource-eigenaren kunnen de goedkeurders en escalatie-goedkeurders definiëren voor toegangsaanvragen en goedkeurders definiëren voor aanvragen om rollen te activeren.  |[Rechtenbeheer](entitlement-management-overview.md) en [PIM](../privileged-identity-management/pim-configure.md)|
+|Beleids- en rolbeheer|De beheerder kan beleidsregels voor voorwaardelijke toegang voor runtime-toegang definiëren voor toepassingen.  Resource-eigenaren kunnen beleid definiëren voor gebruikerstoegang via toegangspakketten.|Beleid voor [Voorwaardelijke toegang](../conditional-access/overview.md) en [Rechtenbeheer](entitlement-management-overview.md)|
+|Toegangscertificering|Beheerders kunnen hercertificering voor terugkerende toegang inschakelen voor: SaaS-apps of groepslidmaatschappen in de cloud, toewijzingen van Azure AD- of Azure-resourcerollen. Toegang tot resources automatisch verwijderen, toegang voor gasten blokkeren en gastaccounts verwijderen.|[Toegangsbeoordelingen](access-reviews-overview.md), ook aanwezig in [PIM](../privileged-identity-management/pim-how-to-start-security-review.md)|
+|Voltooien en inrichten|Automatisch inrichten en ongedaan maken van de inrichting in met Azure AD verbonden apps, inclusief via SCIM en op SharePoint Online-sites. |[inrichten van gebruikers](../app-provisioning/user-provisioning.md)|
+|Rapportage en analyse|Beheerders kunnen auditlogboeken van recente gebruikersinrichtingen en aanmeldingsactiviteiten bekijken. Integratie met Azure Monitor en 'wie heeft toegang' via toegangspakketten.|[Azure AD-rapporten](../reports-monitoring/overview-reports.md) en [-controle](../reports-monitoring/overview-monitoring.md)|
+|Bevoegde toegang|Just-in-time- en geplande toegang, waarschuwingen en goedkeuringswerkstromen voor Azure AD-rollen (waaronder aangepaste rollen) en Azure-resourcerollen.|[Azure AD PIM](../privileged-identity-management/pim-configure.md)|
+|Controle|Beheerders kunnen een waarschuwing ontvangen wanneer er beheerdersaccounts worden gemaakt.|[Azure AD PIM-waarschuwingen](../privileged-identity-management/pim-how-to-configure-security-alerts.md)|
 
 ## <a name="getting-started"></a>Aan de slag
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/09/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: eceb9e4c8c839e4da333e005e879ea6094936092
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5f39f5a8f758f390536e5d113629b185252c05d9
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525153"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439363"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>Zelfstudie: Een site-naar-site-verbinding maken met Azure Virtual WAN
 
@@ -231,7 +231,7 @@ Als u instructies nodig hebt voor het configureren van uw apparaat, kunt u de in
 
 U kunt de instellingen van uw VPN-gateway op elk gewenst moment weergeven en configureren door **Weergeven/configureren** te selecteren.
 
-:::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-1.png" alt-text="Configuratie weergeven" lightbox="media/virtual-wan-site-to-site-portal/view-configuration-1-expand.png":::
+:::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-1.png" alt-text="U kunt deze configuratie echter ook zelf maken als bekend bent met netwerktechnologie en uw eigen VPN-apparaat kunt configureren." lightbox="media/virtual-wan-site-to-site-portal/view-configuration-1-expand.png":::
 
 Op de pagina **VPN-gateway bewerken** ziet u de volgende instellingen:
 
@@ -240,7 +240,7 @@ Op de pagina **VPN-gateway bewerken** ziet u de volgende instellingen:
 * Standaard BGP-IP-adres van VPN-gateway (toegewezen door Azure)
 * Configuratie-optie voor aangepast BGP-IP-adres: Dit veld is voorbehouden voor APIPA (Automatic Private IP Addressing). Azure ondersteunt BGP-IP in het bereik 169.254.21.* en 169.254.22.*. Azure accepteert BGP-verbindingen in deze bereiken maar zal verbinding maken met het standaard BGP-IP-adres.
 
-   :::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-2.png" alt-text="Configuratie weergeven" lightbox="media/virtual-wan-site-to-site-portal/view-configuration-2-expand.png":::
+   :::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-2.png" alt-text="U kunt deze configuratie echter ook zelf maken als bekend bent met netwerktechnologie en uw eigen VPN-apparaat kunt configureren." lightbox="media/virtual-wan-site-to-site-portal/view-configuration-2-expand.png":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

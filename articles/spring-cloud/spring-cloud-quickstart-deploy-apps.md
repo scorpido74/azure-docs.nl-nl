@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/03/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 94caa879aa005f8f41e44b8a56400e87f6174247
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d67b0c89fbec8da9a3057164aa59d458a85c41d7
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90908338"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91280586"
 ---
 # <a name="quickstart-build-and-deploy-apps-to-azure-spring-cloud"></a>Quickstart: Apps bouwen en implementeren in Azure Spring Cloud
 
@@ -353,23 +353,9 @@ U kunt ook door Azure Portal bladeren om de URL te vinden.
 
 ::: zone-end
 
-## <a name="clean-up-resources"></a>Resources opschonen
-
-Als u wilt doorgaan naar de volgende quickstart van deze reeks, slaat u deze stap over.
-
-In deze quickstarts hebt u Azure-resources gemaakt waarmee de kosten blijven toenemen als de resources in uw abonnement blijven. Als u wilt doorgaan naar de volgende quickstart en u deze resources niet meer nodig denkt te hebben, verwijdert u de resourcegroep via de portal of door de volgende opdracht in Cloud Shell uit te voeren:
-
-```azurecli
-az group delete --name <your resource group name; for example: helloworld-1558400876966-rg> --yes
-```
-
-In een voorgaande quickstart hebt u ook de standaardnaam van de resourcegroep ingesteld. Als u niet van plan bent om door te gaan naar de volgende quickstart, wist u die standaardinstelling door de volgende CLI-opdracht uit te voeren:
-
-```azurecli
-az configure --defaults group=
-```
-
 ## <a name="next-steps"></a>Volgende stappen
+
+In deze quickstarts hebt u Azure-resources gemaakt waarmee de kosten blijven toenemen als de resources in uw abonnement blijven. Zie [Resources opschonen](spring-cloud-quickstart-logs-metrics-tracing.md#clean-up-resources) als u niet wilt doorgaan met de volgende quickstart. Ga anders verder met de volgende quickstart:
+
 > [!div class="nextstepaction"]
 > [Logboeken, metrische gegevens en tracering](spring-cloud-quickstart-logs-metrics-tracing.md)
-
