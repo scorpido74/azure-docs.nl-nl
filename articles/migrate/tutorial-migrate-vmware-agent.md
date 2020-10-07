@@ -4,12 +4,12 @@ description: Informatie over het uitvoeren van een migratie van VMware-VM’s op
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: MVC
-ms.openlocfilehash: bf33c61783b6d7399cd880f53009033a97625bca
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: f437c0f3b9f786863d3b58f10d1a7384b0f1e8ba
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89378845"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296141"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>VMware-VM’s migreren naar Azure (op basis van een agent)
 
@@ -251,7 +251,7 @@ Selecteer VM's voor migratie.
 
 1. In het Azure Migrate-project > **Servers**, **Azure Migrate: Servermigratie** klikt u op **Repliceren**.
 
-    ![VM's repliceren](./media/tutorial-migrate-vmware-agent/select-replicate.png)
+    ![Schermafbeelding van het venster Servers in Azure Migrate. De knop Repliceren is geselecteerd in Azure Migrate: Servermigratie onder Hulpprogramma voor migratie.](./media/tutorial-migrate-vmware-agent/select-replicate.png)
 
 2. In **Repliceren** > **Broninstellingen** > **Zijn uw machines gevirtualiseerd?** selecteert u **Ja, met VMware vSphere**.
 3. In **On-premises apparaat** selecteert u de naam van het Azure Migrate-apparaat dat u instelt.
@@ -259,7 +259,7 @@ Selecteer VM's voor migratie.
 5. Selecteer in **Processerver** de naam van het replicatieapparaat.
 6. Geef in **Gastreferenties** het VM-beheerdersaccount op dat wordt gebruikt voor de push-installatie van de Mobility-service. Klik vervolgens op **Volgende: Virtuele machines**.
 
-    ![VM's repliceren](./media/tutorial-migrate-vmware-agent/source-settings.png)
+    ![Schermafbeelding van het tabblad Broninstellingen in het venster Repliceren. Het veld Gastreferenties is gemarkeerd en de waarde is ingesteld op VM-beheerdersaccount.](./media/tutorial-migrate-vmware-agent/source-settings.png)
 
 7. Selecteer in **Virtuele machines** de machines die u wilt repliceren.
 

@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Routes voor specifieke reismodi vinden en weergeven met Microsoft Azure Maps'
-description: Meer informatie over het gebruik van Azure Maps om routes voor specifieke reismodi te vinden en weer te geven.
+title: 'Zelfstudie: Meerdere routes op basis van vervoersoptie | Microsoft Azure Maps'
+description: Zelfstudie over het gebruik van Azure Maps om routes voor specifieke reismodi te vinden naar nuttige plaatsen. Ontdek hoe u meerdere routes op kaarten kunt weergeven.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 09/10/2020
@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: a5b8dba920db0227c400e62ef7ddaf718d27c78a
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: 0d57e86088ee472c63b433bde14a0e4316cc20a5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085056"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321744"
 ---
 # <a name="tutorial-find-and-display-routes-for-different-modes-of-travel-using-azure-maps"></a>Zelfstudie: Routes vinden en weergeven voor verschillende manieren van reizen met Azure Maps
 
@@ -160,11 +160,13 @@ In deze zelfstudie worden twee routes berekend en weergegeven op de kaart. De ee
 
     ```
 
+
     In de gebeurtenis-handler `ready` van Map control wordt een gegevensbron gemaakt waarin de route vanaf het begin- tot het eindpunt wordt opgeslagen. Er wordt gebruikgemaakt van [expressies](data-driven-style-expressions-web-sdk.md) om de lijndikte en kleur op te halen uit de eigenschappen van de routelijnfunctie. Er is een tweede parameter met de waarde `'labels'` doorgegeven om ervoor te zorgen dat de routelijn de labels van de weg niet bedekt.
 
     Vervolgens wordt er een symboollaag gemaakt en aan de gegevensbron gekoppeld. Deze laag geeft aan hoe de begin- en eindpunten worden weergegeven. In dit geval zijn er expressies toegevoegd om de afbeelding van het pictogram en de tekstlabelgegevens op te halen uit de eigenschappen van elk puntobject. Zie [Gegevensgestuurde stijlexpressies](data-driven-style-expressions-web-sdk.md)voor meer informatie over expressies.
 
 2. Stel het beginpunt in als een fictief bedrijf in Seattle, genaamd Fabrikam, en als eindpunt (bestemming) een kantoor van Microsoft.  Voeg de volgende code toe aan de gebeurtenis-handler `ready` van het kaartbesturingselement.
+
 
     ```JavaScript
     //Create the GeoJSON objects which represent the start and end point of the route.
@@ -279,7 +281,11 @@ In deze sectie wordt beschreven hoe u de API Azure Maps-routeservice kunt gebrui
 
     De vrachtwagenroute wordt weergegeven met een dikke blauwe lijn. De autoroute wordt weergegeven met een dunne paarse lijn. De autoroute gaat over Lake Washington via I-90 door tunnels onder woongebieden. Omdat de tunnels zich dicht bij de buurt bevinden, is de lading gevaarlijk afval verboden. De route voor vrachtwagens, met een lading met de Amerikaanse gevarenklasse `USHazmatClass2`, loopt via een andere snelweg.
 
-    U kunt de volledige broncode voor het voorbeeld [hier](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/truckRoute.html) ophalen. Een livevoorbeeld is [hier](https://azuremapscodesamples.azurewebsites.net/?sample=Multiple%20routes%20by%20mode%20of%20travel) te vinden.
+U kunt de volledige broncode voor het voorbeeld [hier](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/truckRoute.html) ophalen. Een livevoorbeeld is [hier](https://azuremapscodesamples.azurewebsites.net/?sample=Multiple%20routes%20by%20mode%20of%20travel) te vinden.
+
+U kunt ook [gegevensgestuurde stijlexpressies gebruiken](data-driven-style-expressions-web-sdk.md)
+
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

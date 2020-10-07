@@ -8,16 +8,16 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9c1b694d3a50759dcf49222f4e6b27ac7b34f9e5
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4f1d955999ce44e8ef3d511d67d6a64c98120b62
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502151"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289409"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-synapse-sql"></a>Azure Active Directory-verificatie gebruiken voor verificatie met Synapse SQL
 
-Azure Active Directory-verificatie is een mechanisme om verbinding te maken met [Azure Synapse Analytics](../overview-faq.md) door gebruik te maken van identiteiten in Azure Active Directory (Azure AD).
+Azure Active Directory-verificatie is een mechanisme dat verbinding maakt met [Azure Synapse Analytics](../overview-faq.md) door gebruik te maken van identiteiten in Azure Active Directory (Azure AD).
 
 Met Azure AD-verificatie kunt u gebruikersidentiteiten die toegang hebben tot Azure Synapse centraal beheren om het beheer van machtigingen te vereenvoudigen. Dit biedt verschillende voordelen, zoals:
 
@@ -28,8 +28,8 @@ Met Azure AD-verificatie kunt u gebruikersidentiteiten die toegang hebben tot Az
 - Wachtwoorden hoeven niet meer te worden opgeslagen door het inschakelen van geïntegreerde Windows-verificatie en andere vormen van authenticatie die worden ondersteund door Azure Active Directory.
 - Azure AD biedt ondersteuning voor verificatie op basis van tokens voor toepassingen die verbinding maken met Azure Synapse.
 - Azure AD-verificatie biedt ondersteuning voor ADFS (domeinfederatie) of systeemeigen verificatie met gebruikersnaam/wachtwoord voor een lokale Azure Active Directory zonder domeinsynchronisatie.
-- Azure AD ondersteunt verbindingen van SQL Server Management Studio die gebruikmaken van Active Directory Universal-verificatie, waaronder Multi-Factor Authentication (MFA).  MFA omvat robuuste verificatie met een scala aan gebruikersvriendelijke verificatieopties, waaronder telefoonoproepen, sms-berichten, smartcards met pincode of melding in mobiele app. Zie [SSMS-ondersteuning voor Azure AD MFA met Synapse SQL](mfa-authentication.md) voor meer informatie.
-- Azure AD biedt ondersteuning voor vergelijkbare verbindingen van SQL Server Data Tools (SSDT) die gebruikmaken van Active Directory Interactive Authentication. Zie [Azure Active Directory support in SQL Server Data Tools (SSDT)](/sql/ssdt/azure-active-directory?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) (Ondersteuning van Azure Active Directory in SQL Server Data Tools (SSDT)) voor meer informatie.
+- Azure AD ondersteunt verbindingen van SQL Server Management Studio die gebruikmaken van Active Directory Universal-verificatie, waaronder Multi-Factor Authentication (MFA).  MFA omvat krachtige verificatie met een scala aan eenvoudige verificatie-opties, waaronder telefoonoproepen, sms-berichten, smartcards met pincode of meldingen in mobiele apps. Zie [SSMS-ondersteuning voor Azure AD MFA met Synapse SQL](mfa-authentication.md) voor meer informatie.
+- Azure AD biedt ondersteuning voor vergelijkbare verbindingen van SQL Server Data Tools (SSDT) die gebruikmaken van Active Directory Interactive Authentication. Zie [Azure Active Directory support in SQL Server Data Tools (SSDT)](/sql/ssdt/azure-active-directory?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (Ondersteuning van Azure Active Directory in SQL Server Data Tools (SSDT)) voor meer informatie.
 
 De configuratiestappen omvatten de volgende procedures voor het configureren en gebruiken van Azure Active Directory-verificatie.
 
@@ -42,7 +42,7 @@ De configuratiestappen omvatten de volgende procedures voor het configureren en 
 
 Met Azure Synapse Analytics kunt u toegang krijgen tot de gegevens in de data lake door gebruik te maken van uw Azure Active Directory-identiteit.
 
-Door toegangsrechten te definiëren voor de bestanden en gegevens die in verschillende data engines worden gerespecteerd, kunt u uw data lake-oplossing vereenvoudigen omdat alle machtigingen op één plaats worden gedefinieerd, in plaats van dat ze op meerdere locaties moeten worden opgegeven.
+Door toegangsrechten te definiëren voor de bestanden en gegevens die in verschillende gegevensengines worden gerespecteerd, kunt u uw data lake-oplossing vereenvoudigen omdat alle machtigingen op één plaats worden gedefinieerd, in plaats van dat ze op meerdere locaties moeten worden gedefinieerd.
 
 ## <a name="trust-architecture"></a>Architectuur van vertrouwensrelatie
 
@@ -85,7 +85,7 @@ Een Azure AD-verificatie is alleen mogelijk als de Azure AD-beheerder is gemaakt
   - Geïmporteerde leden van andere Azure AD's die systeemeigen leden of leden van een federatief domein zijn.
   - Active Directory-groepen die zijn gemaakt als beveiligingsgroepen.
 
-- Azure AD-gebruikers die deel uitmaken van een groep met serverrol `db_owner`, kunnen de syntaxis **[CREATE DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/create-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)** niet gebruiken met Synapse SQL. U ziet de volgende fout:
+- Azure AD-gebruikers die deel uitmaken van een groep met serverrol `db_owner`, kunnen de syntaxis **[CREATE DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/create-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)** niet gebruiken tegen Synapse SQL. U ziet de volgende fout:
 
     `SQL Error [2760] [S0001]: The specified schema name 'user@mydomain.com' either does not exist or you do not have permission to use it.`
 
@@ -121,15 +121,15 @@ De volgende verificatiemethoden worden ondersteund voor Azure AD-server-principa
   - Door Azure AD-server-principals (aanmeldingen) voor SQL on-demand (preview) toe te voegen, wordt het mogelijk om meerdere Azure AD-server-principals (aanmeldingen) te maken die kunnen worden toegevoegd aan de rol `sysadmin`.
 - Alleen een Azure AD-beheerder voor Synapse SQL kan in eerste instantie verbinding maken met de Synapse SQL met een Azure Active Directory-account. De Active Directory-beheerder kan vervolgens nieuwe Azure AD-databasegebruikers configureren.
 - Het is raadzaam om de time-out voor de verbinding in te stellen op 30 seconden.
-- SQL Server 2016 Management Studio en SQL Server Data Tools voor Visual Studio 2015 (versie 14.0.60311.1 van april 2016 of later) ondersteunen Azure Active Directory-verificatie. (Azure AD-verificatie wordt ondersteund door de **.NET Framework-gegevensprovider voor SqlServer**; minimaal .NET Framework versie 4.6). Daarom kunnen de nieuwste versies van deze hulpprogramma's en toepassingen met een gegevenslaag (DAC en .BACPAC) gebruik maken van Azure AD-verificatie.
-- Vanaf versie 15.0.1 ondersteunen de hulpprogramma's [sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) en [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) Active Directory interactieve verificatie met MFA.
-- SQL Server Data Tools voor Visual Studio 2015 vereist minimaal de versie van april 2016 van de hulpmiddelen voor gegevens (versie 14.0.60311.1). Momenteel worden Azure AD-gebruikers niet weergegeven in SSDT Objectverkenner. Als tijdelijke oplossing kunt u de gebruikers weergeven in [sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
-- [Microsoft JDBC Driver 6.0 voor SQL Server](https://www.microsoft.com/download/details.aspx?id=11774) ondersteunt Azure AD-verificatie. Zie ook [De verbindingseigenschappen instellen](/sql/connect/jdbc/setting-the-connection-properties?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+- SQL Server 2016 Management Studio en SQL Server Data Tools voor Visual Studio 2015 (versie 14.0.60311.1 van april 2016 of later) ondersteunen Azure Active Directory-verificatie. (Azure AD-verificatie wordt ondersteund door de **.NET Framework-gegevensprovider voor SqlServer**; minimaal .NET Framework versie 4.6). Daardoor kunnen de nieuwste versies van deze hulpprogramma's en toepassingen met een gegevenslaag (DAC en .BACPAC) gebruik maken van Azure AD-verificatie.
+- Vanaf versie 15.0.1 ondersteunen de hulpprogramma's [sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) en [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) Active Directory interactieve verificatie met MFA.
+- SQL Server Data Tools voor Visual Studio 2015 vereist minimaal de versie van april 2016 van de hulpmiddelen voor gegevens (versie 14.0.60311.1). Momenteel worden Azure AD-gebruikers niet weergegeven in SSDT Objectverkenner. Als tijdelijke oplossing kunt u de gebruikers weergeven in [sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
+- [Microsoft JDBC Driver 6.0 voor SQL Server](https://www.microsoft.com/download/details.aspx?id=11774) ondersteunt Azure AD-verificatie. Zie ook [De verbindingseigenschappen instellen](/sql/connect/jdbc/setting-the-connection-properties?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - Zie [Synapse SQL-toegangsbeheer](../sql/access-control.md) voor een overzicht van toegang en beheer in Synapse SQL.
-- Zie [Principals](/sql/relational-databases/security/authentication-access/principals-database-engine?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) voor meer informatie over database-principals.
-- Zie [Databaserollen](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) voor meer informatie over databaserollen.
+- Zie [Principals](/sql/relational-databases/security/authentication-access/principals-database-engine?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) voor meer informatie over database-principals.
+- Zie [Databaserollen](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) voor meer informatie over databaserollen.
 
  

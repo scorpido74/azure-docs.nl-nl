@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: dedf0795e72c4bdace430ba2dd07ade9d792f13c
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: e592159777f3b533bc447bb109e9b1308af7ecff
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89459536"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91249499"
 ---
 # <a name="synapse-managed-private-endpoints-preview"></a>Beheerde privé-eindpunten in Synapse (preview)
 
@@ -27,7 +27,9 @@ Azure Synapse ondersteunt privé-koppelingen. Met Private Link kunt u Azure-serv
 
 Wanneer u een privé-koppeling gebruikt, loopt het verkeer tussen uw Virtual Network en werkruimte volledig over het backbone-netwerk van Microsoft. Private Link beschermt tegen exfiltratie van gegevens. U kunt een privé-koppeling naar een resource tot stand brengen door een privé-eindpunt te maken.
 
-Het privé-eindpunt maakt gebruik van een privé-IP-adres van uw Virtual Network, waardoor de service feitelijk in uw Virtual Network wordt geplaatst. Privé-eindpunten worden toegewezen aan een specifieke resource in Azure, en niet de volledige service. Klanten kunnen de connectiviteit beperken tot een specifieke resource die is goedgekeurd door hun organisatie. Meer informatie over [privé-koppelingen en privé-eindpunten](https://docs.microsoft.com/azure/private-link/).
+Het privé-eindpunt maakt gebruik van een privé-IP-adres van uw Virtual Network, waardoor de service feitelijk in uw Virtual Network wordt geplaatst. Privé-eindpunten worden toegewezen aan een specifieke resource in Azure, en niet de volledige service. Klanten kunnen de connectiviteit beperken tot een specifieke resource die is goedgekeurd door hun organisatie. 
+
+Meer informatie over [privé-koppelingen en privé-eindpunten](https://docs.microsoft.com/azure/private-link/).
 
 >[!IMPORTANT]
 >Beheerde privé-eindpunten worden alleen ondersteund in Azure Synapse-werkruimten met een Virtual Network in een beheerde werkruimte.
@@ -35,9 +37,9 @@ Het privé-eindpunt maakt gebruik van een privé-IP-adres van uw Virtual Network
 >[!NOTE]
 >Al het uitgaande verkeer van het Virtual Network in de beheerde werkruimte, met uitzondering van verkeer van beheerde privé-eindpunten, wordt in de toekomst geblokkeerd. Het wordt aanbevolen dat u beheerde privé-eindpunten maakt om verbinding te maken met al uw Azure-gegevensbronnen die zich buiten de werkruimte bevinden. 
 
-Er wordt een privé-eindpuntverbinding gemaakt met de status 'In behandeling' wanneer u een beheerd privé-eindpunt maakt in Azure Synapse. Er wordt een goedkeuringswerkstroom geïnitieerd. De eigenaar van de privékoppelingsresource is verantwoordelijk voor het goedkeuren of afwijzen van de verbinding.
+Er wordt een privé-eindpuntverbinding gemaakt met de status 'In behandeling' wanneer u een beheerd privé-eindpunt maakt in Azure Synapse. Er wordt een goedkeuringswerkstroom gestart. De eigenaar van de privékoppelingsresource is verantwoordelijk voor het goedkeuren of afwijzen van de verbinding.
 
-Als de eigenaar de verbinding goedkeurt, wordt de privé-koppeling tot stand gebracht. Anders wordt de privé-koppeling niet tot stand gebracht. In beide gevallen wordt het beheerde privé-eindpunt bijgewerkt met de status van de verbinding.
+Als de eigenaar de verbinding goedkeurt, wordt de privé-koppeling tot stand gebracht. Als de eigenaar de verbinding niet goedkeurt, kan de privé koppeling niet tot stand worden gebracht. In beide gevallen wordt het beheerde privé-eindpunt bijgewerkt met de status van de verbinding.
 
 Alleen een beheerd privé-eindpunt met een goedgekeurde status kan verkeer verzenden naar een gegeven privé-koppelingsresource.
 
@@ -56,4 +58,4 @@ Deze twee beheerde privé-eindpunten worden automatisch voor u gemaakt wanneer u
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Create Managed private endpoint to your data sources](./how-to-create-managed-private-endpoints.md) (Beheerde privé-eindpunten naar uw gegevensbronnen maken)
+Ga voor meer informatie naar het artikel [Beheerde privé-eindpunten maken voor uw gegevensbronnen](./how-to-create-managed-private-endpoints.md).

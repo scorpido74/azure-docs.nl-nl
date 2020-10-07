@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 05/01/2019
 ms.author: sbowles
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c4667b810e4d3d5f13e13572e2420880da5a8a0b
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 5341c2613624c6a52f1649dcd8a64b6746b84f67
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88931621"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332386"
 ---
 # <a name="example-use-the-large-scale-feature"></a>Voorbeeld: De functie Grootschalig gebruiken
 
@@ -260,7 +260,7 @@ private static void TrainTimerOnElapsed(string largePersonGroupId, int timeInter
 }
 ```
 
-Zie [Gezichten toevoegen](how-to-add-faces.md) en [Gezichten in een afbeelding identificeren](HowtoIdentifyFacesinImage.md) voor meer informatie over gegevensbeheer en aan identificatie gerelateerde implementaties.
+Zie [Gezichten toevoegen](how-to-add-faces.md) voor meer informatie over gegevensbeheer en aan identificatie gerelateerde implementaties.
 
 ## <a name="summary"></a>Samenvatting
 
@@ -271,7 +271,7 @@ In deze handleiding hebt u geleerd hoe u de bestaande PersonGroup- of FaceList-c
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Volg een instructiegids voor het toevoegen van gezichten aan een PersonGroup of het uitvoeren van de Identify-bewerking op een PersonGroup.
+Volg een instructiegids voor het toevoegen van gezichten aan een PersonGroup of het schrijven van een script om de Identify-bewerking op een PersonGroup uit voeren.
 
 - [Gezichten toevoegen](how-to-add-faces.md)
-- [Gezichten in een afbeelding identificeren](HowtoIdentifyFacesinImage.md)
+- [Quickstart voor de Face-clientbibliotheek](../Quickstarts/client-libraries.md)

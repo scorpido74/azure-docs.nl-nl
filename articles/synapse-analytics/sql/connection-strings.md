@@ -10,18 +10,18 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 42a1110b089d5edf9793bf2bb2c699a717a4b1a4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: aa940b00e9c23ab08244ea55c0cd22a8d5f1897f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004966"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289375"
 ---
 # <a name="connection-strings-for-synapse-sql-preview"></a>Verbindingsreeksen voor Synapse SQL (preview)
 
 U kunt via verschillende toepassingsprotocollen verbinding maken met Synapse SQL (preview), bijvoorbeeld via [ADO.NET](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx), [ODBC](https://msdn.microsoft.com/library/jj730314.aspx), [PHP](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396) of [JDBC](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx). Hieronder ziet u enkele voorbeelden van verbindingsreeksen voor elk protocol. 
 
-U kunt ook de Azure-portal gebruiken om een verbindingsreeks te bouwen.  Als u een verbindingsreeks wilt bouwen met behulp van de Azure-portal, gaat u naar uw databaseblade en klikt u onder *Essentials* op *Databaseverbindingsreeksen weergeven*.
+U kunt ook de Azure-portal gebruiken om een verbindingsreeks te bouwen.  Als u een verbindingsreeks wilt bouwen met behulp van de Azure-portal, gaat u naar uw databaseblade en selecteert u *Databaseverbindingsreeksen weergeven* onder *Essentials*.
 
 ## <a name="sample-adonet-connection-string"></a>Voorbeeld van ADO.NET-verbindingsreeks
 

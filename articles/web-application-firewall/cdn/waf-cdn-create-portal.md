@@ -5,14 +5,14 @@ author: vhorne
 ms.service: web-application-firewall
 services: web-application-firewall
 ms.topic: tutorial
-ms.date: 03/18/2020
+ms.date: 09/16/2020
 ms.author: victorh
-ms.openlocfilehash: 7a9e0cc3977892fd899b4a25e17ad72f13481506
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: c5505b9437a4bd8dced6a090817b17d5e29374f2
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "82608810"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327935"
 ---
 # <a name="tutorial-create-a-waf-policy-on-azure-cdn-using-the-azure-portal"></a>Zelfstudie: Een WAF-beleid maken op Azure CDN met behulp van de Azure Portal
 
@@ -72,17 +72,22 @@ Als u een aangepaste regel wilt maken, selecteert u **Aangepaste regel toevoegen
 
 De volgende schermopname toont een aangepaste overeenkomstregel voor het blokkeren van een aanvraag als de querytekenreeks de waarde **blockme** bevat.
 
-![WAF-beleidsmodus wijzigen](../media/waf-cdn-create-portal/custommatch.png)
+![Aangepaste overeenkomstregel toevoegen](../media/waf-cdn-create-portal/custommatch.png)
 
 Voor frequentielimietregels zijn twee extra velden vereist: **Frequentielimietduur** en **Drempelwaarde voor frequentielimietlimiet (aanvragen)** zoals wordt weergegeven in het volgende voorbeeld:
 
-![WAF-beleidsmodus wijzigen](../media/waf-cdn-create-portal/customrate.png)
+![Frequentielimietregel toevoegen](../media/waf-cdn-create-portal/customrate.png)
 
 ### <a name="default-rule-set-drs"></a>Standaardregelset (DRS)
 
 De standaardregelset die door Azure wordt beheerd, is standaard ingeschakeld. Als u een afzonderlijke regel binnen een regelgroep wilt uitschakelen, vouwt u de regels binnen die regelgroep uit, schakelt u het selectievakje vóór het regelnummer in en selecteert u **Uitschakelen** op het bovenstaande tabblad. Als u de actietypen voor afzonderlijke regels in de regelset wilt wijzigen, schakelt u het selectievakje vóór het regelnummer in en selecteert u vervolgens het bovenstaande tabblad **Actie wijzigen**.
 
  ![WAF-regelset wijzigen](../media/waf-cdn-create-portal/managed2.png)
+
+## <a name="clean-up-resources"></a>Resources opschonen
+
+Verwijder de resourcegroep en alle gerelateerde resources als u deze niet meer nodig hebt.
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

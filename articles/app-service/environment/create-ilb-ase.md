@@ -4,15 +4,15 @@ description: Meer informatie over het maken van een App Service-omgeving met een
 author: ccompy
 ms.assetid: 0f4c1fa4-e344-46e7-8d24-a25e247ae138
 ms.topic: quickstart
-ms.date: 08/05/2019
+ms.date: 09/16/2020
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: f2124dd77e3e5d9828ea457a6bccdf7d1bc05405
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 1bda52227737b082927dd1449fa6469cf849ff15
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961768"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91273259"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>Een App Service-omgeving voor een interne load balancer maken en gebruiken 
 
@@ -100,15 +100,26 @@ Een ILB AS-omgeving biedt ondersteuning voor zowel Functions als WebJobs. Als u 
 
 ## <a name="dns-configuration"></a>DNS-configuratie 
 
-Wanneer u een extern VIP-adres gebruikt, wordt de DNS-server beheerd met Azure. Elke app die is gemaakt in de AS-omgeving wordt automatisch toegevoegd aan Azure DNS, wat een openbaar DNS is. In een ILB AS-omgeving moet u uw eigen DNS beheren. Het domeinachtervoegsel dat wordt gebruikt met een ILB-AS-omgeving is afhankelijk van de naam van de AS-omgeving. Het domeinachtervoegsel is *&lt;ASE name&gt;. appserviceenvironment.net*. Het IP-adres voor de ILB staat in de portal bij **IP-adressen**. 
+Wanneer u een externe ASE gebruikt, worden apps die in uw ASE zijn gemaakt, geregistreerd bij Azure DNS. Er zijn geen extra stappen in een externe ASE voor uw apps die openbaar beschikbaar moeten zijn. In een ILB ASE-omgeving moet u uw eigen DNS beheren. U kunt dit doen in uw eigen DNS-server of met Azure DNS privézones.
 
-Uw DNS configureren:
+DNS configureren in uw eigen DNS-server met uw ILB-ASE:
 
-- Maak een zone voor *&lt;ASE name&gt;. appserviceenvironment.net*
-- Maak in die zone een A-record die * verwijst naar het IP-adres van de ILB
-- Maak in die zone een A-record die @ verwijst naar het IP-adres van de ILB
-- Maak een zone in *&lt;ASE name&gt;. appserviceenvironment.net* met de naam SCM
-- Maak in die SCM-zone een A-record die * verwijst naar het IP-adres van de ILB
+1. maak een zone voor <ASE name>.appserviceenvironment.net
+2. Maak in die zone een A-record die * verwijst naar het IP-adres van de ILB
+3. Maak in die zone een A-record die @ verwijst naar het IP-adres van de ILB
+4. maak een zone in <ASE name>.appserviceenvironment.net met de naam SCM
+5. Maak in die SCM-zone een A-record die * verwijst naar het IP-adres van de ILB
+
+DNS configureren in Azure DNS particuliere zones:
+
+1. Maak een Azure DNS privézone met de naam <ASE name>. appserviceenvironment.net
+2. Maak in die zone een A-record die * verwijst naar het IP-adres van de ILB
+3. Maak in die zone een A-record die @ verwijst naar het IP-adres van de ILB
+4. Maak in die zone een A-record die *.scm verwijst naar het IP-adres van de ILB
+
+De DNS-instellingen voor uw ASE-standaard domeinachtervoegsel beperken u niet dat uw apps toegankelijk zijn voor die namen. U kunt een aangepaste domeinnaam instellen zonder validatie voor uw apps in een ILB-ASE. Als u vervolgens een zone met de naam contoso.net wilt maken, kunt u dit doen en deze naar het IP-adres van de ILB wijzen. De aangepaste domein naam werkt voor app-aanvragen, maar niet voor de SCM-site. De SCM-site is alleen beschikbaar op <appname>.scm.<asename>.appserviceenvironment.net.
+
+De zone met de naam .<asename>.appserviceenvironment.net is wereldwijd uniek. Voor 2019 konden klanten het achtervoegsel van het domein van de ILB ASE opgeven. Als u. contoso.com wilde gebruiken voor het domeinachtervoegsel, kon u dit doen en dat zou de SCM-site kunnen bevatten. Er waren problemen met dat model, waaronder; het beheren van het standaard SSL-certificaat, het ontbreken van eenmalige aanmelding met de SCM-site en de vereiste om een wildcard certificaat te gebruiken. Het upgradeproces van het ILB ASE-standaard certificaat was tevens verstoord en veroorzaakte het opnieuw opstarten van de toepassing. Om deze problemen op te lossen, is het ILB ASE-gedrag gewijzigd om een domeinachtervoegsel te gebruiken op basis van de naam van de ASE en met een achtervoegsel dat eigendom is van Microsoft. De wijziging van het ILB ASE-gedrag heeft alleen invloed op ILB ASE's gemaakt na mei 2019. Bestaande ILB ASE's as moeten nog steeds het standaard certificaat van de ASE en de bijbehorende DNS-configuratie beheren.
 
 ## <a name="publish-with-an-ilb-ase"></a>Publiceren met een ILB AS-omgeving
 

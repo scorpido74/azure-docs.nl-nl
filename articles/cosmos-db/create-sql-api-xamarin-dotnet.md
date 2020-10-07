@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 05/11/2020
+ms.date: 09/22/2020
 ms.author: anfeldma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 33ade2be8b75a4e63f6def2b6c5e1001dde97ff8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 7d8f51b12c16afbb8a0cf71e99b9b357719db4be
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89020487"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319041"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>Quickstart: een taken-app maken met Xamarin met behulp van een SQL API-account van Azure Cosmos DB
 
@@ -22,6 +22,7 @@ ms.locfileid: "89020487"
 > * [.NET V3](create-sql-api-dotnet.md)
 > * [.NET V4](create-sql-api-dotnet-V4.md)
 > * [Java SDK v4](create-sql-api-java.md)
+> * [Spring Data v3](create-sql-api-spring-data.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
@@ -90,7 +91,7 @@ Ga terug naar Azure Portal om de API-sleutelgegevens op te halen en deze in de a
 
 1. Klik in [Azure Portal](https://portal.azure.com/), in uw SQL API-account voor Azure Cosmos DB, in het linker navigatiegedeelte op **Sleutels** en klik vervolgens op **Sleutels voor lezen/schrijven**. In de volgende stap gebruikt u de kopieerknoppen aan de rechterkant van het scherm om de URI en Primaire sleutel in het bestand APIKeys.cs te kopiëren.
 
-    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/keys.png" alt-text="Een toegangssleutel weergeven en kopiëren in Azure Portal, blade Sleutels":::
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/keys.png" alt-text="Taken-app in Xamarin uitgevoerd op iOS":::
 
 2. Open het bestand APIKeys.cs vanuit de map azure-cosmos-db-sql-xamarin-getting-started/src/ToDoItems.Core/Helpers in Visual Studio 2019 of Visual Studio voor Mac.
 
@@ -108,7 +109,7 @@ Ga terug naar Azure Portal om de API-sleutelgegevens op te halen en deze in de a
 
 Deze oplossing laat zien hoe u een taken-app kunt maken met behulp van de SQL API van Azure Cosmos DB en Xamarin.Forms. De app bevat twee tabbladen. Het eerste tabblad bevat een lijst met taken die nog niet zijn voltooid. Het tweede tabblad geeft een lijst met voltooide taken weer. U kunt niet alleen niet-voltooide taken in het eerste tabblad bekijken, maar ook nieuwe taken toevoegen, bestaande taken bewerken en taken als voltooid markeren.
 
-:::image type="content" source="./media/create-sql-api-xamarin-dotnet/android-todo-screen.png" alt-text="JSON-gegevens kopiëren en op Opslaan klikken in Data Explorer in Azure Portal":::
+:::image type="content" source="./media/create-sql-api-xamarin-dotnet/android-todo-screen.png" alt-text="Taken-app in Xamarin uitgevoerd op iOS":::
 
 De code in de takenoplossing bevat:
 
@@ -171,27 +172,27 @@ Met de volgende stappen wordt gedemonstreerd hoe u de app uitvoert met behulp va
 
 1. Selecteer eerst het doelplatform door op de gemarkeerde vervolgkeuzelijst te klikken en ToDoItems.iOS te selecteren voor iOS of ToDoItems.Android te selecteren voor Android.
 
-    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ide-select-platform.png" alt-text="Een platform kiezen voor foutopsporing in Visual Studio voor Mac":::
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ide-select-platform.png" alt-text="Taken-app in Xamarin uitgevoerd op iOS":::
 
 2. Druk op cmd + Enter of klik op de afspeelknop om de foutopsporing te starten in de app.
 
-    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ide-start-debug.png" alt-text="Foutopsporing starten in Visual Studio voor Mac":::
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ide-start-debug.png" alt-text="Taken-app in Xamarin uitgevoerd op iOS":::
 
 3. Als de iOS-simulator of Android-emulator klaar is met opstarten, geeft de app twee tabbladen weer, onderaan het scherm voor iOS en bovenaan het scherm voor Android. Het eerste geeft taken weer die niet zijn voltooid, het tweede taken die wel zijn voltooid.
 
-    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ios-droid-started.png" alt-text="Startscherm van taken-app":::
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/ios-droid-started.png" alt-text="Taken-app in Xamarin uitgevoerd op iOS":::
 
 4. Als u een taak op iOS wilt voltooien, schuift u deze naar links en tikt u op de knop **Voltooien**. Als u een taak op Android wilt voltooien, houdt u het item lang ingedrukt en tikt u op de knop Voltooien.
 
-    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/simulator-complete.png" alt-text="Een taak voltooien":::
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/simulator-complete.png" alt-text="Taken-app in Xamarin uitgevoerd op iOS":::
 
 5. Als u een taak wilt bewerken, tikt u op het item. Er wordt een nieuw scherm weergegeven waarop u nieuwe waarden kunt invoeren. Door op de knop Opslaan te tikken,worden de wijzigingen in Azure Cosmos DB opgeslagen.
 
-    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/simulator-edit.png" alt-text="Taak bewerken":::
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/simulator-edit.png" alt-text="Taken-app in Xamarin uitgevoerd op iOS":::
 
 6. Als u een taak wilt toevoegen, tikt u in de rechterbovenhoek van het startscherm op de knop **Toevoegen**. Er wordt een nieuwe, lege pagina voor bewerken weergegeven.
 
-    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/simulator-add.png" alt-text="Taak toevoegen":::
+    :::image type="content" source="./media/create-sql-api-xamarin-dotnet/simulator-add.png" alt-text="Taken-app in Xamarin uitgevoerd op iOS":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>SLA’s bekijken in Azure Portal
 

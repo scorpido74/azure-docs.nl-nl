@@ -1,43 +1,47 @@
 ---
 title: Wat is Form Recognizer?
 titleSuffix: Azure Cognitive Services
-description: Met de Form Recognizer van Azure Cognitive Services kunt u sleutel-waardeparen en tabelgegevens uit formulierdocumenten identificeren en extraheren.
+description: Met de Azure Form Recognizer-service kunt u sleutel-waardeparen en tabelgegevens in uw formulierdocumenten identificeren en extraheren, en kunt u belangrijke gegevens extraheren uit verkoopbonnen en visitekaartjes.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: overview
-ms.date: 08/05/2020
+ms.date: 09/21/2020
 ms.author: pafarley
-ms.openlocfilehash: 070796cd260e56bb51115a7ef33ced8455bfb6a9
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.custom: cog-serv-seo-aug-2020
+keywords: geautomatiseerde gegevensverwerking, documentverwerking, geautomatiseerde gegevensinvoer, formulierverwerking
+ms.openlocfilehash: 5243c170e1f6b5f647057b8cfafbcac9b2fb4db3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89394394"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318956"
 ---
 # <a name="what-is-form-recognizer"></a>Wat is Form Recognizer?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Azure Form Recognizer is een Cognitive Services-dienst die gebruikmaakt van machine learning-technologie om tekst, sleutel-waardeparen en tabelgegevens uit formulierdocumenten te identificeren en te extraheren. Hiermee wordt tekst ingevoerd uit formulieren en gestructureerde gegevens uitgevoerd waarin ook de relaties uit het oorspronkelijke bestand zijn opgenomen. U krijgt snel nauwkeurige resultaten die zijn afgestemd op uw specifieke inhoud zonder dat u veel handmatige ingrepen moet uitvoeren of heel deskundig moet zijn in de gegevenswetenschap. Form Recognizer bestaat uit aangepaste modellen, het vooraf samengesteld ontvangstbewijsmodel en de indelings-API. U kunt Form Recognizer-modellen aanroepen met behulp van een REST API om de complexiteit te reduceren en deze te integreren in uw werkstroom of toepassing.
+Azure Form Recognizer is een cognitieve service waarmee u software voor geautomatiseerde gegevensverwerking kunt bouwen met behulp van machine learning-technologie. U kunt de service gebruiken om tekst, sleutel-waardeparen en tabelgegevens identificeren en uit uw formulierdocumenten extraheren&mdash;. Dit levert gestructureerde gegevens op die de relaties in het oorspronkelijke bestand bevatten. U krijgt snel nauwkeurige resultaten die zijn afgestemd op uw specifieke inhoud zonder dat u veel handmatige ingrepen moet uitvoeren of heel deskundig moet zijn in de gegevenswetenschap. Gebruik Form Recognizer om gegevensinvoer in uw toepassingen te automatiseren.
+
+Form Recognizer bestaat uit aangepaste modellen voor documentverwerking, vooraf ontwikkelde modellen voor verkoopbonnen en visitekaartjes en de indelings-API. U kunt Form Recognizer-modellen aanroepen met behulp van een REST API of clientbibliotheek-SDK’s om de complexiteit te reduceren en deze te integreren in uw werkstroom of toepassing.
 
 Form Recognizer bestaat uit de volgende services:
-* **Aangepaste modellen**: sleutel-waardeparen en tabelgegevens uit formulieren extraheren. Deze modellen worden getraind met uw eigen gegevens, zodat ze zijn afgestemd op uw formulieren.
-* **Vooraf samengestelde modellen**: gegevens ophalen uit unieke formuliertypen met vooraf samengestelde modellen. Op dit moment zijn er vooraf samengestelde modellen voor aankoopbewijzen en visitekaartjes in het Engels.
-* **Indelings-API**: hiermee worden tekst- en tabelstructuren uit documenten geëxtraheerd, samen met de bijbehorende begrenzingsvakcoördinaten.
-
-<!-- add diagram -->
+* **[Aangepaste modellen](#custom-models)** : sleutel-waardeparen en tabelgegevens uit formulieren extraheren. Deze modellen worden getraind met uw eigen gegevens, zodat ze zijn afgestemd op uw formulieren.
+* **[Vooraf samengestelde modellen](#prebuilt-models)** : gegevens ophalen uit unieke formuliertypen met vooraf samengestelde modellen. Op dit moment zijn er vooraf samengestelde modellen voor aankoopbewijzen en visitekaartjes in het Engels.
+* **[Indelings-API](#layout-api)** : hiermee worden tekst- en tabelstructuren uit documenten geëxtraheerd, samen met de bijbehorende begrenzingsvakcoördinaten.
 
 ## <a name="custom-models"></a>Aangepaste modellen
 
-Aangepaste Form Recognizer-modellen worden getraind naar uw eigen gegevens; u hebt slechts vijf voorbeelden van invoerformulieren nodig om te beginnen. Met een getraind model kunnen gestructureerde gegevens worden uitgevoerd waarin ook de relaties uit het oorspronkelijke formulierdocument zijn opgenomen. Nadat u het model hebt getraind, kunt u het testen, opnieuw trainen en hiermee uiteindelijk gegevens naar behoefte extraheren uit meer formulieren.
+Aangepaste Form Recognizer-modellen worden getraind naar uw eigen gegevens; u hebt slechts vijf voorbeelden van invoerformulieren nodig om te beginnen. Met een getraind documentverwerkingsmodel kunnen gestructureerde gegevens worden uitgevoerd waarin ook de relaties uit het oorspronkelijke formulierdocument zijn opgenomen. Nadat u het model hebt getraind, kunt u het testen, opnieuw trainen en hiermee uiteindelijk gegevens naar behoefte extraheren uit meer formulieren.
 
 U hebt de volgende opties wanneer u aangepaste modellen traint: training met en zonder gelabelde gegevens.
 
 ### <a name="train-without-labels"></a>Trainen zonder labels
 
 Standaard gebruikt Form Recognizer leren zonder supervisie om informatie in te leren over de indeling en relaties tussen velden en items in uw formulieren. Wanneer u uw invoerformulieren verzendt, clustert het algoritme de formulieren op type, detecteert welke sleutels en tabellen aanwezig zijn en koppelt waarden aan sleutels en items aan tabellen. Hiervoor hoeft u niet handmatig gegevens te labelen, of intensief te coderen en onderhouden. U wordt aangeraden deze methode eerst te proberen.
+
+Zie [Een set trainingsgegevens bouwen](./build-training-data-set.md) voor tips over het verzamelen van uw trainingsdocumenten.
 
 ### <a name="train-with-labels"></a>Trainen met labels
 
@@ -47,15 +51,17 @@ De Form Recognizer gebruikt de [indelings-API](#layout-api) voor meer informatie
 
 ## <a name="prebuilt-models"></a>Vooraf gemaakte modellen
 
-Form Recognizer bevat ook vooraf gemaakte modellen voor unieke formuliertypen.
+Form Recognizer bevat ook vooraf ontwikkelde modellen voor geautomatiseerde gegevensverwerking van unieke formuliertypen.
 
 ### <a name="prebuilt-receipt-model"></a>Vooraf samengesteld model voor aankoopbewijzen
-Het vooraf samengesteld model voor aankoopbewijzen wordt in Australië, Canada, het Verenigd Koninkrijk, India en de Verenigde Staten gebruikt voor het lezen van Engelse aankoopbewijzen&mdash;het type dat wordt gebruikt door restaurants, tankstations, winkels, enzovoort. Dit model haalt belangrijke informatie op, zoals de tijd en datum van de transactie, informatie over de verkoper, btw, regelitems, totalen, enzovoort. Daarnaast wordt het vooraf samengestelde ontvangstbewijsmodel getraind om alle tekst op een ontvangstbewijs te herkennen en te retourneren. 
+
+Het vooraf samengesteld model voor aankoopbewijzen wordt in Australië, Canada, het Verenigd Koninkrijk, India en de Verenigde Staten gebruikt voor het lezen van Engelse aankoopbewijzen&mdash;het type dat wordt gebruikt door restaurants, tankstations, winkels, enzovoort. Dit model haalt belangrijke informatie op, zoals de tijd en datum van de transactie, informatie over de verkoper, btw, regelitems, totalen, enzovoort. Daarnaast wordt het vooraf samengestelde ontvangstbewijsmodel getraind om alle tekst op een ontvangstbewijs te herkennen en te retourneren. Raadpleeg de conceptuele handleiding voor [Verkoopbonnen](./concept-receipts.md) voor meer informatie.
 
 ![voorbeeld van aankoopbewijs](./media/contoso-receipt-small.png)
 
 ### <a name="prebuilt-business-cards-model"></a>Vooraf samengesteld model voor visitekaartjes
-Het vooraf samengesteld model voor visitekaartjes haalt informatie, zoals naam, functie, adres, e-mail, bedrijf en telefoonnummers van de persoon op uit visitekaartjes in het Engels. 
+
+Het vooraf samengesteld model voor visitekaartjes haalt informatie, zoals naam, functie, adres, e-mail, bedrijf en telefoonnummers van de persoon op uit visitekaartjes in het Engels. Raadpleeg de conceptuele handleiding voor [Visitekaartjes](./concept-business-cards.md) voor meer informatie.
 
 ![voorbeeld van visitekaartje](./media/business-card-english.jpg)
 
@@ -67,7 +73,7 @@ Form Recognizer kan ook tekst- en tabelstructuur (de rij- en kolomnummers die zi
 
 Volg een quickstart om aan de slag te gaan met het extraheren van gegevens uit uw formulieren. U wordt aangeraden de gratis service te gebruiken wanneer u de technologie leert. Houd er rekening mee dat het aantal gratis pagina's beperkt is tot 500 per maand.
 
-* [Quickstart voor clientbibliotheek](./quickstarts/client-library.md) (alle talen, meerdere scenario's)
+* [Quickstarts voor clientbibliotheek](./quickstarts/client-library.md) (alle talen, meerdere scenario's)
 * Quickstarts voor webinterface
   * [Trainen met labels: voorbeeldhulpprogramma voor labelen](quickstarts/label-tool.md)
 * Quickstarts voor REST
@@ -99,19 +105,8 @@ U gebruikt de volgende API's om modellen te trainen en gestructureerde gegevens 
 Lees het [naslagmateriaal bij de REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm) voor meer informatie. Als u bekend bent met een eerdere versie van de API, raadpleegt u het artikel [Nieuwe functies](./whats-new.md) voor meer informatie over recente wijzigingen.
 
 ## <a name="input-requirements"></a>Vereisten voor invoer
-### <a name="custom-model"></a>Aangepast model
 
 [!INCLUDE [input requirements](./includes/input-requirements.md)]
-
-### <a name="prebuilt"></a>Vooraf samengesteld
-
-De invoervereisten voor het ontvangstbewijsmodel zijn iets anders.
-
-* De indeling moet JPEG, PNG, PDF (tekst of gescand) of TIFF zijn.
-* Grootte van bestand moet 20 MB of minder zijn.
-* De afmetingen van afbeeldingen moeten tussen 50 x 50 en 10000 x 10000 pixels liggen.
-* PDF-afmetingen mogen maximaal 17 x 17 inch zijn, wat overeenkomt met de papierformaten Legal of A3 en kleiner.
-* Voor PDF en TIFF worden alleen de eerste 200 pagina's verwerkt (met een abonnement in de prijscategorie Gratis worden alleen de eerste twee pagina's verwerkt).
 
 ## <a name="data-privacy-and-security"></a>Gegevensprivacy en -beveiliging
 
@@ -119,4 +114,4 @@ Zoals geldt voor alle services van Cognitive Services, dienen ontwikkelaars die 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Voer een [quickstart](quickstarts/curl-train-extract.md) uit om aan de slag te gaan met de [Form Recognizer API's](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm).
+Voltooi een [quickstart voor de clientbibliotheek](quickstarts/client-library.md) om aan de slag te gaan met het schrijven van een formulierverwerkingsapp met een Form Recognizer in de taal van uw keuze.

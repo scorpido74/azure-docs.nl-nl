@@ -7,14 +7,14 @@ ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: overview
 ms.date: 04/15/2020
-ms.author: acomet
+ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3141f8044a4a257de8022ff789b12d5d3e6e7a90
-ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
+ms.openlocfilehash: 98fc8b23369f961ca023832430d47c8868e42158
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85807023"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260662"
 ---
 # <a name="azure-synapse-analytics-cheat-sheet"></a>Cheatsheet voor Azure Synapse Analytics
 
@@ -22,18 +22,21 @@ ms.locfileid: "85807023"
 
 Het cheatsheet voor Azure Synapse Analytics bevat een overzicht van de basisconcepten en belangrijke opdrachten van de service. Dit artikel is nuttig voor zowel nieuwe gebruikers als mensen die meer over belangrijke Azure Synapse-onderwerpen willen weten.
 
-## <a name="architecture"></a>Architectuur
+## <a name="basics"></a>Basisbeginselen
 
-> [!div class="mx-imgBorder"]
->![Synapse-architectuur](media/overview-cheat-sheet/azure-synapse-architecture-cheat-sheet.png)
+Een **Synapse-werkruimte** is een beveiligbare samenwerkingsgrens voor het uitvoeren van zakelijke cloudanalyses in Azure. Een werkruimte wordt geïmplementeerd in een specifieke regio en heeft een gekoppeld ADLS Gen2-account en -bestandssysteem (voor het opslaan van tijdelijke gegevens). Een werkruimte bevindt zich onder een resourcegroep.
+
+Met een werkruimte kunt u analyses uitvoeren met SQL en Apache Spark. Resources die beschikbaar zijn voor SQL en Spark Analytics, zijn georganiseerd in SQL- en Spark-**pools**. 
+
+## <a name="synapse-sql"></a>Synapse SQL
+**Synapse SQL** is de mogelijkheid om op T-SQL gebaseerde analyses uit te voeren in een Synapse-werkruimte. Synapse SQL heeft twee verbruiksmodellen: toegewezen en serverloos.  Gebruik voor het toegewezen model exclusieve **SQL-pools**. Een werkruimte kan elk gewenst aantal pools bevatten. Als u het serverloze model wilt gebruiken, gebruikt u de serverloze SQL-pool met de naam: SQL op aanvraag. Elke werkruimte heeft een van deze pools.
+
+## <a name="apache-spark-for-synapse"></a>Apache Spark for Synapse
+Als u Spark-analyses wilt gebruiken, maakt en gebruikt u **Spark-pools** in uw Synapse-werkruimte.
 
 ## <a name="terminology"></a>Terminologie
 | Termijn                         | Definitie      |
 |:---                                 |:---                 |
-| **Synapse-werkruimte** | Een beveiligbare samenwerkingsgrens voor het uitvoeren van zakelijke cloudanalyses in Azure. Een werkruimte wordt geïmplementeerd in een specifieke regio en heeft een gekoppeld ADLS Gen2-account en -bestandssysteem (voor het opslaan van tijdelijke gegevens). Een werkruimte bevindt zich onder een resourcegroep. |
-| **Synapse SQL**   | Hiermee kunt u analyses uitvoeren met pools of met on-demand functies.  |
-| **SQL-pool**   | 0-to-N in SQL ingerichte resources en de bijbehorende databases kunnen in een werkruimte worden geïmplementeerd. Elke SQL-pool heeft een gekoppelde database. Een SQL-pool kan handmatig of automatisch worden geschaald, onderbroken en hervat. Een SQL-pool kan worden geschaald van 100 DWU's tot 30.000 DWU's.       |
-| **SQL on-demand**   | Het verwerkingssysteem voor gedistribueerde gegevens dat is gebouwd voor grote volumes gegevens waarmee u T-SQL-query's kunt uitvoeren op gegevens in data lake. Het is serverloos, zodat u de infrastructuur niet hoeft te beheren.       |
 |**Apache Spark for Synapse** | Spark-runtime die wordt gebruikt in een Spark-pool. De huidige versie die wordt ondersteund is Spark 2.4 met python 3.6.1, scala 2.11.12, .NET-ondersteuning voor Apache Spark 0.5 en Delta Lake 0.3.  | 
 | **Apache Spark-pool**  | 0-to-N in Spark ingerichte resources en de bijbehorende databases kunnen in een werkruimte worden geïmplementeerd. Een Spark-pool kan automatisch worden onderbroken, hervat en geschaald.  |
 | **Spark-toepassing**  |   Het bestaat uit een stuurprogrammaproces en een reeks uitvoeringsprocedures. Een Spark-toepassing wordt uitgevoerd in een Spark-pool.            |

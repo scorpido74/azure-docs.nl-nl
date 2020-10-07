@@ -1,6 +1,6 @@
 ---
 title: Overzicht van Azure IoT Hub Device Provisioning Service | Microsoft Docs
-description: Hierin wordt het inrichten van apparaten in azure beschreven met de Device Provisioning Service (DPS) en IoT Hub
+description: In dit artikel wordt beschreven hoe u in Azure apparaten inricht met Device Provisioning Service (DPS) en IoT Hub
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/04/2019
@@ -11,53 +11,53 @@ manager: eliotgra
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 1b12886ee55741f62a1156269423ffadd34cd433
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: e3fce15cdeb1792749224299167b52fc2311d04e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81683293"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318273"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Apparaten inrichten met Azure IoT Hub Device Provisioning Service
-Microsoft Azure biedt een uitgebreide set geïntegreerde openbare cloudservices om tegemoet te komen aan al uw IoT-vragen. De IoT Hub Device Provisioning Service (DPS) is een Helper-service voor IoT Hub die Zero-Touch, just-in-time inrichting naar de juiste IoT-hub biedt zonder menselijke tussen komst. Met DPS kunnen miljoenen apparaten op een veilige en schaal bare manier worden ingericht.
+Microsoft Azure biedt een uitgebreide set geïntegreerde openbare cloudservices om tegemoet te komen aan al uw IoT-vragen. IoT Hub Device Provisioning Service (DPS) is een helper-service die zero-touch mogelijk maakt, het Just-In-Time inrichten naar de juiste IoT Hub zonder tussenkomst van de gebruiker. Met DPS kunnen miljoenen apparaten op een veilige en schaalbare manier worden ingericht.
 
 ## <a name="when-to-use-device-provisioning-service"></a>Wanneer Device Provisioning Service gebruiken
-Er zijn veel inrichtings scenario's waarin DPS een uitstekende keuze is voor het verkrijgen van apparaten die zijn verbonden en geconfigureerd voor IoT Hub, zoals:
+Er zijn veel scenario's waarin DPS een uitstekende keuze is voor het verbinden en configureren van apparaten met IoT Hub, zoals:
 
 * Apparaat zonder tussenkomst van gebruiker inrichten voor een afzonderlijke IoT-oplossing zonder dat hiervoor in de fabriek (eerste installatie) hardcoding van verbindingsgegevens voor IoT-Hub nodig is
-* Taakverdelings apparaten op meerdere hubs
-* Apparaten verbinden met de IoT-oplossing van de eigenaar op basis van verkoop transactie gegevens (multitenancy)
+* Taakverdeling van apparaten over meerdere hubs
+* Apparaten verbinden met de IoT-oplossing van de eigenaar op basis van verkooptransactiegegevens (multitenancy)
 * Apparaten verbinden met een bepaalde IoT-oplossing, afhankelijk van het gebruiksscenario (isolatie van oplossing)
 * Apparaat met de laagst mogelijke latentie (geo-sharding) verbinden met de IoT-hub
 * Herinrichten op basis van een wijziging op het apparaat
 * Aanpassen van de sleutels die door het apparaat worden gebruikt om verbinding te maken met IoT Hub (als er geen verbinding wordt gemaakt met behulp van X.509-certificaten)
 
 ## <a name="behind-the-scenes"></a>Achter de schermen
-Alle scenario's die in de vorige sectie worden vermeld, kunnen worden uitgevoerd met behulp van DPS voor het inrichten op nul met dezelfde stroom. Veel van de hand matige stappen die traditioneel zijn betrokken bij het inrichten, worden geautomatiseerd met DPS om de tijd te beperken om IoT-apparaten te implementeren en het risico op hand matige fout te verlagen. In de volgende sectie wordt beschreven wat er achter de schermen gebeurt om een apparaat in te richten. De eerste stap is handmatig, alle overige gebeuren automatisch.
+Alle scenario's die hierboven worden vermeld, kunnen met dezelfde werkstroom en zonder tussenkomst van de gebruiker worden uitgevoerd met behulp van DPS. Veel van de handmatige stappen die gebruikelijk zijn bij het inrichten van apparaten zijn geautomatiseerd met DPS om zo het implementeren van IoT-apparaten te versnellen en de kans op handmatige fouten te verkleinen. In de volgende sectie wordt beschreven wat er achter de schermen gebeurt om een apparaat in te richten. De eerste stap is handmatig, alle overige gebeuren automatisch.
 
 ![Basiswerkstroom voor inrichting van apparaat](./media/about-iot-dps/dps-provisioning-flow.png)
 
 1. De apparaatfabrikant voegt de registratiegegevens van het apparaat toe aan de lijst met registraties in Azure Portal.
-2. Apparaat neemt contact op met het DPS-eind punt dat is ingesteld in de fabriek. Het apparaat geeft de identificerende informatie door aan DPS om de identiteit ervan te bewijzen.
-3. DPS valideert de identiteit van het apparaat door de registratie-ID en-sleutel te valideren op basis van de inschrijvings lijst vermelding met behulp van een nonce Challenge ([Trusted Platform Module](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/)) of Standard X. 509-verificatie (X. 509).
-4. Met DPS wordt het apparaat geregistreerd bij een IoT-hub en wordt de [gewenste twee status](../iot-hub/iot-hub-devguide-device-twins.md)van het apparaat ingevuld.
-5. De IoT-hub retourneert apparaat-ID-informatie naar DPS.
-6. DPS retourneert de gegevens van de IoT hub-verbinding met het apparaat. Het apparaat kan nu rechtstreeks gegevens gaan verzenden naar de IoT-hub.
+2. Het apparaat neemt contact op met het DPS-eindpunt dat in de fabriek is ingesteld. Het apparaat geeft de identificatiegegevens door aan DPS om de identiteit aan te tonen.
+3. DPS valideert de identiteit van het apparaat door de registratie-id en -sleutel te vergelijken met de vermelding in de lijst met registraties. Dit gebeurt met een nonce-challenge ([Trusted Platform Module](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/)) of standaard x.509-verificatie (X.509).
+4. DPS registreert het apparaat bij een IoT-hub en vult de [gewenste dubbelstatus](../iot-hub/iot-hub-devguide-device-twins.md) van het apparaat in.
+5. De IoT-hub retourneert de gegevens van de apparaat-id naar DPS.
+6. DPS retourneert de verbindingsgegevens van de IoT-hub naar het apparaat. Het apparaat kan nu rechtstreeks gegevens gaan verzenden naar de IoT-hub.
 7. Het apparaat maakt verbinding met IoT Hub.
 8. Het apparaat krijgt de gewenste status van de apparaatdubbel in IoT Hub.
 
 ## <a name="provisioning-process"></a>Inrichtingsproces
-Er zijn twee afzonderlijke stappen in het implementatie proces van een apparaat waarbij DPS een deel afneemt dat onafhankelijk kan worden uitgevoerd:
+Er zijn twee verschillende stappen in het implementatieproces van een apparaat waarbij DPS een rol speelt en die onafhankelijk kunnen worden uitgevoerd:
 
 * De **productiestap** waarin het apparaat wordt gemaakt en voorbereid in de fabriek, en
 * De **configuratiestap voor de cloud** waarin Device Provisioning Service wordt geconfigureerd voor automatisch inrichten.
 
-Beide stappen sluiten naadloos aan op bestaande productie- en implementatieprocessen. DPS vereenvoudigt ook sommige implementatie processen die hand matig moeten worden uitgevoerd om verbindings gegevens op het apparaat te verkrijgen.
+Beide stappen sluiten naadloos aan op bestaande productie- en implementatieprocessen. DPS vereenvoudigt zelfs enkele implementatieprocessen die handmatig werk vereisen om verbindingsgegevens op het apparaat te krijgen.
 
 ### <a name="manufacturing-step"></a>Productiestap
 Deze stap omvat alles wat te maken heeft met de productielijn. Voorbeelden van rollen die zijn betrokken bij deze stap zijn siliciumontwerper, siliciumfabrikant, integrator en/of de eindfabrikant van het apparaat. Deze stap gaat om het maken van de hardware zelf.
 
-DPS introduceert geen nieuwe stap in het productie proces; in plaats daarvan wordt de bestaande stap voor het installeren van de eerste software en (in het ideale geval) de HSM op het apparaat. In plaats van een apparaat-id te maken in deze stap, wordt het apparaat geprogrammeerd met de gegevens van de inrichtingsservice, waardoor het apparaat bij inschakeling de service kan aanroepen om de verbindingsgegevens/toewijzing van de IoT-oplossing op te vragen.
+DPS introduceert geen nieuwe stap in het productieproces. De service wordt geïntegreerd in de bestaande stap waarmee de eerste versie van de software en (in het ideale geval) de HSM op het apparaat worden geïnstalleerd. In plaats van een apparaat-id te maken in deze stap, wordt het apparaat geprogrammeerd met de gegevens van de inrichtingsservice, waardoor het apparaat bij inschakeling de service kan aanroepen om de verbindingsgegevens/toewijzing van de IoT-oplossing op te vragen.
 
 In deze stap verstrekt de fabrikant ook belangrijke identificatiegegevens aan de persoon die het apparaat implementeert/gebruikt (operator). Het verstrekken van die gegevens kan zo eenvoudig zijn als het bevestigen dat alle apparaten beschikken over een X.509-certificaat dat is gegenereerd op basis van een ondertekend certificaat dat is geleverd door de persoon die het apparaat implementeert/gebruikt, of zo ingewikkeld als het extraheren van het openbare deel van een TPM-goedkeuringssleutel van elk TPM-apparaat. Deze services worden vandaag de dag aangeboden door verschillende fabrikanten van silicium.
 
@@ -74,24 +74,24 @@ Nadat de service is geconfigureerd voor automatische inrichting, moet de service
 1. Het eerste deel omvat het tot stand brengen van de eerste verbinding tussen het apparaat en de IoT-oplossing door het apparaat te registreren.
 2. Het tweede gedeelte bestaat uit het toepassen van de juiste configuratie op het apparaat op basis van de specifieke vereisten van de oplossing waarbij het apparaat is geregistreerd.
 
-Als beide stappen zijn voltooid, kunnen we zeggen dat het apparaat volledig is ingericht. Sommige cloudservices bieden alleen de eerste stap van het inrichtingsproces, het registreren van apparaten bij het eindpunt van de IoT-oplossing, maar niet de eerste configuratie. DPS automatiseert beide stappen om een naadloze inrichtings ervaring te bieden voor het apparaat.
+Als beide stappen zijn voltooid, kunnen we zeggen dat het apparaat volledig is ingericht. Sommige cloudservices bieden alleen de eerste stap van het inrichtingsproces, het registreren van apparaten bij het eindpunt van de IoT-oplossing, maar niet de eerste configuratie. DPS automatiseert beide stappen en biedt zo een naadloze ervaring voor de inrichting van het apparaat.
 
 ## <a name="features-of-the-device-provisioning-service"></a>Functies van Device Provisioning Service
-DPS heeft veel functies, waardoor deze ideaal is voor het inrichten van apparaten.
+DPS bevat allerlei functies, waardoor de service ideaal is voor het inrichten van apparaten.
 
 * Ondersteuning voor **beveiligde attestation** voor identiteiten op basis van zowel X.509 als TPM.
 * **Lijst van registraties** met een volledig overzicht van de apparaten/groepen apparaten die op enige moment kunnen worden geregistreerd. De registratielijst bevat informatie over de gewenste configuratie van het apparaat als dit wordt geregistreerd en de lijst kan op elk gewenst moment worden bijgewerkt.
-* **Meerdere toewijzings beleidsregels** om te bepalen hoe met DPS apparaten worden toegewezen aan IOT-hubs ter ondersteuning van uw Scenario's: laagste latentie, gelijkmatig gewogen distributie (standaard) en statische configuratie via de registratie lijst. De latentie wordt bepaald op basis van dezelfde methode als [Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#performance).
+* **Meerdere beleidsregels voor toewijzing** om te bepalen hoe apparaten door DPS aan IoT-hubs worden toegewezen ter ondersteuning van uw scenario's: Laagste latentie, gelijkmatig gewogen distributie (standaard) en statische configuratie via de registratielijst. De latentie wordt bepaald met dezelfde methode als voor [Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#performance).
 * **Controle en logboekregistratie van diagnostische gegevens** om ervoor te zorgen dat alles goed werkt.
-* Met **ondersteuning voor meerdere hubs** kan DPS apparaten toewijzen aan meer dan één IOT-hub. DPS kan communiceren met hubs in meerdere Azure-abonnementen.
-* **Ondersteuning voor meerdere regio's** stelt DPS in staat om apparaten toe te wijzen aan IOT-hubs in andere regio's.
-* **Versleuteling voor Data-at-rest** maakt het mogelijk gegevens in DPS te versleutelen en op transparante wijze te ontsleutelen met behulp van 256-bits AES-versleuteling, een van de krach tigste blok cijfers die beschikbaar zijn en compatibel met FIPS 140-2.
+* **Ondersteuning voor meerdere hubs** zorgt ervoor dat DPS apparaten kan toewijzen aan meer dan één IoT-hub. DPS kan communiceren met hubs binnen verschillende Azure-abonnementen.
+* **Ondersteuning voor meerdere regio's** zorgt ervoor dat DPS apparaten kan toewijzen aan IoT-hubs in andere regio's.
+* **Versleuteling voor data-at-rest** zorgt ervoor dat gegevens in DPS worden versleuteld en ontsleuteld met 256-bits AES-versleuteling, een zeer krachtige blokversleuteling die voldoet aan FIPS 140-2.
 
 
-Zie [apparaatconcepten](concepts-device.md), [serviceconcepten](concepts-service.md) en [veiligheidsconcepten](concepts-security.md) voor meer informatie over de concepten en functies die zijn betrokken bij het inrichten van apparaten.
+Meer informatie over de concepten en functies die bij het inrichten van apparaten betrokken zijn, kunt u vinden in het onderwerp [DPS-terminologie](concepts-service.md). In dezelfde sectie vindt u ook de andere conceptuele onderwerpen.
 
 ## <a name="cross-platform-support"></a>Ondersteuning voor meerdere platformen
-Net als alle Azure IoT-Services werkt DPS op verschillende platformen met diverse besturings systemen. Azure biedt open source-SDK's in een veelheid aan [talen](https://github.com/Azure/azure-iot-sdks) ter bevordering van het verbinden van apparaten en het beheren van de service. DPS ondersteunt de volgende protocollen voor het verbinden van apparaten:
+DPS werkt, net als alle andere Azure IoT-services, platformoverschrijdende met tal van besturingssystemen. Azure biedt open source-SDK's in een veelheid aan [talen](https://github.com/Azure/azure-iot-sdks) ter bevordering van het verbinden van apparaten en het beheren van de service. DPS ondersteunt de volgende protocollen voor het verbinden van apparaten:
 
 * HTTPS
 * AMQP
@@ -99,16 +99,16 @@ Net als alle Azure IoT-Services werkt DPS op verschillende platformen met divers
 * MQTT
 * MQTT via WebSockets
 
-DPS ondersteunt alleen HTTPS-verbindingen voor service bewerkingen.
+DPS ondersteunt alleen HTTPS-verbindingen voor servicebewerkingen.
 
 ## <a name="regions"></a>Regio's
-DPS is beschikbaar in veel regio's. De bijgewerkte lijst met bestaande en nieuwe regio's voor alle services wordt aangekondigd op [Azure-regio's](https://azure.microsoft.com/regions/). U kunt de beschikbaarheid van Device Provisioning Service controleren op de pagina [Status van Azure](https://azure.microsoft.com/status/).
+DPS is in diverse regio's beschikbaar. De bijgewerkte lijst met bestaande en nieuwe regio's voor alle services wordt aangekondigd op [Azure-regio's](https://azure.microsoft.com/regions/). U kunt de beschikbaarheid van Device Provisioning Service controleren op de pagina [Status van Azure](https://azure.microsoft.com/status/).
 
 > [!NOTE]
-> DPS is globaal en niet gebonden aan een locatie. U moet echter een regio opgeven waarin de meta gegevens die aan uw DPS-profiel zijn gekoppeld, worden opgeslagen.
+> DPS is globaal en niet gebonden aan een locatie. U moet echter een regio opgeven waarin de metagegevens worden opgeslagen die zijn gekoppeld aan uw DPS-profiel.
 
 ## <a name="availability"></a>Beschikbaarheid
-Er is een 99,9% Service Level Agreement voor DPS, en u kunt [de sla lezen](https://azure.microsoft.com/support/legal/sla/iot-hub/). In de volledige [Azure SLA](https://azure.microsoft.com/support/legal/sla/) wordt de gegarandeerde beschikbaarheid van Azure als geheel uitgelegd.
+Er wordt een Service Level Agreement van 99,9% voor DPS gehanteerd. U kunt [de SLA hier lezen](https://azure.microsoft.com/support/legal/sla/iot-hub/). In de volledige [Azure SLA](https://azure.microsoft.com/support/legal/sla/) wordt de gegarandeerde beschikbaarheid van Azure als geheel uitgelegd.
 
 ## <a name="quotas"></a>Quota
 Voor elk Azure-abonnement gelden standaardquotalimieten. Deze limieten kunnen invloed hebben op het bereik van uw IoT-oplossing. De huidige limiet voor een abonnementsvariant is 10 Device Provisioning Services per abonnement.
@@ -119,11 +119,13 @@ Meer informatie over quotalimieten vindt u hier:
 * [Azure-abonnement en servicelimieten, quota's en beperkingen](../azure-resource-manager/management/azure-subscription-service-limits.md)
 
 ## <a name="related-azure-components"></a>Gerelateerde Azure-onderdelen
-Met DPS wordt het inrichten van apparaten geautomatiseerd met Azure IoT Hub. Lees hier meer informatie over [IoT Hub](https://docs.microsoft.com/azure/iot-hub/).
+Met DPS kunnen apparaten met behulp van Azure IoT Hub automatisch worden ingericht. Lees hier meer informatie over [IoT Hub](https://docs.microsoft.com/azure/iot-hub/).
 
 ## <a name="next-steps"></a>Volgende stappen
 U hebt nu een algemeen beeld van het inrichten van IoT-apparaten in Azure. De volgende stap is het uitproberen van een compleet IoT-scenario.
-> [!div class="nextstepaction"]
-> [IOT hub Device Provisioning Service instellen met de Azure Portal](quick-setup-auto-provision.md)
-> [een gesimuleerd apparaat](quick-create-simulated-device.md)
-> [instellen en inrichten voor inrichting](tutorial-set-up-device.md)
+
+[IoT Hub Device Provisioning Service instellen met Azure Portal](quick-setup-auto-provision.md)
+
+[Een gesimuleerd apparaat maken en inrichten](quick-create-simulated-device.md)
+
+[Apparaat instellen voor inrichting](tutorial-set-up-device.md)

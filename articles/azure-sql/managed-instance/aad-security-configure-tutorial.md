@@ -10,12 +10,12 @@ author: GitHubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 11/06/2019
-ms.openlocfilehash: 05103052308b6dbf1314348f7d45abc9cba79827
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 552b3f55632e817cc4669ce5da41b1e127c7d808
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84706427"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91283867"
 ---
 # <a name="tutorial-security-in-azure-sql-managed-instance-using-azure-ad-server-principals-logins"></a>Zelfstudie: Beveiliging van Azure SQL Managed Instance met behulp van Azure AD-serverprincipals (aanmeldingen)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -104,7 +104,7 @@ Zie de volgende artikelen voor voorbeelden van het maken van een verbinding met 
     GO
     ```
 
-    ![native-login.png](./media/aad-security-configure-tutorial/native-login.png)
+    ![Schermopname van het tabblad Resultaten in de S S M S Objectverkenner met de naam, de principal_id, de sid, het type en het type_desc van de zojuist toegevoegde aanmelding.](./media/aad-security-configure-tutorial/native-login.png)
 
 Zie [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) voor meer informatie.
 
@@ -153,13 +153,13 @@ Nadat de Azure AD-server-principal (aanmelding) is gemaakt en is voorzien van `s
    - Active Directory - wachtwoord
    - Active Directory - geïntegreerd </br>
 
-     ![ssms-login-prompt.png](./media/aad-security-configure-tutorial/ssms-login-prompt.png)
+     ![Schermopname van het dialoogvenster Verbinding maken met server in S S M S met Active Directory - Universal met MFA-ondersteuning geselecteerd in de vervolgkeuzelijst Verificatie.](./media/aad-security-configure-tutorial/ssms-login-prompt.png)
 
      Zie [Universele verificatie (SSMS-ondersteuning voor Multi-Factor Authentication)](../database/authentication-mfa-ssms-overview.md) voor meer informatie.
 
 1. Selecteer **Active Directory - Universal met ondersteuning voor MFA**. Hiermee wordt een MFA-aanmeldingsvenster geopend. Meld u aan met uw Azure AD-wachtwoord.
 
-    ![mfa-login-prompt.png](./media/aad-security-configure-tutorial/mfa-login-prompt.png)
+    ![Schermopname van het Multi-Factor Authentication-aanmeldingsvenster met de cursor in het veld Wachtwoord invoeren.](./media/aad-security-configure-tutorial/mfa-login-prompt.png)
 
 1. Klik in SSMS **Objectverkenner** met de rechtermuisknop op de server en kies **Nieuwe query**.
 1. Gebruik in het queryvenster de volgende syntaxis om een aanmelding te maken voor een ander Azure AD-account:
@@ -222,7 +222,7 @@ Autorisatie voor afzonderlijke databases werkt in SQL Managed Instance nagenoeg 
 
 Nu we een database met de naam **MyMITestDB** hebben gemaakt plus een aanmelding met alleen standaardmachtigingen, bestaat de volgende stap uit het maken van een gebruiker op basis van deze aanmelding. Op dit moment kan de aanmelding verbinding maken met het beheerde exemplaar en alle databases zien, maar er kan niet met de databases worden gecommuniceerd. Als u zich aanmeldt met het Azure AD-account waarvoor de standaardmachtigingen gelden en u de zojuist gemaakte database probeert uit te vouwen, krijgt u de volgende fout te zien:
 
-![ssms-db-not-accessible.png](./media/aad-security-configure-tutorial/ssms-db-not-accessible.png)
+![Schermopname van een foutbericht van de S S M S Objectverkenner: 'De database MyMITestDB is niet toegankelijk. (Objectverkenner)'.](./media/aad-security-configure-tutorial/ssms-db-not-accessible.png)
 
 Zie [Aan de slag met machtigingen voor database-engines](/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions) voor meer informatie over het verlenen van databasemachtigingen.
 
@@ -326,7 +326,7 @@ Om ervoor te zorgen dat de gebruiker de gegevens in de database kan zien, geven 
 1. Maak een nieuwe verbinding naar het beheerd exemplaar met de gebruiker die is toegevoegd aan de `db_datareader`-rol.
 1. Vouw de database in **Objectverkenner** uit om de tabel weer te geven.
 
-    ![ssms-test-table.png](./media/aad-security-configure-tutorial/ssms-test-table.png)
+    ![Schermopname van de S S M S Objectverkenner met de mapstructuur voor Tabellen in MyMITestDB. De map dbo.TestTable is uitgelicht.](./media/aad-security-configure-tutorial/ssms-test-table.png)
 
 1. Open een nieuw queryvenster en voer de volgende SELECT-instructie uit:
 
@@ -337,7 +337,7 @@ Om ervoor te zorgen dat de gebruiker de gegevens in de database kan zien, geven 
 
     Kunt u gegevens uit de tabel zien? De kolommen zouden moeten worden geretourneerd.
 
-    ![ssms-test-table-query.png](./media/aad-security-configure-tutorial/ssms-test-table-query.png)
+    ![Schermopname van het tabblad Resultaten in de S S M S Objectverkenner die de tabelkolommen AccountNum, Plaats, Naam en Status weergeeft.](./media/aad-security-configure-tutorial/ssms-test-table-query.png)
 
 ## <a name="impersonate-azure-ad-server-level-principals-logins"></a>Principals op Azure AD-serverniveau (aanmeldingen) imiteren
 

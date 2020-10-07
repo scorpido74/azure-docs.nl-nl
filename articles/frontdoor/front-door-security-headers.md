@@ -1,6 +1,6 @@
 ---
 title: 'Zelfstudie: Beveiligingsheaders toevoegen met de engine voor regels - Azure Front Door'
-description: In dit artikel leert u hoe u een beveiligingskoptekst configureert via een regelengine in Azure Front Door
+description: In deze zelfstudie leert u hoe u een beveiligingskoptekst configureert via een Engine voor regels in Azure Front Door
 services: frontdoor
 documentationcenter: ''
 author: duongau
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/14/2020
 ms.author: duau
-ms.openlocfilehash: 204a7676fd03466929fc67a0879ff28e0318d21d
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 1727193faa028a1d681f2a74df950afeb9570ec9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085230"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91270046"
 ---
 # <a name="tutorial-add-security-headers-with-rules-engine"></a>Zelfstudie: Beveiligingsheaders toevoegen met de engine voor regels
 

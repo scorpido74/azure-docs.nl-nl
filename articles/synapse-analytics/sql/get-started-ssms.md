@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: dc467eebbd7346777765af7143d13c76627ab648
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 166d598528d8fe38e2bc22b76c659326c5e0ba45
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077711"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288780"
 ---
 # <a name="connect-to-synapse-sql-with-sql-server-management-studio-ssms"></a>Verbinding maken met Synapse SQL met behulp van SQL Server Management Studio (SSMS)
 > [!div class="op_single_selector"]
@@ -41,7 +41,7 @@ Zorg ervoor dat u voordat u begint over het volgende beschikt:
 
 * [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms). 
 * Voor de SQL-pool hebt u een bestaand datawarehouse nodig. Zie [Een SQL-pool maken](../quickstart-create-sql-pool-portal.md) voor informatie over het maken van een datawarehouse. Voor SQL on-demand is er tijdens het maken al een in uw werkruimte ingericht. 
-* De volledig gekwalificeerde SQL-servernaam. Zie [Verbinding maken met Synapse SQL](connect-overview.md) om deze te vinden.
+* De volledig gekwalificeerde SQL-servernaam. Zie [Verbinding maken met Synapse SQL](connect-overview.md) om deze naam te vinden.
 
 ## <a name="connect"></a>Verbinding maken
 
@@ -52,7 +52,7 @@ Voer de volgende stappen uit om verbinding te maken met Synapse SQL met behulp v
 1. Open SQL Server Management Studio (SSMS). 
 1. Vul in het dialoogvenster **Verbinding maken met server** de velden in en selecteer vervolgens **Verbinding maken**: 
   
-    ![Verbinding maken met server](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/connect-object-explorer1.png)
+    ![Verbinding maken met server 1](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/connect-object-explorer1.png)
    
    * **Servernaam**: Voer de eerder vastgestelde **servernaam** in.
    * **Verificatie**:  Kies een verificatietype, zoals **SQL Server-verificatie** of **Geïntegreerde Active Directory-verificatie**.
@@ -60,7 +60,7 @@ Voer de volgende stappen uit om verbinding te maken met Synapse SQL met behulp v
 
 1. Vouw uw Azure SQL Server uit in **Objectverkenner**. U kunt de databases weergeven die zijn gekoppeld aan de server, zoals de voorbeelddatabase AdventureWorksDW. U kunt de database uitvouwen om de tabellen te bekijken:
    
-    ![AdventureWorksDW verkennen](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/explore-tables.png)
+    ![AdventureWorksDW 1 verkennen](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/explore-tables.png)
 
 
 ### <a name="sql-on-demand-preview"></a>SQL on-demand (preview)
@@ -70,16 +70,16 @@ Voer de volgende stappen uit om verbinding te maken met Synapse SQL met behulp v
 1. Open SQL Server Management Studio (SSMS).
 1. Vul in het dialoogvenster **Verbinding maken met server** de velden in en selecteer vervolgens **Verbinding maken**: 
    
-    ![Verbinding maken met server](./media/get-started-ssms/connect-object-explorer1.png)
+    ![Verbinding maken met server 2](./media/get-started-ssms/connect-object-explorer1.png)
    
    * **Servernaam**: Voer de eerder vastgestelde **servernaam** in.
    * **Verificatie**: Kies een verificatietype, zoals **SQL Server-verificatie** of **Geïntegreerde Active Directory-verificatie**:
    * **Gebruikersnaam** en **Wachtwoord**: Voer uw gebruikersnaam en wachtwoord in als u hierboven SQL Server-verificatie hebt geselecteerd.
-   * Klik op **Verbinden**.
+   * Selecteer **Verbinding maken**.
 
 4. U kunt de Azure SQL-server uitvouwen als u deze wilt verkennen. U kunt de databases weergeven die aan de server zijn gekoppeld. Vouw *demo* uit om de inhoud in de voorbeelddatabase te bekijken.
    
-    ![AdventureWorksDW verkennen](./media/get-started-ssms/explore-tables.png)
+    ![AdventureWorksDW 2 verkennen](./media/get-started-ssms/explore-tables.png)
 
 
 ## <a name="run-a-sample-query"></a>Een voorbeeldquery uitvoeren
@@ -91,18 +91,18 @@ Nu u een databaseverbinding tot stand hebt gebracht, kunt u een query uitvoeren 
 1. Klik met de rechtermuisknop op de database in SQL Server-objectverkenner.
 2. Selecteer **New Query** (Nieuwe query). Een nieuwe queryvenster wordt geopend.
    
-    ![Nieuwe query](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/new-query.png)
-3. Kopieer deze T-SQL-query naar het queryvenster:
+    ![Nieuwe query 1](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/new-query.png)
+3. Kopieer de volgende T-SQL-query in het queryvenster:
    
     ```sql
     SELECT COUNT(*) FROM dbo.FactInternetSales;
     ```
-4. Voer de query uit. Klik hiertoe op `Execute` of gebruik de volgende snelkoppeling: `F5`.
+4. Voer de query uit door `Execute` te selecteren of de volgende snelkoppeling te gebruiken: `F5`.
    
-    ![Query uitvoeren](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/execute-query.png)
+    ![Query 1 uitvoeren](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/execute-query.png)
 5. Bekijk de resultaten van de query. In dit voorbeeld heeft de tabel FactInternetSales 60398 rijen.
    
-    ![Queryresultaten](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/results.png)
+    ![Resultaten van query 1](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/results.png)
 
 ### <a name="sql-on-demand"></a>SQL on-demand
 
@@ -111,18 +111,18 @@ Nu u een databaseverbinding tot stand hebt gebracht, kunt u een query uitvoeren 
 1. Klik met de rechtermuisknop op de database in SQL Server-objectverkenner.
 2. Selecteer **New Query** (Nieuwe query). Een nieuwe queryvenster wordt geopend.
    
-    ![Nieuwe query](./media/get-started-ssms/new-query.png)
+    ![Nieuwe query 2](./media/get-started-ssms/new-query.png)
 3. Kopieer de volgende T-SQL-query in het queryvenster:
    
     ```sql
     SELECT COUNT(*) FROM demo.dbo.usPopulationView
     ```
-4. Voer de query uit. Klik hiertoe op `Execute` of gebruik de volgende snelkoppeling: `F5`.
+4. Voer de query uit door `Execute` te selecteren of de volgende snelkoppeling te gebruiken: `F5`.
    
-    ![Query uitvoeren](./media/get-started-ssms/execute-query.png)
+    ![Query 2 uitvoeren](./media/get-started-ssms/execute-query.png)
 5. Bekijk de resultaten van de query. In dit voorbeeld heeft de weergave usPopulationView 3664512 rijen.
    
-    ![Queryresultaten](./media/get-started-ssms/results.png)
+    ![Resultaten van query 2](./media/get-started-ssms/results.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 Nu u weet hoe u verbinding maakt en een query uitvoert, kunt u proberen [de gegevens te visualiseren met Power BI](get-started-power-bi-professional.md).

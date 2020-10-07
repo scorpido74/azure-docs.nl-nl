@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: a1dc42815167da308fd87b541c0f21d02b47329b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b6f2e8ff6689a3817ecf9eb43c7cea4a0632fc25
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89022510"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297658"
 ---
 # <a name="tutorial-explore-azure-digital-twins-with-a-sample-client-app"></a>Zelfstudie: Azure Digital Twins verkennen met een voorbeeldclient-app
 
@@ -85,18 +85,18 @@ Vergeet niet het bestand op te slaan voordat u verdergaat.
 
 Nu u een model hebt gedefinieerd, bestaan de resterende stappen uit het gebruiken van de voorbeeld-app om te interageren met uw Azure Digital Twins-instantie. Voer het project uit met deze knop op de werkbalk:
 
-:::image type="content" source="media/tutorial-command-line-app/start-button-sample.png" alt-text="De startknop van Visual Studio (project SampleClientApp)":::
+:::image type="content" source="media/tutorial-command-line-app/start-button-sample.png" alt-text="Bewerkte Room.json met bijgewerkte eigenschappen HumidityLevel en RoomName en de relatie 'contains'":::
 
 Er wordt een consolevenster geopend, de verificatie wordt uitgevoerd en er wordt gewacht op een opdracht. 
 * Verificatie wordt afgehandeld via de browser: uw standaardwebbrowser wordt geopend met een verificatieprompt. Gebruik deze prompt om u aan te melden met uw Azure-referenties. Vervolgens kunt u het browsertabblad of -venster sluiten.
 
 Dit is een schermopname van hoe de projectconsole eruitziet:
 
-:::image type="content" source="media/tutorial-command-line-app/command-line-app.png" alt-text="Welkomstbericht van de opdrachtregel-app":::
+:::image type="content" source="media/tutorial-command-line-app/command-line-app.png" alt-text="Bewerkte Room.json met bijgewerkte eigenschappen HumidityLevel en RoomName en de relatie 'contains'":::
 
 > [!TIP]
 > Voer in de projectconsole `help` in en druk op Enter voor een lijst met alle mogelijke opdrachten die u bij dit project kunt gebruiken.
-> :::image type="content" source="media/tutorial-command-line-app/command-line-app-help.png" alt-text="Uitvoer van de help-opdracht":::
+> :::image type="content" source="media/tutorial-command-line-app/command-line-app-help.png" alt-text="Bewerkte Room.json met bijgewerkte eigenschappen HumidityLevel en RoomName en de relatie 'contains'":::
 
 Laat de projectconsole aan staan voor de rest van de stappen in deze zelfstudie.
 
@@ -117,7 +117,7 @@ De uitvoer zou moeten aangeven dat de modellen met succes zijn gemaakt.
 
 Controleer of de modellen zijn gemaakt door de opdracht `GetModels true` uit te voeren. Hierdoor wordt een query uitgevoerd op de Azure Digital Twins-instanties naar alle modellen die zijn geüpload, en worden alle gegevens ervan afgedrukt. Bekijk het bewerkte *Room*-model in de resultaten:
 
-:::image type="content" source="media/tutorial-command-line-app/output-get-models.png" alt-text="Resultaten van GetModels waarin het bijgewerkte Room-model wordt weergegeven":::
+:::image type="content" source="media/tutorial-command-line-app/output-get-models.png" alt-text="Bewerkte Room.json met bijgewerkte eigenschappen HumidityLevel en RoomName en de relatie 'contains'":::
 
 #### <a name="errors"></a>Fouten
 
@@ -165,7 +165,7 @@ CreateDigitalTwin dtmi:example:Floor;1 floor1
 
 De uitvoer van deze opdrachten zou moeten aangeven dat de tweelingen met succes zijn gemaakt. 
 
-:::image type="content" source="media/tutorial-command-line-app/output-create-digital-twin.png" alt-text="Fragment van de resultaten van CreateDigitalTwin-opdrachten, met floor0, floor1, room0, en room1":::
+:::image type="content" source="media/tutorial-command-line-app/output-create-digital-twin.png" alt-text="Bewerkte Room.json met bijgewerkte eigenschappen HumidityLevel en RoomName en de relatie 'contains'":::
 
 U kunt ook de opdracht `Query` uitvoeren om te verifiëren dat de tweelingen zijn gemaakt. Deze opdracht voert een query uit op uw Azure Digital Twins-instantie naar alle digitale tweelingen die deze bevat. Kijk in de resultaten naar de tweelingen *floor0*, *floor1*, *room0* en *room1*.
 
@@ -205,7 +205,7 @@ CreateRelationship floor1 contains room1 relationship1
 
 De uitvoer van deze opdrachten bevestigt dat de relaties met succes zijn gemaakt:
 
-:::image type="content" source="media/tutorial-command-line-app/output-create-relationship.png" alt-text="Fragment van de resultaten van CreateRelationship-opdrachten, met relationship0 en relationship1":::
+:::image type="content" source="media/tutorial-command-line-app/output-create-relationship.png" alt-text="Bewerkte Room.json met bijgewerkte eigenschappen HumidityLevel en RoomName en de relatie 'contains'":::
 
 U kunt de relaties ook controleren met elk van de volgende opdrachten, waarmee de relaties in uw instantie van Azure Digital Twins wordt opgevraagd.
 * Om alle relaties te zien die afkomstig zijn van elke verdieping (bekijk de relaties van één kant),
@@ -219,13 +219,13 @@ U kunt de relaties ook controleren met elk van de volgende opdrachten, waarmee d
     ```
 * Om deze relaties afzonderlijk op te vragen, 
     ```cmd/sh
-    GetRelationship floor0 contains relationship0
-    GetRelationship floor1 contains relationship1
+    GetRelationship floor0 relationship0
+    GetRelationship floor1 relationship1
     ```
 
 De tweelingen en relaties die u in deze zelfstudie hebt ingesteld vormen de volgende conceptuele grafiek:
 
-:::image type="content" source="media/tutorial-command-line-app/sample-graph.png" alt-text="Een grafiek die laat zien dat floor0 via relationship0 is verbonden met room0, en floor1 via relationship1 is verbonden met room1" border="false":::
+:::image type="content" source="media/tutorial-command-line-app/sample-graph.png" alt-text="Bewerkte Room.json met bijgewerkte eigenschappen HumidityLevel en RoomName en de relatie 'contains'" border="false":::
 
 ### <a name="query-the-twin-graph-to-answer-environment-questions"></a>Query uitvoeren op de tweelinggrafiek om vragen over de omgeving te beantwoorden
 
@@ -239,10 +239,10 @@ Een hoofdfunctie van Azure Digital Twins is de mogelijkheid om gemakkelijk en ef
 
     Hiermee kunt u in één oogopslag de balans opmaken van uw omgeving en ervoor zorgen dat alles binnen Azure Digital Twins wordt weergegeven zoals u het wilt. Het resultaat hiervan is een uitvoer die elke digitale tweeling met de gegevens ervan bevat. Hier volgt een fragment:
 
-    :::image type="content" source="media/tutorial-command-line-app/output-query-all.png" alt-text="Gedeeltelijke resultaten van dubbelquery, met room0 en floor1":::
+    :::image type="content" source="media/tutorial-command-line-app/output-query-all.png" alt-text="Bewerkte Room.json met bijgewerkte eigenschappen HumidityLevel en RoomName en de relatie 'contains'":::
 
     >[!NOTE]
-    >De opdracht `Query` zonder aanvullende argumenten is het equivalent van `Query SELECT * FROM DIGITALTWINS`.
+    >In het voorbeeldproject is de opdracht `Query` zonder aanvullende argumenten het equivalent van `Query SELECT * FROM DIGITALTWINS`. Gebruik de langere (volledige) query om alle apparaatdubbels in uw exemplaar op te vragen met behulp van de [query-API's](how-to-use-apis-sdks.md) of de [CLI-opdrachten](how-to-use-cli.md).
 
 * **Wat zijn alle ruimten in mijn omgeving?** (query op model)
 
@@ -252,7 +252,7 @@ Een hoofdfunctie van Azure Digital Twins is de mogelijkheid om gemakkelijk en ef
 
     U kunt uw query beperken tot tweelingen van een bepaald type om meer specifieke informatie te verkrijgen over wat er wordt weergegeven. Het resultaat hiervan laat *room0* en *room1* zien, maar **niet** *floor0* of *floor1* (omdat dat verdiepingen zijn en geen ruimten).
     
-    :::image type="content" source="media/tutorial-command-line-app/output-query-model.png" alt-text="Resultaten van modelquery, alleen room0 en room1 weergegeven":::
+    :::image type="content" source="media/tutorial-command-line-app/output-query-model.png" alt-text="Bewerkte Room.json met bijgewerkte eigenschappen HumidityLevel en RoomName en de relatie 'contains'":::
 
 * **Wat zijn alle ruimten op *floor0*?** (query op relatie)
 
@@ -262,7 +262,7 @@ Een hoofdfunctie van Azure Digital Twins is de mogelijkheid om gemakkelijk en ef
 
     U kunt query's uitvoeren op basis van relaties in uw grafiek, om informatie te krijgen over de manier waarop tweelingen zijn verbonden of om uw query te beperken tot een bepaald gebied. Alleen *room0* bevindt zich op *floor0*, dus is dit de enige ruimte in het resultaat.
 
-    :::image type="content" source="media/tutorial-command-line-app/output-query-relationship.png" alt-text="Resultaten van relatiequery, met room0 weergegeven":::
+    :::image type="content" source="media/tutorial-command-line-app/output-query-relationship.png" alt-text="Bewerkte Room.json met bijgewerkte eigenschappen HumidityLevel en RoomName en de relatie 'contains'":::
 
 * **Wat zijn de tweelingen in mijn omgeving met een temperatuur van meer dan 75 °F?** (query op eigenschap)
 
@@ -272,7 +272,7 @@ Een hoofdfunctie van Azure Digital Twins is de mogelijkheid om gemakkelijk en ef
 
     U kunt een query uitvoeren op de grafiek op basis van eigenschappen om allerlei vragen te beantwoorden, met inbegrip van uitschieters in uw omgeving die mogelijk aandacht vereisen. Andere vergelijkingsoperators ( *<* , *>* , *=* of *!=* ) worden ook ondersteund. *room1* wordt hier weergegeven in de resultaten, omdat deze een temperatuur van 80 °F heeft.
 
-    :::image type="content" source="media/tutorial-command-line-app/output-query-property.png" alt-text="Resultaten van eigenschapsquery, alleen room1 weergegeven":::
+    :::image type="content" source="media/tutorial-command-line-app/output-query-property.png" alt-text="Bewerkte Room.json met bijgewerkte eigenschappen HumidityLevel en RoomName en de relatie 'contains'":::
 
 * **Wat zijn alle ruimten op *floor0* met een temperatuur van meer dan 75 °F?** (samengestelde query)
 
@@ -282,7 +282,7 @@ Een hoofdfunctie van Azure Digital Twins is de mogelijkheid om gemakkelijk en ef
 
     U kunt de eerdere query's ook combineren zoals u dat in SQL zou doen, met behulp van combinatie-operatoren zoals `AND`, `OR`, `NOT`. Deze query maakt gebruik van `AND` om de vorige query over tweelingtemperaturen specifieker te maken. Het resultaat bevat nu alleen ruimten met een temperatuur van meer dan 75 °F op *floor0*; in dit geval geen. De resultatenset is leeg.
 
-    :::image type="content" source="media/tutorial-command-line-app/output-query-compound.png" alt-text="Resultaten van samengestelde query, met geen resultaten":::
+    :::image type="content" source="media/tutorial-command-line-app/output-query-compound.png" alt-text="Bewerkte Room.json met bijgewerkte eigenschappen HumidityLevel en RoomName en de relatie 'contains'":::
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

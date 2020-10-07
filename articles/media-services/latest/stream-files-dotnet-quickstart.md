@@ -1,6 +1,6 @@
 ---
 title: Videobestanden streamen met Azure Media Services - .NET | Microsoft Docs
-description: Volg de stappen in deze zelfstudie om een nieuw Azure Media Services-account te maken, een bestand te coderen en dit vervolgens te streamen naar Azure Media Player.
+description: Volg de stappen in deze zelfstudie om .NET te gebruiken om een nieuw Azure Media Services-account te maken, een bestand te coderen en dit vervolgens te streamen naar Azure Media Player.
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: ec60f775fbeb176f9442aff11117c85c5028a81f
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 530089b9c6b9544201b0f07368cac3d1a695a4f8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267085"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268686"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---net"></a>Zelfstudie: Extern bestand coderen op basis van URL en video streamen - .NET
 
@@ -70,7 +70,7 @@ Wanneer u de app uitvoert, worden URL's weergegeven die kunnen worden gebruikt o
 1. Druk op Ctrl + F5 om de toepassing *EncodeAndStreamFiles* uit te voeren.
 2. Kies het **HLS**-protocol van Apple (eindigt op *manifest(format=m3u8-aapl)* ) en kopieer de streaming-URL uit de console.
 
-![Uitvoer](./media/stream-files-tutorial-with-api/output.png)
+![Schermopname van de uitvoer van de EncodeAndStreamFiles-app in Visual Studio met drie streaming-URL's voor gebruik in de Azure Media Player.](./media/stream-files-tutorial-with-api/output.png)
 
 In de [broncode](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs) van het voorbeeld kunt u zien hoe de URL is samengesteld. Als u de URL wilt samenstellen, moet u de hostnaam van het streaming-eindpunt en het pad van de streaming-locator samenvoegen.  
 

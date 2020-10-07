@@ -5,13 +5,13 @@ services: azure-resource-manager
 ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.custom: subject-armqs, references_regions
-ms.date: 07/16/2020
-ms.openlocfilehash: b9d1e3319aaaafded44d25c91720a0d72dcb86f3
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.date: 09/16/2020
+ms.openlocfilehash: e9893336f2e6633519853aceecc945ee6bf0bf4b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642007"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292758"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-member-using-an-arm-template"></a>Quickstart: Een Azure Blockchain Service-lid maken met behulp van een ARM-sjabloon
 
@@ -49,14 +49,16 @@ Azure-resources die in de sjabloon zijn gedefinieerd:
     --------|------------
     Abonnement | Selecteer het Azure-abonnement dat u wilt gebruiken voor uw service. Als u meerdere abonnementen hebt, kiest u het abonnement waarin u wordt gefactureerd voor de resource.
     Resourcegroep | U kunt een nieuwe resourcegroepnaam maken of een bestaande naam uit uw abonnement kiezen.
-    Locatie | Kies een locatie om het lid te maken. Alle leden van het consortium moeten zich op dezelfde locatie bevinden. Beschikbare locaties voor de implementatie zijn *westeurope, eastus, southeastasia, westeurope, northeurope, westus2* en *japaneast*. Functies zijn mogelijk niet in alle regio's beschikbaar. Azure Blockchain Data Manager is beschikbaar in de volgende Azure-regio's: VS - oost en Europa - west.
-    Lidnaam | Kies een unieke naam voor het lid van de Azure Blockchain Service. De blockchain-naam mag alleen kleine letters en cijfers bevatten. Het eerste teken moet een letter zijn. De waarde moet minimaal 2 en maximaal 20 tekens lang zijn.
+    Regio | Kies een regio om de resourcegroep te maken. Alle leden van het consortium moeten zich op dezelfde locatie bevinden. Beschikbare locaties voor de implementatie zijn *westeurope, eastus, southeastasia, westeurope, northeurope, westus2* en *japaneast*. Functies zijn mogelijk niet in alle regio's beschikbaar. Azure Blockchain Data Manager is beschikbaar in de volgende Azure-regio's: VS - oost en Europa - west.
+    Naam van Bc Lid | Kies een unieke naam voor het lid van de Azure Blockchain Service. De blockchain-naam mag alleen kleine letters en cijfers bevatten. Het eerste teken moet een letter zijn. De waarde moet minimaal 2 en maximaal 20 tekens lang zijn.
     Consortium-naam | Voer een unieke naam in. Zie [Azure Blockchain Service-consortium](consortium.md) voor meer informatie over consortiums.
-    Wachtwoord voor lid | Het wachtwoord van het lidaccount wordt gebruikt voor het versleutelen van de persoonlijke sleutel voor het Ethereum-account dat voor het lid wordt gemaakt. U gebruikt het lidaccount en het wachtwoord van het lidaccount voor het beheer van consortiums.
-    SKU-categorie | De prijscategorie voor de nieuwe service. Kies tussen de categorieën **Standard** en **Basic**. Gebruik de categorie *Basic* voor ontwikkeling, tests en het testen van concepten. Gebruik de categorie *Standard* voor implementaties van productiekwaliteit. U moet de categorie *Standard* ook gebruiken als u Blockchain Data Manager gebruikt of een groot aantal privé transacties verzendt. Wanneer een lid is gemaakt, kan de prijscategorie niet meer worden gewijzigd van Basic in Standard en andersom.
-    SKU-naam | De knooppuntconfiguratie en kosten voor uw nieuwe service.
+    Wachtwoord voor lid | Het wachtwoord voor het standaardtransactieknooppunt van het lid. Gebruik het wachtwoord voor basisverificatie als u verbinding maakt met het openbare eindpunt van het standaardtransactieknooppunt van het blockchain-lid.
+    Consortium-management-account-password | Het wachtwoord van het consortium-account wordt gebruikt voor het versleutelen van de persoonlijke sleutel voor het Ethereum-account dat voor het lid wordt gemaakt. Het wordt gebruikt voor consortiumbeheer.
+    SKU-categorie | De prijscategorie voor de nieuwe service. Kies tussen de categorieën **Standard** en **Basic**. Gebruik de categorie *Basic* voor ontwikkeling, tests en het testen van concepten. Gebruik de categorie *Standard* voor implementaties van productiekwaliteit. U moet de categorie *Standaard* ook gebruiken als u Blockchain Data Manager gebruikt of een groot aantal privétransacties verzendt. Wanneer een lid is gemaakt, kan de prijscategorie niet meer worden gewijzigd van Basic in Standard en andersom.
+    SKU-naam | De knooppuntconfiguratie en kosten voor uw nieuwe service. Gebruik **B0** voor Basic en **S0** voor Standard.
+    Locatie | Kies een locatie om het lid te maken. De locatie van de resourcegroep wordt standaard gebruikt `[resourceGroup().location]`. Alle leden van het consortium moeten zich op dezelfde locatie bevinden. Beschikbare locaties voor de implementatie zijn *westeurope, eastus, southeastasia, westeurope, northeurope, westus2* en *japaneast*. Functies zijn mogelijk niet in alle regio's beschikbaar. Azure Blockchain Data Manager is beschikbaar in de volgende Azure-regio's: VS - oost en Europa - west.
 
-1. Selecteer **Aankoop** om de sjabloon te implementeren.
+1. Selecteer **Beoordelen en maken** om de sjabloon te controleren en te implementeren.
 
   Hier wordt de Azure Portal gebruikt om de sjabloon te implementeren. U kunt ook Azure PowerShell, Azure CLI en REST API gebruiken. Zie [Sjablonen implementeren](../../azure-resource-manager/templates/deploy-powershell.md) voor meer informatie over andere implementatiemethoden.
 

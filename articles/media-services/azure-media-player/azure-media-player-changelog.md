@@ -5,15 +5,29 @@ author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
-ms.date: 07/27/2020
-ms.openlocfilehash: 9642f6d1090ef358cf86241640255c647dea52eb
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.date: 09/23/2020
+ms.openlocfilehash: c63a8efc4bbcf6e5a124d439e6f9f91397e2fa53
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432669"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91315079"
 ---
-# <a name="changelog"></a>Wijzigingenlogboek #
+# <a name="changelog"></a>Wijzigingenlogboek
+
+## <a name="236-official-update-september-21-2020"></a>2.3.6 (Officiële update 21 september 2020)
+
+### <a name="features-236"></a>Functies 2.3.6
+
+Toegevoegde ondersteuning voor alleen-audio voor de azureHtml5JS Tech (DASH) Ondersteuning van een latere start van Livetranscriptie Ondersteuning van een taalwijziging in Livetranscriptie
+
+### <a name="bug-fixes-236"></a>Opgeloste fouten 2.3.6
+
+Bij het gebruik van playsinline in bij het afspelen van HLS op Apple-apparaten, wordt de video opnieuw gestart als u op de knop LIVE klikt De AMP-posterafbeelding veroorzaakt soms een uitzondering De volumeknop ontbrak bij het afspelen van HLS FairPlay [Toegankelijkheid] Knopinfo niet gedefinieerd voor knoppen bij gebruik van het toetsenbord [Toegankelijkheid] De helderheidsverhouding is minder dan 1.3:1 voor de voortgangsbalk [Toegankelijkheid] De focus van het toetsenbord gaat soms niet terug naar de videokwaliteitsknop [Toegankelijkheid] Besturingselementen zijn niet zichtbaar in het scherm Video, waardoor Verteller ze niet kan vinden
+
+### <a name="changes-236"></a>Wijzigingen 2.3.6
+
+Relevante KeyDelivery-fouten retourneren voor het aanroepen van toepassingen
 
 ## <a name="235-official-update-june-1-2020"></a>2.3.5 (officiële update 1 juni 2020)
 

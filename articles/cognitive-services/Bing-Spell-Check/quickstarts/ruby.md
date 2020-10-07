@@ -1,7 +1,7 @@
 ---
-title: 'Snelstartgids: spelling controleren met de REST API en Ruby-Bing Spellingcontrole'
+title: 'Quickstart: Spellingcontrole met de REST API en Ruby - Bing Spellingcontrole'
 titleSuffix: Azure Cognitive Services
-description: Ga aan de slag met de Bing Spellingcontrole REST API om de spelling en grammatica te controleren met deze Snelstartgids.
+description: Aan de slag met de Bing Spellingcontrole-REST API en Ruby om spelling en grammatica te controleren.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,29 +10,29 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 05/21/2020
 ms.author: aahi
-ms.openlocfilehash: fae466124244f5d2b04ad6e59681011b9c5ba974
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
-ms.translationtype: MT
+ms.openlocfilehash: 0b29ba1b09123784bfbac6fda4f5a1c6953f4e49
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83993521"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91327388"
 ---
-# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-ruby"></a>Snelstartgids: spelling controleren met de Bing Spellingcontrole REST API en ruby
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-ruby"></a>Quickstart: Spellingcontrole met de Bing Spellingcontrole-REST API en Ruby
 
-Gebruik deze quickstart om uw eerste aanroep naar de Bing Spellingcontrole-REST API te maken met behulp van Ruby. Met deze eenvoudige toepassing wordt een aanvraag naar de API verzonden en wordt een lijst met voorgestelde correcties geretourneerd. 
+Gebruik deze quickstart om uw eerste aanroep naar de Bing Spellingcontrole-REST API te maken met behulp van Ruby. Deze eenvoudige toepassing verzendt een aanvraag naar de API en retourneert een lijst met voorgestelde correcties. 
 
-Hoewel deze toepassing wordt geschreven in Ruby, is de API een REST-webservice die compatibel is met de meeste programmeer talen. De broncode voor deze toepassing is beschikbaar op [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingSpellCheckv7.rb)
+Ondanks dat deze toepassing in Ruby is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal. De broncode voor deze toepassing is beschikbaar op [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingSpellCheckv7.rb)
 
 ## <a name="prerequisites"></a>Vereisten
 
-* [Ruby 2,4](https://www.ruby-lang.org/en/downloads/) of hoger.
+* [Ruby 2.4](https://www.ruby-lang.org/en/downloads/) of later.
 
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
 
 ## <a name="create-and-initialize-the-application"></a>De toepassing maken en initialiseren
 
-1. Maak een nieuw ruby-bestand in uw favoriete editor of IDE en voeg de volgende vereisten toe: 
+1. Maak een nieuw Ruby-bestand in uw favoriete editor of IDE en voeg de volgende vereisten toe: 
 
     ```ruby
     require 'net/http'
@@ -40,11 +40,11 @@ Hoewel deze toepassing wordt geschreven in Ruby, is de API een REST-webservice d
     require 'json'
     ```
 
-2. Maak variabelen voor uw abonnements sleutel, eind punt-URI en pad. U kunt het globale eind punt in de volgende code gebruiken of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) eindpunt gebruiken dat wordt weer gegeven in de Azure portal voor uw resource. Uw aanvraag parameters maken:
+2. Maak variabelen voor uw abonnementssleutel, eindpunt-URI en pad. U kunt het globale eindpunt in de volgende code gebruiken of het eindpunt voor een [aangepast subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) gebruiken dat wordt weergegeven in de Azure-portal voor uw resource. Voeg uw aanvraagparameters toe:
 
-   1. Wijs uw markt code toe aan de `mkt` para meter met de `=` operator. De markt code is de code van het land of de regio waarvan u de aanvraag maakt. 
+   1. Wijs uw marktcode toe aan de parameter `mkt` met de operator `=`. De marktcode is de code van het land of de regio van waaruit u de aanvraag indient. 
 
-   1. Voeg de `mode` para meter met de `&` operator toe en wijs vervolgens de spelling controle modus toe. De modus kan ofwel `proof` (de meeste spelling-en grammatica fouten) of `spell` (de meeste spel fouten worden onderschept, maar niet zo veel grammatica fouten). 
+   1. Voeg de parameter `mode` met de `&` operator toe en wijs vervolgens de spellingcontrolemodus toe. De modus kan de waarde `proof` (de meeste spelling- en grammaticafouten worden onderschept) of de waarde `spell` (de meeste spellingfouten worden onderschept, maar niet zo veel grammaticafouten) zijn. 
 
     ```ruby
     key = 'ENTER YOUR KEY HERE'
@@ -55,7 +55,7 @@ Hoewel deze toepassing wordt geschreven in Ruby, is de API een REST-webservice d
 
 ## <a name="send-a-spell-check-request"></a>Een spellingcontroleaanvraag verzenden
 
-1. Maak een URI op basis van uw host-URI, pad en parametertekenreeks. Stel de query in op de tekst waarvoor u de spelling controle wilt uitvoeren.
+1. Maak een URI op basis van uw host-URI, pad en parametertekenreeks. Voeg aan de query de tekst toe waarop u een spellingcontrole wilt uitvoeren.
 
    ```ruby
    uri = URI(uri + path + params)
@@ -65,7 +65,7 @@ Hoewel deze toepassing wordt geschreven in Ruby, is de API een REST-webservice d
    })
    ```
 
-2. Maak een aanvraag met behulp van de URI die u eerder hebt gemaakt. Voeg uw sleutel toe aan de `Ocp-Apim-Subscription-Key`-header.
+2. Maak een aanvraag met behulp van de zojuist gemaakte URI. Voeg uw sleutel toe aan de `Ocp-Apim-Subscription-Key`-header.
 
     ```ruby
     request = Net::HTTP::Post.new(uri)
@@ -90,7 +90,7 @@ Hoewel deze toepassing wordt geschreven in Ruby, is de API een REST-webservice d
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-Uw project bouwen en uitvoeren. Als u de opdracht regel gebruikt, gebruikt u de volgende opdracht om de toepassing uit te voeren:
+Bouw uw project en voer het uit. Als u gebruikmaakt van de opdrachtregel, gebruikt u de volgende opdracht om de toepassing uit te voeren:
 
    ```bash
    ruby <FILE_NAME>.rb
@@ -144,4 +144,4 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 > [Een web-app met één pagina maken](../tutorials/spellcheck.md)
 
 - [Wat is de Bing Spellingcontrole-API?](../overview.md)
-- [Naslag informatie over Bing Spellingcontrole-API V7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
+- [Referentie voor de Bing Spellingcontrole-API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: c0373e8a476e65a61ef4b3ea945b98e0763c0a22
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 6c76fcc0fefdf8aa3ae97a4c131481f7ea6ada81
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90032925"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288848"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>Externe tabellen gebruiken met Synapse SQL
 
@@ -29,7 +29,7 @@ In SQL-pool kunt u een externe tabel gebruiken voor het volgende:
 - Query's uitvoeren op Azure Blob Storage en Azure Data Lake Gen2 met Transact-SQL-instructies.
 - Gegevens uit Azure Blob Storage en Azure Data Lake Storage importeren en opslaan in SQL-pool.
 
-Wanneer deze wordt gebruikt in combinatie met de instructie [CREATE TABLE AS SELECT](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json), worden bij de selectie uit een externe tabel gegevens geïmporteerd in de SQL-pool. Naast de [instructie COPY](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) zijn externe tabellen handig voor het laden van gegevens. 
+Wanneer deze wordt gebruikt in combinatie met de instructie [CREATE TABLE AS SELECT](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json), worden bij de selectie uit een externe tabel gegevens geïmporteerd in de SQL-pool. Naast de [instructie COPY](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) zijn externe tabellen handig voor het laden van gegevens. 
 
 Raadpleeg [PolyBase gebruiken om gegevens vanuit Azure Blob Storage te laden](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) voor een zelfstudie over het laden van gegevens.
 
@@ -60,7 +60,7 @@ Een externe tabel heeft toegang tot de onderliggende Azure Storage met behulp va
 
 ## <a name="create-external-data-source"></a>CREATE EXTERNAL DATA SOURCE
 
-Externe gegevensbronnen worden gebruikt om verbinding te maken met opslagaccounts. De volledige documentatie vindt u [hier](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+Externe gegevensbronnen worden gebruikt om verbinding te maken met opslagaccounts. De volledige documentatie vindt u [hier](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 ### <a name="syntax-for-create-external-data-source"></a>Syntaxis voor CREATE EXTERNAL DATA SOURCE
 
@@ -159,7 +159,7 @@ WITH ( LOCATION = 'https://azureopendatastorage.blob.core.windows.net/nyctlc/yel
 
 ## <a name="create-external-file-format"></a>CREATE EXTERNAL FILE FORMAT
 
-Hiermee maakt u een object voor externe bestandsindeling waarmee externe gegevens worden gedefinieerd die zijn opgeslagen in Azure Blob Storage of Azure Data Lake Storage. Als u een externe tabel wilt maken, moet u een externe bestandsindeling maken. De volledige documentatie vindt u [hier](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+Hiermee maakt u een object voor externe bestandsindeling waarmee externe gegevens worden gedefinieerd die zijn opgeslagen in Azure Blob Storage of Azure Data Lake Storage. Als u een externe tabel wilt maken, moet u een externe bestandsindeling maken. De volledige documentatie vindt u [hier](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 Door een externe bestandsindeling te maken, geeft u de opmaak aan van de gegevens waarnaar wordt verwezen door een externe tabel.
 
@@ -349,7 +349,7 @@ Met de verkenningsmogelijkheden van Data Lake kunt u nu een externe tabel maken 
 
 - U moet toegang hebben tot de werkruimte met ten minste de ARM-toegangsrol Storage Blob Data Contributor voor het ADLS Gen2-account
 
-- U moet ten minste over [machtigingen beschikken voor het maken](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#permissions-2) van externe tabellen en het uitvoeren van query's hierop in de SQL-pool of SQL on-demand
+- U moet ten minste over [machtigingen beschikken voor het maken](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#permissions-2&preserve-view=true) van externe tabellen en het uitvoeren van query's hierop in de SQL-pool of SQL on-demand
 
 - De gekoppelde service die aan het ADLS Gen2-account is gekoppeld, **moet toegang hebben tot het bestand**. Als de verificatiemethode van de gekoppelde service bijvoorbeeld beheerde identiteit is, moet de beheerde identiteit voor de werkruimte ten minste over de machtiging Lezer van Storage Blob beschikken voor het opslagaccount
 

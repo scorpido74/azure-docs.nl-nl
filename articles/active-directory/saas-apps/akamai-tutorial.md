@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
-ms.openlocfilehash: fbec82e25424fd5220aa992cf2dd0e8449e6a0a4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c8978504244fbf68875ca8cff7a92f042e8e988b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88523128"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329496"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met Akamai
 
@@ -101,7 +101,7 @@ In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD 
 
 Alle hieronder genoemde instellingen zijn hetzelfde voor **Integratiescenario 1** en **Integratiescenario 2**. Voor **Integratiescenario 2** moet u afzonderlijke IDP in de Akamai EAA instellen en moet de URL-eigenschap worden gewijzigd om naar de URL van de toepassing te verwijzen.
 
-![Belangrijk](./media/header-akamai-tutorial/important.png)
+![Schermopname van het tabblad Algemeen voor AZURESSO-SP in Akamai Enterprise Application Access. Het veld met de configuratie-URL voor de verificatie is gemarkeerd.](./media/header-akamai-tutorial/important.png)
 
 ## <a name="adding-akamai-from-the-gallery"></a>Akamai toevoegen vanuit de galerie
 
@@ -146,7 +146,7 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure 
 
     a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://<Yourapp>.login.go.akamai-access.com/saml/sp/response`
 
-    b. In het tekstvak **Antwoord-URL** typt u een URL met het volgende patroon: `https:// <Yourapp>.login.go.akamai-access.com/saml/sp/response`
+    b. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https:// <Yourapp>.login.go.akamai-access.com/saml/sp/response`
 
     > [!NOTE]
     > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke id en antwoord-URL. Neem contact op met het [Ondersteuningsteam voor Akamai](https://www.akamai.com/us/en/contact-us/) om deze waarden op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
@@ -198,11 +198,11 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 1. Meld u aan bij de **Akamai Enterprise Application Access**-console.
 1. Selecteer in de **Akamai EAA-console** de optie **Identity** > **Identity Providers** en klik op **Add Identity Provider**.
 
-    ![Akamai configureren](./media/header-akamai-tutorial/configure01.png)
+    ![Schermopname van het venster Identity Providers in de Akamai EAA-console. Selecteer Identity Providers in het menu Identity en selecteer vervolgens Add Identity Provider.](./media/header-akamai-tutorial/configure01.png)
 
 1. Voer de volgende stappen uit bij **Create New Identity Provider**:
 
-    ![Akamai configureren](./media/header-akamai-tutorial/configure02.png)
+    ![Schermopname van het dialoogvenster Create New Identity Providers in de Akamai EAA-console.](./media/header-akamai-tutorial/configure02.png)
 
     a. Geef de **Unique Name** op.
 
@@ -218,7 +218,7 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 1. **Akamai Cloud Zone**: selecteer de juiste cloudzone.
 1. **Certificate Validation**: raadpleeg de documentatie van Akamai (optioneel)
 
-    ![Akamai configureren](./media/header-akamai-tutorial/configure03.png)
+    ![Schermopname van het tabblad General in de Akamai EAA-console met de instellingen voor Identity Intercept, Akamai Cloud Zone en Certificate Validation.](./media/header-akamai-tutorial/configure03.png)
 
 ### <a name="authentication-configuration"></a>Verificatie configuratie
 
@@ -227,37 +227,37 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 3. Sign SAML Request: standaard uitgeschakeld.
 4. Voeg voor het IDP-metagegevensbestand de toepassing toe aan de Azure AD-console.
 
-    ![Akamai configureren](./media/header-akamai-tutorial/configure04.png)
+    ![Schermopname van de verificatieconfiguratie in de Akamai EAA-console met de instellingen voor URL, Logout URL, Sign SAML Request en IDP Metadata File.](./media/header-akamai-tutorial/configure04.png)
 
 ### <a name="session-settings"></a>Sessie-instellingen
 
 Laat de instellingen op standaard staan.
 
-![Akamai configureren](./media/header-akamai-tutorial/sessionsettings.png)
+![Schermopname van het dialoogvenster Session settings in de Akamai EAA-console.](./media/header-akamai-tutorial/sessionsettings.png)
 
 ### <a name="directories"></a>Mappen
 
 Sla de mappenconfiguratie over.
 
-![Akamai configureren](./media/header-akamai-tutorial/directories.png)
+![Schermopname van het tabblad Directories in de Akamai EAA-console.](./media/header-akamai-tutorial/directories.png)
 
 ### <a name="customization-ui"></a>UI voor aanpassing
 
 U kunt aanpassingen toevoegen aan IDP.
 
-![Akamai configureren](./media/header-akamai-tutorial/customizationui.png)
+![Schermopname van het tabblad Customization in de Akamai EAA-console met instellingen voor Customize UI, Language settings en Themes.](./media/header-akamai-tutorial/customizationui.png)
 
 ### <a name="advanced-settings"></a>Geavanceerde instellingen
 
 Sla de geavanceerde instellingen over/raadpleeg de Akamai-documentatie voor meer informatie.
 
-![Akamai configureren](./media/header-akamai-tutorial/advancesettings.png)
+![Schermopname van het tabblad Advanced Settings in de Akamai EAA-console met instellingen voor EAA Client, Advanced en OIDC to SAML bridging.](./media/header-akamai-tutorial/advancesettings.png)
 
 ### <a name="deployment"></a>Implementatie
 
 1. Klik op Deploy Identity Provider.
 
-    ![Akamai configureren](./media/header-akamai-tutorial/deployment.png)
+    ![Schermopname van het tabblad Deployment in de Akamai EAA-console met de knop Deploy identity provider.](./media/header-akamai-tutorial/deployment.png)
 
 2. Controleren of de implementatie is gelukt
 
@@ -267,115 +267,115 @@ Verificatie op basis van Akamai-headers
 
 1. Kies **Custom HTTP** in de wizard Add Applications.
 
-    ![Akamai configureren](./media/header-akamai-tutorial/configure05.png)
+    ![Schermopname van de wizard Add Applications in de Akamai EAA-console met CustomHTTP die in de sectie Access Apps staat vermeld.](./media/header-akamai-tutorial/configure05.png)
 
 2. Voer de **Application Name** en **Description** in.
 
-    ![Akamai configureren](./media/header-akamai-tutorial/configure06.png)
+    ![Schermopname van het dialoogvenster Custom HTTP App met instellingen voor Application Name en Description.](./media/header-akamai-tutorial/configure06.png)
 
-    ![Akamai configureren](./media/header-akamai-tutorial/configure07.png)
+    ![Schermopname van het tabblad General in de Akamai EAA-console met algemene instellingen voor MYHEADERAPP.](./media/header-akamai-tutorial/configure07.png)
 
-    ![Akamai configureren](./media/header-akamai-tutorial/configure08.png)
+    ![Schermopname van de Akamai EAA-console met instellingen voor Certificate en Location.](./media/header-akamai-tutorial/configure08.png)
 
 #### <a name="authentication"></a>Verificatie
 
 1. Selecteer het tabblad **Authentication**.
 
-    ![Akamai configureren](./media/header-akamai-tutorial/configure09.png)
+    ![Schermopname van de Akamai EAA-console waarin het tabblad Authentication is geselecteerd.](./media/header-akamai-tutorial/configure09.png)
 
 2. De **Identity provider** toewijzen
 
-    ![Akamai configureren](./media/header-akamai-tutorial/configure10.png)
+    ![Schermopname van het tabblad Authentication in de Akamai EAA-console voor MYHEADERAPP waarin Identity provider is ingesteld op Azure AD SSO.](./media/header-akamai-tutorial/configure10.png)
 
 #### <a name="services"></a>Services
 
 Klik op Save and Go to Authentication.
 
-![Akamai configureren](./media/header-akamai-tutorial/configure11.png)
+![Schermopname van het tabblad Services in de Akamai EAA-console voor MYHEADERAPP met de knop Save and go to AdvancedSettings in de rechteronderhoek.](./media/header-akamai-tutorial/configure11.png)
 
 #### <a name="advanced-settings"></a>Geavanceerde instellingen
 
 1. Geef onder de **Customer HTTP Headers** de **CustomerHeader** en het **SAML Attribute** op.
 
-    ![Akamai configureren](./media/header-akamai-tutorial/configure12.png)
+    ![Schermopname van het tabblad Advanced Settings in de Akamai EAA-console waarin het veld SSO Logged URL onder Authentication is gemarkeerd.](./media/header-akamai-tutorial/configure12.png)
 
 1. Klik op de knop **Save and go to Deployment**.
 
-    ![Akamai configureren](./media/header-akamai-tutorial/configure13.png)
+    ![Schermopname van het tabblad Advanced Settings in de Akamai EAA-console met de knop Save and go to Deployment in de rechteronderhoek.](./media/header-akamai-tutorial/configure13.png)
 
 #### <a name="deploy-the-application"></a>De toepassing implementeren
 
 1. Klik op de knop **Deploy Application**.
 
-    ![Akamai configureren](./media/header-akamai-tutorial/configure14.png)
+    ![Schermopname van het tabblad Deployment in de Akamai EAA-console met de knop Deploy application.](./media/header-akamai-tutorial/configure14.png)
 
 1. Controleer of de toepassing is geïmplementeerd.
 
-    ![Akamai configureren](./media/header-akamai-tutorial/configure15.png)
+    ![Schermopname van het tabblad Deployment in de Akamai EAA-console met het statusbericht van de toepassing: Application Successfully Deployed.](./media/header-akamai-tutorial/configure15.png)
 
 1. De ervaring voor de eindgebruiker.
 
-    ![Akamai configureren](./media/header-akamai-tutorial/enduser01.png)
+    ![Schermopname van het openingsscherm voor myapps.microsoft.com met een achtergrondafbeelding en het dialoogvenster Aanmelden.](./media/header-akamai-tutorial/enduser01.png)
 
-    ![Akamai configureren](./media/header-akamai-tutorial/enduser02.png)
+    ![Schermopname van een deel van een Apps-venster met pictogrammen voor Invoegtoepassing, HRWEB, Akamai - CorpApps, Onkosten, Groepen en Toegangsbeoordelingen. ](./media/header-akamai-tutorial/enduser02.png)
 
 1. Voorwaardelijke toegang.
 
-    ![Akamai configureren](./media/header-akamai-tutorial/conditionalaccess01.png)
+    ![Schermopname van het bericht: Aanmeldingsaanvraag goedkeuren. Er wordt een melding verzonden naar uw mobiele apparaat. Antwoord om door te gaan.](./media/header-akamai-tutorial/conditionalaccess01.png)
 
-    ![Akamai configureren](./media/header-akamai-tutorial/conditionalaccess02.png)
+    ![Schermopname van een venster Applications met een pictogram voor MyHeaderApp.](./media/header-akamai-tutorial/conditionalaccess02.png)
 
 #### <a name="remote-desktop"></a>Extern bureaublad
 
 1. Kies **RDP** in de wizard Add Applications.
 
-    ![Akamai configureren](./media/header-akamai-tutorial/configure16.png)
+    ![Schermopname van de wizard Add Applications in de Akamai EAA-console met RDP tussen de apps in de sectie Access Apps.](./media/header-akamai-tutorial/configure16.png)
 
 1. Voer de **Application Name** en **Description** in.
 
-    ![Akamai configureren](./media/header-akamai-tutorial/configure17.png)
+    ![Schermopname van het dialoogvenster RDP App met instellingen voor Application Name en Description.](./media/header-akamai-tutorial/configure17.png)
 
-    ![Akamai configureren](./media/header-akamai-tutorial/configure18.png)
+    ![Schermopname van het tabblad General in de Akamai EAA-console met de instellingen voor Application identity voor MYHEADERAPP.](./media/header-akamai-tutorial/configure18.png)
 
 1. Geef de connector op die dit gaat verwerken.
 
-    ![Akamai configureren](./media/header-akamai-tutorial/configure19.png)
+    ![Schermopname van de Akamai EAA-console met instellingen voor Certificate en Location. Gekoppelde connectors zijn ingesteld op USWST-CON1.](./media/header-akamai-tutorial/configure19.png)
 
 #### <a name="authentication"></a>Verificatie
 
 Klik op **Save and go to Services**.
 
-![Akamai configureren](./media/header-akamai-tutorial/configure20.png)
+![Schermopname van het tabblad Authentication in de Akamai EAA-console voor SECRETRDPAPP met de knop Save and go to Services in de rechteronderhoek.](./media/header-akamai-tutorial/configure20.png)
 
 #### <a name="services"></a>Services
 
 Klik op **Save and go to Advanced Settings**.
 
-![Akamai configureren](./media/header-akamai-tutorial/configure21.png)
+![Schermopname van het tabblad Services in de Akamai EAA-console voor SECRETRDPAPP met de knop Save and go to AdvancedSettings in de rechteronderhoek.](./media/header-akamai-tutorial/configure21.png)
 
 #### <a name="advanced-settings"></a>Geavanceerde instellingen
 
 1. Klik op **Save and go to Deployment**.
 
-    ![Akamai configureren](./media/header-akamai-tutorial/configure22.png)
+    ![Schermopname van het tabblad Advanced Settings in de Akamai EAA-console voor SECRETRDPAPP met de instellingen voor Remote desktop configuration.](./media/header-akamai-tutorial/configure22.png)
 
-    ![Akamai configureren](./media/header-akamai-tutorial/configure23.png)
+    ![Schermopname van het tabblad Advanced Settings in de Akamai EAA-console voor SECRETRDPAPP met de instellingen voor Authentication en Health check configuration.](./media/header-akamai-tutorial/configure23.png)
 
-    ![Akamai configureren](./media/header-akamai-tutorial/configure24.png)
+    ![Schermopname van de instellingen voor Custom HTTP headers in de Akamai EAA-console voor SECRETRDPAPP met de knop Save and go to Deployment in de rechteronderhoek.](./media/header-akamai-tutorial/configure24.png)
 
 1. De ervaring voor de eindgebruiker
 
-    ![Akamai configureren](./media/header-akamai-tutorial/enduser03.png)
+    ![Schermopname van een venster op myapps.microsoft.com met een achtergrondafbeelding en het dialoogvenster Aanmelden.](./media/header-akamai-tutorial/enduser03.png)
 
-    ![Akamai configureren](./media/header-akamai-tutorial/enduser02.png)
+    ![Schermopname van het Apps-venster van myapps.microsoft.com met pictogrammen voor Invoegtoepassing, HRWEB, Akamai - CorpApps, Onkosten, Groepen en Toegangsbeoordelingen.](./media/header-akamai-tutorial/enduser02.png)
 
 1. Voorwaardelijke toegang
 
-    ![Akamai configureren](./media/header-akamai-tutorial/conditionalaccess04.png)
+    ![Schermopname van het bericht over voorwaardelijke toegang: Aanmeldingsaanvraag goedkeuren. Er wordt een melding verzonden naar uw mobiele apparaat. Antwoord om door te gaan.](./media/header-akamai-tutorial/conditionalaccess04.png)
 
-    ![Akamai configureren](./media/header-akamai-tutorial/conditionalaccess05.png)
+    ![Schermopname van een venster Applications met een pictogram voor MyHeaderApp en SecretRDPApp.](./media/header-akamai-tutorial/conditionalaccess05.png)
 
-    ![Akamai configureren](./media/header-akamai-tutorial/conditionalaccess06.png)
+    ![Schermopname van een Windows Server 2012 RS-venster met algemene gebruikerspictogrammen. De pictogrammen voor beheerder, gebruiker0 en gebruiker1 geven aan dat ze zijn aangemeld.](./media/header-akamai-tutorial/conditionalaccess06.png)
 
 1. U kunt ook rechtstreeks de URL van de RDP-toepassing intypen.
 
@@ -383,15 +383,15 @@ Klik op **Save and go to Advanced Settings**.
 
 1. Ga naar Add Applications en kies **SSH**.
 
-    ![Akamai configureren](./media/header-akamai-tutorial/configure25.png)
+    ![Schermopname van de wizard Add Applications in de Akamai EAA-console met SSH tussen de apps in de sectie Access Apps.](./media/header-akamai-tutorial/configure25.png)
 
 1. Voer de **Application Name** en **Description** in.
 
-    ![Akamai configureren](./media/header-akamai-tutorial/configure26.png)
+    ![Schermopname van het dialoogvenster SSH App met instellingen voor Application Name en Description.](./media/header-akamai-tutorial/configure26.png)
 
 1. Configureer de toepassings-id.
 
-    ![Akamai configureren](./media/header-akamai-tutorial/configure27.png)
+    ![Schermopname van het tabblad General in de Akamai EAA-console met de instellingen voor Application identity voor SSH-SECURE.](./media/header-akamai-tutorial/configure27.png)
 
     a. Geef een naam/beschrijving op.
 
@@ -407,43 +407,43 @@ Klik op **Save and go to Advanced Settings**.
 
 Klik op **Save and go to Services**.
 
-![Akamai configureren](./media/header-akamai-tutorial/configure28.png)
+![Schermopname van het tabblad Authentication in de Akamai EAA-console voor SSH-SECURE met de knop Save and go to Services in de rechteronderhoek.](./media/header-akamai-tutorial/configure28.png)
 
 #### <a name="services"></a>Services
 
 Klik op **Save and go to Advanced Settings**.
 
-![Akamai configureren](./media/header-akamai-tutorial/configure29.png)
+![Schermopname van het tabblad Services in de Akamai EAA-console voor SSH-SECURE met de knop Save and go to AdvancedSettings in de rechteronderhoek.](./media/header-akamai-tutorial/configure29.png)
 
 #### <a name="advanced-settings"></a>Geavanceerde instellingen
 
 Klik op Save and go to Deployment
 
-![Akamai configureren](./media/header-akamai-tutorial/configure30.png)
+![Schermopname van het tabblad Advanced Settings in de Akamai EAA-console voor SSH-SECURE met de instellingen voor Authentication en Health check configuration.](./media/header-akamai-tutorial/configure30.png)
 
-![Akamai configureren](./media/header-akamai-tutorial/configure31.png)
+![Schermopname van de instellingen voor Custom HTTP headers in de Akamai EAA-console voor SSH-SECURE met de knop Save and go to Deployment in de rechteronderhoek.](./media/header-akamai-tutorial/configure31.png)
 
 #### <a name="deployment"></a>Implementatie
 
 1. Klik op **Deploy application**.
 
-    ![Akamai configureren](./media/header-akamai-tutorial/configure32.png)
+    ![Schermopname van het tabblad Deployment in de Akamai EAA-console voor SSH-SECURE met de knop Deploy application.](./media/header-akamai-tutorial/configure32.png)
 
 1. De ervaring voor de eindgebruiker
 
-    ![Akamai configureren](./media/header-akamai-tutorial/enduser03.png)
+    ![Schermopname van een dialoogvenster Aanmelden in een scherm op myapps.microsoft.com.](./media/header-akamai-tutorial/enduser03.png)
 
-    ![Akamai configureren](./media/header-akamai-tutorial/enduser04.png)
+    ![Schermopname van het Apps-venster voor myapps.microsoft.com met pictogrammen voor Invoegtoepassing, HRWEB, Akamai - CorpApps, Onkosten, Groepen en Toegangsbeoordelingen.](./media/header-akamai-tutorial/enduser04.png)
 
 1. Voorwaardelijke toegang
 
-    ![Akamai configureren](./media/header-akamai-tutorial/conditionalaccess04.png)
+    ![Schermopname met het bericht: Aanmeldingsaanvraag goedkeuren. Er wordt een melding verzonden naar uw mobiele apparaat. Antwoord om door te gaan.](./media/header-akamai-tutorial/conditionalaccess04.png)
 
-    ![Akamai configureren](./media/header-akamai-tutorial/conditionalaccess07.png)
+    ![Schermopname van een venster Applications met een pictogram voor MyHeaderApp, SSH Secure en SecretRDPApp.](./media/header-akamai-tutorial/conditionalaccess07.png)
 
-    ![Akamai configureren](./media/header-akamai-tutorial/conditionalaccess08.png)
+    ![Schermopname van een opdrachtvenster voor ssh-secure-go.akamai-access.com waarin een wachtwoordprompt wordt weergegeven.](./media/header-akamai-tutorial/conditionalaccess08.png)
 
-    ![Akamai configureren](./media/header-akamai-tutorial/conditionalaccess09.png)
+    ![Schermopname van een opdrachtvenster voor ssh-secure-go.akamai-access.com met informatie over de toepassing en waarin een opdrachtprompt wordt weergegeven.](./media/header-akamai-tutorial/conditionalaccess09.png)
 
 ### <a name="kerberos-authentication"></a>Kerberos-verificatie
 
@@ -451,54 +451,54 @@ In het onderstaande voorbeeld publiceren we een interne webserver <code>http://f
 
 #### <a name="general-tab"></a>Tabblad General
 
-![Akamai configureren](./media/header-akamai-tutorial/generaltab.png)
+![Schermopname van het tabblad General in de Akamai EAA-console voor MYKERBOROSAPP.](./media/header-akamai-tutorial/generaltab.png)
 
 #### <a name="authentication-tab"></a>Tabblad Verificatie
 
 De id-provider toewijzen
 
-![Akamai configureren](./media/header-akamai-tutorial/authenticationtab.png)
+![Schermopname van het tabblad Authentication in de Akamai EAA-console voor MYKERBOROSAPP waarin Identity provider is ingesteld op Azure AD SSO.](./media/header-akamai-tutorial/authenticationtab.png)
 
 #### <a name="services-tab"></a>Tabblad Services
 
-![Akamai configureren](./media/header-akamai-tutorial/servicestab.png)
+![Schermopname van het tabblad Services in de Akamai EAA-console voor MYKERBOROSAPP.](./media/header-akamai-tutorial/servicestab.png)
 
 #### <a name="advanced-settings"></a>Geavanceerde instellingen
 
-![Akamai configureren](./media/header-akamai-tutorial/advancesettings02.png)
+![Schermopname van het tabblad Advanced Settings in de Akamai EAA-console voor MYKERBOROSAPP met instellingen voor Related Applications en Authentication.](./media/header-akamai-tutorial/advancesettings02.png)
 
 > [!NOTE]
 > De SPN voor de webserver heeft de notatie SPN@Domain ex: `HTTP/frp-app1.superdemo.live@SUPERDEMO.LIVE` voor deze demo. Laat de overige instellingen op de standaardwaarde staan.
 
 #### <a name="deployment-tab"></a>Tabblad Deployment
 
-![Akamai configureren](./media/header-akamai-tutorial/deploymenttab.png)
+![Schermopname van het tabblad Deployment in de Akamai EAA-console voor MYKERBOROSAPP met de knop Deploy application.](./media/header-akamai-tutorial/deploymenttab.png)
 
 #### <a name="adding-directory"></a>Map toevoegen
 
 1. Selecteer **AD** in de vervolgkeuzelijst.
 
-    ![Akamai configureren](./media/header-akamai-tutorial/configure33.png)
+    ![Schermopname van het venster Directories in de Akamai EAA-console met het dialoogvenster Create New Directory, waarin AD is geselecteerd in de vervolgkeuzelijst Directory Type.](./media/header-akamai-tutorial/configure33.png)
 
 1. Geef de benodigde gegevens op.
 
-    ![Akamai configureren](./media/header-akamai-tutorial/configure34.png)
+    ![Schermopname van het venster SUPERDEMOLIVE in de Akamai EAA-console met instellingen voor DirectoryName, Directory Service, Connector en Attribute mapping.](./media/header-akamai-tutorial/configure34.png)
 
 1. Controleer of de map is gemaakt.
 
-    ![Akamai configureren](./media/header-akamai-tutorial/directorydomain.png)
+    ![Schermopname van het venster Directories in de Akamai EAA-console waarin wordt getoond dat de map superdemo.live is toegevoegd.](./media/header-akamai-tutorial/directorydomain.png)
 
 1. Voeg de groepen/organisatie-eenheden toe waarvoor toegang is vereist.
 
-    ![Akamai configureren](./media/header-akamai-tutorial/addgroup.png)
+    ![Schermopname van de instellingen voor de map superdemo.live. Het pictogram dat u selecteert voor het toevoegen van groepen of organisatie-eenheden, is gemarkeerd.](./media/header-akamai-tutorial/addgroup.png)
 
 1. Hieronder wordt de groep EAAGroup genoemd, en deze heeft één lid.
 
-    ![Akamai configureren](./media/header-akamai-tutorial/eaagroup.png)
+    ![Schermopname van het venster GROUPS ON SUPERDEMOLIVE DIRECTORY in de Akamai EAA-console. EAAGroup met 1 gebruiker wordt vermeld onder Groups.](./media/header-akamai-tutorial/eaagroup.png)
 
 1. Voeg de map toe aan uw id-provider door te klikken op **Identity** > **Identity Providers** en klik op het tabblad **Directories** en vervolgens op **Assign directory**.
 
-    ![Akamai configureren](./media/header-akamai-tutorial/assigndirectory.png)
+    ![Schermopname van het tabblad Directories in de Akamai EAA-console voor Azure AD SSO, met superdemo.live in de lijst Currently assigned directories.](./media/header-akamai-tutorial/assigndirectory.png)
 
 ### <a name="configure-kcd-delegation-for-eaa-walkthrough"></a>KCD-overdracht configureren voor kennismaking met EAA
 
@@ -506,14 +506,14 @@ De id-provider toewijzen
 
 1. In het voorbeeld wordt een account gebruikt met de naam **EAADelegation**. U kunt dit uitvoeren met behulp van de Snappin **Active Directory: gebruikers en computers**.
 
-    ![Akamai configureren](./media/header-akamai-tutorial/assigndirectory.png)
+    ![Schermopname van het tabblad Directories in de Akamai EAA-console voor Azure AD SSO. De map superdemo.live wordt vermeld onder Currently assigned directories.](./media/header-akamai-tutorial/assigndirectory.png)
 
     > [!NOTE]
     > De gebruikersnaam moet een specifieke indeling hebben op basis van de **Identity Intercept Name**. In afbeelding 1 ziet u dat deze **corpapps.login.go.akamai-access.com** is
 
 1. De aanmeldingsnaam van de gebruiker is:`HTTP/corpapps.login.go.akamai-access.com`
 
-    ![Akamai configureren](./media/header-akamai-tutorial/eaadelegation.png)
+    ![Schermopname met EAADelegation Properties waarin First name is ingesteld op EAADelegation en User logon name op HTTP/corpapps.login.go.akamai-access.com.](./media/header-akamai-tutorial/eaadelegation.png)
 
 #### <a name="step-2-configure-the-spn-for-this-account"></a>Stap 2: De SPN voor dit account configureren
 
@@ -521,13 +521,13 @@ De id-provider toewijzen
 
 2. setspn -s **Http/corpapps.login.go.akamai-access.com eaadelegation**
 
-    ![Akamai configureren](./media/header-akamai-tutorial/spn.png)
+    ![Schermopname van een Administrator: Command Prompt-scherm met de resultaten van de opdracht setspn -s Http/corpapps.login.go.akamai-access.com eaadelegation.](./media/header-akamai-tutorial/spn.png)
 
 #### <a name="step-3-configure-delegation"></a>Stap 3: Delegering configureren
 
 1. Klik voor het EAADelegation-account op het tabblad Delegation.
 
-    ![Akamai configureren](./media/header-akamai-tutorial/spn.png)
+    ![Schermopname van een Administrator: Command Prompt-scherm met de opdracht voor het configureren van de SPN.](./media/header-akamai-tutorial/spn.png)
 
     * Elk verificatieprotocol voor gebruik opgeven
     * Klik op Add en voeg het app-pool-account voor de Kerberos-website toe. Het moet automatisch worden omgezet naar de juiste SPN als deze correct is geconfigureerd.
@@ -551,35 +551,35 @@ De id-provider toewijzen
 
 1. Ktpass /out EAADemo.keytab  /princ HTTP/corpapps.login.go.akamai-access.com@superdemo.live /mapuser eaadelegation@superdemo.live /pass RANDOMPASS /crypto All ptype KRB5_NT_PRINCIPAL
 
-    ![Akamai configureren](./media/header-akamai-tutorial/administrator.png)
+    ![Schermopname van een Administrator: Command Prompt-scherm met de resultaten van de opdracht voor het maken van een Keytab-bestand voor AKAMAI EAA.](./media/header-akamai-tutorial/administrator.png)
 
 #### <a name="step-5-import-keytab-in-the-akamai-eaa-console"></a>Stap 5: Keytab importeren in de AKAMAI EAA-console
 
 1. Klik op **System** > **Keytabs**.
 
-    ![Akamai configureren](./media/header-akamai-tutorial/keytabs.png)
+    ![Schermopname van de Akamai EAA-console waarin Keytabs is geselecteerd in het menu System.](./media/header-akamai-tutorial/keytabs.png)
 
 1. Kies voor het type Keytab **Kerberos Delegation**.
 
-    ![Akamai configureren](./media/header-akamai-tutorial/keytabdelegation.png)
+    ![Schermopname van het venster EAAKEYTAB in de Akamai EAA-console met de instellingen voor Keytab. Keytab Type is ingesteld op Kerberos Delegation.](./media/header-akamai-tutorial/keytabdelegation.png)
 
 1. Zorg ervoor dat de Keytab wordt weer gegeven als geïmplementeerd en geverifieerd.
 
-    ![Akamai configureren](./media/header-akamai-tutorial/keytabs02.png)
+    ![Schermopname van het scherm KEYTABS in de Akamai EAA-console waarin EAA Keytab als 'Keytab deployed and verified' staat vermeld.](./media/header-akamai-tutorial/keytabs02.png)
 
 1. Gebruikerservaring
 
-    ![Akamai configureren](./media/header-akamai-tutorial/enduser03.png)
+    ![Schermopname van het dialoogvenster Aanmelden op myapps.microsoft.com. ](./media/header-akamai-tutorial/enduser03.png)
 
-    ![Akamai configureren](./media/header-akamai-tutorial/enduser04.png)
+    ![Schermopname van het venster Apps voor myapps.microsoft.com waarin app-pictogrammen worden weergegeven.](./media/header-akamai-tutorial/enduser04.png)
 
 1. Voorwaardelijke toegang
 
-    ![Akamai configureren](./media/header-akamai-tutorial/conditionalaccess04.png)
+    ![Schermopname van het bericht 'Approve sign in request'. het bericht.](./media/header-akamai-tutorial/conditionalaccess04.png)
 
-    ![Akamai configureren](./media/header-akamai-tutorial/conditionalaccess10.png)
+    ![Schermopname van een venster Applications met pictogrammen voor MyHeaderApp, SSH Secure, SecretRDPApp en myKerberosApp.](./media/header-akamai-tutorial/conditionalaccess10.png)
 
-    ![Akamai configureren](./media/header-akamai-tutorial/conditionalaccess11.png)
+    ![Schermopname van het welkomstscherm voor myKerberosApp. Het bericht 'Welcome superdemo\user1' wordt weergegeven over een achtergrondafbeelding.](./media/header-akamai-tutorial/conditionalaccess11.png)
 
 ### <a name="create-akamai-test-user"></a>Akamai-testgebruiker maken
 

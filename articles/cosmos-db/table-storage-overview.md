@@ -1,6 +1,6 @@
 ---
 title: Overzicht van Azure Table Storage
-description: Sla gestructureerde gegevens op in de cloud met Azure Table Storage, een oplossing voor NoSQL-gegevensopslag.
+description: U kunt Azure Table Storage gebruiken voor de opslag van flexibele gegevenssets, zoals gebruikersgegevens voor webtoepassingen, adresboeken, apparaatgegevens of andere soorten metagegevens die uw service nodig heeft.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: dotnet
@@ -9,12 +9,12 @@ ms.date: 05/20/2019
 author: sakash279
 ms.author: akshanka
 ms.reviewer: sngun
-ms.openlocfilehash: 20c799f89394dd8978f120097b054a9adf9f1280
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: abd88c3cdb54747c21ad8772860a3ed6929dbd15
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76770744"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318718"
 ---
 # <a name="azure-table-storage-overview"></a>Overzicht van Azure Table Storage
 
@@ -36,4 +36,4 @@ U kunt Table Storage gebruiken voor de opslag van flexibele gegevenssets, zoals 
 
     * [Naslaginformatie over de Storage-clientbibliotheek voor .NET](https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
 
-    * [Naslaginformatie over REST-API](https://msdn.microsoft.com/library/azure/dd179355)
+    * [Naslaginformatie over REST API](https://msdn.microsoft.com/library/azure/dd179355)

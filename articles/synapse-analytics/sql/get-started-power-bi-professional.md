@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 497c6f669699f1e1ce879c0c7da2593256b97448
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.reviewer: jrasnick
+ms.openlocfilehash: 48b6639ad8228347737669fffca06eb660a25874
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501096"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288695"
 ---
 # <a name="connect-to-synapse-sql-with-power-bi-professional"></a>Verbinding maken met Synapse SQL met behulp van Power BI Professional
 
@@ -30,7 +30,7 @@ In deze zelfstudie voert u stappen uit om te leren hoe u Power BI Desktop kunt v
 
 ## <a name="prerequisites"></a>Vereisten
 
-Hulpprogramma voor het uitgeven van query's:
+U hebt de volgende hulpprogramma's nodig om query's uit te voeren:
 
 - Gewenste SQL-client:
 

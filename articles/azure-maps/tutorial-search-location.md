@@ -1,6 +1,6 @@
 ---
 title: 'Zelfstudie: Zoeken naar nabijgelegen locaties op een kaart | Microsoft Azure Maps'
-description: Meer informatie over het zoeken naar nuttige plaatsen op een kaart. Bekijk hoe u de Web-SDK van Azure Maps kunt gebruiken om zoekmogelijkheden en interactieve pop-upvakken toe te voegen aan een kaart.
+description: Zelfstudie over het zoeken naar nuttige plaatsen op een kaart. Bekijk hoe u de Web-SDK van Azure Maps kunt gebruiken om zoekmogelijkheden en interactieve pop-upvakken toe te voegen aan een kaart.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 1/15/2020
@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 6ed463cbda3ceb560f907529dc8de54a772932ea
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: 4d6728d4fbde4b7d6cc8ed06e961642264ad31bc
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085073"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91321693"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>Zelfstudie: Zoeken naar nuttige plaatsen in de buurt met behulp van Azure Maps
 
@@ -26,44 +26,14 @@ Deze zelfstudie laat zien hoe u een account van Azure Maps instelt en vervolgens
 > * Een nieuwe webpagina maken met de kaartbesturingselement-API
 > * De zoekservice van Maps gebruiken om een nuttige plaats in de buurt te vinden
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
-
-## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
-
-Meld u aan bij de [Azure-portal](https://portal.azure.com).
+## <a name="prerequisites"></a>Vereisten
 
 <a id="createaccount"></a>
-
-## <a name="create-an-account-with-azure-maps"></a>Een account van Azure Maps maken
-
-Voer de volgende stappen uit om een nieuw Maps-account te maken:
-
-1. Klik in de linkerbovenhoek van [Azure Portal](https://portal.azure.com) op **Een resource maken**.
-2. Typ **Maps** in het vak *Marketplace doorzoeken*.
-3. Selecteer **Toewijzingen** in de *Resultaten*. Klik op de knop **Maken** die onder de kaart wordt weergegeven.
-4. Voer de volgende waarden in op de pagina **Azure Kaarten-account maken**:
-    * Het *Abonnement* dat u wilt gebruiken voor dit account.
-    * De naam van de *Resourcegroep* voor dit account. U kunt kiezen om een *Nieuwe* of *Bestaande* resourcegroep te gebruiken.
-    * De *Naam* van uw nieuwe account.
-    * De *Prijscategorie* voor dit account.
-    * Lees de *licentie* en de *privacyverklaring*, en schakel het selectievakje in om de voorwaarden te accepteren.
-    * Klik op de knop **Maken**.
-
-![Een Azure Maps-account maken in Azure-portal](./media/tutorial-search-location/create-account.png)
-
 <a id="getkey"></a>
 
-## <a name="get-the-primary-key-for-your-account"></a>De primaire sleutel voor uw account ophalen
-
-Als het Azure Kaarten-account is gemaakt, haalt u de sleutel op waarmee u query's kunt uitvoeren op de API's van kaarten. U kunt het beste de primaire sleutel van uw account gebruiken als abonnementssleutel bij het aanroepen van Azure Maps Services.
-
-1. Open uw Maps-account in de portal.
-2. Selecteer **Verificatie** in de sectie Instellingen.
-3. Kopieer de **Primaire Sleutel** naar het Klembord. Sla de sleutel lokaal op voor gebruik verderop in deze zelfstudie.
-
-![Haal de primaire sleutel in de Azure-portal op](./media/tutorial-search-location/get-key.png)
-
-Zie [Verificatie beheren in Azure Maps](how-to-manage-authentication.md) voor meer informatie over verificatie in Azure Maps.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com). Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+2. [Een Azure Maps-account maken](quick-demo-map-app.md#create-an-azure-maps-account)
+3. [Een primaire sleutel voor een abonnement verkrijgen](quick-demo-map-app.md#get-the-primary-key-for-your-account), ook wel bekend als de primaire sleutel of de abonnementssleutel. Zie [Verificatie beheren in Azure Maps](how-to-manage-authentication.md) voor meer informatie over verificatie in Azure Maps.
 
 <a id="createmap"></a>
 
@@ -275,21 +245,9 @@ De kaart die we tot nu toe hebben gemaakt, is uitsluitend gebaseerd op de gegeve
 
     ![Azure Map Control en Search Service](./media/tutorial-search-location/popup-map.png)
 
+Om de volledige code voor deze zelfstudie te zien, klik [hier](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/search.html). Als u het live voorbeeld wilt weergeven, klikt u [hier](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20for%20points%20of%20interest)
+
 ## <a name="next-steps"></a>Volgende stappen
-
-In deze zelfstudie heeft u het volgende geleerd:
-
-> [!div class="checklist"]
-> * Een account van Azure Maps maken
-> * De primaire sleutel voor uw account ophalen
-> * Nieuwe webpagina met Map Control API maken
-> * Search Service gebruiken om nuttige plaatsen in de buurt te vinden
-
-> [!div class="nextstepaction"]
-> [Volledige broncode weergeven](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/search.html)
-
-> [!div class="nextstepaction"]
-> [Livevoorbeeld weergeven](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20for%20points%20of%20interest)
 
 De volgende zelfstudie laat zien hoe u een route tussen twee locaties weergeeft.
 

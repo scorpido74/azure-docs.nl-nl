@@ -1,7 +1,7 @@
 ---
-title: Token ophalen en Microsoft Graph aanroepen met console-app-id | Azure
+title: 'Quickstart: Token ophalen en Microsoft Graph aanroepen in een console-app | Azure'
 titleSuffix: Microsoft identity platform
-description: Meer informatie over het ophalen van een token en het aanroepen van een beveiligde Microsoft Graph-API van een .NET Core-app
+description: In deze quickstart leert u hoe een voorbeeld-app voor .NET Core de stroom van clientreferenties kan gebruiken om een token op te halen en Microsoft Graph aan te roepen.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: e33b912ab65a3565e42c294388949a5c55b4ee8a
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 6f4f4c2de3b1030c4d14cb74e562954a3d3d1144
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683755"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257820"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-using-console-apps-identity"></a>Quickstart: Verkrijg een token en roep Microsoft Graph-API aan met behulp van de id van de console-app
 
@@ -170,12 +170,7 @@ MSAL ([Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Ident
 
  U kunt MSAL.NET installeren door de volgende opdracht uit te voeren in **Package Manager Console** van Visual Studio:
 
-```powershell
-Install-Package Microsoft.Identity.Client
-```
-
-Als u Visual Studio niet gebruikt, kunt u ook de volgende opdracht uitvoeren om MSAL aan uw project toe te voegen:
-
+```powershell twhitney
 ```console
 dotnet add package Microsoft.Identity.Client
 ```
@@ -204,7 +199,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 > | `config.ClientId` | Is de **Toepassings-id (client-id)** voor de toepassing die is geregistreerd in de Azure-portal. U vindt deze waarde op de pagina **Overzicht** in de Azure-portal. |
 > | `config.Authority`    | (Optioneel) Het STS-eindpunt voor de gebruiker voor verificatie. Dat is meestal `https://login.microsoftonline.com/{tenant}` voor de openbare cloud, waarbij {tenant} de naam van uw tenant of uw tenant-id is.|
 
-Zie de [naslagdocumentatie voor `ConfidentialClientApplication`](/dotnet/api/microsoft.identity.client.iconfidentialclientapplication?view=azure-dotnet) voor meer informatie
+Zie de [naslagdocumentatie voor `ConfidentialClientApplication`](/dotnet/api/microsoft.identity.client.iconfidentialclientapplication) voor meer informatie
 
 ### <a name="requesting-tokens"></a>Tokens aanvragen
 
@@ -219,28 +214,13 @@ result = await app.AcquireTokenForClient(scopes)
 > |---------|---------|
 > | `scopes` | De aangevraagde bereiken bevat. Voor vertrouwelijke clients moet hiervoor de indeling worden gebruikt die vergelijkbaar is met `{Application ID URI}/.default` om aan te geven dat de aangevraagde bereiken dezelfde zijn die statisch zijn gedefinieerd in het app-object dat is ingesteld in de Azure-portal (voor Microsoft Graph verwijst `{Application ID URI}` naar `https://graph.microsoft.com`). Voor aangepaste web-API's wordt `{Application ID URI}` gedefinieerd in de sectie **Een API beschikbaar maken** in de registratie van toepassingen (preview) van de Azure-portal. |
 
-Zie de [naslagdocumentatie voor `AcquireTokenForClient`](/dotnet/api/microsoft.identity.client.confidentialclientapplication.acquiretokenforclient?view=azure-dotnet) voor meer informatie
+Zie de [naslagdocumentatie voor `AcquireTokenForClient`](/dotnet/api/microsoft.identity.client.confidentialclientapplication.acquiretokenforclient) voor meer informatie
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de landingspagina van het scenario voor meer informatie over daemontoepassingen
+Bekijk het overzicht van scenario's voor meer informatie over daemontoepassingen:
 
 > [!div class="nextstepaction"]
 > [Een daemon-app die web-API's aanroept](scenario-daemon-overview.md)
-
-Voor de zelfstudie voor de daemontoepassing raadpleegt u:
-
-> [!div class="nextstepaction"]
-> [Zelfstudie voor daemon .NET Core-console](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)
-
-Meer informatie over machtigingen en toestemming:
-
-> [!div class="nextstepaction"]
-> [Machtigingen en toestemming](v2-permissions-and-consent.md)
-
-Zie de Oauth 2.0-clientreferentiestroom voor meer informatie over de auth-stroom voor dit scenario:
-
-> [!div class="nextstepaction"]
-> [Oauth-clientreferentiestroom](v2-oauth2-client-creds-grant-flow.md)

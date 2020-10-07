@@ -1,6 +1,6 @@
 ---
 title: 'Quickstart: Interactief zoeken in kaarten met Azure Maps'
-description: Leer hoe u interactieve, doorzoekbare kaarten maakt. Zie hoe u een Azure Maps-account maakt, een primaire sleutel ophaalt en de Web-SDK gebruikt om kaarttoepassingen in te stellen.
+description: 'Quickstart: Leer hoe u interactieve, doorzoekbare kaarten maakt. Ontdek hoe u een Azure Maps-account maakt, een primaire sleutel ophaalt en de Web-SDK gebruikt om toewijzingstoepassingen in te stellen'
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 7/10/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: fa5cab35416f2629d39ec04803f90fae1a2e5f6d
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 99257b7bef83d0acef484118c7d53aea8eda168c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031043"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91264283"
 ---
 # <a name="quickstart-create-an-interactive-search-map-with-azure-maps"></a>Quickstart: Een interactief doorzoekbare kaart maken met Azure Maps
 
@@ -62,7 +62,7 @@ Als het Azure Kaarten-account is gemaakt, haalt u de primaire sleutel op waarmee
 >[!NOTE]
 > Als u de abonnementssleutel gebruikt in plaats van de primaire sleutel, wordt uw kaart niet juist weergegeven. Bovendien wordt om veiligheidsredenen aanbevolen dat u roteert tussen de primaire en secundaire sleutel. Als u sleutels wilt roteren, werkt u de app bij om de secundaire sleutel te gebruiken. Vervolgens implementeert u en drukt u op de knop voor cyclus/vernieuwen naast de primaire sleutel om een nieuwe primaire sleutel te genereren. De oude primaire sleutel wordt uitgeschakeld. Zie [Azure Key Vault instellen met wisselen en controleren van sleutels](https://docs.microsoft.com/azure/key-vault/secrets/key-rotation-log-monitoring) voor meer informatie over het roteren van sleutels
 
-:::image type="content" source="./media/quick-demo-map-app/get-key.png" alt-text="Primaire sleutel voor Azure Maps ophalen in de Azure-portal":::
+:::image type="content" source="./media/quick-demo-map-app/get-key.png" alt-text="Maps-account maken in de portal":::
 
 ## <a name="download-the-demo-application"></a>Download de demo-toepassing
 
@@ -78,7 +78,7 @@ Als het Azure Kaarten-account is gemaakt, haalt u de primaire sleutel op waarmee
 4. Probeer de interactieve zoekervaring uit. Zoek in het zoekvak linksboven in de demo-webtoepassing naar **restaurants**.
 5. Beweeg de muis over de lijst met adressen en locaties die worden weergegeven onder het zoekvak. U ziet hoe bij de bijbehorende speld op de kaart een pop-upvenster met informatie over die locatie wordt weergegeven. Ten behoeve van de privacy van particuliere bedrijven worden er fictieve namen en adressen weergegeven.
 
-    :::image type="content" source="./media/quick-demo-map-app/interactive-search.png" alt-text="Webtoepassing voor interactief zoeken in kaarten":::
+    :::image type="content" source="./media/quick-demo-map-app/interactive-search.png" alt-text="Maps-account maken in de portal":::
 
 
 ## <a name="clean-up-resources"></a>Resources opschonen
@@ -92,17 +92,15 @@ Als u niet van plan bent om door te gaan naar de zelfstudies, voert u deze stapp
 2. Navigeer naar de Azure-portalpagina. Selecteer **Alle resources** op de hoofdpagina van de portal. Of klik op het menupictogram in de linkerbovenhoek. Selecteer **Alle resources**.
 3. Klik op uw Azure Maps-account. Klik bovenaan de pagina op **Verwijderen**.
 
+Bekijk de volgende handleidingen voor meer codevoorbeelden en een interactieve coderingservaring:
+
+[Een adres vinden met de Azure Maps-zoekservice](how-to-search-for-address.md)
+
+[Azure Maps Map Control gebruiken](how-to-use-map-control.md)
+
 ## <a name="next-steps"></a>Volgende stappen
 
 In deze quickstart hebt u een Azure Maps-account en een demo-toepassing gemaakt. Bekijk de volgende zelfstudies voor meer informatie over Azure Maps:
 
 > [!div class="nextstepaction"]
 > [Zoeken naar nuttige plaatsen in de buurt met Azure Maps](tutorial-search-location.md)
-
-Bekijk de volgende handleidingen voor meer codevoorbeelden en een interactieve coderingservaring:
-
-> [!div class="nextstepaction"]
-> [Een adres vinden met de Azure Maps-zoekservice](how-to-search-for-address.md)
-
-> [!div class="nextstepaction"]
-> [Azure Maps Map Control gebruiken](how-to-use-map-control.md)

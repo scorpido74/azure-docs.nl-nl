@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: rohink
-ms.openlocfilehash: 7a250eaeb8ac4d0c8cacfb1748855700c9986bf5
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: cc36eca0b39db5188be7a63ffb148cc0f4cf30bf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079447"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91252864"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>Zelfstudie: DNS-records voor een web-app in een aangepast domein maken 
 
@@ -35,7 +35,7 @@ In deze zelfstudie leert u het volgende:
 > * Een A- en TXT-record voor uw aangepaste domein maken
 > * Een CNAME-record voor uw aangepaste domein maken
 > * De nieuwe records testen
-> * Aangepaste hostnamen voor uw web-app toevoegen
+> * Aangepaste hostnamen aan uw web-app toevoegen
 > * De aangepaste hostnamen testen
 
 

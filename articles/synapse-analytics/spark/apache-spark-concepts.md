@@ -1,6 +1,6 @@
 ---
 title: Basisconcepten van Apache Spark
-description: Dit artikel bevat een inleiding tot Apache Spark in Azure Synapse Analytics en de verschillende concepten.
+description: Inleiding tot Apache Spark in Azure Synapse Analytics en de verschillende concepten.
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 806f4dff49e9650dba073721109e7d54a18ecbbe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 74e85906742207d6cde0b7c4cc5c021c23ee4c7b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052335"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260135"
 ---
 # <a name="apache-spark-in-azure-synapse-analytics-core-concepts"></a>Basisconcepten van Apache Spark in Azure Synapse Analytics
 
@@ -24,7 +24,7 @@ Met Azure Synapse kunt u eenvoudig Spark-functies maken en configureren in Azure
 
 ## <a name="spark-pools-preview"></a>Spark-pools (preview)
 
-Er wordt een Spark-pool (preview) gemaakt in de Azure-portal. Een Spark-pool wordt, wanneer deze wordt geïnstantieerd, standaard gebruikt voor het maken van een Spark-exemplaar dat gegevens verwerkt. Wanneer er een Spark-pool wordt gemaakt, bestaat deze alleen als een set metagegevens; er worden geen resources verbruikt, uitgevoerd of in rekening gebracht. Een Spark-pool bevat een reeks eigenschappen die de kenmerken van een Spark-exemplaar bepalen. Deze kenmerken omvatten, maar zijn niet beperkt tot, naam, grootte, schaalgedrag en time to live.
+Er wordt een Spark-pool (preview) gemaakt in de Azure-portal. Een Spark-pool wordt, wanneer deze wordt geïnstantieerd, standaard gebruikt voor het maken van een Spark-exemplaar dat gegevens verwerkt. Wanneer er een Spark-pool wordt gemaakt, bestaat deze alleen als een set metagegevens;en er geen resources worden verbruikt, uitgevoerd of in rekening gebracht. Een Spark-groep bevat een reeks eigenschappen die de kenmerken van een Spark-exemplaar bepalen. Deze kenmerken omvatten, maar zijn niet beperkt tot naam, grootte, schaalgedrag, time to live.
 
 Omdat er geen resourcekosten zijn verbonden aan het maken van Spark-pools, kunt u een onbeperkt aantal met verschillende configuraties maken. Er kunnen ook machtigingen op Spark-pools worden toegepast, zodat gebruikers alleen toegang hebben tot sommige pools.
 
@@ -36,7 +36,7 @@ In [Get started with Spark pools in Synapse Analytics](../quickstart-create-apac
 
 Spark-exemplaren worden gemaakt wanneer u verbinding maakt met een Spark-pool, een sessie maakt of een taak uitvoert. Aangezien meerdere gebruikers toegang tot één Spark-pool kunnen hebben, wordt er een nieuw Spark-exemplaar gemaakt voor elke gebruiker die ermee verbinding maakt. 
 
-Wanneer u een tweede taak indient en er geen capaciteit in de pool is, heeft het bestaande Spark-exemplaar ook capaciteit en wordt de taak door het bestaande exemplaar verwerkt. Als dat niet het geval is en er wel capaciteit op het pool-niveau is, wordt er een nieuw Spark-exemplaar gemaakt.
+Wanneer u een tweede taak indient en er capaciteit in de pool is, heeft de bestaande Spark-instantie ook capaciteit. Vervolgens wordt de taak verwerkt door het bestaande exemplaar. Anders wordt er een nieuw Spark-exemplaar gemaakt als er capaciteit beschikbaar is op groepsniveau.
 
 ## <a name="examples"></a>Voorbeelden
 

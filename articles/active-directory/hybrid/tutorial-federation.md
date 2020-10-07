@@ -14,12 +14,12 @@ ms.date: 08/16/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a68c3719ea742a5c02f8be167fc1989ae4683c0
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 00257dc549754f7466fdf1dd2d0293de944b0944
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89279190"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287029"
 ---
 # <a name="tutorial-federate-a-single-ad-forest-environment-to-the-cloud"></a>Zelfstudie: Een enkele AD-forestomgeving federeren in de cloud
 
@@ -205,7 +205,7 @@ Nu moeten we een Azure Active Directory-tenant maken, zodat we onze gebruikers k
 2. Selecteer het **plus-pictogram (+)** en zoek naar **Azure Active Directory**.
 3. Selecteer **Azure Active Directory** in de zoekresultaten.
 4. Selecteer **Maken**.</br>
-![Maken](media/tutorial-password-hash-sync/create1.png)</br>
+![Schermopname waarin u ziet hoe u een Azure Active Directory-account maakt.](media/tutorial-password-hash-sync/create1.png)</br>
 5. Geef een **naam op voor de organisatie**, evenals een **oorspronkelijke domeinnaam**. Selecteer vervolgens **Maken**. Er wordt nu een map aangemaakt.
 6. Als die klaar is, klikt u op de koppeling **hier** om de adreslijst te beheren.
 
@@ -213,10 +213,10 @@ Nu moeten we een Azure Active Directory-tenant maken, zodat we onze gebruikers k
 De Microsoft Azure Active Directory-tenant is klaar en we gaan nu een globale beheerdersaccount maken.  Dit account wordt gebruikt voor het maken van het Azure AD-Connector-account tijdens de installatie van Azure Active Directory Connect.  Het Azure AD-Connector-account wordt gebruikt voor het wegschrijven van gegevens naar Microsoft Azure Active Directory.   Ga als volgt te werk om het globale beheerdersaccount te maken.
 
 1.  Onder **Beheren**, selecteer **Gebruikers**.</br>
-![Maken](media/tutorial-password-hash-sync/gadmin1.png)</br>
+![Schermopname van de geselecteerde optie Gebruiker in de sectie Beheren waar u een globale beheerder maakt in Azure Active Directory.](media/tutorial-password-hash-sync/gadmin1.png)</br>
 2.  Selecteer **Alle gebruikers** en selecteer vervolgens **+ Nieuwe gebruiker**.
 3.  Geef een naam en gebruikersnaam op voor deze gebruiker. Dit is de globale beheerder voor de tenant. U moet ook de **Maprol** wijzigen naar **Globale beheerder.** U kunt ook het tijdelijke wachtwoord weergeven. Selecteer **Maken** wanneer u klaar bent.</br>
-![Maken](media/tutorial-password-hash-sync/gadmin2.png)</br>
+![Schermopname van de knop Maken die u selecteert bij het maken van een globale beheerder in Azure Active Directory.](media/tutorial-password-hash-sync/gadmin2.png)</br>
 4. Als de bewerkingen zijn voltooid, opent u een nieuwe webbrowser en meldt u zich met het nieuwe globale beheerdersaccount en het tijdelijke wachtwoord aan bij myapps.microsoft.com.
 5. Wijzig het wachtwoord voor de globale beheerder in iets dat u makkelijk kunt onthouden.
 
@@ -226,12 +226,12 @@ Nu dat we een tenant en een globale beheerder hebben, moeten we ons aangepast do
 1. Let op dat in de [Azure Portal](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) de blade **Alle gebruikers** gesloten is.
 2. Selecteer aan de linkerkant **Namen van aangepaste domeinen**.
 3. Selecteer **Aangepast domein toevoegen**.</br>
-![Federatie](media/tutorial-federation/custom1.png)</br>
+![Schermopname van de gemarkeerde knop Aangepast domein toevoegen.](media/tutorial-federation/custom1.png)</br>
 4. Typ op de blade **Aangepaste-domeinnamen** de naam van uw aangepaste domein in het vak en selecteer vervolgens **Domein toevoegen**.
 5. Op het scherm van de naam van het aangepast domein ziet u de TXT- of de MX-gegevens.  Deze informatie moet worden toegevoegd aan de DNS-gegevens van de domeinregistrar onder het domein.  Daarom moet u naar uw domeinregistrar gaan en de TXT- of de MX-gegevens in de DNS-instellingen voor uw domein invoeren.  Hierdoor kan Azure uw domein verifiëren.  Azure heeft maximaal 24 uur nodig om dit te verifiëren.  Zie [Een aangepaste domeinnaam toevoegen](../../active-directory/fundamentals/add-custom-domain.md) voor meer informatie.</br>
-![Federatie](media/tutorial-federation/custom2.png)</br>
+![Schermopname die laat zien waar u de TXT- of MX-gegevens toevoegt.](media/tutorial-federation/custom2.png)</br>
 6. Om ervoor te zorgen dat deze is geverifieerd, klikt u op de knop Verifiëren.</br>
-![Federatie](media/tutorial-federation/custom3.png)</br>
+![Schermopname van een geslaagd verificatiebericht nadat u Verifiëren hebt geselecteerd.](media/tutorial-federation/custom3.png)</br>
 
 ## <a name="download-and-install-azure-ad-connect"></a>Azure AD Connect downloaden en installeren
 We gaan nu Azure AD Connect downloaden en installeren.  Zodra dat is gebeurd, nemen we de snelle installatie even door.  Ga als volgt te werk:
@@ -242,7 +242,7 @@ We gaan nu Azure AD Connect downloaden en installeren.  Zodra dat is gebeurd, ne
 4. Klik in het scherm Express-instellingen op **Aanpassen**.  
 5. Ga naar het scherm voor de installatie van vereiste onderdelen. Klik op **Install**.  
 6. Selecteer op het scherm Aanmelden van gebruikers **Federatie met AD FS** en klik op **Volgende**.
-![Federatie](media/tutorial-federation/fed1.png)
+![Schermopname toont waar u Federatie met AD FS selecteert.](media/tutorial-federation/fed1.png)
 
 1. Voer in het scherm Verbinding maken met Azure Active Directory de gebruikersnaam en het wachtwoord van de globale beheerder, die eerder is gemaakt, in en klik op **Volgende**.
 2. Klik in het scherm Verbinding maken met uw mappen op **Volgende**.  Selecteer vervolgens **nieuw AD-account maken**, voer de gebruikersnaam en het wachtwoord in voor contoso\Administrator en klik op **OK**.
@@ -257,7 +257,7 @@ We gaan nu Azure AD Connect downloaden en installeren.  Zodra dat is gebeurd, ne
 11. Selecteer **Gebruik van een certificaat geïnstalleerd op de federatieservers** en klik op **Bladeren**.
 12. Voer DC1 in het zoekvak in en selecteer dit als het is gevonden.  Klik op **OK**.
 13. Selecteer uit de vervolgkeuzelijst **Certificaatbestand****adfs.contoso.com** het certificaat dat eerder is gemaakt.  Klik op **Volgende**.
-![Federatie](media/tutorial-federation/fed2.png)
+![Schermopname toont waar u het certificaat bestand kunt selecteren dat u hebt gemaakt.](media/tutorial-federation/fed2.png)
 
 1. Klik op het scherm van de AD FS-server op **Bladeren** en voer DC1 in het zoekvak in en selecteer dit als het is gevonden.  Klik op **OK**.  Klik op **Volgende**.
 ![Federatie](media/tutorial-federation/fed3.png)

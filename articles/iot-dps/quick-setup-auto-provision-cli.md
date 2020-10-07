@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Hub Device Provisioning Service instellen met de Azure CLI
+title: Quickstart - Azure IoT Hub Device Provisioning Service instellen met behulp van Azure CLI
 description: 'Quickstart: Azure IoT Hub Device Provisioning Service (DPS) instellen met de Azure CLI'
 author: wesmc7777
 ms.author: wesmc
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 313dfe930dec5233f96b89fdebf978a41fdcdf80
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 157bd0a0a40ce6a935d13bb10a84c814ba1018bf
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497661"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91330244"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-azure-cli"></a>Quickstart: IoT Hub Device Provisioning Service instellen met de Azure CLI
 
@@ -84,7 +84,11 @@ echo $hubConnectionString
 ```
 
 > [!NOTE]
-> Deze twee opdrachten zijn geldig voor een host die wordt uitgevoerd onder Bash. Als u van een lokale Windows-/CMD-shell of een PowerShell-host gebruikmaakt, moet u de opdrachten wijzigen zodat de juiste syntaxis voor deze omgeving wordt gebruikt.
+> Deze twee opdrachten zijn geldig voor een host die wordt uitgevoerd onder Bash.
+> 
+> Als u van een lokale Windows-/CMD-shell of een PowerShell-host gebruikmaakt, moet u de opdrachten wijzigen zodat de juiste syntaxis voor deze omgeving wordt gebruikt.
+>
+> Als u Azure Cloud Shell gebruikt, controleert u of de vervolgkeuzelijst Omgeving aan de linkerkant van het shellvenster staat ingesteld op **Bash**.
 >
 
 ## <a name="link-the-iot-hub-and-the-provisioning-service"></a>De IoT-hub en de inrichtingsservice aan elkaar koppelen

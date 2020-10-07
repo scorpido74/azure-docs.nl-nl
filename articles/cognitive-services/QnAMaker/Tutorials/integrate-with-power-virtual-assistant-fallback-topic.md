@@ -3,12 +3,12 @@ title: 'Zelfstudie: Integreren met Power Virtual Agents - QnA Maker'
 description: In deze zelfstudie gaat u de kwaliteit van uw Knowledge Base verbeteren met behulp van actief leren. Beoordeel, accepteer of weiger, of voeg toe zonder bestaande vragen te verwijderen of te wijzigen.
 ms.topic: tutorial
 ms.date: 06/08/2020
-ms.openlocfilehash: f1d51f6ad8892252161238eb71fbb02f463463fd
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 6d00833a1331ebca9b070d90f32ee30c56bd5f96
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84635342"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319211"
 ---
 # <a name="tutorial-add-your-knowledge-base-to-power-virtual-agents"></a>Zelfstudie: uw Knowledge Base toevoegen aan Power Virtual Agents
 Maak een bot met [Power Virtual Agents](https://powervirtualagents.microsoft.com/) en breid deze uit om antwoorden uit uw Knowledge Base op te halen.
@@ -123,7 +123,7 @@ In dit gedeelte maakt u de gespreksstroom voor het terugvalonderwerp.
 
 1. Selecteer de connector **+** naar het vak **Bericht** en selecteer vervolgens **Een actie aanroepen**.
 
-    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/create-new-item-call-an-action.png" alt-text="Gedeeltelijke schermopname van Een actie aanroepen.":::
+    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/create-new-item-call-an-action.png" alt-text="Gedeeltelijke schermopname van de gespreksstroom, met de optie Verwijderen gemarkeerd.":::
 
 1. Selecteer **Een stroom maken**. U gaat nu naar de portal van Power Automate.
 
@@ -133,7 +133,7 @@ In dit gedeelte maakt u de gespreksstroom voor het terugvalonderwerp.
 
     Power Automate wordt geopend met een nieuwe sjabloon. U gaat deze nieuwe sjabloon niet gebruiken.
 
-    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-automate-flow-initial-template.png" alt-text="Gedeeltelijke schermopname van Power Automate met sjabloon voor nieuwe stroom.":::
+    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-automate-flow-initial-template.png" alt-text="Gedeeltelijke schermopname van de gespreksstroom, met de optie Verwijderen gemarkeerd.":::
 
 ## <a name="create-a-power-automate-flow-to-connect-to-your-knowledge-base"></a>Een Power Automate-stroom maken om te verbinden met uw Knowledge Base
 
@@ -147,12 +147,12 @@ Met de volgende procedure maakt u een Power Automate-stroom die het volgende doe
 
 1. Selecteer **Doorgaan** op het nieuwe scherm voor de QnA Maker-stroom.
 
-    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-automate-qna-flow-template-continue.png" alt-text="Gedeeltelijke schermopname van QnA Maker-sjabloonstroom met de knop Doorgaan gemarkeerd.":::
+    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-automate-qna-flow-template-continue.png" alt-text="Gedeeltelijke schermopname van de gespreksstroom, met de optie Verwijderen gemarkeerd.":::
 
 1. Selecteer het actievak **Antwoord genereren** en vul uw QnA Maker-instellingen in vanuit een vorige sectie met de titel [Een knowledge base maken](#create-and-publish-a-knowledge-base). **Servicehost** in de volgende afbeelding verwijst naar de host van uw Knowledge Base (**Host**) en heeft de indeling `https://YOUR-RESOURCE-NAME.azurewebsites.net/qnamaker`.
 
 
-    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-fill-in-generate-answer-settings.png" alt-text="Gedeeltelijke schermopname van QnA Maker-sjabloonstroom met de knop Doorgaan gemarkeerd.":::
+    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-fill-in-generate-answer-settings.png" alt-text="Gedeeltelijke schermopname van de gespreksstroom, met de optie Verwijderen gemarkeerd.":::
 
 1. Selecteer **Opslaan** om de stroom op te slaan.
 
@@ -188,11 +188,11 @@ De agent kan de stroom alleen vinden en er verbinding mee maken als de stroom is
 
 1. Selecteer in het pop-upvenster **Stroom** de nieuwe stroom met de naam **Generate answers using QnA Maker...** . De nieuwe actie wordt weergegeven in de stroom.
 
-    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-flow-after-adding-action.png" alt-text="Gedeeltelijke schermopname van het canvas in Power Virtual Agents met het onderwerp na het toevoegen van de QnA Maker-stroom.":::
+    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-flow-after-adding-action.png" alt-text="Gedeeltelijke schermopname van de gespreksstroom, met de optie Verwijderen gemarkeerd.":::
 
 1. Om de invoervariabele correct in te stellen op de QnA Maker-actie, selecteert u **Een variabele selecteren**en selecteert u vervolgens **bot.UnrecognizedTriggerPhrase**.
 
-    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-selection-action-input.png" alt-text="Gedeeltelijke schermopname van het canvas in Power Virtual Agents met het selecteren van de invoervariabele.":::
+    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-selection-action-input.png" alt-text="Gedeeltelijke schermopname van de gespreksstroom, met de optie Verwijderen gemarkeerd.":::
 
 
 1. Om de uitvoervariabele correct in te stellen op de QnA Maker-actie, selecteert u **UnrecognizedTriggerPhrase** in de actie **Bericht**, selecteert u vervolgens het pictogram om een variabele in te voegen, `{x}`, en selecteert u ten slotte **FinalAnswer**.
@@ -202,7 +202,7 @@ De agent kan de stroom alleen vinden en er verbinding mee maken als de stroom is
 Het uiteindelijke canvas voor de agent ziet er zo uit.
 
 > [!div class="mx-imgBorder"]
-> ![Schermopname van het uiteindelijke canvas voor de agent](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-topic-authoring-canvas-full-flow.png)
+> ![Schermafbeelding met het uiteindelijke canvas voor de agent met triggerwoordgroepen, acties en berichtsecties.](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-topic-authoring-canvas-full-flow.png)
 
 ## <a name="test-the-agent"></a>De agent testen
 
@@ -219,7 +219,7 @@ Het uiteindelijke canvas voor de agent ziet er zo uit.
     |5|Ja|In reactie op `Can I help with anything else?`|
     |6|Hoe kan ik de doorvoerprestaties voor queryvoorspellingen verbeteren?|Met deze vraag wordt de terugvalactie geactiveerd, en wordt de tekst naar uw Knowledge Base verzonden om daar een antwoord te zoeken. Vervolgens wordt het antwoord weergegeven. De groene vinkjes controles voor de afzonderlijke acties geven aan dat de betreffende actie is gelukt.|
 
-    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-test-tracked.png" alt-text="Schermopname van een chatbot met op het canvas groene vinkjes voor geslaagde acties.":::
+    :::image type="content" source="../media/how-to-integrate-power-virtual-agent/power-virtual-agent-test-tracked.png" alt-text="Gedeeltelijke schermopname van de gespreksstroom, met de optie Verwijderen gemarkeerd.":::
 
 ## <a name="publish-your-bot"></a>Uw bot publiceren
 

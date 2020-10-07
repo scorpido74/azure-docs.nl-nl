@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/10/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ed19b9dae179c3e4fe89a9ce28df4ad0cd080af
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: e35366e35fc127057020906ac6d3dfb0f207ab72
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89263209"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331332"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-vm-using-the-azure-portal"></a>Beheerde identiteiten voor Azure-resources op een VM configureren met Azure Portal
 
@@ -63,7 +63,7 @@ Als u een door het systeem toegewezen beheerde identiteit wilt inschakelen op ee
 
 3. Selecteer onder **Door systeem toegewezen**, **Status** de optie **Aan** en klik op **Opslaan**:
 
-   ![Schermopname van configuratiepagina](./media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade.png)  
+   ![Schermafbeelding met de pagina 'Identiteit (voorbeeld)' met de status 'Systeem toegewezen' ingesteld op 'Aan'.](./media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade.png)  
 
 ### <a name="remove-system-assigned-managed-identity-from-a-vm"></a>Door het systeem toegewezen beheerde identiteit uit een VM verwijderen
 
@@ -99,7 +99,7 @@ Als u een door een gebruiker toegewezen identiteit wilt toewijzen aan een VM, mo
 1. Meld u aan bij [Azure Portal](https://portal.azure.com) met een account dat is gekoppeld aan het Azure-abonnement dat de virtuele machine bevat.
 2. Ga naar de gewenste VM en klik op **Identiteit**, **Door de gebruiker toegewezen** en vervolgens op **\+Toevoegen**.
 
-   ![Door de gebruiker toegewezen beheerde identiteit toevoegen aan VM](./media/msi-qs-configure-portal-windows-vm/add-user-assigned-identity-vm-screenshot1.png)
+   ![Schermafbeelding met de pagina 'Identiteit', met 'Door de gebruiker toegewezen' geselecteerd en de knop 'Toevoegen' gemarkeerd.](./media/msi-qs-configure-portal-windows-vm/add-user-assigned-identity-vm-screenshot1.png)
 
 3. Klik op de door de gebruiker toegewezen identiteit die u wilt toevoegen aan de VM en klik op **Toevoegen**.
 

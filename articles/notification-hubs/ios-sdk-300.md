@@ -1,6 +1,6 @@
 ---
 title: Pushmeldingen verzenden naar iOS met Azure Notification Hubs en versie 3.0.0, preview 1, van de iOS-SDK
-description: In deze zelfstudie leert u hoe u pushmeldingen verzendt naar iOS-apparaten met Azure Notification Hubs en de Apple-service voor pushmeldingen.
+description: In deze zelfstudie leert u hoe u met Azure Notification Hubs en de Apple-service voor pushmeldingen verzendt naar iOS-apparaten (versie 3.0.0-preview1).
 author: sethmanheim
 ms.author: sethm
 ms.date: 06/19/2020
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
-ms.openlocfilehash: bec4b771387854c40045f2b57afe7ead6c52f2c7
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 25f18eb0f55560b7abd250b8511b2e250ea55852
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836034"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91250433"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs-version-300-preview1"></a>Zelfstudie: Pushmeldingen verzenden naar iOS-apps met Azure Notification Hubs (versie 3.0.0-preview1)
 
@@ -53,11 +53,11 @@ Zorg ervoor dat u voordat u verder gaat, de vorige zelfstudie over hoe u aan de 
 
    Als u het nieuwe profiel voor inrichting dat u hebt gemaakt in Xcode niet ziet, vernieuwt u de profielen voor uw identiteit voor ondertekening. Klik op  **Xcode**  in de menubalk, klik op  **Preferences** (Voorkeuren), klik op het tabblad  **Account**  en klik op de knop  **View Details**  (Details weergeven), klik op uw identiteit voor ondertekening en klik vervolgens op de knop voor vernieuwen in de rechterbenedenhoek.
 
-   :::image type="content" source="media/ios-sdk/image2.png" alt-text="Details weergeven":::
+   :::image type="content" source="media/ios-sdk/image2.png" alt-text="Sjabloon selecteren":::
 
 4. Selecteer op het tabblad  **Ondertekenen en mogelijkheden**  de optie  **+ Mogelijkheid**. Dubbelklik op  **Pushmeldingen**  om deze optie in te schakelen.
 
-   :::image type="content" source="media/ios-sdk/image3.png" alt-text="Mogelijkheid":::
+   :::image type="content" source="media/ios-sdk/image3.png" alt-text="Sjabloon selecteren":::
 
 5. Voeg de Azure Notification Hubs SDK-modules toe.
 
@@ -81,7 +81,7 @@ Zorg ervoor dat u voordat u verder gaat, de vorige zelfstudie over hoe u aan de 
 
         - Klik met de rechtermuisknop op uw project in Xcode en klik op de optie  **Add Files to**  (Bestanden toevoegen aan) om de map  **WindowsAzureMessaging.framework**  aan uw Xcode-project toe te voegen. Selecteer  **Options**  (Opties), zorg ervoor dat  **Copy items if needed**  (Bestanden kopiëren indien nodig) is geselecteerd en klik op  **Add** (Toevoegen).
 
-          :::image type="content" source="media/ios-sdk/image4.png" alt-text="Framework toevoegen":::
+          :::image type="content" source="media/ios-sdk/image4.png" alt-text="Sjabloon selecteren":::
 
 6. Voeg een nieuw headerbestand toe aan uw project met de naam  **Constants.h**. Klik daarvoor met de rechtermuisknop op de naam van het project en selecteer  **Nieuw bestand...** . Selecteer vervolgens **Header File** (Headerbestand). Dit bestand bevat de constanten voor uw Notification Hub. Selecteer daarna  **Next** (Volgende). Noem het bestand **Constants.h**.
 
@@ -98,13 +98,7 @@ Zorg ervoor dat u voordat u verder gaat, de vorige zelfstudie over hoe u aan de 
 
 8. Voeg het implementatiebestand voor Constants.h toe. Klik daarvoor met de rechtermuisknop op de naam van het project en selecteer  **Nieuw bestand...** . Selecteer  **Objective-C File** (Objective-C-bestand) en selecteer vervolgens  **Next** (Volgende). Geef het bestand de naam  **Constants.m**.
 
-   :::image type="content" source="media/ios-sdk/image5.png" alt-text="Implementatiebestand toevoegen":::
-
-9. Open het bestand  **Constants.m**  en vervang de inhoud door de volgende code. Vervang de tijdelijke aanduidingen voor letterlijke tekenreeksen `NotificationHubConnectionString` en `NotificationHubConnectionString` vervang respectievelijk de naam van de hub en de **DefaultListenSharedAccessSignature**, die u eerder hebt verkregen via de portal:
-
-   ```objc
-   #import <Foundation/Foundation.h>
-   #import "Constants.h"
+   :::image type="content" source="media/ios-sdk/image5.png" alt-text="Sjabloon selecteren"
 
    NSString* const NHInfoConnectionString = @"NotificationHubConnectionString";
    NSString* const NHInfoHubName = @"NotificationHubName";NSString* const NHUserDefaultTags = @"notification_tags";
@@ -311,7 +305,7 @@ Zorg ervoor dat u voordat u verder gaat, de vorige zelfstudie over hoe u aan de 
 
 U kunt ontvangst van meldingen in uw app testen met de optie  **Test verzenden**  in  [Azure Portal](https://portal.azure.com/). Er wordt dan een pushmelding als test naar uw apparaat verzonden.
 
-:::image type="content" source="media/ios-sdk/image6.png" alt-text="Verzenden testen":::
+:::image type="content" source="media/ios-sdk/image6.png" alt-text="Sjabloon selecteren":::
 
 Pushmeldingen worden gewoonlijk in een back-endservice zoals Mobile Apps of ASP.NET verzonden met een compatibele bibliotheek. U kunt de REST API ook rechtstreeks gebruiken om meldingsberichten te verzenden als er geen bibliotheek beschikbaar is voor uw back-end.
 
@@ -328,13 +322,13 @@ Als u pushmeldingen op iOS wilt testen, moet u de app implementeren op een fysie
 
 1. Voer de app uit, controleer of de registratie is gelukt en druk vervolgens op  **OK**.
 
-   :::image type="content" source="media/ios-sdk/image7.png" alt-text="Registreren":::
+   :::image type="content" source="media/ios-sdk/image7.png" alt-text="Sjabloon selecteren":::
 
 2. Verzend vervolgens als test een pushmelding vanuit  [Azure Portal](https://portal.azure.com/), zoals in de vorige sectie wordt beschreven.
 
 3. De pushmelding wordt verzonden naar alle apparaten die zijn geregistreerd voor het ontvangen van meldingen van de specifieke meldingenhub.
 
-   :::image type="content" source="media/ios-sdk/image8.png" alt-text="Test verzenden":::
+   :::image type="content" source="media/ios-sdk/image8.png" alt-text="Sjabloon selecteren":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

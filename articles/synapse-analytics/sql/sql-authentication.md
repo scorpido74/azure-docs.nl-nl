@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: a4b61b89921b41476ff1c2196502092809862a82
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d43c223c0a3e67ff784688255bd75fc61e5c120c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495496"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288015"
 ---
 # <a name="sql-authentication"></a>SQL-verificatie
 
@@ -44,7 +44,7 @@ De accounts van de **serverbeheerder** en de **Azure AD-beheerder** hebben de vo
 
 - Dit zijn de enige accounts die automatisch verbinding kunnen maken met elke SQL-database op de server. (Andere accounts die verbinding willen maken met een gebruikersdatabase, moeten eigenaar van de database zijn of een gebruikersaccount in de database hebben.)
 - Deze accounts worden in gebruikersdatabases beschouwd als de `dbo`-gebruiker en beschikken over alle machtigingen. (De eigenaar van een gebruikersdatabase wordt in de database ook als `dbo`-gebruiker beschouwd.)
-- Deze accounts moeten in de `master`-database niet als `dbo`-gebruiker worden beschouwd en hebben beperkte machtigingen in de hoofddatabase.
+- Deze accounts moeten in de `master`-database niet als `dbo`-gebruiker worden beschouwd en ze hebben beperkte machtigingen in de hoofddatabase.
 - Deze accounts zijn **geen** lid van de vaste standaardserverrol `sysadmin` van SQL Server, die niet beschikbaar is in SQL Database.  
 - Deze accounts kunnen databases, aanmeldingen en gebruikers in de hoofddatabase, en IP-firewallregels op serverniveau maken, wijzigen en verwijderen.
 - Deze accounts kunnen leden aan de rollen `dbmanager` en `loginmanager` toevoegen en verwijderen.
@@ -61,7 +61,7 @@ CREATE LOGIN Mary WITH PASSWORD = '<strong_password>';
 -- or
 CREATE LOGIN Mary@domainname.net FROM EXTERNAL PROVIDER;
 ```
-Zodra de aanmelding bestaat, kunt u gebruikers maken in de afzonderlijke databases in het SQL-on-demand eindpunt en de vereiste machtigingen verlenen aan deze gebruikers. Als u een gebruiker wilt maken, kunt u de volgende syntaxis gebruiken:
+Zodra de aanmelding bestaat, kunt u gebruikers maken in de afzonderlijke databases binnen het SQL-on-demand eindpunt en de vereiste machtigingen verlenen aan deze gebruikers. Als u een gebruiker wilt maken, kunt u de volgende syntaxis gebruiken:
 ```sql
 CREATE USER Mary FROM LOGIN Mary;
 -- or
@@ -126,7 +126,7 @@ Nu kan de gebruiker verbinding maken met de `master`-database en nieuwe database
 
 ### <a name="login-managers"></a>Aanmelding managers
 
-De andere beheerdersrol is de rol voor aanmeldingsbeheerder. Leden van deze rol kunnen nieuwe aanmeldingen maken in de hoofddatabase. Desgewenst kunt u dezelfde stappen doorlopen (een aanmelding maken, een gebruiker maken en een gebruiker toevoegen aan de rol **loginmanager**), zodat een gebruiker nieuwe aanmeldingen kan maken in de hoofddatabase. Gewoonlijk zijn aanmeldingen niet nodig, omdat Microsoft het gebruik aanbeveelt van gebruikers van ingesloten databases. Hiervoor wordt verificatie op databaseniveau gebruikt, in plaats van gebruik te maken van gebruikers op basis van aanmelding. Zie [Ingesloten databasegebruikers: een draagbare database maken](/sql/relational-databases/security/contained-database-users-making-your-database-portable?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) voor meer informatie.
+De andere beheerdersrol is de rol voor aanmeldingsbeheerder. Leden van deze rol kunnen nieuwe aanmeldingen maken in de hoofddatabase. Desgewenst kunt u dezelfde stappen doorlopen (een aanmelding maken, een gebruiker maken en een gebruiker toevoegen aan de rol **loginmanager**), zodat een gebruiker nieuwe aanmeldingen kan maken in de hoofddatabase. Gewoonlijk zijn aanmeldingen niet nodig omdat Microsoft het gebruik aanbeveelt van gebruikers van ingesloten databases. Hiervoor wordt verificatie op databaseniveau gebruikt, in plaats van gebruik te maken van gebruikers op basis van aanmelding. Zie [Ingesloten databasegebruikers: een draagbare database maken](/sql/relational-databases/security/contained-database-users-making-your-database-portable?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) voor meer informatie.
 
 ---
 

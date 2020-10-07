@@ -6,12 +6,12 @@ ms.date: 08/31/2020
 author: IngridAtMicrosoft
 ms.author: inhenkel
 manager: femila
-ms.openlocfilehash: 16a5793f9848a6e16856728877727dbefc3e0805
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 6b4373efc4979900e676257cc0b2748145165499
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89264926"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91261410"
 ---
 # <a name="quickstart-upload-encode-and-stream-content-with-portal"></a>Quickstart: Inhoud uploaden, coderen en streamen met de portal
 
@@ -66,7 +66,7 @@ In deze quickstart ziet u hoe u Azure Portal kunt gebruiken om inhoud te uploade
 
 Als u naar uw assetsvenster gaat, ziet u dat er een nieuwe asset is toegevoegd aan de lijst:
 
-![Uploaden](./media/manage-assets-quickstart/upload.png)
+![Schermopname van de Azure Portal die de weergave van het activavenster toont dat is geopend door assets te selecteren (nieuw), en een nieuwe asset die is toegevoegd door de knop uploaden te selecteren.](./media/manage-assets-quickstart/upload.png)
 
 ## <a name="encode"></a>Coderen
 
@@ -78,7 +78,7 @@ Als u naar uw assetsvenster gaat, ziet u dat er een nieuwe asset is toegevoegd a
 
 Als u naar uw assetsvenster gaat, ziet u dat de uitvoerasset is toegevoegd aan de lijst:
 
-![Coderen](./media/manage-assets-quickstart/encode.png)
+![Schermopname van het venster Assets in Azure Portal waarin de asset ignite.mp4 Media Encoded Standard aan de lijst met assets wordt toegevoegd.](./media/manage-assets-quickstart/encode.png)
 
 ## <a name="monitor-the-job-progress"></a>De voortgang van de taak controleren
 

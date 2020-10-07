@@ -4,12 +4,12 @@ description: In deze zelfstudie leert u hoe u met behulp van Kestrel een HTTPS-e
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: b309a13288c8ea95f453c1e80549a979e3f89921
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: c675f8ece8369bcfc0055343221ac82aea59dec1
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89441524"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326232"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Zelfstudie: Een HTTPS-eindpunt toevoegen aan een front-end-service van ASP.NET Core Web-API met behulp van Kestrel
 
@@ -354,7 +354,7 @@ Selecteer in Solution Explorer de toepassing **Voting** en stel de eigenschap **
 
 Sla alle bestanden op en druk op F5 om de toepassing lokaal uit te voeren.  Nadat de toepassing is geïmplementeerd, wordt een webbrowser geopend met https:\//localhost:443. Als u een zelfondertekend certificaat gebruikt, ziet u een waarschuwing dat uw pc de beveiliging van deze website niet vertrouwt.  Ga door naar de webpagina.
 
-![Stemtoepassing][image2]
+![Schermopname van de app Service Fabric Voting Sample die wordt uitgevoerd in een browservenster met de URL https://localhost/.][image2]
 
 ## <a name="install-certificate-on-cluster-nodes"></a>Certificaat installeren op clusterknooppunten
 
@@ -371,7 +371,7 @@ Installeer vervolgens het certificaat op het externe cluster met behulp van [dez
 > [!Warning]
 > Een zelfondertekend certificaat volstaat voor ontwikkel- en testtoepassingen. Gebruik voor productietoepassingen in plaats van een zelfondertekend certificaat een certificaat van een [certificeringsinstantie (CA)](https://wikipedia.org/wiki/Certificate_authority).
 
-## <a name="open-port-443-in-the-azure-load-balancer"></a>Poort 443 openen in de Azure-load balancer
+## <a name="open-port-443-in-the-azure-load-balancer-and-virtual-network"></a>Poort 443 openen in de Azure-load balancer en het virtuele netwerk
 
 Open poort 443 in de load balancer als dat nog niet is gebeurd.
 
@@ -396,13 +396,33 @@ $slb | Add-AzLoadBalancerRuleConfig -Name $rulename -BackendAddressPool $slb.Bac
 $slb | Set-AzLoadBalancer
 ```
 
+Doe hetzelfde voor het gekoppelde virtuele netwerk.
+
+```powershell
+$rulename="allowAppPort$port"
+$nsgname="voting-vnet-security"
+$RGname="voting_RG"
+$port=443
+
+# Get the NSG resource
+$nsg = Get-AzNetworkSecurityGroup -Name $nsgname -ResourceGroupName $RGname
+
+# Add the inbound security rule.
+$nsg | Add-AzNetworkSecurityRuleConfig -Name $rulename -Description "Allow app port" -Access Allow `
+    -Protocol * -Direction Inbound -Priority 3891 -SourceAddressPrefix "*" -SourcePortRange * `
+    -DestinationAddressPrefix * -DestinationPortRange $port
+
+# Update the NSG.
+$nsg | Set-AzNetworkSecurityGroup
+```
+
 ## <a name="deploy-the-application-to-azure"></a>De app implementeren in Azure
 
 Sla alle bestanden op, schakel over van Fouten opsporen naar Uitbrengen en druk op F6 om opnieuw op te bouwen.  Klik in Solution Explorer met de rechtermuisknop op **Stemmen** en selecteer **Publiceren**. Selecteer het verbindingseindpunt van het cluster dat is gemaakt in [Een toepassing implementeren op een cluster](service-fabric-tutorial-deploy-app-to-party-cluster.md) of selecteer een ander cluster.  Klik op **Publiceren** om de toepassing naar het externe cluster te publiceren.
 
 Nadat de toepassing is geïmplementeerd, opent u een webbrowser en navigeert u naar `https://mycluster.region.cloudapp.azure.com:443` (werk de URL bij met het verbindingseindpunt voor uw cluster). Als u een zelfondertekend certificaat gebruikt, ziet u een waarschuwing dat uw pc de beveiliging van deze website niet vertrouwt.  Ga door naar de webpagina.
 
-![Stemtoepassing][image3]
+![Schermopname van de app Service Fabric Voting Sample die wordt uitgevoerd in een browservenster met de URL https://mycluster.region.cloudapp.azure.com:443.][image3]
 
 ## <a name="next-steps"></a>Volgende stappen
 

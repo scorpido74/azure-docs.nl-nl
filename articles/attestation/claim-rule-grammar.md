@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a0f3e517e60037de6456bc3a549e072e58e2fa67
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 3ed5c3f8232047787c6f05628f1eef35a7533999
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89244735"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91285415"
 ---
 # <a name="claim-and-claim-rules"></a>Claim en claimregels
 
@@ -60,7 +60,7 @@ De voorwaarde is gestructureerd als:
 Identifier:[ClaimPropertyCondition, ClaimPropertyCondition,…]
 ```
 
-De voorwaarde bestaat uit afzonderlijke voorwaarden op verschillende eigenschappen van een claim. Een voorwaarde kan een optionele id hebben, die kan worden gebruikt om de claims te verwijzen die voldoen aan de voorwaarde. Deze verwijzing kan worden gebruikt in de andere voorwaarden of de actie van dezelfde regel.
+De lijst met voorwaarden bestaat uit afzonderlijke voorwaarden op verschillende eigenschappen van een claim. Een voorwaarde kan een optionele id hebben, die kan worden gebruikt om de claims te verwijzen die voldoen aan de voorwaarde. Deze verwijzing kan worden gebruikt in de andere voorwaarden of de actie van dezelfde regel.
 
 Bijvoorbeeld
 

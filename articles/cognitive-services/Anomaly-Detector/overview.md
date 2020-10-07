@@ -1,27 +1,29 @@
 ---
 title: Wat is de Anomaly Detector-API?
 titleSuffix: Azure Cognitive Services
-description: Met de geavanceerde algoritmen van de Anomaly Detector-API's kunt u anomalieën in uw tijdreeksgegevens detecteren.
+description: Met de algoritmen van de Anomaly Detector-API's kunt u anomalieën in uw tijdreeksgegevens detecteren.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: overview
-ms.date: 09/10/2020
+ms.date: 09/22/2020
 ms.author: aahi
-ms.openlocfilehash: ba094709d78d92b678e3aa5ad9995923888caf00
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+keywords: afwijkingsdetectie, machine learning, algoritmes
+ms.custom: cog-serv-seo-aug-2020
+ms.openlocfilehash: 2e48c189df23ed94cd54e1bc9097b7d9709c9ed3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90887500"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91319313"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Wat is de Anomaly Detector-API?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Met de Anomaly Detector-API kunt u anomalieën in uw tijdreeksgegevens controleren en detecteren met behulp van machine learning. De Anomaly Detector-API wordt aangepast door automatisch de geschiktste modellen te bepalen en toe te passen op uw gegevens, ongeacht de branche, het scenario of het gegevensvolume. Met behulp van uw tijdreeksgegevens worden de grenzen voor anomaliedetectie en verwachte waarden vastgesteld, alsmede welke gegevenspunten anomalieën zijn.
+Met de Anomaly Detector API kunt u afwijkingen in uw tijdreeksgegevens bewaken en detecteren zonder dat u machine learning hoeft te kennen. De algoritmes van Anomaly Detector-API worden aangepast door automatisch de best-passende modellen voor uw gegevens te bepalen en toe te passen, ongeacht de branche, het scenario of het gegevensvolume. Met behulp van uw tijdreeksgegevens worden de grenzen voor anomaliedetectie en verwachte waarden vastgesteld, alsmede welke gegevenspunten anomalieën zijn.
 
 ![Detectiepatroonwijzigingen in serviceaanvragen](./media/anomaly_detection2.png)
 
@@ -33,7 +35,7 @@ Met Anomaly Detector kunt u automatisch anomalieën in uw tijdreeksgegevens dete
 
 |Functie  |Beschrijving  |
 |---------|---------|
-|Detecteert anomalieën die in realtime optreden. | Anomalieën in uw streaminggegevens detecteren door de nieuwste punten te vergelijken met eerder gedetecteerde gegevenspunten. Met deze bewerking wordt een model gegenereerd met de gegevenspunten die u verzendt, en wordt bepaald of het doelpunt een anomalie is. Door de API aan te roepen bij elk nieuw gegevenspunt dat u genereert, kunt u uw gegevens bewaken terwijl ze worden gemaakt. |
+|Afwijkingsdetectie in realtime. | Anomalieën in uw streaminggegevens detecteren door de nieuwste punten te vergelijken met eerder gedetecteerde gegevenspunten. Met deze bewerking wordt een model gegenereerd met de gegevenspunten die u verzendt, en wordt bepaald of het doelpunt een anomalie is. Door de API aan te roepen bij elk nieuw gegevenspunt dat u genereert, kunt u uw gegevens bewaken terwijl ze worden gemaakt. |
 |Detecteert anomalieën in uw gegevensset als een batch. | Uw tijdreeks gebruiken om eventuele anomalieën in uw gegevens op te sporen. Met deze bewerking wordt een model gegenereerd op basis van uw volledige tijdreeksgegevens, waarbij elk punt wordt geanalyseerd met hetzelfde model.         |
 |Detecteert wijzigingspunten in uw gegevensset als een batch. | Uw tijdreeks om eventuele wijzigingspunten in uw gegevens te detecteren. Met deze bewerking wordt een model gegenereerd op basis van uw volledige tijdreeksgegevens, waarbij elk punt wordt geanalyseerd met hetzelfde model.    |
 | Aanvullende informatie over het probleem ophalen. | Nuttige informatie over uw gegevens en gedetecteerde anomalieën, waaronder verwachte waarden, grenzen en posities van anomalieën. |

@@ -4,17 +4,17 @@ description: In deze quickstart leert u hoe u met de webhulpprogramma's een Apac
 services: synapse-analytics
 author: euangMS
 ms.author: euang
-ms.reviewer: jrasnick, carlrab
+ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: quickstart
 ms.date: 04/15/2020
-ms.openlocfilehash: 4ca718db8d2d2d57c73e8e492e2edbee221cb3ec
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: aca58328ada4f01072cf3779735bcd5cb518ef0a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049805"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91260764"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-in-azure-synapse-analytics-using-web-tools"></a>Quickstart: Een Apache Spark-pool maken in Azure Synapse Analytics met behulp van webhulpprogramma's
 
@@ -49,7 +49,7 @@ Een notebook is een interactieve omgeving die verschillende programmeertalen ond
 4. Geef in het venster **Eigenschappen** een naam op voor de notebook.
 5. Klik op de werkbalk op **Publiceren**.
 6. Als uw werkruimte slechts één Apache Spark-pool bevat, wordt deze standaard geselecteerd. Gebruik de vervolgkeuzelijst om de juiste Apache Spark-pool te selecteren als er meerdere pools beschikbaar zijn.
-7. Klik op **Code toevoegen**. De standaardtaal is `Pyspark`. U gaat een mix van Pyspark en Spark SQL gebruiken, dus u kunt de standaardkeuze gewoon accepteren.
+7. Klik op **Code toevoegen**. De standaardtaal is `Pyspark`. U gaat een mix van Pyspark en Spark SQL gebruiken, dus u kunt de standaardkeuze gewoon accepteren. Andere ondersteunde talen zijn Scala en .NET voor Spark.
 8. Vervolgens maakt u een eenvoudig Spark DataFrame-object om te manipuleren. In dit geval maakt u het object met behulp van code. Hiervoor zijn drie rijen en drie kolommen nodig:
 
    ```python

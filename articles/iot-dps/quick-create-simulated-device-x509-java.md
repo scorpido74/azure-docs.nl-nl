@@ -1,5 +1,5 @@
 ---
-title: Een gesimuleerd X.509-apparaat met Java inrichten voor Azure IoT Hub
+title: Quickstart - Een gesimuleerd X.509-apparaat inrichten voor Azure IoT Hub met behulp van Java
 description: 'Azure-quickstart: een gesimuleerd X.509-apparaat maken en inrichten voor IoT Hub Device Provisioning Service (DPS) met de SDK voor Java. Voor deze quickstart worden afzonderlijke registraties gebruikt.'
 author: wesmc7777
 ms.author: wesmc
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: f16ace3e54db4d30f89da7335f00153191a7e226
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 0198a32800f364f921a2b9f64048166c48a14f7e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326746"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91323886"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-x509-device-using-java-device-sdk-for-iot-hub-device-provisioning-service"></a>Quickstart: Een gesimuleerd X.509-apparaat maken en inrichten voor IoT Hub Device Provisioning Service met behulp van de Java apparaat-SDK
 
@@ -24,7 +24,7 @@ In deze quickstart maakt u een gesimuleerd X.509-apparaat op uw Windows-computer
 
 ## <a name="prerequisites"></a>Vereisten
 
-- U hebt [Concepten voor automatische inrichting](concepts-auto-provisioning.md) bestudeerd.
+- Vertrouwd zijn met de concepten van [inrichten](about-iot-dps.md#provisioning-process).
 - U hebt [IoT Hub Device Provisioning Service instellen met Azure Portal](./quick-setup-auto-provision.md) voltooid.
 - Een Azure-account met een actief abonnement. [Maak er gratis een](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - [Java SE Development Kit 8](https://aka.ms/azure-jdks).

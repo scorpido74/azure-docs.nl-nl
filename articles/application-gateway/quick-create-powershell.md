@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 08/27/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 115f01bffc4664798682923cb83a99a23a8ce274
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 3f64086ed97594416b5964cf648c857c2f271480
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958317"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331094"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway-using-azure-powershell"></a>Quickstart: Webverkeer doorsturen met Azure Application Gateway met behulp van Azure PowerShell
 
@@ -53,6 +53,8 @@ Er is een virtueel netwerk nodig voor communicatie tussen de resources die u maa
 1. Maak de subnetconfiguraties met behulp van `New-AzVirtualNetworkSubnetConfig`.
 2. Maak het virtuele netwerk met de subnetconfiguraties met behulp van `New-AzVirtualNetwork`. 
 3. Maak het openbare IP-adres met behulp van `New-AzPublicIpAddress`. 
+> [!NOTE]
+> [Het beleid voor endpoints van virtuele netwerken](../virtual-network/virtual-network-service-endpoint-policies-overview.md) wordt momenteel niet ondersteund in een Application Gateway-subnet.
 
 ```azurepowershell-interactive
 $agSubnetConfig = New-AzVirtualNetworkSubnetConfig `

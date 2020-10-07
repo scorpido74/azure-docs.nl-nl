@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 08/20/2020
 ms.author: trbye
-ms.openlocfilehash: 57577c840c93888b2b96971994724f085ad44ebe
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 2277c054be3e0649d48350b21eb9add2a1e52e8b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89569302"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91282864"
 ---
 # <a name="what-is-the-speech-service"></a>Wat is de Speech-service?
 
@@ -74,13 +74,13 @@ Ga als volgt te werk om een spraakserviceresource (prijscategorie gratis of beta
    - Geef een unieke naam op voor uw nieuwe resource. De naam helpt u om onderscheid te maken tussen meerdere abonnementen die aan dezelfde service zijn gekoppeld.
    - Kies het Azure-abonnement waaraan de nieuwe resource wordt gekoppeld om te bepalen hoe de kosten worden gefactureerd.
    - Kies de [regio](regions.md) waarin de resource wordt gebruikt.
-   - Kies gratis (F0) of betaald (S0) als prijscategorie. Selecteer **Volledige prijsgegevens weergeven** voor volledige informatie over prijzen en quota voor gebruik voor elke prijscategorie.
+   - Kies gratis (F0) of betaald (S0) als prijscategorie. Selecteer **Volledige prijsgegevens weergeven** voor volledige informatie over prijzen en quota voor gebruik voor elke prijscategorie. Zie [limieten voor Azure Cognitive Services](../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cognitive-services-limits) voor meer informatie over de resources die u kunt maken voor elk abonnement.
    - Maak een nieuwe resourcegroep voor dit spraakabonnement of wijs het abonnement toe aan een bestaande resourcegroep. Met resourcegroepen kunt u de verschillende Azure-abonnementen ordenen.
    - Selecteer **Maken**. Hiermee gaat u naar het implementatieoverzicht en worden berichten over de voortgang van de implementatie weergegeven.
-
+<!--
 > [!NOTE]
-> U kunt een onbeperkt aantal abonnementen voor de prijscategorie Standard maken in een of meer regio's. U kunt echter slechts één abonnement voor de gratis prijscategorie maken. Modelimplementaties in de gratis prijscategorie die gedurende 7 dagen niet worden gebruikt, worden automatisch uit bedrijf genomen.
-
+> You can create an unlimited number of standard-tier subscriptions in one or multiple regions. However, you can create only one free-tier subscription. Model deployments on the free tier that remain unused for 7 days will be decommissioned automatically.
+-->
 Het kan even duren voordat u uw nieuwe spraakresource is geïmplementeerd. Zodra de implementatie is voltooid, selecteert u **Ga naar resource** en selecteert u in het navigatievenster links **Sleutels** om uw abonnementssleutels voor de spraakservice weer te geven. Elk abonnement heeft twee sleutels. U kunt beide sleutels gebruiken in uw toepassing. Als u snel een sleutel naar de code-editor of een andere locatie wilt kopiëren/plakken, selecteert u de kopieerknop naast elke sleutel en schakelt u over naar Windows om de inhoud van het klembord op de gewenste locatie te plakken.
 
 > [!IMPORTANT]

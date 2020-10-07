@@ -1,6 +1,7 @@
 ---
-title: Microsoft-identiteitsplatform Python daemon | Azure
-description: Ontdek hoe met een Python-process een toegangstoken kan worden opgehaald en een API kan worden aangeroepen die is beveiligd met een Microsoft-identiteitsplatformeindpunt met behulp van de eigen identiteit van de app
+title: 'Quickstart: Microsoft Graph aanroepen vanuit een Python-daemon | Azure'
+titleSuffix: Microsoft identity platform
+description: In deze quickstart leert u hoe met een Python-proces een toegangstoken kan worden opgehaald en een API kan worden aangeroepen die is beveiligd met een Microsoft Identity Platform-eindpunt met behulp van de eigen identiteit van de app
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 10/22/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 0969afa95009255981381d41268f416a615dd9f3
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 2c280b8241819155f32942a399caa7f916db3827
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683739"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91257738"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>Quickstart: Een token verkrijgen en Microsoft Graph API aanroepen vanuit een Python-console-app met behulp van de identiteit van de app
 
@@ -224,18 +225,3 @@ Zie de landingspagina van het scenario voor meer informatie over daemontoepassin
 
 > [!div class="nextstepaction"]
 > [Een daemon-app die web-API's aanroept](scenario-daemon-overview.md)
-
-Voor de zelfstudie voor de daemontoepassing raadpleegt u:
-
-> [!div class="nextstepaction"]
-> [Zelfstudie Daemon Python-console](https://github.com/Azure-Samples/ms-identity-python-daemon)
-
-Meer informatie over machtigingen en toestemming:
-
-> [!div class="nextstepaction"]
-> [Machtigingen en toestemming](v2-permissions-and-consent.md)
-
-Zie de Oauth 2.0-clientreferentiestroom voor meer informatie over de auth-stroom voor dit scenario:
-
-> [!div class="nextstepaction"]
-> [Oauth-clientreferentiestroom](v2-oauth2-client-creds-grant-flow.md)

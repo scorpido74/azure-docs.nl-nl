@@ -4,12 +4,12 @@ description: 'Zelfstudie: In dit artikel wordt beschreven hoe u met Azure Event 
 ms.topic: tutorial
 ms.date: 07/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d45fcedb570e384b851a7ac815ca175c67cc00a0
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 64d4b9769e1a228294bd7d8741f6f4b1260fb0dd
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89435028"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91270544"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>Zelfstudie: Big data streamen naar een datawarehouse
 Azure [Event Grid](overview.md) is een intelligente service voor het routeren van gebeurtenissen waarmee u kunt reageren op meldingen (gebeurtenissen) van apps en services. Het kan bijvoorbeeld een Azure-functie activeren voor het verwerken van Event Hubs-gegevens die zijn opgenomen in een Azure Blob-opslag of Azure Data Lake Storage en de gegevens naar andere gegevensopslagplaatsen migreren. Dit [Event Hubs en Event Grid-voorbeeld](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) laat zien hoe u Event Hubs gebruikt met Event Grid voor het naadloos migreren van opgenomen gegevens van Event Hubs uit blob-opslag naar Azure Synapse Analytics (voorheen SQL Data Warehouse).
@@ -66,7 +66,7 @@ In deze stap implementeert u de vereiste infrastructuur met behulp van een [Reso
 4. Als in Cloud Shell een optie wordt weergegeven om te kiezen tussen **Bash** en **PowerShell**, kiest u **Bash**. 
 5. Als u Cloud Shell voor het eerst gebruikt, maakt u een opslagaccount door **Create storage** (Opslag maken) te selecteren. Voor het opslaan van sommige bestanden in Azure Cloud Shell is een Azure-opslagaccount vereist. 
 
-    ![Opslag voor Cloud Shell maken](media/event-grid-event-hubs-integration/create-storage-cloud-shell.png)
+    ![Schermopname van het dialoogvenster ‘U hebt geen opslag gekoppeld’ met de knop ‘Opslag maken’ geselecteerd.](media/event-grid-event-hubs-integration/create-storage-cloud-shell.png)
 6. Wacht totdat Cloud Shell is geïnitialiseerd. 
 
     ![Opslag voor Cloud Shell maken](media/event-grid-event-hubs-integration/cloud-shell-initialized.png)
@@ -209,7 +209,7 @@ Maak een tabel in uw datawarehouse door het script [CreateDataWarehouseTable.sql
    ![Functie-app publiceren](media/event-grid-event-hubs-integration/publish-function-app.png)
 4. Als u het volgende scherm ziet, selecteert u **Start**. 
 
-   ![De knop Start voor het publiceren](media/event-grid-event-hubs-integration/start-publish-button.png) 
+   ![Schermopname van Visual Studio met de knop ‘Starten’ in de sectie Publiceren.](media/event-grid-event-hubs-integration/start-publish-button.png) 
 5. In het dialoogvenster **Publiceren** selecteert u **Azure** voor **Doel** en vervolgens **Volgende**. 
 
    ![De knop Start voor het publiceren](media/event-grid-event-hubs-integration/publish-select-azure.png)

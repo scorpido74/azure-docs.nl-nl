@@ -8,13 +8,13 @@ ms.topic: overview
 ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 2a0751f12f33a36d9e0003977bcf40b66d715615
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.reviewer: jrasnick
+ms.openlocfilehash: 8884f62ba015cc4b33b75a133f21264dac6430e5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986947"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288984"
 ---
 # <a name="access-external-storage-in-synapse-sql-on-demand"></a>Toegang krijgen tot externe opslag in Synapse SQL (on-demand)
 
@@ -52,7 +52,7 @@ CREATE CREDENTIAL [https://<storage_account>.dfs.core.windows.net/<container>]
 GRANT REFERENCES CREDENTIAL::[https://<storage_account>.dfs.core.windows.net/<container>] TO sqluser
 ```
 
-Als er geen CREDENTIAL op serverniveau is die overeenkomt met de URL of als de SQL-gebruiker geen REFERENCES-machtiging voor deze referenties heeft, wordt de fout geretourneerd. SQL-principals kunnen niet imiteren met een Azure AD-identiteit.
+Als er geen CREDENTIAL op serverniveau is die overeenkomt met de URL, of als de SQL-gebruiker geen referentiemachtiging voor deze referentie heeft, wordt de fout geretourneerd. SQL-principals kunnen niet imiteren met een Azure AD-identiteit.
 
 ### <a name="direct-access"></a>[Directe toegang](#tab/direct-access)
 
@@ -116,7 +116,7 @@ CREATE EXTERNAL DATA SOURCE MyAzureInvoices
 
 Een gebruiker met de machtigingen voor het lezen van de tabel kan toegang krijgen tot externe bestanden met behulp van een EXTERNAL TABLE die wordt gemaakt boven op de set Azure Storage-mappen en -bestanden.
 
-Een gebruiker met [-machtigingen voor het maken van een externe tabel](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql?view=sql-server-ver15#permissions) (bijvoorbeeld CREATE TABLE en ALTER ANY CREDENTIAL of REFERENCES DATABASE SCOPED CREDENTIAL) kunnen het volgende script gebruiken om een tabel boven op Azure Storage-gegevensbron te maken:
+Een gebruiker met [-machtigingen voor het maken van een externe tabel](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql?view=sql-server-ver15#permissions&preserve-view=true) (bijvoorbeeld CREATE TABLE en ALTER ANY CREDENTIAL of REFERENCES DATABASE SCOPED CREDENTIAL) kunnen het volgende script gebruiken om een tabel boven op Azure Storage-gegevensbron te maken:
 
 ```sql
 CREATE EXTERNAL TABLE [dbo].[DimProductexternal]

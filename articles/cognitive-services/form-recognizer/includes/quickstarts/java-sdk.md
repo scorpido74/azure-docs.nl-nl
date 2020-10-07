@@ -1,21 +1,21 @@
 ---
 title: 'Quickstart: Clientbibliotheek van Form Recognizer voor Java'
-description: In deze quickstart gaat u aan de slag met de clientbibliotheek van Form Recognizer voor Java.
+description: Gebruik de clientbibliotheek van Form Recognizer voor Java voor het maken van een app voor het verwerken van formulieren waarmee sleutel-waardeparen en tabelgegevens uit uw aangepaste documenten worden geëxtraheerd.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 06/15/2020
+ms.date: 09/21/2020
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: 30c486ccb7bf3b7d537cd1ed3475a8dadc5b4f6d
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 4632c5cb12b6d3c2a1b8d4baebf37e9237704591
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89324989"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318890"
 ---
 > [!IMPORTANT]
 > * De Form Recognizer SDK richt zich momenteel op versie 2.0 van de Form Recognizer-service.
@@ -132,7 +132,8 @@ Met Form Recognizer kunt u twee verschillende clienttypen maken. De eerste, `For
 - Modellen beheren die zijn gemaakt in uw account.
 - Het kopiëren van een aangepast model van de ene Form Recognizer-resource naar de andere.
 
-Denk erom dat modellen ook kunnen worden getraind met een grafische gebruikersinterface zoals het [hulpprogramma voor het labelen van Form Recognizer](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/label-tool).
+> [!NOTE]
+> Modellen kunnen ook worden getraind met een Graphical User Interface zoals de [Form Recognizer Labeling Tool](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/label-tool).
 
 ## <a name="code-examples"></a>Codevoorbeelden
 

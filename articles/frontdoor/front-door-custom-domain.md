@@ -10,19 +10,19 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/10/2018
+ms.date: 09/24/2020
 ms.author: duau
-ms.openlocfilehash: ee9a883cbd69826e30d6f2416d588792a8c17b1c
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: ebc0ee2e029e1f349972e3cd7fada46495534d54
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89648813"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91252388"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-front-door"></a>Zelfstudie: Een aangepast domein aan uw Front Door toevoegen
 In deze zelfstudie ziet u hoe u een aangepast domein aan uw Front Door kunt toevoegen. Als u Azure Front Door gebruikt voor het leveren van toepassingen, is een aangepast domein nodig als u wilt dat uw eigen domeinnaam zichtbaar is in de aanvraag van uw eindgebruiker. Een zichtbare domeinnaam kan handig zijn voor uw klanten en nuttig zijn voor branding-doelen.
 
-Nadat u een Front Door maakt, wordt standaard de front-endhost,(een subdomein van `azurefd.net`) in de URL opgenomen voor het leveren van Front Door-inhoud van uw back-end (bijvoorbeeld https:\//contoso.azurefd.net/activeusers.htm). Voor uw gemak biedt Azure Front Door de mogelijkheid om een aangepast domein te koppelen met een standaardhost. Met deze optie levert u uw inhoud met een aangepast domein in uw URL in plaats van een domeinnaam die eigendom is van Front Door (bijvoorbeeld https:\//www.contoso.com/photo.png). 
+Nadat u een Front Door maakt, wordt standaard de front-endhost,(een subdomein van `azurefd.net`) in de URL opgenomen voor het leveren van Front Door-inhoud van uw back-end (bijvoorbeeld https:\//contoso-frontend.azurefd.net/activeusers.htm). Voor uw gemak biedt Azure Front Door de mogelijkheid om een aangepast domein te koppelen met een standaardhost. Met deze optie levert u uw inhoud met een aangepast domein in uw URL in plaats van een domeinnaam die eigendom is van Front Door (bijvoorbeeld https:\//www.contoso.com/photo.png). 
 
 In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]
@@ -46,7 +46,7 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="create-a-cname-dns-record"></a>Een CNAME DNS-record maken
 
-Voordat u een aangepast domein met uw Front Door kunt gebruiken, moet u eerst een record met een canonieke naam (CNAME) maken bij uw domeinprovider om te verwijzen naar de standaard front-endhost van uw Front Door (bijvoorbeeld contoso.azurefd.net). Een CNAME-record is een soort DNS-record dat een brondomeinnaam toewijst aan een doeldomeinnaam. De domeinnaam van de bron is uw aangepaste domeinnaam voor Azure Front Door en de domeinnaam van het doel is de standaardhostnaam van uw Front Door. Nadat Front Door het CNAME-record controleert dat u maakt, wordt verkeer dat is geadresseerd aan het aangepaste brondomein (zoals www\.contoso.com) gerouteerd naar de opgegeven bestemming met standaard-front-endhost van uw Front Door (zoals contoso.azurefd.net). 
+Voordat u een aangepast domein met uw Front Door kunt gebruiken, moet u eerst een record met een canonieke naam (CNAME) maken bij uw domeinprovider om te verwijzen naar de standaard front-endhost van uw Front Door (bijvoorbeeld contoso.azurefd.net). Een CNAME-record is een soort DNS-record dat een brondomeinnaam toewijst aan een doeldomeinnaam. De domeinnaam van de bron is uw aangepaste domeinnaam voor Azure Front Door en de domeinnaam van het doel is de standaardhostnaam van uw Front Door. Nadat Front Door het CNAME-record controleert dat u maakt, wordt verkeer dat is geadresseerd aan het aangepaste brondomein (zoals www\.contoso.com) gerouteerd naar de opgegeven bestemming met standaard-front-endhost van uw Front Door (zoals contoso-frontend.azurefd.net). 
 
 Een aangepast domein en het subdomein kunnen slechts aan één Front Door tegelijk worden gekoppeld. U kunt echter verschillende subdomeinen uit het aangepaste domein gebruiken voor verschillende Front Doors met behulp van meerdere CNAME-records. U kunt ook een aangepast domein met verschillende subdomeinen toewijzen aan dezelfde Front Door.
 
@@ -67,13 +67,13 @@ Om een CNAME-record te maken met het afdverify-subdomein:
 
     | Bron                    | Type  | Doel                     |
     |---------------------------|-------|---------------------------------|
-    | afdverify.www.contoso.com | CNAME | afdverify.contoso.azurefd.net |
+    | afdverify.www.contoso.com | CNAME | afdverify.contoso-frontend.azurefd.net |
 
     - Bron: Voer de naam van uw aangepaste domein, met inbegrip van het subdomein afdverify, in de volgende indeling in: afdverify. _&lt;aangepaste domeinnaam&gt;_ . Bijvoorbeeld afdverify.www.contoso.com.
 
     - Type: Voer *CNAME* in.
 
-    - Bestemming: Voer uw standaard front-endhost voor Front Door, inclusief de afdverify-subdomein, in de volgende indeling in: afdverify. _&lt;naam van eindpunt&gt;_ .azurefd.net. Bijvoorbeeld afdverify.contoso.azurefd.net.
+    - Bestemming: Voer uw standaard front-endhost voor Front Door, inclusief de afdverify-subdomein, in de volgende indeling in: afdverify. _&lt;naam van eindpunt&gt;_ .azurefd.net. Bijvoorbeeld afdverify.contoso-frontend.azurefd.net.
 
 4. Sla uw wijzigingen op.
 
@@ -93,7 +93,7 @@ Bijvoorbeeld: de procedure voor de registrar van een GoDaddy-domein is als volgt
 
     - Host: voer het subdomein in van uw aangepaste domein dat moet worden gebruikt, met inbegrip van de naam van het afdverify-subdomein. Bijvoorbeeld afdverify.www.
 
-    - Verwijst naar: voer de hostnaam van uw standaard front-endhost voor Front Door in, inclusief de afdverify-subdomeinnaam. Bijvoorbeeld afdverify.contoso.azurefd.net. 
+    - Verwijst naar: voer de hostnaam van uw standaard front-endhost voor Front Door in, inclusief de afdverify-subdomeinnaam. Bijvoorbeeld afdverify.contoso-frontend.azurefd.net. 
 
     - TTL: Houd *één uur* geselecteerd.
 
@@ -144,13 +144,13 @@ Maken van een CNAME-record voor uw aangepaste domein:
 
     | Bron          | Type  | Doel           |
     |-----------------|-------|-----------------------|
-    | <www.contoso.com> | CNAME | contoso.azurefd.net |
+    | <www.contoso.com> | CNAME | contoso-frontend.azurefd.net |
 
    - Bron: Voer de naam in van uw aangepaste domein (bijvoorbeeld: www\.contoso.com).
 
    - Type: Voer *CNAME* in.
 
-   - Bestemming: Voer de standaard front-endhost van uw Front Door in. Deze moet de volgende indeling hebben: _&lt;hostnaam&gt;_ . azureedge.net. Bijvoorbeeld contoso.azurefd.net.
+   - Bestemming: Voer de standaard front-endhost van uw Front Door in. Deze moet de volgende indeling hebben: _&lt;hostnaam&gt;_ . azureedge.net. Bijvoorbeeld contoso-frontend.azurefd.net.
 
 4. Sla uw wijzigingen op.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
-ms.openlocfilehash: 10ae1c76d48c1cedbb915fec66177ac3612feea0
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: d1b79d60bba89ef01b261c403fe3b25939669d0b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115217"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258095"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Quickstart: Aanmelden met Microsoft toevoegen aan een Java-webapp
 
@@ -193,15 +193,16 @@ Als u het webvoorbeeld wilt implementeren op Tomcat, moet u een aantal wijziging
 3.   De standaard HTTP-poort van Tomcat is 8080, maar er is een HTTPS-verbinding via poort 8443 nodig. U kunt dit als volgt configureren:
         - Ga naar tomcat/conf/server.xml
         - Zoek het label `<connector>` en vervang de bestaande connector door:
-        ```
+
+        ```xml
         <Connector
                    protocol="org.apache.coyote.http11.Http11NioProtocol"
                    port="8443" maxThreads="200"
                    scheme="https" secure="true" SSLEnabled="true"
                    keystoreFile="C:/Path/To/Keystore/File/keystore.p12" keystorePass="KeystorePassword"
                    clientAuth="false" sslProtocol="TLS"/>
-        ``` 
-       
+        ```
+
 4. Open een opdrachtprompt, ga naar de hoofdmap van dit voorbeeld (waar het bestand pom.xml zich bevindt) en voer `mvn package` uit om het project te bouwen
     - Hiermee wordt een `msal-web-sample-0.1.0.war`-bestand in uw map /targets gegenereerd.
     - Geef dit bestand de naam `msal4jsample.war`.
@@ -249,16 +250,11 @@ Voeg een verwijzing toe aan MSAL voor Java door de volgende code toe te voegen b
 import com.microsoft.aad.msal4j.*;
 ```
 
+[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over machtigingen en toestemming:
+Voor een uitgebreidere bespreking van het bouwen van web-apps waarmee gebruikers zich aanmelden op het Microsoft Identity-platform, gaat u verder naar onze reeks scenario's:
 
 > [!div class="nextstepaction"]
-> [Machtigingen en toestemming](./v2-permissions-and-consent.md)
-
-Zie de Oauth 2.0-autorisatiecodestroom voor meer informatie over de auth-stroom voor dit scenario:
-
-> [!div class="nextstepaction"]
-> [Oauth-stroom voor autorisatiecode](./v2-oauth2-auth-code-flow.md)
-
-[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+[Scenario: Web-app waarmee gebruikers worden aangemeld](scenario-web-app-sign-user-overview.md?tabs=java)

@@ -1,6 +1,6 @@
 ---
 title: Een data factory in Azure maken met behulp van .NET SDK
-description: Maak een Azure data factory om gegevens te kopiëren van de ene locatie in Azure Blob Storage naar de andere.
+description: Maak een data factory en pijplijn in Azure met .NET SDK om gegevens te kopiëren van de ene locatie in Azure Blob Storage naar de andere.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/24/2019
 ms.author: jingwang
-ms.openlocfilehash: d4652ca62a82d14c7e44466161ae9b463818a71f
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: e8da3dff39f94d6639471a2d1d96691c9cde614d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89433973"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91322849"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>Quickstart: Een data factory en pijplijn maken met behulp van .NET SDK
 
@@ -49,7 +49,7 @@ Volg in de secties in *Procedure: de portal gebruiken voor het maken van een Azu
 
 1. Maak in [Een Azure Active Directory-toepassing maken](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal) een toepassing in Azure Active Directory die staat voor de .NET-toepassing die u in deze zelfstudie maakt. Voor de aanmeldings-URL kunt u een dummy-URL opgeven, zoals wordt getoond in het artikel (`https://contoso.org/exampleapp`).
 2. Haal in [Waarden ophalen voor aanmelden](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) de **toepassings-id** en **tenant-id** op, en noteer deze waarden zodat u ze later in deze zelfstudie kunt gebruiken. 
-3. Haal in [Certificaten en geheimen](../active-directory/develop/howto-create-service-principal-portal.md#upload-a-certificate-or-create-a-secret-for-signing-in) de **verificatiesleutel** op, en noteer deze waarde zodat u deze later in deze zelfstudie kunt gebruiken.
+3. Haal in [Certificaten en geheimen](../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options) de **verificatiesleutel** op, en noteer deze waarde zodat u deze later in deze zelfstudie kunt gebruiken.
 4. Wijs in [De toepassing toewijzen aan een rol](../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application) de toepassing toe aan de rol **Inzender** op het niveau van het abonnement, zodat met de toepassing gegevensfactory's in het abonnement kunnen worden gemaakt.
 
 ## <a name="create-a-visual-studio-project"></a>Een Visual Studio-project maken

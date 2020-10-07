@@ -12,12 +12,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperfq1
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 5f34215d57bd5dae8c9a5e6e8f4630b7ed0c827e
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 9cd59d6bf5b9bf6e17cba0786bfac27ed12d7638
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89436700"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91258129"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Snelstart: Een toepassing registreren bij het Microsoft-identiteitsplatform
 
@@ -32,7 +32,7 @@ Elke toepassing waarvoor via het Microsoft Identity Platform IAM (Identity and A
 
 ## <a name="register-an-application"></a>Een toepassing registreren
 
-Het registreren van uw toepassing brengt een vertrouwensrelatie tot stand tussen uw app en het Microsoft Identity Platform. De vertrouwensrelatie heeft één richting: uw app vertrouwt het Microsoft Identity Platform, en niet andersom.
+Het registreren van uw toepassing brengt een vertrouwensrelatie tot stand tussen uw app en het Microsoft Identity Platform. De vertrouwensrelatie heeft één richting: uw app vertrouwt Microsoft Identity Platform, en niet andersom.
 
 Volg deze stappen om de app-registratie te maken:
 
@@ -59,13 +59,13 @@ Wanneer de registratie is voltooid, wordt in de Azure-portal het deelvenster **O
 
 De code van uw toepassing (meestal een verificatiebibliotheek die wordt gebruikt in uw toepassing) gebruikt ook de client-id als één aspect bij het valideren van de beveiligingstokens die worden ontvangen van het Identity Platform.
 
-:::image type="content" source="media/quickstart-register-app/portal-03-app-reg-02.png" alt-text="Schermopname van de Azure-portal in een webbrowser, met het deelvenster Overzicht van de app-registratie.":::
+:::image type="content" source="media/quickstart-register-app/portal-03-app-reg-02.png" alt-text="Schermopname van de Azure-portal in een webbrowser, met het deelvenster Een toepassing registreren.":::
 
 ## <a name="add-a-redirect-uri"></a>Een omleidings-URI toevoegen
 
 Een omleidings-URI is de locatie waar het Microsoft Identity Platform een client van de gebruiker naartoe omleidt en beveiligingstokens naartoe stuurt na de verificatie.
 
-In een productiewebtoepassing is de omleidings-URI bijvoorbeeld vaak een openbaar eindpunt waar de app wordt uitgevoerd, zoals `https://contoso.com/auth-response`. Tijdens de ontwikkeling is het gebruikelijk om ook het eindpunt toe te voegen waar u de app lokaal uitvoert, zoals `https://127.0.0.1/auth-response`.
+In een productiewebtoepassing is de omleidings-URI bijvoorbeeld vaak een openbaar eindpunt waar de app wordt uitgevoerd, zoals `https://contoso.com/auth-response`. Tijdens de ontwikkeling is het gebruikelijk om ook het eindpunt toe te voegen waar u de app lokaal uitvoert, zoals `https://127.0.0.1/auth-response` of `http://localhost/auth-response`.
 
 U kunt omleidings-URI's voor uw geregistreerde toepassingen toevoegen en wijzigen door de bijbehorende [platforminstellingen](#configure-platform-settings) te configureren.
 
@@ -80,7 +80,7 @@ Als u toepassingsinstellingen wilt configureren op basis van het platform of app
 1. Selecteer **Een platform toevoegen**onder **Platformconfiguraties**.
 1. Selecteer in **Platforms configureren** de tegel voor uw toepassingstype (platform) om de bijbehorende instellingen te configureren.
 
-    :::image type="content" source="media/quickstart-register-app/portal-04-app-reg-03-platform-config.png" alt-text="Schermopname van het deelvenster Platformconfiguratie in de Azure-portal" border="false":::
+    :::image type="content" source="media/quickstart-register-app/portal-04-app-reg-03-platform-config.png" alt-text="Schermopname van de Azure-portal in een webbrowser, met het deelvenster Een toepassing registreren." border="false":::
 
     | Platform | Configuratie-instellingen |
     | -------- | ---------------------- |
@@ -101,7 +101,7 @@ Referenties worden gebruikt voor vertrouwelijke clienttoepassingen die toegang h
 
 U kunt zowel certificaten als clientgeheimen (een tekenreeks) toevoegen als referenties voor de registratie van uw vertrouwelijke client-app.
 
-:::image type="content" source="media/quickstart-register-app/portal-05-app-reg-04-credentials.png" alt-text="Schermopname van de Azure-portal, met het deelvenster Certificaten en geheimen in een app-registratie":::
+:::image type="content" source="media/quickstart-register-app/portal-05-app-reg-04-credentials.png" alt-text="Schermopname van de Azure-portal in een webbrowser, met het deelvenster Een toepassing registreren.":::
 
 ### <a name="add-a-certificate"></a>Een certificaat toevoegen
 

@@ -1,7 +1,7 @@
 ---
-title: "Quick Start: Zoek query's Voorst Ellen met de Bing Automatische suggesties REST API en ruby"
+title: "Quickstart: Zoekquery's voorstellen met de REST API voor Bing Automatische suggesties en Ruby"
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over hoe u snel zoek termen in realtime kunt bekijken met de Automatische suggestie-API voor Bing.
+description: Meer informatie over hoe u snel zoektermen in realtime kunt voorstellen met de API voor Bing Automatische suggesties en Ruby.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,27 +10,27 @@ ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: e9b990f7e79fe0d70a213db5739153fe1e558f3c
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.openlocfilehash: dc7b929aa139e6d51af25d4689166d2596dda70b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930196"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91262889"
 ---
-# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-ruby"></a>Quick Start: Zoek query's Voorst Ellen met de Bing Automatische suggesties REST API en ruby
+# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-ruby"></a>Quickstart: Zoekquery's voorstellen met de REST API voor Bing Automatische suggesties en Ruby
 
-Volg deze Quick start voor meer informatie over het aanroepen van de Automatische suggestie-API voor Bing en het lezen van de JSON-reactie. Met deze eenvoudige ruby-toepassing wordt een gedeeltelijke Zoek query naar de API verzonden en worden suggesties voor Zoek opdrachten geretourneerd. Hoewel deze toepassing in Ruby is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
+Volg deze quickstart voor meer informatie over het aanroepen van de Automatische suggestie-API voor Bing en het lezen van de JSON-reactie. Met deze eenvoudige Ruby-toepassing wordt een gedeeltelijke zoekquery naar de API verzonden en worden suggesties voor zoekopdrachten geretourneerd. Hoewel deze toepassing in Ruby is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
 
 
 ## <a name="prerequisites"></a>Vereisten
 
-* [Ruby 2,4](https://www.ruby-lang.org/en/downloads/) of hoger.
+* [Ruby 2.4](https://www.ruby-lang.org/en/downloads/) of later.
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-autosuggest-signup-requirements.md)]
 
 ## <a name="create-a-new-application"></a>Een nieuwe toepassing maken
 
-1. Maak een nieuw ruby-bestand in uw favoriete IDE of editor. Voeg de volgende vereisten toe:
+1. Maak een nieuw Ruby-bestand in uw favoriete IDE of editor. Voeg de volgende vereisten toe:
 
     ```ruby
     require 'net/https'
@@ -38,7 +38,7 @@ Volg deze Quick start voor meer informatie over het aanroepen van de Automatisch
     require 'json'
     ```
 
-2. Maak variabelen voor uw API-host en-pad, een [markt code](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)en een gedeeltelijke Zoek query. Gebruik het globale eind punt in de volgende code of gebruik het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
+2. Maak variabelen voor uw API-host en -pad, [marktcode](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes) en gedeeltelijke zoekquery. Gebruik het globale eindpunt in de volgende code of het eindpunt voor een [aangepast subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) dat wordt weergegeven in Azure Portal voor uw resource.
 
     ```ruby
     subscriptionKey = 'enter your key here'
@@ -48,7 +48,7 @@ Volg deze Quick start voor meer informatie over het aanroepen van de Automatisch
     query = 'sail'
     ```
 
-3. Maak een para meter string door uw markt code toe te voegen aan de `mkt=` para meter en de query toe te voegen aan de `q=` para meter. Vervolgens bouwt u de aanvraag-URI door de API-host, het pad en de para meters te combi neren.
+3. Maak een parameterstring door uw marktcode aan de parameter `mkt=` en uw query aan de parameter `q=` toe te voegen. Construeer vervolgens de aanvraag-URI door de API-host, het pad en de parametertekenreeks te combineren.
 
     ```ruby
     params = '?mkt=' + mkt + '&q=' + query
@@ -57,14 +57,14 @@ Volg deze Quick start voor meer informatie over het aanroepen van de Automatisch
 
 ## <a name="create-and-send-an-api-request"></a>Een API-aanvraag maken en verzenden
 
-1. Maak een aanvraag met uw URI en voeg uw abonnements sleutel toe aan de `Ocp-Apim-Subscription-Key` koptekst.
+1. Maak een aanvraag met de URI en voeg uw abonnementssleutel toe aan de `Ocp-Apim-Subscription-Key`-header.
     
     ```ruby
     request = Net::HTTP::Get.new(uri)
     request['Ocp-Apim-Subscription-Key'] = subscriptionKey
     ```
 
-2. De aanvraag verzenden en het antwoord opslaan.
+2. Verzend de aanvraag en sla het antwoord op.
     
     ```ruby
     response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
@@ -72,7 +72,7 @@ Volg deze Quick start voor meer informatie over het aanroepen van de Automatisch
     end
     ```
 
-3. Het JSON-antwoord afdrukken.
+3. Geef het JSON-antwoord weer.
     
     ```ruby
     puts JSON::pretty_generate (JSON (response.body))

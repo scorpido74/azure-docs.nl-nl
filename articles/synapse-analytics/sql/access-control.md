@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 52cf3af4b4ab84c12b2e1b5d7f076c43e652157d
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: a2e6111f2df5a8d7334a85ec5b6a9e514368ad6c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90031310"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289477"
 ---
 # <a name="manage-access-to-workspaces-data-and-pipelines"></a>Toegang tot werkruimten, gegevens en pijplijnen beheren
 
@@ -50,7 +50,7 @@ Toen u uw werkruimte inrichtte moest u een [Azure Data Lake Storage Gen2](https:
 1. Open de [Azure-portal](https://portal.azure.com)
 2. Ga naar het Azure Data Lake Storage Gen2-account
 3. Ga naar de container (bestandssysteem) die u voor de Azure Synapse-werkruimte hebt gekozen
-4. Klik op **Toegangsbeheer (IAM)**
+4. Selecteer **Toegangsbeheer (IAM)**
 5. Wijs de volgende rollen toe:
    1. De rol van **Lezer** aan: `Synapse_WORKSPACENAME_Users`
    2. De rol van **Eigenaar van opslagblobgegevens** aan: `Synapse_WORKSPACENAME_Admins`
@@ -71,10 +71,10 @@ Toen u uw werkruimte inrichtte moest u een [Azure Data Lake Storage Gen2](https:
 1. Ga naar de [Azure-portal](https://portal.azure.com)
 2. Navigeer naar de werkruimte
 3. Ga naar **Instellingen** > **Active Directory-beheerder**
-4. Klik op **Beheerder instellen**
+4. Selecteer **Beheerder instellen**
 5. Selecteer `Synapse_WORKSPACENAME_Admins`
-6. klik op **Selecteren**
-7. klik op **Opslaan**
+6. Kies **Selecteren**
+7. Selecteer **Opslaan**
 
 > [!NOTE]
 > WORKSPACENAME: vervang dit deel door de naam van uw werkruimte.

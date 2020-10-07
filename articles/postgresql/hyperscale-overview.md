@@ -8,12 +8,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: overview
 ms.date: 09/01/2020
-ms.openlocfilehash: e62d1bf0e9db5e80193cb0615d0a9d31e3041d63
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 90d3cb106fa93649f7d6dda5ab5755061d118f66
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90943828"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91268380"
 ---
 # <a name="what-is-azure-database-for-postgresql---hyperscale-citus"></a>Wat is Azure Database for PostgreSQL - Hyperscale (Citus)?
 
@@ -32,5 +32,5 @@ Toepassingen die zijn gebouwd voor PostgreSQL kunnen gedistribueerde query's uit
 ## <a name="next-steps"></a>Volgende stappen
 
 - Ga aan de slag met het [maken van uw eerste](./quickstart-create-hyperscale-portal.md) servergroep met Azure Database for PostgreSQL - Hyperscale (Citus).
-- Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/postgresql/) voor kostenvergelijkingen en calculators. Hyperscale (Citus) biedt ook kortingen voor vooraf betaalde gereserveerde instanties. Zie [Hyperscale RI-prijzen](concepts-hyperscale-reserved-pricing.md) voor meer informatie.
+- Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/postgresql/) voor kostenvergelijkingen en calculators. Hyperscale (Citus) biedt ook kortingen voor vooraf betaalde gereserveerde instanties. Zie [Hyperscale (Citus) RI-prijzen](concepts-hyperscale-reserved-pricing.md) voor meer informatie.
 - Bepaal de beste [begingrootte](howto-hyperscale-scaling.md#picking-initial-size) voor uw servergroep

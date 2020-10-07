@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Integratie van eenmalige aanmelding van Azure AD met FortiGate SSL VPN'
-description: In deze zelfstudie leert u hoe u eenmalige aanmelding configureert tussen Azure Active Directory en FortiGate SSL VPN.
+title: 'Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met FortiGate SSL VPN | Microsoft Docs'
+description: U leert hoe u FortiGate SSL VPN kunt integreren met Azure Active Directory (Azure AD).
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/11/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abe92218d6bb20274e916089c15df8c1f44c4fd6
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 187903bfbf75ada45b9a539acd1157dfe730747a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986432"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331111"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fortigate-ssl-vpn"></a>Zelfstudie: Eenmalige aanmelding van Azure Active Directory integreren met FortiGate SSL VPN
 
@@ -94,16 +94,29 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in de Azu
     > [!NOTE]
     > Deze waarden zijn slechts patronen. U moet de werkelijke **Aanmeldings-id**, **Id**, **Antwoord-URL** en **Afmeldings-URL** gebruiken. Neem contact op met het [ondersteuningsteam van FortiGate SSL VPN](mailto:tac_amer@fortinet.com) om de werkelijke waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-1. In FortiGate SSL VPN worden de SAML-asserties in een specifieke indeling verwacht. U dient aangepaste kenmerktoewijzingen toe te voegen aan de configuratie van uw SAML-tokenkenmerken. Deze schermopname toont de standaardkenmerken:
+1. In de FortiGate SSL VPN-toepassing worden SAML-asserties in een specifieke indeling verwacht. Hiervoor moet u aangepaste kenmerktoewijzingen aan de configuratie toevoegen. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
 
     ![Schermopname met de standaardkenmerken.](common/default-attributes.png)
 
-1. Bovendien worden in FortiGate SSL VPN nog enkele kenmerken verwacht die als SAML-antwoord moeten worden doorgestuurd. Deze kenmerken worden weergegeven in de volgende tabel. Ze worden ook vooraf ingevuld, maar u kunt ze indien nodig herzien.
-    
-    | Naam |  Bronkenmerk|
-    | ------------ | --------- |
-    | gebruikersnaam | user.userprincipalname |
-    | group | user.groups |
+1. De twee extra claims die vereist zijn voor FortiGate SSL VPN, worden weergegeven in de volgende tabel. De namen van deze claims moeten overeenkomen met de namen die worden gebruikt in de sectie **Opdrachtregelconfiguratie voor FortiGate uitvoeren** van deze zelfstudie. 
+
+   | Naam |  Bronkenmerk|
+   | ------------ | --------- |
+   | gebruikersnaam | user.userprincipalname |
+   | group | user.groups |
+   
+   U kunt deze extra claims als volgt maken:
+   
+   1. Selecteer **Bewerken** bij **Gebruikerskenmerken en -claims**.
+   1. Selecteer **Nieuwe claim toevoegen**.
+   1. Voer bij **Naam** de **gebruikersnaam** in.
+   1. Bij **Bronkenmerk** selecteert u **user.userprincipalname**.
+   1. Selecteer **Opslaan**.
+   1. Selecteer **Een groepsclaim toevoegen**.
+   1. Selecteer **Alle groepen**.
+   1. Selecteer het selectievakje **De naam van de groepsclaim aanpassen**.
+   1. Voer **groep** in bij **Naam**.
+   1. Selecteer **Opslaan**.   
 
 1. Ga op de pagina **Eenmalige aanmelding met SAML instellen** naar de sectie **SAML-handtekeningcertificaat** en selecteer de koppeling **Downloaden** naast **Certificaat (Base64)** om het certificaat te downloaden en op te slaan op de computer:
 

@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 2d81749e7023bdbf5353e5c8da633674ea8e8ce9
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4077bbe0a98f6b7788af9b6c44f73abbc936c6aa
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90943677"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332235"
 ---
 # <a name="sms-client-library-overview"></a>Overzicht van de sms-clientbibliotheek
 
@@ -26,7 +26,7 @@ Sms-clientbibliotheken van Azure Communication Services kunnen worden gebruikt o
 
 De volgende lijst bevat de set functies die momenteel beschikbaar zijn in onze clientbibliotheken.
 
-| Groep functies | Mogelijkheid                                                                            | JS  | Java | .NET | Python |
+| Groep van functies | Mogelijkheid                                                                            | JS  | Java | .NET | Python |
 | ----------------- | ------------------------------------------------------------------------------------- | --- | ---- | ---- | ------ |
 | Belangrijkste mogelijkheden | Sms-berichten verzenden en ontvangen </br> *Ondersteuning voor Unicode-emoji's*                        | ✔️   | ✔️    | ✔️    | ✔️      |
 |                   | Bezorgingsrapporten ontvangen voor verzonden berichten                                            | ✔️   | ✔️    | ✔️    | ✔️      |
@@ -37,7 +37,7 @@ De volgende lijst bevat de set functies die momenteel beschikbaar zijn in onze c
 | Telefoonnummer      | Gratis nummers                                                                     | ✔️   | ✔️    | ✔️    | ✔️      |
 | Regelgeving        | Afhandeling van uitschrijving                                                                      | ✔️   | ✔️    | ✔️    | ✔️      |
 | Bewaking        | Gebruik bewaken voor verzonden en ontvangen berichten                                          | ✔️   | ✔️    | ✔️    | ✔️      |
-| Bellen via PSTN      | Mogelijkheden voor bellen via PSTN toevoegen aan uw sms-telefoonnummer                    | ✔️   | ✔️    | ✔️    | ✔️      |
+| Bellen via PSTN      | PSTN-aanroepen toevoegen aan uw gratis nummer met SMS-functionaliteit (persoonlijke preview)                    | ✔️   | ✔️    | ✔️    | ✔️      |
 
 ## <a name="next-steps"></a>Volgende stappen
 

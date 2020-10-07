@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahandle
 ms.custom: contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ffe7f58f27d028dd114f548521feeeb74bb12cf1
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 4a6911f736e466277ba023f97189e1bb6619b8da
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89437697"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265269"
 ---
 # <a name="what-is-identity-protection"></a>Wat is Identity Protection?
 
@@ -53,7 +53,7 @@ Identity Protection identificeert risico's in de volgende classificaties:
 | Anoniem IP-adres | Aanmelding vanaf een anoniem IP-adres (bijvoorbeeld een Tor-browser, anonymizer-VPN's). |
 | Onbekende aanmeldingseigenschappen | Aanmelding met eigenschappen die niet recent zijn waargenomen voor de gebruiker. |
 | Aan malware gekoppeld IP-adres | Aanmelding via een aan malware gekoppeld IP-adres. |
-| Gelekte aanmeldingsgegevens | Deze risicodetectie duidt erop dat de geldige aanmeldingsgegevens van de gebruiker zijn gelekt. |
+| Gelekte aanmeldingsgegevens | Geeft aan dat de geldige referenties van de gebruiker zijn gelekt. |
 | Wachtwoordspray | Geeft aan dat meerdere gebruikersnamen worden aangevallen met behulp van veelvoorkomende wachtwoorden op een manier die lijkt op een brute-forceaanval. |
 | Azure AD-bedreigingsinformatie | De interne en externe bedreigingsinformatiebronnen van Microsoft hebben een bekend aanvalspatroon geïdentificeerd. |
 
@@ -96,20 +96,20 @@ Voor toegang tot Identity Protection moeten gebruikers een Beveiligingslezer, Be
 
 De rol van beveiligingsoperator heeft momenteel geen toegang tot het rapport Riskante aanmeldingen.
 
-Beheerders met voorwaardelijke toegang kunnen ook beleidsregels maken met aanmeldrisico's als een voorwaarde. Meer informatie vindt u in het artikel [Conditional Access: Conditions](../conditional-access/concept-conditional-access-conditions.md#sign-in-risk) (Voorwaardelijke toegang: voorwaarden).
+Beheerders met voorwaardelijke toegang kunnen ook beleidsregels maken met aanmeldrisico’s als een voorwaarde. Meer informatie vindt u in het artikel [Voorwaardelijke toegang: Conditions](../conditional-access/concept-conditional-access-conditions.md#sign-in-risk) (Voorwaardelijke toegang: voorwaarden).
 
 ## <a name="license-requirements"></a>Licentievereisten
 
 [!INCLUDE [Active Directory P2 license](../../../includes/active-directory-p2-license.md)]
 
-| Mogelijkheid | Details  | Azure AD Free- / Office 365-apps | Azure AD Premium P1|Azure AD Premium P2 |
+| Mogelijkheid | Details  | Azure AD Free/Microsoft 365-apps | Azure AD Premium P1|Azure AD Premium P2 |
 | --- | --- | --- | --- | --- |
 | Risicobeleid | Beleid voor gebruikersrisico's (via Identity Protection)  | Nee | Nee |Ja | 
 | Risicobeleid | Beleid voor aanmeldingsrisico's (via Identity Protection of voorwaardelijke toegang)  | Nee |  Nee |Ja |
 | Beveiligingsrapporten | Overzicht |  Nee | Nee |Ja |
 | Beveiligingsrapporten | Riskante gebruikers  | Beperkte informatie | Beperkte informatie | Volledige toegang|
 | Beveiligingsrapporten | Riskante aanmeldingen  | Beperkte informatie | Beperkte informatie | Volledige toegang|
-| Beveiligingsrapporten | Risicodetectie   | Nee | Beperkte informatie| Volledige toegang|
+| Beveiligingsrapporten | Risicodetectie   | No | Beperkte informatie| Volledige toegang|
 | Meldingen | Waarschuwingen bij gebruikers die risico lopen  | Nee | Nee |Ja |
 | Meldingen | Wekelijkse samenvatting| Nee | Nee | Ja | 
 | | MFA-registratiebeleid | Nee | Nee | Ja |

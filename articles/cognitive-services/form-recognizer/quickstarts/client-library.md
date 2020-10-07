@@ -1,26 +1,28 @@
 ---
-title: 'Quickstart: Clientbibliotheek van Form Recognizer | Microsoft Docs'
-description: Aan de slag met de [Product Name]-clientbibliotheek.
+title: 'Quickstart: Clientbibliotheek van Form Recognizer'
+titleSuffix: Azure Cognitive Services
+description: Gebruik de clientbibliotheek van Form Recognizer voor het maken van een app voor het verwerken van formulieren waarmee sleutel-waardeparen en tabelgegevens uit uw aangepaste documenten worden geëxtraheerd.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 08/17/2020
+ms.date: 09/21/2020
 ms.author: pafarley
-ms.custom: devx-track-javascript, devx-track-csharp
 zone_pivot_groups: programming-languages-set-ten
-ms.openlocfilehash: 0aa72b595bf60184aa840922a3d8a6496bb983a7
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.custom: devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
+keywords: formulierverwerking, geautomatiseerde gegevensverwerking
+ms.openlocfilehash: eb3fc3ebe5c3d9f659758a14ba620018671d95f5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88934346"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91318891"
 ---
 # <a name="quickstart-use-the-form-recognizer-client-library"></a>Quickstart: De clientbibliotheek van Form Recognizer gebruiken
 
-Aan de slag met de Form Recognizer-clientbibliotheek. Form Recognizer is een Cognitive Service-dienst die gebruikmaakt van machine learning-technologie om sleutel-waardeparen en tabelgegevens uit formulierdocumenten te identificeren en te extraheren. Vervolgens voert het gestructureerde gegevens uit die ook de relaties uit het oorspronkelijke bestand omvatten. Volg deze stappen om het SDK-pakket te installeren en de voorbeeldcode voor basistaken te proberen.
+Ga aan de slag met de clientbibliotheek voor formulierherkenning in de taal van uw keuze. Azure Form Recognizer is een cognitieve service waarmee u software voor geautomatiseerde gegevensverwerking kunt bouwen met behulp van machine learning-technologie. U kunt de service gebruiken om tekst, sleutel-waardeparen en tabelgegevens identificeren en uit uw formulierdocumenten extraheren&mdash;. Dit levert gestructureerde gegevens op die de relaties in het oorspronkelijke bestand bevatten. Volg deze stappen om het SDK-pakket te installeren en de voorbeeldcode voor basistaken te proberen.
 
 De clientbibliotheek van Form Recognizer gebruiken voor het volgende:
 

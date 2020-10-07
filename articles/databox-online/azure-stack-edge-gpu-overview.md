@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 09/07/2020
+ms.date: 09/23/2020
 ms.author: alkohli
-ms.openlocfilehash: c17cd17dfc3462d5a55753e6a4a364c14f9e2b62
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 34dc0717b13cb38c4477cc93f23d57d0a8023dae
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899084"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91320741"
 ---
 # <a name="what-is-azure-stack-edge-pro-with-gpu"></a>Wat is Azure Stack Edge Pro met GPU?
 
@@ -44,11 +44,10 @@ Azure Stack Edge Pro biedt de volgende mogelijkheden:
 |---------|---------|
 |Versnelde AI-deductie| Mogelijk gemaakt door de ingebouwde GPU (een of twee, afhankelijk van het model).|
 |Edge-computing      |Ondersteunt VM- en containerwerkbelastingen voor analyse, verwerking en filteren van gegevens. |
-|Hoge prestaties | High Performance compute en gegevensoverdracht.|
 |Toegang tot gegevens     | Rechtstreekse gegevenstoegang vanuit Azure Storage Blobs en Azure Files met behulp van cloud-API’s voor aanvullende gegevensverwerking in de cloud. Lokale cache op het apparaat wordt gebruikt voor snelle toegang tot laatst gebruikte bestanden.|
 |Beheerd via de cloud     |Het apparaat en de service worden beheerd via de Azure-portal.  |
 |Offline upload     | Modus zonder verbinding ondersteunt scenario’s voor offline uploaden.|
-|Ondersteunde opslagprotocollen     | Ondersteuning voor de standaardprotocollen SMB, NFS en REST voor gegevensopname. <br> Ga naar [Systeemvereisten voor Azure Stack Edge Pro](azure-stack-edge-system-requirements.md) voor meer informatie over ondersteunde versies.|
+|Ondersteunde protocollen voor bestandsoverdracht      | Ondersteuning voor de standaardprotocollen SMB, NFS en REST voor gegevensopname. <br> Ga naar [Systeemvereisten voor Azure Stack Edge Pro](azure-stack-edge-system-requirements.md) voor meer informatie over ondersteunde versies.|
 |Gegevensvernieuwing     | Mogelijkheid om lokale bestanden te vernieuwen met de meest recente uit de cloud.|
 |Versleuteling    | BitLocker-ondersteuning om gegevens lokaal te versleutelen en de gegevensoverdracht naar de cloud via *HTTPS* te beveiligen.|
 |Bandbreedtebeperking| Beperking om het bandbreedtegebruik tijdens piekuren te verminderen.|
@@ -73,6 +72,8 @@ De Azure Stack Edge Pro-oplossing bestaat uit een Azure Stack Edge-resource, een
 Het fysieke Azure Stack Edge Pro-apparaat, de Azure-resource en het doelopslagaccount waarnaar u gegevens overdraagt hoeven zich niet allemaal in dezelfde regio te bevinden.
 
 - **Beschikbaarheid van resource**: voor deze preview-versie is de resource beschikbaar in de regio's US - oost, EU - west en Azië - zuidoost.
+
+- **Beschikbaarheid van het apparaat** - Om een lijst in te zien van alle landen waar het Azure Stack Edge Pro-apparaat beschikbaar is, gaat u naar de tab **Azure Stack Edge Pro** voor [Azure Stack Edge Pro prijzen](https://azure.microsoft.com/pricing/details/azure-stack/edge/#azureStackEdgePro) en vervolgens naar de sectie **Beschikbaarheid**.
     
 - **Doelopslagaccounts**: De opslagaccounts waarin de gegevens worden opgeslagen, zijn beschikbaar in alle Azure-regio’s. De regio's waar de opslagaccounts Azure Stack Edge Pro-gegevens opslaan, moeten zich voor optimale prestaties dicht bij het apparaat bevinden. Een opslagaccount dat zich ver van het apparaat vandaan bevindt, resulteert in lange latenties en tragere prestaties.
 

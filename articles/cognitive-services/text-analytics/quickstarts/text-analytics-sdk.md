@@ -1,27 +1,28 @@
 ---
-title: 'Quickstart: Text Analytics-clientbibliotheek v3 | Microsoft Docs'
+title: 'Quickstart: Textmining met behulp van de Text Analytics-clientbibliotheek'
 titleSuffix: Azure Cognitive Services
-description: Gebruik deze quickstart om uw toepassingen te verbinden met de Text Analytics-API van Azure Cognitive Services.
+description: Gebruik deze quickstart om sentimentanalyse en meer uit te voeren, met de Text Analytics-API van Azure Cognitive Services.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 07/27/2020
+ms.date: 09/09/2020
 ms.author: aahi
-ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
+keywords: textmining, sentimentanalyse, tekstanalyse
+ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: 2d81175c73928d25c06acb396dac587c7cc73637
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: ed87c536c53ab1c07af05a7b8223901591c16e66
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88931179"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91332302"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library"></a>Quickstart: De Text Analytics-clientbibliotheek gebruiken
 
-Aan de slag met de Text Analytics-clientbibliotheek. Volg deze stappen om het pakket te installeren en de voorbeeldcode voor basistaken uit te proberen.
+Gebruik dit artikel om aan de slag te gaan met de Text Analytics-clientbibliotheek. Volg deze stappen om het pakket te installeren en de voorbeeldcode voor textmining uit te proberen.
 
 Gebruik de Text Analytics-clientbibliotheek om het volgende uit te voeren:
 

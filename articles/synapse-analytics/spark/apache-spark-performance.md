@@ -1,6 +1,6 @@
 ---
 title: Spark-taken voor prestaties optimaliseren
-description: Dit artikel bevat een inleiding tot Apache Spark in Azure Synapse Analytics en de verschillende concepten.
+description: Dit artikel bevat een inleiding tot Apache Spark in Azure Synapse Analytics.
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 89040057798ec4c909cac584ed96c187e79b5581
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f8eb87909ffdf9ce15108d78bed425bf6c142262
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089257"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91249464"
 ---
 # <a name="optimize-apache-spark-jobs-preview-in-azure-synapse-analytics"></a>Apache Spark-taken optimaliseren in Azure Synapse Analytics (preview)
 
-Leer hoe u [Apache Spark](https://spark.apache.org/)-clusterconfiguratie kunt optimaliseren voor uw specifieke workload.  De meest voorkomende uitdaging is geheugenbelasting vanwege onjuiste configuraties (met name uitvoeringen met verkeerde indeling), langlopende bewerkingen en taken die resulteren in Cartesische bewerkingen. U kunt taken versnellen met de juiste caching en door [gegevensverschil](#optimize-joins-and-shuffles) toe te staan. Bewaak en controleer uitvoeringen van Spark-taken die lang lopen en veel resources verbruiken, voor de beste prestaties.
+Leer hoe u een [Apache Spark](https://spark.apache.org/)-clusterconfiguratie kunt optimaliseren voor uw specifieke workload.  De meest voorkomende uitdaging is geheugenbelasting vanwege onjuiste configuraties (met name uitvoeringen met verkeerde indeling), langlopende bewerkingen en taken die resulteren in Cartesische bewerkingen. U kunt taken versnellen met de juiste caching en door [gegevensverschil](#optimize-joins-and-shuffles) toe te staan. Bewaak en controleer uitvoeringen van Spark-taken die lang lopen en veel resources verbruiken, voor de beste prestaties.
 
 In de volgende secties worden veelvoorkomende optimalisaties en aanbevelingen voor Spark-taken beschreven.
 

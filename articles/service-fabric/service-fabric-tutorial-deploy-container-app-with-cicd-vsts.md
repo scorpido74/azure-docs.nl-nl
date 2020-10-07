@@ -4,12 +4,12 @@ description: In deze zelfstudie leert u continue integratie en implementatie in 
 ms.topic: tutorial
 ms.date: 08/29/2018
 ms.custom: mvc
-ms.openlocfilehash: 498513d1e31108d633de8165b2684dffbebdf37d
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: bb0eb9226a99f139ff10a8da12a1e22017536c67
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90563944"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326300"
 ---
 # <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>Zelfstudie: Een containertoepassing met CI/CD implementeren in een Service Fabric-cluster
 
@@ -46,11 +46,11 @@ Maak een nieuwe Git-opslagplaats voor uw project door op de statusbalk in de lin
 
 Ga naar de **Push**-weergave in **Team Explorer** en selecteer onder **Push to Azure DevOps** de knop **Publish Git Repo**.
 
-![Git-opslagplaats pushen][push-git-repo]
+![Schermafbeelding van het venster Team Explorer - Synchronization in Visual Studio. De knop Publish Git Repo wordt is uitgelicht onder Push to Azure DevOps.][push-git-repo]
 
 Controleer uw e-mail en selecteer uw organisatie in de vervolgkeuzelijst **Account**. U moet mogelijk een organisatie instellen als u er nog geen hebt. Voer de naam van de opslagplaats in en selecteer **Publish repository**.
 
-![Git-opslagplaats pushen][publish-code]
+![Schermopname van het venster Push to Azure DevOps. De instellingen voor het e-mailadres, het account, de naam van de opslagplaats en de knop Publish Repository zijn uitgelicht.][publish-code]
 
 Als u de opslagplaats publiceert, wordt er een nieuw teamproject voor uw account gemaakt met dezelfde naam als de lokale opslagplaats. Als u de repro in een bestaand teamproject wilt maken, klikt u naast de naam van de **opslagplaats** op **Advanced** en selecteert u een teamproject. U kunt uw code op het web weergeven door **See it on the web** te selecteren.
 
@@ -158,7 +158,7 @@ Als u de voortgang van de build wilt controleren, schakelt u over naar het tabbl
 
 Controleer of de implementatie is gelukt en de toepassing in het cluster wordt uitgevoerd.  Open een webbrowser en ga naar `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/`.  Noteer de versie van de toepassing (in dit voorbeeld 1.0.0.20170815.3).
 
-![Service Fabric Explorer][sfx1]
+![Schermopname van de Voting-app in Service Fabric Explorer. Op het tabblad Essentials is de app-versie '1.0.0.20170815.3' uitgelicht.][sfx1]
 
 ## <a name="update-the-application"></a>De toepassing bijwerken
 
@@ -166,11 +166,11 @@ Breng in de toepassing wijzigingen aan de code aan.  Sla de wijzigingen op en vo
 
 Zodra de upgrade van de toepassing wordt uitgevoerd, kunt u de voortgang ervan volgen in Service Fabric Explorer:
 
-![Service Fabric Explorer][sfx2]
+![Schermopname van de Voting-app in Service Fabric Explorer. Het bericht 'Upgrade in Progress' wordt uitgelicht en de app-status is 'Upgrading'.][sfx2]
 
 Het kan enkele minuten duren voordat de toepassing is bijgewerkt. Als het bijwerken is voltooid, wordt de volgende versie door de toepassing uitgevoerd.  In dit voorbeeld 1.0.0.20170815.4.
 
-![Service Fabric Explorer][sfx3]
+![Schermopname van de Voting-app in Service Fabric Explorer. Op het tabblad Essentials is de bijgewerkte app-versie '1.0.0.20170815.4' uitgelicht.][sfx3]
 
 ## <a name="next-steps"></a>Volgende stappen
 

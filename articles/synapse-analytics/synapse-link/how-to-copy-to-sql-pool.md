@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 08/10/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 88962d63519cfeb78be694c4f702b05ed4e7d3df
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 409f1ecee5ccf42a0168d500b40337366e07bfc0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88658327"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287847"
 ---
 # <a name="copy-data-from-azure-cosmos-db-into-a-sql-pool-using-apache-spark"></a>Gegevens van Azure Cosmos DB naar een SQL-pool kopiëren met behulp van Apache Spark
 
@@ -29,12 +29,12 @@ Met Azure Synapse Link voor Azure Cosmos DB kunnen gebruikers in bijna realtime 
 * [De juiste instelling om vanuit Apache Spark gegevens in een SQL-pool te importeren](../spark/synapse-spark-sql-pool-import-export.md)
 
 ## <a name="steps"></a>Stappen
-In deze zelfstudie gaat u verbinding maken met de analytische opslag, zodat de transactionele opslag niet wordt beïnvloed (er worden geen aanvraageenheden gebruikt). We voeren de volgende stappen uit:
+In deze zelfstudie gaat u verbinding maken met de analytische opslag, zodat de transactionele opslag niet wordt beïnvloed (er worden geen aanvraageenheden gebruikt). De volgende stappen worden uitgevoerd:
 1. De HTAP-container van Cosmos DB uitlezen naar een Apache Spark-dataframe
 2. De resultaten aggregeren in een nieuwe dataframe
 3. De gegevens opnemen in een SQL-pool
 
-[![Apache Spark naar SQL: stappen](../media/synapse-link-spark-to-sql/synapse-spark-to-sql.png)](../media/synapse-link-spark-to-sql/synapse-spark-to-sql.png#lightbox)
+[![Apache Spark naar SQL: stappen 1](../media/synapse-link-spark-to-sql/synapse-spark-to-sql.png)](../media/synapse-link-spark-to-sql/synapse-spark-to-sql.png#lightbox)
 
 ## <a name="data"></a>Gegevens
 In dit voorbeeld wordt een HTAP-container met de naam **RetailSales** gebruikt. Deze maakt deel uit van een gekoppelde service met de naam **ConnectedData** en heeft het volgende schema:
@@ -50,7 +50,7 @@ In dit voorbeeld wordt een HTAP-container met de naam **RetailSales** gebruikt. 
 * weekStarting: long (nullable = true)
 * _etag: string (nullable = true)
 
-U gaat de verkoop (*aantal*, *omzet* (prijs x hoeveelheid)) aggregeren met *productCode* en *weekStarting* voor rapportagedoeleinden. Ten slotte exporteert u deze gegevens naar een SQL-pooltabel met de naam **dbo.productsales**.
+U gaat de verkoop (*quantity*, *revenue* (price x quantity)) aggregeren met *productCode* en *weekStarting* voor rapportagedoeleinden. Ten slotte exporteert u deze gegevens naar een SQL-pooltabel met de naam **dbo.productsales**.
 
 ## <a name="configure-a-spark-notebook"></a>Een Apache Spark-notebook configureren
 Maak een Apache Spark-notebook met Scala as Spark (Scala) als hoofdtaal. U gebruikt de standaardinstelling van de notebook voor deze sessie.
@@ -97,7 +97,7 @@ SELECT  [productCode]
  FROM [dbo].[productsales]
 ```
 
-Met de query worden de volgende resultaten in een grafiek weergegeven: [![Apache Spark naar SQL: stappen](../media/synapse-link-spark-to-sql/sql-script-spark-sql.png)](../media/synapse-link-spark-to-sql/sql-script-spark-sql.png#lightbox)
+Met de query worden de volgende resultaten in een grafiek weergegeven: [![Apache Spark naar SQL: stappen 2](../media/synapse-link-spark-to-sql/sql-script-spark-sql.png)](../media/synapse-link-spark-to-sql/sql-script-spark-sql.png#lightbox)
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Query's uitvoeren op de analytische opslag van Azure Cosmos DB met Apache Spark](./how-to-query-analytical-store-spark.md)

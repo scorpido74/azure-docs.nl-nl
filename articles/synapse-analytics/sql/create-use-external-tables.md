@@ -1,6 +1,6 @@
 ---
 title: Externe tabellen maken en gebruiken in SQL on-demand (preview)
-description: In deze sectie leert u hoe u externe tabellen kunt maken en gebruiken in SQL on-demand (preview). Externe tabellen zijn handig als u de toegang tot externe gegevens in SQL on-demand wilt beheren en als u hulpprogramma's, zoals Power BI, wilt gebruiken in combinatie met SQL on-demand.
+description: In deze sectie leert u hoe u externe tabellen kunt maken en gebruiken in SQL on-demand (preview).
 services: synapse-analytics
 author: vvasic-msft
 ms.service: synapse-analytics
@@ -8,13 +8,13 @@ ms.topic: overview
 ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: vvasic
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: d830ee28eb1f5befc3ad778a6b82c291d1e49d02
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.reviewer: jrasnick
+ms.openlocfilehash: 182deba959144f6a3992bb41243f29023bad5e5c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85206509"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289324"
 ---
 # <a name="create-and-use-external-tables-in-sql-on-demand-preview-using-azure-synapse-analytics"></a>Externe tabellen maken en gebruiken in SQL on-demand (preview) met behulp van Azure Synapse Analytics
 
@@ -132,4 +132,4 @@ ORDER BY
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg [Queryresultaten opslaan in de opslag](../sql/create-external-table-as-select.md) voor informatie over het opslaan van resultaten van een query in de opslag.
+Raadpleeg het artikel [Queryresultaten opslaan in de opslag](../sql/create-external-table-as-select.md) voor informatie over het opslaan van resultaten van een query in de opslag.

@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: aan de slag met het analyseren van gegevens met SQL-pool'
+title: 'Zelfstudie: aan de slag met het analyseren van gegevens met toegewezen SQL-pools'
 description: In deze zelfstudie gebruikt u de voorbeeldgegevens van NYC Taxi om de analysemogelijkheden van een SQL-pool te verkennen.
 services: synapse-analytics
 author: saveenr
@@ -9,16 +9,16 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: b1060bcc8603cb7f7395a50056424b3d6c0ebe5a
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 3df0959003923a9a4ff2347330fd5a4f22e52245
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90015497"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300119"
 ---
-# <a name="analyze-data-with-sql-pools"></a>Gegevens analyseren met SQL-pools
+# <a name="analyze-data-with-sql-dedicated-pools"></a>Gegevens analyseren met toegewezen SQL-pools
 
-Azure Synapse Analytics biedt u de mogelijkheid om gegevens te analyseren met behulp van een SQL-pool. In deze zelfstudie gebruikt u de voorbeeldgegevens van NYC Taxi om de analysemogelijkheden van een SQL-pool te verkennen.
+Azure Synapse Analytics biedt u de mogelijkheid om gegevens te analyseren met behulp van een toegewezen SQL-pool. In deze zelfstudie gebruikt u de voorbeeldgegevens van NYC Taxi om de mogelijkheden van een toegewezen SQL-pool te verkennen.
 
 ## <a name="load-the-nyc-taxi-data-into-sqldb1"></a>Laad de NYCe Taxi-gegevens in SQLDB1
 
@@ -71,7 +71,7 @@ Azure Synapse Analytics biedt u de mogelijkheid om gegevens te analyseren met be
     ```
 1. Het uitvoeren van dit script duurt ongeveer 1 minuut. Er worden 2 miljoen rijen aan NYC Taxi-gegevens geladen in een tabel met de naam **dbo.Trip**
 
-## <a name="explore-the-nyc-taxi-data-in-the-sql-pool"></a>De NYC-taxigegevens in de SQL-pool verkennen
+## <a name="explore-the-nyc-taxi-data-in-the-dedicated-sql-pool"></a>De NYC-taxigegevens in de toegewezen SQL-pool verkennen
 
 1. Ga in Synapse Studio naar de hub **Gegevens**.
 1. Ga naar **SQLDB1** > **Tabellen**. Er wordt een aantal tabellen geladen.

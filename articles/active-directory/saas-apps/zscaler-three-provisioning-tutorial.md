@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: b7cb55b5d14208128c894a007d13f4e73fc54b3b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d217f21b0a2dbdad56f2147c8800bbb50b0fa45e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545802"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91265505"
 ---
 # <a name="tutorial-configure-zscaler-three-for-automatic-user-provisioning"></a>Zelfstudie: Zscaler Three configureren voor het automatisch inrichten van gebruikers
 
@@ -119,7 +119,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 11. Controleer in de sectie **Kenmerktoewijzingen** de gebruikerskenmerken die vanuit Azure AD met Zscaler Three worden gesynchroniseerd. De kenmerken die als **overeenkomende** eigenschappen zijn geselecteerd, worden gebruikt om de gebruikersaccounts in Zscaler Three te vinden voor updatebewerkingen. Selecteer **Opslaan** om eventuele wijzigingen toe te passen.
 
-    ![Kenmerktoewijzingen](./media/zscaler-three-provisioning-tutorial/user-attribute-mappings.png)
+    ![Schermopname van de sectie Kenmerktoewijzingen met zeven toewijzingen weergegeven.](./media/zscaler-three-provisioning-tutorial/user-attribute-mappings.png)
 
 12. Selecteer onder het kopje **Toewijzingen** de optie **Azure Active Directory-groepen synchroniseren met ZscalerThree**:
 
@@ -127,7 +127,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 13. Controleer in de sectie **Kenmerktoewijzingen** de groepskenmerken die vanuit Azure AD met Zscaler Three worden gesynchroniseerd. De kenmerken die als **overeenkomende** eigenschappen zijn geselecteerd, worden gebruikt om de groepen in Zscaler Three te vinden voor updatebewerkingen. Selecteer **Opslaan** om eventuele wijzigingen toe te passen.
 
-    ![Kenmerktoewijzingen](./media/zscaler-three-provisioning-tutorial/group-attribute-mappings.png)
+    ![Schermopname van de sectie Kenmerktoewijzingen met drie toewijzingen weergegeven.](./media/zscaler-three-provisioning-tutorial/group-attribute-mappings.png)
 
 14. Raadpleeg de instructies in [de zelfstudie Bereikfilter](./../active-directory-saas-scoping-filters.md) als u bereikfilters wilt configureren.
 

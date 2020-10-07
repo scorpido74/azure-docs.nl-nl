@@ -10,18 +10,18 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8a6fc1291615760320deb488511fdd9d964d25d
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: ceffc928a0cf8313723ff6193d9a6a63f8465f90
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89227862"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266306"
 ---
 # <a name="tutorial-basic-active-directory-environment"></a>Zelfstudie: Eenvoudige Active Directory-omgeving
 
 In deze zelfstudie wordt u begeleid bij het maken van een eenvoudige Active Directory-omgeving. 
 
-![Maken](media/tutorial-single-forest/diagram1.png)
+![Diagram met een basisomgeving van Azure Active Directory.](media/tutorial-single-forest/diagram1.png)
 
 U kunt de omgeving die u in de zelfstudie maakt, gebruiken om verschillende aspecten van hybride identiteitsscenario's te testen. Dit is een vereiste voor sommige zelfstudies.  Als u al een bestaande Active Directory-omgeving hebt, kunt u deze als vervanging gebruiken.  Deze informatie wordt verstrekt voor personen zonder voorafgaande kennis.
 
@@ -200,7 +200,7 @@ U moet nu een Azure Active Directory-tenant maken, zodat u de gebruikers kunt sy
 2. Selecteer het **plus-pictogram (+)** en zoek naar **Azure Active Directory**.
 3. Selecteer **Azure Active Directory** in de zoekresultaten.
 4. Selecteer **Maken**.</br>
-![Maken](media/tutorial-single-forest/create1.png)</br>
+![Schermopname met de pagina Azure Active Directory in Azure Portal.](media/tutorial-single-forest/create1.png)</br>
 5. Geef een **naam op voor de organisatie**, evenals een **oorspronkelijke domeinnaam**. Selecteer vervolgens **Maken**. Er wordt nu een map aangemaakt.
 6. Als die klaar is, klikt u op de koppeling **hier** om de adreslijst te beheren.
 
@@ -208,7 +208,7 @@ U moet nu een Azure Active Directory-tenant maken, zodat u de gebruikers kunt sy
 De Azure Active Directory-tenant is klaar en u gaat nu een globale-beheerdersaccount maken.  Ga als volgt te werk om het globale beheerdersaccount te maken.
 
 1.  Onder **Beheren**, selecteer **Gebruikers**.</br>
-![Maken](media/tutorial-single-forest/administrator1.png)</br>
+![Schermopname met het menu Overzicht met Gebruikers geselecteerd.](media/tutorial-single-forest/administrator1.png)</br>
 2.  Selecteer **Alle gebruikers** en selecteer vervolgens **+ Nieuwe gebruiker**.
 3.  Geef een naam en gebruikersnaam op voor deze gebruiker. Dit is de globale beheerder voor de tenant. U moet ook de **Maprol** wijzigen naar **Globale beheerder.** U kunt ook het tijdelijke wachtwoord weergeven. Selecteer **Maken** wanneer u klaar bent.</br>
 ![Maken](media/tutorial-single-forest/administrator2.png)</br>

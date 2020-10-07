@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 09/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 663c07795926b17eb42ff185ca248454c5bc459c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 07342cb31f1c44273f98a97b018620538f86c17f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90881836"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287726"
 ---
 # <a name="interact-with-azure-cosmos-db-using-apache-spark-in-azure-synapse-link-preview"></a>Interactie met Azure Cosmos DB met behulp van Apache Spark in Azure Synapse Link (preview)
 
@@ -120,6 +120,8 @@ df.write.format("cosmos.oltp").
     save()
 ```
 
+## <a name="load-streaming-dataframe-from-container"></a>Streaming-dataframe laden vanuit een container
+Met deze beweging gebruikt u de mogelijkheid van Spark-streaming om gegevens uit een container in een dataframe te laden. De gegevens worden opgeslagen in het primaire Data Lake-account (en bestandssysteem) dat u hebt gekoppeld aan de werkruimte. 
 > [!NOTE]
 > Als u op zoek bent naar externe bibliotheken in Synapse Apache Spark, vindt u [hier](#external-library-management) meer informatie. Als u bijvoorbeeld een Spark DataFrame wilt opnemen in een container met Cosmos DB API voor Mongo DB, kunt u [hier](https://docs.mongodb.com/spark-connector/master/) de Mongo DB-connector gebruiken voor Spark.
 

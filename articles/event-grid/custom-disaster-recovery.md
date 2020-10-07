@@ -4,12 +4,12 @@ description: In deze zelfstudie wordt u begeleid bij het instellen van uw gebeur
 ms.topic: tutorial
 ms.date: 07/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 27cc64eee31755bcefc9d0d82b7d06e52efcf183
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: e37cb6a0679ee2e249de4ed8fa31c40d5082ea4a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89004541"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324124"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Uw eigen herstel na noodgevallen bouwen voor aangepaste onderwerpen in Azure Event Grid
 Herstel na noodgevallen is gericht op het herstellen van een ernstig verlies van de functionaliteit van de toepassing. In deze zelfstudie wordt u begeleid bij het instellen van uw gebeurtenisarchitectuur bij herstel als de Event Grid-service in een bepaalde regio niet goed functioneert.
@@ -72,7 +72,7 @@ Maak eerst twee Event Grid-onderwerpen. Deze onderwerpen fungeren als primaire e
    * Selecteer Webhook van eindpunttype.
    * Stel het eindpunt in op de gebeurtenis-URL van de gebeurtenisontvanger. Deze moet eruitzien als: `https://<your-event-reciever>.azurewebsites.net/api/updates`
 
-     ![Primair gebeurtenisabonnement van Event Grid](./media/custom-disaster-recovery/create-primary-es.png)
+     ![Schermopname van de pagina Gebeurtenisabonnement maken - Basis met waarden Naam, Eindpunttype en Eindpunt gemarkeerd.](./media/custom-disaster-recovery/create-primary-es.png)
 
 1. Herhaal dezelfde stroom om het secundaire onderwerp en abonnement te maken. Vervang hier het achtervoegsel 'primaire' door 'secundaire' om het makkelijker te kunnen vinden. Controleer ten slotte of u het in een andere Azure-regio hebt ondergebracht. Hoewel u het overal in kunt onderbrengen, wordt u aangeraden [Gekoppelde Azure-regio's](../best-practices-availability-paired-regions.md) te gebruiken. Als u het secundaire onderwerp en abonnement in een andere regio hebt ondergebracht, weet u zeker dat de nieuwe gebeurtenissen zullen stromen, ook als de primaire regio uitvalt.
 

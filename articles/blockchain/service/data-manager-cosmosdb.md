@@ -4,18 +4,18 @@ description: Gebruik Blockchain Data Manager voor Azure Blockchain Service om bl
 ms.date: 03/08/2020
 ms.topic: tutorial
 ms.reviewer: chroyal
-ms.openlocfilehash: 483a5246274f63549dfb2914361ede6aa001e02e
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 69790787bc888448f2f40178bd12ee7058cc5892
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "79533178"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91283447"
 ---
 # <a name="tutorial-use-blockchain-data-manager-to-send-data-to-azure-cosmos-db"></a>Zelfstudie: Blockchain Data Manager gebruiken om gegevens te verzenden naar Azure Cosmos DB
 
 In deze zelfstudie gebruikt u Blockchain Data Manager voor de Azure Blockchain Service om blockchain-transactiegegevens op te nemen in Azure Cosmos DB. Blockchain Data Manager legt blockchain-grootboekgegevens vast in en transformeert en levert deze aan Azure Event Grid-onderwerpen. Vanuit Azure Event Grid gebruikt u een Azure Logic App-connector om documenten te maken in een Azure Cosmos DB-Database. Wanneer u klaar bent met de zelfstudie, kunt u blockchain-transactiegegevens in Azure Cosmos DB Data Explorer verkennen.
 
-[![Details van Blockchain-transactie](./media/data-manager-cosmosdb/raw-msg.png)](./media/data-manager-cosmosdb/raw-msg.png#lightbox)
+[![Schermopname toont details van de blockchain-transactie.](./media/data-manager-cosmosdb/raw-msg.png)](./media/data-manager-cosmosdb/raw-msg.png#lightbox)
 
 In deze zelfstudie hebt u:
 
@@ -271,7 +271,7 @@ Nu u uw Blockchain Data Manager hebt verbonden met Azure Cosmos DB, kunt u de bl
 
 1. Blader door de berichten door item-ID te selecteren en het bericht te zoeken met de overeenkomende transactie-hash.
 
-    [![Details van Blockchain-transactie](./media/data-manager-cosmosdb/raw-msg.png)](./media/data-manager-cosmosdb/raw-msg.png#lightbox)
+    [![Schermopname toont details van de blockchain-transactie van een geselecteerd item.](./media/data-manager-cosmosdb/raw-msg.png)](./media/data-manager-cosmosdb/raw-msg.png#lightbox)
 
     Het bericht van de onbewerkte transactie bevat details over de transactie. De informatie over de eigenschap is echter versleuteld.
 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: c699186c77bba16e96de2dc8b5968f5a83a5a9ce
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 4d00abdd3caf6c77b2227d9edfea3cc23d13e392
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89461762"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288202"
 ---
 # <a name="synapse-sql-resource-consumption"></a>Synapse SQL-resourceverbruik
 
@@ -29,7 +29,7 @@ Aanbevelingen voor het kiezen van het ideale aantal Data Warehouse Units (DWU's)
 
 ### <a name="data-warehouse-units"></a>Data Warehouse Units
 
-Een Synapse SQL-pool vertegenwoordigt een verzameling analytische resources die worden ingericht. Analytische resources worden gedefinieerd als een combinatie van CPU, geheugen en IO. Deze drie resources worden gebundeld in rekenschaaleenheden, ook wel Data Warehouse Units (DWU's) genoemd. Een DWU vertegenwoordigt een abstracte, genormaliseerde meting van rekenresources en prestaties. Door een wijziging in uw serviceniveau wordt het aantal beschikbare DWU's voor het systeem gewijzigd, waardoor de prestaties en de kosten van uw systeem worden aangepast.
+Een Synapse SQL-pool vertegenwoordigt een verzameling analytische resources die worden ingericht. Analytische resources worden gedefinieerd als een combinatie van CPU, geheugen en IO. Deze drie resources worden gebundeld in rekenschaaleenheden, ook wel Data Warehouse Units (DWU's) genoemd. Een DWU vertegenwoordigt een abstracte, genormaliseerde meting van rekenresources en prestaties. Een wijziging in uw serviceniveau wijzigt het aantal DWU's dat beschikbaar is voor het systeem. Op hun beurt worden de prestaties en kosten van uw systeem aangepast.
 
 Voor betere prestaties kunt u het aantal DWU's verhogen. Voor mindere prestaties vermindert u het aantal DWU's. Opslag-en rekenkosten worden afzonderlijk gefactureerd, zodat het wijzigen van DWU's geen invloed heeft op de opslagkosten.
 
@@ -73,7 +73,7 @@ In elke prestatielaag wordt niet precies dezelfde maateenheid voor de Data Wareh
 
 Zowel DWU's als cDWU's ondersteunen het schalen van rekenkracht naar boven of beneden en het pauzeren van rekenkracht wanneer u het datawarehouse niet hoeft te gebruiken. Deze bewerkingen zijn allemaal on-demand. Gen2 maakt gebruik van een lokale schijfcache op de rekenknooppunten om de prestaties te verbeteren. Wanneer u het systeem schaalt of pauzeert, is de cache ongeldig en moet de cache gedurende een bepaalde periode worden opgewarmd voordat optimale prestaties worden bereikt.  
 
-Naarmate u DWU's vergroot, vergroot u lineair de computerresources. Gen2 biedt de beste queryprestaties en hoogste schaal. Gen2-systemen maken ook optimaal gebruik van de cache.
+Naarmate u datawarehouse-eenheden vergroot, vergroot u de rekenresources lineair. Gen2 biedt de beste queryprestaties en hoogste schaal. Gen2-systemen maken ook optimaal gebruik van de cache.
 
 #### <a name="capacity-limits"></a>Capaciteitslimieten
 
@@ -81,7 +81,7 @@ Elke SQL-server (bijvoorbeeld myserver.database.windows.net) heeft een [DTU-quot
 
 ### <a name="assess-the-number-of-data-warehouse-units-you-need"></a>Bepaal het aantal datawarehouse-eenheden dat u nodig hebt
 
-Het ideale aantal DWU's hangt zeer veel af van uw workload en de hoeveelheid gegevens die u in het systeem hebt geladen.
+Het ideale aantal datawarehouse-eenheden is zeer afhankelijk van uw workload en de hoeveelheid gegevens die u in het systeem hebt geladen.
 
 Stappen voor het vinden van de beste DWU voor uw workload:
 
@@ -124,11 +124,11 @@ JOIN    sys.databases                     AS db ON ds.database_id = db.database_
 
 DWU's wijzigen:
 
-1. Open de [Azure-portal](https://portal.azure.com), open uw database en klik op **Schalen**.
+1. Open de [Azure Portal](https://portal.azure.com), open uw database en klik op **Schalen**.
 
 2. Verplaats onder **Schalen** de schuifregelaar naar links of rechts om de DWU-instelling te wijzigen.
 
-3. Klik op **Opslaan**. Er verschijnt een bevestigingsbericht. Klik op **Ja** om te bevestigen of **Nee** om te annuleren.
+3. Selecteer **Opslaan**. Er verschijnt een bevestigingsbericht. Klik op **Ja** om te bevestigen of **Nee** om te annuleren.
 
 #### <a name="powershell"></a>PowerShell
 
@@ -178,9 +178,9 @@ Zie [REST-API’s voor Azure Synapse Analytics](../sql-data-warehouse/sql-data-w
 
 Het kan enkele minuten duren voordat DWU-wijzigingen zijn doorgevoerd. Als u automatisch schaalt, kunt u overwegen logica te implementeren om ervoor te zorgen dat bepaalde bewerkingen zijn voltooid voordat u doorgaat met een andere actie.
 
-Door de databasestatus via verschillende eindpunten te controleren, kunt u automatiseringen juist implementeren. De portal geeft een melding nadat een bewerking is voltooid en de huidige status van de databases, maar staat geen programmatische controle van de status toe.
+Door de databasestatus via verschillende eindpunten te controleren, kunt u automatiseringen juist implementeren. De portal geeft een melding nadat een bewerking is voltooid en geeft de huidige status van de databases weer, maar staat geen programmatische controle van de status toe.
 
-U kunt de status van de database niet controleren op scale-outbewerkingen met de Azure-portal.
+U kunt de status van de database niet controleren op uitschaalbewerkingen met de Azure Portal.
 
 De status van DWU-wijzigingen controleren:
 

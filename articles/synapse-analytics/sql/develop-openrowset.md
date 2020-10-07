@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: b7b8a0d98db1411a08afdb33fa272bb7e6d6313e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e541a5620d4f263e5e1379b364d7c7dd9a97a331
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87280474"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91289018"
 ---
 # <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>OPENROWSET gebruiken met SQL on demand (preview)
 
@@ -119,7 +119,7 @@ Het argument unstructured_data_path is een pad naar de gegevens in de vorm van e
 | Azure Blob Storage         | wasb[s]  | \<container>@\<storage_account>.blob.core.windows.net/pad/bestand |
 | Azure Data Lake Store Gen1 | http[s]  | \<storage_account>.azuredatalakestore.net/webhdfs/v1 |
 | Azure Data Lake Store Gen2 | http[s]  | \<storage_account>.dfs.core.windows.net/pad/bestand   |
-| Azure Data Lake Store Gen2 | abfs[s]  | [\<file_system>@\<account_name>.dfs.core.windows.net/pad/bestand](../../storage/blobs/data-lake-storage-introduction-abfs-uri.md#uri-syntax)              |
+| Azure Data Lake Store Gen2 | aufs[s]  | [\<file_system>@\<account_name>.dfs.core.windows.net/pad/bestand](../../storage/blobs/data-lake-storage-introduction-abfs-uri.md#uri-syntax)              |
 ||||
 
 '\<storage_path>'
@@ -135,7 +135,7 @@ Als u opgeeft dat unstructured_data_path een map is, haalt een SQL on demand-que
 > [!NOTE]
 > In tegenstelling tot Hadoop en PolyBase, retourneert SQL on-demand geen submappen. Eveneens in tegenstelling tot Hadoop en PolyBase, retourneert SQL on-demand ook bestanden waarvan de bestandsnaam begint met een onderstrepingsteken (_) of een punt (.).
 
-Als in het onderstaande voorbeeld unstructured_data_path=`https://mystorageaccount.dfs.core.windows.net/webdata/`, retourneert een SQL on-demand-query rijen uit mydata.txt en _hidden.txt. Er worden geen gegevens geretourneerd uit mydata2.txt en mydata3.txt omdat deze bestanden zich in een submap bevinden.
+Als in het onderstaande voorbeeld unstructured_data_path=`https://mystorageaccount.dfs.core.windows.net/webdata/`, retourneert een SQL on-demand-query rijen uit mydata.txt en _hidden.txt. Het retourneert niet mydata2.txt en mydata3.txt omdat deze bestanden zich in een submap bevinden.
 
 ![Recursieve gegevens voor externe tabellen](./media/develop-openrowset/folder-traversal.png)
 
@@ -184,7 +184,7 @@ De parameter ESCAPE_CHAR wordt toegepast ongeacht of FIELDQUOTE al dan niet is i
 
 FIRSTROW = 'eerste_rij' 
 
-Het nummer van de eerste rij die moet worden geladen. De standaardwaarde is 1. Hiermee wordt de eerste rij in het opgegeven gegevensbestand aangegeven. De rijnummers worden bepaald door het tellen van het aantal eindtekens voor rijen. FIRSTROW begint bij 1.
+Het nummer van de eerste rij die moet worden geladen. De standaard is 1 en geeft de eerste rij in het opgegeven gegevensbestand aan. De rijnummers worden bepaald door het tellen van het aantal eindtekens voor rijen. FIRSTROW begint bij 1.
 
 FIELDQUOTE = 'aanhalingsteken_veld' 
 
@@ -203,7 +203,7 @@ De parser-versie die moet worden gebruikt bij het lezen van bestanden. De moment
 - PARSER_VERSION = '1.0'
 - PARSER_VERSION = '2.0'
 
-De standaardparser voor CSV-bestanden is 1.0 en deze versie bevat een groot aantal functies, terwijl 2.0 is gebouwd voor prestaties en niet alle opties en coderingen ondersteunt. 
+De CSV-parser versie 1.0 is standaard en zit boordevol functies. Versie 2.0 is gebouwd voor prestaties en biedt geen ondersteuning voor alle opties en coderingen. 
 
 Kenmerken van parser-versie 2.0 voor CSV:
 

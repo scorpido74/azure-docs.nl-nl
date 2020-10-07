@@ -1,5 +1,5 @@
 ---
-title: Beheerde identiteiten configureren in virtuele Azure VMSS - Azure AD
+title: Beheerde identiteiten configureren op VMSS - Azure AD
 description: Stapsgewijze instructies voor het configureren van beheerde identiteiten voor Azure-resources op een virtuele-machineschaalset met behulp van Azure Portal.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 02/20/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9ab1adeac5f8c67e06682f49fdded88e6a350e7
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 43b986b6bb25dff1227247b1d249ce565553877a
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89262670"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91329130"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-the-azure-portal"></a>Beheerde identiteiten voor Azure-resources configureren op een virtuele-machineschaalset met behulp van Azure Portal
 
@@ -59,7 +59,7 @@ Als u de door het systeem toegewezen beheerde identiteit wilt inschakelen op een
 
 3. Selecteer onder **Door systeem toegewezen**, **Status** de optie **Aan** en klik op **Opslaan**:
 
-   ![Schermopname van configuratiepagina](./media/msi-qs-configure-portal-windows-vmss/create-windows-vmss-portal-configuration-blade.png) 
+   ![Schermafbeelding met de pagina 'Identiteit (preview)', met 'Systeem toegewezen' geselecteerd, de status 'Aan' en de knop 'Opslaan' gemarkeerd.](./media/msi-qs-configure-portal-windows-vmss/create-windows-vmss-portal-configuration-blade.png) 
 
 ### <a name="remove-system-assigned-managed-identity-from-a-virtual-machine-scale-set"></a>Een door het systeem toegewezen beheerde identiteit uit een virtuele-machineschaalset verwijderen
 
@@ -88,7 +88,7 @@ Op dit moment ondersteunt Azure Portal niet het toewijzen van een door de gebrui
 1. Meld u aan bij [Azure Portal](https://portal.azure.com) met een account dat is gekoppeld aan het Azure-abonnement dat de virtuele-machineschaalset bevat.
 2. Ga naar de gewenste virtuele-machineschaalset en klik op **Identiteit**, **Door gebruiker toegewezen** en **\+Toevoegen**.
 
-   ![Door gebruiker toegewezen identiteit aan VMSS toevoegen](./media/msi-qs-configure-portal-windows-vm/add-user-assigned-identity-vmss-screenshot1.png)
+   ![Schermafbeelding met de pagina 'Identiteit', met 'Door de gebruiker toegewezen' geselecteerd en de knop 'Toevoegen' gemarkeerd.](./media/msi-qs-configure-portal-windows-vm/add-user-assigned-identity-vmss-screenshot1.png)
 
 3. Klik op de door de gebruiker toegewezen identiteit die u wilt toevoegen aan virtuele-machineschaalset en klik op **Toevoegen**.
    

@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a63bd6be9b21a506054ab5a02fa7f5d6751f303a
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 1b91763c275e4fd091b7c1554699e5d6f35a6f55
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89228372"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266323"
 ---
 # <a name="tutorial-integrate-a-single-forest-with-a-single-azure-ad-tenant"></a>Zelfstudie: Een enkele forest integreren met enkele Azure AD-tenant
 
@@ -61,16 +61,16 @@ U kunt de omgeving die u in deze zelfstudie maakt gebruiken voor testdoeleinden 
 5. Voer de agent voor Azure AD Connect-inrichting uit.
 6. Ga in het welkomstscherm **akkoord** met de licentievoorwaarden en klik op **Installeren**.
 
-   ![Welkomstscherm](media/how-to-install/install1.png)
+   ![Schermopname van het startscherm 'Microsoft Azure A D ConnectProvisioning Agent Package' wordt weergegeven.](media/how-to-install/install1.png)
 
 7. Zodra deze bewerking is voltooid, wordt de configuratiewizard gestart.  Meld u aan met uw globale beheerdersreferenties voor Azure AD.  Houd er rekening mee dat als u verbeterde beveiliging van Internet Explorer hebt ingeschakeld, aanmelding wordt geblokkeerd.  Als dit het geval is, sluit u de installatie, schakelt u verbeterde beveiliging van Internet Explorer in Serverbeheer uit en klikt u op de **wizard voor de AAD Connect-inrichtingsagent** om de installatie opnieuw te starten.
 8. Klik in het scherm **Verbinding maken met Active Directory** op **Directory toevoegen** en meld u aan met uw Active Directory-domeinbeheerdersaccount.  OPMERKING: Het domeinbeheerdersaccount mag geen vereisten voor wachtwoordwijziging hebben. Als het wachtwoord is verlopen of gewijzigd, moet u de agent opnieuw configureren met de nieuwe referenties. Met deze bewerking wordt uw on-premises adreslijst toegevoegd.  Klik op **Volgende**.
 
-   ![Welkomstscherm](media/how-to-install/install3.png)
+   ![Schermopname van het venster 'Verbinding maken met Active Directory'.](media/how-to-install/install3.png)
 
 9. Klik in het scherm **Configuratie voltooid** op **Bevestigen**.  Met deze bewerking wordt de agent geregistreerd en opnieuw gestart.
 
-   ![Welkomstscherm](media/how-to-install/install4.png)
+   ![Schermopname met het scherm Configuratie voltooid.](media/how-to-install/install4.png)
 
 10. Zodra deze bewerking is voltooid, ziet u een melding: **De agentconfiguratie is gecontroleerd.**  U kunt op **Afsluiten** klikken.</br>
 ![Welkomstscherm](media/how-to-install/install5.png)</br>

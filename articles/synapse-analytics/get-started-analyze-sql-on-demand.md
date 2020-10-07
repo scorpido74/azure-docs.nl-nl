@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: aan de slag met het analyseren van gegevens met SQL on demand'
+title: 'Zelfstudie: aan de slag met het analyseren van gegevens met serverloze SQL'
 description: In deze zelfstudie leert u hoe u gegevens kunt analyseren met SQL on demand met behulp van gegevens die zich in Spark-databases bevinden.
 services: synapse-analytics
 author: saveenr
@@ -9,18 +9,18 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 93ebc1c5e89e54f4813f270b9f8b7b13f672fbe3
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 8d26a03a8b61850dc17bc4efff5f8ca12dfca191
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90016109"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91300221"
 ---
 # <a name="analyze-data-with-sql-on-demand"></a>Analyseren met behulp van SQL on demand
 
-In deze zelfstudie leert u hoe u gegevens kunt analyseren met SQL on demand met behulp van gegevens die zich in Spark-databases bevinden. 
+In deze zelfstudie leert u hoe u gegevens kunt analyseren met serverloze SQL en een on demand SQL-pool, met behulp van gegevens die zich in Spark-databases bevinden. 
 
-## <a name="analyze-nyc-taxi-data-in-blob-storage--using-sql-on-demand"></a>NYC Taxi-gegevens analyseren in blob-opslag met SQL on demand
+## <a name="analyze-nyc-taxi-data-in-blob-storage-using-sql-on-demand-pool"></a>NYC Taxi-gegevens analyseren in blob-opslag met een SQL on demand-pool
 
 1. Klik in de hub **Data** onder **Gekoppeld** met de rechter muisknop op **Azure Blob Storage > Voorbeeldgegevenssets > nyc_tlc_yellow** en selecteer **Top 100-rijen SELECTEREN**
 1. Hiermee maakt u een nieuw SQL-script met de volgende code:

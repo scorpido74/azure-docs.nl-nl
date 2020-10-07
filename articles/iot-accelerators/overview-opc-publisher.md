@@ -1,6 +1,6 @@
 ---
-title: Wat is OPC Publisher-Azure | Microsoft Docs
-description: Dit artikel bevat een overzicht van de functies van OPC Publisher. U kunt gecodeerde JSON-telemetriegegevens met behulp van een JSON-nettolading publiceren naar Azure IoT Hub.
+title: Wat is OPC Publisher - Azure | Microsoft Docs
+description: In dit artikel vindt u een overzicht van de functies van OPC Publisher. Hiermee kunt u gecodeerde JSON-telemetriegegevens met behulp van een JSON-payload publiceren naar Azure IoT Hub.
 author: dominicbetts
 ms.author: dobett
 ms.date: 06/10/2019
@@ -11,39 +11,44 @@ manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: c77dff4a4f89a78dc0a0d723fbb45fe691246112
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 49ca12ed4f408e2a3fce1c8e59f541778f35311e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81681923"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281776"
 ---
 # <a name="what-is-opc-publisher"></a>Wat is OPC Publisher?
 
-OPC Publisher is een referentie-implementatie die laat zien hoe u:
+> [!IMPORTANT]
+> Raadpleeg [Azure Industrial IoT](https://azure.github.io/Industrial-IoT/) voor de meest recente inhoud terwijl we dit artikel bijwerken.
+
+OPC Publisher is een referentie-implementatie die u het volgende laat zien:
 
 - Verbinding maken met bestaande OPC UA-servers.
-- Met JSON gecodeerde telemetriegegevens publiceren van OPC UA-servers in OPC UA pub/sub-indeling, met behulp van een JSON-nettolading naar Azure IoT Hub.
+- Met JSON gecodeerde telemetriegegevens van OPC UA-servers in OPC UA pub/sub-indeling met behulp van een JSON-payload naar Azure IoT Hub publiceren.
 
-U kunt elk van de transport protocollen gebruiken die de Azure IoT Hub client-SDK ondersteunt: HTTPS, AMQP en MQTT.
+U kunt elk van de transportprotocollen gebruiken die de Azure IoT Hub client-SDK ondersteunt: HTTPS, AMQP en MQTT.
 
 De referentie-implementatie omvat:
 
-- Een OPC UA- *client* voor het maken van verbinding met bestaande OPC UA-servers die u in uw netwerk hebt.
-- Een OPC UA- *Server* op poort 62222 die u kunt gebruiken voor het beheren van wat wordt gepubliceerd en biedt IOT hub directe methoden om hetzelfde te doen.
+- Een OPC UA-*client* om verbinding te maken met bestaande OPC UA-servers die u in uw netwerk hebt.
+- Een OPC UA-*server* op poort 62222 die u kunt gebruiken voor het beheren van wat er wordt gepubliceerd en IoT Hub directe methoden biedt om hetzelfde te doen.
 
-U kunt de [OPC Uitgever referentie-implementatie](https://github.com/Azure/iot-edge-opc-publisher) downloaden van github.
+U kunt de [referentie-implementatie van OPC Publisher](https://github.com/Azure/iot-edge-opc-publisher) downloaden van GitHub.
 
-De toepassing wordt geïmplementeerd met behulp van .NET Core-technologie en kan worden uitgevoerd op elk platform dat wordt ondersteund door .NET core.
+De toepassing wordt geïmplementeerd met behulp van .NET Core-technologie en kan worden uitgevoerd op elk platform dat door .NET core wordt ondersteund.
 
-OPC Publisher implementeert logica voor nieuwe pogingen om verbindingen tot stand te brengen met eind punten die niet reageren op een bepaald aantal Keep Alive-aanvragen. Als een OPC UA-server bijvoorbeeld niet meer reageert vanwege een stroom storing.
+OPC Publisher implementeert logica voor nieuwe pogingen om verbinding tot stand te brengen met eindpunten die niet reageren op een bepaald aantal Keep Alive-aanvragen. Bijvoorbeeld als een OPC UA-server niet meer reageert vanwege een stroomstoring.
 
-Voor elke afzonderlijke publicatie-interval naar een OPC UA-server, maakt de toepassing een afzonderlijk abonnement dat alle knoop punten met dit publicatie interval worden bijgewerkt.
+Voor elke afzonderlijk publicatie-interval naar een OPC UA-server maakt de toepassing een afzonderlijk abonnement via welk alle knooppunten met dit publicatie-interval worden bijgewerkt.
 
-OPC Publisher ondersteunt batch verwerking van de gegevens die worden verzonden naar IoT Hub om de netwerk belasting te verminderen. Deze batch verwerking verzendt een pakket naar IoT Hub alleen als de geconfigureerde pakket grootte is bereikt.
+OPC Publisher ondersteunt batchverwerking van de gegevens die worden verzonden naar IoT Hub om de netwerkbelasting te verminderen. Deze batchverwerking verzendt alleen een pakket naar IoT Hub als de geconfigureerde pakketgrootte is bereikt.
 
-Deze toepassing maakt gebruik van de OPC Foundation OPC UA-referentie stack als NuGet-pakketten. Zie [https://opcfoundation.org/license/redistributables/1.3/](https://opcfoundation.org/license/redistributables/1.3/) voor de licentie voorwaarden.
+Deze toepassing maakt gebruik van de OPC Foundation OPC UA-referentiestack als NuGet-pakketten. Zie [https://opcfoundation.org/license/redistributables/1.3/](https://opcfoundation.org/license/redistributables/1.3/) voor de licentievoorwaarden.
 
-### <a name="next-steps"></a>Volgende stappen
+## <a name="next-steps"></a>Volgende stappen
 
-Nu u hebt geleerd wat OPC Publisher is, is de voorgestelde volgende stap te leren hoe u [OPC Publisher kunt configureren](howto-opc-publisher-configure.md).
+Nu u hebt geleerd wat OPC Publisher is, is de voorgestelde volgende stap om het volgende te leren:
+
+[OPC Publisher configureren](howto-opc-publisher-configure.md)

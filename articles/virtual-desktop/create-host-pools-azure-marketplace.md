@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: da944f74fd6214e1b69a3ee7d230e72accd4e2e4
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 2830d8b82f5b53300d0af3f48e55b573d78ad295
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90084359"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91287386"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Zelfstudie: Een hostpool maken met de Azure-portal
 
@@ -48,7 +48,8 @@ Ga als volgt te werk om te beginnen met het maken van uw nieuwe hostgroep:
 
 1. Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com/).
    
-   >![OPMERKING] Als u zich aanmeldt bij de Amerikaanse overheidsportal, gaat u in plaats daarvan naar [https://portal.azure.us/](https://portal.azure.us/).
+   >[!NOTE]
+   > Als u zich aanmeldt bij de Amerikaanse overheidsportal, gaat u in plaats daarvan naar [https://portal.azure.us/](https://portal.azure.us/).
 
 2. Voer **Windows Virtual Desktop** op de zoekbalk in en selecteer **Windows Virtual Desktop** onder Services.
 

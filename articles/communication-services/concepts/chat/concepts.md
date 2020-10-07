@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: af07894fcbfae386849d32492be9d2718a3adcc3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 1dd3781b18f82a96f388b0e619ce62b45752a870
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90943769"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91292469"
 ---
 # <a name="chat-concepts"></a>Chatconcepten
 
@@ -28,7 +28,7 @@ Raadpleeg het [Overzicht van de chat-clientbibliotheek in Communication Services
 
 Chats vinden plaats in zogenaamde gesprekken. Een chatgesprek kan veel berichten en veel gebruikers bevatten. Elk bericht behoort tot één gesprek en een gebruiker kan deel uitmaken van een of meerdere gesprekken. 
 
-Elke gebruiker in het chatgesprek wordt een lid genoemd. Een chatgesprek kan maximaal 250 leden bevatten. Alleen leden van een gesprek kunnen berichten verzenden en ontvangen of leden toevoegen aan of verwijderen uit een chatgesprek. De maximaal toegestane berichtgrootte is ongeveer 28 KB. Communication Services slaat de chatgeschiedenis op totdat u een verwijdererwijderbewerking uitvoert op het chatgesprek. U kunt alle berichten in een chatgesprek ophalen met behulp van de `List/Get Messages`-bewerking.
+Elke gebruiker in het chatgesprek wordt een lid genoemd. Een chatgesprek kan maximaal 250 leden bevatten. Alleen leden van een gesprek kunnen berichten verzenden en ontvangen of leden toevoegen aan of verwijderen uit een chatgesprek. De maximaal toegestane berichtgrootte is ongeveer 28 KB. U kunt alle berichten in een chatgesprek ophalen met behulp van de `List/Get Messages`-bewerking. Communication Services slaat de chatgeschiedenis op totdat u een verwijderbewerking uitvoert op het chatgesprek of het chatbericht, of totdat er geen leden meer zijn in het chatgesprek dat op dat moment verlaten is en wordt voorbereid op verwijdering.   
 
 Voor chatgesprekken met meer dan 20 leden zijn leesbevestigingen en type-indicaties uitgeschakeld. 
 
@@ -130,7 +130,7 @@ Een manier om dit te doen, is door uw vertrouwde service te laten fungeren als e
 
 Op deze manier bevat de berichtgeschiedenis zowel de oorspronkelijke als de vertaalde berichten. In de clienttoepassing kunt u logica toevoegen om het oorspronkelijke of vertaalde bericht weer te geven. Raadpleeg [deze quickstart](https://docs.microsoft.com/azure/cognitive-services/translator/quickstart-translate) om te begrijpen hoe Cognitive-API’s kunnen worden gebruikt om tekst te vertalen naar verschillende talen. 
 
-:::image type="content" source="../media/chat/cognitive-services.png" alt-text="Diagram waarin de interactie van Cognitive Services met Communication Services wordt weergegeven.":::
+:::image type="content" source="../media/chat/cognitive-services.png" alt-text="Diagram van de chatarchitectuur in Communication Services.":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

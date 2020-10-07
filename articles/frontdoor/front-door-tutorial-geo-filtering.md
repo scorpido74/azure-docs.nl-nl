@@ -1,6 +1,6 @@
 ---
 title: 'Zelfstudie: WAF-beleid voor geofilters configureren - Azure Front Door'
-description: In deze zelfstudie leert u hoe u een beleid voor geofilters maakt en het beleid koppelt aan uw bestaande front-endhost van uw Front Door.
+description: In deze zelfstudie leert u hoe u een WAF-beleid voor geofilters maakt en het beleid koppelt aan uw bestaande front-endhost van uw Front Door.
 services: frontdoor
 documentationcenter: ''
 author: duongau
@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.author: duau
-ms.openlocfilehash: 20aa038e15b1ae5734ad6f463c6f450368617119
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: f9b5869f7dd472c50ffb2c1c0dce765200f53882
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90090024"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91324022"
 ---
 # <a name="tutorial-how-to-set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>Zelfstudie: WAF-beleid voor geofilters instellen voor uw Front Door
 In deze zelfstudie leert u hoe u Azure PowerShell gebruikt om een voorbeeldbeleid voor geofilters te maken en het beleid koppelt aan uw bestaande front-endhost van uw Front Door. In dit voorbeeldbeleid voor geofilters worden aanvragen uit alle andere landen/regio's, met uitzondering van de Verenigde Staten, geblokkeerd.

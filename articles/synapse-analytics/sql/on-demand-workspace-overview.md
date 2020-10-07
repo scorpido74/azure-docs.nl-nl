@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: fc306dbca3191f04a85f2c5cc88d41336c13e09c
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: dc47bf73f39d73861c166674a692932d51064e6d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496386"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91288525"
 ---
 # <a name="sql-on-demand-preview-in-azure-synapse-analytics"></a>SQL on-demand (preview) in Azure Synapse Analytics 
 
@@ -25,9 +25,11 @@ SQL on-demand is een queryservice voor de gegevens in uw data lake. De service b
 - Een vertrouwde T-SQL-syntaxis om gegevens op te vragen, zonder dat u gegevens naar een gespecialiseerd archief hoeft te kopiëren of te laden. 
 - Geïntegreerde connectiviteit via de T-SQL-interface waarmee u beschikt over een breed scala aan business intelligence en ad-hoc hulpmiddelen voor query's, met inbegrip van de populairste stuurprogramma's. 
 
-SQL on-demand is een systeem voor gedistribueerde gegevensverwerking, gebouwd voor gegevens en rekenkracht op grote schaal. Met SQL on-demand kunt u big data binnen enkele seconden tot minuten analyseren, afhankelijk van de werkbelasting. Dankzij de ingebouwde fouttolerantie voor query-uitvoering, biedt het systeem een hoge betrouwbaarheid en succespercentages, zelfs voor langlopende query's op grote gegevenssets.
+SQL on-demand is een systeem voor gedistribueerde gegevensverwerking, gebouwd voor gegevens en berekeningsfuncties op grote schaal. Met SQL on-demand kunt u big data binnen enkele seconden tot minuten analyseren, afhankelijk van de werkbelasting. Dankzij de ingebouwde fouttolerantie voor query-uitvoering, biedt het systeem een hoge betrouwbaarheid en succespercentages, zelfs voor langlopende query's op grote gegevenssets.
 
-SQL on-demand is serverloos, wat betekent dat het niet nodig is om infrastructuur in te stellen of clusters te onderhouden. Er wordt binnen elke Azure Synapse-werkruimte een standaardeindpunt voor deze service verstrekt, zodat u query's kunt gaan uitvoeren zodra de werkruimte is gemaakt. Er worden geen kosten in rekening gebracht voor gereserveerde resources, alleen voor de gegevens die worden gescand door query's die u uitvoert. Dit model is dus met recht een model voor betalen naar gebruik.  
+SQL on-demand is serverloos, waardoor het niet nodig is om een infrastructuur in te stellen of clusters te onderhouden. Er wordt binnen elke Azure Synapse-werkruimte een standaardeindpunt voor deze service verstrekt, zodat u query's kunt gaan uitvoeren zodra de werkruimte is gemaakt. 
+
+Er worden geen kosten in rekening gebracht voor gereserveerde resources, alleen voor de gegevens die worden verwerkt door query's die u uitvoert. Dit model is dus met recht een model voor betalen naar gebruik.  
 
 Als u Apache Spark voor Azure Synapse gebruikt in uw gegevenspijplijn, voor het voorbereiden, opschonen of verrijken van gegevens, kunt u [query's uitvoeren op externe Spark-tabellen](develop-storage-files-spark-tables.md) die u in het proces hebt gemaakt, rechtstreeks vanuit SQL on-demand. Gebruik [Private Link](../security/how-to-connect-to-workspace-with-private-links.md) om uw eindpunt van SQL on-demand over te brengen naar het [VNet van uw beheerde werkruimte](../security/synapse-workspace-managed-vnet.md).  
 

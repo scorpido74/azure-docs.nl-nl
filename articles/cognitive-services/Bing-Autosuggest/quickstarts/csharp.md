@@ -1,7 +1,7 @@
 ---
 title: "Quickstart: Zoekquery's voorstellen met de REST API voor Bing Automatische suggesties en C#"
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over hoe u snel zoektermen in realtime kunt voorstellen met de Automatische suggestie-API voor Bing.
+description: Meer informatie over hoe u snel zoektermen in realtime kunt voorstellen met de API voor Bing Automatische suggesties en C#.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/06/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: af64e80137b375e6e7b7037f72240e814b4b1e15
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 1157d322d6329774b638a0692bc7ef68d7ecc189
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88919417"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91277526"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-c"></a>Quickstart: Zoekquery's voorstellen met de REST API voor Bing Automatische suggesties en C#
 

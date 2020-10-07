@@ -5,12 +5,12 @@ author: FlorianBorn71
 ms.author: flborn
 ms.date: 06/16/2020
 ms.topic: tutorial
-ms.openlocfilehash: e77379be863f4527081eeec6a0ee1f426d526527
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 12407d6344c69c747230e9db6fa4d53b4520dc82
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90084461"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91331808"
 ---
 # <a name="tutorial-set-up-physically-based-rendering-materials-in-3ds-max"></a>Zelfstudie: PBT-materialen instellen in 3ds Max
 
@@ -22,6 +22,10 @@ In deze zelfstudie leert u het volgende:
 > * Materialen met geavanceerde belichting toewijzen aan objecten in een scène.
 > * Objecten en materialen ruimtelijk weergeven.
 > * Een scène exporteren naar een FBX-indeling en belangrijke opties selecteren.
+
+> [!Note]
+> De in deze zelfstudie beschreven procedure werkt in 3ds Max 2019 en 3ds Max 2020.
+> Door een wijziging in de manier waarop 3ds Max. 2021 grijskaarten exporteert, worden normale kaarten niet meer door de conversieservice gevonden als deze versie wordt gebruikt.
 
 Het maken van [PBR-materialen (Physically Based Rendering)](../../overview/features/pbr-materials.md) in 3ds Max is een eenvoudige taak. Het is in veel opzichten vergelijkbaar met het instellen van PBR in andere apps voor het maken van inhoud, zoals Maya. Deze zelfstudie is een handleiding voor de installatie van een eenvoudige PBR-shader en FBX-export voor Azure Remote Rendering-projecten.
 

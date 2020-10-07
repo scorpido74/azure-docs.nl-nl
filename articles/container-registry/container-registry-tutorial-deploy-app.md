@@ -4,12 +4,12 @@ description: Een op Linux gebaseerde web-app implementeren in twee verschillende
 ms.topic: tutorial
 ms.date: 08/20/2018
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 5b075e1065ef8c30837000f490cc93525b4b61cc
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: bcbce3c60aa0b4613b1dd1840c335c800193e549
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "74456099"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328686"
 ---
 # <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Zelfstudie: Een web-app implementeren vanuit een Azure-containerregister met geo-replicatie
 
@@ -58,7 +58,7 @@ Onder **Web App for Containers**, dat wordt weergegeven na selectie van Deploy t
 
 Selecteer **Maken** om de web-app voor de regio *VS - west* in te richten.
 
-![Web-app op Linux-configuratie in Azure Portal][deploy-app-portal-02]
+![Schermopname toont de Web App for Containers met de knop Maken uitgelicht.][deploy-app-portal-02]
 
 ## <a name="view-the-deployed-web-app"></a>De geïmplementeerde web-app weergeven
 
@@ -68,11 +68,11 @@ Selecteer **App Services** in de portal en selecteer vervolgens de web-app die u
 
 Selecteer in de rechterbovenhoek van het **App Service**-overzicht de hyperlink-URL van de web-app om de actieve app in uw browser weer te geven.
 
-![Web-app op Linux-configuratie in Azure Portal][deploy-app-portal-04]
+![Schermopname toont het App Service-overzicht met de URL van de web-app uitgelicht.][deploy-app-portal-04]
 
 Zodra de Docker-installatiekopie vanuit het geo-gerepliceerde containerregister is geïmplementeerd, toont de site een weergave van de Azure-regio die als host fungeert voor het containerregister.
 
-![Geïmplementeerde web-app weergegeven in een browser][deployed-app-westus]
+![Schermopname toont de geïmplementeerde web-app die in een browser weergegeven wordt.][deployed-app-westus]
 
 ## <a name="deploy-second-web-app-for-containers-instance"></a>Tweede Web App for Containers-instantie implementeren
 
@@ -88,9 +88,9 @@ Gebruik de procedure die in het vorige gedeelte is beschreven om een tweede web-
 
 Selecteer **Maken** om de web-app voor de regio *VS - oost* in te richten.
 
-![Web-app op Linux-configuratie in Azure Portal][deploy-app-portal-06]
+![Schermopname toont het maakvenster, voor de Web App for Containers, met de knop Maken uitgelicht.][deploy-app-portal-06]
 
-## <a name="view-the-deployed-web-app"></a>De geïmplementeerde web-app weergeven
+## <a name="view-the-second-deployed-web-app"></a>De tweede geïmplementeerde web-app weergeven
 
 U kunt de actieve app weergeven door in uw browser naar de URL te navigeren.
 

@@ -4,12 +4,12 @@ description: In dit artikel wordt beschreven hoe u fysieke machines naar Azure m
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: MVC
-ms.openlocfilehash: 7091d95a07da60faed7012df04c05def340df7b4
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 2f9b3d43effff49da6aa348e22c0c974606f4c2b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89376074"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91296328"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>Machines als fysieke servers migreren naar Azure
 
@@ -228,14 +228,14 @@ Selecteer nu machines voor de migratie.
 
 1. In het Azure Migrate-project > **Servers**, **Azure Migrate: Servermigratie** klikt u op **Repliceren**.
 
-    ![VM's repliceren](./media/tutorial-migrate-physical-virtual-machines/select-replicate.png)
+    ![Schermopname van het venster Servers van Azure Migrate met de knop Repliceren geselecteerd in Azure Migrate: Servermigratie onder Hulpprogramma’s voor migratie.](./media/tutorial-migrate-physical-virtual-machines/select-replicate.png)
 
 2. Selecteer in **Repliceren** > **Broninstellingen** > **Zijn uw machines gevirtualiseerd?** **Niet gevirtualiseerd/Overige**.
 3. In **On-premises apparaat** selecteert u de naam van het Azure Migrate-apparaat dat u instelt.
 4. Selecteer in **Processerver** de naam van het replicatieapparaat.
 6. Selecteer bij **Gastreferenties** het dummy-account dat eerder is gemaakt tijdens het [configureren van het installatieprogramma voor de replicatiefunctie](#download-the-replication-appliance-installer) om de Mobility-service handmatig te installeren (push-installatie wordt niet ondersteund). Klik vervolgens op **Volgende: Virtuele machines**.   
 
-    ![VM's repliceren](./media/tutorial-migrate-physical-virtual-machines/source-settings.png)
+    ![Schermopname van het tabblad Broninstellingen in het scherm Repliceren met het veld Gastaanmeldingsgegevens gemarkeerd.](./media/tutorial-migrate-physical-virtual-machines/source-settings.png)
 
 7. Houd bij **Virtuele machines** in **Migratie-instellingen importeren uit een evaluatie?** de standaardinstelling **Nee, ik geef de migratie-instellingen handmatig op** aan.
 8. Controleer elke virtuele machine die u wilt migreren. Klik vervolgens op **Volgende: Doelinstellingen**.
@@ -264,9 +264,9 @@ Selecteer nu machines voor de migratie.
     - **Beschikbaarheidsset**: Geef de beschikbaarheidsset op die moet worden gebruikt.
 
 > [!NOTE]
->Als u een andere beschikbaarheidsoptie wilt selecteren voor een set virtuele machines, gaat u naar stap 1 en herhaalt u de stappen door andere beschikbaarheidsopties te selecteren na het starten van de replicatie voor één set virtuele machines.
+> Als u een andere beschikbaarheidsoptie wilt selecteren voor een set virtuele machines, gaat u naar stap 1 en herhaalt u de stappen door andere beschikbaarheidsopties te selecteren na het starten van de replicatie voor één set virtuele machines.
 
-    ![Compute settings](./media/tutorial-migrate-physical-virtual-machines/compute-settings.png)
+   ![Rekeninstellingen](./media/tutorial-migrate-physical-virtual-machines/compute-settings.png)
 
 13. Geef in **Schijven** op of de VM-schijven moeten worden gerepliceerd in Azure en selecteer het schijftype (standaard SSD/HDD of premium beheerde schijven) in Azure. Klik op **Volgende**.
     - U kunt schijven uitsluiten van replicatie.
