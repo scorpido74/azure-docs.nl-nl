@@ -1,5 +1,5 @@
 ---
-title: 'Quick Start: spraak herkennen die zijn opgeslagen in Blob Storage, C++-Speech Service'
+title: 'Quickstart: Spraak herkennen die is opgeslagen in blobopslag, C++ - Speech-service'
 titleSuffix: Azure Cognitive Services
 description: NOG TE BEPALEN
 services: cognitive-services
@@ -11,10 +11,10 @@ ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
 ms.openlocfilehash: bd7633218d0def259c27e91718c686d025da6687
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "75468575"
 ---
 > [!div class="nextstepaction"]

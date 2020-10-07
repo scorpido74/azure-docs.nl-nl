@@ -9,10 +9,10 @@ ms.date: 01/24/2020
 ms.author: sngun
 ms.custom: include file
 ms.openlocfilehash: 5015371afc67574a214097f8d3eef661df29c22f
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85115032"
 ---
 1. Meld u in een nieuw browservenster aan bij [Azure Portal](https://portal.azure.com/).
@@ -23,7 +23,7 @@ ms.locfileid: "85115032"
    
 3. Selecteer op de pagina **Nieuw** **Databases** > **Azure Cosmos DB**.
    
-   :::image type="content" source="./media/cosmos-db-create-dbaccount-table/create-nosql-db-databases-json-tutorial-1.png" alt-text="Het deelvenster Databases in de Azure-portal":::
+   :::image type="content" source="./media/cosmos-db-create-dbaccount-table/create-nosql-db-databases-json-tutorial-1.png" alt-text="Een resource maken in de Azure-portal":::
    
 3. Voer op de pagina **Azure Cosmos DB-account maken** de instellingen in voor het nieuwe Azure Cosmos DB-account. 
  
@@ -39,9 +39,9 @@ ms.locfileid: "85115032"
 
 5. Selecteer **Beoordelen en maken**. Selecteer **Maken** om het account te maken nadat de validatie voltooid is. 
  
-   :::image type="content" source="./media/cosmos-db-create-dbaccount-table/azure-cosmos-db-create-new-account.png" alt-text="De pagina Nieuw account voor Azure Cosmos DB":::
+   :::image type="content" source="./media/cosmos-db-create-dbaccount-table/azure-cosmos-db-create-new-account.png" alt-text="Een resource maken in de Azure-portal":::
 
 6. Het duurt een paar minuten om het account te maken. Er wordt een bericht weergegeven waarin staat dat **Uw implementatie wordt uitgevoerd**. Wacht tot de implementatie is voltooid en selecteer **Ga naar resource**.
 
-    :::image type="content" source="./media/cosmos-db-create-dbaccount-table/azure-cosmos-db-account-created.png" alt-text="Het deelvenster Meldingen in de Azure-portal":::
+    :::image type="content" source="./media/cosmos-db-create-dbaccount-table/azure-cosmos-db-account-created.png" alt-text="Een resource maken in de Azure-portal":::
 
