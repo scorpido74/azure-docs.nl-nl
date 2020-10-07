@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: jawilley
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 9d50ed62343a7fd0aafb1fed97c0f33f2caaec12
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f8e610531eaf3e7e5dbee9c40c88683a05029303
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019926"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802987"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Tips voor betere prestaties van Azure Cosmos DB en .NET
 
@@ -39,7 +39,7 @@ Voor Linux en andere niet-ondersteunde platforms waarbij ServiceInterop.dll niet
 
 De vier hier vermelde toepassings typen gebruiken standaard 32-bits host verwerking. Ga als volgt te werk om de verwerking van de host te wijzigen in 64-bits verwerking voor uw toepassings type:
 
-- **Voor uitvoer bare toepassingen**: Stel in het venster **project eigenschappen** in het deel venster voor het **maken** van het [platform doel](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019) in op **x64**.
+- **Voor uitvoer bare toepassingen**: Stel in het venster **project eigenschappen** in het deel venster voor het **maken** van het [platform doel](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019&preserve-view=true) in op **x64**.
 
 - **Voor op VSTest gebaseerde test projecten**: Selecteer in het menu **test** van Visual Studio **Test**test  >  **instellingen**testen en stel de **standaard architectuur** van de processor in op **x64**.
 
@@ -126,7 +126,7 @@ Als dat mogelijk is, plaatst u toepassingen die Azure Cosmos DB aanroepen in dez
 
 U kunt de laagst mogelijke latentie verkrijgen door ervoor te zorgen dat de aanroepende toepassing zich in dezelfde Azure-regio bevindt als het ingerichte Azure Cosmos DB-eind punt. Zie [Azure-regio's](https://azure.microsoft.com/regions/#services)voor een lijst met beschik bare regio's.
 
-:::image type="content" source="./media/performance-tips/same-region.png" alt-text="Termijnen-clients in dezelfde regio." border="false":::
+:::image type="content" source="./media/performance-tips/same-region.png" alt-text="Verbinding maken met Azure Cosmos DB met verschillende verbindings modi en protocollen." border="false":::
 
    <a id="increase-threads"></a>
 
@@ -199,7 +199,7 @@ Parallelle query's bieden twee para meters die u aan uw vereisten kunt aanpassen
 
 Tijdens de prestatie tests moet u de belasting verg Roten tot een klein aantal aanvragen wordt beperkt. Als aanvragen worden beperkt, moet de client toepassing uitvallen voor het door de server opgegeven interval voor nieuwe pogingen. Door de uitstel te respecteren, weet u zeker dat u een minimale hoeveelheid tijd moet wachten tussen nieuwe pogingen. 
 
-Zie [RetryAfter](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosexception.retryafter?view=azure-dotnet#Microsoft_Azure_Cosmos_CosmosException_RetryAfter)voor meer informatie.
+Zie [RetryAfter](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosexception.retryafter?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Cosmos_CosmosException_RetryAfter)voor meer informatie.
     
 Er is een mechanisme voor het vastleggen van aanvullende diagnostische gegevens en latentie problemen, zoals wordt weer gegeven in het volgende voor beeld. U kunt de diagnostische teken reeks registreren voor aanvragen met een hogere lees latentie. De vastgelegde diagnostische teken reeks helpt u te begrijpen hoe vaak u een *429* -fout voor een bepaalde aanvraag hebt ontvangen.
 

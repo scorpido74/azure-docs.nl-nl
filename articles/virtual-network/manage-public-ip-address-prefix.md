@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/13/2019
 ms.author: allensu
-ms.openlocfilehash: c844b25394d865453e653bfc3ac6bff396d97a47
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 90fc35249daea51a08cb83143c6be024e78964a7
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035056"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91804007"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>Een voorvoegsel van een openbaar IP-adres maken, wijzigen of verwijderen
 
@@ -51,7 +51,7 @@ Voor voegsels voor open bare IP-adressen gelden kosten. Zie [prijzen](https://az
    |Abonnement|Ja|Moet zich in hetzelfde [abonnement](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) bevinden als de resource waaraan u het open bare IP-adres wilt koppelen.|
    |Resourcegroep|Ja|Kan zich in dezelfde of verschillende [resource groepen](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) bevinden als de resource waaraan u het open bare IP-adres wilt koppelen.|
    |Naam|Ja|De naam moet uniek zijn binnen de resource groep die u selecteert.|
-   |Regio|Ja|Moet zich in dezelfde [regio](https://azure.microsoft.com/regions)bevinden als de open bare IP-adressen waaraan u adressen uit het bereik toewijst.|
+   |Region|Ja|Moet zich in dezelfde [regio](https://azure.microsoft.com/regions)bevinden als de open bare IP-adressen waaraan u adressen uit het bereik toewijst.|
    |Voorvoegsel grootte|Ja| De grootte van het voor voegsel dat u nodig hebt. A/28 of 16 IP-adressen is de standaard waarde.
 
 **Opdrachten**
@@ -88,7 +88,7 @@ U kunt ook de CLI-en PS-opdrachten hieronder met de para meters---Public-IP-pref
 2. Selecteer de naam van het voor voegsel van het open bare IP-adres dat u wilt weer geven, wijzig de instellingen voor of verwijder deze in de lijst.
 3. Voer een van de volgende opties uit, afhankelijk van of u het voor voegsel van het open bare IP-adres wilt weer geven, verwijderen of wijzigen.
    - **Weer gave**: in de sectie **overzicht** ziet u de belangrijkste instellingen voor het voor voegsel van het open bare IP-adres, zoals voor voegsel.
-   - **Verwijderen**: als u het voor voegsel van het open bare IP-adres wilt verwijderen, selecteert u **verwijderen** in het gedeelte **overzicht** . Als adressen binnen het voor voegsel zijn gekoppeld aan resources met een openbaar IP-adres, moet u eerst de open bare IP-adres bronnen verwijderen. Zie [een openbaar IP-adres verwijderen](virtual-network-public-ip-address.md#view-change-settings-for-or-delete-a-public-ip-address).
+   - **Verwijderen**: als u het voor voegsel van het open bare IP-adres wilt verwijderen, selecteert u **verwijderen** in het gedeelte **overzicht** . Als adressen binnen het voor voegsel zijn gekoppeld aan resources met een openbaar IP-adres, moet u eerst de open bare IP-adres bronnen verwijderen. Zie [een openbaar IP-adres verwijderen](virtual-network-public-ip-address.md#view-modify-settings-for-or-delete-a-public-ip-address).
 
 **Opdrachten**
 
@@ -101,7 +101,7 @@ U kunt ook de CLI-en PS-opdrachten hieronder met de para meters---Public-IP-pref
 
 Als u taken wilt uitvoeren op open bare IP-adres voorvoegsels, moet uw account worden toegewezen aan de rol [netwerk bijdrager](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) of aan een [aangepaste](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) rol waaraan de juiste acties in de volgende tabel zijn toegewezen:
 
-| Actie                                                            | Naam                                                           |
+| Bewerking                                                            | Naam                                                           |
 | ---------                                                         | -------------                                                  |
 | Micro soft. Network/publicIPPrefixes/lezen                           | Een voor voegsel van een openbaar IP-adres lezen                                |
 | Micro soft. Network/publicIPPrefixes/schrijven                          | Een voor voegsel voor een openbaar IP-adres maken of bijwerken                    |

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to find a Virtual WAN partner
-ms.openlocfilehash: e8dcb188dc5aad59738e3eab4169bf9dbd3679ec
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: d1655b42b57edaeeaaaada802a248f56e0ba1470
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91449338"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91801457"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>Virtuele WAN-partners en virtuele-hub-locaties
 
@@ -58,7 +58,7 @@ Deze partners hebben **beheerde toepassings** aanbiedingen die nu beschikbaar zi
 |Partners|Hand leiding voor configuratie/instructies/implementatie|
 |---|---|
 |[Barracuda Networks](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/barracudanetworks.barracuda_cloudgenwan_gateway?tab=Overviewus/marketplace/apps/barracudanetworks.barracuda_cloudgenwan_gateway?tab=Overview)| [Barracuda CloudGen WAN Deployment Guide (Engelstalig)](https://campus.barracuda.com/product/cloudgenwan/doc/91980640/deployment/)|
-|[Cisco Cloud service router (CSR) VWAN](https://aka.ms/ciscoMarketPlaceOffer)| Als u Cisco Cloud Services (CSR) WAN wilt implementeren in de virtuele hub, verzendt u een e-mail naar vwan_public_preview@cisco.com |
+|[Cisco Cloud service router (CSR) VWAN](https://aka.ms/ciscoMarketPlaceOffer)| Tijdens de open bare preview van Cisco Cloud Services (CSR) WAN in VWAN hub vereist Cisco dat de eind klant zich registreert als een Cisco EFT (vroege veld proef versie) door een e-mail te verzenden naar vwan_public_preview@external.cisco.com en de implementatie handleiding voor vManage te aanvragen. |
 
 De volgende partners zijn zou om NVA te bieden in de virtuele hub in de nabije toekomst: Citrix-, versa-netwerken en VeloCloud.
 

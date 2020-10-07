@@ -4,20 +4,16 @@ description: Azure Private Link gebruiken om netwerken veilig te verbinden met A
 author: nkiest
 ms.author: nikiest
 ms.topic: conceptual
-ms.date: 05/20/2020
+ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: 2b94c782b5d7139fae7a01233bffd3b17cf43c7c
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 0c7838b291ca5ba1747b08d7e8fcc6d17cc35f7d
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91570402"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802222"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Azure Private Link gebruiken om netwerken veilig te verbinden met Azure Monitor
-
-> [!IMPORTANT]
-> Op dit moment moet u **toegang aanvragen** om deze mogelijkheid te gebruiken. U kunt het [aanmeldings formulier](https://aka.ms/AzMonPrivateLinkSignup)gebruiken om toegang te krijgen.
-
 
 Met de [persoonlijke Azure-koppeling](../../private-link/private-link-overview.md) kunt u Azure PaaS-services veilig koppelen aan uw virtuele netwerk met behulp van privé-eind punten. Voor veel services hebt u zojuist een eind punt ingesteld per resource. Azure Monitor is echter een Constellation met verschillende onderling verbonden services die samen werken om uw workloads te bewaken. Daarom hebben we een resource met de naam een Azure Monitor AMPLS (private link scope) gemaakt waarmee u de grenzen van uw bewakings netwerk kunt definiëren en verbinding kunt maken met uw virtuele netwerk. In dit artikel wordt beschreven hoe u een Azure Monitor persoonlijk koppelings bereik kunt instellen.
 

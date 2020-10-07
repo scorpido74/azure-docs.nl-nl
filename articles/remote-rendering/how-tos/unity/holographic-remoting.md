@@ -5,12 +5,12 @@ author: christophermanthei
 ms.author: chmant
 ms.date: 03/23/2020
 ms.topic: how-to
-ms.openlocfilehash: ac47a2922e92233f0acabf75817a712671306bc1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 180af30f57a8123b6e90cc8b11848b92b3c86db1
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80681205"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802171"
 ---
 # <a name="use-holographic-remoting-and-remote-rendering-in-unity"></a>Holographic Remoting en Remote Rendering gebruiken in Unity
 
@@ -18,7 +18,7 @@ ms.locfileid: "80681205"
 
 Voor elke uitvoering van Unity editor kan slechts een van de twee worden gebruikt. Als u het andere item wilt gebruiken, moet u eerst de eenheid opnieuw opstarten.
 
-## <a name="use-unity-play-mode-to-preview-on-hololens-2"></a>Eenheids Play modus gebruiken om voor beeld op Hololens 2 te bekijken
+## <a name="use-unity-play-mode-to-preview-on-hololens-2"></a>Eenheids Play modus gebruiken om voor beeld op HoloLens 2 te bekijken
 
  Unit Play-modus kan nog steeds worden gebruikt, bijvoorbeeld om de gebruikers interface van de toepassing te testen. Het is echter essentieel dat ARR nooit wordt geïnitialiseerd. Anders wordt het vastlopen.
 

@@ -11,16 +11,16 @@ ms.workload: identity
 ms.date: 05/20/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 69ea1964449143a25f447375f2aae15d9feeff10
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 5fdce791ba8848b93a8457f3738392b1f5f15508
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235720"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91801797"
 ---
 # <a name="how-provisioning-works"></a>Hoe inrichting werkt
 
-Automatische inrichting heeft betrekking op het maken van gebruikers-id's en-rollen in de Cloud toepassingen waartoe gebruikers toegang nodig hebben. Naast het maken van gebruikers identiteiten, omvat automatische inrichting het onderhoud en de verwijdering van gebruikers identiteiten als status of rollen worden gewijzigd. Voordat u begint met het implementeren van een implementatie, kunt u dit artikel raadplegen voor meer informatie over de werking van Azure AD en over het verkrijgen van configuratie aanbevelingen. 
+Automatische inrichting heeft betrekking op het maken van gebruikers-id's en-rollen in de Cloud toepassingen waartoe gebruikers toegang nodig hebben. Naast het maken van gebruikersidentiteiten omvat automatische inrichting het onderhoud en de verwijdering van gebruikersidentiteiten, zoals gewijzigde status of rollen. Voordat u begint met het implementeren van een implementatie, kunt u dit artikel raadplegen voor meer informatie over de werking van Azure AD en over het verkrijgen van configuratie aanbevelingen. 
 
 De **Azure AD-inrichtings service voorziet** gebruikers van SaaS-apps en andere systemen door verbinding te maken met een systeem voor scim (Cross-Domain Identity Management) 2,0 gebruikers beheer API-eind punt van de leverancier van de toepassing. Met dit SCIM-eind punt kan Azure AD programmatisch gebruikers maken, bijwerken en verwijderen. Voor geselecteerde toepassingen kan de inrichtings service ook extra identiteits-gerelateerde objecten, zoals groepen en rollen, maken, bijwerken en verwijderen. Het kanaal dat wordt gebruikt voor het inrichten tussen Azure AD en de toepassing, wordt versleuteld met HTTPS TLS 1,2-versleuteling.
 
@@ -169,22 +169,42 @@ De prestaties zijn afhankelijk van of uw inrichtings taak een initiële inrichti
 Alle bewerkingen die worden uitgevoerd door de User Provisioning Service worden vastgelegd in de Azure AD [-inrichtings Logboeken (preview)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context). De logboeken bevatten alle Lees-en schrijf bewerkingen die zijn aangebracht op de bron-en doel systemen en de gebruikers gegevens die tijdens elke bewerking zijn gelezen of geschreven. Voor informatie over het lezen van de inrichtings Logboeken in de Azure Portal, raadpleegt u de [hand leiding](./check-status-user-account-provisioning.md)voor het inrichten van de rapportage.
 
 ## <a name="de-provisioning"></a>De inrichting ongedaan maken
+De Azure AD-inrichtings service zorgt ervoor dat de bron-en doel systemen synchroon blijven door het inrichtings account te verwijderen wanneer de gebruikers toegang wordt verwijderd.
 
-De Azure AD-inrichtings service zorgt ervoor dat de bron-en doel systemen synchroon blijven door het inrichtings account te verwijderen wanneer gebruikers niet meer toegang mogen hebben. 
+De inrichtings service ondersteunt het verwijderen en uitschakelen van gebruikers (ook wel ' zacht verwijderen ' genoemd). De exacte definitie van uitschakelen en verwijderen varieert op basis van de implementatie van de doel-app, maar in het algemeen betekent een uitschakelen dat de gebruiker zich niet kan aanmelden. Een verwijderen geeft aan dat de gebruiker volledig uit de toepassing is verwijderd. Voor SCIM-toepassingen is het uitschakelen van een aanvraag om de eigenschap *Active* van een gebruiker in te stellen op false. 
 
-De Azure AD-inrichtings service verwijdert een gebruiker in een toepassing zacht wanneer de toepassing tijdelijke verwijderingen (update aanvragen met Active = false) ondersteunt en een van de volgende gebeurtenissen optreedt:
+**Configureer uw toepassing om een gebruiker uit te scha kelen**
 
-* Het gebruikers account wordt verwijderd in azure AD
-*   De gebruiker is niet toegewezen aan de toepassing
-*   De gebruiker voldoet niet meer aan een bereik filter en valt buiten het bereik
-    * De Azure AD-inrichtings service laadt standaard gebruikers die buiten het bereik vallen, of schakelt deze uit. Als u dit standaard gedrag wilt overschrijven, kunt u een markering instellen om [verwijderingen buiten het bereik over te slaan](../app-provisioning/skip-out-of-scope-deletions.md).
-*   De eigenschap AccountEnabled is ingesteld op False
+Zorg ervoor dat u het selectie vakje voor updates hebt ingeschakeld.
 
-Als een van de bovenstaande vier gebeurtenissen optreedt en de doel toepassing geen tijdelijke verwijderingen ondersteunt, wordt door de inrichtings service een Verwijder aanvraag verzonden om de gebruiker definitief uit de app te verwijderen. 
+Zorg ervoor dat u de toewijzing voor *actief* hebt voor uw toepassing. Als u een toepassing uit de app-Galerie gebruikt, kan de toewijzing iets anders zijn. Zorg ervoor dat u de standaard-en uitgaande Box-toewijzing gebruikt voor galerie toepassingen.
 
-30 dagen nadat een gebruiker is verwijderd in azure AD, worden deze permanent verwijderd uit de Tenant. Op dit moment wordt door de inrichtings service een Verwijder aanvraag verzonden om de gebruiker permanent te verwijderen uit de toepassing. Op elk gewenst moment in het 30-daagse venster kunt u [een gebruiker permanent hand matig verwijderen](../fundamentals/active-directory-users-restore.md), waardoor een aanvraag voor verwijderen naar de toepassing wordt verzonden.
 
-Als u een kenmerk IsSoftDeleted in uw kenmerk toewijzingen ziet, wordt dit gebruikt om de status van de gebruiker te bepalen en of een update aanvraag met actief = False moet worden verzonden om de gebruiker te verwijderen. 
+**Uw toepassing configureren voor het verwijderen van een gebruiker**
+
+In de volgende scenario's wordt een uitschakelen of verwijderen geactiveerd: 
+* Een gebruiker wordt zacht verwijderd in azure AD (verzonden naar de Prullenbak/AccountEnabled eigenschap ingesteld op false).
+    30 dagen nadat een gebruiker is verwijderd in azure AD, worden deze permanent verwijderd uit de Tenant. Op dit moment wordt door de inrichtings service een Verwijder aanvraag verzonden om de gebruiker permanent te verwijderen uit de toepassing. Op elk gewenst moment in het 30-daagse venster kunt u [een gebruiker permanent hand matig verwijderen](../fundamentals/active-directory-users-restore.md), waardoor een aanvraag voor verwijderen naar de toepassing wordt verzonden.
+* Een gebruiker wordt definitief verwijderd uit de Prullenbak in azure AD.
+* Een gebruiker is niet toegewezen vanuit een app.
+* Een gebruiker gaat van binnen bereik tot buiten bereik (geeft geen bereik filter meer toe).
+    
+De Azure AD-inrichtings service laadt standaard gebruikers die buiten het bereik vallen, of schakelt deze uit. Als u dit standaard gedrag wilt overschrijven, kunt u een markering instellen om [verwijderingen buiten het bereik over te slaan.](skip-out-of-scope-deletions.md)
+
+Als een van de bovenstaande vier gebeurtenissen optreedt en de doel toepassing geen tijdelijke verwijderingen ondersteunt, wordt door de inrichtings service een Verwijder aanvraag verzonden om de gebruiker definitief uit de app te verwijderen.
+
+Als u een kenmerk IsSoftDeleted in uw kenmerk toewijzingen ziet, wordt dit gebruikt om de status van de gebruiker te bepalen en of een update aanvraag met actief = False moet worden verzonden om de gebruiker te verwijderen.
+
+**Bekende beperkingen**
+
+* Als een gebruiker die voorheen werd beheerd door de inrichtings service niet is toegewezen vanuit een app of van een groep die is toegewezen aan een app, wordt een aanvraag voor uitschakelen verzonden. Op dat moment wordt de gebruiker niet beheerd door de service en wordt er geen verwijderings aanvraag verzonden wanneer deze uit de map worden verwijderd.
+* Het inrichten van een gebruiker die is uitgeschakeld in azure AD, wordt niet ondersteund. Ze moeten actief zijn in azure AD voordat ze worden ingericht.
+* Wanneer een gebruiker van zacht naar actief gaat, wordt de gebruiker in de doel-app geactiveerd door de Azure AD-inrichtings service, maar worden de groepslid maatschappen niet automatisch hersteld. De doel toepassing moet de groepslid maatschappen voor de gebruiker in inactieve status behouden. Als de doel toepassing dit niet ondersteunt, kunt u het inrichten opnieuw starten om de groepslid maatschappen bij te werken. 
+
+**Aanbeveling**
+
+Bij het ontwikkelen van een toepassing ondersteunen altijd zowel zacht verwijderen als harde verwijderingen. Hiermee kunnen klanten herstellen wanneer een gebruiker per ongeluk wordt uitgeschakeld.
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

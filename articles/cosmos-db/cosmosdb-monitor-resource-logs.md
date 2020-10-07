@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: sngun
-ms.openlocfilehash: 881ddfec587df61201f2c251fd0dd0a8164496c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9284fca6a96441ad5e6c23f9c6920ba184e03086
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85549969"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91801415"
 ---
 # <a name="monitor-azure-cosmos-db-data-by-using-diagnostic-settings-in-azure"></a>Azure Cosmos DB gegevens bewaken met behulp van diagnostische instellingen in azure
 
@@ -71,7 +71,7 @@ Metrische platform gegevens en de activiteiten logboeken worden automatisch verz
 Zie voor gedetailleerde informatie over het maken van een diagnostische instelling met behulp van de Azure Portal, CLI of Power shell de [Diagnostische instelling maken voor het verzamelen van platform logboeken en metrische gegevens in azure](../azure-monitor/platform/diagnostic-settings.md) article.
 
 
-## <a name="troubleshoot-issues-with-diagnostics-queries"></a><a id="diagnostic-queries"></a>Problemen met diagnostische query's oplossen
+## <a name="troubleshoot-issues-with-diagnostics-queries"></a><a id="diagnostic-queries"></a> Problemen met diagnostische query's oplossen
 
 1. Query's uitvoeren voor de bewerkingen die langer dan drie milliseconden duren om uit te voeren:
 
@@ -99,12 +99,12 @@ Zie voor gedetailleerde informatie over het maken van een diagnostische instelli
    | render timechart
    ```
     
-1. De statistieken van de partitie sleutel voor het evalueren van schuine lagen voor de meeste drie partities voor database accounts:
+1. Partitie sleutel statistieken ophalen om schuine lagen voor de eerste drie partities voor een database account te evalueren:
 
    ```Kusto
    AzureDiagnostics 
    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="PartitionKeyStatistics" 
-   | project SubscriptionId, regionName_s, databaseName_s, collectionname_s, partitionkey_s, sizeKb_s, ResourceId 
+   | project SubscriptionId, regionName_s, databaseName_s, collectionName_s, partitionKey_s, sizeKb_d, ResourceId 
    ```
 
 1. Hoe kunt u de aanvraag kosten voor dure query's ophalen?
@@ -214,14 +214,6 @@ Zie voor gedetailleerde informatie over het maken van een diagnostische instelli
    | where todouble(sizeKb_d) > 800000
    ```
 
-1. Hoe kan ik de statistieken van een partitie sleutel ophalen om het hellen van de drie partities voor het database account te evalueren?
-
-   ```Kusto
-   AzureDiagnostics 
-   | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="PartitionKeyStatistics" 
-   | project SubscriptionId, regionName_s, databaseName_s, collectionName_s, partitionKey_s, sizeKb_d, ResourceId
-   ```
-
 1. Hoe kan ik P99-of P50-replicatie latentie ophalen voor bewerkingen, kosten voor aanvragen of de lengte van het antwoord?
 
    ```Kusto
@@ -238,7 +230,7 @@ Zie voor gedetailleerde informatie over het maken van een diagnostische instelli
  
 1. Hoe kan ik Controlplane-logboeken ophalen?
  
-   Vergeet niet om te scha kelen naar een vlag zoals beschreven in de [meta gegevens voor schrijven op basis van sleutels uitschakelen](audit-control-plane-logs.md#disable-key-based-metadata-write-access) articleand de bewerkingen uit te voeren via Azure POWERSHELL, CLI of arm.
+   Vergeet niet om over te scha kelen op de vlag zoals beschreven in het artikel [schrijf toegang op basis van meta gegevens uitschakelen](audit-control-plane-logs.md#disable-key-based-metadata-write-access) en de bewerkingen uit te voeren met behulp van Azure PowerShell, de Azure CLI of Azure Resource Manager.
  
    ```Kusto  
    AzureDiagnostics 

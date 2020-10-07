@@ -4,12 +4,12 @@ description: Hiermee wordt een overzicht gegeven van de ondersteuning voor herst
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: raynew
-ms.openlocfilehash: fb2c048580022f44af30178070a6c2b84ce54df1
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.openlocfilehash: 786947a03440cc837f9d104d43e8061c80a0844c
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91728740"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803089"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Ondersteuningsmatrix voor herstel na noodgeval van Azure-VM's tussen Azure-regio's
 
@@ -20,7 +20,7 @@ In dit artikel vindt u een overzicht van de ondersteuning en vereisten voor hers
 
 **Implementatie** |  **Ondersteuning**
 --- | ---
-**Azure Portal** | Ondersteund.
+**Azure-portal** | Ondersteund.
 **PowerShell** | Ondersteund. [Meer informatie](azure-to-azure-powershell.md)
 **REST API** | Ondersteund.
 **CLI** | Momenteel niet ondersteund
@@ -273,7 +273,7 @@ Premium P20 of P30 of P40 of P50 schijf | 16 kB of meer |20 MB/s | 1684 GB per s
 **Instelling** | **Ondersteuning** | **Details**
 --- | --- | ---
 NIC | Maximum aantal dat wordt ondersteund voor een specifieke Azure VM-grootte | Nic's worden gemaakt wanneer de virtuele machine wordt gemaakt tijdens de failover.<br/><br/> Het aantal Nic's op de failover-VM is afhankelijk van het aantal Nic's op de bron-VM wanneer replicatie is ingeschakeld. Als u een NIC toevoegt of verwijdert nadat de replicatie is ingeschakeld, heeft dit geen invloed op het aantal Nic's op de gerepliceerde VM na een failover. <br/><br/> De volg orde van de Nic's na een failover is niet gegarandeerd hetzelfde als de oorspronkelijke volg orde. <br/><br/> U kunt de naam van de netwerk interface kaarten in de doel regio wijzigen op basis van de naamgevings regels van uw organisatie. Het wijzigen van de naam van de NIC wordt ondersteund met Power shell.
-Internet Load Balancer | Ondersteund | De vooraf geconfigureerde load balancer koppelen met behulp van een Azure Automation script in een herstel plan.
+Internet Load Balancer | Niet ondersteund | Open bare/Internet load balancer wordt niet ondersteund door Azure site Recovery.
 Interne Load Balancer | Ondersteund | De vooraf geconfigureerde load balancer koppelen met behulp van een Azure Automation script in een herstel plan.
 Openbaar IP-adres | Ondersteund | Een bestaand openbaar IP-adres koppelen aan de NIC. U kunt ook een openbaar IP-adres maken en dit koppelen aan de NIC met behulp van een Azure Automation script in een herstel plan.
 NSG op NIC | Ondersteund | Koppel de NSG aan de NIC met behulp van een Azure Automation script in een herstel plan.

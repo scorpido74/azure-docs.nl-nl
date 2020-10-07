@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: banders
-ms.openlocfilehash: 8366c0681f1ac29d9e265225dfaeeab44aa4b8ca
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6b4b5fe5d7dffbcacc804500cc1f3f8f07f0090d
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91252966"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758537"
 ---
 # <a name="add-or-update-a-credit-card-for-azure"></a>Een creditcard toevoegen of bijwerken voor Azure
 
@@ -32,7 +32,7 @@ Als u een Microsoft-klantovereenkomst hebt, zijn uw betalingswijzen gekoppeld aa
 
 ## <a name="manage-credit-cards-for-an-azure-subscription"></a>Creditcard beheren voor een Azure-abonnement
 
-De volgende secties zijn bedoeld voor klanten die een factureringsrekening voor Microsoft Online Services hebben. [Uw type factureringsrekening controleren](#check-the-type-of-your-account). Als uw type factureringsrekening het Microsoft Online Services-programma is, worden betalingswijzen gekoppeld aan afzonderlijke Azure-abonnementen. Als u een foutmelding krijgt nadat u de creditcard hebt toegevoegd, raadpleegt u [Creditcard is geweigerd tijdens de registratie](/troubleshoot-declined-card.md).
+De volgende secties zijn bedoeld voor klanten die een factureringsrekening voor Microsoft Online Services hebben. [Uw type factureringsrekening controleren](#check-the-type-of-your-account). Als uw type factureringsrekening het Microsoft Online Services-programma is, worden betalingswijzen gekoppeld aan afzonderlijke Azure-abonnementen. Als u een foutmelding krijgt nadat u de creditcard hebt toegevoegd, raadpleegt u [Creditcard is geweigerd tijdens de registratie](/azure/cost-management-billing/manage/troubleshoot-declined-card).
 
 ### <a name="change-credit-card-for-a-subscription-by-adding-a-new-credit-card"></a>Creditcard voor een abonnement wijzigen door een nieuwe creditcard toe te voegen
 

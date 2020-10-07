@@ -6,12 +6,12 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/09/2020
-ms.openlocfilehash: 34bc8e3775c2334b0cdbb22c8cad8f8d1dd5c732
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 9eb1f9162f0546e08f59391af1042becad25cf3b
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91568614"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803990"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Veelgestelde vragen over Azure Synapse Link voor Azure Cosmos DB
 
@@ -19,29 +19,29 @@ Met Azure Synapse link voor Azure Cosmos DB maakt u een nauwe integratie tussen 
 
 ## <a name="general-faq"></a>Veelgestelde algemene vragen
 
-### <a name="is-synapse-link-supported-for-all-azure-cosmos-db-apis"></a>Wordt de Synapse-koppeling ondersteund voor alle Api's van Azure Cosmos DB?
+### <a name="is-azure-synapse-link-supported-for-all-azure-cosmos-db-apis"></a>Wordt de Azure Synapse-koppeling ondersteund voor alle Api's van Azure Cosmos DB?
 
-In de open bare preview-versie wordt Synapse link ondersteund voor de Azure Cosmos DB SQL-API (core) en voor de Azure Cosmos DB-API voor MongoDB. 
+In de open bare preview-versie wordt Azure Synapse-koppeling ondersteund voor de Azure Cosmos DB SQL-API (core) en voor de Azure Cosmos DB-API voor MongoDB. 
 
-### <a name="is-synapse-link-supported-for-multi-region-azure-cosmos-accounts"></a>Wordt de Synapse-koppeling ondersteund voor Azure Cosmos-accounts met meerdere regio's?
+### <a name="is-azure-synapse-link-supported-for-multi-region-azure-cosmos-db-accounts"></a>Wordt Azure Synapse-koppeling ondersteund voor accounts met meerdere regio's Azure Cosmos DB?
 
 Ja, voor Azure Cosmos-accounts met meerdere regio's, worden de gegevens die zijn opgeslagen in de analytische opslag ook wereld wijd gedistribueerd. Analytische query's die vanuit Azure Synapse Analytics worden uitgevoerd, kunnen vanuit de dichtstbijzijnde lokale regio worden geleverd, ongeacht of er één of meer schrijfregio's zijn.
 
-Wanneer u van plan bent een Azure Cosmos-account met meerdere regio's te configureren met ondersteuning voor analytische opslag, is het raadzaam om alle benodigde regio's toe te voegen op het moment dat het account wordt gemaakt.
+Wanneer u een multi-regio Azure Cosmos DB-account met ondersteuning voor analytische opslag wilt configureren, is het raadzaam om alle benodigde regio's toe te voegen op het moment dat het account wordt gemaakt.
 
-### <a name="can-i-choose-to-enable-synapse-link-for-only-certain-region-and-not-all-regions-in-a-multi-region-account-set-up"></a>Kan ik kiezen om Synapse-koppeling in te scha kelen voor slechts bepaalde regio's en niet voor alle regio's in een account met meerdere regio's?
+### <a name="can-i-choose-to-enable-azure-synapse-link-for-only-certain-region-and-not-all-regions-in-a-multi-region-account-set-up"></a>Kan ik ervoor kiezen om de Azure Synapse-koppeling in te scha kelen voor slechts een bepaalde regio en niet voor alle regio's in een account met meerdere regio's?
 
-Wanneer de Synapse-koppeling is ingeschakeld voor een account met meerdere regio's in de preview-versie, wordt het analytische archief in alle regio's gemaakt. De onderliggende gegevens worden geoptimaliseerd voor de door Voer en transactionele consistentie in het transactionele archief.
+Wanneer Azure Synapse-koppeling is ingeschakeld voor een account met meerdere regio's, wordt in de preview-versie de analytische opslag in alle regio's gemaakt. De onderliggende gegevens worden geoptimaliseerd voor de door Voer en transactionele consistentie in het transactionele archief.
 
-### <a name="is-backup-and-restore-supported-for-synapse-link-enabled-accounts"></a>Worden back-up-en herstel bewerkingen ondersteund voor Synapse-accounts?
+### <a name="is-backup-and-restore-supported-for-azure-synapse-link-enabled-accounts"></a>Wordt back-up en herstel ondersteund voor accounts die zijn gekoppeld aan Azure Synapse?
 
-In de preview-versie wordt voor Synapse-koppeling ingeschakelde database accounts geen back-up en herstel van containers ondersteund. Als u productie werkbelastingen hebt waarvoor een back-up-en herstel functionaliteit nodig is, wordt aangeraden de Synapse-koppeling niet in te scha kelen voor deze database accounts. 
+In de preview-versie voor Azure Synapse-koppeling ingeschakelde database accounts, wordt back-up en herstel van containers niet ondersteund. Als u productie werkbelastingen hebt waarvoor een back-up-en herstel functionaliteit nodig is, wordt aangeraden de Synapse-koppeling niet in te scha kelen voor deze database accounts. 
 
-### <a name="can-i-disable-the-synapse-link-feature-for-my-azure-cosmos-account"></a>Kan ik de Synapse-koppelings functie voor mijn Azure Cosmos-account uitschakelen?
+### <a name="can-i-disable-the-azure-synapse-link-feature-for-my-azure-cosmos-db-account"></a>Kan ik de functie Azure Synapse link voor mijn Azure Cosmos DB-account uitschakelen?
 
-Nadat de Synapse Link-functie op accountniveau is ingeschakeld, kunt u deze momenteel niet uitschakelen.  Als u de mogelijkheid wilt uitschakelen, moet u een nieuw Azure Cosmos-account verwijderen en opnieuw maken.
+Nadat de Synapse Link-functie op accountniveau is ingeschakeld, kunt u deze momenteel niet uitschakelen. Als de Synapse Link-functie is ingeschakeld op accountniveau is dit niet van invloed op de facturering en zijn er geen containers met analytische opslag. 
 
-Begrijp dat u **geen** facturerings implicaties hebt als de Synapse-koppelings mogelijkheid is ingeschakeld op account niveau, maar er geen containers voor het analytische archief zijn ingeschakeld.
+Als u de mogelijkheid wilt uitschakelen, hebt u twee opties. De eerste is om een nieuw Azure Cosmos DB-account te verwijderen en opnieuw te maken, en zo nodig de gegevens te migreren. De tweede optie is om een ondersteunings ticket te openen om hulp te krijgen bij een gegevens migratie naar een ander account.
 
 ## <a name="azure-cosmos-db-analytical-store"></a>Azure Cosmos DB-analytische archief
 
@@ -49,11 +49,11 @@ Begrijp dat u **geen** facturerings implicaties hebt als de Synapse-koppelings m
 
 Op dit moment kan de analytische opslag alleen worden ingeschakeld voor nieuwe containers (zowel in nieuwe als bestaande accounts).
 
-### <a name="can-i-disable-analytical-store-on-my-azure-cosmos-containers-after-enabling-it-during-container-creation"></a>Kan ik analytische opslag op mijn Azure Cosmos-containers uitschakelen nadat ik deze heb ingeschakeld tijdens het maken van de container?
+### <a name="can-i-disable-analytical-store-on-my-azure-cosmos-db-containers-after-enabling-it-during-container-creation"></a>Kan ik de analytische opslag op mijn Azure Cosmos DB containers uitschakelen nadat ik deze heb ingeschakeld tijdens het maken van de container?
 
-Op dit moment kan de analytische opslag niet worden uitgeschakeld op een Azure Cosmos-container nadat deze is ingeschakeld tijdens het maken van de container.
+Op dit moment kan de analytische opslag niet worden uitgeschakeld op een Azure Cosmos DB-container nadat deze is ingeschakeld tijdens het maken van de container.
 
-### <a name="is-analytical-store-supported-for-azure-cosmos-containers-with-autoscale-provisioned-throughput"></a>Wordt het analytische archief ondersteund voor Azure Cosmos-containers met een door Voer ingericht voor automatisch schalen?
+### <a name="is-analytical-store-supported-for-azure-cosmos-db-containers-with-autoscale-provisioned-throughput"></a>Wordt het analytische archief ondersteund voor Azure Cosmos DB containers met een door Voer ingericht voor automatisch schalen?
 
 Ja, de analytische opslag kan worden ingeschakeld op containers met de door Voer ingericht voor automatisch schalen.
 
@@ -78,7 +78,7 @@ Op dit moment is het analytische archief niet toegankelijk vanuit Synapse SQL pr
 
 ### <a name="can-i-write-back-the-query-aggregation-results-from-synapse-back-to-the-analytical-store"></a>Kan ik de resultaten van de query aggregatie terugschrijven van Synapse terug naar de analytische opslag?
 
-Analytische opslag is een alleen-lezen archief in een Azure Cosmos-container. U kunt de aggregatie resultaten dus niet rechtstreeks naar de analytische opslag schrijven, maar ze kunnen wel naar het Azure Cosmos DB transactionele archief van een andere container schrijven, die later kunnen worden gebruikt als een te leveren laag.
+Analytische opslag is een alleen-lezen archief in een Azure Cosmos DB-container. U kunt de aggregatie resultaten dus niet rechtstreeks naar de analytische opslag schrijven, maar ze kunnen wel naar het Azure Cosmos DB transactionele archief van een andere container schrijven, die later kunnen worden gebruikt als een te leveren laag.
 
 ### <a name="is-the-autosync-replication-from-transactional-store-to-the-analytical-store-asynchronous-or-synchronous-and-what-are-the-latencies"></a>Is de automatische sync-replicatie van transactionele opslag naar de analytische opslag asynchroon of synchroon en wat zijn de latenties?
 
@@ -112,7 +112,7 @@ Alle transactionele updates en verwijderingen worden gekopieerd naar het analyti
 
 ## <a name="billing"></a>Billing
 
-### <a name="what-is-the-billing-model-of-synapse-link-for-azure-cosmos-db"></a>Wat is het facturerings model van de Synapse-koppeling voor Azure Cosmos DB?
+### <a name="what-is-the-billing-model-of-azure-synapse-link-for-azure-cosmos-db"></a>Wat is het facturerings model van de Azure Synapse-koppeling voor Azure Cosmos DB?
 
 [Azure Cosmos DB Analytical Store](analytical-store-introduction.md) is beschikbaar in open bare preview zonder kosten voor de analytische opslag tot en met 30 augustus 2020. Synapse Spark en Synapse SQL worden gefactureerd via [Synapse-service verbruik](https://azure.microsoft.com/pricing/details/synapse-analytics/).
 
@@ -120,19 +120,19 @@ Alle transactionele updates en verwijderingen worden gekopieerd naar het analyti
 
 ### <a name="what-are-the-ways-to-authenticate-with-the-analytical-store"></a>Wat zijn de manieren om te verifiëren met de analytische opslag?
 
-Verificatie met de analytische opslag is hetzelfde als een transactioneel archief. Voor een bepaalde data base kunt u verifiëren met de primaire of alleen-lezen sleutel. U kunt gebruikmaken van gekoppelde services in Synapse Studio om te voor komen dat de Azure Cosmos DB sleutels in de Spark-notebooks worden geplakt. Toegang tot deze gekoppelde service is beschikbaar voor iedereen die toegang heeft tot de werk ruimte.
+Verificatie met de analytische opslag is hetzelfde als een transactioneel archief. Voor een bepaalde data base kunt u verifiëren met de primaire of alleen-lezen sleutel. U kunt gebruikmaken van de gekoppelde service in azure Synapse Studio om te voor komen dat de Azure Cosmos DB sleutels in de Spark-notebooks worden geplakt. Toegang tot deze gekoppelde service is beschikbaar voor iedereen die toegang heeft tot de werk ruimte.
 
 ## <a name="synapse-run-times"></a>Synapse-uitvoerings tijden
 
 ### <a name="what-are-the-currently-supported-synapse-run-times-to-access-azure-cosmos-db-analytical-store"></a>Wat zijn de momenteel ondersteunde Synapse-uitvoerings tijden om toegang te krijgen tot Azure Cosmos DB Analytical Store?
 
-|Synapse-runtime |Huidige ondersteuning |
+|Azure Synapse runtime |Huidige ondersteuning |
 |---------|---------|
-|Synapse Spark-Pools | Lezen, schrijven (via transactionele Store), tabel, tijdelijke weer gave |
-|Synapse SQL serverloze    | Lezen, weer geven |
-|Synapse SQL ingericht   |  Niet beschikbaar |
+|Azure Synapse Spark-Pools | Lezen, schrijven (via transactionele Store), tabel, tijdelijke weer gave |
+|Azure Synapse SQL Serverloze Pools    | Lezen, weer geven |
+|Azure Synapse SQL ingericht   |  Niet beschikbaar |
 
-### <a name="do-my-synapse-spark-tables-sync-with-my-synapse-sql-serverless-tables-the-same-way-they-do-with-azure-data-lake"></a>Worden mijn Synapse Spark-tabellen gesynchroniseerd met mijn Synapse SQL serverloze tabellen op dezelfde manier als Azure Data Lake?
+### <a name="do-my-azure-synapse-spark-tables-sync-with-my-azure-synapse-sql-serverless-tables-the-same-way-they-do-with-azure-data-lake"></a>Synchroniseren mijn Azure Synapse Spark-tabellen met mijn Azure Synapse SQL serverloze tabellen op dezelfde manier als met Azure Data Lake?
 
 Deze functie is momenteel niet beschikbaar.
 
@@ -140,9 +140,9 @@ Deze functie is momenteel niet beschikbaar.
 
 Momenteel wordt de ondersteuning Azure Cosmos DB voor het gebruik van gewijzigde feeds van het transactionele Archief door Spark Structured streaming ondersteund en wordt het nog niet ondersteund vanuit de analytische opslag.
 
-## <a name="synapse-studio"></a>Synapse Studio
+## <a name="azure-synapse-studio"></a>Azure Synapse Studio
 
-### <a name="in-the-synapse-studio-how-do-i-recognize-if-im-connected-to-an-azure-cosmos-db-container-with-the-analytics-store-enabled"></a>Hoe kan ik in Synapse Studio herkennen of ik verbinding heb met een Azure Cosmos DB-container terwijl het Analytics-archief is ingeschakeld?
+### <a name="in-the-azure-synapse-studio-how-do-i-recognize-if-im-connected-to-an-azure-cosmos-db-container-with-the-analytics-store-enabled"></a>Hoe kan ik in azure Synapse Studio herkennen of ik verbinding heb met een Azure Cosmos DB-container terwijl het Analytics-archief is ingeschakeld?
 
 Een Azure Cosmos DB container waarvoor een analytische opslag is ingeschakeld, heeft het volgende pictogram:
 
@@ -152,12 +152,12 @@ Een transactionele opslag container wordt weer gegeven met het volgende pictogra
 
 :::image type="content" source="./media/synapse-link-frequently-asked-questions/transactional-store-icon.png" alt-text="Azure Cosmos DB container ingeschakeld met analytische archief-pictogram":::
  
-### <a name="how-do-you-pass-azure-cosmos-db-credentials-from-synapse-studio"></a>Hoe geeft u Azure Cosmos DB referenties door van Synapse Studio?
+### <a name="how-do-you-pass-azure-cosmos-db-credentials-from-azure-synapse-studio"></a>Hoe geeft u Azure Cosmos DB referenties door van Azure Synapse Studio?
 
 Er worden momenteel Azure Cosmos DB referenties door gegeven tijdens het maken van de gekoppelde service door de gebruiker die toegang heeft tot de Azure Cosmos DB-data bases. Toegang tot de Store is beschikbaar voor andere gebruikers die toegang hebben tot de werk ruimte.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over de [voor delen van Synapse-koppeling](synapse-link.md#synapse-link-benefits)
+* Meer informatie over de [voor delen van Azure Synapse link](synapse-link.md#synapse-link-benefits)
 
-* Meer informatie over de [integratie tussen de Synapse-koppeling en de Azure Cosmos DB](synapse-link.md#synapse-link-integration).
+* Meer informatie over de [integratie tussen de Azure Synapse-koppeling en de Azure Cosmos DB](synapse-link.md#synapse-link-integration).

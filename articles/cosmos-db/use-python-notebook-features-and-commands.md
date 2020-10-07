@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: dech
-ms.openlocfilehash: f4236b099915e737f9d489d89e5bf18b84736d75
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 5599a64e812c3006cf4379f98c5a0f0b0cd067e7
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87761192"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91801848"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-python-notebooks-preview"></a>Ingebouwde notebook opdrachten en-functies gebruiken in Azure Cosmos DB python-notebooks (preview)
 
@@ -164,10 +164,10 @@ Zie [PYTHON SDK](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/c
 > [!IMPORTANT]
 > De ingebouwde python-SDK wordt alleen ondersteund voor SQL-(core) API-accounts. Voor andere Api's moet u [het relevante python-stuur programma installeren](#install-a-new-package) dat overeenkomt met de API. 
 
-## <a name="create-a-custom-instance-of-cosmos_client"></a>Een aangepast exemplaar van maken``cosmos_client``
+## <a name="create-a-custom-instance-of-cosmos_client"></a>Een aangepast exemplaar van maken ``cosmos_client``
 Voor meer flexibiliteit kunt u een aangepast exemplaar van maken ``cosmos_client`` om het volgende te doen:
 
-- Het [verbindings beleid](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos.documents.connectionpolicy?view=azure-python-preview) aanpassen
+- Het [verbindings beleid](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos.documents.connectionpolicy?view=azure-python-preview&preserve-view=true) aanpassen
 - Voer bewerkingen uit voor een ander Azure Cosmos-account dan dat waarin u zich bevindt
 
 U kunt toegang krijgen tot de connection string en de primaire sleutel van het huidige account via de [omgevings variabelen](#access-the-account-endpoint-and-primary-key-env-variables). 
@@ -200,7 +200,7 @@ primary_key = COSMOS.KEY
 ## <a name="reset-notebooks-workspace"></a>Werk ruimte notitie blokken opnieuw instellen
 Als u de werk ruimte notitie blokken opnieuw wilt instellen op de standaard instellingen, selecteert u **werk ruimte opnieuw instellen** op de opdracht balk. Hiermee worden alle aangepaste geïnstalleerde pakketten verwijderd en wordt de Jupyter-server opnieuw gestart. Uw notitie blokken, bestanden en Azure Cosmos-resources worden niet beïnvloed.  
 
-:::image type="content" source="media/use-notebook-features-and-commands/reset-workspace.png" alt-text="Werk ruimte notitie blokken opnieuw instellen":::
+:::image type="content" source="media/use-notebook-features-and-commands/reset-workspace.png" alt-text="nteract Data Explorer":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

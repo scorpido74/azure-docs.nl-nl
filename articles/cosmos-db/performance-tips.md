@@ -7,14 +7,14 @@ ms.topic: how-to
 ms.date: 06/26/2020
 ms.author: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: bdf512c66958338992c5959f8e00b4589850ff33
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: efedfb9701d12548b80eccda9cd2aa29bc644ac2
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89008366"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802137"
 ---
-# <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>Tips voor betere prestaties voor Azure Cosmos DB en .NET SDK v2
+# <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>Tips voor betere prestaties van Azure Cosmos DB en .NET SDK v2
 
 > [!div class="op_single_selector"]
 > * [.NET SDK v3](performance-tips-dotnet-sdk-v3-sql.md)
@@ -42,7 +42,7 @@ De [.net v3 SDK](https://github.com/Azure/azure-cosmos-dotnet-v3) wordt uitgebra
 
 U wordt aangeraden Windows 64-bits host te verwerken voor betere prestaties. De SQL SDK bevat een systeem eigen ServiceInterop.dll om query's lokaal te parseren en te optimaliseren. ServiceInterop.dll wordt alleen ondersteund op het Windows x64-platform. Voor Linux en andere niet-ondersteunde platforms waarbij ServiceInterop.dll niet beschikbaar is, wordt er een extra netwerk aanroep naar de gateway verzonden om de geoptimaliseerde query te krijgen. De volgende typen toepassingen gebruiken standaard 32-bits host verwerking. Voer de volgende stappen uit op basis van het type van uw toepassing om de verwerking van de host te wijzigen in 64-bits verwerking:
 
-- Voor uitvoer bare toepassingen kunt u de verwerking van een host wijzigen door het [platform doel](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019) in te stellen op **x64**  in het venster **project eigenschappen** op het tabblad **opbouwen** .
+- Voor uitvoer bare toepassingen kunt u de verwerking van een host wijzigen door het [platform doel](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019&preserve-view=true) in te stellen op **x64**  in het venster **project eigenschappen** op het tabblad **opbouwen** .
 
 - Voor VSTest test projecten kunt u de verwerking van de host wijzigen door test **Test**  >  **instellingen**testen  >  **standaard processor architectuur als x64** te selecteren in het menu van Visual Studio **testen** .
 
@@ -203,7 +203,7 @@ Om het aantal netwerk round trips te verminderen dat vereist is om alle toepasse
 > [!NOTE] 
 > De `maxItemCount` eigenschap mag niet alleen worden gebruikt voor paginering. Het belangrijkste gebruik is het verbeteren van de prestaties van query's door het maximum aantal items te verminderen dat op één pagina wordt geretourneerd.  
 
-U kunt ook de pagina grootte instellen met behulp van de beschik bare Azure Cosmos DB Sdk's. Met de eigenschap [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet) in `FeedOptions` kunt u het maximum aantal items instellen dat in de opsommings bewerking moet worden geretourneerd. Wanneer `maxItemCount` is ingesteld op-1, detecteert de SDK automatisch de optimale waarde, afhankelijk van de grootte van het document. Bijvoorbeeld:
+U kunt ook de pagina grootte instellen met behulp van de beschik bare Azure Cosmos DB Sdk's. Met de eigenschap [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet&preserve-view=true) in `FeedOptions` kunt u het maximum aantal items instellen dat in de opsommings bewerking moet worden geretourneerd. Wanneer `maxItemCount` is ingesteld op-1, detecteert de SDK automatisch de optimale waarde, afhankelijk van de grootte van het document. Bijvoorbeeld:
     
 ```csharp
 IQueryable<dynamic> authorResults = client.CreateDocumentQuery(documentCollection.SelfLink, "SELECT p.Author FROM Pages p WHERE p.Title = 'About Seattle'", new FeedOptions { MaxItemCount = 1000 });

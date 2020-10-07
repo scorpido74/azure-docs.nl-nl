@@ -10,12 +10,12 @@ ms.date: 12/11/2019
 ms.topic: conceptual
 ms.service: azure-remote-rendering
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3d0628777fbd6250fff4bb8347461d206d13782d
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 332213adf64e17c0935ddf612acac5bbca413a87
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90561870"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802290"
 ---
 # <a name="graphics-binding"></a>Afbeeldings binding
 
@@ -120,7 +120,10 @@ Waar de bovenstaande `ptr` moet een verwijzing zijn naar een systeem eigen `ABI:
 
 #### <a name="render-remote-image"></a>Externe installatie kopie weer geven
 
-Aan het begin van elk frame moet het externe frame worden weer gegeven in de back-buffer. Dit wordt gedaan door `BlitRemoteFrame` aan te roepen, waardoor zowel kleur-als diepte gegevens worden gevuld in het momenteel gekoppelde weergave doel. Het is dus belang rijk dat u dit doet nadat u de back-upbuffer hebt gebonden als een weergave doel.
+Aan het begin van elk frame moet het externe frame worden weer gegeven in de back-upbuffer. Dit wordt gedaan door `BlitRemoteFrame` aan te roepen, waardoor zowel kleur-als diepte gegevens voor beide ogen worden gevuld in het momenteel gekoppelde render-doel. Het is dus belang rijk dat u dit doet nadat u de volledige back-upbuffer hebt gebonden als een weergave doel.
+
+> [!WARNING]
+> Nadat de externe installatie kopie in de backbuffer is BLIT, moet de lokale inhoud worden gerenderd met behulp van een stereo rendering-techniek met één stap, bijvoorbeeld met behulp van **SV_RenderTargetArrayIndex**. Het gebruik van andere stereo rendering technieken, zoals het weer geven van elk oog in een afzonderlijke fase, kan leiden tot aanzienlijke prestatie vermindering of grafische artefacten en moet worden vermeden.
 
 ```cs
 AzureSession currentSession = ...;

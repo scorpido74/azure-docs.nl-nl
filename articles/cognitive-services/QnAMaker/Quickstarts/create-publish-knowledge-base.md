@@ -1,14 +1,16 @@
 ---
 title: 'Quickstart: Een knowledge base maken, trainen en publiceren - QnA Maker'
 description: U kunt een QnA Maker-knowledge base (KB) maken van uw eigen inhoud, zoals veelgestelde vragen of producthandleidingen. Dit artikel bevat een voorbeeld van het maken van een QnA Maker-knowledge base op basis van een eenvoudige webpagina met veelgestelde vragen om vragen te beantwoorden in QnA Maker.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: 3cc38ca49820b1a97ec11c890bfd0ef1670f6eef
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: 1646666244eb2247d6e7127c4d4e8d39cb0af5ff
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89535846"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777685"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Quickstart: Uw QnA Maker-knowledge base maken, trainen en publiceren
 
@@ -64,7 +66,7 @@ U kunt een QnA Maker-knowledge base (KB) maken van uw eigen inhoud, zoals veelge
 
     ` * Azure QnA Maker service\n* Azure Cognitive Search\n* Azure web app\n* Azure app plan`
 
-    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/add-question-and-answer.png" alt-text="Voeg de vraag toe als tekst en het antwoord met markdown-indeling.":::
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/add-question-and-answer.png" alt-text="Schermopname van het selecteren van een knowledge base in de QnA Maker-service":::
 
     Het markdownsymbool, `*`, wordt gebruikt voor opsommingstekens. De `\n` wordt gebruikt voor een nieuwe regel.
 
@@ -81,7 +83,7 @@ Selecteer in de rechterbovenhoek **Save and train** (Opslaan en trainen) om de w
 
     `How many Azure services are used by a knowledge base?`
 
-    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-panel-in-qna-maker.png" alt-text="Voer in het tekstvak een voorbeeld van een gebruikersquery in.":::
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-panel-in-qna-maker.png" alt-text="Schermopname van het selecteren van een knowledge base in de QnA Maker-service":::
 
 1. Selecteer **Inspect** (Inspecteren) om het antwoord gedetailleerder te onderzoeken. Het testvenster wordt gebruikt om uw wijzigingen in de knowledge base te testen voordat u uw knowledge base publiceert.
 
@@ -131,7 +133,7 @@ Wanneer u wijzigingen aanbrengt in de knowledge base en deze opnieuw publiceert,
 
     De chatbot reageert met een antwoord uit uw knowledge base.
 
-    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-web-chat.png" alt-text="Voer een gebruikersquery in om de webchat testen.":::
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-web-chat.png" alt-text="Schermopname van het selecteren van een knowledge base in de QnA Maker-service":::
 
 ## <a name="what-did-you-accomplish"></a>Wat hebt u gedaan?
 

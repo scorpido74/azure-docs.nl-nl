@@ -4,17 +4,17 @@ description: Meer informatie over het overstappen van Opslaganalyse metrische ge
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/04/2020
+ms.date: 10/20/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 076f5573b599fbb83486087380174fc2da53986c
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: c6a5f69a5a32ed1279b367c93b5246eb77ef0208
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91708574"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802834"
 ---
 # <a name="transition-to-metrics-in-azure-monitor"></a>Overstappen op metrische gegevens in Azure Monitor
 
@@ -46,6 +46,8 @@ Als u wilt overstappen op metrische gegevens in Azure Monitor, raden we u aan de
 In deze sectie worden enkele belang rijke verschillen tussen deze twee metrische platformen beschreven.
 
 Het belangrijkste verschil is het beheren van metrische gegevens. Klassieke metrische gegevens worden beheerd door Azure Storage terwijl de metrische gegevens in Azure Monitor door Azure Monitor worden beheerd. Met de klassieke metrische gegevens Azure Storage worden metrische waarden verzameld, geaggregeerd en opgeslagen in tabellen die zich in het opslag account bevinden. Met metrische gegevens in Azure Monitor Azure Storage naar de Azure Monitor back-end verzonden. Azure Monitor biedt een uniforme bewakings ervaring met gegevens uit de Azure Portal en gegevens die worden opgenomen. 
+
+Klassieke metrische gegevens worden verzonden en opgeslagen in een Azure-opslag account. Azure Monitor metrieken kunnen naar meerdere locaties worden verzonden. Een opslag account kan een van deze locaties zijn, maar dit is niet vereist.  
 
 Voor de ondersteuning van metrische gegevens bieden klassieke metrische gegevens alleen metrische gegevens over de **capaciteit** voor Azure Blob Storage. Metrische gegevens in Azure Monitor bieden capaciteits metrieken voor blob-, tabel-, bestands-, wachtrij-en Premium-opslag. Klassieke metrische gegevens geven metrische gegevens over **trans acties** op blob-, tabel-, Azure-en wachtrij opslag. Metrische gegevens in Azure Monitor Premium-opslag toevoegen aan deze lijst.
 

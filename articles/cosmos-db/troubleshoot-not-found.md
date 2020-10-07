@@ -7,12 +7,12 @@ ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 1d778b4330389d23b0fe7179a005abfbd7d66d5c
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: f32a37d5d08e8b20e59455393c70e4e4d288eb11
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871102"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802393"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-not-found-exceptions"></a>Problemen vaststellen en oplossen Azure Cosmos DB niet-gevonden uitzonde ringen
 De HTTP-statuscode 404 geeft aan dat de resource niet meer bestaat.
@@ -37,7 +37,7 @@ De combi natie van de partitie sleutel en-ID is niet geldig.
 Los de toepassings logica op die de onjuiste combi natie veroorzaakt. 
 
 ### <a name="invalid-character-in-an-item-id"></a>Ongeldig teken in een item-ID
-Een item wordt ingevoegd in Azure Cosmos DB met een [ongeldig teken](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.resource.id?view=azure-dotnet#remarks) in de item-id.
+Een item wordt ingevoegd in Azure Cosmos DB met een [ongeldig teken](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.resource.id?view=azure-dotnet&preserve-view=true#remarks) in de item-id.
 
 #### <a name="solution"></a>Oplossing:
 Wijzig de ID in een andere waarde die geen speciale tekens bevat. Als het wijzigen van de ID geen optie is, kunt u de ID met Base64 coderen om de speciale tekens te escapen.
@@ -52,7 +52,7 @@ string containerRid = selfLinkSegments[3];
 Container containerByRid = this.cosmosClient.GetContainer(databaseRid, containerRid);
 
 // Invalid characters are listed here.
-//https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.resource.id?view=azure-dotnet#remarks
+//https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.resource.id?view=azure-dotnet&preserve-view=true#remarks
 FeedIterator<JObject> invalidItemsIterator = this.Container.GetItemQueryIterator<JObject>(
     @"select * from t where CONTAINS(t.id, ""/"") or CONTAINS(t.id, ""#"") or CONTAINS(t.id, ""?"") or CONTAINS(t.id, ""\\"") ");
 while (invalidItemsIterator.HasMoreResults)
@@ -96,6 +96,12 @@ De data base of container waarin het item zich bevindt, is verwijderd.
 #### <a name="solution"></a>Oplossing:
 1. [Herstel](https://docs.microsoft.com/azure/cosmos-db/online-backup-and-restore#backup-retention-period) de bovenliggende resource of maak de resources opnieuw.
 1. Maak een nieuwe resource om de verwijderde resource te vervangen.
+
+### <a name="7-containercollection-names-are-case-sensitive"></a>7. namen van containers en verzamelingen zijn hoofdletter gevoelig
+Namen van containers en verzamelingen zijn sesnsitive in Cosmos DB.
+
+#### <a name="solution"></a>Oplossing:
+Zorg ervoor dat u de exacte naam gebruikt terwijl u verbinding maakt met Cosmos DB.
 
 ## <a name="next-steps"></a>Volgende stappen
 * Problemen [vaststellen en oplossen](troubleshoot-dot-net-sdk.md) wanneer u de Azure Cosmos db .NET SDK gebruikt.
