@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: fb86b25fc24ea505ae258cc44d5554a019723af6
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: ddba41acfcfe497059a661b701906cda0d4d77c6
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019161"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91398354"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>Zelfstudie: Deel 2: de gerouteerde berichten weergeven
 
@@ -82,7 +82,7 @@ De Service Bus-wachtrij moet worden gebruikt voor het ontvangen van berichten di
 
    ![De Office365-opties](./media/tutorial-routing-view-message-routing-results/logic-app-select-outlook.png)
 
-8. Meld u aan bij uw Office 365-account voor het instellen van de verbinding. Als er een time-out optreedt, probeert u het gewoon opnieuw. Geef de e-mailadressen op voor de ontvanger(s) van de e-mailberichten. Geef tevens het onderwerp op en het type berichten dat u wilt dat de ontvanger in de hoofdtekst zal zien. Vul voor het testen uw eigen e-mailadres in als ontvanger.
+8. Meld u aan bij uw werk- of schoolaccount om de verbinding in te stellen. Als er een time-out optreedt, probeert u het gewoon opnieuw. Geef de e-mailadressen op voor de ontvanger(s) van de e-mailberichten. Geef tevens het onderwerp op en het type berichten dat u wilt dat de ontvanger in de hoofdtekst zal zien. Vul voor het testen uw eigen e-mailadres in als ontvanger.
 
    Selecteer **Dynamische inhoud toevoegen** om de inhoud weer te geven van het bericht dat u kunt opnemen. Selecteer **Inhoud**: hiermee wordt het bericht in het e-mailbericht opgenomen.
 

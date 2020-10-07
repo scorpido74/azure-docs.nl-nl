@@ -1,6 +1,6 @@
 ---
 title: 'Zelfstudie: Een winkelzoekertoepassing maken met behulp van Azure Maps | Microsoft Azure Maps'
-description: Informatie over het maken van web-apps voor winkelzoekers. Gebruik de Azure Maps Web SDK om een webpagina te maken, een query op de zoekservice uit te voeren en de resultaten op een kaart weer te geven.
+description: Zelfstudie over het maken van webtoepassingen voor winkellocators. Gebruik de Azure Maps Web SDK om een webpagina te maken, een query op de zoekservice uit te voeren en de resultaten op een kaart weer te geven.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 08/11/2020
@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 61c085cb721f9e1a8d9c44146a9d96cd5a08562c
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: 9c2160a241243b59ca7adda99fe2100d416c55be
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90085311"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335259"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Zelfstudie: Een winkelzoeker maken met behulp van Azure Maps
 
 Deze zelfstudie leidt u door het proces voor het maken van een eenvoudige winkelzoeker met behulp van Azure Maps. Winkelzoekers komen veel voor. Veel van de concepten die worden gebruikt in dit type toepassing zijn van toepassing op veel andere soorten toepassingen. Het aanbieden van een winkelzoeker aan klanten is een must voor de meeste bedrijven die rechtstreeks aan consumenten verkopen. In deze zelfstudie leert u het volgende:
-    
+
 > [!div class="checklist"]
 > * Een nieuwe webpagina maken met de Azure Map Control-API.
 > * Aangepaste gegevens laden uit een bestand en weergeven op een kaart.
@@ -924,34 +924,21 @@ Als u het formaat van het browservenster verkleint tot minder dan 700 pixels bre
 
 ![Schermopname van de versie van de winkelzoeker voor kleine schermen](./media/tutorial-create-store-locator/FinishedSimpleStoreLocatorSmallScreen.png)
 
+In deze zelfstudie hebt u geleerd hoe u een eenvoudige winkellocator kunt maken met Azure Maps. De winkelzoeker die u in deze zelfstudie maakt, heeft mogelijk alle functionaliteit die u nodig hebt. U kunt functies toevoegen aan uw winkelzoeker of meer geavanceerde functies gebruiken voor een meer aangepaste gebruikerservaring: 
+
+ * Schakel [suggesties terwijl u typt](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20Autosuggest%20and%20JQuery%20UI) in het zoekvak in.  
+ * Voeg [ondersteuning voor meerdere talen](https://azuremapscodesamples.azurewebsites.net/?sample=Map%20Localization) toe. 
+ * Geef de gebruiker de mogelijkheid [locaties langs een route te filteren](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Data%20Along%20Route). 
+ * Voeg de mogelijkheid toe om [filters in te stellen](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Symbols%20by%20Property). 
+ * Voeg ondersteuning toe voor het opgeven van een aanvankelijke zoekwaarde door een queryreeks te gebruiken. Wanneer u deze optie in uw winkelzoeker opneemt, kunnen gebruikers zoekopdrachten markeren met een bladwijzer en delen. Dit biedt ook een eenvoudige methode waarmee u zoekopdrachten naar deze pagina kunt doorgeven vanaf een andere pagina.  
+ * Implementeer uw winkelzoeker als een [Azure App Service-web-app](https://docs.microsoft.com/azure/app-service/quickstart-html). 
+ * Sla uw gegevens op in een database en zoek naar nabijgelegen locaties. Zie voor meer informatie [SQL Server spatial data types overview](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-types-overview?view=sql-server-2017&preserve-view=true) (overzicht van ruimtelijke gegevenstypen in SQL Server) en [Query spatial data for the nearest neighbor](https://docs.microsoft.com/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor?view=sql-server-2017&preserve-view=true) (ruimtelijke gegevens opvragen voor de dichtstbijzijnde buren).
+
+U kunt de [volledige broncode weergeven](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator), een [livevoorbeeld weergeven](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Simple%20Store%20Locator) en meer informatie bekijken over de dekking en mogelijkheden van Azure Maps met behulp van [zoom niveaus en tegel raster](zoom-levels-and-tile-grid.md). U kunt ook [gegevensgestuurde stijlexpressies gebruiken](data-driven-style-expressions-web-sdk.md) die u kunt toepassen op uw bedrijfslogica.
+
 ## <a name="next-steps"></a>Volgende stappen
-
-In dit zelfstudie leert u hoe u een eenvoudige winkelzoeker kunt maken met behulp van Azure Maps. De winkelzoeker die u in deze zelfstudie maakt, heeft mogelijk alle functionaliteit die u nodig hebt. U kunt functies toevoegen aan uw winkelzoeker of meer geavanceerde functies gebruiken voor een meer aangepaste gebruikerservaring: 
-
-> [!div class="checklist"]
-> * Schakel [suggesties terwijl u typt](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20Autosuggest%20and%20JQuery%20UI) in het zoekvak in.  
-> * Voeg [ondersteuning voor meerdere talen](https://azuremapscodesamples.azurewebsites.net/?sample=Map%20Localization) toe. 
-> * Geef de gebruiker de mogelijkheid [locaties langs een route te filteren](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Data%20Along%20Route). 
-> * Voeg de mogelijkheid toe om [filters in te stellen](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Symbols%20by%20Property). 
-> * Voeg ondersteuning toe voor het opgeven van een aanvankelijke zoekwaarde door een queryreeks te gebruiken. Wanneer u deze optie in uw winkelzoeker opneemt, kunnen gebruikers zoekopdrachten markeren met een bladwijzer en delen. Dit biedt ook een eenvoudige methode waarmee u zoekopdrachten naar deze pagina kunt doorgeven vanaf een andere pagina.  
-> * Implementeer uw winkelzoeker als een [Azure App Service-web-app](https://docs.microsoft.com/azure/app-service/quickstart-html). 
-> * Sla uw gegevens op in een database en zoek naar nabijgelegen locaties. Zie voor meer informatie [SQL Server spatial data types overview](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-types-overview) (overzicht van ruimtelijke gegevenstypen in SQL Server) en [Query spatial data for the nearest neighbor](https://docs.microsoft.com/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor) (ruimtelijke gegevens opvragen voor de dichtstbijzijnde buren).
-
-> [!div class="nextstepaction"]
-> [Volledige broncode weergeven](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator)
-
-> [!div class="nextstepaction"]
-> [Livevoorbeeld weergeven](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Simple%20Store%20Locator)
-
-Voor meer informatie over de dekking en de mogelijkheden van Azure Maps:
-
-> [!div class="nextstepaction"]
-> [Zoomniveaus en tegelraster](zoom-levels-and-tile-grid.md)
 
 Voor meer voorbeelden van code en interactieve codering:
 
 > [!div class="nextstepaction"]
 > [Map Control gebruiken](how-to-use-map-control.md)
-
-> [!div class="nextstepaction"]
-> [Gegevensgestuurde stijlexpressies gebruiken](data-driven-style-expressions-web-sdk.md)

@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 06/20/2020
+ms.date: 09/25/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: adcd6aa2c232bf87dc82284acbe2815484660ca7
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 49dc551039e0fd82ddb4374713c59fca2f493b62
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998557"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397943"
 ---
 # <a name="tutorial-create-your-first-search-app-using-the-net-sdk"></a>Zelfstudie: Uw eerste zoek-app maken met behulp van de .NET SDK
 
@@ -42,7 +42,7 @@ DocumentSearchResult<Hotel> results  = await _indexClient.Documents.SearchAsync<
 
 Met deze aanroep initieert u een zoekopdracht naar Azure-gegevens en worden de resultaten opgehaald.
 
-![Zoeken naar 'pool'](./media/tutorial-csharp-create-first-app/azure-search-pool.png)
+:::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-pool.png" alt-text="Zoeken naar '*pool*'" border="false":::
 
 
 ## <a name="prerequisites"></a>Vereisten
@@ -58,7 +58,7 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 1. Navigeer met Visual Studio naar en open de oplossing voor de eenvoudige zoekpagina en selecteer **Starten zonder foutopsporing** (of druk op F5).
 1. Typ enkele woorden (bijvoorbeeld 'wifi', 'view', 'bar', 'parking') en bekijk de resultaten.
 
-    ![Zoeken naar 'wifi'](./media/tutorial-csharp-create-first-app/azure-search-wifi.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-wifi.png" alt-text="Zoeken naar '*pool*'" border="false":::
 
 Hopelijk wordt dit project soepel uitgevoerd en wordt er een Azure-app uitgevoerd. Veel van de essentiële onderdelen voor complexere zoekopdrachten zijn opgenomen in deze ene app. Daarom is het een goed idee om deze te doorlopen en stap voor stap opnieuw te maken.
 
@@ -68,15 +68,15 @@ Als u dit project helemaal zelf wilt maken, en daarmee de onderdelen van Azure C
 
 1. Selecteer in Visual Studio 2017 of hoger **Nieuw/Project** en **ASP.NET Core-webtoepassing**. Geef het project een naam zoals 'FirstAzureSearchApp'.
 
-    ![Een cloudproject maken](./media/tutorial-csharp-create-first-app/azure-search-project1.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-project1.png" alt-text="Zoeken naar '*pool*'" border="false":::
 
 2. Nadat u op **OK** hebt geklikt voor dit projecttype, krijgt u een tweede set opties die van toepassing zijn op dit project. Selecteer **Web Application (Model-View-Controller)** .
 
-    ![Een MVC-project maken](./media/tutorial-csharp-create-first-app/azure-search-project2.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-project2.png" alt-text="Zoeken naar '*pool*'":::
 
 3. Selecteer nu in het menu **Extra** de optie **NuGet Package Manager** en vervolgens **NuGet-pakketten voor oplossing beheren**. Er is één pakket dat moet worden geïnstalleerd. Selecteer het tabblad **Bladeren** en typ vervolgens 'Azure Cognitive Search' in het zoekvak. Installeer **Microsoft.Azure.Search** wanneer dit wordt weergegeven in de lijst (versie 9.0.1 of hoger). U moet door een paar extra dialoogvensters klikken om de installatie te voltooien.
 
-    ![NuGet gebruiken om Azure-bibliotheken toe te voegen](./media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png" alt-text="Zoeken naar '*pool*'" border="false":::
 
 ### <a name="initialize-azure-cognitive-search"></a>Azure Cognitive Search initialiseren
 
@@ -93,7 +93,7 @@ Voor dit voorbeeld gebruiken we openbaar beschikbare hotelgegevens. Deze gegeven
 
 2. We zijn nog niet klaar met dit bestand. Selecteer de eigenschappen voor dit bestand en wijzig de instelling **Naar uitvoermap kopiëren** in **Kopiëren indien nieuwer**.
 
-    ![De app-instellingen naar de uitvoer kopiëren](./media/tutorial-csharp-create-first-app/azure-search-copy-if-newer.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-copy-if-newer.png" alt-text="Zoeken naar '*pool*'" border="false":::
 
 ## <a name="model-data-structures"></a>Gegevensstructuren modelleren
 
@@ -513,11 +513,11 @@ We gaan nu controleren of de app correct wordt uitgevoerd.
 
 1. Selecteer **Fouten opsporen/Starten zonder foutopsporing** (of druk op de toets F5). Als u alles correct hebt gecodeerd, krijgt u de initiële indexweergave.
 
-     ![De app openen](./media/tutorial-csharp-create-first-app/azure-search-index.png)
+     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-index.png" alt-text="Zoeken naar '*pool*'" border="false":::
 
 2. Voer tekst in, bijvoorbeeld 'beach' (of andere tekst die u te binnen schiet), en klik op het zoekpictogram. U moet enkele resultaten krijgen.
 
-     ![Zoeken naar 'beach'](./media/tutorial-csharp-create-first-app/azure-search-beach.png)
+     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-beach.png" alt-text="Zoeken naar '*pool*'" border="false":::
 
 3. Probeer 'five star' in te voeren. U ziet dat u geen resultaten krijgt. Een geavanceerdere zoekopdracht zou 'five star' behandelen als synoniem voor 'luxury' en deze resultaten retourneren. Het gebruik van synoniemen is beschikbaar in Azure Cognitive Search, maar we behandelen dit niet in de eerste zelfstudies.
  
@@ -533,7 +533,7 @@ Het is belangrijk om te controleren of de functies voor foutafhandeling werken z
 
 2. Voer de app uit, voer 'bar' in als zoektekst en klik op het zoekpictogram. De uitzondering moet de foutweergave tot gevolg hebben.
 
-     ![Een fout afdwingen](./media/tutorial-csharp-create-first-app/azure-search-error.png)
+     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-error.png" alt-text="Zoeken naar '*pool*'" border="false":::
 
     > [!Important]
     > Het wordt beschouwd als een beveiligingsrisico om interne foutnummers op foutpagina's te retourneren. Doe als uw app bedoeld is voor algemeen gebruik onderzoek naar veilige en beste procedures voor wat er moet worden geretourneerd als er een fout optreedt.

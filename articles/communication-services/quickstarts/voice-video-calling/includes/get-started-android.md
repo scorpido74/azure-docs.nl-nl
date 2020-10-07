@@ -6,25 +6,23 @@ ms.author: marobert
 ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 658aaf018dd4c231b9bc9fc8c6dda78b2a6f05c0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 93037d1e1c56e280458a91ae5723502bff27995b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90944822"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91377552"
 ---
-In deze quickstart leert u hoe u de clientbibliotheek voor aanroepen van Azure Communication Services voor Android start.
+In deze quickstart leert u hoe u een oproep start met behulp van de clientbibliotheek voor oproepen van Azure Communication Services voor Android.
 
 ## <a name="prerequisites"></a>Vereisten
 
 - Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 - [Android Studio](https://developer.android.com/studio), voor het maken van uw Android-toepassing.
-- Een [toegangstoken voor gebruikers](../../access-tokens.md) voor uw Azure Communication Service.
-- Een geïmplementeerde Communication Services-resource. [Een Communication Services-resource maken](../../create-communication-resource.md).
-
+- Een geïmplementeerde Communication Services-resource. [Een Communication Services maken](../../create-communication-resource.md).
+- Een [Token voor gebruikerstoegang](../../access-tokens.md) voor uw Azure Communication Service.
 
 ## <a name="setting-up"></a>Instellen
-
 
 ### <a name="create-an-android-app-with-an-empty-activity"></a>Een Android-app maken met een lege activiteit
 
@@ -34,11 +32,11 @@ Selecteer Een nieuw Android Studio-project starten in Android Studio.
 
 Selecteer de projectsjabloon Lege activiteit onder Telefoon en tablet.
 
-:::image type="content" source="../media/android/studio-blank-activity.png" alt-text="Schermopname waarin de optie Lege activiteit is geselecteerd op het scherm Projectsjabloon.":::
+:::image type="content" source="../media/android/studio-blank-activity.png" alt-text="Schermopname waarin de knop Een nieuw Android Studio-project starten is geselecteerd in Android Studio.":::
 
 Selecteer ten minste clientbibliotheek API 26: Android 8.0 (Oreo) of hoger.
 
-:::image type="content" source="../media/android/studio-calling-min-api.png" alt-text="Schermopname waarin de optie Lege activiteit is geselecteerd op het scherm Projectsjabloon 2.":::
+:::image type="content" source="../media/android/studio-calling-min-api.png" alt-text="Schermopname waarin de knop Een nieuw Android Studio-project starten is geselecteerd in Android Studio.":::
 
 
 ### <a name="install-the-package"></a>Het pakket installeren
@@ -126,9 +124,9 @@ See https://developer.android.com/about/versions/pie/android-9.0-changes-28#apac
     
 ```
 
-### <a name="setup-the-layout-for-the-app"></a>De indeling van de app instellen
+### <a name="set-up-the-layout-for-the-app"></a>De indeling van de app instellen
 
-Er moeten twee onderdelen worden ingevoerd: tekst voor de id van de persoon die de aanroep plaatst en een knop voor het plaatsen van die aanroep. U kunt deze onderdelen toevoegen via het ontwerpprogramma of door het XML-bestand van de indeling te bewerken. Maak een knop met een id van `call_button` en een tekstinvoer van `callee_id`. Ga naar (`app/src/main/res/layout/activity_main.xml`) en vervang de inhoud van het bestand door het volgende:
+Er moeten twee items worden toegevoegd: een tekstvak voor de id van de persoon die wordt gebeld en een knop om te bellen. U kunt deze onderdelen toevoegen via het ontwerpprogramma of door het XML-bestand van de indeling te bewerken. Maak een knop met een id van `call_button` en een tekstinvoer van `callee_id`. Ga naar (`app/src/main/res/layout/activity_main.xml`) en vervang de inhoud van het bestand door het volgende:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -269,7 +267,7 @@ De volgende klassen en interfaces verwerken enkele van de belangrijkste functies
 
 ## <a name="create-an-agent-from-the-user-access-token"></a>Een agent maken op basis van het toegangstoken voor gebruikers
 
-Met de gebruikerstoken kan een geverifieerde aanroepagent worden geïnstantieerd. Over het algemeen wordt dit token gegenereerd op basis van een service met een specifieke verificatie voor de toepassing. Raadpleeg de handleiding over [toegangstokens voor gebruikers](../../access-tokens.md) voor meer informatie over dit onderwerp. Voor de quickstart vervangt u `<User_Access_Token>` door een gebruikerstoegangstoken dat voor uw Azure Communication Service-resource is gegenereerd.
+Met de gebruikerstoken kan een geverifieerde aanroepagent worden geïnstantieerd. Over het algemeen wordt dit token gegenereerd op basis van een service met een specifieke verificatie voor de toepassing. Raadpleeg de handleiding over [tokens voor gebruikerstoegang](../../access-tokens.md) voor meer informatie over dit onderwerp. Voor de quickstart vervangt u `<User_Access_Token>` door een gebruikerstoegangstoken dat voor uw Azure Communication Service-resource is gegenereerd.
 
 ```java
 
@@ -291,7 +289,7 @@ private void createAgent() {
 
 ## <a name="start-a-call-using-the-call-agent"></a>Een aanroep starten met behulp van de aanroepagent
 
-U kunt de aanroep plaatsen via de aanroepagent. Hiervoor hoeft u alleen een lijst nodig met id's van personen die de aanroep plaatsen en met de aanroepopties. Voor de quickstart worden de standaardaanroepopties gebruikt, zonder video en met maar één id van een persoon die een aanroep plaatst in de tekstinvoer.
+U kunt bellen via de agent voor oproepen. Hiervoor moet u alleen een lijst met id's van personen die worden gebeld en de opties voor bellen opgeven. Voor de quickstart worden de standaardopties voor oproepen zonder video en één id van een persoon die wordt gebeld uit de tekstinvoer gebruikt.
 
 ```java
 /**
@@ -315,4 +313,8 @@ private void startCall() {
 
 De app kan nu worden gestart met behulp van de knop App uitvoeren op de werkbalk (Shift + F10). Roep `8:echo123` aan om te controleren of u aanroepen kunt plaatsen. Er wordt een vooraf opgenomen bericht afgespeeld en vervolgens wordt uw bericht aan u herhaald.
 
-:::image type="content" source="../media/android/quickstart-android-call-echobot.png" alt-text="Schermopname met de voltooide toepassing.":::
+:::image type="content" source="../media/android/quickstart-android-call-echobot.png" alt-text="Schermopname waarin de knop Een nieuw Android Studio-project starten is geselecteerd in Android Studio.":::
+
+## <a name="sample-code"></a>Voorbeeldcode
+
+U kunt de voorbeeld-app downloaden uit [GitHub](https://github.com/Azure/Communication/tree/master/samples/Add%20Voice%20Calling/Android/Java).

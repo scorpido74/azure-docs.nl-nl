@@ -1,14 +1,16 @@
 ---
 title: 'Zelfstudie: gestructureerde gegevens extraheren met machine learning-entiteit - LUIS'
 description: Gestructureerde gegevens uit een uiting extraheren met behulp van de machine learning-entiteit. Voeg subentiteiten met functies toe om de nauwkeurigheid van de extractie te vergroten.
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 05/08/2020
-ms.openlocfilehash: eb9761a3d3a98a3318fe0adc6fa170652639a9a1
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 01262ee0271849793c4393b1ea8e18c4179ad4e0
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045600"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334720"
 ---
 # <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learning-entities-in-language-understanding-luis"></a>Zelfstudie: Gestructureerde gegevens uit de uiting van de gebruiker extraheren met machine learning-entiteiten in Language Understanding (LUIS)
 
@@ -79,12 +81,12 @@ Als u details over een pizzabestelling wilt extraheren, maakt u een `Order` enti
 
 1. Selecteer **Structuur toevoegen** en selecteer dan **Volgende** in het vak **Een entiteitstype kiezen**. Structuur is nodig om subentiteiten, zoals grootte en hoeveelheid, toe te voegen.
 
-    ![Structuur toevoegen aan entiteit](media/tutorial-machine-learned-entity/add-structure-to-entity.png)
+    ![Schermopname van het venster Een entiteitstype kiezen met de optie Structuur ingeschakeld.](media/tutorial-machine-learned-entity/add-structure-to-entity.png)
 
 1. Selecteer in het vak **Subentiteiten toevoegen (optioneel)** de optie **+** op de rij `Order` en voeg vervolgens `Size` en `Quantity` toe als subentiteiten. Selecteer vervolgens **Maken**.
 
     > [!div class="mx-imgBorder"]
-    > ![Structuur toevoegen aan entiteit](media/tutorial-machine-learned-entity/add-subentities-when-creating-machine-learned-entity.png)
+    > ![Schermopname van het venster Subentiteiten toevoegen (optioneel) met subentiteiten gemarkeerd.](media/tutorial-machine-learned-entity/add-subentities-when-creating-machine-learned-entity.png)
 
 ## <a name="edit-subentities-to-improve-extraction"></a>Subentiteiten bewerken om extractie te verbeteren
 
@@ -121,7 +123,7 @@ Door een lijst met bekende grootten toe te voegen die door de clienttoepassing w
 
 
     > [!div class="mx-imgBorder"]
-    > ![Structuur toevoegen aan entiteit](media/tutorial-machine-learned-entity/size-list-entity-with-synonyms.png)
+    > ![Schermopname van het venster SizeList en Lijstitems met XLarge geselecteerd.](media/tutorial-machine-learned-entity/size-list-entity-with-synonyms.png)
 
 ### <a name="add-feature-of-sizelist-entity"></a>Functie van SizeList-entiteit toevoegen
 
@@ -160,7 +162,7 @@ Het toevoegen van een vooraf gedefinieerde cijferentiteit helpt ook bij extracti
 Selecteer op de pagina Details van entiteit voor entiteit **Bestelling** het sterretje, `*`, voor zowel de functie **@ SizeList** als de functie **@ number**. Het sterretje wordt weergegeven in hetzelfde label als de functienaam.
 
 > [!div class="mx-imgBorder"]
-> ![Structuur toevoegen aan entiteit](media/tutorial-machine-learned-entity/set-required-feature-on-subentity.png)
+> ![Schermopname van de functie @SizeList met het sterretje en de waarschuwing Vereisen.](media/tutorial-machine-learned-entity/set-required-feature-on-subentity.png)
 
 <a name="label-text-as-entities-in-example-utterances"></a>
 <a name="label-example-utterance-to-teach-luis-about-the-entity"></a>
@@ -200,7 +202,7 @@ Als u de app wilt trainen, selecteert u **Trainen**. Door te trainen worden de w
 1. Als u de voorspelling in een entiteit met een label wilt wijzigen, selecteert u het vinkje op dezelfde rij.
 
     > [!div class="mx-imgBorder"]
-    > ![Gedeeltelijke schermopname van nieuwe voorbeelduiting voorspeld met entiteit](media/tutorial-machine-learned-entity/confirm-entity-prediction-for-new-example-utterance-added.png)
+    > ![Schermopname van een voorbeelduiting waarbij het vinkje is gemarkeerd.](media/tutorial-machine-learned-entity/confirm-entity-prediction-for-new-example-utterance-added.png)
 
     Op dit moment werkt de machine learning-entiteit, omdat deze de entiteit kan vinden binnen een nieuwe voorbeelduiting. Wanneer u voorbeelduitingen toevoegt en de entiteit wordt niet correct voorspeld, labelt u de entiteit en de subentiteiten. Als de entiteit correct wordt voorspeld, moet u de voorspellingen bevestigen.
 

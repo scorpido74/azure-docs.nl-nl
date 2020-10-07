@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/06/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b5b3d1240c621a1bcdc135825e70fe164452a428
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5dc41522add580b96e178328f47bd88fc1fbf052
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86500392"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397059"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-windows-virtual-machines-in-azure"></a>Zelfstudie: Back-ups maken en bestanden herstellen voor virtuele Windows-machines in Azure
 
@@ -59,7 +59,7 @@ In dit voorbeeld laten we zien hoe u het installatiekopiebestand dat voor de sta
 
 1. Open een browser en maak verbinding met het IP-adres van de VM om de standaard IIS-pagina weer te geven.
 
-    ![Standaard IIS-webpagina](./media/tutorial-backup-vms/iis-working.png)
+    ![Schermopname met de standaard IIS-webpagina.](./media/tutorial-backup-vms/iis-working.png)
 
 1. Maak verbinding met de VM.
 1. Open **Verkenner** op de VM, navigeer naar \inetpub\wwwroot en verwijder het bestand **iisstart.png**.

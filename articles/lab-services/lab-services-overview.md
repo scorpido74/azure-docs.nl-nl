@@ -2,13 +2,13 @@
 title: Informatie over Azure Lab Services | Microsoft Docs
 description: Lees hoe u met Lab Services gemakkelijk labs kunt maken, beheren en beveiligen met virtuele machines die kunnen worden gebruikt door ontwikkelaars, testers, docenten, studenten en anderen.
 ms.topic: overview
-ms.date: 06/26/2020
-ms.openlocfilehash: 7661b26d16eb2c2acd53c30889ea791689c1eec0
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.date: 09/16/2020
+ms.openlocfilehash: ad17ebb3a803a15d1ac9ef8cb71cf8ca7976243b
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85442802"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333933"
 ---
 # <a name="an-introduction-to-azure-lab-services"></a>Een inleiding tot Azure Lab Services
 Met **Azure Lab Services** kunt u labs maken waarvan de infrastructuur wordt beheerd door Azure. Op dit moment is het leslokaallab het enige type beheerde lab dat wordt ondersteund door Azure Lab Services. De service zelf is verantwoordelijk voor het volledige beheer van de infrastructuur voor een beheerd lab, van het inrichten van VM's tot de afhandeling van fouten en het schalen van de infrastructuur. Nadat een IT-beheerder een labaccount heeft gemaakt in Azure Lab Services, kan een docent snel een lab instellen voor de klas, het aantal en type virtuele machines opgeven dat nodig is voor de klas, en gebruikers toevoegen aan de klas. Wanneer een gebruiker zich heeft geregistreerd voor de klas, heeft hij of zij toegang tot de virtuele machine om oefeningen uit te voeren voor de klas.  

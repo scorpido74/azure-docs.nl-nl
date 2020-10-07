@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/19/2017
 ms.custom: mvc
-ms.openlocfilehash: b656774762f5930c5665166a701bda7333940307
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: af8479f6460a6cc555d7ea67dcfe65c779878624
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322428"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91357859"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Runtime-uitzonderingen vinden en diagnosticeren met behulp van Azure Application Insights
 
@@ -97,7 +97,7 @@ Alle gegevens die door Application Insights worden verzameld, worden opgeslagen 
 
     ![Code](media/tutorial-runtime-exceptions/codelens.png)
 
-1. Klik op **Impact analyseren** om Application Insights Analytics te openen.  Het wordt gevuld met enkele query's die details bieden over mislukte aanvragen, zoals getroffen gebruikers, browsers en regio's.<br><br>![Analytische gegevens](media/tutorial-runtime-exceptions/analytics.png)<br>
+1. Klik op **Impact analyseren** om Application Insights Analytics te openen.  Het wordt gevuld met enkele query's die details bieden over mislukte aanvragen, zoals getroffen gebruikers, browsers en regio's.<br><br>![Schermopname toont het venster Application Insights met verschillende query's.](media/tutorial-runtime-exceptions/analytics.png)<br>
 
 ## <a name="add-work-item"></a>Werkitem toevoegen
 Als u Application Insights aansluit op een trackingsysteem zoals Azure DevOps of GitHub, kunt u direct vanuit Application Insights een werkitem maken.

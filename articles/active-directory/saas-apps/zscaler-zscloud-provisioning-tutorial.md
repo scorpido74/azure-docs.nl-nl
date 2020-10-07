@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 5e8571da46ca188e975119c387fa4ee0695c4fde
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0454ffc1ed68056b2aedc10a6e904a9a934ab223
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545706"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91333491"
 ---
 # <a name="tutorial-configure-zscaler-zscloud-for-automatic-user-provisioning"></a>Zelfstudie: Zscaler ZSCloud configureren voor het automatisch inrichten van gebruikers
 
@@ -120,7 +120,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 11. Controleer in de sectie **Kenmerktoewijzingen** de gebruikerskenmerken die vanuit Azure AD met Zscaler ZSCloud worden gesynchroniseerd. De kenmerken die als **overeenkomende** eigenschappen zijn geselecteerd, worden gebruikt om de gebruikersaccounts in Zscaler ZSCloud te vinden voor updatebewerkingen. Selecteer **Opslaan** om eventuele wijzigingen toe te passen.
 
-    ![Kenmerktoewijzingen](./media/zscaler-zscloud-provisioning-tutorial/userattributemappings.png)
+    ![Schermopname van de sectie Kenmerktoewijzingen met zeven toewijzingen weergegeven.](./media/zscaler-zscloud-provisioning-tutorial/userattributemappings.png)
 
 12. Selecteer onder het kopje **Toewijzingen** de optie **Azure Active Directory-groepen synchroniseren met Zscaler ZSCloud**:
 
@@ -128,7 +128,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 13. Controleer in de sectie **Kenmerktoewijzingen** de groepskenmerken die vanuit Azure AD met Zscaler ZSCloud worden gesynchroniseerd. De kenmerken die als **overeenkomende** eigenschappen zijn geselecteerd, worden gebruikt om de groepen in Zscaler ZSCloud te vinden voor updatebewerkingen. Selecteer **Opslaan** om eventuele wijzigingen toe te passen.
 
-    ![Kenmerktoewijzingen](./media/zscaler-zscloud-provisioning-tutorial/groupattributemappings.png)
+    ![Schermopname van de sectie Kenmerktoewijzingen met drie toewijzingen weergegeven.](./media/zscaler-zscloud-provisioning-tutorial/groupattributemappings.png)
 
 14. Raadpleeg de instructies in [de zelfstudie Bereikfilter](./../active-directory-saas-scoping-filters.md) als u bereikfilters wilt configureren.
 

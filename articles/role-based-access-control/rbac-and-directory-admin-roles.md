@@ -15,12 +15,12 @@ ms.date: 07/07/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: 8809b5fdce382b7c8f913823ca8e176226d5837b
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: b85f1d8bd7249ad26ff957a72a9cc7285158caba
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89536171"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397722"
 ---
 # <a name="classic-subscription-administrator-roles-azure-roles-and-azure-ad-roles"></a>Klassieke abonnementsbeheerdersrollen, Azure-rollen en Azure AD-rollen
 
@@ -122,7 +122,7 @@ In algemene zin worden Azure-rollen gebruikt voor het beheren van Azure-resource
 
 In het standaardscenario is er geen overlap tussen Azure-rollen en Azure AD-rollen. Als een globale beheerder zijn of haar toegang echter verhoogt door de schakeloptie **Toegangsbeheer voor Azure-resources** te kiezen in de Azure-portal, krijgt de globale beheerder de rol [Beheerder van gebruikerstoegang](built-in-roles.md#user-access-administrator) (een Azure-rol) voor alle abonnementen voor een bepaalde tenant. De rol Beheerder van gebruikerstoegang stelt de gebruiker in staat om andere gebruikers toegang te verlenen tot Azure-resources. Deze schakeloptie kan handig zijn om weer toegang te krijgen tot een abonnement. Zie voor meer informatie [Toegang verhogen om alle Azure-abonnementen en beheergroepen te beheren](elevate-access-global-admin.md).
 
-Er zijn verschillende Azure AD-rollen die Azure AD en Microsoft Office 365 overlappen, zoals de rollen Globale beheerder en Gebruikersbeheerder. Als u bijvoorbeeld lid bent van de rol Globale beheerder, hebt u de bevoegdheden van globale beheerders in Azure AD en Office 365, zoals het doorvoeren van wijzigingen in Microsoft Exchange en Microsoft SharePoint. De globale beheerder heeft echter standaard geen toegang tot Azure-resources.
+Er zijn verschillende Azure AD-rollen die Azure AD en Microsoft 365 overlappen, zoals de rollen Globale beheerder en Gebruikersbeheerder. Als u bijvoorbeeld lid bent van de rol Globale beheerder, hebt u de bevoegdheden van globale beheerders in Azure AD en Microsoft 365, zoals het doorvoeren van wijzigingen in Microsoft Exchange en Microsoft SharePoint. De globale beheerder heeft echter standaard geen toegang tot Azure-resources.
 
 ![Azure RBAC-rollen vergeleken met Azure AD-rollen](./media/rbac-and-directory-admin-roles/azure-office-roles.png)
 

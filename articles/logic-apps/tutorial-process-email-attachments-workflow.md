@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
 ms.date: 02/27/2020
-ms.openlocfilehash: 4adec4579cf1a413aeac54782b4f9a833d557ad9
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: 38b4713383368f0c64983738f2ed65f60edb9e67
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90029967"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91334086"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>Zelfstudie: Automatiseer taken om e-mails te verwerken met behulp van Azure Logic Apps, Azure Functions en Azure Storage
 
@@ -323,7 +323,7 @@ Voeg nu een voorwaarde toe waarmee er alleen e-mails met bijlagen worden geselec
 
    1. Klink in het linkervakje in de eerste rij onder **En**. Selecteer vanuit de lijst met dynamische inhoud de eigenschap **Heeft bijlage**.
 
-      ![Voorwaarde bouwen](./media/tutorial-process-email-attachments-workflow/build-condition.png)
+      ![Schermopname van de eigenschap 'And' als voorwaarde en de eigenschap 'Heeft bijlage' geselecteerd.](./media/tutorial-process-email-attachments-workflow/build-condition.png)
 
    1. In het middelste vakje behoud u **is gelijk aan** voor de operator.
 
@@ -389,7 +389,7 @@ Met deze stap wordt uw eerder gemaakte Azure-functie toegevoegd aan uw logische 
 
    ![In vertakking 'indien waar', actie toevoegen](./media/tutorial-process-email-attachments-workflow/if-true-add-action.png)
 
-1. Zoek 'azure-functies' in het zoekvak en selecteer deze actie: **Een Azure-functie kiezen - Azure Functions**
+1. Zoek 'Azure-functies' in het zoekvak en selecteer deze actie: **Een Azure-functie kiezen - Azure Functions**
 
    ![Selecteer actie voor 'Een Azure-functie kiezen'](./media/tutorial-process-email-attachments-workflow/add-action-azure-function.png)
 
@@ -458,7 +458,7 @@ Voeg vervolgens een actie toe waarmee er een blob wordt gemaakt in uw opslagcont
 
    Wanneer u klaar bent, ziet de actie eruit als in dit voorbeeld:
 
-   ![Actie 'Blob maken' voltooid](./media/tutorial-process-email-attachments-workflow/create-blob-for-email-body-done.png)
+   ![Schermopname van een voorbeeld van een voltooide bewerking 'Blob maken'.](./media/tutorial-process-email-attachments-workflow/create-blob-for-email-body-done.png)
 
 1. Sla uw logische app op.
 

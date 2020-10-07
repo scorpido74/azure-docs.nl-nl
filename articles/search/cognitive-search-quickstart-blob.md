@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/07/2020
-ms.openlocfilehash: 8fba7245475c9873a3e2d3abeda4806d1376e7ca
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.date: 09/25/2020
+ms.openlocfilehash: be45292552a7ac62c7131c637b044edc477328e2
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89300031"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91396787"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-cognitive-skillset-in-the-azure-portal"></a>Quickstart: Een cognitieve vaardighedenset van Azure Cognitive Search maken in de Azure-portal
 
@@ -50,7 +50,7 @@ Volg deze stappen om een blobcontainer in te stellen in Azure Storage om heterog
 
 1. Klik in de container op **Uploaden** om de voorbeeldbestanden te uploaden die u in de eerste stap hebt gedownload. Zoals u ziet, hebt u een breed scala aan inhoudstypen, waaronder afbeeldingen en toepassingsbestanden waarvoor zoeken in volledige tekst niet mogelijk is in de oorspronkelijke indeling.
 
-   ![Bronbestanden in Azure-blobopslag](./media/cognitive-search-quickstart-blob/sample-data.png)
+   :::image type="content" source="media/cognitive-search-quickstart-blob/sample-data.png" alt-text="Bronbestanden in Azure-blobopslag" border="false":::
 
 U kunt nu verdergaan met de wizard Gegevens importeren.
 
@@ -60,13 +60,13 @@ U kunt nu verdergaan met de wizard Gegevens importeren.
 
 1. [Ga naar uw zoekservice](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) en klik op de overzichtspagina op **Gegevens importeren** in de opdrachtbalk om in vier stappen cognitieve verrijking in te stellen.
 
-   ![Opdracht Gegevens importeren](media/cognitive-search-quickstart-blob/import-data-cmd2.png)
+   :::image type="content" source="media/cognitive-search-quickstart-blob/import-data-cmd2.png" alt-text="Bronbestanden in Azure-blobopslag" border="false":::
 
 ### <a name="step-1---create-a-data-source"></a>Stap 1: een gegevensbron maken
 
 1. Kies in **Verbinden met uw gegevens** de optie **Azure Blob-opslag**, en selecteer het account en de container die u hebt gemaakt. Geef een naam op voor de gegevensbron en gebruik standaardwaarden voor de rest. 
 
-   ![Azure-blobconfiguratie](./media/cognitive-search-quickstart-blob/blob-datasource.png)
+   :::image type="content" source="media/cognitive-search-quickstart-blob/blob-datasource.png" alt-text="Bronbestanden in Azure-blobopslag" border="false":::
 
     Ga door naar de volgende pagina.
 
@@ -76,7 +76,7 @@ Configureer vervolgens AI-verrijking om OCR, afbeeldingsanalyse en verwerking va
 
 1. Voor deze quickstart gebruiken we de **gratis** Cognitive Services-resource. De voorbeeldgegevens bestaan uit 14 bestanden. De gratis service-eenheid van 20 transacties op Cognitive Services is dus voldoende voor deze quickstart. 
 
-   ![Cognitive Services koppelen: basisservice koppelen](media/cognitive-search-quickstart-blob/cog-search-attach.png)
+   :::image type="content" source="media/cognitive-search-quickstart-blob/cog-search-attach.png" alt-text="Bronbestanden in Azure-blobopslag" border="false":::
 
 1. Vouw **Verrijkingen toevoegen** uit en maak vier selecties. 
 
@@ -86,7 +86,7 @@ Configureer vervolgens AI-verrijking om OCR, afbeeldingsanalyse en verwerking va
 
    Kies vaardigheden voor entiteitsherkenning (personen, organisaties en locaties) en afbeeldingsanalyse.
 
-   ![Cognitive Services koppelen: services voor vaardighedenset selecteren](media/cognitive-search-quickstart-blob/skillset.png)
+   :::image type="content" source="media/cognitive-search-quickstart-blob/skillset.png" alt-text="Bronbestanden in Azure-blobopslag" border="false":::
 
    Ga door naar de volgende pagina.
 
@@ -102,7 +102,7 @@ De wizard biedt goede standaardinstellingen voor deze snelstart:
 
 + **Ophaalbaar** en **Doorzoekbaar** zijn standaardkenmerken. **Doorzoekbaar** maakt zoeken in de volledige tekst van een veld mogelijk. **Ophaalbaar** betekent dat veldwaarden kunnen worden geretourneerd in resultaten. De wizard gaat ervan uit dat deze velden ophaalbaar en doorzoekbaar moeten zijn omdat u ze hebt gemaakt via een set vaardigheden.
 
-  ![Indexvelden](media/cognitive-search-quickstart-blob/index-fields.png)
+  :::image type="content" source="media/cognitive-search-quickstart-blob/index-fields.png" alt-text="Bronbestanden in Azure-blobopslag" border="false":::
 
 Let op het doorgehaalde vinkje en het vraagteken in de kolom **Ophaalbaar** voor het veld `content`. Voor blob-documenten met veel tekst bevat het veld `content` het grootste deel van het bestand, mogelijk wel duizenden regels. Een veld zoals dit is onpraktisch in zoekresultaten en u moet dit veld uitsluiten voor deze demo. 
 
@@ -118,7 +118,7 @@ De indexeerfunctie is een belangrijke resource die het indexeerproces aandrijft.
 
 1. Op de pagina **Indexeerfunctie** kunt u de standaardnaam accepteren en op de schemaoptie **Eén keer** klikken om de indexeerfunctie direct uit te voeren. 
 
-   ![Definitie van de indexeerfunctie](media/cognitive-search-quickstart-blob/indexer-def.png)
+   :::image type="content" source="media/cognitive-search-quickstart-blob/indexer-def.png" alt-text="Bronbestanden in Azure-blobopslag" border="false":::
 
 1. Klik op **Verzenden** om de indexeerfunctie te maken en tegelijkertijd uit te voeren.
 
@@ -126,7 +126,7 @@ De indexeerfunctie is een belangrijke resource die het indexeerproces aandrijft.
 
 Indexering van de cognitieve vaardigheden vergt meer tijd dan gebruikelijke indexering op basis van tekst met name OCR en afbeeldingsanalyse. Als u de voortgang wilt bewaken, gaat u naar de overzichtspagina en klikt u op **Indexeerfuncties** in het midden van de pagina.
 
-  ![Azure Cognitive Search-melding](./media/cognitive-search-quickstart-blob/indexer-notification.png)
+  :::image type="content" source="media/cognitive-search-quickstart-blob/indexer-notification.png" alt-text="Bronbestanden in Azure-blobopslag" border="false":::
 
 Waarschuwingen krijgen normaal gesproken het brede scala aan inhoudstypen. Sommige inhoudstypen zijn niet geldig voor bepaalde vaardigheden en bij lagere lagen zijn [indexeringslimieten](search-limits-quotas-capacity.md#indexer-limits) gebruikelijk. Meldingen over afkappingen van 32.000 tekens zijn bijvoorbeeld een indexeringslimiet in de Gratis laag. Als u deze demo hebt uitgevoerd in een hogere laag, verdwijnen veel waarschuwingen over afkappingen.
 
@@ -134,11 +134,11 @@ Als u waarschuwingen of fouten wilt controleren, klikt u op Waarschuwingsstatus 
 
 Klik op deze pagina nogmaals op de Waarschuwingsstatus om een lijst met waarschuwingen te zien, vergelijkbaar met de lijst hieronder. 
 
-  ![Lijst met indexeerfunctiewaarschuwingen](./media/cognitive-search-quickstart-blob/indexer-warnings.png)
+  :::image type="content" source="media/cognitive-search-quickstart-blob/indexer-warnings.png" alt-text="Bronbestanden in Azure-blobopslag" border="false":::
 
 Details worden weergegeven wanneer u op een specifieke statusregel klikt. Deze waarschuwing geeft aan dat het samenvoegen is gestopt na het bereiken van een maximumdrempel (deze specifieke PDF is groot).
 
-  ![Waarschuwingsdetails](./media/cognitive-search-quickstart-blob/warning-detail.png)
+  :::image type="content" source="media/cognitive-search-quickstart-blob/warning-detail.png" alt-text="Bronbestanden in Azure-blobopslag" border="false":::
 
 ## <a name="query-in-search-explorer"></a>Query uitvoeren in Search Explorer
 
@@ -157,7 +157,7 @@ Resultaten worden geretourneerd als JSON, wat uitgebreid en moeilijk te lezen ka
 
 Queryreeksen zijn hoofdlettergevoelig, dus als u het bericht 'onbekend veld' ontvangt, controleert u **Velden** of **Indexdefinitie (JSON)** om naam en aanvraag te controleren. 
 
-  ![Voorbeeld Search Explorer](./media/cognitive-search-quickstart-blob/search-explorer.png)
+  :::image type="content" source="media/cognitive-search-quickstart-blob/search-explorer.png" alt-text="Bronbestanden in Azure-blobopslag" border="false":::
 
 ## <a name="takeaways"></a>Opgedane kennis
 

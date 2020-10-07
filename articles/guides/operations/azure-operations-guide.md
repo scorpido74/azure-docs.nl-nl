@@ -8,12 +8,12 @@ ms.service: azure
 ms.topic: overview
 ms.workload: infrastructure
 ms.date: 08/24/2018
-ms.openlocfilehash: 0a383e8e2c38dbd00e0a55f9debb9b4daf40fa9c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 0f67939358a4395416ea28c1c459d4890ab0351d
+ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87832753"
+ms.lasthandoff: 09/27/2020
+ms.locfileid: "91397807"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Introductie voor Azure-IT-uitvoerders
 
@@ -68,7 +68,7 @@ Azure biedt verschillende oplossingen voor PaaS-computing, zoals de Web Apps-fun
 
 SaaS is software die centraal wordt gehost en beheerd. De software is doorgaans gebaseerd op een architectuur met meerdere tenants: er wordt één versie van de toepassing voor alle klanten gebruikt. De software kan worden uitgebreid naar meerdere instanties om voor de beste prestaties op alle locaties te zorgen. SaaS-software wordt doorgaans in licentie afgegeven via een maandelijks of jaarlijks abonnement. SaaS-softwareleveranciers zijn verantwoordelijk voor alle onderdelen van de software-stack. U beheert dus alleen de geleverde services.
 
-Microsoft Office 365 is een goed voorbeeld van SaaS. Abonnees betalen een maandelijks of jaarlijks tarief en ze ontvangen Microsoft Exchange, Microsoft OneDrive en de rest van de Microsoft Office-suite als een service. Abonnees krijgen altijd de meest recente versie en de Exchange-server wordt voor u beheerd. Vergeleken met Office elk jaar installeren en upgraden, is dit gemakkelijker en voordeliger.
+Microsoft 365 is een goed voorbeeld van SaaS. Abonnees betalen een maandelijks of jaarlijks tarief en ze ontvangen Microsoft Exchange, Microsoft OneDrive en de rest van de Microsoft Office-suite als een service. Abonnees krijgen altijd de meest recente versie en de Exchange-server wordt voor u beheerd. Vergeleken met Office elk jaar installeren en upgraden, is dit gemakkelijker en voordeliger.
 
 ## <a name="azure-services"></a>Azure-services
 

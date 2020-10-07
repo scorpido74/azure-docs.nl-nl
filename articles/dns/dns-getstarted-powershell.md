@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 3/11/2019
 ms.author: rohink
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 120cb86e1bacfefdd9242d8fa766b391983e9c81
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 7361f58247019584d7fb3d60cdd7f76b2e62a212
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89069460"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91355462"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-powershell"></a>Snelstart: Een Azure DNS-zone en -record maken met behulp van Azure PowerShell
 
@@ -90,7 +90,7 @@ Nu u een testzone hebt met daarin een DNS-record, kunt u de naamomzetting testen
 
    Er verschijnt een scherm dat er ongeveer als volgt uitziet:
 
-   ![nslookup](media/dns-getstarted-portal/nslookup.PNG)
+   ![In de schermafbeelding ziet u een opdrachtpromptvenster met een n s lookup-opdracht en waarden voor Server, Adres, Naam en Adres.](media/dns-getstarted-portal/nslookup.PNG)
 
 De hostnaam **www\.contoso.xyz** wordt overeenkomstig uw configuratie omgezet in **10.10.10.10**. Met dit resultaat wordt gecontroleerd of de naamomzetting juist werkt.
 

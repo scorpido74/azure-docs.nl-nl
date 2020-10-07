@@ -1,20 +1,20 @@
 ---
-title: 'Zelfstudie: Een geofence maken en apparaten bijhouden op Azure Maps'
-description: Meer informatie over hoe u een geofence kunt instellen. Zie hoe u apparaten ten opzichte van de geofence kunt volgen met behulp van de ruimtelijke service van Azure Maps.
+title: 'Zelfstudie: Een geofence maken en apparaten bijhouden op een Microsoft Azure-kaart'
+description: Zelfstudie over hoe u een geofence kunt instellen. Zie hoe u apparaten ten opzichte van de geofence kunt volgen met behulp van de ruimtelijke service van Azure Maps
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 8/11/2020
+ms.date: 8/20/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: b374bbe086281c7f7914334be6ca275f0fd05b7f
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 7a0c39b6d2369a1279fee3905083f0660a4aabb8
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90056506"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335191"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Zelfstudie: Een geofence instellen met behulp van Azure Maps
 
@@ -429,14 +429,14 @@ In het voorgaande GeoJSON-antwoord is het apparaat in de geofence van de hoofdsi
 
 In het voorgaande GeoJSON-antwoord is het apparaat in de geofence van de hoofdsite gebleven, maar is de subsite-geofence uitgegaan. U ziet echter dat de waarde `userTime` na de `expiredTime` komt, zoals gedefinieerd in de geofence-gegevens. Als gevolg hiervan wordt de parameter `isEventPublished` ingesteld op `false` en ontvangt de Operations Manager geen e-mailmelding.
 
-### <a name="location-547637988-1221338344"></a>Locatie 5(47.637988,-122.1338344)
+### <a name="location-5-4763799--122134505"></a>Locatie 5 (47.63799, -122.134505)
 
 1. Selecteer **New** (Nieuw) bovenaan de Postman-app. Selecteer **Request** (Aanvraag) in het venster **Create New** (Nieuwe maken). Voer een **Request name** (Aanvraagnaam) in voor de aanvraag. Maak er *Locatie 5* van. Selecteer de verzameling die u hebt gemaakt in de sectie [Geofencing GeoJSON-gegevens uploaden](#upload-geofencing-geojson-data)en selecteer **Opslaan**.
 
 2. Selecteer de HTTP-methode **GET** op het tabblad Builder en voer de volgende URL in. Zorg ervoor dat u `{Azure-Maps-Primary-Subscription-key}` vervangt door uw primaire abonnementssleutel en `{udid}` door de `udid` die u heb opgeslagen in de sectie [Geofencing GeoJSON-gegevens uploaden](#upload-geofencing-geojson-data).
 
     ```HTTP
-    https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.637988&lon=-122.1338344&searchBuffer=5&isAsync=True&mode=EnterAndExit
+    https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.63799&lon=-122.134505&searchBuffer=5&isAsync=True&mode=EnterAndExit
     ```
 
 3. Selecteer **Verzenden**. De volgende GeoJSON wordt in het antwoordvenster weergegeven:
@@ -469,13 +469,10 @@ In het voorgaande GeoJSON-antwoord is het apparaat in de geofence van de hoofdsi
 
 In het voorgaande GeoJSON-antwoord heeft het apparaat de geofence van de hoofdsite verlaten. Als gevolg hiervan wordt de parameter `isEventPublished` ingesteld op `true` en krijgt de Operations Manager een e-mailmelding die aangeeft dat het apparatuur een geofence heeft verlaten.
 
+
+U kunt ook [e-mail meldingen verzenden met behulp van Event Grid en logische apps](https://docs.microsoft.com/azure/event-grid/publish-iot-hub-events-to-logic-apps) en [ondersteunde gebeurtenis-handlers in Event Grid](https://docs.microsoft.com/azure/event-grid/event-handlers) controleren met behulp van Azure Maps.
+
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
 > [Typen inhoud in Azure Logic Apps afhandelen](https://docs.microsoft.com/azure/logic-apps/logic-apps-content-type)
-
-> [!div class="nextstepaction"]
-> [E-mailmeldingen verzenden met Event Grid en Logic Apps](https://docs.microsoft.com/azure/event-grid/publish-iot-hub-events-to-logic-apps)
-
-> [!div class="nextstepaction"]
-> [Ondersteunde gebeurtenis-handlers in Event Grid](https://docs.microsoft.com/azure/event-grid/event-handlers)
