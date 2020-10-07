@@ -6,12 +6,12 @@ ms.author: cshoe
 ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 06/17/2020
-ms.openlocfilehash: eb3096cadc8197aeda9258bd3123c2eb760a44af
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 948e4f74763efd641bc0f089c679cdaf7c2f784e
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540278"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530065"
 ---
 # <a name="tutorial-establish-azure-functions-private-site-access"></a>Zelfstudie: Toegang tot privésite van Azure Functions tot stand brengen
 
@@ -73,7 +73,7 @@ De eerste stap in deze zelfstudie is het maken van een nieuwe virtuele machine i
 1. Kies het tabblad _Netwerken_ en selecteer **Nieuwe maken** om een nieuw virtueel netwerk te configureren.
 
     >[!div class="mx-imgBorder"]
-    >![Maak een nieuw virtueel netwerk voor de nieuwe VM](./media/functions-create-private-site-access/create-vm-networking.png)
+    >![Schermopname van het tabblad 'Netwerken' met de actie 'Nieuwe maken' gemarkeerd in het gedeelte 'Virtueel netwerk'.](./media/functions-create-private-site-access/create-vm-networking.png)
 
 1. Gebruik in _Virtueel netwerk maken_ de instellingen in de tabel onder de afbeelding:
 

@@ -1,6 +1,6 @@
 ---
 title: Activiteiten in een pijplijn vertakken en koppelen met behulp van de Microsoft Azure-portal
-description: Leer de stroom van gegevens in Azure Data Factory beheren door activiteiten te vertakken en te koppelen.
+description: Leer de stroom van gegevens in Azure Data Factory pijplijn te beheren met behulp van de Azure-portal.
 services: data-factory
 author: djpmsft
 ms.author: daperlov
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: c046d2e437004146b5ee4c53dd98942ca1781ad4
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: b1b766e3cb337151c5ca9b35e2040a2a47124151
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983732"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568537"
 ---
 # <a name="branching-and-chaining-activities-in-an-azure-data-factory-pipeline-using-the-azure-portal"></a>Activiteiten in een Azure Data Factory-pijplijn vertakken en koppelen met behulp van de Azure-portal
 
@@ -184,7 +184,7 @@ In deze stap maakt u een pijplijn met één kopieeractiviteit en twee webactivit
    ![De kopieeractiviteit slepen en neerzetten](./media/tutorial-control-flow-portal/drag-drop-copy-activity.png)
 5. Ga in het venster **Eigenschappen** voor de **kopieeractiviteit** onderaan naar het tabblad **Bron** en klik op **+ Nieuw**. In deze stap maakt u een brongegevensset voor de kopieeractiviteit.
 
-   ![Brongegevensset](./media/tutorial-control-flow-portal/new-source-dataset-button.png)
+   ![Schermopname die laat zien hoe u een brongegevensset maakt voor de kopieeractiviteit.](./media/tutorial-control-flow-portal/new-source-dataset-button.png)
 6. Selecteer in het venster **Nieuwe gegevensset** de optie **Azure Blob Storage** en klik op **Voltooien**.
 
    ![Azure Blob Storage selecteren](./media/tutorial-control-flow-portal/select-azure-blob-storage.png)
@@ -273,7 +273,7 @@ In deze stap maakt u een pijplijn met één kopieeractiviteit en twee webactivit
         ![Instellingen voor de tweede webactiviteit](./media/tutorial-control-flow-portal/web-activity2-settings.png)         
 22. Selecteer **kopieeractiviteit** in de pijplijnontwerper en klik op de knop **+->** . Selecteer vervolgens **Fout**.  
 
-    ![Instellingen voor de tweede webactiviteit](./media/tutorial-control-flow-portal/select-copy-failure-link.png)
+    ![Schermopname die laat zien hoe u Fout selecteert in de kopieeractiviteit in de pijplijnontwerper.](./media/tutorial-control-flow-portal/select-copy-failure-link.png)
 23. Sleep de **rode** knop naast de kopieeractiviteit naar de tweede webactiviteit **SendFailureEmailActivity**. U kunt de activiteiten verplaatsen, zodat de pijplijn er uitziet zoals in de volgende afbeelding:
 
     ![Volledige pijplijn met alle activiteiten](./media/tutorial-control-flow-portal/full-pipeline.png)
@@ -304,7 +304,7 @@ In deze stap maakt u een pijplijn met één kopieeractiviteit en twee webactivit
     ![Geslaagde pijplijnuitvoering](./media/tutorial-control-flow-portal/monitor-success-pipeline-run.png)
 2. Klik op de eerste koppeling in de kolom **Acties** om de **uitvoeringen van activiteit weer te geven** die zijn gekoppeld aan deze pijplijnuitvoering. Als u wilt terugkeren naar de vorige weergave, klikt u bovenaan op **Pijplijnen**. Gebruik de knop **Vernieuwen** om de lijst te vernieuwen.
 
-    ![Uitvoering van activiteiten](./media/tutorial-control-flow-portal/activity-runs-success.png)
+    ![Schermopname die laat zien hoe u de lijst met uitvoering van activiteiten kunt bekijken.](./media/tutorial-control-flow-portal/activity-runs-success.png)
 
 ## <a name="trigger-a-pipeline-run-that-fails"></a>Een pijplijnuitvoering activeren die mislukt
 1. Ga naar het tabblad **Bewerken** aan de linkerkant.

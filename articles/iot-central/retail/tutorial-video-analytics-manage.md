@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: 76e72e8fd134c65cc9334e635375cc25e9b09a75
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: dea009d6d246d68f0686c3dc85f3518ccb13705c
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719067"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575194"
 ---
 # <a name="tutorial-monitor-and-manage-a-video-analytics---object-and-motion-detection-application"></a>Zelfstudie: Een Video Analytics-toepassingssjabloon voor object- en bewegingsdetectie bewaken en beheren
 
@@ -27,7 +27,7 @@ In deze zelfstudie leert u het volgende:
 Voordat u begint, moet u het volgende voltooien:
 
 * De zelfstudie [Een Live Video Analytics-toepassing maken in Azure IoT Central](./tutorial-video-analytics-create-app.md).
-* Een van de vorige zelfstudies: [Een IoT Edge-exemplaar voor Live Video Analytics maken (Linux-VM)](tutorial-video-analytics-iot-edge-vm.md) of [Een IoT Edge-exemplaar voor Live Video Analytics maken (Linux-VM)](tutorial-video-analytics-iot-edge-nuc.md).
+* Een van de vorige zelfstudies: [Een IoT Edge-exemplaar voor Live Video Analytics maken (Linux-VM)](tutorial-video-analytics-iot-edge-vm.md) of [Een IoT Edge-exemplaar voor Live Video Analytics maken (Intel NUC)](tutorial-video-analytics-iot-edge-nuc.md).
 
 [Docker](https://www.docker.com/products/docker-desktop) moet zijn geïnstalleerd op de lokale machine om de Video Viewer-toepassing uit te voeren.
 
@@ -61,7 +61,7 @@ Als u twee camera's hebt aangesloten op uw IoT Edge-gatewayapparaat, herhaalt u 
 
 Selecteer het tabblad **Downstreamapparaten** voor het **LVA Gateway 001**-apparaat om de camera-apparaten te zien die u zojuist hebt toegevoegd:
 
-:::image type="content" source="media/tutorial-video-analytics-manage/inspect-downstream.png" alt-text="Inspecteren":::
+:::image type="content" source="media/tutorial-video-analytics-manage/inspect-downstream.png" alt-text="Camera toevoegen":::
 
 De camera-apparaten worden ook weergegeven in de lijst op de pagina **Apparaten** in de toepassing.
 
@@ -98,7 +98,7 @@ Selecteer **Opslaan**.
 
 Na enkele seconden ziet u het bevestigingsbericht **Geaccepteerd** voor elke instelling:
 
-:::image type="content" source="media/tutorial-video-analytics-manage/object-detection.png" alt-text="Objectdetectie":::
+:::image type="content" source="media/tutorial-video-analytics-manage/object-detection.png" alt-text="Camera toevoegen":::
 
 ## <a name="start-lva-processing"></a>LVA-verwerking starten
 
@@ -108,13 +108,13 @@ Voer de opdracht **LVA-verwerking starten** uit.
 
 Wanneer de opdracht is voltooid, bekijkt u de opdrachtgeschiedenis om te controleren op eventuele fouten:
 
-:::image type="content" source="media/tutorial-video-analytics-manage/start-processing.png" alt-text="Opdracht LVA-verwerking starten":::
+:::image type="content" source="media/tutorial-video-analytics-manage/start-processing.png" alt-text="Camera toevoegen":::
 
 ## <a name="monitor-the-cameras"></a>De camera’s bewaken
 
 Ga naar het **camera-003**-apparaat en selecteer het tabblad **Dashboard**:
 
-:::image type="content" source="media/tutorial-video-analytics-manage/camera-dashboard.png" alt-text="Cameradashboard":::
+:::image type="content" source="media/tutorial-video-analytics-manage/camera-dashboard.png" alt-text="Camera toevoegen":::
 
 Op de tegel **Aantal detecties** wordt het gemiddelde aantal detecties weergegeven voor elk geselecteerde detectieklasseobject gedurende een detectie-interval van één seconde.
 
@@ -157,7 +157,7 @@ docker run -it --rm -e amsAadClientId="<FROM_AZURE_PORTAL>" -e amsAadSecret="<FR
 
 Ga naar het **camera-003**-apparaat en selecteer het tabblad **Dashboard**. Klik vervolgens op een van de hyperlinks naar de vastgelegde objectdetectie op de tegel **Video voor deductiegebeurtenis**. De video wordt vertoond op een pagina die wordt weergegeven met de lokale videospeler:
 
-:::image type="content" source="media/tutorial-video-analytics-manage/video-snippet.png" alt-text="Videofragment":::
+:::image type="content" source="media/tutorial-video-analytics-manage/video-snippet.png" alt-text="Camera toevoegen":::
 
 ## <a name="change-the-simulated-devices-in-application-dashboards"></a>De gesimuleerde apparaten op het toepassingsdashboard wijzigen
 
@@ -182,7 +182,7 @@ De toepassingsdashboards zijn oorspronkelijk gevuld met telemetrie en eigenschap
 
 Het dashboard **Monitor van echte camera** geeft nu waarden weer van het echte camera-apparaat:
 
-:::image type="content" source="media/tutorial-video-analytics-manage/update-real-cameras.png" alt-text="Toepassingsdashboard voor echte camera’s":::
+:::image type="content" source="media/tutorial-video-analytics-manage/update-real-cameras.png" alt-text="Camera toevoegen":::
 
 ## <a name="pause-processing"></a>Verwerking onderbreken
 

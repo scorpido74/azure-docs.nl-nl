@@ -4,12 +4,12 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: e6a1e65f253f33257a0e218f4d347740c07581cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 5e7bdce3a195d8171fef1963f2e389bfeec5fffb
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74795615"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91571872"
 ---
 Azure Data Factory ondersteunt de volgende transformaties, die individueel of gekoppeld aan andere activiteiten kunnen worden toegevoegd aan pijplijnen.
 
@@ -21,7 +21,7 @@ Azure Data Factory ondersteunt de volgende transformaties, die individueel of ge
 | [Hadoop-streaming](../articles/data-factory/v1/data-factory-hadoop-streaming-activity.md) |HDInsight [Hadoop] |
 | [Spark](../articles/data-factory/v1/data-factory-spark.md) | HDInsight [Hadoop] |
 | [Machine Learning-activiteiten: batchuitvoering en resources bijwerken](../articles/data-factory/v1/data-factory-azure-ml-batch-execution-activity.md) |Azure VM |
-| [Opgeslagen procedure](../articles/data-factory/v1/data-factory-stored-proc-activity.md) |Azure SQL, Azure SQL Data Warehouse of SQL Server |
+| [Opgeslagen procedure](../articles/data-factory/v1/data-factory-stored-proc-activity.md) |Azure SQL, Azure Synapse Analytics of SQL Server |
 | [Data Lake Analytics U-SQL](../articles/data-factory/v1/data-factory-usql-activity.md) |Azure Data Lake Analytics |
 | [DotNet](../articles/data-factory/v1/data-factory-use-custom-activities.md) |HDInsight [Hadoop] of Azure Batch |
 

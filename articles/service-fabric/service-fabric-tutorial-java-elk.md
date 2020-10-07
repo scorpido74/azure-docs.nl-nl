@@ -1,17 +1,15 @@
 ---
 title: Uw apps bewaken in Service Fabric met ELK in Azure
 description: In deze zelfstudie vindt u Informatie over het instellen van ELK en het controleren van uw Service Fabric-toepassingen.
-author: suhuruli
 ms.topic: tutorial
 ms.date: 02/26/2018
-ms.author: suhuruli
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: b27711158c10b0f7fa78875aec7f9c63c166258c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 5faf26230618161a5b908c9a544a43ec5c33b807
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327171"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532019"
 ---
 # <a name="tutorial-monitor-your-service-fabric-applications-using-elk"></a>Zelfstudie: Uw Service Fabric-toepassingen bewaken met ELK
 
@@ -142,7 +140,7 @@ U kunt een vooraf geconfigureerde ELK-omgeving gebruiken voor deze zelfstudie en
 
 8. Ga naar uw Kibana-dashboard op **http:\//SERVER-IP** en voer uw gebruikersnaam en wachtwoord in voor Kibana. Als u de installatiekopie voor ELK in Azure gebruikt, is de standaardgebruikersnaam 'user' en het wachtwoord hetgeen dat is verkregen van de **Diagnostische gegevens over opstarten**.
 
-    ![Kibana](./media/service-fabric-tutorial-java-elk/kibana.png)
+    ![Schermopname toont een Kibana-dashboard voor het visualiseren van platform-en toepassingslogboeken.](./media/service-fabric-tutorial-java-elk/kibana.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

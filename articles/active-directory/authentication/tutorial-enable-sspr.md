@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30a51f4b07f62b6e3491f74de78ea0d04bbb1775
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 0797ff744dbbf9fb139503d73be7d60118762ac2
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89399970"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91530728"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>Zelfstudie: Gebruikers in staat stellen hun account te ontgrendelen of wachtwoorden opnieuw in te stellen met self-service voor wachtwoordherstel voor Azure Active Directory
 
@@ -116,7 +116,7 @@ Als gebruikers extra hulp nodig hebben bij het SSPR-proces, kunt u de koppeling 
 Als SSPR is ingeschakeld en geconfigureerd, moet u het SSPR-proces testen met een gebruiker die deel uitmaakt van de groep die u in de vorige sectie hebt geselecteerd, bijvoorbeeld *Test-SSPR-Group*. In het volgende voorbeeld wordt het account voor *testuser* gebruikt. Geef uw eigen gebruikersaccount op dat deel uitmaakt van de groep die u in de eerste sectie van deze zelfstudie voor SSPR hebt ingeschakeld.
 
 > [!NOTE]
-> Gebruik een niet-beheerdersaccount als u de self-service voor wachtwoordherstel test. Beheerders kunnen altijd gebruikmaken van de self-service voor wachtwoordherstel en moeten twee verificatiemethoden gebruiken om hun wachtwoord opnieuw in te stellen.
+> Gebruik een niet-beheerdersaccount als u de self-service voor wachtwoordherstel test. Beheerders kunnen standaard gebruikmaken van de self-service voor wachtwoordherstel en moeten twee verificatiemethoden gebruiken om hun wachtwoord opnieuw in te stellen. Zie [Verschillen in beleid voor het opnieuw instellen van beheerders](concept-sspr-policy.md#administrator-reset-policy-differences) voor meer informatie.
 
 1. Als u het handmatige registratieproces wilt zien, opent u een nieuw browservenster in de InPrivate- of incognitomodus en bladert u naar [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup). Als een gebruiker zich de eerstvolgende keer aanmeldt, moet deze worden omgeleid naar deze registratieportal.
 1. Meld u aan met een testgebruiker die geen beheerder is, bijvoorbeeld *testuser*, en registreer de contactgegevens voor de verificatiemethoden.

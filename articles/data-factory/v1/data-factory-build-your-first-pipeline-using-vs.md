@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: vs-azure
 ms.date: 01/22/2018
-ms.openlocfilehash: f3c6364226288ffb6796664e89d0b7c2cc4dadf6
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 65309bbd70a6fda2bf725ce96cc5595cd9b55083
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543143"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569070"
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>Zelfstudie: Een gegevensfactory maken met behulp van Visual Studio
 > [!div class="op_single_selector" title="Tools/SDKs"]
@@ -91,7 +91,7 @@ Met de gekoppelde service HDInsight op aanvraag wordt het HDInsight-cluster auto
 #### <a name="create-azure-storage-linked-service"></a>Een gekoppelde Azure Storage-service maken
 1. Klik in Solution Explorer met de rechtermuisknop op **Linked Services**. Houd de muisaanwijzer op **Add** en klik op **New Item**.      
 2. Selecteer in het dialoogvenster **Add New Item** de optie **Azure Storage Linked Service** in de lijst en klik op **Add**.
-    ![Gekoppelde Azure Storage-service](./media/data-factory-build-your-first-pipeline-using-vs/new-azure-storage-linked-service.png)
+    ![Schermopname met een Azure Storage gekoppelde service gemarkeerd in de lijst.](./media/data-factory-build-your-first-pipeline-using-vs/new-azure-storage-linked-service.png)
 3. Vervang `<accountname>` en `<accountkey>` door de naam van uw Azure-opslagaccount en de bijbehorende sleutel. Zie [Toegangssleutels voor opslagaccounts beheren](../../storage/common/storage-account-keys-manage.md) voor informatie over het ophalen van uw toegangssleutel voor opslag.
     ![Gekoppelde Azure Storage-service](./media/data-factory-build-your-first-pipeline-using-vs/azure-storage-linked-service.png)
 4. Sla het bestand **AzureStorageLinkedService1.json** op.
@@ -368,7 +368,7 @@ In deze stap bewaakt u de pijplijn in de diagramweergave van de data factory.
 7. Klik op **X** om de blade **AzureBlobInput** te sluiten.
 8. Dubbelklik in de **diagramweergave** op de gegevensset **AzureBlobOutput**. U ziet het segment dat momenteel wordt verwerkt.
 
-   ![Gegevensset](./media/data-factory-build-your-first-pipeline-using-vs/dataset-blade.png)
+   ![Schermopname met daarin gemarkeerd de gegevensset van AzureBlobOutput.](./media/data-factory-build-your-first-pipeline-using-vs/dataset-blade.png)
 9. Als het verwerken is voltooid, ziet u dat het segment de status **Gereed** heeft.
 
    > [!IMPORTANT]

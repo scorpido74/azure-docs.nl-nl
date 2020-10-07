@@ -1,64 +1,64 @@
 ---
-title: XEvent ring-buffer code
-description: Biedt een voor beeld van de Transact-SQL-code die eenvoudig en snel kan worden gemaakt door gebruik te maken van het ring buffer doel, in Azure SQL Database.
+title: XEvent Ringbuffer-code
+description: Biedt een voorbeeld van Transact-SQL-code die eenvoudig en snel kan worden gemaakt, door gebruik te maken van het Ringbuffer-doel in Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: PowerShell
-ms.topic: conceptual
+ms.topic: sample
 author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: faba9eaf59f5d1c941bacb58ba1faf9f817d39cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 57449b0bbd39b6ea04ecae5a3ad766ae5687ca0b
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84046983"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91619828"
 ---
-# <a name="ring-buffer-target-code-for-extended-events-in-azure-sql-database"></a>Doel code ring buffer voor uitgebreide gebeurtenissen in Azure SQL Database
+# <a name="ring-buffer-target-code-for-extended-events-in-azure-sql-database"></a>Ringbuffer-doelcode voor uitgebreide gebeurtenissen in Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../../includes/sql-database-xevents-selectors-1-include.md)]
 
-U wilt een volledig code voorbeeld voor de eenvoudigste snelle manier om informatie vast te leggen en te rapporteren voor een uitgebreide gebeurtenis tijdens een test. Het eenvoudigste doel voor uitgebreide gebeurtenis gegevens is het [doel van de ring buffer](https://msdn.microsoft.com/library/ff878182.aspx).
+U wilt een volledig codevoorbeeld voor de eenvoudigste snelle manier om informatie vast te leggen en te rapporteren voor een uitgebreide gebeurtenis tijdens een test. Het eenvoudigste doel voor uitgebreide gebeurtenisgegevens is het [Ringbuffer-doel](https://msdn.microsoft.com/library/ff878182.aspx).
 
-Dit onderwerp bevat een voor beeld van een Transact-SQL-code die:
+Dit onderwerp bevat een voorbeeld van Transact-SQL-code waarmee de volgende acties worden uitgevoerd:
 
-1. Hiermee maakt u een tabel met gegevens om te demonstreren.
-2. Hiermee maakt u een sessie voor een bestaande uitgebreide gebeurtenis, namelijk **sqlserver. sql_statement_starting**.
+1. Maken van een tabel met gegevens voor een demonstratie.
+2. Maken van een sessie voor een bestaande uitgebreide gebeurtenis, namelijk **sqlserver.sql_statement_starting**.
 
-   * De gebeurtenis is beperkt tot SQL-instructies die een bepaalde update teken reeks bevatten: **instructie like% update tabEmployee%**.
-   * Hiermee wordt de uitvoer van de gebeurtenis verzonden naar een doel van het type ring buffer, te weten **package0. ring_buffer**.
-3. Hiermee wordt de gebeurtenis sessie gestart.
-4. Hiermee wordt een aantal eenvoudige SQL UPDATE-instructies beschreven.
-5. Hiermee wordt een SQL SELECT-instructie uitgegeven om gebeurtenis uitvoer van de ring buffer op te halen.
+   * De gebeurtenis is beperkt tot SQL-instructies die een bepaalde UPDATE-tekenreeks bevatten: **instructies ZOALS: %UPDATE tabEmployee%** .
+   * Kiezen voor het verzenden van de gebeurtenisuitvoer naar een Ringbuffer-doel of -type, namelijk **package0.ring_buffer**.
+3. Starten van de gebeurtenissessie.
+4. Uitgeven van een aantal eenvoudige SQL UPDATE-instructies.
+5. Uitgeven van een SQL SELECT-instructie om gebeurtenisuitvoer op te halen uit de Ringbuffer.
 
-   * **sys. dm_xe_database_session_targets** en andere dynamische beheer weergaven (dmv's) zijn gekoppeld.
-6. Hiermee stopt u de gebeurtenis sessie.
-7. De ring buffer doel neerzetten om de resources vrij te geven.
-8. De gebeurtenis sessie en de demo tabel weglaten.
+   * **sys.dm_xe_database_session_targets** en andere DMV’s (dynamische beheerweergaven) worden gekoppeld.
+6. Stoppen van de gebeurtenissessie.
+7. Verwijderen van het Ringbuffer-doel om de bijbehorende resources vrij te geven.
+8. Verwijderen van de gebeurtenissessie en de demotabel.
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Een Azure-account en -abonnement. U  kunt zich aanmelden voor een [gratis proefversie](https://azure.microsoft.com/pricing/free-trial/). 
-* Elke Data Base waarin u een tabel kunt maken.
+* Een willekeurige database waarin u een tabel kunt maken.
   
-  * U kunt desgewenst binnen enkele minuten [een **AdventureWorksLT** -demonstratie database maken](single-database-create-quickstart.md) .
-* SQL Server Management Studio (ssms.exe), de meest recente maandelijkse update versie.
-  U kunt de nieuwste ssms.exe downloaden van:
+  * U kunt optioneel in enkele minuten [een **AdventureWorksLT**-demonstratiedatabase maken](single-database-create-quickstart.md).
+* SQL Server Management Studio (ssms.exe), liefst de meest recente versie van de maandelijkse update.
+  U kunt de meest recente ssms.exe downloaden op:
   
-  * Onderwerp met de titel [down load SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
-  * [Een directe koppeling naar de down load.](https://go.microsoft.com/fwlink/?linkid=616025)
+  * Onderwerp met de titel [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
+  * [Een directe koppeling naar de download.](https://go.microsoft.com/fwlink/?linkid=616025)
 
 ## <a name="code-sample"></a>Codevoorbeeld
 
-Met een zeer kleine wijziging kan het volgende voor beeld van een ring buffer worden uitgevoerd op Azure SQL Database of Microsoft SQL Server. Het verschil is de aanwezigheid van het knoop punt ' _database ' in de naam van sommige dynamische beheer weergaven (Dmv's), die worden gebruikt in de component FROM in stap 5. Bijvoorbeeld:
+Het volgende voorbeeld van Ringbuffer-code kan met minimale wijzigingen worden uitgevoerd in Azure SQL Database of Microsoft SQL Server. Het verschil is de aanwezigheid van het knooppunt '_database' in de naam van sommige DMV’s (dynamische beheerweergaven), gebruikt in het FROM-component in Stap 5. Bijvoorbeeld:
 
-* sys. dm_xe<strong>_database</strong>_session_targets
-* sys. dm_xe_session_targets
+* sys.dm_xe<strong>_database</strong>_session_targets
+* sys.dm_xe_session_targets
 
 &nbsp;
 
@@ -214,15 +214,15 @@ GO
 
 &nbsp;
 
-## <a name="ring-buffer-contents"></a>Inhoud van ring buffer
+## <a name="ring-buffer-contents"></a>Ringbuffer-inhoud
 
-We hebben gebruikt `ssms.exe` om het code voorbeeld uit te voeren.
+We hebben `ssms.exe` gebruikt om het codevoorbeeld uit te voeren.
 
-Als u de resultaten wilt weer geven, klikt u op de cel onder de kolomkop **target_data_XML**.
+Om de resultaten te bekijken hebben we op de cel geklikt onder de kolomkop **target_data_XML**.
 
-Vervolgens klikt u in het resultaten venster op de cel onder de kolomkop **target_data_XML**. Klik op het tabblad nog een bestand maken in ssms.exe waarin de inhoud van de resultaat cel is weer gegeven als XML.
+Vervolgens hebben we in het resultatendeelvenster op de cel geklikt onder de kolomkop **target_data_XML**. Met deze klik is nog een tabblad Bestand gemaakt in ssms.exe waarop de inhoud van de resultaatcel wordt weergegeven, als XML.
 
-De uitvoer wordt weer gegeven in het volgende blok. Het lijkt lang, maar het is slechts twee **\<event>** elementen.
+De uitvoer wordt weergegeven in het volgende blok. Het lijkt lang, maar het zijn slechts twee **\<event>** -elementen.
 
 &nbsp;
 
@@ -313,9 +313,9 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM tabEmployee;
 </RingBufferTarget>
 ```
 
-### <a name="release-resources-held-by-your-ring-buffer"></a>Release-resources die worden beheerd door de ring buffer
+### <a name="release-resources-held-by-your-ring-buffer"></a>Resources vrijgeven uit de Ringbuffer
 
-Wanneer u klaar bent met de ring buffer, kunt u deze verwijderen en de resources vrijgeven die een **wijzigen** , zoals de volgende:
+Wanneer u klaar bent met de Ringbuffer, kunt u deze als volgt verwijderen en de bijbehorende resources vrijgeven die een **ALTER** uitgeven:
 
 ```sql
 ALTER EVENT SESSION eventsession_gm_azuresqldb51
@@ -324,7 +324,7 @@ ALTER EVENT SESSION eventsession_gm_azuresqldb51
 GO
 ```
 
-De definitie van uw gebeurtenis sessie wordt bijgewerkt, maar niet verwijderd. U kunt later nog een exemplaar van de ring buffer toevoegen aan uw gebeurtenis sessie:
+De definitie van uw gebeurtenissessie wordt bijgewerkt, maar niet verwijderd. U kunt later nog een exemplaar van de Ringbuffer toevoegen aan uw gebeurtenissessie:
 
 ```sql
 ALTER EVENT SESSION eventsession_gm_azuresqldb51
@@ -338,13 +338,13 @@ ALTER EVENT SESSION eventsession_gm_azuresqldb51
 
 ## <a name="more-information"></a>Meer informatie
 
-Het primaire onderwerp voor uitgebreide gebeurtenissen op Azure SQL Database is:
+Het primaire onderwerp voor uitgebreide gebeurtenissen in Azure SQL Database is:
 
-* [Uitgebreide gebeurtenis overwegingen in Azure SQL database](xevent-db-diff-from-svr.md), die een aantal aspecten van uitgebreide gebeurtenissen tegen elkaar verschillen tussen Azure SQL Database versus Microsoft SQL Server.
+* [Overwegingen voor uitgebreide gebeurtenissen in Azure SQL Database](xevent-db-diff-from-svr.md), in tegenstelling tot een aantal aspecten van uitgebreide gebeurtenissen die verschillen tussen Azure SQL Database versus Microsoft SQL Server.
 
-Andere onderwerpen over voorbeeld code voor uitgebreide gebeurtenissen vindt u op de volgende koppelingen. U moet echter regel matig een voor beeld controleren om te zien of de voor beeld-doelen Microsoft SQL Server versus Azure SQL Database. Vervolgens kunt u bepalen of er kleine wijzigingen nodig zijn om het voor beeld uit te voeren.
+Andere onderwerpen over codevoorbeelden zijn beschikbaar via de volgende koppelingen. U moet echter regelmatig een willekeurig voorbeeld controleren om te zien of het gericht is op Microsoft SQL Server versus Azure SQL Database. Vervolgens kunt u bepalen of er kleine wijzigingen nodig zijn om het voorbeeld uit te voeren.
 
-* Code voorbeeld voor Azure SQL Database: [doel code van gebeurtenis bestand voor uitgebreide gebeurtenissen in Azure SQL database](xevent-code-event-file.md)
+* Codevoorbeeld voor Azure SQL Database: [Doelcode voor gebeurtenisbestand voor uitgebreide gebeurtenissen in Azure SQL Database](xevent-code-event-file.md)
 
 <!--
 ('lock_acquired' event.)

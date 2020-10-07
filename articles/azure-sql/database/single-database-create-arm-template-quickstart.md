@@ -4,19 +4,19 @@ description: Maak een individuele database in Azure SQL Database met behulp van 
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
-ms.custom: subject-armqs sqldbrb=1, devx-track-azurecli
+ms.custom: subject-armqs sqldbrb=1
 ms.devlang: ''
 ms.topic: quickstart
 author: mumian
 ms.author: jgao
 ms.reviewer: sstein
 ms.date: 06/24/2020
-ms.openlocfilehash: a3589ec9b1a4cf652e7bcce16023a83a8b41ee5f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d53f854bc3513a97398a92ee16c34a0a74650687
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319296"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91614050"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-an-arm-template"></a>Quickstart: Een individuele database maken in Azure SQL Database via een ARM-sjabloon
 

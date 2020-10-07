@@ -9,12 +9,12 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0f81ffb5279e10c71f7d7cccfb6b738bc12e5cf4
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 6072c71fa675bd203e94f3f42814a1183b12ae8e
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90086773"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597980"
 ---
 # <a name="create-sas-definition-and-fetch-shared-access-signature-tokens-in-code"></a>SAS-definitie maken en gedeelde toegangstokens ophalen in code
 
@@ -42,6 +42,9 @@ Nadat de SAS-definitie is gemaakt, kunt u SAS-tokens zoals geheimen ophalen met 
 Als uw handtekeningtoken voor gedeelde toegang bijna is verlopen, kunt u hetzelfde geheim nogmaals ophalen om een nieuw token te genereren.
 
 Voor meer informatie over hoe u SAS-tokens uit de Key Vault gebruikt om Azure Storage-services te openen, raadpleegt u [Een account-SAS gebruiken voor toegang tot de Blob service](https://docs.microsoft.com/azure/storage/common/storage-account-sas-create-dotnet#use-an-account-sas-from-a-client)
+
+> [!NOTE]
+> Uw app moet worden voorbereid om de SAS te vernieuwen als deze een 403 vanuit Storage ontvangt, zodat u een inbreuk op een sleutel kunt afhandelen waardoor een snellere rotatie nodig is dan de normale rotatieperiode. 
 
 ## <a name="next-steps"></a>Volgende stappen
 - Meer informatie over [Beperkte toegang verlenen tot Azure Storage-resources via SAS](../../storage/common/storage-sas-overview.md).

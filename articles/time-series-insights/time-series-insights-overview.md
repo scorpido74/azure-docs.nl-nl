@@ -8,16 +8,19 @@ ms.author: dpalled
 manager: diviso
 ms.workload: big-data
 ms.topic: overview
-ms.date: 07/07/2020
+ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1ab17e2c24d106e1aec0b546a6efd05ac4c3e32f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f395f96dfa48567f95a1c50cf5403d3cbb427cb7
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87020522"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597816"
 ---
 # <a name="what-is-azure-time-series-insights-gen1"></a>Wat is Azure Time Series Insights Gen1?
+
+> [!CAUTION]
+> Dit is een Gen1-artikel.
 
 Azure Time Series Insights is gebouwd om grote volumes gegenereerde tijdreeksgegevens van IoT-apparaten op te slaan en te visualiseren of er query's op uit te voeren. Als u tijdreeksgegevens wilt opslaan, beheren, opvragen of visualiseren in de cloud, is Azure Time Series Insights waarschijnlijk de juiste keuze voor u.
 

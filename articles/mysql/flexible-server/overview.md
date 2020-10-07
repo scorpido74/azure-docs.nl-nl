@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: 4b79ee0999db0a19794cc167ae79ed6e58193b30
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 4b629ddeb1db8dd94c1c96ecb62fafb9ca7bfc60
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90945054"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569668"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL Flexible Server (preview-versie)
 
@@ -20,7 +20,7 @@ Azure Database for MySQL, mogelijk gemaakt door de MySQL Community Edition, is b
 - Single Server 
 - Flexible Server (preview)
 
-In dit artikel vindt u een overzicht van en inleiding tot kernconcepten van het implementatiemodel voor flexibele servers. 
+In dit artikel vindt u een overzicht van en inleiding tot kernconcepten van het implementatiemodel voor flexibele servers. Zie [kiezen van de juiste optie voor de MySQL-server in Azure](./../select-right-deployment-type.md) voor informatie over hoe u kunt bepalen welke implementatie-optie geschikt is voor uw werkbelasting.
 
 ## <a name="overview"></a>Overzicht
 
@@ -50,7 +50,7 @@ Als zone-redundante hoge beschikbaarheid is geconfigureerd, wordt in de service 
 
 Zie [concepten met betrekking tot hoge beschikbaarheid](concepts-high-availability.md) voor meer informatie.
 
-:::image type="content" source="media/overview/3-flexible-server-overview-zone-redundant-ha.png" alt-text="Conceptueel diagram voor zone-redundante hoge beschikbaarheid"::: 
+:::image type="content" source="media/overview/3-flexible-server-overview-zone-redundant-ha.png" alt-text="Conceptueel diagram voor hoge beschikbaarheid met één zone"::: 
 
 ## <a name="automated-patching-with-managed-maintenance-window"></a>Automatische toepassing van patches met beheerd onderhoudsvenster
 
@@ -112,6 +112,15 @@ De service voert de communityversie van MySQL uit. Dit biedt volledige toepassin
 
 - **Dumpen en herstellen**: voor offline migraties, waarbij gebruikers zich enige downtime kunnen veroorloven, kunnen dumpen en herstellen met behulp van communityhulpprogramma's, zoals mysqldump/mydumper, de snelste manier zijn voor migratie. Zie Migreren met behulp van dump en herstel voor meer informatie. 
 - **Azure Database Migration Service**: voor naadloze en vereenvoudigde migraties naar één server met minimale downtime kan [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online) worden gebruikt. 
+
+## <a name="contacts"></a>Contactpersonen
+Voor eventuele vragen of suggesties over het werken met Azure Database for MySQL stuurt u een e-mailbericht naar het Azure Database for MySQL-team ([@AskAzure DB for MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com)). Dit e-mailadres is geen alias voor technische ondersteuning.
+
+Overweeg ook de volgende aanspreekpunten, indien van toepassing:
+
+- Als u contact wilt opnemen met Azure-ondersteuning, kunt u een [ticket indienen vanuit Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+- Als u een probleem met uw account wilt oplossen, kunt u een [ondersteuningsaanvraag](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) indienen in Azure Portal.
+- Als u feedback wilt geven of een nieuwe functie wilt aanvragen, maakt u een vermelding via [UserVoice](https://feedback.azure.com/forums/597982-azure-database-for-mysql).
 
 ## <a name="next-steps"></a>Volgende stappen
 Nu u een inleiding tot de implementatiemodus voor één server van Azure Database for MySQL hebt gelezen, bent u klaar voor het volgende:

@@ -5,15 +5,15 @@ author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
 ms.author: crtreasu
-ms.date: 07/31/2020
+ms.date: 09/29/2020
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 608b488a04eafd01e6702850445801705f6dac81
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: c84ebfe9752b8594e97c7c72d706ee25c4852f6e
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810347"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538121"
 ---
 # <a name="quickstart-create-a-unity-android-app-with-azure-spatial-anchors"></a>Quickstart: Een Unity Android-app maken met Azure Spatial Anchors
 
@@ -34,7 +34,7 @@ U leert het volgende:
 
 Zorg ervoor dat u over het volgende beschikt om deze snelstart te voltooien:
 
-- Een Windows- of macOS-computer met <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019.4 (LTS)</a> met inbegrip van de Android-buildondersteuning en modules met Android SDK en NDK-hulpprogramma's.
+- Een Windows- of macOS-computer met <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019.4 (LTS)</a> met inbegrip van de **Android-buildondersteuning** en modules voor **Android SDK en NDK-hulpprogramma's** en **OpenJDK**.
   - Als u werkt met Windows, hebt u ook <a href="https://git-scm.com/download/win" target="_blank">Git voor Windows</a> en <a href="https://git-lfs.github.com/">Git LFS</a> nodig.
   - Als u werkt met macOS, kunt u Git downloaden via HomeBrew. Voer de volgende opdracht in op één regel van de terminal: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Voer vervolgens `brew install git` en `brew install git-lfs` uit.
 - Een <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">door een ontwikkelaar geactiveerd</a> en <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">voor ARCore geschikt</a> Android-apparaat.
@@ -57,6 +57,12 @@ Zorg ervoor dat u over het volgende beschikt om deze snelstart te voltooien:
 [!INCLUDE [Export Unity Project](../../../includes/spatial-anchors-unity-export-project-snip.md)]
 
 Selecteer uw apparaat in **Apparaat uitvoeren** en selecteer vervolgens **Compileren en uitvoeren**. U wordt gevraagd een `.apk`-bestand op te slaan, dat u een willekeurige naam kunt geven.
+
+Selecteer in de app **BasicDemo** met behulp van de pijlen en selecteer vervolgens de knop **Go!** om de demo uit te voeren. Volg de instructies om een anker te plaatsen en terug te halen.
+
+![Schermafbeelding 1](./media/get-started-unity-android/screenshot-1.jpg)
+![Schermafbeelding 2](./media/get-started-unity-android/screenshot-2.jpg)
+![Schermafbeelding 3](./media/get-started-unity-android/screenshot-3.jpg)
 
 Volg de instructies in de app om een anker te plaatsen en terug te halen.
 

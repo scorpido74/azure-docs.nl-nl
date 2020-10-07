@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: e4236952bd41c4955e337813ff6d706263b8ef47
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 432386809596fb2ef040a05d1fe0d12294a1abef
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "73890903"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534519"
 ---
 # <a name="tutorial-configure-devices-connected-to-your-monitoring-solution"></a>Zelfstudie: Apparaten configureren en beheren die zijn verbonden met uw bewakingsoplossing
 
@@ -66,7 +66,7 @@ Als u wilt testen of u configuratie-eigenschappen van het apparaat kunt bijwerke
 
 Voor het bijwerken van de locatie van het apparaat stelt u de taaknaam in op **UpdateEngineLocation**, de lengtegraad op **-122,15**, de locatie op **Factory 2**, de breedtegraad op **47,62** en klikt u op **Toepassen**:
 
-[![De waarde van een apparaateigenschap bijwerken](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigurephysical-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigurephysical-expanded.png#lightbox)
+[![Screenshot die de pagina 'Device explorer' toont met het venster 'Taken' gemarkeerd.](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigurephysical-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigurephysical-expanded.png#lightbox)
 
 Als u de status van de taak wilt volgen, klikt u op **Taakstatus bekijken**:
 
@@ -113,7 +113,7 @@ Maak een tekstfilter die de tagnaam **FieldService** en de waarde **SmartBuildin
 
 Maak een tekstfilter die de tagnaam **FieldService** en de waarde **ConnectedVehicle** in de voorwaarde gebruikt. Sla het filter op als **Connected Vehicle**.
 
-[![Filter Connected Vehicle maken](./media/iot-accelerators-remote-monitoring-manage/connectedvehiclefilter-inline.png)](./media/iot-accelerators-remote-monitoring-manage/connectedvehiclefilter-expanded.png#lightbox)
+[![Screenshot die de pagina 'Device explorer' toont met het venster 'Apparaatgroepen beheren' gemarkeerd.](./media/iot-accelerators-remote-monitoring-manage/connectedvehiclefilter-inline.png)](./media/iot-accelerators-remote-monitoring-manage/connectedvehiclefilter-expanded.png#lightbox)
 
 Nu kan de Contoso-operator apparaten opvragen op basis van het operationele team:
 

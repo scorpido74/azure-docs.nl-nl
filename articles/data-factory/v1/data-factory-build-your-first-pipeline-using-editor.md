@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: 4b291dcc95e0beecb1fd9fbf038055d8a77c7b79
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 50e6ce9b4c206650de72d9cdd41bdd6dd555acd2
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254970"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91566598"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>Zelfstudie: uw eerste data factory bouwen met behulp van de Azure-portal
 > [!div class="op_single_selector"]
@@ -171,7 +171,7 @@ In deze stap koppelt u een on-demand HDInsight-cluster aan uw gegevensfactory. H
 
 1. Controleer of u in de structuurweergave links zowel **AzureStorageLinkedService** als **HDInsightOnDemandLinkedService** ziet.
 
-    ![Structuurweergave met gekoppelde services](./media/data-factory-build-your-first-pipeline-using-editor/tree-view-linked-services.png)
+    ![Schermopname waarin AzureStorageLinkedService en HDInsightOnDemandLinkedService zijn gekoppeld.](./media/data-factory-build-your-first-pipeline-using-editor/tree-view-linked-services.png)
 
 ## <a name="create-datasets"></a>Gegevenssets maken
 In deze stap maakt u gegevenssets die de invoer- en uitvoergegevens voor Hive-verwerking vertegenwoordigen. Deze gegevenssets verwijzen naar AzureStorageLinkedService, die u eerder in deze zelfstudie hebt gemaakt. De gekoppelde service verwijst naar een opslagaccount. Gegevenssets bepalen de container, map en bestandsnaam in de opslag waarin de invoer- en uitvoergegevens zijn opgeslagen.   

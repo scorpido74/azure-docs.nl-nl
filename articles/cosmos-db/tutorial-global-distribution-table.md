@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.topic: tutorial
 ms.date: 01/30/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 627086bdb13acdd29821af399f90fee8deaae432
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: f0d62ae3909bc886fa6a56ba7ed32d55d27302dd
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "76900176"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568666"
 ---
 # <a name="set-up-azure-cosmos-db-global-distribution-using-the-table-api"></a>Wereldwijde distributie met Azure Cosmos DB instellen met behulp van de Table-API
 
@@ -34,7 +34,7 @@ De Azure Cosmos DB Table-API SDK kiest automatisch het beste eindpunt om mee te 
 
 * **Leesaanvragen:** Alle leesaanvragen worden verzonden naar de geconfigureerde eigenschap `CurrentRegion`. Op basis van nabijheid selecteert de SDK automatisch een geo-gerepliceerde regio om op terug te kunnen vallen, zodat hoge beschikbaarheid wordt geboden.
 
-* **Schrijfaanvragen:** De SDK verzendt alle schrijfaanvragen automatisch naar de huidige schrijfregio. In een multimaster-account verzorgt de huidige regio ook de schrijfaanvragen. Op basis van nabijheid selecteert de SDK automatisch een geo-gerepliceerde regio om op terug te kunnen vallen, zodat hoge beschikbaarheid wordt geboden.
+* **Schrijfaanvragen:** De SDK verzendt alle schrijfaanvragen automatisch naar de huidige schrijfregio. In een account met multiregio-schrijfaanvragen verzorgt de huidige regio ook de schrijfaanvragen. Op basis van nabijheid selecteert de SDK automatisch een geo-gerepliceerde regio om op terug te kunnen vallen, zodat hoge beschikbaarheid wordt geboden.
 
 Als u eigenschap `CurrentRegion` niet opgeeft, gebruikt de SDK de huidige schrijfregio voor alle bewerkingen.
 

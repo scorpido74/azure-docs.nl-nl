@@ -1,6 +1,7 @@
 ---
-title: Aan de slag met Microsoft-identiteitsplatform op Windows-bureaublad
-description: Hoe met een .NET-toepassing (XAML) voor Windows-bureaublad een token kan worden opgehaald en een API kan worden aangeroepen die is beveiligd met het Microsoft-identiteitsplatform.
+title: 'Zelfstudie: Een Windows Presentation Foundation-app (WPF) maken die gebruikmaakt van het Microsoft-identiteitsplatform voor verificatie | Azure'
+titleSuffix: Microsoft identity platform
+description: In deze zelfstudie bouwt u een WPF-app die gebruikmaakt van het Microsoft-identiteitsplatform voor het aanmelden van gebruikers. U krijgt een toegangstoken waarmee u de Microsoft Graph API namens hen kunt aanroepen.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,24 +12,32 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: a865bab690c79288bdffcd7cebe424d1bb1969c0
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 7effb1592fb19f92958353a3333edf6fdf9a51af
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "82181530"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91574259"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>De Microsoft Graph API aanroepen vanuit een Windows-bureaublad-app
 
-In deze handleiding wordt gedemonstreerd hoe een systeemeigen .NET-toepassing (XAML) voor Windows-bureaublad gebruikmaakt van een toegangstoken om de Microsoft Graph API aan te roepen. De app kan ook toegang krijgen tot andere API's waarvoor toegangstokens zijn vereist van een Microsoft-identiteitsplatformeindpunt voor ontwikkelaars v 2.0. Dit platform heette voorheen Azure AD.
+In deze handleiding wordt gedemonstreerd hoe een systeemeigen .NET-toepassing (XAML) voor Windows-bureaublad gebruikmaakt van een toegangstoken om de Microsoft Graph API aan te roepen. De app kan ook toegang krijgen tot andere API's waarvoor toegangstokens zijn vereist van het Microsoft-identiteitsplatform.
 
 Wanneer u de handleiding hebt voltooid, kan uw toepassing een beveiligde API aanroepen die gebruikmaakt van persoonlijke accounts (waaronder outlook.com, live.com en andere). De toepassing maakt ook gebruik van werk- en schoolaccounts van een bedrijf of organisatie waar Azure Active Directory wordt gebruikt.
 
-> [!NOTE]
-> Voor de handleiding is Visual Studio 2015 update 3, Visual Studio 2017 of Visual Studio 2019 vereist. Hebt u geen van deze versies? U kunt [Visual Studio 2019 gratis downloaden](https://www.visualstudio.com/downloads/).
+In deze zelfstudie:
 
->[!NOTE]
-> Als u niet bekend bent met het Microsoft-identiteitsplatform, raden we u aan om eerst [Een token verkrijgen en Microsoft Graph API aanroepen vanuit een Windows-bureaublad-app](quickstart-v2-windows-desktop.md) te raadplegen.
+> [!div class="checklist"]
+> * Een *Windows Presentation Foundation*-project (WPF) maken in Visual Studio
+> * Microsoft Authentication Library (MSAL) voor .NET installeren
+> * De app registreren in Azure Portal
+> * Code toevoegen voor de ondersteuning van het aan- en afmelden van gebruikers
+> * Code toevoegen om de Microsoft Graph API aan te roepen
+> * De app testen
+
+## <a name="prerequisites"></a>Vereisten
+
+* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Hoe de voorbeeld-app werkt die wordt gegenereerd in deze gids
 
@@ -367,3 +376,10 @@ private void DisplayBasicTokenInfo(AuthenticationResult authResult)
 Naast het toegangstoken dat wordt gebruikt om de Microsoft Graph API aan te roepen, wordt met MSAL ook een id-token opgehaald nadat de gebruiker zich heeft aangemeld. Dit token bevat een kleine subset van informatie die relevant is voor gebruikers. Met de methode `DisplayBasicTokenInfo` wordt de basis informatie weergegeven die in het token is opgenomen. Zo worden bijvoorbeeld de weergavenaam en de id van de gebruiker weergegeven, evenals de vervaldatum van het token en de tekenreeks die het toegangstoken zelf vertegenwoordigt. U kunt de knop *Microsoft Graph API aanroepen* selecteren, en zien dat hetzelfde token opnieuw is gebruikt voor latere aanvragen. U kunt ook zien tot wanneer de vervaldatum is verlengd wanneer in Microsoft Authentication Library wordt vastgesteld dat het token moet worden vernieuwd.
 
 [!INCLUDE [5. Test and Validate](../../../includes/active-directory-develop-guidedsetup-windesktop-test.md)]
+
+## <a name="next-steps"></a>Volgende stappen
+
+Meer informatie over het bouwen van bureaublad-apps die beveiligde web-API's aanroepen in deze reeks met meerdere scenario's:
+
+> [!div class="nextstepaction"]
+> [Scenario: Bureaublad-app die web-API's aanroept](scenario-desktop-overview.md)

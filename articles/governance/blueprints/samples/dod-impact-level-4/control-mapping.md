@@ -3,12 +3,12 @@ title: Beheeropties voor DoD Impact Level 4-blauwdrukvoorbeeld
 description: Beheeropties toewijzen voor het DoD Impact Level 4-blauwdrukvoorbeeld. Elke beheeroptie wordt toegewezen aan een of meer Azure-beleidsregels die helpt bij de evaluatie.
 ms.date: 09/17/2020
 ms.topic: sample
-ms.openlocfilehash: 9ee3214f8cdacd1d70a59bc5a23e4638cadb579d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 52482fae2fefa0a58e82b3af38b56db7d5b19c25
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90978410"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540554"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-4-blueprint-sample"></a>Beheeropties toewijzen voor het DoD Impact Level 4-blauwdrukvoorbeeld
 
@@ -32,7 +32,7 @@ Deze blauwdruk helpt u bij het controleren van accounts die mogelijk niet voldoe
 
 ## <a name="ac-2-7-account-management--role-based-schemes"></a>AC-2 (7) Account Management | Op rollen gebaseerde planningen
 
-In Azure wordt [op rollen gebaseerde toegangsbeheer van Azure (Azure RBAC)](../../../../role-based-access-control/overview.md) geïmplementeerd, waarmee u de toegang tot resources in Azure kunt beheren. Met behulp van de Azure-portal kunt u controleren wie toegang heeft tot Azure-resources en wat hun machtigingen zijn. Met deze blauwdruk wordt ook [Azure Policy](../../../policy/overview.md)-definities toegewezen om het gebruik van Azure Active Directory-verificatie voor SQL-servers en-Service Fabric te controleren. Met behulp van Azure Active Directory-verificatie maakt vereenvoudigd beheer van machtigingen en gecentraliseerd identiteitsbeheer van databasegebruikers en andere Microsoft-services mogelijk. Daarnaast wordt met deze blauwdruk een Azure Policy-definitie toegewezen om het gebruik van aangepaste RBAC-regels te controleren. Wanneer u weet waar aangepaste RBAC-regels zijn geïmplementeerd, kan dit u helpen om te controleren of deze nodig zijn en of deze correct zijn geïmplementeerd, omdat aangepaste RBAC-regels foutgevoelig zijn.
+In Azure wordt [op rollen gebaseerde toegangsbeheer van Azure (Azure RBAC)](../../../../role-based-access-control/overview.md) geïmplementeerd, waarmee u de toegang tot resources in Azure kunt beheren. Met behulp van de Azure-portal kunt u controleren wie toegang heeft tot Azure-resources en wat hun machtigingen zijn. Met deze blauwdruk wordt ook [Azure Policy](../../../policy/overview.md)-definities toegewezen om het gebruik van Azure Active Directory-verificatie voor SQL-servers en-Service Fabric te controleren. Met behulp van Azure Active Directory-verificatie maakt vereenvoudigd beheer van machtigingen en gecentraliseerd identiteitsbeheer van databasegebruikers en andere Microsoft-services mogelijk. Daarnaast wordt met deze blauwdruk een Azure Policy-definitie toegewezen om het gebruik van aangepaste Azure RBAC-regels te controleren. Wanneer u weet waar aangepaste Azure RBAC-regels zijn geïmplementeerd, kan dit u helpen om te controleren of deze nodig zijn en of deze correct zijn geïmplementeerd, omdat aangepaste Azure RBAC-regels foutgevoelig zijn.
 
 - Een Azure Active Directory-beheerder moet worden ingericht voor SQL-servers
 - Het gebruik van aangepaste RBAC-regels controleren
@@ -312,7 +312,7 @@ Met deze blauwdruk kunt u de vertrouwelijkheid en integriteit van verzonden info
 
 ## <a name="sc-28-1-protection-of-information-at-rest--cryptographic-protection"></a>SC-28 (1) Protection of Information at Rest | Cryptografische beveiliging
 
-Met deze blauwdruk kunt u uw beleid afdwingen voor het gebruik van cryptografische beheeropties voor het beveiligen van inactieve informatie door [Azure Policy](../../../policy/overview.md)-definities toe te wijzen die specifieke cryptografische beheeropties afdwingen en het gebruik van zwakke cryptografische instellingen controleren. Wanneer u weet waar uw Azure-resources mogelijk niet-optimale cryptografische configuraties hebben, kunt u corrigerende maatregelen nemen om ervoor te zorgen dat resources worden geconfigureerd in overeenstemming met uw informatiebeveiligingsbeleid. Met name voor de beleidsdefinities die door deze blauwdrukken worden toegewezen, is vereist dat data lake-opslagaccounts en transparante gegevensversleuteling voor SQL-databases zijn versleuteld, en dat wordt gecontroleerd op ontbrekende versleuteling voor SQL-databases, schijven van virtuele machines en accountvariabelen voor automatisering.
+Met deze blauwdruk kunt u uw beleid afdwingen voor het gebruik van cryptografische beheeropties voor het beveiligen van inactieve informatie door [Azure Policy](../../../policy/overview.md)-definities toe te wijzen die specifieke cryptografische beheeropties afdwingen en het gebruik van zwakke cryptografische instellingen controleren. Wanneer u weet waar uw Azure-resources mogelijk niet-optimale cryptografische configuraties hebben, kunt u corrigerende maatregelen nemen om ervoor te zorgen dat resources worden geconfigureerd in overeenstemming met uw informatiebeveiligingsbeleid. Met name de beleidsdefinities die door deze blauwdrukken worden toegewezen, vereisen versleuteling voor data lake-opslagaccounts en transparante gegevensversleuteling voor SQL-databases, en controleren op ontbrekende versleuteling voor SQL-databases, schijven van virtuele machines en accountvariabelen voor automatisering.
 
 - Advanced Data Security moet zijn ingeschakeld voor uw beheerde instanties
 - Advanced Data Security moet zijn ingeschakeld op uw SQL-servers

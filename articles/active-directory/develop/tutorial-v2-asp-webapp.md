@@ -1,7 +1,7 @@
 ---
-title: Aanmelding bij Microsoft Identity Platform toevoegen aan een ASP.NET-web-app
+title: 'Zelfstudie: Een ASP.NET-web-app maken die gebruikmaakt van het Microsoft Identity-platform voor verificatie | Azure'
 titleSuffix: Microsoft identity platform
-description: Aanmelding met Microsoft implementeren in een ASP.NET-oplossing met een traditionele toepassing op basis van een webbrowser en de OpenID Connect-standaard
+description: In deze zelfstudie maakt u een ASP.NET-webtoepassing die gebruikmaakt van het Microsoft Identity platform en OWIN middleware om gebruikersaanmelding in te schakelen.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 740d62136393cf0c9cf31d367735bffed1c05276
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 6a5fb517b3ea6626a929da10954bd58cc8e39ef0
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88165580"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91574225"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Aanmelding bij Microsoft toevoegen aan een ASP.NET-web-app
 
@@ -25,10 +25,18 @@ Deze handleiding toont hoe u aanmelding bij Microsoft implementeert met behulp v
 
 Wanneer u deze handleiding hebt voltooid, kunt u aanmeldingen met persoonlijke accounts van bijvoorbeeld outlook.com en live.com aanvaarden. Daarnaast kunnen ook werk- en schoolaccounts van elk bedrijf of elke organisatie geïntegreerd met het Microsoft Identity Platform zich aanmelden bij uw app.
 
-> Voor deze handleiding is Microsoft Visual Studio 2019 vereist.  Is dit niet het geval?  U kunt [Visual Studio 2019 gratis downloaden](https://www.visualstudio.com/downloads/).
+In deze zelfstudie:
 
->[!NOTE]
-> Als u niet bekend bent met het Microsoft-identiteitsplatform, raden we u aan om te beginnen met [Aanmelding voor Microsoft Identity Platform toevoegen aan een ASP.NET-web-app](quickstart-v2-aspnet-webapp.md).
+> [!div class="checklist"]
+> * Een *ASP.NET*-webtoepassingsproject maken in Visual Studio
+> * De Open web interface voor .NET (OWIN) middleware-onderdelen toevoegen
+> * Code toevoegen voor de ondersteuning van het aan- en afmelden van gebruikers
+> * De app registreren in de Azure-portal
+> * De app testen
+
+## <a name="prerequisites"></a>Vereisten
+
+* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) met **ASP.NET- en webontwikkelworkload**
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Hoe de voorbeeld-app werkt die wordt gegenereerd in deze gids
 
@@ -264,7 +272,7 @@ Maak in Visual Studio een nieuwe weergave om de aanmeldknop toe te voegen en geb
     ```
 
 ### <a name="more-information"></a>Meer informatie
-Met deze pagina wordt een aanmeldknop toegevoegd, in de SVG-indeling met een zwarte achtergrond:<br/>![Aanmelden met Microsoft](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> Ga voor meer soorten aanmeldknoppen naar de [Huisstijlrichtlijnen](./howto-add-branding-in-azure-ad-apps.md "Huisstijlrichtlijnen").
+Met deze pagina wordt een aanmeldknop toegevoegd, in de SVG-indeling met een zwarte achtergrond:<br/>![Aanmelden met Microsoft-knop](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> Ga voor meer soorten aanmeldknoppen naar de [Huisstijlrichtlijnen](./howto-add-branding-in-azure-ad-apps.md "Huisstijlrichtlijnen").
 
 ## <a name="add-a-controller-to-display-users-claims"></a>Voeg een controller toe om de claims van gebruikers weer te geven
 Deze controller demonstreert het gebruik van het kenmerk `[Authorize]` om een controller te beveiligen. Met dit kenmerk wordt de toegang tot de controller beperkt doordat alleen geverifieerde gebruikers toegang krijgen. In de volgende code wordt het kenmerk gebruikt om gebruikersclaims weer te geven die zijn opgehaald als onderdeel van de aanmelding:
@@ -392,7 +400,7 @@ Als u uw toepassing wilt testen in Visual Studio, drukt u F5 om het project uit 
 
 Wanneer u klaar bent om uw test uit te voeren, gebruikt u een Azure AD-account (werk- of schoolaccount) of een persoonlijk Microsoft-account (<span>live.</span>com of <span>outlook.</span>com) om u aan te melden.
 
-![Aanmelden met Microsoft](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin.png)
+![Aanmelden met Microsoft-knop die wordt weergegeven op de browseraanmeldingspagina in de browser](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin.png)
 <br/><br/>
 ![Aanmelden bij uw Microsoft-account](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin2.png)
 
@@ -470,20 +478,11 @@ U kunt aanmeldingstoegang beperken tot enkel gebruikersaccounts van een Azure AD
 
 U kunt een aangepaste methode implementeren om uitgevers te valideren met behulp van de parameter **IssuerValidator**. Als u meer informatie wilt over het gebruik van deze parameter, bekijk dan de [TokenValidationParameters](/dotnet/api/microsoft.identitymodel.tokens.tokenvalidationparameters)-klasse.
 
+[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over hoe web-apps web-API's kunnen aanroepen.
-
-### <a name="learn-how-to-create-the-application-used-in-this-quickstart"></a>Meer informatie over het maken van de toepassing die wordt gebruikt in deze quickstart
-
-Meer informatie over web-apps die web-API's aanroepen met het Microsoft Identity Platform:
+Meer informatie over het aanroepen van beveiligde web-API's vanuit web-apps met het Microsoft Identity-platform:
 
 > [!div class="nextstepaction"]
 > [Web-apps die web-API's aanroepen](scenario-web-app-sign-user-overview.md)
-
-Meer informatie over het bouwen van web-apps die Microsoft Graph aanroepen:
-
-> [!div class="nextstepaction"]
-> [Zelfstudie Microsoft Graph ASP.NET](/graph/tutorials/aspnet)
-
-[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

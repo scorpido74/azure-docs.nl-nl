@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive
 ms.date: 02/25/2020
-ms.openlocfilehash: 8c22ff3cc79d326da09c44167519adbea48b5643
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: c6209ae985f8e59e1acae2d8fd6a1c821acae5a7
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651332"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91449542"
 ---
 # <a name="what-is-apache-kafka-in-azure-hdinsight"></a>Wat is Apache Kafka in Azure HDInsight?
 
@@ -33,7 +33,9 @@ Dit zijn specifieke kenmerken van Kafka in HDInsight:
 
     Zie [Hoge beschikbaarheid met Apache Kafka in HDInsight](apache-kafka-high-availability.md) voor meer informatie.
 
-* Met HDInsight kunt u het aantal werkknooppunten (waarop de Kafka-broker wordt gehost) wijzigen na het maken van het cluster. Schalen kan worden uitgevoerd vanuit Azure Portal, Azure PowerShell en andere interfaces voor Azure-beheer. Voor Kafka moet u partitiereplica's na het schalen herverdelen. Door herverdeling van partities kan Kafka gebruikmaken van het nieuwe aantal worker-knooppunten.
+* Met HDInsight kunt u het aantal werkknooppunten (waarop de Kafka-broker wordt gehost) wijzigen na het maken van het cluster. Omhoog schalen kan worden uitgevoerd vanuit Azure Portal, Azure PowerShell en andere interfaces voor Azure-beheer. Voor Kafka moet u partitiereplica's na het schalen herverdelen. Door herverdeling van partities kan Kafka gebruikmaken van het nieuwe aantal worker-knooppunten.
+
+   HDInsight Kafka biedt geen ondersteuning voor het omlaag schalen of verlagen van het aantal brokers binnen een cluster. Als er een poging wordt gedaan om het aantal knooppunten te verlagen, wordt een `InvalidKafkaScaleDownRequestErrorCode`-fout geretourneerd.
 
     Zie [Hoge beschikbaarheid met Apache Kafka in HDInsight](apache-kafka-high-availability.md) voor meer informatie.
 

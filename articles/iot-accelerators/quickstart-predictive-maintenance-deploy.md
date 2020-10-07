@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/08/2019
 ms.author: dobett
-ms.openlocfilehash: cecf23d61d6a12c20aa3e64e4ee0ddacddbe7823
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 7266f110069155e2a9f7804d53c6e1088768ec8d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "62106810"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541846"
 ---
 # <a name="quickstart-try-a-cloud-based-solution-to-run-a-predictive-maintenance-analysis-on-my-connected-devices"></a>Quickstart: Een cloudoplossing uitproberen om een analyse voor predictief onderhoud uit te voeren op mijn verbonden apparaten
 
@@ -52,7 +52,7 @@ Wanneer de implementatie in uw Azure-abonnement is voltooid, ziet u een groen vi
 
 Klik op de pagina **Ingerichte oplossingen** op de nieuwe oplossingsverbetering voor predictief onderhoud.
 
-![Deelvenster Oplossing](./media/quickstart-predictive-maintenance-deploy/solution.png)
+![Schermopname van de pagina Ingerichte oplossingen met de oplossingsversneller Predictief onderhoud gemarkeerd.](./media/quickstart-predictive-maintenance-deploy/solution.png)
 
  In de pagina die wordt weergegeven, kunt u informatie bekijken over de oplossingsverbetering. Kies **Ga naar uw oplossingsversneller** om uw oplossingsversneller voor predictief onderhoud weer te geven:
 
@@ -80,7 +80,7 @@ U kunt de simulatie op elk punt stoppen, maar wanneer u op **Simulatie starten**
 
 Laat de oplossingsversneller voor predictief onderhoud geïmplementeerd als u de functie nog meer wilt verkennen.
 
-Als u de oplossings versneller niet meer nodig hebt, verwijdert u deze van de pagina [ingerichte oplossingen](https://www.azureiotsolutions.com/Accelerators#dashboard) door deze te selecteren en vervolgens op **oplossing verwijderen**te klikken:
+Als u de oplossingsverbetering niet meer nodig hebt, verwijdert u deze op de pagina [Ingerichte oplossingen](https://www.azureiotsolutions.com/Accelerators#dashboard) door de oplossingsverbetering te selecteren en op **Oplossing verwijderen** te klikken:
 
 ![Oplossing verwijderen](media/quickstart-predictive-maintenance-deploy/deletesolution.png)
 
@@ -91,4 +91,4 @@ In deze snelstart hebt u de oplossingsverbetering voor predictief onderhoud geï
 Ga verder naar het volgende artikel voor meer informatie over de oplossingsverbetering en de gesimuleerde vliegtuigmotoren.
 
 > [!div class="nextstepaction"]
-> [Een overzicht van de oplossingsversneller voor Predictief onderhoud](iot-accelerators-predictive-walkthrough.md)
+> [Overzicht van de oplossingsversneller Voorspeld onderhoud](iot-accelerators-predictive-walkthrough.md)

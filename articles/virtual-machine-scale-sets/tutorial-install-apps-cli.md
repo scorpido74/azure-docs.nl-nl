@@ -9,12 +9,12 @@ ms.subservice: cli
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 92bd5bb6e9c8a00b72ace5f81d1a1cedccfa95e5
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: f6eda8b3b60658425f4c30850f9f979cf31d32d4
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503664"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570158"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-the-azure-cli"></a>Zelfstudie: Toepassingen installeren in schaalsets voor virtuele machines met Azure CLI
 Als u toepassingen wilt uitvoeren op de exemplaren van een virtuele machine (VM) in een schaalset, moet u eerst de toepassingsonderdelen en de vereiste bestanden installeren. In een vorige zelfstudie hebt u geleerd om een aangepaste VM-installatiekopie te maken en te gebruiken voor het implementeren van uw VM-exemplaren. Deze aangepaste installatiekopie bevat handmatige installaties van toepassingen en configuraties. U kunt de installatie van toepassingen op een schaalset ook automatiseren nadat elk VM-exemplaar is geïmplementeerd. Bovendien kunt u toepassingen bijwerken die al worden uitgevoerd in een schaalset. In deze zelfstudie leert u het volgende:
@@ -50,6 +50,9 @@ Maak in uw huidige shell een bestand met de naam *customConfig.json* en plak de 
   "commandToExecute": "./automate_nginx.sh"
 }
 ```
+
+> [!CAUTION]
+> Mogelijk moet u het gebruik van enkele (') en dubbele aanhalingstekens (") in het JSON-blok omkeren als u besluit om rechtstreeks naar de JSON te verwijzen (in plaats van te verwijzen naar het bestand *customConfig.json*) in de parameter *--Instellingen* hieronder. 
 
 
 ## <a name="create-a-scale-set"></a>Een schaalset maken

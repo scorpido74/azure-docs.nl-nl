@@ -1,24 +1,26 @@
 ---
-title: 'Quickstart: Formulieren labelen, een model trainen en een formulier analyseren met behulp van het voorbeeldhulpprogramma voor labelen, Form Recognizer'
+title: 'Quickstart: Formulieren labelen, een model trainen en formulieren analyseren met behulp van het voorbeeldhulpprogramma voor labelen, Form Recognizer'
 titleSuffix: Azure Cognitive Services
-description: In deze quickstart gebruikt u Form Recognizer, het voorbeeldhulpprogramma voor labelen om formulierdocumenten handmatig te labelen. Vervolgens traint u een aangepast model met de gelabelde documenten en gebruikt u het model om sleutel-/waardeparen te extraheren.
+description: In deze quickstart gebruikt u Form Recognizer, het voorbeeldhulpprogramma voor labelen om formulierdocumenten handmatig te labelen. Vervolgens traint u een aangepast documentverwerkingsmodel met de gelabelde documenten en gebruikt u het model om sleutel-waardeparen te extraheren.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 08/25/2020
+ms.date: 09/30/2020
 ms.author: pafarley
-ms.openlocfilehash: e231bb7919f25210d7e5a2adff49dede6f0349a9
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.custom: cog-serv-seo-aug-2020
+keywords: documentverwerking
+ms.openlocfilehash: 6b641df00d4b4981aa47f314f8e575a9cbcccbba
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89418956"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597746"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Een Form Recognizer-model trainen met behulp van het voorbeeldhulpprogramma voor labelen
 
-In deze quickstart gebruikt u de REST API van Form Recognizer met het voorbeeldhulpprogramma voor labelen om een aangepast model te trainen met handmatig gelabelde gegevens. Zie de sectie [Trainen met labels](../overview.md#train-with-labels) van het overzicht voor meer informatie over deze functie.
+In deze quickstart gebruikt u de REST API van Form Recognizer met het voorbeeldhulpprogramma voor labelen om een aangepast documentverwerkingsmodel te trainen met handmatig gelabelde gegevens. Zie de sectie [Trainen met labels](../overview.md#train-with-labels) van het overzicht voor meer informatie over leren onder supervisie met Form Recognizer.
 
 > [!VIDEO https://channel9.msdn.com/Shows/Docs-Azure/Azure-Form-Recognizer/player]
 
@@ -66,7 +68,7 @@ U gebruikt de Docker-engine voor het uitvoeren van het voorbeeldhulpprogramma vo
     ```
     docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool
     ```
-    # <a name="v21-preview"></a>[v2.1 preview](#tab/v2-1)    
+    # <a name="v21-preview"></a>[Preview van v2.1](#tab/v2-1)    
     ```
     docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview
     ```
@@ -79,7 +81,7 @@ U gebruikt de Docker-engine voor het uitvoeren van het voorbeeldhulpprogramma vo
     ```
     docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool eula=accept
     ```
-    # <a name="v21-preview"></a>[v2.1 preview](#tab/v2-1)    
+    # <a name="v21-preview"></a>[Preview van v2.1](#tab/v2-1)    
     ```
     docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview eula=accept    
     ```
@@ -137,7 +139,7 @@ In het voorbeeldhulpprogramma voor labelen worden uw configuraties en instelling
 * **API-sleutel**: de abonnementssleutel van de Form Recognizer.
 * **Beschrijving**: optioneel: projectbeschrijving
 
-:::image type="content" source="../media/label-tool/new-project.png" alt-text="Pagina met nieuw project in voorbeeldhulpprogramma voor labelen.":::
+:::image type="content" source="../media/label-tool/new-project.png" alt-text="Verbindingsinstellingen van het voorbeeldhulpprogramma voor labelen.":::
 
 ## <a name="label-your-forms"></a>Formulieren labelen
 
@@ -153,7 +155,7 @@ Klik in het linkerdeelvenster op **OCR uitvoeren op alle bestanden** om informat
 
 Er wordt ook weergegeven welke tabellen automatisch zijn geëxtraheerd. Klik op het tabel-/rasterpictogram aan de linkerkant van het document om de geëxtraheerde tabel te zien. Omdat de tabelinhoud automatisch wordt geëxtraheerd, zullen we de tabelinhoud in deze quickstart niet labelen maar zullen we vertrouwen op de geautomatiseerde extractie.
 
-:::image type="content" source="../media/label-tool/table-extraction.png" alt-text="Tabelvisualisatie in voorbeeldhulpprogramma voor labelen.":::
+:::image type="content" source="../media/label-tool/table-extraction.png" alt-text="Verbindingsinstellingen van het voorbeeldhulpprogramma voor labelen.":::
 
 ### <a name="apply-labels-to-text"></a>Labels op tekst toepassen
 
@@ -178,7 +180,7 @@ Vervolgens maakt u tags (labels) en past u ze toe op de tekstelementen die u doo
     > * Als u een toegepast label wilt verwijderen zonder het label zelf te verwijderen, selecteert u de gemarkeerde rechthoek in de documentweergave en drukt u op de verwijdertoets.
 
 
-# <a name="v21-preview"></a>[v2.1 preview](#tab/v2-1) 
+# <a name="v21-preview"></a>[Preview van v2.1](#tab/v2-1) 
 1. Gebruik eerst het deelvenster van de tageditor om de labels te maken die u wilt identificeren.
    1. Klik op **+** om een nieuw label te maken.
    1. Voer de naam van het label in.
@@ -199,7 +201,7 @@ Vervolgens maakt u tags (labels) en past u ze toe op de tekstelementen die u doo
 
 ---
 
-:::image type="content" source="../media/label-tool/main-editor-2-1.png" alt-text="Hoofdvenster van de editor van het voorbeeldhulpprogramma voor labelen.":::
+:::image type="content" source="../media/label-tool/main-editor-2-1.png" alt-text="Verbindingsinstellingen van het voorbeeldhulpprogramma voor labelen.":::
 
 
 Volg de bovenstaande stappen om ten minste vijf formulieren te labelen.
@@ -254,7 +256,7 @@ Klik in het linkerdeelvenster op het trainingspictogram om de pagina Training te
 * De lijst met labels en de geschatte nauwkeurigheid per label.
 
 
-:::image type="content" source="../media/label-tool/train-screen.png" alt-text="Trainingsweergave.":::
+:::image type="content" source="../media/label-tool/train-screen.png" alt-text="Verbindingsinstellingen van het voorbeeldhulpprogramma voor labelen.":::
 
 Nadat de training is voltooid, bekijkt u de waarde **Gemiddelde nauwkeurigheid**. Als deze laag is, moet u meer invoerdocumenten toevoegen en de bovenstaande stappen herhalen. De documenten die u al hebt gelabeld, blijven in de projectindex.
 
@@ -273,7 +275,7 @@ Met Model samenstellen kunt u maximaal 100 modellen met één model-id samenstel
 
 Om modellen samen te stellen in het voorbeeldhulpprogramma voor labelen, klikt u aan de linkerkant op het pictogram Model samenstellen (samenvoegingspijlen). Selecteer links de modellen die u wilt samenstellen. Modellen met het pijlenpictogram zijn al samengesteld. Klik op de knop Samenstellen. In het pop-upvenster geeft u uw nieuwe samengestelde model een naam en klikt u op ‘Samenstellen’. Wanneer de bewerking is voltooid, zou uw nieuwe samengestelde model in de lijst moeten worden weergegeven. 
 
-:::image type="content" source="../media/label-tool/model-compose.png" alt-text="UX-weergave van Model samenstellen.":::
+:::image type="content" source="../media/label-tool/model-compose.png" alt-text="Verbindingsinstellingen van het voorbeeldhulpprogramma voor labelen.":::
 
 ---
 
@@ -306,7 +308,10 @@ Ga ten slotte naar de hoofdpagina (huispictogram) en klik op Cloudproject openen
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze quickstart hebt u geleerd hoe u het voorbeeldhulpprogramma voor labelen van Form Recognizer met Python gebruikt voor het trainen van een model met handmatig gelabelde gegevens. Als u het hulpprogramma voor labelen wilt integreren in uw eigen toepassing, gebruikt u de REST API's met betrekking tot training met gelabelde gegevens.
+In deze quickstart hebt u geleerd hoe u het voorbeeldhulpprogramma voor labelen van Form Recognizer met Python gebruikt voor het trainen van een model met handmatig gelabelde gegevens. Als u uw eigen hulpprogramma wilt bouwen voor het labelen van trainingsgegevens, gebruikt u de REST API's die het trainen met gelabelde gegevens verwerken.
 
 > [!div class="nextstepaction"]
 > [Trainen met labels met behulp van Python](./python-labeled-data.md)
+
+* [Wat is Form Recognizer?](../overview.md)
+* [Quickstarts voor Form Recognizer-clientbibliotheken](client-library.md)

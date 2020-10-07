@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: b78c2b93a9427105ce2cc0ad8bd5d2b995c834ae
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 536d233a9c135b0b7dde6d6d80c705d2008226e6
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90976293"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569648"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>Zelfstudie: Een ExpressRoute-koppeling maken met behulp van Azure Virtual WAN
 
@@ -40,7 +40,7 @@ Controleer voordat u met de configuratie begint of u aan de volgende criteria he
 
 * Zorg dat u een IP-adresbereik krijgt voor uw hubregio. De hub is een virtueel netwerk dat wordt gemaakt en gebruikt door Virtual WAN. Het adresbereik dat u voor de hub opgeeft mag niet overlappen met een van de bestaande virtuele netwerken waarmee u verbinding wilt maken. Dit bereik mag ook niet overlappen met de adresbereiken waarmee u on-premises verbinding wilt maken. Als u de IP-adresbereiken in uw on-premises netwerkconfiguratie niet kent, moet u contact opnemen met iemand die deze gegevens kan verstrekken.
 
-* Het ExpressRoute-circuit moet een Premium-circuit zijn om verbinding met de hub-gateway te maken.
+* Het ExpressRoute-circuit moet een Premium/Standard-circuit zijn om verbinding met de hub-gateway te maken.
 
 * Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan.
 
@@ -105,7 +105,7 @@ In deze sectie brengt u de peering-verbinding tussen uw hub en een VNet tot stan
 
 ## <a name="connect-your-circuit-to-the-hub-gateway"></a><a name="connectcircuit"></a>Uw circuit verbinden met de hub-gateway
 
-Zodra de gateway is gemaakt, kunt u deze verbinden met een [ExpressRoute-circuit](../expressroute/expressroute-howto-circuit-portal-resource-manager.md). ExpressRoute Premium-circuits die zich bevinden in locaties met ondersteuning voor ExpressRoute Global Reach, kunnen verbinding maken met een ExpressRoute-gateway voor Virtual WAN.
+Zodra de gateway is gemaakt, kunt u deze verbinden met een [ExpressRoute-circuit](../expressroute/expressroute-howto-circuit-portal-resource-manager.md). ExpressRoute premium/standaard-circuits die zich in Global Reach ExpressRoute-ondersteunde locaties bevinden, kunnen verbinding maken met een virtuele WAN ExpressRoute-gateway en gebruikmaken van alle virtuele WAN-Transit mogelijkheden (VPN naar VPN, VPN en ExpressRoute Transit). ExpressRoute Premium/Standard-circuits die zich in niet Global Reach locaties bevinden, kunnen verbinding maken met Azure-resources, maar kunnen geen virtuele WAN-Transit mogelijkheden gebruiken.
 
 ### <a name="to-connect-the-circuit-to-the-hub-gateway"></a>Het circuit verbinden met de hub-gateway
 

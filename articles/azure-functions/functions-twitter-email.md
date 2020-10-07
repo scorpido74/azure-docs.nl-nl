@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/27/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, mvc, cc996988-fb4f-47
-ms.openlocfilehash: 29b35493342b92813aa808069ebdd7ca8a7bbc56
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: feb6b36f8e5e7bbec83d8882552484f68abfd56d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88208546"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537749"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Een functie maken die kan worden geïntegreerd met Azure Logic Apps
 
@@ -182,7 +182,7 @@ Uw app is nu verbonden met Twitter. Vervolgens maakt u verbinding met Text Analy
 
 2. Typ **Tekstanalyse** in **Een actie kiezen** en klik vervolgens op de actie **Gevoel detecteren**.
     
-    ![Nieuwe stap en vervolgens Een actie toevoegen](media/functions-twitter-email/11-detect-sentiment.png)
+    ![Schermopname van de sectie 'Kies een actie' met 'Tekstanalyse' in het zoekvak en de actie 'Sentiment detecteren' geselecteerd. ](media/functions-twitter-email/11-detect-sentiment.png)
 
 3. Typ een verbindingsnaam, bijvoorbeeld `MyCognitiveServicesConnection`, plak de sleutel voor de Cognitive Services-API en het Cognitive Services-eindpunt dat u in de teksteditor hebt geplaatst en klik op **Maken**.
 
@@ -202,7 +202,7 @@ Nu de gevoelsdetectie is geconfigureerd, kunt u een verbinding met uw functie to
   
 4. Selecteer de functie-app die u eerder hebt gemaakt.
 
-    ![Functie selecteren](media/functions-twitter-email/15-select-function.png)
+    ![Schermopname met de sectie 'Kies een actie' waarvoor een functie-app is geselecteerd.](media/functions-twitter-email/15-select-function.png)
 
 5. Selecteer de functie die u voor deze zelfstudie hebt gemaakt.
 
@@ -228,7 +228,7 @@ Het laatste deel van de werkstroom bestaat uit het activeren van een e-mail wann
 
 3. Klik in **INDIEN WAAR** op **Een actie toevoegen**, zoek naar `outlook.com`, klik op **Een e-mail verzenden** en meld u aan bij uw Outlook.com-account.
 
-    ![De e-mail configureren voor de actie Een e-mail verzenden.](media/functions-twitter-email/20-add-outlook.png)
+    ![Schermopname van de sectie 'IF TRUE' met 'outlook.com' in het zoekvak en de actie 'Een e-mail verzenden' geselecteerd.](media/functions-twitter-email/20-add-outlook.png)
 
     > [!NOTE]
     > Als u geen Outlook.com-account hebt, kunt u een andere connector kiezen, bijvoorbeeld voor Gmail of Office 365 Outlook

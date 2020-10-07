@@ -4,19 +4,19 @@ description: Synapse Studio gebruiken om gegevens bulksgewijs te laden in Synaps
 services: synapse-analytics
 author: kevinvngo
 ms.service: synapse-analytics
-ms.topic: overview
+ms.topic: quickstart
 ms.subservice: sql
 ms.date: 05/06/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: fb618f155e659ecd1fa5760117193a9045e6da35
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 142309f75d3b7c93204bb9eaa8e5e0254f879c43
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87535124"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568902"
 ---
-# <a name="bulk-loading-with-synapse-sql"></a>Bulksgewijs laden met Synapse SQL
+# <a name="quickstart-bulk-loading-with-synapse-sql"></a>Snelstart: Bulksgewijs laden met Synapse SQL
 
 Met de wizard voor bulksgewijs laden in Synapse Studio kunt u nu heel eenvoudig gegevens laden. In deze wizard maakt u een T-SQL-script met de [COPY-instructie](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) om gegevens bulksgewijs te laden. 
 
@@ -28,7 +28,7 @@ U kunt gegevens nu gemakkelijk bulksgewijs laden met SQL-pools. Klik daarvoor me
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Deze wizard genereert een COPY-instructie die gebruikmaakt van AAD-pass-through voor verificatie. Uw [AAD-gebruiker moet toegang hebben](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples#d-azure-active-directory-authentication-aad) tot de werkruimte met ten minste de Azure-rol Bijdrager voor opslagblobgegevens voor het ADLS Gen2-account.
+- Deze wizard genereert een COPY-instructie die gebruikmaakt van Azure Active Directory-passthrough voor verificatie. Uw [Azure Active Directory-gebruiker moet toegang hebben](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples#d-azure-active-directory-authentication-aad) tot de werkruimte met ten minste de Azure-rol Inzender voor Storage Blob-gegevens voor het ADLS Gen2-account.
 
 - U moet beschikken over de vereiste [machtigingen om de COPY-instructie te gebruiken](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#permissions) en ook over machtigingen om een tabel te maken, als u gegevens in een nieuwe tabel wilt laden.
 
@@ -44,13 +44,13 @@ U kunt gegevens nu gemakkelijk bulksgewijs laden met SQL-pools. Klik daarvoor me
 
     ![Instellingen voor bestandsindeling selecteren](./sql/media/bulk-load/bulk-load-file-format-settings.png)
 
-3. Klik op Voorbeeld van gegevens weergeven om te zien hoe de COPY-instructie het bestand parseert. Configureer op basis hiervan de instellingen voor bestandsindeling. Telkens wanneer u een instelling voor de bestandsindeling wijzigt, klikt u op Voorbeeld van gegevens weergeven om te zien hoe de COPY-instructie het bestand parseert met de bijgewerkte instelling: ![Voorbeeld van gegevens weergeven](./sql/media/bulk-load/bulk-load-file-format-settings-preview-data.png) 
+3. U kunt ‘Voorbeeld van gegevens weergeven’ selecteren om te zien hoe de COPY-instructie het bestand parseert. Configureer op basis hiervan de instellingen voor bestandsindeling. Telkens wanneer u een instelling voor de bestandsindeling wijzigt, selecteert u ‘Voorbeeld van gegevens weergeven’ om te zien hoe de COPY-instructie het bestand parseert met de bijgewerkte instelling: ![Voorbeeld van gegevens weergeven](./sql/media/bulk-load/bulk-load-file-format-settings-preview-data.png) 
 
 4. Selecteer de SQL-pool die u gebruikt om gegevens te laden en geef aan of de gegevens naar een bestaande of nieuwe tabel moeten worden geladen: ![Doellocatie selecteren](./sql/media/bulk-load/bulk-load-target-location.png)
 
-5. Klik op Kolomtoewijzing configureren om te controleren of u de juiste kolomtoewijzing gebruikt. Bij nieuwe tabellen is het van cruciaal belang dat u de kolomtoewijzing configureert om de gegevenstypen van de doelkolom bij te werken: ![Kolomtoewijzing configureren](./sql/media/bulk-load/bulk-load-target-location-column-mapping.png)
+5. Klik op ‘Kolomtoewijzing configureren’ om te controleren of u de juiste kolomtoewijzing gebruikt. Bij nieuwe tabellen is het van cruciaal belang dat u de kolomtoewijzing configureert om de gegevenstypen van de doelkolom bij te werken: ![Kolomtoewijzing configureren](./sql/media/bulk-load/bulk-load-target-location-column-mapping.png)
 
-6. Klik op Script openen. Er wordt een T-SQL-script gegenereerd met de COPY-instructie om gegevens uit uw data lake te laden: ![Het SQL-script openen](./sql/media/bulk-load/bulk-load-target-final-script.png)
+6. Selecteer ‘Script openen’. Er wordt een T-SQL-script gegenereerd met de COPY-instructie om gegevens uit uw data lake te laden: ![Het SQL-script openen](./sql/media/bulk-load/bulk-load-target-final-script.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

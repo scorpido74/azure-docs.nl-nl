@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2019
-ms.openlocfilehash: bfac783fcb8ce88977fc8d97f821a7350f57aab8
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 2301219db250b97fd7ea2eb3814f5eba2c70148a
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118573"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91569860"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Welkom bij Azure Cosmos DB
 
@@ -36,19 +36,19 @@ Met Cosmos DB kunt u op elk gewenst moment met een klik op een knop elke willeke
 
 ### <a name="always-on"></a>AlwaysOn
 
-Door de hechte integratie met de infrastructuur van Azure en de [transparante replicatie voor meerdere masters ](global-dist-under-the-hood.md) biedt Cosmos DB een [hoge beschikbaarheid](high-availability.md) van 99,999% voor zowel lees- als schrijfbewerkingen. Cosmos DB biedt u ook de mogelijkheid om via een programma (of via de portal) de regionale failover van uw Cosmos-account aan te roepen. Met deze functie kunt u ervoor zorgen dat uw toepassing is ontworpen voor failover in het geval van regionale noodgevallen.
+Door de hechte integratie met de infrastructuur van Azure en de [transparante replicatie van schrijfbewerkingen voor meerdere regio's](global-dist-under-the-hood.md) biedt Cosmos DB een [hoge beschikbaarheid](high-availability.md) van 99,999% voor zowel lees- als schrijfbewerkingen. Cosmos DB biedt u ook de mogelijkheid om via een programma (of via de portal) de regionale failover van uw Cosmos-account aan te roepen. Met deze functie kunt u ervoor zorgen dat uw toepassing is ontworpen voor failover in het geval van regionale noodgevallen.
 
 ### <a name="elastic-scalability-of-throughput-and-storage-worldwide"></a>Doorvoer en opslag wereldwijd elastisch schalen
 
-Cosmos DB is ontwikkeld met transparante horizontale partitionering en replicatie voor meerdere masters en biedt nog nooit eerder vertoonde elastische schaalbaarheid voor uw schrijf- en leesbewerkingen, overal ter wereld. U kunt met een enkele API-aanroep elastisch opschalen van duizenden tot honderden miljoenen aanvragen per seconde over de hele wereld, en toch u betaalt u alleen voor de doorvoer (en opslag) die u nodig hebt. Deze mogelijkheid helpt u om onverwachte pieken in uw werkbelastingen te kunnen verwerken zonder dat u zich met excessieve inrichting hoeft bezig te houden om de piek aan te kunnen. Zie [Partitionering in Cosmos DB](partitioning-overview.md), [Ingerichte doorvoer op containers en databases](set-throughput.md) en [Doorvoer wereldwijd inrichten](scaling-throughput.md) voor meer informatie.
+Cosmos DB is ontwikkeld met transparante horizontale partitionering en replicatie voor schrijfbewerking in meerdere regio's en biedt nog nooit eerder vertoonde elastische schaalbaarheid voor uw schrijf- en leesbewerkingen, overal ter wereld. U kunt met een enkele API-aanroep elastisch opschalen van duizenden tot honderden miljoenen aanvragen per seconde over de hele wereld, en toch u betaalt u alleen voor de doorvoer (en opslag) die u nodig hebt. Deze mogelijkheid helpt u om onverwachte pieken in uw werkbelastingen te kunnen verwerken zonder dat u zich met excessieve inrichting hoeft bezig te houden om de piek aan te kunnen. Zie [Partitionering in Cosmos DB](partitioning-overview.md), [Ingerichte doorvoer op containers en databases](set-throughput.md) en [Doorvoer wereldwijd inrichten](scaling-throughput.md) voor meer informatie.
 
 ### <a name="guaranteed-low-latency-at-99th-percentile-worldwide"></a>Gegarandeerde lage latentie in het 99e percentiel, wereldwijd
 
-Met Cosmos DB kunt u hoog-responsieve wereldwijde toepassingen bouwen. Dankzij het moderne replicatieprotocol voor meerdere masters en de vergrendelingsvrije en [voor schrijven geoptimaliseerde database-engine](index-policy.md) garandeert Cosmos DB een latentie van minder dan 10 ms voor leesbewerkingen (geïndexeerd) en schrijfbewerkingen in het 99e percentiel, wereldwijd. Op deze manier kunt u rekenen op een doorlopende opname van gegevens en uiterst snelle verwerking van query's voor zeer responsieve apps.
+Met Cosmos DB kunt u hoog-responsieve wereldwijde toepassingen bouwen. Dankzij het moderne replicatieprotocol voor meerdere regio's en de vergrendelingsvrije en [voor schrijven geoptimaliseerde database-engine](index-policy.md) garandeert Cosmos DB een latentie van minder dan 10 ms voor leesbewerkingen (geïndexeerd) en schrijfbewerkingen in het 99e percentiel, wereldwijd. Op deze manier kunt u rekenen op een doorlopende opname van gegevens en uiterst snelle verwerking van query's voor zeer responsieve apps.
 
 ### <a name="precisely-defined-multiple-consistency-choices"></a>Nauwkeurig gedefinieerde, meerdere consistentiekeuzes
 
-Wanneer u wereldwijd gedistribueerde toepassingen in Cosmos DB maakt, hoeft u niet langer verregaande [compromissen tussen consistentie, beschikbaarheid, latentie en doorvoer](consistency-levels-tradeoffs.md) te sluiten. Het replicatieprotocol voor meerdere masters van Cosmos DB biedt [vijf duidelijk gedefinieerde consistentieniveaus](consistency-levels.md) ( - *sterk*, *gebonden veroudering*, *sessie*, *consistent voorvoegsel* en *uiteindelijk*) voor een intuïtief programmeermodel met lage latentie en hoge beschikbaarheid voor uw wereldwijde toepassing.
+Wanneer u wereldwijd gedistribueerde toepassingen in Cosmos DB maakt, hoeft u niet langer verregaande [compromissen tussen consistentie, beschikbaarheid, latentie en doorvoer](consistency-levels-tradeoffs.md) te sluiten. Het replicatieprotocol voor meerdere regio's van Cosmos DB biedt [vijf duidelijk gedefinieerde consistentieniveaus](consistency-levels.md) - *sterk*, *gebonden veroudering*, *sessie*, *consistent voorvoegsel* en *uiteindelijk* – voor een intuïtief programmeermodel met lage latentie en hoge beschikbaarheid voor uw wereldwijde toepassing.
 
 ### <a name="no-schema-or-index-management"></a>Geen schema- of indexbeheer
 
@@ -56,7 +56,7 @@ Vooral voor wereldwijd gedistribueerde apps is het uiterst moeilijk om databases
 
 ### <a name="battle-tested-database-service"></a>Intensief geteste databaseservice
 
-Cosmos DB is een fundamentele service in Azure. Cosmos DB wordt al bijna een decennium lang gebruikt door veel van de Microsoft-producten voor essentiële toepassingen op wereldwijde schaal, zoals Skype, Xbox, Office 365, Azure en veel meer. Vandaag de dag is Cosmos DB een van de snelst groeiende services op Azure die wordt gebruikt door veel externe klanten en missiekritische toepassingen die elastisch schalen, kant-en-klare wereldwijde distributie en replicatie van meerdere masters met een lage latentie en hoge beschikbaarheid voor zowel lees- als schrijfbewerkingen, vereisen.
+Cosmos DB is een fundamentele service in Azure. Cosmos DB wordt al bijna een decennium lang gebruikt door veel van de Microsoft-producten voor missiekritische toepassingen op wereldwijde schaal, zoals Skype, Xbox, Microsoft 365, Azure en veel meer. Vandaag de dag is Cosmos DB een van de snelst groeiende services op Azure die wordt gebruikt door veel externe klanten en missiekritische toepassingen die elastisch schalen, kant-en-klare wereldwijde distributie en replicatie van meerdere regio's met een lage latentie en hoge beschikbaarheid voor zowel lees- als schrijfbewerkingen, vereisen.
 
 ### <a name="ubiquitous-regional-presence"></a>Alomtegenwoordige regionale aanwezigheid
 

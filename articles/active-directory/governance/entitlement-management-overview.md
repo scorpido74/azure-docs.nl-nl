@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.subservice: compliance
-ms.date: 09/08/2020
+ms.date: 09/30/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.custom: contperfq1
-ms.openlocfilehash: 2ce5f0c9b340e1b81fcf002ee70e7ec1cc74d38c
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.openlocfilehash: f8bf2a1bb4892637ac504d5920754fc412691a4a
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89594319"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597380"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Wat is Azure AD-rechtenbeheer?
 
@@ -77,8 +77,9 @@ Rechtenbeheer introduceert het concept van een *toegangspakket* in Azure AD. Een
 
 U kunt ook de toegang beheren tot andere resources die afhankelijk zijn van Azure AD-beveiligingsgroepen of Microsoft 365-groepen.  Bijvoorbeeld:
 
-- U kunt gebruikers licenties geven voor Microsoft 365 met behulp van een Azure AD-beveiligingsgroep in een toegangspakket en [groepslicenties](../users-groups-roles/licensing-groups-assign.md) configureren voor die groep
-- U kunt gebruikers in staat stellen om Azure-resources te beheren met behulp van een Azure AD-beveiligingsgroep in een toegangspakket en een [Azure-roltoewijzing](../../role-based-access-control/role-assignments-portal.md) maken voor die groep
+- U kunt gebruikers licenties geven voor Microsoft 365 met behulp van een Azure AD-beveiligingsgroep in een toegangspakket en [groepslicenties](../users-groups-roles/licensing-groups-assign.md) configureren voor die groep.
+- U kunt gebruikers in staat stellen om Azure-resources te beheren met behulp van een Azure AD-beveiligingsgroep in een toegangspakket en een [Azure-roltoewijzing](../../role-based-access-control/role-assignments-portal.md) maken voor die groep.
+- U kunt gebruikers toegang geven tot het beheren van Azure AD-rollen door gebruik te maken van groepen die kunnen worden toegewezen aan Azure AD-rollen in een toegangspakket en [een Azure AD-rol toe te wijzen aan die groep](../users-groups-roles/roles-groups-assign-role.md).
 
 ## <a name="how-do-i-control-who-gets-access"></a>Hoe kan ik controleren wie toegang krijgt?
 

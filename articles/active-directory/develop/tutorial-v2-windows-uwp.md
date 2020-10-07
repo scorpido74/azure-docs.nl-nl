@@ -1,6 +1,7 @@
 ---
-title: Aan de slag met het Microsoft identity platform UWP | Azure
-description: Hoe UWP-toepassingen (Universeel Windows-platform) een API kunnen aanroepen die toegangstokens vereisen van het Microsoft identity platform-eindpunt.
+title: 'Zelfstudie: Een Universal Windows Platform-app (UWP) maken die gebruikmaakt van het Microsoft-identiteitsplatform voor verificatie | Azure'
+titleSuffix: Microsoft identity platform
+description: In deze zelfstudie bouwt u een UWP-app die gebruikmaakt van het Microsoft-identiteitsplatform voor het aanmelden van gebruikers en krijgt u een toegangstoken de Microsoft Graph API namens hen aan te roepen.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,26 +12,31 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: acdc23c664f84882916b91b8f8698ee36b1e6cd3
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: bee6f832476537a6d7dba3db98d9aada6c61a476
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88165546"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91574242"
 ---
-# <a name="call-the-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>De Microsoft Graph API aanroepen vanuit een Universeel Windows-platformtoepassing (XAML)
-
-> [!div renderon="docs"]
+# <a name="call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>De Microsoft Graph-API aanroepen vanuit de Universeel Windows-platformtoepasing (UWP)
 
 In deze handleiding wordt uitgelegd hoe een systeemeigen UWP-toepassing een toegangstoken kan aanvragen. De toepassing roept vervolgens de Microsoft Graph API aan. Deze handleiding is ook van toepassing op andere API's die toegangstokens nodig hebben van het Microsoft identity platform-eindpunt.
 
 Aan het einde van deze handleiding roept uw toepassing een beveiligde API aan met persoonlijke accounts. Voorbeelden zijn outlook.com, live.com, enzovoort. Uw toepassing roept ook werk- en schoolaccounts aan van een bedrijf of organisatie met Azure Active Directory (Azure AD).
 
->[!NOTE]
-> Voor deze handleiding moet Visual Studio met Universeel Windows-platformontwikkeling zijn geïnstalleerd. Zie [Get set up](/windows/uwp/get-started/get-set-up) (Engelstalig) voor instructies voor het downloaden en configureren van Visual Studio voor het ontwikkelen van Universeel Windows-platform-apps.
+In deze zelfstudie:
 
->[!NOTE]
-> Als u geen ervaring hebt met het Microsoft identity platform, begint u met de [quickstart Microsoft Graph API aanroepen vanuit een UWP-toepassing (Universeel Windows-platform)](quickstart-v2-uwp.md).
+> [!div class="checklist"]
+> * Een *Universal Windows Platform (UWP)* -project maken in Visual Studio
+> * De app registreren in de Azure Portal
+> * Code toevoegen voor de ondersteuning van het aan- en afmelden van gebruikers
+> * Code toevoegen om Microsoft Graph API aan te roepen
+> * De app testen
+
+## <a name="prerequisites"></a>Vereisten
+
+* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) waarbij de werkbelasting [Universeel Windows-platformontwikkeling](/windows/uwp/get-started/get-set-up) is ingeschakeld
 
 ## <a name="how-this-guide-works"></a>De werking van deze handleiding
 
@@ -115,7 +121,7 @@ In deze sectie wordt uitgelegd hoe u met Microsoft Authentication Library een to
     ```csharp
     public sealed partial class MainPage : Page
     {
-       
+
         //Set the scope for API call to user.read
         private string[] scopes = new string[] { "user.read" };
 
@@ -427,16 +433,15 @@ In het huidige voorbeeld wordt de methode `WithRedirectUri("https://login.micros
             }
            ...
     }
-  
+
     ```
 
-    Voer de app uit en kopieer de waarde van `redirectUri` wanneer het onderbrekingspunt wordt bereikt. De waarde moet er ongeveer als volgt uitzien:  
-    `ms-app://s-1-15-2-1352796503-54529114-405753024-3540103335-3203256200-511895534-1429095407/`
+    Voer de app uit en kopieer de waarde van `redirectUri` wanneer het onderbrekingspunt wordt bereikt. De waarde moet er ongeveer als volgt uitzien: `ms-app://s-1-15-2-1352796503-54529114-405753024-3540103335-3203256200-511895534-1429095407/`
 
-    U kunt de regel code vervolgens verwijderen, omdat deze slechts eenmaal is vereist, om de waarde op te halen. 
+    U kunt de regel code vervolgens verwijderen, omdat deze slechts eenmaal is vereist, om de waarde op te halen.
 
 3. Voeg in de app-registratieportal de geretourneerde waarde toe in **RedirectUri** in het deelvenster **Verificatie**.
-   
+
 ## <a name="test-your-code"></a>Uw code testen
 
 Als u uw toepassing wilt testen, selecteert u de **F5**-toets om uw project uit te voeren in Visual Studio. Het hoofdvenster wordt weergegeven:
@@ -496,3 +501,10 @@ U schakelt [geïntegreerde verificatie voor federatieve domeinen](#enable-integr
 **Tijdelijke oplossing:** Selecteer **Aanmelden met andere opties**. Selecteer vervolgens **Aanmelden met een gebruikersnaam en wachtwoord**. Selecteer **Uw wachtwoord opgeven**. Ga vervolgens door met het verificatieproces voor de telefoon.
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
+## <a name="next-steps"></a>Volgende stappen
+
+Meer informatie over het gebruik van de Microsoft Authentication Library (MSAL) voor autorisatie en verificatie in .NET-toepassingen:
+
+> [!div class="nextstepaction"]
+> [Overzicht van de Microsoft Authentication Library (MSAL)](msal-overview.md)

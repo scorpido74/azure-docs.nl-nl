@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: ''
 ms.date: 05/04/2020
-ms.openlocfilehash: e15ac501a0598ae81a295d5a04074beb33c860f6
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 6e41109c65a047990577d1f2c77bdcd5219b6ed3
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085715"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537453"
 ---
 # <a name="incrementally-load-data-from-azure-sql-managed-instance-to-azure-storage-using-change-data-capture-cdc"></a>Incrementeel laden van gegevens vanuit Azure SQL Managed Instance naar Azure Storage met behulp van change data capture (CDC)
 
@@ -127,10 +127,10 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 7. Klik op **Create**.
 8. Zodra de implementatie is voltooid, klikt u op **Ga naar resource**
 
-   ![Startpagina van de gegevensfactory](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-deploy-complete.png)
+   ![Schermopname toont een bericht dat uw implementatie is voltooid en een optie om naar de resource te gaan.](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-deploy-complete.png)
 9. Na het aanmaken ziet u de pagina **Data Factory** zoals weergegeven in de afbeelding.
 
-   ![Startpagina van de gegevensfactory](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-home-page.png)
+   ![Schermopname toont de data factory die u hebt geïmplementeerd.](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-home-page.png)
 10. Klik op de tegel **Author & Monitor** om de gebruikersinterface (UI) van Azure Data Factory te openen in een afzonderlijk tabblad.
 11. Ga op de pagina **get started** naar het tabblad **Edit** in het linkervenster, zoals wordt weergegeven in de volgende afbeelding:
 
@@ -289,10 +289,10 @@ In deze stap maakt u een pijplijn, waarmee eerst het aantal gewijzigde records i
 
 11. Klik op preview om te controleren of de query de gewijzigde rijen correct retourneert.
 
-    ![Kopieeractiviteit - sinkinstellingen](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-source-preview.png)
+    ![Schermopname toont een preview om de query te controleren.](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-source-preview.png)
 12. Ga naar het tabblad **Sink** en geef de Azure Storage-gegevensset op voor het veld **Sinkgegevensset**.
 
-    ![Kopieeractiviteit - sinkinstellingen](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-sink-settings.png)
+    ![Schermopname toont het tabblad Sink.](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-sink-settings.png)
 13. Klik om terug te gaan naar het canvas van de hoofdpijplijn en verbind één voor één de activiteit **Opzoeken** met de activiteit **If Condition**. Sleep de **groene** knop die is gekoppeld aan de activiteit **Opzoeken** naar de activiteit **If Condition**.
 
     ![Lookup- en Copy-activiteiten verbinden](./media/tutorial-incremental-copy-change-data-capture-feature-portal/connect-lookup-if.png)
@@ -333,7 +333,7 @@ In deze stap maakt u een tumblingvenstertrigger om de taak volgens een frequent 
     ```
 4. Klik op het tabblad **Sink** van de activiteit **Kopiëren** en klik op **Openen** om de eigenschappen van de gegevensset te bewerken. Klik op het tabblad **Parameters** en voeg een nieuwe parameter toe met de naam **triggerStart**    
 
-    ![Sinkgegevensset configureren-3](./media/tutorial-incremental-copy-change-data-capture-feature-portal/sink-dataset-configuration-2.png)
+    ![Schermopname toont het toevoegen van een nieuwe parameter aan het tabblad Parameters.](./media/tutorial-incremental-copy-change-data-capture-feature-portal/sink-dataset-configuration-2.png)
 5. Configureer vervolgens de eigenschappen van de gegevensset om de gegevens op te slaan in een submap **customers/incremental** met op datums gebaseerde partities.
    1. Klik op het tabblad **Verbinding** van de eigenschappen van de gegevensset en voeg dynamische inhoud toe voor de secties **Map** en **Bestand**. 
    2. Voer de volgende expressie in de sectie **Map** in door te klikken op de link voor dynamische inhoud onder het tekstvak:

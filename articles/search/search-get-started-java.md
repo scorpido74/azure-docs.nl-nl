@@ -8,14 +8,14 @@ ms.author: heidist
 ms.devlang: java
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/23/2020
+ms.date: 09/25/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: e9a2ff5d46557ddf8f5f62b456e8a3d54bf90c55
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: ed44431af6d99daa5549d019f42efda4bbf9912b
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89290341"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91540350"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-java-using-rest-apis"></a>Quickstart: Een Azure Cognitive Search-index maken in Java met behulp van REST API's
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "89290341"
 > * [Python](search-get-started-python.md)
 > * [Postman](search-get-started-postman.md)
 
-Maak een Java-consoletoepassing waarmee een zoekindex wordt gemaakt en geladen en daarop een query wordt uitgevoerd met behulp van [IntelliJ](https://www.jetbrains.com/idea/), [Java 11 SDK](/java/azure/jdk/?view=azure-java-stable) en de [REST API van Azure Cognitive Search](/rest/api/searchservice/). In dit artikel vindt u stapsgewijze instructies voor het maken van de toepassing. U kunt ook [de complete toepassing downloaden en uitvoeren](/samples/azure-samples/azure-search-java-samples/java-sample-quickstart/).
+Maak een Java-consoletoepassing waarmee een zoekindex wordt gemaakt en geladen en daarop een query wordt uitgevoerd met behulp van [IntelliJ](https://www.jetbrains.com/idea/), [Java 11 SDK](/java/azure/jdk/) en de [REST API van Azure Cognitive Search](/rest/api/searchservice/). In dit artikel vindt u stapsgewijze instructies voor het maken van de toepassing. U kunt ook [de complete toepassing downloaden en uitvoeren](/samples/azure-samples/azure-search-java-samples/java-sample-quickstart/).
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -37,7 +37,7 @@ De volgende software en services zijn gebruikt om deze quickstart te maken en te
 
 + [IntelliJ IDEA](https://www.jetbrains.com/idea/)
 
-+ [SDK voor Java 11](/java/azure/jdk/?view=azure-java-stable)
++ [SDK voor Java 11](/java/azure/jdk/)
 
 + [Maak een Azure Cognitive Search-service](search-create-service-portal.md) of [zoek een bestaande service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) onder uw huidige abonnement. U kunt een gratis service voor deze quickstart gebruiken.
 
@@ -53,7 +53,7 @@ Voor aanroepen naar de service zijn voor elke aanvraag een URL-eindpunt en een t
 
    Maak ook een querysleutel. Het is een aanbevolen procedure voor het uitgeven van queryaanvragen met alleen-lezen-toegang.
 
-![De naam van de service en de querysleutels voor beheer ophalen](media/search-get-started-nodejs/service-name-and-keys.png)
+:::image type="content" source="media/search-get-started-nodejs/service-name-and-keys.png" alt-text="De naam van de service en de querysleutels voor beheer ophalen" border="false":::
 
 Voor elke aanvraag die naar uw service is verzonden, hebt u een API-sleutel nodig. Met een geldige sleutel stelt u per aanvraag een vertrouwensrelatie in tussen de toepassing die de aanvraag verzendt en de service die de aanvraag afhandelt.
 
@@ -67,7 +67,7 @@ Open eerst IntelliJ IDEA en stel een nieuw project in.
 1. Selecteer **Maven**.
 1. Selecteer de Java 11 SDK in de **Project SDK**-lijst.
 
-    ![Een Maven-project maken](media/search-get-started-java/java-quickstart-create-new-maven-project.png) 
+    :::image type="content" source="media/search-get-started-java/java-quickstart-create-new-maven-project.png" alt-text="De naam van de service en de querysleutels voor beheer ophalen" border="false":::
 
 1. Voer voor **GroupId** en **ArtifactId** `AzureSearchQuickstart` in.
 1. Accepteer de resterende standaarden om het project te openen.
@@ -78,7 +78,7 @@ Open eerst IntelliJ IDEA en stel een nieuw project in.
 1. Selecteer in het venster **Instellingen** **Bouwen, uitvoeren, implementeren** > **Hulpprogramma's voor bouwen** > **Maven** > **Importeren**.
 1. Schakel het selectievakje **Maven-projecten automatisch importeren** in en klik op **OK** om het venster te sluiten. Maven-invoegtoepassingen en andere afhankelijkheden worden nu automatisch gesynchroniseerd wanneer u het bestand pom.xml bijwerkt in de volgende stap.
 
-    ![Maven-importeeropties in IntelliJ-instellingen](media/search-get-started-java/java-quickstart-settings-import-maven-auto.png)
+    :::image type="content" source="media/search-get-started-java/java-quickstart-settings-import-maven-auto.png" alt-text="De naam van de service en de querysleutels voor beheer ophalen" border="false":::
 
 1. Open het bestand pom.xml en vervang de inhoud door de volgende Maven-configuratiedetails. Dit is inclusief verwijzingen naar de [Exec Maven-invoegtoepassing](https://www.mojohaus.org/exec-maven-plugin/) en een [JSON interface-API](https://javadoc.io/doc/org.glassfish/javax.json/1.0.2)
 
@@ -140,7 +140,7 @@ Open eerst IntelliJ IDEA en stel een nieuw project in.
 
     Als u klaar bent, moet de projectstructuur er als in de volgende afbeelding uitzien.
 
-    ![De structuur van de projectmap](media/search-get-started-java/java-quickstart-basic-code-tree.png)
+    :::image type="content" source="media/search-get-started-java/java-quickstart-basic-code-tree.png" alt-text="De naam van de service en de querysleutels voor beheer ophalen" border="false":::
 
 1. Klik op **OK** om het venster te sluiten.
 
@@ -148,7 +148,7 @@ Open eerst IntelliJ IDEA en stel een nieuw project in.
 
 1. Vouw in het venster **Project** de bronstructuur uit voor toegang tot de map `src` >  `main` >`resources` > `app` en voeg een `config.properties`-bestand toe. Selecteer hiervoor de map `app`, druk op Alt + Insert, selecteer **Bestand** en voer vervolgens de bestandsnaam in.
 
-1. Kopieer de volgende instellingen naar het nieuwe bestand en vervang `<YOUR-SEARCH-SERVICE-NAME>`, `<YOUR-ADMIN-KEY>` en `<YOUR-QUERY-KEY>` door uw servicenaam en sleutels. Als uw service-eindpunt `https://mydemo.search.windows.net` is, wordt de servicenaam 'mydemo'.
+1. Kopieer de volgende instellingen naar het nieuwe bestand en vervang `<YOUR-SEARCH-SERVICE-NAME>`, `<YOUR-ADMIN-KEY>` en `<YOUR-QUERY-KEY>` door uw servicenaam en sleutels. Als uw service-eindpunt `https://mydemo.search.windows.net` is, wordt de servicenaam `"mydemo"`.
 
     ```java
         SearchServiceName=<YOUR-SEARCH-SERVICE-NAME>
@@ -373,10 +373,10 @@ Open eerst IntelliJ IDEA en stel een nieuw project in.
 
 1. Controleer of uw project de volgende structuur heeft.
 
-    ![De projectmapstructuur en klassen](media/search-get-started-java/java-quickstart-basic-code-tree-plus-classes.png)
+    :::image type="content" source="media/search-get-started-java/java-quickstart-basic-code-tree-plus-classes.png" alt-text="De naam van de service en de querysleutels voor beheer ophalen" border="false":::
 
 1. Open het venster van het **Maven**-hulpprogramma en voer deze Maven-doelstelling uit: `verify exec:java`
-![Execute maven goal: verify exec:java](media/search-get-started-java/java-quickstart-execute-maven-goal.png)
+:::image type="content" source="media/search-get-started-java/java-quickstart-execute-maven-goal.png" alt-text="De naam van de service en de querysleutels voor beheer ophalen" border="false":::
 
 Wanneer de verwerking is voltooid, zoekt u het bericht BUILD SUCCESS, gevolgd door de afsluitcode nul (0).
 

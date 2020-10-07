@@ -1,20 +1,21 @@
 ---
-title: 'Snelstart: een containerinstallatiekopie bouwen en uitvoeren'
-description: Voer snel taken uit met Azure Container Registry om op aanvraag een Docker-containerinstallatiekopie te maken en uit te voeren in de cloud.
+title: 'Quickstart: een containerinstallatiekopie op aanvraag bouwen in Azure'
+description: Gebruik Azure Container Registry-opdrachten om snel een docker-container installatiekopie op aanvraag te bouwen, te pushen en uit te voeren in de Azure-Cloud.
 ms.topic: quickstart
-ms.date: 01/31/2020
-ms.openlocfilehash: 610d82a0761f06338d04f0794d4141165d67d36c
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.date: 09/25/2020
+ms.custom: contperfq1
+ms.openlocfilehash: 36921900f64d458f1f2591897e32c98f6d22a550
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84753706"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538203"
 ---
 # <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>Quickstart: Een containerinstallatiekopie bouwen en uitvoeren met Azure Container Registry-taken
 
-In deze snelstart gebruikt u opdrachten voor Azure Container Registry-taken om snel een Docker-containerinstallatiekopie in de systeemeigen modus in Azure te bouwen, te pushen en uit te voeren en wordt beschreven hoe u uw interne ontwikkelingscyclus kunt offloaden naar de cloud. [ACR-taken][container-registry-tasks-overview] is een reeks functies in Azure Container Registry die u helpen bij het beheren en wijzigen van containerinstallatiekopieën gedurende de levenscyclus van de container. 
+In deze quickstart gebruikt u [Azure Container Registry Tasks][container-registry-tasks-overview]-opdrachten om snel een Docker-containerinstallatie kopie in Azure te bouwen, te pushen en uit te voeren, zonder een lokale Docker-installatie. ACR-taken is een reeks functies in Azure Container Registry die u helpen bij het beheren en wijzigen van containerinstallatiekopieën gedurende de levenscyclus van de container. In dit voorbeeld ziet u hoe u de ontwikkelingscyclus voor de containerinstallatiekopie in de vervolglus naar de cloud kunt offloaden met on-demand builds met behulp van een lokale Dockerfile. 
 
-Na deze snelstart kunt u meer geavanceerde functies van ACR-taken verkennen. Met ACR-taken kunnen onder meer installatiekopieën worden geautomatiseerd op basis van codedoorvoeringen of updates van basisinstallatiekopieën of meerdere containers parallel worden getest. 
+Na deze quickstart kunt u meer geavanceerde functies van ACR-taken verkennen met de [zelfstudies](container-registry-tutorial-quick-task.md). Met ACR-taken kunnen onder meer installatiekopieën worden geautomatiseerd op basis van codedoorvoeringen of updates van basisinstallatiekopieën of meerdere containers parallel worden getest. 
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account][azure-account] aan voordat u begint.
 
@@ -45,7 +46,7 @@ In dit voorbeeld maakt u een *Basic*-register. Dit is een voor kosten geoptimali
 
 ## <a name="build-and-push-image-from-a-dockerfile"></a>Een installatiekopie bouwen en pushen vanaf een Dockerfile
 
-Gebruik nu Azure Container Registry om een installatiekopie te maken en pushen. Maak eerst een werkmap en maak vervolgens een Dockerfile met de naam *Dockerfile* met één regel: `FROM hello-world`. Dit is een eenvoudig voorbeeld van het bouwen van een Linux-containerinstallatiekopie van de installatiekopie `hello-world` in Docker Hub. U kunt uw eigen standaard Dockerfile maken en installatiekopieën bouwen voor andere platforms. Als u met een bash-shell werkt, maakt u de Dockerfile met de volgende opdracht:
+Gebruik nu Azure Container Registry om een installatiekopie te maken en pushen. Maak eerst een lokale werkmap en maak vervolgens een Dockerfile met de naam *Dockerfile* met één regel: `FROM hello-world`. Dit is een eenvoudig voorbeeld van het bouwen van een Linux-containerinstallatiekopie van de installatiekopie `hello-world` in Docker Hub. U kunt uw eigen standaard Dockerfile maken en installatiekopieën bouwen voor andere platforms. Als u met een bash-shell werkt, maakt u de Dockerfile met de volgende opdracht:
 
 ```bash
 echo FROM hello-world > Dockerfile

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/12/2020
-ms.openlocfilehash: f72952737af9b76b76ac9a08138238138c54614b
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 45c9625f0a762a0879473cc64c38d791c804d087
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642177"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91530660"
 ---
 # <a name="quickstart-create-apache-hbase-cluster-in-azure-hdinsight-using-arm-template"></a>Quickstart: Een Apache HBase-cluster maken in Azure HDInsight met een ARM-sjabloon
 
@@ -73,7 +73,7 @@ Nadat u de quickstart hebt voltooid, kunt u het cluster verwijderen. Met HDInsig
 
 Ga in de Azure-portal naar het cluster en selecteer **Verwijderen**.
 
-![Resource Manager-sjabloon HBase](./media/quickstart-resource-manager-template/azure-portal-delete-hbase.png)
+![Schermafbeelding met een H D Insight-cluster met de resourcegroep die verwijderd moet worden.](./media/quickstart-resource-manager-template/azure-portal-delete-hbase.png)
 
 U kunt ook de naam van de resourcegroep selecteren om de pagina van de resourcegroep te openen en vervolgens **Resourcegroep verwijderen** selecteren. Als u de resourcegroep verwijdert, verwijdert u zowel het HDInsight-cluster als het standaardopslagaccount.
 

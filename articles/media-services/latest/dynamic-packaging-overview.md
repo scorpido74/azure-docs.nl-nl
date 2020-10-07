@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/31/2020
-ms.author: v-myoung
-ms.openlocfilehash: 3607ecb7d1ef01b968b67c704e12136cc1888b69
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 09/30/2020
+ms.author: inhenkel
+ms.openlocfilehash: 797ba00820e7ff9d96868acdfc1dddfff3d21623
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91296226"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91598290"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Dynamische pakketten in Media Services v3
 
@@ -56,6 +56,9 @@ Uw streaming-client kan de volgende HLS-indelingen opgeven:
 |HLS V4 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl)`||
 |HLS V3 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl-v3)`||
 |HLS CMAF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-cmaf)`||
+
+> [!NOTE]
+> In de vorige richtlijnen van Apple wordt aanbevolen dat bij de terugval voor netwerken met lage bandbreedte alleen audio zou kunnen worden gestreamd.  Op dit moment genereert de Media Services-encoder automatisch een nummer met alleen audio.  In de Apple-richtlijnen wordt nu vermeld dat het nummer met alleen audio *niet* moet worden opgenomen. Dit geldt met name voor de Apple TV-distributie.  Om te voorkomen dat de speler standaard een nummer met alleen audio kan maken, raden we u aan de tag audio-only=false te gebruiken in de URL waardoor weergave met alleen audio in HLS wordt verwijderd. U kunt ook gewoon HLS-V3 gebruiken. Bijvoorbeeld `http://host/locator/asset.ism/manifest(format=m3u8-aapl,audio-only=false)`.
 
 ### <a name="mpeg-dash-protocol"></a>MPEG-DASH-protocol
 

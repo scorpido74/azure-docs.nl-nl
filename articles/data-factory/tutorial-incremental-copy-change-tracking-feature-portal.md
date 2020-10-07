@@ -1,6 +1,6 @@
 ---
 title: Incrementeel gegevens kopiëren met behulp van Wijzigingen bijhouden met behulp van de Azure-portal
-description: In deze zelfstudie maakt u een Azure Data Factory-pijplijn waarmee wijzigingsgegevens incrementeel uit meerdere tabellen van een SQL Server-database worden gekopieerd naar een database in Azure SQL Database.
+description: In deze zelfstudie maakt u een Azure data factory met een pijplijn die gewijzigde gegevens laadt op basis van informatie over wijzigingen in de brondatabase in Azure SQL Database naar een Azure blob storage.
 services: data-factory
 ms.author: yexu
 author: dearandyxu
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/12/2018
-ms.openlocfilehash: c28489c2fa502f0ba1283abdea19219ed7438a99
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 78b9d3f30ebc8f74433f04c4474121682c4a3f36
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085783"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91542016"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information-using-the-azure-portal"></a>Incrementeel gegevens kopiëren van Azure SQL Database naar Azure Blob Storage met behulp van technologie voor bijhouden van wijzigingen met behulp van de Azure-portal
 
@@ -285,10 +285,10 @@ In deze stap maakt u een pijplijn met een kopieeractiviteit waarmee de volledige
 
 1. Klik op **+ (plus)** in het linkervenster en klik op **Pipeline**.
 
-    ![Menu Nieuwe pijplijn](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-pipeline-menu.png)
+    ![Schermopname met de optie Pijplijn voor een data factory.](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-pipeline-menu.png)
 2. Er wordt een nieuw tabblad weergegeven voor het configureren van de pijplijn. U ziet ook de pijplijn in de structuurweergave. In het venster **Properties** wijzigt u de naam van de pijplijn in **FullCopyPipeline**.
 
-    ![Menu Nieuwe pijplijn](./media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-pipeline-name.png)
+    ![Schermopname van een pijplijn waarvoor een naam is ingevoerd.](./media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-pipeline-name.png)
 3. Vouw in de werkset **Activities** de optie **Data Flow** uit en sleep de **Copy**-activiteit naar het ontwerpoppervlak voor pijplijnen en stel de naam **FullCopyActivity** in.
 
     ![Naam FullCopyActivity](./media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-activity-name.png)
@@ -303,7 +303,7 @@ In deze stap maakt u een pijplijn met een kopieeractiviteit waarmee de volledige
     ![De pijplijn valideren](./media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-pipeline-validate.png)
 7. Als u entiteiten (gekoppelde services, gegevenssets en pijplijnen) wilt publiceren, klikt u op **Publish**. Wacht totdat de publicatie is uitgevoerd.
 
-    ![De knop Publiceren](./media/tutorial-incremental-copy-change-tracking-feature-portal/publish-button.png)
+    ![Schermopname met een data factory waarin de knop Alles publiceren is gemarkeerd.](./media/tutorial-incremental-copy-change-tracking-feature-portal/publish-button.png)
 8. Wacht tot u het bericht **Gepubliceerd** ziet.
 
     ![Het publiceren is voltooid](./media/tutorial-incremental-copy-change-tracking-feature-portal/publishing-succeeded.png)
@@ -315,16 +315,16 @@ In deze stap maakt u een pijplijn met een kopieeractiviteit waarmee de volledige
 ### <a name="run-the-full-copy-pipeline"></a>Voer de volledige kopie-pijplijn uit
 Klik in de werkbalk voor de pijplijn op **Trigger** en klik vervolgens op **Trigger Now**.
 
-![Menu Trigger Now](./media/tutorial-incremental-copy-change-tracking-feature-portal/trigger-now-menu.png)
+![Schermopname waarin de optie Nu activeren is geselecteerd in het menu Activeren.](./media/tutorial-incremental-copy-change-tracking-feature-portal/trigger-now-menu.png)
 
 ### <a name="monitor-the-full-copy-pipeline"></a>De volledige kopieerpijplijn bewaken
 
 1. Klik op het tabblad **Monitor** aan de linkerkant. U ziet de pijplijnuitvoering in de lijst en de status ervan. Als u de lijst wilt vernieuwen, klikt u op **Refresh**. Met de koppelingen in de kolom Actions kunt u de activiteituitvoeringen weergeven die gekoppeld zijn aan de pijplijnuitvoering en kunt u de pijplijn opnieuw uitvoeren.
 
-    ![Pijplijnuitvoeringen](./media/tutorial-incremental-copy-change-tracking-feature-portal/monitor-full-copy-pipeline-run.png)
+    ![Schermopname van pijplijnuitvoeringen voor een data factory.](./media/tutorial-incremental-copy-change-tracking-feature-portal/monitor-full-copy-pipeline-run.png)
 2. Uitvoeringen van activiteit die aan de pijplijn zijn gekoppeld, kunt u bekijken door te klikken op de koppeling **View Activity Runs** in de kolom **Actions**. Omdat er slechts één activiteit in de pijplijn is, ziet u slechts één vermelding in de lijst. Als u wilt terugkeren naar de vorige weergave, klikt u op de koppeling **Pipelines** bovenaan.
 
-    ![Uitvoering van activiteiten](./media/tutorial-incremental-copy-change-tracking-feature-portal/activity-runs-full-copy.png)
+    ![Schermopname van activiteitsuitvoeringen voor een data factory met de koppeling Pijplijnen gemarkeerd.](./media/tutorial-incremental-copy-change-tracking-feature-portal/activity-runs-full-copy.png)
 
 ### <a name="review-the-results"></a>De resultaten bekijken
 U ziet u een bestand met de naam `incremental-<GUID>.txt` in de `incchgtracking` map van de `adftutorial` container.
@@ -362,19 +362,19 @@ In deze stap maakt u een pijplijn met de volgende activiteiten en laat deze peri
 
 1. Ga in de Data Factory-gebruikersinterface naar het tabblad **Edit**. Klik op **+ (plus)** in het linkervenster en klik op **Pipeline**.
 
-    ![Menu Nieuwe pijplijn](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-pipeline-menu-2.png)
+    ![Schermopname van het maken van een pijplijn in een data factory.](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-pipeline-menu-2.png)
 2. Er wordt een nieuw tabblad weergegeven voor het configureren van de pijplijn. U ziet ook de pijplijn in de structuurweergave. In het venster **Properties** wijzigt u de naam van de pijplijn in **IncrementalCopyPipeline**.
 
     ![Naam pijplijn](./media/tutorial-incremental-copy-change-tracking-feature-portal/incremental-copy-pipeline-name.png)
 3. Vouw in de **Activiteiten**-werkset de optie **Algemeen** uit. Gebruik vervolgens slepen-en-neerzetten om de **opzoekactiviteit** te verplaatsen naar het ontwerpoppervlak voor pijplijnen. Stel de naam van de activiteit in op **LookupLastChangeTrackingVersionActivity**. Deze activiteit haalt de versie voor het bijhouden van wijzigingen op die werd gebruikt in de laatste kopieerbewerking die is opgeslagen in de tabel **table_store_ChangeTracking_version**.
 
-    ![Activiteit Lookup - naam](./media/tutorial-incremental-copy-change-tracking-feature-portal/first-lookup-activity-name.png)
+    ![Schermopname van een pijplijn met een opzoekactiviteit.](./media/tutorial-incremental-copy-change-tracking-feature-portal/first-lookup-activity-name.png)
 4. Ga naar **Settings** in het venster **Properties** en selecteer **ChangeTrackingDataset** in het veld **Source Dataset**.
 
-    ![Activiteit Lookup - instellingen](./media/tutorial-incremental-copy-change-tracking-feature-portal/first-lookup-activity-settings.png)
+    ![Schermopname van het tabblad Instellingen in het venster Eigenschappen.](./media/tutorial-incremental-copy-change-tracking-feature-portal/first-lookup-activity-settings.png)
 5. Sleep de **Lookup**-activiteit vanuit de werkset **Activities** naar het ontwerpoppervlak voor pijplijnen. Stel de naam van de activiteit in op **LookupCurrentChangeTrackingVersionActivity**. Deze activiteit haalt de huidige versie voor bijhouden van wijzigingen op.
 
-    ![Activiteit Lookup - naam](./media/tutorial-incremental-copy-change-tracking-feature-portal/second-lookup-activity-name.png)
+    ![Schermopname van een pijplijn met twee opzoekactiviteiten.](./media/tutorial-incremental-copy-change-tracking-feature-portal/second-lookup-activity-name.png)
 6. Ga naar **Settings** in het venster **Properties** en voer de volgende stappen uit:
 
    1. Selecteer **SourceDataset** in het veld **Source Dataset**.
@@ -385,7 +385,7 @@ In deze stap maakt u een pijplijn met de volgende activiteiten en laat deze peri
        SELECT CHANGE_TRACKING_CURRENT_VERSION() as CurrentChangeTrackingVersion
        ```
 
-      ![Activiteit Lookup - instellingen](./media/tutorial-incremental-copy-change-tracking-feature-portal/second-lookup-activity-settings.png)
+      ![Schermopname van een query die is toegevoegd aan het tabblad Instellingen in het venster Eigenschappen.](./media/tutorial-incremental-copy-change-tracking-feature-portal/second-lookup-activity-settings.png)
 7. Vouw in de werkset **Activities** de optie **Data Flow** uit en sleep de **Copy**-activiteit naar het ontwerpoppervlak voor pijplijnen. Stel de naam van de activiteit in op **IncrementalCopyActivity**. Deze activiteit kopieert de gegevens tussen de laatste versie voor bijhouden van wijzigingen en de huidige versie voor bijhouden van wijzigingen naar het beoogde gegevensarchief.
 
     ![Kopieeractiviteit - naam](./media/tutorial-incremental-copy-change-tracking-feature-portal/incremental-copy-activity-name.png)
@@ -432,21 +432,21 @@ In deze stap maakt u een pijplijn met de volgende activiteiten en laat deze peri
     ![Knop Valideren](./media/tutorial-incremental-copy-change-tracking-feature-portal/validate-button.png)
 16. Publiceer entiteiten (gekoppelde services, gegevenssets en pijplijnen) naar de Data Factory-service door te klikken op de knop **Alles publiceren**. Wacht tot u het bericht **Publishing succeeded** ziet.
 
-       ![De knop Publiceren](./media/tutorial-incremental-copy-change-tracking-feature-portal/publish-button-2.png)    
+       ![Schermopname met de optie Alles publiceren voor een data factory.](./media/tutorial-incremental-copy-change-tracking-feature-portal/publish-button-2.png)    
 
 ### <a name="run-the-incremental-copy-pipeline"></a>De pijplijn incrementele kopie uitvoeren
 1. Klik in de werkbalk voor de pijplijn op **Trigger** en klik vervolgens op **Trigger Now**.
 
-    ![Menu Trigger Now](./media/tutorial-incremental-copy-change-tracking-feature-portal/trigger-now-menu-2.png)
+    ![Schermopname van een pijplijn met activiteiten en de optie Nu activeren die is geselecteerd in het menu Activeren.](./media/tutorial-incremental-copy-change-tracking-feature-portal/trigger-now-menu-2.png)
 2. Selecteer in het venster **Pijplijnuitvoering** de optie **Voltooien**.
 
 ### <a name="monitor-the-incremental-copy-pipeline"></a>De pijplijn incrementele kopie bewaken
 1. Klik op het tabblad **Monitor** aan de linkerkant. U ziet de pijplijnuitvoering in de lijst en de status ervan. Als u de lijst wilt vernieuwen, klikt u op **Refresh**. Met de koppelingen in de kolom **Actions** kunt u de activiteituitvoeringen weergeven die gekoppeld zijn aan de pijplijnuitvoering en kunt u de pijplijn opnieuw uitvoeren.
 
-    ![Pijplijnuitvoeringen](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-pipeline-runs.png)
+    ![Schermopname van pijplijnuitvoeringen voor een data factory, inclusief uw pijplijn.](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-pipeline-runs.png)
 2. Uitvoeringen van activiteit die aan de pijplijn zijn gekoppeld, kunt u bekijken door te klikken op de koppeling **View Activity Runs** in de kolom **Actions**. Omdat er slechts één activiteit in de pijplijn is, ziet u slechts één vermelding in de lijst. Als u wilt terugkeren naar de vorige weergave, klikt u op de koppeling **Pipelines** bovenaan.
 
-    ![Uitvoering van activiteiten](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-activity-runs.png)
+    ![Schermopname van pijplijnuitvoeringen voor een data factory waarin meerdere uitvoeringen zijn gemarkeerd als geslaagd.](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-activity-runs.png)
 
 
 ### <a name="review-the-results"></a>De resultaten bekijken

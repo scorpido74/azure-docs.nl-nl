@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 8b6faa6e2e8928e008370cb0eca00595712a679d
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 4677426337a48d4fde74f61b8a4ad6fcb695f420
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91449029"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91577812"
 ---
 # <a name="introduction-to-azure-defender-for-storage"></a>Inleiding tot Azure Defender for Storage
 
@@ -27,7 +27,7 @@ Deze beschermingslaag stelt u in staat om bedreigingen te verhelpen *zonder* dat
 |----|:----|
 |Releasestatus:|Algemeen verkrijgbaar (GA)|
 |Prijzen:|Voor **Azure Defender for Storage** gelden de prijzen op de [pagina Prijzen](security-center-pricing.md)|
-|Beveiligde opslagtypen|[Blob Storage](https://azure.microsoft.com/services/storage/blobs/)<br>[Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)<br>[Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)|
+|Beveiligde opslagtypen:|[Blob Storage](https://azure.microsoft.com/services/storage/blobs/)<br>[Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)<br>[Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)|
 |Clouds:|![Ja](./media/icons/yes-icon.png) Commerciële clouds<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![Nee](./media/icons/no-icon.png) China Gov, Other Gov|
 |||
 

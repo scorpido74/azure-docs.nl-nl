@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: alkohli
-ms.openlocfilehash: c2d971c2c9375f58fd5f41a46716fac4bff29f88
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 3181b88b0cf49516eb5230585460d0cc91bb4042
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90604305"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575296"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Zelfstudie: Azure Data Box bestellen
 
@@ -215,11 +215,11 @@ Voer de volgende stappen uit in Azure Portal om een apparaat te bestellen.
 1. Gebruik uw Microsoft Azure-referenties om u aan te melden op deze URL: [https://portal.azure.com](https://portal.azure.com).
 2. Selecteer **+ Een resource maken** en zoek naar *Azure Data Box*. Selecteer **Azure Data Box**.
 
-   ![Azure Data Box selecteren](media/data-box-deploy-ordered/select-data-box-import-02.png)
+   ![Schermafbeelding van de nieuwe sectie met Azure Data Box in het zoekveld.](media/data-box-deploy-ordered/select-data-box-import-02.png)
 
 3. Selecteer **Maken**.
 
-   ![Azure Data Box selecteren](media/data-box-deploy-ordered/select-data-box-import-03.png)
+   ![Schermafbeelding van de sectie Azure Data Box met de optie 'Maken' uitgelicht.](media/data-box-deploy-ordered/select-data-box-import-03.png)
 
 4. Controleer of de Data Box-service beschikbaar is in uw regio. Voer de volgende gegevens in of selecteer deze en selecteer **Toepassen**.
 
@@ -235,7 +235,7 @@ Voer de volgende stappen uit in Azure Portal om een apparaat te bestellen.
 
 5. Selecteer **Data Box**. De maximale bruikbare capaciteit voor één bestelling is 80 TB. U kunt meerdere bestellingen doen voor grotere gegevensgrootten.
 
-    ![Optie 1 voor Data Box selecteren](media/data-box-deploy-ordered/select-data-box-import-05.png)
+    ![Schermafbeelding van de verschillende gegevensgrootten die kunnen worden geselecteerd: Data Box Disk 40 TB, Data Box 100 TB, Data Box Heavy, 1000 TB en Uw eigen schijven verzenden 1 TB.](media/data-box-deploy-ordered/select-data-box-import-05.png)
 
 6. Ga in **Bestelling** naar het tabblad **Basisinformatie**. Voer de volgende gegevens in of selecteer deze en selecteer **Volgende: Gegevensbestemming>** .
 
@@ -245,7 +245,7 @@ Voer de volgende stappen uit in Azure Portal om een apparaat te bestellen.
     |Resourcegroep    | De resourcegroep die u eerder hebt geselecteerd. |
     |Naam van importorder | Geef een beschrijvende naam op om de bestelling te volgen. <br> De naam kan tussen 3 en 24 tekens bevatten (letters, cijfers en afbreekstreepjes). <br> De naam moet beginnen en eindigen met een letter of cijfer.    |
 
-    ![Optie 1 voor Data Box selecteren](media/data-box-deploy-ordered/select-data-box-import-06.png)
+    ![Schermopname van de wizard Bestellen, waarin voor de basisstappen van de wizard de juiste gegevens zijn ingevuld.](media/data-box-deploy-ordered/select-data-box-import-06.png)
 
     Het wachtwoord voor het ontgrendelen van het apparaat wordt standaard versleuteld met een door Microsoft beheerde sleutel. Nadat u de bestelling hebt voltooid, kunt u een door de klant beheerde sleutel toevoegen. Met een door de klant beheerde sleutel kunt u de eigen sleutel van een Azure-sleutelkluissleutel gebruiken om uw wachtwoord voor het ontgrendelen van apparaten te beveiligen. Zie [Door de klant beheerde sleutels gebruiken in Azure Key Vault voor Azure Data Box](data-box-customer-managed-encryption-key-portal.md) voor meer informatie.
 
@@ -265,7 +265,7 @@ Voer de volgende stappen uit in Azure Portal om een apparaat te bestellen.
     |---------|---------|
     |Resourcegroepen     | Maak nieuwe resourcegroepen als u beheerde schijven wilt maken van on-premises virtuele harde schijven. U kunt alleen een bestaande resourcegroep gebruiken als de resourcegroep eerder is gemaakt en beschikbaar was op het moment van het plaatsen van een Data Box-bestelling voor een beheerde schijf door de Data Box-service. <br> U kunt meerdere resourcegroepen opgeven door de namen te scheiden met een puntkomma. Er worden maximaal tien resourcegroepen ondersteund.|
 
-    ![Data Box-bestelling voor beheerde schijf](media/data-box-deploy-ordered/select-data-box-import-07b.png)
+    ![Schermafbeelding van de wizard Bestellen, waarin voor de stap Gegevensbestemming van de wizard de juiste gegevens zijn ingevuld.](media/data-box-deploy-ordered/select-data-box-import-07b.png)
 
     Het opslagaccount dat is opgegeven voor beheerde schijven wordt gebruikt als een opslagaccount waarin de gegevens worden klaargezet. De Data Box-service uploadt de virtuele harde schijven als pagina-blobs naar dit opslagaccount waarna de schijven worden omgezet in beheerde schijven en naar de resourcegroepen worden verplaatst. Zie [Uploaden van gegevens naar Azure controleren](data-box-deploy-picked-up.md#verify-data-upload-to-azure) voor meer informatie.
    > [!NOTE]
@@ -286,11 +286,11 @@ Voer de volgende stappen uit in Azure Portal om een apparaat te bestellen.
 
 8. Selecteer in **Contactgegevens** de optie **+ Verzendadres toevoegen**.
 
-    ![Data Box-bestelling voor beheerde schijf](media/data-box-deploy-ordered/select-data-box-import-08a.png)
+    ![Schermopname van de wizard Bestellen, waarin de stap Contactgegevens van de wizard met de optie Verzendadres toevoegen is uitgelicht.](media/data-box-deploy-ordered/select-data-box-import-08a.png)
 
 9. Bij **Verzendadres** geeft u uw voor- en achternaam, de naam en het postadres van het bedrijf en een geldig telefoonnummer op. Selecteer **Adres valideren**. De service controleert of de service beschikbaar is voor de regio van het verzendadres. Als de service beschikbaar is voor het opgegeven verzendadres, ontvangt u daarover een melding.
 
-   ![Data Box-bestelling voor beheerde schijf](media/data-box-deploy-ordered/select-data-box-import-10.png)
+   ![Schermopname van het dialoogvenster Verzendadres toevoegen met de opties Verzenden met en Verzendadres toevoegen uitgelicht.](media/data-box-deploy-ordered/select-data-box-import-10.png)
 
    Als u zelfbeheerde verzending hebt geselecteerd, ontvangt u een e-mailmelding nadat de bestelling is geplaatst. Zie [Zelfbeheerde verzending gebruiken](data-box-portal-customer-managed-shipping.md) voor meer informatie over zelfbeheerde verzendingen.
 
@@ -300,13 +300,13 @@ Voer de volgende stappen uit in Azure Portal om een apparaat te bestellen.
 
     We raden u aan een e-mailadres van een groep te gebruiken, zodat u meldingen blijft ontvangen als een beheerder de groep verlaat.
 
-    ![Data Box-bestelling voor beheerde schijf](media/data-box-deploy-ordered/select-data-box-import-08c.png)
+    ![Schermopname van het gedeelte E-mail van de stap Contactgegevens van de wizard Bestellen met het tekstvak E-mail en de opties Volgende: Controleren en bestellen is uitgelicht.](media/data-box-deploy-ordered/select-data-box-import-08c.png)
 
 12. Bekijk de gegevens met betrekking tot de bestelling, het contact, de meldingen en de privacyvoorwaarden in **Controleren en bestellen**. Vink het selectievakje aan waarmee u akkoord gaat met de privacyvoorwaarden.
 
 13. Selecteer **Bestellen**. Het duurt een paar minuten voordat de bestelling is gemaakt.
 
-    ![Data Box-bestelling voor beheerde schijf](media/data-box-deploy-ordered/select-data-box-import-11.png)
+    ![Schermopname van de wizard Bestellen, waarin de stap Controleren en bestellen en de optie Bestellen zijn uitgelicht.](media/data-box-deploy-ordered/select-data-box-import-11.png)
 
 # <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 

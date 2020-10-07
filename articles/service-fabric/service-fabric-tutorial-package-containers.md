@@ -1,17 +1,15 @@
 ---
 title: Containers verpakken en implementeren
 description: In deze zelfstudie leert u hoe u een Azure Service Fabric-toepassingsdefinitie kunt genereren met behulp van Yeoman en de toepassing verpakken.
-author: suhuruli
 ms.topic: tutorial
 ms.date: 07/22/2019
-ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: cc1d6e04b19d36f0ca8c7ed4b2bb3d62f5e8e15a
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 5840539b6c51a0070a98f03dbda3c596fd5c2516
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "78252751"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539874"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>Zelfstudie: Containers verpakken en implementeren als een Service Fabric-toepassing met behulp van Yeoman
 
@@ -278,7 +276,7 @@ Open een browser en ga naar Service Fabric Explorer op http:\//containertestclus
 
 U maakt verbinding met de actieve toepassing door een webbrowser te openen en naar de cluster-URL te gaan: bijvoorbeeld http:\//containertestcluster.eastus.cloudapp.azure.com:80. U ziet nu de stemtoepassing in de webgebruikersinterface.
 
-![stemapp][votingapp]
+![De schermopname toont de Azure stem-app met knoppen voor katten, honden en resetten en totalen.][votingapp]
 
 ## <a name="clean-up"></a>Opschonen
 

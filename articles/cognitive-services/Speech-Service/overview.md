@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 08/20/2020
 ms.author: trbye
-ms.openlocfilehash: 2277c054be3e0649d48350b21eb9add2a1e52e8b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b15a034a73882287e70afcbcaa9c72ee931c9f78
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91282864"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91630199"
 ---
 # <a name="what-is-the-speech-service"></a>Wat is de Speech-service?
 
@@ -29,10 +29,10 @@ De volgende onderdelen maken deel uit van de spraakservice. Gebruik de koppeling
 | Service | Functie | Beschrijving | SDK | REST |
 |---------|---------|-------------|-----|------|
 | [Spraak-naar-tekst](speech-to-text.md) | Spraak-naar-tekst in realtime | Bij spraak-naar-tekst worden audiostromen of lokale bestanden in realtime naar tekst getranscribeerd of vertaald, zodat uw toepassingen, hulpprogramma's of apparaten deze kunnen gebruiken of weergeven. Gebruik spraak-naar-tekst met [Language Understanding (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/) om gebruikersintentie af te leiden uit getranscribeerde spraak en om te reageren op spraakopdrachten. | [Ja](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Ja](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
-| | [Spraak-naar-tekst batchgewijs verwerken](batch-transcription.md) | Met Spraak-naar-tekst batchgewijs verwerken kunt u asynchrone spraak-naar-tekst-transcriptie doorvoeren van grote volumes spraakgegevens die zijn opgeslagen in Azure Blob Storage. Met Spraak-naar-tekst batchgewijs verwerken kunt u niet alleen spraak omzetten naar tekst, maar ook sprekersindexering en sentimentanalyses uitvoeren. | Nee | [Ja](https://westus.cris.ai/swagger/ui/index) |
+| | [Spraak-naar-tekst batchgewijs verwerken](batch-transcription.md) | Met Spraak-naar-tekst batchgewijs verwerken kunt u asynchrone spraak-naar-tekst-transcriptie doorvoeren van grote volumes spraakgegevens die zijn opgeslagen in Azure Blob Storage. Met Spraak-naar-tekst batchgewijs verwerken kunt u niet alleen spraak omzetten naar tekst, maar ook sprekersindexering en sentimentanalyses uitvoeren. | Nee | [Ja](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0) |
 | | [Gesprek via meerdere apparaten](multi-device-conversation.md) | Meerdere apparaten of clients in een gesprek verbinden om spraak- of tekstberichten te verzenden, met eenvoudige ondersteuning voor transcriptie en vertaling| Ja | Nee |
 | | [Gesprekstranscriptie](conversation-transcription-service.md) | Hiermee schakelt u realtime spraakherkenning, sprekeridentificatie en sprekersindexering in. Het is ideaal voor het transcriberen van persoonlijke vergaderingen met de mogelijkheid om de sprekers te onderscheiden. | Ja | Nee |
-| | [Aangepaste spraakmodellen maken](#customize-your-speech-experience) | Als u spraak-naar-tekst gebruikt voor herkenning en transcriptie in een unieke omgeving, kunt u aangepaste akoestische, taal- en uitspraakmodellen maken en trainen om te kunnen omgaan met omgevingslawaai of branchespecifieke woordenlijsten. | Nee | [Ja](https://westus.cris.ai/swagger/ui/index) |
+| | [Aangepaste spraakmodellen maken](#customize-your-speech-experience) | Als u spraak-naar-tekst gebruikt voor herkenning en transcriptie in een unieke omgeving, kunt u aangepaste akoestische, taal- en uitspraakmodellen maken en trainen om te kunnen omgaan met omgevingslawaai of branchespecifieke woordenlijsten. | Nee | [Ja](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0) |
 | [Tekst naar spraak](text-to-speech.md) | Tekst naar spraak | Bij tekst-naar-spraak wordt invoertekst omgezet in menselijke spraak die is samengesteld met behulp van [SSML (Speech Synthesis Markup Language)](speech-synthesis-markup.md). Kies uit standaardstemmen en neurale stemmen (zie [Taalondersteuning](language-support.md)). | [Ja](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Ja](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | | [Aangepaste stemmen maken](#customize-your-speech-experience) | Maak aangepaste spraakstijlen die uniek zijn voor uw merk of product. | Nee | [Ja](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | [Speech Translation](speech-translation.md) | Spraakomzetting | Spraakomzetting maakt realtime omzetting van spraak in meerdere talen mogelijk voor uw toepassingen, hulpprogramma's en apparaten. Gebruik deze service voor het omzetten van spraak-naar-spraak en spraak-naar-tekst. | [Ja](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | Nee |
@@ -128,7 +128,7 @@ Andere producten bieden spraakmodellen die zijn afgestemd op specifieke doeleind
 - [Speech Devices SDK](speech-devices-sdk.md)
 - [REST API: Spraak-naar-tekst](rest-speech-to-text.md)
 - [REST API: Tekst-naar-spraak](rest-text-to-speech.md)
-- [REST API: Batchtranscriptie en aanpassing](https://westus.cris.ai/swagger/ui/index)
+- [REST API: Batchtranscriptie en aanpassing](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,25 +1,24 @@
 ---
-title: Het model met de REST-aanroep in go ophalen
+title: Model ophalen met REST-aanroep in Go
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: include
 ms.date: 06/03/2020
-ms.author: diberry
-ms.openlocfilehash: 29cd4e2b395d28733f384ad3b073a4c11f7cf194
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
-ms.translationtype: MT
+ms.openlocfilehash: 0db01cbd281b2060c1e08e6c44202624faefc5d7
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84416363"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91534574"
 ---
-[Referentie documentatie](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c45)  |  Voor [beeld](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/go/LUIS/go-rest-model/model.go)
+[Referentiedocumentatie](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c45) | [Voorbeeld](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/go/LUIS/go-rest-model/model.go)
 
 ## <a name="prerequisites"></a>Vereisten
 
-* [Go](https://golang.org/) -programmeer taal
+* [Go](https://golang.org/)-programmeertaal
 * [Visual Studio Code](https://code.visualstudio.com/)
 
 ## <a name="example-utterances-json-file"></a>JSON-bestand met voorbeeldutterances
@@ -30,23 +29,23 @@ ms.locfileid: "84416363"
 
 [!INCLUDE [Create pizza app](get-started-get-model-create-pizza-app.md)]
 
-## <a name="change-model-programmatically"></a>Model via een programma wijzigen
+## <a name="change-model-programmatically"></a>Model programmatisch wijzigen
 
 1. Maak een nieuw bestand met de naam `predict.go`. Voeg de volgende code toe:
 
     [!code-go[Code snippet](~/cognitive-services-quickstart-code/go/LUIS/go-rest-model/model.go)]
 
-1. Vervang de waarden die beginnen met `YOUR-` met uw eigen waarden.
+1. Vervang de waarden die beginnen met `YOUR-` door uw eigen waarden.
 
-    |Informatie|Functie|
+    |Informatie|Doel|
     |--|--|
-    |`YOUR-APP-ID`| De ID van uw LUIS-app. |
-    |`YOUR-AUTHORING-KEY`|De bewerkings sleutel voor uw 32-teken.|
-    |`YOUR-AUTHORING-ENDPOINT`| Het eind punt van de ontwerp-URL. Bijvoorbeeld `https://replace-with-your-resource-name.api.cognitive.microsoft.com/`. U stelt de naam van de resource in wanneer u de resource hebt gemaakt.|
+    |`YOUR-APP-ID`| De id van uw LUIS-app. |
+    |`YOUR-AUTHORING-KEY`|Uw ontwerpsleutel van 32 tekens.|
+    |`YOUR-AUTHORING-ENDPOINT`| Het eindpunt van uw ontwerp-URL. Bijvoorbeeld `https://replace-with-your-resource-name.api.cognitive.microsoft.com/`. U heeft uw resourcenaam ingesteld toen u de resource aanmaakte.|
 
-    Toegewezen sleutels en resources zijn zichtbaar in de LUIS-Portal in de sectie beheren op de pagina **Azure-resources** . De App-ID is beschikbaar in hetzelfde gedeelte beheren op de pagina **Toepassings instellingen** .
+    Toegewezen sleutels en resources zijn zichtbaar in het LUIS-portaal in de sectie Beheren op de pagina **Azure-resources**. De App-ID is beschikbaar in hetzelfde gedeelte Beheren op de pagina **Toepassingsinstellingen**.
 
-1. Voer bij een opdracht prompt in de map waarin u het bestand hebt gemaakt de volgende opdracht in om het Go-bestand te compileren:
+1. Voer, in dezelfde map waarin u het bestand hebt gemaakt, met een opdrachtprompt de volgende opdracht uit om het Go-bestand te compileren:
 
     ```console
     go build model.go
@@ -58,7 +57,7 @@ ms.locfileid: "84416363"
     go run model.go
     ```
 
-1. Het ontwerp antwoord controleren:
+1. Het creatieantwoord controleren:
 
     ```console
     add example utterances requested
@@ -78,7 +77,7 @@ ms.locfileid: "84416363"
     [{"modelId":"edb46abf-0000-41ab-beb2-a41a0fe1630f","details":{"statusId":9,"status":"Queued","exampleCount":0}},{"modelId":"a5030be2-616c-4648-bf2f-380fa9417d37","details":{"statusId":9,"status":"Queued","exampleCount":0}},{"modelId":"3f2b1f31-a3c3-4fbd-8182-e9d9dbc120b9","details":{"statusId":9,"status":"Queued","exampleCount":0}},{"modelId":"e4b6704b-1636-474c-9459-fe9ccbeba51c","details":{"statusId":9,"status":"Queued","exampleCount":0}},{"modelId":"031d3777-2a00-4a7a-9323-9a3280a30000","details":{"statusId":9,"status":"Queued","exampleCount":0}},{"modelId":"9250e7a1-06eb-4413-9432-ae132ed32583","details":{"statusId":9,"status":"Queued","exampleCount":0}}]
     ```
 
-    Dit is de uitvoer die is opgemaakt voor de Lees baarheid:
+    Dit is de uitvoer, opgemaakt voor leesbaarheid:
 
     ```json
     add example utterances requested
@@ -249,7 +248,7 @@ ms.locfileid: "84416363"
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u klaar bent met deze Quick Start, verwijdert u het bestand uit het bestands systeem.
+Wanneer u klaar bent met deze quickstart, verwijdert u het bestand uit het bestandssysteem.
 
 ## <a name="next-steps"></a>Volgende stappen
 

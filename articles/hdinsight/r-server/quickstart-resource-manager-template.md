@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/13/2020
-ms.openlocfilehash: 7f86d0a090409385497715b70e8199bdf48c6995
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 6b4b4b8bcf5a69fdae9f29284fe965a30d634788
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88640324"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91539721"
 ---
 # <a name="quickstart-create-ml-services-cluster-in-azure-hdinsight-using-arm-template"></a>Quickstart: Een ML Services-cluster maken in Azure HDInsight met een ARM-sjabloon
 
@@ -73,7 +73,7 @@ Nadat u de quickstart hebt voltooid, kunt u het cluster verwijderen. Met HDInsig
 
 Ga in de Azure-portal naar het cluster en selecteer **Verwijderen**.
 
-![Resource Manager-sjabloon HBase](./media/quickstart-resource-manager-template/azure-portal-delete-rserver.png)
+![Schermafbeelding met een H D Insight-cluster met de resourcegroep die verwijderd moet worden.](./media/quickstart-resource-manager-template/azure-portal-delete-rserver.png)
 
 U kunt ook de naam van de resourcegroep selecteren om de pagina van de resourcegroep te openen en vervolgens **Resourcegroep verwijderen** selecteren. Als u de resourcegroep verwijdert, verwijdert u zowel het HDInsight-cluster als het standaardopslagaccount.
 

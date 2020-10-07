@@ -7,14 +7,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 05/11/2020
+ms.date: 09/22/2020
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: c76a6666be805aa088bab7c5716ffd88a30519c1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3b577127013252f03e7a617e7f2b9c8d2c4c9188
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89002076"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570399"
 ---
 # <a name="quickstart-build-a-net-console-app-to-manage-azure-cosmos-db-sql-api-resources"></a>Quickstart: Een .NET console-app bouwen om Azure Cosmos DB SQL-API-resources te beheren
 
@@ -22,6 +22,7 @@ ms.locfileid: "89002076"
 > * [.NET V3](create-sql-api-dotnet.md)
 > * [.NET V4](create-sql-api-dotnet-V4.md)
 > * [Java SDK v4](create-sql-api-java.md)
+> * [Spring Data v3](create-sql-api-spring-data.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
@@ -30,12 +31,12 @@ Ga aan de slag met de Azure Cosmos DB SQL API-clientbibliotheek voor .NET. Volg 
 
 Azure Cosmos DB is de globaal gedistribueerde multimodel-databaseservice van Microsoft. U kunt Azure Cosmos DB gebruiken om snel databases voor belangrijke/waardevolle documenten en grafieken te maken en doorzoeken. Gebruik de Azure Cosmos DB SQL API-clientbibliotheek voor .NET om:
 
-* Een Azure Cosmos-database en een container maken
-* Voorbeeldgegevens toevoegen aan de container
+* Een Azure Cosmos-database en een container te maken
+* Voorbeeldgegevens toe te voegen aan de container
 * Query’s uitvoeren voor de gegevens 
 * De database verwijderen
 
-[API-referentiedocumentatie](/dotnet/api/microsoft.azure.cosmos?view=azure-dotnet) | [Bibliotheek broncode](https://github.com/Azure/azure-cosmos-dotnet-v3) | [Package (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Cosmos)
+[API-referentiedocumentatie](/dotnet/api/microsoft.azure.cosmos?view=azure-dotnet&preserve-view=true) | [Bibliotheek broncode](https://github.com/Azure/azure-cosmos-dotnet-v3) | [Package (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Cosmos)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -70,7 +71,7 @@ az group create \
     --name $resourceGroupName \
     --location $location
 
-# Create a SQL API Cosmos DB account with session consistency and multi-master enabled
+# Create a SQL API Cosmos DB account with session consistency and multi-region writes enabled
 az cosmosdb create \
     --resource-group $resourceGroupName \
     --name $accountName \
@@ -81,17 +82,17 @@ az cosmosdb create \
 
 ```
 
-Het maken van het Azure Cosmos-account neemt enige tijd in beslag. Zodra de bewerking is voltooid, kunt u de bevestiging van de uitvoer bekijken. Nadat de opdracht is voltooid, meldt u zich aan bij [Azure Portal](https://portal.azure.com/) en controleert u of het Azure Cosmos-account met de opgegeven naam bestaat. U kunt het Azure Cloud Shell-venster sluiten nadat de resource is gemaakt. 
+Het maken van het Azure Cosmos-account neemt enige tijd in beslag. Zodra de bewerking is voltooid, kunt u de bevestiging van de uitvoer bekijken. Nadat de opdracht is voltooid, meldt u zich aan bij de [Azure-portal](https://portal.azure.com/) en controleert u of het Azure Cosmos-account met de opgegeven naam bestaat. U kunt het Azure Cloud Shell-venster sluiten nadat de resource is gemaakt. 
 
 ### <a name="create-a-new-net-app"></a><a id="create-dotnet-core-app"></a>Een nieuwe .NET-app maken
 
-Maak een nieuwe .NET-toepassing in uw favoriete editor of IDE. Open de Windows-opdrachtprompt of een Terminalvenster op uw lokale computer. Alle opdrachten in de volgende secties worden uitgevoerd vanaf de opdrachtprompt of Terminal.  Voer de volgende nieuwe DotNet-opdracht uit om een nieuwe app te maken met de naam `todo`. Met de parameter --langVersion stelt u de eigenschap LangVersion in het gemaakte projectbestand in.
+Maak een nieuwe .NET-toepassing in uw favoriete editor of IDE. Open de Windows-opdrachtprompt of een Terminalvenster op uw lokale computer. Alle opdrachten in de volgende secties worden uitgevoerd vanaf de opdrachtprompt of terminal.  Voer de volgende nieuwe DotNet-opdracht uit om een nieuwe app te maken met de naam `todo`. Met de parameter --langVersion stelt u de eigenschap LangVersion in het gemaakte projectbestand in.
 
 ```console
 dotnet new console --langVersion 7.1 -n todo
 ```
 
-Wijzig uw map in de zojuist gemaakte app-map. U kunt de toepassing compileren met:
+Wijzig uw map in de zojuist gemaakte app-map. U kunt de toepassing maken met:
 
 ```console
 cd todo
@@ -120,9 +121,9 @@ Terwijl u zich nog in de toepassingsmap bevindt, installeert u de Azure Cosmos D
 dotnet add package Microsoft.Azure.Cosmos
 ```
 
-### <a name="copy-your-azure-cosmos-account-credentials-from-the-azure-portal"></a>Kopieer uw Azure Cosmos-accountreferenties van de Azure Portal
+### <a name="copy-your-azure-cosmos-account-credentials-from-the-azure-portal"></a>Kopieer uw Azure Cosmos-accountaanmeldingsgegevens vanuit de Azure-portal
 
-De voorbeeldtoepassing moet de toegang tot uw opslagaccount verifiëren. Als u zich wilt verifiëren, moet u de referenties van het Azure Cosmos-account doorgeven aan de toepassing. U kunt de referenties van het opslagaccount weergeven door de volgende stappen te volgen:
+De voorbeeldtoepassing moet de toegang tot uw Azure Cosmos-account verifiëren. Als u zich wilt verifiëren, moet u de aanmeldingsgegevens van het Azure Cosmos-account doorgeven aan de toepassing. U kunt de aanmeldingsgegevens van het opslagaccount weergeven door de volgende stappen te volgen:
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
@@ -166,19 +167,18 @@ Voordat u begint met het compileren van de toepassing, kijken we naar de hiërar
 
 Zie het artikel [werken met databases, containers en items in Azure Cosmos DB](databases-containers-items.md) voor meer informatie over de hiërarchie van verschillende entiteiten. U gebruikt de volgende .NET-klassen om te communiceren met deze resources:
 
-* [CosmosClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclient?view=azure-dotnet): deze klasse biedt een logische weergave aan de clientzijde voor de Azure Cosmos DB-service. Het clientobject wordt gebruikt om aanvragen aan de service te configureren en uitvoeren.
+* [CosmosClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclient?view=azure-dotnet&preserve-view=true): deze klasse biedt een logische weergave aan de clientzijde voor de Azure Cosmos DB-service. Het clientobject wordt gebruikt om aanvragen aan de service te configureren en uitvoeren.
 
-* [CreateDatabaseIfNotExistsAsync](/dotnet/api/microsoft.azure.cosmos.cosmosclient.createdatabaseifnotexistsasync?view=azure-dotnet): deze methode maakt (indien niet aanwezig) of haalt (indien aanwezig) een database-resource op als een asynchrone bewerking. 
+* [CreateDatabaseIfNotExistsAsync](/dotnet/api/microsoft.azure.cosmos.cosmosclient.createdatabaseifnotexistsasync?view=azure-dotnet&preserve-view=true): deze methode maakt (indien niet aanwezig) of haalt (indien aanwezig) een database-resource op als een asynchrone bewerking. 
 
-* [CreateContainerIfNotExistsAsync](/dotnet/api/microsoft.azure.cosmos.database.createcontainerifnotexistsasync?view=azure-dotnet): deze methode maakt (indien niet aanwezig) of haalt (indien aanwezig) een container op als een asynchrone bewerking. U kunt de status code van het antwoord controleren om te bepalen of de container nieuw is gemaakt (201) of dat een bestaande container is geretourneerd (200). 
-* [CreateItemAsync](/dotnet/api/microsoft.azure.cosmos.container.createitemasync?view=azure-dotnet): met deze methode maakt u een item in de container. 
+* [CreateContainerIfNotExistsAsync](/dotnet/api/microsoft.azure.cosmos.database.createcontainerifnotexistsasync?view=azure-dotnet&preserve-view=true): deze methode maakt (indien niet aanwezig) of haalt (indien aanwezig) een container op als een asynchrone bewerking. U kunt de status code van het antwoord controleren om te bepalen of de container nieuw is gemaakt (201) of dat een bestaande container is geretourneerd (200). 
+* [CreateItemAsync](/dotnet/api/microsoft.azure.cosmos.container.createitemasync?view=azure-dotnet&preserve-view=true): met deze methode maakt u een item in de container. 
 
-* [UpsertItemAsync](/dotnet/api/microsoft.azure.cosmos.container.upsertitemasync?view=azure-dotnet): met deze methode maakt u een item in de container als deze nog niet bestaat of vervangt u het item als het al bestaat. 
+* [UpsertItemAsync](/dotnet/api/microsoft.azure.cosmos.container.upsertitemasync?view=azure-dotnet&preserve-view=true): met deze methode maakt u een item in de container als deze nog niet bestaat of vervangt u het item als het al bestaat. 
 
-* [GetItemQueryIterator](/dotnet/api/microsoft.azure.cosmos.container.GetItemQueryIterator?view=azure-dotnet
-): met deze methode maakt u een query voor items onder een container in een Azure Cosmos-database met behulp van een SQL-instructie met geparameteriseerde waarden. 
+* [GetItemQueryIterator](/dotnet/api/microsoft.azure.cosmos.container.GetItemQueryIterator?view=azure-dotnet&preserve-view=true): met deze methode maakt u een query voor items onder een container in een Azure Cosmos-database met behulp van een SQL-instructie met geparameteriseerde waarden. 
 
-* [DeleteAsync](/dotnet/api/microsoft.azure.cosmos.database.deleteasync?view=azure-dotnet): hiermee verwijdert u de opgegeven database uit uw Azure Cosmos-account. Met de methode `DeleteAsync` verwijdert u alleen de database. Het verwijderen van het `Cosmosclient`-exemplaar moet afzonderlijk plaatsvinden (dit gebeurt in de methode DeleteDatabaseAndCleanupAsync. 
+* [DeleteAsync](/dotnet/api/microsoft.azure.cosmos.database.deleteasync?view=azure-dotnet&preserve-view=true): hiermee verwijdert u de opgegeven database uit uw Azure Cosmos-account. Met de methode `DeleteAsync` verwijdert u alleen de database. Het verwijderen van het `Cosmosclient`-exemplaar moet afzonderlijk plaatsvinden (dit gebeurt in de methode DeleteDatabaseAndCleanupAsync. 
 
  ## <a name="code-examples"></a><a id="code-examples"></a>Codevoorbeelden
 
@@ -457,7 +457,7 @@ dotnet build
 dotnet run
 ```
 
-De volgende uitvoer wordt gegenereerd wanneer u de toepassing uitvoert. U kunt zich ook aanmelden bij Azure Portal en controleren of de resources zijn gemaakt:
+De volgende uitvoer wordt gegenereerd wanneer u de toepassing uitvoert. U kunt zich ook aanmelden bij de Azure-portal en controleren of de resources zijn gemaakt:
 
 ```console
 Created Database: FamilyDatabase
@@ -473,7 +473,7 @@ Running query: SELECT * FROM c WHERE c.LastName = 'Andersen'
 End of demo, press any key to exit.
 ```
 
-U kunt controleren of de gegevens zijn gemaakt door u aan te melden bij Azure Portal en de vereiste items te bekijken in uw Azure Cosmos-account. 
+U kunt controleren of de gegevens zijn gemaakt door u aan te melden bij de Azure-portal en de vereiste items te bekijken in uw Azure Cosmos-account. 
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -485,7 +485,7 @@ az group delete -g "myResourceGroup"
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze quickstart hebt u geleerd hoe u een Azure Cosmos-account, een database en een container maakt met behulp van een .NET Core-app. U kunt nu aanvullende gegevens importeren in uw Azure Cosmos-account met de instructies int het volgende artikel. 
+In deze quickstart hebt u geleerd hoe u een Azure Cosmos-account, een database en een container maakt met behulp van een .NET Core-app. U kunt nu aanvullende gegevens importeren in uw Azure Cosmos-account met de instructies in het volgende artikel. 
 
 > [!div class="nextstepaction"]
 > [Gegevens importeren in Azure Cosmos DB](import-data.md)

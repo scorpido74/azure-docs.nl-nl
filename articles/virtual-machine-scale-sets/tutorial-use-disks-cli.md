@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: a4be498b25aee7c5a50b2f35fe06be3763eb4732
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 5dedee5e9ef4d036305a545201afc03d90750189
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825851"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91568315"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>Zelfstudie: Schijven maken en gebruiken met schaalset voor virtuele machines met Azure CLI
 Schaalsets voor virtuele machines maken gebruik van schijven voor het opslaan van het besturingssysteem, toepassingen en gegevens van het VM-exemplaar. Bij het maken en beheren van een schaalset is het belangrijk dat u een schijfgrootte en configuratie kiest die geschikt zijn voor de verwachte werkbelasting. Deze zelfstudie bevat informatie over het maken en beheren van VM-schijven. In deze zelfstudie leert u het volgende:
@@ -75,6 +75,8 @@ In de bovenstaande tabel wordt het max. IOP's per schijf aangegeven, maar er kan
 
 ## <a name="create-and-attach-disks"></a>Schijven maken en koppelen
 U kunt schijven maken en koppelen wanneer u een schaalset maakt, maar ook voor een bestaande schaalset.
+
+Vanaf API-versie `2019-07-01` kunt u de grootte van de besturingssysteemschijf instellen in een schaalset voor virtuele machines met de eigenschap [storageProfile.osDisk.diskSizeGb](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosdisk). Na het inrichten moet u de schijf wellicht uitbreiden of partitioneren om gebruik te maken van de volledige ruimte. Meer informatie over [de schijf uitbreiden vindt u hier](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk#expand-the-volume-within-the-os).
 
 ### <a name="attach-disks-at-scale-set-creation"></a>Schijven koppelen bij het maken van een schaalset
 Maak eerst een resourcegroep met de opdracht [az group create](/cli/azure/group). In dit voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt in de regio *eastus*.

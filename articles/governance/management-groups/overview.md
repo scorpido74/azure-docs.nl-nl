@@ -1,14 +1,15 @@
 ---
 title: Uw resources organiseren met beheergroepen - Azure Governance
 description: Informatie over de managementgroepen, hoe hun machtigingen werken en hoe u ze gebruikt.
-ms.date: 07/06/2020
+ms.date: 09/22/2020
 ms.topic: overview
-ms.openlocfilehash: c1c054ab67a94b5782187092c572e1e73752c8c2
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.custom: contperfq1
+ms.openlocfilehash: e3bc3ee34227fd23ea9f56070f8ea7776a10a134
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920157"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533802"
 ---
 # <a name="what-are-azure-management-groups"></a>Wat zijn Azure-beheergroepen?
 
@@ -21,11 +22,13 @@ U kunt bijvoorbeeld beleid toepassen op een beheergroep, dat het aantal regio's 
 
 U kunt een flexibele structuur van managementgroepen en abonnementen bouwen om uw resources in een hiërarchie te ordenen voor uniform beleid en toegangsbeheer. Het volgende diagram laat een voorbeeld zien van hoe een hiërarchie voor governance kan worden gemaakt met behulp van beheergroepen.
 
-:::image type="content" source="./media/tree.png" alt-text="Voorbeeld van een hiërarchiestructuur voor beheergroepen" border="false":::
+:::image type="complex" source="./media/tree.png" alt-text="Diagram van een voorbeeld van een hiërarchie voor beheergroepen." border="false":::
+   Diagram van een hoofdbeheergroep met zowel beheergroepen als abonnementen. Sommige onderliggende beheergroepen bevatten beheergroepen, sommige abonnementen en sommige beide. Een van de voorbeelden in de voorbeeldhiërarchie is vier niveaus van beheergroepen waarbij het onderliggende niveau alle abonnementen is.
+:::image-end:::
 
 U kunt een hiërarchie maken waarmee een beleid wordt toegepast, bijvoorbeeld om VM-locaties tot de regio US - west te beperken in de groep 'Productie'. Dit beleid is van toepassing op alle Enterprise Agreement-abonnementen die afgeleid zijn van die beheergroep en worden toegepast op alle VM's onder die abonnementen. Dit beveiligingsbeleid kan niet worden gewijzigd door de eigenaar van de resource of het abonnement, wat zorgt voor betere governance.
 
-Een ander scenario waarbij u beheergroepen kunt gebruiken, is om gebruikers toegang te geven tot meerdere abonnementen. Als u meerdere abonnementen naar de desbetreffende beheergroep verplaatst, kunt u één [Azure-roltoewijzing](../../role-based-access-control/overview.md) in de beheergroep maken, die de toegang doorgeeft aan alle abonnementen. Eén toewijzing in de beheergroep kan gebruikers toegang geven tot alles wat ze nodig hebben. Er hoeven dan geen scripts te worden geschreven voor RBAC-toewijzingen in meerdere abonnementen.
+Een ander scenario waarbij u beheergroepen kunt gebruiken, is om gebruikers toegang te geven tot meerdere abonnementen. Als u meerdere abonnementen naar de desbetreffende beheergroep verplaatst, kunt u één [Azure-roltoewijzing](../../role-based-access-control/overview.md) in de beheergroep maken, die de toegang doorgeeft aan alle abonnementen. Eén toewijzing in de beheergroep kan gebruikers toegang geven tot alles wat ze nodig hebben. Er hoeven dan geen scripts te worden geschreven voor Azure RBAC-toewijzingen in meerdere abonnementen.
 
 ### <a name="important-facts-about-management-groups"></a>Belangrijke feiten over beheergroepen
 
@@ -147,7 +150,9 @@ Roldefinities kunnen overal binnen de hiërarchie van de beheergroep worden toeg
 
 Laten we bijvoorbeeld eens kijken naar een kleine sectie van een hiërarchie voor een besturingselement.
 
-:::image type="content" source="./media/subtree.png" alt-text="substructuur" border="false":::
+:::image type="complex" source="./media/subtree.png" alt-text="Diagram van een voorbeeld van een hiërarchie voor beheergroepen." border="false":::
+   Het diagram is gericht op de hoofdbeheergroep met onderliggende IT- en Marketingbeheergroepen. De IT-beheergroep heeft één onderliggende beheergroep met de naam Productie terwijl de Marketingbeheergroep twee onderliggende abonnementen van de gratis proefversie heeft.
+:::image-end:::
 
 Stel dat er een aangepaste rol is gedefinieerd in de Marketing-beheergroep. Deze aangepaste rol wordt vervolgens toegewezen aan de twee gratis proefabonnementen.  
 
@@ -164,7 +169,7 @@ Er zijn verschillende opties om dit scenario op te lossen:
 Er bestaan beperkingen wanneer u aangepaste rollen gebruikt voor beheergroepen. 
 
  - U kunt slechts één beheergroep definiëren in het toewijsbare bereik van een nieuwe rol. Deze beperking bestaat om het aantal situaties te verminderen waarin de koppeling tussen roldefinities en roltoewijzingen wordt verbroken. Deze situatie treedt op wanneer een abonnement of beheergroep met een roltoewijzing wordt verplaatst naar een andere bovenliggende site die niet over de roldefinitie beschikt.  
- - RBAC-gegevensvlakacties kunnen niet worden gedefinieerd in de aangepaste rollen van een beheergroep. Deze beperking bestaat omdat er een latentieprobleem is met RBAC-acties bij het bijwerken van de gegevensvlak-resourceproviders.
+ - Resourceprovider-gegevensvlakacties kunnen niet worden gedefinieerd in de aangepaste rollen van een beheergroep. Deze beperking bestaat omdat er een latentieprobleem is met het bijwerken van de gegevensvlak-resourceproviders.
    Er wordt aan dit latentieprobleem gewerkt en deze acties worden uitgeschakeld in de roldefinitie om risico's te beperken.
  - De Azure Resource Manager valideert niet het bestaan van de beheergroep in het toewijsbare bereik van de roldefinitie. Als er een typfout of een onjuiste beheergroep-id staat, wordt de roldefinitie toch gemaakt.  
 
@@ -189,7 +194,7 @@ Als de rol Eigenaar van het abonnement wordt overgenomen van de huidige beheergr
 
 Beheergroepen worden ondersteund door het [Azure-activiteitenlogboek](../../azure-monitor/platform/platform-logs-overview.md). U kunt op dezelfde centrale locatie als andere Azure-resources zoeken naar alle gebeurtenissen die in een beheergroep plaatsvinden. Zo kunt u alle gewijzigde rol- of beleidstoewijzingen binnen een bepaalde beheergroep bekijken.
 
-:::image type="content" source="./media/al-mg.png" alt-text="Activiteitenlogboeken met beheergroepen" border="false":::
+:::image type="content" source="./media/al-mg.png" alt-text="Diagram van een voorbeeld van een hiërarchie voor beheergroepen." border="false":::
 
 Bij het uitvoeren van query's op beheergroepen buiten de Azure-portal, ziet het doelbereik voor beheergroepen er als volgt uit: **/ providers/Microsoft.Management/managementGroups/{yourMgID}** .
 

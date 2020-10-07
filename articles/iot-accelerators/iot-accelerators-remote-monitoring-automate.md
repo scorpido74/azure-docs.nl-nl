@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 676f1133a516174478a456a97bc467e7770fe6e7
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 695d1b1124c042b61837f0a1257ac2a201ae4860
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84712510"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539398"
 ---
 # <a name="tutorial-detect-issues-with-devices-connected-to-your-monitoring-solution"></a>Zelfstudie: problemen detecteren met apparaten die zijn verbonden met uw bewakingsoplossing
 
@@ -122,7 +122,7 @@ U kunt meerdere regels tegelijk in- en uitschakelen door meerdere regels in de l
 
 Als u een regel permanent wilt verwijderen, kunt u deze verwijderen in de lijst met regels. Selecteer de regel die u wilt verwijderen en kies **Verwijderen**.
 
-[![Regel verwijderen](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdelete-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdelete-expanded.png#lightbox)
+[![Screenshot die de pagina 'Regels' toont met het venster 'Regel verwijderen' gemarkeerd.](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdelete-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdelete-expanded.png#lightbox)
 
 Wanneer u hebt bevestigd dat u de regel wilt verwijderen, kunt u meldingen die aan de regel zijn gekoppeld, verwijderen op de pagina **Onderhoud**.
 

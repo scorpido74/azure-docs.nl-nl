@@ -6,14 +6,14 @@ ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: quickstart
-ms.date: 06/09/2020
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 92d92072fbc8ceebdd4fd9253620e5fba89bfb54
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.date: 09/22/2020
+ms.custom: devx-track-azurecli, subject-armqs
+ms.openlocfilehash: d118bef4a7ccc263010fe176432a5301c4104118
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987508"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91533890"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Quickstart: Azure NetApp Files instellen en een NFS-volume maken 
 
@@ -66,6 +66,14 @@ Voor dit artikel is Azure PowerShell-module Az-versie 2.6.0 of nieuwer vereist. 
 # <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 [!INCLUDE [azure-netapp-files-cloudshell-include](../../includes/azure-netapp-files-azure-cloud-shell-window.md)]
+
+# <a name="template"></a>[Sjabloon](#tab/template)
+
+Geen.  
+
+Gebruik de Azure Portal, PowerShell of de Azure CLI om u te registreren voor Azure NetApp Files en de NetApp resourceprovider.  
+
+Zie [Registreren voor Azure NetApp Files](azure-netapp-files-register.md) voor meer informatie. 
 
 ---
 
@@ -151,6 +159,17 @@ Voor dit artikel is Azure PowerShell-module Az-versie 2.6.0 of nieuwer vereist. 
         --location $LOCATION \
         --account-name $ANF_ACCOUNT_NAME
     ```
+
+# <a name="template"></a>[Sjabloon](#tab/template)
+
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Het volgende code fragment laat zien hoe u een NetApp-account maakt in een Azure Resource Manager sjabloon (ARM-sjabloon) met behulp van de [Microsoft.NetApp/netAppAccounts](https://docs.microsoft.com/azure/templates/microsoft.netapp/netappaccounts) resource. Als u de code wilt uitvoeren, downloadt u het [volledige ARM-sjabloon](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json) van onze GitHub-opslag.
+
+:::code language="json" source="~/quickstart-templates/101-anf-nfs-volume/azuredeploy.json" range="177-183":::
+
+<!-- Block begins with "type": "Microsoft.NetApp/netAppAccounts", -->
+
 ---
 
 ## <a name="set-up-a-capacity-pool"></a>Een capaciteitspool instellen
@@ -167,14 +186,15 @@ Voor dit artikel is Azure PowerShell-module Az-versie 2.6.0 of nieuwer vereist. 
 
 3. Klik op **+ Pools toevoegen**. 
 
-    ![Klikken op Pools toevoegen](../media/azure-netapp-files/azure-netapp-files-click-add-pools.png)  
+    ![Klikken op Pools toevoegen](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)  
 
 4. Geef de gegevens op voor de capaciteitspool: 
-    1. Voer **mypool1** in als naam van de pool.
-    2. Selecteer **Premium** als serviceniveau. 
-    3. Specificeer **4 (TiB)** als grootte van de pool. 
+    * Voer **mypool1** in als naam van de pool.
+    * Selecteer **Premium** als serviceniveau. 
+    * Specificeer **4 (TiB)** als grootte van de pool. 
+    * Gebruik het **Auto** QoS-type.
 
-5. Klik op **OK**.
+5. Klik op **Create**.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -213,6 +233,16 @@ Voor dit artikel is Azure PowerShell-module Az-versie 2.6.0 of nieuwer vereist. 
         --size $POOL_SIZE_TiB \
         --service-level $SERVICE_LEVEL
     ```
+
+# <a name="template"></a>[Sjabloon](#tab/template)
+
+<!-- [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)] -->
+
+Het volgende codefragment laat zien hoe u een capaciteitspool maakt in een Azure Resource Manager sjabloon (ARM-sjabloon) met behulp van de [Microsoft.NetApp/netAppAccounts/capacityPools](https://docs.microsoft.com/azure/templates/microsoft.netapp/netappaccounts/capacitypools) resource. Als u de code wilt uitvoeren, downloadt u het [volledige ARM-sjabloon](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json) van onze GitHub-opslag.
+
+:::code language="json" source="~/quickstart-templates/101-anf-nfs-volume/azuredeploy.json" range="184-196":::
+
+<!-- LN 185, block begins with  "type": "Microsoft.NetApp/netAppAccounts/capacityPools", -->
 
 ---
 
@@ -353,6 +383,20 @@ Voor dit artikel is Azure PowerShell-module Az-versie 2.6.0 of nieuwer vereist. 
         --protocol-types "NFSv3"
     ```
 
+# <a name="template"></a>[Sjabloon](#tab/template)
+
+<!-- [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)] --> 
+
+De volgende codefragmenten laten zien hoe u een VNet instelt en een Azure NetApp Files-volume maakt in een Azure Resource Manager-sjabloon (ARM-sjabloon). VNet-installatie maakt gebruik van de [Microsoft.Network/virtualNetworks](https://docs.microsoft.com/azure/templates/Microsoft.Network/virtualNetworks) resource. Voor het maken van volumes wordt gebruikgemaakt van de [Microsoft.NetApp/netAppAccounts/capacityPools/volumes](https://docs.microsoft.com/azure/templates/microsoft.netapp/netappaccounts/capacitypools/volumes) resource. Als u de code wilt uitvoeren, downloadt u het [volledige ARM-sjabloon](https://github.com/Azure/azure-quickstart-templates/blob/master/101-anf-nfs-volume/azuredeploy.json) van onze GitHub-opslag.
+
+:::code language="json" source="~/quickstart-templates/101-anf-nfs-volume/azuredeploy.json" range="148-176":::
+
+<!-- Block begins with  "type": "Microsoft.Network/virtualNetworks", -->
+
+:::code language="json" source="~/quickstart-templates/101-anf-nfs-volume/azuredeploy.json" range="197-229":::
+
+<!-- Block begins with  "type": "Microsoft.NetApp/netAppAccounts/capacityPools/volumes", -->
+
 ---
 
 ## <a name="clean-up-resources"></a>Resources opschonen
@@ -373,13 +417,13 @@ Wanneer u klaar bent en als u wilt, kunt u de resourcegroep verwijderen. Het ver
 
 3. Klik in de pagina van de resourcegroep op **Resourcegroep verwijderen**.
 
-    ![Resourcegroep verwijderen](../media/azure-netapp-files/azure-netapp-files-azure-delete-resource-group.png) 
+    ![Schermopname met de knop Resourcegroep verwijderen gemarkeerd.](../media/azure-netapp-files/azure-netapp-files-azure-delete-resource-group.png) 
 
     Een venster wordt geopend en toont een waarschuwing over de resources die worden verwijderd met de resourcegroep.
 
 4. Voer de naam in van de resourcegroep (myRG1) om te bevestigen dat u de resourcegroep en alle resources daarin permanent wilt verwijderen en klik dan op **Verwijderen**.
 
-    ![Resourcegroep verwijderen](../media/azure-netapp-files/azure-netapp-files-azure-confirm-resource-group-deletion.png ) 
+    ![Bevestig verwijderen resourcegroep](../media/azure-netapp-files/azure-netapp-files-azure-confirm-resource-group-deletion.png ) 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -407,6 +451,13 @@ Wanneer u klaar bent en als u wilt, kunt u de resourcegroep verwijderen. Het ver
     az group delete \
         --name $RESOURCE_GROUP
     ```
+
+# <a name="template"></a>[Sjabloon](#tab/template)
+
+Geen.
+
+Gebruik de Azure Portal, PowerShell of de Azure CLI om de resourcegroep te verwijderen.   
+
 ---
 
 ## <a name="next-steps"></a>Volgende stappen  

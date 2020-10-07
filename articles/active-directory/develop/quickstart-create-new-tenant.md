@@ -1,6 +1,7 @@
 ---
-title: Een Azure Active Directory-tenant maken
-description: Informatie over het maken van een Azure Active Directory-tenant voor het registreren en maken van toepassingen.
+title: 'Quickstart: Een Azure Active Directory-tenant maken'
+titleSuffix: Microsoft identity platform
+description: In deze quickstart leert u hoe u een Azure Active Directory-Tenant kunt maken voor het ontwikkelen van toepassingen die gebruikmaken van het Microsoft Identity-platform voor verificatie en autorisatie.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,12 +13,12 @@ ms.date: 03/12/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: df873e49e1bc581a32bcb4e4b40b2b24db98cee5
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 60d789c4297c400b812cd6c5c19c8c6148cb347d
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120810"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91575976"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>Quickstart: Een tenant instellen
 
@@ -26,6 +27,10 @@ Met het Microsoft Identity Platform kunnen ontwikkelaars apps bouwen voor een br
 Een tenant vertegenwoordigt een organisatie. Een tenant is een toegewezen exemplaar van Azure AD dat een organisatie of app-ontwikkelaar ontvangt wanneer deze een relatie start met Microsoft, door zich bijvoorbeeld aan te melden voor Azure, Microsoft Intune of Microsoft 365.
 
 Elke Azure AD-tenant is verschillend en gescheiden van andere Azure AD-tenants. Elke tenant heeft een eigen weergave van werk- en schoolidentiteiten, consumentidentiteiten (als het een Azure AD B2C-tenant betreft) en app-registraties. Met een app-registratie binnen uw tenant kunt u verificatie toestaan vanaf accounts alleen binnen uw tenants of alle tenants.
+
+## <a name="prerequisites"></a>Vereisten
+
+- Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 
 ## <a name="determining-environment-type"></a>Omgevingstype bepalen
 
@@ -71,6 +76,5 @@ Om te beginnen met het bouwen van apps waarmee socialemedia-accounts en lokale a
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Een app registreren](quickstart-register-app.md) en integreren met Microsoft Identity Platform. 
-* Meer informatie over de [basisprincipes van verificatie](./authentication-vs-authorization.md).
-* Zie [Een Azure-abonnement aan uw Azure Active Directory-tenant toevoegen of koppelen](../fundamentals/active-directory-how-subscriptions-associated-directory.md) voor meer informatie over de relatie tussen abonnementen en een Azure AD-tenant.
+> [!div class="nextstepaction"]
+> [Een app registreren](quickstart-register-app.md) om te integreren met Microsoft Identity Platform.

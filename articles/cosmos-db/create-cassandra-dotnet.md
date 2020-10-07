@@ -7,14 +7,14 @@ author: TheovanKraay
 ms.author: thvankra
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 05/18/2020
+ms.date: 10/01/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f17385307995d87f2d5792a7e9ce19ad0260cbcc
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 7389136d5f08c7efd0c0443387744ce4c5816f00
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89010236"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91627360"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-sdk-and-azure-cosmos-db"></a>Quickstart: Een Cassandra-app bouwen met .NET SDK en Azure Cosmos DB
 
@@ -158,13 +158,13 @@ Ga nu terug naar Azure Portal om de verbindingsreeksinformatie op te halen en ko
     ```
 3. Druk op Ctrl+F5 om de toepassing uit te voeren. Uw app wordt in het consolevenster weergegeven. 
 
-    :::image type="content" source="./media/create-cassandra-dotnet/output.png" alt-text="De uitvoer weergeven en controleren":::
+    :::image type="content" source="./media/create-cassandra-dotnet/output.png" alt-text="Een toegangssleutel in Azure Portal bekijken en kopiëren op de pagina Verbindingsreeks":::
 
     Druk op Ctrl+C om de uitvoering van het programma te stoppen en het consolevenster te sluiten. 
     
 4. Open **Data Explorer** in de Azure-portal om deze nieuwe gegevens te bekijken, te wijzigen, een query erop uit te voeren of er iets anders mee te doen.
 
-    :::image type="content" source="./media/create-cassandra-dotnet/data-explorer.png" alt-text="De gegevens weergeven in Data Explorer":::
+    :::image type="content" source="./media/create-cassandra-dotnet/data-explorer.png" alt-text="Een toegangssleutel in Azure Portal bekijken en kopiëren op de pagina Verbindingsreeks":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>SLA’s bekijken in Azure Portal
 

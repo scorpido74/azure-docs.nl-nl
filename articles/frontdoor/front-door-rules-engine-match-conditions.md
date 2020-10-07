@@ -1,5 +1,5 @@
 ---
-title: Voorwaarden van overeenkomst van Azure Front Door-regelengine
+title: Voorwaarden van overeenkomst van Azure Front Door-regelengines
 description: In dit artikel vindt u een lijst met de verschillende voorwaarden voor overeenkomst die beschikbaar zijn in de Azure Front Door-regelengine.
 services: frontdoor
 documentationcenter: ''
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/14/2020
 ms.author: duau
-ms.openlocfilehash: 1b2b891a0b6b67efef38005d3a4d67eecf41afbd
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 0e874ae3d29f4143a4f8a9275d5ffcde48d08e6d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531862"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91569771"
 ---
 # <a name="azure-front-door-rules-engine-match-conditions"></a>Voorwaarden van overeenkomst van Azure Front Door-regelengine
 
 In de [AFD-regelengine](front-door-rules-engine.md) bestaat een regel uit nul of meer voorwaarden van overeenkomst en een actie. In dit artikel vindt u gedetailleerde beschrijvingen van de voorwaarden van overeenkomst die u kunt gebruiken in de AFD-regelengine.
 
-Het eerste deel van een regel is een voorwaarde van overeenkomst of een set voorwaarden van overeenkomst. Een regel kan uit maximaal 10 voorwaarden van overeenkomst bestaan. Een voorwaarde van overeenkomst identificeert specifieke typen aanvragen waarvoor gedefinieerde acties worden uitgevoerd. Als u meerdere voorwaarden van overeenkomst gebruikt, worden de voorwaarden van overeenkomst samen gegroepeerd met behulp van EN-logica. Voor alle voorwaarden van overeenkomst die ondersteuning bieden voor meerdere waarden (hieronder genoteerd als 'door spaties gescheiden'), wordt ervan uitgegaan dat de 'OF'-operator wordt gebruikt.
+Het eerste deel van een regel is een voorwaarde van overeenkomst of een set voorwaarden van overeenkomst. Een regel kan uit maximaal 10 voorwaarden van overeenkomst bestaan. Een voorwaarde van overeenkomst identificeert specifieke typen aanvragen waarvoor gedefinieerde acties worden uitgevoerd. Als u meerdere voorwaarden van overeenkomst gebruikt, worden de voorwaarden van overeenkomst samen gegroepeerd met behulp van EN-logica. Voor alle voorwaarden van overeenkomst die ondersteuning bieden voor meerdere waarden (genoteerd als 'door spaties gescheiden'), wordt ervan uitgegaan dat de 'OF'-operator wordt gebruikt.
 
 U kunt bijvoorbeeld een voorwaarde van overeenkomst gebruiken voor het volgende:
 
@@ -142,7 +142,7 @@ Operator | Aanvraag-URL | Transformatie van hoofdletters en kleine letters
 
 #### <a name="key-information"></a>Belangrijke informatie
 
-- Wanneer u deze regelvoorwaarde gebruikt, moet u protocolgegevens toevoegen. Bijvoorbeeld: *https://www.\<yourdomain\>. com*.
+- Wanneer u deze regelvoorwaarde gebruikt, moet u protocolgegevens toevoegen. Bijvoorbeeld: *https://www.\<yourdomain\>.com*.
 
 ## <a name="request-file-extension"></a>Bestandsextensie aanvragen
 
@@ -204,11 +204,11 @@ De volgende operators zijn geldig voor regels die waarden accepteren van de lijs
 - Niet groter dan
 - Niet groter dan of gelijk aan
 
-Voor numerieke operators zoals *Kleiner dan* en *Groter dan of gelijk aan* wordt de gebruikte vergelijking gebaseerd op lengte. In dit geval moet de waarde in de voorwaarde van overeenkomst een geheel getal zijn dat gelijk is aan de lengte die u wilt vergelijken. 
+Voor numerieke operators zoals *Kleiner dan* en *Groter dan of gelijk aan* wordt de gebruikte vergelijking gebaseerd op lengte. De waarde in de voorwaarde van overeenkomst moet een geheel getal zijn dat gelijk is aan de lengte die u wilt vergelijken. 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het instellen van uw eerste [regelengineconfiguratie](front-door-tutorial-rules-engine.md). 
+- Meer informatie over het configureren van uw eerste [regelengine](front-door-tutorial-rules-engine.md). 
 - Meer informatie over [regelengine-acties](front-door-rules-engine-actions.md)
 - Meer informatie over de [Azure Front Door-regelengine](front-door-rules-engine.md)

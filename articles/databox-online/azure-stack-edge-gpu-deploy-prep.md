@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 09/08/2020
+ms.date: 09/29/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: cf7719487d4f03b8d9524234e1a58cf792a4843b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: e1cb4555b1eab930286e7a27988b3b372b109070
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899753"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570895"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-with-gpu"></a>Zelfstudie: Voorbereidingen voor de implementatie van Azure Stack Edge Pro met GPU 
 
@@ -66,14 +66,16 @@ Hier volgen de configuratievereisten voor uw Azure Stack Edge-resource, uw Azure
 
 Zorg voordat u begint voor het volgende:
 
-- Uw Microsoft Azure-abonnement is ingeschakeld voor een Azure Stack Edge-resource. Zorg dat een ondersteund abonnement gebruikt zoals [Microsoft Enterprise Agreement (EA)](https://azure.microsoft.com/overview/sales-number/), [Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/azure-plan-lp) of [Microsoft Azure Sponsorship](https://azure.microsoft.com/offers/ms-azr-0036p/). Abonnementen waar u betaalt per gebruik worden niet ondersteund.
+- Uw Microsoft Azure-abonnement is ingeschakeld voor een Azure Stack Edge-resource. Zorg dat een ondersteund abonnement gebruikt zoals [Microsoft Enterprise Agreement (EA)](https://azure.microsoft.com/overview/sales-number/), [Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/azure-plan-lp) of [Microsoft Azure Sponsorship](https://azure.microsoft.com/offers/ms-azr-0036p/). Abonnementen waar u betaalt per gebruik worden niet ondersteund. Zie [Wat is een Azure-aanbieding?](../cost-management-billing/manage/switch-azure-offer.md#what-is-an-azure-offer) om te achterhalen welk type Azure-abonnement u hebt.
 - U hebt toegang als eigenaar of inzender op het niveau van de resourcegroep voor de Azure Stack Edge Pro-/Data Box Gateway-, IoT Hub- en Azure Storage-resources.
 
-    - Als u een Azure Stack Eedge / Data Box Gateway resource wilt maken, moet u machtigingen hebben als inzender (of hoger) op het niveau van de resourcegroep. U moet er ook voor zorgen dat de `Microsoft.DataBoxEdge` provider is geregistreerd. Ga voor meer informatie over het registreren naar [Resourceprovider registreren](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers).
-    - Als u een IoT Hub-resource wilt maken, moet u ervoor zorgen dat de provider Microsoft.Devices is geregistreerd. Ga voor meer informatie over het registreren naar [Resourceprovider registreren](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers).
+    - Als u een Azure Stack Eedge / Data Box Gateway resource wilt maken, moet u machtigingen hebben als inzender (of hoger) op het niveau van de resourcegroep. 
+    - U moet er ook voor zorgen dat de `Microsoft.DataBoxEdge` provider is geregistreerd. Als u een IoT Hub-resource wilt maken, moet u de provider `Microsoft.Devices` registreren. 
+        - Als u een resourceprovider wilt registreren, gaat u in de Azure Portal naar **Home > Abonnementen > Uw abonnement > Resourceproviders**. 
+        - Zoek naar `Microsoft.DataBoxEdge` en registreer de resourceprovider. 
     - Als u een resource voor een Storage-account wilt maken, moet u een toegangsbereik van een inzender of hoger hebben op het niveau van de resourcegroep. Azure Storage is standaard een geregistreerde resourceprovider.
-- U hebt beheerder-of gebruikerstoegang tot Azure Active Directory Graph API. Zie [Azure Active Directory Graph API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-) voor meer informatie.
-- U hebt een Microsoft Azure Storage-account met toegangsreferenties.
+- U hebt beheerders- of gebruikerstoegang tot Azure Active Directory Graph API voor het genereren van bewerkingen voor een activeringssleutel of een referentie, zoals het maken van een share die gebruikmaakt van een opslagaccount. Zie [Azure Active Directory Graph API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-) voor meer informatie.
+
 
 ### <a name="for-the-azure-stack-edge-pro-device"></a>Voor het Azure Stack Edge Pro-apparaat
 

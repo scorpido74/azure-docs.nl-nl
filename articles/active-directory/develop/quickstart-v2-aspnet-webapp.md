@@ -1,6 +1,7 @@
 ---
-title: Aanmelding voor Microsoft Identity Platform toevoegen aan een ASP.NET-web-app | Azure
-description: Informatie over het implementeren van Microsoft-aanmelding in een ASP.NET-web-app met behulp van OpenID Connect.
+title: 'Snelstart: Aanmelding met Microsoft toevoegen aan een ASP.NET-web-app | Azure'
+titleSuffix: Microsoft identity platform
+description: Leer in deze snelcursus over het implementeren van Microsoft-aanmelding in een ASP.NET-web-app met behulp van OpenID Connect.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -8,19 +9,25 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 04/11/2019
+ms.date: 09/25/2020
 ms.author: jmprieur
-ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 97a040ec166894197520b2e3a6dfc720262b7f1c
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, contperfq1
+ms.openlocfilehash: e621d50280adcccb8dbd82f4ceb0de7956e98e4b
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691289"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91576962"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>Quickstart: Aanmelding voor Microsoft Identity Platform toevoegen aan een ASP.NET-web-app
 In deze quickstart gebruikt u een codevoorbeeld om te leren hoe een ASP.NET-web-app persoonlijke accounts (hotmail.com, outlook.com, enz.) en werk- en schoolaccounts kan aanmelden vanuit een willekeurig exemplaar van Azure Active Directory (Azure AD).  (Zie [Hoe het voorbeeld werkt](#how-the-sample-works) voor een illustratie.)
 > [!div renderon="docs"]
+> ## <a name="prerequisites"></a>Vereisten
+>
+> * Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+> * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)
+> * [.NET Framework 4.7.2+](https://dotnet.microsoft.com/download/visual-studio-sdks)
+>
 > ## <a name="register-and-download-your-quickstart-app"></a>De quickstart-app registreren en downloaden
 > U hebt twee opties voor het starten van de snelstarttoepassing:
 > * [Express] [Optie 1: registreer de toepassing en laat deze automatisch configureren. Download vervolgens het codevoorbeeld](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
@@ -69,7 +76,7 @@ In deze quickstart gebruikt u een codevoorbeeld om te leren hoe een ASP.NET-web-
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Stap 3: Uw app is geconfigureerd en klaar om te worden uitgevoerd
-> Uw project is geconfigureerd met waarden van de eigenschappen van uw app. 
+> Uw project is geconfigureerd met waarden van de eigenschappen van uw app.
 
 > [!div renderon="docs"]
 > #### <a name="step-3-run-your-visual-studio-project"></a>Stap 3: Uw Visual Studio-project uitvoeren
@@ -114,7 +121,7 @@ U kunt de verificatiepijplijn instellen met verificatie op basis van cookies met
 ```powershell
 Install-Package Microsoft.Owin.Security.OpenIdConnect
 Install-Package Microsoft.Owin.Security.Cookies
-Install-Package Microsoft.Owin.Host.SystemWeb  
+Install-Package Microsoft.Owin.Host.SystemWeb
 ```
 
 ### <a name="owin-startup-class"></a>OWIN-opstartklasse
@@ -195,13 +202,11 @@ public void SignIn()
 
 U kunt een controller of controlleracties beveiligen met behulp van het kenmerk `[Authorize]`. Dit kenmerk beperkt toegang tot de controller of acties door alleen geverifieerde gebruikers toegang toe te staan tot de acties in de controller, wat betekent dat de verificatievraag automatisch wordt uitgevoerd wanneer een *niet-geverifieerde* gebruiker toegang probeert te krijgen tot een van deze acties of controller die zijn voorzien van het kenmerk `[Authorize]`.
 
+[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+
 ## <a name="next-steps"></a>Volgende stappen
 
 Volg de ASP.NET-zelfstudie voor een volledige stapsgewijze handleiding voor het bouwen van toepassingen en nieuwe functies, met inbegrip van een volledige uitleg van deze snelstart.
 
-### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>Leer wat de stappen zijn voor het maken van de toepassing die wordt gebruikt in deze snelstart
-
 > [!div class="nextstepaction"]
-> [Zelfstudie Aanmelding](./tutorial-v2-asp-webapp.md)
-
-[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
+> [Aanmelding toevoegen aan een ASP.NET-web-app](tutorial-v2-asp-webapp.md)

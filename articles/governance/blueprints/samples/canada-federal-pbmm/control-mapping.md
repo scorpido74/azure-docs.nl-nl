@@ -3,12 +3,12 @@ title: Beheeroptie van het blauwdrukvoorbeeld Canada Federal PBMM
 description: Toewijzing van beheeroptie van de blauwdrukvoorbeelden Canada Federal PBMM. Elke beheeroptie wordt toegewezen aan een of meer Azure-beleidsregels die helpt bij de evaluatie.
 ms.date: 07/31/2020
 ms.topic: sample
-ms.openlocfilehash: 3c70a58ef86d277341a6b4439fac3d160bea6e3f
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: b3879ee847a0cb7a4cb6d00e842c613de53579e2
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87925852"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91541064"
 ---
 # <a name="control-mapping-of-the-canada-federal-pbmm-blueprint-sample"></a>Toewijzing van beheeroptie van het blauwdrukvoorbeeld Canada Federal PBMM
 
@@ -28,7 +28,7 @@ Met deze blauwdruk kunt u de locatie voor de implementatie van alle resources en
 
 ## <a name="ac-2-account-management"></a>AC-2 Account Management
 
-Deze blauwdruk helpt u bij het controleren van accounts die mogelijk niet voldoen aan de accountbeheervereisten van uw organisatie. Met deze blauwdruk wordt [Azure Policy](../../../policy/overview.md)-definities toegewezen die externe accounts controleren met lees-, schrijf- en eigenaarsmachtigingen voor een abonnement en afgeschafte accounts. Door de evaluatie van de door dit beleid gecontroleerde accounts kunt u de juiste actie ondernemen om ervoor te zorgen dat aan de vereisten voor accountbeheer is voldaan.
+Deze blauwdruk helpt u bij het controleren van accounts die mogelijk niet voldoen aan de accountbeheervereisten van uw organisatie. Met deze blauwdruk worden [Azure Policy](../../../policy/overview.md)-definities toegewezen die externe accounts controleren met lees-, schrijf- en eigenaarsmachtigingen voor een abonnement en afgeschafte accounts. Door de evaluatie van de door dit beleid gecontroleerde accounts kunt u de juiste actie ondernemen om ervoor te zorgen dat aan de vereisten voor accountbeheer is voldaan.
 
 - Afgeschafte accounts moeten worden verwijderd uit uw abonnement
 - Afgeschafte accounts met eigenaarsmachtigingen moeten worden verwijderd uit uw abonnement
@@ -39,7 +39,7 @@ Deze blauwdruk helpt u bij het controleren van accounts die mogelijk niet voldoe
 
 ## <a name="ac-2-7-account-management--role-based-schemes"></a>AC-2 (7) Account Management | Op rollen gebaseerde planningen
 
-In Azure wordt [op rollen gebaseerde toegangsbeheer van Azure (Azure RBAC)](../../../../role-based-access-control/overview.md) geïmplementeerd, waarmee u de toegang tot resources in Azure kunt beheren. Met behulp van de Azure-portal kunt u controleren wie toegang heeft tot Azure-resources en wat hun machtigingen zijn. Met deze blauwdruk wordt ook [Azure Policy](../../../policy/overview.md)-definities toegewezen om het gebruik van Azure Active Directory-verificatie voor SQL-servers en-Service Fabric te controleren. Met behulp van Azure Active Directory-verificatie maakt vereenvoudigd beheer van machtigingen en gecentraliseerd identiteitsbeheer van databasegebruikers en andere Microsoft-services mogelijk. Daarnaast wordt met deze blauwdruk een Azure Policy-definitie toegewezen om het gebruik van aangepaste RBAC-regels te controleren. Wanneer u weet waar aangepaste RBAC-regels zijn geïmplementeerd, kan dit u helpen om te controleren of deze nodig zijn en of deze correct zijn geïmplementeerd, omdat aangepaste RBAC-regels foutgevoelig zijn.
+In Azure wordt [op rollen gebaseerde toegangsbeheer van Azure (Azure RBAC)](../../../../role-based-access-control/overview.md) geïmplementeerd, waarmee u de toegang tot resources in Azure kunt beheren. Met behulp van de Azure-portal kunt u controleren wie toegang heeft tot Azure-resources en wat hun machtigingen zijn. Met deze blauwdruk wordt ook [Azure Policy](../../../policy/overview.md)-definities toegewezen om het gebruik van Azure Active Directory-verificatie voor SQL-servers en-Service Fabric te controleren. Met behulp van Azure Active Directory-verificatie maakt vereenvoudigd beheer van machtigingen en gecentraliseerd identiteitsbeheer van databasegebruikers en andere Microsoft-services mogelijk. Daarnaast wordt met deze blauwdruk een Azure Policy-definitie toegewezen om het gebruik van aangepaste Azure RBAC-regels te controleren. Wanneer u weet waar aangepaste Azure RBAC-regels zijn geïmplementeerd, kan dit u helpen om te controleren of deze nodig zijn en of deze correct zijn geïmplementeerd, omdat aangepaste Azure RBAC-regels foutgevoelig zijn.
 
 - Een Azure Active Directory-beheerder moet worden ingericht voor SQL-servers
 - Service Fabric-clusters mogen alleen gebruikmaken van Azure Active Directory voor clientverificatie
@@ -220,7 +220,7 @@ Daarnaast wordt met deze blauwdruk ook beleidsdefinities toegewezen waarmee onbe
 
 - Aanbevelingen voor Adaptieve netwerkbeveiliging moeten worden toegepast op op internet gerichte virtuele machines
 - Toegang via een eindpunt gericht op internet moet worden beperkt
-- Netwerktoegang tot opslagaccounts moet zijn beperkt
+- Onbeperkte netwerktoegang tot opslagaccounts controleren
 
 ## <a name="sc-7-3-boundary-protection--access-points"></a>SC-7 (3) Boundary Protection | Toegangspunten
 

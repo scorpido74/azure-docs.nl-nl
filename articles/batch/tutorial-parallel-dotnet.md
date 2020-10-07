@@ -3,14 +3,14 @@ title: Een parallelle workload uitvoeren met behulp van de .NET API
 description: 'Zelfstudie: Mediabestanden parallel transcoderen met ffmpeg in Azure Batch met behulp van de clientbibliotheek Batch .NET'
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 09/29/2020
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: f57354a6eb52b3439cf298f66b706f53d101371e
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 8c8dcd01c7e97f77e994d021e39ce6a5e591ff9f
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88930227"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537579"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Zelfstudie: een parallelle workload uitvoeren met Azure Batch met behulp van de .NET API
 
@@ -35,7 +35,7 @@ In deze zelfstudie zet u MP4-mediabestanden parallel om in de MP3-indeling met b
 
 * Een Batch-account en een gekoppeld Azure Storage-account. Raadpleeg de Batch-quickstarts met behulp van [Azure Portal](quick-create-portal.md) of [Azure CLI](quick-create-cli.md) voor instructies voor het maken van deze accounts.
 
-* [64-bits Windows-versie van ffmpeg 3.4](https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-3.4-win64-static.zip) (.zip). Download het zipbestand naar uw lokale computer. Voor deze zelfstudie hebt u alleen het zip-bestand nodig. U hoeft het bestand niet uit te pakken of lokaal te installeren.
+* [64-bits Windows-versie van ffmpeg 4.3.1](https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-4.3.1-2020-09-21-full_build.zip) (.zip). Download het zipbestand naar uw lokale computer. Voor deze zelfstudie hebt u alleen het zip-bestand nodig. U hoeft het bestand niet uit te pakken of lokaal te installeren.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -47,7 +47,7 @@ Gebruik de Azure Portal om ffmpeg als een [toepassingspakket](batch-application-
 
 1. Klik in de Azure Portal op **Meer services** > **Batch-accounts** en klik op de naam van uw Batch-account.
 3. Klik op **Toepassingen** > **Toevoegen**.
-4. Voer *ffmpeg* in voor **Toepassings-id** met een pakketversie van *3.4*. Selecteer het zip-bestand voor ffmpeg dat u eerder hebt gedownload en klik vervolgens op **OK**. Het toepassingspakket voor ffmpeg wordt toegevoegd aan uw Batch-account.
+4. Voer *ffmpeg* in voor **Toepassings-id** met een pakketversie van *4.3.1*. Selecteer het zip-bestand voor ffmpeg dat u eerder hebt gedownload en klik vervolgens op **OK**. Het toepassingspakket voor ffmpeg wordt toegevoegd aan uw Batch-account.
 
 ![Toepassingspakket toevoegen](./media/tutorial-parallel-dotnet/add-application.png)
 
@@ -84,7 +84,7 @@ Zorg er ook voor dat de verwijzing naar het toepassingspakket voor ffmpeg in de 
 
 ```csharp
 const string appPackageId = "ffmpeg";
-const string appPackageVersion = "3.4";
+const string appPackageVersion = "4.3.1";
 ```
 
 ### <a name="build-and-run-the-sample-project"></a>Het voorbeeldproject compileren en uitvoeren
@@ -263,7 +263,7 @@ for (int i = 0; i < inputFiles.Count; i++)
     string outputMediaFile = String.Format("{0}{1}",
         System.IO.Path.GetFileNameWithoutExtension(inputMediaFile),
         ".mp3");
-    string taskCommandLine = String.Format("cmd /c {0}\\ffmpeg-3.4-win64-static\\bin\\ffmpeg.exe -i {1} {2}", appPath, inputMediaFile, outputMediaFile);
+    string taskCommandLine = String.Format("cmd /c {0}\\ffmpeg-4.3.1-2020-09-21-full_build\\bin\\ffmpeg.exe -i {1} {2}", appPath, inputMediaFile, outputMediaFile);
 
     // Create a cloud task (with the task ID and command line)
     CloudTask task = new CloudTask(taskId, taskCommandLine);

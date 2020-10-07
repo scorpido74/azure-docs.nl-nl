@@ -1,6 +1,6 @@
 ---
-title: SQL on-demand (preview) gebruiken voor het analyseren van Azure Open Datasets in Azure Synapse Studio (preview)
-description: In deze zelfstudie leert u hoe u eenvoudig verkennende gegevensanalyse kunt uitvoeren door verschillende Azure Open Datasets te combineren met behulp van SQL on-demand en de resultaten in Azure Synapse Studio kunt analyseren.
+title: 'Zelfstudie: SQL on-demand (preview) gebruiken voor het analyseren van Azure Open Datasets in Azure Synapse Studio (preview)'
+description: Deze zelfstudie laat zien hoe u eenvoudig een verkennende gegevensanalyse kunt uitvoeren door verschillende Azure Open Datasets te combineren met behulp van SQL on-demand (preview) en de resultaten in Azure Synapse Studio kunt analyseren.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -8,15 +8,15 @@ ms.topic: tutorial
 ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
-ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 2fc98e927fcf9686f0f39dae600f944b485c5a06
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.reviewer: jrasnick
+ms.openlocfilehash: 0471bd594dcf1b0654d6b4c496e5d39ade2739fd
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089138"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91539517"
 ---
-# <a name="use-sql-on-demand-to-analyze-azure-open-datasets-and-visualize-the-results-in-azure-synapse-studio"></a>Gebruik SQL on-demand voor het analyseren van Azure Open Datasets en visualiseer resultaten in Azure Synapse Studio
+# <a name="tutorial-use-sql-on-demand-to-analyze-azure-open-datasets-and-visualize-the-results-in-azure-synapse-studio"></a>Zelfstudie: Gebruik SQL on-demand voor het analyseren van Azure Open Datasets en visualiseer resultaten in Azure Synapse Studio
 
 In deze zelfstudie leert u hoe u verkennende gegevensanalyse kunt uitvoeren door verschillende Azure Open Datasets te combineren met behulp van SQL on-demand en de resultaten in Azure Synapse Studio kunt analyseren.
 
@@ -135,7 +135,7 @@ Ook hier kunt u eenvoudig gegevens visualiseren door de **Kolomdiagram** te teke
 
 ![Kolomdiagram met het dagelijkse aantal ritten voor 2016](./media/tutorial-data-analyst/7.png)
 
-In het getekende diagram kunt u zien dat er sprake is van een wekelijks patroon, met zaterdagen als piekdag. Tijdens de zomermaanden zijn er minder taxiritten, vanwege de vakantie. Er zijn ook aanzienlijke dalingen in het aantal taxiritten zonder duidelijk patroon wanneer en waarom ze optreden.
+In het getekende diagram kunt u zien dat er sprake is van een wekelijks patroon, met zaterdagen als piekdag. Tijdens de zomermaanden zijn er minder taxiritten, vanwege de vakantie. U ziet ook aanzienlijke dalingen in het aantal taxiritten zonder duidelijk patroon wanneer en waarom ze optreden.
 
 Laten we eens kijken of deze dalingen correleren met openbare feestdagen door ritten van NYC Taxi samen te voegen met de gegevensset Openbare feestdagen:
 

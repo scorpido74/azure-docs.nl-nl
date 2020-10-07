@@ -3,12 +3,12 @@ title: Overzicht van Azure-beleid
 description: Azure Policy is een service in Azure die u gebruikt om beleidsdefinities in uw Azure-omgeving te maken, toe te wijzen en te beheren.
 ms.date: 09/22/2020
 ms.topic: overview
-ms.openlocfilehash: 662a7510013e2008d8c16cf21376b11c247e0bc0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 596e52cca2be2a347c26502434048053a8b4684c
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905969"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91538953"
 ---
 # <a name="what-is-azure-policy"></a>Wat is Azure Policy?
 
@@ -57,15 +57,15 @@ Het volgende overzicht van Azure Policy is afkomstig van build 2018. Voor het do
 
 ## <a name="getting-started"></a>Aan de slag
 
-### <a name="azure-policy-and-rbac"></a>Azure Policy en RBAC
+### <a name="azure-policy-and-azure-rbac"></a>Azure Policy en Azure RBAC
 
-Er zijn enkele belangrijke verschillen tussen Azure Policy en RBAC (op rollen gebaseerd toegangsbeheer). Azure Policy evalueert de status door de eigenschappen te bekijken van resources die worden weergegeven in Resource Manager en de eigenschappen van sommige resourceproviders. In Azure Policy worden acties (ook wel _bewerkingen_) niet beperkt. Azure Policy zorgt ervoor dat de resourcestatus voldoet aan uw bedrijfsregels zonder dat het uitmaakt wie de wijziging heeft aangebracht of wie toestemming heeft om een wijziging aan te brengen.
+Er zijn enkele belangrijke verschillen tussen Azure Policy en op rollen gebaseerd toegangsbeheer (Azure RBAC). Azure Policy evalueert de status door de eigenschappen te bekijken van resources die worden weergegeven in Resource Manager en de eigenschappen van sommige resourceproviders. In Azure Policy worden acties (ook wel _bewerkingen_) niet beperkt. Azure Policy zorgt ervoor dat de resourcestatus voldoet aan uw bedrijfsregels zonder dat het uitmaakt wie de wijziging heeft aangebracht of wie toestemming heeft om een wijziging aan te brengen.
 
-RBAC is gericht op het beheer van gebruikers[acties](../../role-based-access-control/resource-provider-operations.md) in verschillende bereiken. Als een actie moet worden beheerd, is RBAC het geschiktste hulpprogramma. Zelfs als een persoon een actie mag uitvoeren, blokkeert Azure Policy toch het maken of bijwerken als het resultaat een niet-compatibele resource is.
+Azure RBAC is gericht op het beheer van [gebruikersacties](../../role-based-access-control/resource-provider-operations.md) in verschillende bereiken. Als een actie moet worden beheerd, is Azure RBAC het meest geschikte hulpprogramma om te gebruiken. Zelfs als een persoon een actie mag uitvoeren, blokkeert Azure Policy toch het maken of bijwerken als het resultaat een niet-compatibele resource is.
 
-Via de combinatie van RBAC en Azure Policy beschikt u over volledig beheer in Azure.
+Via de combinatie van Azure RBAC en Azure Policy beschikt u over volledig bereikbeheer in Azure.
 
-### <a name="rbac-permissions-in-azure-policy"></a>RBAC-machtigingen in Azure Policy
+### <a name="azure-rbac-permissions-in-azure-policy"></a>Azure RBAC-machtigingen in Azure Policy
 
 Azure Policy heeft diverse machtigingen, oftewel bewerkingen, in twee verschillende resourceproviders:
 

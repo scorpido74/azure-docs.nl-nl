@@ -1,29 +1,29 @@
 ---
-title: Interactie met IoT Plug en Play Preview-apparaat dat is verbonden met uw Azure IoT-oplossing (Node.js) | Microsoft Docs
-description: Gebruik Node.js (.NET) om verbinding te maken met een IoT Plug en Play Preview-apparaat dat is verbonden met uw Azure IoT-oplossing.
+title: Werken met een IoT Plug en Play Preview-apparaat dat is verbonden met uw Azure IoT-oplossing (Node.js) | Microsoft Docs
+description: Gebruik Node.js om verbinding te maken en te werken met een IoT Plug en Play-apparaat dat is verbonden met uw Azure IoT-oplossing.
 author: elhorton
 ms.author: elhorton
 ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: fd65dcc9ce0be07daa5848a0ac583cf795150e47
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: 6ad6e48642e7b7df4b93b37b5ef66381833d8bbc
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88184734"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91574990"
 ---
-# <a name="quickstart-interact-with-an-iot-plug-and-play-preview-device-thats-connected-to-your-solution-nodejs"></a>Quickstart: Interactie met een IoT Plug en Play Preview-apparaat dat is verbonden met uw oplossing (Node.js)
+# <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-nodejs"></a>Quickstart: Werken met een IoT Plug en Play-apparaat dat is verbonden met uw oplossing (Node.js)
 
 [!INCLUDE [iot-pnp-quickstarts-service-selector.md](../../includes/iot-pnp-quickstarts-service-selector.md)]
 
-IoT Plug en Play Preview vereenvoudigt IoT door u te laten communiceren met de mogelijkheden van een apparaat zonder kennis van de onderliggende implementatie van het apparaat. In deze quickstart ziet u hoe u Node.js gebruikt om verbinding te maken met een IoT-Plug en Play-apparaat dat is verbonden met uw oplossing en hoe u dit beheert.
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+IoT Plug en Play vereenvoudigt IoT en stelt u in staat om gebruik te maken van de mogelijkheden van een apparaat zonder kennis van de onderliggende implementatie van het apparaat. In deze quickstart ziet u hoe u Node.js gebruikt om verbinding te maken met een IoT-Plug en Play-apparaat dat is verbonden met uw oplossing en hoe u dit beheert.
 
 ## <a name="prerequisites"></a>Vereisten
+
+[!INCLUDE [iot-pnp-prerequisites](../../includes/iot-pnp-prerequisites.md)]
 
 Als u deze quickstart wilt uitvoeren, moet Node.js op uw ontwikkelcomputer zijn geïnstalleerd. U kunt de nieuwste aanbevolen omgeving voor meerdere platforms downloaden van [nodejs.org](https://nodejs.org).
 
@@ -33,29 +33,19 @@ Gebruik de volgende opdracht om de huidige versie van Node.js op uw ontwikkelcom
 node --version
 ```
 
-[!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
-
-Voer de volgende opdracht uit om de _verbindingsreeks voor IoT Hub_ op te halen voor uw hub. Noteer deze verbindingsreeks voor later gebruik in deze quickstart:
-
-```azurecli-interactive
-az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
-```
-
-Voer de volgende opdracht uit om de _apparaatverbindingsreeks_ op te halen voor het apparaat dat u aan de hub hebt toegevoegd. Noteer deze verbindingsreeks voor later gebruik in deze quickstart:
-
-```azurecli-interactive
-az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDeviceID> --output
-```
-
 ### <a name="clone-the-sdk-repository-with-the-sample-code"></a>Kloon de SDK-opslagplaats met de voorbeeldcode
 
-De service-SDK is in preview, wat betekent dat u de voorbeelden moet klonen uit een [preview-branch van de Node-SDK](https://github.com/Azure/azure-iot-sdk-node/tree/pnp-preview-refresh). Open een terminalvenster in een map naar keuze. Voer de volgende opdracht uit om de GitHub-opslagplaats van de branch **pnp-preview-refresh** van de [Microsoft Azure IoT SDK for Node.js](https://github.com/Azure/azure-iot-sdk-node) te klonen:
+Kloon de voorbeelden vanuit een [Node SDK-opslagplaats](https://github.com/Azure/azure-iot-sdk-node). Open een terminalvenster in een map naar keuze. Voer de volgende opdracht uit om de GitHub-opslagplaats van [Microsoft Azure IoT SDK for Node.js](https://github.com/Azure/azure-iot-sdk-node) te klonen:
 
 ```cmd/sh
-git clone https://github.com/Azure/azure-iot-sdk-node -b pnp-preview-refresh
+git clone https://github.com/Azure/azure-iot-sdk-node
 ```
 
 ## <a name="run-the-sample-device"></a>Het voorbeeldapparaat uitvoeren
+
+[!INCLUDE [iot-pnp-environment](../../includes/iot-pnp-environment.md)]
+
+Zie het [Leesmij-voorbeeld](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/pnp/readme.md) voor meer informatie over de voorbeeldconfiguratie.
 
 In deze quickstart gebruikt u als voorbeeld een thermostaat die in Node.js is geschreven als IoT Plug en Play-apparaat. Het voorbeeldapparaat uitvoeren:
 
@@ -65,12 +55,6 @@ In deze quickstart gebruikt u als voorbeeld een thermostaat die in Node.js is ge
 
     ```cmd/sh
     npm install
-    ```
-
-1. Configureer de _device connection string_ (verbindingsreeks voor het apparaat):
-
-    ```cmd/sh
-    set IOTHUB_DEVICE_CONNECTION_STRING=<YourDeviceConnectionString>
     ```
 
 1. Voer het voorbeeldapparaat (thermostaat) uit met de volgende opdracht:
@@ -83,25 +67,19 @@ In deze quickstart gebruikt u als voorbeeld een thermostaat die in Node.js is ge
 
 ## <a name="run-the-sample-solution"></a>De voorbeeldoplossing uitvoeren
 
+In [Quickstarts en zelfstudies voor het instellen van uw omgeving voor IoT Plug en Play](set-up-environment.md) hebt u twee omgevingsvariabelen gemaakt om het voorbeeld zo te configureren dat verbinding wordt gemaakt met uw IoT-hub en -apparaat:
+
+* **IOTHUB_CONNECTION_STRING**: de verbindingsreeks voor de IoT-hub die u eerder hebt genoteerd.
+* **IOTHUB_DEVICE_ID**: `"my-pnp-device"`.
+
 In deze quickstart gebruikt u een IoT-voorbeeldoplossing in C# om te communiceren met het voorbeeldapparaat dat u zojuist hebt ingesteld.
 
-1. Open een ander terminalvenster om als **serviceterminal** te gebruiken. De service-SDK is in preview, wat betekent dat u de voorbeelden moet klonen uit een [preview-branch van de Node-SDK](https://github.com/Azure/azure-iot-sdk-node/tree/pnp-preview-refresh):
+1. Open een ander terminalvenster om als **serviceterminal** te gebruiken.
 
-    ```cmd/sh
-    git clone https://github.com/Azure/azure-iot-sdk-node -b pnp-preview-refresh
-    ```
-
-1. Ga naar de map van de gekloonde branch van de opslagplaats en ga naar de map */azure-iot-sdk-node/digital-twins/samples/service/javascript*. Installeer de afhankelijkheden door de volgende opdracht uit te voeren:
+1. Navigeer in de gekloonde Node SDK-opslagplaats naar de map */azure-iot-sdk-node/service/samples/javascript*. Installeer de afhankelijkheden door de volgende opdracht uit te voeren:
 
     ```cmd/sh
     npm install
-    ```
-
-1. Configureer omgevingsvariabelen voor uw apparaat-id en _IoT Hub-verbindingsreeks_:
-
-    ```cmd/sh
-    set IOTHUB_CONNECTION_STRING=<YourIOTHubConnectionString>
-    set IOTHUB_DEVICE_ID=<Your device ID>
     ```
 
 ### <a name="read-a-property"></a>Een eigenschap lezen
@@ -163,7 +141,7 @@ In dit scenario wordt `Model Id: dtmi:com:example:Thermostat;1` uitgevoerd.
 1. U kunt in de terminal **apparaat** zien dat het apparaat de update heeft ontvangen:
 
     ```cmd/sh
-    The following properties will be updated for root interface:
+    The following properties will be updated for the default component:
     {
       targetTemperature: {
         value: 42,
@@ -221,11 +199,9 @@ In dit scenario wordt `Model Id: dtmi:com:example:Thermostat;1` uitgevoerd.
     Response to method 'getMaxMinReport' sent successfully.
     ```
 
-[!INCLUDE [iot-pnp-clean-resources.md](../../includes/iot-pnp-clean-resources.md)]
-
 ## <a name="next-steps"></a>Volgende stappen
 
 In deze quickstart hebt u geleerd hoe u een IoT Plug and Play-apparaat kunt verbinden met een IoT-oplossing. Voor meer informatie over IoT Plug and Play-apparaatmodellen raadpleegt u:
 
 > [!div class="nextstepaction"]
-> [Handleiding voor ontwikkelaars van IoT Plug en Play-previewmodellen](concepts-developer-guide.md)
+> [Handleiding voor ontwikkelaars van IoT Plug en Play-modellen](concepts-developer-guide-device-csharp.md)

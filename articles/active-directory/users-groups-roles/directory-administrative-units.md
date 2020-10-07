@@ -1,5 +1,5 @@
 ---
-title: Beheer van beheereenheden (preview) - Azure AD | Microsoft Docs
+title: Beheereenheden in Azure Active Directory | Microsoft Docs
 description: Beheereenheden gebruiken voor een meer gedetailleerde delegatie van machtigingen in Azure Active Directory
 services: active-directory
 documentationcenter: ''
@@ -9,21 +9,21 @@ ms.service: active-directory
 ms.topic: overview
 ms.subservice: users-groups-roles
 ms.workload: identity
-ms.date: 07/27/2020
+ms.date: 09/22/2020
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5854ef57a08218fee4479eb9e075824f4a1ff781
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 7aa356c806b6b96fa6a22f8642b005b2002f7c2a
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89376380"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447897"
 ---
-# <a name="administrative-units-management-in-azure-active-directory-preview"></a>Beheer van beheereenheden in Azure Active Directory (preview)
+# <a name="administrative-units-in-azure-active-directory"></a>Beheereenheden in Azure Active Directory
 
-In dit artikel worden beheereenheden in Azure Active Directory (Azure AD) beschreven. Een beheereenheid is een Azure AD-resource die een container kan zijn voor andere Azure AD-resources. In deze preview-versie kan een beheereenheid alleen gebruikers en groepen bevatten.
+In dit artikel worden beheereenheden in Azure Active Directory (Azure AD) beschreven. Een beheereenheid is een Azure AD-resource die een container kan zijn voor andere Azure AD-resources. Een beheereenheid kan alleen gebruikers en groepen bevatten.
 
 Met beheereenheden kunt u beheerdersmachtigingen verlenen die zijn beperkt tot een afdeling, een regio of een ander door u gedefinieerd segment van uw organisatie. U kunt beheereenheden gebruiken om machtigingen te delegeren aan regionale beheerders of om een beleid op een gedetailleerd niveau in te stellen. Beheerders van gebruikersaccounts kunnen bijvoorbeeld profielgegevens bijwerken, wachtwoorden opnieuw instellen en licenties toewijzen voor uitsluitend gebruikers die in hun beheereenheid zijn opgenomen.
 
@@ -44,11 +44,11 @@ Voor het gebruik van beheereenheden is een Azure Active Directory Premium-licent
 
 ## <a name="manage-administrative-units"></a>Beheereenheden beheren
 
-In deze preview-versie kunt u beheereenheden beheren met behulp van Azure Portal, PowerShell-cmdlets en -scripts of de Microsoft Graph. U kunt onze documentatie raadplegen voor meer informatie:
+U kunt beheereenheden beheren met behulp van Azure Portal, PowerShell-cmdlets en -scripts of Microsoft Graph. U kunt onze documentatie raadplegen voor meer informatie:
 
 - [Rollen maken, verwijderen, vullen en toevoegen aan beheereenheden](roles-admin-units-manage.md): Instructieprocedures uitvoeren
-- [Werken met beheereenheden](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0): Werken met beheereenheden met behulp van PowerShell
-- [Graph-ondersteuning voor beheereenheden](/graph/api/resources/administrativeunit?view=graph-rest-beta): Gedetailleerde documentatie over Microsoft Graph voor beheereenheden.
+- [Werken met beheereenheden](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0&preserve-view=true): Werken met beheereenheden met behulp van PowerShell
+- [Graph-ondersteuning voor beheereenheden](/graph/api/resources/administrativeunit?view=graph-rest-1.0&preserve-view=true): Gedetailleerde documentatie over Microsoft Graph voor beheereenheden.
 
 ### <a name="planning-your-administrative-units"></a>Uw beheereenheden plannen
 
@@ -95,9 +95,6 @@ Machtigingen |   MS Graph/PowerShell   | Azure AD-portal | Het Microsoft 365-beh
 beheer van groepseigenschappen en -leden voor een specifieke beheereenheid     |  Ondersteund   |    Ondersteund    |  Niet ondersteund
 beheer van groepslicenties voor een specifieke beheereenheid   |    Ondersteund  |    Ondersteund   |   Niet ondersteund
 
-> [!NOTE]
->
-> Beheerders met het bereik van een beheereenheid kunnen geen dynamische groepslidmaatschapsregels beheren.
 
 Het bereik van beheereenheden is alleen van toepassing op beheermachtigingen. Ze verhinderen niet dat leden of beheerders hun [standaardgebruikersmachtigingen](../fundamentals/users-default-permissions.md) gebruiken om door andere gebruikers, groepen of resources buiten de beheereenheid te bladeren. In het Microsoft 365-beheercentrum worden gebruikers buiten de beheereenheden van een beheerder met een bereik eruit gefilterd, maar u kunt door andere gebruikers bladeren in de Azure AD-portal, PowerShell en andere Microsoft-services.
 

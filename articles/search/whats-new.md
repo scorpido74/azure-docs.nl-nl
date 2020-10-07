@@ -8,20 +8,18 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: 4526e4916a89b53ae13a31bcdef6cd4715dd7e8c
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 7714ec29b3cbe17c7700b48111ea2b455aa18b7e
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90979591"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91532224"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Nieuwe functies in Azure Cognitive Search
 
 Meer informatie over nieuwe functies in de service. Voeg een bladwijzer toe aan deze pagina om up-to-date te blijven over de service.
 
-## <a name="feature-announcements-in-2020"></a>Aankondigingen van functies in 2020
-
-### <a name="september-2020"></a>September 2020
+## <a name="september-2020"></a>September 2020
 
 Maak een identiteit voor een zoekservice in Azure Active Directory en gebruik vervolgens RBAC-machtigingen om machtigingen voor Azure-gegevensbronnen toe te kennen aan de identiteit 'Alleen-lezen'. Kies desgewenst de mogelijkheid [Vertrouwde service-uitzondering](search-indexer-howto-access-trusted-service-exception.md) als IP-regels geen optie zijn.
 
@@ -34,13 +32,13 @@ Maak een identiteit voor een zoekservice in Azure Active Directory en gebruik ve
 | [Beheer van REST API (2020-08-01-Preview)](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) | REST | Hiermee wordt een gedeelde privélinkresource toegevoegd voor Azure Functions en Azure SQL voor MySQL-databases. | Openbare preview. |
 | [Beheer van .NET SDK 4.0](https://docs.microsoft.com/dotnet/api/overview/azure/search/management) | .NET SDK | Azure SDK-update voor het beheer van SDK, gericht op REST API versie 2020-08-01. | Algemeen verkrijgbaar. |
 
-### <a name="august-2020"></a>Augustus 2020
+## <a name="august-2020"></a>Augustus 2020
 
 |Functie&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Categorie | Beschrijving | Beschikbaarheid  |
 |---------|------------------|-------------|---------------|
 | [Dubbele versleuteling](search-security-overview.md#encryption) | Beveiliging | U kunt dubbele versleuteling inschakelen in de opslaglaag door CMK-versleuteling (door klant beheerde sleutels) te configureren voor nieuwe zoekservices. Maak een nieuwe service, [configureer door klant beheerde sleutels en pas deze toe](search-security-manage-encryption-keys.md) op indexen of synoniemtoewijzingen en u kunt gebruikmaken van dubbele versleuteling voor die inhoud. | Algemeen beschikbaar (GA) voor alle zoekservices die zijn gemaakt na 1 augustus 2020 in deze regio's: VS - west 2, VS - oost, VS - zuid-centraal, US Gov - Virginia, US Gov - Arizona. Gebruik de portal, REST-API's voor beheer of SDK's om de service te maken. |
 
-### <a name="july-2020"></a>Juli 2020
+## <a name="july-2020"></a>Juli 2020
 
 |Functie&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Categorie | Beschrijving | Beschikbaarheid  |
 |---------|------------------|-------------|---------------|
@@ -48,7 +46,7 @@ Maak een identiteit voor een zoekservice in Azure Active Directory en gebruik ve
 | [azure.search.documents-clientbibliotheek](/python/api/overview/azure/search-documents-readme)  | Azure-SDK voor Python| Python-clientbibliotheek uitgebracht door het team van Azure SDK. Deze is compatibel met andere Python-clientbibliotheken. <br/><br/>Versie 11 is gericht op de Search REST api-version=2020-06-30. | Algemeen verkrijgbaar. </br> Installeer het [azure-search-documents-pakket](https://pypi.org/project/azure-search-documents/) van PyPI. |
 | [@azure/search-documents clientbibliotheek](/javascript/api/overview/azure/search-documents-readme)  | Azure-SDK voor JavaScript | JavaScript-clientbibliotheek uitgebracht door het team van Azure SDK. Deze is compatibel met andere JavaScript-clientbibliotheken. <br/><br/>Versie 11 is gericht op de Search REST api-version=2020-06-30. | Algemeen verkrijgbaar. </br> Installeer het [@azure/search-documents-pakket](https://www.npmjs.com/package/@azure/search-documents) van npm. |
 
-### <a name="june-2020"></a>Juni 2020
+## <a name="june-2020"></a>Juni 2020
 
 |Functie&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Categorie | Beschrijving | Beschikbaarheid  |
 |---------|------------------|-------------|---------------|
@@ -57,7 +55,7 @@ Maak een identiteit voor een zoekservice in Azure Active Directory en gebruik ve
 | [**Okapi BM25 relevantie-algoritme**](https://en.wikipedia.org/wiki/Okapi_BM25) | Query’s uitvoeren | Nieuw algoritme voor relevantieclassificatie wordt automatisch gebruikt voor alle nieuwe zoekservices die zijn gemaakt na 15 juli. Voor services die vroeger zijn aangemaakt kunt u het gebruiken door de eigenschap `similarity` in te stellen op indexvelden. | Algemeen verkrijgbaar. </br> Gebruik [Search REST API 2020-06-30](/rest/api/searchservice/) of hoger, of REST API 2019-05-06. |
 | **executionEnvironment** | Beveiliging (Indexeerfuncties) | Stel de configuratie-eigenschap van deze indexeerfunctie expliciet in op `private` om alle verbindingen met externe gegevensbronnen via een privé-eindpunt te laten verlopen. Enkel van toepassing op zoekservices die gebruikmaken van Azure Private Link. | Algemeen verkrijgbaar. </br> Gebruik [Search REST API 2020-06-30](/rest/api/searchservice/) om deze parameter voor algemene configuratie in te stellen. |
 
-### <a name="may-2020-microsoft-build"></a>Mei 2020 (Microsoft Build)
+## <a name="may-2020-microsoft-build"></a>Mei 2020 (Microsoft Build)
 
 |Functie&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Categorie | Beschrijving | Beschikbaarheid  |
 |---------|------------------|-------------|---------------|
@@ -68,21 +66,21 @@ Maak een identiteit voor een zoekservice in Azure Active Directory en gebruik ve
 | [**sessionId query parameter**](index-similarity-and-scoring.md), [scoringStatistics=global parameter](index-similarity-and-scoring.md#scoring-statistics) | Query (relevantie) | Voeg sessionID toe aan een query om een sessie voor het berekenen van zoekscores te maken, met scoringStatistics=Global om scores te verzamelen van alle shards en zoekscores consistenter te berekenen. | Algemeen verkrijgbaar. </br> Gebruik [Search REST API 2020-06-30](/rest/api/searchservice/) of hoger, of REST API 2019-05-06. |
 | [**featuresMode (preview)** ](index-similarity-and-scoring.md#featuresMode-param) | Query’s uitvoeren | Voeg deze queryparameter toe om een relevantiescore uit te breiden om meer details weer te geven: vergelijkbaarheidsscore per veld, termfrequentie per veld, en gematcht aantal unieke tokens per veld. U kunt deze gegevenspunten gebruiken in aangepaste scorealgoritmen. Zie [Add machine learning (LearnToRank) to search relevance](https://github.com/Azure-Samples/search-ranking-tutorial) voor een voorbeeld waarin deze mogelijkheid wordt gedemonstreerd. | Openbare preview. </br> Gebruik [Search REST API 2020-06-30-Preview](/rest/api/searchservice/index-preview) of REST API 2019-05-06-Preview. |
 
-### <a name="march-2020"></a>Maart 2020
+## <a name="march-2020"></a>Maart 2020
 
 |Functie&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Categorie | Beschrijving | Beschikbaarheid  |
 |---------|------------------|-------------|---------------|
-| [**Voorlopig verwijderen van systeemeigen blob (preview)** ](search-howto-indexing-azure-blob-storage.md#incremental-indexing-and-deletion-detection) | Indexeerfuncties | Een Azure Blob Storage-indexeerfunctie in Azure Cognitive Search herkent de blobs die de status Voorlopig verwijderd hebben, en verwijdert het bijbehorende zoekdocument tijdens het indexeren. | Openbare preview. </br> Gebruik de [Search REST API 2020-06-30-Preview](/rest/api/searchservice/index-preview) en REST API 2019-05-06-Preview, met Uitvoering van indexeerfunctie voor een gegevensbron van een Azure-blob waarvoor een systeemeigen 'voorlopig verwijderen' is ingeschakeld. |
+| [**Voorlopig verwijderen van systeemeigen blob (preview)** ](search-howto-index-changed-deleted-blobs.md) | Indexeerfuncties | Een Azure Blob Storage-indexeerfunctie in Azure Cognitive Search herkent de blobs die de status Voorlopig verwijderd hebben, en verwijdert het bijbehorende zoekdocument tijdens het indexeren. | Openbare preview. </br> Gebruik de [Search REST API 2020-06-30-Preview](/rest/api/searchservice/index-preview) en REST API 2019-05-06-Preview, met Uitvoering van indexeerfunctie voor een gegevensbron van een Azure-blob waarvoor een systeemeigen 'voorlopig verwijderen' is ingeschakeld. |
 | [**Management REST API (2020-03-13)** ](/rest/api/searchmanagement/management-api-versions) | REST | Nieuwe stabiele REST API voor het maken en beheren van een zoekservice. Voegt ondersteuning voor IP-firewall en Private Link toe | Algemeen verkrijgbaar. |
 
-### <a name="february-2020"></a>Februari 2020
+## <a name="february-2020"></a>Februari 2020
 
 |Functie&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Categorie | Beschrijving | Beschikbaarheid  |
 |---------|------------------|-------------|---------------|
 | [**PII-detectie (preview)** ](cognitive-search-skill-pii-detection.md) | AI-verrijking | Een nieuwe cognitieve vaardigheid die wordt gebruikt tijdens de indexering. Hiermee worden persoonsgegevens opgehaald uit een invoertekst en krijgt u de mogelijkheid om deze op verschillende manieren in deze tekst te maskeren. | Openbare preview. </br> Gebruik het portal of [Search REST API 2020-06-30-Preview](/rest/api/searchservice/index-preview) of REST API 2019-05-06-Preview. |
 | [**Aangepaste entiteit zoeken (preview)** ](cognitive-search-skill-custom-entity-lookup.md )| AI-verrijking | Een nieuwe cognitieve vaardigheid die zoekt naar tekst uit een aangepaste, door de gebruiker gedefinieerde lijst met woorden en zinsdelen. Aan de hand van deze lijst worden alle documenten met overeenkomende entiteiten gelabeld. De vaardigheid ondersteunt ook het zoeken naar fuzzy overeenkomsten, waarmee overeenkomsten worden gevonden die vergelijkbaar zijn, maar niet exact. | Openbare preview. </br> Gebruik het portal of [Search REST API 2020-06-30-Preview](/rest/api/searchservice/index-preview) of REST API 2019-05-06-Preview. |
 
-### <a name="january-2020"></a>Januari 2020
+## <a name="january-2020"></a>Januari 2020
 
 |Functie&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Categorie | Beschrijving | Beschikbaarheid  |
 |---------|------------------|-------------|---------------|
@@ -90,7 +88,7 @@ Maak een identiteit voor een zoekservice in Azure Active Directory en gebruik ve
 | [**IP-regels voor inkomende firewall-ondersteuning (preview)** ](service-configure-firewall.md) | Beveiliging | Beperk de toegang tot een zoekservice-eindpunt voor specifieke IP-adressen. De preview-API bevat de nieuwe eigenschappen **IpRule** en **NetworkRuleSet** in [CreateOrUpdate-API](/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service). Deze preview-functie is beschikbaar in bepaalde regio's. |  Openbare Preview met api-version=2019-10-01-Preview.  |
 | [**Azure Private Link voor een persoonlijk zoekeindpunt (preview)** ](service-create-private-endpoint.md) | Beveiliging| Scherm een zoekservice af van het openbare internet door deze uit te voeren als een Private Link-resource, die enkel toegankelijk is voor client-apps en andere Azure-services in hetzelfde virtuele netwerk. | Openbare Preview met api-version=2019-10-01-Preview.  |
 
-## <a name="feature-announcements-in-2019"></a>Aankondigingen van functies in 2019
+## <a name="features-in-2019"></a>Functies in 2019
 
 ### <a name="december-2019"></a>December 2019
 

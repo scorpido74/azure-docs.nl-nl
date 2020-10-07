@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 08/19/2019
 ms.custom: mvc, sec-javascript-october2019
-ms.openlocfilehash: 91a4e2f6a770282e9d031c31fdf1af15f0cd00bf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fb7a32199117be76e411155910d558ef187398ab
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067543"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91448257"
 ---
 # <a name="collect-data-from-an-azure-virtual-machine-with-azure-monitor"></a>Gegevens verzamelen van een virtuele Azure-machine met Azure Monitor
 
@@ -87,7 +87,7 @@ Azure Monitor kan gebeurtenissen uit de Windows-gebeurtenislogboeken of de Linux
 
 7. Wanneer u voor het eerst Windows-prestatiemeteritems voor een nieuwe Log Analytics-werkruimte configureert, krijgt u de optie om snel verschillende algemene prestatiemeteritems te maken. Ze worden weergegeven met een selectievakje ernaast.
 
-    ![Standaard Windows-prestatiemeteritems geselecteerd](media/quick-collect-azurevm/windows-perfcounters-default.png)
+    ![Schermopname van het deelvenster prestatiemeters van Windows met een lijst met geselecteerde meters en de knop De geselecteerde prestatiemeters toevoegen geselecteerd.](media/quick-collect-azurevm/windows-perfcounters-default.png)
 
     Selecteer **De geselecteerde prestatiemeteritems toevoegen**.  Ze worden toegevoegd en vooraf ingesteld met een sample-interval van tien seconden.
   
@@ -107,7 +107,7 @@ Azure Monitor kan gebeurtenissen uit de Windows-gebeurtenislogboeken of de Linux
 
 6. Wanneer u Linux-prestatiemeteritems voor een nieuwe Log Analytics-werkruimte voor het eerst configureert, krijgt u de optie om snel verschillende algemene prestatiemeteritems te maken. Ze worden weergegeven met een selectievakje ernaast.
 
-    ![Standaard Windows-prestatiemeteritems geselecteerd](media/quick-collect-azurevm/linux-perfcounters-azure-monitor.png)
+    ![Schermafbeelding van het deelvenster prestatiemeters voor Linux met een lijst met geselecteerde meters en de knop De geselecteerde prestatiemeters toevoegen geselecteerd.](media/quick-collect-azurevm/linux-perfcounters-azure-monitor.png)
 
     Selecteer **Onderstaande configuratie toepassen op mijn machines** en selecteer vervolgens **De geselecteerde prestatiemeteritems toevoegen**.  Ze worden toegevoegd en vooraf ingesteld met een sample-interval van tien seconden.  
 

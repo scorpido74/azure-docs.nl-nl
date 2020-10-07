@@ -3,14 +3,14 @@ title: Blob Storage-gebeurtenissen verzenden naar een webeindpunt - sjabloon
 description: Gebruik Azure Event Grid en een Azure Resource Manager-sjabloon om een Blob-opslagaccount te maken en u te abonneren op de gebeurtenissen ervan. Verstuur de gebeurtenissen naar een webhook.
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: 32fc17d1af552afa5a81fbc4a5973d69006742b9
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: fc6216142c6bec99cb12bf4e0bdae920f27f1bf2
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661262"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598346"
 ---
-# <a name="route-blob-storage-events-to-web-endpoint-by-using-an-arm-template"></a>Blob Storage-gebeurtenissen naar een webeindpunt routeren met behulp van een ARM-sjabloon
+# <a name="quickstart-route-blob-storage-events-to-web-endpoint-by-using-an-arm-template"></a>Quickstart: Blob Storage-gebeurtenissen naar een webeindpunt routeren met behulp van een ARM-sjabloon
 
 Azure Event Grid is een gebeurtenisservice voor de cloud. In dit artikel gebruikt u een Azure Resource Manager-sjabloon (ARM-sjabloon) om een Blob Storage-account te maken, u te abonneren op de gebeurtenissen voor die blob-opslag en een gebeurtenis te activeren om het resultaat weer te geven. Normaal gesproken verzendt u gebeurtenissen naar een eindpunt dat de gebeurtenisgegevens verwerkt en vervolgens in actie komt. Ter vereenvoudiging van dit artikel stuurt u hier de gebeurtenissen echter naar een web-app die de berichten verzamelt en weergeeft.
 

@@ -3,14 +3,14 @@ title: Inleiding
 description: Meer informatie over de functies en voordelen van Azure VMware Solution voor het implementeren en beheren van VMware-workloads in Azure.
 ms.topic: overview
 ms.date: 05/04/2020
-ms.openlocfilehash: 3d6801a6cdec7600cc6003711a08e6af8c86483e
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: b71427402e08167e5868128ed1e553c69bef425d
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89005051"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91574451"
 ---
-# <a name="what-is-azure-vmware-solution-preview"></a>Wat is Azure VMware Solution Preview?
+# <a name="what-is-azure-vmware-solution"></a>Wat is Azure VMware Solution?
 
 Met Azure VMware Solution beschikt u over privéclouds in Azure. De privécloud bevat vSphere-clusters, gebouwd op basis van een toegewezen bare-metal Azure-infrastructuur. U kunt privécloudclusters schalen van 3 naar 16 hosts, met de mogelijkheid om meerdere clusters in één privécloud te hebben. Alle privéclouds zijn ingericht met vCenter Server, vSAN, vSphere en NSX-T. U kunt workloads migreren uit uw on-premises omgevingen, nieuwe virtuele machines maken of implementeren en Azure-services gebruiken vanuit uw privéclouds.
 
@@ -28,9 +28,7 @@ Nieuwe privéclouds worden geïmplementeerd via Azure Portal of Azure CLI.
 
 ## <a name="networking"></a>Netwerken
 
-Wanneer een privécloud wordt geïmplementeerd, worden privénetwerken voor beheer, provisioning en vMotion gemaakt. Deze privénetwerken worden gebruikt voor toegang tot vCenter en NSX-T Manager en voor vMotion of implementatie van virtuele machines. Alle privénetwerken zijn toegankelijk via een VNet in Azure of vanuit on-premises omgevingen. ExpressRoute Global Reach wordt gebruikt om privéclouds te verbinden met on-premises omgevingen en voor deze verbinding is een VNet met een ExpressRoute-circuit in uw abonnement vereist.
-
-Toegang tot internet- en Azure-services wordt ingericht wanneer een privécloud wordt geïmplementeerd. De toegang wordt verschaft, zodat VM's op productieworkloadnetwerken Azure- of internetservices kunnen gebruiken. Internettoegang is standaard uitgeschakeld voor nieuwe privéclouds en kan op elk gewenst moment worden ingeschakeld of uitgeschakeld.
+[!INCLUDE [avs-networking-description](includes/azure-vmware-solution-networking-description.md)]
 
 Voor meer informatie over netwerken en interconnectiviteit raadpleegt u het artikel [Networking-concepten](concepts-networking.md).
 
@@ -46,7 +44,7 @@ Regelmatige upgrades van de Azure VMware Solution-privécloud en VMware-software
 
 ## <a name="monitoring-your-private-cloud"></a>De privécloud bewaken
 
-U kunt [Logboeken in Azure Monitor](../azure-monitor/overview.md) gebruiken om logboeken te verzamelen op uw virtuele machines die worden uitgevoerd in de privécloud van uw Azure VMware Solution. U kunt [de MMA-agent downloaden en installeren](../azure-monitor/platform/log-analytics-agent.md#installation-options) op virtuele Linux- en Windows-machines die worden uitgevoerd in uw Azure VMware Solution-privéclouds, met behulp van dezelfde query's die u op uw on-premises VM's uitvoert. U kunt dezelfde query's uitvoeren die normaal gesproken alleen op uw virtuele machines worden uitgevoerd. Zie [query's schrijven](../azure-monitor/log-query/log-query-overview.md#how-can-i-learn-how-to-write-queries)voor meer informatie over het maken van query's.
+Zodra de Azure VMware Solution is geïmplementeerd in uw abonnement, worden [Azure Monitor-logboeken](../azure-monitor/overview.md) automatisch gegenereerd. Daarnaast kunt u logboeken verzamelen op elke virtuele machine in uw privécloud. U kunt [de MMA-agent downloaden en installeren](../azure-monitor/platform/log-analytics-agent.md#installation-options) op virtuele machines met Linux en Windows die worden uitgevoerd in uw Azure VMware Solution-privéclouds. U kunt ook de [Azure Diagnostics-extensie](../azure-monitor/platform/diagnostics-extension-overview.md) inschakelen. U kunt zelfs dezelfde query's uitvoeren die normaal gesproken op uw virtuele machines worden uitgevoerd. Zie [query's schrijven](../azure-monitor/log-query/log-query-overview.md#how-can-i-learn-how-to-write-queries)voor meer informatie over het maken van query's. Het bewaken van patronen in de Azure VMware Solution is vergelijkbaar met Azure Virtual Machines binnen het IaaS-platform. Zie [Virtuele machines van Azure bewaken met Azure Monitor](../azure-monitor/insights/monitor-vm-azure.md) voor meer informatie en uitleg.
 
 ## <a name="next-steps"></a>Volgende stappen
 

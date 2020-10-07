@@ -10,20 +10,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/14/2020
+ms.date: 09/29/2020
 ms.author: duau
-ms.openlocfilehash: e1893c32ed486772e56432f6263626d0ee1a65df
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: ff61af192471bcfc9bdb9f1ce3970d5c22f39579
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531879"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91569786"
 ---
 # <a name="azure-front-door-rules-engine-actions"></a>Acties voor de Azure Front Door-regelengine
 
 In de [AFD-regelengine](front-door-rules-engine.md) bestaat een regel uit nul of meer voorwaarden van overeenkomst en acties. In dit artikel vindt u gedetailleerde beschrijvingen van de acties die u kunt gebruiken in de AFD-regelengine.
 
-Een actie definieert het gedrag dat wordt toegepast op het aanvraagtype dat overeenkomt met de voorwaarde of een set voorwaarden van overeenkomst. In de AFD-regelengine kan een regel maximaal vijf acties bevatten, waarvan slechts één actie het overschrijven van de routeconfiguratie (voorwaarts of omleiden) kan zijn.
+Een actie definieert het gedrag dat wordt toegepast op het aanvraagtype dat overeenkomt met de voorwaarde of een set voorwaarden van overeenkomst. In de AFD-regelengine kan een regel maximaal vijf acties bevatten. Er kan slechts één actie een actie voor overschrijven van de routeconfiguratie (doorsturen of omleiden) zijn.
 
 De volgende acties zijn beschikbaar voor gebruik in de Azure Front Door-regelengine.  
 
@@ -35,9 +35,9 @@ Gebruik deze actie om headers te wijzigen die aanwezig zijn in aanvragen die naa
 
 Bewerking | HTTP-headernaam | Waarde
 -------|------------------|------
-Toevoegen | Als deze optie is geselecteerd en de regel overeenkomt, wordt de header die is opgegeven in **headernaam** aan de aanvraag toegevoegd met de opgegeven waarde. Als er al een header aanwezig is, wordt de waarde toegevoegd aan de bestaande waarde. | Tekenreeks
-Overschrijven | Als deze optie is geselecteerd en de regel overeenkomt, wordt de header die is opgegeven in **headernaam** aan de aanvraag toegevoegd met de opgegeven waarde. Als er al een header aanwezig is, overschrijft de opgegeven waarde de bestaande waarde. | Tekenreeks
-Verwijderen | Als deze optie is geselecteerd, de regel overeenkomt en de opgegeven header aanwezig is, wordt de header uit de aanvraag verwijderd. | Tekenreeks
+Toevoegen | Als deze optie wordt geselecteerd en de regel overeenkomt, wordt de header die wordt opgegeven in **headernaam** aan de aanvraag toegevoegd met de opgegeven waarde. Als er al een header aanwezig is, wordt de waarde toegevoegd aan de bestaande waarde. | Tekenreeks
+Overschrijven | Als deze optie is geselecteerd en de regel overeenkomt, wordt de header die wordt opgegeven in **headernaam** aan de aanvraag toegevoegd met de opgegeven waarde. Als er al een header aanwezig is, overschrijft de opgegeven waarde de bestaande waarde. | Tekenreeks
+Verwijderen | Als deze optie wordt geselecteerd, de regel overeenkomt en de opgegeven header aanwezig is, wordt de header uit de aanvraag verwijderd. | Tekenreeks
 
 ## <a name="modify-response-header"></a>Antwoordheader wijzigen
 
@@ -47,9 +47,9 @@ Gebruik deze actie om headers te wijzigen die aanwezig zijn in antwoorden die aa
 
 Bewerking | HTTP-headernaam | Waarde
 -------|------------------|------
-Toevoegen | Als deze optie is geselecteerd en de regel overeenkomt, wordt de header die is opgegeven in **headernaam** aan het antwoord toegevoegd met de opgegeven **waarde**. Als de header al aanwezig is, wordt de **waarde** toegevoegd aan de bestaande waarde. | Tekenreeks
+Toevoegen | Als deze optie wordt geselecteerd en de regel overeenkomt, wordt de header die wordt opgegeven in **headernaam** aan het antwoord toegevoegd met de opgegeven **waarde**. Als de header al aanwezig is, wordt de **waarde** toegevoegd aan de bestaande waarde. | Tekenreeks
 Overschrijven | Als deze optie is geselecteerd en de regel overeenkomt, wordt de header die is opgegeven in **headernaam** aan het antwoord toegevoegd met de opgegeven **waarde**. Als de header al aanwezig is, overschrijft de **waarde** de bestaande waarde overschrijft. | Tekenreeks
-Verwijderen | Als deze optie is geselecteerd, de regel overeenkomt en de opgegeven header aanwezig is, wordt de header uit het antwoord verwijderd. | Tekenreeks
+Verwijderen | Als deze optie wordt geselecteerd, de regel overeenkomt en de opgegeven header aanwezig is, wordt de header uit het antwoord verwijderd. | Tekenreeks
 
 ## <a name="route-configuration-overrides"></a>Routeconfiguratie-onderdrukkingen 
 
@@ -75,9 +75,9 @@ Gebruik deze actie om clients door te sturen naar een nieuwe URL. Deze actie bev
 
 Veld | Beschrijving 
 ------|------------
-Back-end-pool | Selecteer de back-end-pool waarvan u de aanvragen wilt overschrijven en verwerken. Hiermee worden alle vooraf geconfigureerde back-endservers weergegeven die momenteel in uw Front Door-profiel staan. 
+Back-end-pool | Selecteer de back-end-pool om de aanvragen te overschrijven en te verwerken. Hiermee worden ook al uw vooraf geconfigureerde back-end-pools weergegeven in uw Front Door-profiel. 
 Doorstuurprotocol | Match-aanvraag, HTTP, HTTPS.
-URL opnieuw genereren | Gebruik deze actie om het pad van een aanvraag die naar uw oorsprong wordt doorgestuurd, opnieuw te genereren. Als deze functie is ingeschakeld, zie hieronder voor aanvullende velden die vereist zijn
+URL opnieuw genereren | Gebruik deze actie om het pad van een aanvraag die naar uw oorsprong wordt doorgestuurd, opnieuw te genereren. Zie hieronder voor aanvullende velden die vereist zijn als deze functie is ingeschakeld
 Caching | Ingeschakeld, Uitgeschakeld. Zie hieronder voor aanvullende velden die vereist zijn als deze functie is ingeschakeld. 
 
 #### <a name="url-rewrite"></a>URL opnieuw genereren
@@ -90,7 +90,7 @@ Aangepast doorstuurpad | Geef het pad op waarnaar de aanvragen moeten worden doo
 
 #### <a name="caching"></a>Caching
 
-Gebruik deze instellingen om te bepalen hoe bestanden worden opgeslagen in de cache voor aanvragen die queryreeksen bevatten en of de inhoud moet worden opgeslagen in de cache op basis van alle parameters of geselecteerde parameters. U kunt aanvullende instellingen gebruiken om de TTL-waarde (time to live) te overschrijven om te bepalen hoe lang inhoud in de cache moet worden bewaard voor aanvragen die voldoen aan de voorwaarden voor overeenkomst. Als u het opslaan in de cache wilt afdwingen als actie, stelt u het veld Opslaan in cache in op Ingeschakeld. Als u dit doet, worden de volgende opties weergegeven: 
+Gebruik deze instellingen om te bepalen hoe bestanden in de cache worden opgeslagen voor aanvragen die queryreeksen bevatten. Hiermee wordt aangegeven of de inhoud in de cache moet worden opgeslagen op basis van alle parameters of alleen geselecteerde parameters. U kunt aanvullende instellingen gebruiken om de TTL-waarde (time to live) te overschrijven om te bepalen hoe lang inhoud in de cache moet worden bewaard. Als u het opslaan in de cache wilt afdwingen als actie, stelt u het veld Opslaan in cache in op Ingeschakeld. Wanneer u het opslaan in de cache afdwingt, worden de volgende opties weergegeven: 
 
 Cachegedrag |  Beschrijving              
 ---------------|----------------
@@ -107,6 +107,6 @@ Cacheduur | Vervaltijd van de cache in dagen, uren, minuten en seconden. Alle wa
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het instellen van uw eerste [regelengineconfiguratie](front-door-tutorial-rules-engine.md). 
+- Meer informatie over het configureren van uw eerste [regelengine](front-door-tutorial-rules-engine.md). 
 - Meer informatie over [voorwaarden voor overeenkomst](front-door-rules-engine-match-conditions.md) van de regelengine
 - Meer informatie over de [Azure Front Door-regelengine](front-door-rules-engine.md)

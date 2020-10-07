@@ -4,15 +4,15 @@ description: In deze quickstart maakt u een lab in Azure DevTest Labs met behulp
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 06/26/2020
-ms.openlocfilehash: 93bc4cf91b228de72c217c61ec03d61e87046dd3
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 2b825b4d4485f401199556b6faaef0017f583cc1
+ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653950"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91461186"
 ---
 # <a name="quickstart-set-up-a-lab-by-using-azure-devtest-labs-arm-template"></a>Quickstart: Een lab instellen met een ARM-sjabloon van Azure DevTest Labs
-In deze quickstart maakt u een lab met een VM met Windows Server 2019 Datacenter met behulp van een ARM-sjabloon (Azure Resource Manager). 
+In deze snelstart maakt u een lab met een VM met Windows Server 2019 Datacenter met behulp van een Azure Resource Manager-sjabloon (ARM). 
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -65,16 +65,16 @@ Klik op de volgende knop om de implementatie automatisch uit te voeren.
 ## <a name="validate-the-deployment"></a>De implementatie valideren
 1. Selecteer **Meldingen** boven aan de pagina om de implementatiestatus en klik op de koppeling **De implementatie wordt uitgevoerd**.
 
-    :::image type="content" source="./media/create-lab-windows-vm-template/deployment-notification.png" alt-text="Implementatiemelding":::
+    :::image type="content" source="./media/create-lab-windows-vm-template/deployment-notification.png" alt-text="Pagina Sjabloon implementeren":::
 2. Wacht op de pagina **Implementatie - Overzicht** tot de implementatie is voltooid. Deze bewerking (vooral een VM maken) duurt even. Selecteer vervolgens **Naar resourcegroep gaan** of de **naam van de resourcegroep** zoals te zien is op de volgende afbeelding: 
 
-    :::image type="content" source="./media/create-lab-windows-vm-template/navigate-resource-group.png" alt-text="Navigeren naar resourcegroep":::
+    :::image type="content" source="./media/create-lab-windows-vm-template/navigate-resource-group.png" alt-text="Pagina Sjabloon implementeren":::
 3. Op de pagina **Resourcegroep** ziet u de lijst met resources in de resourcegroep. Bevestig dat u uw lab of type ziet:`DevTest Lab` in de resources. U ziet ook de afhankelijke resources, zoals het virtuele netwerk en de virtuele machine in de resourcegroep. 
 
-    :::image type="content" source="./media/create-lab-windows-vm-template/resource-group-home-page.png" alt-text="Startpagina van de resourcegroep":::
+    :::image type="content" source="./media/create-lab-windows-vm-template/resource-group-home-page.png" alt-text="Pagina Sjabloon implementeren":::
 4. Selecteer uw lab in de lijst met resources om de startpagina voor uw lab weer te geven. Controleer of de VM met Windows Server 2019 Data Center wordt weergeven in de lijst **Mijn virtuele machines**. In de volgende afbeelding is het onderdeel **Essentials** geminimaliseerd. 
 
-    :::image type="content" source="./media/create-lab-windows-vm-template/lab-home-page.png" alt-text="Startpagina voor het lab":::
+    :::image type="content" source="./media/create-lab-windows-vm-template/lab-home-page.png" alt-text="Pagina Sjabloon implementeren":::
 
     > [!IMPORTANT] 
     > Houd deze pagina open en volg de instructies in het volgende onderdeel om resources op te schonen en zo kostenvoor de uitvoering van het lab en de VM in Azure te vermijden. Als u verder wilt gaan naar de volgende zelfstudie om de toegang tot n de VM in het lab te testen, schoon dan resources op na afloop van die zelfstudie. 
@@ -83,14 +83,14 @@ Klik op de volgende knop om de implementatie automatisch uit te voeren.
 
 1. Verwijder eerst het lab zodat u de resourcegroep kunt verwijderen. U kunt de resourcegroep niet verwijderen als deze een lab bevat. Selecteer **Verwijderen** in de taakbalk om het lab te verwijderen. 
 
-    :::image type="content" source="./media/create-lab-windows-vm-template/delete-lab-button.png" alt-text="Knop Lab verwijderen":::
+    :::image type="content" source="./media/create-lab-windows-vm-template/delete-lab-button.png" alt-text="Pagina Sjabloon implementeren":::
  2. Typ op de bevestigingspagina de **labnaam** en selecteer **Verwijderen**. 
  3. Wacht tot het lab is verwijderd. Selecteer het pictogram van een **bel** om de melding over de verwijderbewerking weer te geven. Dit proces duurt enige tijd. Bevestig het verwijderen van het lab en selecteer vervolgens de **resourcegroep** in het koppelingenmenu. 
  
-    :::image type="content" source="./media/create-lab-windows-vm-template/confirm-lab-deletion.png" alt-text="Verwijdering van VM in meldingen bevestigen":::
+    :::image type="content" source="./media/create-lab-windows-vm-template/confirm-lab-deletion.png" alt-text="Pagina Sjabloon implementeren":::
  1. Selecteer **Resourcegroep verwijderen** in de werkbalk op de pagina **Resourcegroep**. Typ op de bevestigingspagina de **naam van de resourcegroep** en selecteer **Verwijderen**. Controleer de meldingen om te bevestigen dat de resourcegroep is verwijderd.
  
-    :::image type="content" source="./media/create-lab-windows-vm-template/delete-resource-group-button.png" alt-text="Knop Resourcegroep verwijderen":::
+    :::image type="content" source="./media/create-lab-windows-vm-template/delete-resource-group-button.png" alt-text="Pagina Sjabloon implementeren":::
 
 ## <a name="next-steps"></a>Volgende stappen
 In deze quickstart hebt u een lab gemaakt met een VM. Voor meer informatie over toegang tot het lab gaat u door naar de volgende zelfstudie:

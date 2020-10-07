@@ -18,12 +18,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 5888eeea98a80eeacb97e625d199a3b1912d1943
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 51ad23e67a77c28d0ad8a147168a0094f5de1796
+ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89015132"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91577999"
 ---
 # <a name="tutorial-send-location-based-push-notifications-with-notification-hubs-and-bing-spatial-data"></a>Zelfstudie: Locatiegebaseerde pushmeldingen verzenden met Notification Hubs en ruimtelijke Bing-gegevens
 
@@ -387,7 +387,7 @@ In deze zelfstudie voert u de volgende stappen uit:
 
 10. Omdat u niet de echte coördinaten doorgeeft (die misschien niet binnen de grenzen liggen op dat moment) en omdat u vooraf gedefinieerde testwaarden gebruikt, wordt tijdens het bijwerken een melding weergegeven:
 
-    ![Schermafbeelding van een Windows-bureaublad dat het TEST-bericht weergeeft.](./media/notification-hubs-geofence/notification-hubs-test-notification.png)
+    ![Schermopname van een Windows-desktop waarop het TEST-bericht wordt weergegeven.](./media/notification-hubs-geofence/notification-hubs-test-notification.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

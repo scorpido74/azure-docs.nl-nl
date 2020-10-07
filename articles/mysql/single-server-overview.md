@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
-ms.openlocfilehash: 38cf9f5d5102fa4cc322b1a9c7134db85de87814
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: b33fab7657827733b2c5e7724666a3800686c8d9
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90943817"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91564779"
 ---
 # <a name="azure-database-for-mysql-single-server"></a>Azure Database for MySQL Single Server
 
@@ -20,7 +20,7 @@ ms.locfileid: "90943817"
 - Single Server 
 - Flexible Server (Preview)
 
-In dit artikel vindt u een overzicht en inleiding tot kernconcepten van het implementatiemodel voor één server. Zie [Flexibele server-overzicht](flexible-server/index.yml) voor meer informatie over de flexibele server-implementatiemodus
+In dit artikel vindt u een overzicht en inleiding tot kernconcepten van het implementatiemodel voor één server. Zie [Overzicht van flexibele servers](flexible-server/index.yml) voor meer informatie over de flexibele server-implementatiemodus. Zie [De juiste optie kiezen voor de MySQL-server in Azure](select-right-deployment-type.md) voor informatie over hoe u kunt bepalen welke implementatieoptie geschikt is voor uw werkbelasting.
 
 ## <a name="overview"></a>Overzicht
 

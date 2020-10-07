@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/1/2019
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 8fb9f422f2d2c4ed035b04b4abe4141bbb8ebfc7
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: 81fceb210981e5755bcdd8e241b381d161d4f637
+ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299844"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91570208"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB-API voor MongoDB
 
@@ -36,7 +36,7 @@ De belangrijkste voordelen van Cosmos DB als volledig beheerde, wereldwijd gedis
 * Behoud de overdraagbaarheid van uw toepassing zonder dat u de vrijheid verliest om van cloudleverancier te veranderen.
 * Voor de meestgebruikte NoSQL-API's krijgt u toonaangevende SLA's met een solide financiële basis, mogelijk gemaakt door Cosmos DB.
 * U kunt de ingerichte doorvoer en opslag voor uw Cosmos-databases elastisch schalen op basis van uw behoeften, en u betaalt alleen voor de doorvoer en opslag die u nodig hebt. Dit leidt tot aanzienlijke kostenbesparingen.
-* Kant-en-klare wereldwijde distributie met replicatie voor meerdere masters.
+* Kant-en-klare wereldwijde distributie met replicatie voor schrijfbewerkingen in meerdere regio's.
 
 ## <a name="cosmos-dbs-api-for-mongodb"></a>API van Cosmos DB voor MongoDB
 

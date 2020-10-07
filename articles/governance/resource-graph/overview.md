@@ -3,12 +3,12 @@ title: Overzicht van Azure Resource Graph
 description: Meer informatie over hoe u met de Azure Resource Graph-service complexe query's op schaal kunt uitvoeren op resources in abonnementen en tenants.
 ms.date: 08/13/2020
 ms.topic: overview
-ms.openlocfilehash: 73143c13fd83c8b784679ac28bd9a14f1c6a6888
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: f2de6ce52870417eab1c74333dfce2905317e73d
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798530"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531680"
 ---
 # <a name="what-is-azure-resource-graph"></a>Wat is Azure Resource Graph?
 
@@ -59,7 +59,7 @@ Voor meer informatie over bewerkingen en functies die kunnen worden gebruikt met
 
 ## <a name="permissions-in-azure-resource-graph"></a>Machtigingen in Azure Resource Graph
 
-Om Resource Graph te kunnen gebruiken, moet u over de juiste machtigingen beschikken in [Op rollen gebaseerd toegangsbeheer](../../role-based-access-control/overview.md) (RBAC), met minimaal leestoegang tot de resources die u wilt zoeken. Zonder ten minste `read`-machtigingen voor het Azure-object of de objectgroep worden er geen resultaten geretourneerd.
+Om Resource Graph te kunnen gebruiken, moet u over de juiste machtigingen beschikken in [Op rollen gebaseerd toegangsbeheer (RBAC)](../../role-based-access-control/overview.md), met op zijn minst leestoegang tot de resources die u wilt zoeken. Zonder ten minste `read`-machtigingen voor het Azure-object of de objectgroep worden er geen resultaten geretourneerd.
 
 > [!NOTE]
 > Resource Graph gebruikt de voor een principal beschikbare abonnementen tijdens de aanmelding. Als u resources van een nieuw abonnement wilt zien die tijdens een actieve sessie zijn toegevoegd, moet de principal de context vernieuwen. Deze actie wordt automatisch uitgevoerd wanneer u zich afmeldt en opnieuw aanmeldt.

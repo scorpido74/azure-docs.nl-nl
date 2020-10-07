@@ -1,17 +1,15 @@
 ---
 title: Jenkins voor een Java-app voor Service Fabric in Azure configureren
 description: Deze zelfstudie geeft u informatie over het instellen van continue integratie met Jenkins voor het implementeren van een Java Service Fabric-toepassing.
-author: suhuruli
 ms.topic: tutorial
 ms.date: 08/27/2018
-ms.author: suhuruli
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 42efc13d37ccfdaf60896f338b1a38384ef06568
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4e29104f0586a8e18afb7a640903c57ce988b692
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320711"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91531969"
 ---
 # <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>Zelfstudie: Een Jenkins-omgeving configureren om CI/CD in te schakelen voor een Java-toepassing voor Service Fabric
 
@@ -109,7 +107,7 @@ U kunt Jenkins instellen binnen of buiten een Service Fabric-cluster. De volgend
 
     U kunt ook aanvullende toepassingsgegevens opgeven. Deze worden gebruikt om de toepassing te implementeren. Bekijk de volgende schermafbeelding voor een voorbeeld van de details van de toepassing:
 
-    ![Service Fabric Jenkins Build-actie](./media/service-fabric-tutorial-java-jenkins/sfjenkins.png)
+    ![Dialoogvenster acties na compileren met aanvullende opties voor Service Fabric-projectimplementatie](./media/service-fabric-tutorial-java-jenkins/sfjenkins.png)
 
     > [!NOTE]
     > Het cluster dat u hier gebruikt, moet het cluster zijn waarin de Jenkins-containertoepassing wordt gehost als u Service Fabric gebruikt om de installatiekopie van de Jenkins-containerinstallatiekopie te implementeren.

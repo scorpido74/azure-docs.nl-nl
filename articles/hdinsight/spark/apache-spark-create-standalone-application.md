@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: contperfq1
 ms.date: 08/21/2020
-ms.openlocfilehash: cfdb02b0a5942536a608fbc957ed69d1efd97e8e
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: deda7644d29fce5deb8d6c76f93da0caf0b22ff8
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88756891"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91536916"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>Zelfstudie: Een Scala Maven-toepassing maken voor Apache Spark in HDInsight met behulp van IntelliJ
 
@@ -98,7 +98,7 @@ Voer de volgende stappen uit om de Scala-invoegtoepassing te installeren:
 
 5. Selecteer **`org.scala-tools.archetypes:scala-archetype-simple`** in de lijst met archetypen. Met dit archetype maakt u de juiste mapstructuur en worden de vereiste standaardafhankelijkheden voor het schrijven van het Scala-programma gedownload.
 
-    !['IntelliJ IDEA: Maven-project maken'](./media/apache-spark-create-standalone-application/intellij-project-create-maven.png)
+    ![Schermafbeelding met het geselecteerde Archetype in het venster New Project.](./media/apache-spark-create-standalone-application/intellij-project-create-maven.png)
 
 6. Selecteer **Next**.
 
@@ -107,7 +107,7 @@ Voer de volgende stappen uit om de Scala-invoegtoepassing te installeren:
     - **GroupId:** com.microsoft.spark.example
     - **ArtifactId:** SparkSimpleApp
 
-    !['IntelliJ IDEA: Maven-project maken'](./media/apache-spark-create-standalone-application/intellij-artifact-coordinates.png)
+    ![Schermafbeelding met de optie Artifact Coordinates in het venster New Project.](./media/apache-spark-create-standalone-application/intellij-artifact-coordinates.png)
 
 8. Selecteer **Next**.
 
