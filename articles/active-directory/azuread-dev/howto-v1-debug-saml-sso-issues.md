@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: luleon, hirsin, paulgarn
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3f1829127d1eaf65be586ddff3fb2615cae72c5d
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: fcdb0a571a9d6b81e25d061c33d8a3a812da189f
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88116135"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819318"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Foutopsporing uitvoeren in op SAML gebaseerde eenmalige aanmelding bij toepassingen in Azure Active Directory
 
@@ -86,7 +86,7 @@ Als er geen oplossing wordt aangeboden voor de aanmeldings fout, wordt u aangera
 
 U kunt zich aanmelden en vervolgens een fout zien op de pagina van de toepassing. Dit doet zich voor wanneer Azure AD een token aan de toepassing heeft uitgegeven, maar de aanvraag niet wordt geaccepteerd.
 
-Voer de volgende stappen uit om de fout op te lossen:
+Volg deze stappen om de fout op te lossen of Bekijk deze [korte video over het gebruik van Azure AD voor het oplossen van problemen met SAML SSO](https://www.youtube.com/watch?v=poQCJK0WPUk&list=PLLasX02E8BPBm1xNMRdvP6GtA6otQUqp0&index=8):
 
 1. Als de toepassing zich in de Azure AD-galerie bevindt, controleert u of u alle stappen hebt gevolgd voor het integreren van de toepassing met Azure AD. Zie de [lijst met zelf studies voor SaaS-toepassingen](../saas-apps/tutorial-list.md)voor informatie over de integratie-instructies voor uw toepassing.
 1. Het SAML-antwoord ophalen.

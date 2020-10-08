@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f32a988ec0d75ca8d8eca04e69edd7226bf283b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7aa33bb062abf748031b27df46d42e8f13aabfc3
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81432084"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819970"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Richtlijnen voor beperkingen in Azure Key Vault
 
@@ -43,7 +43,7 @@ Als u merkt dat het bovenstaande nog niet aan uw behoeften voldoet, vult u de on
 |--|--|--|--|--|--|--|--|--|
 | https://mykeyvault.vault.azure.net/ | | Sleutel | Teken | EC | P-256 | Nee | 200 | 1000 |
 
-\*Zie [Azure Key Vault-bewerkingen](/rest/api/keyvault/key-operations)voor een volledige lijst met mogelijke waarden.
+\* Zie [Azure Key Vault-bewerkingen](/rest/api/keyvault/key-operations)voor een volledige lijst met mogelijke waarden.
 
 Als aanvullende capaciteit is goedgekeurd, let dan op het volgende als resultaat van de capaciteits toename:
 1. Wijzigingen in het gegevens consistentie model. Zodra een kluis in de lijst met extra doorvoer capaciteit is toegestaan, wordt de Key Vault service gegevens consistentie garantie gewijzigd (nood zakelijk om te voldoen aan de RPS van een hoger volume omdat de onderliggende Azure Storage service niet kan worden uitgevoerd).  In een kort gezegd:
@@ -75,7 +75,7 @@ SecretClientOptions options = new SecretClientOptions()
             Mode = RetryMode.Exponential
          }
     };
-    var client = new SecretClient(new Uri(https://keyVaultName.vault.azure.net"), new DefaultAzureCredential(),options);
+    var client = new SecretClient(new Uri("https://keyVaultName.vault.azure.net"), new DefaultAzureCredential(),options);
                                  
     //Retrieve Secret
     secret = client.GetSecret(secretName);
@@ -96,7 +96,7 @@ In HTTP-fout code 429 begint het beperken van uw client met een exponentiële ui
 
 Op dit moment moet u geen HTTP 429-antwoord codes ophalen.
 
-## <a name="see-also"></a>Zie ook
+## <a name="see-also"></a>Zie tevens
 
 Zie [beperkings patroon](https://docs.microsoft.com/azure/architecture/patterns/throttling)voor een dieper richting van het beperken van de Microsoft Cloud.
 

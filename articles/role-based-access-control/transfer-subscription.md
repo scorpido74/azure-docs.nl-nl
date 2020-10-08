@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 10/06/2020
 ms.author: rolyon
-ms.openlocfilehash: e5b0eb5fc9014a4f8df0f0cc363b5dddb45674af
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: 35c6d94ce69acf59ae6cd8b26b0ad75645eb526a
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/07/2020
-ms.locfileid: "91804177"
+ms.locfileid: "91819717"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Een Azure-abonnement overdragen naar een andere Azure AD-adres lijst
 
@@ -24,7 +24,7 @@ Organisaties kunnen verschillende Azure-abonnementen hebben. Elk abonnement is g
 In dit artikel worden de basis stappen beschreven die u kunt volgen om een abonnement over te dragen naar een andere Azure AD-Directory en een aantal resources na de overdracht opnieuw te maken.
 
 > [!NOTE]
-> Voor Azure Cloud service providers (CSP)-abonnementen wordt het wijzigen van de Azure AD-Directory voor het abonnement niet ondersteund.
+> Voor Azure Cloud Solution Providers (CSP)-abonnementen wordt het wijzigen van de Azure AD-Directory voor het abonnement niet ondersteund.
 
 ## <a name="overview"></a>Overzicht
 

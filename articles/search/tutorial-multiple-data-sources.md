@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 06/20/2020
+ms.date: 10/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d3dd75d246c1f74253a9ce910e50b05402065464
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 06b80b5fe14a7a913d8ad8454c6568b04fe01c2f
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998455"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819802"
 ---
 # <a name="tutorial-index-from-multiple-data-sources-using-the-net-sdk"></a>Zelfstudie: Indexeren vanuit meerdere gegevensbronnen met behulp van de .NET-SDK
 
@@ -61,19 +61,19 @@ In dit voorbeeld worden twee kleine gegevenssets gebruikt, waarin zeven fictieve
 
 1. Selecteer **Data Explorer** en selecteer **Nieuwe database**.
 
-   ![Een nieuwe database maken](media/tutorial-multiple-data-sources/cosmos-newdb.png "Een nieuwe database maken")
+   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-newdb.png" alt-text="Een nieuwe database maken" border="false":::
 
 1. Voer de naam **hotel-rooms-db** in. Accepteer de standaardwaarden voor de overige instellingen.
 
-   ![Database configureren](media/tutorial-multiple-data-sources/cosmos-dbname.png "Database configureren")
+   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-dbname.png" alt-text="Een nieuwe database maken" border="false":::
 
 1. Een nieuwe container maken. Gebruik de bestaande database die u zojuist hebt gemaakt. Voer **hotels** in als containernaam en gebruik **/HotelId** als partitiesleutel.
 
-   ![Container toevoegen](media/tutorial-multiple-data-sources/cosmos-add-container.png "Container toevoegen")
+   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-add-container.png" alt-text="Een nieuwe database maken" border="false":::
 
 1. Selecteer **Items** onder **Hotels** en klik vervolgens op **Item uploaden** op de opdrachtbalk. Ga naar en selecteer het bestand **cosmosdb/HotelsDataSubset_CosmosDb.json** in de projectmap.
 
-   ![Uploaden naar een Azure Cosmos DB-verzameling](media/tutorial-multiple-data-sources/cosmos-upload.png "Uploaden naar een Cosmos DB-verzameling")
+   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-upload.png" alt-text="Een nieuwe database maken" border="false":::
 
 1. Gebruik de knop Vernieuwen om de weergave van de items in de verzameling hotels te vernieuwen. Er worden zeven nieuwe databasedocumenten weergegeven.
 
@@ -83,11 +83,11 @@ In dit voorbeeld worden twee kleine gegevenssets gebruikt, waarin zeven fictieve
 
 1. [Maak een blobcontainer](../storage/blobs/storage-quickstart-blobs-portal.md) met de naam **hotel-rooms** om de JSON-voorbeeldbestanden voor hotelkamers op te slaan. U kunt het niveau voor openbare toegang instellen op een van de geldige waarden.
 
-   ![Een blobcontainer maken](media/tutorial-multiple-data-sources/blob-add-container.png "Een blob-container maken")
+   :::image type="content" source="media/tutorial-multiple-data-sources/blob-add-container.png" alt-text="Een nieuwe database maken" border="false":::
 
 1. Nadat de container is gemaakt, opent u deze en selecteert u **Uploaden** op de opdrachtbalk. Navigeer naar de map met de voorbeeldbestanden. Selecteer deze allemaal en klik op **Uploaden**.
 
-   ![Bestanden uploaden](media/tutorial-multiple-data-sources/blob-upload.png "Bestanden uploaden")
+   :::image type="content" source="media/tutorial-multiple-data-sources/blob-upload.png" alt-text="Een nieuwe database maken" border="false":::
 
 Nadat de upload is voltooid, worden de bestanden weergegeven in de lijst van de gegevenscontainer.
 
@@ -105,7 +105,7 @@ Als u wilt communiceren met uw Azure Cognitive Search-service, hebt u de service
 
    Haal ook de querysleutel op. Het is een aanbevolen procedure voor het uitgeven van queryaanvragen met alleen-lezen-toegang.
 
-   ![De naam van de service en de querysleutels voor beheer ophalen](media/search-get-started-nodejs/service-name-and-keys.png)
+   :::image type="content" source="media/search-get-started-nodejs/service-name-and-keys.png" alt-text="Een nieuwe database maken" border="false":::
 
 Met een geldige sleutel stelt u per aanvraag een vertrouwensrelatie in tussen de toepassing die de aanvraag verzendt en de service die de aanvraag afhandelt.
 
@@ -115,7 +115,7 @@ Met een geldige sleutel stelt u per aanvraag een vertrouwensrelatie in tussen de
 
 1. Ga naar het tabblad **Bladeren** en zoek en installeer **Microsoft.Azure.Search** (versie 9.0.1 of hoger). U moet door een paar extra dialoogvensters klikken om de installatie te voltooien.
 
-    ![NuGet gebruiken om Azure-bibliotheken toe te voegen](./media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png" alt-text="Een nieuwe database maken" border="false":::
 
 1. Zoek naar het NuGet-pakket **Microsoft.Extensions.Configuration.Json** en installeer dit ook.
 
@@ -352,7 +352,7 @@ U kunt de gevulde zoekindex onderzoeken nadat het programma is uitgevoerd. Gebru
 
 Open in Azure Portal de pagina **Overzicht** van de zoekservice en zoek in de lijst **Indexen** de index **hotel-rooms-sample**.
 
-  ![Lijst met Azure Cognitive Search-indexen](media/tutorial-multiple-data-sources/index-list.png "Lijst met Azure Cognitive Search-indexen")
+  :::image type="content" source="media/tutorial-multiple-data-sources/index-list.png" alt-text="Een nieuwe database maken" border="false":::
 
 Klik op de index hotel-rooms-sample in de lijst. U ziet een Search Explorer-interface voor de index. Voer een query in voor een term, bijvoorbeeld luxe. Er wordt ten minste één document in de resultaten weergegeven. In dit document staat een lijst met kamerobjecten in de kamermatrix.
 

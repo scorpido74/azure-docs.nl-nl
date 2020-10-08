@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 159a14b30113a251c6ac61c4c04a2a3c4d69d3e5
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 132711b4a3fc584261cd577b4b8f1d4fb13da09d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908623"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819388"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>B2B-gebruikers in azure AD toegang verlenen tot uw on-premises toepassingen
 
@@ -41,6 +41,9 @@ Om B2B-gebruikers toegang te bieden tot on-premises toepassingen die zijn beveil
 
 - **Verificatie via Azure AD-toepassingsproxy**. B2B-gebruikers moeten zich kunnen aanmelden bij de on-premises toepassing. Hiervoor moet u de on-premises app publiceren via de Azure-AD-toepassingsproxy. Zie [aan de slag met toepassings proxy en de connector installeren](../manage-apps/application-proxy-enable.md) en [toepassingen publiceren met Azure AD-toepassingsproxy](../manage-apps/application-proxy-publish-azure-portal.md)voor meer informatie.
 - **Autorisatie via een B2B-gebruikers object in de on-premises Directory**. De toepassing moet gebruikers toegangs controles kunnen uitvoeren en toegang verlenen tot de juiste resources. IWA en KCD vereisen een gebruikers object in het on-premises Windows Server-Active Directory om deze autorisatie te volt ooien. Zoals beschreven in de werking van [eenmalige aanmelding met KCD](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#how-single-sign-on-with-kcd-works), moet dit gebruikers object door de toepassings proxy worden geïmiteerd en moet er een Kerberos-token bij de app worden ontvangen. 
+
+   > [!NOTE]
+   > Wanneer u de Azure AD-toepassingsproxy configureert, moet u ervoor zorgen dat de **gedelegeerde aanmeldings-id** is ingesteld op **User Principal name** (standaard) voor IWA eenmalige aanmelding.
 
    Voor het B2B-gebruikers scenario zijn er twee methoden beschikbaar die u kunt gebruiken om de gast gebruikers objecten te maken die vereist zijn voor autorisatie in de on-premises Directory:
 
@@ -74,7 +77,7 @@ Voor informatie over het gebruik van MIM 2016 Service Pack 1 en de MIM-beheer ag
 
 Er is een Power shell-voorbeeld script beschikbaar dat u kunt gebruiken als uitgangs punt voor het maken van de gast gebruikers objecten in uw on-premises Active Directory.
 
-U kunt het script en het Leesmij-bestand downloaden uit het [Download centrum](https://www.microsoft.com/download/details.aspx?id=51495). Kies het **script en Leesmij om Azure AD B2B-gebruikers on-prem.zipbestand te halen** .
+U kunt het script en het Leesmij-bestand downloaden uit het [Download centrum](https://www.microsoft.com/download/details.aspx?id=51495). Kies het **script en Leesmij om Azure AD B2B-gebruikers on-prem.zipbestand te halen ** .
 
 Voordat u het script gebruikt, moet u de vereisten en belang rijke overwegingen in het bijbehorende Leesmij-bestand door nemen. Bovendien moet u weten dat het script alleen beschikbaar is gemaakt als voor beeld. Uw ontwikkel team of een partner moet het script aanpassen en controleren voordat u het uitvoert.
 

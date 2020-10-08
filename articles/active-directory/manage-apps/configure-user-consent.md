@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
-ms.openlocfilehash: 877e90fa3c1c8a595c438fc6745c142e97b5692c
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: cff2af745e9b79f573aba02e0a9baefe4a5e45a3
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/07/2020
-ms.locfileid: "91803276"
+ms.locfileid: "91819264"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>Configureren hoe eindgebruikers toestemming geven voor toepassingen
 
@@ -75,7 +75,7 @@ Als u toestemming van de gebruiker wilt toestaan, kiest u welk app-machtigings b
   ```powershell
   Set-AzureADMSAuthorizationPolicy `
      -Id "authorizationPolicy" `
-     -PermissionGrantPolicyIdsAssignedToDefaultUserRole @("{consent-policy-id}")
+     -PermissionGrantPolicyIdsAssignedToDefaultUserRole @("managePermissionGrantsForSelf.{consent-policy-id}")
   ```
 
 Vervang door `{consent-policy-id}` de id van het beleid dat u wilt Toep assen. U kunt kiezen voor een [aangepast app-toestemming beleid](manage-app-consent-policies.md#create-a-custom-app-consent-policy) dat u hebt gemaakt, of u kunt kiezen uit de volgende ingebouwde beleids regels:
@@ -90,7 +90,7 @@ Als u bijvoorbeeld toestemming van de gebruiker wilt verlenen aan het ingebouwde
 ```powershell
 Set-AzureADMSAuthorizationPolicy `
    -Id "authorizationPolicy" `
-   -PermissionGrantPolicyIdsAssignedToDefaultUserRole @("microsoft-user-default-low")
+   -PermissionGrantPolicyIdsAssignedToDefaultUserRole @("managePermissionGrantsForSelf.microsoft-user-default-low")
 ```
 
 ---
@@ -146,7 +146,7 @@ U kunt de Azure AD Power shell preview-module, [AzureADPreview](https://docs.mic
 
     | Instelling       | Type         | Beschrijving  |
     | ------------- | ------------ | ------------ |
-    | _BlockUserConsentForRiskyApps_   | Boolean |  Markering die aangeeft of de gebruikers toestemming wordt geblokkeerd wanneer een Risk ante aanvraag wordt gedetecteerd. |
+    | _BlockUserConsentForRiskyApps_   | Booleaans |  Markering die aangeeft of de gebruikers toestemming wordt geblokkeerd wanneer een Risk ante aanvraag wordt gedetecteerd. |
 
 1. Waarde voor de update-instellingen voor de gewenste configuratie:
 

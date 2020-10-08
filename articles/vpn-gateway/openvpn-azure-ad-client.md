@@ -5,24 +5,20 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/03/2020
-ms.author: alzam
-ms.openlocfilehash: 279c66fa16ac82335a074da60bce35325d4b4499
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.date: 10/07/2020
+ms.author: cherylmc
+ms.openlocfilehash: 51004005e10416f3138f69f91b93b9cd19ed3944
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91439474"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819764"
 ---
 # <a name="azure-active-directory-authentication-configure-a-vpn-client-for-p2s-openvpn-protocol-connections"></a>Azure Active Directory verificatie: een VPN-client configureren voor P2S OpenVPN-protocol verbindingen
 
 Dit artikel helpt u bij het configureren van een VPN-client om verbinding te maken met een virtueel netwerk met behulp van punt-naar-site-VPN en Azure Active Directory-verificatie. Voordat u verbinding kunt maken met en verifiëren met Azure AD, moet u eerst uw Azure AD-Tenant configureren. Zie [een Azure AD-Tenant configureren](openvpn-azure-ad-tenant.md)voor meer informatie.
 
-> [!NOTE]
-> Azure AD-verificatie wordt alleen ondersteund voor OpenVPN®-protocol verbindingen.
->
-> Voor Azure AD-verificatie is de Azure VPN-client vereist, die alleen beschikbaar is voor Windows 10.
->
+[!INCLUDE [Windows 10 and OpenVPN note](../../includes/vpn-gateway-openvpn-auth-include.md)]
 
 ## <a name="working-with-client-profiles"></a><a name="profile"></a>Werken met client profielen
 
@@ -194,7 +190,7 @@ U kunt het gedownloade XML-profiel bestand wijzigen ** \<dnsservers> \<dnsserver
 ```
 
 > [!NOTE]
-> De OpenVPN Azure AD-client maakt gebruik van NRPT-vermeldingen (DNS Name Resolution Policy Table), wat betekent dat de DNS-servers niet worden vermeld onder de uitvoer van `ipconfig /all` . Raadpleeg [Get-DnsClientNrptPolicy](https://docs.microsoft.com/powershell/module/dnsclient/get-dnsclientnrptpolicy?view=win10-ps) in Power shell om uw DNS-instellingen in gebruik te bevestigen.
+> De OpenVPN Azure AD-client maakt gebruik van NRPT-vermeldingen (DNS Name Resolution Policy Table), wat betekent dat de DNS-servers niet worden vermeld onder de uitvoer van `ipconfig /all` . Raadpleeg [Get-DnsClientNrptPolicy](https://docs.microsoft.com/powershell/module/dnsclient/get-dnsclientnrptpolicy?view=win10-ps&preserve-view=true) in Power shell om uw DNS-instellingen in gebruik te bevestigen.
 >
 
 ### <a name="how-do-i-add-custom-routes-to-the-vpn-client"></a>Hoe kan ik aangepaste routes toevoegen aan de VPN-client?
@@ -235,7 +231,7 @@ U kunt het gedownloade XML-profiel bestand wijzigen ** \<excluderoutes> \<route>
 
 ### <a name="can-i-import-the-profile-from-a-command-line-prompt"></a>Kan ik het profiel vanuit een opdracht regel prompt importeren?
 
-U kunt het profiel vanuit een opdracht regel prompt importeren door het gedownloade **azurevpnconfig.xml** -bestand in de map **%userprofile%\appdata\local\packages\microsoft. AzureVpn_8wekyb3d8bbwe \localstate** te plaatsen en de volgende opdracht uit te voeren:
+U kunt het profiel vanuit een opdracht regel prompt importeren door het gedownloade **azurevpnconfig.xml** -bestand in de map **%userprofile%\appdata\local\packages\ Microsoft.AzureVpn_8wekyb3d8bbwe \localstate** te plaatsen en de volgende opdracht uit te voeren:
 
 ```
 azurevpn -i azurevpnconfig.xml 

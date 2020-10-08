@@ -7,16 +7,16 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 8/26/2020
 ms.author: matjazl
-ms.openlocfilehash: ee7ba96a7cc8789e1a949db80bc84c63b28f4518
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 433d3391e7b2b99d72ea71f1b4d48c3e04a46afc
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91531663"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819976"
 ---
 # <a name="how-to-export-fhir-data"></a>FHIR-gegevens exporteren
 
-Met de functie voor bulk export kunnen gegevens uit de FHIR-server worden geëxporteerd volgens de] FHIR-specificatie] ( https://hl7.org/fhir/uv/bulkdata/export/index.html) . 
+Met de functie voor bulk export kunnen gegevens uit de FHIR-server worden geëxporteerd volgens de [FHIR-specificatie](https://hl7.org/fhir/uv/bulkdata/export/index.html). 
 
 Voordat u $export gebruikt, moet u ervoor zorgen dat de Azure-API voor FHIR is geconfigureerd om deze te gebruiken. Raadpleeg [de pagina export gegevens configureren](configure-export-data.md)voor meer informatie over het configureren van export instellingen en het maken van een Azure Storage-account.
 
@@ -24,7 +24,7 @@ Voordat u $export gebruikt, moet u ervoor zorgen dat de Azure-API voor FHIR is g
 
 Na het configureren van de Azure-API voor FHIR voor het exporteren, kunt u de $export opdracht gebruiken om de gegevens uit de service te exporteren. De gegevens worden opgeslagen in het opslag account dat u hebt opgegeven tijdens het configureren van de export. Lees voor meer informatie over het aanroepen van $export-opdracht in FHIR-Server documentatie over de [$export-specificatie](https://hl7.org/Fhir/uv/bulkdata/export/index.html). 
 
-De $export opdracht in azure API for FHIR neemt een optionele _ \_ container_ parameter op die de container specificeert in het geconfigureerde opslag account waarin de gegevens moeten worden geëxporteerd. Als er een container is opgegeven, worden de gegevens naar die container geëxporteerd in een nieuwe map met de naam. Als er geen container is opgegeven, worden de gegevens geëxporteerd naar een nieuwe container met de naam
+De $export opdracht in azure API for FHIR neemt een optionele _ \_ container_ parameter op die de container specificeert in het geconfigureerde opslag account waarin de gegevens moeten worden geëxporteerd. Als er een container is opgegeven, worden de gegevens naar die container geëxporteerd in een nieuwe map met de naam van de container. Als er geen container is opgegeven, worden de gegevens geëxporteerd naar een nieuwe container.
 
 `https://<<FHIR service base URL>>/$export?_container=<<container_name>>`
 

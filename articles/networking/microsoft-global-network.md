@@ -13,26 +13,26 @@ ms.workload: infrastructure-services
 ms.date: 06/13/2019
 ms.author: kumud
 ms.reviewer: ypitsch
-ms.openlocfilehash: 00199f81e2dc8ca699fabf312955bf7a8a2b5cbd
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 05e966d3f4631e3c344bd97c0faec99cc3c6dd66
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91398386"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819898"
 ---
 # <a name="microsoft-global-network"></a>Wereldwijd Microsoft-netwerk
 
-Micro soft is eigenaar van een van de grootste backbone-netwerken ter wereld. Deze wereld wijde en geavanceerde architectuur, die meer dan 160.000 mijlen beslaat, maakt verbinding met onze data centers en klanten. 
+Micro soft is eigenaar van een van de grootste backbone-netwerken ter wereld. Deze wereld wijde en geavanceerde architectuur, die meer dan 165.000 mijlen beslaat, maakt verbinding met onze data centers en klanten. 
  
 Elke dag kunnen klanten over de hele wereld verbinding maken en miljarden aanvragen door geven aan Microsoft Azure, Bing, Dynamics 365, Microsoft 365, XBox en vele andere. Klanten verwachten een onmiddellijke betrouw baarheid en reactie tijd van onze services, ongeacht het type. 
  
-Het [micro soft Global Network](https://azure.microsoft.com/global-infrastructure/global-network/) (WAN) is een centraal onderdeel van het leveren van een fantastische Cloud ervaring. Het koppelen van onze micro soft- [Data Centers](https://azure.microsoft.com/global-infrastructure/) over 54 Azure-regio's en grote mazen van Edge-knoop punten die wereld wijd worden geplaatst, biedt ons mondiale netwerk de beschik baarheid, de capaciteit en de flexibiliteit om te voldoen aan de vraag.
+Het [micro soft Global Network](https://azure.microsoft.com/global-infrastructure/global-network/) (WAN) is een centraal onderdeel van het leveren van een fantastische Cloud ervaring. Het koppelen van onze micro soft- [Data Centers](https://azure.microsoft.com/global-infrastructure/) over 61 Azure-regio's en grote mazen van Edge-knoop punten die wereld wijd worden geplaatst, biedt ons mondiale netwerk de beschik baarheid, de capaciteit en de flexibiliteit om te voldoen aan de vraag.
 
 ![Wereldwijd Microsoft-netwerk](./media/microsoft-global-network/microsoft-global-wan.png)
  
 ## <a name="get-the-premium-cloud-network"></a>Het Premium-Cloud netwerk ophalen
  
-Het is eenvoudig om te kiezen voor de [beste ervaring](https://www.sdxcentral.com/articles/news/azure-tops-aws-gcp-in-cloud-performance-says-thousandeyes/2018/11/) bij het gebruik van micro soft Cloud. Vanaf het moment dat het klant verkeer ons wereld wijde netwerk binnenkomt via onze strategisch geplaatste Edge-knoop punten, worden uw gegevens in de buurt van de snelheid van het licht overgebracht via geoptimaliseerde routes. Dit zorgt voor optimale latentie voor de beste prestaties. Deze Edge-nodes, alle onderling verbonden met meer dan 3500 unieke Internet partners (peers) via duizenden verbindingen op meer dan 165 locaties, bieden de basis van onze Interconnect-strategie. 
+Het is eenvoudig om te kiezen voor de [beste ervaring](https://www.sdxcentral.com/articles/news/azure-tops-aws-gcp-in-cloud-performance-says-thousandeyes/2018/11/) bij het gebruik van micro soft Cloud. Vanaf het moment dat het klant verkeer ons wereld wijde netwerk binnenkomt via onze strategisch geplaatste Edge-knoop punten, worden uw gegevens in de buurt van de snelheid van het licht overgebracht via geoptimaliseerde routes. Dit zorgt voor optimale latentie voor de beste prestaties. Deze Edge-nodes, alle onderling verbonden met meer dan 4000 unieke Internet partners (peers) via duizenden verbindingen op meer dan 175 locaties, bieden de basis van onze Interconnect-strategie. 
  
 Ongeacht of u verbinding maakt tussen Londen en Tokyo of van Washington DC naar Los Angeles, worden netwerk prestaties gekwantificeerd en beïnvloed door zaken als latentie, jitter, pakket verlies en door voer.  Bij micro soft gebruiken we uw voor keur voor directe interconnecties in tegens telling tot Transit-koppelingen, waardoor het antwoord verkeer wordt beperkt en de hops, peering partijen en paden zo kort en eenvoudig mogelijk zijn. 
 

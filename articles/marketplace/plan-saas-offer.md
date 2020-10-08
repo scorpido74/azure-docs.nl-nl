@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
-ms.openlocfilehash: 1d75e0d9f57aee495524e2d35231dd3c78cedea1
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 8dfc1eb35572a6b706deb47335357417bd837825
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91708115"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819929"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>Een SaaS-aanbieding plannen voor de commerciële Marketplace
 
@@ -158,11 +158,11 @@ Om uw aanbieding gemakkelijker te maken, moet u enkele van deze items vooraf voo
     Dit tekstvak bevat besturings elementen voor de RTF-editor die u kunt gebruiken om uw beschrijving effectiever te maken. U kunt ook HTML-tags gebruiken om uw beschrijving op te maken. U kunt tot 3.000 tekens tekst in dit vak invoeren, inclusief HTML-opmaak codes. Zie [een fantastische app-beschrijving schrijven](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description)voor aanvullende tips.
 
 - **Aan**de slag-instructies: als u ervoor kiest om uw aanbieding te verkopen via micro soft (voor de transactable-aanbieding), is dit veld verplicht. Dit zijn instructies om klanten te helpen bij het maken van verbinding met uw SaaS-aanbieding. U kunt Maxi maal 3.000 tekens tekst en koppelingen naar meer gedetailleerde online documentatie toevoegen.
-- **Zoek woorden** (optioneel): Geef Maxi maal drie Zoek trefwoorden op die klanten kunnen gebruiken om uw aanbieding te vinden in Marketplace ('s). U hoeft de **naam** en **Beschrijving**van de aanbieding niet op te nemen: de tekst wordt automatisch opgenomen in de zoek opdracht.
+- **Zoek woorden** (optioneel): Geef Maxi maal drie Zoek trefwoorden op die klanten kunnen gebruiken om uw aanbieding in de online winkels te vinden. U hoeft de **naam** en **Beschrijving**van de aanbieding niet op te nemen: de tekst wordt automatisch opgenomen in de zoek opdracht.
 - **Koppeling Privacybeleid**: de URL voor het privacybeleid van uw bedrijf. U moet een geldig privacybeleid opgeven en zijn verantwoordelijk om ervoor te zorgen dat uw app voldoet aan de wetten en voor schriften van de privacy.
 - **Contact gegevens**: u moet de volgende contact personen in uw organisatie aanwijzen:
   - **Contact opnemen met ondersteuning**: Geef de naam, het telefoon nummer en het e-mail adres op voor micro soft-partners die u kunt gebruiken wanneer uw klanten tickets openen. U moet ook de URL voor uw ondersteunings website toevoegen.
-  - **Technische contact persoon**: Geef de naam, het telefoon nummer en het e-mail adres op die door micro soft rechtstreeks kunnen worden gebruikt wanneer er problemen zijn met uw aanbieding. Deze contact gegevens worden niet vermeld in de Marketplace.
+  - **Technische contact persoon**: Geef de naam, het telefoon nummer en het e-mail adres op die door micro soft rechtstreeks kunnen worden gebruikt wanneer er problemen zijn met uw aanbieding. Deze contact gegevens worden niet vermeld in de commerciële Marketplace.
   - **CSP-programma contact persoon** (optioneel): Geef de naam, het telefoon nummer en het e-mail adres op als u zich aanmeldt bij het CSP-programma, zodat deze partners contact met u kunnen opnemen om vragen te beantwoorden. U kunt ook een URL naar uw marketing materiaal toevoegen.
 - **Nuttige koppelingen** (optioneel): u kunt koppelingen naar verschillende resources opgeven voor gebruikers van uw aanbieding. Bijvoorbeeld forums, veelgestelde vragen en opmerkingen bij de release.
 - **Ondersteunende documenten**: u kunt Maxi maal drie klant gerichte documenten opgeven, zoals witboeken, brochures, controle lijsten of Power Point-presentaties.
@@ -174,9 +174,9 @@ Om uw aanbieding gemakkelijker te maken, moet u enkele van deze items vooraf voo
 
   Deze logo's worden op verschillende plaatsen in de online winkels gebruikt:
 
-  -  Het kleine logo wordt weer gegeven in de zoek resultaten voor Azure Marketplace en op de pagina Microsoft AppSource hoofd pagina en zoek resultaten.
-  -  Het logo gemiddeld wordt weer gegeven wanneer u een nieuwe resource maakt in Microsoft Azure.
-  -  Het grote logo wordt weer gegeven op de aanbiedings pagina van uw aanbieding in azure Marketplace en Microsoft AppSource.
+  - Het kleine logo wordt weer gegeven in de zoek resultaten voor Azure Marketplace en op de pagina Microsoft AppSource hoofd pagina en zoek resultaten.
+  - Het logo gemiddeld wordt weer gegeven wanneer u een nieuwe resource maakt in Microsoft Azure.
+  - Het grote logo wordt weer gegeven op de aanbiedings pagina van uw aanbieding in azure Marketplace en Microsoft AppSource.
 
 - **Media-scherm afbeeldingen**: u moet ten minste één en Maxi maal vijf scherm opnamen toevoegen met de volgende vereisten, die laten zien hoe uw aanbieding werkt:
   - 1280 x 720 pixels
