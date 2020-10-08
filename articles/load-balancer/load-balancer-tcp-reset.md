@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/09/2019
+ms.date: 10/07/2020
 ms.author: allensu
-ms.openlocfilehash: f77dd21a2c017ee41f955fdf5e0848df190dec2a
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 060048bf786f424d5df6eb8fb4813877acb0fea0
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91651272"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823208"
 ---
 # <a name="load-balancer-tcp-reset-and-idle-timeout"></a>Load Balancer TCP Reset en time-out voor inactiviteit
 
@@ -40,7 +40,11 @@ Bekijk zorgvuldig het volledige end-to-end-scenario om te bepalen of u voor dele
 
 ## <a name="configurable-tcp-idle-timeout"></a>Configureerbare time-out voor TCP-inactiviteit
 
-Azure Load Balancer een time-out voor inactiviteit heeft van 4 minuten tot 120 minuten. Standaard is deze ingesteld op 4 minuten. Als een periode van inactiviteit langer is dan de time-outwaarde, is er geen garantie dat de TCP-of HTTP-sessie tussen de client en de Cloud service wordt bewaard.
+Azure Load Balancer heeft het volgende time-outbereik voor inactiviteit:
+-  4 minuten tot 100 minuten voor uitgaande regels
+-  4 minuten tot 30 minuten voor Load Balancer regels en binnenkomende NAT-regels
+
+Standaard is deze ingesteld op 4 minuten. Als een periode van inactiviteit langer is dan de time-outwaarde, is er geen garantie dat de TCP-of HTTP-sessie tussen de client en de Cloud service wordt bewaard.
 
 Wanneer de verbinding wordt gesloten, kan uw client toepassing het volgende fout bericht ontvangen: ' de onderliggende verbinding is gesloten: er is een verbinding die naar verwachting wordt gehouden door de server verbroken. '
 

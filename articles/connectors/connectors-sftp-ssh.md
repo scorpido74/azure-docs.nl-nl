@@ -8,12 +8,12 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 10/02/2020
 tags: connectors
-ms.openlocfilehash: b832edca79cbbff39b7d526a21b1fbe95bd7a2ad
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: cb851734dc8f71347168e7ac16ac0752845dda7b
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761121"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823624"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>SFTP-bestanden bewaken, maken en beheren met behulp van SSH en Azure Logic Apps
 
@@ -259,7 +259,7 @@ Deze fout kan optreden wanneer de logische app geen verbinding kan maken met de 
 
 1. De time-out van de verbinding is 20 seconden. Zorg ervoor dat de SFTP-server goede prestaties heeft en dat de intermidiate-apparaten, zoals firewall, niet veel overhead toevoegen. 
 
-2. Als er een firewall is betrokken, controleert u of de IP-adressen van de **beheerde connector** white list zijn. U kunt deze IP-adressen voor de regio van de logische app vinden [**hier**] (https://docs.microsoft.com/azure/logic-apps/logic-apps-limits-and-config#multi-tenant-azure---outbound-ip-addresses)
+2. Als er een firewall is betrokken, moet u ervoor zorgen dat de IP-adressen van de **beheerde connector** worden toegevoegd aan de lijst goedgekeurd. U kunt deze IP-adressen voor de regio van de logische app vinden [**hier**] (https://docs.microsoft.com/azure/logic-apps/logic-apps-limits-and-config#multi-tenant-azure---outbound-ip-addresses)
 
 3. Als dit een onregelmatig probleem is, moet u de instelling voor opnieuw proberen testen om te zien of een hoger aantal nieuwe pogingen dan de standaard 4 mogelijk zou zijn.
 
@@ -279,4 +279,3 @@ Voor meer technische informatie over deze connector, zoals triggers, acties en l
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over andere [Logic apps-connectors](../connectors/apis-list.md)
-

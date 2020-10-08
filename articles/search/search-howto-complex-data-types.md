@@ -8,13 +8,13 @@ ms.author: brjohnst
 tags: complex data types; compound data types; aggregate data types
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/12/2020
-ms.openlocfilehash: 5b430d5a8f0c2702617b7f6b3935e1b169753552
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.date: 10/07/2020
+ms.openlocfilehash: ee1c0957761fc1c8b9ca80477defae8cef044827
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91530851"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91824469"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>Complexe gegevens typen model leren in azure Cognitive Search
 
@@ -35,11 +35,13 @@ Om aan de slag te gaan, raden we de [gegevensverzameling Hotels](https://github.
 
 Het volgende JSON-document bestaat uit eenvoudige velden en complexe velden. Complexe velden, zoals `Address` en `Rooms` , hebben subvelden. `Address` heeft één set waarden voor die subvelden, omdat het een enkel object in het document is. Daarentegen `Rooms` heeft meerdere waarden sets voor de subvelden, één voor elk object in de verzameling.
 
+
 ```json
 {
   "HotelId": "1",
   "HotelName": "Secret Point Motel",
   "Description": "Ideally located on the main commercial artery of the city in the heart of New York.",
+  "Tags": ["Free wifi", "on-site parking", "indoor pool", "continental breakfast"]
   "Address": {
     "StreetAddress": "677 5th Ave",
     "City": "New York",
@@ -48,17 +50,26 @@ Het volgende JSON-document bestaat uit eenvoudige velden en complexe velden. Com
   "Rooms": [
     {
       "Description": "Budget Room, 1 Queen Bed (Cityside)",
-      "Type": "Budget Room",
-      "BaseRate": 96.99
+      "RoomNumber": 1105,
+      "BaseRate": 96.99,
     },
     {
       "Description": "Deluxe Room, 2 Double Beds (City View)",
       "Type": "Deluxe Room",
-      "BaseRate": 150.99
-    },
+      "BaseRate": 150.99,
+    }
+    . . .
   ]
 }
 ```
+
+<een name = "indexering-complex type></a>
+
+## <a name="indexing-complex-types"></a>Complexe typen indexeren
+
+Tijdens het indexeren kunt u Maxi maal 3000 elementen in alle complexe verzamelingen binnen één document hebben. Een element van een complexe verzameling is een lid van die verzameling. in het geval van kamers (de enige complexe verzameling in het voor beeld van een hotel) is elke kamer een element. In het bovenstaande voor beeld: als het ' geheime punt Motel ' had 500 kamers had, zou het Hotel document 500 room-elementen zouden hebben. Voor geneste complexe verzamelingen wordt naast het element Outer (Parent) ook elk genest element geteld.
+
+Deze limiet geldt alleen voor complexe verzamelingen en niet complexe typen (zoals adres) of teken reeks verzamelingen (zoals Tags).
 
 ## <a name="creating-complex-fields"></a>Complexe velden maken
 
@@ -93,7 +104,7 @@ In het volgende voor beeld ziet u een JSON-index schema met eenvoudige velden, v
 
 ## <a name="updating-complex-fields"></a>Complexe velden bijwerken
 
-Alle regels voor opnieuw [indexeren](search-howto-reindex.md) die van toepassing zijn op velden in het algemeen blijven van toepassing op complexe velden. Als u hier enkele van de hoofd regels opnieuw opgeeft, hoeft u voor het toevoegen van een veld geen index opnieuw samen te stellen, maar de meeste wijzigingen doen wel.
+Alle regels voor opnieuw [indexeren](search-howto-reindex.md) die van toepassing zijn op velden in het algemeen blijven van toepassing op complexe velden. Als u hier enkele van de hoofd regels opnieuw opgeeft en u een veld aan een complex type toevoegt, hoeft u geen index opnieuw samen te stellen, maar de meeste wijzigingen doen wel.
 
 ### <a name="structural-updates-to-the-definition"></a>Structurele updates voor de definitie
 

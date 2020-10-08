@@ -5,12 +5,12 @@ author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
 ms.date: 05/24/2020
-ms.openlocfilehash: bbd3cb88b017209adff58a646e274caf31ab425f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: c297a189f3b13ca8e72daf4eef009bc28fac32bf
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87486439"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823200"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>Problemen met live video Analytics op IoT Edge oplossen
 
@@ -308,7 +308,7 @@ Ga als volgt te werk om de module live video-analyse op IoT Edge te configureren
     `/var/local/mediaservices/logs:/var/lib/azuremediaservices/logs`
 
     > [!NOTE] 
-    > Met deze opdracht worden de logboeken-mappen tussen het rand apparaat en de container gebonden. Als u de logboeken op een andere locatie wilt verzamelen, gebruikt u de volgende opdracht, waarbij u **$LOG _LOCATION_ON_EDGE_DEVICE** vervangt door de locatie die u wilt gebruiken:`/var/$LOG_LOCATION_ON_EDGE_DEVICE:/var/lib/azuremediaservices/logs`
+    > Met deze opdracht worden de logboeken-mappen tussen het rand apparaat en de container gebonden. Als u de logboeken op een andere locatie wilt verzamelen, gebruikt u de volgende opdracht, waarbij u **$LOG _LOCATION_ON_EDGE_DEVICE** vervangt door de locatie die u wilt gebruiken: `/var/$LOG_LOCATION_ON_EDGE_DEVICE:/var/lib/azuremediaservices/logs`
 
 1. Selecteer **Update**.
 1. Selecteer **Controleren + maken**. Een geslaagd validatie bericht wordt geplaatst onder een groene banner.
@@ -321,9 +321,11 @@ Ga als volgt te werk om de module live video-analyse op IoT Edge te configureren
     `"DebugLogsDirectory": "/var/lib/azuremediaservices/logs"`
 
     > [!NOTE] 
-    > Met deze opdracht worden de logboeken-mappen tussen het rand apparaat en de container gebonden. Als u de logboeken op een andere locatie wilt verzamelen, gebruikt u de volgende opdracht, waarbij u **$DEBUG _LOG_LOCATION_ON_EDGE_DEVICE** vervangt door de locatie die u wilt gebruiken:  
-    > `"DebugLogsDirectory": "/var/$DEBUG_LOG_LOCATION_ON_EDGE_DEVICE"`  
-
+    > Met deze opdracht worden de logboeken-mappen tussen het rand apparaat en de container gebonden. Als u de logboeken op een andere locatie op het apparaat wilt verzamelen:
+    > 1. Maak een binding voor de locatie van het logboek voor fout opsporing in het gedeelte **bindingen** en vervang de **$DEBUG _LOG_LOCATION_ON_EDGE_DEVICE** en **$debug _LOG_LOCATION** door de gewenste locatie: `/var/$DEBUG_LOG_LOCATION_ON_EDGE_DEVICE:/var/$DEBUG_LOG_LOCATION`
+    > 2. Gebruik de volgende opdracht om **$DEBUG _LOG_LOCATION** te vervangen door de locatie die in de vorige stap wordt gebruikt:  
+    > `"DebugLogsDirectory": "/var/$DEBUG_LOG_LOCATION"`  
+    
     d. Selecteer **Opslaan**.
 
 1. Reproduceer het probleem.

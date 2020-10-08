@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: d398cfe063dbbb2bc87a3debf1669afa6a16b43e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: aee5cb077604e5fc95647eca0e6570ea3582a785
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90891986"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91822997"
 ---
 # <a name="power-bi-output-from-azure-stream-analytics"></a>Power BI uitvoer van Azure Stream Analytics
 
@@ -24,7 +24,7 @@ Power BI uitvoer van Stream Analytics is momenteel niet beschikbaar in de regio'
 
 De volgende tabel geeft een lijst van eigenschaps namen en de bijbehorende beschrijvingen om uw Power BI-uitvoer te configureren.
 
-| Naam van eigenschap | Description |
+| Naam van eigenschap | Beschrijving |
 | --- | --- |
 | Uitvoeralias |Geef een beschrijvende naam op die wordt gebruikt in query's om de uitvoer van de query naar deze Power BI uitvoer te sturen. |
 | Groeps werkruimte |Als u het delen van gegevens met andere Power BI gebruikers wilt inschakelen, kunt u groepen in uw Power BI account selecteren of **mijn werk ruimte** kiezen als u niet naar een groep wilt schrijven. Als u een bestaande groep wilt bijwerken, moet u de Power BI-verificatie vernieuwen. |
@@ -43,6 +43,9 @@ Raadpleeg de zelf studie [Azure stream Analytics en Power bi](stream-analytics-p
 Azure Stream Analytics maakt een Power BI gegevensset en tabel schema voor de gebruiker als deze nog niet bestaan. In alle andere gevallen wordt de tabel bijgewerkt met nieuwe waarden. Op dit moment kan slechts één tabel bestaan in een gegevensset. 
 
 Power BI gebruikt het FIFO-Bewaar beleid (First-in, first-out). Gegevens worden verzameld in een tabel totdat er 200.000 rijen zijn gevonden.
+
+> [!NOTE]
+> Het is niet raadzaam om meerdere uitvoer bewerkingen te gebruiken om naar dezelfde gegevensset te schrijven, omdat deze verschillende problemen kan veroorzaken. Elke uitvoer probeert de Power BI dataset onafhankelijk te maken, wat kan leiden tot meerdere gegevens sets met dezelfde naam. Als de uitvoer geen consistente schema's heeft, wijzigt de gegevensset het schema bij elke schrijf bewerking, wat leidt tot te veel schema wijzigings aanvragen. Zelfs als deze problemen worden vermeden, is het mogelijk dat meerdere uitvoer minder worden uitgevoerd dan één samengevoegde uitvoer.
 
 ### <a name="convert-a-data-type-from-stream-analytics-to-power-bi"></a>Converteer een gegevens type van Stream Analytics naar Power BI
 

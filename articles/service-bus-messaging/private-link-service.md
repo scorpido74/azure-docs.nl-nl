@@ -3,14 +3,14 @@ title: Azure Service Bus integreren met Azure Private Link service
 description: Meer informatie over het integreren van Azure Service Bus met Azure Private Link service
 author: spelluru
 ms.author: spelluru
-ms.date: 06/23/2020
+ms.date: 10/07/2020
 ms.topic: article
-ms.openlocfilehash: 4f3b67794d1a7f3935c79c70f18b8bd4a1e0d7ef
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 54649c47a896937a512a6041e485abfb03ca88dd
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716619"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91824968"
 ---
 # <a name="allow-access-to-azure-service-bus-namespaces-via-private-endpoints"></a>Toegang tot Azure Service Bus naam ruimten toestaan via persoonlijke eind punten
 
@@ -189,7 +189,7 @@ Er zijn vier inrichtingsstatussen:
  
 ###  <a name="approve-reject-or-remove-a-private-endpoint-connection"></a>Een verbinding met een privé-eind punt goed keuren, afwijzen of verwijderen
 
-1. Meld u aan bij de Azure-portal.
+1. Meld u aan bij Azure Portal.
 1. Typ **Service Bus**in de zoek balk.
 1. Selecteer de **naam ruimte** die u wilt beheren.
 1. Selecteer het tabblad **netwerken** .
