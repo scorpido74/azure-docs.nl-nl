@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.author: jeedes
-ms.openlocfilehash: a8d34d60cfb4037192abcc20649b478e9f58a6bb
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 7d2dc1d5d02f1a371d6d94f9eeddf395d49126d7
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90992184"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91620134"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-oracle-peoplesoft---protected-by-f5-big-ip-apm"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met Oracle PeopleSoft - Protected by F5 BIG-IP APM
 
@@ -44,7 +44,7 @@ U hebt het volgende nodig om aan de slag te gaan:
         * Een F5 IP Intelligence-abonnement voor het detecteren en blokkeren van bekende aanvallers en schadelijk verkeer 
         * Een netwerk-HSM (Hardware Security module) voor het beveiligen en beheren van digitale sleutels voor sterke verificatie
 1. Het F5 BIG-IP-systeem is ingericht met APM-modules (LTM is optioneel) 
-1. Hoewel dit optioneel is, is het raadzaam om de F5-systemen te implementeren in een [synchronisatie/failover-apparaatgroep](https://techdocs.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/big-ip-device-service-clustering-administration-14-1-0.html) (S/F DG), die het actieve stand-by-paar omvat, met een zwevend IP-adres voor hoge beschikbaarheid. U kunt verdere interfaceredundantie bereiken met behulp van het Link Aggregation Control Protocol (LACP). LACP beheert de verbonden fysieke interfaces als één 
+1. Hoewel dit optioneel is, is het raadzaam om de F5-systemen te implementeren in een [synchronisatie/failover-apparaatgroep](https://techdocs.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/big-ip-device-service-clustering-administration-14-1-0.html) (S/F DG), die het actieve stand-by-paar omvat, met een zwevend IP-adres voor hoge beschikbaarheid. U kunt verdere interfaceredundantie bereiken met behulp van het Link Aggregation Control Protocol (LACP). LACP beheert de verbonden fysieke interfaces als één virtuele interface (statistische groep) en detecteert interfacefouten binnen de groep.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 

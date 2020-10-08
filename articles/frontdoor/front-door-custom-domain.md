@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: duau
-ms.openlocfilehash: ebc0ee2e029e1f349972e3cd7fada46495534d54
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a161bc14e8f7628e04673700ca6d90ebc3e8f648
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91252388"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91729165"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-front-door"></a>Zelfstudie: Een aangepast domein aan uw Front Door toevoegen
 In deze zelfstudie ziet u hoe u een aangepast domein aan uw Front Door kunt toevoegen. Als u Azure Front Door gebruikt voor het leveren van toepassingen, is een aangepast domein nodig als u wilt dat uw eigen domeinnaam zichtbaar is in de aanvraag van uw eindgebruiker. Een zichtbare domeinnaam kan handig zijn voor uw klanten en nuttig zijn voor branding-doelen.
@@ -209,4 +209,4 @@ In deze zelfstudie heeft u het volgende geleerd:
 Ga door met de volgende zelfstudie als u wilt leren hoe u HTTPS kunt inschakelen voor uw aangepaste domein.
 
 > [!div class="nextstepaction"]
-> [HTTPS inschakelen voor een aangepast domein](front-door-custom-domain.md)
+> [HTTPS inschakelen voor een aangepast domein](front-door-custom-domain-https.md)

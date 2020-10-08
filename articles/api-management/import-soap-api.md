@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: 3ceaa357150fe0c4d26eeedc6821761d2eb00106
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 58f2a102349baff0b70e2a0c9f72c8a4e0e44046
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91357961"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91626816"
 ---
 # <a name="import-soap-api"></a>SOAP API importeren
 
@@ -58,7 +58,7 @@ Voltooi de volgende quickstart: [Een Azure API Management-exemplaar maken](get-s
 
     * **Starter**
     * **Onbeperkt**   
-8. Voer andere API-instellingen in. U kunt de waarden instellen tijdens het maken of later configureren door naar het tabblad **Instellingen** te gaan. De instellingen worden beschreven in de zelfstudie [Uw eerste API importeren en publiceren](import-and-publish.md#-import-and-publish-a-backend-api).
+8. Voer andere API-instellingen in. U kunt de waarden instellen tijdens het maken of later configureren door naar het tabblad **Instellingen** te gaan. De instellingen worden beschreven in de zelfstudie [Uw eerste API importeren en publiceren](import-and-publish.md#import-and-publish-a-backend-api).
 9. Selecteer **Maken**.
 
 ### <a name="test-the-new-api-in-the-administrative-portal"></a>De nieuwe API testen in de administratieve portal

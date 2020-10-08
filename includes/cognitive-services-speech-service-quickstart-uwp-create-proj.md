@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 2dcc018c65625825436bd1050cdf7f3b9d3131e2
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 134c9996690d629ad8acb348d1928904741b6b2d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87375461"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91654390"
 ---
 Als u een Visual Studio-project voor UWP-ontwikkeling (Universeel Windows-platform) wilt maken, moet u ontwikkelingsopties voor Visual Studio instellen, het project maken, de doelarchitectuur selecteren, audio-opname instellen en de Speech-SDK installeren.
 
@@ -19,13 +19,13 @@ Zorg er eerst voor dat Visual Studio correct is ingesteld voor UWP-ontwikkeling:
 
 1. Open Visual Studio 2019 om het**Start**-venster weer te geven.
 
-   ![Startvenster: Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-start-window.png)
+   ![Schermopname van het venster Start, met de actie Doorgaan zonder code gemarkeerd.](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-start-window.png)
 
 1. Selecteer **Doorgaan zonder code** om naar de Visual Studio-IDE te gaan.
 
 1. Selecteer in de menubalk van Visual Studio **Tools** (Extra) > **Get Tools and Features** (Hulpprogramma's en functies ophalen) om Visual Studio Installer te openen en het dialoogvenster **Modifying** (Wijzigen) te bekijken.
 
-   ![Tabblad Workloads (Werkbelastingen), dialoogvenster Modifying (Wijzigen), Visual Studio Installer](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-workload.png)
+   ![Schermopname van het tabblad Workloads, in het dialoogvenster Wijzigen, met Universal Windows Platform-ontwikkeling gemarkeerd.](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-workload.png)
 
 1. Ga op het tabblad **Workloads** (Werkbelastingen) onder **Windows** naar de werkbelasting **Universal Windows Platform** (Universeel Windows-platform). Als het selectievakje naast deze werkbelasting al is geselecteerd, sluit u het dialoogvenster **Modifying** (Wijzigen) en gaat u naar stap 6.
 
@@ -39,13 +39,13 @@ Maak vervolgens uw project:
 
 1. Kies in de menubalk van Visual Studio **File** (Bestand) > **New** (Nieuw) > **Project** om het venster **Create a new project** (Een nieuw project maken) te openen.
 
-   ![Een nieuw project maken: Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-create-new-project.png)
+   ![Schermopname van het venster Een nieuw project maken, met Lege app (Universal Windows) geselecteerd, en de knop Volgende gemarkeerd.](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-create-new-project.png)
 
 1. Zoek en selecteer **Blank App (Universal Windows)** (Lege app (Universal Windows)). Zorg ervoor dat u de C#-versie van dit projecttype selecteert (in plaats van Visual Basic).
 
 1. Selecteer **Next** (Volgende) om het scherm **Configure your new project** (Uw nieuwe project configureren) weer te geven.
 
-   ![Uw nieuwe project configureren: Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-configure-your-new-project.png)
+   ![Schermopname van het venster Uw nieuwe project configureren, met de velden Projectnaam en Locatie, en de knop Maken gemarkeerd.](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-configure-your-new-project.png)
 
 1. Voer bij **Project name** (Projectnaam) `helloworld` in.
 
@@ -53,7 +53,7 @@ Maak vervolgens uw project:
 
 1. Selecteer **Create** (Maken) om naar het venster **New Universal Windows Platform Project** (Nieuw Universeel Windows-platformproject) te gaan.
 
-   ![Dialoogvenster New Universal Windows Platform Project: Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-02-new-uwp-project.png)
+   ![Schermopname van het dialoogvenster Nieuw Universal Windows Platform-project.](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-02-new-uwp-project.png)
 
 1. Kies in de tweede vervolgkeuzelijst, **Minimum version** (Minimale versie), **Windows 10 Fall Creators Update (10.0; Build 16299)** . Dit is de minimale vereiste voor de Speech-SDK.
 
@@ -90,13 +90,13 @@ Installeer tot slot het [Speech SDK NuGet package](https://aka.ms/csspeech/nuget
 
 1. Selecteer **Bladeren**.
 
-   ![Schermafbeelding van het dialoogvenster Manage Packages for Solution](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-nuget-solution-browse.png)
+   ![Schermopname van het dialoogvenster Pakketten voor oplossing beheren, met het tabblad Bladeren, het vak Zoeken, en de optie Pakketbron gemarkeerd.](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-nuget-solution-browse.png)
 
 1. Kies **nuget.org**in **Package source** (Pakketbron).
 
 1. Voer in het vak **Search** (Zoeken) `Microsoft.CognitiveServices.Speech` in, en kies dat pakket wanneer het in de zoekresultaten wordt weergegeven.
 
-   ![Schermafbeelding van het dialoogvenster Manage Packages for Solution](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-05-nuget-install-1.0.0.png)
+   ![Schermopname met Microsoft.CognitiveServices.Speech geselecteerd, met het project en de knop Installeren gemarkeerd.](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-05-nuget-install-1.0.0.png)
 
 1. Selecteer in het deelvenster met de pakketstatus naast de zoekresultaten uw **helloworld**-project.
 

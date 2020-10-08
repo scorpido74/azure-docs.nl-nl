@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 05/13/2020
 ms.author: aahi
-ms.openlocfilehash: 5b3893dce2d20b1de0a78f11263d880e262098d2
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: b5936d68ba98054eb6d98860c6edfaf12d6736d8
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84142381"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91710122"
 ---
 # <a name="example-detect-language-with-text-analytics"></a>Voorbeeld: Taal detecteren met Text Analytics
 
@@ -31,6 +31,8 @@ Als er inhoud in een minder vaak gebruikte taal wordt weergegeven, kunt u de fun
 > Text Analytics biedt ook een Docker-containerinstallatiekopie op basis van Linux voor taaldetectie. U kunt de [Text Analytics-container dus dicht bij uw gegevens installeren en uitvoeren](text-analytics-how-to-install-containers.md).
 
 ## <a name="preparation"></a>Voorbereiding
+
+[!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
 U moet JSON-documenten in deze indeling hebben: id en tekst.
 

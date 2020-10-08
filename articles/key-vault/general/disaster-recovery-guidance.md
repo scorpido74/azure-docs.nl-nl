@@ -1,6 +1,6 @@
 ---
-title: Wat u moet doen als de onderbreking van een Azure-service invloed heeft op Azure Key Vault | Microsoft Docs
-description: Ontdek wat u moet doen als de onderbreking van een Azure-service invloed heeft op Azure Key Vault.
+title: Beschikbaarheid en redundantie in Azure Key Vault - Azure Key Vault | Microsoft Docs
+description: Meer informatie over beschikbaarheid en redundantie in Azure Key Vault.
 services: key-vault
 author: ShaneBala-keyvault
 manager: ravijan
@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: sudbalas
-ms.openlocfilehash: 27d8d4de308fe7cf6e6f36dd33f33bb73c495073
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 3cc4bdc0fabd9d1e209634a88bed1bf063db917c
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983225"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91597873"
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Beschikbaarheid en redundantie in Azure Key Vault
 
@@ -25,7 +25,6 @@ Azure Key Vault bevat meerdere lagen van redundantie om ervoor te zorgen dat uw 
 
 De inhoud van uw sleutelkluis wordt gerepliceerd binnen de regio en naar een secundaire regio op ten minste 150 mijl afstand, maar binnen dezelfde geografische locatie voor het behoud van de hoge duurzaamheid van uw sleutels en geheimen. Raadpleeg het document [Azure-gekoppelde regio's](../../best-practices-availability-paired-regions.md) voor meer informatie over specifieke regioparen.
 
-
 Als afzonderlijke onderdelen van de sleutelkluis-service niet meer werken, nemen alternatieve onderdelen in de regio het over om uw aanvraag te verwerken om ervoor te zorgen dat de functionaliteit niet wordt verminderd. U hoeft geen actie te ondernemen om dit proces te starten. Dit gebeurt automatisch en is transparant voor u.
 
 In het zeldzame geval dat een volledige Azure-regio niet beschikbaar is, worden de aanvragen die u van Azure Key Vault in die regio hebt gemaakt, automatisch doorgestuurd (*failed over*) naar een secundaire regio. Wanneer de primaire regio weer beschikbaar is, worden de aanvragen teruggestuurd (*failed back*) naar de primaire regio. Nogmaals: u hoeft geen actie te ondernemen, omdat dit automatisch gebeurt.
@@ -35,6 +34,7 @@ Dankzij dit ontwerp met hoge beschikbaarheid heeft Azure Key Vault geen downtime
 U moet rekening houden met enkele waarschuwingen:
 
 * In het geval van een failover van een regio kan het enkele minuten duren voordat een failover wordt uitgevoerd voor de service. Aanvragen die gedurende deze tijd worden ingediend vóór de failover, kunnen mislukken.
+* Als u een privékoppeling gebruikt om verbinding te maken met uw sleutelkluis, kan het tot 20 minuten duren voordat de verbinding opnieuw tot stand wordt gebracht in het geval van een failover. 
 * Tijdens de failover staat uw sleutelkluis in de modus alleen-lezen. Aanvragen die in deze modus worden ondersteund, zijn:
   * Certificaten vermelden
   * Certificaten ophalen

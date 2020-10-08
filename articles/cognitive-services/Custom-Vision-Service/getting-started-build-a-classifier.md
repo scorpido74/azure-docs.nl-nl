@@ -1,25 +1,27 @@
 ---
-title: 'Quickstart: een classificatie bouwen: Custom Vision-service'
+title: 'Snelstart: Een classificatie bouwen met de Custom Vision-website'
 titleSuffix: Azure Cognitive Services
-description: In deze quickstart leert u hoe u met de Custom Vision-website een classificatiemodel voor afbeeldingen kunt maken.
+description: In deze quickstart leert u hoe u met de Custom Vision-website een classificatiemodel voor afbeeldingen kunt maken, trainen en testen.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 08/05/2020
+ms.date: 09/29/2020
 ms.author: pafarley
-ms.openlocfilehash: 67632301b534f91c36de837bbfa12f9ec16ed58f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.custom: cog-serv-seo-aug-2020
+keywords: afbeeldingsherkenning, app voor afbeeldingsherkenning, Custom Vision
+ms.openlocfilehash: b57720b9d8fb05a605b9eace279b70b060c18450
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551349"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91596869"
 ---
-# <a name="quickstart-how-to-build-a-classifier-with-custom-vision"></a>Quickstart: Een classificatie bouwen met Custom Vision
+# <a name="quickstart-build-a-classifier-with-the-custom-vision-website"></a>Snelstart: Een classificatie bouwen met de Custom Vision-website
 
-In deze quickstart leert u hoe u een classificatie kunt bouwen via de Custom Vision-website. Wanneer u een classificatiemodel gaat bouwen, kunt u de Custom Vision-service gebruiken voor afbeeldingsdetectie.
+In deze quickstart leert u hoe u met de Custom Vision-website een classificatiemodel voor afbeeldingen kunt maken. Wanneer u een model bouwt, kunt u het testen met nieuwe afbeeldingen en het ten slotte integreren in uw eigen app voor het herkennen van afbeeldingen.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/cognitive-services/) aan voordat u begint.
 
@@ -27,7 +29,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 - Een reeks afbeeldingen waarmee u de classificatie kunt trainen. Hieronder vindt u tips voor het kiezen van afbeeldingen.
 
-## <a name="create-custom-vision-resources-in-the-azure-portal"></a>Custom Vision-resources maken in Azure Portal
+## <a name="create-custom-vision-resources"></a>Custom Vision-resources maken
 
 [!INCLUDE [create-resources](includes/create-resources.md)]
 
@@ -45,7 +47,7 @@ Ga in de webbrowser naar de [Custom Vision-webpagina](https://customvision.ai) e
 1. Voer een naam en een beschrijving voor het project in. Selecteer vervolgens een resourcegroep. Als uw aangemelde account aan een Azure-account is gekoppeld, worden in de vervolgkeuzelijst Resourcegroep al uw Azure-resourcegroepen weergegeven die een Custom Vision-serviceresource bevatten. 
 
    > [!NOTE]
-   > Als er geen resourcegroep beschikbaar is, controleert u of u bent aangemeld bij [customvision.ai](https://customvision.ai) met hetzelfde account dat u hebt gebruikt om u aan te melden bij [Azure Portal](https://portal.azure.com/). Controleer ook of u dezelfde 'map' hebt geselecteerd in de Custom Vision-portal als de map in Azure Portal waar zich uw Custom Vision-resources bevinden. Op beide sites kunt u uw map selecteren in het vervolgkeuzeaccountmenu in de rechterbovenhoek van het scherm. 
+   > Als er geen resourcegroep beschikbaar is, controleert u of u bent aangemeld bij [customvision.ai](https://customvision.ai) met hetzelfde account dat u hebt gebruikt om u aan te melden bij [Azure Portal](https://portal.azure.com/). Controleer ook of u dezelfde 'map' hebt geselecteerd in de Custom Vision-website als de map in Azure Portal waar zich uw Custom Vision-resources bevinden. Op beide sites kunt u uw map selecteren in het vervolgkeuzeaccountmenu in de rechterbovenhoek van het scherm. 
 
 1. Selecteer __Classificatie__ onder __Projecttypen__. Kies onder __Classificatietypen__ de optie **Meerdere labels** of **Meerdere klassen**, afhankelijk van uw gebruikstoepassing. Bij classificatie met meerdere labels wordt een willekeurig aantal tags toegepast op een afbeelding (nul of meer), terwijl bij classificatie met meerdere klassen afbeeldingen in één categorie worden ingedeeld (elke afbeelding die u verzendt, wordt voorzien van de meest logische tag). Desgewenst kunt u het classificatietype later wijzigen.
 
@@ -120,3 +122,4 @@ In deze quickstart hebt u geleerd hoe u een afbeeldingsclassificatiemodel maakt 
 > [!div class="nextstepaction"]
 > [Een model testen en opnieuw trainen](test-your-model.md)
 
+* [Wat is Custom Vision?](./overview.md)

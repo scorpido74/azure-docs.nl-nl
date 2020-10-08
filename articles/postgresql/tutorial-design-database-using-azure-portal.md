@@ -1,18 +1,18 @@
 ---
 title: 'Zelfstudie: Een Azure Database for PostgreSQL - Single Server ontwerpen - Azure Portal'
 description: Deze zelfstudie laat zien hoe u uw eerste Azure Database for PostgreSQL - Single Server ontwerpt met Azure Portal.
-author: rachel-msft
-ms.author: raagyema
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.custom: tutorial, mvc
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: 7e98c34198c0821dac59f849267a920a87c48a54
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d22e9c10c167e0b2646298acca75d506a0ea032f
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905639"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91707571"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Zelfstudie: Een Azure Database for PostgreSQL - Single Server ontwerpen met behulp van Azure Portal
 
@@ -42,11 +42,11 @@ Volg deze stappen voor het maken van een Azure Database voor PostgreSQL-server:
 
 3. Selecteer de implementatieoptie **Enkele server**.
 
-   :::image type="content" source="./media/tutorial-design-database-using-azure-portal/select-deployment-option.png" alt-text="Azure Database for PostgreSQL - optie voor enkele server implementeren selecteren":::
+   :::image type="content" source="./media/tutorial-design-database-using-azure-portal/select-deployment-option.png" alt-text="Azure Database voor PostgreSQL - De database maken":::
 
 4. Vul het formulier **Basisbeginselen** in met de volgende gegevens:
 
-    :::image type="content" source="./media/tutorial-design-database-using-azure-portal/create-basics.png" alt-text="Een server maken":::
+    :::image type="content" source="./media/tutorial-design-database-using-azure-portal/create-basics.png" alt-text="Azure Database voor PostgreSQL - De database maken":::
 
     Instelling|Voorgestelde waarde|Beschrijving
     ---|---|---
@@ -64,7 +64,7 @@ Volg deze stappen voor het maken van een Azure Database voor PostgreSQL-server:
    > Overweeg het gebruik van de prijscategorie Basic als lichte reken- en I/O-capaciteit voldoende is voor uw workload. Servers die zijn gemaakt in de prijscategorie Basic kunnen later niet meer worden geschaald voor Algemeen gebruik of Geoptimaliseerd voor geheugen. Zie de pagina met [prijzen](https://azure.microsoft.com/pricing/details/postgresql/) voor meer informatie.
    > 
 
-    :::image type="content" source="./media/quickstart-create-database-portal/2-pricing-tier.png" alt-text="Het deelvenster Prijscategorie":::
+    :::image type="content" source="./media/quickstart-create-database-portal/2-pricing-tier.png" alt-text="Azure Database voor PostgreSQL - De database maken":::
 
     > [!TIP]
     > Als **automatische groei** voor uw server is ingeschakeld, hebt u meer opslagruimte als u de toewijzingslimiet nadert. Dit is niet van invloed op de workload.
@@ -73,7 +73,7 @@ Volg deze stappen voor het maken van een Azure Database voor PostgreSQL-server:
 
 6. Selecteer het pictogram **Meldingen** (een klok) op de werkbalk om het implementatieproces te bewaken. Na de implementatie kunt u **Vastmaken aan dashboard** selecteren. Hiermee maakt u een tegel voor deze server op uw dashboard in Azure Portal als snelkoppeling naar de **overzichtspagina** van de server. Als u **Naar de resource gaan** selecteert, wordt de **overzichtspagina** van de server weergegeven.
 
-    :::image type="content" source="./media/quickstart-create-database-portal/3-notifications.png" alt-text="Het deelvenster Meldingen":::
+    :::image type="content" source="./media/quickstart-create-database-portal/3-notifications.png" alt-text="Azure Database voor PostgreSQL - De database maken":::
    
    Standaard word een **postgres**-database op uw server gemaakt. De database [postgres](https://www.postgresql.org/docs/9.6/static/app-initdb.html) is een standaarddatabase die kan worden gebruikt door gebruikers, hulpprogramma's en toepassingen van derden. (De andere standaarddatabase is **azure_maintenance**. De functie van de database is het scheiden van beheerde serviceprocessen van acties van de gebruiker. U hebt geen toegang tot deze database.)
 
@@ -84,13 +84,13 @@ De Azure Database for PostgreSQL-service gebruikt een firewall op serverniveau. 
 
 1. Nadat de implementatie is voltooid, klikt u op **Alle resources** in het menu links en voert u de naam **mydemoserver** in om te zoeken naar de zojuist gemaakte server. Klik op de servernaam in de zoekresultaten. De pagina **Overzicht** wordt geopend voor uw server en biedt opties voor verdere configuratie.
 
-   :::image type="content" source="./media/tutorial-design-database-using-azure-portal/4-locate.png" alt-text="Azure Database voor PostgreSQL - Zoeken naar de server":::
+   :::image type="content" source="./media/tutorial-design-database-using-azure-portal/4-locate.png" alt-text="Azure Database voor PostgreSQL - De database maken":::
 
 2. Selecteer **Verbindingsbeveiliging** op de serverpagina. 
 
 3. Klik in het tekstvak onder **Regelnaam** en voeg een nieuwe firewallregel toe om het IP-bereik voor connectiviteit op te geven. Voer uw IP-bereik in. Klik op **Opslaan**.
 
-   :::image type="content" source="./media/tutorial-design-database-using-azure-portal/5-firewall-2.png" alt-text="Azure Database voor PostgreSQL - Een firewallregel maken":::
+   :::image type="content" source="./media/tutorial-design-database-using-azure-portal/5-firewall-2.png" alt-text="Azure Database voor PostgreSQL - De database maken":::
 
 4. Klik op **Opslaan** en klik vervolgens op **X** om de pagina **Verbindingsbeveiliging** te sluiten.
 
@@ -104,13 +104,13 @@ Toen u de Azure Database for PostgreSQL-server maakte, is de standaarddatabase *
 
 1. Klik in het menu links in Azure Portal op **Alle resources** en zoek de server die u zojuist hebt gemaakt.
 
-   :::image type="content" source="./media/tutorial-design-database-using-azure-portal/4-locate.png" alt-text="Azure Database voor PostgreSQL - Zoeken naar de server":::
+   :::image type="content" source="./media/tutorial-design-database-using-azure-portal/4-locate.png" alt-text="Azure Database voor PostgreSQL - De database maken":::
 
 2. Klik op de servernaam **mydemoserver**.
 
 3. Selecteer de pagina **Overzicht** van de server. Noteer de **servernaam** en de **gebruikersnaam van de serverbeheerder**.
 
-   :::image type="content" source="./media/tutorial-design-database-using-azure-portal/6-server-name.png" alt-text="Azure Database voor PostgreSQL - Aanmeldgegevens van de serverbeheerder":::
+   :::image type="content" source="./media/tutorial-design-database-using-azure-portal/6-server-name.png" alt-text="Azure Database voor PostgreSQL - De database maken":::
 
 
 ## <a name="connect-to-postgresql-database-using-psql"></a>Verbinding maken met een PostgreSQL-database met behulp van psql
@@ -190,11 +190,11 @@ Stel dat u deze tabel per ongeluk hebt verwijderd. Dit is iets wat u niet eenvou
 
 1. Klik op de pagina **Overzicht** van Azure Database for PostgreSQL voor uw server op de werkbalk op **Herstellen**. De**gelijknamige**pagina wordt geopend.
 
-   :::image type="content" source="./media/tutorial-design-database-using-azure-portal/9-azure-portal-restore.png" alt-text="Azure Portal: opties voor het herstellen van formulieren":::
+   :::image type="content" source="./media/tutorial-design-database-using-azure-portal/9-azure-portal-restore.png" alt-text="Azure Database voor PostgreSQL - De database maken":::
 
 2. Vul in het formulier **Restore** de vereiste gegevens in:
 
-   :::image type="content" source="./media/tutorial-design-database-using-azure-portal/10-azure-portal-restore.png" alt-text="Azure Portal: opties voor het herstellen van formulieren":::
+   :::image type="content" source="./media/tutorial-design-database-using-azure-portal/10-azure-portal-restore.png" alt-text="Azure Database voor PostgreSQL - De database maken":::
 
    - **Herstelpunt**: selecteer een tijdstip voorafgaand aan het moment waarop de server is gewijzigd
    - **Doelserver**: geef de naam op van de nieuwe server waarnaar u wilt herstellen

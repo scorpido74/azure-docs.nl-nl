@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/01/2020
 ms.author: allensu
-ms.openlocfilehash: 3509b99d1b222fc4f0bfa48effe42496c209d9ae
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 8eb8be3307cf5e1df987f636be5c01cecaf4ae45
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654477"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91631440"
 ---
 # <a name="azure-load-balancer-skus"></a>Azure Load Balancer-SKU's
 
@@ -54,7 +54,9 @@ Zie [limieten voor Load Balancer](https://docs.microsoft.com/azure/azure-resourc
 
 - SKU's zijn niet veranderlijk. U kunt de SKU van een bestaande resource niet veranderen.
 - Een zelfstandige resource voor een virtuele machine, resource voor een beschikbaarheidsset of resource voor een virtuele-machineschaalset kan verwijzen naar één SKU, nooit naar beide.
-- [Abonnementen verplaatsen](../azure-resource-manager/management/move-resource-group-and-subscription.md) wordt niet ondersteund voor resources voor Standard Load Balancer en Openbare IP-adressen van Standard.
+- [Verplaatsen](../azure-resource-manager/management/move-resource-group-and-subscription.md):
+  - Verplaatsen van resourcegroepen (binnen hetzelfde abonnement) **wordt ondersteund** voor Standard Load Balancer en Openbare IP-adressen van Standard. 
+  - [Verplaatsen van abonnementsgroepen](../azure-resource-manager/management/move-support-resources.md) wordt **niet** ondersteund voor resources voor Standard Load Balancer en Openbare IP-adressen van Standard.
 
 ## <a name="next-steps"></a>Volgende stappen
 

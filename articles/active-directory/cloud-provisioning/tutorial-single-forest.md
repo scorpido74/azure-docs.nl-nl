@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b91763c275e4fd091b7c1554699e5d6f35a6f55
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 60f82a3197366081c66c4b7a1fe9c4ebe7762c94
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91266323"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91628690"
 ---
 # <a name="tutorial-integrate-a-single-forest-with-a-single-azure-ad-tenant"></a>Zelfstudie: Een enkele forest integreren met enkele Azure AD-tenant
 
@@ -112,7 +112,7 @@ Voer de volgende stappen uit om te controleren of de agent wordt uitgevoerd:
 5.  Klik op **Nieuwe configuratie**
 ![Schermopname van het scherm Azure AD inrichten (preview) waarin de koppeling Nieuwe configuratie is gemarkeerd.](media/tutorial-single-forest/configure1.png)
 7.  Voer in het configuratiescherm een **E-mailadres voor meldingen** in, zet de selector op **Inschakelen** en klik op **Opslaan**.
-![Schermopname van het scherm Configureren waarin het e-mailadres voor meldingen is ingevuld en Inschakelen is geselecteerd.](media/tutorial-single-forest/configure2.png)
+![Schermopname van het scherm Configureren waarin het e-mailadres voor meldingen is ingevuld en Inschakelen is geselecteerd.](media/how-to-configure/configure2.png)
 1.  De configuratiestatus moet nu **In orde** zijn.
 ![Schermopname van Azure AD inrichten (preview) met de status In orde.](media/how-to-configure/manage4.png)
 

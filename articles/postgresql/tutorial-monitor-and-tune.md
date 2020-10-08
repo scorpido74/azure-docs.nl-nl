@@ -1,17 +1,17 @@
 ---
 title: 'Zelfstudie: Bewaken en afstemmen - Azure Database for PostgreSQL - één server'
 description: In deze zelfstudie maakt u stapsgewijs kennis met bewaking en afstemming in Azure Database for PostgreSQL - één server.
-author: rachel-msft
-ms.author: raagyema
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: tutorial
 ms.date: 5/6/2019
-ms.openlocfilehash: 05435aae727c84a5f3eb886274f9d286627e399e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f211ce7e52ccaa6793435159d0ce1c64fe8b63ed
+ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90895093"
+ms.lasthandoff: 10/04/2020
+ms.locfileid: "91705278"
 ---
 # <a name="tutorial-monitor-and-tune-azure-database-for-postgresql---single-server"></a>Zelfstudie: Bewaken en afstemmen van Azure Database for PostgreSQL - één server
 
@@ -52,7 +52,7 @@ De weergave [Query Performance Insight](concepts-query-performance-insight.md) i
 
 2. Op het tabblad **Langlopende query's** ziet u de top 5 query's op de gemiddelde duur per uitvoering, samengevoegd in intervallen van 15 minuten. 
    
-   :::image type="content" source="./media/tutorial-performance-intelligence/query-performance-insight-landing-page.png" alt-text="Landingspagina van Query Performance Insight":::
+   :::image type="content" source="./media/tutorial-performance-intelligence/query-performance-insight-landing-page.png" alt-text="Parameters voor Query Store-server":::
 
    U kunt meer query's weergeven door een optie te selecteren in de vervolgkeuzelijst **Aantal query's**. Het is mogelijk dat de grafiekkleuren voor een specifieke query-id verschillen wanneer u dit doet.
 
@@ -64,7 +64,7 @@ De weergave [Query Performance Insight](concepts-query-performance-insight.md) i
 
 6. Selecteer het tabblad **Wachtstatistieken** om de bijbehorende visualisaties voor wachttijden in de server weer te geven.
    
-   :::image type="content" source="./media/tutorial-performance-intelligence/query-performance-insight-wait-statistics.png" alt-text="Wachtstatistieken van Query Performance Insight":::
+   :::image type="content" source="./media/tutorial-performance-intelligence/query-performance-insight-wait-statistics.png" alt-text="Parameters voor Query Store-server":::
 
 ### <a name="permissions"></a>Machtigingen
 De machtigingen **Eigenaar** of **Inzender** zijn vereist om de tekst van de query's weer te geven in Query Performance Insight. Met de machtiging **Lezer** kunt u grafieken en tabellen weergeven maar geen tekst opvragen.
@@ -75,7 +75,7 @@ De functie [Prestatieaanbevelingen](concepts-performance-recommendations.md) ana
 
 1. Open **Prestatieaanbevelingen** in de sectie **Ondersteuning en probleemoplossing** van de menubalk op de Azure Portal-pagina voor uw PostgreSQL-server.
    
-   :::image type="content" source="./media/tutorial-performance-intelligence/performance-recommendations-landing-page.png" alt-text="Landingspagina van Prestatieaanbevelingen":::
+   :::image type="content" source="./media/tutorial-performance-intelligence/performance-recommendations-landing-page.png" alt-text="Parameters voor Query Store-server":::
 
 2. Selecteer **Analyseren** en kies een database. De analyse wordt hiermee gestart.
 
@@ -85,7 +85,7 @@ De functie [Prestatieaanbevelingen](concepts-performance-recommendations.md) ana
 
 5. Een aanbeveling bevat informatie over de relevante **Database**, **Tabel**, **Kolom** en **Indexgrootte**.
 
-   :::image type="content" source="./media/tutorial-performance-intelligence/performance-recommendations-result.png" alt-text="Resultaat van Prestatieaanbevelingen":::
+   :::image type="content" source="./media/tutorial-performance-intelligence/performance-recommendations-result.png" alt-text="Parameters voor Query Store-server":::
 
 6. Als u de aanbeveling wilt implementeren, kopieert u de querytekst en voert u deze uit vanaf de gewenste client.
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: b6cb0fa3611da44726dabd879c37fec357fc3031
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: b107b4a54b7d013da160119b16bd646a79cce696
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "82202771"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91626833"
 ---
 # <a name="import-a-logic-app-as-an-api"></a>Een logische app als API importeren
 
@@ -57,7 +57,7 @@ In dit artikel leert u het volgende:
     - **Starter**
     - **Onbeperkt**
 
-7. Voer andere API-instellingen in. U kunt de waarden instellen tijdens het maken of later configureren door naar het tabblad **Instellingen** te gaan. De instellingen worden beschreven in de zelfstudie [Uw eerste API importeren en publiceren](import-and-publish.md#-import-and-publish-a-backend-api).
+7. Voer andere API-instellingen in. U kunt de waarden instellen tijdens het maken of later configureren door naar het tabblad **Instellingen** te gaan. De instellingen worden beschreven in de zelfstudie [Uw eerste API importeren en publiceren](import-and-publish.md#import-and-publish-a-backend-api).
 8. Selecteer **Maken**.
 
 ## <a name="test-the-api-in-the-azure-portal"></a>De API testen in Azure Portal

@@ -1,38 +1,38 @@
 ---
-title: 'Zelf studie: een door SQL beheerd exemplaar toevoegen aan een failovergroep'
+title: 'Zelfstudie: Met SQL beheerd exemplaar toevoegen aan een failovergroep'
 titleSuffix: Azure SQL Managed Instance
-description: In deze zelf studie leert u hoe u een failovergroep maakt tussen een primair en secundair Azure SQL-beheerd exemplaar.
+description: In deze zelfstudie leert u hoe u een failovergroep maakt tussen een primair en secundair met Azure SQL beheerd exemplaar.
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: high-availability
 ms.custom: sqldbrb=1, devx-track-azurepowershell
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: tutorial
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sashan, sstein
 ms.date: 08/27/2019
-ms.openlocfilehash: 034940a0990fc97118e62caab051a5a9e2ffd3e7
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
-ms.translationtype: MT
+ms.openlocfilehash: df10e2b674a8e97766ee96a802e614e2bd797b7b
+ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91578560"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91617737"
 ---
-# <a name="tutorial-add-sql-managed-instance-to-a-failover-group"></a>Zelf studie: een door SQL beheerd exemplaar toevoegen aan een failovergroep
+# <a name="tutorial-add-sql-managed-instance-to-a-failover-group"></a>Zelfstudie: Met SQL beheerd exemplaar toevoegen aan een failovergroep
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Beheerde exemplaren van een Azure SQL Managed instance toevoegen aan een failovergroep. In dit artikel leert u het volgende:
+Beheerde exemplaren van Azure SQL Managed Instance toevoegen aan een failovergroep. In dit artikel leert u het volgende:
 
 > [!div class="checklist"]
-> - Maak een primair beheerd exemplaar.
-> - Maak een secundair beheerd exemplaar als onderdeel van een [failovergroep](../database/auto-failover-group-overview.md). 
-> - Testfailover.
+> - Een primair beheerd exemplaar maken.
+> - Een secundair beheerd exemplaar maken als onderdeel van een [failovergroep](../database/auto-failover-group-overview.md). 
+> - Failover testen.
 
   > [!NOTE]
-  > - Wanneer u deze zelf studie doorloopt, moet u ervoor zorgen dat u uw resources configureert met de [vereisten voor het instellen van failover-groepen voor SQL Managed instance](../database/auto-failover-group-overview.md#enabling-geo-replication-between-managed-instances-and-their-vnets). 
-  > - Het maken van een beheerd exemplaar kan een aanzienlijke hoeveelheid tijd in beslag nemen. Als gevolg hiervan kan het enkele uren duren voordat deze zelf studie is voltooid. Zie [SQL Managed instance Management Operations](sql-managed-instance-paas-overview.md#management-operations)(Engelstalig) voor meer informatie over het inrichten van tijden. 
-  > - Voor beheerde instanties die deel uitmaken van een failovergroep zijn [Azure ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) of twee verbonden VPN-gateways vereist. Globale VNet-peering wordt niet ondersteund. Deze zelf studie bevat stappen voor het maken en koppelen van de VPN-gateways. Sla deze stappen over als u ExpressRoute al hebt geconfigureerd. 
+  > - Zorg er bij het doorlopen van deze zelfstudie voor dat u resources configureert met de [vereisten voor het instellen van failovergroepen voor SQL Managed Instance](../database/auto-failover-group-overview.md#enabling-geo-replication-between-managed-instances-and-their-vnets). 
+  > - Het maken van een beheerd exemplaar kan aanzienlijke tijd duren. Hierdoor kan het enkele uren duren om deze zelfstudie te voltooien. Raadpleeg [Beheerbewerkingen voor SQL Managed Instance](sql-managed-instance-paas-overview.md#management-operations) voor meer informatie over inrichtingsduur. 
+  > - Voor beheerde exemplaren die deel uitmaken van een failovergroep, zijn [Azure ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) of twee verbonden VPN-gateways vereist. Globale VNet-peering wordt niet ondersteund. Deze zelfstudie biedt stappen voor het maken en verbinden van de VPN-gateways. Sla deze stappen over als u ExpressRoute al hebt geconfigureerd. 
 
 
 ## <a name="prerequisites"></a>Vereisten
@@ -44,7 +44,7 @@ Het volgende moet zijn geïnstalleerd om deze zelfstudie te voltooien:
 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-Zorg ervoor dat u over de volgende items beschikt om de zelf studie te volt ooien:
+Zorg dat u over het volgende beschikt om de zelfstudie te kunnen voltooien:
 
 - Een Azure-abonnement. [Maak een gratis account](https://azure.microsoft.com/free/) als u er nog geen hebt.
 - [Azure PowerShell](/powershell/azure/)
@@ -52,36 +52,36 @@ Zorg ervoor dat u over de volgende items beschikt om de zelf studie te volt ooie
 ---
 
 
-## <a name="create-a-resource-group-and-primary-managed-instance"></a>Een resource groep en primair beheerd exemplaar maken
+## <a name="create-a-resource-group-and-primary-managed-instance"></a>Een resourcegroep en primair beheerd exemplaar maken
 
-In deze stap maakt u de resource groep en het primaire beheerde exemplaar voor uw failover-groep met behulp van de Azure Portal of Power shell. 
+In deze stap maakt u de resourcegroep en het primaire beheerde exemplaar voor uw failovergroep met behulp van de Azure-portal of PowerShell. 
 
-Implementeer beide beheerde instanties in [gekoppelde regio's](../../best-practices-availability-paired-regions.md) om prestatie redenen. Beheerde instanties die zich in geografische paar regio's bevinden, hebben veel betere prestaties ten opzichte van niet-gekoppelde regio's. 
+Implementeer beide beheerde exemplaren in [gekoppelde regio's](../../best-practices-availability-paired-regions.md), om prestatieredenen. Beheerde exemplaren die zich in geografisch gekoppelde regio's bevinden, presteren veel beter dan die in niet-gekoppelde regio's. 
 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal) 
 
-Maak de resource groep en het primaire beheerde exemplaar met behulp van de Azure Portal. 
+Maak de resourcegroep en het primaire beheerde exemplaar met behulp van de Azure-portal. 
 
-1. Selecteer **Azure SQL** in het menu aan de linkerzijde van de Azure Portal. Als **Azure SQL** niet voor komt in de lijst, selecteert u **alle services**en typt u `Azure SQL` in het zoekvak. Beschrijving Selecteer de ster naast **Azure SQL** om deze te favoriet en voeg deze toe als een item in de linkernavigatiebalk. 
-1. Selecteer **+ toevoegen** om de **optie pagina SQL-implementatie selecteren** te openen. U kunt aanvullende informatie over de verschillende data bases weer geven door **Details weer geven** te selecteren op de tegel **data bases** .
-1. Selecteer **maken** in de tegel **SQL Managed instances** . 
+1. Selecteer **Azure SQL** in het menu aan de linkerzijde van de Azure Portal. Als **Azure SQL** niet voorkomt in de lijst, selecteert u **Alle services** en typt u `Azure SQL` in het zoekvak. (Optioneel) Selecteer de ster naast **Azure SQL** om deze favoriet te maken en toe te voegen als item in de linkernavigatiebalk. 
+1. Selecteer **+ Toevoegen** om de pagina **SQL-implementatieoptie selecteren** te openen. U kunt meer informatie over de verschillende databases bekijken door **Details weergeven** te selecteren op de tegel **Databases**.
+1. Selecteer **Maken** op de tegel **Met SQL beheerde exemplaren**. 
 
-    ![SQL Managed instance selecteren](./media/failover-group-add-instance-tutorial/select-managed-instance.png)
+    ![SQL Managed Instance selecteren](./media/failover-group-add-instance-tutorial/select-managed-instance.png)
 
-1. Op de pagina **Azure SQL Managed instance maken** op het tabblad **basis beginselen** :
-    1. Selecteer uw **abonnement** in de vervolg keuzelijst onder **Project Details**en kies vervolgens nieuwe resource groep **maken** . Typ een naam voor de resource groep, zoals `myResourceGroup` . 
-    1. Geef onder **Details van SQL Managed instance**de naam op van uw beheerde exemplaar en de regio waar u uw beheerde exemplaar wilt implementeren. De **berekening en opslag** op standaard waarden laten staan. 
-    1. Geef onder **Administrator-account**een beheerders aanmelding op, zoals `azureuser` en een complex beheerders wachtwoord. 
+1. Doe het volgende op het tabblad **Basisbeginselen** van de pagina **Met Azure SQL beheerd exemplaar maken**:
+    1. Selecteer onder **Projectdetails** uw **abonnement** in de vervolgkeuzelijst, en kies vervolgens **Nieuwe resourcegroep maken**. Typ een naam voor uw resourcegroep, zoals `myResourceGroup`. 
+    1. Geef onder **Details van met SQL beheerd exemplaar** de naam op van uw beheerde exemplaar, en de regio waarin u het beheerde exemplaar wilt implementeren. Laat **Compute + opslag** staan op de standaardwaarden. 
+    1. Geef onder **Beheerdersaccount** aanmeldingsgegevens voor een beheerder op, zoals `azureuser`, en een complex beheerderswachtwoord. 
 
-    ![Primair beheerd exemplaar maken](./media/failover-group-add-instance-tutorial/primary-sql-mi-values.png)
+    ![Een primair beheerd exemplaar maken](./media/failover-group-add-instance-tutorial/primary-sql-mi-values.png)
 
-1. Laat de overige instellingen op de standaard waarden staan en selecteer **controleren + maken** om de instellingen van uw SQL Managed instance te controleren. 
-1. Selecteer **maken** om uw primaire beheerde instantie te maken. 
+1. Laat de overige instellingen op de standaardwaarden staan, en selecteer **Controleren + maken** om de SQL Managed Instance-instellingen te controleren. 
+1. Selecteer **Maken** om het primaire beheerde exemplaar te maken. 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Maak de resource groep en het primaire beheerde exemplaar met behulp van Power shell. 
+Maak de resourcegroep en het primaire beheerde exemplaar met behulp van PowerShell. 
 
    ```powershell-interactive
    # Connect-AzAccount
@@ -384,7 +384,7 @@ Maak de resource groep en het primaire beheerde exemplaar met behulp van Power s
    Write-host "Primary SQL Managed Instance created successfully."
    ```
 
-In dit gedeelte van de zelf studie worden de volgende Power shell-cmdlets gebruikt:
+In dit gedeelte van de zelfstudie wordt gebruikgemaakt van de volgende PowerShell-cmdlets:
 
 | Opdracht | Opmerkingen |
 |---|---|
@@ -408,91 +408,91 @@ In dit gedeelte van de zelf studie worden de volgende Power shell-cmdlets gebrui
 
 ## <a name="create-secondary-virtual-network"></a>Secundair virtueel netwerk maken
 
-Als u de Azure Portal gebruikt om uw beheerde exemplaar te maken, moet u het virtuele netwerk afzonderlijk maken, omdat er een vereiste is dat het subnet van het primaire en het secundaire beheerde exemplaar geen overlappende bereiken hebben. Als u Power shell gebruikt om uw beheerde exemplaar te configureren, gaat u verder met stap 3. 
+Als u de Azure-portal gebruikt om het beheerde exemplaar te maken, moet u het virtuele netwerk afzonderlijk maken, omdat is vereist dat de subnetten van het primaire en secundaire beheerde exemplaar geen overlappende bereiken hebben. Als u PowerShell gebruikt om het beheerde exemplaar te configureren, gaat u verder met stap 3. 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal) 
 
-Voer de volgende stappen uit om het subnet-bereik van het primaire virtuele netwerk te controleren:
+Voer de volgende stappen uit om het subnetbereik van het primaire virtuele netwerk te controleren:
 
-1. Navigeer in het [Azure Portal](https://portal.azure.com)naar de resource groep en selecteer het virtuele netwerk voor uw primaire exemplaar.  
-2. Selecteer **subnetten** onder **instellingen** en noteer het **adres bereik**. Het adres bereik van het subnet van het virtuele netwerk voor het secundaire beheerde exemplaar kan dit niet overlappen. 
+1. Ga in de [Azure-portal](https://portal.azure.com) naar uw resourcegroep en selecteer het virtuele netwerk voor het primaire exemplaar.  
+2. Selecteer **Subnetten** onder **Instellingen**, en noteer het **Adresbereik**. Het adresbereik van het subnet van het virtuele netwerk voor het secundaire beheerde exemplaar mag dit bereik niet overlappen. 
 
 
    ![Primair subnet](./media/failover-group-add-instance-tutorial/verify-primary-subnet-range.png)
 
-Voer de volgende stappen uit om een virtueel netwerk te maken:
+Volg deze stappen om een virtueel netwerk te maken:
 
-1. Selecteer in de [Azure Portal](https://portal.azure.com) **een resource maken** en zoek naar *virtueel netwerk*. 
-1. Selecteer de **Virtual Network** -optie die door micro soft is gepubliceerd en selecteer vervolgens **maken** op de volgende pagina. 
-1. Vul de vereiste velden in om het virtuele netwerk voor uw secundaire beheerde exemplaar te configureren en selecteer vervolgens **maken**. 
+1. Selecteer in de [Azure-portal](https://portal.azure.com) de optie **Een resource maken** en zoek naar *virtueel netwerk*. 
+1. Selecteer de optie **Virtual Network** die is gepubliceerd door Microsoft, en selecteer vervolgens **Maken** op de volgende pagina. 
+1. Vul de vereiste velden in om het virtuele netwerk voor uw beheerde exemplaar te configureren, en selecteer vervolgens **Maken**. 
 
    In de volgende tabel ziet u de waarden die nodig zijn voor het secundaire virtuele netwerk:
 
     | **Veld** | Waarde |
     | --- | --- |
-    | **Naam** |  De naam van het virtuele netwerk dat moet worden gebruikt door het secundaire beheerde exemplaar, zoals `vnet-sql-mi-secondary` . |
-    | **Adresruimte** | De adres ruimte voor het virtuele netwerk, zoals `10.128.0.0/16` . | 
-    | **Abonnement** | Het abonnement waar uw primaire beheerde instantie en resource groep zich bevinden. |
-    | **Regio** | De locatie waar u uw secundaire beheerde exemplaar gaat implementeren. |
-    | **Subnet** | De naam voor het subnet. `default` is standaard voor u bestemd. |
-    | **Adresbereik**| Het adres bereik voor uw subnet. Dit moet verschillen van het adres bereik van het subnet dat wordt gebruikt door het virtuele netwerk van uw primaire beheerde instantie, zoals `10.128.0.0/24` .  |
+    | **Naam** |  De naam van het virtuele netwerk dat moet worden gebruikt voor het secundaire beheerde exemplaar, zoals `vnet-sql-mi-secondary`. |
+    | **Adresruimte** | De adresruimte voor het virtuele netwerk, zoals `10.128.0.0/16`. | 
+    | **Abonnement** | Het abonnement waarin uw primaire beheerde exemplaar en resourcegroep zich bevinden. |
+    | **Regio** | De locatie waar u het secundaire beheerde exemplaar gaat implementeren. |
+    | **Subnet** | Een naam voor het subnet. Standaard is de naam `default` opgegeven. |
+    | **Adresbereik**| Het adresbereik voor het subnet. Dit moet verschillen van het adresbereik van het subnet dat wordt gebruikt voor het virtuele netwerk van het primaire beheerde exemplaar, zoals `10.128.0.0/24`.  |
     | &nbsp; | &nbsp; |
 
-    ![Secundaire waarden van virtueel netwerk](./media/failover-group-add-instance-tutorial/secondary-virtual-network.png)
+    ![Waarden voor secundair virtueel netwerk](./media/failover-group-add-instance-tutorial/secondary-virtual-network.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Deze stap is alleen nodig als u de Azure Portal gebruikt voor het implementeren van een door SQL beheerd exemplaar. Ga verder met stap 3 als u Power shell gebruikt. 
+Deze stap is alleen noodzakelijk als u de Azure-portal gebruikt om SQL Managed Instance te implementeren. Ga verder met stap 3 als u PowerShell gebruikt. 
 
 ---
 
 ## <a name="create-a-secondary-managed-instance"></a>Een secundair beheerd exemplaar maken
-In deze stap maakt u een tweede beheerde instantie in de Azure Portal, waarmee ook de netwerken tussen de twee beheerde instanties worden geconfigureerd. 
+In deze stap maakt u een secundair beheerd exemplaar in de Azure-portal, waarmee ook de netwerken tussen de twee beheerde exemplaren worden geconfigureerd. 
 
-Uw tweede beheerde exemplaar moet:
+Uw secundaire beheerde exemplaar moet:
 - Leeg zijn. 
-- Hebben een ander subnet en IP-bereik dan het primaire beheerde exemplaar. 
+- Een ander subnet en IP-bereik hebben dan het primaire beheerde exemplaar. 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal) 
 
-Maak het secundaire beheerde exemplaar met behulp van de Azure Portal. 
+Het tweede secundaire beheerde exemplaar maken met behulp van de Azure-portal. 
 
-1. Selecteer **Azure SQL** in het menu aan de linkerzijde van de Azure Portal. Als **Azure SQL** niet voor komt in de lijst, selecteert u **alle services**en typt u `Azure SQL` in het zoekvak. Beschrijving Selecteer de ster naast **Azure SQL** om deze te favoriet en voeg deze toe als een item in de linkernavigatiebalk. 
-1. Selecteer **+ toevoegen** om de **optie pagina SQL-implementatie selecteren** te openen. U kunt aanvullende informatie over de verschillende data bases weer geven door **Details weer geven** te selecteren op de tegel **data bases** .
-1. Selecteer **maken** in de tegel **SQL Managed instances** . 
+1. Selecteer **Azure SQL** in het menu aan de linkerzijde van de Azure Portal. Als **Azure SQL** niet voorkomt in de lijst, selecteert u **Alle services** en typt u `Azure SQL` in het zoekvak. (Optioneel) Selecteer de ster naast **Azure SQL** om deze favoriet te maken en toe te voegen als item in de linkernavigatiebalk. 
+1. Selecteer **+ Toevoegen** om de pagina **SQL-implementatieoptie selecteren** te openen. U kunt meer informatie over de verschillende databases bekijken door **Details weergeven** te selecteren op de tegel **Databases**.
+1. Selecteer **Maken** op de tegel **Met SQL beheerde exemplaren**. 
 
-    ![SQL Managed instance selecteren](./media/failover-group-add-instance-tutorial/select-managed-instance.png)
+    ![SQL Managed Instance selecteren](./media/failover-group-add-instance-tutorial/select-managed-instance.png)
 
-1. Vul op het tabblad **basis** van de pagina **Azure SQL Managed instance maken** de vereiste velden in voor het configureren van uw secundaire beheerde exemplaar. 
+1. Vul op het tabblad **Basisbeginselen** van de pagina **Met Azure SQL beheerd exemplaar maken** de vereiste velden in om uw secundaire beheerde exemplaar te configureren. 
 
    In de volgende tabel ziet u de waarden die nodig zijn voor het secundaire beheerde exemplaar:
  
     | **Veld** | Waarde |
     | --- | --- |
-    | **Abonnement** |  Het abonnement waar uw primaire beheerde instantie zich bevindt. |
-    | **Resourcegroep**| De resource groep waar uw primaire beheerde instantie zich bevindt. |
-    | **Naam van door SQL beheerd exemplaar** | De naam van het nieuwe, secundaire beheerde exemplaar, zoals `sql-mi-secondary` .  | 
+    | **Abonnement** |  Het abonnement waarin uw primaire beheerde exemplaar zich bevindt. |
+    | **Resourcegroep**| De resourcegroep waarin uw primaire beheerde exemplaar zich bevindt. |
+    | **Naam van met SQL beheerd exemplaar** | De naam van het nieuwe secundaire beheerde exemplaar, zoals `sql-mi-secondary`.  | 
     | **Regio**| De locatie voor uw secundaire beheerde exemplaar.  |
-    | **Aanmelding van SQL Managed instance-beheerder** | De aanmelding die u wilt gebruiken voor uw nieuwe, secundaire beheerde exemplaar, zoals `azureuser` . |
-    | **Wachtwoord** | Een complex wacht woord dat wordt gebruikt door de beheerders aanmelding voor het nieuwe secundaire beheerde exemplaar.  |
+    | **Aanmeldingsgegevens voor een beheerder voor het met SQL beheerde exemplaar** | De aanmeldingsgegevens die u wilt gebruiken voor uw nieuwe, secundaire beheerde exemplaar, zoals `azureuser`. |
+    | **Wachtwoord** | Een complex wachtwoord dat wordt gebruikt voor de beheerdersaanmelding bij het nieuwe secundaire beheerde exemplaar.  |
     | &nbsp; | &nbsp; |
 
-1. Selecteer op het tabblad **netwerken** , voor de **Virtual Network**, het virtuele netwerk dat u hebt gemaakt voor het secundaire beheerde exemplaar in de vervolg keuzelijst.
+1. Selecteer in de vervolgkeuzelijst op het tabblad **Netwerken** voor **Virtueel netwerk** het virtuele netwerk dat u hebt gemaakt voor het secundaire beheerde exemplaar.
 
    ![Secundaire MI-netwerken](./media/failover-group-add-instance-tutorial/networking-settings-for-secondary-mi.png)
 
-1. Klik op het tabblad **extra instellingen** , voor **geo-replicatie**, op **Ja** als u een _secundaire failover wilt gebruiken_. Selecteer de primaire beheerde instantie in de vervolg keuzelijst. 
+1. Kies op het tabblad **Aanvullende instellingen** bij **Geo-replicatie** **Ja** om te _Gebruiken als secundaire failover_. Selecteer in de vervolgkeuzelijst het primaire beheerde exemplaar. 
     
-   Zorg ervoor dat de sortering en tijd zone overeenkomen met die van het primaire beheerde exemplaar. Het primaire beheerde exemplaar dat in deze zelf studie wordt gemaakt, gebruikt de standaard waarde voor `SQL_Latin1_General_CP1_CI_AS` sortering en `(UTC) Coordinated Universal Time` tijd zone. 
+   Zorg ervoor dat de sortering en tijdzone overeenkomen met die van het primaire beheerde exemplaar. Het primaire beheerde exemplaar dat u in deze zelfstudie hebt gemaakt, gebruikt de standaardwaarde `SQL_Latin1_General_CP1_CI_AS` voor collatie en `(UTC) Coordinated Universal Time` voor tijdzone. 
 
-   ![Secundaire beheerde instantie netwerken](./media/failover-group-add-instance-tutorial/secondary-mi-failover.png)
+   ![Netwerken voor secundair beheerd exemplaar](./media/failover-group-add-instance-tutorial/secondary-mi-failover.png)
 
-1. Selecteer **controleren + maken** om de instellingen voor uw secundaire beheerde exemplaar te controleren. 
-1. Selecteer **maken** om uw secundaire beheerde instantie te maken. 
+1. Selecteer **Controleren + maken** om de instellingen voor het secundaire beheerde exemplaar te controleren. 
+1. Selecteer **Maken** om het secundaire beheerde exemplaar te maken. 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Maak het secundaire beheerde exemplaar met behulp van Power shell. 
+Het tweede secundaire beheerde exemplaar maken met behulp van PowerShell. 
 
    ```powershell-interactive
    # Configure the secondary virtual network
@@ -714,7 +714,7 @@ Maak het secundaire beheerde exemplaar met behulp van Power shell.
    Write-host "Secondary SQL Managed Instance created successfully."
    ```
 
-In dit gedeelte van de zelf studie worden de volgende Power shell-cmdlets gebruikt:
+In dit gedeelte van de zelfstudie wordt gebruikgemaakt van de volgende PowerShell-cmdlets:
 
 | Opdracht | Opmerkingen |
 |---|---|
@@ -738,54 +738,54 @@ In dit gedeelte van de zelf studie worden de volgende Power shell-cmdlets gebrui
 
 ## <a name="create-a-primary-gateway"></a>Een primaire gateway maken 
 
-Voor twee beheerde instanties om deel te nemen aan een failovergroep moet er een ExpressRoute of een gateway zijn geconfigureerd tussen de virtuele netwerken van de twee beheerde instanties om netwerk communicatie toe te staan. Als u ervoor kiest om [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) te configureren in plaats van twee VPN-gateways te verbinden, gaat u verder met [stap 7](#create-a-failover-group).  
+Twee beheerde exemplaren kunnen alleen deel uitmaken van een failovergroep als ExpressRoute of een gateway tussen de virtuele netwerken van de twee beheerde exemplaren is geconfigureerd, om netwerkcommunicatie toe te staan. Als u ervoor kiest om [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) te configureren in plaats van twee VPN-gateways te verbinden, gaat u verder met [Stap 7](#create-a-failover-group).  
 
-In dit artikel worden de stappen beschreven voor het maken van de twee VPN-gateways en het verbinden ervan, maar u kunt door gaan met het maken van de failovergroep als u in plaats daarvan ExpressRoute hebt geconfigureerd. 
+In dit artikel worden de stappen beschreven voor het maken van de twee VPN-gateways en het verbinden ervan, maar u kunt doorgaan met het maken van de failovergroep als u in plaats hiervan ExpressRoute hebt geconfigureerd. 
 
 > [!NOTE]
-> De SKU van de gateway is van invloed op de doorvoer prestaties. In deze zelf studie wordt een gateway met de meest elementaire SKU ( `HwGw1` ) geïmplementeerd. Implementeer een hogere SKU (bijvoorbeeld: `VpnGw3` ) om een hogere door voer te krijgen. Zie [Gateway-sku's](../../vpn-gateway/vpn-gateway-about-vpngateways.md#benchmark) voor alle beschik bare opties.
+> De SKU van de gateway beïnvloedt de doorvoerprestaties. In deze zelfstudie wordt een gateway geïmplementeerd met de meest eenvoudige SKU (`HwGw1`). Implementeer een hogere SKU (voorbeeld: `VpnGw3`) om een hogere doorvoer te krijgen. Zie [Gateway-SKU's](../../vpn-gateway/vpn-gateway-about-vpngateways.md#benchmark) voor alle beschikbare opties
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Maak de gateway voor het virtuele netwerk van uw primaire beheerde exemplaar met behulp van de Azure Portal. 
+De gateway voor het virtuele netwerk van het primaire beheerde exemplaar maken met behulp van de Azure-portal. 
 
 
-1. Ga in het [Azure Portal](https://portal.azure.com)naar de resource groep en selecteer de **virtuele netwerk** resource voor uw primaire beheerde exemplaar. 
-1. Selecteer **subnetten** onder **instellingen** en selecteer vervolgens om een nieuw **Gateway-subnet**toe te voegen. De standaard waarden behouden. 
+1. Ga in de [Azure-portal](https://portal.azure.com) naar uw resourcegroep en selecteer de resource **Virtueel netwerk** voor uw primaire beheerde exemplaar. 
+1. Selecteer **Subnetten** onder **Instellingen**, en selecteer vervolgens om een nieuw **Gatewaysubnet** te maken. Laat de standaardwaarden staan. 
 
-   ![Gateway toevoegen voor primair beheerde exemplaar](./media/failover-group-add-instance-tutorial/add-subnet-gateway-primary-vnet.png)
+   ![Gateway toevoegen voor primair beheerd exemplaar](./media/failover-group-add-instance-tutorial/add-subnet-gateway-primary-vnet.png)
 
-1. Nadat de subnet gateway is gemaakt, selecteert u **een resource maken** in het navigatie deel venster links en typt u `Virtual network gateway` in het zoekvak. Selecteer de bron van de **virtuele netwerk gateway** die is gepubliceerd door **micro soft**. 
+1. Nadat de subnetgateway is gemaakt, selecteert u **Een resource maken** in het linkernavigatievenster, en typt u vervolgens `Virtual network gateway` in het zoekvak. Selecteer de resource **Virtuele netwerkgateway** die is gepubliceerd door **Microsoft**. 
 
-   ![Een nieuwe gateway voor het virtuele netwerk maken](./media/failover-group-add-instance-tutorial/create-virtual-network-gateway.png)
+   ![Een virtuele netwerkgateway maken](./media/failover-group-add-instance-tutorial/create-virtual-network-gateway.png)
 
-1. Vul de vereiste velden in om de gateway te configureren voor uw primaire beheerde exemplaar. 
+1. Vul de vereiste velden in om de gateway voor uw primaire beheerde exemplaar te configureren. 
 
    In de volgende tabel ziet u de waarden die nodig zijn voor de gateway voor het primaire beheerde exemplaar:
  
     | **Veld** | Waarde |
     | --- | --- |
-    | **Abonnement** |  Het abonnement waar uw primaire beheerde instantie zich bevindt. |
-    | **Naam** | De naam van de gateway van uw virtuele netwerk, zoals `primary-mi-gateway` . | 
-    | **Regio** | De regio waar uw primaire beheerde instantie zich bevindt. |
+    | **Abonnement** |  Het abonnement waarin uw primaire beheerde exemplaar zich bevindt. |
+    | **Naam** | De naam voor de virtuele netwerkgateway, zoals `primary-mi-gateway`. | 
+    | **Regio** | De regio waarin uw primaire beheerde exemplaar zich bevindt. |
     | **Gatewaytype** | Selecteer **VPN**. |
     | **VPN-type** | Selecteer **Op route gebaseerd**. |
-    | **SKU**| De standaard waarde van wijzigen `VpnGw1` . |
-    | **Virtueel netwerk**| Selecteer het virtuele netwerk dat is gemaakt in sectie 2, zoals `vnet-sql-mi-primary` . |
+    | **SKU**| Laat de standaardinstelling `VpnGw1` staan. |
+    | **Virtueel netwerk**| Selecteer het virtuele netwerk dat is gemaakt in sectie 2, zoals `vnet-sql-mi-primary`. |
     | **Openbaar IP-adres**| Selecteer **Nieuw maken**. |
-    | **Naam openbaar IP-adres**| Voer een naam in voor uw IP-adres, zoals `primary-gateway-IP` . |
+    | **Naam openbaar IP-adres**| Voer een naam in voor het IP-adres, zoals `primary-gateway-IP`. |
     | &nbsp; | &nbsp; |
 
-1. Wijzig de andere waarden als standaard en selecteer vervolgens **controleren + maken** om de instellingen voor de gateway van uw virtuele netwerk te controleren.
+1. Laat verder alle standaardwaarden staan, en selecteer **Controleren + maken** om de instellingen voor de virtuele netwerkgateway te controleren.
 
-   ![Primaire gateway-instellingen](./media/failover-group-add-instance-tutorial/settings-for-primary-gateway.png)
+   ![Instellingen voor de primaire gateway](./media/failover-group-add-instance-tutorial/settings-for-primary-gateway.png)
 
-1. Selecteer **maken** om de nieuwe virtuele netwerk gateway te maken. 
+1. Selecteer **Maken** om de nieuwe virtuele netwerkgateway te maken. 
 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Maak de gateway voor het virtuele netwerk van uw primaire beheerde exemplaar met behulp van Power shell. 
+De gateway voor het virtuele netwerk van het primaire beheerde exemplaar maken met behulp van PowerShell. 
 
    ```powershell-interactive
    # Create the primary gateway
@@ -818,7 +818,7 @@ Maak de gateway voor het virtuele netwerk van uw primaire beheerde exemplaar met
    $primaryGateway
    ```
 
-In dit gedeelte van de zelf studie worden de volgende Power shell-cmdlets gebruikt:
+In dit gedeelte van de zelfstudie wordt gebruikgemaakt van de volgende PowerShell-cmdlets:
 
 | Opdracht | Opmerkingen |
 |---|---|
@@ -827,42 +827,42 @@ In dit gedeelte van de zelf studie worden de volgende Power shell-cmdlets gebrui
 | [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | Hiermee werkt u een virtueel netwerk bij.  |
 | [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) | Hiermee haalt u een subnet in een virtueel netwerk op. |
 | [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) | Hiermee maakt u een openbaar IP-adres.  | 
-| [New-AzVirtualNetworkGatewayIpConfig](/powershell/module/az.network/new-azvirtualnetworkgatewayipconfig) | Hiermee maakt u een IP-configuratie voor een virtuele netwerk gateway. |
-| [New-AzVirtualNetworkGateway](/powershell/module/az.network/new-azvirtualnetworkgateway) | Hiermee maakt u een virtuele netwerk gateway. |
+| [New-AzVirtualNetworkGatewayIpConfig](/powershell/module/az.network/new-azvirtualnetworkgatewayipconfig) | Hiermee maakt u een IP-configuratie voor een virtuele netwerkgateway. |
+| [New-AzVirtualNetworkGateway](/powershell/module/az.network/new-azvirtualnetworkgateway) | Hiermee maakt u een virtuele netwerkgateway. |
 
 
 ---
 
 
 ## <a name="create-secondary-gateway"></a>Secundaire gateway maken 
-In deze stap maakt u de gateway voor het virtuele netwerk van uw secundaire beheerde exemplaar met behulp van de Azure Portal. 
+In deze stap maakt u de gateway voor het virtuele netwerk van het secundaire beheerde exemplaar met behulp van de Azure-portal. 
 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Herhaal de stappen in de vorige sectie om het subnet van het virtuele netwerk en de gateway voor het secundaire beheerde exemplaar te maken met behulp van de Azure Portal. Vul de vereiste velden in om de gateway te configureren voor uw secundaire beheerde exemplaar. 
+Herhaal met behulp van de Azure-portal de stappen uit de vorige sectie om het subnet en de gateway voor het virtuele netwerk te maken voor het secundaire beheerde exemplaar. Vul de vereiste velden in om de gateway voor uw secundaire beheerde exemplaar te configureren. 
 
    In de volgende tabel ziet u de waarden die nodig zijn voor de gateway voor het secundaire beheerde exemplaar:
 
    | **Veld** | Waarde |
    | --- | --- |
-   | **Abonnement** |  Het abonnement waar uw secundaire beheerde instantie zich bevindt. |
-   | **Naam** | De naam van de gateway van uw virtuele netwerk, zoals `secondary-mi-gateway` . | 
-   | **Regio** | De regio waar uw secundaire beheerde instantie zich bevindt. |
+   | **Abonnement** |  Het abonnement waarin uw secundaire beheerde exemplaar zich bevindt. |
+   | **Naam** | De naam voor de virtuele netwerkgateway, zoals `secondary-mi-gateway`. | 
+   | **Regio** | De regio waarin uw secundaire beheerde exemplaar zich bevindt. |
    | **Gatewaytype** | Selecteer **VPN**. |
    | **VPN-type** | Selecteer **Op route gebaseerd**. |
-   | **SKU**| De standaard waarde van wijzigen `VpnGw1` . |
-   | **Virtueel netwerk**| Selecteer het virtuele netwerk voor het secundaire beheerde exemplaar, zoals `vnet-sql-mi-secondary` . |
+   | **SKU**| Laat de standaardinstelling `VpnGw1` staan. |
+   | **Virtueel netwerk**| Selecteer het virtuele netwerk voor het secundaire beheerde exemplaar, zoals `vnet-sql-mi-secondary`. |
    | **Openbaar IP-adres**| Selecteer **Nieuw maken**. |
-   | **Naam openbaar IP-adres**| Voer een naam in voor uw IP-adres, zoals `secondary-gateway-IP` . |
+   | **Naam openbaar IP-adres**| Voer een naam in voor het IP-adres, zoals `secondary-gateway-IP`. |
    | &nbsp; | &nbsp; |
 
-   ![Instellingen van secundaire gateway](./media/failover-group-add-instance-tutorial/settings-for-secondary-gateway.png)
+   ![Instellingen voor de secundaire gateway](./media/failover-group-add-instance-tutorial/settings-for-secondary-gateway.png)
 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Maak de gateway voor het virtuele netwerk van het secundaire beheerde exemplaar met behulp van Power shell. 
+De gateway voor het virtuele netwerk van het secundaire beheerde exemplaar maken met behulp van PowerShell. 
 
    ```powershell-interactive
    # Create the secondary gateway
@@ -898,7 +898,7 @@ Maak de gateway voor het virtuele netwerk van het secundaire beheerde exemplaar 
    $secondaryGateway
    ```
 
-In dit gedeelte van de zelf studie worden de volgende Power shell-cmdlets gebruikt:
+In dit gedeelte van de zelfstudie wordt gebruikgemaakt van de volgende PowerShell-cmdlets:
 
 | Opdracht | Opmerkingen |
 |---|---|
@@ -907,47 +907,47 @@ In dit gedeelte van de zelf studie worden de volgende Power shell-cmdlets gebrui
 | [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | Hiermee werkt u een virtueel netwerk bij.  |
 | [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) | Hiermee haalt u een subnet in een virtueel netwerk op. |
 | [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) | Hiermee maakt u een openbaar IP-adres.  | 
-| [New-AzVirtualNetworkGatewayIpConfig](/powershell/module/az.network/new-azvirtualnetworkgatewayipconfig) | Hiermee maakt u een IP-configuratie voor een virtuele netwerk gateway. |
-| [New-AzVirtualNetworkGateway](/powershell/module/az.network/new-azvirtualnetworkgateway) | Hiermee maakt u een virtuele netwerk gateway. |
+| [New-AzVirtualNetworkGatewayIpConfig](/powershell/module/az.network/new-azvirtualnetworkgatewayipconfig) | Hiermee maakt u een IP-configuratie voor een virtuele netwerkgateway. |
+| [New-AzVirtualNetworkGateway](/powershell/module/az.network/new-azvirtualnetworkgateway) | Hiermee maakt u een virtuele netwerkgateway. |
 
 ---
 
 
 ## <a name="connect-the-gateways"></a>De gateways verbinden
-In deze stap maakt u een bidirectionele verbinding tussen de twee gateways van de twee virtuele netwerken. 
+In deze stap maakt u een verbinding in twee richtingen tussen de beide gateways van de twee virtuele netwerken. 
 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Verbind de twee gateways met behulp van de Azure Portal. 
+De twee gateways verbinden met behulp van de Azure-portal. 
 
 
-1. Selecteer **een resource maken** op basis van de [Azure Portal](https://portal.azure.com).
-1. Typ `connection` in het zoekvak en druk vervolgens op ENTER om te zoeken. Hiermee gaat u naar de **verbindings** bron, gepubliceerd door micro soft.
-1. Selecteer **maken** om uw verbinding te maken. 
-1. Selecteer op de pagina **basis beginselen** de volgende waarden en selecteer vervolgens **OK**. 
-    1. Selecteer `VNet-to-VNet` voor het **verbindings type**. 
+1. Selecteer **Een resource maken** in de [Azure-portal](https://portal.azure.com).
+1. Typ `connection` in het zoekvak, en druk vervolgens op Enter om te zoeken. Dit brengt u naar de resource **Verbinding**, gepubliceerd door Microsoft.
+1. Selecteer **Maken** om de verbinding te maken. 
+1. Selecteer op de pagina **Basisbeginselen** de volgende waarden, en selecteer vervolgens **OK**. 
+    1. Selecteer `VNet-to-VNet` voor **Verbindingstype**. 
     1. Selecteer uw abonnement in de vervolgkeuzelijst. 
-    1. Selecteer de resource groep voor SQL Managed instance in de vervolg keuzelijst. 
-    1. Selecteer de locatie van uw primaire beheerde instantie in de vervolg keuzelijst. 
-1. Selecteer op de pagina **instellingen** de volgende waarden of voer deze in en selecteer **OK**:
-    1. Kies de primaire netwerk gateway voor de **eerste virtuele netwerk gateway**, zoals `primaryGateway` .  
-    1. Kies de secundaire netwerk gateway voor de **tweede virtuele netwerk gateway**, zoals `secondaryGateway` . 
-    1. Schakel het selectie vakje in naast **bidirectionele connectiviteit instellen**. 
-    1. Wijzig de standaard naam van de primaire verbinding of geef deze de gewenste waarde. 
-    1. Geef een **gedeelde sleutel (PSK)** op voor de verbinding, zoals `mi1m2psk` . 
+    1. Selecteer de resourcegroep voor SQL Managed Instance in de vervolgkeuzelijst. 
+    1. Selecteer de locatie van uw primaire beheerde instantie in de vervolgkeuzelijst. 
+1. Selecteer op de pagina **Instellingen** de volgende waarden, of voer ze in, en selecteer vervolgens **OK**:
+    1. Kies de primaire netwerkgateway voor de **Eerste virtuele netwerkgateway**, zoals `primaryGateway`.  
+    1. Kies de secundaire netwerkgateway voor de **Tweede virtuele netwerkgateway**, zoals `secondaryGateway`. 
+    1. Schakel het selectievakje in naast **Connectiviteit in twee richtingen tot stand brengen**. 
+    1. Laat de standaardnaam voor de primaire verbinding staan, of kies een nieuwe naam naar keuze. 
+    1. Geef een **Gedeelde sleutel (PSK)** op voor de verbinding, zoals `mi1m2psk`. 
     1. Selecteer **OK** om uw wijzigingen op te slaan. 
 
-    ![Gateway verbinding maken](./media/failover-group-add-instance-tutorial/create-gateway-connection.png)
+    ![Gatewayverbinding maken](./media/failover-group-add-instance-tutorial/create-gateway-connection.png)
 
     
 
-1. Controleer op de pagina **controleren en maken** de instellingen voor uw bidirectionele verbinding en selecteer vervolgens **OK** om de verbinding te maken. 
+1. Controleer op de pagina **Controleren + maken** de instellingen voor de verbinding in twee richtingen, en selecteer vervolgens **OK** om de verbinding te maken. 
 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Verbind de twee gateways met behulp van Power shell. 
+De twee gateways verbinden met behulp van PowerShell. 
 
    ```powershell-interactive
    # Connect the primary to secondary gateway
@@ -966,7 +966,7 @@ Verbind de twee gateways met behulp van Power shell.
    $secondaryGWConnection
    ```
 
-In dit gedeelte van de zelf studie wordt gebruikgemaakt van de volgende Power shell-cmdlet:
+In dit gedeelte van de zelfstudie wordt gebruikgemaakt van de volgende PowerShell-cmdlet:
 
 | Opdracht | Opmerkingen |
 |---|---|
@@ -976,28 +976,28 @@ In dit gedeelte van de zelf studie wordt gebruikgemaakt van de volgende Power sh
 
 
 ## <a name="create-a-failover-group"></a>Een failovergroep maken
-In deze stap maakt u de failovergroep en voegt u beide beheerde exemplaren toe aan de groep. 
+In deze stap maakt u de failovergroep, en voegt u beide beheerde exemplaren toe aan deze groep. 
 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-Maak de failover-groep met behulp van de Azure Portal. 
+De failovergroep maken met behulp van de Azure-portal. 
 
 
-1. Selecteer **Azure SQL** in het linkermenu van de [Azure Portal](https://portal.azure.com). Als **Azure SQL** niet voor komt in de lijst, selecteert u **alle services**en typt u `Azure SQL` in het zoekvak. Beschrijving Selecteer de ster naast **Azure SQL** om deze te favoriet en voeg deze toe als een item in de linkernavigatiebalk. 
-1. Selecteer de primaire beheerde instantie die u in de eerste sectie hebt gemaakt, zoals `sql-mi-primary` . 
-1. Navigeer onder **instellingen**naar **failover-groepen voor instanties** en kies vervolgens **groep toevoegen** om de pagina **failover-groep voor instanties** te openen. 
+1. Selecteer **Azure SQL** in het menu aan de linkerzijde van de [Azure-portal](https://portal.azure.com). Als **Azure SQL** niet voorkomt in de lijst, selecteert u **Alle services** en typt u `Azure SQL` in het zoekvak. (Optioneel) Selecteer de ster naast **Azure SQL** om deze favoriet te maken en toe te voegen als item in de linkernavigatiebalk. 
+1. Selecteer het primaire beheerde exemplaar dat u in de eerste sectie hebt gemaakt, zoals `sql-mi-primary`. 
+1. Ga onder **Instellingen** naar **Exemplaarfailovergroepen**, en kies vervolgens **Groep toevoegen** om de pagina **Exemplaarfailovergroep** te openen. 
 
    ![Een failovergroep toevoegen](./media/failover-group-add-instance-tutorial/add-failover-group.png)
 
-1. Typ op de pagina **failovergroep voor instanties** de naam van de failovergroep, zoals `failovergrouptutorial` . Kies vervolgens het secundaire beheerde exemplaar, zoals `sql-mi-secondary` in de vervolg keuzelijst. Selecteer **maken** om uw failovergroep te maken. 
+1. Typ op de pagina **Exemplaarfailovergroep** de naam van de failovergroep, zoals `failovergrouptutorial`. Kies vervolgens in de vervolgkeuzelijst het secundaire beheerde exemplaar, zoals `sql-mi-secondary`. Selecteer **Maken** om de failovergroep te maken. 
 
    ![Failovergroep maken](./media/failover-group-add-instance-tutorial/create-failover-group.png)
 
-1. Zodra de implementatie van de failovergroep is voltooid, wordt u teruggeleid naar de pagina **failover-groep** . 
+1. Zodra de implementatie van de failovergroep is voltooid, wordt u teruggeleid naar de pagina **Failovergroep**. 
 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-Maak de failover-groep met behulp van Power shell. 
+De failovergroep maken met behulp van PowerShell. 
 
    ```powershell-interactive
    Write-host "Creating the failover group..."
@@ -1008,7 +1008,7 @@ Maak de failover-groep met behulp van Power shell.
    $failoverGroup
    ```
 
-In dit gedeelte van de zelf studie wordt gebruikgemaakt van de volgende Power shell-cmdlet:
+In dit gedeelte van de zelfstudie wordt gebruikgemaakt van de volgende PowerShell-cmdlet:
 
 | Opdracht | Opmerkingen |
 |---|---|
@@ -1019,28 +1019,28 @@ In dit gedeelte van de zelf studie wordt gebruikgemaakt van de volgende Power sh
 
 
 ## <a name="test-failover"></a>Testfailover
-In deze stap wordt uw failover-groep overschreven naar de secundaire server en wordt er een failback uitgevoerd met behulp van de Azure Portal. 
+In deze stap voert u een failover van uw failovergroep naar de secundaire server uit, en voert u vervolgens een failback uit met behulp van de Azure-portal. 
 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-Testfailover met behulp van de Azure Portal. 
+Failover testen met behulp van de Azure-portal. 
 
 
-1. Navigeer naar uw _secundaire_ beheerde exemplaar binnen de [Azure Portal](https://portal.azure.com) en selecteer **failover-groepen voor instanties** onder instellingen. 
-1. Controleer welk beheerde exemplaar het primaire is en welk Managed instance het secundaire exemplaar is. 
-1. Selecteer **failover** en selecteer vervolgens **Ja** in de waarschuwing over TDS-sessies die worden losgekoppeld. 
+1. Ga naar uw _secundaire_ beheerde exemplaar in de [Azure-portal](https://portal.azure.com), en selecteer onder Instellingen de optie **Exemplaarfailovergroepen**. 
+1. Controleer welk beheerde exemplaar het primaire is en welk beheerde exemplaar het secundaire is. 
+1. Selecteer **Failover** en selecteer vervolgens **Ja** bij de waarschuwing over het verbreken van de verbinding met TDS-sessies. 
 
-   ![Failover-groep](./media/failover-group-add-instance-tutorial/failover-mi-failover-group.png)
+   ![Failover uitvoeren voor de failovergroep](./media/failover-group-add-instance-tutorial/failover-mi-failover-group.png)
 
-1. Controleer welk beheerde exemplaar het primaire is en welk beheerde exemplaar het secundaire is. Als de failover is geslaagd, moeten de twee exemplaren geschakelde rollen hebben. 
+1. Controleer welk beheerde exemplaar het primaire is en welk beheerde exemplaar het secundaire is. Als de failover is geslaagd, zijn de twee exemplaren van rol gewisseld. 
 
-   ![Beheerde instanties hebben geswitcheerde rollen na een failover](./media/failover-group-add-instance-tutorial/mi-switched-after-failover.png)
+   ![Beheerde exemplaren zijn na de failover van rol gewisseld](./media/failover-group-add-instance-tutorial/mi-switched-after-failover.png)
 
-1. Ga naar het nieuwe _secundaire_ beheerde exemplaar en selecteer eenmalig **failover** opnieuw om de primaire instantie terug te laten werken naar de primaire rol. 
+1. Ga naar het nieuwe _secundaire_ beheerde exemplaar, en selecteer **Failover** opnieuw om het primaire exemplaar weer terug te zetten naar de primaire rol. 
 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-Testfailover met behulp van Power shell. 
+Failover testen met behulp van PowerShell. 
 
    ```powershell-interactive
     
@@ -1056,7 +1056,7 @@ Testfailover met behulp van Power shell.
    ```
 
 
-Herstel de failovergroep terug naar de primaire server:
+Herstel de failovergroep weer naar de primaire server:
 
    ```powershell-interactive
    # Verify the current primary role
@@ -1074,7 +1074,7 @@ Herstel de failovergroep terug naar de primaire server:
        -Location $location -Name $failoverGroupName
    ```
 
-In dit gedeelte van de zelf studie worden de volgende Power shell-cmdlets gebruikt:
+In dit gedeelte van de zelfstudie wordt gebruikgemaakt van de volgende PowerShell-cmdlets:
 
 | Opdracht | Opmerkingen |
 |---|---|
@@ -1086,18 +1086,18 @@ In dit gedeelte van de zelf studie worden de volgende Power shell-cmdlets gebrui
 
 
 ## <a name="clean-up-resources"></a>Resources opschonen
-U kunt resources opschonen door eerst de beheerde instanties, het virtuele cluster, vervolgens de resterende resources en ten slotte de resource groep te verwijderen. 
+U kunt resources opschonen door eerst de beheerde exemplaren te verwijderen, vervolgens het virtuele cluster, daarna eventuele resterende resources, en ten slotte de resourcegroep. 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 1. Navigeer in [Azure Portal](https://portal.azure.com) naar uw resourcegroep. 
-1. Selecteer het beheerde exemplaar of de beheerde exemplaren en selecteer vervolgens **Verwijderen**. Typ `yes` in het tekstvak om te bevestigen dat u de resource wilt verwijderen en selecteer vervolgens **Verwijderen**. Het kan enige tijd duren voordat dit proces op de achtergrond is voltooid. Zolang het nog niet is voltooid, kunt u het *virtuele cluster* of andere afhankelijke resources niet verwijderen. Controleer de verwijdering op het tabblad **activiteit** om te bevestigen dat uw beheerde exemplaar is verwijderd. 
+1. Selecteer het beheerde exemplaar of de beheerde exemplaren en selecteer vervolgens **Verwijderen**. Typ `yes` in het tekstvak om te bevestigen dat u de resource wilt verwijderen en selecteer vervolgens **Verwijderen**. Het kan enige tijd duren voordat dit proces op de achtergrond is voltooid. Zolang het nog niet is voltooid, kunt u het *virtuele cluster* of andere afhankelijke resources niet verwijderen. Controleer de verwijdering op het tabblad **Activiteit** om na te gaan of uw beheerde exemplaar is verwijderd. 
 1. Wanneer het beheerde exemplaar is verwijderd, verwijdert u het *virtuele cluster* door dit te selecteren in uw resourcegroep en vervolgens **Verwijderen** te kiezen. Typ `yes` in het tekstvak om te bevestigen dat u de resource wilt verwijderen en selecteer vervolgens **Verwijderen**. 
 1. Verwijder eventuele andere resources. Typ `yes` in het tekstvak om te bevestigen dat u de resource wilt verwijderen en selecteer vervolgens **Verwijderen**. 
 1. Verwijder de resourcegroep door **Resourcegroep verwijderen** te selecteren, de naam van de resourcegroep, `myResourceGroup`, in te voeren en vervolgens **Verwijderen** te selecteren. 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-U moet de resourcegroep twee keer verwijderen. Als u de resource groep de eerste keer verwijdert, worden de beheerde exemplaren en virtuele clusters verwijderd, maar wordt het fout bericht niet meer weer gegeven `Remove-AzResourceGroup : Long running operation failed with status 'Conflict'` . Voer de opdracht Remove-AzResourceGroup een tweede keer uit om eventuele resterende resources en de resourcegroep te verwijderen.
+U moet de resourcegroep twee keer verwijderen. Als u de resourcegroep de eerste keer verwijdert, worden de beheerde exemplaren en de virtuele clusters verwijderd, maar daarna wordt het foutbericht `Remove-AzResourceGroup : Long running operation failed with status 'Conflict'` weergegeven. Voer de opdracht Remove-AzResourceGroup een tweede keer uit om eventuele resterende resources en de resourcegroep te verwijderen.
 
 ```powershell-interactive
 Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
@@ -1106,7 +1106,7 @@ Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
 Write-host "Removing residual resources and resource group..."
 ```
 
-In dit gedeelte van de zelf studie wordt gebruikgemaakt van de volgende Power shell-cmdlet:
+In dit gedeelte van de zelfstudie wordt gebruikgemaakt van de volgende PowerShell-cmdlet:
 
 | Opdracht | Opmerkingen |
 |---|---|
@@ -1140,33 +1140,33 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 | [New-AzSqlInstance](/powershell/module/az.sql/new-azsqlinstance) | Hiermee maakt u een beheerd exemplaar.  |
 | [Get-AzSqlInstance](/powershell/module/az.sql/get-azsqlinstance)| Hiermee retourneert u informatie over een met Azure SQL beheerd exemplaar. |
 | [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) | Hiermee maakt u een openbaar IP-adres.  | 
-| [New-AzVirtualNetworkGatewayIpConfig](/powershell/module/az.network/new-azvirtualnetworkgatewayipconfig) | Hiermee maakt u een IP-configuratie voor een virtuele netwerk gateway. |
-| [New-AzVirtualNetworkGateway](/powershell/module/az.network/new-azvirtualnetworkgateway) | Hiermee maakt u een virtuele netwerk gateway. |
+| [New-AzVirtualNetworkGatewayIpConfig](/powershell/module/az.network/new-azvirtualnetworkgatewayipconfig) | Hiermee maakt u een IP-configuratie voor een virtuele netwerkgateway. |
+| [New-AzVirtualNetworkGateway](/powershell/module/az.network/new-azvirtualnetworkgateway) | Hiermee maakt u een virtuele netwerkgateway. |
 | [New-AzVirtualNetworkGatewayConnection](/powershell/module/az.network/new-azvirtualnetworkgatewayconnection) | Hiermee maakt u een verbinding tussen de twee virtuele netwerkgateways.   |
-| [New-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup)| Hiermee maakt u een nieuwe failover-groep voor een SQL-beheerd exemplaar.  |
+| [New-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup)| Hiermee maakt u een nieuwe failovergroep voor SQL Managed Instance.  |
 | [Get-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/get-azsqldatabaseinstancefailovergroup) | Hiermee haalt u failovergroepen voor Azure SQL Managed Instance op of vermeldt u deze.| 
 | [Switch-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) | Hiermee voert u een nieuwe failover uit voor een failovergroep voor SQL Managed Instance. | 
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep. | 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal) 
 
-Er zijn geen scripts beschikbaar voor de Azure Portal.
+Er zijn geen scripts beschikbaar voor de Azure-portal.
 
 ---
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u een failovergroep geconfigureerd tussen twee beheerde exemplaren. U hebt geleerd hoe u:
+In deze zelfstudie hebt u een failovergroep geconfigureerd tussen twee beheerde exemplaren. U hebt geleerd hoe u:
 
 > [!div class="checklist"]
-> - Maak een primair beheerd exemplaar.
-> - Maak een secundair beheerd exemplaar als onderdeel van een [failovergroep](../database/auto-failover-group-overview.md). 
-> - Testfailover.
+> - Een primair beheerd exemplaar maken.
+> - Een secundair beheerd exemplaar maken als onderdeel van een [failovergroep](../database/auto-failover-group-overview.md). 
+> - Failover testen.
 
-Ga naar de volgende Snelstartgids over het maken van verbinding met een SQL Managed instance en het herstellen van een Data Base naar een SQL Managed instance: 
+Ga naar de volgende quickstart over het verbinding maken met een met SQL beheerd exemplaar, en het herstellen van een database in SQL Managed Instance: 
 
 > [!div class="nextstepaction"]
-> [Verbinding maken met een SQL-beheerd exemplaar](connect-vm-instance-configure.md) 
->  [Een Data Base herstellen naar een beheerd exemplaar van SQL](restore-sample-database-quickstart.md)
+> [Verbinding maken met een met SQL beheerd exemplaar](connect-vm-instance-configure.md)
+> [Een database herstellen in SQL Managed Instance](restore-sample-database-quickstart.md)
 
 

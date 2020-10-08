@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: 28b055cb343b7f894a28eee5fbe452d037fd6b0e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 007598046ae64b390d44e61438b69bd26024b1c4
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249487"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91626884"
 ---
 # <a name="import-an-api-app-as-an-api"></a>Een API-app importeren als API
 
@@ -56,7 +56,7 @@ In dit artikel leert u het volgende:
 
     * **Starter**
     * **Onbeperkt**   
-7. Voer andere API-instellingen in. U kunt de waarden instellen tijdens het maken of later configureren door naar het tabblad **Instellingen** te gaan. De instellingen worden beschreven in de zelfstudie [Uw eerste API importeren en publiceren](import-and-publish.md#-import-and-publish-a-backend-api).
+7. Voer andere API-instellingen in. U kunt de waarden instellen tijdens het maken of later configureren door naar het tabblad **Instellingen** te gaan. De instellingen worden beschreven in de zelfstudie [Uw eerste API importeren en publiceren](import-and-publish.md#import-and-publish-a-backend-api).
 8. Selecteer **Maken**.
 
 ## <a name="test-the-new-api-in-the-azure-portal"></a>De nieuwe API testen in de Azure-portal

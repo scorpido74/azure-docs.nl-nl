@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 08/25/2020
+ms.date: 09/30/2020
 ms.author: victorh
-ms.openlocfilehash: ae220a1b70be7178c4c2fea01103991c8729ae79
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 00a84fbf694a58128712abf806ff12df96f0e5e9
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855054"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91596690"
 ---
 # <a name="what-is-azure-firewall-manager"></a>Wat is Azure Firewall Manager?
 
@@ -78,7 +78,7 @@ Azure Firewall Manager heeft de volgende bekende problemen:
 
 |Probleem  |Beschrijving  |Oplossing  |
 |---------|---------|---------|
-|Opsplitsen van verkeer|Het opsplitsen van verkeer met Office 365 en Azure Public PaaS wordt momenteel niet ondersteund. Als u een externe provider voor V2I of B2I selecteert, wordt daardoor ook al het Azure Public PaaS- en Office 365-verkeer via de partnerservice verzonden.|Het opsplitsen van verkeer bij de hub wordt momenteel onderzocht.
+|Opsplitsen van verkeer|Het opsplitsen van verkeer met Microsoft 365 en Azure Public PaaS wordt momenteel niet ondersteund. Als u een provider van derden voor V2I of B2I selecteert, wordt daardoor ook al het Azure Public PaaS- en Microsoft 365-verkeer via de partnerservice verzonden.|Het opsplitsen van verkeer bij de hub wordt momenteel onderzocht.
 |Eén beveiligde virtuele hub per regio|U mag niet meer dan één beveiligde virtuele hub per regio hebben.|Maak meerdere virtuele WAN's in een regio.|
 |Basisbeleidsregels moeten zich in dezelfde regio als het lokale beleid bevinden|Maak al uw lokale beleidsregels in dezelfde regio als het basisbeleid. U kunt nog steeds een beleid toepassen dat in een regio is gemaakt op een beveiligde hub vanuit een andere regio.|Wordt onderzocht|
 |Verkeer tussen hubs filteren bij implementaties in een beveiligde virtuele hub|Het filteren van communicatie tussen een beveiligde virtuele hub en een andere beveiligde virtuele hub wordt nog niet ondersteund. Hub-naar-hub-communicatie werkt echter nog steeds als filteren van privéverkeer via Azure Firewall niet is ingeschakeld.|Wordt onderzocht|
@@ -87,6 +87,9 @@ Azure Firewall Manager heeft de volgende bekende problemen:
 |Alle beveiligde virtuele hubs die dezelfde virtuele WAN delen, moeten zich in dezelfde resourcegroep bevinden.|Dit gedrag wordt vandaag afgestemd met andere virtuele WAN-hubs.|Maak meerdere virtuele WAN's om ervoor te zorgen dat beveiligde virtuele hubs kunnen worden gemaakt in andere resourcegroepen.|
 |Het toevoegen van een bulk-IP-adres mislukt|De firewall van de beveiligde hub krijgt de status Mislukt als u meerdere openbare IP-adressen toevoegt.|Voeg de openbare IP-adressen in kleinere stappen toe. Voeg er bijvoorbeeld tien per keer toe.|
 |Toepassingsregels mislukken in een beveiligde hub waarin een aangepast DNS (preview) is geconfigureerd.|Aangepaste DNS (preview-versie) werkt niet in beveiligde hub-implementaties en implementaties van virtuele hubnetwerken waarvoor geforceerde tunneling is ingeschakeld.|Een oplossing wordt onderzocht.|
+|DDoS Protection Standard wordt niet ondersteund met beveiligde virtuele hubs|DDoS Protection Standard is niet geïntegreerd met vWAN's.|Wordt onderzocht|
+|Activiteitenlogboeken worden niet volledig ondersteund|Het firewallbeleid biedt momenteel geen ondersteuning voor activiteitenlogboeken.|Wordt onderzocht|
+|Privé IP-adresbereiken van SNAT configureren|[Instellingen voor privé IP-adresbereiken](../firewall/snat-private-range.md) worden genegeerd als Azure Firewall-beleid is geconfigureerd. Het standaard Azure Firewall-gedrag wordt gebruikt. SNAT-netwerkregels worden toegepast wanneer het doel-IP-adres zich in een privé IP-adresbereik bevindt per [IANA RFC 1918](https://tools.ietf.org/html/rfc1918).|Wordt onderzocht
 
 ## <a name="next-steps"></a>Volgende stappen
 

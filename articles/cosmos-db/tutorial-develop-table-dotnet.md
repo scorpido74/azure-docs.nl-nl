@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/03/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 56198392f3c769837d8d672b861baa9b341d284e
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 47b3706d1fb46ab7e115d79c2f06f6264c8b423e
+ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419347"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91666510"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>Aan de slag met de Azure Cosmos DB Table-API en Azure Table Storage met behulp van de .NET-SDK
 
@@ -120,7 +120,7 @@ Met deze code definieert u een entiteitsklasse die de voornaam van de klant als 
 
 ## <a name="insert-or-merge-an-entity"></a>Een entiteit invoegen of samenvoegen
 
-Met het volgende codevoorbeeld wordt een entiteitsobject gemaakt en aan de tabel toegevoegd. De methode InsertOrMerge in de klasse [TableOperation](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableoperation) wordt gebruikt om een entiteit in te voegen of samen te voegen. De methode [CloudTable.ExecuteAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.cloudtable.executeasync?view=azure-dotnet) wordt aangeroepen om de bewerking uit te voeren. 
+Met het volgende codevoorbeeld wordt een entiteitsobject gemaakt en aan de tabel toegevoegd. De methode InsertOrMerge in de klasse [TableOperation](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.tableoperation) wordt gebruikt om een entiteit in te voegen of samen te voegen. De methode [CloudTable.ExecuteAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.cloudtable.executeasync?view=azure-dotnet&preserve-view=true) wordt aangeroepen om de bewerking uit te voeren. 
 
 Klik met de rechtermuisknop op uw project **CosmosTableSamples**. Selecteer **Toevoegen**, **Nieuw item** en voeg een klasse genaamd **SamplesUtils.cs** toe. In deze klasse wordt alle code opgeslagen die vereist is om CRUD-bewerkingen op de entiteiten uit te voeren. 
 
@@ -136,7 +136,7 @@ U kunt een entiteit uit een partitie ophalen door de methode Retrieve onder de k
 
 U kunt een entiteit gemakkelijk verwijderen nadat u deze hebt opgehaald. Hiervoor gebruikt u hetzelfde patroon dat is getoond voor het bijwerken van een entiteit. Met de volgende code wordt een klantentiteit opgehaald en verwijderd. Als u een entiteit wilt verwijderen, voegt u de volgende code toe aan het bestand **SamplesUtils.cs**: 
 
-:::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/SamplesUtils.cs" id="QueryData":::
+:::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/SamplesUtils.cs" id="DeleteItem":::
 
 ## <a name="execute-the-crud-operations-on-sample-data"></a>De CRUD-bewerkingen uitvoeren op voorbeeldgegevens
 
@@ -158,7 +158,7 @@ Ga naar uw project **CosmosTableSamples**. Open de klasse genaamd **Program.cs**
 
 Bouw nu de oplossing en druk op F5 om het project uit te voeren. Wanneer het project wordt uitgevoerd, ziet u de volgende uitvoer in de opdrachtprompt:
 
-:::image type="content" source="./media/tutorial-develop-table-standard/output-from-sample.png" alt-text="Uitvoer van opdrachtprompt":::
+:::image type="content" source="./media/tutorial-develop-table-standard/output-from-sample.png" alt-text="De PRIMARY CONNECTION STRING in het deelvenster Verbindingsreeks weergeven en kopiëren":::
 
 Als er een foutbericht wordt weergegeven met de tekst dat het Settings.json-bestand niet gevonden is bij het uitvoeren van het project, kunt u dit oplossen door de volgende XML-vermelding toe te voegen aan de projectinstellingen. Klik met de rechtermuisknop op CosmosTableSamples, selecteer Bewerken CosmosTableSamples.csproj en voeg de volgende itemGroup toe: 
 
@@ -171,11 +171,11 @@ Als er een foutbericht wordt weergegeven met de tekst dat het Settings.json-best
 ```
 U kunt zich nu aanmelden bij de Azure-portal en verifiëren dat de gegevens bestaan in de tabel. 
 
-:::image type="content" source="./media/tutorial-develop-table-standard/results-in-portal.png" alt-text="Resultaten in de portal":::
+:::image type="content" source="./media/tutorial-develop-table-standard/results-in-portal.png" alt-text="De PRIMARY CONNECTION STRING in het deelvenster Verbindingsreeks weergeven en kopiëren":::
 
 ## <a name="next-steps"></a>Volgende stappen
 
 U kunt nu verdergaan met de volgende zelfstudie om te leren hoe u gegevens migreert naar het Azure Cosmos DB Table-API-account. 
 
 > [!div class="nextstepaction"]
->[Query’s uitvoeren op gegevens](../cosmos-db/table-import.md)
+>[Gegevens migreren naar Azure Comsos DB Table-API](../cosmos-db/table-import.md)

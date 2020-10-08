@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: c6ec2be6daee931a4066ff5ce4f64fc949d497ac
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: be8a8f35ece946d1be907b2ca13a640bebbb4ee5
+ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243423"
+ms.lasthandoff: 10/01/2020
+ms.locfileid: "91627020"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>Een Azure-functie-app als API importeren in Azure API Management
 
@@ -71,7 +71,7 @@ Voer de volgende stappen uit om een nieuwe API te maken vanuit een Azure-functie
     > [!NOTE]
     > U kunt alleen functies importeren die zijn gebaseerd op HTTP-trigger en waarbij het verificatieniveau is ingesteld op *Anoniem* of *Functie*.
 
-7. Schakel over naar de **volledige** weergave en wijs **Product** toe aan uw nieuwe API. Geef, indien nodig, andere velden op tijdens het maken of configureer deze later door naar het tabblad **Instellingen** te gaan. De instellingen worden beschreven in de zelfstudie [Uw eerste API importeren en publiceren](import-and-publish.md#-import-and-publish-a-backend-api).
+7. Schakel over naar de **volledige** weergave en wijs **Product** toe aan uw nieuwe API. Geef, indien nodig, andere velden op tijdens het maken of configureer deze later door naar het tabblad **Instellingen** te gaan. De instellingen worden beschreven in de zelfstudie [Uw eerste API importeren en publiceren](import-and-publish.md#import-and-publish-a-backend-api).
 8. Klik op **Create**.
 
 ## <a name="append-azure-function-app-to-an-existing-api"></a><a name="append-azure-function-app-to-api"></a> Een Azure-functie-app toevoegen aan een bestaande API

@@ -11,12 +11,12 @@ ms.date: 05/19/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43edb9ba6cdd73ce195a8b4eb60071b6831b7223
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: e771a988faca98d009b97b1e705ddac7110a255f
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526932"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91266493"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Een proef uitvoeren met cloudinrichting voor een bestaande gesynchroniseerde AD-forest 
 
@@ -40,7 +40,7 @@ Dit zijn de vereisten voor het voltooien van deze zelfstudie
 - Een testomgeving met Azure AD Connect Sync versie 1.4.32.0 of hoger
 - Een OE of groep die is gesynchroniseerd en kan worden gebruikt als pilot. We raden u aan te beginnen met een kleine set objecten.
 - Een server met Windows Server 2012 R2 of hoger waarop de inrichtingsagent wordt gehost.  Dit magn niet dezelfde server zijn als de Azure AD Connect-server.
-- Bronanker voor AAD Connect Sync moet *​​objectGuid* of *ms-ds-consistencyGUID* zijn
+- Bronanker voor Azure AD Connect Sync moet *​​objectGuid* of *ms-ds-consistencyGUID* zijn
 
 ## <a name="update-azure-ad-connect"></a>Azure AD Connect bijwerken
 
@@ -54,7 +54,7 @@ Azure AD Connect Sync synchroniseert wijzigingen die plaatsvinden in uw on-premi
 3.  Voer `Set-ADSyncScheduler -SyncCycleEnabled $false` uit.
 
 >[!NOTE] 
->Als u uw eigen aangepaste planner voor AAD Connect Sync gebruikt, schakelt u de planner uit. 
+>Als u uw eigen aangepaste planner voor Azure AD Connect Sync gebruikt, schakelt u de planner uit. 
 
 ## <a name="create-custom-user-inbound-rule"></a>Een aangepaste regel voor binnenkomende verbindingen voor gebruikers maken
 
@@ -62,7 +62,7 @@ Azure AD Connect Sync synchroniseert wijzigingen die plaatsvinden in uw on-premi
  ![Menu voor synchronisatieregeleditor](media/how-to-cloud-custom-user-rule/user8.png)</br>
  
  2. Selecteer **Binnenkomend** in de vervolgkeuzelijst voor Richting en klik op **Nieuwe regel toevoegen**.
- ![Aangepaste regel](media/how-to-cloud-custom-user-rule/user1.png)</br>
+ ![Schermafbeelding met het venster 'Uw synchronisatieregels weergeven en beheren' met 'binnenkomend' en de knop nieuwe regel toevoegen geselecteerd.](media/how-to-cloud-custom-user-rule/user1.png)</br>
  
  3. Voer op de pagina **Beschrijving** het volgende in en klik op **Volgende**:
 
@@ -74,7 +74,7 @@ Azure AD Connect Sync synchroniseert wijzigingen die plaatsvinden in uw on-premi
     **Type koppeling:** Koppelen<br>
     **Prioriteit:** Geef een waarde op die uniek is in het systeem<br>
     **Tag:** Laat dit leeg<br>
-    ![Aangepaste regel](media/how-to-cloud-custom-user-rule/user2.png)</br>
+    ![Schermopname met de pagina "Binnenkomende synchronisatieregel maken - Beschrijving" met ingevoerde waarden.](media/how-to-cloud-custom-user-rule/user2.png)</br>
  
  4. Voer op de pagina **Bereikfilter** de OE of beveiligingsgroep in waarop u de pilot wilt baseren.  Als u wilt filteren op OE, voegt u het OE-gedeelte van de DN-naam toe. Deze regel wordt toegepast op alle gebruikers in deze OE.  Als DN eindigt op "OU=CPUsers,DC=contoso,DC=com, voegt u dit filter toe.  Klik op **Volgende**. 
 
@@ -83,31 +83,31 @@ Azure AD Connect Sync synchroniseert wijzigingen die plaatsvinden in uw on-premi
     |Bereik OE|DN|ENDSWITH|DN-naam van de OE.|
     |Bereikgroep||ISMEMBEROF|DN-naam van de beveiligingsgroep.|
 
-    ![Aangepaste regel](media/how-to-cloud-custom-user-rule/user3.png)</br>
+    ![Schermopname met de pagina "Regel voor binnenkomende synchronisatie - Bereikfilter" met een bereikfilterwaarde ingevoerd.](media/how-to-cloud-custom-user-rule/user3.png)</br>
  
  5. Klik op de pagina **Regels samenvoegen** op **Volgende**.
  6. Voeg op de pagina **Transformaties** een constante transformatie toe: gebruik True voor het kenmerk cloudNoFlow. Klik op **Add**.
- ![Aangepaste regel](media/how-to-cloud-custom-user-rule/user4.png)</br>
+ ![Schermopname met de pagina "Regel voor binnenkomende synchronisatie - Transformaties" met de stroom "Constante transformatie" toegevoegd.](media/how-to-cloud-custom-user-rule/user4.png)</br>
 
 Dezelfde stappen moeten worden gevolgd voor alle objecttypen (gebruiker, groep en contactpersoon). Herhaal de stappen per geconfigureerde AD-connector/per AD-forest. 
 
 ## <a name="create-custom-user-outbound-rule"></a>Een aangepaste regel voor uitgaande verbindingen voor gebruikers maken
 
  1. Selecteer **Uitgaand** in de vervolgkeuzelijst voor Richting en klik op **Regel toevoegen**.
- ![Aangepaste regel](media/how-to-cloud-custom-user-rule/user5.png)</br>
+ ![Schermopname met de richting "Uitgaand" geselecteerd en de knop "Nieuwe regel toevoegen" uitgelicht.](media/how-to-cloud-custom-user-rule/user5.png)</br>
  
  2. Voer op de pagina **Beschrijving** het volgende in en klik op **Volgende**:
 
     **Naam:** Geef een beschrijvende naam op voor de regel<br>
     **Beschrijving:** Voer een duidelijke omschrijving in<br>
-    **Verbonden systeem:** Kies de AAD-connector waarvoor u de aangepaste synchronisatieregel schrijft<br>
+    **Verbonden systeem:** Kies de Azure AD-connector waarvoor u de aangepaste synchronisatieregel schrijft<br>
     **Type verbonden systeemobject:** Gebruiker<br>
     **Metaverse-objecttype:** Person<br>
     **Type koppeling:** JoinNoFlow<br>
     **Prioriteit:** Geef een waarde op die uniek is in het systeem<br>
     **Tag:** Laat dit leeg<br>
     
-    ![Aangepaste regel](media/how-to-cloud-custom-user-rule/user6.png)</br>
+    ![Schermopname met de pagina "Beschrijving" met ingevoerde eigenschappen.](media/how-to-cloud-custom-user-rule/user6.png)</br>
  
  3. Kies op de pagina **Bereikfilter** de optie **cloudNoFlow** is gelijk aan **True**. Klik op **Volgende**.
  ![Aangepaste regel](media/how-to-cloud-custom-user-rule/user7.png)</br>
@@ -122,14 +122,14 @@ Dezelfde stappen moeten worden gevolgd voor alle objecttypen (gebruiker, groep e
 2. Download de Azure AD Connect-cloudinrichtingsagent met behulp van de stappen die [hier](how-to-install.md#install-the-agent) worden beschreven.
 3. Voer de Azure AD Connect-cloudinrichting (AADConnectProvisioningAgent.Installer) uit
 3. Ga in het welkomstscherm **akkoord** met de licentievoorwaarden en klik op **Installeren**.</br>
-![Welkomstscherm](media/how-to-install/install1.png)</br>
+![Schermopname van het startscherm 'Microsoft Azure AD Connect Provisioning Agent' wordt weergegeven.](media/how-to-install/install1.png)</br>
 
 4. Zodra deze bewerking is voltooid, wordt de configuratiewizard gestart.  Meld u aan met uw globale beheerdersreferenties voor Azure AD.
 5. Klik in het scherm **Verbinding maken met Active Directory** op **Directory toevoegen** en meld u aan met uw Active Directory-beheerdersaccount.  Met deze bewerking wordt uw on-premises adreslijst toegevoegd.  Klik op **Volgende**.</br>
-![Welkomstscherm](media/how-to-install/install3.png)</br>
+![Schermopname van het venster 'Verbinding maken met Active Directory' met een ingevoerde mapwaarde.](media/how-to-install/install3.png)</br>
 
 6. Klik in het scherm **Configuratie voltooid** op **Bevestigen**.  Met deze bewerking wordt de agent geregistreerd en opnieuw gestart.</br>
-![Welkomstscherm](media/how-to-install/install4.png)</br>
+![Schermopname met het scherm Configuratie voltooid met de knop "Bevestigen" geselecteerd.](media/how-to-install/install4.png)</br>
 
 7. Zodra deze bewerking is voltooid, ziet u de melding **Uw verificatie is geslaagd.**  U kunt op **Afsluiten** klikken.</br>
 ![Welkomstscherm](media/how-to-install/install5.png)</br>
