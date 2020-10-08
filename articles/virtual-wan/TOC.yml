@@ -134,14 +134,12 @@
       items:
         - name: Azure Firewall installeren in een hub
           href: howto-firewall.md
+        - name: Private Link-connectiviteit configureren
+          href: howto-private-link.md
     - name: Bewaking
       items:
         - name: Logboeken en metrische gegevens
           href: logs-metrics.md
-    - name: Private Link
-      items:
-        - name: Private Link-connectiviteit configureren
-          href: howto-private-link.md
 - name: Naslaginformatie
   items:
     - name: Azure PowerShell

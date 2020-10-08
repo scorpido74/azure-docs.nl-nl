@@ -1,14 +1,16 @@
 ---
 title: 'Zelfstudie: Integreren met Power Virtual Agents - QnA Maker'
 description: In deze zelfstudie gaat u de kwaliteit van uw Knowledge Base verbeteren met behulp van actief leren. Beoordeel, accepteer of weiger, of voeg toe zonder bestaande vragen te verwijderen of te wijzigen.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 06/08/2020
-ms.openlocfilehash: 6d00833a1331ebca9b070d90f32ee30c56bd5f96
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 42b50fcf0df27ddbc3e587a7d8e038e4979935ae
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319211"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777404"
 ---
 # <a name="tutorial-add-your-knowledge-base-to-power-virtual-agents"></a>Zelfstudie: uw Knowledge Base toevoegen aan Power Virtual Agents
 Maak een bot met [Power Virtual Agents](https://powervirtualagents.microsoft.com/) en breid deze uit om antwoorden uit uw Knowledge Base op te halen.

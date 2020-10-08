@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: kirankk
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 514fe30da9c0e232c168992c2aabbb484644aa99
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 912b4966312d8925f70deeed99042d2701641f49
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89015302"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91801508"
 ---
 # <a name="tutorial-build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>Zelfstudie: Een .NET-console-app bouwen om gegevens te beheren in het Azure Cosmos DB SQL-API-account
 
@@ -70,7 +70,7 @@ Begin met het maken van een Azure Cosmos DB-account. Als u al een account hebt d
 1. Klik in **Solution Explorer** met de rechtermuisknop op uw nieuwe consoletoepassing. Deze bevindt zich onder uw Visual Studio-oplossing. Selecteer op **Manage NuGet Packages**.
 1. Selecteer **Bladeren** en zoek naar *Microsoft.Azure.Cosmos* in het **NuGet Package Manager**. Kies **Microsoft.Azure.Cosmos** en selecteer **Installeren**.
 
-   :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-manage-nuget-2019.png" alt-text="NuGet voor Azure Cosmos DB-client-SDK installeren":::
+   :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-manage-nuget-2019.png" alt-text="Uw project configureren":::
 
    De pakket-id voor de Azure Cosmos DB SQL-API-clientbibliotheek is [Microsoft Azure Cosmos DB-clientbibliotheek](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/).
 
@@ -121,7 +121,7 @@ Goed gedaan. De configuratie is voltooid en u kunt nu aan de slag met het schrij
 
 1. Open de [Azure Portal](https://portal.azure.com). Vind uw Azure Cosmos DB-account en selecteer vervolgens **Sleutels**.
 
-   :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-portal-keys.png" alt-text="Haal de Azure Cosmos DB-sleutels uit de Azure-portal op":::
+   :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-portal-keys.png" alt-text="Uw project configureren":::
 
 1. Vervang `<your endpoint URL>` in *Program.cs*door de waarde van **URI**. Vervang `<your primary key>` door de waarde van de **HOOFDSLEUTEL**.
 
@@ -278,7 +278,7 @@ Gefeliciteerd! U hebt een Azure Cosmos-database gemaakt.
 >
 >
 
-Een container kan worden gemaakt met behulp van de methode [**CreateContainerIfNotExistsAsync**](/dotnet/api/microsoft.azure.cosmos.database.createcontainerifnotexistsasync?view=azure-dotnet#Microsoft_Azure_Cosmos_Database_CreateContainerIfNotExistsAsync_Microsoft_Azure_Cosmos_ContainerProperties_System_Nullable_System_Int32__Microsoft_Azure_Cosmos_RequestOptions_System_Threading_CancellationToken_) of [**CreateContainerAsync**](/dotnet/api/microsoft.azure.cosmos.database.createcontainerasync?view=azure-dotnet#Microsoft_Azure_Cosmos_Database_CreateContainerAsync_Microsoft_Azure_Cosmos_ContainerProperties_System_Nullable_System_Int32__Microsoft_Azure_Cosmos_RequestOptions_System_Threading_CancellationToken_) in de klasse `CosmosDatabase`. Een container bestaat uit items (in het geval van de SQL-API zijn dit JSON-documenten) en bijbehorende toepassingslogica, in bijvoorbeeld Javascript, zoals opgeslagen procedures, door de gebruiker gedefinieerde functies, en triggers.
+Een container kan worden gemaakt met behulp van de methode [**CreateContainerIfNotExistsAsync**](/dotnet/api/microsoft.azure.cosmos.database.createcontainerifnotexistsasync?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Cosmos_Database_CreateContainerIfNotExistsAsync_Microsoft_Azure_Cosmos_ContainerProperties_System_Nullable_System_Int32__Microsoft_Azure_Cosmos_RequestOptions_System_Threading_CancellationToken_) of [**CreateContainerAsync**](/dotnet/api/microsoft.azure.cosmos.database.createcontainerasync?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Cosmos_Database_CreateContainerAsync_Microsoft_Azure_Cosmos_ContainerProperties_System_Nullable_System_Int32__Microsoft_Azure_Cosmos_RequestOptions_System_Threading_CancellationToken_) in de klasse `CosmosDatabase`. Een container bestaat uit items (in het geval van de SQL-API zijn dit JSON-documenten) en bijbehorende toepassingslogica, in bijvoorbeeld Javascript, zoals opgeslagen procedures, door de gebruiker gedefinieerde functies, en triggers.
 
 1. Kopieer en plak de methode `CreateContainerAsync` onder uw methode `CreateDatabaseAsync`. `CreateContainerAsync`  maakt een nieuwe container met de id `FamilyContainer` als deze nog niet bestaat, met behulp van de id die is opgegeven in het veld `containerId` gepartitioneerd door eigenschap `LastName`.
 
@@ -304,13 +304,13 @@ Gefeliciteerd! U hebt een Azure Cosmos-container gemaakt.
 
 ## <a name="step-6-add-items-to-the-container"></a><a id="CreateDoc"></a>Stap 6: Items toevoegen aan de container
 
-Met de methode [**CreateItemAsync**](/dotnet/api/microsoft.azure.cosmos.container.createitemasync?view=azure-dotnet#Microsoft_Azure_Cosmos_Container_CreateItemAsync__1___0_System_Nullable_Microsoft_Azure_Cosmos_PartitionKey__Microsoft_Azure_Cosmos_ItemRequestOptions_System_Threading_CancellationToken_) van de klasse `CosmosContainer` kan een item worden gemaakt. Als u de SQL-API gebruikt, worden items als documenten geprojecteerd. Deze zijn door de gebruiker gedefinieerde willekeurige JSON-inhoud. U kunt nu een item invoegen in uw Azure Cosmos-container.
+Met de methode [**CreateItemAsync**](/dotnet/api/microsoft.azure.cosmos.container.createitemasync?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Cosmos_Container_CreateItemAsync__1___0_System_Nullable_Microsoft_Azure_Cosmos_PartitionKey__Microsoft_Azure_Cosmos_ItemRequestOptions_System_Threading_CancellationToken_) van de klasse `CosmosContainer` kan een item worden gemaakt. Als u de SQL-API gebruikt, worden items als documenten geprojecteerd. Deze zijn door de gebruiker gedefinieerde willekeurige JSON-inhoud. U kunt nu een item invoegen in uw Azure Cosmos-container.
 
 Eerst maakt u de klasse `Family`, die aangeeft welke objecten worden opgeslagen in Azure Cosmos DB in dit voorbeeld. We maken ook subklassen `Parent`, `Child`, `Pet`, `Address` die in `Family` worden gebruikt. Het item moet een `Id`-eigenschap bevatten dat is geserialiseerd als `id` in JSON.
 
 1. Selecteer Ctrl+Shift+A om **Nieuw item toevoegen** te openen. Voeg een nieuwe klasse `Family.cs` toe aan uw project.
 
-    :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-add-family-class-2019.png" alt-text="Schermopname van het toevoegen van een nieuwe Family.cs-klasse aan het project":::
+    :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-add-family-class-2019.png" alt-text="Uw project configureren":::
 
 1. Kopieer en plak de klasse `Family`, de `Parent`, de `Child`, de `Pet`en `Address` in `Family.cs`.
 

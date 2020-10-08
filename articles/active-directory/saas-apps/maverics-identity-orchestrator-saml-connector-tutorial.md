@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/12/2020
 ms.author: jeedes
-ms.openlocfilehash: 116ee7c8db3070a667c21a052bec739fd397a2dd
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: fbab2bbaa47090ff4bd7fb99495912bd1f645b61
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825559"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758135"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-with-maverics-identity-orchestrator-saml-connector"></a>Zelfstudie: Eenmalige aanmelding van Microsoft Azure AD integreren met Maverics Identity Orchestrator SAML Connector
 
@@ -36,7 +36,7 @@ In deze zelfstudie wordt uitgelegd hoe u een on-premises webtoepassing die momen
 4. Stel een Azure-sleutelkluis in en configureer Maverics zodanig dat deze wordt gebruikt als provider van geheimenbeheer.
 5. Demonstreer gebruikersmigratie en sessieabstractie met behulp van Maverics om toegang tot een on-premises Java-webtoepassing te bieden.
 
-Ga voor aanvullende installatie- en configuratie-instructies naar de [website van Strata](https://strata.io/docs).
+Ga voor aanvullende installatie- en configuratie-instructies naar de [website van Strata](https://www.strata.io).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -45,7 +45,7 @@ Ga voor aanvullende installatie- en configuratie-instructies naar de [website va
 
 ## <a name="install-maverics-identity-orchestrator"></a>Maverics Identity Orchestrator installeren
 
-Als u aan de slag wilt gaan met het installeren van Maverics Identity Orchestrator, raadpleegt u de [installatie-instructies](https://strata.io/docs).
+Als u aan de slag wilt gaan met het installeren van Maverics Identity Orchestrator, raadpleegt u de [installatie-instructies](https://www.strata.io).
 
 ### <a name="system-requirements"></a>Systeemvereisten
 * Ondersteunde besturingssystemen

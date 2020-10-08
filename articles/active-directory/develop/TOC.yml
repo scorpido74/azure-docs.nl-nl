@@ -4,7 +4,7 @@
   items:
     - name: Wat is het Microsoft Identity Platform?
       href: v2-overview.md
-- name: Quickstarts
+- name: Snelstartgidsen
   expanded: true
   items:
     - name: Een tenant instellen
@@ -384,6 +384,9 @@
             - name: Apps migreren van ADAL naar MSAL
               href: msal-migration.md
               displayName: migration
+    - name: Microsoft Identity Web-bibliotheek
+      href: microsoft-identity-web.md
+      displayName: 'auth, library, .NET Core'
     - name: Verificatieprotocollen
       displayName: Auth protocol
       items:

@@ -130,3 +130,7 @@
       href: /rest/api/consumption/usagedetails
     - name: Cost Management - REST API voor reserveringsdetails van verbruik
       href: /rest/api/consumption/reservationsdetails
+- name: Resources
+  items:
+    - name: Geld besparen met Learn-module van gereserveerde instantie
+      href: /learn/modules/save-money-with-azure-reserved-instances

@@ -4,7 +4,7 @@
   items:
     - name: Welkom bij Azure Cosmos DB
       href: introduction.md
-- name: Quickstarts
+- name: Snelstartgidsen
   expanded: true
   items:
     - name: Cosmos DB-resources maken
@@ -975,6 +975,8 @@
           displayName: ARM
         - name: Schakelen tussen regio's
           href: how-to-move-regions.md
+        - name: Wijzigingen of verwijdering voorkomen
+          href: resource-locks.md
     - name: Wereldwijde distributie
       items:
         - name: Schrijfbewerkingen voor meerdere regio's configureren
