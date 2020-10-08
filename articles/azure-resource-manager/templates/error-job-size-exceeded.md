@@ -3,12 +3,12 @@ title: Fout door taak grootte overschreden
 description: Hierin wordt beschreven hoe u fouten oplost wanneer de taak grootte of sjabloon te groot is.
 ms.topic: troubleshooting
 ms.date: 10/07/2020
-ms.openlocfilehash: 5f0df102611dba8ce49da948b14110fff32dc2a9
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.openlocfilehash: 638bdef246fc908ab997bfb99e7526febdb3792e
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/07/2020
-ms.locfileid: "91812893"
+ms.locfileid: "91822153"
 ---
 # <a name="resolve-errors-for-job-size-exceeded"></a>Fouten oplossen voor de taak grootte is overschreden
 
@@ -40,7 +40,7 @@ U kunt andere resources instellen als afhankelijk van de gekoppelde sjabloon en 
 
 ## <a name="solution-2---reduce-name-size"></a>Oplossing 2: de naam grootte verlagen
 
-Probeer de lengte van de namen die u gebruikt voor [para meters](template-parameters.md), [variabelen](template-variables.md)en [uitvoer](template-outputs.md)in te korten. Wanneer deze waarden worden herhaald via Kopieer lussen, wordt een grote naam meermaals vermenigvuldigd. De uiteindelijke grootte van de sjabloon is onnodig groot.
+Probeer de lengte van de namen die u gebruikt voor [para meters](template-parameters.md), [variabelen](template-variables.md)en [uitvoer](template-outputs.md)in te korten. Wanneer deze waarden worden herhaald via Kopieer lussen, wordt een grote naam meermaals vermenigvuldigd.
 
 ## <a name="solution-3---use-serial-copy"></a>Oplossing 3: een seriële kopie gebruiken
 

@@ -3,12 +3,12 @@ title: Overzicht van de verbonden computer Windows-agent
 description: Dit artikel bevat een gedetailleerd overzicht van de beschik bare Azure Arc-servers agent, die ondersteuning biedt voor het bewaken van virtuele machines die worden gehost in hybride omgevingen.
 ms.date: 09/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0fa406692ae0ff011c65a2683ea04ad969bdc3b5
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 20f56745127a5182a5dfa057a4496b127d78eac7
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91577217"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91822195"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Overzicht van de agent voor servers met Azure Arc ingeschakeld
 
@@ -62,7 +62,7 @@ De volgende versies van het Windows-en Linux-besturings systeem worden officieel
 
 * Als u een machine wilt lezen, wijzigen, onboarden en verwijderen, bent u lid van de **Azure Connected machine resource Administrator** -rol. 
 
-### <a name="azure-subscription-and-service-limits"></a>Azure-abonnement en service limieten
+### <a name="azure-subscription-and-service-limits"></a>Limieten voor het Azure-abonnement en de Azure-service
 
 Voordat u uw computers configureert met servers voor Azure-Arc, controleert u de limieten voor het Azure Resource Manager- [abonnement](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits) en de beperkingen van de [resource groep](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits) om het aantal machines te plannen dat moet worden verbonden.
 
@@ -85,6 +85,7 @@ Service Tags:
 
 * AzureActiveDirectory
 * AzureTrafficManager
+* AzureArcInfrastructure
 
 Adres
 
@@ -104,7 +105,7 @@ De Url's in de vorige tabel zijn vereist naast de IP-adres bereik gegevens van d
 
 ### <a name="register-azure-resource-providers"></a>Azure-resourceproviders registreren
 
-Servers voor Azure-Arc zijn afhankelijk van de volgende Azure-resource providers in uw abonnement om deze service te kunnen gebruiken:
+Servers voor Azure Arc zijn afhankelijk van de volgende Azure-resourceproviders in uw abonnement om deze service te kunnen gebruiken:
 
 * **Microsoft.HybridCompute**
 * **Microsoft.GuestConfiguration**

@@ -7,12 +7,12 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: bd95e3ed6b4c31072d7e754c731e748f12db3329
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c15724643fb3c8c74d3afe58509822c56d2d17f3
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322390"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91821946"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Naslag Gids voor schema's voor trigger-en actie typen in Azure Logic Apps
 
@@ -149,7 +149,7 @@ Deze trigger *controleert of* doorstuurt een eind punt met behulp van door [micr
 | <*bewerking-optie*> | Tekenreeks | U kunt het standaard gedrag wijzigen door de eigenschap in te stellen `operationOptions` . Zie [bewerkings opties](#operation-options)voor meer informatie. |
 ||||
 
-*Uitvoerwaarden*
+*Uitvoer*
  
 | Element | Type | Beschrijving |
 |---------|------|-------------|
@@ -324,7 +324,7 @@ Deze trigger verzendt een aanvraag naar het opgegeven HTTP-of HTTPS-eind punt op
 | `operationOptions` | <*bewerking-optie*> | Tekenreeks | U kunt het standaard gedrag wijzigen door de eigenschap in te stellen `operationOptions` . Zie [bewerkings opties](#operation-options)voor meer informatie. |
 |||||
 
-*Uitvoerwaarden*
+*Uitvoer*
 
 | Element | Type | Beschrijving |
 |---------|------|-------------|
@@ -339,9 +339,9 @@ Voor een goede samen werking met uw logische app moet het eind punt voldoen aan 
 
 | Eigenschap | Vereist | Beschrijving |
 |----------|----------|-------------|
-| Statuscode | Yes | Met de status code ' 200 OK ' wordt een uitvoering gestart. Met een andere status code wordt geen uitvoering gestart. |
-| Header opnieuw proberen na | No | Het aantal seconden tot de logische app het eind punt opnieuw pollt |
-| Locatie header | No | De URL die moet worden aangeroepen tijdens het volgende polling-interval. Als u niets opgeeft, wordt de oorspronkelijke URL gebruikt. |
+| Statuscode | Ja | Met de status code ' 200 OK ' wordt een uitvoering gestart. Met een andere status code wordt geen uitvoering gestart. |
+| Header opnieuw proberen na | Nee | Het aantal seconden tot de logische app het eind punt opnieuw pollt |
+| Locatie header | Nee | De URL die moet worden aangeroepen tijdens het volgende polling-interval. Als u niets opgeeft, wordt de oorspronkelijke URL gebruikt. |
 |||| 
 
 *Voorbeeld gedrag voor verschillende aanvragen*
@@ -418,7 +418,7 @@ Sommige waarden, zoals <*methode-type*>, zijn beschikbaar voor zowel de- `"subsc
 | <*bewerking-optie*> | Tekenreeks | U kunt het standaard gedrag wijzigen door de eigenschap in te stellen `operationOptions` . Zie [bewerkings opties](#operation-options)voor meer informatie. | 
 |||| 
 
-*Uitvoerwaarden* 
+*Uitvoer* 
 
 | Element | Type | Beschrijving |
 |---------|------|-------------| 
@@ -825,9 +825,9 @@ Hier volgen enkele veelgebruikte actie typen:
 | [**HTTP**](#http-action) | Hiermee wordt een HTTP-eind punt aangeroepen. | 
 | [**Koppelen**](#join-action) | Hiermee maakt u een teken reeks van alle items in een matrix en scheidt u deze items met een opgegeven scheidings teken. | 
 | [**JSON parseren**](#parse-json-action) | Maakt gebruikers vriendelijke tokens van eigenschappen in JSON-inhoud. U kunt vervolgens naar die eigenschappen verwijzen door de tokens in uw logische app op te nemen. | 
-| [**Query**](#query-action) | Maakt een matrix van items in een andere matrix op basis van een voor waarde of filter. | 
-| [**Antwoord**](#response-action) | Hiermee wordt een reactie op een binnenkomende oproep of aanvraag gemaakt. | 
-| [**Selecteer**](#select-action) | Hiermee maakt u een matrix met JSON-objecten door items van een andere matrix te transformeren op basis van de opgegeven kaart. | 
+| [**Query’s uitvoeren**](#query-action) | Maakt een matrix van items in een andere matrix op basis van een voor waarde of filter. | 
+| [**Beantwoord**](#response-action) | Hiermee wordt een reactie op een binnenkomende oproep of aanvraag gemaakt. | 
+| [**Uitgeschakeld**](#select-action) | Hiermee maakt u een matrix met JSON-objecten door items van een andere matrix te transformeren op basis van de opgegeven kaart. | 
 | [**Tabel**](#table-action) | Hiermee maakt u een CSV-of HTML-tabel op basis van een matrix. | 
 | [**Terminate**](#terminate-action) | Stopt een actief actieve werk stroom. | 
 | [**Bewerking**](#wait-action) | Hiermee wordt uw werk stroom onderbroken voor een opgegeven duur of tot de opgegeven datum en tijd. | 
@@ -854,7 +854,7 @@ Met deze acties kunt u de uitvoering van werk stromen beheren en andere acties t
 |-------------|-------------| 
 | [**ForEach**](#foreach-action) | Voer dezelfde acties uit in een lus voor elk item in een matrix. | 
 | [**If**](#if-action) | Acties uitvoeren op basis van het feit of de opgegeven voor waarde waar of onwaar is. | 
-| [**Bereik**](#scope-action) | Acties uitvoeren op basis van de groeps status uit een reeks acties. | 
+| [**Ligt**](#scope-action) | Acties uitvoeren op basis van de groeps status uit een reeks acties. | 
 | [**/Tijdnotatie**](#switch-action) | Acties worden ingedeeld in gevallen waarin waarden van expressies, objecten of tokens overeenkomen met de waarden die elke case heeft opgegeven. | 
 | [**Totdat**](#until-action) | Acties uitvoeren in een lus tot de opgegeven voor waarde waar is. | 
 |||  
@@ -1010,7 +1010,7 @@ Met deze actie maakt u één uitvoer van meerdere invoer, met inbegrip van expre
 
 | Waarde | Type | Beschrijving | 
 |-------|------|-------------| 
-| <*invoer-naar-opstellen*> | Elk | De invoer voor het maken van één uitvoer | 
+| <*invoer-naar-opstellen*> | Alle | De invoer voor het maken van één uitvoer | 
 |||| 
 
 *Voorbeeld 1*
@@ -1649,7 +1649,7 @@ Als u kolom koppen en-waarden wilt opgeven of aanpassen, gebruikt u de `columns`
 | Waarde | Type | Beschrijving | 
 |-------|------|-------------| 
 | <*kolom naam*> | Tekenreeks | De naam van de header voor een kolom | 
-| <*kolom-waarde*> | Elk | De waarde in die kolom | 
+| <*kolom-waarde*> | Alle | De waarde in die kolom | 
 |||| 
 
 *Voorbeeld 1*
@@ -1909,7 +1909,7 @@ De Logic Apps-Engine controleert de toegang tot de trigger die u wilt aanroepen,
 | <*hoofd tekst: inhoud*> | JSON-object | Bericht inhoud die met de aanroep moet worden verzonden | 
 ||||
 
-*Uitvoerwaarden*
+*Uitvoer*
 
 De uitvoer van deze actie verschilt op basis van de reactie actie van de geneste logische app. Als de geneste logische app geen reactie actie bevat, zijn de uitvoer leeg.
 
@@ -2416,8 +2416,6 @@ Hier volgen enkele overwegingen voor wanneer u gelijktijdigheid wilt inschakelen
 * Als gelijktijdigheid is ingeschakeld, is de [limiet voor SplitOn](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) aanzienlijk beperkt voor het afstellen van batch- [matrices](#split-on-debatch). Als het aantal items deze limiet overschrijdt, wordt de SplitOn-functionaliteit uitgeschakeld.
 
 * U kunt gelijktijdigheid niet uitschakelen nadat u het gelijktijdigheids beheer hebt ingeschakeld.
-
-* Als gelijktijdigheid is ingeschakeld, is de [limiet voor SplitOn](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) aanzienlijk beperkt voor het afstellen van batch- [matrices](#split-on-debatch). Als het aantal items deze limiet overschrijdt, wordt de SplitOn-functionaliteit uitgeschakeld.
 
 * Wanneer gelijktijdigheid is ingeschakeld, kan een langlopende Logic-app-instantie ertoe leiden dat nieuwe logische app-exemplaren een wacht status invoeren. Deze status voor komt dat Azure Logic Apps nieuwe instanties maakt en er gebeurt zelfs wanneer het aantal gelijktijdige uitvoeringen kleiner is dan het opgegeven maximum aantal gelijktijdige uitvoeringen.
 
