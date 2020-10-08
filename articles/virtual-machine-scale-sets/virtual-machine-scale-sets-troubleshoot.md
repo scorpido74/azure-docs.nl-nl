@@ -9,15 +9,15 @@ ms.subservice: autoscale
 ms.date: 06/25/2020
 ms.reviwer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: b5e786a64d7d9606a3a99a3f1b3f8c67c9869cd1
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 11302c301bee466f678d544d0c4838c39cec9c8e
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830679"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818545"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>Problemen met automatisch schalen met schaalsets voor virtuele machines oplossen
-**Probleem** : u hebt een infra structuur voor automatisch schalen gemaakt in azure Resource Manager met schaal sets voor virtuele machines, bijvoorbeeld door het implementeren van een sjabloon zoals deze:: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale u hebt uw schaal regels gedefinieerd en werkt goed, behalve de hoeveelheid belasting die u op de virtuele machines plaatst, wordt niet automatisch geschaald.
+**Probleem** : u hebt een infra structuur voor automatisch schalen gemaakt in azure Resource Manager met schaal sets voor virtuele machines, bijvoorbeeld door het implementeren van een sjabloon zoals deze:: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale  u hebt uw schaal regels gedefinieerd en werkt goed, behalve de hoeveelheid belasting die u op de virtuele machines plaatst, wordt niet automatisch geschaald.
 
 ## <a name="troubleshooting-steps"></a>Stappen voor probleemoplossing
 Hieronder vindt u enkele dingen die u moet overwegen:
@@ -62,11 +62,11 @@ Hieronder vindt u enkele dingen die u moet overwegen:
     
     Als de Insights-service geen gegevens kan lezen van de virtuele machines, moet u een e-mail verzenden. U ontvangt bijvoorbeeld een e-mail bericht als de virtuele machines niet beschikbaar zijn. Controleer het e-mail adres dat u hebt opgegeven bij het maken van uw Azure-account.
     
-    U kunt de gegevens ook zelf bekijken. Bekijk het Azure-opslag account met behulp van een Cloud Explorer. Meld u bijvoorbeeld met behulp van de [Visual Studio Cloud Explorer](https://visualstudiogallery.msdn.microsoft.com/aaef6e67-4d99-40bc-aacf-662237db85a2)aan en kies het Azure-abonnement dat u gebruikt. Bekijk vervolgens de naam van het opslag account voor diagnostische gegevens waarnaar wordt verwezen in de definitie van de diagnostische gegevens in uw implementatie sjabloon.
+    U kunt de gegevens ook zelf bekijken. Bekijk het Azure-opslag account met behulp van een Cloud Explorer. Als u bijvoorbeeld [Visual Studio Cloud Explorer](https://visualstudiogallery.msdn.microsoft.com/aaef6e67-4d99-40bc-aacf-662237db85a2)gebruikt, meldt u zich aan en kiest u het Azure-abonnement dat u gebruikt. Bekijk vervolgens de naam van het opslag account voor diagnostische gegevens waarnaar wordt verwezen in de definitie van de diagnostische gegevens in uw implementatie sjabloon.
     
     ![Cloud Explorer][explorer]
     
-    U ziet een aantal tabellen waarin de gegevens van elke virtuele machine worden opgeslagen. Als u Linux en de CPU-metric als voor beeld neemt, bekijkt u de meest recente rijen. De Visual Studio Cloud Explorer ondersteunt een query taal, zodat u een query kunt uitvoeren. U kunt bijvoorbeeld een query uitvoeren voor ' time stamp gt datetime ' 2016-02-02T21:20:00Z ' ' om er zeker van te zijn dat u de meest recente gebeurtenissen krijgt. De tijd zone komt overeen met UTC. Worden de gegevens die u ziet in de weer gegeven, overeenkomen met de schaal regels die u instelt? In het volgende voor beeld is de CPU voor machine 20 in de afgelopen vijf minuten verhoogd naar 100%.
+    U ziet een aantal tabellen waarin de gegevens van elke virtuele machine worden opgeslagen. Als u Linux en de CPU-metric als voor beeld neemt, bekijkt u de meest recente rijen. Visual Studio Cloud Explorer ondersteunt een query taal, zodat u een query kunt uitvoeren. U kunt bijvoorbeeld een query uitvoeren voor ' time stamp gt datetime ' 2016-02-02T21:20:00Z ' ' om er zeker van te zijn dat u de meest recente gebeurtenissen krijgt. De tijd zone komt overeen met UTC. Worden de gegevens die u ziet in de weer gegeven, overeenkomen met de schaal regels die u instelt? In het volgende voor beeld is de CPU voor machine 20 in de afgelopen vijf minuten verhoogd naar 100%.
     
     ![Opslag tabellen][tables]
     

@@ -1,15 +1,16 @@
 ---
 title: Veelgestelde vragen
 description: Antwoorden op veelgestelde vragen met betrekking tot de Azure Container Instances-service
-author: dkkapur
+author: macolso
+ms.author: macolso
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 95190496df4037a973207e14292911225094782e
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 1cedfb7464fd97249c5cd3fae73c9290365da6cd
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421277"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818486"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>Veelgestelde vragen over Azure Container Instances
 
@@ -39,7 +40,7 @@ Bekijk meer [gedetailleerde richt lijnen](container-instances-troubleshooting.md
 #### <a name="windows-server-2016-base-images"></a>Basis installatie kopieën van Windows Server 2016
 
 * [Nano server](https://hub.docker.com/_/microsoft-windows-nanoserver): `sac2016` `10.0.14393.3506` of nieuwer
-* [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2016` `10.0.14393.3506` of hoger
+* [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2016`  `10.0.14393.3506` of hoger
 
 > [!NOTE]
 > Windows-installatie kopieën op basis van een semi-Annual-kanaal release 1709 of 1803 worden niet ondersteund.
@@ -52,7 +53,7 @@ Bekijk meer [gedetailleerde richt lijnen](container-instances-troubleshooting.md
 
 ### <a name="what-net-or-net-core-image-layer-should-i-use-in-my-container"></a>Welke .NET-of .NET Core-installatie kopie laag moet ik gebruiken in mijn container? 
 
-Gebruik de kleinste afbeelding die voldoet aan uw vereisten. Voor Linux kunt u een installatie kopie voor *runtime-Alpine* .net core gebruiken, die wordt ondersteund sinds de release van .net Core 2,1. Als u voor Windows gebruikmaakt van de volledige .NET Framework, moet u een installatie kopie van Windows Server Core gebruiken (alleen runtime-installatie kopie, zoals *4.7.2-windowsservercore-ltsc2016*). Installatie kopieën met alleen runtime zijn kleiner, maar ondersteunen geen workloads waarvoor de .NET SDK is vereist.
+Gebruik de kleinste afbeelding die voldoet aan uw vereisten. Voor Linux kunt u een installatie kopie voor *runtime-Alpine* .net core gebruiken, die wordt ondersteund sinds de release van .net Core 2,1. Als u voor Windows gebruikmaakt van de volledige .NET Framework, moet u een installatie kopie van Windows Server Core gebruiken (alleen runtime-installatie kopie, zoals  *4.7.2-windowsservercore-ltsc2016*). Installatie kopieën met alleen runtime zijn kleiner, maar ondersteunen geen workloads waarvoor de .NET SDK is vereist.
 
 ## <a name="availability-and-quotas"></a>Beschik baarheid en quota's
 

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ae663b2c7a88e116315464c11b8d162135f0aff
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 112c1c6a0fbbd7e0011890d1ce92c6e21e168137
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91450387"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818005"
 ---
 # <a name="assign-scoped-roles-to-an-administrative-unit"></a>Scoped rollen toewijzen aan een beheer eenheid
 
@@ -36,10 +36,12 @@ Groeps beheerder  |  Kan alle aspecten van groepen en groeps instellingen, zoals
 Helpdesk beheerder  |  Kan wacht woorden voor niet-beheerders en helpdesk beheerders opnieuw instellen in de toegewezen beheer eenheid.
 Licentie beheerder  |  Kan alleen licentie toewijzingen binnen de beheer eenheid toewijzen, verwijderen en bijwerken.
 Wachtwoord beheerder  |  Kan wacht woorden voor niet-beheerders en wachtwoord beheerders binnen de toegewezen beheer eenheid opnieuw instellen.
-Gebruikers beheerder  |  Kan alle aspecten van gebruikers en groepen beheren, met inbegrip van het opnieuw instellen van wacht woorden voor beperkte beheerders binnen de toegewezen beheer eenheid.
+Gebruikersbeheerder  |  Kan alle aspecten van gebruikers en groepen beheren, met inbegrip van het opnieuw instellen van wacht woorden voor beperkte beheerders binnen de toegewezen beheer eenheid.
 
-## <a name="security-principals-that-can-be-assigned-to-an-au-scoped-role"></a>Beveiligings-principals die kunnen worden toegewezen aan een rollen met een AU-bereik
-De volgende beveiligings-principals kunnen worden toegewezen aan een rollen met een AU-bereik:
+## <a name="security-principals-that-can-be-assigned-to-a-scoped-role"></a>Beveiligings-principals die kunnen worden toegewezen aan een scoped rol
+
+De volgende beveiligings-principals kunnen worden toegewezen aan een rol met een beheer eenheid bereik:
+
 * Gebruikers
 * Toe te wijzen functie Cloud groepen (preview-versie)
 * Service Principal Name (SPN)

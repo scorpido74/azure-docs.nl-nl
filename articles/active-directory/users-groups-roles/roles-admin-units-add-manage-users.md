@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3e223dd46806551fbba05127b70a9119a5d9c75
-ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
+ms.openlocfilehash: 0d29f4ef5806eb8ed9385696dea78f4ae0992b93
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91661139"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818159"
 ---
 # <a name="add-and-manage-users-in-an-administrative-unit-in-azure-active-directory"></a>Gebruikers toevoegen en beheren in een beheer eenheid in Azure Active Directory
 
@@ -31,21 +31,30 @@ Zie aan de [slag](roles-admin-units-manage.md#get-started)voor de stappen voor h
 
 ### <a name="azure-portal"></a>Azure Portal
 
-U kunt op twee manieren gebruikers aan beheer eenheden toewijzen.
+U kunt gebruikers afzonderlijk of in een bulk bewerking toewijzen aan beheer eenheden.
 
-1. Afzonderlijke toewijzing
+- Afzonderlijke toewijzing van een gebruikers profiel
 
-    1. U kunt in de portal naar Azure AD gaan en gebruikers selecteren en de gebruiker selecteren die aan een beheer eenheid moet worden toegewezen. U kunt vervolgens beheer eenheden selecteren in het linkerdeel venster. De gebruiker kan worden toegewezen aan een of meer beheer eenheden door te klikken op * * toewijzen aan beheer eenheid en de beheer eenheden te selecteren waaraan de gebruiker moet worden toegewezen.
+   1. Meld u aan bij het [Azure AD-beheer centrum](https://portal.azure.com) met privileged Role Administrator Permissions.
+   1. Selecteer **gebruikers** en selecteer de gebruiker die moet worden toegewezen aan een beheer eenheid om het profiel van de gebruiker te openen.
+   1. Selecteer **beheer eenheden**. De gebruiker kan worden toegewezen aan een of meer administratieve eenheden door **toewijzen aan beheer eenheid** te selecteren en de beheer eenheden te selecteren waaraan de gebruiker moet worden toegewezen.
 
        ![Selecteer toevoegen en voer een naam in voor de beheer eenheid](./media/roles-admin-units-add-manage-users/assign-users-individually.png)
 
-    1. U kunt in de portal naar Azure AD gaan en administratieve eenheden selecteren in het linkerdeel venster en vervolgens de administratieve eenheid selecteren waaraan de gebruikers moeten worden toegewezen. Selecteer **alle gebruikers** en selecteer vervolgens **lid toevoegen**. U kunt vervolgens door gaan en een of meer gebruikers selecteren die moeten worden toegewezen aan de beheer eenheid in het rechterdeel venster.
+- Afzonderlijke toewijzing van een beheer eenheid
+
+   1. Meld u aan bij het [Azure AD-beheer centrum](https://portal.azure.com) met privileged Role Administrator Permissions.
+   1. Selecteer **beheer eenheden** en selecteer vervolgens de administratieve eenheid waaraan de gebruikers moeten worden toegewezen.
+   1. Selecteer **alle gebruikers** en selecteer **lid toevoegen** om een of meer gebruikers te selecteren die u wilt toewijzen aan de beheer eenheid in het deel venster **lid toevoegen** .
 
         ![Selecteer een administratieve eenheid en selecteer lid toevoegen](./media/roles-admin-units-add-manage-users/assign-to-admin-unit.png)
 
-1. Bulk toewijzing
+- Bulk toewijzing
 
-    Ga naar Azure AD in de portal en selecteer beheer eenheden. Selecteer de administratieve eenheid waar gebruikers moeten worden toegevoegd. Klik op alle gebruikers > leden uit het CSV-bestand toe te voegen. U kunt vervolgens de CSV-sjabloon downloaden en het bestand bewerken. De indeling is eenvoudig en er moet één UPN worden toegevoegd aan elke regel. Zodra het bestand klaar is, slaat u het op een geschikte locatie op en uploadt u het in stap 3 als gemarkeerd in de moment opname.
+   1. Meld u aan bij het [Azure AD-beheer centrum](https://portal.azure.com) met privileged Role Administrator Permissions.
+   1. Selecteer **beheer eenheden**.
+   1. Selecteer de administratieve eenheid waar gebruikers moeten worden toegevoegd.
+   1. Open **alle gebruikers**  >  **leden uit het CSV-bestand toevoegen**. U kunt vervolgens de sjabloon met door komma's gescheiden waarden (CSV) downloaden en het bestand bewerken. De indeling is eenvoudig en er moet een enkelvoudige Principal-naam van de gebruiker aan elke regel worden toegevoegd. Zodra het bestand klaar is, slaat u het op een geschikte locatie op en uploadt u het als onderdeel van deze stap.
 
     ![gebruikers bulksgewijs toewijzen aan een beheer eenheid](./media/roles-admin-units-add-manage-users/bulk-assign-to-admin-unit.png)
 

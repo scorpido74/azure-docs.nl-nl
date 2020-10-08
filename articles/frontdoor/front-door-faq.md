@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2020
 ms.author: duau
-ms.openlocfilehash: 0d669d4232adca3348b51c2a48947e0dabf0a472
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 45f9e7a4e508cffd3593cec7bbcea3dd7882a60c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91324056"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819032"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Veelgestelde vragen over de voor deur van Azure
 
@@ -248,6 +248,10 @@ Als u een geslaagde HTTPS-verbinding met de back-end wilt maken, ongeacht of de 
 1. De naam van het **certificaat onderwerp komt niet overeen**: voor HTTPS-verbindingen verwacht de voor deur dat uw back-end een certificaat van een geldige CA met de naam van de back-end (en) overeenkomt met de backend-hostnaam. Als bijvoorbeeld de hostnaam van de back-end is ingesteld op `myapp-centralus.contosonews.net` en het certificaat dat uw back-end presenteert tijdens de TLS `myapp-centralus.contosonews.net` -Handshake, noch de `*myapp-centralus*.contosonews.net` naam van het onderwerp, wordt de verbinding door de voor deur geweigerd en wordt er een fout geretourneerd. 
     1. **Oplossing**: Hoewel het niet wordt aangeraden om het probleem op te lossen, kunt u deze fout omzeilen door de naam van de certificaat houder voor uw deur te controleren. Dit is aanwezig onder instellingen in Azure Portal en onder BackendPoolsSettings in de API.
 2. **Backend-hosting certificaat van ongeldige ca**: alleen certificaten van [geldige certificerings instanties](/azure/frontdoor/front-door-troubleshoot-allowed-ca) kunnen worden gebruikt op de back-end met de voor deur. Certificaten van interne Ca's of zelfondertekende certificaten zijn niet toegestaan.
+
+### <a name="can-i-use-clientmutual-authentication-with-azure-front-door"></a>Kan ik client/wederzijdse verificatie met Azure front-deur gebruiken?
+
+Nee. Hoewel Azure front-deur TLS 1,2 ondersteunt, die client/wederzijdse authenticatie in [RFC 5246](https://tools.ietf.org/html/rfc5246)heeft geïntroduceerd, biedt Azure front-deur momenteel geen ondersteuning voor client/wederzijdse verificatie.
 
 ## <a name="diagnostics-and-logging"></a>Diagnostische gegevens en logboekregistratie
 

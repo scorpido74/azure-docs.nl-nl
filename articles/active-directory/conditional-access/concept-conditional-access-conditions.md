@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0dcbd58c5d8dc12898fe343dbba6c3a6f8cd61b4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2dddad5692ab2eebb6ef9b427c091be449791d7c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258708"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818357"
 ---
 # <a name="conditional-access-conditions"></a>Voorwaardelijke toegang: voor waarden
 
@@ -49,6 +49,9 @@ Voorwaardelijke toegang van Azure AD biedt ondersteuning voor de volgende platfo
 - macOS
 
 Als u verouderde verificatie blokkeert met de voor waarde van **andere clients** , kunt u ook de voor waarde voor het apparaat platform instellen.
+
+> [!IMPORTANT]
+> Micro soft raadt u aan om een beleid voor voorwaardelijke toegang te hebben voor niet-ondersteunde platformen. Als u bijvoorbeeld de toegang tot uw bedrijfs resources wilt blok keren vanuit Linux of andere clients die niet worden ondersteund, moet u een beleid configureren met een apparaat platform voorwaarde dat elk apparaat omvat en ondersteunde apparaat-platforms uitsluit en beheer instellen om toegang te blok keren.
 
 ## <a name="locations"></a>Locaties
 
@@ -166,7 +169,7 @@ Deze instelling heeft gevolgen voor toegangs pogingen van de volgende mobiele ap
 | Outlook 2016, Outlook 2013 (met moderne verificatie), Skype voor bedrijven (met moderne verificatie) | Exchange Online | Windows 8,1, Windows 7 |
 | Mobiele Outlook-app | Exchange Online | Android, iOS |
 | Power BI-app | Power BI-service | Windows 10, Windows 8,1, Windows 7, Android en iOS |
-| Skype voor Bedrijven | Exchange Online| Android, iOS |
+| Skype voor bedrijven | Exchange Online| Android, iOS |
 | App Visual Studio Team Services | Visual Studio Team Services | Windows 10, Windows 8,1, Windows 7, iOS en Android |
 
 ### <a name="exchange-activesync-clients"></a>Exchange ActiveSync-clients

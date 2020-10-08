@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: mimckitt
-ms.openlocfilehash: 367116948034fd4bedbeec15e655a09b179865d6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2dbfc2173f6631aff2d65c770a5204bbd72d3ed1
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085721"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818804"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>De aangepaste scriptextensie van Azure versie 2 gebruiken met virtuele Linux-machines
 De aangepaste script extensie versie 2 downloadt en voert scripts uit op virtuele machines van Azure. Deze uitbrei ding is handig voor configuratie na de implementatie, software-installatie of een andere configuratie/beheer taak. U kunt scripts downloaden van Azure Storage of een andere toegankelijke Internet locatie, of u kunt deze opgeven voor de runtime van de uitbrei ding. 
@@ -55,8 +55,9 @@ Als uw script zich op een lokale server bevindt, moet u mogelijk nog steeds extr
 * Zorg ervoor dat de scripts geen gebruikers invoer vereisen wanneer ze worden uitgevoerd.
 * Er is 90 minuten om het script uit te voeren, wat langer resulteert in een mislukte inrichting van de uitbrei ding.
 * Start de computer niet opnieuw op in het script, waardoor er problemen zijn met andere uitbrei dingen die worden geïnstalleerd en na het opnieuw opstarten. de uitbrei ding wordt na het opnieuw opstarten niet voortgezet. 
+* Het is niet raadzaam om een script uit te voeren dat de VM-agent stopt te stoppen of bij te werken. Dit kan de uitbrei ding in een overgangs status verlaten en leiden naar een time-out.
 * Als u een script hebt dat ertoe leidt dat de computer opnieuw wordt opgestart, installeert u toepassingen en voert u scripts, enz. U moet de herstart plannen met behulp van een cron-taak of gebruikmaken van hulpprogram ma's zoals DSC, of chef, puppet-extensies.
-* De uitbrei ding voert slechts één script uit, als u een script wilt uitvoeren op elke keer dat u opstart, dan kunt u een [Cloud-init-installatie kopie](../linux/using-cloud-init.md) gebruiken en een script [per opstart](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) module gebruiken. U kunt ook het script gebruiken om een systeem-service-eenheid te maken.
+* De uitbrei ding voert slechts één script uit, als u een script wilt uitvoeren op elke keer dat u opstart, dan kunt u een [Cloud-init-installatie kopie](../linux/using-cloud-init.md)  gebruiken en een script [per opstart](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) module gebruiken. U kunt ook het script gebruiken om een systeem-service-eenheid te maken.
 * Er kan slechts één versie van een uitbrei ding op de VM worden toegepast. Als u een tweede aangepast script wilt uitvoeren, moet u de aangepaste script extensie verwijderen en opnieuw Toep assen met het bijgewerkte script. 
 * Als u wilt plannen wanneer een script wordt uitgevoerd, moet u de extensie gebruiken om een cron-taak te maken. 
 * Wanneer het script wordt uitgevoerd, ziet u alleen de extensiestatus 'overgang maken' van de Azure-portal of CLI. Als u meer frequente status updates van een actief script wilt, moet u uw eigen oplossing maken.
@@ -117,19 +118,19 @@ Deze items moeten worden behandeld als gevoelige gegevens en worden opgegeven in
 | publisher | Micro soft. compute. Extensions | tekenreeks |
 | type | CustomScript | tekenreeks |
 | typeHandlerVersion | 2.1 | int |
-| fileUris (bijvoorbeeld) | `https://github.com/MyProject/Archive/MyPythonScript.py` | array |
-| commandToExecute (bijvoorbeeld) | python-MyPythonScript.py\<my-param1> | tekenreeks |
+| fileUris (bijvoorbeeld) | `https://github.com/MyProject/Archive/MyPythonScript.py` | matrix |
+| commandToExecute (bijvoorbeeld) | python-MyPythonScript.py \<my-param1> | tekenreeks |
 | script | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo = | tekenreeks |
-| skipDos2Unix (bijvoorbeeld) | false | boolean |
+| skipDos2Unix (bijvoorbeeld) | onjuist | booleaans |
 | tijds tempel (bijvoorbeeld) | 123456789 | 32-bits geheel getal |
 | storageAccountName (bijvoorbeeld) | examplestorageacct | tekenreeks |
 | storageAccountKey (bijvoorbeeld) | TmJK/1N3AbAZ3q/+ hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg = = | tekenreeks |
 | managedIdentity (bijvoorbeeld) | {} of {"clientId": "31b403aa-c364-4240-a7ff-d85fb6cd7232"} of {"objectId": "12dd289c-0583-46e5-b9b4-115d5c19ef4b"} | JSON-object |
 
 ### <a name="property-value-details"></a>Details van eigenschaps waarde
-* `apiVersion`: U kunt de meest recente apiVersion vinden met [resource Explorer](https://resources.azure.com/) of vanuit Azure CLI met behulp van de volgende opdracht`az provider list -o json`
+* `apiVersion`: U kunt de meest recente apiVersion vinden met [resource Explorer](https://resources.azure.com/) of vanuit Azure CLI met behulp van de volgende opdracht `az provider list -o json`
 * `skipDos2Unix`: (optioneel, Booleaans) overs Laan dos2unix conversie van bestands-Url's of script bestanden op basis van een script.
-* `timestamp`(optioneel, 32-bits geheel getal) gebruik dit veld alleen om een nieuwe uitvoering van het script te activeren door de waarde van dit veld te wijzigen.  Een gehele waarde is acceptabel; de waarde mag alleen gelijk zijn aan die van de vorige.
+* `timestamp` (optioneel, 32-bits geheel getal) gebruik dit veld alleen om een nieuwe uitvoering van het script te activeren door de waarde van dit veld te wijzigen.  Een gehele waarde is acceptabel; de waarde mag alleen gelijk zijn aan die van de vorige.
 * `commandToExecute`: (**vereist** als script niet is ingesteld, teken reeks) het ingangs punt script dat moet worden uitgevoerd. Gebruik dit veld in plaats daarvan als uw opdracht geheimen bevat zoals wacht woorden.
 * `script`: (**vereist** als commandToExecute niet is ingesteld, String) een met base64 gecodeerd (en optioneel gzip'ed) script dat wordt uitgevoerd door/bin/sh.
 * `fileUris`: (optioneel, teken reeks matrix) de Url's voor bestanden die moeten worden gedownload.

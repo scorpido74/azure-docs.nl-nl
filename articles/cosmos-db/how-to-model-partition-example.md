@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: be8e43585fca77fc891a9142066d406444b674d8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7274627ccf0aaab29f3ca569568e0085d53f1dea
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91253231"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818090"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>Meer informatie over het modelleren en partitioneren van gegevens in Azure Cosmos DB aan de hand van een praktijkvoorbeeld
 
@@ -54,7 +54,7 @@ Hier volgt een lijst met aanvragen die ons platform moet openbaren:
 - **[Q5]** Een leuk bericht weer geven
 - **[Q6]** De *x* meest recente Posts weer geven die zijn gemaakt in korte vorm (feed)
 
-In deze fase hebben we geen aandacht meer bedacht op de details van wat elke entiteit (gebruiker, post enz.) zal bevatten. Deze stap is doorgaans de eerste die u moet uitvoeren bij het ontwerpen op basis van een relationele Store, omdat u moet nagaan hoe deze entiteiten worden vertaald in termen van tabellen, kolommen, refererende sleutels, enzovoort. Het is veel minder van een probleem met een document database die geen enkel schema afdwingt bij het schrijven.
+In deze fase hebben we nog geen aandacht meer bedacht op de details van wat elke entiteit (gebruiker, post enz.) zal bevatten. Deze stap is doorgaans de eerste die u moet uitvoeren bij het ontwerpen op basis van een relationele Store, omdat u moet nagaan hoe deze entiteiten worden vertaald in termen van tabellen, kolommen, refererende sleutels, enzovoort. Het is veel minder van een probleem met een document database die geen enkel schema afdwingt bij het schrijven.
 
 De belangrijkste reden waarom het belang rijk is om de toegangs patronen te identificeren vanaf het begin, is omdat deze lijst met aanvragen wordt door ons test pakket. Elke keer dat we ons gegevens model herhalen, gaan we elk van de aanvragen door en controleren ze de prestaties en schaal baarheid.
 
@@ -137,7 +137,7 @@ Deze aanvraag is eenvoudig te implementeren omdat er alleen een item in de conta
 
 Het ophalen van een gebruiker wordt uitgevoerd door het bijbehorende item uit de `users` container te lezen.
 
-:::image type="content" source="./media/how-to-model-partition-example/V1-Q1.png" alt-text="Eén item ophalen uit de container gebruikers" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V1-Q1.png" alt-text="Eén item naar de container gebruikers schrijven" border="false":::
 
 | **Latentie** | **RU-kosten** | **Prestaties** |
 | --- | --- | --- |
@@ -147,7 +147,7 @@ Het ophalen van een gebruiker wordt uitgevoerd door het bijbehorende item uit de
 
 Net als bij **[C1]** hoeven we alleen maar naar de container te schrijven `posts` .
 
-:::image type="content" source="./media/how-to-model-partition-example/V1-C2.png" alt-text="Een enkel item schrijven naar de container Posts" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V1-C2.png" alt-text="Eén item naar de container gebruikers schrijven" border="false":::
 
 | **Latentie** | **RU-kosten** | **Prestaties** |
 | --- | --- | --- |
@@ -157,7 +157,7 @@ Net als bij **[C1]** hoeven we alleen maar naar de container te schrijven `posts
 
 We beginnen met het ophalen van het bijbehorende document uit de `posts` container. Maar dat is niet voldoende, conform onze specificatie, moeten we de gebruikers naam van de auteur van het bericht en het aantal opmerkingen en het aantal reacties en de aantallen van de informatie in dit bericht, opgeven, waarvoor drie extra SQL-query's moeten worden uitgegeven.
 
-:::image type="content" source="./media/how-to-model-partition-example/V1-Q2.png" alt-text="Een bericht ophalen en aanvullende gegevens samen voegen" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V1-Q2.png" alt-text="Eén item naar de container gebruikers schrijven" border="false":::
 
 Elk van de extra query's filtert op de partitie sleutel van de betreffende container. Dit is precies wat we nodig hebben om de prestaties en schaal baarheid te maximaliseren. Maar we moeten uiteindelijk vier bewerkingen uitvoeren om één post te retour neren, dus we verbeteren die in een volgende iteratie.
 
@@ -169,7 +169,7 @@ Elk van de extra query's filtert op de partitie sleutel van de betreffende conta
 
 Eerst moeten we de gewenste berichten ophalen met een SQL-query waarmee de berichten worden opgehaald die overeenkomen met die specifieke gebruiker. Maar we moeten ook extra query's geven om de gebruikers naam van de auteur samen te voegen en het aantal opmerkingen en de bevindt.
 
-:::image type="content" source="./media/how-to-model-partition-example/V1-Q3.png" alt-text="Ophalen van alle Posts voor een gebruiker en het samen voegen van de aanvullende gegevens" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V1-Q3.png" alt-text="Eén item naar de container gebruikers schrijven" border="false":::
 
 Deze implementatie geeft veel nadelen:
 
@@ -184,7 +184,7 @@ Deze implementatie geeft veel nadelen:
 
 Er wordt een opmerking gemaakt door het bijbehorende item in de `posts` container te schrijven.
 
-:::image type="content" source="./media/how-to-model-partition-example/V1-C2.png" alt-text="Een enkel item schrijven naar de container Posts" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V1-C2.png" alt-text="Eén item naar de container gebruikers schrijven" border="false":::
 
 | **Latentie** | **RU-kosten** | **Prestaties** |
 | --- | --- | --- |
@@ -194,7 +194,7 @@ Er wordt een opmerking gemaakt door het bijbehorende item in de `posts` containe
 
 We beginnen met een query waarmee alle opmerkingen voor die post worden opgehaald en opnieuw worden verzameld, moeten ook de gebruikers namen voor elke opmerking afzonderlijk worden geaggregeerd.
 
-:::image type="content" source="./media/how-to-model-partition-example/V1-Q4.png" alt-text="Alle opmerkingen voor een bericht ophalen en de aanvullende gegevens samen voegen" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V1-Q4.png" alt-text="Eén item naar de container gebruikers schrijven" border="false":::
 
 Hoewel de hoofd query filtert op de partitie sleutel van de container, is het samen voegen van de gebruikers namen afzonderlijk van belang voor de algehele prestaties. Dit wordt later verbeterd.
 
@@ -206,7 +206,7 @@ Hoewel de hoofd query filtert op de partitie sleutel van de container, is het sa
 
 Net als bij **[C3]** maken we het bijbehorende item in de `posts` container.
 
-:::image type="content" source="./media/how-to-model-partition-example/V1-C2.png" alt-text="Een enkel item schrijven naar de container Posts" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V1-C2.png" alt-text="Eén item naar de container gebruikers schrijven" border="false":::
 
 | **Latentie** | **RU-kosten** | **Prestaties** |
 | --- | --- | --- |
@@ -216,7 +216,7 @@ Net als bij **[C3]** maken we het bijbehorende item in de `posts` container.
 
 Net als **[Q4]** zoeken we de zoek opdracht naar het bericht en voegen ze vervolgens hun gebruikers namen samen.
 
-:::image type="content" source="./media/how-to-model-partition-example/V1-Q5.png" alt-text="Alles ophalen voor een post en het samen voegen van de aanvullende gegevens" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V1-Q5.png" alt-text="Eén item naar de container gebruikers schrijven" border="false":::
 
 | **Latentie** | **RU-kosten** | **Prestaties** |
 | --- | --- | --- |
@@ -226,7 +226,7 @@ Net als **[Q4]** zoeken we de zoek opdracht naar het bericht en voegen ze vervol
 
 De meest recente berichten worden opgehaald door de `posts` container te doorzoeken op aflopende aanmaak datum, vervolgens de gebruikers namen en het aantal opmerkingen en de aantallen voor elk van de berichten te verzamelen.
 
-:::image type="content" source="./media/how-to-model-partition-example/V1-Q6.png" alt-text="Ophalen van de meest recente posts en het samen voegen van de aanvullende gegevens" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V1-Q6.png" alt-text="Eén item naar de container gebruikers schrijven" border="false":::
 
 Daarna wordt de eerste query niet gefilterd op de partitie sleutel van de `posts` container, waardoor er een dure ventilator wordt geactiveerd. Dit is nog erger omdat we een veel grotere resultatenset richten en de resultaten sorteren met een `ORDER BY` component, waardoor het duurder is voor de aanvraag eenheden.
 
@@ -337,7 +337,7 @@ Gebruikers namen moeten een andere benadering hebben wanneer gebruikers niet all
 
 In ons voor beeld gebruiken we de wijzigings feed van de `users` container om te reageren wanneer gebruikers hun gebruikers namen bijwerken. Als dat gebeurt, wordt de wijziging door gegeven door een andere opgeslagen procedure aan te roepen op de `posts` container:
 
-:::image type="content" source="./media/how-to-model-partition-example/denormalization-1.png" alt-text="De gebruikers namen worden genormaliseerd in de container Posts" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/denormalization-1.png" alt-text="Eén item naar de container gebruikers schrijven" border="false":::
 
 ```javascript
 function updateUsernames(userId, username) {
@@ -377,7 +377,7 @@ In deze opgeslagen procedure worden de ID van de gebruiker en de nieuwe gebruike
 
 Nu onze normalisatie is ingesteld, hoeft u slechts één item op te halen om die aanvraag af te handelen.
 
-:::image type="content" source="./media/how-to-model-partition-example/V2-Q2.png" alt-text="Eén item uit de container Posts ophalen" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V2-Q2.png" alt-text="Eén item naar de container gebruikers schrijven" border="false":::
 
 | **Latentie** | **RU-kosten** | **Prestaties** |
 | --- | --- | --- |
@@ -387,7 +387,7 @@ Nu onze normalisatie is ingesteld, hoeft u slechts één item op te halen om die
 
 Nu opnieuw, kunnen we de extra aanvragen voor het ophalen van de gebruikers namen en eindigen met één query die op de partitie sleutel filtert.
 
-:::image type="content" source="./media/how-to-model-partition-example/V2-Q4.png" alt-text="Alle opmerkingen voor een bericht ophalen" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V2-Q4.png" alt-text="Eén item naar de container gebruikers schrijven" border="false":::
 
 | **Latentie** | **RU-kosten** | **Prestaties** |
 | --- | --- | --- |
@@ -397,7 +397,7 @@ Nu opnieuw, kunnen we de extra aanvragen voor het ophalen van de gebruikers name
 
 Precies dezelfde situatie wanneer u het leuk vindt.
 
-:::image type="content" source="./media/how-to-model-partition-example/V2-Q5.png" alt-text="Alle keren dat een bericht wordt opgehaald" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V2-Q5.png" alt-text="Eén item naar de container gebruikers schrijven" border="false":::
 
 | **Latentie** | **RU-kosten** | **Prestaties** |
 | --- | --- | --- |
@@ -411,7 +411,7 @@ Bekijk onze algemene prestatie verbeteringen, maar er zijn nog twee aanvragen di
 
 Deze aanvraag is al voor delen van de verbeteringen die zijn geïntroduceerd in v2, waardoor extra query's worden gemaakt.
 
-:::image type="content" source="./media/how-to-model-partition-example/V2-Q3.png" alt-text="Alle berichten voor een gebruiker ophalen" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V2-Q3.png" alt-text="Eén item naar de container gebruikers schrijven" border="false":::
 
 Maar de resterende query wordt nog steeds niet gefilterd op de partitie sleutel van de `posts` container.
 
@@ -455,11 +455,11 @@ Opmerking:
 
 Om dat te doen, gebruiken we de wijzigings feed opnieuw. Deze keer reageren we op de wijzigings feed van de `posts` container om een nieuwe of bijgewerkte post naar de container te verzenden `users` . En omdat het weer geven van berichten geen volledige inhoud hoeft te retour neren, kunnen ze in het proces worden afgekapt.
 
-:::image type="content" source="./media/how-to-model-partition-example/denormalization-2.png" alt-text="De berichten in de container gebruikers worden genormaliseerd" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/denormalization-2.png" alt-text="Eén item naar de container gebruikers schrijven" border="false":::
 
 We kunnen onze query nu naar de container routeren `users` , filteren op de partitie sleutel van de container.
 
-:::image type="content" source="./media/how-to-model-partition-example/V3-Q3.png" alt-text="Alle berichten voor een gebruiker ophalen" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V3-Q3.png" alt-text="Eén item naar de container gebruikers schrijven" border="false":::
 
 | **Latentie** | **RU-kosten** | **Prestaties** |
 | --- | --- | --- |
@@ -469,7 +469,7 @@ We kunnen onze query nu naar de container routeren `users` , filteren op de part
 
 We moeten hier een vergelijk bare situatie behandelen: zelfs na het afwijzen van de extra query's die onnodig zijn gemaakt in v2, wordt de resterende query niet gefilterd op de partitie sleutel van de container:
 
-:::image type="content" source="./media/how-to-model-partition-example/V2-Q6.png" alt-text="De meest recente posts worden opgehaald" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V2-Q6.png" alt-text="Eén item naar de container gebruikers schrijven" border="false":::
 
 Volgens dezelfde benadering moet de prestaties en schaal baarheid van deze aanvraag worden gemaximaliseerd, maar is er slechts één partitie. Dit kan worden bedacht omdat er slechts een beperkt aantal items moet worden geretourneerd. Als u de start pagina van ons blog platform wilt vullen, moeten we de 100 meest recente Posts ophalen, zonder dat u de hele gegevensset hoeft te pagineren.
 
@@ -494,7 +494,7 @@ Deze container is gepartitioneerd door `type` , die zich altijd `post` in onze i
 
 Ter verkrijging van de denormalie moeten we de wijzigings pijplijn die we eerder hebben geïntroduceerd voor het verzenden van de berichten naar die nieuwe container, aansluiten op de pijp lijn voor veranderingen in de feed. Een belang rijk voor deel is dat u er zeker van moet zijn dat we alleen de 100 meest recente berichten opslaan. anders kan de inhoud van de container groter worden dan de maximale grootte van een partitie. Dit wordt gedaan door het aanroepen van een [post-trigger](stored-procedures-triggers-udfs.md#triggers) wanneer een document wordt toegevoegd aan de container:
 
-:::image type="content" source="./media/how-to-model-partition-example/denormalization-3.png" alt-text="Berichten in de feed-container worden genormaliseerd" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/denormalization-3.png" alt-text="Eén item naar de container gebruikers schrijven" border="false":::
 
 Dit is de hoofd tekst van de post-trigger waarmee de verzameling wordt afgekapt:
 
@@ -545,7 +545,7 @@ function truncateFeed() {
 
 De laatste stap bestaat uit het omleiden van onze query naar onze nieuwe `feed` container:
 
-:::image type="content" source="./media/how-to-model-partition-example/V3-Q6.png" alt-text="De meest recente posts worden opgehaald" border="false":::
+:::image type="content" source="./media/how-to-model-partition-example/V3-Q6.png" alt-text="Eén item naar de container gebruikers schrijven" border="false":::
 
 | **Latentie** | **RU-kosten** | **Prestaties** |
 | --- | --- | --- |

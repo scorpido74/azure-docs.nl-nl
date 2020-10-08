@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45263ca0448042aa972ee53093b51dd47bd51190
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: bac3e0dc6c6bcc98bb57989e1335ce6a60872a37
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049346"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818334"
 ---
 # <a name="conditional-access-require-mfa-for-administrators"></a>Voorwaardelijke toegang: MFA vereisen voor beheerders
 
@@ -24,11 +24,12 @@ Accounts waaraan beheerders rechten zijn toegewezen, zijn gericht op aanvallers.
 
 Micro soft raadt u aan MFA verplicht te stellen voor de volgende rollen ten minste:
 
+* Verificatie beheerder
 * Factureringsbeheerder
 * Beheerder van voorwaardelijke toegang
 * Exchange-beheerder
 * Globale beheerder
-* Help Desk (wacht woord) beheerder
+* Helpdesk beheerder
 * Wachtwoordbeheerder
 * Beveiligingsbeheerder
 * SharePoint-beheerder
@@ -72,7 +73,7 @@ De volgende stappen helpen u bij het maken van een beleid voor voorwaardelijke t
    1. Onder **uitsluiten**selecteert u **gebruikers en groepen** en kiest u de accounts voor nood toegang of het afbreek glas van uw organisatie. 
    1. Selecteer **Gereed**.
 1. Onder **Cloud-apps of acties**  >  **Include**, selecteert u **alle Cloud-apps**en selecteert u **gereed**.
-1. Onder **voor waarden**  >  **client-apps (preview)**, onder **Selecteer de client-apps waarop dit beleid van toepassing is om** alle geselecteerde standaard instellingen te behouden en selecteer **gereed**.
+1. Onder **voor waarden**  >  **client**-apps **Configure** gaat u naar **Ja** en selecteert u onder **Selecteer de client-apps waarop dit beleid van toepassing is om** alle geselecteerde standaard instellingen te behouden en selecteert u **gereed**.
 1. Onder **toegangs beheer**  >  **toekennen**selecteert u **toegang verlenen**, **multi-factor Authentication vereisen**en selecteert u **selecteren**.
 1. Bevestig de instellingen en stel **beleid inschakelen** in **op aan**.
 1. Selecteer **maken** om uw beleid in te stellen.

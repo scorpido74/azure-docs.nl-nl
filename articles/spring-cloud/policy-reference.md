@@ -1,22 +1,22 @@
 ---
 title: Ingebouwde beleidsdefinities voor Azure Spring Cloud
 description: Toont ingebouwde Azure Policy-beleidsdefinities voor Azure Spring Cloud. Deze ingebouwde beleidsdefinities bieden algemene benaderingen voor het beheren van uw Azure-resources.
-ms.date: 09/16/2020
+ms.date: 10/07/2020
 ms.topic: reference
 author: bmitchell287
 ms.author: brendm
 ms.service: spring-cloud
 ms.custom: subject-policy-reference, devx-track-java
-ms.openlocfilehash: 40842a10da9d0bfaf4b1326b099f8b361cc8f916
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: ffbd4f3b030a807bd6b72795e71b92dc2764b65e
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90983972"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818877"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-spring-cloud"></a>Ingebouwde Azure Policy-definities voor Azure Spring Cloud
 
-**Dit artikel is van toepassing op:** ✔️ Java ✔️ C #
+**Dit artikel is van toepassing op:** ✔️ Java ✔️ C#
 
 Deze pagina is een index van ingebouwde [Azure Policy](../governance/policy/overview.md)-beleidsdefinities voor Azure Spring Cloud. Zie [Ingebouwde Azure Policy-definities](../governance/policy/samples/built-in-policies.md) voor aanvullende ingebouwde modules voor Azure Policy voor andere services.
 
