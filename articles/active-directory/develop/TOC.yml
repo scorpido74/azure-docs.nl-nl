@@ -535,10 +535,6 @@
     - name: Toepassingsconfiguratie
       displayName: App configuration
       items:
-        - name: Trainingshandleiding voor app-registratie in de Azure-portal
-          href: app-registrations-training-guide-for-app-registrations-legacy-users.md
-        - name: Ervaring voor app-registratie in de Azure-portal
-          href: app-registration-portal-training-guide.md
         - name: Van een app met één tenant een app met meerdere tenants maken
           href: howto-convert-app-to-be-multi-tenant.md
         - name: Een service-principal maken

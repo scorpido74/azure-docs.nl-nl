@@ -4,16 +4,16 @@ description: Niet-HTTP-apps van .NET core/. NET bewaken met Azure Monitor Applic
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/11/2020
-ms.openlocfilehash: 12be39e36c003531b815e137cbd1d360ca7f0fd6
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 643edf81d6a98c8f423267b657feb9dfb6da1070
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91760475"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91816389"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>Application Insights voor Worker-service toepassingen (niet-HTTP-toepassingen)
 
-Application Insights brengt een nieuwe SDK uit, die het `Microsoft.ApplicationInsights.WorkerService` meest geschikt is voor niet-http-workloads zoals Messa ging, achtergrond taken, console toepassingen, enzovoort. Deze typen toepassingen hebben niet het principe van een binnenkomende HTTP-aanvraag, zoals een traditionele ASP.NET/ASP.NET core-webtoepassing, en daarom wordt het gebruik van Application Insights-pakketten voor [ASP.net](asp-net.md) of [ASP.net core](asp-net-core.md) toepassingen niet ondersteund.
+[Application INSIGHTS SDK for Worker-service](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) is een nieuwe SDK die het meest geschikt is voor niet-http-workloads zoals Messa ging, achtergrond taken, console toepassingen, enzovoort. Deze typen toepassingen hebben niet het principe van een binnenkomende HTTP-aanvraag, zoals een traditionele ASP.NET/ASP.NET core-webtoepassing, en daarom wordt het gebruik van Application Insights-pakketten voor [ASP.net](asp-net.md) of [ASP.net core](asp-net-core.md) toepassingen niet ondersteund.
 
 De nieuwe SDK voert geen telemetrie-verzameling op zichzelf uit. In plaats daarvan wordt een andere bekende Application Insights automatische verzamelaars zoals [DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/), [PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/), [ApplicationInsightsLoggingProvider](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights) enz. Deze SDK bevat uitbreidings methoden `IServiceCollection` om telemetrie-verzameling in te scha kelen en te configureren.
 
@@ -138,7 +138,7 @@ In [Dit](/aspnet/core/fundamentals/host/hosted-services?tabs=visual-studio&view=
 
 [Hier](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/BackgroundTasksWithHostedService) wordt een volledig voor beeld gedeeld
 
-1. Installeer het micro soft. ApplicationInsights. WorkerService ( https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) pakket naar de toepassing.
+1. Installeer het pakket [micro soft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) op de toepassing.
 2. Voeg toe `services.AddApplicationInsightsTelemetryWorkerService();` aan de `ConfigureServices()` -methode, zoals in dit voor beeld:
 
 ```csharp
@@ -225,7 +225,7 @@ Zoals vermeld in het begin van dit artikel, kan het nieuwe pakket worden gebruik
 
 [Hier](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/ConsoleAppWithApplicationInsights) wordt een volledig voor beeld gedeeld
 
-1. Installeer het micro soft. ApplicationInsights. WorkerService ( https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) pakket naar de toepassing.
+1. Installeer het pakket [micro soft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) op de toepassing.
 
 2. Wijzig Program.cs zoals hieronder wordt beschreven.
 
@@ -293,7 +293,7 @@ Deze console toepassing gebruikt ook dezelfde standaard `TelemetryConfiguration`
 
 ## <a name="run-your-application"></a>Uw toepassing uitvoeren
 
-Voer de toepassing uit. Met de voorbeeld werk rollen van het bovenstaande voor beeld wordt een HTTP-oproep elke seconde verzonden naar bing.com, en worden er ook enkele logboeken met ILogger. Deze regels worden genest binnen de `StartOperation` aanroep van `TelemetryClient` , die wordt gebruikt voor het maken van een bewerking (in dit voor beeld de `RequestTelemetry` naam ' Operation '). Application Insights verzamelt deze ILogger-Logboeken (standaard) en afhankelijkheden, en ze worden gekoppeld aan de `RequestTelemetry` relatie met de bovenliggende en onderliggende. De correlatie werkt ook met cross proces/netwerk grens. Als de aanroep bijvoorbeeld is gedaan aan een ander bewaakt onderdeel, wordt deze ook aan dit bovenliggende item gecorreleerd.
+Voer de toepassing uit. In het voor beeld van alle bovenstaande werk rollen wordt een HTTP-oproep elke seconde voor bing.com gemaakt en worden er maar weinig logboeken gebruikt `ILogger` . Deze regels worden genest binnen de `StartOperation` aanroep van `TelemetryClient` , die wordt gebruikt voor het maken van een bewerking (in dit voor beeld de `RequestTelemetry` naam ' Operation '). Application Insights verzamelt deze ILogger-Logboeken (standaard) en afhankelijkheden, en ze worden gekoppeld aan de `RequestTelemetry` relatie met de bovenliggende en onderliggende. De correlatie werkt ook met cross proces/netwerk grens. Als de aanroep bijvoorbeeld is gedaan aan een ander bewaakt onderdeel, wordt deze ook aan dit bovenliggende item gecorreleerd.
 
 Deze aangepaste bewerking van `RequestTelemetry` kan worden beschouwd als het equivalent van een inkomende webaanvraag in een typische webtoepassing. Hoewel het niet nodig is om een bewerking te gebruiken, past deze het beste bij het [Application Insights correlatie gegevens model](./correlation.md) `RequestTelemetry` . deze fungeert als de bovenliggende bewerking en elke telemetrie die in de werk nemers wordt gegenereerd, wordt beschouwd als logisch deel uitmaakt van dezelfde bewerking. Deze aanpak zorgt er ook voor dat alle telemetrie die is gegenereerd (automatisch en hand matig), hetzelfde is `operation_id` . Als steek proeven is gebaseerd op `operation_id` , wordt de telemetrie van een enkele herhaling door de sampling algoritme behouden of verbroken.
 

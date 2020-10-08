@@ -8,6 +8,7 @@
         - name: Wat is Azure HDInsight?
           href: ./hdinsight-overview.md
     - name: Zelfstudies
+      expanded: true
       items:
         - name: HDInsight-clusters maken
           href: ./hdinsight-hadoop-provision-linux-clusters.md

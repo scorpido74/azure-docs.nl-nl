@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e461bbf8c3a6cd845744fc0e17b5d1f0eb9bef58
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 3b02be8f35ff33f758aebe03c89287c51c9ffef7
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88010154"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91816329"
 ---
 # <a name="set-up-msix-app-attach"></a>MSIX-app-koppeling instellen
 
@@ -342,20 +342,25 @@ Remove-AppxPackage -PreserveRoamableApplicationData $packageName
 
 ### <a name="destage-powershell-script"></a>Power shell-script destage
 
-Voor dit script vervangt u de tijdelijke aanduiding voor **$packageName** door de naam van het pakket dat u wilt testen.
+Voor dit script vervangt u de tijdelijke aanduiding voor **$packageName** door de naam van het pakket dat u wilt testen. In een productie-implementatie kunt u dit het beste uitvoeren bij het afsluiten.
 
 ```powershell
 #MSIX app attach de staging sample
 
+$vhdSrc="<path to vhd>"
+
 #region variables
 $packageName = "<package name>"
-$msixJunction = "C:\temp\AppAttach\"
+$msixJunction = "C:\temp\AppAttach"
 #endregion
 
 #region deregister
 Remove-AppxPackage -AllUsers -Package $packageName
-cd $msixJunction
-rmdir $packageName -Force -Verbose
+Remove-Item "$msixJunction\$packageName" -Recurse -Force -Verbose
+#endregion
+
+#region Detach VHD
+Dismount-DiskImage -ImagePath $vhdSrc -Confirm:$false
 #endregion
 ```
 
@@ -380,8 +385,8 @@ U kunt als volgt de licenties instellen voor offline gebruik:
 
 1. Down load het app-pakket, de licenties en de vereiste Frameworks van de Microsoft Store voor bedrijven. U hebt zowel de versleutelde als niet-versleutelde licentie bestanden nodig. Gedetailleerde Download instructies vindt u [hier](/microsoft-store/distribute-offline-apps#download-an-offline-licensed-app).
 2. Werk de volgende variabelen bij in het script voor stap 3:
-      1. `$contentID`is de ContentID-waarde van het niet-versleutelde licentie bestand (. XML). U kunt het licentie bestand openen in een tekst editor naar keuze.
-      2. `$licenseBlob`is de volledige teken reeks voor de licentie-Blob in het gecodeerde licentie bestand (. bin). U kunt het versleutelde licentie bestand openen in een tekst editor naar keuze.
+      1. `$contentID` is de ContentID-waarde van het niet-versleutelde licentie bestand (. XML). U kunt het licentie bestand openen in een tekst editor naar keuze.
+      2. `$licenseBlob` is de volledige teken reeks voor de licentie-Blob in het gecodeerde licentie bestand (. bin). U kunt het versleutelde licentie bestand openen in een tekst editor naar keuze.
 3. Voer het volgende script uit vanuit een Power shell-prompt voor beheerders. Er is een goede plaats om de licentie-installatie uit te voeren aan het einde van het [faserings script](#stage-powershell-script) dat ook moet worden uitgevoerd vanaf een beheerders prompt.
 
 ```powershell

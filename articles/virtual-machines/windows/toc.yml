@@ -4,7 +4,7 @@
   items:
     - name: Informatie over virtuele machines
       href: overview.md
-- name: Quickstarts
+- name: Snelstartgidsen
   items:
     - name: Virtuele machine maken - Portal
       href: quick-create-portal.md
@@ -278,7 +278,7 @@
             - name: Flexibiliteit van de VM-instantiegrootte
               href: ../reserved-vm-instance-size-flexibility.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Spot-VM's
-          displayName: 'pre-empt, preempt'
+          displayName: 'pre-empt, preempt, spot'
           href: ../spot-vms.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Virtuele Azure-machines zonder tijdelijke schijf
           href: ../azure-vms-no-temp-disk.md
@@ -380,7 +380,7 @@
         - name: Spot-VM's implementeren
           items:
             - name: Portal
-              href: spot-portal.md
+              href: ../spot-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
             - name: PowerShell
               href: spot-powershell.md
             - name: ARM-sjabloon

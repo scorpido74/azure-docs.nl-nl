@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 18463c4350895401c9bf73dc249ce93218a44f7c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 68ff753a0c6e21fac512792670a24bede8980e99
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91264640"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91816431"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Een App Service-app configureren in het Azure Portal
 
@@ -83,6 +83,32 @@ App-instellingen hebben de volgende JSON-indeling:
   ...
 ]
 ```
+
+### <a name="automate-app-settings-with-the-azure-cli"></a>App-instellingen automatiseren met Azure CLI
+
+U kunt de Azure CLI gebruiken om instellingen te maken en te beheren vanaf de opdracht regel.
+
+- Wijs een waarde toe aan een instelling met [AZ webapp config app Settings set](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set):
+
+    ```azurecli-interactive
+    az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings <setting-name>="<value>"
+    ```
+        
+    Vervang door `<setting-name>` de naam van de instelling en `<value>` met de waarde die u wilt toewijzen. Met deze opdracht wordt de instelling gemaakt als deze nog niet bestaat.
+    
+- Alle instellingen en hun waarden weer geven met [AZ webapp config appSettings lijst](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_list):
+    
+    ```azurecli-interactive
+    az webapp config appsettings list --name <app-name> --resource-group <resource-group-name>
+    ```
+    
+- Verwijder een of meer instellingen met [AZ webapp config app Settings delete](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_delete):
+
+    ```azurecli-interactive
+    az webapp config appsettings delete --name <app-name> --resource-group <resource-group-name> --setting-names {<names>}
+    ```
+    
+    Vervang door `<names>` een door spaties gescheiden lijst met instellings namen.
 
 ## <a name="configure-connection-strings"></a>Verbindingsreeksen configureren
 
@@ -164,7 +190,12 @@ In de [Azure Portal]zoekt en selecteert u **app Services**en selecteert u vervol
 
 Hier kunt u enkele algemene instellingen voor de app configureren. Voor sommige instellingen moet u [Omhoog schalen naar een hogere prijs categorie](manage-scale-up.md).
 
-- **Stack-instellingen**: de software stack voor het uitvoeren van de app, met inbegrip van de taal-en SDK-versies. Voor Linux-apps en aangepaste container-apps kunt u ook een optionele opstart opdracht of-bestand instellen.
+- **Stack-instellingen**: de software stack voor het uitvoeren van de app, met inbegrip van de taal-en SDK-versies.
+
+    Voor Linux-apps en aangepaste container-apps kunt u de taal runtime versie selecteren en een optionele **opstart opdracht** of een opstart opdracht bestand instellen.
+
+    ![Algemene instellingen voor Linux-containers](./media/configure-common/open-general-linux.png)
+
 - **Platform instellingen**: Hiermee kunt u instellingen configureren voor het hosting platform, waaronder:
     - **Bitness**: 32-bits of 64-bits.
     - **WebSocket-protocol**: voor [ASP.net-signa lering] of [socket.io](https://socket.io/), bijvoorbeeld.

@@ -4,7 +4,7 @@
   items:
     - name: Wat zijn ARM-sjablonen?
       href: overview.md
-- name: Quickstarts
+- name: Snelstartgidsen
   items:
     - name: Sjablonen maken - portal
       href: quickstart-create-templates-use-the-portal.md
@@ -156,7 +156,7 @@
               href: ../../firewall-manager/quick-secure-virtual-hub.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Load Balancer
               href: ../../load-balancer/quickstart-load-balancer-standard-public-template.md?toc=/azure/azure-resource-manager/templates/toc.json
-            - name: Private Link-eindpunt
+            - name: Privé-eindpunt
               href: ../../private-link/create-private-endpoint-template.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Private Link-service
               href: ../../private-link/create-private-link-service-template.md?toc=/azure/azure-resource-manager/templates/toc.json

@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: hux
 ms.custom: references_regions
-ms.openlocfilehash: 3b6162552e43c9f475bef2ca3097da22ae198011
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: db23d3b5c532a1539936b51222345c98679c554c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91713694"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817528"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-preview"></a>Azure Blob-gegevens beheren en zoeken met Blob-index (preview)
 
@@ -72,8 +72,11 @@ De volgende limieten gelden voor BLOB-index Tags:
 - Code sleutels en waarden zijn hoofdletter gevoelig
 - Code sleutels en waarden bieden alleen ondersteuning voor teken reeks gegevens typen. getallen, datums, tijden of speciale tekens worden opgeslagen als teken reeksen
 - Code sleutels en waarden moeten voldoen aan de volgende naamgevings regels:
-  - Alfanumerieke numerieke tekens: a-z, A-Z, 0-9
-  - Speciale tekens: spatie, plus teken, minteken, punt, dubbele punt, gelijkteken, onderstrepings teken, slash
+  - Alfanumerieke tekens:
+    - **a** t/m **z** (kleine letters)
+    - **A** t/m **Z** (hoofd letters)
+    - **0** t/m **9** (cijfers)
+  - Geldige speciale tekens: spatie, plus teken, minteken, punt, dubbele punt, gelijkteken, onderstrepings teken, schuine streep ( ` +-.:=_/` )
 
 ## <a name="getting-and-listing-blob-index-tags"></a>Labels voor BLOB-indexen ophalen en weer geven
 

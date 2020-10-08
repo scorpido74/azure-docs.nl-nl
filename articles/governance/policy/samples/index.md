@@ -3,12 +3,12 @@ title: Index van beleidsvoorbeelden
 description: Index van inbouwingen in Azure Policy. Categorietags, naleving van regelgeving, Key Vault, Kubernetes, gastconfiguratie en meer.
 ms.date: 07/20/2020
 ms.topic: sample
-ms.openlocfilehash: b4f76c42eb23ce368875dfb91f2f7b9e7ee1bd50
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 9fec7c7b0db554d424f8faee7e4e10e6121f1caa
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89481559"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812519"
 ---
 # <a name="azure-policy-samples"></a>Voorbeelden van Azure Policy
 
@@ -27,7 +27,7 @@ Hier volgen voorbeelden van verschillende patronen die de taal en operators in A
 - [Fields](./pattern-fields.md)
 - [Parameters](./pattern-parameters.md)
 - [Details van effect](./pattern-effect-details.md)
-- [Tags gebruiken](./pattern-effect-details.md)
+- [Tags gebruiken](./pattern-tags.md)
 - [Waarde-operator](./pattern-value-operator.md)
 - [Tel-operator](./pattern-count-operator.md)
 - [Beleidsdefinities in een initiatief groeperen](./pattern-group-with-initiative.md)

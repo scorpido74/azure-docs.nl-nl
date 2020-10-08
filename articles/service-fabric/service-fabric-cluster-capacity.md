@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: pepogors
 ms.custom: sfrev
-ms.openlocfilehash: 28a01bbc54f752ffc1f25b57dcf2eca566aa635a
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: d2b303c22eea9fb46a68bb3c8e36991d47d61554
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718098"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817736"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Overwegingen bij het plannen van Service Fabric cluster capaciteit
 
@@ -34,7 +34,7 @@ Voor elk cluster is één **primair knooppunt type**vereist, waarmee essentiële
 
 **Niet-primaire knooppunt typen** kunnen worden gebruikt om toepassings rollen (zoals *front-end-* en *back-end-* Services) te definiëren en om services in een cluster fysiek te isoleren. Service Fabric clusters kunnen nul of meer niet-primaire knooppunt typen hebben.
 
-Het primaire knooppunt type is geconfigureerd met behulp `isPrimary` van het kenmerk onder de definitie van het knooppunt type in de sjabloon Azure Resource Manager-implementatie. Zie het [object NodeTypeDescription](/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object) voor de volledige lijst met eigenschappen van knooppunt typen. Open bijvoorbeeld een *AzureDeploy.js* in het bestand in [service Fabric cluster voorbeelden](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/) en zoek *op pagina* zoeken naar het `nodetTypes` object.
+Het primaire knooppunt type is geconfigureerd met behulp `isPrimary` van het kenmerk onder de definitie van het knooppunt type in de sjabloon Azure Resource Manager-implementatie. Zie het [object NodeTypeDescription](/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object) voor de volledige lijst met eigenschappen van knooppunt typen. Open bijvoorbeeld een *AzureDeploy.js* in het bestand in [service Fabric cluster voorbeelden](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/) en zoek *op pagina* zoeken naar het `nodeTypes` object.
 
 ### <a name="node-type-planning-considerations"></a>Overwegingen bij de planning van knooppunt typen
 
