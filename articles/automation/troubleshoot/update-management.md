@@ -2,15 +2,15 @@
 title: Problemen met Azure Automation Updatebeheer oplossen
 description: In dit artikel leest u hoe u problemen oplost en oplost met Azure Automation Updatebeheer.
 services: automation
-ms.date: 09/25/2020
+ms.date: 09/30/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: 9f832b45b3aca11fb96a56643f2cce0228adf8ac
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c70d164325f536187c5ce99419bb41daaa9b1e88
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91713504"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91858401"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Problemen met Updatebeheer oplossen
 
@@ -57,27 +57,25 @@ Oude updates worden voor een Automation-account weer gegeven, zelfs als ze zijn 
 
 ### <a name="cause"></a>Oorzaak
 
-Vervangen updates worden niet correct aangegeven als geweigerd, zodat ze als niet van toepassing kunnen worden beschouwd.
+Vervangen updates worden niet geweigerd in Windows Server Update Services (WSUS), zodat ze als niet van toepassing kunnen worden beschouwd.
 
 ### <a name="resolution"></a>Oplossing
 
-Wanneer een vervangen update wordt 100 procent niet van toepassing is, moet u de goedkeurings status van die update wijzigen in `Declined` . Goedkeurings status wijzigen voor alle updates:
+Wanneer een vervangen update wordt 100 procent niet van toepassing is, moet u de goedkeurings status van die update wijzigen `Declined` in WSUS. Goedkeurings status wijzigen voor alle updates:
 
 1. Selecteer in het Automation-account **updatebeheer** om de status van de machine weer te geven. Zie [Update-evaluaties weer geven](../update-management/update-mgmt-view-update-assessments.md).
 
 2. Controleer de vervangen update om er zeker van te zijn dat dit 100 procent niet van toepassing is.
 
-3. Markeer de update als geweigerd, tenzij u een vraag hebt over de update.
+3. Op de WSUS-server van het rapport computers, [weigert u de update](/windows-server/administration/windows-server-update-services/manage/updates-operations#declining-updates).
 
 4. Selecteer **computers** en Forceer opnieuw scannen op naleving in de kolom **naleving** . Zie [updates voor virtuele machines beheren](../update-management/update-mgmt-manage-updates-for-vm.md).
 
 5. Herhaal de bovenstaande stappen voor andere vervangen updates.
 
-6. Voer de wizard opruiming uit om bestanden te verwijderen van de geweigerde updates. 
+6. Voor Windows Server Update Services (WSUS), Reinig alle vervangen updates om de infra structuur te vernieuwen met behulp van de wizard WSUS- [Server opruimen](/windows-server/administration/windows-server-update-services/manage/the-server-cleanup-wizard).
 
-7. Voor Windows Server Update Services (WSUS) moet u alle vervangen updates hand matig opschonen om de infra structuur te vernieuwen.
-
-8. Herhaal deze procedure regel matig om het weergave probleem te corrigeren en Minimaliseer de hoeveelheid schijf ruimte die wordt gebruikt voor update beheer.
+7. Herhaal deze procedure regel matig om het weergave probleem te corrigeren en Minimaliseer de hoeveelheid schijf ruimte die wordt gebruikt voor update beheer.
 
 ## <a name="scenario-machines-dont-show-up-in-the-portal-under-update-management"></a><a name="nologs"></a>Scenario: computers worden niet weer gegeven in de portal onder Updatebeheer
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/20/2018
-ms.openlocfilehash: 74fc317dbb97c14c27e6355e100a6e6b5e767363
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e91fd0d94d6f6d87b5e554e27bf9c2a2ba6ccabd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333015"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91858469"
 ---
 # <a name="data-sync-agent-for-sql-data-sync"></a>Data Sync-agent voor SQL Data Sync
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -24,11 +24,11 @@ ms.locfileid: "91333015"
 Synchroniseer gegevens met SQL Server data bases door de Data Sync agent te installeren en configureren voor SQL Data Sync in Azure. Zie voor meer informatie over SQL Data Sync [gegevens synchroniseren tussen meerdere Cloud-en on-premises data bases met SQL Data Sync](sql-data-sync-data-sql-server-sql-database.md).
 
 > [!IMPORTANT]
-> SQL Data Sync biedt op dit moment **geen** ondersteuning voor het beheerde exemplaar van Azure SQL.
+> SQL Data Sync biedt op dit moment **geen** ondersteuning voor Azure SQL Managed Instance.
 
 ## <a name="download-and-install"></a>Downloaden en installeren
 
-Als u de Data Sync-agent wilt downloaden, gaat u naar [SQL Data Sync-agent](https://www.microsoft.com/download/details.aspx?id=27693).
+Als u de Data Sync-agent wilt downloaden, gaat u naar [SQL Data Sync-agent](https://www.microsoft.com/download/details.aspx?id=27693). Als u de Data Sync-agent wilt bijwerken, installeert u de agent op dezelfde locatie als de oude agent en wordt het oorspronkelijke bestand overschreven.
 
 ### <a name="install-silently"></a>Op de achtergrond installeren
 
