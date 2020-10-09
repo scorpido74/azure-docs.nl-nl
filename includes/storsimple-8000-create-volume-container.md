@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 467af776af95cf035121250fdcadd2fee65d9805
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67176080"
 ---
 #### <a name="to-create-a-volume-container"></a>Een volumecontainer maken
@@ -31,7 +31,7 @@ ms.locfileid: "67176080"
       Als u beschikt over informatie over uw bandbreedtegebruik, kunt u de bandbreedte mogelijk toewijzen op basis van een planning door een **bandbreedtesjabloon te selecteren**. Voor een stapsgewijze procedure gaat u naar [Add a bandwidth template](../articles/storsimple/storsimple-8000-manage-bandwidth-templates.md#add-a-bandwidth-template) (Een bandbreedtesjabloon toevoegen).
 
       ![De blade Volumecontainer](./media/storsimple-8000-create-volume-container/createvolumecontainer6b.png)
-   7. Klik op **Create**.
+   7. Klik op **Maken**.
 
         ![De blade Volumecontainer](./media/storsimple-8000-create-volume-container/createvolumecontainer6.png)
    

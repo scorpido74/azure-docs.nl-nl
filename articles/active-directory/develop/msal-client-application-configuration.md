@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: b4595a63613afa3c6fef2fa2a85647d8b70b1388
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81534462"
 ---
 # <a name="application-configuration-options"></a>Configuratie opties voor toepassingen
@@ -79,9 +79,9 @@ Door MSAL in uw code te gebruiken, geeft u de doel groep op met behulp van een v
   - Een GUID (de ID van uw Azure AD-exemplaar) voor toepassingen met één Tenant
   - Een domein naam die is gekoppeld aan uw Azure AD-exemplaar (ook voor toepassingen met één Tenant)
 - Een van deze tijdelijke aanduidingen als Tenant-ID in plaats van de inventarisatie van de Azure AD-instantie doelgroep:
-    - `organizations`voor een multi tenant-toepassing
-    - `consumers`gebruikers alleen met hun persoonlijke accounts aanmelden
-    - `common`gebruikers aanmelden met hun werk-en school account of hun persoonlijke micro soft-accounts
+    - `organizations` voor een multi tenant-toepassing
+    - `consumers` gebruikers alleen met hun persoonlijke accounts aanmelden
+    - `common` gebruikers aanmelden met hun werk-en school account of hun persoonlijke micro soft-accounts
 
 MSAL genereert een zinvolle uitzonde ring als u zowel de Azure AD-instantie doelgroep als de Tenant-ID opgeeft.
 
@@ -122,8 +122,8 @@ Als u een open bare client-app-ontwikkelaar bent die gebruikmaakt van MSAL:
 
 U kunt de omleidings-URI onderdrukken met behulp van de `RedirectUri` eigenschap (bijvoorbeeld als u Brokers gebruikt). Hier volgen enkele voor beelden van omleidings-Uri's voor dat scenario:
 
-- `RedirectUriOnAndroid`= "msauth-5a434691-CCB2-4fd1-b97b-b64bcfbc03fc://com.Microsoft.Identity.client.sample";
-- `RedirectUriOnIos`= $ "msauth. {Bundel. ID}://auth ";
+- `RedirectUriOnAndroid` = "msauth-5a434691-CCB2-4fd1-b97b-b64bcfbc03fc://com.Microsoft.Identity.client.sample";
+- `RedirectUriOnIos` = $ "msauth. {Bundel. ID}://auth ";
 
 Zie [IOS-toepassingen migreren die gebruikmaken van Microsoft Authenticator van ADAL.net naar MSAL.net](msal-net-migration-ios-broker.md) en [de Broker op Ios](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Leveraging-the-broker-on-iOS)gebruiken voor meer informatie over IOS.
 Zie [brokered auth in Android](brokered-auth.md)voor meer informatie over Android.

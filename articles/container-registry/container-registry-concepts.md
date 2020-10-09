@@ -4,10 +4,10 @@ description: Inleiding tot de belangrijkste concepten van Azure-container regist
 ms.topic: article
 ms.date: 06/16/2020
 ms.openlocfilehash: f3a3e2a00b4fb35f9e9dd1415d5c197aef0d39b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85390445"
 ---
 # <a name="about-registries-repositories-and-images"></a>Over registers, opslag plaatsen en installatie kopieën
@@ -45,7 +45,7 @@ Een *opslag plaats* is een verzameling container installatie kopieën of andere 
 - *ACR-HelloWorld: v1*
 - *ACR-HelloWorld: v2*
 
-Opslagplaats namen kunnen ook [naam ruimten](container-registry-best-practices.md#repository-namespaces)bevatten. Met naam ruimten kunt u verwante opslag plaatsen en eigendoms artefacten in uw organisatie identificeren met door komma's gescheiden namen. Het REGI ster beheert echter alle opslag plaatsen onafhankelijk, niet als een-hiërarchie. Voor voor beelden:
+Opslagplaats namen kunnen ook [naam ruimten](container-registry-best-practices.md#repository-namespaces)bevatten. Met naam ruimten kunt u verwante opslag plaatsen en eigendoms artefacten in uw organisatie identificeren met door komma's gescheiden namen. Het REGI ster beheert echter alle opslag plaatsen onafhankelijk, niet als een-hiërarchie. Voorbeelden:
 
 - *Marketing/campaign10-18/Web: v2*
 - *Marketing-campaign10-18/API: v3*

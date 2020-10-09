@@ -10,10 +10,10 @@ ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 754c106db42f3f0695ad023e736993bee82e9757
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82133921"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>Azure IoT Edge modules implementeren vanuit de Azure Portal
@@ -35,10 +35,10 @@ De Azure Portal bevat een wizard die u helpt bij het maken van het implementatie
 
 ### <a name="select-device-and-add-modules"></a>Apparaat selecteren en modules toevoegen
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) en navigeer naar uw IOT-hub.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com) en ga naar uw IoT Hub.
 1. Selecteer in het linkerdeel venster **IOT Edge** in het menu.
 1. Klik op de ID van het doel apparaat in de lijst met apparaten.
-1. Selecteer op de bovenste balk **modules instellen**.
+1. Selecteer op de bovenste balk **Modules instellen**.
 1. Geef in de sectie **container Registry-instellingen** van de pagina de referenties op voor toegang tot persoonlijke container registers die uw module installatie kopieën bevatten.
 1. Selecteer in de sectie **IOT Edge-modules** van de pagina de optie **toevoegen**.
 1. Bekijk de typen modules in de vervolg keuzelijst:
@@ -89,10 +89,10 @@ Controleer of de module is geïmplementeerd in uw IoT Hub in de Azure Portal. Se
 
 U kunt snel een module implementeren vanuit Azure Marketplace op uw apparaat in uw IoT Hub in de Azure Portal.
 
-1. Ga in het Azure Portal naar uw IoT Hub.
+1. Ga in Azure Portal naar uw IoT Hub.
 1. Selecteer in het linkerdeel venster onder **automatische Apparaatbeheer**de optie **IOT Edge**.
 1. Selecteer het IoT Edge apparaat dat de implementatie moet ontvangen.
-1. Selecteer op de bovenste balk **modules instellen**.
+1. Selecteer op de bovenste balk **Modules instellen**.
 1. Klik in de sectie **IOT Edge modules** op **toevoegen**en selecteer **Marketplace module** in de vervolg keuzelijst.
 
 ![Module toevoegen in IoT Hub](./media/how-to-deploy-modules-portal/iothub-add-module.png)

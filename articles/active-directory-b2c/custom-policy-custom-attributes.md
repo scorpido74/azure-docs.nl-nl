@@ -12,10 +12,10 @@ ms.date: 03/17/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: dbeb2540084fad2cfab3ce360dd15b60a75e5e59
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85389323"
 ---
 # <a name="azure-active-directory-b2c-enable-custom-attributes-in-a-custom-profile-policy"></a>Azure Active Directory B2C: aangepaste kenmerken in een aangepast profiel beleid inschakelen
@@ -50,14 +50,14 @@ De *extensie-eigenschap*, het *aangepaste kenmerk*en de *aangepaste claim* verwi
 1. Selecteer het filter **Map + Abonnement** in het bovenste menu en selecteer vervolgens de map die uw Azure AD B2C-tenant bevat.
 1. Selecteer **Azure AD B2C** in het linkermenu. Of selecteer **Alle services** en zoek naar en selecteer **Azure AD B2C**.
 1. Selecteer **app-registraties**en selecteer vervolgens **alle toepassingen**.
-1. Selecteer de `b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.` toepassing.
+1. Selecteer de `b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.`-toepassing.
 1. Kopieer de volgende id's naar het klem bord en sla ze op:
     * **Toepassings-id**. Bijvoorbeeld: `11111111-1111-1111-1111-111111111111`.
     * **Object-id**. Bijvoorbeeld: `22222222-2222-2222-2222-222222222222`.
 
 ## <a name="modify-your-custom-policy"></a>Aangepast beleid wijzigen
 
-Als u aangepaste kenmerken in uw beleid wilt inschakelen, geeft u de **toepassings-id** en toepassings **object-id** op in de Aad-algemene technische profiel meta gegevens. Het *Aad-algemene* technische profiel is te vinden in het basis [Azure Active Directory](active-directory-technical-profile.md) technische profiel en biedt ondersteuning voor Azure AD-gebruikers beheer. Andere technische profielen van Azure AD bevatten de AAD-common om de configuratie ervan te benutten. Het AAD-algemene technische profiel in het extensie bestand overschrijven.
+Als u aangepaste kenmerken in uw beleid wilt inschakelen, geeft u de **toepassings-id** en toepassings **object-id** op in de AAD-Common technische profiel meta gegevens. Het *Aad-algemene* technische profiel is te vinden in het basis [Azure Active Directory](active-directory-technical-profile.md) technische profiel en biedt ondersteuning voor Azure AD-gebruikers beheer. Andere technische profielen van Azure AD bevatten de AAD-Common om de configuratie te benutten. Overschrijf het AAD-Common technische profiel in het extensie bestand.
 
 1. Open het bestand extensies van uw beleid. Bijvoorbeeld <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em> .
 1. Zoek het element ClaimsProviders. Voeg een nieuwe ClaimsProvider toe aan het ClaimsProviders-element.
@@ -81,9 +81,9 @@ Als u aangepaste kenmerken in uw beleid wilt inschakelen, geeft u de **toepassin
 
 ## <a name="upload-your-custom-policy"></a>Uw aangepaste beleid uploaden
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Zorg ervoor dat u de map met uw Azure AD-Tenant gebruikt door het filter **Directory + abonnement** te selecteren in het bovenste menu en de map te kiezen die uw Azure AD B2C-Tenant bevat.
-3. Kies **alle services** in de linkerbovenhoek van de Azure Portal en zoek en selecteer **app-registraties**.
+3. Kies linksboven in de Azure Portal **Alle services**, zoek **App-registraties** en selecteer deze.
 4. Selecteer een **Framework voor identiteits ervaring**.
 5. Selecteer **aangepast beleid uploaden**en upload de TrustFrameworkExtensions.xml-beleids bestanden die u hebt gewijzigd.
 
@@ -96,7 +96,7 @@ Dezelfde extensie kenmerken worden gedeeld door ingebouwde en aangepaste beleids
 
 U kunt deze kenmerken maken met behulp van de portal-gebruikers interface voor of nadat u ze in uw aangepaste beleids regels gebruikt. Volg de richt lijnen voor het [definiëren van aangepaste kenmerken in azure Active Directory B2C](user-flow-custom-attributes.md). Wanneer u een kenmerk **loyaltyId** in de portal maakt, moet u dit als volgt:
 
-|Name     |Gebruikt in |
+|Naam     |Gebruikt in |
 |---------|---------|
 |`extension_loyaltyId`  | Aangepast beleid|
 |`extension_<b2c-extensions-app-guid>_loyaltyId`  | [Microsoft Graph API](manage-user-accounts-graph-api.md)|

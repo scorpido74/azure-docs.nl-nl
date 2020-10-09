@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 2e44a4861e2522b766aab9c7151d76c471dd2d8c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9a195497b4376633bd3c767d7d0ea029109fdf9d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76314535"
 ---
 # <a name="apply-sql-transformation"></a>SQL-transformatie toepassen
 
-In dit artikel wordt een module van Azure Machine Learning Designer (preview-versie) beschreven.
+In dit artikel wordt een module van Azure Machine Learning Designer beschreven.
 
 Met de module voor het Toep assen van SQL-trans formatie kunt u het volgende doen:
   
@@ -53,7 +53,7 @@ Hoewel SQLite veel van de ANSI SQL-standaard ondersteunt, bevat het niet veel fu
   
 - SQLite gebruikt dynamische typen voor waarden, in plaats van een type toe te wijzen aan een kolom, zoals in de meeste relationele database systemen. Het is zwak getypt en maakt impliciete type conversie mogelijk.  
   
-- `LEFT OUTER JOIN`is geïmplementeerd, maar niet `RIGHT OUTER JOIN` of `FULL OUTER JOIN` .  
+- `LEFT OUTER JOIN` is geïmplementeerd, maar niet `RIGHT OUTER JOIN` of `FULL OUTER JOIN` .  
 
 - U kunt `RENAME TABLE` en- `ADD COLUMN` instructies gebruiken met de `ALTER TABLE` opdracht, maar andere componenten worden niet ondersteund, waaronder `DROP COLUMN` , `ALTER COLUMN` en `ADD CONSTRAINT` .  
   

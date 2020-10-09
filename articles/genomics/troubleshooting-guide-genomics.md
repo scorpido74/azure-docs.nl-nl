@@ -11,10 +11,10 @@ ms.workload: genomics
 ms.topic: troubleshooting
 ms.date: 10/29/2018
 ms.openlocfilehash: c508c10d619cde1a16d89b446c5cfd1a3ce81daf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82100903"
 ---
 # <a name="troubleshooting-guide"></a>Handleiding voor het oplossen van problemen
@@ -26,10 +26,10 @@ Hier volgen enkele tips voor het oplossen van problemen die u kunt tegen komen w
 
 U vindt de fout berichten die zijn gekoppeld aan de werk stroom door:
 
-1. Gebruik de opdracht regel en typ in`msgen status`
+1. Gebruik de opdracht regel en typ in  `msgen status`
 2. De inhoud van standardoutput.txt te controleren.
 
-### <a name="1-using-the-command-line-msgen-status"></a>1. met behulp van de opdracht regel`msgen status`
+### <a name="1-using-the-command-line-msgen-status"></a>1. met behulp van de opdracht regel `msgen status`
 
 ```bash
 msgen status -u URL -k KEY -w ID 
@@ -82,7 +82,7 @@ msgen status -w 1001 -f "config.txt"
 ```
 
 ### <a name="2--examine-the-contents-of-standardoutputtxt"></a>2. Controleer de inhoud van standardoutput.txt 
-Zoek de uitvoer container voor de betreffende werk stroom. MSGEN maakt een, `[workflowfilename].logs.zip` map na elke uitvoering van de werk stroom. Pak de map uit om de inhoud ervan weer te geven:
+Zoek de uitvoer container voor de betreffende werk stroom. MSGEN maakt een,   `[workflowfilename].logs.zip` map na elke uitvoering van de werk stroom. Pak de map uit om de inhoud ervan weer te geven:
 
 * outputFileList.txt: een lijst met de uitvoer bestanden die zijn geproduceerd tijdens de werk stroom
 * standarderror.txt-dit bestand is leeg.

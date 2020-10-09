@@ -4,10 +4,10 @@ description: Meer informatie over het instellen van een Lab voor het leren van s
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: ba14f2fb5263367014b57741c78d6e509df044b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85444961"
 ---
 # <a name="set-up-a-lab-to-teach-shell-scripting-on-linux"></a>Een Lab instellen om shell scripting op Linux te leren
@@ -29,7 +29,7 @@ Volg [deze zelf studie](tutorial-setup-classroom-lab.md) om een nieuw lab te mak
 | Lab-instellingen | Waarde/instructies | 
 | ------------ | ------------------ |
 | Grootte van virtuele machine (VM) | Klein  |
-| VM-installatie kopie | Ubuntu Server 18,04 LTS|
+| VM-installatie kopie | Ubuntu Server 18.04 LTS|
 | Verbinding met extern bureau blad inschakelen | Inschakelen. <p>Als u deze instelling inschakelt, kunnen docenten en studenten verbinding maken met hun virtuele machines met behulp van extern bureau blad (RDP). Zie voor meer informatie [extern bureau blad inschakelen voor virtuele Linux-machines in een lab in Azure Lab Services](how-to-enable-remote-desktop-linux.md). </p>|
 
 ## <a name="install-desktop-and-rdp"></a>Desktop en RDP installeren
@@ -69,7 +69,7 @@ In deze sectie wordt beschreven hoe u een aantal tekst editors installeert. Gedi
 
     De sjabloon wordt nu bijgewerkt en heeft zowel de programmeer taal als de ontwikkel hulpprogramma's die nodig zijn om het lab te volt ooien. De sjabloon afbeelding kan nu worden gepubliceerd naar het lab. Selecteer de knop **publiceren** op de sjabloon pagina om de sjabloon te publiceren naar het lab.  
 
-## <a name="cost"></a>Kosten 
+## <a name="cost"></a>Cost 
 Als u de kosten van dit Lab wilt schatten, kunt u het volgende voor beeld gebruiken:
  
 Voor een klasse van 25 studenten met 20 uur geplande en tien uur aan quota voor huis werk of-toewijzingen is de prijs voor het Lab: 

@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 1127a470a48660ffffa892d24c9f2991ec64c8e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76716677"
 ---
 # <a name="feature-selection-in-the-team-data-science-process-tdsp"></a>Functies selecteren in Team Data Science Process (TDSP)
@@ -44,7 +44,7 @@ In Azure Machine Learning Studio zijn er modules beschikbaar voor functie select
 
 Denk bijvoorbeeld aan het gebruik van de [functie selectie module op basis van filter][filter-based-feature-selection] . Voor het gemak gaat u verder met het voor beeld van tekst analyse. Stel dat u een regressie model wilt maken nadat een set van 256-functies zijn gemaakt via de module [hashing-functie][feature-hashing] , en dat de reactie variabele de ' Kol1 ' is die de Score van het boek beoordeling van 1 tot 5 bevat. Door ' functie Score methode ' in te stellen als ' Pearson-correlatie ', ' doel kolom ' in ' Kol1 ' en ' aantal gewenste functies ' op 50. Vervolgens geeft de [functie selectie op basis van module filter][filter-based-feature-selection] een gegevensset met 50-functies samen met het doel kenmerk ' Kol1 '. In de volgende afbeelding ziet u de stroom van dit experiment en de invoer parameters:
 
-![Eigenschappen van module voor functie selectie op basis van filter](./media/select-features/feature-Selection1.png)
+![Eigenschappen van module functie selectie Filter-Based](./media/select-features/feature-Selection1.png)
 
 In de volgende afbeelding ziet u de resulterende gegevens sets:
 

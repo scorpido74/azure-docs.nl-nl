@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: tomfitz
 ms.openlocfilehash: 5dc219747b9cc74b6c6aac8ab190ebfbe5ae9b32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81458280"
 ---
 # <a name="access-key-vault-secret-when-deploying-azure-managed-applications"></a>Key Vault geheim openen bij het implementeren van Azure Managed Applications
@@ -22,7 +22,7 @@ In dit artikel wordt beschreven hoe u de Key Vault configureert voor gebruik met
 
 1. Selecteer uw Key Vault in de portal.
 
-1. Selecteer **Toegangsbeleid**.   
+1. Selecteer **toegangs beleid**.   
 
    ![Toegangs beleid selecteren](./media/key-vault-access/select-access-policies.png)
 
