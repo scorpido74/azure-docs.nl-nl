@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/07/2020
-ms.openlocfilehash: b6a7b9d4e4b8a7caf79e2dbcc1059adc3c9122d7
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.date: 10/08/2020
+ms.openlocfilehash: af74392b3368a25e5d238f774292c80de5f91c65
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/08/2020
-ms.locfileid: "91843851"
+ms.locfileid: "91857738"
 ---
 # <a name="how-to-use-apache-hive-replication-in-azure-hdinsight-clusters"></a>Apache Hive replicatie gebruiken in azure HDInsight-clusters
 
@@ -224,8 +224,7 @@ De volgende code reeks biedt een voor beeld van hoe Boots trap en incrementele r
 
 Zie voor meer informatie over de items die in dit artikel worden besproken:
 
-- [Naslag informatie voor Apache Ambari-REST](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
-- [De Azure CLI installeren en configureren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)
-- [Azure PowerShell-module AZ installeren en configureren](/powershell/azure/)
-- [HDInsight beheren met Apache Ambari](../hdinsight-hadoop-manage-ambari.md)
-- [HDInsight-clusters op basis van Linux inrichten](../hdinsight-hadoop-provision-linux-clusters.md)
+- [Azure HDInsight-bedrijfs continuïteit](../hdinsight-business-continuity.md)
+- [Azure HDInsight-architectuur voor bedrijfs continuïteit](../hdinsight-business-continuity-architecture.md)
+- [Casestudy Azure HDInsight met hoge Beschik baarheid voor oplossings architectuur](../hdinsight-high-availability-case-study.md)
+- [Wat is Apache Hive en HiveQL in azure HDInsight?](../hadoop/hdinsight-use-hive.md)

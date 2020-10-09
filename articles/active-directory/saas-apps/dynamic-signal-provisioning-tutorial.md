@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 9a11ff33245bf92e225f0f2382f6e873eab1338c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9ebb0927f9721c5c35ee0d83a108efd72732958b
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323792"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91851217"
 ---
 # <a name="tutorial-configure-dynamic-signal-for-automatic-user-provisioning"></a>Zelf studie: dynamische signalen configureren voor automatische gebruikers inrichting
 
@@ -69,7 +69,7 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
 
 * Het is raadzaam dat één Azure AD-gebruiker wordt toegewezen aan een dynamisch signaal om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
 
-* Wanneer u een gebruiker toewijst aan een dynamisch signaal, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **Standaard toegang** worden uitgesloten van het inrichten.
+* Wanneer u een gebruiker toewijst aan een dynamisch signaal, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **Standaardtoegang** worden uitgesloten van het inrichten.
 
 ## <a name="configuring-automatic-user-provisioning-to-dynamic-signal"></a>Automatische gebruikers inrichting op dynamische signalen configureren 
 
@@ -100,11 +100,11 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 6. Navigeer in de beheer console van Dynamic signalering naar **admin > Advanced > API**.
 
-    ![Dynamische signaal inrichting](./media/dynamic-signal-provisioning-tutorial/secret-token-1.png)
+    :::image type="content" source="./media/dynamic-signal-provisioning-tutorial/secret-token-1.png" alt-text="Scherm afbeelding van de beheer console voor dynamische signalen. Geavanceerd is gemarkeerd in het menu beheerder. Het menu Geavanceerd is ook zichtbaar, met een P dat ik heb gemarkeerd." border="false":::
 
     Kopieer de **URL** van de scim-API naar de **Tenant-URL**. Klik op **nieuw token genereren** om een **Bearer-token** te genereren en kopieer de waarde naar een **geheim token**.
 
-    ![Dynamische signaal inrichting](./media/dynamic-signal-provisioning-tutorial/secret-token-2.png)
+    :::image type="content" source="./media/dynamic-signal-provisioning-tutorial/secret-token-2.png" alt-text="Scherm afbeelding van de beheer console voor dynamische signalen. Geavanceerd is gemarkeerd in het menu beheerder. Het menu Geavanceerd is ook zichtbaar, met een P dat ik heb gemarkeerd." border="false":::
 
 7. Klik bij het invullen van de velden die worden weer gegeven in stap 5 op **verbinding testen** om te controleren of Azure AD verbinding kan maken met het dynamische signaal. Als de verbinding mislukt, zorg er dan voor dat uw dynamische signaal account beheerders machtigingen heeft en probeer het opnieuw.
 

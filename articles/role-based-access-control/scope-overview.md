@@ -7,14 +7,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 09/30/2020
+ms.date: 10/08/2020
 ms.author: rolyon
-ms.openlocfilehash: 80a05fd389ecaf504f58d12bf8efe87debd4ab86
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: ad906e3665c6ffc354cf6292c2559d1184037594
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91604308"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856144"
 ---
 # <a name="understand-scope-for-azure-rbac"></a>Bereik voor Azure RBAC
 
@@ -22,9 +22,13 @@ ms.locfileid: "91604308"
 
 ## <a name="scope-levels"></a>Bereik niveaus
 
-In azure kunt u een bereik op vier niveaus opgeven: [beheer groep](../governance/management-groups/overview.md), abonnement, [resource groep](../azure-resource-manager/management/overview.md#resource-groups)en resource. Bereiken zijn gestructureerd in een bovenliggende/onderliggende relatie. Met elk hiërarchie niveau wordt het bereik specifiek gemaakt. U kunt rollen toewijzen aan elk van deze bereik niveaus. Het niveau dat u selecteert, bepaalt hoe breed de rol wordt toegepast. Lagere niveaus nemen rolmachtigingen over van hogere niveaus. 
+In azure kunt u een bereik op vier niveaus opgeven: [beheer groep](../governance/management-groups/overview.md), abonnement, [resource groep](../azure-resource-manager/management/overview.md#resource-groups)en resource. Bereiken zijn gestructureerd in een bovenliggende/onderliggende relatie. Met elk hiërarchie niveau wordt het bereik specifiek gemaakt. U kunt rollen toewijzen aan elk van deze bereikniveaus. Het niveau dat u selecteert, bepaalt hoe breed de rol wordt toegepast. Lagere niveaus nemen rolmachtigingen over van hogere niveaus. 
 
 ![Bereik voor een roltoewijzing](./media/scope-overview/rbac-scope-no-label.png)
+
+Beheer groepen zijn een niveau van scope boven abonnementen, maar beheer groepen ondersteunen complexere hiërarchieën. Het volgende diagram toont een voor beeld van een hiërarchie van beheer groepen en abonnementen die u kunt definiëren. Zie [Wat zijn Azure-beheer groepen?](../governance/management-groups/overview.md)voor meer informatie over beheer groepen.
+
+![Beheer groep en abonnements hiërarchie](./media/scope-overview/rbac-scope-management-groups.png)
 
 ## <a name="scope-format"></a>Bereik indeling
 
@@ -118,6 +122,6 @@ Het is tamelijk eenvoudig om het bereik voor een beheer groep, abonnement of res
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Stappen voor het toevoegen van een roltoewijzing](role-assignments-steps.md)
+- [Stappen om een roltoewijzing toe te voegen](role-assignments-steps.md)
 - [Resource providers for Azure services](../azure-resource-manager/management/azure-services-resource-providers.md) (Resourceproviders voor Azure-services)
-- [Uw resources organiseren met Azure-beheergroepen](../governance/management-groups/overview.md)
+- [Wat zijn Azure-beheergroepen?](../governance/management-groups/overview.md)

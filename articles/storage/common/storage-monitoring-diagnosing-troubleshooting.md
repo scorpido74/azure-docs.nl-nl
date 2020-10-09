@@ -4,17 +4,17 @@ description: Gebruik functies zoals opslag analyse, logboek registratie aan clie
 author: normesta
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 10/02/2020
+ms.date: 10/08/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: a63af55161c2e60724fd35987f9dcbf05b12df2e
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: 5f43654b4ff7d0e1f73bd2d83df21d7277c570d1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91667908"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91854554"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage bewaken, problemen opsporen en oplossen
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -23,8 +23,6 @@ ms.locfileid: "91667908"
 Diagnose-en probleemoplossings problemen in een gedistribueerde toepassing die wordt gehost in een cloud omgeving, kunnen complexer zijn dan in traditionele omgevingen. Toepassingen kunnen worden geïmplementeerd in een PaaS-of IaaS-infra structuur, on-premises, op een mobiel apparaat of in een bepaalde combi natie van deze omgevingen. Normaal gesp roken wordt het netwerk verkeer van uw toepassing mogelijk via open bare en particuliere netwerken en kan uw toepassing gebruikmaken van meerdere opslag technologieën zoals Microsoft Azure Storage tabellen, blobs, wacht rijen of bestanden, naast andere gegevens archieven, zoals relationele data bases en document databases.
 
 Als u dergelijke toepassingen wilt beheren, moet u ze proactief controleren en inzicht krijgen in het vaststellen en oplossen van alle aspecten van deze en hun afhankelijke technologieën. Als gebruiker van Azure Storage services moet u de opslag services die door uw toepassing worden gebruikt continu bewaken voor eventuele onverwachte wijzigingen in het gedrag (zoals trager dan gebruikelijke reactie tijden), en logboek registratie gebruiken voor het verzamelen van gedetailleerde gegevens en het analyseren van een probleem. De diagnostische gegevens die u van zowel controle als logboek registratie ontvangt, helpen u bij het bepalen van de hoofd oorzaak van het probleem dat de toepassing heeft ondervonden. Vervolgens kunt u het probleem oplossen en bepalen welke stappen u kunt ondernemen om de problemen op te lossen. Azure Storage is een kern service van Azure en vormt een belang rijk onderdeel van de meeste oplossingen die klanten implementeren naar de Azure-infra structuur. Azure Storage bevat mogelijkheden voor het vereenvoudigen van bewakings-, diagnose-en probleem oplossing voor opslag problemen in uw Cloud toepassingen.
-
-Zie [end-to-end-probleem oplossing met behulp van Azure Storage metrische gegevens en logboek registratie, AzCopy en Message Analyzer](../storage-e2e-troubleshooting.md)voor een praktische hand leiding voor end-to-end probleem oplossing in azure Storage toepassingen.
 
 * [Inleiding]
   * [Hoe deze hand leiding is ingedeeld]
@@ -68,7 +66,6 @@ Zie [end-to-end-probleem oplossing met behulp van Azure Storage metrische gegeve
 * [Bijlagen]
   * [Bijlage 1: Fiddler gebruiken voor het vastleggen van HTTP-en HTTPS-verkeer]
   * [Bijlage 2: wireshark gebruiken om netwerk verkeer vast te leggen]
-  * [Bijlage 3: micro soft Message Analyzer gebruiken om netwerk verkeer vast te leggen]
   * [Bijlage 4: Excel gebruiken om metrische gegevens weer te geven en te registreren]
   * [Bijlage 5: bewaking met Application Insights voor Azure DevOps]
 
@@ -92,7 +89,7 @@ In de sectie[end-to-end-tracering]wordt beschreven hoe u de informatie in versch
 
 De sectie '[probleemoplossings richtlijnen]' bevat richt lijnen voor probleem oplossing voor enkele veelvoorkomende problemen met betrekking tot de opslag.
 
-De '[bijlagen]' bevatten informatie over het gebruik van andere hulpprogram ma's, zoals wireshark en netmon voor het analyseren van netwerk pakket gegevens, het Fiddler voor het analyseren van HTTP/HTTPS-berichten en micro soft Message Analyzer voor het correleren van logboek gegevens.
+De '[bijlagen]' bevatten informatie over het gebruik van andere hulpprogram ma's, zoals wireshark en netmon voor het analyseren van gegevens van het netwerk pakket en het Fiddler voor het analyseren van HTTP/HTTPS-berichten.
 
 ## <a name="monitoring-your-storage-service"></a><a name="monitoring-your-storage-service"></a>Uw opslag service controleren
 Als u bekend bent met de bewaking van Windows-prestaties, kunt u de metrische gegevens van de opslag beschouwen als Azure Storage equivalent van prestatie meter items van Windows. In metrische gegevens over opslag vindt u een uitgebreide set metrische gegevens (prestatie meter items in de terminologie van Windows prestatie meter), zoals service beschikbaarheid, het totale aantal aanvragen voor de service of het percentage voltooide aanvragen aan de service. Zie voor een volledige lijst met beschik bare metrische gegevens het [tabel schema voor Opslaganalyse metrische gegevens](https://msdn.microsoft.com/library/azure/hh343264.aspx). U kunt opgeven of u wilt dat de opslag service elk uur of elke minuut metrische gegevens verzamelt en samenvoegt. Voor meer informatie over het inschakelen van metrische gegevens en het bewaken van uw opslag accounts raadpleegt u metrische waarden voor [opslag inschakelen en statistieken weer geven](https://go.microsoft.com/fwlink/?LinkId=510865).
@@ -176,7 +173,7 @@ Problemen met betrekking tot Azure Storage-services vallen doorgaans onder een v
 In de volgende secties vindt u een overzicht van de stappen die u moet volgen om problemen in elk van deze vier categorieën op te sporen en op te lossen. In de sectie '[probleemoplossings richtlijnen]' verderop in deze hand leiding vindt u meer informatie over enkele veelvoorkomende problemen die zich kunnen voordoen.
 
 ### <a name="service-health-issues"></a><a name="service-health-issues"></a>Service status problemen
-Problemen met de service status vallen doorgaans buiten uw besturings systeem. De [Azure Portal](https://portal.azure.com) biedt informatie over lopende problemen met Azure-Services, waaronder opslag Services. Als u hebt gekozen voor geografisch redundante opslag met lees toegang tijdens het maken van uw opslag account, dan kan uw toepassing tijdelijk overschakelen naar de kopie alleen-lezen op de secundaire locatie als uw gegevens niet meer beschikbaar zijn op de primaire locatie. Om van de secundaire te lezen, moet uw toepassing kunnen overschakelen tussen de primaire en secundaire opslag locatie en kunnen werken in een modus met beperkte functionaliteit met alleen-lezen gegevens. Met de Azure Storage-client bibliotheken kunt u een beleid voor opnieuw proberen definiëren dat kan worden gelezen uit de secundaire opslag als het lezen van de primaire opslag mislukt. Uw toepassing moet er ook rekening mee houden dat de gegevens op de secundaire locatie uiteindelijk consistent zijn. Zie voor meer informatie het blog bericht [Azure Storage redundantie opties en lees toegang geografisch redundante opslag](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/).
+Problemen met de service status vallen doorgaans buiten uw besturings systeem. De [Azure Portal](https://portal.azure.com) biedt informatie over lopende problemen met Azure-Services, waaronder opslag Services. Als u hebt gekozen voor Read-Access Geo-Redundant opslag wanneer u uw opslag account hebt gemaakt, kan uw toepassing tijdelijk overschakelen naar het alleen-lezen exemplaar op de secundaire locatie als uw gegevens niet meer beschikbaar zijn op de primaire locatie. Om van de secundaire te lezen, moet uw toepassing kunnen overschakelen tussen de primaire en secundaire opslag locatie en kunnen werken in een modus met beperkte functionaliteit met alleen-lezen gegevens. Met de Azure Storage-client bibliotheken kunt u een beleid voor opnieuw proberen definiëren dat kan worden gelezen uit de secundaire opslag als het lezen van de primaire opslag mislukt. Uw toepassing moet er ook rekening mee houden dat de gegevens op de secundaire locatie uiteindelijk consistent zijn. Zie voor meer informatie het blog bericht [Azure Storage redundantie opties en lees toegang geografisch redundante opslag](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/).
 
 ### <a name="performance-issues"></a><a name="performance-issues"></a>Prestatie problemen
 De prestaties van een toepassing kunnen subjectief zijn, met name vanuit het perspectief van een gebruiker. Het is daarom belangrijk dat u over prestatiegegevens voor een basislijn beschikt aan de hand waarvan u kunt bepalen waar er prestatieproblemen zijn. Veel factoren kunnen van invloed zijn op de prestaties van een Azure Storage-service vanuit het perspectief van de client toepassing. Deze factoren kunnen worden gebruikt in de Storage-service, in de-client of in de netwerk infrastructuur; Daarom is het belang rijk dat u een strategie hebt voor het identificeren van de oorsprong van het prestatie probleem.
@@ -221,10 +218,9 @@ U kunt het verkeer tussen de client en de server vastleggen om gedetailleerde in
 
 * [Fiddler](https://www.telerik.com/fiddler) is een gratis proxy voor webfoutopsporing waarmee u de kopteksten en payload-gegevens van http-en HTTPS-aanvragen en-antwoord berichten kunt onderzoeken. Zie voor meer informatie [bijlage 1: Fiddler gebruiken voor het vastleggen van HTTP-en HTTPS-verkeer](#appendix-1).
 * [Microsoft Network Monitor (netmon)](https://cnet-downloads.com/network-monitor) en [wireshark](https://www.wireshark.org/) zijn gratis netwerkprotocol analyse functies waarmee u gedetailleerde pakket gegevens kunt weer geven voor een breed scala aan netwerk protocollen. Zie voor meer informatie over wireshark "[bijlage 2: het gebruik van wireshark voor het vastleggen van netwerk verkeer](#appendix-2)".
-* Micro soft Message Analyzer is een hulp programma van micro soft dat netmon vervangt en dat naast het vastleggen van netwerk pakket gegevens, u helpt de logboek gegevens weer te geven en te analyseren die zijn opgenomen in andere hulpprogram ma's. Zie '[bijlage 3: micro soft Message Analyzer gebruiken om netwerk verkeer vast te leggen](#appendix-3)' voor meer informatie.
 * Als u een basis connectiviteits test wilt uitvoeren om te controleren of uw client computer via het netwerk verbinding kan maken met de Azure Storage-service, kunt u dit niet doen met het hulp programma standaard **ping** op de client. U kunt echter het [ **tcping** -hulp programma](https://www.elifulkerson.com/projects/tcping.php) gebruiken om de connectiviteit te controleren.
 
-In veel gevallen zijn de logboek gegevens van opslag logboeken en de opslag-client bibliotheek voldoende om een probleem op te sporen, maar in sommige gevallen hebt u mogelijk de gedetailleerde informatie nodig die deze hulpprogram ma's voor netwerk logboek registratie kunnen bieden. Als u bijvoorbeeld Fiddler gebruikt om HTTP-en HTTPS-berichten weer te geven, kunt u de header-en payload-gegevens weer geven die zijn verzonden naar en van de opslag Services, zodat u kunt onderzoeken hoe een client toepassing de opslag bewerkingen opnieuw probeert uit te voeren. Protocol analyse functies zoals wireshark worden uitgevoerd op pakket niveau, zodat u TCP-gegevens kunt weer geven, waarmee u problemen met verloren pakketten en verbindings problemen kunt oplossen. Message Analyzer kan worden gebruikt op HTTP-en TCP-lagen.
+In veel gevallen zijn de logboek gegevens van opslag logboeken en de opslag-client bibliotheek voldoende om een probleem op te sporen, maar in sommige gevallen hebt u mogelijk de gedetailleerde informatie nodig die deze hulpprogram ma's voor netwerk logboek registratie kunnen bieden. Als u bijvoorbeeld Fiddler gebruikt om HTTP-en HTTPS-berichten weer te geven, kunt u de header-en payload-gegevens weer geven die zijn verzonden naar en van de opslag Services, zodat u kunt onderzoeken hoe een client toepassing de opslag bewerkingen opnieuw probeert uit te voeren. Protocol analyse functies zoals wireshark worden uitgevoerd op pakket niveau, zodat u TCP-gegevens kunt weer geven, waarmee u problemen met verloren pakketten en verbindings problemen kunt oplossen. 
 
 ## <a name="end-to-end-tracing"></a><a name="end-to-end-tracing"></a>End-to-end tracering
 End-to-end tracering met behulp van een groot aantal logboek bestanden is een handige techniek voor het onderzoeken van potentiële problemen. U kunt de datum-en tijd gegevens uit uw metrische gegevens gebruiken als aanwijzing voor het zoeken naar de logboek bestanden voor gedetailleerde informatie die u helpt bij het oplossen van het probleem.
@@ -385,11 +381,9 @@ queueServicePoint.UseNagleAlgorithm = false;
 Controleer de logboeken aan de client om te zien hoeveel aanvragen uw client toepassing verzendt en controleer op algemene .NET-gerelateerde prestatie knelpunten in uw client zoals CPU, .NET-garbagecollection, netwerk gebruik of geheugen. Als uitgangs punt voor het oplossen van problemen met .NET-client toepassingen raadpleegt u [fout opsporing, tracering en profile ring](https://msdn.microsoft.com/library/7fe0dd2y).
 
 #### <a name="investigating-network-latency-issues"></a>Problemen met netwerk latentie onderzoeken
-Een hoge end-to-end latentie als gevolg van het netwerk wordt meestal veroorzaakt door tijdelijke omstandigheden. U kunt zowel tijdelijke als permanente netwerk problemen, zoals verwijderde pakketten, onderzoeken door gebruik te maken van hulpprogram ma's zoals wireshark of micro soft Message Analyzer.
+Een hoge end-to-end latentie als gevolg van het netwerk wordt meestal veroorzaakt door tijdelijke omstandigheden. U kunt zowel tijdelijke als permanente netwerk problemen, zoals verwijderde pakketten, onderzoeken door gebruik te maken van hulpprogram ma's zoals wireshark.
 
 Voor meer informatie over het gebruik van wireshark om netwerk problemen op te lossen, zie '[bijlage 2: wireshark gebruiken voor het vastleggen van netwerk verkeer]'.
-
-Voor meer informatie over het gebruik van micro soft Message Analyzer om netwerk problemen op te lossen, zie '[bijlage 3: using micro soft Message Analyzer to Capture netwerk Traffic]' (Engelstalig).
 
 ### <a name="metrics-show-low-averagee2elatency-and-low-averageserverlatency-but-the-client-is-experiencing-high-latency"></a><a name="metrics-show-low-AverageE2ELatency-and-low-AverageServerLatency"></a>Prestatiegegevens geven lage AverageE2ELatency en lage AverageServerLatency aan, maar de client ondervindt hoge latentie
 In dit scenario is de waarschijnlijke oorzaak een vertraging in de opslag aanvragen die de opslag service bereiken. U moet onderzoeken waarom aanvragen van de client niet worden door middel van de BLOB-service.
@@ -402,11 +396,9 @@ Controleer ook of de client meerdere nieuwe pogingen uitvoert en onderzoek de re
 * Controleer de client Logboeken. Uitgebreide logboek registratie geeft aan dat er een nieuwe poging is gedaan.
 * Spoor fouten op in uw code en controleer de eigenschappen van het **OperationContext** -object dat is gekoppeld aan de aanvraag. Als de bewerking opnieuw wordt geprobeerd, bevat de eigenschap **RequestResults** meerdere unieke server aanvraag-id's. U kunt ook de begin-en eind tijden voor elke aanvraag controleren. Zie het code voorbeeld in de sectie [server aanvraag-id]voor meer informatie.
 
-Als de client geen problemen bevat, moet u mogelijke netwerk problemen, zoals pakket verlies, onderzoeken. U kunt hulpprogram ma's zoals wireshark of micro soft Message Analyzer gebruiken om netwerk problemen te onderzoeken.
+Als de client geen problemen bevat, moet u mogelijke netwerk problemen, zoals pakket verlies, onderzoeken. U kunt hulpprogram ma's zoals wireshark gebruiken om netwerk problemen te onderzoeken.
 
 Voor meer informatie over het gebruik van wireshark om netwerk problemen op te lossen, zie '[bijlage 2: wireshark gebruiken voor het vastleggen van netwerk verkeer]'.
-
-Voor meer informatie over het gebruik van micro soft Message Analyzer om netwerk problemen op te lossen, zie '[bijlage 3: using micro soft Message Analyzer to Capture netwerk Traffic]' (Engelstalig).
 
 ### <a name="metrics-show-high-averageserverlatency"></a><a name="metrics-show-high-AverageServerLatency"></a>Prestatiegegevens geven hoge AverageServerLatency aan
 In het geval van hoge **averageserverlatency aan** voor aanvragen voor het downloaden van blobs, moet u de logboeken voor logboek registratie gebruiken om te zien of er herhaalde aanvragen voor dezelfde BLOB (of set blobs) zijn. Voor het uploaden van BLOB-aanvragen moet u onderzoeken welke blok grootte de client gebruikt (bijvoorbeeld blokken die kleiner zijn dan 64 K in grootte kan leiden tot overhead, tenzij de Lees bewerkingen ook in minder dan 64 K-segmenten zijn), en als meerdere clients gelijktijdig worden geüpload naar dezelfde blob. U moet ook de metrische gegevens per minuut voor pieken controleren in het aantal aanvragen dat resulteert in het overschrijden van de schaal baarheids doelen van de per seconde. Zie ook '[metrische gegevens een toename in percenttimeouterror aan weer geven]'.
@@ -476,7 +468,7 @@ Server-time-outs duiden op een probleem met de opslag service die verder moet wo
 ### <a name="metrics-show-an-increase-in-percentnetworkerror"></a><a name="metrics-show-an-increase-in-PercentNetworkError"></a>Prestatiegegevens geven een toename in PercentNetworkError aan
 Uw metrische gegevens tonen een toename in **PercentNetworkError** voor een van uw opslag Services. De metrische waarde voor **PercentNetworkError** is een aggregatie van de volgende metrische gegevens: **NetworkError**, **AnonymousNetworkError**en **SASNetworkError**. Deze treden op wanneer de opslag service een netwerk fout detecteert wanneer de client een opslag aanvraag doet.
 
-De meest voorkomende oorzaak van deze fout is dat een client de verbinding verbreekt voordat een time-out in de opslag service verloopt. Onderzoek de code in uw client om te begrijpen waarom en wanneer de client de verbinding met de opslag service verbreekt. U kunt ook wireshark, micro soft Message Analyzer of Tcping gebruiken voor het onderzoeken van problemen met de netwerk verbinding van de client. Deze hulpprogram ma's worden beschreven in de [bijlagen].
+De meest voorkomende oorzaak van deze fout is dat een client de verbinding verbreekt voordat een time-out in de opslag service verloopt. Onderzoek de code in uw client om te begrijpen waarom en wanneer de client de verbinding met de opslag service verbreekt. U kunt ook wireshark of Tcping gebruiken om problemen met de netwerk verbinding van de client te onderzoeken. Deze hulpprogram ma's worden beschreven in de [bijlagen].
 
 ### <a name="the-client-is-receiving-http-403-forbidden-messages"></a><a name="the-client-is-receiving-403-messages"></a>De client ontvangt HTTP 403-meldingen (verboden)
 Als de clienttoepassing een HTTP 403-fout (verboden) weergeeft, is een vermoedelijke oorzaak dat de client gebruikmaakt van een verlopen Shared Access Signature (SAS) bij het verzenden van een opslagaanvraag (hoewel andere mogelijke oorzaken een tijdverschil, ongeldige sleutels of lege headers kunnen zijn). Als een verlopen SAS-sleutel de oorzaak is, ziet u geen vermeldingen in de logboekgegevens voor logboekregistratie voor opslag aan de serverzijde. In de volgende tabel ziet u een voor beeld van het logboek aan de client zijde dat is gegenereerd door de Storage-client bibliotheek die het volgende laat zien:
@@ -719,13 +711,11 @@ Als de vorige probleemoplossings secties niet het probleem omvatten dat u met ee
 
 * Controleer uw metrische gegevens om te zien of er wijzigingen zijn in het verwachte basis gedrag van de regel. Vanuit de metrische gegevens kunt u mogelijk bepalen of het probleem tijdelijk of permanent is en welke opslag bewerkingen het probleem beïnvloedt.
 * U kunt de metrische gegevens gebruiken om u te helpen bij het doorzoeken van de logboek gegevens aan de server zijde voor meer gedetailleerde informatie over de fouten die optreden. Deze informatie kan u helpen bij het oplossen van problemen en het oplossen van het probleem.
-* Als de informatie in de logboeken aan de server zijde niet voldoende is om het probleem op te lossen, kunt u de client bibliotheek van de opslag client-app gebruiken om het gedrag van uw client toepassing en hulpprogram ma's zoals Fiddler, wireshark en micro soft Message Analyzer te onderzoeken om uw netwerk te onderzoeken.
+* Als de gegevens in de logboeken aan de server zijde niet voldoende zijn om het probleem op te lossen, kunt u met de client bibliotheek logboeken aan de slag-client-app de werking van uw client toepassing onderzoeken en hulpprogram ma's zoals Fiddler, wireshark om uw netwerk te onderzoeken.
 
 Zie voor meer informatie over het gebruik van Fiddler '[bijlage 1: met Fiddler om HTTP-en HTTPS-verkeer vast te leggen]. '
 
 Zie voor meer informatie over het gebruik van wireshark '[bijlage 2: het gebruik van wireshark om netwerk verkeer vast te leggen]'.
-
-Zie voor meer informatie over het gebruik van micro soft Message Analyzer '[bijlage 3: micro soft Message Analyzer gebruiken om netwerk verkeer vast te leggen]'.
 
 ## <a name="appendices"></a><a name="appendices"></a>Bijlagen
 In de bijlagen worden verschillende hulp middelen beschreven die nuttig kunnen zijn wanneer u problemen met Azure Storage (en andere services) opspoort en oplost. Deze hulpprogram ma's maken geen deel uit van Azure Storage en sommige producten van derden. De hulpprogram ma's die in deze aanhangsels worden behandeld, vallen niet onder een ondersteunings overeenkomst met Microsoft Azure of Azure Storage en daarom moet u als onderdeel van uw evaluatie proces de licentie-en ondersteunings opties bekijken die beschikbaar zijn voor de providers van deze hulpprogram ma's.
@@ -776,40 +766,6 @@ U kunt er ook voor kiezen om de TCP-gegevens weer te geven wanneer de toepassing
 > Zie de [Gebruikers handleiding voor wireshark](https://www.wireshark.org/docs/wsug_html_chunked)voor meer informatie over het gebruik van wireshark.
 >
 >
-
-### <a name="appendix-3-using-microsoft-message-analyzer-to-capture-network-traffic"></a><a name="appendix-3"></a>Bijlage 3: micro soft Message Analyzer gebruiken om netwerk verkeer vast te leggen
-U kunt micro soft Message Analyzer gebruiken voor het vastleggen van HTTP-en HTTPS-verkeer op een vergelijk bare manier als Fiddler en het vastleggen van netwerk verkeer op een vergelijk bare manier als wireshark.
-
-#### <a name="configure-a-web-tracing-session-using-microsoft-message-analyzer"></a>Een web-tracerings sessie configureren met micro soft Message Analyzer
-Als u een webtraceering-sessie wilt configureren voor HTTP-en HTTPS-verkeer met behulp van micro soft Message Analyzer, voert u de toepassing micro soft Message Analyzer uit en klikt u vervolgens in het menu **File** op **Capture/Trace**. Selecteer **Web Proxy**in de lijst met beschik bare traceer scenario's. Voeg vervolgens in het venster **configuratie van traceer scenario** in het tekstvak **HostnameFilter** de namen van uw opslag eindpunten toe (u kunt deze namen opzoeken in de [Azure Portal](https://portal.azure.com)). Als de naam van uw Azure Storage-account bijvoorbeeld **contosodata**is, voegt u het volgende toe aan het tekstvak **HostnameFilter** :
-
-```
-contosodata.blob.core.windows.net contosodata.table.core.windows.net contosodata.queue.core.windows.net
-```
-
-> [!NOTE]
-> Een spatie teken scheidt de hostnamen.
->
->
-
-Wanneer u klaar bent om te beginnen met het verzamelen van tracerings gegevens, klikt u op de knop **beginnen met** .
-
-Zie [micro soft-PEF-webproxy-provider](https://technet.microsoft.com/library/jj674814.aspx)voor meer informatie over de **webproxy** -tracering van micro soft Message Analyzer.
-
-De ingebouwde **Web Proxy** -tracering in micro soft Message Analyzer is gebaseerd op Fiddler. Er kan HTTPS-verkeer aan de client zijde worden vastgelegd en niet-versleutelde HTTPS-berichten worden weer gegeven. De **webproxy** tracering werkt door een lokale proxy te configureren voor alle http-en HTTPS-verkeer die het toegang geeft tot niet-versleutelde berichten.
-
-#### <a name="diagnosing-network-issues-using-microsoft-message-analyzer"></a>Netwerk problemen vaststellen met behulp van micro soft Message Analyzer
-Naast het gebruik van de **webproxy** tracering van micro soft Message Analyzer voor het vastleggen van gegevens van het HTTP/HTTPS-verkeer tussen de client toepassing en de Storage-service, kunt u ook de ingebouwde **local link layer** trace gebruiken om informatie over het netwerk pakket vast te leggen. Zo kunt u gegevens vastleggen die vergelijkbaar zijn met die u kunt vastleggen met wireshark en problemen met het netwerk, zoals verwijderde pakketten, vaststellen.
-
-De volgende scherm afbeelding toont een voor beeld van een **lokale koppelingslaag** Trace met enkele **informatieve** berichten in de kolom **DiagnosisTypes** . Als u op een pictogram in de kolom **DiagnosisTypes** klikt, worden de details van het bericht weer gegeven. In dit voor beeld wordt het bericht #305 opnieuw verzonden, omdat er geen bevestiging is ontvangen van de client:
-
-![Scherm afbeelding met een voor beeld van een lokale koppelingslaag Trace met enkele informatieve berichten in de kolom DiagnosisTypes][9]
-
-Wanneer u de traceer sessie in micro soft Message Analyzer maakt, kunt u filters opgeven om de hoeveelheid ruis in de tracering te verminderen. Klik op de pagina **vastleggen/traceren** waar u de tracering definieert op de koppeling **configureren** naast **micro soft-Windows-NDIS-PacketCapture**. De volgende scherm afbeelding toont een configuratie waarmee TCP-verkeer wordt gefilterd voor de IP-adressen van drie opslag Services:
-
-![Scherm afbeelding met een configuratie waarmee TCP-verkeer wordt gefilterd voor de IP-adressen van drie opslag Services.][10]
-
-Zie [micro soft-PEF-NDIS-PacketCapture-provider](https://technet.microsoft.com/library/jj659264.aspx)voor meer informatie over de local link layer trace van micro soft Message Analyzer.
 
 ### <a name="appendix-4-using-excel-to-view-metrics-and-log-data"></a><a name="appendix-4"></a>Bijlage 4: Excel gebruiken om metrische gegevens weer te geven en te registreren
 Met veel hulpprogram ma's kunt u de metrische gegevens van de opslag van Azure Table-opslag downloaden in een indeling met scheidings tekens, waardoor het eenvoudig wordt om de gegevens in Excel te laden voor weer gave en analyse. Gegevens van de opslag registratie van Azure Blob-opslag bevindt zich al in een indeling met scheidings tekens die u in Excel kunt laden. U moet echter wel de juiste kolom koppen toevoegen op basis van de gegevens in [Opslaganalyse logboek indeling](https://msdn.microsoft.com/library/azure/hh343259.aspx) en [Opslaganalyse metrische tabel schema](https://msdn.microsoft.com/library/azure/hh343264.aspx).
@@ -897,7 +853,6 @@ Raadpleeg de volgende bronnen voor meer informatie over Analytics in Azure Stora
 [Bijlagen]: #appendices
 [Bijlage 1: Fiddler gebruiken voor het vastleggen van HTTP-en HTTPS-verkeer]: #appendix-1
 [Bijlage 2: wireshark gebruiken om netwerk verkeer vast te leggen]: #appendix-2
-[Bijlage 3: micro soft Message Analyzer gebruiken om netwerk verkeer vast te leggen]: #appendix-3
 [Bijlage 4: Excel gebruiken om metrische gegevens weer te geven en te registreren]: #appendix-4
 [Bijlage 5: bewaking met Application Insights voor Azure DevOps]: #appendix-5
 

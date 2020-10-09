@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 03f996f1105601dc46c81fa1a874816913e80633
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2f5b82f07ecff36ba95917a1f1b347c42ae7e074
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91716050"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856774"
 ---
 # <a name="get-started-with-azcopy"></a>Aan de slag met AzCopy
 
@@ -32,7 +32,7 @@ Down load eerst het uitvoer bare bestand van AzCopy V10 toevoegen naar een map o
 - [Windows 64-bits](https://aka.ms/downloadazcopy-v10-windows) (zip)
 - [Windows 32-bits](https://aka.ms/downloadazcopy-v10-windows-32bit) (zip)
 - [Linux x86-64](https://aka.ms/downloadazcopy-v10-linux) (tar)
-- [MacOS-](https://aka.ms/downloadazcopy-v10-mac) (zip)
+- [macOS](https://aka.ms/downloadazcopy-v10-mac) (zip)
 
 Deze bestanden worden gecomprimeerd als een zip-bestand (Windows en Mac) of een tar-bestand (Linux). Raadpleeg de documentatie voor uw Linux-distributie om het tar-bestand in Linux te downloaden en te decomprimeren.
 
@@ -50,7 +50,9 @@ Typ `azcopy -h` en druk op de Enter-toets om een lijst met opdrachten weer te ge
 
 Als u meer wilt weten over een specifieke opdracht, neemt u alleen de naam van de opdracht op (bijvoorbeeld: `azcopy list -h` ).
 
-![Inline-Help](media/storage-use-azcopy-v10/azcopy-inline-help.png)
+> [!div class="mx-imgBorder"]
+> ![Inline-Help](media/storage-use-azcopy-v10/azcopy-inline-help.png)
+
 
 Zie [azcopy](storage-ref-azcopy.md) voor gedetailleerde Naslag informatie voor elke opdracht en opdracht parameter.
 

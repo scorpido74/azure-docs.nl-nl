@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdiseo17may2017,seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: b678e4de76619ff17703caecfa7a52682e835674
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 45170e9df7082e277c445a2dab6d617eb208cd44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462561"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91855630"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>Gegevens uploaden voor Apache Hadoop-taken in HDInsight
 
-HDInsight biedt een Hadoop Distributed File System (HDFS) over Azure Storage en Azure Data Lake Storage. Deze opslag bevat gen1 en Gen2. Azure Storage en Data Lake Storage Gen1 en Gen2 zijn ontworpen als HDFS-extensies. Ze maken het mogelijk om de volledige set onderdelen in de Hadoop-omgeving rechtstreeks te laten werken met de gegevens die ze beheert. Azure Storage, Data Lake Storage Gen1 en Gen2 zijn afzonderlijke bestands systemen. De systemen zijn geoptimaliseerd voor opslag van gegevens en berekeningen voor die gegevens. Zie [Azure Storage gebruiken met HDInsight](hdinsight-hadoop-use-blob-storage.md)voor meer informatie over de voor delen van het gebruik van Azure Storage. Zie ook [Data Lake Storage gen1 met Hdinsight gebruiken](hdinsight-hadoop-use-data-lake-store.md)en [Data Lake Storage Gen2 gebruiken met hdinsight](hdinsight-hadoop-use-data-lake-storage-gen2.md).
+HDInsight biedt een Hadoop Distributed File System (HDFS) over Azure Storage en Azure Data Lake Storage. Deze opslag bevat gen1 en Gen2. Azure Storage en Data Lake Storage Gen1 en Gen2 zijn ontworpen als HDFS-extensies. Ze maken het mogelijk om de volledige set onderdelen in de Hadoop-omgeving rechtstreeks te laten werken met de gegevens die ze beheert. Azure Storage, Data Lake Storage Gen1 en Gen2 zijn afzonderlijke bestands systemen. De systemen zijn geoptimaliseerd voor opslag van gegevens en berekeningen voor die gegevens. Zie [Azure Storage gebruiken met HDInsight](hdinsight-hadoop-use-blob-storage.md)voor meer informatie over de voor delen van het gebruik van Azure Storage. Zie ook [Data Lake Storage gen1 met Hdinsight gebruiken](hdinsight-hadoop-use-data-lake-storage-gen1.md)en [Data Lake Storage Gen2 gebruiken met hdinsight](hdinsight-hadoop-use-data-lake-storage-gen2.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -26,7 +26,7 @@ Houd rekening met de volgende vereisten voordat u begint:
 * Een Azure HDInsight-cluster. Zie [aan de slag met Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)voor instructies.
 * Kennis van de volgende artikelen:
     * [Azure Storage gebruiken met HDInsight](hdinsight-hadoop-use-blob-storage.md)
-    * [Data Lake Storage Gen1 gebruiken met HDInsight](hdinsight-hadoop-use-data-lake-store.md)
+    * [Data Lake Storage Gen1 gebruiken met HDInsight](hdinsight-hadoop-use-data-lake-storage-gen1.md)
     * [Data Lake Storage Gen2 gebruiken met HDInsight](hdinsight-hadoop-use-data-lake-storage-gen2.md)  
 
 ## <a name="upload-data-to-azure-storage"></a>Gegevens uploaden naar Azure Storage
@@ -80,7 +80,7 @@ Er zijn ook verschillende toepassingen die een grafische interface bieden voor h
 | Client | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
 | [Micro soft Visual Studio Tools voor HDInsight](hadoop/apache-hadoop-visual-studio-tools-get-started.md#explore-linked-resources) |✔ |✔ |✔ |
-| [Azure-opslagverkenner](../storage/blobs/storage-quickstart-blobs-storage-explorer.md) |✔ |✔ |✔ |
+| [Azure Storage Explorer](../storage/blobs/storage-quickstart-blobs-storage-explorer.md) |✔ |✔ |✔ |
 | [`Cerulea`](https://www.cerebrata.com/products/cerulean/features/azure-storage) | | |✔ |
 | [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer) | | |✔ |
 | [CloudBerry Explorer voor Microsoft Azure](https://www.cloudberrylab.com/free-microsoft-azure-explorer.aspx) | | |✔ |

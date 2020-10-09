@@ -8,27 +8,30 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: 7941748f7f917847e551b0cf5cd0a7bf926d31a9
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: a97147395d4f877b666f4aa54254c8631400c735
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086973"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91855664"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Azure-opslag gebruiken met Azure HDInsight-clusters
 
-U kunt gegevens opslaan in [Azure Storage](../storage/common/storage-introduction.md), [Azure data Lake Storage gen 1](../data-lake-store/data-lake-store-overview.md)of [Azure data Lake Storage gen 2](../storage/blobs/data-lake-storage-introduction.md). Of een combi natie van deze opties. Met deze opslag opties kunt u HDInsight-clusters die worden gebruikt voor berekeningen, veilig verwijderen zonder dat er gebruikers gegevens verloren gaan.
+U kunt gegevens opslaan in [Azure Blob Storage](../storage/common/storage-introduction.md), [Azure data Lake Storage gen1](../data-lake-store/data-lake-store-overview.md)of [Azure data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md). Of een combi natie van deze opties. Met deze opslag opties kunt u HDInsight-clusters die worden gebruikt voor berekeningen, veilig verwijderen zonder dat er gebruikers gegevens verloren gaan.
 
-Apache Hadoop ondersteunt een principe van het standaard bestandssysteem. Het standaardbestandssysteem impliceert een standaardschema en instantie. De toepassing kan ook worden gebruikt om relatieve paden om te zetten. Tijdens het maken van het HDInsight-cluster kunt u een BLOB-container in Azure Storage opgeven als het standaard bestandssysteem. Of met HDInsight 3,6 kunt u Azure Storage of Azure Data Lake Storage gen 1/Azure Data Lake Storage gen 2 selecteren als het standaard bestanden systeem met een paar uitzonde ringen. Zie [Beschik baarheid voor HDInsight-cluster](./hdinsight-hadoop-use-data-lake-store.md#availability-for-hdinsight-clusters)voor de ondersteuning van het gebruik van data Lake Storage gen 1 als standaard-en gekoppelde opslag.
+Apache Hadoop ondersteunt een principe van het standaard bestandssysteem. Het standaardbestandssysteem impliceert een standaardschema en instantie. De toepassing kan ook worden gebruikt om relatieve paden om te zetten. Tijdens het maken van het HDInsight-cluster kunt u een BLOB-container in Azure Storage opgeven als het standaard bestandssysteem. Of met HDInsight 3,6 kunt u Azure Blob-opslag of Azure Data Lake Storage Gen1/Azure Data Lake Storage Gen2 als het standaard bestandssysteem met een paar uitzonde ringen selecteren. Zie [Beschik baarheid voor HDInsight-cluster](./hdinsight-hadoop-use-data-lake-storage-gen1.md#availability-for-hdinsight-clusters)voor de ondersteuning van het gebruik van data Lake Storage gen1 als zowel de standaard als de gekoppelde opslag.
 
-In dit artikel wordt uitgelegd hoe Azure Storage werkt met HDInsight-clusters. Zie [Azure data Lake Storage gebruiken met Azure hdinsight-clusters](hdinsight-hadoop-use-data-lake-store.md)voor meer informatie over hoe data Lake Storage gen 1 werkt met hdinsight-clusters. Zie [Apache Hadoop clusters maken in HDInsight](hdinsight-hadoop-provision-linux-clusters.md)voor meer informatie over het maken van een HDInsight-cluster.
+In dit artikel wordt uitgelegd hoe Azure Storage werkt met HDInsight-clusters. 
+* Zie [Azure data Lake Storage gen1 gebruiken met Azure hdinsight-clusters](./hdinsight-hadoop-use-data-lake-storage-gen1.md)voor meer informatie over de werking van data Lake Storage gen1 met hdinsight-clusters.
+* Zie [Azure data Lake Storage Gen2 gebruiken met Azure hdinsight-clusters](./hdinsight-hadoop-use-data-lake-storage-gen2.md)voor meer informatie over de werking van data Lake Storage Gen2 met hdinsight-clusters.
+* Zie [Apache Hadoop clusters maken in HDInsight](./hdinsight-hadoop-provision-linux-clusters.md)voor meer informatie over het maken van een HDInsight-cluster.
 
 > [!IMPORTANT]  
 > Type opslag account **BlobStorage** kan alleen worden gebruikt als secundaire opslag voor HDInsight-clusters.
 
-| Type opslag account | Ondersteunde services | Ondersteunde prestatie lagen |Geen ondersteunde prestatie lagen| Ondersteunde toegangs lagen |
+| Opslagaccounttype | Ondersteunde services | Ondersteunde prestatie lagen |Geen ondersteunde prestatie lagen| Ondersteunde toegangs lagen |
 |----------------------|--------------------|-----------------------------|---|------------------------|
-| StorageV2 (general-purpose v2)  | Blob     | Standard                    |Premium| Hot, cool, Archive\*   |
+| StorageV2 (algemeen gebruik v2)  | Blob     | Standard                    |Premium| Hot, cool, Archive\*   |
 | Storage (algemene doeleinden v1)   | Blob     | Standard                    |Premium| N.v.t.                    |
 | BlobStorage                    | Blob     | Standard                    |Premium| Hot, cool, Archive\*   |
 
@@ -169,9 +172,9 @@ In dit artikel hebt u geleerd hoe u HDFS-compatibele Azure-opslag kunt gebruiken
 
 Zie voor meer informatie:
 
-* [Aan de slag met Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)
-* [Aan de slag met Azure Data Lake Storage](../data-lake-store/data-lake-store-get-started-portal.md)
-* [Gegevens uploaden naar HDInsight](hdinsight-upload-data.md)
-* [Handtekeningen voor gedeelde toegang van Azure Storage gebruiken om de toegang tot gegevens te beperken met HDInsight](hdinsight-storage-sharedaccesssignature-permissions.md)
+* [Snelstartgids: Apache Hadoop cluster maken](hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md)
+* [Zelf studie: HDInsight-clusters maken](hdinsight-hadoop-provision-linux-clusters.md)
 * [Azure Data Lake Storage Gen2 gebruiken met Azure HDInsight-clusters](hdinsight-hadoop-use-data-lake-storage-gen2.md)
+* [Gegevens uploaden naar HDInsight](hdinsight-upload-data.md)
 * [Zelfstudie: Gegevens extraheren, transformeren en laden met Interactive Query in Azure HDInsight](./interactive-query/interactive-query-tutorial-analyze-flight-data.md)
+* [Handtekeningen voor gedeelde toegang van Azure Storage gebruiken om de toegang tot gegevens te beperken met HDInsight](hdinsight-storage-sharedaccesssignature-permissions.md)

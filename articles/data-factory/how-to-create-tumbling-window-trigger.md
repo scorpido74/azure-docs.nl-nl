@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 964190108bb53a349fa1cb1301e2a554c1e32b26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c35fa28457e3cb9a063fa29c20d8651fcb4eeb45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83996683"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856481"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>Een trigger maken die een pijplijn uitvoert op een tumblingvenster
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -94,20 +94,20 @@ Een tumblingvenstertriggers-venster heeft de volgende trigger type-eigenschappen
 
 De volgende tabel bevat een overzicht op hoog niveau van de belangrijkste JSON-elementen die betrekking hebben op het terugkeer patroon en de planning van een tumblingvenstertriggers-venster trigger:
 
-| JSON-element | Description | Type | Toegestane waarden | Vereist |
+| JSON-element | Beschrijving | Type | Toegestane waarden | Vereist |
 |:--- |:--- |:--- |:--- |:--- |
-| **type** | Het type van de trigger. Het type is de vaste waarde ' TumblingWindowTrigger '. | Tekenreeks | "TumblingWindowTrigger" | Yes |
-| **runtimeState** | De huidige status van de uitvoerings tijd van de trigger.<br/>**Opmerking**: dit element is \<readOnly> . | Tekenreeks | "Gestart," "gestopt," "uitgeschakeld" | Yes |
-| **ingang** | Een teken reeks die de frequentie-eenheid (minuten of uren) aangeeft waarmee de trigger wordt herhaald. Als de **datum waarden** voor de start tijd meer nauw keuriger zijn dan de **frequentie** waarde, worden de datums van de **StartTime** meegenomen wanneer de venster grenzen worden berekend. Als de waarde van de **frequentie** bijvoorbeeld elk uur is en de waarde voor **StartTime** is 2017-09-01T10:10:10Z, is het eerste venster (2017-09-01T10:10:10Z, 2017-09-01T11:10:10Z). | Tekenreeks | "minuut," uur "  | Yes |
-| **bereik** | Een positief geheel getal dat het interval voor de waarde **frequency** aangeeft. Het bepaalt hoe vaak de trigger wordt uitgevoerd. Als het **interval** bijvoorbeeld 3 is en de **frequentie** is ingesteld op ' uur ', wordt de trigger elke drie uur herhaald. <br/>**Opmerking**: het minimale venster interval is 5 minuten. | Geheel getal | Een positief geheel getal. | Yes |
-| **startTime**| De eerste instantie, die in het verleden kan zijn. Het eerste trigger interval is (**StartTime**, **StartTime**  +  -**interval**). | DateTime | Een datum/tijd-waarde. | Yes |
-| **endTime**| De laatste instantie, die in het verleden kan zijn. | DateTime | Een datum/tijd-waarde. | Yes |
-| **spoedig** | De hoeveelheid tijd die het starten van de gegevens verwerking voor het venster moet vertragen. De pijplijn uitvoering wordt gestart na de verwachte uitvoerings tijd plus de hoeveelheid **vertraging**. De **vertraging** bepaalt hoe lang de trigger na de eind tijd wacht voordat een nieuwe uitvoering wordt geactiveerd. De **vertraging** wijzigt de **StartTime**van het venster niet. Een **vertragings** waarde van 00:10:00 impliceert bijvoorbeeld een vertraging van 10 minuten. | Periode<br/>(UU: mm: SS)  | Een time span-waarde waarbij de standaard instelling is 00:00:00. | No |
-| **maxConcurrency** | Het aantal gelijktijdige trigger uitvoeringen dat wordt geactiveerd voor Windows die gereed zijn. Als u bijvoorbeeld per uur back-upvulling voor gisteren wilt uitvoeren, worden er 24 vensters weer gegeven. Als **maxConcurrency** = 10, worden trigger gebeurtenissen alleen geactiveerd voor de eerste 10 windows (00:00-01:00-09:00-10:00). Nadat de eerste tien geactiveerde pijplijn uitvoeringen zijn voltooid, worden de trigger uitvoeringen geactiveerd voor de volgende 10 Windows (10:00-11:00-19:00-20:00). Als u doorgaat met dit voor beeld van **maxConcurrency** = 10, zijn er 10 Windows klaar, dan zijn er 10 totale pijplijn uitvoeringen. Als er slechts één venster gereed is, is er slechts één pijplijn uitvoering. | Geheel getal | Een geheel getal tussen 1 en 50. | Yes |
-| **retryPolicy: aantal** | Het aantal nieuwe pogingen voordat de pijplijn uitvoering is gemarkeerd als ' mislukt '.  | Geheel getal | Een geheel getal, waarbij de standaard waarde is 0 (geen nieuwe pogingen). | No |
-| **retryPolicy: intervalInSeconds** | De vertraging tussen nieuwe pogingen opgegeven in seconden. | Geheel getal | Het aantal seconden, waarbij de standaard waarde is 30. | No |
-| **dependsOn: type** | Het type TumblingWindowTriggerReference. Vereist als er een afhankelijkheid is ingesteld. | Tekenreeks |  "TumblingWindowTriggerDependencyReference", "SelfDependencyTumblingWindowTriggerReference" | No |
-| **dependsOn: grootte** | De grootte van het tumblingvenstertriggers-venster van de afhankelijkheid. | Periode<br/>(UU: mm: SS)  | Een positieve time span-waarde waarbij de standaard instelling is de venster grootte van de onderliggende trigger  | No |
+| **type** | Het type van de trigger. Het type is de vaste waarde ' TumblingWindowTrigger '. | Tekenreeks | "TumblingWindowTrigger" | Ja |
+| **runtimeState** | De huidige status van de uitvoerings tijd van de trigger.<br/>**Opmerking**: dit element is \<readOnly> . | Tekenreeks | "Gestart," "gestopt," "uitgeschakeld" | Ja |
+| **ingang** | Een teken reeks die de frequentie-eenheid (minuten of uren) aangeeft waarmee de trigger wordt herhaald. Als de **datum waarden** voor de start tijd meer nauw keuriger zijn dan de **frequentie** waarde, worden de datums van de **StartTime** meegenomen wanneer de venster grenzen worden berekend. Als de waarde van de **frequentie** bijvoorbeeld elk uur is en de waarde voor **StartTime** is 2017-09-01T10:10:10Z, is het eerste venster (2017-09-01T10:10:10Z, 2017-09-01T11:10:10Z). | Tekenreeks | "minuut," uur "  | Ja |
+| **bereik** | Een positief geheel getal dat het interval voor de waarde **frequency** aangeeft. Het bepaalt hoe vaak de trigger wordt uitgevoerd. Als het **interval** bijvoorbeeld 3 is en de **frequentie** is ingesteld op ' uur ', wordt de trigger elke drie uur herhaald. <br/>**Opmerking**: het minimale venster interval is 5 minuten. | Geheel getal | Een positief geheel getal. | Ja |
+| **startTime**| De eerste instantie, die in het verleden kan zijn. Het eerste trigger interval is (**StartTime**, **StartTime**  +  -**interval**). | DateTime | Een datum/tijd-waarde. | Ja |
+| **endTime**| De laatste instantie, die in het verleden kan zijn. | DateTime | Een datum/tijd-waarde. | Ja |
+| **spoedig** | De hoeveelheid tijd die het starten van de gegevens verwerking voor het venster moet vertragen. De pijplijn uitvoering wordt gestart na de verwachte uitvoerings tijd plus de hoeveelheid **vertraging**. De **vertraging** bepaalt hoe lang de trigger na de eind tijd wacht voordat een nieuwe uitvoering wordt geactiveerd. De **vertraging** wijzigt de **StartTime**van het venster niet. Een **vertragings** waarde van 00:10:00 impliceert bijvoorbeeld een vertraging van 10 minuten. | Periode<br/>(UU: mm: SS)  | Een time span-waarde waarbij de standaard instelling is 00:00:00. | Nee |
+| **maxConcurrency** | Het aantal gelijktijdige trigger uitvoeringen dat wordt geactiveerd voor Windows die gereed zijn. Als u bijvoorbeeld per uur back-upvulling voor gisteren wilt uitvoeren, worden er 24 vensters weer gegeven. Als **maxConcurrency** = 10, worden trigger gebeurtenissen alleen geactiveerd voor de eerste 10 windows (00:00-01:00-09:00-10:00). Nadat de eerste tien geactiveerde pijplijn uitvoeringen zijn voltooid, worden de trigger uitvoeringen geactiveerd voor de volgende 10 Windows (10:00-11:00-19:00-20:00). Als u doorgaat met dit voor beeld van **maxConcurrency** = 10, zijn er 10 Windows klaar, dan zijn er 10 totale pijplijn uitvoeringen. Als er slechts één venster gereed is, is er slechts één pijplijn uitvoering. | Geheel getal | Een geheel getal tussen 1 en 50. | Ja |
+| **retryPolicy: aantal** | Het aantal nieuwe pogingen voordat de pijplijn uitvoering is gemarkeerd als ' mislukt '.  | Geheel getal | Een geheel getal, waarbij de standaard waarde is 0 (geen nieuwe pogingen). | Nee |
+| **retryPolicy: intervalInSeconds** | De vertraging tussen nieuwe pogingen opgegeven in seconden. | Geheel getal | Het aantal seconden, waarbij de standaard waarde is 30. | Nee |
+| **dependsOn: type** | Het type TumblingWindowTriggerReference. Vereist als er een afhankelijkheid is ingesteld. | Tekenreeks |  "TumblingWindowTriggerDependencyReference", "SelfDependencyTumblingWindowTriggerReference" | Nee |
+| **dependsOn: grootte** | De grootte van het tumblingvenstertriggers-venster van de afhankelijkheid. | Periode<br/>(UU: mm: SS)  | Een positieve time span-waarde waarbij de standaard instelling is de venster grootte van de onderliggende trigger  | Nee |
 | **dependsOn: offset** | De verschuiving van de afhankelijkheids trigger. | Periode<br/>(UU: mm: SS) |  Een time span-waarde die negatief moet zijn in een self-afhankelijkheid. Als er geen waarde is opgegeven, is het venster hetzelfde als de trigger. | Zelf afhankelijkheid: Ja<br/>Overige: Nee  |
 
 > [!NOTE]
@@ -147,7 +147,7 @@ Als u de waarden van de systeem variabelen **WindowStart** en **WindowEnd** in d
 
 ### <a name="execution-order-of-windows-in-a-backfill-scenario"></a>Uitvoerings volgorde van Windows in een backfill-scenario
 
-Als de start tijd van de trigger zich in het verleden bevindt, wordt op basis van deze formule, M = (CurrentTime-TriggerStartTime)/TriggerSliceSize, de trigger een {M}-backfill (in het verleden) gegenereerd, waarna de gelijktijdige uitvoeringen worden uitgevoerd. De volg orde van de uitvoering voor Windows is deterministisch, van oudste naar nieuwste intervallen. Dit gedrag kan op dit moment niet worden aangepast.
+Als de start tijd van de trigger zich in het verleden bevindt, wordt op basis van deze formule, M = (CurrentTime-TriggerStartTime)/TumblingWindowSize, de trigger een {M}-backfill (in het verleden) gegenereerd, waarna de gelijktijdige uitvoeringen worden uitgevoerd. De volg orde van de uitvoering voor Windows is deterministisch, van oudste naar nieuwste intervallen. Dit gedrag kan op dit moment niet worden aangepast.
 
 ### <a name="existing-triggerresource-elements"></a>Bestaande TriggerResource-elementen
 

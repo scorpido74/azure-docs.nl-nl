@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/10/2019
-ms.openlocfilehash: 0394a7db6776e00ea031a2f40ab4de01540982a6
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: cd27babee4b78d22bbd49ab53c1ed2fe5a54a0da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080207"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856684"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight"></a>On-premises Apache Hadoop clusters migreren naar Azure HDInsight
 
@@ -21,7 +21,7 @@ Dit artikel bevat aanbevelingen voor gegevens opslag in azure HDInsight-systemen
 
 ## <a name="choose-right-storage-system-for-hdinsight-clusters"></a>Kies het juiste opslag systeem voor HDInsight-clusters
 
-De mapstructuur van on-premises Apache Hadoop bestands systeem (HDFS) kan opnieuw worden gemaakt in Azure Storage of Azure Data Lake Storage. U kunt vervolgens HDInsight-clusters die worden gebruikt voor berekeningen, veilig verwijderen zonder dat er gebruikers gegevens verloren gaan. Beide services kunnen worden gebruikt als het standaard bestandssysteem en een extra bestands systeem voor een HDInsight-cluster. Het HDInsight-cluster en het opslag account moeten worden gehost in dezelfde regio.
+De mapstructuur van het on-premises Apache Hadoop bestands systeem (HDFS) kan opnieuw worden gemaakt in Azure Blob-opslag of Azure Data Lake Storage. U kunt vervolgens HDInsight-clusters die worden gebruikt voor berekeningen, veilig verwijderen zonder dat er gebruikers gegevens verloren gaan. Beide services kunnen worden gebruikt als het standaard bestandssysteem en een extra bestands systeem voor een HDInsight-cluster. Het HDInsight-cluster en het opslag account moeten worden gehost in dezelfde regio.
 
 ### <a name="azure-storage"></a>Azure Storage
 
@@ -33,7 +33,7 @@ Azure Storage kunnen geo-replicatie zijn. Hoewel geo-replicatie geografisch hers
 
 Een van de volgende indelingen kan worden gebruikt om toegang te krijgen tot gegevens die zijn opgeslagen in Azure Storage:
 
-|Data Access-indeling |Description |
+|Data Access-indeling |Beschrijving |
 |---|---|
 |`wasb:///`|Toegang tot standaard opslag met niet-versleutelde communicatie.|
 |`wasbs:///`|Toegang tot de standaard opslag met behulp van gecodeerde communicatie.|
@@ -74,25 +74,25 @@ Raadpleeg voor meer informatie de volgende artikelen:
 
 - [Azure Storage gebruiken met Azure HDInsight-clusters](../hdinsight-hadoop-use-blob-storage.md)
 - [Schaalbaarheids doelen voor standaard opslag accounts](../../storage/common/scalability-targets-standard-account.md)
-- [Schaalbaarheids-en prestatie doelen voor Blob Storage](../../storage/blobs/scalability-targets.md)
+- [Schaalbaarheids- en prestatiedoelen voor Blob-opslag](../../storage/blobs/scalability-targets.md)
 - [Controlelijst voor prestaties en schaalbaarheid van Microsoft Azure Storage](../../storage/common/storage-performance-checklist.md)
 - [Microsoft Azure Storage bewaken, problemen opsporen en oplossen](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md)
 - [Een Storage-account bewaken in de Azure-portal](../../storage/common/storage-monitor-storage-account.md)
 
 ### <a name="azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1
 
-Azure Data Lake Storage implementeert de Access Control model van HDFS en POSIX-stijl. Het biedt de eerste klasse-integratie met AAD voor fijn gekorreld toegangs beheer. Er zijn geen limieten voor de grootte van gegevens die kunnen worden opgeslagen of de mogelijkheid om een enorm parallelle analyse uit te voeren.
+Azure Data Lake Storage Gen1 implementeert de Access Control model van HDFS en POSIX-stijl. Het biedt de eerste klasse-integratie met Azure AD voor verfijnd toegangs beheer. Er zijn geen limieten voor de grootte van gegevens die kunnen worden opgeslagen of de mogelijkheid om een enorm parallelle analyse uit te voeren.
 
 Raadpleeg voor meer informatie de volgende artikelen:
 
-- [Maak HDInsight-clusters met Data Lake Storage met behulp van de Azure Portal](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)
-- [Data Lake Storage gebruiken met Azure HDInsight-clusters](../hdinsight-hadoop-use-data-lake-store.md)
+- [Maak HDInsight-clusters met Data Lake Storage Gen1 met behulp van de Azure Portal](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)
+- [Data Lake Storage Gen1 gebruiken met Azure HDInsight-clusters](../hdinsight-hadoop-use-data-lake-storage-gen1.md)
 
 ### <a name="azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2
 
-Azure Data Lake Storage Gen2 is de meest recente opslag aanbieding. Het combineert de kern mogelijkheden van de eerste generatie Azure Data Lake Storage met een Hadoop-compatibel bestandssysteem dat rechtstreeks is geïntegreerd in Azure Blob Storage. Deze uitbrei ding combineert de schaal en kosten voor delen van object opslag met de betrouw baarheid en prestaties die doorgaans alleen worden gekoppeld aan on-premises bestands systemen.
+Azure Data Lake Storage Gen2 is de meest recente opslag aanbieding. Het combineert de kern mogelijkheden van de eerste generatie Azure Data Lake Storage Gen1 met een Hadoop-compatibel bestandssysteem dat rechtstreeks is geïntegreerd in Azure Blob Storage. Deze uitbrei ding combineert de schaal en kosten voor delen van object opslag met de betrouw baarheid en prestaties die doorgaans alleen worden gekoppeld aan on-premises bestands systemen.
 
-ADLS gen 2 is gebaseerd op [Azure Blob-opslag](../../storage/blobs/storage-blobs-introduction.md) en biedt u de mogelijkheid om met gegevens te werken met behulp van zowel bestands systeem-als object opslag-modellen. Functies van [Azure data Lake Storage gen1](../../data-lake-store/index.yml), zoals bestandssysteem semantiek, beveiliging op bestands niveau en schaal, worden gecombineerd met goedkope, gelaagde opslag, hoge Beschik baarheid/herstel na nood gevallen en een groot hulp programma voor het maken van SDK/hulpprogram Ma's vanuit [Azure Blob-opslag](../../storage/blobs/storage-blobs-introduction.md). In Data Lake Storage Gen2 blijven alle kwaliteiten van object opslag aanwezig terwijl de voor delen van een bestandssysteem interface die is geoptimaliseerd voor analysewerk belastingen worden toegevoegd.
+Azure Data Lake Storage gen 2 is gebaseerd op [Azure Blob-opslag](../../storage/blobs/storage-blobs-introduction.md) en biedt u de mogelijkheid om met gegevens te werken met behulp van zowel bestands systeem-als object opslag-modellen. Functies van [Azure data Lake Storage gen1](../../data-lake-store/index.yml), zoals bestandssysteem semantiek, beveiliging op bestands niveau en schaal, worden gecombineerd met goedkope, gelaagde opslag, hoge Beschik baarheid/herstel na nood gevallen en een groot hulp programma voor het maken van SDK/hulpprogram Ma's vanuit [Azure Blob-opslag](../../storage/blobs/storage-blobs-introduction.md). In Data Lake Storage Gen2 blijven alle kwaliteiten van object opslag aanwezig terwijl de voor delen van een bestandssysteem interface die is geoptimaliseerd voor analysewerk belastingen worden toegevoegd.
 
 Een fundamenteel onderdeel van Data Lake Storage Gen2 is het toevoegen van een [hiërarchische naam ruimte](../../storage/data-lake-storage/namespace.md)   aan de Blob Storage-service, waarmee objecten/bestanden worden ingedeeld in een hiërarchie van mappen voor uitvoering van gegevens toegang.De hiërarchische structuur maakt bewerkingen, zoals het wijzigen van de naam of het verwijderen van een map voor één atomische meta gegevens, in de Directory in plaats van het inventariseren en verwerken van alle objecten die het voor voegsel van de directory delen.
 
@@ -114,7 +114,7 @@ Een van de volgende indelingen kan worden gebruikt om toegang te krijgen tot geg
 
 Raadpleeg voor meer informatie de volgende artikelen:
 
-- [Inleiding in Azure Data Lake Storage Gen2](../../storage/data-lake-storage/introduction.md)
+- [Inleiding tot Azure Data Lake Storage Gen2](../../storage/data-lake-storage/introduction.md)
 - [Het Azure Blob-bestandssysteem stuur programma (ABFS.md)](../../storage/data-lake-storage/abfs-driver.md)
 - [Azure Data Lake Storage Gen2 gebruiken met Azure HDInsight-clusters](../hdinsight-hadoop-use-data-lake-storage-gen2.md)
 
@@ -153,9 +153,9 @@ HDInsight heeft standaard volledige toegang tot de gegevens in de Azure Storage 
 
 ### <a name="using-the-sas-token-created-with-python"></a>Het SAS-token gebruiken dat is gemaakt met python
 
-1. Open het [SASToken.py](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature/blob/master/Python/SASToken.py) -bestand en wijzig de volgende waarden:
+1. Open het  [SASToken.py](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature/blob/master/Python/SASToken.py) -bestand en wijzig de volgende waarden:
 
-    |Token eigenschap|Description|
+    |Token eigenschap|Beschrijving|
     |---|---|
     |policy_name|De naam die moet worden gebruikt om het opgeslagen beleid te maken.|
     |storage_account_name|De naam van uw opslagaccount.|
@@ -165,9 +165,9 @@ HDInsight heeft standaard volledige toegang tot de gegevens in de Azure Storage 
 
 2. Het SASToken.py-bestand wordt geleverd met de `ContainerPermissions.READ + ContainerPermissions.LIST` machtigingen en kan worden aangepast op basis van de use-case.
 
-3. Voer het script als volgt uit:`python SASToken.py`
+3. Voer het script als volgt uit: `python SASToken.py`
 
-4. Hier wordt de SAS-token weer gegeven die vergelijkbaar is met de volgende tekst wanneer het script is voltooid:`sr=c&si=policyname&sig=dOAi8CXuz5Fm15EjRUu5dHlOzYNtcK3Afp1xqxniEps%3D&sv=2014-02-14`
+4. Hier wordt de SAS-token weer gegeven die vergelijkbaar is met de volgende tekst wanneer het script is voltooid: `sr=c&si=policyname&sig=dOAi8CXuz5Fm15EjRUu5dHlOzYNtcK3Afp1xqxniEps%3D&sv=2014-02-14`
 
 5. Als u de toegang tot een container met Shared Access Signature wilt beperken, voegt u een aangepaste vermelding toe aan de configuratie van de kern site voor het cluster onder Ambari HDFS configs geavanceerde aangepaste kern-site toevoegen eigenschap.
 
@@ -200,16 +200,16 @@ Alle gegevens die naar Azure Storage worden geschreven, worden automatisch versl
 - [Geografisch redundante opslag (GRS)](../../storage/common/storage-redundancy-grs.md)
 - [Geografisch redundante opslag met leestoegang (RA-GRS)](../../storage/common/storage-redundancy.md)
 
-Azure Data Lake Storage biedt lokaal redundante opslag (LRS), maar u moet ook essentiële gegevens kopiëren naar een andere Data Lake Storage account in een andere regio met een frequentie die is afgestemd op de behoeften van het nood herstel plan.Er zijn verschillende methoden om gegevens te kopiëren, waaronder [ADLCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md), [DistCp](https://hadoop.apache.org/docs/current/hadoop-distcp/DistCp.html), [Azure PowerShell](../../data-lake-store/data-lake-store-get-started-powershell.md)of [Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md).Het wordt ook aanbevolen om toegangs beleid af te dwingen voor Data Lake Storage account om onbedoelde verwijdering te voor komen.
+Azure Storage biedt lokaal redundante opslag (LRS), maar u moet ook essentiële gegevens kopiëren naar een andere Azure Storage account in een andere regio met een frequentie die is afgestemd op de behoeften van het nood herstel plan.Er zijn verschillende methoden om gegevens te kopiëren, waaronder [ADLCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md), [DistCp](https://hadoop.apache.org/docs/current/hadoop-distcp/DistCp.html), [Azure PowerShell](../../data-lake-store/data-lake-store-get-started-powershell.md)of [Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md).Het wordt ook aanbevolen om toegangs beleid af te dwingen voor Azure Storage account om onbedoelde verwijdering te voor komen.
 
 Raadpleeg voor meer informatie de volgende artikelen:
 
 - [Replicatie Azure Storage](../../storage/common/storage-redundancy.md)
-- [Hulp bij nood gevallen voor Azure Data Lake Storage (ADLS)](../../data-lake-store/data-lake-store-disaster-recovery-guidance.md)
+- [Hulp bij nood gevallen voor Azure Data Lake Storage Gen1 (ADLS)](../../data-lake-store/data-lake-store-disaster-recovery-guidance.md)
 
 ## <a name="attach-additional-azure-storage-accounts-to-cluster"></a>Extra Azure Storage-accounts toevoegen aan cluster
 
-Tijdens het maken van het HDInsight-proces wordt een Azure Storage account of Azure Data Lake Storage account gekozen als het standaard bestandssysteem. Naast dit standaard opslag account kunnen extra opslag accounts worden toegevoegd uit hetzelfde Azure-abonnement of verschillende Azure-abonnementen tijdens het proces voor het maken van het cluster of nadat een cluster is gemaakt.
+Tijdens het maken van het HDInsight-proces wordt een Azure Storage account, Azure Data Lake Storage Gen1 of Azure Data Lake Storage Gen2 gekozen als het standaard bestandssysteem. Naast dit standaard opslag account kunnen extra opslag accounts worden toegevoegd uit hetzelfde Azure-abonnement of verschillende Azure-abonnementen tijdens het proces voor het maken van het cluster of nadat een cluster is gemaakt.
 
 U kunt op de volgende manieren een extra opslag account toevoegen:
 - Ambari HDFS config geavanceerde aangepaste kern-site de naam en sleutel van het opslag account toevoegen de services opnieuw starten

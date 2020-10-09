@@ -4,12 +4,12 @@ description: In dit artikel worden verschillende manieren beschreven voor het ve
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e934ce0d8f5e31dc8dd7592a2e553cd278af2b10
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: d38d4ffc868d442980cda576ea158704231f9efb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019110"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856327"
 ---
 # <a name="authenticate-publishing-clients-azure-event-grid"></a>Publicerend clients verifiëren (Azure Event Grid)
 Dit artikel bevat informatie over het verifiëren van clients die gebeurtenissen publiceren naar Azure Event Grid onderwerpen of domeinen met behulp van het **toegangs sleutel** **-of Shared Access Signature SAS-** token. U kunt het beste SAS-token gebruiken, maar de sleutel verificatie biedt eenvoudige programmering en is compatibel met veel bestaande webhook-Publishers.  
@@ -66,18 +66,33 @@ static string BuildSharedAccessSignature(string resource, DateTime expirationUtc
 }
 ```
 
+```python
+def generate_sas_token(uri, key, expiry=3600):
+    ttl = datetime.datetime.utcnow() + datetime.timedelta(seconds=expiry)
+    encoded_resource = urllib.parse.quote_plus(uri)
+    encoded_expiration_utc = urllib.parse.quote_plus(ttl.isoformat())
+
+    unsigned_sas = f'r={encoded_resource}&e={encoded_expiration_utc}'
+    signature = b64encode(HMAC(b64decode(key), unsigned_sas.encode('utf-8'), sha256).digest())
+    encoded_signature = urllib.parse.quote_plus(signature)
+    
+    token = f'r={encoded_resource}&e={encoded_expiration_utc}&s={encoded_signature}'
+
+    return token
+```
+
 ### <a name="using-aeg-sas-token-header"></a>AEG-SAS-token header gebruiken
 Hier volgt een voor beeld van het door geven van de SAS-token als een waarde voor de `aeg-sas-toke` koptekst. 
 
 ```http
-aeg-sas-token: r=https%3a%2f%2fmytopic.eventgrid.azure.net%2fapi%2fevent&e=6%2f15%2f2017+6%3a20%3a15+PM&s=XXXXXXXXXXXXX%2fBPjdDLOrc6THPy3tDcGHw1zP4OajQ%3d
+aeg-sas-token: r=https%3a%2f%2fmytopic.eventgrid.azure.net%2fapi%2fevents&e=6%2f15%2f2017+6%3a20%3a15+PM&s=XXXXXXXXXXXXX%2fBPjdDLOrc6THPy3tDcGHw1zP4OajQ%3d
 ```
 
 ### <a name="using-authorization-header"></a>Autorisatie-header gebruiken
 Hier volgt een voor beeld van het door geven van de SAS-token als een waarde voor de `Authorization` koptekst. 
 
 ```http
-Authorization: SharedAccessSignature r=https%3a%2f%2fmytopic.eventgrid.azure.net%2fapi%2fevent&e=6%2f15%2f2017+6%3a20%3a15+PM&s=XXXXXXXXXXXXX%2fBPjdDLOrc6THPy3tDcGHw1zP4OajQ%3d
+Authorization: SharedAccessSignature r=https%3a%2f%2fmytopic.eventgrid.azure.net%2fapi%2fevents&e=6%2f15%2f2017+6%3a20%3a15+PM&s=XXXXXXXXXXXXX%2fBPjdDLOrc6THPy3tDcGHw1zP4OajQ%3d
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

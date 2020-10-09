@@ -7,16 +7,16 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 10/14/2019
 ms.author: cherylmc
-ms.openlocfilehash: 0ea4523d1558f6887e1aef344198026591dac617
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07eae453441ea8bff81d7cdb60f9c46c08a22829
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84752615"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91851167"
 ---
 # <a name="configure-a-custom-ipsec-policy-for-virtual-wan-using-the-portal"></a>Een aangepast IPsec-beleid voor virtuele WAN configureren met behulp van de portal
 
-U kunt aangepaste IPsec-beleids regels configureren voor virtuele WAN-het Azure Portal. Aangepaste beleids regels zijn handig wanneer u wilt dat beide zijden (on-premises en Azure VPN-gateway) dezelfde instellingen gebruiken voor IKE fase 1 en IKE fase 2.
+U kunt een aangepast IPsec-beleid configureren voor een virtuele WAN-verbinding in de Azure Portal. Aangepaste beleids regels zijn handig wanneer u wilt dat beide zijden (on-premises en Azure VPN-gateway) dezelfde instellingen gebruiken voor IKE fase 1 en IKE fase 2.
 
 ## <a name="working-with-custom-policies"></a>Werken met aangepaste beleids regels
 
@@ -24,14 +24,14 @@ U kunt aangepaste IPsec-beleids regels configureren voor virtuele WAN-het Azure 
 
 ## <a name="configure-a-policy"></a>Een beleid configureren
 
-1. **Zoek de virtuele hub**. Ga in een browser naar het [Azure Portal](https://aka.ms/azurevirtualwanpreviewfeatures) en meld u aan met uw Azure-account. Zoek de virtuele hub voor uw site.
-2. **Selecteer de VPN-site**. Selecteer op de pagina hub de VPN-site waarvoor u een aangepast beleid wilt instellen.
+1. **Zoek de virtuele hub**. Open een browser, ga naar [Azure Portal](https://aka.ms/azurevirtualwanpreviewfeatures) en meld u aan met uw Azure-account. Navigeer naar uw virtuele WAN-resource en zoek de virtuele hub op waarmee uw VPN-site is verbonden.
+2. **Selecteer de VPN-site**. Klik op de pagina overzicht van de hub op **VPN (site naar site)** en selecteer de VPN-site waarvoor u een aangepast IPSec-beleid wilt instellen.
 
    ![Selecteer](./media/virtual-wan-custom-ipsec-portal/locate.png)
 3. **Bewerk de VPN-verbinding**. Selecteer in het **context menu** **...** de optie **VPN-verbinding bewerken**.
 
    ![bewerken](./media/virtual-wan-custom-ipsec-portal/contextmenu.png)
-4. **Configureer de instellingen**. Configureer de instellingen op de pagina **VPN-verbinding bewerken** . Selecteer **Opslaan** om uw instellingen op te slaan.
+4. **Configureer de instellingen**. Op de pagina **VPN-verbinding bewerken** wijzigt u de IPSec-instelling van standaard in aangepast en past u het IPSec-beleid aan. Selecteer **Opslaan** om uw instellingen op te slaan.
 
    ![configureren en opslaan](./media/virtual-wan-custom-ipsec-portal/edit.png)
 

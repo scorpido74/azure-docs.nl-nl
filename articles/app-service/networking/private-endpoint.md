@@ -9,12 +9,12 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: c6a55958102c89c78fe2cd797bb59cf72f9ec505
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 855cbe3d2926a04af773aa32ea0ab63bde89491c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91773141"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91857262"
 ---
 # <a name="using-private-endpoints-for-azure-web-app"></a>Privé-eind punten gebruiken voor Azure-web-app
 
@@ -114,6 +114,8 @@ Zie [prijzen van Azure Private Link][pricing] voor meer informatie over prijzen.
 Wanneer u de functie Azure gebruikt in een elastisch Premium-abonnement met een privé-eind punt, moet u directe toegang tot het netwerk hebben of u een HTTP 403-fout ontvangen om de functies in azure Web Portal uit te voeren of uit te voeren. Met andere woorden, uw browser moet het persoonlijke eind punt kunnen bereiken om de functie uit te voeren vanuit de Azure-webportal. 
 
 U kunt Maxi maal 100 persoonlijk eind punt verbinden met een bepaalde web-app.
+
+De functionaliteit voor fout opsporing op afstand is niet beschikbaar wanneer het persoonlijke eind punt is ingeschakeld voor de web-app. De aanbeveling is om de code te implementeren in een sleuf en deze op afstand op te sporen.
 
 Privé-eind punt is beschikbaar voor PremiumV2, PremiumV3, Windows-en Linux-web-app, container of niet, en het Premium-abonnement van Azure Functions (ook wel het elastische Premium-abonnement genoemd). 
 

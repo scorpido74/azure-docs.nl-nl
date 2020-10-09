@@ -9,12 +9,12 @@ ms.author: mlearned
 description: Een Azure Arc-Kubernetes-cluster verbinden met Azure Arc
 keywords: Kubernetes, Arc, azure, K8s, containers
 ms.custom: references_regions
-ms.openlocfilehash: 8f1d95db9c30e78e1ca697d5d7e5638988bc9965
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 74a0de494148f1f3315511c0bf6cb10f40cdc416
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91540622"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91855001"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Een Azure Arc-Kubernetes-cluster verbinden (preview-versie)
 
@@ -52,7 +52,7 @@ Controleer of u de volgende vereisten hebt voor bereid:
   az extension update --name k8sconfiguration
   ```
 
-## <a name="supported-regions"></a>Ondersteunde regio's
+## <a name="supported-regions"></a>Ondersteunde regio’s
 
 * VS - oost
 * Europa -west
@@ -68,10 +68,8 @@ Voor Azure Arc-agenten moeten de volgende protocollen/poorten/uitgaande Url's wo
 | ------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
 | `https://management.azure.com`                                                                                 | Vereist voor de agent om verbinding te maken met Azure en het cluster te registreren                                                        |
 | `https://eastus.dp.kubernetesconfiguration.azure.com`, `https://westeurope.dp.kubernetesconfiguration.azure.com` | Gegevens vlak eindpunt voor de agent om de status te pushen en configuratie gegevens op te halen                                      |
-| `https://docker.io`                                                                                            | Vereist voor het ophalen van container installatie kopieën                                                                                         |
-| `https://github.com`, git://github.com                                                                         | Voor beeld van GitOps opslag plaatsen worden gehost op GitHub. Configuratie agent vereist connectiviteit met het opgegeven Git-eind punt dat u opgeeft. |
 | `https://login.microsoftonline.com`                                                                            | Vereist om Azure Resource Manager-tokens op te halen en bij te werken                                                                                    |
-| `https://azurearcfork8s.azurecr.io`                                                                            | Vereist voor het ophalen van container installatie kopieën voor Azure Arc-agents                                                                  |
+| `https://mcr.microsoft.com`                                                                            | Vereist voor het ophalen van container installatie kopieën voor Azure Arc-agents                                                                  |
 | `https://eus.his.arc.azure.com`, `https://weu.his.arc.azure.com`                                                                            |  Vereist voor het ophalen van door het systeem toegewezen beheerde identiteits certificaten                                                                  |
 
 ## <a name="register-the-two-providers-for-azure-arc-enabled-kubernetes"></a>Registreer de twee providers voor Azure Arc enabled Kubernetes:
@@ -183,17 +181,36 @@ Als uw cluster zich achter een uitgaande proxy server bevindt, moeten Azure CLI 
     az -v
     ```
 
-    U hebt `connectedk8s` extensie versie >= 0.2.3 nodig om agents met een uitgaande proxy in te stellen. Als u versie < 0.2.3 op uw computer, volgt u de [stappen](#before-you-begin) voor het bijwerken om de nieuwste versie van de extensie op uw computer te verkrijgen.
+    U hebt `connectedk8s` extensie versie >= 0.2.5 nodig om agents met een uitgaande proxy in te stellen. Als u versie < 0.2.3 op uw computer, volgt u de [stappen](#before-you-begin) voor het bijwerken om de nieuwste versie van de extensie op uw computer te verkrijgen.
 
-2. Voer de opdracht Connect uit met de opgegeven proxy parameters:
+2. Stel de omgevings variabelen in die nodig zijn voor Azure CLI voor het gebruik van de uitgaande proxy server:
+
+    * Als u bash gebruikt, voert u de volgende opdracht uit met de juiste waarden:
+
+        ```bash
+        export HTTP_PROXY=<proxy-server-ip-address>:<port>
+        export HTTPS_PROXY=<proxy-server-ip-address>:<port>
+        export NO_PROXY=<cluster-apiserver-ip-address>:<port>
+        ```
+
+    * Als u Power shell gebruikt, voert u de volgende opdracht uit met de juiste waarden:
+
+        ```powershell
+        $Env:HTTP_PROXY = "<proxy-server-ip-address>:<port>"
+        $Env:HTTPS_PROXY = "<proxy-server-ip-address>:<port>"
+        $Env:NO_PROXY = "<cluster-apiserver-ip-address>:<port>"
+        ```
+
+3. Voer de opdracht Connect uit met de opgegeven proxy parameters:
 
     ```console
-    az connectedk8s connect -n <cluster-name> -g <resource-group> --proxy-https https://<proxy-server-ip-address>:<port> --proxy-http http://<proxy-server-ip-address>:<port> --proxy-skip-range <excludedIP>,<excludedCIDR>
+    az connectedk8s connect -n <cluster-name> -g <resource-group> --proxy-https https://<proxy-server-ip-address>:<port> --proxy-http http://<proxy-server-ip-address>:<port> --proxy-skip-range <excludedIP>,<excludedCIDR> --proxy-cert <path-to-cert-file>
     ```
 
 > [!NOTE]
 > 1. Het opgeven van excludedCIDR onder---overs laan van het bereik is belang rijk om ervoor te zorgen dat de communicatie in het cluster niet wordt verbroken voor de agents.
-> 2. De bovenstaande proxy specificatie wordt momenteel alleen toegepast voor Arc-agents en niet voor de stroom die wordt gebruikt in sourceControlConfiguration. Het Kubernetes-team van Arc is actief op deze functie en het is binnenkort beschikbaar.
+> 2. Hoewel--proxy-HTTP,--proxy-https en--proxy-Skip-Range worden verwacht voor de meeste uitgaande proxy omgevingen.--proxy-CERT is alleen vereist als er vertrouwde certificaten zijn van de proxy die moeten worden toegevoegd aan het vertrouwde certificaat archief van de gehele agent.
+> 3. De bovenstaande proxy specificatie wordt momenteel alleen toegepast voor Arc-agents en niet voor de stroom die wordt gebruikt in sourceControlConfiguration. Het Kubernetes-team van Arc is actief op deze functie en het is binnenkort beschikbaar.
 
 ## <a name="azure-arc-agents-for-kubernetes"></a>Azure Arc-agents voor Kubernetes
 

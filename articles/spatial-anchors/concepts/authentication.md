@@ -5,20 +5,20 @@ author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
 ms.author: crtreasu
-ms.date: 05/28/2019
+ms.date: 10/08/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1726f3a1ddc62cbb76a65f1d284793e57ea2f2a8
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 133b565bc54feaf49a2fec9dd0056ca8e7ef43f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91538242"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91857721"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Verificatie en autorisatie voor Azure spatiale ankers
 
-In deze sectie worden de verschillende manieren beschreven waarop u kunt verifiëren voor Azure spatiale ankers van uw app of webservice, en de manieren waarop u Access Control op basis van rollen in azure Directory (Azure AD) kunt gebruiken om de toegang tot uw spatiale ankers-accounts te beheren.
+In deze sectie worden de verschillende manieren beschreven waarop u kunt verifiëren voor Azure spatiale ankers vanuit uw app of webservice, en de manieren waarop u Role-Based Access Control in azure Directory (Azure AD) kunt gebruiken om de toegang tot uw spatiale ankers-accounts te beheren.
 
 ## <a name="overview"></a>Overzicht
 
@@ -95,28 +95,28 @@ Als dat is gebeurd, wordt de uitwisseling van de account sleutel voor een toegan
 Voor toepassingen die zijn gericht Azure Active Directory gebruikers, is de aanbevolen benadering een Azure AD-token voor de gebruiker te gebruiken, dat u kunt verkrijgen met behulp van de [MSAL-bibliotheek](../../active-directory/develop/msal-overview.md). Voer de stappen uit die worden vermeld in de [Snelstartgids een app registreren](../../active-directory/develop/quickstart-register-app.md), waaronder:
 
 1. Configuratie in Azure Portal
-    1.  Registreer uw toepassing in azure AD als **systeem eigen toepassing**. Als onderdeel van de registratie moet u bepalen of uw toepassing multi tenant moet zijn of niet, en de omleidings-Url's opgeven die voor uw toepassing zijn toegestaan.
+    1.    Registreer uw toepassing in azure AD als **systeem eigen toepassing**. Als onderdeel van de registratie moet u bepalen of uw toepassing multi tenant moet zijn of niet, en de omleidings-Url's opgeven die voor uw toepassing zijn toegestaan.
         1.  Overschakelen naar het tabblad **API-machtigingen**
         2.  Selecteer **een machtiging toevoegen**
-            1.  Selecteer **micro soft Mixed Reality** onder **api's mijn organisatie gebruikt** tabblad
+            1.  **Resource provider voor gemengde realiteit** selecteren onder **api's mijn organisatie gebruikt** tabblad
             2.  **Gedelegeerde machtigingen** selecteren
             3.  Schakel het selectie vakje in voor **mixedreality. signin** onder **mixedreality**
             4.  **Machtigingen toevoegen** selecteren
         3.  **Toestemming van beheerder verlenen** selecteren
-    2.  Verleen uw toepassing of gebruikers toegang tot uw resource:
-        1.  Ga naar de resource met ruimtelijke ankers in Azure Portal
-        2.  Overschakelen naar het tabblad **toegangs beheer (IAM)**
-        3.  **Toewijzing van roltoewijzing toevoegen**
-            1.  [Een rol selecteren](#role-based-access-control)
-            2.  Voer in het veld **selecteren** de naam in van de gebruiker (s), groep (en) en/of toepassing (en) waaraan u toegang wilt toewijzen.
-            3.  Druk op **Opslaan**.
+    2.    Verleen uw toepassing of gebruikers toegang tot uw resource:
+        1.    Ga naar de resource met ruimtelijke ankers in Azure Portal
+        2.    Overschakelen naar het tabblad **toegangs beheer (IAM)**
+        3.    **Toewijzing van roltoewijzing toevoegen**
+            1.    [Een rol selecteren](#role-based-access-control)
+            2.    Voer in het veld **selecteren** de naam in van de gebruiker (s), groep (en) en/of toepassing (en) waaraan u toegang wilt toewijzen.
+            3.    Druk op **Opslaan**.
 2. In uw code:
-    1.  Zorg ervoor dat u de **toepassings-id** en **omleidings-URI** van uw eigen Azure AD-toepassing gebruikt als de **client-id** en **RedirectUri** para meters in MSAL
-    2.  Stel de Tenant gegevens in:
-        1.  Als uw toepassing **alleen mijn organisatie**ondersteunt, vervangt u deze waarde door uw **Tenant-id** of **Tenant naam** (bijvoorbeeld contoso.Microsoft.com)
-        2.  Als uw toepassing **accounts in een organisatorische Directory**ondersteunt, vervangt u deze waarde door **organisaties**
-        3.  Als uw toepassing **alle Microsoft-account gebruikers**ondersteunt, vervangt u deze waarde door **common**
-    3.  Stel op uw token aanvraag het **bereik** in op ' https://sts.mixedreality.azure.com//.default '. Met dit bereik wordt aan Azure AD aangegeven dat uw toepassing een token aanvraagt voor de STS (Mixed Reality Security Token Service).
+    1.    Zorg ervoor dat u de **toepassings-id** en **omleidings-URI** van uw eigen Azure AD-toepassing gebruikt als de **client-id** en **RedirectUri** para meters in MSAL
+    2.    Stel de Tenant gegevens in:
+        1.    Als uw toepassing **alleen mijn organisatie**ondersteunt, vervangt u deze waarde door uw **Tenant-id** of **Tenant naam** (bijvoorbeeld contoso.Microsoft.com)
+        2.    Als uw toepassing **accounts in een organisatorische Directory**ondersteunt, vervangt u deze waarde door **organisaties**
+        3.    Als uw toepassing **alle Microsoft-account gebruikers**ondersteunt, vervangt u deze waarde door **common**
+    3.    Stel op uw token aanvraag het **bereik** in op ' https://sts.mixedreality.azure.com//.default '. Met dit bereik wordt aan Azure AD aangegeven dat uw toepassing een token aanvraagt voor de STS (Mixed Reality Security Token Service).
 
 Met dat moet uw toepassing MSAL een Azure AD-token kunnen verkrijgen. u kunt dat Azure AD-token instellen als de **authenticationToken** in uw Cloud sessie configuratie object.
 
@@ -170,24 +170,24 @@ Hierbij wordt ervan uitgegaan dat uw app een eigen mechanisme gebruikt (bijvoorb
 
 Het Azure AD-toegangs token wordt opgehaald met behulp van de [MSAL-bibliotheek](../../active-directory/develop/msal-overview.md). Voer de stappen uit die worden vermeld in de [Snelstartgids een app registreren](../../active-directory/develop/quickstart-register-app.md), waaronder:
 
-1.  Configuratie in Azure Portal:
-    1.  Registreer uw toepassing in azure AD:
-        1.  Ga in Azure Portal naar **Azure Active Directory**en selecteer app- **registraties**
-        2.  **Nieuwe toepassings registratie** selecteren
-        3.  Voer de naam van uw toepassing in, selecteer **Web-app/API** als het toepassings type en voer de verificatie-URL voor uw service in. Klik vervolgens op **maken**.
-        4.  Klik in deze toepassing op **instellingen**en selecteer vervolgens het tabblad **certificaten en geheimen** . Maak een nieuw client geheim, selecteer een duur en druk op **toevoegen**. Zorg ervoor dat u de geheime waarde opslaat, omdat u deze moet toevoegen aan de code van de webservice.
-    2.  Verleen uw toepassing en/of gebruikers toegang tot uw resource:
-        1.  Ga naar de resource met ruimtelijke ankers in Azure Portal
-        2.  Overschakelen naar het tabblad **toegangs beheer (IAM)**
-        3.  **Toewijzing van roltoewijzing toevoegen**
-        1.  [Een rol selecteren](#role-based-access-control)
-        2.  Voer in het veld **selecteren** de naam in van de toepassing (en) die u hebt gemaakt en waaraan u toegang wilt toewijzen. Als u wilt dat de gebruikers van uw app verschillende rollen hebben voor het ruimtelijke-ankers account, moet u meerdere toepassingen in azure AD registreren en aan elke afzonderlijke rol toewijzen. Implementeer vervolgens uw autorisatie logica om de juiste rol voor uw gebruikers te gebruiken.
-        3.  Opmerking: in de selectie **functie toewijzing toevoegen** wilt u de **toewijzen van toegang** instellen op ' Azure AD-gebruiker,-groep of Service-Principal '.
-    3.  Druk op **Opslaan**.
-2.  In uw code (Opmerking: u kunt het service voorbeeld gebruiken dat is opgenomen in GitHub):
-    1.  Zorg ervoor dat u de toepassings-ID, het toepassings geheim en de omleidings-URI van uw eigen Azure AD-toepassing gebruikt als de client-ID, het geheim en de RedirectUri-para meters in MSAL
-    2.  Stel de Tenant-ID in op uw eigen Azure ADD Tenant-ID in de para meter Authority in MSAL.
-    3.  Stel op uw token aanvraag het **bereik** in op https://sts.mixedreality.azure.com//.default
+1.    Configuratie in Azure Portal:
+    1.    Registreer uw toepassing in azure AD:
+        1.    Ga in Azure Portal naar **Azure Active Directory**en selecteer app- **registraties**
+        2.    **Nieuwe toepassings registratie** selecteren
+        3.    Voer de naam van uw toepassing in, selecteer **Web-app/API** als het toepassings type en voer de verificatie-URL voor uw service in. Klik vervolgens op **maken**.
+        4.    Klik in deze toepassing op **instellingen**en selecteer vervolgens het tabblad **certificaten en geheimen** . Maak een nieuw client geheim, selecteer een duur en druk op **toevoegen**. Zorg ervoor dat u de geheime waarde opslaat, omdat u deze moet toevoegen aan de code van de webservice.
+    2.    Verleen uw toepassing en/of gebruikers toegang tot uw resource:
+        1.    Ga naar de resource met ruimtelijke ankers in Azure Portal
+        2.    Overschakelen naar het tabblad **toegangs beheer (IAM)**
+        3.    **Toewijzing van roltoewijzing toevoegen**
+        1.    [Een rol selecteren](#role-based-access-control)
+        2.    Voer in het veld **selecteren** de naam in van de toepassing (en) die u hebt gemaakt en waaraan u toegang wilt toewijzen. Als u wilt dat de gebruikers van uw app verschillende rollen hebben voor het ruimtelijke-ankers account, moet u meerdere toepassingen in azure AD registreren en aan elke afzonderlijke rol toewijzen. Implementeer vervolgens uw autorisatie logica om de juiste rol voor uw gebruikers te gebruiken.
+        3.    Opmerking: in de selectie **functie toewijzing toevoegen** wilt u de **toewijzen van toegang** instellen op ' Azure AD-gebruiker,-groep of Service-Principal '.
+    3.    Druk op **Opslaan**.
+2.    In uw code (Opmerking: u kunt het service voorbeeld gebruiken dat is opgenomen in GitHub):
+    1.    Zorg ervoor dat u de toepassings-ID, het toepassings geheim en de omleidings-URI van uw eigen Azure AD-toepassing gebruikt als de client-ID, het geheim en de RedirectUri-para meters in MSAL
+    2.    Stel de Tenant-ID in op uw eigen Azure ADD Tenant-ID in de para meter Authority in MSAL.
+    3.    Stel op uw token aanvraag het **bereik** in op https://sts.mixedreality.azure.com//.default
 
 Met dat kan uw back-end-service een Azure AD-Token ophalen. Vervolgens kan het worden uitgewisseld voor een MR-token dat wordt teruggestuurd naar de client. Het gebruik van een Azure AD-token om een MR-token op te halen, wordt uitgevoerd via een REST-aanroep. Hier volgt een voor beeld van een oproep:
 

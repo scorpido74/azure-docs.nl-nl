@@ -4,7 +4,7 @@ description: Meer informatie over de beveiligings service van Defender voor IoT,
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: elazark
 manager: rkarlin
 editor: ''
 ms.devlang: na
@@ -12,14 +12,14 @@ ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/26/2019
-ms.author: mlottner
-ms.openlocfilehash: 19fa5b2949888993954f3075d1e10c9e8f126e2f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/08/2020
+ms.author: v-ekrieg
+ms.openlocfilehash: 13c16407481d4fa6f7d468a73051cc4945e6314e
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936304"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91851230"
 ---
 # <a name="understanding-the-local-configuration-file-c-agent"></a>Informatie over het lokale configuratie bestand (C#-agent)
 
@@ -57,7 +57,7 @@ Voor Windows:
 | highPriorityQueueSizePercentage | 0 < getal < 1 | Het gedeelte van het totale cache geheugen dat is toegewezen voor berichten met een hoge prioriteit. |
 | logLevel | "Off", "onherstelbare", "fout", "waarschuwing", "informatie", "fouten opsporen"  | Logboek berichten die gelijk zijn aan deze Ernst, worden vastgelegd in de console fout opsporing (syslog in Linux). |
 | fileLogLevel |  "Off", "onherstelbare", "fout", "waarschuwing", "informatie", "fouten opsporen"| Logboek berichten die gelijk zijn aan deze Ernst, worden geregistreerd in een bestand (syslog in Linux). |
-| diagnosticVerbosityLevel | "Geen", "enkele", "alle", | Uitgebreidheids niveau van diagnostische gebeurtenissen. Geen: er worden geen diagnostische gebeurtenissen verzonden, alleen bepaalde diagnostische gebeurtenissen met hoge urgentie worden verzonden, alle-alle logboeken worden ook als diagnostische gebeurtenissen verzonden. |
+| diagnosticVerbosityLevel | "Geen", "enkele", "alle", | Uitgebreidheids niveau van diagnostische gebeurtenissen. Geen: er worden geen diagnostische gebeurtenissen verzonden. Alleen bepaalde diagnostische gebeurtenissen met hoge urgentie worden verzonden. Alle-alle logboeken worden ook als diagnostische gebeurtenissen verzonden. |
 | logFilePath | Pad naar bestand | Als fileLogLevel > uit, worden logboeken naar dit bestand geschreven. |
 | defaultEventPriority | ' Hoog ', ' laag ', ' uit ' | Standaard prioriteit van gebeurtenis. |
 
@@ -85,10 +85,11 @@ Voor Windows:
 | Configuratie naam | Mogelijke waarden | Details |
 |:-----------|:---------------|:--------|
 | moduleName | tekenreeks | De naam van de identiteit van de beveiligings module. Deze naam moet overeenkomen met de naam van de module-id in het apparaat. |
-| deviceId | tekenreeks | ID van het apparaat (zoals geregistreerd in azure IoT Hub). || schedulerInterval | Time span-teken reeks | Intern scheduler-interval. |
+| deviceId | tekenreeks | ID van het apparaat (zoals geregistreerd in azure IoT Hub). |
+| schedulerInterval | Time span-teken reeks | Intern scheduler-interval. |
 | gatewayHostname | tekenreeks | De hostnaam van de Azure IOT hub. Doorgaans <mijn hub>. azure-devices.net |
 | Bestandspad | teken reeks-pad naar bestand | Het pad naar het bestand dat het verificatie geheim bevat.|
-| type | "SymmetricKey", "SelfSignedCertificate" | Het gebruikers geheim voor authenticatie. Kies *SymmetricKey* als het gebruikers geheim een symmetrische sleutel is, kies het *zelfondertekende certificaat* als het geheim een zelf ondertekend certificaat is. |
+| type | "SymmetricKey", "SelfSignedCertificate" | Het gebruikers geheim voor authenticatie. Kies *SymmetricKey* als het gebruikers geheim een symmetrische sleutel is, kies het *zelfondertekende certificaat* als het geheim een zelfondertekend certificaat is. |
 | identity | ' DPS ', ' module ', ' apparaat ' | Verificatie-identiteit: DPS als verificatie wordt uitgevoerd via DPS, module als verificatie wordt uitgevoerd met behulp van de module referenties of het apparaat als verificatie wordt uitgevoerd met behulp van de referenties van het apparaat.
 | certificateLocationKind |  "LocalFile", "Store" | LocalFile als het certificaat wordt opgeslagen in een bestand, opslaan als het certificaat zich in een certificaat archief bevindt. |
 | idScope | tekenreeks | ID-bereik van DPS |

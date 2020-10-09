@@ -7,20 +7,20 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 07/24/2020
-ms.openlocfilehash: e47cd89b2f0a5de4e0fc7663f37a2960e2ada971
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 10/08/2020
+ms.openlocfilehash: 1845de8332287f85e96b4e29c40caa66cb8704d9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078633"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856667"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>AS2-berichten voor B2B Enterprise-integratie in Azure Logic Apps uitwisselen met Enterprise Integration Pack
 
 > [!IMPORTANT]
 > De oorspronkelijke AS2-connector wordt afgeschaft, dus tenzij u tracerings mogelijkheden nodig hebt, gebruikt u in plaats daarvan de **AS2 (v2)** -connector. Met uitzonde ring van het bijhouden van de v2-connector beschikt u over dezelfde mogelijkheden als voor de oorspronkelijke versie, is het systeem eigen voor de Logic Apps-runtime en heeft dat aanzienlijke prestatie verbeteringen in de bericht grootte, door Voer en latentie. Daarnaast hoeft de v2-connector geen verbinding te maken met uw integratie account. In plaats daarvan moet u, zoals beschreven in de vereisten, ervoor zorgen dat u uw integratie account koppelt aan de logische app waar u van plan bent om de connector te gebruiken.
 
-Als u wilt werken met AS2-berichten in Azure Logic Apps, kunt u de AS2-connector gebruiken. Deze levert triggers en acties voor het beheren van AS2-communicatie. Als u bijvoorbeeld beveiliging en betrouw baarheid tijdens het verzenden van berichten wilt instellen, kunt u deze acties gebruiken:
+Als u wilt werken met AS2-berichten in Azure Logic Apps, kunt u de AS2-connector gebruiken. Deze bevat triggers en acties die AS2-communicatie (versie 1,2) ondersteunen en beheren. Als u bijvoorbeeld beveiliging en betrouw baarheid tijdens het verzenden van berichten wilt instellen, kunt u deze acties gebruiken:
 
 * [ **AS2 Codeer** actie](#encode) voor het leveren van versleuteling, digitale ondertekening en bevestigingen via bericht beschikkings meldingen (MDN), die ondersteuning bieden voor niet-afwijzing. Deze actie past bijvoorbeeld AS2/HTTP-headers toe en voert deze taken uit wanneer deze zijn geconfigureerd:
 

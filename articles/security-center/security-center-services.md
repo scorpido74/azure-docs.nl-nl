@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 61e5c60317bf872b8e27a7bd2edea7247e01a3b8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a311439e8efc5481fbfd7431c1514ba6be576e39
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91439415"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91858010"
 ---
 # <a name="feature-coverage-for-machines"></a>Functiedekking voor machines
 
@@ -107,6 +107,6 @@ Zie [Evaluatie van eindpuntbeveiliging en aanbevelingen](security-center-endpoin
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over hoe [Security Center gegevens verzamelt en de Log Analytics-agent](security-center-enable-data-collection.md).
+- Meer informatie over hoe [Security Center gegevens verzamelt met behulp van de Log Analytics-agent](security-center-enable-data-collection.md).
 - Meer informatie over hoe [Security Center gegevens beheert en beveiligt](security-center-data-security.md).
 - Bekijk de [platforms die ondersteuning bieden voor Security Center](security-center-os-coverage.md).

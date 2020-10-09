@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
-ms.openlocfilehash: 092246da4c01aa826fd4425e5a778d567b75d9d6
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 824b8f386e6bf822444450305e603e6068a34c5e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91828387"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91854355"
 ---
 # <a name="add-an-api-connector-to-a-sign-up-user-flow"></a>Een API-connector toevoegen aan een registratie gebruikers stroom
 
@@ -70,7 +70,7 @@ Content-type: application/json
 }
 ```
 
-Alleen gebruikers eigenschappen en aangepaste kenmerken die worden weer gegeven in de **Azure Active Directory**  >  aangepaste gebruikers kenmerken van**externe identiteiten**kunnen  >  **Custom user attributes** in de aanvraag worden verzonden.
+Alleen gebruikers eigenschappen en aangepaste kenmerken die in de **Azure AD B2C**  >  **gebruikers kenmerken** zijn opgenomen, kunnen in de aanvraag worden verzonden.
 
 Aangepaste kenmerken bestaan in de indeling **extension_ \<extensions-app-id> _CustomAttribute**  in de map. Uw API moet verwachten dat er claims in dezelfde geserialiseerde indeling worden ontvangen. Zie [aangepaste kenmerken definiëren in azure Active Directory B2C](user-flow-custom-attributes.md)voor meer informatie over aangepaste kenmerken.
 
@@ -294,7 +294,7 @@ Content-type: application/json
 ## <a name="best-practices-and-how-to-troubleshoot"></a>Aanbevolen procedures en problemen oplossen
 
 ### <a name="using-serverless-cloud-functions"></a>Cloud functies zonder server gebruiken
-Serverloze functies, zoals HTTP-triggers in Azure Functions, bieden een eenvoudige manier om API-eind punten te maken voor gebruik met de API-connector. U kunt de Cloud functie zonder server gebruiken om bijvoorbeeld validatie logica uit te voeren en aanmeldings pogingen te beperken tot specifieke domeinen. De Cloud functie zonder server kan ook andere web-Api's, gebruikers archieven en andere Cloud Services aanroepen en aanroepen voor complexere scenario's.
+Serverloze functies, zoals HTTP-triggers in Azure Functions, bieden een eenvoudige manier om API-eind punten te maken voor gebruik met de API-connector. U kunt de Cloud functie zonder server gebruiken om [bijvoorbeeld](code-samples.md#api-connectors)validatie logica uit te voeren en aanmeldings pogingen te beperken tot specifieke e-mail domeinen. De Cloud functie zonder server kan ook andere web-Api's, gebruikers archieven en andere Cloud Services aanroepen en aanroepen voor complexere scenario's.
 
 ### <a name="best-practices"></a>Aanbevolen procedures
 Zorg ervoor dat:
@@ -314,4 +314,4 @@ Over het algemeen is het handig om de hulpprogram ma's voor logboek registratie 
 
 ## <a name="next-steps"></a>Volgende stappen
 <!-- - Learn how to [add a custom approval workflow to sign-up](add-approvals.md) -->
-<!-- - Get started with our [Azure Function quickstart samples](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts). -->
+- Ga aan de slag met onze voor [beelden van Azure function Quick](code-samples.md#api-connectors)start.

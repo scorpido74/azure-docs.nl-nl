@@ -1,41 +1,42 @@
 ---
-title: Gebeurtenis Azure Batch taak starten
-description: Naslag informatie voor de begin gebeurtenis van de batch-taak. Deze gebeurtenis wordt verzonden zodra een taak is gepland om te starten op een reken knooppunt door de scheduler.
+title: Fout gebeurtenis Azure Batch taak planning
+description: Verwijzing voor fout gebeurtenis in batch-taak planning. Deze gebeurtenis wordt verzonden als een taak niet kan worden gepland en wordt later opnieuw geprobeerd.
 ms.topic: reference
-ms.date: 10/08/2020
-ms.openlocfilehash: 3a57ffbb1e1659cff54d101aa4b90ca1bd5d3a57
+ms.date: 09/20/2020
+ms.openlocfilehash: 549281d2b2c371e8f09c584e771cf44f7abc8a00
 ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/08/2020
-ms.locfileid: "91851013"
+ms.locfileid: "91852142"
 ---
-# <a name="task-start-event"></a>Gebeurtenis taak starten
+# <a name="task-schedule-fail-event"></a>Taak plannings fout gebeurtenis
 
- Deze gebeurtenis wordt verzonden zodra een taak is gepland om te starten op een reken knooppunt door de scheduler. Houd er rekening mee dat als de taak opnieuw wordt geprobeerd of opnieuw in de wachtrij wordt geplaatst, deze gebeurtenis opnieuw wordt verzonden voor dezelfde taak, maar de versie van het aantal nieuwe pogingen en de systeem taak wordt dienovereenkomstig bijgewerkt.
+ Deze gebeurtenis wordt verzonden als een taak niet kan worden gepland en later opnieuw wordt uitgevoerd. Dit is een tijdelijke fout bij het plannen van taken vanwege bron beperking, bijvoorbeeld niet voldoende sleuven op knoop punten voor het uitvoeren van een taak die is `requiredSlots` opgegeven.
 
-
- In het volgende voor beeld ziet u de hoofd tekst van een taak begin gebeurtenis.
+ In het volgende voor beeld ziet u de hoofd tekst van een taak plannings fout gebeurtenis.
 
 ```
 {
-    "jobId": "myJob",
-    "id": "myTask",
+    "jobId": "job-01",
+    "id": "task-01",
     "taskType": "User",
-    "systemTaskVersion": 220192842,
+    "systemTaskVersion": 665378862,
     "requiredSlots": 1,
     "nodeInfo": {
-        "poolId": "pool-001",
-        "nodeId": "tvm-257509324_1-20160908t162728z"
+        "poolId": "pool-01",
+        "nodeId": " "
     },
     "multiInstanceSettings": {
         "numberOfInstances": 1
     },
     "constraints": {
-        "maxTaskRetryCount": 2
+        "maxTaskRetryCount": 0
     },
-    "executionInfo": {
-        "retryCount": 0
+    "schedulingError": {
+        "category": "UserError",
+        "code": "JobPreparationTaskFailed",
+        "message": "Task cannot run because the job preparation task failed on node"
     }
 }
 ```
@@ -44,13 +45,13 @@ ms.locfileid: "91851013"
 |------------------|----------|-----------|
 |`jobId`|Tekenreeks|De ID van de taak die de taak bevat.|
 |`id`|Tekenreeks|De ID van de taak.|
-|`taskType`|Tekenreeks|Het type taak. Dit kan ' JobManager ' zijn. Dit geeft aan dat het een taak beheerder of ' gebruiker ' is die aangeeft dat het geen taak manager taak is.|
+|`taskType`|Tekenreeks|Het type taak. Dit kan ' JobManager ' zijn. Dit geeft aan dat het een taak beheerder of ' gebruiker ' is die aangeeft dat het geen taak manager taak is. Deze gebeurtenis wordt niet verzonden voor taak voorbereidings taken, taak release taken of start taken.|
 |`systemTaskVersion`|Int32|Dit is de interne teller voor een nieuwe poging van een taak. Intern kan de batch-service een taak opnieuw uitvoeren om tijdelijke problemen op te lossen. Deze problemen kunnen interne plannings fouten bevatten of proberen te herstellen van reken knooppunten met een onjuiste status.|
 |`requiredSlots`|Int32|De vereiste sleuven om de taak uit te voeren.|
 |[`nodeInfo`](#nodeInfo)|Complex type|Bevat informatie over het reken knooppunt waarop de taak is uitgevoerd.|
-|[`multiInstanceSettings`](#multiInstanceSettings)|Complex type|Hiermee geeft u op dat de taak een taak met meerdere exemplaren waarvoor meerdere reken knooppunten zijn vereist.  Zie [multiInstanceSettings](/rest/api/batchservice/get-information-about-a-task) voor meer informatie.|
+|[`multiInstanceSettings`](#multiInstanceSettings)|Complex type|Hiermee geeft u op dat de taak een taak met meerdere exemplaren is waarvoor meerdere reken knooppunten zijn vereist.  Zie [`multiInstanceSettings`](/rest/api/batchservice/get-information-about-a-task) voor meer informatie.|
 |[`constraints`](#constraints)|Complex type|De uitvoerings beperkingen die van toepassing zijn op deze taak.|
-|[`executionInfo`](#executionInfo)|Complex type|Bevat informatie over de uitvoering van de taak.|
+|[`schedulingError`](#schedulingError)|Complex type|Bevat informatie over de plannings fout van de taak.|
 
 ###  <a name="nodeinfo"></a><a name="nodeInfo"></a> nodeInfo
 
@@ -63,7 +64,7 @@ ms.locfileid: "91851013"
 
 |Elementnaam|Type|Opmerkingen|
 |------------------|----------|-----------|
-|`numberOfInstances`|Int|Het aantal reken knooppunten dat is vereist voor de taak.|
+|`numberOfInstances`|Int32|Het aantal reken knooppunten dat is vereist voor de taak.|
 
 ###  <a name="constraints"></a><a name="constraints"></a> standaardwaarde
 
@@ -71,8 +72,11 @@ ms.locfileid: "91851013"
 |------------------|----------|-----------|
 |`maxTaskRetryCount`|Int32|Het maximum aantal keren dat de taak opnieuw kan worden uitgevoerd. De batch-service probeert een taak opnieuw uit te proberen als de afsluit code niet gelijk is aan nul.<br /><br /> Houd er rekening mee dat deze waarde specifiek het aantal nieuwe pogingen bepaalt. De batch-service probeert de taak één keer uit te voeren en kan vervolgens de limiet opnieuw proberen. Als het maximum aantal nieuwe pogingen bijvoorbeeld 3 is, probeert batch een taak Maxi maal 4 keer uit te voeren (één eerste poging en 3 nieuwe pogingen).<br /><br /> Als het maximum aantal nieuwe pogingen 0 is, worden taken niet opnieuw geprobeerd met de batch-service.<br /><br /> Als het maximum aantal nieuwe pogingen-1 is, probeert de batch-service zonder limiet taken uit te voeren.<br /><br /> De standaard waarde is 0 (geen nieuwe pogingen).|
 
-###  <a name="executioninfo"></a><a name="executionInfo"></a> executionInfo
+
+###  <a name="schedulingerror"></a><a name="schedulingError"></a> schedulingError
 
 |Elementnaam|Type|Opmerkingen|
 |------------------|----------|-----------|
-|`retryCount`|Int32|Het aantal keren dat de batch-service opnieuw is geprobeerd om de taak uit te proberen. De taak wordt opnieuw uitgevoerd als deze wordt afgesloten met een afsluit code die niet gelijk is aan nul, tot de opgegeven MaxTaskRetryCount|
+|`category`|Tekenreeks|De categorie van de fout.|
+|`code`|Tekenreeks|Een id voor de taak plannings fout. Codes zijn niet-variabel en zijn bedoeld om programmatisch te worden verbruikt.|
+|`message`|Tekenreeks|Een bericht met een beschrijving van de taak plannings fout, bedoeld om te worden weer gegeven in een gebruikers interface.|

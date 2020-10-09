@@ -2,23 +2,17 @@
 title: Overzicht van de agent voor virtuele Azure-machines
 description: Overzicht van de agent voor virtuele Azure-machines
 services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: mimckitt
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: 0a1f212e-053e-4a39-9910-8d622959f594
 ms.service: virtual-machines-windows
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure-services
 ms.date: 07/20/2019
-ms.author: akjosh
-ms.openlocfilehash: d9939b706eb63e5681ddef438cde92f32786f889
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.author: mimckitt
+ms.openlocfilehash: 2db83b643ec3000c5b86388f4b603bba32f2a9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612828"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91855772"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Overzicht van de agent voor virtuele Azure-machines
 De Microsoft Azure-agent van de virtuele machine (VM-agent) is een veilig, licht gewicht proces dat interactie van de virtuele machine (VM) beheert met de Azure Fabric-controller. De VM-agent heeft een primaire rol bij het inschakelen en uitvoeren van extensies van virtuele Azure-machines. VM-extensies maken de configuratie van de na de implementatie van de VM mogelijk, zoals het installeren en configureren van software. VM-extensies bieden ook herstel functies, zoals het opnieuw instellen van het beheerders wachtwoord van een virtuele machine. Zonder de VM-agent van Azure kunnen VM-extensies niet worden uitgevoerd.
@@ -70,7 +64,7 @@ $vm | Update-AzVM
 
 ### <a name="prerequisites"></a>Vereisten
 
-- De Windows VM-agent moet ten minste Windows Server 2008 SP2 (64-bits) uitvoeren, met .NET Framework 4,0. Bekijk de [minimale versie ondersteuning voor Virtual Machine agents in azure](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)
+- De Windows VM-agent moet ten minste Windows Server 2008 SP2 (64-bits) uitvoeren, met de .NET Framework 4,0. Bekijk de [minimale versie ondersteuning voor virtuele-machine agenten in azure](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support).
 
 - Zorg ervoor dat uw virtuele machine toegang heeft tot het IP-adres 168.63.129.16. Zie [Wat is IP-adres 168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md)? voor meer informatie.
 
@@ -87,7 +81,7 @@ De Azure Resource Manager Power shell-module kan worden gebruikt om informatie o
 Get-AzVM
 ```
 
-In de volgende gecomprimeerde voorbeeld uitvoer ziet u de eigenschap *ProvisionVMAgent* geneste in *OSProfile*. Deze eigenschap kan worden gebruikt om te bepalen of de VM-agent is geïmplementeerd op de VM:
+In de volgende gecomprimeerde voorbeeld uitvoer ziet u de eigenschap *ProvisionVMAgent* geneste in `OSProfile` . Deze eigenschap kan worden gebruikt om te bepalen of de VM-agent is geïmplementeerd op de VM:
 
 ```powershell
 OSProfile                  :
@@ -119,6 +113,15 @@ De Azure VM-agent voor Windows wordt automatisch bijgewerkt op installatie kopie
 
 ## <a name="windows-guest-agent-automatic-logs-collection"></a>Verzameling automatische logboeken voor Windows-gast agent
 Windows Guest agent heeft een functie voor het automatisch verzamelen van Logboeken. Deze functie is controller door het CollectGuestLogs.exe proces. Deze bestaat zowel voor PaaS Cloud Services als IaaS Virtual Machines en het doel is om & snel een aantal Diagnostische logboeken te verzamelen van een VM, zodat deze kunnen worden gebruikt voor offline analyse. De verzamelde logboeken zijn gebeurtenis logboeken, logboeken van het besturings systeem, Azure-logboeken en bepaalde register sleutels. Er wordt een ZIP-bestand gegenereerd dat wordt overgedragen naar de host van de virtuele machine. Dit ZIP-bestand kan vervolgens worden bekeken door technische teams en ondersteunings medewerkers om problemen te onderzoeken op verzoek van de klant die eigenaar is van de virtuele machine.
+
+## <a name="guest-agent-and-osprofile-certificates"></a>Gast agent en OSProfile-certificaten
+De Azure VM-agent is verantwoordelijk voor het installeren van de certificaten waarnaar wordt verwezen in de `OSProfile` van een VM of virtuele-machine schaalset. Als u deze certificaten hand matig verwijdert uit de MMC-console Certificaten in de gast-VM, wordt verwacht dat de gast agent ze opnieuw gaat toevoegen.
+Als u een certificaat permanent wilt verwijderen, moet u het verwijderen uit de `OSProfile` en het vervolgens verwijderen uit het gast besturingssysteem.
+
+Gebruik voor een virtuele machine de [Remove-AzVMSecret]() om certificaten te verwijderen uit de `OSProfile` .
+
+Zie [Virtual Machine Scale sets-hoe kan ik afgeschafte certificaten verwijderen](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-faq#how-do-i-remove-deprecated-certificates) voor meer informatie over certificaten voor virtuele-machine schaal sets?
+
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie [overzicht van virtuele machines en functies van Azure](overview.md)voor meer informatie over VM-uitbrei dingen.

@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 09/02/2020
 ms.author: genli
-ms.openlocfilehash: 642a1937f44a608ebf235c20da060972788046a0
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 3274e45738c079c89560f546fe58163f695e12df
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321732"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91851098"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Een Windows VHD of VHDX voorbereiden om te uploaden naar Azure
 
@@ -379,7 +379,7 @@ In het ideale geval moet u de computer bijwerken naar het *patch niveau*, als di
 |                         | http.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17285 - KB3042553                  | 6.3.9600.18574 - KB4022726          | 10.0.14393.251 - KB4022715                  | 10.0.15063.483             | -                                           | -                                           |
 |                         | vmswitch.sys   | 6.1.7601.23727 - KB4022719                | 6.2.9200.22117 - KB4022724                  | 6.3.9600.18654 - KB4022726          | 10.0.14393.1358 - KB4022715                 | 10.0.15063.138             | -                                           | -                                           |
 | Kern                    | ntoskrnl.exe   | 6.1.7601.23807 - KB4022719                | 6.2.9200.22170 - KB4022718                  | 6.3.9600.18696 - KB4022726          | 10.0.14393.1358 - KB4022715                 | 10.0.15063.483             | -                                           | -                                           |
-| Externe bureaubladservices | rdpcorets.dll  | 6.2.9200.21506 - KB4022719                | 6.2.9200.22104 - KB4022724                  | 6.3.9600.18619 - KB4022726          | 10.0.14393.1198 - KB4022715                 | 10.0.15063.0               | -                                           | -                                           |
+| Extern bureaublad-services | rdpcorets.dll  | 6.2.9200.21506 - KB4022719                | 6.2.9200.22104 - KB4022724                  | 6.3.9600.18619 - KB4022726          | 10.0.14393.1198 - KB4022715                 | 10.0.15063.0               | -                                           | -                                           |
 |                         | termsrv.dll    | 6.1.7601.23403 - KB3125574                | 6.2.9200.17048 - KB2973501                  | 6.3.9600.17415-KB3000850          | 10.0.14393.0 - KB4022715                    | 10.0.15063.0               | -                                           | -                                           |
 |                         | termdd.sys     | 6.1.7601.23403 - KB3125574                | -                                           | -                                   | -                                           | -                          | -                                           | -                                           |
 |                         | win32k.sys     | 6.1.7601.23807 - KB4022719                | 6.2.9200.22168 - KB4022718                  | 6.3.9600.18698 - KB4022726          | 10.0.14393.594 - KB4022715                  | -                          | -                                           | -                                           |
@@ -421,6 +421,7 @@ In het bijzonder vereist Sysprep dat de stations volledig worden ontsleuteld voo
 
 1. Meld u aan bij de Windows-VM.
 1. Een Power shell-sessie uitvoeren als beheerder.
+1. Verwijder de Panther-map (C:\Windows\Panther).
 1. Wijzig de Directory in `%windir%\system32\sysprep` . Voer vervolgens `sysprep.exe` uit.
 1. Selecteer in het dialoog venster **hulp programma voor systeem voorbereiding** de optie **systeem out-of-Box Experience (OOBE) opgeven**en zorg ervoor dat het selectie vakje **generalize** is geselecteerd.
 
@@ -432,7 +433,7 @@ In het bijzonder vereist Sysprep dat de stations volledig worden ontsleuteld voo
 De VHD is nu klaar om te worden geüpload. Zie [een gegeneraliseerde VHD uploaden en deze gebruiken om een nieuwe virtuele machine in azure te maken](sa-upload-generalized.md)voor meer informatie over het maken van een virtuele machine op basis van een gegeneraliseerde schijf.
 
 >[!NOTE]
-> Een aangepast *unattend.xml* bestand wordt niet ondersteund. Hoewel we de eigenschap **additionalUnattendContent** ondersteunen, biedt dit alleen beperkte ondersteuning voor het toevoegen van opties voor [micro soft-Windows-shell-setup](/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) in het *unattend.xml* bestand dat door de Azure-inrichtings agent wordt gebruikt. U kunt bijvoorbeeld [additionalUnattendContent](/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent?view=azure-dotnet) gebruiken om FirstLogonCommands en LogonCommands toe te voegen. Zie [voor beeld van AdditionalUnattendContent FirstLogonCommands](https://github.com/Azure/azure-quickstart-templates/issues/1407)voor meer informatie.
+> Een aangepast *unattend.xml* bestand wordt niet ondersteund. Hoewel we de eigenschap **additionalUnattendContent** ondersteunen, biedt dit alleen beperkte ondersteuning voor het toevoegen van opties voor [micro soft-Windows-shell-setup](/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) in het *unattend.xml* bestand dat door de Azure-inrichtings agent wordt gebruikt. U kunt bijvoorbeeld [additionalUnattendContent](/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent?view=azure-dotnet&preserve-view=true) gebruiken om FirstLogonCommands en LogonCommands toe te voegen. Zie [voor beeld van AdditionalUnattendContent FirstLogonCommands](https://github.com/Azure/azure-quickstart-templates/issues/1407)voor meer informatie.
 
 ## <a name="convert-the-virtual-disk-to-a-fixed-size-vhd"></a>De virtuele schijf converteren naar een VHD met een vaste grootte
 

@@ -1,6 +1,6 @@
 ---
 title: Toegang beperken met behulp van hand tekeningen voor gedeelde toegang-Azure HDInsight
-description: Meer informatie over het gebruik van hand tekeningen voor gedeelde toegang voor het beperken van HDInsight-toegang tot gegevens die zijn opgeslagen in azure Storage-blobs.
+description: Meer informatie over het gebruik van hand tekeningen voor gedeelde toegang voor het beperken van HDInsight-toegang tot gegevens die zijn opgeslagen in Azure Blob Storage.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: 8ab181eb72b5a3ab54ad8dba19d23288926b8969
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ea14a67f11974c8f7cdeea9eb84e5efb2377fb15
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87006310"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856561"
 ---
-# <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Azure Storage Shared Access Signatures gebruiken om de toegang tot gegevens in HDInsight te beperken
+# <a name="use-azure-blob-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Shared Access signatures voor Azure Blob Storage gebruiken om de toegang tot gegevens in HDInsight te beperken
 
-HDInsight heeft volledige toegang tot de gegevens in de Azure Storage accounts die aan het cluster zijn gekoppeld. U kunt hand tekeningen voor gedeelde toegang gebruiken voor de BLOB-container om de toegang tot de gegevens te beperken. Shared Access signatures (SAS) zijn een functie van Azure Storage-accounts waarmee u de toegang tot gegevens kunt beperken. U kunt bijvoorbeeld alleen-lezen toegang bieden tot gegevens.
+HDInsight heeft volledige toegang tot de gegevens in de Azure Blob Storage-accounts die zijn gekoppeld aan het cluster. U kunt hand tekeningen voor gedeelde toegang gebruiken voor de BLOB-container om de toegang tot de gegevens te beperken. Shared Access signatures (SAS) zijn een functie van Azure Blob Storage-accounts waarmee u de toegang tot gegevens kunt beperken. U kunt bijvoorbeeld alleen-lezen toegang bieden tot gegevens.
 
 > [!IMPORTANT]  
 > Voor een oplossing met Apache zwerver kunt u overwegen om gebruik te maken van HDInsight die lid is van een domein. Zie het [HDInsight-document domein-gekoppeld configureren](./domain-joined/apache-domain-joined-configure.md) voor meer informatie.
@@ -39,7 +39,7 @@ HDInsight heeft volledige toegang tot de gegevens in de Azure Storage accounts d
 
 * Als C# wordt gebruikt, moet Visual Studio versie 2013 of hoger zijn.
 
-* Het URI-schema voor uw opslag account. Dit schema is `wasb://` voor Azure Storage, `abfs://` voor Azure data Lake Storage Gen2 of `adl://` voor Azure data Lake Storage gen1. Als beveiligde overdracht is ingeschakeld voor Azure Storage, zou de URI zijn `wasbs://` .
+* Het URI-schema voor uw opslag account. Dit schema is `wasb://` voor Azure Blob Storage, `abfs://` voor Azure data Lake Storage Gen2 of `adl://` voor Azure data Lake Storage gen1. Als beveiligde overdracht is ingeschakeld voor Azure Blob-opslag, zou de URI zijn `wasbs://` .
 
 * Een bestaand HDInsight-cluster waaraan een Shared Access Signature moet worden toegevoegd. Als dat niet het geval is, kunt u Azure PowerShell gebruiken om een cluster te maken en een Shared Access Signature toe te voegen tijdens het maken van het cluster.
 
@@ -48,7 +48,7 @@ HDInsight heeft volledige toegang tot de gegevens in de Azure Storage accounts d
   * Een Visual Studio-project dat een opslag container, opgeslagen beleid en SAS kan maken voor gebruik met HDInsight
   * Een python-script dat een opslag container, opgeslagen beleid en SAS kan maken voor gebruik met HDInsight
   * Een Power shell-script waarmee een HDInsight-cluster kan worden gemaakt en geconfigureerd voor het gebruik van de SAS. Hieronder wordt een bijgewerkte versie gebruikt.
-  * Een voorbeeld bestand:`hdinsight-dotnet-python-azure-storage-shared-access-signature-master\sampledata\sample.log`
+  * Een voorbeeld bestand: `hdinsight-dotnet-python-azure-storage-shared-access-signature-master\sampledata\sample.log`
 
 ## <a name="shared-access-signatures"></a>Shared Access Signatures
 
@@ -357,7 +357,7 @@ Als u een bestaand cluster hebt, kunt u de SAS toevoegen aan de **kern site** co
 
 1. Vouw de sectie **aangepaste kern site** uit, blader naar het einde en selecteer vervolgens **eigenschap toevoegen...**. Gebruik de volgende waarden voor **sleutel** en **waarde**:
 
-    * **Sleutel**:`fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
+    * **Sleutel**: `fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
     * **Waarde**: de sa's die door een van de eerder uitgevoerde methoden zijn geretourneerd.
 
     Vervang door `CONTAINERNAME` de naam van de container die u hebt gebruikt in combi natie met de C#-of SAS-toepassing. Vervang door `STORAGEACCOUNTNAME` de naam van het opslag account dat u hebt gebruikt.

@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 keywords: Hadoop hoge Beschik baarheid
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/07/2020
-ms.openlocfilehash: a77dba165d76cc131f7a2a25a4b2f62e945a3089
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.date: 10/08/2020
+ms.openlocfilehash: 4b98b03c2d7eb4a0403b4595c1376656ed42511b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/08/2020
-ms.locfileid: "91843899"
+ms.locfileid: "91855035"
 ---
 # <a name="azure-hdinsight-highly-available-solution-architecture-case-study"></a>Casestudy Azure HDInsight met hoge Beschik baarheid voor oplossings architectuur
 
@@ -86,8 +86,6 @@ Er moet geen failover-oplossing worden ontworpen voor interne rapportage omdat d
 
 Zie voor meer informatie over de items die in dit artikel worden besproken:
 
-* [Naslag informatie voor Apache Ambari-REST](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
-* [De Azure CLI installeren en configureren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)
-* [Azure PowerShell-module AZ installeren en configureren](/powershell/azure/)
-* [HDInsight beheren met Apache Ambari](hdinsight-hadoop-manage-ambari.md)
-* [HDInsight-clusters op basis van Linux inrichten](hdinsight-hadoop-provision-linux-clusters.md)
+* [Azure HDInsight-bedrijfs continuïteit](./hdinsight-business-continuity.md)
+* [Azure HDInsight-architectuur voor bedrijfs continuïteit](./hdinsight-business-continuity-architecture.md)
+* [Wat is Apache Hive en HiveQL in azure HDInsight?](./hadoop/hdinsight-use-hive.md)

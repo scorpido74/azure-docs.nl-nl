@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 01cdc121abded954c2443599c5d69689acd69b62
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3818ce9ebae8e6af6ee8bb5ed30c7ab446a6f6b2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82562335"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91855171"
 ---
 # <a name="apache-spark-guidelines"></a>Apache Spark richtlijnen
 
@@ -62,8 +62,8 @@ Dit artikel bevat verschillende richt lijnen voor het gebruik van Apache Spark i
 
 | Optie | Documenten |
 |---|---|
-| Data Lake Storage Gen2 | [Azure Data Lake Storage Gen2 gebruiken met Azure HDInsight-clusters](../hdinsight-hadoop-use-data-lake-storage-gen2.md) |
-| Data Lake Storage Gen1 | [Data Lake Storage Gen1 gebruiken met Azure HDInsight-clusters](../hdinsight-hadoop-use-data-lake-store.md) |
+| Azure Data Lake Storage Gen2 | [Azure Data Lake Storage Gen2 gebruiken met Azure HDInsight-clusters](../hdinsight-hadoop-use-data-lake-storage-gen2.md) |
+| Azure Data Lake Storage Gen1 | [Azure Data Lake Storage Gen1 gebruiken met Azure HDInsight-clusters](../hdinsight-hadoop-use-data-lake-storage-gen1.md) |
 | Azure Blob Storage | [Azure-opslag gebruiken met Azure HDInsight-clusters](../hdinsight-hadoop-use-blob-storage.md) |
 
 ## <a name="next-steps"></a>Volgende stappen

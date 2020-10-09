@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
-ms.openlocfilehash: b88408480bb0822a061e97336eee5c6b3ccfc8e0
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 847c69a18a73d67b9b994e72686a4073ddd6d27f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91358318"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91857531"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>Zelf studie: GitHub configureren voor automatische gebruikers inrichting
 
@@ -28,6 +28,7 @@ In het scenario dat in deze zelfstudie wordt beschreven, wordt ervan uitgegaan d
 * Een Azure Active Directory-Tenant
 * Een GitHub-organisatie, gemaakt in [GitHub Enterprise Cloud](https://help.github.com/articles/github-s-products/#github-enterprise), waarvoor een [GitHub Enterprise-abonnement](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations) vereist is
 * Een gebruikers account in GitHub met beheerders machtigingen voor de organisatie
+* [SAML geconfigureerd voor de GitHub Enter prise-Cloud organisatie](https://docs.microsoft.com/azure/active-directory/saas-apps/github-tutorial)
 * Zorg ervoor dat OAuth-toegang is ingesteld voor uw organisatie, zoals [hier](https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/approving-oauth-apps-for-your-organization) wordt beschreven
 * SCIM inrichten voor één organisatie wordt alleen ondersteund wanneer SSO is ingeschakeld op organisatie niveau
 
@@ -51,9 +52,6 @@ Voordat u de inrichtings service configureert en inschakelt, moet u bepalen welk
 ## <a name="configuring-user-provisioning-to-github"></a>Gebruikers inrichten configureren voor GitHub
 
 In deze sectie vindt u instructies voor het verbinden van uw Azure AD-GitHub en het configureren van de inrichtings service om toegewezen gebruikers accounts in GitHub te maken, bij te werken en uit te scha kelen op basis van de gebruikers-en groeps toewijzing in azure AD.
-
-> [!TIP]
-> U kunt er ook voor kiezen om eenmalige aanmelding op basis van SAML in te scha kelen voor GitHub, volgens de instructies in [Azure Portal](https://portal.azure.com). Eenmalige aanmelding kan onafhankelijk van automatische inrichting worden geconfigureerd, maar deze twee functies gelden voor elkaar.
 
 ### <a name="configure-automatic-user-account-provisioning-to-github-in-azure-ad"></a>Automatische toewijzing van gebruikers accounts configureren voor GitHub in azure AD
 

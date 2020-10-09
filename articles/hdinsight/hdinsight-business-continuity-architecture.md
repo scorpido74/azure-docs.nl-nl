@@ -8,12 +8,12 @@ keywords: Hadoop hoge Beschik baarheid
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: cb3ef1e802546d5a8b1574b304770fe7a364e2df
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.openlocfilehash: 9eb0cd3fd327a53dd0761779916caa096153a010
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 10/08/2020
-ms.locfileid: "91843926"
+ms.locfileid: "91856429"
 ---
 # <a name="azure-hdinsight-business-continuity-architectures"></a>Azure HDInsight-architectuur voor bedrijfs continuïteit
 
@@ -206,8 +206,6 @@ Het repliceren van Zwerver-beleid tussen primair en secundair kan ertoe leiden d
 
 Zie voor meer informatie over de items die in dit artikel worden besproken:
 
-* [Naslag informatie voor Apache Ambari-REST](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
-* [De Azure CLI installeren en configureren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)
-* [Azure PowerShell-module AZ installeren en configureren](/powershell/azure/)
-* [HDInsight beheren met Apache Ambari](hdinsight-hadoop-manage-ambari.md)
-* [HDInsight-clusters op basis van Linux inrichten](hdinsight-hadoop-provision-linux-clusters.md)
+* [Azure HDInsight-bedrijfs continuïteit](./hdinsight-business-continuity.md)
+* [Casestudy Azure HDInsight met hoge Beschik baarheid voor oplossings architectuur](./hdinsight-high-availability-case-study.md)
+* [Wat is Apache Hive en HiveQL in azure HDInsight?](./hadoop/hdinsight-use-hive.md)

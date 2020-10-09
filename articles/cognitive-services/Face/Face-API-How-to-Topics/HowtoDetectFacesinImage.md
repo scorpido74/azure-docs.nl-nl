@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: sbowles
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 231f30f5532d0934ba41e591aa821d56b11d5856
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 500099753ee4fe47f02e7f09d9732b71aa3bae36
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88928000"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856362"
 ---
 # <a name="get-face-detection-data"></a>Detectie gegevens van het gezicht ophalen
 
@@ -36,71 +36,29 @@ Deze hand leiding is gericht op de details van de detectie aanroep, zoals de arg
 
 ## <a name="get-basic-face-data"></a>Basis gegevens over het gezicht ophalen
 
-Als u gezichten wilt zoeken en de locatie ervan wilt ophalen in een installatie kopie, roept u de methode aan met de para meter _returnFaceId_ ingesteld op **True**. Dit is de standaardinstelling.
+Roep de [DetectWithUrlAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet) -of [DetectWithStreamAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet) -methode aan waarbij de para meter _returnFaceId_ is ingesteld op **True**om gezichten te vinden en hun locaties op te halen in een installatie kopie. Dit is de standaardinstelling.
 
-```csharp
-IList<DetectedFace> faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, true, false, null);
-```
+:::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/sdk/detect.cs" id="basic1":::
 
 U kunt de geretourneerde [DetectedFace](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet) -objecten opvragen voor hun unieke id's en een rechthoek die de pixel coördinaten van het gezicht geeft.
 
-```csharp
-foreach (var face in faces)
-{
-    string id = face.FaceId.ToString();
-    FaceRectangle rect = face.FaceRectangle;
-}
-```
+:::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/sdk/detect.cs" id="basic2":::
 
 Zie [FaceRectangle](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.facerectangle?view=azure-dotnet)voor informatie over het parseren van de locatie en afmetingen van het gezicht. Normaal gesp roken bevat deze rechthoek de ogen, Eyebrows, neus en mond. De bovenkant van Head, oren en Chin is niet noodzakelijkerwijs opgenomen. Als u de gezichts rechthoek wilt gebruiken om een volledige kop te bijsnijden of een mid-shot portret te krijgen, mogelijk voor een foto-ID-type afbeelding, kunt u de rechthoek in elke richting uitvouwen.
 
 ## <a name="get-face-landmarks"></a>Gezichts bezienswaardigheden ophalen
 
-[Gezichts bezienswaardigheden](../concepts/face-detection.md#face-landmarks) zijn een verzameling gemakkelijk te vinden punten op een gezicht, zoals de pupilsen of de tip van de neus. Als u gegevens voor het gezichts punt wilt ophalen, stelt u de para meter _returnFaceLandmarks_ in op **True**.
+[Gezichts bezienswaardigheden](../concepts/face-detection.md#face-landmarks) zijn een verzameling gemakkelijk te vinden punten op een gezicht, zoals de pupilsen of de tip van de neus. Als u gegevens over het gezichts punt wilt ophalen, stelt u de para meter _detectionModel_ in op **detectionModel. Detection01** en de para meter _returnFaceLandmarks_ op **True**.
 
-```csharp
-IList<DetectedFace> faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, true, true, null);
-```
+:::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/sdk/detect.cs" id="landmarks1":::
 
 De volgende code laat zien hoe u de locaties van de neus en de pupillen kunt ophalen:
 
-```csharp
-foreach (var face in faces)
-{
-    var landmarks = face.FaceLandmarks;
-
-    double noseX = landmarks.NoseTip.X;
-    double noseY = landmarks.NoseTip.Y;
-
-    double leftPupilX = landmarks.PupilLeft.X;
-    double leftPupilY = landmarks.PupilLeft.Y;
-
-    double rightPupilX = landmarks.PupilRight.X;
-    double rightPupilY = landmarks.PupilRight.Y;
-}
-```
+:::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/sdk/detect.cs" id="landmarks2":::
 
 U kunt ook gegevens over gezichts bezienswaardigheden gebruiken om de richting van het gezicht nauw keurig te berekenen. U kunt bijvoorbeeld de draai hoek van het gezicht definiëren als een vector van het midden van de mond naar het midden van de ogen. Met de volgende code wordt deze vector berekend:
 
-```csharp
-var upperLipBottom = landmarks.UpperLipBottom;
-var underLipTop = landmarks.UnderLipTop;
-
-var centerOfMouth = new Point(
-    (upperLipBottom.X + underLipTop.X) / 2,
-    (upperLipBottom.Y + underLipTop.Y) / 2);
-
-var eyeLeftInner = landmarks.EyeLeftInner;
-var eyeRightInner = landmarks.EyeRightInner;
-
-var centerOfTwoEyes = new Point(
-    (eyeLeftInner.X + eyeRightInner.X) / 2,
-    (eyeLeftInner.Y + eyeRightInner.Y) / 2);
-
-Vector faceDirection = new Vector(
-    centerOfTwoEyes.X - centerOfMouth.X,
-    centerOfTwoEyes.Y - centerOfMouth.Y);
-```
+:::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/sdk/detect.cs" id="direction":::
 
 Wanneer u de richting van het gezicht kent, kunt u het rechthoekige gezichts kader draaien om het op de juiste manier af te stemmen. Als u gezichten wilt bijsnijden in een afbeelding, kunt u de afbeelding op een programmatische manier draaien, zodat de gezichten altijd rechtop worden weer gegeven.
 
@@ -108,36 +66,13 @@ Wanneer u de richting van het gezicht kent, kunt u het rechthoekige gezichts kad
 
 Naast gezichts rechthoeken en bezienswaardigheden, kunnen met de gezichts detectie-API verschillende conceptuele kenmerken van een gezicht worden geanalyseerd. Zie de sectie met de conceptuele [kenmerken](../concepts/face-detection.md#attributes) voor een volledige lijst.
 
-Als u face-kenmerken wilt analyseren, stelt u de para meter _returnFaceAttributes_ in op een lijst met [FaceAttributeType Enum](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet) -waarden.
+Als u face-kenmerken wilt analyseren, stelt u de para meter _detectionModel_ in op **detectionModel. Detection01** en de para meter _ReturnFaceAttributes_ in een lijst met [FaceAttributeType Enum](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet) -waarden.
 
-```csharp
-var requiredFaceAttributes = new FaceAttributeType[] {
-    FaceAttributeType.Age,
-    FaceAttributeType.Gender,
-    FaceAttributeType.Smile,
-    FaceAttributeType.FacialHair,
-    FaceAttributeType.HeadPose,
-    FaceAttributeType.Glasses,
-    FaceAttributeType.Emotion
-};
-var faces = await faceClient.DetectWithUrlAsync(imageUrl, true, false, requiredFaceAttributes);
-```
+:::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/sdk/detect.cs" id="attributes1":::
 
 Vervolgens krijgt u verwijzingen naar de geretourneerde gegevens en voert u meer bewerkingen uit op basis van uw behoeften.
 
-```csharp
-foreach (var face in faces)
-{
-    var attributes = face.FaceAttributes;
-    var age = attributes.Age;
-    var gender = attributes.Gender;
-    var smile = attributes.Smile;
-    var facialHair = attributes.FacialHair;
-    var headPose = attributes.HeadPose;
-    var glasses = attributes.Glasses;
-    var emotion = attributes.Emotion;
-}
-```
+:::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/sdk/detect.cs" id="attributes2":::
 
 Zie de conceptuele hand leiding voor [gezichts detectie en kenmerken](../concepts/face-detection.md) voor meer informatie over elk van de kenmerken.
 

@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: d96718176c3cd7486c51e57942c4d12bf0d57992
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: db29b6743458a4a3ec87dfec9e367bef0c946a15
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91620003"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91857007"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-as-default-storage-by-using-powershell"></a>HDInsight-clusters met Azure Data Lake Storage Gen1 als standaard opslag maken met behulp van Power shell
 
@@ -46,7 +46,7 @@ Voordat u met deze zelf studie begint, moet u ervoor zorgen dat u aan de volgend
     >U kunt alleen een service-principal maken als u een Azure AD-beheerder bent. Uw Azure AD-beheerder moet een service-principal maken voordat u met Data Lake Storage Gen1 een HDInsight-cluster kunt maken. De Service-Principal moet worden gemaakt met een certificaat, zoals beschreven in [Create a Service Principal with Certificate](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-certificate-from-certificate-authority).
     >
 
-## <a name="create-a-data-lake-storage-gen1-account"></a>Een Data Lake Storage Gen1-account maken
+## <a name="create-an-azure-data-lake-storage-gen1-account"></a>Een Azure Data Lake Storage Gen1-account maken
 
 Ga als volgt te werk om een Data Lake Storage Gen1-account te maken:
 
@@ -282,7 +282,7 @@ hdfs dfs -ls adl:///
 U kunt ook de `hdfs dfs -put` opdracht gebruiken om bestanden te uploaden naar Data Lake Storage gen1 en vervolgens gebruiken `hdfs dfs -ls` om te controleren of de bestanden zijn geüpload.
 
 ## <a name="see-also"></a>Zie ook
-* [Data Lake Storage Gen1 gebruiken met Azure HDInsight-clusters](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)
+* [Data Lake Storage Gen1 gebruiken met Azure HDInsight-clusters](../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen1.md)
 * [Azure Portal: een HDInsight-cluster maken voor het gebruik van Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)
 
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx

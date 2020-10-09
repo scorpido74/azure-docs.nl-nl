@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: f7d2351fdc39ec4600cbca2e436cdcd527157275
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7bdb2c6ba6717624b19184ca3bcb47ee9b3da367
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91332961"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856106"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Wat is SQL Data Sync voor Azure?
 
@@ -34,7 +34,7 @@ Bij de gegevens synchronisatie wordt gebruikgemaakt van een hub-en spoke-topolog
 
 - De **hub-data base** moet een Azure SQL database zijn.
 - De **leden databases** kunnen bestaan uit data bases in Azure SQL database of in exemplaren van SQL Server.
-- De meta **gegevens database** bevat de meta gegevens en het logboek voor de gegevens synchronisatie. De meta gegevens database moet een Azure SQL Database zijn die zich in dezelfde regio bevindt als de hub-data base. De meta gegevens database voor synchronisatie is gemaakt door de klant en het eigendom van de klant. U kunt slechts één meta gegevens database synchroniseren per regio en abonnement. De meta gegevens database voor synchronisatie kan niet worden verwijderd of de naam ervan kan niet worden gewijzigd terwijl er synchronisatie groepen of synchronisatie agenten bestaan. Micro soft raadt aan om een nieuwe, lege data base te maken voor gebruik als de meta gegevens database voor synchronisatie. Gegevens synchronisatie maakt tabellen in deze data base en voert een frequente werk belasting uit.
+- De meta **gegevens database** bevat de meta gegevens en het logboek voor de gegevens synchronisatie. De meta gegevens database moet een Azure SQL Database zijn die zich in dezelfde regio bevindt als de hub-data base. De meta gegevens database voor synchronisatie is gemaakt door de klant en het eigendom van de klant. U kunt slechts één meta gegevens database synchroniseren per regio en abonnement. De meta gegevens database voor synchronisatie kan niet worden verwijderd of de naam ervan kan niet worden gewijzigd terwijl er synchronisatie groepen of synchronisatie agenten bestaan. U wordt aangeraden een nieuwe, lege database te maken die als Database met metagegevens van synchronisatie wordt gebruikt. Met Data Sync worden tabellen in deze database gemaakt en een regelmatige workload uitgevoerd.
 
 > [!NOTE]
 > Als u een on-premises Data Base als een lid-data base gebruikt, moet u [een lokale synchronisatie agent installeren en configureren](sql-data-sync-sql-server-configure.md#add-on-prem).
@@ -126,7 +126,7 @@ Het inrichten en verwijderen van de inrichting tijdens het maken van een synchro
 > - De gegevens tussen de hub en het lid kunnen verloren gaan, zelfs al wordt er door synchronisatie geen problemen gerapporteerd.
 > - De synchronisatie kan mislukken omdat de tracerings tabel een niet-bestaande rij van de bron bevat, omdat de primaire sleutel is gewijzigd.
 
-- De snapshot-isolatie moet ingeschakeld zijn. Voor meer informatie zie [Snapshot-isolatie in SQL Server](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server).
+- Snap shot-isolatie moet zijn ingeschakeld voor synchronisatie leden en-hub. Voor meer informatie zie [Snapshot-isolatie in SQL Server](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server).
 
 ### <a name="general-limitations"></a>Algemene beperkingen
 
@@ -137,7 +137,7 @@ Het inrichten en verwijderen van de inrichting tijdens het maken van een synchro
 - De namen van objecten (data bases, tabellen en kolommen) mogen niet de periode van het afdruk bare teken (.), het linker vier Kante haakje ([) of de rechter rechte haak (]) bevatten.
 - Azure Active Directory-verificatie wordt niet ondersteund.
 - Tabellen met dezelfde naam maar een ander schema (bijvoorbeeld dbo. klanten en Sales. klanten) worden niet ondersteund.
-- Kolommen met door de gebruiker gedefinieerde gegevens typen worden niet ondersteund
+- Kolommen met User-Defined gegevens typen worden niet ondersteund
 - Het verplaatsen van servers tussen verschillende abonnementen wordt niet ondersteund. 
 
 #### <a name="unsupported-data-types"></a>Niet-ondersteunde gegevens typen
@@ -224,7 +224,7 @@ Zie [een Data Base kopiëren in Azure SQL database](database-copy.md)voor een aa
 ### <a name="can-data-sync-sync-encrypted-tables-and-columns"></a>Kan gegevens synchronisatie versleutelde tabellen en kolommen synchroniseren
 
 - Als een Data Base gebruikmaakt van Always Encrypted, kunt u alleen de tabellen en kolommen synchroniseren die *niet* zijn versleuteld. U kunt de versleutelde kolommen niet synchroniseren omdat gegevens synchronisatie de gegevens niet kan ontsleutelen.
-- Als een kolom gebruikmaakt van versleuteling op kolom niveau (CLE), kunt u de kolom synchroniseren, mits de Rijgrootte kleiner is dan de maximale grootte van 24 MB. Gegevens synchronisatie behandelt de kolom die is versleuteld met de sleutel (CLE) als normale binaire gegevens. Als u de gegevens op andere synchronisatie leden wilt ontsleutelen, moet u hetzelfde certificaat hebben.
+- Als een kolom gebruikmaakt van Column-Level Encryption (CLE), kunt u de kolom synchroniseren, mits de Rijgrootte kleiner is dan de maximale grootte van 24 MB. Gegevens synchronisatie behandelt de kolom die is versleuteld met de sleutel (CLE) als normale binaire gegevens. Als u de gegevens op andere synchronisatie leden wilt ontsleutelen, moet u hetzelfde certificaat hebben.
 
 ### <a name="is-collation-supported-in-sql-data-sync"></a>Wordt gesorteerd ondersteund in SQL Data Sync
 
@@ -261,6 +261,6 @@ Wordt SQL Data Sync als verwachting uitgevoerd? Raadpleeg de volgende artikelen 
 
 Raadpleeg de volgende artikelen voor meer informatie over Azure SQL Database:
 
-- [Overzicht van SQL Database](sql-database-paas-overview.md)
+- [Wat is de Azure SQL Database-service?](sql-database-paas-overview.md)
 - [Database Lifecycle Management (DLM)](https://msdn.microsoft.com/library/jj907294.aspx)
  

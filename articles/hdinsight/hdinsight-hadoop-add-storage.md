@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: 23e7b0f8dcb0c64259627d5350511ebdc48d6fac
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 73b5966bf90d2829456401a25cc5b8ea001397d4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078975"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856225"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>Extra opslag accounts toevoegen aan HDInsight
 
-Meer informatie over het gebruik van script acties om extra Azure Storage *accounts* toe te voegen aan HDInsight. Met de stappen in dit document voegt u een opslag *account* toe aan een bestaand HDInsight-cluster. Dit artikel is van toepassing op opslag *accounts* (niet op het standaard cluster-opslag account) en niet op extra opslag, zoals [`Azure Data Lake Storage Gen1`](hdinsight-hadoop-use-data-lake-store.md) en [`Azure Data Lake Storage Gen2`](hdinsight-hadoop-use-data-lake-storage-gen2.md) .
+Meer informatie over het gebruik van script acties om extra Azure Storage *accounts* toe te voegen aan HDInsight. Met de stappen in dit document voegt u een opslag *account* toe aan een bestaand HDInsight-cluster. Dit artikel is van toepassing op opslag *accounts* (niet op het standaard cluster-opslag account) en niet op extra opslag, zoals [`Azure Data Lake Storage Gen1`](hdinsight-hadoop-use-data-lake-storage-gen1.md) en [`Azure Data Lake Storage Gen2`](hdinsight-hadoop-use-data-lake-storage-gen2.md) .
 
 > [!IMPORTANT]  
 > De informatie in dit document is over het toevoegen van extra opslag accounts aan een cluster nadat het is gemaakt. Voor informatie over het toevoegen van opslag accounts tijdens het maken van een cluster, raadpleegt [u clusters in HDInsight instellen met Apache Hadoop, Apache Spark, Apache Kafka en meer](hdinsight-hadoop-provision-linux-clusters.md).
@@ -52,11 +52,11 @@ Gebruik [script actie](hdinsight-hadoop-customize-cluster-linux.md#script-action
 |Eigenschap | Waarde |
 |---|---|
 |Bash-script-URI|`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`|
-|Knooppunt type (n)|Head|
+|Knooppunttype(n)|Head|
 |Parameters|`ACCOUNTNAME``ACCOUNTKEY` `-p` (optioneel)|
 
-* `ACCOUNTNAME`is de naam van het opslag account dat aan het HDInsight-cluster moet worden toegevoegd.
-* `ACCOUNTKEY`is de toegangs sleutel voor `ACCOUNTNAME` .
+* `ACCOUNTNAME` is de naam van het opslag account dat aan het HDInsight-cluster moet worden toegevoegd.
+* `ACCOUNTKEY` is de toegangs sleutel voor `ACCOUNTNAME` .
 * `-p` is optioneel. Als deze is opgegeven, wordt de sleutel niet versleuteld en wordt deze in het core-site.xml bestand opgeslagen als tekst zonder opmaak.
 
 ## <a name="verification"></a>Verificatie
@@ -95,7 +95,7 @@ foreach ($name in $value ) { $name.Name.Split(".")[4]}
 
 ### <a name="apache-ambari"></a>Apache Ambari
 
-1. Ga in een webbrowser naar `https://CLUSTERNAME.azurehdinsight.net` , waarbij `CLUSTERNAME` de naam van het cluster is.
+1. Navigeer in een webbrowser naar `https://CLUSTERNAME.azurehdinsight.net`, waarbij `CLUSTERNAME` de naam van uw cluster is.
 
 1. Navigeer naar **HDFS**  >  **configs**  >  **Geavanceerde**  >  **aangepaste kern-site**.
 
@@ -105,7 +105,7 @@ foreach ($name in $value ) { $name.Name.Split(".")[4]}
 
 ## <a name="remove-storage-account"></a>Opslag account verwijderen
 
-1. Ga in een webbrowser naar `https://CLUSTERNAME.azurehdinsight.net` , waarbij `CLUSTERNAME` de naam van het cluster is.
+1. Navigeer in een webbrowser naar `https://CLUSTERNAME.azurehdinsight.net`, waarbij `CLUSTERNAME` de naam van uw cluster is.
 
 1. Navigeer naar **HDFS**  >  **configs**  >  **Geavanceerde**  >  **aangepaste kern-site**.
 

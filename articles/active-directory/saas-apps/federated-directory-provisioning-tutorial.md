@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/12/2019
 ms.author: zhchia
-ms.openlocfilehash: 336c1e78143c09e07b8f05c3dbd10ca647844242
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5596dfab98f6826cd61241441a9ddade72e36674
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319942"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91851268"
 ---
 # <a name="tutorial-configure-federated-directory-for-automatic-user-provisioning"></a>Zelf studie: federatieve mappen configureren voor automatische gebruikers inrichting
 
@@ -45,7 +45,7 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
  ## <a name="important-tips-for-assigning-users-to-federated-directory"></a>Belang rijke tips voor het toewijzen van gebruikers aan federatieve mappen
  * U wordt aangeraden één Azure AD-gebruiker aan federatieve Directory toe te wijzen om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
 
-* Wanneer u een gebruiker aan een federatieve Directory toewijst, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol Standaard toegang worden uitgesloten van het inrichten.
+* Wanneer u een gebruiker aan een federatieve Directory toewijst, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol Standaardtoegang worden uitgesloten van het inrichten.
     
  ## <a name="set-up-federated-directory-for-provisioning"></a>Federatieve Directory instellen voor inrichting
 
@@ -53,24 +53,24 @@ Voordat u de federatieve Directory configureert voor het automatisch inrichten v
 
 1. Meld u aan bij uw [federatieve Directory-beheer console](https://federated.directory/of)
 
-    ![Zelf studie voor federatieve mappen](media/federated-directory-provisioning-tutorial/companyname.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/companyname.png" alt-text="Scherm afbeelding van de federatieve Directory-beheer console met een veld voor het invoeren van een bedrijfs naam. Er zijn ook aanmeld knoppen zichtbaar." border="false":::
 
 2. Navigeer naar **directory's > gebruikers directory's** en selecteer uw Tenant. 
 
-    ![Federatieve Directory](media/federated-directory-provisioning-tutorial/ad-user-directories.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/ad-user-directories.png" alt-text="Scherm afbeelding van de federatieve Directory-beheer console met een veld voor het invoeren van een bedrijfs naam. Er zijn ook aanmeld knoppen zichtbaar." border="false":::
 
 3.  Als u een permanente Bearer-token wilt genereren, navigeert u naar **Directory sleutels > nieuwe sleutel maken.** 
 
-    ![Federatieve Directory](media/federated-directory-provisioning-tutorial/federated01.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/federated01.png" alt-text="Scherm afbeelding van de federatieve Directory-beheer console met een veld voor het invoeren van een bedrijfs naam. Er zijn ook aanmeld knoppen zichtbaar." border="false":::
 
 4. Een directory sleutel maken. 
 
-    ![Federatieve Directory](media/federated-directory-provisioning-tutorial/federated02.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/federated02.png" alt-text="Scherm afbeelding van de federatieve Directory-beheer console met een veld voor het invoeren van een bedrijfs naam. Er zijn ook aanmeld knoppen zichtbaar." border="false":::
     
 
 5. Kopieer de waarde van het **toegangs token** . Deze waarde wordt ingevoerd in het veld **geheime token** op het tabblad inrichten van uw federatieve Directory-toepassing in de Azure Portal. 
 
-    ![Federatieve Directory](media/federated-directory-provisioning-tutorial/federated03.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/federated03.png" alt-text="Scherm afbeelding van de federatieve Directory-beheer console met een veld voor het invoeren van een bedrijfs naam. Er zijn ook aanmeld knoppen zichtbaar." border="false":::
     
 ## <a name="add-federated-directory-from-the-gallery"></a>Federatieve Directory toevoegen vanuit de galerie
 
@@ -96,15 +96,15 @@ Als u de federatieve Directory wilt configureren voor het automatisch inrichten 
 
 5. Navigeer naar de hieronder gemarkeerde **URL** in een afzonderlijke browser. 
 
-    ![Federatieve Directory](media/federated-directory-provisioning-tutorial/loginpage1.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/loginpage1.png" alt-text="Scherm afbeelding van de federatieve Directory-beheer console met een veld voor het invoeren van een bedrijfs naam. Er zijn ook aanmeld knoppen zichtbaar." border="false":::
 
 6. Klik op **Aanmelden**.
 
-    ![Federatieve Directory](media/federated-directory-provisioning-tutorial/federated04.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/federated04.png" alt-text="Scherm afbeelding van de federatieve Directory-beheer console met een veld voor het invoeren van een bedrijfs naam. Er zijn ook aanmeld knoppen zichtbaar." border="false":::
 
 7.  Als federatieve Directory is een OpenIDConnect-app, kiest u zich aanmelden bij federatieve Directory met uw micro soft-werk account.
     
-    ![Federatieve Directory](media/federated-directory-provisioning-tutorial/loginpage3.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/loginpage3.png" alt-text="Scherm afbeelding van de federatieve Directory-beheer console met een veld voor het invoeren van een bedrijfs naam. Er zijn ook aanmeld knoppen zichtbaar." border="false":::
  
 8. Accepteer na een geslaagde verificatie de toestemming prompt voor de pagina toestemming. De toepassing wordt vervolgens automatisch toegevoegd aan uw Tenant en u wordt doorgestuurd naar uw federatieve Directory-account.
 
@@ -146,12 +146,12 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 10. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory gebruikers synchroniseren met federatieve Directory**.
 
-    ![Zelf studie voor federatieve mappen](media/federated-directory-provisioning-tutorial/user-mappings.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/user-mappings.png" alt-text="Scherm afbeelding van de federatieve Directory-beheer console met een veld voor het invoeren van een bedrijfs naam. Er zijn ook aanmeld knoppen zichtbaar." border="false":::
     
     
 11. Controleer de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar federatieve Directory in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen, worden gebruikt voor het vergelijken van de gebruikers accounts in de federatieve Directory voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
 
-    ![Zelf studie voor federatieve mappen](media/federated-directory-provisioning-tutorial/user-attributes.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/user-attributes.png" alt-text="Scherm afbeelding van de federatieve Directory-beheer console met een veld voor het invoeren van een bedrijfs naam. Er zijn ook aanmeld knoppen zichtbaar." border="false":::
     
 
 12. Als u bereikfilters wilt configureren, raadpleegt u de volgende instructies in de [zelfstudie Bereikfilter](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).

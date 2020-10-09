@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: b669ef7856628f7e5d698edf674eee0b84845295
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9163c64370e0718d6b9acf37bb7a9fc28c936948
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323512"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91851149"
 ---
 # <a name="tutorial-configure-druva-for-automatic-user-provisioning"></a>Zelf studie: Druva configureren voor automatische gebruikers inrichting
 
@@ -46,7 +46,7 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
 
 * U wordt aangeraden één Azure AD-gebruiker toe te wijzen aan Druva om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
 
-* Wanneer u een gebruiker toewijst aan Druva, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **Standaard toegang** worden uitgesloten van het inrichten.
+* Wanneer u een gebruiker toewijst aan Druva, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **Standaardtoegang** worden uitgesloten van het inrichten.
 
 ## <a name="setup-druva-for-provisioning"></a>Druva instellen voor inrichting
 
@@ -58,15 +58,15 @@ Voordat u Druva configureert voor het automatisch inrichten van gebruikers met A
 
 2. Ga naar **Manage**  >  **implementaties**  >  **gebruikers**beheren.
 
-    ![SCIM Druva toevoegen](media/druva-provisioning-tutorial/manage.png)
+    :::image type="content" source="media/druva-provisioning-tutorial/manage.png" alt-text="Scherm opname van de Druva-beheer console. Beheren is gemarkeerd en het menu beheren is zichtbaar. In dat menu, onder implementaties, wordt gebruikers gemarkeerd." border="false":::
 
 3.  Navigeer naar **instellingen**. Klik op **token genereren**.
 
-    ![SCIM Druva toevoegen](media/druva-provisioning-tutorial/settings.png)
+    :::image type="content" source="media/druva-provisioning-tutorial/settings.png" alt-text="Scherm opname van de Druva-beheer console. Beheren is gemarkeerd en het menu beheren is zichtbaar. In dat menu, onder implementaties, wordt gebruikers gemarkeerd." border="false":::
 
 4.  Kopieer de waarde van het **auth-token** . Deze waarde wordt ingevoerd in het veld **geheime token** op het tabblad inrichten van uw Druva-toepassing in de Azure Portal.
     
-    ![SCIM Druva toevoegen](media/druva-provisioning-tutorial/auth.png)
+    :::image type="content" source="media/druva-provisioning-tutorial/auth.png" alt-text="Scherm opname van de Druva-beheer console. Beheren is gemarkeerd en het menu beheren is zichtbaar. In dat menu, onder implementaties, wordt gebruikers gemarkeerd." border="false":::
 
 ## <a name="add-druva-from-the-gallery"></a>Druva toevoegen vanuit de galerie
 

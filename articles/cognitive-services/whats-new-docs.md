@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
 ms.date: 10/02/2020
-ms.openlocfilehash: 73a097907a5b44c77ba5e1a9ead4cb4e3a8077c6
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 17d887f0834733fdc833bbbad66c957b057a588a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91777745"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91857806"
 ---
 # <a name="cognitive-services-docs-whats-new-for-september-1-2020---september-30-2020"></a>Cognitive Services documenten: wat is er nieuw voor 1 september 2020-30 september 2020
 
@@ -22,7 +22,7 @@ Welkom bij wat er nieuw is in de Cognitive Services docs van 1 september 2020 to
 
 ### <a name="updated-articles"></a>Bijgewerkte artikelen
 
-- [Snelstartgids: een Cognitive Services-resource maken met behulp van de Azure-opdracht regel interface (CLI)](cognitive-services-apis-create-account-cli.md)
+- [Snelstartgids: een Cognitive Services resource maken met behulp van de Azure Command-Line interface (CLI)](cognitive-services-apis-create-account-cli.md)
 - [Quickstart: Een Cognitive Services-resource maken met behulp van de Azure Management-clientbibliotheek](cognitive-services-apis-create-account-client-library.md)
 - [Snelstartgids: een Cognitive Services resource maken met behulp van de Azure Portal](cognitive-services-apis-create-account.md)
 - [Quickstart: Een Cognitive Services-resource maken met behulp van een ARM-sjabloon](create-account-resource-manager-template.md)
@@ -65,7 +65,7 @@ Welkom bij wat er nieuw is in de Cognitive Services docs van 1 september 2020 to
 
 ### <a name="updated-articles"></a>Bijgewerkte artikelen
 
-- [Taal ondersteuning voor insluitende lezer](/azure/cognitive-services/immersive-reader/language-support.md)
+- [Taalondersteuning voor Insluitende lezer](/azure/cognitive-services/immersive-reader/language-support.md)
 - [Naslag informatie voor de Inge sloten Reader java script SDK (v 1.1)](/azure/cognitive-services/immersive-reader/reference.md)
 - [Quickstart: Aan de slag met Insluitende lezer](/azure/cognitive-services/immersive-reader/quickstarts/client-libraries.md)
 - [Zelfstudie: De Insluitende lezer starten met behulp van het Python-voorbeeldproject](/azure/cognitive-services/immersive-reader/tutorial-python.md)
@@ -80,7 +80,7 @@ Welkom bij wat er nieuw is in de Cognitive Services docs van 1 september 2020 to
 - [Quickstart: De REST API's gebruiken om uw oplossing aan te passen](/azure/cognitive-services/metrics-advisor/quickstarts/rest-api.md)
 - [Instructies: waarschuwingen configureren en meldingen ontvangen met behulp van een hook](/azure/cognitive-services/metrics-advisor/how-tos/alerts.md)
 
-## <a name="text-analytics"></a>Text Analytics
+## <a name="text-analytics"></a>Tekstanalyse
 
 ### <a name="updated-articles"></a>Bijgewerkte artikelen
 
@@ -99,3 +99,5 @@ De volgende mensen hebben tijdens deze periode bijgedragen aan de Cognitive Serv
 - [iAmBipinPaul](https://github.com/iAmBipinPaul) -bipin Paul (1)
 - [rexwan](https://github.com/rexwan) -Rex Wang (1)
 - [rglidden](https://github.com/rglidden) -Richard Glidden (1)
+
+[!INCLUDE [Service specific updates](./includes/service-specific-updates.md)]

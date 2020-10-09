@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 04/29/2020
-ms.openlocfilehash: 55ffd563ea0a99d32608bd90bd53d7dc88eb4cf2
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: c8862398d5c79335e4ed59f4ca42df9abd58965e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85961809"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856582"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informatie over het gebruik van HDInsight in Linux
 
@@ -24,7 +24,7 @@ Azure HDInsight-clusters bieden Apache Hadoop in een vertrouwde Linux-omgeving, 
 Veel van de stappen in dit document gebruiken de volgende hulpprogram ma's, die mogelijk op uw systeem moeten worden geïnstalleerd.
 
 * [krul](https://curl.haxx.se/) : wordt gebruikt voor communicatie met op internet gebaseerde services.
-* **JQ**, een JSON-processor op de opdracht regel.  Zie [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/) .
+* **JQ**, een JSON-processor op de opdracht regel.  Zie [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/).
 * [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli) : wordt gebruikt voor het extern beheren van Azure-Services.
 * **Een SSH-client**. Zie voor meer informatie [Verbinding maken met HDInsight (Apache Hadoop) via SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -101,15 +101,15 @@ Voor beelden van gegevens-en JAR-bestanden vindt u op Hadoop Distributed File Sy
 
 In de meeste Hadoop-distributies worden de gegevens opgeslagen in HDFS. HDFS wordt ondersteund door de lokale opslag op de computers in het cluster. Het gebruik van lokale opslag kan kostenbesparend zijn voor een Cloud oplossing waarbij u per uur of per minuut voor reken resources in rekening wordt gebracht.
 
-Wanneer u HDInsight gebruikt, worden de gegevens bestanden opgeslagen in een aanpas bare en robuuste manier in de Cloud met behulp van Azure Blob Storage en optioneel Azure Data Lake Storage. Deze services bieden de volgende voor delen:
+Wanneer u HDInsight gebruikt, worden de gegevens bestanden opgeslagen in een aanpas bare en robuuste manier in de Cloud met behulp van Azure Blob Storage en optioneel Azure Data Lake Storage Gen1/Gen2. Deze services bieden de volgende voor delen:
 
 * Lange termijn voor goedkope opslag.
 * Toegankelijkheid van externe services, zoals websites, hulpprogram ma's voor het uploaden/downloaden van bestanden, diverse taal-Sdk's en webbrowsers.
 * Grote bestands capaciteit en grote aanpas bare opslag.
 
-Zie [Wat zijn Blobs](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) en [Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)? voor meer informatie.
+Zie [Azure Blob Storage](../storage/common/storage-introduction.md), [Azure data Lake Storage gen1](../data-lake-store/data-lake-store-overview.md)of [Azure data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)voor meer informatie.
 
-Wanneer u Azure Storage of Data Lake Storage gebruikt, hoeft u niets te doen van HDInsight om toegang te krijgen tot de gegevens. Met de volgende opdracht worden bijvoorbeeld bestanden in de map weer gegeven, `/example/data` ongeacht of deze zijn opgeslagen op Azure Storage of Data Lake Storage:
+Wanneer u Azure Blob-opslag of Data Lake Storage Gen1-Gen2 gebruikt, hoeft u niets te doen van HDInsight om toegang te krijgen tot de gegevens. Met de volgende opdracht worden bijvoorbeeld bestanden in de map weer gegeven, `/example/data` ongeacht of deze zijn opgeslagen op Azure Storage of Data Lake Storage:
 
 ```console
 hdfs dfs -ls /example/data
@@ -135,7 +135,7 @@ Gebruik het volgende URI-schema wanneer u [**Azure data Lake Storage Gen2**](./h
 
 * `abfs://<container-name>@<account-name>.dfs.core.windows.net/`: Wordt gebruikt bij het communiceren met een niet-standaard-opslag account. Bijvoorbeeld wanneer u een extra opslag account hebt of gegevens die zijn opgeslagen in een openbaar toegankelijk opslag account.
 
-Gebruik een van de volgende URI-schema's wanneer u [**Azure data Lake Storage gen1**](./hdinsight-hadoop-use-data-lake-store.md)gebruikt:
+Gebruik een van de volgende URI-schema's wanneer u [**Azure data Lake Storage gen1**](../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen1.md)gebruikt:
 
 * `adl:///`: Toegang tot de standaard Data Lake Storage voor het cluster.
 
@@ -159,11 +159,11 @@ curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTER
 
 Met deze opdracht wordt een waarde geretourneerd die vergelijkbaar is met de volgende Uri's:
 
-* `wasb://<container-name>@<account-name>.blob.core.windows.net`Als u een Azure Storage-account gebruikt.
+* `wasb://<container-name>@<account-name>.blob.core.windows.net` Als u een Azure Storage-account gebruikt.
 
     De account naam is de naam van het Azure Storage-account. De container naam is de BLOB-container die de hoofdmap van de cluster opslag vormt.
 
-* `adl://home`Als Azure Data Lake Storage wordt gebruikt. Als u de naam van de Data Lake Storage wilt ophalen, gebruikt u de volgende REST-aanroep:
+* `adl://home` Als Azure Data Lake Storage wordt gebruikt. Als u de naam van de Data Lake Storage wilt ophalen, gebruikt u de volgende REST-aanroep:
 
      ```bash
     curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["dfs.adls.home.hostname"] | select(. != null)'
@@ -189,9 +189,9 @@ U kunt de opslag informatie ook vinden met behulp van de Azure Portal door de vo
 
 Er zijn verschillende manieren om toegang te krijgen tot gegevens van buiten het HDInsight-cluster. Hier volgen enkele koppelingen naar hulpprogram ma's en Sdk's die kunnen worden gebruikt voor het werken met uw gegevens:
 
-Als u __Azure Storage__gebruikt, raadpleegt u de volgende koppelingen voor manieren waarop u toegang hebt tot uw gegevens:
+Als u __Azure Blob Storage__gebruikt, raadpleegt u de volgende koppelingen voor manieren waarop u toegang hebt tot uw gegevens:
 
-* [Azure cli](https://docs.microsoft.com/cli/azure/install-az-cli2): opdracht regel interface opdrachten voor het werken met Azure. Na de installatie gebruikt u de `az storage` opdracht voor hulp bij het gebruik van opslag of `az storage blob` voor BLOB-specifieke opdrachten.
+* [Azure cli](https://docs.microsoft.com/cli/azure/install-az-cli2): Command-Line interface opdrachten voor het werken met Azure. Na de installatie gebruikt u de `az storage` opdracht voor hulp bij het gebruik van opslag of `az storage blob` voor BLOB-specifieke opdrachten.
 * [blobxfer.py](https://github.com/Azure/blobxfer): een python-script voor het werken met blobs in azure Storage.
 * Diverse Sdk's:
 
@@ -203,7 +203,7 @@ Als u __Azure Storage__gebruikt, raadpleegt u de volgende koppelingen voor manie
     * [.NET](https://github.com/Azure/azure-sdk-for-net)
     * [Storage REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx)
 
-Als u __Azure data Lake Storage__gebruikt, raadpleegt u de volgende koppelingen voor manieren waarop u toegang hebt tot uw gegevens:
+Als u __Azure data Lake Storage gen1__gebruikt, raadpleegt u de volgende koppelingen voor manieren waarop u toegang hebt tot uw gegevens:
 
 * [Webbrowser](../data-lake-store/data-lake-store-get-started-portal.md)
 * [PowerShell](../data-lake-store/data-lake-store-get-started-powershell.md)

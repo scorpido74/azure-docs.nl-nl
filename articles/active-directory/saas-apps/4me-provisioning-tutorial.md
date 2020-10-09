@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 06/3/2019
 ms.author: jeedes
-ms.openlocfilehash: a6dc9aa70c55a0ed511a73570274c68708988451
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8350ebc92575911991ca772229912941f2af10e0
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331230"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91851285"
 ---
 # <a name="tutorial-configure-4me-for-automatic-user-provisioning"></a>Zelf studie: 4me configureren voor automatische gebruikers inrichting
 
@@ -69,7 +69,7 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
 
 * U wordt aangeraden één Azure AD-gebruiker toe te wijzen aan 4me om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
 
-* Wanneer u een gebruiker toewijst aan 4me, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **Standaard toegang** worden uitgesloten van het inrichten.
+* Wanneer u een gebruiker toewijst aan 4me, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **Standaardtoegang** worden uitgesloten van het inrichten.
 
 ## <a name="configuring-automatic-user-provisioning-to-4me"></a>Automatische gebruikers inrichting configureren voor 4me 
 
@@ -122,15 +122,15 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 10. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory gebruikers synchroniseren met 4me**.
 
-    ![4me-gebruikers toewijzingen](media/4me-provisioning-tutorial/4me-user-mapping.png)
+    :::image type="content" source="media/4me-provisioning-tutorial/4me-user-mapping.png" alt-text="Scherm afbeelding van de pagina toewijzingen. Synchroniseer onder naam Azure Active Directory gebruikers synchroniseren met FourMe is gemarkeerd." border="false":::
     
 11. Controleer de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar 4me in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in 4me voor bijwerk bewerkingen. Zorg ervoor dat [4me filters ondersteunt](https://developer.4me.com/v1/scim/users/) voor het overeenkomende kenmerk dat u hebt gekozen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
 
-    ![4me-gebruikers toewijzingen](media/4me-provisioning-tutorial/4me-user-attributes.png)
+    :::image type="content" source="media/4me-provisioning-tutorial/4me-user-attributes.png" alt-text="Scherm afbeelding van de pagina toewijzingen. Synchroniseer onder naam Azure Active Directory gebruikers synchroniseren met FourMe is gemarkeerd." border="false":::
     
 12. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory groepen synchroniseren met 4me**.
 
-    ![4me-gebruikers toewijzingen](media/4me-provisioning-tutorial/4me-group-mapping.png)
+    :::image type="content" source="media/4me-provisioning-tutorial/4me-group-mapping.png" alt-text="Scherm afbeelding van de pagina toewijzingen. Synchroniseer onder naam Azure Active Directory gebruikers synchroniseren met FourMe is gemarkeerd." border="false":::
     
 13. Controleer de groeps kenmerken die zijn gesynchroniseerd vanuit Azure AD naar 4me in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen, worden gebruikt om de groepen in 4me te vergelijken voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
 
