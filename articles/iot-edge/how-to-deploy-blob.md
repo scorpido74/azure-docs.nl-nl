@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 ms.reviewer: arduppal
 ms.openlocfilehash: da163e902d06bd98ac47a24256cb809cb222173b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80804619"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>De Azure Blob Storage op de IoT Edge-module implementeren naar uw apparaat
@@ -30,7 +30,7 @@ De Azure Portal begeleidt u bij het maken van een implementatie manifest en het 
 
 ### <a name="select-your-device"></a>Uw apparaat selecteren
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) en navigeer naar uw IOT-hub.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com) en ga naar uw IoT Hub.
 1. Selecteer **IOT Edge** in het menu.
 1. Klik op de ID van het doel apparaat in de lijst met apparaten.
 1. Selecteer **modules instellen**.
@@ -47,12 +47,12 @@ Een implementatie manifest is een JSON-document waarin wordt beschreven welke mo
 
    Voorbeelden:
   
-   - **Module naam IOT Edge**:`azureblobstorageoniotedge`
-   - **Afbeeldings-URI**:`mcr.microsoft.com/azure-blob-storage:latest`
+   - **Module naam IOT Edge**: `azureblobstorageoniotedge`
+   - **Afbeeldings-URI**: `mcr.microsoft.com/azure-blob-storage:latest`
 
    ![Dubbele instellingen voor module](./media/how-to-deploy-blob/addmodule-tab1.png)
 
-   Selecteer **toevoegen** totdat u waarden hebt opgegeven op de tabbladen **module-instellingen**, **container maken**en **module dubbele instellingen** , zoals beschreven in deze procedure.
+   Selecteer **toevoegen** totdat u waarden hebt opgegeven op de tabbladen **module-instellingen**, **container maken**en  **module dubbele instellingen** , zoals beschreven in deze procedure.
 
    > [!IMPORTANT]
    > Azure IoT Edge is hoofdletter gevoelig wanneer u aanroepen naar modules uitvoert en de opslag-SDK is standaard ingesteld op kleine letters. Hoewel de naam van de module in [Azure Marketplace](how-to-deploy-modules-portal.md#deploy-modules-from-azure-marketplace) **AzureBlobStorageonIoTEdge**is, is het wijzigen van de naam in kleine letters handig om ervoor te zorgen dat uw verbindingen met de Azure Blob Storage op IOT Edge module niet worden onderbroken.
@@ -240,7 +240,7 @@ Azure IoT Edge biedt sjablonen in Visual Studio code om u te helpen bij het ontw
 
    Voor informatie over het configureren van deviceToCloudUploadProperties en deviceAutoDeleteProperties nadat de module is geïmplementeerd, raadpleegt u [de module twee bewerken](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Edit-Module-Twin). Zie [EdgeAgent gewenste eigenschappen](module-edgeagent-edgehub.md#edgeagent-desired-properties)voor meer informatie over de opties voor het maken van containers, het opnieuw opstarten van beleid en de gewenste status.
 
-1. Sla de *deployment.template.jsop in* het bestand.
+1. Sla het bestand *deployment.template.json* op.
 
 1. Klik met de rechter muisknop op **deployment.template.js** en selecteer **IOT Edge implementatie manifest genereren**.
 

@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 50a9d5e3d3bbb608160ee160c5f1aede8f70e530
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85262664"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>Azure Cosmos-sleutels beveiligen met Azure Key Vault 
@@ -70,11 +70,11 @@ De volgende stappen zijn vereist om Azure Cosmos DB toegangs sleutels op te slaa
 
 5. Zodra de toepassing is geïmplementeerd. Ga vanuit het Azure Portal naar de web-app die u hebt geïmplementeerd en schakel de **beheerde service-identiteit** van deze toepassing in.  
 
-   :::image type="content" source="./media/access-secrets-from-keyvault/turn-on-managed-service-identity.png" alt-text="Beheerde service-identiteit":::
+   :::image type="content" source="./media/access-secrets-from-keyvault/turn-on-managed-service-identity.png" alt-text="Een geheim maken":::
 
 Als u de toepassing nu wilt uitvoeren, wordt de volgende fout weer gegeven, omdat u geen machtiging hebt gekregen voor deze toepassing in Key Vault.
 
-:::image type="content" source="./media/access-secrets-from-keyvault/app-deployed-without-access.png" alt-text="App geïmplementeerd zonder toegang":::
+:::image type="content" source="./media/access-secrets-from-keyvault/app-deployed-without-access.png" alt-text="Een geheim maken":::
 
 ## <a name="register-the-application--grant-permissions-to-read-the-key-vault"></a>De toepassing registreren & machtigingen verlenen om de Key Vault te lezen
 
@@ -84,11 +84,11 @@ In deze sectie registreert u de toepassing met Azure Active Directory en geeft u
 
 2. Open **toegangs beleid**, selecteer **+ nieuwe** zoeken de web-app die u hebt geïmplementeerd, selecteer machtigingen en selecteer **OK**.  
 
-   :::image type="content" source="./media/access-secrets-from-keyvault/add-access-policy.png" alt-text="Toegangs beleid toevoegen":::
+   :::image type="content" source="./media/access-secrets-from-keyvault/add-access-policy.png" alt-text="Een geheim maken":::
 
 Als u de toepassing nu uitvoert, kunt u het geheim lezen van Key Vault.
 
-:::image type="content" source="./media/access-secrets-from-keyvault/app-deployed-with-access.png" alt-text="App geïmplementeerd met geheim":::
+:::image type="content" source="./media/access-secrets-from-keyvault/app-deployed-with-access.png" alt-text="Een geheim maken":::
  
 Op dezelfde manier kunt u een gebruiker toevoegen voor toegang tot de sleutel kluis. U moet uzelf toevoegen aan de Key Vault door **toegangs beleid** te selecteren en vervolgens alle machtigingen te verlenen die u nodig hebt om de toepassing uit te voeren vanuit Visual Studio. Wanneer deze toepassing wordt uitgevoerd vanaf uw bureau blad, neemt u uw identiteit in beslag.
 

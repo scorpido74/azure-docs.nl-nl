@@ -12,10 +12,10 @@ ms.date: 05/06/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.openlocfilehash: 5b70b109f43e80fc3ec68f52aef2dba6823033bb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80882128"
 ---
 # <a name="single-page-application-call-a-web-api"></a>Toepassing met één pagina: een web-API aanroepen
@@ -53,4 +53,4 @@ De MSAL-hoek wrapper maakt gebruik van de HTTP-Interceptor om automatisch toegan
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Naar productie verplaatsen](scenario-spa-production.md)
+> [Verplaatsen naar productie](scenario-spa-production.md)

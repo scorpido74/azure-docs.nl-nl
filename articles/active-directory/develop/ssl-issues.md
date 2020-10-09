@@ -13,10 +13,10 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.custom: aaddev
 ms.openlocfilehash: 1507231c3ab395319d5ce95ec06dbb592c324aa6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80881074"
 ---
 # <a name="how-to-troubleshoot-msal-for-ios-and-macos-tlsssl-issues"></a>Procedure: problemen oplossen met MSAL voor iOS-en macOS TLS/SSL-problemen
@@ -41,7 +41,7 @@ Certificaten die gebruikmaken van SHA-1-hashes, hebben bekende beveiligings prob
 
 ## <a name="captive-portals"></a>Portals
 
-Een in bedrijf zijnde portal geeft een webpagina aan een gebruiker wanneer ze voor het eerst toegang hebben tot een Wi-Fi-netwerk en nog geen toegang tot dat netwerk hebben gekregen. Het Internet verkeer wordt onderschept totdat de gebruiker voldoet aan de vereisten van de portal. Netwerk fouten omdat de gebruiker geen verbinding kan maken met netwerk bronnen, wordt verwacht totdat de gebruiker verbinding maakt via de portal.
+Een in bedrijf zijnde portal geeft een webpagina aan een gebruiker wanneer ze voor het eerst toegang hebben tot een Wi-Fi netwerk en nog geen toegang tot dat netwerk hebben gekregen. Het Internet verkeer wordt onderschept totdat de gebruiker voldoet aan de vereisten van de portal. Netwerk fouten omdat de gebruiker geen verbinding kan maken met netwerk bronnen, wordt verwacht totdat de gebruiker verbinding maakt via de portal.
 
 ## <a name="next-steps"></a>Volgende stappen
 

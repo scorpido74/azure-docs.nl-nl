@@ -9,10 +9,10 @@ ms.date: 11/06/2018
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: d32beb2d799a60cb9c5be061c39e4ec834da8dcf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "66814736"
 ---
 Deze functie is beschikbaar als preview-versie. Als u deze wilt gebruiken, moet u een preview-extensie of-module installeren.
@@ -23,14 +23,14 @@ Voor Azure CLI hebt u de [extensie Event grid](/cli/azure/azure-cli-extensions-l
 
 In [Cloud shell](/azure/cloud-shell/quickstart):
 
-* Als u de extensie eerder hebt geïnstalleerd, werkt u deze bij`az extension update -n eventgrid`
-* Als u de extensie nog niet eerder hebt geïnstalleerd, installeert u deze`az extension add -n eventgrid`
+* Als u de extensie eerder hebt geïnstalleerd, werkt u deze bij `az extension update -n eventgrid`
+* Als u de extensie nog niet eerder hebt geïnstalleerd, installeert u deze `az extension add -n eventgrid`
 
 Voor een lokale installatie:
 
-1. [Installeer de Azure cli](/cli/azure/install-azure-cli). Zorg ervoor dat u de nieuwste versie hebt door te controleren met `az --version` .
-1. Eerdere versies van de uitbrei ding verwijderen`az extension remove -n eventgrid`
-1. Installeer de `eventgrid` extensie met`az extension add -n eventgrid`
+1. [Installeer de Azure CLI](/cli/azure/install-azure-cli). Zorg ervoor dat u de nieuwste versie hebt door te controleren met `az --version` .
+1. Eerdere versies van de uitbrei ding verwijderen `az extension remove -n eventgrid`
+1. Installeer de `eventgrid` extensie met `az extension add -n eventgrid`
 
 ### <a name="install-module-for-powershell"></a>Module voor Power Shell installeren
 
@@ -38,17 +38,17 @@ Voor Power shell hebt u de [module AzureRM. EventGrid](https://www.powershellgal
 
 In [Cloud shell](/azure/cloud-shell/quickstart-powershell):
 
-* De module installeren`Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`
+* De module installeren `Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`
 
 Voor een lokale installatie:
 
 1. Power shell-console openen als Administrator
-1. De module installeren`Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`
+1. De module installeren `Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`
 
 Als de `-AllowPrerelease` para meter niet beschikbaar is, gebruikt u de volgende stappen:
 
-1. Voer `Install-Module PowerShellGet -Force` uit.
-1. Voer `Update-Module PowerShellGet` uit.
+1. `Install-Module PowerShellGet -Force` uitvoeren
+1. `Update-Module PowerShellGet` uitvoeren
 1. De Power shell-console sluiten
 1. Start Power shell als Administrator opnieuw op
-1. De module installeren`Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`
+1. De module installeren `Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`

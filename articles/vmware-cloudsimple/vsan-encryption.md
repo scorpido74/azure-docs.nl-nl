@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 638b60bd3612fa25350ecef0a738fea75c2f53d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77020638"
 ---
 # <a name="configure-vsan-encryption-for-cloudsimple-private-cloud"></a>VSAN-versleuteling configureren voor de Privécloud van CloudSimple
@@ -100,7 +100,7 @@ Ga in vCenter naar **Cluster > configureren** en selecteer **algemene** optie vo
 
 ## <a name="references"></a>Referenties
 
-### <a name="azure"></a>Azure
+### <a name="azure"></a>Azuur
 
 [Een virtuele netwerk gateway configureren voor ExpressRoute met behulp van de Azure Portal](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md)
 

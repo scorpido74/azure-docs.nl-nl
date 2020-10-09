@@ -5,7 +5,7 @@
     - name: Wat is Azure Policy?
       displayName: 'rbac, assign, initiative, parameters, count'
       href: overview.md
-- name: Quickstarts
+- name: Snelstartgidsen
   expanded: true
   items:
     - name: Een beleid toewijzen - Portal

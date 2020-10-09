@@ -4,10 +4,10 @@ description: In dit artikel vindt u instructies voor het maken van een Azure Ser
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: 3c665dad06ca7cf7bba39b5e1a0f748b420ad770
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85337750"
 ---
 # <a name="create-a-service-bus-namespace-using-the-azure-portal"></a>Een Service Bus-naamruimte maken met Azure Portal
@@ -16,7 +16,7 @@ Een naamruimte is een scoping container voor alle berichtenonderdelen. Er kunnen
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-Gefeliciteerd U hebt nu een naamruimte voor Service Bus-berichten gemaakt.
+Gefeliciteerd! U hebt nu een naamruimte voor Service Bus-berichten gemaakt.
 
 ## <a name="next-steps"></a>Volgende stappen
 

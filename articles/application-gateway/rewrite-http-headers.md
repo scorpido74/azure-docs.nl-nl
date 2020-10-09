@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: absha
 ms.openlocfilehash: fb5196f9612cb4ce1f0a49be8b5a76f6703fdab6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85248677"
 ---
 # <a name="rewrite-http-headers-with-application-gateway"></a>HTTP-headers herschrijven met Application Gateway
@@ -60,7 +60,7 @@ Application Gateway gebruikt Server variabelen om nuttige informatie over de ser
 
 Application Gateway ondersteunt deze server variabelen:
 
-| Naam van de variabele | Description                                                  |
+| Naam van de variabele | Beschrijving                                                  |
 | -------------------------- | :----------------------------------------------------------- |
 | add_x_forwarded_for_proxy  | Het veld X-doorgestuurde client aanvraag header met de `client_ip` variabele (Zie de uitleg verderop in deze tabel) in de NOTATIE IP1, IP2, IP3, enzovoort. Als het X-doorgestuurde-veld zich niet in de header van de client aanvraag `add_x_forwarded_for_proxy` bevindt, is de variabele gelijk aan de `$client_ip` variabele. Deze variabele is vooral handig wanneer u de X-doorgestuurde header wilt herschrijven, zodat deze door Application Gateway wordt ingesteld, zodat de header alleen het IP-adres zonder de poort gegevens bevat. |
 | ciphers_supported          | Een lijst met de code ringen die door de client worden ondersteund.          |
@@ -156,7 +156,7 @@ U kunt een HTTP-aanvraag of reactie header evalueren voor de aanwezigheid van ee
 
 ## <a name="limitations"></a>Beperkingen
 
-- Als een antwoord meer dan één header met dezelfde naam heeft en vervolgens de waarde van een van deze headers herschrijft, worden de andere headers in het antwoord verwijderd. Dit kan meestal gebeuren met de set-cookie-header omdat u in een antwoord meer dan één set-cookie-header kunt hebben. Een dergelijk scenario is wanneer u een app service gebruikt met een toepassings gateway en op cookies gebaseerde sessie affiniteit hebt geconfigureerd op de toepassings gateway. In dit geval bevat het antwoord twee set-cookie headers: één die wordt gebruikt door de app service, bijvoorbeeld: `Set-Cookie: ARRAffinity=ba127f1caf6ac822b2347cc18bba0364d699ca1ad44d20e0ec01ea80cda2a735;Path=/;HttpOnly;Domain=sitename.azurewebsites.net` en een andere voor Application Gateway-affiniteit, bijvoorbeeld `Set-Cookie: ApplicationGatewayAffinity=c1a2bd51lfd396387f96bl9cc3d2c516; Path=/` . Het opnieuw schrijven van een van de set-cookie headers in dit scenario kan ertoe leiden dat de andere set-cookie-header van het antwoord wordt verwijderd.
+- Als een antwoord meer dan één header met dezelfde naam heeft en vervolgens de waarde van een van deze headers herschrijft, worden de andere headers in het antwoord verwijderd. Dit kan meestal gebeuren met Set-Cookie-header omdat u in een antwoord meer dan één Set-Cookie header kunt hebben. Een dergelijk scenario is wanneer u een app service gebruikt met een toepassings gateway en op cookies gebaseerde sessie affiniteit hebt geconfigureerd op de toepassings gateway. In dit geval bevat het antwoord twee Set-Cookie headers: één gebruikt door de app service, bijvoorbeeld: `Set-Cookie: ARRAffinity=ba127f1caf6ac822b2347cc18bba0364d699ca1ad44d20e0ec01ea80cda2a735;Path=/;HttpOnly;Domain=sitename.azurewebsites.net` en een andere voor Application Gateway-affiniteit, bijvoorbeeld `Set-Cookie: ApplicationGatewayAffinity=c1a2bd51lfd396387f96bl9cc3d2c516; Path=/` . Het herschrijven van een van de Set-Cookie-headers in dit scenario kan ertoe leiden dat de andere Set-Cookie-header uit het antwoord wordt verwijderd.
 
 - Herschrijven wordt niet ondersteund wanneer de toepassings gateway is geconfigureerd om de aanvragen om te leiden of een aangepaste fout pagina weer te geven.
 
@@ -168,5 +168,5 @@ U kunt een HTTP-aanvraag of reactie header evalueren voor de aanwezigheid van ee
 
 Zie voor meer informatie over het herschrijven van HTTP-headers:
 
-- [HTTP-headers herschrijven met Azure Portal](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers-portal)
+- [HTTP-headers opnieuw schrijven met behulp van de Azure-portal](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers-portal)
 - [HTTP-headers herschrijven met Azure PowerShell](add-http-header-rewrite-rule-powershell.md)

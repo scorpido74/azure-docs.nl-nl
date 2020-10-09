@@ -1,7 +1,7 @@
 ---
 title: Containers configureren-gezicht
 titleSuffix: Azure Cognitive Services
-description: De omgeving voor de runtime van het Opper vlak `docker run` wordt geconfigureerd met de opdracht argumenten. Er zijn zowel vereiste als optionele instellingen.
+description: De omgeving voor de runtime van het Opper vlak wordt geconfigureerd met de `docker run` opdracht argumenten. Er zijn zowel vereiste als optionele instellingen.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 2f608843e27b79d02697df8e2a7f2aba6695e10a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80878422"
 ---
 # <a name="configure-face-docker-containers"></a>Face docker-containers configureren
@@ -27,11 +27,11 @@ De omgeving voor de runtime van het **Opper vlak** wordt geconfigureerd met de `
 [!INCLUDE [Container shared configuration settings table](../../../includes/cognitive-services-containers-configuration-shared-settings-table.md)]
 
 > [!IMPORTANT]
-> De [`ApiKey`](#apikey-configuration-setting)instellingen [`Billing`](#billing-configuration-setting), en [`Eula`](#eula-setting) worden samen gebruikt en u moet geldige waarden opgeven voor alle drie deze. anders kan de container niet worden gestart. Zie [facturering](face-how-to-install-containers.md#billing)voor meer informatie over het gebruik van deze configuratie-instellingen voor het instantiëren van een container.
+> De [`ApiKey`](#apikey-configuration-setting) [`Billing`](#billing-configuration-setting) instellingen, en [`Eula`](#eula-setting) worden samen gebruikt en u moet geldige waarden opgeven voor alle drie deze. anders wordt de container niet gestart. Zie [facturering](face-how-to-install-containers.md#billing)voor meer informatie over het gebruik van deze configuratie-instellingen voor het instantiëren van een container.
 
 ## <a name="apikey-configuration-setting"></a>Configuratie-instelling ApiKey
 
-Met `ApiKey` deze instelling geeft u de Azure-resource sleutel op die wordt gebruikt voor het bijhouden van facturerings gegevens voor de container. U moet een waarde opgeven voor de ApiKey en de waarde moet een geldige sleutel zijn voor de _Cognitive Services_ bron die is opgegeven [`Billing`](#billing-configuration-setting) voor de configuratie-instelling.
+`ApiKey`Met deze instelling geeft u de Azure-resource sleutel op die wordt gebruikt voor het bijhouden van facturerings gegevens voor de container. U moet een waarde opgeven voor de ApiKey en de waarde moet een geldige sleutel zijn voor de _Cognitive Services_ bron die is opgegeven voor de [`Billing`](#billing-configuration-setting) configuratie-instelling.
 
 Deze instelling bevindt zich op de volgende locatie:
 
@@ -43,27 +43,27 @@ Deze instelling bevindt zich op de volgende locatie:
 
 ## <a name="billing-configuration-setting"></a>Instelling facturerings configuratie
 
-Met `Billing` deze instelling geeft u de EINDPUNT-URI op van de _Cognitive Services_ resource op Azure die wordt gebruikt om de facturerings gegevens voor de container te meten. U moet een waarde opgeven voor deze configuratie-instelling en de waarde moet een geldige eindpunt-URI zijn voor een _Cognitive Services_ resource in Azure. De container rapporteert het gebruik ongeveer elke 10 tot 15 minuten.
+Met deze `Billing` instelling geeft u de eindpunt-URI op van de _Cognitive Services_ resource op Azure die wordt gebruikt om de facturerings gegevens voor de container te meten. U moet een waarde opgeven voor deze configuratie-instelling en de waarde moet een geldige eindpunt-URI zijn voor een _Cognitive Services_ resource in Azure. De container rapporteert het gebruik ongeveer elke 10 tot 15 minuten.
 
 Deze instelling bevindt zich op de volgende locatie:
 
-* Azure Portal: **Cognitive Services** overzicht, met het label`Endpoint`
+* Azure Portal: **Cognitive Services** overzicht, met het label `Endpoint`
 
 Vergeet niet om het _gezichts_ routering toe te voegen aan de URI van het eind punt zoals weer gegeven in het voor beeld. 
 
 |Vereist| Naam | Gegevenstype | Beschrijving |
 |--|------|-----------|-------------|
-|Ja| `Billing` | Tekenreeks | URL van het facturerings eindpunt. Zie [vereiste para meters verzamelen](face-how-to-install-containers.md#gathering-required-parameters)voor meer informatie over het verkrijgen van de facturerings-URI. Zie [aangepaste subdomein namen voor Cognitive Services](../cognitive-services-custom-subdomains.md)voor meer informatie en een volledige lijst met regionale eind punten. |
+|Ja| `Billing` | Tekenreeks | URL van het facturerings eindpunt. Zie [vereiste para meters verzamelen](face-how-to-install-containers.md#gathering-required-parameters)voor meer informatie over het verkrijgen van de facturerings-URI. Zie [Aangepaste subdomeinnamen voor Cognitive Services](../cognitive-services-custom-subdomains.md) voor meer informatie en een volledige lijst met regionale eindpunten. |
 
 <!-- specific to face only -->
 
 ## <a name="cloudai-configuration-settings"></a>Configuratie-instellingen voor CloudAI
 
-De configuratie-instellingen in `CloudAI` de sectie bieden specifieke opties die uniek zijn voor uw container. De volgende instellingen en objecten worden ondersteund voor de face-container in `CloudAI` de sectie
+De configuratie-instellingen in de `CloudAI` sectie bieden specifieke opties die uniek zijn voor uw container. De volgende instellingen en objecten worden ondersteund voor de face-container in de `CloudAI` sectie
 
 | Naam | Gegevenstype | Beschrijving |
 |------|-----------|-------------|
-| `Storage` | Object | Het opslag scenario dat wordt gebruikt door de face-container. Zie voor meer informatie over opslag scenario's en bijbehorende instellingen voor `Storage` het object [opslag scenario-instellingen](#storage-scenario-settings) |
+| `Storage` | Object | Het opslag scenario dat wordt gebruikt door de face-container. Zie voor meer informatie over opslag scenario's en bijbehorende instellingen voor het `Storage` object [opslag scenario-instellingen](#storage-scenario-settings) |
 
 ### <a name="storage-scenario-settings"></a>Instellingen voor opslag scenario
 
@@ -72,19 +72,19 @@ Afhankelijk van wat er is opgeslagen, worden de blob-, cache-, meta gegevens-en 
 * Geheugen  
   Alle vier de typen gegevens worden opgeslagen in het geheugen. Ze worden niet gedistribueerd en blijven niet behouden. Als de face-container is gestopt of verwijderd, worden alle gegevens in de opslag voor die container vernietigd.  
   Dit is het standaard opslag scenario voor de face-container.
-* Azure  
+* Azuur  
   De face-container gebruikt Azure Storage en Azure Cosmos DB om deze vier typen gegevens te verdelen over permanente opslag. BLOB-en wachtrij gegevens worden verwerkt door Azure Storage. Meta gegevens en cache gegevens worden verwerkt door Azure Cosmos DB. Als de face-container is gestopt of verwijderd, blijven alle gegevens in de opslag voor die container opgeslagen in Azure Storage en Azure Cosmos DB.  
   Voor de resources die worden gebruikt door het Azure Storage-scenario gelden de volgende aanvullende vereisten
   * De Azure Storage Resource moet het StorageV2-account type gebruiken
   * De Azure Cosmos DB resource moet de Azure Cosmos DB-API voor MongoDB gebruiken
 
-De opslag scenario's en de bijbehorende configuratie-instellingen worden beheerd `Storage` door het-object `CloudAI` , onder de configuratie sectie. De volgende configuratie-instellingen zijn beschikbaar in `Storage` het object:
+De opslag scenario's en de bijbehorende configuratie-instellingen worden beheerd door het `Storage` -object, onder de `CloudAI` configuratie sectie. De volgende configuratie-instellingen zijn beschikbaar in het `Storage` object:
 
 | Naam | Gegevenstype | Beschrijving |
 |------|-----------|-------------|
-| `StorageScenario` | Tekenreeks | Het opslag scenario dat door de container wordt ondersteund. De volgende waarden zijn beschikbaar<br/>`Memory`-Standaard waarde. Container maakt gebruik van niet-permanente, niet-gedistribueerde en in-Memory opslag, voor tijdelijk gebruik met één knoop punt. Als de container wordt gestopt of verwijderd, wordt de opslag voor die container vernietigd.<br/>`Azure`-Container maakt gebruik van Azure-bronnen voor opslag. Als de container wordt gestopt of verwijderd, wordt de opslag voor die container bewaard.|
-| `ConnectionStringOfAzureStorage` | Tekenreeks | De connection string voor de Azure Storage resource die wordt gebruikt door de container.<br/>Deze instelling is alleen van `Azure` toepassing als voor de `StorageScenario` configuratie-instelling is opgegeven. |
-| `ConnectionStringOfCosmosMongo` | Tekenreeks | De MongoDB-connection string voor de Azure Cosmos DB resource die wordt gebruikt door de container.<br/>Deze instelling is alleen van `Azure` toepassing als voor de `StorageScenario` configuratie-instelling is opgegeven. |
+| `StorageScenario` | Tekenreeks | Het opslag scenario dat door de container wordt ondersteund. De volgende waarden zijn beschikbaar<br/>`Memory` -Standaard waarde. Container maakt gebruik van niet-permanente, niet-gedistribueerde en in-Memory opslag, voor tijdelijk gebruik met één knoop punt. Als de container wordt gestopt of verwijderd, wordt de opslag voor die container vernietigd.<br/>`Azure` -Container maakt gebruik van Azure-bronnen voor opslag. Als de container wordt gestopt of verwijderd, wordt de opslag voor die container bewaard.|
+| `ConnectionStringOfAzureStorage` | Tekenreeks | De connection string voor de Azure Storage resource die wordt gebruikt door de container.<br/>Deze instelling is alleen van toepassing als `Azure` voor de `StorageScenario` configuratie-instelling is opgegeven. |
+| `ConnectionStringOfCosmosMongo` | Tekenreeks | De MongoDB-connection string voor de Azure Cosmos DB resource die wordt gebruikt door de container.<br/>Deze instelling is alleen van toepassing als `Azure` voor de `StorageScenario` configuratie-instelling is opgegeven. |
 
 Met de volgende opdracht geeft u bijvoorbeeld het scenario voor Azure Storage op en geeft u voor beelden van verbindings reeksen voor de Azure Storage en Cosmos DB resources die worden gebruikt voor het opslaan van gegevens voor de face-container.
 
@@ -129,22 +129,22 @@ De exacte syntaxis van de locatie voor het koppelen van de host varieert, afhank
 
 ## <a name="example-docker-run-commands"></a>Voor beeld van docker-opdrachten uitvoeren 
 
-De volgende voor beelden gebruiken de configuratie-instellingen om te laten zien hoe u `docker run` -opdrachten schrijft en gebruikt.  Als de container eenmaal wordt uitgevoerd, blijft deze actief totdat u deze [stopt](face-how-to-install-containers.md#stop-the-container) .
+De volgende voor beelden gebruiken de configuratie-instellingen om te laten zien hoe u-opdrachten schrijft en gebruikt `docker run` .  Als de container eenmaal wordt uitgevoerd, blijft deze actief totdat u deze [stopt](face-how-to-install-containers.md#stop-the-container) .
 
-* **Regel voortzettings teken**: de docker-opdrachten in de volgende secties gebruiken de back slash `\`,, als een regel voortzettings teken. Vervang of verwijder dit op basis van de vereisten van uw host-besturings systeem. 
+* **Regel voortzettings teken**: de docker-opdrachten in de volgende secties gebruiken de back slash, `\` , als een regel voortzettings teken. Vervang of verwijder dit op basis van de vereisten van uw host-besturings systeem. 
 * **Argument volgorde**: Wijzig de volg orde van de argumenten niet, tenzij u bekend bent met docker-containers.
 
 Vervang {_argument_name_} door uw eigen waarden:
 
 | Tijdelijke aanduiding | Waarde | Notatie of voor beeld |
 |-------------|-------|---|
-| **{API_KEY}** | De eindpunt sleutel van de `Face` resource op de pagina `Face` Azure-sleutels. | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
-| **{ENDPOINT_URI}** | De waarde van het facturerings eindpunt is beschikbaar `Face` op de pagina overzicht van Azure.| Zie [vereiste para meters](face-how-to-install-containers.md#gathering-required-parameters) voor expliciete voor beelden verzamelen. |
+| **{API_KEY}** | De eindpunt sleutel van de `Face` resource op de pagina Azure- `Face` sleutels. | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
+| **{ENDPOINT_URI}** | De waarde van het facturerings eindpunt is beschikbaar op de `Face` pagina overzicht van Azure.| Zie [vereiste para meters](face-how-to-install-containers.md#gathering-required-parameters) voor expliciete voor beelden verzamelen. |
 
 [!INCLUDE [subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
-> De `Eula`opties `Billing`, en `ApiKey` moeten worden opgegeven om de container uit te voeren. anders wordt de container niet gestart.  Zie [facturering](face-how-to-install-containers.md#billing)voor meer informatie.
+> De `Eula` `Billing` Opties, en `ApiKey` moeten worden opgegeven om de container uit te voeren. anders wordt de container niet gestart.  Zie [facturering](face-how-to-install-containers.md#billing)voor meer informatie.
 > De ApiKey-waarde is de **sleutel** van de `Cognitive Services` pagina Azure-resource sleutels. 
 
 ## <a name="face-container-docker-examples"></a>Voor beelden van Face container docker

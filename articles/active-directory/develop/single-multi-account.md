@@ -13,10 +13,10 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.openlocfilehash: 89a383aabf3487a0938604bc28ddb06c0541d13e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80881329"
 ---
 # <a name="single-and-multiple-account-public-client-apps"></a>Open bare client-apps met één of meer accounts
@@ -25,24 +25,24 @@ Dit artikel helpt u bij het begrijpen van de typen die worden gebruikt in één 
 
 Met de Azure Active Directory-verificatie bibliotheek (ADAL) worden de-server modellen gemodelleerd.  In plaats daarvan modellen uw client toepassing in de micro soft Authentication Library (MSAL).  De meeste Android-apps worden beschouwd als open bare clients. Een open bare client is een app waarmee een geheim niet veilig kan worden bewaard.  
 
-MSAL is gespecialiseerd in het API-Opper vlak van `PublicClientApplication` om de ontwikkelings ervaring te vereenvoudigen en te verduidelijken voor apps waarmee slechts één account tegelijk kan worden gebruikt. `PublicClientApplication`is subklasseeerd door `SingleAccountPublicClientApplication` en `MultipleAccountPublicClientApplication` .  In het volgende diagram ziet u de relatie tussen deze klassen.
+MSAL is gespecialiseerd in het API-Opper vlak van `PublicClientApplication` om de ontwikkelings ervaring te vereenvoudigen en te verduidelijken voor apps waarmee slechts één account tegelijk kan worden gebruikt. `PublicClientApplication` is subklasseeerd door `SingleAccountPublicClientApplication` en `MultipleAccountPublicClientApplication` .  In het volgende diagram ziet u de relatie tussen deze klassen.
 
 ![Diagram van SingleAccountPublicClientApplication UML-klasse](./media/single-multi-account/single-and-multiple-account.png)
 
 ## <a name="single-account-public-client-application"></a>Open bare client toepassing met één account
 
-Met de- `SingleAccountPublicClientApplication` klasse kunt u een app op basis van MSAL maken waarmee slechts één account tegelijk kan worden aangemeld. `SingleAccountPublicClientApplication`verschilt van `PublicClientApplication` op de volgende manieren:
+Met de- `SingleAccountPublicClientApplication` klasse kunt u een app op basis van MSAL maken waarmee slechts één account tegelijk kan worden aangemeld. `SingleAccountPublicClientApplication` verschilt van `PublicClientApplication` op de volgende manieren:
 
 - MSAL houdt het account dat momenteel is aangemeld bij.
   - Als uw app gebruikmaakt van een Broker (de standaard tijdens het registreren van Azure Portal app) en is geïnstalleerd op een apparaat waarop een Broker aanwezig is, controleert MSAL of het account nog steeds beschikbaar is op het apparaat.
-- `signIn`Hiermee kunt u een account expliciet en onafhankelijk van het aanvragen van scopes aanmelden.
-- `acquireTokenSilent`vereist geen account parameter.  Als u een account opgeeft en het account dat u opgeeft, niet overeenkomt met het huidige account dat wordt getraceerd door MSAL, wordt er een `MsalClientException` gegenereerd.
-- `acquireToken`de gebruiker mag niet overschakelen naar een ander account. Als de gebruiker probeert over te scha kelen naar een ander account, wordt er een uitzonde ring gegenereerd.
-- `getCurrentAccount`retourneert een resultaat object dat het volgende biedt:
+- `signIn` Hiermee kunt u een account expliciet en onafhankelijk van het aanvragen van scopes aanmelden.
+- `acquireTokenSilent` vereist geen account parameter.  Als u een account opgeeft en het account dat u opgeeft, niet overeenkomt met het huidige account dat wordt getraceerd door MSAL, wordt er een `MsalClientException` gegenereerd.
+- `acquireToken` de gebruiker mag niet overschakelen naar een ander account. Als de gebruiker probeert over te scha kelen naar een ander account, wordt er een uitzonde ring gegenereerd.
+- `getCurrentAccount` retourneert een resultaat object dat het volgende biedt:
   - Een Booleaanse waarde die aangeeft of het account is gewijzigd. Een account kan worden gewijzigd als gevolg van het verwijderen van het apparaat, bijvoorbeeld.
   - Het vorige account. Dit is handig als u lokaal gegevens opschoning wilt uitvoeren wanneer het account wordt verwijderd van het apparaat of wanneer een nieuw account is aangemeld.
   - De currentAccount.
-- `signOut`Hiermee verwijdert u de tokens die zijn gekoppeld aan uw client van het apparaat.  
+- `signOut` Hiermee verwijdert u de tokens die zijn gekoppeld aan uw client van het apparaat.  
 
 Wanneer een Android-verificatie Broker, zoals Microsoft Authenticator of Intune-bedrijfsportal op het apparaat is geïnstalleerd en uw app is geconfigureerd voor het gebruik van de Broker, wordt `signOut` het account niet van het apparaat verwijderd.
 

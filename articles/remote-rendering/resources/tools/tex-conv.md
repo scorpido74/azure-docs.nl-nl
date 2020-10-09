@@ -6,10 +6,10 @@ ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
 ms.openlocfilehash: 1d9b2ca163b70435a6c0e245e66492e8e2866639
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80680022"
 ---
 # <a name="texconv---texture-conversion-tool"></a>TexConv-patroon conversie programma
@@ -31,9 +31,9 @@ De meest rechtse opdracht regel is als volgt:
 TexConv.exe -out D:/result.dds -in0 D:/img.jpg -rgba in0
 ```
 
-- `-out`Hiermee geeft u het uitvoer bestand en de indeling op
-- `-in0`Hiermee wordt de eerste invoer afbeelding opgegeven
-- `-rgba`Hiermee wordt aangegeven dat de uitvoer installatie kopie alle vier de kanalen moet gebruiken en dat deze 1:1 van de invoer installatie kopie moeten worden genomen
+- `-out` Hiermee geeft u het uitvoer bestand en de indeling op
+- `-in0` Hiermee wordt de eerste invoer afbeelding opgegeven
+- `-rgba` Hiermee wordt aangegeven dat de uitvoer installatie kopie alle vier de kanalen moet gebruiken en dat deze 1:1 van de invoer installatie kopie moeten worden genomen
 
 ## <a name="multiple-input-files"></a>Meerdere invoer bestanden
 
@@ -68,9 +68,9 @@ Het opgeven van de toewijzing voor elk kanaal biedt de grootste flexibiliteit. V
 De volgende opties voor kanaal toewijzing zijn beschikbaar:
 
 - `-r`, `-g` , `-b` , `-a` : Deze geven toewijzingen voor één kanaal op
-- `-rg`: Geef de toewijzingen van het rode en groene kanaal op.
-- `-rgb`: Geef de toewijzingen voor het rood, groen en blauw kanaal op.
-- `-rgba`: Hiermee geeft u alle vier kanaal toewijzingen op.
+- `-rg` : Geef de toewijzingen van het rode en groene kanaal op.
+- `-rgb` : Geef de toewijzingen voor het rood, groen en blauw kanaal op.
+- `-rgba` : Hiermee geeft u alle vier kanaal toewijzingen op.
 
 Als alleen het R-, RG-of RGB-kanaal wordt vermeld, krijgt TexConv een uitvoer bestand te maken met respectievelijk slechts 1, 2 of 3 kanalen.
 
@@ -78,14 +78,14 @@ Als alleen het R-, RG-of RGB-kanaal wordt vermeld, krijgt TexConv een uitvoer be
 
 Wanneer wordt aangegeven welk invoer patroon moet worden gevuld met het uitvoer kanaal, kan een van de invoer swizzle:
 
-- `-rgba in0`is gelijk aan`-rgba in0.rgba`
-- `-rgba in0.bgra`swizzle worden de invoer kanalen
-- `-rgb in0.rrr`dupliceert het rood kanaal in alle kanalen
+- `-rgba in0` is gelijk aan `-rgba in0.rgba`
+- `-rgba in0.bgra` swizzle worden de invoer kanalen
+- `-rgb in0.rrr` dupliceert het rood kanaal in alle kanalen
 
 U kunt ook kanalen vullen met zwart of wit:
 
-- `-rgb in0 -a white`maakt een uitvoer patroon van 4 kanalen, maar stelt Alfa in op volledig ondoorzichtig
-- `-rg black -b white`Er wordt een volledig blauw patroon gemaakt
+- `-rgb in0 -a white` maakt een uitvoer patroon van 4 kanalen, maar stelt Alfa in op volledig ondoorzichtig
+- `-rg black -b white` Er wordt een volledig blauw patroon gemaakt
 
 ## <a name="common-options"></a>Algemene opties
 
@@ -93,41 +93,41 @@ De meest interessante opties worden hieronder weer gegeven. Meer opties worden w
 
 ### <a name="output-type"></a>Uitvoertype
 
-- `-type 2D`: De uitvoer is een gewone 2D-afbeelding.
-- `-type Cubemap`: De uitvoer is een cubemap-installatie kopie. Alleen ondersteund voor DDS-uitvoer bestanden. Als deze is opgegeven, kan de cubemap worden samengesteld op basis van 6 reguliere 2D-invoer installatie kopieën.
+- `-type 2D` : De uitvoer is een gewone 2D-afbeelding.
+- `-type Cubemap` : De uitvoer is een cubemap-installatie kopie. Alleen ondersteund voor DDS-uitvoer bestanden. Als deze is opgegeven, kan de cubemap worden samengesteld op basis van 6 reguliere 2D-invoer installatie kopieën.
 
-### <a name="image-compression"></a>Afbeeldings compressie
+### <a name="image-compression"></a>Afbeeldingscompressie
 
-- `-compression none`: De uitvoer afbeelding wordt gedecomprimeerd.
-- `-compression medium`: Indien ondersteund, gebruikt de uitvoer installatie kopie compressie zonder dat er te veel kwaliteit wordt geoffert.
-- `-compression high`: Indien ondersteund, gebruikt de uitvoer installatie kopie compressie en gaat de kwaliteit af van een kleiner bestand.
+- `-compression none` : De uitvoer afbeelding wordt gedecomprimeerd.
+- `-compression medium` : Indien ondersteund, gebruikt de uitvoer installatie kopie compressie zonder dat er te veel kwaliteit wordt geoffert.
+- `-compression high` : Indien ondersteund, gebruikt de uitvoer installatie kopie compressie en gaat de kwaliteit af van een kleiner bestand.
 
 ### <a name="mipmaps"></a>Mipmaps
 
 Standaard genereert TexConv mipmaps wanneer de uitvoer indeling dit ondersteunt.
 
-- `-mipmaps none`: Mipmaps wordt niet gegenereerd.
-- `-mipmaps Linear`: Indien ondersteund, wordt mipmaps gegenereerd met een box-filter.
+- `-mipmaps none` : Mipmaps wordt niet gegenereerd.
+- `-mipmaps Linear` : Indien ondersteund, wordt mipmaps gegenereerd met een box-filter.
 
 ### <a name="usage-srgb--gamma-correction"></a>Gebruik (sRGB/gamma correctie)
 
 `-usage`Met de optie geeft u het doel van de uitvoer op en vertelt u TexConv of gamma correctie moet worden toegepast op de invoer-en uitvoer bestanden. Het gebruik is alleen van invloed op de RGB-kanalen. Het Alfa kanaal wordt altijd geacht ' lineaire ' waarden te bevatten. Als er geen gebruik is opgegeven, probeert de modus ' auto ' het gebruik te detecteren vanuit de indeling en de bestands naam van de eerste invoer installatie kopie. Zo zijn bijvoorbeeld enkelvoudige en dubbele kanaal uitvoer indelingen altijd lineair. Controleer de uitvoer om te zien welke beslissings TexConv zijn gemaakt.
 
-- `-usage Linear`: De uitvoer afbeelding bevat waarden die geen kleuren vertegenwoordigen. Dit is meestal het geval voor metalen en ruwe bitmappatronen, evenals alle soorten maskers.
+- `-usage Linear` : De uitvoer afbeelding bevat waarden die geen kleuren vertegenwoordigen. Dit is meestal het geval voor metalen en ruwe bitmappatronen, evenals alle soorten maskers.
 
-- `-usage Color`: De uitvoer afbeelding vertegenwoordigt een kleur, zoals een diffuse/albedo kaarten. De sRGB-vlag wordt ingesteld in de header uitvoer DDS.
+- `-usage Color` : De uitvoer afbeelding vertegenwoordigt een kleur, zoals een diffuse/albedo kaarten. De sRGB-vlag wordt ingesteld in de header uitvoer DDS.
 
-- `-usage HDR`: In het uitvoer bestand moeten meer dan 8 bits per pixel worden gebruikt voor de code ring. Daarom worden alle waarden opgeslagen in lineaire ruimte. Voor HDR-bitmappatronen is het niet belang rijk of de gegevens kleur of andere gegevens vertegenwoordigen.
+- `-usage HDR` : In het uitvoer bestand moeten meer dan 8 bits per pixel worden gebruikt voor de code ring. Daarom worden alle waarden opgeslagen in lineaire ruimte. Voor HDR-bitmappatronen is het niet belang rijk of de gegevens kleur of andere gegevens vertegenwoordigen.
 
-- `-usage NormalMap`: De uitvoer afbeelding vertegenwoordigt een normale kaart voor de raaklijn ruimte. Waarden worden genormaliseerd en mipmap berekening wordt enigszins geoptimaliseerd.
+- `-usage NormalMap` : De uitvoer afbeelding vertegenwoordigt een normale kaart voor de raaklijn ruimte. Waarden worden genormaliseerd en mipmap berekening wordt enigszins geoptimaliseerd.
 
-- `-usage NormalMap_Inverted`: De uitvoer is een normale toewijzing van een raaklijn ruimte met Y die in tegenovergestelde richting ligt dan de invoer.
+- `-usage NormalMap_Inverted` : De uitvoer is een normale toewijzing van een raaklijn ruimte met Y die in tegenovergestelde richting ligt dan de invoer.
 
 ### <a name="image-rescaling"></a>Afbeelding opnieuw schalen
 
-- `-minRes 64`: Hiermee geeft u de minimale resolutie van de uitvoer op. Als de invoer afbeelding kleiner is, wordt deze geschaald.
-- `-maxRes 1024`: Hiermee geeft u de maximale resolutie van de uitvoer op. Als de invoer installatie kopie groter is, wordt de downscaled opgehaald.
-- `-downscale 1`: Als dit groter is dan 0, worden de installatie kopieën in de resolutie N keer gehalveerd. Gebruik deze om een algemene kwaliteits vermindering toe te passen.
+- `-minRes 64` : Hiermee geeft u de minimale resolutie van de uitvoer op. Als de invoer afbeelding kleiner is, wordt deze geschaald.
+- `-maxRes 1024` : Hiermee geeft u de maximale resolutie van de uitvoer op. Als de invoer installatie kopie groter is, wordt de downscaled opgehaald.
+- `-downscale 1` : Als dit groter is dan 0, worden de installatie kopieën in de resolutie N keer gehalveerd. Gebruik deze om een algemene kwaliteits vermindering toe te passen.
 
 ## <a name="examples"></a>Voorbeelden
 

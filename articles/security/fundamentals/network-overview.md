@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
 ms.openlocfilehash: 496ee1bc97f6b72e09a62ae3491af7ccc7328583
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80811107"
 ---
 # <a name="azure-network-security-overview"></a>Overzicht van Azure-netwerk beveiliging
@@ -77,7 +77,7 @@ Nsg's bieden geen inspectie van toepassings lagen of geverifieerde toegangs behe
 
 Meer informatie:
 
-* [Netwerk beveiligings groepen](../../virtual-network/security-overview.md)
+* [Netwerkbeveiligingsgroepen](../../virtual-network/security-overview.md)
 
 #### <a name="asc-just-in-time-vm-access"></a>Just-in-time-VM-toegang
 
@@ -210,7 +210,7 @@ Meer informatie:
 
 * [Een VNet-naar-VNet-verbinding configureren met behulp van Azure Resource Manager en Power shell](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)
 
-Een andere manier om verbinding te maken met uw virtuele netwerken is [VNET-peering](../../virtual-network/virtual-network-peering-overview.md). Met deze functie kunt u twee Azure-netwerken met elkaar verbinden zodat communicatie tussen de micro soft-backbone-infra structuur plaatsvindt zonder dat deze ooit via internet gaat. VNET-peering kan twee VNETs binnen dezelfde regio of twee VNETs tussen Azure-regio's verbinden. Nsg's kan worden gebruikt om de connectiviteit tussen verschillende subnetten of systemen te beperken.
+Een andere manier om verbinding te maken met uw virtuele netwerken is  [VNET-peering](../../virtual-network/virtual-network-peering-overview.md). Met deze functie kunt u twee Azure-netwerken met elkaar verbinden zodat communicatie tussen de micro soft-backbone-infra structuur plaatsvindt zonder dat deze ooit via internet gaat. VNET-peering kan twee VNETs binnen dezelfde regio of twee VNETs tussen Azure-regio's verbinden. Nsg's kan worden gebruikt om de connectiviteit tussen verschillende subnetten of systemen te beperken.
 
 ## <a name="availability"></a>Beschikbaarheid
 
@@ -314,7 +314,7 @@ Meer informatie:
 
 ## <a name="azure-ddos-protection"></a>Azure DDoS Protection
 
-DDoS-aanvallen (Distributed Denial of Service-aanvallen) vormen een van de grootste beschikbaarheids- en beveiligingsproblemen voor klanten die hun toepassingen verplaatsen naar de cloud. Een DDoS-aanval probeert de bronnen van een toepassing te ontnemen, waardoor de toepassing niet beschikbaar is voor legitieme gebruikers. DDoS-aanvallen kunnen worden gericht op elk eindpunt dat openbaar bereikbaar is via internet.
+DDoS-aanvallen (Distributed Denial of Service-aanvallen) vormen een van de grootste beschikbaarheids- en beveiligingsproblemen voor klanten die hun toepassingen verplaatsen naar de cloud. Met een DDoS-aanval wordt geprobeerd de resources van een toepassing uit te putten, waardoor de toepassing niet meer beschikbaar is voor legitieme gebruikers. DDoS-aanvallen kunnen worden gericht op elk eindpunt dat openbaar bereikbaar is via internet.
 Micro soft biedt DDoS-beveiliging **, ook wel bekend als onderdeel** van het Azure-platform. Dit is gratis en omvat altijd bewaking en realtime beperken van veelvoorkomende aanvallen op netwerk niveau. Naast de beveiligingen die zijn opgenomen in DDoS Protection **Basic** kunt u de optie **standaard** inschakelen. DDoS Protection standaard functies zijn:
 
 * **Systeem eigen platform integratie:** Systeem eigen geïntegreerd in Azure. Bevat configuratie via de Azure Portal. DDoS Protection standaard begrijpt uw resources en resource configuratie.

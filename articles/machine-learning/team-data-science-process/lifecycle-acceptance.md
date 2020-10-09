@@ -12,19 +12,19 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 7224a7bb26ef491915df9fcb9b6b84ff171a9fc0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76720517"
 ---
 # <a name="customer-acceptance-stage-of-the-team-data-science-process-lifecycle"></a>Acceptatie fase van de klant van de team data Science proces levenscyclus
 
-In dit artikel vindt u een overzicht van de doelen, taken en producten die zijn gekoppeld aan de acceptatie fase van de klant van het team data Science process (TDSP). Dit proces biedt een aanbevolen levens cyclus die u kunt gebruiken om uw projecten met een gegevens wetenschap te structureren. De levens cyclus bevat een overzicht van de belangrijkste fasen die door projecten meestal worden uitgevoerd, vaak iteratief:
+In dit artikel vindt u een overzicht van de doelen, taken en producten die zijn gekoppeld aan de acceptatie fase van de klant van het team data Science process (TDSP). Dit proces biedt een aanbevolen levens cyclus die u kunt gebruiken om uw projecten met een gegevens wetenschap te structureren. De levenscyclus bevat de belangrijkste fasen die projecten meestal doorlopen, vaak iteratief:
 
-   1. **Inzicht in het bedrijf**
-   2. **Gegevens verzamelen en begrijpen**
-   3. **Modellen maken**
+   1. **Zakelijke inzichten**
+   2. **Gegevens verkrijgen en meer informatie**
+   3. **Modelleren**
    4. **Implementatie**
    5. **Aanvaarding van de klant**
 
@@ -53,8 +53,8 @@ Het belangrijkste artefact dat in deze laatste fase is geproduceerd, is het **af
 Hier vindt u koppelingen naar elke stap in de levens cyclus van de TDSP:
 
    1. [Inzicht in het bedrijf](lifecycle-business-understanding.md)
-   2. [Gegevens verzamelen en begrijpen](lifecycle-data.md)
-   3. [Modellen maken](lifecycle-modeling.md)
+   2. [Gegevens verkrijgen en meer informatie](lifecycle-data.md)
+   3. [Modelleren](lifecycle-modeling.md)
    4. [Implementatie](lifecycle-deployment.md)
    5. [Aanvaarding van de klant](lifecycle-acceptance.md)
 

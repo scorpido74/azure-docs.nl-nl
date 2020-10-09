@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Azure, kinect, SDK, update downloaden, nieuwste, beschikbaar, installeren, hoofd tekst, bijhouden
 ms.openlocfilehash: e3f8233d208e2a45c1af9a52a76b6064b15bfe4b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85277350"
 ---
 # <a name="download-azure-kinect-body-tracking-sdk"></a>De Azure Kinect Body tracking-SDK downloaden
@@ -109,9 +109,9 @@ Als de opdracht is geslaagd, is de SDK klaar voor gebruik.
 
 * [Laatste wijziging] De SDK-afhankelijkheid is gedowngraded naar CUDA 10,0 (van CUDA 10,1). ONNX-runtime officieel ondersteunt alleen Maxi maal CUDA 10,0.
 * [Laatste wijziging] Wordt overgeschakeld naar ONNX runtime in plaats van tensor flow runtime. Hiermee worden de eerste start tijd en het geheugen gebruik van het frame verminderd. Het vermindert ook de binaire grootte van de SDK.
-* [API-wijziging] De naam is gewijzigd `k4abt_tracker_queue_capture()` in`k4abt_tracker_enqueue_capture()`
-* [API-wijziging] `k4abt_frame_get_body()`In twee afzonderlijke functies afgebroken `k4abt_frame_get_body_skeleton()` : en `k4abt_frame_get_body_id()` . U kunt nu een query uitvoeren op de code van de hoofd tekst zonder dat u altijd de volledige skelet structuur hoeft te kopiëren.
-* [API-wijziging] `k4abt_frame_get_timestamp_usec()`De functie is toegevoegd om de stappen voor de gebruikers om de tijds tempel van het hoofd frame te controleren.
+* [API-wijziging] De naam is gewijzigd `k4abt_tracker_queue_capture()` in `k4abt_tracker_enqueue_capture()`
+* [API-wijziging] `k4abt_frame_get_body()` In twee afzonderlijke functies afgebroken `k4abt_frame_get_body_skeleton()` : en `k4abt_frame_get_body_id()` . U kunt nu een query uitvoeren op de code van de hoofd tekst zonder dat u altijd de volledige skelet structuur hoeft te kopiëren.
+* [API-wijziging]  `k4abt_frame_get_timestamp_usec()` De functie is toegevoegd om de stappen voor de gebruikers om de tijds tempel van het hoofd frame te controleren.
 * De nauw keurigheid van het bijhouden van de hoofd tekst is verbeterd en de betrouw baarheid bijhouden
 
 ## <a name="next-steps"></a>Volgende stappen

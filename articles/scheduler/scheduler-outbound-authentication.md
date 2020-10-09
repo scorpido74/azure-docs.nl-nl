@@ -9,10 +9,10 @@ ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/15/2016
 ms.openlocfilehash: 0a8d79af9f45731971cb1be1f39fc193f9d0f0d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80878966"
 ---
 # <a name="outbound-authentication-for-azure-scheduler"></a>Uitgaande verificatie voor Azure scheduler
@@ -48,16 +48,16 @@ Wanneer u verificatie toevoegt met behulp van het `ClientCertificate` model, gee
 | Element | Vereist | Beschrijving |
 |---------|----------|-------------|
 | **verificatie** (bovenliggend element) | Het verificatie object voor het gebruik van een SSL/TLS-client certificaat |
-| **type** | Yes | Het verificatie type. Voor SSL/TLS-client certificaten is de waarde `ClientCertificate` . |
-| **pfx** | Yes | De met base64 gecodeerde inhoud van het PFX-bestand |
-| **wachtwoord** | Yes | Het wacht woord voor toegang tot het PFX-bestand |
+| **type** | Ja | Het verificatie type. Voor SSL/TLS-client certificaten is de waarde `ClientCertificate` . |
+| **pfx** | Ja | De met base64 gecodeerde inhoud van het PFX-bestand |
+| **password** | Ja | Het wacht woord voor toegang tot het PFX-bestand |
 ||| 
 
 ### <a name="response-body---client-certificate"></a>Antwoord tekst-client certificaat 
 
 Wanneer een aanvraag wordt verzonden met verificatie gegevens, bevat het antwoord deze verificatie-elementen.
 
-| Element | Description | 
+| Element | Beschrijving | 
 |---------|-------------| 
 | **verificatie** (bovenliggend element) | Het verificatie object voor het gebruik van een SSL/TLS-client certificaat |
 | **type** | Het verificatie type. Voor SSL/TLS-client certificaten is de waarde `ClientCertificate` . |
@@ -168,16 +168,16 @@ Wanneer u verificatie toevoegt met behulp van het `Basic` model, geeft u deze ex
 | Element | Vereist | Beschrijving |
 |---------|----------|-------------|
 | **verificatie** (bovenliggend element) | Het verificatie object voor het gebruik van basis verificatie | 
-| **type** | Yes | Het verificatie type. De waarde is voor basis verificatie `Basic` . | 
-| **gebruikers** | Yes | De gebruikers naam voor verificatie | 
-| **wachtwoord** | Yes | Het wacht woord voor verificatie |
+| **type** | Ja | Het verificatie type. De waarde is voor basis verificatie `Basic` . | 
+| **gebruikers** | Ja | De gebruikers naam voor verificatie | 
+| **password** | Ja | Het wacht woord voor verificatie |
 |||| 
 
 ### <a name="response-body---basic"></a>Antwoord tekst-basis
 
 Wanneer een aanvraag wordt verzonden met verificatie gegevens, bevat het antwoord deze verificatie-elementen.
 
-| Element | Description | 
+| Element | Beschrijving | 
 |---------|-------------|
 | **verificatie** (bovenliggend element) | Het verificatie object voor het gebruik van basis verificatie |
 | **type** | Het verificatie type. De waarde is voor basis verificatie `Basic` . |
@@ -285,19 +285,19 @@ Wanneer u verificatie toevoegt met behulp van het `ActiveDirectoryOAuth` model, 
 
 | Element | Vereist | Beschrijving |
 |---------|----------|-------------|
-| **verificatie** (bovenliggend element) | Yes | Het verificatie object voor het gebruik van ActiveDirectoryOAuth-verificatie |
-| **type** | Yes | Het verificatie type. De waarde is voor ActiveDirectoryOAuth-verificatie `ActiveDirectoryOAuth` . |
-| **tenant** | Yes | De Tenant-id voor de Azure AD-Tenant. Voer in Azure PowerShell om de Tenant-id voor de Azure AD-Tenant te vinden `Get-AzureAccount` . |
-| **gericht** | Yes | Deze waarde is ingesteld op `https://management.core.windows.net/` . | 
-| **clientId** | Yes | De client-id voor de Azure AD-toepassing | 
-| **gescheiden** | Yes | Het geheim voor de client die het token aanvraagt | 
+| **verificatie** (bovenliggend element) | Ja | Het verificatie object voor het gebruik van ActiveDirectoryOAuth-verificatie |
+| **type** | Ja | Het verificatie type. De waarde is voor ActiveDirectoryOAuth-verificatie `ActiveDirectoryOAuth` . |
+| **tenant** | Ja | De Tenant-id voor de Azure AD-Tenant. Voer in Azure PowerShell om de Tenant-id voor de Azure AD-Tenant te vinden `Get-AzureAccount` . |
+| **gericht** | Ja | Deze waarde is ingesteld op `https://management.core.windows.net/` . | 
+| **clientId** | Ja | De client-id voor de Azure AD-toepassing | 
+| **gescheiden** | Ja | Het geheim voor de client die het token aanvraagt | 
 |||| 
 
 ### <a name="response-body---active-directory-oauth"></a>Antwoord tekst-Active Directory OAuth
 
 Wanneer een aanvraag wordt verzonden met verificatie gegevens, bevat het antwoord deze verificatie-elementen.
 
-| Element | Description |
+| Element | Beschrijving |
 |---------|-------------|
 | **verificatie** (bovenliggend element) | Het verificatie object voor het gebruik van ActiveDirectoryOAuth-verificatie |
 | **type** | Het verificatie type. De waarde is voor ActiveDirectoryOAuth-verificatie `ActiveDirectoryOAuth` . | 

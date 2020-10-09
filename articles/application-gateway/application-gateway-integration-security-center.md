@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 06/07/2017
 ms.openlocfilehash: f5ecd2334ca80f5561c0611239b5bb00d222112a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76277195"
 ---
 # <a name="overview-of-integration-between-application-gateway-and-azure-security-center"></a>Overzicht van de integratie tussen Application Gateway en Azure Security Center
@@ -40,7 +40,7 @@ Als u op een webtoepassing met een kritiek probleem klikt, wordt de pagina **bev
 
 Klik op **een Web Application firewall toevoegen** onder **aanbevelingen** om de pagina **een Web Application firewall toevoegen** te openen.
 
-Als u geen bestaande Application Gateway hebt of een nieuwe wilt maken, klikt u op **Nieuw** en **maakt u een nieuwe Web Application firewall**en klikt u op **micro soft-Application Gateway**. U gaat dan door de stappen voor het maken van een toepassings gateway. Op dit moment wordt uw webtoepassing toegevoegd als een beveiligde resource. Security Center nu volgt dat deze bron wordt beveiligd door een Web Application Firewall. Dit voegt deze niet toe als lid van een back-end-groep.
+Als u geen bestaande Application Gateway hebt of een nieuwe wilt maken, klikt u op **Nieuw** en  **maakt u een nieuwe Web Application firewall**en klikt u op **micro soft-Application Gateway**. U gaat dan door de stappen voor het maken van een toepassings gateway. Op dit moment wordt uw webtoepassing toegevoegd als een beveiligde resource. Security Center nu volgt dat deze bron wordt beveiligd door een Web Application Firewall. Dit voegt deze niet toe als lid van een back-end-groep.
 
 Als u een bestaande toepassings gateway hebt, kunt u deze kiezen onder **bestaande oplossing gebruiken**
 

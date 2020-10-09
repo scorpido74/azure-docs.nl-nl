@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: aahi
 ms.openlocfilehash: 08af17106846a0f5f7a0ccc2b01da1b2e15c1143
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80879197"
 ---
 # <a name="deploy-the-language-understanding-luis-container-to-azure-container-instances"></a>De Language Understanding-container (LUIS) implementeren in azure container instances
@@ -29,11 +29,11 @@ Meer informatie over het implementeren van de Cognitive Services [Luis](luis-con
 
 ## <a name="create-an-azure-file-share"></a>Een Azure-bestandsshare maken
 
-De LUIS-container vereist `.gz` een model bestand dat tijdens runtime wordt opgehaald. De container moet toegang hebben tot dit model bestand via een volume koppeling vanuit het container exemplaar. Zie [een bestands share maken](../../storage/files/storage-how-to-create-file-share.md)voor meer informatie over het maken van een Azure-bestands share. Noteer de naam van het Azure Storage account, de sleutel en de naam van de bestands share die u later nodig hebt.
+De LUIS-container vereist een `.gz` model bestand dat tijdens runtime wordt opgehaald. De container moet toegang hebben tot dit model bestand via een volume koppeling vanuit het container exemplaar. Zie [een bestands share maken](../../storage/files/storage-how-to-create-file-share.md)voor meer informatie over het maken van een Azure-bestands share. Noteer de naam van het Azure Storage account, de sleutel en de naam van de bestands share die u later nodig hebt.
 
 ### <a name="export-and-upload-packaged-luis-app"></a>Een verpakte LUIS-app exporteren en uploaden
 
-Als u het LUIS-model (verpakte app) naar de Azure-bestands share wilt uploaden, moet u het <a href="luis-container-howto.md#export-packaged-app-from-luis" target="_blank" rel="noopener">eerst <span class="docon docon-navigate-external x-hidden-focus"> </span>exporteren vanuit de Luis-Portal </a>. Ga vanuit het Azure Portal naar de **overzichts** pagina van de bron van het opslag account en selecteer **Bestands shares**. Selecteer de naam van de bestands share die u onlangs hebt gemaakt en selecteer vervolgens de knop **uploaden** .
+Als u het LUIS-model (verpakte app) naar de Azure-bestands share wilt uploaden, moet u het <a href="luis-container-howto.md#export-packaged-app-from-luis" target="_blank" rel="noopener">eerst <span class="docon docon-navigate-external x-hidden-focus"></span> exporteren vanuit de Luis-Portal </a>. Ga vanuit het Azure Portal naar de **overzichts** pagina van de bron van het opslag account en selecteer **Bestands shares**. Selecteer de naam van de bestands share die u onlangs hebt gemaakt en selecteer vervolgens de knop **uploaden** .
 
 > [!div class="mx-imgBorder"]
 > ![Uploaden naar de bestands share](media/luis-how-to-deploy-to-aci/upload-file-share.png)

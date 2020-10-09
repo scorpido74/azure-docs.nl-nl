@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: f1e861bf9c6cc2a485ac9f153a0c932ec2e6fbb2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85318906"
 ---
 # <a name="azure-data-factory---samples"></a>Azure Data Factory-voor beelden
@@ -24,7 +24,7 @@ ms.locfileid: "85318906"
 
 
 ## <a name="samples-on-github"></a>Voorbeelden op GitHub
-De [github Azure-DataFactory-opslag plaats](https://github.com/azure/azure-datafactory) bevat verschillende voor beelden waarmee u snel kunt werken met Azure Data Factory Service (of) de scripts kunt wijzigen en deze in de eigen toepassing kunt gebruiken. De map Samples\JSON bevat JSON-fragmenten voor algemene scenario's.
+De [github-opslag plaats van Azure-DataFactory](https://github.com/azure/azure-datafactory) bevat verschillende voor beelden waarmee u snel kunt werken met Azure Data Factory Service (of) de scripts kunt wijzigen en deze in de eigen toepassing kunt gebruiken. De map Samples\JSON bevat JSON-fragmenten voor algemene scenario's.
 
 | Voorbeeld | Beschrijving |
 |:--- |:--- |
@@ -46,7 +46,7 @@ De [github Azure-DataFactory-opslag plaats](https://github.com/azure/azure-dataf
 ## <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sjablonen
 U kunt de volgende Azure Resource Manager sjablonen vinden voor Data Factory op GitHub.
 
-| Template | Description |
+| Template | Beschrijving |
 | --- | --- |
 | [Kopiëren van Azure-Blob Storage naar Azure SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy) |Als u deze sjabloon implementeert, wordt een Azure-data factory gemaakt met een pijp lijn waarmee gegevens uit de opgegeven Azure Blob-opslag worden gekopieerd naar Azure SQL Database |
 | [Kopiëren van Sales Force naar Azure Blob Storage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-salesforce-to-blob-copy) |Als u deze sjabloon implementeert, wordt een Azure-data factory gemaakt met een pijp lijn waarmee gegevens worden gekopieerd van het opgegeven Sales Force-account naar de Azure Blob-opslag. |

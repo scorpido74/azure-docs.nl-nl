@@ -9,10 +9,10 @@ ms.date: 09/17/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: ca4bd3d3b40934323bab8036f3ce72e9281f1de4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67176471"
 ---
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ ms.locfileid: "67176471"
 In deze zelf studie implementeert u een **Chiller** -apparaat dat de volgende telemetrie verzendt naar de [oplossings versneller](../articles/iot-accelerators/about-iot-accelerators.md)voor externe controle:
 
 * Temperatuur
-* Tegen
+* Druk
 * Vochtigheid
 
 Ter vereenvoudiging genereert de code voor beeld-telemetrie-waarden voor de **Chiller**. U kunt het voor beeld uitbreiden door echte Sens oren te verbinden met uw apparaat en daad werkelijk telemetrie te verzenden.

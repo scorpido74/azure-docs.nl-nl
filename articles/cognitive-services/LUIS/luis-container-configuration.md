@@ -1,7 +1,7 @@
 ---
 title: Docker-container instellingen-LUIS
 titleSuffix: Azure Cognitive Services
-description: De LUIS container runtime-omgeving wordt geconfigureerd met `docker run` de opdracht argumenten. LUIS heeft verschillende vereiste instellingen, samen met enkele optionele instellingen.
+description: De LUIS container runtime-omgeving wordt geconfigureerd met de `docker run` opdracht argumenten. LUIS heeft verschillende vereiste instellingen, samen met enkele optionele instellingen.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,15 +12,15 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 48a9856c58a815eabcc0b105efcd548e66ddd552
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80874208"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>Language Understanding docker-containers configureren 
 
-De container runtime-omgeving **Language Understanding** (Luis) wordt geconfigureerd met `docker run` de opdracht argumenten. LUIS heeft verschillende vereiste instellingen, samen met enkele optionele instellingen. Er zijn verschillende [voor beelden](#example-docker-run-commands) van de opdracht beschikbaar. De container-specifieke instellingen zijn de instellingen voor de invoer [koppeling](#mount-settings) en de facturerings instellingen. 
+De container runtime-omgeving **Language Understanding** (Luis) wordt geconfigureerd met de `docker run` opdracht argumenten. LUIS heeft verschillende vereiste instellingen, samen met enkele optionele instellingen. Er zijn verschillende [voor beelden](#example-docker-run-commands) van de opdracht beschikbaar. De container-specifieke instellingen zijn de instellingen voor de invoer [koppeling](#mount-settings) en de facturerings instellingen. 
 
 ## <a name="configuration-settings"></a>Configuratie-instellingen
 
@@ -38,11 +38,11 @@ Deze container bevat de volgende configuratie-instellingen:
 |Ja|[Koppelt](#mount-settings)|Gegevens lezen en schrijven van de hostcomputer naar de container en van de container terug naar de hostcomputer.|
 
 > [!IMPORTANT]
-> De [`ApiKey`](#apikey-setting)instellingen [`Billing`](#billing-setting), en [`Eula`](#eula-setting) worden samen gebruikt en u moet geldige waarden opgeven voor alle drie deze. anders kan de container niet worden gestart. Zie [facturering](luis-container-howto.md#billing)voor meer informatie over het gebruik van deze configuratie-instellingen voor het instantiëren van een container.
+> De [`ApiKey`](#apikey-setting) [`Billing`](#billing-setting) instellingen, en [`Eula`](#eula-setting) worden samen gebruikt en u moet geldige waarden opgeven voor alle drie deze. anders wordt de container niet gestart. Zie [facturering](luis-container-howto.md#billing)voor meer informatie over het gebruik van deze configuratie-instellingen voor het instantiëren van een container.
 
 ## <a name="apikey-setting"></a>ApiKey-instelling
 
-Met `ApiKey` deze instelling geeft u de Azure-resource sleutel op die wordt gebruikt voor het bijhouden van facturerings gegevens voor de container. U moet een waarde opgeven voor de ApiKey en de waarde moet een geldige sleutel zijn voor de _Cognitive Services_ bron die is opgegeven [`Billing`](#billing-setting) voor de configuratie-instelling.
+`ApiKey`Met deze instelling geeft u de Azure-resource sleutel op die wordt gebruikt voor het bijhouden van facturerings gegevens voor de container. U moet een waarde opgeven voor de ApiKey en de waarde moet een geldige sleutel zijn voor de _Cognitive Services_ bron die is opgegeven voor de [`Billing`](#billing-setting) configuratie-instelling.
 
 Deze instelling bevindt zich op de volgende locaties:
 
@@ -57,16 +57,16 @@ Gebruik niet de start sleutel of de ontwerp sleutel.
 
 ## <a name="billing-setting"></a>Facturerings instelling
 
-Met `Billing` deze instelling geeft u de EINDPUNT-URI op van de _Cognitive Services_ resource op Azure die wordt gebruikt om de facturerings gegevens voor de container te meten. U moet een waarde opgeven voor deze configuratie-instelling en de waarde moet een geldige eindpunt-URI zijn voor een _Cognitive Services_ resource in Azure. De container rapporteert het gebruik ongeveer elke 10 tot 15 minuten.
+Met deze `Billing` instelling geeft u de eindpunt-URI op van de _Cognitive Services_ resource op Azure die wordt gebruikt om de facturerings gegevens voor de container te meten. U moet een waarde opgeven voor deze configuratie-instelling en de waarde moet een geldige eindpunt-URI zijn voor een _Cognitive Services_ resource in Azure. De container rapporteert het gebruik ongeveer elke 10 tot 15 minuten.
 
 Deze instelling bevindt zich op de volgende locaties:
 
-* Azure Portal: **Cognitive Services** overzicht, met het label`Endpoint`
+* Azure Portal: **Cognitive Services** overzicht, met het label `Endpoint`
 * LUIS-portal: **sleutels en eindpunt instellingen** pagina als onderdeel van de EINDPUNT-URI.
 
 | Vereist | Naam | Gegevenstype | Beschrijving |
 |----------|------|-----------|-------------|
-| Ja      | `Billing` | tekenreeks | URL van het facturerings eindpunt. Zie [vereiste para meters verzamelen](luis-container-howto.md#gathering-required-parameters)voor meer informatie over het verkrijgen van de facturerings-URI. Zie [aangepaste subdomein namen voor Cognitive Services](../cognitive-services-custom-subdomains.md)voor meer informatie en een volledige lijst met regionale eind punten. |
+| Ja      | `Billing` | tekenreeks | URL van het facturerings eindpunt. Zie [vereiste para meters verzamelen](luis-container-howto.md#gathering-required-parameters)voor meer informatie over het verkrijgen van de facturerings-URI. Zie [Aangepaste subdomeinnamen voor Cognitive Services](../cognitive-services-custom-subdomains.md) voor meer informatie en een volledige lijst met regionale eindpunten. |
 
 ## <a name="eula-setting"></a>Gebruiksrecht overeenkomst instellen
 
@@ -101,23 +101,23 @@ In de volgende tabel worden de instellingen beschreven die worden ondersteund.
 
 ## <a name="example-docker-run-commands"></a>Voor beeld van docker-opdrachten uitvoeren
 
-De volgende voor beelden gebruiken de configuratie-instellingen om te laten zien hoe u `docker run` -opdrachten schrijft en gebruikt.  Als de container eenmaal wordt uitgevoerd, blijft deze actief totdat u deze [stopt](luis-container-howto.md#stop-the-container) .
+De volgende voor beelden gebruiken de configuratie-instellingen om te laten zien hoe u-opdrachten schrijft en gebruikt `docker run` .  Als de container eenmaal wordt uitgevoerd, blijft deze actief totdat u deze [stopt](luis-container-howto.md#stop-the-container) .
 
-* In deze voor beelden wordt de Directory `C:` uit het station gebruikt om eventuele toegangs conflicten in Windows te voor komen. Als u een specifieke directory moet gebruiken als de invoer Directory, moet u mogelijk de machtiging docker-service verlenen. 
+* In deze voor beelden wordt de Directory uit het `C:` station gebruikt om eventuele toegangs conflicten in Windows te voor komen. Als u een specifieke directory moet gebruiken als de invoer Directory, moet u mogelijk de machtiging docker-service verlenen. 
 * Wijzig de volg orde van de argumenten niet, tenzij u bekend bent met docker-containers.
-* Als u een ander besturings systeem gebruikt, gebruikt u de juiste console/terminal, syntaxis voor koppelingen en een regel vervolg teken voor uw systeem. In deze voor beelden wordt ervan uitgegaan dat een Windows `^`-console met een regel voortzettings teken. Omdat de container een Linux-besturings systeem is, gebruikt de doel koppeling een syntaxis voor de Linux-stijl.
+* Als u een ander besturings systeem gebruikt, gebruikt u de juiste console/terminal, syntaxis voor koppelingen en een regel vervolg teken voor uw systeem. In deze voor beelden wordt ervan uitgegaan dat een Windows-console met een regel voortzettings teken `^` . Omdat de container een Linux-besturings systeem is, gebruikt de doel koppeling een syntaxis voor de Linux-stijl.
 
 Vervang {_argument_name_} door uw eigen waarden:
 
 | Tijdelijke aanduiding | Waarde | Notatie of voor beeld |
 |-------------|-------|---|
-| **{API_KEY}** | De eindpunt sleutel van de `LUIS` resource op de pagina `LUIS` Azure-sleutels. | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
-| **{ENDPOINT_URI}** | De waarde van het facturerings eindpunt is beschikbaar `LUIS` op de pagina overzicht van Azure.| Zie [vereiste para meters](luis-container-howto.md#gathering-required-parameters) voor expliciete voor beelden verzamelen. |
+| **{API_KEY}** | De eindpunt sleutel van de `LUIS` resource op de pagina Azure- `LUIS` sleutels. | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
+| **{ENDPOINT_URI}** | De waarde van het facturerings eindpunt is beschikbaar op de `LUIS` pagina overzicht van Azure.| Zie [vereiste para meters](luis-container-howto.md#gathering-required-parameters) voor expliciete voor beelden verzamelen. |
 
 [!INCLUDE [subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
-> De `Eula`opties `Billing`, en `ApiKey` moeten worden opgegeven om de container uit te voeren. anders wordt de container niet gestart. Zie [facturering](luis-container-howto.md#billing)voor meer informatie.
+> De `Eula` `Billing` Opties, en `ApiKey` moeten worden opgegeven om de container uit te voeren. anders wordt de container niet gestart. Zie [facturering](luis-container-howto.md#billing)voor meer informatie.
 > De waarde ApiKey is de **sleutel** van de pagina sleutels en eind punten in de Luis-Portal en is ook beschikbaar op de `Cognitive Services` pagina Azure-resource sleutels. 
 
 ### <a name="basic-example"></a>Basis voorbeeld
@@ -151,7 +151,7 @@ InstrumentationKey={INSTRUMENTATION_KEY}
 
 ### <a name="logging-example"></a>Voor beeld van logboek registratie 
 
-Met de volgende opdracht stelt u het niveau `Logging:Console:LogLevel`van logboek registratie in,, om [`Information`](https://msdn.microsoft.com)het niveau van logboek registratie in te stellen. 
+Met de volgende opdracht stelt u het niveau van logboek registratie in, `Logging:Console:LogLevel` , om het niveau van logboek registratie in te stellen [`Information`](https://msdn.microsoft.com) . 
 
 ```console
 docker run --rm -it -p 5000:5000 --memory 6g --cpus 2 ^
@@ -168,4 +168,4 @@ Logging:Console:LogLevel:Default=Information
 
 * Meer [informatie over het installeren en uitvoeren van containers](luis-container-howto.md)
 * Raadpleeg [problemen oplossen](troubleshooting.md) voor het oplossen van problemen met betrekking tot de functionaliteit van Luis.
-* Meer [Cognitive Services containers](../cognitive-services-container-support.md) gebruiken
+* Gebruik meer [Cognitive Services-containers](../cognitive-services-container-support.md)

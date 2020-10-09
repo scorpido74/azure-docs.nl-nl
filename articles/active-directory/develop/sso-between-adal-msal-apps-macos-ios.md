@@ -13,10 +13,10 @@ ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
 ms.openlocfilehash: 7a8a1667ba1ca2a99c053c6941e3ba778299fd53
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80880747"
 ---
 # <a name="how-to-sso-between-adal-and-msal-apps-on-macos-and-ios"></a>Procedure: SSO tussen ADAL-en MSAL-apps in macOS en iOS
@@ -41,7 +41,7 @@ MSAL en ADAL gebruiken verschillende account-id's. ADAL maakt gebruik van UPN al
 
 Wanneer u een `MSALAccount` object ontvangt in het MSAL resultaat, bevat het een account-id in de `identifier` eigenschap. De toepassing moet deze id voor volgende stille aanvragen gebruiken.
 
-Daarnaast `identifier` `MSALAccount` bevat het object een id met de naam unplayable `username` . Die wordt omgezet `userId` in ADAL. `username`wordt niet beschouwd als een unieke id en kan op elk gewenst moment worden gewijzigd, zodat deze alleen mag worden gebruikt voor compatibiliteits scenario's met eerdere versies van ADAL. MSAL ondersteunt cache query's met ofwel `username` of `identifier` , waarbij query's `identifier` worden aanbevolen.
+Daarnaast `identifier` `MSALAccount` bevat het object een id met de naam unplayable `username` . Die wordt omgezet `userId` in ADAL. `username` wordt niet beschouwd als een unieke id en kan op elk gewenst moment worden gewijzigd, zodat deze alleen mag worden gebruikt voor compatibiliteits scenario's met eerdere versies van ADAL. MSAL ondersteunt cache query's met ofwel `username` of `identifier` , waarbij query's `identifier` worden aanbevolen.
 
 De volgende tabel bevat een overzicht van de verschillen tussen de account-id's tussen ADAL en MSAL:
 
@@ -49,7 +49,7 @@ De volgende tabel bevat een overzicht van de verschillen tussen de account-id's 
 | --------------------------------- | ------------------------------------------------------------ | --------------- | ------------------------------ |
 | id die kan worden afgespeeld            | `username`                                                   | `userId`        | `userId`                       |
 | unieke id die niet kan worden afgespeeld | `identifier`                                                 | `homeAccountId` | N.v.t.                            |
-| Geen account-id bekend               | Query's uitvoeren op alle accounts via `allAccounts:` API in`MSALPublicClientApplication` | N.v.t.             | N.v.t.                            |
+| Geen account-id bekend               | Query's uitvoeren op alle accounts via `allAccounts:` API in `MSALPublicClientApplication` | N.v.t.             | N.v.t.                            |
 
 Dit is de `MSALAccount` interface die die id's biedt:
 
@@ -99,9 +99,9 @@ ADAL 2.7. x retourneert de `homeAccountId` in het `ADUserInformation` object in 
 @property (readonly) NSString *homeAccountId;
 ```
 
-`homeAccountId`in ADAL is equivalent van `identifier` in MSAL. U kunt deze id opslaan voor gebruik in MSAL voor het opzoeken van accounts met de `accountForIdentifier:error:` API.
+`homeAccountId` in ADAL is equivalent van `identifier` in MSAL. U kunt deze id opslaan voor gebruik in MSAL voor het opzoeken van accounts met de `accountForIdentifier:error:` API.
 
-#### <a name="adals-userid"></a>Van ADAL`userId`
+#### <a name="adals-userid"></a>Van ADAL `userId`
 
 Als `homeAccountId` niet beschikbaar is of als u alleen de niet-berekenings-id hebt, kunt u ADAL gebruiken `userId` om het account in MSAL te zoeken.
 

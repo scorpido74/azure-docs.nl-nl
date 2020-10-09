@@ -11,10 +11,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 4ec7f4242e5046e90fdf0eb8c6c0579f402e4f55
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76721350"
 ---
 # <a name="team-data-science-process-group-manager-tasks"></a>Taken voor groeps beheer voor team data Science process
@@ -41,7 +41,7 @@ In de volgende zelf studie worden de stappen in detail besproken.
 
 1. Ga naar [VisualStudio.Microsoft.com](https://visualstudio.microsoft.com), selecteer **in** de rechter bovenhoek aanmelden en meld u aan bij uw Microsoft-account. 
    
-   ![Meld u aan bij uw Microsoft-account](./media/group-manager-tasks/signinvs.png)
+   ![Aanmelden bij uw Microsoft-account](./media/group-manager-tasks/signinvs.png)
    
    Als u geen Microsoft-account hebt, selecteert u **nu registreren**, maakt u een Microsoft-account en meldt u zich aan met dit account. Als uw organisatie een Visual Studio-abonnement heeft, meldt u zich aan met de referenties voor dat abonnement.
    
@@ -188,7 +188,7 @@ Kopieer of *kloon* eerst de opslag plaats naar uw lokale machine.
    
 1. Ga naar de map die u hebt gemaakt.
    
-1. Voer de opdracht in Git Bash uit.`git clone <clone URL>.`
+1. Voer de opdracht in Git Bash uit. `git clone <clone URL>.`
    
    Een van de volgende opdrachten kloont bijvoorbeeld de **GroupUtilities** -opslag plaats naar de *GroupCommon* -map op uw lokale computer. 
    

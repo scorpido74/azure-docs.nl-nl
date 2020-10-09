@@ -12,10 +12,10 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 753892790a6f6b898b48d955e6806837967f3e92
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80882961"
 ---
 # <a name="desktop-app-that-calls-web-apis-call-a-web-api"></a>Bureau blad-app die web-Api's aanroept: een web-API aanroepen
@@ -64,7 +64,7 @@ JSONObject responseObject = HttpClientHelper.processResponse(responseCode, respo
 
 ## <a name="call-a-web-api-in-msal-for-ios-and-macos"></a>Een web-API aanroepen in MSAL voor iOS en macOS
 
-De methoden voor het verkrijgen van tokens retour neren een `MSALResult` object. `MSALResult`beschrijft een `accessToken` eigenschap die kan worden gebruikt om een web-API aan te roepen. Voeg een toegangs token toe aan de HTTP-autorisatie-header voordat u de aanroep gaat gebruiken om toegang te krijgen tot de beveiligde web-API.
+De methoden voor het verkrijgen van tokens retour neren een `MSALResult` object. `MSALResult` beschrijft een `accessToken` eigenschap die kan worden gebruikt om een web-API aan te roepen. Voeg een toegangs token toe aan de HTTP-autorisatie-header voordat u de aanroep gaat gebruiken om toegang te krijgen tot de beveiligde web-API.
 
 Doel-C:
 
@@ -130,4 +130,4 @@ catch(MsalUiRequiredException ex)
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Naar productie verplaatsen](scenario-desktop-production.md)
+> [Verplaatsen naar productie](scenario-desktop-production.md)

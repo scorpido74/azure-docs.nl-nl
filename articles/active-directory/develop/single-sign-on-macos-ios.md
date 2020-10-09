@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
 ms.openlocfilehash: 25389348476552298ddb947ccb59acb8b3d5bc57
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80881245"
 ---
 # <a name="how-to-configure-sso-on-macos-and-ios"></a>Procedure: SSO configureren in macOS en iOS
@@ -67,9 +67,9 @@ Voor het micro soft Identity-platform om te weten welke toepassingen tokens kunn
 
 De manier waarop het micro soft Identity-platform voor apps die gebruikmaken van dezelfde toepassings-ID, wordt door de **omleidings-uri's**verteld. Voor elke toepassing kunnen meerdere omleidings-Uri's zijn geregistreerd in de onboarding-Portal. Elke app in uw suite krijgt een andere omleidings-URI. Bijvoorbeeld:
 
-App1 omleidings-URI:`msauth.com.contoso.mytestapp1://auth`  
-App2 omleidings-URI:`msauth.com.contoso.mytestapp2://auth`  
-App3 omleidings-URI:`msauth.com.contoso.mytestapp3://auth`  
+App1 omleidings-URI: `msauth.com.contoso.mytestapp1://auth`  
+App2 omleidings-URI: `msauth.com.contoso.mytestapp2://auth`  
+App3 omleidings-URI: `msauth.com.contoso.mytestapp3://auth`  
 
 > [!IMPORTANT]
 > De indeling van omleidings-uri's moet compatibel zijn met de indeling MSAL ondersteunt, die wordt beschreven in de [vereisten voor MSAL omleidings-URI-indeling](redirect-uris-ios.md#msal-redirect-uri-format-requirements).
@@ -97,8 +97,8 @@ Wanneer u de rechten op de juiste manier hebt ingesteld, ziet u een `entitlement
 #### <a name="add-a-new-keychain-group"></a>Een nieuwe sleutel keten groep toevoegen
 
 Voeg een nieuwe sleutel keten groep toe aan de project **mogelijkheden**. De sleutel keten groep moet:
-* `com.microsoft.adalcache`op iOS 
-* `com.microsoft.identity.universalstorage`in macOS.
+* `com.microsoft.adalcache` op iOS 
+* `com.microsoft.identity.universalstorage` in macOS.
 
 ![voor beeld van sleutel hanger](media/single-sign-on-macos-ios/keychain-example.png)
 

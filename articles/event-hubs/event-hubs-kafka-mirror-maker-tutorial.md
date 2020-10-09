@@ -4,10 +4,10 @@ description: Dit artikel bevat informatie over het gebruik van Kafka MirrorMaker
 ms.topic: how-to
 ms.date: 06/23/2020
 ms.openlocfilehash: aea8ebcfa65d5f4c90aa1908d03f0fcde8906bba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85320187"
 ---
 # <a name="use-kafka-mirrormaker-with-event-hubs-for-apache-kafka"></a>Gebruik Kafka MirrorMaker met Event Hubs voor Apache Kafka
@@ -17,7 +17,7 @@ Deze zelf studie laat zien hoe u een Kafka-Broker kunt spie gelen in een Event H
    ![Kafka MirrorMaker met Event Hubs](./media/event-hubs-kafka-mirror-maker-tutorial/evnent-hubs-mirror-maker1.png)
 
 > [!NOTE]
-> Dit voor beeld is beschikbaar op [github](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/mirror-maker)
+> Dit voorbeeld is beschikbaar op [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/mirror-maker)
 
 
 In deze zelfstudie leert u het volgende:
@@ -39,10 +39,10 @@ Het volgende moet zijn geïnstalleerd om deze zelfstudie te voltooien:
 
 * Lees het artikel [Event Hubs voor Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md) door. 
 * Een Azure-abonnement. Als u nog geen account hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) voordat u begint.
-* [Java Development Kit (JDK) 1.7+](https://aka.ms/azure-jdks)
+* [Java Development Kit (JDK) 1.7 +](https://aka.ms/azure-jdks)
     * Voer op Ubuntu `apt-get install default-jdk` uit om de JDK te installeren.
     * Zorg dat de omgevingsvariabele JAVA_HOME verwijst naar de map waarin de JDK is geïnstalleerd.
-* [Download](https://maven.apache.org/download.cgi) en [installeer](https://maven.apache.org/install.html) een binair Maven-archief
+* Een binair archief van Maven [downloaden](https://maven.apache.org/download.cgi) en [installeren](https://maven.apache.org/install.html)
     * Op Ubuntu kunt u `apt-get install maven` uitvoeren om Maven te installeren.
 * [Git](https://www.git-scm.com/downloads)
     * Op Ubuntu kunt u `sudo apt-get install git` uitvoeren om Git te installeren.
@@ -114,7 +114,7 @@ Als u wilt controleren of gebeurtenissen de Event Hub bereiken, raadpleegt u de 
 Wanneer MirrorMaker wordt uitgevoerd, worden alle gebeurtenissen die worden verzonden naar het bron Kafka-cluster ontvangen door het Kafka-cluster en de gespiegelde Event Hub. Door MirrorMaker en een Event Hubs Kafka-eind punt te gebruiken, kunt u een bestaande Kafka-pijp lijn migreren naar de beheerde Azure Event Hubs-service zonder dat u het bestaande cluster wijzigt of doorlopende gegevens stroom onderbreekt.
 
 ## <a name="samples"></a>Voorbeelden
-Bekijk de volgende voor beelden op GitHub:
+Bekijk de volgende voorbeelden op GitHub:
 
 - [Voorbeeld code voor deze zelf studie op GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/mirror-maker)
 - [Azure Event Hubs Kafka MirrorMaker uitgevoerd op een Azure-container exemplaar](https://github.com/djrosanova/EventHubsMirrorMaker)

@@ -12,10 +12,10 @@ ms.date: 08/20/2019
 ms.author: negoe
 ms.custom: aaddev
 ms.openlocfilehash: eeba01a609a1a21ed564c0b9cb78a28a4ad5c95a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80882315"
 ---
 # <a name="single-page-application-acquire-a-token-to-call-an-api"></a>Toepassing met één pagina: een Token ophalen om een API aan te roepen
@@ -24,8 +24,8 @@ Het patroon voor het verkrijgen van tokens voor Api's met MSAL.js is om eerst ee
 
 De aanvragen voor het Silent-token voor Azure AD kunnen mislukken vanwege een verlopen Azure AD-sessie of een wijziging in een wacht woord. In dat geval kunt u een van de interactieve methoden (waarmee de gebruiker wordt gevraagd) aanroepen om tokens te verkrijgen:
 
-* [Pop-upvenster](#acquire-a-token-with-a-pop-up-window), met behulp van`acquireTokenPopup`
-* [Omleiden](#acquire-a-token-with-a-redirect)met`acquireTokenRedirect`
+* [Pop-upvenster](#acquire-a-token-with-a-pop-up-window), met behulp van `acquireTokenPopup`
+* [Omleiden](#acquire-a-token-with-a-redirect)met `acquireTokenRedirect`
 
 ## <a name="choose-between-a-pop-up-or-redirect-experience"></a>Kiezen tussen een pop-up-of omleidings ervaring
 
@@ -70,7 +70,7 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 
 De MSAL-hoek wrapper biedt de HTTP-Interceptor, waarmee automatisch toegangs tokens op de achtergrond worden opgehaald en worden gekoppeld aan de HTTP-aanvragen voor Api's.
 
-U kunt de scopes voor Api's opgeven in de `protectedResourceMap` configuratie optie. `MsalInterceptor`vraagt deze bereiken bij het automatisch ophalen van tokens.
+U kunt de scopes voor Api's opgeven in de `protectedResourceMap` configuratie optie. `MsalInterceptor` vraagt deze bereiken bij het automatisch ophalen van tokens.
 
 ```javascript
 // app.module.ts

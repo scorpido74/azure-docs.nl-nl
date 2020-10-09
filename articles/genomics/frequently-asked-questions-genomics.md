@@ -10,10 +10,10 @@ ms.service: genomics
 ms.topic: troubleshooting
 ms.date: 12/07/2017
 ms.openlocfilehash: e8806bc4f761214e6740a22093b7e18030fdf881
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76986033"
 ---
 # <a name="microsoft-genomics-common-questions"></a>Microsoft Genomics: algemene vragen
@@ -25,7 +25,7 @@ Dit artikel bevat een overzicht van de belangrijkste query's die u mogelijk hebt
 Geef in het config.txt bestand van de Microsoft Genomics-service de process_name in op `gatk4` . Houd er rekening mee dat u rekening moet houden met de normale facturerings tarieven.
 
 ## <a name="how-do-i-enable-output-compression"></a>Uitvoer compressie Hoe kan ik inschakelen?
-U kunt de uitvoer-vcf of gvcf comprimeren met een optioneel argument voor uitvoer compressie. Dit komt overeen met `-bgzip` het uitvoeren van gevolgd door `-tabix` op de VCF-of gvcf-uitvoer, om `.gz` bestanden (bgzip output) en `.tbi` (tabix output) te produceren. `bgzip`Hiermee comprimeert u het VCF-of gvcf-bestand en `tabix` maakt u een index voor het gecomprimeerde bestand. Het argument is een Booleaanse waarde, die standaard is ingesteld op de `false` vcf-uitvoer, en voor `true` gcvf-uitvoer. Als u wilt gebruiken op de opdracht regel, geeft u `-bz` of `--bgzip-output` als `true` (Voer bgzip en tabix) of uit `false` . Als u dit argument wilt gebruiken in het config.txt bestand, voegt `bgzip_output: true` `bgzip_output: false` u of toe aan het bestand.
+U kunt de uitvoer-vcf of gvcf comprimeren met een optioneel argument voor uitvoer compressie. Dit komt overeen met `-bgzip` het uitvoeren van gevolgd door `-tabix` op de VCF-of gvcf-uitvoer, om `.gz` bestanden (bgzip output) en `.tbi` (tabix output) te produceren. `bgzip` Hiermee comprimeert u het VCF-of gvcf-bestand en `tabix` maakt u een index voor het gecomprimeerde bestand. Het argument is een Booleaanse waarde, die standaard is ingesteld op de `false` vcf-uitvoer, en voor `true` gcvf-uitvoer. Als u dit wilt gebruiken op de opdrachtregel, geeft u `-bz` of `--bgzip-output` op als `true` (voer bgzip en tabix uit) of `false`. Als u dit argument wilt gebruiken in het bestand config.txt, voegt u `bgzip_output: true` of `bgzip_output: false` toe aan het bestand.
 
 ## <a name="what-is-the-sla-for-microsoft-genomics"></a>Wat is de SLA voor Microsoft Genomics?
 Wij garanderen dat 99,9% van de tijd Microsoft Genomics service beschikbaar is voor het ontvangen van werk stroom API-aanvragen. Zie [Sla](https://azure.microsoft.com/support/legal/sla/genomics/v1_0/)voor meer informatie.
@@ -63,7 +63,7 @@ De sleutel van uw opslag account wordt gebruikt om toegangs tokens voor de korte
 
 Deze verwijzingen worden ondersteund:
 
- |Verwijzing              | Waarde van`-pa/--process-args` |
+ |Naslaginformatie              | Waarde van `-pa/--process-args` |
  |:-------------         |:-------------                 |
  |b37                    | `R=b37m1`                     |
  |hg38                   | `R=hg38m1`                    |      

@@ -12,25 +12,25 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: a043a1655950f3ed7688e59352f8a912146e12c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76720449"
 ---
 # <a name="the-team-data-science-process-lifecycle"></a>De levens cyclus van het team data Science-proces
 
 Het team data Science process (TDSP) biedt een aanbevolen levens cyclus die u kunt gebruiken om uw projecten met een gegevens wetenschap te structureren. De levens cyclus geeft een overzicht van de volledige stappen die geslaagde projecten volgen. Als u een andere data Science-levens cyclus gebruikt, zoals het proces voor de verwerking van de industrie standaard voor gegevens analyse [(scherp-DM)](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining), kennis detectie in data bases [(KDD)](https://wikipedia.org/wiki/Data_mining#Process)of het eigen aangepaste proces van uw organisatie, kunt u nog steeds de op taken gebaseerde TDSP gebruiken. 
 
-Deze levens cyclus is ontworpen voor data-Science-projecten die bedoeld zijn om te worden verzonden als onderdeel van intelligente toepassingen. Deze toepassingen implementeren machine learning of kunst matige intelligentie modellen voor predictive analytics. Experimentele projecten voor gegevens wetenschap en Improvised Analytics-projecten kunnen ook profiteren van het gebruik van dit proces. Voor deze projecten zijn echter enkele van de stappen die hier worden beschreven, mogelijk niet nodig. 
+Deze levens cyclus is ontworpen voor data-Science-projecten die bedoeld zijn om te worden verzonden als onderdeel van intelligente toepassingen. Met deze toepassingen worden modellen voor machine learning of kunstmatige intelligentie geïmplementeerd voor predictive analytics. Experimentele projecten voor gegevens wetenschap en Improvised Analytics-projecten kunnen ook profiteren van het gebruik van dit proces. Voor deze projecten zijn echter enkele van de stappen die hier worden beschreven, mogelijk niet nodig. 
 
 ## <a name="five-lifecycle-stages"></a>Vijf levenscyclus fasen
 
 De levens cyclus van TDSP bestaat uit vijf hoofd fasen die iteratief worden uitgevoerd. Deze fasen zijn:
 
    1. [Inzicht in het bedrijf](lifecycle-business-understanding.md)
-   2. [Gegevens verzamelen en begrijpen](lifecycle-data.md)
-   3. [Modellen maken](lifecycle-modeling.md)
+   2. [Gegevens verkrijgen en meer informatie](lifecycle-data.md)
+   3. [Modelleren](lifecycle-modeling.md)
    4. [Implementatie](lifecycle-deployment.md)
    5. [Aanvaarding van de klant](lifecycle-acceptance.md)
 

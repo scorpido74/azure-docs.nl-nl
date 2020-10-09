@@ -12,10 +12,10 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: ea564eb69f102d8e548bf8ae9a626598fa264cd4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80882876"
 ---
 # <a name="desktop-app-that-calls-web-apis-move-to-production"></a>Bureau blad-app voor het aanroepen van web-Api's: verplaatsen naar productie
@@ -35,8 +35,8 @@ U kunt geen token voor meerdere resources tegelijk ophalen met het micro soft Id
 
 U kunt bijvoorbeeld twee resources hebben met twee bereiken:
 
-- `https://mytenant.onmicrosoft.com/customerapi`met de scopes `customer.read` en`customer.write`
-- `https://mytenant.onmicrosoft.com/vendorapi`met de scopes `vendor.read` en`vendor.write`
+- `https://mytenant.onmicrosoft.com/customerapi` met de scopes `customer.read` en `customer.write`
+- `https://mytenant.onmicrosoft.com/vendorapi` met de scopes `vendor.read` en `vendor.write`
 
 In dit voor beeld gebruikt u de `.WithAdditionalPromptToConsent` modificator met de `extraScopesToConsent` para meter.
 

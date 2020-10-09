@@ -10,10 +10,10 @@ ms.reviewer: klam, estfan
 ms.topic: conceptual
 ms.date: 08/18/2016
 ms.openlocfilehash: 100be6a4376883a4f2a91b1efd172242c1d19e19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80878388"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Concepten, terminologie en entiteiten in Azure Scheduler
@@ -38,7 +38,7 @@ De volgende entiteiten of resources worden door de REST API voor Azure Scheduler
 
 Op hoog niveau maakt de REST API van de Scheduler deze bewerkingen voor het beheren van entiteiten beschikbaar.
 
-### <a name="job-management"></a>Jobbeheer
+### <a name="job-management"></a>Taakbeheer
 
 Biedt ondersteuning voor bewerkingen voor het maken en bewerken van jobs. Alle jobs moeten behoren tot een bestaande jobverzameling. Er wordt er dus niet impliciet een gemaakt. Zie [Scheduler REST API - Jobs](https://docs.microsoft.com/rest/api/scheduler/jobs) voor meer informatie. Hier is het URI-adres voor deze bewerkingen:
 
@@ -82,15 +82,15 @@ Op hoog niveau bevat een Scheduler-job uit de volgende basisonderdelen:
 
 De job bevat ook door het systeem geleverde gegevens, zoals volgende geplande uitvoeringstijd van de job. De codedefinitie van de job is een object in de indeling JSON (JavaScript Object Notation). Deze bevat drie elementen:
 
-| Element | Vereist | Description | 
+| Element | Vereist | Beschrijving | 
 |---------|----------|-------------| 
-| [**startTime**](#start-time) | No | De begintijd voor de taak, met een tijdverschuiving in de [indeling ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) | 
-| [**optreden**](#action) | Yes | De details van de primaire actie, die een **errorAction**-object kan omvatten | 
-| [**errorAction**](#error-action) | No | De details van de secundaire actie, die wordt uitgevoerd als de eerste actie mislukt |
-| [**optreden**](#recurrence) | No | Details als frequentie en interval van een terugkerende job | 
-| [**retryPolicy**](#retry-policy) | No | De details voor hoe vaak een actie moet worden herhaald | 
-| [**overheids**](#state) | Yes | De details van de huidige status van de job |
-| [**hebben**](#status) | Yes | De details van de huidige status van de job, die onder controle staan van de service |
+| [**startTime**](#start-time) | Nee | De begintijd voor de taak, met een tijdverschuiving in de [indeling ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) | 
+| [**action**](#action) | Ja | De details van de primaire actie, die een **errorAction**-object kan omvatten | 
+| [**errorAction**](#error-action) | Nee | De details van de secundaire actie, die wordt uitgevoerd als de eerste actie mislukt |
+| [**optreden**](#recurrence) | Nee | Details als frequentie en interval van een terugkerende job | 
+| [**retryPolicy**](#retry-policy) | Nee | De details voor hoe vaak een actie moet worden herhaald | 
+| [**overheids**](#state) | Ja | De details van de huidige status van de job |
+| [**hebben**](#status) | Ja | De details van de huidige status van de job, die onder controle staan van de service |
 ||||
 
 Hier is een voorbeeld dat een uitgebreide jobdefinitie laat zien voor een HTTP-actie, waarvan meer details van het element in latere secties ter sprake komen: 
@@ -148,7 +148,7 @@ In het object **startTime** kunt u de begintijd en een tijdverschuiving aangeven
 
 <a name="action"></a>
 
-## <a name="action"></a>action
+## <a name="action"></a>actie
 
 De Scheduler-job voert een primaire **action** uit op basis van het opgegeven schema. Scheduler biedt ondersteuning voor HTTP-, opslagwachtrij-, Service Bus-onderwerp- en Service Bus-wachtrijacties. Als de primaire **action** mislukt, kan er een secundaire [**errorAction**](#erroraction) worden uitgevoerd die de fout afhandelt. Het object **action** beschrijft de volgende elementen:
 
@@ -249,15 +249,15 @@ Een job wordt herhaald als de JSON-definitie van de job het object **recurrence*
 | Eigenschap | Vereist | Waarde | Beschrijving | 
 |----------|----------|-------|-------------| 
 | **ingang** | Ja, als **recurrence** wordt gebruikt | Minuut, Uur, Dag, Week, Maand, Jaar | De tijdseenheid tussen de opgetreden gevallen | 
-| **bereik** | No | 1 tot en met 1000 | Een positief geheel getal dat het aantal tijdseenheden tussen de opgetreden gevallen bepaalt op basis van **frequency** | 
-| **planning** | No | Varieert | De details voor complexere en geavanceerdere schema's. Zie **hours**, **minutes**, **weekDays**, **months** en **monthDays** | 
-| **loopt** | No | 1 tot 24 | Een matrix met de uuraanduidingen voor wanneer de job moet worden uitgevoerd | 
-| **wachten** | No | 0 tot 59 | Een matrix met de minuutaanduidingen voor wanneer de job moet worden uitgevoerd | 
-| **months** | No | 1 tot 12 | Een matrix met de maanden voor wanneer de job moet worden uitgevoerd | 
-| **monthDays** | No | Varieert | Een matrix met de dagen van de maand voor wanneer de job moet worden uitgevoerd | 
-| **weekDays** | No | Maandag, Dinsdag, Woensdag, Donderdag, Vrijdag, Zaterdag, Zondag | Een matrix met de dagen van de week voor wanneer de job moet worden uitgevoerd | 
-| **aantal** | No | <*geen*> | Het aantal opgetreden gevallen. Het standaardgeval is oneindige herhaling. **count** en **endTime** mogen niet tegelijk worden gebruikt, maar er wordt voldaan aan de regel die het eerst wordt voltooid. | 
-| **endTime** | No | <*geen*> | De datum en tijd waarop het terugkeerpatroon moet worden gestopt. Het standaardgeval is oneindige herhaling. **count** en **endTime** mogen niet tegelijk worden gebruikt, maar er wordt voldaan aan de regel die het eerst wordt voltooid. | 
+| **bereik** | Nee | 1 tot en met 1000 | Een positief geheel getal dat het aantal tijdseenheden tussen de opgetreden gevallen bepaalt op basis van **frequency** | 
+| **planning** | Nee | Varieert | De details voor complexere en geavanceerdere schema's. Zie **hours**, **minutes**, **weekDays**, **months** en **monthDays** | 
+| **loopt** | Nee | 1 tot 24 | Een matrix met de uuraanduidingen voor wanneer de job moet worden uitgevoerd | 
+| **wachten** | Nee | 0 tot 59 | Een matrix met de minuutaanduidingen voor wanneer de job moet worden uitgevoerd | 
+| **maanden** | Nee | 1 tot 12 | Een matrix met de maanden voor wanneer de job moet worden uitgevoerd | 
+| **monthDays** | Nee | Varieert | Een matrix met de dagen van de maand voor wanneer de job moet worden uitgevoerd | 
+| **weekDays** | Nee | Maandag, Dinsdag, Woensdag, Donderdag, Vrijdag, Zaterdag, Zondag | Een matrix met de dagen van de week voor wanneer de job moet worden uitgevoerd | 
+| **aantal** | Nee | <*geen*> | Het aantal opgetreden gevallen. Het standaardgeval is oneindige herhaling. **count** en **endTime** mogen niet tegelijk worden gebruikt, maar er wordt voldaan aan de regel die het eerst wordt voltooid. | 
+| **endTime** | Nee | <*geen*> | De datum en tijd waarop het terugkeerpatroon moet worden gestopt. Het standaardgeval is oneindige herhaling. **count** en **endTime** mogen niet tegelijk worden gebruikt, maar er wordt voldaan aan de regel die het eerst wordt voltooid. | 
 ||||
 
 Zie [Complexe schema's en geavanceerde terugkeerpatronen bouwen](../scheduler/scheduler-advanced-complexity.md) voor meer informatie over deze elementen.
@@ -278,16 +278,16 @@ In het geval dat een Scheduler-job mislukt, kunt u een beleid voor opnieuw probe
 
 | Eigenschap | Vereist | Waarde | Beschrijving | 
 |----------|----------|-------|-------------| 
-| **retryType** | Yes | **Vast**, **Geen** | Bepaalt of u een beleid voor opnieuw proberen opgeeft (**vast**) of niet (**geen**). | 
-| **retryInterval** | No | PT30S | Geeft het interval en de frequentie op tussen herhaalpogingen in de [indeling ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). De minimumwaarde is 15 seconden; de maximumwaarde is 18 maanden. | 
-| **retryCount** | No | 4 | Geeft het aantal nieuwe herhaalpogingen op. De maximumwaarde is 20. | 
+| **retryType** | Ja | **Vast**, **Geen** | Bepaalt of u een beleid voor opnieuw proberen opgeeft (**vast**) of niet (**geen**). | 
+| **retryInterval** | Nee | PT30S | Geeft het interval en de frequentie op tussen herhaalpogingen in de [indeling ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). De minimumwaarde is 15 seconden; de maximumwaarde is 18 maanden. | 
+| **retryCount** | Nee | 4 | Geeft het aantal nieuwe herhaalpogingen op. De maximumwaarde is 20. | 
 ||||
 
 Zie [High availability and reliability](../scheduler/scheduler-high-availability-reliability.md) (Hoge beschikbaarheid en betrouwbaarheid) voor meer informatie.
 
 <a name="status"></a>
 
-## <a name="state"></a>state
+## <a name="state"></a>staat
 
 De status van een job is **Ingeschakeld**, **Uitgeschakeld**, **Voltooid** of **Mislukt**, bijvoorbeeld: 
 
