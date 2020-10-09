@@ -151,7 +151,7 @@
           href: iot-accelerators-remote-monitoring-telefonica-sim.md
     - name: Industriële IoT
       items:
-        - name: Verbonden Factory
+        - name: Verbonden factory
           items:
             - name: Het dashboard gebruiken
               href: iot-accelerators-connected-factory-dashboard.md
@@ -195,7 +195,7 @@
           href: iot-accelerators-device-simulation-protobuf.md
         - name: Een aangepaste Docker-installatiekopie implementeren
           href: iot-accelerators-device-simulation-deploy-image.md
-- name: Bronnen
+- name: Resources
   items:
     - name: Opties voor ondersteuning en hulp
       href: /azure/iot-fundamentals/iot-support-help
@@ -220,9 +220,9 @@
     - name: SDK's voor Azure IoT
       items:
         - name: IoT Service-SDK's
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
         - name: IoT Device-SDK's
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
     - name: Externe bewaking
       items:
         - name: Snelzoekgids voor ontwikkelaars (.NET)
