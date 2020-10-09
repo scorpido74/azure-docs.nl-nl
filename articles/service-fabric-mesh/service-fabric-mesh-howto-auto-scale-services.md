@@ -1,20 +1,20 @@
 ---
 title: Een app die wordt uitgevoerd in azure Service Fabric net automatisch schalen
 description: Meer informatie over het configureren van beleid voor automatisch schalen voor de services van een Service Fabric mesh-toepassing.
-author: dkkapur
+author: georgewallace
 ms.topic: conceptual
 ms.date: 12/07/2018
-ms.author: dekapur
+ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: fb72806dd7ba838ba7170bda409715bc074e1d99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f65fcfa76069a3de37fd3a76e38e38fba40e04ac
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75461971"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843053"
 ---
 # <a name="create-autoscale-policies-for-a-service-fabric-mesh-application"></a>Beleid voor automatisch schalen maken voor een Service Fabric mesh-toepassing
-Een van de belangrijkste voor delen van het implementeren van toepassingen naar Service Fabric net is de mogelijkheid om uw services eenvoudig in of uit te schalen. Dit moet worden gebruikt voor het verwerken van verschillende belasting hoeveelheden van uw services of het verbeteren van de beschik baarheid. U kunt uw services hand matig in-of uitschalen of het beleid voor automatisch schalen instellen.
+Een van de belangrijkste voordelen van het implementeren van toepassingen naar Service Fabric Mesh is de mogelijkheid voor u om services eenvoudig in of uit te schalen. Dit is handig voor het afhandelen van wisselende belastingen van uw services of het verbeteren van de beschikbaarheid. U kunt uw services hand matig in-of uitschalen of het beleid voor automatisch schalen instellen.
 
 Met [automatisch schalen](service-fabric-mesh-scalability.md#autoscaling-service-instances) kunt u het aantal service-exemplaren dynamisch schalen (horizon taal schalen). Automatisch schalen biedt een fantastische elasticiteit en maakt het inrichten of verwijderen van service-exemplaren mogelijk op basis van CPU-of geheugen gebruik.
 

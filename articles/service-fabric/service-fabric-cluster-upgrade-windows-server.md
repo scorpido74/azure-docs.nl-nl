@@ -1,16 +1,14 @@
 ---
 title: De versie van een zelfstandig cluster bijwerken
 description: Voer een upgrade uit voor de Azure Service Fabric-code die een zelfstandig Service Fabric cluster uitvoert.
-author: dkkapur
 ms.topic: conceptual
 ms.date: 11/09/2018
-ms.author: dekapur
-ms.openlocfilehash: 31712ce4f661b13802d9a0f2d798c1fe87fdebf3
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 5831fcffe718e4966c3444a29d35c5bbd55e5f57
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261002"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842934"
 ---
 # <a name="upgrade-the-service-fabric-version-that-runs-on-your-cluster"></a>Een upgrade uitvoeren van de Service Fabric versie die wordt uitgevoerd op uw cluster 
 
@@ -81,7 +79,7 @@ Wanneer u de cluster status waarschuwing ziet, werkt u het cluster bij:
     Get-ServiceFabricClusterUpgrade
     ```
 
-    Als niet aan het status beleid van het cluster wordt voldaan, wordt de upgrade teruggedraaid. Zie de documentatie voor [Start-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/start-servicefabricclusterupgrade)voor het opgeven van aangepaste status beleidsregels voor de start-ServiceFabricClusterUpgrade-opdracht.
+    Als niet aan het status beleid van het cluster wordt voldaan, wordt de upgrade teruggedraaid. Zie de documentatie voor [Start-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/start-servicefabricclusterupgrade)als u een aangepast status beleid wilt opgeven voor de Start-ServiceFabricClusterUpgrade opdracht.
 
     Nadat u de problemen hebt opgelost die tot het terugdraaien hebben geleid, start u de upgrade opnieuw door dezelfde stappen te volgen als hierboven beschreven.
 
@@ -155,7 +153,7 @@ Zie de Power shell-opdracht [Start-ServiceFabricClusterConfigurationUpgrade](/po
     Get-ServiceFabricClusterUpgrade
     ```
 
-    Als niet aan het status beleid van het cluster wordt voldaan, wordt de upgrade teruggedraaid. Zie de documentatie voor [Start-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/start-servicefabricclusterupgrade)voor het opgeven van aangepaste status beleidsregels voor de start-ServiceFabricClusterUpgrade-opdracht.
+    Als niet aan het status beleid van het cluster wordt voldaan, wordt de upgrade teruggedraaid. Zie de documentatie voor [Start-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/start-servicefabricclusterupgrade)als u een aangepast status beleid wilt opgeven voor de Start-ServiceFabricClusterUpgrade opdracht.
 
     Nadat u de problemen hebt opgelost die tot het terugdraaien hebben geleid, start u de upgrade opnieuw door dezelfde stappen te volgen als hierboven beschreven.
 

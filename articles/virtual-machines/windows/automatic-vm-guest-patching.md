@@ -7,14 +7,14 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: manayar
-ms.openlocfilehash: 47ac9fa91f391442691661a3ba03dd1f0d918601
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: 0a777b9008864368a6d1731cae0374e55a4c585f
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89669056"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842866"
 ---
-# <a name="preview-automatic-vm-guest-patching-for-windows-vms-in-azure"></a>Preview: automatische VM-gast patches voor Windows-Vm's in azure
+# <a name="preview-automatic-vm-guest-patching-for-windows-vms-in-azure"></a>Preview: Automatische VM-gastpatches voor Windows VM's in Azure
 
 Het inschakelen van automatische VM-gast patches voor uw Windows-Vm's helpt het update beheer te vereenvoudigen door een veilige en automatische reparatie van virtuele machines uit te voeren om beveiligings naleving te hand haven.
 
@@ -162,7 +162,7 @@ Zodra de functie is geregistreerd voor uw abonnement, voltooit u het aanmeldings
 ```azurecli-interactive
 az provider register --namespace Microsoft.Compute
 ```
-## <a name="enable-automatic-vm-guest-patching"></a>Automatische VM-gast patches inschakelen
+## <a name="enable-automatic-vm-guest-patching"></a>Automatische VM-gastpatches
 Als u automatische VM-gast patches wilt inschakelen, moet u ervoor zorgen dat de eigenschap *osProfile. windowsConfiguration. enableAutomaticUpdates* is ingesteld op *True* in de definitie van de VM-sjabloon. Deze eigenschap kan alleen worden ingesteld wanneer de virtuele machine wordt gemaakt.
 
 ### <a name="rest-api"></a>REST-API
@@ -251,8 +251,10 @@ De resultaten van de installatie van de patch voor uw virtuele machine kunnen wo
 ## <a name="on-demand-patch-assessment"></a>Evaluatie op aanvraag van patches
 Als automatische VM-gast patches al is ingeschakeld voor uw virtuele machine, wordt een periodieke patch-evaluatie uitgevoerd op de VM tijdens de daluren van de VM. Dit proces wordt automatisch uitgevoerd en de resultaten van de laatste evaluatie kunnen worden gecontroleerd via de instantie weergave van de virtuele machine, zoals eerder in dit document is beschreven. U kunt op elk gewenst moment een patch evaluatie op aanvraag voor uw virtuele machine activeren. Het kan een paar minuten duren voordat de patch-evaluatie is voltooid en de status van de laatste evaluatie is bijgewerkt op de instantie weergave van de virtuele machine.
 
+Het inschakelen van de Preview-functionaliteit vereist eenmalige aanmelding voor de functie *InGuestPatchVMPreview* per abonnement. De preview-versie van de functie voor patch evaluatie op aanvraag kan worden ingeschakeld na het [voorzienings proces](automatic-vm-guest-patching.md#requirements-for-enabling-automatic-vm-guest-patching) dat eerder is beschreven voor automatische VM-gast patches.
+
 > [!NOTE]
->Met patch evaluatie op aanvraag wordt niet automatisch de patch geactiveerd die is geïnstalleerd. Geoordeelde en toepasselijke patches voor de virtuele machine worden alleen geïnstalleerd tijdens de piek uren van de virtuele machine, volgens het proces voor de beschik baarheid-eerste patches dat eerder in dit document is beschreven.
+>Met patch evaluatie op aanvraag wordt niet automatisch de installatie van de patch geactiveerd. Geoordeelde en toepasselijke patches voor de virtuele machine worden alleen geïnstalleerd tijdens de piek uren van de virtuele machine, volgens het proces voor de beschik baarheid-eerste patches dat eerder in dit document is beschreven.
 
 ### <a name="rest-api"></a>REST-API
 ```

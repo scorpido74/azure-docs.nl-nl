@@ -1,17 +1,17 @@
 ---
 title: Een op Azure Files gebaseerd volume gebruiken in een Service Fabric mesh-app
 description: Meer informatie over het opslaan van de status in een Azure Service Fabric mesh-toepassing door een Azure Files op basis van een volume in een service te koppelen met behulp van de Azure CLI.
-author: dkkapur
+author: georgewallace
 ms.topic: conceptual
 ms.date: 11/21/2018
-ms.author: dekapur
+ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 54edc242260479a8f48cc4aae91845041fc2d376
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 01cee3dc3f6b67aba1e6f8455ed7b538a44fc6f7
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260097"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842784"
 ---
 # <a name="mount-an-azure-files-based-volume-in-a-service-fabric-mesh-application"></a>Een op Azure Files gebaseerd volume koppelen in een Service Fabric mesh-toepassing 
 
@@ -21,7 +21,7 @@ Als u een volume in een service wilt koppelen, maakt u een volume bron in uw Ser
 
 ## <a name="prerequisites"></a>Vereisten
 > [!NOTE]
-> **Bekend probleem met de implementatie op Windows RS5 Development machine:** Er is een open bug met Power shell-cmdlet New-SmbGlobalMapping op RS5 Windows-machines die het koppelen van Azurefile-volumes voor komen. Hieronder vindt u een voorbeeld fout die wordt aangetroffen wanneer op AzureFile gebaseerd volume wordt gekoppeld op de lokale ontwikkel machine.
+> **Bekend probleem met de implementatie op Windows RS5 Development machine:** Er is een open bug met Power shell-cmdlet New-SmbGlobalMapping op RS5 Windows-machines waarmee het koppelen van Azurefile-volumes wordt voor komen. Hieronder vindt u een voorbeeld fout die wordt aangetroffen wanneer op AzureFile gebaseerd volume wordt gekoppeld op de lokale ontwikkel machine.
 ```
 Error event: SourceId='System.Hosting', Property='CodePackageActivation:counterService:EntryPoint:131884291000691067'.
 There was an error during CodePackage activation.System.Fabric.FabricException (-2147017731)
@@ -75,9 +75,9 @@ az storage account keys list --account-name <storageAccountName> --query "[?keyN
 ```
 
 U kunt deze waarden ook vinden in de [Azure Portal](https://portal.azure.com):
-* `<storageAccountName>`-Onder **opslag accounts**, de naam van het opslag account dat wordt gebruikt voor het maken van de bestands share.
-* `<storageAccountKey>`-Selecteer uw opslag account onder **opslag accounts** en selecteer vervolgens **toegangs sleutels** en gebruik de waarde onder **key1**.
-* `<fileShareName>`-Selecteer uw opslag account onder **opslag accounts** en selecteer vervolgens **bestanden**. De naam die u moet gebruiken, is de naam van de bestands share die u hebt gemaakt.
+* `<storageAccountName>` -Onder **opslag accounts**, de naam van het opslag account dat wordt gebruikt voor het maken van de bestands share.
+* `<storageAccountKey>` -Selecteer uw opslag account onder **opslag accounts** en selecteer vervolgens **toegangs sleutels** en gebruik de waarde onder **key1**.
+* `<fileShareName>` -Selecteer uw opslag account onder  **opslag accounts** en selecteer vervolgens **bestanden**. De naam die u moet gebruiken, is de naam van de bestands share die u hebt gemaakt.
 
 ## <a name="declare-a-volume-resource-and-update-the-service-resource-json"></a>Een volume resource declareren en de service resource (JSON) bijwerken
 
@@ -85,7 +85,7 @@ Voeg para meters toe voor de `<fileShareName>` , `<storageAccountName>` en en `<
 
 Maak een volume resource als een peer van de toepassings bron. Geef een naam en provider ("SFAzureFile") op om het op Azure Files gebaseerd volume te gebruiken). `azureFileParameters`Geef in de para meters voor de `<fileShareName>` , `<storageAccountName>` , en `<storageAccountKey>` waarden op die u in een vorige stap hebt gevonden.
 
-Als u het volume in uw service wilt koppelen, voegt `volumeRefs` u een toe aan het- `codePackages` element van de service.  `name`is de bron-ID voor het volume (of een implementatie sjabloon parameter voor de volume bron) en de naam van het volume dat is gedeclareerd in het bron bestand volume. yaml.  `destinationPath`is de lokale map waaraan het volume wordt gekoppeld.
+Als u het volume in uw service wilt koppelen, voegt `volumeRefs` u een toe aan het- `codePackages` element van de service.  `name` is de bron-ID voor het volume (of een implementatie sjabloon parameter voor de volume bron) en de naam van het volume dat is gedeclareerd in het bron bestand volume. yaml.  `destinationPath` is de lokale map waaraan het volume wordt gekoppeld.
 
 ```json
 {
@@ -210,7 +210,7 @@ volume:
         accountKey: <storageAccountKey>
 ```
 
-Werk het bestand *service. yaml* in de map *service resources* bij om het volume te koppelen aan uw service.  Voeg het `volumeRefs` element toe aan het- `codePackages` element.  `name`is de bron-ID voor het volume (of een implementatie sjabloon parameter voor de volume bron) en de naam van het volume dat is gedeclareerd in het bron bestand volume. yaml.  `destinationPath`is de lokale map waaraan het volume wordt gekoppeld.
+Werk het bestand *service. yaml* in de map *service resources* bij om het volume te koppelen aan uw service.  Voeg het `volumeRefs` element toe aan het- `codePackages` element.  `name` is de bron-ID voor het volume (of een implementatie sjabloon parameter voor de volume bron) en de naam van het volume dat is gedeclareerd in het bron bestand volume. yaml.  `destinationPath` is de lokale map waaraan het volume wordt gekoppeld.
 
 ```yaml
 ## Service definition ##

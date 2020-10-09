@@ -3,18 +3,18 @@ title: Virtuele netwerken
 titleSuffix: Azure Cognitive Services
 description: Configureer gelaagde netwerk beveiliging voor uw Cognitive Services-resources.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 05/26/2020
-ms.author: dapine
-ms.openlocfilehash: 808d42c821272882bbf0e01a36e49f7f10b30efa
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.date: 10/07/2020
+ms.author: aahi
+ms.openlocfilehash: d320fcd0b7f9666da39dd1208efd9cdec04ad6b5
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88505024"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843138"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Virtuele Azure Cognitive Services-netwerken configureren
 
@@ -40,40 +40,29 @@ Netwerk regels worden op alle netwerk protocollen afgedwongen voor Azure Cogniti
 
 ## <a name="supported-regions-and-service-offerings"></a>Ondersteunde regio's en service aanbiedingen
 
-Virtuele netwerken (VNETs) worden ondersteund in [regio's waar Cognitive services beschikbaar zijn](https://azure.microsoft.com/global-infrastructure/services/). Als de cognitieve service niet wordt weer gegeven, ondersteunt deze momenteel geen virtuele netwerken.
+Virtuele netwerken (VNETs) worden ondersteund in [regio's waar Cognitive services beschikbaar zijn](https://azure.microsoft.com/global-infrastructure/services/). Cognitive Services ondersteunt service tags voor de configuratie van netwerk regels. De hieronder vermelde services zijn opgenomen in het **CognitiveServicesManagement** -service label.
 
 > [!div class="checklist"]
-> * [Anomaliedetectie](./anomaly-detector/index.yml)
-> * [Computer Vision](./computer-vision/index.yml)
-> * [Content Moderator](./content-moderator/index.yml)
-> * [Custom Vision](./custom-vision-service/index.yml)
-> * [Face](./face/index.yml)
-> * [Form Recognizer](./form-recognizer/index.yml)
-> * [Language Understanding](./luis/index.yml)
-> * [Personalizer](./personalizer/index.yml)
-> * [Tekstanalyse](./text-analytics/index.yml)
-> * [QnA Maker](./qnamaker/index.yml)
-> * [Translator Text](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#virtual-network-support)
-> * [Immersive Reader](./immersive-reader/index.yml)
+> * Anomaly Detector
+> * Computer Vision
+> * Content Moderator
+> * Custom Vision
+> * Face
+> * Form Recognizer
+> * Language Understanding (LUIS)
+> * Personalizer
+> * Tekstanalyse
+> * QnA Maker
+> * Translator Text
+> * Immersive Reader
 
-## <a name="service-tags"></a>Servicetags
+> [!NOTE]
+> Als u LUIS gebruikt, kunt u met de tag **CognitiveServicesManagement** alleen de service gebruiken met de SDK of de rest API. Als u de LUIS-Portal vanuit een virtueel netwerk wilt openen en gebruiken, moet u de volgende tags gebruiken:  
+> * **AzureResourceManager** 
+> * **CognitiveServicesManagement**
+> * **AzureActiveDirectory**
+> * **AzureFrontDoor. front-end**
 
-Cognitive Services ondersteunt service tags voor de configuratie van netwerk regels. De hieronder vermelde services zijn opgenomen in het **CognitiveServicesManagement** -service label.
-
-> [!div class="checklist"]
-> * [Anomaliedetectie](./anomaly-detector/index.yml)
-> * [Computer Vision](./computer-vision/index.yml)
-> * [Content Moderator](./content-moderator/index.yml)
-> * [Custom Vision](./custom-vision-service/index.yml)
-> * [Face](./face/index.yml)
-> * [Form Recognizer](./form-recognizer/index.yml)
-> * [Language Understanding (LUIS)](./luis/index.yml)
-> * [Personalizer](./personalizer/index.yml)
-> * [Tekstanalyse](./text-analytics/index.yml)
-> * [QnA Maker](./qnamaker/index.yml)
-> * [Translator](./translator/index.yml)
-> * [Speech-Service](./speech-service/index.yml)
-> * [Immersive Reader](./immersive-reader/index.yml)
 
 ## <a name="change-the-default-network-access-rule"></a>Standaardregel voor netwerktoegang wijzigen
 
@@ -86,7 +75,7 @@ Cognitive Services resources accepteren standaard verbindingen van clients in el
 
 U kunt de standaard regels voor netwerk toegang voor Cognitive Services resources beheren via de Azure Portal, Power shell of de Azure CLI.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure-portal](#tab/portal)
 
 1. Ga naar de Cognitive Services resource die u wilt beveiligen.
 
@@ -188,7 +177,7 @@ Cognitive Services resource en de virtuele netwerken die toegang hebben verleend
 
 U kunt regels voor virtuele netwerken voor Cognitive Services resources beheren via de Azure Portal, Power shell of de Azure CLI.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure-portal](#tab/portal)
 
 1. Ga naar de Cognitive Services resource die u wilt beveiligen.
 
@@ -364,7 +353,7 @@ Als u [ExpressRoute](../expressroute/expressroute-introduction.md) on-premises g
 
 U kunt IP-netwerk regels voor Cognitive Services resources beheren via de Azure Portal, Power shell of de Azure CLI.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure-portal](#tab/portal)
 
 1. Ga naar de Cognitive Services resource die u wilt beveiligen.
 

@@ -1,16 +1,14 @@
 ---
 title: Het zelfstandige Azure Service Fabric-cluster configureren
 description: Meer informatie over het configureren van uw zelfstandige of on-premises Azure Service Fabric-cluster.
-author: dkkapur
 ms.topic: conceptual
 ms.date: 11/12/2018
-ms.author: dekapur
-ms.openlocfilehash: e8a1fdfb23b6e0aee9b9bdd04f70c554824f4c35
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: fd93263b38340ce080cca1aecb98f3a599ff1861
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246568"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843155"
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>Configuratie-instellingen voor een zelfstandig Windows-cluster
 In dit artikel worden de configuratie-instellingen van een zelfstandige Azure Service Fabric-cluster beschreven die kunnen worden ingesteld in de *ClusterConfig.jsvoor* het bestand. U gebruikt dit bestand om informatie op te geven over de knoop punten van het cluster, beveiligings configuraties en de netwerk topologie in termen van fout-en upgrade domeinen.  Nadat u configuratie-instellingen hebt gewijzigd of toegevoegd, kunt u [een zelfstandig cluster maken](service-fabric-cluster-creation-for-windows-server.md) of [de configuratie van een zelfstandig cluster bijwerken](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -199,7 +197,7 @@ Alle beschik bare invoeg toepassingen kunnen worden weer gegeven in de [Naslag i
 Als u container ondersteuning wilt inschakelen voor zowel Windows Server-containers als Hyper-V-containers voor zelfstandige clusters, moet u de functie voor DNS toevoegen inschakelen.
 
 ## <a name="next-steps"></a>Volgende stappen
-Nadat u een volledigClusterConfig.jshebt voor het bestand dat is geconfigureerd *op basis van* uw zelfstandige cluster installatie, kunt u uw cluster implementeren. Volg de stappen in [een zelfstandige service Fabric cluster maken](service-fabric-cluster-creation-for-windows-server.md). 
+Nadat u een volledigClusterConfig.jshebt voor het bestand dat is geconfigureerd * op basis van* uw zelfstandige cluster installatie, kunt u uw cluster implementeren. Volg de stappen in [een zelfstandige service Fabric cluster maken](service-fabric-cluster-creation-for-windows-server.md). 
 
 Als u een zelfstandig cluster hebt geïmplementeerd, kunt u ook [de configuratie van een zelfstandig cluster bijwerken](service-fabric-cluster-config-upgrade-windows-server.md). 
 

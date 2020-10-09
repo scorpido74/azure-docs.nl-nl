@@ -7,12 +7,12 @@ ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 2bf369b784cddf307abc59d2b8766fc8a87e0985
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9653a584382584d982c55008a6e8547de28691b7
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74975343"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842849"
 ---
 # <a name="iot-hub-device-reprovisioning-concepts"></a>Concepten IoT Hub apparaten opnieuw inrichten
 
@@ -32,7 +32,7 @@ De ondersteuning voor het opnieuw inrichten binnen de Device Provisioning Servic
 
 De status gegevens van het apparaat bestaan uit de [dubbele](../iot-hub/iot-hub-devguide-device-twins.md) en apparaats mogelijkheden. Deze gegevens worden opgeslagen in het Device Provisioning service-exemplaar en de IoT-hub waaraan een apparaat is toegewezen.
 
-![Inrichten met Device Provisioning Service](./media/concepts-device-reprovisioning/dps-provisioning.png)
+![Diagram dat laat zien hoe het inrichten werkt met de Device Provisioning Service.](./media/concepts-device-reprovisioning/dps-provisioning.png)
 
 Wanneer een apparaat voor het eerst wordt ingericht met een Device Provisioning service-exemplaar, worden de volgende stappen uitgevoerd:
 
@@ -52,13 +52,13 @@ Afhankelijk van het scenario verzendt een apparaat doorgaans een aanvraag naar e
 
 * **Gegevens opnieuw inrichten en migreren**: dit beleid is de standaard instelling voor nieuwe inschrijvings vermeldingen. Met dit beleid wordt actie ondernomen wanneer apparaten die zijn gekoppeld aan de inschrijvings vermelding een nieuwe aanvraag verzenden (1). Afhankelijk van de configuratie van de registratie vermelding, kan het apparaat opnieuw worden toegewezen aan een andere IoT-hub. Als het apparaat IoT hubs wijzigt, wordt de registratie van het apparaat met de eerste IoT-hub verwijderd. De bijgewerkte Apparaatstatus van de eerste IoT-hub wordt gemigreerd naar de nieuwe IoT hub (2). Tijdens de migratie wordt de status van het apparaat gerapporteerd als **toewijzing**.
 
-    ![Inrichten met Device Provisioning Service](./media/concepts-device-reprovisioning/dps-reprovisioning-migrate.png)
+    ![Diagram dat laat zien dat een beleid actie onderneemt wanneer apparaten die zijn gekoppeld aan de inschrijvings vermelding een nieuwe aanvraag indienen.](./media/concepts-device-reprovisioning/dps-reprovisioning-migrate.png)
 
 * **Opnieuw inrichten en opnieuw instellen op de eerste configuratie**: dit beleid voert actie uit wanneer aan de inschrijvings vermelding een nieuwe inrichtings aanvraag wordt verzonden (1). Afhankelijk van de configuratie van de registratie vermelding, kan het apparaat opnieuw worden toegewezen aan een andere IoT-hub. Als het apparaat IoT hubs wijzigt, wordt de registratie van het apparaat met de eerste IoT-hub verwijderd. De initiële configuratie gegevens die het exemplaar van de inrichtings service dat is ontvangen toen het apparaat werd ingericht, worden geleverd aan de nieuwe IoT hub (2). Tijdens de migratie wordt de status van het apparaat gerapporteerd als **toewijzing**.
 
     Dit beleid wordt vaak gebruikt voor het opnieuw instellen van de fabriek zonder IoT-hubs te wijzigen.
 
-    ![Inrichten met Device Provisioning Service](./media/concepts-device-reprovisioning/dps-reprovisioning-reset.png)
+    ![Diagram dat laat zien hoe een beleid actie onderneemt wanneer apparaten die zijn gekoppeld aan de inschrijvings vermelding een nieuwe inrichtings aanvraag indienen.](./media/concepts-device-reprovisioning/dps-reprovisioning-reset.png)
 
 * **Nooit opnieuw inrichten**: het apparaat wordt nooit opnieuw toegewezen aan een andere hub. Dit beleid is bedoeld voor het beheer van neerwaartse compatibiliteit.
 

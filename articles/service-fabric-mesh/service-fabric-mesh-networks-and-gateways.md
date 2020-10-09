@@ -1,17 +1,17 @@
 ---
 title: Inleiding tot Azure Service Fabric-netwerken
 description: Meer informatie over netwerken, gateways en intelligente verkeers routering in Service Fabric net.
-author: dkkapur
+author: georgewallace
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.author: dekapur
+ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: dc793e2991783cc9b7b46d92fcc8e0267feb529b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 372e8a46bfe588aa22b0f3be0ef8ae442fa342e2
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75459130"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842696"
 ---
 # <a name="introduction-to-networking-in-service-fabric-mesh-applications"></a>Inleiding tot netwerken in Service Fabric-mesh toepassingen
 In dit artikel worden verschillende soorten load balancers beschreven, hoe gateways het netwerk met uw toepassingen verbinden met andere netwerken en hoe verkeer wordt gerouteerd tussen de services in uw toepassingen.

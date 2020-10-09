@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/04/2020
 ms.author: yelevin
-ms.openlocfilehash: 3f59fea9f6d96f6e259a47c75bcfb0fd0be76d34
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 63a9a6dc9f052c01a7440f616f0baeaab083ad73
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91826555"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843070"
 ---
 # <a name="tutorial-visualize-and-monitor-your-data"></a>Zelfstudie: Uw gegevens visualiseren en bewaken
 
@@ -62,7 +62,7 @@ Deze zelf studie helpt u bij het visualiseren van uw gegevens in azure Sentinel.
 ## <a name="create-new-workbook"></a>Nieuwe werkmap maken
 
 1. Ga naar **werkmappen** en selecteer vervolgens **werkmap toevoegen** om een nieuwe werkmap helemaal opnieuw te maken.
-  ![Ga naar werkmappen](./media/tutorial-monitor-data/create-workbook.png)
+  ![Scherm opname van het nieuwe werk blad.](./media/tutorial-monitor-data/create-workbook.png)
 
 1. Als u de werkmap wilt bewerken, selecteert u **bewerken**en voegt u indien nodig tekst, query's en para meters toe. Zie [interactieve rapporten maken met Azure monitor werkmappen](../azure-monitor/platform/workbooks-overview.md)voor meer informatie over het aanpassen van de werkmap. 
 
@@ -72,7 +72,7 @@ Deze zelf studie helpt u bij het visualiseren van uw gegevens in azure Sentinel.
 
 1. Als u wilt dat anderen in uw organisatie de werkmap kunnen gebruiken, klikt u onder **Opslaan om** **gedeelde rapporten**te selecteren. Als u wilt dat deze werkmap alleen voor u beschikbaar is, selecteert u **mijn rapporten**.
 
-1. Als u wilt scha kelen tussen werkmappen in uw werk ruimte, kunt u **Open** ![ Switch-werkmappen selecteren ](./media/tutorial-monitor-data/switch.png) in het bovenste deel venster van een werkmap. In het venster dat aan de rechter kant wordt geopend, schakelt u tussen werkmappen.
+1. Als u wilt scha kelen tussen werkmappen in uw werk ruimte, kunt u pictogram **openen** selecteren ![ om een werkmap te openen. ](./media/tutorial-monitor-data/switch.png) in het bovenste deel venster van een werkmap. In het venster dat aan de rechter kant wordt geopend, schakelt u tussen werkmappen.
 
    ![Scha kelen tussen werkmappen](./media/tutorial-monitor-data/switch-workbooks.png)
 

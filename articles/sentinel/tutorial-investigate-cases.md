@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 4ef08ac8d386bd8a28dce38cb53aed31d79b37a2
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 648d456534e86075a243a84ac0485d95a7f28479
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566332"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843104"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>Zelf studie: incidenten onderzoeken met Azure Sentinel
 
@@ -119,11 +119,11 @@ Zodra u een bepaald incident hebt opgelost (bijvoorbeeld wanneer uw onderzoek de
 - Onjuist positieve-onjuiste gegevens
 - Onbepaald
 
-:::image type="content" source="media/tutorial-investigate-cases/closing-reasons-dropdown.png" alt-text="{ALT-tekst}":::
+:::image type="content" source="media/tutorial-investigate-cases/closing-reasons-dropdown.png" alt-text="Scherm opname van de classificaties die beschikbaar zijn in de lijst classificatie selecteren.":::
 
 Nadat u de juiste classificatie hebt gekozen, voegt u een beschrijvende tekst in het veld **Opmerking** toe. Dit is handig in het geval dat u terug naar dit incident moet verwijzen. Klik op **Toep assen** wanneer u klaar bent en het incident wordt gesloten.
 
-:::image type="content" source="media/tutorial-investigate-cases/closing-reasons-comment-apply.png" alt-text="{ALT-tekst}":::
+:::image type="content" source="media/tutorial-investigate-cases/closing-reasons-comment-apply.png" alt-text="Scherm opname van de classificaties die beschikbaar zijn in de lijst classificatie selecteren.":::
 
 ## <a name="next-steps"></a>Volgende stappen
 In deze zelf studie hebt u geleerd hoe u aan de slag gaat met het onderzoeken van incidenten met behulp van Azure Sentinel. Ga verder met de zelf studie voor het [reageren op bedreigingen met behulp van automatische playbooks](tutorial-respond-threats-playbook.md).

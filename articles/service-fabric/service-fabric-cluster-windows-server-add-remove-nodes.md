@@ -1,19 +1,20 @@
 ---
 title: Knoop punten toevoegen aan of verwijderen uit een zelfstandig Service Fabric cluster
 description: Meer informatie over het toevoegen of verwijderen van knoop punten aan een Azure Service Fabric-cluster op een fysieke of virtuele machine met Windows Server, die on-premises of in elke Cloud kan zijn.
-author: dkkapur
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.author: dekapur
-ms.openlocfilehash: 9fa8b0970d198f9801c7661b9555db17cdf67b3c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 3e5f32274d2263bc5bf1bbec8f1626d519f8ca3f
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258715"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842917"
 ---
 # <a name="add-or-remove-nodes-to-a-standalone-service-fabric-cluster-running-on-windows-server"></a>Knooppunten toevoegen aan of verwijderen uit een zelfstandig Service Fabric-cluster dat wordt uitgevoerd op Windows Server
-Nadat u [uw zelfstandige service Fabric cluster op Windows Server-computers hebt gemaakt](service-fabric-cluster-creation-for-windows-server.md), kan het zijn dat uw (zakelijke) uw bedrijfs behoeften veranderen en moet u knoop punten toevoegen aan of verwijderen uit uw cluster. Dit artikel bevat gedetailleerde stappen om dit te doen. Houd er rekening mee dat de functionaliteit van het knoop punt toevoegen/verwijderen niet wordt ondersteund in lokale ontwikkel clusters.
+Nadat u [uw zelfstandige service Fabric cluster op Windows Server-computers hebt gemaakt](service-fabric-cluster-creation-for-windows-server.md), kan het nodig zijn om uw (zakelijke)-clusters te wijzigen en moet u knoop punten aan uw cluster toevoegen of eruit verwijderen, zoals wordt beschreven in dit artikel.
+
+> [!NOTE]
+> De functionaliteit voor het toevoegen en verwijderen van knoop punten wordt niet ondersteund in lokale ontwikkel clusters.
 
 ## <a name="add-nodes-to-your-cluster"></a>Knoop punten toevoegen aan uw cluster
 
@@ -29,7 +30,7 @@ Nadat u [uw zelfstandige service Fabric cluster op Windows Server-computers hebt
 
 5. Voer Power shell uit met verhoogde bevoegdheden en ga naar de locatie van het uitgepakte pakket.
 
-6. Voer het *AddNode.ps1* script uit met de para meters die het nieuwe knoop punt beschrijven dat moet worden toegevoegd. In het volgende voor beeld wordt een nieuw knoop punt met de naam VM5, met het type NodeType0 en IP-adres 182.17.34.52, toegevoegd aan UD1 en FD:/DC1/R0. `ExistingClusterConnectionEndPoint`is een verbindings eindpunt voor een knoop punt dat al aanwezig is in het bestaande cluster. Dit kan het IP-adres zijn van *een wille keurig* knoop punt in het cluster. 
+6. Voer het *AddNode.ps1* script uit met de para meters die het nieuwe knoop punt beschrijven dat moet worden toegevoegd. In het volgende voor beeld wordt een nieuw knoop punt met de naam VM5, met het type NodeType0 en IP-adres 182.17.34.52, toegevoegd aan UD1 en FD:/DC1/R0. `ExistingClusterConnectionEndPoint` is een verbindings eindpunt voor een knoop punt dat al aanwezig is in het bestaande cluster. Dit kan het IP-adres zijn van *een wille keurig* knoop punt in het cluster. 
 
    Niet beveiligd (prototypen):
 
@@ -132,7 +133,7 @@ Voeg de para meter ' NodesToBeRemoved ' toe aan de sectie ' Setup ' in de sectie
 > 
 
 ### <a name="remove-node-types-from-your-cluster"></a>Knooppunt typen uit uw cluster verwijderen
-Controleer voordat u een knooppunt type verwijdert, of er knoop punten zijn die verwijzen naar het knooppunt type. Verwijder deze knoop punten voordat u het bijbehorende knooppunt type verwijdert. Als alle bijbehorende knoop punten zijn verwijderd, kunt u het NodeType verwijderen uit de cluster configuratie en een configuratie-upgrade starten met [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps).
+Controleer voordat u een knooppunt type verwijdert of er knoop punten zijn die verwijzen naar het knooppunt type. Verwijder deze knoop punten voordat u het bijbehorende knooppunt type verwijdert. Als alle bijbehorende knoop punten zijn verwijderd, kunt u het NodeType verwijderen uit de cluster configuratie en een configuratie-upgrade starten met [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps).
 
 
 ### <a name="replace-primary-nodes-of-your-cluster"></a>Primaire knoop punten van het cluster vervangen
