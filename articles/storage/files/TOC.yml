@@ -5,7 +5,7 @@
   items:
     - name: Wat is Azure Files?
       href: storage-files-introduction.md
-- name: Quickstarts
+- name: Snelstartgidsen
   items:
     - name: Bestandsshares maken/gebruiken - Windows
       href: storage-files-quick-create-use-windows.md

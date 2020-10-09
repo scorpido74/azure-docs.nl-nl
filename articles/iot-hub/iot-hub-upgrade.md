@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: robinsh
 ms.openlocfilehash: 96c3a7b2cfda23f173f4caeff4fb7a92b1ddc438
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "61440206"
 ---
 # <a name="how-to-upgrade-your-iot-hub"></a>Een upgrade uitvoeren voor uw IoT-hub
@@ -35,7 +35,7 @@ Deze voor beelden zijn bedoeld om u te helpen begrijpen hoe u uw IoT-hub kunt aa
 
 ## <a name="upgrade-your-existing-iot-hub"></a>Uw bestaande IoT-hub bijwerken
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) en navigeer naar uw IOT-hub.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/) en ga naar uw IoT Hub.
 
 2. Selecteer **prijzen en schalen**.
 

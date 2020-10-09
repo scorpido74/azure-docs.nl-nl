@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: govindk
 ms.openlocfilehash: 9398eb4038afcd17788e750fcb5c27c76e9f3f44
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "66241085"
 ---
 # <a name="ip-firewall-in-azure-cosmos-db"></a>IP-firewall in Azure Cosmos DB
@@ -19,7 +19,7 @@ Voor het beveiligen van gegevens die zijn opgeslagen in uw account, ondersteunt 
 
 ## <a name="ip-access-control-overview"></a><a id="ip-access-control-overview"></a>Overzicht van IP-toegangs beheer
 
-Uw Azure Cosmos-account is standaard toegankelijk via internet, zolang de aanvraag vergezeld gaat van een geldig autorisatie token. Voor het configureren van toegangs beheer op basis van IP-beleid, moet de gebruiker de set IP-adressen of IP-adresbereiken in CIDR (Klasseloze route ring van het ene domein) opgeven die moet worden opgenomen als de lijst met toegestane client-Ip's om toegang te krijgen tot een opgegeven Azure Cosmos-account. Zodra deze configuratie is toegepast, ontvangen aanvragen die afkomstig zijn van computers buiten deze toegestane lijst, het antwoord 403 (verboden). Wanneer u IP-firewall gebruikt, is het raadzaam om Azure Portal toegang te geven tot uw account. Toegang is vereist om het gebruik van Data Explorer toe te staan en om de metrische gegevens voor uw account op te halen die worden weer gegeven op de Azure Portal. Wanneer u Data Explorer gebruikt, moet u niet alleen Azure Portal toegang geven tot uw account, maar ook uw firewall instellingen bijwerken om uw huidige IP-adres toe te voegen aan de firewall regels. Houd er rekening mee dat de wijzigingen van de firewall kunnen worden doorgevoerd in 15min. 
+Uw Azure Cosmos-account is standaard toegankelijk via internet, zolang de aanvraag vergezeld gaat van een geldig autorisatie token. Voor het configureren van toegangs beheer op basis van IP-beleid, moet de gebruiker de set IP-adressen of IP-adresbereiken in CIDR-formulier (Classloze Inter-Domain Routing) opgeven dat moet worden opgenomen als de lijst met toegestane client-Ip's om toegang te krijgen tot een bepaald Azure Cosmos-account. Zodra deze configuratie is toegepast, ontvangen aanvragen die afkomstig zijn van computers buiten deze toegestane lijst, het antwoord 403 (verboden). Wanneer u IP-firewall gebruikt, is het raadzaam om Azure Portal toegang te geven tot uw account. Toegang is vereist om het gebruik van Data Explorer toe te staan en om de metrische gegevens voor uw account op te halen die worden weer gegeven op de Azure Portal. Wanneer u Data Explorer gebruikt, moet u niet alleen Azure Portal toegang geven tot uw account, maar ook uw firewall instellingen bijwerken om uw huidige IP-adres toe te voegen aan de firewall regels. Houd er rekening mee dat de wijzigingen van de firewall kunnen worden doorgevoerd in 15min. 
 
 U kunt op IP gebaseerde firewalls combi neren met toegangs beheer voor subnetten en VNET. Door ze te combi neren, kunt u de toegang tot een bron met een openbaar IP-adres en/of van een specifiek subnet in VNET beperken. Zie [toegang Azure Cosmos DB bronnen vanuit virtuele netwerken](vnet-service-endpoint.md)voor meer informatie over het gebruik van het subnet en op VNET gebaseerd toegangs beheer.
 

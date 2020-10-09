@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 03/17/2019
 ms.author: scottwhi
 ms.openlocfilehash: 677f6089f649aae720a6303a7e1512e3c7ebeca7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "66390127"
 ---
 # <a name="how-to-use-ranking-to-display-bing-web-search-api-results"></a>De classificatie gebruiken om Bing Webzoekopdrachten-API resultaten weer te geven  
@@ -24,13 +24,13 @@ Elk zoek antwoord bevat een [RankingResponse](https://docs.microsoft.com/rest/ap
 
 Binnen elke groep (mainline of Sidebar) identificeert de [items](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankinggroup-items) matrix de volg orde waarin de inhoud moet worden weer gegeven. Elk item biedt de volgende twee manieren om het resultaat binnen een antwoord te identificeren.  
 
--   `answerType`en `resultIndex` het `answerType` veld geeft het antwoord aan (bijvoorbeeld webpagina of nieuws) en `resultIndex` identificeert een resultaat binnen het antwoord (bijvoorbeeld een nieuws artikel). De index is op basis van nul.  
+-   `answerType` en `resultIndex` het `answerType` veld geeft het antwoord aan (bijvoorbeeld webpagina of nieuws) en `resultIndex` identificeert een resultaat binnen het antwoord (bijvoorbeeld een nieuws artikel). De index is op basis van nul.  
 
--   `value`: Het `value` veld bevat een id die overeenkomt met de id van een antwoord of een resultaat binnen het antwoord. Het antwoord of de resultaten bevatten de ID, maar niet beide.  
+-   `value` : Het `value` veld bevat een id die overeenkomt met de id van een antwoord of een resultaat binnen het antwoord. Het antwoord of de resultaten bevatten de ID, maar niet beide.  
 
-Het gebruik van de ID is eenvoudiger te gebruiken omdat u alleen de classificatie-ID moet overeenkomen met de ID van een antwoord of een van de bijbehorende resultaten. Als een antwoord object een `id` veld bevat, worden alle resultaten van het antwoord samen weer gegeven. Als het `News` object bijvoorbeeld het `id` veld bevat, worden alle nieuws artikelen samen weer gegeven. Als het `News` `id` veld niet is opgenomen in het-object, bevat elk nieuws artikel `id` een veld en de rang orde van het bericht wordt de nieuws artikelen gemixen met de resultaten van andere antwoorden.  
+Het gebruik van de ID is eenvoudiger te gebruiken omdat u alleen de classificatie-ID moet overeenkomen met de ID van een antwoord of een van de bijbehorende resultaten. Als een antwoord object een `id` veld bevat, worden alle resultaten van het antwoord samen weer gegeven. Als het `News` object bijvoorbeeld het `id` veld bevat, worden alle nieuws artikelen samen weer gegeven. Als het `News` veld niet is opgenomen in het `id` -object, bevat elk nieuws artikel een `id` veld en de rang orde van het bericht wordt de nieuws artikelen gemixen met de resultaten van andere antwoorden.  
 
-Het `answerType` gebruik van `resultIndex` en is iets gecompliceerder. U gebruikt `answerType` om het antwoord te identificeren dat de resultaten bevat die moeten worden weer gegeven. Vervolgens gebruikt `resultIndex` u voor het indexeren van de resultaten van het antwoord om het resultaat weer te geven. (De `answerType` waarde is de naam van het veld in het object [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse) .) Als u wilt dat alle antwoord resultaten samen worden weer gegeven, bevat het positie-antwoord item niet het `resultIndex` veld.  
+Het gebruik van `answerType` en `resultIndex` is iets gecompliceerder. U gebruikt `answerType` om het antwoord te identificeren dat de resultaten bevat die moeten worden weer gegeven. Vervolgens gebruikt u `resultIndex` voor het indexeren van de resultaten van het antwoord om het resultaat weer te geven. (De `answerType` waarde is de naam van het veld in het object [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse) .) Als u wilt dat alle antwoord resultaten samen worden weer gegeven, bevat het positie-antwoord item niet het `resultIndex` veld.  
 
 ## <a name="ranking-response-example"></a>Voor beeld van een rang orde-antwoord
 

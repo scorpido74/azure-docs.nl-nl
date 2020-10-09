@@ -4,7 +4,7 @@
   items:
     - name: Wat is Azure Load Balancer?
       href: load-balancer-overview.md
-- name: Quickstarts
+- name: Snelstartgidsen
   items:
     - name: Een openbare load balancer maken - Portal
       href: quickstart-load-balancer-standard-public-portal.md

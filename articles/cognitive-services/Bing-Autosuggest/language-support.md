@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: scottwhi
 ms.openlocfilehash: 6fe2e78501024983544b399762fb936d86e5c9d5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "60547333"
 ---
 # <a name="language-and-region-support-for-the-bing-autosuggest-api"></a>Ondersteuning van talen en regio's voor de Automatische suggestie-API voor Bing
@@ -25,7 +25,7 @@ Hieronder vindt u een lijst met de talen die door Automatische suggestie-API voo
 |:----------- |:-------------:|
 | Arabisch      | `ar`          |
 | Chinees (volks Republiek China)     | `zh-CN`          |
-| Chinees (Hong Kong SAR)    | `zh-HK`          |
+| Chinees (Hongkong SAR)    | `zh-HK`          |
 | Chinees (Taiwan)     | `zh-TW`          |
 | Deens      | `da`          |
 | Nederlands (België)       | `nl-BE`          |
@@ -51,7 +51,7 @@ Hieronder vindt u een lijst met de talen die door Automatische suggestie-API voo
 | Italiaans     | `it`          |
 | Japans    | `ja`          |
 | Koreaans      | `ko`          |
-| Norwegian   | `no`          |
+| Noors   | `no`          |
 | Pools      | `pl`          |
 | Portugees (Brazilië)   | `pt-BR`|
 | Portugees (Portugal) | `pt-PT`|

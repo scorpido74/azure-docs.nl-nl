@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 11/20/2018
 ms.topic: conceptual
 ms.openlocfilehash: 1bd08596a30db7322a72b4269fddfe0b9df19119
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "61447167"
 ---
 # <a name="remote-monitoring-architectural-choices"></a>Architectuurkeuzes voor Externe bewaking
@@ -45,7 +45,7 @@ In deze sectie vindt u een overzicht van de technologie opties die zijn gemaakt 
 
 ![Kern diagram](./media/iot-accelerators-remote-monitoring-architectural-choices/subsystem.png)
 
-### <a name="cloud-gateway"></a>Cloud gateway
+### <a name="cloud-gateway"></a>Cloudgateway
 
 Azure IoT Hub wordt gebruikt als de Cloud gateway voor de externe bewakings oplossing. [IOT hub](https://azure.microsoft.com/services/iot-hub/) biedt veilige, bidirectionele communicatie met apparaten.
 

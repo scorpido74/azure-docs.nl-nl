@@ -13,10 +13,10 @@ ms.date: 03/04/2019
 ms.author: scottwhi
 ms.custom: seodec2018
 ms.openlocfilehash: 2936b94d7ba791b1a4e5a9b95aca3ca3ecdb5904
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "66383437"
 ---
 # <a name="get-trending-images-from-the-web"></a>Trend afbeeldingen ophalen van het web
@@ -88,9 +88,9 @@ Het antwoord bevat een [TrendingImages](https://docs.microsoft.com/rest/api/cogn
 }  
 ```  
 
-Elke tegel bevat een afbeelding en opties voor het ophalen van gerelateerde installatie kopieën. Als u de gerelateerde installatie kopieën wilt ophalen, kunt u `text` de query gebruiken om de [afbeeldingen zoeken-API](./search-the-web.md) aan te roepen en zelf de gerelateerde installatie kopieën weer te geven. U kunt ook de URL in `webSearchUrl` gebruiken om de pagina met zoek resultaten van de installatie kopie van Bing te maken. Deze bevat de gerelateerde installatie kopieën.
+Elke tegel bevat een afbeelding en opties voor het ophalen van gerelateerde installatie kopieën. Als u de gerelateerde installatie kopieën wilt ophalen, kunt u de query gebruiken `text` om de [afbeeldingen zoeken-API](./search-the-web.md) aan te roepen en zelf de gerelateerde installatie kopieën weer te geven. U kunt ook de URL in gebruiken `webSearchUrl` om de pagina met zoek resultaten van de installatie kopie van Bing te maken. Deze bevat de gerelateerde installatie kopieën.
 
-Als u de Afbeeldingen zoeken-API aanroept om de gerelateerde installatie kopieën op te halen, stelt u de [id-](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#id) query parameter in op de id in het `id` veld. Als u de ID opgeeft, zorgt u ervoor dat het antwoord de afbeelding bevat (de eerste afbeelding in het antwoord) en de bijbehorende installatie kopieën. Stel ook de para meter [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference) query in op de tekst in `query` het veld `text` van het object.
+Als u de Afbeeldingen zoeken-API aanroept om de gerelateerde installatie kopieën op te halen, stelt u de [id-](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#id) query parameter in op de id in het `id` veld. Als u de ID opgeeft, zorgt u ervoor dat het antwoord de afbeelding bevat (de eerste afbeelding in het antwoord) en de bijbehorende installatie kopieën. Stel ook de para meter [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference) query in op de tekst in het `query` veld van het object `text` .
 
 In het volgende voor beeld ziet u hoe u de afbeeldings-ID gebruikt om gerelateerde installatie kopieën van Dhr. Smith te verkrijgen in de voor gaande trends in de API-reactie.
 

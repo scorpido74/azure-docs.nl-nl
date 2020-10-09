@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 056d0caf2bfc6e99d5d659a2561bc41844feb79a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "64918776"
 ---
 # <a name="plan-for-enhancing-data-security-through-a-strong-identity-solution"></a>Plan voor het verbeteren van gegevens beveiliging via een oplossing met een sterke identiteit
@@ -73,7 +73,7 @@ Gegevens in de overdracht tussen het apparaat en het Data Center of tussen het a
 * Houdt het Cloud Identity Management het verkeer naar en binnen het Directory archief (binnen en tussen de data centers) ondertekend?
 
 ## <a name="compliance"></a>Naleving
-Voor Schriften, wetten en nalevings vereisten zijn afhankelijk van de branche waartoe uw bedrijf behoort. Bedrijven in hoog gereguleerde branches moeten problemen met betrekking tot het beheer van de identiteit oplossen die verband houden met nalevings problemen. Voor schriften zoals Sarbanes-Oxley (SOX), de Health Insurance portabiliteit and Payment Act (HIPAA), de Gramm-uitloog-Bliley Act (GLBA) en de betalings kaart Industry Data Security Standard (PCI DSS) zijn strikt met betrekking tot identiteit en toegang. De hybride identiteits oplossing die uw bedrijf zal aannemen, moet beschikken over de kern mogelijkheden die voldoen aan de vereisten van een of meer van deze voor Schriften. Voor dit gebied moet u ervoor zorgen dat de volgende vragen worden gesteld:
+Voor Schriften, wetten en nalevings vereisten zijn afhankelijk van de branche waartoe uw bedrijf behoort. Bedrijven in hoog gereguleerde branches moeten problemen met betrekking tot het beheer van de identiteit oplossen die verband houden met nalevings problemen. Voor schriften zoals Sarbanes-Oxley (SOX), de Health Insurance Portity and Payment Act (HIPAA), de Gramm-uitloog-Bliley Act (GLBA) en de betalings kaart Industry Data Security Standard (PCI DSS) zijn strikt met betrekking tot identiteit en toegang. De hybride identiteits oplossing die uw bedrijf zal aannemen, moet beschikken over de kern mogelijkheden die voldoen aan de vereisten van een of meer van deze voor Schriften. Voor dit gebied moet u ervoor zorgen dat de volgende vragen worden gesteld:
 
 * Is de hybride identiteits oplossing compatibel met de wettelijke vereisten voor uw bedrijf?
 * Is de hybride identiteits oplossing gebouwd 

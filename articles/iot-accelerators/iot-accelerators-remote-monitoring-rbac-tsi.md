@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 08/06/2018
 ms.topic: conceptual
 ms.openlocfilehash: 9d5d572c3e32e3645e65ba8d6fc28b567b3c1e9a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "65827240"
 ---
 # <a name="configure-access-controls-for-the-time-series-insights-telemetry-explorer"></a>Toegangs beheer voor de Time Series Insights telemetrie-Verkenner configureren
@@ -25,7 +25,7 @@ Beleid voor gegevenstoegang verleent machtigingen voor het uitvoeren van gegeven
 
 Volg deze stappen om toegang tot gegevens toe te kennen voor een gebruikers-principal:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 2. Zoek uw Time Series Insights omgeving. Typ **time reeks** in het **zoekvak** . Selecteer de **Time Series-omgeving** in de zoek resultaten. 
 

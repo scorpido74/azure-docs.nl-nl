@@ -13,10 +13,10 @@ metadata:
   titleSuffix: Azure Cognitive Services
   description: Azure Personalizer is een op de cloud gebaseerde API-service waarmee u de beste ervaring kunt kiezen om aan uw gebruikers te laten zien, waarbij u leert van hun real-time gedrag.
   ms.openlocfilehash: 28197f7408ea93ed07d09e1ae44e7924f4605a14
-  ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 08/18/2020
+  ms.lasthandoff: 10/09/2020
   ms.locfileid: "88506545"
 landingContent:
 - title: Over Personalizer
