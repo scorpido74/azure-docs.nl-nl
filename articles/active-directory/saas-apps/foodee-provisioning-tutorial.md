@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: 1d3ea609cda37c3bb0de28d8eb1a19944809980d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 78ba57d485f9842ad8531ce22a2b932aa1a1d28b
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331155"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850418"
 ---
 # <a name="tutorial-configure-foodee-for-automatic-user-provisioning"></a>Zelf studie: de levens gebruiker configureren voor het automatisch inrichten van gebruikers
 
@@ -55,7 +55,7 @@ Voordat u een levens gebruiker configureert voor het automatisch inrichten van g
 
 1. Meld u aan bij de [levens](https://www.food.ee/login/)bekiezen en selecteer vervolgens uw Tenant-id.
 
-    ![Foodee](media/Foodee-provisioning-tutorial/tenant.png)
+    :::image type="content" source="media/Foodee-provisioning-tutorial/tenant.png" alt-text="Scherm afbeelding van het hoofd menu van de portal van de levensmiddelen onderneming. Een tijdelijke aanduiding voor de Tenant-id wordt weer gegeven in het menu." border="false":::
 
 1. Selecteer in **Enter prise Portal**de optie **eenmalige aanmelding**.
 
@@ -63,7 +63,7 @@ Voordat u een levens gebruiker configureert voor het automatisch inrichten van g
 
 1. Kopieer de waarde in het vak **API-token** voor later gebruik. U voert deze in het vak **geheim** op het tabblad **inrichten** van uw toepassing in de levens middelen in de Azure Portal.
 
-    ![Foodee](media/Foodee-provisioning-tutorial/token.png)
+    :::image type="content" source="media/Foodee-provisioning-tutorial/token.png" alt-text="Scherm afbeelding van het hoofd menu van de portal van de levensmiddelen onderneming. Een tijdelijke aanduiding voor de Tenant-id wordt weer gegeven in het menu." border="false":::
 
 ## <a name="add-foodee-from-the-gallery"></a>Levens middelen toevoegen vanuit de galerie
 
@@ -130,20 +130,20 @@ Configureer de automatische gebruikers inrichting voor de levensmiddelen gebruik
 
 1. Selecteer onder **toewijzingen**de optie **Azure Active Directory gebruikers synchroniseren met de levens gebruiker**.
 
-    ![Gebruikers toewijzingen van een gebruiker](media/Foodee-provisioning-tutorial/usermapping.png)
+    :::image type="content" source="media/Foodee-provisioning-tutorial/usermapping.png" alt-text="Scherm afbeelding van het hoofd menu van de portal van de levensmiddelen onderneming. Een tijdelijke aanduiding voor de Tenant-id wordt weer gegeven in het menu." border="false":::
 
 1. Controleer onder **kenmerk toewijzingen**de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar de levens gebruiker. De kenmerken die als **overeenkomende** eigenschappen zijn geselecteerd, worden gebruikt voor de *gebruikers accounts* in de levens werk voor bijwerk bewerkingen. 
 
-    ![Gebruikers toewijzingen van een gebruiker](media/Foodee-provisioning-tutorial/userattribute.png)
+    :::image type="content" source="media/Foodee-provisioning-tutorial/userattribute.png" alt-text="Scherm afbeelding van het hoofd menu van de portal van de levensmiddelen onderneming. Een tijdelijke aanduiding voor de Tenant-id wordt weer gegeven in het menu." border="false":::
 
 1. Selecteer **Opslaan**om uw wijzigingen door te voeren.
 1. Selecteer onder **toewijzingen**de optie **Azure Active Directory groepen synchroniseren met de levens groep**.
 
-    ![Gebruikers toewijzingen van een gebruiker](media/Foodee-provisioning-tutorial/groupmapping.png)
+    :::image type="content" source="media/Foodee-provisioning-tutorial/groupmapping.png" alt-text="Scherm afbeelding van het hoofd menu van de portal van de levensmiddelen onderneming. Een tijdelijke aanduiding voor de Tenant-id wordt weer gegeven in het menu." border="false":::
 
 1. Controleer onder **kenmerk toewijzingen**de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar de levens gebruiker. De kenmerken die als **overeenkomende** eigenschappen zijn geselecteerd, worden gebruikt om te voldoen aan de *groeps accounts* in de levens werk voor bijwerk bewerkingen.
 
-    ![Gebruikers toewijzingen van een gebruiker](media/Foodee-provisioning-tutorial/groupattribute.png)
+    :::image type="content" source="media/Foodee-provisioning-tutorial/groupattribute.png" alt-text="Scherm afbeelding van het hoofd menu van de portal van de levensmiddelen onderneming. Een tijdelijke aanduiding voor de Tenant-id wordt weer gegeven in het menu." border="false":::
 
 1. Selecteer **Opslaan**om uw wijzigingen door te voeren.
 1. De bereik filters configureren. Raadpleeg de instructies in de [zelf studie](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor meer informatie.

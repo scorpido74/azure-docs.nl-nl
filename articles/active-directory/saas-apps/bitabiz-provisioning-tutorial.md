@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 1274679bdd9892e2dc39f3c5e94d8d8d486928b6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f87a2347890f8d17e3901c6d8fc168c1d96c7661
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329190"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91849313"
 ---
 # <a name="tutorial-configure-bitabiz-for-automatic-user-provisioning"></a>Zelf studie: BitaBIZ configureren voor automatische gebruikers inrichting
 
@@ -46,7 +46,7 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
 
 * U wordt aangeraden één Azure AD-gebruiker toe te wijzen aan BitaBIZ om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
 
-* Wanneer u een gebruiker toewijst aan BitaBIZ, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **Standaard toegang** worden uitgesloten van het inrichten.
+* Wanneer u een gebruiker toewijst aan BitaBIZ, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **Standaardtoegang** worden uitgesloten van het inrichten.
 
 ## <a name="setup-bitabiz-for-provisioning"></a>BitaBIZ instellen voor inrichting
 
@@ -54,11 +54,11 @@ Voordat u BitaBIZ configureert voor het automatisch inrichten van gebruikers met
 
 1. Meld u aan bij de [BitaBIZ-beheer console](https://www.bitabiz.com/login?lang=en). Klik op **BEHEERDER INSTELLEN**.
 
-    ![BitaBIZ-beheer console](media/bitabiz-provisioning-tutorial/setup-admin.png)
+    :::image type="content" source="media/bitabiz-provisioning-tutorial/setup-admin.png" alt-text="Scherm opname van de BitaBIZ-beheer console, met installatie beheerder gemarkeerd." border="false":::
 
 2.  Navigeer naar **integratie**.
 
-    ![BitaBIZ-beheer console](media/bitabiz-provisioning-tutorial/integration.png)
+    :::image type="content" source="media/bitabiz-provisioning-tutorial/integration.png" alt-text="Scherm opname van de BitaBIZ-beheer console, met installatie beheerder gemarkeerd." border="false":::
 
 2.  Navigeer naar **Microsoft Azure AD inrichting**.  Selecteer **ingeschakeld** bij automatische gebruikers inrichting. Kopieer de waarden voor **scim-inrichtings eind punt-URL** en  **Bearer-token**. Deze waarden worden ingevoerd in de velden Tenant-URL en geheim-token op het tabblad inrichten van uw BitaBIZ-toepassing in de Azure Portal.
 

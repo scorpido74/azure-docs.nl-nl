@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: bb6ad9aae5f92f03ea5bfacc028973e4c4a6dbea
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 636bb4c3340f13046706bf887119108b86b6a660
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91312554"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850866"
 ---
 # <a name="tutorial-configure-flock-for-automatic-user-provisioning"></a>Zelf studie: koppel configureren voor automatische gebruikers inrichting
 
@@ -46,7 +46,7 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
 
 * U wordt aangeraden één Azure AD-gebruiker toe te wijzen aan een koppel om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
 
-* Wanneer u een gebruiker toewijst aan koppel, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **Standaard toegang** worden uitgesloten van het inrichten.
+* Wanneer u een gebruiker toewijst aan koppel, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **Standaardtoegang** worden uitgesloten van het inrichten.
 
 ## <a name="setup-flock--for-provisioning"></a>Koppel instelling voor inrichting
 
@@ -54,15 +54,15 @@ Voordat u een koppel configureert voor het automatisch inrichten van gebruikers 
 
 1. Meld u aan bij [koppel](https://web.flock.com/?). Klik op het **pictogram instellingen**  >  **Beheer uw team**.
 
-    ![Flock](media/flock-provisioning-tutorial/icon.png)
+    :::image type="content" source="media/flock-provisioning-tutorial/icon.png" alt-text="Scherm afbeelding van de koppel-website. Het pictogram instellingen is gemarkeerd en het bijbehorende snelmenu wordt weer gegeven. In dat menu beheert u uw team." border="false":::
 
 2. Selecteer **verificatie en inrichting**.
 
-    ![Flock](media/Flock-provisioning-tutorial/auth.png)
+    :::image type="content" source="media/Flock-provisioning-tutorial/auth.png" alt-text="Scherm afbeelding van de koppel-website. Het pictogram instellingen is gemarkeerd en het bijbehorende snelmenu wordt weer gegeven. In dat menu beheert u uw team." border="false":::
 
 3. Kopieer het **API-token**. Deze waarden worden ingevoerd in het veld **geheime token** op het tabblad inrichten van uw koppel toepassing in de Azure Portal.
 
-    ![Flock](media/Flock-provisioning-tutorial/provisioning.png)
+    :::image type="content" source="media/Flock-provisioning-tutorial/provisioning.png" alt-text="Scherm afbeelding van de koppel-website. Het pictogram instellingen is gemarkeerd en het bijbehorende snelmenu wordt weer gegeven. In dat menu beheert u uw team." border="false":::
 
 
 ## <a name="add-flock--from-the-gallery"></a>Koppel toevoegen vanuit de galerie

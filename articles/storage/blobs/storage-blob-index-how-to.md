@@ -9,12 +9,12 @@ ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: hux
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 41a21545939c5d15c8e2c4034a9648e98aa5a73e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 175c9efd02665bf0212d7078a2ec2767ed1be6b9
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91280280"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850979"
 ---
 # <a name="utilize-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>BLOB-index Tags (preview) gebruiken om gegevens te beheren en te zoeken in Azure Blob-opslag
 
@@ -35,7 +35,7 @@ Als blob-index bevindt zich in de open bare preview-versie, wordt het .NET-opsla
 
 1. Stel uw Visual Studio-project in om aan de slag te gaan met de Azure Blob Storage-client bibliotheek V12 voor .NET. Zie [.net Quick](storage-quickstart-blobs-dotnet.md) start (Engelstalig) voor meer informatie.
 
-2. Zoek in de NuGet package manager het pakket **Azure. storage. blobs** en Installeer versie **12.5.0-Preview. 6** of hoger voor uw project. U kunt ook de opdracht uitvoeren ```Install-Package Azure.Storage.Blobs -Version 12.5.0-preview.6```
+2. Zoek in de NuGet package manager het pakket **Azure. storage. blobs** en Installeer versie **12.7.0-Preview. 1** of hoger voor uw project. U kunt ook de opdracht uitvoeren ```Install-Package Azure.Storage.Blobs -Version 12.7.0-preview.1```
 
    Zie [een pakket zoeken en installeren](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#find-and-install-a-package)voor meer informatie.
 
@@ -87,7 +87,7 @@ static async Task BlobIndexTagsOnCreate()
           AppendBlobClient appendBlobWithTags = container.GetAppendBlobClient("myAppendBlob0.logs");
 
           // Blob index tags to upload
-          CreateAppendBlobOptions appendOptions = new CreateAppendBlobOptions();
+          AppendBlobCreateOptions appendOptions = new AppendBlobCreateOptions();
           appendOptions.Tags = new Dictionary<string, string>
           {
               { "Sealed", "false" },
@@ -255,10 +255,10 @@ static async Task FindBlobsByTagsExample()
           // Find Blobs given a tags query
           Console.WriteLine("Find Blob by Tags query: " + queryToUse + Environment.NewLine);
 
-          List<FilterBlobItem> blobs = new List<FilterBlobItem>();
-          await foreach (FilterBlobItem filterBlobItem in serviceClient.FindBlobsByTagsAsync(queryToUse))
+          List<TaggedBlobItem> blobs = new List<TaggedBlobItem>();
+          await foreach (TaggedBlobItem taggedBlobItem in serviceClient.FindBlobsByTagsAsync(queryToUse))
           {
-              blobs.Add(filterBlobItem);
+              blobs.Add(taggedBlobItem);
           }
 
           foreach (var filteredBlob in blobs)

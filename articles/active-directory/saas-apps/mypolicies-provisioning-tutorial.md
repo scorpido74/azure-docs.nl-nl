@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: a6db1866c42dbb90d6ea0f288aceed4672424fe0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 56aad5ce9045ca205221ba0c56d1ea75f8f3610a
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321969"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850487"
 ---
 # <a name="tutorial-configure-mypolicies-for-automatic-user-provisioning"></a>Zelf studie: myPolicies configureren voor automatische gebruikers inrichting
 
@@ -46,7 +46,7 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
 
 * U wordt aangeraden één Azure AD-gebruiker toe te wijzen aan myPolicies om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
 
-* Wanneer u een gebruiker toewijst aan myPolicies, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **Standaard toegang** worden uitgesloten van het inrichten.
+* Wanneer u een gebruiker toewijst aan myPolicies, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **Standaardtoegang** worden uitgesloten van het inrichten.
 
 ## <a name="setup-mypolicies-for-provisioning"></a>MyPolicies instellen voor inrichting
 
@@ -118,7 +118,7 @@ Voor beeld: `<demo0-qa>` . mypolicies.com.
 
 9. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory gebruikers synchroniseren met myPolicies**.
 
-    ![myPolicies-gebruikers toewijzingen](media/mypolicies-provisioning-tutorial/usermapping.png)
+    :::image type="content" source="media/mypolicies-provisioning-tutorial/usermapping.png" alt-text="Scherm afbeelding van de sectie toewijzingen. Synchroniseer Azure Active Directory gebruikers onder naam naar customappsso is zichtbaar." border="false":::
 
 10. Controleer de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar myPolicies in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in myPolicies voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
 

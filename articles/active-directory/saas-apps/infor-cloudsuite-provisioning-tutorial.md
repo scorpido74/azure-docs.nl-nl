@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/14/2019
 ms.author: Zhchia
-ms.openlocfilehash: 4b318057254688ba3060c825a7926b1c40de437c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7c81c6145aed5f45849f6f08fdd1136862c3b7d8
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91305010"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850868"
 ---
 # <a name="tutorial-configure-infor-cloudsuite-for-automatic-user-provisioning"></a>Zelf studie: infor CloudSuite configureren voor automatische gebruikers inrichting
 
@@ -46,7 +46,7 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
 
 * U wordt aangeraden één Azure AD-gebruiker toe te wijzen aan infor CloudSuite om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
 
-* Wanneer u een gebruiker toewijst aan infor CloudSuite, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **Standaard toegang** worden uitgesloten van het inrichten.
+* Wanneer u een gebruiker toewijst aan infor CloudSuite, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **Standaardtoegang** worden uitgesloten van het inrichten.
 
 ## <a name="set-up-infor-cloudsuite-for-provisioning"></a>Infor CloudSuite instellen voor inrichting
 
@@ -68,11 +68,11 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
     
     ![Infor CloudSuite-wacht woord](media/infor-cloudsuite-provisioning-tutorial/password.png)
 
-    ![Infor CloudSuite-id](media/infor-cloudsuite-provisioning-tutorial/identifier.png)
+    :::image type="content" source="media/infor-cloudsuite-provisioning-tutorial/identifier.png" alt-text="Scherm afbeelding van de infor CloudSuite-beheer console, waarin een gemarkeerde tabelrij wordt weer gegeven. Die rij bevat een gebruikers-id, wacht woord en een tijds tempel." border="false":::
 
 5. Als u een Bearer-token wilt genereren, kopieert u het **wacht woord**voor de **gebruikers-id** en het scim. Plak ze in Klad blok en vervolgens gescheiden door een dubbele punt. Codeer de teken reeks waarde door te navigeren naar **Plugins > MIME-Hulpprogram ma's > Basic64-code ring**. 
 
-    ![Infor CloudSuite-id](media/infor-cloudsuite-provisioning-tutorial/token.png)
+    :::image type="content" source="media/infor-cloudsuite-provisioning-tutorial/token.png" alt-text="Scherm afbeelding van de infor CloudSuite-beheer console, waarin een gemarkeerde tabelrij wordt weer gegeven. Die rij bevat een gebruikers-id, wacht woord en een tijds tempel." border="false":::
 
 3.  Kopieer het Bearer-token. Deze waarde wordt ingevoerd in het veld geheime token op het tabblad inrichten van uw infor CloudSuite-toepassing in de Azure Portal.
 

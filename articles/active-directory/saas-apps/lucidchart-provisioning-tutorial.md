@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: Zhchia
-ms.openlocfilehash: 632330d7c94e145124e202be9050e4e1beeb12b0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 43d6ac8354e992a87091bc66417f7ca88e784199
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91265456"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850656"
 ---
 # <a name="tutorial-configure-lucidchart-for-automatic-user-provisioning"></a>Zelf studie: Lucidchart configureren voor automatische gebruikers inrichting
 
@@ -49,11 +49,11 @@ In het scenario dat in deze zelfstudie wordt beschreven, wordt ervan uitgegaan d
 
 1. Meld u aan bij de [Lucidchart-beheer console](https://www.lucidchart.com). Navigeer naar **Team > app-integratie**.
 
-      ![Lucidchart scim](./media/lucidchart-provisioning-tutorial/team1.png)
+      :::image type="content" source="./media/lucidchart-provisioning-tutorial/team1.png" alt-text="Scherm opname van de Lucidchart-beheer console. Het menu van het team wordt gemarkeerd en geopend. Onder beheerder wordt app-integratie gemarkeerd." border="false":::
 
 2. Navigeer naar **scim**.
 
-      ![Lucidchart scim](./media/lucidchart-provisioning-tutorial/scim.png)
+      :::image type="content" source="./media/lucidchart-provisioning-tutorial/scim.png" alt-text="Scherm opname van de Lucidchart-beheer console. Het menu van het team wordt gemarkeerd en geopend. Onder beheerder wordt app-integratie gemarkeerd." border="false":::
 
 3. Schuif omlaag om de **Bearer-token** en de **basis-URL**van de Lucidchart weer te geven. Kopieer het **Bearer-token**en sla het op. Deze waarde wordt ingevoerd in het veld **geheim token** * op het tabblad inrichten van uw LucidChart-toepassing in de Azure Portal. 
 
@@ -121,7 +121,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
    |urn: IETF: params: scim: schemas: extensie: Enter prise: 2.0: gebruiker: organisatie|Tekenreeks|
    |urn: IETF: params: scim: schemas: extensie: Enter prise: 2.0: gebruiker: employeeNumber|Tekenreeks|
    |urn: IETF: params: scim: schemas: extensie: Enter prise: 2.0: gebruiker: Manager|Naslaginformatie|
-   |urn: IETF: params: scim: schemas: extensie: lucidchart: 1.0: gebruiker: canEdit|Boolean-waarde|
+   |urn: IETF: params: scim: schemas: extensie: lucidchart: 1.0: gebruiker: canEdit|Booleaans|
 
 10. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory groepen synchroniseren met Lucidchart**.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/12/2019
 ms.author: zhchia
-ms.openlocfilehash: d88b8f2a6cc66e239706677bd1ebfe01bccd49af
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f5b14ecf061e8f0c53dc1387d1581bc780d190b9
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322028"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850872"
 ---
 # <a name="tutorial-configure-figma-for-automatic-user-provisioning"></a>Zelf studie: Figma configureren voor automatische gebruikers inrichting
 
@@ -45,7 +45,7 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
 
  * U wordt aangeraden één Azure AD-gebruiker toe te wijzen aan Figma om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
 
-* Wanneer u een gebruiker toewijst aan Figma, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol Standaard toegang worden uitgesloten van het inrichten.
+* Wanneer u een gebruiker toewijst aan Figma, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol Standaardtoegang worden uitgesloten van het inrichten.
 
 ## <a name="set-up-figma-for-provisioning"></a>Figma instellen voor inrichting
 
@@ -53,23 +53,23 @@ Voordat u Figma configureert voor het automatisch inrichten van gebruikers met A
 
 1. Meld u aan bij de [Figma-beheer console](https://www.Figma.com/). Klik op het tandwiel pictogram naast uw Tenant.
 
-    ![FigmaFigma-werk nemer-inrichten](media/Figma-provisioning-tutorial/image0.png)
+    :::image type="content" source="media/Figma-provisioning-tutorial/image0.png" alt-text="Scherm opname van de Figma-beheer console. Een Tenant met de naam een D scim-test is zichtbaar. Naast de Tenant is een tandwiel pictogram gemarkeerd." border="false":::
 
 2. Navigeer naar **General > update log in Settings**.
 
-    ![FigmaFigma-werk nemer-inrichten](media/Figma-provisioning-tutorial/figma03.png)
+    :::image type="content" source="media/Figma-provisioning-tutorial/figma03.png" alt-text="Scherm opname van de Figma-beheer console. Een Tenant met de naam een D scim-test is zichtbaar. Naast de Tenant is een tandwiel pictogram gemarkeerd." border="false":::
 
 3. Kopieer de **Tenant-id**. Deze waarde wordt gebruikt om de SCIM-eind punt-URL te maken die moet worden ingevoerd in het veld **Tenant-URL** op het tabblad inrichten van de Figma-toepassing in de Azure Portal.
 
-    ![Figma-token maken](media/Figma-provisioning-tutorial/figma-tenantid.png)
+    :::image type="content" source="media/Figma-provisioning-tutorial/figma-tenantid.png" alt-text="Scherm opname van de Figma-beheer console. Een Tenant met de naam een D scim-test is zichtbaar. Naast de Tenant is een tandwiel pictogram gemarkeerd." border="false":::
 
 4. Schuif omlaag en klik op **API-token genereren**.
 
-    ![Figma-token maken](media/Figma-provisioning-tutorial/token.png)
+    :::image type="content" source="media/Figma-provisioning-tutorial/token.png" alt-text="Scherm opname van de Figma-beheer console. Een Tenant met de naam een D scim-test is zichtbaar. Naast de Tenant is een tandwiel pictogram gemarkeerd." border="false":::
 
 5. Kopieer de waarde van het  **API-token** . Deze waarde wordt ingevoerd in het veld **geheime token** op het tabblad inrichten van uw Figma-toepassing in de Azure Portal. 
 
-    ![Figma-token maken](media/Figma-provisioning-tutorial/figma04.png)
+    :::image type="content" source="media/Figma-provisioning-tutorial/figma04.png" alt-text="Scherm opname van de Figma-beheer console. Een Tenant met de naam een D scim-test is zichtbaar. Naast de Tenant is een tandwiel pictogram gemarkeerd." border="false":::
 
 ## <a name="add-figma-from-the-gallery"></a>Figma toevoegen vanuit de galerie
 

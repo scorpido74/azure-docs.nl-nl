@@ -3,16 +3,14 @@ title: Clusters maken op Windows Server en Linux
 description: Service Fabric-clusters worden uitgevoerd op Windows Server en Linux. U kunt Service Fabric-toepassingen implementeren en hosten overal waar u Windows Server of Linux kunt uitvoeren.
 services: service-fabric
 documentationcenter: .net
-author: dkkapur
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.author: dekapur
-ms.openlocfilehash: 2c0cc1ddc58347933b498b015c562c3822e8a688
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 7446a221d266230b319c808a88ef4fac05e6fff5
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90978712"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843308"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Overzicht van Service Fabric clusters op Azure
 Een Service Fabric-cluster is een met het netwerk verbonden reeks virtuele of fysieke machines waarop uw microservices worden geïmplementeerd en beheerd. Een computer of virtuele machine die deel uitmaakt van een cluster, wordt een cluster knooppunt genoemd. Clusters kunnen worden geschaald naar duizenden knoop punten. Als u nieuwe knoop punten aan het cluster toevoegt, worden in Service Fabric de service partitie replica's en instanties over het verhoogde aantal knoop punten gebalanceerd. De algehele prestaties van toepassingen verbeteren en conflicten voor toegang tot het geheugen neemt af. Als de knoop punten in het cluster niet efficiënt worden gebruikt, kunt u het aantal knoop punten in het cluster verlagen. Service Fabric opnieuw, worden de partitie replica's en instanties over het aantal knoop punten verkleind om beter gebruik te maken van de hardware op elk knoop punt.
@@ -71,11 +69,11 @@ Naast client certificaten kan Azure Active Directory ook worden geconfigureerd v
 Lees voor meer informatie [client-naar-knoop punt beveiliging](service-fabric-cluster-security.md#client-to-node-security)
 
 ### <a name="role-based-access-control"></a>Op rollen gebaseerd toegangsbeheer
-Met Access Control op basis van rollen (RBAC) kunt u nauw keurige toegangs controles toewijzen aan Azure-resources.  U kunt verschillende toegangs regels toewijzen aan abonnementen, resource groepen en resources.  RBAC-regels worden overgenomen in de resource hiërarchie, tenzij deze op een lager niveau worden overschreven.  U kunt elke gebruiker of elk gebruikers groep op uw AAD toewijzen met RBAC-regels zodat aangewezen gebruikers en groepen uw cluster kunnen wijzigen.  Lees voor meer informatie het [overzicht van Azure RBAC](../role-based-access-control/overview.md).
+Met Role-Based Access Control (RBAC) kunt u nauw keurige toegangs controles toewijzen aan Azure-resources.  U kunt verschillende toegangs regels toewijzen aan abonnementen, resource groepen en resources.  RBAC-regels worden overgenomen in de resource hiërarchie, tenzij deze op een lager niveau worden overschreven.  U kunt elke gebruiker of elk gebruikers groep op uw AAD toewijzen met RBAC-regels zodat aangewezen gebruikers en groepen uw cluster kunnen wijzigen.  Lees voor meer informatie het [overzicht van Azure RBAC](../role-based-access-control/overview.md).
 
 Service Fabric biedt ook ondersteuning voor toegangs beheer om de toegang tot bepaalde cluster bewerkingen voor verschillende groepen gebruikers te beperken. Dit helpt het cluster beter te beveiligen. Twee typen toegangs beheer worden ondersteund voor clients die verbinding maken met een cluster: beheerdersrol en gebruikersrol.  
 
-Lees [service Fabric op rollen gebaseerde Access Control (RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac)voor meer informatie.
+Lees [Service Fabric Role-Based Access Control (RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac)voor meer informatie.
 
 ### <a name="network-security-groups"></a>Netwerkbeveiligingsgroepen 
 Netwerk beveiligings groepen (Nsg's) bepalen binnenkomend en uitgaand verkeer van een subnet, VM of specifieke NIC.  Wanneer meerdere Vm's in hetzelfde virtuele netwerk worden geplaatst, kunnen ze standaard met elkaar communiceren via een wille keurige poort.  Als u de communicatie tussen de computers wilt beperken, kunt u Nsg's definiëren om het netwerk te segmenteren of Vm's van elkaar te isoleren.  Als u meerdere knooppunt typen in een cluster hebt, kunt u Nsg's Toep assen op subnetten om te voor komen dat computers die deel uitmaken van verschillende knooppunt typen, met elkaar communiceren.  

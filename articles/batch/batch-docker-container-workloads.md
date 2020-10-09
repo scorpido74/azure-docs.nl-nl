@@ -2,26 +2,28 @@
 title: Containerwerkbelastingen
 description: Meer informatie over het uitvoeren en schalen van apps vanuit container installatie kopieën op Azure Batch. Maak een pool van reken knooppunten die ondersteuning bieden voor het uitvoeren van container taken.
 ms.topic: how-to
-ms.date: 09/10/2020
+ms.date: 10/06/2020
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 0efc63258295ec7a7db20ec97e0ac81bd4c382f7
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 9d8776ba8e683cd14c766fead1e7238a6c24d000
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90018506"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843444"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Container toepassingen uitvoeren op Azure Batch
 
 Met Azure Batch kunt u grote aantallen taken voor batch verwerking op Azure uitvoeren en schalen. Batch taken kunnen rechtstreeks worden uitgevoerd op virtuele machines (knoop punten) in een batch-pool, maar u kunt ook een batch-pool instellen om taken uit te voeren in docker-compatibele containers op de knoop punten. In dit artikel wordt beschreven hoe u een pool van reken knooppunten maakt die ondersteuning bieden voor container taken en vervolgens container taken uitvoeren in de groep.
 
-U moet bekend zijn met de container concepten en een batch-pool en-taak maken. De code voorbeelden gebruiken de batch .NET-en python-Sdk's. U kunt ook andere batch-Sdk's en-hulpprogram ma's, waaronder de Azure Portal, gebruiken om batch-Pools met container functionaliteit te maken en container taken uit te voeren.
+De code voorbeelden gebruiken hier de batch .NET-en python-Sdk's. U kunt ook andere batch-Sdk's en-hulpprogram ma's, waaronder de Azure Portal, gebruiken om batch-Pools met container functionaliteit te maken en container taken uit te voeren.
 
 ## <a name="why-use-containers"></a>Redenen om containers te gebruiken
 
 Het gebruik van containers biedt een eenvoudige manier om batch taken uit te voeren zonder dat u een omgeving en afhankelijkheden hoeft te beheren om toepassingen uit te voeren. Containers implementeren toepassingen als Lightweight, Portable, Self-toereikende eenheden die in verschillende omgevingen kunnen worden uitgevoerd. Bouw en test bijvoorbeeld een container lokaal en upload de container installatie kopie naar een REGI ster in azure of ergens anders. Het implementatie model van de container zorgt ervoor dat de runtime omgeving van uw toepassing altijd correct is geïnstalleerd en geconfigureerd, waar u de toepassing host. Op containers gebaseerde taken in batch kunnen ook profiteren van functies van niet-container taken, waaronder toepassings pakketten en beheer van bron bestanden en uitvoer bestanden.
 
 ## <a name="prerequisites"></a>Vereisten
+
+U moet bekend zijn met de container concepten en een batch-pool en-taak maken.
 
 - **SDK-versies**: de batch-sdk's ondersteunen container installatie kopieën vanaf de volgende versies:
   - Batch-REST API versie 2017 -09-01.6.0
@@ -282,6 +284,12 @@ Als u een container taak wilt uitvoeren in een groep waarvoor container is inges
 - Gebruik de `ContainerSettings` eigenschap van de taak klassen om providerspecifieke instellingen te configureren. Deze instellingen worden gedefinieerd door de [TaskContainerSettings](/dotnet/api/microsoft.azure.batch.taskcontainersettings) -klasse. Houd er rekening mee dat voor de `--rm` container optie geen extra `--runtime` optie is vereist, omdat deze door batch wordt verwerkt.
 
 - Als u taken uitvoert in container installatie kopieën, zijn voor de taak [Cloud taak](/dotnet/api/microsoft.azure.batch.cloudtask) en [taak beheer](/dotnet/api/microsoft.azure.batch.cloudjob.jobmanagertask) container instellingen nodig. De taak voor het [starten van taken](/dotnet/api/microsoft.azure.batch.starttask), taak [voorbereiding](/dotnet/api/microsoft.azure.batch.cloudjob.jobpreparationtask)en taak [release](/dotnet/api/microsoft.azure.batch.cloudjob.jobreleasetask) vereisen echter geen container instellingen (dat wil zeggen, ze kunnen worden uitgevoerd binnen een container context of rechtstreeks op het knoop punt).
+
+- Voor Windows moeten taken worden uitgevoerd waarbij [ElevationLevel](/rest/api/batchservice/task/add#elevationlevel) is ingesteld op `admin` . 
+
+- Voor Linux wijst batch de machtiging gebruiker/groep toe aan de container. Als voor toegang tot een map in de container een beheerders machtiging is vereist, moet u de taak mogelijk uitvoeren als groeps bereik met beheerders bevoegdheden. Dit zorgt ervoor dat de taak in batch wordt uitgevoerd als root in de container context. Anders is het mogelijk dat een gebruiker die geen beheerder is, geen toegang heeft tot deze mappen.
+
+- Voor container groepen met GPU-hardware wordt met batch automatisch GPU ingeschakeld voor container taken, dus u mag het argument niet toevoegen `–gpus` .
 
 ### <a name="container-task-command-line"></a>Opdracht regel voor container taak
 

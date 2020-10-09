@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: b81a0fc81478fb50c356a92371ece2e79ff417ab
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2f3657feb5a68600e4eb2d7bcaa4891a398c2682
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333559"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850690"
 ---
 # <a name="tutorial-configure-looop-for-automatic-user-provisioning"></a>Zelf studie: looop configureren voor automatische gebruikers inrichting
 
@@ -47,7 +47,7 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
 
 * U wordt aangeraden één Azure AD-gebruiker toe te wijzen aan looop om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
 
-* Wanneer u een gebruiker toewijst aan looop, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **Standaard toegang** worden uitgesloten van het inrichten.
+* Wanneer u een gebruiker toewijst aan looop, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **Standaardtoegang** worden uitgesloten van het inrichten.
 
 ## <a name="set-up-looop-for-provisioning"></a>Looop instellen voor inrichting
 
@@ -55,11 +55,11 @@ Voordat u looop configureert voor het automatisch inrichten van gebruikers met A
 
 1. Meld u aan bij de [looop-beheer console](https://app.looop.co/#/login) en selecteer **account**. Selecteer **verificatie**onder **account instellingen** .
 
-    ![SCIM looop toevoegen](media/looop-provisioning-tutorial/admin.png)
+    :::image type="content" source="media/looop-provisioning-tutorial/admin.png" alt-text="Scherm opname van de looop-beheer console. Het tabblad account is gemarkeerd en open. Onder account instellingen wordt verificatie gemarkeerd." border="false":::
 
 2. Genereer een nieuw token door te klikken op **token opnieuw instellen** onder **scim-integratie**.
 
-    ![SCIM looop toevoegen](media/looop-provisioning-tutorial/resettoken.png)
+    :::image type="content" source="media/looop-provisioning-tutorial/resettoken.png" alt-text="Scherm opname van de looop-beheer console. Het tabblad account is gemarkeerd en open. Onder account instellingen wordt verificatie gemarkeerd." border="false":::
 
 3. Kopieer het **scim-eind punt** en het **token**. Deze waarden worden ingevoerd in de velden **Tenant-URL** en **geheim-token** op het tabblad inrichten van uw looop-toepassing in de Azure Portal. 
 

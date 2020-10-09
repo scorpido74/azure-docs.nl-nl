@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: Zhchia
-ms.openlocfilehash: bcddaec1660082c2d3fed42e0c10cbdde987693c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c43624b57f5a46473e8640200a7284a9fa737790
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91273514"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91849228"
 ---
 # <a name="tutorial-configure-meta-networks-connector-for-automatic-user-provisioning"></a>Zelf studie: connector voor meta netwerken configureren voor automatische gebruikers inrichting
 
@@ -46,7 +46,7 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
 
 * U wordt aangeraden één Azure AD-gebruiker toe te wijzen aan de connector voor meta netwerken om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
 
-* Wanneer u een gebruiker toewijst aan de connector van de meta netwerken, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **Standaard toegang** worden uitgesloten van het inrichten.
+* Wanneer u een gebruiker toewijst aan de connector van de meta netwerken, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol **Standaardtoegang** worden uitgesloten van het inrichten.
 
 ## <a name="setup-meta-networks-connector-for-provisioning"></a>Connector voor meta netwerken instellen voor inrichting
 
@@ -60,7 +60,7 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
 
 3.  Stel de **API-sleutel naam** en de beschrijving van de **API-sleutel**in.
 
-    ![Token voor maken van meta netwerken connector](media/meta-networks-connector-provisioning-tutorial/keyname.png)
+    :::image type="content" source="media/meta-networks-connector-provisioning-tutorial/keyname.png" alt-text="Scherm afbeelding van de beheer console van de meta netwerken-connector met gemarkeerde P I sleutel naam en een P i Key-beschrijvings waarde van Azure A D en een P I-sleutel." border="false":::
 
 4.  **Schrijf** bevoegdheden voor **groepen** en **gebruikers**inschakelen.
 
@@ -68,7 +68,7 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
 
 5.  Klik op **Toevoegen**. Kopieer het **geheim** en sla het op omdat dit de enige keer is dat u het kunt bekijken. Deze waarde wordt ingevoerd in het veld geheime token op het tabblad inrichting van uw meta netwerken connector-toepassing in de Azure Portal.
 
-    ![Token voor maken van meta netwerken connector](media/meta-networks-connector-provisioning-tutorial/token.png)
+    :::image type="content" source="media/meta-networks-connector-provisioning-tutorial/token.png" alt-text="Scherm afbeelding van de beheer console van de meta netwerken-connector met gemarkeerde P I sleutel naam en een P i Key-beschrijvings waarde van Azure A D en een P I-sleutel." border="false":::
 
 6.  Voeg een IdP toe door te navigeren naar **beheer > instellingen > IdP > nieuwe maken**.
 

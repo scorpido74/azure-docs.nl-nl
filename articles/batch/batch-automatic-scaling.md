@@ -2,14 +2,14 @@
 title: Automatisch schalen rekenknooppunten in een Azure Batch-pool
 description: Schakel automatisch schalen in een Cloud groep in om het aantal reken knooppunten in de pool dynamisch aan te passen.
 ms.topic: how-to
-ms.date: 07/27/2020
+ms.date: 10/08/2020
 ms.custom: H1Hack27Feb2017, fasttrack-edit, devx-track-csharp
-ms.openlocfilehash: e3e7a354e015ffa8a6164de59edcf572ab773319
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 5774acbfc035ab61267dddb31b01b0e82689f690
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88932318"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91849789"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Een automatische formule voor het schalen van reken knooppunten in een batch-pool maken
 
@@ -163,7 +163,7 @@ Formules voor automatisch schalen ondersteunen de volgende typen:
   - TimeInterval_Week
   - TimeInterval_Year
 
-## <a name="operations"></a>Operations
+## <a name="operations"></a>Bewerkingen
 
 Deze bewerkingen zijn toegestaan voor de typen die worden vermeld in de vorige sectie.
 
@@ -648,6 +648,24 @@ Result:
 Error:
 ```
 
+## <a name="get-autoscale-run-history-using-pool-autoscale-events"></a>Geschiedenis van automatische schaal uitvoering ophalen met de groeps gebeurtenissen voor automatisch schalen
+U kunt ook de automatische schaal geschiedenis controleren door een query uit te [PoolAutoScaleEvent](batch-pool-autoscale-event.md). Deze gebeurtenis wordt verzonden door de batch-service om elk exemplaar van het automatisch schalen en uitvoeren van formules vast te leggen. Dit kan handig zijn om mogelijke problemen op te lossen.
+
+Voorbeeld gebeurtenis voor PoolAutoScaleEvent:
+```json
+{
+    "id": "poolId",
+    "timestamp": "2020-09-21T23:41:36.750Z",
+    "formula": "...",
+    "results": "$TargetDedicatedNodes=10;$NodeDeallocationOption=requeue;$curTime=2016-10-14T18:36:43.282Z;$isWeekday=1;$isWorkingWeekdayHour=0;$workHours=0",
+    "error": {
+        "code": "",
+        "message": "",
+        "values": []
+    }
+}
+```
+
 ## <a name="example-autoscale-formulas"></a>Voor beeld van formules voor automatisch schalen
 
 Laten we eens kijken naar een paar formules waarin verschillende manieren worden weer gegeven om de hoeveelheid reken resources in een pool aan te passen.
@@ -691,7 +709,7 @@ $NodeDeallocationOption = taskcompletion;
 
 ### <a name="example-3-accounting-for-parallel-tasks"></a>Voor beeld 3: Accounting voor parallelle taken
 
-In dit C#-voor beeld wordt de pool grootte aangepast op basis van het aantal taken. Deze formule houdt ook rekening met de [MaxTasksPerComputeNode](/dotnet/api/microsoft.azure.batch.cloudpool.maxtaskspercomputenode) -waarde die is ingesteld voor de groep. Deze aanpak is nuttig in situaties waarin het [uitvoeren van parallelle taken](batch-parallel-node-tasks.md) is ingeschakeld voor uw pool.
+In dit C#-voor beeld wordt de pool grootte aangepast op basis van het aantal taken. Deze formule houdt ook rekening met de [TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool.taskslotspernode) -waarde die is ingesteld voor de groep. Deze aanpak is nuttig in situaties waarin het [uitvoeren van parallelle taken](batch-parallel-node-tasks.md) is ingeschakeld voor uw pool.
 
 ```csharp
 // Determine whether 70 percent of the samples have been recorded in the past
@@ -699,7 +717,7 @@ In dit C#-voor beeld wordt de pool grootte aangepast op basis van het aantal tak
 $samples = $ActiveTasks.GetSamplePercent(TimeInterval_Minute * 15);
 $tasks = $samples < 70 ? max(0,$ActiveTasks.GetSample(1)) : max( $ActiveTasks.GetSample(1),avg($ActiveTasks.GetSample(TimeInterval_Minute * 15)));
 // Set the number of nodes to add to one-fourth the number of active tasks
-// (theMaxTasksPerComputeNode property on this pool is set to 4, adjust
+// (the TaskSlotsPerNode property on this pool is set to 4, adjust
 // this number for your use case)
 $cores = $TargetDedicatedNodes * 4;
 $extraVMs = (($tasks - $cores) + 3) / 4;

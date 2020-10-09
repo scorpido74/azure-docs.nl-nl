@@ -4,12 +4,12 @@ description: Dit artikel bevat informatie over het toevoegen van een service-ein
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f902c77c3c7e614247abd4f8af50b8ed37b7e574
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 1b62f69bad4484239b3a6c5d6f7ae910fbdef03f
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552982"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843376"
 ---
 # <a name="allow-access-to-azure-service-bus-namespace-from-specific-virtual-networks"></a>Toegang tot Azure Service Bus naam ruimte vanuit specifieke virtuele netwerken toestaan
 
@@ -54,6 +54,10 @@ Dit betekent dat uw beveiligings gevoelige cloud oplossingen niet alleen toegang
 Het binden van een Service Bus naam ruimte aan een virtueel netwerk is een proces dat uit twee stappen bestaat. U moet eerst een **Virtual Network Service-eind punt** maken op een Virtual Network subnet en inschakelen voor **micro soft. ServiceBus** , zoals wordt uitgelegd in het [overzicht van service-eind punten][vnet-sep]. Wanneer u het service-eind punt hebt toegevoegd, bindt u de naam ruimte van de Service Bus met een regel voor het **virtuele netwerk**.
 
 De regel van het virtuele netwerk is een koppeling van de Service Bus naam ruimte met een subnet van een virtueel netwerk. Terwijl de regel bestaat, krijgen alle werk belastingen die aan het subnet zijn gebonden toegang tot de Service Bus naam ruimte. Service Bus zichzelf nooit uitgaande verbindingen tot stand brengt, geen toegang nodig heeft en daarom nooit toegang tot uw subnet verleend door deze regel in te scha kelen.
+
+> [!NOTE]
+> Houd er rekening mee dat een netwerk service-eind punt toepassingen bevat die in het virtuele netwerk worden uitgevoerd de toegang tot de Service Bus naam ruimte. Het virtuele netwerk bepaalt de bereik baarheid van het eind punt, maar niet welke bewerkingen kunnen worden uitgevoerd op Service Bus entiteiten (wacht rijen, onderwerpen of abonnementen). Gebruik Azure Active Directory (Azure AD) om bewerkingen te autoriseren die de toepassingen op de naam ruimte en de entiteiten kunnen uitvoeren. Zie [een toepassing verifiëren en autoriseren met Azure AD voor toegang tot Service Bus entiteiten](authenticate-application.md)voor meer informatie.
+
 
 ## <a name="use-azure-portal"></a>Azure Portal gebruiken
 In deze sectie wordt beschreven hoe u Azure Portal kunt gebruiken om een service-eind punt voor een virtueel netwerk toe te voegen. Als u de toegang wilt beperken, moet u het eind punt van de virtuele netwerk service voor deze Event Hubs naam ruimte integreren.
@@ -108,7 +112,7 @@ Sjabloon parameters:
 > ```json
 > "defaultAction": "Allow"
 > ```
-> in
+> in op
 > ```json
 > "defaultAction": "Deny"
 > ```

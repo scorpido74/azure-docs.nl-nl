@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: fae6c9f76f5c502d3a31c76330bd5b348d523e37
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 71dc05e3949c2675be6255723530693304e1aa3e
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91360579"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850078"
 ---
 # <a name="tutorial-configure-mediusflow-for-automatic-user-provisioning"></a>Zelf studie: Medius flow configureren voor automatische gebruikers inrichting
 
@@ -62,7 +62,7 @@ https://success.mediusflow.com/documentation/administration_guide/user_login_and
 
 1.  Meld u aan bij de [Medius flow-beheer console](https://office365.cloudapp.mediusflow.com/) door de Tenant-id op te geven.
 
-    ![Verifiëren](./media/mediusflow-provisioning-tutorial/1-auth.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/1-auth.png" alt-text="Scherm opname van de Medius flow-beheer console. Het vak Medius flow Tenant naam en de knop verifiëren zijn gemarkeerd in de eerste integratie stap." border="false":::
 
 2. Controleer de verbinding met Medius flow.
 
@@ -76,35 +76,35 @@ https://success.mediusflow.com/documentation/administration_guide/user_login_and
 
 4. Sla de configuratie op.
 
-    ![Verifiëren](./media/mediusflow-provisioning-tutorial/4-save-config.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/4-save-config.png" alt-text="Scherm opname van de Medius flow-beheer console. Het vak Medius flow Tenant naam en de knop verifiëren zijn gemarkeerd in de eerste integratie stap." border="false":::
 
 5. Selecteer gebruikers inrichten en klik op **OK**.
 
-    ![Verifiëren](./media/mediusflow-provisioning-tutorial/5-select-user-provisioning.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/5-select-user-provisioning.png" alt-text="Scherm opname van de Medius flow-beheer console. Het vak Medius flow Tenant naam en de knop verifiëren zijn gemarkeerd in de eerste integratie stap." border="false":::
 
 6. Klik op **geheime sleutel genereren**. Kopieer deze waarde en sla deze op. Deze waarde wordt ingevoerd in het veld **geheime token** op het tabblad **inrichten** van uw Medius flow-toepassing in de Azure Portal.
 
-    ![Verifiëren](./media/mediusflow-provisioning-tutorial/6-create-secret-1.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/6-create-secret-1.png" alt-text="Scherm opname van de Medius flow-beheer console. Het vak Medius flow Tenant naam en de knop verifiëren zijn gemarkeerd in de eerste integratie stap." border="false":::
 
 7. Klik op **OK**.
 
-    ![Verifiëren](./media/mediusflow-provisioning-tutorial/7-confirm-secret.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/7-confirm-secret.png" alt-text="Scherm opname van de Medius flow-beheer console. Het vak Medius flow Tenant naam en de knop verifiëren zijn gemarkeerd in de eerste integratie stap." border="false":::
 
 8. Als u wilt dat de gebruikers worden geïmporteerd met een vooraf gedefinieerde set rollen, bedrijven en andere algemene configuraties in Medius flow, moet u deze eerst configureren. Begin door de configuratie toe te voegen door te klikken op **nieuwe configuratie toevoegen**.
 
-    ![Gebruikers configuratie](./media/mediusflow-provisioning-tutorial/8-configure-user-configuration-1.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/8-configure-user-configuration-1.png" alt-text="Scherm opname van de Medius flow-beheer console. Het vak Medius flow Tenant naam en de knop verifiëren zijn gemarkeerd in de eerste integratie stap." border="false":::
 
 9. Geef de standaard instellingen voor de gebruikers op. In deze weer gave kunt u het standaard kenmerk instellen. Als de standaard instellingen in orde zijn, is het voldoende om alleen een geldige bedrijfs naam op te geven. Omdat deze configuratie-instellingen zijn opgehaald van Medius flow, moeten ze eerst worden geconfigureerd. Zie de sectie **vereisten** van dit artikel voor meer informatie.
 
-    ![Gebruikers configuratie](./media/mediusflow-provisioning-tutorial/9-configure-user-config-detail-1.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/9-configure-user-config-detail-1.png" alt-text="Scherm opname van de Medius flow-beheer console. Het vak Medius flow Tenant naam en de knop verifiëren zijn gemarkeerd in de eerste integratie stap." border="false":::
 
 10. Klik op **Opslaan** om de gebruikers configuratie op te slaan.
 
-    ![Gebruikers configuratie](./media/mediusflow-provisioning-tutorial/10-done-1.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/10-done-1.png" alt-text="Scherm opname van de Medius flow-beheer console. Het vak Medius flow Tenant naam en de knop verifiëren zijn gemarkeerd in de eerste integratie stap." border="false":::
 
 11. Als u de koppeling voor het inrichten van gebruikers wilt ophalen, klikt u op de **koppeling kopiëren van scim**. Kopieer deze waarde en sla deze op. Deze waarde wordt ingevoerd in het veld **Tenant-URL** op het tabblad **inrichten** van uw Medius flow-toepassing in de Azure Portal.
  
-    ![Gebruikers configuratie](./media/mediusflow-provisioning-tutorial/11-get-scim-link.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/11-get-scim-link.png" alt-text="Scherm opname van de Medius flow-beheer console. Het vak Medius flow Tenant naam en de knop verifiëren zijn gemarkeerd in de eerste integratie stap." border="false":::
 
 ## <a name="step-3-add-mediusflow-from-the-azure-ad-application-gallery"></a>Stap 3. Medius flow toevoegen vanuit de Azure AD-toepassings galerie
 

@@ -2,22 +2,22 @@
 title: Metrische gegevens, waarschuwingen en Diagnostische logboeken
 description: Registreer en analyseer logboek gebeurtenissen van het diagnostische gegevens voor Azure Batch account resources, zoals Pools en taken.
 ms.topic: how-to
-ms.date: 05/29/2020
+ms.date: 10/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: abf9ef53d3f2e3ffeffabfe9b7c77dc5c5debec3
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 265149e8d3cd775974ec690ebffbce92a1b82b2e
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145094"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91848684"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Metrische batches, waarschuwingen en logboeken voor diagnostische evaluatie en bewaking
- 
+
 In dit artikel wordt uitgelegd hoe u een batch-account kunt bewaken met behulp van functies van [Azure monitor](../azure-monitor/overview.md). Azure Monitor verzamelt [metrische gegevens](../azure-monitor/platform/data-platform-metrics.md) en [Diagnostische logboeken](../azure-monitor/platform/platform-logs-overview.md) voor resources in uw batch-account. Verzamel en gebruik deze gegevens op verschillende manieren om uw batch-account te controleren en problemen op te sporen. U kunt ook [metrische waarschuwingen](../azure-monitor/platform/alerts-overview.md) configureren zodat u meldingen ontvangt wanneer een metriek een opgegeven waarde bereikt.
 
 ## <a name="batch-metrics"></a>Metrische batches
 
-Metrische gegevens zijn Azure-telemetriegegevens (ook wel prestatie meter items genoemd) die worden verzonden door uw Azure-resources en die worden gebruikt door de Azure Monitor service. Voor beelden van metrische gegevens in een batch-account zijn groep maken gebeurtenissen, aantal knoop punten met een lage prioriteit en gebeurtenissen volt ooien.
+Metrische gegevens zijn Azure-telemetriegegevens (ook wel prestatie meter items genoemd) die worden verzonden door uw Azure-resources en die worden gebruikt door de Azure Monitor service. Voor beelden van metrische gegevens in een batch-account zijn groep maken gebeurtenissen, Low-Priority aantal knoop punten en gebeurtenissen voltooid.
 
 Bekijk de [lijst met ondersteunde metrische gegevens voor batches](../azure-monitor/platform/metrics-supported.md#microsoftbatchbatchaccounts).
 
@@ -34,7 +34,7 @@ Azure Portal op de pagina **overzicht** van het account worden standaard de metr
 De metrische gegevens van een batch-account weer geven in de Azure Portal:
 
 1. Selecteer in het Azure Portal **alle services**  >  **batch-accounts**en selecteer vervolgens de naam van uw batch-account.
-2. Onder **bewaking**selecteert u **metrische gegevens**.
+2. Selecteer **Metrische gegevens** onder **Bewaking**.
 3. Selecteer **metrische gegevens toevoegen** en kies vervolgens een waarde in de vervolg keuzelijst.
 4. Selecteer een **aggregatie** optie voor de metriek. Gebruik de **gemiddelde** aggregatie voor metrische gegevens op basis van tellers (zoals ' toegewezen aantal kernen ' of ' aantal knoop punten met lage prioriteit '). Voor metrische gegevens op basis van gebeurtenissen (zoals ' pool formaat wijzigen voltooid ') gebruikt u de aggregatie **aantal**'.
 
@@ -57,11 +57,11 @@ U kunt bijna realtime *waarschuwingen voor metrische gegevens* configureren die 
 
 Waarschuwingen die op één gegevens punt geactiveerd worden, worden niet aanbevolen, omdat de metrieken afhankelijk zijn van een out-of-order-levering, gegevens verlies en/of duplicatie. Wanneer u uw waarschuwingen maakt, kunt u drempels gebruiken om deze inconsistenties te verantwoorden.
 
-U kunt bijvoorbeeld een waarschuwing voor metrische gegevens configureren wanneer het aantal kernen op basis van de prioriteit een bepaald niveau heeft, zodat u de samen stelling van uw groeps aanpassen. Stel voor de beste resultaten een periode van 10 of meer minuten in, waarbij waarschuwingen worden geactiveerd als het gemiddelde aantal kernen met lage prioriteit lager is dan de drempel waarde voor de hele periode. Dit maakt het mogelijk dat er meer tijd in beslag wordt verzameld, zodat u nauw keurige resultaten krijgt. 
+U kunt bijvoorbeeld een waarschuwing voor metrische gegevens configureren wanneer het aantal kernen op basis van de prioriteit een bepaald niveau heeft, zodat u de samen stelling van uw groeps aanpassen. Stel voor de beste resultaten een periode van 10 of meer minuten in, waarbij waarschuwingen worden geactiveerd als het gemiddelde aantal kernen met lage prioriteit lager is dan de drempel waarde voor de hele periode. Dit maakt het mogelijk dat er meer tijd in beslag wordt verzameld, zodat u nauw keurige resultaten krijgt.
 
 Een waarschuwing voor metrische gegevens configureren in de Azure Portal:
 
-1. Selecteer **alle services**  >  **batch-accounts**en selecteer vervolgens de naam van uw batch-account.
+1. Selecteer **Alle services** > **Batch-accounts** en selecteer vervolgens de naam van uw Batch-account.
 2. Onder **bewaking**selecteert u **waarschuwingen**en selecteert u **nieuwe waarschuwings regel**.
 3. Klik op **voor waarde selecteren**en kies vervolgens een metriek. Bevestig de waarden voor de **grafiek periode**, het **type drempel waarde**, de **operator**en het **aggregatie type**en voer een **drempel waarde**in. Selecteer vervolgens **Done**.
 4. Voeg een actie groep toe aan de waarschuwing door een bestaande actie groep te selecteren of een nieuwe actie groep te maken.
@@ -87,11 +87,11 @@ Een veelvoorkomend scenario is het selecteren van een Azure Storage-account als 
 
 U kunt ook het volgende doen:
 
-- Batch diagnostische logboek gebeurtenissen streamen naar een [Azure Event hub](../event-hubs/event-hubs-about.md). Event Hubs kan miljoenen gebeurtenissen per seconde opnemen, die u vervolgens kunt transformeren en opslaan met behulp van een real-time analyse provider. 
+- Batch diagnostische logboek gebeurtenissen streamen naar een [Azure Event hub](../event-hubs/event-hubs-about.md). Event Hubs kan miljoenen gebeurtenissen per seconde opnemen, die u vervolgens kunt transformeren en opslaan met behulp van een real-time analyse provider.
 - Diagnostische logboeken verzenden naar [Azure monitor-logboeken](../azure-monitor/log-query/log-query-overview.md), waar u ze kunt analyseren of exporteren voor analyse in Power bi of Excel.
 
 > [!NOTE]
-> Mogelijk worden er extra kosten in rekening gebracht om diagnostische logboek gegevens met Azure-Services op te slaan of te verwerken. 
+> Mogelijk worden er extra kosten in rekening gebracht om diagnostische logboek gegevens met Azure-Services op te slaan of te verwerken.
 
 ### <a name="enable-collection-of-batch-diagnostic-logs"></a>Verzamelen van batch-diagnose logboeken inschakelen
 
@@ -155,7 +155,7 @@ Azure Batch service logboeken, indien verzameld, bevatten gebeurtenissen die wor
     },
     "resizeTimeout": "300000",
     "targetDedicatedComputeNodes": 2,
-    "maxTasksPerNode": 1,
+    "taskSlotsPerNode": 1,
     "vmFillType": "Spread",
     "enableAutoscale": false,
     "enableInterNodeCommunication": false,
@@ -170,9 +170,11 @@ De volgende gebeurtenissen van het service logboek worden verzonden door de batc
 - [Groep verwijderen is voltooid](batch-pool-delete-complete-event.md)
 - [Begin grootte van groep wijzigen](batch-pool-resize-start-event.md)
 - [Grootte van groep volt ooien voltooid](batch-pool-resize-complete-event.md)
+- [Groep automatisch schalen](batch-pool-autoscale-event.md)
 - [Taak starten](batch-task-start-event.md)
 - [Taak voltooid](batch-task-complete-event.md)
 - [Taak mislukt](batch-task-fail-event.md)
+- [Taak planning mislukt](batch-task-schedule-fail-event.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: c53f7e712668f32766feaf76d6a08582bda9af22
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a7026757651d1b0510293101203f41a651c7b851
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91449107"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850962"
 ---
 # <a name="introduction-to-azure-defender-for-app-service"></a>Inleiding tot Azure Defender voor App Service
 
@@ -27,7 +27,7 @@ Door gebruik te maken van de zichtbaarheid van Azure als cloudprovider, analysee
 
 |Aspect|Details|
 |----|:----|
-|Releasestatus:|Preview|
+|Releasestatus:|Algemeen verkrijgbaar (GA)|
 |Prijzen:|Voor [Azure Defender for App Service](azure-defender.md) gelden de prijzen op de [pagina Prijzen](security-center-pricing.md)|
 |Ondersteunde App Service-plannen:|![Ja](./media/icons/yes-icon.png) Basic, Standard, Premium, Isolated of Linux<br>![Nee](./media/icons/no-icon.png) Free, Shared of Consumption<br>[Meer informatie over App Service-plannen](https://azure.microsoft.com/pricing/details/app-service/plans/)|
 |Clouds:|![Ja](./media/icons/yes-icon.png) Commerciële clouds<br>![Nee](./media/icons/no-icon.png) Nationaal/onafhankelijk (overheid van de VS, China, andere overheden)|

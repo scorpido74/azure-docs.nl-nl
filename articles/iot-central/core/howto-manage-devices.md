@@ -1,28 +1,32 @@
 ---
 title: De apparaten in uw Azure IoT Central-toepassing beheren | Microsoft Docs
-description: Als operator vindt u informatie over het beheren van apparaten in uw Azure IoT Central-toepassing.
-author: sarahhubbard
-ms.author: sahubbar
-ms.date: 12/06/2019
+description: Als operator vindt u informatie over het beheren van apparaten in uw Azure IoT Central-toepassing. Meer informatie over het beheren van afzonderlijke apparaten en het bulksgewijs importeren en exporteren van de apparaten in uw toepassing.
+author: dominicbetts
+ms.author: dobett
+ms.date: 10/08/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: ee9552b251cbc8cca1891de043ee79682e7b2d6c
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.custom: contperfq2
+ms.openlocfilehash: 1782982c75e502ea8df70818a134b5b009188959
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90017095"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850095"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Apparaten beheren in uw Azure IoT Central-toepassing
 
 In dit artikel wordt beschreven hoe u als operator apparaten beheert in uw Azure IoT Central-toepassing. Als operator kunt u het volgende doen:
 
 - Gebruik de pagina **apparaten** om apparaten weer te geven, toe te voegen en te verwijderen die zijn verbonden met uw Azure IOT Central-toepassing.
+- Apparaten bulksgewijs importeren en exporteren.
 - Onderhoud van een actuele inventaris van uw apparaten.
-- De meta gegevens van uw apparaat up-to-date houden door de waarden die zijn opgeslagen in de eigenschappen van het apparaat te wijzigen in uw weer gaven.
+- De meta gegevens van uw apparaat up-to-date houden door de waarden die zijn opgeslagen in de eigenschappen van het apparaat in uw weer gaven te wijzigen.
 - U bepaalt het gedrag van uw apparaten door een instelling op een specifiek apparaat in uw weer gaven bij te werken.
+
+Zie [zelf studie: apparaatgroepen gebruiken om de telemetrie](tutorial-use-device-groups.md)van apparaten te analyseren voor meer informatie over het beheren van aangepaste groepen apparaten.
 
 ## <a name="view-your-devices"></a>Uw apparaten weergeven
 
@@ -36,7 +40,6 @@ Een afzonderlijk apparaat weer geven:
 
     ![Pagina Details van apparaat](./media/howto-manage-devices/devicelist.png)
 
-
 ## <a name="add-a-device"></a>Een apparaat toevoegen
 
 Een apparaat toevoegen aan uw Azure IoT Central-toepassing:
@@ -49,7 +52,7 @@ Een apparaat toevoegen aan uw Azure IoT Central-toepassing:
 
 1. Schakel de **gesimuleerde** wissel knop **in of** **uit**. Een echt apparaat is voor een fysiek apparaat waarmee u verbinding maakt met uw Azure IoT Central-toepassing. Voor een gesimuleerd apparaat zijn voorbeeld gegevens gegenereerd door Azure IoT Central.
 
-1. Klik op **Maken**.
+1. Selecteer **Maken**.
 
 1. Dit apparaat wordt nu weer gegeven in de lijst met apparaten voor deze sjabloon. Selecteer het apparaat om de detail pagina van het apparaat weer te geven die alle weer gaven voor het apparaat bevat.
 
@@ -82,10 +85,9 @@ Apparaten in uw toepassing bulksgewijs registreren:
 
     ![Import geslaagd](./media/howto-manage-devices/bulkimport3a.png)
 
-
 Als de Importeer bewerking van het apparaat mislukt, wordt er een fout bericht weer gegeven in het paneel voor het apparaat. Een logboek bestand waarin alle fouten worden vastgelegd, wordt gegenereerd dat u kunt downloaden.
 
-**Apparaten naar een sjabloon migreren**
+## <a name="migrate-devices-to-a-template"></a>Apparaten naar een sjabloon migreren
 
 Als u apparaten registreert door het importeren te starten onder **alle apparaten**, worden de apparaten gemaakt zonder een sjabloon koppeling van het apparaat. Apparaten moeten worden gekoppeld aan een sjabloon om de gegevens en andere details over het apparaat te kunnen verkennen. Volg deze stappen om apparaten te koppelen aan een sjabloon:
 
@@ -95,8 +97,7 @@ Als u apparaten registreert door het importeren te starten onder **alle apparate
 
     ![Niet-gekoppelde apparaten](./media/howto-manage-devices/unassociateddevices1a.png)
 
-
-1. Gebruik het filter op het raster om te bepalen of de waarde in de kolom **device Temp late** ' Unlinked ' is voor uw apparaten.
+1. Gebruik het filter op het raster om te bepalen of de waarde in de kolom **device Temp late** is **gekoppeld** aan een van uw apparaten.
 
 1. Selecteer de apparaten die u wilt koppelen aan een sjabloon:
 
@@ -104,11 +105,9 @@ Als u apparaten registreert door het importeren te starten onder **alle apparate
 
     ![Apparaten koppelen](./media/howto-manage-devices/unassociateddevices2a.png)
 
-
 1. Kies de sjabloon in de lijst met beschik bare sjablonen en selecteer **migreren**.
 
 1. De geselecteerde apparaten zijn gekoppeld aan de apparaatprofiel die u hebt gekozen.
-
 
 ## <a name="export-devices"></a>Apparaten exporteren
 
@@ -124,7 +123,6 @@ Apparaten bulksgewijs exporteren vanuit uw toepassing:
 
     ![Exporteren](./media/howto-manage-devices/export1a.png)
 
-
 1. Het export proces wordt gestart. U kunt de status bijhouden met behulp van het deel venster apparaten.
 
 1. Wanneer het exporteren is voltooid, wordt een bericht weer gegeven samen met een koppeling om het gegenereerde bestand te downloaden.
@@ -132,7 +130,6 @@ Apparaten bulksgewijs exporteren vanuit uw toepassing:
 1. Selecteer de koppeling **bestand downloaden** om het bestand te downloaden naar een lokale map op de schijf.
 
     ![Het exporteren is voltooid](./media/howto-manage-devices/export2a.png)
-
 
 1. Het geëxporteerde CSV-bestand bevat de volgende kolommen: apparaat-ID, apparaatnaam, Apparaatsets en x509-certificaat vingerafdrukken:
 
@@ -159,7 +156,7 @@ Een echt of gesimuleerd apparaat verwijderen uit uw Azure IoT Central-toepassing
 
 ## <a name="change-a-property"></a>Een eigenschap wijzigen
 
-Cloud eigenschappen zijn de meta gegevens van het apparaat die zijn gekoppeld aan het apparaat, zoals City en serie nummer. Beschrijf bare eigenschappen bepalen het gedrag van een apparaat. Met andere woorden, ze stellen u in staat om invoer te bieden aan uw apparaat.  Apparaateigenschappen worden ingesteld door het apparaat en zijn alleen-lezen in IoT Central. U kunt eigenschappen weer geven en bijwerken op de details van het **apparaat** voor uw apparaat.
+Cloud eigenschappen zijn de meta gegevens van het apparaat die zijn gekoppeld aan het apparaat, zoals City en serie nummer. Cloud eigenschappen bestaan alleen in de IoT Central-toepassing en worden niet gesynchroniseerd met uw apparaten. Beschrijf bare eigenschappen bepalen het gedrag van een apparaat en stelt u in staat om de status van een apparaat op afstand in te stellen, bijvoorbeeld door de doel temperatuur van een thermo staat-apparaat in te stellen.  Apparaateigenschappen worden ingesteld door het apparaat en zijn alleen-lezen in IoT Central. U kunt eigenschappen weer geven en bijwerken op de details van het **apparaat** voor uw apparaat.
 
 1. Kies **apparaten** in het linkerdeel venster.
 
@@ -171,12 +168,6 @@ Cloud eigenschappen zijn de meta gegevens van het apparaat die zijn gekoppeld aa
 
 1. Kies **Opslaan**. Als u schrijf bare eigenschappen hebt opgeslagen, worden de waarden naar uw apparaat verzonden. Wanneer het apparaat de wijziging voor de Beschrijf bare eigenschap bevestigt, keert de status terug naar **gesynchroniseerd**. Als u een Cloud eigenschap hebt opgeslagen, wordt de waarde bijgewerkt.
 
-
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u hebt geleerd hoe u apparaten beheert in uw Azure IoT Central-toepassing, is dit de voorgestelde volgende stap:
-
-> [!div class="nextstepaction"]
-> [Apparaatgroepen gebruiken](tutorial-use-device-groups.md)
-
-<!-- Next how-tos in the sequence -->
+Nu u hebt geleerd hoe u apparaten in uw Azure IoT Central-toepassing beheert, is de voorgestelde volgende stap informatie over het[configureren van regels](howto-configure-rules.md) voor uw apparaten.

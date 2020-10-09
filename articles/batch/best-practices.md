@@ -3,12 +3,12 @@ title: Aanbevolen procedures
 description: Leer de aanbevolen procedures en handige tips voor het ontwikkelen van uw Azure Batch-oplossing.
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: ca6e491586fd653f39da7466ea116109000facd6
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 695f213c0683bd158539b97719f2c2d8c0210edf
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146535"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91849486"
 ---
 # <a name="azure-batch-best-practices"></a>Aanbevolen procedures Azure Batch
 
@@ -109,7 +109,7 @@ Taken kunnen worden verzonden op individuele basis of in verzamelingen. Verzend 
 
 ### <a name="set-max-tasks-per-node-appropriately"></a>Het juiste aantal taken per knoop punt instellen
 
-Batch ondersteunt het overabonneren van taken op knoop punten (het uitvoeren van meer taken dan een knoop punt heeft kern geheugens). Het is aan u om ervoor te zorgen dat de taken in de knoop punten in uw pool passen. U kunt bijvoorbeeld een gedegradeerde ervaring hebben als u probeert acht taken te plannen die elk een CPU-gebruik van 25% op één knoop punt (in een groep met) verbruikt `maxTasksPerNode = 8` .
+Batch ondersteunt het overabonneren van taken op knoop punten (het uitvoeren van meer taken dan een knoop punt heeft kern geheugens). Het is aan u om ervoor te zorgen dat de taken in de knoop punten in uw pool passen. U kunt bijvoorbeeld een gedegradeerde ervaring hebben als u probeert acht taken te plannen die elk een CPU-gebruik van 25% op één knoop punt (in een groep met) verbruikt `taskSlotsPerNode = 8` .
 
 ### <a name="design-for-retries-and-re-execution"></a>Ontwerpen voor nieuwe pogingen en opnieuw uitvoeren
 
@@ -217,6 +217,6 @@ Azure Batch maakt en beheert een set gebruikers en groepen op de VM, wat niet ma
 
 ### <a name="file-cleanup"></a>Bestanden opschonen
 
-Batch probeert actief de werkmap op te schonen waarin de taken worden uitgevoerd, zodra de retentie tijd verloopt. Bestanden die buiten deze map zijn geschreven, zijn [uw verantwoordelijkheid om op te schonen](#manage-task-lifetime) om te voor komen dat u schijf ruimte kunt invullen. 
+Batch probeert actief de werkmap op te schonen waarin de taken worden uitgevoerd, zodra de retentie tijd verloopt. Bestanden die buiten deze map zijn geschreven, zijn [uw verantwoordelijkheid om op te schonen](#manage-task-lifetime) om te voor komen dat u schijf ruimte kunt invullen.
 
 De automatische opschoning voor de werkmap wordt geblokkeerd als u een service uitvoert in Windows vanuit de werkmap startTask, omdat de map nog in gebruik is. Dit leidt tot slechte prestaties. Om dit probleem op te lossen, wijzigt u de map voor die service in een afzonderlijke map die niet wordt beheerd door batch.

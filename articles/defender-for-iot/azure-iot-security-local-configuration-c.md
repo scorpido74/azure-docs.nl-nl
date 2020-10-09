@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 7cc6886b5341d8bc8a82288ad8a2a699381a953c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 46b3009a7a57f726457a767afe501bfb28a06606
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935299"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843359"
 ---
 # <a name="understanding-the-localconfigurationjson-file---c-agent"></a>Meer informatie over het bestand LocalConfiguration.json - C-agent
 
@@ -40,9 +40,9 @@ Wijzigingen in het configuratie bestand worden uitgevoerd wanneer de agent opnie
 | ConnectionTimeout | ISO8601 teken reeks | Er is een time-out opgetreden voor de verbinding met IoThub |
 | Verificatie | JsonObject | Verificatie configuratie. Dit object bevat alle informatie die nodig is voor verificatie op basis van IoTHub |
 | Identiteit | ' DPS ', ' SecurityModule ', ' apparaat ' | Verificatie-identiteit-DPS als verificatie wordt uitgevoerd via DPS, SecurityModule als verificatie wordt uitgevoerd via de beveiligings module referenties of het apparaat als verificatie wordt uitgevoerd met de referenties van het apparaat |
-| Authentic | "SasToken", "SelfSignedCertificate" | het gebruikers geheim voor authenticatie: Kies SasToken als het geheim gebruiken een symmetrische sleutel is, kies zelf ondertekend certificaat als het geheim een zelfondertekend certificaat is  |
+| Authentic | "SasToken", "SelfSignedCertificate" | het gebruikers geheim voor authenticatie: Kies SasToken als het geheim gebruiken een symmetrische sleutel is, kies het zelfondertekende certificaat als het geheim een zelfondertekend certificaat is  |
 | Bestandspad | Pad naar bestand (teken reeks) | Pad naar het bestand dat het authenticatie geheim bevat |
-| HostName | tekenreeks | De hostnaam van de Azure IOT hub. doorgaans <mijn hub>. azure-devices.net |
+| HostName | tekenreeks | De hostnaam van de Azure IoT hub. doorgaans <mijn hub>. azure-devices.net |
 | DeviceId | tekenreeks | De ID van het apparaat (zoals geregistreerd in azure IoT Hub) |
 | DPS | JsonObject | Configuraties met betrekking tot DPS |
 | IDScope | tekenreeks | ID-bereik van DPS |

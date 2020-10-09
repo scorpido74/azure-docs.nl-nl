@@ -13,44 +13,46 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/11/2020
 ms.author: memildin
-ms.openlocfilehash: 4b47646e2f051a8fbfefbc36aa879bb80e9eca68
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: e6bb3389fe035b1ccfbefaca788a40530581ac7a
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91439025"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91851044"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Adaptieve netwerk beveiliging in Azure Security Center
-Meer informatie over het configureren van adaptieve netwerk beveiliging in Azure Security Center.
+Meer informatie over het configureren van adaptieve netwerk beveiliging in Security Center.
 
 ## <a name="availability"></a>Beschikbaarheid
 |Aspect|Details|
 |----|:----|
-|Release status:|Algemeen beschikbaar (GA)|
-|Koers|[Azure Defender voor servers](defender-for-servers-introduction.md) vereist|
-|Vereiste rollen en machtigingen:|Schrijf machtigingen op de Nsg's van de computer|
-|Clouds|![Ja](./media/icons/yes-icon.png) Commerciële Clouds<br>![Nee](./media/icons/no-icon.png) National/soeverein (US Gov, China gov, andere gov)|
+|Releasestatus:|Algemeen verkrijgbaar (GA)|
+|Prijzen:|[Azure Defender voor servers](defender-for-servers-introduction.md) is vereist|
+|Vereiste rollen en machtigingen:|Schrijfmachtigingen op de NSG's van de computer|
+|Clouds:|![Ja](./media/icons/yes-icon.png) Commerciële clouds<br>![Nee](./media/icons/no-icon.png) Nationaal/onafhankelijk (overheid van de VS, China, andere overheden)|
 |||
 
 ## <a name="what-is-adaptive-network-hardening"></a>Wat is adaptieve netwerk beveiliging?
-Het Toep assen van [netwerk beveiligings groepen (NSG)](https://docs.microsoft.com/azure/virtual-network/security-overview) voor het filteren van verkeer naar en van resources verbetert uw netwerk beveiligings postuur. Er kunnen echter wel enkele gevallen zijn waarin het daad werkelijke verkeer dat via de NSG stroomt, een subset is van de gedefinieerde NSG-regels. In dergelijke gevallen kunt u de beveiligings postuur verder verbeteren door de NSG-regels te verfijnen op basis van de werkelijke verkeers patronen.
+Het Toep assen van [netwerk beveiligings groepen (NSG)](https://docs.microsoft.com/azure/virtual-network/security-overview) voor het filteren van verkeer naar en van resources verbetert uw netwerk beveiligings postuur. Maar er kunnen toch nog enkele gevallen zijn waarin het werkelijke verkeer dat via de NSG stroomt een subset is van de gedefinieerde NSG-regels. In dergelijke gevallen kunt u het beveiligingspostuur verder verbeteren door de NSG-regels te versterken op basis van de werkelijke verkeerspatronen.
 
-Adaptieve netwerk beveiliging biedt aanbevelingen voor verdere beveiliging van de NSG-regels. Er wordt gebruikgemaakt van een machine learning algoritme dat betrekking heeft op het werkelijke verkeer, bekende vertrouwde configuratie, bedreigings informatie en andere indica toren van inbreuk, en geeft aanbevelingen om alleen verkeer van specifieke IP-poort-Tuples toe te staan.
+Adaptieve netwerk beveiliging biedt aanbevelingen voor verdere beveiliging van de NSG-regels. Het maakt gebruik van een machine learning-algoritme dat rekening houdt met werkelijk verkeer, bekende vertrouwde configuratie, bedreigingsinformatie en andere aanwijzingen voor aantasting, en geeft vervolgens aanbevelingen om alleen verkeer van bepaalde IP-/poort-tuples toe te staan.
 
-Stel bijvoorbeeld dat de bestaande NSG-regel verkeer van 140.20.30.10/24 op poort 22 toestaat. De aanbeveling voor adaptieve netwerk beveiliging, op basis van de analyse, zou het bereik moeten beperken en verkeer van 140.23.30.10/29 kunnen toestaan. Dit is een smallere IP-bereik en weigert al het andere verkeer naar die poort.
+Stel bijvoorbeeld dat de bestaande NSG-regel verkeer van 140.20.30.10/24 op poort 22 toestaat. Op basis van de analyse van het verkeer kan het voor komen dat een adaptieve netwerk beveiliging het bereik beperkt zodat verkeer van 140.23.30.10/29 wordt toegestaan en dat alle andere verkeer naar die poort wordt geweigerd.
 
->[!TIP]
+>[!Note]
 > Aanbevelingen voor adaptieve netwerk beveiliging worden alleen ondersteund op de volgende specifieke poorten (voor UDP en TCP): 13, 17, 19, 22, 23, 53, 69, 81, 111, 119, 123, 135, 137, 138, 139, 161, 162, 389, 445, 512, 514, 593, 636, 873, 1433, 1434, 1900, 2049, 2301, 2323, 2381, 3268, 3306, 3389, 4333, 5353, 5432, 5555, 5800, 5900, 5900, 5985, 5986, 6379 , 6379, 7000, 7001, 7199, 8081, 8089, 8545, 9042, 9160, 9300, 11211, 16379, 26379, 27017, 37215
 
 
-![Weer gave netwerk beveiliging](./media/security-center-adaptive-network-hardening/traffic-hardening.png)
+## <a name="view-and-manage-hardening-alerts-and-rules"></a>Beveiligings waarschuwingen en-regels weer geven en beheren
 
+1. Open in het menu van Security Center het **Azure Defender** -dash board en selecteer de tegel adaptieve netwerk beveiliging (1) of het deel venster inzichten met betrekking tot adaptieve netwerk beveiliging (2). 
 
+    :::image type="content" source="./media/security-center-adaptive-network-hardening/traffic-hardening.png" alt-text="Toegang tot de hulpprogram ma's voor adaptieve netwerk beveiliging" lightbox="./media/security-center-adaptive-network-hardening/traffic-hardening.png":::
 
+    > [!TIP]
+    > Het deel venster inzichten toont het percentage van uw virtuele machines dat momenteel is beveiligd met adaptieve netwerk beveiliging. 
 
-## <a name="view-adaptive-network-hardening-alerts-and-rules"></a>Waarschuwingen en regels voor adaptieve netwerk beveiliging weer geven
-
-1. Selecteer in Security Center **netwerk**  ->  **adaptief netwerk beveiliging**. De netwerk-Vm's worden weer gegeven onder drie afzonderlijke tabbladen:
+1. De pagina Details voor de **aanbevelingen voor adaptieve netwerk beveiliging moet worden toegepast op Internet gerichte virtuele machines** . de aanbeveling wordt geopend met uw netwerk-vm's gegroepeerd op drie tabbladen:
    * **Slechte resources**: vm's die momenteel aanbevelingen en waarschuwingen hebben geactiveerd door het uitvoeren van het adaptieve netwerk beveiligings algoritme. 
    * **Gezonde resources**: vm's zonder waarschuwingen en aanbevelingen.
    * Niet- **gescande resources**: vm's waarvoor het adaptieve netwerk beveiligings algoritme niet kan worden uitgevoerd om een van de volgende redenen:
@@ -58,33 +60,28 @@ Stel bijvoorbeeld dat de bestaande NSG-regel verkeer van 140.20.30.10/24 op poor
       * **Er zijn onvoldoende gegevens beschikbaar**: voor het genereren van nauw keurige aanbevelingen voor het beveiligen van de beveiliging is Security Center ten minste 30 dagen aan verkeers gegevens vereist.
       * **VM wordt niet beveiligd door Azure Defender**: alleen vm's die zijn beveiligd met [Azure Defender voor servers](defender-for-servers-introduction.md) komen in aanmerking voor deze functie.
 
-     ![beschadigde resources](./media/security-center-adaptive-network-hardening/unhealthy-resources.png)
+    :::image type="content" source="./media/security-center-adaptive-network-hardening/recommendation-details-page.png" alt-text="Toegang tot de hulpprogram ma's voor adaptieve netwerk beveiliging":::
 
-2. Op het tabblad **beschadigde bronnen** selecteert u een virtuele machine om de waarschuwingen en de aanbevolen beveiligings regels weer te geven die moeten worden toegepast.
+1. Op het tabblad **beschadigde bronnen** selecteert u een virtuele machine om de waarschuwingen en de aanbevolen beveiligings regels weer te geven die moeten worden toegepast.
 
-    ![beveiligings waarschuwingen](./media/security-center-adaptive-network-hardening/anh-recommendation-rules.png)
+    - Het tabblad **regels** bevat de regels die adaptieve netwerk beveiliging aanbeveelt
+    - Op het tabblad **waarschuwingen** worden de waarschuwingen weer gegeven die zijn gegenereerd als gevolg van verkeer, stromen naar de resource, die niet binnen het IP-bereik vallen dat is toegestaan in de aanbevolen regels.
 
+1. Bewerk eventueel de regels:
 
-## <a name="review-and-apply-adaptive-network-hardening-recommended-rules"></a>Aanbevolen regels voor adaptieve netwerk beveiliging controleren en Toep assen
-
-1. Selecteer een virtuele machine op het tabblad **beschadigde resources** . De waarschuwingen en aanbevolen regels voor de beveiliging worden weer gegeven.
-
-     ![Beveiligings regels](./media/security-center-adaptive-network-hardening/hardening-alerts.png)
-
-   > [!NOTE]
-   > Het tabblad **regels** bevat een lijst met de regels die adaptieve netwerk beveiliging aanbeveelt. Op het tabblad **waarschuwingen** worden de waarschuwingen weer gegeven die zijn gegenereerd als gevolg van verkeer, stromen naar de resource, die niet binnen het IP-bereik vallen dat is toegestaan in de aanbevolen regels.
-
-2. Als u een aantal para meters van een regel wilt wijzigen, kunt u deze wijzigen, zoals wordt uitgelegd in [een regel wijzigen](#modify-rule).
-   > [!NOTE]
-   > U kunt ook een regel [verwijderen](#delete-rule) of [toevoegen](#add-rule) .
+    - [Een regel wijzigen](#modify-rule)
+    - [Een regel verwijderen](#delete-rule) 
+    - [Een regel toevoegen](#add-rule)
 
 3. Selecteer de regels die u wilt Toep assen op de NSG en klik op **afdwingen**.
 
+    > [!TIP]
+    > Als de toegestane bron-IP-bereiken als ' geen ' worden weer gegeven, betekent dit dat de aanbevolen regel een regel voor *weigeren* is, anders is dit een regel voor *toestaan* .
+
+    :::image type="content" source="./media/security-center-adaptive-network-hardening/hardening-alerts.png" alt-text="Toegang tot de hulpprogram ma's voor adaptieve netwerk beveiliging":::
+
       > [!NOTE]
       > De afgedwongen regels worden toegevoegd aan de NSG (s) die de virtuele machine beveiligen. (Een virtuele machine kan worden beveiligd door een NSG die is gekoppeld aan de NIC of het subnet waarin de virtuele machine zich bevindt, of beide)
-
-    ![regels afdwingen](./media/security-center-adaptive-network-hardening/enforce-hard-rule2.png)
-
 
 ### <a name="modify-a-rule"></a>Een regel <a name ="modify-rule"> </a> wijzigen
 

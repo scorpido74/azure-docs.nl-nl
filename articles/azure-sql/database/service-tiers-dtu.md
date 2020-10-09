@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
+ms.date: 10/07/2020
 ms.reviewer: ''
-ms.date: 11/26/2019
-ms.openlocfilehash: ba2170923885eac19af4bfe3ce55ea653371c0e8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8ed4edb8739758af057276bd21c4ad62bf9ab974
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321353"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91848854"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Service-lagen in het op DTU gebaseerde aankoopmodel
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -40,16 +40,21 @@ Het kiezen van een servicelaag is voornamelijk afhankelijk van de bedrijfs conti
 |**SLA voor uptime**|99,99%|99,99%|99,99%|
 |**Maximale retentie van back-ups**|7 dagen|35 dagen|35 dagen|
 |**CPU**|Beperkt|Laag, gemiddeld, hoog|Gemiddeld, hoog|
-|**I/o-door Voer (ongeveer)** |1-5 IOPS per DTU| 1-5 IOPS per DTU | 25 IOPS per DTU|
+|**IOPS (benadering)**\* |1-5 IOPS per DTU| 1-5 IOPS per DTU | 25 IOPS per DTU|
 |**I/o-latentie (bij benadering)**|5 ms (lezen), 10 MS (schrijven)|5 ms (lezen), 10 MS (schrijven)|2 ms (lezen/schrijven)|
 |**Column Store-indexering** |N.v.t.|S3 en hoger|Ondersteund|
 |**OLTP in het geheugen**|N.v.t.|N.v.t.|Ondersteund|
 
+\* Alle Lees-en schrijf-IOPS voor gegevens bestanden, inclusief de achtergrond-IO (controle punt en vertraagde schrijver)
+
 > [!IMPORTANT]
-> De service lagen Basic, Standard S0, S1 en S2 bieden minder dan één vCore (CPU).  Voor CPU-intensieve workloads wordt een servicelaag van S3 of hoger aanbevolen. 
+> De basis-, S0-, S1-en S2-service doelstellingen bieden minder dan één vCore (CPU).  Voor CPU-intensieve workloads wordt een service doelstelling van S3 of hoger aanbevolen. 
 >
->Met betrekking tot gegevens opslag worden de service lagen basis, standaard S0 en S1 op standaard pagina-blobs geplaatst. Standaard pagina-blobs maken gebruik van schijven op basis van harde schijven (HDD) en zijn het meest geschikt voor ontwikkelings-, test-en andere weinig frequent gebruikte workloads die minder gevoelig zijn voor prestatie variaties.
+> In de service doelstellingen Basic, S0 en S1 worden database bestanden opgeslagen in azure Standard-opslag, die gebruikmaakt van opslag media op basis van harde schijven (HDD). Deze service doelstellingen zijn het meest geschikt voor ontwikkelings-, test-en andere weinig frequent gebruikte workloads die minder gevoelig zijn voor prestatie variaties.
 >
+
+> [!TIP]
+> Als u de werkelijke [resource governance](resource-limits-logical-server.md#resource-governance) -limieten voor een Data Base of elastische pool wilt bekijken, kunt u de weer gave [sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) opvragen.
 
 > [!NOTE]
 > U kunt een gratis data base in Azure SQL Database in de laag basis service in combi natie met een gratis Azure-account om Azure te verkennen. Zie [een beheerde Cloud database maken met uw gratis Azure-account](https://azure.microsoft.com/free/services/sql-database/)voor meer informatie.
@@ -68,7 +73,7 @@ Reken grootten worden uitgedrukt in termen van Dtu's (data base Trans Action uni
 
 ## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>EDTU-, opslag-en gegroepeerde database limieten voor elastische Pools
 
-|| **Basic** | **Standard** | **Premium** |
+|| **Basic** | **Standaard** | **Premium** |
 | :-- | --: | --: | --: |
 | **Maximale opslag grootte per data base**  | 2 GB | 1 TB | 1 TB |
 | **Maximale opslag grootte per groep** | 156 GB | 4 TB | 4 TB |

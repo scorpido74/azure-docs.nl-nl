@@ -2,14 +2,14 @@
 title: Taken met meerdere instanties gebruiken voor het uitvoeren van MPI-toepassingen
 description: Meer informatie over het uitvoeren van MPI-toepassingen (Message Passing Interface) met het taak type meerdere instanties in Azure Batch.
 ms.topic: how-to
-ms.date: 03/13/2019
+ms.date: 10/08/2020
 ms.custom: H1Hack27Feb2017, devx-track-csharp
-ms.openlocfilehash: fd39af127d975f085bbd55fe2a21f925b5aae8e6
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 6207fc5295de28d4caf956b74e14f97f1113120c
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88926368"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850622"
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>Taken met meerdere instanties gebruiken voor het uitvoeren van MPI-toepassingen (Message Passing Interface) in batch
 
@@ -39,7 +39,7 @@ Wanneer u een taak met instellingen voor meerdere instanties naar een taak verze
 >
 
 ## <a name="requirements-for-multi-instance-tasks"></a>Vereisten voor taken met meerdere instanties
-Voor taken met meerdere instanties is een pool vereist waarvoor **communicatie tussen knoop punten is ingeschakeld**en waarvoor **gelijktijdige taak uitvoering is uitgeschakeld**. Als u het uitvoeren van gelijktijdige taken wilt uitschakelen, stelt u de eigenschap [CloudPool. MaxTasksPerComputeNode](/dotnet/api/microsoft.azure.batch.cloudpool) in op 1.
+Voor taken met meerdere instanties is een pool vereist waarvoor **communicatie tussen knoop punten is ingeschakeld**en waarvoor **gelijktijdige taak uitvoering is uitgeschakeld**. Als u het uitvoeren van gelijktijdige taken wilt uitschakelen, stelt u de eigenschap [CloudPool. TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool) in op 1.
 
 > [!NOTE]
 > Batch [beperkt](batch-quota-limit.md#pool-size-limits) de grootte van een pool waarvoor communicatie tussen knoop punten is ingeschakeld.
@@ -58,11 +58,11 @@ CloudPool myCloudPool =
 // Multi-instance tasks require inter-node communication, and those nodes
 // must run only one task at a time.
 myCloudPool.InterComputeNodeCommunicationEnabled = true;
-myCloudPool.MaxTasksPerComputeNode = 1;
+myCloudPool.TaskSlotsPerNode = 1;
 ```
 
 > [!NOTE]
-> Als u probeert een taak met meerdere instanties uit te voeren in een groep waarvoor communicatie tussen knoop punten is uitgeschakeld, of met een *maxTasksPerNode* -waarde die groter is dan 1, wordt de taak nooit gepland, omdat deze voor onbepaalde tijd in de status actief blijft. 
+> Als u probeert een taak met meerdere instanties uit te voeren in een groep waarvoor communicatie tussen knoop punten is uitgeschakeld, of met een *taskSlotsPerNode* -waarde die groter is dan 1, wordt de taak nooit gepland, omdat deze voor onbepaalde tijd in de status actief blijft.
 
 
 ### <a name="use-a-starttask-to-install-mpi"></a>Een StartTask gebruiken om MPI te installeren
@@ -99,7 +99,7 @@ Zoek naar de grootten die zijn opgegeven als ' RDMA capable ' in de volgende art
   * [Grootten voor virtuele machines in azure](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Windows)
 
 > [!NOTE]
-> Als u wilt profiteren van RDMA op [Linux-reken knooppunten](batch-linux-nodes.md), moet u **Intel mpi** gebruiken op de knoop punten. 
+> Als u wilt profiteren van RDMA op [Linux-reken knooppunten](batch-linux-nodes.md), moet u **Intel mpi** gebruiken op de knoop punten.
 >
 
 ## <a name="create-a-multi-instance-task-with-batch-net"></a>Een taak met meerdere instanties maken met batch .NET

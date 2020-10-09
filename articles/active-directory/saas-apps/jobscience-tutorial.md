@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 0de47cc12c461e47d8703861a99d11e7ee72d581
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 715e99f07d0fcbc77fd1769e5da1cae6b46ac97e
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547064"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850731"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobscience"></a>Zelf studie: integratie Azure Active Directory met Jobscience
 
@@ -42,7 +42,7 @@ Als u Azure AD-integratie met Jobscience wilt configureren, hebt u de volgende i
 Volg deze aanbevelingen als u de stappen in deze zelfstudie wilt testen:
 
 - Gebruik niet de productieomgeving, tenzij dit echt nodig is.
-- Als u geen Azure AD-proef omgeving hebt, kunt u hier een proef versie van één maand krijgen: [proef versie](https://azure.microsoft.com/pricing/free-trial/).
+- Als u niet beschikt over een evaluatieomgeving in Azure AD, kunt u hier een gratis proefversie van één maand krijgen: [Proefversie](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 In deze zelf studie test u eenmalige aanmelding voor Azure AD in een test omgeving. Het scenario dat in deze zelf studie wordt beschreven, bestaat uit twee belang rijke bouw stenen:
@@ -61,19 +61,19 @@ Als u de integratie van Jobscience in azure AD wilt configureren, moet u Jobscie
 
 1. Navigeer naar **bedrijfs toepassingen**. Ga vervolgens naar **alle toepassingen**.
 
-    ![Toepassingen][2]
+    ![Scherm afbeelding toont de Azure Portal Enter prise-toepassingen geselecteerd onder beheren, waarbij alle toepassingen zijn geselecteerd.][2]
     
 1. Als u de nieuwe toepassing wilt toevoegen, klikt u op de knop **Nieuwe toepassing** boven aan het dialoogvenster.
 
-    ![Toepassingen][3]
+    ![In de scherm opname wordt de geselecteerde toepassing weer gegeven.][3]
 
 1. Typ **Jobscience**in het zoekvak.
 
-    ![Een Azure AD-testgebruiker maken](./media/jobscience-tutorial/tutorial_jobscience_search.png)
+    ![Scherm afbeelding toont de toevoeging uit de galerie waarin jobscience is ingevoerd.](./media/jobscience-tutorial/tutorial_jobscience_search.png)
 
 1. Selecteer in het deel venster resultaten **Jobscience**en klik vervolgens op knop **toevoegen** om de toepassing toe te voegen.
 
-    ![Een Azure AD-testgebruiker maken](./media/jobscience-tutorial/tutorial_jobscience_addfromgallery.png)
+    ![Scherm afbeelding toont de resultaten die Jobscience bevatten.](./media/jobscience-tutorial/tutorial_jobscience_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Eenmalige aanmelding voor Azure AD configureren en testen
 In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met Jobscience op basis van een test gebruiker met de naam ' Julia Simon '.
@@ -98,15 +98,15 @@ In deze sectie schakelt u eenmalige aanmelding voor Azure AD in de Azure Portal 
 
 1. Klik in het Azure Portal op de pagina **Jobscience** toepassings integratie op **eenmalige aanmelding**.
 
-    ![Eenmalige aanmelding configureren][4]
+    ![Scherm opname toont eenmalige aanmelding geselecteerd onder beheren in de Azure Portal.][4]
 
 1. Selecteer in het dialoog venster **eenmalige aanmelding** de optie **modus** als op    **SAML gebaseerde aanmelding** om eenmalige aanmelding in te scha kelen.
  
-    ![Eenmalige aanmelding configureren](./media/jobscience-tutorial/tutorial_jobscience_samlbase.png)
+    ![Scherm opname toont de op SAML gebaseerde aanmeldings modus geselecteerd.](./media/jobscience-tutorial/tutorial_jobscience_samlbase.png)
 
 1. Voer de volgende stappen uit in de sectie **Jobscience domein en url's** :
 
-    ![Eenmalige aanmelding configureren](./media/jobscience-tutorial/tutorial_jobscience_url.png)
+    ![Scherm afbeelding toont de aanmeldings U R L.](./media/jobscience-tutorial/tutorial_jobscience_url.png)
 
     Typ in het tekstvak **URL voor aanmelding** een URL met het volgende patroon:  `http://<company name>.my.salesforce.com`
     
@@ -115,23 +115,23 @@ In deze sectie schakelt u eenmalige aanmelding voor Azure AD in de Azure Portal 
  
 1. Klik in de sectie **SAML-handtekening certificaat** op **certificaat (base64)** en sla het certificaat bestand op uw computer op.
 
-    ![Eenmalige aanmelding configureren](./media/jobscience-tutorial/tutorial_jobscience_certificate.png) 
+    ![Scherm afbeelding toont het deel venster SAML-handtekening certificaat waarin u een certificaat kunt downloaden.](./media/jobscience-tutorial/tutorial_jobscience_certificate.png) 
 
 1. Klik op de knop **Save**.
 
-    ![Eenmalige aanmelding configureren](./media/jobscience-tutorial/tutorial_general_400.png)
+    ![Scherm afbeelding toont de knop Opslaan.](./media/jobscience-tutorial/tutorial_general_400.png)
 
-1. Klik in het gedeelte **Jobscience configuratie** op **Jobscience configureren** om **het venster aanmelden configureren** te openen. Kopieer de **URL voor het afmelden, de SAML-Entiteits-ID en de webservice voor de SSO-service voor eenmalige** aanmelding uit het **gedeelte snelle verwijzing.**
+1. Klik in het gedeelte **Jobscience configuratie** op **Jobscience configureren** om **het venster aanmelden configureren** te openen. Kopieer de **Afmeldings-URL, de SAML-entiteit-id en de URL van de SAML Single Sign-On-service** uit de **sectie snelle verwijzing.**
 
-    ![Eenmalige aanmelding configureren](./media/jobscience-tutorial/tutorial_jobscience_configure.png) 
+    ![Scherm afbeelding toont het configuratie venster Jobscience.](./media/jobscience-tutorial/tutorial_jobscience_configure.png) 
 
 1. Meld u als beheerder aan bij de Jobscience-bedrijfs site.
 
-1. Ga naar **Setup**.
+1. Ga naar **Installatie**.
    
-   ![Installatie](./media/jobscience-tutorial/IC784358.png "Instellen")
+   ![Scherm afbeelding toont het instellings item voor uw bedrijf.](./media/jobscience-tutorial/IC784358.png "Instellen")
 
-1. Klik in het navigatie deel venster links in de sectie **beheren** op **domein beheer** om de gerelateerde sectie uit te vouwen en klik vervolgens op **mijn domein** om de pagina **mijn domein** te openen. 
+1. Klik op **Domeinbeheer** in de sectie **Beheren** in het navigatievenster aan de linkerzijde om de verwante sectie uit te vouwen en klik vervolgens op **Mijn domein** om de pagina **Mijn domein** te openen. 
    
    ![Mijn domein](./media/jobscience-tutorial/ic767825.png "Mijn domein")
 
@@ -139,11 +139,11 @@ In deze sectie schakelt u eenmalige aanmelding voor Azure AD in de Azure Portal 
 
     ![Domein geïmplementeerd voor gebruiker](./media/jobscience-tutorial/ic784377.png "Domein geïmplementeerd voor gebruiker")
 
-1. Klik op de Jobscience-bedrijfs site op **beveiligings controles**en klik vervolgens op **instellingen voor eenmalige aanmelding**.
+1. Klik op de Jobscience-bedrijfs site op **beveiligings controles**en klik vervolgens op **instellingen voor één Sign-On**.
     
-    ![Beveiligings controles](./media/jobscience-tutorial/ic784364.png "Beveiligingsmaatregelen")
+    ![Scherm opname toont de instellingen voor één Sign-On die zijn geselecteerd in beveiligings controles.](./media/jobscience-tutorial/ic784364.png "Beveiligingsmaatregelen")
 
-1. Voer de volgende stappen uit in de sectie **instellingen voor eenmalige aanmelding** :
+1. Voer de volgende stappen uit in het gedeelte **Instellingen voor eenmalige aanmelding**:
     
     ![Instellingen voor eenmalige aanmelding](./media/jobscience-tutorial/ic781026.png "Instellingen voor eenmalige aanmelding")
     
@@ -151,9 +151,9 @@ In deze sectie schakelt u eenmalige aanmelding voor Azure AD in de Azure Portal 
 
     b. Klik op **Nieuw**.
 
-1. Voer de volgende stappen uit in het dialoog venster **instellingen voor eenmalige SAML-aanmelding bewerken** :
+1. Voer de volgende stappen uit in het dialoog venster **instellingen voor eenmalige SAML-Sign-On instellen** :
     
-    ![Instelling voor eenmalige aanmelding voor SAML](./media/jobscience-tutorial/ic784365.png "Instelling voor eenmalige aanmelding voor SAML")
+    ![Instellingen voor op SAML gebaseerde eenmalige aanmelding](./media/jobscience-tutorial/ic784365.png "Instellingen voor op SAML gebaseerde eenmalige aanmelding")
     
     a. Typ in het tekstvak **Name** een naam voor de configuratie.
 
@@ -163,31 +163,31 @@ In deze sectie schakelt u eenmalige aanmelding voor Azure AD in de Azure Portal 
 
     d. Klik op **Bladeren** om uw Azure AD-certificaat te uploaden.
 
-    e. Als **SAML-identiteits type**, selecteert u **beweringen bevat de Federatie-id van het gebruikers object**.
+    e. Selecteer **Assertie bevat de federatie-id van het gebruikersobject** bij **SAML-identiteitstype**.
 
-    f. Als **SAML-identiteits locatie**selecteert u **identiteit in het NameIdentfier-element van de instructie subject**.
+    f. Bij **SAML-identiteitslocatie** selecteert u **Identiteit bevindt zich in het NameIdentfier-element van de Onderwerpinstructie**.
 
-    g. Plak in het tekstvak **ID-provider aanmeld-URL** de waarde van de **service-URL voor eenmalige SAML-aanmelding**die u van Azure Portal hebt gekopieerd.
+    g. Plak in het tekstvak **ID-provider aanmeld-URL** de waarde van de **SAML single Sign-On service-URL**, die u hebt gekopieerd van Azure Portal.
 
     h. Plak in het tekstvak voor de **Afmeldings-URL van de identiteits provider** de waarde van de **afmeldings-URL**, die u van Azure Portal hebt gekopieerd.
 
     i. Klik op **Opslaan**.
 
-1. Klik in het navigatie deel venster links in de sectie **beheren** op **domein beheer** om de gerelateerde sectie uit te vouwen en klik vervolgens op **mijn domein** om de pagina **mijn domein** te openen. 
+1. Klik op **Domeinbeheer** in de sectie **Beheren** in het navigatievenster aan de linkerzijde om de verwante sectie uit te vouwen en klik vervolgens op **Mijn domein** om de pagina **Mijn domein** te openen. 
     
     ![Mijn domein](./media/jobscience-tutorial/ic767825.png "Mijn domein")
 
-1. Klik op de pagina **mijn domein** in de sectie **huis stijl aanmeldings pagina** op **bewerken**.
+1. Klik in de sectie **Huisstijl van aanmeldingspagina** op de pagina **Mijn domein** op **Bewerken**.
     
-    ![Huis stijl aanmeldings pagina](./media/jobscience-tutorial/ic767826.png "Huis stijl aanmeldings pagina")
+    ![Scherm afbeelding toont de sectie huis stijl aanmeldings pagina met de knop bewerken.](./media/jobscience-tutorial/ic767826.png "Huisstijl van aanmeldingspagina")
 
-1. Op de pagina **huis stijl aanmeldings pagina** , in de sectie **verificatie service** , wordt de naam van uw **SAML SSO-instellingen** weer gegeven. Selecteer deze en klik vervolgens op **Opslaan**.
+1. In de sectie **Verificatieservice** op de pagina **Huisstijl van aanmeldingspagina** wordt de naam van uw **SAML SSO-instellingen** weergegeven. Selecteer dit en klik vervolgens op **Opslaan**.
     
-    ![Huis stijl aanmeldings pagina](./media/jobscience-tutorial/ic784366.png "Huis stijl aanmeldings pagina")
+    ![Scherm afbeelding toont de sectie huis stijl aanmeldings pagina met BESCHERMINGs punt en opslaan geselecteerd.](./media/jobscience-tutorial/ic784366.png "Huisstijl van aanmeldingspagina")
 
 1. Als u de aanmeldings-URL voor de door SP geïnitieerde aanmelding wilt ophalen, klikt u op de **instellingen voor eenmalige aanmelding** in de menu sectie **beveiligings besturings elementen** .
 
-    ![Beveiligings controles](./media/jobscience-tutorial/ic784368.png "Beveiligingsmaatregelen")
+    ![Scherm afbeelding toont het beheer van beveiligings controles waarbij de instellingen voor één Sign-On zijn geselecteerd.](./media/jobscience-tutorial/ic784368.png "Beveiligingsmaatregelen")
     
     Klik in de bovenstaande stap op het SSO-profiel dat u hebt gemaakt. Op deze pagina wordt de URL voor eenmalige aanmelding voor uw bedrijf weer gegeven (bijvoorbeeld `https://companyname.my.salesforce.com?so=companyid` .    
 
@@ -204,19 +204,19 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
 1. Klik in het **Azure Portal**, in het navigatie deel venster aan de linkerkant op **Azure Active Directory** pictogram.
 
-    ![Een Azure AD-testgebruiker maken](./media/jobscience-tutorial/create_aaduser_01.png) 
+    ![Scherm afbeelding toont het pictogram van Azure A D in het Azure Portal.](./media/jobscience-tutorial/create_aaduser_01.png) 
 
 1. Als u de lijst met gebruikers wilt weer geven, gaat u naar **gebruikers en groepen** en klikt u op **alle gebruikers**.
     
-    ![Een Azure AD-testgebruiker maken](./media/jobscience-tutorial/create_aaduser_02.png) 
+    ![Scherm afbeelding toont gebruikers en groepen die zijn geselecteerd in het menu beheren, met alle geselecteerde gebruikers.](./media/jobscience-tutorial/create_aaduser_02.png) 
 
 1. Klik boven in het dialoog venster op **toevoegen** om het dialoog venster **gebruiker** te openen.
  
-    ![Een Azure AD-testgebruiker maken](./media/jobscience-tutorial/create_aaduser_03.png) 
+    ![Scherm afbeelding toont de knop toevoegen om het dialoog venster gebruiker te openen.](./media/jobscience-tutorial/create_aaduser_03.png) 
 
 1. Voer de volgende stappen uit op de pagina **gebruikers** dialoogvenster:
  
-    ![Een Azure AD-testgebruiker maken](./media/jobscience-tutorial/create_aaduser_04.png) 
+    ![In de scherm afbeelding wordt het dialoog venster van de gebruiker weer gegeven waarin u de waarden in deze stap kunt invoeren.](./media/jobscience-tutorial/create_aaduser_04.png) 
 
     a. Typ **BrittaSimon**in het tekstvak **naam** .
 
@@ -238,10 +238,10 @@ Om ervoor te zorgen dat Azure AD-gebruikers zich kunnen aanmelden bij Jobscience
 
 1. Meld u als beheerder aan bij de **Jobscience** -bedrijfs site.
 
-1. Ga naar Setup.
+1. Ga naar Installatie.
    
-   ![Installatie](./media/jobscience-tutorial/ic784358.png "Instellen")
-1. Ga naar gebruikers van gebruikers **beheren \> **.
+   ![Scherm afbeelding toont het instellings item.](./media/jobscience-tutorial/ic784358.png "Instellen")
+1. Ga naar **Gebruikers beheren \> Gebruikers**.
    
    ![Gebruikers](./media/jobscience-tutorial/ic784369.png "Gebruikers")
 1. Klik op **New User**.
@@ -259,7 +259,7 @@ Om ervoor te zorgen dat Azure AD-gebruikers zich kunnen aanmelden bij Jobscience
 
    d. Typ in het tekstvak **Email** het e-mailadres van de gebruiker, bijvoorbeeld Brittasimon@contoso.com.
 
-   e. Typ in het tekstvak **gebruikers naam** de gebruikers naam van de gebruiker zoals Brittasimon@contoso.com .
+   e. Typ een gebruikersnaam van een gebruiker in het tekstvak **Gebruikersnaam**, bijvoorbeeld Brittasimon@contoso.com.
 
    f. Typ in het tekstvak **bijnaam** de Nick naam van de gebruiker, zoals Simon.
 
@@ -273,25 +273,25 @@ Om ervoor te zorgen dat Azure AD-gebruikers zich kunnen aanmelden bij Jobscience
 
 In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan Jobscience.
 
-![Gebruiker toewijzen][200] 
+![Scherm afbeelding toont de weergave naam van een account.][200] 
 
 **Voer de volgende stappen uit om Julia Simon toe te wijzen aan Jobscience:**
 
 1. Open in de Azure Portal de weer gave toepassingen en navigeer vervolgens naar de mapweergave en ga naar **bedrijfs toepassingen** en klik vervolgens op **alle toepassingen**.
 
-    ![Gebruiker toewijzen][201] 
+    ![Scherm opname toont zakelijke toepassingen in het menu Azure Portal met alle geselecteerde toepassingen.][201] 
 
 1. Selecteer in de lijst toepassingen de optie **Jobscience**.
 
-    ![Eenmalige aanmelding configureren](./media/jobscience-tutorial/tutorial_jobscience_app.png) 
+    ![Scherm afbeelding toont Jobscience geselecteerd.](./media/jobscience-tutorial/tutorial_jobscience_app.png) 
 
 1. Klik in het menu aan de linkerkant op **gebruikers en groepen**.
 
-    ![Gebruiker toewijzen][202] 
+    ![Scherm afbeelding toont gebruikers en groepen die zijn geselecteerd in het menu Azure Portal.][202] 
 
 1. Klik op de knop **Add**. Selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
 
-    ![Gebruiker toewijzen][203]
+    ![Scherm afbeelding toont de knop toevoegen, die wordt gebruikt om toewijzingen toe te voegen.][203]
 
 1. Selecteer in het dialoog venster **gebruikers en groepen** de optie **Julia Simon** in de lijst gebruikers.
 

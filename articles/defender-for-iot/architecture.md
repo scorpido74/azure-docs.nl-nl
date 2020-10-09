@@ -4,21 +4,21 @@ description: Meer informatie over de stroom van gegevens in de Azure Defender vo
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: elazark
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/23/2019
-ms.author: mlottner
-ms.openlocfilehash: 3d26d9e3d686ad7c34e7493dc1413b7a9e7a2f6b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/08/2020
+ms.author: v-ekrieg
+ms.openlocfilehash: 3fc695770350e5a60ae3da9ab1796da5cac99370
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936896"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843410"
 ---
 # <a name="azure-defender-for-iot-architecture"></a>Azure Defender voor IoT-architectuur
 
@@ -43,7 +43,7 @@ In de **ingebouwde** modus is Defender voor IOT ingeschakeld wanneer u ervoor ki
 
 ### <a name="enhanced"></a>Verbeterd
 
-Na het inschakelen van de optie **beveiliging** in uw IOT hub en het installeren van Defender voor IOT Device agents op uw apparaten, worden in de **uitgebreide** modus onbewerkte beveiligings gebeurtenissen van uw apparaten verzameld, geaggregeerd en geanalyseerd. Onbewerkte beveiligings gebeurtenissen kunnen IP-verbindingen, het maken van processen, gebruikers aanmeldingen en andere informatie over beveiliging zijn. Defender voor IoT-apparaat-agents verwerken ook gebeurtenis aggregatie om een hoge netwerk doorvoer te voor komen. De agents zijn zeer aanpasbaar, zodat u ze kunt gebruiken voor specifieke taken, zoals het verzenden van belang rijke informatie op de snelste SLA, of voor het samen voegen van uitgebreide beveiligings informatie en-context in grotere segmenten, waardoor er hogere service kosten worden bespaard.
+Na het inschakelen van de optie **beveiliging** in uw IOT hub en het installeren van Defender voor IOT Device agents op uw apparaten, worden in de **uitgebreide** modus onbewerkte beveiligings gebeurtenissen van uw apparaten verzameld, geaggregeerd en geanalyseerd. Onbewerkte beveiligings gebeurtenissen kunnen IP-verbindingen, het maken van processen, gebruikers aanmeldingen en andere informatie over beveiliging zijn. Verdedigings medewerkers voor IoT-apparaten verwerken ook gebeurtenissen aggregatie om een hoge netwerk doorvoer te voor komen. De agents zijn zeer aanpasbaar, zodat u ze kunt gebruiken voor specifieke taken, zoals het verzenden van belang rijke informatie op de snelste SLA, of voor het samen voegen van uitgebreide beveiligings informatie en-context in grotere segmenten, waardoor er hogere service kosten worden bespaard.
 
 ![Defender voor IoT-architectuur](./media/architecture/azure-iot-security-architecture.png)
 

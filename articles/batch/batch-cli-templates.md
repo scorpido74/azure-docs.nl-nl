@@ -2,14 +2,14 @@
 title: End-to-end-taken uitvoeren met behulp van sjablonen
 description: Met alleen CLI-opdrachten kunt u een pool maken, invoer gegevens uploaden, taken en bijbehorende taken maken en de resulterende uitvoer gegevens downloaden.
 ms.topic: how-to
-ms.date: 12/07/2018
+ms.date: 10/08/2020
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: e9b4930dee1b28bb4ec71690cbfcef88e0365b9e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 845a32c2feda5a5a3b8d44d237c62db94cae1779
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494924"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91848718"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>Azure Batch CLI-sjablonen en-bestands overdracht gebruiken
 
@@ -65,7 +65,7 @@ Azure Batch sjablonen zijn vergelijkbaar met Azure Resource Manager sjablonen, i
 -   **Parameters**
 
     -   Toestaan dat eigenschaps waarden worden opgegeven in een hoofd sectie, met alleen parameter waarden die moeten worden opgegeven wanneer de sjabloon wordt gebruikt. De volledige definitie voor een pool kan bijvoorbeeld in de hoofd tekst worden geplaatst en er is slechts één para meter gedefinieerd voor `poolId` . Daarom moet alleen een groeps-ID-reeks worden opgegeven om een groep te maken.
-        
+
     -   De sjabloon hoofdtekst kan worden gemaakt door iemand met kennis van batch en de toepassingen die moeten worden uitgevoerd met batch; alleen waarden voor de door de gebruiker gedefinieerde para meters moeten worden opgegeven wanneer de sjabloon wordt gebruikt. Een gebruiker zonder de diep gaande batch en/of toepassings kennis kan daarom gebruikmaken van de sjablonen.
 
 -   **Variabelen**
@@ -121,7 +121,7 @@ Hier volgt een voor beeld van een sjabloon voor het maken van een groep virtuele
             "vmSize": "STANDARD_D3_V2",
             "targetDedicatedNodes": "[parameters('nodeCount')]",
             "enableAutoScale": false,
-            "maxTasksPerNode": 1,
+            "taskSlotsPerNode": 1,
             "packageReferences": [
                 {
                     "type": "aptPackage",
@@ -209,7 +209,7 @@ Hier volgt een voor beeld van een sjabloon waarmee een taak wordt gemaakt voor h
             },
             "taskFactory": {
                 "type": "taskPerFile",
-                "source": { 
+                "source": {
                     "fileGroup": "ffmpeg-input"
                 },
                 "repeatTask": {
@@ -271,7 +271,7 @@ Een bestands groep is gelijk aan een container die is gemaakt in het Azure-opsla
 De batch-CLI-extensie biedt opdrachten voor het uploaden van bestanden van de client naar een opgegeven bestands groep en het downloaden van bestanden van de opgegeven bestands groep naar een-client.
 
 ```azurecli
-az batch file upload --local-path c:\source_videos\*.mp4 
+az batch file upload --local-path c:\source_videos\*.mp4
     --file-group ffmpeg-input
 
 az batch file download --file-group ffmpeg-output --local-path

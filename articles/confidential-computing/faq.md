@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: workloads
 ms.date: 4/17/2020
 ms.author: jencook
-ms.openlocfilehash: 519b5b669cfc8140b837743d694184a5cb859f20
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: cf90ff5b94eb03f76dffc8b64dd4d92a44ac20ee
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987995"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91848905"
 ---
 # <a name="frequently-asked-questions-for-azure-confidential-computing"></a>Veelgestelde vragen over Azure vertrouwelijk computing
 
@@ -49,13 +49,17 @@ Zorg ervoor dat u een [beschik bare regio](https://azure.microsoft.com/global-in
 
 [Maak een ondersteunings aanvraag om uw quotum te verg Roten](../azure-portal/supportability/per-vm-quota-requests.md). Abonnementen voor een gratis proef abonnement hebben geen quota voor het gebruik van de virtuele machines van het werk. 
 
-**Wat is het verschil tussen Vm's uit de DCsv2-serie en DC-serie?**
+**Wat is het verschil tussen DCsv2-Series en DC-Series Vm's?**
 
-Vm's uit de DC-serie worden uitgevoerd op oudere 6-core Intel-processors met Intel SGX en hebben minder geheugen, minder enclave-pagina cache geheugen (EPC) en zijn alleen beschikbaar in twee regio's (VS Oost en Europa-West in Standard_DC2s en Standard_DC4s grootten). Er zijn geen plannen om deze Vm's algemeen beschikbaar te maken en ze worden niet aanbevolen voor productie gebruik. Als u deze Vm's wilt implementeren, gebruikt u het Marketplace-exemplaar van de  [vertrouwelijk Compute DC-serie [Preview]](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.confidentialcompute?tab=Overview) .
+DC-Series Vm's worden uitgevoerd op oudere 6-core Intel-processors met Intel SGX en hebben minder geheugen, minder enclave-cache geheugen (EPC) en zijn alleen beschikbaar in twee regio's (VS-Oost en Europa-West in Standard_DC2s en Standard_DC4s grootten). Er zijn geen plannen om deze Vm's algemeen beschikbaar te maken en ze worden niet aanbevolen voor productie gebruik. Als u deze Vm's wilt implementeren, gebruikt u het Marketplace-exemplaar van de DC-Series voor het uitvoeren van een computer met de naam [vertrouwelijk Compute](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.confidentialcompute?tab=Overview)
 
 **Zijn virtuele DCsv2-machines wereld wijd beschikbaar?**
 
 Nee. Op dit moment zijn deze virtuele machines alleen beschikbaar in bepaalde regio's. Controleer de [pagina producten per regio](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) voor de meest recente beschik bare regio's. 
+
+**Is Hyper-Threading uit op deze computers?**
+
+Hyper Threading is uitgeschakeld voor alle Azure vertrouwelijk computing-clusters.
 
 **Hoe kan ik installeert u de open enclave-SDK op virtuele machines van DCsv2?**
    

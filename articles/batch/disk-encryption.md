@@ -3,15 +3,15 @@ title: Een pool maken met schijfversleuteling ingeschakeld
 description: Meer informatie over het gebruik van schijf versleutelings configuratie voor het versleutelen van knoop punten met een door een platform beheerde sleutel.
 author: pkshultz
 ms.topic: how-to
-ms.date: 08/25/2020
+ms.date: 10/08/2020
 ms.author: peshultz
 ms.custom: references_regions
-ms.openlocfilehash: 9b0f7f9963ee0edd3986f7ec808a8a4060d857f8
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 55a7e117ebd49f268d4b075d58791df4e9223fdf
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89267038"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91849259"
 ---
 # <a name="create-a-pool-with-disk-encryption-enabled"></a>Een pool maken met schijfversleuteling ingeschakeld
 
@@ -21,7 +21,7 @@ In dit artikel wordt uitgelegd hoe u een batch-pool maakt waarvoor schijf versle
 
 ## <a name="why-use-a-pool-with-disk-encryption-configuration"></a>Waarom een pool met schijf versleutelings configuratie gebruiken?
 
-Met een batch-pool kunt u gegevens op het besturings systeem en de tijdelijke schijven van het reken knooppunt openen en opslaan. Het versleutelen van de schijf aan de server zijde met een door een platform beheerde sleutel beveiligt deze gegevens met lage overhead en gebruiks gemak.  
+Met een batch-pool kunt u gegevens op het besturings systeem en de tijdelijke schijven van het reken knooppunt openen en opslaan. Het versleutelen van de schijf aan de server zijde met een door een platform beheerde sleutel beveiligt deze gegevens met lage overhead en gebruiks gemak.
 
 Met batch wordt een van deze schijf versleutelings technologieën toegepast op reken knooppunten, op basis van pool configuratie en regionale ondersteunings mogelijkheden.
 
@@ -35,8 +35,8 @@ Met batch wordt een van deze schijf versleutelings technologieën toegepast op r
 > Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 U kunt niet opgeven welke versleutelings methode wordt toegepast op de knoop punten in uw pool. In plaats daarvan geeft u de doel schijven op die u wilt versleutelen op hun knoop punten en kan batch de juiste versleutelings methode kiezen, zodat de opgegeven schijven worden versleuteld op het reken knooppunt.
- 
-## <a name="azure-portal"></a>Azure Portal 
+
+## <a name="azure-portal"></a>Azure Portal
 
 Wanneer u een batch-pool maakt in de Azure Portal, selecteert u **TemporaryDisk** of **OsAndTemporaryDisk** onder **configuratie van schijf versleuteling**.
 
@@ -44,7 +44,7 @@ Wanneer u een batch-pool maakt in de Azure Portal, selecteert u **TemporaryDisk*
 
 Nadat de groep is gemaakt, ziet u de configuratie doelen van de schijf versleuteling in de sectie **Eigenschappen** van de groep.
 
-:::image type="content" source="media/disk-encryption/configuration-target.png" alt-text="Scherm opname van de configuratie doelen van de schijf versleuteling in de Azure Portal.":::
+:::image type="content" source="media/disk-encryption/configuration-target.png" alt-text="Scherm afbeelding van de configuratie optie voor schijf versleuteling in de Azure Portal.":::
 
 ## <a name="examples"></a>Voorbeelden
 
@@ -87,7 +87,7 @@ Aanvraagtekst:
     "resizeTimeout": "PT15M",
     "targetDedicatedNodes": 5,
     "targetLowPriorityNodes": 0,
-    "maxTasksPerNode": 3,
+    "taskSlotsPerNode": 3,
     "enableAutoScale": false,
     "enableInterNodeCommunication": false
 }

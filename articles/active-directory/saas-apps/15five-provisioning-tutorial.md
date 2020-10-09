@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 40fd048e1ace56af7a9198088d6129925033be93
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c26a581df7ac10777687bf268027eb94862605b1
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331213"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850129"
 ---
 # <a name="tutorial-configure-15five-for-automatic-user-provisioning"></a>Zelf studie: 15Five configureren voor automatische gebruikers inrichting
 
@@ -54,19 +54,19 @@ Voordat u 15Five configureert voor het automatisch inrichten van gebruikers met 
 
 1. Meld u aan bij de [15Five-beheer console](https://my.15five.com/). Navigeer naar **functies > integraties**.
 
-    ![15Five-beheer console](media/15five-provisioning-tutorial/integration.png)
+    :::image type="content" source="media/15five-provisioning-tutorial/integration.png" alt-text="Scherm opname van de 15Five-beheer console. Integraties worden weer gegeven onder functies in een menu en beide functies en integraties zijn gemarkeerd." border="false":::
 
 2.  Klik op **SCIM 2,0**.
 
-    ![15Five-beheer console](media/15five-provisioning-tutorial/image00.png)
+    :::image type="content" source="media/15five-provisioning-tutorial/image00.png" alt-text="Scherm opname van de 15Five-beheer console. Integraties worden weer gegeven onder functies in een menu en beide functies en integraties zijn gemarkeerd." border="false":::
 
 3.  Navigeer naar **scim integration > OAuth-token genereren**.
 
-    ![SCIM 15Five toevoegen](media/15five-provisioning-tutorial/image02.png)
+    :::image type="content" source="media/15five-provisioning-tutorial/image02.png" alt-text="Scherm opname van de 15Five-beheer console. Integraties worden weer gegeven onder functies in een menu en beide functies en integraties zijn gemarkeerd." border="false":::
 
 4.  Kopieer de waarden voor de **SCIM 2,0-basis-URL** en het **toegangs token**. Deze waarde wordt ingevoerd in het veld **Tenant-URL** en **geheim token** op het tabblad inrichten van uw 15Five-toepassing in de Azure Portal.
     
-    ![SCIM 15Five toevoegen](media/15five-provisioning-tutorial/image03.png)
+    :::image type="content" source="media/15five-provisioning-tutorial/image03.png" alt-text="Scherm opname van de 15Five-beheer console. Integraties worden weer gegeven onder functies in een menu en beide functies en integraties zijn gemarkeerd." border="false":::
 
 ## <a name="step-3-add-15five-from-the-azure-ad-application-gallery"></a>Stap 3. 15Five toevoegen vanuit de Azure AD-toepassings galerie
 

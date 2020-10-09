@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: Zhchia
-ms.openlocfilehash: 3f835c021e20edba21583e71c6c1a480eca7fd89
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 45a1ae281a8a1acb1cfd12efe500f5a623033ef3
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91255825"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850033"
 ---
 # <a name="tutorial-configure-oracle-fusion-erp-for-automatic-user-provisioning"></a>Zelf studie: Oracle Fusion ERP configureren voor het automatisch inrichten van gebruikers
 
@@ -46,7 +46,7 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
 
  * Het is raadzaam dat één Azure AD-gebruiker wordt toegewezen aan Oracle Fusion ERP om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
 
-* Wanneer u een gebruiker toewijst aan Oracle Fusion ERP, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol Standaard toegang worden uitgesloten van het inrichten.
+* Wanneer u een gebruiker toewijst aan Oracle Fusion ERP, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol Standaardtoegang worden uitgesloten van het inrichten.
 
 ## <a name="set-up-oracle-fusion-erp-for-provisioning"></a>Oracle Fusion ERP instellen voor het inrichten
 
@@ -56,11 +56,11 @@ Voordat u Oracle Fusion ERP configureert voor het automatisch inrichten van gebr
 
 2. Klik op de Navigator in de linkerbovenhoek bovenin. Onder **extra**, selecteer **beveiligings console**.
 
-    ![Oracle Fusion ERP SCIM toevoegen](media/oracle-fusion-erp-provisioning-tutorial/login.png)
+    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/login.png" alt-text="Scherm afbeelding van de Navigator-pagina in de Oracle Fusion E R P-beheer console. De hulpprogram ma's en beveiligings console zijn gemarkeerd." border="false":::
 
 3. Navigeer naar **gebruikers**.
     
-    ![Oracle Fusion ERP SCIM toevoegen](media/oracle-fusion-erp-provisioning-tutorial/user.png)
+    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/user.png" alt-text="Scherm afbeelding van de Navigator-pagina in de Oracle Fusion E R P-beheer console. De hulpprogram ma's en beveiligings console zijn gemarkeerd." border="false":::
 
 4. Sla de gebruikers naam en het wacht woord voor het gebruikers account van de beheerder op die u gaat gebruiken om u aan te melden bij de Oracle Fusion ERP-beheer console. Deze waarden moeten worden ingevoerd in de velden **gebruikers naam** en **wacht woord** beheerder op het tabblad inrichting van uw Oracle Fusion ERP-toepassing in de Azure Portal.
 
@@ -116,7 +116,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 5. Selecteer in de sectie **beheerders referenties** de invoer `https://ejlv.fa.em2.oraclecloud.com/hcmRestApi/scim/` in de Tenant- **URL**. Voer de gebruikers naam en het wacht woord voor de beheerder in die eerder zijn opgehaald in de velden **gebruikers naam** en **wacht** woord beheerder. Klik op **verbinding testen** tussen Azure AD en Oracle Fusion ERP. 
 
-    ![Oracle Fusion ERP SCIM toevoegen](media/oracle-fusion-erp-provisioning-tutorial/admin.png)
+    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/admin.png" alt-text="Scherm afbeelding van de Navigator-pagina in de Oracle Fusion E R P-beheer console. De hulpprogram ma's en beveiligings console zijn gemarkeerd." border="false":::
 
 6. Voer in het veld **E-mailadres voor meldingen** het e-mailadres in van een persoon of groep die de inrichtingsfoutmeldingen zou moeten ontvangen en vink het vakje **Een e-mailmelding verzenden als een fout optreedt** aan.
 
@@ -126,11 +126,11 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 8. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory gebruikers synchroniseren met Oracle Fusion ERP**.
 
-    ![Oracle Fusion ERP SCIM toevoegen](media/oracle-fusion-erp-provisioning-tutorial/user-mapping.png)
+    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/user-mapping.png" alt-text="Scherm afbeelding van de Navigator-pagina in de Oracle Fusion E R P-beheer console. De hulpprogram ma's en beveiligings console zijn gemarkeerd." border="false":::
 
 9. Controleer de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar Oracle Fusion ERP in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in Oracle Fusion ERP voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
 
-    ![Oracle Fusion ERP SCIM toevoegen](media/oracle-fusion-erp-provisioning-tutorial/user-attribute.png)
+    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/user-attribute.png" alt-text="Scherm afbeelding van de Navigator-pagina in de Oracle Fusion E R P-beheer console. De hulpprogram ma's en beveiligings console zijn gemarkeerd." border="false":::
 
 10. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory groepen synchroniseren met Oracle Fusion ERP**.
 

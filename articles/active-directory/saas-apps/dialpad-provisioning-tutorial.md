@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 06/28/2019
 ms.author: zhchia
-ms.openlocfilehash: dee9ca2879d456270cfed667b8a02a6e5c4f100b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7475ebc6dd51bbc1c30ee22623c7cbda1a5237ab
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328051"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91848956"
 ---
 # <a name="tutorial-configure-dialpad-for-automatic-user-provisioning"></a>Zelf studie: dialpad configureren voor automatische gebruikers inrichting
 
@@ -46,7 +46,7 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
 
  * U wordt aangeraden één Azure AD-gebruiker toe te wijzen aan dialpad om de configuratie van automatische gebruikers inrichting te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
 
-* Wanneer u een gebruiker toewijst aan Dialpad, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol Standaard toegang worden uitgesloten van het inrichten.
+* Wanneer u een gebruiker toewijst aan Dialpad, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol Standaardtoegang worden uitgesloten van het inrichten.
 
 ## <a name="setup-dialpad-for-provisioning"></a>Dialpad instellen voor inrichting
 
@@ -54,13 +54,13 @@ Voordat u dialpad configureert voor het automatisch inrichten van gebruikers met
 
 1. Meld u aan bij de [dialpad-beheer console](https://dialpadbeta.com/login) en selecteer **beheer instellingen**. Controleer of **mijn bedrijf** is geselecteerd in de vervolg keuzelijst. Navigeer naar **Authentication > API-sleutels**.
 
-    ![SCIM dialpad toevoegen](media/dialpad-provisioning-tutorial/dialpad01.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad01.png" alt-text="Scherm opname van de dialpad-beheer console, met het pictogram instellingen, mijn bedrijf, authenticatie en een P I-toets gemarkeerd en mijn bedrijf geselecteerd." border="false":::
 
 2. Genereer een nieuwe sleutel door te klikken op **een sleutel toevoegen** en de eigenschappen van uw geheime token te configureren.
 
-    ![SCIM dialpad toevoegen](media/dialpad-provisioning-tutorial/dialpad02.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad02.png" alt-text="Scherm opname van de dialpad-beheer console, met het pictogram instellingen, mijn bedrijf, authenticatie en een P I-toets gemarkeerd en mijn bedrijf geselecteerd." border="false":::
 
-    ![SCIM dialpad toevoegen](media/dialpad-provisioning-tutorial/dialpad03.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad03.png" alt-text="Scherm opname van de dialpad-beheer console, met het pictogram instellingen, mijn bedrijf, authenticatie en een P I-toets gemarkeerd en mijn bedrijf geselecteerd." border="false":::
 
 3. Klik op de knop **Klik om de waarde weer te geven** voor de API-sleutel die u hebt gemaakt en kopieer de weer gegeven waarde. Deze waarde wordt ingevoerd in het veld **geheime token** op het tabblad inrichten van uw dialpad-toepassing in de Azure Portal. 
 
@@ -89,19 +89,19 @@ Als u dialpad wilt configureren voor het automatisch inrichten van gebruikers me
 
 5. Navigeer naar de hieronder gemarkeerde **URL** in een afzonderlijke browser. 
 
-    ![SCIM dialpad toevoegen](media/dialpad-provisioning-tutorial/dialpad05.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad05.png" alt-text="Scherm opname van de dialpad-beheer console, met het pictogram instellingen, mijn bedrijf, authenticatie en een P I-toets gemarkeerd en mijn bedrijf geselecteerd." border="false":::
 
 6. Selecteer in de rechter bovenhoek **aanmelden > dialpad online gebruiken**.
 
-    ![SCIM dialpad toevoegen](media/dialpad-provisioning-tutorial/dialpad06.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad06.png" alt-text="Scherm opname van de dialpad-beheer console, met het pictogram instellingen, mijn bedrijf, authenticatie en een P I-toets gemarkeerd en mijn bedrijf geselecteerd." border="false":::
 
 7. Als dialpad een OpenIDConnect-app is, kiest u aanmelden bij dialpad met uw micro soft-werk account.
 
-    ![SCIM dialpad toevoegen](media/dialpad-provisioning-tutorial/loginpage.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/loginpage.png" alt-text="Scherm opname van de dialpad-beheer console, met het pictogram instellingen, mijn bedrijf, authenticatie en een P I-toets gemarkeerd en mijn bedrijf geselecteerd." border="false":::
 
 8. Accepteer na een geslaagde verificatie de toestemming prompt voor de pagina toestemming. De toepassing wordt vervolgens automatisch toegevoegd aan uw Tenant en u wordt doorgestuurd naar uw dialpad-account.
 
-    ![SCIM dialpad toevoegen](media/dialpad-provisioning-tutorial/redirect.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/redirect.png" alt-text="Scherm opname van de dialpad-beheer console, met het pictogram instellingen, mijn bedrijf, authenticatie en een P I-toets gemarkeerd en mijn bedrijf geselecteerd." border="false":::
 
  ## <a name="configure-automatic-user-provisioning-to-dialpad"></a>Automatische gebruikers inrichting configureren voor dialpad
 
