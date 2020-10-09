@@ -10,10 +10,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 07/18/2019
 ms.author: robinsh
 ms.openlocfilehash: 2720f9acfa308294b30f9203ba80e3f9b426e1e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81680720"
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>IoT-externe bewaking en meldingen met Azure Logic Apps verbinding maken met uw IoT hub en Postvak
@@ -152,7 +152,7 @@ In de voor gaande sectie stelt u uw IoT-hub in voor het routeren van berichten m
 
 1. Selecteer **een**  >  **Integration**  >  **logische app**voor het integreren van resources maken.
 
-1. Voer de volgende informatie in:
+1. Voer de volgende gegevens in:
 
    **Naam**: de naam van de logische app.
 
@@ -185,7 +185,7 @@ In de voor gaande sectie stelt u uw IoT-hub in voor het routeren van berichten m
 
       ![Een service bus-verbinding maken voor uw logische app in de Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/create-service-bus-connection-1.png)
 
-   1. Selecteer het service bus-beleid (RootManageSharedAccessKey). Selecteer vervolgens **maken**.
+   1. Selecteer het service bus-beleid (RootManageSharedAccessKey). Selecteer vervolgens  **maken**.
 
       ![Een service bus-verbinding maken voor uw logische app in de Azure Portal](media/iot-hub-monitoring-notifications-with-azure-logic-apps/7-create-service-bus-connection-in-logic-app-azure-portal.png)
 

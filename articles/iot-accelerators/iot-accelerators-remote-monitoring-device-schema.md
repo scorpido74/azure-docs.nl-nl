@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: ac681bb13ccea49c7a2f566a6fcdb6adb8cec5bb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81683748"
 ---
 # <a name="understand-the-device-model-schema"></a>Het schema van het apparaatmodel begrijpen
@@ -71,7 +71,7 @@ U kunt de schema bestanden voor de standaard gesimuleerde apparaten weer geven i
 
 In de volgende tabel worden de schema vermeldingen op het hoogste niveau beschreven:
 
-| Schema vermelding | Description |
+| Schema vermelding | Beschrijving |
 | -- | --- |
 | `SchemaVersion` | De schema versie is altijd `1.0.0` en is specifiek voor de indeling van dit bestand. |
 | `Id` | Een unieke ID voor dit model. |
@@ -88,8 +88,8 @@ In de `Simulation` sectie definieert u de interne status van het gesimuleerde ap
 
 De definitie van de apparaatstatus heeft twee elementen:
 
-* `InitialState`Hiermee worden de initiële waarden voor alle eigenschappen van het object Apparaatstatus gedefinieerd.
-* `Script`identificeert een Java script-bestand dat volgens een schema wordt uitgevoerd om de status van het apparaat bij te werken. U kunt dit script bestand gebruiken om de telemetrische waarden die door het apparaat worden verzonden, te verwillen.
+* `InitialState` Hiermee worden de initiële waarden voor alle eigenschappen van het object Apparaatstatus gedefinieerd.
+* `Script` identificeert een Java script-bestand dat volgens een schema wordt uitgevoerd om de status van het apparaat bij te werken. U kunt dit script bestand gebruiken om de telemetrische waarden die door het apparaat worden verzonden, te verwillen.
 
 Zie [inzicht in het gedrag van het model](../../articles/iot-accelerators/iot-accelerators-device-simulation-advanced-device.md)van het apparaat voor meer informatie over het Java script-bestand waarmee het object status wordt bijgewerkt.
 
@@ -158,16 +158,16 @@ In het volgende voor beeld wordt een JSON-telemetrie-bericht elke tien seconden 
 ]
 ```
 
-`MessageTemplate`Hiermee definieert u de structuur van het JSON-bericht dat is verzonden door het gesimuleerde apparaat. De tijdelijke aanduidingen in `MessageTemplate` gebruiken de `${NAME}` syntaxis `NAME` , waarbij een sleutel is van het [object status](#simulation). Teken reeksen moeten aanhalings tekens zijn.
+`MessageTemplate` Hiermee definieert u de structuur van het JSON-bericht dat is verzonden door het gesimuleerde apparaat. De tijdelijke aanduidingen in `MessageTemplate` gebruiken de `${NAME}` syntaxis `NAME` , waarbij een sleutel is van het [object status](#simulation). Teken reeksen moeten aanhalings tekens zijn.
 
-`MessageSchema`Hiermee wordt het schema van het bericht gedefinieerd dat door het gesimuleerde apparaat wordt verzonden. Het bericht schema wordt ook gepubliceerd op IoT Hub zodat back-end-toepassingen de gegevens opnieuw kunnen gebruiken om de binnenkomende telemetrie te interpreteren.
+`MessageSchema` Hiermee wordt het schema van het bericht gedefinieerd dat door het gesimuleerde apparaat wordt verzonden. Het bericht schema wordt ook gepubliceerd op IoT Hub zodat back-end-toepassingen de gegevens opnieuw kunnen gebruiken om de binnenkomende telemetrie te interpreteren.
 
 Op dit moment kunt u alleen JSON-bericht schema's gebruiken. De velden die in het schema worden weer gegeven, kunnen van de volgende typen zijn:
 
 * Object-geserialiseerd met JSON
 * Binair geserialiseerd met base64
 * Tekst
-* Boolean-waarde
+* Booleaans
 * Geheel getal
 * Dubbel
 * DateTime

@@ -4,13 +4,13 @@ description: Beschrijft de declaratieve JSON-syntaxis voor Azure Resource Manage
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.openlocfilehash: baddedae1b918502e579d2ed230e0779960f45e7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82203825"
 ---
-# <a name="syntax-and-expressions-in-azure-resource-manager-templates"></a>Syntaxis en expressies in Azure Resource Manager sjablonen
+# <a name="syntax-and-expressions-in-azure-resource-manager-templates"></a>Syntaxis en expressies in Azure Resource Manager-sjablonen
 
 De basis syntaxis van de sjabloon is JSON. U kunt echter expressies gebruiken om de JSON-waarden uit te breiden die beschikbaar zijn in de sjabloon.  Expressies staan respectievelijk tussen de vierkante haken `[` en `]`. De waarde van de expressie wordt geëvalueerd als de sjabloon wordt geïmplementeerd. Een expressie kan een tekenreeks, een geheel getal, een booleaanse waarde of een object retourneren.
 

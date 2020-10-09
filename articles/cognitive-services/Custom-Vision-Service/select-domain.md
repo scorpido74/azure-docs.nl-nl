@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: shono
 ms.openlocfilehash: 1fb30cc0634224213dc9a188a16902e07d379904
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82127780"
 ---
 # <a name="select-a-domain-for-a-custom-vision-project"></a>Een domein voor een Custom Vision project selecteren
@@ -25,24 +25,24 @@ Op de Blade instellingen voor uw Custom Vision project kunt u een domein voor uw
 
 |Domain|Doel|
 |---|---|
-|__Encarta__| Geoptimaliseerd voor een breed scala aan afbeeldings classificatie taken. Als geen van de andere domeinen geschikt is of als u niet zeker weet welk domein u wilt kiezen, selecteert u het algemene domein.|
-|__Middel__|Geoptimaliseerd voor foto's van vaat werk zoals u zou zien in een restaurant menu. Als u foto's van afzonderlijke vruchten of groenten wilt classificeren, gebruikt u het voedsel domein.|
-|__Oriëntatie punten__|Geoptimaliseerd voor herken bare bezienswaardigheden, zowel natuurlijke als kunst matig. Dit domein werkt het beste wanneer het oriëntatie punt duidelijk zichtbaar is in de foto. Dit domein werkt ook als het oriëntatie punt enigszins wordt belemmerd door mensen die er een voor hebben.|
-|__Retail__|Geoptimaliseerd voor installatie kopieën die worden gevonden in een winkel catalogus of een winkel website. Gebruik dit domein als u een hoge precisie wilt indelen tussen de handelingen, Pants en shirts.|
+|__Algemeen__| Geoptimaliseerd voor een breed scala aan afbeeldingsclassificatietaken. Als geen van de andere domeinen geschikt is, of als u niet zeker weet welk domein u moet kiezen, selecteert u het domein Algemeen.|
+|__Voedsel__|Geoptimaliseerd voor foto's van gerechten zoals op de menukaart van een restaurant. Gebruik het domein Voedsel als u foto's van afzonderlijke soorten fruit of groenten wilt classificeren.|
+|__Oriëntatiepunten__|Geoptimaliseerd voor herkenbare oriëntatiepunten, zowel natuurlijke als kunstmatige. Dit domein werkt het beste wanneer het oriëntatiepunt duidelijk te zien is in de foto. Dit domein werkt ook als het oriëntatiepunt slechts gedeeltelijk zichtbaar is omdat er mensen voor staan.|
+|__Retail__|Geoptimaliseerd voor afbeeldingen zoals die te vinden zijn in de catalogus of op de website van een winkel. Gebruik dit domein voor een nauwkeurige classificatie van kleding, zoals jurken, broeken en shirts.|
 |__Compacte domeinen__| Geoptimaliseerd voor de beperkingen van real-time classificatie op edge-apparaten.|
 
 ## <a name="object-detection"></a>Objectdetectie
 
 |Domain|Doel|
 |---|---|
-|__Algemeen__| Geoptimaliseerd voor een breed scala aan object detectie taken. Als geen van de andere domeinen geschikt is of als u niet zeker weet welk domein u wilt kiezen, selecteert u het algemene domein.|
-|__Logo__|Geoptimaliseerd voor het vinden van merk logo's in afbeeldingen.|
-|__Producten op planken__|Geoptimaliseerd voor het detecteren en classificeren van producten in planken.|
+|__Algemeen__| Geoptimaliseerd voor een breed scala aan objectdetectietaken. Als geen van de andere domeinen geschikt is of als u niet zeker weet welk domein u moet kiezen, selecteert u het domein Algemeen.|
+|__Logo__|Geoptimaliseerd voor het vinden van merklogo's in afbeeldingen.|
+|__Producten op schappen__|Geoptimaliseerd voor het detecteren en classificeren van producten op schappen.|
 |__Compacte domeinen__| Geoptimaliseerd voor de beperkingen van real-time object detectie op edge-apparaten.|
 
 ## <a name="compact-domains"></a>Compacte domeinen
 
-De modellen die door compacte domeinen worden gegenereerd, kunnen worden geëxporteerd om lokaal uit te voeren. Model prestaties verschillen per geselecteerd domein. In de onderstaande tabel rapporteren we de model grootte en de tijd voor het afnemen van de Intel-Desktop- \[CPU\]en NVIDIA GPU 1. 
+De modellen die door compacte domeinen worden gegenereerd, kunnen worden geëxporteerd om lokaal te worden uitgevoerd. Model prestaties verschillen per geselecteerd domein. In de onderstaande tabel rapporteren we de model grootte en de tijd voor het afnemen van de Intel-Desktop-CPU en NVidia GPU \[ 1 \] . 
 
 > [!NOTE]
 > Deze getallen bevatten geen voorverwerkende en postprocessing tijd.
@@ -70,4 +70,4 @@ Als _Vision AI dev kit_ is geselecteerd, zijn de _algemene_, _bezienswaardighede
 >[!IMPORTANT]
 >Er is geen garantie dat de geëxporteerde modellen precies hetzelfde resultaat hebben als de Voorspellings-API in de Cloud. Een enigszins verschil in het actieve platform of de voor verwerking van de implementatie kan een groter verschil veroorzaken in de model uitvoer. Zie [dit document](quickstarts/image-classification.md)voor meer informatie over de logica voor voor verwerking.
 
-\[1\] Intel Xeon E5-2690 CPU en Nvidia Tesla M60
+\[1 \] Intel Xeon E5-2690 CPU en Nvidia Tesla M60

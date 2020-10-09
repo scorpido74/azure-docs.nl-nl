@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/26/2017
 ms.author: tagore
 ms.openlocfilehash: c69b74cf91d8e097f8ad8a9ba2a16f3375f483ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82024843"
 ---
 # <a name="configuring-tls-for-an-application-in-azure"></a>TLS configureren voor een toepassing in azure
@@ -76,7 +76,7 @@ Uw toepassing moet worden geconfigureerd voor het gebruik van het certificaat en
 
    Permissions ( `permissionLevel` Attribute) kunnen worden ingesteld op een van de volgende waarden:
 
-   | Machtigings waarde | Description |
+   | Machtigings waarde | Beschrijving |
    | --- | --- |
    | limitedOrElevated |**(Standaard)** Alle rollen processen hebben toegang tot de persoonlijke sleutel. |
    | verhoogde |Alleen verhoogde processen hebben toegang tot de persoonlijke sleutel. |
@@ -166,7 +166,7 @@ Nu uw implementatie in azure wordt uitgevoerd, kunt u er verbinding mee maken me
    ![Site preview](media/cloud-services-configure-ssl-certificate-portal/show-site.png)
 
    > [!TIP]
-   > Als u TLS wilt gebruiken voor een staging-implementatie in plaats van een productie-implementatie, moet u eerst de URL bepalen die wordt gebruikt voor de faserings implementatie. Zodra uw Cloud service is geïmplementeerd, wordt de URL naar de faserings omgeving bepaald door de GUID van de **implementatie-id** in deze indeling:`https://deployment-id.cloudapp.net/`  
+   > Als u TLS wilt gebruiken voor een staging-implementatie in plaats van een productie-implementatie, moet u eerst de URL bepalen die wordt gebruikt voor de faserings implementatie. Zodra uw Cloud service is geïmplementeerd, wordt de URL naar de faserings omgeving bepaald door de GUID van de **implementatie-id** in deze indeling: `https://deployment-id.cloudapp.net/`  
    >
    > Maak een certificaat met de common name (CN) dat gelijk is aan de GUID-gebaseerde URL (bijvoorbeeld **328187776e774ceda8fc57609d404462.cloudapp.net**). Gebruik de portal om het certificaat toe te voegen aan uw gefaseerde Cloud service. Voeg vervolgens de certificaat gegevens toe aan uw CSDEF-en CSCFG-bestanden, verpakt uw toepassing opnieuw en werk uw gefaseerde implementatie bij om het nieuwe pakket te gebruiken.
    >

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: aahi
 ms.openlocfilehash: f00ffee47e3eb6366d632d8b6ee9beb01f048442
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76983109"
 ---
 # <a name="call-your-bing-custom-search-instance-from-the-portal"></a>Uw Bing Aangepaste zoekopdrachten-exemplaar aanroepen vanuit de portal
@@ -42,9 +42,9 @@ Als u op **extra para meters** klikt, worden de volgende para meters zichtbaar
 
 |Parameter  |Beschrijving  |
 |---------|---------|
-|Veilig zoeken     | Een filter dat wordt gebruikt om webpagina's te filteren op inhoud voor volwassenen. Alleen beschikbaar voor web-, afbeeldings-, video-en gehoste UI-eind punten. Bing Custom Video's zoeken ondersteunt alleen twee waarden: `moderate` en. `strict`        |
+|Veilig zoeken     | Een filter dat wordt gebruikt om webpagina's te filteren op inhoud voor volwassenen. Alleen beschikbaar voor web-, afbeeldings-, video-en gehoste UI-eind punten. Bing Custom Video's zoeken ondersteunt alleen twee waarden: `moderate` en `strict` .        |
 |Taal in de gebruikersinterface    | De taal die wordt gebruikt voor teken reeksen van de gebruikers interface. Als u bijvoorbeeld installatie kopieën en Video's in de gehoste gebruikers interface inschakelt, wordt in de **afbeeldings** -en **video** tabbladen de opgegeven taal gebruikt.        |
-|Count     | Het aantal Zoek resultaten dat in het antwoord moet worden geretourneerd. Alleen beschikbaar voor web-, afbeeldings-en video-eind punten.         |
+|Aantal     | Het aantal Zoek resultaten dat in het antwoord moet worden geretourneerd. Alleen beschikbaar voor web-, afbeeldings-en video-eind punten.         |
 |Offset    | Het aantal Zoek resultaten dat moet worden overgeslagen voordat resultaten worden geretourneerd. Alleen beschikbaar voor web-, afbeeldings-en video-eind punten.        |
     
 Nadat u alle vereiste opties hebt opgegeven, klikt u op **aanroep** om het JSON-antwoord in het rechterdeel venster weer te geven. Als u het gehoste gebruikers interface-eind punt selecteert, kunt u de zoek ervaring testen in het onderste deel venster.

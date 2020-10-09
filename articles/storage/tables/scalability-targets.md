@@ -1,5 +1,5 @@
 ---
-title: Schaalbaarheids-en prestatie doelen voor Table Storage
+title: Schaalbaarheids- en prestatiedoelen voor Table-opslag
 titleSuffix: Azure Storage
 description: Meer informatie over de schaalbaarheids-en prestatie doelen voor Table Storage.
 services: storage
@@ -10,13 +10,13 @@ ms.date: 03/09/2020
 ms.author: tamram
 ms.subservice: tables
 ms.openlocfilehash: b6455733e4955bd1fb5b27e3551e41e5f711df21
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78943535"
 ---
-# <a name="scalability-and-performance-targets-for-table-storage"></a>Schaalbaarheids-en prestatie doelen voor Table Storage
+# <a name="scalability-and-performance-targets-for-table-storage"></a>Schaalbaarheids- en prestatiedoelen voor Table-opslag
 
 [!INCLUDE [storage-scalability-intro-include](../../../includes/storage-scalability-intro-include.md)]
 
@@ -24,9 +24,9 @@ ms.locfileid: "78943535"
 
 [!INCLUDE [storage-table-scale-targets](../../../includes/storage-tables-scale-targets.md)]
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
-- [Controle lijst voor prestaties en schaal baarheid voor tabel opslag](storage-performance-checklist.md)
+- [Controlelijst voor prestaties en schaalbaarheid van Table-opslag](storage-performance-checklist.md)
 - [Schaalbaarheids doelen voor standaard opslag accounts](../common/scalability-targets-standard-account.md)
 - [Schaalbaarheids doelen voor de resource provider van Azure Storage](../common/scalability-targets-resource-provider.md)
 - [Limieten en quota voor Azure-abonnementen](../../azure-resource-manager/management/azure-subscription-service-limits.md)

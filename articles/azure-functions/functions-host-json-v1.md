@@ -4,10 +4,10 @@ description: Referentie documentatie voor de Azure Functions host.jsin het besta
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.openlocfilehash: 36d028d09c94ae28e77404297bd576f5e20404c6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81757513"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>host.jsbij verwijzing voor Azure Functions 1. x
@@ -136,11 +136,11 @@ Configuratie-instellingen voor de [Azure Cosmos DB trigger en bindingen](functio
 }
 ```
 
-|Eigenschap  |Standaard | Description |
+|Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------|
-|GatewayMode|Gateway|De verbindings modus die wordt gebruikt door de functie bij het maken van verbinding met de Azure Cosmos DB-service. Opties zijn `Direct` en`Gateway`|
+|GatewayMode|Gateway|De verbindings modus die wordt gebruikt door de functie bij het maken van verbinding met de Azure Cosmos DB-service. Opties zijn `Direct` en `Gateway`|
 |Protocol|Https|Het verbindings protocol dat door de functie wordt gebruikt bij het verbinden met de Azure Cosmos DB-service.  Lees [hier voor een uitleg van beide modi](../cosmos-db/performance-tips.md#networking)|
-|leasePrefix|N.v.t.|Het lease voorvoegsel dat moet worden gebruikt voor alle functies in een app.|
+|leasePrefix|n.v.t.|Het lease voorvoegsel dat moet worden gebruikt voor alle functies in een app.|
 
 ## <a name="durabletask"></a>durableTask
 
@@ -186,7 +186,7 @@ Configuratie-instellingen voor de [host Health Monitor](https://github.com/Azure
 }
 ```
 
-|Eigenschap  |Standaard | Description |
+|Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------| 
 |enabled|true|Hiermee wordt aangegeven of de functie is ingeschakeld. | 
 |healthCheckInterval|10 seconden|Het tijds interval tussen de periodieke status controles voor de achtergrond. | 
@@ -209,9 +209,9 @@ Configuratie-instellingen voor [http-triggers en-bindingen](functions-bindings-h
 }
 ```
 
-|Eigenschap  |Standaard | Description |
+|Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------| 
-|dynamicThrottlesEnabled|false|Als deze instelling is ingeschakeld, wordt door de aanvraag verwerkings pijplijn regel matig de systeem prestatie meter items gecontroleerd, zoals verbindingen/threads/processen/geheugen/CPU/etc. als een van deze prestatie meter items een ingebouwde hoge drempel waarde (80%) heeft, worden aanvragen geweigerd met een 429 ' te druk ' te allen tijde, totdat de teller (s) op normale niveaus terugkeren.|
+|dynamicThrottlesEnabled|onjuist|Als deze instelling is ingeschakeld, wordt door de aanvraag verwerkings pijplijn regel matig de systeem prestatie meter items gecontroleerd, zoals verbindingen/threads/processen/geheugen/CPU/etc. als een van deze prestatie meter items een ingebouwde hoge drempel waarde (80%) heeft, worden aanvragen geweigerd met een 429 ' te druk ' te allen tijde, totdat de teller (s) op normale niveaus terugkeren.|
 |maxConcurrentRequests|niet-gebonden ( `-1` )|Het maximum aantal HTTP-functies dat parallel wordt uitgevoerd. Op die manier kunt u gelijktijdigheid beheren, waardoor het resource gebruik kan worden beheerd. Stel dat u een HTTP-functie hebt die gebruikmaakt van veel systeem bronnen (geheugen/CPU/sockets), zodat er problemen ontstaan wanneer gelijktijdigheid te hoog is. Het is ook mogelijk dat u een functie hebt waarmee uitgaande aanvragen voor een service van derden worden uitgevoerd. deze aanroepen moeten een beperkt aantal zijn. In dergelijke gevallen kan het Toep assen van een beperking hier helpen.|
 |maxOutstandingRequests|niet-gebonden ( `-1` )|Het maximum aantal openstaande aanvragen dat op een bepaald moment wordt bewaard. Deze limiet omvat aanvragen die in de wachtrij zijn geplaatst, maar die nog niet zijn gestart, evenals de uitvoeringen die worden uitgevoerd. Alle binnenkomende aanvragen die deze limiet overschrijden, worden geweigerd met een antwoord van 429 ' bezet '. Hiermee kunnen aanroepers op tijd gebaseerde strategieën voor nieuwe pogingen gebruiken en kunt u ook de maximum latentie van aanvragen beheren. Hiermee beheert u alleen de wachtrij die zich in het uitvoerings traject van de Script Host voordoet. Andere wacht rijen, zoals de ASP.NET-aanvraag wachtrij, blijven van kracht en worden niet beïnvloed door deze instelling.|
 |routePrefix|api|Het route voorvoegsel dat van toepassing is op alle routes. Gebruik een lege teken reeks om het standaard voorvoegsel te verwijderen. |
@@ -247,11 +247,11 @@ Hiermee wordt gefilterd op Logboeken die zijn geschreven door een [ILogger-objec
 }
 ```
 
-|Eigenschap  |Standaard | Description |
+|Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------| 
-|categoryFilter|N.v.t.|Hiermee wordt gefilterd op categorie opgegeven| 
+|categoryFilter|n.v.t.|Hiermee wordt gefilterd op categorie opgegeven| 
 |defaultLevel|Informatie|Voor alle categorieën die niet in de `categoryLevels` matrix zijn opgegeven, verzendt u logboeken op dit niveau en hierboven naar Application Insights.| 
-|categoryLevels|N.v.t.|Een matrix met categorieën die het minimale logboek niveau opgeven dat moet worden verzonden naar Application Insights voor elke categorie. De categorie die hier is opgegeven, bepaalt alle categorieën die beginnen met dezelfde waarde, en de langere waarden hebben prioriteit. In het voor gaande voor beeld *host.jsop* het bestand alle categorieën die beginnen met ' host. aggregator ' aanmelden op `Information` niveau. Alle andere categorieën die beginnen met ' host ', zoals ' Host.Executor ', log op `Error` niveau.| 
+|categoryLevels|n.v.t.|Een matrix met categorieën die het minimale logboek niveau opgeven dat moet worden verzonden naar Application Insights voor elke categorie. De categorie die hier is opgegeven, bepaalt alle categorieën die beginnen met dezelfde waarde, en de langere waarden hebben prioriteit. In het voor gaande voor beeld *host.jsop* het bestand alle categorieën die beginnen met ' host. aggregator ' aanmelden op `Information` niveau. Alle andere categorieën die beginnen met ' host ', zoals ' Host.Executor ', log op `Error` niveau.| 
 
 ## <a name="queues"></a>Bestel
 
@@ -269,7 +269,7 @@ Configuratie-instellingen voor [opslag wachtrij-Triggers en-bindingen](functions
 }
 ```
 
-|Eigenschap  |Standaard | Description |
+|Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------| 
 |maxPollingInterval|60000|Het maximum interval in milliseconden tussen de wachtrij polls.| 
 |visibilityTimeout|0|Het tijds interval tussen nieuwe pogingen wanneer het verwerken van een bericht mislukt.| 
@@ -288,9 +288,9 @@ Configuratie-instelling voor de [SendGrind-uitvoer binding](functions-bindings-s
     }
 ```
 
-|Eigenschap  |Standaard | Description |
+|Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------| 
-|from|N.v.t.|Het e-mail adres van de afzender over alle functies.| 
+|from|n.v.t.|Het e-mail adres van de afzender over alle functies.| 
 
 ## <a name="servicebus"></a>serviceBus
 
@@ -306,10 +306,10 @@ Configuratie-instelling voor [Service Bus triggers en bindingen](functions-bindi
 }
 ```
 
-|Eigenschap  |Standaard | Description |
+|Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------| 
 |maxConcurrentCalls|16|Het maximum aantal gelijktijdige aanroepen naar de retour aanroep dat de bericht pomp moet initiëren. De functie runtime verwerkt standaard meerdere berichten tegelijk. Als u wilt dat de runtime slechts één wachtrij of onderwerp bericht per keer verwerkt, stelt `maxConcurrentCalls` u in op 1. | 
-|prefetchCount|N.v.t.|De standaard PrefetchCount die wordt gebruikt door de onderliggende MessageReceiver.| 
+|prefetchCount|n.v.t.|De standaard PrefetchCount die wordt gebruikt door de onderliggende MessageReceiver.| 
 |autoRenewTimeout|00:05:00|De maximale duur waarbinnen de bericht vergrendeling automatisch wordt vernieuwd.| 
 
 ## <a name="singleton"></a>Singleton
@@ -328,17 +328,17 @@ Configuratie-instellingen voor het gedrag van Singleton-vergren deling. Zie [git
 }
 ```
 
-|Eigenschap  |Standaard | Description |
+|Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------| 
 |lockPeriod|00:00:15|De periode waarin vergrendelingen op functie niveau worden uitgevoerd. De vergren delingen automatisch verlengen.| 
 |listenerLockPeriod|00:01:00|De periode waarin de luister vergrendelingen worden uitgevoerd.| 
 |listenerLockRecoveryPollingInterval|00:01:00|Het tijds interval dat wordt gebruikt voor het herstel van de listener-vergren deling als tijdens het opstarten geen listener-vergrendeling kan worden verkregen.| 
 |lockAcquisitionTimeout|00:01:00|De maximale hoeveelheid tijd die de runtime probeert een vergren deling te verkrijgen.| 
-|lockAcquisitionPollingInterval|N.v.t.|Het interval tussen overname pogingen voor vergren delen.| 
+|lockAcquisitionPollingInterval|n.v.t.|Het interval tussen overname pogingen voor vergren delen.| 
 
 ## <a name="tracing"></a>tracering
 
-*Versie 1. x*
+*Versie 1.x*
 
 Configuratie-instellingen voor logboeken die u maakt met behulp van een- `TraceWriter` object. Zie [C#-logboek registratie](functions-reference-csharp.md#logging) en [Node.js logboek registratie](functions-reference-node.md#writing-trace-output-to-the-console).
 
@@ -351,7 +351,7 @@ Configuratie-instellingen voor logboeken die u maakt met behulp van een- `TraceW
 }
 ```
 
-|Eigenschap  |Standaard | Description |
+|Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------| 
 |consoleLevel|Info|Het tracerings niveau voor console logboek registratie. Opties zijn: `off` , `error` , `warning` , `info` en `verbose` .|
 |fileLoggingMode|debugOnly|Het tracerings niveau voor logboek registratie van bestanden. Opties zijn `never` , `always` , `debugOnly` .| 

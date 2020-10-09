@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: robinsh
 ms.openlocfilehash: 60d0ef30a1c7d948a9e837a8bc37c76ace415545
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82024962"
 ---
-# <a name="automatic-iot-device-and-module-management-using-the-azure-cli"></a>Automatische IoT-apparaat-en module beheer met Azure CLI
+# <a name="automatic-iot-device-and-module-management-using-the-azure-cli"></a>Automatisch beheer van IoT-apparaat en module met Azure CLI
 
 [!INCLUDE [iot-edge-how-to-deploy-monitor-selector](../../includes/iot-hub-auto-device-config-selector.md)]
 
@@ -134,7 +134,7 @@ Gebruik de volgende opdracht om een configuratie te maken:
 
 * --**inhoud** -inline JSON of bestandspad naar de doel inhoud die moet worden ingesteld als twee gewenste eigenschappen. 
 
-* --de naam van de **hub** -naam van de IOT-hub waarin de configuratie wordt gemaakt. De hub moet zich in het huidige abonnement benemen. Overschakelen naar het gewenste abonnement met de opdracht`az account set -s [subscription name]`
+* --de naam van de **hub** -naam van de IOT-hub waarin de configuratie wordt gemaakt. De hub moet zich in het huidige abonnement benemen. Overschakelen naar het gewenste abonnement met de opdracht `az account set -s [subscription name]`
 
 * --**doel-condition** : Voer een doel voorwaarde in om te bepalen welke apparaten of modules met deze configuratie worden benaderd.Voor automatische apparaatconfiguratie is de voor waarde gebaseerd op apparaatonafhankelijke Tags of de dubbele gewenste eigenschappen van het apparaat en moet overeenkomen met de indeling van de expressie.Bijvoorbeeld `tags.environment='test'` of `properties.desired.devicemodel='4000x'`.Voor de automatische module configuratie is de voor waarde gebaseerd op een module dubbele Tags of module dubbele gewenste eigenschappen.. Bijvoorbeeld `from devices.modules where tags.environment='test'` of `from devices.modules where properties.reported.chillerProperties.model='4000x'`.
 
@@ -153,7 +153,7 @@ az iot hub configuration show --config-id [configuration id] \
 
 * --**config-id** : de naam van de configuratie die in de IOT-hub bestaat.
 
-* --de naam van de **hub** -naam van de IOT-hub waarin de configuratie bestaat. De hub moet zich in het huidige abonnement benemen. Overschakelen naar het gewenste abonnement met de opdracht`az account set -s [subscription name]`
+* --de naam van de **hub** -naam van de IOT-hub waarin de configuratie bestaat. De hub moet zich in het huidige abonnement benemen. Overschakelen naar het gewenste abonnement met de opdracht `az account set -s [subscription name]`
 
 Controleer de configuratie in het opdracht venster.De eigenschap **Metrics** bevat een aantal voor elke metrische waarde die door elke hub wordt geëvalueerd:
 
@@ -203,7 +203,7 @@ az iot hub configuration update --config-id [configuration id] \
 
 * --**Stel** een eigenschap in de configuratie in. U kunt de volgende eigenschappen bijwerken:
 
-    * targetCondition-bijvoorbeeld`targetCondition=tags.location.state='Oregon'`
+    * targetCondition-bijvoorbeeld `targetCondition=tags.location.state='Oregon'`
 
     * Labels 
 

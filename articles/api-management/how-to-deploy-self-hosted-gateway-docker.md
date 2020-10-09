@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/26/2020
 ms.author: apimpm
 ms.openlocfilehash: b9e990988770e8aca015ae8b1159bb4f5e50df57
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82205090"
 ---
 # <a name="deploy-an-azure-api-management-self-hosted-gateway-to-docker"></a>Een Azure API Management zelf-hostende Gateway implementeren naar docker
@@ -26,7 +26,7 @@ Dit artikel bevat de stappen voor het implementeren van een zelf-hostend gateway
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Voer de volgende Snelstartgids uit: [een Azure API Management-exemplaar maken](get-started-create-service-instance.md)
+- Voltooi de volgende quickstart: [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md)
 - Maak een docker-omgeving. [Docker voor desktop](https://www.docker.com/products/docker-desktop) is een goede optie voor ontwikkelings-en evaluatie doeleinden. Raadpleeg [docker-documentatie](https://docs.docker.com) voor informatie over alle docker-edities, hun functies en uitgebreide documentatie over docker zelf.
 - [Een gateway bron inrichten in uw API Management-exemplaar](api-management-howto-provision-self-hosted-gateway.md)
 

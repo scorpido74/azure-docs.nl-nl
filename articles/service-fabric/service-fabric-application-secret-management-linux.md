@@ -6,17 +6,17 @@ ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: shsha
 ms.openlocfilehash: b8e0a19e3f654fc561e7c7e26c6a2da463e24d5f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78969036"
 ---
 # <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-linux-clusters"></a>Een versleutelings certificaat instellen en geheimen op Linux-clusters versleutelen
 In dit artikel wordt beschreven hoe u een versleutelings certificaat instelt en hoe u het kunt gebruiken voor het versleutelen van geheimen op Linux-clusters. Zie [een versleutelings certificaat instellen en geheimen op Windows-clusters versleutelen][secret-management-windows-specific-link]voor Windows-clusters.
 
 ## <a name="obtain-a-data-encipherment-certificate"></a>Een certificaat voor gegevens codering verkrijgen
-Een gegevens versleuteling certificaat wordt uitsluitend gebruikt voor het versleutelen en ontsleutelen van [para meters][parameters-link] in de Settings.xml en [omgevings variabelen][environment-variables-link] van een service in de ServiceManifest.xml van een service. Het wordt niet gebruikt voor verificatie of ondertekening van versleutelings tekst. Het certificaat moet voldoen aan de volgende vereisten:
+Een gegevens versleuteling certificaat wordt uitsluitend gebruikt voor het versleutelen en ontsleutelen van [para meters][parameters-link] in de Settings.xml en [omgevings variabelen][environment-variables-link] van een service in de ServiceManifest.xml van een service. Het wordt niet gebruikt voor verificatie of ondertekening van versleutelings tekst. Het certificaat moet aan de volgende vereisten voldoen:
 
 * Het certificaat moet een persoonlijke sleutel bevatten.
 * Het gebruik van de certificaat sleutel moet gegevens codering (10) bevatten en mag geen server verificatie of client verificatie omvatten.

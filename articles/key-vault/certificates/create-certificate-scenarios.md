@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 02e13ce81ed2f11c0bb69015a4864c4a1ad55593
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81430966"
 ---
 # <a name="monitor-and-manage-certificate-creation"></a>Het maken van certificaten controleren en beheren
@@ -84,11 +84,11 @@ Location: “https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api
 |GET|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
 ### <a name="request"></a>Aanvraag
-Toevoegen`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
+Toevoegen `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
 
 OF
 
-Toevoegen`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
+Toevoegen `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
 
 > [!NOTE]
 > Als *request_id* in de query is opgegeven, fungeert deze als een filter. Als de *request_id* in de query en in het in behandeling zijnde object verschillend zijn, wordt de HTTP-status code 404 geretourneerd.
@@ -119,11 +119,11 @@ StatusCode: 200, ReasonPhrase: 'OK'
 |------------|-----------------|
 |GET|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
-Toevoegen`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
+Toevoegen `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
 
 OF
 
-Toevoegen`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
+Toevoegen `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
 
 ### <a name="response"></a>Antwoord
 
@@ -151,11 +151,11 @@ StatusCode: 200, ReasonPhrase: 'OK'
 |------------|-----------------|
 |GET|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
-Toevoegen`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
+Toevoegen `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
 
 OF
 
-Toevoegen`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
+Toevoegen `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
 
 ### <a name="response"></a>Antwoord
 
@@ -190,11 +190,11 @@ Een object dat in behandeling is, kan worden verwijderd of overschreven door een
 |GET|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
 ### <a name="request"></a>Aanvraag
-Toevoegen`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
+Toevoegen `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
 
 OF
 
-Toevoegen`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
+Toevoegen `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
 
 ### <a name="response"></a>Antwoord
 
@@ -294,11 +294,11 @@ Een annulering kan alleen worden aangevraagd. Een aanvraag kan al dan niet worde
 |VERZENDEN|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
 ### <a name="request"></a>Aanvraag
-VERZENDEN`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
+VERZENDEN `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
 
 OF
 
-VERZENDEN`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
+VERZENDEN `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
 
 ```json
 {
@@ -334,11 +334,11 @@ StatusCode: 200, ReasonPhrase: 'OK'
 |DELETE|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
 ### <a name="request"></a>Aanvraag
-VERWIJDERD`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
+VERWIJDERD `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
 
 OF
 
-VERWIJDERD`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
+VERWIJDERD `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
 
 ### <a name="response"></a>Antwoord
 

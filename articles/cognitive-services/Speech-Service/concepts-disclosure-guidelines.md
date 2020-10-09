@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: angle
 ms.openlocfilehash: fe38c6b7cfb1abbaf3f1079dd8bff66b51b98091
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74776382"
 ---
 # <a name="disclosure-design-guidelines"></a>Richtlijnen voor het ontwerpen van openbaarmakingen
@@ -56,7 +56,7 @@ Gezien het grote deel van ontwerp richtlijnen voor spraak ervaringen, zijn we hi
 3. [**Wanneer moet u**](concepts-disclosure-patterns.md#when-to-disclose)het volgende vermelden: optimaal moment om te vermelden tijdens de gebruikers reis
 
 ## <a name="disclosure-assessment"></a>Beoordeling van vrijgeven
-Houd uw gebruikers&#39; verwachtingen over een interactie en de context waarin ze de stem zullen ondervinden. Als de context duidelijk maakt dat een synthetische stem &quot;uitspreekt,&quot; kan de openbaar making mini maal of onnodig zijn. De belangrijkste typen context die van invloed zijn op de openbaar making zijn onder ander type, scenario type en blootstellings niveau. U kunt ook zien wie er zou kunnen Luis teren.
+Houd uw gebruikers&#39; verwachtingen over een interactie en de context waarin ze de stem zullen ondervinden. Als de context duidelijk maakt dat een synthetische stem &quot; uitspreekt, &quot; kan de openbaar making mini maal of onnodig zijn. De belangrijkste typen context die van invloed zijn op de openbaar making zijn onder ander type, scenario type en blootstellings niveau. U kunt ook zien wie er zou kunnen Luis teren.
 
 ### <a name="understand-context"></a>Context begrijpen
 
@@ -74,7 +74,7 @@ Gebruik het volgende diagram om te bepalen of uw synthetische spraak ervaring ee
 
   ![Diagram voor uitschaffings beoordeling](media/responsible-ai/disclosure-guidelines/flowchart.png)
 
-## <a name="reference-docs"></a>Referentie documenten
+## <a name="reference-docs"></a>Naslagdocumentatie
 
 * [Openbaar making voor spraak-talen](https://aka.ms/disclosure-voice-talent)
 * [Richt lijnen voor de verantwoordelijke implementatie van synthetische spraak technologie](concepts-guidelines-responsible-deployment-synthetic.md)

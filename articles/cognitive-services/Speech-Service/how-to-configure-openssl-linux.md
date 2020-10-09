@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/16/2020
 ms.author: jhakulin
 ms.openlocfilehash: 42960c25c4124203b64646fdc5cbca833b246e21
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81683170"
 ---
 # <a name="configure-openssl-for-linux"></a>OpenSSL voor Linux configureren
@@ -31,21 +31,21 @@ De uitvoer op systemen op basis van Ubuntu/Debian moet zijn:
 OPENSSLDIR: "/usr/lib/ssl"
 ```
 
-Controleer of er een `certs` SUBMAP onder OPENSSLDIR is. In het bovenstaande voor beeld zou het zijn `/usr/lib/ssl/certs`.
+Controleer of er een `certs` submap onder OPENSSLDIR is. In het bovenstaande voor beeld zou het zijn `/usr/lib/ssl/certs` .
 
-* Als dat het `/usr/lib/ssl/certs` geval is en een groot aantal afzonderlijke certificaat bestanden `.crt` ( `.pem` met of uitbrei ding) bevat, is er geen verdere actie nodig.
+* Als `/usr/lib/ssl/certs` dat het geval is en een groot aantal afzonderlijke certificaat bestanden (met `.crt` of `.pem` uitbrei ding) bevat, is er geen verdere actie nodig.
 
 * Als OPENSSLDIR iets anders is dan `/usr/lib/ssl` en/of er één certificaat bundel bestand is in plaats van meerdere afzonderlijke bestanden, moet u een geschikte SSL-omgevings variabele instellen om aan te geven waar de certificaten kunnen worden gevonden.
 
 ## <a name="examples"></a>Voorbeelden
 
-- OPENSSLDIR is `/opt/ssl`. Er is `certs` een submap met veel `.crt` of `.pem` bestanden.
-Stel de omgevings variabele `SSL_CERT_DIR` in `/opt/ssl/certs` op om aan te wijzen voordat een programma wordt uitgevoerd dat gebruikmaakt van de spraak-SDK. Bijvoorbeeld:
+- OPENSSLDIR is `/opt/ssl` . Er is een `certs` submap met veel `.crt` of `.pem` bestanden.
+Stel de omgevings variabele `SSL_CERT_DIR` in op om aan te wijzen `/opt/ssl/certs` voordat een programma wordt uitgevoerd dat gebruikmaakt van de spraak-SDK. Bijvoorbeeld:
 ```bash
 export SSL_CERT_DIR=/opt/ssl/certs
 ```
 
-- OPENSSLDIR is `/etc/pki/tls` (zoals op RHEL/CentOS gebaseerde systemen). Er is `certs` bijvoorbeeld `ca-bundle.crt`een submap met een certificaat bundel bestand.
+- OPENSSLDIR is `/etc/pki/tls` (zoals op RHEL/CentOS gebaseerde systemen). Er is `certs` bijvoorbeeld een submap met een certificaat bundel bestand `ca-bundle.crt` .
 Stel de omgevings variabele `SSL_CERT_FILE` zodanig in dat deze naar dat bestand verwijst voordat u een programma uitvoert dat gebruikmaakt van de spraak-SDK. Bijvoorbeeld:
 ```bash
 export SSL_CERT_FILE=/etc/pki/tls/certs/ca-bundle.crt

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/15/2018
 ms.author: damaerte
 ms.openlocfilehash: 092dccab82326bb9983f11ff64fe50aee7b1084d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74951476"
 ---
 # <a name="limitations-of-azure-cloud-shell"></a>Beperkingen van Azure Cloud Shell
@@ -47,7 +47,7 @@ Cloud Shell ondersteunt de nieuwste versies van micro soft Edge, micro soft Inte
 
 Gebruikers kunnen slechts één type shell tegelijk starten, hetzij **bash** of **Power shell**. Het is echter mogelijk dat er meerdere exemplaren van bash of Power shell tegelijk worden uitgevoerd. Als u het menu verwisselt tussen bash of Power shell, worden Cloud Shell opnieuw opgestart, waardoor bestaande sessies worden beëindigd. U kunt ook bash uitvoeren in Power shell door te typen `bash` en Power shell in bash uit te voeren door te typen `pwsh` .
 
-### <a name="usage-limits"></a>Gebruiks limieten
+### <a name="usage-limits"></a>Gebruiksbeperkingen
 
 Cloud Shell is bedoeld voor interactieve use-cases. Als gevolg hiervan worden langlopende niet-interactieve sessies beëindigd zonder dat dit wordt gewaarschuwd.
 
@@ -63,11 +63,11 @@ Let op wanneer u het bestand bewerkt. bashrc of Power shell $PROFILE. Dit kan le
 
 ## <a name="powershell-limitations"></a>Power shell-beperkingen
 
-### <a name="azuread-module-name"></a>`AzureAD`module naam
+### <a name="azuread-module-name"></a>`AzureAD` module naam
 
 De `AzureAD` module naam is momenteel `AzureAD.Standard.Preview` , de module biedt dezelfde functionaliteit.
 
-### <a name="sqlserver-module-functionality"></a>`SqlServer`module functionaliteit
+### <a name="sqlserver-module-functionality"></a>`SqlServer` module functionaliteit
 
 De `SqlServer` module die is opgenomen in Cloud Shell heeft alleen ondersteuning voor de Prerelease van Power shell core. Met name `Invoke-SqlCmd` is nog niet beschikbaar.
 

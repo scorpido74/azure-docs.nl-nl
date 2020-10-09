@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/05/2018
 ms.openlocfilehash: cffa5677c5531f3887639c049998523d7d07586a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79455559"
 ---
 # <a name="check-resource-usage-against-limits"></a>Resourcegebruik controleren op basis van limieten
 
 In dit artikel leert u hoe u het nummer kunt zien van elk netwerk bron type dat u in uw abonnement hebt geïmplementeerd en wat uw [abonnements limieten](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fnetworking%2ftoc.json#networking-limits) zijn. De mogelijkheid om het gebruik van resources op basis van limieten te bekijken is handig voor het bijhouden van het huidige gebruik en het plannen van toekomstig gebruik. U kunt de [Azure-Portal](#azure-portal), [Power shell](#powershell)of de [Azure cli](#azure-cli) gebruiken om het gebruik bij te houden.
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-portal"></a>Azure-portal
 
 1. Meld u aan bij Azure [Portal](https://portal.azure.com).
 2. Selecteer boven aan de linkerbovenhoek van de Azure Portal **alle services**.

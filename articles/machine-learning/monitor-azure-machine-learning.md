@@ -10,10 +10,10 @@ ms.author: aashishb
 author: aashishb
 ms.date: 03/05/2020
 ms.openlocfilehash: eb4f46322bec57fb4412d3ddebb345640556ca5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78399112"
 ---
 # <a name="monitoring-azure-machine-learning"></a>Bewakings Azure Machine Learning
@@ -62,7 +62,7 @@ U krijgt toegang tot waarschuwingen voor Azure Machine Learning door **waarschuw
 
 De volgende tabel bevat algemene en aanbevolen waarschuwings regels voor metrische gegevens voor Azure Machine Learning:
 
-| Waarschuwingstype | Voorwaarde | Description |
+| Waarschuwingstype | Conditie | Beschrijving |
 |:---|:---|:---|
 | Modelimplementatie is mislukt | Aggregatie type: Total, operator: groter dan, drempel waarde: 0 | Wanneer een of meer model implementaties zijn mislukt |
 | Percentage quotum gebruik | Aggregatie type: Average, operator: groter dan, drempel waarde: 90| Wanneer het percentage van het quota gebruik groter is dan 90% |
@@ -100,7 +100,7 @@ Als u Azure Monitor Log Analytics wilt gebruiken, moet u een diagnostische confi
 
 Gegevens in Azure Monitor logboeken worden opgeslagen in tabellen, waarbij elke tabel een eigen set unieke eigenschappen heeft. Azure Machine Learning slaat gegevens op in de volgende tabellen:
 
-| Tabel | Description |
+| Tabel | Beschrijving |
 |:---|:---|
 | AmlComputeClusterEvent | Gebeurtenissen van Azure Machine Learning Reken clusters. |
 | AmlComputeClusterNodeEvent | Gebeurtenissen van knoop punten binnen een Azure Machine Learning Compute-Cluster. |

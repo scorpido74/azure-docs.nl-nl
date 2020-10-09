@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
 ms.openlocfilehash: e9bb516d498d989b97f1069af9a9f4cb673ea96d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74892665"
 ---
 # <a name="view-and-edit-video-indexer-insights"></a>Video Indexer-inzichten weergeven en bewerken
@@ -39,7 +39,7 @@ In dit onderwerp ziet u hoe u de Video Indexer inzichten van een video kunt weer
 
 [Uitgebreide inzichten van uw Video's gebruiken](use-editor-create-project.md)
 
-## <a name="see-also"></a>Zie tevens
+## <a name="see-also"></a>Zie ook
 
 [Overzicht van Video Indexer](video-indexer-overview.md)
 

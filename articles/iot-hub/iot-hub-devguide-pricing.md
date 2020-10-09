@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 4c7382f84522333b6aae0d79941aae8f2147a12f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81729149"
 ---
 # <a name="azure-iot-hub-pricing-information"></a>Prijs informatie voor Azure IoT Hub
@@ -45,7 +45,7 @@ ms.locfileid: "81729149"
 
 ## <a name="example-1"></a>Voor beeld #1
 
-Een apparaat verzendt een apparaat-naar-Cloud bericht van 1 KB per minuut naar IoT Hub, dat vervolgens door Azure Stream Analytics wordt gelezen. De back-end van de oplossing roept elke 10 minuten een methode (met een nettolading van 512 bytes) op het apparaat aan om een specifieke actie te activeren. Het apparaat reageert op de-methode met een resultaat van 200 bytes.
+Een apparaat verzendt een apparaat-naar-Cloud bericht van 1 1 KB per minuut naar IoT Hub, dat vervolgens door Azure Stream Analytics wordt gelezen. De back-end van de oplossing roept elke 10 minuten een methode (met een nettolading van 512 bytes) op het apparaat aan om een specifieke actie te activeren. Het apparaat reageert op de-methode met een resultaat van 200 bytes.
 
 Het apparaat gebruikt:
 

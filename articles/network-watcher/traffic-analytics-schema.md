@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: vinigam
 ms.openlocfilehash: ccfbb92c27e4508595f19c2ea6900730cde609b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74666372"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>Schema's en gegevens aggregatie in Traffic Analytics
@@ -161,7 +161,7 @@ Hieronder vindt u de velden in het schema en wat ze aangeven
 | SrcPublicIPs_s | <SOURCE_PUBLIC_IP>\|\<FLOW_STARTED_COUNT>\|\<FLOW_ENDED_COUNT>\|\<OUTBOUND_PACKETS>\|\<INBOUND_PACKETS>\|\<OUTBOUND_BYTES>\|\<INBOUND_BYTES> | Vermeldingen gescheiden door balken |
 | DestPublicIPs_s | <DESTINATION_PUBLIC_IP>\|\<FLOW_STARTED_COUNT>\|\<FLOW_ENDED_COUNT>\|\<OUTBOUND_PACKETS>\|\<INBOUND_PACKETS>\|\<OUTBOUND_BYTES>\|\<INBOUND_BYTES> | Vermeldingen gescheiden door balken |
 
-### <a name="notes"></a>Notities
+### <a name="notes"></a>Opmerkingen
 
 1. In het geval van AzurePublic-en ExternalPublic stromen wordt het Azure VM-IP-adres van de klant ingevuld in VMIP_s veld, terwijl de open bare IP-adressen worden ingevuld in het veld PublicIPs_s. Voor deze twee stroom typen moeten we VMIP_s en PublicIPs_s gebruiken in plaats van SrcIP_s en DestIP_s velden. Voor AzurePublic-en ExternalPublicIP-adressen, verzamelen we verder, zodat het aantal records dat is opgenomen in de werk ruimte van de klant log Analytics mini maal is. (Dit veld wordt binnenkort afgeschaft en er moeten SrcIP_ en DestIP_s worden gebruikt, afhankelijk van of de Azure-VM de bron of de bestemming in de stroom is)
 1. Details voor stroom typen: op basis van de IP-adressen die in de stroom zijn betrokken, categoriseren we de stromen in naar de volgende stroom typen:

@@ -8,10 +8,10 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 01/16/2019
 ms.openlocfilehash: 4548bf77c01194802c2e6203bcbf9fbd240370a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81461647"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Best practices voor Azure Service Fabric-beveiliging
@@ -60,7 +60,7 @@ Er zijn drie [scenario's](../../service-fabric/service-fabric-cluster-security.m
 -   Beveiliging van knoop punt naar knoop punt: dit scenario beveiligt de communicatie tussen de virtuele machines en de computers in het cluster. Deze vorm van beveiliging zorgt ervoor dat alleen de computers die gemachtigd zijn om lid te worden van het cluster, toepassingen en services in het cluster kunnen hosten.
 In dit scenario kunnen de clusters die worden uitgevoerd op Azure of zelfstandige clusters die worden uitgevoerd in Windows, gebruikmaken van [certificaat beveiliging](../../service-fabric/service-fabric-windows-cluster-x509-security.md) of [Windows-beveiliging](../../service-fabric/service-fabric-windows-cluster-windows-security.md) voor Windows Server-machines.
 -   Beveiliging van client naar knoop punt: dit scenario beveiligt de communicatie tussen een Service Fabric-client en de afzonderlijke knoop punten in het cluster.
--   Access Control op basis van rollen (RBAC): in dit scenario worden afzonderlijke identiteiten (certificaten, Azure AD, enzovoort) gebruikt voor elke beheerder en gebruikersrol die toegang heeft tot het cluster. U geeft de rol-id's op wanneer u het cluster maakt.
+-   Role-Based Access Control (RBAC): in dit scenario worden afzonderlijke identiteiten (certificaten, Azure AD, enzovoort) gebruikt voor elke beheerder en gebruikersrol die toegang heeft tot het cluster. U geeft de rol-id's op wanneer u het cluster maakt.
 
 >[!NOTE]
 >**Beveiligings aanbeveling voor Azure-clusters:** Gebruik Azure AD-beveiliging voor het verifiëren van clients en certificaten voor beveiliging tussen knoop punten.

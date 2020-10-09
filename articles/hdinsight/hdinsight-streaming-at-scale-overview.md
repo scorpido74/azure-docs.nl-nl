@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
 ms.openlocfilehash: 006310f1a0efa69881bbe6d6ea4403b9c50402e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75435400"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>Schaalbaar streamen in HDInsight
@@ -35,7 +35,7 @@ Apache Storm is een gedistribueerd, fout tolerant, open-source berekenings syste
 
 Zie [Wat is er Apache Storm in azure HDInsight?](storm/apache-storm-overview.md)voor meer informatie.
 
-## <a name="spark-streaming"></a>Spark-streaming
+## <a name="spark-streaming"></a>Spark Streaming
 
 Spark streaming is een uitbrei ding van Spark, waarmee u dezelfde code kunt gebruiken die u voor batch verwerking gebruikt. U kunt zowel batch-als interactieve query's combi neren in dezelfde toepassing. In tegens telling tot Storm biedt Spark streaming een status precies eenmaal de verwerkings semantiek. Bij gebruik in combi natie met de [Kafka direct-API](https://spark.apache.org/docs/latest/streaming-kafka-integration.html), die ervoor zorgt dat alle Kafka-gegevens exact één keer worden ontvangen door Spark-streaming, is het mogelijk om end-to-end precies één keer per garantie te zorgen. Een van de sterke punten van Spark streaming is de fout tolerante mogelijkheden. het herstellen van defecte knoop punten is snel mogelijk wanneer er meerdere knoop punten in het cluster worden gebruikt.
 
@@ -49,7 +49,7 @@ Er zijn voor delen voor het loskoppelen van technologieën. Kafka is bijvoorbeel
 
 ### <a name="scale-the-stream-buffering-layer"></a>De laag van de stroom buffer schalen
 
-De technologieën voor het bufferen van streams Event Hubs en Kafka beide partities gebruiken en consumenten lezen van deze partities. Het schalen van de invoer doorvoer vereist het schalen van het aantal partities en het toevoegen van partities zorgt voor een groeiende parallelle uitvoering. In Event Hubs kan het aantal partities niet worden gewijzigd na de implementatie, zodat het belang rijk is om te beginnen met de doel schaal. Met Kafka is het mogelijk om [partities toe te voegen](https://kafka.apache.org/documentation.html#basic_ops_cluster_expansion), zelfs wanneer Kafka gegevens verwerkt. Kafka biedt een hulp programma waarmee u partities opnieuw kunt toewijzen `kafka-reassign-partitions.sh` . HDInsight biedt een [hulp programma voor het herverdelen van partitie replica's](https://github.com/hdinsight/hdinsight-kafka-tools), `rebalance_rackaware.py` . Dit hulp programma roept het `kafka-reassign-partitions.sh` hulp programma op een zodanige manier aan dat elke replica zich in een afzonderlijk fout domein en een update domein bevindt, waardoor Kafka rack bewust wordt en fout tolerantie wordt verhoogd.
+De technologieën voor het bufferen van streams Event Hubs en Kafka beide partities gebruiken en consumenten lezen van deze partities. Het schalen van de invoer doorvoer vereist het schalen van het aantal partities en het toevoegen van partities zorgt voor een groeiende parallelle uitvoering. In Event Hubs kan het aantal partities niet worden gewijzigd na de implementatie, zodat het belang rijk is om te beginnen met de doel schaal. Met Kafka is het mogelijk om [partities toe te voegen](https://kafka.apache.org/documentation.html#basic_ops_cluster_expansion), zelfs wanneer Kafka gegevens verwerkt. Kafka biedt een hulp programma waarmee u partities opnieuw kunt toewijzen  `kafka-reassign-partitions.sh` . HDInsight biedt een [hulp programma voor het herverdelen van partitie replica's](https://github.com/hdinsight/hdinsight-kafka-tools),  `rebalance_rackaware.py` . Dit hulp programma roept het `kafka-reassign-partitions.sh` hulp programma op een zodanige manier aan dat elke replica zich in een afzonderlijk fout domein en een update domein bevindt, waardoor Kafka rack bewust wordt en fout tolerantie wordt verhoogd.
 
 ### <a name="scale-the-stream-processing-layer"></a>De laag voor stream processing schalen
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: aahi
 ms.openlocfilehash: f59c924caca86505e9f1e91bf58095b271475794
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75383716"
 ---
 # <a name="sending-queries-to-the-bing-news-search-api"></a>Query's verzenden naar de Bing Nieuws zoeken-API
@@ -31,7 +31,7 @@ Om alleen nieuws als zoekresultaat te krijgen, verstuurt u een GET-aanvraag naar
 https://api.cognitive.microsoft.com/bing/v7.0/news/search
 ```
 
-In de aanvraag moet u het HTTPS-protocol gebruiken.
+Voor de aanvraag moet het HTTPS-protocol worden gebruikt.
 
 Het is raadzaam dat alle aanvragen afkomstig zijn van een server. Het distribueren van de sleutel als onderdeel van een clienttoepassing biedt een kwaadwillende gebruiker namelijk meer mogelijkheden om de sleutel te onderscheppen. Als u ervoor kiest om alle aanroepen via een server te laten lopen, beschikt u bovendien over een centraal upgradepunt voor toekomstige versies van de API.
 

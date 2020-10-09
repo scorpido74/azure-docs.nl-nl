@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.openlocfilehash: 4810de772e44be22ee5bd4a9fb6ef0ef756e62f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77085206"
 ---
 # <a name="how-to-configure-msal-for-ios-and-macos-to-use-different-identity-providers"></a>Procedure: MSAL voor iOS en macOS configureren voor het gebruik van verschillende id-providers
@@ -26,7 +26,7 @@ In dit artikel wordt uitgelegd hoe u uw micro soft-verificatie bibliotheek-app v
 
 ## <a name="default-authority-configuration"></a>Configuratie van de standaard instantie
 
-`MSALPublicClientApplication`is geconfigureerd met een standaard instantie-URL van `https://login.microsoftonline.com/common` , die geschikt is voor de meeste Azure Active Directory Aad-scenario's. Tenzij u geavanceerde scenario's zoals nationale Clouds implementeert, of als u werkt met B2C, hoeft u deze niet te wijzigen.
+`MSALPublicClientApplication` is geconfigureerd met een standaard instantie-URL van `https://login.microsoftonline.com/common` , die geschikt is voor de meeste Azure Active Directory Aad-scenario's. Tenzij u geavanceerde scenario's zoals nationale Clouds implementeert, of als u werkt met B2C, hoeft u deze niet te wijzigen.
 
 > [!NOTE]
 > Moderne authenticatie met Active Directory Federation Services als id-provider (ADFS) wordt niet ondersteund (Zie [ADFS voor ontwikkel aars](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios) voor meer informatie). ADFS wordt ondersteund via Federatie.
@@ -240,11 +240,11 @@ Hier volgen enkele subklassen van `MSALAuthority` die u kunt instantiëren, afha
 
 ### <a name="msalaadauthority"></a>MSALAADAuthority
 
-`MSALAADAuthority`vertegenwoordigt een AAD-instantie. De CA-URL moet de volgende indeling hebben, waar `<port>` optioneel is:`https://<host>:<port>/<tenant>`
+`MSALAADAuthority` vertegenwoordigt een AAD-instantie. De CA-URL moet de volgende indeling hebben, waar `<port>` optioneel is: `https://<host>:<port>/<tenant>`
 
 ### <a name="msalb2cauthority"></a>MSALB2CAuthority
 
-`MSALB2CAuthority`vertegenwoordigt een B2C-instantie. Standaard moet de URL van de B2C-instantie de volgende indeling hebben, waar `<port>` optioneel is: `https://<host>:<port>/tfp/<tenant>/<policy>` . MSAL ondersteunt echter ook andere wille keurige B2C-instantie-indelingen.
+`MSALB2CAuthority` vertegenwoordigt een B2C-instantie. Standaard moet de URL van de B2C-instantie de volgende indeling hebben, waar `<port>` optioneel is: `https://<host>:<port>/tfp/<tenant>/<policy>` . MSAL ondersteunt echter ook andere wille keurige B2C-instantie-indelingen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

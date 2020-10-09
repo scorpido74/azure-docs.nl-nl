@@ -17,10 +17,10 @@ ms.reviewer: hanki
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 02fbfc83c16cb13376cce820f19b247a7cd7db59
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82232305"
 ---
 # <a name="email-notifications-in-pim"></a>E-mail meldingen in PIM
@@ -31,7 +31,7 @@ Met Privileged Identity Management (PIM) kunt u weten wanneer er belang rijke ge
 
 E-mails die zijn verzonden vanuit Privileged Identity Management voor zowel Azure AD-als Azure-resource rollen, hebben het volgende e-mail adres van de afzender:
 
-- E-mail adres: **Azure- \@ Microsoft.com-antwoord**
+- E-mail adres:  **Azure- \@ Microsoft.com-antwoord**
 - Weergave naam: Microsoft Azure
 
 Deze e-mail berichten bevatten een **PIM** -voor voegsel in de onderwerpregel. Hier volgt een voorbeeld:
@@ -52,7 +52,7 @@ Wie deze e-mails voor Azure AD-rollen ontvangt, is afhankelijk van uw rol, de ge
 | --- | --- | --- | --- |
 | Beheerder van geprivilegieerde rol</br>(Geactiveerd/in aanmerking komend) | Ja</br>(alleen als er geen expliciete goed keurders zijn opgegeven) | Ja* | Ja |
 | Beveiligingsbeheer</br>(Geactiveerd/in aanmerking komend) | Nee | Ja* | Ja |
-| Globale beheerder</br>(Geactiveerd/in aanmerking komend) | Nee | Ja* | Ja |
+| Hoofdbeheerder</br>(Geactiveerd/in aanmerking komend) | Nee | Ja* | Ja |
 
 \*Als de [instelling **meldingen** ](pim-how-to-change-default-settings.md#notifications) is ingesteld op **inschakelen**.
 

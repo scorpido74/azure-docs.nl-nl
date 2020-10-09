@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: rosh
 ms.openlocfilehash: 25bcdb89002fec4f9b67b091996d7bf80bcf21c8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74326726"
 ---
 # <a name="sending-and-using-bing-local-business-search-api-queries-and-responses"></a>Query's en antwoorden van Bing Local Business Search-API verzenden en gebruiken
 
-U kunt lokale resultaten ophalen van de Bing Local Business Search-API door een zoek opdracht naar het eind punt te verzenden `Ocp-Apim-Subscription-Key` en de header op te nemen, wat vereist is. Naast de beschik bare [kopteksten](local-search-reference.md#headers) en [para meters](local-search-reference.md#query-parameters)kunnen Zoek opdrachten worden aangepast door [geografische grenzen](specify-geographic-search.md) op te geven [voor het gebied](local-search-query-response.md) dat moet worden doorzocht, en de locatie van de geretourneerde locaties.
+U kunt lokale resultaten ophalen van de Bing Local Business Search-API door een zoek opdracht naar het eind punt te verzenden en de header op te nemen `Ocp-Apim-Subscription-Key` , wat vereist is. Naast de beschik bare [kopteksten](local-search-reference.md#headers) en [para meters](local-search-reference.md#query-parameters)kunnen Zoek opdrachten worden aangepast door [geografische grenzen](specify-geographic-search.md) op te geven [voor het gebied](local-search-query-response.md) dat moet worden doorzocht, en de locatie van de geretourneerde locaties.
 
 ## <a name="creating-a-request"></a>Een aanvraag maken
 
-Als u een aanvraag wilt verzenden naar de Bing lokale Business Search-API, voegt u een `q=` zoek term toe aan de para meter voordat u deze toevoegt aan `Ocp-Apim-Subscription-Key` het API-eind punt, inclusief de header. Bijvoorbeeld:
+Als u een aanvraag wilt verzenden naar de Bing lokale Business Search-API, voegt u een zoek term toe aan de `q=` para meter voordat u deze toevoegt aan het API-eind punt, inclusief de `Ocp-Apim-Subscription-Key` header. Bijvoorbeeld:
 
 `https://api.cognitive.microsoft.com/bing/localbusinesses/v7.0/search?q=restaurant+in+Bellevue`
 
@@ -37,7 +37,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search[?q][&localC
 
 ## <a name="using-responses"></a>Antwoorden gebruiken
 
-JSON-antwoorden van de Bing lokale Business Search-API `SearchResponse` bevatten een object. De API retourneert relevante zoek resultaten in het `places` veld. Als er geen resultaten worden gevonden, `places` wordt het veld niet in het antwoord opgenomen.
+JSON-antwoorden van de Bing lokale Business Search-API bevatten een `SearchResponse` object. De API retourneert relevante zoek resultaten in het `places` veld. Als er geen resultaten worden gevonden, `places` wordt het veld niet in het antwoord opgenomen.
 
 [!INCLUDE [cognitive-services-bing-url-note](../../../includes/cognitive-services-bing-url-note.md)]
 
@@ -61,7 +61,7 @@ De JSON-resultaten die door de API worden geretourneerd, bevatten de volgende ke
 * entityPresentationInfo
 * geo
 * id
-* name
+* naam
 * routeablePoint
 * telefoon
 * url
@@ -74,7 +74,7 @@ Zie voor algemene informatie over kopteksten, para meters, markt codes, antwoord
 
 ## <a name="example-json-response"></a>Voorbeeld van JSON-antwoord
 
-De volgende JSON-respons bevat Zoek resultaten die door de `?q=restaurant+in+Bellevue`query zijn opgegeven.
+De volgende JSON-respons bevat Zoek resultaten die door de query zijn opgegeven `?q=restaurant+in+Bellevue` .
 
 ```json
 Vary: Accept-Encoding
@@ -148,6 +148,6 @@ Expires: Tue, 16 Oct 2018 16:25:15 GMT
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Snelstartgids voor lokale zakelijke Zoek opdrachten](quickstarts/local-quickstart.md)
-- [Lokale zakelijke zoek opdracht voor zoeken in Java Quick Start](quickstarts/local-search-java-quickstart.md)
+- [Quickstart over Bing Local Business Search met Java](quickstarts/local-search-java-quickstart.md)
 - [Quick start voor lokaal bedrijfs Zoek knooppunt](quickstarts/local-search-node-quickstart.md)
-- [Snelstartgids voor lokale zakelijke Zoek opdrachten python](quickstarts/local-search-python-quickstart.md)
+- [Quickstart over zoeken naar lokale bedrijven met Python](quickstarts/local-search-python-quickstart.md)
